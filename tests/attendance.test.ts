@@ -1,0 +1,337 @@
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { PrismaClient } from "@prisma/client";
+import { saveAttendanceBatch, getRegister, getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import { todayKey } from "@/lib/dates";
+
+/**
+ * Integration tests against the real seeded database.
+ *
+ * These exist because the attendance write path is the one place where a
+ * plausible-looking implementation silently corrupts data: a replayed offline
+ * batch double-writing, or a late replay resurrecting a mark the teacher
+ * already corrected. Neither is visible from the UI until a parent complains.
+ *
+ * Run `npm run db:reset` first — these assume the seed.
+ */
+
+const db = new PrismaClient();
+
+type Fixture = {
+  schoolId: string;
+  classId: string;
+  teacherMembershipId: string;
+  teacherUserId: string;
+  students: string[];
+  otherSchoolId: string;
+  otherStudentId: string;
+  timezone: string;
+};
+
+let fx: Fixture;
+
+beforeAll(async () => {
+  const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
+  const oakfield = await db.school.findFirstOrThrow({ where: { name: "Oakfield Academy" } });
+
+  const klass = await db.class.findFirstOrThrow({
+    where: { schoolId: riverside.id },
+    orderBy: { name: "asc" },
+  });
+
+  const teacher = await db.membership.findFirstOrThrow({
+    where: { schoolId: riverside.id, role: "TEACHER" },
+  });
+
+  const enrollments = await db.enrollment.findMany({
+    where: { classId: klass.id, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+
+  const otherStudent = await db.membership.findFirstOrThrow({
+    where: { schoolId: oakfield.id, role: "STUDENT" },
+  });
+
+  fx = {
+    schoolId: riverside.id,
+    classId: klass.id,
+    teacherMembershipId: teacher.id,
+    teacherUserId: teacher.userId,
+    students: enrollments.map((e) => e.studentMembershipId),
+    otherSchoolId: oakfield.id,
+    otherStudentId: otherStudent.id,
+    timezone: riverside.timezone,
+  };
+
+  expect(fx.students.length).toBeGreaterThan(3);
+
+  await cleanSyntheticData();
+});
+
+afterAll(async () => {
+  await cleanSyntheticData();
+  await db.$disconnect();
+});
+
+/**
+ * Removes everything these tests write.
+ *
+ * Necessary because the suite runs against the shared dev database rather than
+ * a throwaway one, and an earlier failing run used to leave rows behind that
+ * made the NEXT run fail for the wrong reason — the worst kind of flake, since
+ * it implicates innocent code. Synthetic sessions all sit in 2025-XX, well
+ * clear of the seed's rolling two-week window.
+ */
+async function cleanSyntheticData() {
+  await db.attendanceRecord.deleteMany({
+    where: { session: { dateKey: { startsWith: "2025-" } } },
+  });
+  await db.attendanceSession.deleteMany({ where: { dateKey: { startsWith: "2025-" } } });
+  // Belt and braces: any cross-tenant row a regression might have written.
+  await db.attendanceRecord.deleteMany({
+    where: { schoolId: fx.schoolId, student: { schoolId: fx.otherSchoolId } },
+  });
+}
+
+function save(dateKey: string, marks: Parameters<typeof saveAttendanceBatch>[0]["marks"]) {
+  return saveAttendanceBatch({
+    schoolId: fx.schoolId,
+    classId: fx.classId,
+    dateKey,
+    marks,
+    takenByMembershipId: fx.teacherMembershipId,
+    actorUserId: fx.teacherUserId,
+    notify: false, // notification fan-out is tested separately
+  });
+}
+
+/** Each test gets its own past date so they cannot interfere with each other. */
+let dayCounter = 0;
+function freshDate(): string {
+  dayCounter++;
+  return `2025-0${(dayCounter % 9) + 1}-1${dayCounter % 9}`;
+}
+
+describe("saveAttendanceBatch — idempotency", () => {
+  it("applies a first batch", async () => {
+    const dateKey = freshDate();
+    const result = await save(dateKey, [
+      { studentMembershipId: fx.students[0]!, status: "PRESENT", clientId: "c-1" },
+      { studentMembershipId: fx.students[1]!, status: "ABSENT", clientId: "c-2" },
+    ]);
+    expect(result.applied).toBe(2);
+    expect(result.skipped).toBe(0);
+    expect(result.rejected).toEqual([]);
+  });
+
+  it("is a no-op when the identical batch is replayed", async () => {
+    const dateKey = freshDate();
+    const marks = [
+      { studentMembershipId: fx.students[0]!, status: "PRESENT" as const, clientId: "replay-1" },
+      { studentMembershipId: fx.students[1]!, status: "LATE" as const, clientId: "replay-2" },
+    ];
+
+    const first = await save(dateKey, marks);
+    const second = await save(dateKey, marks);
+    const third = await save(dateKey, marks);
+
+    expect(first.applied).toBe(2);
+    expect(second.applied).toBe(0);
+    expect(second.skipped).toBe(2);
+    expect(third.applied).toBe(0);
+
+    // The decisive check: exactly one row per student, not three.
+    const rows = await db.attendanceRecord.count({
+      where: { session: { classId: fx.classId, dateKey } },
+    });
+    expect(rows).toBe(2);
+  });
+
+  it("creates exactly one session for a class and date under repeated writes", async () => {
+    const dateKey = freshDate();
+    await Promise.all([
+      save(dateKey, [{ studentMembershipId: fx.students[0]!, status: "PRESENT", clientId: "s-a" }]),
+      save(dateKey, [{ studentMembershipId: fx.students[1]!, status: "PRESENT", clientId: "s-b" }]),
+    ]);
+    const sessions = await db.attendanceSession.count({
+      where: { classId: fx.classId, dateKey },
+    });
+    expect(sessions).toBe(1);
+  });
+
+  it("applies a genuine correction that arrives after the original", async () => {
+    const dateKey = freshDate();
+    const student = fx.students[0]!;
+
+    await save(dateKey, [
+      { studentMembershipId: student, status: "ABSENT", clientId: "orig", markedAt: "2025-05-01T09:00:00.000Z" },
+    ]);
+    const correction = await save(dateKey, [
+      { studentMembershipId: student, status: "PRESENT", clientId: "fix", markedAt: "2025-05-01T09:05:00.000Z" },
+    ]);
+
+    expect(correction.applied).toBe(1);
+    const row = await db.attendanceRecord.findFirstOrThrow({
+      where: { session: { classId: fx.classId, dateKey }, studentMembershipId: student },
+    });
+    expect(row.status).toBe("PRESENT");
+  });
+
+  it("does NOT let a stale replay undo a newer correction", async () => {
+    // The scenario: teacher marks ABSENT offline at 09:00, corrects to PRESENT
+    // at 09:05 once back online, and only THEN does Background Sync deliver the
+    // original 09:00 batch. Last-write-wins by wall clock would be wrong here;
+    // the newer correction has to survive.
+    const dateKey = freshDate();
+    const student = fx.students[0]!;
+
+    await save(dateKey, [
+      { studentMembershipId: student, status: "PRESENT", clientId: "new", markedAt: "2025-05-02T09:05:00.000Z" },
+    ]);
+    const lateReplay = await save(dateKey, [
+      { studentMembershipId: student, status: "ABSENT", clientId: "old", markedAt: "2025-05-02T09:00:00.000Z" },
+    ]);
+
+    expect(lateReplay.applied).toBe(0);
+    expect(lateReplay.skipped).toBe(1);
+
+    const row = await db.attendanceRecord.findFirstOrThrow({
+      where: { session: { classId: fx.classId, dateKey }, studentMembershipId: student },
+    });
+    expect(row.status).toBe("PRESENT");
+  });
+
+  it("applies a same-millisecond retry rather than deadlocking on equality", async () => {
+    const dateKey = freshDate();
+    const student = fx.students[0]!;
+    const stamp = "2025-05-03T09:00:00.000Z";
+
+    await save(dateKey, [
+      { studentMembershipId: student, status: "PRESENT", clientId: "t-1", markedAt: stamp },
+    ]);
+    const same = await save(dateKey, [
+      { studentMembershipId: student, status: "LATE", clientId: "t-2", markedAt: stamp },
+    ]);
+
+    expect(same.applied).toBe(1);
+  });
+});
+
+describe("saveAttendanceBatch — tenant isolation", () => {
+  it("refuses to mark a student from another school", async () => {
+    const dateKey = freshDate();
+    const result = await save(dateKey, [
+      { studentMembershipId: fx.otherStudentId, status: "PRESENT", clientId: "x-1" },
+    ]);
+
+    expect(result.applied).toBe(0);
+    expect(result.rejected).toHaveLength(1);
+    expect(result.rejected[0]!.studentMembershipId).toBe(fx.otherStudentId);
+
+    // And nothing was written for them anywhere.
+    const leaked = await db.attendanceRecord.count({
+      where: { studentMembershipId: fx.otherStudentId, schoolId: fx.schoolId },
+    });
+    expect(leaked).toBe(0);
+  });
+
+  it("rejects a cross-school student while still applying the valid marks", async () => {
+    const dateKey = freshDate();
+    const result = await save(dateKey, [
+      { studentMembershipId: fx.students[0]!, status: "PRESENT", clientId: "mix-1" },
+      { studentMembershipId: fx.otherStudentId, status: "PRESENT", clientId: "mix-2" },
+      { studentMembershipId: fx.students[1]!, status: "LATE", clientId: "mix-3" },
+    ]);
+
+    // A poisoned entry must not discard the teacher's legitimate work.
+    expect(result.applied).toBe(2);
+    expect(result.rejected).toHaveLength(1);
+  });
+
+  it("refuses a student who is in this school but not in this class", async () => {
+    const dateKey = freshDate();
+    const outsider = await db.membership.findFirst({
+      where: {
+        schoolId: fx.schoolId,
+        role: "STUDENT",
+        enrollments: { none: { classId: fx.classId } },
+      },
+    });
+    // The seed spreads students across classes, so this should exist.
+    expect(outsider).not.toBeNull();
+
+    const result = await save(dateKey, [
+      { studentMembershipId: outsider!.id, status: "PRESENT", clientId: "out-1" },
+    ]);
+    expect(result.applied).toBe(0);
+    expect(result.rejected).toHaveLength(1);
+  });
+
+  it("never returns another school's roster from getRegister", async () => {
+    const register = await getRegister(fx.otherSchoolId, fx.classId, todayKey(fx.timezone));
+    // Riverside's class id, queried with Oakfield's school id -> nothing.
+    expect(register).toBeNull();
+  });
+});
+
+describe("getAttendanceSummary", () => {
+  it("counts late arrivals as attended and returns a whole-number percent", async () => {
+    const student = fx.students[0]!;
+    const summary = await getAttendanceSummary(fx.schoolId, student, "2020-01-01", "2030-01-01");
+
+    expect(summary.total).toBeGreaterThan(0);
+    expect(Number.isInteger(summary.percent)).toBe(true);
+    expect(summary.percent).toBeGreaterThanOrEqual(0);
+    expect(summary.percent).toBeLessThanOrEqual(100);
+
+    const attended = summary.counts.PRESENT + summary.counts.LATE;
+    expect(summary.percent).toBe(Math.round((attended * 100) / summary.total));
+  });
+
+  it("returns null rather than NaN when there is no data at all", async () => {
+    const summary = await getAttendanceSummary(fx.schoolId, fx.students[0]!, "1999-01-01", "1999-01-02");
+    expect(summary.total).toBe(0);
+    expect(summary.percent).toBeNull();
+  });
+
+  it("does not leak another school's records", async () => {
+    const summary = await getAttendanceSummary(fx.otherSchoolId, fx.students[0]!, "2020-01-01", "2030-01-01");
+    expect(summary.total).toBe(0);
+  });
+});
+
+describe("computeStreak", () => {
+  it("counts consecutive attended days from the most recent backwards", () => {
+    expect(
+      computeStreak([
+        { dateKey: "2026-07-27", status: "PRESENT" },
+        { dateKey: "2026-07-24", status: "LATE" },
+        { dateKey: "2026-07-23", status: "PRESENT" },
+        { dateKey: "2026-07-22", status: "ABSENT" },
+        { dateKey: "2026-07-21", status: "PRESENT" },
+      ]),
+    ).toBe(3);
+  });
+
+  it("is zero when the most recent day was an absence", () => {
+    expect(
+      computeStreak([
+        { dateKey: "2026-07-27", status: "ABSENT" },
+        { dateKey: "2026-07-24", status: "PRESENT" },
+      ]),
+    ).toBe(0);
+  });
+
+  it("is zero for no history, not NaN or undefined", () => {
+    expect(computeStreak([])).toBe(0);
+  });
+
+  it("does not depend on the input already being sorted", () => {
+    expect(
+      computeStreak([
+        { dateKey: "2026-07-21", status: "PRESENT" },
+        { dateKey: "2026-07-27", status: "PRESENT" },
+        { dateKey: "2026-07-23", status: "ABSENT" },
+      ]),
+    ).toBe(1);
+  });
+});

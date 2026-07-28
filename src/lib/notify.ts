@@ -1,0 +1,178 @@
+import "server-only";
+import webpush from "web-push";
+import { db } from "./db";
+import { readJson, writeJson } from "./json";
+import { DEFAULT_PREFS, type UserPrefs } from "./session";
+import { channel, publish } from "./realtime";
+import type { NotificationKind } from "./constants";
+
+/**
+ * Notification delivery: in-app row + Web Push, honouring per-user channel
+ * preferences and quiet hours.
+ */
+
+let vapidConfigured = false;
+function configureVapid(): boolean {
+  if (vapidConfigured) return true;
+  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+  const privateKey = process.env.VAPID_PRIVATE_KEY;
+  const subject = process.env.VAPID_SUBJECT ?? "mailto:admin@edulink.local";
+  if (!publicKey || !privateKey) return false;
+  webpush.setVapidDetails(subject, publicKey, privateKey);
+  vapidConfigured = true;
+  return true;
+}
+
+export type NotifyInput = {
+  userId: string;
+  schoolId?: string | null;
+  kind: NotificationKind;
+  title: string;
+  body?: string;
+  url?: string;
+  meta?: Record<string, unknown>;
+  /** Bypasses quiet hours. Reserved for safeguarding-critical messages. */
+  urgent?: boolean;
+};
+
+export async function notify(input: NotifyInput): Promise<void> {
+  const user = await db.user.findUnique({
+    where: { id: input.userId },
+    select: { id: true, prefs: true, disabledAt: true },
+  });
+  if (!user || user.disabledAt) return;
+
+  const prefs = readJson<UserPrefs>(user.prefs, DEFAULT_PREFS);
+
+  // The in-app row is always written. Quiet hours silence the *interruption*,
+  // never the record — a parent must still find the message in the morning.
+  const row = await db.notification.create({
+    data: {
+      userId: input.userId,
+      schoolId: input.schoolId ?? null,
+      kind: input.kind,
+      title: input.title,
+      body: input.body ?? "",
+      url: input.url ?? null,
+      meta: writeJson(input.meta ?? {}),
+    },
+  });
+
+  publish([channel.user(input.userId)], { type: "notification", userId: input.userId });
+
+  if (!prefs.channels?.push) return;
+  if (!input.urgent && inQuietHours(prefs.quietHours)) return;
+
+  await sendPush(input.userId, {
+    title: input.title,
+    body: input.body ?? "",
+    url: input.url ?? "/notifications",
+    tag: `${input.kind}:${row.id}`,
+  });
+}
+
+/** Fan a notification out to every active guardian of a student. */
+export async function notifyGuardians(
+  studentMembershipId: string,
+  build: (childName: string) => Omit<NotifyInput, "userId">,
+): Promise<void> {
+  const guardians = await db.guardianship.findMany({
+    where: { studentMembershipId, status: "ACTIVE" },
+    include: {
+      student: { include: { user: { select: { name: true, preferredName: true } } } },
+    },
+  });
+
+  const childName =
+    guardians[0]?.student.user.preferredName ?? guardians[0]?.student.user.name ?? "Your child";
+
+  await Promise.all(
+    guardians.map((g) => notify({ ...build(childName), userId: g.parentUserId })),
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Web Push                                                                    */
+/* -------------------------------------------------------------------------- */
+
+type PushPayload = { title: string; body: string; url: string; tag?: string };
+
+export async function sendPush(userId: string, payload: PushPayload): Promise<void> {
+  if (!configureVapid()) {
+    console.warn("[push] VAPID keys not set — skipping push. Run `npm run vapid`.");
+    return;
+  }
+
+  const subscriptions = await db.pushSubscription.findMany({ where: { userId } });
+  if (subscriptions.length === 0) return;
+
+  const body = JSON.stringify(payload);
+
+  await Promise.all(
+    subscriptions.map(async (sub) => {
+      try {
+        await webpush.sendNotification(
+          { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
+          body,
+          { TTL: 60 * 60 * 24 },
+        );
+        await db.pushSubscription.update({
+          where: { id: sub.id },
+          data: { lastUsedAt: new Date(), failureCount: 0 },
+        });
+      } catch (error) {
+        const status = (error as { statusCode?: number }).statusCode;
+        // 404/410 mean the browser threw the subscription away (app removed,
+        // permission revoked). Delete rather than retry forever.
+        if (status === 404 || status === 410) {
+          await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
+          return;
+        }
+        // Anything else is transient (network, push service 5xx). Count it and
+        // retire the endpoint after repeated failures so a dead device does not
+        // slow every future send.
+        const failures = sub.failureCount + 1;
+        if (failures >= 8) {
+          await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
+        } else {
+          await db.pushSubscription
+            .update({ where: { id: sub.id }, data: { failureCount: failures } })
+            .catch(() => {});
+        }
+        console.warn(`[push] send failed (status ${status ?? "?"}), failures=${failures}`);
+      }
+    }),
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Quiet hours                                                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Quiet hours are stored as local "HH:MM" strings and compared in minutes so a
+ * window that crosses midnight (22:00 → 07:00) works without date arithmetic.
+ */
+export function inQuietHours(
+  quiet: { start: string; end: string } | null | undefined,
+  now: Date = new Date(),
+): boolean {
+  if (!quiet) return false;
+  const start = toMinutes(quiet.start);
+  const end = toMinutes(quiet.end);
+  if (start === null || end === null || start === end) return false;
+
+  const current = now.getHours() * 60 + now.getMinutes();
+  return start < end
+    ? current >= start && current < end
+    : current >= start || current < end; // wraps past midnight
+}
+
+function toMinutes(value: string): number | null {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(value.trim());
+  if (!match) return null;
+  const hours = Number(match[1]);
+  const minutes = Number(match[2]);
+  if (hours > 23 || minutes > 59) return null;
+  return hours * 60 + minutes;
+}

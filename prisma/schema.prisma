@@ -1,0 +1,691 @@
+// EduLink data model.
+//
+// PORTABILITY CONTRACT — this schema is written to run unchanged on SQLite (dev)
+// and PostgreSQL (prod). That costs us two things, both deliberate:
+//   * no native `enum`  -> status/role columns are String, with the allowed
+//     values defined once in src/lib/constants.ts and validated by zod at every
+//     write. Postgres CHECK constraints are added by the prod migration.
+//   * no `Json` columns -> JSON payloads are String, read/written through the
+//     typed helpers in src/lib/json.ts.
+//
+// TENANCY — every school-owned row carries `schoolId` directly, even when it
+// could be derived through a relation. Denormalised on purpose: it lets the
+// scoped data layer (src/lib/tenancy.ts) put `schoolId` in the WHERE clause of
+// every single query, and lets Postgres RLS policies be written as simple
+// `USING (school_id = current_setting('app.school_id'))` predicates in prod.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Tenant
+// ---------------------------------------------------------------------------
+
+model School {
+  id           String  @id @default(cuid())
+  name         String
+  slug         String  @unique
+  code         String  @unique // human-shareable join code, e.g. RIVER-7X9K
+  logoPath     String?
+  addressLine  String?
+  city         String?
+  region       String?
+  postalCode   String?
+  country      String?
+  contactEmail String
+  contactPhone String?
+  website      String?
+  gradeLow     String? // "K", "1", ... free-form: grade naming is not universal
+  gradeHigh    String?
+  brandPrimary String? // hex, overrides role accent when set
+  timezone     String  @default("UTC") // IANA zone; all date-keys resolve against this
+  locale       String  @default("en")
+
+  // Setup checklist progress. JSON: { "inviteTeachers": true, ... }
+  onboardingState String @default("{}")
+  // Privacy defaults applied to new members. JSON.
+  privacyDefaults String @default("{}")
+
+  verifiedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  memberships  Membership[]
+  classes      Class[]
+  invites      Invite[]
+  posts        Post[]
+  competitions Competition[]
+  auditLogs    AuditLog[]
+  attendance   AttendanceSession[]
+  assignments  Assignment[]
+  remarks      RemarkThread[]
+  reports      Report[]
+
+  @@index([code])
+}
+
+// ---------------------------------------------------------------------------
+// Identity — a User is global. Parents legitimately span schools, so school
+// affiliation lives on Membership, never on User.
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String  @id @default(cuid())
+  email         String? @unique
+  phone         String? @unique
+  passwordHash  String? // null while the account is magic-link / parent-managed only
+  name          String
+  preferredName String?
+  avatarKey     String? // "preset:fox-orange" or "upload:<fileId>"
+  bio           String?
+  birthdate     DateTime? // date-only semantics; stored UTC midnight
+
+  emailVerifiedAt    DateTime?
+  phoneVerifiedAt    DateTime?
+  twoFactorSecret    String?
+  twoFactorEnabledAt DateTime?
+
+  // Account is known to belong to a child -> stricter defaults, parent consent
+  // gates, no global-feed posting without approval. (§6 COPPA/GDPR-K)
+  isMinor Boolean @default(false)
+
+  lastRole     String?
+  lastSchoolId String?
+
+  // JSON: theme, contrast, dyslexicFont, reducedMotion, locale,
+  // notification channels, quietHours.
+  prefs String @default("{}")
+
+  disabledAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  memberships       Membership[]
+  sessions          Session[]
+  guardianships     Guardianship[]     @relation("ParentGuardianships")
+  authTokens        AuthToken[]
+  notifications     Notification[]
+  pushSubscriptions PushSubscription[]
+  posts             Post[]
+  comments          Comment[]
+  reactions         Reaction[]
+  remarkMessages    RemarkMessage[]
+  reportsFiled      Report[]           @relation("ReportsFiled")
+
+  @@index([email])
+}
+
+model Membership {
+  id       String @id @default(cuid())
+  userId   String
+  schoolId String
+  role     String // ADMIN | TEACHER | STUDENT
+  status   String @default("ACTIVE") // PENDING | ACTIVE | SUSPENDED
+
+  // Student-only. The code a parent uses to claim this child. Unique globally
+  // so a claim attempt never has to guess which school it belongs to.
+  studentCode String? @unique
+  gradeLevel  String?
+
+  // Teacher-only display metadata.
+  title    String?
+  subjects String? // JSON string[]
+
+  joinedAt DateTime  @default(now())
+  leftAt   DateTime?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  guardianships     Guardianship[]      @relation("StudentGuardianships")
+  enrollments       Enrollment[]
+  classTeachers     ClassTeacher[]
+  attendance        AttendanceRecord[]
+  attendanceTaken   AttendanceSession[] @relation("AttendanceTaker")
+  submissions       Submission[]
+  grades            Grade[]             @relation("GradeStudent")
+  gradesGiven       Grade[]             @relation("GradeGrader")
+  assignments       Assignment[]
+  remarkThreadsAsStudent RemarkThread[] @relation("RemarkStudent")
+  remarkThreadsAsTeacher RemarkThread[] @relation("RemarkTeacher")
+  competitionEntries CompetitionEntry[]
+  postsAuthored     Post[]              @relation("PostAuthorMembership")
+  postsReviewed     Post[]              @relation("PostReviewer")
+  invitesCreated    Invite[]            @relation("InviteCreator")
+
+  @@unique([userId, schoolId, role])
+  @@index([schoolId, role, status])
+  @@index([userId])
+}
+
+model Guardianship {
+  id                  String @id @default(cuid())
+  parentUserId        String
+  studentMembershipId String
+  relation            String @default("PARENT") // PARENT | GUARDIAN | OTHER
+  status              String @default("ACTIVE") // PENDING | ACTIVE | REVOKED
+
+  // Explicit, separately-recorded consents. (§6)
+  consentSharingAt       DateTime?
+  consentNotificationsAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  parent  User       @relation("ParentGuardianships", fields: [parentUserId], references: [id], onDelete: Cascade)
+  student Membership @relation("StudentGuardianships", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([parentUserId, studentMembershipId])
+  @@index([studentMembershipId])
+}
+
+// ---------------------------------------------------------------------------
+// Classes
+// ---------------------------------------------------------------------------
+
+model Class {
+  id         String  @id @default(cuid())
+  schoolId   String
+  name       String
+  subject    String?
+  gradeLevel String?
+  room       String?
+  color      String? // accent for the class card
+  joinCode   String  @unique // student self-join code, also encoded in the room QR
+
+  archivedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  school      School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teachers    ClassTeacher[]
+  enrollments Enrollment[]
+  attendance  AttendanceSession[]
+  assignments Assignment[]
+  posts       Post[]
+
+  @@index([schoolId, archivedAt])
+}
+
+model ClassTeacher {
+  id                  String @id @default(cuid())
+  classId             String
+  teacherMembershipId String
+  role                String @default("LEAD") // LEAD | CO
+
+  class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
+  teacher Membership @relation(fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, teacherMembershipId])
+  @@index([teacherMembershipId])
+}
+
+model Enrollment {
+  id                  String    @id @default(cuid())
+  classId             String
+  studentMembershipId String
+  status              String    @default("ACTIVE") // ACTIVE | REMOVED
+  enrolledAt          DateTime  @default(now())
+  removedAt           DateTime?
+
+  class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, studentMembershipId])
+  @@index([studentMembershipId])
+}
+
+// ---------------------------------------------------------------------------
+// Attendance
+//
+// `dateKey` is the school-local calendar date as YYYY-MM-DD and is the real
+// identity of a session. Storing only a UTC instant would put a 19:00 class in
+// Auckland on the wrong day, and DST transitions would silently merge or split
+// sessions. The instant is kept alongside for ordering. (§10)
+// ---------------------------------------------------------------------------
+
+model AttendanceSession {
+  id                 String    @id @default(cuid())
+  schoolId           String
+  classId            String
+  dateKey            String // YYYY-MM-DD in School.timezone
+  takenAt            DateTime  @default(now())
+  takenByMembershipId String?
+  finalizedAt        DateTime?
+  note               String?
+
+  school  School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class   Class       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  takenBy Membership? @relation("AttendanceTaker", fields: [takenByMembershipId], references: [id], onDelete: SetNull)
+  records AttendanceRecord[]
+
+  @@unique([classId, dateKey])
+  @@index([schoolId, dateKey])
+}
+
+model AttendanceRecord {
+  id                  String  @id @default(cuid())
+  sessionId           String
+  schoolId            String
+  studentMembershipId String
+  status              String // PRESENT | LATE | ABSENT | EXCUSED
+  note                String?
+
+  // Idempotency key minted on the client before the row leaves the device.
+  // A replayed background-sync batch must not double-write. (§6 offline)
+  clientId String?
+
+  markedAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  session AttendanceSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student Membership        @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, studentMembershipId])
+  @@index([schoolId, studentMembershipId])
+  @@index([clientId])
+}
+
+// ---------------------------------------------------------------------------
+// Assignments & grades
+//
+// Scores are integer thousandths of a point (`scoreMilli`). 87.5 -> 87500.
+// Floats would drift on weighted-category averages exactly the way money does. (§10)
+// ---------------------------------------------------------------------------
+
+model Assignment {
+  id                 String @id @default(cuid())
+  schoolId           String
+  classId            String
+  authorMembershipId String
+
+  title       String
+  body        String  @default("")
+  category    String? // "Homework", "Quiz" ... weighting lives on the class later
+  pointsMilli Int? // max score, thousandths
+  attachments String  @default("[]") // JSON of {fileId,name,size,mime}[]
+  rubric      String? // JSON
+
+  dueAt       DateTime?
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  school      School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class       Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  author      Membership   @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
+  submissions Submission[]
+  grades      Grade[]
+
+  @@index([schoolId, dueAt])
+  @@index([classId, publishedAt])
+}
+
+model Submission {
+  id                  String @id @default(cuid())
+  schoolId            String
+  assignmentId        String
+  studentMembershipId String
+
+  body        String    @default("")
+  attachments String    @default("[]")
+  status      String    @default("DRAFT") // DRAFT | SUBMITTED | RETURNED
+  submittedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  assignment Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  student    Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  grade      Grade?
+
+  @@unique([assignmentId, studentMembershipId])
+  @@index([schoolId, status])
+}
+
+model Grade {
+  id                  String  @id @default(cuid())
+  schoolId            String
+  assignmentId        String
+  studentMembershipId String
+  submissionId        String? @unique
+
+  scoreMilli         Int?
+  letter             String?
+  comment            String?
+  gradedByMembershipId String?
+  gradedAt           DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  assignment Assignment  @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  student    Membership  @relation("GradeStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  grader     Membership? @relation("GradeGrader", fields: [gradedByMembershipId], references: [id], onDelete: SetNull)
+  submission Submission? @relation(fields: [submissionId], references: [id], onDelete: SetNull)
+
+  @@unique([assignmentId, studentMembershipId])
+  @@index([schoolId, studentMembershipId])
+}
+
+// ---------------------------------------------------------------------------
+// Remarks — private teacher <-> guardian threads about one student.
+// ---------------------------------------------------------------------------
+
+model RemarkThread {
+  id                  String @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  teacherMembershipId String
+
+  subject       String
+  createdAt     DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  closedAt      DateTime?
+
+  school   School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student  Membership @relation("RemarkStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  teacher  Membership @relation("RemarkTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  messages RemarkMessage[]
+
+  @@index([schoolId, lastMessageAt])
+  @@index([studentMembershipId])
+}
+
+model RemarkMessage {
+  id           String @id @default(cuid())
+  threadId     String
+  authorUserId String
+  body         String
+  createdAt    DateTime @default(now())
+  readBy       String   @default("[]") // JSON userId[]
+
+  thread RemarkThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([threadId, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Bulletin + global feed
+// ---------------------------------------------------------------------------
+
+model Post {
+  id                 String  @id @default(cuid())
+  schoolId           String? // null only for GLOBAL posts by external organizers
+  classId            String?
+  authorUserId       String
+  authorMembershipId String?
+
+  scope  String // CLASS | SCHOOL | GLOBAL
+  title  String
+  body   String  @default("")
+  media  String  @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
+  tags   String  @default("[]")
+
+  status          String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED
+  rejectionReason String?
+  reviewedByMembershipId String?
+  reviewedAt      DateTime?
+  pinnedAt        DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school     School?     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class      Class?      @relation(fields: [classId], references: [id], onDelete: Cascade)
+  author     User        @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+  authorship Membership? @relation("PostAuthorMembership", fields: [authorMembershipId], references: [id], onDelete: SetNull)
+  reviewer   Membership? @relation("PostReviewer", fields: [reviewedByMembershipId], references: [id], onDelete: SetNull)
+
+  comments  Comment[]
+  reactions Reaction[]
+
+  @@index([schoolId, status, createdAt])
+  @@index([scope, status, createdAt])
+  @@index([classId, status])
+}
+
+model Comment {
+  id           String @id @default(cuid())
+  postId       String
+  authorUserId String
+  body         String
+  status       String @default("APPROVED") // PENDING | APPROVED | REMOVED
+  createdAt    DateTime @default(now())
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([postId, createdAt])
+}
+
+model Reaction {
+  id        String @id @default(cuid())
+  postId    String
+  userId    String
+  kind      String // fixed kid-safe set: CLAP | STAR | IDEA | HEART
+  createdAt DateTime @default(now())
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId, kind])
+}
+
+model Report {
+  id             String @id @default(cuid())
+  schoolId       String?
+  targetType     String // POST | COMMENT | USER
+  targetId       String
+  reporterUserId String
+  reason         String
+  detail         String?
+  status         String   @default("OPEN") // OPEN | ACTIONED | DISMISSED
+  resolvedAt     DateTime?
+  resolutionNote String?
+  createdAt      DateTime @default(now())
+
+  school   School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  reporter User    @relation("ReportsFiled", fields: [reporterUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, status])
+  @@index([targetType, targetId])
+}
+
+// ---------------------------------------------------------------------------
+// Competitions
+// ---------------------------------------------------------------------------
+
+model Competition {
+  id                String  @id @default(cuid())
+  organizerSchoolId String?
+  organizerName     String
+  title             String
+  summary           String
+  body              String  @default("")
+  subject           String?
+  gradeLow          String?
+  gradeHigh         String?
+
+  eligibility String?
+  rules       String?
+  prizes      String?
+  externalUrl String?
+
+  registrationOpensAt  DateTime?
+  registrationClosesAt DateTime?
+  startsAt             DateTime?
+  endsAt               DateTime?
+
+  status             String   @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
+  verified           Boolean  @default(false)
+  leaderboardEnabled Boolean  @default(false)
+  requiresParentConsent Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizerSchool School?            @relation(fields: [organizerSchoolId], references: [id], onDelete: SetNull)
+  entries         CompetitionEntry[]
+
+  @@index([status, registrationClosesAt])
+}
+
+model CompetitionEntry {
+  id                  String @id @default(cuid())
+  competitionId       String
+  studentMembershipId String
+  schoolId            String
+
+  status           String    @default("REGISTERED") // REGISTERED | SUBMITTED | RESULTS
+  parentConsentAt  DateTime?
+  parentConsentBy  String?
+  submissionUrl    String?
+  scoreMilli       Int?
+  rank             Int?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  competition Competition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+  student     Membership  @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([competitionId, studentMembershipId])
+  @@index([schoolId])
+}
+
+// ---------------------------------------------------------------------------
+// Sessions, invites, tokens, notifications, audit
+// ---------------------------------------------------------------------------
+
+model Session {
+  id        String  @id @default(cuid())
+  userId    String
+  // sha256 of the opaque token. The raw token exists only in the cookie, so a
+  // database leak does not hand over live sessions.
+  tokenHash String  @unique
+
+  activeSchoolId String?
+  activeRole     String?
+
+  userAgent String?
+  ip        String?
+  createdAt DateTime  @default(now())
+  lastSeenAt DateTime @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, revokedAt])
+}
+
+model Invite {
+  id       String  @id @default(cuid())
+  schoolId String
+  role     String // TEACHER | STUDENT | ADMIN
+  email    String?
+  name     String?
+  classId  String?
+  subjects String? // JSON string[]
+
+  tokenHash String  @unique
+  status    String  @default("PENDING") // PENDING | ACCEPTED | REVOKED | EXPIRED
+
+  createdByMembershipId String?
+  acceptedByUserId      String?
+  acceptedAt            DateTime?
+  expiresAt             DateTime
+  createdAt             DateTime  @default(now())
+
+  school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  createdBy Membership? @relation("InviteCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status])
+  @@index([email])
+}
+
+model AuthToken {
+  id        String  @id @default(cuid())
+  userId    String?
+  email     String?
+  purpose   String // MAGIC_LINK | EMAIL_VERIFY | PASSWORD_RESET | PARENT_CLAIM
+  tokenHash String  @unique
+  meta      String  @default("{}")
+
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email, purpose])
+}
+
+model Notification {
+  id       String  @id @default(cuid())
+  userId   String
+  schoolId String?
+  kind     String // ATTENDANCE | GRADE | ASSIGNMENT | REMARK | POST | INVITE | SYSTEM
+  title    String
+  body     String  @default("")
+  url      String?
+  meta     String  @default("{}")
+
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt, createdAt])
+}
+
+model PushSubscription {
+  id       String @id @default(cuid())
+  userId   String
+  endpoint String @unique
+  p256dh   String
+  auth     String
+
+  userAgent    String?
+  failureCount Int      @default(0)
+  createdAt    DateTime @default(now())
+  lastUsedAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model AuditLog {
+  id          String  @id @default(cuid())
+  schoolId    String?
+  actorUserId String?
+  action      String // "attendance.mark", "invite.create", ...
+  targetType  String?
+  targetId    String?
+  meta        String  @default("{}")
+  ip          String?
+  createdAt   DateTime @default(now())
+
+  school School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, createdAt])
+  @@index([actorUserId, createdAt])
+}
+
+/// Dev-only outbox. EMAIL_TRANSPORT="devbox" writes here instead of sending,
+/// and /dev/mailbox renders it. Keeps magic-link and invite flows fully
+/// exercisable with no SMTP credentials.
+model OutboundEmail {
+  id        String   @id @default(cuid())
+  to        String
+  subject   String
+  text      String
+  html      String
+  purpose   String?
+  createdAt DateTime @default(now())
+
+  @@index([to, createdAt])
+}

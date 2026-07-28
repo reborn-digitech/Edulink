@@ -1,0 +1,224 @@
+import { describe, expect, it } from "vitest";
+import {
+  addDaysToKey,
+  ageInYears,
+  dateKeyInZone,
+  dateKeyRange,
+  isDateKey,
+  isWeekend,
+  parseDateOnly,
+  zonedStartOfDay,
+} from "./dates";
+
+/**
+ * Expected values here are hand-derived from the tz rules, never computed with
+ * the same helpers under test — a test that recomputes the implementation
+ * proves nothing. (§13 "tests that mirror the implementation")
+ */
+
+describe("isDateKey", () => {
+  it("accepts a plain date", () => expect(isDateKey("2026-07-27")).toBe(true));
+  it("accepts a real leap day", () => expect(isDateKey("2024-02-29")).toBe(true));
+  it("rejects a fake leap day", () => expect(isDateKey("2026-02-29")).toBe(false));
+  it("rejects overflow days", () => expect(isDateKey("2026-04-31")).toBe(false));
+  it("rejects month 0 and 13", () => {
+    expect(isDateKey("2026-00-10")).toBe(false);
+    expect(isDateKey("2026-13-10")).toBe(false);
+  });
+  it("rejects malformed input", () => {
+    expect(isDateKey("2026-7-27")).toBe(false);
+    expect(isDateKey("")).toBe(false);
+    expect(isDateKey("not-a-date")).toBe(false);
+    expect(isDateKey("2026-07-27T00:00:00Z")).toBe(false);
+  });
+});
+
+describe("dateKeyInZone", () => {
+  it("puts a late-evening Auckland class on the local day, not the UTC day", () => {
+    // 2026-07-27T07:30Z is 19:30 on the 27th in Auckland (UTC+12, NZST).
+    const instant = new Date("2026-07-27T07:30:00Z");
+    expect(dateKeyInZone(instant, "Pacific/Auckland")).toBe("2026-07-27");
+    expect(dateKeyInZone(instant, "UTC")).toBe("2026-07-27");
+  });
+
+  it("rolls the local date back for a west-of-UTC zone", () => {
+    // 2026-07-27T02:00Z is 19:00 on the 26th in Los Angeles (UTC-7, PDT).
+    const instant = new Date("2026-07-27T02:00:00Z");
+    expect(dateKeyInZone(instant, "America/Los_Angeles")).toBe("2026-07-26");
+  });
+
+  it("rolls the local date forward for a far-east zone", () => {
+    // 2026-07-26T20:00Z is 08:00 on the 27th in Auckland.
+    const instant = new Date("2026-07-26T20:00:00Z");
+    expect(dateKeyInZone(instant, "Pacific/Auckland")).toBe("2026-07-27");
+  });
+
+  it("handles a half-hour offset zone", () => {
+    // 2026-07-26T19:00Z is 00:30 on the 27th in Kolkata (UTC+5:30).
+    expect(dateKeyInZone(new Date("2026-07-26T19:00:00Z"), "Asia/Kolkata")).toBe("2026-07-27");
+    expect(dateKeyInZone(new Date("2026-07-26T18:00:00Z"), "Asia/Kolkata")).toBe("2026-07-26");
+  });
+});
+
+describe("zonedStartOfDay", () => {
+  it("resolves midnight for a fixed-offset zone", () => {
+    // Kolkata is UTC+5:30 year round: local midnight = 18:30Z the day before.
+    expect(zonedStartOfDay("2026-07-27", "Asia/Kolkata").toISOString()).toBe(
+      "2026-07-26T18:30:00.000Z",
+    );
+  });
+
+  it("is identity for UTC", () => {
+    expect(zonedStartOfDay("2026-07-27", "UTC").toISOString()).toBe("2026-07-27T00:00:00.000Z");
+  });
+
+  it("uses the correct offset on the day BEFORE a spring-forward transition", () => {
+    // US DST 2026 starts Sun 8 Mar. On 7 Mar, New York is still UTC-5 (EST).
+    expect(zonedStartOfDay("2026-03-07", "America/New_York").toISOString()).toBe(
+      "2026-03-07T05:00:00.000Z",
+    );
+  });
+
+  it("uses the correct offset on the day AFTER a spring-forward transition", () => {
+    // On 9 Mar 2026, New York is UTC-4 (EDT). This is the case a naive
+    // single-pass offset lookup gets wrong by an hour.
+    expect(zonedStartOfDay("2026-03-09", "America/New_York").toISOString()).toBe(
+      "2026-03-09T04:00:00.000Z",
+    );
+  });
+
+  it("resolves midnight ON the spring-forward day itself", () => {
+    // 8 Mar 2026: the skip is at 02:00 local, so 00:00 local still exists at
+    // UTC-5.
+    expect(zonedStartOfDay("2026-03-08", "America/New_York").toISOString()).toBe(
+      "2026-03-08T05:00:00.000Z",
+    );
+  });
+
+  it("resolves midnight ON the fall-back day", () => {
+    // 1 Nov 2026: DST ends at 02:00 local; midnight is still EDT (UTC-4).
+    expect(zonedStartOfDay("2026-11-01", "America/New_York").toISOString()).toBe(
+      "2026-11-01T04:00:00.000Z",
+    );
+  });
+
+  it("handles a southern-hemisphere transition in the opposite direction", () => {
+    // NZ DST ends Sun 5 Apr 2026: 4 Apr is NZDT (UTC+13), 6 Apr is NZST (+12).
+    expect(zonedStartOfDay("2026-04-04", "Pacific/Auckland").toISOString()).toBe(
+      "2026-04-03T11:00:00.000Z",
+    );
+    expect(zonedStartOfDay("2026-04-06", "Pacific/Auckland").toISOString()).toBe(
+      "2026-04-05T12:00:00.000Z",
+    );
+  });
+
+  it("resolves midnight ON the transition day in an east-of-UTC zone", () => {
+    // The case that actually requires the second offset pass.
+    // NZ DST ends 2026-04-05 at 03:00 NZDT. UTC midnight of the 5th is already
+    // 13:00 local NZST (+12), but local midnight of the 5th is still NZDT
+    // (+13). A single-pass lookup measures the offset at the wrong instant and
+    // lands an hour late, on 2026-04-04T12:00Z.
+    // Verified directly against Intl: 2026-04-04T11:00Z renders as 2026-04-05
+    // 24:00 GMT+13, i.e. the first moment of the 5th.
+    expect(zonedStartOfDay("2026-04-05", "Pacific/Auckland").toISOString()).toBe(
+      "2026-04-04T11:00:00.000Z",
+    );
+  });
+
+  it("resolves midnight ON the spring-forward day in an east-of-UTC zone", () => {
+    // NZ DST starts 2026-09-27 at 02:00 NZST -> 03:00 NZDT. Local midnight of
+    // the 27th is still NZST (+12).
+    expect(zonedStartOfDay("2026-09-27", "Pacific/Auckland").toISOString()).toBe(
+      "2026-09-26T12:00:00.000Z",
+    );
+  });
+
+  it("resolves midnight ON a European transition day", () => {
+    // EU DST ends Sun 2026-10-25 at 03:00 CEST. Berlin local midnight of the
+    // 25th is still CEST (+2).
+    expect(zonedStartOfDay("2026-10-25", "Europe/Berlin").toISOString()).toBe(
+      "2026-10-24T22:00:00.000Z",
+    );
+  });
+
+  it("round-trips: start-of-day always reports back as the same date key", () => {
+    const zones = ["UTC", "America/New_York", "Pacific/Auckland", "Asia/Kolkata", "Europe/Berlin"];
+    const keys = ["2026-01-01", "2026-03-08", "2026-04-05", "2026-11-01", "2024-02-29"];
+    for (const tz of zones) {
+      for (const key of keys) {
+        expect(dateKeyInZone(zonedStartOfDay(key, tz), tz), `${tz} ${key}`).toBe(key);
+      }
+    }
+  });
+
+  it("rejects an invalid key rather than silently returning epoch", () => {
+    expect(() => zonedStartOfDay("2026-02-30", "UTC")).toThrow();
+  });
+});
+
+describe("addDaysToKey", () => {
+  it("crosses a month boundary", () => expect(addDaysToKey("2026-07-31", 1)).toBe("2026-08-01"));
+  it("crosses a year boundary", () => expect(addDaysToKey("2026-12-31", 1)).toBe("2027-01-01"));
+  it("steps backwards", () => expect(addDaysToKey("2026-01-01", -1)).toBe("2025-12-31"));
+  it("crosses a leap day", () => expect(addDaysToKey("2024-02-28", 1)).toBe("2024-02-29"));
+  it("skips the non-existent leap day", () => expect(addDaysToKey("2026-02-28", 1)).toBe("2026-03-01"));
+  it("does not drift across a DST week (calendar maths, not instant maths)", () => {
+    expect(addDaysToKey("2026-03-06", 7)).toBe("2026-03-13");
+  });
+});
+
+describe("dateKeyRange", () => {
+  it("is inclusive at both ends", () => {
+    expect(dateKeyRange("2026-07-27", "2026-07-30")).toEqual([
+      "2026-07-27",
+      "2026-07-28",
+      "2026-07-29",
+      "2026-07-30",
+    ]);
+  });
+  it("returns a single day when from === to", () => {
+    expect(dateKeyRange("2026-07-27", "2026-07-27")).toEqual(["2026-07-27"]);
+  });
+  it("returns empty when the range is inverted", () => {
+    expect(dateKeyRange("2026-07-30", "2026-07-27")).toEqual([]);
+  });
+  it("caps runaway ranges", () => {
+    expect(dateKeyRange("2000-01-01", "2030-01-01", 10)).toHaveLength(10);
+  });
+});
+
+describe("isWeekend", () => {
+  it("knows 2026-07-25 is a Saturday", () => expect(isWeekend("2026-07-25")).toBe(true));
+  it("knows 2026-07-26 is a Sunday", () => expect(isWeekend("2026-07-26")).toBe(true));
+  it("knows 2026-07-27 is a Monday", () => expect(isWeekend("2026-07-27")).toBe(false));
+});
+
+describe("ageInYears", () => {
+  it("counts a birthday that has passed this year", () => {
+    expect(ageInYears(new Date("2013-01-05T00:00:00Z"), new Date("2026-07-27T00:00:00Z"))).toBe(13);
+  });
+  it("does not count a birthday still to come", () => {
+    expect(ageInYears(new Date("2013-12-05T00:00:00Z"), new Date("2026-07-27T00:00:00Z"))).toBe(12);
+  });
+  it("counts the birthday itself", () => {
+    expect(ageInYears(new Date("2013-07-27T00:00:00Z"), new Date("2026-07-27T00:00:00Z"))).toBe(13);
+  });
+  it("does not count the day before the birthday", () => {
+    expect(ageInYears(new Date("2013-07-28T00:00:00Z"), new Date("2026-07-27T00:00:00Z"))).toBe(12);
+  });
+  it("handles a 29 Feb birthdate in a non-leap year", () => {
+    // Turns 12 on 2024-02-29; on 2026-02-28 they are still 11.
+    expect(ageInYears(new Date("2012-02-29T00:00:00Z"), new Date("2026-02-28T00:00:00Z"))).toBe(13);
+    expect(ageInYears(new Date("2012-02-29T00:00:00Z"), new Date("2026-03-01T00:00:00Z"))).toBe(14);
+  });
+});
+
+describe("parseDateOnly", () => {
+  it("returns UTC midnight", () => {
+    expect(parseDateOnly("2013-07-27")?.toISOString()).toBe("2013-07-27T00:00:00.000Z");
+  });
+  it("returns null for garbage rather than Invalid Date", () => {
+    expect(parseDateOnly("nope")).toBeNull();
+    expect(parseDateOnly("2026-02-30")).toBeNull();
+  });
+});

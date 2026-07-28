@@ -1,0 +1,546 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   EduLink design tokens.
+
+   Three independent switches, all driven by data-attributes on <html> so a
+   single server-rendered attribute set avoids the flash-of-wrong-theme:
+     data-theme="light|dark"      colour scheme
+     data-contrast="normal|high"  WCAG 2.2 AAA-leaning contrast boost
+     data-font="default|dyslexic" typeface + tracking + line-height
+     data-role="admin|teacher|student|parent"  accent family
+
+   School branding overrides --accent-* at runtime via an inline style block,
+   so a school's colour wins over the role accent without a rebuild. (§7)
+   =========================================================================== */
+
+:root {
+  /* --- surfaces --------------------------------------------------------- */
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-muted: #f1f3f8;
+  --surface-sunken: #e9edf5;
+  --border: #e0e5ef;
+  --border-strong: #c8d0e0;
+
+  /* --- text ------------------------------------------------------------- */
+  --fg: #101420;
+  --fg-muted: #57607a; /* 6.1:1 on --surface */
+  --fg-subtle: #7b849c; /* decorative / large text only */
+  --fg-inverse: #ffffff;
+
+  /* --- accent (default: EduLink brand blue, used on public pages) -------- */
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8; /* text + borders: AA on --surface */
+  --accent-soft: #eff6ff; /* tinted fills */
+  --accent-ring: #60a5fa;
+  --accent-fg: #ffffff; /* text on top of --accent */
+
+  /* --- status ----------------------------------------------------------- */
+  --ok: #15803d;
+  --ok-soft: #ecfdf3;
+  --warn: #b45309;
+  --warn-soft: #fffbeb;
+  --danger: #be123c;
+  --danger-soft: #fff1f2;
+  --info: #0369a1;
+  --info-soft: #f0f9ff;
+
+  /* --- attendance statuses (fixed semantic colours, never role-tinted) --- */
+  --att-present: #15803d;
+  --att-present-soft: #ecfdf3;
+  --att-late: #b45309;
+  --att-late-soft: #fffbeb;
+  --att-absent: #be123c;
+  --att-absent-soft: #fff1f2;
+  --att-excused: #0369a1;
+  --att-excused-soft: #f0f9ff;
+  --att-pending: #7b849c;
+  --att-pending-soft: #f1f3f8;
+
+  /* --- elevation -------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgb(16 20 32 / 0.06), 0 1px 3px rgb(16 20 32 / 0.04);
+  --shadow-md: 0 4px 12px rgb(16 20 32 / 0.08), 0 2px 4px rgb(16 20 32 / 0.04);
+  --shadow-lg: 0 12px 32px rgb(16 20 32 / 0.12), 0 4px 8px rgb(16 20 32 / 0.06);
+
+  /* --- shape ------------------------------------------------------------ */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* --- motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 340ms;
+
+  /* --- typography ------------------------------------------------------- */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+  --tracking-body: 0;
+  --leading-body: 1.55;
+
+  /* Minimum interactive target. 48dp is the Android accessibility floor and
+     the number the spec calls out. Everything tappable inherits it. */
+  --tap: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   Dark
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg: #0b0e15;
+  --surface: #141924;
+  --surface-muted: #1b2231;
+  --surface-sunken: #232c3d;
+  --border: #2a3446;
+  --border-strong: #3b475e;
+
+  --fg: #edf0f7;
+  --fg-muted: #a6b0c4; /* 7.0:1 on --surface */
+  --fg-subtle: #7d879c;
+  --fg-inverse: #0b0e15;
+
+  --accent: #60a5fa;
+  --accent-strong: #93c5fd;
+  --accent-soft: #10203a;
+  --accent-ring: #3b82f6;
+  --accent-fg: #06121f;
+
+  --ok: #4ade80;
+  --ok-soft: #0f2a1c;
+  --warn: #fbbf24;
+  --warn-soft: #2a2010;
+  --danger: #fb7185;
+  --danger-soft: #2d1219;
+  --info: #38bdf8;
+  --info-soft: #0c2436;
+
+  --att-present: #4ade80;
+  --att-present-soft: #0f2a1c;
+  --att-late: #fbbf24;
+  --att-late-soft: #2a2010;
+  --att-absent: #fb7185;
+  --att-absent-soft: #2d1219;
+  --att-excused: #38bdf8;
+  --att-excused-soft: #0c2436;
+  --att-pending: #7d879c;
+  --att-pending-soft: #1b2231;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.55);
+}
+
+/* --------------------------------------------------------------------------
+   Role accents. Each pair is checked so that:
+     --accent-fg on --accent      >= 4.5:1
+     --accent-strong on --surface >= 4.5:1
+   -------------------------------------------------------------------------- */
+[data-role="teacher"] {
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --accent-ring: #60a5fa;
+  --accent-fg: #ffffff;
+}
+[data-role="student"] {
+  --accent: #15803d;
+  --accent-strong: #166534;
+  --accent-soft: #f0fdf4;
+  --accent-ring: #4ade80;
+  --accent-fg: #ffffff;
+}
+[data-role="parent"] {
+  --accent: #7e22ce;
+  --accent-strong: #6b21a8;
+  --accent-soft: #faf5ff;
+  --accent-ring: #c084fc;
+  --accent-fg: #ffffff;
+}
+[data-role="admin"] {
+  --accent: #475569;
+  --accent-strong: #334155;
+  --accent-soft: #f8fafc;
+  --accent-ring: #94a3b8;
+  --accent-fg: #ffffff;
+}
+
+/* Dark-mode role accents.
+   Each rule is written TWICE on purpose. `data-theme` lives on <html>, but
+   `data-role` is often set on a subtree (a role-tinted card on a public page,
+   a parent viewing a teacher's thread). A single compound selector
+   `[data-theme="dark"][data-role="x"]` only matches when both attributes sit on
+   the same element, so a role-tinted card inside a dark page silently kept its
+   LIGHT accent — pale-blue fills on a near-black background. The descendant
+   variant is what makes nesting work. */
+[data-theme="dark"][data-role="teacher"],
+[data-theme="dark"] [data-role="teacher"] {
+  --accent: #60a5fa;
+  --accent-strong: #93c5fd;
+  --accent-soft: #10203a;
+  --accent-ring: #3b82f6;
+  --accent-fg: #06121f;
+}
+[data-theme="dark"][data-role="student"],
+[data-theme="dark"] [data-role="student"] {
+  --accent: #4ade80;
+  --accent-strong: #86efac;
+  --accent-soft: #0f2a1c;
+  --accent-ring: #22c55e;
+  --accent-fg: #04140b;
+}
+[data-theme="dark"][data-role="parent"],
+[data-theme="dark"] [data-role="parent"] {
+  --accent: #c084fc;
+  --accent-strong: #d8b4fe;
+  --accent-soft: #221037;
+  --accent-ring: #a855f7;
+  --accent-fg: #14061f;
+}
+[data-theme="dark"][data-role="admin"],
+[data-theme="dark"] [data-role="admin"] {
+  --accent: #94a3b8;
+  --accent-strong: #cbd5e1;
+  --accent-soft: #1e2635;
+  --accent-ring: #64748b;
+  --accent-fg: #0b0e15;
+}
+
+/* --------------------------------------------------------------------------
+   High contrast. Pushes every text pair past 7:1 and makes borders load-bearing
+   rather than decorative, for low-vision users and bright-sunlight phone use.
+   -------------------------------------------------------------------------- */
+[data-contrast="high"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #ffffff;
+  --surface-sunken: #f2f2f2;
+  --border: #000000;
+  --border-strong: #000000;
+  --fg: #000000;
+  --fg-muted: #1a1a1a;
+  --fg-subtle: #333333;
+  --accent: #0000cc;
+  --accent-strong: #0000aa;
+  --accent-soft: #ffffff;
+  --accent-fg: #ffffff;
+  --ok: #006600;
+  --warn: #7a3d00;
+  --danger: #a30014;
+  --info: #003d99;
+  --att-present: #006600;
+  --att-late: #7a3d00;
+  --att-absent: #a30014;
+  --att-excused: #003d99;
+  --att-present-soft: #ffffff;
+  --att-late-soft: #ffffff;
+  --att-absent-soft: #ffffff;
+  --att-excused-soft: #ffffff;
+  --shadow-sm: 0 0 0 1px #000;
+  --shadow-md: 0 0 0 2px #000;
+  --shadow-lg: 0 0 0 2px #000;
+}
+[data-theme="dark"][data-contrast="high"] {
+  --bg: #000000;
+  --surface: #000000;
+  --surface-muted: #000000;
+  --surface-sunken: #0d0d0d;
+  --border: #ffffff;
+  --border-strong: #ffffff;
+  --fg: #ffffff;
+  --fg-muted: #ededed;
+  --fg-subtle: #cccccc;
+  --accent: #7fb2ff;
+  --accent-strong: #a9ccff;
+  --accent-soft: #000000;
+  --accent-fg: #000000;
+}
+[data-contrast="high"] * {
+  text-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Dyslexia-friendly mode.
+
+   OpenDyslexic and Atkinson Hyperlegible are named first so users who have
+   installed either get them; the fallbacks (Verdana / Tahoma) are the widely
+   available faces with the large x-height and open apertures that carry most
+   of the readability benefit. Tracking and leading are widened too — the
+   spacing changes are independently supported by readability research and,
+   unlike the font, always apply. No webfont is downloaded. (§6 a11y)
+   -------------------------------------------------------------------------- */
+[data-font="dyslexic"] {
+  --font-sans: "OpenDyslexic", "Atkinson Hyperlegible", Verdana, Tahoma,
+    ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --tracking-body: 0.035em;
+  --leading-body: 1.85;
+}
+
+/* ===========================================================================
+   Map tokens onto Tailwind's utility namespace so `bg-surface`, `text-fg-muted`,
+   `rounded-lg`, `shadow-md` etc. all resolve from the variables above and there
+   is exactly one place to change a colour.
+   =========================================================================== */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-inverse: var(--fg-inverse);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ring: var(--accent-ring);
+  --color-accent-fg: var(--accent-fg);
+
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-present: var(--att-present);
+  --color-present-soft: var(--att-present-soft);
+  --color-late: var(--att-late);
+  --color-late-soft: var(--att-late-soft);
+  --color-absent: var(--att-absent);
+  --color-absent-soft: var(--att-absent-soft);
+  --color-excused: var(--att-excused);
+  --color-excused-soft: var(--att-excused-soft);
+  --color-pending: var(--att-pending);
+  --color-pending-soft: var(--att-pending-soft);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-out: var(--ease-out);
+  --ease-spring: var(--ease-spring);
+}
+
+/* ===========================================================================
+   Base
+   =========================================================================== */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    /* Fills the area behind the notch/status bar in standalone mode so the
+       themed colour runs edge to edge instead of showing white. */
+    background-color: var(--bg);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Prevents the whole page rubber-banding in standalone mode; individual
+       scroll containers still bounce. */
+    overscroll-behavior-y: none;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  [data-font="dyslexic"] h1,
+  [data-font="dyslexic"] h2,
+  [data-font="dyslexic"] h3,
+  [data-font="dyslexic"] h4 {
+    letter-spacing: var(--tracking-body);
+  }
+
+  p, li {
+    text-wrap: pretty;
+  }
+
+  /* One visible focus treatment everywhere. Never removed — only restyled. */
+  :focus-visible {
+    outline: 3px solid var(--accent-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  [data-contrast="high"] :focus-visible {
+    outline: 4px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  /* Anything interactive clears the 48dp floor unless it opts out with
+     .tap-exempt (e.g. inline text links inside a paragraph). */
+  button, [role="button"], a.btn, input[type="checkbox"], input[type="radio"] {
+    touch-action: manipulation;
+  }
+
+  input, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+  /* iOS zooms the viewport when a focused input is under 16px. */
+  @supports (-webkit-touch-callout: none) {
+    input, textarea, select {
+      font-size: max(16px, 1em);
+    }
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Honour the OS setting, and the in-app toggle that mirrors it. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  [data-motion="reduced"] *,
+  [data-motion="reduced"] *::before,
+  [data-motion="reduced"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===========================================================================
+   Utilities
+   =========================================================================== */
+@layer utilities {
+  /* Safe-area helpers for standalone/notched devices. */
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pl-safe { padding-left: env(safe-area-inset-left, 0px); }
+  .pr-safe { padding-right: env(safe-area-inset-right, 0px); }
+  .px-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  .min-h-safe { min-height: calc(100dvh - env(safe-area-inset-bottom, 0px)); }
+
+  .tap { min-height: var(--tap); min-width: var(--tap); }
+
+  /* Visible only to screen readers, but focusable (skip links). */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
+  }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Skeleton shimmer for loading states. */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--surface-muted) 25%,
+      var(--surface-sunken) 37%,
+      var(--surface-muted) 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+  }
+
+  .animate-in-up { animation: in-up var(--dur) var(--ease-out) both; }
+  .animate-pop { animation: pop var(--dur-slow) var(--ease-spring) both; }
+  .animate-fade { animation: fade var(--dur) var(--ease-out) both; }
+  .animate-sheet-up { animation: sheet-up var(--dur-slow) var(--ease-out) both; }
+  .animate-confetti { animation: confetti 900ms var(--ease-out) both; }
+  .animate-pulse-ring { animation: pulse-ring 1.8s var(--ease-out) infinite; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+@keyframes in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: none; }
+}
+@keyframes confetti {
+  0% { opacity: 0; transform: scale(0.4) rotate(-12deg); }
+  55% { opacity: 1; transform: scale(1.12) rotate(4deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent); }
+  70% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--accent) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent); }
+}
+
+/* Print: progress reports and attendance registers get printed. */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+}

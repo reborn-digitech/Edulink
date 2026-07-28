@@ -1,0 +1,135 @@
+"use client";
+
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { EnvelopeSimpleIcon, LockKeyIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
+import { Button } from "@/components/ui/button";
+import { TextField } from "@/components/ui/field";
+import { useToast } from "@/components/ui/toast";
+import { login, requestMagicLink } from "./actions";
+import { cn } from "@/lib/cn";
+
+export function LoginForm({ className }: { className?: string }) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [mode, setMode] = useState<"password" | "magic">("password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [magicSent, setMagicSent] = useState(false);
+
+  function submit(event: React.FormEvent) {
+    event.preventDefault();
+    setErrors({});
+
+    startTransition(async () => {
+      if (mode === "magic") {
+        const result = await requestMagicLink({ email });
+        if (!result.ok) {
+          setErrors(result.errors);
+          return;
+        }
+        // Deliberately unconditional: telling the user "no account with that
+        // email" would let anyone test which addresses are registered.
+        setMagicSent(true);
+        return;
+      }
+
+      const result = await login({ email, password });
+      if (!result.ok) {
+        setErrors(result.errors);
+        return;
+      }
+      toast({ tone: "ok", title: "Welcome back" });
+      router.push(result.redirectTo ?? "/");
+      router.refresh();
+    });
+  }
+
+  if (magicSent) {
+    return (
+      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6 text-center", className)}>
+        <div className="mx-auto mb-4 grid size-14 place-items-center rounded-full bg-accent-soft text-accent-strong animate-pop">
+          <PaperPlaneTiltIcon weight="duotone" className="size-7" />
+        </div>
+        <h2 className="font-semibold text-fg">Check your email</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
+          If an account exists for <strong className="text-fg">{email}</strong>, a sign-in link is
+          on its way. It works once and expires in 20 minutes.
+        </p>
+        <Button variant="ghost" className="mt-4" onClick={() => setMagicSent(false)}>
+          Use a different email
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className={cn("space-y-5", className)} noValidate>
+      {errors._form && (
+        <p
+          role="alert"
+          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+        >
+          {errors._form}
+        </p>
+      )}
+
+      <TextField
+        label="Email"
+        type="email"
+        inputMode="email"
+        autoComplete="email"
+        required
+        autoFocus
+        placeholder="you@school.org"
+        value={email}
+        error={errors.email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      {mode === "password" && (
+        <TextField
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          required
+          value={password}
+          error={errors.password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      )}
+
+      <Button
+        type="submit"
+        block
+        size="lg"
+        loading={pending}
+        icon={mode === "password" ? <LockKeyIcon weight="bold" /> : <PaperPlaneTiltIcon weight="bold" />}
+      >
+        {mode === "password" ? "Log in" : "Email me a link"}
+      </Button>
+
+      <div className="relative py-1 text-center">
+        <span aria-hidden="true" className="absolute inset-x-0 top-1/2 h-px bg-border" />
+        <span className="relative bg-bg px-3 text-xs font-medium uppercase tracking-wide text-fg-subtle">
+          or
+        </span>
+      </div>
+
+      <Button
+        type="button"
+        variant="secondary"
+        block
+        icon={mode === "password" ? <EnvelopeSimpleIcon weight="bold" /> : <LockKeyIcon weight="bold" />}
+        onClick={() => {
+          setMode((m) => (m === "password" ? "magic" : "password"));
+          setErrors({});
+        }}
+      >
+        {mode === "password" ? "Email me a sign-in link instead" : "Use my password instead"}
+      </Button>
+    </form>
+  );
+}
