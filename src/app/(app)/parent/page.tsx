@@ -14,6 +14,7 @@ import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
+import { overallPercent } from "@/lib/grading";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { AttendanceBadge, Badge } from "@/components/ui/badge";
@@ -85,17 +86,11 @@ export default async function ParentDashboard({
 
   const streak = computeStreak(attendance.recent);
 
-  // Average as a percentage of points available, computed in integer
-  // thousandths so nothing drifts. Assignments with no max score are excluded
-  // rather than counted as zero.
+  // Shared helper — weights by points available, never averages percentages.
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const averagePercent =
-    scored.length === 0
-      ? null
-      : Math.round(
-          (scored.reduce((sum, g) => sum + g.scoreMilli!, 0) * 100) /
-            scored.reduce((sum, g) => sum + g.assignment.pointsMilli!, 0),
-        );
+  const averagePercent = overallPercent(
+    grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
+  );
 
   return (
     <div className="space-y-6">

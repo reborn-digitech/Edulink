@@ -1,0 +1,208 @@
+"use client";
+
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { FloppyDiskIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
+import { Button } from "@/components/ui/button";
+import { SelectField, TextField } from "@/components/ui/field";
+import { useToast } from "@/components/ui/toast";
+import { cn } from "@/lib/cn";
+import { newAssignment } from "../actions";
+
+const CATEGORIES = ["Homework", "Classwork", "Quiz", "Test", "Project", "Reading"];
+
+export function AssignmentForm({
+  classes,
+  preselected,
+  className,
+}: {
+  classes: { id: string; name: string; studentCount: number }[];
+  preselected: string;
+  className?: string;
+}) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+
+  const [classId, setClassId] = useState(preselected);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [category, setCategory] = useState("Homework");
+  const [points, setPoints] = useState("20");
+  const [dueDate, setDueDate] = useState("");
+  const [dueTime, setDueTime] = useState("16:00");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const selectedClass = classes.find((c) => c.id === classId);
+
+  function submit(publish: boolean) {
+    setErrors({});
+
+    const next: Record<string, string> = {};
+    if (title.trim().length < 2) next.title = "Give the work a title.";
+
+    const pointsValue = points.trim() === "" ? undefined : Number(points);
+    if (pointsValue !== undefined && (!Number.isFinite(pointsValue) || pointsValue < 0)) {
+      next.points = "Points must be a number, and cannot be negative.";
+    }
+
+    // A date with no time is ambiguous; default to the end of the school day
+    // rather than to midnight, which would make everything due "yesterday".
+    let dueAt: string | undefined;
+    if (dueDate) {
+      const combined = new Date(`${dueDate}T${dueTime || "16:00"}:00`);
+      if (Number.isNaN(combined.getTime())) next.dueDate = "That is not a real date.";
+      else dueAt = combined.toISOString();
+    }
+
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+
+    startTransition(async () => {
+      const result = await newAssignment({
+        classId,
+        title: title.trim(),
+        body: body.trim(),
+        category: category || undefined,
+        points: pointsValue,
+        dueAt: dueAt ?? "",
+        publish,
+      });
+
+      if (!result.ok) {
+        setErrors(result.errors);
+        toast({
+          tone: "danger",
+          title: "Could not save",
+          description: result.errors._form ?? "Check the highlighted fields.",
+        });
+        return;
+      }
+
+      toast({
+        tone: "ok",
+        title: publish ? "Work set" : "Saved as a draft",
+        description: publish
+          ? `${result.notified} student${result.notified === 1 ? "" : "s"} and their guardians were told.`
+          : "Nobody has been notified yet.",
+      });
+      router.push(`/teacher/assignments/${result.assignmentId}`);
+      router.refresh();
+    });
+  }
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit(true);
+      }}
+      className={cn("space-y-5", className)}
+      noValidate
+    >
+      {errors._form && (
+        <p
+          role="alert"
+          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+        >
+          {errors._form}
+        </p>
+      )}
+
+      <SelectField label="Class" required value={classId} onChange={(e) => setClassId(e.target.value)}>
+        {classes.map((klass) => (
+          <option key={klass.id} value={klass.id}>
+            {klass.name} ({klass.studentCount} student{klass.studentCount === 1 ? "" : "s"})
+          </option>
+        ))}
+      </SelectField>
+
+      <TextField
+        label="Title"
+        required
+        autoFocus
+        placeholder="Fractions worksheet 3"
+        value={title}
+        error={errors.title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <div>
+        <label htmlFor="assignment-body" className="block text-sm font-medium text-fg">
+          Instructions
+        </label>
+        <textarea
+          id="assignment-body"
+          value={body}
+          onChange={(e) => setBody(e.target.value.slice(0, 20_000))}
+          rows={5}
+          placeholder="Complete questions 1–12. Show your working."
+          className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+        />
+        <p className="mt-1 text-xs text-fg-muted">Optional — students see this with the task.</p>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <SelectField label="Category" value={category} onChange={(e) => setCategory(e.target.value)}>
+          {CATEGORIES.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </SelectField>
+
+        <TextField
+          label="Points available"
+          type="number"
+          inputMode="decimal"
+          min={0}
+          step="0.5"
+          value={points}
+          error={errors.points}
+          onChange={(e) => setPoints(e.target.value)}
+          hint="Leave blank for unmarked work."
+        />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <TextField
+          label="Due date"
+          type="date"
+          value={dueDate}
+          error={errors.dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
+        <TextField
+          label="Due time"
+          type="time"
+          value={dueTime}
+          onChange={(e) => setDueTime(e.target.value)}
+          hint="Defaults to the end of the school day."
+        />
+      </div>
+
+      <div className="flex flex-col gap-2 border-t border-border pt-5 sm:flex-row">
+        <Button
+          type="button"
+          variant="secondary"
+          block
+          disabled={pending}
+          icon={<FloppyDiskIcon weight="bold" />}
+          onClick={() => submit(false)}
+        >
+          Save as draft
+        </Button>
+        <Button
+          type="submit"
+          block
+          loading={pending}
+          icon={<PaperPlaneTiltIcon weight="bold" />}
+        >
+          {pending
+            ? "Setting…"
+            : `Publish to ${selectedClass?.studentCount ?? 0} student${selectedClass?.studentCount === 1 ? "" : "s"}`}
+        </Button>
+      </div>
+    </form>
+  );
+}

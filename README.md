@@ -57,7 +57,7 @@ readable at **http://localhost:3000/dev/mailbox** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (service worker disabled — see note below) |
 | `npm run build && npm start` | Production build; **this is the only mode with a service worker** |
-| `npm test` | Full suite (167 tests) |
+| `npm test` | Full suite (194 tests) |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
@@ -95,7 +95,12 @@ One line each, with the default rejected (§3).
   timezone, not a UTC instant. See the DST reasoning in
   [`src/lib/dates.ts`](src/lib/dates.ts).
 - **Money-shaped numbers.** Scores are integer thousandths (`scoreMilli`);
-  87.5 → `87500`. Never floats.
+  87.5 → `87500`. Never floats. Overall percentages go through
+  `overallPercent()` in [`src/lib/grading.ts`](src/lib/grading.ts), which sums
+  points earned and points available and divides once — averaging the
+  per-assignment percentages instead would weight a 5-point spelling quiz the
+  same as a 100-point exam. One shared helper, so the number a parent sees can
+  never drift from the one the student sees.
 - **Portability tax.** SQLite has no enums and no JSON columns, so status
   columns are `String` (values in [`src/lib/constants.ts`](src/lib/constants.ts),
   enforced by zod at every write) and JSON payloads are `String` (read through
@@ -161,6 +166,16 @@ One line each, with the default rejected (§3).
   nor to brute-force a child's date of birth against a known-good code.
 - Consent is blocked at the form and recorded with timestamps on the
   guardianship row; signing up without it is refused.
+- **Assignments and grading, in a production build.** Set work (a negative
+  points value was rejected inline), published to 18 students, marked three
+  including a half mark, and typed `250` into a 25-point task — the typo was
+  caught client-side and Save stayed disabled until it was fixed. `22.5` is
+  stored as exactly `22500`, the class average matched a hand computation
+  (89%), and both the student and the parent saw the result.
+- **The overall average is weighted by points, not by averaging percentages.**
+  On the seeded data the two methods genuinely disagree — Chloé is 88% summed
+  and 86% averaged — and the app shows 88%. A unit test pins the case where the
+  gap is 32 points (a 5-point quiz against a 100-point exam).
 - **Remarks are private in the way that matters.** A teacher wrote a note about
   a student; the guardian saw it, opened it, and replied. A *different teacher
   at the same school* gets a real **404** on that thread — the subject appears
@@ -177,9 +192,10 @@ One line each, with the default rejected (§3).
   manifest, push, notificationclick and Background Sync handlers.
 - Unauthenticated `/admin/*` → 307; `POST /api/attendance` and the export → 401;
   `/dev/mailbox` → 404 in production.
-- **167 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks and env suites are each **mutation-tested** — the
-  implementation was deliberately broken to confirm the tests actually fail.
+- **194 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading and env suites are each
+  **mutation-tested** — the implementation was deliberately broken to confirm
+  the tests actually fail.
 
 ### Built but not yet exercised end to end
 
@@ -194,8 +210,10 @@ Renders and typechecks; no click-through verification. Treat as `Untested:`.
 
 Routes referenced by navigation that do not exist yet — they will 404:
 
-- Assignments and grading UI, gradebook, progress reports — grades are seeded
-  and displayed everywhere, but there is no screen for a teacher to enter them
+- Student submission — a student cannot hand work in from the app yet; the
+  gradebook shows a submission column because the model supports it, and the
+  seed populates it, but there is no upload screen
+- Weighted grade categories and progress-report export
 - Bulletin board, global feed, competitions, safety centre, admin settings
 - Student profile page, certifications/awards gallery, student posting
 - Self-signup approval queue (the school-code path referenced on the invite page)

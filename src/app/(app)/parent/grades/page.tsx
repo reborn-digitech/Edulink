@@ -6,6 +6,7 @@ import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { relativeTime } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
+import { overallPercent } from "@/lib/grading";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
@@ -48,13 +49,14 @@ export default async function ParentGradesPage({
     take: 100,
   });
 
-  // Averages are computed in integer thousandths and only over work that had a
-  // maximum score. Counting an ungraded or unscored piece as zero would show a
-  // parent a number that is simply wrong. (§10)
+  // One shared implementation (see overallPercent) so the number a parent sees
+  // cannot drift from the one the student sees. (§10)
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
   const earned = scored.reduce((sum, g) => sum + g.scoreMilli!, 0);
   const available = scored.reduce((sum, g) => sum + g.assignment.pointsMilli!, 0);
-  const overall = available === 0 ? null : Math.round((earned * 100) / available);
+  const overall = overallPercent(
+    grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
+  );
 
   // Per-category breakdown, same integer arithmetic.
   const categories = new Map<string, { earned: number; available: number; count: number }>();
@@ -116,7 +118,8 @@ export default async function ParentGradesPage({
           <CardBody>
             <ul className="space-y-3">
               {[...categories.entries()].map(([name, stats]) => {
-                const percent = Math.round((stats.earned * 100) / stats.available);
+                const percent =
+                  overallPercent([{ scoreMilli: stats.earned, maxMilli: stats.available }]) ?? 0;
                 return (
                   <li key={name}>
                     <div className="flex items-baseline justify-between gap-3">
