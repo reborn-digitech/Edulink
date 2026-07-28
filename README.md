@@ -18,9 +18,7 @@ external accounts.
 npm install && cp .env.example .env && npm run vapid
 ```
 
-Paste the printed VAPID keys into `.env`, add an `AUTH_SECRET`
-(`node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`),
-then:
+Paste the two printed VAPID keys into `.env`, then:
 
 ```bash
 npm run setup && npm run dev
@@ -59,7 +57,7 @@ readable at **http://localhost:3000/dev/mailbox** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (service worker disabled — see note below) |
 | `npm run build && npm start` | Production build; **this is the only mode with a service worker** |
-| `npm test` | Full suite (130 tests) |
+| `npm test` | Full suite (167 tests) |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
@@ -115,6 +113,12 @@ One line each, with the default rejected (§3).
 - **Archive, don't delete.** A class owns attendance history and grades, so the
   only destructive action offered is archiving, it is reversible, and the
   confirmation names how many students are affected.
+- **Config that nothing reads is config that rots.** There is deliberately no
+  `AUTH_SECRET`: sessions are opaque random tokens stored as SHA-256 hashes, so
+  there is nothing to sign. `src/lib/env.ts` refuses to boot a *deployed*
+  instance with missing push keys, a plain-http origin, or the dev mail
+  transport — but stays quiet for a local production build, which is the
+  documented way to test the service worker.
 
 ---
 
@@ -157,6 +161,14 @@ One line each, with the default rejected (§3).
   nor to brute-force a child's date of birth against a known-good code.
 - Consent is blocked at the form and recorded with timestamps on the
   guardianship row; signing up without it is refused.
+- **Remarks are private in the way that matters.** A teacher wrote a note about
+  a student; the guardian saw it, opened it, and replied. A *different teacher
+  at the same school* gets a real **404** on that thread — the subject appears
+  nowhere in the HTML, and the thread is absent from their list. So do an admin
+  of another school, a parent who does not guard that child, and the student the
+  note is about.
+- The compose screen warns **before** you write that a student has no guardian
+  linked, rather than letting the message go nowhere.
 - A signed-in **teacher** is redirected away from every `/admin` page and gets
   **403** (not 401) from the export endpoint — authenticated, wrong role.
 - Registration creating school + admin + membership + verification email in one
@@ -165,8 +177,8 @@ One line each, with the default rejected (§3).
   manifest, push, notificationclick and Background Sync handlers.
 - Unauthenticated `/admin/*` → 307; `POST /api/attendance` and the export → 401;
   `/dev/mailbox` → 404 in production.
-- **130 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy and onboarding suites are each **mutation-tested** — the
+- **167 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks and env suites are each **mutation-tested** — the
   implementation was deliberately broken to confirm the tests actually fail.
 
 ### Built but not yet exercised end to end
@@ -182,10 +194,10 @@ Renders and typechecks; no click-through verification. Treat as `Untested:`.
 
 Routes referenced by navigation that do not exist yet — they will 404:
 
-- Assignments and grading UI, gradebook, progress reports
-- Remark threads (the parent dashboard links to `/remarks`, which 404s)
+- Assignments and grading UI, gradebook, progress reports — grades are seeded
+  and displayed everywhere, but there is no screen for a teacher to enter them
 - Bulletin board, global feed, competitions, safety centre, admin settings
-- `/parent/attendance` and `/parent/grades` (push notifications deep-link there)
+- Student profile page, certifications/awards gallery, student posting
 - Self-signup approval queue (the school-code path referenced on the invite page)
 - SSO, 2FA, SMS, i18n beyond English, real email transport
 
