@@ -98,6 +98,15 @@ One line each, with the default rejected (§3).
 - **Offline writes** are idempotent by `clientId` (replay = no-op) *and*
   ordered by `markedAt` (a late replay cannot undo a newer correction). Both
   are covered by tests, and both were verified by deliberately breaking them.
+- **CSV is parsed, not regex-matched.** `src/lib/csv.ts` is a real RFC 4180
+  reader (quoted commas, doubled quotes, embedded newlines, CRLF, Excel BOM),
+  because the rows a regex mangles are exactly the ones a school has —
+  `"Okafor, Amara"`. Bad rows are *collected and reported*, never skipped
+  silently: a bulk import that claims "42 sent" while dropping 3 is how a
+  teacher is discovered missing in September.
+- **Archive, don't delete.** A class owns attendance history and grades, so the
+  only destructive action offered is archiving, it is reversible, and the
+  confirmation names how many students are affected.
 
 ---
 
@@ -111,31 +120,48 @@ One line each, with the default rejected (§3).
 - **The full offline loop, in a production build**: marked a student absent with
   the network forced down → payload queued in IndexedDB → nothing on the server
   → reconnected → synced with the same `clientId` → the linked parent's
-  notification row created. Pasted output is in the delivery notes.
+  notification row created.
+- **The full invite loop, in a production build**: created a class (got a join
+  code) → pasted a deliberately messy CSV (quoted comma-name, invalid address,
+  blank address, in-file duplicate, an existing member) → preview flagged all
+  five → sent → **2 sent, 4 individually accounted for, none silently dropped**
+  → opened the emailed link → accepted → landed in `/teacher` with the right
+  title and subjects. The quoted name `"Nakamura, Yuki"` survived intact from
+  CSV to database.
+- **Invite tokens are single-use**: a consumed token and a forged token return
+  the *same* message, so the page is not an oracle for guessing valid tokens.
+- Directory search / role filter / class filter / sort / pagination, and CSV
+  export scoped to the same filters. A forged `classId` in the export query is
+  ignored, not honoured, and the export contains **zero** rows from the other
+  seeded school.
+- A signed-in **teacher** is redirected away from every `/admin` page and gets
+  **403** (not 401) from the export endpoint — authenticated, wrong role.
 - Registration creating school + admin + membership + verification email in one
   transaction; argon2id hashes at OWASP 2024 params.
 - Production build: 104 kB shared JS, service worker generated with precache
   manifest, push, notificationclick and Background Sync handlers.
-- Unauthenticated `/admin`, `/teacher` → 307; `POST /api/attendance` → 401;
+- Unauthenticated `/admin/*` → 307; `POST /api/attendance` and the export → 401;
   `/dev/mailbox` → 404 in production.
-- 68 tests. The date, avatar and attendance suites were each **mutation-tested**
-  — the implementation was deliberately broken to confirm the tests fail.
+- **115 tests**, stable across repeated runs. The date, avatar, CSV, attendance
+  and tenancy suites are each **mutation-tested** — the implementation was
+  deliberately broken to confirm the tests actually fail.
 
 ### Built but not yet exercised end to end
 
 Renders and typechecks; no click-through verification. Treat as `Untested:`.
 
 - Command palette (⌘K), install button, notification/quiet-hours logic,
-  file storage + upload validation, remark threads, the `/switch` empty state.
+  file storage + upload validation, remark threads, class archive/restore and
+  join-code rotation, invite resend/withdraw.
 
 ### Not built
 
 Routes referenced by navigation that do not exist yet — they will 404:
 
-- Teacher invitations and CSV import; class creation; school directory
 - Student join-by-code and the kid-first onboarding tour; parent claim flow
 - Parent dashboard, assignments/grading UI, gradebook
 - Bulletin board, global feed, competitions, safety centre, admin settings
+- Self-signup approval queue (the school-code path referenced on the invite page)
 - SSO, 2FA, SMS, i18n beyond English, real email transport
 
 `getChecklist` deliberately derives from live data rather than stored flags, so
