@@ -173,6 +173,25 @@ export function parseDateOnly(value: string): Date | null {
   return new Date(Date.UTC(y, m - 1, d));
 }
 
+/**
+ * Compares a stored birthdate against one a user typed.
+ *
+ * Compared field-by-field in UTC rather than by timestamp equality: the stored
+ * value is a date-only instant at UTC midnight, and any code path that ever
+ * writes it with a time component (an import, a migration, a future admin edit)
+ * would otherwise silently start rejecting every correct answer — locking real
+ * parents out of their own children's records with no visible cause.
+ */
+export function sameCalendarDay(a: Date | null | undefined, b: Date | null | undefined): boolean {
+  if (!a || !b) return false;
+  if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return false;
+  return (
+    a.getUTCFullYear() === b.getUTCFullYear() &&
+    a.getUTCMonth() === b.getUTCMonth() &&
+    a.getUTCDate() === b.getUTCDate()
+  );
+}
+
 /** True if the IANA zone is one this runtime actually knows. */
 export function isValidTimeZone(tz: string): boolean {
   try {

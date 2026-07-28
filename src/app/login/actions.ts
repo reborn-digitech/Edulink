@@ -13,6 +13,27 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export type LoginState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
 
 /**
+ * Students who joined with a class code have no real email address — they get a
+ * generated handle like `amara.k4f9`, stored against the internal
+ * `@edulink.local` domain so one unique lookup still serves every account type.
+ *
+ * A child typing just their handle must work. Without this, the email validator
+ * rejects it before it ever reaches the database and they are locked out of the
+ * account they created ninety seconds ago.
+ */
+function normalizeIdentifier(input: unknown): unknown {
+  if (typeof input !== "object" || input === null) return input;
+  const record = input as Record<string, unknown>;
+  const email = record.email;
+  if (typeof email !== "string") return input;
+
+  const trimmed = email.trim().toLowerCase();
+  if (trimmed.length === 0 || trimmed.includes("@")) return input;
+
+  return { ...record, email: `${trimmed}@edulink.local` };
+}
+
+/**
  * Password login.
  *
  * Failure is always the same message and always costs roughly the same time,
@@ -22,7 +43,7 @@ export type LoginState = { ok: boolean; errors: FieldErrors; redirectTo?: string
  * a theoretical one.
  */
 export async function login(input: unknown): Promise<LoginState> {
-  const parsed = loginSchema.safeParse(input);
+  const parsed = loginSchema.safeParse(normalizeIdentifier(input));
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const { email, password } = parsed.data;

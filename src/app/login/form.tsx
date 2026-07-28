@@ -77,16 +77,21 @@ export function LoginForm({ className }: { className?: string }) {
       )}
 
       <TextField
-        label="Email"
-        type="email"
+        label={mode === "password" ? "Email or login name" : "Email"}
+        // Not type="email": students log in with a handle like `amara.k4f9`,
+        // and the browser's built-in email validation would block it.
+        type={mode === "password" ? "text" : "email"}
         inputMode="email"
-        autoComplete="email"
+        autoComplete="username"
+        autoCapitalize="none"
+        spellCheck={false}
         required
         autoFocus
-        placeholder="you@school.org"
+        placeholder={mode === "password" ? "you@school.org or amara.k4f9" : "you@school.org"}
         value={email}
         error={errors.email}
         onChange={(e) => setEmail(e.target.value)}
+        hint={mode === "password" ? "Students: use the login name your school gave you." : undefined}
       />
 
       {mode === "password" && (

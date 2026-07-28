@@ -42,6 +42,14 @@ Password for every account: `copper-lantern-47-brook`
 The second school exists so tenant-isolation bugs are visible — a query that
 forgets its `schoolId` will start returning Oakfield data.
 
+The seed prints each class's join code. To try the kid-first flow, open
+`/join/student` and paste one — students self-enrol and appear on that class's
+register immediately. Their **student code** (shown in the directory) plus their
+date of birth is what a parent needs at `/join/parent` to link to them.
+
+Students who join this way have **no email address**: they get a generated login
+handle like `rosie.kvjn`, which is what they type into the login box.
+
 Emails are not sent. Every magic link, invite and verification message is
 readable at **http://localhost:3000/dev/mailbox** (404s in production).
 
@@ -51,7 +59,7 @@ readable at **http://localhost:3000/dev/mailbox** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (service worker disabled — see note below) |
 | `npm run build && npm start` | Production build; **this is the only mode with a service worker** |
-| `npm test` | Full suite (68 tests) |
+| `npm test` | Full suite (130 tests) |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
@@ -134,6 +142,21 @@ One line each, with the default rejected (§3).
   export scoped to the same filters. A forged `classId` in the export query is
   ignored, not honoured, and the export contains **zero** rows from the other
   seeded school.
+- **The full onboarding spine, in a production build.** A child joined with a
+  class code typed plainly as `773wc4w` (auto-formatted to `773-WC4W`), picked
+  one of 72 avatars, set a passphrase, and landed on their own dashboard — with
+  a generated login handle, since a nine-year-old often has no email. They then
+  logged back in with that bare handle. The teacher's register picked them up
+  immediately (roster 18 → 19, with their chosen avatar). A parent signed up,
+  claimed them with the student code **plus** date of birth, and the absence the
+  teacher then marked appeared on the parent's dashboard as *"Rosie was marked
+  absent"* with a notification row.
+- **The parent claim is genuinely two-factor.** A correct code with the wrong
+  birthdate, and a wrong code with the correct birthdate, return a
+  byte-identical message — so it cannot be used to test whether a code is real,
+  nor to brute-force a child's date of birth against a known-good code.
+- Consent is blocked at the form and recorded with timestamps on the
+  guardianship row; signing up without it is refused.
 - A signed-in **teacher** is redirected away from every `/admin` page and gets
   **403** (not 401) from the export endpoint — authenticated, wrong role.
 - Registration creating school + admin + membership + verification email in one
@@ -142,25 +165,27 @@ One line each, with the default rejected (§3).
   manifest, push, notificationclick and Background Sync handlers.
 - Unauthenticated `/admin/*` → 307; `POST /api/attendance` and the export → 401;
   `/dev/mailbox` → 404 in production.
-- **115 tests**, stable across repeated runs. The date, avatar, CSV, attendance
-  and tenancy suites are each **mutation-tested** — the implementation was
-  deliberately broken to confirm the tests actually fail.
+- **130 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy and onboarding suites are each **mutation-tested** — the
+  implementation was deliberately broken to confirm the tests actually fail.
 
 ### Built but not yet exercised end to end
 
 Renders and typechecks; no click-through verification. Treat as `Untested:`.
 
 - Command palette (⌘K), install button, notification/quiet-hours logic,
-  file storage + upload validation, remark threads, class archive/restore and
-  join-code rotation, invite resend/withdraw.
+  file storage + upload validation, class archive/restore and join-code
+  rotation, invite resend/withdraw, the multi-child parent switcher (only
+  exercised with one child).
 
 ### Not built
 
 Routes referenced by navigation that do not exist yet — they will 404:
 
-- Student join-by-code and the kid-first onboarding tour; parent claim flow
-- Parent dashboard, assignments/grading UI, gradebook
+- Assignments and grading UI, gradebook, progress reports
+- Remark threads (the parent dashboard links to `/remarks`, which 404s)
 - Bulletin board, global feed, competitions, safety centre, admin settings
+- `/parent/attendance` and `/parent/grades` (push notifications deep-link there)
 - Self-signup approval queue (the school-code path referenced on the invite page)
 - SSO, 2FA, SMS, i18n beyond English, real email transport
 
