@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (231 tests) |
+| `npm test` | Full suite (250 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -89,6 +89,8 @@ src/lib/                  All business logic. Pages are thin.
   grading.ts              Assignments, marking, overallPercent().
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
+  safety.ts               Report triage + audit log (server-only).
+  safety-labels.ts        Client-safe types/labels for the above — see note.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -159,6 +161,11 @@ Break these and something quietly goes wrong for a child or a parent.
   production build.
 - `/dev/mailbox` is **404 in production** (it lists sign-in links in plaintext).
   Use `npm run dev` or read the `OutboundEmail` table.
+- **A client component importing a `server-only` module is a BUILD error, not a
+  type error.** `tsc --noEmit` passes and `next build` fails with "You're
+  importing a component that needs server-only". That is why `safety-labels.ts`
+  exists separately from `safety.ts`: the report cards and audit table are client
+  components and need the label maps. Always run a build, not just a typecheck.
 - Dark-mode role accents are written **twice** in `globals.css`
   (`[data-theme="dark"][data-role="x"]` *and* `[data-theme="dark"] [data-role="x"]`)
   because `data-role` is often on a subtree while `data-theme` is on `<html>`.
@@ -168,19 +175,16 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `/admin/safety` — the report queue. `reportContent()` writes `Report` rows
-   and notifies admins, but there is no screen to triage them, so a report
-   currently reaches a notification and then nowhere. Highest-priority gap.
-2. `/admin/settings` — branding (logo upload, colour). **`storage.ts` is
+1. `/admin/settings` — branding (logo upload, colour). **`storage.ts` is
    written, validated, tested-by-inspection and completely unwired** — this
    would be its first consumer. Treat that as a smell worth clearing.
-3. `/teacher/classes` — teacher-facing class detail (nav links to it and 404s).
-4. `/student/profile` — avatar change, awards gallery (nav links to it).
-5. File attachments on assignments, submissions and bulletin posts (`storage.ts`
+2. `/teacher/classes` — teacher-facing class detail (nav links to it and 404s).
+3. `/student/profile` — avatar change, awards gallery (nav links to it).
+4. File attachments on assignments, submissions and bulletin posts (`storage.ts`
    again — all three are text-only today).
-6. Postgres migration + RLS policies (schema comments describe the intended
+5. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-7. Global feed, competitions, safety centre, progress-report export, SSO, 2FA.
+6. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -243,6 +247,12 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **Safety centre.** Reports group by target — three reports of one post is one
+  card, not three. Unkind/unsafe sorts above a more-reported, more-recent spam
+  report. A report whose target was deleted renders as "no longer available" and
+  is still closable. Taking content down requires a note, sets it REJECTED with
+  that note as the reason, closes every report against it, and tells the author
+  *with the note* — verified end to end, along with a school-scoped audit log.
 - **Bulletin board with real moderation.** A student posted to their class; it
   was held PENDING and was **invisible to a classmate in the same class** (and
   to a teacher of a different class, and to the other school's admin). The
@@ -268,11 +278,12 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **231 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading, bulletin, quiet-hours and env suites are
-  each **mutation-tested** — for the bulletin that means four separate breaks of
-  the safety model (student posts auto-publishing, visibility ignoring status,
-  any teacher approving school-wide, rejecting with no reason), each caught.
+- **250 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading, bulletin, safety, quiet-hours and env
+  suites are each **mutation-tested** — for the bulletin that means four separate
+  breaks of the safety model (student posts auto-publishing, visibility ignoring
+  status, any teacher approving school-wide, rejecting with no reason), each
+  caught.
 
 ### Built but not click-through verified
 
@@ -291,7 +302,8 @@ Renders and typechecks; treat as `Untested:`.
 
 Left visible in the nav on purpose, so missing work is obvious rather than hidden.
 
-- `/admin/settings`, `/admin/safety`, `/student/profile`, `/teacher/classes`
+- `/admin/settings`, `/student/profile`, `/teacher/classes`
+- Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - File attachments on assignments and submissions (text-only today)
 - Weighted grade categories, progress-report export

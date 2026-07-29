@@ -1,0 +1,116 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { MagnifyingGlassIcon, WarningIcon } from "@phosphor-icons/react";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/cn";
+import { relativeTime } from "@/lib/dates";
+import { describeAction, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
+
+/**
+ * Audit log viewer.
+ *
+ * Filtering happens client-side over the fetched page rather than by refetching,
+ * because an admin scanning for "who exported the directory" wants instant
+ * narrowing, and the page is capped at 200 rows anyway. If that cap ever needs
+ * raising, move the filter into the query.
+ */
+export function AuditTable({ rows }: { rows: AuditEntry[] }) {
+  const [query, setQuery] = useState("");
+  const [sensitiveOnly, setSensitiveOnly] = useState(false);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return rows.filter((row) => {
+      if (sensitiveOnly && !isSensitiveAction(row.action)) return false;
+      if (!q) return true;
+      return (
+        row.actorName.toLowerCase().includes(q) ||
+        row.action.toLowerCase().includes(q) ||
+        describeAction(row.action).toLowerCase().includes(q)
+      );
+    });
+  }, [rows, query, sensitiveOnly]);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <label className="relative flex-1">
+          <span className="sr-only">Search the audit log</span>
+          <MagnifyingGlassIcon
+            className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
+            aria-hidden="true"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by person or action…"
+            className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent"
+          />
+        </label>
+        <button
+          type="button"
+          aria-pressed={sensitiveOnly}
+          onClick={() => setSensitiveOnly((s) => !s)}
+          className={cn(
+            "inline-flex min-h-12 items-center justify-center gap-2 rounded-[--radius-md] px-4 text-sm font-medium",
+            sensitiveOnly
+              ? "bg-danger text-white"
+              : "border border-border bg-surface text-fg-muted hover:text-fg",
+          )}
+        >
+          <WarningIcon weight={sensitiveOnly ? "fill" : "regular"} className="size-4" />
+          Sensitive only
+        </button>
+      </div>
+
+      <p className="text-xs text-fg-muted" aria-live="polite">
+        {filtered.length} of {rows.length} entries
+        {rows.length >= 200 && " (most recent 200)"}
+      </p>
+
+      {filtered.length === 0 ? (
+        <p className="rounded-[--radius-md] bg-surface-muted p-6 text-center text-sm text-fg-muted">
+          Nothing matches that.
+        </p>
+      ) : (
+        <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface">
+          {filtered.map((row) => {
+            const sensitive = isSensitiveAction(row.action);
+            return (
+              <li key={row.id} className={cn("p-3.5", sensitive && "bg-danger-soft/30")}>
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <span className="text-sm font-semibold text-fg">{row.actorName}</span>
+                  <span className="text-sm text-fg-muted">{describeAction(row.action)}</span>
+                  {sensitive && (
+                    <Badge tone="danger" size="sm">
+                      Sensitive
+                    </Badge>
+                  )}
+                  <span className="ml-auto shrink-0 text-xs text-fg-subtle">
+                    {relativeTime(row.at)}
+                  </span>
+                </div>
+
+                <p className="mt-0.5 font-mono text-[0.6875rem] text-fg-subtle">
+                  {row.action}
+                  {row.targetType ? ` · ${row.targetType}` : ""}
+                  {row.ip ? ` · ${row.ip}` : ""}
+                </p>
+
+                {Object.keys(row.meta).length > 0 && (
+                  <p className="mt-1 break-words font-mono text-[0.6875rem] leading-relaxed text-fg-muted">
+                    {Object.entries(row.meta)
+                      .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
+                      .join("  ")}
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}

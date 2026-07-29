@@ -437,6 +437,49 @@ Reactions, pinning, reporting.
 
 ---
 
+## 12c. Safety centre (admin only)
+
+Log in as **Priya → School admin**. To get something into the queue, report a
+post as a student first (§12b), or seed one directly.
+
+- ☐ `/admin/safety` → tabs: To deal with (N) / Resolved / Audit log
+- ☐ **⚠️** Three reports of the *same* post appear as **one** card reading
+  "3 reports", not three cards. An admin dismissing the same thing repeatedly
+  loses track of what is actually outstanding
+- ☐ The card shows the reported content inline — author, role, the actual words —
+  so triage does not require opening another tab
+- ☐ **⚠️** A post reported as *unkind* or *unsafe* sorts above a more-reported,
+  more-recent spam report. Urgency beats both tie-breakers
+- ☐ Expand "What reporters said" → each reporter, reason and free-text detail
+- ☐ **⚠️** Delete the reported post directly in Prisma Studio, reload → the card
+  reads "This content is no longer available", offers only *Close it*, and can
+  still be cleared. A report that cannot be cleared clogs the queue forever
+- ☐ "Take it down" → **⚠️** the confirm button is **disabled** until you write a
+  note, because that note is what the author reads
+- ☐ Confirm → the post becomes REJECTED with your note as the reason, all its
+  reports close together, and the count drops
+- ☐ **⚠️** The author gets "A post of yours was taken down" *with your note* — a
+  takedown must explain itself, not silently vanish
+- ☐ Check `/bulletin?filter=mine` as that student → the note is shown
+- ☐ "Nothing wrong — close it" also requires a note, and leaves the content alone
+- ☐ Resolved tab → shows Removed / Dismissed badges and the note you wrote
+- ☐ A **USER** report offers no takedown, and says to use the school's own
+  safeguarding process (there is no suspend-user action yet)
+
+### Audit log
+
+- ☐ `?tab=audit` → append-only, school-scoped, with a note saying nothing in
+  EduLink can edit it
+- ☐ Entries read in plain English ("Removed reported content"), with the raw
+  action key underneath
+- ☐ **⚠️** "Sensitive only" filters to directory exports, failed sign-ins, failed
+  parent-claim attempts and report actions
+- ☐ Search by person or action narrows instantly
+- ☐ **⚠️** Log in as Sam (other school) → his audit log contains **none** of
+  Riverside's entries
+
+---
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -452,6 +495,8 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 - ☐ **⚠️** As Sam (Oakfield): any Riverside class/assignment/thread/post id → 404
 - ☐ **⚠️** As Tom (teaches a different class): open a pending post id from
   Priya's class → 404, and it is absent from his review queue
+- ☐ **⚠️** As Tom (teacher): `/admin/safety` → redirected away. The safety centre
+  and audit log are admin-only
 - ☐ As **Jordan**: `/parent?child=<a child who is not theirs>` → falls back to
   their own child, never shows the other
 - ☐ `/dev/mailbox` in a production build → **404**
@@ -482,10 +527,10 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Listed in the README's "Not built": `/admin/settings`, `/admin/safety`,
-`/student/profile`, `/teacher/classes`, global feed, competitions, file
-attachments (bulletin posts are text-only), weighted grade categories,
-progress-report export, SSO, 2FA, SMS, real email delivery.
+Listed in the README's "Not built": `/admin/settings`, `/student/profile`,
+`/teacher/classes`, global feed, competitions, suspend-user, file attachments
+(bulletin posts are text-only), weighted grade categories, progress-report
+export, SSO, 2FA, SMS, real email delivery.
 
 Nav links to these will 404 — that is deliberate, so the missing work stays
 visible rather than being quietly hidden.
