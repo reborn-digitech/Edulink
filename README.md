@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (206 tests) |
+| `npm test` | Full suite (231 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -88,6 +88,7 @@ src/lib/                  All business logic. Pages are thin.
   attendance.ts           Offline-safe register merge (idempotent).
   grading.ts              Assignments, marking, overallPercent().
   remarks.ts              Private thread visibility rules.
+  bulletin.ts             Post visibility + the student-moderation gate.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -167,15 +168,16 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `/bulletin` — school noticeboard with the moderation queue. The `Post`,
-   `Comment`, `Reaction` and `Report` models exist and are entirely unused, so
-   this is the largest built-but-unreachable surface left.
+1. `/admin/safety` — the report queue. `reportContent()` writes `Report` rows
+   and notifies admins, but there is no screen to triage them, so a report
+   currently reaches a notification and then nowhere. Highest-priority gap.
 2. `/admin/settings` — branding (logo upload, colour). **`storage.ts` is
    written, validated, tested-by-inspection and completely unwired** — this
    would be its first consumer. Treat that as a smell worth clearing.
 3. `/teacher/classes` — teacher-facing class detail (nav links to it and 404s).
 4. `/student/profile` — avatar change, awards gallery (nav links to it).
-5. File attachments on assignments and submissions (`storage.ts` again).
+5. File attachments on assignments, submissions and bulletin posts (`storage.ts`
+   again — all three are text-only today).
 6. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
 7. Global feed, competitions, safety centre, progress-report export, SSO, 2FA.
@@ -241,6 +243,14 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **Bulletin board with real moderation.** A student posted to their class; it
+  was held PENDING and was **invisible to a classmate in the same class** (and
+  to a teacher of a different class, and to the other school's admin). The
+  class's teacher was notified, could not reject without typing a reason, and
+  the author then saw "Not published" *with the teacher's exact words* — while
+  the classmate still saw nothing. Students are offered no school-wide scope and
+  no review queue; pinning is admin-only; reactions are a fixed kind set with no
+  negative option.
 - **Notification centre and account settings.** `/notifications` with All /
   Unread tabs, per-item read-on-open, mark-all-read, and a "clear read" that
   explicitly keeps unread items. `/account` with roles, live-applying appearance
@@ -258,9 +268,11 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **206 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading, quiet-hours and env suites are each
-  **mutation-tested**.
+- **231 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading, bulletin, quiet-hours and env suites are
+  each **mutation-tested** — for the bulletin that means four separate breaks of
+  the safety model (student posts auto-publishing, visibility ignoring status,
+  any teacher approving school-wide, rejecting with no reason), each caught.
 
 ### Built but not click-through verified
 
@@ -279,8 +291,7 @@ Renders and typechecks; treat as `Untested:`.
 
 Left visible in the nav on purpose, so missing work is obvious rather than hidden.
 
-- `/bulletin`, `/admin/settings`, `/admin/safety`, `/student/profile`,
-  `/teacher/classes`
+- `/admin/settings`, `/admin/safety`, `/student/profile`, `/teacher/classes`
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - File attachments on assignments and submissions (text-only today)
 - Weighted grade categories, progress-report export

@@ -388,6 +388,55 @@ As **Priya (Teacher)**.
 
 ---
 
+## 12b. Bulletin board and moderation
+
+As a **student** (`amara@riverside.school`).
+
+- ☐ `/bulletin` → **⚠️** a banner tells students their posts are reviewed *before*
+  they post, not after the post vanishes
+- ☐ Tabs are "Everything" and "My posts" — **⚠️** students get no "To review" tab
+- ☐ `/bulletin/new` → **⚠️** only "One class" is offered; a student cannot address
+  the whole school
+- ☐ Button reads "Send to my teacher", not "Post"
+- ☐ Post one with a tag → lands on My posts, marked "Waiting for a teacher to
+  check it"
+
+As **Priya (Teacher)**.
+
+- ☐ `/bulletin` → "To review (1)"
+- ☐ The queue shows the student's post with **Publish it** / **Send back**
+- ☐ Click "Send back" → **⚠️** the confirm button is **disabled** until you type a
+  reason. A rejection with no explanation teaches a child the system is arbitrary
+- ☐ Type a reason → send back → the queue empties
+
+Back as the **student**.
+
+- ☐ **⚠️** My posts shows "Not published" *and the teacher's exact reason*
+- ☐ Copy reads "nothing is held against you"
+- ☐ Log in as a **classmate in the same class** → **⚠️** the post is invisible,
+  and so is the reason. This is the single most important assertion in the
+  feature: an unreviewed post from a nine-year-old must not be readable by the
+  class
+
+Reactions, pinning, reporting.
+
+- ☐ On an approved post, tap each of the four reactions — optimistic, no spinner
+- ☐ Tap again → toggles off. Counts are per-kind
+- ☐ **⚠️** There is no thumbs-down or any negative reaction available
+- ☐ As **admin**: pin a post → it sorts to the top with "Pinned by the school"
+- ☐ **⚠️** As a teacher or student, no pin control is offered
+- ☐ Tap the flag on someone else's post → reasons in plain language, optional
+  detail, and the confirmation says a teacher will look and *you need do nothing
+  else*
+- ☐ No flag appears on your own post
+- ☐ As **admin**, check `Report` rows exist in Prisma Studio
+- ☐ Comment as a **student** → **⚠️** held for review, and the box said so
+  *before* you typed
+- ☐ Comment as a **teacher** → posts immediately
+- ☐ As a classmate, a held comment from someone else is **not** visible
+
+---
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -400,7 +449,9 @@ Each of these must **fail**. Run them logged out and as the wrong role.
   authenticated, just the wrong role)
 - ☐ **⚠️** As Tom: open `/teacher/attendance?classId=<Priya's class id>` → he
   must not be able to take another teacher's register
-- ☐ **⚠️** As Sam (Oakfield): any Riverside class/assignment/thread id → 404
+- ☐ **⚠️** As Sam (Oakfield): any Riverside class/assignment/thread/post id → 404
+- ☐ **⚠️** As Tom (teaches a different class): open a pending post id from
+  Priya's class → 404, and it is absent from his review queue
 - ☐ As **Jordan**: `/parent?child=<a child who is not theirs>` → falls back to
   their own child, never shows the other
 - ☐ `/dev/mailbox` in a production build → **404**
@@ -431,10 +482,10 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Listed in the README's "Not built": `/bulletin`, `/admin/settings`,
-`/admin/safety`, `/student/profile`, `/teacher/classes`, global feed,
-competitions, file attachments, weighted grade categories, progress-report
-export, SSO, 2FA, SMS, real email delivery.
+Listed in the README's "Not built": `/admin/settings`, `/admin/safety`,
+`/student/profile`, `/teacher/classes`, global feed, competitions, file
+attachments (bulletin posts are text-only), weighted grade categories,
+progress-report export, SSO, 2FA, SMS, real email delivery.
 
 Nav links to these will 404 — that is deliberate, so the missing work stays
 visible rather than being quietly hidden.
