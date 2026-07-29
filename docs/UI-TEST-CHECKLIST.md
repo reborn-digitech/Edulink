@@ -1,0 +1,406 @@
+# EduLink — end-to-end UI test checklist
+
+Manual walkthrough of **every feature built so far**. Written in the order that
+one person can complete in a single sitting, because each section leaves the data
+the next section needs.
+
+**Run it against a production build.** The service worker, offline mode, install
+prompt and push notifications do not exist in `npm run dev`.
+
+```bash
+npm run db:reset          # wipe + reseed; prints the class join codes
+npm run build
+npm start                 # http://localhost:3000
+```
+
+Keep a second terminal open for the dev mailbox and DB checks:
+
+```bash
+npx prisma studio
+```
+
+### Accounts
+
+Password for **every** seeded account: `copper-lantern-47-brook`
+
+| Who | Login | Notes |
+|---|---|---|
+| Priya | `priya@riverside.school` | ADMIN **and** TEACHER → lands on role picker |
+| Tom | `tom@riverside.school` | TEACHER, one class only |
+| Sam | `sam@oakfield.school` | ADMIN of the **second** school |
+| Jordan | `parent@example.com` | PARENT, children in **both** schools |
+| A student | see `/admin/people` for codes | seeded students use `firstname@riverside.school` |
+
+Emails are never sent. Read them at **`/dev/mailbox`** (404s in production —
+use `npm run dev` for that one page, or read the `OutboundEmail` table).
+
+Legend: ☐ to do · **⚠️** = the check most likely to catch a regression
+
+---
+
+## 0. Appearance and accessibility (do this once, applies everywhere)
+
+- ☐ Load `/` — no layout shift, no flash of the wrong colour scheme
+- ☐ **⚠️** Set OS to dark mode, hard-reload — page is dark from the *first paint*
+  (a blocking inline script does this; a flash means it regressed)
+- ☐ Tab through the landing page — every focused element has a visible ring
+- ☐ Press Tab from a cold load — first stop is "Skip to main content", and it works
+- ☐ Zoom the browser to 200% — nothing is clipped or unreachable
+- ☐ Pinch-zoom on a phone — **must not** be blocked
+- ☐ Narrow the window to 320px — no horizontal scrollbar anywhere
+- ☐ At ≥1024px the desktop side rail appears; below it, the bottom bar
+- ☐ **⚠️** Every tappable target is ≥48px tall (attendance buttons, nav items)
+
+---
+
+## 1. Landing page and PWA install
+
+- ☐ `/` renders: hero, the four role cards, three feature cards, three-step
+  set-up, footer
+- ☐ **⚠️** Each role card is tinted differently (teacher blue, student green,
+  parent purple, admin slate) — and in **dark mode** those tints are dark, not
+  pale. (A pale card on a dark page was a real bug: the dark role variants only
+  matched when `data-theme` and `data-role` sat on the same element.)
+- ☐ `/manifest.webmanifest` returns JSON with `display: "standalone"`, 4 icons
+  incl. two `maskable`, and 3 shortcuts
+- ☐ In Chrome DevTools → Application → Manifest: no errors, icons render
+- ☐ **⚠️** Chrome shows an install affordance; clicking "Install EduLink"
+  installs it. Reopen from the home screen: **no address bar**
+- ☐ In the installed app the landing page shows "Running as an installed app"
+- ☐ On iOS Safari the button is replaced by "tap Share, then Add to Home Screen"
+- ☐ Long-press the installed icon → 3 shortcuts (Attendance / Assignment / Messages)
+- ☐ DevTools → Application → Service Workers: one active worker, no errors
+
+---
+
+## 2. School registration
+
+- ☐ `/register` → step 1 of 3, progress bar, "Your school" highlighted
+- ☐ Continue with an empty name → inline error, does not advance
+- ☐ Enter website `riverside.school` (no scheme) → **⚠️** "Start with http:// or
+  https://" and it does not advance
+- ☐ Fix it, Continue → step 2
+- ☐ Password `priyaraman123` with name "Priya Raman" → **⚠️** "Do not include
+  your name or email in your password"
+- ☐ Password `short` → "Use at least 10 characters"
+- ☐ Password `copper-lantern-47-brook` → meter reads "Excellent password"
+- ☐ Type an email already in use → on blur, "An account already uses this email"
+- ☐ Continue → step 3 shows a review table matching what you typed
+- ☐ Submit without ticking authorisation → **⚠️** blocked with an inline error
+- ☐ Tick and submit → success panel with a code shaped `XXXXX-XXXX`
+- ☐ Copy button copies it (toast confirms)
+- ☐ **⚠️** Refresh mid-wizard (step 2) → your typed answers are still there
+  (sessionStorage draft)
+- ☐ "Go to my dashboard" → `/admin?welcome=1`
+- ☐ Check `/dev/mailbox` → a "Confirm your email" message exists
+
+---
+
+## 3. Admin dashboard and checklist
+
+Log in as **Priya** → role picker → **School admin**.
+
+- ☐ `/admin` shows the school name, today's date, and the school code
+- ☐ **⚠️** The checklist is *derived*, not stored: it reads 3/6 on the seeded
+  school (teachers, classes, students already done). Archive every class and it
+  should drop — it must never claim a step is done when the data says otherwise
+- ☐ "Add your students" shows "Create a class first" when there are no classes
+- ☐ Progress bar percentage matches the "N of 6 done" text
+- ☐ Stat tiles: Teachers, Students, Classes, Register taken
+- ☐ **⚠️** "Register taken" reads `—` (not `0%`) when there are no classes
+- ☐ With 0 teachers, the bottom empty state appears with two CTAs
+
+---
+
+## 4. Classes
+
+- ☐ `/admin/classes` lists the 3 seeded classes with join codes
+- ☐ `/admin/classes/new` → create "Grade 6 · Science", subject, grade, room,
+  pick a colour and a teacher
+- ☐ Duplicate an existing class name → **⚠️** "A class with that name already exists"
+- ☐ On success: a code shaped `XXX-XXXX`, copyable
+- ☐ "Create another" resets the form; "Done" returns to the list
+- ☐ Row menu → **Copy join code** → toast
+- ☐ Row menu → **New join code** → **⚠️** toast says the old one no longer works,
+  and the displayed code changed
+- ☐ Row menu → **Archive class** → confirmation names the student count and says
+  history is kept
+- ☐ Cancel → nothing changes. Confirm → class moves to the Archived tab
+- ☐ Archived tab → **Restore class** → back to Active
+- ☐ **⚠️** Attendance/grade history for the archived class still exists in Prisma
+  Studio (archive must never delete)
+
+---
+
+## 5. Invitations and CSV import
+
+- ☐ `/admin/invites/new?role=TEACHER`
+- ☐ Paste this deliberately messy CSV:
+
+```csv
+name,email,subjects
+"Nakamura, Yuki",yuki@riverside.school,Physics;Chemistry
+Ana Silva,ana@riverside.school,Art
+Broken Row,not-an-email
+No Address,
+Yuki Again,YUKI@riverside.school
+Priya Raman,priya@riverside.school,Maths
+```
+
+- ☐ **⚠️** Live preview reads "3 ready to invite · 3 need a look" before you send
+- ☐ Problems list line numbers: 4 (invalid), 5 (no email), 6 (duplicate of line 2)
+- ☐ Send → **⚠️** "2 invitations on the way" and "4 not sent", with Priya listed
+  as *"Already in your school with this role"*. **Nothing may be silently dropped**
+- ☐ Upload the same content as a `.csv` file → identical preview
+- ☐ `/admin/invites` → Pending tab shows both, with expiry
+- ☐ **Resend** → toast says the previous link stopped working
+- ☐ **Withdraw** → moves to the Withdrawn tab
+- ☐ Copy Yuki's link from `/dev/mailbox` and open it
+- ☐ **⚠️** Name is pre-filled as `Nakamura, Yuki` — the quoted comma survived
+  CSV → invite → form
+- ☐ Subjects pre-filled as Physics + Chemistry chips; remove one, add another
+- ☐ Accept → lands in `/teacher` signed in
+- ☐ **⚠️** Reload the same invite URL → "This invitation is no longer valid"
+- ☐ **⚠️** Open a made-up token → **identical** message (no enumeration oracle)
+
+---
+
+## 6. Directory and export
+
+Back as **Priya (admin)**.
+
+- ☐ `/admin/people` lists everyone with role badges and student codes
+- ☐ Search "Amara" → filters; the URL contains `?q=Amara` (shareable)
+- ☐ Clear search via the × button
+- ☐ Role chips: Everyone / Admins / Teachers / Students
+- ☐ Class filter and sort (name / recently joined)
+- ☐ Search nonsense → empty state with a "Clear filters" button
+- ☐ Pagination appears above 50 members
+- ☐ **Export CSV** → downloads `edulink-directory-YYYY-MM-DD.csv`
+- ☐ **⚠️** Open it: **zero** Oakfield rows (no `Ava Bennett`, `Sam Whitfield`)
+- ☐ Apply the Teachers filter, export again → only teachers
+- ☐ **⚠️** Visit `/admin/people/export?classId=NONSENSE` → the forged id is
+  ignored, not honoured (full school, no error)
+
+---
+
+## 7. Student self-join (kid-first)
+
+Sign out. Use a class join code printed by the seed.
+
+- ☐ `/join` → three options, each role-tinted
+- ☐ `/join/student` → step 1 of 4 with dots, not a percentage
+- ☐ Type the code **lowercase and without the hyphen** (e.g. `773wc4w`)
+  → **⚠️** auto-formats to `773-WC4W`
+- ☐ Enter `ZZZ-9999` → "We could not find that code. Check each letter — it is
+  easy to mix up a 3 and an E."
+- ☐ Correct code → green panel confirms the **school and class name**
+- ☐ Step 2: full name, preferred name, birthday
+- ☐ Step 3: **⚠️** 72 avatars in a scrollable grid; picking one updates the large
+  preview and the description ("Mint frog")
+- ☐ Step 4: password meter reads "Great password!" for a passphrase
+- ☐ "Let's go!" → `/student`, greeting uses the **preferred** name
+- ☐ **⚠️** Welcome banner shows a login handle like `rosie.kvjn` with a copy
+  button — this is how a child with no email gets back in
+- ☐ Dismiss the banner; reload → it stays dismissed
+- ☐ **⚠️** Sign out, log in with the **bare handle** (no `@`) and the password → works
+- ☐ Back button from step 3 → returns to step 2 with answers intact
+- ☐ Steps cannot be skipped forward by clicking ahead in the progress bar
+
+---
+
+## 8. Parent sign-up and child claim
+
+- ☐ `/join/parent` → name, email, password, two separate consents
+- ☐ Submit without the data-sharing consent → **⚠️** blocked with an inline error
+- ☐ Tick and submit → `/parent/link`
+- ☐ Get the new student's code from `/admin/people` (shape `STU-XXXX-XXXX`)
+- ☐ Correct code + **wrong** birthdate → refused
+- ☐ **Wrong** code + correct birthdate → **⚠️** *byte-identical* message.
+  Compare them literally — a different message here is an oracle for probing
+  codes and brute-forcing a child's date of birth
+- ☐ Correct code + correct birthdate → "You're linked to <name>"
+- ☐ **⚠️** "See their dashboard" → `/parent` directly, **no role picker detour**
+- ☐ "Link another child" → the already-linked child is listed above the form
+- ☐ Claim the same child twice → "You are already linked to this student"
+- ☐ Log in as **Jordan** (`parent@example.com`, two children)
+- ☐ **⚠️** Child switcher rail appears; switching changes every card, and the
+  URL carries `?child=…` so it is bookmarkable
+
+---
+
+## 9. Attendance — the core loop
+
+Log in as **Priya** → **Teacher**.
+
+- ☐ `/teacher` shows registers outstanding, classes, to-grade
+- ☐ `/teacher/attendance` → class picker with Done / To do per class
+- ☐ Open a class → roster sorted by display name, accented names in the right
+  place (Chloé after Ben, not after Z)
+- ☐ **⚠️** "Mark all N present" → all fill instantly; toast offers **Undo**;
+  Undo restores the previous state
+- ☐ Tap P / L / A / E on individual students — instant, never waits on network
+- ☐ Each button's accessible name is the full word ("Late — arrived after the
+  bell"), not just the letter
+- ☐ Summary chips at top update live
+- ☐ Note icon → sheet → type a note → saves, shows under the name
+- ☐ Search filters the roster; clearing restores it
+- ☐ Sync pill: "Saving…" → "Register complete"
+
+### Offline (the marquee behaviour)
+
+- ☐ DevTools → Network → **Offline**
+- ☐ Amber banner slides down: "Offline — your changes are saved and will sync"
+- ☐ Mark 2–3 students — **⚠️** the UI behaves exactly as when online
+- ☐ Sync pill reads "Saved on this device" / "N waiting to sync"
+- ☐ **⚠️** DevTools → Application → IndexedDB → `edulink` → `outbox`: your
+  payload is there with a `clientId` and `markedAt`
+- ☐ **⚠️** Prisma Studio: the server has **no** record yet
+- ☐ Set Network back to **Online**
+- ☐ Banner retracts; toast "Synced N changes"
+- ☐ **⚠️** `outbox` is now empty; the server record exists with the **same
+  `clientId`** (proves idempotency, not a re-write)
+- ☐ Reload → marks persist
+- ☐ **Idempotency:** mark offline, go online, then immediately reload before the
+  flush finishes → exactly one record per student, never duplicates
+- ☐ Kill the tab while offline with marks pending, reopen → they still sync
+- ☐ Navigate to an unvisited page while offline → the `/offline` fallback page,
+  which reassures that marked work is safe
+
+---
+
+## 10. Assignments and grading
+
+As **Priya (Teacher)**.
+
+- ☐ `/teacher/assignments` → seeded work, "N to mark" badges
+- ☐ `/teacher/assignments/new` → pick the class Amara is in
+- ☐ Points `-5` → **⚠️** "Points must be a number, and cannot be negative"
+- ☐ Fill title, instructions, category, points 25, due date + time
+- ☐ **Save as draft** → detail page shows an amber "still a draft" bar
+- ☐ **Publish now** → toast says the class and guardians were told
+- ☐ Create another and **Publish** directly → button reads "Publish to N students"
+- ☐ Detail page tiles: Students / Handed in / Marked / Class average
+- ☐ **⚠️** Class average reads `—` (not `0%`) before anything is marked
+- ☐ Type `22.5` for one student → **⚠️** accepted (half marks are real)
+- ☐ Type `250` into a 25-point task → **⚠️** row turns red, "1 not a usable
+  number", and **Save is disabled** until fixed
+- ☐ Type `27` (over 25) → accepted (bonus marks are legitimate)
+- ☐ Note icon → per-student comment
+- ☐ **⚠️** Sticky "N unsaved changes" bar stays until you save
+- ☐ Save → toast counts saved/cleared, tiles update, average appears
+- ☐ Verify in Prisma Studio: **⚠️** `scoreMilli` is `22500` — an integer, not a float
+- ☐ Clear a mark (empty the box) → save → the grade row is removed
+- ☐ **⚠️** Re-save the same mark → the student does **not** get a second
+  "marked" notification (only first grades notify)
+
+### Student view
+
+Log in as a student in that class.
+
+- ☐ `/student` → today, streak, attendance tiles; upcoming work
+- ☐ `/student/work` → the new assignment with instructions
+- ☐ **Hand it in** → type an answer → **⚠️** "Handed in 🎉", panel turns green
+- ☐ "Change it" → edit → Update works
+- ☐ **⚠️** As the teacher, the gradebook now shows "Handed in" for that student
+  (and "Handed in late" if past the due date)
+- ☐ **⚠️** After the teacher marks it, the student tries to change the submission
+  → refused: "already been marked… message your teacher instead"
+- ☐ `/student/grades` → Overall, Marked, Your best
+- ☐ **⚠️** Overall is **points-weighted**, not an average of percentages. With a
+  17/20 and a 19/25 the correct answer is 80%, not 81%. Compare against Prisma
+  Studio by hand
+- ☐ Nothing anywhere shows a red "OVERDUE" stamp — overdue reads as "2 days ago"
+
+---
+
+## 11. Remarks (private messages)
+
+As **Priya (Teacher)**.
+
+- ☐ `/remarks` → empty state explains nobody else sees these
+- ☐ `/remarks/new` → student list is only students **you teach**
+- ☐ **⚠️** Students with no linked guardian show a "No guardian" pill, and
+  selecting one warns *before* you write that nobody will receive it
+- ☐ Pick Amara (has a guardian) → no warning
+- ☐ Use a subject suggestion chip; write a message; send
+- ☐ Thread view shows the privacy line: "Only <teacher>, school admins and
+  <child>'s guardians can see this"
+- ☐ **⚠️** Your own message reads "· Sent", **not** "· Read" (a read receipt
+  against yourself was a real bug)
+- ☐ Log in as **Jordan** → `/remarks` → unread dot on the thread
+- ☐ Open it → dot clears; reply
+- ☐ Back as the teacher → **⚠️** your message now reads "· Read"
+- ☐ Enter inside the reply box inserts a newline; **⌘/Ctrl+Enter** sends
+- ☐ Copy the thread URL. Log in as **Tom** (same school, different teacher)
+- ☐ **⚠️** Open that URL → **404**. View source: the subject appears **nowhere**
+- ☐ `/remarks` as Tom → the thread is absent from the list
+- ☐ Log in as **Sam** (other school) → same URL → 404
+- ☐ Log in as the **student** the note is about → same URL → 404
+
+---
+
+## 12. Notifications and push
+
+- ☐ Bell icon in the mobile header shows an unread count
+- ☐ `/notifications` — **not built yet**; the bell links there and will 404.
+  Expected, listed in the README's "Not built"
+- ☐ Grant notification permission when prompted
+- ☐ **⚠️** Mark a child absent as the teacher → the parent's device gets a Web
+  Push *with the app closed* (requires HTTPS or localhost, real VAPID keys, and
+  a production build)
+- ☐ Click the push → opens the app at `/parent/attendance`
+- ☐ Verify `Notification` rows in Prisma Studio regardless of push delivery
+
+---
+
+## 13. Authorisation — try to break in
+
+Each of these must **fail**. Run them logged out and as the wrong role.
+
+- ☐ Logged out: `/admin`, `/teacher`, `/student`, `/parent`, `/remarks` → redirect to `/login`
+- ☐ Logged out: `POST /api/attendance` → **401**
+- ☐ Logged out: `/admin/people/export` → **401**
+- ☐ As **Tom (teacher)**: every `/admin/*` page → redirected away
+- ☐ **⚠️** As Tom: `/admin/people/export` → **403** (not 401 — he *is*
+  authenticated, just the wrong role)
+- ☐ **⚠️** As Tom: open `/teacher/attendance?classId=<Priya's class id>` → he
+  must not be able to take another teacher's register
+- ☐ **⚠️** As Sam (Oakfield): any Riverside class/assignment/thread id → 404
+- ☐ As **Jordan**: `/parent?child=<a child who is not theirs>` → falls back to
+  their own child, never shows the other
+- ☐ `/dev/mailbox` in a production build → **404**
+- ☐ `GET /api/auth/logout` (not POST) → does not log you out
+
+---
+
+## 14. Role switching and sessions
+
+- ☐ Log in as Priya → role picker lists **Teacher** and **School admin**
+- ☐ Pick one → the whole UI recolours to that role's accent
+- ☐ **⚠️** `/switch` again and pick the other → nav items change to match
+- ☐ Tom (single role) → straight to `/teacher`, no picker
+- ☐ Jordan (parent only) → straight to `/parent`
+- ☐ ⌘K / Ctrl+K → command palette; arrow keys + Enter navigate; Esc closes and
+  **returns focus** to where you were
+- ☐ Palette search for nonsense → helpful empty message
+
+---
+
+## 15. Error and empty states
+
+- ☐ A brand-new school shows encouraging empty states, never blank panels
+- ☐ Stop the server mid-session and click around → no white screen of death
+- ☐ Every list you have emptied shows an empty state with a next action
+
+---
+
+## Known gaps (do not file these as bugs)
+
+Listed in the README's "Not built": `/notifications`, `/account`, `/bulletin`,
+`/admin/settings`, `/admin/safety`, `/student/profile`, `/teacher/classes`,
+global feed, competitions, file attachments, weighted grade categories,
+progress-report export, SSO, 2FA, SMS, real email delivery.
+
+Nav links to these will 404 — that is deliberate, so the missing work stays
+visible rather than being quietly hidden.

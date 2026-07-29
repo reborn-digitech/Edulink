@@ -4,8 +4,13 @@ A multi-tenant school PWA — attendance, assignments, grades and teacher↔pare
 messaging for admins, teachers, students and parents. Installs to the Android
 home screen, works offline, syncs by itself.
 
-This is **v1**: the spine works end to end. See [Status](#status) for exactly
-what is built and what is not.
+**Status: the daily loops work end to end.** Register a school → invite staff →
+students self-join → take the register offline → set and mark work → message a
+parent, with everything landing on the parent's screen. Roughly half the
+original spec is built; [Status](#status) says exactly which half.
+
+- **Manual test plan:** [`docs/UI-TEST-CHECKLIST.md`](docs/UI-TEST-CHECKLIST.md)
+- **Taking over this codebase cold?** Start at [Handoff](#handoff).
 
 ---
 
@@ -26,6 +31,11 @@ npm run setup && npm run dev
 
 `npm run setup` = `prisma db push` + seed. Open http://localhost:3000.
 
+> **The service worker only exists in a production build.** Offline mode, the
+> install prompt and push notifications need `npm run build && npm start`. The
+> SW is disabled in dev on purpose — one caching HMR chunks makes every edit
+> look like it silently failed.
+
 ### Seeded accounts
 
 Password for every account: `copper-lantern-47-brook`
@@ -38,39 +48,143 @@ Password for every account: `copper-lantern-47-brook`
 | `parent@example.com` | Parent with children in **both** schools |
 
 The second school exists so tenant-isolation bugs are visible — a query that
-forgets its `schoolId` will start returning Oakfield data.
+forgets its `schoolId` starts returning Oakfield data.
 
 The seed prints each class's join code. To try the kid-first flow, open
-`/join/student` and paste one — students self-enrol and appear on that class's
-register immediately. Their **student code** (shown in the directory) plus their
-date of birth is what a parent needs at `/join/parent` to link to them.
+`/join/student` and paste one. A student's **student code** (in `/admin/people`)
+plus their date of birth is what a parent needs at `/join/parent`.
 
-Students who join this way have **no email address**: they get a generated login
+Students who self-join have **no email address**: they get a generated login
 handle like `rosie.kvjn`, which is what they type into the login box.
 
-Emails are not sent. Every magic link, invite and verification message is
-readable at **http://localhost:3000/dev/mailbox** (404s in production).
+Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 
 ### Scripts
 
 | Command | Does |
 |---|---|
-| `npm run dev` | Dev server (service worker disabled — see note below) |
-| `npm run build && npm start` | Production build; **this is the only mode with a service worker** |
+| `npm run dev` | Dev server (no service worker) |
+| `npm run build && npm start` | Production build — **the only mode with a SW** |
 | `npm test` | Full suite (194 tests) |
+| `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
+| `npm run vapid` | Generate a Web Push keypair |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
-> The service worker is disabled in dev on purpose — a live SW caching HMR
-> chunks makes every edit look like it silently failed. **Offline mode, install
-> prompt and push only work in `npm run build && npm start`.**
+---
+
+## Handoff
+
+Everything a fresh session needs to continue without re-deriving it.
+
+### Where things live
+
+```
+prisma/schema.prisma      27 models. Read the header comment first.
+prisma/seed.ts            Two schools on purpose (isolation testing).
+src/lib/                  All business logic. Pages are thin.
+  tenancy.ts              ★ THE authorization chokepoint. Read before anything.
+  attendance.ts           Offline-safe register merge (idempotent).
+  grading.ts              Assignments, marking, overallPercent().
+  remarks.ts              Private thread visibility rules.
+  dates.ts                dateKey / timezone / DST. Heavily tested.
+  csv.ts                  Real RFC 4180 parser (not regex).
+  env.ts                  Boot-time config gate.
+  offline-queue.ts        IndexedDB outbox (client-side).
+  constants.ts            Every status string, single source of truth.
+src/app/(app)/            Signed-in routes (share the nav shell).
+src/app/                  Public routes: login, register, join, invite, switch.
+src/sw.ts                 Service worker (Serwist compiles to public/sw.js).
+tests/                    Integration tests (need the seed).
+src/**/*.test.ts          Unit tests.
+docs/UI-TEST-CHECKLIST.md Manual walkthrough of every feature.
+```
+
+### Non-negotiable conventions
+
+Break these and something quietly goes wrong for a child or a parent.
+
+1. **`schoolId` comes from the session, never from client input.** Anything
+   taking an id from a route param, form field or query string goes through an
+   `assert*` helper in `src/lib/tenancy.ts`, which re-queries with the session's
+   `schoolId` in the `WHERE` clause. A row from another tenant simply does not
+   come back. Teachers are *additionally* scoped to classes they actually teach —
+   "same school" is never sufficient.
+2. **Wrong-tenant access returns `NOT_FOUND`, never `FORBIDDEN`.** A
+   distinguishable error confirms the row exists, which is itself a disclosure.
+3. **Scores are integer thousandths** (`scoreMilli`); 87.5 → `87500`. Never
+   floats. Overall percentages go through `overallPercent()`, which sums points
+   earned and available and divides **once** — averaging per-assignment
+   percentages weights a 5-point quiz like a 100-point exam. On the seeded data
+   the two methods differ (88% vs 86%), so this is a real number, not a nit.
+4. **Attendance identity is `dateKey`** — `YYYY-MM-DD` in the *school's*
+   timezone, not a UTC instant. See the DST reasoning in `dates.ts`.
+5. **Offline writes are idempotent** by `clientId` (replay = no-op) *and*
+   ordered by `markedAt` (a late replay cannot undo a newer correction).
+6. **Bad input is collected and reported, never silently skipped.** A bulk
+   import claiming "42 sent" while dropping 3 is how a teacher is found missing
+   in September.
+7. **Archive, don't delete.** Classes own attendance and grade history.
+8. **Notify on first state change only.** Fixing a typo three times must not
+   send a family three pushes.
+9. **Config nothing reads is config that rots.** There is deliberately no
+   `AUTH_SECRET` — sessions are opaque random tokens stored as SHA-256 hashes,
+   so there is nothing to sign. `env.ts` refuses to boot a *deployed* instance
+   with missing push keys, a plain-http origin, or the dev mail transport, but
+   stays quiet for a local production build.
+10. **SQLite portability tax.** No native enums and no JSON columns: status
+    columns are `String` (values in `constants.ts`, validated by zod at every
+    write) and JSON payloads are `String` (read via `json.ts`). This is what
+    lets the same schema run on Postgres unchanged.
+
+### Testing expectations
+
+- Every logic-heavy module gets tests, and the suite is **mutation-tested**:
+  deliberately break the implementation and confirm the test fails. Several
+  suites exist *because* a green suite was hiding a real bug.
+- Integration tests in `tests/` run against the seeded dev database and **clean
+  up after themselves** (see `cleanSyntheticData` in `tests/attendance.test.ts`).
+  They must be repeatable — run twice in a row before committing.
+- `vitest.config.ts` aliases `server-only` and `next/headers` to stubs in
+  `tests/stubs/`, so real business logic can be tested rather than a mock of it.
+
+### Gotchas that will cost you an hour
+
+- **Rebuilding over a running `next start` corrupts `.next`** and yields
+  `TypeError: a[d] is not a function` on every route. Stop the server,
+  `rm -rf .next`, rebuild.
+- The service worker is **disabled in dev**. Offline/push testing needs a
+  production build.
+- `/dev/mailbox` is **404 in production** (it lists sign-in links in plaintext).
+  Use `npm run dev` or read the `OutboundEmail` table.
+- Dark-mode role accents are written **twice** in `globals.css`
+  (`[data-theme="dark"][data-role="x"]` *and* `[data-theme="dark"] [data-role="x"]`)
+  because `data-role` is often on a subtree while `data-theme` is on `<html>`.
+  A single compound selector silently leaves pale fills on a dark page.
+- Realtime fan-out is **in-process only**. More than one instance needs Redis or
+  Ably behind the `publish`/`subscribe` surface in `realtime.ts`.
+
+### Next steps, in priority order
+
+1. `/notifications` — the bell icon links there and 404s. Highest-visibility gap.
+2. `/account` — appearance settings, notification preferences and quiet hours
+   (the `prefs` column and `inQuietHours()` already exist and are unused by UI).
+3. `/bulletin` — school noticeboard with the moderation queue. The `Post`,
+   `Comment`, `Reaction` and `Report` models exist and are unused.
+4. `/admin/settings` — branding (logo upload, colour). `storage.ts` is written,
+   validated and completely unwired; this is its first consumer.
+5. `/teacher/classes` — teacher-facing class detail (nav links to it).
+6. File attachments on assignments and submissions (`storage.ts` again).
+7. Postgres migration + RLS policies (schema comments describe the intended
+   predicates; isolation is currently app-layer only).
+8. Global feed, competitions, safety centre, progress-report export, SSO, 2FA.
 
 ---
 
 ## Architecture decisions
 
-One line each, with the default rejected (§3).
+One line each, with the default rejected.
 
 | Choice | Because | Rejected |
 |---|---|---|
@@ -81,154 +195,83 @@ One line each, with the default rejected (§3).
 | Serwist 9 | Maintained, first-class Next support | next-pwa (unmaintained) |
 | Hand-rasterised PNG icons | Deterministic bytes, no native image dependency | sharp / runtime `ImageResponse` |
 | Inline-SVG avatars (72 presets) | No requests, crisp at any size, cannot leak a child's photo | Shipping 72 image files |
-
-### Things worth knowing before you extend it
-
-- **Tenancy.** `schoolId` comes from the *session*, never from a route param or
-  form field. Everything that takes an id from the client goes through an
-  `assert*` helper in [`src/lib/tenancy.ts`](src/lib/tenancy.ts), which
-  re-queries with the session's `schoolId` in the `WHERE` clause. A row from
-  another tenant simply does not come back. Teachers are additionally scoped to
-  classes they actually teach — "same school" is not sufficient to take a
-  register, and treating it as sufficient is the tempting shortcut here.
-- **Dates.** Attendance identity is `dateKey` — `YYYY-MM-DD` in the *school's*
-  timezone, not a UTC instant. See the DST reasoning in
-  [`src/lib/dates.ts`](src/lib/dates.ts).
-- **Money-shaped numbers.** Scores are integer thousandths (`scoreMilli`);
-  87.5 → `87500`. Never floats. Overall percentages go through
-  `overallPercent()` in [`src/lib/grading.ts`](src/lib/grading.ts), which sums
-  points earned and points available and divides once — averaging the
-  per-assignment percentages instead would weight a 5-point spelling quiz the
-  same as a 100-point exam. One shared helper, so the number a parent sees can
-  never drift from the one the student sees.
-- **Portability tax.** SQLite has no enums and no JSON columns, so status
-  columns are `String` (values in [`src/lib/constants.ts`](src/lib/constants.ts),
-  enforced by zod at every write) and JSON payloads are `String` (read through
-  [`src/lib/json.ts`](src/lib/json.ts)). This is what lets the same schema run
-  on Postgres unchanged.
-- **Offline writes** are idempotent by `clientId` (replay = no-op) *and*
-  ordered by `markedAt` (a late replay cannot undo a newer correction). Both
-  are covered by tests, and both were verified by deliberately breaking them.
-- **CSV is parsed, not regex-matched.** `src/lib/csv.ts` is a real RFC 4180
-  reader (quoted commas, doubled quotes, embedded newlines, CRLF, Excel BOM),
-  because the rows a regex mangles are exactly the ones a school has —
-  `"Okafor, Amara"`. Bad rows are *collected and reported*, never skipped
-  silently: a bulk import that claims "42 sent" while dropping 3 is how a
-  teacher is discovered missing in September.
-- **Archive, don't delete.** A class owns attendance history and grades, so the
-  only destructive action offered is archiving, it is reversible, and the
-  confirmation names how many students are affected.
-- **Config that nothing reads is config that rots.** There is deliberately no
-  `AUTH_SECRET`: sessions are opaque random tokens stored as SHA-256 hashes, so
-  there is nothing to sign. `src/lib/env.ts` refuses to boot a *deployed*
-  instance with missing push keys, a plain-http origin, or the dev mail
-  transport — but stays quiet for a local production build, which is the
-  documented way to test the service worker.
+| Hand-written CSV parser | Quoted commas, doubled quotes, embedded newlines, CRLF, Excel BOM — the rows a regex mangles are the ones a school has (`"Okafor, Amara"`) | A regex, or a dependency |
 
 ---
 
 ## Status
 
-### Verified working (executed, not reasoned about)
+### Verified working — executed, not reasoned about
 
-- Landing page, school registration wizard (3 steps, live validation, resumable
-  draft), login (password + magic link), role switcher, admin dashboard with a
-  **derived** setup checklist, teacher home, take-the-register, dev mailbox.
-- **The full offline loop, in a production build**: marked a student absent with
-  the network forced down → payload queued in IndexedDB → nothing on the server
-  → reconnected → synced with the same `clientId` → the linked parent's
-  notification row created.
-- **The full invite loop, in a production build**: created a class (got a join
-  code) → pasted a deliberately messy CSV (quoted comma-name, invalid address,
-  blank address, in-file duplicate, an existing member) → preview flagged all
-  five → sent → **2 sent, 4 individually accounted for, none silently dropped**
-  → opened the emailed link → accepted → landed in `/teacher` with the right
-  title and subjects. The quoted name `"Nakamura, Yuki"` survived intact from
-  CSV to database.
-- **Invite tokens are single-use**: a consumed token and a forged token return
-  the *same* message, so the page is not an oracle for guessing valid tokens.
-- Directory search / role filter / class filter / sort / pagination, and CSV
-  export scoped to the same filters. A forged `classId` in the export query is
-  ignored, not honoured, and the export contains **zero** rows from the other
-  seeded school.
-- **The full onboarding spine, in a production build.** A child joined with a
-  class code typed plainly as `773wc4w` (auto-formatted to `773-WC4W`), picked
-  one of 72 avatars, set a passphrase, and landed on their own dashboard — with
-  a generated login handle, since a nine-year-old often has no email. They then
-  logged back in with that bare handle. The teacher's register picked them up
-  immediately (roster 18 → 19, with their chosen avatar). A parent signed up,
-  claimed them with the student code **plus** date of birth, and the absence the
-  teacher then marked appeared on the parent's dashboard as *"Rosie was marked
-  absent"* with a notification row.
-- **The parent claim is genuinely two-factor.** A correct code with the wrong
-  birthdate, and a wrong code with the correct birthdate, return a
-  byte-identical message — so it cannot be used to test whether a code is real,
-  nor to brute-force a child's date of birth against a known-good code.
-- Consent is blocked at the form and recorded with timestamps on the
-  guardianship row; signing up without it is refused.
-- **Assignments and grading, in a production build.** Set work (a negative
-  points value was rejected inline), published to 18 students, marked three
-  including a half mark, and typed `250` into a 25-point task — the typo was
-  caught client-side and Save stayed disabled until it was fixed. `22.5` is
-  stored as exactly `22500`, the class average matched a hand computation
-  (89%), and both the student and the parent saw the result.
-- **The overall average is weighted by points, not by averaging percentages.**
-  On the seeded data the two methods genuinely disagree — Chloé is 88% summed
-  and 86% averaged — and the app shows 88%. A unit test pins the case where the
-  gap is 32 points (a 5-point quiz against a 100-point exam).
-- **Remarks are private in the way that matters.** A teacher wrote a note about
-  a student; the guardian saw it, opened it, and replied. A *different teacher
-  at the same school* gets a real **404** on that thread — the subject appears
-  nowhere in the HTML, and the thread is absent from their list. So do an admin
-  of another school, a parent who does not guard that child, and the student the
-  note is about.
-- The compose screen warns **before** you write that a student has no guardian
-  linked, rather than letting the message go nowhere.
-- A signed-in **teacher** is redirected away from every `/admin` page and gets
-  **403** (not 401) from the export endpoint — authenticated, wrong role.
-- Registration creating school + admin + membership + verification email in one
-  transaction; argon2id hashes at OWASP 2024 params.
-- Production build: 104 kB shared JS, service worker generated with precache
-  manifest, push, notificationclick and Background Sync handlers.
-- Unauthenticated `/admin/*` → 307; `POST /api/attendance` and the export → 401;
+- Landing page, registration wizard (3 steps, live validation, resumable draft),
+  login (password, magic link, **and bare student handles**), role switcher,
+  admin dashboard with a *derived* checklist, teacher home, dev mailbox.
+- **Offline loop, production build:** marked a student absent with the network
+  forced down → payload queued in IndexedDB → nothing on the server →
+  reconnected → synced with the **same `clientId`** → parent notified.
+- **Invite loop, production build:** created a class → pasted a deliberately
+  messy CSV (quoted comma-name, invalid address, blank address, in-file
+  duplicate, an existing member) → preview flagged all five → **2 sent, 4
+  individually accounted for, none silently dropped** → opened the emailed link
+  → accepted. `"Nakamura, Yuki"` survived CSV → database intact.
+- **Invite tokens are single-use**, and a consumed token returns the *same*
+  message as a forged one.
+- Directory search / filter / sort / pagination and a filter-scoped CSV export.
+  A forged `classId` is ignored; the export contains **zero** rows from the other
+  school.
+- **Onboarding spine, production build:** child joined with `773wc4w`
+  (auto-formatted), picked from 72 avatars, got a login handle, logged back in
+  with it; the teacher's roster went 18 → 19; a parent claimed them with code +
+  DOB and saw the absence the teacher then marked.
+- **The parent claim is genuinely two-factor:** wrong-DOB and wrong-code return
+  byte-identical messages.
+- **Assignments and grading, production build:** negative points rejected
+  inline, published to 18 students, marked three including a half mark; `250`
+  into a 25-point task was caught client-side with Save disabled. `22.5` stored
+  as exactly `22500`; class average matched a hand computation (89%).
+- **Grades are points-weighted:** on seeded data the methods disagree (88% vs
+  86%) and the app shows 88%.
+- **Student submission:** handed work in from `/student/work`, empty answer
+  refused, teacher (only the assignment's author) notified, gradebook shows
+  "Handed in late" for a past-due hand-in. Once marked, the work moves to
+  "Marked already" and the hand-in panel is no longer offered.
+- **Remarks are private:** a *different teacher at the same school* gets a real
+  404 with the subject appearing nowhere in the HTML; so do an other-school
+  admin, a non-guardian parent, and the student the note is about.
+- Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
 - **194 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading and env suites are each
-  **mutation-tested** — the implementation was deliberately broken to confirm
-  the tests actually fail.
+  **mutation-tested**.
 
-### Built but not yet exercised end to end
+### Built but not click-through verified
 
-Renders and typechecks; no click-through verification. Treat as `Untested:`.
+Renders and typechecks; treat as `Untested:`.
 
-- Command palette (⌘K), install button, notification/quiet-hours logic,
-  file storage + upload validation, class archive/restore and join-code
-  rotation, invite resend/withdraw, the multi-child parent switcher (only
-  exercised with one child).
+- Command palette (⌘K), install button, quiet-hours logic, `storage.ts` upload
+  validation, class archive/restore and join-code rotation, invite
+  resend/withdraw, the multi-child parent switcher (only exercised with one
+  child).
+- **The server-side guard refusing a re-submission after marking.** The UI
+  stops offering the panel (verified), so that branch in
+  `src/app/(app)/student/work/actions.ts` is defence-in-depth for a stale page
+  and has not been executed.
 
-### Not built
+### Not built — these routes 404
 
-Routes referenced by navigation that do not exist yet — they will 404:
+Left visible in the nav on purpose, so missing work is obvious rather than hidden.
 
-- Student submission — a student cannot hand work in from the app yet; the
-  gradebook shows a submission column because the model supports it, and the
-  seed populates it, but there is no upload screen
-- Weighted grade categories and progress-report export
-- Bulletin board, global feed, competitions, safety centre, admin settings
-- Student profile page, certifications/awards gallery, student posting
-- Self-signup approval queue (the school-code path referenced on the invite page)
-- SSO, 2FA, SMS, i18n beyond English, real email transport
-
-`getChecklist` deliberately derives from live data rather than stored flags, so
-the admin dashboard tells the truth about all of the above.
+- `/notifications`, `/account`, `/bulletin`, `/admin/settings`, `/admin/safety`,
+  `/student/profile`, `/teacher/classes`
+- Global feed, competitions marketplace, safety centre / moderation dashboards
+- File attachments on assignments and submissions (text-only today)
+- Weighted grade categories, progress-report export
+- SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
+- Postgres RLS policies (described in schema comments; app-layer only today)
 
 ### Known issues
 
-- **Rebuilding over a running `next start` corrupts `.next`** and yields
-  `TypeError: a[d] is not a function` on every route. Stop the server, `rm -rf
-  .next`, rebuild. Environment hygiene, not an app bug — but it will bite you.
-- Realtime fan-out is in-process only. More than one instance needs Redis or
-  Ably behind the `publish`/`subscribe` surface in `src/lib/realtime.ts`.
-- Postgres RLS policies are described in the schema comments but not written;
-  isolation is currently enforced in the data layer only.
-- Lighthouse has not been run — no Chrome driver in this environment.
+- Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
+- Realtime fan-out is single-process.
+- Lighthouse has not been run — no Chrome driver in the build environment, so
+  the spec's ≥90 mobile score is **unverified**.

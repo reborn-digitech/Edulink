@@ -8,6 +8,7 @@ import { formatMilli } from "@/lib/validation";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import { SubmitPanel } from "./submit-panel";
 
 export const metadata: Metadata = { title: "My work" };
 
@@ -57,6 +58,12 @@ export default async function StudentWorkPage() {
                         {item.body}
                       </p>
                     )}
+                    <SubmitPanel
+                      assignmentId={item.id}
+                      title={item.title}
+                      submittedAt={item.submittedAt}
+                      existingBody={item.submissionBody}
+                    />
                   </div>
                   {/* Gentle: "3 days late", never a red OVERDUE stamp. (§6) */}
                   <Badge tone={item.overdue ? "warn" : "neutral"} size="sm">

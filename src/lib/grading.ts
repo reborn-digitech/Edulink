@@ -448,6 +448,7 @@ export async function getStudentWork(session: ActiveContext) {
     pointsMilli: assignment.pointsMilli,
     dueAt: assignment.dueAt,
     submittedAt: assignment.submissions[0]?.submittedAt ?? null,
+    submissionBody: assignment.submissions[0]?.body ?? "",
     scoreMilli: assignment.grades[0]?.scoreMilli ?? null,
     comment: assignment.grades[0]?.comment ?? null,
     overdue: Boolean(
