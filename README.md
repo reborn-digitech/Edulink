@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (194 tests) |
+| `npm test` | Full suite (206 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -167,18 +167,24 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `/notifications` — the bell icon links there and 404s. Highest-visibility gap.
-2. `/account` — appearance settings, notification preferences and quiet hours
-   (the `prefs` column and `inQuietHours()` already exist and are unused by UI).
-3. `/bulletin` — school noticeboard with the moderation queue. The `Post`,
-   `Comment`, `Reaction` and `Report` models exist and are unused.
-4. `/admin/settings` — branding (logo upload, colour). `storage.ts` is written,
-   validated and completely unwired; this is its first consumer.
-5. `/teacher/classes` — teacher-facing class detail (nav links to it).
-6. File attachments on assignments and submissions (`storage.ts` again).
-7. Postgres migration + RLS policies (schema comments describe the intended
+1. `/bulletin` — school noticeboard with the moderation queue. The `Post`,
+   `Comment`, `Reaction` and `Report` models exist and are entirely unused, so
+   this is the largest built-but-unreachable surface left.
+2. `/admin/settings` — branding (logo upload, colour). **`storage.ts` is
+   written, validated, tested-by-inspection and completely unwired** — this
+   would be its first consumer. Treat that as a smell worth clearing.
+3. `/teacher/classes` — teacher-facing class detail (nav links to it and 404s).
+4. `/student/profile` — avatar change, awards gallery (nav links to it).
+5. File attachments on assignments and submissions (`storage.ts` again).
+6. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-8. Global feed, competitions, safety centre, progress-report export, SSO, 2FA.
+7. Global feed, competitions, safety centre, progress-report export, SSO, 2FA.
+
+**A pattern worth internalising before you add anything:** three separate
+features in this codebase were fully built and silently dead because one link in
+the chain was missing — empty VAPID keys, no push-subscription endpoint, an
+unused `AUTH_SECRET`. When you finish a feature, find the thing that *proves*
+data moved end to end and check it, rather than checking that each piece exists.
 
 ---
 
@@ -235,13 +241,25 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **Notification centre and account settings.** `/notifications` with All /
+  Unread tabs, per-item read-on-open, mark-all-read, and a "clear read" that
+  explicitly keeps unread items. `/account` with roles, live-applying appearance
+  (contrast / dyslexia-friendly / reduced motion, verified changing the DOM
+  before saving), quiet hours, and device management.
+- **Web Push registration now exists — it previously did not.** `notify.ts` read
+  and pruned `PushSubscription` rows but *nothing ever created one*, so
+  `sendPush` found zero subscriptions for every user and returned silently. With
+  `/api/push` in place, a real subscription is stored (idempotent per endpoint,
+  malformed bodies → 422, unauthenticated → 401) and the log now shows
+  `[push] send failed` for a synthetic endpoint — proof that delivery is being
+  attempted rather than skipped.
 - **Remarks are private:** a *different teacher at the same school* gets a real
   404 with the subject appearing nowhere in the HTML; so do an other-school
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **194 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading and env suites are each
+- **206 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading, quiet-hours and env suites are each
   **mutation-tested**.
 
 ### Built but not click-through verified
@@ -261,8 +279,8 @@ Renders and typechecks; treat as `Untested:`.
 
 Left visible in the nav on purpose, so missing work is obvious rather than hidden.
 
-- `/notifications`, `/account`, `/bulletin`, `/admin/settings`, `/admin/safety`,
-  `/student/profile`, `/teacher/classes`
+- `/bulletin`, `/admin/settings`, `/admin/safety`, `/student/profile`,
+  `/teacher/classes`
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - File attachments on assignments and submissions (text-only today)
 - Weighted grade categories, progress-report export

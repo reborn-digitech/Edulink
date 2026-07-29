@@ -340,17 +340,51 @@ As **Priya (Teacher)**.
 
 ---
 
-## 12. Notifications and push
+## 12. Notifications, push and account settings
 
 - ☐ Bell icon in the mobile header shows an unread count
-- ☐ `/notifications` — **not built yet**; the bell links there and will 404.
-  Expected, listed in the README's "Not built"
-- ☐ Grant notification permission when prompted
+- ☐ `/notifications` lists everything, newest first, unread rows tinted
+- ☐ Tabs: All / Unread (N)
+- ☐ Click a notification → navigates to its target **and** clears the unread dot
+- ☐ "Mark all as read" → count in the toast matches
+- ☐ **⚠️** "Clear N read" → toast says *"Anything still unread was kept"*, and
+  unread items are genuinely still there. Clearing must never be able to make an
+  unseen message about a child vanish
+- ☐ `/account` → roles, notifications, appearance, devices
+- ☐ **⚠️** Appearance changes apply to the page **immediately**, before saving —
+  someone enabling high contrast because they cannot read the page should not
+  have to read a toast to find out if it worked
+- ☐ Dyslexia-friendly → letter spacing and line height visibly widen
+- ☐ Reduced motion → animations stop
+- ☐ Reload after saving → settings survive, applied before first paint
+- ☐ Quiet hours: enable → 21:00 to 07:00 defaults
+- ☐ **⚠️** Set start and end to the *same* time → refused ("Start and end cannot
+  be the same time") — otherwise it would silence everything forever
+- ☐ Devices list shows "Chrome on Mac"-style labels, with "This device" badged
+- ☐ Sign in from a second browser → both appear → sign the other one out from
+  here → **⚠️** that browser is genuinely logged out on its next request
+  (this is why sessions are server-side rows, not JWTs)
+- ☐ "Sign out everywhere else" → toast confirms you are still signed in here
+
+### Push
+
+- ☐ **⚠️** `/account` → "Turn on" under Notifications. If push is unavailable the
+  panel says *which* thing is missing (no service worker in dev / permission
+  blocked / unsupported browser) — it must never show a button that silently
+  does nothing
+- ☐ Grant permission → "Notifications are on for this device"
 - ☐ **⚠️** Mark a child absent as the teacher → the parent's device gets a Web
   Push *with the app closed* (requires HTTPS or localhost, real VAPID keys, and
   a production build)
 - ☐ Click the push → opens the app at `/parent/attendance`
 - ☐ Verify `Notification` rows in Prisma Studio regardless of push delivery
+- ☐ **⚠️** In Prisma Studio, a `PushSubscription` row now exists for you. If it
+  does not, push is dead no matter how correct everything else looks — that was
+  a real bug: nothing created subscriptions, so `sendPush` always found zero and
+  returned silently
+- ☐ Reload `/account` → still reads "on" (the browser subscription and the
+  server row are reconciled on load, and re-registered if the server lost it)
+- ☐ Turn off → the `PushSubscription` row is deleted
 
 ---
 
@@ -397,10 +431,10 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Listed in the README's "Not built": `/notifications`, `/account`, `/bulletin`,
-`/admin/settings`, `/admin/safety`, `/student/profile`, `/teacher/classes`,
-global feed, competitions, file attachments, weighted grade categories,
-progress-report export, SSO, 2FA, SMS, real email delivery.
+Listed in the README's "Not built": `/bulletin`, `/admin/settings`,
+`/admin/safety`, `/student/profile`, `/teacher/classes`, global feed,
+competitions, file attachments, weighted grade categories, progress-report
+export, SSO, 2FA, SMS, real email delivery.
 
 Nav links to these will 404 — that is deliberate, so the missing work stays
 visible rather than being quietly hidden.
