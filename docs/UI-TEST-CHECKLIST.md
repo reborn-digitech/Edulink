@@ -480,6 +480,41 @@ post as a student first (§12b), or seed one directly.
 
 ---
 
+## 12d. School settings and logo upload (admin only)
+
+- ☐ `/admin/settings` → school code shown as read-only
+- ☐ Choose an image → **⚠️** crop controls appear (zoom, move sideways, move up
+  and down) and the preview updates live
+- ☐ **⚠️** Try an **SVG** → refused before upload, with a reason ("export it as a
+  PNG first"). SVG is an executable document, not an image
+- ☐ Try a `.txt` renamed to `.png` → refused. The server sniffs magic bytes and
+  does not trust the browser's Content-Type
+- ☐ Try a file over 8 MB → refused client-side with the size named
+- ☐ Adjust the zoom, then Save → **⚠️** the stored logo matches the **adjusted**
+  crop, not a centre crop
+- ☐ In Prisma Studio, `School.logoPath` is a UUID filename
+- ☐ **⚠️** The file is on disk under `storage/<2-char shard>/`, **not** under
+  `public/` — anything in public is served with no authorisation at all
+- ☐ The logo renders from `/api/files/<uuid>.png`
+- ☐ `curl -D-` that URL → `Content-Type: image/png`,
+  `X-Content-Type-Options: nosniff`, a CSP with `sandbox`, and an immutable
+  `Cache-Control`
+- ☐ Repeat with `If-None-Match: <etag>` → **304**
+- ☐ **⚠️** Request `/api/files/../../.env` → **404**, and `.env` is not returned
+- ☐ Request a well-formed but non-existent UUID → **404** (never 403, which
+  would confirm it exists)
+- ☐ Upload a **second** logo → **⚠️** the first file is gone from disk and its
+  URL now 404s. No orphans accumulate
+- ☐ "Remove" → logo cleared and the file deleted
+- ☐ Pick an accent colour → **⚠️** the whole UI recolours immediately, before you
+  save
+- ☐ Change a detail → a sticky "Unsaved changes" bar appears; Save persists it
+- ☐ Reload → everything survives, and the accent is applied on first paint
+- ☐ Invalid contact email / a website without `http://` → inline errors, no save
+- ☐ As a **teacher**, `/admin/settings` → redirected away
+
+---
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -527,10 +562,11 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Listed in the README's "Not built": `/admin/settings`, `/student/profile`,
-`/teacher/classes`, global feed, competitions, suspend-user, file attachments
-(bulletin posts are text-only), weighted grade categories, progress-report
-export, SSO, 2FA, SMS, real email delivery.
+Listed in the README's "Not built": `/student/profile`, `/teacher/classes`,
+global feed, competitions, suspend-user, file attachments on assignments,
+submissions and bulletin posts (only the school logo uses storage so far),
+weighted grade categories, progress-report export, SSO, 2FA, SMS, real email
+delivery.
 
 Nav links to these will 404 — that is deliberate, so the missing work stays
 visible rather than being quietly hidden.

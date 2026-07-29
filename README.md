@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (250 tests) |
+| `npm test` | Full suite (270 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -91,6 +91,7 @@ src/lib/                  All business logic. Pages are thin.
   bulletin.ts             Post visibility + the student-moderation gate.
   safety.ts               Report triage + audit log (server-only).
   safety-labels.ts        Client-safe types/labels for the above — see note.
+  storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -175,13 +176,15 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `/admin/settings` — branding (logo upload, colour). **`storage.ts` is
+1. `/teacher/classes` — branding (logo upload, colour). **`storage.ts` is
    written, validated, tested-by-inspection and completely unwired** — this
    would be its first consumer. Treat that as a smell worth clearing.
-2. `/teacher/classes` — teacher-facing class detail (nav links to it and 404s).
-3. `/student/profile` — avatar change, awards gallery (nav links to it).
-4. File attachments on assignments, submissions and bulletin posts (`storage.ts`
-   again — all three are text-only today).
+ — teacher-facing class detail (nav links to it and 404s).
+2. `/student/profile` — avatar change, awards gallery (nav links to it).
+3. File attachments on assignments, submissions and bulletin posts. `storage.ts`
+   and `/api/files/[fileId]` now exist and are proven; attachments mainly need
+   the per-file authorisation branch in that route filled in (today only school
+   logos are readable, everything else 404s by design).
 5. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
 6. Global feed, competitions, progress-report export, SSO, 2FA.
@@ -247,6 +250,12 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **School settings, and `storage.ts` finally wired up.** Uploaded a 900×300
+  PNG, adjusted the crop, and the stored file was a real 512×512 PNG on disk
+  under `storage/<shard>/` — outside `public/` — served from
+  `/api/files/<uuid>.png` with `nosniff`, a sandboxed CSP and a 304 on ETag
+  revalidation. `../../.env` returns 404 and does not leak the file. Uploading a
+  replacement deleted the previous file, leaving no orphan.
 - **Safety centre.** Reports group by target — three reports of one post is one
   card, not three. Unkind/unsafe sorts above a more-reported, more-recent spam
   report. A report whose target was deleted renders as "no longer available" and
@@ -278,9 +287,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **250 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading, bulletin, safety, quiet-hours and env
-  suites are each **mutation-tested** — for the bulletin that means four separate
+- **270 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading, bulletin, safety, storage, quiet-hours
+  and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -302,7 +311,7 @@ Renders and typechecks; treat as `Untested:`.
 
 Left visible in the nav on purpose, so missing work is obvious rather than hidden.
 
-- `/admin/settings`, `/student/profile`, `/teacher/classes`
+- `/student/profile`, `/teacher/classes`
 - Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - File attachments on assignments and submissions (text-only today)
