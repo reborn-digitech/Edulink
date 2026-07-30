@@ -111,19 +111,19 @@ BEGIN
   -- 1. No tenant set at all. current_setting(..., true) is NULL, the comparison
   --    is NULL, and nothing matches. A query that forgets to say who it is for
   --    must return nothing rather than everything.
-  PERFORM set_config('app.school_id', '', true);
+  PERFORM set_config('app.school_ids', '', true);
   SELECT count(*) INTO visible FROM "Post" WHERE id LIKE 'rlscheck-%';
   IF visible <> 0 THEN
-    RAISE EXCEPTION 'FAIL: % post(s) visible with no app.school_id set — RLS is not failing closed', visible;
+    RAISE EXCEPTION 'FAIL: % post(s) visible with no app.school_ids set — RLS is not failing closed', visible;
   END IF;
 
   SELECT count(*) INTO visible FROM "School" WHERE id LIKE 'rlscheck-%';
   IF visible <> 0 THEN
-    RAISE EXCEPTION 'FAIL: % school(s) visible with no app.school_id set', visible;
+    RAISE EXCEPTION 'FAIL: % school(s) visible with no app.school_ids set', visible;
   END IF;
 
   -- 2. Acting for A: A's row, and only A's.
-  PERFORM set_config('app.school_id', 'rlscheck-a', true);
+  PERFORM set_config('app.school_ids', 'rlscheck-a', true);
   SELECT count(*) INTO visible FROM "Post" WHERE id LIKE 'rlscheck-%';
   IF visible <> 1 THEN
     RAISE EXCEPTION 'FAIL: acting for A sees % posts, expected exactly 1', visible;
@@ -158,7 +158,7 @@ BEGIN
 
   -- 5. And the other direction, so this is isolation rather than A simply
   --    having no access to anything.
-  PERFORM set_config('app.school_id', 'rlscheck-b', true);
+  PERFORM set_config('app.school_ids', 'rlscheck-b', true);
   IF NOT EXISTS (SELECT 1 FROM "Post" WHERE id = 'rlscheck-post-b' AND title = 'Belongs to B') THEN
     RAISE EXCEPTION 'FAIL: acting for B cannot see its own post, or it was modified';
   END IF;
@@ -193,12 +193,12 @@ COMMIT;
 -- ---------------------------------------------------------------------------
 
 BEGIN;
-SET LOCAL app.school_id = 'rlscheck-scope-probe';
+SET LOCAL app.school_ids = 'rlscheck-scope-probe';
 COMMIT;
 
 DO $$
 BEGIN
-  IF coalesce(current_setting('app.school_id', true), '') = 'rlscheck-scope-probe' THEN
+  IF coalesce(current_setting('app.school_ids', true), '') = 'rlscheck-scope-probe' THEN
     RAISE EXCEPTION
       'FAIL: SET LOCAL survived its transaction. A pooled connection would carry '
       'one request''s tenant into the next.';

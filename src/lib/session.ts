@@ -4,6 +4,7 @@ import { cache } from "react";
 import { db } from "./db";
 import { generateToken, hashToken } from "./crypto";
 import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
+import { bindTenants } from "./tenant-context";
 import { readJson } from "./json";
 
 /**
@@ -158,6 +159,30 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
   let schoolId: string | null = session.activeSchoolId;
   let role: Role | null = (session.activeRole as Role | null) ?? null;
 
+  // Bind the schools this request may see, before the first scoped query.
+  // Everything downstream — pages, actions, the libs they call — inherits it and
+  // never has to think about RLS. The membership check immediately below is
+  // itself scoped, and correctly so: it asks whether this user belongs to THAT
+  // school, which is exactly the question the policies answer.
+  //
+  // A PARENT gets the schools of their children instead. They have no school of
+  // their own and legitimately span them, so this is the one role whose set is
+  // not simply its session's school. Reading it costs one extra query, for
+  // parents only.
+  if (role === "PARENT") {
+    const guardianships = await db.guardianship.findMany({
+      where: { parentUserId: session.userId, status: "ACTIVE" },
+      // Read straight off the row, NOT through `student`. Membership is policied,
+      // and at this moment nothing is bound yet — the join would come back null
+      // and Prisma refuses a required relation that returned nothing. This is
+      // the bootstrap: it has to work before the tenant is known.
+      select: { studentSchoolId: true },
+    });
+    bindTenants(guardianships.map((g) => g.studentSchoolId));
+  } else {
+    bindTenants([schoolId]);
+  }
+
   if (schoolId && role && role !== "PARENT") {
     const membership = await db.membership.findFirst({
       where: {
@@ -176,6 +201,10 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
       role = null;
     }
   }
+
+  // A claim that did not survive verification must not leave the request bound
+  // to the school it claimed.
+  if (schoolId === null && role !== "PARENT") bindTenants([]);
 
   return {
     sessionId: session.id,

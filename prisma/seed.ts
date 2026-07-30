@@ -84,11 +84,12 @@ async function main() {
   const amara = riverside.students.find((s) => s.name === "Amara Okafor")!;
   const ava = oakfield.students.find((s) => s.name === "Ava Bennett")!;
 
-  for (const child of [amara, ava]) {
+  for (const child of [{ ...amara, schoolId: riverside.id }, { ...ava, schoolId: oakfield.id }]) {
     await db.guardianship.create({
       data: {
         parentUserId: parent.id,
         studentMembershipId: child.membershipId,
+        studentSchoolId: child.schoolId,
         relation: "PARENT",
         status: "ACTIVE",
         consentSharingAt: new Date(),

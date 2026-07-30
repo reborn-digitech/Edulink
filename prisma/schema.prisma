@@ -182,8 +182,16 @@ model Guardianship {
   id                  String @id @default(cuid())
   parentUserId        String
   studentMembershipId String
-  relation            String @default("PARENT") // PARENT | GUARDIAN | OTHER
-  status              String @default("ACTIVE") // PENDING | ACTIVE | REVOKED
+
+  // The child's school, copied here on purpose. NOT a tenancy column — this
+  // table is deliberately cross-school and carries no RLS policy — but the one
+  // fact the session bootstrap needs before it can know which schools a parent
+  // may see. Reading it through the `student` relation instead is a chicken and
+  // egg: Membership IS policied, so with no tenant set yet the join returns null
+  // and Prisma refuses a required relation that came back empty.
+  studentSchoolId String
+  relation        String @default("PARENT") // PARENT | GUARDIAN | OTHER
+  status          String @default("ACTIVE") // PENDING | ACTIVE | REVOKED
 
   // Explicit, separately-recorded consents. (§6)
   consentSharingAt       DateTime?

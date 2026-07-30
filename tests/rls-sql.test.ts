@@ -48,13 +48,15 @@ describe("prisma/rls.sql", () => {
 
   it("⚠ reads the tenant from a setting that fails closed when unset", () => {
     const sql = readFileSync(resolve(ROOT, "prisma/rls.sql"), "utf8");
-    // The `true` makes an unset variable NULL rather than an error, and NULL
-    // fails the comparison — so a query that forgot to say who it is for sees
-    // nothing. Without it, an unset variable raises and the request 500s, which
-    // is safe but tells an attacker the variable exists; with `false` semantics
-    // by mistake it would be far worse.
-    const uses = sql.match(/current_setting\('app\.school_id', true\)/g) ?? [];
+    // The `true` makes an unset variable NULL rather than raising. NULL through
+    // string_to_array is NULL, and `= ANY (NULL)` is NULL — not true — so a
+    // query that forgot to say who it is for sees nothing. Drop the `true` and
+    // an unset variable raises instead, which is safe but turns every
+    // unauthenticated page into a 500.
+    const uses = sql.match(/current_setting\('app\.school_ids', true\)/g) ?? [];
     expect(uses.length).toBeGreaterThanOrEqual(20);
-    expect(sql).not.toContain("current_setting('app.school_id')");
+    expect(sql).not.toContain("current_setting('app.school_ids')\n");
+    // A set, not one id — a parent spans schools and a teacher may hold two posts.
+    expect(sql).toContain("= ANY (string_to_array(");
   });
 });

@@ -28,7 +28,7 @@ export function isPostgresUrl(url: string | undefined): boolean {
 }
 
 /**
- * Runs `work` with `app.school_id` set for the database's benefit.
+ * Runs `work` with `app.school_ids` set for the database's benefit.
  *
  * On Postgres this opens a transaction, sets the tenant, and runs the callback
  * inside it — which is what makes the policies in prisma/rls.sql resolve to
@@ -65,7 +65,7 @@ export async function withTenantOn<T>(
     };
     // Parameterised: set_config takes a value, not an identifier, so there is no
     // reason to interpolate a school id into the statement.
-    await raw.$executeRawUnsafe(`SELECT set_config('app.school_id', $1, true)`, schoolId);
+    await raw.$executeRawUnsafe(`SELECT set_config('app.school_ids', $1, true)`, schoolId);
     return work(tx as never);
   });
 }

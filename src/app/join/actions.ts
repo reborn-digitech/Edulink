@@ -337,6 +337,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
     create: {
       parentUserId: session.user.id,
       studentMembershipId: membership.id,
+      studentSchoolId: membership.schoolId,
       relation,
       status: "ACTIVE",
       consentSharingAt: new Date(),

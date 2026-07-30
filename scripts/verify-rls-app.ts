@@ -143,7 +143,7 @@ async function main() {
 
     // 5. The mistake this design exists to prevent, demonstrated rather than
     //    described: a plain SET, outside a transaction, on a pooled connection.
-    await client.$executeRawUnsafe(`SET app.school_id = 'verify-a'`);
+    await client.$executeRawUnsafe(`SET app.school_ids = 'verify-a'`);
     const leaked = await client.post.count();
     check(
       "plain SET (not SET LOCAL) is shown to leak, as documented",

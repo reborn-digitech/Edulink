@@ -22,16 +22,32 @@ external accounts.
 ```bash
 brew install postgresql@16 && brew services start postgresql@16   # or your own
 createdb edulink_dev
+psql -d edulink_dev -c "CREATE ROLE edulink_app LOGIN PASSWORD 'edulink-dev';" \
+                    -c "GRANT USAGE ON SCHEMA public TO edulink_app;" \
+                    -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO edulink_app;"
 npm install && cp .env.example .env && npm run vapid
 ```
 
-Put your database URL and the two printed VAPID keys into `.env`, then:
+Put both database URLs and the two printed VAPID keys into `.env`, then:
 
 ```bash
-npm run setup && npm run dev
+npm run setup
+psql -d edulink_dev -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO edulink_app;"
+psql -d edulink_dev -f prisma/rls.sql
+npm run dev
 ```
 
 `npm run setup` = `prisma db push` + seed. Open http://localhost:3000.
+
+**TWO database users, on purpose.** `DATABASE_ADMIN_URL` owns the schema and runs
+migrations and the seed. `DATABASE_URL` is what the app connects as: no
+ownership, no `BYPASSRLS`, no superuser — so the policies in `prisma/rls.sql`
+actually apply to it. Point the app at the owner and Postgres will silently
+ignore every policy, because owners and superusers bypass row-level security.
+`npm run rls:verify` refuses a setup like that.
+
+A seed cannot run as the app role, incidentally: its inserts are checked against
+`app.school_ids`, and it is creating the schools in the first place.
 
 > **Why a database server, when SQLite was zero-setup.** Tenant isolation is
 > enforced by Postgres row-level security, and there is no SQLite equivalent —
@@ -188,7 +204,13 @@ Break these and something quietly goes wrong for a child or a parent.
     columns are `String` (values in `constants.ts`, validated by zod at every
     write) and JSON payloads are `String` (read via `json.ts`). This is what
     lets the same schema run on Postgres unchanged.
-11. **A `fileId` is minted server-side and never accepted from a client.**
+11. **Nothing sets `app.school_ids` by hand.** `getSession()` binds the schools a
+    request may see; `db.ts` puts them into the transaction around every query.
+    248 call sites know nothing about any of it, which is the point — a call site
+    that had to remember is a call site that eventually forgets. If a query comes
+    back empty when it should not, the tenant was not bound, and the answer is to
+    fix the binding rather than to reach past it.
+12. **A `fileId` is minted server-side and never accepted from a client.**
     `files.ts` authorises a stored file by finding the record that mentions it,
     so anything that let a caller name an arbitrary id would let them point
     their own post at somebody else's attachment and inherit their audience.
@@ -248,84 +270,8 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Postgres migration + RLS policies.** Isolation is app-layer only today.
-   Groundwork done, in the order the work should go:
+1. Global feed, competitions, progress-report export, SSO, 2FA.
 
-   * The schema is confirmed portable. `prisma validate` accepts it under the
-     `postgresql` provider and `prisma migrate diff --from-empty` emits 771 lines
-     of Postgres DDL, both offline. The no-enums/no-Json tax is being paid and it
-     is working.
-   * ~~Denormalise `schoolId` onto the five join-scoped tables~~ **done.**
-     ClassTeacher, Enrollment, Comment, Reaction, RemarkMessage now carry it, so
-     every policy is the same one-line predicate rather than five bespoke
-     `EXISTS` subqueries — the ones most easily written wrong and the ones that
-     cost per row. The column is always copied from the PARENT row, never from
-     the session, and `tests/denormalised-school.test.ts` checks the two agree.
-     No reset was needed: `npm run backfill:school-id` adds the columns to an
-     existing dev database and fills them from the parents.
-   * ~~Then the policies themselves~~ **written and proven.** `prisma/rls.sql`
-     is generated from the schema by `npm run rls:generate` — 20 tables, one
-     identical predicate each — and `prisma/rls-verify.sql` proves isolation
-     against a real database:
-
-     ```bash
-     createdb edulink && psql -d edulink -f prisma/rls.sql
-     psql -d edulink -v ON_ERROR_STOP=1 -f prisma/rls-verify.sql
-     ```
-
-     Verified on Postgres 16: with no `app.school_id` set every table returns
-     **zero rows**; acting for one school returns only its own; and inserting,
-     updating or deleting across the boundary is refused. The verifier also
-     checks two things no query can see — that every policy is FORCED (or the
-     table owner ignores it) and that the app role is neither SUPERUSER nor
-     BYPASSRLS (or it ignores everything). Both were found the hard way: an
-     earlier version of the verifier passed happily with FORCE turned off.
-   * **What is left is the application side, and it is the hard part.** The
-     tenant has to reach the database as `app.school_id`, and the only safe way
-     to set it is `SET LOCAL` inside the transaction that runs the query.
-
-     Measured on this database, one connection, two consecutive queries:
-
-     | how the first query set it | what the second query saw |
-     |---|---|---|
-     | `SET app.school_id = 'riverside'` | **Riverside's posts** — it set nothing itself |
-     | `BEGIN; SET LOCAL …; COMMIT` | nothing |
-
-     The first row is the bug waiting to happen. Prisma pools connections, so a
-     request does not get a fresh one — it borrows whatever the last request
-     used. Set the tenant per *request* and the next request inherits it and
-     reads the previous school's rows while believing RLS is protecting it. That
-     is worse than no RLS, because it looks like protection.
-
-     `withTenant` in `src/lib/db.ts` is that wrapper, and it exists now:
-
-     ```ts
-     await withTenant(session.schoolId, (tx) => tx.post.findMany());
-     ```
-
-     On Postgres it opens a transaction, sets the tenant, and runs the callback
-     inside it — Prisma's interactive transactions pin one connection, which is
-     what makes `SET LOCAL` apply. On SQLite it runs the callback unchanged;
-     there is no row-level security to feed, and faking one would put a different
-     code path in dev from the one that runs in production.
-
-     `npm run rls:verify` proves it against a real Postgres, through a real
-     Prisma client, calling the real helper — not a copy of it, which is why the
-     mechanism lives in `tenant-tx.ts` taking its client as an argument. Five
-     checks, of which the third is the one that matters: after a `withTenant`
-     block, the next query inherits nothing. Rewrite the helper to set the tenant
-     per connection instead and that check fails, which is how it was confirmed
-     to be looking at the right thing.
-
-   * **What is genuinely left: the call sites.** `withTenant` has no callers yet.
-     Every scoped read and write needs to go through it, which is a change to
-     roughly fifty places — and until that happens the policies would return
-     nothing, so `rls.sql` must not be applied to a database this app is serving.
-     Wiring it up on SQLite alone would prove nothing either way, since the
-     wrapper is a no-op there; the honest sequence is to move dev to Postgres
-     first, then wire the call sites with the tests running against the engine
-     that actually enforces them.
-2. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -522,6 +468,19 @@ One line each, with the default rejected.
   The classmate cell is the one that matters: a handout is for the class, a
   child's work is not. The photo lost its EXIF on the way in here too (203 → 160
   bytes), so stripping is a property of storage rather than of the bulletin.
+- **Tenant isolation is enforced by Postgres now, not only by our WHERE
+  clauses.** The app connects as `edulink_app` — not the owner, no `BYPASSRLS`,
+  not a superuser — so the policies apply to it. With no tenant bound, that role
+  sees **0 schools and 0 memberships**. Through the running app: a Riverside
+  admin's directory lists Amara and Ben; an Oakfield admin's lists Ava and
+  Caleb; neither sees the other's children. All 39 route/role combinations
+  return 200 with the policies live.
+- **A parent still spans schools, which is what made this hard.** Jordan has
+  children at Riverside AND Oakfield, and their session carries no school at
+  all — so a single `app.school_id` returned nothing and every parent page 500'd.
+  The tenant is a SET, and the parent page correctly shows both children and both
+  school names. A teacher holding posts at two schools works for the same reason.
+
 - **The admin screens that had never been clicked.** Rotating a class join code
   replaces it and the OLD code stops resolving — which is the whole point, since
   rotation is what you do when a code leaks. Archiving names the student count
@@ -591,11 +550,7 @@ previous sweep.
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
-- **Postgres RLS: policies written and proven, application wiring not.**
-  `prisma/rls.sql` applies cleanly and `prisma/rls-verify.sql` proves isolation
-  on Postgres 16. What is missing is the piece that tells the database which
-  school a request is for — see Next steps, and note that doing it per request
-  rather than per transaction would be worse than leaving RLS off.
+- ~~Postgres RLS~~ **done and enforcing.** See Status.
 
 ### Known issues
 
