@@ -21,7 +21,8 @@
     "vapid": "tsx scripts/gen-vapid.ts",
     "files:check": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts",
     "files:reclaim": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts --delete",
-    "backfill:school-id": "tsx --tsconfig scripts/tsconfig.json scripts/backfill-school-id.ts"
+    "backfill:school-id": "tsx --tsconfig scripts/tsconfig.json scripts/backfill-school-id.ts",
+    "rls:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-rls.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",

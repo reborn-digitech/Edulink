@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (379 tests) |
+| `npm test` | Full suite (382 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -249,7 +249,23 @@ Break these and something quietly goes wrong for a child or a parent.
      the session, and `tests/denormalised-school.test.ts` checks the two agree.
      No reset was needed: `npm run backfill:school-id` adds the columns to an
      existing dev database and fills them from the parents.
-   * Then the policies themselves: `USING (school_id = current_setting('app.school_id'))`.
+   * ~~Then the policies themselves~~ **written and proven.** `prisma/rls.sql`
+     is generated from the schema by `npm run rls:generate` — 20 tables, one
+     identical predicate each — and `prisma/rls-verify.sql` proves isolation
+     against a real database:
+
+     ```bash
+     createdb edulink && psql -d edulink -f prisma/rls.sql
+     psql -d edulink -v ON_ERROR_STOP=1 -f prisma/rls-verify.sql
+     ```
+
+     Verified on Postgres 16: with no `app.school_id` set every table returns
+     **zero rows**; acting for one school returns only its own; and inserting,
+     updating or deleting across the boundary is refused. The verifier also
+     checks two things no query can see — that every policy is FORCED (or the
+     table owner ignores it) and that the app role is neither SUPERUSER nor
+     BYPASSRLS (or it ignores everything). Both were found the hard way: an
+     earlier version of the verifier passed happily with FORCE turned off.
    * **The real blocker is not SQL.** RLS needs the tenant in a session variable,
      and `SET LOCAL` only lasts a transaction — so every scoped query has to run
      inside one that sets it first. Prisma pools connections, so setting it
@@ -386,7 +402,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **379 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **382 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
