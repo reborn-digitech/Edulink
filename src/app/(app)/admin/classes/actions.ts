@@ -105,7 +105,7 @@ export async function setClassTeacher(
     if (assign) {
       await db.classTeacher.upsert({
         where: { classId_teacherMembershipId: { classId, teacherMembershipId } },
-        create: { classId, teacherMembershipId, role: "LEAD" },
+        create: { classId, schoolId: ctx.schoolId, teacherMembershipId, role: "LEAD" },
         update: {},
       });
     } else {

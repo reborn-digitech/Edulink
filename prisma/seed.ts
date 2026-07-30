@@ -238,7 +238,12 @@ async function createSchool(input: SeedSchoolInput) {
   for (const [index, klass] of classes.entries()) {
     const lead = teachers[index % teachers.length]!;
     await db.classTeacher.create({
-      data: { classId: klass.id, teacherMembershipId: lead.membershipId, role: "LEAD" },
+      data: {
+        classId: klass.id,
+        schoolId: school.id,
+        teacherMembershipId: lead.membershipId,
+        role: "LEAD",
+      },
     });
   }
 
@@ -275,7 +280,12 @@ async function createSchool(input: SeedSchoolInput) {
     // there is one realistically full register.
     const target = index < input.students.length * 0.6 ? classes[0]! : classes[(index % classes.length)]!;
     await db.enrollment.create({
-      data: { classId: target.id, studentMembershipId: membership.id, status: "ACTIVE" },
+      data: {
+        classId: target.id,
+        schoolId: school.id,
+        studentMembershipId: membership.id,
+        status: "ACTIVE",
+      },
     });
 
     students.push({ name, userId: user.id, membershipId: membership.id, classId: target.id });

@@ -10,15 +10,15 @@ import { describe, expect, it } from "vitest";
  * depend on a property of the DATA MODEL rather than of any one query: that a
  * row can say which school it belongs to.
  *
- * The schema header used to state that every school-owned row carries `schoolId`
- * directly. It does not — five tables reach their tenant only through a join,
- * and nothing said so, which matters because those five need a subquery policy
- * rather than the one-line predicate the header promised. Prose cannot be run;
- * this can.
+ * The schema header claimed every school-owned row carried `schoolId` directly.
+ * Five did not — they reached their tenant through a join, and nothing said so,
+ * which would have meant five hand-written `EXISTS` policies discovered one at a
+ * time. They have one now. Prose cannot be run; this can, which is the point:
+ * the claim was wrong for as long as it was only prose.
  *
- * A new model therefore has to land in one of three lists below, deliberately.
- * Adding one and forgetting fails this test rather than being discovered when a
- * policy is written against a column that is not there.
+ * A new model has to land in one of three lists below, deliberately. Adding one
+ * and forgetting fails this test rather than being discovered when a policy is
+ * written against a column that is not there.
  */
 
 const SCHEMA = readFileSync(resolve(process.cwd(), "prisma/schema.prisma"), "utf8");
@@ -30,30 +30,35 @@ const DIRECT = [
   "AttendanceSession",
   "AuditLog",
   "Class",
+  "ClassTeacher",
+  "Comment",
   "CompetitionEntry",
+  "Enrollment",
   "Grade",
   "Invite",
   "Membership",
   "Notification",
   "Post",
+  "Reaction",
+  "RemarkMessage",
   "RemarkThread",
   "Report",
   "Submission",
 ];
 
 /**
- * School-owned, but the tenant is one join away. Each needs an RLS policy of the
- * form `EXISTS (SELECT 1 FROM parent WHERE parent.id = <fk> AND parent."schoolId" = …)`.
- * The value is the foreign key that gets there, so the policy and this list
- * cannot drift apart silently.
+ * School-owned but reaching the tenant only through a join.
+ *
+ * EMPTY, and worth keeping empty. It had five entries — ClassTeacher and
+ * Enrollment via classId, Comment and Reaction via postId, RemarkMessage via
+ * threadId — each of which would have needed its own `EXISTS (...)` policy.
+ * Those are the policies most likely to be written wrong and the ones that run
+ * per row, so the five were given a `schoolId` instead and every policy is now
+ * the same one-line predicate.
+ *
+ * A new entry here is a decision to write a bespoke policy. Prefer denormalising.
  */
-const VIA_JOIN: Record<string, { fk: string; parent: string }> = {
-  ClassTeacher: { fk: "classId", parent: "Class" },
-  Enrollment: { fk: "classId", parent: "Class" },
-  Comment: { fk: "postId", parent: "Post" },
-  Reaction: { fk: "postId", parent: "Post" },
-  RemarkMessage: { fk: "threadId", parent: "RemarkThread" },
-};
+const VIA_JOIN: Record<string, { fk: string; parent: string }> = {};
 
 /** Not school-owned, each for a stated reason. */
 const NOT_TENANT_SCOPED: Record<string, string> = {
@@ -137,11 +142,10 @@ describe("scoping through a join", () => {
     }
   });
 
-  it("would be simpler with a schoolId, and that is a real option", () => {
-    // Denormalising schoolId onto these five is the one change that would make
-    // every policy a one-liner. It is listed in Next steps; this test is here so
-    // the list of five cannot quietly grow to eight in the meantime.
-    expect(Object.keys(VIA_JOIN)).toHaveLength(5);
+  it("⚠ is empty, so every policy is the same predicate", () => {
+    // Not a style preference. Each entry here is a hand-written EXISTS policy,
+    // and those are both the easiest to get wrong and the ones that cost per row.
+    expect(Object.keys(VIA_JOIN)).toEqual([]);
   });
 });
 

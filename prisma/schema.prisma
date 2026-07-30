@@ -8,18 +8,20 @@
 //   * no `Json` columns -> JSON payloads are String, read/written through the
 //     typed helpers in src/lib/json.ts.
 //
-// TENANCY — MOST school-owned rows carry `schoolId` directly, even where it
+// TENANCY — every school-owned row carries `schoolId` directly, even where it
 // could be derived through a relation. Denormalised on purpose: it lets the
 // scoped data layer (src/lib/tenancy.ts) put `schoolId` in the WHERE clause of
-// every single query, and lets a Postgres RLS policy be written as a simple
+// every single query, and lets every Postgres RLS policy be the same one-line
 // `USING (school_id = current_setting('app.school_id'))` predicate in prod.
 //
-// FIVE DO NOT, and a policy author needs to know which before writing one:
-// ClassTeacher and Enrollment reach their school through `classId`, Comment and
-// Reaction through `postId`, RemarkMessage through `threadId`. Those five need
-// an `EXISTS (...)` subquery policy instead. This said "every" until somebody
-// counted; `tests/tenancy-shape.test.ts` now checks it rather than asserting it
-// in prose, and fails when a new model is added without saying how it is scoped.
+// This said "every" for a while before it was true — ClassTeacher, Enrollment,
+// Comment, Reaction and RemarkMessage reached their school through a join, which
+// would have meant five bespoke `EXISTS` policies, the kind most easily written
+// wrong and the kind that costs per row. They carry the column now.
+// `tests/tenancy-shape.test.ts` checks this against the schema instead of
+// asserting it here, and fails when a model is added without saying how it is
+// scoped. Where the column is denormalised it is ALWAYS taken from the parent
+// row, never from the session: it is only worth having if it provably agrees.
 
 generator client {
   provider = "prisma-client-js"
@@ -63,16 +65,21 @@ model School {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  memberships  Membership[]
-  classes      Class[]
-  invites      Invite[]
-  posts        Post[]
-  competitions Competition[]
-  auditLogs    AuditLog[]
-  attendance   AttendanceSession[]
-  assignments  Assignment[]
-  remarks      RemarkThread[]
-  reports      Report[]
+  memberships    Membership[]
+  classes        Class[]
+  invites        Invite[]
+  posts          Post[]
+  competitions   Competition[]
+  auditLogs      AuditLog[]
+  attendance     AttendanceSession[]
+  assignments    Assignment[]
+  remarks        RemarkThread[]
+  reports        Report[]
+  classTeachers  ClassTeacher[]
+  enrollments    Enrollment[]
+  remarkMessages RemarkMessage[]
+  comments       Comment[]
+  reactions      Reaction[]
 
   @@index([code])
 }
@@ -83,9 +90,9 @@ model School {
 // ---------------------------------------------------------------------------
 
 model User {
-  id            String  @id @default(cuid())
-  email         String? @unique
-  phone         String? @unique
+  id            String    @id @default(cuid())
+  email         String?   @unique
+  phone         String?   @unique
   passwordHash  String? // null while the account is magic-link / parent-managed only
   name          String
   preferredName String?
@@ -150,21 +157,21 @@ model Membership {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
-  guardianships     Guardianship[]      @relation("StudentGuardianships")
-  enrollments       Enrollment[]
-  classTeachers     ClassTeacher[]
-  attendance        AttendanceRecord[]
-  attendanceTaken   AttendanceSession[] @relation("AttendanceTaker")
-  submissions       Submission[]
-  grades            Grade[]             @relation("GradeStudent")
-  gradesGiven       Grade[]             @relation("GradeGrader")
-  assignments       Assignment[]
-  remarkThreadsAsStudent RemarkThread[] @relation("RemarkStudent")
-  remarkThreadsAsTeacher RemarkThread[] @relation("RemarkTeacher")
-  competitionEntries CompetitionEntry[]
-  postsAuthored     Post[]              @relation("PostAuthorMembership")
-  postsReviewed     Post[]              @relation("PostReviewer")
-  invitesCreated    Invite[]            @relation("InviteCreator")
+  guardianships          Guardianship[]      @relation("StudentGuardianships")
+  enrollments            Enrollment[]
+  classTeachers          ClassTeacher[]
+  attendance             AttendanceRecord[]
+  attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
+  submissions            Submission[]
+  grades                 Grade[]             @relation("GradeStudent")
+  gradesGiven            Grade[]             @relation("GradeGrader")
+  assignments            Assignment[]
+  remarkThreadsAsStudent RemarkThread[]      @relation("RemarkStudent")
+  remarkThreadsAsTeacher RemarkThread[]      @relation("RemarkTeacher")
+  competitionEntries     CompetitionEntry[]
+  postsAuthored          Post[]              @relation("PostAuthorMembership")
+  postsReviewed          Post[]              @relation("PostReviewer")
+  invitesCreated         Invite[]            @relation("InviteCreator")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -222,29 +229,41 @@ model Class {
 model ClassTeacher {
   id                  String @id @default(cuid())
   classId             String
+  // Denormalised, like every other school-owned table. Derivable
+  // through classId and deliberately not derived: it makes this table's
+  // RLS policy the same one-line predicate as everywhere else.
+  schoolId            String
   teacherMembershipId String
   role                String @default("LEAD") // LEAD | CO
+  school              School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
   teacher Membership @relation(fields: [teacherMembershipId], references: [id], onDelete: Cascade)
 
   @@unique([classId, teacherMembershipId])
   @@index([teacherMembershipId])
+  @@index([schoolId])
 }
 
 model Enrollment {
   id                  String    @id @default(cuid())
   classId             String
+  // Denormalised, like every other school-owned table. Derivable
+  // through classId and deliberately not derived: it makes this table's
+  // RLS policy the same one-line predicate as everywhere else.
+  schoolId            String
   studentMembershipId String
   status              String    @default("ACTIVE") // ACTIVE | REMOVED
   enrolledAt          DateTime  @default(now())
   removedAt           DateTime?
+  school              School    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
   student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
   @@unique([classId, studentMembershipId])
   @@index([studentMembershipId])
+  @@index([schoolId])
 }
 
 // ---------------------------------------------------------------------------
@@ -257,18 +276,18 @@ model Enrollment {
 // ---------------------------------------------------------------------------
 
 model AttendanceSession {
-  id                 String    @id @default(cuid())
-  schoolId           String
-  classId            String
-  dateKey            String // YYYY-MM-DD in School.timezone
-  takenAt            DateTime  @default(now())
+  id                  String    @id @default(cuid())
+  schoolId            String
+  classId             String
+  dateKey             String // YYYY-MM-DD in School.timezone
+  takenAt             DateTime  @default(now())
   takenByMembershipId String?
-  finalizedAt        DateTime?
-  note               String?
+  finalizedAt         DateTime?
+  note                String?
 
-  school  School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  class   Class       @relation(fields: [classId], references: [id], onDelete: Cascade)
-  takenBy Membership? @relation("AttendanceTaker", fields: [takenByMembershipId], references: [id], onDelete: SetNull)
+  school  School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class   Class              @relation(fields: [classId], references: [id], onDelete: Cascade)
+  takenBy Membership?        @relation("AttendanceTaker", fields: [takenByMembershipId], references: [id], onDelete: SetNull)
   records AttendanceRecord[]
 
   @@unique([classId, dateKey])
@@ -360,12 +379,12 @@ model Grade {
   studentMembershipId String
   submissionId        String? @unique
 
-  scoreMilli         Int?
-  letter             String?
-  comment            String?
+  scoreMilli           Int?
+  letter               String?
+  comment              String?
   gradedByMembershipId String?
-  gradedAt           DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  gradedAt             DateTime @default(now())
+  updatedAt            DateTime @updatedAt
 
   assignment Assignment  @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
   student    Membership  @relation("GradeStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
@@ -387,13 +406,13 @@ model RemarkThread {
   teacherMembershipId String
 
   subject       String
-  createdAt     DateTime @default(now())
-  lastMessageAt DateTime @default(now())
+  createdAt     DateTime  @default(now())
+  lastMessageAt DateTime  @default(now())
   closedAt      DateTime?
 
-  school   School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  student  Membership @relation("RemarkStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
-  teacher  Membership @relation("RemarkTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  school   School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student  Membership      @relation("RemarkStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  teacher  Membership      @relation("RemarkTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
   messages RemarkMessage[]
 
   @@index([schoolId, lastMessageAt])
@@ -401,17 +420,23 @@ model RemarkThread {
 }
 
 model RemarkMessage {
-  id           String @id @default(cuid())
+  id           String   @id @default(cuid())
   threadId     String
+  // Denormalised, like every other school-owned table. Derivable
+  // through threadId and deliberately not derived: it makes this table's
+  // RLS policy the same one-line predicate as everywhere else.
+  schoolId     String
   authorUserId String
   body         String
   createdAt    DateTime @default(now())
   readBy       String   @default("[]") // JSON userId[]
+  school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   thread RemarkThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
   author User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([threadId, createdAt])
+  @@index([schoolId])
 }
 
 // ---------------------------------------------------------------------------
@@ -425,17 +450,17 @@ model Post {
   authorUserId       String
   authorMembershipId String?
 
-  scope  String // CLASS | SCHOOL | GLOBAL
-  title  String
-  body   String  @default("")
-  media  String  @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
-  tags   String  @default("[]")
+  scope String // CLASS | SCHOOL | GLOBAL
+  title String
+  body  String @default("")
+  media String @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
+  tags  String @default("[]")
 
-  status          String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED
-  rejectionReason String?
+  status                 String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED
+  rejectionReason        String?
   reviewedByMembershipId String?
-  reviewedAt      DateTime?
-  pinnedAt        DateTime?
+  reviewedAt             DateTime?
+  pinnedAt               DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -455,44 +480,56 @@ model Post {
 }
 
 model Comment {
-  id           String @id @default(cuid())
+  id           String   @id @default(cuid())
   postId       String
+  // Denormalised, like every other school-owned table. Derivable
+  // through postId and deliberately not derived: it makes this table's
+  // RLS policy the same one-line predicate as everywhere else.
+  schoolId     String
   authorUserId String
   body         String
-  status       String @default("APPROVED") // PENDING | APPROVED | REMOVED
+  status       String   @default("APPROVED") // PENDING | APPROVED | REMOVED
   createdAt    DateTime @default(now())
+  school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   author User @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([postId, createdAt])
+  @@index([schoolId])
 }
 
 model Reaction {
-  id        String @id @default(cuid())
+  id        String   @id @default(cuid())
   postId    String
+  // Denormalised, like every other school-owned table. Derivable
+  // through postId and deliberately not derived: it makes this table's
+  // RLS policy the same one-line predicate as everywhere else.
+  schoolId  String
   userId    String
   kind      String // fixed kid-safe set: CLAP | STAR | IDEA | HEART
   createdAt DateTime @default(now())
+  school    School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([postId, userId, kind])
+  @@index([schoolId])
 }
 
 model Report {
-  id             String @id @default(cuid())
+  id             String    @id @default(cuid())
   schoolId       String?
   targetType     String // POST | COMMENT | USER
   targetId       String
   reporterUserId String
   reason         String
   detail         String?
-  status         String   @default("OPEN") // OPEN | ACTIONED | DISMISSED
+  status         String    @default("OPEN") // OPEN | ACTIONED | DISMISSED
   resolvedAt     DateTime?
   resolutionNote String?
-  createdAt      DateTime @default(now())
+  createdAt      DateTime  @default(now())
 
   school   School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   reporter User    @relation("ReportsFiled", fields: [reporterUserId], references: [id], onDelete: Cascade)
@@ -526,9 +563,9 @@ model Competition {
   startsAt             DateTime?
   endsAt               DateTime?
 
-  status             String   @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
-  verified           Boolean  @default(false)
-  leaderboardEnabled Boolean  @default(false)
+  status                String  @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
+  verified              Boolean @default(false)
+  leaderboardEnabled    Boolean @default(false)
   requiresParentConsent Boolean @default(true)
 
   createdAt DateTime @default(now())
@@ -546,14 +583,14 @@ model CompetitionEntry {
   studentMembershipId String
   schoolId            String
 
-  status           String    @default("REGISTERED") // REGISTERED | SUBMITTED | RESULTS
-  parentConsentAt  DateTime?
-  parentConsentBy  String?
-  submissionUrl    String?
-  scoreMilli       Int?
-  rank             Int?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  status          String    @default("REGISTERED") // REGISTERED | SUBMITTED | RESULTS
+  parentConsentAt DateTime?
+  parentConsentBy String?
+  submissionUrl   String?
+  scoreMilli      Int?
+  rank            Int?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   competition Competition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
   student     Membership  @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
@@ -567,21 +604,21 @@ model CompetitionEntry {
 // ---------------------------------------------------------------------------
 
 model Session {
-  id        String  @id @default(cuid())
+  id        String @id @default(cuid())
   userId    String
   // sha256 of the opaque token. The raw token exists only in the cookie, so a
   // database leak does not hand over live sessions.
-  tokenHash String  @unique
+  tokenHash String @unique
 
   activeSchoolId String?
   activeRole     String?
 
-  userAgent String?
-  ip        String?
-  createdAt DateTime  @default(now())
-  lastSeenAt DateTime @default(now())
-  expiresAt DateTime
-  revokedAt DateTime?
+  userAgent  String?
+  ip         String?
+  createdAt  DateTime  @default(now())
+  lastSeenAt DateTime  @default(now())
+  expiresAt  DateTime
+  revokedAt  DateTime?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -597,8 +634,8 @@ model Invite {
   classId  String?
   subjects String? // JSON string[]
 
-  tokenHash String  @unique
-  status    String  @default("PENDING") // PENDING | ACCEPTED | REVOKED | EXPIRED
+  tokenHash String @unique
+  status    String @default("PENDING") // PENDING | ACCEPTED | REVOKED | EXPIRED
 
   createdByMembershipId String?
   acceptedByUserId      String?
@@ -666,13 +703,13 @@ model PushSubscription {
 }
 
 model AuditLog {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   schoolId    String?
   actorUserId String?
   action      String // "attendance.mark", "invite.create", ...
   targetType  String?
   targetId    String?
-  meta        String  @default("{}")
+  meta        String   @default("{}")
   ip          String?
   createdAt   DateTime @default(now())
 

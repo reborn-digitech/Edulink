@@ -234,6 +234,21 @@ export async function getPost(session: ActiveContext, postId: string) {
 /* Writing                                                                     */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The school a comment or reaction inherits, taken from the post itself.
+ *
+ * Not from the session: the denormalised `schoolId` is only worth having if it
+ * provably equals its parent's, and a session's school is a different fact that
+ * merely usually agrees. `Post.schoolId` is nullable because the schema allows a
+ * GLOBAL post by an outside organiser; posting GLOBAL is refused, so meeting one
+ * here means something is wrong and refusing is the same stance `files.ts` takes
+ * rather than guessing a tenant for it.
+ */
+function schoolOf(post: { schoolId: string | null }): string {
+  if (!post.schoolId) throw new AccessError("Post not found", "NOT_FOUND");
+  return post.schoolId;
+}
+
 export async function createPost(
   session: ActiveContext,
   input: {
@@ -468,7 +483,7 @@ export async function toggleReaction(
   const classIds = await classIdsFor(session);
   const visible = await db.post.findFirst({
     where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds)] },
-    select: { id: true },
+    select: { id: true, schoolId: true },
   });
   if (!visible) throw new AccessError("Post not found", "NOT_FOUND");
 
@@ -482,7 +497,9 @@ export async function toggleReaction(
     return { added: false };
   }
 
-  await db.reaction.create({ data: { postId, userId: session.user.id, kind } });
+  await db.reaction.create({
+    data: { postId, userId: session.user.id, kind, schoolId: schoolOf(visible) },
+  });
   return { added: true };
 }
 
@@ -502,7 +519,13 @@ export async function addComment(
   const status = session.role === "STUDENT" ? "PENDING" : "APPROVED";
 
   await db.comment.create({
-    data: { postId, authorUserId: session.user.id, body: body.trim(), status },
+    data: {
+      postId,
+      authorUserId: session.user.id,
+      body: body.trim(),
+      status,
+      schoolId: schoolOf(visible),
+    },
   });
 
   if (status === "APPROVED" && visible.authorUserId !== session.user.id) {

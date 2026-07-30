@@ -189,6 +189,9 @@ export async function createThread(
     await tx.remarkMessage.create({
       data: {
         threadId: created.id,
+        // From the thread, not the session — the denormalised column is only
+        // worth having if it provably equals its parent's.
+        schoolId: created.schoolId,
         authorUserId: session.user.id,
         body: input.body,
         readBy: writeJson([session.user.id]),
@@ -232,6 +235,7 @@ export async function replyToThread(
   const message = await db.remarkMessage.create({
     data: {
       threadId: thread.id,
+      schoolId: thread.schoolId,
       authorUserId: session.user.id,
       body: input.body,
       readBy: writeJson([session.user.id]),

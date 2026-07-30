@@ -65,13 +65,14 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (374 tests) |
+| `npm test` | Full suite (379 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
+| `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 ### Running the file sweep on a schedule
@@ -240,12 +241,14 @@ Break these and something quietly goes wrong for a child or a parent.
      `postgresql` provider and `prisma migrate diff --from-empty` emits 771 lines
      of Postgres DDL, both offline. The no-enums/no-Json tax is being paid and it
      is working.
-   * **Denormalise `schoolId` onto the five join-scoped tables first** —
-     ClassTeacher, Enrollment, Comment, Reaction, RemarkMessage. Every other
-     school-owned table has it, and with those five done every policy is the same
-     one-line predicate instead of five bespoke `EXISTS` subqueries. Subquery
-     policies are the ones most likely to be written wrong and the ones that hurt
-     under load, because they run per row. This needs a `db:reset` in dev.
+   * ~~Denormalise `schoolId` onto the five join-scoped tables~~ **done.**
+     ClassTeacher, Enrollment, Comment, Reaction, RemarkMessage now carry it, so
+     every policy is the same one-line predicate rather than five bespoke
+     `EXISTS` subqueries — the ones most easily written wrong and the ones that
+     cost per row. The column is always copied from the PARENT row, never from
+     the session, and `tests/denormalised-school.test.ts` checks the two agree.
+     No reset was needed: `npm run backfill:school-id` adds the columns to an
+     existing dev database and fills them from the parents.
    * Then the policies themselves: `USING (school_id = current_setting('app.school_id'))`.
    * **The real blocker is not SQL.** RLS needs the tenant in a session variable,
      and `SET LOCAL` only lasts a transaction — so every scoped query has to run
@@ -383,7 +386,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **374 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **379 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring

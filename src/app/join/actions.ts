@@ -159,7 +159,12 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 
       if (lookup.kind === "class") {
         await tx.enrollment.create({
-          data: { classId: lookup.classId, studentMembershipId: membership.id, status: "ACTIVE" },
+          data: {
+            classId: lookup.classId,
+            schoolId: lookup.schoolId,
+            studentMembershipId: membership.id,
+            status: "ACTIVE",
+          },
         });
       }
 

@@ -123,7 +123,11 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
                 studentMembershipId: membership.id,
               },
             },
-            create: { classId: invite.classId, studentMembershipId: membership.id },
+            create: {
+              classId: invite.classId,
+              schoolId: invite.schoolId,
+              studentMembershipId: membership.id,
+            },
             update: { status: "ACTIVE", removedAt: null },
           });
         } else if (invite.role === "TEACHER") {
@@ -134,7 +138,12 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
                 teacherMembershipId: membership.id,
               },
             },
-            create: { classId: invite.classId, teacherMembershipId: membership.id, role: "LEAD" },
+            create: {
+              classId: invite.classId,
+              schoolId: invite.schoolId,
+              teacherMembershipId: membership.id,
+              role: "LEAD",
+            },
             update: {},
           });
         }
