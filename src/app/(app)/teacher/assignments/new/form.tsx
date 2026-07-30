@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FloppyDiskIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
+import { FilePicker } from "@/components/ui/file-picker";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { newAssignment } from "../actions";
@@ -31,6 +32,7 @@ export function AssignmentForm({
   const [points, setPoints] = useState("20");
   const [dueDate, setDueDate] = useState("");
   const [dueTime, setDueTime] = useState("16:00");
+  const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const selectedClass = classes.find((c) => c.id === classId);
@@ -59,15 +61,19 @@ export function AssignmentForm({
     if (Object.keys(next).length > 0) return;
 
     startTransition(async () => {
-      const result = await newAssignment({
-        classId,
-        title: title.trim(),
-        body: body.trim(),
-        category: category || undefined,
-        points: pointsValue,
-        dueAt: dueAt ?? "",
-        publish,
-      });
+      // FormData so the handouts travel with the assignment and the server
+      // mints their ids — the client never names one. (§6)
+      const payload = new FormData();
+      payload.set("classId", classId);
+      payload.set("title", title.trim());
+      payload.set("body", body.trim());
+      payload.set("category", category || "");
+      if (pointsValue !== undefined) payload.set("points", String(pointsValue));
+      payload.set("dueAt", dueAt ?? "");
+      payload.set("publish", String(publish));
+      for (const file of files) payload.append("files", file);
+
+      const result = await newAssignment(payload);
 
       if (!result.ok) {
         setErrors(result.errors);
@@ -141,6 +147,18 @@ export function AssignmentForm({
         />
         <p className="mt-1 text-xs text-fg-muted">Optional — students see this with the task.</p>
       </div>
+
+      <FilePicker
+        idPrefix="assignment"
+        label="Handouts"
+        files={files}
+        error={errors.files}
+        hint="Optional. Up to 5 files, 5 MB each — PDF or an image. Everyone in the class can open these once the work is set."
+        onChange={(next, error) => {
+          setFiles(next);
+          setErrors((e) => ({ ...e, files: error ?? "" }));
+        }}
+      />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <SelectField label="Category" value={category} onChange={(e) => setCategory(e.target.value)}>

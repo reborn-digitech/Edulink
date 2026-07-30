@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { AccessError, assertAssignmentAccess } from "@/lib/tenancy";
-import { deleteStoredFile, storeFile, UploadError } from "@/lib/storage";
+import { deleteStoredFile } from "@/lib/storage";
+import { storeAttachments, discard, AttachmentError, MAX_ATTACHMENTS } from "@/lib/uploads";
 import { readAttachments } from "@/lib/files";
 import { writeJson, type Attachment } from "@/lib/json";
 import { audit } from "@/lib/audit";
@@ -17,9 +18,6 @@ import { audit } from "@/lib/audit";
  * endpoint would have to guess. The cost is a little repetition; the benefit is
  * that neither path can be reached with the wrong permission.
  */
-
-const MAX_FILES = 5;
-const MAX_BYTES = 5 * 1024 * 1024;
 
 export type AttachResult = { ok: boolean; error?: string; attachments?: Attachment[] };
 
@@ -64,7 +62,7 @@ export async function attachToAssignment(formData: FormData): Promise<AttachResu
       data: { attachments: writeJson(attachments) },
     });
   } catch (error) {
-    await Promise.all(result.stored.map((a) => deleteStoredFile(a.fileId)));
+    await discard(result.stored.map((a) => a.fileId));
     console.error("[attachToAssignment]", error);
     return { ok: false, error: "We could not save those files." };
   }
@@ -145,7 +143,7 @@ export async function attachToSubmission(formData: FormData): Promise<AttachResu
       update: { attachments: writeJson(attachments) },
     });
   } catch (error) {
-    await Promise.all(result.stored.map((a) => deleteStoredFile(a.fileId)));
+    await discard(result.stored.map((a) => a.fileId));
     console.error("[attachToSubmission]", error);
     return { ok: false, error: "We could not save those files." };
   }
@@ -226,8 +224,12 @@ export async function detach(input: {
 /* -------------------------------------------------------------------------- */
 
 /**
- * Stores a batch, cleaning up anything already written if a later file fails.
- * A half-uploaded set would otherwise leave files on disk that no row references.
+ * Stores a batch against the remaining room on a record.
+ *
+ * The all-or-nothing behaviour lives in `uploads.ts`, which is where the
+ * bulletin and the new-assignment form get it too — three call sites reinventing
+ * "delete what you already wrote if a later file fails" is three chances to get
+ * it wrong, and the failure is invisible when it happens.
  */
 async function storeAll(
   entries: FormDataEntryValue[],
@@ -235,28 +237,15 @@ async function storeAll(
 ): Promise<{ stored: Attachment[] } | { error: string }> {
   const files = entries.filter((entry): entry is File => entry instanceof File && entry.size > 0);
   if (files.length === 0) return { error: "Choose at least one file." };
-  if (existingCount + files.length > MAX_FILES) {
-    return { error: `Up to ${MAX_FILES} files. You already have ${existingCount}.` };
+  if (existingCount + files.length > MAX_ATTACHMENTS) {
+    return { error: `Up to ${MAX_ATTACHMENTS} files. You already have ${existingCount}.` };
   }
 
-  const stored: Attachment[] = [];
-  for (const file of files) {
-    try {
-      const result = await storeFile(file, { maxBytes: MAX_BYTES });
-      stored.push({
-        fileId: result.fileId,
-        name: result.name,
-        size: result.size,
-        mime: result.mime,
-      });
-    } catch (error) {
-      await Promise.all(stored.map((a) => deleteStoredFile(a.fileId)));
-      if (error instanceof UploadError) {
-        return { error: `${file.name}: ${error.message}` };
-      }
-      console.error("[storeAll]", error);
-      return { error: "We could not save those files." };
-    }
+  try {
+    return { stored: await storeAttachments(files, { max: MAX_ATTACHMENTS - existingCount }) };
+  } catch (error) {
+    if (error instanceof AttachmentError) return { error: error.message };
+    console.error("[storeAll]", error);
+    return { error: "We could not save those files." };
   }
-  return { stored };
 }

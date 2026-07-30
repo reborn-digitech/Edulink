@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (328 tests) |
+| `npm test` | Full suite (334 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -93,6 +93,7 @@ src/lib/                  All business logic. Pages are thin.
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
   image-metadata.ts       ★ Strips EXIF/GPS before an upload reaches disk.
+  uploads.ts              Stores a batch of attachments, or none of them.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
@@ -104,6 +105,8 @@ src/app/(app)/            Signed-in routes (share the nav shell).
 src/app/                  Public routes: login, register, join, invite, switch.
 src/components/ui/        Design system.
   slot.tsx                ★ `asChild`. Deliberately NOT "use client" — see Gotchas.
+  file-picker.tsx         Pick-before-submit control (assignment handouts).
+src/components/attachment-list.tsx  Attach/detach on an existing record.
 src/sw.ts                 Service worker (Serwist compiles to public/sw.js).
 tests/                    Integration tests (need the seed).
 src/**/*.test.ts          Unit tests.
@@ -199,9 +202,11 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. File attachments on assignments and submissions. `files.ts` already
-   authorises both, and the bulletin now proves the whole upload path works —
-   this is the same shape with a tighter audience (a child's own work).
+1. **Reclaim orphaned files.** Nothing deletes stored bytes when the record that
+   referenced them goes — a deleted post or assignment leaves its files behind.
+   They are unreachable the moment the record goes (`files.ts` denies anything no
+   record claims, and there is a test for that case), so this is disk, not
+   disclosure. A sweep for unreferenced ids is owed.
 2. Seed attendance that actually crosses the thresholds. Every seeded student
    sits at exactly 90% or 100%, so `percent < 90` is 0 for the whole school and
    the "attendance concern" path only renders non-zero if you force it by hand.
@@ -338,7 +343,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **328 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **334 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -348,6 +353,25 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **Attachment loop, production build.** This was listed as "not built" and had
+  in fact been built all along — `attachments/actions.ts` and `AttachmentList`
+  were fully wired and, as far as the notes go, never once run. Now run: a
+  teacher set work with a PDF handout attached **as the work was created**, and
+  a student attached a photo to their own hand-in. The resulting access matrix,
+  checked over HTTP against `/api/files/<id>`:
+
+  | | teacher's handout | that child's own work |
+  |---|---|---|
+  | the child | 200 | 200 |
+  | a classmate | 200 | **404** |
+  | the class teacher | 200 | 200 |
+  | their guardian | 200 | 200 |
+  | another school's admin | 404 | 404 |
+  | signed out | 404 | 404 |
+
+  The classmate cell is the one that matters: a handout is for the class, a
+  child's work is not. The photo lost its EXIF on the way in here too (203 → 160
+  bytes), so stripping is a property of storage rather than of the bulletin.
 - **Bulletin picture loop, production build:** a student attached a real JPEG
   carrying a GPS EXIF block, described it, and sent it. The post was held
   PENDING; a classmate asking `/api/files/<id>` directly got **404**, the
@@ -391,7 +415,6 @@ previous sweep.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
-- File attachments on assignments and submissions (text-only today)
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - Postgres RLS policies (described in schema comments; app-layer only today)

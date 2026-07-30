@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { toMilli } from "./validation";
 import { readAttachments } from "./files";
+import { writeJson, type Attachment } from "./json";
 import { publish, channel } from "./realtime";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
@@ -61,6 +62,8 @@ export async function createAssignment(
     points?: number;
     dueAt?: string;
     publish: boolean;
+    /** Already stored by the caller — see the fileId convention in uploads.ts. */
+    attachments?: Attachment[];
   },
 ): Promise<{ assignmentId: string; notified: number }> {
   await assertClassAccess(ctx, input.classId, { write: true });
@@ -76,6 +79,7 @@ export async function createAssignment(
       pointsMilli: input.points === undefined ? null : toMilli(input.points),
       dueAt: input.dueAt ? new Date(input.dueAt) : null,
       publishedAt: input.publish ? new Date() : null,
+      attachments: writeJson(input.attachments ?? []),
     },
   });
 

@@ -557,6 +557,14 @@ post as a student first (§12b), or seed one directly.
 
 ## 12e. File attachments
 
+As a **teacher**, on `/teacher/assignments/new`.
+
+- ☐ "Handouts" → attach a PDF *while setting the work*, before it exists. The
+  file is stored with the assignment in one step
+- ☐ Remove it, then pick the same file again → accepted
+- ☐ Publish → the handout is on the assignment, and every child in the class can
+  open it
+
 As a **teacher**, on an assignment detail page.
 
 - ☐ "Files for the class" → attach a PDF and an image
@@ -683,11 +691,9 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 Every route in the navigation now renders — all 39 route/role combinations were
 requested as a signed-in user of the owning role and returned 200. Still not
-built, per the README: attachments on assignments and submissions (the bulletin
-takes pictures now; those two do not), a real QR code on the join
-poster, awards uploads on the student profile, global feed, competitions,
-suspend-user, weighted grade categories, progress-report export, SSO, 2FA, SMS,
-real email delivery.
+built, per the README: a real QR code on the join poster, awards uploads on the
+student profile, global feed, competitions, suspend-user, weighted grade
+categories, progress-report export, SSO, 2FA, SMS, real email delivery.
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { createAssignment, saveGrades, publishAssignment } from "@/lib/grading";
 import { assignmentSchema, gradeSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
+import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
 
 export type AssignmentState = {
   ok: boolean;
@@ -13,7 +14,15 @@ export type AssignmentState = {
   notified?: number;
 };
 
-export async function newAssignment(input: unknown): Promise<AssignmentState> {
+/**
+ * Create an assignment, with optional handouts.
+ *
+ * FormData, and the files are stored here rather than named by the caller —
+ * same reason as the bulletin: `files.ts` authorises a file by finding the
+ * record that mentions it, so a client-supplied id could point this assignment
+ * at somebody else's attachment and publish it to the class. (§6)
+ */
+export async function newAssignment(formData: FormData): Promise<AssignmentState> {
   let ctx;
   try {
     ctx = await requireApiRole("TEACHER", "ADMIN");
@@ -22,22 +31,48 @@ export async function newAssignment(input: unknown): Promise<AssignmentState> {
     throw error;
   }
 
-  const parsed = assignmentSchema.safeParse(input);
+  const points = formData.get("points");
+  const parsed = assignmentSchema.safeParse({
+    classId: String(formData.get("classId") ?? ""),
+    title: String(formData.get("title") ?? ""),
+    body: String(formData.get("body") ?? ""),
+    category: String(formData.get("category") ?? ""),
+    points: points === null || points === "" ? undefined : Number(points),
+    dueAt: String(formData.get("dueAt") ?? ""),
+    publish: formData.get("publish") === "true",
+  });
+  // Validate the assignment before writing any bytes, so a rejected form does
+  // not leave handouts on disk.
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+
+  let attachments;
+  try {
+    attachments = await storeAttachments(formData.getAll("files").filter(isFile));
+  } catch (error) {
+    if (error instanceof AttachmentError) return { ok: false, errors: { files: error.message } };
+    console.error("[newAssignment] upload failed", error);
+    return { ok: false, errors: { files: "Those files could not be saved." } };
+  }
 
   try {
     const result = await createAssignment(
       { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role, userId: ctx.user.id },
-      { ...parsed.data, dueAt: parsed.data.dueAt || undefined },
+      { ...parsed.data, dueAt: parsed.data.dueAt || undefined, attachments },
     );
     revalidatePath("/teacher/assignments");
     revalidatePath("/teacher");
     return { ok: true, errors: {}, ...result };
   } catch (error) {
+    // Nothing will reference these now, and nothing can reach them either.
+    await discard(attachments.map((a) => a.fileId));
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[newAssignment]", error);
     return { ok: false, errors: { _form: "We could not create that. Please try again." } };
   }
+}
+
+function isFile(value: FormDataEntryValue): value is File {
+  return value instanceof File;
 }
 
 const batchSchema = z.object({
