@@ -74,6 +74,27 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
+### Running the file sweep on a schedule
+
+Deleting a record leaves its bytes behind. They are unreachable immediately —
+`files.ts` denies anything no record claims — so nothing is exposed, but the disk
+grows. Add `--json` for one line a monitor can read:
+
+```bash
+0 3 * * *  cd /srv/edulink && npm run files:reclaim -- --json >> /var/log/edulink-files.log
+```
+
+Exit status stays 0 when orphans are found and removed; finding them is the
+normal state of a system that has ever deleted a post, not an error.
+
+**Why this is a cron job and not a button in the admin UI.** An orphan is a file
+no record points at, so it has no owning record and therefore no school. There is
+nothing to scope it to — a Riverside admin pressing "reclaim" would be deleting
+bytes left by Oakfield's deleted rows. Every other destructive action in this app
+can answer "whose is it?" first; this one cannot, so it belongs to whoever runs
+the server. It is not an in-process timer either: two instances would mean two
+sweeps, and a deletion pass should never race itself.
+
 ---
 
 ## Handoff
@@ -212,17 +233,14 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Schedule the orphan sweep.** `npm run files:check` exists and works, but
-   nothing runs it. Until something does, reclaiming is a thing somebody has to
-   remember.
-2. `here-all-week` still shows progress that can go **down** — the streak resets
+1. `here-all-week` still shows progress that can go **down** — the streak resets
    to 0 on an absence, so "3 of 5" becomes "0 of 5". The overall badge total is
    gone for exactly this reason; this one was left because progress toward a
    *named* badge is the encouraging case the design asks for, and removing it
    removes the only nudge on the board. Worth a decision, not a silent fix.
-3. Postgres migration + RLS policies (schema comments describe the intended
+2. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-4. Global feed, competitions, progress-report export, SSO, 2FA.
+3. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -445,8 +463,8 @@ previous sweep.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.
-- Deleting a record still leaves its files on disk until somebody runs
-  `npm run files:reclaim`. Unreachable the moment the record goes, so this is
-  disk rather than disclosure — but nothing schedules the sweep.
+- Deleting a record leaves its files on disk until the sweep runs. Unreachable
+  the moment the record goes, so this is disk rather than disclosure. There is a
+  cron recipe under Scripts; nothing in this repo installs it for you.
 - One picture per post. The schema and validation already allow up to ten; the
   compose form offers a single picker.

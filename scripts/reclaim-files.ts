@@ -3,9 +3,20 @@
  *
  *   npm run files:check     what would go, and how much space
  *   npm run files:reclaim   actually delete it
+ *   … --json               one line of machine-readable output, for a cron job
  *
  * Reporting is the default because the failure mode of getting this wrong is
  * deleting a child's submitted work. Read the output before passing --delete.
+ *
+ * THIS IS AN OPERATOR TOOL, NOT AN ADMIN SCREEN, and deliberately so. An orphan
+ * is a file no record points at — so it has no owning record, and therefore no
+ * school. There is nothing to scope it to: a Riverside admin pressing "reclaim"
+ * would be deleting bytes left behind by Oakfield's deleted rows. Every other
+ * destructive action in this app answers "whose is it?" before it runs; this one
+ * cannot, so it belongs to whoever runs the server.
+ *
+ * It is not an in-process timer either. Two app instances would mean two sweeps,
+ * and the one thing a deletion pass should never be is racing itself.
  */
 import "dotenv/config";
 import { reclaimOrphans, DEFAULT_GRACE_MS } from "../src/lib/orphans";
@@ -16,8 +27,28 @@ function mb(bytes: number): string {
 
 async function main() {
   const del = process.argv.includes("--delete");
+  const json = process.argv.includes("--json");
 
   const report = await reclaimOrphans({ dryRun: !del });
+
+  // One line, so a scheduled run can be piped somewhere that alerts on it.
+  // Exit stays 0 unless the sweep itself failed: finding orphans is the normal
+  // state of a system that has ever deleted a post, not an error condition.
+  if (json) {
+    process.stdout.write(
+      `${JSON.stringify({
+        dryRun: !del,
+        scanned: report.scanned,
+        referenced: report.referenced,
+        unreferenced: report.orphans.length,
+        skippedRecent: report.skippedRecent,
+        unrecognised: report.unrecognised.length,
+        deleted: report.deleted.length,
+        bytesReclaimed: report.bytesReclaimed,
+      })}\n`,
+    );
+    return;
+  }
 
   const lines: string[] = [
     "",
