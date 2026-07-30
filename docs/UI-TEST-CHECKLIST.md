@@ -557,6 +557,41 @@ As a **student**, on `/student/work`.
 
 ---
 
+## 12f. Class detail and student profile
+
+As **Tom (teacher)**.
+
+- ☐ `/teacher/classes` lists only the classes **you** teach, each with a
+  "Register done / to do" badge for today
+- ☐ Open one → tiles for register, work to mark, **attendance concern** (below
+  90%) and **⚠️ "No guardian"** — the count of children whose notifications reach
+  nobody, which is the thing a teacher can actually act on
+- ☐ Roster shows each child's 28-day attendance, colour-coded, with absences
+- ☐ The message icon beside a child opens a thread pre-targeted at them
+- ☐ Join code card → Copy works; "Show poster" prints a large-type card
+- ☐ **⚠️** The poster says plainly there is **no QR code yet**. If it ever claims
+  one, check a QR is actually rendered
+- ☐ **⚠️** Open a `classId` you do not teach → **404**, not a redirect
+
+As a **student**.
+
+- ☐ `/student/profile` → avatar, preferred name, bio, badges
+- ☐ "Change my look" → 72 avatars; picking one updates the large preview
+- ☐ Save → the new avatar appears in the nav and on the register
+- ☐ **⚠️** Your **full name** is read-only, and says only a teacher can change it
+  — it is what the register uses
+- ☐ Student code is shown with "a grown-up at home needs this to link to you"
+- ☐ Badges: earned ones are highlighted, unearned ones are dimmed under "On the
+  way" — **⚠️** there is no score, no rank, no leaderboard, and nothing that can
+  go down
+- ☐ Have a teacher approve one of your bulletin posts → the "Shared something"
+  badge appears. Delete the post → **⚠️** it disappears again (badges are derived
+  from live data, not stored)
+- ☐ **⚠️** As a teacher, `/student/profile` → redirected away. As a student,
+  `/teacher/classes` → redirected away
+
+---
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -606,11 +641,10 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Listed in the README's "Not built": `/student/profile`, `/teacher/classes`,
-global feed, competitions, suspend-user, file attachments on assignments,
-submissions and bulletin posts (only the school logo uses storage so far),
-weighted grade categories, progress-report export, SSO, 2FA, SMS, real email
-delivery.
+Every route in the navigation now resolves. Still not built, per the README:
+bulletin post media upload, a real QR code on the join poster, awards uploads on
+the student profile, global feed, competitions, suspend-user, weighted grade
+categories, progress-report export, SSO, 2FA, SMS, real email delivery.
 
 Nav links to these will 404 — that is deliberate, so the missing work stays
 visible rather than being quietly hidden.

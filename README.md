@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (296 tests) |
+| `npm test` | Full suite (303 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -93,6 +93,7 @@ src/lib/                  All business logic. Pages are thin.
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
+  badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -187,7 +188,7 @@ Break these and something quietly goes wrong for a child or a parent.
    are still text-only.
 5. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-6. Global feed, competitions, progress-report export, SSO, 2FA.
+5. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -250,6 +251,11 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **Teacher class detail and student profile**, the last two nav 404s. The class
+  page surfaces the two things a teacher acts on — students below 90% attendance,
+  and students with **no guardian linked** (nobody receives their notifications)
+  — plus a printable join-code card. The student profile has the avatar picker,
+  preferred name, bio, and badges derived from real data.
 - **File attachments, with per-file authorisation.** A student uploaded a PDF to
   their own submission; on that real file the server allows the student, their
   guardian, the teacher of that class and a school admin, and denies a
@@ -301,9 +307,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **296 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **303 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -321,11 +327,11 @@ Renders and typechecks; treat as `Untested:`.
   `src/app/(app)/student/work/actions.ts` is defence-in-depth for a stale page
   and has not been executed.
 
-### Not built — these routes 404
+### Not built
 
-Left visible in the nav on purpose, so missing work is obvious rather than hidden.
+**Every route referenced by the navigation now resolves** — a sweep of all 21
+returns 200 or a correct auth redirect, none 404.
 
-- `/student/profile`, `/teacher/classes`
 - Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - File attachments on assignments and submissions (text-only today)

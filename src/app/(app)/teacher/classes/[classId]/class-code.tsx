@@ -1,0 +1,96 @@
+"use client";
+
+import { useState } from "react";
+import { CopyIcon, PrinterIcon } from "@phosphor-icons/react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/toast";
+
+/**
+ * The class join code, with a printable card for the classroom wall.
+ *
+ * There is no QR code. The spec asks for one, and generating it properly means
+ * either a dependency or hand-rolling Reed-Solomon error correction — neither of
+ * which belongs in a component that is otherwise two divs. Sending a school's
+ * join code to a third-party QR service to be turned into an image is worse than
+ * not having one. So the card shows the typed code, plainly and in large type,
+ * and says so.
+ */
+export function ClassCode({ joinCode, className }: { joinCode: string; className: string }) {
+  const { toast } = useToast();
+  const [showQr, setShowQr] = useState(false);
+
+  const joinUrl =
+    typeof window !== "undefined" ? `${window.location.origin}/join/student` : "/join/student";
+
+  return (
+    <div className="rounded-[--radius-lg] border border-border bg-surface p-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+            Class join code
+          </p>
+          <code className="mt-1 block font-mono text-2xl font-bold tracking-[0.15em] text-accent-strong">
+            {joinCode}
+          </code>
+          <p className="mt-1 text-xs text-fg-muted">
+            Students enter this at <span className="font-medium text-fg">{joinUrl}</span> and join
+            this class straight away.
+          </p>
+        </div>
+
+        <div className="flex gap-2">
+          <Button
+            size="sm"
+            variant="secondary"
+            icon={<CopyIcon weight="bold" />}
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(joinCode);
+                toast({ tone: "ok", title: "Class code copied" });
+              } catch {
+                toast({
+                  tone: "warn",
+                  title: "Could not copy",
+                  description: "Select the code to copy it.",
+                });
+              }
+            }}
+          >
+            Copy
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            icon={<PrinterIcon weight="bold" />}
+            onClick={() => setShowQr((v) => !v)}
+          >
+            {showQr ? "Hide" : "Show"} poster
+          </Button>
+        </div>
+      </div>
+
+      {showQr && (
+        <div className="mt-4 border-t border-border pt-4">
+          {/* Deliberately plain and high-contrast: this gets printed and stuck
+              on a wall, and read across a classroom. */}
+          <div className="mx-auto max-w-xs rounded-[--radius-lg] border-2 border-fg bg-white p-6 text-center text-black">
+            <p className="text-sm font-bold uppercase tracking-wide">{className}</p>
+            <p className="mt-1 text-xs">Join EduLink</p>
+            <p className="mt-4 font-mono text-3xl font-black tracking-[0.15em]">{joinCode}</p>
+            <p className="mt-4 text-xs leading-relaxed">
+              Go to <strong>{joinUrl}</strong> and type this code.
+            </p>
+          </div>
+          <div className="mt-3 flex justify-center">
+            <Button size="sm" variant="ghost" onClick={() => window.print()}>
+              Print it
+            </Button>
+          </div>
+          <p className="mt-2 text-center text-xs text-fg-subtle">
+            No QR code yet — students type the code above.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
