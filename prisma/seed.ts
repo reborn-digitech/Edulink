@@ -284,6 +284,32 @@ async function createSchool(input: SeedSchoolInput) {
   return { ...school, classes, teachers, students };
 }
 
+/**
+ * Which of the ten school days a child misses, counted back from the most
+ * recent (0 = the last day marked).
+ *
+ * The spread is CHOSEN, not emergent. The previous rule rolled one modular
+ * expression per (child, day) with roughly a 7% chance of an absence, which over
+ * ten days gave every child either 100% or exactly 90% and nothing in between.
+ * That looks like plausible data and quietly makes two things untestable: the
+ * class page counts children below 90% and always found none, and "Rock solid"
+ * (95%) was earned by precisely the children on 100%. A threshold no seeded row
+ * ever crosses is a threshold nobody has ever seen work.
+ *
+ * Over the 18-child roster this gives six on 100%, eight on 90%, two on 80% and
+ * two on 70% — four below the line a teacher actually acts on.
+ *
+ * WHICH days are missed matters as much as how many, because the streak badge
+ * reads the most recent run: a child whose only absence is a fortnight ago still
+ * has a streak, and one who was out yesterday does not.
+ */
+function missedSchoolDays(index: number): number[] {
+  if (index % 9 === 4) return [0, 4, 8]; // 70% — out recently, so no streak
+  if (index % 9 === 7) return [1, 6]; // 80% — streak broken this week
+  if (index % 3 === 0) return []; // 100% — earns "Rock solid"
+  return [8]; // 90% — one old absence, streak intact, no badge
+}
+
 async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) {
   const today = todayKey(school.timezone);
   const klass = school.classes[0]!;
@@ -292,10 +318,17 @@ async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) 
 
   // The last 14 calendar days, skipping weekends. Today is deliberately left
   // UNMARKED so the teacher's first screen has something to do.
+  const schoolDays: string[] = [];
   for (let back = 14; back >= 1; back--) {
     const dateKey = addDaysToKey(today, -back);
     const weekday = new Date(`${dateKey}T00:00:00Z`).getUTCDay();
     if (weekday === 0 || weekday === 6) continue;
+    schoolDays.push(dateKey);
+  }
+
+  for (const [dayIndex, dateKey] of schoolDays.entries()) {
+    // 0 = the most recent school day, which is what missedSchoolDays counts in.
+    const fromLatest = schoolDays.length - 1 - dayIndex;
 
     const session = await db.attendanceSession.create({
       data: {
@@ -308,10 +341,18 @@ async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) 
     });
 
     for (const [index, student] of roster.entries()) {
-      // Deterministic pseudo-variety — no Math.random, so a seeded database is
-      // reproducible and a failing test can be re-run against the same data.
-      const n = (index * 7 + back * 13) % 100;
-      const status = n < 86 ? "PRESENT" : n < 93 ? "LATE" : n < 97 ? "ABSENT" : "EXCUSED";
+      const missed = missedSchoolDays(index);
+      let status: string;
+
+      if (missed.includes(fromLatest)) {
+        // The oldest of a child's absences is the explained one, so the note
+        // and the EXCUSED-counts-against-you rules both get exercised.
+        status = fromLatest === Math.max(...missed) ? "EXCUSED" : "ABSENT";
+      } else {
+        // Sparse and deterministic — no Math.random, so a seeded database is
+        // reproducible and a failing test can be re-run against the same data.
+        status = (index + fromLatest) % 11 === 0 ? "LATE" : "PRESENT";
+      }
 
       await db.attendanceRecord.create({
         data: {

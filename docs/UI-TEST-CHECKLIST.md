@@ -627,7 +627,12 @@ As **Tom (teacher)**.
 - ☐ Open one → tiles for register, work to mark, **attendance concern** (below
   90%) and **⚠️ "No guardian"** — the count of children whose notifications reach
   nobody, which is the thing a teacher can actually act on
-- ☐ Roster shows each child's 28-day attendance, colour-coded, with absences
+- ☐ **⚠️** On Grade 5 · Sunflower the concern count is **4**, not 0. The seed
+  deliberately puts two children on 70% and two on 80%; a count that is always
+  zero means the threshold has never actually been seen to work
+- ☐ Roster shows each child's 28-day attendance, colour-coded, with absences.
+  A child on 70% shows **2** absences, not 3 — the third was excused, which
+  counts against attendance but is not something to chase a family about
 - ☐ The message icon beside a child opens a thread pre-targeted at them
 - ☐ Join code card → Copy works; "Show poster" prints a large-type card
 - ☐ **⚠️** The poster says plainly there is **no QR code yet**. If it ever claims

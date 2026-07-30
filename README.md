@@ -212,22 +212,17 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. Seed attendance that actually crosses the thresholds. Every seeded student
-   sits at exactly 90% or 100%, so `percent < 90` is 0 for the whole school and
-   the "attendance concern" path only renders non-zero if you force it by hand.
-   **Change the seed and run the suite twice** — `badges.test.ts` reads real
-   attendance percentages, so moving them moves what it asserts.
-2. **Schedule the orphan sweep.** `npm run files:check` exists and works, but
+1. **Schedule the orphan sweep.** `npm run files:check` exists and works, but
    nothing runs it. Until something does, reclaiming is a thing somebody has to
    remember.
-3. `here-all-week` still shows progress that can go **down** — the streak resets
+2. `here-all-week` still shows progress that can go **down** — the streak resets
    to 0 on an absence, so "3 of 5" becomes "0 of 5". The overall badge total is
    gone for exactly this reason; this one was left because progress toward a
    *named* badge is the encouraging case the design asks for, and removing it
    removes the only nudge on the board. Worth a decision, not a silent fix.
-4. Postgres migration + RLS policies (schema comments describe the intended
+3. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-5. Global feed, competitions, progress-report export, SSO, 2FA.
+4. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -363,6 +358,15 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **Seeded attendance now crosses its own thresholds.** Six children on 100%,
+  eight on 90%, two on 80% and two on 70% — so `/teacher/classes/<id>` reads
+  "Attendance concern 4" where it was structurally 0 before, and "Rock solid"
+  (95%) is earned by six rather than being unreachable. Streaks land on 0, 1, 8
+  and 10, so the streak badge is earned by fourteen of eighteen and the progress
+  bar has something to draw. All four statuses appear (148 present, 14 late, 12
+  excused, 6 absent). Verified by seeding a throwaway database and rendering the
+  class page against it; the suite passes twice on that seed and twice on the
+  old one.
 - **Orphan sweep.** Planted an unreferenced file: `files:check` listed it and
   deleted nothing; `files:reclaim` removed it and left the eight oddly-named
   fixtures in `storage/` alone. Mutation-tested in both directions — dropping the
