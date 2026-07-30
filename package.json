@@ -22,7 +22,8 @@
     "files:check": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts",
     "files:reclaim": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts --delete",
     "backfill:school-id": "tsx --tsconfig scripts/tsconfig.json scripts/backfill-school-id.ts",
-    "rls:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-rls.ts"
+    "rls:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-rls.ts",
+    "rls:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-rls-app.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",

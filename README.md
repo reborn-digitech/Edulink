@@ -73,6 +73,8 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
+| `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
+| `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 ### Running the file sweep on a schedule
@@ -119,6 +121,7 @@ src/lib/                  All business logic. Pages are thin.
   image-metadata.ts       ★ Strips EXIF/GPS before an upload reaches disk.
   uploads.ts              Stores a batch of attachments, or none of them.
   orphans.ts              ★ Finds/deletes files no record references. Dry-run by default.
+  tenant-tx.ts            ★ withTenant: sets app.school_id per TRANSACTION. Read the comment.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
@@ -283,23 +286,34 @@ Break these and something quietly goes wrong for a child or a parent.
      reads the previous school's rows while believing RLS is protecting it. That
      is worse than no RLS, because it looks like protection.
 
-     So every scoped query must go through something shaped like:
+     `withTenant` in `src/lib/db.ts` is that wrapper, and it exists now:
 
      ```ts
-     db.$transaction(async (tx) => {
-       await tx.$executeRawUnsafe(`SET LOCAL app.school_id = $1`, schoolId);
-       return work(tx);
-     });
+     await withTenant(session.schoolId, (tx) => tx.post.findMany());
      ```
 
-     Prisma's interactive transactions pin one connection for the callback, which
-     is what makes `SET LOCAL` apply to the queries inside it. This is a change
-     to `db.ts` and to how every scoped call is issued, and it is **not written
-     yet** — deliberately, because writing it while dev runs on SQLite would mean
-     shipping a helper no caller uses and no test exercises. `rls-verify.sql`
-     checks the transaction-scoping property the design depends on, so a Postgres
-     upgrade or a connection pooler that swallows transaction scope cannot take
-     it away quietly.
+     On Postgres it opens a transaction, sets the tenant, and runs the callback
+     inside it — Prisma's interactive transactions pin one connection, which is
+     what makes `SET LOCAL` apply. On SQLite it runs the callback unchanged;
+     there is no row-level security to feed, and faking one would put a different
+     code path in dev from the one that runs in production.
+
+     `npm run rls:verify` proves it against a real Postgres, through a real
+     Prisma client, calling the real helper — not a copy of it, which is why the
+     mechanism lives in `tenant-tx.ts` taking its client as an argument. Five
+     checks, of which the third is the one that matters: after a `withTenant`
+     block, the next query inherits nothing. Rewrite the helper to set the tenant
+     per connection instead and that check fails, which is how it was confirmed
+     to be looking at the right thing.
+
+   * **What is genuinely left: the call sites.** `withTenant` has no callers yet.
+     Every scoped read and write needs to go through it, which is a change to
+     roughly fifty places — and until that happens the policies would return
+     nothing, so `rls.sql` must not be applied to a database this app is serving.
+     Wiring it up on SQLite alone would prove nothing either way, since the
+     wrapper is a no-op there; the honest sequence is to move dev to Postgres
+     first, then wire the call sites with the tests running against the engine
+     that actually enforces them.
 2. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
