@@ -18,6 +18,9 @@ import type { Role } from "@/lib/constants";
  */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
+/** Matches the `.max(10)` on `postSchema.media`, which is what actually enforces it. */
+const MAX_PICTURES = 10;
+
 export function ComposeForm({
   classes,
   role,
@@ -43,45 +46,84 @@ export function ComposeForm({
   const [tagDraft, setTagDraft] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const [picture, setPicture] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string | null>(null);
-  const [alt, setAlt] = useState("");
+  /**
+   * One entry per picture, each carrying its own alt text and its own preview.
+   *
+   * Alt text is per-image because it describes THAT image; a single shared
+   * caption read out for four photographs tells a child who cannot see them
+   * nothing about any of them. Validation has always required one per item.
+   *
+   * The preview is a blob URL the browser holds until it is revoked, so it is
+   * created when the picture is added and released when it goes.
+   */
+  const [pictures, setPictures] = useState<
+    { file: File; alt: string; preview: string }[]
+  >([]);
   const pickerRef = useRef<HTMLInputElement>(null);
 
-  // The preview is a blob URL held by the browser until it is revoked, so it
-  // has to be released when the picture changes or the page goes away.
+  // Release every outstanding preview when the form goes away. Removal revokes
+  // its own; this catches navigating away mid-compose.
   useEffect(() => {
-    if (!picture) {
-      setPreview(null);
+    return () => {
+      for (const picture of picturesRef.current) URL.revokeObjectURL(picture.preview);
+    };
+  }, []);
+
+  // A ref so the unmount cleanup above sees the CURRENT list rather than the
+  // empty one it closed over on first render.
+  const picturesRef = useRef(pictures);
+  picturesRef.current = pictures;
+
+  function choosePictures(chosen: FileList | null) {
+    if (!chosen) return;
+    const incoming = Array.from(chosen);
+
+    const room = MAX_PICTURES - pictures.length;
+    if (incoming.length > room) {
+      setErrors((e) => ({
+        ...e,
+        image:
+          room === 0
+            ? `That is already ${MAX_PICTURES} pictures.`
+            : `You can add ${room} more picture${room === 1 ? "" : "s"}.`,
+      }));
       return;
     }
-    const url = URL.createObjectURL(picture);
-    setPreview(url);
-    return () => URL.revokeObjectURL(url);
-  }, [picture]);
 
-  function choosePicture(file: File | undefined) {
-    if (!file) return;
-    // Both of these are re-checked on the server, which sniffs the actual bytes
+    // Both checks are re-done on the server, which sniffs the actual bytes
     // rather than trusting `file.type`. Doing them here too just means a child
     // is told immediately instead of after a 5 MB upload. (§6)
-    if (!file.type.startsWith("image/")) {
-      setErrors((e) => ({ ...e, image: "Choose a picture." }));
+    const wrongType = incoming.find((f) => !f.type.startsWith("image/"));
+    if (wrongType) {
+      setErrors((e) => ({ ...e, image: `“${wrongType.name}” is not a picture.` }));
       return;
     }
-    if (file.size > MAX_IMAGE_BYTES) {
-      setErrors((e) => ({ ...e, image: "That picture is bigger than 5 MB." }));
+    const tooBig = incoming.find((f) => f.size > MAX_IMAGE_BYTES);
+    if (tooBig) {
+      setErrors((e) => ({ ...e, image: `“${tooBig.name}” is bigger than 5 MB.` }));
       return;
     }
-    setErrors((e) => ({ ...e, image: "", alt: "" }));
-    setPicture(file);
+
+    setErrors((e) => ({ ...e, image: "" }));
+    setPictures((current) => [
+      ...current,
+      ...incoming.map((file) => ({ file, alt: "", preview: URL.createObjectURL(file) })),
+    ]);
+    // Without this, picking the same file again fires no change event at all.
+    if (pickerRef.current) pickerRef.current.value = "";
   }
 
-  function removePicture() {
-    setPicture(null);
-    setAlt("");
+  function describePicture(index: number, alt: string) {
+    setPictures((current) => current.map((p, i) => (i === index ? { ...p, alt } : p)));
+  }
+
+  function removePicture(index: number) {
+    setPictures((current) => {
+      const going = current[index];
+      if (going) URL.revokeObjectURL(going.preview);
+      return current.filter((_, i) => i !== index);
+    });
     setErrors((e) => ({ ...e, image: "", alt: "" }));
-    // Without this, picking the same file again fires no change event.
     if (pickerRef.current) pickerRef.current.value = "";
   }
 
@@ -103,7 +145,12 @@ export function ComposeForm({
     if (title.trim().length < 2) next.title = "Give it a title.";
     if (scope === "CLASS" && !classId) next.classId = "Choose a class.";
     // A picture nobody can hear is a picture some children cannot read at all.
-    if (picture && !alt.trim()) next.alt = "Describe the picture, so it makes sense read aloud.";
+    // Reported per picture, so it is obvious WHICH one is missing its words.
+    pictures.forEach((picture, index) => {
+      if (!picture.alt.trim()) {
+        next[`alt-${index}`] = "Describe this picture, so it makes sense read aloud.";
+      }
+    });
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
@@ -116,9 +163,12 @@ export function ComposeForm({
       payload.set("title", title.trim());
       payload.set("body", body.trim());
       for (const tag of tags) payload.append("tags", tag);
-      if (picture) {
-        payload.set("image", picture);
-        payload.set("alt", alt.trim());
+      // Files and their alt text go in as two lists in the SAME order, and the
+      // server zips them back together. FormData keeps insertion order per key,
+      // so appending them in lockstep here is what keeps the pairing true.
+      for (const picture of pictures) {
+        payload.append("images", picture.file);
+        payload.append("alts", picture.alt.trim());
       }
 
       const result = await submitPost(payload);
@@ -246,60 +296,77 @@ export function ComposeForm({
       </div>
 
       <div>
-        <span className="block text-sm font-medium text-fg">Picture</span>
+        <span className="block text-sm font-medium text-fg">Pictures</span>
 
-        {!picture ? (
+        {pictures.length > 0 && (
+          <ul className="mt-1.5 space-y-3">
+            {pictures.map((picture, index) => (
+              <li
+                key={picture.preview}
+                className="space-y-3 rounded-[--radius-md] border border-border bg-surface p-3"
+              >
+                <div className="flex items-start gap-3">
+                  {/* Local blob preview — nothing has been uploaded yet. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={picture.preview}
+                    alt=""
+                    className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-fg">{picture.file.name}</p>
+                    <p className="text-xs text-fg-muted">
+                      {(picture.file.size / 1024 / 1024).toFixed(1)} MB
+                    </p>
+                  </div>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => removePicture(index)}
+                  >
+                    Remove
+                  </Button>
+                </div>
+
+                <TextField
+                  label={
+                    pictures.length === 1
+                      ? "Describe the picture"
+                      : `Describe picture ${index + 1}`
+                  }
+                  required
+                  value={picture.alt}
+                  error={errors[`alt-${index}`]}
+                  onChange={(e) => describePicture(index, e.target.value)}
+                  maxLength={300}
+                  placeholder="Our class relay team crossing the line"
+                  hint="Read out to anyone who cannot see it. Say what is happening, not who is in it."
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {pictures.length < MAX_PICTURES && (
           <>
             <label
               htmlFor="post-image"
               className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[--radius-md] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
             >
               <ImageIcon weight="duotone" className="size-5" />
-              Add a picture
+              {pictures.length === 0 ? "Add a picture" : "Add another"}
             </label>
             <input
               ref={pickerRef}
               id="post-image"
               type="file"
+              multiple
               accept="image/png,image/jpeg,image/webp,image/gif"
               className="sr-only"
-              onChange={(e) => choosePicture(e.target.files?.[0])}
+              onChange={(e) => choosePictures(e.target.files)}
             />
           </>
-        ) : (
-          <div className="mt-1.5 space-y-3 rounded-[--radius-md] border border-border bg-surface p-3">
-            <div className="flex items-start gap-3">
-              {/* Local blob preview — nothing has been uploaded yet. */}
-              {preview && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={preview}
-                  alt=""
-                  className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
-                />
-              )}
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium text-fg">{picture.name}</p>
-                <p className="text-xs text-fg-muted">
-                  {(picture.size / 1024 / 1024).toFixed(1)} MB
-                </p>
-              </div>
-              <Button type="button" variant="ghost" size="sm" onClick={removePicture}>
-                Remove
-              </Button>
-            </div>
-
-            <TextField
-              label="Describe the picture"
-              required
-              value={alt}
-              error={errors.alt}
-              onChange={(e) => setAlt(e.target.value)}
-              maxLength={300}
-              placeholder="Our class relay team crossing the line"
-              hint="Read out to anyone who cannot see it. Say what is happening, not who is in it."
-            />
-          </div>
         )}
 
         {errors.image && (
@@ -308,8 +375,8 @@ export function ComposeForm({
           </p>
         )}
         <p className="mt-1 text-xs text-fg-muted">
-          Optional. PNG, JPEG, WebP or GIF, up to 5 MB. Location information is removed
-          from photos automatically.
+          Optional. Up to {MAX_PICTURES} pictures — PNG, JPEG, WebP or GIF, 5 MB each.
+          Location information is removed from photos automatically.
         </p>
       </div>
 

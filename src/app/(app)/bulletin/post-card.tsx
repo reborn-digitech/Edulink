@@ -163,17 +163,39 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           who is allowed to see this post before returning a byte, so a pending
           post's picture is as private as the post itself.
         */}
-        {post.media
-          .filter((item) => item.kind === "image")
-          .map((item) => (
-            <img
-              key={item.fileId}
-              src={`/api/files/${item.fileId}`}
-              alt={item.alt}
-              loading="lazy"
-              className="mt-3 max-h-[28rem] w-full rounded-[--radius-md] border border-border bg-surface-muted object-contain"
-            />
-          ))}
+        {(() => {
+          const pictures = post.media.filter((item) => item.kind === "image");
+          if (pictures.length === 0) return null;
+
+          // One picture gets the full width and keeps its own proportions —
+          // cropping somebody's drawing to a tidy square is not a neutral act.
+          // Several are laid out as a grid and cropped, because a column of
+          // full-height photographs buries the comments and the reactions.
+          const single = pictures.length === 1;
+
+          return (
+            <ul
+              className={cn(
+                "mt-3",
+                single ? "" : "grid gap-1.5 sm:grid-cols-2",
+              )}
+            >
+              {pictures.map((item) => (
+                <li key={item.fileId}>
+                  <img
+                    src={`/api/files/${item.fileId}`}
+                    alt={item.alt}
+                    loading="lazy"
+                    className={cn(
+                      "w-full rounded-[--radius-md] border border-border bg-surface-muted",
+                      single ? "max-h-[28rem] object-contain" : "aspect-4/3 object-cover",
+                    )}
+                  />
+                </li>
+              ))}
+            </ul>
+          );
+        })()}
 
         {post.tags.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-1.5">

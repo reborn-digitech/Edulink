@@ -414,6 +414,14 @@ As a **student** (`amara@riverside.school`).
 - ☐ `/bulletin` → **⚠️** a banner tells students their posts are reviewed *before*
   they post, not after the post vanishes
 - ☐ Tabs are "Everything" and "My posts" — **⚠️** students get no "To review" tab
+- ☐ **⚠️** Add three pictures at once. Each gets its OWN "Describe picture N"
+  field — one caption read out for three photographs describes none of them
+- ☐ Leave the middle one blank and send → refused, and it is the MIDDLE field
+  that is marked, not the first or the whole form
+- ☐ Fill it in and send → all three arrive, each with its own words, in order
+- ☐ Remove one, then pick the same file again → accepted
+- ☐ Approved post shows one picture full-width and keeps its proportions; two or
+  more become a cropped grid, so the comments are not pushed off the screen
 - ☐ `/bulletin/new` → **⚠️** only "One class" is offered; a student cannot address
   the whole school
 - ☐ Button reads "Send to my teacher", not "Post"

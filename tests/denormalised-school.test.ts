@@ -191,6 +191,34 @@ describe("a remark message inherits its thread's school", () => {
   });
 });
 
+describe("a post carries all of its pictures", () => {
+  /**
+   * Media is stored as one JSON array, and the alt text is paired with its file
+   * by position. Pairing by position is only safe while the two lists are built
+   * in step, so what is worth pinning is that a post with several pictures comes
+   * back with each caption still attached to the right one.
+   */
+  it("keeps every picture, in order, with its own alt text", async () => {
+    const media = [
+      { fileId: "aaaa0000-1111-2222-3333-000000000001.jpg", kind: "image" as const, alt: "First" },
+      { fileId: "aaaa0000-1111-2222-3333-000000000002.jpg", kind: "image" as const, alt: "Second" },
+      { fileId: "aaaa0000-1111-2222-3333-000000000003.jpg", kind: "image" as const, alt: "Third" },
+    ];
+
+    const { postId } = await createPost(teacher, {
+      scope: "CLASS",
+      classId,
+      title: "TEST denorm three pictures",
+      body: "",
+      tags: [],
+      media,
+    });
+
+    const stored = await db.post.findUniqueOrThrow({ where: { id: postId } });
+    expect(JSON.parse(stored.media)).toEqual(media);
+  });
+});
+
 describe("nothing already stored disagrees", () => {
   /**
    * A sweep of what is actually in the database, not just what these tests

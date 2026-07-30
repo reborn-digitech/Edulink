@@ -12,22 +12,29 @@ import {
   togglePin,
 } from "@/lib/bulletin";
 import { postSchema, reactionSchema, reportSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
-import { deleteStoredFile, storeFile, UploadError } from "@/lib/storage";
+import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
 import type { MediaItem } from "@/lib/json";
 import type { PostStatus } from "@/lib/constants";
 
 export type PostState = { ok: boolean; errors: FieldErrors; postId?: string; status?: PostStatus };
 
+/** Matches the `.max(10)` on `postSchema.media`, which is what enforces it. */
+const MAX_PICTURES = 10;
+
 /**
- * Compose a post, with an optional picture.
+ * Compose a post, with up to ten pictures.
  *
- * The file arrives as FormData and is stored HERE, so the caller never names a
+ * The files arrive as FormData and are stored HERE, so the caller never names a
  * fileId. That is deliberate and load-bearing: `files.ts` authorises a stored
  * file by finding the post whose `media` mentions it, so a client that could
  * put an arbitrary fileId into its own post could point at somebody else's
  * attachment and have the lookup grant its own audience access to it. There is
- * no check guarding that, because there is nothing to check — the id is minted
+ * no check guarding that, because there is nothing to check — the ids are minted
  * server-side from bytes this user just uploaded. (§6)
+ *
+ * Storing is all-or-nothing (`storeAttachments`): if the fourth picture is
+ * rejected, the three already written are removed. A half-uploaded post would
+ * otherwise leave files no record mentions, which nothing can then reach.
  */
 export async function submitPost(formData: FormData): Promise<PostState> {
   const session = await getSession();
@@ -47,29 +54,47 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   const parsed = postSchema.safeParse(fields);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
-  const picture = formData.get("image");
-  const alt = String(formData.get("alt") ?? "").trim();
+  // Two lists in the same order — the form appends a file and its alt text in
+  // lockstep, and FormData preserves insertion order per key. Zipped rather than
+  // indexed field names because the pairing is then a property of one loop.
+  const files = formData.getAll("images").filter((v): v is File => v instanceof File && v.size > 0);
+  const alts = formData.getAll("alts").map((v) => String(v).trim());
+
+  if (files.length > MAX_PICTURES) {
+    return { ok: false, errors: { image: `Up to ${MAX_PICTURES} pictures.` } };
+  }
+
+  // A picture with no words is unreadable to the children who most need them,
+  // and validation has always required one each. Checked BEFORE anything is
+  // stored, so a post that cannot be accepted leaves nothing on disk.
+  const missing = files.findIndex((_, index) => !alts[index]);
+  if (missing !== -1) {
+    return {
+      ok: false,
+      errors: { [`alt-${missing}`]: "Describe this picture, so it makes sense read aloud." },
+    };
+  }
+
   let media: MediaItem[] = [];
 
-  if (picture instanceof File && picture.size > 0) {
-    if (!alt) {
-      return {
-        ok: false,
-        errors: { alt: "Describe the picture, so it makes sense read aloud." },
-      };
-    }
+  if (files.length > 0) {
     try {
-      const stored = await storeFile(picture);
-      if (stored.kind !== "image") {
-        await deleteStoredFile(stored.fileId);
-        return { ok: false, errors: { image: "That needs to be a picture." } };
+      const stored = await storeAttachments(files, { max: MAX_PICTURES });
+      const notPictures = stored.filter((item) => !item.mime.startsWith("image/"));
+      if (notPictures.length > 0) {
+        await discard(stored.map((item) => item.fileId));
+        return { ok: false, errors: { image: "Those all need to be pictures." } };
       }
-      media = [{ fileId: stored.fileId, kind: "image", alt: alt.slice(0, 300) }];
+      media = stored.map((item, index) => ({
+        fileId: item.fileId,
+        kind: "image" as const,
+        alt: alts[index]!.slice(0, 300),
+      }));
     } catch (error) {
-      // UploadError messages are written for the person uploading.
-      if (error instanceof UploadError) return { ok: false, errors: { image: error.message } };
+      // AttachmentError messages are written for the person uploading.
+      if (error instanceof AttachmentError) return { ok: false, errors: { image: error.message } };
       console.error("[submitPost] upload failed", error);
-      return { ok: false, errors: { image: "That picture could not be saved." } };
+      return { ok: false, errors: { image: "Those pictures could not be saved." } };
     }
   }
 
@@ -88,7 +113,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
     // The post is what makes a stored file reachable and deletable. If it never
     // existed, nothing will ever reference this file again — remove it now
     // rather than leave an unowned image on disk.
-    await Promise.all(media.map((item) => deleteStoredFile(item.fileId)));
+    await discard(media.map((item) => item.fileId));
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[submitPost]", error);
     return { ok: false, errors: { _form: "We could not post that. Please try again." } };

@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (382 tests) |
+| `npm test` | Full suite (383 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -440,7 +440,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **382 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **383 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -511,6 +511,12 @@ One line each, with the default rejected.
   The classmate cell is the one that matters: a handout is for the class, a
   child's work is not. The photo lost its EXIF on the way in here too (203 → 160
   bytes), so stripping is a property of storage rather than of the bulletin.
+- **Three pictures on one post, production build.** A student attached three at
+  once; each got its own "Describe picture N" field, and leaving the middle one
+  blank marked THAT field rather than the form. All three arrived with their own
+  words in order, all three were private while the post was PENDING and readable
+  by the class the moment a teacher approved it, and all three lost their EXIF on
+  the way in (203 bytes in, 160 out).
 - **Bulletin picture loop, production build:** a student attached a real JPEG
   carrying a GPS EXIF block, described it, and sent it. The post was held
   PENDING; a classmate asking `/api/files/<id>` directly got **404**, the
@@ -577,5 +583,3 @@ previous sweep.
 - Deleting a record leaves its files on disk until the sweep runs. Unreachable
   the moment the record goes, so this is disk rather than disclosure. There is a
   cron recipe under Scripts; nothing in this repo installs it for you.
-- One picture per post. The schema and validation already allow up to ten; the
-  compose form offers a single picker.
