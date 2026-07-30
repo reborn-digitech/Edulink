@@ -65,11 +65,13 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (334 tests) |
+| `npm test` | Full suite (341 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
+| `npm run files:check` | List stored files no record references — **deletes nothing** |
+| `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 ---
@@ -94,6 +96,7 @@ src/lib/                  All business logic. Pages are thin.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
   image-metadata.ts       ★ Strips EXIF/GPS before an upload reaches disk.
   uploads.ts              Stores a batch of attachments, or none of them.
+  orphans.ts              ★ Finds/deletes files no record references. Dry-run by default.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
@@ -193,6 +196,13 @@ Break these and something quietly goes wrong for a child or a parent.
   serves the page happily. A 500 that only reproduces in `next start` is the
   signature. `slot.test.ts` guards the directive, because reproducing the
   symptom needs a production build and a streaming boundary.
+- **A script that imports from `src/lib` needs `scripts/tsconfig.json`.** Most of
+  `src/lib` is `server-only`, which throws the moment it is imported outside a
+  React Server Component — so `tsx scripts/whatever.ts` dies on line one with
+  "This module cannot be imported from a Client Component module". That config
+  stubs the package for scripts only, the same way `vitest.config.ts` does for
+  tests. Run scripts with `tsx --tsconfig scripts/tsconfig.json`, as the
+  `files:*` entries in package.json do. The app's own build keeps the guard.
 - Dark-mode role accents are written **twice** in `globals.css`
   (`[data-theme="dark"][data-role="x"]` *and* `[data-theme="dark"] [data-role="x"]`)
   because `data-role` is often on a subtree while `data-theme` is on `<html>`.
@@ -202,19 +212,19 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Reclaim orphaned files.** Nothing deletes stored bytes when the record that
-   referenced them goes — a deleted post or assignment leaves its files behind.
-   They are unreachable the moment the record goes (`files.ts` denies anything no
-   record claims, and there is a test for that case), so this is disk, not
-   disclosure. A sweep for unreferenced ids is owed.
-2. Seed attendance that actually crosses the thresholds. Every seeded student
+1. Seed attendance that actually crosses the thresholds. Every seeded student
    sits at exactly 90% or 100%, so `percent < 90` is 0 for the whole school and
    the "attendance concern" path only renders non-zero if you force it by hand.
-3. The badge total on `/student/profile` (`{earned} of {total}`, page.tsx) is an
-   aggregate that goes **down** when a derived badge is lost — which is the one
-   thing `badges.tsx` says it will never show. The structural test only asserts
-   the badge *objects* carry no aggregate, so it passes while the view computes
-   one. Decide whether to drop the counter or drop the claim.
+   **Change the seed and run the suite twice** — `badges.test.ts` reads real
+   attendance percentages, so moving them moves what it asserts.
+2. **Schedule the orphan sweep.** `npm run files:check` exists and works, but
+   nothing runs it. Until something does, reclaiming is a thing somebody has to
+   remember.
+3. `here-all-week` still shows progress that can go **down** — the streak resets
+   to 0 on an absence, so "3 of 5" becomes "0 of 5". The overall badge total is
+   gone for exactly this reason; this one was left because progress toward a
+   *named* badge is the encouraging case the design asks for, and removing it
+   removes the only nudge on the board. Worth a decision, not a silent fix.
 4. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
 5. Global feed, competitions, progress-report export, SSO, 2FA.
@@ -343,9 +353,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **334 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **341 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, slot, image-metadata, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, slot, image-metadata, uploads, orphans, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -353,6 +363,12 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **Orphan sweep.** Planted an unreferenced file: `files:check` listed it and
+  deleted nothing; `files:reclaim` removed it and left the eight oddly-named
+  fixtures in `storage/` alone. Mutation-tested in both directions — dropping the
+  submission query from `referencedFileIds` makes it delete a child's handed-in
+  work and three tests fail; removing the grace window makes it delete a file
+  written seconds ago, and one test fails.
 - **Attachment loop, production build.** This was listed as "not built" and had
   in fact been built all along — `attachments/actions.ts` and `AttachmentList`
   were fully wired and, as far as the notes go, never once run. Now run: a
@@ -425,11 +441,8 @@ previous sweep.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.
-- `/student/profile` shows a badge total that can decrease, which contradicts the
-  "nothing can be lost" promise in `badges.tsx`. See Next steps.
-- Deleting a post does not delete its picture from `storage/`. The bytes become
-  unreachable immediately — `files.ts` denies anything no record claims, and
-  there is a test for exactly that orphan case — but nothing reclaims the disk.
-  A sweep for unreferenced files is still owed.
+- Deleting a record still leaves its files on disk until somebody runs
+  `npm run files:reclaim`. Unreachable the moment the record goes, so this is
+  disk rather than disclosure — but nothing schedules the sweep.
 - One picture per post. The schema and validation already allow up to ten; the
   compose form offers a single picker.

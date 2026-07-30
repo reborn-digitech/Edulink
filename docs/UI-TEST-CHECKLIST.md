@@ -603,6 +603,19 @@ As a **student**, on `/student/work`.
 - ☐ Fetch a well-formed UUID that nothing references → 404 (orphans are denied,
   not served)
 
+Reclaiming the disk. Not a screen — a terminal.
+
+- ☐ Attach a file, then delete the post or assignment it belonged to
+- ☐ `npm run files:check` → the file is listed as unreferenced, and **is still on
+  disk afterwards**. Reporting is the default because the failure mode is
+  deleting a child's work
+- ☐ **⚠️** A file uploaded in the last hour is never listed, even with nothing
+  referencing it — an upload writes its bytes before the row that points at them
+- ☐ `npm run files:reclaim` → it goes, and the count of reclaimed bytes matches
+- ☐ Run it twice → the second run is a no-op, not an error
+- ☐ **⚠️** Anything in `storage/` that is not a UUID-named file is reported as
+  "not ours" and **never deleted**
+
 ---
 
 ## 12f. Class detail and student profile
@@ -632,6 +645,9 @@ As a **student**.
 - ☐ Badges: earned ones are highlighted, unearned ones are dimmed under "On the
   way" — **⚠️** there is no score, no rank, no leaderboard, and nothing that can
   go down
+- ☐ **⚠️** The badge card header says "What you have earned so far" — **not
+  "3 of 7"**. Badges are derived, so a total is a number that drops when a child
+  slips below 95% attendance, and watching it drop is losing something
 - ☐ Have a teacher approve one of your bulletin posts → the "Shared something"
   badge appears. Delete the post → **⚠️** it disappears again (badges are derived
   from live data, not stored)

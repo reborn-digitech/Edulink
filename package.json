@@ -18,7 +18,9 @@
     "setup": "npm run db:push && npm run db:seed",
     "test": "vitest run",
     "test:watch": "vitest",
-    "vapid": "tsx scripts/gen-vapid.ts"
+    "vapid": "tsx scripts/gen-vapid.ts",
+    "files:check": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts",
+    "files:reclaim": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts --delete"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",

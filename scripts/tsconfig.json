@@ -1,0 +1,13 @@
+{
+  // Scripts run under tsx, in plain Node, with no React Server Component
+  // runtime — so `server-only` throws on import and takes the whole script with
+  // it. The app's own build must keep that guard, so it is stubbed HERE rather
+  // than in the root config, exactly as vitest.config.ts does for tests.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["../src/*"],
+      "server-only": ["../tests/stubs/server-only.ts"]
+    }
+  }
+}

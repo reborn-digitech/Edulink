@@ -25,9 +25,20 @@ beforeAll(async () => {
   schoolId = school.id;
   timezone = school.timezone;
 
-  // A student with attendance history from the seed.
+  // A student with attendance history from the seed, and — importantly — one
+  // who has no APPROVED post of their own.
+  //
+  // The "removing the post removes the badge" case can only be observed on a
+  // student whose `shared` badge is off to begin with. This used to take the
+  // first active enrollment and silently depended on the seed never giving that
+  // child a published post; the moment somebody used the app and approved one,
+  // the test failed for a reason that had nothing to do with badges.
   const enrollment = await db.enrollment.findFirstOrThrow({
-    where: { status: "ACTIVE", class: { schoolId } },
+    where: {
+      status: "ACTIVE",
+      class: { schoolId },
+      student: { postsAuthored: { none: { status: "APPROVED" } } },
+    },
     select: { studentMembershipId: true },
   });
   membershipId = enrollment.studentMembershipId;

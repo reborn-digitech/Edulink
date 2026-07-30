@@ -66,10 +66,21 @@ export default async function StudentProfilePage() {
         <CardHeader
           icon={<SealCheckIcon weight="duotone" className="size-5" />}
           title="Your badges"
+          /*
+           * Deliberately NOT "3 of 7".
+           *
+           * Badges are derived on every read, so a total is a number that goes
+           * DOWN — a child who slips below 95% attendance watches "3 of 7"
+           * become "2 of 7" and has lost something. badges.tsx promises there is
+           * no total score anywhere and that nothing can be lost; this line was
+           * quietly breaking both. The badge tests only assert that the badge
+           * OBJECTS carry no aggregate, so they passed while the view computed
+           * one — which is why the promise needs to hold in the markup too.
+           */
           description={
             earned.length === 0
               ? "Nothing yet — they arrive on their own"
-              : `${earned.length} of ${badges.length}`
+              : "What you have earned so far"
           }
         />
         <CardBody>
