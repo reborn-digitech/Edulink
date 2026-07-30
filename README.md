@@ -266,16 +266,40 @@ Break these and something quietly goes wrong for a child or a parent.
      table owner ignores it) and that the app role is neither SUPERUSER nor
      BYPASSRLS (or it ignores everything). Both were found the hard way: an
      earlier version of the verifier passed happily with FORCE turned off.
-   * **The real blocker is not SQL.** RLS needs the tenant in a session variable,
-     and `SET LOCAL` only lasts a transaction — so every scoped query has to run
-     inside one that sets it first. Prisma pools connections, so setting it
-     per-request is not safe: the next request can get the same connection. That
-     is a change to `db.ts` and to how every query is issued, and it should be
-     designed before any policy is written, or the policies will silently read an
-     empty `app.school_id` and return nothing.
-   * Nothing above was executed. **There is no Postgres on this machine** — no
-     server, no client, no Docker — so treat the DDL as generated-and-read, not
-     run.
+   * **What is left is the application side, and it is the hard part.** The
+     tenant has to reach the database as `app.school_id`, and the only safe way
+     to set it is `SET LOCAL` inside the transaction that runs the query.
+
+     Measured on this database, one connection, two consecutive queries:
+
+     | how the first query set it | what the second query saw |
+     |---|---|---|
+     | `SET app.school_id = 'riverside'` | **Riverside's posts** — it set nothing itself |
+     | `BEGIN; SET LOCAL …; COMMIT` | nothing |
+
+     The first row is the bug waiting to happen. Prisma pools connections, so a
+     request does not get a fresh one — it borrows whatever the last request
+     used. Set the tenant per *request* and the next request inherits it and
+     reads the previous school's rows while believing RLS is protecting it. That
+     is worse than no RLS, because it looks like protection.
+
+     So every scoped query must go through something shaped like:
+
+     ```ts
+     db.$transaction(async (tx) => {
+       await tx.$executeRawUnsafe(`SET LOCAL app.school_id = $1`, schoolId);
+       return work(tx);
+     });
+     ```
+
+     Prisma's interactive transactions pin one connection for the callback, which
+     is what makes `SET LOCAL` apply to the queries inside it. This is a change
+     to `db.ts` and to how every scoped call is issued, and it is **not written
+     yet** — deliberately, because writing it while dev runs on SQLite would mean
+     shipping a helper no caller uses and no test exercises. `rls-verify.sql`
+     checks the transaction-scoping property the design depends on, so a Postgres
+     upgrade or a connection pooler that swallows transaction scope cannot take
+     it away quietly.
 2. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
@@ -432,6 +456,13 @@ One line each, with the default rejected.
   a different branch — one that granted a role and had never run. A teacher
   asking for PARENT is refused, and so is a parent whose guardianships have all
   been revoked. Mutation-tested: delete that check and two tests fail.
+- **Tenant isolation enforced by Postgres, not just by us.** On a real Postgres
+  16 with `prisma/rls.sql` applied and an unprivileged app role: no
+  `app.school_id` set → every one of the 20 tenant tables returns zero rows;
+  acting for one school → only its rows; inserting across the boundary refused,
+  updating and deleting reach nothing. The verifier also refuses a SUPERUSER app
+  role and any table whose policy is not FORCED — neither of which a query can
+  detect, and the FORCE gap was found by an earlier verifier passing with it off.
 - **Seeded attendance now crosses its own thresholds.** Six children on 100%,
   eight on 90%, two on 80% and two on 70% — so `/teacher/classes/<id>` reads
   "Attendance concern 4" where it was structurally 0 before, and "Rock solid"
@@ -517,7 +548,11 @@ previous sweep.
 - Global feed, competitions marketplace, safety centre / moderation dashboards
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
-- Postgres RLS policies (described in schema comments; app-layer only today)
+- **Postgres RLS: policies written and proven, application wiring not.**
+  `prisma/rls.sql` applies cleanly and `prisma/rls-verify.sql` proves isolation
+  on Postgres 16. What is missing is the piece that tells the database which
+  school a request is for — see Next steps, and note that doing it per request
+  rather than per transaction would be worse than leaving RLS off.
 
 ### Known issues
 

@@ -175,3 +175,33 @@ DELETE FROM "School" WHERE id LIKE 'rlscheck-%';
 DELETE FROM "User" WHERE id LIKE 'rlscheck-%';
 
 COMMIT;
+
+-- ---------------------------------------------------------------------------
+-- The tenant setting must not outlive its transaction.
+--
+-- This is the property the application design rests on. The app will pool
+-- connections, so a request does not get a fresh one — it borrows whatever the
+-- last request used. If the tenant were set with plain SET it would still be on
+-- that connection when the next request borrows it, and that request would read
+-- the PREVIOUS school's rows while believing RLS was protecting it. Demonstrated
+-- on this database: with SET, a second query that set nothing still saw the
+-- first tenant's posts. With SET LOCAL, it saw none.
+--
+-- So: every scoped query goes inside a transaction that sets the tenant first,
+-- and the check below is here so a Postgres upgrade or a pooler that swallows
+-- transaction scope cannot quietly take that away.
+-- ---------------------------------------------------------------------------
+
+BEGIN;
+SET LOCAL app.school_id = 'rlscheck-scope-probe';
+COMMIT;
+
+DO $$
+BEGIN
+  IF coalesce(current_setting('app.school_id', true), '') = 'rlscheck-scope-probe' THEN
+    RAISE EXCEPTION
+      'FAIL: SET LOCAL survived its transaction. A pooled connection would carry '
+      'one request''s tenant into the next.';
+  END IF;
+  RAISE NOTICE 'Tenant setting is transaction-scoped, as the pooling design requires.';
+END $$;
