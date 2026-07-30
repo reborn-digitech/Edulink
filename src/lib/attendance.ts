@@ -273,6 +273,13 @@ export async function getAttendanceSummary(
       status: r.status as AttendanceStatus,
       note: r.note,
     })),
+    // The whole window, uncapped. `recent` is a display list and is deliberately
+    // trimmed; asking "was there ever a five-day run" over a trimmed list would
+    // quietly answer a different question near the edge of the window.
+    days: records.map((r) => ({
+      dateKey: r.session.dateKey,
+      status: r.status as AttendanceStatus,
+    })),
   };
 }
 
@@ -287,4 +294,65 @@ export function computeStreak(
     else break;
   }
   return streak;
+}
+
+function attended(status: AttendanceStatus): boolean {
+  return status === "PRESENT" || status === "LATE";
+}
+
+/**
+ * The longest run of days present anywhere in the window.
+ *
+ * `computeStreak` answers "are you on a run right now", which is the honest
+ * number for a teacher and the wrong one for a child's badge: it drops to zero
+ * the morning after a day off sick. This answers "did you ever have a run",
+ * which is a fact about what happened and does not stop being true because the
+ * child later caught a cold.
+ */
+export function computeBestStreak(
+  days: { dateKey: string; status: AttendanceStatus }[],
+): number {
+  const sorted = [...days].sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+  let best = 0;
+  let run = 0;
+  for (const day of sorted) {
+    run = attended(day.status) ? run + 1 : 0;
+    if (run > best) best = run;
+  }
+  return best;
+}
+
+/**
+ * The best attendance percentage over any unbroken stretch of at least
+ * `minDays` school days in the window.
+ *
+ * Same reasoning as above, for a percentage rather than a run. Taking the whole
+ * window means one bad fortnight erases a term of turning up; taking the best
+ * stretch means the good spell still counts.
+ *
+ * `minDays` exists because a percentage over one or two days is not a fact about
+ * anything — a single day present is "100% attendance" and would hand out the
+ * badge on a child's first morning. Returns null when there is not enough
+ * history to judge, which the caller must treat as "not yet", not as zero.
+ */
+export function bestAttendanceSpell(
+  days: { dateKey: string; status: AttendanceStatus }[],
+  minDays: number,
+): number | null {
+  const sorted = [...days].sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+  if (sorted.length < minDays) return null;
+
+  let best = 0;
+  for (let start = 0; start + minDays <= sorted.length; start++) {
+    let present = 0;
+    for (let end = start; end < sorted.length; end++) {
+      if (attended(sorted[end]!.status)) present++;
+      const length = end - start + 1;
+      if (length < minDays) continue;
+      // Integer percent, same rounding as the summary families compare against.
+      const percent = Math.round((present * 100) / length);
+      if (percent > best) best = percent;
+    }
+  }
+  return best;
 }

@@ -97,7 +97,7 @@ async function main() {
     });
   }
 
-  // ---- a fortnight of attendance history --------------------------------
+  // ---- a term of attendance history -------------------------------------
   await seedAttendance(riverside);
 
   // ---- assignments + grades ---------------------------------------------
@@ -303,11 +303,31 @@ async function createSchool(input: SeedSchoolInput) {
  * reads the most recent run: a child whose only absence is a fortnight ago still
  * has a streak, and one who was out yesterday does not.
  */
-function missedSchoolDays(index: number): number[] {
-  if (index % 9 === 4) return [0, 4, 8]; // 70% — out recently, so no streak
-  if (index % 9 === 7) return [1, 6]; // 80% — streak broken this week
-  if (index % 3 === 0) return []; // 100% — earns "Rock solid"
-  return [8]; // 90% — one old absence, streak intact, no badge
+function missedSchoolDays(index: number, total: number): Set<number> {
+  const missed = new Set<number>();
+  const block = (startFromLatest: number, length: number) => {
+    for (let i = 0; i < length; i++) {
+      const position = startFromLatest + i;
+      if (position < total) missed.add(position);
+    }
+  };
+
+  if (index % 9 === 4) {
+    // Off ill for a fortnight, a month ago, and fine since. Whole-window
+    // attendance lands below 90% so the teacher still sees them — that follow-up
+    // is the point of the tile — while the badges still credit the clean spell
+    // either side, because being ill is not a thing a child chose.
+    block(Math.floor(total * 0.35), Math.round(total * 0.3));
+  } else if (index % 9 === 7) {
+    // Off during the last fortnight. Recent, so the streak really is broken.
+    block(0, Math.round(total * 0.18));
+  } else if (index % 3 !== 0) {
+    // The ordinary shape: the odd day here and there, none of them recent.
+    for (let i = 1; i <= Math.round(total * 0.08); i++) missed.add((i * 7) % total);
+  }
+  // index % 3 === 0 misses nothing.
+
+  return missed;
 }
 
 async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) {
@@ -316,10 +336,17 @@ async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) 
   const roster = school.students.filter((s) => s.classId === klass.id);
   const teacher = school.teachers[0]!;
 
-  // The last 14 calendar days, skipping weekends. Today is deliberately left
-  // UNMARKED so the teacher's first screen has something to do.
+  // Nine weeks, skipping weekends — about 45 school days, roughly a term. Today
+  // is deliberately left UNMARKED so the teacher's first screen has something to
+  // do.
+  //
+  // It used to be a fortnight, which is ten school days, which is exactly the
+  // minimum `bestAttendanceSpell` needs before it will judge a percentage. With
+  // one window and no other, "the best stretch" and "the whole window" were the
+  // same number, so the badge could not tell an ill fortnight from a bad term
+  // and there was no seeded row that showed the difference.
   const schoolDays: string[] = [];
-  for (let back = 14; back >= 1; back--) {
+  for (let back = 63; back >= 1; back--) {
     const dateKey = addDaysToKey(today, -back);
     const weekday = new Date(`${dateKey}T00:00:00Z`).getUTCDay();
     if (weekday === 0 || weekday === 6) continue;
@@ -341,10 +368,10 @@ async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) 
     });
 
     for (const [index, student] of roster.entries()) {
-      const missed = missedSchoolDays(index);
+      const missed = missedSchoolDays(index, schoolDays.length);
       let status: string;
 
-      if (missed.includes(fromLatest)) {
+      if (missed.has(fromLatest)) {
         // The oldest of a child's absences is the explained one, so the note
         // and the EXCUSED-counts-against-you rules both get exercised.
         status = fromLatest === Math.max(...missed) ? "EXCUSED" : "ABSENT";

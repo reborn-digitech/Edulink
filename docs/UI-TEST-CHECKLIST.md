@@ -653,6 +653,13 @@ As a **student**.
 - ☐ **⚠️** The badge card header says "What you have earned so far" — **not
   "3 of 7"**. Badges are derived, so a total is a number that drops when a child
   slips below 95% attendance, and watching it drop is losing something
+- ☐ **⚠️** Mark a child absent for a fortnight, then reload their profile: the
+  attendance badges are **still there**. They describe what happened, not what is
+  still happening, and being off ill is not a thing to take a reward away for.
+  "Rock solid" reads *Reached 95% attendance*, past tense, on purpose
+- ☐ The teacher's class page still counts that child under "attendance concern".
+  Both are correct at once: the school should follow up, and the child should
+  not be punished for having been unwell
 - ☐ Have a teacher approve one of your bulletin posts → the "Shared something"
   badge appears. Delete the post → **⚠️** it disappears again (badges are derived
   from live data, not stored)

@@ -1,6 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { getBadges } from "@/lib/badges";
+import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import { addDaysToKey, todayKey } from "@/lib/dates";
 
 /**
  * Student badges.
@@ -181,5 +183,125 @@ describe("derivation tracks reality", () => {
     expect(badges.every((b) => !b.earned)).toBe(true);
     // And still shows them all, so a new child sees what is possible.
     expect(badges.length).toBeGreaterThanOrEqual(7);
+  });
+});
+
+describe("an absence does not take an earned badge away", () => {
+  /**
+   * The scenario that drove the change: a child turns up every day for a month,
+   * then is off ill for a fortnight. Reading the CURRENT streak and the
+   * WHOLE-window percentage took both attendance badges off them for being
+   * unwell — which is neither something they chose nor something a reward should
+   * respond to. The badges now ask whether it happened, not whether it is still
+   * happening.
+   *
+   * Built from scratch rather than read off the seed: this needs more history
+   * than a fortnight, and a test that only passes on freshly-seeded data is a
+   * test that starts failing for reasons nobody can find.
+   */
+  const SCHOOL_DAYS = 30;
+  let subjectMembershipId: string;
+  let subjectClassId: string;
+  let teacherMembershipId: string;
+  let sessionIds: string[] = [];
+
+  beforeAll(async () => {
+    // A class the seed does NOT record attendance for, so the only history this
+    // child has is the history written below.
+    const enrollment = await db.enrollment.findFirstOrThrow({
+      where: {
+        status: "ACTIVE",
+        class: { schoolId, archivedAt: null, attendance: { none: {} } },
+      },
+      select: { studentMembershipId: true, classId: true },
+    });
+    subjectMembershipId = enrollment.studentMembershipId;
+    subjectClassId = enrollment.classId;
+    teacherMembershipId = (
+      await db.classTeacher.findFirstOrThrow({ where: { classId: subjectClassId } })
+    ).teacherMembershipId;
+
+    // Every school day present, working back from yesterday.
+    const days: string[] = [];
+    for (let back = 1; days.length < SCHOOL_DAYS; back++) {
+      const dateKey = addDaysToKey(todayKey(timezone), -back);
+      const weekday = new Date(`${dateKey}T00:00:00Z`).getUTCDay();
+      if (weekday === 0 || weekday === 6) continue;
+      days.push(dateKey);
+    }
+
+    for (const dateKey of days) {
+      const session = await db.attendanceSession.create({
+        data: {
+          schoolId,
+          classId: subjectClassId,
+          dateKey,
+          takenByMembershipId: teacherMembershipId,
+          finalizedAt: new Date(),
+        },
+      });
+      sessionIds.push(session.id);
+      await db.attendanceRecord.create({
+        data: {
+          sessionId: session.id,
+          schoolId,
+          studentMembershipId: subjectMembershipId,
+          status: "PRESENT",
+        },
+      });
+    }
+  });
+
+  afterAll(async () => {
+    await db.attendanceRecord.deleteMany({ where: { sessionId: { in: sessionIds } } });
+    await db.attendanceSession.deleteMany({ where: { id: { in: sessionIds } } });
+    sessionIds = [];
+  });
+
+  async function attendanceBadges() {
+    const badges = await getBadges(schoolId, subjectMembershipId, timezone);
+    return {
+      rockSolid: badges.find((b) => b.id === "regular")!.earned,
+      hereAllWeek: badges.find((b) => b.id === "here-all-week")!.earned,
+    };
+  }
+
+  it("earns both attendance badges after a clean month", async () => {
+    expect(await attendanceBadges()).toEqual({ rockSolid: true, hereAllWeek: true });
+  });
+
+  it("⚠ keeps both after a fortnight off ill", async () => {
+    const recent = await db.attendanceSession.findMany({
+      where: { id: { in: sessionIds } },
+      orderBy: { dateKey: "desc" },
+      take: 10,
+      select: { id: true },
+    });
+    const ids = recent.map((r) => r.id);
+
+    await db.attendanceRecord.updateMany({
+      where: { sessionId: { in: ids }, studentMembershipId: subjectMembershipId },
+      data: { status: "ABSENT" },
+    });
+
+    try {
+      // Attendance across the window is now around 67% and the current streak is
+      // nil. Both badges describe something that already happened.
+      const summary = await getAttendanceSummary(
+        schoolId,
+        subjectMembershipId,
+        addDaysToKey(todayKey(timezone), -60),
+        todayKey(timezone),
+      );
+      expect(summary.percent).toBeLessThan(90);
+      expect(computeStreak(summary.recent)).toBe(0);
+
+      expect(await attendanceBadges()).toEqual({ rockSolid: true, hereAllWeek: true });
+    } finally {
+      await db.attendanceRecord.updateMany({
+        where: { sessionId: { in: ids }, studentMembershipId: subjectMembershipId },
+        data: { status: "PRESENT" },
+      });
+    }
   });
 });

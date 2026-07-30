@@ -1,6 +1,13 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { saveAttendanceBatch, getRegister, getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import {
+  saveAttendanceBatch,
+  getRegister,
+  getAttendanceSummary,
+  computeStreak,
+  computeBestStreak,
+  bestAttendanceSpell,
+} from "@/lib/attendance";
 import { todayKey } from "@/lib/dates";
 
 /**
@@ -333,5 +340,114 @@ describe("computeStreak", () => {
         { dateKey: "2026-07-23", status: "ABSENT" },
       ]),
     ).toBe(1);
+  });
+});
+
+describe("computeBestStreak", () => {
+  /**
+   * `computeStreak` says "are you on a run"; this says "did you ever have one".
+   * The badge uses this one, because the first question takes a reward away from
+   * a child the morning after a day off sick.
+   */
+  it("finds the longest run anywhere in the window, not the current one", () => {
+    expect(
+      computeBestStreak([
+        { dateKey: "2026-07-27", status: "ABSENT" },
+        { dateKey: "2026-07-24", status: "PRESENT" },
+        { dateKey: "2026-07-23", status: "PRESENT" },
+        { dateKey: "2026-07-22", status: "LATE" },
+        { dateKey: "2026-07-21", status: "PRESENT" },
+        { dateKey: "2026-07-20", status: "PRESENT" },
+      ]),
+    ).toBe(5);
+  });
+
+  it("⚠ survives a later absence — the run still happened", () => {
+    const week = [
+      { dateKey: "2026-07-06", status: "PRESENT" as const },
+      { dateKey: "2026-07-07", status: "PRESENT" as const },
+      { dateKey: "2026-07-08", status: "PRESENT" as const },
+      { dateKey: "2026-07-09", status: "PRESENT" as const },
+      { dateKey: "2026-07-10", status: "PRESENT" as const },
+    ];
+    expect(computeBestStreak(week)).toBe(5);
+    expect(computeBestStreak([...week, { dateKey: "2026-07-13", status: "ABSENT" }])).toBe(5);
+  });
+
+  it("counts a late arrival as being there", () => {
+    expect(
+      computeBestStreak([
+        { dateKey: "2026-07-06", status: "LATE" },
+        { dateKey: "2026-07-07", status: "LATE" },
+      ]),
+    ).toBe(2);
+  });
+
+  it("is zero for no history", () => {
+    expect(computeBestStreak([])).toBe(0);
+  });
+
+  it("does not depend on the input already being sorted", () => {
+    expect(
+      computeBestStreak([
+        { dateKey: "2026-07-08", status: "PRESENT" },
+        { dateKey: "2026-07-06", status: "PRESENT" },
+        { dateKey: "2026-07-07", status: "PRESENT" },
+      ]),
+    ).toBe(3);
+  });
+});
+
+describe("bestAttendanceSpell", () => {
+  const perfect = (n: number, from = 1) =>
+    Array.from({ length: n }, (_, i) => ({
+      dateKey: `2026-07-${String(from + i).padStart(2, "0")}`,
+      status: "PRESENT" as const,
+    }));
+
+  it("⚠ refuses to judge before there is enough history", () => {
+    // One day present is "100% attendance". Without this a child earns the
+    // badge on their first morning, which makes it mean nothing.
+    expect(bestAttendanceSpell(perfect(3), 10)).toBeNull();
+    expect(bestAttendanceSpell([], 10)).toBeNull();
+  });
+
+  it("is 100 for a clean stretch", () => {
+    expect(bestAttendanceSpell(perfect(10), 10)).toBe(100);
+  });
+
+  it("⚠ keeps the good spell when a bad one follows", () => {
+    // Ten clean days, then a fortnight off. Whole-window attendance is 42%;
+    // what happened is that they attended ten days in a row.
+    const days = [
+      ...perfect(10),
+      ...Array.from({ length: 14 }, (_, i) => ({
+        dateKey: `2026-08-${String(i + 1).padStart(2, "0")}`,
+        status: "ABSENT" as const,
+      })),
+    ];
+    expect(bestAttendanceSpell(days, 10)).toBe(100);
+  });
+
+  it("finds a good spell that comes AFTER a bad one", () => {
+    // A child who was ill in September and perfect since must not be judged on
+    // September forever.
+    const days = [
+      ...Array.from({ length: 10 }, (_, i) => ({
+        dateKey: `2026-06-${String(i + 1).padStart(2, "0")}`,
+        status: "ABSENT" as const,
+      })),
+      ...perfect(10),
+    ];
+    expect(bestAttendanceSpell(days, 10)).toBe(100);
+  });
+
+  it("reports the real figure when no stretch is clean", () => {
+    const days = [
+      ...perfect(9),
+      { dateKey: "2026-07-10", status: "ABSENT" as const },
+    ];
+    // Ten days, nine attended — and no shorter window is allowed to flatter it.
+    expect(bestAttendanceSpell(days, 10)).toBe(90);
   });
 });

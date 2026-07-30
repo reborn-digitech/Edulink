@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (353 tests) |
+| `npm test` | Full suite (365 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -233,14 +233,9 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `here-all-week` still shows progress that can go **down** — the streak resets
-   to 0 on an absence, so "3 of 5" becomes "0 of 5". The overall badge total is
-   gone for exactly this reason; this one was left because progress toward a
-   *named* badge is the encouraging case the design asks for, and removing it
-   removes the only nudge on the board. Worth a decision, not a silent fix.
-2. Postgres migration + RLS policies (schema comments describe the intended
+1. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
-3. Global feed, competitions, progress-report export, SSO, 2FA.
+2. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
 features in this codebase were fully built and silently dead because one link in
@@ -366,7 +361,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **353 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **365 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -376,6 +371,17 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **A badge survives being ill.** A child present every day for a month, then off
+  for a fortnight: attendance falls to 78% and the current streak to nil, and
+  both attendance badges stay. Under the old rule — current streak, whole-window
+  percentage — two days off took "Rock solid" away. Mutation-tested by putting
+  the old rule back, which fails the test.
+- **The seeded class now has a term of attendance** (45 school days, up from 10).
+  The teacher's concern tile still reads 4 below 90%, and "Rock solid" is earned
+  by 16 of 18 — the two children who were ill for a fortnight straight have not
+  had a clean month, so they have not earned it rather than lost it, and they
+  still hold "Here all week". At the earlier ten-day minimum every child in the
+  class earned it, including those on 69%, which is a decoration and not a badge.
 - **What an invitation stops being able to do.** Revoked links refused, resent
   links killing the one before them, expired links refused *and* recorded as
   expired rather than left showing as outstanding. A revoked link and a forged

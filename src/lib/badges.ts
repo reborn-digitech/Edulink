@@ -1,21 +1,37 @@
 import "server-only";
 import { db } from "./db";
-import { getAttendanceSummary, computeStreak } from "./attendance";
+import {
+  getAttendanceSummary,
+  computeBestStreak,
+  bestAttendanceSpell,
+} from "./attendance";
 import { addDaysToKey, todayKey } from "./dates";
 
 /**
  * Student badges.
  *
- * DERIVED from real data on every read, never stored. Two reasons:
+ * DERIVED from real data on every read, never stored — so nothing can drift out
+ * of step with what actually happened.
  *
- *   * a stored badge drifts — a child keeps a "perfect week" badge after the
- *     week stops being perfect, and nobody notices until a parent asks;
- *   * the spec asks for gamification that is "never stress-inducing". Nothing
- *     here can be lost. A badge is either earned right now or is shown as a
- *     quiet, achievable next step — there is no streak to break, no counter
- *     resetting to zero, and no comparison with anyone else.
+ * EVERY BADGE ASKS WHETHER SOMETHING HAPPENED, NOT WHETHER IT IS STILL TRUE.
+ * That distinction is the whole design and it was got wrong once already. The
+ * attendance badges used to read the CURRENT streak and the WHOLE-window
+ * percentage, so two days off sick took "Rock solid" away from a child who had
+ * turned up every day for a month. Being ill is not a thing a seven-year-old
+ * chooses, the app has an EXCUSED status precisely because absences are often
+ * nobody's fault, and taking a reward away for it is exactly the stress the spec
+ * rules out.
  *
- * Deliberately no leaderboard and no points total.
+ * So: "had a five-day run", not "is on one". "Reached 95%", not "is above 95%".
+ * Handed in, marked, published — all things that happened.
+ *
+ * The honest limit: this reads a 60-day window, so a badge does eventually fade
+ * when the evidence itself ages out. That is a slow, quiet edge rather than a
+ * punishment for one bad week, and widening it is a one-line change if a term
+ * turns out to be the better unit.
+ *
+ * Deliberately no leaderboard, no points total, and no aggregate anywhere — see
+ * the note in student/profile/page.tsx about "3 of 7".
  */
 
 export type Badge = {
@@ -27,6 +43,20 @@ export type Badge = {
   progress?: { current: number; target: number };
   icon: string;
 };
+
+/**
+ * A month of school days before an attendance percentage means anything.
+ *
+ * Two floors are at work here and they pull in the same direction. The obvious
+ * one: a single day present is "100% attendance", so without a minimum the badge
+ * arrives on a child's first morning. The one that had to be measured: over a
+ * term of history almost every child has SOME clean fortnight, so at ten days
+ * this was earned by all eighteen in the seeded class — including two on 69%.
+ * A badge everybody has is not a badge, it is a decoration.
+ *
+ * Twenty school days is about a month, and it is a real thing to have done.
+ */
+const MIN_DAYS_FOR_ATTENDANCE_BADGE = 20;
 
 export async function getBadges(
   schoolId: string,
@@ -57,22 +87,28 @@ export async function getBadges(
       ),
   ]);
 
-  const streak = computeStreak(attendance.recent);
+  // Best, not current — see the note at the top of this file.
+  const bestStreak = computeBestStreak(attendance.days);
+  const bestSpell = bestAttendanceSpell(attendance.days, MIN_DAYS_FOR_ATTENDANCE_BADGE);
 
   return [
     {
       id: "here-all-week",
       label: "Here all week",
       description: "Five school days in a row",
-      earned: streak >= 5,
-      progress: streak < 5 ? { current: streak, target: 5 } : undefined,
+      earned: bestStreak >= 5,
+      progress: bestStreak < 5 ? { current: bestStreak, target: 5 } : undefined,
       icon: "fire",
     },
     {
       id: "regular",
       label: "Rock solid",
-      description: "Attendance above 95%",
-      earned: attendance.percent !== null && attendance.percent >= 95,
+      // Past tense on purpose: it says what happened, and what happened does not
+      // stop having happened.
+      description: "Reached 95% attendance",
+      // null means "not enough school days yet to say", which is not the same as
+      // failing — a child in their first week has not missed anything.
+      earned: bestSpell !== null && bestSpell >= 95,
       icon: "calendar",
     },
     {
