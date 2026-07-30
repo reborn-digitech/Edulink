@@ -55,7 +55,7 @@ describe("checkEnv — VAPID", () => {
       NODE_ENV: "development",
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: "",
       VAPID_PRIVATE_KEY: "",
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
       NEXT_PUBLIC_APP_URL: "http://localhost:3000",
     });
     const problems = checkEnv();
@@ -67,7 +67,7 @@ describe("checkEnv — VAPID", () => {
       NODE_ENV: "development",
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: "   ",
       VAPID_PRIVATE_KEY: "\t",
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
       NEXT_PUBLIC_APP_URL: "http://localhost:3000",
     });
     expect(checkEnv().some((p) => p.key === "VAPID")).toBe(true);
@@ -78,7 +78,7 @@ describe("checkEnv — VAPID", () => {
       NODE_ENV: "development",
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: "x".repeat(40),
       VAPID_PRIVATE_KEY: GOOD_PRIVATE,
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
       NEXT_PUBLIC_APP_URL: "http://localhost:3000",
     });
     const problems = checkEnv();
@@ -89,7 +89,7 @@ describe("checkEnv — VAPID", () => {
     const base = {
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: "",
       VAPID_PRIVATE_KEY: "",
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
     };
 
     set({ ...base, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
@@ -144,7 +144,7 @@ describe("checkEnv — deployment footguns", () => {
         NODE_ENV: "production",
         NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
         VAPID_PRIVATE_KEY: GOOD_PRIVATE,
-        DATABASE_URL: "file:./dev.db",
+        DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
         NEXT_PUBLIC_APP_URL: url,
         EMAIL_TRANSPORT: "devbox",
       });
@@ -195,7 +195,7 @@ describe("checkEnv — deployment footguns", () => {
       NODE_ENV: "development",
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
       VAPID_PRIVATE_KEY: GOOD_PRIVATE,
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
       NEXT_PUBLIC_APP_URL: "http://localhost:3000",
       EMAIL_TRANSPORT: "devbox",
     });
@@ -232,7 +232,7 @@ describe("assertEnv", () => {
       NODE_ENV: "development",
       NEXT_PUBLIC_VAPID_PUBLIC_KEY: "",
       VAPID_PRIVATE_KEY: "",
-      DATABASE_URL: "file:./dev.db",
+      DATABASE_URL: "postgresql://u@localhost:5432/edulink_dev",
       NEXT_PUBLIC_APP_URL: "http://localhost:3000",
     });
     expect(() => assertEnv()).not.toThrow();

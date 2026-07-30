@@ -58,8 +58,7 @@ async function main() {
   // The postgres-flavoured schema and its own client, so the app's SQLite client
   // is left alone. Regenerated every run: a stale one would test the wrong shape.
   const schema = readFileSync(resolve(ROOT, "prisma/schema.prisma"), "utf8")
-    .replace('provider = "sqlite"', 'provider = "postgresql"')
-    .replace("generator client {", 'generator client {\n  output   = "../.pg-client"');
+    .replace("generator client {", `generator client {\n  output   = "../.pg-client"`);
   writeFileSync(PG_SCHEMA, schema);
 
   execFileSync("npx", ["prisma", "db", "push", "--schema", PG_SCHEMA], {

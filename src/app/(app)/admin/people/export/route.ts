@@ -50,9 +50,9 @@ export async function GET(request: Request) {
         ? {
             user: {
               OR: [
-                { name: { contains: query } },
-                { preferredName: { contains: query } },
-                { email: { contains: query } },
+                { name: { contains: query, mode: "insensitive" } },
+                { preferredName: { contains: query, mode: "insensitive" } },
+                { email: { contains: query, mode: "insensitive" } },
               ],
             },
           }

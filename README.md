@@ -16,20 +16,30 @@ original spec is built; [Status](#status) says exactly which half.
 
 ## Run it
 
-Requires Node ≥ 20.9 (developed on 20.20.2). No database server, no Docker, no
+Requires Node ≥ 20.9 (developed on 20.20.2) and **PostgreSQL 14+**. No Docker, no
 external accounts.
 
 ```bash
+brew install postgresql@16 && brew services start postgresql@16   # or your own
+createdb edulink_dev
 npm install && cp .env.example .env && npm run vapid
 ```
 
-Paste the two printed VAPID keys into `.env`, then:
+Put your database URL and the two printed VAPID keys into `.env`, then:
 
 ```bash
 npm run setup && npm run dev
 ```
 
 `npm run setup` = `prisma db push` + seed. Open http://localhost:3000.
+
+> **Why a database server, when SQLite was zero-setup.** Tenant isolation is
+> enforced by Postgres row-level security, and there is no SQLite equivalent —
+> so on SQLite the policies simply would not run, and dev would be testing a
+> weaker set of rules than production enforces. That is the failure this codebase
+> keeps finding: a safeguard that exists but never executes where anyone looks.
+> The cost is one `brew install`; the alternative was a security boundary nobody
+> could exercise until deploy.
 
 > **The service worker only exists in a production build.** Offline mode, the
 > install prompt and push notifications need `npm run build && npm start`. The
@@ -109,6 +119,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ```
 prisma/schema.prisma      27 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
+prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.
   tenancy.ts              ★ THE authorization chokepoint. Read before anything.
   attendance.ts           Offline-safe register merge (idempotent).
