@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (303 tests) |
+| `npm test` | Full suite (309 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -101,6 +101,8 @@ src/lib/                  All business logic. Pages are thin.
   constants.ts            Every status string, single source of truth.
 src/app/(app)/            Signed-in routes (share the nav shell).
 src/app/                  Public routes: login, register, join, invite, switch.
+src/components/ui/        Design system.
+  slot.tsx                ★ `asChild`. Deliberately NOT "use client" — see Gotchas.
 src/sw.ts                 Service worker (Serwist compiles to public/sw.js).
 tests/                    Integration tests (need the seed).
 src/**/*.test.ts          Unit tests.
@@ -169,6 +171,16 @@ Break these and something quietly goes wrong for a child or a parent.
   importing a component that needs server-only". That is why `safety-labels.ts`
   exists separately from `safety.ts`: the report cards and audit table are client
   components and need the label maps. Always run a build, not just a typecheck.
+- **Never put `"use client"` on a component that inspects its `children`.**
+  `slot.tsx` had it, `Button` is a server component, and the child element
+  therefore crossed the RSC boundary — where it arrives as an unresolved lazy
+  reference, not an element, so `Children.only` threw and `/bulletin` returned
+  500 for every role. It only fired once a page rendered enough elements for
+  React to defer one, so most routes stayed green and the failure looked
+  data-dependent. **Dev will not show you this**: it inlines the payload and
+  serves the page happily. A 500 that only reproduces in `next start` is the
+  signature. `slot.test.ts` guards the directive, because reproducing the
+  symptom needs a production build and a streaming boundary.
 - Dark-mode role accents are written **twice** in `globals.css`
   (`[data-theme="dark"][data-role="x"]` *and* `[data-theme="dark"] [data-role="x"]`)
   because `data-role` is often on a subtree while `data-theme` is on `<html>`.
@@ -178,15 +190,18 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. `/teacher/classes` — branding (logo upload, colour). **`storage.ts` is
-   written, validated, tested-by-inspection and completely unwired** — this
-   would be its first consumer. Treat that as a smell worth clearing.
- — teacher-facing class detail (nav links to it and 404s).
-2. `/student/profile` — avatar change, awards gallery (nav links to it).
-3. Bulletin post media upload — `files.ts` already authorises post media and the
+1. Bulletin post media upload — `files.ts` already authorises post media and the
    validation requires alt text, but the compose form has no picker yet, so posts
    are still text-only.
-5. Postgres migration + RLS policies (schema comments describe the intended
+2. Seed attendance that actually crosses the thresholds. Every seeded student
+   sits at exactly 90% or 100%, so `percent < 90` is 0 for the whole school and
+   the "attendance concern" path only renders non-zero if you force it by hand.
+3. The badge total on `/student/profile` (`{earned} of {total}`, page.tsx) is an
+   aggregate that goes **down** when a derived badge is lost — which is the one
+   thing `badges.tsx` says it will never show. The structural test only asserts
+   the badge *objects* carry no aggregate, so it passes while the view computes
+   one. Decide whether to drop the counter or drop the claim.
+4. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
 5. Global feed, competitions, progress-report export, SSO, 2FA.
 
@@ -195,6 +210,13 @@ features in this codebase were fully built and silently dead because one link in
 the chain was missing — empty VAPID keys, no push-subscription endpoint, an
 unused `AUTH_SECRET`. When you finish a feature, find the thing that *proves*
 data moved end to end and check it, rather than checking that each piece exists.
+
+**And the corollary, learned the expensive way:** a check that passes for two
+different reasons proves nothing. "200 or a correct auth redirect" accepted a
+redirect as success, so every parent route passed a sweep without rendering a
+single page — and a genuine 404 and a genuine 500 both survived it. Sweep each
+route *as a signed-in user of the role that owns it*, and assert 200
+specifically. `/bulletin` had been 500 for five commits.
 
 ---
 
@@ -307,12 +329,24 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **303 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **309 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, slot, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
+- **`/bulletin` and `/parent/settings`, production build:** `/bulletin` renders
+  for admin, teacher and student across the default, `?filter=mine`,
+  `?filter=pending` and `?tag=` views, with a real post in the feed and with the
+  feed empty — zero server errors.
+- **Parent loop, production build:** logged in as `parent@example.com` with the
+  seeded password → landed on `/parent` with **both** children (Riverside and
+  Oakfield) → `/parent/settings` → unticked Email → Saved → `channels.email` is
+  `false` in the database and the row is normalised to the full prefs schema.
+  A parent needs no Membership row: `resolveContext` gives a user with only
+  guardianships `role: "PARENT"`, which is the whole design.
+- **`asChild` still emits a real anchor** — `<a href="/bulletin/new">` carrying
+  the button classes, not a `<button>`, which is the entire point of `Slot`.
 
 ### Built but not click-through verified
 
@@ -322,6 +356,9 @@ Renders and typechecks; treat as `Untested:`.
   validation, class archive/restore and join-code rotation, invite
   resend/withdraw, the multi-child parent switcher (only exercised with one
   child).
+- The multi-child parent switcher **renders** both of Jordan Okafor's children
+  (Riverside and Oakfield) on `/parent`, but switching between them has not been
+  clicked.
 - **The server-side guard refusing a re-submission after marking.** The UI
   stops offering the panel (verified), so that branch in
   `src/app/(app)/student/work/actions.ts` is defence-in-depth for a stale page
@@ -329,8 +366,10 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation now resolves** — a sweep of all 21
-returns 200 or a correct auth redirect, none 404.
+**Every route referenced by the navigation renders.** All 39 route/role
+combinations were requested as a signed-in user of the owning role and returned
+**200** — not "200 or a redirect", which is what let a 404 and a 500 through the
+previous sweep.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
@@ -345,3 +384,5 @@ returns 200 or a correct auth redirect, none 404.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.
+- `/student/profile` shows a badge total that can decrease, which contradicts the
+  "nothing can be lost" promise in `badges.tsx`. See Next steps.

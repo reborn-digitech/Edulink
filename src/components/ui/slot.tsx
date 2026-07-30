@@ -1,5 +1,3 @@
-"use client";
-
 import { Children, cloneElement, isValidElement, type ReactElement, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
@@ -11,6 +9,15 @@ import { cn } from "@/lib/cn";
  *
  * Radix's Slot does more (ref composition across multiple levels); this covers
  * the single-child case the app actually uses.
+ *
+ * NO "use client" HERE, DELIBERATELY. This file must stay shared so it renders
+ * in whichever tree its caller lives in. `Button` is a server component, so
+ * marking Slot as a client component pushed the child element across the RSC
+ * boundary — and a serialised child arrives as an unresolved lazy reference,
+ * which `Children.only` rejects. That took out every route whose page rendered
+ * enough elements to make React defer one: `/bulletin` returned 500 in
+ * production while dev, which inlines the payload, looked fine. Nothing below
+ * needs client APIs — no hooks, no handlers — so shared is also honest.
  */
 export function Slot({
   children,

@@ -388,6 +388,25 @@ As **Priya (Teacher)**.
 
 ---
 
+## 12a. Parent settings
+
+Log in as `parent@example.com`. A parent has **no Membership row** — the role
+comes from an ACTIVE Guardianship, so `resolveContext` returns `PARENT` and
+lands on `/parent`. Do not "fix" the seed by adding a membership.
+
+- ☐ `/parent/settings` → notification channels, quiet hours, and the children
+  the settings apply to
+- ☐ The children listed are **only** your own — this page reads
+  `listContexts`, not a school roster
+- ☐ Turn Email off → Save → reload → still off
+- ☐ **⚠️** Copy is explicit that turning notifications off applies to *every*
+  child listed, not just the one on screen
+- ☐ "Your account" card links to `/account` rather than repeating appearance and
+  devices — two pages writing `User.prefs` would drift
+- ☐ Signed out → `/parent/settings` redirects to `/login`, never renders
+
+---
+
 ## 12b. Bulletin board and moderation
 
 As a **student** (`amara@riverside.school`).
@@ -641,10 +660,13 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now resolves. Still not built, per the README:
-bulletin post media upload, a real QR code on the join poster, awards uploads on
-the student profile, global feed, competitions, suspend-user, weighted grade
-categories, progress-report export, SSO, 2FA, SMS, real email delivery.
+Every route in the navigation now renders — all 39 route/role combinations were
+requested as a signed-in user of the owning role and returned 200. Still not
+built, per the README: bulletin post media upload, a real QR code on the join
+poster, awards uploads on the student profile, global feed, competitions,
+suspend-user, weighted grade categories, progress-report export, SSO, 2FA, SMS,
+real email delivery.
 
-Nav links to these will 404 — that is deliberate, so the missing work stays
-visible rather than being quietly hidden.
+These are absent rather than linked-and-broken. If you find a nav link that
+404s or 500s, that is a bug now, not a deliberate gap — and check it while
+signed in as the owning role, because a redirect to `/login` will hide both.
