@@ -50,3 +50,16 @@ export type MediaItem = {
   /** Required at write time — a bulletin image with no alt text fails validation. */
   alt: string;
 };
+
+/**
+ * Human-readable size, for attachment chips.
+ *
+ * Lives here rather than in files.ts because files.ts is `server-only` and the
+ * attachment UI is a client component. Importing it from there is a BUILD error
+ * that `tsc --noEmit` does not catch — which is exactly how it was found.
+ */
+export function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}

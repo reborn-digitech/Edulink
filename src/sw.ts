@@ -41,6 +41,24 @@ const serwist = new Serwist({
       handler: new NetworkOnly(),
     },
     {
+      /**
+       * Per-user authorised files are NEVER cached by the service worker.
+       *
+       * This rule must come before the generic /api/ and image rules, both of
+       * which would otherwise catch it. The SW cache is per-ORIGIN, not per-user,
+       * and survives sign-out — so a cached submission attachment could be read
+       * by the next person to use the device, for up to 30 days under the image
+       * rule. The server refusing them is irrelevant if the request never
+       * reaches the server.
+       *
+       * A school logo would be safe to cache, but it is not worth branching on
+       * inside the worker: logos are small, immutable and already cached by the
+       * browser via Cache-Control.
+       */
+      matcher: ({ url }) => url.pathname.startsWith("/api/files/"),
+      handler: new NetworkOnly(),
+    },
+    {
       matcher: ({ url, request }) => url.pathname.startsWith("/api/") && request.method === "GET",
       handler: new NetworkFirst({
         cacheName: "edulink-api",
@@ -49,7 +67,8 @@ const serwist = new Serwist({
       }),
     },
     {
-      matcher: ({ request }) => request.destination === "image",
+      matcher: ({ request, url }) =>
+        request.destination === "image" && !url.pathname.startsWith("/api/files/"),
       handler: new CacheFirst({
         cacheName: "edulink-images",
         plugins: [new ExpirationPlugin({ maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 30 })],

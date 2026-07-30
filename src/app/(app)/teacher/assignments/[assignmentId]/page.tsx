@@ -6,6 +6,7 @@ import { requireRole, AccessError } from "@/lib/tenancy";
 import { getGradebook } from "@/lib/grading";
 import { Gradebook } from "./gradebook";
 import { PublishBar } from "./publish-bar";
+import { AttachmentList } from "@/components/attachment-list";
 import { formatMilli } from "@/lib/validation";
 import { relativeTime } from "@/lib/dates";
 
@@ -59,6 +60,20 @@ export default async function AssignmentPage({
           {assignment.body}
         </div>
       )}
+
+      <div>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
+          Files for the class
+        </h2>
+        <AttachmentList
+          className="mt-2"
+          target="assignment"
+          assignmentId={assignment.id}
+          recordId={assignment.id}
+          attachments={assignment.attachments}
+          canEdit
+        />
+      </div>
 
       <Gradebook
         assignmentId={assignment.id}

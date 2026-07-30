@@ -515,6 +515,48 @@ post as a student first (§12b), or seed one directly.
 
 ---
 
+## 12e. File attachments
+
+As a **teacher**, on an assignment detail page.
+
+- ☐ "Files for the class" → attach a PDF and an image
+- ☐ Each chip shows the real filename and size, and opens in a new tab
+- ☐ Remove one → gone from the list and from `storage/` on disk
+
+As a **student**, on `/student/work`.
+
+- ☐ Files the teacher attached appear under "From your teacher", **read-only**
+  (no remove button)
+- ☐ "Your files" → attach your own; it appears with a remove button
+- ☐ Try a 6th file → refused, naming the limit
+- ☐ Try a `.txt` renamed `.pdf` → refused by magic-byte sniffing, and the message
+  names the file that failed
+
+### The leak checks — do these with two accounts on ONE browser
+
+- ☐ As the student, open your own attachment → 200
+- ☐ **⚠️** `curl -D-` it (or check DevTools): `Cache-Control` must contain
+  **`no-store`**. Anything like `private, max-age=3600` is the bug: a classmate
+  on a shared tablet then reads it from the browser cache without the request
+  ever reaching the server
+- ☐ **⚠️** Sign out, sign in as a **classmate in the same class**, and fetch the
+  same URL → **404**. Do it with a plain `fetch`, not a cache-busted one — the
+  plain one is what leaked
+- ☐ Repeat as a **teacher of a different class** → 404
+- ☐ Repeat as the **other school's admin** → 404
+- ☐ Repeat **signed out** → 404
+- ☐ As the class's own teacher → 200. As a school admin → 200. As the student's
+  **guardian** → 200
+- ☐ **⚠️** DevTools → Application → Cache Storage → `edulink-images`: it must
+  contain **no** `/api/files/` entries. That cache is per-origin, lasts 30 days
+  and survives sign-out
+- ☐ Attach a file to an **unpublished draft** assignment → **⚠️** a student in
+  that class gets 404 on it until the assignment is published
+- ☐ Fetch a well-formed UUID that nothing references → 404 (orphans are denied,
+  not served)
+
+---
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -532,6 +574,8 @@ Each of these must **fail**. Run them logged out and as the wrong role.
   Priya's class → 404, and it is absent from his review queue
 - ☐ **⚠️** As Tom (teacher): `/admin/safety` → redirected away. The safety centre
   and audit log are admin-only
+- ☐ **⚠️** Any `/api/files/<uuid>` belonging to another school → 404, even for an
+  admin
 - ☐ As **Jordan**: `/parent?child=<a child who is not theirs>` → falls back to
   their own child, never shows the other
 - ☐ `/dev/mailbox` in a production build → **404**

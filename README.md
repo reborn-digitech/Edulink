@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (270 tests) |
+| `npm test` | Full suite (296 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -92,6 +92,7 @@ src/lib/                  All business logic. Pages are thin.
   safety.ts               Report triage + audit log (server-only).
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
+  files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -181,10 +182,9 @@ Break these and something quietly goes wrong for a child or a parent.
    would be its first consumer. Treat that as a smell worth clearing.
  — teacher-facing class detail (nav links to it and 404s).
 2. `/student/profile` — avatar change, awards gallery (nav links to it).
-3. File attachments on assignments, submissions and bulletin posts. `storage.ts`
-   and `/api/files/[fileId]` now exist and are proven; attachments mainly need
-   the per-file authorisation branch in that route filled in (today only school
-   logos are readable, everything else 404s by design).
+3. Bulletin post media upload — `files.ts` already authorises post media and the
+   validation requires alt text, but the compose form has no picker yet, so posts
+   are still text-only.
 5. Postgres migration + RLS policies (schema comments describe the intended
    predicates; isolation is currently app-layer only).
 6. Global feed, competitions, progress-report export, SSO, 2FA.
@@ -250,6 +250,20 @@ One line each, with the default rejected.
   refused, teacher (only the assignment's author) notified, gradebook shows
   "Handed in late" for a past-due hand-in. Once marked, the work moves to
   "Marked already" and the hand-in panel is no longer offered.
+- **File attachments, with per-file authorisation.** A student uploaded a PDF to
+  their own submission; on that real file the server allows the student, their
+  guardian, the teacher of that class and a school admin, and denies a
+  **classmate**, a teacher of another class, the other school's admin, and
+  anonymous. Assignment attachments follow assignment visibility (a draft's file
+  is hidden from students until published); post media follows post visibility (a
+  pending student post's image is hidden from classmates).
+- **A caching leak, found and closed.** With `private, max-age=3600`, a pupil
+  opened their own homework and a classmate on the same browser then read it —
+  the server refused them, but the browser never asked. Authorised files are now
+  `no-store`, and the service worker explicitly excludes `/api/files/` from both
+  its image cache (30 days, per-origin, survives sign-out) and its `/api/` GET
+  cache. Regression-tested against the source, since a one-line header change is
+  invisible to functional tests.
 - **School settings, and `storage.ts` finally wired up.** Uploaded a 900×300
   PNG, adjusted the crop, and the stored file was a real 512×512 PNG on disk
   under `storage/<shard>/` — outside `public/` — served from
@@ -287,9 +301,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **270 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading, bulletin, safety, storage, quiet-hours
-  and env suites are each **mutation-tested** — for the bulletin that means four separate
+- **296 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
+  file-cache, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.

@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { toMilli } from "./validation";
+import { readAttachments } from "./files";
 import { publish, channel } from "./realtime";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
@@ -188,6 +189,7 @@ export async function getGradebook(
       publishedAt: assignment.publishedAt,
       className: assignment.class.name,
       classId: assignment.classId,
+      attachments: readAttachments(assignment.attachments),
     },
     rows,
     stats: {
@@ -449,6 +451,9 @@ export async function getStudentWork(session: ActiveContext) {
     dueAt: assignment.dueAt,
     submittedAt: assignment.submissions[0]?.submittedAt ?? null,
     submissionBody: assignment.submissions[0]?.body ?? "",
+    submissionId: assignment.submissions[0]?.id ?? null,
+    submissionAttachments: readAttachments(assignment.submissions[0]?.attachments),
+    attachments: readAttachments(assignment.attachments),
     scoreMilli: assignment.grades[0]?.scoreMilli ?? null,
     comment: assignment.grades[0]?.comment ?? null,
     overdue: Boolean(

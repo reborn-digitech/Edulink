@@ -9,6 +9,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { SubmitPanel } from "./submit-panel";
+import { AttachmentList } from "@/components/attachment-list";
 
 export const metadata: Metadata = { title: "My work" };
 
@@ -58,6 +59,36 @@ export default async function StudentWorkPage() {
                         {item.body}
                       </p>
                     )}
+                    {item.attachments.length > 0 && (
+                      <div className="mt-2.5">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                          From your teacher
+                        </p>
+                        <AttachmentList
+                          className="mt-1"
+                          target="assignment"
+                          assignmentId={item.id}
+                          recordId={item.id}
+                          attachments={item.attachments}
+                          canEdit={false}
+                        />
+                      </div>
+                    )}
+
+                    <div className="mt-2.5">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                        Your files
+                      </p>
+                      <AttachmentList
+                        className="mt-1"
+                        target="submission"
+                        assignmentId={item.id}
+                        recordId={item.submissionId}
+                        attachments={item.submissionAttachments}
+                        canEdit
+                      />
+                    </div>
+
                     <SubmitPanel
                       assignmentId={item.id}
                       title={item.title}
