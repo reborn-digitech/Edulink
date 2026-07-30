@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (341 tests) |
+| `npm test` | Full suite (353 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -366,9 +366,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **341 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **353 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, slot, image-metadata, uploads, orphans, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -376,6 +376,15 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **What an invitation stops being able to do.** Revoked links refused, resent
+  links killing the one before them, expired links refused *and* recorded as
+  expired rather than left showing as outstanding. A revoked link and a forged
+  one return the identical message, so neither confirms the other exists.
+- **Who may become a PARENT.** Every other role is proved by a Membership row;
+  PARENT has none by design and is proved by an ACTIVE Guardianship, so it takes
+  a different branch — one that granted a role and had never run. A teacher
+  asking for PARENT is refused, and so is a parent whose guardianships have all
+  been revoked. Mutation-tested: delete that check and two tests fail.
 - **Seeded attendance now crosses its own thresholds.** Six children on 100%,
   eight on 90%, two on 80% and two on 70% — so `/teacher/classes/<id>` reads
   "Attendance concern 4" where it was structurally 0 before, and "Rock solid"
@@ -432,13 +441,19 @@ One line each, with the default rejected.
 
 Renders and typechecks; treat as `Untested:`.
 
-- Command palette (⌘K), install button, quiet-hours logic, `storage.ts` upload
-  validation, class archive/restore and join-code rotation, invite
-  resend/withdraw, the multi-child parent switcher (only exercised with one
-  child).
+- Command palette (⌘K), install button, quiet-hours logic, class
+  archive/restore and join-code rotation from the admin screens.
 - The multi-child parent switcher **renders** both of Jordan Okafor's children
   (Riverside and Oakfield) on `/parent`, but switching between them has not been
-  clicked.
+  clicked. What now IS covered is the decision underneath it —
+  `setActiveContext` refusing PARENT to anyone without an ACTIVE guardianship.
+- **Invite revoke and resend are no longer on this list.** The buttons still
+  have not been clicked, but what they do to an invitation is pinned by
+  `invite-lifecycle.test.ts`: a revoked link is refused, a resent link kills its
+  predecessor, an expired one is refused and recorded as expired. The admin
+  actions themselves need a session, which the vitest `next/headers` stub has no
+  cookie jar for, so the state changes are made the way those actions make them
+  and the accept path is what gets verified.
 - **The server-side guard refusing a re-submission after marking.** The UI
   stops offering the panel (verified), so that branch in
   `src/app/(app)/student/work/actions.ts` is defence-in-depth for a stale page
