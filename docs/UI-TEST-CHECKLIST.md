@@ -420,6 +420,21 @@ As a **student** (`amara@riverside.school`).
 - ☐ Post one with a tag → lands on My posts, marked "Waiting for a teacher to
   check it"
 
+Pictures. Use a **photo straight off a phone**, which is the case that matters —
+it will have EXIF, and it may have GPS.
+
+- ☐ "Add a picture" → pick one → filename, size and a preview appear
+- ☐ **⚠️** Send with no description → refused, and **nothing is uploaded**. An
+  undescribed picture is unreadable to a child using a screen reader
+- ☐ "Remove", then pick the *same* file again → it is accepted (the input is
+  cleared, so the change event still fires)
+- ☐ Pick something over 5 MB → refused immediately, before any upload
+- ☐ Pick a non-image (a PDF) → refused. The server re-checks by sniffing the
+  actual bytes, so renaming `.pdf` to `.jpg` is refused too
+- ☐ **⚠️** Send it, then find the stored file under `storage/<first two chars>/`
+  and run `exiftool` or `file` on it: **no GPS, no Exif block**, and it is still
+  a valid image. A child's photo must not publish where they live
+
 As **Priya (Teacher)**.
 
 - ☐ `/bulletin` → "To review (1)"
@@ -436,6 +451,12 @@ Back as the **student**.
   and so is the reason. This is the single most important assertion in the
   feature: an unreviewed post from a nine-year-old must not be readable by the
   class
+- ☐ **⚠️** As that classmate, request the picture's URL **directly** —
+  `/api/files/<fileId>`, copied from the teacher's view. It must **404**. Hiding
+  the post in the feed is not the same as protecting the file, and this is the
+  step that tells them apart
+- ☐ Have the teacher publish it → the same URL now returns the image for the
+  classmate, and still 404s when signed out
 
 Reactions, pinning, reporting.
 
@@ -662,7 +683,8 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 Every route in the navigation now renders — all 39 route/role combinations were
 requested as a signed-in user of the owning role and returned 200. Still not
-built, per the README: bulletin post media upload, a real QR code on the join
+built, per the README: attachments on assignments and submissions (the bulletin
+takes pictures now; those two do not), a real QR code on the join
 poster, awards uploads on the student profile, global feed, competitions,
 suspend-user, weighted grade categories, progress-report export, SSO, 2FA, SMS,
 real email delivery.

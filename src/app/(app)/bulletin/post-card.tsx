@@ -29,6 +29,7 @@ type Post = {
   title: string;
   body: string;
   tags: string[];
+  media: { fileId: string; kind: string; alt: string }[];
   status: string;
   rejectionReason: string | null;
   pinned: boolean;
@@ -156,6 +157,23 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             {post.body}
           </p>
         )}
+
+        {/*
+          Served through /api/files, never from public/ — the route re-checks
+          who is allowed to see this post before returning a byte, so a pending
+          post's picture is as private as the post itself.
+        */}
+        {post.media
+          .filter((item) => item.kind === "image")
+          .map((item) => (
+            <img
+              key={item.fileId}
+              src={`/api/files/${item.fileId}`}
+              alt={item.alt}
+              loading="lazy"
+              className="mt-3 max-h-[28rem] w-full rounded-[--radius-md] border border-border bg-surface-muted object-contain"
+            />
+          ))}
 
         {post.tags.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-1.5">

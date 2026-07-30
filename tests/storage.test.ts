@@ -211,6 +211,38 @@ describe("deletion", () => {
   });
 });
 
+describe("metadata never reaches disk", () => {
+  /**
+   * The unit tests in src/lib/image-metadata.test.ts cover the container
+   * parsing. This one asserts the wiring: that the bytes written to storage —
+   * the ones a backup would copy — are the stripped ones.
+   */
+  it("stores a JPEG without the EXIF block it arrived with", async () => {
+    const exif = Buffer.from("Exif\0\0GPS-51.5074N-0.1278W", "latin1");
+    const length = Buffer.alloc(2);
+    length.writeUInt16BE(exif.length + 2);
+    const withExif = Buffer.concat([
+      Buffer.from([0xff, 0xd8]), // SOI
+      Buffer.from([0xff, 0xe1]), // APP1
+      length,
+      exif,
+      Buffer.from([0xff, 0xda, 0x01, 0x02, 0x03, 0xff, 0xd9]), // scan + EOI
+    ]);
+
+    const result = await keep(storeFile(file(withExif, "sports-day.jpg", "image/jpeg")));
+    const onDisk = await readStoredFile(result.fileId);
+
+    expect(onDisk!.bytes.toString("latin1")).not.toContain("GPS-51.5074N");
+    expect(onDisk!.bytes.toString("latin1")).not.toContain("Exif");
+    // The image data either side of the dropped segment survived.
+    expect(onDisk!.bytes.subarray(0, 2)).toEqual(Buffer.from([0xff, 0xd8]));
+    expect(onDisk!.bytes.subarray(-2)).toEqual(Buffer.from([0xff, 0xd9]));
+    // And the reported size is what was actually written, not what was uploaded.
+    expect(result.size).toBe(onDisk!.bytes.byteLength);
+    expect(result.size).toBeLessThan(withExif.byteLength);
+  });
+});
+
 describe("etag", () => {
   it("is stable for identical bytes and differs otherwise", () => {
     expect(etagFor(PNG)).toBe(etagFor(Buffer.from(PNG)));

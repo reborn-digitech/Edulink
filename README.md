@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (309 tests) |
+| `npm test` | Full suite (328 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -92,6 +92,7 @@ src/lib/                  All business logic. Pages are thin.
   safety.ts               Report triage + audit log (server-only).
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
+  image-metadata.ts       ★ Strips EXIF/GPS before an upload reaches disk.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
@@ -145,6 +146,14 @@ Break these and something quietly goes wrong for a child or a parent.
     columns are `String` (values in `constants.ts`, validated by zod at every
     write) and JSON payloads are `String` (read via `json.ts`). This is what
     lets the same schema run on Postgres unchanged.
+11. **A `fileId` is minted server-side and never accepted from a client.**
+    `files.ts` authorises a stored file by finding the record that mentions it,
+    so anything that let a caller name an arbitrary id would let them point
+    their own post at somebody else's attachment and inherit their audience.
+    Uploads therefore travel *with* the thing they belong to — `submitPost`
+    takes the image in the same FormData as the post and stores it itself.
+    Images are stripped of EXIF before they are written, because a child's photo
+    otherwise publishes their home address.
 
 ### Testing expectations
 
@@ -190,9 +199,9 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. Bulletin post media upload — `files.ts` already authorises post media and the
-   validation requires alt text, but the compose form has no picker yet, so posts
-   are still text-only.
+1. File attachments on assignments and submissions. `files.ts` already
+   authorises both, and the bulletin now proves the whole upload path works —
+   this is the same shape with a tighter audience (a child's own work).
 2. Seed attendance that actually crosses the thresholds. Every seeded student
    sits at exactly 90% or 100%, so `percent < 90` is 0 for the whole school and
    the "attendance concern" path only renders non-zero if you force it by hand.
@@ -329,9 +338,9 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **309 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **328 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, slot, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, slot, image-metadata, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -339,6 +348,15 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
+- **Bulletin picture loop, production build:** a student attached a real JPEG
+  carrying a GPS EXIF block, described it, and sent it. The post was held
+  PENDING; a classmate asking `/api/files/<id>` directly got **404**, the
+  reviewing teacher got 200. The teacher pressed *Publish it*; the classmate
+  then got **200**, and an anonymous request still got 404. What landed on disk
+  is 160 bytes rather than 203, contains neither `Exif` nor the GPS string, and
+  `file(1)` reports it as JFIF instead of "Exif standard" — the metadata is gone
+  and the image still decodes (the browser reported it `complete`).
+  Sending it with no description is refused before anything is uploaded.
 - **Parent loop, production build:** logged in as `parent@example.com` with the
   seeded password → landed on `/parent` with **both** children (Riverside and
   Oakfield) → `/parent/settings` → unticked Email → Saved → `channels.email` is
@@ -386,3 +404,9 @@ previous sweep.
   the spec's ≥90 mobile score is **unverified**.
 - `/student/profile` shows a badge total that can decrease, which contradicts the
   "nothing can be lost" promise in `badges.tsx`. See Next steps.
+- Deleting a post does not delete its picture from `storage/`. The bytes become
+  unreachable immediately — `files.ts` denies anything no record claims, and
+  there is a test for exactly that orphan case — but nothing reclaims the disk.
+  A sweep for unreferenced files is still owed.
+- One picture per post. The schema and validation already allow up to ten; the
+  compose form offers a single picker.

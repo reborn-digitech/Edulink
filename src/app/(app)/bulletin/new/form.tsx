@@ -1,14 +1,22 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ClockIcon, PaperPlaneTiltIcon, XIcon } from "@phosphor-icons/react";
+import { ClockIcon, ImageIcon, PaperPlaneTiltIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
 import type { Role } from "@/lib/constants";
+
+/**
+ * Mirrors MAX_UPLOAD_BYTES in storage.ts. Duplicated rather than imported
+ * because storage.ts is `server-only` and importing it here is a build error,
+ * not a type error. The server is the one that enforces this; the copy exists
+ * so a child is told before sending five megabytes, not after.
+ */
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
 export function ComposeForm({
   classes,
@@ -35,6 +43,48 @@ export function ComposeForm({
   const [tagDraft, setTagDraft] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const [picture, setPicture] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [alt, setAlt] = useState("");
+  const pickerRef = useRef<HTMLInputElement>(null);
+
+  // The preview is a blob URL held by the browser until it is revoked, so it
+  // has to be released when the picture changes or the page goes away.
+  useEffect(() => {
+    if (!picture) {
+      setPreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(picture);
+    setPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [picture]);
+
+  function choosePicture(file: File | undefined) {
+    if (!file) return;
+    // Both of these are re-checked on the server, which sniffs the actual bytes
+    // rather than trusting `file.type`. Doing them here too just means a child
+    // is told immediately instead of after a 5 MB upload. (§6)
+    if (!file.type.startsWith("image/")) {
+      setErrors((e) => ({ ...e, image: "Choose a picture." }));
+      return;
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      setErrors((e) => ({ ...e, image: "That picture is bigger than 5 MB." }));
+      return;
+    }
+    setErrors((e) => ({ ...e, image: "", alt: "" }));
+    setPicture(file);
+  }
+
+  function removePicture() {
+    setPicture(null);
+    setAlt("");
+    setErrors((e) => ({ ...e, image: "", alt: "" }));
+    // Without this, picking the same file again fires no change event.
+    if (pickerRef.current) pickerRef.current.value = "";
+  }
+
   function addTag() {
     const value = tagDraft.trim().replace(/^#/, "").slice(0, 30);
     if (!value) return;
@@ -52,20 +102,26 @@ export function ComposeForm({
     const next: Record<string, string> = {};
     if (title.trim().length < 2) next.title = "Give it a title.";
     if (scope === "CLASS" && !classId) next.classId = "Choose a class.";
+    // A picture nobody can hear is a picture some children cannot read at all.
+    if (picture && !alt.trim()) next.alt = "Describe the picture, so it makes sense read aloud.";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
     startTransition(async () => {
-      const result = await submitPost({
-        scope,
-        classId: scope === "CLASS" ? classId : "",
-        title: title.trim(),
-        body: body.trim(),
-        tags,
-        // Media needs the upload pipeline wired (storage.ts is written but not
-        // yet used by any screen), so posts are text-only for now.
-        media: [],
-      });
+      // FormData, not an object: the file goes with the post in one request, and
+      // the server mints the fileId. The client never names one. (§6)
+      const payload = new FormData();
+      payload.set("scope", scope);
+      payload.set("classId", scope === "CLASS" ? classId : "");
+      payload.set("title", title.trim());
+      payload.set("body", body.trim());
+      for (const tag of tags) payload.append("tags", tag);
+      if (picture) {
+        payload.set("image", picture);
+        payload.set("alt", alt.trim());
+      }
+
+      const result = await submitPost(payload);
 
       if (!result.ok) {
         setErrors(result.errors);
@@ -187,6 +243,74 @@ export function ComposeForm({
           }
           className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
+      </div>
+
+      <div>
+        <span className="block text-sm font-medium text-fg">Picture</span>
+
+        {!picture ? (
+          <>
+            <label
+              htmlFor="post-image"
+              className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[--radius-md] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
+            >
+              <ImageIcon weight="duotone" className="size-5" />
+              Add a picture
+            </label>
+            <input
+              ref={pickerRef}
+              id="post-image"
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif"
+              className="sr-only"
+              onChange={(e) => choosePicture(e.target.files?.[0])}
+            />
+          </>
+        ) : (
+          <div className="mt-1.5 space-y-3 rounded-[--radius-md] border border-border bg-surface p-3">
+            <div className="flex items-start gap-3">
+              {/* Local blob preview — nothing has been uploaded yet. */}
+              {preview && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={preview}
+                  alt=""
+                  className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
+                />
+              )}
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium text-fg">{picture.name}</p>
+                <p className="text-xs text-fg-muted">
+                  {(picture.size / 1024 / 1024).toFixed(1)} MB
+                </p>
+              </div>
+              <Button type="button" variant="ghost" size="sm" onClick={removePicture}>
+                Remove
+              </Button>
+            </div>
+
+            <TextField
+              label="Describe the picture"
+              required
+              value={alt}
+              error={errors.alt}
+              onChange={(e) => setAlt(e.target.value)}
+              maxLength={300}
+              placeholder="Our class relay team crossing the line"
+              hint="Read out to anyone who cannot see it. Say what is happening, not who is in it."
+            />
+          </div>
+        )}
+
+        {errors.image && (
+          <p role="alert" className="mt-1 text-xs font-medium text-danger">
+            {errors.image}
+          </p>
+        )}
+        <p className="mt-1 text-xs text-fg-muted">
+          Optional. PNG, JPEG, WebP or GIF, up to 5 MB. Location information is removed
+          from photos automatically.
+        </p>
       </div>
 
       <div>

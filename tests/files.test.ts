@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { authorizeFileRead } from "@/lib/files";
+import { createPost, moderatePost } from "@/lib/bulletin";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -66,6 +67,7 @@ let submissionId: string;
 let postId: string;
 let pendingPostId: string;
 let otherSchoolAssignmentId: string;
+let ownerClassId: string;
 
 beforeAll(async () => {
   const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
@@ -92,6 +94,7 @@ beforeAll(async () => {
   const classId = (
     await db.classTeacher.findFirstOrThrow({ where: { teacherMembershipId: priyaTeacher.id } })
   ).classId;
+  ownerClassId = classId;
 
   // The guardianship in the seed points at a child in Priya's class, so use
   // that child as the owner — then the parent is a real guardian of them.
@@ -379,6 +382,60 @@ describe("bulletin post media", () => {
     expect(allow(await authorizeFileRead(PENDING_POST_FILE, admin))).toBe(true);
     // A teacher of another class does not.
     expect(allow(await authorizeFileRead(PENDING_POST_FILE, otherTeacher))).toBe(false);
+  });
+});
+
+describe("a picture becomes visible only when the post does", () => {
+  /**
+   * The lifecycle the upload feature actually depends on. The two ends were
+   * already covered separately — a PENDING post's media is private, an APPROVED
+   * post's media follows the post — but nothing asserted that APPROVING is what
+   * moves a file from one to the other. If moderation ever stopped flipping
+   * that, both existing tests would still pass and children's unreviewed
+   * pictures would be readable by the class.
+   */
+  it("⚠ a classmate is refused while it waits, and served once a teacher approves", async () => {
+    const fileId = "12345678-aaaa-bbbb-cccc-444444444444.jpg";
+
+    const created = await createPost(owner, {
+      scope: "CLASS",
+      classId: ownerClassId,
+      title: "TEST files media lifecycle",
+      body: "",
+      tags: [],
+      media: [{ fileId, kind: "image", alt: "A model volcano erupting" }],
+    });
+
+    // A student's post is held for review — that is what makes the picture private.
+    expect(created.status).toBe("PENDING");
+    expect(allow(await authorizeFileRead(fileId, classmate))).toBe(false);
+    expect(allow(await authorizeFileRead(fileId, owner))).toBe(true);
+    expect(allow(await authorizeFileRead(fileId, owningTeacher))).toBe(true);
+
+    await moderatePost(owningTeacher, created.postId, "APPROVE");
+
+    expect(allow(await authorizeFileRead(fileId, classmate))).toBe(true);
+    // Approval widens it to the class, not beyond it.
+    expect(allow(await authorizeFileRead(fileId, otherSchoolAdmin))).toBe(false);
+  });
+
+  it("⚠ rejecting a post does not publish its picture", async () => {
+    const fileId = "87654321-aaaa-bbbb-cccc-444444444444.jpg";
+
+    const created = await createPost(owner, {
+      scope: "CLASS",
+      classId: ownerClassId,
+      title: "TEST files media rejected",
+      body: "",
+      tags: [],
+      media: [{ fileId, kind: "image", alt: "Something a teacher said no to" }],
+    });
+
+    await moderatePost(owningTeacher, created.postId, "REJECT", "Please do not share this one.");
+
+    expect(allow(await authorizeFileRead(fileId, classmate))).toBe(false);
+    // The child can still see their own, so they know what was turned down.
+    expect(allow(await authorizeFileRead(fileId, owner))).toBe(true);
   });
 });
 

@@ -2,6 +2,7 @@ import "server-only";
 import { createHash, randomUUID } from "node:crypto";
 import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
+import { stripImageMetadata } from "./image-metadata";
 
 /**
  * Local file storage.
@@ -77,18 +78,26 @@ export async function storeFile(file: File, opts: { maxBytes?: number } = {}): P
   }
 
   const spec = ALLOWED[detected]!;
+
+  // Strip EXIF and friends BEFORE the bytes ever reach disk. A phone photo
+  // carries GPS coordinates, and a child's picture taken at home would
+  // otherwise store where they live. Writing it first and cleaning it later
+  // still leaves the original in any backup taken in between.
+  const clean = stripImageMetadata(buffer, detected);
+
   const fileId = `${randomUUID()}.${spec.ext}`;
   const target = pathFor(fileId);
 
   await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, buffer);
+  await writeFile(target, clean);
 
   return {
     fileId,
     // Keep the original name for display only; it is never used as a path.
     name: file.name.slice(0, 200).replace(/[\r\n]/g, ""),
     mime: detected,
-    size: buffer.byteLength,
+    // The stored length, not the uploaded one — they differ once metadata goes.
+    size: clean.byteLength,
     kind: spec.kind,
   };
 }
