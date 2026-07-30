@@ -8,11 +8,18 @@
 //   * no `Json` columns -> JSON payloads are String, read/written through the
 //     typed helpers in src/lib/json.ts.
 //
-// TENANCY — every school-owned row carries `schoolId` directly, even when it
+// TENANCY — MOST school-owned rows carry `schoolId` directly, even where it
 // could be derived through a relation. Denormalised on purpose: it lets the
 // scoped data layer (src/lib/tenancy.ts) put `schoolId` in the WHERE clause of
-// every single query, and lets Postgres RLS policies be written as simple
-// `USING (school_id = current_setting('app.school_id'))` predicates in prod.
+// every single query, and lets a Postgres RLS policy be written as a simple
+// `USING (school_id = current_setting('app.school_id'))` predicate in prod.
+//
+// FIVE DO NOT, and a policy author needs to know which before writing one:
+// ClassTeacher and Enrollment reach their school through `classId`, Comment and
+// Reaction through `postId`, RemarkMessage through `threadId`. Those five need
+// an `EXISTS (...)` subquery policy instead. This said "every" until somebody
+// counted; `tests/tenancy-shape.test.ts` now checks it rather than asserting it
+// in prose, and fails when a new model is added without saying how it is scoped.
 
 generator client {
   provider = "prisma-client-js"

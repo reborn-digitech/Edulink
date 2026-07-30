@@ -65,7 +65,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (365 tests) |
+| `npm test` | Full suite (374 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -233,8 +233,30 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. Postgres migration + RLS policies (schema comments describe the intended
-   predicates; isolation is currently app-layer only).
+1. **Postgres migration + RLS policies.** Isolation is app-layer only today.
+   Groundwork done, in the order the work should go:
+
+   * The schema is confirmed portable. `prisma validate` accepts it under the
+     `postgresql` provider and `prisma migrate diff --from-empty` emits 771 lines
+     of Postgres DDL, both offline. The no-enums/no-Json tax is being paid and it
+     is working.
+   * **Denormalise `schoolId` onto the five join-scoped tables first** —
+     ClassTeacher, Enrollment, Comment, Reaction, RemarkMessage. Every other
+     school-owned table has it, and with those five done every policy is the same
+     one-line predicate instead of five bespoke `EXISTS` subqueries. Subquery
+     policies are the ones most likely to be written wrong and the ones that hurt
+     under load, because they run per row. This needs a `db:reset` in dev.
+   * Then the policies themselves: `USING (school_id = current_setting('app.school_id'))`.
+   * **The real blocker is not SQL.** RLS needs the tenant in a session variable,
+     and `SET LOCAL` only lasts a transaction — so every scoped query has to run
+     inside one that sets it first. Prisma pools connections, so setting it
+     per-request is not safe: the next request can get the same connection. That
+     is a change to `db.ts` and to how every query is issued, and it should be
+     designed before any policy is written, or the policies will silently read an
+     empty `app.school_id` and return nothing.
+   * Nothing above was executed. **There is no Postgres on this machine** — no
+     server, no client, no Docker — so treat the DDL as generated-and-read, not
+     run.
 2. Global feed, competitions, progress-report export, SSO, 2FA.
 
 **A pattern worth internalising before you add anything:** three separate
@@ -361,7 +383,7 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **365 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **374 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
