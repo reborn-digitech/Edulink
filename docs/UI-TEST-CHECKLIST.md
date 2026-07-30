@@ -655,6 +655,11 @@ As a **student**.
 - ☐ **⚠️** Your **full name** is read-only, and says only a teacher can change it
   — it is what the register uses
 - ☐ Student code is shown with "a grown-up at home needs this to link to you"
+- ☐ **⚠️** Command palette results are real **links** — middle-click one and it
+  opens in a new tab, and a screen reader calls it a link, not a button. They
+  were `<button>` with a `router.push` once, which looks identical and loses both
+- ☐ ⌘K opens it, ⌘K again closes it, Escape closes it
+
 - ☐ Badges: earned ones are highlighted, unearned ones are dimmed under "On the
   way" — **⚠️** there is no score, no rank, no leaderboard, and nothing that can
   go down

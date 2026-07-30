@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { NAV, QUICK_ACTIONS } from "@/lib/nav";
 import { NavIcon } from "./icons";
@@ -14,8 +15,19 @@ type Entry = { href: string; label: string; icon: string; description?: string; 
  * ⌘K palette.
  *
  * Implemented as a modal dialog with roving focus rather than a listbox because
- * the results are links: keyboard users get arrow keys and Enter, and everyone
+ * the results ARE links: keyboard users get arrow keys and Enter, and everyone
  * else can just tap a row.
+ *
+ * Each row is a real `<a>`, and that is not a detail. These are the same
+ * destinations as the nav, so they have to behave like the nav — middle-click
+ * and ⌘-click to open in a new tab, a status-bar preview of where a row goes,
+ * and "link" rather than "button" when a screen reader announces it or lists
+ * the page's links. `slot.tsx` exists to keep that true of the buttons that look
+ * like links; this keeps it true of the palette. They were `<button>` with a
+ * router.push for a while, which loses all four and looks identical.
+ *
+ * Enter is still handled here rather than by the focused element, because focus
+ * stays in the search box while a highlighted cursor moves through the results.
  */
 export function CommandPalette({
   open,
@@ -155,13 +167,12 @@ export function CommandPalette({
                       {entry.group}
                     </p>
                   )}
-                  <button
-                    type="button"
+                  <Link
+                    href={entry.href}
                     onMouseEnter={() => setCursor(index)}
                     onClick={() => {
                       onClose();
                       setQuery("");
-                      router.push(entry.href);
                     }}
                     className={cn(
                       "flex w-full items-center gap-3 rounded-[--radius-md] px-3 py-2.5 text-left",
@@ -180,7 +191,7 @@ export function CommandPalette({
                     {index === cursor && (
                       <ArrowRightIcon className="size-4 shrink-0" aria-hidden="true" />
                     )}
-                  </button>
+                  </Link>
                 </div>
               );
             })

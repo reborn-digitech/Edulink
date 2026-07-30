@@ -511,6 +511,26 @@ One line each, with the default rejected.
   The classmate cell is the one that matters: a handout is for the class, a
   child's work is not. The photo lost its EXIF on the way in here too (203 → 160
   bytes), so stripping is a property of storage rather than of the bulletin.
+- **The admin screens that had never been clicked.** Rotating a class join code
+  replaces it and the OLD code stops resolving — which is the whole point, since
+  rotation is what you do when a code leaks. Archiving names the student count
+  and warns first; cancelling changes nothing; archiving moves the class and
+  refuses its join code while keeping **18 enrolments, 11 registers, 182
+  attendance records, 3 assignments and 16 grades**. Restoring brings it back
+  with all of it. "Archive, don't delete" is real.
+- **Quiet hours.** Defaults to 21:00–07:00. Setting start and end to the SAME
+  time is refused — "Start and end cannot be the same time" — and nothing is
+  written, because that pair would silence every notification forever. A valid
+  pair saves and survives a reload.
+- **The re-submission guard has now executed.** It was described here as
+  defence-in-depth for a stale page that had never run. Reproduced by opening
+  the hand-in panel, grading the work behind it, and then submitting from the
+  now-stale page: refused, the child is told the work has been marked and to
+  message their teacher, no submission row is created and the grade is untouched.
+- **The parent child-switcher.** Switching between two children in DIFFERENT
+  schools re-scopes the whole page, not just the name. A forged `?child=` id
+  belonging to a child this parent does not guard falls back to their own child
+  rather than showing someone else's.
 - **Three pictures on one post, production build.** A student attached three at
   once; each got its own "Describe picture N" field, and leaving the middle one
   blank marked THAT field rather than the form. All three arrived with their own
@@ -539,23 +559,15 @@ One line each, with the default rejected.
 
 Renders and typechecks; treat as `Untested:`.
 
-- Command palette (⌘K), install button, quiet-hours logic, class
-  archive/restore and join-code rotation from the admin screens.
-- The multi-child parent switcher **renders** both of Jordan Okafor's children
-  (Riverside and Oakfield) on `/parent`, but switching between them has not been
-  clicked. What now IS covered is the decision underneath it —
-  `setActiveContext` refusing PARENT to anyone without an ACTIVE guardianship.
-- **Invite revoke and resend are no longer on this list.** The buttons still
-  have not been clicked, but what they do to an invitation is pinned by
-  `invite-lifecycle.test.ts`: a revoked link is refused, a resent link kills its
-  predecessor, an expired one is refused and recorded as expired. The admin
+- **The install button.** Chrome only fires `beforeinstallprompt` on a real
+  visit over a real origin, so the affordance cannot be driven from an automated
+  browser. Everything either side of it is covered.
+- **Invite revoke and resend buttons.** What they DO to an invitation is pinned
+  by `invite-lifecycle.test.ts` — a revoked link is refused, a resent link kills
+  its predecessor, an expired one is refused and recorded as expired. The admin
   actions themselves need a session, which the vitest `next/headers` stub has no
   cookie jar for, so the state changes are made the way those actions make them
-  and the accept path is what gets verified.
-- **The server-side guard refusing a re-submission after marking.** The UI
-  stops offering the panel (verified), so that branch in
-  `src/app/(app)/student/work/actions.ts` is defence-in-depth for a stale page
-  and has not been executed.
+  and the accept path is what gets verified. The buttons remain unclicked.
 
 ### Not built
 
