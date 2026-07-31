@@ -7,6 +7,7 @@ import {
   ClipboardTextIcon,
   FireIcon,
   PlusIcon,
+  TrophyIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
@@ -15,12 +16,14 @@ import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { overallPercent } from "@/lib/grading";
+import { pendingConsents } from "@/lib/competitions";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { AttendanceBadge, Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
+import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Your children" };
@@ -50,7 +53,7 @@ export default async function ParentDashboard({
   const today = todayKey(timezone);
   const fourWeeksAgo = addDaysToKey(today, -28);
 
-  const [attendance, todayRecord, grades, upcoming, threads] = await Promise.all([
+  const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: selectedId, session: { dateKey: today } },
@@ -82,6 +85,9 @@ export default async function ParentDashboard({
       orderBy: { lastMessageAt: "desc" },
       take: 3,
     }),
+    // Every child's, not just the one on screen: a consent request has a
+    // deadline, and hiding it behind the child switcher is how it gets missed.
+    pendingConsents(session),
   ]);
 
   const streak = computeStreak(attendance.recent);
@@ -110,6 +116,38 @@ export default async function ParentDashboard({
           </p>
         </div>
       </div>
+
+
+      {awaitingConsent.length > 0 && (
+        <Card className="border-warn/40">
+          <CardHeader
+            icon={<TrophyIcon weight="duotone" className="size-5" />}
+            title="Waiting for you"
+            description="They cannot take part until you say yes."
+          />
+          <CardBody className="space-y-3 pt-0">
+            {awaitingConsent.map((item) => (
+              <div key={item.entryId} className="space-y-2">
+                <p className="text-[0.9375rem]">
+                  <strong>{item.childName}</strong> would like to enter{" "}
+                  <Link
+                    href={`/competitions/${item.competitionId}`}
+                    className="underline underline-offset-4"
+                  >
+                    {item.title}
+                  </Link>
+                  , run by {item.organizerName}.
+                </p>
+                <ConsentControls
+                  entryId={item.entryId}
+                  childName={item.childName}
+                  title={item.title}
+                />
+              </div>
+            ))}
+          </CardBody>
+        </Card>
+      )}
 
       {/* ---------------- today ---------------- */}
       <Card className={todayRecord && todayRecord.status !== "PRESENT" ? "border-warn/40" : undefined}>

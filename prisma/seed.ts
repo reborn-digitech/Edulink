@@ -104,6 +104,9 @@ async function main() {
   // ---- assignments + grades ---------------------------------------------
   await seedAssignments(riverside);
 
+  // ---- the competitions marketplace -------------------------------------
+  await seedCompetitions(riverside.id);
+
   console.log(`
 Seeded.
 
@@ -121,6 +124,90 @@ Seeded.
   Class join codes:
 ${riverside.classes.map((c) => `    ${c.joinCode}  ${c.name}`).join("\n")}
 `);
+}
+
+/**
+ * Competitions.
+ *
+ * NOT school-owned, which is the whole point of the marketplace: these rows have
+ * no schoolId and no policy, so both schools see the same four. One is organised
+ * BY Riverside to prove `organizerSchoolId` works and that a school's own event
+ * still shows up at the other school; one needs no parent consent because
+ * nothing leaves the building; one is already closed so the "only ones I can
+ * still enter" filter has something to filter; and one is a draft, which nobody
+ * outside the organising school may see at all.
+ */
+async function seedCompetitions(riversideId: string) {
+  const days = (n: number) => new Date(Date.now() + n * 86_400_000);
+
+  await db.competition.createMany({
+    data: [
+      {
+        title: "Junior Maths Challenge",
+        summary: "Thirty puzzles, twenty-five minutes, no calculators.",
+        body: "A national paper sat in school. Everyone who takes part gets a certificate, and the top scorers go through to the Junior Kangaroo in the spring.\n\nBring a pencil and a rubber. Nothing else is needed.",
+        organizerName: "The Mathematical Trust",
+        subject: "Maths",
+        gradeLow: "4",
+        gradeHigh: "6",
+        eligibility: "Any pupil in Years 4 to 6.",
+        rules: "Sat under exam conditions in school. No calculators.",
+        prizes: "Bronze, silver and gold certificates. Gold goes through to the next round.",
+        externalUrl: "https://example.org/junior-maths-challenge",
+        registrationClosesAt: days(30),
+        startsAt: days(45),
+        status: "PUBLISHED",
+        verified: true,
+        requiresParentConsent: true,
+      },
+      {
+        title: "Young Writers: 500 Words",
+        summary: "Tell a story in five hundred words or fewer.",
+        body: "Any story you like, as long as it is yours and it fits in five hundred words. Shortlisted stories are read out on the radio.",
+        organizerName: "The Reading Foundation",
+        subject: "English",
+        gradeLow: "3",
+        gradeHigh: "6",
+        prizes: "A pile of books for your class, and your story read aloud.",
+        registrationClosesAt: days(12),
+        endsAt: days(20),
+        status: "PUBLISHED",
+        verified: true,
+        requiresParentConsent: true,
+      },
+      {
+        title: "Riverside Spelling Bee",
+        summary: "Our own spelling bee, in the hall, on a Friday afternoon.",
+        body: "Three rounds. Parents welcome to come and watch the final.",
+        organizerName: "Riverside Primary School",
+        organizerSchoolId: riversideId,
+        subject: "English",
+        registrationClosesAt: days(9),
+        startsAt: days(14),
+        status: "PUBLISHED",
+        // Nothing leaves the school, so there is nothing to consent to.
+        requiresParentConsent: false,
+      },
+      {
+        title: "Autumn Science Fair",
+        summary: "Entries closed — here so you can see what one looks like.",
+        organizerName: "The Science Museum",
+        subject: "Science",
+        registrationClosesAt: days(-14),
+        startsAt: days(-2),
+        status: "PUBLISHED",
+        requiresParentConsent: true,
+      },
+      {
+        title: "Summer Art Prize",
+        summary: "Still being written by the office.",
+        organizerName: "Riverside Primary School",
+        organizerSchoolId: riversideId,
+        status: "DRAFT",
+        requiresParentConsent: true,
+      },
+    ],
+  });
 }
 
 /* -------------------------------------------------------------------------- */

@@ -34,6 +34,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/classes", label: "Classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/admin/invites", label: "Invites", icon: "envelope", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
+    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/admin/safety", label: "Safety", icon: "shield", prefix: true },
     { href: "/admin/settings", label: "Settings", icon: "gear", prefix: true },
   ],
@@ -44,12 +45,14 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/assignments", label: "Work", icon: "clipboard", primary: true, prefix: true },
     { href: "/remarks", label: "Messages", icon: "chat", prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
+    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
   ],
   STUDENT: [
     { href: "/student", label: "Today", icon: "house", primary: true },
     { href: "/student/work", label: "My work", icon: "clipboard", primary: true, prefix: true },
     { href: "/student/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", primary: true, prefix: true },
+    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/student/profile", label: "Me", icon: "user", prefix: true },
   ],
   PARENT: [
@@ -57,6 +60,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/attendance", label: "Attendance", icon: "checks", primary: true, prefix: true },
     { href: "/parent/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
     { href: "/remarks", label: "Messages", icon: "chat", primary: true, prefix: true },
+    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/parent/settings", label: "Settings", icon: "gear", prefix: true },
   ],
 };

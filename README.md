@@ -101,7 +101,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (404 tests) |
+| `npm test` | Full suite (448 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -115,7 +115,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 75 route/role/negative combinations
+mints a real session per role, requests all 92 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -160,6 +160,7 @@ src/lib/                  All business logic. Pages are thin.
   grading.ts              Assignments, marking, overallPercent().
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
+  competitions.ts         ★ Cross-school catalogue, school-scoped entries, parent consent.
   safety.ts               Report triage + audit log (server-only).
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
@@ -350,7 +351,7 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. Global feed, competitions, progress-report export, SSO, 2FA.
+1. Global feed, progress-report export, SSO, 2FA.
 
 
 **A pattern worth internalising before you add anything:** three separate
@@ -505,7 +506,34 @@ One line each, with the default rejected.
   memberships **across** schools, does **not** see another user's in a school
   they are in themselves, and **cannot insert one** — mutation-tested by adding
   the self clause to `WITH CHECK`, which fails that check and only that one.
-- **75/75 route checks** as a signed-in user of the owning role, against a
+- **The competitions marketplace, and the consent gate that is the point of it.**
+  The one feature in this app that is deliberately NOT school-scoped: a
+  `Competition` has no `schoolId` and no policy, because the same maths challenge
+  is the same challenge at both schools and copying it per school would mean two
+  rows that drift apart. A `CompetitionEntry` names a child, so it carries
+  `schoolId` and IS policied. Shared catalogue, private participation.
+
+  Verified end to end in a production build: a pupil opened *Junior Maths
+  Challenge*, pressed **Enter this**, and got "Waiting for a grown-up to say yes"
+  — an entry existing, counting for nothing. It appeared on their guardian's home
+  page **while a different child was selected in the switcher**, because a consent
+  deadline should not hide behind a tab. The guardian pressed **Allow**; the entry
+  was stamped with their user id, the child was told, and only then did the
+  competition report one pupil taking part. Both audit rows written.
+
+  Then the other direction: a Riverside admin posted a competition, was refused
+  for an `http://` link and a start date after the end (**both flagged at once,
+  and the form kept everything they had typed** — React resets an uncontrolled
+  form after an action, which had been wiping the lot), fixed it, saved a DRAFT
+  nobody else could see, pressed **Publish it**, and an **Oakfield** pupil then
+  found it in their list and could enter it. `verified` stayed false: a school
+  cannot mark its own competition as checked by EduLink.
+
+  44 tests, mutation-tested where it matters — skipping the consent gate fails 9,
+  dropping the guardianship check fails 2, counting unconsented entries as taking
+  part fails 1, letting another school publish yours fails 2, and deleting entries
+  when a competition is withdrawn fails 1.
+- **92/92 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -527,8 +555,8 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **404 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, tenant-request, onboarding, remarks, grading, bulletin, safety, storage, files,
+- **448 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, tenant-request, competitions, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
@@ -677,26 +705,42 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 75 checks in
+**Every route referenced by the navigation renders.** All 92 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
 the release where every page rendered and nothing saved.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
-- Global feed, competitions marketplace
+- Global feed
 - Cross-school moderation. The **per-school safety centre is built** — see
   Status, and `/admin/safety` — so what is missing is the tier above it: one
   queue spanning both schools, for whoever runs the server rather than a school.
   There is no actor for it. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
   scoped to a school, and nothing in the app is above a school except the file
   sweep, which is a cron job for the same reason.
+- Competition **submissions, scoring and leaderboards**. The schema has
+  `submissionUrl`, `scoreMilli`, `rank` and `leaderboardEnabled` and nothing
+  writes any of them: an entry goes REGISTERED and stops there. A leaderboard is
+  the interesting one to think about before building — entries are school-scoped
+  by policy, so a cross-school ranking is the first thing in this app that would
+  have to show one school another school's children, and that needs deciding
+  rather than implementing.
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
 ### Known issues
 
+- **Login is not audited.** `audit()` writes to `AuditLog`, which is
+  school-scoped, and at login no school is bound yet — so Postgres refuses the
+  insert and `audit()` swallows it: `[audit] failed to record auth.login` in the
+  server log, every single sign-in. Login itself is unaffected and nothing else
+  is (every other call site has a school by the time it runs), but "who signed in
+  and when" is exactly the question an audit log exists to answer. Found in the
+  logs while testing something else. The fix is a decision, not a patch: either
+  give AuthLog rows a nullable school and a policy that allows your own, or
+  record login against the school the session resolves to, after it resolves.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably

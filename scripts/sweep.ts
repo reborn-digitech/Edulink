@@ -240,6 +240,33 @@ async function main() {
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
 
+  /* ---- competitions: the one thing that is NOT school-scoped ---- */
+  const openComp = await db.competition.findFirst({ where: { status: "PUBLISHED" } });
+  const draftComp = await db.competition.findFirst({ where: { status: "DRAFT" } });
+
+  for (const actor of [admin, teacher, student, parent]) {
+    await check(actor, "/competitions");
+  }
+  await check(student, "/competitions?show=all", 200, "including closed ones");
+  await check(admin, "/competitions/new", 200, "posting one");
+  await check(teacher, "/competitions/new", 307, "a teacher cannot post one");
+  await check(student, "/competitions/new", 307, "nor can a pupil");
+
+  if (openComp) {
+    // EVERY role, at BOTH schools. A competition is not school-owned, and this
+    // is the check that would fail if somebody "helpfully" scoped it.
+    for (const actor of [admin, teacher, student, parent, otherAdmin]) {
+      await check(actor, `/competitions/${openComp.id}`, 200, "the catalogue is shared");
+    }
+  }
+  if (draftComp) {
+    // …but an unpublished one is nobody's business, and 404 rather than 403 so
+    // it does not confirm itself.
+    for (const actor of [teacher, student, parent, otherAdmin]) {
+      await check(actor, `/competitions/${draftComp.id}`, 404, "a draft is not visible");
+    }
+  }
+
   /* ---- report ---- */
   const pad = (s: string, n: number) => s.padEnd(n);
   console.log("\n" + pad("ROLE", 16) + pad("STATUS", 14) + "PATH");

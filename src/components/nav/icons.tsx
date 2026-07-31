@@ -14,6 +14,7 @@ import {
   PaletteIcon,
   PlusIcon,
   ShieldCheckIcon,
+  TrophyIcon,
   UserCirclePlusIcon,
   UserIcon,
   UsersThreeIcon,
@@ -41,6 +42,7 @@ const ICONS: Record<string, Icon> = {
   plus: PlusIcon,
   palette: PaletteIcon,
   bell: BellIcon,
+  trophy: TrophyIcon,
 };
 
 export function NavIcon({
