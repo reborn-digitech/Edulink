@@ -256,6 +256,11 @@ export default async function ParentDashboard({
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
           title="Recent grades"
           description={grades.length === 0 ? "Nothing graded yet" : "Newest first"}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href={`/reports/${selectedId}`}>Progress report</Link>
+            </Button>
+          }
         />
         <CardBody>
           {grades.length === 0 ? (

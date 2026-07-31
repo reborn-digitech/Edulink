@@ -127,7 +127,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (478 tests) |
+| `npm test` | Full suite (493 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -141,7 +141,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 98 route/role/negative combinations
+mints a real session per role, requests all 105 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -187,6 +187,7 @@ src/lib/                  All business logic. Pages are thin.
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
   competitions.ts         ★ Cross-school catalogue, school-scoped entries, parent consent.
+  reports.ts              ★ Progress report. Computes NOTHING — asks the helpers that own each figure.
   safety.ts               Report triage + audit log (server-only).
   safety-labels.ts        Client-safe types/labels for the above — see note.
   storage.ts              Uploads: magic-byte sniffing, UUID names, sharded dirs.
@@ -392,7 +393,7 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Progress-report export, then weighted grade categories.** Both are grading
+1. **Weighted grade categories.** Both are grading
    work and both go through `overallPercent`, so they share their hard part.
 2. **Global feed.** Bigger than it sounds: it is the second thing that would show
    one school another school's content. Read `competitions.ts` first — it is the
@@ -670,7 +671,32 @@ One line each, with the default rejected.
   is a real mark; and **registration closing does not close the hand-in**, since
   entries close so the organiser knows who is coming and the thing itself happens
   afterwards. Both are mutation-tested, along with the consent gate.
-- **98/98 route checks** as a signed-in user of the owning role, against a
+- **The progress report, and the number it must never get wrong.** One child, one
+  window, one sheet: attendance with the four counts and the longest run present,
+  the points-weighted overall grade, every marked piece of work with the class and
+  the teacher's comment, and the badges earned. Print produces the sheet without
+  the app around it — `window.print()` and the `.no-print` rule that has been in
+  `globals.css` since before there was anything to print, rather than a PDF
+  dependency.
+
+  **It computes nothing.** Every figure comes from the helper that already owns
+  it, because the one thing a report must never do is disagree with the page a
+  parent is holding it next to. The tests say so directly: the report's
+  attendance must EQUAL what `getAttendanceSummary` returns and its grade must
+  EQUAL `overallPercent`, rather than equalling some number written down here.
+
+  That test started out unable to fail — it compared the report against the same
+  helper and then only checked the averaging mistake *if* the two happened to
+  differ on seeded data, which for this child they did not. It now builds the
+  case that tells them apart (full marks on a five-point quiz, half on a
+  hundred-point exam: 52% by points, 75% by averaging) and asserts against that,
+  which the mutation then failed as it should have the first time.
+
+  Access is asked for, never re-decided: `assertStudentAccess` for staff — so a
+  teacher who does not teach the child is refused even at their own school —
+  `assertGuardianAccess` for a parent, and the child themselves. A summary must
+  not outrank the things it summarises.
+- **105/105 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -692,8 +718,8 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **478 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, tenant-request, competitions, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
+- **493 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, tenant-request, competitions, reports, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
@@ -843,7 +869,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 98 checks in
+**Every route referenced by the navigation renders.** All 105 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -864,7 +890,7 @@ the release where every page rendered and nothing saved.
   else's. A ranking across schools would be the first thing in this app to show
   one school another school's children — a decision, and a policy change, before
   it is a page.
-- Weighted grade categories, progress-report export
+- Weighted grade categories
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 

@@ -294,6 +294,31 @@ async function main() {
   await twoSchoolTeacher(riverside.id, oakfield.id);
   await joinCodeBootstrap(riverside.id);
 
+  /* ---- progress reports: a summary must not outrank its parts ---- */
+  const reportChild = await db.guardianship.findFirst({
+    where: { parent: { email: "parent@example.com" }, status: "ACTIVE", studentSchoolId: riverside.id },
+    select: { studentMembershipId: true },
+  });
+  if (reportChild) {
+    const id = reportChild.studentMembershipId;
+    await check(parent, `/reports/${id}`, 200, "their own child");
+    await check(admin, `/reports/${id}`, 200, "their school's pupil");
+    // A DIFFERENT pupil: the sweep's own student actor may well be this child,
+    // and "you can read your own report" is not the check being made here.
+    const otherPupil = await db.membership.findFirst({
+      where: { schoolId: riverside.id, role: "STUDENT", status: "ACTIVE", id: { not: id } },
+      include: { user: { select: { email: true } } },
+    });
+    if (otherPupil?.user.email) {
+      const classmate = await mint(otherPupil.user.email, "STUDENT", riverside.id, "classmate");
+      await check(classmate, `/reports/${id}`, 404, "another pupil's report");
+      await check(classmate, `/reports/${otherPupil.id}`, 200, "…but their own is fine");
+    }
+    await check(otherAdmin, `/reports/${id}`, 404, "another school's pupil");
+    await check(null, `/reports/${id}`, 307, "signed out");
+    await check(parent, `/reports/${id}?from=2026-05-01&to=2026-06-30`, 200, "a narrower window");
+  }
+
   /* ---- competitions: the one thing that is NOT school-scoped ---- */
   const openComp = await db.competition.findFirst({ where: { status: "PUBLISHED" } });
   const draftComp = await db.competition.findFirst({ where: { status: "DRAFT" } });

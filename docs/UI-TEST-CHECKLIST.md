@@ -733,6 +733,27 @@ entered it. Both halves are worth checking.
 - ☐ **⚠️** As **Amara**, open `/competitions/<id>/entries` directly → **404**.
   It is a staff page
 
+## 12h. Progress report
+
+- ☐ As **Jordan (parent)**: `/parent` → **Progress report** on the grades card
+- ☐ The sheet shows attendance with the four counts, the overall grade, every
+  marked piece of work with its class, and any badges
+- ☐ **⚠️** The attendance % and the overall % are the SAME numbers `/parent/attendance`
+  and `/parent/grades` show. A report that disagrees with the app is worse than
+  no report
+- ☐ **Print or save as PDF** → the preview has **no nav, no buttons** — just the
+  report
+- ☐ Add `?from=2026-05-01&to=2026-06-30` → the header and footer both say that
+  window, and the figures shrink to match
+- ☐ As **Tom (teacher)**: a class page → the document icon next to a pupil opens
+  the same report
+- ☐ **⚠️** As Tom, open the report of a pupil in a class he does **not** teach →
+  **404**. "Same school" is not enough
+- ☐ **⚠️** As a pupil, open a classmate's report → **404**; their own → 200
+- ☐ **⚠️** As **Sam (Oakfield)**, open a Riverside pupil's report → **404**
+- ☐ If a badge says 95% while attendance reads lower, that is **not a bug** — the
+  page says so. Badges are earned over their own window and kept once earned
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.

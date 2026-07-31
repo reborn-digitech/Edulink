@@ -5,6 +5,7 @@ import {
   ArrowLeftIcon,
   CalendarCheckIcon,
   ChatCircleDotsIcon,
+  FileTextIcon,
   ClipboardTextIcon,
   UsersThreeIcon,
   WarningCircleIcon,
@@ -233,6 +234,13 @@ export default async function ClassDetailPage({
                       </span>
                     )}
                   </span>
+
+                  <Button asChild size="sm" variant="ghost" className="shrink-0">
+                    <Link href={`/reports/${student.membershipId}`}>
+                      <FileTextIcon weight="bold" className="size-4" />
+                      <span className="sr-only">Progress report for {student.name}</span>
+                    </Link>
+                  </Button>
 
                   <Button asChild size="sm" variant="ghost" className="shrink-0">
                     <Link href={`/remarks/new?student=${student.membershipId}`}>
