@@ -684,7 +684,13 @@ through an earlier sweep. Rendering is not the same as working: see Gotchas for
 the release where every page rendered and nothing saved.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
-- Global feed, competitions marketplace, safety centre / moderation dashboards
+- Global feed, competitions marketplace
+- Cross-school moderation. The **per-school safety centre is built** — see
+  Status, and `/admin/safety` — so what is missing is the tier above it: one
+  queue spanning both schools, for whoever runs the server rather than a school.
+  There is no actor for it. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
+  scoped to a school, and nothing in the app is above a school except the file
+  sweep, which is a cron job for the same reason.
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
