@@ -4,10 +4,19 @@ A multi-tenant school PWA — attendance, assignments, grades and teacher↔pare
 messaging for admins, teachers, students and parents. Installs to the Android
 home screen, works offline, syncs by itself.
 
-**Status: the daily loops work end to end.** Register a school → invite staff →
-students self-join → take the register offline → set and mark work → message a
-parent, with everything landing on the parent's screen. Roughly half the
-original spec is built; [Status](#status) says exactly which half.
+**Status: the daily loops work end to end, and so does the way in.** Register a
+school → invite staff → students self-join → take the register offline → set and
+mark work → message a parent → enter a competition with a guardian's consent,
+with everything landing on the parent's screen. Every one of those has been
+driven against a production build with the tenant policies live; [Status](#status)
+says exactly what was checked and how.
+
+Roughly half the original spec is built, and **the half that is built is now the
+half that has been run.** The last five commits were spent finding, in order: the
+tenant binding worked in one of the four places it had to; a teacher at two
+schools could not open a single page; the audit log had never once recorded a
+login; and no child could join, no parent could claim a child, and no school
+could register at all.
 
 - **Manual test plan:** [`docs/UI-TEST-CHECKLIST.md`](docs/UI-TEST-CHECKLIST.md)
 - **Taking over this codebase cold?** Start at [Handoff](#handoff).
@@ -383,7 +392,23 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. Global feed, progress-report export, SSO, 2FA.
+1. **Competition submissions and scoring.** The schema is already there —
+   `submissionUrl`, `scoreMilli`, `rank` — and it raises no new access-control
+   question, which makes it the cheapest real feature left. Leaderboards are NOT
+   part of it; see Not built for why that one is a decision before it is code.
+2. **Progress-report export, then weighted grade categories.** Both are grading
+   work and both go through `overallPercent`, so they share their hard part.
+3. **Global feed.** Bigger than it sounds: it is the second thing that would show
+   one school another school's content. Read `competitions.ts` first — it is the
+   only cross-school surface in here, and it works by keeping the catalogue
+   shared and the participation private.
+4. **SSO, 2FA.** Neither can be verified without real provider credentials.
+   Budget for that rather than discovering it at the end.
+
+**Before any of them, something cheaper.** Nothing in
+`docs/UI-TEST-CHECKLIST.md` has been walked by hand since the policies went on,
+and four of the last five bugs lived in states no signed-in test ever reaches.
+Walk sections 2, 5, 7 and 8 **signed out**.
 
 
 **A pattern worth internalising before you add anything:** three separate
@@ -790,12 +815,13 @@ Renders and typechecks; treat as `Untested:`.
 - **The install button.** Chrome only fires `beforeinstallprompt` on a real
   visit over a real origin, so the affordance cannot be driven from an automated
   browser. Everything either side of it is covered.
-- **Invite revoke and resend buttons.** What they DO to an invitation is pinned
-  by `invite-lifecycle.test.ts` — a revoked link is refused, a resent link kills
-  its predecessor, an expired one is refused and recorded as expired. The admin
-  actions themselves need a session, which the vitest `next/headers` stub has no
-  cookie jar for, so the state changes are made the way those actions make them
-  and the accept path is what gets verified. The buttons remain unclicked.
+- **Invite revoke and resend BUTTONS** — the two controls, not the behaviour.
+  What they do to an invitation is pinned by `invite-lifecycle.test.ts`: a
+  revoked link is refused, a resent link kills its predecessor, an expired one is
+  refused and recorded as expired. The accept path is no longer on this list — a
+  real token was redeemed, signed out, in a production build, into a TEACHER
+  membership on the right class. What remains unclicked is the two admin buttons
+  that put an invitation into those states.
 
 ### Not built
 

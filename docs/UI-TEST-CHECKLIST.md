@@ -681,6 +681,40 @@ As a **student**.
 
 ---
 
+## 12g. Competitions and parent consent
+
+The catalogue is the ONE thing in this app that is not school-scoped: the same
+competition is the same competition at both schools. What is scoped is who has
+entered it. Both halves are worth checking.
+
+- ☐ As **Amara (student)**: `/competitions` lists the open ones. The closed
+  *Autumn Science Fair* and the draft *Summer Art Prize* are **absent**
+- ☐ "Show closed ones too" brings the science fair back, still not the draft
+- ☐ Open **Junior Maths Challenge** → *Enter this*, and read the line under it:
+  it must warn that a grown-up is asked first
+- ☐ **⚠️** Straight after entering, the page says **"Waiting for a grown-up to
+  say yes"** and the competition reports **no** pupils taking part. An entry
+  before consent counts for nothing
+- ☐ As **Jordan (parent)**: the request is on `/parent` — **even with the other
+  child selected in the switcher**. A consent deadline must not hide behind a tab
+- ☐ Press **Allow** → Amara is told, and only now does the competition report one
+  pupil from your school
+- ☐ **⚠️** As a **different** parent (or with a second child's entry): you can
+  only ever see and allow your own children's requests
+
+### As an admin, posting one
+
+- ☐ As **Priya (admin)**: `/competitions` → *Post one*
+- ☐ Enter an `http://` link and an end date **before** the start → both fields
+  are flagged **at once**, and **everything you typed is still there**
+- ☐ Fix them, save → it is a **draft**, and says nobody else can see it
+- ☐ *Publish it* → now sign in as **Sam (Oakfield admin)** and open
+  `/competitions`: **Riverside's competition is in Oakfield's list.** That is the
+  marketplace working
+- ☐ **⚠️** It does **not** say "Checked by EduLink". A school cannot verify its
+  own competition
+- ☐ **⚠️** As Sam, try the URL of Riverside's **draft** → **404**
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -730,12 +764,21 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 39 route/role combinations were
+Every route in the navigation now renders — all 94 checks in `npm run sweep` were
 requested as a signed-in user of the owning role and returned 200. Still not
 built, per the README: a real QR code on the join poster, awards uploads on the
-student profile, global feed, competitions, suspend-user, weighted grade
+student profile, global feed, competition submissions and leaderboards (entering
+one IS built — see §12g), cross-school moderation, suspend-user, weighted grade
 categories, progress-report export, SSO, 2FA, SMS, real email delivery.
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while
 signed in as the owning role, because a redirect to `/login` will hide both.
+
+**And the corollary that four bugs in a row have now taught this codebase: walk
+the signed-OUT sections too.** Registration (§2), invitations (§5), student
+self-join (§7) and the parent claim (§8) all happen before anybody has a session,
+a membership or a school — and that is precisely the state tenant scoping breaks
+in, silently, while every signed-in page keeps working. If a join code ever reads
+"we could not find that code" for a code straight off the seed, the bug is not in
+the code.
