@@ -96,16 +96,54 @@ export function markInTransaction<T>(work: () => Promise<T>): Promise<T> {
 }
 
 /**
+ * Runs `work` for an explicit tenant, whatever the session would have said.
+ *
+ * The general form the three below are written in terms of. It REPLACES the set
+ * for the duration rather than adding to it, and it does not check anything —
+ * the caller is asserting a right it has already established, and Postgres will
+ * enforce the policies against exactly what this sets. So the rule for using it
+ * is: the school ids must come from rows the DATABASE returned, never from a
+ * route param, a form field, or anything else a client can name.
+ */
+export function forTenant<T>(tenant: RequestTenant, work: () => Promise<T>): Promise<T> {
+  return override.run(tenant, work);
+}
+
+/**
  * Runs `work` for one school, whatever the session would have said.
  *
- * Narrowing, not widening: it REPLACES the set for the duration, so work that
- * should only touch one school cannot accidentally read another. It cannot grant
- * access to a school the caller did not already have, because the policies are
- * enforced by Postgres against whatever this sets — but nor does it check, so
- * the caller is asserting that it has already established the right.
+ * Narrowing, not widening: work that should only touch one school cannot
+ * accidentally read another.
  */
 export function forSchool<T>(schoolId: string, work: () => Promise<T>): Promise<T> {
-  return override.run({ schoolIds: [schoolId], userId: override.getStore()?.userId ?? null }, work);
+  return forTenant({ schoolIds: [schoolId], userId: override.getStore()?.userId ?? null }, work);
+}
+
+/**
+ * Runs `work` for every school this person has a foot in — the "who am I,
+ * everywhere?" query, which is the role switcher and nothing else.
+ *
+ * THIS IS THE ONE WIDENING IN THE CODEBASE, so it is worth being exact about
+ * what it does and does not open up. The request is normally scoped to the ONE
+ * school it is acting for, deliberately: a Riverside admin who also teaches at
+ * Oakfield should not have Oakfield's rows within reach while they are being a
+ * Riverside admin, because then a forgotten `WHERE` cannot leak them either.
+ *
+ * The switcher is the exception that proves it, because its entire job is to
+ * show the other doors. Somebody with a post at two schools could not use the
+ * app at all otherwise — not just the switcher: the nav shell asks this on every
+ * page, so their `/teacher` and `/account` were 500s too.
+ *
+ * What it cannot do: reach a school the person does not belong to. The ids are
+ * read back out of Membership and Guardianship first, under the policies, so
+ * this widens to exactly the set Postgres already agreed to and no further.
+ */
+export function forOwnSchools<T>(
+  userId: string,
+  schoolIds: string[],
+  work: () => Promise<T>,
+): Promise<T> {
+  return forTenant({ schoolIds: [...new Set(schoolIds)], userId }, work);
 }
 
 /**
@@ -122,5 +160,5 @@ export function forSchool<T>(schoolId: string, work: () => Promise<T>): Promise<
  * self-service enrolment in whichever school you named.
  */
 export function forUser<T>(userId: string, work: () => Promise<T>): Promise<T> {
-  return override.run({ schoolIds: [], userId }, work);
+  return forTenant({ schoolIds: [], userId }, work);
 }

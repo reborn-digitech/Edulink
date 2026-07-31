@@ -101,7 +101,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (392 tests) |
+| `npm test` | Full suite (404 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -115,7 +115,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 67 route/role/negative combinations
+mints a real session per role, requests all 75 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -167,7 +167,7 @@ src/lib/                  All business logic. Pages are thin.
   uploads.ts              Stores a batch of attachments, or none of them.
   orphans.ts              ★ Finds/deletes files no record references. Dry-run by default.
   tenant-tx.ts            ★ withTenant: sets app.school_id per TRANSACTION. Read the comment.
-  tenant-context.ts       ★ Overrides that travel downward: forSchool, forUser.
+  tenant-context.ts       ★ Overrides that travel downward. forOwnSchools is the ONE widening.
   tenant-request.ts       ★ Which schools THIS request may see. db.ts asks it per query.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
@@ -505,12 +505,29 @@ One line each, with the default rejected.
   memberships **across** schools, does **not** see another user's in a school
   they are in themselves, and **cannot insert one** — mutation-tested by adding
   the self clause to `WITH CHECK`, which fails that check and only that one.
-- **67/67 route checks** as a signed-in user of the owning role, against a
+- **75/75 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
   unauthenticated → 401, `/dev/mailbox` → 404.
-- **392 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **One teacher, two schools — which had never once run.** The README listed this
+  as untested; it was not untested, it was broken, and not only on `/switch`. The
+  role switcher reads every membership a person has and joins the school on each,
+  but only the school being acted for is in scope, so the other one came back
+  null and Prisma refused a required relation. The nav shell asks this on every
+  page, so `/teacher` and `/account` were **500s too** — a teacher with a post at
+  two schools could not open a single page of the app.
+
+  Now: both schools offered in the switcher, and switching genuinely re-scopes —
+  his Oakfield class is reachable as Oakfield and **404 as Riverside**, his
+  Riverside class the other way round. The widening this needs is the only one in
+  the codebase and it stays inside the one function; `tests/tenant-context.test.ts`
+  pins that it does not outlive its call, does not survive a throw, and is
+  invisible to work running alongside it. Mutation-tested from both ends:
+  removing the widening turns 8 sweep checks red, and swapping the override's
+  `run` for `enterWith` — the leak that would put another school within reach for
+  the rest of the request — fails three of those unit tests.
+- **404 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -660,7 +677,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 67 checks in
+**Every route referenced by the navigation renders.** All 75 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -675,16 +692,6 @@ the release where every page rendered and nothing saved.
 ### Known issues
 
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
-- **One person holding memberships at two different schools is untested, and
-  `listContexts` is where it would show.** It reads every membership a user has
-  and joins `school` on each — but only the *active* school's `School` row is
-  visible, so the row for the other one comes back null and Prisma refuses a
-  required relation. Nobody in the seed is in this position (Priya holds two
-  roles at ONE school, and the parent spans two schools through guardianships,
-  which is a different and working path), so it has never actually run. This
-  predates the tenant rework rather than coming from it. The fix is a second
-  narrow self-clause — the schools you belong to — or reading the switcher's
-  schools without the join.
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
   chattier in route handlers than it was when it was wrong. If it ever matters,

@@ -60,6 +60,72 @@ async function check(actor: Actor | null, path: string, expected = 200, note = "
   });
 }
 
+/**
+ * One person, two schools — built for the length of this check and taken away
+ * again, because the seed has nobody in this position and adding one would move
+ * every count the other suites assert.
+ *
+ * It is here rather than in `npm test` because it is invisible from there: the
+ * suite connects as the database owner, where the policies do not apply and the
+ * bug this catches cannot happen. What it catches is a joined read across
+ * schools — the switcher asking for a school row the tenant is not scoped to,
+ * which Prisma turns into a 500 rather than a null. The nav shell calls it on
+ * every page, so it was a 500 on all of them, not just `/switch`.
+ *
+ * And the half that matters more: that the widening the switcher needs stays
+ * inside the switcher.
+ */
+async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
+  const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
+  const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfieldId } });
+  const homeClass = await db.classTeacher.findFirstOrThrow({
+    where: { teacher: { userId: tom.id, schoolId: riversideId } },
+  });
+
+  const second = await db.membership.create({
+    data: { userId: tom.id, schoolId: oakfieldId, role: "TEACHER", status: "ACTIVE" },
+  });
+  // A class he genuinely teaches at the other school, so the only thing between
+  // him and it is which school he is currently ACTING for.
+  await db.classTeacher.create({
+    data: { classId: oakClass.id, schoolId: oakfieldId, teacherMembershipId: second.id, role: "LEAD" },
+  });
+
+  try {
+    const atRiverside = await mint("tom@riverside.school", "TEACHER", riversideId, "two-school");
+    for (const p of ["/switch", "/teacher", "/account", "/teacher/classes"]) {
+      await check(atRiverside, p, 200, "a teacher with a post at two schools");
+    }
+
+    const { body } = await hit(atRiverside, "/switch");
+    results.push({
+      role: "two-school",
+      path: "/switch",
+      status: 200,
+      expected: 200,
+      ok: body.includes("Riverside") && body.includes("Oakfield"),
+      note: "the switcher offers BOTH schools",
+    });
+
+    // The widening must not escape listContexts: his OWN class at the other
+    // school is still out of reach while he is being a Riverside teacher.
+    await check(
+      atRiverside,
+      `/teacher/classes/${oakClass.id}`,
+      404,
+      "his own other-school class, while acting for this one",
+    );
+
+    // …and switching genuinely re-scopes, in both directions.
+    const atOakfield = await mint("tom@riverside.school", "TEACHER", oakfieldId, "two-school");
+    await check(atOakfield, `/teacher/classes/${oakClass.id}`, 200, "after switching schools");
+    await check(atOakfield, `/teacher/classes/${homeClass.classId}`, 404, "and the first school is now out of reach");
+  } finally {
+    await db.classTeacher.deleteMany({ where: { teacherMembershipId: second.id } });
+    await db.membership.delete({ where: { id: second.id } });
+  }
+}
+
 async function main() {
   const riverside = await db.school.findFirst({ where: { name: { contains: "Riverside" } } });
   const oakfield = await db.school.findFirst({ where: { name: { contains: "Oakfield" } } });
@@ -171,6 +237,8 @@ async function main() {
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
+
+  await twoSchoolTeacher(riverside.id, oakfield.id);
 
   /* ---- report ---- */
   const pad = (s: string, n: number) => s.padEnd(n);

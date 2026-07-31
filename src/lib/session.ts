@@ -4,6 +4,7 @@ import { cache } from "react";
 import { db } from "./db";
 import { generateToken, hashToken } from "./crypto";
 import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
+import { forOwnSchools } from "./tenant-context";
 import { readJson } from "./json";
 
 /**
@@ -246,8 +247,48 @@ export async function setActiveContext(
   return true;
 }
 
-/** Every role/school the user can switch into, for the role switcher UI. */
+/**
+ * Every role/school the user can switch into, for the role switcher UI.
+ *
+ * TWO PASSES, and the first one is the interesting one. This is the only query
+ * in the app that has to see ACROSS schools — everything else is scoped to the
+ * one being acted for, which is the point. Asking for the schools and their
+ * names in a single joined query therefore fails for exactly the person who
+ * needs the switcher most: the membership rows come back (a user may always read
+ * their own), the `school` relation on the other school does not, and Prisma
+ * refuses a required relation that returned nothing. It is a 500, and because
+ * the nav shell calls this on every page, it is a 500 on ALL of them.
+ *
+ * So: find out which schools this person has a foot in, then widen to exactly
+ * those and read them. The ids come out of the database under the policies
+ * before they are used to set one, which is what keeps this from being a way
+ * around anything — see `forOwnSchools`.
+ */
 export async function listContexts(userId: string) {
+  const [ownSchools, childSchools] = await Promise.all([
+    // Readable across schools because they are this user's own rows.
+    db.membership.findMany({
+      where: { userId, status: "ACTIVE", leftAt: null },
+      select: { schoolId: true },
+    }),
+    // Guardianship holds the school on the row itself, and carries no policy —
+    // so this works before any school is known, which is the same reason the
+    // parent bootstrap in tenant-request.ts reads it that way.
+    db.guardianship.findMany({
+      where: { parentUserId: userId, status: "ACTIVE" },
+      select: { studentSchoolId: true },
+    }),
+  ]);
+
+  const schoolIds = [
+    ...ownSchools.map((m) => m.schoolId),
+    ...childSchools.map((g) => g.studentSchoolId),
+  ];
+
+  return forOwnSchools(userId, schoolIds, () => readContexts(userId));
+}
+
+async function readContexts(userId: string) {
   const [memberships, guardianships] = await Promise.all([
     db.membership.findMany({
       where: { userId, status: "ACTIVE", leftAt: null },
