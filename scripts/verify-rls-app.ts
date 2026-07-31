@@ -212,6 +212,82 @@ async function main() {
       `saw ${stillBlind} membership(s) with nothing set`,
     );
 
+    // ---- the audit log: unattributed rows are writable, never readable ----
+    // Some of the things most worth recording happen before any school is known.
+    // Written the way audit() writes it: raw, with no RETURNING. `create()`
+    // would need to read the row back through USING, where a row belonging to no
+    // school matches nothing — permitted to insert, refused to return.
+    let unattributedWritten = false;
+    let why = "";
+    try {
+      await client.$executeRawUnsafe(
+        `INSERT INTO "AuditLog" ("id","action","meta","createdAt") VALUES ($1,$2,'{}',now())`,
+        "verify-audit-null",
+        "verify.login",
+      );
+      unattributedWritten = true;
+    } catch (error) {
+      why = error instanceof Error ? error.message.split("\n").slice(-2).join(" ").trim() : String(error);
+    }
+    check(
+      "an audit row with no school can be written — a login is recordable",
+      unattributedWritten,
+      `refused, so every sign-in goes unrecorded and audit() swallows it: ${why}`,
+    );
+
+    let returningRefused = false;
+    try {
+      await client.auditLog.create({ data: { action: "verify.returning", meta: "{}" } });
+    } catch {
+      returningRefused = true;
+    }
+    check(
+      "⚠ …but never readable, so RETURNING it back is still refused",
+      returningRefused,
+      "an unattributed audit row can be read back, which means any school can read every school's failed logins",
+    );
+
+    const seenByA = (await withTenantOn(client, "verify-a", (tx) =>
+      (tx as { auditLog: { count: (a?: unknown) => Promise<number> } }).auditLog.count(),
+    )) as number;
+    check(
+      "⚠ …and belongs to no school, so it is in nobody's Safety Centre",
+      seenByA === 0,
+      `school A can see ${seenByA} unattributed audit row(s)`,
+    );
+
+    // The isolation that still has to hold: a row that DOES name a school.
+    await withTenantOn(client, "verify-a", (tx) =>
+      (tx as { auditLog: { create: (a: unknown) => Promise<unknown> } }).auditLog.create({
+        data: { schoolId: "verify-a", action: "verify.scoped", meta: "{}" },
+      }),
+    );
+    const bSees = (await withTenantOn(client, "verify-b", (tx) =>
+      (tx as { auditLog: { count: (a?: unknown) => Promise<number> } }).auditLog.count(),
+    )) as number;
+    check(
+      "⚠ an audit row that names a school is still invisible to the other one",
+      bSees === 0,
+      `school B can read ${bSees} of school A's audit row(s)`,
+    );
+
+    let forgedIntoOther = false;
+    try {
+      await withTenantOn(client, "verify-a", (tx) =>
+        (tx as { auditLog: { create: (a: unknown) => Promise<unknown> } }).auditLog.create({
+          data: { schoolId: "verify-b", action: "verify.forged", meta: "{}" },
+        }),
+      );
+      forgedIntoOther = true;
+    } catch {
+      forgedIntoOther = false;
+    }
+    check(
+      "⚠ …and cannot be written INTO another school's history",
+      !forgedIntoOther,
+      "acting for A wrote an audit row attributed to B",
+    );
+
     // LAST, because it deliberately poisons the connection: the mistake this
     // design exists to prevent, demonstrated rather than described — a plain
     // SET, outside a transaction, on a pooled connection. Anything added after

@@ -197,7 +197,11 @@ ALTER TABLE "AuditLog" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "AuditLog_tenant_isolation" ON "AuditLog";
 CREATE POLICY "AuditLog_tenant_isolation" ON "AuditLog"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
-  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+  -- Writes also allow a row belonging to no school, which is how a
+  -- login — or a failed one — gets recorded at all. Absent from
+  -- USING: writable, and visible to no school.
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              OR "schoolId" IS NULL);
 
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken

@@ -51,6 +51,23 @@ const NO_SCHOOL_POLICY = new Set([
  */
 const SELF_READABLE: Record<string, string> = { Membership: "userId" };
 
+/**
+ * Tables where a row belonging to NO school may be written.
+ *
+ * There is exactly one, and it is the audit log. Some of the things most worth
+ * recording happen before any school is known — a login, a failed login, someone
+ * registering a school that does not exist yet — and a policy keyed on `schoolId`
+ * refuses those outright, because `NULL = ANY(...)` is NULL and never true. The
+ * result was an audit trail missing every sign-in, silently, since `audit()`
+ * swallows its own failures by design.
+ *
+ * WRITE ONLY. The USING clause is untouched, so an unattributed row is visible
+ * to no school's Safety Centre — it belongs to whoever runs the server, the same
+ * way the orphan file sweep does. It can leak nothing to a tenant precisely
+ * because it belongs to none.
+ */
+const NULL_SCHOOL_WRITABLE = new Set(["AuditLog"]);
+
 function models(): string[] {
   const schema = readFileSync(SCHEMA_PATH, "utf8");
   const found: string[] = [];
@@ -126,7 +143,15 @@ function generate(): string {
             `         OR "${selfColumn}" = current_setting('app.user_id', true))`,
           ]
         : [`  USING (${scoped})`]),
-      `  WITH CHECK (${scoped});`,
+      ...(NULL_SCHOOL_WRITABLE.has(table)
+        ? [
+            `  -- Writes also allow a row belonging to no school, which is how a`,
+            `  -- login — or a failed one — gets recorded at all. Absent from`,
+            `  -- USING: writable, and visible to no school.`,
+            `  WITH CHECK (${scoped}`,
+            `              OR "${column}" IS NULL);`,
+          ]
+        : [`  WITH CHECK (${scoped});`]),
       "",
     );
   }

@@ -59,6 +59,13 @@ enrolment into whichever school you name. `npm run rls:verify` proves both halve
 — that you see your own rows across schools, that you do not see anybody else's
 in a school you are in yourself, and that the insert is refused.
 
+**And one row shape that belongs to no school at all.** `AuditLog` alone accepts
+a write with a NULL `schoolId`, because the events most worth recording — a
+login, a failed one — happen before any school is known. That allowance is in
+`WITH CHECK` and deliberately not in `USING`: the row is writable and readable by
+no school, since a failed login carries the email that was tried. The verifier
+checks all four corners of that.
+
 > **Why a database server, when SQLite was zero-setup.** Tenant isolation is
 > enforced by Postgres row-level security, and there is no SQLite equivalent —
 > so on SQLite the policies simply would not run, and dev would be testing a
@@ -101,7 +108,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (448 tests) |
+| `npm test` | Full suite (454 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -533,6 +540,39 @@ One line each, with the default rejected.
   dropping the guardianship check fails 2, counting unconsented entries as taking
   part fails 1, letting another school publish yours fails 2, and deleting entries
   when a competition is withdrawn fails 1.
+- **The audit trail had a hole in exactly the shape of "how did this person get
+  access".** `audit()` swallows its own failures on purpose — losing a log line
+  beats failing a teacher's attendance save — and that exception hid this for as
+  long as RLS has been on. Every event that happens BEFORE a school is bound was
+  refused by the policy and swallowed: **every login, every failed login, every
+  school registration, every invitation accepted, every child joining with a
+  code.** Partially, too, which is worse: a login *with* an existing session
+  cookie was recorded, because that session had already bound a school, so the
+  trail looked populated.
+
+  Two things were wrong and both are fixed. The policy now permits a row
+  belonging to no school — on `WITH CHECK` only, so an unattributed row is
+  visible to no school's Safety Centre, because a failed login carries the email
+  that was tried. And `audit()` binds the school it is recording against, so no
+  call site has to remember; the invariant that makes that safe is that its
+  `schoolId` always comes from server-resolved context, never from client input.
+
+  Written raw rather than through `create()`, and the reason is worth keeping:
+  Prisma's `create` issues `INSERT ... RETURNING`, and reading the row back goes
+  through `USING`, where a row with no school matches nothing — permitted to
+  insert, refused to return.
+
+  **Verified:** a failed login and a successful one, both driven with no session
+  cookie at all, both recorded, zero `[audit] failed` in the log. The successful
+  one attributed to Riverside; the failed one unattributed, carrying the actor,
+  the attempted email and the IP.
+
+  The second bug this fix introduced and testing caught: raw SQL meant spelling
+  out `createdAt`, and both obvious spellings — `now()` and a JS `Date` parameter
+  — write the database session's LOCAL time into a column that holds UTC. The
+  first of these rows landed **seven hours in the past**, next to every other row
+  in the table. `tests/audit.test.ts` pins it, and fails by a mile if either
+  spelling comes back.
 - **92/92 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
@@ -555,8 +595,8 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **448 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, tenant-request, competitions, onboarding, remarks, grading, bulletin, safety, storage, files,
+- **454 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, tenant-request, competitions, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
@@ -732,15 +772,6 @@ the release where every page rendered and nothing saved.
 
 ### Known issues
 
-- **Login is not audited.** `audit()` writes to `AuditLog`, which is
-  school-scoped, and at login no school is bound yet — so Postgres refuses the
-  insert and `audit()` swallows it: `[audit] failed to record auth.login` in the
-  server log, every single sign-in. Login itself is unaffected and nothing else
-  is (every other call site has a school by the time it runs), but "who signed in
-  and when" is exactly the question an audit log exists to answer. Found in the
-  logs while testing something else. The fix is a decision, not a patch: either
-  give AuthLog rows a nullable school and a policy that allows your own, or
-  record login against the school the session resolves to, after it resolves.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
