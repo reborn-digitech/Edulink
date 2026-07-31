@@ -139,6 +139,7 @@ describe("resolveRequestTenant", () => {
     expect(await resolveRequestTenant(client)).toEqual({
       schoolIds: [],
       userId: null,
+      joinCode: null,
     });
   });
 
@@ -150,6 +151,7 @@ describe("resolveRequestTenant", () => {
     expect(await resolveRequestTenant(client)).toEqual({
       schoolIds: [],
       userId: null,
+      joinCode: null,
     });
   });
 

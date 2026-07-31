@@ -6,6 +6,7 @@ import { createSession } from "@/lib/session";
 import { acceptInviteSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
+import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 
@@ -25,10 +26,12 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
 
   const { token, name, password, title, bio, subjects } = parsed.data;
 
-  const invite = await db.invite.findUnique({
-    where: { tokenHash: hashToken(token) },
-    include: { school: { select: { id: true, name: true } } },
-  });
+  // The token opens exactly its own invitation and nothing else — including
+  // not the school it belongs to, whose row the token does not name. So the
+  // school is read in a second pass, scoped by the id the invitation gives us.
+  const invite = await forJoinCode(hashToken(token), () =>
+    db.invite.findUnique({ where: { tokenHash: hashToken(token) } }),
+  );
 
   if (!invite || invite.status !== "PENDING") {
     return { ok: false, errors: { _form: "That invitation is no longer valid." } };
@@ -41,7 +44,11 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     };
   }
 
-  const problems = passwordProblems(password, [name, invite.email ?? "", invite.school.name]);
+  const school = await forSchool(invite.schoolId, () =>
+    db.school.findUniqueOrThrow({ where: { id: invite.schoolId }, select: { name: true } }),
+  );
+
+  const problems = passwordProblems(password, [name, invite.email ?? "", school.name]);
   if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
 
   const email = invite.email?.toLowerCase() ?? null;
@@ -55,7 +62,13 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   let userId: string;
 
   try {
-    userId = await db.$transaction(async (tx) => {
+    // Bound to the school the invitation is for, and through
+    // `$tenantTransaction` — the callback of a plain `db.$transaction` gets a
+    // raw client that sets no tenant, so the membership INSERT is refused. There
+    // is no session yet; the invite is what names the school.
+    userId = await forSchool(invite.schoolId, () =>
+      db.$tenantTransaction(async (rawTx) => {
+        const tx = rawTx as typeof db;
       // Re-read inside the transaction: between the checks above and here,
       // another tab may have consumed it.
       const fresh = await tx.invite.findUnique({
@@ -154,8 +167,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
         data: { status: "ACCEPTED", acceptedAt: new Date(), acceptedByUserId: user.id },
       });
 
-      return user.id;
-    });
+        return user.id;
+      }),
+    );
   } catch (error) {
     if (error instanceof Error && error.message === "ALREADY_USED") {
       return { ok: false, errors: { _form: "That invitation has already been used." } };

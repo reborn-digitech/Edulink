@@ -126,6 +126,59 @@ async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
   }
 }
 
+/**
+ * The front door: an unguessable code, presented by somebody with no session.
+ *
+ * These are the pages a child or a new member of staff meets FIRST, and they are
+ * the ones tenant scoping breaks most quietly — the row a code names is the very
+ * thing that would say which school to scope to, so a school-scoped policy
+ * refuses the only query that could answer it. Every join code on the
+ * installation read as "we could not find that code", and an invitation link as
+ * "no longer valid".
+ *
+ * Signed out on purpose. That is the whole point.
+ */
+async function joinCodeBootstrap(riversideId: string) {
+  const klass = await db.class.findFirstOrThrow({
+    where: { schoolId: riversideId, archivedAt: null },
+  });
+  const creator = await db.membership.findFirstOrThrow({
+    where: { schoolId: riversideId, role: "ADMIN" },
+  });
+
+  const token = randomBytes(24).toString("base64url");
+  const invite = await db.invite.create({
+    data: {
+      schoolId: riversideId,
+      classId: klass.id,
+      email: "sweep-invitee@riverside.school",
+      role: "TEACHER",
+      status: "PENDING",
+      tokenHash: createHash("sha256").update(token).digest("hex"),
+      createdByMembershipId: creator.id,
+      expiresAt: new Date(Date.now() + 7 * 86_400_000),
+    },
+  });
+
+  try {
+    const page = await hit(null, `/invite/${token}`);
+    results.push({
+      role: "anonymous",
+      path: "/invite/<token>",
+      status: page.status,
+      expected: 200,
+      // The page renders either way; what matters is whether it could READ the
+      // invitation, or fell through to "no longer valid".
+      ok: page.status === 200 && !page.body.includes("no longer valid"),
+      note: "a real invitation link, signed out",
+    });
+
+    await check(null, `/invite/${randomBytes(24).toString("base64url")}`, 200, "a forged one still renders its refusal");
+  } finally {
+    await db.invite.delete({ where: { id: invite.id } });
+  }
+}
+
 async function main() {
   const riverside = await db.school.findFirst({ where: { name: { contains: "Riverside" } } });
   const oakfield = await db.school.findFirst({ where: { name: { contains: "Oakfield" } } });
@@ -239,6 +292,7 @@ async function main() {
   await check(student, "/admin/people", 307, "student on an admin page");
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
+  await joinCodeBootstrap(riverside.id);
 
   /* ---- competitions: the one thing that is NOT school-scoped ---- */
   const openComp = await db.competition.findFirst({ where: { status: "PUBLISHED" } });

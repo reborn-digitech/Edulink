@@ -67,13 +67,13 @@ function createClient() {
         // Raw queries carry no model to re-issue against; run them as-is.
         if (!model) return query(args);
 
-        const { schoolIds, userId } = await tenantForThisQuery();
+        const { schoolIds, userId, joinCode } = await tenantForThisQuery();
 
         // Nothing to scope to and nobody to be — a login, a registration, the
         // session lookup itself. Those touch tables with no policy (User,
         // Session, AuthToken), which is why they still work with the tenant
         // unset. Anything scoped correctly comes back empty.
-        if (schoolIds.length === 0 && !userId) return query(args);
+        if (schoolIds.length === 0 && !userId && !joinCode) return query(args);
 
         return markInTransaction(() =>
           base.$transaction(async (tx) => {
@@ -82,6 +82,10 @@ function createClient() {
             // id, so the Membership self-clause stays shut. Both settings are
             // transaction-local, so neither rides a pooled connection anywhere.
             await tx.$executeRaw`SELECT set_config('app.user_id', ${userId ?? ""}, true)`;
+            // Whatever code the caller typed in, when that is all they have.
+            // Empty rather than absent when there is none: `= ''` matches no
+            // code, so the clause stays shut.
+            await tx.$executeRaw`SELECT set_config('app.join_code', ${joinCode ?? ""}, true)`;
             // Re-issued ON the transaction client, not merely alongside it.
             // `query(args)` here would already be in flight on whatever
             // connection the pool handed it — a different one — so the setting
@@ -102,13 +106,16 @@ function createClient() {
        * instead of per statement, so they stay a single atomic unit.
        */
       async $tenantTransaction<T>(work: (tx: unknown) => Promise<T>): Promise<T> {
-        const { schoolIds, userId } = await tenantForThisQuery();
+        const { schoolIds, userId, joinCode } = await tenantForThisQuery();
         return base.$transaction(async (tx) => {
           if (schoolIds.length > 0) {
             await tx.$executeRaw`SELECT set_config('app.school_ids', ${schoolIds.join(",")}, true)`;
           }
           if (userId) {
             await tx.$executeRaw`SELECT set_config('app.user_id', ${userId}, true)`;
+          }
+          if (joinCode) {
+            await tx.$executeRaw`SELECT set_config('app.join_code', ${joinCode}, true)`;
           }
           return markInTransaction(() => work(tx));
         });

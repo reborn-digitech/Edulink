@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  forJoinCode,
   forOwnSchools,
   forSchool,
   forTenant,
@@ -32,7 +33,7 @@ import {
 describe("tenant overrides", () => {
   it("binds the schools it is given", async () => {
     const seen = await forOwnSchools("u1", ["a", "b"], async () => tenantOverride());
-    expect(seen).toEqual({ schoolIds: ["a", "b"], userId: "u1" });
+    expect(seen).toEqual({ schoolIds: ["a", "b"], userId: "u1", joinCode: null });
   });
 
   it("dedupes, because a user with two roles at one school is the ordinary case", async () => {
@@ -91,11 +92,48 @@ describe("tenant overrides", () => {
 
   it("forUser binds nobody's schools — the login bootstrap has none", async () => {
     const seen = await forUser("u1", async () => tenantOverride());
-    expect(seen).toEqual({ schoolIds: [], userId: "u1" });
+    expect(seen).toEqual({ schoolIds: [], userId: "u1", joinCode: null });
+  });
+
+  it("forJoinCode binds the code and NO school — the other bootstrap", async () => {
+    // A child typing a class code has no session, no membership and no school.
+    // This must be the narrowest binding there is, not a wider one.
+    const seen = await forJoinCode("ABC-1234", async () => tenantOverride());
+    expect(seen).toEqual({ schoolIds: [], userId: null, joinCode: "ABC-1234" });
+  });
+
+  it("⚠ a code does not survive its call either", async () => {
+    await forJoinCode("ABC-1234", async () => tenantOverride());
+    expect(tenantOverride()).toBeUndefined();
+  });
+
+  it("⚠ holds the binding until the work has finished, not until it returns", async () => {
+    // The shape everybody writes is `() => db.thing()` — a callback that returns
+    // the promise without awaiting it. AsyncLocalStorage leaves the context when
+    // the callback RETURNS, and Prisma invokes its query extension a tick after
+    // the call, so that spelling silently bound nothing: the query ran unscoped
+    // and came back empty with no error. `forTenant` awaits internally so the
+    // natural spelling is the correct one.
+    let boundWhenSettled: string | null | undefined = "not-run";
+    await forJoinCode("ABC-1234", () =>
+      new Promise<void>((resolve) => setTimeout(resolve, 5)).then(() => {
+        boundWhenSettled = tenantOverride()?.joinCode;
+      }),
+    );
+    expect(boundWhenSettled).toBe("ABC-1234");
+  });
+
+  it("does not resolve before the work does", async () => {
+    let finished = false;
+    await forJoinCode("ABC-1234", async () => {
+      await new Promise((r) => setTimeout(r, 5));
+      finished = true;
+    });
+    expect(finished).toBe(true);
   });
 
   it("forTenant is the general form the others are written in", async () => {
-    const tenant = { schoolIds: ["x"], userId: null };
+    const tenant = { schoolIds: ["x"], userId: null, joinCode: null };
     expect(await forTenant(tenant, async () => tenantOverride())).toEqual(tenant);
   });
 });

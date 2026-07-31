@@ -6,6 +6,7 @@ import { createSession, getSession, setActiveContext } from "@/lib/session";
 import { normalizeCode, studentCode } from "@/lib/codes";
 import { ageInYears, parseDateOnly, sameCalendarDay } from "@/lib/dates";
 import { audit } from "@/lib/audit";
+import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
 import { sendParentClaimNotice } from "@/lib/email";
 import {
@@ -39,28 +40,48 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
   if (code.length < 4) return { ok: false, error: "That code looks too short." };
   if (code.length > 32) return { ok: false, error: "That code looks too long." };
 
-  const klass = await db.class.findUnique({
-    where: { joinCode: code },
-    include: { school: { select: { id: true, name: true, logoPath: true, brandPrimary: true } } },
-  });
+  // BOTH lookups run under the code itself. There is no school to scope them to
+  // — working out which school this code belongs to is the entire question — so
+  // the policies let exactly the row whose code matches come back, and nothing
+  // else. Without this every join code on the installation reads as "we could
+  // not find that code", which is what it did.
+  //
+  // TWO PASSES for the class, and NOT one query with `include: { school }`. The
+  // code opens exactly the row it names: a CLASS join code does not match the
+  // school's own code, so the joined school came back null and Prisma refused
+  // the required relation — a 500 in place of a welcome screen. The class names
+  // its school, and having been shown the class is what earns the right to read
+  // it, so the second pass is scoped to that school by id.
+  const klass = await forJoinCode(code, () =>
+    db.class.findUnique({ where: { joinCode: code } }),
+  );
 
   if (klass && !klass.archivedAt) {
+    const school = await forSchool(klass.schoolId, () =>
+      db.school.findUniqueOrThrow({
+        where: { id: klass.schoolId },
+        select: { id: true, name: true, logoPath: true, brandPrimary: true },
+      }),
+    );
+
     return {
       ok: true,
       kind: "class",
       schoolId: klass.schoolId,
-      schoolName: klass.school.name,
+      schoolName: school.name,
       classId: klass.id,
       className: klass.name,
-      logoPath: klass.school.logoPath,
-      brandPrimary: klass.school.brandPrimary,
+      logoPath: school.logoPath,
+      brandPrimary: school.brandPrimary,
     };
   }
 
-  const school = await db.school.findUnique({
-    where: { code },
-    select: { id: true, name: true, logoPath: true, brandPrimary: true },
-  });
+  const school = await forJoinCode(code, () =>
+    db.school.findUnique({
+      where: { code },
+      select: { id: true, name: true, logoPath: true, brandPrimary: true },
+    }),
+  );
 
   if (school) {
     return {
@@ -125,7 +146,14 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
   let handle: string;
 
   try {
-    const created = await db.$transaction(async (tx) => {
+    // `$tenantTransaction`, wrapped in the school the code named — NOT a plain
+    // `db.$transaction`. The per-query extension does not reach inside an
+    // interactive transaction: the callback gets a raw client, so nothing sets
+    // `app.school_ids` and every INSERT below is refused by the policy. There is
+    // no session yet either, so the school has to come from the lookup.
+    const created = await forSchool(lookup.schoolId, () =>
+      db.$tenantTransaction(async (rawTx) => {
+        const tx = rawTx as typeof db;
       // Login handle: first name + 4 chars of their student code. Readable
       // enough for a child to type, unique enough to not collide.
       const code = studentCode();
@@ -168,8 +196,9 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
         });
       }
 
-      return { userId: user.id, handle: loginHandle };
-    });
+        return { userId: user.id, handle: loginHandle };
+      }),
+    );
 
     userId = created.userId;
     handle = created.handle;
@@ -272,13 +301,19 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   const birthDate = parseDateOnly(birthdate);
   if (!birthDate) return { ok: false, errors: { birthdate: "Use a real date." } };
 
-  const membership = await db.membership.findUnique({
-    where: { studentCode: code },
-    include: {
-      user: { select: { id: true, name: true, preferredName: true, birthdate: true } },
-      school: { select: { id: true, name: true } },
-    },
-  });
+  // Same bootstrap as a join code: a parent claiming their child has no
+  // membership of that school and cannot be scoped to it, so the student code
+  // itself is what opens exactly the one row. The date of birth checked below is
+  // the second factor — the code alone gets a look, never a link.
+  const membership = await forJoinCode(code, () =>
+    db.membership.findUnique({
+      where: { studentCode: code },
+      include: {
+        user: { select: { id: true, name: true, preferredName: true, birthdate: true } },
+        school: { select: { id: true, name: true } },
+      },
+    }),
+  );
 
   if (!membership || membership.role !== "STUDENT" || membership.status !== "ACTIVE") {
     await fakePasswordWork(); // keep the timing indistinguishable

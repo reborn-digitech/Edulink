@@ -59,6 +59,16 @@ enrolment into whichever school you name. `npm run rls:verify` proves both halve
 — that you see your own rows across schools, that you do not see anybody else's
 in a school you are in yourself, and that the insert is refused.
 
+**And a third setting, `app.join_code`, for the other bootstrap.** A child
+typing a class code, a parent typing their child's student code, somebody
+opening an invitation link — none of them has a session, a membership or a
+school, and the row the code names is the very thing that would say which school
+to scope to. So `Class.joinCode`, `School.code`, `Membership.studentCode` and
+`Invite.tokenHash` may each be read when the caller presents the matching value.
+Knowing the code is the authorisation, which is what a join code always meant.
+It is an equality against a value already typed, so it cannot enumerate; it is
+absent from every `WITH CHECK`, so a code gets a look and never a write.
+
 **And one row shape that belongs to no school at all.** `AuditLog` alone accepts
 a write with a NULL `schoolId`, because the events most worth recording — a
 login, a failed one — happen before any school is known. That allowance is in
@@ -108,7 +118,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (454 tests) |
+| `npm test` | Full suite (458 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -122,7 +132,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 92 route/role/negative combinations
+mints a real session per role, requests all 94 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -320,6 +330,21 @@ Break these and something quietly goes wrong for a child or a parent.
   `tests/tenant-request.test.ts` pins this, and it pins it **from vitest, which
   has no render scope at all** — so a regression fails there rather than in a
   school's afternoon.
+- **`forSchool(id, () => db.thing())` binds nothing.** The helpers take a
+  callback, and the natural spelling — returning the promise without awaiting it
+  — silently loses the binding. `AsyncLocalStorage` leaves the context when the
+  callback RETURNS, and Prisma invokes its query extension a tick later, so by
+  the time `db.ts` asks what the tenant is, there is none: the query runs
+  unscoped and comes back empty, with no error anywhere. `forTenant` now awaits
+  internally so the natural spelling is the correct one, and
+  `tests/tenant-context.test.ts` pins that. If you add another helper, await the
+  work inside `run` or it will do nothing at all.
+- **A multi-step write needs `db.$tenantTransaction`, never `db.$transaction`.**
+  The per-query extension wraps each query in its own tenant transaction; it does
+  not reach inside an interactive one, whose callback gets a raw client with no
+  `app.school_ids` set. Every INSERT in there is refused by the policy. Four
+  flows were written with the plain form — join, invite acceptance, registration
+  and starting a remark thread — and all four were dead.
 - **Rebuilding over a running `next start` corrupts `.next`** and yields
   `TypeError: a[d] is not a function` on every route. Stop the server,
   `rm -rf .next`, rebuild.
@@ -573,7 +598,36 @@ One line each, with the default rejected.
   first of these rows landed **seven hours in the past**, next to every other row
   in the table. `tests/audit.test.ts` pins it, and fails by a mile if either
   spelling comes back.
-- **92/92 route checks** as a signed-in user of the owning role, against a
+- **The front door was bolted shut, and the whole onboarding spine with it.**
+  Three public entry points and four write flows, all broken by tenant scoping in
+  the same two ways, all found by trying to drive a child through the join form.
+
+  **Reading.** A join code names the school it belongs to — that is its entire
+  job — so a policy keyed on `schoolId` refuses the one query that could resolve
+  it. Every class code and school code read as *"we could not find that code"*;
+  every student code failed the parent claim; every invitation link read as
+  *"no longer valid"*. Fixed with `app.join_code`: the row whose code you have
+  typed, and nothing else, read-only. Verified that the right code opens exactly
+  one row, a wrong one opens none, and neither can write.
+
+  **Writing.** The per-query extension does not reach inside an interactive
+  transaction — the callback of `db.$transaction` gets a raw client that sets no
+  tenant — so every INSERT in a multi-step flow was refused. That is student
+  join, invitation acceptance, **school registration** and starting a remark
+  thread: the four flows `$tenantTransaction` was written for, and which none of
+  them were using. Registration additionally had to mint its own school id
+  (nothing can bind a tenant that does not exist yet) and drop its collision
+  pre-checks, which asked about other schools and so saw nothing — collisions are
+  now caught by the unique index and retried, which is race-free in a way the
+  pre-check never was.
+
+  **Verified, each driven end to end against a production build:** a child joined
+  Grade 5 · Willow with a real code and got a login handle; a school registered
+  from scratch with its admin and landed on `/admin`; an invitation was redeemed
+  into a TEACHER membership on the right class; a teacher started a remark
+  thread. All four wrote their audit rows, with zero `[audit] failed` — which is
+  the other half of the previous commit, proven on flows that are not login.
+- **94/94 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -595,7 +649,7 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **454 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **458 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, competitions, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -745,7 +799,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 92 checks in
+**Every route referenced by the navigation renders.** All 94 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for

@@ -107,6 +107,7 @@ export const resolveRequestTenant = cache(
       return {
         schoolIds: [...new Set(guardianships.map((g) => g.studentSchoolId))],
         userId: session.userId,
+        joinCode: null,
       };
     }
 
@@ -116,12 +117,13 @@ export const resolveRequestTenant = cache(
     // even when some future code path forgets to ask `getSession()` first. So
     // the database is told about a school only once this user is known to still
     // actively belong to it.
-    if (!session.activeSchoolId) return { schoolIds: [], userId: session.userId };
+    if (!session.activeSchoolId) return { schoolIds: [], userId: session.userId, joinCode: null };
 
     const belongs = await ownMembershipIn(client, session.userId, session.activeSchoolId);
     return {
       schoolIds: belongs ? [session.activeSchoolId] : [],
       userId: session.userId,
+      joinCode: null,
     };
   },
 );

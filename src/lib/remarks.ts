@@ -176,7 +176,12 @@ export async function createThread(
   // they share a school. (§6)
   await assertStudentAccess({ schoolId, membershipId, role }, input.studentMembershipId);
 
-  const thread = await db.$transaction(async (tx) => {
+  // `$tenantTransaction`, not `db.$transaction`: the per-query extension does
+  // not reach inside an interactive transaction, so the callback's client sets
+  // no `app.school_ids` and every INSERT below is refused by the policy. This
+  // form sets it once at the top and keeps the whole thing atomic.
+  const thread = await db.$tenantTransaction(async (rawTx) => {
+    const tx = rawTx as typeof db;
     const created = await tx.remarkThread.create({
       data: {
         schoolId,

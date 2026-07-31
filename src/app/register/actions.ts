@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { hashPassword, passwordProblems, generateToken, hashToken } from "@/lib/crypto";
@@ -8,6 +9,7 @@ import { createSession } from "@/lib/session";
 import { registerSchoolSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { sendVerifyEmail } from "@/lib/email";
 import { audit } from "@/lib/audit";
+import { forSchool } from "@/lib/tenant-context";
 import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
 import { writeJson } from "@/lib/json";
 
@@ -55,31 +57,38 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
   const passwordHash = await hashPassword(admin.password);
   const verifyToken = generateToken();
 
-  let created: { schoolId: string; userId: string; code: string };
+  let created: { schoolId: string; userId: string; code: string } | undefined;
 
-  try {
-    created = await db.$transaction(async (tx) => {
-      // Both the code and the slug are unique. Retry a few times on collision
-      // rather than pre-checking, which would still race under concurrency.
-      let code = schoolCode(school.name);
-      for (let attempt = 0; attempt < 5; attempt++) {
-        const clash = await tx.school.findUnique({ where: { code }, select: { id: true } });
-        if (!clash) break;
-        code = schoolCode(school.name);
-        if (attempt === 4) throw new Error("Could not allocate a unique school code");
-      }
+  /**
+   * THE ONE FLOW THAT CREATES ITS OWN TENANT, which makes it the awkward one.
+   *
+   * Two things follow from row-level security and neither is optional. The write
+   * needs `app.school_ids` to contain the school it is inserting — so the id is
+   * minted HERE rather than by the database, and bound before the transaction
+   * opens. And the old collision pre-checks (`findUnique` on code and slug)
+   * cannot work at all: they ask about OTHER schools, which the policies
+   * correctly hide, so they saw nothing, reported no clash, and left the unique
+   * index to fail the insert.
+   *
+   * So collisions are handled the way they should have been anyway — by trying,
+   * and reacting to the constraint. That is race-free, which a pre-check never
+   * was: two schools registering the same name in the same second both saw no
+   * clash.
+   */
+  const baseSlug = slugify(school.name);
 
-      const baseSlug = slugify(school.name);
-      let slug = baseSlug;
-      for (let attempt = 1; ; attempt++) {
-        const clash = await tx.school.findUnique({ where: { slug }, select: { id: true } });
-        if (!clash) break;
-        slug = `${baseSlug}-${attempt + 1}`;
-        if (attempt > 50) throw new Error("Could not allocate a unique school slug");
-      }
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const schoolId = randomUUID();
+    const code = schoolCode(school.name);
+    const slug = attempt === 0 ? baseSlug : `${baseSlug}-${attempt + 1}`;
 
+    try {
+      created = await forSchool(schoolId, () =>
+        db.$tenantTransaction(async (rawTx) => {
+          const tx = rawTx as typeof db;
       const createdSchool = await tx.school.create({
         data: {
+          id: schoolId,
           name: school.name,
           slug,
           code,
@@ -127,15 +136,33 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
         },
       });
 
-      return { schoolId: createdSchool.id, userId: createdUser.id, code };
-    });
-  } catch (error) {
-    console.error("[register] transaction failed", error);
+          return { schoolId: createdSchool.id, userId: createdUser.id, code };
+        }),
+      );
+      break;
+    } catch (error) {
+      // A taken slug or code is worth another go with a different one; anything
+      // else is ours and should not be retried five more times.
+      const taken =
+        typeof error === "object" &&
+        error !== null &&
+        (error as { code?: string }).code === "P2002";
+      if (taken && attempt < 5) continue;
+
+      console.error("[register] transaction failed", error);
+      return {
+        ok: false,
+        errors: {
+          _form: "We could not create your school just then. Please try again in a moment.",
+        },
+      };
+    }
+  }
+
+  if (!created) {
     return {
       ok: false,
-      errors: {
-        _form: "We could not create your school just then. Please try again in a moment.",
-      },
+      errors: { _form: "We could not create your school just then. Please try again in a moment." },
     };
   }
 

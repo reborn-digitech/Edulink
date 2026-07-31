@@ -68,6 +68,33 @@ const SELF_READABLE: Record<string, string> = { Membership: "userId" };
  */
 const NULL_SCHOOL_WRITABLE = new Set(["AuditLog"]);
 
+/**
+ * Tables where the row matching an unguessable CODE may be read, by the named
+ * column, on the strength of `app.join_code`.
+ *
+ * The other bootstrap, and the one that had the whole front door shut. A child
+ * typing a class join code, or a parent typing their child's student code, has
+ * no session, no membership and no school — and the row the code names is the
+ * thing that would say WHICH school to scope to. A policy keyed on `schoolId`
+ * therefore refuses the one query that could ever answer it, and every join code
+ * on the installation reads as "we could not find that code".
+ *
+ * READ ONLY, and exactly one row. `app.join_code` never appears in a WITH CHECK,
+ * and the clause is an equality against a code the caller has already typed —
+ * so it cannot enumerate, cannot widen to a school, and cannot write. Knowing
+ * the code is the authorisation, which is precisely what a join code was for
+ * before any of this was school-scoped.
+ */
+const CODE_READABLE: Record<string, string> = {
+  Class: "joinCode",
+  School: "code",
+  Membership: "studentCode",
+  // An invitation link is the same kind of thing: an unguessable credential
+  // presented before there is any session. The stored value is the token's
+  // SHA-256, so what gets bound is the hash, never the token itself.
+  Invite: "tokenHash",
+};
+
 function models(): string[] {
   const schema = readFileSync(SCHEMA_PATH, "utf8");
   const found: string[] = [];
@@ -127,6 +154,30 @@ function generate(): string {
     const column = table === "School" ? "id" : "schoolId";
     const scoped = `"${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ','))`;
     const selfColumn = SELF_READABLE[table];
+    const codeColumn = CODE_READABLE[table];
+
+    // Extra ways IN to a row, each read-only and each keyed on something the
+    // caller already holds. Order matters only for readability.
+    const alsoReadable: string[] = [];
+    if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
+    if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
+
+    const usingNote: string[] = [];
+    if (selfColumn) {
+      usingNote.push(
+        `  -- Reads also allow your OWN rows, which is what lets a login ask`,
+        `  -- which schools you belong to before any school is known.`,
+      );
+    }
+    if (codeColumn) {
+      usingNote.push(
+        `  -- …and the single row whose code somebody has just typed in, which is`,
+        `  -- how a join code names the school it belongs to.`,
+      );
+    }
+    if (alsoReadable.length > 0) {
+      usingNote.push(`  -- Both are absent from WITH CHECK: readable, never writable.`);
+    }
 
     lines.push(
       `-- ${table}`,
@@ -134,13 +185,12 @@ function generate(): string {
       `ALTER TABLE "${table}" FORCE ROW LEVEL SECURITY;`,
       `DROP POLICY IF EXISTS "${table}_tenant_isolation" ON "${table}";`,
       `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
-      ...(selfColumn
+      ...(alsoReadable.length > 0
         ? [
-            `  -- Reads also allow your OWN rows, which is what lets a login ask`,
-            `  -- which schools you belong to before any school is known. Absent`,
-            `  -- from WITH CHECK on purpose: readable, never writable.`,
+            ...usingNote,
             `  USING (${scoped}`,
-            `         OR "${selfColumn}" = current_setting('app.user_id', true))`,
+            ...alsoReadable.map((clause) => `         OR ${clause}`),
+            `        )`,
           ]
         : [`  USING (${scoped})`]),
       ...(NULL_SCHOOL_WRITABLE.has(table)

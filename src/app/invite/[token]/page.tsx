@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { hashToken } from "@/lib/crypto";
 import { readJsonArray } from "@/lib/json";
 import { Wordmark } from "@/components/brand";
@@ -17,13 +18,28 @@ export const metadata: Metadata = {
 export default async function InvitePage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
 
-  const invite = await db.invite.findUnique({
-    where: { tokenHash: hashToken(token) },
-    include: {
-      school: { select: { name: true, logoPath: true, brandPrimary: true } },
-      createdBy: { include: { user: { select: { name: true, preferredName: true } } } },
-    },
-  });
+  // The token opens its own invitation and nothing else — not the school it
+  // belongs to, and not the member of staff who sent it, neither of which the
+  // token names. Both are read in a second pass, scoped to the school the
+  // invitation identifies.
+  const invite = await forJoinCode(hashToken(token), () =>
+    db.invite.findUnique({ where: { tokenHash: hashToken(token) } }),
+  );
+
+  const context = invite
+    ? await forSchool(invite.schoolId, async () => ({
+        school: await db.school.findUniqueOrThrow({
+          where: { id: invite.schoolId },
+          select: { name: true, logoPath: true, brandPrimary: true },
+        }),
+        createdBy: invite.createdByMembershipId
+          ? await db.membership.findUnique({
+              where: { id: invite.createdByMembershipId },
+              include: { user: { select: { name: true, preferredName: true } } },
+            })
+          : null,
+      }))
+    : null;
 
   // One message for every failure mode. Distinguishing "no such invite" from
   // "already used" would let someone probe for valid tokens.
@@ -47,17 +63,17 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   }
 
   const role = invite.role as Role;
-  const inviter = invite.createdBy?.user.preferredName ?? invite.createdBy?.user.name ?? null;
+  const inviter = context?.createdBy?.user.preferredName ?? context?.createdBy?.user.name ?? null;
 
   return (
-    <Shell brand={invite.school.brandPrimary}>
+    <Shell brand={context?.school.brandPrimary ?? null}>
       <div data-role={role.toLowerCase()}>
         <span className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent-strong">
           {ROLE_META[role].label} invitation
         </span>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          Join {invite.school.name}
+          Join {context?.school.name}
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-fg-muted">
           {inviter ? (

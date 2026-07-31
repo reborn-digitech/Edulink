@@ -56,9 +56,20 @@ export type RequestTenant = {
    * see the header of prisma/rls.sql.
    */
   userId: string | null;
+  /**
+   * An unguessable code somebody has just typed in, when that is the ONLY thing
+   * they have.
+   *
+   * A join code names the school it belongs to — that is its whole job — so the
+   * lookup cannot be scoped by school without already knowing the answer. The
+   * policies let a caller read exactly the row whose code matches this, and
+   * nothing else: knowing the code IS the authorisation, which is the same thing
+   * the code meant before any of this was school-scoped.
+   */
+  joinCode: string | null;
 };
 
-export const NO_TENANT: RequestTenant = { schoolIds: [], userId: null };
+export const NO_TENANT: RequestTenant = { schoolIds: [], userId: null, joinCode: null };
 
 /**
  * A deliberate, scoped override of what the resolver would have said.
@@ -106,7 +117,20 @@ export function markInTransaction<T>(work: () => Promise<T>): Promise<T> {
  * route param, a form field, or anything else a client can name.
  */
 export function forTenant<T>(tenant: RequestTenant, work: () => Promise<T>): Promise<T> {
-  return override.run(tenant, work);
+  // `await work()`, NOT `work` — and the difference is a silent no-op.
+  //
+  // AsyncLocalStorage leaves the context when the callback RETURNS, and Prisma
+  // invokes its query extension a tick after the call is made. Hand `run` a
+  // callback that returns the promise without awaiting it — `() => db.thing()`,
+  // which is the shape everybody writes — and the context is already gone by the
+  // time db.ts asks what the tenant is. It reads `undefined`, scopes to nothing,
+  // and the query comes back empty with no error anywhere.
+  //
+  // Awaiting here keeps the context entered until the work has actually
+  // finished, so the natural spelling at the call site is the correct one. The
+  // alternative was every caller remembering to write `async () => { await … }`,
+  // which is precisely the kind of thing call sites forget.
+  return override.run(tenant, async () => await work());
 }
 
 /**
@@ -116,7 +140,11 @@ export function forTenant<T>(tenant: RequestTenant, work: () => Promise<T>): Pro
  * accidentally read another.
  */
 export function forSchool<T>(schoolId: string, work: () => Promise<T>): Promise<T> {
-  return forTenant({ schoolIds: [schoolId], userId: override.getStore()?.userId ?? null }, work);
+  const current = override.getStore();
+  return forTenant(
+    { schoolIds: [schoolId], userId: current?.userId ?? null, joinCode: current?.joinCode ?? null },
+    work,
+  );
 }
 
 /**
@@ -143,7 +171,7 @@ export function forOwnSchools<T>(
   schoolIds: string[],
   work: () => Promise<T>,
 ): Promise<T> {
-  return forTenant({ schoolIds: [...new Set(schoolIds)], userId }, work);
+  return forTenant({ schoolIds: [...new Set(schoolIds)], userId, joinCode: null }, work);
 }
 
 /**
@@ -160,5 +188,22 @@ export function forOwnSchools<T>(
  * self-service enrolment in whichever school you named.
  */
 export function forUser<T>(userId: string, work: () => Promise<T>): Promise<T> {
-  return forTenant({ schoolIds: [], userId }, work);
+  return forTenant({ schoolIds: [], userId, joinCode: null }, work);
+}
+
+/**
+ * Runs `work` for somebody holding nothing but a code.
+ *
+ * The other bootstrap, and the mirror of `forUser`. A child typing a class join
+ * code, or a parent typing their child's student code, has no session, no
+ * school and no membership — the code is the only thing they have, and the row
+ * it names is the thing that would tell us which school to scope to.
+ *
+ * NARROWER THAN ANYTHING ELSE HERE, not wider: no school is bound, so the only
+ * rows readable inside this are the ones whose code is exactly the string the
+ * caller typed. It cannot enumerate, cannot widen to a school, and is absent
+ * from every WITH CHECK — a code gets you a look, never a write.
+ */
+export function forJoinCode<T>(joinCode: string, work: () => Promise<T>): Promise<T> {
+  return forTenant({ schoolIds: [], userId: override.getStore()?.userId ?? null, joinCode }, work);
 }

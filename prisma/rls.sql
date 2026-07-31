@@ -40,7 +40,12 @@ ALTER TABLE "School" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "School" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "School_tenant_isolation" ON "School";
 CREATE POLICY "School_tenant_isolation" ON "School"
-  USING ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- Both are absent from WITH CHECK: readable, never writable.
+  USING ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "code" = current_setting('app.join_code', true)
+        )
   WITH CHECK ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
 -- Membership
@@ -49,10 +54,14 @@ ALTER TABLE "Membership" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Membership_tenant_isolation" ON "Membership";
 CREATE POLICY "Membership_tenant_isolation" ON "Membership"
   -- Reads also allow your OWN rows, which is what lets a login ask
-  -- which schools you belong to before any school is known. Absent
-  -- from WITH CHECK on purpose: readable, never writable.
+  -- which schools you belong to before any school is known.
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- Both are absent from WITH CHECK: readable, never writable.
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
-         OR "userId" = current_setting('app.user_id', true))
+         OR "userId" = current_setting('app.user_id', true)
+         OR "studentCode" = current_setting('app.join_code', true)
+        )
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
 -- Class
@@ -60,7 +69,12 @@ ALTER TABLE "Class" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Class" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Class_tenant_isolation" ON "Class";
 CREATE POLICY "Class_tenant_isolation" ON "Class"
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- Both are absent from WITH CHECK: readable, never writable.
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "joinCode" = current_setting('app.join_code', true)
+        )
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
 -- ClassTeacher
@@ -180,7 +194,12 @@ ALTER TABLE "Invite" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Invite" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Invite_tenant_isolation" ON "Invite";
 CREATE POLICY "Invite_tenant_isolation" ON "Invite"
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- Both are absent from WITH CHECK: readable, never writable.
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "tokenHash" = current_setting('app.join_code', true)
+        )
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
 -- Notification

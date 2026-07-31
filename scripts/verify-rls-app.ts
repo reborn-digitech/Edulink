@@ -41,6 +41,10 @@ type TxLike = {
     findMany(args: unknown): Promise<unknown>;
     create(args: unknown): Promise<unknown>;
   };
+  school: {
+    findMany(args: unknown): Promise<unknown>;
+    update(args: unknown): Promise<unknown>;
+  };
 };
 
 function psql(database: string, sql: string): string {
@@ -210,6 +214,57 @@ async function main() {
       "app.user_id does not survive its transaction either",
       stillBlind === 0,
       `saw ${stillBlind} membership(s) with nothing set`,
+    );
+
+    // ---- the join-code bootstrap: app.join_code, reads, exactly one row ----
+    // A child typing a class code has no session, no membership and no school,
+    // and the row the code names is the thing that would say which school to
+    // scope to. Knowing the code is the authorisation — so it had better open
+    // that row and nothing else.
+    const withCode = <T,>(code: string, sql: (tx: TxLike) => Promise<T>) =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.join_code', $1, true)`, code);
+        return sql(tx);
+      });
+
+    const foundByCode = (await withCode("VA", (tx) =>
+      tx.school.findMany({ select: { id: true } }),
+    )) as { id: string }[];
+    check(
+      "a code opens the one row it names, with no school bound at all",
+      foundByCode.length === 1 && foundByCode[0]?.id === "verify-a",
+      `saw ${JSON.stringify(foundByCode.map((s) => s.id))} — a join code that finds nothing is a front door that will not open`,
+    );
+
+    const foundByWrongCode = (await withCode("NOT-A-CODE", (tx) =>
+      tx.school.findMany({ select: { id: true } }),
+    )) as { id: string }[];
+    check(
+      "⚠ …and a code that matches nothing opens nothing",
+      foundByWrongCode.length === 0,
+      `saw ${foundByWrongCode.length} school(s)`,
+    );
+
+    let codeWrote = false;
+    try {
+      await withCode("VA", (tx) =>
+        tx.school.update({ where: { id: "verify-a" }, data: { name: "forged" } }),
+      );
+      codeWrote = true;
+    } catch {
+      codeWrote = false;
+    }
+    check(
+      "⚠ a code gets a look and never a write",
+      !codeWrote,
+      "somebody holding a join code was able to rename the school",
+    );
+
+    const blindAfterCode = await client.school.count();
+    check(
+      "app.join_code does not survive its transaction either",
+      blindAfterCode === 0,
+      `saw ${blindAfterCode} school(s) with nothing set`,
     );
 
     // ---- the audit log: unattributed rows are writable, never readable ----
