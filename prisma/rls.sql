@@ -26,6 +26,12 @@
 -- WITH CHECK is spelled out but is not doing extra work: Postgres reuses the
 -- USING expression for writes when WITH CHECK is omitted. It is written for
 -- the reader, so nobody has to remember that rule to know writes are covered.
+--
+-- `app.user_id` appears on one table, Membership, and only in USING. It is
+-- how a login asks which schools somebody belongs to when no school is known
+-- yet — the one question a school-scoped policy cannot answer. Reading your
+-- own membership rows tells you nothing about anybody else's; being able to
+-- WRITE one would be self-service enrolment, which is why it is not there.
 
 BEGIN;
 
@@ -42,7 +48,11 @@ ALTER TABLE "Membership" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Membership" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Membership_tenant_isolation" ON "Membership";
 CREATE POLICY "Membership_tenant_isolation" ON "Membership"
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known. Absent
+  -- from WITH CHECK on purpose: readable, never writable.
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "userId" = current_setting('app.user_id', true))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
 -- Class

@@ -49,6 +49,16 @@ ignore every policy, because owners and superusers bypass row-level security.
 A seed cannot run as the app role, incidentally: its inserts are checked against
 `app.school_ids`, and it is creating the schools in the first place.
 
+**Two settings, not one.** `app.school_ids` is the tenant. `app.user_id` exists
+for a single question a school-scoped policy cannot answer: *which schools do I
+belong to?* — which is the first thing a login has to ask, before any school is
+known. So `Membership` alone additionally allows you to READ your own rows on the
+strength of it. It appears in that policy's `USING` and in **no** `WITH CHECK`
+anywhere, because being able to write your own membership row is self-service
+enrolment into whichever school you name. `npm run rls:verify` proves both halves
+— that you see your own rows across schools, that you do not see anybody else's
+in a school you are in yourself, and that the insert is refused.
+
 > **Why a database server, when SQLite was zero-setup.** Tenant isolation is
 > enforced by Postgres row-level security, and there is no SQLite equivalent —
 > so on SQLite the policies simply would not run, and dev would be testing a
@@ -91,7 +101,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (383 tests) |
+| `npm test` | Full suite (392 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -101,7 +111,15 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
 | `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
+| `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
+
+`npm run sweep` is the one that catches what unit tests structurally cannot. It
+mints a real session per role, requests all 67 route/role/negative combinations
+and asserts **200 specifically** — not "200 or a redirect", which is what let a
+404 and a five-commit-old 500 through an earlier sweep. Run it against
+`npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
+a production build.
 
 ### Running the file sweep on a schedule
 
@@ -149,6 +167,8 @@ src/lib/                  All business logic. Pages are thin.
   uploads.ts              Stores a batch of attachments, or none of them.
   orphans.ts              ★ Finds/deletes files no record references. Dry-run by default.
   tenant-tx.ts            ★ withTenant: sets app.school_id per TRANSACTION. Read the comment.
+  tenant-context.ts       ★ Overrides that travel downward: forSchool, forUser.
+  tenant-request.ts       ★ Which schools THIS request may see. db.ts asks it per query.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored.
   dates.ts                dateKey / timezone / DST. Heavily tested.
@@ -204,12 +224,18 @@ Break these and something quietly goes wrong for a child or a parent.
     columns are `String` (values in `constants.ts`, validated by zod at every
     write) and JSON payloads are `String` (read via `json.ts`). This is what
     lets the same schema run on Postgres unchanged.
-11. **Nothing sets `app.school_ids` by hand.** `getSession()` binds the schools a
-    request may see; `db.ts` puts them into the transaction around every query.
-    248 call sites know nothing about any of it, which is the point — a call site
-    that had to remember is a call site that eventually forgets. If a query comes
-    back empty when it should not, the tenant was not bound, and the answer is to
-    fix the binding rather than to reach past it.
+11. **Nothing sets `app.school_ids` by hand, and nothing hands the tenant
+    downstream.** `db.ts` *asks* for it, per query: `tenant-request.ts` reads the
+    session cookie and answers "which schools may this request see", and the
+    answer goes into the transaction around that query. 248 call sites know
+    nothing about any of it, which is the point — a call site that had to
+    remember is a call site that eventually forgets. If a query comes back empty
+    when it should not, the tenant did not resolve, and the answer is to fix that
+    rather than to reach past it.
+
+    **It pulls rather than pushes because pushing broke, silently, in three of
+    the four places it had to work.** See Gotchas: this is the single most
+    expensive mistake in the history of this codebase.
 12. **A `fileId` is minted server-side and never accepted from a client.**
     `files.ts` authorises a stored file by finding the record that mentions it,
     so anything that let a caller name an arbitrary id would let them point
@@ -229,9 +255,63 @@ Break these and something quietly goes wrong for a child or a parent.
   They must be repeatable — run twice in a row before committing.
 - `vitest.config.ts` aliases `server-only` and `next/headers` to stubs in
   `tests/stubs/`, so real business logic can be tested rather than a mock of it.
+- **`npm test` cannot fail because of row-level security, and cannot pass because
+  of it either.** `tests/setup.ts` points the suite at `DATABASE_ADMIN_URL`,
+  because the owner bypasses every policy — otherwise each fixture lookup would
+  correctly return nothing and no test could reach the logic it is about. The
+  price is that a green suite says nothing whatsoever about tenant isolation, and
+  once said nothing very loudly: 383 tests passed on a build where every login
+  and every write was broken. **Three things cover what it cannot**, and a change
+  to the tenant path needs all three:
+
+  ```bash
+  npm test          # logic, including tenant-request.ts with no render scope
+  npm run rls:verify   # the policies themselves, on a real Postgres
+  npm run sweep     # every route, every role, against npm start
+  ```
 
 ### Gotchas that will cost you an hour
 
+- **`React.cache()` memoises per RENDER, not per request — and everything else
+  in this app is not a render.** This one cost a working application, so it is
+  first.
+
+  The tenant used to be *pushed*: `getSession()` resolved the school and wrote it
+  into a request store built on `cache()`, and `db.ts` read it back. That works
+  in a server component. In a **route handler**, a **server action**, and the
+  service worker's **offline replay**, `cache()` hands back a brand-new object on
+  every call — so the write went into a throwaway, the read came back empty, and
+  Postgres was correctly told nothing and correctly returned nothing.
+
+  What that looked like from the outside, all at once, from one line of code:
+
+  | Broken | Why it looked like something else |
+  |---|---|
+  | Every staff and student **login** landed on "Join your school" | The password was right; the membership query behind it returned 0 rows |
+  | **Taking the register** → "That did not save — Wrong role for this action" | And the offline outbox replayed into the same 403 |
+  | **Every attachment, post image and school logo** → 404 | Even for the child who uploaded it |
+  | **Directory export** → 403 for the admin who owns the directory | While `/admin/people` rendered 200 on the same cookie |
+  | Every **server action** needing a role → "No active school selected" | Posts, assignments, grading, remarks, moderation, settings |
+
+  **Parents were the only role that still worked**, because `Guardianship` is the
+  one table in the chain with no policy — which is exactly the kind of accident
+  that makes a smoke test pass.
+
+  It shipped green: **383 tests** passed, because `tests/setup.ts` connects as the
+  database owner and no test in this repo exercises RLS. A **39-route sweep**
+  passed, because page renders are the one context where `cache()` works. Both
+  were true, both were useless, and the commit message quoted them.
+
+  The fix is directional: **nothing pushes.** `db.ts` asks `tenant-request.ts`
+  per query, and that reads the session cookie — which works in every server
+  context Next has, because nothing has to survive a journey back up out of an
+  async call. `cache()` is still used there, but only to collapse ten lookups on
+  a page into one; delete it and the app is slower and still correct. That is the
+  test for whether you are using it safely.
+
+  `tests/tenant-request.test.ts` pins this, and it pins it **from vitest, which
+  has no render scope at all** — so a regression fails there rather than in a
+  school's afternoon.
 - **Rebuilding over a running `next start` corrupts `.next`** and yields
   `TypeError: a[d] is not a function` on every route. Stop the server,
   `rm -rf .next`, rebuild.
@@ -285,6 +365,16 @@ redirect as success, so every parent route passed a sweep without rendering a
 single page — and a genuine 404 and a genuine 500 both survived it. Sweep each
 route *as a signed-in user of the role that owns it*, and assert 200
 specifically. `/bulletin` had been 500 for five commits.
+
+**And the second corollary, learned more expensively still:** a check that only
+exercises one *execution context* proves nothing about the others. This app runs
+code in four — page render, server action, route handler, service worker replay
+— and a request-scoped mechanism that works in the first can do nothing in the
+other three without raising a single error. Both proofs of the last release were
+real, and neither could see it: the suite runs as the database owner, and the
+sweep only renders pages. **When something must hold everywhere, prove it
+somewhere that is not a render**: click a form (action), call an endpoint (route
+handler), and log in as somebody who is not a parent.
 
 ---
 
@@ -397,8 +487,31 @@ One line each, with the default rejected.
   admin, a non-guardian parent, and the student the note is about.
 - Teacher → **403** (not 401) on the admin export; unauthenticated → 401;
   `/dev/mailbox` → 404 in production.
-- **383 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, onboarding, remarks, grading, bulletin, safety, storage, files,
+- **The tenant binding, after it was found broken everywhere except page
+  renders.** The account is in Gotchas; what was re-verified against a
+  production build, on Postgres with the policies live:
+
+  | | Before | Now |
+  |---|---|---|
+  | Teacher logs in with the right password | "Join your school" | Their own dashboard, right school, right class |
+  | Teacher takes the register | "That did not save — Wrong role for this action" | **"Register complete"**, three marks in the database |
+  | The offline outbox replays that batch | 403 | 200, and **still one row** — same `clientId`, no duplicate |
+  | Pupil or teacher opens a handout | 404 | 200 — while the other school's admin and a signed-out request still get 404 |
+  | Admin exports the directory | 403 | 200, and the other school's export contains **none** of Riverside's children |
+  | Teacher posts to the bulletin | "No active school selected" | Posted, and in the feed |
+  | The role switcher | listed nothing | Both of Priya's roles |
+
+  The `app.user_id` half is verified in both directions: a user reads their own
+  memberships **across** schools, does **not** see another user's in a school
+  they are in themselves, and **cannot insert one** — mutation-tested by adding
+  the self clause to `WITH CHECK`, which fails that check and only that one.
+- **67/67 route checks** as a signed-in user of the owning role, against a
+  production build, asserting 200 specifically (`npm run sweep`). Includes the
+  negatives: another school's class and remark thread → 404, teacher on the
+  admin export → 403, student on an admin page → redirected, `/api/push`
+  unauthenticated → 401, `/dev/mailbox` → 404.
+- **392 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, tenant-request, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
@@ -473,8 +586,14 @@ One line each, with the default rejected.
   not a superuser — so the policies apply to it. With no tenant bound, that role
   sees **0 schools and 0 memberships**. Through the running app: a Riverside
   admin's directory lists Amara and Ben; an Oakfield admin's lists Ava and
-  Caleb; neither sees the other's children. All 39 route/role combinations
-  return 200 with the policies live.
+  Caleb; neither sees the other's children.
+
+  > This bullet originally ended "all 39 route/role combinations return 200 with
+  > the policies live", and that was true and nearly worthless: page renders were
+  > the one place the binding worked. Everything the sweep did not touch — every
+  > login, every route handler, every server action — was broken at the moment it
+  > was written. See Gotchas. A sweep that only exercises one execution context
+  > is evidence about that context and nothing else.
 - **A parent still spans schools, which is what made this hard.** Jordan has
   children at Riverside AND Oakfield, and their session carries no school at
   all — so a single `app.school_id` returned nothing and every parent page 500'd.
@@ -541,10 +660,11 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 39 route/role
-combinations were requested as a signed-in user of the owning role and returned
-**200** — not "200 or a redirect", which is what let a 404 and a 500 through the
-previous sweep.
+**Every route referenced by the navigation renders.** All 67 checks in
+`npm run sweep` were requested as a signed-in user of the owning role and
+returned **200** — not "200 or a redirect", which is what let a 404 and a 500
+through an earlier sweep. Rendering is not the same as working: see Gotchas for
+the release where every page rendered and nothing saved.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
 - Global feed, competitions marketplace, safety centre / moderation dashboards
@@ -555,6 +675,21 @@ previous sweep.
 ### Known issues
 
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
+- **One person holding memberships at two different schools is untested, and
+  `listContexts` is where it would show.** It reads every membership a user has
+  and joins `school` on each — but only the *active* school's `School` row is
+  visible, so the row for the other one comes back null and Prisma refuses a
+  required relation. Nobody in the seed is in this position (Priya holds two
+  roles at ONE school, and the parent spans two schools through guardianships,
+  which is a different and working path), so it has never actually run. This
+  predates the tenant rework rather than coming from it. The fix is a second
+  narrow self-clause — the schools you belong to — or reading the switcher's
+  schools without the join.
+- Outside a page render the tenant is resolved per query, which costs one session
+  lookup and one membership check each. Correct everywhere, and measurably
+  chattier in route handlers than it was when it was wrong. If it ever matters,
+  the answer is a request-scoped memo that works outside React, not putting the
+  push back.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.

@@ -6,6 +6,7 @@ import { createSession } from "@/lib/session";
 import { loginSchema, magicLinkSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
+import { forUser } from "@/lib/tenant-context";
 import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -116,6 +117,25 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
  * link and invite-acceptance routes need exactly the same logic.
  */
 export async function resolveContext(
+  userId: string,
+  preferredRole?: string | null,
+  preferredSchoolId?: string | null,
+): Promise<{ role: Role | null; schoolId: string | null; redirectTo: string }> {
+  // THE ONE PLACE WITH NO SCHOOL TO SCOPE TO, and the reason `forUser` exists.
+  //
+  // This has to ask which schools somebody belongs to, and the answer lives in a
+  // table scoped by school. There is no session yet either — it is created from
+  // what this returns. So it binds the USER instead, and the Membership policy
+  // answers "your own rows" without needing a school.
+  //
+  // Inside the wrapper rather than at the three call sites (password login,
+  // magic link, invite acceptance) on purpose: a call site that has to remember
+  // is a call site that eventually forgets, and forgetting here means everyone
+  // lands on "Join your school" holding a perfectly good password.
+  return forUser(userId, () => resolveContextForUser(userId, preferredRole, preferredSchoolId));
+}
+
+async function resolveContextForUser(
   userId: string,
   preferredRole?: string | null,
   preferredSchoolId?: string | null,

@@ -34,6 +34,23 @@ const NO_SCHOOL_POLICY = new Set([
   "OutboundEmail",
 ]);
 
+/**
+ * Tables where a user may additionally READ their own rows, by the named column,
+ * on the strength of `app.user_id`.
+ *
+ * There is exactly one, and it exists to break a genuine circle: logging in has
+ * to ask which schools somebody belongs to, and the answer is in a table scoped
+ * by school. No school is known yet — that is the question. Every other route to
+ * an answer is worse: a second privileged connection reintroduces the bypass RLS
+ * exists to remove, and denormalising the list onto User duplicates the source of
+ * truth for authorisation.
+ *
+ * READ ONLY, and the asymmetry is the safeguard. `app.user_id` appears in USING
+ * and never in WITH CHECK, so this cannot insert a membership — which would be
+ * self-service enrolment into whichever school you named.
+ */
+const SELF_READABLE: Record<string, string> = { Membership: "userId" };
+
 function models(): string[] {
   const schema = readFileSync(SCHEMA_PATH, "utf8");
   const found: string[] = [];
@@ -78,6 +95,12 @@ function generate(): string {
     "-- WITH CHECK is spelled out but is not doing extra work: Postgres reuses the",
     "-- USING expression for writes when WITH CHECK is omitted. It is written for",
     "-- the reader, so nobody has to remember that rule to know writes are covered.",
+    "--",
+    "-- `app.user_id` appears on one table, Membership, and only in USING. It is",
+    "-- how a login asks which schools somebody belongs to when no school is known",
+    "-- yet — the one question a school-scoped policy cannot answer. Reading your",
+    "-- own membership rows tells you nothing about anybody else's; being able to",
+    "-- WRITE one would be self-service enrolment, which is why it is not there.",
     "",
     "BEGIN;",
     "",
@@ -85,14 +108,25 @@ function generate(): string {
 
   for (const table of tenantTables) {
     const column = table === "School" ? "id" : "schoolId";
+    const scoped = `"${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ','))`;
+    const selfColumn = SELF_READABLE[table];
+
     lines.push(
       `-- ${table}`,
       `ALTER TABLE "${table}" ENABLE ROW LEVEL SECURITY;`,
       `ALTER TABLE "${table}" FORCE ROW LEVEL SECURITY;`,
       `DROP POLICY IF EXISTS "${table}_tenant_isolation" ON "${table}";`,
       `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
-      `  USING ("${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))`,
-      `  WITH CHECK ("${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));`,
+      ...(selfColumn
+        ? [
+            `  -- Reads also allow your OWN rows, which is what lets a login ask`,
+            `  -- which schools you belong to before any school is known. Absent`,
+            `  -- from WITH CHECK on purpose: readable, never writable.`,
+            `  USING (${scoped}`,
+            `         OR "${selfColumn}" = current_setting('app.user_id', true))`,
+          ]
+        : [`  USING (${scoped})`]),
+      `  WITH CHECK (${scoped});`,
       "",
     );
   }

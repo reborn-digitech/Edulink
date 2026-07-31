@@ -34,6 +34,15 @@ const PG_CLIENT = resolve(ROOT, ".pg-client");
 
 const failures: string[] = [];
 
+/** The little of a Prisma transaction client these checks use. */
+type TxLike = {
+  $executeRawUnsafe(sql: string, ...values: unknown[]): Promise<number>;
+  membership: {
+    findMany(args: unknown): Promise<unknown>;
+    create(args: unknown): Promise<unknown>;
+  };
+};
+
 function psql(database: string, sql: string): string {
   return execFileSync("psql", ["-d", database, "-v", "ON_ERROR_STOP=1", "-tAc", sql], {
     encoding: "utf8",
@@ -83,7 +92,13 @@ async function main() {
     `INSERT INTO "School" (id,name,slug,code,"contactEmail",timezone,"updatedAt") VALUES
        ('verify-a','A','a','VA','a@x.test','UTC',now()),
        ('verify-b','B','b','VB','b@x.test','UTC',now());
-     INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES ('verify-u','U','{}',now());
+     INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES
+       ('verify-u','U','{}',now()),
+       ('verify-other','Other','{}',now());
+     INSERT INTO "Membership" (id,"userId","schoolId",role,status,"joinedAt") VALUES
+       ('verify-m-a','verify-u','verify-a','TEACHER','ACTIVE',now()),
+       ('verify-m-b','verify-u','verify-b','ADMIN','ACTIVE',now()),
+       ('verify-m-other','verify-other','verify-a','TEACHER','ACTIVE',now());
      INSERT INTO "Post" (id,"schoolId","authorUserId",scope,title,status,tags,media,"updatedAt") VALUES
        ('verify-post-a','verify-a','verify-u','SCHOOL','A post','APPROVED','[]','[]',now()),
        ('verify-post-b','verify-b','verify-u','SCHOOL','B post','APPROVED','[]','[]',now());`,
@@ -141,8 +156,67 @@ async function main() {
       `saw ${JSON.stringify(asB.map((p) => p.id))}`,
     );
 
-    // 5. The mistake this design exists to prevent, demonstrated rather than
-    //    described: a plain SET, outside a transaction, on a pooled connection.
+    // ---- the login bootstrap: app.user_id, on Membership, reads only -------
+    // This is the one hole deliberately left in the school scoping, so it is
+    // the one that has to be shown to be exactly as big as it claims.
+    type Row = { id: string; userId: string };
+    const asUser = (sql: (tx: TxLike) => Promise<unknown>) =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, "verify-u");
+        return sql(tx);
+      });
+
+    const own = (await asUser((tx) =>
+      tx.membership.findMany({ select: { id: true, userId: true } }),
+    )) as Row[];
+    check(
+      "with only app.user_id set, a user sees their own memberships across schools",
+      own.length === 2 && own.every((m) => m.userId === "verify-u"),
+      `saw ${JSON.stringify(own.map((m) => m.id))} — expected verify-m-a and verify-m-b`,
+    );
+    check(
+      "…and NOT another user's, in a school they are in themselves",
+      !own.some((m) => m.id === "verify-m-other"),
+      "another user's membership row came back — the self clause is too wide",
+    );
+
+    // The asymmetry that makes the read safe: USING allows it, WITH CHECK does
+    // not, so this cannot become self-service enrolment.
+    let insertRefused = false;
+    try {
+      await asUser((tx) =>
+        tx.membership.create({
+          data: {
+            id: "verify-m-forged",
+            userId: "verify-u",
+            schoolId: "verify-a",
+            role: "ADMIN",
+            status: "ACTIVE",
+          },
+        }),
+      );
+    } catch {
+      insertRefused = true;
+    }
+    check(
+      "⚠ app.user_id cannot WRITE a membership — no self-service enrolment",
+      insertRefused,
+      "a user inserted their own ADMIN membership with no school bound; " +
+        "app.user_id has leaked into WITH CHECK",
+    );
+
+    const stillBlind = await client.membership.count();
+    check(
+      "app.user_id does not survive its transaction either",
+      stillBlind === 0,
+      `saw ${stillBlind} membership(s) with nothing set`,
+    );
+
+    // LAST, because it deliberately poisons the connection: the mistake this
+    // design exists to prevent, demonstrated rather than described — a plain
+    // SET, outside a transaction, on a pooled connection. Anything added after
+    // this runs with 'verify-a' still set and will quietly pass for the wrong
+    // reason, which is how the four checks above first "failed".
     await client.$executeRawUnsafe(`SET app.school_ids = 'verify-a'`);
     const leaked = await client.post.count();
     check(

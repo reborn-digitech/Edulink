@@ -1,5 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { currentTenants, isInTenantTransaction, markInTransaction } from "./tenant-context";
+import {
+  isInTenantTransaction,
+  markInTransaction,
+  tenantOverride,
+  type RequestTenant,
+} from "./tenant-context";
+import { resolveRequestTenant, type SessionReadableClient } from "./tenant-request";
 
 /**
  * Prisma singleton, extended so every query tells Postgres which school it is
@@ -17,9 +23,19 @@ import { currentTenants, isInTenantTransaction, markInTransaction } from "./tena
  * that forgets is a call site that reads nothing — or, before RLS existed,
  * everything.
  *
+ * WHERE THE TENANT COMES FROM. This ASKS for it, per query, rather than reading
+ * somewhere that an earlier step was supposed to have written. That direction is
+ * deliberate and hard-won: pushing it out of `getSession()` into a per-render
+ * store worked in server components and silently did nothing in route handlers
+ * and server actions, where the write landed in a throwaway object — so the
+ * register, every file, the directory export and every non-parent login broke
+ * while 383 tests and a 39-route sweep stayed green. tenant-context.ts has the
+ * full account.
+ *
  * The cost is real and worth naming: a page issuing ten queries opens ten
- * transactions instead of none. For a school-sized workload that is cheaper than
- * the alternative, which is trusting 248 places to remember.
+ * transactions instead of none, and outside a render each one also re-reads the
+ * session row. For a school-sized workload that is cheaper than the alternative,
+ * which is trusting 248 places to remember — or one place to have run.
  */
 const globalForPrisma = globalThis as unknown as { prisma?: ExtendedClient };
 
@@ -28,27 +44,44 @@ function createClient() {
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
   });
 
+  /**
+   * The tenant for the query about to run: what a caller explicitly asked for,
+   * otherwise whatever the session cookie says.
+   *
+   * `base`, not the extended client, so the resolver's own session lookup is not
+   * intercepted by this extension and wrapped in a transaction that would need a
+   * tenant to have already been resolved.
+   */
+  async function tenantForThisQuery(): Promise<RequestTenant> {
+    return tenantOverride() ?? resolveRequestTenant(base as unknown as SessionReadableClient);
+  }
+
   return base.$extends({
     query: {
       async $allOperations({ model, operation, args, query }) {
-        const schoolIds = currentTenants();
-
-        // Nothing to scope to — a login, a registration, the session lookup
-        // itself. Those touch tables with no policy (User, Session, AuthToken),
-        // which is why they still work with the tenant unset. Anything scoped
-        // correctly comes back empty.
-        if (schoolIds.length === 0) return query(args);
-
         // Already inside a transaction that set the tenant. Postgres has no
-        // nested transactions and Prisma would reject a second one.
+        // nested transactions and Prisma would reject a second one. Checked
+        // before resolving, so nested work does no session lookups either.
         if (isInTenantTransaction()) return query(args);
 
         // Raw queries carry no model to re-issue against; run them as-is.
         if (!model) return query(args);
 
+        const { schoolIds, userId } = await tenantForThisQuery();
+
+        // Nothing to scope to and nobody to be — a login, a registration, the
+        // session lookup itself. Those touch tables with no policy (User,
+        // Session, AuthToken), which is why they still work with the tenant
+        // unset. Anything scoped correctly comes back empty.
+        if (schoolIds.length === 0 && !userId) return query(args);
+
         return markInTransaction(() =>
           base.$transaction(async (tx) => {
             await tx.$executeRaw`SELECT set_config('app.school_ids', ${schoolIds.join(",")}, true)`;
+            // Empty rather than absent when there is no user: `= ''` matches no
+            // id, so the Membership self-clause stays shut. Both settings are
+            // transaction-local, so neither rides a pooled connection anywhere.
+            await tx.$executeRaw`SELECT set_config('app.user_id', ${userId ?? ""}, true)`;
             // Re-issued ON the transaction client, not merely alongside it.
             // `query(args)` here would already be in flight on whatever
             // connection the pool handed it — a different one — so the setting
@@ -69,10 +102,13 @@ function createClient() {
        * instead of per statement, so they stay a single atomic unit.
        */
       async $tenantTransaction<T>(work: (tx: unknown) => Promise<T>): Promise<T> {
-        const schoolIds = currentTenants();
+        const { schoolIds, userId } = await tenantForThisQuery();
         return base.$transaction(async (tx) => {
           if (schoolIds.length > 0) {
             await tx.$executeRaw`SELECT set_config('app.school_ids', ${schoolIds.join(",")}, true)`;
+          }
+          if (userId) {
+            await tx.$executeRaw`SELECT set_config('app.user_id', ${userId}, true)`;
           }
           return markInTransaction(() => work(tx));
         });
