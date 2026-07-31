@@ -313,6 +313,15 @@ async function main() {
       await check(actor, `/competitions/${openComp.id}`, 200, "the catalogue is shared");
     }
   }
+  if (openComp) {
+    // The results page is staff-only, and school-scoped by the policy rather
+    // than by anything the page does.
+    await check(admin, `/competitions/${openComp.id}/entries`, 200, "this school's entries");
+    await check(teacher, `/competitions/${openComp.id}/entries`, 200, "staff record results");
+    await check(student, `/competitions/${openComp.id}/entries`, 404, "not a pupil's page");
+    await check(parent, `/competitions/${openComp.id}/entries`, 404, "nor a guardian's");
+  }
+
   if (draftComp) {
     // …but an unpublished one is nobody's business, and 404 rather than 403 so
     // it does not confirm itself.

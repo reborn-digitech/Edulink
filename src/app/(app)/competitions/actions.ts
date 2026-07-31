@@ -8,9 +8,12 @@ import {
   createCompetition,
   enterCompetition,
   giveConsent,
+  recordResult,
   setCompetitionStatus,
+  submitEntry,
   withdrawEntry,
 } from "@/lib/competitions";
+import { toMilli } from "@/lib/validation";
 
 const idSchema = z.object({ id: z.string().cuid() });
 
@@ -211,6 +214,90 @@ export async function setStatusAction(input: unknown): Promise<CompetitionAction
           : parsed.data.status === "ARCHIVED"
             ? "Withdrawn from the list."
             : "Back to a draft.",
+    };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: error.message };
+    throw error;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Handing in, and what it scored                                              */
+/* -------------------------------------------------------------------------- */
+
+const submitSchema = z.object({
+  id: z.string().cuid(),
+  // https only, for the same reason the organiser's own link is: this ends up
+  // as something a child clicks.
+  url: z
+    .string()
+    .trim()
+    .max(500)
+    .refine((v) => /^https:\/\/\S+$/.test(v), { message: "Links must start with https://" }),
+});
+
+export async function submitAction(input: unknown): Promise<CompetitionActionState> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: "Not signed in." };
+
+  const parsed = submitSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.issues[0]?.message ?? "That link is not valid." };
+  }
+
+  try {
+    await submitEntry(session, parsed.data.id, parsed.data.url);
+    revalidatePath(`/competitions/${parsed.data.id}`);
+    revalidatePath("/competitions");
+    return { ok: true, message: "Handed in." };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: error.message };
+    throw error;
+  }
+}
+
+/**
+ * A score as staff type it — points, possibly with a half — and a place.
+ *
+ * Empty means "not recorded", which is NOT zero. A competition where zero is a
+ * real score would otherwise have no way to undo a typo.
+ */
+const resultSchema = z.object({
+  entryId: z.string().cuid(),
+  score: z
+    .string()
+    .trim()
+    .transform((v) => (v.length === 0 ? null : Number(v)))
+    .refine((v) => v === null || (Number.isFinite(v) && v >= 0), {
+      message: "A score has to be a number, and cannot be negative.",
+    }),
+  rank: z
+    .string()
+    .trim()
+    .transform((v) => (v.length === 0 ? null : Number(v)))
+    .refine((v) => v === null || (Number.isInteger(v) && v >= 1), {
+      message: "A place has to be a whole number, first or better.",
+    }),
+});
+
+export async function recordResultAction(input: unknown): Promise<CompetitionActionState> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: "Not signed in." };
+
+  const parsed = resultSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.issues[0]?.message ?? "That result is not valid." };
+  }
+
+  try {
+    await recordResult(session, parsed.data.entryId, {
+      scoreMilli: parsed.data.score === null ? null : toMilli(parsed.data.score),
+      rank: parsed.data.rank,
+    });
+    revalidatePath("/competitions");
+    return {
+      ok: true,
+      message: parsed.data.score === null && parsed.data.rank === null ? "Result cleared." : "Result saved.",
     };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };

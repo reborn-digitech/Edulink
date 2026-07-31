@@ -1,11 +1,18 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircleIcon, HourglassMediumIcon, TrophyIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { consentAction, enterAction, setStatusAction, withdrawAction } from "./actions";
+import { formatMilli } from "@/lib/validation";
+import {
+  consentAction,
+  enterAction,
+  setStatusAction,
+  submitAction,
+  withdrawAction,
+} from "./actions";
 
 /**
  * The one control a child sees, and the one a guardian sees.
@@ -258,4 +265,102 @@ export function OrganiserControls({
       )}
     </div>
   );
+}
+
+/**
+ * The child's hand-in.
+ *
+ * A link, not a file: competition work goes to the organiser's own site, and
+ * storing a child's work here for somebody who cannot read it would be worse
+ * than useless. Deliberately separate from entering — registering says a child
+ * would like to take part, this sends their actual work.
+ */
+export function SubmitPanel({
+  competitionId,
+  existingUrl,
+  canSubmit,
+  reason,
+}: {
+  competitionId: string;
+  existingUrl: string | null;
+  canSubmit: boolean;
+  reason: string | null;
+}) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [url, setUrl] = useState(existingUrl ?? "");
+  const [error, setError] = useState<string | null>(null);
+
+  if (!canSubmit) {
+    return reason ? <p className="text-sm text-fg-muted">{reason}</p> : null;
+  }
+
+  return (
+    <form
+      className="space-y-2"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+        startTransition(async () => {
+          const result = await submitAction({ id: competitionId, url: url.trim() });
+          if (!result.ok) {
+            setError(result.error ?? "That did not go through.");
+            return;
+          }
+          toast({
+            tone: "ok",
+            title: existingUrl ? "Changed 🎉" : "Handed in 🎉",
+            description: "Your teacher can see it now.",
+          });
+          router.refresh();
+        });
+      }}
+    >
+      <label htmlFor="entry-url" className="block text-sm font-medium">
+        {existingUrl ? "Your entry" : "Hand in your entry"}
+      </label>
+      <input
+        id="entry-url"
+        type="url"
+        value={url}
+        onChange={(event) => setUrl(event.target.value)}
+        placeholder="https://…"
+        required
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? "entry-url-error" : undefined}
+        className={`w-full rounded-[--radius-md] border bg-surface px-3 py-2.5 text-[0.9375rem] ${
+          error ? "border-danger" : "border-border"
+        }`}
+      />
+      <p className="text-xs text-fg-muted">A link to your work — it must start with https://</p>
+      {error && (
+        <p id="entry-url-error" className="text-sm text-danger">
+          {error}
+        </p>
+      )}
+      <Button type="submit" size="sm" disabled={pending || url.trim().length === 0}>
+        {pending ? "Just a moment…" : existingUrl ? "Change it" : "Hand it in"}
+      </Button>
+    </form>
+  );
+}
+
+/** What a child sees once somebody has recorded what they scored. */
+export function ResultBadge({ scoreMilli, rank }: { scoreMilli: number | null; rank: number | null }) {
+  if (scoreMilli === null && rank === null) return null;
+  return (
+    <p className="inline-flex items-center gap-2 rounded-[--radius-md] bg-ok-soft px-2.5 py-1.5 text-sm font-medium text-ok">
+      <TrophyIcon weight="fill" className="size-4" />
+      {rank !== null && <span>{ordinalLabel(rank)}</span>}
+      {scoreMilli !== null && <span>{formatMilli(scoreMilli)} points</span>}
+    </p>
+  );
+}
+
+function ordinalLabel(n: number): string {
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th place`;
+  const suffix = { 1: "st", 2: "nd", 3: "rd" }[n % 10] ?? "th";
+  return `${n}${suffix} place`;
 }

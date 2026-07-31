@@ -127,7 +127,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (458 tests) |
+| `npm test` | Full suite (478 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -141,7 +141,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 94 route/role/negative combinations
+mints a real session per role, requests all 98 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -392,17 +392,13 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Competition submissions and scoring.** The schema is already there —
-   `submissionUrl`, `scoreMilli`, `rank` — and it raises no new access-control
-   question, which makes it the cheapest real feature left. Leaderboards are NOT
-   part of it; see Not built for why that one is a decision before it is code.
-2. **Progress-report export, then weighted grade categories.** Both are grading
+1. **Progress-report export, then weighted grade categories.** Both are grading
    work and both go through `overallPercent`, so they share their hard part.
-3. **Global feed.** Bigger than it sounds: it is the second thing that would show
+2. **Global feed.** Bigger than it sounds: it is the second thing that would show
    one school another school's content. Read `competitions.ts` first — it is the
    only cross-school surface in here, and it works by keeping the catalogue
    shared and the participation private.
-4. **SSO, 2FA.** Neither can be verified without real provider credentials.
+3. **SSO, 2FA.** Neither can be verified without real provider credentials.
    Budget for that rather than discovering it at the end.
 
 **Before any of them, something cheaper.** Nothing in
@@ -652,7 +648,29 @@ One line each, with the default rejected.
   into a TEACHER membership on the right class; a teacher started a remark
   thread. All four wrote their audit rows, with zero `[audit] failed` — which is
   the other half of the previous commit, proven on flows that are not login.
-- **94/94 route checks** as a signed-in user of the owning role, against a
+- **Competition submissions and scoring.** A pupil hands in a link to their work;
+  staff at that pupil's own school record what it scored. Driven end to end in a
+  production build: the hand-in box **does not appear at all** until a guardian
+  has consented, the pupil handed in, a teacher typed `18.5` and a place of 3,
+  and it stored **18500** — integer thousandths, like every other score in here.
+  The pupil then saw "3rd place · 18.5 points", and both she and her guardian
+  were told.
+
+  **Whose school records the result, and why it is not the organiser's.**
+  `CompetitionEntry.schoolId` is the ENTRANT's school and is policied, so a
+  competition Riverside organises and an Oakfield pupil enters produces a row
+  Riverside cannot read at all. That is the right default, so results are
+  recorded by the child's own school — which is also how schools actually work,
+  since they record their pupils' results in national competitions they did not
+  organise either. The staff page is scoped by the policy rather than by anything
+  the page does.
+
+  Two things kept deliberately distinct all the way to the database: **clearing a
+  result is not scoring zero**, so a typo can be undone in a competition where 0
+  is a real mark; and **registration closing does not close the hand-in**, since
+  entries close so the organiser knows who is coming and the thing itself happens
+  afterwards. Both are mutation-tested, along with the consent gate.
+- **98/98 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -674,7 +692,7 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **458 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **478 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, competitions, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -825,7 +843,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 94 checks in
+**Every route referenced by the navigation renders.** All 98 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -839,13 +857,13 @@ the release where every page rendered and nothing saved.
   There is no actor for it. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
   scoped to a school, and nothing in the app is above a school except the file
   sweep, which is a cron job for the same reason.
-- Competition **submissions, scoring and leaderboards**. The schema has
-  `submissionUrl`, `scoreMilli`, `rank` and `leaderboardEnabled` and nothing
-  writes any of them: an entry goes REGISTERED and stops there. A leaderboard is
-  the interesting one to think about before building — entries are school-scoped
-  by policy, so a cross-school ranking is the first thing in this app that would
-  have to show one school another school's children, and that needs deciding
-  rather than implementing.
+- Competition **leaderboards**, and cross-school results generally. Submissions
+  and scoring are built (see Status); `leaderboardEnabled` is still the one
+  column nothing writes. It is deliberately last: entries are school-scoped by
+  policy, so a school records its OWN pupils' results and cannot see anybody
+  else's. A ranking across schools would be the first thing in this app to show
+  one school another school's children — a decision, and a policy change, before
+  it is a page.
 - Weighted grade categories, progress-report export
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - ~~Postgres RLS~~ **done and enforcing.** See Status.

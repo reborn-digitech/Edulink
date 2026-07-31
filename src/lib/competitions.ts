@@ -56,6 +56,9 @@ export type EntryState = {
   consentedAt: Date | null;
   studentMembershipId: string;
   studentName: string;
+  submissionUrl: string | null;
+  scoreMilli: number | null;
+  rank: number | null;
 };
 
 /**
@@ -137,6 +140,7 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     ...competition,
     isOrganiser,
     open: registrationOpen(competition),
+    acceptingWork: submissionOpen(competition),
     entry: entries.get(competition.id) ?? null,
     /** Only ever this school's, because CompetitionEntry is policied. */
     enteredCount: await db.competitionEntry.count({
@@ -178,6 +182,9 @@ async function entriesFor(
       consentedAt: row.parentConsentAt,
       studentMembershipId: row.studentMembershipId,
       studentName: row.student.user.preferredName ?? row.student.user.name,
+      submissionUrl: row.submissionUrl,
+      scoreMilli: row.scoreMilli,
+      rank: row.rank,
     });
   }
   return found;
@@ -354,6 +361,227 @@ export async function withdrawEntry(session: ActiveContext, entryId: string): Pr
     action: "competition.withdraw",
     meta: { entryId: entry.id, competitionId: entry.competitionId, by: session.role },
   });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Handing in, and what it scored                                              */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Whether a competition is still taking work.
+ *
+ * Deliberately NOT `registrationOpen`. Entries close so the organiser knows who
+ * is coming; the thing itself happens afterwards, and a child who registered in
+ * time must still be able to hand in. What closes the door is the competition
+ * ENDING — and, as with registration, a missing date means "no stated end",
+ * which is open.
+ */
+export function submissionOpen(
+  competition: { endsAt: Date | null },
+  now: Date = new Date(),
+): boolean {
+  return !competition.endsAt || competition.endsAt >= now;
+}
+
+/**
+ * A child hands in their entry.
+ *
+ * CONSENT GATES THIS, and that is the whole reason it is a separate step from
+ * entering. Registering says a child would like to take part; handing in sends
+ * their actual work to whoever is running it. An entry still waiting on a
+ * guardian has not been agreed to, so there is nothing to send.
+ *
+ * A link rather than a file: `submissionUrl` is what the schema has, and a
+ * competition's own site is where work almost always goes. Uploading through
+ * EduLink would mean storing a child's work for an organiser who cannot read it
+ * — see Later in the README.
+ */
+export async function submitEntry(
+  session: ActiveContext,
+  competitionId: string,
+  submissionUrl: string,
+): Promise<void> {
+  if (session.role !== "STUDENT" || !session.membershipId) {
+    throw new AccessError("Only the child taking part can hand in their entry");
+  }
+
+  const competition = await db.competition.findFirst({
+    where: { id: competitionId, status: "PUBLISHED" },
+  });
+  if (!competition) throw new AccessError("Competition not found", "NOT_FOUND");
+  if (!submissionOpen(competition)) throw new AccessError("This competition has finished");
+
+  const entry = await db.competitionEntry.findUnique({
+    where: {
+      competitionId_studentMembershipId: {
+        competitionId,
+        studentMembershipId: session.membershipId,
+      },
+    },
+  });
+  if (!entry) throw new AccessError("You have not entered this competition", "NOT_FOUND");
+
+  if (competition.requiresParentConsent && entry.parentConsentAt === null) {
+    throw new AccessError("A grown-up needs to say yes before you can hand this in");
+  }
+
+  await db.competitionEntry.update({
+    where: { id: entry.id },
+    data: {
+      submissionUrl,
+      // Handing in again replaces the link — a child who pasted the wrong one
+      // should fix it, not be told off. Re-handing in after a result is
+      // refused below, because that would orphan the score.
+      status: "SUBMITTED",
+    },
+  });
+
+  await audit({
+    schoolId: entry.schoolId,
+    actorUserId: session.user.id,
+    action: "competition.submit",
+    meta: { entryId: entry.id, competitionId },
+  });
+}
+
+export type ScorableEntry = {
+  entryId: string;
+  studentMembershipId: string;
+  studentName: string;
+  status: string;
+  submissionUrl: string | null;
+  scoreMilli: number | null;
+  rank: number | null;
+  awaitingConsent: boolean;
+};
+
+/**
+ * The entries a member of staff may record results against.
+ *
+ * THIS SCHOOL'S OWN, and only this school's — which is not a restriction this
+ * function imposes so much as one it inherits. `CompetitionEntry.schoolId` is
+ * the ENTRANT's school and is policied, so a competition organised by Riverside
+ * and entered by an Oakfield pupil produces a row Riverside cannot read at all.
+ *
+ * That is the right default and it is why results are recorded by the child's
+ * own school rather than by the organiser: a school records what its own pupils
+ * scored, in its own competitions and in the national ones it sits. Anything
+ * else is the cross-school question that leaderboards raise, and that is a
+ * decision before it is code — see Not built in the README.
+ */
+export async function listEntriesForResults(
+  session: ActiveContext,
+  competitionId: string,
+): Promise<ScorableEntry[]> {
+  if (session.role !== "ADMIN" && session.role !== "TEACHER") return [];
+
+  const rows = await db.competitionEntry.findMany({
+    where: { competitionId },
+    include: { student: { include: { user: { select: { name: true, preferredName: true } } } } },
+    orderBy: [{ rank: "asc" }, { scoreMilli: "desc" }, { createdAt: "asc" }],
+  });
+
+  return rows.map((row) => ({
+    entryId: row.id,
+    studentMembershipId: row.studentMembershipId,
+    studentName: row.student.user.preferredName ?? row.student.user.name,
+    status: row.status,
+    submissionUrl: row.submissionUrl,
+    scoreMilli: row.scoreMilli,
+    rank: row.rank,
+    awaitingConsent: row.parentConsentAt === null,
+  }));
+}
+
+/**
+ * Staff record what an entry scored.
+ *
+ * ADMIN or TEACHER at the child's own school. A teacher is NOT narrowed to their
+ * own classes here, unlike everywhere else in this codebase, and that is a
+ * deliberate exception with a reason: a competition entry belongs to no class.
+ * The child entered as a pupil of the school, the school sat the paper, and the
+ * member of staff running it is frequently not the one who teaches them.
+ *
+ * Passing null for the score CLEARS a result rather than recording a zero —
+ * those are different things, and a competition where zero is a real score would
+ * otherwise have no way to undo a typo.
+ */
+export async function recordResult(
+  session: ActiveContext,
+  entryId: string,
+  result: { scoreMilli: number | null; rank: number | null },
+): Promise<void> {
+  if (session.role !== "ADMIN" && session.role !== "TEACHER") {
+    throw new AccessError("Only school staff can record a result");
+  }
+  if (result.scoreMilli !== null && result.scoreMilli < 0) {
+    throw new AccessError("A score cannot be negative");
+  }
+  if (result.rank !== null && (!Number.isInteger(result.rank) || result.rank < 1)) {
+    throw new AccessError("A place has to be a whole number, first or better");
+  }
+
+  // Scoped by the policy rather than by a WHERE this function writes: an entry
+  // from another school does not come back at all.
+  const entry = await db.competitionEntry.findUnique({
+    where: { id: entryId },
+    include: { competition: { select: { title: true } } },
+  });
+  if (!entry) throw new AccessError("Entry not found", "NOT_FOUND");
+
+  const cleared = result.scoreMilli === null && result.rank === null;
+
+  await db.competitionEntry.update({
+    where: { id: entry.id },
+    data: {
+      scoreMilli: result.scoreMilli,
+      rank: result.rank,
+      // Clearing a result puts the entry back where it was, so the child is not
+      // left looking at a "results are in" state with nothing in it.
+      status: cleared ? (entry.submissionUrl ? "SUBMITTED" : "REGISTERED") : "RESULTS",
+    },
+  });
+
+  await audit({
+    schoolId: entry.schoolId,
+    actorUserId: session.user.id,
+    action: cleared ? "competition.result.clear" : "competition.result",
+    meta: { entryId: entry.id, competitionId: entry.competitionId, scoreMilli: result.scoreMilli, rank: result.rank },
+  });
+
+  if (cleared) return;
+
+  const student = await db.membership.findUnique({
+    where: { id: entry.studentMembershipId },
+    select: { userId: true },
+  });
+  if (student) {
+    await notify({
+      userId: student.userId,
+      schoolId: entry.schoolId,
+      kind: "COMPETITION",
+      title: `Your result for ${entry.competition.title}`,
+      body: result.rank ? `You came ${ordinal(result.rank)}.` : "Your score has been recorded.",
+      url: `/competitions/${entry.competitionId}`,
+    });
+  }
+
+  // A result is news for home too, and the guardian already agreed to the entry.
+  await notifyGuardians(entry.studentMembershipId, (childName) => ({
+    schoolId: entry.schoolId,
+    kind: "COMPETITION",
+    title: `${childName}'s result for ${entry.competition.title}`,
+    body: result.rank ? `They came ${ordinal(result.rank)}.` : "Their score has been recorded.",
+    url: `/competitions/${entry.competitionId}`,
+  }));
+}
+
+/** 1 → "1st". Written out because a result read by a child should say "3rd". */
+export function ordinal(n: number): string {
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+  const suffix = { 1: "st", 2: "nd", 3: "rd" }[n % 10] ?? "th";
+  return `${n}${suffix}`;
 }
 
 /* -------------------------------------------------------------------------- */

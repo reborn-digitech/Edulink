@@ -715,6 +715,24 @@ entered it. Both halves are worth checking.
   own competition
 - ☐ **⚠️** As Sam, try the URL of Riverside's **draft** → **404**
 
+### Handing in and results
+
+- ☐ As **Amara**, before consent: there is **no hand-in box at all**, just a line
+  saying one is needed
+- ☐ Once consented, hand in `https://example.org/my-work` → "Handed in"
+- ☐ Paste `http://…` (no s) → refused, and what you typed is still there
+- ☐ As **Tom or Priya**: the competition page offers *Your school's entries and
+  results* → the list shows Amara, her link, and a score box
+- ☐ Type `18.5` and place `3`, Save → check Prisma Studio: **`scoreMilli` is
+  18500**, never a float
+- ☐ **⚠️** Amara sees "3rd place · 18.5 points", and both she and Jordan have a
+  notification
+- ☐ **⚠️** Clear BOTH boxes and Save → the result goes, and the entry says
+  "Handed in" again — clearing is not the same as scoring nought
+- ☐ Now type `0` and Save → that IS a score, and it stays
+- ☐ **⚠️** As **Amara**, open `/competitions/<id>/entries` directly → **404**.
+  It is a staff page
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.

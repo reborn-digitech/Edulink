@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import {
@@ -7,8 +7,12 @@ import {
   getCompetition,
   giveConsent,
   listCompetitions,
+  listEntriesForResults,
   listOwnCompetitions,
+  ordinal,
   pendingConsents,
+  recordResult,
+  submitEntry,
   setCompetitionStatus,
   registrationOpen,
   withdrawEntry,
@@ -572,5 +576,210 @@ describe("organising one", () => {
     // An externally-organised one belongs to no school, so it is in nobody's list.
     expect(own.map((c) => c.id)).not.toContain(published);
     expect(await listOwnCompetitions(child)).toEqual([]);
+  });
+});
+
+describe("handing in", () => {
+  it("⚠ refuses until a guardian has said yes", async () => {
+    await db.competitionEntry.deleteMany({ where: { competitionId: published } });
+    await enterCompetition(child, published);
+
+    await expect(
+      submitEntry(child, published, "https://example.org/my-poem"),
+    ).rejects.toBeInstanceOf(AccessError);
+
+    const row = await db.competitionEntry.findFirstOrThrow({ where: { competitionId: published } });
+    expect(row.submissionUrl).toBeNull();
+    expect(row.status).toBe("REGISTERED");
+  });
+
+  it("accepts the work once consent is given", async () => {
+    const entry = await db.competitionEntry.findFirstOrThrow({ where: { competitionId: published } });
+    await giveConsent(guardian, entry.id);
+    await submitEntry(child, published, "https://example.org/my-poem");
+
+    const row = await db.competitionEntry.findUniqueOrThrow({ where: { id: entry.id } });
+    expect(row.status).toBe("SUBMITTED");
+    expect(row.submissionUrl).toBe("https://example.org/my-poem");
+  });
+
+  it("lets a child replace a link they got wrong", async () => {
+    await submitEntry(child, published, "https://example.org/the-right-one");
+    const row = await db.competitionEntry.findFirstOrThrow({ where: { competitionId: published } });
+    expect(row.submissionUrl).toBe("https://example.org/the-right-one");
+  });
+
+  it("needs no consent where the competition needs none", async () => {
+    await db.competitionEntry.deleteMany({ where: { competitionId: noConsentNeeded } });
+    await enterCompetition(classmate, noConsentNeeded);
+    await submitEntry(classmate, noConsentNeeded, "https://example.org/spelling");
+
+    const row = await db.competitionEntry.findFirstOrThrow({
+      where: { competitionId: noConsentNeeded },
+    });
+    expect(row.status).toBe("SUBMITTED");
+  });
+
+  it("⚠ refuses somebody who never entered", async () => {
+    await db.competitionEntry.deleteMany({ where: { competitionId: noConsentNeeded } });
+    await expect(
+      submitEntry(classmate, noConsentNeeded, "https://example.org/cheeky"),
+    ).rejects.toMatchObject({ code: "NOT_FOUND" });
+  });
+
+  it("⚠ refuses everyone who is not the child — including their guardian", async () => {
+    await expect(submitEntry(guardian, published, "https://x.test")).rejects.toBeInstanceOf(AccessError);
+    await expect(submitEntry(admin, published, "https://x.test")).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ refuses once the competition has finished", async () => {
+    const finished = await db.competition.create({
+      data: {
+        title: "TEST Finished Cup",
+        summary: "over",
+        organizerName: "Someone",
+        status: "PUBLISHED",
+        requiresParentConsent: false,
+        endsAt: new Date(Date.now() - 86_400_000),
+      },
+    });
+    await enterCompetition(child, finished.id);
+    await expect(submitEntry(child, finished.id, "https://x.test")).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ but a closed REGISTRATION does not close the hand-in", async () => {
+    // Entries close so the organiser knows who is coming; the thing itself
+    // happens afterwards. A child who registered in time must still hand in.
+    const late = await db.competition.create({
+      data: {
+        title: "TEST Late Handin",
+        summary: "registration shut, event running",
+        organizerName: "Someone",
+        status: "PUBLISHED",
+        requiresParentConsent: false,
+        registrationClosesAt: new Date(Date.now() - 86_400_000),
+        endsAt: new Date(Date.now() + 86_400_000),
+      },
+    });
+    // Registered while it was still open (written directly, as it would have been).
+    await db.competitionEntry.create({
+      data: {
+        competitionId: late.id,
+        studentMembershipId: child.membershipId!,
+        schoolId: child.schoolId!,
+        status: "REGISTERED",
+        parentConsentAt: new Date(),
+      },
+    });
+
+    await submitEntry(child, late.id, "https://example.org/just-in-time");
+    const row = await db.competitionEntry.findFirstOrThrow({ where: { competitionId: late.id } });
+    expect(row.status).toBe("SUBMITTED");
+  });
+});
+
+describe("recording a result", () => {
+  let entryId: string;
+
+  beforeEach(async () => {
+    await db.competitionEntry.deleteMany({ where: { competitionId: published } });
+    const result = await enterCompetition(child, published);
+    await giveConsent(guardian, result.entryId);
+    await submitEntry(child, published, "https://example.org/my-poem");
+    entryId = result.entryId;
+  });
+
+  it("stores the score in integer thousandths, never a float", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 18_500, rank: 3 });
+
+    const row = await db.competitionEntry.findUniqueOrThrow({ where: { id: entryId } });
+    expect(row.scoreMilli).toBe(18_500);
+    expect(row.rank).toBe(3);
+    expect(row.status).toBe("RESULTS");
+  });
+
+  it("tells the child and the people at home", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 18_500, rank: 3 });
+
+    const student = await db.membership.findUniqueOrThrow({ where: { id: child.membershipId! } });
+    const theirs = await db.notification.findMany({
+      where: { userId: student.userId, kind: "COMPETITION" },
+    });
+    const guardians = await db.notification.findMany({
+      where: { userId: guardian.user.id, kind: "COMPETITION" },
+    });
+    expect(theirs.some((n) => n.title.includes("Your result"))).toBe(true);
+    expect(guardians.some((n) => n.title.includes("result"))).toBe(true);
+  });
+
+  it("⚠ refuses a negative score", async () => {
+    await expect(
+      recordResult(admin, entryId, { scoreMilli: -1, rank: null }),
+    ).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ refuses a place below first, or a fractional one", async () => {
+    await expect(recordResult(admin, entryId, { scoreMilli: null, rank: 0 })).rejects.toBeInstanceOf(AccessError);
+    await expect(recordResult(admin, entryId, { scoreMilli: null, rank: 1.5 })).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ refuses a child recording their own result", async () => {
+    await expect(
+      recordResult(child, entryId, { scoreMilli: 20_000, rank: 1 }),
+    ).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ refuses a guardian recording it", async () => {
+    await expect(
+      recordResult(guardian, entryId, { scoreMilli: 20_000, rank: 1 }),
+    ).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ clearing a result is not the same as scoring zero", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 18_500, rank: 3 });
+    await recordResult(admin, entryId, { scoreMilli: null, rank: null });
+
+    const row = await db.competitionEntry.findUniqueOrThrow({ where: { id: entryId } });
+    expect(row.scoreMilli).toBeNull();
+    expect(row.rank).toBeNull();
+    // Back to where it was, not left claiming results are in.
+    expect(row.status).toBe("SUBMITTED");
+  });
+
+  it("a score of zero is a real score and stays one", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 0, rank: null });
+    const row = await db.competitionEntry.findUniqueOrThrow({ where: { id: entryId } });
+    expect(row.scoreMilli).toBe(0);
+    expect(row.status).toBe("RESULTS");
+  });
+
+  it("shows staff this school's entries with the work attached", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 18_500, rank: 3 });
+    const rows = await listEntriesForResults(admin, published);
+    const mine = rows.find((r) => r.entryId === entryId)!;
+
+    expect(mine.submissionUrl).toBe("https://example.org/my-poem");
+    expect(mine.scoreMilli).toBe(18_500);
+    expect(mine.studentName).toBeTruthy();
+  });
+
+  it("⚠ shows a child nothing — this is a staff view", async () => {
+    expect(await listEntriesForResults(child, published)).toEqual([]);
+    expect(await listEntriesForResults(guardian, published)).toEqual([]);
+  });
+
+  it("the child can see their own result", async () => {
+    await recordResult(admin, entryId, { scoreMilli: 18_500, rank: 3 });
+    const seen = await getCompetition(child, published);
+    expect(seen.entry?.scoreMilli).toBe(18_500);
+    expect(seen.entry?.rank).toBe(3);
+  });
+});
+
+describe("ordinal", () => {
+  it("reads the way a child would say it", () => {
+    expect([1, 2, 3, 4, 11, 12, 13, 21, 22, 23, 101, 111].map(ordinal)).toEqual([
+      "1st", "2nd", "3rd", "4th", "11th", "12th", "13th", "21st", "22nd", "23rd", "101st", "111th",
+    ]);
   });
 });

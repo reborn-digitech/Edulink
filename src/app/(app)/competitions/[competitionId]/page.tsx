@@ -13,7 +13,14 @@ import { AccessError } from "@/lib/tenancy";
 import { getCompetition, pendingConsents } from "@/lib/competitions";
 import { Card, CardBody } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ConsentControls, EnterButton, EntryStatus, OrganiserControls } from "../entry-controls";
+import {
+  ConsentControls,
+  EnterButton,
+  EntryStatus,
+  OrganiserControls,
+  ResultBadge,
+  SubmitPanel,
+} from "../entry-controls";
 
 export const metadata: Metadata = { title: "Competition" };
 
@@ -82,11 +89,27 @@ export default async function CompetitionPage({
         <CardBody className="space-y-3">
           {session.role === "STUDENT" &&
             (competition.entry ? (
-              <EntryStatus
-                entryId={competition.entry.id}
-                awaitingConsent={competition.entry.awaitingConsent}
-                canWithdraw
-              />
+              <>
+                <EntryStatus
+                  entryId={competition.entry.id}
+                  awaitingConsent={competition.entry.awaitingConsent}
+                  canWithdraw
+                />
+                <ResultBadge
+                  scoreMilli={competition.entry.scoreMilli}
+                  rank={competition.entry.rank}
+                />
+                <SubmitPanel
+                  competitionId={competition.id}
+                  existingUrl={competition.entry.submissionUrl}
+                  canSubmit={!competition.entry.awaitingConsent && competition.acceptingWork}
+                  reason={
+                    competition.entry.awaitingConsent
+                      ? "You can hand your entry in once a grown-up has said yes."
+                      : "This competition has finished."
+                  }
+                />
+              </>
             ) : (
               <>
                 <EnterButton
@@ -120,11 +143,17 @@ export default async function CompetitionPage({
                 </div>
               ))
             ) : competition.entry ? (
-              <EntryStatus
-                entryId={competition.entry.id}
-                awaitingConsent={competition.entry.awaitingConsent}
-                canWithdraw
-              />
+              <>
+                <EntryStatus
+                  entryId={competition.entry.id}
+                  awaitingConsent={competition.entry.awaitingConsent}
+                  canWithdraw
+                />
+                <ResultBadge
+                  scoreMilli={competition.entry.scoreMilli}
+                  rank={competition.entry.rank}
+                />
+              </>
             ) : (
               <p className="text-sm text-fg-muted">
                 None of your children have asked to enter this one.
@@ -137,6 +166,14 @@ export default async function CompetitionPage({
               status={competition.status}
               entered={competition.enteredCount}
             />
+          )}
+
+          {(session.role === "ADMIN" || session.role === "TEACHER") && (
+            <Button asChild variant="secondary" size="sm">
+              <Link href={`/competitions/${competition.id}/entries`}>
+                Your school's entries and results
+              </Link>
+            </Button>
           )}
 
           {(session.role === "ADMIN" || session.role === "TEACHER") && (
