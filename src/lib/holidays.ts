@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
-import { isDateKey, dateKeyRange, isWeekend } from "./dates";
+import { isDateKey, dateKeyRange, isTeachingDay } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -135,9 +135,15 @@ export function closedDayKeys(spans: HolidaySpan[]): Set<string> {
   return closed;
 }
 
-/** Is the school shut on this date, per the calendar? Weekends count as shut. */
+/**
+ * Is the school shut on this date, per the calendar?
+ *
+ * Sunday counts as shut without anyone declaring it. SATURDAY DOES NOT — this
+ * school teaches Monday to Saturday, so a Saturday is an ordinary school day
+ * and a Saturday holiday is a real one that has to be declared like any other.
+ */
 export function isSchoolClosed(spans: HolidaySpan[], dateKey: string): boolean {
-  if (isWeekend(dateKey)) return true;
+  if (!isTeachingDay(dateKey)) return true;
   return closedDayKeys(spans).has(dateKey);
 }
 
@@ -149,12 +155,15 @@ export function entriesOn<T extends HolidaySpan>(spans: T[], dateKey: string): T
 }
 
 /**
- * Teaching days between two dates, inclusive: weekdays that are not holidays.
+ * Teaching days between two dates, inclusive: school days that are not holidays.
  *
- * The honest limit, stated because a number like this gets quoted back: this
- * assumes a Monday-to-Friday week, which is the app's existing `isWeekend`
- * assumption and is wrong for schools that teach on Saturday. Fixing it means a
- * per-school working-week setting, not a change here.
+ * The week is MONDAY TO SATURDAY — six teaching days, Sunday off — which is why
+ * this asks `isTeachingDay` and not `isWeekend`. Getting that backwards
+ * understates every "out of N school days" figure in the app by a sixth, which
+ * is a whole day a week on a number families compare.
+ *
+ * Still one school's week rather than a setting; `isTeachingDay` carries the
+ * note about where to change that.
  */
 export function schoolDaysBetween(
   fromKey: string,
@@ -173,7 +182,7 @@ export function schoolDaysBetween(
   const closed = closedDayKeys(spans);
   let days = 0;
   for (const key of dateKeyRange(fromKey, toKey, MAX_HOLIDAY_SPAN_DAYS)) {
-    if (isWeekend(key)) continue;
+    if (!isTeachingDay(key)) continue;
     if (closed.has(key)) continue;
     days++;
   }

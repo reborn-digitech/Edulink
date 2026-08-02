@@ -111,9 +111,36 @@ export function weekdayOfKey(dateKey: string): number {
   return new Date(Date.UTC(y, m - 1, d)).getUTCDay();
 }
 
+/**
+ * Saturday or Sunday. A fact about the CALENDAR, not about this school.
+ *
+ * Kept separate from `isTeachingDay` on purpose — see the note there. This one
+ * is for display: whether to tint a cell in a month grid, whether a date reads
+ * as part of a weekend to a human. Do not use it to decide whether a register
+ * was expected.
+ */
 export function isWeekend(dateKey: string): boolean {
   const day = weekdayOfKey(dateKey);
   return day === 0 || day === 6;
+}
+
+/**
+ * The days this school teaches: MONDAY TO SATURDAY, Sunday off.
+ *
+ * SEPARATE FROM `isWeekend`, AND THE SPLIT IS THE POINT. Saturday is a weekend
+ * day on any calendar and a working day at this school, so one predicate cannot
+ * answer both questions. Attendance denominators, holiday maths and "out of N
+ * school days" ask THIS one; anything tinting a cell or writing the word
+ * "weekend" asks the other.
+ *
+ * The honest limit, stated because this is a hardcoded assumption dressed as a
+ * function: it is one school's week, not a setting. It lives alone here so that
+ * making it per-school later is a change to this function's body and a column on
+ * `School`, rather than a hunt through every place `day === 0 || day === 6` was
+ * inlined — which is exactly the hunt that produced this function.
+ */
+export function isTeachingDay(dateKey: string): boolean {
+  return weekdayOfKey(dateKey) !== 0;
 }
 
 /* -------------------------------------------------------------------------- */

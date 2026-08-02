@@ -193,9 +193,20 @@ describe("what closes the school", () => {
     expect(on[0]!.kind).toBe("EXAM");
   });
 
-  it("counts a weekend as closed without anyone declaring it", () => {
+  it("counts a Sunday as closed without anyone declaring it", () => {
+    // 2026-11-15 is a Sunday.
+    expect(isSchoolClosed([], "2026-11-15")).toBe(true);
+  });
+
+  /** Mon–Sat week: an undeclared Saturday is a school day, not a day off. */
+  it("counts an undeclared Saturday as OPEN", () => {
     // 2026-11-14 is a Saturday.
-    expect(isSchoolClosed([], "2026-11-14")).toBe(true);
+    expect(isSchoolClosed([], "2026-11-14")).toBe(false);
+  });
+
+  it("counts a Saturday the school declared shut as closed", () => {
+    const spans = [{ startDateKey: "2026-11-14", endDateKey: "2026-11-14", kind: "HOLIDAY" }];
+    expect(isSchoolClosed(spans, "2026-11-14")).toBe(true);
   });
 
   it("counts an ordinary weekday with nothing on it as open", () => {
@@ -208,9 +219,25 @@ describe("what closes the school", () => {
 });
 
 describe("school days between two dates", () => {
-  it("counts weekdays and skips the weekend", () => {
-    // Mon 2026-11-16 to Fri 2026-11-20 = 5. Extend to Sunday: still 5.
-    expect(schoolDaysBetween("2026-11-16", "2026-11-22", [])).toBe(5);
+  /**
+   * THE WEEK IS MONDAY TO SATURDAY. Six teaching days, Sunday off.
+   *
+   * Every count below turns on that and would be wrong by a sixth under a
+   * Mon–Fri assumption — a whole day a week on a figure families compare. The
+   * dates are pinned to real weekdays: 2026-11-16 is a Monday, 11-21 a
+   * Saturday, 11-22 a Sunday.
+   */
+  it("counts Monday to Saturday as six school days and drops only Sunday", () => {
+    expect(schoolDaysBetween("2026-11-16", "2026-11-22", [])).toBe(6);
+  });
+
+  it("counts a Saturday as an ordinary school day", () => {
+    // Sat 2026-11-21 alone.
+    expect(schoolDaysBetween("2026-11-21", "2026-11-21", [])).toBe(1);
+  });
+
+  it("counts a Sunday as no school day at all", () => {
+    expect(schoolDaysBetween("2026-11-22", "2026-11-22", [])).toBe(0);
   });
 
   it("subtracts a holiday that falls on a weekday", () => {
@@ -218,9 +245,19 @@ describe("school days between two dates", () => {
     expect(schoolDaysBetween("2026-11-16", "2026-11-20", spans)).toBe(4);
   });
 
-  it("does not double-subtract a holiday declared on a Saturday", () => {
+  /**
+   * The one that flipped when the week became Mon–Sat. A Saturday holiday used
+   * to be a no-op because Saturday was already off; now it is a real day the
+   * school would otherwise have taught, so declaring it MUST subtract.
+   */
+  it("subtracts a holiday declared on a Saturday, because Saturday is taught", () => {
     const spans = [{ startDateKey: "2026-11-21", endDateKey: "2026-11-21", kind: "HOLIDAY" }];
     expect(schoolDaysBetween("2026-11-16", "2026-11-22", spans)).toBe(5);
+  });
+
+  it("still does not subtract a holiday declared on a Sunday", () => {
+    const spans = [{ startDateKey: "2026-11-22", endDateKey: "2026-11-22", kind: "HOLIDAY" }];
+    expect(schoolDaysBetween("2026-11-16", "2026-11-22", spans)).toBe(6);
   });
 
   it("does not subtract an exam week — the school is open", () => {

@@ -133,7 +133,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (557 tests) |
+| `npm test` | Full suite (568 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -244,24 +244,30 @@ Break these and something quietly goes wrong for a child or a parent.
    the two methods differ (88% vs 86%), so this is a real number, not a nit.
 4. **Attendance identity is `dateKey`** — `YYYY-MM-DD` in the *school's*
    timezone, not a UTC instant. See the DST reasoning in `dates.ts`.
-5. **Offline writes are idempotent** by `clientId` (replay = no-op) *and*
+5. **The school week is MONDAY TO SATURDAY.** Ask `isTeachingDay(dateKey)`, never
+   `isWeekend(dateKey)`, for anything that counts school days — denominators,
+   holiday maths, "out of N days". `isWeekend` is a fact about the calendar and
+   is for display only; the two deliberately disagree about Saturday. Collapsing
+   them either writes "Weekend session" on an ordinary school day or drops a
+   sixth of the year out of every figure a parent compares.
+6. **Offline writes are idempotent** by `clientId` (replay = no-op) *and*
    ordered by `markedAt` (a late replay cannot undo a newer correction).
-6. **Bad input is collected and reported, never silently skipped.** A bulk
+7. **Bad input is collected and reported, never silently skipped.** A bulk
    import claiming "42 sent" while dropping 3 is how a teacher is found missing
    in September.
-7. **Archive, don't delete.** Classes own attendance and grade history.
-8. **Notify on first state change only.** Fixing a typo three times must not
+8. **Archive, don't delete.** Classes own attendance and grade history.
+9. **Notify on first state change only.** Fixing a typo three times must not
    send a family three pushes.
-9. **Config nothing reads is config that rots.** There is deliberately no
+10. **Config nothing reads is config that rots.** There is deliberately no
    `AUTH_SECRET` — sessions are opaque random tokens stored as SHA-256 hashes,
    so there is nothing to sign. `env.ts` refuses to boot a *deployed* instance
    with missing push keys, a plain-http origin, or the dev mail transport, but
    stays quiet for a local production build.
-10. **SQLite portability tax.** No native enums and no JSON columns: status
+11. **SQLite portability tax.** No native enums and no JSON columns: status
     columns are `String` (values in `constants.ts`, validated by zod at every
     write) and JSON payloads are `String` (read via `json.ts`). This is what
     lets the same schema run on Postgres unchanged.
-11. **Nothing sets `app.school_ids` by hand, and nothing hands the tenant
+12. **Nothing sets `app.school_ids` by hand, and nothing hands the tenant
     downstream.** `db.ts` *asks* for it, per query: `tenant-request.ts` reads the
     session cookie and answers "which schools may this request see", and the
     answer goes into the transaction around that query. 248 call sites know
@@ -273,7 +279,7 @@ Break these and something quietly goes wrong for a child or a parent.
     **It pulls rather than pushes because pushing broke, silently, in three of
     the four places it had to work.** See Gotchas: this is the single most
     expensive mistake in the history of this codebase.
-12. **A `fileId` is minted server-side and never accepted from a client.**
+13. **A `fileId` is minted server-side and never accepted from a client.**
     `files.ts` authorises a stored file by finding the record that mentions it,
     so anything that let a caller name an arbitrary id would let them point
     their own post at somebody else's attachment and inherit their audience.
@@ -732,7 +738,7 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **557 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **568 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, competitions, reports, audit, academic-year, holidays, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, academic-year, holidays, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -790,8 +796,22 @@ One line each, with the default rejected.
   register taken on a day the school is SHUT, so the calendar's job in that path
   is to warn a teacher before the fact and not to block them — schools do run
   catch-up classes over half term, and a teacher standing in front of a real
-  class must not be told the class does not exist. 50 tests, seven mutations,
+  class must not be told the class does not exist. 55 tests, seven mutations,
   all caught.
+- **The school week is Monday to Saturday**, and that needed a SECOND predicate
+  rather than a change to the first. `isWeekend` is a fact about the calendar
+  and is what dims a cell or writes the word "weekend"; `isTeachingDay` is a
+  fact about this school and is what every denominator asks. They disagree about
+  Saturday on purpose. Collapsing them into one function is the bug: it either
+  labels an ordinary Saturday "Weekend session" to a parent, or drops a sixth of
+  the school year out of every "out of N days" figure — a whole day a week on a
+  number families compare. Mutation-tested three ways — reverting to Mon–Fri
+  fails 6 checks, teaching every day fails 6, and pointing `holidays.ts` back at
+  `isWeekend` fails 4.
+- **A Saturday holiday now does something.** Under the old Mon–Fri week,
+  declaring a holiday on a Saturday was a silent no-op — the day was already
+  off. It now subtracts a real teaching day, which is the case that flipped and
+  the reason the test for it says so out loud.
 - **`dateKeyRange` truncates silently**, which made the first version of the span
   validation unable to fire: a two-year range came back as exactly 366 keys, a
   number that looks like a real answer and passes a length check while June has
@@ -981,6 +1001,16 @@ the release where every page rendered and nothing saved.
 
 ### Known issues
 
+- **An existing dev database still has a Monday-to-Friday register.** The seed
+  now generates Saturdays, but changing the seed does not change data already
+  seeded. Nothing is *wrong* — attendance denominators count registers taken, so
+  a Saturday-less history is merely a history without Saturdays — but the seeded
+  figures will not exercise the new week until you reseed. `npm run db:reset`
+  wipes the development database, so it is deliberately not run for you.
+- **`isTeachingDay` is one school's week, not a setting.** Mon–Sat is hardcoded,
+  in one function, on purpose: making it per-school later is a change to that
+  body plus a column on `School`, rather than a hunt through inlined
+  `day === 0 || day === 6` checks — which is the hunt that produced the function.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably

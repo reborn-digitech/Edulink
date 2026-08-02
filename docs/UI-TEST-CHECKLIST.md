@@ -781,6 +781,19 @@ The two are on one page because they are one afternoon's work.
 - ☐ `/admin` now says **“Next up: …”** with the nearest entry ahead. A finished
   break must **not** appear there
 
+### The Monday-to-Saturday week
+
+- ☐ **⚠️** Declare a **Saturday** as a Holiday → as Tom, open
+  `/teacher/attendance?date=<that Saturday>` → the **school-is-shut warning
+  appears**. Saturday is a teaching day here, so a Saturday holiday is a real
+  one — under a Mon–Fri week this was a silent no-op
+- ☐ Open the register on an **undeclared Saturday** → **no warning**. It is an
+  ordinary school day
+- ☐ Open it on a **Sunday** → the warning appears without anyone declaring
+  anything
+- ☐ As **Jordan (parent)** on `/parent/attendance`: a Saturday session is listed
+  with **no "Sunday session" caption**. Only a Sunday gets one
+
 ### The register warning — the reason the calendar exists
 
 - ☐ Put a **Holiday** on today's date, then as **Tom (teacher)** open

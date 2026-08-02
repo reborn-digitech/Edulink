@@ -11,7 +11,7 @@
 import { PrismaClient } from "@prisma/client";
 import { hash } from "@node-rs/argon2";
 import { classCode, schoolCode, slugify, studentCode } from "../src/lib/codes";
-import { addDaysToKey, todayKey } from "../src/lib/dates";
+import { addDaysToKey, todayKey, isTeachingDay } from "../src/lib/dates";
 
 const db = new PrismaClient();
 
@@ -446,8 +446,11 @@ async function seedAttendance(school: Awaited<ReturnType<typeof createSchool>>) 
   const schoolDays: string[] = [];
   for (let back = 63; back >= 1; back--) {
     const dateKey = addDaysToKey(today, -back);
-    const weekday = new Date(`${dateKey}T00:00:00Z`).getUTCDay();
-    if (weekday === 0 || weekday === 6) continue;
+    // The school teaches MONDAY TO SATURDAY, so the register runs on Saturdays
+    // too. Asking the shared predicate rather than inlining `=== 0 || === 6`
+    // again is the whole reason it exists: a seed that skipped Saturdays would
+    // quietly disagree with every denominator computed from it.
+    if (!isTeachingDay(dateKey)) continue;
     schoolDays.push(dateKey);
   }
 

@@ -4,7 +4,7 @@ import { ArrowLeftIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { getAttendanceSummary } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, isWeekend, todayKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isTeachingDay, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { AttendanceBadge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
@@ -135,8 +135,15 @@ export default async function ParentAttendancePage({
                     {day.note ? (
                       <p className="text-xs text-fg-muted">&ldquo;{day.note}&rdquo;</p>
                     ) : (
-                      isWeekend(day.dateKey) && (
-                        <p className="text-xs text-fg-subtle">Weekend session</p>
+                      /*
+                        Only a SUNDAY is worth flagging. The school teaches
+                        Monday to Saturday, so labelling every Saturday
+                        "Weekend session" told a parent that an ordinary school
+                        day was unusual — noise on the six-sevenths of the week
+                        that are perfectly normal.
+                      */
+                      !isTeachingDay(day.dateKey) && (
+                        <p className="text-xs text-fg-subtle">Sunday session</p>
                       )
                     )}
                   </div>

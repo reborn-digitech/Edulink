@@ -6,6 +6,7 @@ import {
   dateKeyRange,
   isDateKey,
   isWeekend,
+  isTeachingDay,
   parseDateOnly,
   zonedStartOfDay,
 } from "./dates";
@@ -184,6 +185,33 @@ describe("dateKeyRange", () => {
   });
   it("caps runaway ranges", () => {
     expect(dateKeyRange("2000-01-01", "2030-01-01", 10)).toHaveLength(10);
+  });
+});
+
+/**
+ * Two predicates, deliberately disagreeing about Saturday.
+ *
+ * `isWeekend` is a fact about the calendar and is used for display.
+ * `isTeachingDay` is a fact about THIS SCHOOL, which teaches Monday to
+ * Saturday, and is what attendance and holiday maths ask. Collapsing them into
+ * one function is the bug these tests exist to prevent: it either writes
+ * "Weekend session" on an ordinary Saturday or drops a sixth of the school year
+ * out of every denominator.
+ */
+describe("isTeachingDay — the school week is Mon–Sat", () => {
+  it("teaches on Monday", () => expect(isTeachingDay("2026-07-27")).toBe(true));
+  it("teaches on Friday", () => expect(isTeachingDay("2026-07-31")).toBe(true));
+  it("teaches on Saturday", () => expect(isTeachingDay("2026-07-25")).toBe(true));
+  it("does not teach on Sunday", () => expect(isTeachingDay("2026-07-26")).toBe(false));
+
+  it("disagrees with isWeekend about Saturday, which is the point", () => {
+    expect(isWeekend("2026-07-25")).toBe(true);
+    expect(isTeachingDay("2026-07-25")).toBe(true);
+  });
+
+  it("agrees with isWeekend about Sunday", () => {
+    expect(isWeekend("2026-07-26")).toBe(true);
+    expect(isTeachingDay("2026-07-26")).toBe(false);
   });
 });
 
