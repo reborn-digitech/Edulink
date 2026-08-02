@@ -177,7 +177,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ### Where things live
 
 ```
-prisma/schema.prisma      27 models. Read the header comment first.
+prisma/schema.prisma      30 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
 prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.

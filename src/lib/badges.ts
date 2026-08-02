@@ -3,7 +3,8 @@ import { db } from "./db";
 import {
   getAttendanceSummary,
   computeBestStreak,
-  bestAttendanceSpell,
+  computeStreak,
+  currentAttendanceRate,
 } from "./attendance";
 import { addDaysToKey, todayKey } from "./dates";
 
@@ -65,8 +66,31 @@ export async function getBadges(
 ): Promise<Badge[]> {
   const today = todayKey(timezone);
 
+  /**
+   * THE WINDOW IS THE ACADEMIC YEAR, and that is what makes these badges reset.
+   *
+   * A rolling sixty days never resets: a child present in June still shows June's
+   * badges in July of the following year, which is not what a school means by
+   * "this year's badges". Starting the window at the year's start date means a
+   * new year genuinely begins empty — nobody holds an attendance badge in the
+   * first fortnight of term, because nobody has twenty days of register yet.
+   *
+   * A school that has not set a year up falls back to sixty days rather than
+   * showing nothing, since the badges predate the feature.
+   *
+   * Queried directly rather than through academic-year.ts, which imports THIS
+   * module to take its snapshot — the cycle would be real.
+   */
+  const year = await db.academicYear.findFirst({
+    where: { schoolId, isCurrent: true },
+    select: { startDate: true },
+  });
+  const windowStart = year
+    ? year.startDate.toISOString().slice(0, 10)
+    : addDaysToKey(today, -60);
+
   const [attendance, handedIn, gradedCount, approvedPosts, bestPercent] = await Promise.all([
-    getAttendanceSummary(schoolId, membershipId, addDaysToKey(today, -60), today),
+    getAttendanceSummary(schoolId, membershipId, windowStart, today),
     db.submission.count({
       where: { studentMembershipId: membershipId, submittedAt: { not: null } },
     }),
@@ -87,28 +111,39 @@ export async function getBadges(
       ),
   ]);
 
-  // Best, not current — see the note at the top of this file.
-  const bestStreak = computeBestStreak(attendance.days);
-  const bestSpell = bestAttendanceSpell(attendance.days, MIN_DAYS_FOR_ATTENDANCE_BADGE);
+  // CURRENT, not best — and this reversed a decision, so the reasoning matters.
+  //
+  // These used to be "best ever in the window", so that a child who was ill for
+  // a fortnight kept the badges a clean month had earned. The school asked for
+  // the opposite: a streak that breaks takes its badge with it, the same day.
+  // A streak nobody can lose is a participation sticker, and a child watching a
+  // number they cannot affect is not being encouraged by it.
+  //
+  // What stops that being harsh is the academic year, not the window: whatever a
+  // child holds when the year is closed is written into EarnedBadge and kept for
+  // good (academic-year.ts). Badges can be lost DURING a year and never after
+  // it. Quiz badges sit outside this entirely and are permanent from the moment
+  // they are earned.
+  const currentStreak = computeStreak(attendance.days);
+  const spell = currentAttendanceRate(attendance.days, MIN_DAYS_FOR_ATTENDANCE_BADGE);
 
   return [
     {
       id: "here-all-week",
       label: "Here all week",
       description: "Five school days in a row",
-      earned: bestStreak >= 5,
-      progress: bestStreak < 5 ? { current: bestStreak, target: 5 } : undefined,
+      earned: currentStreak >= 5,
+      progress: currentStreak < 5 ? { current: currentStreak, target: 5 } : undefined,
       icon: "fire",
     },
     {
       id: "regular",
       label: "Rock solid",
-      // Past tense on purpose: it says what happened, and what happened does not
-      // stop having happened.
-      description: "Reached 95% attendance",
-      // null means "not enough school days yet to say", which is not the same as
-      // failing — a child in their first week has not missed anything.
-      earned: bestSpell !== null && bestSpell >= 95,
+      // Present tense now, because it is a statement about how things stand.
+      description: "Holding 95% attendance",
+      // null still means "not enough school days yet to say", which is not the
+      // same as failing — a child in their first week has not missed anything.
+      earned: spell !== null && spell >= 95,
       icon: "calendar",
     },
     {

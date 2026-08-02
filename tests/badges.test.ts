@@ -186,14 +186,26 @@ describe("derivation tracks reality", () => {
   });
 });
 
-describe("an absence does not take an earned badge away", () => {
+describe("an absence DOES take an attendance badge away", () => {
   /**
-   * The scenario that drove the change: a child turns up every day for a month,
-   * then is off ill for a fortnight. Reading the CURRENT streak and the
-   * WHOLE-window percentage took both attendance badges off them for being
-   * unwell — which is neither something they chose nor something a reward should
-   * respond to. The badges now ask whether it happened, not whether it is still
-   * happening.
+   * THIS REVERSES AN EARLIER DECISION, and the earlier reasoning is kept here
+   * because it was not wrong — it was answering a different question.
+   *
+   * It used to read: a child turns up every day for a month, then is off ill for
+   * a fortnight, and taking their badges away punishes them for being unwell.
+   * So the badges asked whether it HAD happened, not whether it was still
+   * happening, and a badge once earned could not be lost.
+   *
+   * The school asked for the opposite, and the reason is the streak itself: a
+   * streak nobody can lose is a participation sticker, and a number a child
+   * cannot affect stops meaning anything to them. So an attendance badge is now
+   * a statement about how things stand, and breaking a run takes it away the
+   * same day.
+   *
+   * What keeps that from being harsh is the ACADEMIC YEAR, not the window.
+   * Whatever a child holds when the year is closed is archived into EarnedBadge
+   * and kept for good, and quiz badges never enter this system at all. A badge
+   * can be lost during a year and never after it.
    *
    * Built from scratch rather than read off the seed: this needs more history
    * than a fortnight, and a test that only passes on freshly-seeded data is a
@@ -270,7 +282,7 @@ describe("an absence does not take an earned badge away", () => {
     expect(await attendanceBadges()).toEqual({ rockSolid: true, hereAllWeek: true });
   });
 
-  it("⚠ keeps both after a fortnight off ill", async () => {
+  it("⚠ loses both after a fortnight off", async () => {
     const recent = await db.attendanceSession.findMany({
       where: { id: { in: sessionIds } },
       orderBy: { dateKey: "desc" },
@@ -286,7 +298,9 @@ describe("an absence does not take an earned badge away", () => {
 
     try {
       // Attendance across the window is now around 67% and the current streak is
-      // nil. Both badges describe something that already happened.
+      // nil — so both badges describe something that is no longer true, and both
+      // go. The month that earned them is not erased: it is archived the moment
+      // the school closes the academic year.
       const summary = await getAttendanceSummary(
         schoolId,
         subjectMembershipId,
@@ -296,7 +310,7 @@ describe("an absence does not take an earned badge away", () => {
       expect(summary.percent).toBeLessThan(90);
       expect(computeStreak(summary.recent)).toBe(0);
 
-      expect(await attendanceBadges()).toEqual({ rockSolid: true, hereAllWeek: true });
+      expect(await attendanceBadges()).toEqual({ rockSolid: false, hereAllWeek: false });
     } finally {
       await db.attendanceRecord.updateMany({
         where: { sessionId: { in: ids }, studentMembershipId: subjectMembershipId },

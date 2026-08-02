@@ -356,3 +356,30 @@ export function bestAttendanceSpell(
   }
   return best;
 }
+
+/**
+ * Attendance over the MOST RECENT `minDays` school days.
+ *
+ * The counterpart to `bestAttendanceSpell`, and it exists because the school
+ * asked for the opposite policy: a badge should say how things stand, not how
+ * they once stood. Where the "best spell" version let a clean month keep its
+ * badge through a fortnight of illness, this one takes the badge away — and the
+ * academic year is what makes that fair, because whatever a child holds when the
+ * year closes is archived and kept for good.
+ *
+ * `minDays` still matters for the same reason: a percentage over one or two days
+ * is not a fact about anything, and a single day present would hand out a 100%
+ * badge on a child's first morning. Null means "not enough history to say",
+ * which a caller must treat as "not yet" rather than as zero.
+ */
+export function currentAttendanceRate(
+  days: { dateKey: string; status: AttendanceStatus }[],
+  minDays: number,
+): number | null {
+  const sorted = [...days].sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+  if (sorted.length < minDays) return null;
+
+  const recent = sorted.slice(-minDays);
+  const present = recent.filter((day) => attended(day.status)).length;
+  return Math.round((present * 100) / recent.length);
+}

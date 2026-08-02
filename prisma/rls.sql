@@ -222,6 +222,30 @@ CREATE POLICY "AuditLog_tenant_isolation" ON "AuditLog"
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
               OR "schoolId" IS NULL);
 
+-- AcademicYear
+ALTER TABLE "AcademicYear" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AcademicYear" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AcademicYear_tenant_isolation" ON "AcademicYear";
+CREATE POLICY "AcademicYear_tenant_isolation" ON "AcademicYear"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- Holiday
+ALTER TABLE "Holiday" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Holiday" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Holiday_tenant_isolation" ON "Holiday";
+CREATE POLICY "Holiday_tenant_isolation" ON "Holiday"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- EarnedBadge
+ALTER TABLE "EarnedBadge" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "EarnedBadge" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "EarnedBadge_tenant_isolation" ON "EarnedBadge";
+CREATE POLICY "EarnedBadge_tenant_isolation" ON "EarnedBadge"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition

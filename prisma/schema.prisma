@@ -80,6 +80,9 @@ model School {
   remarkMessages RemarkMessage[]
   comments       Comment[]
   reactions      Reaction[]
+  academicYears  AcademicYear[]
+  holidays       Holiday[]
+  earnedBadges   EarnedBadge[]
 
   @@index([code])
 }
@@ -172,6 +175,7 @@ model Membership {
   postsAuthored          Post[]              @relation("PostAuthorMembership")
   postsReviewed          Post[]              @relation("PostReviewer")
   invitesCreated         Invite[]            @relation("InviteCreator")
+  earnedBadges           EarnedBadge[]
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -740,4 +744,99 @@ model OutboundEmail {
   createdAt DateTime @default(now())
 
   @@index([to, createdAt])
+}
+
+/// ---------------------------------------------------------------------------
+/// Academic year, holidays, and badges that outlive them
+/// ---------------------------------------------------------------------------
+
+/// The year a school is currently running.
+///
+/// Everything that "resets in September" hangs off this: attendance streaks, the
+/// badges earned from them, and eventually reports. Exactly one row per school
+/// may be current, which `closeAcademicYear` maintains rather than trusting a
+/// caller to.
+model AcademicYear {
+  id        String    @id @default(cuid())
+  schoolId  String
+  name      String // "2026–27", as the school writes it
+  startDate DateTime
+  endDate   DateTime
+  /// Exactly one per school. Closing a year is an admin action, never automatic:
+  /// a school decides when its year ended, and a date-based guess would archive
+  /// a child's badges in the middle of an exam week.
+  isCurrent Boolean   @default(false)
+  closedAt  DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  holidays     Holiday[]
+  earnedBadges EarnedBadge[]
+
+  @@unique([schoolId, name])
+  @@index([schoolId, isCurrent])
+}
+
+/// A day the school is shut, or otherwise not teaching.
+///
+/// Attendance percentages divide by the days a register COULD have been taken,
+/// so a holiday that is not recorded here quietly makes every child look worse.
+/// A range is one row with an end date rather than one row per day: a school
+/// enters "Diwali break, 8th to 15th" and should not have to enter eight things.
+model Holiday {
+  id             String  @id @default(cuid())
+  schoolId       String
+  academicYearId String?
+  name           String
+  /// YYYY-MM-DD in the SCHOOL's timezone, like every other date key here.
+  startDateKey   String
+  /// Inclusive. Equal to startDateKey for a single day.
+  endDateKey     String
+  kind           String  @default("HOLIDAY") // HOLIDAY | EXAM | EVENT
+  note           String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear? @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, startDateKey])
+}
+
+/// A badge a child has earned and KEEPS.
+///
+/// Attendance badges are derived live from the register, so that breaking a
+/// streak takes the badge away the same day — that is the point of a streak. But
+/// a year's achievements must not vanish because the next year started, so
+/// closing an academic year writes the badges standing at that moment into rows
+/// here, where nothing recalculates them again.
+///
+/// Badges earned by finishing a topic without looking at the solutions are
+/// written here IMMEDIATELY and marked permanent: they record something a child
+/// did once, which no later absence can undo.
+model EarnedBadge {
+  id                  String  @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  academicYearId      String?
+
+  badgeId     String // matches the derived badge ids in badges.ts, or a quiz topic
+  label       String
+  description String  @default("")
+  /// Permanent badges ignore the academic year entirely and are never archived
+  /// or recalculated — currently the quiz ones.
+  permanent   Boolean @default(false)
+
+  earnedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student      Membership    @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear? @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
+
+  @@unique([studentMembershipId, badgeId, academicYearId])
+  @@index([schoolId, studentMembershipId])
 }
