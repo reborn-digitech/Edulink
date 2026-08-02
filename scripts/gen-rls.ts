@@ -32,6 +32,13 @@ const NO_SCHOOL_POLICY = new Set([
   "Guardianship",
   "Competition",
   "OutboundEmail",
+  // The practice bank is a shared catalogue, exactly like Competition: a
+  // question about the quadratic formula belongs to no school, and scoping it to
+  // one would mean every school has an empty bank until it authors its own.
+  // What a CHILD did with the bank is school-scoped — QuizAttempt,
+  // QuizResponse and QuizMastery are all below and all carry a schoolId.
+  "QuizTopic",
+  "QuizQuestion",
 ]);
 
 /**

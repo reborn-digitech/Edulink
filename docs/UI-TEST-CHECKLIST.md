@@ -824,6 +824,59 @@ The two are on one page because they are one afternoon's work.
 - ☐ **⚠️** As **Tom (teacher)** and as a pupil, open `/admin/calendar` →
   **redirected**, not shown
 
+## 12j. Abhyaas — adaptive practice (student)
+
+- ☐ As **Amara (student)**: the bottom bar shows **Abhyaas**. Open it
+- ☐ Topics are listed with the hybrid names — **Ganit · Maths**, **Vigyan ·
+  Science**, **Itihaas · History**
+- ☐ **⚠️** There is **no leaderboard, no total, no "3 of 7"**. Every number on the
+  page is about this child and nobody else
+- ☐ Open **Linear Equations** → the first question is a **level 1** ("Yaad rakho ·
+  Remember") one, and the badge shows that level
+- ☐ **⚠️** View source / inspect the page → the **answer and the solution are not
+  in it**. They arrive only after you answer
+
+### The ladder
+
+- ☐ Answer **one** correctly → the level does **not** move (a guess is right a
+  quarter of the time)
+- ☐ Answer a **second** correctly → the level moves up, and the next question is
+  visibly harder
+- ☐ Get **two wrong in a row** → it eases back down
+- ☐ Leave the page and come back → you resume at the level you reached, **not** at
+  level 1
+
+### The reveal, and what it costs
+
+- ☐ Press **Show me how it works** → it asks first, and says in words that the
+  badge for this topic is forfeited
+- ☐ Press **I'll keep trying** → nothing is revealed and nothing is lost
+- ☐ Press **Yes, show me** → the working appears, and a line explains the badge is
+  not available this run
+- ☐ **⚠️** Answer a question normally → the solution appears **free**, with no
+  warning. Reading why you were wrong is marking, not peeking
+
+### The badge
+
+- ☐ Finish a topic having revealed **nothing** → the finish screen shows a medal
+  and says the badge is **yours for good**
+- ☐ Check `/student/profile` → the badge is listed
+- ☐ **⚠️** As an admin, close the academic year → the quiz badge is **still there**.
+  Attendance badges reset; this one never does
+- ☐ Start a fresh topic, reveal **one** solution, then finish it → **no badge**,
+  and the finish screen explains why rather than just omitting it
+- ☐ **⚠️** Reveal a solution, then **close the tab and come back** → the run is
+  resumed and the badge is **still forfeited**. Closing the tab must not launder a
+  peek
+- ☐ Finish a topic getting every answer **wrong**, revealing nothing → the badge
+  **is** awarded. It says "finished without peeking", not "got them right"
+
+### Not a pupil
+
+- ☐ **⚠️** As **Tom (teacher)** and as **Jordan (parent)**, open
+  `/student/abhyaas/maths-8-linear-equations` → **redirected**
+- ☐ **⚠️** Open `/student/abhyaas/not-a-real-topic` → **404**
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.

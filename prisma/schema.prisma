@@ -83,6 +83,9 @@ model School {
   academicYears  AcademicYear[]
   holidays       Holiday[]
   earnedBadges   EarnedBadge[]
+  quizAttempts   QuizAttempt[]
+  quizResponses  QuizResponse[]
+  quizMastery    QuizMastery[]
 
   @@index([code])
 }
@@ -176,6 +179,8 @@ model Membership {
   postsReviewed          Post[]              @relation("PostReviewer")
   invitesCreated         Invite[]            @relation("InviteCreator")
   earnedBadges           EarnedBadge[]
+  quizAttempts           QuizAttempt[]
+  quizMastery            QuizMastery[]
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -838,5 +843,178 @@ model EarnedBadge {
   academicYear AcademicYear? @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
 
   @@unique([studentMembershipId, badgeId, academicYearId])
+  @@index([schoolId, studentMembershipId])
+}
+
+/**
+ * --------------------------------------------------------------------------
+ */
+/**
+ * Abhyaas — adaptive practice
+ */
+/**
+ * --------------------------------------------------------------------------
+ */
+
+/// A chapter's worth of practice questions.
+///
+/// GLOBAL, LIKE THE COMPETITIONS CATALOGUE, and for the same reason: a question
+/// about the quadratic formula is not one school's property, and making every
+/// school author its own bank would mean no school has one. So topics and
+/// questions carry no `schoolId` and sit in `NO_SCHOOL_POLICY`.
+///
+/// What is emphatically NOT global is how a child did. Attempts, responses and
+/// mastery are school-scoped rows, because a list of a nine-year-old's wrong
+/// answers is exactly the kind of thing that must not cross a school boundary.
+model QuizTopic {
+  id         String @id @default(cuid())
+  /// MATHS | SCIENCE | HISTORY | GEOGRAPHY | CIVICS | ECONOMICS
+  subject    String
+  /// The class this chapter belongs to, as a number: 5, 6, 7…
+  classLevel Int
+  /// "Chapter 4 — Linear Equations", as the syllabus writes it.
+  chapter    String
+  name       String
+  /// Stable, human-readable, and what a badge id is built from:
+  /// `abhyaas:maths-8-linear-equations`. Renaming a topic must not orphan a
+  /// badge a child already earned, so this never changes once published.
+  slug       String @unique
+  summary    String @default("")
+  /// Display order within (subject, classLevel).
+  position   Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+  mastery   QuizMastery[]
+
+  @@index([subject, classLevel, position])
+}
+
+/// One question, its answer, and the worked solution behind the reveal.
+///
+/// `difficulty` is 1–6 and the ladder is deliberate — see QUIZ_LEVELS in
+/// `src/lib/quiz.ts`. Level 1 is "name the theorem"; level 6 is Olympiad. The
+/// adaptive engine walks it, so a gap in the middle of a topic's ladder makes
+/// that topic unplayable above the gap.
+///
+/// PROVENANCE IS REQUIRED, not decorative. `source` and `licence` are non-null
+/// so that a bank can always answer "where did this come from and may we serve
+/// it" — the question a question bank gets asked once, years later, by somebody
+/// who is not you.
+model QuizQuestion {
+  id      String @id @default(cuid())
+  topicId String
+
+  /// 1 RECALL · 2 UNDERSTAND · 3 APPLY · 4 ANALYSE · 5 COMPETITIVE · 6 OLYMPIAD
+  difficulty  Int
+  stem        String
+  /// JSON array of option strings. String, not Json — see the SQLite note.
+  choices     String
+  /// Index into `choices`. Validated against its length on import.
+  answerIndex Int
+  /// Shown only when a child asks for it, and asking costs the badge.
+  solution    String
+
+  /// Optional machine-checkable assertion, e.g. "42" or "3/4". When present the
+  /// verifier evaluates it and compares with the chosen option, which is the
+  /// only correctness check that is worth anything without a human.
+  checkExpr String?
+
+  source     String
+  licence    String
+  /// Set when a person has actually read this question and its solution.
+  /// Null means unreviewed, and the verifier counts those out loud.
+  reviewedAt DateTime?
+  reviewedBy String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  topic     QuizTopic      @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  responses QuizResponse[]
+
+  @@index([topicId, difficulty])
+}
+
+/// One sitting at one topic.
+model QuizAttempt {
+  id                  String @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  topicId             String
+
+  startedAt   DateTime  @default(now())
+  finishedAt  DateTime?
+  /// THE BADGE GATE. Set the moment a solution is revealed and never unset.
+  /// Not derived from the responses on finish, because a response row can be
+  /// deleted and a flag that was already true cannot be argued with.
+  revealedAny Boolean   @default(false)
+
+  school    School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student   Membership     @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  topic     QuizTopic      @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  responses QuizResponse[]
+
+  @@index([schoolId, studentMembershipId, topicId])
+}
+
+/// One answer to one question inside an attempt.
+model QuizResponse {
+  id         String @id @default(cuid())
+  schoolId   String
+  attemptId  String
+  questionId String
+
+  /// Null when the child revealed the solution without committing to an answer.
+  chosenIndex      Int?
+  correct          Boolean @default(false)
+  revealedSolution Boolean @default(false)
+  /// The level the engine served this at, kept so a run can be replayed.
+  servedDifficulty Int
+
+  answeredAt DateTime @default(now())
+
+  school   School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  attempt  QuizAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionId])
+  @@index([schoolId])
+}
+
+/// Where a child currently sits on one topic's ladder.
+///
+/// Survives between sittings on purpose: a child who reached level 4 last week
+/// should not be handed "name the formula" again on Monday. This is the whole of
+/// "adaptive" — the rest is presentation.
+model QuizMastery {
+  id                  String @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  topicId             String
+
+  /// 1–6, the level the next question is served at.
+  level        Int @default(1)
+  seenCount    Int @default(0)
+  correctCount Int @default(0)
+  /// Consecutive right / wrong at the current level. Two of either moves it.
+  streakRight  Int @default(0)
+  streakWrong  Int @default(0)
+
+  /// Set once the topic has been finished with no solution ever revealed. The
+  /// badge is written at the same moment and is permanent; this exists so the
+  /// UI can say so without re-deriving it from every attempt.
+  cleanCompletionAt DateTime?
+
+  updatedAt DateTime @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  topic   QuizTopic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, topicId])
   @@index([schoolId, studentMembershipId])
 }

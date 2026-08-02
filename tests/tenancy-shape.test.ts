@@ -34,6 +34,9 @@ const DIRECT = [
   "ClassTeacher",
   "Comment",
   "EarnedBadge",
+  "QuizAttempt",
+  "QuizResponse",
+  "QuizMastery",
   "CompetitionEntry",
   "Enrollment",
   "Grade",
@@ -73,6 +76,8 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   Guardianship: "deliberately cross-school: it is the link between a parent and a child",
   Competition: "organizerSchoolId is nullable because a competition may be run by nobody's school",
   OutboundEmail: "a dev mailbox of sent mail; has no tenant and holds no school data",
+  QuizTopic: "a shared practice catalogue, like Competition — a chapter belongs to no school",
+  QuizQuestion: "belongs to a QuizTopic, which belongs to no school",
 };
 
 function modelBodies(): Map<string, string> {
@@ -96,7 +101,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(30);
+    ).toBe(35);
   });
 });
 

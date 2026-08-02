@@ -2,6 +2,7 @@
 
 import {
   BellIcon,
+  BrainIcon,
   CalendarBlankIcon,
   ChalkboardTeacherIcon,
   ChartLineUpIcon,
@@ -44,6 +45,7 @@ const ICONS: Record<string, Icon> = {
   palette: PaletteIcon,
   bell: BellIcon,
   calendar: CalendarBlankIcon,
+  brain: BrainIcon,
   trophy: TrophyIcon,
 };
 

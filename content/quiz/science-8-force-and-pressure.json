@@ -1,0 +1,138 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 8,
+  "chapter": "Chapter 11 — Force and Pressure",
+  "name": "Force and Pressure",
+  "slug": "science-8-force-and-pressure",
+  "summary": "What a push does, and why the same push spread differently does something else.",
+  "position": 11,
+  "source": "NCERT Class 8 Science, syllabus topic coverage only",
+  "licence": "Original questions written for EduLink · CC BY-SA 4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the SI unit of force?",
+      "choices": ["Newton (N)", "Pascal (Pa)", "Joule (J)", "Watt (W)"],
+      "answerIndex": 0,
+      "solution": "Force is measured in newtons, named after Isaac Newton. One newton is the force that gives a 1 kg mass an acceleration of 1 m/s². The pascal is pressure, the joule is energy and the watt is power — all four turn up in this chapter, which is why they are easy to swap.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 1,
+      "stem": "State the formula for pressure.",
+      "choices": [
+        "Pressure = Force ÷ Area",
+        "Pressure = Force × Area",
+        "Pressure = Area ÷ Force",
+        "Pressure = Force × Distance"
+      ],
+      "answerIndex": 0,
+      "solution": "Pressure is force per unit area: P = F/A. The division is the whole idea — the same force spread over a larger area gives less pressure, which is why a sharp knife (tiny area) cuts and a blunt one does not, using exactly the same push.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why do the shoulder straps of a heavy school bag hurt less when they are wide?",
+      "choices": [
+        "The same weight is spread over a larger area, so the pressure is lower",
+        "The wider strap reduces the weight of the bag",
+        "Wide straps are made of softer material by law",
+        "The force becomes zero when the area is large"
+      ],
+      "answerIndex": 0,
+      "solution": "The weight of the bag does not change — the force is the same either way. What changes is the area it acts over. Since P = F/A, doubling the strap width roughly halves the pressure on the shoulder, and pressure is what the skin feels. This is the same reason a camel's broad foot does not sink into sand.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these is a non-contact force?",
+      "choices": [
+        "The magnetic force between two magnets",
+        "Friction between a box and the floor",
+        "The muscular force used to lift a bucket",
+        "Air resistance on a falling leaf"
+      ],
+      "answerIndex": 0,
+      "solution": "Magnetic force acts across a gap — two magnets attract or repel without touching. So do gravitational and electrostatic forces. The other three all require surfaces in contact: friction, muscular force and air resistance are contact forces. 'Can it act through empty space?' is the test.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 3,
+      "stem": "A force of 100 N acts on an area of 0.5 m². What is the pressure?",
+      "choices": ["200 Pa", "50 Pa", "100 Pa", "0.005 Pa"],
+      "answerIndex": 0,
+      "solution": "P = F/A = 100 ÷ 0.5 = 200 Pa. Dividing by a number smaller than 1 makes the answer larger, which catches people out — the instinct is that 100 ÷ 0.5 should be 50. Check the units: N/m² is exactly what a pascal is.",
+      "checkExpr": "100/0.5",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 3,
+      "stem": "A block weighs 60 N and rests on a face measuring 2 m by 1.5 m. What pressure does it exert on the ground?",
+      "choices": ["20 Pa", "40 Pa", "30 Pa", "90 Pa"],
+      "answerIndex": 0,
+      "solution": "First the area: 2 × 1.5 = 3 m². Then P = F/A = 60 ÷ 3 = 20 Pa. Two steps, and the first is the one that gets skipped — the question gives you two lengths, not an area, and multiplying them is your job.",
+      "checkExpr": "60/(2*1.5)",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 4,
+      "stem": "A brick of weight 24 N has faces of 0.2 m × 0.1 m, 0.2 m × 0.05 m and 0.1 m × 0.05 m. What is the greatest pressure it can exert on the ground?",
+      "choices": ["4800 Pa", "1200 Pa", "2400 Pa", "480 Pa"],
+      "answerIndex": 0,
+      "solution": "Greatest pressure comes from the SMALLEST face, since P = F/A. The three areas are 0.02 m², 0.01 m² and 0.005 m². The smallest is 0.005 m², so P = 24 ÷ 0.005 = 4800 Pa. Standing the brick on its end rather than laying it flat multiplies the pressure by four here, with no change in weight at all.",
+      "checkExpr": "24/0.005",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why does a dam wall need to be thicker at the bottom than at the top?",
+      "choices": [
+        "Liquid pressure increases with depth, so the wall must resist more force lower down",
+        "The water is colder at the bottom and colder water is heavier",
+        "The bottom of the dam carries the weight of the wall above it only",
+        "Pressure is the same at all depths, but the base needs decoration"
+      ],
+      "answerIndex": 0,
+      "solution": "Pressure in a liquid depends on the height of liquid above the point, so it grows steadily with depth. A point near the base of a dam has the entire column of water pressing on it, while a point near the surface has almost none. The wall is built to match that profile — thick where the pressure is greatest. This is also why a hole near the bottom of a water tank squirts further than one near the top.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two identical cylinders stand on a table. One is filled with water to 40 cm, the other to 10 cm. What is the ratio of the pressure at the base of the first to that of the second, due to the liquid alone?",
+      "choices": ["4 : 1", "1 : 4", "16 : 1", "2 : 1"],
+      "answerIndex": 0,
+      "solution": "Pressure due to a liquid column is P = hρg, where h is the height. Density and g are the same for both, so pressure is directly proportional to height alone. The ratio is therefore 40 : 10 = 4 : 1. Note what does NOT appear: the cross-sectional area. A wide tank and a narrow one filled to the same height have the same pressure at the base, which is the counter-intuitive part of this result.",
+      "checkExpr": "40/10",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 5,
+      "stem": "A hydraulic lift has a small piston of area 0.01 m² and a large piston of area 0.5 m². A force of 40 N is applied to the small piston. What is the maximum load the large piston can raise?",
+      "choices": ["2000 N", "800 N", "40 N", "20 N"],
+      "answerIndex": 0,
+      "solution": "By Pascal's law the pressure is transmitted undiminished, so P is the same at both pistons. P = 40 ÷ 0.01 = 4000 Pa. At the large piston, F = P × A = 4000 × 0.5 = 2000 N. The force is multiplied by the ratio of the areas, 50 times here. Energy is not created: the large piston rises only a fiftieth as far as the small one is pushed down.",
+      "checkExpr": "(40/0.01)*0.5",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cube of side 10 cm and density 600 kg/m³ floats in water of density 1000 kg/m³. What depth of the cube is submerged? (Take g = 10 m/s²)",
+      "choices": ["6 cm", "4 cm", "10 cm", "3.6 cm"],
+      "answerIndex": 0,
+      "solution": "Floating means the cube's weight equals the weight of the water it displaces. Volume of the cube = (0.1)³ = 0.001 m³, so its weight = 600 × 0.001 × 10 = 6 N. If a depth d is submerged, the displaced volume is 0.1 × 0.1 × d = 0.01d, so the upthrust is 1000 × 0.01d × 10 = 100d. Setting 100d = 6 gives d = 0.06 m = 6 cm. The shortcut worth remembering: the fraction submerged is just the ratio of the densities, 600/1000 = 0.6, so 0.6 × 10 cm = 6 cm. Ice floats with about 90% submerged for exactly this reason.",
+      "checkExpr": "10*600/1000",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    }
+  ]
+}

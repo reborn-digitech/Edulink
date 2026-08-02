@@ -246,12 +246,38 @@ CREATE POLICY "EarnedBadge_tenant_isolation" ON "EarnedBadge"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- QuizAttempt
+ALTER TABLE "QuizAttempt" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "QuizAttempt" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "QuizAttempt_tenant_isolation" ON "QuizAttempt";
+CREATE POLICY "QuizAttempt_tenant_isolation" ON "QuizAttempt"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- QuizResponse
+ALTER TABLE "QuizResponse" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "QuizResponse" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "QuizResponse_tenant_isolation" ON "QuizResponse";
+CREATE POLICY "QuizResponse_tenant_isolation" ON "QuizResponse"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- QuizMastery
+ALTER TABLE "QuizMastery" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "QuizMastery" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "QuizMastery_tenant_isolation" ON "QuizMastery";
+CREATE POLICY "QuizMastery_tenant_isolation" ON "QuizMastery"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition
 --   Guardianship
 --   OutboundEmail
 --   PushSubscription
+--   QuizQuestion
+--   QuizTopic
 --   Session
 --   User
 -- They are scoped by user instead, which the application layer already does.

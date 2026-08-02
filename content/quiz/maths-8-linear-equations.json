@@ -1,0 +1,125 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 2 — Linear Equations in One Variable",
+  "name": "Linear Equations",
+  "slug": "maths-8-linear-equations",
+  "summary": "One unknown, one equation, and the word problems hiding behind it.",
+  "position": 2,
+  "source": "NCERT Class 8 Mathematics, syllabus topic coverage only",
+  "licence": "Original questions written for EduLink · CC BY-SA 4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the standard form of a linear equation in one variable?",
+      "choices": ["ax + b = 0, where a ≠ 0", "ax² + bx + c = 0", "a/x = b", "x + y = c"],
+      "answerIndex": 0,
+      "solution": "Linear means the variable appears to the first power and nowhere else. The standard form is ax + b = 0. The condition a ≠ 0 matters: if a were 0 the x disappears and it stops being an equation in x at all — it becomes either b = 0 (never true) or 0 = 0 (always true).",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 1,
+      "stem": "In the equation 5x − 3 = 12, what is the coefficient of x?",
+      "choices": ["5", "−3", "12", "15"],
+      "answerIndex": 0,
+      "solution": "The coefficient is the number multiplying the variable, so it is 5. The −3 is the constant term on the left and 12 is the constant on the right. Naming the parts correctly is what makes the next step ('add 3 to both sides') obvious rather than remembered.",
+      "checkExpr": "5",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why may you add the same number to both sides of an equation?",
+      "choices": [
+        "Because an equation states two quantities are equal, and equals stay equal under the same operation",
+        "Because addition is commutative",
+        "Because it makes the numbers smaller",
+        "Because the variable must always end up on the left"
+      ],
+      "answerIndex": 0,
+      "solution": "An equation is a statement that two expressions name the same number. Doing the same thing to both sides keeps that true, which is why the new equation has the same solution as the old one. This is the balance principle, and it is the reason every step is allowed — not a trick to be memorised.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many solutions does a linear equation in one variable have, when a ≠ 0?",
+      "choices": ["Exactly one", "None", "Exactly two", "Infinitely many"],
+      "answerIndex": 0,
+      "solution": "ax + b = 0 rearranges to x = −b/a, which is a single number whenever a ≠ 0. A quadratic can have two roots because of the x² term; a linear equation has no such term, so there is nothing to give it a second answer.",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: 5x − 3 = 12",
+      "choices": ["x = 3", "x = 1.8", "x = 15", "x = −3"],
+      "answerIndex": 0,
+      "solution": "Add 3 to both sides: 5x = 15. Divide both sides by 5: x = 3. Check by substituting back — 5(3) − 3 = 15 − 3 = 12, which is the right-hand side, so x = 3 is correct. Substituting back is the step most often skipped and the one that catches sign errors.",
+      "checkExpr": "(12+3)/5",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: 2(x + 4) = 3x − 1",
+      "choices": ["x = 9", "x = 7", "x = −9", "x = 3"],
+      "answerIndex": 0,
+      "solution": "Expand the bracket: 2x + 8 = 3x − 1. Subtract 2x from both sides: 8 = x − 1. Add 1: x = 9. Check: left 2(9 + 4) = 26, right 3(9) − 1 = 26. Equal, so x = 9. Note the variable was collected on the right to keep its coefficient positive, which avoids a sign slip.",
+      "checkExpr": "8+1",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 4,
+      "stem": "The sum of three consecutive integers is 72. What is the largest of them?",
+      "choices": ["25", "24", "23", "26"],
+      "answerIndex": 0,
+      "solution": "Let the middle integer be x, so the three are x − 1, x and x + 1. Their sum is 3x, because the −1 and +1 cancel. So 3x = 72 and x = 24, making the three integers 23, 24 and 25. The largest is 25. Choosing the MIDDLE one as the unknown is what makes the algebra collapse to 3x; naming the smallest gives 3x + 3 = 72, which works but takes an extra line.",
+      "checkExpr": "72/3+1",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 4,
+      "stem": "A father is four times as old as his son. In 12 years he will be twice as old. How old is the son now?",
+      "choices": ["6", "8", "9", "12"],
+      "answerIndex": 0,
+      "solution": "Let the son be x, so the father is 4x. In 12 years they are x + 12 and 4x + 12, and the father is twice the son: 4x + 12 = 2(x + 12). Expand: 4x + 12 = 2x + 24. So 2x = 12 and x = 6. Check: son 6 and father 24 now; in 12 years, 18 and 36, and 36 = 2 × 18. Both people age by the same 12 years — adding it to only one side is the usual mistake here.",
+      "checkExpr": "(24-12)/2",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 5,
+      "stem": "A two-digit number is 4 times the sum of its digits. If 18 is added to the number, its digits are reversed. What is the number?",
+      "choices": ["24", "36", "48", "12"],
+      "answerIndex": 0,
+      "solution": "Let the tens digit be a and the units digit b, so the number is 10a + b. First condition: 10a + b = 4(a + b), giving 6a = 3b, so b = 2a. Second: 10a + b + 18 = 10b + a, giving 9a + 18 = 9b, so b = a + 2. Setting the two expressions for b equal: 2a = a + 2, so a = 2 and b = 4. The number is 24. Check: 24 = 4 × 6 and 24 + 18 = 42, which is 24 reversed.",
+      "checkExpr": "10*2+4",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 5,
+      "stem": "A boat travels 30 km downstream in the same time it takes to travel 18 km upstream. If the stream flows at 2 km/h, what is the boat's speed in still water?",
+      "choices": ["8 km/h", "6 km/h", "10 km/h", "12 km/h"],
+      "answerIndex": 0,
+      "solution": "Let the still-water speed be x. Downstream speed is x + 2, upstream is x − 2. Equal times means 30/(x + 2) = 18/(x − 2). Cross-multiply: 30(x − 2) = 18(x + 2), so 30x − 60 = 18x + 36, giving 12x = 96 and x = 8 km/h. Check: downstream 30/10 = 3 hours, upstream 18/6 = 3 hours. Equal, as required. The equation comes from equating TIMES, not distances or speeds.",
+      "checkExpr": "96/12",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    },
+    {
+      "difficulty": 6,
+      "stem": "Find the number of positive integers n ≤ 100 for which the equation 3x + 7y = n has at least one solution in non-negative integers x and y.",
+      "choices": ["94", "100", "88", "90"],
+      "answerIndex": 0,
+      "solution": "3 and 7 are coprime, so the Chicken McNugget (Frobenius) theorem applies. The largest integer NOT representable as 3x + 7y with x, y ≥ 0 is 3·7 − 3 − 7 = 11, and the number of non-representable positive integers is (3 − 1)(7 − 1)/2 = 6. Listing them confirms it: 1, 2, 4, 5, 8, 11 — six values, all at most 11. Every other n from 1 to 100 is representable, so the count is 100 − 6 = 94.",
+      "checkExpr": "100-6",
+      "reviewedAt": "2026-08-02",
+      "reviewedBy": "seed"
+    }
+  ]
+}

@@ -133,7 +133,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (568 tests) |
+| `npm test` | Full suite (618 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. **Drops the grants AND the policies** — see Known issues before using |
 | `npm run db:studio` | Browse the data |
@@ -141,6 +141,8 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
+| `npm run quiz:verify` | Check the question bank. Structure + arithmetic. **Says what it cannot check** |
+| `npm run quiz:import` | Load `content/quiz/*.json`. Verifies first and refuses the run if anything fails |
 | `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
@@ -148,7 +150,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 106 route/role/negative combinations
+mints a real session per role, requests all 112 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -184,7 +186,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ### Where things live
 
 ```
-prisma/schema.prisma      30 models. Read the header comment first.
+prisma/schema.prisma      35 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
 prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.
@@ -208,6 +210,7 @@ src/lib/                  All business logic. Pages are thin.
   badges.ts               Student badges, derived on read — never stored. Windowed on the academic year.
   academic-year.ts        ★ Shaikshanik Varsh. Snapshot THEN flip — the order is the function.
   holidays.ts             ★ Chhutti Calendar. Range maths is pure; only kind=HOLIDAY closes school.
+  quiz.ts                 ★ Abhyaas. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -222,6 +225,7 @@ src/components/attachment-list.tsx  Attach/detach on an existing record.
 src/sw.ts                 Service worker (Serwist compiles to public/sw.js).
 tests/                    Integration tests (need the seed).
 src/**/*.test.ts          Unit tests.
+content/quiz/*.json       The Abhyaas question bank. Read content/quiz/README.md first.
 docs/UI-TEST-CHECKLIST.md Manual walkthrough of every feature.
 ```
 
@@ -408,11 +412,11 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Abhyaas — the adaptive quizzing engine, before its content.** Schema,
-   adaptive selection, solution-reveal gate and a bulk importer. The badge side
-   is already done: `awardPermanentBadge` exists precisely so that a topic
-   finished without opening a single solution is recorded once and never
-   recalculated. Author the bank in batches afterwards and report real counts.
+1. **Fill the Abhyaas bank, in batches.** The engine, importer, verifier and
+   badge are done — what is missing is content. One chapter at a time, every
+   computable answer carrying a `checkExpr`, every non-computable one carrying a
+   real name in `reviewedBy`, and `npm run quiz:verify` run before each import.
+   Its three separate counts are the measure of progress; the total is not.
 2. **Weighted grade categories.** Both are grading
    work and both go through `overallPercent`, so they share their hard part.
 3. **Global feed.** Bigger than it sounds: it is the second thing that would show
@@ -716,7 +720,7 @@ One line each, with the default rejected.
   teacher who does not teach the child is refused even at their own school —
   `assertGuardianAccess` for a parent, and the child themselves. A summary must
   not outrank the things it summarises.
-- **106/106 route checks** as a signed-in user of the owning role, against a
+- **112/112 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -738,9 +742,9 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **568 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **618 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, competitions, reports, audit, academic-year, holidays, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, academic-year, holidays, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+  file-cache, badges, academic-year, holidays, quiz, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -778,6 +782,36 @@ One line each, with the default rejected.
   18 children with not enough history" with complete confidence. It reads the
   register on the admin connection now. Worth knowing before writing any other
   script that imports from `src/lib/`.
+- **Abhyaas — the engine, verified nine ways by mutation.** Promote on one right
+  answer instead of two → 4 checks fail. Let streaks survive a level change → 1.
+  Stop a right answer clearing the losing streak → 1. Derive the badge gate from
+  the response rows instead of the attempt flag → 1. Make `startAttempt` always
+  open a fresh attempt, which would launder a reveal by closing the tab → 2.
+  Let a repeated answer move the level again → 1. Award before every question is
+  answered → 3. Ignore what has already been seen → 11. Count an out-of-range
+  choice as correct → 1.
+- **The badge cannot be got by peeking, along three separate routes.** The flag
+  lives on the ATTEMPT and is never unset, so: deleting the response row that
+  recorded the reveal changes nothing; closing the tab and coming back RESUMES
+  the attempt rather than starting a clean one; and revealing without answering
+  still forfeits. Each is its own test, because each is a plausible way to launder
+  a look at the answer.
+- **The verifier found a wrong answer in the first hour.** A level-6 question I
+  had just written was marked 90 where the worked solution derived 94; the
+  `checkExpr` evaluated to 94 and the import was refused. That is the whole case
+  for putting a machine-checkable expression on every question whose answer is
+  computable — 14 of the first 33 carry one.
+- **What `quiz:verify` will NOT tell you**, printed by the tool itself on every
+  run: 19 of 33 questions are not machine-checkable, because there is no program
+  that can confirm "Dandi March, 1930" answers a history question. It reports
+  structure, arithmetic and human-review counts as three separate numbers and
+  never collapses them into "verified". A bank that claims to be verified correct
+  by a script is telling you about the script.
+- **A served question never contains the answer.** `answerIndex` and `solution`
+  are not selected at all, rather than selected and dropped — a field absent from
+  the query cannot be leaked by a later refactor that spreads the row into a
+  response. Tested by asserting the serialised payload does not contain the
+  solution text.
 - **The reseeded database, verified in the order that catches things.** 568
   tests green, `rls:verify` green — and every one of the 106 routes returning
   **500**, because the reset had taken the app role's `USAGE ON SCHEMA public`
@@ -966,7 +1000,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 106 checks in
+**Every route referenced by the navigation renders.** All 112 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -988,17 +1022,28 @@ the release where every page rendered and nothing saved.
   one school another school's children — a decision, and a policy change, before
   it is a page.
 - Weighted grade categories
-- **Abhyaas** (adaptive quizzing). The permanent-badge half is built and waiting —
-  `awardPermanentBadge` writes a badge with no academic year, which nothing
-  recalculates and no later absence can take away, under the id convention
-  `abhyaas:<topic>`. What is missing is the question bank, the adaptive engine
-  and the solution-reveal gate. On the bank: the ask is 500 questions a chapter,
-  5,000+ a subject a class, which across six subjects and five class-levels is
-  150,000+ questions with worked solutions. The schema, engine and importer come
-  first because they have to be right; content then lands in batches with real
-  counts reported each time. Generating tens of thousands of unchecked answers
-  and calling it done would be worse than a smaller bank — a wrong answer in a
-  children's question bank is worse than a missing one.
+- **The Abhyaas question BANK, at scale.** The engine is built and works end to
+  end; the bank is **33 questions across 3 topics**, evenly spread over all six
+  levels. The ask was 500 a chapter, 5,000+ a subject a class — across six
+  subjects and five class-levels, 150,000+ questions with worked solutions. That
+  is a content programme, not a commit, and the honest position is:
+
+  **Not scraped, and this is deliberate.** Olympiad papers, textbook exercises
+  and commercial test-prep collections are copyrighted, individually and again
+  as curated collections; bulk-scraping them into a database served to
+  schoolchildren is infringement and reformatting does not change that. Facts
+  are not copyrightable, so every question here is written for this bank against
+  the same syllabus, and `source` + `licence` are NOT NULL so provenance cannot
+  rot. See `content/quiz/README.md`.
+
+  **Not bulk-generated, and this is also deliberate.** A wrong answer in a
+  children's question bank is worse than a missing one — it teaches the wrong
+  thing and it is trusted. At 150,000 items nobody can check them, and
+  `quiz:verify` is explicit that it checks structure and arithmetic, not
+  history. The route that works is batches, each with `checkExpr` where the
+  answer is computable and a person's name in `reviewedBy` where it is not, with
+  real counts reported per batch. `quiz:verify` prints exactly those counts so
+  the bank can never claim more than it has earned.
 - **Prerna** (expert consultation dashboard for admin and teachers) and
   **Margdarshak** (1:1 student↔expert mentor chat). Neither is started. Read
   `remarks.ts` first for the 1:1 chat — the visibility rules an outside adult

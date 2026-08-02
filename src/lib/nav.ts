@@ -52,6 +52,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student", label: "Today", icon: "house", primary: true },
     { href: "/student/work", label: "My work", icon: "clipboard", primary: true, prefix: true },
     { href: "/student/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
+    { href: "/student/abhyaas", label: "Abhyaas", icon: "brain", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", primary: true, prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/student/profile", label: "Me", icon: "user", prefix: true },
