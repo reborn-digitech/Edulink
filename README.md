@@ -135,7 +135,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
 | `npm test` | Full suite (568 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm run db:reset` | Wipe and reseed |
+| `npm run db:reset` | Wipe and reseed. **Drops the grants AND the policies** — see Known issues before using |
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
@@ -778,6 +778,14 @@ One line each, with the default rejected.
   18 children with not enough history" with complete confidence. It reads the
   register on the admin connection now. Worth knowing before writing any other
   script that imports from `src/lib/`.
+- **The reseeded database, verified in the order that catches things.** 568
+  tests green, `rls:verify` green — and every one of the 106 routes returning
+  **500**, because the reset had taken the app role's `USAGE ON SCHEMA public`
+  with it. Neither of the first two checks can see that: the suite connects as
+  the owner, and the policy verifier is satisfied by a role that cannot read
+  anything at all. `npm run sweep` is what found it. After restoring the three
+  grants: **106/106**, `rls:verify` green, on a Mon–Sat register of 54 school
+  days.
 - **The calendar driven end to end, production build.** With no year set up
   `/admin` shows the “Start your academic year” card; create a year and it
   collapses to a one-line strip naming the next thing on the calendar; the entry
@@ -785,8 +793,16 @@ One line each, with the default rejected.
   warn a teacher that the school is shut **without disabling the register**;
   changing that same entry to an EXAM flips the strip to “School is open” and the
   warning disappears; and a teacher asking for `/admin/calendar` is redirected.
-  Nine checks, all passing — rendering is not the same as working, so each one
-  asserts the text a person would actually read.
+  Plus the Mon–Sat week where a person meets it: a **declared Saturday holiday
+  warns**, an **undeclared Saturday does not** — it is an ordinary school day —
+  and `/parent/attendance` renders the Saturday sessions with no "Weekend
+  session" caption on them. **Eleven checks**, all passing, each asserting the
+  text a person would actually read rather than a status code.
+- **A twelfth check was written and then deleted**, which is the honest note.
+  "A Sunday needs no declaration" was asserting `true`: the register's banner
+  reads declared entries only, so a Sunday shows nothing and there was no
+  outcome that could have failed it. Sunday is a real assertion in
+  `tests/holidays.test.ts`, where the maths can actually be wrong.
 - **The Chhutti Calendar, and the one thing it is actually for.** The obvious
   motivation — "attendance should not count holidays" — turned out to be already
   true, and for a better reason than a holiday table: an attendance percentage
@@ -839,16 +855,12 @@ One line each, with the default rejected.
   updating and deleting reach nothing. The verifier also refuses a SUPERUSER app
   role and any table whose policy is not FORCED — neither of which a query can
   detect, and the FORCE gap was found by an earlier verifier passing with it off.
-- **Seeded attendance now crosses its own thresholds.** Six children on 100%,
-  eight on 90%, two on 80% and two on 70% — so `/teacher/classes/<id>` reads
-  "Attendance concern 4" where it was structurally 0 before, and "Rock solid"
-  (95%) is earned by six rather than being unreachable. Streaks land on 0, 1, 8
-  and 10, so the streak badge is earned by sixteen of eighteen (re-measured under
-  the current rule — this line said fourteen, from the ten-day seed) and the
-  progress bar has something to draw. All four statuses appear (148 present, 14 late, 12
-  excused, 6 absent). Verified by seeding a throwaway database and rendering the
-  class page against it; the suite passes twice on that seed and twice on the
-  old one.
+- **Seeded attendance crosses its own thresholds**, which it structurally could
+  not at ten days: "Attendance concern" reads 4 rather than 0, and "Rock solid"
+  is reachable rather than unearnable by anyone. The figures above are the
+  current ones — this entry previously quoted 148/14/12/6 and streaks of 0, 1, 8
+  and 10, both measured on seeds that no longer exist. Re-measure rather than
+  carry numbers forward: `scripts/badge-count.ts` exists for exactly this.
 - **Orphan sweep.** Planted an unreferenced file: `files:check` listed it and
   deleted nothing; `files:reclaim` removed it and left the eight oddly-named
   fixtures in `storage/` alone. Mutation-tested in both directions — dropping the
@@ -1001,12 +1013,28 @@ the release where every page rendered and nothing saved.
 
 ### Known issues
 
-- **An existing dev database still has a Monday-to-Friday register.** The seed
-  now generates Saturdays, but changing the seed does not change data already
-  seeded. Nothing is *wrong* — attendance denominators count registers taken, so
-  a Saturday-less history is merely a history without Saturdays — but the seeded
-  figures will not exercise the new week until you reseed. `npm run db:reset`
-  wipes the development database, so it is deliberately not run for you.
+- **`npm run db:reset` leaves the app role unable to open the database, and
+  `rls:verify` will still pass.** `prisma db push --force-reset` drops and
+  recreates the `public` SCHEMA, not just the tables — which destroys the
+  schema-level `USAGE` grant and the default privileges alongside the policies.
+  The app then gets `42501 permission denied for schema public` on every query,
+  which surfaces as a 500 on every page. Three statements, all of them, in this
+  order, then reapply the policies:
+
+  ```bash
+  psql -d edulink_dev \
+    -c "GRANT USAGE ON SCHEMA public TO edulink_app;" \
+    -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO edulink_app;" \
+    -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO edulink_app;"
+  psql -d edulink_dev -f prisma/rls.sql
+  npm run sweep
+  ```
+
+  **`npm run rls:verify` is not the check for this**, and that is the trap: it
+  connects, finds the app role can read nothing it should not, and reports all
+  checks passed — because a role that cannot open the schema at all also cannot
+  cross a tenant boundary. It passed while all 106 routes were 500. `npm run
+  sweep` is what catches it. This was found by reseeding, not by reading.
 - **`isTeachingDay` is one school's week, not a setting.** Mon–Sat is hardcoded,
   in one function, on purpose: making it per-school later is a change to that
   body plus a column on `School`, rather than a hunt through inlined
