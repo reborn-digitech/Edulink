@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRightIcon,
+  CalendarBlankIcon,
   CheckCircleIcon,
   ChalkboardTeacherIcon,
   ConfettiIcon,
@@ -12,6 +13,8 @@ import {
 import { requireRole } from "@/lib/tenancy";
 import { getChecklist } from "@/lib/onboarding";
 import { db } from "@/lib/db";
+import { currentAcademicYear } from "@/lib/academic-year";
+import { listHolidays, nextEntry } from "@/lib/holidays";
 import { todayKey, formatDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -37,8 +40,17 @@ export default async function AdminDashboard({
 
   const dateKey = todayKey(school.timezone);
 
-  const [checklist, teacherCount, studentCount, classCount, pendingInvites, todaySessions, classesTotal] =
-    await Promise.all([
+  const [
+    checklist,
+    teacherCount,
+    studentCount,
+    classCount,
+    pendingInvites,
+    todaySessions,
+    classesTotal,
+    academicYear,
+    calendar,
+  ] = await Promise.all([
       getChecklist(ctx.schoolId),
       db.membership.count({ where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE" } }),
       db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE" } }),
@@ -46,9 +58,14 @@ export default async function AdminDashboard({
       db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING" } }),
       db.attendanceSession.count({ where: { schoolId: ctx.schoolId, dateKey } }),
       db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
+      currentAcademicYear(ctx.schoolId),
+      // From today on: the dashboard is asking "what is coming up", and a
+      // finished break is not that. The calendar page shows the whole year.
+      listHolidays(ctx.schoolId, { fromKey: dateKey }),
     ]);
 
   const attendanceTaken = classesTotal === 0 ? 0 : Math.round((todaySessions / classesTotal) * 100);
+  const coming = nextEntry(calendar, dateKey);
 
   return (
     <div className="space-y-6">
@@ -69,6 +86,58 @@ export default async function AdminDashboard({
           <Link href="/admin/invites/new">Invite people</Link>
         </Button>
       </div>
+
+      {/*
+        ---------------- the school year ----------------
+
+        Two states, and the difference between them is the whole point. With no
+        year set up this is a call to action, because badges cannot reset until
+        one exists and nobody would guess that from anywhere else in the app.
+        Once a year is running it collapses to one quiet line: a banner that
+        never changes is wallpaper, and the next thing an admin needs from this
+        area is not "start a year" but "when is the next holiday".
+      */}
+      {!academicYear ? (
+        <Card className="border-accent/40 bg-accent-soft/30">
+          <CardBody className="flex flex-wrap items-center gap-4 pt-5">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-accent-fg">
+              <GraduationCapIcon weight="fill" className="size-6" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="font-semibold text-fg">Start your academic year</p>
+              <p className="mt-0.5 text-sm text-fg-muted">
+                Attendance badges are counted from the start of the year and are kept forever when
+                you close it. Until you set one up they look back a rolling 60 days and never reset.
+              </p>
+            </div>
+            <Button asChild>
+              <Link href="/admin/calendar">Set up the year</Link>
+            </Button>
+          </CardBody>
+        </Card>
+      ) : (
+        <Card>
+          <CardBody className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
+            <CalendarBlankIcon weight="duotone" className="size-6 shrink-0 text-fg-muted" />
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-fg">
+                {academicYear.name}
+                <span className="ml-2 font-normal text-fg-muted">
+                  {coming
+                    ? `Next up: ${coming.name}, ${formatDateKey(coming.startDateKey, {
+                        day: "numeric",
+                        month: "long",
+                      })}`
+                    : "Nothing on the calendar ahead"}
+                </span>
+              </p>
+            </div>
+            <Button asChild variant="secondary" size="sm">
+              <Link href="/admin/calendar">Update the calendar</Link>
+            </Button>
+          </CardBody>
+        </Card>
+      )}
 
       {/* ---------------- setup checklist ---------------- */}
       {!checklist.complete ? (

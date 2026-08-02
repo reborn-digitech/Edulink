@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChalkboardTeacherIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
+import { ChalkboardTeacherIcon, CaretRightIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, assertClassAccess, teacherClassIds } from "@/lib/tenancy";
 import { getRegister } from "@/lib/attendance";
+import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
 import { formatDateKey, todayKey, isDateKey } from "@/lib/dates";
 import { Register } from "./register";
@@ -28,6 +29,9 @@ export default async function AttendancePage({
   const today = todayKey(school.timezone);
   // A hand-edited ?date= must not reach the database as garbage. (§5)
   const dateKey = params.date && isDateKey(params.date) ? params.date : today;
+
+  // The Chhutti Calendar's one job in this path. See the note on ClosedDayNotice.
+  const calendar = await closedOn(ctx.schoolId, dateKey);
 
   const classIds =
     ctx.role === "ADMIN"
@@ -85,6 +89,8 @@ export default async function AttendancePage({
           </p>
         </div>
 
+        <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
+
         <ul className="space-y-2">
           {classes.map((klass) => (
             <li key={klass.id}>
@@ -134,13 +140,68 @@ export default async function AttendancePage({
   }
 
   return (
-    <Register
-      classId={selectedId}
+    <div className="space-y-4">
+      <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
+      <Register
+        classId={selectedId}
       className={register.class.name}
       dateKey={dateKey}
       dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
-      initialRoster={register.roster}
-      readOnly={dateKey > today}
-    />
+        initialRoster={register.roster}
+        readOnly={dateKey > today}
+      />
+    </div>
+  );
+}
+
+/**
+ * "The school is shut today."
+ *
+ * WARNS, DOES NOT BLOCK, and the distinction is the whole design. Thirty
+ * children marked absent on Diwali is a denominator that genuinely lies, and it
+ * happens because somebody opened the register out of habit. But schools do
+ * teach on days the calendar calls a break — catch-up classes, exam sessions,
+ * Saturday school — and a teacher standing in front of a real class must not be
+ * told by the app that the class does not exist.
+ *
+ * So the strongest thing available is a sentence, before the fact, that is hard
+ * to miss and easy to overrule.
+ *
+ * An EXAM or EVENT is shown too, without the warning colour: the school is open
+ * and the register is expected, but a teacher still wants to know what today is.
+ */
+function ClosedDayNotice({
+  calendar,
+  dateKey,
+}: {
+  calendar: { closed: boolean; entries: { name: string; kind: string }[] };
+  dateKey: string;
+}) {
+  if (calendar.entries.length === 0) return null;
+
+  const names = calendar.entries.map((entry) => entry.name).join(" · ");
+  const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
+
+  if (!calendar.closed) {
+    return (
+      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
+        <span className="font-semibold text-fg">{names}</span> — {pretty}. School is open, so the
+        register is still taken as usual.
+      </p>
+    );
+  }
+
+  return (
+    <div
+      role="status"
+      className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
+    >
+      <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
+      <p className="text-sm text-fg">
+        <span className="font-semibold">The school is shut on {pretty}</span> — {names}. You can
+        still take the register if a class really is running, but everyone you mark absent will be
+        counted absent.
+      </p>
+    </div>
   );
 }

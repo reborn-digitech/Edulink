@@ -236,7 +236,7 @@ async function main() {
   for (const p of [
     "/admin", "/admin/classes", "/admin/classes/new", "/admin/invites", "/admin/invites/new",
     "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT", "/admin/safety",
-    "/admin/settings", "/bulletin", "/bulletin?filter=mine", "/bulletin?filter=pending",
+    "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin?filter=mine", "/bulletin?filter=pending",
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/switch",
     "/remarks", "/admin/people/export",
   ]) {

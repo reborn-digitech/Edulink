@@ -12,11 +12,17 @@ driven against a production build with the tenant policies live; [Status](#statu
 says exactly what was checked and how.
 
 Roughly half the original spec is built, and **the half that is built is now the
-half that has been run.** The last five commits were spent finding, in order: the
-tenant binding worked in one of the four places it had to; a teacher at two
-schools could not open a single page; the audit log had never once recorded a
-login; and no child could join, no parent could claim a child, and no school
-could register at all.
+half that has been run.** Five commits were spent finding, in order: the tenant
+binding worked in one of the four places it had to; a teacher at two schools
+could not open a single page; the audit log had never once recorded a login; and
+no child could join, no parent could claim a child, and no school could register
+at all.
+
+**The school year is now a thing the app knows about.** An admin sets up an
+academic year and a holiday calendar from `/admin/calendar`; attendance badges
+are counted from the year's start date, can be *lost* within it, and are archived
+forever the moment it is closed. See [Status](#status) — including the two
+mutations that passed when they should not have, and what that revealed.
 
 - **Manual test plan:** [`docs/UI-TEST-CHECKLIST.md`](docs/UI-TEST-CHECKLIST.md)
 - **Taking over this codebase cold?** Start at [Handoff](#handoff).
@@ -127,7 +133,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (493 tests) |
+| `npm test` | Full suite (557 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed |
 | `npm run db:studio` | Browse the data |
@@ -139,9 +145,10 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
+| `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 105 route/role/negative combinations
+mints a real session per role, requests all 106 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -198,7 +205,9 @@ src/lib/                  All business logic. Pages are thin.
   tenant-context.ts       ★ Overrides that travel downward. forOwnSchools is the ONE widening.
   tenant-request.ts       ★ Which schools THIS request may see. db.ts asks it per query.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
-  badges.ts               Student badges, derived on read — never stored.
+  badges.ts               Student badges, derived on read — never stored. Windowed on the academic year.
+  academic-year.ts        ★ Shaikshanik Varsh. Snapshot THEN flip — the order is the function.
+  holidays.ts             ★ Chhutti Calendar. Range maths is pure; only kind=HOLIDAY closes school.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -393,13 +402,18 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Weighted grade categories.** Both are grading
+1. **Abhyaas — the adaptive quizzing engine, before its content.** Schema,
+   adaptive selection, solution-reveal gate and a bulk importer. The badge side
+   is already done: `awardPermanentBadge` exists precisely so that a topic
+   finished without opening a single solution is recorded once and never
+   recalculated. Author the bank in batches afterwards and report real counts.
+2. **Weighted grade categories.** Both are grading
    work and both go through `overallPercent`, so they share their hard part.
-2. **Global feed.** Bigger than it sounds: it is the second thing that would show
+3. **Global feed.** Bigger than it sounds: it is the second thing that would show
    one school another school's content. Read `competitions.ts` first — it is the
    only cross-school surface in here, and it works by keeping the catalogue
    shared and the participation private.
-3. **SSO, 2FA.** Neither can be verified without real provider credentials.
+4. **SSO, 2FA.** Neither can be verified without real provider credentials.
    Budget for that rather than discovering it at the end.
 
 **Before any of them, something cheaper.** Nothing in
@@ -696,7 +710,7 @@ One line each, with the default rejected.
   teacher who does not teach the child is refused even at their own school —
   `assertGuardianAccess` for a parent, and the child themselves. A summary must
   not outrank the things it summarises.
-- **105/105 route checks** as a signed-in user of the owning role, against a
+- **106/106 route checks** as a signed-in user of the owning role, against a
   production build, asserting 200 specifically (`npm run sweep`). Includes the
   negatives: another school's class and remark thread → 404, teacher on the
   admin export → 403, student on an admin page → redirected, `/api/push`
@@ -718,9 +732,9 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **493 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
-  tenancy, tenant-request, competitions, reports, audit, onboarding, remarks, grading, bulletin, safety, storage, files,
-  file-cache, badges, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
+- **557 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+  tenancy, tenant-request, competitions, reports, audit, academic-year, holidays, onboarding, remarks, grading, bulletin, safety, storage, files,
+  file-cache, badges, academic-year, holidays, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
   status, any teacher approving school-wide, rejecting with no reason), each
   caught.
@@ -728,17 +742,67 @@ One line each, with the default rejected.
   for admin, teacher and student across the default, `?filter=mine`,
   `?filter=pending` and `?tag=` views, with a real post in the feed and with the
   feed empty — zero server errors.
-- **A badge survives being ill.** A child present every day for a month, then off
-  for a fortnight: attendance falls to 78% and the current streak to nil, and
-  both attendance badges stay. Under the old rule — current streak, whole-window
-  percentage — two days off took "Rock solid" away. Mutation-tested by putting
-  the old rule back, which fails the test.
-- **The seeded class now has a term of attendance** (45 school days, up from 10).
-  The teacher's concern tile still reads 4 below 90%, and "Rock solid" is earned
-  by 16 of 18 — the two children who were ill for a fortnight straight have not
-  had a clean month, so they have not earned it rather than lost it, and they
-  still hold "Here all week". At the earlier ten-day minimum every child in the
-  class earned it, including those on 69%, which is a decoration and not a badge.
+- **A badge can be lost, and then cannot be.** THIS REVERSED, at the school's
+  request, and both halves are tested. A child present every day for a month and
+  then absent loses the streak badge the same day — a streak nobody can lose is a
+  participation sticker. What stops that being punitive is the academic year, not
+  a softer rule: closing a year writes whatever each child holds at that moment
+  into `EarnedBadge`, which nothing ever recalculates. Badges can be lost DURING
+  a year and never after it. Quiz badges sit outside this entirely and are
+  permanent from the moment they are earned.
+- **The academic year is what makes badges reset**, and that is not what the
+  first version did. The archive-then-flip ORDER was mutation-tested and the
+  mutation passed — because `getBadges` never read the year at all, so a new year
+  inherited the old one's register and nothing reset. Windowing the badge query
+  on the year's start date is the fix; the ordering mutation now fails two
+  checks. A school with no year set up falls back to a rolling 60 days.
+- **The seeded class now has a term of attendance** (45 school days, up from 10),
+  and the badge counts were RE-MEASURED after the rule reversed rather than left
+  as they were. Under the current rule — the last 20 school days, not the best
+  spell in the window — "Rock solid" (95%) is held by **6 of 18** and "Here all
+  week" by **16 of 18**; the rates run 100 ×6, 90 ×8, 75 ×2, 60 ×2. Under the old
+  best-spell rule the same register gave "Rock solid" to 16, because almost every
+  child has SOME clean fortnight over a term. That gap is the reversal, visible.
+  At the earlier ten-day minimum every child in the class earned it, including
+  those on 69%, which is a decoration and not a badge.
+- **A measurement script that reads through `db` measures nothing.** The first
+  version of `scripts/badge-count.ts` called `getAttendanceSummary`, which goes
+  through the RLS-bound app client; outside a request there is no session, so no
+  tenant, so every query returned zero rows and the script reported "0 badges,
+  18 children with not enough history" with complete confidence. It reads the
+  register on the admin connection now. Worth knowing before writing any other
+  script that imports from `src/lib/`.
+- **The calendar driven end to end, production build.** With no year set up
+  `/admin` shows the “Start your academic year” card; create a year and it
+  collapses to a one-line strip naming the next thing on the calendar; the entry
+  appears on `/admin/calendar`; a HOLIDAY on today makes `/teacher/attendance`
+  warn a teacher that the school is shut **without disabling the register**;
+  changing that same entry to an EXAM flips the strip to “School is open” and the
+  warning disappears; and a teacher asking for `/admin/calendar` is redirected.
+  Nine checks, all passing — rendering is not the same as working, so each one
+  asserts the text a person would actually read.
+- **The Chhutti Calendar, and the one thing it is actually for.** The obvious
+  motivation — "attendance should not count holidays" — turned out to be already
+  true, and for a better reason than a holiday table: an attendance percentage
+  here divides by the registers that were TAKEN, not by days on a calendar, and
+  nobody takes a register on Diwali. Adding holidays to that denominator would
+  have been solving the same problem twice. The real hole is the opposite one, a
+  register taken on a day the school is SHUT, so the calendar's job in that path
+  is to warn a teacher before the fact and not to block them — schools do run
+  catch-up classes over half term, and a teacher standing in front of a real
+  class must not be told the class does not exist. 50 tests, seven mutations,
+  all caught.
+- **`dateKeyRange` truncates silently**, which made the first version of the span
+  validation unable to fire: a two-year range came back as exactly 366 keys, a
+  number that looks like a real answer and passes a length check while June has
+  fallen off the end. Span length is now computed by arithmetic, an over-long
+  span expands to nothing rather than to its first year, and `schoolDaysBetween`
+  throws on an over-long window rather than returning a plausible short count.
+- **Only `kind: HOLIDAY` closes the school.** An exam week is on the same
+  calendar and the school is open; counting it as closed would quietly take a
+  week a term out of every "out of N school days" figure in the app. Mutation
+  test: make a holiday stop closing the school and four checks fail; make an exam
+  start closing it and the count is wrong by five days.
 - **What an invitation stops being able to do.** Revoked links refused, resent
   links killing the one before them, expired links refused *and* recorded as
   expired rather than left showing as outstanding. A revoked link and a forged
@@ -759,8 +823,9 @@ One line each, with the default rejected.
   eight on 90%, two on 80% and two on 70% — so `/teacher/classes/<id>` reads
   "Attendance concern 4" where it was structurally 0 before, and "Rock solid"
   (95%) is earned by six rather than being unreachable. Streaks land on 0, 1, 8
-  and 10, so the streak badge is earned by fourteen of eighteen and the progress
-  bar has something to draw. All four statuses appear (148 present, 14 late, 12
+  and 10, so the streak badge is earned by sixteen of eighteen (re-measured under
+  the current rule — this line said fourteen, from the ten-day seed) and the
+  progress bar has something to draw. All four statuses appear (148 present, 14 late, 12
   excused, 6 absent). Verified by seeding a throwaway database and rendering the
   class page against it; the suite passes twice on that seed and twice on the
   old one.
@@ -869,7 +934,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 105 checks in
+**Every route referenced by the navigation renders.** All 106 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -891,6 +956,26 @@ the release where every page rendered and nothing saved.
   one school another school's children — a decision, and a policy change, before
   it is a page.
 - Weighted grade categories
+- **Abhyaas** (adaptive quizzing). The permanent-badge half is built and waiting —
+  `awardPermanentBadge` writes a badge with no academic year, which nothing
+  recalculates and no later absence can take away, under the id convention
+  `abhyaas:<topic>`. What is missing is the question bank, the adaptive engine
+  and the solution-reveal gate. On the bank: the ask is 500 questions a chapter,
+  5,000+ a subject a class, which across six subjects and five class-levels is
+  150,000+ questions with worked solutions. The schema, engine and importer come
+  first because they have to be right; content then lands in batches with real
+  counts reported each time. Generating tens of thousands of unchecked answers
+  and calling it done would be worse than a smaller bank — a wrong answer in a
+  children's question bank is worse than a missing one.
+- **Prerna** (expert consultation dashboard for admin and teachers) and
+  **Margdarshak** (1:1 student↔expert mentor chat). Neither is started. Read
+  `remarks.ts` first for the 1:1 chat — the visibility rules an outside adult
+  talking to a child needs are stricter than the ones already in there, not
+  looser, and `competitions.ts` has the parent-consent gate that Margdarshak
+  should reuse rather than reinvent.
+- **The naming pass.** Hybrid Indian name + English subtitle, agreed and applied
+  so far only to what this commit touched: Chhutti Calendar, Shaikshanik Varsh.
+  The rest of the app is still English-only.
 - SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 

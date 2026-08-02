@@ -751,8 +751,65 @@ entered it. Both halves are worth checking.
   **404**. "Same school" is not enough
 - ☐ **⚠️** As a pupil, open a classmate's report → **404**; their own → 200
 - ☐ **⚠️** As **Sam (Oakfield)**, open a Riverside pupil's report → **404**
-- ☐ If a badge says 95% while attendance reads lower, that is **not a bug** — the
-  page says so. Badges are earned over their own window and kept once earned
+- ☐ If a badge disagrees with the attendance figure above it, that is **not a
+  bug** — the page says so. An attendance badge describes the **last 20 school
+  days**; the report describes its own window
+
+## 12i. Chhutti Calendar and the academic year (admin only)
+
+The two are on one page because they are one afternoon's work.
+
+- ☐ As **Priya (admin)** on a school with **no year set up**: `/admin` shows a
+  **“Start your academic year”** card with a **Set up the year** button
+- ☐ Press it → `/admin/calendar`, and the year form is **already open** with a
+  suggested name and dates. Check the suggestion: in **February 2027** it should
+  suggest **2026–27**, not 2027–28 — the Indian school year starts in June
+- ☐ Save it → the card on `/admin` is **replaced** by a quiet one-line strip
+  showing the year and **Update the calendar**. A banner that never changes is
+  wallpaper
+- ☐ Add a single-day entry (**Republic Day**, 26 January, Holiday). The end-date
+  field is **hidden** until you click *It lasts more than a day*
+- ☐ Add a multi-day one (**Diwali**, 5 days, Holiday) and an **Exam** week
+- ☐ Entries group by **month**; a break spanning two months appears **once**, with
+  its full range — not twice
+- ☐ The exam week's pill says **Exam** in words, not just a different colour
+- ☐ Edit an entry inline → **Save** → the list updates. Cancel → nothing changes
+- ☐ Remove one → it asks **Remove / Keep** first
+- ☐ **⚠️** Set the end date **before** the start → refused, with a reason
+- ☐ **⚠️** Try a range longer than a year (e.g. 2026-01-01 → 2028-01-01) →
+  refused. It must **not** silently store the first 366 days
+- ☐ `/admin` now says **“Next up: …”** with the nearest entry ahead. A finished
+  break must **not** appear there
+
+### The register warning — the reason the calendar exists
+
+- ☐ Put a **Holiday** on today's date, then as **Tom (teacher)** open
+  `/teacher/attendance`
+- ☐ A **warning strip** says the school is shut, names the holiday, and says
+  absences will still count
+- ☐ **⚠️** The register is **still usable**. This warns, it does not block —
+  schools do run catch-up classes over a break, and a teacher in front of a real
+  class must not be told the class does not exist
+- ☐ Change the entry to an **Exam** → the strip turns **neutral** and says the
+  school is open and the register is taken as usual
+- ☐ Remove the entry → the strip disappears
+
+### Closing the year — the irreversible one
+
+- ☐ Add a **second** year (*Add next year*). It shows as **Waiting**, and the
+  current one is **unchanged** — adding next year's dates must not end this one
+- ☐ Note which badges a pupil holds (`/student/profile` as that child)
+- ☐ Back as admin: choose the next year under **Move into** → **Close the year**
+  → it asks to confirm and states that badges are archived, not deleted
+- ☐ Confirm → the toast reports how many badges were kept, across how many pupils
+- ☐ **⚠️** The pupil's **live** attendance badges are now **gone** — the new year
+  starts empty and nobody has 20 days of register in it yet
+- ☐ **⚠️** The badges they held are still on their profile, labelled with the
+  **old year's name**. Lost within a year, kept forever after it
+- ☐ Press **Close the year** twice (re-run it) → nothing is double-archived
+
+- ☐ **⚠️** As **Tom (teacher)** and as a pupil, open `/admin/calendar` →
+  **redirected**, not shown
 
 ## 13. Authorisation — try to break in
 

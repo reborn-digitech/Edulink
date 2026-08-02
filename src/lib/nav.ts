@@ -35,6 +35,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/invites", label: "Invites", icon: "envelope", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
+    { href: "/admin/calendar", label: "Calendar", icon: "calendar", prefix: true },
     { href: "/admin/safety", label: "Safety", icon: "shield", prefix: true },
     { href: "/admin/settings", label: "Settings", icon: "gear", prefix: true },
   ],

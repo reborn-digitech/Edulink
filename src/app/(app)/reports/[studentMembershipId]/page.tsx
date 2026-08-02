@@ -167,15 +167,18 @@ export default async function ReportPage({
           </h2>
           {/*
             Said out loud, because otherwise this section contradicts the one
-            above it: a badge is earned over its own recent window and is KEPT
-            once earned, so a child who had a clean month and was then ill for a
-            fortnight can honestly show 82% attendance and "Reached 95%" at the
-            same time. Without this line that reads as an error in the document a
-            parent studies hardest.
+            above it — and the sentence had to CHANGE when the badge rule
+            reversed. It used to say badges were kept once earned, which was true
+            then and is now false: an attendance badge is a statement about the
+            last twenty school days, so a child can show 82% for the report's
+            window and hold no attendance badge, or the reverse. Leaving the old
+            wording would have been a printed sheet telling a parent something the
+            app no longer does.
           */}
           <p className="text-xs text-fg-muted">
-            Badges are earned over the weeks before they were awarded, and are kept once earned — so
-            these may not match the figures above, and that is not a mistake.
+            Attendance badges describe the last few weeks rather than the window above, and are held
+            only while they are still true — so these may not match the figures above, and that is
+            not a mistake. Badges earned in a past school year are kept for good.
           </p>
           <ul className="grid gap-2 sm:grid-cols-2">
             {report.badges.map((badge) => (
