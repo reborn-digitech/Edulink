@@ -14,6 +14,8 @@ import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "./appearance-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { status as twoFactorStatus } from "@/lib/two-factor";
+import { TwoFactor } from "./two-factor";
 
 export const metadata: Metadata = { title: "Your account" };
 
@@ -48,6 +50,8 @@ export default async function AccountPage() {
   // non-routable domain; showing "amara@edulink.local" as an email is a lie.
   const isHandle = user.email?.endsWith("@edulink.local") ?? false;
 
+  const twoFactor = await twoFactorStatus(session);
+
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <div className="flex items-center gap-4">
@@ -68,6 +72,12 @@ export default async function AccountPage() {
           </p>
         </div>
       </div>
+
+      <TwoFactor
+        enabled={twoFactor.enabled}
+        hasPassword={twoFactor.hasPassword}
+        remaining={twoFactor.remainingRecoveryCodes}
+      />
 
       {/* ---------- roles ---------- */}
       <Card>

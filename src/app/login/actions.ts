@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/db";
 import { fakePasswordWork, generateToken, hashToken, verifyPassword } from "@/lib/crypto";
+import { checkSecondFactor, isEnabled } from "@/lib/two-factor";
 import { createSession } from "@/lib/session";
 import { loginSchema, magicLinkSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { sendMagicLink } from "@/lib/email";
@@ -11,7 +12,18 @@ import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-export type LoginState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
+export type LoginState = {
+  ok: boolean;
+  errors: FieldErrors;
+  redirectTo?: string;
+  /** Set when the password was right but a second factor is still owed. */
+  needsSecondFactor?: boolean;
+  /** The short-lived token that redeems that challenge. Never a session. */
+  challenge?: string;
+};
+
+/** Namespaced so a challenge can never be mistaken for a magic link. */
+const TWO_FACTOR_PURPOSE = "TWO_FACTOR";
 
 /**
  * Students who joined with a class code have no real email address — they get a
@@ -70,6 +82,27 @@ export async function login(input: unknown): Promise<LoginState> {
     return generic;
   }
 
+  // THE PASSWORD IS NOT ENOUGH FROM HERE. No session is created and nothing is
+  // returned that could be turned into one: what goes back is a short-lived
+  // challenge token bound to this user, redeemable only by `completeLogin`
+  // below. Creating the session first and "asking" for a code afterwards would
+  // make the second factor a suggestion.
+  if (await isEnabled(user.id)) {
+    const token = generateToken();
+    await db.authToken.create({
+      data: {
+        userId: user.id,
+        purpose: TWO_FACTOR_PURPOSE,
+        tokenHash: hashToken(token),
+        // Five minutes: long enough to open an authenticator app, short enough
+        // that a challenge left on a shared screen is worthless.
+        expiresAt: new Date(Date.now() + 5 * 60_000),
+      },
+    });
+    await audit({ actorUserId: user.id, action: "auth.login.secondFactorRequired" });
+    return { ok: true, errors: {}, needsSecondFactor: true, challenge: token };
+  }
+
   // Restore the role they last used, but only if it is still valid.
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
 
@@ -82,6 +115,70 @@ export async function login(input: unknown): Promise<LoginState> {
   });
 
   return { ok: true, errors: {}, redirectTo: context.redirectTo };
+}
+
+/**
+ * Redeems a two-factor challenge and finishes the login.
+ *
+ * SINGLE-USE AND TIME-LIMITED, checked in that order. The token is consumed the
+ * moment a correct code is supplied, so a challenge cannot be replayed even if
+ * the second factor itself were somehow reusable — which it is not, because
+ * `checkSecondFactor` refuses a TOTP step it has already accepted and marks a
+ * recovery code used.
+ *
+ * A WRONG CODE DOES NOT CONSUME THE CHALLENGE. Somebody mistyping six digits
+ * should not have to start from their password again, and the five-minute
+ * expiry already bounds how long guessing can go on.
+ */
+export async function completeLogin(
+  challenge: string,
+  code: string,
+): Promise<LoginState & { remainingRecoveryCodes?: number }> {
+  const generic = { ok: false as const, errors: { _form: "That code is not right." } };
+
+  const token = await db.authToken.findUnique({
+    where: { tokenHash: hashToken(challenge) },
+    select: { id: true, userId: true, purpose: true, expiresAt: true, consumedAt: true },
+  });
+
+  if (
+    !token ||
+    !token.userId ||
+    token.purpose !== TWO_FACTOR_PURPOSE ||
+    token.consumedAt ||
+    token.expiresAt.getTime() < Date.now()
+  ) {
+    return { ok: false, errors: { _form: "That sign-in attempt has expired. Start again." } };
+  }
+
+  const result = await checkSecondFactor(token.userId, code);
+  if (!result.ok) {
+    await audit({ actorUserId: token.userId, action: "auth.secondFactor.failed" });
+    return generic;
+  }
+
+  await db.authToken.update({ where: { id: token.id }, data: { consumedAt: new Date() } });
+
+  const user = await db.user.findUniqueOrThrow({
+    where: { id: token.userId },
+    select: { id: true, lastRole: true, lastSchoolId: true },
+  });
+  const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
+  await createSession(user.id, { schoolId: context.schoolId, role: context.role });
+
+  await audit({
+    schoolId: context.schoolId,
+    actorUserId: user.id,
+    action: "auth.login",
+    meta: { role: context.role, secondFactor: result.usedRecoveryCode ? "recovery" : "totp" },
+  });
+
+  return {
+    ok: true,
+    errors: {},
+    redirectTo: context.redirectTo,
+    remainingRecoveryCodes: result.usedRecoveryCode ? result.remaining : undefined,
+  };
 }
 
 /**

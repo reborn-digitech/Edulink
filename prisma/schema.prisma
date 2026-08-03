@@ -117,6 +117,14 @@ model User {
   phoneVerifiedAt    DateTime?
   twoFactorSecret    String?
   twoFactorEnabledAt DateTime?
+  /// The last TOTP step accepted for this user.
+  ///
+  /// REPLAY PREVENTION, and the reason a bare boolean from `verifyTotp` is not
+  /// enough. A code stays mathematically valid for its whole 30-second window
+  /// (90 with drift), so one read over a shoulder or shouted across a room is
+  /// reusable until it expires. Recording the step and refusing anything at or
+  /// below it means a code works exactly once.
+  twoFactorLastStep  Int?
 
   // Account is known to belong to a child -> stricter defaults, parent consent
   // gates, no global-feed posting without approval. (§6 COPPA/GDPR-K)
@@ -144,6 +152,7 @@ model User {
   reactions         Reaction[]
   remarkMessages    RemarkMessage[]
   reportsFiled      Report[]           @relation("ReportsFiled")
+  recoveryCodes     RecoveryCode[]
   expertProfile     ExpertProfile?
   expertMessages    ExpertMessage[]
   mentorMessages    MentorMessage[]
@@ -1414,4 +1423,27 @@ model MentorMessage {
   author User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, threadId, createdAt])
+}
+
+/// A single-use way back in when the phone with the authenticator is gone.
+///
+/// WITHOUT THESE, TURNING ON 2FA IS A WAY TO LOSE AN ACCOUNT. Changing phone
+/// mid-term is ordinary, and the alternative to a recovery code is an
+/// administrator who can switch somebody else's second factor off — a much
+/// larger hole than the one 2FA closes.
+///
+/// Only the HASH is stored, like every other credential here: the plaintext is
+/// shown once at enrolment and is unrecoverable afterwards. `usedAt` rather than
+/// deletion, so somebody can see how many they have spent.
+model RecoveryCode {
+  id       String @id @default(cuid())
+  userId   String
+  codeHash String
+
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, usedAt])
 }

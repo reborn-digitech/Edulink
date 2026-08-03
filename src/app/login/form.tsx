@@ -6,7 +6,7 @@ import { EnvelopeSimpleIcon, LockKeyIcon, PaperPlaneTiltIcon } from "@phosphor-i
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { login, requestMagicLink } from "./actions";
+import { login, completeLogin, requestMagicLink } from "./actions";
 import { cn } from "@/lib/cn";
 
 export function LoginForm({ className }: { className?: string }) {
@@ -17,6 +17,8 @@ export function LoginForm({ className }: { className?: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [challenge, setChallenge] = useState<string | null>(null);
+  const [secondFactor, setSecondFactor] = useState("");
   const [magicSent, setMagicSent] = useState(false);
 
   function submit(event: React.FormEvent) {
@@ -41,10 +43,67 @@ export function LoginForm({ className }: { className?: string }) {
         setErrors(result.errors);
         return;
       }
+      // The password was right and there is still no session. What came back is
+      // a challenge token, not a way in.
+      if (result.needsSecondFactor && result.challenge) {
+        setChallenge(result.challenge);
+        setErrors({});
+        return;
+      }
       toast({ tone: "ok", title: "Welcome back" });
       router.push(result.redirectTo ?? "/");
       router.refresh();
     });
+  }
+
+  if (challenge) {
+    return (
+      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6", className)}>
+        <h2 className="font-semibold text-fg">Enter your code</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
+          Open your authenticator app and type the six-digit code. No recovery code to hand? Any of
+          the ones you saved works here too.
+        </p>
+        <input
+          type="text"
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          autoFocus
+          value={secondFactor}
+          onChange={(event) => setSecondFactor(event.target.value)}
+          className="mt-4 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-center font-mono text-lg tracking-widest text-fg"
+        />
+        {errors._form && <p className="mt-2 text-sm font-medium text-danger">{errors._form}</p>}
+        <Button
+          block
+          className="mt-3"
+          loading={pending}
+          disabled={secondFactor.trim().length < 6}
+          onClick={() =>
+            startTransition(async () => {
+              const result = await completeLogin(challenge, secondFactor);
+              if (!result.ok) {
+                setErrors(result.errors);
+                return;
+              }
+              if (result.remainingRecoveryCodes !== undefined) {
+                toast({
+                  tone: "warn",
+                  title: "Recovery code used",
+                  description: `${result.remainingRecoveryCodes} left. Set two-factor up again to get a fresh set.`,
+                });
+              } else {
+                toast({ tone: "ok", title: "Welcome back" });
+              }
+              router.push(result.redirectTo ?? "/");
+              router.refresh();
+            })
+          }
+        >
+          Sign in
+        </Button>
+      </div>
+    );
   }
 
   if (magicSent) {

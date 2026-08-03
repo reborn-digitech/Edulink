@@ -135,7 +135,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (684 tests) |
+| `npm test` | Full suite (744 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -1055,7 +1055,14 @@ the release where every page rendered and nothing saved.
 - **The naming pass.** Hybrid Indian name + English subtitle, agreed and applied
   so far only to what this commit touched: Chhutti Calendar, Shaikshanik Varsh.
   The rest of the app is still English-only.
-- SSO (Google/Microsoft/Apple), 2FA, SMS, i18n beyond English, real email transport
+- SSO (Google/Microsoft/Apple), SMS, i18n beyond English, real email transport
+- ~~2FA~~ **built.** TOTP, verified against the RFC 4226 and RFC 6238 test
+  vectors, so it accepts codes from any standard authenticator rather than only
+  from itself. Single-use per 30-second step, ten hashed single-use recovery
+  codes, and a login that issues a five-minute challenge token instead of a
+  session when a second factor is owed. **Not clicked end to end** — the wiring
+  from the login form through `completeLogin` is typechecked and its library is
+  mutation-tested, but nobody has typed a real code into a browser.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
 ### Known issues
