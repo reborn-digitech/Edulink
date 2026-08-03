@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeScript } from "@/components/theme-script";
 import { ToastProvider } from "@/components/ui/toast";
 import { AppRuntime } from "@/components/app-runtime";
+import { I18nProvider } from "@/lib/i18n";
+import { getLocale, getT } from "@/lib/i18n/server";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -54,9 +56,24 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+/**
+ * ASYNC, so `<html lang>` is right in the markup that leaves the server.
+ *
+ * A wrong `lang` is not cosmetic: it is what a screen reader consults to choose
+ * a voice, and it is what a browser consults to hyphenate and to offer to
+ * translate. Devanagari announced by an English voice is unusable, so this is
+ * one of the few strings that has to be correct before hydration rather than
+ * after — which is why the locale is mirrored into a cookie the resolver can
+ * read without a session. (§6)
+ *
+ * The provider sits at the ROOT rather than inside `(app)`, so the login page,
+ * the join flow and an invite landing get `t` as well. Those are the pages a
+ * parent sees before any account exists.
+ */
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const [locale, t] = await Promise.all([getLocale(), getT()]);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
@@ -65,12 +82,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="#main"
           className="sr-only-focusable fixed left-4 top-4 z-[100] rounded-[--radius-md] bg-accent px-4 py-3 font-semibold text-accent-fg shadow-lg"
         >
-          Skip to main content
+          {t("shell.skipToContent")}
         </a>
-        <ToastProvider>
-          <AppRuntime />
-          {children}
-        </ToastProvider>
+        <I18nProvider locale={locale}>
+          <ToastProvider>
+            <AppRuntime />
+            {children}
+          </ToastProvider>
+        </I18nProvider>
       </body>
     </html>
   );

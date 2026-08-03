@@ -6,7 +6,7 @@ import { isDateKey, dateKeyRange, isTeachingDay } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
- * Chhutti Calendar — the days the school is shut, and the days it wants marked.
+ * The school calendar — the days the school is shut, and the days it wants marked.
  *
  * WHAT THIS IS ACTUALLY FOR, because it is not what it first looks like.
  * The obvious motivation is "attendance should not count holidays". That turned

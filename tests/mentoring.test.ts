@@ -13,7 +13,7 @@ import {
 import type { ActiveContext } from "@/lib/session";
 
 /**
- * Margdarshak — the rules that make it safe to put an outside adult in touch
+ * Mentoring — the rules that make it safe to put an outside adult in touch
  * with a child.
  *
  * WHAT THESE TESTS CAN AND CANNOT SHOW. The suite connects as the database

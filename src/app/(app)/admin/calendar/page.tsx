@@ -10,8 +10,9 @@ import { EmptyState } from "@/components/ui/states";
 import { YearPanel } from "./year-panel";
 import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Chhutti Calendar" };
+export const metadata: Metadata = { title: "School calendar" };
 
 /**
  * The school's year, on one page.
@@ -26,6 +27,7 @@ export const metadata: Metadata = { title: "Chhutti Calendar" };
  * up gets an entry attached to nothing.
  */
 export default async function CalendarPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
 
   const school = await db.school.findUniqueOrThrow({
@@ -44,7 +46,7 @@ export default async function CalendarPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Chhutti Calendar</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.calendar")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           The school year, and the days the school is shut.
         </p>
@@ -55,7 +57,7 @@ export default async function CalendarPage() {
         <Card>
           <CardHeader
             icon={<GraduationCapIcon weight="duotone" className="size-5" />}
-            title={<span id="year-heading">Shaikshanik Varsh · Academic year</span>}
+            title={<span id="year-heading">{t("feature.academicYear")}</span>}
             description={
               current
                 ? `Running ${current.name}. Badges earned this year reset when it is closed — and are kept forever once they are.`

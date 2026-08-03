@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { readJsonArray } from "@/lib/json";
+import { getT } from "@/lib/i18n/server";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "School directory" };
@@ -24,6 +25,7 @@ export default async function DirectoryPage({
 }) {
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
+  const t = await getT();
 
   const query = (params.q ?? "").trim().slice(0, 80);
   const roleFilter = SCHOOL_ROLES.includes(params.role as SchoolRole)
@@ -109,7 +111,7 @@ export default async function DirectoryPage({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Directory</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {roleCounts.map((c) => `${c._count} ${ROLE_META[c.role as SchoolRole].plural.toLowerCase()}`).join(" · ") ||
+            {roleCounts.map((c) => `${c._count} ${t(ROLE_META[c.role as SchoolRole].pluralKey).toLowerCase()}`).join(" · ") ||
               "Nobody yet"}
           </p>
         </div>
@@ -197,7 +199,7 @@ export default async function DirectoryPage({
                         tone={role === "ADMIN" ? "accent" : role === "TEACHER" ? "info" : "ok"}
                         size="sm"
                       >
-                        {ROLE_META[role].label}
+                        {t(ROLE_META[role].labelKey)}
                       </Badge>
                     </div>
                   </Card>

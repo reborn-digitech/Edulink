@@ -959,7 +959,7 @@ model EarnedBadge {
  * --------------------------------------------------------------------------
  */
 /**
- * Abhyaas — adaptive practice
+ * Practice — adaptive practice
  */
 /**
  * --------------------------------------------------------------------------
@@ -1186,7 +1186,7 @@ model QuizMastery {
 }
 
 // ---------------------------------------------------------------------------
-// Experts — Prerna (consultation) and Margdarshak (mentoring)
+// Experts — consultation bookings, and mentoring
 //
 // AN EXPERT IS NOT A SCHOOL ROLE. They consult for many schools and belong to
 // none, so there is no Membership row and `SCHOOL_ROLES` is untouched. What
@@ -1302,7 +1302,7 @@ model ExpertBooking {
 /// A message on a booking, between school staff and the expert.
 ///
 /// Both parties are adults and the thread is about a professional engagement, so
-/// there is no consent gate here — that belongs to Margdarshak, where one end of
+/// there is no consent gate here — that belongs to mentoring, where one end of
 /// the conversation is a child.
 model ExpertMessage {
   id           String @id @default(cuid())
@@ -1355,7 +1355,7 @@ model ExpertInvite {
   @@index([schoolId])
 }
 
-/// Margdarshak — one expert mentoring one child.
+/// Mentoring — one expert mentoring one child.
 ///
 /// THE THREAD IS NEVER PRIVATE, and that is the feature rather than a setting.
 /// An outside adult does not get an unobserved channel with a child, so the

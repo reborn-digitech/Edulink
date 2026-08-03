@@ -8,6 +8,7 @@ import { Wordmark } from "@/components/brand";
 import { AcceptForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
+import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function InvitePage({ params }: { params: Promise<{ token: string }> }) {
+  const t = await getT();
   const { token } = await params;
 
   // The token opens its own invitation and nothing else — not the school it
@@ -69,7 +71,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
     <Shell brand={context?.school.brandPrimary ?? null}>
       <div data-role={role.toLowerCase()}>
         <span className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent-strong">
-          {ROLE_META[role].label} invitation
+          {t(ROLE_META[role].labelKey)} invitation
         </span>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg sm:text-3xl">

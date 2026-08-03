@@ -11,7 +11,7 @@ import {
 import { createAcademicYear, closeAcademicYear } from "@/lib/academic-year";
 
 /**
- * Chhutti Calendar and Shaikshanik Varsh, from the admin's side.
+ * The school calendar and the academic year, from the admin's side.
  *
  * Every action here re-reads the role and the school from the SESSION and never
  * from the form. A holiday carries no secrets, but a forged `schoolId` in a

@@ -17,7 +17,7 @@ import {
 import type { ActiveContext } from "@/lib/session";
 
 /**
- * Abhyaas.
+ * Practice.
  *
  * Three things are being checked, and the third is the one that matters most.
  *

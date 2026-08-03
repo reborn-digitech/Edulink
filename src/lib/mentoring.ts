@@ -8,7 +8,7 @@ import { studentsForTeacher } from "./remarks";
 import type { ActiveContext } from "./session";
 
 /**
- * Margdarshak — one expert mentoring one child.
+ * Mentoring — one expert mentoring one child.
  *
  * THIS IS THE HIGHEST-RISK SURFACE IN THE APP, because it is the only one where
  * an adult from outside the school talks to a child. Three rules carry it, and

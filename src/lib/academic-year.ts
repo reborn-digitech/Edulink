@@ -6,7 +6,7 @@ import { getBadges } from "./badges";
 import type { ActiveContext } from "./session";
 
 /**
- * Shaikshanik Varsh — the academic year, and what survives the end of one.
+ * The academic year, and what survives the end of one.
  *
  * THE RULE THIS EXISTS TO ENFORCE. An attendance badge is a statement about now:
  * a streak that breaks takes its badge with it the same day, because a streak

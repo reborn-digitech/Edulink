@@ -8,7 +8,7 @@ import { readJsonArray } from "./json";
 import type { ActiveContext } from "./session";
 
 /**
- * Prerna — the expert marketplace, and the bookings that come out of it.
+ * The expert marketplace, and the bookings that come out of it.
  *
  * THE ACCESS RULE, ONCE, HERE. An expert has no Membership and no school. What
  * they can see is decided in `tenant-request.ts`, which turns their CONFIRMED

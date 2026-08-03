@@ -9,11 +9,13 @@ import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
+import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Post" };
 
 export default async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
+  const t = await getT();
   const session = await requireUser();
   const { postId } = await params;
 
@@ -54,7 +56,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
               </span>
               {post.authorship?.role && (
                 <Badge tone="neutral" size="sm">
-                  {ROLE_META[post.authorship.role as Role].label}
+                  {t(ROLE_META[post.authorship.role as Role].labelKey)}
                 </Badge>
               )}
             </p>

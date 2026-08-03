@@ -1,3 +1,5 @@
+import type { TranslationKey } from "./i18n/dictionary";
+
 /**
  * Single source of truth for every status/role string in the database.
  *
@@ -110,12 +112,24 @@ export const ATTENDANCE_META: Record<
   },
 };
 
-export const ROLE_META: Record<Role, { label: string; plural: string; accent: string }> = {
-  ADMIN: { label: "School admin", plural: "Admins", accent: "admin" },
-  TEACHER: { label: "Teacher", plural: "Teachers", accent: "teacher" },
-  STUDENT: { label: "Student", plural: "Students", accent: "student" },
-  PARENT: { label: "Parent", plural: "Parents", accent: "parent" },
-  EXPERT: { label: "Expert", plural: "Experts", accent: "teacher" },
+/**
+ * How a role is shown. KEYS, NOT WORDS — the label is looked up through `t`.
+ *
+ * A role badge appears on a bulletin post, in the directory, on an invite, in
+ * the side rail and in the switcher. That makes these the most-rendered strings
+ * in the app and the ones most obviously wrong if the rest of the page changed
+ * language and they did not. `accent` stays a literal because it names a CSS
+ * token, which is not language at all.
+ */
+export const ROLE_META: Record<
+  Role,
+  { labelKey: TranslationKey; pluralKey: TranslationKey; accent: string }
+> = {
+  ADMIN: { labelKey: "role.admin", pluralKey: "role.adminPlural", accent: "admin" },
+  TEACHER: { labelKey: "role.teacher", pluralKey: "role.teacherPlural", accent: "teacher" },
+  STUDENT: { labelKey: "role.student", pluralKey: "role.studentPlural", accent: "student" },
+  PARENT: { labelKey: "role.parent", pluralKey: "role.parentPlural", accent: "parent" },
+  EXPERT: { labelKey: "role.expert", pluralKey: "role.expertPlural", accent: "teacher" },
 };
 
 /** Where each role lands after login. */

@@ -19,7 +19,7 @@ import {
 import type { ActiveContext } from "@/lib/session";
 
 /**
- * The Chhutti Calendar.
+ * The school calendar.
  *
  * Two things are being checked and they are not the same thing.
  *

@@ -5,10 +5,10 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listTopics, normaliseLanguage } from "@/lib/quiz";
-import { LanguageSwitch } from "../language-switch";
+import { LanguageSwitch } from "@/components/language-switch";
 import { Player } from "./player";
 
-export const metadata: Metadata = { title: "Abhyaas", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Practice", robots: { index: false, follow: false } };
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
   const ctx = await requireRole("STUDENT");
@@ -29,7 +29,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <Link
-        href="/student/abhyaas"
+        href="/student/practice"
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
@@ -41,7 +41,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <h1 className="text-2xl font-bold tracking-tight text-fg">{mine?.name ?? topic.name}</h1>
           <p className="mt-1 text-sm text-fg-muted">{topic.chapter}</p>
         </div>
-        <LanguageSwitch current={language} />
+        <LanguageSwitch showLabel />
       </div>
 
       <Player

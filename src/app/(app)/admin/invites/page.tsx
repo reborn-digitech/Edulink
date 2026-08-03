@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { InviteRowActions } from "./row-actions";
 import { relativeTime } from "@/lib/dates";
+import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Invitations" };
@@ -26,6 +27,7 @@ export default async function InvitesPage({
 }) {
   const ctx = await requireRole("ADMIN");
   const { status } = await searchParams;
+  const t = await getT();
   const active = TABS.find((t) => t.id === status)?.id ?? "PENDING";
 
   const [invites, counts] = await Promise.all([
@@ -113,7 +115,7 @@ export default async function InvitesPage({
                       </p>
                       <p className="truncate text-xs text-fg-muted">
                         {invite.name ? `${invite.email} · ` : ""}
-                        {ROLE_META[invite.role as Role].label}
+                        {t(ROLE_META[invite.role as Role].labelKey)}
                       </p>
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {invite.status === "ACCEPTED" && invite.acceptedAt

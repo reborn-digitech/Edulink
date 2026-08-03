@@ -9,28 +9,30 @@ import {
   SUBJECT_LABEL,
   type QuizSubject,
 } from "@/lib/quiz";
-import { LanguageSwitch } from "./language-switch";
+import { LanguageSwitch } from "@/components/language-switch";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Abhyaas · Practice" };
+export const metadata: Metadata = { title: "Practice" };
 
 /**
- * Abhyaas — the topic list.
+ * Practice — the topic list.
  *
  * NO LEADERBOARD, NO TOTAL, NO "3 OF 7". Same rule as the profile page: a child
  * comparing their number with the child next to them is the thing this app is
  * meant not to do. What each card shows is where THIS child is on THIS topic's
  * ladder, which is a fact about them and about nobody else.
  */
-export default async function AbhyaasPage({
+export default async function PracticePage({
   searchParams,
 }: {
   searchParams: Promise<{ subject?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
   const { subject } = await searchParams;
+  const t = await getT();
 
   const language = normaliseLanguage(ctx.user.prefs.locale);
   const topics = await listTopics(ctx, { subject, language });
@@ -40,13 +42,13 @@ export default async function AbhyaasPage({
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Abhyaas</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.practice")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             Practice that follows you. Get two right and it gets harder; get two wrong and it eases
             off.
           </p>
         </div>
-        <LanguageSwitch current={language} />
+        <LanguageSwitch showLabel />
       </div>
 
       {topics.length === 0 ? (
@@ -60,7 +62,7 @@ export default async function AbhyaasPage({
           {subjects.length > 1 && (
             <nav aria-label="Subjects" className="flex flex-wrap gap-2">
               <Link
-                href="/student/abhyaas"
+                href="/student/practice"
                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
@@ -70,7 +72,7 @@ export default async function AbhyaasPage({
               {subjects.map((s) => (
                 <Link
                   key={s}
-                  href={`/student/abhyaas?subject=${s}`}
+                  href={`/student/practice?subject=${s}`}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
@@ -85,7 +87,7 @@ export default async function AbhyaasPage({
             {topics.map((topic) => (
               <li key={topic.id}>
                 <Card interactive className="h-full">
-                  <Link href={`/student/abhyaas/${topic.slug}`} className="block p-4">
+                  <Link href={`/student/practice/${topic.slug}`} className="block p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">

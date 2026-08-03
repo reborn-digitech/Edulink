@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CheckboxField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import { savePrefs } from "./actions";
 import type { UserPrefs } from "@/lib/session";
 
@@ -30,6 +31,7 @@ export function AppearanceForm({
   section: "appearance" | "notifications";
 }) {
   const router = useRouter();
+  const t = useT();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [draft, setDraft] = useState<UserPrefs>(prefs);
@@ -87,12 +89,12 @@ export function AppearanceForm({
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "Not saved",
-          description: result.errors._form ?? "Check the highlighted fields.",
+          title: t("prefs.notSaved"),
+          description: result.errors._form ?? t("prefs.notSavedHint"),
         });
         return;
       }
-      toast({ tone: "ok", title: "Saved" });
+      toast({ tone: "ok", title: t("prefs.saved") });
       router.refresh();
     });
   }
@@ -104,29 +106,26 @@ export function AppearanceForm({
       <div className="space-y-4">
         <div className="space-y-2">
           <CheckboxField
-            label="Push notifications"
-            description="Absences, new grades and teacher messages, even when the app is closed."
+            label={t("prefs.push")}
+            description={t("prefs.pushHint")}
             checked={draft.channels.push}
             onChange={(e) => update({ channels: { ...draft.channels, push: e.target.checked } })}
           />
           <CheckboxField
-            label="Email"
-            description="A copy by email. Sign-in links always arrive regardless of this setting."
+            label={t("prefs.email")}
+            description={t("prefs.emailHint")}
             checked={draft.channels.email}
             onChange={(e) => update({ channels: { ...draft.channels, email: e.target.checked } })}
           />
         </div>
 
         <fieldset className="rounded-[--radius-md] border border-border p-4">
-          <legend className="px-1 text-sm font-medium text-fg">Quiet hours</legend>
-          <p className="text-xs leading-relaxed text-fg-muted">
-            Nothing will buzz your phone between these times. Messages still arrive — you will
-            see them in the app, so nothing is ever lost.
-          </p>
+          <legend className="px-1 text-sm font-medium text-fg">{t("prefs.quietHours")}</legend>
+          <p className="text-xs leading-relaxed text-fg-muted">{t("prefs.quietHoursHint")}</p>
 
           <CheckboxField
             className="mt-3"
-            label="Use quiet hours"
+            label={t("prefs.useQuietHours")}
             checked={draft.quietHours !== null}
             onChange={(e) =>
               update({ quietHours: e.target.checked ? { start: "21:00", end: "07:00" } : null })
@@ -136,7 +135,7 @@ export function AppearanceForm({
           {draft.quietHours && (
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               <label className="block">
-                <span className="block text-sm font-medium text-fg">From</span>
+                <span className="block text-sm font-medium text-fg">{t("prefs.from")}</span>
                 <input
                   type="time"
                   value={draft.quietHours.start}
@@ -147,7 +146,7 @@ export function AppearanceForm({
                 />
               </label>
               <label className="block">
-                <span className="block text-sm font-medium text-fg">Until</span>
+                <span className="block text-sm font-medium text-fg">{t("prefs.until")}</span>
                 <input
                   type="time"
                   value={draft.quietHours.end}
@@ -169,7 +168,7 @@ export function AppearanceForm({
                 </p>
               )}
               <p className="text-xs text-fg-muted sm:col-span-2">
-                Crossing midnight is fine — 21:00 until 07:00 works as you would expect.
+                {t("prefs.quietHoursMidnight")}
               </p>
             </div>
           )}
@@ -177,7 +176,7 @@ export function AppearanceForm({
 
         {dirty && (
           <Button loading={pending} icon={<FloppyDiskIcon weight="bold" />} onClick={save}>
-            Save notification settings
+            {t("prefs.saveNotifications")}
           </Button>
         )}
       </div>
@@ -187,53 +186,53 @@ export function AppearanceForm({
   return (
     <div className="space-y-5">
       <OptionRow
-        label="Colour scheme"
-        hint="System follows your phone or computer."
+        label={t("prefs.colourScheme")}
+        hint={t("prefs.colourSchemeHint")}
         value={draft.theme}
         options={[
-          { value: "system", label: "System" },
-          { value: "light", label: "Light" },
-          { value: "dark", label: "Dark" },
+          { value: "system", label: t("prefs.system") },
+          { value: "light", label: t("prefs.light") },
+          { value: "dark", label: t("prefs.dark") },
         ]}
         onChange={(value) => update({ theme: value as UserPrefs["theme"] })}
       />
 
       <OptionRow
-        label="Contrast"
-        hint="High contrast makes borders solid and text pure black or white."
+        label={t("prefs.contrast")}
+        hint={t("prefs.contrastHint")}
         value={draft.contrast}
         options={[
-          { value: "normal", label: "Normal" },
-          { value: "high", label: "High" },
+          { value: "normal", label: t("prefs.normal") },
+          { value: "high", label: t("prefs.high") },
         ]}
         onChange={(value) => update({ contrast: value as UserPrefs["contrast"] })}
       />
 
       <OptionRow
-        label="Typeface"
-        hint="Dyslexia-friendly widens letter spacing and line height, and uses OpenDyslexic or Atkinson Hyperlegible if you have them installed."
+        label={t("prefs.typeface")}
+        hint={t("prefs.typefaceHint")}
         value={draft.font}
         options={[
-          { value: "default", label: "Default" },
-          { value: "dyslexic", label: "Dyslexia-friendly" },
+          { value: "default", label: t("prefs.default") },
+          { value: "dyslexic", label: t("prefs.dyslexic") },
         ]}
         onChange={(value) => update({ font: value as UserPrefs["font"] })}
       />
 
       <OptionRow
-        label="Motion"
-        hint="Reduced removes slides and bounces. Your system setting is honoured automatically too."
+        label={t("prefs.motion")}
+        hint={t("prefs.motionHint")}
         value={draft.motion}
         options={[
-          { value: "full", label: "Full" },
-          { value: "reduced", label: "Reduced" },
+          { value: "full", label: t("prefs.full") },
+          { value: "reduced", label: t("prefs.reduced") },
         ]}
         onChange={(value) => update({ motion: value as UserPrefs["motion"] })}
       />
 
       {dirty && (
         <Button loading={pending} icon={<FloppyDiskIcon weight="bold" />} onClick={save}>
-          Save appearance
+          {t("prefs.saveAppearance")}
         </Button>
       )}
     </div>

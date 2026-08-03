@@ -755,7 +755,7 @@ entered it. Both halves are worth checking.
   bug** — the page says so. An attendance badge describes the **last 20 school
   days**; the report describes its own window
 
-## 12i. Chhutti Calendar and the academic year (admin only)
+## 12i. The school calendar and the academic year (admin only)
 
 The two are on one page because they are one afternoon's work.
 
@@ -824,9 +824,9 @@ The two are on one page because they are one afternoon's work.
 - ☐ **⚠️** As **Tom (teacher)** and as a pupil, open `/admin/calendar` →
   **redirected**, not shown
 
-## 12j. Abhyaas — adaptive practice (student)
+## 12j. Practice — adaptive practice (student)
 
-- ☐ As **Amara (student)**: the bottom bar shows **Abhyaas**. Open it
+- ☐ As **Amara (student)**: the bottom bar shows **Practice**. Open it
 - ☐ Topics are listed with the hybrid names — **Ganit · Maths**, **Vigyan ·
   Science**, **Itihaas · History**
 - ☐ **⚠️** There is **no leaderboard, no total, no "3 of 7"**. Every number on the
@@ -874,8 +874,48 @@ The two are on one page because they are one afternoon's work.
 ### Not a pupil
 
 - ☐ **⚠️** As **Tom (teacher)** and as **Jordan (parent)**, open
-  `/student/abhyaas/maths-8-linear-equations` → **redirected**
-- ☐ **⚠️** Open `/student/abhyaas/not-a-real-topic` → **404**
+  `/student/practice/maths-8-linear-equations` → **redirected**
+- ☐ **⚠️** Open `/student/practice/not-a-real-topic` → **404**
+
+## 12k. Language (every role)
+
+English, हिन्दी and मराठी. One setting, stored on the user row, so it follows the
+account to a different device rather than living in the browser.
+
+### Switching
+
+- ☐ As anyone, open `/account` → a **Language** card with three buttons, each
+  labelled in its **own script** (English / हिन्दी / मराठी)
+- ☐ Tap **मराठी** → the whole side rail and bottom bar re-label **immediately**
+  (आढावा, निर्देशिका, वर्ग…), and a "भाषा बदलली" toast appears
+- ☐ **⚠️** The card's own sentence says the translation is **partial**. Confirm it
+  is there — a reader who then meets an English page must have been warned
+- ☐ Open **⌘K** → the placeholder, the group headings and every entry are in
+  Marathi too
+- ☐ Reload the page → still Marathi. Sign out, sign in again → still Marathi
+
+### It is one setting, not two
+
+- ☐ As **Amara (student)** set the language to **हिन्दी** from `/account`, then
+  open `/student/practice` → the heading reads **अभ्यास** and the "Read in"
+  switcher already shows Hindi selected. There is no second choice to make
+- ☐ Change it on the practice page instead → `/account` agrees when you go back
+
+### Signed out
+
+- ☐ Set Marathi, then sign out and open `/login` → the login page is in Marathi
+  (the choice is mirrored to a cookie, because there is no user row to read yet)
+- ☐ **⚠️** In devtools set the `edulink_locale` cookie to `zz` and reload →
+  the page renders in **English**, status **200**. An unreadable language
+  preference must never be a 500
+
+### Accessibility
+
+- ☐ **⚠️** With Marathi selected, inspect `<html>` → `lang="mr"`. This is what
+  makes a screen reader pick a Marathi voice; an English voice reading Devanagari
+  is unusable
+- ☐ Each language button carries its own `lang` attribute, so "मराठी" is
+  announced correctly even while the page is still in English
 
 ## 13. Authorisation — try to break in
 

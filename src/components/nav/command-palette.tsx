@@ -7,6 +7,7 @@ import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { NAV, QUICK_ACTIONS } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import type { Role } from "@/lib/constants";
 
 type Entry = { href: string; label: string; icon: string; description?: string; group: string };
@@ -41,29 +42,40 @@ export function CommandPalette({
   contextCount: number;
 }) {
   const router = useRouter();
+  const t = useT();
   const [query, setQuery] = useState("");
   const [cursor, setCursor] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
+  // Rebuilt when `t` changes, so switching language re-labels the palette
+  // rather than leaving the previous language cached behind the ⌘K.
   const entries = useMemo<Entry[]>(() => {
+    const actions = t("palette.groupActions");
+    const goTo = t("palette.groupGoTo");
     const list: Entry[] = [
-      ...QUICK_ACTIONS[role].map((a) => ({ ...a, group: "Actions" })),
-      ...NAV[role].map((n) => ({ href: n.href, label: n.label, icon: n.icon, group: "Go to" })),
-      { href: "/notifications", label: "Notifications", icon: "bell", group: "Go to" },
-      { href: "/account", label: "Your account and appearance", icon: "gear", group: "Go to" },
+      ...QUICK_ACTIONS[role].map((a) => ({
+        href: a.href,
+        label: t(a.labelKey),
+        icon: a.icon,
+        description: t(a.descriptionKey),
+        group: actions,
+      })),
+      ...NAV[role].map((n) => ({ href: n.href, label: t(n.labelKey), icon: n.icon, group: goTo })),
+      { href: "/notifications", label: t("shell.notifications"), icon: "bell", group: goTo },
+      { href: "/account", label: t("palette.accountEntry"), icon: "gear", group: goTo },
     ];
     if (contextCount > 1) {
       list.push({
         href: "/switch",
-        label: "Switch role or school",
+        label: t("palette.switchContext"),
         icon: "users",
-        description: "You belong to more than one",
-        group: "Actions",
+        description: t("palette.switchContextHint"),
+        group: actions,
       });
     }
     return list;
-  }, [role, contextCount]);
+  }, [role, contextCount, t]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -132,7 +144,7 @@ export function CommandPalette({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Search and commands"
+        aria-label={t("palette.dialogLabel")}
         onClick={(event) => event.stopPropagation()}
         className="w-full max-w-lg overflow-hidden rounded-[--radius-lg] border border-border bg-surface shadow-lg animate-in-up"
       >
@@ -142,8 +154,8 @@ export function CommandPalette({
             ref={inputRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search pages and actions…"
-            aria-label="Search pages and actions"
+            placeholder={t("palette.placeholder")}
+            aria-label={t("palette.inputLabel")}
             className="min-h-14 w-full bg-transparent text-[0.9375rem] text-fg outline-none placeholder:text-fg-subtle"
           />
           <kbd className="hidden shrink-0 rounded border border-border px-1.5 py-0.5 text-[0.6875rem] text-fg-muted sm:block">
@@ -154,7 +166,9 @@ export function CommandPalette({
         <div className="max-h-[min(24rem,50vh)] overflow-y-auto p-2 scrollbar-thin">
           {results.length === 0 ? (
             <p className="px-3 py-8 text-center text-sm text-fg-muted">
-              Nothing matches &ldquo;{query}&rdquo;. Try a page name like &ldquo;register&rdquo;.
+              {/* The example is a nav label, so it is a page name the reader can
+                  actually see in their own language rather than an English one. */}
+              {t("palette.empty", { query, example: t("nav.register") })}
             </p>
           ) : (
             results.map((entry, index) => {

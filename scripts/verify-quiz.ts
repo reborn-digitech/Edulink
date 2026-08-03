@@ -1,5 +1,5 @@
 /**
- * The Abhyaas bank verifier.
+ * The Practice bank verifier.
  *
  * WHAT IT CAN AND CANNOT DO, said first because the difference is the whole
  * point of the file. There is no program that can tell you whether "Dandi March,
@@ -432,7 +432,7 @@ function main() {
     verifyTopic(file, parsed);
   }
 
-  console.log(`\nAbhyaas bank — ${files.length} topic file${files.length === 1 ? "" : "s"}\n`);
+  console.log(`\nPractice bank — ${files.length} topic file${files.length === 1 ? "" : "s"}\n`);
   console.log(`  questions            ${total}`);
   console.log(
     `  by level             ${levelCounts.map((n, i) => `L${i + 1}:${n}`).join("  ")}`,

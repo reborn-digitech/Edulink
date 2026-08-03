@@ -3,8 +3,8 @@
  *
  * WHY THIS EXISTS SEPARATELY. The main seed creates schools, people, classes,
  * attendance and marks — everything the app had when it was written. Four
- * features shipped after it and left it behind: the academic year, the Chhutti
- * Calendar, the global feed and Prerna. A freshly seeded database therefore
+ * features shipped after it and left it behind: the academic year, the school
+ * calendar, the global feed and Experts. A freshly seeded database therefore
  * shows all four as EMPTY, which is indistinguishable from broken to anybody
  * testing by hand, and is why the route sweep passed for weeks against pages
  * that had never rendered a single row.

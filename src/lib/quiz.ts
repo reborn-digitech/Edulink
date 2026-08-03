@@ -6,7 +6,7 @@ import { awardPermanentBadge } from "./academic-year";
 import type { ActiveContext } from "./session";
 
 /**
- * Abhyaas — adaptive practice.
+ * Practice — adaptive practice.
  *
  * THE LADDER IS THE FEATURE. Six levels, from "name the theorem" to Olympiad,
  * and a child is served the level they are actually at rather than the level
@@ -85,12 +85,21 @@ export const MIN_LEVEL = 1;
 const PROMOTE_AFTER = 2;
 const DEMOTE_AFTER = 2;
 
-// Imported for use inside this file, AND re-exported so that every existing
-// `from "@/lib/quiz"` keeps working — the split exists for the client bundle,
-// not for callers.
-import { normaliseLanguage, type QuizLanguage } from "./quiz-languages";
+// The language a question is READ in is the same setting as the language the
+// app is read in — one field on the user row, `prefs.locale`. This module used
+// to own a three-entry list of its own; it now borrows the app's, which is what
+// stops a Marathi app serving Hindi questions.
+//
+// Re-exported so every existing `from "@/lib/quiz"` keeps working. The aliases
+// are deliberate: inside the quiz engine a locale is what a QUESTION is written
+// in, and `language` reads better there than `locale`.
+import { normaliseLocale, type Locale } from "./i18n/locales";
 
-export { QUIZ_LANGUAGES, normaliseLanguage, type QuizLanguage } from "./quiz-languages";
+export {
+  LOCALES as QUIZ_LANGUAGES,
+  normaliseLocale as normaliseLanguage,
+  type Locale as QuizLanguage,
+} from "./i18n/locales";
 
 export const QUIZ_SUBJECTS = [
   "MATHS",
@@ -256,11 +265,11 @@ export type TopicSummary = {
 /** Topics for a class, with this child's progress against each. */
 export async function listTopics(
   session: ActiveContext,
-  opts: { subject?: string; classLevel?: number; language?: QuizLanguage } = {},
+  opts: { subject?: string; classLevel?: number; language?: Locale } = {},
 ): Promise<TopicSummary[]> {
   const membershipId = session.membershipId;
   const schoolId = session.schoolId;
-  const language = normaliseLanguage(opts.language);
+  const language = normaliseLocale(opts.language);
 
   const topics = await db.quizTopic.findMany({
     where: {
@@ -374,7 +383,7 @@ export type ServedQuestion = {
 export async function nextQuestion(
   session: ActiveContext,
   attemptId: string,
-  language: QuizLanguage = "en",
+  language: Locale = "en",
 ): Promise<ServedQuestion | null> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -410,7 +419,7 @@ export async function nextQuestion(
   // no answerIndex and cannot carry one (see the schema), so a translated
   // question is incapable of disagreeing with the original about which option
   // is correct.
-  const lang = normaliseLanguage(language);
+  const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null
@@ -455,7 +464,7 @@ export async function submitAnswer(
   attemptId: string,
   questionId: string,
   chosenIndex: number,
-  language: QuizLanguage = "en",
+  language: Locale = "en",
 ): Promise<AnswerResult> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -525,7 +534,7 @@ export async function submitAnswer(
   // Marking is read in the language the child answered in. Fetched AFTER the
   // response is recorded, so a missing translation can never cost them a
   // recorded answer.
-  const lang = normaliseLanguage(language);
+  const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null
@@ -556,7 +565,7 @@ export async function revealSolution(
   session: ActiveContext,
   attemptId: string,
   questionId: string,
-  language: QuizLanguage = "en",
+  language: Locale = "en",
 ): Promise<{ solution: string; answerIndex: number; badgeForfeited: boolean }> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -588,7 +597,7 @@ export async function revealSolution(
     update: { revealedSolution: true },
   });
 
-  const lang = normaliseLanguage(language);
+  const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null

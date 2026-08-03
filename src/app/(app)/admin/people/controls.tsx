@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { Spinner } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
@@ -29,6 +30,7 @@ export function DirectoryControls({
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const [text, setText] = useState(query);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -94,7 +96,7 @@ export function DirectoryControls({
         </FilterChip>
         {SCHOOL_ROLES.map((r) => (
           <FilterChip key={r} active={role === r} onClick={() => navigate({ role: r })}>
-            {ROLE_META[r].plural}
+            {t(ROLE_META[r].pluralKey)}
           </FilterChip>
         ))}
 

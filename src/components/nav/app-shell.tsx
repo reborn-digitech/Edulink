@@ -10,6 +10,8 @@ import { CommandPalette } from "./command-palette";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
+import type { Translate } from "@/lib/i18n";
 import { ROLE_META, type Role } from "@/lib/constants";
 
 export type ShellUser = {
@@ -37,6 +39,7 @@ export function AppShell({
   unreadCount?: number;
 }) {
   const pathname = usePathname();
+  const t = useT();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const items = NAV[user.role];
   const primaryItems = items.filter((i) => i.primary).slice(0, 5);
@@ -63,13 +66,13 @@ export function AppShell({
           <Logo size={28} />
           <div className="min-w-0">
             <p className="truncate text-sm font-bold text-fg">{user.schoolName}</p>
-            <p className="text-xs text-fg-muted">{ROLE_META[user.role].label}</p>
+            <p className="text-xs text-fg-muted">{t(ROLE_META[user.role].labelKey)}</p>
           </div>
         </div>
 
-        <nav aria-label="Main" className="flex-1 space-y-0.5 overflow-y-auto p-3 scrollbar-thin">
+        <nav aria-label={t("shell.mainNav")} className="flex-1 space-y-0.5 overflow-y-auto p-3 scrollbar-thin">
           {items.map((item) => (
-            <SideLink key={item.href} item={item} active={isActive(pathname, item)} />
+            <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} />
           ))}
         </nav>
 
@@ -80,7 +83,7 @@ export function AppShell({
             className="mb-2 flex w-full items-center gap-2 rounded-[--radius-md] border border-border px-3 py-2.5 text-sm text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
           >
             <MagnifyingGlassIcon className="size-4" aria-hidden="true" />
-            <span className="flex-1 text-left">Search</span>
+            <span className="flex-1 text-left">{t("shell.search")}</span>
             <kbd className="flex items-center gap-0.5 rounded border border-border px-1.5 py-0.5 text-[0.6875rem] font-medium">
               <CommandIcon className="size-3" aria-hidden="true" />K
             </kbd>
@@ -94,7 +97,7 @@ export function AppShell({
             <span className="min-w-0 flex-1">
               <span className="block truncate text-sm font-medium text-fg">{user.name}</span>
               {user.contextCount > 1 && (
-                <span className="block text-xs text-accent-strong">Switch role</span>
+                <span className="block text-xs text-accent-strong">{t("shell.switchRole")}</span>
               )}
             </span>
           </Link>
@@ -111,14 +114,18 @@ export function AppShell({
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
-            aria-label="Search"
+            aria-label={t("shell.search")}
             className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
           >
             <MagnifyingGlassIcon className="size-5" aria-hidden="true" />
           </button>
           <Link
             href="/notifications"
-            aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : "Notifications"}
+            aria-label={
+              unreadCount > 0
+                ? t("shell.notificationsUnread", { count: unreadCount })
+                : t("shell.notifications")
+            }
             className="tap relative grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
           >
             <NavIcon name="bell" className="size-5" />
@@ -128,7 +135,7 @@ export function AppShell({
               </span>
             )}
           </Link>
-          <Link href="/account" aria-label="Your account" className="tap grid place-items-center">
+          <Link href="/account" aria-label={t("shell.yourAccount")} className="tap grid place-items-center">
             <Avatar avatarKey={user.avatarKey} name={user.name} size="sm" />
           </Link>
         </div>
@@ -156,14 +163,14 @@ export function AppShell({
           )}
         >
           <NavIcon name={action.icon} className="size-5" weight="bold" />
-          <span className="hidden sm:inline">{action.label}</span>
-          <span className="sr-only sm:hidden">{action.label}</span>
+          <span className="hidden sm:inline">{t(action.labelKey)}</span>
+          <span className="sr-only sm:hidden">{t(action.labelKey)}</span>
         </Link>
       )}
 
       {/* ---------- mobile bottom bar ---------- */}
       <nav
-        aria-label="Main"
+        aria-label={t("shell.mainNav")}
         className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 pb-safe backdrop-blur-md lg:hidden"
       >
         <ul className="flex">
@@ -185,7 +192,7 @@ export function AppShell({
                     className="size-6"
                     weight={active ? "fill" : "regular"}
                   />
-                  <span className="text-[0.6875rem] font-medium leading-none">{item.label}</span>
+                  <span className="text-[0.6875rem] font-medium leading-none">{t(item.labelKey)}</span>
                 </Link>
               </li>
             );
@@ -203,7 +210,7 @@ export function AppShell({
   );
 }
 
-function SideLink({ item, active }: { item: NavItem; active: boolean }) {
+function SideLink({ item, active, t }: { item: NavItem; active: boolean; t: Translate }) {
   return (
     <Link
       href={item.href}
@@ -217,12 +224,13 @@ function SideLink({ item, active }: { item: NavItem; active: boolean }) {
       )}
     >
       <NavIcon name={item.icon} className="size-5" weight={active ? "fill" : "regular"} />
-      {item.label}
+      {t(item.labelKey)}
     </Link>
   );
 }
 
 export function SignOutButton() {
+  const t = useT();
   return (
     <form action="/api/auth/logout" method="post">
       <button
@@ -230,7 +238,7 @@ export function SignOutButton() {
         className="flex w-full items-center gap-2 rounded-[--radius-md] px-3 py-2.5 text-sm font-medium text-danger transition-colors hover:bg-danger-soft"
       >
         <SignOutIcon className="size-5" aria-hidden="true" />
-        Sign out
+        {t("shell.signOut")}
       </button>
     </form>
   );

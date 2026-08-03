@@ -187,7 +187,7 @@ export function Player({
             </>
           )}
           <Button asChild variant="secondary">
-            <a href="/student/abhyaas">Back to practice</a>
+            <a href="/student/practice">Back to practice</a>
           </Button>
         </CardBody>
       </Card>

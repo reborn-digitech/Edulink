@@ -5,6 +5,7 @@ import { Wordmark } from "@/components/brand";
 import { LoginForm } from "./form";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Log in" };
 
@@ -17,6 +18,7 @@ export default async function LoginPage({
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
   const { expired } = await searchParams;
+  const t = await getT();
 
   return (
     <div className="grid min-h-safe bg-bg lg:grid-cols-2">
@@ -26,11 +28,11 @@ export default async function LoginPage({
             <Wordmark />
           </Link>
 
-          <h1 className="text-2xl font-bold tracking-tight text-fg">Welcome back</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg">{t("login.welcome")}</h1>
           <p className="mt-1.5 text-sm text-fg-muted">
-            Log in to your school, or{" "}
+            {t("login.subtitlePrefix")}{" "}
             <Link href="/join" className="font-medium text-accent-strong underline underline-offset-4">
-              join with a code
+              {t("login.joinWithCode")}
             </Link>
             .
           </p>
@@ -40,16 +42,16 @@ export default async function LoginPage({
               role="status"
               className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
-              That link has expired. Ask for a new one below.
+              {t("login.expired")}
             </p>
           )}
 
           <LoginForm className="mt-7" />
 
           <p className="mt-8 text-center text-sm text-fg-muted">
-            Setting up a new school?{" "}
+            {t("login.newSchoolPrefix")}{" "}
             <Link href="/register" className="font-semibold text-accent-strong underline underline-offset-4">
-              Register it here
+              {t("login.registerHere")}
             </Link>
           </p>
         </div>

@@ -8,9 +8,11 @@ import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { login, completeLogin, requestMagicLink } from "./actions";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 
 export function LoginForm({ className }: { className?: string }) {
   const router = useRouter();
+  const t = useT();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [mode, setMode] = useState<"password" | "magic">("password");
@@ -50,7 +52,7 @@ export function LoginForm({ className }: { className?: string }) {
         setErrors({});
         return;
       }
-      toast({ tone: "ok", title: "Welcome back" });
+      toast({ tone: "ok", title: t("login.welcome") });
       router.push(result.redirectTo ?? "/");
       router.refresh();
     });
@@ -59,11 +61,8 @@ export function LoginForm({ className }: { className?: string }) {
   if (challenge) {
     return (
       <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6", className)}>
-        <h2 className="font-semibold text-fg">Enter your code</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-          Open your authenticator app and type the six-digit code. No recovery code to hand? Any of
-          the ones you saved works here too.
-        </p>
+        <h2 className="font-semibold text-fg">{t("login.codeTitle")}</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("login.codeHint")}</p>
         <input
           type="text"
           inputMode="numeric"
@@ -89,18 +88,20 @@ export function LoginForm({ className }: { className?: string }) {
               if (result.remainingRecoveryCodes !== undefined) {
                 toast({
                   tone: "warn",
-                  title: "Recovery code used",
-                  description: `${result.remainingRecoveryCodes} left. Set two-factor up again to get a fresh set.`,
+                  title: t("login.recoveryUsed"),
+                  description: t("login.recoveryUsedHint", {
+                    count: result.remainingRecoveryCodes,
+                  }),
                 });
               } else {
-                toast({ tone: "ok", title: "Welcome back" });
+                toast({ tone: "ok", title: t("login.welcome") });
               }
               router.push(result.redirectTo ?? "/");
               router.refresh();
             })
           }
         >
-          Sign in
+          {t("login.signIn")}
         </Button>
       </div>
     );
@@ -112,13 +113,12 @@ export function LoginForm({ className }: { className?: string }) {
         <div className="mx-auto mb-4 grid size-14 place-items-center rounded-full bg-accent-soft text-accent-strong animate-pop">
           <PaperPlaneTiltIcon weight="duotone" className="size-7" />
         </div>
-        <h2 className="font-semibold text-fg">Check your email</h2>
+        <h2 className="font-semibold text-fg">{t("login.checkEmail")}</h2>
         <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-          If an account exists for <strong className="text-fg">{email}</strong>, a sign-in link is
-          on its way. It works once and expires in 20 minutes.
+          {t("login.magicSent", { email })}
         </p>
         <Button variant="ghost" className="mt-4" onClick={() => setMagicSent(false)}>
-          Use a different email
+          {t("login.useDifferentEmail")}
         </Button>
       </div>
     );
@@ -136,7 +136,7 @@ export function LoginForm({ className }: { className?: string }) {
       )}
 
       <TextField
-        label={mode === "password" ? "Email or login name" : "Email"}
+        label={mode === "password" ? t("login.emailOrLoginName") : t("login.emailLabel")}
         // Not type="email": students log in with a handle like `amara.k4f9`,
         // and the browser's built-in email validation would block it.
         type={mode === "password" ? "text" : "email"}
@@ -146,16 +146,18 @@ export function LoginForm({ className }: { className?: string }) {
         spellCheck={false}
         required
         autoFocus
-        placeholder={mode === "password" ? "you@school.org or amara.k4f9" : "you@school.org"}
+        placeholder={
+          mode === "password" ? t("login.emailOrHandlePlaceholder") : t("login.emailPlaceholder")
+        }
         value={email}
         error={errors.email}
         onChange={(e) => setEmail(e.target.value)}
-        hint={mode === "password" ? "Students: use the login name your school gave you." : undefined}
+        hint={mode === "password" ? t("login.studentHint") : undefined}
       />
 
       {mode === "password" && (
         <TextField
-          label="Password"
+          label={t("login.password")}
           type="password"
           autoComplete="current-password"
           required
@@ -172,13 +174,13 @@ export function LoginForm({ className }: { className?: string }) {
         loading={pending}
         icon={mode === "password" ? <LockKeyIcon weight="bold" /> : <PaperPlaneTiltIcon weight="bold" />}
       >
-        {mode === "password" ? "Log in" : "Email me a link"}
+        {mode === "password" ? t("login.submit") : t("login.emailMeALink")}
       </Button>
 
       <div className="relative py-1 text-center">
         <span aria-hidden="true" className="absolute inset-x-0 top-1/2 h-px bg-border" />
         <span className="relative bg-bg px-3 text-xs font-medium uppercase tracking-wide text-fg-subtle">
-          or
+          {t("login.or")}
         </span>
       </div>
 
@@ -192,7 +194,7 @@ export function LoginForm({ className }: { className?: string }) {
           setErrors({});
         }}
       >
-        {mode === "password" ? "Email me a sign-in link instead" : "Use my password instead"}
+        {mode === "password" ? t("login.useMagicLink") : t("login.usePassword")}
       </Button>
     </form>
   );

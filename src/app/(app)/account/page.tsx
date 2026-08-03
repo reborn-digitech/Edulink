@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BellIcon, DevicesIcon, PaletteIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import { BellIcon, DevicesIcon, PaletteIcon, TranslateIcon, UserIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
@@ -12,8 +12,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "./appearance-form";
+import { LanguageForm } from "./language-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 import { status as twoFactorStatus } from "@/lib/two-factor";
 import { TwoFactor } from "./two-factor";
 
@@ -22,6 +24,7 @@ export const metadata: Metadata = { title: "Your account" };
 export default async function AccountPage() {
   const session = await requireUser();
   const live = (await getSession())!;
+  const t = await getT();
 
   const [user, contexts, sessions] = await Promise.all([
     db.user.findUniqueOrThrow({
@@ -61,13 +64,13 @@ export default async function AccountPage() {
           <p className="truncate text-sm text-fg-muted">
             {isHandle ? (
               <>
-                Login name{" "}
+                {t("account.loginName")}{" "}
                 <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
                   {user.email?.replace("@edulink.local", "")}
                 </code>
               </>
             ) : (
-              (user.email ?? "No email")
+              (user.email ?? t("account.noEmail"))
             )}
           </p>
         </div>
@@ -83,16 +86,16 @@ export default async function AccountPage() {
       <Card>
         <CardHeader
           icon={<UserIcon weight="duotone" className="size-5" />}
-          title="Where you belong"
+          title={t("account.belongTitle")}
           description={
             contexts.memberships.length + contexts.children.length === 1
-              ? "One place"
-              : "You can switch at any time"
+              ? t("account.belongOne")
+              : t("account.belongMany")
           }
           action={
             contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0) > 1 ? (
               <Button asChild size="sm" variant="secondary">
-                <Link href="/switch">Switch</Link>
+                <Link href="/switch">{t("account.switch")}</Link>
               </Button>
             ) : null
           }
@@ -108,7 +111,7 @@ export default async function AccountPage() {
                   {membership.schoolName}
                 </span>
                 <Badge tone="accent" size="sm">
-                  {ROLE_META[membership.role as Role].label}
+                  {t(ROLE_META[membership.role as Role].labelKey)}
                 </Badge>
               </li>
             ))}
@@ -118,7 +121,7 @@ export default async function AccountPage() {
                   {contexts.children.map((c) => c.name).join(", ")}
                 </span>
                 <Badge tone="accent" size="sm">
-                  Parent
+                  {t("role.parent")}
                 </Badge>
               </li>
             )}
@@ -130,8 +133,8 @@ export default async function AccountPage() {
       <Card>
         <CardHeader
           icon={<BellIcon weight="duotone" className="size-5" />}
-          title="Notifications"
-          description="What you are told, and when"
+          title={t("account.notificationsTitle")}
+          description={t("account.notificationsDescription")}
         />
         <CardBody className="space-y-4">
           <PushToggle />
@@ -139,12 +142,24 @@ export default async function AccountPage() {
         </CardBody>
       </Card>
 
+      {/* ---------- language ---------- */}
+      <Card>
+        <CardHeader
+          icon={<TranslateIcon weight="duotone" className="size-5" />}
+          title={t("language.title")}
+          description={t("language.description")}
+        />
+        <CardBody>
+          <LanguageForm />
+        </CardBody>
+      </Card>
+
       {/* ---------- appearance ---------- */}
       <Card>
         <CardHeader
           icon={<PaletteIcon weight="duotone" className="size-5" />}
-          title="Appearance and reading"
-          description="Applies to this account on every device"
+          title={t("account.appearanceTitle")}
+          description={t("account.appearanceDescription")}
         />
         <CardBody>
           <AppearanceForm prefs={prefs} section="appearance" />
@@ -155,15 +170,15 @@ export default async function AccountPage() {
       <Card>
         <CardHeader
           icon={<DevicesIcon weight="duotone" className="size-5" />}
-          title="Signed-in devices"
-          description={`${sessions.length} active`}
+          title={t("account.devicesTitle")}
+          description={t("account.devicesCount", { count: sessions.length })}
         />
         <CardBody>
           <DeviceList
             currentSessionId={live.sessionId}
             devices={sessions.map((s) => ({
               id: s.id,
-              label: describeDevice(s.userAgent),
+              label: describeDevice(s.userAgent) ?? t("account.unknownDevice"),
               ip: s.ip,
               lastSeen: relativeTime(s.lastSeenAt),
               since: relativeTime(s.createdAt),
@@ -174,7 +189,7 @@ export default async function AccountPage() {
 
       <form action="/api/auth/logout" method="post" className="pb-4">
         <Button type="submit" variant="secondary" block>
-          Sign out
+          {t("shell.signOut")}
         </Button>
       </form>
     </div>
@@ -187,8 +202,11 @@ export default async function AccountPage() {
  * Deliberately coarse. Precise UA parsing needs a library that goes stale, and
  * "Chrome on Android" is all anyone needs to answer "is that phone mine?".
  */
-function describeDevice(userAgent: string | null): string {
-  if (!userAgent) return "Unknown device";
+function describeDevice(userAgent: string | null): string | null {
+  // Null rather than a string, so the ONE part of this that is prose rather
+  // than a product name gets translated by the caller. "Chrome on Android" is
+  // two proper nouns and stays as it is in every language.
+  if (!userAgent) return null;
   const ua = userAgent.toLowerCase();
 
   const os = ua.includes("android")

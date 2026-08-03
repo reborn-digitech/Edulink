@@ -275,23 +275,23 @@ async function main() {
   /* ---- student ---- */
   for (const p of [
     "/student", "/student/work", "/student/grades", "/student/profile",
-    "/student/abhyaas", "/student/abhyaas?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
+    "/student/practice", "/student/practice?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
     "/bulletin/new", "/notifications", "/account",
   ]) {
     await check(student, p);
   }
   if (post) await check(student, `/bulletin/${post.id}`);
 
-  /* ---- abhyaas: the practice bank is shared, the practising is not ---- */
+  /* ---- practice: the question bank is shared, the practising is not ---- */
   const topic = await db.quizTopic.findFirst({ orderBy: { slug: "asc" }, select: { slug: true } });
   if (topic) {
-    await check(student, `/student/abhyaas/${topic.slug}`, 200, "a pupil may practise");
+    await check(student, `/student/practice/${topic.slug}`, 200, "a pupil may practise");
     // The bank is global, so a pupil at the OTHER school reaches the same topic.
     // What must never cross is their attempts, which are school-scoped rows.
-    await check(teacher, `/student/abhyaas/${topic.slug}`, 307, "practice is not a teacher's page");
-    await check(parent, `/student/abhyaas/${topic.slug}`, 307, "nor a guardian's");
+    await check(teacher, `/student/practice/${topic.slug}`, 307, "practice is not a teacher's page");
+    await check(parent, `/student/practice/${topic.slug}`, 307, "nor a guardian's");
   }
-  await check(student, "/student/abhyaas/no-such-topic", 404, "an invented topic slug");
+  await check(student, "/student/practice/no-such-topic", 404, "an invented topic slug");
 
   /* ---- parent ---- */
   for (const p of [

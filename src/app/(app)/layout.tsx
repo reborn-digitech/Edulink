@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { AppShell } from "@/components/nav/app-shell";
 import { getSession, listContexts } from "@/lib/session";
+import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import type { Role } from "@/lib/constants";
 
@@ -27,13 +28,16 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   }
 
   const role = session.role as Role;
+  const t = await getT();
 
   const [schoolName, unreadCount] = await Promise.all([
     session.schoolId
       ? db.school
           .findUnique({ where: { id: session.schoolId }, select: { name: true } })
+          // "EduLink" is a name, so it is not translated. What sits in this slot
+          // for a parent is a description of where they are, so it is.
           .then((s) => s?.name ?? "EduLink")
-      : Promise.resolve("Your children"),
+      : Promise.resolve(t("shell.yourChildren")),
     db.notification.count({ where: { userId: session.user.id, readAt: null } }),
   ]);
 

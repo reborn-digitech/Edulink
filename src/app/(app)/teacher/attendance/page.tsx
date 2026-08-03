@@ -30,7 +30,7 @@ export default async function AttendancePage({
   // A hand-edited ?date= must not reach the database as garbage. (§5)
   const dateKey = params.date && isDateKey(params.date) ? params.date : today;
 
-  // The Chhutti Calendar's one job in this path. See the note on ClosedDayNotice.
+  // The school calendar's one job in this path. See the note on ClosedDayNotice.
   const calendar = await closedOn(ctx.schoolId, dateKey);
 
   const classIds =

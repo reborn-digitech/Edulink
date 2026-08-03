@@ -15,6 +15,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { parseInviteCsv } from "@/lib/csv";
 import { createInvites, type CreateInvitesState } from "../actions";
+import { useT } from "@/lib/i18n";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 
 /**
@@ -37,6 +38,7 @@ export function InviteForm({
 }) {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -161,7 +163,7 @@ export function InviteForm({
       >
         {SCHOOL_ROLES.map((r) => (
           <option key={r} value={r}>
-            {ROLE_META[r].label}
+            {t(ROLE_META[r].labelKey)}
           </option>
         ))}
       </SelectField>

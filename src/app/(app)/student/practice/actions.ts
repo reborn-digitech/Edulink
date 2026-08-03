@@ -18,7 +18,7 @@ import {
 import type { ActiveContext } from "@/lib/session";
 
 /**
- * Abhyaas, from the child's side.
+ * Practice, from the child's side.
  *
  * Every action re-reads the role from the SESSION. The attempt id travels in the
  * request, so it is re-scoped to this pupil's school and membership on every
@@ -31,7 +31,7 @@ type Ok<T> = { ok: true } & T;
 
 function failure(error: unknown): Failure {
   if (error instanceof AccessError) return { ok: false, error: error.message };
-  console.error("[abhyaas]", error);
+  console.error("[practice]", error);
   return { ok: false, error: "Something went wrong. Try again in a moment." };
 }
 
@@ -80,39 +80,6 @@ export async function advance(attemptId: string): Promise<Ok<{ question: ServedQ
   } catch (error) {
     return failure(error);
   }
-}
-
-/**
- * Changes the language Abhyaas is read in, and remembers it.
- *
- * Written to the user's stored preferences rather than held in the URL, because
- * a language that resets on every navigation is not a language setting — it is
- * a link the child has to keep clicking. The same field already backs the rest
- * of the account, so choosing Marathi here is choosing it everywhere that grows
- * a translation later.
- *
- * Anything unrecognised lands on English via `normaliseLanguage` rather than
- * being rejected: this is a display preference, and refusing to save one is a
- * worse outcome than quietly storing the readable default.
- */
-export async function setLanguage(code: string): Promise<{ ok: boolean }> {
-  const session = await getSession();
-  if (!session) return { ok: false };
-
-  const language = normaliseLanguage(code);
-  const current = readJson<UserPrefs>(
-    (await db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { prefs: true } }))
-      .prefs,
-    DEFAULT_PREFS,
-  );
-
-  await db.user.update({
-    where: { id: session.user.id },
-    data: { prefs: writeJson({ ...current, locale: language }) },
-  });
-
-  revalidatePath("/student/abhyaas");
-  return { ok: true };
 }
 
 /** Costs the topic badge for this run. The UI says so before calling this. */

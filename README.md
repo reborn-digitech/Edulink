@@ -47,7 +47,7 @@ Put both database URLs and the two printed VAPID keys into `.env`, then:
 
 ```bash
 npm run setup
-npm run demo:seed   # optional: data for the calendar, global feed and Prerna
+npm run demo:seed   # optional: data for the calendar, global feed and Experts
 npm run dev
 ```
 
@@ -211,9 +211,10 @@ src/lib/                  All business logic. Pages are thin.
   tenant-request.ts       ★ Which schools THIS request may see. db.ts asks it per query.
   files.ts                ★ Per-file read authorisation (reverse lookup, default deny).
   badges.ts               Student badges, derived on read — never stored. Windowed on the academic year.
-  academic-year.ts        ★ Shaikshanik Varsh. Snapshot THEN flip — the order is the function.
-  holidays.ts             ★ Chhutti Calendar. Range maths is pure; only kind=HOLIDAY closes school.
-  quiz.ts                 ★ Abhyaas. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
+  academic-year.ts        ★ Academic year. Snapshot THEN flip — the order is the function.
+  holidays.ts             ★ School calendar. Range maths is pure; only kind=HOLIDAY closes school.
+  quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
+  i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
@@ -228,7 +229,7 @@ src/components/attachment-list.tsx  Attach/detach on an existing record.
 src/sw.ts                 Service worker (Serwist compiles to public/sw.js).
 tests/                    Integration tests (need the seed).
 src/**/*.test.ts          Unit tests.
-content/quiz/*.json       The Abhyaas question bank. Read content/quiz/README.md first.
+content/quiz/*.json       The Practice question bank. Read content/quiz/README.md first.
 docs/UI-TEST-CHECKLIST.md Manual walkthrough of every feature.
 ```
 
@@ -417,7 +418,7 @@ Break these and something quietly goes wrong for a child or a parent.
 
 1. **SSO, 2FA.** Neither can be verified without real provider credentials.
    Budget for that rather than discovering it at the end.
-2. **Fill the Abhyaas bank.** DELIBERATELY LAST. The engine, importer, verifier,
+2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
    list. 105 questions across 9 topics against an ask of 150,000. Every
@@ -781,7 +782,7 @@ One line each, with the default rejected.
   18 children with not enough history" with complete confidence. It reads the
   register on the admin connection now. Worth knowing before writing any other
   script that imports from `src/lib/`.
-- **Abhyaas — the engine, verified nine ways by mutation.** Promote on one right
+- **Practice — the engine, verified nine ways by mutation.** Promote on one right
   answer instead of two → 4 checks fail. Let streaks survive a level change → 1.
   Stop a right answer clearing the losing streak → 1. Derive the badge gate from
   the response rows instead of the attempt flag → 1. Make `startAttempt` always
@@ -836,7 +837,7 @@ One line each, with the default rejected.
   reads declared entries only, so a Sunday shows nothing and there was no
   outcome that could have failed it. Sunday is a real assertion in
   `tests/holidays.test.ts`, where the maths can actually be wrong.
-- **The Chhutti Calendar, and the one thing it is actually for.** The obvious
+- **The school calendar, and the one thing it is actually for.** The obvious
   motivation — "attendance should not count holidays" — turned out to be already
   true, and for a better reason than a holiday table: an attendance percentage
   here divides by the registers that were TAKEN, not by days on a calendar, and
@@ -1022,7 +1023,7 @@ the release where every page rendered and nothing saved.
   else's. A ranking across schools would be the first thing in this app to show
   one school another school's children — a decision, and a policy change, before
   it is a page.
-- **The Abhyaas question BANK, at scale.** The engine is built and works end to
+- **The Practice question BANK, at scale.** The engine is built and works end to
   end; the bank is **105 questions across 9 topics**, covering all six subjects
   and spread evenly over all six levels (L1–L5 have 18 each, L6 has 15). The ask
   was 500 a chapter, 5,000+ a subject a class — across six subjects and five
@@ -1047,15 +1048,30 @@ the release where every page rendered and nothing saved.
   answer is computable and a person's name in `reviewedBy` where it is not, with
   real counts reported per batch. `quiz:verify` prints exactly those counts so
   the bank can never claim more than it has earned.
-- ~~Prerna~~ and ~~Margdarshak~~ **both built.** Expert marketplace, slots,
+- ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
   that sets a mentorship up. A teacher may pair only pupils they teach; an admin
   any pupil in the school. See Status.
-- **The naming pass.** Hybrid Indian name + English subtitle, agreed and applied
-  so far only to what this commit touched: Chhutti Calendar, Shaikshanik Varsh.
-  The rest of the app is still English-only.
-- SSO (Google/Microsoft/Apple), SMS, i18n beyond English, real email transport
+- ~~The naming pass~~ **done, and reversed in approach.** The hybrid
+  Indian-name-plus-English-subtitle scheme is gone: every feature now has a plain
+  English name — Prerna → **Experts**, Margdarshak → **Mentoring**, Abhyaas →
+  **Practice** (route moved to `/student/practice`), Chhutti Calendar → **School
+  calendar**, Shaikshanik Varsh → **Academic year**. A name baked into one
+  language is the wrong primitive for an app that has to speak three; the name is
+  now a dictionary key and the language is a setting.
+  **The `abhyaas:` badge-id prefix is deliberately unchanged** — it is stored
+  identity, not display, and renaming it would orphan every badge already earned.
+- ~~i18n beyond English~~ **partly built. English, हिन्दी and मराठी**, switchable
+  per user from Settings, stored in the same `prefs.locale` that already drove
+  Practice — one field, one switch, so a Marathi app can never serve Hindi
+  questions. **Coverage is partial and the app says so**: the shell, all
+  navigation, role labels, the account page and login are translated; every other
+  page is still English. The switcher itself carries that sentence, so nobody
+  meets an English page and wonders whether it is broken.
+  **Hindi and Marathi were written by me, not by a native speaker** — good first
+  draft, wants a real teacher's eye before a real school reads it.
+- SSO (Google/Microsoft/Apple), SMS, real email transport
 - ~~2FA~~ **built.** TOTP, verified against the RFC 4226 and RFC 6238 test
   vectors, so it accepts codes from any standard authenticator rather than only
   from itself. Single-use per 30-second step, ten hashed single-use recovery

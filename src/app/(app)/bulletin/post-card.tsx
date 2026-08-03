@@ -21,6 +21,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { pin, react, review, report } from "./actions";
+import { useT } from "@/lib/i18n";
 import { REACTION_KINDS, ROLE_META, type ReactionKind, type Role } from "@/lib/constants";
 
 type Post = {
@@ -67,6 +68,7 @@ const REPORT_REASONS = [
 export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | null }) {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const [rejecting, setRejecting] = useState(false);
   const [reason, setReason] = useState("");
@@ -135,7 +137,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
               <span className="font-semibold text-fg">{post.authorName}</span>
               {post.authorRole && (
                 <Badge tone="neutral" size="sm">
-                  {ROLE_META[post.authorRole].label}
+                  {t(ROLE_META[post.authorRole].labelKey)}
                 </Badge>
               )}
             </p>

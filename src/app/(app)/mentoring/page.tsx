@@ -7,11 +7,12 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { PairForm } from "./pair-form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Margdarshak · Mentoring" };
+export const metadata: Metadata = { title: "Mentoring" };
 
 /**
- * Margdarshak, from whichever side you are on.
+ * Mentoring, from whichever side you are on.
  *
  * ONE PAGE FOR ALL FOUR READERS — expert, pupil, guardian and staff — because
  * the list they should see is the same list filtered by who they are, and
@@ -19,6 +20,7 @@ export const metadata: Metadata = { title: "Margdarshak · Mentoring" };
  * role would be four places for the visibility rule to drift.
  */
 export default async function MentoringPage() {
+  const t = await getT();
   const ctx = await requireUser();
   const isStaff = ctx.role === "ADMIN" || ctx.role === "TEACHER";
   const [threads, options] = await Promise.all([
@@ -30,7 +32,7 @@ export default async function MentoringPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Margdarshak</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.mentoring")}</h1>
         <p className="mt-1 max-w-prose text-sm text-fg-muted">
           One-to-one mentoring. Every conversation can be read by the pupil&apos;s guardians and
           by the school — mentoring here is never private.

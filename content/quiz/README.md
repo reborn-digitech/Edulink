@@ -1,4 +1,4 @@
-# The Abhyaas question bank
+# The Practice question bank
 
 One JSON file per topic. `npm run quiz:import` loads them; `npm run quiz:verify`
 checks them and refuses to let a broken one through.

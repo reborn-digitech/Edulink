@@ -7,17 +7,19 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { BookButton } from "./book-button";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Prerna · Experts" };
+export const metadata: Metadata = { title: "Experts" };
 
 /**
- * Prerna — the expert marketplace.
+ * Experts — the marketplace.
  *
  * Availability is public and who booked it is not: a taken slot simply does not
  * appear here, because the booking that would name the school is behind that
  * school's own policy.
  */
 export default async function ExpertsPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN", "TEACHER");
   const [experts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
   const live = bookings.filter((b) => b.status !== "CANCELLED");
@@ -25,7 +27,7 @@ export default async function ExpertsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Prerna</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.experts")}</h1>
         <p className="mt-1 max-w-prose text-sm text-fg-muted">
           Book time with a curated expert. They can see your school only while a booking with you
           is live.

@@ -1,0 +1,219 @@
+import type { Dictionary } from "./dictionary";
+
+/**
+ * मराठी.
+ *
+ * Same contract as `hi.ts`: typed `Dictionary`, so a key added to `en.ts` and
+ * missed here fails the build.
+ *
+ * Not a transliteration of the Hindi. Marathi has its own school vocabulary and
+ * it is not always the Hindi word — हजेरी rather than हाज़िरी for the register,
+ * पालक rather than अभिभावक for a parent, तुकडी rather than अनुभाग for a section,
+ * सराव rather than अभ्यास for practice. Translating one Indian language by
+ * lightly respelling another is how you get text that every reader recognises as
+ * not-quite-theirs.
+ *
+ * Also written by me and not by a native speaker — see the note in `hi.ts`. Good
+ * first draft; wants a real speaker before a real school reads it.
+ */
+
+export const mr: Dictionary = {
+  nav: {
+    overview: "आढावा",
+    today: "आज",
+    directory: "निर्देशिका",
+    classes: "वर्ग",
+    invites: "आमंत्रणे",
+    bulletin: "सूचना फलक",
+    experts: "तज्ज्ञ",
+    mentoring: "मार्गदर्शन",
+    competitions: "स्पर्धा",
+    calendar: "दिनदर्शिका",
+    safety: "सुरक्षा",
+    settings: "सेटिंग्ज",
+    register: "हजेरी",
+    work: "कामे",
+    messages: "संदेश",
+    myWork: "माझे काम",
+    grades: "गुण",
+    practice: "सराव",
+    me: "मी",
+    attendance: "उपस्थिती",
+    bookings: "बुकिंग",
+    availability: "उपलब्धता",
+    profile: "प्रोफाइल",
+    account: "खाते",
+  },
+
+  action: {
+    invitePeople: "लोकांना आमंत्रित करा",
+    invitePeopleHint: "तुमच्या शाळेत शिक्षक किंवा विद्यार्थी जोडा",
+    takeRegister: "हजेरी घ्या",
+    takeRegisterHint: "आजची उपस्थिती नोंदवा",
+    offerTime: "वेळ उपलब्ध करा",
+    offerTimeHint: "शाळा बुक करू शकतील अशी वेळ जोडा",
+    inviteTeacher: "शिक्षकाला आमंत्रित करा",
+    inviteTeacherHint: "आमंत्रण ईमेल पाठवा",
+    createClass: "वर्ग तयार करा",
+    createClassHint: "नवीन वर्ग किंवा तुकडी जोडा",
+    schoolBranding: "शाळेची ओळख",
+    schoolBrandingHint: "लोगो आणि रंग",
+    newAssignment: "नवीन काम",
+    newAssignmentHint: "एखाद्या वर्गाला काम द्या",
+    messageParent: "पालकाला संदेश पाठवा",
+    messageParentHint: "खाजगी संवाद सुरू करा",
+    whatIsDue: "काय बाकी आहे",
+    whatIsDueHint: "तुमचे येणारे काम",
+    shareSomething: "काहीतरी शेअर करा",
+    shareSomethingHint: "तुमच्या वर्गाच्या सूचना फलकावर टाका",
+    messageTeacher: "शिक्षकाला संदेश पाठवा",
+    messageTeacherHint: "संवाद सुरू करा",
+    notificationSettings: "सूचना सेटिंग्ज",
+    notificationSettingsHint: "तुम्हाला काय कळवायचे ते निवडा",
+    editProfile: "प्रोफाइल संपादित करा",
+    editProfileHint: "परिचय, माहिती आणि तज्ज्ञता",
+  },
+
+  shell: {
+    mainNav: "मुख्य",
+    search: "शोधा",
+    switchRole: "भूमिका बदला",
+    notifications: "सूचना",
+    notificationsUnread: "सूचना, {count} न वाचलेल्या",
+    yourAccount: "तुमचे खाते",
+    signOut: "साइन आउट",
+    yourChildren: "तुमची मुले",
+    skipToContent: "मजकुरावर जा",
+  },
+
+  palette: {
+    dialogLabel: "शोध आणि आदेश",
+    placeholder: "पृष्ठे आणि क्रिया शोधा…",
+    inputLabel: "पृष्ठे आणि क्रिया शोधा",
+    groupActions: "क्रिया",
+    groupGoTo: "येथे जा",
+    empty: "“{query}” शी काहीही जुळत नाही. एखाद्या पृष्ठाचे नाव वापरून पाहा, जसे “{example}”.",
+    switchContext: "भूमिका किंवा शाळा बदला",
+    switchContextHint: "तुम्ही एकापेक्षा जास्त ठिकाणी आहात",
+    accountEntry: "तुमचे खाते आणि दिसणे",
+  },
+
+  role: {
+    admin: "शाळा प्रशासक",
+    adminPlural: "प्रशासक",
+    teacher: "शिक्षक",
+    teacherPlural: "शिक्षक",
+    student: "विद्यार्थी",
+    studentPlural: "विद्यार्थी",
+    parent: "पालक",
+    parentPlural: "पालक",
+    expert: "तज्ज्ञ",
+    expertPlural: "तज्ज्ञ",
+  },
+
+  language: {
+    title: "भाषा",
+    description: "प्रत्येक डिव्हाइसवर या खात्याला लागू होते",
+    groupLabel: "भाषा निवडा",
+    readIn: "यात वाचा",
+    saved: "भाषा बदलली",
+    partial:
+      "नेव्हिगेशन, तुमचे खाते आणि लॉगिन पृष्ठ भाषांतरित आहेत. EduLink चा उर्वरित भाग अजून इंग्रजीत आहे.",
+  },
+
+  account: {
+    title: "तुमचे खाते",
+    loginName: "लॉगिन नाव",
+    noEmail: "ईमेल नाही",
+    belongTitle: "तुम्ही कुठे आहात",
+    belongOne: "एक ठिकाण",
+    belongMany: "तुम्ही कधीही बदलू शकता",
+    switch: "बदला",
+    notificationsTitle: "सूचना",
+    notificationsDescription: "तुम्हाला काय कळवायचे, आणि कधी",
+    appearanceTitle: "दिसणे आणि वाचन",
+    appearanceDescription: "प्रत्येक डिव्हाइसवर या खात्याला लागू होते",
+    devicesTitle: "साइन-इन केलेली डिव्हाइस",
+    devicesCount: "{count} सक्रिय",
+    unknownDevice: "अज्ञात डिव्हाइस",
+  },
+
+  prefs: {
+    push: "पुश सूचना",
+    pushHint: "गैरहजेरी, नवीन गुण आणि शिक्षकांचे संदेश — ॲप बंद असतानाही.",
+    email: "ईमेल",
+    emailHint: "ईमेलने एक प्रत. साइन-इन लिंक या सेटिंगची पर्वा न करता नेहमी येतात.",
+    quietHours: "शांत वेळ",
+    quietHoursHint:
+      "या वेळेदरम्यान तुमचा फोन वाजणार नाही. संदेश तरीही येत राहतील — ते ॲपमध्ये दिसतील, त्यामुळे काहीही हरवत नाही.",
+    useQuietHours: "शांत वेळ वापरा",
+    from: "पासून",
+    until: "पर्यंत",
+    quietHoursMidnight: "मध्यरात्र ओलांडली तरी चालते — 21:00 ते 07:00 तुम्ही अपेक्षा कराल तसेच चालते.",
+    saveNotifications: "सूचना सेटिंग्ज जतन करा",
+    saveAppearance: "दिसणे जतन करा",
+    colourScheme: "रंगसंगती",
+    colourSchemeHint: "“सिस्टम” तुमच्या फोन किंवा संगणकाप्रमाणे चालते.",
+    system: "सिस्टम",
+    light: "फिकट",
+    dark: "गडद",
+    contrast: "कॉन्ट्रास्ट",
+    contrastHint: "जास्त कॉन्ट्रास्टमुळे कडा ठळक होतात आणि अक्षरे पूर्ण काळी किंवा पांढरी होतात.",
+    normal: "सामान्य",
+    high: "जास्त",
+    typeface: "टाइपफेस",
+    typefaceHint:
+      "डिस्लेक्सिया-अनुकूल अक्षरे आणि ओळींमधील अंतर वाढवते, आणि OpenDyslexic किंवा Atkinson Hyperlegible इंस्टॉल असल्यास ते वापरते.",
+    default: "डीफॉल्ट",
+    dyslexic: "डिस्लेक्सिया-अनुकूल",
+    motion: "हालचाल",
+    motionHint: "“कमी” सरकणे आणि उसळणे काढून टाकते. तुमची सिस्टम सेटिंगही आपोआप पाळली जाते.",
+    full: "पूर्ण",
+    reduced: "कमी",
+    saved: "जतन केले",
+    notSaved: "जतन झाले नाही",
+    notSavedHint: "ठळक केलेली माहिती तपासा.",
+  },
+
+  login: {
+    title: "लॉग इन",
+    welcome: "पुन्हा स्वागत आहे",
+    subtitlePrefix: "तुमच्या शाळेत लॉग इन करा, किंवा",
+    joinWithCode: "कोडने सामील व्हा",
+    expired: "ती लिंक कालबाह्य झाली आहे. खाली नवीन मागवा.",
+    newSchoolPrefix: "नवीन शाळा सुरू करत आहात?",
+    registerHere: "ती इथे नोंदवा",
+    emailOrLoginName: "ईमेल किंवा लॉगिन नाव",
+    emailLabel: "ईमेल",
+    emailPlaceholder: "you@school.org",
+    emailOrHandlePlaceholder: "you@school.org किंवा amara.k4f9",
+    studentHint: "विद्यार्थी: शाळेने दिलेले लॉगिन नाव वापरा.",
+    password: "पासवर्ड",
+    submit: "लॉग इन करा",
+    emailMeALink: "मला लिंक ईमेल करा",
+    or: "किंवा",
+    useMagicLink: "त्याऐवजी मला साइन-इन लिंक ईमेल करा",
+    usePassword: "त्याऐवजी माझा पासवर्ड वापरा",
+    checkEmail: "तुमचा ईमेल पाहा",
+    magicSent:
+      "{email} साठी खाते असल्यास, साइन-इन लिंक पाठवली जात आहे. ती एकदाच चालते आणि 20 मिनिटांत कालबाह्य होते.",
+    useDifferentEmail: "वेगळा ईमेल वापरा",
+    codeTitle: "तुमचा कोड टाका",
+    codeHint:
+      "तुमचे ऑथेंटिकेटर ॲप उघडा आणि सहा अंकी कोड टाका. कोड सापडत नाही? तुम्ही जतन केलेल्या रिकव्हरी कोडपैकी कोणताही इथे चालतो.",
+    signIn: "साइन इन",
+    recoveryUsed: "रिकव्हरी कोड वापरला",
+    recoveryUsedHint: "{count} शिल्लक. नवीन संच मिळवण्यासाठी दोन-टप्पी पडताळणी पुन्हा सेट करा.",
+  },
+
+  feature: {
+    experts: "तज्ज्ञ",
+    expertsTagline: "शाळेबाहेरील व्यक्तीसोबत सत्र बुक करा",
+    mentoring: "मार्गदर्शन",
+    mentoringTagline: "एक तज्ज्ञ, एक विद्यार्थी, दीर्घ काळ",
+    practice: "सराव",
+    practiceTagline: "तुम्ही सुधारत जाल तसे कठीण होत जाणारे प्रश्न",
+    calendar: "शालेय दिनदर्शिका",
+    academicYear: "शैक्षणिक वर्ष",
+  },
+};

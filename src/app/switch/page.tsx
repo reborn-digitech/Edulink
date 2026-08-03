@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { switchContext } from "./actions";
+import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Choose where to go" };
@@ -20,6 +21,7 @@ export const metadata: Metadata = { title: "Choose where to go" };
  * school. Guessing for them and being wrong is worse than one extra tap.
  */
 export default async function SwitchPage() {
+  const t = await getT();
   const session = await getSession();
   if (!session) redirect("/login");
 
@@ -58,7 +60,7 @@ export default async function SwitchPage() {
               <input type="hidden" name="role" value={membership.role} />
               <ContextButton
                 title={membership.schoolName}
-                subtitle={ROLE_META[membership.role].label}
+                subtitle={t(ROLE_META[membership.role].labelKey)}
                 role={membership.role}
               />
             </form>

@@ -1,4 +1,5 @@
 import type { Role } from "./constants";
+import type { TranslationKey } from "./i18n/dictionary";
 
 /**
  * Navigation model.
@@ -7,11 +8,16 @@ import type { Role } from "./constants";
  * side rail on desktop, FAB for the primary task, and a command palette. All
  * four read from this one definition so they can never disagree about what
  * exists or what a thing is called. (§7)
+ *
+ * KEYS, NOT WORDS. Every label here is a dictionary key rather than a string,
+ * so the four surfaces above cannot disagree about the language either — and
+ * because `TranslationKey` is derived from `en.ts`, a typo in a key is a build
+ * error rather than a nav item labelled "nav.pracitce".
  */
 
 export type NavItem = {
   href: string;
-  label: string;
+  labelKey: TranslationKey;
   /** Phosphor icon name, resolved by the icon map in components/nav/icons.tsx */
   icon: string;
   /** Shown in the bottom bar on phones (max 5). */
@@ -22,63 +28,63 @@ export type NavItem = {
 
 export type QuickAction = {
   href: string;
-  label: string;
+  labelKey: TranslationKey;
   icon: string;
-  description: string;
+  descriptionKey: TranslationKey;
 };
 
 export const NAV: Record<Role, NavItem[]> = {
   ADMIN: [
-    { href: "/admin", label: "Overview", icon: "house", primary: true },
-    { href: "/admin/people", label: "Directory", icon: "users", primary: true, prefix: true },
-    { href: "/admin/classes", label: "Classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/admin/invites", label: "Invites", icon: "envelope", primary: true, prefix: true },
-    { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
-    { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
-    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
-    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
-    { href: "/admin/calendar", label: "Calendar", icon: "calendar", prefix: true },
-    { href: "/admin/safety", label: "Safety", icon: "shield", prefix: true },
-    { href: "/admin/settings", label: "Settings", icon: "gear", prefix: true },
+    { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
+    { href: "/admin/people", labelKey: "nav.directory", icon: "users", primary: true, prefix: true },
+    { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/admin/invites", labelKey: "nav.invites", icon: "envelope", primary: true, prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
+    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true },
+    { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
   ],
   TEACHER: [
-    { href: "/teacher", label: "Today", icon: "house", primary: true },
-    { href: "/teacher/attendance", label: "Register", icon: "checks", primary: true, prefix: true },
-    { href: "/teacher/classes", label: "Classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/teacher/assignments", label: "Work", icon: "clipboard", primary: true, prefix: true },
-    { href: "/remarks", label: "Messages", icon: "chat", prefix: true },
-    { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
-    { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
-    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
-    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
+    { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
+    { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true },
+    { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/teacher/assignments", labelKey: "nav.work", icon: "clipboard", primary: true, prefix: true },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
   ],
   STUDENT: [
-    { href: "/student", label: "Today", icon: "house", primary: true },
-    { href: "/student/work", label: "My work", icon: "clipboard", primary: true, prefix: true },
-    { href: "/student/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
-    { href: "/student/abhyaas", label: "Abhyaas", icon: "brain", primary: true, prefix: true },
-    { href: "/bulletin", label: "Bulletin", icon: "megaphone", primary: true, prefix: true },
-    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
-    { href: "/student/profile", label: "Me", icon: "user", prefix: true },
+    { href: "/student", labelKey: "nav.today", icon: "house", primary: true },
+    { href: "/student/work", labelKey: "nav.myWork", icon: "clipboard", primary: true, prefix: true },
+    { href: "/student/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
+    { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
+    { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true },
   ],
   PARENT: [
-    { href: "/parent", label: "Overview", icon: "house", primary: true },
-    { href: "/parent/attendance", label: "Attendance", icon: "checks", primary: true, prefix: true },
-    { href: "/parent/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
-    { href: "/remarks", label: "Messages", icon: "chat", primary: true, prefix: true },
-    { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
-    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
-    { href: "/parent/settings", label: "Settings", icon: "gear", prefix: true },
+    { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
+    { href: "/parent/attendance", labelKey: "nav.attendance", icon: "checks", primary: true, prefix: true },
+    { href: "/parent/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
+    { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
   ],
   // An expert sees their own work and nothing resembling a school's internals:
   // no directory, no register, no bulletin. Every entry here is either their own
   // availability or a school that has actually booked them.
   EXPERT: [
-    { href: "/expert", label: "Bookings", icon: "house", primary: true },
-    { href: "/expert/availability", label: "Availability", icon: "calendar", primary: true, prefix: true },
-    { href: "/mentoring", label: "Margdarshak", icon: "chat", primary: true, prefix: true },
-    { href: "/expert/profile", label: "Profile", icon: "user", prefix: true },
-    { href: "/account", label: "Account", icon: "gear", prefix: true },
+    { href: "/expert", labelKey: "nav.bookings", icon: "house", primary: true },
+    { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", primary: true, prefix: true },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true },
+    { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true },
   ],
 };
 
@@ -86,49 +92,49 @@ export const NAV: Record<Role, NavItem[]> = {
 export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   ADMIN: {
     href: "/admin/invites/new",
-    label: "Invite people",
+    labelKey: "action.invitePeople",
     icon: "userPlus",
-    description: "Add teachers or students to your school",
+    descriptionKey: "action.invitePeopleHint",
   },
   TEACHER: {
     href: "/teacher/attendance",
-    label: "Take the register",
+    labelKey: "action.takeRegister",
     icon: "checks",
-    description: "Mark today's attendance",
+    descriptionKey: "action.takeRegisterHint",
   },
   STUDENT: null,
   PARENT: null,
   EXPERT: {
     href: "/expert/availability",
-    label: "Offer a time",
+    labelKey: "action.offerTime",
     icon: "calendar",
-    description: "Add a slot schools can book",
+    descriptionKey: "action.offerTimeHint",
   },
 };
 
 /** Extra entries offered by the command palette beyond plain navigation. */
 export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   ADMIN: [
-    { href: "/admin/invites/new", label: "Invite a teacher", icon: "userPlus", description: "Send an invitation email" },
-    { href: "/admin/classes/new", label: "Create a class", icon: "plus", description: "Add a new class or section" },
-    { href: "/admin/settings", label: "School branding", icon: "palette", description: "Logo and colours" },
+    { href: "/admin/invites/new", labelKey: "action.inviteTeacher", icon: "userPlus", descriptionKey: "action.inviteTeacherHint" },
+    { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
+    { href: "/admin/settings", labelKey: "action.schoolBranding", icon: "palette", descriptionKey: "action.schoolBrandingHint" },
   ],
   TEACHER: [
-    { href: "/teacher/attendance", label: "Take the register", icon: "checks", description: "Mark today's attendance" },
-    { href: "/teacher/assignments/new", label: "New assignment", icon: "plus", description: "Post work to a class" },
-    { href: "/remarks/new", label: "Message a parent", icon: "chat", description: "Start a private thread" },
+    { href: "/teacher/attendance", labelKey: "action.takeRegister", icon: "checks", descriptionKey: "action.takeRegisterHint" },
+    { href: "/teacher/assignments/new", labelKey: "action.newAssignment", icon: "plus", descriptionKey: "action.newAssignmentHint" },
+    { href: "/remarks/new", labelKey: "action.messageParent", icon: "chat", descriptionKey: "action.messageParentHint" },
   ],
   STUDENT: [
-    { href: "/student/work", label: "What is due", icon: "clipboard", description: "Your upcoming work" },
-    { href: "/bulletin/new", label: "Share something", icon: "plus", description: "Post to your class bulletin" },
+    { href: "/student/work", labelKey: "action.whatIsDue", icon: "clipboard", descriptionKey: "action.whatIsDueHint" },
+    { href: "/bulletin/new", labelKey: "action.shareSomething", icon: "plus", descriptionKey: "action.shareSomethingHint" },
   ],
   PARENT: [
-    { href: "/remarks", label: "Message a teacher", icon: "chat", description: "Open a conversation" },
-    { href: "/parent/settings", label: "Notification settings", icon: "bell", description: "Choose what you are told" },
+    { href: "/remarks", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
+    { href: "/parent/settings", labelKey: "action.notificationSettings", icon: "bell", descriptionKey: "action.notificationSettingsHint" },
   ],
   EXPERT: [
-    { href: "/expert/availability", label: "Offer a time", icon: "calendar", description: "Add a slot schools can book" },
-    { href: "/expert/profile", label: "Edit profile", icon: "user", description: "Headline, bio and specialisms" },
+    { href: "/expert/availability", labelKey: "action.offerTime", icon: "calendar", descriptionKey: "action.offerTimeHint" },
+    { href: "/expert/profile", labelKey: "action.editProfile", icon: "user", descriptionKey: "action.editProfileHint" },
   ],
 };
 
