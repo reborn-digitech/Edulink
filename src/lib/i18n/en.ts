@@ -234,6 +234,22 @@ export const en = {
   },
 
   /* ---------------------------------------------------------------------- */
+  /* Access paused                                                           */
+  /* ---------------------------------------------------------------------- */
+  suspended: {
+    title: "Your access is paused",
+    one: "{school} has paused your access.",
+    many: "These schools have paused your access:",
+    nothingLost:
+      "Nothing has been deleted. Your work, marks and attendance are all still there, and they will be waiting for you if access is restored.",
+    whatToDo:
+      "Only the school can restore it. Contact the school office if you think this is a mistake.",
+    stillYours:
+      "This affects these schools only. Anything else you use EduLink for still works as normal.",
+    signOut: "Sign out",
+  },
+
+  /* ---------------------------------------------------------------------- */
   /* Feature names — the ones that used to be Sanskrit-derived               */
   /* ---------------------------------------------------------------------- */
   feature: {

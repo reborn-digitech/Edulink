@@ -198,6 +198,7 @@ src/lib/                  All business logic. Pages are thin.
   grading.ts              Assignments, marking, overallPercent().
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
+  membership.ts           ★ Pausing access. MEMBERSHIP, never the user — see the header.
   competitions.ts         ★ Cross-school catalogue, school-scoped entries, parent consent.
   reports.ts              ★ Progress report. Computes NOTHING — asks the helpers that own each figure.
   safety.ts               Report triage + audit log (server-only).
@@ -1006,7 +1007,23 @@ returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
 the release where every page rendered and nothing saved.
 
-- Suspend-user (the safety centre says to use the school's own process instead)
+- ~~Suspend-user~~ **built, as suspend-MEMBERSHIP.** An admin can pause and
+  restore anybody's access to their own school from the directory, with a reason
+  that is required and audited. The distinction is the whole design: a teacher
+  may work at two schools, so Riverside pausing them must not lock them out of
+  Oakfield, their own account, or their children's parent view. `User.disabledAt`
+  is the global kill switch, no admin can reach it, and there is still no actor
+  above a school who could — see the next item.
+  **The revocation is the database's, not the UI's.** `ownMembershipIn` already
+  filtered `status: "ACTIVE"`, so the moment a suspension commits the request's
+  tenant set goes empty and Postgres stops handing that school's rows over.
+  `npm run sweep` proves it with a live session: the same cookie that opened the
+  register a second earlier is turned away from every page scoped to that school.
+  **Nothing is deleted** — marks, attendance and enrolments are all still there,
+  and restoring is one click.
+  A paused person gets `/suspended`, which names the school and says what to do.
+  It exists because the alternative was a lie: they used to land on "You are not
+  part of a school yet — join with a code", and there is no code that helps.
 - Cross-school moderation. The **per-school safety centre is built** — see
   Status, and `/admin/safety` — so what is missing is the tier above it: one
   queue spanning both schools, for whoever runs the server rather than a school.
@@ -1080,6 +1097,14 @@ the release where every page rendered and nothing saved.
   from the login form through `completeLogin` is typechecked and its library is
   mutation-tested, but nobody has typed a real code into a browser.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
+
+- **The account page is behind the role gate.** `/account` lives inside the
+  signed-in shell, which needs an active role, so somebody with no remaining
+  context — a paused member with nowhere else to be — cannot reach their own
+  settings. Not caused by suspension, but that is where it shows: `/suspended`
+  carries a sign-out button for exactly this reason. `npm run sweep` asserts the
+  307 rather than wishing it away. Moving the account page out from behind the
+  gate is its own change.
 
 ### Known issues
 

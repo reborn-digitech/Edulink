@@ -36,6 +36,8 @@ export type ReportTarget =
       name: string;
       roles: string[];
       href: string | null;
+      /** True when this school has already paused them. */
+      suspended: boolean;
     }
   | { kind: "POST" | "COMMENT" | "USER"; available: false };
 

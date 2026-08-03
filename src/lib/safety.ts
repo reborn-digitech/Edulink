@@ -152,17 +152,25 @@ async function resolveTarget(
   if (targetType === "USER") {
     // Only if they are in THIS school — an admin must not be handed a profile
     // from elsewhere just because someone pasted a reported id.
+    //
+    // SUSPENDED counts as being in the school. Filtering it out would make a
+    // report about somebody vanish the moment an admin acted on it, which is
+    // exactly the report they most need to still be able to read.
     const memberships = await db.membership.findMany({
-      where: { userId: targetId, schoolId, status: "ACTIVE" },
+      where: { userId: targetId, schoolId, status: { in: ["ACTIVE", "SUSPENDED"] } },
       include: { user: { select: { name: true, preferredName: true } } },
     });
     if (memberships.length === 0) return { kind: "USER", available: false };
+    const name = memberships[0]!.user.preferredName ?? memberships[0]!.user.name;
     return {
       kind: "USER",
       available: true,
-      name: memberships[0]!.user.preferredName ?? memberships[0]!.user.name,
+      name,
       roles: memberships.map((m) => m.role),
-      href: "/admin/people",
+      // Straight to this person in the directory, where the pause control is,
+      // rather than to the top of a list of five hundred.
+      href: `/admin/people?q=${encodeURIComponent(name)}`,
+      suspended: memberships.every((m) => m.status === "SUSPENDED"),
     };
   }
 

@@ -75,6 +75,73 @@ async function check(actor: Actor | null, path: string, expected = 200, note = "
  * And the half that matters more: that the widening the switcher needs stays
  * inside the switcher.
  */
+/**
+ * A paused membership, end to end and through the DATABASE.
+ *
+ * The unit tests run as the database owner, so they can only show that the app
+ * layer refuses. This shows the thing that actually does the revoking: once the
+ * status is SUSPENDED, `ownMembershipIn` no longer resolves a tenant, so
+ * Postgres itself stops handing that school's rows over. Every page the person
+ * could open a moment ago now redirects.
+ *
+ * Restored at the end, and restored even if a check fails, so a red sweep does
+ * not leave a seeded teacher locked out of the demo database.
+ */
+async function suspension(schoolId: string) {
+  // Somebody whose ONLY membership is this one. The seed's first teacher is
+  // also an admin of the same school, and pausing one of two memberships proves
+  // something much weaker — they simply carry on in the other role, which is
+  // correct but is not what this scenario is about.
+  const candidates = await db.membership.findMany({
+    where: { schoolId, role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  let victim: (typeof candidates)[number] | null = null;
+  for (const candidate of candidates) {
+    const total = await db.membership.count({
+      where: { userId: candidate.user.id, status: "ACTIVE", leftAt: null },
+    });
+    if (total === 1) {
+      victim = candidate;
+      break;
+    }
+  }
+  if (!victim?.user.email) return;
+
+  const actor = await mint(victim.user.email, "TEACHER", schoolId, "suspended-teacher");
+
+  // Before: an ordinary working day.
+  await check(actor, "/teacher", 200, "before pausing, their own school opens");
+
+  try {
+    await db.membership.update({
+      where: { id: victim.id },
+      data: { status: "SUSPENDED", suspendedAt: new Date(), suspendedReason: "sweep" },
+    });
+
+    // After: the session cookie is still valid and still names the school. What
+    // changed is that the school no longer claims them, and that is enough.
+    await check(actor, "/teacher", 307, "⚠ a paused teacher is turned away from their own school");
+    await check(actor, "/teacher/attendance", 307, "⚠ …including the register");
+    await check(actor, "/admin/people", 307, "⚠ …and anything else scoped to it");
+    await check(actor, "/suspended", 200, "…and is told why, rather than sent to a join code");
+
+    // KNOWN LIMITATION, asserted rather than wished away. /account lives inside
+    // the role-gated shell, so somebody with no remaining context cannot reach
+    // their own settings — not a consequence of suspension, but most visible
+    // here. /suspended carries sign-out for that reason. Moving the account page
+    // out from behind the role gate is its own change.
+    await check(actor, "/account", 307, "the account page is behind the role gate");
+  } finally {
+    await db.membership.update({
+      where: { id: victim.id },
+      data: { status: "ACTIVE", suspendedAt: null, suspendedReason: null },
+    });
+  }
+
+  await check(actor, "/teacher", 200, "restored, and back in");
+}
+
 async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
   const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfieldId } });
@@ -313,6 +380,8 @@ async function main() {
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
+
+  await suspension(riverside.id);
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
   await joinCodeBootstrap(riverside.id);

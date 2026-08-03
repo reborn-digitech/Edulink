@@ -10,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
+import { RowActions } from "./row-actions";
+import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
@@ -21,7 +23,14 @@ const PAGE_SIZE = 50;
 export default async function DirectoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; role?: string; classId?: string; sort?: string; page?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    role?: string;
+    classId?: string;
+    sort?: string;
+    page?: string;
+    status?: string;
+  }>;
 }) {
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
@@ -32,6 +41,10 @@ export default async function DirectoryPage({
     ? (params.role as SchoolRole)
     : null;
   const sort = params.sort === "recent" ? "recent" : "name";
+  // Anything other than the literal "SUSPENDED" means the ordinary view. Not a
+  // pass-through of `params.status` into the query — this is user input, and it
+  // lands in a WHERE clause.
+  const status = params.status === "SUSPENDED" ? "SUSPENDED" : "ACTIVE";
   // Page is user input; clamp it rather than trusting it into a skip.
   const page = Math.max(1, Math.min(1000, Number.parseInt(params.page ?? "1", 10) || 1));
 
@@ -45,7 +58,7 @@ export default async function DirectoryPage({
   // schoolId first and always — the filters below only ever narrow it. (§6)
   const where: Prisma.MembershipWhereInput = {
     schoolId: ctx.schoolId,
-    status: "ACTIVE",
+    status,
     leftAt: null,
     ...(roleFilter ? { role: roleFilter } : {}),
     ...(classFilter
@@ -69,7 +82,7 @@ export default async function DirectoryPage({
       : {}),
   };
 
-  const [members, total, classes, roleCounts] = await Promise.all([
+  const [members, total, classes, roleCounts, suspendedCount] = await Promise.all([
     db.membership.findMany({
       where,
       include: {
@@ -96,6 +109,7 @@ export default async function DirectoryPage({
       where: { schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null },
       _count: true,
     }),
+    db.membership.count({ where: { schoolId: ctx.schoolId, status: "SUSPENDED", leftAt: null } }),
   ]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -125,8 +139,17 @@ export default async function DirectoryPage({
         role={roleFilter}
         classId={classFilter?.id ?? ""}
         sort={sort}
+        status={status}
+        suspendedCount={suspendedCount}
         classes={classes}
       />
+
+      {status === "SUSPENDED" && (
+        <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
+          These people cannot open this school. Their work, marks and attendance are untouched, and
+          none of this affects any other school they belong to.
+        </p>
+      )}
 
       {members.length === 0 ? (
         <EmptyState
@@ -165,10 +188,14 @@ export default async function DirectoryPage({
               ];
               const subjects = readJsonArray<string>(member.subjects);
 
+              // An admin cannot pause themselves, so the control is not
+              // offered — a disabled button that always refuses teaches nothing.
+              const isSelf = member.id === ctx.membershipId;
+
               return (
                 <li key={member.id}>
                   <Card>
-                    <div className="flex items-center gap-3 p-3.5">
+                    <div className="flex flex-wrap items-center gap-3 p-3.5">
                       <Avatar avatarKey={member.user.avatarKey} name={member.user.name} size="md" />
 
                       <div className="min-w-0 flex-1">
@@ -188,6 +215,12 @@ export default async function DirectoryPage({
                             {subjects.join(", ")}
                           </p>
                         )}
+                        {member.status === "SUSPENDED" && (
+                          <p className="mt-1 text-xs leading-relaxed text-warn">
+                            Paused {member.suspendedAt ? relativeTime(member.suspendedAt) : ""}
+                            {member.suspendedReason ? ` · ${member.suspendedReason}` : ""}
+                          </p>
+                        )}
                       </div>
 
                       {role === "STUDENT" && member.studentCode && (
@@ -201,6 +234,14 @@ export default async function DirectoryPage({
                       >
                         {t(ROLE_META[role].labelKey)}
                       </Badge>
+
+                      {!isSelf && (
+                        <RowActions
+                          membershipId={member.id}
+                          name={displayName}
+                          suspended={member.status === "SUSPENDED"}
+                        />
+                      )}
                     </div>
                   </Card>
                 </li>

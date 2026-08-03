@@ -137,10 +137,25 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                 <p className="text-xs text-fg-muted">
                   {group.target.roles.map((r) => r.toLowerCase()).join(", ")}
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-fg-muted">
-                  EduLink has no suspend-user action yet, so handle this through your school&rsquo;s
-                  own safeguarding process and note what you did below.
-                </p>
+                {group.target.suspended ? (
+                  <p className="mt-2 text-xs font-medium leading-relaxed text-warn">
+                    Their access to this school is already paused.
+                  </p>
+                ) : (
+                  <p className="mt-2 text-xs leading-relaxed text-fg-muted">
+                    You can pause their access from the directory. It stops them opening this
+                    school, deletes nothing, and is reversible in one click.
+                  </p>
+                )}
+                {group.target.href && (
+                  <Link
+                    href={group.target.href}
+                    className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong hover:underline"
+                  >
+                    {group.target.suspended ? "Open in the directory" : "Pause their access"}{" "}
+                    <ArrowSquareOutIcon className="size-3.5" />
+                  </Link>
+                )}
               </>
             )}
           </div>

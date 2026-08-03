@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { CaretRightIcon } from "@phosphor-icons/react/ssr";
 import { getSession, listContexts } from "@/lib/session";
+import { db } from "@/lib/db";
 import { Wordmark } from "@/components/brand";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
@@ -28,6 +29,14 @@ export default async function SwitchPage() {
   const { memberships, children } = await listContexts(session.user.id);
 
   if (memberships.length === 0 && children.length === 0) {
+    // "You are not part of a school yet" is FALSE for somebody who has been
+    // paused — they are part of one, it is closed to them, and no join code
+    // will open it. Send them to the page that says so.
+    const paused = await db.membership.count({
+      where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
+    });
+    if (paused > 0) redirect("/suspended");
+
     return (
       <main id="main" className="mx-auto max-w-md px-4 py-16">
         <Wordmark className="mb-8" />

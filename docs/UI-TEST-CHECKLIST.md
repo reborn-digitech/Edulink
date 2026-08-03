@@ -917,6 +917,55 @@ account to a different device rather than living in the browser.
 - ☐ Each language button carries its own `lang` attribute, so "मराठी" is
   announced correctly even while the page is still in English
 
+## 12l. Pausing somebody's access (admin only)
+
+A school can stop somebody opening it, and give it back. It is a **membership**
+that is paused, never an account.
+
+### Pausing
+
+- ☐ As **Priya (admin)**, open `/admin/people` → every row except your own has a
+  **Pause** button. **⚠️** Your own row has none
+- ☐ Pause **Tom (teacher)** → a box asks *why*. Leave it empty and press Pause →
+  **refused**, with a message. Type a reason → the row moves out of the list
+- ☐ A **Paused (1)** tab appears. Open it → Tom is there, with the reason and how
+  long ago underneath
+- ☐ Open `/admin/safety` → the audit trail shows **membership.suspend** against
+  your name
+
+### What Tom sees
+
+- ☐ In another browser, signed in as **Tom**, reload → he lands on `/suspended`,
+  which **names the school** and says nothing has been deleted
+- ☐ **⚠️** Try `/teacher`, `/teacher/attendance`, `/bulletin` → every one sends
+  him back. His session cookie is still valid; the school no longer claims him
+- ☐ **⚠️** He is never shown "You are not part of a school yet — join with a
+  code". He is part of one, and no code would help
+- ☐ Set his language to मराठी beforehand → the whole page is in Marathi
+
+### What it does not touch
+
+- ☐ **⚠️** As Priya, check Tom's class → his past marks, attendance and
+  assignments are all still there, unchanged
+- ☐ **⚠️** If Tom also belongs to **Oakfield**, sign in and confirm Oakfield
+  still works exactly as before. Riverside must not be able to lock him out of
+  a school it does not run
+
+### The guards
+
+- ☐ **⚠️** Make yourself the only admin (pause or remove the others), then try to
+  pause yourself → **refused**, "you cannot pause your own access"
+- ☐ **⚠️** With one admin left, ask a second admin to pause them → **refused**,
+  "this is the school's only admin". A school with no admin cannot be recovered
+  from inside the app
+- ☐ As **Sam (Oakfield admin)**, try to pause a Riverside teacher → **refused**
+
+### Restoring
+
+- ☐ Open the **Paused** tab and press **Restore** → Tom is back in the list, the
+  reason is gone, and he gets a notification
+- ☐ Tom reloads → he is back in his school with everything where he left it
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.

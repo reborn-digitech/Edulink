@@ -20,12 +20,16 @@ export function DirectoryControls({
   role,
   classId,
   sort,
+  status,
+  suspendedCount,
   classes,
 }: {
   query: string;
   role: SchoolRole | null;
   classId: string;
   sort: string;
+  status: "ACTIVE" | "SUSPENDED";
+  suspendedCount: number;
   classes: { id: string; name: string }[];
 }) {
   const router = useRouter();
@@ -38,9 +42,20 @@ export function DirectoryControls({
   // Keep in step when the URL changes from elsewhere (back button, Clear).
   useEffect(() => setText(query), [query]);
 
-  function navigate(next: Partial<{ q: string; role: string; classId: string; sort: string }>) {
+  function navigate(
+    next: Partial<{ q: string; role: string; classId: string; sort: string; status: string }>,
+  ) {
     const params = new URLSearchParams();
-    const merged = { q: text, role: role ?? "", classId, sort, ...next };
+    const merged = {
+      q: text,
+      role: role ?? "",
+      classId,
+      sort,
+      // "" rather than "ACTIVE": the default view needs no parameter, so the
+      // plain /admin/people URL keeps meaning what it has always meant.
+      status: status === "SUSPENDED" ? "SUSPENDED" : "",
+      ...next,
+    };
     for (const [key, value] of Object.entries(merged)) {
       if (value && !(key === "sort" && value === "name")) params.set(key, value);
     }
@@ -89,6 +104,25 @@ export function DirectoryControls({
           </button>
         )}
       </div>
+
+      {/* Paused people are a SEPARATE VIEW, not a row style mixed into the
+          list. An admin asking "who is here" and an admin asking "who did we
+          pause" are two different questions, and answering both at once is how
+          a suspended pupil gets counted into a class total. The tab only
+          appears once there is something behind it. */}
+      {suspendedCount > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <FilterChip active={status === "ACTIVE"} onClick={() => navigate({ status: "" })}>
+            In the school
+          </FilterChip>
+          <FilterChip
+            active={status === "SUSPENDED"}
+            onClick={() => navigate({ status: "SUSPENDED" })}
+          >
+            Paused ({suspendedCount})
+          </FilterChip>
+        </div>
+      )}
 
       <div className="flex flex-wrap items-center gap-2">
         <FilterChip active={!role} onClick={() => navigate({ role: "" })}>

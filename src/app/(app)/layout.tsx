@@ -20,10 +20,17 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const contexts = await listContexts(session.user.id);
   const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);
 
-  // Signed in but with no usable context — e.g. a brand-new parent who has not
-  // linked a child yet. Send them somewhere that can fix it. (§7 no dead ends)
+  // Signed in but with no usable context. Two very different reasons, and
+  // telling them apart is the whole point: a brand-new parent needs a join code,
+  // and somebody whose school has paused them needs to be told that instead of
+  // being handed a code that cannot help. (§7 no dead ends)
   if (!session.role) {
-    if (contextCount === 0) redirect("/join?first=1");
+    if (contextCount === 0) {
+      const paused = await db.membership.count({
+        where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
+      });
+      redirect(paused > 0 ? "/suspended" : "/join?first=1");
+    }
     redirect("/switch");
   }
 

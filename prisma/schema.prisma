@@ -179,6 +179,16 @@ model Membership {
   joinedAt DateTime  @default(now())
   leftAt   DateTime?
 
+  /// Set when status becomes SUSPENDED, cleared on reinstatement.
+  ///
+  /// Duplicates what the audit log already records, on purpose. The directory
+  /// shows "paused 3 days ago" on every row, and reading that out of AuditLog
+  /// would be one extra query per person on a page that lists fifty. WHO did it
+  /// is deliberately NOT here — that is the audit log's job, and it is the one
+  /// answer that must not be editable from an ordinary write path.
+  suspendedAt     DateTime?
+  suspendedReason String?
+
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
