@@ -33,6 +33,8 @@ const SUBJECTS = ["MATHS", "SCIENCE", "HISTORY", "GEOGRAPHY", "CIVICS", "ECONOMI
 const MAX_LEVEL = 6;
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+type QuestionTranslation = { stem?: string; choices?: string[]; solution?: string };
+
 type Question = {
   difficulty: number;
   stem: string;
@@ -42,6 +44,7 @@ type Question = {
   checkExpr?: string | null;
   reviewedAt?: string | null;
   reviewedBy?: string | null;
+  translations?: Record<string, QuestionTranslation>;
 };
 
 type TopicFile = {
@@ -54,13 +57,21 @@ type TopicFile = {
   position?: number;
   source: string;
   licence: string;
+  translations?: Record<string, { name?: string; summary?: string }>;
   questions: Question[];
 };
+
+/** The languages a translation block may name. Anything else is a typo. */
+const LANGUAGES = new Set(["hi", "mr"]);
 
 const errors: string[] = [];
 const warnings: string[] = [];
 let checkedByMachine = 0;
 let reviewedByHuman = 0;
+let answerNotRestated = 0;
+let numericButUnchecked = 0;
+const unchecked: string[] = [];
+const translationCounts: Record<string, number> = {};
 let total = 0;
 const levelCounts = new Array(MAX_LEVEL).fill(0) as number[];
 const seenStems = new Map<string, string>();
@@ -209,6 +220,12 @@ function verifyTopic(file: string, topic: TopicFile) {
   }
   seenSlugs.add(topic.slug);
 
+  for (const code of Object.keys(topic.translations ?? {})) {
+    if (!LANGUAGES.has(code)) {
+      fail(where, `topic translation "${code}" is not a language this bank knows`);
+    }
+  }
+
   if (!topic.source?.trim()) fail(where, "source is required");
   if (!topic.licence?.trim()) fail(where, "licence is required");
   if (!Array.isArray(topic.questions) || topic.questions.length === 0) {
@@ -270,6 +287,20 @@ function verifyTopic(file: string, topic: TopicFile) {
     if (question.reviewedAt) reviewedByHuman++;
 
     if (question.checkExpr) {
+      // A checkExpr with no operation in it is a bare literal, and comparing a
+      // literal against the answer it was copied from proves exactly nothing —
+      // "5" checks that 5 is 5. It is worse than having no check at all,
+      // because it INFLATES the machine-checked count, which is the one number
+      // this bank uses to say how much of it has actually been proven. Refused
+      // outright so the count can never be padded, by anyone, by accident.
+      if (!/[+\-*/^]/.test(question.checkExpr)) {
+        fail(
+          at,
+          `checkExpr "${question.checkExpr}" is a bare literal — it restates the answer instead of computing it. Give an expression that derives the answer, or remove it and let the question count as unproven.`,
+        );
+        return;
+      }
+
       const expected = evaluate(question.checkExpr);
       if (expected === null) {
         fail(at, `checkExpr "${question.checkExpr}" is not arithmetic this can evaluate`);
@@ -288,6 +319,78 @@ function verifyTopic(file: string, topic: TopicFile) {
         return;
       }
       checkedByMachine++;
+    }
+
+    /* ---- the two heuristics, both warnings ---------------------------------
+     *
+     * Neither can prove an answer right, so neither is a hard failure. What
+     * they do is narrow 60 unproven questions down to the handful worth a
+     * person's time — which is the only thing that makes hand-review tractable
+     * at all.
+     */
+    const answerText = question.choices[question.answerIndex]!;
+    const answerNumber = numberIn(answerText);
+
+    if (answerNumber !== null) {
+      // A solution that never states its own answer is the shape of the bug
+      // this bank has already shipped once: marked 90, worked through to 94.
+      // Matching on a token boundary so that 9 does not "find" itself inside 94.
+      const solutionText = (question.solution ?? "").replace(/[−–—]/g, "-").replace(/,/g, "");
+      const token = String(answerNumber);
+      // A full stop ENDING a sentence is a boundary; a full stop followed by a
+      // digit is a decimal point and is not. Getting this wrong made the check
+      // fire on every answer that happened to finish a sentence, which is most
+      // of them — a warning that cries wolf is a warning nobody reads.
+      const restated = new RegExp(
+        `(^|[^0-9.])${token.replace(".", "\\.")}(\\.(?![0-9])|[^0-9.]|$)`,
+      ).test(solutionText);
+      if (!restated) {
+        warnings.push(
+          `${at}: the marked answer is ${token}, but the solution never states that number — check the working lands where the answer says`,
+        );
+        answerNotRestated++;
+      }
+
+      // Numeric, and nothing evaluates it. These are exactly the questions that
+      // COULD be machine-checked and are not, so they are the cheapest wins.
+      if (!question.checkExpr) {
+        numericButUnchecked++;
+        unchecked.push(`${at}: "${question.stem.slice(0, 62)}${question.stem.length > 62 ? "…" : ""}" → ${answerText}`);
+      }
+    }
+
+    /* ---- translations ----------------------------------------------------
+     *
+     * HARD FAILURES, all of them, and the reason is narrow: `answerIndex` is
+     * stored once and indexes the ORIGINAL choices array. A translation with a
+     * different number of options leaves that index pointing at the wrong
+     * string, so a child answering correctly in Marathi is marked wrong. A
+     * missing translation is fine and falls back; a MISALIGNED one is not
+     * recoverable at read time, so it is refused at the door.
+     */
+    for (const [code, tr] of Object.entries(question.translations ?? {})) {
+      const where = `${at} (${code})`;
+      if (!LANGUAGES.has(code)) {
+        fail(where, `"${code}" is not a language this bank knows (${[...LANGUAGES].join(", ")})`);
+        continue;
+      }
+      if (tr.choices !== undefined) {
+        if (!Array.isArray(tr.choices)) {
+          fail(where, "choices must be an array when present");
+        } else if (tr.choices.length !== question.choices.length) {
+          fail(
+            where,
+            `has ${tr.choices.length} choices but the original has ${question.choices.length} — answerIndex would point at the wrong option`,
+          );
+        } else if (tr.choices.some((c) => typeof c !== "string" || !c.trim())) {
+          fail(where, "has a blank choice");
+        }
+      }
+      if (tr.stem !== undefined && !tr.stem.trim()) fail(where, "stem is present but empty");
+      if (tr.solution !== undefined && !tr.solution.trim()) {
+        fail(where, "solution is present but empty");
+      }
+      translationCounts[code] = (translationCounts[code] ?? 0) + 1;
     }
   });
 
@@ -339,6 +442,31 @@ function main() {
   console.log(
     `  NOT machine-checked  ${total - checkedByMachine}  ← correctness of these is asserted, not proven`,
   );
+
+  // Reported as "n of total", never as a tick. A language that is 11 questions
+  // into 105 is a language a child will fall out of on question 12, and a bare
+  // "Hindi ✓" would hide exactly that.
+  const languages = Object.keys(translationCounts).sort();
+  if (languages.length) {
+    console.log(
+      `  translated           ${languages
+        .map((code) => `${code}:${translationCounts[code]}/${total}`)
+        .join("  ")}`,
+    );
+  } else {
+    console.log(`  translated           none — every question reads in English only`);
+  }
+
+  if (numericButUnchecked) {
+    // Deliberately NOT phrased as "could be machine-checked". A date, a digit
+    // named as a digit, or a distance quoted in a unit all contain a number and
+    // none of them is a computation. This is a list to glance down, not a list
+    // of defects — saying otherwise would train people to ignore it.
+    console.log(
+      `\n${numericButUnchecked} question${numericButUnchecked === 1 ? " has a number" : "s have a number"} in the marked answer and no checkExpr (a date or a label is not a computation — glance, don't assume):`,
+    );
+    for (const line of unchecked) console.log(`  · ${line}`);
+  }
 
   if (warnings.length) {
     console.log(`\n${warnings.length} warning${warnings.length === 1 ? "" : "s"}:`);

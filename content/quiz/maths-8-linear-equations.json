@@ -12,21 +12,74 @@
     {
       "difficulty": 1,
       "stem": "What is the standard form of a linear equation in one variable?",
-      "choices": ["ax + b = 0, where a ≠ 0", "ax² + bx + c = 0", "a/x = b", "x + y = c"],
+      "choices": [
+        "ax + b = 0, where a ≠ 0",
+        "ax² + bx + c = 0",
+        "a/x = b",
+        "x + y = c"
+      ],
       "answerIndex": 0,
       "solution": "Linear means the variable appears to the first power and nowhere else. The standard form is ax + b = 0. The condition a ≠ 0 matters: if a were 0 the x disappears and it stops being an equation in x at all — it becomes either b = 0 (never true) or 0 = 0 (always true).",
       "reviewedAt": "2026-08-02",
-      "reviewedBy": "seed"
+      "reviewedBy": "seed",
+      "translations": {
+        "hi": {
+          "stem": "एक चर वाले रैखिक समीकरण का मानक रूप क्या है?",
+          "choices": [
+            "ax + b = 0, जहाँ a ≠ 0",
+            "ax² + bx + c = 0",
+            "a/x = b",
+            "x + y = c"
+          ],
+          "solution": "रैखिक का अर्थ है कि चर केवल पहली घात में आता है, और कहीं नहीं। मानक रूप ax + b = 0 है। शर्त a ≠ 0 महत्वपूर्ण है: यदि a शून्य होता तो x गायब हो जाता और यह x का समीकरण रह ही नहीं जाता — यह या तो b = 0 (जो कभी सत्य नहीं) या 0 = 0 (जो सदा सत्य) बन जाता।"
+        },
+        "mr": {
+          "stem": "एक चल असलेल्या रेषीय समीकरणाचे प्रमाण रूप कोणते?",
+          "choices": [
+            "ax + b = 0, जेथे a ≠ 0",
+            "ax² + bx + c = 0",
+            "a/x = b",
+            "x + y = c"
+          ],
+          "solution": "रेषीय म्हणजे चल फक्त पहिल्या घातात येतो, इतर कुठेही नाही. प्रमाण रूप ax + b = 0 आहे. a ≠ 0 ही अट महत्त्वाची आहे: a शून्य असता तर x नाहीसा होऊन ते x चे समीकरण उरलेच नसते — ते एकतर b = 0 (जे कधीच खरे नाही) किंवा 0 = 0 (जे नेहमीच खरे) बनले असते."
+        }
+      }
     },
     {
       "difficulty": 1,
       "stem": "In the equation 5x − 3 = 12, what is the coefficient of x?",
-      "choices": ["5", "−3", "12", "15"],
+      "choices": [
+        "5",
+        "−3",
+        "12",
+        "15"
+      ],
       "answerIndex": 0,
-      "solution": "The coefficient is the number multiplying the variable, so it is 5. The −3 is the constant term on the left and 12 is the constant on the right. Naming the parts correctly is what makes the next step ('add 3 to both sides') obvious rather than remembered.",
-      "checkExpr": "5",
+      "solution": "The coefficient is the number multiplying the variable, so it is 5. The −3 is the constant term on the left and 12 is the constant on the right. Naming the parts correctly is what makes the next step ('add 3 to both sides') obvious rather than remembered. (There is nothing to compute here — the coefficient is read off the equation, which is why this question carries no machine check.)",
       "reviewedAt": "2026-08-02",
-      "reviewedBy": "seed"
+      "reviewedBy": "seed",
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 5x − 3 = 12 में x का गुणांक क्या है?",
+          "choices": [
+            "5",
+            "−3",
+            "12",
+            "15"
+          ],
+          "solution": "गुणांक वह संख्या है जो चर से गुणा हो रही है, अतः यह 5 है। −3 बाईं ओर का अचर पद है और 12 दाईं ओर का अचर। भागों को सही नाम देना ही अगले चरण ('दोनों ओर 3 जोड़ें') को स्पष्ट बनाता है, याद किया हुआ नहीं।"
+        },
+        "mr": {
+          "stem": "5x − 3 = 12 या समीकरणात x चा सहगुणक कोणता?",
+          "choices": [
+            "5",
+            "−3",
+            "12",
+            "15"
+          ],
+          "solution": "सहगुणक म्हणजे चलाला गुणणारी संख्या, म्हणून तो 5 आहे. −3 हे डावीकडचे स्थिरपद आणि 12 उजवीकडचे. भागांना बरोबर नाव दिल्यानेच पुढची पायरी ('दोन्ही बाजूंना 3 मिळवा') उघड होते, पाठ केलेली वाटत नाही."
+        }
+      }
     },
     {
       "difficulty": 2,
@@ -45,7 +98,12 @@
     {
       "difficulty": 2,
       "stem": "How many solutions does a linear equation in one variable have, when a ≠ 0?",
-      "choices": ["Exactly one", "None", "Exactly two", "Infinitely many"],
+      "choices": [
+        "Exactly one",
+        "None",
+        "Exactly two",
+        "Infinitely many"
+      ],
       "answerIndex": 0,
       "solution": "ax + b = 0 rearranges to x = −b/a, which is a single number whenever a ≠ 0. A quadratic can have two roots because of the x² term; a linear equation has no such term, so there is nothing to give it a second answer.",
       "reviewedAt": "2026-08-02",
@@ -54,17 +112,49 @@
     {
       "difficulty": 3,
       "stem": "Solve: 5x − 3 = 12",
-      "choices": ["x = 3", "x = 1.8", "x = 15", "x = −3"],
+      "choices": [
+        "x = 3",
+        "x = 1.8",
+        "x = 15",
+        "x = −3"
+      ],
       "answerIndex": 0,
       "solution": "Add 3 to both sides: 5x = 15. Divide both sides by 5: x = 3. Check by substituting back — 5(3) − 3 = 15 − 3 = 12, which is the right-hand side, so x = 3 is correct. Substituting back is the step most often skipped and the one that catches sign errors.",
       "checkExpr": "(12+3)/5",
       "reviewedAt": "2026-08-02",
-      "reviewedBy": "seed"
+      "reviewedBy": "seed",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 5x − 3 = 12",
+          "choices": [
+            "x = 3",
+            "x = 1.8",
+            "x = 15",
+            "x = −3"
+          ],
+          "solution": "दोनों ओर 3 जोड़ें: 5x = 15. दोनों ओर 5 से भाग दें: x = 3. वापस रखकर जाँचें — 5(3) − 3 = 15 − 3 = 12, जो दाईं ओर है, अतः x = 3 सही है। वापस रखकर जाँचना वही चरण है जिसे सबसे अधिक छोड़ा जाता है और जो चिह्न की गलती पकड़ता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 5x − 3 = 12",
+          "choices": [
+            "x = 3",
+            "x = 1.8",
+            "x = 15",
+            "x = −3"
+          ],
+          "solution": "दोन्ही बाजूंना 3 मिळवा: 5x = 15. दोन्ही बाजूंना 5 ने भागा: x = 3. पुन्हा ठेवून तपासा — 5(3) − 3 = 15 − 3 = 12, म्हणजेच उजवी बाजू, म्हणून x = 3 बरोबर. पुन्हा ठेवून तपासणे हीच पायरी सर्वाधिक वगळली जाते आणि तीच चिन्हाची चूक पकडते."
+        }
+      }
     },
     {
       "difficulty": 3,
       "stem": "Solve: 2(x + 4) = 3x − 1",
-      "choices": ["x = 9", "x = 7", "x = −9", "x = 3"],
+      "choices": [
+        "x = 9",
+        "x = 7",
+        "x = −9",
+        "x = 3"
+      ],
       "answerIndex": 0,
       "solution": "Expand the bracket: 2x + 8 = 3x − 1. Subtract 2x from both sides: 8 = x − 1. Add 1: x = 9. Check: left 2(9 + 4) = 26, right 3(9) − 1 = 26. Equal, so x = 9. Note the variable was collected on the right to keep its coefficient positive, which avoids a sign slip.",
       "checkExpr": "8+1",
@@ -74,7 +164,12 @@
     {
       "difficulty": 4,
       "stem": "The sum of three consecutive integers is 72. What is the largest of them?",
-      "choices": ["25", "24", "23", "26"],
+      "choices": [
+        "25",
+        "24",
+        "23",
+        "26"
+      ],
       "answerIndex": 0,
       "solution": "Let the middle integer be x, so the three are x − 1, x and x + 1. Their sum is 3x, because the −1 and +1 cancel. So 3x = 72 and x = 24, making the three integers 23, 24 and 25. The largest is 25. Choosing the MIDDLE one as the unknown is what makes the algebra collapse to 3x; naming the smallest gives 3x + 3 = 72, which works but takes an extra line.",
       "checkExpr": "72/3+1",
@@ -84,7 +179,12 @@
     {
       "difficulty": 4,
       "stem": "A father is four times as old as his son. In 12 years he will be twice as old. How old is the son now?",
-      "choices": ["6", "8", "9", "12"],
+      "choices": [
+        "6",
+        "8",
+        "9",
+        "12"
+      ],
       "answerIndex": 0,
       "solution": "Let the son be x, so the father is 4x. In 12 years they are x + 12 and 4x + 12, and the father is twice the son: 4x + 12 = 2(x + 12). Expand: 4x + 12 = 2x + 24. So 2x = 12 and x = 6. Check: son 6 and father 24 now; in 12 years, 18 and 36, and 36 = 2 × 18. Both people age by the same 12 years — adding it to only one side is the usual mistake here.",
       "checkExpr": "(24-12)/2",
@@ -94,7 +194,12 @@
     {
       "difficulty": 5,
       "stem": "A two-digit number is 4 times the sum of its digits. If 18 is added to the number, its digits are reversed. What is the number?",
-      "choices": ["24", "36", "48", "12"],
+      "choices": [
+        "24",
+        "36",
+        "48",
+        "12"
+      ],
       "answerIndex": 0,
       "solution": "Let the tens digit be a and the units digit b, so the number is 10a + b. First condition: 10a + b = 4(a + b), giving 6a = 3b, so b = 2a. Second: 10a + b + 18 = 10b + a, giving 9a + 18 = 9b, so b = a + 2. Setting the two expressions for b equal: 2a = a + 2, so a = 2 and b = 4. The number is 24. Check: 24 = 4 × 6 and 24 + 18 = 42, which is 24 reversed.",
       "checkExpr": "10*2+4",
@@ -104,7 +209,12 @@
     {
       "difficulty": 5,
       "stem": "A boat travels 30 km downstream in the same time it takes to travel 18 km upstream. If the stream flows at 2 km/h, what is the boat's speed in still water?",
-      "choices": ["8 km/h", "6 km/h", "10 km/h", "12 km/h"],
+      "choices": [
+        "8 km/h",
+        "6 km/h",
+        "10 km/h",
+        "12 km/h"
+      ],
       "answerIndex": 0,
       "solution": "Let the still-water speed be x. Downstream speed is x + 2, upstream is x − 2. Equal times means 30/(x + 2) = 18/(x − 2). Cross-multiply: 30(x − 2) = 18(x + 2), so 30x − 60 = 18x + 36, giving 12x = 96 and x = 8 km/h. Check: downstream 30/10 = 3 hours, upstream 18/6 = 3 hours. Equal, as required. The equation comes from equating TIMES, not distances or speeds.",
       "checkExpr": "96/12",
@@ -114,12 +224,27 @@
     {
       "difficulty": 6,
       "stem": "Find the number of positive integers n ≤ 100 for which the equation 3x + 7y = n has at least one solution in non-negative integers x and y.",
-      "choices": ["94", "100", "88", "90"],
+      "choices": [
+        "94",
+        "100",
+        "88",
+        "90"
+      ],
       "answerIndex": 0,
       "solution": "3 and 7 are coprime, so the Chicken McNugget (Frobenius) theorem applies. The largest integer NOT representable as 3x + 7y with x, y ≥ 0 is 3·7 − 3 − 7 = 11, and the number of non-representable positive integers is (3 − 1)(7 − 1)/2 = 6. Listing them confirms it: 1, 2, 4, 5, 8, 11 — six values, all at most 11. Every other n from 1 to 100 is representable, so the count is 100 − 6 = 94.",
       "checkExpr": "100-6",
       "reviewedAt": "2026-08-02",
       "reviewedBy": "seed"
     }
-  ]
+  ],
+  "translations": {
+    "hi": {
+      "name": "रैखिक समीकरण",
+      "summary": "एक अज्ञात, एक समीकरण, और उसके पीछे छिपे शब्द-प्रश्न।"
+    },
+    "mr": {
+      "name": "रेषीय समीकरणे",
+      "summary": "एक अज्ञात, एक समीकरण, आणि त्यामागे दडलेली शब्दकोडी."
+    }
+  }
 }

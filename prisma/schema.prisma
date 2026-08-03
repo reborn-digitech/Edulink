@@ -886,11 +886,67 @@ model QuizTopic {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  questions QuizQuestion[]
-  attempts  QuizAttempt[]
-  mastery   QuizMastery[]
+  questions     QuizQuestion[]
+  attempts      QuizAttempt[]
+  mastery       QuizMastery[]
+  translations  QuizTopicTranslation[]
 
   @@index([subject, classLevel, position])
+}
+
+/// A topic's name and summary in one other language.
+///
+/// A SEPARATE TABLE, not `nameHi` / `nameMr` columns, because the set of
+/// languages this app will be asked for is not knowable now — Hindi and Marathi
+/// are the ask today and the argument for the next one will be identical. A
+/// column per language means a migration per language.
+///
+/// PARTIAL BY DESIGN. A row here may exist for Hindi and not for Marathi, and a
+/// question inside a translated topic may itself be untranslated. Reading falls
+/// back FIELD BY FIELD to the English original rather than requiring a complete
+/// translation before any of it is usable, because the alternative is that no
+/// language ships until every string is done.
+model QuizTopicTranslation {
+  id      String @id @default(cuid())
+  topicId String
+  /// BCP-47-ish and short: "hi", "mr". Matches UserPrefs.locale.
+  language String
+  name     String
+  summary  String @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  topic QuizTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@unique([topicId, language])
+  @@index([language])
+}
+
+/// One question's stem, options and solution in one other language.
+///
+/// `answerIndex` is deliberately NOT repeated here. The correct option is a
+/// property of the question, not of the language it is read in, and storing it
+/// twice would allow a translation to disagree with the original about which
+/// answer is right — a bug that would mark a child wrong for being correct in
+/// Marathi. The translated `choices` array must therefore keep the SAME ORDER
+/// as the original, which the verifier enforces by comparing lengths.
+model QuizQuestionTranslation {
+  id         String @id @default(cuid())
+  questionId String
+  language   String
+  stem       String
+  /// JSON array, same order and length as the original's `choices`.
+  choices    String
+  solution   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, language])
+  @@index([language])
 }
 
 /// One question, its answer, and the worked solution behind the reveal.
@@ -933,8 +989,9 @@ model QuizQuestion {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  topic     QuizTopic      @relation(fields: [topicId], references: [id], onDelete: Cascade)
-  responses QuizResponse[]
+  topic        QuizTopic                 @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  responses    QuizResponse[]
+  translations QuizQuestionTranslation[]
 
   @@index([topicId, difficulty])
 }

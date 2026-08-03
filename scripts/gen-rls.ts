@@ -39,6 +39,10 @@ const NO_SCHOOL_POLICY = new Set([
   // QuizResponse and QuizMastery are all below and all carry a schoolId.
   "QuizTopic",
   "QuizQuestion",
+  // Translations of the catalogue are the catalogue. A Hindi stem is no more
+  // school-owned than the English one it translates.
+  "QuizTopicTranslation",
+  "QuizQuestionTranslation",
 ]);
 
 /**

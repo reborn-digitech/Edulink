@@ -277,7 +277,9 @@ CREATE POLICY "QuizMastery_tenant_isolation" ON "QuizMastery"
 --   OutboundEmail
 --   PushSubscription
 --   QuizQuestion
+--   QuizQuestionTranslation
 --   QuizTopic
+--   QuizTopicTranslation
 --   Session
 --   User
 -- They are scoped by user instead, which the application layer already does.

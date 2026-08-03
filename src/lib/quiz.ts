@@ -85,6 +85,13 @@ export const MIN_LEVEL = 1;
 const PROMOTE_AFTER = 2;
 const DEMOTE_AFTER = 2;
 
+// Imported for use inside this file, AND re-exported so that every existing
+// `from "@/lib/quiz"` keeps working — the split exists for the client bundle,
+// not for callers.
+import { normaliseLanguage, type QuizLanguage } from "./quiz-languages";
+
+export { QUIZ_LANGUAGES, normaliseLanguage, type QuizLanguage } from "./quiz-languages";
+
 export const QUIZ_SUBJECTS = [
   "MATHS",
   "SCIENCE",
@@ -103,6 +110,35 @@ export const SUBJECT_LABEL: Record<QuizSubject, string> = {
   CIVICS: "Nagrik Shastra · Civics",
   ECONOMICS: "Arthashastra · Economics",
 };
+
+/**
+ * Picks the translated string, or the original when there is no translation.
+ *
+ * FIELD BY FIELD, and that is the whole design. A topic may be translated while
+ * one of its questions is not; a question's stem may be done and its solution
+ * not. Requiring a complete translation before showing any of it would mean
+ * Hindi ships on the day the last solution is written, which is to say never.
+ */
+function pick(translated: string | null | undefined, original: string): string {
+  const value = (translated ?? "").trim();
+  return value.length > 0 ? value : original;
+}
+
+/**
+ * A translated choices array, but only if it is the SAME SHAPE as the original.
+ *
+ * `answerIndex` is stored once, on the question, and indexes the original
+ * array. A translation with a different number of options — or one whose
+ * options were reordered — would leave that index pointing at the wrong string,
+ * and a child answering correctly in Marathi would be marked wrong. When the
+ * lengths disagree the translation is DISCARDED rather than partially applied.
+ */
+function pickChoices(translatedRaw: string | null | undefined, original: string[]): string[] {
+  if (!translatedRaw) return original;
+  const translated = parseChoices(translatedRaw);
+  if (translated.length !== original.length) return original;
+  return translated.map((choice, i) => pick(choice, original[i]!));
+}
 
 /** The badge id a topic earns. Built from the slug, which never changes. */
 export function topicBadgeId(slug: string): string {
@@ -220,17 +256,26 @@ export type TopicSummary = {
 /** Topics for a class, with this child's progress against each. */
 export async function listTopics(
   session: ActiveContext,
-  opts: { subject?: string; classLevel?: number } = {},
+  opts: { subject?: string; classLevel?: number; language?: QuizLanguage } = {},
 ): Promise<TopicSummary[]> {
   const membershipId = session.membershipId;
   const schoolId = session.schoolId;
+  const language = normaliseLanguage(opts.language);
 
   const topics = await db.quizTopic.findMany({
     where: {
       ...(opts.subject ? { subject: opts.subject } : {}),
       ...(opts.classLevel ? { classLevel: opts.classLevel } : {}),
     },
-    include: { questions: { select: { id: true, difficulty: true } } },
+    include: {
+      questions: { select: { id: true, difficulty: true } },
+      // Nothing is fetched for English, so the default path costs exactly what
+      // it did before translations existed.
+      translations:
+        language === "en"
+          ? false
+          : { where: { language }, select: { name: true, summary: true }, take: 1 },
+    },
     orderBy: [{ subject: "asc" }, { classLevel: "asc" }, { position: "asc" }],
   });
 
@@ -250,14 +295,16 @@ export async function listTopics(
       spread[index] = (spread[index] ?? 0) + 1;
     }
 
+    const t = "translations" in topic ? topic.translations?.[0] : undefined;
+
     return {
       id: topic.id,
       slug: topic.slug,
-      name: topic.name,
+      name: pick(t?.name, topic.name),
       chapter: topic.chapter,
       subject: topic.subject,
       classLevel: topic.classLevel,
-      summary: topic.summary,
+      summary: pick(t?.summary, topic.summary),
       questionCount: topic.questions.length,
       levelSpread: spread,
       level: mine?.level ?? MIN_LEVEL,
@@ -327,6 +374,7 @@ export type ServedQuestion = {
 export async function nextQuestion(
   session: ActiveContext,
   attemptId: string,
+  language: QuizLanguage = "en",
 ): Promise<ServedQuestion | null> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -354,10 +402,28 @@ export async function nextQuestion(
   if (!picked) return null;
 
   const full = pool.find((q) => q.id === picked.id)!;
+
+  // Fetched for the ONE question being served, not for the whole pool — the
+  // pool query above is the hot path and runs on every question.
+  //
+  // The translation is looked up by question id and language only. It carries
+  // no answerIndex and cannot carry one (see the schema), so a translated
+  // question is incapable of disagreeing with the original about which option
+  // is correct.
+  const lang = normaliseLanguage(language);
+  const tr =
+    lang === "en"
+      ? null
+      : await db.quizQuestionTranslation.findUnique({
+          where: { questionId_language: { questionId: full.id, language: lang } },
+          select: { stem: true, choices: true },
+        });
+
+  const original = parseChoices(full.choices);
   return {
     questionId: full.id,
-    stem: full.stem,
-    choices: parseChoices(full.choices),
+    stem: pick(tr?.stem, full.stem),
+    choices: pickChoices(tr?.choices, original),
     difficulty: full.difficulty,
     levelLabel: QUIZ_LEVELS[clampLevel(full.difficulty) - 1]!.label,
     askedCount: seenIds.size,
@@ -389,6 +455,7 @@ export async function submitAnswer(
   attemptId: string,
   questionId: string,
   chosenIndex: number,
+  language: QuizLanguage = "en",
 ): Promise<AnswerResult> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -455,10 +522,22 @@ export async function submitAnswer(
 
   const finish = await finishIfComplete(schoolId, membershipId, attempt.id, attempt.topicId);
 
+  // Marking is read in the language the child answered in. Fetched AFTER the
+  // response is recorded, so a missing translation can never cost them a
+  // recorded answer.
+  const lang = normaliseLanguage(language);
+  const tr =
+    lang === "en"
+      ? null
+      : await db.quizQuestionTranslation.findUnique({
+          where: { questionId_language: { questionId: question.id, language: lang } },
+          select: { solution: true },
+        });
+
   return {
     correct,
     answerIndex: question.answerIndex,
-    solution: question.solution,
+    solution: pick(tr?.solution, question.solution),
     newLevel: level,
     finished: finish.finished,
     badgeAwarded: finish.badgeAwarded,
@@ -477,6 +556,7 @@ export async function revealSolution(
   session: ActiveContext,
   attemptId: string,
   questionId: string,
+  language: QuizLanguage = "en",
 ): Promise<{ solution: string; answerIndex: number; badgeForfeited: boolean }> {
   const { schoolId, membershipId } = requireStudent(session);
 
@@ -508,8 +588,17 @@ export async function revealSolution(
     update: { revealedSolution: true },
   });
 
+  const lang = normaliseLanguage(language);
+  const tr =
+    lang === "en"
+      ? null
+      : await db.quizQuestionTranslation.findUnique({
+          where: { questionId_language: { questionId: question.id, language: lang } },
+          select: { solution: true },
+        });
+
   return {
-    solution: question.solution,
+    solution: pick(tr?.solution, question.solution),
     answerIndex: question.answerIndex,
     badgeForfeited: !attempt.revealedAny,
   };

@@ -29,6 +29,8 @@ config();
 const DIR = join(process.cwd(), "content", "quiz");
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
 
+type Translation = { stem?: string; choices?: string[]; solution?: string };
+
 type Question = {
   difficulty: number;
   stem: string;
@@ -38,6 +40,7 @@ type Question = {
   checkExpr?: string | null;
   reviewedAt?: string | null;
   reviewedBy?: string | null;
+  translations?: Record<string, Translation>;
 };
 
 type TopicFile = {
@@ -50,6 +53,7 @@ type TopicFile = {
   position?: number;
   source: string;
   licence: string;
+  translations?: Record<string, { name?: string; summary?: string }>;
   questions: Question[];
 };
 
@@ -74,6 +78,7 @@ async function main() {
   let questionsWritten = 0;
   let questionsUpdated = 0;
   let questionsRemoved = 0;
+  let translationsWritten = 0;
 
   for (const file of files) {
     const topic: TopicFile = JSON.parse(readFileSync(join(DIR, file), "utf8"));
@@ -100,6 +105,14 @@ async function main() {
     });
     topicsWritten++;
 
+    for (const [language, tr] of Object.entries(topic.translations ?? {})) {
+      await db.quizTopicTranslation.upsert({
+        where: { topicId_language: { topicId: row.id, language } },
+        create: { topicId: row.id, language, name: tr.name ?? "", summary: tr.summary ?? "" },
+        update: { name: tr.name ?? "", summary: tr.summary ?? "" },
+      });
+    }
+
     const existing = await db.quizQuestion.findMany({
       where: { topicId: row.id },
       select: { id: true, stem: true },
@@ -123,10 +136,12 @@ async function main() {
       };
 
       const id = byStem.get(stem);
+      let questionId: string;
       if (id) {
         await db.quizQuestion.update({ where: { id }, data });
         keep.add(id);
         questionsUpdated++;
+        questionId = id;
       } else {
         const created = await db.quizQuestion.create({
           data: { ...data, topicId: row.id },
@@ -134,6 +149,23 @@ async function main() {
         });
         keep.add(created.id);
         questionsWritten++;
+        questionId = created.id;
+      }
+
+      // Keyed by (question, language), so re-importing an edited Hindi solution
+      // updates in place exactly the way the English one does.
+      for (const [language, tr] of Object.entries(question.translations ?? {})) {
+        const payload = {
+          stem: tr.stem ?? "",
+          choices: tr.choices ? JSON.stringify(tr.choices) : "",
+          solution: tr.solution ?? "",
+        };
+        await db.quizQuestionTranslation.upsert({
+          where: { questionId_language: { questionId, language } },
+          create: { questionId, language, ...payload },
+          update: payload,
+        });
+        translationsWritten++;
       }
     }
 
@@ -148,7 +180,7 @@ async function main() {
   }
 
   console.log(
-    `\nImported ${topicsWritten} topics — ${questionsWritten} new, ${questionsUpdated} updated, ${questionsRemoved} removed.\n`,
+    `\nImported ${topicsWritten} topics — ${questionsWritten} new, ${questionsUpdated} updated, ${questionsRemoved} removed, ${translationsWritten} translations.\n`,
   );
   await db.$disconnect();
 }

@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BrainIcon, MedalIcon, CheckCircleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { listTopics, QUIZ_LEVELS, SUBJECT_LABEL, type QuizSubject } from "@/lib/quiz";
+import {
+  listTopics,
+  normaliseLanguage,
+  QUIZ_LEVELS,
+  SUBJECT_LABEL,
+  type QuizSubject,
+} from "@/lib/quiz";
+import { LanguageSwitch } from "./language-switch";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
@@ -25,17 +32,21 @@ export default async function AbhyaasPage({
   const ctx = await requireRole("STUDENT");
   const { subject } = await searchParams;
 
-  const topics = await listTopics(ctx, { subject });
+  const language = normaliseLanguage(ctx.user.prefs.locale);
+  const topics = await listTopics(ctx, { subject, language });
   const subjects = [...new Set(topics.map((t) => t.subject))];
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Abhyaas</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Practice that follows you. Get two right and it gets harder; get two wrong and it eases
-          off.
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Abhyaas</h1>
+          <p className="mt-1 text-sm text-fg-muted">
+            Practice that follows you. Get two right and it gets harder; get two wrong and it eases
+            off.
+          </p>
+        </div>
+        <LanguageSwitch current={language} />
       </div>
 
       {topics.length === 0 ? (
