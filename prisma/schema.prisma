@@ -65,9 +65,10 @@ model School {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  memberships    Membership[]
-  classes        Class[]
-  invites        Invite[]
+  memberships     Membership[]
+  classes         Class[]
+  gradeCategories GradeCategory[]
+  invites         Invite[]
   posts          Post[]
   competitions   Competition[]
   auditLogs      AuditLog[]
@@ -233,12 +234,13 @@ model Class {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  school      School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  teachers    ClassTeacher[]
-  enrollments Enrollment[]
-  attendance  AttendanceSession[]
-  assignments Assignment[]
-  posts       Post[]
+  school         School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teachers       ClassTeacher[]
+  enrollments    Enrollment[]
+  attendance     AttendanceSession[]
+  assignments    Assignment[]
+  posts          Post[]
+  gradeCategories GradeCategory[]
 
   @@index([schoolId, archivedAt])
 }
@@ -387,6 +389,44 @@ model Submission {
 
   @@unique([assignmentId, studentMembershipId])
   @@index([schoolId, status])
+}
+
+/// How a class weights its categories of work: Homework 20%, Exam 50%, and so on.
+///
+/// `name` MATCHES `Assignment.category`, which is a free-text string a teacher
+/// types. That is a join on text and it is deliberate: categories existed as
+/// strings on assignments long before weights did, and a foreign key here would
+/// mean either migrating every existing assignment or refusing to weight the
+/// ones already written. The cost is that renaming a category orphans the work
+/// filed under the old name — so `weightedPercent` counts orphaned work and
+/// hands the number back rather than letting it vanish from the total.
+///
+/// WEIGHTS ARE BASIS POINTS, 10000 = 100%, integers like every other number in
+/// this codebase. Percent-as-integer would make three equal categories
+/// impossible to express without one of them silently carrying the rounding.
+///
+/// A set that does not total exactly 10000 is treated as ABSENT, not applied as
+/// written — see `weightsAreUsable`. A half-entered set must not quietly put a
+/// whole class on a scale nobody chose.
+model GradeCategory {
+  id       String @id @default(cuid())
+  schoolId String
+  classId  String
+
+  /// Matches Assignment.category, exactly and case-sensitively.
+  name      String
+  /// 10000 = 100%. Zero means "track it, do not count it".
+  weightBps Int    @default(0)
+  position  Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class  Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, name])
+  @@index([schoolId, classId, position])
 }
 
 model Grade {

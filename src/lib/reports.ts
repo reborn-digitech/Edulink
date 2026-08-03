@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { getAttendanceSummary, computeBestStreak } from "./attendance";
-import { overallPercent } from "./grading";
+import { overallForStudent } from "./grading";
 import { getBadges } from "./badges";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
@@ -45,6 +45,8 @@ export type ProgressReport = {
   };
   grades: {
     overallPercent: number | null;
+    method: "points" | "weighted";
+    uncategorised: number;
     marked: {
       title: string;
       className: string;
@@ -130,6 +132,7 @@ export async function buildProgressReport(
             title: true,
             category: true,
             pointsMilli: true,
+            classId: true,
             class: { select: { name: true } },
           },
         },
@@ -138,6 +141,31 @@ export async function buildProgressReport(
     }),
     getBadges(membership.schoolId, studentMembershipId, timezone),
   ]);
+
+  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const categories = await db.gradeCategory.findMany({
+    where: { schoolId: membership.schoolId, classId: { in: classIds } },
+    select: { classId: true, name: true, weightBps: true },
+    orderBy: { position: "asc" },
+  });
+  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
+  for (const category of categories) {
+    const list = weightsByClass.get(category.classId) ?? [];
+    list.push({ name: category.name, weightBps: category.weightBps });
+    weightsByClass.set(category.classId, list);
+  }
+
+  // The shared helper, so the report card and the parent's own screen cannot
+  // print different numbers for the same child.
+  const overall = overallForStudent(
+    grades.map((g) => ({
+      classId: g.assignment.classId,
+      scoreMilli: g.scoreMilli,
+      maxMilli: g.assignment.pointsMilli,
+      category: g.assignment.category,
+    })),
+    weightsByClass,
+  );
 
   return {
     student: {
@@ -159,9 +187,11 @@ export async function buildProgressReport(
       // The shared helper: points earned over points available, divided ONCE.
       // Averaging the per-assignment percentages weights a 5-point quiz like a
       // 100-point exam, and on the seeded data the two disagree by two points.
-      overallPercent: overallPercent(
-        grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
-      ),
+      overallPercent: overall.percent,
+      // Named on the report itself. A parent comparing this term's number with
+      // last term's is entitled to know whether the RULE changed underneath it.
+      method: overall.method,
+      uncategorised: overall.uncategorised,
       marked: grades.map((g) => ({
         title: g.assignment.title,
         className: g.assignment.class.name,

@@ -125,6 +125,14 @@ CREATE POLICY "Submission_tenant_isolation" ON "Submission"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- GradeCategory
+ALTER TABLE "GradeCategory" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "GradeCategory" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "GradeCategory_tenant_isolation" ON "GradeCategory";
+CREATE POLICY "GradeCategory_tenant_isolation" ON "GradeCategory"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Grade
 ALTER TABLE "Grade" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Grade" FORCE ROW LEVEL SECURITY;

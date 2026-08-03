@@ -412,19 +412,19 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Fill the Abhyaas bank, in batches.** The engine, importer, verifier and
-   badge are done — what is missing is content. One chapter at a time, every
-   computable answer carrying a `checkExpr`, every non-computable one carrying a
-   real name in `reviewedBy`, and `npm run quiz:verify` run before each import.
-   Its three separate counts are the measure of progress; the total is not.
-2. **Weighted grade categories.** Both are grading
-   work and both go through `overallPercent`, so they share their hard part.
-3. **Global feed.** Bigger than it sounds: it is the second thing that would show
+1. **Global feed.** Bigger than it sounds: it is the second thing that would show
    one school another school's content. Read `competitions.ts` first — it is the
    only cross-school surface in here, and it works by keeping the catalogue
    shared and the participation private.
-4. **SSO, 2FA.** Neither can be verified without real provider credentials.
+2. **SSO, 2FA.** Neither can be verified without real provider credentials.
    Budget for that rather than discovering it at the end.
+3. **Fill the Abhyaas bank.** DELIBERATELY LAST. The engine, importer, verifier,
+   badge and the English/Hindi/Marathi switch are all done and proven; what is
+   missing is only content, and content does not block anything else in this
+   list. 105 questions across 9 topics against an ask of 150,000. Every
+   computable answer carries a `checkExpr`, every non-computable one is counted
+   as unproven out loud, and `npm run quiz:verify` runs before each import — its
+   separate counts are the measure of progress, never the total.
 
 **Before any of them, something cheaper.** Nothing in
 `docs/UI-TEST-CHECKLIST.md` has been walked by hand since the policies went on,
@@ -1021,7 +1021,6 @@ the release where every page rendered and nothing saved.
   else's. A ranking across schools would be the first thing in this app to show
   one school another school's children — a decision, and a policy change, before
   it is a page.
-- Weighted grade categories
 - **The Abhyaas question BANK, at scale.** The engine is built and works end to
   end; the bank is **105 questions across 9 topics**, covering all six subjects
   and spread evenly over all six levels (L1–L5 have 18 each, L6 has 15). The ask

@@ -127,9 +127,17 @@ export default async function ReportPage({
               {report.grades.marked.length === 1 ? "piece" : "pieces"} of work.
             </p>
             <p className="text-xs text-fg-muted">
-              Points earned out of points available — a five-point quiz does not count as much as a
-              hundred-point exam.
+              {report.grades.method === "weighted"
+                ? "Each class is scored by the weights its teacher set, and the classes then count equally. A category with nothing marked in it yet is left out."
+                : "Points earned out of points available — a five-point quiz does not count as much as a hundred-point exam."}
             </p>
+            {report.grades.uncategorised > 0 && (
+              <p className="text-xs text-warn">
+                {report.grades.uncategorised} marked{" "}
+                {report.grades.uncategorised === 1 ? "piece" : "pieces"} of work {report.grades.uncategorised === 1 ? "is" : "are"} filed under a
+                category that carries no weight, so {report.grades.uncategorised === 1 ? "it does" : "they do"} not count towards this figure.
+              </p>
+            )}
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">

@@ -4,7 +4,7 @@ import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { relativeTime } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
-import { overallPercent } from "@/lib/grading";
+import { overallForStudent } from "@/lib/grading";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
@@ -22,6 +22,7 @@ export default async function StudentGradesPage() {
           title: true,
           pointsMilli: true,
           category: true,
+          classId: true,
           class: { select: { name: true } },
         },
       },
@@ -34,9 +35,32 @@ export default async function StudentGradesPage() {
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
   const earned = scored.reduce((sum, g) => sum + g.scoreMilli!, 0);
   const available = scored.reduce((sum, g) => sum + g.assignment.pointsMilli!, 0);
-  const overall = overallPercent(
-    grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
+  // Weights are per class, so every class this child has marked work in is
+  // fetched and `overallForStudent` decides which rule applies. With no weights
+  // anywhere it returns exactly the number this page showed before.
+  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const categories = await db.gradeCategory.findMany({
+    where: { schoolId: ctx.schoolId, classId: { in: classIds } },
+    select: { classId: true, name: true, weightBps: true },
+    orderBy: { position: "asc" },
+  });
+  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
+  for (const category of categories) {
+    const list = weightsByClass.get(category.classId) ?? [];
+    list.push({ name: category.name, weightBps: category.weightBps });
+    weightsByClass.set(category.classId, list);
+  }
+
+  const result = overallForStudent(
+    grades.map((g) => ({
+      classId: g.assignment.classId,
+      scoreMilli: g.scoreMilli,
+      maxMilli: g.assignment.pointsMilli,
+      category: g.assignment.category,
+    })),
+    weightsByClass,
   );
+  const overall = result.percent;
 
   const best = scored.reduce<{ title: string; percent: number } | null>((top, grade) => {
     const percent = Math.round((grade.scoreMilli! * 100) / grade.assignment.pointsMilli!);

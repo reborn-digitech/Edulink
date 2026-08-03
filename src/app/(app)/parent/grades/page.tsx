@@ -6,7 +6,7 @@ import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { relativeTime } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
-import { overallPercent } from "@/lib/grading";
+import { overallForStudent, overallPercent } from "@/lib/grading";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
@@ -40,6 +40,7 @@ export default async function ParentGradesPage({
           title: true,
           pointsMilli: true,
           category: true,
+          classId: true,
           class: { select: { name: true } },
         },
       },
@@ -54,9 +55,28 @@ export default async function ParentGradesPage({
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
   const earned = scored.reduce((sum, g) => sum + g.scoreMilli!, 0);
   const available = scored.reduce((sum, g) => sum + g.assignment.pointsMilli!, 0);
-  const overall = overallPercent(
-    grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
+  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const weightRows = await db.gradeCategory.findMany({
+    where: { classId: { in: classIds } },
+    select: { classId: true, name: true, weightBps: true },
+    orderBy: { position: "asc" },
+  });
+  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
+  for (const row of weightRows) {
+    const list = weightsByClass.get(row.classId) ?? [];
+    list.push({ name: row.name, weightBps: row.weightBps });
+    weightsByClass.set(row.classId, list);
+  }
+  const overallResult = overallForStudent(
+    grades.map((g) => ({
+      classId: g.assignment.classId,
+      scoreMilli: g.scoreMilli,
+      maxMilli: g.assignment.pointsMilli,
+      category: g.assignment.category,
+    })),
+    weightsByClass,
   );
+  const overall = overallResult.percent;
 
   // Per-category breakdown, same integer arithmetic.
   const categories = new Map<string, { earned: number; available: number; count: number }>();

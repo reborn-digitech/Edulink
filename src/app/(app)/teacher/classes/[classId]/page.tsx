@@ -19,7 +19,9 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
+import { listGradeCategories } from "@/lib/grading";
 import { ClassCode } from "./class-code";
+import { GradeWeights } from "./weights";
 
 export const metadata: Metadata = { title: "Class" };
 
@@ -109,6 +111,19 @@ export default async function ClassDetailPage({
   const withoutGuardian = roster.filter((r) => !r.hasGuardian).length;
   // Below 90% is the threshold most schools act on.
   const ofConcern = roster.filter((r) => r.percent !== null && r.percent < 90);
+
+  const [weights, usedCategories] = await Promise.all([
+    listGradeCategories(ctx, classId),
+    db.assignment.findMany({
+      where: { classId, schoolId: ctx.schoolId, category: { not: null } },
+      select: { category: true },
+      distinct: ["category"],
+    }),
+  ]);
+  const categoriesInUse = usedCategories
+    .map((a) => a.category!)
+    .filter((c) => c.trim().length > 0)
+    .sort();
 
   return (
     <div className="space-y-5">
@@ -301,6 +316,12 @@ export default async function ClassDetailPage({
           )}
         </CardBody>
       </Card>
+
+      <GradeWeights
+        classId={classId}
+        initial={weights.map((w) => ({ name: w.name, weightBps: w.weightBps }))}
+        categoriesInUse={categoriesInUse}
+      />
     </div>
   );
 }

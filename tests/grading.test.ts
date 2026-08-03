@@ -1,6 +1,14 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { createAssignment, getGradebook, overallPercent, saveGrades } from "@/lib/grading";
+import {
+  createAssignment,
+  getGradebook,
+  overallPercent,
+  saveGrades,
+  weightedPercent,
+  weightsAreUsable,
+  overallForStudent,
+} from "@/lib/grading";
 import { formatMilli, fromMilli, toMilli } from "@/lib/validation";
 import { AccessError } from "@/lib/tenancy";
 
@@ -394,5 +402,286 @@ describe("getGradebook averages", () => {
 
   it("refuses a teacher who does not teach the class", async () => {
     await expect(getGradebook(otherTeacher, assignmentId)).rejects.toBeInstanceOf(AccessError);
+  });
+});
+
+describe("weightedPercent — categories with different weights", () => {
+  const W = [
+    { name: "Homework", weightBps: 2000 },
+    { name: "Quiz", weightBps: 3000 },
+    { name: "Exam", weightBps: 5000 },
+  ];
+
+  it("combines categories by weight, not by points across the whole class", () => {
+    // Homework 100% (10/10), Quiz 50% (5/10), Exam 80% (80/100).
+    //   weighted   : 100*0.2 + 50*0.3 + 80*0.5 = 20 + 15 + 40 = 75
+    //   unweighted : (10 + 5 + 80) * 100 / (10 + 10 + 100) = 79
+    // Hand-computed. The two methods genuinely disagree, which is the point.
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Homework" },
+        { scoreMilli: toMilli(5), maxMilli: toMilli(10), category: "Quiz" },
+        { scoreMilli: toMilli(80), maxMilli: toMilli(100), category: "Exam" },
+      ],
+      W,
+    );
+    expect(result.percent).toBe(75);
+    expect(result.percent).not.toBe(79);
+  });
+
+  it("weights by points WITHIN a category", () => {
+    // Two quizzes, 1/5 and 90/100, alone in a 100%-weighted category:
+    // (1 + 90) * 100 / 105 = 86.67 -> 87. Same rule as overallPercent.
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(1), maxMilli: toMilli(5), category: "Quiz" },
+        { scoreMilli: toMilli(90), maxMilli: toMilli(100), category: "Quiz" },
+      ],
+      [{ name: "Quiz", weightBps: 10000 }],
+    );
+    expect(result.percent).toBe(87);
+  });
+
+  it("⚠ drops an empty category and renormalises rather than scoring it zero", () => {
+    // Only homework marked, in October. Homework is 20% of the year, but it is
+    // 100% of what has been marked.
+    //   right : 90
+    //   wrong : 90 * 0.2 = 18, as if the unsat exam were a zero
+    const result = weightedPercent(
+      [{ scoreMilli: toMilli(9), maxMilli: toMilli(10), category: "Homework" }],
+      W,
+    );
+    expect(result.percent).toBe(90);
+    expect(result.percent).not.toBe(18);
+  });
+
+  it("renormalises the survivors to exactly 100% of the remaining weight", () => {
+    // Homework (2000) and Quiz (3000) marked, Exam empty. Live total 5000, so
+    // the effective split is 40/60.
+    //   100*0.4 + 50*0.6 = 40 + 30 = 70
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Homework" },
+        { scoreMilli: toMilli(5), maxMilli: toMilli(10), category: "Quiz" },
+      ],
+      W,
+    );
+    expect(result.percent).toBe(70);
+    const live = result.parts.filter((p) => p.percent !== null);
+    expect(live.map((p) => p.effectiveBps)).toEqual([4000, 6000]);
+    expect(live.reduce((s, p) => s + p.effectiveBps, 0)).toBe(10000);
+  });
+
+  it("keeps three equal categories summing to 100% without rounding drift", () => {
+    const thirds = [
+      { name: "A", weightBps: 3333 },
+      { name: "B", weightBps: 3333 },
+      { name: "C", weightBps: 3334 },
+    ];
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "A" },
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "B" },
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "C" },
+      ],
+      thirds,
+    );
+    // All three perfect, so the answer must be exactly 100 whatever the weights.
+    expect(result.percent).toBe(100);
+    expect(result.parts.reduce((s, p) => s + p.effectiveBps, 0)).toBe(10000);
+  });
+
+  it("⚠ counts work that matches no declared category instead of hiding it", () => {
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Homework" },
+        { scoreMilli: toMilli(0), maxMilli: toMilli(50), category: "Project" },
+        { scoreMilli: toMilli(0), maxMilli: toMilli(50), category: null },
+      ],
+      W,
+    );
+    // The two zeroes are outside the weights, so they cannot drag the total.
+    expect(result.percent).toBe(100);
+    // But they are REPORTED, so the UI can say two pieces do not count.
+    expect(result.uncategorised).toBe(2);
+  });
+
+  it("does not count unmarked or maximum-less work as uncategorised", () => {
+    const result = weightedPercent(
+      [
+        { scoreMilli: null, maxMilli: toMilli(10), category: "Nonsense" },
+        { scoreMilli: toMilli(3), maxMilli: null, category: "Nonsense" },
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Homework" },
+      ],
+      W,
+    );
+    expect(result.uncategorised).toBe(0);
+    expect(result.percent).toBe(100);
+  });
+
+  it("returns null, not 0, when nothing in any weighted category is marked", () => {
+    expect(weightedPercent([], W).percent).toBeNull();
+    expect(
+      weightedPercent(
+        [{ scoreMilli: toMilli(5), maxMilli: toMilli(10), category: "Project" }],
+        W,
+      ).percent,
+    ).toBeNull();
+  });
+
+  it("ignores a category declared with zero weight", () => {
+    const result = weightedPercent(
+      [
+        { scoreMilli: toMilli(0), maxMilli: toMilli(10), category: "Practice" },
+        { scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Exam" },
+      ],
+      [
+        { name: "Practice", weightBps: 0 },
+        { name: "Exam", weightBps: 10000 },
+      ],
+    );
+    expect(result.percent).toBe(100);
+    // Zero-weighted work is outside the total, so it is reported like any other
+    // work that does not count.
+    expect(result.uncategorised).toBe(1);
+  });
+
+  it("carries bonus marks through a category", () => {
+    const result = weightedPercent(
+      [{ scoreMilli: toMilli(22), maxMilli: toMilli(20), category: "Exam" }],
+      [{ name: "Exam", weightBps: 10000 }],
+    );
+    expect(result.percent).toBe(110);
+  });
+});
+
+describe("weightsAreUsable — when to weight at all", () => {
+  it("accepts a set totalling exactly 100%", () => {
+    expect(
+      weightsAreUsable([
+        { name: "Homework", weightBps: 4000 },
+        { name: "Exam", weightBps: 6000 },
+      ]),
+    ).toBe(true);
+  });
+
+  it("⚠ refuses a half-finished set rather than scaling it up", () => {
+    // Homework 20 + Quiz 30 and the exam not added yet. Applying this as given
+    // would silently put every child on a 50-point scale nobody chose.
+    expect(
+      weightsAreUsable([
+        { name: "Homework", weightBps: 2000 },
+        { name: "Quiz", weightBps: 3000 },
+      ]),
+    ).toBe(false);
+  });
+
+  it("refuses a set totalling more than 100%", () => {
+    expect(
+      weightsAreUsable([
+        { name: "Homework", weightBps: 6000 },
+        { name: "Exam", weightBps: 6000 },
+      ]),
+    ).toBe(false);
+  });
+
+  it("treats no categories as no weighting", () => {
+    expect(weightsAreUsable([])).toBe(false);
+  });
+});
+
+describe("overallForStudent — across classes that weight differently", () => {
+  const maths = [
+    { name: "Homework", weightBps: 2000 },
+    { name: "Exam", weightBps: 8000 },
+  ];
+
+  it("⚠ is byte-for-byte the old number when NO class weights anything", () => {
+    // The guarantee schools rely on: adopting the feature and not using it must
+    // not move a single report card.
+    const entries = [
+      { classId: "c1", scoreMilli: toMilli(1), maxMilli: toMilli(5), category: null },
+      { classId: "c2", scoreMilli: toMilli(90), maxMilli: toMilli(100), category: "Exam" },
+    ];
+    const result = overallForStudent(entries, new Map());
+    expect(result.percent).toBe(overallPercent(entries));
+    expect(result.percent).toBe(87);
+    expect(result.method).toBe("points");
+  });
+
+  it("scores a weighted class by its weights and an unweighted one by points", () => {
+    // Maths: Homework 10/10 (100%) at 20%, Exam 50/100 (50%) at 80%
+    //        -> 100*0.2 + 50*0.8 = 20 + 40 = 60
+    // History (no weights): 30/100 -> 30
+    // Combined equally: (60 + 30) / 2 = 45
+    const result = overallForStudent(
+      [
+        { classId: "maths", scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Homework" },
+        { classId: "maths", scoreMilli: toMilli(50), maxMilli: toMilli(100), category: "Exam" },
+        { classId: "history", scoreMilli: toMilli(30), maxMilli: toMilli(100), category: null },
+      ],
+      new Map([["maths", maths]]),
+    );
+    expect(result.percent).toBe(45);
+    expect(result.method).toBe("weighted");
+  });
+
+  it("⚠ does not let a class that sets more work count for more of the child", () => {
+    // Class A: one 10-point piece at 100%. Class B: one 200-point piece at 0%.
+    //   equal per class : (100 + 0) / 2 = 50
+    //   points-weighted : 10 * 100 / 210 = 5
+    // The child is perfect in one subject and lost in the other; 50 says that.
+    const result = overallForStudent(
+      [
+        { classId: "a", scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Exam" },
+        { classId: "b", scoreMilli: toMilli(0), maxMilli: toMilli(200), category: null },
+      ],
+      new Map([["a", [{ name: "Exam", weightBps: 10000 }]]]),
+    );
+    expect(result.percent).toBe(50);
+    expect(result.percent).not.toBe(5);
+  });
+
+  it("ignores a class whose weights do not total 100% and uses points there", () => {
+    // Half-entered weights on 'maths' must not put that class on a 50-point
+    // scale — it falls back to points WITHIN the class.
+    const half = [{ name: "Homework", weightBps: 2000 }];
+    const result = overallForStudent(
+      [
+        { classId: "maths", scoreMilli: toMilli(8), maxMilli: toMilli(10), category: "Homework" },
+        { classId: "art", scoreMilli: toMilli(6), maxMilli: toMilli(10), category: "Exam" },
+      ],
+      new Map([
+        ["maths", half],
+        ["art", [{ name: "Exam", weightBps: 10000 }]],
+      ]),
+    );
+    // maths -> 80 by points, art -> 60 by its weights, mean 70.
+    expect(result.percent).toBe(70);
+  });
+
+  it("adds up uncategorised work from every weighted class", () => {
+    const result = overallForStudent(
+      [
+        { classId: "maths", scoreMilli: toMilli(5), maxMilli: toMilli(10), category: "Project" },
+        { classId: "maths", scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Exam" },
+        { classId: "sci", scoreMilli: toMilli(5), maxMilli: toMilli(10), category: "Fieldwork" },
+        { classId: "sci", scoreMilli: toMilli(10), maxMilli: toMilli(10), category: "Exam" },
+      ],
+      new Map([
+        ["maths", [{ name: "Exam", weightBps: 10000 }]],
+        ["sci", [{ name: "Exam", weightBps: 10000 }]],
+      ]),
+    );
+    expect(result.uncategorised).toBe(2);
+    expect(result.percent).toBe(100);
+  });
+
+  it("returns null rather than 0 when a weighted class has nothing marked", () => {
+    const result = overallForStudent(
+      [{ classId: "maths", scoreMilli: null, maxMilli: toMilli(10), category: "Exam" }],
+      new Map([["maths", [{ name: "Exam", weightBps: 10000 }]]]),
+    );
+    expect(result.percent).toBeNull();
   });
 });

@@ -44,6 +44,304 @@ export function overallPercent(
   return Math.round((earned * 100) / available);
 }
 
+/* -------------------------------------------------------------------------- */
+/* Weighted categories                                                         */
+/* -------------------------------------------------------------------------- */
+
+/** 10000 basis points = 100%. Integers, like every other number in here. */
+export const WEIGHT_SCALE = 10_000;
+
+export type CategoryWeight = { name: string; weightBps: number };
+
+export type WeightedEntry = {
+  scoreMilli: number | null;
+  maxMilli: number | null;
+  /** `Assignment.category`. Null means the teacher never set one. */
+  category: string | null;
+};
+
+export type WeightedResult = {
+  /** The overall figure, or null when nothing counts towards it yet. */
+  percent: number | null;
+  /** Per-category detail, in the order the weights were given. */
+  parts: {
+    name: string;
+    /** The weight as declared. */
+    weightBps: number;
+    /** The weight actually applied after empty categories were dropped. */
+    effectiveBps: number;
+    percent: number | null;
+    counted: number;
+  }[];
+  /**
+   * Graded work that matched no declared category.
+   *
+   * COUNTED AND RETURNED, never silently discarded. If a teacher weights three
+   * categories and then sets an assignment's category to "Project", that work
+   * contributes nothing to the total — which is defensible, but only if
+   * somebody is told. A number here is what lets the UI say so.
+   */
+  uncategorised: number;
+};
+
+/**
+ * Overall percentage when a class weights its categories.
+ *
+ * Each category is scored on its own by the same points-weighted rule
+ * `overallPercent` uses — a 5-point quiz and a 100-point quiz inside "Quiz" do
+ * not count equally — and then the categories are combined by their weights.
+ * Two different questions, answered separately, which is the whole point of
+ * having categories at all.
+ *
+ * EMPTY CATEGORIES ARE DROPPED AND THE REST RENORMALISED. In October a class
+ * has homework marks and no exam marks, and an exam category weighted 50% with
+ * nothing in it would otherwise drag every child to half of what they have
+ * earned. Treating an unsat exam as zero is not a strict reading of the rules,
+ * it is a wrong number. So a term with only homework marked reports the
+ * homework percentage, and the exam starts counting the day it is marked.
+ *
+ * Renormalising is done ONCE over the surviving weights rather than by scaling
+ * each in turn, so three categories of 3333 bps each still total exactly 100%
+ * and no child loses a point to rounding drift.
+ */
+export function weightedPercent(
+  entries: WeightedEntry[],
+  weights: CategoryWeight[],
+): WeightedResult {
+  const declared = weights.filter((w) => w.weightBps > 0);
+  const known = new Set(declared.map((w) => w.name));
+
+  let uncategorised = 0;
+  for (const entry of entries) {
+    if (entry.scoreMilli === null || !entry.maxMilli) continue;
+    if (entry.category === null || !known.has(entry.category)) uncategorised++;
+  }
+
+  const parts = declared.map((weight) => {
+    const mine = entries.filter(
+      (e) => e.category === weight.name && e.scoreMilli !== null && e.maxMilli,
+    );
+    let earned = 0;
+    let available = 0;
+    for (const entry of mine) {
+      earned += entry.scoreMilli!;
+      available += entry.maxMilli!;
+    }
+    return {
+      name: weight.name,
+      weightBps: weight.weightBps,
+      effectiveBps: 0,
+      percent: available === 0 ? null : (earned * 100) / available,
+      counted: mine.length,
+    };
+  });
+
+  const live = parts.filter((p) => p.percent !== null);
+  const liveTotal = live.reduce((sum, p) => sum + p.weightBps, 0);
+  if (liveTotal === 0) {
+    return { percent: null, parts, uncategorised };
+  }
+
+  let combined = 0;
+  for (const part of live) {
+    part.effectiveBps = Math.round((part.weightBps * WEIGHT_SCALE) / liveTotal);
+    combined += part.percent! * part.weightBps;
+  }
+
+  return {
+    // Divided by the LIVE total, not by WEIGHT_SCALE — that is the
+    // renormalisation, and doing it here keeps it in one place.
+    percent: Math.round(combined / liveTotal),
+    parts,
+    uncategorised,
+  };
+}
+
+/**
+ * True when a class has usable weights.
+ *
+ * Weights that do not add up to 100% are treated as ABSENT rather than applied
+ * as given. A class holding a half-finished set — Homework 20, Quiz 30, and the
+ * exam not yet added — would otherwise report every child on a 50-point scale
+ * that nobody chose. Falling back to the points-weighted total is the safe
+ * wrong-way-round: it is the number the school had before categories existed.
+ */
+export function weightsAreUsable(weights: CategoryWeight[]): boolean {
+  if (weights.length === 0) return false;
+  const total = weights.reduce((sum, w) => sum + Math.max(0, w.weightBps), 0);
+  return total === WEIGHT_SCALE;
+}
+
+export type ClassEntry = WeightedEntry & { classId: string };
+
+export type OverallResult = {
+  percent: number | null;
+  /** Which rule produced it, so the UI can say. */
+  method: "points" | "weighted";
+  /** Graded work in no declared category, across every weighted class. */
+  uncategorised: number;
+};
+
+/**
+ * One child's overall percentage across every class they are in.
+ *
+ * THE HARD PART IS THAT WEIGHTS ARE PER CLASS. Maths may weight exams at 50%
+ * and History may not weight anything, and there is no single sum that honours
+ * both. So:
+ *
+ *   - If NO class the child is in has usable weights, this is byte-for-byte
+ *     today's number: one points-weighted total across all their work. Schools
+ *     that never touch categories see nothing change, which is the only
+ *     acceptable behaviour for a number already printed on report cards.
+ *
+ *   - If ANY class has usable weights, each class is scored on its own — by its
+ *     own weights where it has them, points-weighted where it does not — and
+ *     the class percentages are then averaged EQUALLY.
+ *
+ * Equally, and not by points, because once each class is on its own 0–100 scale
+ * they are already comparable, and points-weighting them again would let a class
+ * that happens to set more homework count for more of a child's overall mark
+ * than a class that sets less. That is a fact about a teacher's habits, not
+ * about the child.
+ *
+ * The discontinuity between the two rules is real: the first class to adopt
+ * weights changes how every OTHER class contributes to the same child's total.
+ * It is reported in `method` rather than hidden, because a parent who sees the
+ * number move deserves to be told which rule produced it.
+ */
+export function overallForStudent(
+  entries: ClassEntry[],
+  weightsByClass: Map<string, CategoryWeight[]>,
+): OverallResult {
+  const classIds = [...new Set(entries.map((e) => e.classId))];
+  const anyWeighted = classIds.some((id) => weightsAreUsable(weightsByClass.get(id) ?? []));
+
+  if (!anyWeighted) {
+    return { percent: overallPercent(entries), method: "points", uncategorised: 0 };
+  }
+
+  const perClass: number[] = [];
+  let uncategorised = 0;
+
+  for (const classId of classIds) {
+    const mine = entries.filter((e) => e.classId === classId);
+    const weights = weightsByClass.get(classId) ?? [];
+
+    if (weightsAreUsable(weights)) {
+      const result = weightedPercent(mine, weights);
+      uncategorised += result.uncategorised;
+      if (result.percent !== null) perClass.push(result.percent);
+    } else {
+      const flat = overallPercent(mine);
+      if (flat !== null) perClass.push(flat);
+    }
+  }
+
+  if (perClass.length === 0) return { percent: null, method: "weighted", uncategorised };
+
+  const mean = perClass.reduce((sum, p) => sum + p, 0) / perClass.length;
+  return { percent: Math.round(mean), method: "weighted", uncategorised };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reading and writing a class's weights                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The weights a class uses, in display order.
+ *
+ * Returns `[]` for a class that has never set any, which `weightsAreUsable`
+ * then reads as "not weighted" — so every caller gets today's points-weighted
+ * behaviour without having to ask whether weighting is switched on.
+ */
+export async function listGradeCategories(
+  session: ActiveContext,
+  classId: string,
+): Promise<{ id: string; name: string; weightBps: number; position: number }[]> {
+  if (!session.schoolId) return [];
+  return db.gradeCategory.findMany({
+    where: { schoolId: session.schoolId, classId },
+    select: { id: true, name: true, weightBps: true, position: true },
+    orderBy: [{ position: "asc" }, { name: "asc" }],
+  });
+}
+
+/**
+ * Replaces a class's whole set of weights in one call.
+ *
+ * WHOLE SET, NOT ONE ROW AT A TIME, because the invariant that matters spans
+ * the set: the weights have to total 100%. Saving one category at a time means
+ * every intermediate save is a set that does not add up, and either the write
+ * is refused (so the teacher cannot get from one valid set to another) or it is
+ * allowed (so the class sits on an invalid set between saves). Replacing the
+ * lot makes the valid state the only state that is ever stored.
+ *
+ * An empty list clears weighting entirely and returns the class to the
+ * points-weighted total, which is a legitimate thing to want and must not
+ * require deleting rows one by one.
+ */
+export async function saveGradeCategories(
+  session: ActiveContext,
+  classId: string,
+  categories: { name: string; weightBps: number }[],
+): Promise<void> {
+  if (session.role !== "TEACHER" && session.role !== "ADMIN") {
+    throw new AccessError("Only a teacher or an admin can set grade weights");
+  }
+  const klass = await assertClassAccess(
+    { schoolId: session.schoolId!, membershipId: session.membershipId!, role: session.role },
+    classId,
+    { write: true },
+  );
+
+  const clean = categories
+    .map((c) => ({ name: c.name.trim(), weightBps: Math.round(c.weightBps) }))
+    .filter((c) => c.name.length > 0);
+
+  for (const category of clean) {
+    if (category.name.length > 40) throw new AccessError("Category names must be 40 characters or fewer");
+    if (category.weightBps < 0) throw new AccessError("A weight cannot be negative");
+    if (category.weightBps > WEIGHT_SCALE) throw new AccessError("A single weight cannot exceed 100%");
+  }
+
+  const names = new Set(clean.map((c) => c.name.toLowerCase()));
+  if (names.size !== clean.length) {
+    // Two categories of the same name would both match the same assignments,
+    // so the work would be counted twice under two different weights.
+    throw new AccessError("Two categories cannot share a name");
+  }
+
+  const total = clean.reduce((sum, c) => sum + c.weightBps, 0);
+  if (clean.length > 0 && total !== WEIGHT_SCALE) {
+    throw new AccessError(
+      `The weights add up to ${(total / 100).toFixed(2)}% — they have to total exactly 100%`,
+    );
+  }
+
+  await db.$transaction(async (tx) => {
+    await tx.gradeCategory.deleteMany({ where: { schoolId: klass.schoolId, classId } });
+    if (clean.length === 0) return;
+    await tx.gradeCategory.createMany({
+      data: clean.map((c, index) => ({
+        schoolId: klass.schoolId,
+        classId,
+        name: c.name,
+        weightBps: c.weightBps,
+        position: index,
+      })),
+    });
+  });
+
+  await audit({
+    schoolId: klass.schoolId,
+    actorUserId: session.user.id,
+    action: "gradeCategories.save",
+    targetType: "Class",
+    targetId: classId,
+    meta: { count: clean.length, names: clean.map((c) => c.name) },
+  });
+}
+
 export type GradeInput = {
   studentMembershipId: string;
   /** Points as the teacher typed them, e.g. 17.5. Null clears the grade. */

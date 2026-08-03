@@ -15,7 +15,7 @@ import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
-import { overallPercent } from "@/lib/grading";
+import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -61,7 +61,7 @@ export default async function ParentDashboard({
     }),
     db.grade.findMany({
       where: { studentMembershipId: selectedId, schoolId: student.schoolId },
-      include: { assignment: { select: { title: true, pointsMilli: true, category: true } } },
+      include: { assignment: { select: { title: true, pointsMilli: true, category: true, classId: true } } },
       orderBy: { gradedAt: "desc" },
       take: 5,
     }),
@@ -94,9 +94,28 @@ export default async function ParentDashboard({
 
   // Shared helper — weights by points available, never averages percentages.
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const averagePercent = overallPercent(
-    grades.map((g) => ({ scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli })),
+  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const weightRows = await db.gradeCategory.findMany({
+    where: { classId: { in: classIds } },
+    select: { classId: true, name: true, weightBps: true },
+    orderBy: { position: "asc" },
+  });
+  const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
+  for (const row of weightRows) {
+    const list = weightsByClass.get(row.classId) ?? [];
+    list.push({ name: row.name, weightBps: row.weightBps });
+    weightsByClass.set(row.classId, list);
+  }
+  const overallResult = overallForStudent(
+    grades.map((g) => ({
+      classId: g.assignment.classId,
+      scoreMilli: g.scoreMilli,
+      maxMilli: g.assignment.pointsMilli,
+      category: g.assignment.category,
+    })),
+    weightsByClass,
   );
+  const averagePercent = overallResult.percent;
 
   return (
     <div className="space-y-6">
