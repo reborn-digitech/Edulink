@@ -4,6 +4,7 @@ import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { notify, notifyGuardians } from "./notify";
 import { readJsonArray } from "./json";
+import { studentsForTeacher } from "./remarks";
 import type { ActiveContext } from "./session";
 
 /**
@@ -421,4 +422,69 @@ export async function postMentorMessage(
       url: `/expert/mentoring/${threadId}`,
     });
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/* What the pairing form needs                                                 */
+/* -------------------------------------------------------------------------- */
+
+export type PairingOptions = {
+  experts: { id: string; name: string; headline: string; verified: boolean }[];
+  pupils: { id: string; name: string }[];
+};
+
+/**
+ * The two lists a staff member picks from.
+ *
+ * PUBLISHED EXPERTS ONLY, because an uncurated profile is somebody nobody has
+ * checked, and the pairing form is not the place to discover that.
+ *
+ * A TEACHER SEES ONLY THEIR OWN PUPILS, via the same helper the remarks screen
+ * uses — pairing a child with an outside adult is at least as sensitive as
+ * messaging their parent, so it gets no wider a reach. An admin sees the school.
+ * `createMentorship` re-checks the pupil against the school regardless, so this
+ * narrowing is about not offering the wrong thing rather than about security.
+ */
+export async function pairingOptions(session: ActiveContext): Promise<PairingOptions> {
+  if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
+    return { experts: [], pupils: [] };
+  }
+
+  const [experts, pupils] = await Promise.all([
+    db.expertProfile.findMany({
+      where: { publishedAt: { not: null } },
+      select: {
+        id: true,
+        headline: true,
+        verifiedAt: true,
+        user: { select: { name: true, preferredName: true } },
+      },
+      orderBy: { publishedAt: "desc" },
+    }),
+    session.role === "TEACHER" && session.membershipId
+      ? studentsForTeacher(session.schoolId, session.membershipId)
+      : db.membership.findMany({
+          where: { schoolId: session.schoolId, role: "STUDENT", status: "ACTIVE" },
+          include: { user: { select: { name: true, preferredName: true } } },
+        }),
+  ]);
+
+  return {
+    experts: experts.map((e) => ({
+      id: e.id,
+      name: e.user.preferredName ?? e.user.name,
+      headline: e.headline,
+      verified: e.verifiedAt !== null,
+    })),
+    // The two branches return different shapes -- studentsForTeacher already
+    // flattens to { membershipId, name } -- so they are normalised here rather
+    // than by making one of them pretend to be the other.
+    pupils: pupils
+      .map((p) =>
+        "membershipId" in p
+          ? { id: p.membershipId, name: p.name }
+          : { id: p.id, name: p.user.preferredName ?? p.user.name },
+      )
+      .sort((a, b) => a.name.localeCompare(b.name)),
+  };
 }

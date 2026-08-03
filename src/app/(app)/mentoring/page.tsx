@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HandshakeIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
-import { listMentorships } from "@/lib/mentoring";
+import { listMentorships, pairingOptions } from "@/lib/mentoring";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import { PairForm } from "./pair-form";
 
 export const metadata: Metadata = { title: "Margdarshak · Mentoring" };
 
@@ -19,7 +20,11 @@ export const metadata: Metadata = { title: "Margdarshak · Mentoring" };
  */
 export default async function MentoringPage() {
   const ctx = await requireUser();
-  const threads = await listMentorships(ctx);
+  const isStaff = ctx.role === "ADMIN" || ctx.role === "TEACHER";
+  const [threads, options] = await Promise.all([
+    listMentorships(ctx),
+    isStaff ? pairingOptions(ctx) : Promise.resolve({ experts: [], pupils: [] }),
+  ]);
   const waiting = threads.filter((t) => t.awaitingConsent);
 
   return (
@@ -31,6 +36,8 @@ export default async function MentoringPage() {
           by the school — mentoring here is never private.
         </p>
       </div>
+
+      {isStaff && <PairForm experts={options.experts} pupils={options.pupils} />}
 
       {ctx.role === "PARENT" && waiting.length > 0 && (
         <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-sm text-fg">

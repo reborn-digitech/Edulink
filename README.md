@@ -1046,7 +1046,9 @@ the release where every page rendered and nothing saved.
   the bank can never claim more than it has earned.
 - ~~Prerna~~ and ~~Margdarshak~~ **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
-  link, and 1:1 mentoring with a parent-consent gate. See Status.
+  link, and 1:1 mentoring with a parent-consent gate — including the staff form
+  that sets a mentorship up. A teacher may pair only pupils they teach; an admin
+  any pupil in the school. See Status.
 - **The naming pass.** Hybrid Indian name + English subtitle, agreed and applied
   so far only to what this commit touched: Chhutti Calendar, Shaikshanik Varsh.
   The rest of the app is still English-only.
