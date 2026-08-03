@@ -122,6 +122,15 @@ CREATE POLICY "AttendanceSession_tenant_isolation" ON "AttendanceSession"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- AttendanceCover
+ALTER TABLE "AttendanceCover" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AttendanceCover" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AttendanceCover_tenant_isolation" ON "AttendanceCover";
+DROP POLICY IF EXISTS "AttendanceCover_readable" ON "AttendanceCover";
+CREATE POLICY "AttendanceCover_tenant_isolation" ON "AttendanceCover"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- AttendanceRecord
 ALTER TABLE "AttendanceRecord" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "AttendanceRecord" FORCE ROW LEVEL SECURITY;

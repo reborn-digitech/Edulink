@@ -6,6 +6,7 @@ import { requireApiRole, assertClassAccess, AccessError } from "@/lib/tenancy";
 import { classSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { classCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
+import { gradesInRange } from "@/lib/superuser";
 
 export type ClassState = { ok: boolean; errors: FieldErrors; classId?: string; joinCode?: string };
 
@@ -26,7 +27,24 @@ export async function createClass(input: unknown): Promise<ClassState> {
   const parsed = classSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
-  const { name, subject, gradeLevel, room, color } = parsed.data;
+  const { name, subject, gradeLevel, section, room, color } = parsed.data;
+
+  // The grade must be one the school actually teaches. Checked rather than
+  // trusted: the form offers a dropdown built from the school's range, and a
+  // dropdown is a suggestion until the server agrees with it.
+  const school = await db.school.findUniqueOrThrow({
+    where: { id: ctx.schoolId },
+    select: { gradeLow: true, gradeHigh: true },
+  });
+  const offered = gradesInRange(school.gradeLow, school.gradeHigh);
+  if (gradeLevel && offered.length > 0 && !offered.includes(gradeLevel)) {
+    return {
+      ok: false,
+      errors: {
+        gradeLevel: `This school teaches ${school.gradeLow} to ${school.gradeHigh}. Ask whoever runs the server to widen it first.`,
+      },
+    };
+  }
 
   const duplicate = await db.class.findFirst({
     where: { schoolId: ctx.schoolId, name, archivedAt: null },
@@ -52,6 +70,7 @@ export async function createClass(input: unknown): Promise<ClassState> {
         name,
         subject: subject || null,
         gradeLevel: gradeLevel || null,
+        section: section || null,
         room: room || null,
         color: color || null,
         joinCode: code,

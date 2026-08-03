@@ -142,6 +142,129 @@ async function suspension(schoolId: string) {
   await check(actor, "/teacher", 200, "restored, and back in");
 }
 
+/**
+ * Class staffing, and the register duty that comes out of it.
+ *
+ * The interesting check is the LAST one: a teacher who is on a class but whose
+ * register duty has been withdrawn must be refused by the API, not merely left
+ * out of a list. The list is a convenience; the endpoint is the boundary.
+ */
+async function staffingAndDuty(schoolId: string) {
+  const klass = await db.class.findFirst({
+    where: { schoolId, archivedAt: null },
+    select: { id: true },
+  });
+  if (!klass) return;
+
+  const adminActor = await mintFor(schoolId, "ADMIN", "staffing-admin");
+  if (adminActor) {
+    await check(adminActor, `/admin/classes/${klass.id}`, 200, "an admin may staff a class");
+  }
+
+  const link = await db.classTeacher.findFirst({
+    where: { schoolId, classId: klass.id, canTakeAttendance: true },
+    include: { teacher: { include: { user: { select: { email: true } } } } },
+  });
+  if (!link?.teacher.user.email) return;
+
+  const teacherActor = await mint(link.teacher.user.email, "TEACHER", schoolId, "duty-teacher");
+  await check(teacherActor, "/teacher/attendance", 200, "the class teacher reaches the register");
+  if (adminActor) {
+    await check(teacherActor, `/admin/classes/${klass.id}`, 307, "…but not the staffing page");
+  }
+
+  // Withdraw the duty and prove the WRITE path refuses, not just the list.
+  try {
+    await db.classTeacher.update({
+      where: { id: link.id },
+      data: { canTakeAttendance: false },
+    });
+
+    // A REAL MARK, not an empty array. The first version of this sent `marks:
+    // []`, which zod rejects with 422 before the request reaches the duty check
+    // at all — so it was asserting the payload was malformed, not that the
+    // permission held. A check that fails for the wrong reason is as useless as
+    // one that passes for the wrong reason.
+    const pupil = await db.enrollment.findFirst({
+      where: { classId: klass.id, status: "ACTIVE" },
+      select: { studentMembershipId: true },
+    });
+    if (!pupil) return;
+
+    const res = await fetch(`${BASE}/api/attendance`, {
+      method: "POST",
+      headers: { cookie: teacherActor.cookie, "content-type": "application/json" },
+      body: JSON.stringify({
+        classId: klass.id,
+        dateKey: "2020-01-06",
+        // `clientId` is REQUIRED by the schema — it is the offline outbox's
+        // idempotency key. Omitting it was the second way this check managed to
+        // 422 before reaching the permission it exists to test.
+        marks: [
+          {
+            studentMembershipId: pupil.studentMembershipId,
+            status: "PRESENT",
+            clientId: "sweep-duty-probe-0001",
+          },
+        ],
+      }),
+    });
+    // 422 means the PAYLOAD was wrong, not the permission — and this check spent
+    // three runs reporting that as a failure of the thing it was testing. Named
+    // separately so the next person reads the right diagnosis off the line.
+    const note =
+      res.status === 422
+        ? "payload rejected before the permission was reached — fix the probe, not the app"
+        : "⚠ a withdrawn register duty is refused by the ENDPOINT, not merely hidden";
+    results.push({
+      role: teacherActor.label,
+      path: "POST /api/attendance",
+      status: res.status,
+      expected: 403,
+      // A 200 here means the duty check is decoration: the page hides the class
+      // and the endpoint accepts the write anyway.
+      ok: res.status === 403,
+      note,
+    });
+  } finally {
+    await db.classTeacher.update({
+      where: { id: link.id },
+      data: { canTakeAttendance: true },
+    });
+  }
+}
+
+/** The operator area: reachable by a superuser, invisible to everybody else. */
+async function operatorArea() {
+  const staff = await db.membership.findFirst({
+    where: { role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  if (!staff?.user.email) return;
+
+  const actor = await mint(staff.user.email, "TEACHER", staff.schoolId, "would-be-operator");
+  await check(actor, "/root", 307, "⚠ /root is closed to ordinary staff");
+  await check(null, "/root", 307, "…and to nobody at all");
+
+  try {
+    await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: true } });
+    await check(actor, "/root", 200, "…and open to somebody who runs the server");
+    await check(actor, "/root/new", 200, "…who may add a school");
+  } finally {
+    await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
+  }
+}
+
+/** A session for whoever holds `role` at this school, when there is one. */
+async function mintFor(schoolId: string, role: string, label: string) {
+  const membership = await db.membership.findFirst({
+    where: { schoolId, role, status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { email: true } } },
+  });
+  if (!membership?.user.email) return null;
+  return mint(membership.user.email, role, schoolId, label);
+}
+
 async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
   const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfieldId } });
@@ -280,11 +403,23 @@ async function main() {
 
   // Real ids for the dynamic routes.
   const klass = await db.class.findFirst({ where: { schoolId: riverside.id, archivedAt: null } });
-  const teacherClass = await db.classTeacher.findFirst({
+  const teacherClasses = await db.classTeacher.findMany({
     where: { teacher: { user: { email: "tom@riverside.school" } } },
     include: { class: true },
   });
-  const assignment = await db.assignment.findFirst({ where: { schoolId: riverside.id } });
+  const teacherClass = teacherClasses[0] ?? null;
+
+  // ALL of this teacher's classes, not just the first, and that distinction was
+  // a live bug in this file. It picked any assignment in the school and expected
+  // a 404 on the grounds that it belonged to "another teacher's class" — but Tom
+  // teaches two, and once the seed put the first assignment in the second of
+  // them he legitimately got a 200 and the sweep reported a failure in code that
+  // had not changed. The check is only meaningful against a class he does not
+  // teach at all.
+  const teacherClassIdSet = new Set(teacherClasses.map((t) => t.classId));
+  const assignment = await db.assignment.findFirst({
+    where: { schoolId: riverside.id, classId: { notIn: [...teacherClassIdSet] } },
+  });
   // An assignment in a class this teacher actually teaches. Picking any
   // assignment gets a correct 404 and reads as a bug — teachers are scoped to
   // their own classes, not merely to their school.
@@ -334,7 +469,7 @@ async function main() {
   if (ownAssignment) {
     await check(teacher, `/teacher/assignments/${ownAssignment.id}`, 200, "gradebook");
   }
-  if (assignment && assignment.classId !== teacherClass?.classId) {
+  if (assignment) {
     await check(teacher, `/teacher/assignments/${assignment.id}`, 404, "another teacher's class");
   }
   if (assignment) await check(admin, `/teacher/assignments/${assignment.id}`, 200, "gradebook");
@@ -380,6 +515,9 @@ async function main() {
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
+
+  await staffingAndDuty(riverside.id);
+  await operatorArea();
 
   await suspension(riverside.id);
 

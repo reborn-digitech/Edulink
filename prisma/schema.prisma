@@ -79,6 +79,7 @@ model School {
   competitions   Competition[]
   auditLogs      AuditLog[]
   attendance     AttendanceSession[]
+  attendanceCovers AttendanceCover[]
   assignments    Assignment[]
   remarks        RemarkThread[]
   reports        Report[]
@@ -211,6 +212,8 @@ model Membership {
   classTeachers          ClassTeacher[]
   attendance             AttendanceRecord[]
   attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
+  attendanceCovering     AttendanceCover[]   @relation("AttendanceCovering")
+  attendanceCoversMade   AttendanceCover[]   @relation("AttendanceCoverCreator")
   submissions            Submission[]
   grades                 Grade[]             @relation("GradeStudent")
   gradesGiven            Grade[]             @relation("GradeGrader")
@@ -273,6 +276,12 @@ model Class {
   name       String
   subject    String?
   gradeLevel String?
+  /// "A", "B", "Sunflower" — the section within a grade, when a school has them.
+  ///
+  /// NULLABLE, because plenty of schools do not. A village school with one Class
+  /// 5 should not be made to invent a "5A", and a school with six sections
+  /// should not have to encode them in the name and then parse them back out.
+  section    String?
   room       String?
   color      String? // accent for the class card
   joinCode   String  @unique // student self-join code, also encoded in the room QR
@@ -283,6 +292,7 @@ model Class {
 
   school         School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   teachers       ClassTeacher[]
+  attendanceCovers AttendanceCover[]
   enrollments    Enrollment[]
   attendance     AttendanceSession[]
   assignments    Assignment[]
@@ -301,6 +311,18 @@ model ClassTeacher {
   schoolId            String
   teacherMembershipId String
   role                String @default("LEAD") // LEAD | CO
+
+  /// Whether this teacher may take THIS class's register.
+  ///
+  /// DEFAULTS TRUE, which is not the direction it first looks like it should
+  /// go. Defaulting to false would be the tighter-sounding choice and would
+  /// silently make every register in every existing school untakeable on the
+  /// morning this shipped — a permission model that arrives by breaking the
+  /// register is one that gets turned off. So the default is what was already
+  /// true, and the admin's control is to withdraw it from the people who should
+  /// not have it: a visiting music teacher attached to six classes does not mark
+  /// six registers.
+  canTakeAttendance   Boolean @default(true)
   school              School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -358,6 +380,46 @@ model AttendanceSession {
 
   @@unique([classId, dateKey])
   @@index([schoolId, dateKey])
+}
+
+/// Somebody else may take this class's register, for these days.
+///
+/// THE FAILSAFE, and the shape of it is the design. A cover ADDS a person; it
+/// never removes one. Making it a true reassignment reads better in a sentence
+/// and is worse in a school: a teacher whose leave is cancelled, or who comes in
+/// anyway, would find themselves locked out of their own register, and the
+/// register is the thing that must happen. Nobody is ever harmed by two people
+/// being able to mark it; a class is harmed by nobody being able to.
+///
+/// Date keys, not instants, and inclusive at both ends — the same rule as
+/// Holiday, and for the same reason: "Monday to Friday" is what a school says,
+/// and a timestamp would put a cover in the wrong day across a DST boundary.
+model AttendanceCover {
+  id                   String  @id @default(cuid())
+  schoolId             String
+  classId              String
+  coveringMembershipId String
+
+  /// YYYY-MM-DD in the SCHOOL's timezone. Inclusive both ends.
+  fromDateKey String
+  toDateKey   String
+  reason      String?
+
+  createdByMembershipId String?
+  /// Set when the cover was created by approving a leave request, so cancelling
+  /// the leave can withdraw exactly the covers it caused and no others.
+  leaveRequestId        String?
+
+  createdAt DateTime @default(now())
+
+  school    School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class     Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  covering  Membership   @relation("AttendanceCovering", fields: [coveringMembershipId], references: [id], onDelete: Cascade)
+  createdBy Membership?  @relation("AttendanceCoverCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, classId, fromDateKey])
+  @@index([coveringMembershipId])
+  @@index([leaveRequestId])
 }
 
 model AttendanceRecord {

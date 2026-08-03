@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChalkboardTeacherIcon, CaretRightIcon, WarningIcon } from "@phosphor-icons/react/ssr";
-import { requireRole, assertClassAccess, teacherClassIds } from "@/lib/tenancy";
+import { requireRole, assertClassAccess } from "@/lib/tenancy";
+import { classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getRegister } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
@@ -33,20 +34,17 @@ export default async function AttendancePage({
   // The school calendar's one job in this path. See the note on ClosedDayNotice.
   const calendar = await closedOn(ctx.schoolId, dateKey);
 
-  const classIds =
-    ctx.role === "ADMIN"
-      ? (await db.class.findMany({
-          where: { schoolId: ctx.schoolId, archivedAt: null },
-          select: { id: true },
-        })).map((c) => c.id)
-      : await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // NOT "classes I teach" — "classes I am down to mark today". The two differ
+  // for a teacher whose register duty was withdrawn, and for one covering
+  // somebody else's class this week without teaching it at all.
+  const classIds = await classesIMayTake(ctx, dateKey);
 
   if (classIds.length === 0) {
     return (
       <EmptyState
         icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title="You do not have any classes yet"
-        description="Once a class is assigned to you it will appear here, ready for the register."
+        title="No register for you today"
+        description="You are not down to mark any register today. An admin assigns class teachers, and can arrange cover if somebody is away."
         action={
           ctx.role === "ADMIN" ? (
             <Button asChild>
@@ -133,6 +131,19 @@ export default async function AttendancePage({
 
   // Re-checks that this teacher may touch this class, scoped to their school.
   await assertClassAccess(ctx, selectedId);
+  // …and separately, that they are down to mark it today. The list above is
+  // already filtered, so this is the belt to that braces: a hand-typed
+  // ?classId= reaches here without passing through it.
+  const duty = await registerDuty(ctx, selectedId, dateKey);
+  if (!duty.may) {
+    return (
+      <EmptyState
+        icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
+        title="This register is not yours today"
+        description="An admin assigns who takes each register, and can arrange cover when somebody is away."
+      />
+    );
+  }
 
   const register = await getRegister(ctx.schoolId, selectedId, dateKey);
   if (!register) {
@@ -142,6 +153,14 @@ export default async function AttendancePage({
   return (
     <div className="space-y-4">
       <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
+      {duty.reason === "COVER" && (
+        // Said out loud, because somebody marking a register they do not
+        // normally mark should know why they can, and until when.
+        <p className="rounded-[--radius-md] border border-accent/30 bg-accent-soft px-4 py-3 text-sm font-medium text-accent-strong">
+          You are covering this register until{" "}
+          {formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" })}.
+        </p>
+      )}
       <Register
         classId={selectedId}
       className={register.class.name}

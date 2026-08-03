@@ -3,12 +3,21 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
+import { gradesInRange } from "@/lib/superuser";
 import { ClassForm } from "./form";
 
 export const metadata: Metadata = { title: "Create a class" };
 
 export default async function NewClassPage() {
   const ctx = await requireRole("ADMIN");
+
+  const school = await db.school.findUniqueOrThrow({
+    where: { id: ctx.schoolId },
+    select: { gradeLow: true, gradeHigh: true },
+  });
+  const grades = gradesInRange(school.gradeLow, school.gradeHigh);
+  const gradeRangeLabel =
+    school.gradeLow && school.gradeHigh ? `${school.gradeLow} to ${school.gradeHigh}` : null;
 
   const teachers = await db.membership.findMany({
     where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null },
@@ -34,6 +43,8 @@ export default async function NewClassPage() {
 
       <ClassForm
         className="mt-7"
+        grades={grades}
+        gradeRangeLabel={gradeRangeLabel}
         teachers={teachers.map((t) => ({
           membershipId: t.id,
           name: t.user.preferredName ?? t.user.name,

@@ -112,7 +112,13 @@ export default async function ClassesPage({
                       style={{ backgroundColor: klass.color ?? "var(--accent)" }}
                     />
                     <div className="min-w-0 flex-1">
-                      <p className="truncate font-semibold text-fg">{klass.name}</p>
+                      <Link
+                        href={`/admin/classes/${klass.id}`}
+                        className="truncate font-semibold text-fg hover:underline"
+                      >
+                        {klass.name}
+                        {klass.section ? ` · ${klass.section}` : ""}
+                      </Link>
                       <p className="truncate text-xs text-fg-muted">
                         {klass._count.enrollments} student
                         {klass._count.enrollments === 1 ? "" : "s"}
@@ -124,7 +130,14 @@ export default async function ClassesPage({
                           teacherNames.join(", ")
                         ) : (
                           <span className="text-warn">No teacher assigned</span>
-                        )}
+                        )}{" "}
+                        ·{" "}
+                        <Link
+                          href={`/admin/classes/${klass.id}`}
+                          className="font-medium text-accent-strong hover:underline"
+                        >
+                          staffing
+                        </Link>
                       </p>
                     </div>
 

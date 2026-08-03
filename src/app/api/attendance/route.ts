@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { AccessError, assertClassAccess, requireApiRole } from "@/lib/tenancy";
 import { attendanceBatchSchema, fieldErrors } from "@/lib/validation";
 import { saveAttendanceBatch, getRegister } from "@/lib/attendance";
+import { assertMayTakeRegister } from "@/lib/register-duty";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 
@@ -34,9 +35,14 @@ export async function POST(request: Request) {
 
     const { classId, dateKey, marks } = parsed.data;
 
-    // classId comes from the client; this re-queries it scoped to the session's
-    // school AND (for teachers) to classes they actually teach. (§6 IDOR)
+    // TWO CHECKS, ASKING DIFFERENT QUESTIONS, and conflating them is what this
+    // route used to do. `assertClassAccess` answers "is this class in my school
+    // and mine at all?" — the tenant boundary. `assertMayTakeRegister` answers
+    // "am I down to mark it today?" — the duty. A visiting music teacher
+    // attached to six classes passes the first for all six and the second for
+    // none of them, which is the right answer to both questions.
     await assertClassAccess(ctx, classId, { write: true });
+    await assertMayTakeRegister(ctx, classId, dateKey);
 
     // A register cannot be taken for a future date — that is always a bug or a
     // wrong device clock, and silently accepting it corrupts the history.

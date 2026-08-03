@@ -130,6 +130,9 @@ export const classSchema = z.object({
   name: trimmed(1, 100),
   subject: trimmed(0, 80).optional(),
   gradeLevel: trimmed(0, 24).optional(),
+  /// "A", "B", "Sunflower". Optional because plenty of schools have one class
+  /// per grade and should not be made to invent a section for it.
+  section: trimmed(0, 24).optional(),
   room: trimmed(0, 40).optional(),
   color: hexColorSchema.optional().or(z.literal("")),
 });

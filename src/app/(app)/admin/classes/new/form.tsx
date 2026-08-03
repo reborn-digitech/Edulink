@@ -23,7 +23,18 @@ const COLORS = [
 
 type Teacher = { membershipId: string; name: string; avatarKey: string | null };
 
-export function ClassForm({ teachers, className }: { teachers: Teacher[]; className?: string }) {
+export function ClassForm({
+  teachers,
+  grades,
+  gradeRangeLabel,
+  className,
+}: {
+  teachers: Teacher[];
+  /** The grades this school teaches. Empty when the range is non-numeric. */
+  grades: string[];
+  gradeRangeLabel: string | null;
+  className?: string;
+}) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -31,6 +42,7 @@ export function ClassForm({ teachers, className }: { teachers: Teacher[]; classN
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [gradeLevel, setGradeLevel] = useState("");
+  const [section, setSection] = useState("");
   const [room, setRoom] = useState("");
   const [color, setColor] = useState(COLORS[0]!.value);
   const [teacherId, setTeacherId] = useState<string | null>(null);
@@ -51,6 +63,7 @@ export function ClassForm({ teachers, className }: { teachers: Teacher[]; classN
         name: name.trim(),
         subject: subject.trim(),
         gradeLevel: gradeLevel.trim(),
+        section: section.trim(),
         room: room.trim(),
         color,
       });
@@ -161,13 +174,56 @@ export function ClassForm({ teachers, className }: { teachers: Teacher[]; classN
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
-        <TextField
-          label="Grade or year"
-          placeholder="5"
-          value={gradeLevel}
-          onChange={(e) => setGradeLevel(e.target.value)}
-        />
+
+        {/* A DROPDOWN WHEN WE CAN BUILD ONE, a text box when we cannot. The
+            list comes from the grade range set for this school, so a primary
+            school is never asked whether it wants a Year 12. A school using
+            "LKG" or "Nursery" gets the text box instead — a guessed sequence
+            would be worse than no help at all. */}
+        {grades.length > 0 ? (
+          <label className="block">
+            <span className="block text-sm font-medium text-fg">Grade or year</span>
+            <select
+              value={gradeLevel}
+              onChange={(e) => setGradeLevel(e.target.value)}
+              className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+            >
+              <option value="">Not tied to a grade</option>
+              {grades.map((grade) => (
+                <option key={grade} value={grade}>
+                  {grade}
+                </option>
+              ))}
+            </select>
+            {gradeRangeLabel && (
+              <span className="mt-1 block text-xs text-fg-muted">
+                This school teaches {gradeRangeLabel}.
+              </span>
+            )}
+          </label>
+        ) : (
+          <TextField
+            label="Grade or year"
+            placeholder="5"
+            value={gradeLevel}
+            error={errors.gradeLevel}
+            onChange={(e) => setGradeLevel(e.target.value)}
+            hint={
+              gradeRangeLabel
+                ? `This school teaches ${gradeRangeLabel}.`
+                : "No grade range is set for this school yet."
+            }
+          />
+        )}
       </div>
+
+      <TextField
+        label="Section (optional)"
+        placeholder="A"
+        value={section}
+        onChange={(e) => setSection(e.target.value)}
+        hint="For a school that splits a grade — 5A, 5B. Leave it empty if there is only one Class 5."
+      />
 
       <TextField
         label="Room"
