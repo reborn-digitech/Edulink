@@ -133,7 +133,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (679 tests) |
+| `npm test` | Full suite (684 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. **Drops the grants AND the policies** — see Known issues before using |
 | `npm run db:studio` | Browse the data |

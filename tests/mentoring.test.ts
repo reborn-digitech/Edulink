@@ -302,6 +302,73 @@ describe("⚠ consent gates every message", () => {
     expect(thread.messages).toHaveLength(2);
   });
 
+  it("⚠ writes NOTHING when it refuses — the throw is not the only guarantee", async () => {
+    // The two tests above assert that posting throws. Neither would notice a
+    // gate that threw AFTER writing the row, or one removed while some other
+    // guard kept throwing for an unrelated reason. What actually matters is that
+    // no message about a child exists before a guardian agreed, so that is what
+    // is asserted: the count, at the database.
+    const id = await pair();
+    await expect(postMentorMessage(expert, id, "Hello")).rejects.toBeInstanceOf(AccessError);
+    await expect(postMentorMessage(child, id, "Hi")).rejects.toBeInstanceOf(AccessError);
+
+    expect(await db.mentorMessage.count({ where: { threadId: id } })).toBe(0);
+  });
+
+  it("⚠ a refused message does not quietly advance the thread's status", async () => {
+    const id = await pair();
+    await expect(postMentorMessage(expert, id, "Hello")).rejects.toBeInstanceOf(AccessError);
+
+    const row = await db.mentorThread.findUniqueOrThrow({ where: { id } });
+    expect(row.status).toBe("PENDING_CONSENT");
+    expect(row.parentConsentAt).toBeNull();
+    expect(row.parentConsentUserId).toBeNull();
+  });
+
+  it("⚠ tells both parties they cannot post yet, rather than only failing on submit", async () => {
+    // `canPost` is what the page uses to decide whether to render a composer, and
+    // it is a different branch from the throw in postMentorMessage. A gate
+    // enforced in only one of the two either shows a box that always errors, or
+    // hides a box while the action still accepts writes.
+    const id = await pair();
+    expect((await getMentorship(expert, id)).canPost).toBe(false);
+    expect((await getMentorship(child, id)).canPost).toBe(false);
+    expect((await getMentorship(expert, id)).awaitingConsent).toBe(true);
+
+    await consentToMentorship(guardian, id);
+
+    expect((await getMentorship(expert, id)).canPost).toBe(true);
+    expect((await getMentorship(child, id)).canPost).toBe(true);
+    expect((await getMentorship(guardian, id)).awaitingConsent).toBe(false);
+  });
+
+  it("⚠ the first message can only exist after consent", async () => {
+    const id = await pair();
+    expect(await db.mentorMessage.count({ where: { threadId: id } })).toBe(0);
+
+    await expect(postMentorMessage(expert, id, "Before")).rejects.toBeInstanceOf(AccessError);
+    expect(await db.mentorMessage.count({ where: { threadId: id } })).toBe(0);
+
+    await consentToMentorship(guardian, id);
+    await postMentorMessage(expert, id, "After");
+
+    const messages = await db.mentorMessage.findMany({ where: { threadId: id } });
+    expect(messages).toHaveLength(1);
+    expect(messages[0]!.body).toBe("After");
+  });
+
+  it("⚠ a guardian consenting for a DIFFERENT child does not open this thread", async () => {
+    // The gate must key on the guardianship for THIS pupil, not on the caller
+    // merely being some guardian somewhere.
+    const id = await pair();
+    await expect(consentToMentorship(strangerParent, id)).rejects.toBeInstanceOf(AccessError);
+    expect((await db.mentorThread.findUniqueOrThrow({ where: { id } })).status).toBe(
+      "PENDING_CONSENT",
+    );
+    await expect(postMentorMessage(expert, id, "Still blocked")).rejects.toBeInstanceOf(AccessError);
+    expect(await db.mentorMessage.count({ where: { threadId: id } })).toBe(0);
+  });
+
   it("⚠ only a guardian of THIS child can consent", async () => {
     const id = await pair();
     await expect(consentToMentorship(strangerParent, id)).rejects.toBeInstanceOf(AccessError);
