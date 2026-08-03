@@ -47,12 +47,14 @@ Put both database URLs and the two printed VAPID keys into `.env`, then:
 
 ```bash
 npm run setup
-psql -d edulink_dev -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO edulink_app;"
-psql -d edulink_dev -f prisma/rls.sql
+npm run demo:seed   # optional: data for the calendar, global feed and Prerna
 npm run dev
 ```
 
-`npm run setup` = `prisma db push` + seed. Open http://localhost:3000.
+`npm run setup` = `prisma db push` → `db:grants` → seed. The grants step restores
+the schema privileges and the RLS policies and then **connects as the app role
+and reads a row**, so a setup that would 500 on every page fails here instead of
+looking fine. Open http://localhost:3000.
 
 **TWO database users, on purpose.** `DATABASE_ADMIN_URL` owns the schema and runs
 migrations and the seed. `DATABASE_URL` is what the app connects as: no
@@ -135,7 +137,8 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
 | `npm test` | Full suite (684 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm run db:reset` | Wipe and reseed. **Drops the grants AND the policies** — see Known issues before using |
+| `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
+| `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
@@ -1057,28 +1060,24 @@ the release where every page rendered and nothing saved.
 
 ### Known issues
 
-- **`npm run db:reset` leaves the app role unable to open the database, and
-  `rls:verify` will still pass.** `prisma db push --force-reset` drops and
-  recreates the `public` SCHEMA, not just the tables — which destroys the
-  schema-level `USAGE` grant and the default privileges alongside the policies.
-  The app then gets `42501 permission denied for schema public` on every query,
-  which surfaces as a 500 on every page. Three statements, all of them, in this
-  order, then reapply the policies:
+- ~~**`npm run db:reset` leaves the app role unable to open the database.**~~
+  **Fixed.** `db:reset` and `setup` now run `npm run db:grants` between the push
+  and the seed, which restores the schema USAGE grant, the default privileges and
+  the policies, and then **connects as the app role and reads a row** before
+  declaring success. The role and database name are derived from `DATABASE_URL`
+  rather than hard-coded.
+
+  That last step is the whole point. **`npm run rls:verify` passes against a
+  database in the broken state** — a role that cannot open the schema also
+  cannot cross a tenant boundary, so every isolation check comes back green
+  while every page 500s. Demonstrated by revoking the grant: `rls:verify` still
+  reported *All checks passed*, and `db:grants` caught it. Run it by hand any
+  time with:
 
   ```bash
-  psql -d edulink_dev \
-    -c "GRANT USAGE ON SCHEMA public TO edulink_app;" \
-    -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO edulink_app;" \
-    -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO edulink_app;"
-  psql -d edulink_dev -f prisma/rls.sql
-  npm run sweep
+  npm run db:grants
   ```
 
-  **`npm run rls:verify` is not the check for this**, and that is the trap: it
-  connects, finds the app role can read nothing it should not, and reports all
-  checks passed — because a role that cannot open the schema at all also cannot
-  cross a tenant boundary. It passed while all 106 routes were 500. `npm run
-  sweep` is what catches it. This was found by reseeding, not by reading.
 - **`isTeachingDay` is one school's week, not a setting.** Mon–Sat is hardcoded,
   in one function, on purpose: making it per-school later is a change to that
   body plus a column on `School`, rather than a hunt through inlined
