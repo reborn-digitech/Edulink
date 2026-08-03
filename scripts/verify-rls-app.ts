@@ -105,7 +105,9 @@ async function main() {
        ('verify-m-other','verify-other','verify-a','TEACHER','ACTIVE',now());
      INSERT INTO "Post" (id,"schoolId","authorUserId",scope,title,status,tags,media,"updatedAt") VALUES
        ('verify-post-a','verify-a','verify-u','SCHOOL','A post','APPROVED','[]','[]',now()),
-       ('verify-post-b','verify-b','verify-u','SCHOOL','B post','APPROVED','[]','[]',now());`,
+       ('verify-post-b','verify-b','verify-u','SCHOOL','B post','APPROVED','[]','[]',now()),
+       ('verify-global-a','verify-a','verify-u','GLOBAL','A global post','APPROVED','[]','[]',now()),
+       ('verify-global-pending','verify-a','verify-u','GLOBAL','A unapproved global','PENDING','[]','[]',now());`,
   );
 
   process.stdout.write(`\nVerifying the application half against ${DB}\n\n`);
@@ -117,11 +119,23 @@ async function main() {
 
   try {
     // 1. No tenant set: RLS returns nothing rather than everything.
-    const blind = await client.post.count();
+    //
+    // SCOPED TO NON-GLOBAL POSTS, because a global post is readable by every
+    // school BY DESIGN and therefore also readable with no school bound at all.
+    // That widening gets its own check below rather than being folded in here,
+    // where it would quietly weaken the thing this check exists to prove.
+    const blind = await client.post.count({ where: { scope: { not: "GLOBAL" } } });
     check(
-      "a query with no tenant set sees nothing",
+      "a query with no tenant set sees no school's posts",
       blind === 0,
       `saw ${blind} post(s) — the policies are not failing closed`,
+    );
+
+    const blindGlobal = await client.post.count({ where: { scope: "GLOBAL", status: "APPROVED" } });
+    check(
+      "⚠ …but an APPROVED global post IS readable with no tenant bound",
+      blindGlobal > 0,
+      "the global clause is not reaching, so the global feed cannot work",
     );
 
     // 2. Inside withTenant, the tenant's own rows and only those.
@@ -129,6 +143,7 @@ async function main() {
     // tenant-tx.ts taking its client as an argument.
     const asA: { id: string }[] = await withTenantOn(client, "verify-a", (tx) =>
       (tx as { post: { findMany: (a: unknown) => Promise<{ id: string }[]> } }).post.findMany({
+        where: { scope: { not: "GLOBAL" } },
         select: { id: true },
       }),
     );
@@ -140,7 +155,7 @@ async function main() {
 
     // 3. THE ONE THAT MATTERS. The next query, which sets no tenant, must not
     //    inherit the last one from a pooled connection.
-    const after = await client.post.count();
+    const after = await client.post.count({ where: { scope: { not: "GLOBAL" } } });
     check(
       "the next query does NOT inherit the previous tenant",
       after === 0,
@@ -151,6 +166,7 @@ async function main() {
     // 4. And the other tenant, so this is isolation and not a blanket denial.
     const asB: { id: string }[] = await withTenantOn(client, "verify-b", (tx) =>
       (tx as { post: { findMany: (a: unknown) => Promise<{ id: string }[]> } }).post.findMany({
+        where: { scope: { not: "GLOBAL" } },
         select: { id: true },
       }),
     );
@@ -341,6 +357,102 @@ async function main() {
       "⚠ …and cannot be written INTO another school's history",
       !forgedIntoOther,
       "acting for A wrote an audit row attributed to B",
+    );
+
+    /* ---- the global feed: the one row a school may read from another ----
+     *
+     * Placed ABOVE the deliberate poisoning below, and that placement is load-
+     * bearing. Written underneath it, the join-code probe inherited a leaked
+     * `app.school_ids` and reported a school-deleting vulnerability that did not
+     * exist. The comment below says exactly this; it is worth being the second
+     * person it caught.
+     */
+    const bSeesGlobal = (await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { post: { findMany: (a: unknown) => Promise<{ id: string }[]> } }).post.findMany({
+        where: { scope: "GLOBAL", status: "APPROVED" },
+        select: { id: true },
+      }),
+    )) as { id: string }[];
+    check(
+      "⚠ a post school A APPROVED for the global feed IS readable by school B",
+      bSeesGlobal.some((p) => p.id === "verify-global-a"),
+      "the global clause does not reach, so the global feed is empty for everyone but its author",
+    );
+
+    const bSeesEverything = (await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { post: { findMany: (a: unknown) => Promise<{ id: string }[]> } }).post.findMany({
+        select: { id: true },
+      }),
+    )) as { id: string }[];
+    const visible = new Set(bSeesEverything.map((p) => p.id));
+    check(
+      "⚠ …while school A's SCHOOL-scoped post stays invisible to B",
+      !visible.has("verify-post-a"),
+      "widening the policy for the global feed has exposed ordinary school posts to other schools",
+    );
+    check(
+      "⚠ …and a GLOBAL post its own school has not approved stays invisible too",
+      !visible.has("verify-global-pending"),
+      "status is not in the predicate, so a post reaches other schools before its own school has read it",
+    );
+
+    let bEdited = 0;
+    try {
+      const r = (await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { post: { updateMany: (a: unknown) => Promise<{ count: number }> } }).post.updateMany({
+          where: { id: "verify-global-a" },
+          data: { title: "hijacked" },
+        }),
+      )) as { count: number };
+      bEdited = r.count;
+    } catch {
+      bEdited = 0;
+    }
+    check(
+      "⚠ …and B may READ A's global post but never edit it",
+      bEdited === 0,
+      `another school edited ${bEdited} of A's global post(s)`,
+    );
+
+    // THE ONE THAT CAUGHT A REAL BUG. Postgres applies WITH CHECK to INSERT and
+    // UPDATE only — a DELETE is authorised by USING alone. So the read clause,
+    // carefully kept out of WITH CHECK, still authorised deletes until the
+    // policy was split into FOR ALL (writes) and FOR SELECT (reads).
+    let bDeleted = 0;
+    try {
+      const r = (await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { post: { deleteMany: (a: unknown) => Promise<{ count: number }> } }).post.deleteMany({
+          where: { id: "verify-global-a" },
+        }),
+      )) as { count: number };
+      bDeleted = r.count;
+    } catch {
+      bDeleted = 0;
+    }
+    check(
+      "⚠ …nor delete it, because a read clause must not authorise a DELETE",
+      bDeleted === 0,
+      `another school deleted ${bDeleted} of A's global post(s) — moderation nobody granted`,
+    );
+
+    // The same hazard on the OTHER read-only clauses, which had never been
+    // tested for it: a join code is a credential for reading one row.
+    let deletedByCode = 0;
+    try {
+      const r = (await client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.join_code', $1, true)`, "VA");
+        return (tx as unknown as {
+          school: { deleteMany: (a: unknown) => Promise<{ count: number }> };
+        }).school.deleteMany({ where: { id: "verify-a" } });
+      })) as { count: number };
+      deletedByCode = r.count;
+    } catch {
+      deletedByCode = 0;
+    }
+    check(
+      "⚠ knowing a join code does NOT let you delete the row it names",
+      deletedByCode === 0,
+      `a join code authorised DELETE — removed ${deletedByCode} school row(s), cascading to everything they own`,
     );
 
     // LAST, because it deliberately poisons the connection: the mistake this

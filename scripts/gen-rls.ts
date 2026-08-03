@@ -80,6 +80,31 @@ const SELF_READABLE: Record<string, string> = { Membership: "userId" };
 const NULL_SCHOOL_WRITABLE = new Set(["AuditLog"]);
 
 /**
+ * Tables where SOME rows are readable by every school, by the predicate given.
+ *
+ * The global feed, and the only place in this schema where one school's row is
+ * deliberately visible to another. It is narrow on purpose:
+ *
+ *   - READ ONLY. The predicate is added to USING and never to WITH CHECK, so a
+ *     school can see another school's global post and can never write, edit or
+ *     moderate one. Publishing stays a write inside the owning school, which is
+ *     the whole reason `schoolId` is kept on a global post rather than nulled:
+ *     provenance and accountability do not leave the school that published.
+ *
+ *   - STATUS IS IN THE PREDICATE. `scope = 'GLOBAL'` alone would expose a post
+ *     the moment its scope was set, including one still PENDING or already
+ *     REJECTED by its own school's moderation. A post reaches other schools only
+ *     after its own school has approved it.
+ *
+ * Competition solves the same problem by having no policy at all, which works
+ * because a competition holds nothing private. Post holds a great deal, so it
+ * keeps its policy and widens it by exactly one clause.
+ */
+const GLOBALLY_READABLE: Record<string, string> = {
+  Post: `"scope" = 'GLOBAL' AND "status" = 'APPROVED'`,
+};
+
+/**
  * Tables where the row matching an unguessable CODE may be read, by the named
  * column, on the strength of `app.join_code`.
  *
@@ -166,12 +191,14 @@ function generate(): string {
     const scoped = `"${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ','))`;
     const selfColumn = SELF_READABLE[table];
     const codeColumn = CODE_READABLE[table];
+    const globalClause = GLOBALLY_READABLE[table];
 
     // Extra ways IN to a row, each read-only and each keyed on something the
     // caller already holds. Order matters only for readability.
     const alsoReadable: string[] = [];
     if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
     if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
+    if (globalClause) alsoReadable.push(`(${globalClause})`);
 
     const usingNote: string[] = [];
     if (selfColumn) {
@@ -186,35 +213,69 @@ function generate(): string {
         `  -- how a join code names the school it belongs to.`,
       );
     }
-    if (alsoReadable.length > 0) {
-      usingNote.push(`  -- Both are absent from WITH CHECK: readable, never writable.`);
+    if (globalClause) {
+      usingNote.push(
+        `  -- …and any post its own school has APPROVED for the global feed, which`,
+        `  -- is the one row in this schema a different school may read. Status is`,
+        `  -- in the predicate so nothing reaches other schools before the school`,
+        `  -- that wrote it has approved it.`,
+      );
     }
+    if (alsoReadable.length > 0) {
+      usingNote.push(
+        `  -- ${alsoReadable.length > 1 ? "All are" : "It is"} in a SELECT-ONLY policy: readable, never writable.`,
+      );
+    }
+
+    // TWO POLICIES WHEN THERE IS AN EXTRA WAY IN, AND THIS IS NOT COSMETIC.
+    //
+    // Postgres applies WITH CHECK to INSERT and UPDATE only. A DELETE is
+    // authorised by USING ALONE. So a clause added to USING to make a row
+    // READABLE also makes it DELETABLE, however carefully it was kept out of
+    // WITH CHECK — and `npm run rls:verify` demonstrated exactly that: holding a
+    // school's join code was enough to delete the school, cascading to every
+    // row it owns. The comment above these clauses said "readable, never
+    // writable" and was wrong for as long as it was only a comment.
+    //
+    // So the widened predicate now lives in a FOR SELECT policy, and writes —
+    // INSERT, UPDATE and DELETE alike — are governed by a FOR ALL policy that
+    // only ever sees the tenant predicate. Permissive policies are OR-ed, so a
+    // SELECT still matches either one and reads are unchanged.
+    const writeCheck = NULL_SCHOOL_WRITABLE.has(table)
+      ? [
+          `  -- Writes also allow a row belonging to no school, which is how a`,
+          `  -- login — or a failed one — gets recorded at all. Absent from`,
+          `  -- USING: writable, and visible to no school.`,
+          `  WITH CHECK (${scoped}`,
+          `              OR "${column}" IS NULL);`,
+        ]
+      : [`  WITH CHECK (${scoped});`];
 
     lines.push(
       `-- ${table}`,
       `ALTER TABLE "${table}" ENABLE ROW LEVEL SECURITY;`,
       `ALTER TABLE "${table}" FORCE ROW LEVEL SECURITY;`,
       `DROP POLICY IF EXISTS "${table}_tenant_isolation" ON "${table}";`,
+      `DROP POLICY IF EXISTS "${table}_readable" ON "${table}";`,
       `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
-      ...(alsoReadable.length > 0
-        ? [
-            ...usingNote,
-            `  USING (${scoped}`,
-            ...alsoReadable.map((clause) => `         OR ${clause}`),
-            `        )`,
-          ]
-        : [`  USING (${scoped})`]),
-      ...(NULL_SCHOOL_WRITABLE.has(table)
-        ? [
-            `  -- Writes also allow a row belonging to no school, which is how a`,
-            `  -- login — or a failed one — gets recorded at all. Absent from`,
-            `  -- USING: writable, and visible to no school.`,
-            `  WITH CHECK (${scoped}`,
-            `              OR "${column}" IS NULL);`,
-          ]
-        : [`  WITH CHECK (${scoped});`]),
-      "",
+      ...(alsoReadable.length > 0 ? [`  FOR ALL`] : []),
+      `  USING (${scoped})`,
+      ...writeCheck,
     );
+
+    if (alsoReadable.length > 0) {
+      lines.push(
+        ``,
+        ...usingNote,
+        `CREATE POLICY "${table}_readable" ON "${table}"`,
+        `  FOR SELECT`,
+        `  USING (${scoped}`,
+        ...alsoReadable.map((clause) => `         OR ${clause}`),
+        `        );`,
+      );
+    }
+
+    lines.push("");
   }
 
   lines.push(

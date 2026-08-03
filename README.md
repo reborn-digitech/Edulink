@@ -412,13 +412,9 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **Global feed.** Bigger than it sounds: it is the second thing that would show
-   one school another school's content. Read `competitions.ts` first — it is the
-   only cross-school surface in here, and it works by keeping the catalogue
-   shared and the participation private.
-2. **SSO, 2FA.** Neither can be verified without real provider credentials.
+1. **SSO, 2FA.** Neither can be verified without real provider credentials.
    Budget for that rather than discovering it at the end.
-3. **Fill the Abhyaas bank.** DELIBERATELY LAST. The engine, importer, verifier,
+2. **Fill the Abhyaas bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
    list. 105 questions across 9 topics against an ask of 150,000. Every
@@ -1007,11 +1003,13 @@ through an earlier sweep. Rendering is not the same as working: see Gotchas for
 the release where every page rendered and nothing saved.
 
 - Suspend-user (the safety centre says to use the school's own process instead)
-- Global feed
 - Cross-school moderation. The **per-school safety centre is built** — see
   Status, and `/admin/safety` — so what is missing is the tier above it: one
   queue spanning both schools, for whoever runs the server rather than a school.
-  There is no actor for it. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
+  There is no actor for it. **The global feed now depends on this gap and works
+  around it rather than pretending it is closed**: a school controls what it
+  publishes and what it shows, and nobody can take another school's post down
+  for everyone. That is stated on the page itself, to admins, in those words. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
   scoped to a school, and nothing in the app is above a school except the file
   sweep, which is a cron job for the same reason.
 - Competition **leaderboards**, and cross-school results generally. Submissions

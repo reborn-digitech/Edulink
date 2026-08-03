@@ -68,6 +68,7 @@ model School {
   memberships     Membership[]
   classes         Class[]
   gradeCategories GradeCategory[]
+  globalPostHides GlobalPostHide[]
   invites         Invite[]
   posts          Post[]
   competitions   Competition[]
@@ -178,6 +179,7 @@ model Membership {
   competitionEntries     CompetitionEntry[]
   postsAuthored          Post[]              @relation("PostAuthorMembership")
   postsReviewed          Post[]              @relation("PostReviewer")
+  globalPostsHidden      GlobalPostHide[]    @relation("GlobalPostHider")
   invitesCreated         Invite[]            @relation("InviteCreator")
   earnedBadges           EarnedBadge[]
   quizAttempts           QuizAttempt[]
@@ -429,6 +431,37 @@ model GradeCategory {
   @@index([schoolId, classId, position])
 }
 
+/// One school's decision to hide one global post from its own people.
+///
+/// PER SCHOOL, and that is the entire point. There is no role in this app above
+/// a school — ROLES is ADMIN, TEACHER, STUDENT, PARENT and all four are scoped
+/// to one — so there is nobody who could moderate the global feed on everyone's
+/// behalf. Rather than invent that actor, each school gets a veto over what its
+/// OWN people see, and no school can affect what another school sees.
+///
+/// It is tenant-scoped like everything else, so Riverside hiding a post is
+/// invisible to Oakfield in the strict sense: the row is behind Riverside's RLS
+/// predicate and Oakfield cannot read it, let alone act on it.
+///
+/// Deleting the hide un-hides. There is no "hidden forever" state to get stuck
+/// in, and no separate audit of un-hiding beyond the ordinary audit log.
+model GlobalPostHide {
+  id       String @id @default(cuid())
+  schoolId String
+  postId   String
+
+  hiddenByMembershipId String?
+  reason               String?
+  createdAt            DateTime @default(now())
+
+  school School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  post   Post        @relation(fields: [postId], references: [id], onDelete: Cascade)
+  hider  Membership? @relation("GlobalPostHider", fields: [hiddenByMembershipId], references: [id], onDelete: SetNull)
+
+  @@unique([schoolId, postId])
+  @@index([schoolId])
+}
+
 model Grade {
   id                  String  @id @default(cuid())
   schoolId            String
@@ -513,6 +546,20 @@ model Post {
   media String @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
   tags  String @default("[]")
 
+  /// The publishing school's NAME, copied here when a post goes global.
+  ///
+  /// Denormalised because the relation is unreadable across the boundary: the
+  /// global clause lets another school read the POST, and School's own policy
+  /// still — correctly — hides the school row. Joining gave every reader outside
+  /// the publishing school "Unknown school", which is worse than useless on a
+  /// feed whose entire safety story is "you can always see who published this".
+  ///
+  /// Widening School's policy was the alternative and is worse: it would expose
+  /// school rows to every tenant to solve a display problem. A snapshot also
+  /// behaves correctly on rename — the post keeps the name it was published
+  /// under, which is what provenance means.
+  globalSchoolName String?
+
   status                 String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED
   rejectionReason        String?
   reviewedByMembershipId String?
@@ -529,6 +576,7 @@ model Post {
   reviewer   Membership? @relation("PostReviewer", fields: [reviewedByMembershipId], references: [id], onDelete: SetNull)
 
   comments  Comment[]
+  globalHides GlobalPostHide[]
   reactions Reaction[]
 
   @@index([schoolId, status, createdAt])

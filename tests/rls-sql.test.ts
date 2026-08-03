@@ -39,11 +39,34 @@ describe("prisma/rls.sql", () => {
     const forced = sql.match(/FORCE ROW LEVEL SECURITY/g) ?? [];
     const policies = sql.match(/CREATE POLICY/g) ?? [];
 
-    // Every enabled table is forced and has exactly one policy. A count that
-    // drifts apart means a table was half-configured.
+    // Every enabled table is forced, and every table has a write policy. A count
+    // that drifts apart means a table was half-configured.
     expect(forced).toHaveLength(enabled.length);
-    expect(policies).toHaveLength(enabled.length);
+    const isolation = sql.match(/CREATE POLICY "\w+_tenant_isolation"/g) ?? [];
+    expect(isolation).toHaveLength(enabled.length);
+    // Some tables carry a SECOND, read-only policy; never fewer than one each.
+    expect(policies.length).toBeGreaterThanOrEqual(enabled.length);
     expect(policies.length).toBeGreaterThanOrEqual(20);
+  });
+
+  it("⚠ every read-widening policy is SELECT-only and has no WITH CHECK", () => {
+    // THE PROPERTY A DELETE CAN VIOLATE. Postgres applies WITH CHECK to INSERT
+    // and UPDATE only; a DELETE is authorised by USING alone. So a clause added
+    // to USING purely to make a row readable also makes it deletable. That is
+    // not hypothetical — it shipped, and `npm run rls:verify` caught it by
+    // deleting one school's global post as another school.
+    //
+    // The fix is structural: widened predicates live in their own FOR SELECT
+    // policy, and every write goes through the tenant-only one. This asserts the
+    // structure so the fix cannot be undone by a later edit to the generator.
+    const sql = readFileSync(resolve(ROOT, "prisma/rls.sql"), "utf8");
+    const readable = [...sql.matchAll(/CREATE POLICY "(\w+_readable)" ON "\w+"([\s\S]*?);\n/g)];
+
+    expect(readable.length).toBeGreaterThan(0);
+    for (const [, name, body] of readable) {
+      expect(body, `${name} must be FOR SELECT`).toMatch(/FOR SELECT/);
+      expect(body, `${name} must not carry a WITH CHECK`).not.toMatch(/WITH CHECK/);
+    }
   });
 
   it("⚠ reads the tenant from a setting that fails closed when unset", () => {

@@ -236,7 +236,7 @@ async function main() {
   for (const p of [
     "/admin", "/admin/classes", "/admin/classes/new", "/admin/invites", "/admin/invites/new",
     "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT", "/admin/safety",
-    "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin?filter=mine", "/bulletin?filter=pending",
+    "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/bulletin?filter=mine", "/bulletin?filter=pending",
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/switch",
     "/remarks", "/admin/people/export",
   ]) {
@@ -250,7 +250,7 @@ async function main() {
   /* ---- teacher ---- */
   for (const p of [
     "/teacher", "/teacher/attendance", "/teacher/assignments", "/teacher/assignments/new",
-    "/teacher/classes", "/bulletin", "/bulletin/new", "/remarks", "/remarks/new",
+    "/teacher/classes", "/bulletin", "/bulletin/global", "/bulletin/new", "/remarks", "/remarks/new",
     "/notifications", "/account", "/switch",
   ]) {
     await check(teacher, p);
@@ -270,7 +270,7 @@ async function main() {
   /* ---- student ---- */
   for (const p of [
     "/student", "/student/work", "/student/grades", "/student/profile",
-    "/student/abhyaas", "/student/abhyaas?subject=MATHS", "/bulletin",
+    "/student/abhyaas", "/student/abhyaas?subject=MATHS", "/bulletin", "/bulletin/global",
     "/bulletin/new", "/notifications", "/account",
   ]) {
     await check(student, p);
@@ -295,6 +295,12 @@ async function main() {
   ]) {
     await check(parent, p);
   }
+
+  // A parent has no Membership and so no active school until they pick one, and
+  // the global feed needs one: which posts are HIDDEN is a per-school decision,
+  // so serving the feed with no school bound would show a guardian content their
+  // child's school had deliberately taken down. Sent to the switcher instead.
+  await check(parent, "/bulletin/global", 307, "needs a school for that school's hides to apply");
   if (thread) await check(parent, `/remarks/${thread.id}`, 200, "own thread");
 
   /* ---- negative: cross-tenant and cross-role ---- */

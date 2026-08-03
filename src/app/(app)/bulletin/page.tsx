@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MegaphoneIcon, PlusIcon } from "@phosphor-icons/react/ssr";
+import { MegaphoneIcon, PlusIcon, GlobeIcon} from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { listFeed, pendingCount } from "@/lib/bulletin";
 import { db } from "@/lib/db";
@@ -75,11 +75,16 @@ export default async function BulletinPage({
             )}
           </p>
         </div>
-        <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/bulletin/new">
-            {session.role === "STUDENT" ? "Share something" : "New post"}
-          </Link>
-        </Button>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button asChild variant="secondary" icon={<GlobeIcon weight="bold" />}>
+            <Link href="/bulletin/global">Global feed</Link>
+          </Button>
+          <Button asChild icon={<PlusIcon weight="bold" />}>
+            <Link href="/bulletin/new">
+              {session.role === "STUDENT" ? "Share something" : "New post"}
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Students get told the rule up front, not after their post disappears. */}
