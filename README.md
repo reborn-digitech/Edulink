@@ -800,9 +800,9 @@ One line each, with the default rejected.
   had just written was marked 90 where the worked solution derived 94; the
   `checkExpr` evaluated to 94 and the import was refused. That is the whole case
   for putting a machine-checkable expression on every question whose answer is
-  computable — 14 of the first 33 carry one.
+  computable — 45 of the current 105 carry one.
 - **What `quiz:verify` will NOT tell you**, printed by the tool itself on every
-  run: 19 of 33 questions are not machine-checkable, because there is no program
+  run: 60 of 105 questions are not machine-checkable, because there is no program
   that can confirm "Dandi March, 1930" answers a history question. It reports
   structure, arithmetic and human-review counts as three separate numbers and
   never collapses them into "verified". A bank that claims to be verified correct
@@ -1023,10 +1023,13 @@ the release where every page rendered and nothing saved.
   it is a page.
 - Weighted grade categories
 - **The Abhyaas question BANK, at scale.** The engine is built and works end to
-  end; the bank is **33 questions across 3 topics**, evenly spread over all six
-  levels. The ask was 500 a chapter, 5,000+ a subject a class — across six
-  subjects and five class-levels, 150,000+ questions with worked solutions. That
-  is a content programme, not a commit, and the honest position is:
+  end; the bank is **105 questions across 9 topics**, covering all six subjects
+  and spread evenly over all six levels (L1–L5 have 18 each, L6 has 15). The ask
+  was 500 a chapter, 5,000+ a subject a class — across six subjects and five
+  class-levels, 150,000+ questions with worked solutions. So this is **0.07% of
+  the ask**, and saying so is the point: the counts below are what the bank has
+  earned, not what it was asked for. It is a content programme, not a commit, and
+  the honest position is:
 
   **Not scraped, and this is deliberate.** Olympiad papers, textbook exercises
   and commercial test-prep collections are copyrighted, individually and again
