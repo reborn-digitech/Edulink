@@ -170,7 +170,17 @@ async function resolveContextForUser(
     where: { parentUserId: userId, status: "ACTIVE" },
   });
 
-  const total = memberships.length + (guardianships > 0 ? 1 : 0);
+  // An expert has no Membership and no Guardianship, so without this branch they
+  // authenticate successfully and are then sent to "join a school" — which is
+  // the one thing they must never do. Counted into `total` as well, because a
+  // teacher who is also an expert has two ways in and should be asked which.
+  const expertProfile = await db.expertProfile.findUnique({
+    where: { userId },
+    select: { id: true },
+  });
+
+  const total =
+    memberships.length + (guardianships > 0 ? 1 : 0) + (expertProfile ? 1 : 0);
 
   // More than one way in? Let them choose rather than guessing wrong.
   if (total > 1) return { role: null, schoolId: null, redirectTo: "/switch" };
@@ -184,6 +194,9 @@ async function resolveContextForUser(
     };
   }
   if (guardianships > 0) return { role: "PARENT", schoolId: null, redirectTo: "/parent" };
+  // No school on the session, deliberately: an expert's schools are derived from
+  // their confirmed bookings on every request, never carried on the cookie.
+  if (expertProfile) return { role: "EXPERT", schoolId: null, redirectTo: "/expert" };
 
   // Signed in, but belongs to nothing yet.
   return { role: null, schoolId: null, redirectTo: "/join?first=1" };

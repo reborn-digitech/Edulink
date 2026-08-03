@@ -26,7 +26,8 @@
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
     "quiz:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-quiz.ts",
     "quiz:import": "tsx --tsconfig scripts/tsconfig.json scripts/import-quiz.ts",
-    "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts"
+    "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts",
+    "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",

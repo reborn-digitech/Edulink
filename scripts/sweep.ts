@@ -221,7 +221,12 @@ async function main() {
   // An assignment in a class this teacher actually teaches. Picking any
   // assignment gets a correct 404 and reads as a bug — teachers are scoped to
   // their own classes, not merely to their school.
-  const post = await db.post.findFirst({ where: { schoolId: riverside.id, status: "APPROVED" } });
+  // NOT a GLOBAL post: /bulletin/[postId] is the SCHOOL bulletin, and a post
+  // published to the global feed correctly 404s there — it lives at
+  // /bulletin/global instead.
+  const post = await db.post.findFirst({
+    where: { schoolId: riverside.id, status: "APPROVED", scope: { not: "GLOBAL" } },
+  });
   const thread = await db.remarkThread.findFirst({ where: { schoolId: riverside.id } });
 
   /* ---- public routes, signed out ---- */
