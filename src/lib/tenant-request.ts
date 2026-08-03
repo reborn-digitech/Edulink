@@ -54,6 +54,7 @@ type MembershipReadableTx = {
   $executeRawUnsafe(sql: string, ...values: unknown[]): Promise<number>;
   membership: { findFirst(args: unknown): Promise<{ id: string } | null> };
   expertBooking: { findMany(args: unknown): Promise<{ schoolId: string }[]> };
+  mentorThread: { findMany(args: unknown): Promise<{ schoolId: string }[]> };
 };
 
 /**
@@ -132,10 +133,21 @@ export const resolveRequestTenant = cache(
       // second table's readability to answer a question about this one.
       const bookings = await client.$transaction(async (tx) => {
         await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, session.userId);
-        return tx.expertBooking.findMany({
-          where: { expertUserId: session.userId, status: "CONFIRMED" },
-          select: { schoolId: true },
-        });
+        const [booked, mentoring] = await Promise.all([
+          tx.expertBooking.findMany({
+            where: { expertUserId: session.userId, status: "CONFIRMED" },
+            select: { schoolId: true },
+          }),
+          // An ACTIVE mentorship reaches a school too. PENDING_CONSENT does not:
+          // until a guardian has said yes, the expert has no business seeing
+          // anything of that school, and leaving it out here means that is true
+          // of the database and not merely of the UI.
+          tx.mentorThread.findMany({
+            where: { expertUserId: session.userId, status: "ACTIVE" },
+            select: { schoolId: true },
+          }),
+        ]);
+        return [...booked, ...mentoring];
       });
       return {
         schoolIds: [...new Set(bookings.map((b) => b.schoolId))],

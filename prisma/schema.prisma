@@ -72,6 +72,8 @@ model School {
   expertBookings  ExpertBooking[]
   expertMessages  ExpertMessage[]
   expertInvites   ExpertInvite[]
+  mentorThreads   MentorThread[]
+  mentorMessages  MentorMessage[]
   invites         Invite[]
   posts          Post[]
   competitions   Competition[]
@@ -144,6 +146,7 @@ model User {
   reportsFiled      Report[]           @relation("ReportsFiled")
   expertProfile     ExpertProfile?
   expertMessages    ExpertMessage[]
+  mentorMessages    MentorMessage[]
 
   @@index([email])
 }
@@ -187,6 +190,8 @@ model Membership {
   globalPostsHidden      GlobalPostHide[]    @relation("GlobalPostHider")
   expertBookingsMade     ExpertBooking[]     @relation("ExpertBookingBooker")
   expertInvitesCreated   ExpertInvite[]      @relation("ExpertInviteCreator")
+  mentorshipsAsStudent   MentorThread[]      @relation("MentorStudent")
+  mentorshipsCreated     MentorThread[]      @relation("MentorCreator")
   invitesCreated         Invite[]            @relation("InviteCreator")
   earnedBadges           EarnedBadge[]
   quizAttempts           QuizAttempt[]
@@ -1214,6 +1219,7 @@ model ExpertProfile {
   user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   slots    ExpertSlot[]
   bookings ExpertBooking[]
+  mentorships MentorThread[]
 
   @@index([publishedAt])
 }
@@ -1338,4 +1344,74 @@ model ExpertInvite {
   invitedBy Membership? @relation("ExpertInviteCreator", fields: [invitedByMembershipId], references: [id], onDelete: SetNull)
 
   @@index([schoolId])
+}
+
+/// Margdarshak — one expert mentoring one child.
+///
+/// THE THREAD IS NEVER PRIVATE, and that is the feature rather than a setting.
+/// An outside adult does not get an unobserved channel with a child, so the
+/// child's guardians and the school's admin can always read every message. That
+/// is enforced in `mentoring.ts` by who the reader may be, not by a flag anybody
+/// could turn off, and there is deliberately no "confidential" mode to add later.
+///
+/// ONLY SCHOOL STAFF MAY PAIR. Not the expert, who would be choosing their own
+/// mentee, and not the child, who cannot consent to an adult stranger. The row
+/// records which member of staff did it.
+///
+/// PARENT CONSENT GATES THE FIRST MESSAGE. `status` stays PENDING_CONSENT until a
+/// guardian says yes, and posting is refused until then — the same gate
+/// competitions.ts uses, for the same reason and reusing the same notification.
+model MentorThread {
+  id       String @id @default(cuid())
+  schoolId String
+
+  expertProfileId String
+  /// Denormalised for the same bootstrap reason as ExpertBooking.expertUserId:
+  /// an expert's schools are derived from this table before any school is known.
+  expertUserId    String
+
+  studentMembershipId  String
+  createdByMembershipId String?
+
+  /// Why this pairing exists. Shown to the guardian being asked to consent.
+  purpose String
+  /// PENDING_CONSENT | ACTIVE | CLOSED
+  status  String @default("PENDING_CONSENT")
+
+  parentConsentAt     DateTime?
+  parentConsentUserId String?
+  closedAt            DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  expert    ExpertProfile   @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  student   Membership      @relation("MentorStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  createdBy Membership?     @relation("MentorCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  messages  MentorMessage[]
+
+  @@unique([expertProfileId, studentMembershipId])
+  @@index([schoolId, status])
+  @@index([studentMembershipId])
+}
+
+/// One message in a mentorship. Same shape as RemarkMessage, deliberately.
+model MentorMessage {
+  id           String @id @default(cuid())
+  schoolId     String
+  threadId     String
+  authorUserId String
+
+  body   String
+  /// JSON string[] of userIds.
+  readBy String @default("[]")
+
+  createdAt DateTime @default(now())
+
+  school School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  thread MentorThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, threadId, createdAt])
 }

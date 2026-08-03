@@ -73,6 +73,10 @@ const SELF_READABLE: Record<string, string> = {
   // known. Read-only and keyed on their own user id, so it opens their own
   // bookings and nobody else's.
   ExpertBooking: "expertUserId",
+  // Same bootstrap again: an expert mentoring a child at a school reaches that
+  // school through this table, so it has to be readable before any school is
+  // known. Read-only, keyed on their own user id.
+  MentorThread: "expertUserId",
 };
 
 /**

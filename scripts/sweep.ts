@@ -241,7 +241,7 @@ async function main() {
   for (const p of [
     "/admin", "/admin/classes", "/admin/classes/new", "/admin/invites", "/admin/invites/new",
     "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT", "/admin/safety",
-    "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/bulletin?filter=mine", "/bulletin?filter=pending",
+    "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin?filter=mine", "/bulletin?filter=pending",
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/switch",
     "/remarks", "/admin/people/export",
   ]) {
@@ -255,8 +255,8 @@ async function main() {
   /* ---- teacher ---- */
   for (const p of [
     "/teacher", "/teacher/attendance", "/teacher/assignments", "/teacher/assignments/new",
-    "/teacher/classes", "/bulletin", "/bulletin/global", "/bulletin/new", "/remarks", "/remarks/new",
-    "/notifications", "/account", "/switch",
+    "/teacher/classes", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin/new", "/remarks", "/remarks/new",
+    "/notifications", "/account", "/switch", "/mentoring",
   ]) {
     await check(teacher, p);
   }
@@ -275,7 +275,7 @@ async function main() {
   /* ---- student ---- */
   for (const p of [
     "/student", "/student/work", "/student/grades", "/student/profile",
-    "/student/abhyaas", "/student/abhyaas?subject=MATHS", "/bulletin", "/bulletin/global",
+    "/student/abhyaas", "/student/abhyaas?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
     "/bulletin/new", "/notifications", "/account",
   ]) {
     await check(student, p);

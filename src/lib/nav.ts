@@ -35,6 +35,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/invites", label: "Invites", icon: "envelope", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
+    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/admin/calendar", label: "Calendar", icon: "calendar", prefix: true },
     { href: "/admin/safety", label: "Safety", icon: "shield", prefix: true },
@@ -48,6 +49,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/remarks", label: "Messages", icon: "chat", prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
+    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
   ],
   STUDENT: [
@@ -65,6 +67,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/grades", label: "Grades", icon: "chartLine", primary: true, prefix: true },
     { href: "/remarks", label: "Messages", icon: "chat", primary: true, prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
+    { href: "/mentoring", label: "Margdarshak", icon: "chat", prefix: true },
     { href: "/parent/settings", label: "Settings", icon: "gear", prefix: true },
   ],
   // An expert sees their own work and nothing resembling a school's internals:
@@ -73,6 +76,7 @@ export const NAV: Record<Role, NavItem[]> = {
   EXPERT: [
     { href: "/expert", label: "Bookings", icon: "house", primary: true },
     { href: "/expert/availability", label: "Availability", icon: "calendar", primary: true, prefix: true },
+    { href: "/mentoring", label: "Margdarshak", icon: "chat", primary: true, prefix: true },
     { href: "/expert/profile", label: "Profile", icon: "user", prefix: true },
     { href: "/account", label: "Account", icon: "gear", prefix: true },
   ],

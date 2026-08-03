@@ -393,6 +393,34 @@ CREATE POLICY "ExpertInvite_readable" ON "ExpertInvite"
          OR "tokenHash" = current_setting('app.join_code', true)
         );
 
+-- MentorThread
+ALTER TABLE "MentorThread" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "MentorThread" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "MentorThread_tenant_isolation" ON "MentorThread";
+DROP POLICY IF EXISTS "MentorThread_readable" ON "MentorThread";
+CREATE POLICY "MentorThread_tenant_isolation" ON "MentorThread"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "MentorThread_readable" ON "MentorThread"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "expertUserId" = current_setting('app.user_id', true)
+        );
+
+-- MentorMessage
+ALTER TABLE "MentorMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "MentorMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "MentorMessage_tenant_isolation" ON "MentorMessage";
+DROP POLICY IF EXISTS "MentorMessage_readable" ON "MentorMessage";
+CREATE POLICY "MentorMessage_tenant_isolation" ON "MentorMessage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition
