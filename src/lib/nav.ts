@@ -34,6 +34,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/classes", label: "Classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/admin/invites", label: "Invites", icon: "envelope", primary: true, prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
+    { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/admin/calendar", label: "Calendar", icon: "calendar", prefix: true },
     { href: "/admin/safety", label: "Safety", icon: "shield", prefix: true },
@@ -46,6 +47,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/assignments", label: "Work", icon: "clipboard", primary: true, prefix: true },
     { href: "/remarks", label: "Messages", icon: "chat", prefix: true },
     { href: "/bulletin", label: "Bulletin", icon: "megaphone", prefix: true },
+    { href: "/experts", label: "Prerna", icon: "briefcase", prefix: true },
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
   ],
   STUDENT: [
@@ -65,6 +67,15 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/competitions", label: "Competitions", icon: "trophy", prefix: true },
     { href: "/parent/settings", label: "Settings", icon: "gear", prefix: true },
   ],
+  // An expert sees their own work and nothing resembling a school's internals:
+  // no directory, no register, no bulletin. Every entry here is either their own
+  // availability or a school that has actually booked them.
+  EXPERT: [
+    { href: "/expert", label: "Bookings", icon: "house", primary: true },
+    { href: "/expert/availability", label: "Availability", icon: "calendar", primary: true, prefix: true },
+    { href: "/expert/profile", label: "Profile", icon: "user", prefix: true },
+    { href: "/account", label: "Account", icon: "gear", prefix: true },
+  ],
 };
 
 /** The one action each role does most. Becomes the floating action button. */
@@ -83,6 +94,12 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   },
   STUDENT: null,
   PARENT: null,
+  EXPERT: {
+    href: "/expert/availability",
+    label: "Offer a time",
+    icon: "calendar",
+    description: "Add a slot schools can book",
+  },
 };
 
 /** Extra entries offered by the command palette beyond plain navigation. */
@@ -104,6 +121,10 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   PARENT: [
     { href: "/remarks", label: "Message a teacher", icon: "chat", description: "Open a conversation" },
     { href: "/parent/settings", label: "Notification settings", icon: "bell", description: "Choose what you are told" },
+  ],
+  EXPERT: [
+    { href: "/expert/availability", label: "Offer a time", icon: "calendar", description: "Add a slot schools can book" },
+    { href: "/expert/profile", label: "Edit profile", icon: "user", description: "Headline, bio and specialisms" },
   ],
 };
 

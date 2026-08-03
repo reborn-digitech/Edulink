@@ -69,6 +69,9 @@ model School {
   classes         Class[]
   gradeCategories GradeCategory[]
   globalPostHides GlobalPostHide[]
+  expertBookings  ExpertBooking[]
+  expertMessages  ExpertMessage[]
+  expertInvites   ExpertInvite[]
   invites         Invite[]
   posts          Post[]
   competitions   Competition[]
@@ -139,6 +142,8 @@ model User {
   reactions         Reaction[]
   remarkMessages    RemarkMessage[]
   reportsFiled      Report[]           @relation("ReportsFiled")
+  expertProfile     ExpertProfile?
+  expertMessages    ExpertMessage[]
 
   @@index([email])
 }
@@ -180,6 +185,8 @@ model Membership {
   postsAuthored          Post[]              @relation("PostAuthorMembership")
   postsReviewed          Post[]              @relation("PostReviewer")
   globalPostsHidden      GlobalPostHide[]    @relation("GlobalPostHider")
+  expertBookingsMade     ExpertBooking[]     @relation("ExpertBookingBooker")
+  expertInvitesCreated   ExpertInvite[]      @relation("ExpertInviteCreator")
   invitesCreated         Invite[]            @relation("InviteCreator")
   earnedBadges           EarnedBadge[]
   quizAttempts           QuizAttempt[]
@@ -1162,4 +1169,173 @@ model QuizMastery {
 
   @@unique([studentMembershipId, topicId])
   @@index([schoolId, studentMembershipId])
+}
+
+// ---------------------------------------------------------------------------
+// Experts — Prerna (consultation) and Margdarshak (mentoring)
+//
+// AN EXPERT IS NOT A SCHOOL ROLE. They consult for many schools and belong to
+// none, so there is no Membership row and `SCHOOL_ROLES` is untouched. What
+// gives an expert access to a school's data is a BOOKING, and nothing else:
+// `resolveRequestTenant` turns an expert's confirmed bookings into their
+// `app.school_ids`, exactly the way a parent's guardianships become theirs. No
+// booking, no tenant, no rows — enforced by the same policies as everyone else
+// rather than by a new one.
+// ---------------------------------------------------------------------------
+
+/// A curated expert. Global, like the practice catalogue: an expert belongs to
+/// no school, and scoping them to one would mean every school starts with an
+/// empty marketplace.
+///
+/// `publishedAt` is the curation gate. A profile is invisible to schools until
+/// somebody publishes it, so accepting an invitation does not by itself put an
+/// adult in front of schools.
+model ExpertProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+
+  headline    String
+  bio         String  @default("")
+  /// JSON string[] — "Careers", "Dyslexia support", "Olympiad maths".
+  specialisms String  @default("[]")
+  timezone    String  @default("UTC")
+  /// Where they work, for a school choosing between them. Free text.
+  organisation String?
+
+  /// Curation. Null means invisible to every school.
+  publishedAt DateTime?
+  /// Set when a human has actually checked who this person is.
+  verifiedAt  DateTime?
+  verifiedBy  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slots    ExpertSlot[]
+  bookings ExpertBooking[]
+
+  @@index([publishedAt])
+}
+
+/// One bookable window an expert has offered.
+///
+/// GLOBAL, so every school sees the same marketplace. `bookedAt` is denormalised
+/// onto the slot precisely so that a school can tell a taken slot from a free one
+/// WITHOUT being able to read the booking — which belongs to whichever school
+/// made it and stays behind that school's policy. Availability is public;
+/// who booked it is not.
+model ExpertSlot {
+  id              String @id @default(cuid())
+  expertProfileId String
+
+  startsAt DateTime
+  endsAt   DateTime
+  /// What the expert is offering in this window, if it is specific.
+  note     String?
+
+  /// Set the moment a school books it. No school identity here on purpose.
+  bookedAt    DateTime?
+  cancelledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  expert  ExpertProfile   @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  booking ExpertBooking?
+
+  @@index([expertProfileId, startsAt])
+  @@index([startsAt])
+}
+
+/// A school's booking of one slot. Tenant-scoped: this is the row that gives an
+/// expert access to a school, so it is the row that must be school-owned.
+model ExpertBooking {
+  id              String @id @default(cuid())
+  schoolId        String
+  expertProfileId String
+  /// The expert's User id, copied from the profile at booking time.
+  ///
+  /// DENORMALISED TO BREAK A BOOTSTRAP CIRCLE, the same one Membership.userId
+  /// breaks for logging in. An expert's tenant set IS their confirmed bookings,
+  /// so resolving it means reading this table before any school is known — and
+  /// a school-scoped policy refuses exactly that query. With the column here,
+  /// `app.user_id` opens an expert's own booking rows and nothing else, read
+  /// only, and the tenant set can be computed at all.
+  expertUserId    String
+  /// One booking per slot, enforced by the database rather than by a check.
+  slotId          String @unique
+
+  bookedByMembershipId String?
+  /// What the school wants to discuss. Shown to the expert.
+  topic                String
+  status               String @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school   School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  expert   ExpertProfile   @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  slot     ExpertSlot      @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  bookedBy Membership?     @relation("ExpertBookingBooker", fields: [bookedByMembershipId], references: [id], onDelete: SetNull)
+  messages ExpertMessage[]
+
+  @@index([schoolId, status])
+  @@index([expertProfileId])
+}
+
+/// A message on a booking, between school staff and the expert.
+///
+/// Both parties are adults and the thread is about a professional engagement, so
+/// there is no consent gate here — that belongs to Margdarshak, where one end of
+/// the conversation is a child.
+model ExpertMessage {
+  id           String @id @default(cuid())
+  schoolId     String
+  bookingId    String
+  authorUserId String
+
+  body   String
+  /// JSON string[] of userIds, same shape as RemarkMessage.readBy.
+  readBy String @default("[]")
+
+  createdAt DateTime @default(now())
+
+  school  School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  booking ExpertBooking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  author  User          @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, bookingId, createdAt])
+}
+
+/// An invitation to become an expert, by link.
+///
+/// `schoolId` IS NULLABLE, and that is the app owner's route in. A school admin
+/// or teacher inviting an expert creates a row naming their school; the person
+/// who runs the server creates one naming none, from `npm run expert:invite`.
+/// There is no super-admin web role to make that button appear in — running the
+/// script requires the database, which is the authorisation.
+///
+/// The token is stored as its SHA-256, exactly like Invite: what is emailed is
+/// the only copy of the secret.
+model ExpertInvite {
+  id        String  @id @default(cuid())
+  schoolId  String?
+  tokenHash String  @unique
+
+  email                String?
+  name                 String?
+  invitedByMembershipId String?
+
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  acceptedUserId String?
+  revokedAt      DateTime?
+
+  createdAt DateTime @default(now())
+
+  school    School?     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  invitedBy Membership? @relation("ExpertInviteCreator", fields: [invitedByMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId])
 }

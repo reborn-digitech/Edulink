@@ -12,6 +12,7 @@ import {
   EnvelopeSimpleIcon,
   MegaphoneIcon,
   TrophyIcon,
+  BriefcaseIcon,
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import { markNotificationRead } from "./actions";
@@ -28,6 +29,7 @@ export type NotificationItem = {
 };
 
 const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; weight?: "duotone" }>> = {
+  EXPERT: BriefcaseIcon,
   ATTENDANCE: CalendarCheckIcon,
   GRADE: ChartLineUpIcon,
   ASSIGNMENT: ClipboardTextIcon,

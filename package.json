@@ -25,7 +25,8 @@
     "rls:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-rls-app.ts",
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
     "quiz:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-quiz.ts",
-    "quiz:import": "tsx --tsconfig scripts/tsconfig.json scripts/import-quiz.ts"
+    "quiz:import": "tsx --tsconfig scripts/tsconfig.json scripts/import-quiz.ts",
+    "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",

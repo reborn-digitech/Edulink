@@ -46,12 +46,14 @@ export type SessionReadableClient = {
   guardianship: {
     findMany(args: unknown): Promise<{ studentSchoolId: string }[]>;
   };
+
   $transaction<R>(fn: (tx: MembershipReadableTx) => Promise<R>): Promise<R>;
 };
 
 type MembershipReadableTx = {
   $executeRawUnsafe(sql: string, ...values: unknown[]): Promise<number>;
   membership: { findFirst(args: unknown): Promise<{ id: string } | null> };
+  expertBooking: { findMany(args: unknown): Promise<{ schoolId: string }[]> };
 };
 
 /**
@@ -106,6 +108,37 @@ export const resolveRequestTenant = cache(
       });
       return {
         schoolIds: [...new Set(guardianships.map((g) => g.studentSchoolId))],
+        userId: session.userId,
+        joinCode: null,
+      };
+    }
+
+    // An expert belongs to no school and reaches one ONLY through a confirmed
+    // booking. Same shape as the parent branch above and for the same reason:
+    // their tenant set is derived from a relationship, not from a school on the
+    // session. A cancelled booking drops out of this set immediately, so access
+    // ends when the engagement ends without anything having to revoke it.
+    if (session.activeRole === "EXPERT") {
+      // SETS app.user_id FIRST, exactly like `ownMembershipIn` below and for
+      // exactly the same reason: ExpertBooking carries a schoolId and so has an
+      // ordinary tenant policy, and this is the query that has to run BEFORE any
+      // school is known. Without the setting the policy correctly refuses it,
+      // the expert resolves to no schools, and every page they open 500s on a
+      // relation that came back null. The parent branch above needs no such
+      // dance only because Guardianship deliberately carries no policy at all.
+      //
+      // Filtered on `expertUserId`, the denormalised column the policy keys on,
+      // rather than joining through ExpertProfile — the join would depend on a
+      // second table's readability to answer a question about this one.
+      const bookings = await client.$transaction(async (tx) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, session.userId);
+        return tx.expertBooking.findMany({
+          where: { expertUserId: session.userId, status: "CONFIRMED" },
+          select: { schoolId: true },
+        });
+      });
+      return {
+        schoolIds: [...new Set(bookings.map((b) => b.schoolId))],
         userId: session.userId,
         joinCode: null,
       };

@@ -43,6 +43,12 @@ const NO_SCHOOL_POLICY = new Set([
   // school-owned than the English one it translates.
   "QuizTopicTranslation",
   "QuizQuestionTranslation",
+  // An expert belongs to no school, and the marketplace has to be the same for
+  // everyone or the first school to look would be the only one able to book.
+  // What a school DID with the marketplace — ExpertBooking, ExpertMessage — is
+  // school-owned and is scoped normally.
+  "ExpertProfile",
+  "ExpertSlot",
 ]);
 
 /**
@@ -60,7 +66,14 @@ const NO_SCHOOL_POLICY = new Set([
  * and never in WITH CHECK, so this cannot insert a membership — which would be
  * self-service enrolment into whichever school you named.
  */
-const SELF_READABLE: Record<string, string> = { Membership: "userId" };
+const SELF_READABLE: Record<string, string> = {
+  Membership: "userId",
+  // The same bootstrap, for the same reason: an expert's schools ARE their
+  // confirmed bookings, so this table has to be readable before any school is
+  // known. Read-only and keyed on their own user id, so it opens their own
+  // bookings and nobody else's.
+  ExpertBooking: "expertUserId",
+};
 
 /**
  * Tables where a row belonging to NO school may be written.
@@ -129,6 +142,9 @@ const CODE_READABLE: Record<string, string> = {
   // presented before there is any session. The stored value is the token's
   // SHA-256, so what gets bound is the hash, never the token itself.
   Invite: "tokenHash",
+  // An expert accepting an invitation has no school and no membership; the
+  // token is the only thing they hold. Same read-only bootstrap as Invite.
+  ExpertInvite: "tokenHash",
 };
 
 function models(): string[] {

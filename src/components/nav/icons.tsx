@@ -20,6 +20,7 @@ import {
   UserCirclePlusIcon,
   UserIcon,
   UsersThreeIcon,
+  BriefcaseIcon,
   type Icon,
 } from "@phosphor-icons/react";
 
@@ -45,6 +46,7 @@ const ICONS: Record<string, Icon> = {
   palette: PaletteIcon,
   bell: BellIcon,
   calendar: CalendarBlankIcon,
+  briefcase: BriefcaseIcon,
   brain: BrainIcon,
   trophy: TrophyIcon,
 };

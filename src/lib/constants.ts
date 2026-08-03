@@ -7,7 +7,17 @@
  * so an invalid value cannot reach a write.
  */
 
-export const ROLES = ["ADMIN", "TEACHER", "STUDENT", "PARENT"] as const;
+/**
+ * Every role a SESSION can be acting as.
+ *
+ * EXPERT is here and deliberately NOT in SCHOOL_ROLES below: an expert has no
+ * Membership row, belongs to no school, and reaches a school only through a
+ * confirmed booking. Adding them here is what lets `requireExpert()`, the nav
+ * and the switcher treat them as a first-class signed-in actor; leaving them
+ * out of SCHOOL_ROLES is what stops any of the membership machinery trying to
+ * enrol them somewhere.
+ */
+export const ROLES = ["ADMIN", "TEACHER", "STUDENT", "PARENT", "EXPERT"] as const;
 export type Role = (typeof ROLES)[number];
 
 /** Roles that exist as a Membership row. PARENT is modelled by Guardianship. */
@@ -44,6 +54,7 @@ export const AUTH_TOKEN_PURPOSES = [
 export type AuthTokenPurpose = (typeof AUTH_TOKEN_PURPOSES)[number];
 
 export const NOTIFICATION_KINDS = [
+  "EXPERT",
   "ATTENDANCE",
   "GRADE",
   "ASSIGNMENT",
@@ -104,6 +115,7 @@ export const ROLE_META: Record<Role, { label: string; plural: string; accent: st
   TEACHER: { label: "Teacher", plural: "Teachers", accent: "teacher" },
   STUDENT: { label: "Student", plural: "Students", accent: "student" },
   PARENT: { label: "Parent", plural: "Parents", accent: "parent" },
+  EXPERT: { label: "Expert", plural: "Experts", accent: "teacher" },
 };
 
 /** Where each role lands after login. */
@@ -112,6 +124,7 @@ export const ROLE_HOME: Record<Role, string> = {
   TEACHER: "/teacher",
   STUDENT: "/student",
   PARENT: "/parent",
+  EXPERT: "/expert",
 };
 
 /* -------------------------------------------------------------------------- */

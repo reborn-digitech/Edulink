@@ -1,4 +1,5 @@
 import "server-only";
+import { ROLE_HOME } from "./constants";
 import { redirect } from "next/navigation";
 import { db } from "./db";
 import { getSession, type ActiveContext } from "./session";
@@ -35,6 +36,19 @@ export class AccessError extends Error {
 export async function requireUser(): Promise<ActiveContext> {
   const session = await getSession();
   if (!session) redirect("/login");
+  return session;
+}
+
+/**
+ * Authenticated, for a SERVER ACTION.
+ *
+ * Throws where `requireUser` redirects. A redirect thrown out of an action is
+ * not an error the client can render — it surfaces as a broken transition — so
+ * the two gates are kept separate rather than one guessing the context.
+ */
+export async function requireApiUser(): Promise<ActiveContext> {
+  const session = await getSession();
+  if (!session) throw new AccessError("Please log in again");
   return session;
 }
 
@@ -82,7 +96,34 @@ export async function requireApiRole<R extends Role>(
 }
 
 function roleHome(role: Role): string {
-  return { ADMIN: "/admin", TEACHER: "/teacher", STUDENT: "/student", PARENT: "/parent" }[role];
+  return ROLE_HOME[role];
+}
+
+/**
+ * An expert, who has no Membership and no school of their own.
+ *
+ * Same shape as `requireParent`: the role alone is not enough, because a session
+ * can claim any role. What is checked is that a PUBLISHED expert profile exists
+ * for this user — an unpublished one is somebody who accepted an invitation and
+ * has not been curated yet, and they get no expert area at all.
+ *
+ * NOTE THE ABSENCE. There is no schoolId here and there must not be. An expert
+ * reaches a school only through `resolveRequestTenant`, which turns their
+ * CONFIRMED bookings into `app.school_ids` — so a school that has not booked
+ * them is not merely hidden from the UI, it is invisible to their queries.
+ */
+export async function requireExpert(): Promise<ActiveContext & { expertProfileId: string }> {
+  const session = await requireUser();
+  if (session.role !== "EXPERT") redirect("/switch");
+
+  const profile = await db.expertProfile.findUnique({
+    where: { userId: session.user.id },
+    select: { id: true, publishedAt: true },
+  });
+  if (!profile) redirect("/switch");
+  if (!profile.publishedAt) redirect("/expert/pending");
+
+  return { ...session, expertProfileId: profile.id };
 }
 
 /* -------------------------------------------------------------------------- */

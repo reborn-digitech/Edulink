@@ -1044,12 +1044,23 @@ the release where every page rendered and nothing saved.
   answer is computable and a person's name in `reviewedBy` where it is not, with
   real counts reported per batch. `quiz:verify` prints exactly those counts so
   the bank can never claim more than it has earned.
-- **Prerna** (expert consultation dashboard for admin and teachers) and
-  **Margdarshak** (1:1 student↔expert mentor chat). Neither is started. Read
-  `remarks.ts` first for the 1:1 chat — the visibility rules an outside adult
-  talking to a child needs are stricter than the ones already in there, not
-  looser, and `competitions.ts` has the parent-consent gate that Margdarshak
-  should reuse rather than reinvent.
+- **Margdarshak** (1:1 student↔expert mentor chat). NOT started, and the one
+  piece deliberately left out of the Prerna commit rather than rushed. The
+  expert actor it needs now exists; what it still needs is the safety model, and
+  that model is not a detail:
+
+  * the thread must NEVER be private — an outside adult does not get an
+    unobserved channel with a child, so the child's guardians and the school's
+    admin have to be able to read it structurally, not by policy;
+  * parent consent before the first message, reusing the gate in
+    `competitions.ts` rather than reinventing it;
+  * read `remarks.ts` first — the visibility rules there are the closest thing,
+    and Margdarshak's have to be STRICTER, not looser.
+
+- **Prerna is built.** Expert marketplace, slots, booking and an admin/teacher↔
+  expert conversation. See Status. What is NOT built is account creation from an
+  expert invite link: the invitation, the profile, the marketplace and the
+  expert area all work, and signing up still goes through ordinary registration.
 - **The naming pass.** Hybrid Indian name + English subtitle, agreed and applied
   so far only to what this commit touched: Chhutti Calendar, Shaikshanik Varsh.
   The rest of the app is still English-only.

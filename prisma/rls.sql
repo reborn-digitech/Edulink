@@ -346,9 +346,58 @@ CREATE POLICY "QuizMastery_tenant_isolation" ON "QuizMastery"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- ExpertBooking
+ALTER TABLE "ExpertBooking" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ExpertBooking" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ExpertBooking_tenant_isolation" ON "ExpertBooking";
+DROP POLICY IF EXISTS "ExpertBooking_readable" ON "ExpertBooking";
+CREATE POLICY "ExpertBooking_tenant_isolation" ON "ExpertBooking"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ExpertBooking_readable" ON "ExpertBooking"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "expertUserId" = current_setting('app.user_id', true)
+        );
+
+-- ExpertMessage
+ALTER TABLE "ExpertMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ExpertMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ExpertMessage_tenant_isolation" ON "ExpertMessage";
+DROP POLICY IF EXISTS "ExpertMessage_readable" ON "ExpertMessage";
+CREATE POLICY "ExpertMessage_tenant_isolation" ON "ExpertMessage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ExpertInvite
+ALTER TABLE "ExpertInvite" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ExpertInvite" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ExpertInvite_tenant_isolation" ON "ExpertInvite";
+DROP POLICY IF EXISTS "ExpertInvite_readable" ON "ExpertInvite";
+CREATE POLICY "ExpertInvite_tenant_isolation" ON "ExpertInvite"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ExpertInvite_readable" ON "ExpertInvite"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "tokenHash" = current_setting('app.join_code', true)
+        );
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition
+--   ExpertProfile
+--   ExpertSlot
 --   Guardianship
 --   OutboundEmail
 --   PushSubscription

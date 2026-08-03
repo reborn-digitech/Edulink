@@ -39,6 +39,9 @@ const DIRECT = [
   "QuizMastery",
   "CompetitionEntry",
   "Enrollment",
+  "ExpertBooking",
+  "ExpertMessage",
+  "ExpertInvite",
   "Grade",
   "GradeCategory",
   "GlobalPostHide",
@@ -82,6 +85,8 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   QuizQuestion: "belongs to a QuizTopic, which belongs to no school",
   QuizTopicTranslation: "a translation of the shared catalogue is still the shared catalogue",
   QuizQuestionTranslation: "a translation of the shared catalogue is still the shared catalogue",
+  ExpertProfile: "an expert belongs to no school — the marketplace is shared, like Competition",
+  ExpertSlot: "belongs to an ExpertProfile, so it belongs to no school either",
 };
 
 function modelBodies(): Map<string, string> {
@@ -105,7 +110,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(39);
+    ).toBe(44);
   });
 });
 
