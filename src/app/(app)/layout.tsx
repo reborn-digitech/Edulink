@@ -26,6 +26,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   // being handed a code that cannot help. (§7 no dead ends)
   if (!session.role) {
     if (contextCount === 0) {
+      // Somebody who runs the server and teaches nowhere is the ORDINARY case
+      // for a superuser, not an error state. Sending them to a join-code box
+      // would be the third wrong answer this branch has given.
+      if (session.user.isSuperuser) redirect("/root");
+
       const paused = await db.membership.count({
         where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
       });

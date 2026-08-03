@@ -69,6 +69,19 @@ export async function requireRole<R extends Role>(
   return session as ActiveContext & { role: R; schoolId: string; membershipId: string };
 }
 
+/**
+ * Whoever runs the server. Redirects rather than 403s.
+ *
+ * A 404-shaped redirect, not a "forbidden": `/root` should not confirm its own
+ * existence to somebody who is not meant to be there. The database refuses the
+ * rows anyway — this only decides which page they see.
+ */
+export async function requireSuperuser(): Promise<ActiveContext> {
+  const session = await requireUser();
+  if (!session.user.isSuperuser) redirect("/");
+  return session;
+}
+
 /** Parents have no Membership; they are authorized through Guardianship. */
 export async function requireParent(): Promise<ActiveContext> {
   const session = await requireUser();

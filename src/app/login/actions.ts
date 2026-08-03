@@ -295,6 +295,15 @@ async function resolveContextForUser(
   // their confirmed bookings on every request, never carried on the cookie.
   if (expertProfile) return { role: "EXPERT", schoolId: null, redirectTo: "/expert" };
 
+  // Runs the server, teaches nowhere. Checked LAST, after every school-shaped
+  // way in, because somebody who is both an operator and a teacher should land
+  // in their classroom — the flag is an extra door, not a replacement for one.
+  const operator = await db.user.findUnique({
+    where: { id: userId },
+    select: { isSuperuser: true },
+  });
+  if (operator?.isSuperuser) return { role: null, schoolId: null, redirectTo: "/root" };
+
   // Signed in, but belongs to nothing yet.
   return { role: null, schoolId: null, redirectTo: "/join?first=1" };
 }

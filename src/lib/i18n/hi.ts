@@ -46,6 +46,10 @@ export const hi: Dictionary = {
     availability: "उपलब्धता",
     profile: "प्रोफ़ाइल",
     account: "खाता",
+    dashboard: "डैशबोर्ड",
+    leave: "अवकाश",
+    reportCards: "प्रगति पत्रक",
+    staff: "स्टाफ़",
   },
 
   action: {
@@ -75,6 +79,12 @@ export const hi: Dictionary = {
     notificationSettingsHint: "चुनें कि आपको क्या बताया जाए",
     editProfile: "प्रोफ़ाइल संपादित करें",
     editProfileHint: "परिचय, विवरण और विशेषज्ञता",
+    reviewLeave: "अवकाश अनुरोध देखें",
+    reviewLeaveHint: "छुट्टी स्वीकृत या अस्वीकृत करें",
+    classInsights: "कक्षा की जानकारी",
+    classInsightsHint: "कक्षा के अनुसार उपस्थिति और प्रगति",
+    applyLeave: "अवकाश के लिए आवेदन करें",
+    applyLeaveHint: "प्रधानाचार्य से छुट्टी माँगें",
   },
 
   shell: {
@@ -104,6 +114,8 @@ export const hi: Dictionary = {
   role: {
     admin: "स्कूल प्रशासक",
     adminPlural: "प्रशासक",
+    principal: "प्रधानाचार्य",
+    principalPlural: "प्रधानाचार्यगण",
     teacher: "शिक्षक",
     teacherPlural: "शिक्षकगण",
     student: "विद्यार्थी",

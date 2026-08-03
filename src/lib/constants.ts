@@ -19,11 +19,19 @@ import type { TranslationKey } from "./i18n/dictionary";
  * out of SCHOOL_ROLES is what stops any of the membership machinery trying to
  * enrol them somewhere.
  */
-export const ROLES = ["ADMIN", "TEACHER", "STUDENT", "PARENT", "EXPERT"] as const;
+export const ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT"] as const;
 export type Role = (typeof ROLES)[number];
 
-/** Roles that exist as a Membership row. PARENT is modelled by Guardianship. */
-export const SCHOOL_ROLES = ["ADMIN", "TEACHER", "STUDENT"] as const;
+/**
+ * Roles that exist as a Membership row. PARENT is modelled by Guardianship.
+ *
+ * PRINCIPAL is a PEER OF ADMIN, not a rank above it, and the split is the one a
+ * school actually runs on. The admin sets the school up — classes, sections, who
+ * teaches what, who takes which register. The principal reads what came out of
+ * it and decides who may be away. Neither can do the other's job, which is why
+ * this is two roles and not a seniority flag on one.
+ */
+export const SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"] as const;
 export type SchoolRole = (typeof SCHOOL_ROLES)[number];
 
 export const MEMBERSHIP_STATUSES = ["PENDING", "ACTIVE", "SUSPENDED"] as const;
@@ -126,6 +134,7 @@ export const ROLE_META: Record<
   { labelKey: TranslationKey; pluralKey: TranslationKey; accent: string }
 > = {
   ADMIN: { labelKey: "role.admin", pluralKey: "role.adminPlural", accent: "admin" },
+  PRINCIPAL: { labelKey: "role.principal", pluralKey: "role.principalPlural", accent: "admin" },
   TEACHER: { labelKey: "role.teacher", pluralKey: "role.teacherPlural", accent: "teacher" },
   STUDENT: { labelKey: "role.student", pluralKey: "role.studentPlural", accent: "student" },
   PARENT: { labelKey: "role.parent", pluralKey: "role.parentPlural", accent: "parent" },
@@ -135,6 +144,7 @@ export const ROLE_META: Record<
 /** Where each role lands after login. */
 export const ROLE_HOME: Record<Role, string> = {
   ADMIN: "/admin",
+  PRINCIPAL: "/principal",
   TEACHER: "/teacher",
   STUDENT: "/student",
   PARENT: "/parent",

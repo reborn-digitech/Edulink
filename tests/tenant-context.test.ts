@@ -33,7 +33,7 @@ import {
 describe("tenant overrides", () => {
   it("binds the schools it is given", async () => {
     const seen = await forOwnSchools("u1", ["a", "b"], async () => tenantOverride());
-    expect(seen).toEqual({ schoolIds: ["a", "b"], userId: "u1", joinCode: null });
+    expect(seen).toEqual({ schoolIds: ["a", "b"], userId: "u1", joinCode: null, isSuperuser: false });
   });
 
   it("dedupes, because a user with two roles at one school is the ordinary case", async () => {
@@ -92,14 +92,14 @@ describe("tenant overrides", () => {
 
   it("forUser binds nobody's schools — the login bootstrap has none", async () => {
     const seen = await forUser("u1", async () => tenantOverride());
-    expect(seen).toEqual({ schoolIds: [], userId: "u1", joinCode: null });
+    expect(seen).toEqual({ schoolIds: [], userId: "u1", joinCode: null, isSuperuser: false });
   });
 
   it("forJoinCode binds the code and NO school — the other bootstrap", async () => {
     // A child typing a class code has no session, no membership and no school.
     // This must be the narrowest binding there is, not a wider one.
     const seen = await forJoinCode("ABC-1234", async () => tenantOverride());
-    expect(seen).toEqual({ schoolIds: [], userId: null, joinCode: "ABC-1234" });
+    expect(seen).toEqual({ schoolIds: [], userId: null, joinCode: "ABC-1234", isSuperuser: false });
   });
 
   it("⚠ a code does not survive its call either", async () => {
@@ -133,7 +133,7 @@ describe("tenant overrides", () => {
   });
 
   it("forTenant is the general form the others are written in", async () => {
-    const tenant = { schoolIds: ["x"], userId: null, joinCode: null };
+    const tenant = { schoolIds: ["x"], userId: null, joinCode: null, isSuperuser: false };
     expect(await forTenant(tenant, async () => tenantOverride())).toEqual(tenant);
   });
 });

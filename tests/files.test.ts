@@ -31,6 +31,7 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
       email: null,
       avatarKey: null,
       isMinor: false,
+      isSuperuser: false,
       prefs: {
         theme: "system",
         contrast: "normal",

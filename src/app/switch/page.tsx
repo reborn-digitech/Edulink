@@ -32,6 +32,8 @@ export default async function SwitchPage() {
     // "You are not part of a school yet" is FALSE for somebody who has been
     // paused — they are part of one, it is closed to them, and no join code
     // will open it. Send them to the page that says so.
+    if (session.user.isSuperuser) redirect("/root");
+
     const paused = await db.membership.count({
       where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
     });

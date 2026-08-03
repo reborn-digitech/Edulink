@@ -47,12 +47,27 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
   ],
+  // A principal READS and DECIDES. No register, no gradebook, no class setup —
+  // those belong to the teacher and the admin respectively, and handing all
+  // three to one role is how "principal" quietly becomes "can do anything".
+  // What is here is the school seen whole, and the one decision only they make.
+  PRINCIPAL: [
+    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true },
+    { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true },
+  ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
     { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true },
     { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/teacher/assignments", labelKey: "nav.work", icon: "clipboard", primary: true, prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
+    { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
@@ -102,6 +117,7 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
     icon: "checks",
     descriptionKey: "action.takeRegisterHint",
   },
+  PRINCIPAL: null,
   STUDENT: null,
   PARENT: null,
   EXPERT: {
@@ -119,10 +135,15 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
     { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
     { href: "/admin/settings", labelKey: "action.schoolBranding", icon: "palette", descriptionKey: "action.schoolBrandingHint" },
   ],
+  PRINCIPAL: [
+    { href: "/principal/leave", labelKey: "action.reviewLeave", icon: "calendar", descriptionKey: "action.reviewLeaveHint" },
+    { href: "/principal/classes", labelKey: "action.classInsights", icon: "chartLine", descriptionKey: "action.classInsightsHint" },
+  ],
   TEACHER: [
     { href: "/teacher/attendance", labelKey: "action.takeRegister", icon: "checks", descriptionKey: "action.takeRegisterHint" },
     { href: "/teacher/assignments/new", labelKey: "action.newAssignment", icon: "plus", descriptionKey: "action.newAssignmentHint" },
     { href: "/remarks/new", labelKey: "action.messageParent", icon: "chat", descriptionKey: "action.messageParentHint" },
+    { href: "/teacher/leave", labelKey: "action.applyLeave", icon: "calendar", descriptionKey: "action.applyLeaveHint" },
   ],
   STUDENT: [
     { href: "/student/work", labelKey: "action.whatIsDue", icon: "clipboard", descriptionKey: "action.whatIsDueHint" },

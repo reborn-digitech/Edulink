@@ -140,6 +140,10 @@ describe("resolveRequestTenant", () => {
       schoolIds: [],
       userId: null,
       joinCode: null,
+      // Nothing signed in means no operator key either. Asserted rather than
+      // ignored: `isSuperuser` widens two policies, so a request that resolves
+      // it true when nobody is signed in would be the whole boundary gone.
+      isSuperuser: false,
     });
   });
 
@@ -152,6 +156,10 @@ describe("resolveRequestTenant", () => {
       schoolIds: [],
       userId: null,
       joinCode: null,
+      // Nothing signed in means no operator key either. Asserted rather than
+      // ignored: `isSuperuser` widens two policies, so a request that resolves
+      // it true when nobody is signed in would be the whole boundary gone.
+      isSuperuser: false,
     });
   });
 

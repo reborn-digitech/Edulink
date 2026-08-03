@@ -137,6 +137,20 @@ model User {
   // notification channels, quietHours.
   prefs String @default("{}")
 
+  /// Whoever runs the server, not whoever runs a school.
+  ///
+  /// A FLAG, NOT A ROLE, and deliberately. A role is something a session is
+  /// currently acting AS, and it belongs to one school; this belongs to the
+  /// person and to no school. Making it a role would mean adding it to the
+  /// switcher, to every `requireRole`, and to the membership machinery — for an
+  /// actor that has no membership by definition.
+  ///
+  /// It grants exactly two things, enforced in the database rather than here:
+  /// School and Invite rows may be read and written outside any tenant. It does
+  /// NOT grant sight of a single child's marks, register or message. See the
+  /// SUPERUSER_TABLES note in scripts/gen-rls.ts.
+  isSuperuser Boolean @default(false)
+
   disabledAt DateTime?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt

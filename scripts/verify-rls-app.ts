@@ -455,6 +455,91 @@ async function main() {
       `a join code authorised DELETE — removed ${deletedByCode} school row(s), cascading to everything they own`,
     );
 
+    /* ---------------------------------------------------------------- *
+     * The superuser boundary.
+     *
+     * This is the whole reason the flag is safe to have, and it is a NEGATIVE
+     * claim, so it cannot be shown by a unit test that runs as the owner with
+     * no policies in force. `app.is_superuser` appears in exactly two policies,
+     * School and Invite. Everything below asks Postgres to confirm the "and
+     * nothing else" — with the flag set and NO school bound at all.
+     * ---------------------------------------------------------------- */
+    const asSuperuser = async <T>(work: (tx: TxLike) => Promise<T>): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.is_superuser', '1', true)`);
+        // Deliberately no app.school_ids: an operator belongs to no school, and
+        // binding one here would prove nothing about the flag.
+        return work(tx);
+      });
+
+    const superuserSchools = (await asSuperuser((tx) => tx.school.findMany({}))) as unknown[];
+    check(
+      "⚠ a superuser sees every school, with no school bound",
+      superuserSchools.length >= 2,
+      `saw ${superuserSchools.length} school(s) — the operator cannot administer what they cannot list`,
+    );
+
+    const anyTx = (tx: TxLike) => tx as unknown as Record<string, { count: (a?: unknown) => Promise<number> }>;
+
+    // The list that matters. Each is a table an operator must NOT be able to
+    // read, and each is a different shape of school data.
+    //
+    // Post carries a WHERE, and finding out why was worth the run: an operator
+    // CAN see an approved GLOBAL post, because every school can — that is the
+    // global feed, and it is public across schools on purpose. Counting all
+    // posts made this check fail for a reason that had nothing to do with the
+    // superuser flag. What the check meant all along is "no more than anybody
+    // else sees", so it now asks for the school-scoped ones.
+    const tables: [string, unknown][] = [
+      ["membership", {}],
+      ["attendanceRecord", {}],
+      ["grade", {}],
+      ["remarkMessage", {}],
+      ["post", { where: { scope: { not: "GLOBAL" } } }],
+      ["enrollment", {}],
+      ["auditLog", {}],
+    ];
+
+    for (const [table, args] of tables) {
+      let rows = -1;
+      try {
+        rows = await asSuperuser((tx) => anyTx(tx)[table]!.count(args));
+      } catch {
+        rows = -1; // refused outright is also a pass
+      }
+      check(
+        `⚠ …and NO ${table} rows, because the flag opens two tables and not this one`,
+        rows <= 0,
+        `a superuser read ${rows} ${table} row(s) — the operator boundary is not where it claims to be`,
+      );
+    }
+
+    // Writes, not only reads: Invite is superuser-writable ON PURPOSE (it is how
+    // a school gets its first admin) and Membership is not (that would be
+    // self-service enrolment into any school on the server).
+    let mintedMembership = 0;
+    try {
+      await asSuperuser((tx) =>
+        tx.membership.create({
+          data: {
+            id: "verify-superuser-membership",
+            userId: "verify-u",
+            schoolId: "verify-a",
+            role: "ADMIN",
+            status: "ACTIVE",
+          },
+        }),
+      );
+      mintedMembership = 1;
+    } catch {
+      mintedMembership = 0;
+    }
+    check(
+      "⚠ a superuser cannot mint themselves a membership in any school",
+      mintedMembership === 0,
+      "the operator wrote a Membership row — they can join any school they like, which defeats the boundary",
+    );
+
     // LAST, because it deliberately poisons the connection: the mistake this
     // design exists to prevent, demonstrated rather than described — a plain
     // SET, outside a transaction, on a pooled connection. Anything added after

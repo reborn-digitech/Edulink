@@ -57,6 +57,16 @@ export type RequestTenant = {
    */
   userId: string | null;
   /**
+   * Whoever runs the SERVER, which is not whoever runs a school.
+   *
+   * Set as `app.is_superuser`, and read by exactly two policies — School and
+   * Invite. It is not a wider tenant set and must never become one: a superuser
+   * with every school in `schoolIds` would be able to read every child's marks,
+   * which is precisely the thing this flag is written to not be. See the
+   * SUPERUSER_TABLES note in scripts/gen-rls.ts.
+   */
+  isSuperuser: boolean;
+  /**
    * An unguessable code somebody has just typed in, when that is the ONLY thing
    * they have.
    *
@@ -69,7 +79,12 @@ export type RequestTenant = {
   joinCode: string | null;
 };
 
-export const NO_TENANT: RequestTenant = { schoolIds: [], userId: null, joinCode: null };
+export const NO_TENANT: RequestTenant = {
+  schoolIds: [],
+  userId: null,
+  joinCode: null,
+  isSuperuser: false,
+};
 
 /**
  * A deliberate, scoped override of what the resolver would have said.
@@ -142,7 +157,14 @@ export function forTenant<T>(tenant: RequestTenant, work: () => Promise<T>): Pro
 export function forSchool<T>(schoolId: string, work: () => Promise<T>): Promise<T> {
   const current = override.getStore();
   return forTenant(
-    { schoolIds: [schoolId], userId: current?.userId ?? null, joinCode: current?.joinCode ?? null },
+    {
+      schoolIds: [schoolId],
+      userId: current?.userId ?? null,
+      joinCode: current?.joinCode ?? null,
+      // Narrowing to one school must not drop the operator key: a superuser
+      // correcting a school's details is doing exactly that, inside forSchool.
+      isSuperuser: current?.isSuperuser ?? false,
+    },
     work,
   );
 }
@@ -171,7 +193,7 @@ export function forOwnSchools<T>(
   schoolIds: string[],
   work: () => Promise<T>,
 ): Promise<T> {
-  return forTenant({ schoolIds: [...new Set(schoolIds)], userId, joinCode: null }, work);
+  return forTenant({ schoolIds: [...new Set(schoolIds)], userId, joinCode: null, isSuperuser: false }, work);
 }
 
 /**
@@ -188,7 +210,7 @@ export function forOwnSchools<T>(
  * self-service enrolment in whichever school you named.
  */
 export function forUser<T>(userId: string, work: () => Promise<T>): Promise<T> {
-  return forTenant({ schoolIds: [], userId, joinCode: null }, work);
+  return forTenant({ schoolIds: [], userId, joinCode: null, isSuperuser: false }, work);
 }
 
 /**
@@ -205,5 +227,8 @@ export function forUser<T>(userId: string, work: () => Promise<T>): Promise<T> {
  * from every WITH CHECK — a code gets you a look, never a write.
  */
 export function forJoinCode<T>(joinCode: string, work: () => Promise<T>): Promise<T> {
-  return forTenant({ schoolIds: [], userId: override.getStore()?.userId ?? null, joinCode }, work);
+  return forTenant(
+    { schoolIds: [], userId: override.getStore()?.userId ?? null, joinCode, isSuperuser: false },
+    work,
+  );
 }

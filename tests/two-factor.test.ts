@@ -42,6 +42,7 @@ function ctx(userId: string): ActiveContext {
       email: EMAIL,
       avatarKey: null,
       isMinor: false,
+      isSuperuser: false,
       prefs: {
         theme: "system",
         contrast: "normal",

@@ -46,6 +46,10 @@ export const en = {
     availability: "Availability",
     profile: "Profile",
     account: "Account",
+    dashboard: "Dashboard",
+    leave: "Leave",
+    reportCards: "Report cards",
+    staff: "Staff",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -78,6 +82,12 @@ export const en = {
     notificationSettingsHint: "Choose what you are told",
     editProfile: "Edit profile",
     editProfileHint: "Headline, bio and specialisms",
+    reviewLeave: "Review leave requests",
+    reviewLeaveHint: "Approve or decline time away",
+    classInsights: "Class insights",
+    classInsightsHint: "Attendance and progress by class",
+    applyLeave: "Apply for leave",
+    applyLeaveHint: "Ask the principal for time away",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -116,6 +126,8 @@ export const en = {
   role: {
     admin: "School admin",
     adminPlural: "Admins",
+    principal: "Principal",
+    principalPlural: "Principals",
     teacher: "Teacher",
     teacherPlural: "Teachers",
     student: "Student",

@@ -42,15 +42,15 @@ DROP POLICY IF EXISTS "School_tenant_isolation" ON "School";
 DROP POLICY IF EXISTS "School_readable" ON "School";
 CREATE POLICY "School_tenant_isolation" ON "School"
   FOR ALL
-  USING ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
-  WITH CHECK ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+  USING (("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'))
+  WITH CHECK (("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'));
 
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
   -- It is in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "School_readable" ON "School"
   FOR SELECT
-  USING ("id" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+  USING (("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1')
          OR "code" = current_setting('app.join_code', true)
         );
 
@@ -258,15 +258,15 @@ DROP POLICY IF EXISTS "Invite_tenant_isolation" ON "Invite";
 DROP POLICY IF EXISTS "Invite_readable" ON "Invite";
 CREATE POLICY "Invite_tenant_isolation" ON "Invite"
   FOR ALL
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
-  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+  USING (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'))
+  WITH CHECK (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'));
 
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
   -- It is in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "Invite_readable" ON "Invite"
   FOR SELECT
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+  USING (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1')
          OR "tokenHash" = current_setting('app.join_code', true)
         );
 

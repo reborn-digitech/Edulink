@@ -97,6 +97,40 @@ const SELF_READABLE: Record<string, string> = {
 const NULL_SCHOOL_WRITABLE = new Set(["AuditLog"]);
 
 /**
+ * Tables a SUPERUSER may read and write outside any school.
+ *
+ * THE FIRST ACTOR THIS SCHEMA HAS EVER HAD ABOVE A SCHOOL, so the list is two
+ * tables long and each one is here for a stated reason:
+ *
+ *   - School, because somebody has to create one. Registration can mint a school
+ *     with no tenant already (that is how a school signs itself up), but nobody
+ *     could LIST schools or correct a name afterwards without being a member of
+ *     each — which is not a thing the person running the server should have to
+ *     become.
+ *
+ *   - Invite, because the way a school gets its first admin is an invitation,
+ *     and the invitation has to be written before that admin exists.
+ *
+ * WHAT IS DELIBERATELY ABSENT IS THE POINT. Membership, Grade, AttendanceRecord,
+ * RemarkMessage, Post — none of them are here, so a superuser querying a child's
+ * marks gets nothing back from Postgres, not merely a hidden button. The
+ * operator of this server can set up a school and can invite its administrator;
+ * they cannot read a single register.
+ *
+ * NOT read-only, unlike every other widening in this file — creating a school
+ * is a write. So this clause goes into the FOR ALL policy, in USING and in WITH
+ * CHECK, rather than into the FOR SELECT one. That does mean a superuser can
+ * DELETE a school, cascading everything it owns. That is a real power and it is
+ * the honest one: this flag means "whoever runs the server", and whoever runs
+ * the server has `psql`. The UI offers no delete.
+ *
+ * Superuser AUDIT rows are written with schoolId NULL through NULL_SCHOOL_WRITABLE
+ * above, with the school named in `meta`. They therefore appear in no school's
+ * Safety Centre — an operator's actions belong to the operator, not to a tenant.
+ */
+const SUPERUSER_TABLES = new Set(["School", "Invite"]);
+
+/**
  * Tables where SOME rows are readable by every school, by the predicate given.
  *
  * The global feed, and the only place in this schema where one school's row is
@@ -208,7 +242,12 @@ function generate(): string {
 
   for (const table of tenantTables) {
     const column = table === "School" ? "id" : "schoolId";
-    const scoped = `"${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ','))`;
+    const tenantClause = `"${column}" = ANY (string_to_array(current_setting('app.school_ids', true), ','))`;
+    // Same `true` argument and the same fail-closed reasoning as the tenant
+    // clause: an unset variable is NULL, and NULL = '1' is not true.
+    const scoped = SUPERUSER_TABLES.has(table)
+      ? `(${tenantClause} OR current_setting('app.is_superuser', true) = '1')`
+      : tenantClause;
     const selfColumn = SELF_READABLE[table];
     const codeColumn = CODE_READABLE[table];
     const globalClause = GLOBALLY_READABLE[table];

@@ -41,6 +41,10 @@ export type SessionReadableClient = {
       activeRole: string | null;
       revokedAt: Date | null;
       expiresAt: Date;
+      // Read through the session's own relation rather than a second query.
+      // User carries no policy, so this needs no tenant to succeed — the same
+      // reason the session lookup itself works here.
+      user: { isSuperuser: boolean } | null;
     } | null>;
   };
   guardianship: {
@@ -89,6 +93,7 @@ export const resolveRequestTenant = cache(
         activeRole: true,
         revokedAt: true,
         expiresAt: true,
+        user: { select: { isSuperuser: true } },
       },
     });
 
@@ -97,6 +102,12 @@ export const resolveRequestTenant = cache(
     if (!session) return NO_TENANT;
     if (session.revokedAt) return NO_TENANT;
     if (session.expiresAt.getTime() < Date.now()) return NO_TENANT;
+
+    // ORTHOGONAL TO THE SCHOOL SET, and every branch below carries it unchanged.
+    // Somebody who runs the server may also teach somewhere, so this is not an
+    // alternative to having schools — it is an extra key to two tables, and it
+    // widens nothing else. See RequestTenant.isSuperuser.
+    const isSuperuser = session.user?.isSuperuser === true;
 
     // A parent has no school of their own and legitimately spans them: their
     // schools are their children's. This is the one role whose set is not simply
@@ -111,6 +122,7 @@ export const resolveRequestTenant = cache(
         schoolIds: [...new Set(guardianships.map((g) => g.studentSchoolId))],
         userId: session.userId,
         joinCode: null,
+        isSuperuser,
       };
     }
 
@@ -153,6 +165,7 @@ export const resolveRequestTenant = cache(
         schoolIds: [...new Set(bookings.map((b) => b.schoolId))],
         userId: session.userId,
         joinCode: null,
+        isSuperuser,
       };
     }
 
@@ -162,13 +175,18 @@ export const resolveRequestTenant = cache(
     // even when some future code path forgets to ask `getSession()` first. So
     // the database is told about a school only once this user is known to still
     // actively belong to it.
-    if (!session.activeSchoolId) return { schoolIds: [], userId: session.userId, joinCode: null };
+    if (!session.activeSchoolId) {
+      // No school on the session is the ordinary state for a superuser who runs
+      // the server and teaches nowhere. They still get their two tables.
+      return { schoolIds: [], userId: session.userId, joinCode: null, isSuperuser };
+    }
 
     const belongs = await ownMembershipIn(client, session.userId, session.activeSchoolId);
     return {
       schoolIds: belongs ? [session.activeSchoolId] : [],
       userId: session.userId,
       joinCode: null,
+      isSuperuser,
     };
   },
 );

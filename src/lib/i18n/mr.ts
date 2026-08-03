@@ -43,6 +43,10 @@ export const mr: Dictionary = {
     availability: "उपलब्धता",
     profile: "प्रोफाइल",
     account: "खाते",
+    dashboard: "डॅशबोर्ड",
+    leave: "रजा",
+    reportCards: "प्रगतिपुस्तक",
+    staff: "कर्मचारी",
   },
 
   action: {
@@ -72,6 +76,12 @@ export const mr: Dictionary = {
     notificationSettingsHint: "तुम्हाला काय कळवायचे ते निवडा",
     editProfile: "प्रोफाइल संपादित करा",
     editProfileHint: "परिचय, माहिती आणि तज्ज्ञता",
+    reviewLeave: "रजा अर्ज पाहा",
+    reviewLeaveHint: "रजा मंजूर किंवा नामंजूर करा",
+    classInsights: "वर्गाची माहिती",
+    classInsightsHint: "वर्गानुसार उपस्थिती आणि प्रगती",
+    applyLeave: "रजेसाठी अर्ज करा",
+    applyLeaveHint: "मुख्याध्यापकांकडे रजा मागा",
   },
 
   shell: {
@@ -101,6 +111,8 @@ export const mr: Dictionary = {
   role: {
     admin: "शाळा प्रशासक",
     adminPlural: "प्रशासक",
+    principal: "मुख्याध्यापक",
+    principalPlural: "मुख्याध्यापक",
     teacher: "शिक्षक",
     teacherPlural: "शिक्षक",
     student: "विद्यार्थी",
