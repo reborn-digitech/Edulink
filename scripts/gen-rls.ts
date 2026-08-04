@@ -77,6 +77,13 @@ const SELF_READABLE: Record<string, string> = {
   // school through this table, so it has to be readable before any school is
   // known. Read-only, keyed on their own user id.
   MentorThread: "expertUserId",
+  // A LEAVING CERTIFICATE OUTLIVES THE MEMBERSHIP IT DESCRIBES, which is the
+  // whole difficulty. The moment a pupil leaves Riverside, Riverside drops out
+  // of their tenant set — correctly — and a policy keyed only on `schoolId`
+  // would hide their own certificate from them at exactly the moment they need
+  // to show it to somebody. Keyed on their user id it opens theirs and nobody
+  // else's, read-only like every other clause here.
+  SchoolRecord: "studentUserId",
 };
 
 /**
@@ -175,6 +182,55 @@ const SUPERUSER_TABLES = new Set(["School", "Invite"]);
  */
 const GLOBALLY_READABLE: Record<string, string> = {
   Post: `"scope" = 'GLOBAL' AND "status" = 'APPROVED'`,
+};
+
+/**
+ * Tables a school may read ABOUT A PERSON WHO IS CURRENTLY ONE OF THEIRS.
+ *
+ * There is exactly one, and it is the leaving certificate. This is the only
+ * clause in this file that lets one school read a row another school wrote, so
+ * it is worth being precise about what it does and does not open.
+ *
+ * WHAT IT IS FOR. A child transfers from Riverside to Oakfield. Oakfield needs
+ * to know where the child came from, what grade they reached and roughly how
+ * their attendance went — which is what a transfer certificate has carried on
+ * paper for a century. Riverside wrote that document deliberately, knowing it
+ * would be handed over.
+ *
+ * WHAT IT IS NOT. It is not a window into Riverside. `SchoolRecord` holds a
+ * summary and counts; Riverside's marks, registers, messages and report cards
+ * are ordinary school-scoped rows and remain exactly as unreachable as they were
+ * — this clause is on ONE table and cannot reach any other. Nor does it let
+ * Oakfield browse: the EXISTS is anchored on a live ACTIVE membership in
+ * Oakfield, so it opens certificates for the children Oakfield actually teaches
+ * and for nobody else. A child who leaves Oakfield too drops straight back out
+ * of it, because `leftAt` is in the predicate.
+ *
+ * WHY THE SUBQUERY IS SAFE. It reads Membership, which has its own policy, and
+ * that policy composes rather than conflicts: it already restricts to this
+ * caller's schools, and the predicate below asks for the same thing again
+ * explicitly. There is no recursion — Membership's policy references no table.
+ *
+ * THE `m."schoolId" = ANY(...)` LINE IS REDUNDANT TODAY, AND STAYS. Deleting it
+ * was tried against `npm run rls:verify` and every check still passed, because
+ * Membership's own policy had already narrowed the subquery to this caller's
+ * schools. That is defence in depth doing its job, not a spare line: the moment
+ * this clause depends on ANOTHER table's policy for its safety, a change over
+ * there silently becomes a change to who can read a child's history. Replacing
+ * the whole predicate with `true` IS caught, which is the check that matters.
+ *
+ * READ ONLY, like everything else here: it goes into the FOR SELECT policy and
+ * never into WITH CHECK, so Oakfield can read the certificate and can never
+ * write, edit or withdraw one. Issuing stays with the school that signed it.
+ */
+const MEMBER_READABLE: Record<string, string> = {
+  SchoolRecord: `EXISTS (
+           SELECT 1 FROM "Membership" m
+            WHERE m."userId" = "SchoolRecord"."studentUserId"
+              AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."status" = 'ACTIVE'
+              AND m."leftAt" IS NULL
+         )`,
 };
 
 /**
@@ -280,6 +336,8 @@ function generate(): string {
     if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
     if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
     if (globalClause) alsoReadable.push(`(${globalClause})`);
+    const memberClause = MEMBER_READABLE[table];
+    if (memberClause) alsoReadable.push(`(${memberClause})`);
     if (SUPERUSER_NULL_READABLE.has(table)) {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
@@ -305,6 +363,15 @@ function generate(): string {
         `  -- is the one row in this schema a different school may read. Status is`,
         `  -- in the predicate so nothing reaches other schools before the school`,
         `  -- that wrote it has approved it.`,
+      );
+    }
+    if (memberClause) {
+      usingNote.push(
+        `  -- …and the leaving certificate of a child who is one of YOUR pupils`,
+        `  -- now, whichever school issued it. The one clause in this file that`,
+        `  -- crosses schools, on one table that holds a summary rather than a`,
+        `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,`,
+        `  -- so it cannot be used to browse.`,
       );
     }
     if (SUPERUSER_NULL_READABLE.has(table)) {

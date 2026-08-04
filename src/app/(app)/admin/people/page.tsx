@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { RowActions } from "./row-actions";
+import { LeavingActions } from "./leaving-actions";
 import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
@@ -44,7 +45,12 @@ export default async function DirectoryPage({
   // Anything other than the literal "SUSPENDED" means the ordinary view. Not a
   // pass-through of `params.status` into the query — this is user input, and it
   // lands in a WHERE clause.
-  const status = params.status === "SUSPENDED" ? "SUSPENDED" : "ACTIVE";
+  // THREE VIEWS, and "LEFT" is not a membership status — it is `leftAt` being
+  // set. Kept out of the `status` column deliberately: a pupil who transfers
+  // away was ACTIVE right up to the day they went, and rewriting that would
+  // lose the difference between "we paused them" and "they moved school".
+  const status =
+    params.status === "SUSPENDED" ? "SUSPENDED" : params.status === "LEFT" ? "LEFT" : "ACTIVE";
   // Page is user input; clamp it rather than trusting it into a skip.
   const page = Math.max(1, Math.min(1000, Number.parseInt(params.page ?? "1", 10) || 1));
 
@@ -58,8 +64,9 @@ export default async function DirectoryPage({
   // schoolId first and always — the filters below only ever narrow it. (§6)
   const where: Prisma.MembershipWhereInput = {
     schoolId: ctx.schoolId,
-    status,
-    leftAt: null,
+    ...(status === "LEFT"
+      ? { leftAt: { not: null } }
+      : { status, leftAt: null }),
     ...(roleFilter ? { role: roleFilter } : {}),
     ...(classFilter
       ? {
@@ -82,7 +89,7 @@ export default async function DirectoryPage({
       : {}),
   };
 
-  const [members, total, classes, roleCounts, suspendedCount] = await Promise.all([
+  const [members, total, classes, roleCounts, suspendedCount, leftCount] = await Promise.all([
     db.membership.findMany({
       where,
       include: {
@@ -92,6 +99,7 @@ export default async function DirectoryPage({
           include: { class: { select: { name: true } } },
         },
         classTeachers: { include: { class: { select: { name: true } } } },
+        schoolRecord: { select: { destination: true } },
       },
       orderBy:
         sort === "recent" ? { joinedAt: "desc" } : [{ user: { name: "asc" } }],
@@ -110,6 +118,7 @@ export default async function DirectoryPage({
       _count: true,
     }),
     db.membership.count({ where: { schoolId: ctx.schoolId, status: "SUSPENDED", leftAt: null } }),
+    db.membership.count({ where: { schoolId: ctx.schoolId, leftAt: { not: null } } }),
   ]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -141,6 +150,7 @@ export default async function DirectoryPage({
         sort={sort}
         status={status}
         suspendedCount={suspendedCount}
+        leftCount={leftCount}
         classes={classes}
       />
 
@@ -148,6 +158,14 @@ export default async function DirectoryPage({
         <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
           These people cannot open this school. Their work, marks and attendance are untouched, and
           none of this affects any other school they belong to.
+        </p>
+      )}
+
+      {status === "LEFT" && (
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg">
+          These pupils have gone. Everything they did here is still here — you are still the school
+          that holds it. Each of them has a school record they and their family can show to their
+          next school, and undoing a departure puts them back on the roll.
         </p>
       )}
 
@@ -215,7 +233,15 @@ export default async function DirectoryPage({
                             {subjects.join(", ")}
                           </p>
                         )}
-                        {member.status === "SUSPENDED" && (
+                        {member.leftAt && (
+                          <p className="mt-1 text-xs leading-relaxed text-fg-muted">
+                            Left {relativeTime(member.leftAt)}
+                            {member.schoolRecord?.destination
+                              ? ` · went to ${member.schoolRecord.destination}`
+                              : ""}
+                          </p>
+                        )}
+                        {member.status === "SUSPENDED" && !member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-warn">
                             Paused {member.suspendedAt ? relativeTime(member.suspendedAt) : ""}
                             {member.suspendedReason ? ` · ${member.suspendedReason}` : ""}
@@ -235,11 +261,20 @@ export default async function DirectoryPage({
                         {t(ROLE_META[role].labelKey)}
                       </Badge>
 
-                      {!isSelf && (
+                      {!isSelf && !member.leftAt && (
                         <RowActions
                           membershipId={member.id}
                           name={displayName}
                           suspended={member.status === "SUSPENDED"}
+                        />
+                      )}
+                      {/* Pupils only. Staff who leave get a reference, not a
+                          leaving certificate — see school-record.ts. */}
+                      {!isSelf && role === "STUDENT" && (
+                        <LeavingActions
+                          membershipId={member.id}
+                          name={displayName}
+                          hasLeft={member.leftAt !== null}
                         />
                       )}
                     </div>

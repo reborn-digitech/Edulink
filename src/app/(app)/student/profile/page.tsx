@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { SealCheckIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import { GraduationCapIcon, SealCheckIcon, UserIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getBadges } from "@/lib/badges";
+import { myRecords } from "@/lib/school-record";
+import { SchoolRecordList } from "@/components/school-record-list";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ProfileForm } from "./form";
 import { BadgeGrid } from "./badges";
@@ -25,6 +27,11 @@ export default async function StudentProfilePage() {
       },
     },
   });
+
+  // Schools this child has been at BEFORE this one. They read it through their
+  // own user id rather than through a school — see school-record.ts — which is
+  // the only reason it survives their leaving the school that wrote it.
+  const previous = await myRecords(ctx);
 
   const badges = await getBadges(ctx.schoolId, ctx.membershipId, membership.school.timezone);
   const earned = badges.filter((b) => b.earned);
@@ -61,6 +68,19 @@ export default async function StudentProfilePage() {
           />
         </CardBody>
       </Card>
+
+      {previous.length > 0 && (
+        <Card>
+          <CardHeader
+            icon={<GraduationCapIcon weight="duotone" className="size-5" />}
+            title="Schools you have been to"
+            description="Written by each school when you left. Your new school can see this too."
+          />
+          <CardBody>
+            <SchoolRecordList records={previous} />
+          </CardBody>
+        </Card>
+      )}
 
       <Card>
         <CardHeader

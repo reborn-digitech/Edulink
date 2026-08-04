@@ -65,38 +65,39 @@ model School {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  memberships     Membership[]
-  classes         Class[]
-  gradeCategories GradeCategory[]
-  globalPostHides GlobalPostHide[]
-  expertBookings  ExpertBooking[]
-  expertMessages  ExpertMessage[]
-  expertInvites   ExpertInvite[]
-  mentorThreads   MentorThread[]
-  mentorMessages  MentorMessage[]
-  invites         Invite[]
-  posts          Post[]
-  competitions   Competition[]
-  auditLogs      AuditLog[]
-  attendance     AttendanceSession[]
+  memberships      Membership[]
+  classes          Class[]
+  gradeCategories  GradeCategory[]
+  globalPostHides  GlobalPostHide[]
+  expertBookings   ExpertBooking[]
+  expertMessages   ExpertMessage[]
+  expertInvites    ExpertInvite[]
+  mentorThreads    MentorThread[]
+  mentorMessages   MentorMessage[]
+  invites          Invite[]
+  posts            Post[]
+  competitions     Competition[]
+  auditLogs        AuditLog[]
+  attendance       AttendanceSession[]
   attendanceCovers AttendanceCover[]
-  leaveRequests  LeaveRequest[]
-  reportCards    ReportCard[]
-  reportCardItems ReportCardItem[]
-  assignments    Assignment[]
-  remarks        RemarkThread[]
-  reports        Report[]
-  classTeachers  ClassTeacher[]
-  enrollments    Enrollment[]
-  remarkMessages RemarkMessage[]
-  comments       Comment[]
-  reactions      Reaction[]
-  academicYears  AcademicYear[]
-  holidays       Holiday[]
-  earnedBadges   EarnedBadge[]
-  quizAttempts   QuizAttempt[]
-  quizResponses  QuizResponse[]
-  quizMastery    QuizMastery[]
+  leaveRequests    LeaveRequest[]
+  reportCards      ReportCard[]
+  reportCardItems  ReportCardItem[]
+  assignments      Assignment[]
+  remarks          RemarkThread[]
+  reports          Report[]
+  classTeachers    ClassTeacher[]
+  enrollments      Enrollment[]
+  remarkMessages   RemarkMessage[]
+  comments         Comment[]
+  reactions        Reaction[]
+  academicYears    AcademicYear[]
+  holidays         Holiday[]
+  earnedBadges     EarnedBadge[]
+  quizAttempts     QuizAttempt[]
+  quizResponses    QuizResponse[]
+  quizMastery      QuizMastery[]
+  schoolRecords    SchoolRecord[]
 
   @@index([code])
 }
@@ -174,6 +175,7 @@ model User {
   expertProfile     ExpertProfile?
   expertMessages    ExpertMessage[]
   mentorMessages    MentorMessage[]
+  schoolRecords     SchoolRecord[]
 
   @@index([email])
 }
@@ -234,6 +236,7 @@ model Membership {
   globalPostsHidden      GlobalPostHide[]    @relation("GlobalPostHider")
   expertBookingsMade     ExpertBooking[]     @relation("ExpertBookingBooker")
   expertInvitesCreated   ExpertInvite[]      @relation("ExpertInviteCreator")
+  schoolRecord           SchoolRecord?
   mentorshipsAsStudent   MentorThread[]      @relation("MentorStudent")
   mentorshipsCreated     MentorThread[]      @relation("MentorCreator")
   invitesCreated         Invite[]            @relation("InviteCreator")
@@ -298,15 +301,15 @@ model Class {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  school         School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  teachers       ClassTeacher[]
+  school           School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teachers         ClassTeacher[]
   attendanceCovers AttendanceCover[]
-  reportCards    ReportCard[]
-  enrollments    Enrollment[]
-  attendance     AttendanceSession[]
-  assignments    Assignment[]
-  posts          Post[]
-  gradeCategories GradeCategory[]
+  reportCards      ReportCard[]
+  enrollments      Enrollment[]
+  attendance       AttendanceSession[]
+  assignments      Assignment[]
+  posts            Post[]
+  gradeCategories  GradeCategory[]
 
   @@index([schoolId, archivedAt])
 }
@@ -331,8 +334,8 @@ model ClassTeacher {
   /// true, and the admin's control is to withdraw it from the people who should
   /// not have it: a visiting music teacher attached to six classes does not mark
   /// six registers.
-  canTakeAttendance   Boolean @default(true)
-  school              School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  canTakeAttendance Boolean @default(true)
+  school            School  @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
   teacher Membership @relation(fields: [teacherMembershipId], references: [id], onDelete: Cascade)
@@ -490,13 +493,13 @@ model ReportCardItem {
 /// Date keys, inclusive both ends, like Holiday and AttendanceCover — "Monday to
 /// Friday" is what a school says.
 model LeaveRequest {
-  id                 String @id @default(cuid())
-  schoolId           String
+  id                  String @id @default(cuid())
+  schoolId            String
   teacherMembershipId String
 
   fromDateKey String
   toDateKey   String
-  kind        String  @default("CASUAL") // CASUAL | SICK | UNPAID | OTHER
+  kind        String @default("CASUAL") // CASUAL | SICK | UNPAID | OTHER
   reason      String
 
   status String @default("PENDING") // PENDING | APPROVED | DECLINED | CANCELLED
@@ -535,7 +538,7 @@ model LeaveRequest {
 /// Holiday, and for the same reason: "Monday to Friday" is what a school says,
 /// and a timestamp would put a cover in the wrong day across a DST boundary.
 model AttendanceCover {
-  id                   String  @id @default(cuid())
+  id                   String @id @default(cuid())
   schoolId             String
   classId              String
   coveringMembershipId String
@@ -552,10 +555,10 @@ model AttendanceCover {
 
   createdAt DateTime @default(now())
 
-  school    School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  class     Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
-  covering  Membership   @relation("AttendanceCovering", fields: [coveringMembershipId], references: [id], onDelete: Cascade)
-  createdBy Membership?  @relation("AttendanceCoverCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class     Class       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  covering  Membership  @relation("AttendanceCovering", fields: [coveringMembershipId], references: [id], onDelete: Cascade)
+  createdBy Membership? @relation("AttendanceCoverCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
 
   @@index([schoolId, classId, fromDateKey])
   @@index([coveringMembershipId])
@@ -610,11 +613,11 @@ model Assignment {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
-  school      School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  class       Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
-  author      Membership   @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
-  submissions Submission[]
-  grades      Grade[]
+  school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class           Class            @relation(fields: [classId], references: [id], onDelete: Cascade)
+  author          Membership       @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
+  submissions     Submission[]
+  grades          Grade[]
   reportCardItems ReportCardItem[]
 
   @@index([schoolId, dueAt])
@@ -823,9 +826,9 @@ model Post {
   authorship Membership? @relation("PostAuthorMembership", fields: [authorMembershipId], references: [id], onDelete: SetNull)
   reviewer   Membership? @relation("PostReviewer", fields: [reviewedByMembershipId], references: [id], onDelete: SetNull)
 
-  comments  Comment[]
+  comments    Comment[]
   globalHides GlobalPostHide[]
-  reactions Reaction[]
+  reactions   Reaction[]
 
   @@index([schoolId, status, createdAt])
   @@index([scope, status, createdAt])
@@ -1222,10 +1225,10 @@ model QuizTopic {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  questions     QuizQuestion[]
-  attempts      QuizAttempt[]
-  mastery       QuizMastery[]
-  translations  QuizTopicTranslation[]
+  questions    QuizQuestion[]
+  attempts     QuizAttempt[]
+  mastery      QuizMastery[]
+  translations QuizTopicTranslation[]
 
   @@index([subject, classLevel, position])
 }
@@ -1243,8 +1246,8 @@ model QuizTopic {
 /// translation before any of it is usable, because the alternative is that no
 /// language ships until every string is done.
 model QuizTopicTranslation {
-  id      String @id @default(cuid())
-  topicId String
+  id       String @id @default(cuid())
+  topicId  String
   /// BCP-47-ish and short: "hi", "mr". Matches UserPrefs.locale.
   language String
   name     String
@@ -1435,11 +1438,11 @@ model ExpertProfile {
   id     String @id @default(cuid())
   userId String @unique
 
-  headline    String
-  bio         String  @default("")
+  headline     String
+  bio          String  @default("")
   /// JSON string[] — "Careers", "Dyslexia support", "Olympiad maths".
-  specialisms String  @default("[]")
-  timezone    String  @default("UTC")
+  specialisms  String  @default("[]")
+  timezone     String  @default("UTC")
   /// Where they work, for a school choosing between them. Free text.
   organisation String?
 
@@ -1452,9 +1455,9 @@ model ExpertProfile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  slots    ExpertSlot[]
-  bookings ExpertBooking[]
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slots       ExpertSlot[]
+  bookings    ExpertBooking[]
   mentorships MentorThread[]
 
   @@index([publishedAt])
@@ -1483,7 +1486,7 @@ model ExpertSlot {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  expert  ExpertProfile   @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  expert  ExpertProfile  @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
   booking ExpertBooking?
 
   @@index([expertProfileId, startsAt])
@@ -1511,7 +1514,7 @@ model ExpertBooking {
   bookedByMembershipId String?
   /// What the school wants to discuss. Shown to the expert.
   topic                String
-  status               String @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED
+  status               String  @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -1565,8 +1568,8 @@ model ExpertInvite {
   schoolId  String?
   tokenHash String  @unique
 
-  email                String?
-  name                 String?
+  email                 String?
+  name                  String?
   invitedByMembershipId String?
 
   expiresAt      DateTime
@@ -1606,7 +1609,7 @@ model MentorThread {
   /// an expert's schools are derived from this table before any school is known.
   expertUserId    String
 
-  studentMembershipId  String
+  studentMembershipId   String
   createdByMembershipId String?
 
   /// Why this pairing exists. Shown to the guardian being asked to consent.
@@ -1673,4 +1676,67 @@ model RecoveryCode {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, usedAt])
+}
+
+/// What a school certifies about a pupil who has left it.
+///
+/// A LEAVING CERTIFICATE, AND THAT IS THE WHOLE DESIGN. When a child transfers
+/// from Riverside to Oakfield, Oakfield must never be able to read Riverside's
+/// rows — that boundary is the point of this schema and Postgres enforces it. So
+/// "their previous school" cannot be a query across schools. It is a DOCUMENT
+/// the leaving school writes, exactly as a report card is a document rather than
+/// a live view of a gradebook, and for the same reason: the school that issued
+/// it is accountable for what it says, and nothing about it changes afterwards.
+///
+/// A SUMMARY, NEVER AN EXPORT. Grade reached, the dates, how many days were
+/// marked and how many present, how many report cards were issued. Not the marks
+/// themselves, not the attendance day by day, not a message. That is what a real
+/// transfer certificate carries, and it is the difference between handing a new
+/// school what it needs and handing it a child's file.
+///
+/// `studentUserId` IS DENORMALISED ON PURPOSE, the same trick and the same
+/// reason as `ExpertBooking.expertUserId`: the pupil loses their membership of
+/// the issuing school the moment they leave, so a policy keyed only on
+/// `schoolId` would hide their own certificate from them. Keyed on their user
+/// id, `app.user_id` opens it and nothing else.
+model SchoolRecord {
+  id String @id @default(cuid())
+
+  /// The school that ISSUED it. Provenance, and what the ordinary tenant policy
+  /// scopes by — so the issuer can still read and correct what it wrote.
+  schoolId            String
+  /// The pupil. See the note above: this is what lets the record travel.
+  studentUserId       String
+  /// One per membership, so re-recording a departure corrects rather than
+  /// duplicates, and so undoing one can find it.
+  studentMembershipId String @unique
+
+  /// FROZEN AT ISSUE. A school may rename itself; a certificate it signed in
+  /// 2026 does not silently start saying something else.
+  schoolName String
+  gradeLevel String?
+  joinedAt   DateTime
+  leftAt     DateTime
+
+  /// TRANSFERRED | GRADUATED | LEFT
+  reason      String
+  /// Where they went, if the school knows. Free text: the receiving school is
+  /// very often not on this server, and a dropdown of schools would be a lie.
+  destination String?
+  note        String?
+
+  /// Snapshot figures. Counts, not rows.
+  attendanceMarked  Int @default(0)
+  attendancePresent Int @default(0)
+  reportCardCount   Int @default(0)
+
+  issuedByMembershipId String?
+  createdAt            DateTime @default(now())
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student    User       @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([studentUserId])
+  @@index([schoolId, leftAt])
 }

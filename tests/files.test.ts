@@ -92,17 +92,34 @@ beforeAll(async () => {
     where: { userId: sam.id, schoolId: oakfield.id, role: "ADMIN" },
   });
 
-  const classId = (
-    await db.classTeacher.findFirstOrThrow({ where: { teacherMembershipId: priyaTeacher.id } })
-  ).classId;
-  ownerClassId = classId;
-
   // The guardianship in the seed points at a child in Priya's class, so use
   // that child as the owner — then the parent is a real guardian of them.
   const link = await db.guardianship.findFirstOrThrow({
     where: { parentUserId: parentUser.id, student: { schoolId: riverside.id } },
     include: { student: { select: { id: true, userId: true } } },
   });
+
+  /**
+   * ⚠ THE CLASS THAT CHILD IS ACTUALLY IN, not whichever row came back first.
+   *
+   * Priya teaches three classes and this was `findFirst` with no `orderBy`.
+   * Every check below needs the owner, their classmate and the teacher to be in
+   * the SAME class — so when Postgres handed back a different one of Priya's
+   * three, the suite failed in a file nobody had edited. Re-seeding was enough
+   * to change which. Selecting on the relationship the test depends on is the
+   * fix; an `orderBy` would only have made it fail consistently.
+   */
+  const classId = (
+    await db.enrollment.findFirstOrThrow({
+      where: {
+        studentMembershipId: link.studentMembershipId,
+        status: "ACTIVE",
+        class: { teachers: { some: { teacherMembershipId: priyaTeacher.id } } },
+      },
+      select: { classId: true },
+    })
+  ).classId;
+  ownerClassId = classId;
 
   const others = await db.enrollment.findMany({
     where: { classId, status: "ACTIVE", studentMembershipId: { not: link.studentMembershipId } },

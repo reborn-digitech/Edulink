@@ -167,6 +167,121 @@ async function suspension(schoolId: string) {
  * register duty has been withdrawn must be refused by the API, not merely left
  * out of a list. The list is a convenience; the endpoint is the boundary.
  */
+/**
+ * ⚠ A PUPIL TRANSFERRING FROM ONE SCHOOL TO ANOTHER, END TO END.
+ *
+ * The claim this feature lives or dies on is a pair that pulls in opposite
+ * directions, and neither half can be shown by `npm test` — that suite runs as
+ * the database owner with no policies in force, so every read comes back the
+ * same whether the policy is right or deleted.
+ *
+ *   - The child's access to the school they LEFT ends. Not hidden: refused, by
+ *     the same tenant set that makes suspension work.
+ *   - The school they joined can read what the first school certified, and
+ *     nothing else of that school's.
+ *
+ * `rls:verify` proves both against raw SQL. This proves them through a real
+ * signed-in session and a rendered page, which is the other execution context —
+ * and this codebase has been caught more than once by a thing that held in one
+ * and not the other.
+ */
+async function transfer(fromSchoolId: string, toSchoolId: string) {
+  const pupil = await db.membership.findFirst({
+    where: {
+      schoolId: fromSchoolId,
+      role: "STUDENT",
+      status: "ACTIVE",
+      leftAt: null,
+      user: { email: { not: null } },
+    },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  if (!pupil?.user.email) {
+    skip("the transfer walk-through", `no pupil with an email at ${fromSchoolId}`);
+    return;
+  }
+
+  const atOldSchool = await mint(pupil.user.email, "STUDENT", fromSchoolId, "transfer-pupil");
+  await check(atOldSchool, "/student", 200, "before leaving, their school opens");
+
+  // The receiving school's admin, who must NOT see the certificate until the
+  // child is actually one of theirs.
+  const receivingAdmin = await db.membership.findFirst({
+    where: { schoolId: toSchoolId, role: "ADMIN", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { email: true } } },
+  });
+
+  const record = await db.schoolRecord.create({
+    data: {
+      schoolId: fromSchoolId,
+      studentUserId: pupil.user.id,
+      studentMembershipId: pupil.id,
+      schoolName: "ZZ Sweep Old School",
+      joinedAt: new Date("2024-04-01T00:00:00Z"),
+      leftAt: new Date(),
+      reason: "TRANSFERRED",
+      attendanceMarked: 10,
+      attendancePresent: 9,
+      reportCardCount: 2,
+    },
+    select: { id: true },
+  });
+  await db.membership.update({ where: { id: pupil.id }, data: { leftAt: new Date() } });
+
+  let newMembershipId: string | null = null;
+  try {
+    // ---- the school they left is closed to them now ----------------------
+    //
+    // The cookie is unchanged and still names that school. What changed is that
+    // the school no longer claims them — the revocation is the database's.
+    await check(atOldSchool, "/student", 307, "⚠ after leaving, their old school is closed to them");
+    await check(atOldSchool, "/student/grades", 307, "⚠ …including their marks there");
+
+    // ---- and their new school can read what the old one certified --------
+    const joined = await db.membership.create({
+      data: { userId: pupil.user.id, schoolId: toSchoolId, role: "STUDENT", status: "ACTIVE" },
+    });
+    newMembershipId = joined.id;
+
+    const atNewSchool = await mint(pupil.user.email!, "STUDENT", toSchoolId, "transfer-pupil-new");
+    const own = await hit(atNewSchool, "/student/profile");
+    results.push({
+      role: "transfer-pupil-new",
+      path: "/student/profile",
+      status: own.status,
+      expected: 200,
+      ok: own.status === 200 && own.body.includes("ZZ Sweep Old School"),
+      note: "⚠ the child carries their old school's record to the new one",
+    });
+
+    if (receivingAdmin?.user.email) {
+      const head = await mint(receivingAdmin.user.email, "ADMIN", toSchoolId, "transfer-new-admin");
+      const seen = await hit(head, `/reports/${joined.id}`);
+      results.push({
+        role: "transfer-new-admin",
+        path: "/reports/[new-membership]",
+        status: seen.status,
+        expected: 200,
+        ok: seen.status === 200 && seen.body.includes("ZZ Sweep Old School"),
+        note: "⚠ the receiving school reads the certificate the other school wrote",
+      });
+
+      // …and nothing else of the old school's. A guessed membership id from
+      // the school they left is still a 404, certificate or no certificate.
+      await check(
+        head,
+        `/reports/${pupil.id}`,
+        404,
+        "⚠ …but not the old school's own page about them",
+      );
+    }
+  } finally {
+    if (newMembershipId) await db.membership.deleteMany({ where: { id: newMembershipId } });
+    await db.schoolRecord.deleteMany({ where: { id: record.id } });
+    await db.membership.update({ where: { id: pupil.id }, data: { leftAt: null } });
+  }
+}
+
 async function staffingAndDuty(schoolId: string) {
   const klass = await db.class.findFirst({
     where: { schoolId, archivedAt: null },
@@ -997,6 +1112,7 @@ async function main() {
   }
 
   await suspension(riverside.id);
+  await transfer(riverside.id, oakfield.id);
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
   await joinCodeBootstrap(riverside.id);

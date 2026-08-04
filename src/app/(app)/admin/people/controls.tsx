@@ -21,6 +21,7 @@ export function DirectoryControls({
   classId,
   sort,
   status,
+  leftCount,
   suspendedCount,
   classes,
 }: {
@@ -28,7 +29,8 @@ export function DirectoryControls({
   role: SchoolRole | null;
   classId: string;
   sort: string;
-  status: "ACTIVE" | "SUSPENDED";
+  status: "ACTIVE" | "SUSPENDED" | "LEFT";
+  leftCount: number;
   suspendedCount: number;
   classes: { id: string; name: string }[];
 }) {
@@ -53,7 +55,7 @@ export function DirectoryControls({
       sort,
       // "" rather than "ACTIVE": the default view needs no parameter, so the
       // plain /admin/people URL keeps meaning what it has always meant.
-      status: status === "SUSPENDED" ? "SUSPENDED" : "",
+      status: status === "ACTIVE" ? "" : status,
       ...next,
     };
     for (const [key, value] of Object.entries(merged)) {
@@ -110,17 +112,27 @@ export function DirectoryControls({
           pause" are two different questions, and answering both at once is how
           a suspended pupil gets counted into a class total. The tab only
           appears once there is something behind it. */}
-      {suspendedCount > 0 && (
+      {(suspendedCount > 0 || leftCount > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           <FilterChip active={status === "ACTIVE"} onClick={() => navigate({ status: "" })}>
             In the school
           </FilterChip>
-          <FilterChip
-            active={status === "SUSPENDED"}
-            onClick={() => navigate({ status: "SUSPENDED" })}
-          >
-            Paused ({suspendedCount})
-          </FilterChip>
+          {suspendedCount > 0 && (
+            <FilterChip
+              active={status === "SUSPENDED"}
+              onClick={() => navigate({ status: "SUSPENDED" })}
+            >
+              Paused ({suspendedCount})
+            </FilterChip>
+          )}
+          {/* A THIRD TAB, NOT A SECOND MEANING FOR "PAUSED". A school in
+              September needs to know which of these children are coming back,
+              and one list holding both cannot answer it. */}
+          {leftCount > 0 && (
+            <FilterChip active={status === "LEFT"} onClick={() => navigate({ status: "LEFT" })}>
+              Left ({leftCount})
+            </FilterChip>
+          )}
         </div>
       )}
 

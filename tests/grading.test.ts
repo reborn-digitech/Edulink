@@ -52,10 +52,28 @@ beforeAll(async () => {
     where: { userId: tom.id, schoolId: riverside.id, role: "TEACHER" },
   });
 
-  const priyaClass = await db.classTeacher.findFirstOrThrow({
+  /**
+   * ⚠ THE CLASS WITH ENOUGH CHILDREN IN IT, not whichever row came back first.
+   *
+   * Priya teaches three classes and this was `findFirst` with no `orderBy`, so
+   * which one it picked was up to Postgres. The seed puts 18 pupils in one and
+   * 3 in each of the others, and the assertion below needs four — so the suite
+   * passed or failed depending on row order, and re-seeding was enough to flip
+   * it. Selecting on the property the test actually depends on is the fix; an
+   * `orderBy` would only have made the coin-toss repeatable.
+   */
+  const priyaClasses = await db.classTeacher.findMany({
     where: { teacherMembershipId: priyaMembership.id },
+    select: { classId: true },
   });
-  classId = priyaClass.classId;
+  let best: { classId: string; count: number } | null = null;
+  for (const row of priyaClasses) {
+    const count = await db.enrollment.count({
+      where: { classId: row.classId, status: "ACTIVE" },
+    });
+    if (!best || count > best.count) best = { classId: row.classId, count };
+  }
+  classId = best!.classId;
 
   teacher = {
     schoolId: riverside.id,

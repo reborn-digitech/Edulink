@@ -54,6 +54,12 @@ function psql(database: string, sql: string): string {
   });
 }
 
+/** One number, straight out of psql as the owner — used to check what a policy
+ *  refused actually stayed refused, rather than asking the refused client. */
+function psqlCount(sql: string): number {
+  return Number.parseInt(psql(DB, sql).trim(), 10);
+}
+
 function check(name: string, ok: boolean, detail: string): void {
   if (ok) {
     process.stdout.write(`  ok    ${name}\n`);
@@ -99,10 +105,20 @@ async function main() {
      INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES
        ('verify-u','U','{}',now()),
        ('verify-other','Other','{}',now());
-     INSERT INTO "Membership" (id,"userId","schoolId",role,status,"joinedAt") VALUES
-       ('verify-m-a','verify-u','verify-a','TEACHER','ACTIVE',now()),
-       ('verify-m-b','verify-u','verify-b','ADMIN','ACTIVE',now()),
-       ('verify-m-other','verify-other','verify-a','TEACHER','ACTIVE',now());
+     INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES
+       ('verify-pupil','Pupil','{}',now());
+     INSERT INTO "Membership" (id,"userId","schoolId",role,status,"joinedAt","leftAt") VALUES
+       ('verify-m-a','verify-u','verify-a','TEACHER','ACTIVE',now(),NULL),
+       ('verify-m-b','verify-u','verify-b','ADMIN','ACTIVE',now(),NULL),
+       ('verify-m-other','verify-other','verify-a','TEACHER','ACTIVE',now(),NULL),
+       -- A pupil who has LEFT school A and is now at school B. The whole point
+       -- of SchoolRecord in one row pair.
+       ('verify-m-pupil-a','verify-pupil','verify-a','STUDENT','ACTIVE',now(),now()),
+       ('verify-m-pupil-b','verify-pupil','verify-b','STUDENT','ACTIVE',now(),NULL);
+     INSERT INTO "SchoolRecord"
+       (id,"schoolId","studentUserId","studentMembershipId","schoolName","joinedAt","leftAt",reason,"attendanceMarked","attendancePresent","reportCardCount") VALUES
+       ('verify-rec-a','verify-a','verify-pupil','verify-m-pupil-a','A',now(),now(),'TRANSFERRED',10,9,2),
+       ('verify-rec-stranger','verify-a','verify-other','verify-m-other','A',now(),now(),'LEFT',4,4,1);
      INSERT INTO "Post" (id,"schoolId","authorUserId",scope,title,status,tags,media,"updatedAt") VALUES
        ('verify-post-a','verify-a','verify-u','SCHOOL','A post','APPROVED','[]','[]',now()),
        ('verify-post-b','verify-b','verify-u','SCHOOL','B post','APPROVED','[]','[]',now()),
@@ -453,6 +469,107 @@ async function main() {
       "⚠ knowing a join code does NOT let you delete the row it names",
       deletedByCode === 0,
       `a join code authorised DELETE — removed ${deletedByCode} school row(s), cascading to everything they own`,
+    );
+
+    /* ---------------------------------------------------------------- *
+     * The leaving certificate, and the only clause in this schema that
+     * lets one school read a row another school wrote.
+     *
+     * A pupil left school A and is now at school B. B must be able to read
+     * what A certified about them — that is what a transfer certificate IS —
+     * and B must still be unable to read anything else of A's, and unable to
+     * read A's certificates about children who are not B's. Every one of those
+     * is a claim about Postgres, so none of them can be made by `npm test`,
+     * which runs as the owner with no policies in force.
+     * ---------------------------------------------------------------- */
+    const recordCount = (tx: TxLike, args?: unknown) =>
+      (tx as unknown as { schoolRecord: { count: (a?: unknown) => Promise<number> } }).schoolRecord.count(
+        args,
+      );
+
+    const issuerSees = await withTenantOn(client, "verify-a", (tx) =>
+      recordCount(tx as TxLike, { where: { id: "verify-rec-a" } }),
+    );
+    check(
+      "⚠ the school that ISSUED a leaving certificate can still read it",
+      issuerSees === 1,
+      "the issuer cannot read what it certified, so it cannot correct or withdraw one",
+    );
+
+    const receiverSees = await withTenantOn(client, "verify-b", (tx) =>
+      recordCount(tx as TxLike, { where: { id: "verify-rec-a" } }),
+    );
+    check(
+      "⚠ …and so can the school the child attends NOW, though it never wrote it",
+      receiverSees === 1,
+      "the receiving school cannot read the certificate — the whole feature does nothing",
+    );
+
+    // The line that keeps that from being a hole. B reads certificates about
+    // B's OWN pupils. `verify-other` has a certificate from A and has never
+    // been anywhere near B.
+    const strangerSeen = await withTenantOn(client, "verify-b", (tx) =>
+      recordCount(tx as TxLike, { where: { id: "verify-rec-stranger" } }),
+    );
+    check(
+      "⚠ …but NOT a certificate about somebody who was never their pupil",
+      strangerSeen === 0,
+      `school B read ${strangerSeen} certificate(s) about a child it has never taught — the clause is a browse, not a handover`,
+    );
+
+    // And it opens ONE table. If reading a certificate about their own pupil
+    // also let B reach A's posts, the clause would be a tenant boundary with a
+    // hole in it rather than a document being handed over.
+    const bSeesAPosts = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { post: { count: (a: unknown) => Promise<number> } }).post.count({
+        where: { schoolId: "verify-a", scope: { not: "GLOBAL" } },
+      }),
+    );
+    check(
+      "⚠ …and reading it opens nothing else of the issuing school's",
+      bSeesAPosts === 0,
+      `school B read ${bSeesAPosts} of school A's posts — the certificate clause has widened past its table`,
+    );
+
+    // The pupil themselves, with NO school bound at all — which is their real
+    // situation the moment they leave, and the reason `studentUserId` is on
+    // the row. A policy keyed only on schoolId would hide their own
+    // certificate from them at exactly the moment they need to show it.
+    let pupilSees = -1;
+    try {
+      pupilSees = await client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', 'verify-pupil', true)`);
+        return recordCount(tx, { where: { id: "verify-rec-a" } });
+      });
+    } catch {
+      pupilSees = -1;
+    }
+    check(
+      "⚠ …and the child reads their own with no school bound at all",
+      pupilSees === 1,
+      "a pupil cannot read their own leaving certificate once they have left",
+    );
+
+    // Read-only, like every other widening clause here. The lesson the join
+    // code taught: a clause added to USING authorises DELETE too unless the
+    // widening lives in a FOR SELECT policy.
+    let receiverWrote = 0;
+    try {
+      await withTenantOn(client, "verify-b", (tx) =>
+        (
+          tx as unknown as { schoolRecord: { deleteMany: (a: unknown) => Promise<{ count: number }> } }
+        ).schoolRecord.deleteMany({ where: { id: "verify-rec-a" } }),
+      );
+      receiverWrote = await psqlCount(
+        `SELECT count(*) FROM "SchoolRecord" WHERE id = 'verify-rec-a'`,
+      );
+    } catch {
+      receiverWrote = 1; // refused outright is a pass
+    }
+    check(
+      "⚠ …and cannot delete a certificate it did not write",
+      receiverWrote === 1,
+      "the receiving school withdrew another school's certificate — a read clause authorised a DELETE again",
     );
 
     /* ---------------------------------------------------------------- *

@@ -148,7 +148,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (982 tests) |
+| `npm test` | Full suite (1,004 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -167,7 +167,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 223 route/role/negative combinations
+mints a real session per role, requests all 229 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -533,6 +533,25 @@ as destructive as deleting, because other suites assert on what is NOT there.
 The rule that holds is not "clean up after yourself" — it is **make your own
 fixtures and touch nobody else's**. Every suite added this session creates its
 own class with its own join code and deletes it on the way out.
+
+**And the sharpest version of the fixture rule, learned from mutation testing
+itself:** a negative test is only harmless *while the guard it tests is
+present*, and mutation testing exists precisely to remove that guard.
+`school-record.test.ts` had a test asserting that a departure cannot be recorded
+for a member of staff, aimed at seeded Tom. Fine — until the mutation run
+deleted the guard, the refusal became an action, and the run recorded a seeded
+teacher as having left, wrote him a certificate, and broke four suites in files
+nobody had edited. **The subject of a negative test has to be disposable too.**
+It is the case most likely to actually run.
+
+**And one that hid behind row order for months:** `grading.test.ts` and
+`files.test.ts` both picked a class with `findFirst` and no `orderBy`, from a
+teacher who has three. The seed puts 18 pupils in one and 3 in each of the
+others, so whether the suite passed depended on what Postgres felt like
+returning — and re-seeding was enough to flip it. Both now select on the
+property the test actually depends on (the class with enough children in it; the
+class the guardian's child is actually in). An `orderBy` would only have made the
+coin-toss repeatable.
 
 **And a smaller one that cost a bad commit:** `npm test | tail -4 && git commit`
 masks the exit code. `tail` succeeded, so `&&` proceeded, and 13 failures were
@@ -1166,7 +1185,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 223 checks in
+**Every route referenced by the navigation renders.** All 229 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1280,6 +1299,53 @@ navigation" means the actual list rather than one somebody maintained by hand.
   carries a sign-out button for exactly this reason. `npm run sweep` asserts the
   307 rather than wishing it away. Moving the account page out from behind the
   gate is its own change.
+
+### A pupil transferring school, and the certificate that goes with them
+
+**The problem is the tenant boundary, and it cannot be solved by relaxing it.**
+When a child moves from Riverside to Oakfield, Oakfield must never be able to
+read a Riverside row — that is the point of the whole schema and Postgres
+enforces it. So "their previous school, on their profile" cannot be a query
+across schools. It has to be a **document Riverside wrote**, frozen when it was
+written, exactly as a report card is a document rather than a live view of a
+gradebook.
+
+That is `SchoolRecord`: a leaving certificate. School name **as it was**, grade
+reached, the dates, days marked and days present, how many report cards were
+issued, and a line for the next school.
+
+**A summary, never an export.** Not the marks, not the register day by day, not
+a message. That is what a transfer certificate has carried on paper for a
+century, and it is the right amount: enough to place a child in the right class,
+not enough to precede them with a file. A receiving school that wants the detail
+asks the family for the report cards the family already has.
+
+**Leaving is not pausing**, and keeping them apart is most of `school-record.ts`.
+Suspension says *not for now* and expects the person back. This says *they have
+gone*, and a directory that cannot tell the two apart cannot answer the only
+question a school asks in September. `Membership.leftAt` is what changes — a
+column that 25 queries already filtered on and **nothing had ever written**, so
+until now there was no way to leave a school at all. Every one of those filters
+becomes the revocation for free: the moment it commits, Postgres stops handing
+that school's rows to that pupil. Nothing is deleted.
+
+**The policy grew one clause, and it is the only one in this schema that lets a
+school read a row another school wrote.** `MEMBER_READABLE` opens a certificate
+to a school where the child holds a live ACTIVE membership *now* — a handover,
+not a browse — plus `SELF_READABLE` on `studentUserId` so the child can still
+read their own after their membership at the issuing school has ended. Both are
+SELECT-only, so a receiving school can read a certificate and can never write,
+edit or withdraw one.
+
+Six live checks in `rls:verify` hold that shape: the issuer can read it, the
+receiving school can, a school that never taught the child **cannot**, reading it
+opens nothing else of the issuer's, the child reads their own with no school
+bound at all, and the receiving school cannot delete it. Replacing the predicate
+with `true` turns one red. The redundant-looking `m."schoolId" = ANY(...)` line
+inside it stays, and the comment says why: deleting it keeps every check green
+today only because Membership's own policy already narrows the subquery, and a
+clause whose safety depends on another table's policy is one a change over there
+silently rewrites.
 
 ### The role-by-role audit, and the eight things it found
 

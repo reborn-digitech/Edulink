@@ -469,6 +469,37 @@ CREATE POLICY "MentorMessage_tenant_isolation" ON "MentorMessage"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SchoolRecord
+ALTER TABLE "SchoolRecord" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolRecord" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolRecord_tenant_isolation" ON "SchoolRecord";
+DROP POLICY IF EXISTS "SchoolRecord_readable" ON "SchoolRecord";
+CREATE POLICY "SchoolRecord_tenant_isolation" ON "SchoolRecord"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- …and the leaving certificate of a child who is one of YOUR pupils
+  -- now, whichever school issued it. The one clause in this file that
+  -- crosses schools, on one table that holds a summary rather than a
+  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,
+  -- so it cannot be used to browse.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "studentUserId" = current_setting('app.user_id', true)
+         OR (EXISTS (
+           SELECT 1 FROM "Membership" m
+            WHERE m."userId" = "SchoolRecord"."studentUserId"
+              AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."status" = 'ACTIVE'
+              AND m."leftAt" IS NULL
+         ))
+        );
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition

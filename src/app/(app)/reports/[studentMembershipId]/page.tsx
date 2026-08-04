@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireUser } from "@/lib/tenancy";
 import { buildProgressReport } from "@/lib/reports";
+import { recordsForStudentMembership } from "@/lib/school-record";
+import { SchoolRecordList } from "@/components/school-record-list";
 import { formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { Avatar } from "@/components/ui/avatar";
@@ -44,6 +46,21 @@ export default async function ReportPage({
     if (error instanceof AccessError) notFound();
     throw error;
   }
+
+  /**
+   * Where this child was BEFORE this school.
+   *
+   * On the progress report because this is the one page a teacher, a principal
+   * and a parent all open about a single child — so it is the page where "they
+   * joined us in March from Riverside" belongs. Postgres decides what comes
+   * back: a school reading a certificate it did not write is doing so because
+   * the child is one of theirs NOW, which is the whole of what MEMBER_READABLE
+   * allows. See school-record.ts.
+   *
+   * It prints, because a receiving school filing a new pupil's paperwork wants
+   * this on the same sheet as everything else.
+   */
+  const previous = await recordsForStudentMembership(session, studentMembershipId);
 
   const name = report.student.preferredName ?? report.student.name;
   const statuses = ["PRESENT", "LATE", "ABSENT", "EXCUSED"] as const satisfies readonly AttendanceStatus[];
@@ -196,6 +213,19 @@ export default async function ReportPage({
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {previous.length > 0 && (
+        <section aria-labelledby="previous-heading" className="space-y-2.5">
+          <h2 id="previous-heading" className="text-lg font-semibold">
+            Before {name} came here
+          </h2>
+          <p className="text-xs text-fg-muted">
+            Written and signed off by each school as {name} left it. A summary, not a copy of their
+            file — ask the family for the report cards those schools issued.
+          </p>
+          <SchoolRecordList records={previous} />
         </section>
       )}
 

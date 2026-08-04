@@ -3,6 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { suspendMembership, reinstateMembership } from "@/lib/membership";
+import {
+  recordDeparture,
+  undoDeparture,
+  type DepartureInput,
+} from "@/lib/school-record";
 
 /**
  * Pausing and restoring access, from the directory.
@@ -41,6 +46,50 @@ export async function reinstate(membershipId: string): Promise<Result> {
     if (!result.ok) return { ok: false, error: result.error };
     revalidatePath("/admin/people");
     revalidatePath("/admin/safety");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * Recording a pupil as having left, and undoing it.
+ *
+ * SEPARATE ACTIONS FROM `suspend`, because they are separate facts — see
+ * `school-record.ts`. Pausing says "not for now"; this says "they have gone to
+ * another school", and a directory that cannot tell them apart cannot answer
+ * the only question a school asks in September.
+ */
+export async function recordLeaving(
+  membershipId: string,
+  input: { reason: string; destination: string; note: string; leftOn: string },
+): Promise<Result & { recordId?: string }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await recordDeparture(ctx, membershipId, {
+      reason: input.reason as DepartureInput["reason"],
+      destination: input.destination,
+      note: input.note,
+      // An empty date box means today, which is what it means on paper. A
+      // typed-in date that is not a date is refused by the library rather than
+      // silently becoming today — a certificate is dated, and the wrong date is
+      // worse than being asked again.
+      leftOn: input.leftOn ? new Date(input.leftOn) : undefined,
+    });
+    if (!result.ok) return { ok: false, error: result.error };
+    revalidatePath("/admin/people");
+    return { ok: true, recordId: result.recordId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function undoLeaving(membershipId: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await undoDeparture(ctx, membershipId);
+    if (!result.ok) return { ok: false, error: result.error };
+    revalidatePath("/admin/people");
     return { ok: true };
   } catch (error) {
     return failure(error);

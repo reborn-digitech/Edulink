@@ -1207,6 +1207,83 @@ membership directly.
 - ☐ **⚠️** As the principal, open another school's class by pasting its id into
   `/principal/classes/<id>` → **404**
 
+## 12s. A pupil leaving, and their school record
+
+The feature whose whole risk is the tenant boundary. Walk it with **two schools**
+and take your time over the last block — it is the one that either holds or
+hands one school a window into another.
+
+### Recording it
+
+- ☐ As **Priya (admin)**, `/admin/people` → find a pupil → **Left**
+- ☐ The box says, before you type anything: their access ends, they come off
+  every roll, **nothing is deleted**, the family gets a record, and you can undo
+- ☐ Pick *Transferred*, put "Oakfield Academy" in **where they went**, leave the
+  date blank, write a line for their next school → **Record it**
+- ☐ The note field says the **family reads this**. It is not an internal note
+
+### What it did
+
+- ☐ The directory gains a **Left (n)** tab, beside *Paused*. **⚠️** They are two
+  different facts — a school in September needs to know which children are
+  coming back
+- ☐ Their row says *Left …* and *went to Oakfield Academy*
+- ☐ **⚠️** Open the class they were in → they are **off the roll**
+- ☐ **⚠️** Open a register from last term → their marks are **still there**.
+  Open their progress report → attendance and marks intact. The school still
+  holds everything; it just is not teaching them
+- ☐ Their **family** gets a notification. Tap it → it lands on the page the
+  record is actually **on**, not one click short of it
+
+### They cannot get back in
+
+- ☐ Sign in as that pupil → **⚠️** their old school is closed to them. Not a
+  blank page: they are sent away, and the register, their marks and their work
+  are all refused
+- ☐ **⚠️** This is the database, not the screen. Nothing was revoked by hand —
+  every query already filtered on `leftAt`, and the tenant set went empty
+
+### The record travels — the block that matters
+
+- ☐ Join that same child to **Oakfield** (join code, or an invite)
+- ☐ As the child, `/student/profile` → **Schools you have been to** → the
+  Riverside record, with the dates, the grade they left in, and attendance
+- ☐ As **Sam (Oakfield admin)**, open that child's progress report →
+  **Before … came here** → the same record
+- ☐ **⚠️ NOW THE HALF THAT MUST FAIL.** Still as Sam, take the child's *Riverside*
+  membership id and paste it into `/reports/<that id>` → **404**. Oakfield can
+  read what Riverside certified about a child who is now theirs, and **nothing
+  else of Riverside's**
+- ☐ **⚠️** Take a child who has **never** been to Oakfield, record them as
+  leaving Riverside, and check Sam cannot reach their record by any route. The
+  clause is a handover, not a browse
+- ☐ **⚠️** The figures on the record do not move. Mark another Riverside register
+  for that child, or publish another report card, then reopen the record — the
+  numbers are the ones from the day it was issued. A certificate that recomputes
+  is a query wearing one
+- ☐ Rename Riverside in `/admin/settings`, reopen the record → it still says the
+  **old name**. A certificate signed in 2026 does not start saying something else
+  because the school rebranded
+
+### Undoing it
+
+- ☐ Back as Priya, `/admin/people` → **Left** tab → **Undo leaving**
+- ☐ They are back on the directory, and can sign in again
+- ☐ **⚠️** They are **not** back in their classes — that is the school's decision,
+  one click away on the class page. Guessing would re-add a child to a class the
+  school had moved them out of
+- ☐ **⚠️** The record is **gone**, from the child's profile too. A retracted
+  certificate must not still be readable by the school it was shown to
+- ☐ Their marks and attendance are untouched
+
+### Not for staff
+
+- ☐ **⚠️** A teacher's row has no **Left** button. Try the action anyway and it
+  is refused. A departing teacher is owed a reference, not a document describing
+  their attendance
+
+---
+
 ## 12r. The expert's own profile
 
 The rest of the expert and mentoring flow has **never** had a section here, and
@@ -1301,7 +1378,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 223 checks in `npm run sweep`
+Every route in the navigation now renders — all 229 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every
@@ -1321,7 +1398,8 @@ Built since this list was last trimmed, and now with sections of their own:
 global feed, weighted grade categories, suspend-user (§12l), two-factor
 authentication, the operator area and its server log (§12m), class sections and
 register duty (§12n), staff leave (§12o), report cards (§12p), the principal's
-dashboard (§12q) and the expert's profile (§12r).
+dashboard (§12q), the expert's profile (§12r) and a pupil leaving school with
+their record (§12s).
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while
