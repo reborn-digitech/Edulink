@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { toggleAttendanceRight, addCover, removeCover } from "./actions";
+import { toggleAttendanceRight, addCover, removeCover, addTeacher, dropTeacher } from "./actions";
 
 type ClassTeacherRow = {
   id: string;
@@ -59,8 +59,35 @@ export function Staffing({
   const [to, setTo] = useState(today);
   const [reason, setReason] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [newTeacher, setNewTeacher] = useState("");
+  const [newRole, setNewRole] = useState<"LEAD" | "CO">("LEAD");
 
   const takers = teachers.filter((t) => t.canTakeAttendance).length + covers.length;
+
+  function assign(event: React.FormEvent) {
+    event.preventDefault();
+    startTransition(async () => {
+      const result = await addTeacher(classId, newTeacher, newRole);
+      if (!result.ok) {
+        toast({ tone: "danger", title: "Not assigned", description: result.error });
+        return;
+      }
+      setNewTeacher("");
+      toast({ tone: "ok", title: newRole === "LEAD" ? "Class teacher assigned" : "Teacher added" });
+      router.refresh();
+    });
+  }
+
+  function unassign(row: ClassTeacherRow) {
+    startTransition(async () => {
+      const result = await dropTeacher(classId, row.membershipId);
+      if (!result.ok) {
+        toast({ tone: "danger", title: "Not removed", description: result.error });
+        return;
+      }
+      router.refresh();
+    });
+  }
 
   function toggle(row: ClassTeacherRow) {
     startTransition(async () => {
@@ -134,6 +161,15 @@ export function Staffing({
                     {row.role === "LEAD" ? "Class teacher" : "Also teaches this class"}
                   </span>
                 </span>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  loading={pending}
+                  aria-label={`Take ${row.name} off this class`}
+                  onClick={() => unassign(row)}
+                >
+                  <XIcon weight="bold" className="size-4" />
+                </Button>
                 <button
                   type="button"
                   role="switch"
@@ -153,6 +189,50 @@ export function Staffing({
               </li>
             ))}
           </ul>
+        )}
+
+        <form onSubmit={assign} className="mt-3 flex flex-wrap items-end gap-2">
+          <label className="min-w-[12rem] flex-1">
+            <span className="block text-xs font-medium text-fg">Add a teacher</span>
+            <select
+              value={newTeacher}
+              onChange={(e) => setNewTeacher(e.target.value)}
+              className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            >
+              <option value="">Choose somebody…</option>
+              {staff
+                .filter((person) => person.role !== "ADMIN")
+                .filter((person) => !teachers.some((t) => t.membershipId === person.membershipId))
+                .map((person) => (
+                  <option key={person.membershipId} value={person.membershipId}>
+                    {person.name}
+                  </option>
+                ))}
+            </select>
+          </label>
+          <label>
+            <span className="block text-xs font-medium text-fg">As</span>
+            <select
+              value={newRole}
+              onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO")}
+              className="mt-1 min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            >
+              <option value="LEAD">Class teacher</option>
+              <option value="CO">Also teaches</option>
+            </select>
+          </label>
+          <Button type="submit" size="sm" variant="secondary" loading={pending} disabled={!newTeacher}>
+            Assign
+          </Button>
+        </form>
+
+        {teachers.length > 0 && !teachers.some((t) => t.role === "LEAD") && (
+          // No database constraint forces exactly one — a job share is real, and
+          // a school mid-handover has two for a fortnight. Having NONE is the
+          // case nobody intends, so that is the one worth saying.
+          <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
+            This class has no class teacher. Nobody is down to write its report cards.
+          </p>
         )}
 
         {takers === 0 && (

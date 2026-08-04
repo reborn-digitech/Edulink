@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, ChalkboardTeacherIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, ChalkboardTeacherIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listCovers } from "@/lib/register-duty";
@@ -9,6 +9,8 @@ import { todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Staffing } from "./staffing";
+import { CohortPanel } from "./cohort-panel";
+import { listCohort } from "@/lib/cohort";
 
 export const metadata: Metadata = { title: "Class staffing" };
 
@@ -50,7 +52,7 @@ export default async function ClassStaffingPage({
   });
   const today = todayKey(school.timezone);
 
-  const [assigned, covers, staff] = await Promise.all([
+  const [assigned, covers, staff, cohort] = await Promise.all([
     db.classTeacher.findMany({
       where: { schoolId: ctx.schoolId, classId },
       select: {
@@ -79,6 +81,7 @@ export default async function ClassStaffingPage({
       },
       orderBy: { joinedAt: "asc" },
     }),
+    listCohort(ctx, classId),
   ]);
 
   const title = [klass.name, klass.section ? `Section ${klass.section}` : null]
@@ -140,6 +143,26 @@ export default async function ClassStaffingPage({
               membershipId: person.id,
               name: person.user.preferredName ?? person.user.name,
               role: person.role,
+            }))}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={<UsersThreeIcon weight="duotone" className="size-5" />}
+          title="Who is in this class"
+          description={`${cohort.length} on the roll`}
+        />
+        <CardBody>
+          <CohortPanel
+            classId={klass.id}
+            gradeLevel={klass.gradeLevel}
+            members={cohort.map((member) => ({
+              membershipId: member.membershipId,
+              name: member.name,
+              gradeLevel: member.gradeLevel,
+              studentCode: member.studentCode,
             }))}
           />
         </CardBody>

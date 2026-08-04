@@ -3,6 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { setAttendanceRight, arrangeCover, cancelCover, type CoverInput } from "@/lib/register-duty";
+import {
+  assignTeacher,
+  candidatesFor,
+  enrolStudents,
+  removeFromCohort,
+  unassignTeacher,
+} from "@/lib/cohort";
 
 /**
  * Staffing one class: who teaches it, who marks its register, and who covers.
@@ -54,6 +61,77 @@ export async function removeCover(classId: string, coverId: string): Promise<Res
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const result = await cancelCover(ctx, coverId);
+    revalidatePath(`/admin/classes/${classId}`);
+    return result;
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Staff                                                                       */
+/* -------------------------------------------------------------------------- */
+
+export async function addTeacher(
+  classId: string,
+  teacherMembershipId: string,
+  role: "LEAD" | "CO",
+): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await assignTeacher(ctx, classId, teacherMembershipId, { role });
+    revalidatePath(`/admin/classes/${classId}`);
+    return result;
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function dropTeacher(classId: string, teacherMembershipId: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await unassignTeacher(ctx, classId, teacherMembershipId);
+    revalidatePath(`/admin/classes/${classId}`);
+    return result;
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cohort                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export async function searchCandidates(classId: string, query: string) {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    return { ok: true as const, candidates: await candidatesFor(ctx, classId, query) };
+  } catch (error) {
+    return { ok: false as const, candidates: [], error: failure(error).error };
+  }
+}
+
+export async function addToCohort(
+  classId: string,
+  studentMembershipIds: string[],
+): Promise<Result & { added?: number }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await enrolStudents(ctx, classId, studentMembershipIds);
+    revalidatePath(`/admin/classes/${classId}`);
+    return { ok: result.ok, error: result.error, added: result.added };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function dropFromCohort(
+  classId: string,
+  studentMembershipId: string,
+): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await removeFromCohort(ctx, classId, studentMembershipId);
     revalidatePath(`/admin/classes/${classId}`);
     return result;
   } catch (error) {

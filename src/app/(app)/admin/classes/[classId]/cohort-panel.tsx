@@ -1,0 +1,262 @@
+"use client";
+
+import { useEffect, useRef, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { MagnifyingGlassIcon, PlusIcon, XIcon } from "@phosphor-icons/react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/toast";
+import { cn } from "@/lib/cn";
+import { searchCandidates, addToCohort, dropFromCohort } from "./actions";
+
+type Member = {
+  membershipId: string;
+  name: string;
+  gradeLevel: string | null;
+  studentCode: string | null;
+};
+
+type Candidate = {
+  membershipId: string;
+  name: string;
+  gradeLevel: string | null;
+  alreadyIn: string[];
+};
+
+/**
+ * The children in this class.
+ *
+ * ADD IS A MULTI-SELECT, because the real task is "put these thirty in 5A" and
+ * doing that one confirm-dialog at a time is how an admin gives up and goes back
+ * to a spreadsheet. Remove is one at a time on purpose: it is the direction that
+ * takes a child off a roll, and bulk-removing thirty by mis-click is not a
+ * mistake anybody should be able to make quickly.
+ *
+ * Candidates already in another class are shown WITH that class rather than
+ * hidden. A child is legitimately in a form group and a maths set at once, so
+ * hiding them would make the common case impossible; naming the class they are
+ * in makes the accidental case obvious.
+ */
+export function CohortPanel({
+  classId,
+  members,
+  gradeLevel,
+}: {
+  classId: string;
+  members: Member[];
+  gradeLevel: string | null;
+}) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  async function load(q: string) {
+    setLoading(true);
+    const result = await searchCandidates(classId, q);
+    setCandidates(result.candidates as Candidate[]);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    if (!open) return;
+    void load("");
+    // Loading once when the picker opens; typing is debounced separately below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  function onType(value: string) {
+    setQuery(value);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => void load(value), 250);
+  }
+
+  function toggle(id: string) {
+    setPicked((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  function commit() {
+    startTransition(async () => {
+      const result = await addToCohort(classId, [...picked]);
+      if (!result.ok) {
+        toast({ tone: "danger", title: "Not added", description: result.error });
+        return;
+      }
+      toast({
+        tone: "ok",
+        title: `${result.added} added to the class`,
+      });
+      setPicked(new Set());
+      setOpen(false);
+      setQuery("");
+      router.refresh();
+    });
+  }
+
+  function remove(membershipId: string, name: string) {
+    startTransition(async () => {
+      const result = await dropFromCohort(classId, membershipId);
+      if (!result.ok) {
+        toast({ tone: "danger", title: "Not removed", description: result.error });
+        return;
+      }
+      toast({ tone: "ok", title: `${name} taken off the roll` });
+      router.refresh();
+    });
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs leading-relaxed text-fg-muted">
+          {members.length} on the roll. Taking somebody off keeps everything they did in this
+          class — their marks and attendance are not deleted.
+        </p>
+        {!open && (
+          <Button size="sm" variant="secondary" icon={<PlusIcon weight="bold" />} onClick={() => setOpen(true)}>
+            Add students
+          </Button>
+        )}
+      </div>
+
+      {open && (
+        <div className="rounded-[--radius-md] border border-border p-4">
+          <div className="relative">
+            <MagnifyingGlassIcon
+              className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
+              aria-hidden="true"
+            />
+            <input
+              type="search"
+              autoFocus
+              value={query}
+              onChange={(e) => onType(e.target.value)}
+              placeholder="Search pupils by name…"
+              aria-label="Search pupils to add"
+              className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-3 text-[0.9375rem] outline-none focus:border-accent"
+            />
+          </div>
+
+          {gradeLevel && (
+            <p className="mt-2 text-xs text-fg-muted">
+              Grade {gradeLevel} pupils are listed first. Anybody in the school can be added — a
+              child repeating a year, or taking a subject a year up, is ordinary.
+            </p>
+          )}
+
+          <div className="mt-3 max-h-72 overflow-y-auto scrollbar-thin">
+            {loading ? (
+              <p className="py-6 text-center text-sm text-fg-muted">Looking…</p>
+            ) : candidates.length === 0 ? (
+              <p className="py-6 text-center text-sm text-fg-muted">
+                {query ? "Nobody matches that." : "Every pupil in the school is already in this class."}
+              </p>
+            ) : (
+              <ul className="space-y-1">
+                {candidates.map((candidate) => {
+                  const on = picked.has(candidate.membershipId);
+                  return (
+                    <li key={candidate.membershipId}>
+                      <button
+                        type="button"
+                        aria-pressed={on}
+                        onClick={() => toggle(candidate.membershipId)}
+                        className={cn(
+                          "flex w-full items-center gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
+                          on ? "bg-accent-soft text-accent-strong" : "hover:bg-surface-muted",
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={cn(
+                            "grid size-5 shrink-0 place-items-center rounded border",
+                            on ? "border-accent bg-accent text-accent-fg" : "border-border",
+                          )}
+                        >
+                          {on ? "✓" : ""}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-sm font-medium">{candidate.name}</span>
+                          <span className="block truncate text-xs text-fg-muted">
+                            {candidate.gradeLevel ? `Grade ${candidate.gradeLevel}` : "No grade set"}
+                            {candidate.alreadyIn.length > 0
+                              ? ` · already in ${candidate.alreadyIn.join(", ")}`
+                              : ""}
+                          </span>
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Button size="sm" loading={pending} disabled={picked.size === 0} onClick={commit}>
+              Add {picked.size > 0 ? `${picked.size} ` : ""}to the class
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => {
+                setOpen(false);
+                setPicked(new Set());
+                setQuery("");
+              }}
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {members.length === 0 ? (
+        <p className="rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
+          Nobody is in this class yet. Add them here, or give them the class join code and let them
+          add themselves.
+        </p>
+      ) : (
+        <ul className="space-y-1.5">
+          {members.map((member) => (
+            <li
+              key={member.membershipId}
+              className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-medium text-fg">{member.name}</span>
+                {member.gradeLevel && (
+                  <span className="block text-xs text-fg-muted">Grade {member.gradeLevel}</span>
+                )}
+              </span>
+              {member.studentCode && (
+                <Badge tone="neutral" size="sm" className="hidden font-mono sm:inline-flex">
+                  {member.studentCode}
+                </Badge>
+              )}
+              <Button
+                size="sm"
+                variant="ghost"
+                loading={pending}
+                aria-label={`Take ${member.name} off this class`}
+                onClick={() => remove(member.membershipId, member.name)}
+              >
+                <XIcon weight="bold" className="size-4" />
+              </Button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
