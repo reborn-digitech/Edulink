@@ -264,6 +264,18 @@ export async function decideLeave(
 }
 
 /**
+ * The delegates `cancelLeave` touches, and only those.
+ *
+ * `$tenantTransaction` hands back `unknown` on purpose — see db.ts — so each
+ * caller says what it needs rather than casting to the whole client and
+ * quietly gaining the ability to reach anything.
+ */
+type TenantTx = {
+  leaveRequest: { update(args: unknown): Promise<unknown> };
+  attendanceCover: { deleteMany(args: unknown): Promise<unknown> };
+};
+
+/**
  * The applicant withdraws it.
  *
  * Allowed AFTER approval as well as before, because plans change and a teacher
@@ -304,12 +316,36 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     },
   });
 
-  await db.$transaction([
-    db.leaveRequest.update({ where: { id: request.id }, data: { status: "CANCELLED" } }),
+  /**
+   * `$tenantTransaction`, and NOT `db.$transaction` in either of its forms.
+   *
+   * This was the array form, and it was not atomic. `db` is extended: every
+   * query is re-issued inside its own `base.$transaction` so the tenant can be
+   * bound for it (see db.ts), which means the two statements below ran in two
+   * separate transactions and the outer one held nothing together. A failure on
+   * the second would leave the request CANCELLED with its cover still standing,
+   * so somebody is still down to mark a register for leave that no longer
+   * exists — silently, because both halves "succeeded" as far as the app knew.
+   *
+   * The interactive form `db.$transaction(async (tx) => …)` has the same fault
+   * for the same reason, and `$tenantTransaction` is the one that binds the
+   * tenant once at the top and keeps the statements together. Demonstrated
+   * rather than reasoned about: with a tenant bound and a deliberate failure on
+   * the second statement, both `db.$transaction` forms leave the first
+   * committed and only this one rolls it back.
+   */
+  await db.$tenantTransaction(async (tx: unknown) => {
+    const t = tx as TenantTx;
+    await t.leaveRequest.update({
+      where: { id: request.id },
+      data: { status: "CANCELLED" },
+    });
     // ONLY the cover this request created. Cover arranged by hand for other
     // reasons belongs to whoever arranged it.
-    db.attendanceCover.deleteMany({ where: { leaveRequestId: request.id, schoolId: ctx.schoolId } }),
-  ]);
+    await t.attendanceCover.deleteMany({
+      where: { leaveRequestId: request.id, schoolId: ctx.schoolId },
+    });
+  });
 
   for (const cover of releasing) {
     await notify({

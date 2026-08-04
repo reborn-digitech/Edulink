@@ -266,6 +266,14 @@ export async function listGradeCategories(
   });
 }
 
+/** The one delegate the grade-category save touches. */
+type CategoryTx = {
+  gradeCategory: {
+    deleteMany(args: unknown): Promise<unknown>;
+    createMany(args: unknown): Promise<unknown>;
+  };
+};
+
 /**
  * Replaces a class's whole set of weights in one call.
  *
@@ -318,7 +326,16 @@ export async function saveGradeCategories(
     );
   }
 
-  await db.$transaction(async (tx) => {
+  /**
+   * `$tenantTransaction`, not `db.$transaction`. See db.ts: on this extended
+   * client both `db.$transaction` forms re-issue each statement in its own
+   * transaction so the tenant can be bound, which leaves the outer one holding
+   * nothing. Here that is delete-then-recreate, so a failure between the two
+   * would leave a class with NO weighting categories at all and every mark
+   * quietly re-weighted.
+   */
+  await db.$tenantTransaction(async (txUnknown: unknown) => {
+    const tx = txUnknown as CategoryTx;
     await tx.gradeCategory.deleteMany({ where: { schoolId: klass.schoolId, classId } });
     if (clean.length === 0) return;
     await tx.gradeCategory.createMany({

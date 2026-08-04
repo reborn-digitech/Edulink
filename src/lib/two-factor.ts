@@ -13,6 +13,15 @@ import {
 import { base32Decode } from "./totp";
 import type { ActiveContext } from "./session";
 
+/** The delegates the two-factor writes touch, and only those. */
+type TwoFactorTx = {
+  recoveryCode: {
+    deleteMany(args: unknown): Promise<unknown>;
+    createMany(args: unknown): Promise<unknown>;
+  };
+  user: { update(args: unknown): Promise<unknown> };
+};
+
 /**
  * Two-factor authentication, on top of `totp.ts`.
  *
@@ -83,7 +92,16 @@ export async function confirmEnrolment(
   const codes = generateRecoveryCodes();
   const hashes = await Promise.all(codes.map((c) => hashPassword(normaliseRecoveryCode(c))));
 
-  await db.$transaction(async (tx) => {
+  /**
+   * `$tenantTransaction`, not `db.$transaction`. See db.ts: both
+   * `db.$transaction` forms re-issue each statement in its own transaction on
+   * this extended client, so the outer one holds nothing together. The stakes
+   * here are the worst of the five call sites this was found at — a failure
+   * partway through leaves the old recovery codes deleted and the new ones
+   * unwritten, which is an account with a second factor on and no way past it.
+   */
+  await db.$tenantTransaction(async (txUnknown: unknown) => {
+    const tx = txUnknown as TwoFactorTx;
     // Any codes from a previous enrolment are cleared, not added to: leaving
     // them live would mean an old, possibly leaked, set still opens the account.
     await tx.recoveryCode.deleteMany({ where: { userId: session.user.id } });
@@ -126,7 +144,9 @@ export async function disable(session: ActiveContext, password: string): Promise
     throw new AccessError("That password is not right");
   }
 
-  await db.$transaction(async (tx) => {
+  // Same reason as `enable` above: `db.$transaction` is not atomic here.
+  await db.$tenantTransaction(async (txUnknown: unknown) => {
+    const tx = txUnknown as TwoFactorTx;
     await tx.recoveryCode.deleteMany({ where: { userId: session.user.id } });
     await tx.user.update({
       where: { id: session.user.id },

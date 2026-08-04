@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -22,6 +22,17 @@ import { describe, expect, it } from "vitest";
  */
 
 const SCHEMA = readFileSync(resolve(process.cwd(), "prisma/schema.prisma"), "utf8");
+
+/** Every .ts/.tsx file under a directory, recursively. */
+function globSource(dir: string): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = resolve(dir, entry.name);
+    if (entry.isDirectory()) out.push(...globSource(full));
+    else if (/\.tsx?$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
 
 /** Models that carry `schoolId` and can take a one-line RLS predicate. */
 const DIRECT = [
@@ -188,5 +199,70 @@ describe("models with no tenant", () => {
       (m) => m !== "School" && hasField(MODELS.get(m)!, "schoolId"),
     );
     expect(surprising, `Now carry schoolId — should these be scoped? ${surprising.join(", ")}`).toEqual([]);
+  });
+});
+
+/**
+ * ⚠ NOBODY MAY CALL `db.$transaction` — AND THE REASON IS NOT STYLE.
+ *
+ * `db` is extended: to bind `app.school_ids` for row-level security, the
+ * extension re-issues EVERY query inside its own `base.$transaction` (see
+ * db.ts). So a `db.$transaction` — in either form, the array batch or the
+ * interactive callback — hands its statements to an outer transaction that they
+ * never actually join, and the outer one holds nothing together. Atomicity is
+ * silently gone.
+ *
+ * DEMONSTRATED, NOT REASONED ABOUT. With a tenant bound and a deliberate failure
+ * on the second statement of three otherwise-identical transactions:
+ *
+ *     db.$transaction([...])            first statement PERSISTED   (not atomic)
+ *     db.$transaction(async (tx) => …)  first statement PERSISTED   (not atomic)
+ *     db.$tenantTransaction(…)          first statement ROLLED BACK (atomic)
+ *
+ * It was found at five call sites. What made it survive is that no test could
+ * see it: `npm test` has no session cookie, so the tenant resolves empty, the
+ * extension short-circuits, and both broken forms behave like a normal Prisma
+ * transaction. The bug only exists in a real request — which is exactly the
+ * property that makes a grep the right check rather than a runtime one.
+ *
+ * The stakes, from those five: recovery codes deleted and not replaced (a second
+ * factor with no way past it), a leave request cancelled with its cover still
+ * standing, a class left with no weighting categories at all.
+ */
+describe("⚠ transactions bind the tenant", () => {
+  const SOURCES = globSource(resolve(process.cwd(), "src"));
+
+  it("no source file calls db.$transaction", () => {
+    const offenders: string[] = [];
+    for (const file of SOURCES) {
+      const body = readFileSync(file, "utf8");
+      // Comments discussing the hazard are the point of this rule, not a breach
+      // of it — so only lines that actually CALL it count.
+      body.split("\n").forEach((line, index) => {
+        const code = line.replace(/^\s*(\/\/|\*|\/\*).*$/, "");
+        if (/\bdb\s*\.\s*\$transaction\s*\(/.test(code)) {
+          offenders.push(`${file.replace(process.cwd() + "/", "")}:${index + 1}`);
+        }
+      });
+    }
+
+    expect(
+      offenders,
+      "db.$transaction is not atomic on the extended client — the per-query " +
+        "extension re-issues each statement in its own transaction. Use " +
+        "db.$tenantTransaction, which binds the tenant once and keeps them " +
+        "together. See src/lib/school-record.ts for the idiom.",
+    ).toEqual([]);
+  });
+
+  it("⚠ and the rule can actually fail", () => {
+    // A guard that cannot go red is decoration. This proves the matcher sees
+    // the thing it is looking for, in both the forms that were found broken.
+    const pattern = /\bdb\s*\.\s*\$transaction\s*\(/;
+    expect(pattern.test("await db.$transaction([a, b]);")).toBe(true);
+    expect(pattern.test("return db.$transaction(async (tx) => {")).toBe(true);
+    expect(pattern.test("await db . $transaction ( [")).toBe(true);
+    // …and does not trip on the replacement, which is the whole point.
+    expect(pattern.test("await db.$tenantTransaction(async (tx) => {")).toBe(false);
   });
 });

@@ -128,6 +128,24 @@ export async function readExpertInvite(token: string): Promise<InviteState> {
   return { ok: true, inviteId: invite.id, name: invite.name, email: invite.email };
 }
 
+/** The delegates `acceptExpertInvite` touches, and only those. */
+type AcceptTx = {
+  expertInvite: {
+    findUnique(args: unknown): Promise<{
+      id: string;
+      acceptedAt: Date | null;
+      revokedAt: Date | null;
+      expiresAt: Date;
+      schoolId: string;
+    } | null>;
+    update(args: unknown): Promise<unknown>;
+  };
+  expertProfile: {
+    findUnique(args: unknown): Promise<{ id: string } | null>;
+    create(args: unknown): Promise<{ id: string }>;
+  };
+};
+
 /**
  * Turns an accepted invitation into an expert profile.
  *
@@ -148,7 +166,16 @@ export async function acceptExpertInvite(
   const headline = profile.headline.trim();
   if (headline.length < 3) throw new AccessError("Say what you do, in a few words");
 
-  return db.$transaction(async (tx) => {
+  /**
+   * `$tenantTransaction`, not `db.$transaction`. See db.ts and the note in
+   * leave.ts: on this extended client BOTH `db.$transaction` forms re-issue
+   * each statement in its own transaction to bind the tenant, so the outer one
+   * holds nothing together. Here that would mean a profile created and the
+   * invitation left unaccepted — the exact double-spend the comment above
+   * claims this transaction prevents.
+   */
+  return db.$tenantTransaction(async (txUnknown: unknown) => {
+    const tx = txUnknown as AcceptTx;
     const invite = await tx.expertInvite.findUnique({
       where: { tokenHash: hashToken(token) },
       select: { id: true, acceptedAt: true, revokedAt: true, expiresAt: true, schoolId: true },

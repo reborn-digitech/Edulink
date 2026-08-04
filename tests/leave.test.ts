@@ -10,6 +10,7 @@ import {
   schoolLeave,
 } from "@/lib/leave";
 import { registerDuty } from "@/lib/register-duty";
+import { forSchool } from "@/lib/tenant-context";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -401,6 +402,39 @@ describe("⚠ withdrawing takes the cover with it", () => {
    * around a register that no longer exists has been failed by a feature that
    * technically worked.
    */
+  /**
+   * ⚠ AND IT WORKS WITH THE TENANT ACTUALLY BOUND.
+   *
+   * Every other test in this file runs with NO tenant — there is no session
+   * cookie, so `db.ts` short-circuits its per-query wrapping entirely. That is
+   * precisely the state in which `db.$transaction` looked fine here for as long
+   * as it was wrong: the extension never engaged, so the array form behaved
+   * like a normal Prisma batch and nothing could see the missing atomicity.
+   *
+   * `forSchool` binds one, the same override `audit()` uses, so this exercises
+   * the code path a real request takes. What it can still NOT show is the
+   * policy — the suite connects as the database owner — but it does show that
+   * `$tenantTransaction` inside a bound tenant completes rather than tripping
+   * over a nested transaction, which is the failure a real request would have
+   * hit first.
+   *
+   * The atomicity itself is proved in `transaction-atomicity.test.ts`.
+   */
+  it("⚠ works with a tenant bound, which is the path a real request takes", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    const id = await pendingId();
+    await decideLeave(principal, id, "APPROVED");
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(true);
+
+    const result = await forSchool(riversideId, () => cancelLeave(applicant, id));
+    expect(result.ok).toBe(true);
+
+    // Both halves of the transaction landed, not just the first.
+    const request = await db.leaveRequest.findUniqueOrThrow({ where: { id } });
+    expect(request.status).toBe("CANCELLED");
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+  });
+
   it("⚠ tells the released cover teacher", async () => {
     await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
     const id = await pendingId();

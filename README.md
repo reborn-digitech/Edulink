@@ -148,7 +148,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,004 tests) |
+| `npm test` | Full suite (1,011 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -435,11 +435,40 @@ Break these and something quietly goes wrong for a child or a parent.
   `tests/tenant-context.test.ts` pins that. If you add another helper, await the
   work inside `run` or it will do nothing at all.
 - **A multi-step write needs `db.$tenantTransaction`, never `db.$transaction`.**
-  The per-query extension wraps each query in its own tenant transaction; it does
-  not reach inside an interactive one, whose callback gets a raw client with no
-  `app.school_ids` set. Every INSERT in there is refused by the policy. Four
-  flows were written with the plain form — join, invite acceptance, registration
-  and starting a remark thread — and all four were dead.
+  Enforced by a test now — `tenancy-shape.test.ts` greps `src/` and fails on any
+  `db.$transaction(` call — because the rule was already written here and five
+  more call sites were added anyway. **The reason it says so had gone stale, and
+  a rule with a wrong reason is one people correctly conclude does not apply to
+  them.**
+
+  What this bullet used to say was that the callback gets a raw client with no
+  `app.school_ids`, so every INSERT inside is refused by the policy. That was
+  true when it was written and it is how the first four flows — join, invite
+  acceptance, registration, starting a remark thread — were found dead. On
+  Prisma 6.19 the extension **does** reach the interactive callback, so those
+  writes now succeed and are correctly scoped. The hazard did not go away; it
+  went quiet.
+
+  What is left is worse to find. The extension re-issues every query inside its
+  own `base.$transaction` in order to bind the tenant, so a `db.$transaction`
+  hands its statements to an outer transaction they never join, and **atomicity
+  is silently gone**. Measured with a tenant bound and a deliberate failure on
+  the second statement of three otherwise identical transactions:
+
+  | form | first statement |
+  |---|---|
+  | `db.$transaction([...])` | **persisted** — not atomic |
+  | `db.$transaction(async (tx) => …)` | **persisted** — not atomic |
+  | `db.$tenantTransaction(…)` | rolled back — atomic |
+
+  Found at five sites: recovery codes deleted and not replaced (a second factor
+  with no way past it), a leave request cancelled with its cover still standing,
+  a class left with no weighting categories at all. **No test could see any of
+  it**: `npm test` has no session cookie, so the tenant resolves empty, the
+  extension short-circuits, and both broken forms behave like healthy Prisma
+  transactions. `tests/transaction-atomicity.test.ts` closes that by binding a
+  tenant with `forSchool` — the one thing the suite could always have done and
+  never did — and pins all three rows of that table.
 - **Rebuilding over a running `next start` corrupts `.next`** and yields
   `TypeError: a[d] is not a function` on every route. Stop the server,
   `rm -rf .next`, rebuild.
@@ -773,7 +802,11 @@ One line each, with the default rejected.
   tenant — so every INSERT in a multi-step flow was refused. That is student
   join, invitation acceptance, **school registration** and starting a remark
   thread: the four flows `$tenantTransaction` was written for, and which none of
-  them were using. Registration additionally had to mint its own school id
+  them were using. **That failure mode has since changed shape** — on Prisma 6.19
+  the extension does reach the interactive callback, so those writes succeed and
+  what is lost instead is atomicity, silently. See the `$tenantTransaction`
+  bullet under Gotchas; five more call sites were written against this
+  now-outdated description before a test was added to enforce the rule. Registration additionally had to mint its own school id
   (nothing can bind a tenant that does not exist yet) and drop its collision
   pre-checks, which asked about other schools and so saw nothing — collisions are
   now caught by the unique index and retried, which is race-free in a way the
