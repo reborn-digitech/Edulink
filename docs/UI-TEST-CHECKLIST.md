@@ -966,6 +966,190 @@ that is paused, never an account.
   reason is gone, and he gets a notification
 - ☐ Tom reloads → he is back in his school with everything where he left it
 
+## 12m. Whoever runs the server (`/root`)
+
+Nobody has this in the seed. Grant it first:
+
+```bash
+npm run superuser -- priya@riverside.school
+```
+
+### Getting in
+
+- ☐ As **Priya**, open `/root` → both schools are listed, with join codes and
+  grade ranges
+- ☐ Sign in as **Tom** and open `/root` → sent away to `/`
+- ☐ Signed out, open `/root` → sent to `/login`
+- ☐ **⚠️** The page says out loud that an operator cannot see inside a school.
+  Confirm that sentence is there — it is the whole boundary, stated
+
+### Adding a school
+
+- ☐ **Add a school** → fill in name, contact email, timezone and a grade range of
+  **3 to 10** → created, with a join code shown
+- ☐ Set the lowest grade to 10 and the highest to 3 → **refused**
+- ☐ Set the range to **K to 5** → accepted. A school that names its first year
+  "K" is not named wrong
+- ☐ Create a second school with the *same name* → both exist, with different
+  slugs. Two schools genuinely can be called the same thing
+
+### Inviting somebody to run it
+
+- ☐ Open the new school → invite an **Administrator** by email → appears as
+  *pending*, and the email is in `/dev/mailbox`
+- ☐ Invite the same address again → **refused**
+- ☐ **Revoke** it → status changes; revoke again → refused
+- ☐ **⚠️** Check `/admin/people` for that school does not exist for you. An
+  operator creates a school and invites its admin; they do not get a membership
+
+### The boundary, from the database's side
+
+- ☐ Run `npm run rls:verify` → the superuser block passes: every school visible,
+  and **no** membership, attendance, grade, message, enrolment or audit rows,
+  and a Membership write refused
+- ☐ `npm run superuser -- --list` → shows who has it
+- ☐ Try to revoke the only superuser → **refused**, with the reason
+
+## 12n. Class setup, staffing and the roll (admin only)
+
+### Sections
+
+- ☐ As **Priya (admin)**, `/admin/classes` → **New class**. If the school has a
+  numeric grade range, "Grade or year" is a **dropdown of exactly those grades**
+- ☐ Create **Class 5**, section **A** → the list shows `Class 5 · A`
+- ☐ Create one with the section left empty → accepted. A school with one Class 5
+  should not have to invent a section
+
+### Who marks the register
+
+- ☐ Open a class → **staffing** → assign **Tom** as **Class teacher** → he
+  appears with *Takes the register* on
+- ☐ Assign somebody as **Also teaches** → they appear with *Does not*.
+  **⚠️** A co-teacher does not mark the register by default
+- ☐ Turn Tom's register off → as **Tom**, `/teacher/attendance` no longer offers
+  that class
+- ☐ **⚠️** With Tom's register off, POST to `/api/attendance` for that class
+  (devtools → copy as fetch from a working save) → **403**, not 200. The page
+  hiding the class is not the boundary
+- ☐ Turn every teacher's register off → the page warns that **only an admin** can
+  mark it. As Priya, `/teacher/attendance` still offers it — the last failsafe
+
+### Cover
+
+- ☐ **Arrange cover** for that class: somebody who does not teach it, today only
+- ☐ As that person → `/teacher/attendance` offers the class, with a banner saying
+  they are covering and until when
+- ☐ **⚠️** As **Tom** (the class teacher) → he can **still** mark it. Cover adds
+  a taker and never removes one
+- ☐ Change the date to tomorrow → the coverer no longer sees it
+- ☐ Cancel the cover → gone immediately
+
+### The roll
+
+- ☐ **Add students** → search, tick several, add them in one go
+- ☐ **⚠️** Grade 5 pupils are listed **first**, and pupils of other grades are
+  still on the list. A child repeating a year must be addable
+- ☐ A pupil already in another class shows **which** class, rather than being
+  hidden
+- ☐ Remove somebody → they leave the roll. **⚠️** Open their profile: their marks
+  and attendance for that class are **still there**
+- ☐ Add them back → they return, and there is still exactly one enrolment row
+
+## 12o. Leave (teacher, then principal)
+
+Make somebody a principal first — invite them from `/root`, or add a PRINCIPAL
+membership directly.
+
+### Applying
+
+- ☐ As **Tom**, `/teacher/leave` → **Apply for leave** → dates, kind, a reason,
+  and a suggested cover → sent
+- ☐ **⚠️** The reason box says *the principal reads this and nobody else*.
+  Confirm that sentence is there before typing anything private
+- ☐ Leave the reason empty → **refused**
+- ☐ Apply again for **overlapping** dates → **refused**
+- ☐ Set the end date before the start → **refused**
+
+### Deciding
+
+- ☐ As the **principal**, `/principal/leave` → the request is waiting, with the
+  reason and how many registers Tom is down to mark
+- ☐ **Approve and arrange cover** → toast names how many classes were covered
+- ☐ **⚠️** As the nominated coverer → `/teacher/attendance` now offers Tom's
+  class for those dates
+- ☐ **⚠️** As **Tom** → he can still mark it too
+- ☐ As the principal, apply for your *own* leave, then try to approve it →
+  **refused**. Ask an admin to approve it instead → works
+
+### Staff-only
+
+- ☐ As the principal, `/admin/calendar` → **Staff away** lists the approved
+  leave, with dates and kind — and **⚠️ not the reason**
+- ☐ **⚠️** As a **pupil** and as a **parent**, open `/admin/calendar` → sent away.
+  Leave is never on a calendar a family reads
+- ☐ Withdraw the leave as Tom → the cover disappears with it
+- ☐ **⚠️** Arrange a separate cover by hand for the same class, approve leave,
+  then withdraw the leave → the **hand-arranged** cover survives
+
+## 12p. Report cards (class teacher)
+
+### Building
+
+- ☐ As the class teacher, open the class → **Report cards**
+- ☐ Pick two or three assessments. **⚠️** Each says how many of the class are
+  marked; an unmarked one is flagged
+- ☐ Name it `Term 1` → **Generate for the class** → a draft per pupil
+- ☐ **⚠️** As a **pupil**, open `/report-cards/<id>` for their own draft → **404**.
+  As their **parent** → **404**. A draft is not "not linked yet"
+- ☐ As the class teacher → 200
+- ☐ Write a remark on one card → saved
+
+### Publishing, and what freezes
+
+- ☐ **Publish all** → the pupil and their guardian both get a notification
+- ☐ As the pupil → `/student/grades` lists the card, and it opens
+- ☐ **⚠️ THE ONE THAT MATTERS.** Go to the gradebook and **change a mark** that is
+  on a published card. Reopen the card → **the number has not moved**
+- ☐ **⚠️** Rename that assignment → the card still shows the **old title**
+- ☐ Press **Generate** again → the report says N were already published and left
+  alone; the card is unchanged
+- ☐ **Withdraw all** → back to draft. Generate again → now it picks up the new
+  mark
+
+### Who may write them
+
+- ☐ **⚠️** As a **co-teacher** of the same class, open the report-cards page →
+  **404**
+- ☐ **⚠️** As the **principal** → 404. They read cards, they do not write them
+- ☐ As an **admin** → 200
+
+### On paper
+
+- ☐ Print the card (⌘P) → the school **logo** and name are at the top, it is
+  **black on white**, and the app chrome is gone
+- ☐ **⚠️** An unmarked assessment reads **"not marked"**, not `0`
+
+## 12q. The principal's dashboard
+
+- ☐ As the **principal**, `/principal` → registers not taken today, leave
+  waiting, attendance, pupils
+- ☐ Change the window (7 days / 30 / a term) → the figures change **and the URL
+  changes**. Paste the URL in another tab → same view
+- ☐ Put nonsense in it — `/principal?days=99999` → falls back, **200**, no error
+- ☐ `/principal/classes` → every class with attendance and progress, and a line
+  saying how many report cards are published per term
+- ☐ Open a class → pupils, each with attendance, progress and their latest report
+  card
+- ☐ **⚠️ THE ONE THAT MATTERS.** The pupils are in **alphabetical order**. Give
+  one child a much higher mark than the rest and reload → still alphabetical.
+  This app does not rank children
+- ☐ **⚠️** A pupil with no marks shows `—` for progress and is named under
+  *No marks recorded yet* — not scored 0%
+- ☐ **⚠️** A class with no register taken shows `—` for attendance, not 0%
+- ☐ As a **teacher**, open `/principal` and `/principal/classes` → sent away
+- ☐ **⚠️** As the principal, open another school's class by pasting its id into
+  `/principal/classes/<id>` → **404**
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -987,6 +1171,19 @@ Each of these must **fail**. Run them logged out and as the wrong role.
   admin
 - ☐ As **Jordan**: `/parent?child=<a child who is not theirs>` → falls back to
   their own child, never shows the other
+- ☐ **⚠️** As Tom: `/root` → sent away. The operator area is not a school role
+- ☐ **⚠️** As Tom: `/principal`, `/principal/classes`, `/principal/leave` →
+  sent away
+- ☐ **⚠️** As a **principal**: `/teacher/attendance`, `/admin/people`,
+  `/admin/classes/new` → sent away. They read the school and decide leave; they
+  do not mark registers or set it up
+- ☐ **⚠️** As a **pupil** or a **parent**: `/admin/calendar` → sent away. Staff
+  leave appears there
+- ☐ **⚠️** As a pupil: `/report-cards/<their own DRAFT card>` → **404**
+- ☐ **⚠️** As a co-teacher of a class:
+  `/teacher/classes/<id>/report-cards` → **404**
+- ☐ **⚠️** With register duty withdrawn: `POST /api/attendance` for that class →
+  **403**. The page hiding it is not the boundary
 - ☐ `/dev/mailbox` in a production build → **404**
 - ☐ `GET /api/auth/logout` (not POST) → does not log you out
 
@@ -1015,12 +1212,18 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 94 checks in `npm run sweep` were
-requested as a signed-in user of the owning role and returned 200. Still not
-built, per the README: a real QR code on the join poster, awards uploads on the
-student profile, global feed, competition submissions and leaderboards (entering
-one IS built — see §12g), cross-school moderation, suspend-user, weighted grade
-categories, progress-report export, SSO, 2FA, SMS, real email delivery.
+Every route in the navigation now renders — all 161 checks in `npm run sweep`
+were requested as a signed-in user of the owning role and returned the status
+that role should get. Still not built, per the README: a real QR code on the join
+poster, awards uploads on the student profile, competition **leaderboards**
+(entering one IS built — see §12g), cross-school moderation, progress-report
+export, SSO, SMS, real email delivery.
+
+Built since this list was last trimmed, and now with sections of their own:
+global feed, weighted grade categories, suspend-user (§12l), two-factor
+authentication, the operator area (§12m), class sections and register duty
+(§12n), staff leave (§12o), report cards (§12p) and the principal's dashboard
+(§12q).
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while

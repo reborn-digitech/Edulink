@@ -129,18 +129,32 @@ handle like `rosie.kvjn`, which is what they type into the login box.
 
 Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 
+**Nobody is a superuser in the seed, on purpose.** The operator area at `/root`
+is reached by granting the flag to an existing account:
+
+```bash
+npm run superuser -- priya@riverside.school
+```
+
+There is no UI for granting it and there is not meant to be. The first superuser
+cannot be invited by a superuser, so somebody with shell access to the server has
+to say so once — and shell access is exactly the qualification the flag
+describes. The same last-one-standing guard the school admin suspension has
+applies here: you cannot revoke the only one.
+
 ### Scripts
 
 | Command | Does |
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (744 tests) |
+| `npm test` | Full suite (964 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
+| `npm run superuser -- <email>` | Grant the server-operator flag. `--revoke` to remove, `--list` to see who has it |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
@@ -153,7 +167,7 @@ Emails are never sent. Read them at **`/dev/mailbox`** (404s in production).
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 112 route/role/negative combinations
+mints a real session per role, requests all 161 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -189,7 +203,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ### Where things live
 
 ```
-prisma/schema.prisma      35 models. Read the header comment first.
+prisma/schema.prisma      51 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
 prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.
@@ -199,6 +213,13 @@ src/lib/                  All business logic. Pages are thin.
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
   membership.ts           ★ Pausing access. MEMBERSHIP, never the user — see the header.
+  superuser.ts            ★ The operator. Keys to TWO tables — School and Invite — and nothing else.
+  cohort.ts               ★ Class rolls and staffing. Removing a child MARKS the row, never deletes it.
+  register-duty.ts        ★ Who may mark a register today. Cover ADDS a taker, never removes one.
+  leave.ts                ★ Staff leave. Approving arranges the cover in the same breath.
+  leave-kinds.ts          Client-safe half of the above — a form cannot import `server-only`.
+  report-cards.ts         ★ A DOCUMENT, not a query. Publishing freezes it. Read the header.
+  insights.ts             ★ The principal's figures. Flags children against a threshold, never ranks them.
   competitions.ts         ★ Cross-school catalogue, school-scoped entries, parent consent.
   reports.ts              ★ Progress report. Computes NOTHING — asks the helpers that own each figure.
   safety.ts               Report triage + audit log (server-only).
@@ -222,7 +243,8 @@ src/lib/                  All business logic. Pages are thin.
   offline-queue.ts        IndexedDB outbox (client-side).
   constants.ts            Every status string, single source of truth.
 src/app/(app)/            Signed-in routes (share the nav shell).
-src/app/                  Public routes: login, register, join, invite, switch.
+src/app/root/             ★ The operator area. OUTSIDE (app) — the shell needs a role, and they have none.
+src/app/                  Public routes: login, register, join, invite, switch, suspended.
 src/components/ui/        Design system.
   slot.tsx                ★ `asChild`. Deliberately NOT "use client" — see Gotchas.
   file-picker.tsx         Pick-before-submit control (assignment handouts).
@@ -264,7 +286,22 @@ Break these and something quietly goes wrong for a child or a parent.
 7. **Bad input is collected and reported, never silently skipped.** A bulk
    import claiming "42 sent" while dropping 3 is how a teacher is found missing
    in September.
-8. **Archive, don't delete.** Classes own attendance and grade history.
+8. **Archive, don't delete.** Classes own attendance and grade history. The same
+   rule reaches further than it looks: taking a child off a class roll sets
+   `Enrollment.status = REMOVED` rather than deleting the row, because that row
+   is what every attendance record and every mark in the class hangs off — a
+   delete tidies a list by removing a term of somebody's history, and nothing
+   fails loudly enough to notice. Re-adding revives the same row.
+8b. **A report card is a DOCUMENT, not a query.** Everything on it is snapshot
+   at generation and frozen at publication, including the assessment titles.
+   Recomputing on read means the card a parent read in December quietly says
+   something else in March because a teacher fixed a typo. Regenerating a
+   published card does nothing; changing one means withdrawing it first.
+8c. **Unmarked is not zero.** Anywhere a figure is derived — a report card, a
+   class average, a principal's dashboard — work with no mark is EXCLUDED and
+   counted separately, never scored nought. A test the child has not sat is not
+   a mark of nought, and a class where half the work is unmarked must not report
+   the other half's average as the class's.
 9. **Notify on first state change only.** Fixing a typo three times must not
    send a family three pushes.
 10. **Config nothing reads is config that rots.** There is deliberately no
@@ -417,8 +454,17 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
-1. **SSO, 2FA.** Neither can be verified without real provider credentials.
-   Budget for that rather than discovering it at the end.
+1. **SSO.** Cannot be verified without real provider credentials — budget for
+   that rather than discovering it at the end. 2FA is **built** and proven
+   against the RFC's own vectors; SSO is the half that still needs an account
+   with Google, Microsoft or Apple to test against.
+1b. **Click the paths that are only reasoned about.** Two features now render,
+   typecheck and are mutation-tested without anybody having typed into them in a
+   browser: the 2FA login step and the whole staff chain added last —
+   leave → approval → cover → report card → dashboard. Every boundary is proved
+   by `npm run sweep` with real sessions, and every rule by unit tests, but a
+   form is not the same as a function. §§12m–12q of the checklist exist for
+   exactly this and are the cheapest outstanding work in this file.
 2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
@@ -430,7 +476,13 @@ Break these and something quietly goes wrong for a child or a parent.
 **Before any of them, something cheaper.** Nothing in
 `docs/UI-TEST-CHECKLIST.md` has been walked by hand since the policies went on,
 and four of the last five bugs lived in states no signed-in test ever reaches.
-Walk sections 2, 5, 7 and 8 **signed out**.
+Walk sections 2, 5, 7 and 8 **signed out**, and then §§12m–12q, which have never
+been walked at all.
+
+**The single highest-value box in that file** is the one in §12p that says: change
+a mark that is on a published report card, reopen the card, and check the number
+has not moved. Three unit tests assert it, but it is the property a school would
+notice last and trust least, and it is worth seeing once with your own eyes.
 
 
 **A pattern worth internalising before you add anything:** three separate
@@ -445,6 +497,22 @@ redirect as success, so every parent route passed a sweep without rendering a
 single page — and a genuine 404 and a genuine 500 both survived it. Sweep each
 route *as a signed-in user of the role that owns it*, and assert 200
 specifically. `/bulletin` had been 500 for five commits.
+
+**And the third corollary, from this session:** a test fixture that touches
+SHARED seed data breaks suites that have not changed. `register-duty.test.ts`
+did it twice — first by DELETING a seeded `ClassTeacher` row to get a teacher who
+was not on the class, then, after that was "fixed", by ADDING Tom as class
+teacher of a seeded class and not removing him. Four other suites read those
+rows, vitest runs files in parallel, and they started failing with
+"Student not found in your classes" in files nobody had edited. Adding is exactly
+as destructive as deleting, because other suites assert on what is NOT there.
+The rule that holds is not "clean up after yourself" — it is **make your own
+fixtures and touch nobody else's**. Every suite added this session creates its
+own class with its own join code and deletes it on the way out.
+
+**And a smaller one that cost a bad commit:** `npm test | tail -4 && git commit`
+masks the exit code. `tail` succeeded, so `&&` proceeded, and 13 failures were
+committed. Do not pipe a command whose exit status you are branching on.
 
 **And the second corollary, learned more expensively still:** a check that only
 exercises one *execution context* proves nothing about the others. This app runs
@@ -984,6 +1052,79 @@ One line each, with the default rejected.
 - **`asChild` still emits a real anchor** — `<a href="/bulletin/new">` carrying
   the button classes, not a `<button>`, which is the entire point of `Slot`.
 
+- **A school run by the people who run it.** Six pieces, one chain, and the
+  chain is the point — each was proved through the function the next one asks,
+  not by counting rows.
+
+  **Whoever runs the server** (`/root`, `superuser.ts`). Creates schools, corrects
+  their details, invites their first admin or principal. A FLAG on `User`, not a
+  role: a role is what a session acts AS and belongs to a school, and this
+  belongs to the person and to no school. It opens exactly two tables. With the
+  flag set and no school bound, `rls:verify` asks Postgres for membership,
+  attendance, grade, message, post, enrolment and audit rows and gets **none**,
+  and a Membership write is **refused** — an operator who could mint memberships
+  could mint their own. Inviting, never minting: the person accepts through the
+  ordinary `/invite/[token]` flow.
+
+  **Classes, sections and who marks the register.** `Class.section` is optional,
+  because a village school with one Class 5 should not have to invent a "5A".
+  Creating a class offers the grades the school actually teaches and the server
+  re-checks the choice. `ClassTeacher.canTakeAttendance` separates "is this class
+  mine?" from "am I marking it today?" — a visiting music teacher attached to six
+  classes passes the first for all six and should be marking none. Defaulting it
+  to TRUE was deliberate: the tighter default would have made every existing
+  register untakeable on the morning it shipped.
+
+  **Cover, which ADDS a taker and never removes one.** Reassignment reads better
+  in a sentence and is worse in a school: a teacher whose leave is cancelled
+  would be locked out of their own register. An admin can always mark any
+  register in their school — the last failsafe, not a convenience. A principal
+  cannot, seniority notwithstanding, unless actually asked to cover. The sweep
+  proves the ENDPOINT refuses a withdrawn duty, not merely that the page hides
+  the class.
+
+  **Class rolls** (`cohort.ts`). Until now the only way into an Enrollment row was
+  a child typing a join code. Multi-select to add thirty at once; one at a time to
+  remove, because that is the direction that takes a child off a roll. Removing
+  MARKS the row `REMOVED` and re-adding revives it — that row is what every
+  attendance record and mark in the class hangs off.
+
+  **Leave, which arranges its own cover** (`leave.ts`). Approving writes the
+  AttendanceCover rows in the same operation, because a leave system that records
+  an absence and leaves somebody to remember the register has moved the problem
+  rather than solved it. The applicant's nomination is a SUGGESTION; the covers
+  are written from whoever the principal chose. Nobody decides their own request,
+  whatever their role. Withdrawing removes only the cover *that request* caused.
+  **Staff-only by construction**: leave has its own table rather than a Holiday
+  row with a filter on it, and `approvedLeaveBetween` REFUSES a pupil or guardian
+  rather than returning an empty list — an empty list is indistinguishable from
+  "there is none" and would start leaking the day somebody widened the query. The
+  calendar shows who is away and deliberately not why.
+
+  **Report cards** (`report-cards.ts`). Written by the LEAD class teacher or an
+  admin — not a co-teacher who takes the class for music, and not the principal.
+  Everything is snapshot at generation and frozen at publication, including the
+  assessment titles; three tests do nothing but change the underlying marks after
+  publishing and check the card did not move. An unmarked assessment is BLANK,
+  never zero. A draft is invisible to the child and the guardian. It prints —
+  chrome stripped, black on white, the school's own logo served through the
+  authorised file route.
+
+  **The principal's dashboard** (`insights.ts`). Attendance by class, academic
+  progress, and each pupil's report card. It flags children against a threshold
+  and never ranks them: pupils come back alphabetically whatever their marks, and
+  a test asserts that using a pupil who sorts last and scores best. A class
+  average is the mean of each PUPIL's own overall — summing everybody's points
+  would let one child who sat every paper outweigh five who sat none. Pupils with
+  no marks are excluded and counted separately. LATE counts as present; a class
+  with no register taken reports `—`, not 0%.
+
+  **PRINCIPAL is a peer of admin, not a rank above it.** The admin sets the school
+  up; the principal reads what came out and decides who may be away. The sweep
+  proves the split: a principal opens the dashboard, the class figures, the staff
+  calendar and the leave queue, and is turned away from the register, the
+  directory and class creation.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1001,7 +1142,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 112 checks in
+**Every route referenced by the navigation renders.** All 161 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1025,14 +1166,19 @@ the release where every page rendered and nothing saved.
   It exists because the alternative was a lie: they used to land on "You are not
   part of a school yet — join with a code", and there is no code that helps.
 - Cross-school moderation. The **per-school safety centre is built** — see
-  Status, and `/admin/safety` — so what is missing is the tier above it: one
-  queue spanning both schools, for whoever runs the server rather than a school.
-  There is no actor for it. **The global feed now depends on this gap and works
-  around it rather than pretending it is closed**: a school controls what it
-  publishes and what it shows, and nobody can take another school's post down
-  for everyone. That is stated on the page itself, to admins, in those words. `ROLES` is ADMIN, TEACHER, STUDENT, PARENT, all four
-  scoped to a school, and nothing in the app is above a school except the file
-  sweep, which is a cron job for the same reason.
+  Status and `/admin/safety` — so what is missing is the tier above it: one
+  queue spanning both schools.
+  **There is now an actor who could own it, and deliberately no queue for them
+  yet.** The SUPERUSER flag exists, but it holds keys to exactly two tables,
+  School and Invite, and `Post` is not one of them — so an operator cannot read a
+  school-scoped post, let alone take one down. Giving them a moderation queue
+  means widening that boundary to Post and Report, which is a decision about what
+  the person hosting this software may see inside somebody's school, and it
+  should be made deliberately rather than as a side effect of wanting a feature.
+  **The global feed still depends on this gap and works around it rather than
+  pretending it is closed**: a school controls what it publishes and what it
+  shows, and nobody can take another school's post down for everyone. That is
+  stated on the page itself, to admins, in those words.
 - Competition **leaderboards**, and cross-school results generally. Submissions
   and scoring are built (see Status); `leaderboardEnabled` is still the one
   column nothing writes. It is deliberately last: entries are school-scoped by
