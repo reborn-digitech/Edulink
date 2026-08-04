@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, ChalkboardTeacherIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import {
+  ArrowLeftIcon,
+  CaretRightIcon,
+  CertificateIcon,
+  ChalkboardTeacherIcon,
+  UsersThreeIcon,
+} from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listCovers } from "@/lib/register-duty";
@@ -146,6 +152,29 @@ export default async function ClassStaffingPage({
             }))}
           />
         </CardBody>
+      </Card>
+
+      {/* `assertMayWriteCards` has always let an admin through — a class whose
+          teacher left mid-term still has to issue report cards — but nothing
+          linked to the builder from the admin's side, so the only route in was
+          typing a /teacher/ URL. This is that route, on the page an admin is
+          already on when they are thinking about this class. */}
+      <Card>
+        <Link
+          href={`/teacher/classes/${klass.id}/report-cards`}
+          className="flex items-center gap-3 p-4"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+            <CertificateIcon weight="duotone" className="size-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-fg">Report cards</span>
+            <span className="block text-xs text-fg-muted">
+              Normally the class teacher&rsquo;s job. You can do it if nobody else can.
+            </span>
+          </span>
+          <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+        </Link>
       </Card>
 
       <Card>

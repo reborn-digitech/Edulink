@@ -35,11 +35,13 @@ export function CommandPalette({
   onClose,
   role,
   contextCount,
+  isSuperuser = false,
 }: {
   open: boolean;
   onClose: () => void;
   role: Role;
   contextCount: number;
+  isSuperuser?: boolean;
 }) {
   const router = useRouter();
   const t = useT();
@@ -74,8 +76,19 @@ export function CommandPalette({
         group: actions,
       });
     }
+    // The side rail carries this too, but the rail is desktop-only and the
+    // owner of the server is as likely to be on a phone as anybody else.
+    if (isSuperuser) {
+      list.push({
+        href: "/root",
+        label: t("shell.serverAdmin"),
+        icon: "buildings",
+        description: t("shell.serverAdminHint"),
+        group: goTo,
+      });
+    }
     return list;
-  }, [role, contextCount, t]);
+  }, [role, contextCount, isSuperuser, t]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();

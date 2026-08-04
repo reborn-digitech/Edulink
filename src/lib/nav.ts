@@ -44,6 +44,12 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
+    // The leave queue is genuinely an admin's to work. `decideLeave` has always
+    // accepted ADMIN — a school whose principal is the one on leave still has to
+    // be able to approve somebody's — but nothing linked here, so the only way
+    // in was typing the URL. The route lives under /principal because that is
+    // whose queue it usually is; the capability is shared.
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
   ],
@@ -133,6 +139,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   ADMIN: [
     { href: "/admin/invites/new", labelKey: "action.inviteTeacher", icon: "userPlus", descriptionKey: "action.inviteTeacherHint" },
     { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
+    { href: "/principal/leave", labelKey: "action.reviewLeave", icon: "calendar", descriptionKey: "action.reviewLeaveHint" },
     { href: "/admin/settings", labelKey: "action.schoolBranding", icon: "palette", descriptionKey: "action.schoolBrandingHint" },
   ],
   PRINCIPAL: [

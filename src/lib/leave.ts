@@ -289,12 +289,39 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     return { ok: false, error: "That request is already closed." };
   }
 
+  // Read the cover this request created before the transaction removes it —
+  // the people named on those rows are expecting to mark a register tomorrow,
+  // and they are the ones who need telling. `cancelCover` is not reused here
+  // because it authorises a different act; this deletes as part of cancelling
+  // the leave that created it.
+  const releasing = await db.attendanceCover.findMany({
+    where: { leaveRequestId: request.id, schoolId: ctx.schoolId },
+    select: {
+      fromDateKey: true,
+      toDateKey: true,
+      covering: { select: { userId: true } },
+      class: { select: { name: true } },
+    },
+  });
+
   await db.$transaction([
     db.leaveRequest.update({ where: { id: request.id }, data: { status: "CANCELLED" } }),
     // ONLY the cover this request created. Cover arranged by hand for other
     // reasons belongs to whoever arranged it.
     db.attendanceCover.deleteMany({ where: { leaveRequestId: request.id, schoolId: ctx.schoolId } }),
   ]);
+
+  for (const cover of releasing) {
+    await notify({
+      userId: cover.covering.userId,
+      schoolId: ctx.schoolId,
+      kind: "SYSTEM",
+      title: `You are no longer marking ${cover.class.name}`,
+      body: `The leave that arranged it, from ${cover.fromDateKey}, was cancelled.`,
+      url: "/teacher/attendance",
+      urgent: true,
+    });
+  }
 
   await audit({
     schoolId: ctx.schoolId,

@@ -20,6 +20,16 @@ export type ShellUser = {
   role: Role;
   schoolName: string;
   contextCount: number;
+  /**
+   * Whoever runs the server, signed in as somebody INSIDE a school.
+   *
+   * The redirect to /root in the app layout only fires for a superuser with no
+   * school context at all. An owner who also teaches — the ordinary case for a
+   * small deployment — landed in their classroom with no way back out but the
+   * address bar. This is that way back: one link, deliberately set apart from
+   * the school's own navigation, because it leaves the school.
+   */
+  isSuperuser?: boolean;
 };
 
 /**
@@ -77,6 +87,15 @@ export function AppShell({
         </nav>
 
         <div className="border-t border-border p-3">
+          {user.isSuperuser && (
+            <Link
+              href="/root"
+              className="mb-2 flex items-center gap-2 rounded-[--radius-md] border border-dashed border-border px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+            >
+              <NavIcon name="buildings" className="size-5" />
+              {t("shell.serverAdmin")}
+            </Link>
+          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -205,6 +224,7 @@ export function AppShell({
         onClose={() => setPaletteOpen(false)}
         role={user.role}
         contextCount={user.contextCount}
+        isSuperuser={user.isSuperuser}
       />
     </div>
   );

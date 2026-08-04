@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, ArrowSquareOutIcon, WarningIcon } from "@phosphor-icons/react/ssr";
+import {
+  ArrowLeftIcon,
+  ArrowSquareOutIcon,
+  CertificateIcon,
+  WarningIcon,
+} from "@phosphor-icons/react/ssr";
 import { requireRole, AccessError } from "@/lib/tenancy";
+import { db } from "@/lib/db";
 import {
   ATTENDANCE_CONCERN_PERCENT,
   defaultWindow,
@@ -53,6 +59,30 @@ export default async function PrincipalClassPage({
     throw error;
   }
 
+  /**
+   * A principal who is ALSO this class's LEAD teacher gets the builder here.
+   *
+   * A small school's head takes Class 5 on Tuesdays, and `cohort.ts` lets an
+   * admin appoint them. Those cards are theirs to write, so the link belongs on
+   * the class page they are already looking at. The check is the same shape as
+   * the one `assertMayWriteCards` runs, and that function is still the authority
+   * — this only decides whether to draw a link. An admin sees it on their own
+   * class page, unconditionally, so the condition here is genuinely about being
+   * the teacher rather than about the role.
+   */
+  const lead =
+    ctx.membershipId === null
+      ? null
+      : await db.classTeacher.findFirst({
+          where: {
+            schoolId: ctx.schoolId,
+            classId,
+            teacherMembershipId: ctx.membershipId,
+            role: "LEAD",
+          },
+          select: { id: true },
+        });
+
   const concerns = data.pupils.filter(
     (p) => p.attendancePercent !== null && p.attendancePercent < ATTENDANCE_CONCERN_PERCENT,
   );
@@ -82,6 +112,26 @@ export default async function PrincipalClassPage({
         </div>
         <WindowPicker days={span} />
       </div>
+
+      {lead && (
+        <Card>
+          <Link
+            href={`/teacher/classes/${classId}/report-cards`}
+            className="flex items-center gap-3 p-4"
+          >
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+              <CertificateIcon weight="duotone" className="size-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-fg">Write report cards</span>
+              <span className="block text-xs text-fg-muted">
+                You are this class&rsquo;s teacher, so these are yours to write
+              </span>
+            </span>
+            <ArrowSquareOutIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+          </Link>
+        </Card>
+      )}
 
       {/* ---------------- what needs a look ---------------- */}
       {(concerns.length > 0 || unmarked.length > 0) && (

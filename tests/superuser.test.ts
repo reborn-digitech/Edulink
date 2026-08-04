@@ -9,6 +9,7 @@ import {
   gradesInRange,
   inviteAdmin,
   listSchools,
+  listServerAudit,
   revokeInvite,
   updateSchool,
 } from "@/lib/superuser";
@@ -127,6 +128,7 @@ describe("⚠ only an operator may call any of it", () => {
       inviteAdmin(ordinaryAdmin, "any-id", { email: "a@b.test" }),
     ).rejects.toBeInstanceOf(AccessError);
     await expect(revokeInvite(ordinaryAdmin, "any-id")).rejects.toBeInstanceOf(AccessError);
+    await expect(listServerAudit(ordinaryAdmin)).rejects.toBeInstanceOf(AccessError);
   });
 
   it("lets the operator through", () => {
@@ -345,5 +347,48 @@ describe("⚠ grade ranges", () => {
 
   it("⚠ refuses to expand an absurd range instead of rendering 900 options", () => {
     expect(gradesInRange("1", "500")).toEqual([]);
+  });
+});
+
+/**
+ * The operator's own trail.
+ *
+ * WHAT THIS FILE CAN SHOW is that the reader returns the unattributed rows and
+ * refuses a school admin. What it CANNOT show is the half that matters most —
+ * that Postgres lets a superuser read schoolId-NULL rows and no others — because
+ * this suite connects as the database owner with row-level security not in
+ * force. That claim is made in `npm run rls:verify`, live, against the policy.
+ */
+describe("the server log", () => {
+  it("⚠ shows the operator's own actions, which appear in no school", async () => {
+    const result = await createSchool(operator, DETAILS);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+
+    // Newest first, so the action just taken is row zero. Counting the list
+    // before and after would not work: it is capped, and on a server with any
+    // history at all the cap is already reached.
+    const after = await listServerAudit(operator);
+    expect(after[0]!.action).toBe("superuser.school.create");
+    expect(after[0]!.targetId).toBe(result.schoolId);
+    expect(after[0]!.actorName).toBe("The Operator");
+    // The school is named in meta precisely because the row cannot carry a
+    // schoolId — that is what keeps it out of every Safety Centre.
+    expect(after[0]!.meta.name).toBe(DETAILS.name);
+  });
+
+  it("⚠ carries no school-scoped row", async () => {
+    // A school's history belongs to that school. If a tenant row ever reached
+    // this list, the operator would be reading inside a school through the one
+    // table that records everything that happens in one.
+    await createSchool(operator, DETAILS);
+    const rows = await listServerAudit(operator, { take: 500 });
+    expect(rows.length).toBeGreaterThan(0);
+
+    const ids = rows.map((r) => r.id);
+    const scoped = await db.auditLog.count({
+      where: { id: { in: ids }, schoolId: { not: null } },
+    });
+    expect(scoped).toBe(0);
   });
 });

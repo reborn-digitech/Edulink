@@ -34,11 +34,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               Server
             </span>
           </Link>
-          <form action="/api/auth/logout" method="post">
-            <Button type="submit" variant="ghost" size="sm">
-              Sign out
+          <div className="flex items-center gap-1">
+            {/* The one other place in here. A trail written and never read is
+                not a trail, and until this link existed there was no page at
+                all that could show an operator what they had done. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/audit">Server log</Link>
             </Button>
-          </form>
+            <form action="/api/auth/logout" method="post">
+              <Button type="submit" variant="ghost" size="sm">
+                Sign out
+              </Button>
+            </form>
+          </div>
         </div>
       </header>
 

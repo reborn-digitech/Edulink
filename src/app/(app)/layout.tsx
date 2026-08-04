@@ -61,6 +61,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         role,
         schoolName,
         contextCount,
+        isSuperuser: session.user.isSuperuser,
       }}
       unreadCount={unreadCount}
     >

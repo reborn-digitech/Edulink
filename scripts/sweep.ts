@@ -11,6 +11,8 @@
 import { PrismaClient } from "@prisma/client";
 import { createHash, randomBytes } from "node:crypto";
 import { config } from "dotenv";
+import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
+import { ROLES, type Role } from "@/lib/constants";
 
 config();
 
@@ -46,6 +48,22 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
 }
 
 const results: { role: string; path: string; status: number; expected: number; ok: boolean; note: string }[] = [];
+
+/**
+ * Checks this run did NOT make, and why.
+ *
+ * A check that quietly does nothing is indistinguishable from one that passed,
+ * and "217/217" over a role nothing was minted for is a lie the report tells
+ * with a straight face. Every `if (!fixture) return` in this file used to end
+ * the story there. Now it says so, and the count says how many.
+ */
+const skipped: string[] = [];
+function skip(what: string, why: string) {
+  skipped.push(`${what} — ${why}`);
+}
+
+/** Made for the length of a run and removed in a `finally`. */
+const SWEEP_EXPERT_EMAIL = "zz.sweep.expert@edulink.test";
 
 async function check(actor: Actor | null, path: string, expected = 200, note = "") {
   const { status, loc } = await hit(actor, path);
@@ -234,6 +252,45 @@ async function staffingAndDuty(schoolId: string) {
   }
 }
 
+/**
+ * ⚠ EVERY LINK THE APP DRAWS, FOLLOWED.
+ *
+ * THIS IS THE CHECK THE OTHER 160 COULD NOT MAKE. A role-by-role audit turned up
+ * eight gaps and six were the same shape: a capability built and authorised
+ * correctly, with nothing linking to it — or, worse, a link in the side rail and
+ * the ⌘K palette pointing at a route that did not exist. `/expert/profile` was a
+ * 404 in both places for months.
+ *
+ * Nothing caught it, and the reason is structural. The unit suites test
+ * functions that exist. The rest of this file tests URLs somebody thought to
+ * type into it. A link that goes nowhere is invisible to both — it only shows up
+ * when a person clicks it.
+ *
+ * So this does not take a list. It reads `NAV` and `QUICK_ACTIONS` — the single
+ * definition the side rail, the bottom bar, the FAB and the palette all render
+ * from — and requests every static href AS the role that is shown it. Add a nav
+ * entry for a page you have not built and this fails on the next run.
+ *
+ * Dynamic hrefs are skipped: there are none today, and one added later would
+ * need a real id, which the rest of this file already does per feature.
+ */
+async function everyNavLink(schoolId: string, actorFor: (role: Role) => Promise<Actor | null>) {
+  for (const role of ROLES) {
+    const actor = await actorFor(role);
+    if (!actor) continue;
+
+    const hrefs = [
+      ...NAV[role].map((item) => item.href),
+      ...QUICK_ACTIONS[role].map((action) => action.href),
+      ...(PRIMARY_ACTION[role] ? [PRIMARY_ACTION[role]!.href] : []),
+    ].filter((href) => !href.includes("["));
+
+    for (const href of [...new Set(hrefs)]) {
+      await check(actor, href, 200, `⚠ ${role} is shown this link`);
+    }
+  }
+}
+
 /** The operator area: reachable by a superuser, invisible to everybody else. */
 async function operatorArea() {
   const staff = await db.membership.findFirst({
@@ -245,11 +302,18 @@ async function operatorArea() {
   const actor = await mint(staff.user.email, "TEACHER", staff.schoolId, "would-be-operator");
   await check(actor, "/root", 307, "⚠ /root is closed to ordinary staff");
   await check(null, "/root", 307, "…and to nobody at all");
+  // The server log is as closed as the rest of it — it names every school on
+  // the installation, which is precisely what a tenant must not see.
+  await check(actor, "/root/audit", 307, "⚠ …as is the server log");
+  await check(null, "/root/audit", 307, "…to nobody at all either");
 
   try {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: true } });
     await check(actor, "/root", 200, "…and open to somebody who runs the server");
     await check(actor, "/root/new", 200, "…who may add a school");
+    // The operator's own trail. Written with schoolId NULL since superusers
+    // existed, and until now nothing in the app could read it.
+    await check(actor, "/root/audit", 200, "⚠ …and may read what they have done");
   } finally {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
   }
@@ -352,14 +416,44 @@ async function leaveAndPrincipal(schoolId: string) {
  * a card somebody may not read should not confirm that it exists.
  */
 async function reportCards(schoolId: string) {
-  const link = await db.classTeacher.findFirst({
-    where: { schoolId, role: "LEAD", teacher: { user: { email: { not: null } } } },
-    include: {
-      teacher: { include: { user: { select: { email: true } } } },
-      class: { select: { id: true } },
-    },
-  });
-  if (!link?.teacher.user.email) return;
+  /**
+   * A class with a LEAD teacher who can be signed in AS, and — preferred — a
+   * pupil somebody actually guards.
+   *
+   * THE PREFERENCE IS NOT COSMETIC. The last check in this function is the one
+   * that catches a notification pointing at a page with no report card on it,
+   * and it needs a guardian. Taking the first LEAD class picked one whose pupils
+   * have none, so that check silently did not run while the report said
+   * everything passed.
+   */
+  const leadWhere = { schoolId, role: "LEAD" as const, teacher: { user: { email: { not: null } } } };
+  const leadInclude = {
+    teacher: { include: { user: { select: { email: true } } } },
+    class: { select: { id: true } },
+  };
+  const link =
+    (await db.classTeacher.findFirst({
+      where: {
+        ...leadWhere,
+        class: {
+          enrollments: {
+            some: {
+              status: "ACTIVE",
+              student: {
+                user: { email: { not: null } },
+                guardianships: { some: { status: "ACTIVE", parent: { email: { not: null } } } },
+              },
+            },
+          },
+        },
+      },
+      include: leadInclude,
+    })) ?? (await db.classTeacher.findFirst({ where: leadWhere, include: leadInclude }));
+
+  if (!link?.teacher.user.email) {
+    skip("every report-card check", "no LEAD class teacher with an email in this school");
+    return;
+  }
 
   const classId = link.class.id;
   const teacherActor = await mint(link.teacher.user.email, "TEACHER", schoolId, "card-teacher");
@@ -393,14 +487,105 @@ async function reportCards(schoolId: string) {
     );
   }
 
-  // A live draft, and who may open it.
-  const pupil = await db.enrollment.findFirst({
-    where: { classId, status: "ACTIVE" },
-    include: {
-      student: { include: { user: { select: { email: true } } } },
-    },
+  /**
+   * ⚠ AN ADMIN CAN GET THERE.
+   *
+   * `assertMayWriteCards` has always let an admin through — a class whose
+   * teacher left mid-term still has to issue report cards — and nothing linked
+   * to the builder from the admin's side. The link now sits on the admin's own
+   * class page; this asserts the destination answers them.
+   */
+  const adminMember = await db.membership.findFirst({
+    where: { schoolId, role: "ADMIN", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { email: true } } },
   });
-  if (!pupil?.student.user.email) return;
+  if (adminMember?.user.email) {
+    const adminActor = await mint(adminMember.user.email, "ADMIN", schoolId, "card-admin");
+    await check(adminActor, `/admin/classes/${classId}`, 200, "the admin's class page…");
+    await check(
+      adminActor,
+      `/teacher/classes/${classId}/report-cards`,
+      200,
+      "⚠ …links to report cards, and an admin may write them",
+    );
+  }
+
+  /**
+   * ⚠ A PRINCIPAL WHO IS THIS CLASS'S TEACHER CAN, AND ONE WHO IS NOT CANNOT.
+   *
+   * `cohort.ts` deliberately lets a school make a principal the LEAD — in a
+   * small school the head takes Class 5 on Tuesdays — and the page's role gate
+   * turned them away before `assertMayWriteCards` ever ran. Two decisions that
+   * contradicted each other. Both halves are checked, because admitting the
+   * role without keeping the LEAD test would be the opposite bug.
+   */
+  const headHost = await db.membership.findFirst({
+    where: { schoolId, role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  if (headHost?.user.email) {
+    const head = await db.membership.upsert({
+      where: {
+        userId_schoolId_role: { userId: headHost.user.id, schoolId, role: "PRINCIPAL" },
+      },
+      create: { userId: headHost.user.id, schoolId, role: "PRINCIPAL", status: "ACTIVE" },
+      update: { status: "ACTIVE" },
+    });
+    try {
+      const headActor = await mint(headHost.user.email, "PRINCIPAL", schoolId, "card-principal");
+      await check(
+        headActor,
+        `/teacher/classes/${classId}/report-cards`,
+        404,
+        "⚠ a principal who is not this class's teacher still cannot write its cards",
+      );
+
+      const asLead = await db.classTeacher.upsert({
+        where: { classId_teacherMembershipId: { classId, teacherMembershipId: head.id } },
+        create: { classId, schoolId, teacherMembershipId: head.id, role: "LEAD" },
+        update: { role: "LEAD" },
+      });
+      try {
+        await check(
+          headActor,
+          `/teacher/classes/${classId}/report-cards`,
+          200,
+          "⚠ …but one the school made LEAD of it can",
+        );
+      } finally {
+        await db.classTeacher.deleteMany({ where: { id: asLead.id } });
+      }
+    } finally {
+      await db.membership.deleteMany({ where: { id: head.id } });
+    }
+  }
+
+  // A live draft, and who may open it.
+  //
+  // A PUPIL WITH A GUARDIAN, preferred over the first one on the roll. The
+  // guardian half of this block — the one that catches a notification pointing
+  // at a page with no report card on it — is the reason the card exists at all,
+  // and picking a pupil nobody guards skipped it silently.
+  const pupil =
+    (await db.enrollment.findFirst({
+      where: {
+        classId,
+        status: "ACTIVE",
+        student: {
+          user: { email: { not: null } },
+          guardianships: { some: { status: "ACTIVE", parent: { email: { not: null } } } },
+        },
+      },
+      include: { student: { include: { user: { select: { email: true } } } } },
+    })) ??
+    (await db.enrollment.findFirst({
+      where: { classId, status: "ACTIVE" },
+      include: { student: { include: { user: { select: { email: true } } } } },
+    }));
+  if (!pupil?.student.user.email) {
+    skip("the report-card reader checks", `no enrolled pupil with an email on class ${classId}`);
+    return;
+  }
 
   const draft = await db.reportCard.create({
     data: {
@@ -434,6 +619,46 @@ async function reportCards(schoolId: string) {
       200,
       "…and they may read it once it is published",
     );
+
+    /**
+     * ⚠ THE NOTIFICATION'S DESTINATION ACTUALLY SHOWS THE CARD.
+     *
+     * `publishCards` sends every guardian a notification pointing at
+     * /parent/grades, and that page did not read report cards at all. The
+     * family tapped "your child's report card is ready" and landed on a page
+     * with no report card on it — the one screen the whole feature exists to
+     * deliver. A status check could never catch that: the page was a healthy
+     * 200 throughout. So this looks at what came back.
+     */
+    const guardianship = await db.guardianship.findFirst({
+      where: { studentMembershipId: pupil.studentMembershipId, status: "ACTIVE" },
+      include: { parent: { select: { email: true } } },
+    });
+    if (!guardianship?.parent.email) {
+      skip(
+        "the guardian's view of a published report card",
+        `no active guardian with an email for the pupil on class ${classId}`,
+      );
+    } else {
+      const guardianActor = await mint(
+        guardianship.parent.email,
+        "PARENT",
+        schoolId,
+        "card-guardian",
+      );
+      const { status, body } = await hit(
+        guardianActor,
+        `/parent/grades?child=${pupil.studentMembershipId}`,
+      );
+      results.push({
+        role: "card-guardian",
+        path: "/parent/grades",
+        status,
+        expected: 200,
+        ok: status === 200 && body.includes("ZZ Sweep Draft"),
+        note: "⚠ the published card is ON the page the notification points at",
+      });
+    }
   } finally {
     await db.reportCard.deleteMany({ where: { id: draft.id } });
   }
@@ -695,6 +920,82 @@ async function main() {
   await staffingAndDuty(riverside.id);
   await operatorArea();
 
+  /**
+   * Every link the app draws, followed as the role that is shown it.
+   *
+   * A PRINCIPAL is made for the length of this check, the same way
+   * `leaveAndPrincipal` does, because the seed has none and adding one would
+   * move counts that other suites assert. An EXPERT is minted from a published
+   * profile if the seed has one.
+   */
+  const principalHost = await db.membership.findFirst({
+    where: {
+      schoolId: riverside.id,
+      role: "TEACHER",
+      status: "ACTIVE",
+      user: { email: { not: null } },
+    },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  const madePrincipal = principalHost?.user.email
+    ? await db.membership.upsert({
+        where: {
+          userId_schoolId_role: {
+            userId: principalHost.user.id,
+            schoolId: riverside.id,
+            role: "PRINCIPAL",
+          },
+        },
+        create: {
+          userId: principalHost.user.id,
+          schoolId: riverside.id,
+          role: "PRINCIPAL",
+          status: "ACTIVE",
+        },
+        update: { status: "ACTIVE" },
+      })
+    : null;
+
+  // A published expert, made for the length of this check. `/expert/*` is
+  // reachable only by somebody holding an ExpertProfile, and the seed has none.
+  const sweepExpertUser = await db.user.upsert({
+    where: { email: SWEEP_EXPERT_EMAIL },
+    create: { email: SWEEP_EXPERT_EMAIL, name: "ZZ Sweep Expert", prefs: "{}" },
+    update: {},
+  });
+  await db.expertProfile.upsert({
+    where: { userId: sweepExpertUser.id },
+    create: {
+      userId: sweepExpertUser.id,
+      headline: "ZZ Sweep expert",
+      publishedAt: new Date(),
+    },
+    update: { publishedAt: new Date() },
+  });
+
+  try {
+    await everyNavLink(riverside.id, async (role) => {
+      if (role === "ADMIN") return admin;
+      if (role === "TEACHER") return teacher;
+      if (role === "STUDENT") return student;
+      if (role === "PARENT") return parent;
+      if (role === "PRINCIPAL") {
+        return principalHost?.user.email
+          ? mint(principalHost.user.email, "PRINCIPAL", riverside.id, "nav-principal")
+          : null;
+      }
+      // The seed has no expert, and this is the exact role whose nav pointed at
+      // a 404 for months. Skipping it would recreate the blind spot that let
+      // that happen, so one is made and taken away again.
+      return mint(SWEEP_EXPERT_EMAIL, "EXPERT", null, "nav-expert");
+    });
+  } finally {
+    if (madePrincipal) await db.membership.deleteMany({ where: { id: madePrincipal.id } });
+    await db.expertProfile.deleteMany({ where: { userId: sweepExpertUser.id } });
+    await db.session.deleteMany({ where: { userId: sweepExpertUser.id } });
+    await db.user.deleteMany({ where: { id: sweepExpertUser.id } });
+  }
+
   await suspension(riverside.id);
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
@@ -767,12 +1068,29 @@ async function main() {
   console.log("-".repeat(96));
   for (const r of results) {
     const mark = r.ok ? "ok  " : "FAIL";
-    const status = r.ok ? `${mark} ${r.status}` : `${mark} ${r.status} (want ${r.expected})`;
+    // A handful of checks assert what came BACK, not merely the status — a page
+    // can be a healthy 200 and still be missing the one thing it exists to
+    // show. "FAIL 200 (want 200)" reads as a bug in this script; it is not.
+    const status = r.ok
+      ? `${mark} ${r.status}`
+      : r.status === r.expected
+        ? `${mark} ${r.status} (body)`
+        : `${mark} ${r.status} (want ${r.expected})`;
     console.log(pad(r.role, 16) + pad(status, 14) + r.path + (r.note ? `   — ${r.note}` : ""));
   }
   const failed = results.filter((r) => !r.ok);
   console.log("-".repeat(96));
-  console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected.`);
+  if (skipped.length > 0) {
+    // Said out loud, because a count that does not mention what it left out
+    // reads as coverage it does not have.
+    console.log(`${skipped.length} check(s) NOT made:`);
+    for (const line of skipped) console.log(`  skip  ${line}`);
+    console.log("-".repeat(96));
+  }
+  console.log(
+    `${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected` +
+      (skipped.length > 0 ? `, ${skipped.length} skipped.` : "."),
+  );
 
   await db.session.deleteMany({ where: { userAgent: "sweep" } });
   process.exit(failed.length ? 1 : 0);

@@ -148,7 +148,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (964 tests) |
+| `npm test` | Full suite (982 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -167,11 +167,35 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 161 route/role/negative combinations
+mints a real session per role, requests all 223 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
 a production build.
+
+**It follows every link the app draws, and it did not used to.** A role-by-role
+audit turned up eight gaps and six were one shape: a capability built and
+authorised correctly with nothing linking to it — or a link in the side rail and
+the ⌘K palette pointing at a route that never existed. `/expert/profile` was a
+404 in both places for months. Nothing caught it, and the reason was structural:
+unit tests exercise functions that exist, and the sweep used to request URLs
+somebody had thought to type into it. A link that goes nowhere is invisible to
+both. So `everyNavLink` now reads `NAV`, `QUICK_ACTIONS` and `PRIMARY_ACTION` —
+the single definition all four navigation surfaces render from — and requests
+every static href as the role that is shown it. Add a nav entry for a page you
+have not built and the next run is red.
+
+**A few checks read the body, not the status.** A page can be a healthy 200 and
+still be missing the one thing it exists to show: `/parent/grades` answered 200
+throughout the release where a report-card notification led families to a page
+with no report card on it. Those checks print `FAIL 200 (body)`.
+
+**It says what it did NOT check.** Every `if (!fixture) return` used to end the
+story silently, so "217/217" could cover a role nothing had been minted for —
+which is the same blind spot in a different costume. Skips are now listed and
+counted under the table. Where a fixture can reasonably be made, it is: the
+sweep creates a published expert and a stand-in principal for the length of a
+run and removes both in a `finally`.
 
 ### Running the file sweep on a schedule
 
@@ -1142,11 +1166,16 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 161 checks in
+**Every route referenced by the navigation renders.** All 223 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
 the release where every page rendered and nothing saved.
+
+This claim is now derived rather than asserted: the sweep reads the navigation
+model itself and follows every static href, so "every route referenced by the
+navigation" means the actual list rather than one somebody maintained by hand.
+`/expert/profile` was in that list and was a 404 for months.
 
 - ~~Suspend-user~~ **built, as suspend-MEMBERSHIP.** An admin can pause and
   restore anybody's access to their own school from the directory, with a reason
@@ -1251,6 +1280,46 @@ the release where every page rendered and nothing saved.
   carries a sign-out button for exactly this reason. `npm run sweep` asserts the
   307 rather than wishing it away. Moving the account page out from behind the
   gate is its own change.
+
+### The role-by-role audit, and the eight things it found
+
+Walking each role's journey end to end — how they get in, what they land on,
+what they can reach — turned up eight gaps. All eight are fixed. They are worth
+recording together because **six were the same bug wearing different clothes**: a
+capability built correctly, authorised correctly, tested correctly, with nothing
+linking to it.
+
+| # | What was wrong | Fix |
+|---|---|---|
+| 1 | `/expert/profile` was a **404**, and it was in the expert's side rail *and* their ⌘K palette | The page now exists: `getOwnProfile` / `updateOwnProfile`, headline, bio, specialisms as chips, timezone |
+| 2 | `publishCards` notified guardians with `url: "/parent/grades"` — and that page never read report cards | `/parent/grades` renders published cards at the top. `cardsForChild` existed and was unwired |
+| 3 | An admin could approve leave (`decideLeave` accepts `ADMIN`) but nothing linked to the queue | `NAV.ADMIN` and the palette now carry `/principal/leave` |
+| 4 | An admin could write report cards (`assertMayWriteCards` accepts `ADMIN`) but had no path to the builder | `/admin/classes/[classId]` links to it |
+| 5 | A principal made LEAD of a class **could not write that class's cards** — the page gated on `requireRole("TEACHER", "ADMIN")` while `cohort.ts` deliberately allowed the appointment | `PRINCIPAL` added to the door; `assertMayWriteCards` is still what decides, and still refuses a principal who is not the LEAD |
+| 6 | Arranging cover notified **nobody**. The covering teacher found out by noticing a class they do not teach | `arrangeCover`, `cancelCover` and `cancelLeave` all notify the person whose Tuesday it is, urgent so it survives quiet hours |
+| 7 | A superuser who also held a school role had **no link to `/root`** — the redirect only fires for one with no school at all | A "Server administration" entry in the side rail and the palette when `isSuperuser` |
+| 8 | Operator audit rows are written with `schoolId: null` so they land in no school's Safety Centre — and **nothing could read them**, including the person who wrote them | `/root/audit`, plus a policy clause letting a superuser SELECT rows where `schoolId IS NULL` and **nothing else** |
+
+Two of these changed more than a link:
+
+**`cardsForChild` took the school from the session.** A parent with one child at
+each of two schools has one `activeSchoolId` and two children, and the child
+switcher moves between them without touching the session — so one child's cards
+appeared and the other's silently did not. It now takes the school from the
+child. `rls:verify` and a test both cover it.
+
+**The audit policy grew a clause, narrowly.** `SUPERUSER_NULL_READABLE` is
+`schoolId IS NULL` *and* superuser, in the `FOR SELECT` policy only — never in
+`WITH CHECK`, and never in a `USING` that governs `DELETE`, which is the lesson
+the join-code hole taught. A tenant's audit rows carry a schoolId and are exactly
+as unreachable as before. `rls:verify` now asserts both directions: the operator
+can read their own trail, and no school can.
+
+**What actually let this happen** is in the sweep section above: unit tests
+exercise functions that exist, and the route sweep used to request URLs somebody
+had thought to list. A link pointing at nothing is invisible to both. The sweep
+now derives its list from the navigation model, so this class of bug fails on the
+next run rather than in a role audit six months later.
 
 ### Known issues
 

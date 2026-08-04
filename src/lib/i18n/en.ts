@@ -103,6 +103,8 @@ export const en = {
     signOut: "Sign out",
     yourChildren: "Your children",
     skipToContent: "Skip to content",
+    serverAdmin: "Server administration",
+    serverAdminHint: "Schools on this server",
   },
 
   /* ---------------------------------------------------------------------- */

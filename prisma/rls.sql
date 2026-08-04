@@ -321,12 +321,24 @@ ALTER TABLE "AuditLog" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "AuditLog_tenant_isolation" ON "AuditLog";
 DROP POLICY IF EXISTS "AuditLog_readable" ON "AuditLog";
 CREATE POLICY "AuditLog_tenant_isolation" ON "AuditLog"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   -- Writes also allow a row belonging to no school, which is how a
   -- login — or a failed one — gets recorded at all. Absent from
   -- USING: writable, and visible to no school.
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
               OR "schoolId" IS NULL);
+
+  -- …and, for whoever runs the server, the rows that belong to no school
+  -- at all — their own actions, which are audited unattributed so that
+  -- they land in no tenant's Safety Centre. A school's rows carry a
+  -- schoolId and stay out of reach.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "AuditLog_readable" ON "AuditLog"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1')
+        );
 
 -- AcademicYear
 ALTER TABLE "AcademicYear" ENABLE ROW LEVEL SECURITY;

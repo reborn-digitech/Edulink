@@ -217,6 +217,11 @@ beforeAll(async () => {
 
 afterEach(async () => {
   await db.attendanceCover.deleteMany({ where: { schoolId: { in: [riversideId, oakfieldId] } } });
+  // Cover now notifies the person covering, so the rows accumulate across tests
+  // in this file and a count assertion would read its neighbours' work.
+  await db.notification.deleteMany({
+    where: { user: { email: { in: [PRINCIPAL_EMAIL, SPARE_TEACHER_EMAIL] } } },
+  });
   await db.classTeacher.update({
     where: { id: classTeacherRowId },
     data: { canTakeAttendance: true },
@@ -226,6 +231,7 @@ afterEach(async () => {
 afterAll(async () => {
   await db.attendanceCover.deleteMany({ where: { schoolId: { in: [riversideId, oakfieldId] } } });
   const made = [PRINCIPAL_EMAIL, SPARE_TEACHER_EMAIL];
+  await db.notification.deleteMany({ where: { user: { email: { in: made } } } });
   await db.classTeacher.deleteMany({ where: { classId } });
   await db.classTeacher.deleteMany({ where: { teacher: { user: { email: { in: made } } } } });
   await db.membership.deleteMany({ where: { user: { email: { in: made } } } });
@@ -486,6 +492,74 @@ describe("⚠ cover", () => {
     expect((await registerDuty(otherTeacher, classId, TODAY)).may).toBe(true);
     await cancelCover(admin, created.coverId);
     expect((await registerDuty(otherTeacher, classId, TODAY)).may).toBe(false);
+  });
+
+  /**
+   * THE PERSON DOING THE WORK IS TOLD.
+   *
+   * This was the whole failure: cover was arranged correctly, the register
+   * appeared on somebody's attendance page, and nothing said so. Every
+   * assertion above would have passed with the notification missing — `may` was
+   * true, the dates were right — which is exactly why it went unnoticed. Duty
+   * without notice is thirty children unmarked by somebody who never knew.
+   */
+  it("⚠ tells the person who now has to mark it", async () => {
+    const created = await arrangeCover(admin, {
+      classId,
+      coveringMembershipId: otherTeacherMembershipId,
+      fromDateKey: TODAY,
+      toDateKey: NEXT_WEEK,
+    });
+    expect(created.ok).toBe(true);
+
+    const told = await db.notification.findMany({
+      where: { user: { email: SPARE_TEACHER_EMAIL } },
+    });
+    expect(told).toHaveLength(1);
+    expect(told[0]!.title).toContain("ZZ Register Duty Test Class");
+    expect(told[0]!.body).toContain(TODAY);
+    expect(told[0]!.body).toContain(NEXT_WEEK);
+    // Somewhere they can act on it, not a dead end.
+    expect(told[0]!.url).toBe("/teacher/attendance");
+  });
+
+  it("⚠ tells them again when the cover is cancelled", async () => {
+    const created = await arrangeCover(admin, {
+      classId,
+      coveringMembershipId: otherTeacherMembershipId,
+      fromDateKey: TODAY,
+      toDateKey: TODAY,
+    });
+    if (!created.ok || !created.coverId) throw new Error("setup");
+
+    await cancelCover(admin, created.coverId);
+
+    // Being told you are covering and never told you are not is how somebody
+    // walks into a room that already has a teacher in it.
+    const titles = (
+      await db.notification.findMany({
+        where: { user: { email: SPARE_TEACHER_EMAIL } },
+        orderBy: { createdAt: "asc" },
+      })
+    ).map((n) => n.title);
+    expect(titles).toHaveLength(2);
+    expect(titles[1]).toContain("no longer");
+  });
+
+  it("does not notify when the cover was refused", async () => {
+    // A membership from another school: refused, and nobody hears about it.
+    const result = await arrangeCover(admin, {
+      classId,
+      coveringMembershipId: principalMembershipId.replace(/.$/, "x"),
+      fromDateKey: TODAY,
+      toDateKey: TODAY,
+    });
+    expect(result.ok).toBe(false);
+    expect(
+      await db.notification.count({
+        where: { user: { email: { in: [PRINCIPAL_EMAIL, SPARE_TEACHER_EMAIL] } } },
+      }),
+    ).toBe(0);
   });
 
   it("refuses to cancel another school's cover", async () => {

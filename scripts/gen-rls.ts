@@ -97,6 +97,28 @@ const SELF_READABLE: Record<string, string> = {
 const NULL_SCHOOL_WRITABLE = new Set(["AuditLog"]);
 
 /**
+ * Tables where a SUPERUSER may READ the rows that belong to no school.
+ *
+ * The other half of NULL_SCHOOL_WRITABLE, and it was missing. Every operator
+ * action — a school created, an admin invited, an invitation revoked — is
+ * audited with `schoolId` NULL precisely so that it lands in no tenant's Safety
+ * Centre. Which meant nothing could read it: the rows were written, no school
+ * could see them, and neither could the person who wrote them. An audit trail
+ * with no reader is a file nobody opens, and it is worse than none, because it
+ * is trusted.
+ *
+ * NARROW ON PURPOSE. This is `schoolId IS NULL` AND superuser — not "superuser
+ * may read AuditLog", which would hand the operator every school's history and
+ * break the one promise the /root pages make. A tenant's audit rows carry a
+ * schoolId and stay exactly as unreachable as they were.
+ *
+ * READ ONLY, like every other clause in `alsoReadable`: it goes into the FOR
+ * SELECT policy, never into WITH CHECK, and — the lesson that cost a join-code
+ * hole — never into a USING that governs DELETE.
+ */
+const SUPERUSER_NULL_READABLE = new Set(["AuditLog"]);
+
+/**
  * Tables a SUPERUSER may read and write outside any school.
  *
  * THE FIRST ACTOR THIS SCHEMA HAS EVER HAD ABOVE A SCHOOL, so the list is two
@@ -258,6 +280,11 @@ function generate(): string {
     if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
     if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
     if (globalClause) alsoReadable.push(`(${globalClause})`);
+    if (SUPERUSER_NULL_READABLE.has(table)) {
+      alsoReadable.push(
+        `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
+      );
+    }
 
     const usingNote: string[] = [];
     if (selfColumn) {
@@ -278,6 +305,14 @@ function generate(): string {
         `  -- is the one row in this schema a different school may read. Status is`,
         `  -- in the predicate so nothing reaches other schools before the school`,
         `  -- that wrote it has approved it.`,
+      );
+    }
+    if (SUPERUSER_NULL_READABLE.has(table)) {
+      usingNote.push(
+        `  -- …and, for whoever runs the server, the rows that belong to no school`,
+        `  -- at all — their own actions, which are audited unattributed so that`,
+        `  -- they land in no tenant's Safety Centre. A school's rows carry a`,
+        `  -- schoolId and stay out of reach.`,
       );
     }
     if (alsoReadable.length > 0) {

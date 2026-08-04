@@ -497,7 +497,14 @@ async function main() {
       ["remarkMessage", {}],
       ["post", { where: { scope: { not: "GLOBAL" } } }],
       ["enrollment", {}],
-      ["auditLog", {}],
+      // AuditLog carries a WHERE for the same reason Post does, and the reason
+      // is new: an operator CAN now read the rows that belong to no school —
+      // their own actions, audited unattributed so they land in no tenant's
+      // Safety Centre and are readable at /root/audit. Counting all rows would
+      // fail this check for a reason that has nothing to do with the boundary.
+      // The claim that matters is unchanged and is asserted below: a row
+      // carrying a schoolId stays out of reach.
+      ["auditLog", { where: { schoolId: { not: null } } }],
     ];
 
     for (const [table, args] of tables) {
@@ -513,6 +520,50 @@ async function main() {
         `a superuser read ${rows} ${table} row(s) — the operator boundary is not where it claims to be`,
       );
     }
+
+    /**
+     * The other half of the audit boundary, and it is a POSITIVE claim.
+     *
+     * Every operator action is audited with schoolId NULL so that it appears in
+     * no school's Safety Centre. That was correct and it meant nothing could
+     * read the rows at all — written, invisible to every school, and invisible
+     * to the person who wrote them. An audit trail with no reader is worse than
+     * none, because it is trusted.
+     *
+     * So the policy now lets a superuser SELECT rows where schoolId IS NULL.
+     * The check above proves that did not widen into a school's history; this
+     * one proves it went far enough to be worth having.
+     */
+    let unattributed = -1;
+    try {
+      unattributed = await asSuperuser((tx) =>
+        anyTx(tx).auditLog!.count({ where: { schoolId: null } }),
+      );
+    } catch {
+      unattributed = -1;
+    }
+    check(
+      "⚠ …but a superuser CAN read the rows that belong to no school — their own trail",
+      unattributed > 0,
+      `a superuser read ${unattributed} unattributed AuditLog row(s) — /root/audit would be empty and the operator's actions unreadable`,
+    );
+
+    // And an ordinary school cannot, which is what "belongs to no school" means.
+    let tenantSawUnattributed = -1;
+    try {
+      tenantSawUnattributed = await withTenantOn(client, "verify-a", (tx) =>
+        (tx as unknown as { auditLog: { count: (a: unknown) => Promise<number> } }).auditLog.count({
+          where: { schoolId: null },
+        }),
+      );
+    } catch {
+      tenantSawUnattributed = 0;
+    }
+    check(
+      "⚠ …and no school can, so the operator's log is not in anybody's Safety Centre",
+      tenantSawUnattributed === 0,
+      `a school read ${tenantSawUnattributed} unattributed AuditLog row(s) — including failed sign-ins from other schools`,
+    );
 
     // Writes, not only reads: Invite is superuser-writable ON PURPOSE (it is how
     // a school gets its first admin) and Membership is not (that would be

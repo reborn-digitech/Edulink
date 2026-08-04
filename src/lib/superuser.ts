@@ -6,7 +6,7 @@ import { AccessError } from "./tenancy";
 import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
 import { sendTeacherInvite } from "./email";
-import { writeJson } from "./json";
+import { readJson, writeJson } from "./json";
 import { INVITE_TTL_DAYS } from "./constants";
 import type { ActiveContext } from "./session";
 
@@ -415,4 +415,68 @@ function isUniqueViolation(error: unknown): boolean {
     error !== null &&
     (error as { code?: string }).code === "P2002"
   );
+}
+
+/* -------------------------------------------------------------------------- */
+/* The operator's own trail                                                    */
+/* -------------------------------------------------------------------------- */
+
+export type ServerAuditRow = {
+  id: string;
+  action: string;
+  actorName: string;
+  targetType: string | null;
+  targetId: string | null;
+  meta: Record<string, unknown>;
+  ip: string | null;
+  at: Date;
+};
+
+/**
+ * Everything done from outside any school.
+ *
+ * THE ROWS EXISTED AND NOTHING COULD READ THEM. Every operator action is
+ * audited with `schoolId` NULL so it appears in no tenant's Safety Centre —
+ * correct, and it meant the trail had no reader anywhere in the app. A record
+ * that only `psql` can see is one that will not be looked at after an incident,
+ * which is the only time it matters.
+ *
+ * `schoolId: null` in the WHERE is not the security boundary — the policy is,
+ * and it lets a superuser read exactly these rows. The filter is here so the
+ * query says what it means, and so that a superuser who ALSO administers a
+ * school does not find their own school's history mixed into the server log.
+ */
+export async function listServerAudit(
+  session: ActiveContext,
+  opts: { take?: number } = {},
+): Promise<ServerAuditRow[]> {
+  assertSuperuser(session);
+
+  const rows = await db.auditLog.findMany({
+    where: { schoolId: null },
+    orderBy: { createdAt: "desc" },
+    take: Math.min(opts.take ?? 200, 500),
+  });
+
+  // Same batch-lookup as the school-scoped reader: actorUserId has no relation,
+  // because the actor may be gone by the time anybody reads this.
+  const actorIds = [
+    ...new Set(rows.map((r) => r.actorUserId).filter((id): id is string => Boolean(id))),
+  ];
+  const actors = await db.user.findMany({
+    where: { id: { in: actorIds } },
+    select: { id: true, name: true, preferredName: true },
+  });
+  const nameById = new Map(actors.map((a) => [a.id, a.preferredName ?? a.name]));
+
+  return rows.map((row) => ({
+    id: row.id,
+    action: row.action,
+    actorName: row.actorUserId ? (nameById.get(row.actorUserId) ?? "Deleted user") : "System",
+    targetType: row.targetType,
+    targetId: row.targetId,
+    meta: readJson<Record<string, unknown>>(row.meta, {}),
+    ip: row.ip,
+    at: row.createdAt,
+  }));
 }

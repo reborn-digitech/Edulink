@@ -16,7 +16,13 @@ export default async function ReportCardsPage({
   params: Promise<{ classId: string }>;
   searchParams: Promise<{ title?: string }>;
 }) {
-  const ctx = await requireRole("TEACHER", "ADMIN");
+  // PRINCIPAL is here because `cohort.ts` lets a school make one the LEAD class
+  // teacher — in a small school the head takes Class 5 on Tuesdays, and that was
+  // a deliberate decision. Without this line that head was redirected at the
+  // door and could not write the cards for their own class: two decisions that
+  // contradicted each other. `assertMayWriteCards` below is still what decides,
+  // and it refuses a principal who is NOT this class's LEAD.
+  const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL");
   const { classId } = await params;
   const { title } = await searchParams;
 

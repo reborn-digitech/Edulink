@@ -97,6 +97,8 @@ export const hi: Dictionary = {
     signOut: "साइन आउट",
     yourChildren: "आपके बच्चे",
     skipToContent: "सामग्री पर जाएँ",
+    serverAdmin: "सर्वर प्रशासन",
+    serverAdminHint: "इस सर्वर के स्कूल",
   },
 
   palette: {

@@ -4,7 +4,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { notify } from "./notify";
-import { readJsonArray } from "./json";
+import { readJsonArray, writeJson } from "./json";
 import type { ActiveContext } from "./session";
 
 /**
@@ -602,4 +602,141 @@ export async function removeSlot(session: ActiveContext, slotId: string): Promis
   if (slot.bookedAt) throw new AccessError("A school has booked that time — cancel the booking");
 
   await db.expertSlot.update({ where: { id: slotId }, data: { cancelledAt: new Date() } });
+}
+
+/* -------------------------------------------------------------------------- */
+/* The expert's own profile                                                    */
+/* -------------------------------------------------------------------------- */
+
+export type OwnProfile = {
+  headline: string;
+  bio: string;
+  organisation: string | null;
+  specialisms: string[];
+  timezone: string;
+  published: boolean;
+  verified: boolean;
+};
+
+/**
+ * What the expert wrote about themselves.
+ *
+ * This existed in the nav and the command palette for a long time with nothing
+ * behind it — `/expert/profile` was a 404 in two places an expert is most likely
+ * to tap. What made it survive is that the sweep only visits URLs somebody
+ * thought to list; a link is now checked against the routes that exist.
+ */
+export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile> {
+  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+
+  const profile = await db.expertProfile.findUnique({
+    where: { userId: session.user.id },
+    select: {
+      headline: true,
+      bio: true,
+      organisation: true,
+      specialisms: true,
+      timezone: true,
+      publishedAt: true,
+      verifiedAt: true,
+    },
+  });
+  if (!profile) throw new AccessError("No expert profile", "NOT_FOUND");
+
+  return {
+    headline: profile.headline,
+    bio: profile.bio,
+    organisation: profile.organisation,
+    specialisms: readJsonArray<string>(profile.specialisms),
+    timezone: profile.timezone,
+    published: profile.publishedAt !== null,
+    verified: profile.verifiedAt !== null,
+  };
+}
+
+export type ProfileInput = {
+  headline: string;
+  bio: string;
+  organisation?: string | null;
+  specialisms: string[];
+  timezone: string;
+};
+
+const MAX_SPECIALISMS = 12;
+
+/**
+ * The expert edits their own words. NOT their standing.
+ *
+ * `publishedAt` and `verifiedAt` are absent from this function on purpose. They
+ * are the two fields that decide whether schools see this person at all and
+ * whether they are shown as checked, and an editor that let their subject set
+ * them would make the whole curation step decorative. They are set by whoever
+ * runs the server.
+ *
+ * Everything is trimmed and bounded here rather than in the form, because the
+ * form is not the only thing that can call this.
+ */
+export async function updateOwnProfile(
+  session: ActiveContext,
+  input: ProfileInput,
+): Promise<void> {
+  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+
+  const profile = await db.expertProfile.findUnique({
+    where: { userId: session.user.id },
+    select: { id: true },
+  });
+  if (!profile) throw new AccessError("No expert profile", "NOT_FOUND");
+
+  const headline = input.headline.trim();
+  if (headline.length < 3) throw new AccessError("Give yourself a headline");
+  if (headline.length > 120) throw new AccessError("That headline is too long");
+
+  const bio = input.bio.trim();
+  if (bio.length > 4000) throw new AccessError("That description is too long");
+
+  // Empty strings dropped, duplicates dropped, order kept. A specialism list
+  // with three blanks in it is what an unbounded tag input produces on the
+  // first mis-tap, and it lands on a page schools browse.
+  const seen = new Set<string>();
+  const specialisms: string[] = [];
+  for (const raw of input.specialisms) {
+    const value = raw.trim().slice(0, 60);
+    if (!value) continue;
+    const key = value.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    specialisms.push(value);
+    if (specialisms.length === MAX_SPECIALISMS) break;
+  }
+
+  const timezone = input.timezone.trim() || "UTC";
+  // Rejected rather than silently corrected: a slot written against a timezone
+  // nobody can resolve is a meeting at an unknown hour.
+  try {
+    new Intl.DateTimeFormat("en", { timeZone: timezone });
+  } catch {
+    throw new AccessError("That is not a timezone this server knows");
+  }
+
+  await db.expertProfile.update({
+    where: { id: profile.id },
+    data: {
+      headline,
+      bio,
+      organisation: input.organisation?.trim() || null,
+      specialisms: writeJson(specialisms),
+      timezone,
+    },
+  });
+
+  // No schoolId: an expert belongs to no school, and this row would otherwise
+  // land in the history of whichever school happened to be in context.
+  await audit({
+    actorUserId: session.user.id,
+    action: "expert.profile.update",
+    targetType: "ExpertProfile",
+    targetId: profile.id,
+    meta: { specialisms: specialisms.length },
+  });
 }

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon, ChartLineUpIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, CertificateIcon, ChartLineUpIcon } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { relativeTime } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { overallForStudent, overallPercent } from "@/lib/grading";
+import { cardsForChild } from "@/lib/report-cards";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
@@ -31,6 +32,13 @@ export default async function ParentGradesPage({
   const link = await assertGuardianAccess(session.user.id, selectedId);
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
+
+  // `publishCards` sends every guardian a notification pointing HERE. Without
+  // this the notification arrived, the family tapped it, and landed on a page
+  // with no report card on it — the one screen the whole feature exists to
+  // deliver. A published card is a document, so it gets its own card at the top
+  // rather than a row lost among a term of marked homework.
+  const cards = await cardsForChild(session, selectedId);
 
   const grades = await db.grade.findMany({
     where: { studentMembershipId: selectedId, schoolId: student.schoolId },
@@ -107,6 +115,44 @@ export default async function ParentGradesPage({
         </h1>
         <p className="mt-1 text-sm text-fg-muted">{student.school.name}</p>
       </div>
+
+      {cards.length > 0 && (
+        <Card>
+          <CardHeader
+            icon={<CertificateIcon weight="duotone" className="size-5" />}
+            title="Report cards"
+            description={`Issued by ${childName}'s class teacher`}
+          />
+          <CardBody>
+            <ul className="space-y-1.5">
+              {cards.map((card) => (
+                <li key={card.id}>
+                  <Link
+                    href={`/report-cards/${card.id}`}
+                    className="flex items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3 hover:bg-surface"
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-fg">
+                        {card.title}
+                      </span>
+                      {card.publishedAt && (
+                        <span className="block text-xs text-fg-muted">
+                          Issued {relativeTime(card.publishedAt)}
+                        </span>
+                      )}
+                    </span>
+                    {card.overallPercentMilli !== null && (
+                      <span className="shrink-0 text-sm font-semibold tabular-nums text-fg">
+                        {(card.overallPercentMilli / 1000).toFixed(1)}%
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+      )}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile

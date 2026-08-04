@@ -528,6 +528,32 @@ describe("⚠ a draft is invisible outside the staff room", () => {
     const cards = await cardsForChild(guardian, pupilMembershipId);
     expect(cards).toHaveLength(1);
   });
+
+  /**
+   * ⚠ THE SCHOOL COMES FROM THE CHILD, NOT FROM THE SESSION.
+   *
+   * A parent with one child at each of two schools has ONE activeSchoolId and
+   * two children, and the child switcher on the grades page moves between them
+   * without touching the session. Scoping the lookup by the session's school
+   * showed one child's report cards and returned an empty list for the other —
+   * a wrong answer indistinguishable from "no report cards yet", which is the
+   * kind that never gets reported as a bug.
+   *
+   * The guardianship is still the authorisation. This only fixes where the
+   * school is read from.
+   */
+  it("⚠ finds the card when the parent's session is pointed at their OTHER child's school", async () => {
+    await draftOne();
+    await publishCards(lead, classId, TITLE);
+
+    const elsewhere = ctx({
+      userId: guardian.user.id,
+      schoolId: oakfieldId,
+      role: "PARENT",
+    });
+    const cards = await cardsForChild(elsewhere, pupilMembershipId);
+    expect(cards).toHaveLength(1);
+  });
 });
 
 describe("publishing", () => {

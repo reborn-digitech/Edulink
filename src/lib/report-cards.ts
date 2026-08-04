@@ -84,8 +84,13 @@ export type Card = {
  * Deliberately narrower than "anyone who teaches this class". A co-teacher who
  * takes the class for music has no business writing the summary a parent reads
  * at the end of term, and the school named exactly one person for that job when
- * it made somebody LEAD. A principal is absent for the same reason they are
- * absent from the register: they read what came out, they do not write it.
+ * it made somebody LEAD.
+ *
+ * THE TEST IS THE JOB, NOT THE ROLE. A principal does not get in for being the
+ * principal — they read what came out, they do not write it — but a principal
+ * the school made LEAD of Class 5 passes the same check a teacher does, because
+ * at that moment they ARE that class's teacher. `cohort.ts` deliberately allows
+ * that appointment; refusing it here would be the app disagreeing with itself.
  */
 export async function assertMayWriteCards(ctx: ActiveContext, classId: string) {
   if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("No active school selected");
@@ -605,22 +610,36 @@ export async function myCards(ctx: ActiveContext) {
   });
 }
 
-/** A guardian's child's published cards. Authorised against the guardianship. */
+/**
+ * A guardian's child's published cards. Authorised against the guardianship.
+ *
+ * THE SCHOOL COMES FROM THE CHILD, NOT FROM THE SESSION, when a parent asks.
+ * A parent with one child at each of two schools has one `activeSchoolId` and
+ * two children, and the child switcher on the grades page moves between them
+ * WITHOUT touching the session. Scoping this by `ctx.schoolId` would have shown
+ * one child's cards and silently returned an empty list for the other — a wrong
+ * answer that looks exactly like "no report cards yet". Staff have exactly one
+ * school in play, so for them the session is still the right source.
+ */
 export async function cardsForChild(ctx: ActiveContext, studentMembershipId: string) {
-  if (!ctx.schoolId) return [];
+  let schoolId: string | null = ctx.schoolId;
+
   if (ctx.role === "PARENT") {
     const guardian = await db.guardianship.findFirst({
       where: { parentUserId: ctx.user.id, studentMembershipId, status: "ACTIVE" },
-      select: { id: true },
+      select: { student: { select: { schoolId: true } } },
     });
     if (!guardian) throw new AccessError("That is not your child", "NOT_FOUND");
+    schoolId = guardian.student.schoolId;
   } else if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL" && ctx.role !== "TEACHER") {
     throw new AccessError("Not allowed");
   }
 
+  if (!schoolId) return [];
+
   return db.reportCard.findMany({
     where: {
-      schoolId: ctx.schoolId,
+      schoolId,
       studentMembershipId,
       // A guardian sees published cards only; staff see everything.
       ...(ctx.role === "PARENT" ? { status: "PUBLISHED" } : {}),

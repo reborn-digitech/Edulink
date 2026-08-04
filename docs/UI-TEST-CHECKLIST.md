@@ -1002,11 +1002,36 @@ npm run superuser -- priya@riverside.school
 - ☐ **⚠️** Check `/admin/people` for that school does not exist for you. An
   operator creates a school and invites its admin; they do not get a membership
 
+### Finding your way back in
+
+- ☐ **⚠️** Priya has the flag **and** runs Riverside. Sign in as her normally →
+  she lands on `/admin`, and the side rail carries **Server administration** at
+  the bottom, set apart from the school's own links. Before this she had to type
+  the URL: the automatic redirect to `/root` only fires for an operator with no
+  school at all
+- ☐ ⌘K → search "server" → the same entry. The side rail is desktop-only and the
+  person who runs the server is as likely to be on a phone
+- ☐ As **Tom**, neither appears anywhere
+
+### The server log
+
+- ☐ `/root` → **Server log** in the header → the schools you added and the
+  administrators you invited, newest first
+- ☐ **⚠️** Now open **`/admin/safety` → Audit log** for either school. **None of
+  those lines is there.** An operator's actions belong to the operator, not to a
+  tenant — that is why they are written with no school at all
+- ☐ **⚠️** And the converse: nothing from inside a school appears in the server
+  log. No register, no marks, no sign-ins
+- ☐ As **Tom**, open `/root/audit` → sent away. Signed out → sent to `/login`
+
 ### The boundary, from the database's side
 
 - ☐ Run `npm run rls:verify` → the superuser block passes: every school visible,
-  and **no** membership, attendance, grade, message, enrolment or audit rows,
-  and a Membership write refused
+  **no** membership, attendance, grade, message, enrolment or school-scoped audit
+  rows, and a Membership write refused
+- ☐ **⚠️** …and the two new lines: the operator **can** read the audit rows that
+  belong to no school, and **no school can**. The trail was written for months
+  with nothing able to read it, which is worse than none because it is trusted
 - ☐ `npm run superuser -- --list` → shows who has it
 - ☐ Try to revoke the only superuser → **refused**, with the reason
 
@@ -1042,7 +1067,17 @@ npm run superuser -- priya@riverside.school
 - ☐ **⚠️** As **Tom** (the class teacher) → he can **still** mark it. Cover adds
   a taker and never removes one
 - ☐ Change the date to tomorrow → the coverer no longer sees it
-- ☐ Cancel the cover → gone immediately
+- ☐ **⚠️ THE PERSON DOING THE WORK IS TOLD.** As the coverer, check their
+  notifications → *"You are marking …"*, naming the class and the dates, linking
+  to `/teacher/attendance`. Cover used to be arranged in silence: correct in the
+  database, and discovered only by noticing a class you do not teach
+- ☐ It arrives **during quiet hours** too (§12a). Cover set at ten at night is
+  for tomorrow morning; a notification that waits until eight is not a plan
+- ☐ Cancel the cover → gone immediately, **and they are told again**: *"You are
+  no longer marking …"*. Being told you are covering and never told you are not
+  is how somebody walks into a room that already has a teacher in it
+- ☐ Same when the **leave** that caused it is withdrawn (§12o), not only when the
+  cover is cancelled by hand
 
 ### The roll
 
@@ -1080,6 +1115,11 @@ membership directly.
 - ☐ **⚠️** As **Tom** → he can still mark it too
 - ☐ As the principal, apply for your *own* leave, then try to approve it →
   **refused**. Ask an admin to approve it instead → works
+- ☐ **⚠️ AND THE ADMIN CAN FIND IT.** Sign in as **Priya** and look at the side
+  rail → **Leave**, and ⌘K offers *Review leave requests*. `decideLeave` has
+  always accepted an admin — a school whose principal is the one on leave still
+  has to approve somebody's — but until now nothing linked to the queue and the
+  only way in was typing `/principal/leave`
 
 ### Staff-only
 
@@ -1120,8 +1160,25 @@ membership directly.
 
 - ☐ **⚠️** As a **co-teacher** of the same class, open the report-cards page →
   **404**
-- ☐ **⚠️** As the **principal** → 404. They read cards, they do not write them
-- ☐ As an **admin** → 200
+- ☐ **⚠️** As the **principal**, on a class they do **not** teach → 404. They read
+  cards, they do not write them
+- ☐ **⚠️ AND THE OTHER HALF.** Have an admin make that principal the **LEAD**
+  class teacher of a class (§12n), then open its report-cards page as the
+  principal → **200**. In a small school the head takes Class 5 on Tuesdays, and
+  those cards are theirs to write. The test is the job, not the role
+- ☐ As an **admin** → 200, and get there **by clicking**: `/admin/classes/<id>`
+  → *Report cards*. There is no longer a URL to type
+
+### And the family actually receives it
+
+- ☐ **⚠️ THE ONE THAT WAS BROKEN.** After publishing, sign in as the **parent**,
+  open the notification → it lands on `/parent/grades` and the **report card is
+  there**, at the top, above the marks. For a whole release the notification
+  arrived and the page it pointed at had no report card on it
+- ☐ Open the card from that link → the same document the teacher previewed
+- ☐ **⚠️** With **two children at two different schools**, use the child switcher
+  → each child's own cards appear. The switcher does not change which school the
+  session is pointed at, so this is the case that silently returned nothing
 
 ### On paper
 
@@ -1149,6 +1206,38 @@ membership directly.
 - ☐ As a **teacher**, open `/principal` and `/principal/classes` → sent away
 - ☐ **⚠️** As the principal, open another school's class by pasting its id into
   `/principal/classes/<id>` → **404**
+
+## 12r. The expert's own profile
+
+The rest of the expert and mentoring flow has **never** had a section here, and
+still does not — see Known gaps. This covers the page that was a **404** in the
+expert's side rail and their ⌘K palette for months while nothing noticed.
+
+Sign in as an expert first: `npm run expert:invite -- them@example.com`, accept
+the link, or set `publishedAt` on an `ExpertProfile` by hand.
+
+- ☐ `/expert` → the side rail shows **Profile**. Click it → it **opens**. It used
+  to 404 from here and from ⌘K
+- ☐ Fill in a headline, a description, where you work → **Save profile** →
+  reload → still there
+- ☐ Clear the headline → **refused**. It is the first thing a school reads
+- ☐ Add specialisms one at a time → they become chips. Add the same one again in
+  different case → **not** duplicated. Add a blank → nothing happens
+- ☐ Keep adding → it stops at **12** and the box says so
+- ☐ Remove one by clicking its ✕
+- ☐ Type a timezone that does not exist → **refused**, and the old one is kept.
+  Silently correcting it to UTC would put your slots at an hour you did not mean
+- ☐ **⚠️ THE ONE THAT MATTERS.** *Listed* and *Verified* are shown at the top and
+  there is **no control for either**. Whoever runs the server decides whether a
+  school can see you; a profile that could publish itself would make that step
+  decorative
+- ☐ An **unpublished** expert is told why nobody is booking them, rather than
+  being left with an empty bookings page
+- ☐ Correct your headline while **published** → you stay listed. Check
+  `/experts` as an admin → the corrected headline, still there
+- ☐ Sign in as an **admin or teacher** and open `/expert/profile` → sent away
+
+---
 
 ## 13. Authorisation — try to break in
 
@@ -1212,22 +1301,40 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 161 checks in `npm run sweep`
+Every route in the navigation now renders — all 223 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
-that role should get. Still not built, per the README: a real QR code on the join
-poster, awards uploads on the student profile, competition **leaderboards**
-(entering one IS built — see §12g), cross-school moderation, progress-report
-export, SSO, SMS, real email delivery.
+that role should get. **That claim is now derived rather than maintained**: the
+sweep reads the navigation model itself and follows every static link, so "every
+route in the navigation" means the actual list. It did not used to, which is how
+`/expert/profile` sat in the expert's side rail as a 404 for months.
+
+Still not built, per the README: a real QR code on the join poster, awards
+uploads on the student profile, competition **leaderboards** (entering one IS
+built — see §12g), cross-school moderation, progress-report export, SSO, SMS,
+real email delivery.
+
+**Built but with no section here:** the expert marketplace, booking an expert,
+and mentoring threads. Only the expert's own profile (§12r) is covered, because
+that is the page the role audit found broken. The rest is untested by hand.
 
 Built since this list was last trimmed, and now with sections of their own:
 global feed, weighted grade categories, suspend-user (§12l), two-factor
-authentication, the operator area (§12m), class sections and register duty
-(§12n), staff leave (§12o), report cards (§12p) and the principal's dashboard
-(§12q).
+authentication, the operator area and its server log (§12m), class sections and
+register duty (§12n), staff leave (§12o), report cards (§12p), the principal's
+dashboard (§12q) and the expert's profile (§12r).
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while
 signed in as the owning role, because a redirect to `/login` will hide both.
+
+**And the newest lesson, which cost eight bugs at once: a page that renders is
+not a page anybody can reach.** Six of the eight gaps a role-by-role audit found
+were a capability built correctly, authorised correctly and tested correctly,
+with nothing linking to it — or a link pointing at nothing. Unit tests exercise
+functions that exist; a route sweep exercises URLs somebody typed into it. Only
+a person clicking finds a missing link. When you walk a role here, **walk it by
+clicking**, never by pasting URLs from this document — the URLs are here so you
+can check where you ended up, not so you can skip the journey.
 
 **And the corollary that four bugs in a row have now taught this codebase: walk
 the signed-OUT sections too.** Registration (§2), invitations (§5), student

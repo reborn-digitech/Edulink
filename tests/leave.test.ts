@@ -392,6 +392,32 @@ describe("⚠ withdrawing takes the cover with it", () => {
     expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
   });
 
+  /**
+   * ⚠ AND THE PERSON RELEASED IS TOLD.
+   *
+   * The test above proves the duty is gone from the database. It says nothing
+   * about whether the teacher who was told to turn up knows not to — and the
+   * assertion above passes either way. Somebody who arranged their Tuesday
+   * around a register that no longer exists has been failed by a feature that
+   * technically worked.
+   */
+  it("⚠ tells the released cover teacher", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    const id = await pendingId();
+    await decideLeave(principal, id, "APPROVED");
+    await cancelLeave(applicant, id);
+
+    const told = await db.notification.findMany({
+      where: { user: { email: COVER_EMAIL } },
+      orderBy: { createdAt: "asc" },
+    });
+    // One when the cover was arranged, one when it was taken away.
+    expect(told.map((n) => n.title)).toEqual([
+      expect.stringContaining("You are marking"),
+      expect.stringContaining("no longer marking"),
+    ]);
+  });
+
   it("⚠ removes ONLY the cover this request caused", async () => {
     // Cover arranged by hand, for other reasons, belongs to whoever arranged it.
     await db.attendanceCover.create({

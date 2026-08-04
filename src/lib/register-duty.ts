@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
+import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
 
@@ -254,7 +255,7 @@ export async function arrangeCover(
       status: "ACTIVE",
       role: { in: ["TEACHER", "ADMIN", "PRINCIPAL"] },
     },
-    select: { id: true },
+    select: { id: true, userId: true },
   });
   if (!covering) return { ok: false, error: "That person is not active staff at this school." };
 
@@ -286,6 +287,31 @@ export async function arrangeCover(
     },
   });
 
+  /**
+   * THE PERSON DOING THE WORK IS TOLD. This was missing, and the failure was
+   * quiet in the worst way: cover was arranged correctly, the register appeared
+   * on somebody's attendance page, and nothing anywhere said it had. They found
+   * out by noticing a class they do not teach — or did not notice, and thirty
+   * children went unmarked. The leave applicant already gets a notification;
+   * the person who has to be somewhere at nine o'clock got none.
+   *
+   * Urgent, so it survives quiet hours. Cover arranged at ten at night is for
+   * tomorrow morning, and a notification that waits until eight is too late to
+   * be a plan.
+   */
+  await notify({
+    userId: covering.userId,
+    schoolId: ctx.schoolId,
+    kind: "SYSTEM",
+    title: `You are marking ${klass.name}`,
+    body:
+      input.fromDateKey === input.toDateKey
+        ? `On ${input.fromDateKey}.${input.reason?.trim() ? ` ${input.reason.trim()}` : ""}`
+        : `From ${input.fromDateKey} to ${input.toDateKey}.${input.reason?.trim() ? ` ${input.reason.trim()}` : ""}`,
+    url: "/teacher/attendance",
+    urgent: true,
+  });
+
   return { ok: true, coverId: cover.id };
 }
 
@@ -296,6 +322,20 @@ export async function cancelCover(
   if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) {
     throw new AccessError("Only an admin or the principal can cancel cover");
   }
+
+  // Read before deleting, because the row is the only record of WHO has been
+  // turning up expecting to mark this register. `deleteMany` returns a count.
+  const cover = await db.attendanceCover.findFirst({
+    where: { id: coverId, schoolId: ctx.schoolId },
+    select: {
+      id: true,
+      fromDateKey: true,
+      toDateKey: true,
+      covering: { select: { userId: true } },
+      class: { select: { name: true } },
+    },
+  });
+  if (!cover) return { ok: false, error: "That cover no longer exists." };
 
   const result = await db.attendanceCover.deleteMany({
     where: { id: coverId, schoolId: ctx.schoolId },
@@ -309,6 +349,23 @@ export async function cancelCover(
     targetType: "AttendanceCover",
     targetId: coverId,
   });
+
+  // The other half of the message above. Being told you are covering and never
+  // being told you are not is how somebody walks into a room that already has a
+  // teacher in it.
+  await notify({
+    userId: cover.covering.userId,
+    schoolId: ctx.schoolId,
+    kind: "SYSTEM",
+    title: `You are no longer marking ${cover.class.name}`,
+    body:
+      cover.fromDateKey === cover.toDateKey
+        ? `The cover on ${cover.fromDateKey} was cancelled.`
+        : `The cover from ${cover.fromDateKey} to ${cover.toDateKey} was cancelled.`,
+    url: "/teacher/attendance",
+    urgent: true,
+  });
+
   return { ok: true };
 }
 

@@ -3,6 +3,7 @@
 import {
   BellIcon,
   BrainIcon,
+  BuildingsIcon,
   CalendarBlankIcon,
   ChalkboardTeacherIcon,
   ChartLineUpIcon,
@@ -49,6 +50,7 @@ const ICONS: Record<string, Icon> = {
   briefcase: BriefcaseIcon,
   brain: BrainIcon,
   trophy: TrophyIcon,
+  buildings: BuildingsIcon,
 };
 
 export function NavIcon({

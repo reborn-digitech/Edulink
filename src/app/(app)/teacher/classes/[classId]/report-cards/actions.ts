@@ -13,10 +13,11 @@ import {
 /**
  * Building a term's report cards.
  *
- * ADMIN is accepted alongside TEACHER because `assertMayWriteCards` is what
- * actually decides — it lets the class's LEAD teacher through, and an admin, and
- * refuses everybody else including a co-teacher and the principal. Repeating
- * that list here would be a second place to get it wrong.
+ * ADMIN and PRINCIPAL are accepted alongside TEACHER because
+ * `assertMayWriteCards` is what actually decides — it lets an admin through, and
+ * the class's LEAD teacher whatever role they hold, and refuses everybody else
+ * including a co-teacher. Repeating that list here would be a second place to
+ * get it wrong; the roles named here are only the door, not the decision.
  */
 
 type Result = {
@@ -37,7 +38,7 @@ function failure(error: unknown): Result {
 
 export async function generate(classId: string, input: GenerateInput): Promise<Result> {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const result = await generateCards(ctx, classId, input);
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
@@ -48,7 +49,7 @@ export async function generate(classId: string, input: GenerateInput): Promise<R
 
 export async function saveRemark(classId: string, cardId: string, remark: string): Promise<Result> {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const result = await setRemark(ctx, cardId, remark);
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
@@ -59,7 +60,7 @@ export async function saveRemark(classId: string, cardId: string, remark: string
 
 export async function publish(classId: string, title: string): Promise<Result> {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const result = await publishCards(ctx, classId, title);
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
@@ -70,7 +71,7 @@ export async function publish(classId: string, title: string): Promise<Result> {
 
 export async function withdraw(classId: string, title: string): Promise<Result> {
   try {
-    const ctx = await requireApiRole("TEACHER", "ADMIN");
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const result = await withdrawCards(ctx, classId, title);
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;

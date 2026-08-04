@@ -122,6 +122,14 @@ export function describeAction(action: string): string {
     "push.subscribe": "Turned on notifications",
     "session.revoke": "Signed out a device",
     "session.revoke.others": "Signed out all other devices",
+    // Written with schoolId NULL, so no school's Safety Centre ever shows one.
+    // They are read by /root/audit, which shares this map so the operator's log
+    // and a school's log describe the same event the same way.
+    "superuser.school.create": "Added a school to this server",
+    "superuser.school.update": "Changed a school's details",
+    "superuser.invite.admin": "Invited a school administrator",
+    "superuser.invite.revoke": "Withdrew an administrator invitation",
+    "expert.profile.update": "An expert edited their profile",
   };
   return map[action] ?? action;
 }

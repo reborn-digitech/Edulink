@@ -94,6 +94,8 @@ export const mr: Dictionary = {
     signOut: "साइन आउट",
     yourChildren: "तुमची मुले",
     skipToContent: "मजकुरावर जा",
+    serverAdmin: "सर्व्हर प्रशासन",
+    serverAdminHint: "या सर्व्हरवरील शाळा",
   },
 
   palette: {
