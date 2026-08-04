@@ -1,0 +1,632 @@
+import "server-only";
+import { db } from "./db";
+import { audit } from "./audit";
+import { notify } from "./notify";
+import { AccessError } from "./tenancy";
+import { getAttendanceSummary } from "./attendance";
+import { overallForStudent, listGradeCategories, type ClassEntry } from "./grading";
+import { addDaysToKey, todayKey } from "./dates";
+import type { ActiveContext } from "./session";
+
+/**
+ * Report cards.
+ *
+ * A REPORT CARD IS A DOCUMENT, NOT A QUERY, and everything below follows from
+ * that. The obvious build recomputes the marks whenever somebody opens the page,
+ * which means the card a parent read in December quietly says something else in
+ * March because a teacher fixed a typo in one assignment. A card is a statement
+ * made on a date by a named person; it has to keep saying what it said.
+ *
+ * So generation SNAPSHOTS everything — the chosen assessments, their marks, the
+ * attendance figures and the overall percentage — and publishing freezes it.
+ * Regenerating a draft replaces its contents; regenerating a published card does
+ * nothing. Changing a published one means withdrawing it first, which is a
+ * deliberate audited act rather than a side effect of pressing a button twice.
+ *
+ * NOTHING IS CALCULATED HERE. The attendance figures come from
+ * `getAttendanceSummary` and the overall from `overallForStudent`, the same
+ * helpers the live pages use — because the one thing a report card must never do
+ * is disagree with the screen it summarises. That rule is inherited from
+ * `reports.ts` and is worth repeating: a parent holding a printout that says 88%
+ * next to a page that says 86% has been given a reason to distrust both.
+ */
+
+/** Roughly a term, when the caller does not say. */
+export const DEFAULT_WINDOW_DAYS = 120;
+
+export type Assessment = {
+  assignmentId: string;
+  title: string;
+  category: string | null;
+  pointsMilli: number | null;
+  dueAt: Date | null;
+  /** How many of the class have a mark — a teacher should not report on an unmarked test. */
+  gradedCount: number;
+  classSize: number;
+};
+
+export type CardItem = {
+  title: string;
+  category: string | null;
+  scoreMilli: number | null;
+  pointsMilli: number | null;
+};
+
+export type Card = {
+  id: string;
+  status: string;
+  title: string;
+  remark: string | null;
+  studentMembershipId: string;
+  studentName: string;
+  className: string;
+  classSection: string | null;
+  fromDateKey: string;
+  toDateKey: string;
+  attendancePresent: number;
+  attendanceTotal: number;
+  attendancePercent: number | null;
+  overallPercent: number | null;
+  gradingMethod: string;
+  publishedAt: Date | null;
+  authorName: string | null;
+  items: CardItem[];
+  school: { name: string; logoPath: string | null };
+};
+
+/* -------------------------------------------------------------------------- */
+/* Who may write one                                                           */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The CLASS TEACHER writes the report cards, and an admin may.
+ *
+ * Deliberately narrower than "anyone who teaches this class". A co-teacher who
+ * takes the class for music has no business writing the summary a parent reads
+ * at the end of term, and the school named exactly one person for that job when
+ * it made somebody LEAD. A principal is absent for the same reason they are
+ * absent from the register: they read what came out, they do not write it.
+ */
+export async function assertMayWriteCards(ctx: ActiveContext, classId: string) {
+  if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("No active school selected");
+
+  const klass = await db.class.findFirst({
+    where: { id: classId, schoolId: ctx.schoolId },
+    select: { id: true, name: true, section: true, gradeLevel: true },
+  });
+  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+
+  if (ctx.role === "ADMIN") return klass;
+
+  const lead = await db.classTeacher.findFirst({
+    where: {
+      schoolId: ctx.schoolId,
+      classId,
+      teacherMembershipId: ctx.membershipId,
+      role: "LEAD",
+    },
+    select: { id: true },
+  });
+  if (!lead) {
+    throw new AccessError("Only this class's teacher can write its report cards");
+  }
+  return klass;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Choosing what counts                                                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The assessments a class teacher may put on a card.
+ *
+ * PUBLISHED ASSIGNMENTS OF THIS CLASS ONLY. `gradedCount` rides along so the
+ * picker can say "8 of 30 marked" — putting a test nobody has marked onto thirty
+ * report cards produces thirty blanks and one very bad afternoon.
+ */
+export async function assessmentsFor(
+  ctx: ActiveContext,
+  classId: string,
+): Promise<Assessment[]> {
+  await assertMayWriteCards(ctx, classId);
+
+  const [assignments, classSize] = await Promise.all([
+    db.assignment.findMany({
+      where: { schoolId: ctx.schoolId!, classId, publishedAt: { not: null } },
+      select: {
+        id: true,
+        title: true,
+        category: true,
+        pointsMilli: true,
+        dueAt: true,
+        _count: { select: { grades: true } },
+      },
+      orderBy: [{ dueAt: "asc" }, { createdAt: "asc" }],
+    }),
+    db.enrollment.count({ where: { classId, status: "ACTIVE" } }),
+  ]);
+
+  return assignments.map((a) => ({
+    assignmentId: a.id,
+    title: a.title,
+    category: a.category,
+    pointsMilli: a.pointsMilli,
+    dueAt: a.dueAt,
+    gradedCount: a._count.grades,
+    classSize,
+  }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Generating                                                                  */
+/* -------------------------------------------------------------------------- */
+
+export type GenerateInput = {
+  title: string;
+  assignmentIds: string[];
+  fromDateKey?: string;
+  toDateKey?: string;
+};
+
+export type GenerateResult = {
+  ok: boolean;
+  error?: string;
+  created?: number;
+  updated?: number;
+  skippedPublished?: number;
+};
+
+export async function generateCards(
+  ctx: ActiveContext,
+  classId: string,
+  input: GenerateInput,
+): Promise<GenerateResult> {
+  const klass = await assertMayWriteCards(ctx, classId);
+
+  const title = input.title.trim().slice(0, 120);
+  if (title.length < 2) return { ok: false, error: "Give the report a name, like “Term 1”." };
+  if (input.assignmentIds.length === 0) {
+    return { ok: false, error: "Choose at least one test or assignment to report on." };
+  }
+
+  const school = await db.school.findUniqueOrThrow({
+    where: { id: ctx.schoolId! },
+    select: { timezone: true },
+  });
+  const toDateKey = input.toDateKey ?? todayKey(school.timezone);
+  const fromDateKey = input.fromDateKey ?? addDaysToKey(toDateKey, -DEFAULT_WINDOW_DAYS);
+  if (fromDateKey > toDateKey) {
+    return { ok: false, error: "The window starts after it ends." };
+  }
+
+  // Re-queried against THIS class. An assignment id from another class — or
+  // another school — is simply not found, so a forged form cannot put somebody
+  // else's test on this school's report cards.
+  const assignments = await db.assignment.findMany({
+    where: {
+      id: { in: input.assignmentIds.slice(0, 100) },
+      schoolId: ctx.schoolId!,
+      classId,
+    },
+    select: { id: true, title: true, category: true, pointsMilli: true },
+  });
+  if (assignments.length === 0) {
+    return { ok: false, error: "None of those assessments belong to this class." };
+  }
+  // Keep the teacher's chosen order rather than the database's.
+  const order = new Map(input.assignmentIds.map((id, index) => [id, index]));
+  assignments.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
+
+  const roll = await db.enrollment.findMany({
+    where: { schoolId: ctx.schoolId!, classId, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+  if (roll.length === 0) return { ok: false, error: "Nobody is on this class roll yet." };
+
+  const grades = await db.grade.findMany({
+    where: {
+      schoolId: ctx.schoolId!,
+      assignmentId: { in: assignments.map((a) => a.id) },
+      studentMembershipId: { in: roll.map((r) => r.studentMembershipId) },
+    },
+    select: { assignmentId: true, studentMembershipId: true, scoreMilli: true },
+  });
+  const gradeBy = new Map(
+    grades.map((g) => [`${g.assignmentId}:${g.studentMembershipId}`, g.scoreMilli]),
+  );
+
+  const weights = new Map([[classId, await listGradeCategories(ctx, classId)]]);
+
+  let created = 0;
+  let updated = 0;
+  let skippedPublished = 0;
+
+  for (const row of roll) {
+    const existing = await db.reportCard.findFirst({
+      where: { classId, studentMembershipId: row.studentMembershipId, title },
+      select: { id: true, status: true },
+    });
+
+    // ⚠ A published card is frozen. Regenerating must not silently rewrite a
+    // document somebody has already read.
+    if (existing?.status === "PUBLISHED") {
+      skippedPublished++;
+      continue;
+    }
+
+    const attendance = await getAttendanceSummary(
+      ctx.schoolId!,
+      row.studentMembershipId,
+      fromDateKey,
+      toDateKey,
+    );
+
+    // `maxMilli`, not `pointsMilli` — WeightedEntry's own name for the same
+    // thing. Unmarked assessments are dropped rather than counted as zero: a
+    // test the child has not sat yet is not a mark of nought, and treating it
+    // as one is the single most damaging arithmetic mistake a report card can
+    // make.
+    const entries: ClassEntry[] = assignments
+      .map((a) => ({
+        classId,
+        category: a.category,
+        scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
+        maxMilli: a.pointsMilli,
+      }))
+      .filter((e) => e.scoreMilli !== null);
+
+    const overall = overallForStudent(entries, weights);
+
+    const data = {
+      schoolId: ctx.schoolId!,
+      classId,
+      studentMembershipId: row.studentMembershipId,
+      title,
+      status: "DRAFT",
+      fromDateKey,
+      toDateKey,
+      attendancePresent: attendance.counts.PRESENT + attendance.counts.LATE,
+      attendanceTotal: attendance.total,
+      overallPercentMilli:
+        overall.percent === null ? null : Math.round(overall.percent * 1000),
+      gradingMethod: overall.method,
+      createdByMembershipId: ctx.membershipId,
+    };
+
+    const card = existing
+      ? await db.reportCard.update({ where: { id: existing.id }, data, select: { id: true } })
+      : await db.reportCard.create({ data, select: { id: true } });
+
+    if (existing) updated++;
+    else created++;
+
+    // Items are REPLACED wholesale rather than reconciled. They are a snapshot,
+    // so there is nothing to preserve — and a diff would be a way for a stale
+    // row from a previous selection to survive onto the new card.
+    await db.reportCardItem.deleteMany({ where: { reportCardId: card.id } });
+    await db.reportCardItem.createMany({
+      data: assignments.map((a, position) => ({
+        schoolId: ctx.schoolId!,
+        reportCardId: card.id,
+        assignmentId: a.id,
+        title: a.title,
+        category: a.category,
+        scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
+        pointsMilli: a.pointsMilli,
+        position,
+      })),
+    });
+  }
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "reportCard.generate",
+    targetType: "Class",
+    targetId: classId,
+    meta: { title, created, updated, skippedPublished, assessments: assignments.length },
+  });
+
+  return { ok: true, created, updated, skippedPublished };
+}
+
+/** The class teacher's words on one card. Drafts only. */
+export async function setRemark(
+  ctx: ActiveContext,
+  cardId: string,
+  remark: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const card = await db.reportCard.findFirst({
+    where: { id: cardId, schoolId: ctx.schoolId ?? "" },
+    select: { id: true, classId: true, status: true },
+  });
+  if (!card) return { ok: false, error: "That report card is not in this school." };
+  await assertMayWriteCards(ctx, card.classId);
+
+  if (card.status === "PUBLISHED") {
+    return { ok: false, error: "That card is published. Withdraw it first to change it." };
+  }
+
+  await db.reportCard.update({
+    where: { id: card.id },
+    data: { remark: remark.trim().slice(0, 2000) || null },
+  });
+  return { ok: true };
+}
+
+/**
+ * Publishes a whole set at once.
+ *
+ * PER TITLE, NOT PER CHILD, because a term's report cards go out together. One
+ * parent seeing their child's card a week before the rest of the class is a
+ * phone call the office does not want, and publishing thirty cards one button at
+ * a time guarantees somebody is missed.
+ */
+export async function publishCards(
+  ctx: ActiveContext,
+  classId: string,
+  title: string,
+): Promise<{ ok: boolean; error?: string; published?: number }> {
+  await assertMayWriteCards(ctx, classId);
+
+  const drafts = await db.reportCard.findMany({
+    where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
+    select: {
+      id: true,
+      studentMembershipId: true,
+      student: { select: { userId: true, user: { select: { name: true, preferredName: true } } } },
+    },
+  });
+  if (drafts.length === 0) return { ok: false, error: "There are no drafts to publish." };
+
+  await db.reportCard.updateMany({
+    where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
+    data: { status: "PUBLISHED", publishedAt: new Date() },
+  });
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "reportCard.publish",
+    targetType: "Class",
+    targetId: classId,
+    meta: { title, published: drafts.length },
+  });
+
+  // The child, and their guardians. Told once, when it is actually readable.
+  for (const draft of drafts) {
+    await notify({
+      userId: draft.student.userId,
+      schoolId: ctx.schoolId,
+      kind: "GRADE",
+      title: "Your report card is ready",
+      body: title,
+      url: "/student/grades",
+    });
+
+    const guardians = await db.guardianship.findMany({
+      where: { studentMembershipId: draft.studentMembershipId, status: "ACTIVE" },
+      select: { parentUserId: true },
+    });
+    const childName = draft.student.user.preferredName ?? draft.student.user.name;
+    for (const guardian of guardians) {
+      await notify({
+        userId: guardian.parentUserId,
+        schoolId: ctx.schoolId,
+        kind: "GRADE",
+        title: `${childName}'s report card is ready`,
+        body: title,
+        url: "/parent/grades",
+      });
+    }
+  }
+
+  return { ok: true, published: drafts.length };
+}
+
+/**
+ * Takes a set back.
+ *
+ * A REAL ACTION WITH A REAL COST, not an undo. Parents may already have read
+ * them, so this is audited and the cards go back to DRAFT rather than vanishing.
+ * It exists because the alternative — a mistake that can never be corrected — is
+ * worse.
+ */
+export async function withdrawCards(
+  ctx: ActiveContext,
+  classId: string,
+  title: string,
+): Promise<{ ok: boolean; error?: string; withdrawn?: number }> {
+  await assertMayWriteCards(ctx, classId);
+
+  const result = await db.reportCard.updateMany({
+    where: { schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" },
+    data: { status: "DRAFT", publishedAt: null },
+  });
+  if (result.count === 0) return { ok: false, error: "Nothing published under that name." };
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "reportCard.withdraw",
+    targetType: "Class",
+    targetId: classId,
+    meta: { title, withdrawn: result.count },
+  });
+  return { ok: true, withdrawn: result.count };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reading                                                                     */
+/* -------------------------------------------------------------------------- */
+
+/** Every card for a class, for the teacher's build screen. */
+export async function cardsForClass(ctx: ActiveContext, classId: string, title?: string) {
+  await assertMayWriteCards(ctx, classId);
+  return db.reportCard.findMany({
+    where: { schoolId: ctx.schoolId!, classId, ...(title ? { title } : {}) },
+    orderBy: [{ title: "desc" }, { createdAt: "asc" }],
+    select: {
+      id: true,
+      title: true,
+      status: true,
+      remark: true,
+      overallPercentMilli: true,
+      attendancePresent: true,
+      attendanceTotal: true,
+      studentMembershipId: true,
+      student: { select: { user: { select: { name: true, preferredName: true } } } },
+    },
+    take: 500,
+  });
+}
+
+/**
+ * One card, with the authorisation that decides who may read it.
+ *
+ * A DRAFT IS INVISIBLE OUTSIDE THE STAFF ROOM. Half-written marks and a remark
+ * the teacher has not finished are exactly what a parent must not see, and
+ * "nobody has the link yet" is not access control.
+ */
+export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card | null> {
+  if (!ctx.schoolId) return null;
+
+  const card = await db.reportCard.findFirst({
+    where: { id: cardId, schoolId: ctx.schoolId },
+    select: {
+      id: true,
+      title: true,
+      status: true,
+      remark: true,
+      classId: true,
+      studentMembershipId: true,
+      fromDateKey: true,
+      toDateKey: true,
+      attendancePresent: true,
+      attendanceTotal: true,
+      overallPercentMilli: true,
+      gradingMethod: true,
+      publishedAt: true,
+      class: { select: { name: true, section: true } },
+      student: { select: { user: { select: { name: true, preferredName: true } } } },
+      createdBy: { select: { user: { select: { name: true, preferredName: true } } } },
+      items: {
+        orderBy: { position: "asc" },
+        select: { title: true, category: true, scoreMilli: true, pointsMilli: true },
+      },
+    },
+  });
+  if (!card) return null;
+
+  const allowed = await mayRead(ctx, card);
+  if (!allowed) return null;
+
+  const school = await db.school.findUniqueOrThrow({
+    where: { id: ctx.schoolId },
+    select: { name: true, logoPath: true },
+  });
+
+  return {
+    id: card.id,
+    status: card.status,
+    title: card.title,
+    remark: card.remark,
+    studentMembershipId: card.studentMembershipId,
+    studentName: card.student.user.preferredName ?? card.student.user.name,
+    className: card.class.name,
+    classSection: card.class.section,
+    fromDateKey: card.fromDateKey,
+    toDateKey: card.toDateKey,
+    attendancePresent: card.attendancePresent,
+    attendanceTotal: card.attendanceTotal,
+    attendancePercent:
+      card.attendanceTotal === 0
+        ? null
+        : Math.round((card.attendancePresent / card.attendanceTotal) * 1000) / 10,
+    overallPercent:
+      card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000,
+    gradingMethod: card.gradingMethod,
+    publishedAt: card.publishedAt,
+    authorName: card.createdBy
+      ? (card.createdBy.user.preferredName ?? card.createdBy.user.name)
+      : null,
+    items: card.items,
+    school,
+  };
+}
+
+async function mayRead(
+  ctx: ActiveContext,
+  card: { classId: string; studentMembershipId: string; status: string },
+): Promise<boolean> {
+  // Staff who run or oversee the school see drafts as well as published.
+  if (ctx.role === "ADMIN" || ctx.role === "PRINCIPAL") return true;
+
+  if (ctx.role === "TEACHER" && ctx.membershipId) {
+    const teaches = await db.classTeacher.findFirst({
+      where: { schoolId: ctx.schoolId!, classId: card.classId, teacherMembershipId: ctx.membershipId },
+      select: { id: true },
+    });
+    if (teaches) return true;
+  }
+
+  // Everybody else needs it to be published, first.
+  if (card.status !== "PUBLISHED") return false;
+
+  if (ctx.role === "STUDENT") return ctx.membershipId === card.studentMembershipId;
+
+  if (ctx.role === "PARENT") {
+    const guardian = await db.guardianship.findFirst({
+      where: {
+        parentUserId: ctx.user.id,
+        studentMembershipId: card.studentMembershipId,
+        status: "ACTIVE",
+      },
+      select: { id: true },
+    });
+    return guardian !== null;
+  }
+
+  return false;
+}
+
+/** A child's own published cards. */
+export async function myCards(ctx: ActiveContext) {
+  if (ctx.role !== "STUDENT" || !ctx.membershipId || !ctx.schoolId) return [];
+  return db.reportCard.findMany({
+    where: {
+      schoolId: ctx.schoolId,
+      studentMembershipId: ctx.membershipId,
+      status: "PUBLISHED",
+    },
+    orderBy: { publishedAt: "desc" },
+    select: { id: true, title: true, publishedAt: true, overallPercentMilli: true },
+    take: 50,
+  });
+}
+
+/** A guardian's child's published cards. Authorised against the guardianship. */
+export async function cardsForChild(ctx: ActiveContext, studentMembershipId: string) {
+  if (!ctx.schoolId) return [];
+  if (ctx.role === "PARENT") {
+    const guardian = await db.guardianship.findFirst({
+      where: { parentUserId: ctx.user.id, studentMembershipId, status: "ACTIVE" },
+      select: { id: true },
+    });
+    if (!guardian) throw new AccessError("That is not your child", "NOT_FOUND");
+  } else if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL" && ctx.role !== "TEACHER") {
+    throw new AccessError("Not allowed");
+  }
+
+  return db.reportCard.findMany({
+    where: {
+      schoolId: ctx.schoolId,
+      studentMembershipId,
+      // A guardian sees published cards only; staff see everything.
+      ...(ctx.role === "PARENT" ? { status: "PUBLISHED" } : {}),
+    },
+    orderBy: { publishedAt: "desc" },
+    select: { id: true, title: true, status: true, publishedAt: true, overallPercentMilli: true },
+    take: 50,
+  });
+}

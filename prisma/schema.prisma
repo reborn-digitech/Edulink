@@ -81,6 +81,8 @@ model School {
   attendance     AttendanceSession[]
   attendanceCovers AttendanceCover[]
   leaveRequests  LeaveRequest[]
+  reportCards    ReportCard[]
+  reportCardItems ReportCardItem[]
   assignments    Assignment[]
   remarks        RemarkThread[]
   reports        Report[]
@@ -215,6 +217,8 @@ model Membership {
   attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
   attendanceCovering     AttendanceCover[]   @relation("AttendanceCovering")
   attendanceCoversMade   AttendanceCover[]   @relation("AttendanceCoverCreator")
+  reportCards            ReportCard[]        @relation("ReportCardStudent")
+  reportCardsWritten     ReportCard[]        @relation("ReportCardAuthor")
   leaveRequests          LeaveRequest[]      @relation("LeaveApplicant")
   leaveNominations       LeaveRequest[]      @relation("LeaveNominee")
   leaveDecisions         LeaveRequest[]      @relation("LeaveDecider")
@@ -297,6 +301,7 @@ model Class {
   school         School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   teachers       ClassTeacher[]
   attendanceCovers AttendanceCover[]
+  reportCards    ReportCard[]
   enrollments    Enrollment[]
   attendance     AttendanceSession[]
   assignments    Assignment[]
@@ -384,6 +389,93 @@ model AttendanceSession {
 
   @@unique([classId, dateKey])
   @@index([schoolId, dateKey])
+}
+
+/// A child's report card for a term, as the class teacher issued it.
+///
+/// A DOCUMENT, NOT A QUERY, and that is the whole design. The obvious build is a
+/// page that recomputes the marks every time somebody opens it — which means the
+/// card a parent read in December quietly says something different in March,
+/// because a teacher corrected a typo in one assignment. A report card is a
+/// statement made on a date by a named person. So everything on it is SNAPSHOT
+/// at the moment it is generated, and publishing freezes it.
+///
+/// Regenerating a DRAFT replaces its contents; regenerating a PUBLISHED one does
+/// nothing at all. To change a published card a teacher has to withdraw it
+/// first, which is a deliberate, audited act rather than a side effect of
+/// pressing "generate" again.
+model ReportCard {
+  id                  String  @id @default(cuid())
+  schoolId            String
+  classId             String
+  studentMembershipId String
+  academicYearId      String?
+
+  /// "Term 1", "Half-yearly 2026" — whatever the school calls it. Unique per
+  /// child per class, so pressing generate twice updates rather than duplicates.
+  title  String
+  status String @default("DRAFT") // DRAFT | PUBLISHED
+
+  /// The class teacher's words. The one part of the card that is not arithmetic.
+  remark String?
+
+  /// The window the attendance figures cover, snapshot with everything else so
+  /// the card can say what it counted rather than leaving a reader to guess.
+  fromDateKey String
+  toDateKey   String
+
+  attendancePresent Int @default(0)
+  attendanceTotal   Int @default(0)
+
+  /// Thousandths of a percent, like every other score here — floats drift on
+  /// weighted averages exactly the way money does.
+  overallPercentMilli Int?
+  /// "points" or "weighted", carried through from `overallForStudent` so a
+  /// reader is told which rule produced the number.
+  gradingMethod       String @default("points")
+
+  createdByMembershipId String?
+  publishedAt           DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class     Class            @relation(fields: [classId], references: [id], onDelete: Cascade)
+  student   Membership       @relation("ReportCardStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  createdBy Membership?      @relation("ReportCardAuthor", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  items     ReportCardItem[]
+
+  @@unique([classId, studentMembershipId, title])
+  @@index([schoolId, classId, status])
+  @@index([studentMembershipId, status])
+}
+
+/// One assessment on a report card, as it stood when the card was made.
+///
+/// The title and the marks are COPIED rather than joined. An assignment renamed
+/// or deleted after the card was issued must not change or empty a document a
+/// parent already read — so `assignmentId` is kept for provenance only, and is
+/// nulled rather than cascading if the assignment goes.
+model ReportCardItem {
+  id           String  @id @default(cuid())
+  schoolId     String
+  reportCardId String
+  assignmentId String?
+
+  title       String
+  category    String?
+  scoreMilli  Int?
+  pointsMilli Int?
+  /// Order the class teacher chose, so the card reads the way they built it.
+  position    Int     @default(0)
+
+  school     School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  reportCard ReportCard  @relation(fields: [reportCardId], references: [id], onDelete: Cascade)
+  assignment Assignment? @relation(fields: [assignmentId], references: [id], onDelete: SetNull)
+
+  @@index([reportCardId])
+  @@index([schoolId])
 }
 
 /// A member of staff asking to be away, and the principal's answer.
@@ -523,6 +615,7 @@ model Assignment {
   author      Membership   @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
   submissions Submission[]
   grades      Grade[]
+  reportCardItems ReportCardItem[]
 
   @@index([schoolId, dueAt])
   @@index([classId, publishedAt])

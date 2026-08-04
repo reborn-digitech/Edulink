@@ -122,6 +122,24 @@ CREATE POLICY "AttendanceSession_tenant_isolation" ON "AttendanceSession"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- ReportCard
+ALTER TABLE "ReportCard" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReportCard" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReportCard_tenant_isolation" ON "ReportCard";
+DROP POLICY IF EXISTS "ReportCard_readable" ON "ReportCard";
+CREATE POLICY "ReportCard_tenant_isolation" ON "ReportCard"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ReportCardItem
+ALTER TABLE "ReportCardItem" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReportCardItem" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReportCardItem_tenant_isolation" ON "ReportCardItem";
+DROP POLICY IF EXISTS "ReportCardItem_readable" ON "ReportCardItem";
+CREATE POLICY "ReportCardItem_tenant_isolation" ON "ReportCardItem"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- LeaveRequest
 ALTER TABLE "LeaveRequest" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "LeaveRequest" FORCE ROW LEVEL SECURITY;

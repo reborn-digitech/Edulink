@@ -8,11 +8,14 @@ import { overallForStudent } from "@/lib/grading";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import Link from "next/link";
+import { myCards } from "@/lib/report-cards";
 
 export const metadata: Metadata = { title: "My grades" };
 
 export default async function StudentGradesPage() {
   const ctx = await requireRole("STUDENT");
+  const cards = await myCards(ctx);
 
   const grades = await db.grade.findMany({
     where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId },
@@ -69,6 +72,35 @@ export default async function StudentGradesPage() {
 
   return (
     <div className="space-y-5">
+
+      {/* Published report cards, if there are any. The one place a child can
+          find the document their family was sent. */}
+      {cards.length > 0 && (
+        <Card>
+          <CardHeader title="Report cards" description="Issued by your class teacher" />
+          <CardBody>
+            <ul className="space-y-1.5">
+              {cards.map((card) => (
+                <li key={card.id}>
+                  <Link
+                    href={`/report-cards/${card.id}`}
+                    className="flex items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3 hover:bg-surface"
+                  >
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium text-fg">
+                      {card.title}
+                    </span>
+                    {card.overallPercentMilli !== null && (
+                      <span className="shrink-0 text-sm font-semibold tabular-nums text-fg">
+                        {(card.overallPercentMilli / 1000).toFixed(1)}%
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+      )}
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">My grades</h1>
         <p className="mt-1 text-sm text-fg-muted">

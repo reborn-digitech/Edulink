@@ -197,6 +197,22 @@ export default async function ClassDetailPage({
         />
       </div>
 
+      {/* The class teacher writes this class's report cards. Offered here
+          because this is the page they are already on when the term ends. */}
+      <Card>
+        <Link
+          href={`/teacher/classes/${klass.id}/report-cards`}
+          className="flex items-center gap-3 p-4"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-fg">Report cards</span>
+            <span className="block text-xs text-fg-muted">
+              Choose the tests that count, write a remark, publish to families
+            </span>
+          </span>
+        </Link>
+      </Card>
+
       <ClassCode joinCode={klass.joinCode} className={klass.name} />
 
       {/* ---------------- roster ---------------- */}

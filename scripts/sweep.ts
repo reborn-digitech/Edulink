@@ -318,6 +318,101 @@ async function leaveAndPrincipal(schoolId: string) {
   }
 }
 
+/**
+ * Report cards.
+ *
+ * The check that carries the feature is the DRAFT one: a card that has not been
+ * published must 404 for the child it is about and for their guardian. Not 403 —
+ * a card somebody may not read should not confirm that it exists.
+ */
+async function reportCards(schoolId: string) {
+  const link = await db.classTeacher.findFirst({
+    where: { schoolId, role: "LEAD", teacher: { user: { email: { not: null } } } },
+    include: {
+      teacher: { include: { user: { select: { email: true } } } },
+      class: { select: { id: true } },
+    },
+  });
+  if (!link?.teacher.user.email) return;
+
+  const classId = link.class.id;
+  const teacherActor = await mint(link.teacher.user.email, "TEACHER", schoolId, "card-teacher");
+  await check(
+    teacherActor,
+    `/teacher/classes/${classId}/report-cards`,
+    200,
+    "the class teacher builds report cards",
+  );
+
+  // A teacher who is NOT this class's lead must be turned away.
+  const stranger = await db.membership.findFirst({
+    where: {
+      schoolId,
+      role: "TEACHER",
+      status: "ACTIVE",
+      user: { email: { not: null } },
+      id: { not: link.teacherMembershipId },
+      classTeachers: { none: { classId } },
+    },
+    include: { user: { select: { email: true } } },
+  });
+  if (stranger?.user.email) {
+    const other = await mint(stranger.user.email, "TEACHER", schoolId, "card-stranger");
+    // 404, not 403: a screen somebody may not use should not confirm it exists.
+    await check(
+      other,
+      `/teacher/classes/${classId}/report-cards`,
+      404,
+      "⚠ …and nobody else's class teacher does",
+    );
+  }
+
+  // A live draft, and who may open it.
+  const pupil = await db.enrollment.findFirst({
+    where: { classId, status: "ACTIVE" },
+    include: {
+      student: { include: { user: { select: { email: true } } } },
+    },
+  });
+  if (!pupil?.student.user.email) return;
+
+  const draft = await db.reportCard.create({
+    data: {
+      schoolId,
+      classId,
+      studentMembershipId: pupil.studentMembershipId,
+      title: "ZZ Sweep Draft",
+      status: "DRAFT",
+      fromDateKey: "2026-01-01",
+      toDateKey: "2026-03-31",
+    },
+  });
+
+  try {
+    const pupilActor = await mint(pupil.student.user.email, "STUDENT", schoolId, "card-pupil");
+    await check(
+      pupilActor,
+      `/report-cards/${draft.id}`,
+      404,
+      "⚠ an unpublished card is invisible to the child it is about",
+    );
+    await check(teacherActor, `/report-cards/${draft.id}`, 200, "…while their teacher may read it");
+
+    await db.reportCard.update({
+      where: { id: draft.id },
+      data: { status: "PUBLISHED", publishedAt: new Date() },
+    });
+    await check(
+      pupilActor,
+      `/report-cards/${draft.id}`,
+      200,
+      "…and they may read it once it is published",
+    );
+  } finally {
+    await db.reportCard.deleteMany({ where: { id: draft.id } });
+  }
+}
+
 async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
   const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfieldId } });
@@ -569,6 +664,7 @@ async function main() {
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
 
+  await reportCards(riverside.id);
   await leaveAndPrincipal(riverside.id);
   await staffingAndDuty(riverside.id);
   await operatorArea();
