@@ -1,22 +1,138 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CaretRightIcon, ChalkboardTeacherIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { ATTENDANCE_CONCERN_PERCENT, classInsights, defaultWindow } from "@/lib/insights";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
-import { ChalkboardTeacherIcon } from "@phosphor-icons/react/ssr";
+import { formatDateKey } from "@/lib/dates";
+import { WindowPicker } from "../window-picker";
 
 export const metadata: Metadata = { title: "Classes" };
 
 /**
- * Placeholder. The real thing — attendance by class, academic progress and
- * report cards — is the next commit. A nav entry that 404s is worse than a page
- * that says what it is not yet.
+ * Every class, with its attendance and its academic progress.
+ *
+ * Classes carry figures and are compared; children are not. Comparing classes is
+ * an ordinary management question and no eleven-year-old is compared with their
+ * friend by it — but they are still listed in the school's own order, by grade
+ * and name, rather than sorted best-first. A principal reading a list top to
+ * bottom should not be told what to conclude by the sort.
  */
-export default async function PrincipalClassesPage() {
-  await requireRole("PRINCIPAL", "ADMIN");
+export default async function PrincipalClassesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ days?: string }>;
+}) {
+  const ctx = await requireRole("PRINCIPAL", "ADMIN");
+  const { days } = await searchParams;
+
+  const span = [7, 30, 90, 180].includes(Number(days)) ? Number(days) : 30;
+  const window = await defaultWindow(ctx.schoolId, span);
+  const insights = await classInsights(ctx, window);
+
   return (
-    <EmptyState
-      icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-      title="Class insights are not built yet"
-      description="Attendance by class, academic progress and report cards land here next. Staff leave already works."
-    />
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Classes</h1>
+          <p className="mt-1 text-sm text-fg-muted">
+            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" })} to{" "}
+            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" })}
+          </p>
+        </div>
+        <WindowPicker days={span} />
+      </div>
+
+      <Card>
+        <CardHeader
+          icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
+          title="Class by class"
+          description="Open one to see its pupils and their report cards"
+        />
+        <CardBody>
+          {insights.length === 0 ? (
+            <EmptyState
+              title="No classes yet"
+              description="Once an admin creates classes they appear here."
+            />
+          ) : (
+            <ul className="space-y-2">
+              {insights.map((klass) => {
+                const concern =
+                  klass.attendance.percent !== null &&
+                  klass.attendance.percent < ATTENDANCE_CONCERN_PERCENT;
+
+                return (
+                  <li key={klass.classId}>
+                    <Link
+                      href={`/principal/classes/${klass.classId}?days=${span}`}
+                      className="flex flex-wrap items-center gap-3 rounded-[--radius-md] bg-surface-muted p-3.5 transition-colors hover:bg-surface"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate font-semibold text-fg">
+                          {klass.name}
+                          {klass.section ? ` · ${klass.section}` : ""}
+                        </span>
+                        <span className="block text-xs text-fg-muted">
+                          {klass.pupils} pupil{klass.pupils === 1 ? "" : "s"} ·{" "}
+                          {klass.sessionsTaken} register
+                          {klass.sessionsTaken === 1 ? "" : "s"} taken
+                          {klass.progress.pupilsWithNoMarks > 0
+                            ? ` · ${klass.progress.pupilsWithNoMarks} with no marks yet`
+                            : ""}
+                        </span>
+                        {klass.reportCards.length > 0 && (
+                          <span className="mt-0.5 block truncate text-xs text-fg-subtle">
+                            {klass.reportCards
+                              .map(
+                                (report) =>
+                                  `${report.title}: ${report.published} published${report.drafts > 0 ? `, ${report.drafts} draft` : ""}`,
+                              )
+                              .join(" · ")}
+                          </span>
+                        )}
+                      </span>
+
+                      <span className="text-right">
+                        <span className="block text-xs text-fg-muted">Attendance</span>
+                        <span
+                          className={
+                            concern
+                              ? "block text-lg font-bold tabular-nums text-warn"
+                              : "block text-lg font-bold tabular-nums text-fg"
+                          }
+                        >
+                          {klass.attendance.percent === null ? "—" : `${klass.attendance.percent}%`}
+                        </span>
+                      </span>
+
+                      <span className="text-right">
+                        <span className="block text-xs text-fg-muted">Progress</span>
+                        <span className="block text-lg font-bold tabular-nums text-fg">
+                          {klass.progress.percent === null ? "—" : `${klass.progress.percent}%`}
+                        </span>
+                      </span>
+
+                      {concern && <WarningIcon weight="bold" className="size-5 shrink-0 text-warn" />}
+                      <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+          {/* A figure with no denominator invites the wrong conclusion. A class
+              whose register was taken twice is not a class with 100% attendance. */}
+          <p className="mt-4 text-xs leading-relaxed text-fg-muted">
+            Attendance is of the marks actually recorded in this window — a class with few
+            registers taken has little behind its figure. Progress is the average of each
+            pupil&rsquo;s own overall, and pupils with no marks yet are left out of it rather than
+            counted as zero.
+          </p>
+        </CardBody>
+      </Card>
+    </div>
   );
 }

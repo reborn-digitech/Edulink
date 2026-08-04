@@ -279,6 +279,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(teacherActor, "/teacher/leave", 200, "a teacher may apply for leave");
     await check(teacherActor, "/principal/leave", 307, "…but not decide anybody's");
     await check(teacherActor, "/principal", 307, "…nor open the principal's dashboard");
+    await check(teacherActor, "/principal/classes", 307, "⚠ …nor the whole-school class figures");
   }
 
   const studentActor = await mintFor(schoolId, "STUDENT", "leave-pupil");
@@ -306,6 +307,11 @@ async function leaveAndPrincipal(schoolId: string) {
   try {
     const head = await mint(teacher.user.email, "PRINCIPAL", schoolId, "principal");
     await check(head, "/principal", 200, "the principal's dashboard");
+    await check(head, "/principal?days=90", 200, "…over a longer window");
+    // Garbage in the window parameter must fall back, not 500: it lands in a
+    // date range and then in a query.
+    await check(head, "/principal?days=99999", 200, "…and a nonsense window falls back");
+    await check(head, "/principal/classes", 200, "…the class list");
     await check(head, "/principal/leave", 200, "…and the requests waiting for them");
     await check(head, "/admin/calendar", 200, "…and the staff calendar, where leave shows");
     await check(head, "/teacher/leave", 200, "a principal takes leave like anybody else");
@@ -313,6 +319,26 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/teacher/attendance", 307, "⚠ …but does not take a register");
     await check(head, "/admin/people", 307, "⚠ …nor run the directory");
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
+
+    const anyClass = await db.class.findFirst({
+      where: { schoolId, archivedAt: null },
+      select: { id: true },
+    });
+    if (anyClass) {
+      await check(head, `/principal/classes/${anyClass.id}`, 200, "…and drills into one class");
+    }
+    const elsewhere = await db.class.findFirst({
+      where: { schoolId: { not: schoolId } },
+      select: { id: true },
+    });
+    if (elsewhere) {
+      await check(
+        head,
+        `/principal/classes/${elsewhere.id}`,
+        404,
+        "⚠ …but never into another school's",
+      );
+    }
   } finally {
     await db.membership.deleteMany({ where: { id: made.id } });
   }
