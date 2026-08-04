@@ -1,0 +1,477 @@
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { PrismaClient } from "@prisma/client";
+import { AccessError } from "@/lib/tenancy";
+import {
+  applyForLeave,
+  approvedLeaveBetween,
+  cancelLeave,
+  decideLeave,
+  myLeave,
+  schoolLeave,
+} from "@/lib/leave";
+import { registerDuty } from "@/lib/register-duty";
+import type { ActiveContext } from "@/lib/session";
+
+/**
+ * Staff leave, and the cover that must follow it.
+ *
+ * THE CLAIM WORTH TESTING is not that a row gets written — it is that approving
+ * leave leaves nobody's register unmarked. A leave feature that records an
+ * absence and leaves somebody to remember the register separately has moved the
+ * problem rather than solved it, and the failure is invisible until a Tuesday
+ * morning when thirty children go unmarked.
+ *
+ * So the load-bearing block below is "approving arranges the cover", and it
+ * checks the effect through `registerDuty` — the function the register itself
+ * asks — rather than by counting rows in a table.
+ */
+
+const db = new PrismaClient();
+
+function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
+  return {
+    sessionId: "test-session",
+    membershipId: over.membershipId ?? null,
+    schoolId: over.schoolId ?? null,
+    role: over.role ?? null,
+    user: {
+      id: over.userId,
+      name: "Test",
+      preferredName: null,
+      email: null,
+      avatarKey: null,
+      isMinor: false,
+      isSuperuser: false,
+      prefs: {
+        theme: "system",
+        contrast: "normal",
+        font: "default",
+        motion: "full",
+        locale: "en",
+        channels: { push: false, email: false },
+        quietHours: null,
+      },
+    },
+  };
+}
+
+const APPLICANT_EMAIL = "leave.applicant.unit@riverside.test";
+const COVER_EMAIL = "leave.cover.unit@riverside.test";
+const PRINCIPAL_EMAIL = "leave.principal.unit@riverside.test";
+const MADE = [APPLICANT_EMAIL, COVER_EMAIL, PRINCIPAL_EMAIL];
+
+const FROM = "2026-05-04";
+const TO = "2026-05-08";
+const OUTSIDE = "2026-05-11";
+
+let riversideId: string;
+let oakfieldId: string;
+let classId: string;
+
+let applicant: ActiveContext;
+let coverStaff: ActiveContext;
+let principal: ActiveContext;
+let admin: ActiveContext;
+let otherSchoolAdmin: ActiveContext;
+
+let applicantMembershipId: string;
+let coverMembershipId: string;
+let principalMembershipId: string;
+
+async function makeStaff(email: string, name: string, role: string, schoolId: string) {
+  const user =
+    (await db.user.findUnique({ where: { email } })) ??
+    (await db.user.create({ data: { email, name, prefs: "{}" } }));
+  const membership = await db.membership.upsert({
+    where: { userId_schoolId_role: { userId: user.id, schoolId, role } },
+    create: { userId: user.id, schoolId, role, status: "ACTIVE" },
+    update: { status: "ACTIVE" },
+  });
+  return { userId: user.id, membershipId: membership.id };
+}
+
+beforeAll(async () => {
+  const riverside = await db.school.findFirstOrThrow({
+    where: { name: "Riverside Primary School" },
+  });
+  const oakfield = await db.school.findFirstOrThrow({ where: { name: "Oakfield Academy" } });
+  riversideId = riverside.id;
+  oakfieldId = oakfield.id;
+
+  const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
+  const sam = await db.user.findUniqueOrThrow({ where: { email: "sam@oakfield.school" } });
+  const priyaAdmin = await db.membership.findFirstOrThrow({
+    where: { userId: priya.id, schoolId: riversideId, role: "ADMIN" },
+  });
+  const samAdmin = await db.membership.findFirstOrThrow({
+    where: { userId: sam.id, schoolId: oakfieldId, role: "ADMIN" },
+  });
+
+  admin = ctx({ userId: priya.id, membershipId: priyaAdmin.id, schoolId: riversideId, role: "ADMIN" });
+  otherSchoolAdmin = ctx({
+    userId: sam.id,
+    membershipId: samAdmin.id,
+    schoolId: oakfieldId,
+    role: "ADMIN",
+  });
+
+  const a = await makeStaff(APPLICANT_EMAIL, "Leave Applicant", "TEACHER", riversideId);
+  const c = await makeStaff(COVER_EMAIL, "Cover Teacher", "TEACHER", riversideId);
+  const p = await makeStaff(PRINCIPAL_EMAIL, "Leave Principal", "PRINCIPAL", riversideId);
+  applicantMembershipId = a.membershipId;
+  coverMembershipId = c.membershipId;
+  principalMembershipId = p.membershipId;
+
+  applicant = ctx({
+    userId: a.userId,
+    membershipId: a.membershipId,
+    schoolId: riversideId,
+    role: "TEACHER",
+  });
+  coverStaff = ctx({
+    userId: c.userId,
+    membershipId: c.membershipId,
+    schoolId: riversideId,
+    role: "TEACHER",
+  });
+  principal = ctx({
+    userId: p.userId,
+    membershipId: p.membershipId,
+    schoolId: riversideId,
+    role: "PRINCIPAL",
+  });
+
+  // This suite's OWN class, with the applicant down to mark its register.
+  // Nothing here touches a seeded class — see the note in register-duty.test.ts.
+  const klass = await db.class.upsert({
+    where: { joinCode: "ZZZ-LEAVE" },
+    create: {
+      schoolId: riversideId,
+      name: "ZZ Leave Test Class",
+      gradeLevel: "5",
+      joinCode: "ZZZ-LEAVE",
+    },
+    update: {},
+  });
+  classId = klass.id;
+
+  await db.classTeacher.upsert({
+    where: {
+      classId_teacherMembershipId: { classId, teacherMembershipId: applicantMembershipId },
+    },
+    create: {
+      classId,
+      schoolId: riversideId,
+      teacherMembershipId: applicantMembershipId,
+      role: "LEAD",
+      canTakeAttendance: true,
+    },
+    update: { canTakeAttendance: true },
+  });
+});
+
+afterEach(async () => {
+  await db.attendanceCover.deleteMany({ where: { classId } });
+  await db.leaveRequest.deleteMany({ where: { schoolId: riversideId } });
+  // Notifications too. Without this they accumulate across tests in this file
+  // and the "tells the applicant" assertion counts six approvals instead of one
+  // — a test failing because of its neighbours rather than its subject.
+  await db.notification.deleteMany({ where: { user: { email: { in: MADE } } } });
+});
+
+afterAll(async () => {
+  await db.attendanceCover.deleteMany({ where: { classId } });
+  await db.leaveRequest.deleteMany({ where: { schoolId: riversideId } });
+  await db.classTeacher.deleteMany({ where: { classId } });
+  await db.class.deleteMany({ where: { id: classId } });
+  await db.notification.deleteMany({ where: { user: { email: { in: MADE } } } });
+  await db.membership.deleteMany({ where: { user: { email: { in: MADE } } } });
+  await db.user.deleteMany({ where: { email: { in: MADE } } });
+  await db.$disconnect();
+});
+
+const BASE = { fromDateKey: FROM, toDateKey: TO, kind: "SICK" as const, reason: "Hospital appointment" };
+
+async function pendingId(): Promise<string> {
+  const row = await db.leaveRequest.findFirstOrThrow({
+    where: { schoolId: riversideId, status: "PENDING" },
+  });
+  return row.id;
+}
+
+describe("applying", () => {
+  it("records a pending request", async () => {
+    const result = await applyForLeave(applicant, BASE);
+    expect(result.ok).toBe(true);
+
+    const rows = await myLeave(applicant);
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ status: "PENDING", kind: "SICK", fromDateKey: FROM });
+  });
+
+  it("refuses a backwards range, a malformed date and an absurd span", async () => {
+    expect((await applyForLeave(applicant, { ...BASE, toDateKey: "2026-05-01" })).ok).toBe(false);
+    expect((await applyForLeave(applicant, { ...BASE, fromDateKey: "04/05/2026" })).ok).toBe(false);
+    // A mistyped year, not a policy about how much leave anybody may take.
+    expect(
+      (await applyForLeave(applicant, { ...BASE, fromDateKey: "2026-05-04", toDateKey: "2027-05-04" }))
+        .ok,
+    ).toBe(false);
+  });
+
+  it("⚠ requires a reason", async () => {
+    expect((await applyForLeave(applicant, { ...BASE, reason: "  " })).ok).toBe(false);
+    expect(await db.leaveRequest.count({ where: { schoolId: riversideId } })).toBe(0);
+  });
+
+  it("⚠ refuses a second request overlapping one already open", async () => {
+    expect((await applyForLeave(applicant, BASE)).ok).toBe(true);
+    // Almost always a double submission, and creating both leaves somebody to
+    // reconcile two decisions about the same days.
+    const again = await applyForLeave(applicant, { ...BASE, fromDateKey: "2026-05-06" });
+    expect(again.ok).toBe(false);
+  });
+
+  it("allows a request that does not overlap", async () => {
+    expect((await applyForLeave(applicant, BASE)).ok).toBe(true);
+    expect(
+      (await applyForLeave(applicant, { ...BASE, fromDateKey: "2026-06-01", toDateKey: "2026-06-02" }))
+        .ok,
+    ).toBe(true);
+  });
+
+  it("⚠ refuses a nominee who is not staff here, and refuses self-nomination", async () => {
+    const oakTeacher = await db.membership.findFirstOrThrow({
+      where: { schoolId: oakfieldId, role: "TEACHER" },
+    });
+    expect(
+      (await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: oakTeacher.id })).ok,
+    ).toBe(false);
+    expect(
+      (await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: applicantMembershipId }))
+        .ok,
+    ).toBe(false);
+  });
+
+  it("⚠ is not open to students or parents", async () => {
+    const pupil = ctx({ userId: "x", membershipId: "y", schoolId: riversideId, role: "STUDENT" });
+    await expect(applyForLeave(pupil, BASE)).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("tells the people who can decide it", async () => {
+    await applyForLeave(applicant, BASE);
+    const notified = await db.notification.count({
+      where: { schoolId: riversideId, title: "Leave request waiting" },
+    });
+    expect(notified).toBeGreaterThan(0);
+  });
+});
+
+describe("⚠ approving arranges the cover", () => {
+  it("makes the named person able to mark the register, for exactly those days", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    const id = await pendingId();
+
+    // Before: the cover teacher is on no class and may mark nothing.
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+
+    const result = await decideLeave(principal, id, "APPROVED");
+    expect(result.ok).toBe(true);
+    expect(result.coversCreated).toBe(1);
+
+    // ⚠ Checked through the function the REGISTER asks, not by counting rows.
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, TO)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, OUTSIDE)).may).toBe(false);
+  });
+
+  it("⚠ the applicant can still mark their own register — cover adds, never removes", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await decideLeave(principal, await pendingId(), "APPROVED");
+    // They may come in anyway, or the leave may be cancelled.
+    expect((await registerDuty(applicant, classId, FROM)).may).toBe(true);
+  });
+
+  it("⚠ uses whoever the DECIDER chose, not the applicant's suggestion", async () => {
+    // Otherwise a teacher hands their classes to anybody by applying for a day
+    // off, which is a staffing decision they do not get to make alone.
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await decideLeave(principal, await pendingId(), "APPROVED", {
+      coverMembershipId: principalMembershipId,
+    });
+
+    expect((await registerDuty(principal, classId, FROM)).may).toBe(true);
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+  });
+
+  it("approves with no cover when none was chosen, rather than refusing", async () => {
+    await applyForLeave(applicant, BASE);
+    const result = await decideLeave(principal, await pendingId(), "APPROVED");
+    expect(result.ok).toBe(true);
+    expect(result.coversCreated).toBe(0);
+  });
+
+  it("does not arrange cover for a class the applicant does not mark", async () => {
+    await db.classTeacher.updateMany({
+      where: { classId, teacherMembershipId: applicantMembershipId },
+      data: { canTakeAttendance: false },
+    });
+    try {
+      await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+      const result = await decideLeave(principal, await pendingId(), "APPROVED");
+      expect(result.coversCreated).toBe(0);
+    } finally {
+      await db.classTeacher.updateMany({
+        where: { classId, teacherMembershipId: applicantMembershipId },
+        data: { canTakeAttendance: true },
+      });
+    }
+  });
+
+  it("declining arranges nothing", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    await decideLeave(principal, await pendingId(), "DECLINED", { note: "Exam week" });
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+  });
+
+  it("tells the applicant either way", async () => {
+    await applyForLeave(applicant, BASE);
+    await decideLeave(principal, await pendingId(), "APPROVED");
+    const told = await db.notification.count({
+      where: { user: { email: APPLICANT_EMAIL }, title: "Your leave was approved" },
+    });
+    expect(told).toBe(1);
+  });
+});
+
+describe("⚠ who may decide", () => {
+  it("refuses a teacher", async () => {
+    await applyForLeave(applicant, BASE);
+    const id = await pendingId();
+    await expect(decideLeave(coverStaff, id, "APPROVED")).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ refuses somebody deciding their OWN request", async () => {
+    // A principal takes leave like anybody else, and somebody who is not them
+    // has to answer it.
+    await applyForLeave(principal, BASE);
+    const id = await pendingId();
+    const result = await decideLeave(principal, id, "APPROVED");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/your own/i);
+  });
+
+  it("lets an admin decide a principal's request", async () => {
+    await applyForLeave(principal, BASE);
+    expect((await decideLeave(admin, await pendingId(), "APPROVED")).ok).toBe(true);
+  });
+
+  it("⚠ refuses a request from another school", async () => {
+    await applyForLeave(applicant, BASE);
+    const id = await pendingId();
+    const result = await decideLeave(otherSchoolAdmin, id, "APPROVED");
+    expect(result.ok).toBe(false);
+  });
+
+  it("refuses to decide the same request twice", async () => {
+    await applyForLeave(applicant, BASE);
+    const id = await pendingId();
+    expect((await decideLeave(principal, id, "APPROVED")).ok).toBe(true);
+    expect((await decideLeave(principal, id, "DECLINED")).ok).toBe(false);
+  });
+});
+
+describe("⚠ withdrawing takes the cover with it", () => {
+  it("cancels approved leave and removes the cover it caused", async () => {
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    const id = await pendingId();
+    await decideLeave(principal, id, "APPROVED");
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(true);
+
+    expect((await cancelLeave(applicant, id)).ok).toBe(true);
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+  });
+
+  it("⚠ removes ONLY the cover this request caused", async () => {
+    // Cover arranged by hand, for other reasons, belongs to whoever arranged it.
+    await db.attendanceCover.create({
+      data: {
+        schoolId: riversideId,
+        classId,
+        coveringMembershipId: principalMembershipId,
+        fromDateKey: FROM,
+        toDateKey: TO,
+        reason: "Arranged separately",
+      },
+    });
+
+    await applyForLeave(applicant, { ...BASE, nominatedCoverMembershipId: coverMembershipId });
+    const id = await pendingId();
+    await decideLeave(principal, id, "APPROVED");
+    await cancelLeave(applicant, id);
+
+    // The leave's cover is gone; the hand-arranged one is untouched.
+    expect((await registerDuty(coverStaff, classId, FROM)).may).toBe(false);
+    expect((await registerDuty(principal, classId, FROM)).may).toBe(true);
+  });
+
+  it("lets the applicant withdraw a pending request", async () => {
+    await applyForLeave(applicant, BASE);
+    expect((await cancelLeave(applicant, await pendingId())).ok).toBe(true);
+  });
+
+  it("⚠ refuses somebody else's request", async () => {
+    await applyForLeave(applicant, BASE);
+    const id = await pendingId();
+    await expect(cancelLeave(coverStaff, id)).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("lets the principal withdraw one on the applicant's behalf", async () => {
+    await applyForLeave(applicant, BASE);
+    expect((await cancelLeave(principal, await pendingId())).ok).toBe(true);
+  });
+
+  it("refuses to cancel one already closed", async () => {
+    await applyForLeave(applicant, BASE);
+    const id = await pendingId();
+    await decideLeave(principal, id, "DECLINED");
+    expect((await cancelLeave(applicant, id)).ok).toBe(false);
+  });
+});
+
+describe("⚠ staff-only by construction", () => {
+  it("shows approved leave to staff", async () => {
+    await applyForLeave(applicant, BASE);
+    await decideLeave(principal, await pendingId(), "APPROVED");
+
+    const forPrincipal = await approvedLeaveBetween(principal, "2026-05-01", "2026-05-31");
+    expect(forPrincipal).toHaveLength(1);
+    const forTeacher = await approvedLeaveBetween(coverStaff, "2026-05-01", "2026-05-31");
+    expect(forTeacher).toHaveLength(1);
+  });
+
+  it("⚠ refuses a student or a parent outright, rather than returning nothing", async () => {
+    // Returning an empty list would be indistinguishable from "there is none",
+    // and would quietly start leaking the day somebody widened the query.
+    const pupil = ctx({ userId: "x", membershipId: "y", schoolId: riversideId, role: "STUDENT" });
+    const parent = ctx({ userId: "x", schoolId: riversideId, role: "PARENT" });
+    await expect(approvedLeaveBetween(pupil, FROM, TO)).rejects.toBeInstanceOf(AccessError);
+    await expect(approvedLeaveBetween(parent, FROM, TO)).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("leaves out anything not approved", async () => {
+    await applyForLeave(applicant, BASE);
+    expect(await approvedLeaveBetween(principal, "2026-05-01", "2026-05-31")).toHaveLength(0);
+  });
+
+  it("⚠ the whole-school list is not open to teachers", async () => {
+    await expect(schoolLeave(coverStaff)).rejects.toBeInstanceOf(AccessError);
+    await expect(schoolLeave(principal)).resolves.toBeInstanceOf(Array);
+  });
+
+  it("shows a teacher only their own requests", async () => {
+    await applyForLeave(applicant, BASE);
+    expect(await myLeave(applicant)).toHaveLength(1);
+    expect(await myLeave(coverStaff)).toHaveLength(0);
+  });
+});

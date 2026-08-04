@@ -80,6 +80,7 @@ model School {
   auditLogs      AuditLog[]
   attendance     AttendanceSession[]
   attendanceCovers AttendanceCover[]
+  leaveRequests  LeaveRequest[]
   assignments    Assignment[]
   remarks        RemarkThread[]
   reports        Report[]
@@ -214,6 +215,9 @@ model Membership {
   attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
   attendanceCovering     AttendanceCover[]   @relation("AttendanceCovering")
   attendanceCoversMade   AttendanceCover[]   @relation("AttendanceCoverCreator")
+  leaveRequests          LeaveRequest[]      @relation("LeaveApplicant")
+  leaveNominations       LeaveRequest[]      @relation("LeaveNominee")
+  leaveDecisions         LeaveRequest[]      @relation("LeaveDecider")
   submissions            Submission[]
   grades                 Grade[]             @relation("GradeStudent")
   gradesGiven            Grade[]             @relation("GradeGrader")
@@ -380,6 +384,50 @@ model AttendanceSession {
 
   @@unique([classId, dateKey])
   @@index([schoolId, dateKey])
+}
+
+/// A member of staff asking to be away, and the principal's answer.
+///
+/// STAFF-ONLY BY CONSTRUCTION, not by a filter. The obvious implementation is a
+/// Holiday row with kind = "LEAVE", which reuses the calendar for free — and
+/// puts "Priya is on sick leave" on a calendar students and parents read. A
+/// filter would fix that until somebody forgets it once. So leave lives in its
+/// own table with its own policy, the staff calendar reads it directly, and
+/// there is no filter to forget.
+///
+/// Date keys, inclusive both ends, like Holiday and AttendanceCover — "Monday to
+/// Friday" is what a school says.
+model LeaveRequest {
+  id                 String @id @default(cuid())
+  schoolId           String
+  teacherMembershipId String
+
+  fromDateKey String
+  toDateKey   String
+  kind        String  @default("CASUAL") // CASUAL | SICK | UNPAID | OTHER
+  reason      String
+
+  status String @default("PENDING") // PENDING | APPROVED | DECLINED | CANCELLED
+
+  /// Who the applicant suggests should cover their classes. A suggestion, not a
+  /// decision: the principal may approve the leave and name somebody else, and
+  /// the cover rows are written from what the PRINCIPAL chose.
+  nominatedCoverMembershipId String?
+
+  decidedByMembershipId String?
+  decidedAt             DateTime?
+  decisionNote          String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teacher   Membership  @relation("LeaveApplicant", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  nominated Membership? @relation("LeaveNominee", fields: [nominatedCoverMembershipId], references: [id], onDelete: SetNull)
+  decidedBy Membership? @relation("LeaveDecider", fields: [decidedByMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status, fromDateKey])
+  @@index([teacherMembershipId])
 }
 
 /// Somebody else may take this class's register, for these days.

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { CalendarBlankIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { approvedLeaveBetween, LEAVE_KIND_LABEL, type LeaveKind } from "@/lib/leave";
 import { db } from "@/lib/db";
 import { listHolidays, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holidays";
 import { listAcademicYears } from "@/lib/academic-year";
-import { todayKey } from "@/lib/dates";
+import { todayKey, addDaysToKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { YearPanel } from "./year-panel";
@@ -28,7 +29,10 @@ export const metadata: Metadata = { title: "School calendar" };
  */
 export default async function CalendarPage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN");
+  // PRINCIPAL reads it too — approved staff leave shows here, and deciding it
+  // without being able to see the term dates around it is half a job. Editing
+  // stays with the admin: the year and the holidays are theirs to set.
+  const ctx = await requireRole("ADMIN", "PRINCIPAL");
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
@@ -43,6 +47,11 @@ export default async function CalendarPage() {
 
   const current = years.find((year) => year.isCurrent) ?? null;
 
+  // Staff leave for the next term or so. STAFF-ONLY BY CONSTRUCTION: it comes
+  // from LeaveRequest, which no student or parent page reads, rather than from a
+  // Holiday row with a filter on it. A filter is something somebody forgets once.
+  const leave = await approvedLeaveBetween(ctx, today, addDaysToKey(today, 120));
+
   return (
     <div className="space-y-6">
       <div>
@@ -51,6 +60,42 @@ export default async function CalendarPage() {
           The school year, and the days the school is shut.
         </p>
       </div>
+
+      {/* ---------------- staff away ---------------- */}
+      {leave.length > 0 && (
+        <section aria-labelledby="leave-heading">
+          <Card>
+            <CardHeader
+              title={<span id="leave-heading">Staff away</span>}
+              description="Approved leave for the next few months. Staff only — never shown to students or parents."
+            />
+            <CardBody>
+              <ul className="space-y-1.5">
+                {leave.map((row) => (
+                  <li
+                    key={row.id}
+                    className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-fg">
+                        {row.applicantName}
+                      </span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {row.fromDateKey}
+                        {row.toDateKey !== row.fromDateKey ? ` to ${row.toDateKey}` : ""} ·{" "}
+                        {LEAVE_KIND_LABEL[row.kind as LeaveKind] ?? row.kind}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              {/* The REASON is deliberately absent here. The principal read it
+                  when deciding; the staff room does not need to know whose
+                  absence is medical. */}
+            </CardBody>
+          </Card>
+        </section>
+      )}
 
       {/* ---------------- the academic year ---------------- */}
       <section aria-labelledby="year-heading">

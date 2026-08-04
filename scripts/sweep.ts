@@ -265,6 +265,59 @@ async function mintFor(schoolId: string, role: string, label: string) {
   return mint(membership.user.email, role, schoolId, label);
 }
 
+/**
+ * Staff leave, and the principal's area.
+ *
+ * The check that matters is the LAST one: approved leave must be invisible to a
+ * pupil and a guardian. It is staff-only by construction — the data lives in
+ * LeaveRequest, which no student page reads — but "by construction" is a claim,
+ * and this asks the running app.
+ */
+async function leaveAndPrincipal(schoolId: string) {
+  const teacherActor = await mintFor(schoolId, "TEACHER", "leave-teacher");
+  if (teacherActor) {
+    await check(teacherActor, "/teacher/leave", 200, "a teacher may apply for leave");
+    await check(teacherActor, "/principal/leave", 307, "…but not decide anybody's");
+    await check(teacherActor, "/principal", 307, "…nor open the principal's dashboard");
+  }
+
+  const studentActor = await mintFor(schoolId, "STUDENT", "leave-pupil");
+  if (studentActor) {
+    await check(studentActor, "/teacher/leave", 307, "⚠ a pupil has no leave page");
+    await check(studentActor, "/principal/leave", 307, "⚠ …and cannot read staff leave");
+    await check(studentActor, "/admin/calendar", 307, "⚠ …nor the staff calendar it appears on");
+  }
+
+  // A principal, made for the sweep and removed afterwards.
+  const teacher = await db.membership.findFirst({
+    where: { schoolId, role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  if (!teacher?.user.email) return;
+
+  const made = await db.membership.upsert({
+    where: {
+      userId_schoolId_role: { userId: teacher.user.id, schoolId, role: "PRINCIPAL" },
+    },
+    create: { userId: teacher.user.id, schoolId, role: "PRINCIPAL", status: "ACTIVE" },
+    update: { status: "ACTIVE" },
+  });
+
+  try {
+    const head = await mint(teacher.user.email, "PRINCIPAL", schoolId, "principal");
+    await check(head, "/principal", 200, "the principal's dashboard");
+    await check(head, "/principal/leave", 200, "…and the requests waiting for them");
+    await check(head, "/admin/calendar", 200, "…and the staff calendar, where leave shows");
+    await check(head, "/teacher/leave", 200, "a principal takes leave like anybody else");
+    // A principal READS the school; they do not mark registers or set it up.
+    await check(head, "/teacher/attendance", 307, "⚠ …but does not take a register");
+    await check(head, "/admin/people", 307, "⚠ …nor run the directory");
+    await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
+  } finally {
+    await db.membership.deleteMany({ where: { id: made.id } });
+  }
+}
+
 async function twoSchoolTeacher(riversideId: string, oakfieldId: string) {
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
   const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfieldId } });
@@ -516,6 +569,7 @@ async function main() {
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
 
+  await leaveAndPrincipal(riverside.id);
   await staffingAndDuty(riverside.id);
   await operatorArea();
 
