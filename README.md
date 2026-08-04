@@ -261,6 +261,7 @@ src/lib/                  All business logic. Pages are thin.
   holidays.ts             ★ School calendar. Range maths is pure; only kind=HOLIDAY closes school.
   quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
   school-record.ts        ★ Leaving certificates. A document frozen at issue, never a query.
+  student-record.ts       ★ A child's record, read with NO school bound. Outlives every membership.
   account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
   login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
@@ -1213,6 +1214,18 @@ One line each, with the default rejected.
   calendar and the leave queue, and is turned away from the register, the
   directory and class creation.
 
+  **A pupil's permanent record**, walked in a browser as somebody who has left
+  BOTH their schools: signed in and landed on `/record` rather than on a join
+  code, and read two schools in one page — Oakfield (*Finished school here*,
+  *went on to St Xavier's — not on EduLink*, the leaving note), Riverside
+  (*Transferred*), 80% attendance at each with the day counts, a report card at
+  each with its items, an unmarked assessment shown as **—** rather than 0, the
+  badges, and *frozen as this school left it*. The DRAFT card seeded alongside
+  each published one appeared nowhere. Their guardian, also with no active role,
+  opened the same journey for their child. The sweep confirms the other half
+  with the same cookie: `/student`, `/student/practice`, `/bulletin` and
+  `/student/grades` are all 307.
+
   **A transfer by invitation**, walked in a browser: a pupil with a Riverside
   leaving certificate opened an Oakfield invitation sent to the address they
   already use, met a page reading *Add Oakfield Academy to your account — your
@@ -1369,6 +1382,14 @@ navigation" means the actual list rather than one somebody maintained by hand.
   deliberately not built: it changes what joining MEANS, since an admin at one
   school could become a pupil at another in one click.
 
+- **An alumnus cannot reach `/account`.** The record is readable but the
+  settings behind it are not, so somebody who has left every school cannot
+  change their language, their password or their notification preferences. Same
+  root cause as the item below — `/account` needs an active role — and now much
+  more visible, because there is a whole population of people who legitimately
+  have none. `/record` carries a sign-out button so it is not a dead end, but
+  moving the account page out from behind the gate would close both at once.
+
 - **The account page is behind the role gate.** `/account` lives inside the
   signed-in shell, which needs an active role, so somebody with no remaining
   context — a paused member with nowhere else to be — cannot reach their own
@@ -1423,6 +1444,76 @@ inside it stays, and the comment says why: deleting it keeps every check green
 today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
+
+### The record is the child's, and it outlives every school
+
+**A record that disappears when you change school is not a record.** Until this,
+everything a school wrote about a child was reachable only while the child was
+that school's pupil: the moment a membership ended, the tenant went empty and
+Postgres correctly stopped handing over their report cards, their attendance and
+the badges they earned. A leaver could see a certificate saying they had been
+somewhere and nothing describing what they did there. A family who moved to a
+school not on this platform lost the lot.
+
+**So the DATABASE now says the record belongs to the child**, not the
+application. `OWN_RECORD_READABLE` opens `ReportCard`, `ReportCardItem`,
+`AttendanceRecord` and `EarnedBadge` to the child they are about and to their
+active guardians, keyed on `app.user_id`, **with no school bound at all** —
+which is the only tenant state an alumnus will ever have again.
+
+**Two ways in, and the difference matters.** The child's branch goes through
+Membership, whose own policy grants `userId = app.user_id` with no school bound;
+that is a dependency on another table's policy, and it **fails closed** — if
+that clause went away this returns nothing rather than everything. The guardian's
+branch goes through Guardianship, which carries `studentMembershipId` directly
+and has no policy at all, so it depends on nothing.
+
+**Read only, and it is the reason this is safe to have.** FOR SELECT, never
+WITH CHECK, never in a USING that governs DELETE — the lesson the join code
+taught. A family may read their record forever; only the school that wrote it
+may change it, and only while they are its pupil. Two live checks prove a leaver
+can neither delete nor edit their own card.
+
+**What was NOT widened is the design.** `Grade` is absent: a report card is the
+frozen document and a gradebook is the school's working surface, so a leaver
+reads the card rather than the marks behind it. `AttendanceSession` is absent
+too, which is why the record shows attendance **figures** and never the
+day-by-day register — a register is a school's operational record of a room on a
+morning, and a leaver has no claim on it. What they have a claim on is the count
+of their own days, which is what a report card and a certificate both quote.
+
+**21 live `rls:verify` checks hold it, and the negatives are the point**: for
+each of the four tables, the leaver reads their own row, **not** a classmate's;
+the guardian reads it across a school the child has left, and **no** other
+family's child; and a request that is nobody reads nothing at all.
+
+**`/record` lives OUTSIDE `(app)`, and that is the restriction rather than a
+routing detail.** `(app)` needs an active role, which an alumnus does not have.
+Being outside it means there is no route from the record to the bulletin, to
+practice, to messages or to a class — the layout renders no navigation to them,
+and every one of those pages independently requires a live membership. Enforced
+twice and by construction, not by a hidden button. The sweep signs in as a pupil
+who has left every school and confirms `/record` is 200 while `/student`,
+`/student/practice`, `/bulletin` and `/student/grades` are all 307.
+
+**Where a leaver used to land was "join with a code"** — the fourth wrong answer
+that branch has given, after a superuser and a paused member. There is no code
+that helps somebody who is not joining anything, and everything their schools
+wrote was one redirect away and invisible. `hasRecord` is the question that
+tells an alumnus from a brand-new parent, and it is asked in both places that
+decide: the login redirect and the signed-in shell.
+
+**A guardian's journey is grouped by the CHILD, not the membership** — one child
+at two schools is one child, and without that grouping a parent whose daughter
+moved schools meets two strangers with the same name. They see the schools they
+are **linked at**: a school's records are that school's to hand over, and the
+student code is how it does the handing. The leaving certificate is the
+exception and it is the designed one — it travels with the family precisely so
+they can show it to the next school.
+
+**Drafts never appear in a record.** A draft is a teacher's working copy, and a
+record read years later by somebody with no school left to ask must not be the
+one place it leaks. Seven mutations, all caught, including that one.
 
 ### A transfer, done properly: the new school invites, the old school records
 

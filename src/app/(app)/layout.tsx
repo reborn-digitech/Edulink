@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { AppShell } from "@/components/nav/app-shell";
 import { getSession, listContexts } from "@/lib/session";
+import { hasRecord } from "@/lib/student-record";
 import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import type { Role } from "@/lib/constants";
@@ -34,7 +35,24 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       const paused = await db.membership.count({
         where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
       });
-      redirect(paused > 0 ? "/suspended" : "/join?first=1");
+      if (paused > 0) redirect("/suspended");
+
+      /**
+       * AN ALUMNUS IS NOT A NEW USER, and this branch used to treat them as one.
+       *
+       * Somebody who has left every school they were at — because they moved to
+       * a school not on this platform, or finished school altogether — has no
+       * active membership and landed here, on "join with a code". There is no
+       * code that helps: they are not joining anything, and everything their
+       * schools wrote about them was one redirect away and invisible.
+       *
+       * The same fourth-wrong-answer this branch has now given twice, once to a
+       * paused member and once to a superuser. `hasRecord` is the question that
+       * tells the cases apart.
+       */
+      if (await hasRecord(session)) redirect("/record");
+
+      redirect("/join?first=1");
     }
     redirect("/switch");
   }

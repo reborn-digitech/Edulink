@@ -193,6 +193,13 @@ export const en = {
      * Not called "merge". The people who need this do not have a word for it —
      * they have a situation, which is the one the description names.
      */
+    /**
+     * "Record", not "transcript" or "profile". A transcript is a document a
+     * school issues; this is everything, and it is the child's.
+     */
+    recordTitle: "Your school record",
+    recordDescription: "Report cards, attendance and badges — kept whatever school you are at",
+    recordAction: "Open it",
     mergeTitle: "Another account?",
     mergeDescription: "Changed school and had to start again with a new login",
     mergeAction: "Join them",

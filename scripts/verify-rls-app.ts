@@ -584,6 +584,175 @@ async function main() {
     );
 
     /* ---------------------------------------------------------------- *
+     * A CHILD'S OWN RECORD, WITH NO SCHOOL BOUND AT ALL.
+     *
+     * The situation this is for: a pupil who has left, whose next school is
+     * not on this platform — so there is no tenant to bind, now or ever
+     * again. Every check below runs with `app.user_id` set and
+     * `app.school_ids` deliberately UNSET, which is exactly the state their
+     * session is in.
+     *
+     * The negatives are the reason this is safe to have. Opening a child's
+     * report card to the child is only correct if it opens nobody else's.
+     * ---------------------------------------------------------------- */
+
+    // verify-pupil LEFT school A (their membership carries a leftAt) and their
+    // record there must survive it. verify-other is a stranger at the same
+    // school, with a report card of their own.
+    psql(
+      DB,
+      `INSERT INTO "Class" (id,"schoolId",name,"joinCode","updatedAt") VALUES
+         ('verify-class-a','verify-a','A Class','VCLASSA',now());
+       INSERT INTO "ReportCard"
+         (id,"schoolId","classId","studentMembershipId",title,status,"fromDateKey","toDateKey","attendancePresent","attendanceTotal","updatedAt") VALUES
+         ('verify-card-pupil','verify-a','verify-class-a','verify-m-pupil-a','Term 1','PUBLISHED','2026-01-05','2026-04-01',9,10,now()),
+         ('verify-card-other','verify-a','verify-class-a','verify-m-other','Term 1','PUBLISHED','2026-01-05','2026-04-01',8,10,now());
+       INSERT INTO "ReportCardItem" (id,"schoolId","reportCardId",title,position) VALUES
+         ('verify-item-pupil','verify-a','verify-card-pupil','Maths',0),
+         ('verify-item-other','verify-a','verify-card-other','Maths',0);
+       INSERT INTO "EarnedBadge" (id,"schoolId","studentMembershipId","badgeId",label) VALUES
+         ('verify-badge-pupil','verify-a','verify-m-pupil-a','abhyaas:fractions','Fractions'),
+         ('verify-badge-other','verify-a','verify-m-other','abhyaas:fractions','Fractions');
+       INSERT INTO "AttendanceSession" (id,"schoolId","classId","dateKey") VALUES
+         ('verify-sess','verify-a','verify-class-a','2026-03-02');
+       INSERT INTO "AttendanceRecord" (id,"schoolId","sessionId","studentMembershipId",status,"updatedAt") VALUES
+         ('verify-att-pupil','verify-a','verify-sess','verify-m-pupil-a','PRESENT',now()),
+         ('verify-att-other','verify-a','verify-sess','verify-m-other','PRESENT',now());
+       -- A parent of the pupil, and nobody else's parent.
+       INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES ('verify-parent','Parent','{}',now());
+       INSERT INTO "Guardianship" (id,"parentUserId","studentMembershipId","studentSchoolId",relation,status) VALUES
+         ('verify-guard','verify-parent','verify-m-pupil-a','verify-a','PARENT','ACTIVE');`,
+    );
+
+    /** Bound to a PERSON and to no school whatsoever. */
+    const asPersonOnly = async <T>(userId: string, work: (tx: TxLike) => Promise<T>): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, userId);
+        return work(tx);
+      });
+
+    const countOf = (tx: TxLike, model: string, id: string) =>
+      (tx as unknown as Record<string, { count: (a: unknown) => Promise<number> }>)[model]!.count({
+        where: { id },
+      });
+
+    for (const [model, own, theirs] of [
+      ["reportCard", "verify-card-pupil", "verify-card-other"],
+      ["reportCardItem", "verify-item-pupil", "verify-item-other"],
+      ["earnedBadge", "verify-badge-pupil", "verify-badge-other"],
+      ["attendanceRecord", "verify-att-pupil", "verify-att-other"],
+    ] as const) {
+      const mine = await asPersonOnly("verify-pupil", (tx) => countOf(tx, model, own));
+      check(
+        `⚠ a pupil who has LEFT still reads their own ${model}, with no school bound`,
+        mine === 1,
+        `read ${mine} — a leaver cannot open their own record, which is the whole feature`,
+      );
+
+      const stranger = await asPersonOnly("verify-pupil", (tx) => countOf(tx, model, theirs));
+      check(
+        `⚠ …and NOT a classmate's ${model}`,
+        stranger === 0,
+        `read ${stranger} of somebody else's rows — the clause opens a table, not a row`,
+      );
+
+      const parentSees = await asPersonOnly("verify-parent", (tx) => countOf(tx, model, own));
+      check(
+        `⚠ …their guardian reads it too, across a school the child has left (${model})`,
+        parentSees === 1,
+        `a parent read ${parentSees} — they cannot follow their child's journey`,
+      );
+
+      const parentStranger = await asPersonOnly("verify-parent", (tx) => countOf(tx, model, theirs));
+      check(
+        `⚠ …and that guardian reads NO other child's ${model}`,
+        parentStranger === 0,
+        `a parent read ${parentStranger} rows about a child who is not theirs`,
+      );
+
+      // Nobody at all. The clauses key on app.user_id, so an unbound request
+      // must still see nothing — the fail-closed property the whole file rests
+      // on, re-checked here because these are the most sensitive tables in it.
+      const nobody = await client.$transaction((tx: TxLike) => countOf(tx, model, own));
+      check(
+        `⚠ …and a request that is nobody reads no ${model} at all`,
+        nobody === 0,
+        `an unbound request read ${nobody} rows`,
+      );
+    }
+
+    // READ ONLY, the lesson the join code taught: a clause in USING authorises
+    // DELETE unless the widening lives in a FOR SELECT policy.
+    let leaverDeleted = 0;
+    try {
+      await asPersonOnly("verify-pupil", (tx) =>
+        (
+          tx as unknown as { reportCard: { deleteMany: (a: unknown) => Promise<{ count: number }> } }
+        ).reportCard.deleteMany({ where: { id: "verify-card-pupil" } }),
+      );
+      leaverDeleted = psqlCount(`SELECT count(*) FROM "ReportCard" WHERE id = 'verify-card-pupil'`);
+    } catch {
+      leaverDeleted = 1;
+    }
+    check(
+      "⚠ …and a pupil cannot DELETE their own report card, only read it",
+      leaverDeleted === 1,
+      "a leaver withdrew a document their school issued — a read clause authorised a DELETE again",
+    );
+
+    let leaverWrote = 0;
+    try {
+      await asPersonOnly("verify-pupil", (tx) =>
+        (
+          tx as unknown as { reportCard: { updateMany: (a: unknown) => Promise<{ count: number }> } }
+        ).reportCard.updateMany({ where: { id: "verify-card-pupil" }, data: { title: "Straight As" } }),
+      );
+      leaverWrote = psqlCount(
+        `SELECT count(*) FROM "ReportCard" WHERE id = 'verify-card-pupil' AND title = 'Term 1'`,
+      );
+    } catch {
+      leaverWrote = 1;
+    }
+    check(
+      "⚠ …nor edit one",
+      leaverWrote === 1,
+      "a leaver rewrote their own report card — the record is theirs to READ",
+    );
+
+    // The journey: a guardian listing every school their child has attended,
+    // including the one they left, with no school bound.
+    const parentSeesMemberships = await asPersonOnly("verify-parent", (tx) =>
+      (
+        tx as unknown as { membership: { count: (a: unknown) => Promise<number> } }
+      ).membership.count({ where: { id: "verify-m-pupil-a" } }),
+    );
+    check(
+      "⚠ a guardian reads their child's membership at a school the child has LEFT",
+      parentSeesMemberships === 1,
+      "a parent cannot see which schools their child attended — no journey to show",
+    );
+
+    const parentSeesStrangerMembership = await asPersonOnly("verify-parent", (tx) =>
+      (
+        tx as unknown as { membership: { count: (a: unknown) => Promise<number> } }
+      ).membership.count({ where: { id: "verify-m-other" } }),
+    );
+    check(
+      "⚠ …and no membership of a child who is not theirs",
+      parentSeesStrangerMembership === 0,
+      `a parent read ${parentSeesStrangerMembership} membership row(s) belonging to another family`,
+    );
+
+    const parentSeesCertificate = await asPersonOnly("verify-parent", (tx) =>
+      recordCount(tx, { where: { id: "verify-rec-a" } }),
+    );
+    check(
+      "⚠ …and the leaving certificate, which is the family's to hand on",
+      parentSeesCertificate === 1,
+      "a guardian cannot read the certificate they are the ones expected to produce",
+    );
+
+    /* ---------------------------------------------------------------- *
      * Joining two accounts, which is the only ordinary write in this app
      * that touches two schools in ONE transaction.
      *

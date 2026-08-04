@@ -87,6 +87,100 @@ const SELF_READABLE: Record<string, string> = {
 };
 
 /**
+ * A CHILD'S OWN RECORD, WHICH OUTLIVES EVERY MEMBERSHIP IT WAS MADE UNDER.
+ *
+ * The problem `SchoolRecord`'s SELF_READABLE clause solved for one table, now
+ * for the rest of what a school writes about a child. The moment a pupil leaves,
+ * that school drops out of their tenant set — correctly — and every policy keyed
+ * on `schoolId` alone stops handing over their report cards, their attendance
+ * and the badges they earned. A leaver could see the certificate saying they had
+ * been somewhere and nothing describing what they did there.
+ *
+ * That is the wrong default for a record ABOUT A PERSON. A school's operational
+ * rows — its registers, its bulletin, its assignments — belong to the school and
+ * end with the membership. A child's report card does not: it is a document
+ * addressed to them and their family, and a family that moves to a school not on
+ * this platform, or to no school at all, must still be able to open it.
+ *
+ * TWO WAYS IN, and the difference between them matters:
+ *
+ *   THE CHILD, through Membership. That subquery is narrowed by Membership's own
+ *   policy, which grants `userId = app.user_id` with no school bound — so it
+ *   resolves to exactly the row needed and nothing else. Depending on another
+ *   table's policy is a thing this file is wary of, so: it fails CLOSED. If
+ *   Membership's self clause ever went away this would return nothing rather
+ *   than everything.
+ *
+ *   THE GUARDIAN, through Guardianship, which carries `studentMembershipId`
+ *   directly and has NO policy at all (see the foot of rls.sql). So the parent
+ *   branch depends on nothing and works before any school is known — the same
+ *   property the parent session bootstrap already relies on. It is deliberately
+ *   keyed on the MEMBERSHIP rather than the child: a parent linked at Riverside
+ *   reads Riverside's record, and reads Oakfield's when Oakfield links them too.
+ *   A school's records stay the school's to hand over.
+ *
+ * READ ONLY, like every widening here — FOR SELECT, never WITH CHECK, and never
+ * in a USING that governs DELETE. A family may read their record forever; only
+ * the school that wrote it may change it, and only while they are its pupil.
+ *
+ * WHAT IS DELIBERATELY ABSENT. Grade is not here: a report card is the frozen
+ * document and a live gradebook is the school's working surface, so a leaver
+ * reads the card rather than the marks behind it. AttendanceSession is not here
+ * either, which is why the record shows FIGURES and never the day-by-day
+ * register — the register is the school's operational record of a room, not a
+ * document about one child.
+ */
+const OWN_RECORD_READABLE: Record<string, string> = {
+  ReportCard: ownRecordClause(`"ReportCard"."studentMembershipId"`),
+  AttendanceRecord: ownRecordClause(`"AttendanceRecord"."studentMembershipId"`),
+  EarnedBadge: ownRecordClause(`"EarnedBadge"."studentMembershipId"`),
+  // The items ARE the card. Reached through their parent, so one rule governs
+  // both and a card that is readable can never render empty.
+  ReportCardItem: `EXISTS (
+            SELECT 1 FROM "ReportCard" rc
+             WHERE rc."id" = "ReportCardItem"."reportCardId"
+               AND (${ownRecordClause(`rc."studentMembershipId"`)})
+          )`,
+};
+
+/**
+ * Tables where an active GUARDIAN may read their child's row.
+ *
+ * Separate from the map above because these two are already self-readable by the
+ * child through a column of their own, and only the parent half is missing.
+ *
+ * Membership is what lets a guardian list the schools their child has attended —
+ * the "journey" — including the ones they have left. SchoolRecord is the
+ * certificate, and a guardian reading it is the ORIGINAL design rather than an
+ * extension: the file that writes one says in as many words that the certificate
+ * is the family's, because they are the ones who hand it to the next school.
+ */
+const GUARDIAN_READABLE: Record<string, string> = {
+  Membership: guardianOf(`"Membership"."id"`),
+  SchoolRecord: guardianOf(`"SchoolRecord"."studentMembershipId"`),
+};
+
+/** "…is an active guardian of the pupil this membership belongs to." */
+function guardianOf(membershipRef: string): string {
+  return `EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = ${membershipRef}
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          )`;
+}
+
+/** "…is the child this row is about, or one of their active guardians." */
+function ownRecordClause(membershipRef: string): string {
+  return `${guardianOf(membershipRef)}
+          OR EXISTS (
+            SELECT 1 FROM "Membership" m
+             WHERE m."id" = ${membershipRef}
+               AND m."userId" = current_setting('app.user_id', true)
+          )`;
+}
+
+/**
  * Tables where a row belonging to NO school may be written.
  *
  * There is exactly one, and it is the audit log. Some of the things most worth
@@ -338,6 +432,10 @@ function generate(): string {
     if (globalClause) alsoReadable.push(`(${globalClause})`);
     const memberClause = MEMBER_READABLE[table];
     if (memberClause) alsoReadable.push(`(${memberClause})`);
+    const recordClause = OWN_RECORD_READABLE[table];
+    if (recordClause) alsoReadable.push(`(${recordClause})`);
+    const guardianClause = GUARDIAN_READABLE[table];
+    if (guardianClause) alsoReadable.push(`(${guardianClause})`);
     if (SUPERUSER_NULL_READABLE.has(table)) {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
@@ -372,6 +470,22 @@ function generate(): string {
         `  -- crosses schools, on one table that holds a summary rather than a`,
         `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,`,
         `  -- so it cannot be used to browse.`,
+      );
+    }
+    if (recordClause) {
+      usingNote.push(
+        `  -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with`,
+        `  -- no school bound at all. A school's operational rows end with the`,
+        `  -- membership; a document describing a child does not. See`,
+        `  -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a`,
+        `  -- family who moved to a school not on this platform still open their`,
+        `  -- own report cards, attendance figures and badges.`,
+      );
+    }
+    if (guardianClause) {
+      usingNote.push(
+        `  -- …and to an ACTIVE guardian of the pupil, which is what lets a parent`,
+        `  -- follow one child across every school they have attended.`,
       );
     }
     if (SUPERUSER_NULL_READABLE.has(table)) {

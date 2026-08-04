@@ -1378,6 +1378,49 @@ hands one school a window into another.
 
 ---
 
+## 12w. An alumnus — signed in, no school, record intact
+
+**The state nothing else in this file reaches.** Set it up by recording the same
+pupil as having left **every** school they are at.
+
+### They are not sent to a join code
+
+- ☐ Sign out, then log in as that pupil
+- ☐ **⚠️** You land on `/record`, not on "join with a code". There is no code
+  that helps somebody who is not joining anything
+
+### What they keep
+
+- ☐ **⚠️** Every school they attended, newest first, each marked **Left**
+- ☐ Each school's attendance **percentage and day count** — and a school where
+  no register was ever marked says so, rather than showing 0%
+- ☐ Each school's **published** report cards, with the assessments on them
+- ☐ **⚠️** An unmarked assessment shows **—**, never 0
+- ☐ **⚠️** A **draft** report card appears nowhere. Ask a teacher to leave one
+  in draft and check again
+- ☐ The leaving certificate for each school, with where they went
+- ☐ Badges they earned
+- ☐ **⚠️** "Frozen as this school left it" on every school they have left
+
+### What they do not keep
+
+- ☐ **⚠️** Type `/bulletin` into the address bar → redirected
+- ☐ **⚠️** `/student/practice` → redirected. Adaptive quizzing is a school's
+- ☐ **⚠️** `/student`, `/student/grades` → redirected
+- ☐ **⚠️** There is **no navigation** on the record page to any of them. This is
+  not a hidden button; the shell does not exist here
+- ☐ Sign out works from the record page (it is the only other control)
+
+### Their parent, too
+
+- ☐ Log in as a guardian of that pupil
+- ☐ **⚠️** The same journey, across every school the parent is linked at
+- ☐ **⚠️** One child at two schools appears **once**, not twice
+- ☐ **⚠️** Change the URL to another family's child id → **404**, never "that is
+  not your child"
+
+---
+
 ## 12u. A transfer done properly — the new school invites
 
 **This is the path that does not fork**, and the one a school should actually

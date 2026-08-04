@@ -303,6 +303,23 @@ async function resolveContextForUser(
   });
   if (operator?.isSuperuser) return { role: null, schoolId: null, redirectTo: "/root" };
 
+  /**
+   * AN ALUMNUS BELONGS TO NOTHING AND IS NOT NEW, which is the distinction this
+   * branch kept failing to draw — first for experts, then for operators, and
+   * now for the person it matters most to.
+   *
+   * Somebody who has left every school they were at, because they moved to one
+   * that is not on this platform or finished school altogether, has no active
+   * membership at all. Sending them to "join with a code" is the same wrong
+   * answer a suspended member used to get: there is no code that helps, and
+   * everything their schools wrote about them was sitting one redirect away.
+   *
+   * Left-and-gone memberships only — `leftAt` is deliberately not filtered, so
+   * this asks "were you ever a pupil" rather than "are you one now".
+   */
+  const everAPupil = await db.membership.count({ where: { userId, role: "STUDENT" } });
+  if (everAPupil > 0) return { role: null, schoolId: null, redirectTo: "/record" };
+
   // Signed in, but belongs to nothing yet.
   return { role: null, schoolId: null, redirectTo: "/join?first=1" };
 }

@@ -7,6 +7,7 @@ import {
   TranslateIcon,
   UserIcon,
   UsersThreeIcon,
+  CertificateIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -14,6 +15,7 @@ import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/s
 import { readJson } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
 import { HANDLE_DOMAIN, toDisplayLoginName } from "@/lib/login-name";
+import { hasRecord } from "@/lib/student-record";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -62,6 +64,7 @@ export default async function AccountPage() {
   const isHandle = user.email?.endsWith(`@${HANDLE_DOMAIN}`) ?? false;
 
   const twoFactor = await twoFactorStatus(session);
+  const showRecord = await hasRecord(session);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -136,6 +139,27 @@ export default async function AccountPage() {
           </ul>
         </CardBody>
       </Card>
+
+      {/* ---------- the permanent record ---------- */}
+      {/*
+        Only shown to somebody who has one. A teacher with no pupil history and
+        no children would be offered a page that says "nothing here yet", which
+        is a worse answer than not offering it.
+      */}
+      {showRecord && (
+        <Card>
+          <CardHeader
+            icon={<CertificateIcon weight="duotone" className="size-5" />}
+            title={t("account.recordTitle")}
+            description={t("account.recordDescription")}
+            action={
+              <Button asChild size="sm" variant="secondary">
+                <Link href="/record">{t("account.recordAction")}</Link>
+              </Button>
+            }
+          />
+        </Card>
+      )}
 
       {/* ---------- another account ---------- */}
       {/*

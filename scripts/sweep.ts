@@ -282,6 +282,157 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
   }
 }
 
+/**
+ * ⚠ AN ALUMNUS: SIGNED IN, NO SCHOOL, AND THEIR RECORD STILL THERE.
+ *
+ * The state nothing else in this sweep reaches. A pupil who has left every
+ * school on this platform has no ACTIVE membership, so `getSession` hands back
+ * no role and no school and the tenant is empty — which is why the record has
+ * to be readable from the policies keyed on the PERSON rather than from a
+ * bound school. A 200 on `/record` is the only check in this file that
+ * exercises that.
+ *
+ * AND THE OTHER HALF, which matters just as much: the same cookie must open
+ * NOTHING ELSE. The record is what they keep; the bulletin, practice and the
+ * class pages were the school's, and they end with the membership.
+ */
+async function alumniRecord(schoolId: string) {
+  const klass = await db.class.findFirst({ where: { schoolId }, select: { id: true } });
+  if (!klass) {
+    skip("the alumni record walk-through", `no class at ${schoolId}`);
+    return;
+  }
+
+  const email = "zz.sweep.alumnus@edulink.test";
+  const parentEmail = "zz.sweep.alumni.parent@edulink.test";
+  const madeUserIds: string[] = [];
+
+  try {
+    const user = await db.user.create({
+      data: { email, name: "Sweep Alumnus", preferredName: "Sweep", prefs: "{}" },
+    });
+    madeUserIds.push(user.id);
+
+    // Left, and gone somewhere this platform has never heard of.
+    const membership = await db.membership.create({
+      data: {
+        userId: user.id,
+        schoolId,
+        role: "STUDENT",
+        status: "ACTIVE",
+        gradeLevel: "5",
+        joinedAt: new Date("2024-04-01T00:00:00Z"),
+        leftAt: new Date("2026-03-20T00:00:00Z"),
+      },
+    });
+
+    const card = await db.reportCard.create({
+      data: {
+        schoolId,
+        classId: klass.id,
+        studentMembershipId: membership.id,
+        title: "ZZ Sweep Term",
+        status: "PUBLISHED",
+        publishedAt: new Date(),
+        fromDateKey: "2026-01-05",
+        toDateKey: "2026-03-01",
+        attendancePresent: 9,
+        attendanceTotal: 10,
+        overallPercentMilli: 84_200,
+      },
+      select: { id: true },
+    });
+    await db.reportCardItem.create({
+      data: { schoolId, reportCardId: card.id, title: "ZZ Sweep Maths", scoreMilli: 90_000 },
+    });
+    await db.earnedBadge.create({
+      data: {
+        schoolId,
+        studentMembershipId: membership.id,
+        badgeId: "zz-sweep",
+        label: "ZZ Sweep Badge",
+      },
+    });
+
+    // NO ROLE AND NO SCHOOL on the session, which is exactly what a leaver has.
+    const alumnus = await mint(email, null, null, "alumnus");
+
+    const page = await hit(alumnus, "/record");
+    results.push({
+      role: "alumnus",
+      path: "/record",
+      status: page.status,
+      expected: 200,
+      ok:
+        page.status === 200 &&
+        page.body.includes("ZZ Sweep Term") &&
+        page.body.includes("ZZ Sweep Badge"),
+      note: "⚠ a pupil who has left every school still reads their own record",
+    });
+
+    // …AND NOTHING ELSE. Each of these is a school's working surface and each
+    // one independently requires a live membership.
+    for (const path of ["/student", "/student/practice", "/bulletin", "/student/grades", "/account"]) {
+      await check(alumnus, path, 307, "⚠ …and the school's own pages are closed to them");
+    }
+
+    // A guardian follows the same child, across a school the child has left.
+    const parent = await db.user.create({
+      data: { email: parentEmail, name: "Sweep Alumni Parent", prefs: "{}" },
+    });
+    madeUserIds.push(parent.id);
+    await db.guardianship.create({
+      data: {
+        parentUserId: parent.id,
+        studentMembershipId: membership.id,
+        studentSchoolId: schoolId,
+        relation: "PARENT",
+        status: "ACTIVE",
+      },
+    });
+
+    const guardian = await mint(parentEmail, null, null, "alumni-parent");
+    const childPage = await hit(guardian, `/record/${user.id}`);
+    results.push({
+      role: "alumni-parent",
+      path: "/record/[child]",
+      status: childPage.status,
+      expected: 200,
+      ok: childPage.status === 200 && childPage.body.includes("ZZ Sweep Term"),
+      note: "⚠ a guardian follows their child through a school the child has LEFT",
+    });
+
+    // A guessed id is a 404, never "that is not your child" — which would
+    // answer a question nobody asking it is entitled to have answered.
+    const stranger = await db.membership.findFirst({
+      where: { schoolId, role: "STUDENT", leftAt: null },
+      select: { userId: true },
+    });
+    if (stranger) {
+      await check(
+        guardian,
+        `/record/${stranger.userId}`,
+        404,
+        "⚠ …and no other family's child",
+      );
+      await check(
+        alumnus,
+        `/record/${stranger.userId}`,
+        404,
+        "⚠ …nor can a pupil read a classmate's",
+      );
+    } else {
+      skip("the alumni cross-family check", "no other pupil at this school");
+    }
+
+    await check(null, "/record", 307, "signed-out record redirects to login");
+  } finally {
+    if (madeUserIds.length > 0) {
+      await db.user.deleteMany({ where: { id: { in: madeUserIds } } });
+    }
+  }
+}
+
 async function staffingAndDuty(schoolId: string) {
   const klass = await db.class.findFirst({
     where: { schoolId, archivedAt: null },
@@ -1184,7 +1335,7 @@ async function main() {
   for (const p of [
     "/student", "/student/work", "/student/grades", "/student/profile",
     "/student/practice", "/student/practice?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
-    "/bulletin/new", "/notifications", "/account", "/account/merge",
+    "/bulletin/new", "/notifications", "/account", "/account/merge", "/record",
   ]) {
     await check(student, p);
   }
@@ -1204,7 +1355,7 @@ async function main() {
   /* ---- parent ---- */
   for (const p of [
     "/parent", "/parent/attendance", "/parent/grades", "/parent/settings", "/remarks",
-    "/notifications", "/account", "/account/merge", "/switch",
+    "/notifications", "/account", "/account/merge", "/switch", "/record",
   ]) {
     await check(parent, p);
   }
@@ -1307,6 +1458,7 @@ async function main() {
 
   await suspension(riverside.id);
   await transfer(riverside.id, oakfield.id);
+  await alumniRecord(riverside.id);
 
   await twoSchoolTeacher(riverside.id, oakfield.id);
   await joinCodeBootstrap(riverside.id);

@@ -68,12 +68,20 @@ CREATE POLICY "Membership_tenant_isolation" ON "Membership"
   -- which schools you belong to before any school is known.
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
+  -- …and to an ACTIVE guardian of the pupil, which is what lets a parent
+  -- follow one child across every school they have attended.
   -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "Membership_readable" ON "Membership"
   FOR SELECT
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
          OR "userId" = current_setting('app.user_id', true)
          OR "studentCode" = current_setting('app.join_code', true)
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "Membership"."id"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          ))
         );
 
 -- Class
@@ -128,8 +136,32 @@ ALTER TABLE "ReportCard" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "ReportCard_tenant_isolation" ON "ReportCard";
 DROP POLICY IF EXISTS "ReportCard_readable" ON "ReportCard";
 CREATE POLICY "ReportCard_tenant_isolation" ON "ReportCard"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
+  -- no school bound at all. A school's operational rows end with the
+  -- membership; a document describing a child does not. See
+  -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
+  -- family who moved to a school not on this platform still open their
+  -- own report cards, attendance figures and badges.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ReportCard_readable" ON "ReportCard"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "ReportCard"."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          )
+          OR EXISTS (
+            SELECT 1 FROM "Membership" m
+             WHERE m."id" = "ReportCard"."studentMembershipId"
+               AND m."userId" = current_setting('app.user_id', true)
+          ))
+        );
 
 -- ReportCardItem
 ALTER TABLE "ReportCardItem" ENABLE ROW LEVEL SECURITY;
@@ -137,8 +169,36 @@ ALTER TABLE "ReportCardItem" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "ReportCardItem_tenant_isolation" ON "ReportCardItem";
 DROP POLICY IF EXISTS "ReportCardItem_readable" ON "ReportCardItem";
 CREATE POLICY "ReportCardItem_tenant_isolation" ON "ReportCardItem"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
+  -- no school bound at all. A school's operational rows end with the
+  -- membership; a document describing a child does not. See
+  -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
+  -- family who moved to a school not on this platform still open their
+  -- own report cards, attendance figures and badges.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ReportCardItem_readable" ON "ReportCardItem"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+            SELECT 1 FROM "ReportCard" rc
+             WHERE rc."id" = "ReportCardItem"."reportCardId"
+               AND (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = rc."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          )
+          OR EXISTS (
+            SELECT 1 FROM "Membership" m
+             WHERE m."id" = rc."studentMembershipId"
+               AND m."userId" = current_setting('app.user_id', true)
+          ))
+          ))
+        );
 
 -- LeaveRequest
 ALTER TABLE "LeaveRequest" ENABLE ROW LEVEL SECURITY;
@@ -164,8 +224,32 @@ ALTER TABLE "AttendanceRecord" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "AttendanceRecord_tenant_isolation" ON "AttendanceRecord";
 DROP POLICY IF EXISTS "AttendanceRecord_readable" ON "AttendanceRecord";
 CREATE POLICY "AttendanceRecord_tenant_isolation" ON "AttendanceRecord"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
+  -- no school bound at all. A school's operational rows end with the
+  -- membership; a document describing a child does not. See
+  -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
+  -- family who moved to a school not on this platform still open their
+  -- own report cards, attendance figures and badges.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "AttendanceRecord_readable" ON "AttendanceRecord"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "AttendanceRecord"."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          )
+          OR EXISTS (
+            SELECT 1 FROM "Membership" m
+             WHERE m."id" = "AttendanceRecord"."studentMembershipId"
+               AND m."userId" = current_setting('app.user_id', true)
+          ))
+        );
 
 -- Assignment
 ALTER TABLE "Assignment" ENABLE ROW LEVEL SECURITY;
@@ -364,8 +448,32 @@ ALTER TABLE "EarnedBadge" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "EarnedBadge_tenant_isolation" ON "EarnedBadge";
 DROP POLICY IF EXISTS "EarnedBadge_readable" ON "EarnedBadge";
 CREATE POLICY "EarnedBadge_tenant_isolation" ON "EarnedBadge"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
+  -- no school bound at all. A school's operational rows end with the
+  -- membership; a document describing a child does not. See
+  -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
+  -- family who moved to a school not on this platform still open their
+  -- own report cards, attendance figures and badges.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "EarnedBadge_readable" ON "EarnedBadge"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "EarnedBadge"."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          )
+          OR EXISTS (
+            SELECT 1 FROM "Membership" m
+             WHERE m."id" = "EarnedBadge"."studentMembershipId"
+               AND m."userId" = current_setting('app.user_id', true)
+          ))
+        );
 
 -- QuizAttempt
 ALTER TABLE "QuizAttempt" ENABLE ROW LEVEL SECURITY;
@@ -486,6 +594,8 @@ CREATE POLICY "SchoolRecord_tenant_isolation" ON "SchoolRecord"
   -- crosses schools, on one table that holds a summary rather than a
   -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,
   -- so it cannot be used to browse.
+  -- …and to an ACTIVE guardian of the pupil, which is what lets a parent
+  -- follow one child across every school they have attended.
   -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
   FOR SELECT
@@ -498,6 +608,12 @@ CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
               AND m."status" = 'ACTIVE'
               AND m."leftAt" IS NULL
          ))
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "SchoolRecord"."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          ))
         );
 
 -- Tables with no school policy, each because it holds no school-owned rows:
