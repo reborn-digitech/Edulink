@@ -35,6 +35,8 @@ async function main() {
     brandPrimary: "#2563eb",
     passwordHash,
     domain: "riverside.school",
+    gradeLow: "3",
+    gradeHigh: "6",
     classes: [
       { name: "Grade 5 · Sunflower", subject: "Form group", gradeLevel: "5", color: "#f59e0b" },
       { name: "Grade 5 · Willow", subject: "Form group", gradeLevel: "5", color: "#10b981" },
@@ -61,6 +63,8 @@ async function main() {
     brandPrimary: "#7e22ce",
     passwordHash,
     domain: "oakfield.school",
+    gradeLow: "5",
+    gradeHigh: "8",
     classes: [{ name: "Homeroom 7B", subject: "Homeroom", gradeLevel: "7", color: "#ec4899" }],
     teachers: [
       { name: "Sam Whitfield", email: "sam@oakfield.school", title: "Homeroom teacher", subjects: ["Science"] },
@@ -252,6 +256,16 @@ type SeedSchoolInput = {
   brandPrimary: string;
   passwordHash: string;
   domain: string;
+  /**
+   * The grades this school actually teaches.
+   *
+   * SET, rather than left null, because the operator area flags a school with
+   * no range as "Needs setup" — and a freshly seeded install showed that
+   * warning against both of its schools, which is the app telling the truth
+   * about a gap the SEED left. Found by walking /root in a browser.
+   */
+  gradeLow: string;
+  gradeHigh: string;
   classes: { name: string; subject: string; gradeLevel: string; color: string }[];
   teachers: { name: string; email: string; title: string; subjects: string[] }[];
   students: string[];
@@ -267,6 +281,8 @@ async function createSchool(input: SeedSchoolInput) {
       city: input.city,
       country: input.country,
       timezone: input.timezone,
+      gradeLow: input.gradeLow,
+      gradeHigh: input.gradeHigh,
       brandPrimary: input.brandPrimary,
       verifiedAt: new Date(),
       onboardingState: "{}",

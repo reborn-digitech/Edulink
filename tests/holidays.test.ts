@@ -55,6 +55,15 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
 
 let schoolA = "";
 let schoolB = "";
+/**
+ * The users this file creates, so `afterAll` can remove them.
+ *
+ * A User carries no schoolId, so deleting the school cascades the memberships
+ * and leaves the PEOPLE behind — three per run, for as long as this file has
+ * existed. Found by counting rows after a browser walkthrough and wondering why
+ * the total kept growing.
+ */
+let madeUserIds: string[] = [];
 let adminA: ActiveContext;
 let adminB: ActiveContext;
 let teacherA: ActiveContext;
@@ -91,6 +100,8 @@ beforeAll(async () => {
     data: { email: `hol-teacher-${Date.now()}@example.test`, name: "Teacher", passwordHash: "x" },
   });
 
+  madeUserIds = [userA.id, userB.id, userT.id];
+
   adminA = ctx({ userId: userA.id, schoolId: schoolA, role: "ADMIN" });
   adminB = ctx({ userId: userB.id, schoolId: schoolB, role: "ADMIN" });
   teacherA = ctx({ userId: userT.id, schoolId: schoolA, role: "TEACHER" });
@@ -105,6 +116,7 @@ afterAll(async () => {
   await db.holiday.deleteMany({ where: { schoolId: { in: [schoolA, schoolB] } } });
   await db.academicYear.deleteMany({ where: { schoolId: { in: [schoolA, schoolB] } } });
   await db.school.deleteMany({ where: { id: { in: [schoolA, schoolB] } } });
+  await db.user.deleteMany({ where: { id: { in: madeUserIds } } });
   await db.$disconnect();
 });
 

@@ -167,7 +167,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 229 route/role/negative combinations
+mints a real session per role, requests all 234 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -572,6 +572,15 @@ deleted the guard, the refusal became an action, and the run recorded a seeded
 teacher as having left, wrote him a certificate, and broke four suites in files
 nobody had edited. **The subject of a negative test has to be disposable too.**
 It is the case most likely to actually run.
+
+**And the fixture rule has a second half nobody was applying: a User cascades
+from nothing.** `holidays.test.ts` and `quiz.test.ts` both created users, then
+cleaned up by deleting their SCHOOL — which cascades the memberships and leaves
+the people. Six users per `npm test`, every run, since those files were written.
+Nothing failed, which is why it lasted: the rows are inert. It surfaced only
+when a row count taken during a browser walkthrough kept climbing. Both suites
+now remember the ids they create and delete them, and the count is stable across
+consecutive runs.
 
 **And one that hid behind row order for months:** `grading.test.ts` and
 `files.test.ts` both picked a class with `findFirst` and no `orderBy`, from a
@@ -1218,7 +1227,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 229 checks in
+**Every route referenced by the navigation renders.** All 234 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1380,6 +1389,47 @@ today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
 
+### Onboarding a school by hand, and the five things it found
+
+**The first time anybody clicked the whole chain.** Superuser → create a school
+→ invite its first admin → accept → create a class with a section → invite a
+teacher pinned to that class → accept → a pupil self-joins with the class code →
+the teacher takes the register. In a browser, against a production build.
+
+**It works, end to end.** The things worth naming because they were claims until
+now: the grade range a superuser types is exactly what the admin's class form
+offers (`3` to `10`, nothing else, with "This school teaches 3 to 10" under it);
+`app.join_code` resolves a brand-new school's class code with no session at all;
+the register saved against the school's own timezone (Asia/Kolkata dated it
+August 5 while Riverside, in London, said August 4); and a pupil with no marks
+shows `—` for attendance rather than 0%.
+
+**Five things were wrong, all found by looking rather than by any test.** Every
+one was a healthy 200 the whole time — which is why the sweep could not see
+them, and why the five checks added for them read the body rather than the
+status.
+
+| What | Why it mattered |
+|---|---|
+| **No language switcher on any signed-out page** | `setLocale` has always written the cookie without a session — its own comment says it exists "so the login page can be read in the language the reader picked". The page is fully translated. Only the control was missing, so a shared school computer left the next reader stranded in the previous person's language with no session to change it. `/login` now carries it. |
+| **A school's FIRST invitation named neither sender nor recipient** | The email was shown only when there was an inviter, and `superuser.ts` writes `createdByMembershipId: null` on purpose. So exactly one invitation in the system fell through to a bare "Set a password and you are in" — the one that starts a school, from somebody the recipient has never met, and the only one they cannot check was meant for them. |
+| **`/switch` omitted the operator area** | The page titled *"Where would you like to go?"* offered a superuser every destination except the one only they can reach. The redirect to `/root` fires only for an operator with *no* school; one who also runs a school got the list without it. A side-rail link was added last release and this page was missed. |
+| **`/join` silently bounced a signed-in visitor** | A pupil sent to join on a teacher's laptop followed "join with a code" from the login page and landed on the teacher's dashboard, with nothing saying why. §7 forbids dead ends; a silent redirect to the wrong person's home is one. It now says who is signed in and offers "Sign out and join". |
+| **The seed left both schools with no grade range** | So a freshly seeded install showed "Needs setup" against both of them in the operator area — the app telling the truth about a gap the *seed* left. Riverside is 3–6 and Oakfield 5–8 now. |
+
+Also fixed in passing: `/root/new` said *"Creating it does not give it anybody
+to run it"*, which is not a sentence.
+
+**Two accepted as correct, recorded so they are not re-found:** accepting an
+invitation while signed in as somebody else replaces the session (the invitation
+is the credential — but it now says so before you press the button), and
+`/join/student` and `/join/parent` still redirect a signed-in visitor, because
+they are reached from `/join`, which is the screen that explains it.
+
+**Not fixed, and small:** `(required)` on form fields is untranslated, and the
+native date input follows the browser's locale rather than the school's, so an
+Indian school sees `mm/dd/yyyy`. Both are noted under Known issues.
+
 ### The role-by-role audit, and the eight things it found
 
 Walking each role's journey end to end — how they get in, what they land on,
@@ -1440,6 +1490,15 @@ next run rather than in a role audit six months later.
   npm run db:grants
   ```
 
+- **`(required)` and a handful of form-field words are untranslated.** i18n
+  coverage is partial and documented as such, but this one shows up on the login
+  page, which IS translated — so a Marathi reader meets one English word in the
+  middle of a Marathi form. Found by switching the language on `/login`.
+- **A native date input follows the BROWSER's locale, not the school's.** A
+  school in Asia/Kolkata still gets `mm/dd/yyyy` on the pupil-join birthday
+  field if the browser is en-US. `<input type="date">` gives no control over
+  this; fixing it means replacing it with three selects, which is its own change
+  and a worse experience for everybody whose browser is already right.
 - **`isTeachingDay` is one school's week, not a setting.** Mon–Sat is hardcoded,
   in one function, on purpose: making it per-school later is a change to that
   body plus a column on `School`, rather than a hunt through inlined

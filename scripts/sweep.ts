@@ -406,6 +406,121 @@ async function everyNavLink(schoolId: string, actorFor: (role: Role) => Promise<
   }
 }
 
+
+/**
+ * ⚠ THE SIGNPOSTS SOMEBODY NEEDS BEFORE THEY HAVE A SESSION — or while they
+ * have the WRONG one.
+ *
+ * Every check here exists because walking the onboarding in a browser found the
+ * screen saying too little. They are content checks rather than status checks:
+ * each of these pages was a healthy 200 the whole time it was unusable, which is
+ * exactly the class of bug a status sweep cannot see.
+ */
+async function onboardingSignposts(schoolId: string) {
+  // 1. A reader who cannot read the page can change the language WITHOUT a
+  //    session. `setLocale` always wrote the cookie; only the control was
+  //    missing, and only on the page that most needs it.
+  const login = await hit(null, "/login");
+  results.push({
+    role: "anonymous",
+    path: "/login",
+    status: login.status,
+    expected: 200,
+    ok: login.status === 200 && login.body.includes("मराठी") && login.body.includes("हिन्दी"),
+    note: "⚠ the language switcher is reachable with no session",
+  });
+
+  // 2. A school's FIRST invitation names its recipient. Operator invites carry
+  //    `createdByMembershipId: null`, and the page used to show the email only
+  //    when there was a sender — so the one invitation that starts a school
+  //    said neither who sent it nor who it was for.
+  const token = randomBytes(32).toString("base64url");
+  const invite = await db.invite.create({
+    data: {
+      schoolId,
+      email: "zz.sweep.first@edulink.test",
+      role: "ADMIN",
+      tokenHash: createHash("sha256").update(token).digest("hex"),
+      createdByMembershipId: null,
+      expiresAt: new Date(Date.now() + 86_400_000),
+      status: "PENDING",
+    },
+    select: { id: true },
+  });
+
+  try {
+    const page = await hit(null, `/invite/${token}`);
+    results.push({
+      role: "anonymous",
+      path: "/invite/[operator-token]",
+      status: page.status,
+      expected: 200,
+      ok: page.status === 200 && page.body.includes("zz.sweep.first@edulink.test"),
+      note: "⚠ an invitation with no sender still names who it is for",
+    });
+  } finally {
+    await db.invite.deleteMany({ where: { id: invite.id } });
+  }
+}
+
+/**
+ * ⚠ AND THE SIGNPOSTS FOR SOMEBODY HOLDING THE WRONG SESSION.
+ *
+ * A shared school laptop is the ordinary case, not the edge one.
+ */
+async function sharedDeviceSignposts(schoolId: string) {
+  const staff = await db.membership.findFirst({
+    where: { schoolId, role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { id: true, email: true } } },
+  });
+  if (!staff?.user.email) {
+    skip("the shared-device signposts", `no teacher with an email at ${schoolId}`);
+    return;
+  }
+
+  const actor = await mint(staff.user.email, "TEACHER", schoolId, "shared-device");
+
+  // /join used to redirect a signed-in visitor to THEIR dashboard, silently.
+  // A pupil sent to join on a teacher's laptop landed on the teacher's home
+  // with nothing saying why — a dead end, which §7 forbids.
+  const join = await hit(actor, "/join");
+  results.push({
+    role: "shared-device",
+    path: "/join",
+    status: join.status,
+    expected: 200,
+    ok: join.status === 200 && join.body.includes("You are signed in as"),
+    note: "⚠ a signed-in visitor is told, not silently bounced",
+  });
+
+  // The operator entry on the page titled "Where would you like to go?" —
+  // present for whoever runs the server, absent for everybody else.
+  const plainSwitch = await hit(actor, "/switch");
+  results.push({
+    role: "shared-device",
+    path: "/switch",
+    status: plainSwitch.status,
+    expected: 200,
+    ok: plainSwitch.status === 200 && !plainSwitch.body.includes("Server administration"),
+    note: "⚠ …and an ordinary teacher is offered no operator area",
+  });
+
+  try {
+    await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: true } });
+    const asOperator = await hit(actor, "/switch");
+    results.push({
+      role: "shared-device",
+      path: "/switch",
+      status: asOperator.status,
+      expected: 200,
+      ok: asOperator.status === 200 && asOperator.body.includes("Server administration"),
+      note: "⚠ …while a superuser with a school role IS, on the page that asks where to go",
+    });
+  } finally {
+    await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
+  }
+}
+
 /** The operator area: reachable by a superuser, invisible to everybody else. */
 async function operatorArea() {
   const staff = await db.membership.findFirst({
@@ -1034,6 +1149,8 @@ async function main() {
   await leaveAndPrincipal(riverside.id);
   await staffingAndDuty(riverside.id);
   await operatorArea();
+  await onboardingSignposts(riverside.id);
+  await sharedDeviceSignposts(riverside.id);
 
   /**
    * Every link the app draws, followed as the role that is shown it.

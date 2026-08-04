@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { CaretRightIcon } from "@phosphor-icons/react/ssr";
+import { BuildingsIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
 import { getSession, listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { Wordmark } from "@/components/brand";
@@ -95,6 +95,34 @@ export default async function SwitchPage() {
           </li>
         )}
       </ul>
+
+      {/*
+        THE ONE PLACE ONLY THEY CAN GO, on the page that asks where they would
+        like to go. The redirect to /root at the top of this file fires only for
+        an operator with NO school context; one who also runs a school — the
+        ordinary case on a small deployment — reached this list and found every
+        destination except the operator area. A side-rail link was added for
+        them last release and this page, which is literally titled "Where would
+        you like to go?", was missed.
+
+        Set apart from the school cards on purpose: it is not a school, and
+        picking it does not switch role. It leaves the school entirely.
+      */}
+      {session.user.isSuperuser && (
+        <Link
+          href="/root"
+          className="mt-3 flex items-center gap-3 rounded-[--radius-md] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-surface-muted text-fg-muted">
+            <BuildingsIcon weight="duotone" className="size-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate font-semibold text-fg">Server administration</span>
+            <span className="block text-sm text-fg-muted">Every school on this server</span>
+          </span>
+          <CaretRightIcon className="size-5 shrink-0 text-fg-subtle" aria-hidden="true" />
+        </Link>
+      )}
 
       <form action="/api/auth/logout" method="post" className="mt-8">
         <Button type="submit" variant="ghost" block>

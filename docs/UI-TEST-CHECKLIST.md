@@ -966,6 +966,79 @@ that is paused, never an account.
   reason is gone, and he gets a notification
 - ☐ Tom reloads → he is back in his school with everything where he left it
 
+## 12m0. THE WHOLE CHAIN, ONCE — onboarding a school from nothing
+
+**Do this one first, and do it in a browser against `npm start`.** Every other
+section here tests a screen; this tests the joins between them, and it is where
+five bugs were found that no test could see because every page involved was a
+healthy 200 throughout.
+
+Budget twenty minutes. Use a school name you will recognise and delete after.
+
+### The operator sets it up
+
+- ☐ `npm run superuser -- priya@riverside.school`, log in as Priya
+- ☐ **⚠️** The role switcher offers **Server administration** alongside her two
+  school roles. The page asks where you would like to go; the operator area is a
+  place you can go
+- ☐ `/root` → **Add a school** → name, contact email, grade range **3 to 10**,
+  timezone **Asia/Kolkata** → created, with a join code
+- ☐ **⚠️** Back on `/root`, the new school does **not** say *Needs setup* — you
+  gave it a grade range. Neither do the seeded ones
+- ☐ On the school page, the **Details** form is filled in with what you typed,
+  not blank. (A blank form here would wipe the school on Save)
+- ☐ Invite an **Administrator** by email
+
+### The admin arrives
+
+- ☐ Open the invite link from `/dev/mailbox` (dev) or the `OutboundEmail` table
+  (production — the field is `text`, not `body`)
+- ☐ **⚠️ THE ONE THAT WAS BROKEN.** The page names **who the invitation is for**
+  — the email address — even though no human sent it. This is the only
+  invitation in the system with no sender, and it used to show neither
+- ☐ **⚠️** If you are still signed in as somebody else, it says so, and warns
+  that accepting will sign you out
+- ☐ Accept → you land on the **new school's** overview, checklist at 0 of 6
+- ☐ **⚠️** The date in the header is the school's **own timezone**. Compare with
+  Riverside in another tab: they can differ by a day
+- ☐ **⚠️** No *Server administration* in this admin's side rail — they are not
+  the operator
+
+### Classes, and the grade range doing its job
+
+- ☐ Create a class → **⚠️** the Grade dropdown offers **exactly 3 to 10** and
+  says "This school teaches 3 to 10". Not 1–12, not a free text box
+- ☐ Give it a **section** (A) → created, with its own class join code
+- ☐ Invite a **teacher**, assigning them to that class in the same step
+- ☐ Accept as the teacher → **⚠️** their invite page names both the sender and
+  the recipient, unlike the operator's
+- ☐ They land on **Today** with **1 register still to take** — the class from
+  their invitation is already theirs
+
+### A pupil joins, and the register closes the loop
+
+- ☐ Sign out. From the login page follow **join with a code**
+- ☐ **⚠️** If you did NOT sign out, `/join` says who is signed in and offers
+  **Sign out and join**. It used to bounce you to their dashboard in silence
+- ☐ Enter the **class** code → **⚠️** it resolves the school and class before you
+  are anybody. This is the join-code bootstrap; it works with no session
+- ☐ Finish the four steps → you land on the pupil dashboard with a **login
+  handle** shown once. Save it
+- ☐ **⚠️** Attendance reads `—`, not `0%`. Nobody has marked them yet
+- ☐ Log back in as the teacher → **Register** → the pupil is on it → mark them
+  present → **⚠️** reload: it stuck
+
+### The language trap
+
+- ☐ On `/login`, **⚠️** there is a language switcher. Pick **मराठी** → the page
+  is Marathi **with no session**
+- ☐ **⚠️** The switcher is still visible, so you can get back. This is the whole
+  point: a shared school computer keeps the last person's choice, and the next
+  person must not be stranded in a language they cannot read
+- ☐ Switch back to English
+
+---
+
 ## 12m. Whoever runs the server (`/root`)
 
 Nobody has this in the seed. Grant it first:
@@ -1378,7 +1451,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 229 checks in `npm run sweep`
+Every route in the navigation now renders — all 234 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every
@@ -1400,6 +1473,11 @@ authentication, the operator area and its server log (§12m), class sections and
 register duty (§12n), staff leave (§12o), report cards (§12p), the principal's
 dashboard (§12q), the expert's profile (§12r) and a pupil leaving school with
 their record (§12s).
+
+**§12m0 is new and should be walked first.** It is the only section that tests
+the JOINS between screens rather than a screen, and the first time anybody
+walked it, it turned up five bugs — every one of them on a page that was
+returning 200 the whole time.
 
 These are absent rather than linked-and-broken. If you find a nav link that
 404s or 500s, that is a bug now, not a deliberate gap — and check it while

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import {
   ArrowRightIcon,
   GraduationCapIcon,
@@ -9,8 +8,9 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { Wordmark } from "@/components/brand";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
-import { ROLE_HOME } from "@/lib/constants";
+import { ROLE_HOME, type Role } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Join your school",
@@ -25,8 +25,22 @@ export default async function JoinPage({
   const session = await getSession();
   const { first } = await searchParams;
 
-  // Already signed in with somewhere to be? Don't make them pick again.
-  if (session?.role) redirect(ROLE_HOME[session.role]);
+  /**
+   * SIGNED IN ALREADY? SAY SO — do not silently bounce them.
+   *
+   * This used to `redirect(ROLE_HOME[role])`, and the case that exposes it is
+   * the ordinary one in a school: a shared laptop with a teacher still signed
+   * in, and a child sent to join with a code. They followed "join with a code"
+   * from the login page and landed on somebody else's dashboard, with nothing
+   * saying why and no way forward. §7 says no dead ends; a silent redirect to
+   * the wrong person's home is one.
+   *
+   * The deeper links (/join/student, /join/parent) still redirect, because they
+   * are reached FROM here and this is the screen that explains it.
+   */
+  const signedInAs = session?.role
+    ? (session.user.preferredName ?? session.user.name)
+    : null;
 
   return (
     <div className="min-h-safe bg-bg">
@@ -52,6 +66,28 @@ export default async function JoinPage({
             ? "Your account is ready — now connect it to a school or a child."
             : "Pick the one that sounds like you."}
         </p>
+
+        {signedInAs && (
+          <div className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4">
+            <p className="text-sm font-semibold text-fg">
+              You are signed in as {signedInAs}
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-fg-muted">
+              Joining with a code adds a NEW person to a school. If this is not you — if you are a
+              pupil using a teacher&rsquo;s laptop — sign out first.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <form action="/api/auth/logout" method="post">
+                <Button type="submit" size="sm" variant="secondary">
+                  Sign out and join
+                </Button>
+              </form>
+              <Button asChild size="sm" variant="ghost">
+                <Link href={ROLE_HOME[session!.role as Role]}>Back to my dashboard</Link>
+              </Button>
+            </div>
+          </div>
+        )}
 
         <div className="mt-8 space-y-3">
           <JoinOption

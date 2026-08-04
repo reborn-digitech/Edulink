@@ -21,7 +21,7 @@ export default async function NewSchoolPage() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Add a school</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          Creating it does not give it anybody to run it. Invite an administrator afterwards — that
+          Creating a school does not give it anybody to run it. Invite an administrator afterwards — that
           is the next screen.
         </p>
       </div>

@@ -224,6 +224,8 @@ describe("badge ids", () => {
 
 let schoolId = "";
 let otherSchoolId = "";
+/** Users this file creates, removed in `afterAll` — see the note in `mk`. */
+let madeUserIds: string[] = [];
 let topicId = "";
 let student: ActiveContext;
 let otherStudent: ActiveContext;
@@ -259,6 +261,10 @@ beforeAll(async () => {
     const user = await db.user.create({
       data: { email, name: email, passwordHash: "x" },
     });
+    // Remembered so `afterAll` can remove them. Deleting the school cascades
+    // the membership and leaves the USER behind — a User carries no schoolId,
+    // so nothing cascades it. Three per run, every run, until now.
+    madeUserIds.push(user.id);
     const membership = await db.membership.create({
       data: { userId: user.id, schoolId: sid, role, status: "ACTIVE" },
     });
@@ -315,6 +321,7 @@ afterAll(async () => {
   await db.earnedBadge.deleteMany({ where: { schoolId: { in: [schoolId, otherSchoolId] } } });
   await db.quizTopic.deleteMany({ where: { slug: SLUG } });
   await db.school.deleteMany({ where: { id: { in: [schoolId, otherSchoolId] } } });
+  await db.user.deleteMany({ where: { id: { in: madeUserIds } } });
   await db.$disconnect();
 });
 

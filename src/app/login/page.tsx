@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { LoginForm } from "./form";
+import { LanguageSwitch } from "@/components/language-switch";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
@@ -54,6 +55,24 @@ export default async function LoginPage({
               {t("login.registerHere")}
             </Link>
           </p>
+
+          {/*
+            THE ONE PAGE THAT MOST NEEDS THIS, and it was the one page without
+            it. `setLocale` has always written the cookie whether or not there
+            is a session — its own comment says it exists "so the login page can
+            be read in the language the reader picked on the way in" — and this
+            page is fully translated. What was missing was the control: the
+            switcher was mounted only inside the signed-in shell, so a reader
+            who arrived to a page in a language they do not read had no way to
+            change it, and no session with which to try.
+
+            The case is ordinary rather than exotic: a shared school computer
+            keeps the last person's cookie, and the next person meets Marathi.
+            Found by opening /login in a browser and being unable to read it.
+          */}
+          <div className="mt-8 flex justify-center border-t border-border pt-6">
+            <LanguageSwitch />
+          </div>
         </div>
       </div>
 
