@@ -147,8 +147,24 @@ beforeAll(async () => {
     role: "PRINCIPAL",
   });
 
-  const klass = await db.class.findFirstOrThrow({
-    where: { schoolId: riversideId, archivedAt: null },
+  // A class of this suite's OWN. Nothing here touches a seeded one.
+  //
+  // THE SECOND TIME THIS FILE BROKE FOUR OTHERS. First it DELETED a seeded
+  // ClassTeacher row to get a teacher who was not on the class; then, fixed, it
+  // still ADDED Tom as class teacher of the first seeded class and never took
+  // him off — so `bulletin` and `files`, which use Tom as "a teacher of a
+  // different class", started letting him read what he should not. Adding is as
+  // destructive as deleting when the row is shared. The rule that actually holds
+  // is: make your own fixtures, touch nobody else's.
+  const klass = await db.class.upsert({
+    where: { joinCode: "ZZZ-DUTY" },
+    create: {
+      schoolId: riversideId,
+      name: "ZZ Register Duty Test Class",
+      gradeLevel: "5",
+      joinCode: "ZZZ-DUTY",
+    },
+    update: {},
   });
   classId = klass.id;
 
@@ -210,9 +226,11 @@ afterEach(async () => {
 afterAll(async () => {
   await db.attendanceCover.deleteMany({ where: { schoolId: { in: [riversideId, oakfieldId] } } });
   const made = [PRINCIPAL_EMAIL, SPARE_TEACHER_EMAIL];
+  await db.classTeacher.deleteMany({ where: { classId } });
   await db.classTeacher.deleteMany({ where: { teacher: { user: { email: { in: made } } } } });
   await db.membership.deleteMany({ where: { user: { email: { in: made } } } });
   await db.user.deleteMany({ where: { email: { in: made } } });
+  await db.class.deleteMany({ where: { id: classId } });
   await db.$disconnect();
 });
 
