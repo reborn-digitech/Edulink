@@ -489,6 +489,51 @@ async function onboardingSignposts(schoolId: string) {
   } finally {
     await db.invite.deleteMany({ where: { id: invite.id } });
   }
+
+  // 3. AN INVITATION TO AN ADDRESS THAT ALREADY HAS AN ACCOUNT IS A TRANSFER,
+  //    and the page has to say so. `acceptInvite` has always attached the new
+  //    school to the existing account rather than minting a second one — which
+  //    is what stops a transferring pupil stranding their leaving certificate —
+  //    but the page asked them to choose a password it then threw away. A 200
+  //    proves neither half, so this reads the body for both.
+  const existing = await db.membership.findFirst({
+    where: { schoolId, role: "TEACHER", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { email: true, passwordHash: true } } },
+  });
+
+  if (!existing?.user.email || !existing.user.passwordHash) {
+    skip("the transfer-by-invitation page", "no staff account with a password to invite");
+  } else {
+    const transferToken = randomBytes(32).toString("base64url");
+    const transferInvite = await db.invite.create({
+      data: {
+        schoolId,
+        email: existing.user.email,
+        role: "TEACHER",
+        tokenHash: createHash("sha256").update(transferToken).digest("hex"),
+        expiresAt: new Date(Date.now() + 86_400_000),
+        status: "PENDING",
+      },
+      select: { id: true },
+    });
+
+    try {
+      const page = await hit(null, `/invite/${transferToken}`);
+      results.push({
+        role: "anonymous",
+        path: "/invite/[known-address]",
+        status: page.status,
+        expected: 200,
+        ok:
+          page.status === 200 &&
+          page.body.includes("your password does not change") &&
+          !page.body.includes("Choose a password"),
+        note: "⚠ an invitation to a known address adds a school and asks for no password",
+      });
+    } finally {
+      await db.invite.deleteMany({ where: { id: transferInvite.id } });
+    }
+  }
 }
 
 /**

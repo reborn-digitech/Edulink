@@ -12,6 +12,7 @@ import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { RowActions } from "./row-actions";
 import { LeavingActions } from "./leaving-actions";
+import { RemoveActions } from "./remove-actions";
 import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
@@ -276,6 +277,16 @@ export default async function DirectoryPage({
                           name={displayName}
                           hasLeft={member.leftAt !== null}
                         />
+                      )}
+                      {/*
+                        The third verb, offered only where it can apply.
+                        Somebody already recorded as having left has a document
+                        with this school's name on it, so removing them is
+                        refused server-side anyway — showing the button there
+                        would be offering an action that always fails.
+                      */}
+                      {!isSelf && role === "STUDENT" && !member.leftAt && (
+                        <RemoveActions membershipId={member.id} name={displayName} />
                       )}
                     </div>
                   </Card>

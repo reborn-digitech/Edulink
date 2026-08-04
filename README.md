@@ -1213,6 +1213,17 @@ One line each, with the default rejected.
   calendar and the leave queue, and is turned away from the register, the
   directory and class creation.
 
+  **A transfer by invitation**, walked in a browser: a pupil with a Riverside
+  leaving certificate opened an Oakfield invitation sent to the address they
+  already use, met a page reading *Add Oakfield Academy to your account — your
+  password does not change* with no password field, accepted, and landed on a
+  profile showing Riverside with its dates and 95.3% attendance. One account,
+  two schools, nothing merged. **Removing a pupil**, also walked: the refusal
+  fired on a pupil with one register mark and said *1 day on a register*
+  alongside the pointer to *Left*; the mis-added pupil went in one click, the
+  headline count dropped 26 → 25, their account survived with zero memberships,
+  and the audit line was there afterwards.
+
   **Joining two accounts** (`account-merge.ts`), **walked in a browser** rather
   than reasoned about: a pupil with a Riverside leaving certificate and a fresh
   Oakfield account signed in as the new one, saw no previous school on their
@@ -1349,10 +1360,14 @@ navigation" means the actual list rather than one somebody maintained by hand.
   mutation-tested, but nobody has typed a real code into a browser.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
-- **Joining two accounts repairs a fork; nothing prevents one.** Every transfer
-  still produces two accounts unless the family knows to bring the old one
-  across. Closing that means letting a signed-in person add a school with a join
-  code, which changes what joining means — see the section below.
+- **A pupil who joined with a CODE rather than an invitation still forks.**
+  `joinAsStudent` mints a new account every time, and a handle account has no
+  real address for a new school to invite. The invitation path is the one that
+  does not fork, and the account merge is the repair for the one that does — so
+  a school transferring a pupil should invite them by email. Letting a
+  signed-in person add a school with a join code would close the gap and is
+  deliberately not built: it changes what joining MEANS, since an admin at one
+  school could become a pupil at another in one click.
 
 - **The account page is behind the role gate.** `/account` lives inside the
   signed-in shell, which needs an active role, so somebody with no remaining
@@ -1408,6 +1423,63 @@ inside it stays, and the comment says why: deleting it keeps every check green
 today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
+
+### A transfer, done properly: the new school invites, the old school records
+
+**THE INVITATION IS THE PATH THAT DOES NOT FORK, and it already half-worked.**
+`acceptInvite` has always looked the address up and attached a membership to the
+EXISTING account rather than minting a second one. So for any pupil with a real
+email, a transfer is: the new school invites them at the address they already
+use, the old school records them as having left, and the leaving certificate is
+already on the account they sign in with. **There is nothing to merge.** The
+merge below is for the case this one does not cover.
+
+**What was wrong was the conversation, not the code.** The page said "Join
+{school}. Set a password and you are in", and the form demanded one — which
+`acceptInvite` then kept out of the database, because overwriting an existing
+password is not something an invitation may do. So a transferring child typed a
+new password, was signed in immediately, and found out **weeks later**, when the
+session had gone and they tried the password they chose, that it had never been
+stored. A lockout with a delay on it, on a child at a school that has just met
+them. Four tests reproduce it; the first two are red without the fix.
+
+Now: an invitation to an address that already has an account says so, drops the
+password field, reads *Add {school} to your account — your password does not
+change*, and tells a transferring family in as many words that this is the right
+way to move schools because the record travels with the account. Supplying a
+password there is **refused** rather than ignored — "we took your input and did
+nothing with it" is the failure being removed, and accepting it quietly would
+put it straight back. A brand-new account still requires one, and always will:
+an account with no password is one nobody can ever sign into again.
+
+**Removing somebody, which is the third verb.** A school needs to say three
+different things and they are not interchangeable — PAUSE (not for now, they are
+coming back), LEFT (gone to another school, here is a certificate), and REMOVE
+(they were never here: a duplicate, a typo, the wrong school). Before this the
+third had to be spelled as one of the first two, and both lie: pausing leaves a
+person in the directory forever implying they might return, and recording them
+as having LEFT writes a leaving certificate for a child who never attended.
+
+So `removeMembership` **deletes**, and it is the only thing in this codebase that
+does. The justification is narrow and does not generalise: a tombstone is for
+somebody who WAS here, and the entire precondition is that they were not.
+
+**The precondition is the safety, not the confirmation dialog.** It refuses the
+moment there is a register mark, a grade, a piece of work handed in or a report
+card — the very things a leaving certificate summarises, so "there is history"
+and "the answer is LEFT" are the same sentence and the error says so. **Every
+blocker is reported at once**, with counts: an admin told "they have attendance",
+who clears it and comes back to be told about marks, has been given the answer
+twice and helped neither time. Pupils only, never yourself, never another
+school's row, and the audit line is written **after** the row is gone — it is the
+only remaining evidence the person was ever on the roll.
+
+Nine mutations, all caught. One survived first: deleting the self-removal guard
+changed no outcome, because an admin's own row is an ADMIN row and the
+pupils-only guard refuses it anyway. It earns its place on the SENTENCE alone —
+the message it replaces tells an admin to pause themselves, which
+`suspendMembership` then refuses as the likeliest way to strand a school. So the
+test asserts the words, which is the only thing that could have shown it.
 
 ### Joining two accounts, which is what a transfer actually leaves behind
 
@@ -1483,11 +1555,13 @@ the entire suite, because the test that was meant to catch it changed the STORED
 hash, which fails for any submitted value. The test that kills it submits the
 wrong password against an account whose password is still right.
 
-**Still forked by default.** This repairs a fork; it does not prevent one. A
-signed-in person meeting `/join` is still told to sign out and start again,
-because letting them add a school to the account they already hold is a change
-to what joining MEANS — an admin at one school could become a pupil at another
-in one click — and that is a decision rather than a follow-up.
+**When it is needed, and when it is not.** A pupil invited by email never forks
+in the first place — see the section above, which is the path a school should
+use. This is the repair for the one that does: a child who joined with a class
+CODE, which mints a fresh account by design and gives them a handle no school
+can invite. A signed-in person meeting `/join` is still told to sign out and
+start again, because letting them add a school to an account they already hold
+changes what joining MEANS, and that is a decision rather than a follow-up.
 
 ### Dates, and the last English word
 

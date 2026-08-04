@@ -16,12 +16,20 @@ export function AcceptForm({
   defaultName,
   defaultSubjects,
   role,
+  hasAccount,
   className,
 }: {
   token: string;
   defaultName: string;
   defaultSubjects: string[];
   role: Role;
+  /**
+   * The invited address already has an account, so this is a TRANSFER rather
+   * than a sign-up: no password is asked for, because theirs does not change.
+   * Resolved on the server — the client must not be the thing that decides
+   * whether a credential is needed.
+   */
+  hasAccount: boolean;
   className?: string;
 }) {
   const router = useRouter();
@@ -56,7 +64,7 @@ export function AcceptForm({
 
     const next: Record<string, string> = {};
     if (name.trim().length < 2) next.name = "Enter your full name.";
-    if (strength.problems.length > 0) next.password = strength.problems[0]!;
+    if (!hasAccount && strength.problems.length > 0) next.password = strength.problems[0]!;
     if (Object.keys(next).length > 0) {
       setErrors(next);
       return;
@@ -66,7 +74,10 @@ export function AcceptForm({
       const result = await acceptInvite({
         token,
         name: name.trim(),
-        password,
+        // Undefined, not "" — the action refuses a password for an account that
+        // already has one, precisely so nobody can type into a field that goes
+        // nowhere. Sending an empty string would be doing it by the back door.
+        password: hasAccount ? undefined : password,
         title: title.trim() || undefined,
         bio: bio.trim() || undefined,
         subjects,
@@ -82,7 +93,11 @@ export function AcceptForm({
         return;
       }
 
-      toast({ tone: "ok", title: "You're in — welcome aboard" });
+      toast({
+        tone: "ok",
+        title: hasAccount ? "Added to your account" : "You're in — welcome aboard",
+        description: hasAccount ? "Sign in as you always have." : undefined,
+      });
       router.push(result.redirectTo ?? "/");
       router.refresh();
     });
@@ -110,6 +125,7 @@ export function AcceptForm({
         onChange={(e) => setName(e.target.value)}
       />
 
+      {!hasAccount && (
       <div>
         <TextField
           label="Choose a password"
@@ -152,6 +168,7 @@ export function AcceptForm({
           </div>
         )}
       </div>
+      )}
 
       {role === "TEACHER" && (
         <>
@@ -226,7 +243,13 @@ export function AcceptForm({
         loading={pending}
         iconRight={<ArrowRightIcon weight="bold" />}
       >
-        {pending ? "Setting you up…" : "Accept and join"}
+        {pending
+          ? hasAccount
+            ? "Adding it…"
+            : "Setting you up…"
+          : hasAccount
+            ? "Add this school to my account"
+            : "Accept and join"}
       </Button>
     </form>
   );

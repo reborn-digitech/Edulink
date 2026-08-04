@@ -68,6 +68,28 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   const role = invite.role as Role;
   const inviter = context?.createdBy?.user.preferredName ?? context?.createdBy?.user.name ?? null;
 
+  /**
+   * Whether this address already has an account — which turns this page from a
+   * sign-up into a TRANSFER, and is the difference between the two sentences
+   * below.
+   *
+   * `acceptInvite` has always attached the new school to an existing account
+   * rather than minting a second one. That is what makes an invitation the way
+   * a pupil changes school without stranding their leaving certificate on a
+   * login nobody uses. The page simply never said so, and asked them to choose
+   * a password that was then kept out of the database.
+   *
+   * Not an enumeration oracle: the token was emailed to this address, so anyone
+   * reading this page already controls the mailbox.
+   */
+  const holder = invite.email
+    ? await db.user.findUnique({
+        where: { email: invite.email.toLowerCase() },
+        select: { name: true, preferredName: true, passwordHash: true },
+      })
+    : null;
+  const hasAccount = Boolean(holder?.passwordHash);
+
   // Whoever is already signed in on this browser, if anybody. A server fact,
   // read here rather than guessed in the client, because the banner below is
   // about a session.
@@ -82,7 +104,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
         </span>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          Join {context?.school.name}
+          {hasAccount ? <>Add {context?.school.name} to your account</> : <>Join {context?.school.name}</>}
         </h1>
         {/*
           THE ADDRESS IS SHOWN WHETHER OR NOT THERE IS A SENDER, and that split
@@ -101,8 +123,15 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
             <>
               <strong className="text-fg">{inviter}</strong> invited you
             </>
-          ) : (
+          ) : role === "ADMIN" ? (
+            // The operator's invitation, which is how a school starts: there is
+            // genuinely nobody at the school to name yet.
             <>You have been invited to help run this school</>
+          ) : (
+            // …and every other senderless invitation. "Help run this school"
+            // was being said to pupils, because the branch above was written
+            // for the one case that has no inviter and then met the others.
+            <>You have been invited to join this school</>
           )}
           {invite.email ? (
             <>
@@ -110,8 +139,30 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
               at <strong className="text-fg">{invite.email}</strong>
             </>
           ) : null}
-          . Set a password and you are in.
+          {hasAccount ? (
+            <>
+              , which already has an EduLink account. Accepting adds this school to it —{" "}
+              <strong className="text-fg">your password does not change</strong>, and everything
+              already on your account comes with you.
+            </>
+          ) : (
+            <>. Set a password and you are in.</>
+          )}
         </p>
+
+        {/*
+          THE SENTENCE A TRANSFERRING FAMILY NEEDS, said before the button.
+          The whole reason a leaving certificate is worth writing is that the
+          next school can read it, and the only thing that makes that true is
+          arriving on the SAME account. A child who joins with a code instead
+          gets a second one, and nothing on this page would have told them.
+        */}
+        {hasAccount && (
+          <p className="mt-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
+            Changed school? This is the right way to do it. Your record from your last school
+            travels with your account, so {context?.school.name} can see where you came from.
+          </p>
+        )}
 
         {/*
           Said out loud rather than left to be discovered. Accepting signs this
@@ -130,9 +181,10 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
         <AcceptForm
           className="mt-7"
           token={token}
-          defaultName={invite.name ?? ""}
+          defaultName={holder?.name ?? invite.name ?? ""}
           defaultSubjects={readJsonArray<string>(invite.subjects)}
           role={role}
+          hasAccount={hasAccount}
         />
       </div>
     </Shell>

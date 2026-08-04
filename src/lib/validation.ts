@@ -116,7 +116,18 @@ export const bulkInviteSchema = z.object({
 export const acceptInviteSchema = z.object({
   token: z.string().min(10),
   name: trimmed(2, 120),
-  password: passwordSchema,
+  /**
+   * OPTIONAL HERE, AND REQUIRED IN THE ACTION — because whether it is needed
+   * depends on a row this schema cannot see.
+   *
+   * An invitation sent to an address that already has an account is a transfer:
+   * the new school adds itself to the account the person already signs in with,
+   * and their password must not change. Demanding one there is how the form
+   * came to collect a password it silently threw away. Demanding one for a
+   * brand-new account is still non-negotiable — an account with no password is
+   * one nobody can ever sign into again.
+   */
+  password: passwordSchema.optional(),
   title: trimmed(0, 80).optional(),
   bio: trimmed(0, 600).optional(),
   subjects: z.array(trimmed(1, 60)).max(20).default([]),

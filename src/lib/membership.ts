@@ -243,6 +243,147 @@ export async function suspendedSchoolsFor(userId: string): Promise<SuspendedScho
   );
 }
 
+/* -------------------------------------------------------------------------- */
+/* Removing somebody who was never really here                                 */
+/* -------------------------------------------------------------------------- */
+
+/** What a removal refuses to throw away, and how much of it there is. */
+export type RemovalBlocker = {
+  attendance: number;
+  marks: number;
+  submissions: number;
+  reportCards: number;
+};
+
+export type RemovalResult =
+  | { ok: true }
+  | { ok: false; error: string; blockers?: RemovalBlocker };
+
+/**
+ * THE THIRD VERB, and the reason there are three rather than two.
+ *
+ * A school needs to say three different things about a pupil and they are not
+ * interchangeable:
+ *
+ *   PAUSE   — not for now. They are coming back. One click undoes it.
+ *   LEFT    — they have gone to another school. A certificate is issued with
+ *             this school's name on it, and the next school reads it.
+ *   REMOVE  — they were never here. A duplicate row, a typo in a bulk import,
+ *             a child added to the wrong school on a Monday morning.
+ *
+ * Before this, the third had to be spelled as one of the first two, and both
+ * lie. Pausing leaves a person in the directory forever with a status implying
+ * they might return. Recording them as having LEFT writes a leaving certificate
+ * for a child who never attended — a document, addressed to a school that does
+ * not exist, saying they were marked present zero times out of zero.
+ *
+ * SO THIS ONE DELETES, and it is the only thing in this codebase that does.
+ * The justification is narrow and does not generalise: a tombstone is for
+ * somebody who WAS here, and the entire precondition below is that they were
+ * not. Leaving a REMOVED row behind would keep a child's name in a school's
+ * directory because somebody mistyped an email once.
+ *
+ * THE PRECONDITION IS THE SAFETY, not the confirmation dialog. This refuses
+ * outright the moment there is anything a school would have to certify —
+ * a register mark, a grade, a piece of work handed in, a report card. Those are
+ * exactly the things a leaving certificate summarises, so "there is history"
+ * and "the answer is LEFT, not REMOVE" are the same sentence, and the error
+ * says so. An admin cannot reach for the destructive verb by accident, because
+ * for anybody with a term behind them it is not offered at all.
+ */
+export async function removeMembership(
+  ctx: ActiveContext,
+  membershipId: string,
+): Promise<RemovalResult> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) {
+    throw new AccessError("Only an admin can remove somebody from a school");
+  }
+  if (membershipId === ctx.membershipId) {
+    return { ok: false, error: "You cannot remove yourself from your own school." };
+  }
+
+  const schoolId = ctx.schoolId;
+
+  const target = await db.membership.findFirst({
+    where: { id: membershipId, schoolId },
+    select: { id: true, role: true, userId: true, leftAt: true },
+  });
+  if (!target) return { ok: false, error: "That person is not in this school." };
+
+  // PUPILS ONLY, matching `recordDeparture`. Staff carry rows this check does
+  // not look at — classes they lead, registers they took, leave they were
+  // granted — and deciding what happens to a class whose teacher vanishes is a
+  // different feature with a different question in it.
+  if (target.role !== "STUDENT") {
+    return {
+      ok: false,
+      error: "Only a pupil can be removed this way. Pause a member of staff's access instead.",
+    };
+  }
+
+  /**
+   * The four things that mean "they were here".
+   *
+   * Counted in parallel and reported IN FULL rather than short-circuiting on
+   * the first one: an admin who is told "they have attendance" fixes that and
+   * comes back to be told about marks. One refusal should be the whole answer.
+   *
+   * Quiz attempts and badges are deliberately not here. Practice is the child's
+   * own, follows the pupil rather than the school, and a school has never had
+   * to certify it — treating it as history would block a genuine mis-add for a
+   * child who opened the practice tab once while their account was being set up.
+   */
+  const [attendance, marks, submissions, reportCards] = await Promise.all([
+    db.attendanceRecord.count({ where: { schoolId, studentMembershipId: membershipId } }),
+    db.grade.count({ where: { schoolId, studentMembershipId: membershipId } }),
+    db.submission.count({ where: { schoolId, studentMembershipId: membershipId } }),
+    db.reportCard.count({ where: { schoolId, studentMembershipId: membershipId } }),
+  ]);
+
+  const blockers = { attendance, marks, submissions, reportCards };
+  const total = attendance + marks + submissions + reportCards;
+  if (total > 0) {
+    return {
+      ok: false,
+      blockers,
+      error:
+        "They have a record at this school, so removing them would delete it. Record them as having left instead — that keeps everything and gives the family a school record to take with them.",
+    };
+  }
+
+  // Already recorded as having left is history too, whatever the counts say:
+  // a certificate exists with this school's name on it and somebody may hold a
+  // copy. Undoing the departure first is the honest route, and it is one click.
+  if (target.leftAt) {
+    return {
+      ok: false,
+      error: "They are already recorded as having left, which is a document. Undo that first if you really meant to remove them.",
+    };
+  }
+
+  await db.$tenantTransaction(async (rawTx) => {
+    const t = rawTx as { membership: { delete(args: unknown): Promise<unknown> } };
+    // Every relation pointing at Membership is Cascade or SetNull, so this
+    // takes the enrolments and the parent links with it and leaves nothing
+    // dangling. Checked against the schema rather than assumed.
+    await t.membership.delete({ where: { id: membershipId } });
+  });
+
+  // AUDITED AFTER THE ROW IS GONE, and that is the point of an audit log: the
+  // only remaining evidence a school has that this person was ever on its roll,
+  // and the one thing here no ordinary write path can edit.
+  await audit({
+    schoolId,
+    actorUserId: ctx.user.id,
+    action: "membership.remove",
+    targetType: "Membership",
+    targetId: membershipId,
+    meta: { role: target.role, removedUserId: target.userId },
+  });
+
+  return { ok: true };
+}
+
 /** Thrown inside the transaction to roll it back with a message for the user. */
 class StateError extends Error {}
 

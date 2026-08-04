@@ -1378,6 +1378,72 @@ hands one school a window into another.
 
 ---
 
+## 12u. A transfer done properly — the new school invites
+
+**This is the path that does not fork**, and the one a school should actually
+use. Do it with a pupil who has a real email address.
+
+- ☐ As the OLD school's admin, `/admin/people` → **Left** on that pupil
+- ☐ As the NEW school's admin, `/admin/invites/new` → invite them at **the same
+  email address**
+- ☐ Open the link (dev mailbox at `/dev/mailbox`)
+
+### What the invitation says
+
+- ☐ **⚠️** The heading reads **Add {new school} to your account**, not "Join"
+- ☐ **⚠️** There is **no password field at all**, and the page says *your
+  password does not change*
+- ☐ **⚠️** It names the address, and says the record from their last school
+  travels with the account
+- ☐ Accept it
+
+### What it did
+
+- ☐ **⚠️** `/student/profile` shows the old school's record — with **no merge
+  needed**, because it was always on this account
+- ☐ **⚠️** Sign out and log in with the password they had **before** the
+  transfer. It works. It was never overwritten
+- ☐ `/switch` shows both schools on one account
+
+### And the other direction still works
+
+- ☐ Invite a brand-new address. The password field **is** there, and is required
+  — an account with no password could never be signed into again
+
+---
+
+## 12v. Removing a pupil — the third verb
+
+- ☐ `/admin/people` → a pupil's row now offers **Pause**, **Left** and
+  **Remove**. Three different facts
+
+### It refuses anybody who was actually here
+
+- ☐ Pick a pupil with attendance or marks → **Remove** → **Remove them**
+- ☐ **⚠️** Refused, and it names **what** is in the way with counts — "3 days on
+  a register", "1 mark" — not just "cannot remove"
+- ☐ **⚠️** It points at **Left** as the thing that keeps the record
+- ☐ They are still in the directory
+
+### It removes somebody who never was
+
+- ☐ Add a pupil to a class, then immediately **Remove** them
+- ☐ Gone from the directory, and the headline count drops by one
+- ☐ **⚠️** Gone from the class roll too — no ghost on the register
+- ☐ **⚠️** Their **account still exists**. They may be a pupil at another school
+  or somebody's parent; a school may not delete a person
+- ☐ **⚠️** `/admin/safety` shows the removal. It is the only evidence left that
+  they were ever on the roll
+
+### What it will not touch
+
+- ☐ **⚠️** A teacher's row has **no** Remove button
+- ☐ **⚠️** Your own row has none either
+- ☐ Somebody already recorded as having **Left** has none — that is a document,
+  and undoing the leaving is the honest route
+
+---
+
 ## 12t. Joining two accounts, which is what a transfer really leaves behind
 
 **Set the fork up first**, because it is the default outcome and not an edge

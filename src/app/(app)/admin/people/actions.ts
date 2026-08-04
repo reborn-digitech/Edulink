@@ -2,7 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
-import { suspendMembership, reinstateMembership } from "@/lib/membership";
+import {
+  suspendMembership,
+  reinstateMembership,
+  removeMembership,
+  type RemovalBlocker,
+} from "@/lib/membership";
 import {
   recordDeparture,
   undoDeparture,
@@ -95,3 +100,30 @@ export async function undoLeaving(membershipId: string): Promise<Result> {
     return failure(error);
   }
 }
+
+/**
+ * Removing a pupil who was added by mistake.
+ *
+ * THE THIRD VERB — see `removeMembership` for why there are three rather than
+ * two. This is the only action in the app that deletes a row, and the guard is
+ * in the library rather than here: it refuses the moment there is anything a
+ * school would have to certify, so the destructive path is not reachable for
+ * anybody who actually attended.
+ *
+ * The blockers come back so the UI can say WHICH record is in the way, rather
+ * than "cannot remove" and leaving an admin to guess.
+ */
+export async function removePerson(membershipId: string): Promise<RemovalActionResult> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await removeMembership(ctx, membershipId);
+    if (!result.ok) return { ok: false, error: result.error, blockers: result.blockers };
+    revalidatePath("/admin/people");
+    revalidatePath("/admin/classes");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export type RemovalActionResult = Result & { blockers?: RemovalBlocker };

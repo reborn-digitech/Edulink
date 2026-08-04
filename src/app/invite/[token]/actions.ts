@@ -48,16 +48,57 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     db.school.findUniqueOrThrow({ where: { id: invite.schoolId }, select: { name: true } }),
   );
 
-  const problems = passwordProblems(password, [name, invite.email ?? "", school.name]);
-  if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
-
   const email = invite.email?.toLowerCase() ?? null;
   if (!email) {
     return { ok: false, errors: { _form: "That invitation has no email address attached." } };
   }
 
+  /**
+   * WHO ALREADY HOLDS THIS ADDRESS, which decides whether a password is wanted
+   * at all — and is the difference between joining a school and TRANSFERRING to
+   * one.
+   *
+   * `acceptInvite` has always attached a membership to an existing account
+   * rather than minting a second one, which is what makes an invitation the
+   * transfer path that does not fork: the leaving certificate is already on
+   * this user id and there is nothing to merge. What was wrong was the
+   * conversation around it — the form asked for a password and the code below
+   * kept the existing one, so the answer went nowhere. Silently. A child found
+   * out weeks later, when the session had gone.
+   *
+   * Telling the holder of the token that this address has an account is not an
+   * enumeration oracle: the token was emailed to that address, so whoever is
+   * reading it already controls the mailbox.
+   */
+  const holder = await db.user.findUnique({
+    where: { email },
+    select: { id: true, passwordHash: true },
+  });
+  const keepsExistingPassword = Boolean(holder?.passwordHash);
+
+  if (keepsExistingPassword && password) {
+    // Refused rather than ignored. "We took your input and did nothing with it"
+    // is the failure mode this whole change exists to remove, and accepting it
+    // quietly here would put it straight back.
+    return {
+      ok: false,
+      errors: {
+        password:
+          "You already have a password for this email. Accepting adds this school to that account — nothing about your login changes.",
+      },
+    };
+  }
+
+  if (!keepsExistingPassword) {
+    if (!password) {
+      return { ok: false, errors: { password: "Choose a password." } };
+    }
+    const problems = passwordProblems(password, [name, invite.email ?? "", school.name]);
+    if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
+  }
+
   const role = invite.role as Role;
-  const passwordHash = await hashPassword(password);
+  const passwordHash = password ? await hashPassword(password) : null;
 
   let userId: string;
 
@@ -84,6 +125,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
 
       let user = existing;
       if (!user) {
+        // Re-checked inside the transaction, so a decision made a moment ago
+        // outside it cannot leave us creating an account with a null hash.
+        if (!passwordHash) throw new Error("NEEDS_PASSWORD");
         user = await tx.user.create({
           data: {
             email,
@@ -96,9 +140,11 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
           },
           select: { id: true, passwordHash: true },
         });
-      } else if (!user.passwordHash) {
+      } else if (!user.passwordHash && passwordHash) {
         // Account existed without a password (e.g. created by a parent link).
-        // Setting one here is legitimate; overwriting an existing one is not.
+        // Setting one here is legitimate; overwriting an existing one is not —
+        // and is refused above rather than skipped, so nobody types one into a
+        // field that does nothing.
         await tx.user.update({
           where: { id: user.id },
           data: { passwordHash, emailVerifiedAt: new Date() },
@@ -173,6 +219,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   } catch (error) {
     if (error instanceof Error && error.message === "ALREADY_USED") {
       return { ok: false, errors: { _form: "That invitation has already been used." } };
+    }
+    if (error instanceof Error && error.message === "NEEDS_PASSWORD") {
+      return { ok: false, errors: { password: "Choose a password." } };
     }
     console.error("[acceptInvite]", error);
     return { ok: false, errors: { _form: "We could not complete that. Please try again." } };
