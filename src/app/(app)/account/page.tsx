@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BellIcon, DevicesIcon, PaletteIcon, TranslateIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import {
+  BellIcon,
+  DevicesIcon,
+  PaletteIcon,
+  TranslateIcon,
+  UserIcon,
+  UsersThreeIcon,
+} from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
 import { readJson } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
+import { HANDLE_DOMAIN, toDisplayLoginName } from "@/lib/login-name";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -51,7 +59,7 @@ export default async function AccountPage() {
   const displayName = user.preferredName ?? user.name;
   // A self-joined student's login handle lives in the email column against a
   // non-routable domain; showing "amara@edulink.local" as an email is a lie.
-  const isHandle = user.email?.endsWith("@edulink.local") ?? false;
+  const isHandle = user.email?.endsWith(`@${HANDLE_DOMAIN}`) ?? false;
 
   const twoFactor = await twoFactorStatus(session);
 
@@ -66,7 +74,7 @@ export default async function AccountPage() {
               <>
                 {t("account.loginName")}{" "}
                 <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
-                  {user.email?.replace("@edulink.local", "")}
+                  {toDisplayLoginName(user.email)}
                 </code>
               </>
             ) : (
@@ -127,6 +135,26 @@ export default async function AccountPage() {
             )}
           </ul>
         </CardBody>
+      </Card>
+
+      {/* ---------- another account ---------- */}
+      {/*
+        Signposted from the account page and nowhere else, because the actor is
+        the person. It is here rather than buried because the people who need it
+        do not know the word "merge" — they know "I changed school and had to
+        start again", which is what the description says.
+      */}
+      <Card>
+        <CardHeader
+          icon={<UsersThreeIcon weight="duotone" className="size-5" />}
+          title={t("account.mergeTitle")}
+          description={t("account.mergeDescription")}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/account/merge">{t("account.mergeAction")}</Link>
+            </Button>
+          }
+        />
       </Card>
 
       {/* ---------- notifications ---------- */}

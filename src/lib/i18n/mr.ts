@@ -158,6 +158,9 @@ export const mr: Dictionary = {
     devicesTitle: "साइन-इन केलेली डिव्हाइस",
     devicesCount: "{count} सक्रिय",
     unknownDevice: "अज्ञात डिव्हाइस",
+    mergeTitle: "तुमचे दुसरे खाते आहे का?",
+    mergeDescription: "शाळा बदलली आणि नव्या लॉगिनने पुन्हा सुरुवात करावी लागली",
+    mergeAction: "ती एकत्र करा",
   },
 
   prefs: {

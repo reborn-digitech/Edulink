@@ -8,6 +8,7 @@ import { loginSchema, magicLinkSchema, fieldErrors, type FieldErrors } from "@/l
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
+import { toLoginEmail } from "@/lib/login-name";
 import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -27,8 +28,9 @@ const TWO_FACTOR_PURPOSE = "TWO_FACTOR";
 
 /**
  * Students who joined with a class code have no real email address — they get a
- * generated handle like `amara.k4f9`, stored against the internal
- * `@edulink.local` domain so one unique lookup still serves every account type.
+ * generated handle like `amara.k4f9`, stored against an internal domain so one
+ * unique lookup still serves every account type. See login-name.ts, which owns
+ * that rule now that three places depend on it.
  *
  * A child typing just their handle must work. Without this, the email validator
  * rejects it before it ever reaches the database and they are locked out of the
@@ -40,10 +42,7 @@ function normalizeIdentifier(input: unknown): unknown {
   const email = record.email;
   if (typeof email !== "string") return input;
 
-  const trimmed = email.trim().toLowerCase();
-  if (trimmed.length === 0 || trimmed.includes("@")) return input;
-
-  return { ...record, email: `${trimmed}@edulink.local` };
+  return { ...record, email: toLoginEmail(email) };
 }
 
 /**

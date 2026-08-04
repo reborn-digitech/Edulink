@@ -1378,6 +1378,59 @@ hands one school a window into another.
 
 ---
 
+## 12t. Joining two accounts, which is what a transfer really leaves behind
+
+**Set the fork up first**, because it is the default outcome and not an edge
+case: after §12s, sign out and **join the new school with a code** (`/join` →
+I'm a student). That mints a SECOND account. Note both login names.
+
+### The gap, before you fix it
+
+- ☐ Signed in as the NEW account, `/student/profile` shows **no** "Schools you
+  have been to". The certificate exists — it is on the other account
+- ☐ **⚠️** This is the whole reason the feature exists. If you can see the old
+  school here, you are signed in as the old account
+
+### Joining them
+
+- ☐ `/account` → **Another account?** → **Join them**
+- ☐ Enter the old login name with a **wrong** password. The refusal is generic
+- ☐ **⚠️** Enter a login name that does not exist at all. **Word for word the
+  same message.** Anything else makes this a way to ask which logins are real
+- ☐ Now the right password → a confirm screen naming **the person, the school
+  and the date they left**, in dd/mm/yyyy
+- ☐ **⚠️** Nothing has happened yet. Press **No, go back**, then check
+  `/student/profile` — still no previous school. The screen most likely to be
+  reached by mistake must be safe to reach by mistake
+- ☐ Do it again and press **Yes, join these accounts**
+
+### What it did
+
+- ☐ **⚠️** `/student/profile` now shows the old school, its dates, the
+  attendance figure and the report-card count — the leaving certificate, on the
+  account they actually sign in with
+- ☐ `/switch` lists **both** schools on this one account
+- ☐ **⚠️** Sign out and try the OLD login name and password. It is refused. That
+  sentence is written on the confirm screen, so it is a promise
+- ☐ Sign back in with the new one; everything is still there
+
+### What it must refuse
+
+- ☐ **⚠️** Enter **your own** login name and password. Refused, and it says so
+  plainly rather than generically — you have just proved that account is yours
+- ☐ **⚠️** Try the same merge a second time. Refused: that account is gone
+- ☐ If either account has two-factor on, the password alone is **not** enough —
+  a code is demanded. This is the check that stops the merge being a way past
+  somebody's second factor
+
+### The thing that is not there
+
+- ☐ **⚠️** Sign in, then visit `/join`. You are still told to sign out and start
+  again — there is no "add this school to my account". So the fork happens by
+  default and this page repairs it afterwards. Known, and in the README
+
+---
+
 ## 12r. The expert's own profile
 
 The rest of the expert and mentoring flow has **never** had a section here, and

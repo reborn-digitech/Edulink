@@ -260,6 +260,9 @@ src/lib/                  All business logic. Pages are thin.
   academic-year.ts        ★ Academic year. Snapshot THEN flip — the order is the function.
   holidays.ts             ★ School calendar. Range maths is pure; only kind=HOLIDAY closes school.
   quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
+  school-record.ts        ★ Leaving certificates. A document frozen at issue, never a query.
+  account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
+  login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
@@ -1210,6 +1213,18 @@ One line each, with the default rejected.
   calendar and the leave queue, and is turned away from the register, the
   directory and class creation.
 
+  **Joining two accounts** (`account-merge.ts`), **walked in a browser** rather
+  than reasoned about: a pupil with a Riverside leaving certificate and a fresh
+  Oakfield account signed in as the new one, saw no previous school on their
+  profile, was refused with the same sentence for a wrong password and for a
+  login name that never existed, read a confirm screen naming the person, the
+  school and *Left 20/03/2026*, and came out the other side with Riverside on
+  the profile — dates, 95.3% attendance over 190 marked days, two report cards,
+  *went on to Oakfield Academy*. The old account was left `disabledAt` with
+  `mergedIntoUserId` set, not deleted. Five live `rls:verify` checks hold the
+  cross-school write, including the negative one: bound to a single school it
+  cannot touch the other school's membership row.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1334,6 +1349,11 @@ navigation" means the actual list rather than one somebody maintained by hand.
   mutation-tested, but nobody has typed a real code into a browser.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
+- **Joining two accounts repairs a fork; nothing prevents one.** Every transfer
+  still produces two accounts unless the family knows to bring the old one
+  across. Closing that means letting a signed-in person add a school with a join
+  code, which changes what joining means — see the section below.
+
 - **The account page is behind the role gate.** `/account` lives inside the
   signed-in shell, which needs an active role, so somebody with no remaining
   context — a paused member with nowhere else to be — cannot reach their own
@@ -1388,6 +1408,86 @@ inside it stays, and the comment says why: deleting it keeps every check green
 today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
+
+### Joining two accounts, which is what a transfer actually leaves behind
+
+**The certificate travels on `studentUserId`, so a second account strands it.**
+That is not an edge case: `joinAsStudent` mints a fresh `User` every time it
+runs, so a family who arrive at their new school and join with a code get a new
+account by default, and "their previous school, on their profile" silently shows
+nothing. The transfer feature was only half a feature until this existed.
+
+**Direction: the account you are signed in to survives.** It is the one whose
+password the child remembers and the one their new school emails; bringing the
+old life forward is also fewer rows than pushing the new one back.
+
+**Authorisation is ownership of both, and there is deliberately no other way
+in.** The old account's password, plus its second factor if it has one —
+otherwise this becomes the way to take a 2FA-protected account without the
+second factor. **No admin can do this.** A school admin who could merge accounts
+could absorb a child's account from a school they cannot otherwise see, which is
+the boundary the rest of this codebase exists to hold, so the page lives under
+`/account` and says so in those words.
+
+**What moves** is what makes two rows one person: memberships — and with them,
+for free, every mark, register, report card and enrolment, because those hang
+off `Membership.id`, which does not change — plus leaving certificates,
+guardianships, and authorship of posts, comments, reactions and remark messages.
+Bulletin decides "is this mine?" on `authorUserId`, so without that last one a
+child could no longer edit their own work the day they merged.
+
+**What does not move**, each for its own reason: credentials (they are how you
+prove you are the old account, which is the thing that stops existing); audit
+log entries, because a record of who did what is not improved by rewriting who
+did it; safeguarding reports, because `reporterUserId` is closer to a signature
+than to profile data; and notifications about a school the person has left.
+
+**The old account is CLOSED, NOT DELETED.** `User` cascades to Post, Comment and
+Reaction, so deleting it would take a child's term of class-bulletin posts with
+it — the merge would destroy exactly the history it was asked to preserve.
+`disabledAt` stops the login, `mergedIntoUserId` records where the person went.
+
+**It refuses rather than guessing:** a self-merge, both accounts at the same
+school in the same role (which `@@unique([userId, schoolId, role])` would refuse
+anyway — this says it in words), a superuser account in either direction, an
+expert account whose bookings and mentorships are a different feature's problem,
+and an account with no password. That first refusal earns something: **two
+accounts that share no school cannot collide on any school-scoped unique key**,
+which is what makes moving authorship safe without a per-row check.
+
+**One transaction, bound to every school either account touches.** A run that
+moved the memberships and failed before the certificates would leave a child's
+history split across two accounts, one of which can no longer be signed in to —
+strictly worse than the problem, and unrepairable from the UI. `forTenant`
+around `$tenantTransaction` is what makes that possible: the plain helper binds
+the ONE school the session names, and a merge is cross-school by definition.
+
+**`rls:verify` proves the half the unit suite structurally cannot.** The suite
+connects as the owner, so with the policies off every UPDATE succeeds whatever
+is bound — a merge reaching into an unrelated school would pass all 19 tests.
+Five live checks now hold it: a merge bound to one school **cannot** move
+another school's membership; before a merge the receiving school **cannot** read
+the old account's certificate; bound to both it can move membership and
+certificate; and afterwards the receiving school **can** read where the child
+came from — with nothing in `rls.sql` changed to allow it, because the row now
+names a user who holds a live membership there and `MEMBER_READABLE` does the
+rest.
+
+**A confirm step, because the likely failure is not a bug.** It is a parent
+typing the wrong child's login name. Nothing is written until a name, the
+schools and the dates have been read back. The preview hands out no token and
+the merge re-verifies from scratch, so a preview left open on a shared laptop is
+worth nothing — and **mutation testing is why that claim is trustworthy**: a
+version of `mergeAccounts` that replayed the password captured at preview passed
+the entire suite, because the test that was meant to catch it changed the STORED
+hash, which fails for any submitted value. The test that kills it submits the
+wrong password against an account whose password is still right.
+
+**Still forked by default.** This repairs a fork; it does not prevent one. A
+signed-in person meeting `/join` is still told to sign out and start again,
+because letting them add a school to the account they already hold is a change
+to what joining MEANS — an admin at one school could become a pupil at another
+in one click — and that is a decision rather than a follow-up.
 
 ### Dates, and the last English word
 

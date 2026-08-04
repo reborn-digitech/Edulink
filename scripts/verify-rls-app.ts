@@ -115,10 +115,21 @@ async function main() {
        -- of SchoolRecord in one row pair.
        ('verify-m-pupil-a','verify-pupil','verify-a','STUDENT','ACTIVE',now(),now()),
        ('verify-m-pupil-b','verify-pupil','verify-b','STUDENT','ACTIVE',now(),NULL);
+     -- The state a transfer LEAVES BEHIND, before anybody merges anything: the
+     -- same child holding two accounts, one per school, with nothing joining
+     -- them. verify-merge-old has the certificate; verify-merge-new is the
+     -- account they actually sign in with.
+     INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES
+       ('verify-merge-old','Old account','{}',now()),
+       ('verify-merge-new','New account','{}',now());
+     INSERT INTO "Membership" (id,"userId","schoolId",role,status,"joinedAt","leftAt") VALUES
+       ('verify-m-merge-old','verify-merge-old','verify-a','STUDENT','ACTIVE',now(),now()),
+       ('verify-m-merge-new','verify-merge-new','verify-b','STUDENT','ACTIVE',now(),NULL);
      INSERT INTO "SchoolRecord"
        (id,"schoolId","studentUserId","studentMembershipId","schoolName","joinedAt","leftAt",reason,"attendanceMarked","attendancePresent","reportCardCount") VALUES
        ('verify-rec-a','verify-a','verify-pupil','verify-m-pupil-a','A',now(),now(),'TRANSFERRED',10,9,2),
-       ('verify-rec-stranger','verify-a','verify-other','verify-m-other','A',now(),now(),'LEFT',4,4,1);
+       ('verify-rec-stranger','verify-a','verify-other','verify-m-other','A',now(),now(),'LEFT',4,4,1),
+       ('verify-rec-merge','verify-a','verify-merge-old','verify-m-merge-old','A',now(),now(),'TRANSFERRED',6,6,1);
      INSERT INTO "Post" (id,"schoolId","authorUserId",scope,title,status,tags,media,"updatedAt") VALUES
        ('verify-post-a','verify-a','verify-u','SCHOOL','A post','APPROVED','[]','[]',now()),
        ('verify-post-b','verify-b','verify-u','SCHOOL','B post','APPROVED','[]','[]',now()),
@@ -570,6 +581,104 @@ async function main() {
       "⚠ …and cannot delete a certificate it did not write",
       receiverWrote === 1,
       "the receiving school withdrew another school's certificate — a read clause authorised a DELETE again",
+    );
+
+    /* ---------------------------------------------------------------- *
+     * Joining two accounts, which is the only ordinary write in this app
+     * that touches two schools in ONE transaction.
+     *
+     * The unit suite connects as the owner and therefore cannot see any of
+     * this: with the policies off, every UPDATE below succeeds whatever is
+     * bound, so a merge that reached into a school the person has nothing to
+     * do with would pass every test in `tests/account-merge.test.ts`. That is
+     * the exact shape of the bug this file exists for.
+     * ---------------------------------------------------------------- */
+
+    const membershipOwner = (id: string): string =>
+      psql(DB, `SELECT "userId" FROM "Membership" WHERE id = '${id}'`).trim();
+
+    const moveMembership = async (bound: string, from: string, to: string): Promise<number> => {
+      try {
+        const result = await withTenantOn(client, bound, (tx) =>
+          (
+            tx as unknown as {
+              membership: { updateMany: (a: unknown) => Promise<{ count: number }> };
+            }
+          ).membership.updateMany({ where: { userId: from }, data: { userId: to } }),
+        );
+        return result.count;
+      } catch {
+        return -1; // refused outright is a stronger pass than "changed nothing"
+      }
+    };
+
+    // FIRST THE NEGATIVE, because it is the one that matters. A merge bound to
+    // only the signed-in session's school — which is what `$tenantTransaction`
+    // does on its own, and what this feature would have done if `forTenant` had
+    // been forgotten — must not be able to move the OTHER school's membership.
+    const reachedTooFar = await moveMembership("verify-b", "verify-merge-old", "verify-merge-new");
+    check(
+      "⚠ a merge bound to one school cannot move another school's membership",
+      reachedTooFar <= 0 && membershipOwner("verify-m-merge-old") === "verify-merge-old",
+      `an update bound to school B changed ${reachedTooFar} of school A's membership rows — a cross-school write is escaping its tenant set`,
+    );
+
+    // And the gap itself, in the database rather than in prose: before any
+    // merge, school B cannot read the certificate, because the child's OTHER
+    // account is the one holding it and that account has never been at B.
+    const beforeMerge = await withTenantOn(client, "verify-b", (tx) =>
+      recordCount(tx as TxLike, { where: { id: "verify-rec-merge" } }),
+    );
+    check(
+      "⚠ before a merge the new school cannot see the old account's certificate",
+      beforeMerge === 0,
+      "school B could already read it, so this check proves nothing about the merge",
+    );
+
+    // Now the merge itself: bound to BOTH schools, exactly as `mergeAccounts`
+    // binds them, from ids Postgres handed back rather than from a form.
+    const bothSchools = "verify-a,verify-b";
+    const moved = await moveMembership(bothSchools, "verify-merge-old", "verify-merge-new");
+    check(
+      "⚠ …and bound to both, it can",
+      moved === 1 && membershipOwner("verify-m-merge-old") === "verify-merge-new",
+      `moved ${moved} membership row(s) — the merge cannot write at all under the policies`,
+    );
+
+    let recordMoved = -1;
+    try {
+      recordMoved = (
+        await withTenantOn(client, bothSchools, (tx) =>
+          (
+            tx as unknown as {
+              schoolRecord: { updateMany: (a: unknown) => Promise<{ count: number }> };
+            }
+          ).schoolRecord.updateMany({
+            where: { studentUserId: "verify-merge-old" },
+            data: { studentUserId: "verify-merge-new" },
+          }),
+        )
+      ).count;
+    } catch {
+      recordMoved = -1;
+    }
+    check(
+      "⚠ …and the certificate moves with it",
+      recordMoved === 1,
+      `moved ${recordMoved} certificate(s) — the child's history would be split across two accounts, one of which can no longer sign in`,
+    );
+
+    // THE PAYOFF, and the only claim the whole feature is for. The certificate
+    // has not moved school and nobody has been granted anything: it now names a
+    // user who holds a live membership at B, and `MEMBER_READABLE` does the
+    // rest. Nothing in rls.sql changed to make this true.
+    const afterMerge = await withTenantOn(client, "verify-b", (tx) =>
+      recordCount(tx as TxLike, { where: { id: "verify-rec-merge" } }),
+    );
+    check(
+      "⚠ …so the new school can now read where the child came from",
+      afterMerge === 1,
+      "after the merge school B still cannot read the certificate — the transfer story is still broken",
     );
 
     /* ---------------------------------------------------------------- *

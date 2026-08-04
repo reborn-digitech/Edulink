@@ -9,6 +9,7 @@ import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
 import { sendParentClaimNotice } from "@/lib/email";
+import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
   claimChildSchema,
   fieldErrors,
@@ -165,8 +166,8 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
           name,
           preferredName: preferredName || name.split(" ")[0] || name,
           // Stored in the email column so the single unique login lookup keeps
-          // working; the @edulink.local domain is never routable.
-          email: `${loginHandle}@edulink.local`,
+          // working; the handle domain is never routable. See login-name.ts.
+          email: `${loginHandle}@${HANDLE_DOMAIN}`,
           passwordHash,
           avatarKey,
           birthdate: birthDate,

@@ -1095,13 +1095,17 @@ async function main() {
   await check(null, "/dev/mailbox", 404, "must 404 in production");
   await check(null, "/admin", 307, "signed-out admin redirects to login");
   await check(null, "/api/push", 401, "unauthenticated push registration");
+  // Joining two accounts needs one of them to be signed in ALREADY — that is
+  // half the authorisation. A signed-out merge form would be a password
+  // prompt for arbitrary accounts, offered to anybody.
+  await check(null, "/account/merge", 307, "signed-out account merge redirects to login");
 
   /* ---- admin ---- */
   for (const p of [
     "/admin", "/admin/classes", "/admin/classes/new", "/admin/invites", "/admin/invites/new",
     "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT", "/admin/safety",
     "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin?filter=mine", "/bulletin?filter=pending",
-    "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/switch",
+    "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/account/merge", "/switch",
     "/remarks", "/admin/people/export",
   ]) {
     await check(admin, p);
@@ -1115,7 +1119,7 @@ async function main() {
   for (const p of [
     "/teacher", "/teacher/attendance", "/teacher/assignments", "/teacher/assignments/new",
     "/teacher/classes", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin/new", "/remarks", "/remarks/new",
-    "/notifications", "/account", "/switch", "/mentoring",
+    "/notifications", "/account", "/account/merge", "/switch", "/mentoring",
   ]) {
     await check(teacher, p);
   }
@@ -1135,7 +1139,7 @@ async function main() {
   for (const p of [
     "/student", "/student/work", "/student/grades", "/student/profile",
     "/student/practice", "/student/practice?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
-    "/bulletin/new", "/notifications", "/account",
+    "/bulletin/new", "/notifications", "/account", "/account/merge",
   ]) {
     await check(student, p);
   }
@@ -1155,7 +1159,7 @@ async function main() {
   /* ---- parent ---- */
   for (const p of [
     "/parent", "/parent/attendance", "/parent/grades", "/parent/settings", "/remarks",
-    "/notifications", "/account", "/switch",
+    "/notifications", "/account", "/account/merge", "/switch",
   ]) {
     await check(parent, p);
   }

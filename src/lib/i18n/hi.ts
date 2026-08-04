@@ -161,6 +161,9 @@ export const hi: Dictionary = {
     devicesTitle: "साइन-इन डिवाइस",
     devicesCount: "{count} सक्रिय",
     unknownDevice: "अज्ञात डिवाइस",
+    mergeTitle: "क्या आपका कोई दूसरा खाता है?",
+    mergeDescription: "स्कूल बदला और नए लॉगिन से दोबारा शुरू करना पड़ा",
+    mergeAction: "उन्हें जोड़ें",
   },
 
   prefs: {

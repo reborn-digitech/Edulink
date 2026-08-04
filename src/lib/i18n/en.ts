@@ -189,6 +189,13 @@ export const en = {
     devicesTitle: "Signed-in devices",
     devicesCount: "{count} active",
     unknownDevice: "Unknown device",
+    /**
+     * Not called "merge". The people who need this do not have a word for it —
+     * they have a situation, which is the one the description names.
+     */
+    mergeTitle: "Another account?",
+    mergeDescription: "Changed school and had to start again with a new login",
+    mergeAction: "Join them",
   },
 
   /* ---------------------------------------------------------------------- */

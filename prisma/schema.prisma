@@ -157,8 +157,28 @@ model User {
   isSuperuser Boolean @default(false)
 
   disabledAt DateTime?
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+
+  /// Set when this account was joined into another one. See account-merge.ts.
+  ///
+  /// THE ACCOUNT IS CLOSED, NOT DELETED, and this column is why. A merged-away
+  /// account has usually posted, commented and reacted, and every one of those
+  /// rows carries `authorUserId`. Deleting the User would cascade them out of
+  /// existence — a class bulletin losing three months of a child's posts
+  /// because they changed school. Keeping the row keeps the name attached to
+  /// what it wrote, and this pointer says where the person went.
+  ///
+  /// `disabledAt` is set alongside it, which is what actually stops the login.
+  /// Two columns because they answer different questions: `disabledAt` is "may
+  /// this account sign in", which a suspended account also answers no to, and
+  /// this is "is there still a person behind it".
+  mergedIntoUserId String?
+  mergedAt         DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  mergedInto User?  @relation("AccountMerge", fields: [mergedIntoUserId], references: [id], onDelete: SetNull)
+  mergedFrom User[] @relation("AccountMerge")
 
   memberships       Membership[]
   sessions          Session[]
