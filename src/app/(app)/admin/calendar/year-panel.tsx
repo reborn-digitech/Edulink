@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { TextField, SelectField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
@@ -177,16 +177,14 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <TextField
+            <DateField
               label="Starts"
-              type="date"
               required
               value={start}
               onChange={(e) => setStart(e.target.value)}
             />
-            <TextField
+            <DateField
               label="Ends"
-              type="date"
               required
               value={end}
               onChange={(e) => setEnd(e.target.value)}

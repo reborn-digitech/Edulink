@@ -228,3 +228,70 @@ export function isValidTimeZone(tz: string): boolean {
     return false;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* dd/mm/yyyy — what people here actually write                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The day-first pair, and why they exist at all.
+ *
+ * `<input type="date">` renders in the BROWSER's locale and gives the page no
+ * say in it. Setting `lang="en-GB"` on the input, on a wrapper, or on `<html>`
+ * changes nothing — checked in Chromium against all three, and all three still
+ * drew `mm/dd/yyyy`. So a school in Pune typing a child's birthday was being
+ * asked for the month first, with no hint that it was, and 05/04 means two
+ * different days depending on who is reading it.
+ *
+ * These are the conversion either side of a plain text input, which IS under
+ * the page's control. The wire format never changes: `YYYY-MM-DD` in, the same
+ * out, because that is what every action, every query and every `dateKey` in
+ * this codebase already speaks. Only the human-facing half is day-first.
+ */
+
+/** `2026-04-05` → `05/04/2026`. Empty in, empty out. */
+export function isoToDisplayDate(iso: string | null | undefined): string {
+  if (!iso) return "";
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso.trim());
+  if (!m) return "";
+  return `${m[3]}/${m[2]}/${m[1]}`;
+}
+
+/**
+ * `05/04/2026` → `2026-04-05`, or null if it is not a real date.
+ *
+ * REJECTS RATHER THAN ROUNDS. `31/02/2026` is not the 3rd of March here — a
+ * date somebody typed wrongly should come back and ask, not silently become a
+ * different day and land in a register. `Date` would happily roll it over,
+ * so the round-trip below is what catches it.
+ *
+ * Separators are lenient (`/`, `-`, `.`, spaces) because people type what their
+ * keyboard makes easy; the ORDER is not, because guessing order is the bug.
+ */
+export function displayDateToIso(input: string | null | undefined): string | null {
+  if (!input) return null;
+  const m = /^(\d{1,2})\s*[/\-. ]\s*(\d{1,2})\s*[/\-. ]\s*(\d{4})$/.exec(input.trim());
+  if (!m) return null;
+
+  const day = Number(m[1]);
+  const month = Number(m[2]);
+  const year = Number(m[3]);
+
+  const iso = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  /**
+   * THE ROUND TRIP IS THE ONLY CHECK, and that is deliberate rather than
+   * careless. An explicit `month > 12 || day > 31` guard stood here and was
+   * deleted after mutation testing could not make it matter: every value it
+   * rejected — month 13, day 32, day 0 — builds a string `Date` already refuses
+   * or silently rolls to a different day, and the comparison below catches both.
+   *
+   * 31/02/2026 becomes 2026-03-03 as a Date, which no longer matches the string
+   * we built, so it is refused rather than quietly becoming the 3rd of March.
+   * That rollover is the whole hazard; a bounds check does not address it and
+   * this does.
+   */
+  const asDate = new Date(`${iso}T00:00:00Z`);
+  if (Number.isNaN(asDate.getTime())) return null;
+  if (asDate.toISOString().slice(0, 10) !== iso) return null;
+  return iso;
+}

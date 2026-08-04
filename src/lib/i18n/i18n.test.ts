@@ -43,7 +43,17 @@ const ENGLISH = flatten(en);
  * That check is what catches the real failure mode: a key copied from `en.ts`
  * into `hi.ts` during a hurried addition and never actually translated.
  */
-const SHARED_WITH_ENGLISH = new Set(["login.emailPlaceholder"]);
+const SHARED_WITH_ENGLISH = new Set([
+  "login.emailPlaceholder",
+  /**
+   * A DATE MASK IS NOT PROSE. `dd/mm/yyyy` is the shape of what to type, and the
+   * letters are the widely-understood mnemonic — translating them to दद/मम/वववव
+   * would produce a pattern nobody has seen on a form, on a passport or on a
+   * bank slip. The words AROUND it are translated (`field.dateHint` says day,
+   * month and year in the reader's own language); the mask stays put.
+   */
+  "field.datePlaceholder",
+]);
 
 const placeholdersIn = (value: string): Set<string> =>
   new Set([...value.matchAll(/\{(\w+)\}/g)].map((m) => m[1]!));

@@ -9,7 +9,7 @@ import {
   SparkleIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { TextField } from "@/components/ui/field";
+import { DateField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { passwordStrength } from "@/lib/password-strength";
@@ -289,9 +289,8 @@ export function StudentJoinFlow() {
               onChange={(e) => setPreferredName(e.target.value)}
               hint="This is the name you'll see around the app."
             />
-            <TextField
+            <DateField
               label="Your birthday"
-              type="date"
               value={birthdate}
               error={errors.birthdate}
               onChange={(e) => setBirthdate(e.target.value)}

@@ -430,6 +430,34 @@ async function onboardingSignposts(schoolId: string) {
     note: "⚠ the language switcher is reachable with no session",
   });
 
+  // 1b. Every date box asks for dd/mm/yyyy, and the ISO value still goes to the
+  //     server under the same name. `<input type="date">` renders in the
+  //     BROWSER's locale and ignores `lang`, so a school in Pune was asked for
+  //     the month first with no sign that it was — and 05/04 is two different
+  //     days depending on who reads it.
+  const admin = await db.membership.findFirst({
+    where: { schoolId, role: "ADMIN", status: "ACTIVE", user: { email: { not: null } } },
+    include: { user: { select: { email: true } } },
+  });
+  if (!admin?.user.email) {
+    skip("the dd/mm/yyyy date check", `no admin with an email at ${schoolId}`);
+  } else {
+    const actor = await mint(admin.user.email, "ADMIN", schoolId, "date-format");
+    const cal = await hit(actor, "/admin/calendar");
+    const boxes = (cal.body.match(/placeholder="dd\/mm\/yyyy"/g) ?? []).length;
+    // The hidden ISO input is what actually submits — losing it would send the
+    // typed text to a server that expects YYYY-MM-DD.
+    const isoInputs = (cal.body.match(/type="date"[^>]*class="sr-only"/g) ?? []).length;
+    results.push({
+      role: "date-format",
+      path: "/admin/calendar",
+      status: cal.status,
+      expected: 200,
+      ok: cal.status === 200 && boxes > 0 && isoInputs >= boxes,
+      note: `⚠ ${boxes} date box(es) ask dd/mm/yyyy, each backed by an ISO input`,
+    });
+  }
+
   // 2. A school's FIRST invitation names its recipient. Operator invites carry
   //    `createdByMembershipId: null`, and the page used to show the email only
   //    when there was a sender — so the one invitation that starts a school

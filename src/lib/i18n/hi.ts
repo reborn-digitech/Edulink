@@ -87,6 +87,14 @@ export const hi: Dictionary = {
     applyLeaveHint: "प्रधानाचार्य से छुट्टी माँगें",
   },
 
+  field: {
+    required: "(आवश्यक)",
+    datePlaceholder: "dd/mm/yyyy",
+    dateHint: "दिन, महीना, वर्ष — उदाहरण 05/04/2026",
+    dateInvalid: "तारीख dd/mm/yyyy के रूप में दें",
+    openCalendar: "कैलेंडर खोलें",
+  },
+
   shell: {
     mainNav: "मुख्य",
     search: "खोजें",

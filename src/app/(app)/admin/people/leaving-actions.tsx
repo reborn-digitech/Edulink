@@ -6,6 +6,7 @@ import { ArrowCounterClockwiseIcon, SignOutIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { recordLeaving, undoLeaving } from "./actions";
+import { DateField } from "@/components/ui/field";
 
 const REASONS = [
   { value: "TRANSFERRED", label: "Transferred to another school" },
@@ -126,15 +127,13 @@ export function LeavingActions({
             className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
           />
         </label>
-        <label>
-          <span className="block text-xs font-medium text-fg">Last day</span>
-          <input
-            type="date"
+        <div className="min-w-[11rem]">
+          <DateField
+            label="Last day"
             value={leftOn}
             onChange={(event) => setLeftOn(event.target.value)}
-            className="mt-1 min-h-11 rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
           />
-        </label>
+        </div>
       </div>
 
       <label className="mt-2 block">

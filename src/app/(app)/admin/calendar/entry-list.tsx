@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { TrashIcon, PencilSimpleIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { TextField, SelectField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { cn } from "@/lib/cn";
@@ -141,8 +141,8 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
           ))}
         </SelectField>
         <div className="grid gap-3 sm:grid-cols-2">
-          <TextField label="Starts" type="date" value={start} onChange={(e) => setStart(e.target.value)} />
-          <TextField label="Ends" type="date" value={end} onChange={(e) => setEnd(e.target.value)} />
+          <DateField label="Starts"  value={start} onChange={(e) => setStart(e.target.value)} />
+          <DateField label="Ends"  value={end} onChange={(e) => setEnd(e.target.value)} />
         </div>
         <div className="flex gap-2">
           <Button size="sm" loading={pending} icon={<CheckIcon weight="bold" className="size-4" />} onClick={save}>

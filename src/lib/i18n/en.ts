@@ -91,6 +91,24 @@ export const en = {
   },
 
   /* ---------------------------------------------------------------------- */
+  /* Form fields — shared by every form in the app                           */
+  /* ---------------------------------------------------------------------- */
+  field: {
+    /**
+     * Screen-reader-only, and it was the last English word on a fully
+     * translated login form. Sighted readers get the red asterisk beside the
+     * label; this is what the asterisk MEANS, said for somebody who cannot see
+     * it — so leaving it in English told a Marathi reader nothing at all.
+     */
+    required: "(required)",
+    /** dd/mm/yyyy everywhere, whatever the browser's locale says. */
+    datePlaceholder: "dd/mm/yyyy",
+    dateHint: "Day, month, year — for example 05/04/2026",
+    dateInvalid: "Give the date as dd/mm/yyyy",
+    openCalendar: "Open the calendar",
+  },
+
+  /* ---------------------------------------------------------------------- */
   /* The shell around every signed-in page                                   */
   /* ---------------------------------------------------------------------- */
   shell: {

@@ -1028,6 +1028,21 @@ Budget twenty minutes. Use a school name you will recognise and delete after.
 - ☐ Log back in as the teacher → **Register** → the pupil is on it → mark them
   present → **⚠️** reload: it stuck
 
+### Dates are day-first
+
+- ☐ **⚠️** Any date box in the app — the calendar, leave, a competition, the
+  pupil-join birthday — reads **`dd/mm/yyyy`**, not `mm/dd/yyyy`, whatever
+  language your browser is set to. This is the one thing `<input type="date">`
+  will not do; if you see `mm/dd/yyyy` the component has been swapped back
+- ☐ Type **05/04/2026** and save → it means **5 April**. Reopen it: still 5 April
+- ☐ **⚠️** Type **31/02/2026** → refused, with a message. It must NOT silently
+  become 3 March, which is what `new Date` would do
+- ☐ Type **29/02/2024** → accepted. **29/02/2026** → refused
+- ☐ `5/4/2026`, `05-04-2026` and `05.04.2026` all work — people type what their
+  keyboard makes easy
+- ☐ The **calendar button** beside the box opens the native picker; pick a date
+  there and the text box shows it day-first
+
 ### The language trap
 
 - ☐ On `/login`, **⚠️** there is a language switcher. Pick **मराठी** → the page
@@ -1036,6 +1051,12 @@ Budget twenty minutes. Use a school name you will recognise and delete after.
   point: a shared school computer keeps the last person's choice, and the next
   person must not be stranded in a language they cannot read
 - ☐ Switch back to English
+- ☐ **⚠️** With Marathi selected, turn on a screen reader (or read the DOM) at a
+  required field: it announces **(आवश्यक)**, not "(required)". It was the last
+  English word on a fully translated form, aimed at the readers least able to
+  work around it
+- ☐ **⚠️** The date placeholder stays **dd/mm/yyyy** in every language. It is a
+  shape, not prose — दद/मम/वववव is a pattern nobody has seen on a real form
 
 ---
 
@@ -1451,7 +1472,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 234 checks in `npm run sweep`
+Every route in the navigation now renders — all 235 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every

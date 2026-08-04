@@ -4,9 +4,11 @@ import {
   ageInYears,
   dateKeyInZone,
   dateKeyRange,
+  displayDateToIso,
   isDateKey,
-  isWeekend,
   isTeachingDay,
+  isWeekend,
+  isoToDisplayDate,
   parseDateOnly,
   zonedStartOfDay,
 } from "./dates";
@@ -248,5 +250,67 @@ describe("parseDateOnly", () => {
   it("returns null for garbage rather than Invalid Date", () => {
     expect(parseDateOnly("nope")).toBeNull();
     expect(parseDateOnly("2026-02-30")).toBeNull();
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* dd/mm/yyyy                                                                  */
+/* -------------------------------------------------------------------------- */
+
+describe("⚠ day-first dates", () => {
+  it("shows an ISO date the way people here write it", () => {
+    expect(isoToDisplayDate("2026-04-05")).toBe("05/04/2026");
+    expect(isoToDisplayDate("2026-12-31")).toBe("31/12/2026");
+  });
+
+  it("reads a typed date back, day first", () => {
+    expect(displayDateToIso("05/04/2026")).toBe("2026-04-05");
+    // ⚠ The whole point. Read month-first this is 4 May; it is 5 April.
+    expect(displayDateToIso("05/04/2026")).not.toBe("2026-05-04");
+  });
+
+  it("accepts a single-digit day and month", () => {
+    expect(displayDateToIso("5/4/2026")).toBe("2026-04-05");
+    expect(displayDateToIso("5/4/2026")).toBe(displayDateToIso("05/04/2026"));
+  });
+
+  it("is lenient about separators, because keyboards differ", () => {
+    for (const raw of ["05/04/2026", "05-04-2026", "05.04.2026", "05 04 2026", " 05/04/2026 "]) {
+      expect(displayDateToIso(raw)).toBe("2026-04-05");
+    }
+  });
+
+  it("⚠ REFUSES a date that does not exist rather than rolling it over", () => {
+    // `new Date("2026-02-31")` is the 3rd of March. A birthday typed wrongly
+    // must come back and ask, not quietly become a different day and end up on
+    // a register.
+    expect(displayDateToIso("31/02/2026")).toBeNull();
+    expect(displayDateToIso("30/02/2024")).toBeNull();
+    expect(displayDateToIso("32/01/2026")).toBeNull();
+    expect(displayDateToIso("05/13/2026")).toBeNull();
+  });
+
+  it("⚠ knows a leap year from a common one", () => {
+    expect(displayDateToIso("29/02/2024")).toBe("2024-02-29");
+    expect(displayDateToIso("29/02/2026")).toBeNull();
+  });
+
+  it("refuses anything that is not a date", () => {
+    for (const raw of ["", "  ", "tomorrow", "2026-04-05", "5/4/26", "5/4", "//", null, undefined]) {
+      expect(displayDateToIso(raw)).toBeNull();
+    }
+  });
+
+  it("survives a round trip in both directions", () => {
+    for (const iso of ["2026-01-01", "2026-04-05", "2024-02-29", "1999-12-31"]) {
+      expect(displayDateToIso(isoToDisplayDate(iso))).toBe(iso);
+    }
+  });
+
+  it("gives an empty string for nothing, so an empty box stays empty", () => {
+    expect(isoToDisplayDate("")).toBe("");
+    expect(isoToDisplayDate(null)).toBe("");
+    expect(isoToDisplayDate(undefined)).toBe("");
+    expect(isoToDisplayDate("not-a-date")).toBe("");
   });
 });

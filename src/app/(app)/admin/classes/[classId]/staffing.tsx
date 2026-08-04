@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { toggleAttendanceRight, addCover, removeCover, addTeacher, dropTeacher } from "./actions";
+import { DateField } from "@/components/ui/field";
 
 type ClassTeacherRow = {
   id: string;
@@ -287,26 +288,18 @@ export function Staffing({
             </label>
 
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              <label className="block">
-                <span className="block text-sm font-medium text-fg">First day</span>
-                <input
-                  type="date"
-                  value={from}
-                  required
-                  onChange={(e) => setFrom(e.target.value)}
-                  className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
+              <DateField
+                label="First day"
+                value={from}
+                required
+                onChange={(e) => setFrom(e.target.value)}
+              />
+              <DateField
+                label="Last day"
+                value={to}
+                required
+                onChange={(e) => setTo(e.target.value)}
                 />
-              </label>
-              <label className="block">
-                <span className="block text-sm font-medium text-fg">Last day</span>
-                <input
-                  type="date"
-                  value={to}
-                  required
-                  onChange={(e) => setTo(e.target.value)}
-                  className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
-                />
-              </label>
             </div>
 
             <label className="mt-3 block">
@@ -317,7 +310,7 @@ export function Staffing({
                 maxLength={200}
                 onChange={(e) => setReason(e.target.value)}
                 className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
-              />
+                />
             </label>
 
             <div className="mt-4 flex gap-2">

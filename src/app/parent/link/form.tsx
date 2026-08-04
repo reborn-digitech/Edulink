@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRightIcon, CheckCircleIcon, HandHeartIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { claimChild } from "@/app/join/actions";
@@ -123,10 +123,9 @@ export function ClaimChildForm({
         hint="On the letter from school, or in your child's profile."
       />
 
-      <TextField
+      <DateField
         label="Their date of birth"
         required
-        type="date"
         value={birthdate}
         error={errors.birthdate}
         onChange={(e) => setBirthdate(e.target.value)}

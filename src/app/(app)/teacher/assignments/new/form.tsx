@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { FilePicker } from "@/components/ui/file-picker";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
@@ -183,9 +183,8 @@ export function AssignmentForm({
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <TextField
+        <DateField
           label="Due date"
-          type="date"
           value={dueDate}
           error={errors.dueDate}
           onChange={(e) => setDueDate(e.target.value)}

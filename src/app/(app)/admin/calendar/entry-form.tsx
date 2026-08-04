@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { TextField, TextAreaField, SelectField } from "@/components/ui/field";
+import { DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { addCalendarEntry } from "./actions";
 
@@ -112,18 +112,16 @@ export function EntryForm({ today }: { today: string }) {
         ))}
       </SelectField>
 
-      <TextField
+      <DateField
         label={multiDay ? "Starts" : "Date"}
-        type="date"
         required
         value={start}
         onChange={(e) => setStart(e.target.value)}
       />
 
       {multiDay ? (
-        <TextField
+        <DateField
           label="Ends"
-          type="date"
           value={end}
           onChange={(e) => setEnd(e.target.value)}
           hint="Included — the last day the school is shut."

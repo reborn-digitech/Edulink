@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { TrophyIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { CheckboxField, TextAreaField, TextField } from "@/components/ui/field";
+import { CheckboxField, DateField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { createCompetitionAction } from "../actions";
 
@@ -98,25 +98,24 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
           maxLength={10}
           error={errors.gradeLow}
           placeholder="4"
-        />
+      />
         <TextField
           label="Highest year group"
           name="gradeHigh"
           maxLength={10}
           error={errors.gradeHigh}
           placeholder="6"
-        />
+      />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <TextField
+        <DateField
           label="Entries close"
           name="registrationClosesAt"
-          type="date"
           error={errors.registrationClosesAt}
         />
-        <TextField label="Starts" name="startsAt" type="date" error={errors.startsAt} />
-        <TextField label="Ends" name="endsAt" type="date" error={errors.endsAt} />
+        <DateField label="Starts" name="startsAt" error={errors.startsAt} />
+        <DateField label="Ends" name="endsAt" error={errors.endsAt} />
       </div>
 
       <TextAreaField
@@ -138,7 +137,7 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
         error={errors.externalUrl}
         hint="Optional, and must start with https://"
         placeholder="https://example.org/…"
-      />
+        />
 
       <CheckboxField
         name="requiresParentConsent"
@@ -146,7 +145,7 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
         label="Ask a parent before a child takes part"
         description="Leave this on unless the whole thing happens inside school and no child's details leave the building."
         error={errors.requiresParentConsent}
-      />
+        />
 
       <div className="flex flex-wrap items-center gap-3 pt-1">
         <Button type="submit" icon={<TrophyIcon weight="bold" />} disabled={pending}>

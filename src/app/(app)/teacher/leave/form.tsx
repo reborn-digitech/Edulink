@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { LEAVE_KINDS, LEAVE_KIND_LABEL, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
 import { apply, withdraw } from "./actions";
+import { DateField } from "@/components/ui/field";
 
 /**
  * Applying to be away.
@@ -98,26 +99,18 @@ export function LeaveForm({
           )}
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="block text-sm font-medium text-fg">First day away</span>
-              <input
-                type="date"
-                required
-                value={from}
-                onChange={(e) => setFrom(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
+            <DateField
+              label="First day away"
+              required
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+            />
+            <DateField
+              label="Last day away"
+              required
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
               />
-            </label>
-            <label className="block">
-              <span className="block text-sm font-medium text-fg">Last day away</span>
-              <input
-                type="date"
-                required
-                value={to}
-                onChange={(e) => setTo(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
-              />
-            </label>
           </div>
 
           <fieldset className="mt-4">
@@ -157,7 +150,7 @@ export function LeaveForm({
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-sm text-fg outline-none focus:border-accent"
-            />
+              />
           </label>
 
           <label className="mt-4 block">

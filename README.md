@@ -148,7 +148,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,011 tests) |
+| `npm test` | Full suite (1,020 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -167,7 +167,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 234 route/role/negative combinations
+mints a real session per role, requests all 235 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -1227,7 +1227,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 234 checks in
+**Every route referenced by the navigation renders.** All 235 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1389,6 +1389,42 @@ today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
 
+### Dates, and the last English word
+
+**`<input type="date">` renders in the BROWSER's locale and the page gets no
+say.** `lang="en-GB"` on the input, on a wrapper and on `<html>` were all tried
+in Chromium; all three still drew `mm/dd/yyyy`. So a school in Pune was being
+asked for the month first with nothing saying so — and **05/04 is two different
+days depending on who reads it**. On a birthday used to prove a parent's claim
+to a child, that is not cosmetic.
+
+`DateField` replaces all seventeen date inputs. What changed and what did not:
+
+- **Day-first for the human**: `dd/mm/yyyy`, everywhere, whatever the browser
+  thinks.
+- **ISO for everything else**: the value is still `YYYY-MM-DD`, submitted under
+  the same `name` by a hidden input, because that is what every action, query and
+  `dateKey` in this codebase already speaks. Nothing server-side changed.
+- **The native picker is kept**, not thrown away: a hidden `type="date"` sits
+  alongside and a calendar button opens it via `showPicker()`. If the browser
+  has no `showPicker`, the button hides itself rather than sitting there doing
+  nothing.
+- **`31/02/2026` is refused, not rolled to 3 March.** `new Date` would happily
+  roll it, and a birthday typed wrongly must come back and ask rather than
+  quietly become a different day. The round trip is the check — an explicit
+  bounds guard stood beside it until mutation testing showed nothing it rejected
+  could reach it, so it was deleted rather than kept as decoration.
+
+**And the last English word.** `(required)` was screen-reader-only text in the
+shared `Field`, so a fully translated Marathi login form still announced one
+English word — to exactly the readers least able to work around it. Sighted
+users get the red asterisk; this is what the asterisk MEANS, and it is now
+translated in all three languages. The date MASK is deliberately not: `dd/mm/yyyy`
+is a shape, not prose, and दद/मम/वववव is a pattern nobody has seen on a form, a
+passport or a bank slip. `i18n.test.ts` lists it beside the example email address
+as shared-with-English on purpose, so the check that everything else IS
+translated stays a real check.
+
 ### Onboarding a school by hand, and the five things it found
 
 **The first time anybody clicked the whole chain.** Superuser → create a school
@@ -1426,9 +1462,8 @@ is the credential — but it now says so before you press the button), and
 `/join/student` and `/join/parent` still redirect a signed-in visitor, because
 they are reached from `/join`, which is the screen that explains it.
 
-**Not fixed, and small:** `(required)` on form fields is untranslated, and the
-native date input follows the browser's locale rather than the school's, so an
-Indian school sees `mm/dd/yyyy`. Both are noted under Known issues.
+**Both of the small ones are now fixed too** — see *Dates, and the last English
+word* below.
 
 ### The role-by-role audit, and the eight things it found
 
@@ -1490,15 +1525,6 @@ next run rather than in a role audit six months later.
   npm run db:grants
   ```
 
-- **`(required)` and a handful of form-field words are untranslated.** i18n
-  coverage is partial and documented as such, but this one shows up on the login
-  page, which IS translated — so a Marathi reader meets one English word in the
-  middle of a Marathi form. Found by switching the language on `/login`.
-- **A native date input follows the BROWSER's locale, not the school's.** A
-  school in Asia/Kolkata still gets `mm/dd/yyyy` on the pupil-join birthday
-  field if the browser is en-US. `<input type="date">` gives no control over
-  this; fixing it means replacing it with three selects, which is its own change
-  and a worse experience for everybody whose browser is already right.
 - **`isTeachingDay` is one school's week, not a setting.** Mon–Sat is hardcoded,
   in one function, on purpose: making it per-school later is a change to that
   body plus a column on `School`, rather than a hunt through inlined

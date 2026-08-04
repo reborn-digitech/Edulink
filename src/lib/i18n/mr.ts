@@ -84,6 +84,14 @@ export const mr: Dictionary = {
     applyLeaveHint: "मुख्याध्यापकांकडे रजा मागा",
   },
 
+  field: {
+    required: "(आवश्यक)",
+    datePlaceholder: "dd/mm/yyyy",
+    dateHint: "दिवस, महिना, वर्ष — उदाहरण 05/04/2026",
+    dateInvalid: "तारीख dd/mm/yyyy स्वरूपात द्या",
+    openCalendar: "कॅलेंडर उघडा",
+  },
+
   shell: {
     mainNav: "मुख्य",
     search: "शोधा",
