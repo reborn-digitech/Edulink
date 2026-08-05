@@ -73,6 +73,8 @@ export default async function ExpertProfilePage() {
             organisation={profile.organisation}
             specialisms={profile.specialisms}
             timezone={profile.timezone}
+        offering={profile.offering}
+        mentorCapacity={profile.mentorCapacity}
           />
         </CardBody>
       </Card>

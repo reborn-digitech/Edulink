@@ -6,6 +6,7 @@ import { PlusIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { save } from "./actions";
+import { EXPERT_OFFERINGS, EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
 
 type Props = {
   headline: string;
@@ -13,6 +14,8 @@ type Props = {
   organisation: string | null;
   specialisms: string[];
   timezone: string;
+  offering: ExpertOffering;
+  mentorCapacity: number | null;
 };
 
 const MAX_SPECIALISMS = 12;
@@ -30,7 +33,15 @@ const MAX_SPECIALISMS = 12;
  * cannot be the one who sets it. Saying so on the page is better than a control
  * that quietly does nothing.
  */
-export function ProfileForm({ headline, bio, organisation, specialisms, timezone }: Props) {
+export function ProfileForm({
+  headline,
+  bio,
+  organisation,
+  specialisms,
+  timezone,
+  offering,
+  mentorCapacity,
+}: Props) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -42,6 +53,10 @@ export function ProfileForm({ headline, bio, organisation, specialisms, timezone
   const [zone, setZone] = useState(timezone);
   const [tags, setTags] = useState<string[]>(specialisms);
   const [draft, setDraft] = useState("");
+  const [offer, setOffer] = useState<ExpertOffering>(offering);
+  const [capacity, setCapacity] = useState(mentorCapacity === null ? "" : String(mentorCapacity));
+
+  const mentors = offer !== "SESSIONS";
 
   function addTag() {
     const value = draft.trim();
@@ -64,6 +79,11 @@ export function ProfileForm({ headline, bio, organisation, specialisms, timezone
         organisation: org,
         specialisms: tags,
         timezone: zone,
+        offering: offer,
+        // Only sent when it means something. The library nulls it anyway for a
+        // sessions-only expert; sending it would be the client asserting a
+        // promise its own form is no longer showing.
+        mentorCapacity: mentors && capacity.trim() !== "" ? Number(capacity) : null,
       });
       if (!result.ok) {
         setError(result.error ?? "That did not save.");
@@ -179,6 +199,61 @@ export function ProfileForm({ headline, bio, organisation, specialisms, timezone
           </Button>
         </div>
       </div>
+
+      {/*
+        WHAT THEY ARE OFFERING, and it is the one answer on this form that
+        changes what other people may do to them. A school cannot book a session
+        with somebody who only mentors, and cannot pair a child with somebody
+        who only gives workshops — enforced in `experts.ts` and `mentoring.ts`,
+        not merely filtered here.
+      */}
+      <fieldset className="rounded-[--radius-md] border border-border p-4">
+        <legend className="px-1 text-sm font-medium text-fg">What are you offering?</legend>
+        <div className="space-y-2">
+          {EXPERT_OFFERINGS.map((value) => (
+            <label key={value} className="flex cursor-pointer items-start gap-3">
+              <input
+                type="radio"
+                name="offering"
+                checked={offer === value}
+                onChange={() => setOffer(value)}
+                className="mt-1 size-4 shrink-0 accent-[--accent]"
+              />
+              <span className="min-w-0">
+                <span className="block text-sm font-medium text-fg">
+                  {EXPERT_OFFERING_META[value].label}
+                </span>
+                <span className="block text-xs leading-relaxed text-fg-muted">
+                  {EXPERT_OFFERING_META[value].hint}
+                </span>
+              </span>
+            </label>
+          ))}
+        </div>
+
+        {/* Hidden rather than disabled when it means nothing: a greyed-out
+            number still reads as a promise somebody made. */}
+        {mentors && (
+          <label className="mt-4 block border-t border-border pt-4">
+            <span className="block text-sm font-medium text-fg">
+              How many children at once?
+            </span>
+            <span className="block text-xs leading-relaxed text-fg-muted">
+              A cap, not a target. Schools cannot pair another child with you past this.
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              min={1}
+              max={50}
+              value={capacity}
+              onChange={(e) => setCapacity(e.target.value)}
+              placeholder="3"
+              className="mt-1.5 min-h-11 w-28 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            />
+          </label>
+        )}
+      </fieldset>
 
       <label className="block">
         <span className="block text-sm font-medium text-fg">Your timezone</span>

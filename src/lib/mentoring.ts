@@ -205,9 +205,31 @@ export async function createMentorship(
 
   const expert = await db.expertProfile.findFirst({
     where: { id: input.expertProfileId, publishedAt: { not: null } },
-    select: { id: true, userId: true, user: { select: { name: true } } },
+    select: {
+      id: true,
+      userId: true,
+      offering: true,
+      mentorCapacity: true,
+      user: { select: { name: true } },
+    },
   });
   if (!expert) throw new AccessError("No such expert", "NOT_FOUND");
+
+  /**
+   * WHAT THEY AGREED TO, enforced rather than displayed.
+   *
+   * An hour's workshop for a hall and a term with one eleven-year-old are
+   * different commitments, and until `offering` existed every published expert
+   * was silently available for both. A school pairing a child with somebody who
+   * only ever offered to give a talk is not a UI mistake; it is a safeguarding
+   * one, because the child is then told they have a mentor.
+   */
+  if (expert.offering === "SESSIONS") {
+    throw new AccessError(
+      `${expert.user.name} offers workshops and sessions rather than mentoring.`,
+    );
+  }
+
 
   // Scoped find: a membership id from another school does not resolve.
   const student = await db.membership.findFirst({
@@ -226,6 +248,35 @@ export async function createMentorship(
     select: { id: true },
   });
   if (existing) return { threadId: existing.id };
+
+  /**
+   * CLAIM A PLACE, and this is the same shape as claiming a slot in
+   * `experts.ts` for the same reason: two schools reaching for an expert's last
+   * place at the same moment is the ordinary case in a shared marketplace, and
+   * "count, then write" lets both through.
+   *
+   * So it is a CONDITIONAL UPDATE — the cap is in the WHERE — and the loser
+   * sees zero rows affected. `activeMentorships` lives on ExpertProfile rather
+   * than being counted from MentorThread because that table is school-scoped:
+   * an admin counting it sees only their own school and would wave this expert
+   * past their limit at every school after the first. See the schema note.
+   */
+  if (expert.mentorCapacity !== null) {
+    const claimed = await db.expertProfile.updateMany({
+      where: { id: expert.id, activeMentorships: { lt: expert.mentorCapacity } },
+      data: { activeMentorships: { increment: 1 } },
+    });
+    if (claimed.count === 0) {
+      throw new AccessError(
+        `${expert.user.name} is already mentoring as many children as they have agreed to.`,
+      );
+    }
+  } else {
+    await db.expertProfile.update({
+      where: { id: expert.id },
+      data: { activeMentorships: { increment: 1 } },
+    });
+  }
 
   const thread = await db.mentorThread.create({
     data: {
@@ -308,9 +359,29 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
     throw new AccessError("Only the school or a guardian can end a mentorship");
   }
 
+  // ALREADY CLOSED IS A NO-OP, and it has to be checked rather than assumed.
+  // Two people ending the same mentorship — the school and the guardian, on the
+  // same afternoon — would otherwise release the expert's place twice and let
+  // them be given a child over their cap.
+  if (thread.status === "CLOSED") return;
+
   await db.mentorThread.update({
     where: { id: threadId },
     data: { status: "CLOSED", closedAt: new Date() },
+  });
+
+  /**
+   * The place goes back. A cap that only ever counts up silently retires an
+   * expert the moment their third pupil moves on, and nothing tells them why
+   * schools stopped asking.
+   *
+   * Floored at zero rather than decremented blindly: this counter is
+   * denormalised, and the one thing worse than a drifting count is a negative
+   * one that reads as infinite capacity.
+   */
+  await db.expertProfile.updateMany({
+    where: { id: thread.expertProfileId, activeMentorships: { gt: 0 } },
+    data: { activeMentorships: { decrement: 1 } },
   });
 
   await audit({

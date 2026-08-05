@@ -480,3 +480,163 @@ export async function listServerAudit(
     at: row.createdAt,
   }));
 }
+
+/* -------------------------------------------------------------------------- */
+/* Curating the expert marketplace                                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE MISSING HALF OF A FEATURE THAT WAS OTHERWISE FINISHED.
+ *
+ * `ExpertProfile.publishedAt` has always been the curation gate, and it works:
+ * an unpublished expert is invisible to every school, cannot be booked, and
+ * cannot be paired with a child. What did not exist was anything that SET it.
+ * Only `prisma/seed.ts` ever wrote the column, so on a real installation no
+ * expert could reach the marketplace at all without somebody opening psql — a
+ * whole built feature standing behind a door with no handle. The same class of
+ * bug as the empty VAPID keys and the unused AUTH_SECRET, and found the same
+ * way: by asking what proves the data moved end to end.
+ *
+ * WHY THIS BELONGS TO THE OPERATOR AND NOT TO A SCHOOL. An expert belongs to no
+ * school — that is the point of the marketplace — so no school is in a position
+ * to vouch for one, and a school that could publish would be publishing an
+ * adult to every OTHER school on the installation. Admins and teachers may
+ * still INVITE an expert; what an invitation buys is a profile, not an
+ * audience. Approval is the operator's, which is what makes "subject to
+ * approval" true rather than a sentence in a document.
+ *
+ * NO POLICY CHANGE WAS NEEDED, and that is worth saying because the rest of
+ * this file is about a boundary held in Postgres. ExpertProfile is in
+ * NO_SCHOOL_POLICY — it holds no school-owned rows — so an operator writing it
+ * is not a widening of `SUPERUSER_TABLES`, and they still cannot read a single
+ * register. `verifiedAt` is set alongside because the two answer different
+ * questions: published is "may schools see this person", verified is "has a
+ * human checked who they are", and a marketplace that conflates them is one
+ * where being listed implies being checked.
+ */
+
+export type CurationEntry = {
+  profileId: string;
+  userId: string;
+  name: string;
+  email: string | null;
+  headline: string;
+  bio: string;
+  organisation: string | null;
+  specialisms: string[];
+  offering: string;
+  mentorCapacity: number | null;
+  activeMentorships: number;
+  publishedAt: Date | null;
+  verifiedAt: Date | null;
+  createdAt: Date;
+};
+
+/**
+ * Every expert profile on the installation, unpublished first.
+ *
+ * UNPUBLISHED FIRST because that is the queue. A list sorted by name buries the
+ * three people waiting to be looked at underneath forty who were dealt with
+ * months ago, and a queue nobody can find is a queue nobody works.
+ */
+export async function listExpertsForCuration(session: ActiveContext): Promise<CurationEntry[]> {
+  assertSuperuser(session);
+
+  const profiles = await db.expertProfile.findMany({
+    orderBy: [{ publishedAt: "asc" }, { createdAt: "asc" }],
+    take: 500,
+    select: {
+      id: true,
+      userId: true,
+      headline: true,
+      bio: true,
+      organisation: true,
+      specialisms: true,
+      offering: true,
+      mentorCapacity: true,
+      activeMentorships: true,
+      publishedAt: true,
+      verifiedAt: true,
+      createdAt: true,
+      user: { select: { name: true, email: true } },
+    },
+  });
+
+  return profiles.map((profile) => ({
+    profileId: profile.id,
+    userId: profile.userId,
+    name: profile.user.name,
+    email: profile.user.email,
+    headline: profile.headline,
+    bio: profile.bio,
+    organisation: profile.organisation,
+    specialisms: readJson<string[]>(profile.specialisms, []),
+    offering: profile.offering,
+    mentorCapacity: profile.mentorCapacity,
+    activeMentorships: profile.activeMentorships,
+    publishedAt: profile.publishedAt,
+    verifiedAt: profile.verifiedAt,
+    createdAt: profile.createdAt,
+  }));
+}
+
+export type CurationResult = { ok: true } | { ok: false; error: string };
+
+/**
+ * Puts an expert in front of schools, or takes them back out.
+ *
+ * `verified` is a SEPARATE argument rather than being implied by publishing,
+ * because they are separate claims and the marketplace shows a badge for the
+ * second. An operator who has read a profile and thinks it is reasonable may
+ * publish; only one who has actually checked an identity should verify.
+ *
+ * REFUSES TO PUBLISH AN EMPTY PROFILE. `updateOwnProfile` requires a headline,
+ * but a profile created by accepting an invitation has whatever the invitation
+ * carried — which can be nothing. Publishing that puts a blank card in a
+ * marketplace and tells a school it has been curated.
+ */
+export async function setExpertStanding(
+  session: ActiveContext,
+  profileId: string,
+  next: { published: boolean; verified: boolean },
+): Promise<CurationResult> {
+  assertSuperuser(session);
+
+  const profile = await db.expertProfile.findUnique({
+    where: { id: profileId },
+    select: { id: true, headline: true, publishedAt: true, user: { select: { name: true } } },
+  });
+  if (!profile) return { ok: false, error: "No such expert." };
+
+  if (next.published && profile.headline.trim().length < 3) {
+    return {
+      ok: false,
+      error: "That profile has no headline yet. Ask them to fill it in before you list them.",
+    };
+  }
+
+  // UNPUBLISHING DOES NOT END ANYTHING ALREADY AGREED. Existing bookings and
+  // mentorships stay exactly as they were: a school that has arranged an hour
+  // next Tuesday, or a child who has a mentor, must not have it removed
+  // silently because somebody was taken off a list. It stops them being found.
+  await db.expertProfile.update({
+    where: { id: profileId },
+    data: {
+      publishedAt: next.published ? (profile.publishedAt ?? new Date()) : null,
+      verifiedAt: next.verified ? new Date() : null,
+      verifiedBy: next.verified ? session.user.id : null,
+    },
+  });
+
+  // No schoolId: an operator's actions belong to the operator and land in no
+  // tenant's Safety Centre. See the NULL_SCHOOL_WRITABLE note in gen-rls.ts.
+  await audit({
+    actorUserId: session.user.id,
+    action: next.published ? "expert.publish" : "expert.unpublish",
+    targetType: "ExpertProfile",
+    targetId: profileId,
+    meta: { name: profile.user.name, verified: next.verified },
+  });
+
+  return { ok: true };
+}

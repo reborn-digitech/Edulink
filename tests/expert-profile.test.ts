@@ -1,7 +1,9 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
-import { getOwnProfile, updateOwnProfile } from "@/lib/experts";
+import { getOwnProfile, updateOwnProfile,
+  type ProfileInput,
+} from "@/lib/experts";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -57,12 +59,14 @@ let expert: ActiveContext;
 let profileId: string;
 let outsider: ActiveContext;
 
-const BASE = {
+const BASE: ProfileInput = {
   headline: "Careers adviser",
   bio: "Fifteen years in engineering.",
   organisation: "Somewhere Ltd",
   specialisms: ["Careers", "Engineering"],
   timezone: "Asia/Kolkata",
+  offering: "BOTH",
+  mentorCapacity: 3,
 };
 
 beforeAll(async () => {

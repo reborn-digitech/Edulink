@@ -1466,6 +1466,37 @@ model ExpertProfile {
   /// Where they work, for a school choosing between them. Free text.
   organisation String?
 
+  /// SESSIONS | MENTORING | BOTH — what this person is actually offering.
+  ///
+  /// A ONE-OFF WORKSHOP AND A YEAR OF MENTORING ARE DIFFERENT COMMITMENTS, and
+  /// until this column existed the marketplace could not tell them apart: every
+  /// published expert appeared bookable for a session AND pairable with a
+  /// child, whatever they had agreed to. A retired engineer happy to talk to a
+  /// hall for an hour was one click away from being made responsible for one
+  /// eleven-year-old for a term.
+  offering String @default("BOTH")
+
+  /// How many children they will mentor at once. NULL means they have not said.
+  ///
+  /// Enforced when a mentorship is created, not merely displayed — a cap that
+  /// is only a label is a cap the tenth school to call ignores.
+  mentorCapacity Int?
+
+  /// How many they are mentoring right now, DENORMALISED for exactly the reason
+  /// `ExpertSlot.bookedAt` is.
+  ///
+  /// The cap is global — somebody who said "three children" meant three, not
+  /// three per school — but `MentorThread` is school-scoped by policy, so an
+  /// admin at one school counting them sees only their own and would wave the
+  /// expert past their limit at every school after the first. Counting across
+  /// schools would mean widening the tenant boundary to a table full of
+  /// children's names, to answer a question that is only ever a number.
+  ///
+  /// So the number lives here, on the row that belongs to no school. Claimed
+  /// with a conditional UPDATE like a slot, so two schools booking the last
+  /// place at the same moment cannot both win.
+  activeMentorships Int @default(0)
+
   /// Curation. Null means invisible to every school.
   publishedAt DateTime?
   /// Set when a human has actually checked who this person is.

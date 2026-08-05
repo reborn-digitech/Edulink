@@ -3,6 +3,7 @@ import { randomBytes, createHash } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
+import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
 import type { ActiveContext } from "./session";
@@ -221,6 +222,10 @@ export type MarketplaceExpert = {
   organisation: string | null;
   specialisms: string[];
   verified: boolean;
+  /** What they agreed to do, so a school is not offered a button that refuses. */
+  offering: ExpertOffering;
+  mentorCapacity: number | null;
+  mentoringOpen: boolean;
   openSlots: { id: string; startsAt: Date; endsAt: Date; note: string | null }[];
 };
 
@@ -258,6 +263,17 @@ export async function listMarketplace(
       organisation: expert.organisation,
       specialisms: readJsonArray<string>(expert.specialisms),
       verified: expert.verifiedAt !== null,
+      offering: expert.offering as ExpertOffering,
+      mentorCapacity: expert.mentorCapacity,
+      /**
+       * WHETHER THEY CAN STILL TAKE ONE. Shown so a school does not compose a
+       * request to somebody who is full and meet the refusal afterwards — the
+       * cap is enforced in `mentoring.ts` either way, and a page that hides it
+       * turns an honest limit into a dead end.
+       */
+      mentoringOpen:
+        expert.offering !== "SESSIONS" &&
+        (expert.mentorCapacity === null || expert.activeMentorships < expert.mentorCapacity),
       openSlots: expert.slots.map((slot) => ({
         id: slot.id,
         startsAt: slot.startsAt,
@@ -303,10 +319,18 @@ export async function bookSlot(
       cancelledAt: true,
       bookedAt: true,
       expertProfileId: true,
-      expert: { select: { publishedAt: true, userId: true, user: { select: { name: true } } } },
+      expert: {
+        select: { publishedAt: true, offering: true, userId: true, user: { select: { name: true } } },
+      },
     },
   });
   if (!slot || !slot.expert.publishedAt) throw new AccessError("No such slot", "NOT_FOUND");
+  // WHAT THEY AGREED TO DO, checked rather than assumed. An expert offering
+  // mentoring only may still have slots — mentors and mentees arrange times —
+  // and those are not a school's to book for a workshop.
+  if (slot.expert.offering === "MENTORING") {
+    throw new AccessError("This expert is offering mentoring rather than sessions", "NOT_FOUND");
+  }
   if (slot.cancelledAt) throw new AccessError("That time is no longer offered");
   if (slot.startsAt.getTime() < Date.now()) throw new AccessError("That time has already passed");
 
@@ -641,6 +665,8 @@ export type OwnProfile = {
   organisation: string | null;
   specialisms: string[];
   timezone: string;
+  offering: ExpertOffering;
+  mentorCapacity: number | null;
   published: boolean;
   verified: boolean;
 };
@@ -664,6 +690,8 @@ export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile>
       organisation: true,
       specialisms: true,
       timezone: true,
+      offering: true,
+      mentorCapacity: true,
       publishedAt: true,
       verifiedAt: true,
     },
@@ -676,6 +704,8 @@ export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile>
     organisation: profile.organisation,
     specialisms: readJsonArray<string>(profile.specialisms),
     timezone: profile.timezone,
+    offering: profile.offering as ExpertOffering,
+    mentorCapacity: profile.mentorCapacity,
     published: profile.publishedAt !== null,
     verified: profile.verifiedAt !== null,
   };
@@ -687,6 +717,9 @@ export type ProfileInput = {
   organisation?: string | null;
   specialisms: string[];
   timezone: string;
+  offering: ExpertOffering;
+  /** Only meaningful when they mentor at all; ignored otherwise. */
+  mentorCapacity?: number | null;
 };
 
 const MAX_SPECIALISMS = 12;
@@ -746,6 +779,39 @@ export async function updateOwnProfile(
     throw new AccessError("That is not a timezone this server knows");
   }
 
+  /**
+   * WHAT THEY ARE OFFERING, validated against the list rather than trusted.
+   *
+   * This is the one field on this form that changes what other people may DO to
+   * them — a school cannot book a session with somebody offering mentoring
+   * only, and cannot pair a child with somebody offering sessions only. So an
+   * unrecognised value is refused rather than defaulted: silently falling back
+   * to BOTH would widen the commitment of whoever sent it.
+   */
+  if (!EXPERT_OFFERINGS.includes(input.offering)) {
+    throw new AccessError("Say whether you are offering sessions, mentoring, or both");
+  }
+
+  /**
+   * The cap, which only means anything if they mentor at all.
+   *
+   * Nulled when they are not mentoring, so a person who switches to sessions
+   * only does not leave a stale number behind for somebody to read as consent.
+   */
+  const mentors = input.offering !== "SESSIONS";
+  let mentorCapacity: number | null = null;
+  if (mentors && input.mentorCapacity !== null && input.mentorCapacity !== undefined) {
+    const capacity = Math.floor(input.mentorCapacity);
+    if (!Number.isFinite(capacity) || capacity < 1) {
+      throw new AccessError("How many children will you mentor at once? Use 1 or more.");
+    }
+    // A ceiling, because the number is a promise to children. Somebody typing
+    // 500 has misunderstood what they are agreeing to, and the honest response
+    // is to say so rather than to record it.
+    if (capacity > 50) throw new AccessError("That is more children than one person can mentor");
+    mentorCapacity = capacity;
+  }
+
   await db.expertProfile.update({
     where: { id: profile.id },
     data: {
@@ -754,6 +820,8 @@ export async function updateOwnProfile(
       organisation: input.organisation?.trim() || null,
       specialisms: writeJson(specialisms),
       timezone,
+      offering: input.offering,
+      mentorCapacity,
     },
   });
 

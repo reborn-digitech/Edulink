@@ -760,6 +760,10 @@ async function operatorArea() {
   // the installation, which is precisely what a tenant must not see.
   await check(actor, "/root/audit", 307, "⚠ …as is the server log");
   await check(null, "/root/audit", 307, "…to nobody at all either");
+  // The marketplace queue names every expert on the installation, so it is as
+  // closed as the rest of this area.
+  await check(actor, "/root/experts", 307, "⚠ …as is the expert queue");
+  await check(null, "/root/experts", 307, "…to nobody at all either");
 
   try {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: true } });
@@ -768,6 +772,10 @@ async function operatorArea() {
     // The operator's own trail. Written with schoolId NULL since superusers
     // existed, and until now nothing in the app could read it.
     await check(actor, "/root/audit", 200, "⚠ …and may read what they have done");
+    // THE DOOR THAT HAD NO HANDLE. `publishedAt` has always gated the
+    // marketplace and nothing in the app could set it — only the seed — so no
+    // expert could ever be listed on a real installation.
+    await check(actor, "/root/experts", 200, "⚠ …and may list an expert on the marketplace");
   } finally {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
   }

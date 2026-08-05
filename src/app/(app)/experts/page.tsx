@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { BookButton } from "./book-button";
 import { getT } from "@/lib/i18n/server";
+import { EXPERT_OFFERING_META } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Experts" };
 
@@ -102,7 +103,36 @@ export default async function ExpertsPage() {
                       </div>
                     )}
 
-                    {expert.openSlots.length === 0 ? (
+                    {/*
+                      WHAT THEY AGREED TO DO, said plainly. A published expert
+                      used to appear identically whether they had offered an
+                      hour's workshop or a term with one child, and a school
+                      could act on either. Both are now refused server-side; this
+                      is so the refusal is never a surprise.
+                    */}
+                    <p className="text-xs font-medium text-fg-muted">
+                      {EXPERT_OFFERING_META[expert.offering].label}
+                      {expert.offering !== "SESSIONS" && (
+                        <>
+                          {" · "}
+                          {expert.mentoringOpen
+                            ? expert.mentorCapacity === null
+                              ? "taking mentees"
+                              : `up to ${expert.mentorCapacity} at a time`
+                            : "not taking more mentees just now"}
+                        </>
+                      )}
+                    </p>
+
+                    {expert.offering === "MENTORING" ? (
+                      // Their times are for mentoring, and a school cannot take
+                      // one for a workshop. Offering the button would be
+                      // offering something the server refuses.
+                      <p className="text-xs text-fg-muted">
+                        Available for mentoring rather than sessions. Set a mentorship up from
+                        Mentoring.
+                      </p>
+                    ) : expert.openSlots.length === 0 ? (
                       <p className="text-xs text-fg-muted">No free times at the moment.</p>
                     ) : (
                       <ul className="space-y-2">

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { updateOwnProfile } from "@/lib/experts";
+import type { ExpertOffering } from "@/lib/constants";
 
 type Result = { ok: boolean; error?: string };
 
@@ -12,6 +13,8 @@ export async function save(input: {
   organisation: string;
   specialisms: string[];
   timezone: string;
+  offering: ExpertOffering;
+  mentorCapacity: number | null;
 }): Promise<Result> {
   try {
     await updateOwnProfile(await requireApiUser(), input);

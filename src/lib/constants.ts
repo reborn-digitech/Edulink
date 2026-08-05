@@ -80,6 +80,28 @@ export const COMPETITION_ENTRY_STATUSES = ["REGISTERED", "SUBMITTED", "RESULTS"]
 export type CompetitionEntryStatus = (typeof COMPETITION_ENTRY_STATUSES)[number];
 
 export const GUARDIAN_RELATIONS = ["PARENT", "GUARDIAN", "OTHER"] as const;
+
+/**
+ * What an expert is offering, which is not one thing.
+ *
+ * A one-off workshop for a hall and a term of mentoring one child are different
+ * commitments, and somebody willing to do the first is not thereby willing to do
+ * the second. Before this every published expert was silently offered for both.
+ */
+export const EXPERT_OFFERINGS = ["SESSIONS", "MENTORING", "BOTH"] as const;
+export type ExpertOffering = (typeof EXPERT_OFFERINGS)[number];
+
+export const EXPERT_OFFERING_META: Record<ExpertOffering, { label: string; hint: string }> = {
+  SESSIONS: {
+    label: "Workshops and sessions",
+    hint: "One-off talks or virtual sessions a school books for a class or a year group.",
+  },
+  MENTORING: {
+    label: "Mentoring one child at a time",
+    hint: "A continuing relationship with one pupil, with their guardian's agreement.",
+  },
+  BOTH: { label: "Both", hint: "Available for sessions and for mentoring." },
+};
 export type GuardianRelation = (typeof GUARDIAN_RELATIONS)[number];
 
 /* -------------------------------------------------------------------------- */

@@ -38,6 +38,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {/* The one other place in here. A trail written and never read is
                 not a trail, and until this link existed there was no page at
                 all that could show an operator what they had done. */}
+            {/*
+              The marketplace queue. An expert profile is invisible to every
+              school until somebody here publishes it, and until this page
+              existed nothing in the application could — only the seed wrote
+              that column, so a finished feature stood behind a door with no
+              handle.
+            */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/experts">Experts</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/audit">Server log</Link>
             </Button>
