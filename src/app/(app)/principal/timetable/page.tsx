@@ -34,6 +34,7 @@ export default async function ClassTimetablesPage({
   searchParams: Promise<{ class?: string; week?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   // ADMIN too — they build these, and being sent to the editor to read one
   // week's cover would be a detour. The editor stays theirs alone.
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
@@ -68,21 +69,21 @@ export default async function ClassTimetablesPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Class timetables</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Any class, any week — with cover and closures already worked in.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("principal.classTimetables")}
+        </h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("principal.classTimetablesBody")}</p>
       </div>
 
       {classes.length === 0 ? (
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-          title="No classes yet"
-          description="There is nothing to timetable until this school has classes."
+          title={t("principal.noClasses")}
+          description={t("principal.nothingToTimetable")}
         />
       ) : (
         <>
-          <nav aria-label="Choose a class" className="flex flex-wrap gap-2">
+          <nav aria-label={t("principal.chooseClass")} className="flex flex-wrap gap-2">
             {classes.map((klass) => (
               <Link
                 key={klass.id}
@@ -100,29 +101,31 @@ export default async function ClassTimetablesPage({
             ))}
           </nav>
 
-          <nav aria-label="Week" className="flex flex-wrap items-center gap-2">
+          <nav aria-label={t("principal.week")} className="flex flex-wrap items-center gap-2">
             <Link
               href={link(previous, selected?.id)}
               className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
             >
-              ← Previous
+              {t("principal.previous")}
             </Link>
             {!isThisWeek && (
               <Link
                 href={link(weekStartKey(today), selected?.id)}
                 className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
               >
-                This week
+                {t("principal.thisWeek")}
               </Link>
             )}
             <span className="px-1 text-sm font-medium text-fg">
-              Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
+              {t("principal.weekOf", {
+                date: formatDateKey(monday, { day: "numeric", month: "long" }, locale),
+              })}
             </span>
             <Link
               href={link(next, selected?.id)}
               className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
             >
-              Next →
+              {t("principal.next")}
             </Link>
           </nav>
 
@@ -136,10 +139,11 @@ export default async function ClassTimetablesPage({
             >
               <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
               <span>
-                {gaps.length} {gaps.length === 1 ? "lesson has" : "lessons have"} a teacher on leave
-                and no cover this week.{" "}
+                {gaps.length === 1
+                  ? t("principal.gapsOne")
+                  : t("principal.gapsMany", { count: gaps.length })}{" "}
                 <Link href="/principal/leave" className="underline underline-offset-4">
-                  Arrange cover
+                  {t("principal.arrangeCover")}
                 </Link>
               </span>
             </p>
@@ -150,13 +154,15 @@ export default async function ClassTimetablesPage({
               <CardHeader
                 title={selected.name}
                 description={
-                  unstaffed.length > 0
-                    ? `${unstaffed.length} ${unstaffed.length === 1 ? "lesson has" : "lessons have"} no teacher assigned at all.`
-                    : "Every lesson has a teacher assigned."
+                  unstaffed.length === 0
+                    ? t("principal.everyLessonStaffed")
+                    : unstaffed.length === 1
+                      ? t("principal.unstaffedOne")
+                      : t("principal.unstaffedMany", { count: unstaffed.length })
                 }
               />
               <CardBody>
-                <WeekGridView {...grid} showTeacher emptyLabel="Free" locale={locale} />
+                <WeekGridView {...grid} showTeacher emptyLabel={t("timetable.free")} locale={locale} />
               </CardBody>
             </Card>
           )}

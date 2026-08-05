@@ -21,8 +21,13 @@ export default async function NewClassPage() {
     select: { gradeLow: true, gradeHigh: true },
   });
   const grades = gradesInRange(school.gradeLow, school.gradeHigh);
+  // ⚠ THE JOINER IS A WORD TOO. This lands inside `classes.schoolTeaches`,
+  // which is translated — so an English "to" here produced "यह स्कूल K to 6
+  // पढ़ाता है", one English word in the middle of a Hindi sentence.
   const gradeRangeLabel =
-    school.gradeLow && school.gradeHigh ? `${school.gradeLow} to ${school.gradeHigh}` : null;
+    school.gradeLow && school.gradeHigh
+      ? t("calendar.rangeTo", { from: school.gradeLow, to: school.gradeHigh })
+      : null;
 
   const teachers = await db.membership.findMany({
     where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null },

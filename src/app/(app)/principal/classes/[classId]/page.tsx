@@ -21,6 +21,7 @@ import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../../window-picker";
 import { getLocale, getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -47,6 +48,7 @@ export default async function PrincipalClassPage({
   searchParams: Promise<{ days?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { classId } = await params;
   const { days } = await searchParams;
@@ -100,7 +102,7 @@ export default async function PrincipalClassPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Dashboard
+        {t("principal.dashboard")}
       </Link>
 
       <div className="flex flex-wrap items-end justify-between gap-3">
@@ -110,9 +112,14 @@ export default async function PrincipalClassPage({
             {data.klass.section ? ` · ${data.klass.section}` : ""}
           </h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {data.pupils.length} pupil{data.pupils.length === 1 ? "" : "s"} ·{" "}
-            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale)} to{" "}
-            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale)}
+            {data.pupils.length === 1
+              ? t("principal.pupilsOne")
+              : t("principal.pupilsMany", { count: data.pupils.length })}{" "}
+            ·{" "}
+            {t("principal.rangeTo", {
+              from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale),
+              to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale),
+            })}
           </p>
         </div>
         <WindowPicker days={span} />
@@ -128,9 +135,11 @@ export default async function PrincipalClassPage({
               <CertificateIcon weight="duotone" className="size-6" />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block font-semibold text-fg">Write report cards</span>
+              <span className="block font-semibold text-fg">
+                {t("principal.writeReportCards")}
+              </span>
               <span className="block text-xs text-fg-muted">
-                You are this class&rsquo;s teacher, so these are yours to write
+                {t("principal.writeReportCardsBody")}
               </span>
             </span>
             <ArrowSquareOutIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
@@ -143,30 +152,35 @@ export default async function PrincipalClassPage({
         <Card>
           <CardHeader
             icon={<WarningIcon weight="duotone" className="size-5" />}
-            title="Worth a look"
-            description="Flagged against a threshold, not ranked"
+            title={t("principal.worthALook")}
+            description={t("principal.worthALookBody")}
           />
           <CardBody className="space-y-3">
             {concerns.length > 0 && (
               <div>
                 <p className="text-xs font-medium text-fg">
-                  Attendance below {ATTENDANCE_CONCERN_PERCENT}%
+                  {t("principal.attendanceBelow", { percent: ATTENDANCE_CONCERN_PERCENT })}
                 </p>
                 <p className="mt-1 text-sm text-fg-muted">
-                  {concerns.map((p) => `${p.name} (${p.attendancePercent}%)`).join(", ")}
+                  {concerns
+                    .map((p) =>
+                      t("principal.pupilWithPercent", {
+                        name: p.name,
+                        percent: p.attendancePercent ?? 0,
+                      }),
+                    )
+                    .join(", ")}
                 </p>
               </div>
             )}
             {unmarked.length > 0 && (
               <div>
-                <p className="text-xs font-medium text-fg">No marks recorded yet</p>
+                <p className="text-xs font-medium text-fg">{t("principal.noMarksRecorded")}</p>
                 <p className="mt-1 text-sm text-fg-muted">
                   {unmarked.map((p) => p.name).join(", ")}
                 </p>
                 {/* Almost always a fact about the marking, not about the child. */}
-                <p className="mt-1 text-xs text-fg-subtle">
-                  Usually means work has not been marked yet, rather than anything about them.
-                </p>
+                <p className="mt-1 text-xs text-fg-subtle">{t("principal.usuallyMarking")}</p>
               </div>
             )}
           </CardBody>
@@ -175,17 +189,17 @@ export default async function PrincipalClassPage({
 
       {/* ---------------- everybody ---------------- */}
       <Card>
-        <CardHeader title="Everybody" description="In alphabetical order" />
+        <CardHeader title={t("principal.everybody")} description={t("principal.alphabetical")} />
         <CardBody>
           {data.pupils.length === 0 ? (
             <EmptyState
-              title="Nobody on this roll"
-              description="An admin adds pupils to a class from the class staffing page."
+              title={t("principal.nobodyOnRoll")}
+              description={t("principal.nobodyOnRollBody")}
             />
           ) : (
             <ul className="space-y-1.5">
               {data.pupils.map((pupil) => (
-                <PupilRow key={pupil.membershipId} pupil={pupil} />
+                <PupilRow key={pupil.membershipId} pupil={pupil} t={t} />
               ))}
             </ul>
           )}
@@ -195,7 +209,9 @@ export default async function PrincipalClassPage({
   );
 }
 
-function PupilRow({ pupil }: { pupil: PupilInsight }) {
+/* `t` as a PROP, not a hook — this is a server component, so there is no
+   provider above it to read from. The same shape as the leaf date components. */
+function PupilRow({ pupil, t }: { pupil: PupilInsight; t: Translate }) {
   const concern =
     pupil.attendancePercent !== null && pupil.attendancePercent < ATTENDANCE_CONCERN_PERCENT;
 
@@ -205,13 +221,15 @@ function PupilRow({ pupil }: { pupil: PupilInsight }) {
         <span className="block truncate text-sm font-medium text-fg">{pupil.name}</span>
         <span className="block text-xs text-fg-muted">
           {pupil.attendanceMarks === 0
-            ? "No register marks in this window"
-            : `${pupil.attendanceMarks} register mark${pupil.attendanceMarks === 1 ? "" : "s"}`}
+            ? t("principal.noMarksInWindow")
+            : pupil.attendanceMarks === 1
+              ? t("principal.markCountOne")
+              : t("principal.markCountMany", { count: pupil.attendanceMarks })}
         </span>
       </span>
 
       <span className="text-right">
-        <span className="block text-[0.6875rem] text-fg-muted">Attendance</span>
+        <span className="block text-[0.6875rem] text-fg-muted">{t("principal.attendance")}</span>
         <span
           className={
             concern
@@ -224,7 +242,7 @@ function PupilRow({ pupil }: { pupil: PupilInsight }) {
       </span>
 
       <span className="text-right">
-        <span className="block text-[0.6875rem] text-fg-muted">Progress</span>
+        <span className="block text-[0.6875rem] text-fg-muted">{t("principal.progress")}</span>
         <span className="block text-sm font-semibold tabular-nums text-fg">
           {pupil.overallPercent === null ? "—" : `${pupil.overallPercent}%`}
         </span>
@@ -238,13 +256,13 @@ function PupilRow({ pupil }: { pupil: PupilInsight }) {
           {pupil.latestCard.title}
           {pupil.latestCard.status === "DRAFT" && (
             <Badge tone="warn" size="sm">
-              draft
+              {t("principal.draft")}
             </Badge>
           )}
           <ArrowSquareOutIcon className="size-3.5" />
         </Link>
       ) : (
-        <span className="shrink-0 text-xs text-fg-subtle">No report card</span>
+        <span className="shrink-0 text-xs text-fg-subtle">{t("principal.noReportCard")}</span>
       )}
     </li>
   );

@@ -962,7 +962,16 @@ async function onboardingSignposts(schoolId: string) {
       path: "/admin/calendar (birthdays)",
       status: cal.status,
       expected: 200,
-      ok: cal.status === 200 && cal.body.includes("Birthdays"),
+      // ⚠ THE ID, NOT THE WORD. This asserted `body.includes("Birthdays")`,
+      // which stopped being a fact about the page the moment the calendar was
+      // translated — it became a fact about the ACTOR'S LANGUAGE. It went red
+      // for a Marathi admin with nothing wrong, which is the worst kind of
+      // red: a net that cries about the reader instead of the route.
+      //
+      // `id="birthday-heading"` is what `aria-labelledby` points at, so it is
+      // load-bearing markup rather than a convenience — and it is the same in
+      // every language.
+      ok: cal.status === 200 && cal.body.includes('id="birthday-heading"'),
       note: "⚠ the staff calendar carries a birthdays section",
     });
   }

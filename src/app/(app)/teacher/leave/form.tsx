@@ -7,9 +7,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
+import {
+  LEAVE_KINDS,
+  LEAVE_KIND_LABEL_KEY,
+  LEAVE_STATUS_KEY,
+  type LeaveKind,
+  type LeaveStatus,
+  type LeaveRow,
+} from "@/lib/leave-kinds";
 import { apply, withdraw } from "./actions";
 import { DateField } from "@/components/ui/field";
+import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
 /**
@@ -58,7 +66,7 @@ export function LeaveForm({
         nominatedCoverMembershipId: nominee || null,
       });
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(actionError(t, result, "people.didNotWork"));
         return;
       }
       setReason("");
@@ -73,7 +81,11 @@ export function LeaveForm({
     startTransition(async () => {
       const result = await withdraw(id);
       if (!result.ok) {
-        toast({ tone: "danger", title: t("teacher.notWithdrawn"), description: result.error });
+        toast({
+          tone: "danger",
+          title: t("teacher.notWithdrawn"),
+          description: actionError(t, result),
+        });
         return;
       }
       toast({ tone: "ok", title: t("teacher.withdrawn") });
@@ -199,8 +211,12 @@ export function LeaveForm({
               <div className="flex flex-wrap items-start gap-3">
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold text-fg">
-                    {request.fromDateKey}
-                    {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""}
+                    {request.toDateKey !== request.fromDateKey
+                      ? t("calendar.rangeTo", {
+                          from: request.fromDateKey,
+                          to: request.toDateKey,
+                        })
+                      : request.fromDateKey}
                   </p>
                   <p className="text-xs text-fg-muted">
                     {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
@@ -229,7 +245,7 @@ export function LeaveForm({
                   }
                   size="sm"
                 >
-                  {request.status.toLowerCase()}
+                  {t(LEAVE_STATUS_KEY[request.status as LeaveStatus] ?? "leaveStatus.pending")}
                 </Badge>
 
                 {(request.status === "PENDING" || request.status === "APPROVED") && (

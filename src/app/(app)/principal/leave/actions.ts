@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { decideLeave } from "@/lib/leave";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * The principal's answer to a leave request.
@@ -13,7 +14,14 @@ import { decideLeave } from "@/lib/leave";
  * them. `decideLeave` refuses self-approval regardless of role.
  */
 
-type Result = { ok: boolean; error?: string; coversCreated?: number };
+type Result = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+  /** An `AccessError` message, which is minted app-wide and has no key yet. */
+  error?: string;
+  coversCreated?: number;
+};
 
 export async function decide(
   leaveId: string,
@@ -26,10 +34,16 @@ export async function decide(
     revalidatePath("/principal/leave");
     revalidatePath("/teacher/leave");
     revalidatePath("/admin/calendar");
-    return { ok: result.ok, error: result.error, coversCreated: result.coversCreated };
+    return {
+      ok: result.ok,
+      errorKey: result.errorKey,
+      errorVars: result.errorVars,
+      error: result.error,
+      coversCreated: result.coversCreated,
+    };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[leave-decide]", error);
-    return { ok: false, error: "Something went wrong. Try again in a moment." };
+    return { ok: false, errorKey: "common.tryAgainMoment" };
   }
 }

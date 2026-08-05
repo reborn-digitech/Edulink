@@ -43,6 +43,7 @@ export default async function PrincipalDashboard({
   searchParams: Promise<{ days?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { days } = await searchParams;
 
@@ -60,10 +61,14 @@ export default async function PrincipalDashboard({
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Dashboard</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {t("principal.dashboard")}
+          </h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale)} to{" "}
-            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale)}
+            {t("principal.rangeTo", {
+              from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale),
+              to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale),
+            })}
           </p>
         </div>
         <WindowPicker days={span} />
@@ -72,19 +77,19 @@ export default async function PrincipalDashboard({
       {/* ---------------- what can still be fixed today ---------------- */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
-          label="Registers not taken today"
+          label={t("principal.registersMissing")}
           value={String(summary.registersMissingToday)}
           tone={summary.registersMissingToday > 0 ? "warn" : "ok"}
         />
         <StatTile
-          label="Leave waiting"
+          label={t("principal.leaveWaiting")}
           value={String(summary.pendingLeave)}
           tone={summary.pendingLeave > 0 ? "warn" : "ok"}
         />
         <StatTile
-          label="Attendance"
+          label={t("principal.attendance")}
           value={summary.attendancePercent === null ? "—" : `${summary.attendancePercent}%`}
-          hint="Across every mark in the window"
+          hint={t("principal.attendanceHint")}
           tone={
             summary.attendancePercent !== null &&
             summary.attendancePercent < ATTENDANCE_CONCERN_PERCENT
@@ -92,7 +97,7 @@ export default async function PrincipalDashboard({
               : "ok"
           }
         />
-        <StatTile label="Pupils" value={String(summary.pupils)} />
+        <StatTile label={t("principal.pupils")} value={String(summary.pupils)} />
       </div>
 
       {summary.pendingLeave > 0 && (
@@ -103,10 +108,12 @@ export default async function PrincipalDashboard({
             </span>
             <span className="min-w-0 flex-1">
               <span className="block font-semibold text-fg">
-                {summary.pendingLeave} leave request{summary.pendingLeave === 1 ? "" : "s"} waiting
+                {summary.pendingLeave === 1
+                  ? t("principal.leaveWaitingOne")
+                  : t("principal.leaveWaitingMany", { count: summary.pendingLeave })}
               </span>
               <span className="block text-xs text-fg-muted">
-                Approving arranges cover for the registers they mark
+                {t("principal.approvingArranges")}
               </span>
             </span>
             <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
@@ -118,31 +125,32 @@ export default async function PrincipalDashboard({
       <Card>
         <CardHeader
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
-          title={concerns.length > 0 ? "Classes worth a look" : "Classes"}
+          title={
+            concerns.length > 0 ? t("principal.classesWorthALook") : t("principal.classes")
+          }
           description={
             concerns.length > 0
-              ? `Attendance below ${ATTENDANCE_CONCERN_PERCENT}% over this window`
-              : "Nothing below the attendance line in this window"
+              ? t("principal.belowLine", { percent: ATTENDANCE_CONCERN_PERCENT })
+              : t("principal.nothingBelowLine")
           }
           action={
             <Link
               href={`/principal/classes?days=${span}`}
               className="text-sm font-semibold text-accent-strong hover:underline"
             >
-              All {insights.length}
+              {t("principal.allOf", { count: insights.length })}
             </Link>
           }
         />
         <CardBody>
           {insights.length === 0 ? (
             <EmptyState
-              title="No classes yet"
-              description="Once an admin creates classes they appear here."
+              title={t("principal.noClasses")}
+              description={t("principal.noClassesBody")}
             />
           ) : concerns.length === 0 ? (
             <p className="text-sm text-fg-muted">
-              Every class is at or above {ATTENDANCE_CONCERN_PERCENT}%. Open the full list to see
-              them all, with academic progress and report cards.
+              {t("principal.everyClassAbove", { percent: ATTENDANCE_CONCERN_PERCENT })}
             </p>
           ) : (
             <ul className="space-y-2">
@@ -158,8 +166,13 @@ export default async function PrincipalDashboard({
                         {klass.section ? ` · ${klass.section}` : ""}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {klass.pupils} pupil{klass.pupils === 1 ? "" : "s"} · {klass.sessionsTaken}{" "}
-                        register{klass.sessionsTaken === 1 ? "" : "s"} taken
+                        {klass.pupils === 1
+                          ? t("principal.pupilsOne")
+                          : t("principal.pupilsMany", { count: klass.pupils })}{" "}
+                        ·{" "}
+                        {klass.sessionsTaken === 1
+                          ? t("principal.registersTakenOne")
+                          : t("principal.registersTakenMany", { count: klass.sessionsTaken })}
                       </span>
                     </span>
                     <span className="text-lg font-bold tabular-nums text-warn">

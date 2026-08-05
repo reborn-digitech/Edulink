@@ -6,7 +6,8 @@ import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
-import { LEAVE_KIND_LABEL_KEY, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
+import { LEAVE_KIND_LABEL_KEY, LEAVE_STATUS_KEY, type LeaveKind, type LeaveStatus, type LeaveRow } from "@/lib/leave-kinds";
+import { actionError } from "@/lib/action-error";
 import { decide } from "./actions";
 import { useT } from "@/lib/i18n";
 
@@ -52,15 +53,18 @@ export function DecideCard({
         coverMembershipId: decision === "APPROVED" ? cover || null : null,
       });
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not saved", description: result.error });
+        toast({ tone: "danger", title: t("principal.notSaved"), description: actionError(t, result) });
         return;
       }
       toast({
         tone: "ok",
-        title: decision === "APPROVED" ? "Leave approved" : "Leave declined",
+        title:
+          decision === "APPROVED" ? t("principal.leaveApproved") : t("principal.leaveDeclined"),
         description:
           decision === "APPROVED" && result.coversCreated
-            ? `Cover arranged for ${result.coversCreated} class${result.coversCreated === 1 ? "" : "es"}.`
+            ? result.coversCreated === 1
+              ? t("principal.coverArrangedOne")
+              : t("principal.coverArrangedMany", { count: result.coversCreated })
             : undefined,
       });
       router.refresh();
@@ -73,8 +77,10 @@ export function DecideCard({
         <div className="min-w-0 flex-1">
           <p className="font-semibold text-fg">{request.applicantName}</p>
           <p className="text-xs text-fg-muted">
-            {request.fromDateKey}
-            {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""} ·{" "}
+            {request.toDateKey !== request.fromDateKey
+              ? t("calendar.rangeTo", { from: request.fromDateKey, to: request.toDateKey })
+              : request.fromDateKey}{" "}
+            ·{" "}
             {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
               ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
               : request.kind}
@@ -84,18 +90,22 @@ export function DecideCard({
           </p>
         </div>
         <Badge tone="warn" size="sm">
-          waiting
+          {t(LEAVE_STATUS_KEY[request.status as LeaveStatus] ?? "leaveStatus.pending")}
         </Badge>
       </div>
 
       <div className="mt-4 rounded-[--radius-sm] bg-surface-muted p-3">
         <label className="block">
-          <span className="block text-xs font-medium text-fg">Who covers their classes</span>
+          <span className="block text-xs font-medium text-fg">{t("principal.whoCovers")}</span>
           <span className="mt-0.5 block text-xs text-fg-muted">
             {classesCovered === 0
-              ? "They have no registers and no timetabled lessons, so no cover is needed."
-              : `Applies to ${classesCovered} class${classesCovered === 1 ? "" : "es"} they are due in.`}
-            {request.nominatedName ? ` They suggested ${request.nominatedName}.` : ""}
+              ? t("principal.noCoverNeeded")
+              : classesCovered === 1
+                ? t("principal.appliesToOne")
+                : t("principal.appliesToMany", { count: classesCovered })}
+            {request.nominatedName
+              ? ` ${t("principal.theySuggested", { name: request.nominatedName })}`
+              : ""}
           </span>
           <select
             value={cover}
@@ -103,7 +113,7 @@ export function DecideCard({
             onChange={(e) => setCover(e.target.value)}
             className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-60"
           >
-            <option value="">Nobody — arrange it later</option>
+            <option value="">{t("principal.nobodyYet")}</option>
             {staff.map((person) => (
               <option key={person.membershipId} value={person.membershipId}>
                 {person.name}
@@ -115,7 +125,7 @@ export function DecideCard({
 
       {declining && (
         <label className="mt-3 block">
-          <span className="block text-xs font-medium text-fg">Why (they will see this)</span>
+          <span className="block text-xs font-medium text-fg">{t("principal.whyTheyWillSee")}</span>
           <textarea
             rows={2}
             maxLength={1000}
@@ -133,7 +143,7 @@ export function DecideCard({
           icon={<CheckIcon weight="bold" />}
           onClick={() => answer("APPROVED")}
         >
-          {cover && classesCovered > 0 ? "Approve and arrange cover" : "Approve"}
+          {cover && classesCovered > 0 ? t("principal.approveAndCover") : t("principal.approve")}
         </Button>
         {declining ? (
           <Button
@@ -143,11 +153,11 @@ export function DecideCard({
             icon={<XIcon weight="bold" />}
             onClick={() => answer("DECLINED")}
           >
-            Confirm decline
+            {t("principal.confirmDecline")}
           </Button>
         ) : (
           <Button size="sm" variant="secondary" onClick={() => setDeclining(true)}>
-            Decline
+            {t("principal.decline")}
           </Button>
         )}
       </div>

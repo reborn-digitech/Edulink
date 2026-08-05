@@ -1,3 +1,5 @@
+import { translator, type Translate } from "@/lib/i18n/dictionary";
+import { normaliseLocale } from "@/lib/i18n/locales";
 import { cn } from "@/lib/cn";
 import { formatTimeRange, weekdayName, weekdayShortName } from "@/lib/school-day";
 import { formatDateKey } from "@/lib/dates";
@@ -69,11 +71,18 @@ export function SlotBody({
   showClass,
   showTeacher,
   viewerMembershipId,
+  t,
 }: {
   slot: SlotView;
   showClass?: boolean;
   showTeacher?: boolean;
   viewerMembershipId?: string | null;
+  /**
+   * ⚠ A PROP, NOT `useT()`. This file has no `"use client"` — it renders inside
+   * server pages, so there is no provider above it to read a hook from. It is
+   * the same reason `locale` has always been a prop here.
+   */
+  t: Translate;
 }) {
   const viewerIsAssigned =
     viewerMembershipId != null && slot.teacherMembershipId === viewerMembershipId;
@@ -91,32 +100,40 @@ export function SlotBody({
       )}
       {slot.coveringName && (
         <span className="mt-0.5 block text-xs font-medium text-accent-strong">
-          {viewerIsCovering ? "You are covering" : `${slot.coveringName} covering`}
+          {viewerIsCovering
+            ? t("timetable.youAreCovering")
+            : t("timetable.someoneCovering", { name: slot.coveringName })}
           {slot.teacherName && !viewerIsAssigned ? (
-            <span className="text-fg-muted"> for {slot.teacherName}</span>
+            <span className="text-fg-muted">
+              {t("timetable.forSomeone", { name: slot.teacherName })}
+            </span>
           ) : null}
           {/* "…covering for you" rather than for your own name, on your own page. */}
-          {viewerIsAssigned ? <span className="text-fg-muted"> for you</span> : null}
+          {viewerIsAssigned ? (
+            <span className="text-fg-muted">{t("timetable.forYou")}</span>
+          ) : null}
         </span>
       )}
       {slot.uncovered && (
         <span className="mt-0.5 block text-xs font-medium text-danger">
           {viewerIsAssigned
-            ? "You are away"
+            ? t("timetable.youAreAway")
             : slot.teacherName
-              ? `${slot.teacherName} is away`
-              : "Teacher away"}{" "}
-          · no cover arranged
+              ? t("timetable.someoneAway", { name: slot.teacherName })
+              : t("timetable.teacherAway")}{" "}
+          {t("timetable.noCoverArranged")}
         </span>
       )}
       {!slot.teacherName && !slot.coveringName && (
-        <span className="mt-0.5 block text-xs text-fg-muted">No teacher yet</span>
+        <span className="mt-0.5 block text-xs text-fg-muted">{t("timetable.noTeacherYet2")}</span>
       )}
       {slot.room && <span className="block truncate text-xs text-fg-muted">{slot.room}</span>}
       {/* Only when the covering line did not already say it — otherwise the
           same fact is stated twice in three lines. */}
       {slot.borrowed && !viewerIsCovering && (
-        <span className="mt-0.5 block text-xs text-fg-muted">You are covering this</span>
+        <span className="mt-0.5 block text-xs text-fg-muted">
+          {t("timetable.youAreCoveringThis")}
+        </span>
       )}
     </>
   );
@@ -133,21 +150,21 @@ function PeriodLabel({ period }: { period: PeriodRow }) {
   );
 }
 
-function DayHeading({ day, locale }: { day: DayColumn; locale: string }) {
+function DayHeading({ day, locale, t }: { day: DayColumn; locale: string; t: Translate }) {
   return (
     <>
       <span className={cn("block text-sm font-semibold", day.isToday ? "text-accent-strong" : "text-fg")}>
-        {weekdayName(day.weekday)}
+        {weekdayName(day.weekday, locale)}
       </span>
       {day.dateKey && (
         <span className="block text-xs text-fg-muted">
           {formatDateKey(day.dateKey, { day: "numeric", month: "short" }, locale)}
-          {day.isToday && " · today"}
+          {day.isToday && t("timetable.today")}
         </span>
       )}
       {day.closed && (
         <span className="block truncate text-xs font-medium text-warning">
-          {day.closedName ?? "School shut"}
+          {day.closedName ?? t("timetable.schoolShut")}
         </span>
       )}
     </>
@@ -158,12 +175,19 @@ export function WeekGridView({
   periods,
   days,
   slots,
-  emptyLabel = "—",
+  emptyLabel,
   showClass = false,
   showTeacher = false,
   viewerMembershipId = null,
   locale = "en",
 }: WeekGridProps) {
+  /**
+   * The translator comes FROM THE LOCALE THIS ALREADY TAKES rather than from a
+   * second prop. One prop carrying the language means the words and the dates
+   * cannot end up in different ones, and every existing caller keeps working.
+   */
+  const t = translator(normaliseLocale(locale));
+  const empty = emptyLabel ?? "—";
   const index = indexSlots(slots);
   const lessons = periods.filter((period) => period.kind === "LESSON");
 
@@ -191,18 +215,18 @@ export function WeekGridView({
             : [];
 
           return (
-            <section key={day.weekday} aria-label={weekdayName(day.weekday)}>
+            <section key={day.weekday} aria-label={weekdayName(day.weekday, locale)}>
               <h3
                 className={cn(
                   "mb-2 flex items-baseline gap-2 border-b border-border pb-1",
                   day.isToday && "border-accent",
                 )}
               >
-                <DayHeading day={day} locale={locale} />
+                <DayHeading day={day} locale={locale} t={t} />
               </h3>
               {onThisDay.length === 0 ? (
                 <p className="text-sm text-fg-muted">
-                  {day.closed ? "School is shut." : "Nothing timetabled."}
+                  {day.closed ? t("timetable.schoolIsShut") : t("timetable.nothingOnThisDay")}
                 </p>
               ) : (
                 <ul className="space-y-1.5">
@@ -221,7 +245,7 @@ export function WeekGridView({
                         {period.kind === "BREAK" ? (
                           <span className="text-sm text-fg-muted">{period.name}</span>
                         ) : entries.length === 0 ? (
-                          <span className="text-sm text-fg-muted">{emptyLabel}</span>
+                          <span className="text-sm text-fg-muted">{empty}</span>
                         ) : (
                           entries.map((slot) => (
                             <span key={slot.id} className="block first:mt-0 [&+&]:mt-2">
@@ -230,6 +254,7 @@ export function WeekGridView({
                                 showClass={showClass}
                                 showTeacher={showTeacher}
                                 viewerMembershipId={viewerMembershipId}
+                                t={t}
                               />
                             </span>
                           ))
@@ -247,12 +272,12 @@ export function WeekGridView({
       {/* ---------------- desktop: the grid ---------------- */}
       <div className="hidden overflow-x-auto md:block">
         <table className="w-full min-w-[46rem] border-separate border-spacing-1">
-          <caption className="sr-only">The weekly timetable</caption>
+          <caption className="sr-only">{t("timetable.weeklyTimetable")}</caption>
           <thead>
             <tr>
               <th scope="col" className="w-28 p-2 text-left align-bottom">
                 <span className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                  Period
+                  {t("timetable.period")}
                 </span>
               </th>
               {days.map((day) => (
@@ -265,11 +290,11 @@ export function WeekGridView({
                     day.closed && "opacity-60",
                   )}
                 >
-                  <abbr title={weekdayName(day.weekday)} className="no-underline lg:hidden">
-                    {weekdayShortName(day.weekday)}
+                  <abbr title={weekdayName(day.weekday, locale)} className="no-underline lg:hidden">
+                    {weekdayShortName(day.weekday, locale)}
                   </abbr>
                   <span className="hidden lg:block">
-                    <DayHeading day={day} locale={locale} />
+                    <DayHeading day={day} locale={locale} t={t} />
                   </span>
                 </th>
               ))}
@@ -303,7 +328,7 @@ export function WeekGridView({
                       )}
                     >
                       {entries.length === 0 ? (
-                        <span className="text-xs text-fg-muted">{emptyLabel}</span>
+                        <span className="text-xs text-fg-muted">{empty}</span>
                       ) : (
                         entries.map((slot) => (
                           <span key={slot.id} className="block [&+&]:mt-2">
@@ -312,6 +337,7 @@ export function WeekGridView({
                                 showClass={showClass}
                                 showTeacher={showTeacher}
                                 viewerMembershipId={viewerMembershipId}
+                                t={t}
                               />
                           </span>
                         ))
@@ -325,7 +351,7 @@ export function WeekGridView({
         </table>
         {lessons.length === 0 && (
           <p className="p-4 text-sm text-fg-muted">
-            This school has no teaching periods set up yet.
+            {t("timetable.noPeriodsSetUp")}
           </p>
         )}
       </div>

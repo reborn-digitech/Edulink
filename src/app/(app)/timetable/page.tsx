@@ -35,6 +35,7 @@ export default async function MyTimetablePage({
   searchParams: Promise<{ week?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "STUDENT");
   const params = await searchParams;
 
@@ -73,64 +74,72 @@ export default async function MyTimetablePage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Timetable</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("timetable.myTitle")}
+        </h1>
         <p className="mt-1 text-sm text-fg-muted">
-          {ctx.role === "TEACHER"
-            ? "Your lessons, and anything you are covering."
-            : "Your week, class by class."}
+          {ctx.role === "TEACHER" ? t("timetable.myTeacherBody") : t("timetable.myBody")}
         </p>
       </div>
 
-      <nav aria-label="Week" className="flex flex-wrap items-center gap-2">
+      <nav aria-label={t("principal.week")} className="flex flex-wrap items-center gap-2">
         <Link
           href={`/timetable?week=${previous}`}
           className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
-          ← Previous
+          {t("principal.previous")}
         </Link>
         {!isThisWeek && (
           <Link
             href="/timetable"
             className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
           >
-            This week
+            {t("principal.thisWeek")}
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
-          Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
+          {t("principal.weekOf", {
+            date: formatDateKey(monday, { day: "numeric", month: "long" }, locale),
+          })}
         </span>
         <Link
           href={`/timetable?week=${next}`}
           className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
-          Next →
+          {t("principal.next")}
         </Link>
       </nav>
 
       {grid.periods.length === 0 ? (
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-          title="No timetable yet"
-          description="This school has not set its day up. Nothing to show until it does."
+          title={t("timetable.noTimetableYet")}
+          description={t("timetable.noTimetableYetBody")}
         />
       ) : grid.slots.length === 0 ? (
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-          title={ctx.role === "TEACHER" ? "Nothing timetabled for you" : "Nothing timetabled yet"}
+          title={
+            ctx.role === "TEACHER" ? t("timetable.nothingForYou") : t("timetable.nothingYet")
+          }
           description={
             ctx.role === "TEACHER"
-              ? "You have no lessons on the grid this week. An admin sets these up."
-              : "Your classes have no lessons on the timetable this week."
+              ? t("timetable.nothingForYouBody")
+              : t("timetable.nothingYetBody")
           }
         />
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? "This week" : `Week of ${formatDateKey(monday, undefined, locale)}`}
+            title={
+              isThisWeek
+                ? t("principal.thisWeek")
+                : t("principal.weekOf", { date: formatDateKey(monday, undefined, locale) })
+            }
             description={
               ctx.role === "TEACHER"
-                ? "Cover you are taking on shows here too, marked as somebody else's lesson."
-                : "If a teacher is away, whoever is covering shows in their place."
+                ? t("timetable.coverShowsHere")
+                : t("timetable.coverInTheirPlace")
             }
           />
           <CardBody>
@@ -140,7 +149,7 @@ export default async function MyTimetablePage({
               showClass={ctx.role === "TEACHER" || spansClasses}
               showTeacher={ctx.role === "STUDENT"}
               viewerMembershipId={ctx.membershipId}
-              emptyLabel="Free"
+              emptyLabel={t("timetable.free")}
             />
           </CardBody>
         </Card>

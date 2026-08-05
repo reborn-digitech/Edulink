@@ -171,9 +171,26 @@ beforeAll(async () => {
   });
 });
 
+/**
+ * The memberships THIS FILE created, and only those.
+ *
+ * ⚠ THE CLEANUP USED TO BE `{ schoolId: riversideId }`, which deletes every
+ * leave request in a real seeded school — not just the ones these tests made.
+ * A walkthrough fixture vanished mid-session and that is how it was found; a
+ * school's actual requests would have gone the same way. `npm test` runs
+ * against the dev database, so a suite that tidies by tenant is a suite that
+ * destroys somebody else's rows.
+ *
+ * Scoped to the three memberships created in `beforeAll` instead. Exact, and it
+ * cannot widen by accident the way a school filter did.
+ */
+function ownMemberships(): string[] {
+  return [applicantMembershipId, coverMembershipId, principalMembershipId].filter(Boolean);
+}
+
 afterEach(async () => {
   await db.attendanceCover.deleteMany({ where: { classId } });
-  await db.leaveRequest.deleteMany({ where: { schoolId: riversideId } });
+  await db.leaveRequest.deleteMany({ where: { teacherMembershipId: { in: ownMemberships() } } });
   // Notifications too. Without this they accumulate across tests in this file
   // and the "tells the applicant" assertion counts six approvals instead of one
   // — a test failing because of its neighbours rather than its subject.
@@ -182,7 +199,7 @@ afterEach(async () => {
 
 afterAll(async () => {
   await db.attendanceCover.deleteMany({ where: { classId } });
-  await db.leaveRequest.deleteMany({ where: { schoolId: riversideId } });
+  await db.leaveRequest.deleteMany({ where: { teacherMembershipId: { in: ownMemberships() } } });
   await db.classTeacher.deleteMany({ where: { classId } });
   await db.class.deleteMany({ where: { id: classId } });
   await db.notification.deleteMany({ where: { user: { email: { in: MADE } } } });
@@ -195,7 +212,8 @@ const BASE = { fromDateKey: FROM, toDateKey: TO, kind: "SICK" as const, reason: 
 
 async function pendingId(): Promise<string> {
   const row = await db.leaveRequest.findFirstOrThrow({
-    where: { schoolId: riversideId, status: "PENDING" },
+    // Its OWN pending request, not the school's. See `ownMemberships`.
+    where: { teacherMembershipId: { in: ownMemberships() }, status: "PENDING" },
   });
   return row.id;
 }
@@ -222,7 +240,12 @@ describe("applying", () => {
 
   it("⚠ requires a reason", async () => {
     expect((await applyForLeave(applicant, { ...BASE, reason: "  " })).ok).toBe(false);
-    expect(await db.leaveRequest.count({ where: { schoolId: riversideId } })).toBe(0);
+    // ⚠ SCOPED LIKE THE CLEANUP IS, and for the same reason: counting the
+    // whole school asserted that nobody else in Riverside has ever asked for
+    // leave, which is a fact about the fixtures rather than about this code.
+    expect(
+      await db.leaveRequest.count({ where: { teacherMembershipId: { in: ownMemberships() } } }),
+    ).toBe(0);
   });
 
   it("⚠ refuses a second request overlapping one already open", async () => {
@@ -262,7 +285,7 @@ describe("applying", () => {
   it("tells the people who can decide it", async () => {
     await applyForLeave(applicant, BASE);
     const notified = await db.notification.count({
-      where: { schoolId: riversideId, title: "Leave request waiting" },
+      where: { user: { email: { in: MADE } }, title: "Leave request waiting" },
     });
     expect(notified).toBeGreaterThan(0);
   });
@@ -359,7 +382,7 @@ describe("⚠ who may decide", () => {
     const id = await pendingId();
     const result = await decideLeave(principal, id, "APPROVED");
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/your own/i);
+    expect(result.errorKey).toBe("leaveKind.notYourOwn");
   });
 
   it("lets an admin decide a principal's request", async () => {

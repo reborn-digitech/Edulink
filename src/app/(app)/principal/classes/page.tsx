@@ -29,6 +29,7 @@ export default async function PrincipalClassesPage({
   searchParams: Promise<{ days?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { days } = await searchParams;
 
@@ -40,10 +41,14 @@ export default async function PrincipalClassesPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Classes</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {t("principal.classes")}
+          </h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale)} to{" "}
-            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale)}
+            {t("principal.rangeTo", {
+              from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale),
+              to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale),
+            })}
           </p>
         </div>
         <WindowPicker days={span} />
@@ -52,14 +57,14 @@ export default async function PrincipalClassesPage({
       <Card>
         <CardHeader
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
-          title="Class by class"
-          description="Open one to see its pupils and their report cards"
+          title={t("principal.classByClass")}
+          description={t("principal.classByClassBody")}
         />
         <CardBody>
           {insights.length === 0 ? (
             <EmptyState
-              title="No classes yet"
-              description="Once an admin creates classes they appear here."
+              title={t("principal.noClasses")}
+              description={t("principal.noClassesBody")}
             />
           ) : (
             <ul className="space-y-2">
@@ -80,19 +85,31 @@ export default async function PrincipalClassesPage({
                           {klass.section ? ` · ${klass.section}` : ""}
                         </span>
                         <span className="block text-xs text-fg-muted">
-                          {klass.pupils} pupil{klass.pupils === 1 ? "" : "s"} ·{" "}
-                          {klass.sessionsTaken} register
-                          {klass.sessionsTaken === 1 ? "" : "s"} taken
+                          {klass.pupils === 1
+                            ? t("principal.pupilsOne")
+                            : t("principal.pupilsMany", { count: klass.pupils })}{" "}
+                          ·{" "}
+                          {klass.sessionsTaken === 1
+                            ? t("principal.registersTakenOne")
+                            : t("principal.registersTakenMany", { count: klass.sessionsTaken })}
                           {klass.progress.pupilsWithNoMarks > 0
-                            ? ` · ${klass.progress.pupilsWithNoMarks} with no marks yet`
+                            ? ` · ${t("principal.noMarksYet", { count: klass.progress.pupilsWithNoMarks })}`
                             : ""}
                         </span>
                         {klass.reportCards.length > 0 && (
                           <span className="mt-0.5 block truncate text-xs text-fg-subtle">
                             {klass.reportCards
-                              .map(
-                                (report) =>
-                                  `${report.title}: ${report.published} published${report.drafts > 0 ? `, ${report.drafts} draft` : ""}`,
+                              .map((report) =>
+                                report.drafts > 0
+                                  ? t("principal.reportSummaryDrafts", {
+                                      title: report.title,
+                                      published: report.published,
+                                      drafts: report.drafts,
+                                    })
+                                  : t("principal.reportSummary", {
+                                      title: report.title,
+                                      published: report.published,
+                                    }),
                               )
                               .join(" · ")}
                           </span>
@@ -100,7 +117,9 @@ export default async function PrincipalClassesPage({
                       </span>
 
                       <span className="text-right">
-                        <span className="block text-xs text-fg-muted">Attendance</span>
+                        <span className="block text-xs text-fg-muted">
+                          {t("principal.attendance")}
+                        </span>
                         <span
                           className={
                             concern
@@ -113,7 +132,9 @@ export default async function PrincipalClassesPage({
                       </span>
 
                       <span className="text-right">
-                        <span className="block text-xs text-fg-muted">Progress</span>
+                        <span className="block text-xs text-fg-muted">
+                          {t("principal.progress")}
+                        </span>
                         <span className="block text-lg font-bold tabular-nums text-fg">
                           {klass.progress.percent === null ? "—" : `${klass.progress.percent}%`}
                         </span>
@@ -131,10 +152,7 @@ export default async function PrincipalClassesPage({
           {/* A figure with no denominator invites the wrong conclusion. A class
               whose register was taken twice is not a class with 100% attendance. */}
           <p className="mt-4 text-xs leading-relaxed text-fg-muted">
-            Attendance is of the marks actually recorded in this window — a class with few
-            registers taken has little behind its figure. Progress is the average of each
-            pupil&rsquo;s own overall, and pupils with no marks yet are left out of it rather than
-            counted as zero.
+            {t("principal.denominatorNote")}
           </p>
         </CardBody>
       </Card>

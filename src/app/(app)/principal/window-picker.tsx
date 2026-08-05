@@ -3,12 +3,14 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-const SPANS = [
-  { days: 7, label: "7 days" },
-  { days: 30, label: "30 days" },
-  { days: 90, label: "A term" },
-  { days: 180, label: "Half a year" },
+const SPANS: { days: number; labelKey: TranslationKey }[] = [
+  { days: 7, labelKey: "principal.days7" },
+  { days: 30, labelKey: "principal.days30" },
+  { days: 90, labelKey: "principal.aTerm" },
+  { days: 180, labelKey: "principal.halfYear" },
 ];
 
 /**
@@ -23,6 +25,7 @@ const SPANS = [
  * options is not a promise that only four will be sent.
  */
 export function WindowPicker({ days }: { days: number }) {
+  const t = useT();
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -37,7 +40,7 @@ export function WindowPicker({ days }: { days: number }) {
   return (
     <div
       role="radiogroup"
-      aria-label="How far back"
+      aria-label={t("principal.howFarBack")}
       className="flex flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1"
     >
       {SPANS.map((span) => (
@@ -53,7 +56,7 @@ export function WindowPicker({ days }: { days: number }) {
             span.days === days ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
           )}
         >
-          {span.label}
+          {t(span.labelKey)}
         </button>
       ))}
     </div>

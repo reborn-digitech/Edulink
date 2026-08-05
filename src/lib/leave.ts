@@ -30,8 +30,9 @@ import type { ActiveContext } from "./session";
 // `from "@/lib/leave"` keeps working — the split exists for the client bundle,
 // not for callers. See leave-kinds.ts.
 import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
+import type { TranslationKey } from "./i18n/dictionary";
 
-export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES } from "./leave-kinds";
+export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES, LEAVE_STATUS_KEY } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
 
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
@@ -45,7 +46,19 @@ export type ApplyInput = {
   nominatedCoverMembershipId?: string | null;
 };
 
-export type LeaveResult = { ok: boolean; error?: string; id?: string };
+/**
+ * ⚠ `errorKey`, NOT A SENTENCE. Every one of these is read by whoever is
+ * standing at a form — a teacher applying, a principal deciding — and the two
+ * are not guaranteed to read the same language. `error` stays for the one
+ * message this layer does not mint: an `AccessError` from tenancy.
+ */
+export type LeaveResult = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+  error?: string;
+  id?: string;
+};
 
 /** A member of staff asks to be away. */
 export async function applyForLeave(
@@ -59,24 +72,24 @@ export async function applyForLeave(
   }
 
   if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
-    return { ok: false, error: "Give both dates as YYYY-MM-DD." };
+    return { ok: false, errorKey: "leaveKind.giveBothDates" };
   }
   if (input.toDateKey < input.fromDateKey) {
-    return { ok: false, error: "The last day cannot be before the first." };
+    return { ok: false, errorKey: "leaveKind.lastBeforeFirst" };
   }
   if (spanDays(input.fromDateKey, input.toDateKey) > MAX_SPAN_DAYS) {
     // Not a policy about how much leave anybody may take — a guard against a
     // mistyped year turning one day into three hundred and sixty-six.
-    return { ok: false, error: "That is longer than six months. Check the dates." };
+    return { ok: false, errorKey: "leaveKind.longerThanSixMonths" };
   }
 
   const reason = input.reason.trim().slice(0, 1000);
   if (reason.length < 3) {
-    return { ok: false, error: "Say briefly why. The principal sees this and nobody else." };
+    return { ok: false, errorKey: "leaveKind.sayBriefly" };
   }
 
   if (!LEAVE_KINDS.includes(input.kind)) {
-    return { ok: false, error: "Choose a kind of leave." };
+    return { ok: false, errorKey: "leaveKind.chooseKind" };
   }
 
   // Overlapping a request that is still open, or already approved, is almost
@@ -95,15 +108,13 @@ export async function applyForLeave(
   if (clash) {
     return {
       ok: false,
-      error:
-        clash.status === "PENDING"
-          ? "You already have a request waiting that covers those days."
-          : "You already have approved leave covering those days.",
+      errorKey:
+        clash.status === "PENDING" ? "leaveKind.clashPending" : "leaveKind.clashApproved",
     };
   }
 
   const nominee = await resolveNominee(ctx, input.nominatedCoverMembershipId);
-  if (nominee.error) return { ok: false, error: nominee.error };
+  if (nominee.errorKey) return { ok: false, errorKey: nominee.errorKey };
 
   const created = await db.leaveRequest.create({
     data: {
@@ -183,15 +194,22 @@ export async function decideLeave(
       teacher: { select: { userId: true, user: { select: { name: true, preferredName: true } } } },
     },
   });
-  if (!request) return { ok: false, error: "That request is not in this school." };
+  if (!request) return { ok: false, errorKey: "leaveKind.notInSchool" };
   if (request.status !== "PENDING") {
-    return { ok: false, error: `That request has already been ${request.status.toLowerCase()}.` };
+    return {
+      ok: false,
+      // NO PLACEHOLDER FOR THE STATUS, deliberately. Naming it would mean
+      // putting a KEY inside a var — "already been leaveStatus.approved" — or
+      // teaching this layer to translate, and the decided list this message
+      // appears beside already shows the status in its own badge.
+      errorKey: "leaveKind.alreadyDecided",
+    };
   }
 
   // ⚠ Nobody signs off their own absence. A principal applying for leave needs
   // an admin, or another principal, to answer it.
   if (request.teacherMembershipId === ctx.membershipId) {
-    return { ok: false, error: "You cannot decide your own leave request." };
+    return { ok: false, errorKey: "leaveKind.notYourOwn" };
   }
 
   await db.leaveRequest.update({
@@ -322,7 +340,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     where: { id: leaveId, schoolId: ctx.schoolId },
     select: { id: true, status: true, teacherMembershipId: true },
   });
-  if (!request) return { ok: false, error: "That request is not in this school." };
+  if (!request) return { ok: false, errorKey: "leaveKind.notInSchool" };
 
   const isOwner = request.teacherMembershipId === ctx.membershipId;
   const isStaffLead = ctx.role === "PRINCIPAL" || ctx.role === "ADMIN";
@@ -330,7 +348,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     throw new AccessError("That is not your leave request");
   }
   if (request.status === "CANCELLED" || request.status === "DECLINED") {
-    return { ok: false, error: "That request is already closed." };
+    return { ok: false, errorKey: "leaveKind.alreadyClosed" };
   }
 
   // Read the cover this request created before the transaction removes it —
@@ -518,10 +536,10 @@ function shape(row: RawLeave): LeaveRow {
 async function resolveNominee(
   ctx: ActiveContext,
   membershipId: string | null | undefined,
-): Promise<{ id: string | null; error?: string }> {
+): Promise<{ id: string | null; errorKey?: TranslationKey }> {
   if (!membershipId) return { id: null };
   if (membershipId === ctx.membershipId) {
-    return { id: null, error: "You cannot nominate yourself to cover your own absence." };
+    return { id: null, errorKey: "leaveKind.notYourselfCover" };
   }
   const nominee = await db.membership.findFirst({
     where: {
@@ -533,7 +551,7 @@ async function resolveNominee(
     },
     select: { id: true },
   });
-  if (!nominee) return { id: null, error: "That person is not active staff at this school." };
+  if (!nominee) return { id: null, errorKey: "leaveKind.notActiveStaff" };
   return { id: nominee.id };
 }
 

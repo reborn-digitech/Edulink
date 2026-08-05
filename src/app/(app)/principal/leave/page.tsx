@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { schoolLeave, LEAVE_KIND_LABEL_KEY, type LeaveKind } from "@/lib/leave";
+import { schoolLeave, LEAVE_KIND_LABEL_KEY, LEAVE_STATUS_KEY, type LeaveKind, type LeaveStatus } from "@/lib/leave";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
@@ -99,23 +99,24 @@ export default async function PrincipalLeavePage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Staff leave</h1>
-        <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-          Approving arranges cover for every class the applicant is due in — the registers they
-          mark and the lessons they teach. Nothing here is visible to students or parents.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("principal.staffLeave")}
+        </h1>
+        <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("principal.staffLeaveBody")}</p>
       </div>
 
       <section>
         <h2 className="text-sm font-semibold text-fg">
-          Waiting for you {pending.length > 0 ? `(${pending.length})` : ""}
+          {pending.length > 0
+            ? t("principal.waitingForYouCount", { count: pending.length })
+            : t("principal.waitingForYou")}
         </h2>
         {pending.length === 0 ? (
           <div className="mt-3">
             <EmptyState
               icon={<CalendarCheckIcon weight="duotone" className="size-8" />}
-              title="Nothing waiting"
-              description="Leave requests appear here as staff send them."
+              title={t("principal.nothingWaiting")}
+              description={t("principal.nothingWaitingBody")}
             />
           </div>
         ) : (
@@ -137,7 +138,7 @@ export default async function PrincipalLeavePage() {
 
       {decided.length > 0 && (
         <section className="border-t border-border pt-5">
-          <h2 className="text-sm font-semibold text-fg">Already decided</h2>
+          <h2 className="text-sm font-semibold text-fg">{t("principal.alreadyDecided")}</h2>
           <ul className="mt-3 space-y-1.5">
             {decided.map((request) => (
               <li
@@ -149,8 +150,13 @@ export default async function PrincipalLeavePage() {
                     {request.applicantName}
                   </span>
                   <span className="block truncate text-xs text-fg-muted">
-                    {request.fromDateKey}
-                    {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""} ·{" "}
+                    {request.toDateKey !== request.fromDateKey
+                      ? t("calendar.rangeTo", {
+                          from: request.fromDateKey,
+                          to: request.toDateKey,
+                        })
+                      : request.fromDateKey}{" "}
+                    ·{" "}
                     {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
                       ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
                       : request.kind}
@@ -167,7 +173,7 @@ export default async function PrincipalLeavePage() {
                   }
                   size="sm"
                 >
-                  {request.status.toLowerCase()}
+                  {t(LEAVE_STATUS_KEY[request.status as LeaveStatus] ?? "leaveStatus.pending")}
                 </Badge>
               </li>
             ))}

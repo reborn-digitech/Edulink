@@ -60,6 +60,10 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
 const LEAD_EMAIL = "card.lead.unit@riverside.test";
 const CO_EMAIL = "card.co.unit@riverside.test";
 const MADE = [LEAD_EMAIL, CO_EMAIL];
+
+/** Borrowed from the seed, so the cleanup can name them. See the note there. */
+let pupilUserId: string;
+let guardianUserId: string;
 const TITLE = "Term 1";
 
 let riversideId: string;
@@ -174,11 +178,13 @@ beforeAll(async () => {
     select: { parentUserId: true, studentMembershipId: true },
   });
   pupilMembershipId = guardianship.studentMembershipId;
+  guardianUserId = guardianship.parentUserId;
 
   const pupilRow = await db.membership.findUniqueOrThrow({
     where: { id: pupilMembershipId },
     select: { userId: true },
   });
+  pupilUserId = pupilRow.userId;
   pupil = ctx({
     userId: pupilRow.userId,
     membershipId: pupilMembershipId,
@@ -220,7 +226,20 @@ beforeAll(async () => {
 afterEach(async () => {
   await db.reportCard.deleteMany({ where: { classId } });
   await db.grade.deleteMany({ where: { assignmentId: { in: [assignmentA, assignmentB] } } });
-  await db.notification.deleteMany({ where: { schoolId: riversideId, kind: "GRADE" } });
+  /**
+   * ⚠ THE RECIPIENTS, NOT THE SCHOOL. This used to be
+   * `{ schoolId: riversideId, kind: "GRADE" }`, which deletes every grade
+   * notification in a real seeded school — including ones this suite never
+   * sent. `npm test` runs against the dev database. Same fix, and same
+   * reasoning, as `ownMemberships` in leave.test.ts.
+   *
+   * The pupil and their guardian are BORROWED from the seed rather than
+   * created here, so they cannot be matched by email the way `MADE` is; their
+   * user ids are what this suite actually knows about them.
+   */
+  await db.notification.deleteMany({
+    where: { userId: { in: [pupilUserId, guardianUserId] }, kind: "GRADE" },
+  });
 });
 
 afterAll(async () => {
@@ -566,7 +585,11 @@ describe("publishing", () => {
     expect(result.published).toBeGreaterThanOrEqual(1);
 
     const told = await db.notification.count({
-      where: { schoolId: riversideId, kind: "GRADE", title: "Your report card is ready" },
+      where: {
+        userId: { in: [pupilUserId, guardianUserId] },
+        kind: "GRADE",
+        title: "Your report card is ready",
+      },
     });
     expect(told).toBeGreaterThanOrEqual(1);
   });

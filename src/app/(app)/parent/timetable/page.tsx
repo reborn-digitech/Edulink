@@ -129,7 +129,7 @@ export default async function ParentTimetablePage({
             description={t("parent.coverNote")}
           />
           <CardBody>
-            <WeekGridView {...grid} showTeacher showClass={spansClasses} emptyLabel="Free" locale={locale} />
+            <WeekGridView {...grid} showTeacher showClass={spansClasses} emptyLabel={t("timetable.free")} locale={locale} />
           </CardBody>
         </Card>
       )}

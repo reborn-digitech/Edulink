@@ -32,6 +32,21 @@ export const LEAVE_KIND_LABEL_KEY: Record<LeaveKind, TranslationKey> = {
 export const LEAVE_STATUSES = ["PENDING", "APPROVED", "DECLINED", "CANCELLED"] as const;
 export type LeaveStatus = (typeof LEAVE_STATUSES)[number];
 
+/**
+ * What a request currently IS, as a word.
+ *
+ * ⚠ Rendered by `.toLowerCase()` on the raw column in two places — the
+ * principal's decided list and the teacher's own — which produced "approved"
+ * in the middle of a Marathi page and would produce nothing at all for a
+ * status nobody thought of.
+ */
+export const LEAVE_STATUS_KEY: Record<LeaveStatus, TranslationKey> = {
+  PENDING: "leaveStatus.pending",
+  APPROVED: "leaveStatus.approved",
+  DECLINED: "leaveStatus.declined",
+  CANCELLED: "leaveStatus.cancelled",
+};
+
 /** One request, as every screen renders it. */
 export type LeaveRow = {
   id: string;
