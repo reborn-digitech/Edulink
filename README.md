@@ -167,7 +167,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 235 route/role/negative combinations
+mints a real session per role, requests all 275 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -517,13 +517,14 @@ Break these and something quietly goes wrong for a child or a parent.
    that rather than discovering it at the end. 2FA is **built** and proven
    against the RFC's own vectors; SSO is the half that still needs an account
    with Google, Microsoft or Apple to test against.
-1b. **Click the paths that are only reasoned about.** Two features now render,
-   typecheck and are mutation-tested without anybody having typed into them in a
-   browser: the 2FA login step and the whole staff chain added last —
-   leave → approval → cover → report card → dashboard. Every boundary is proved
-   by `npm run sweep` with real sessions, and every rule by unit tests, but a
-   form is not the same as a function. §§12m–12q of the checklist exist for
-   exactly this and are the cheapest outstanding work in this file.
+1b. **Click the paths that are only reasoned about.** The list is shorter than
+   it was: leave → approval → cover has since been walked end to end in a
+   production build, from both sides, as part of the timetable work — a teacher
+   applied, an admin approved with a named cover, and the replacement appeared
+   on four different people's screens. What is still only reasoned about is
+   **the 2FA login step** — typechecked, mutation-tested, and nobody has typed a
+   real code into a browser — and the tail of the staff chain, report card →
+   dashboard. §§12m–12q of the checklist exist for exactly this.
 2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
@@ -1251,6 +1252,96 @@ One line each, with the default rejected.
   cross-school write, including the negative one: bound to a single school it
   cannot touch the other school's membership row.
 
+- **The weekly timetable, and a replacement nobody has to remember.** Three
+  layers kept apart: `TimetablePeriod` is the school's bells, `TimetableSlot` is
+  a TEMPLATE with no dates in it, and only the resolved week knows about leave,
+  cover and holidays. A cover never edits the grid; it changes what the grid
+  resolves to on the days it applies. Times are minutes from local midnight as
+  integers — a bell does not move because the clocks did — and weekdays are
+  `Date.getUTCDay()`'s, so the table and every date key in the app share one
+  convention.
+  **Nobody is in two rooms at once**, refused in the application with a message
+  naming the class in the way and refused again by a unique index on
+  `(schoolId, weekday, periodId, teacherMembershipId)`. Postgres treats NULLs as
+  distinct, so the constraint holds for staffed lessons and leaves the unstaffed
+  ones free — which is what lets a grid be laid out before it is staffed, in the
+  order an admin actually works. Demonstrated by writing the clash directly
+  through Prisma, bypassing the application check entirely.
+  **Approving leave now covers timetabled lessons, not just registers.** Those
+  are different sets of people: a visiting music teacher marks no registers and
+  is due in six rooms. Covering only the first list left every one of those
+  lessons with an absent teacher and nobody arranged. The decision screen had
+  the same bug in its arithmetic — it said "applies to 1 class" and then wrote
+  two.
+  **Walked in a browser, production build:** laid out a school day from the
+  suggested one, put Mathematics in Tuesday period 1, hit the double-booking
+  refusal by re-enabling the disabled `<option>` and saving anyway, approved
+  Tom's leave with Priya as cover, and watched *Priya Raman covering for Tom
+  Fielding* reach the class page, the pupil, the covering teacher's own week and
+  the absent teacher's. A lesson added AFTER the approval showed as
+  *Tom Fielding is away · no cover arranged*, counted in a banner on the
+  principal's page — which is the state the feature exists to make visible.
+  Four `rls:verify` checks: a school reads its own timetable, the school next
+  door reads none of it, and cannot write or delete a lesson into it.
+
+- **A guardian reads their child's week.** `weekForStudent` takes a school id
+  rather than a context, so the pupil's claim (the school on their session) and
+  the guardian's (an ACTIVE Guardianship) each stand on their own — a parent
+  holds no membership and no school, so there was no tenant to check a child
+  against. Asserted as `toEqual` against the child's own week rather than
+  described: a parent and a child disagreeing about Thursday is the one thing
+  that page exists to prevent.
+  **Mutation testing caught a test passing for the wrong reason.** Removing the
+  parent check from the guardianship query SURVIVED, because the "not your
+  child" case used a pupil with no guardian at all — refused either way. It now
+  uses a child who has a guardian, just a different one.
+  **A pre-existing bug fell out of the walk:** the child switcher hardcoded
+  `/parent?child=…`, so a guardian comparing two children's attendance was
+  thrown back to the overview on every switch. It takes a `basePath` now.
+
+- **The cross-school leaderboard: schools are ranked, children are not.**
+  `leaderboardEnabled` had been a column nothing wrote since competitions
+  shipped, and this file said why — a ranking across schools "would be the first
+  thing in this app to show one school another school's children". The decision
+  was made the other way. `CompetitionStanding` holds a school name, a count of
+  results, a best place and a best score, and no column that could name a pupil;
+  `CompetitionEntry`, where the names and individual marks are, was not widened
+  by one row.
+  **Denormalised rather than aggregated across the boundary**, the same choice
+  `Post.globalSchoolName` made: computing this from entries would have meant
+  opening every entrant's name and mark to every school on the server to solve a
+  display problem.
+  **The flag is in the policy, not in a page's `if`**, so taking a board down
+  closes it in the database. Standings keep being maintained regardless, which
+  is what lets an organiser switch one on in week three and see the truth.
+  **Recomputed, never adjusted** — a running total has to be right after a
+  clear, a withdrawal, a corrected typo, and two of those racing. The typo case
+  has its own test: 910000 entered for 91000 must not leave a school top for
+  good.
+  **Walked across two schools, production build:** recorded a result through the
+  real UI, watched the board reorder for the school that did NOT organise it,
+  took it down and saw it close for them while the standings survived
+  underneath. Four `rls:verify` checks, including the one that stops the others
+  passing vacuously (a school DOES read another's standing when the board is on)
+  and the one that matters most — another school's entries are never readable,
+  under any condition.
+
+- **`/account` came out from behind the role gate.** It lived inside `(app)`,
+  which requires an active role; the pages under it never did — they have always
+  been `requireUser` — so this was a layout refusing on behalf of pages that
+  would have rendered. Three populations were locked out of their own language,
+  password and sign-out: an alumnus (a whole population the leaving-certificate
+  work created), a paused member, and anybody between contexts. `/suspended` had
+  to carry its own sign-out button precisely because of this.
+  The sweep asserted the 307 with a comment calling it a known limitation; it
+  now asserts **200** for the paused teacher and the alumnus both, while every
+  school page beside it stays 307 — which is the distinction the move rests on.
+  The shell moved to `SignedInShell` so the two layouts cannot drift.
+  **Walked as a real alumnus with a leaving certificate**, which is how the one
+  thing the move broke was found: "Where you belong" said *You can switch at any
+  time* over an empty list, to exactly the person the page now exists for. Three
+  states, in all three languages.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1268,7 +1359,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 235 checks in
+**Every route referenced by the navigation renders.** All 275 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1392,21 +1483,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   deliberately not built: it changes what joining MEANS, since an admin at one
   school could become a pupil at another in one click.
 
-- **An alumnus cannot reach `/account`.** The record is readable but the
-  settings behind it are not, so somebody who has left every school cannot
-  change their language, their password or their notification preferences. Same
-  root cause as the item below — `/account` needs an active role — and now much
-  more visible, because there is a whole population of people who legitimately
-  have none. `/record` carries a sign-out button so it is not a dead end, but
-  moving the account page out from behind the gate would close both at once.
-
-- **The account page is behind the role gate.** `/account` lives inside the
-  signed-in shell, which needs an active role, so somebody with no remaining
-  context — a paused member with nowhere else to be — cannot reach their own
-  settings. Not caused by suspension, but that is where it shows: `/suspended`
-  carries a sign-out button for exactly this reason. `npm run sweep` asserts the
-  307 rather than wishing it away. Moving the account page out from behind the
-  gate is its own change.
+- ~~An alumnus cannot reach `/account`~~ and ~~the account page is behind the
+  role gate~~ — **both fixed, and they were one bug.** `/account` moved out of
+  `(app)`; the pages under it had always been `requireUser` and never needed a
+  role at all. An alumnus, a paused member and anybody between contexts all
+  reach their own settings, and the sweep asserts **200** where it used to
+  assert 307 with a comment calling it a known limitation. See Status.
 
 ### A pupil transferring school, and the certificate that goes with them
 
@@ -2005,12 +2087,25 @@ next run rather than in a role audit six months later.
   in one function, on purpose: making it per-school later is a change to that
   body plus a column on `School`, rather than a hunt through inlined
   `day === 0 || day === 6` checks — which is the hunt that produced the function.
+  **It has a second dependant now:** `WEEK_DAYS` in `school-day.ts` is the
+  timetable's Monday-to-Saturday grid and states in its own comment that the two
+  change together. A school that teaches on Sunday, or closes on Saturday, gets
+  a column it does not want and none it does — visibly rather than silently, but
+  wrong all the same.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
   chattier in route handlers than it was when it was wrong. If it ever matters,
   the answer is a request-scoped memo that works outside React, not putting the
   push back.
+- **`npm test` flakes roughly one run in six, in a different suite each time.**
+  Seen in `transaction-atomicity`, `register-duty` and `mentoring`. Reproduced
+  on BASELINE with the session's work stashed — 1 failure in 6 full runs with no
+  new code present — so it is not any one feature's fault. The cause is the
+  shape of the setup rather than any single test: vitest runs files in parallel
+  against one dev database, and suites that were written before the
+  make-your-own-fixtures rule still touch shared seed rows. Running a single
+  file is reliable; it is the parallel full run that is not.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.

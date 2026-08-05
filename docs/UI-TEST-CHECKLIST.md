@@ -1736,6 +1736,111 @@ the link, or set `publishedAt` on an `ExpertProfile` by hand.
 
 ---
 
+## 12ac. The timetable — building it
+
+An admin, at `/admin/timetable`.
+
+### The school day comes first
+
+- ☐ With no periods at all → **Start from a typical day** lays out eight and
+  says they are a starting point, not a claim about your school
+- ☐ **⚠️** Press it a second time → **refused**. It is not an "undo my
+  afternoon" button
+- ☐ Edit a period to start at 14:00 → the day **re-sorts itself by the clock**.
+  A grid whose times run backwards reads as corrupted data
+- ☐ Type `25:00`, `8:3`, `half eight` → each **refused**, not rounded
+- ☐ End a period before it starts → **refused**
+- ☐ Make two periods overlap → **saved, with a warning**. A split lunch is real;
+  refusing it would mean the timetable cannot describe the school
+- ☐ **⚠️ Retire** a period that has lessons in it → it leaves the grid and the
+  **lessons survive**. Bring it back → they are still there. (`periodId`
+  cascades, so a delete here would take every class's fourth lesson with it)
+
+### The grid
+
+- ☐ Click any empty cell → the dialog names the **day, the period and the
+  class**, not three dropdowns asking you to say where you already clicked
+- ☐ Set subject + teacher + room → saved, and the cell shows all three
+- ☐ Save with no subject → **refused**
+- ☐ A **break** period has no clickable cells
+- ☐ **⚠️ Now double-book.** Put the same teacher in a different class at the
+  same day and period → the picker shows them under *Already teaching then*,
+  disabled, **naming the clash**. Force it (dev tools, re-enable the option) →
+  the server refuses with the same sentence
+- ☐ Leave a lesson **unstaffed** → saved, and a warning counts how many
+- ☐ **Copy day** Monday → Wednesday → replaces Wednesday, and any teacher
+  already busy comes across **without a name** rather than being dropped
+
+## 12ad. The timetable — who sees what
+
+- ☐ As a **teacher**, `/timetable` → your own lessons, with the class named
+- ☐ As a **pupil**, `/timetable` → your week. The class name appears **only** if
+  you are in more than one class
+- ☐ As the **principal**, `/principal/timetable` → any class, any week, and
+  **no edit controls**
+- ☐ **⚠️** As a teacher or pupil, try to reach another class's grid → there is
+  no picker, and `classWeek` refuses them by role
+- ☐ As a **guardian**, `/parent/timetable` → your child's week, the same one
+  they see. With two children, the switcher **keeps you on this page**
+- ☐ **⚠️** A day with no lessons says *Nothing timetabled* — not a bare list of
+  *Break / Lunch*, which reads as a page that failed to load
+
+### The replacement, which is the point
+
+- ☐ Approve leave for a teacher who has lessons, naming a cover
+- ☐ **⚠️** The class's week now reads *X covering for Y* — and Y's name is
+  **still there**. A silent swap is how a timetable stops being trusted
+- ☐ **⚠️** The **covering** teacher's own `/timetable` shows the lesson, marked
+  *You are covering*
+- ☐ **⚠️** The **absent** teacher's own week says *Priya covering for you* —
+  their own name never appears in the third person on their own page
+- ☐ **⚠️** Add a lesson for that teacher **after** the approval → it shows
+  *away · no cover arranged*, in red, counted in a banner on
+  `/principal/timetable`
+- ☐ Put a HOLIDAY on that week in `/admin/calendar` → the day is marked shut, by
+  name
+
+## 12ae. The cross-school leaderboard
+
+Needs two schools with pupils in one competition. Riverside organises.
+
+- ☐ Create a competition with **Show a leaderboard across schools** ticked →
+  the description says it ranks SCHOOLS and names no child, **including yours**
+- ☐ Record results for pupils at both schools
+- ☐ **⚠️** As the school that did **not** organise it → the board lists both
+  schools, ordered by best place, with **your school** marked
+- ☐ **⚠️ THE ONE THAT MATTERS.** Read the board as each school and confirm there
+  is **no child's name anywhere on it** — only a school, a count, a place and a
+  score. Your own pupils by name are on your **entries** page and nowhere else
+- ☐ As a **pupil**, open the board → the caption does **not** point them at the
+  entries page, which is staff-only and would 404 them
+- ☐ **Take the leaderboard down** as the organiser → it disappears for the other
+  school; put it back → the standings are **still there and correct**, not
+  rebuilt from nothing
+- ☐ **⚠️** As the competing school's admin, try to switch the board on or off →
+  **refused**. Competing is not organising
+- ☐ Clear a result → that school comes **off** the board rather than sitting on
+  it with a zero
+- ☐ **⚠️** Enter a score of `910` for `91`, then correct it → the board shows
+  the **corrected** figure. A running total would have left them top for good
+
+## 12af. Your own account, with no school at all
+
+The bug this closes: `/account` used to need an active role.
+
+- ☐ Take a pupil who has **left every school** (see §12w) and open `/account` →
+  **it renders**
+- ☐ **⚠️** *Where you belong* says **Not at a school just now** with a sentence
+  explaining it — not *You can switch at any time* over an empty list
+- ☐ Language, appearance, notifications, devices and sign-out all work
+- ☐ **⚠️** The header offers **Your record** and **Sign out**, and **no
+  navigation into a school** — there is nowhere for it to go
+- ☐ `/bulletin`, `/student` and every other school page → still **turned away**
+- ☐ From `/record`, the header links to **Account**, and back again
+- ☐ **⚠️** Now **suspend** a teacher and sign in as them → `/suspended` offers
+  **Account** as well as sign-out. Their own password is reachable; their
+  school is not
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -1798,7 +1903,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 235 checks in `npm run sweep`
+Every route in the navigation now renders — all 275 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every
@@ -1806,9 +1911,12 @@ route in the navigation" means the actual list. It did not used to, which is how
 `/expert/profile` sat in the expert's side rail as a 404 for months.
 
 Still not built, per the README: a real QR code on the join poster, awards
-uploads on the student profile, competition **leaderboards** (entering one IS
-built — see §12g), cross-school moderation, progress-report export, SSO, SMS,
-real email delivery.
+uploads on the student profile, cross-school moderation, progress-report export,
+SSO, SMS, real email delivery.
+
+**Competition leaderboards are now built** — see §12ae — and are deliberately a
+ranking of SCHOOLS. A board naming children from other schools is refused rather
+than pending, and the README says why.
 
 **Built but with no section here:** the expert marketplace, booking an expert,
 and mentoring threads. Only the expert's own profile (§12r) is covered, because
@@ -1819,7 +1927,14 @@ global feed, weighted grade categories, suspend-user (§12l), two-factor
 authentication, the operator area and its server log (§12m), class sections and
 register duty (§12n), staff leave (§12o), report cards (§12p), the principal's
 dashboard (§12q), the expert's profile (§12r) and a pupil leaving school with
-their record (§12s).
+their record (§12s), the weekly timetable and its cover resolution (§§12ac–12ad),
+the cross-school leaderboard (§12ae) and an account reachable with no school at
+all (§12af).
+
+**None of §§12ac–12af has been walked by anybody but the author.** Each was
+driven end to end in a production build while it was being built — that is
+recorded in the README's Status — but a walkthrough by somebody who did not
+write it has caught things every single time it has been run here.
 
 **§12m0 is new and should be walked first.** It is the only section that tests
 the JOINS between screens rather than a screen, and the first time anybody
