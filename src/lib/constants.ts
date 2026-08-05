@@ -60,6 +60,11 @@ export const AUTH_TOKEN_PURPOSES = [
   "EMAIL_VERIFY",
   "PASSWORD_RESET",
   "PARENT_CLAIM",
+  // Proving you hold a contact you just typed into your own settings. Both
+  // added late; `PHONE_VERIFY` had already drifted out of this list, which is
+  // what a list nothing validates against does.
+  "PHONE_VERIFY",
+  "EMAIL_CHANGE",
 ] as const;
 export type AuthTokenPurpose = (typeof AUTH_TOKEN_PURPOSES)[number];
 

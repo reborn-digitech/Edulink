@@ -173,7 +173,9 @@ export function MobileForm({
       )}
 
       <TextField
-        label={current ? "Change it" : "Mobile number"}
+        // Always what it is, never "Change it" — see the matching note in
+        // `EmailForm`. Two forms in one card make a bare "Change it" ambiguous.
+        label="Mobile number"
         type="text"
         inputMode="tel"
         autoComplete="tel"
@@ -190,8 +192,9 @@ export function MobileForm({
       />
 
       <div className="flex flex-wrap items-center gap-2">
+        {/* Names its channel — see the matching note in `EmailForm`. */}
         <Button type="submit" size="sm" loading={pending} disabled={!normalised}>
-          Send me a code
+          Text me a code
         </Button>
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">
           <DeviceMobileIcon className="size-3.5" />

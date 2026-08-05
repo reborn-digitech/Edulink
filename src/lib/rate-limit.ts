@@ -148,6 +148,22 @@ export const LOGIN_ATTEMPTS = { limit: 10, windowMs: 15 * 60_000 };
 export const PHONE_VERIFY_REQUESTS = { limit: 3, windowMs: 15 * 60_000 };
 
 /**
+ * Changing the email address on an account.
+ *
+ * The same shape and the same reasoning as the two above — it sends a message to
+ * an address the caller types — but its OWN BUCKET rather than sharing the phone
+ * one. Sharing would mean somebody who had just confirmed a mobile number could
+ * not then correct a typo in their email, and a person doing both on the same
+ * afternoon is the ordinary case rather than the suspicious one.
+ *
+ * Keyed on the signed-in user, not on the address, for the reason spelled out on
+ * `PHONE_VERIFY_REQUESTS`: a caller who swapped the address each time would
+ * otherwise get a fresh allowance per address, which is exactly the loop that
+ * turns this into a way to send strangers mail.
+ */
+export const EMAIL_CHANGE_REQUESTS = { limit: 3, windowMs: 15 * 60_000 };
+
+/**
  * ⚠ CLAIMING A CHILD, and this is the most serious limit in this file.
  *
  * `claimChild` takes a student code and the child's date of birth, and its own

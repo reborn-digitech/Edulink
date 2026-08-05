@@ -122,7 +122,8 @@ Password for every account: `copper-lantern-47-brook`
 
 Sign in with an **email, a mobile number, or a student handle** — one box takes
 all three. No seeded account has a number on it; add one at `/account` to try
-that path, and `/forgot` sends a reset code to whichever you type.
+that path, and `/forgot` sends a reset code to whichever you type. **Both
+contacts are changeable at `/account`**, each behind a code sent to the new one.
 
 | Email | Role |
 |---|---|
@@ -162,7 +163,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,020 tests) |
+| `npm test` | Full suite (1,318 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -283,7 +284,7 @@ src/lib/                  All business logic. Pages are thin.
   timetable.ts            ★ Three layers: periods, a dateless TEMPLATE, and a week resolved against leave.
   school-day.ts           Client-safe half of the above. Minutes from midnight; WEEK_DAYS is Mon–Sat.
   phone.ts                ★ Client-safe. ONE stored shape for a number, or nothing. `User.phone` is unique.
-  passwords.ts            ★ Login by email/mobile/handle, and the reset. Neither end says who exists.
+  passwords.ts            ★ Login by email/mobile/handle, the reset, and changing either contact.
   sms.ts                  Text transport. Devbox only, same shape as email.ts. Fails loudly.
   rate-limit.ts           ★ The FIRST rate limit here. Fails OPEN — see the header for why.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
@@ -1498,6 +1499,66 @@ One line each, with the default rejected.
   `callerKey`, which the vitest stub makes unreachable by always supplying
   headers.
 
+- **You can change your email address, which you could not do at all.** An
+  address arrived when the account was created — registration, a teacher invite,
+  an expert invite — and then it was permanent. Nothing anywhere wrote to
+  `User.email` afterwards. A family that changed email provider, a teacher who
+  signed up with a school address they no longer have, a pupil who outgrew the
+  handle a class code gave them: all of them held an account whose password
+  reset went somewhere they could not read, which is an account they cannot
+  recover. The only route was an account merge or a phone call to the school.
+  **THE SAME TWO STEPS AS THE MOBILE NUMBER, deliberately.** Typing is a claim;
+  the code coming back is the proof; the pending address waits in the token's
+  `meta` so nothing is written until it does. Somebody who has already changed
+  their number should recognise the screen rather than have to read it.
+  **A CODE, NOT A LINK, and for a different reason than the reset.** This is
+  confirmed by somebody already signed in, with the form open in front of them.
+  A link is a promise that whatever opens it is the same session — and the
+  address being confirmed is usually new, on a phone, in a mail app that opens
+  its own browser. They would land signed out on a page that cannot tell them
+  from anyone else holding the link.
+  **⚠ THE OLD ADDRESS IS TOLD, and that is the security of the whole feature.**
+  Changing the email changes where a password reset goes, so somebody who has
+  got into an account can point its recovery at themselves and every future
+  "forgot password" reaches them instead. Revoking sessions does not help — the
+  attacker's own session is the one that survives. The previous address finding
+  out, while it is still on record everywhere else, is what does. Skipped only
+  for a pupil's `@edulink.local` handle: no previous owner, and `.local` never
+  routes.
+  **THE HANDLE DOMAIN IS REFUSED THOUGH IT IS A VALID ADDRESS.**
+  `someone@edulink.local` passes every shape check ever written. Accepting it
+  would mint an account that can never be sent a reset code, which is the same
+  trap this feature exists to open.
+  **A DIFFERENT UNIQUENESS RULE THAN THE PHONE NEXT DOOR**, and it is the schema
+  rather than a change of mind: `User.phone` blocks only on a *confirmed*
+  number, but every account has an email whether verified or not, because the
+  column doubles as the login key and as a pupil's handle. Letting an unverified
+  clash through would only move the refusal to a constraint error ten minutes
+  later with no sentence attached.
+  It sets `emailVerifiedAt` — **the first place in the app that ever does on a
+  real change**, and the reason the separate `/verify` bug below was found.
+  Its own bucket, not the phone's, so confirming a number does not cost somebody
+  the ability to correct a typo in their address.
+  **Walked in a production build:** changed the address, watched the header and
+  the "confirmed" tick follow it, read the warning that landed at the old
+  address, then walked all four refusals — malformed, handle domain, unchanged,
+  and one another account holds. The walkthrough is what found the wart: two
+  identical green *"Send me a code"* buttons a centimetre apart, one under an
+  address and one under a number, neither saying which. They now name their
+  channel, and both fields say what they are rather than *"Change it"*.
+  20 tests. 11 mutations, 9 caught outright; one was malformed on my part and
+  redone, and one survives alone because consuming the previous token and
+  refusing a non-newest token each cover it — removing **both** fails three
+  tests, which was run and is recorded in the code.
+  **The fixture leaked, and mutation testing is what showed it.** Cleanup
+  filtered by the `@zzemail.test` suffix, which misses the pupil case's
+  `@edulink.local` handles. Under normal code nothing is ever mailed to a
+  handle, so the hole only opened while the deliverability check was removed on
+  purpose — and four stray rows survived into the dev database. It tracks the
+  addresses it used now. Same class of bug as the handle accounts that escaped
+  an earlier suffix filter; the shape-based filter is the part that keeps being
+  wrong.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -2269,6 +2330,18 @@ next run rather than in a role audit six months later.
   change together. A school that teaches on Sunday, or closes on Saturday, gets
   a column it does not want and none it does — visibly rather than silently, but
   wrong all the same.
+- **⚠ Registration emails a confirmation link to a route that does not exist.**
+  `src/app/register/actions.ts` mints an `EMAIL_VERIFY` token and sends
+  `${APP_URL}/verify?token=…`. There is no `/verify` route and nothing anywhere
+  consumes an `EMAIL_VERIFY` token, so every school admin who has ever
+  registered got an email whose button leads to a 404, and their address has sat
+  unverified since. Found while building the email change, which is the first
+  thing in the app that sets `emailVerifiedAt` on a real change — the asymmetry
+  is what surfaced it. Not fixed here: it is a separate flow with its own
+  decisions to make (what an unverified admin should be blocked from, whether an
+  expired token can be reissued), and folding it into an unrelated commit would
+  bury both. The token, the TTL and the message all already exist; what is
+  missing is the route that consumes them.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably

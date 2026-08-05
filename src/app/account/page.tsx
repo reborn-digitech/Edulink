@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "./appearance-form";
 import { LanguageForm } from "./language-form";
+import { EmailForm } from "./email-form";
 import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
@@ -95,8 +96,16 @@ export default async function AccountPage() {
           title="How you sign in"
           description="Your email, your mobile number, or the login name your school gave you — any of them, with your password."
         />
-        <CardBody>
-          <MobileForm current={user.phone} confirmed={user.phoneVerifiedAt !== null} />
+        <CardBody className="space-y-5">
+          <EmailForm
+            current={user.email}
+            confirmed={user.emailVerifiedAt !== null}
+            isHandle={isHandle}
+            loginName={toDisplayLoginName(user.email)}
+          />
+          <div className="border-t border-border pt-5">
+            <MobileForm current={user.phone} confirmed={user.phoneVerifiedAt !== null} />
+          </div>
         </CardBody>
       </Card>
 

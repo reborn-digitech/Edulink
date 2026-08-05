@@ -7,8 +7,18 @@ import { readJson } from "./json";
 import { isDeliverableEmail, toLoginEmail } from "./login-name";
 import { identifierKind, normalisePhone, phoneHint } from "./phone";
 import { sendResetCode as sendResetSms, sendPhoneCode } from "./sms";
-import { sendResetCode as sendResetEmail } from "./email";
-import { consume, retryHint, RESET_REQUESTS, PHONE_VERIFY_REQUESTS } from "./rate-limit";
+import {
+  sendResetCode as sendResetEmail,
+  sendEmailChangeCode,
+  sendEmailChangedNotice,
+} from "./email";
+import {
+  consume,
+  retryHint,
+  RESET_REQUESTS,
+  PHONE_VERIFY_REQUESTS,
+  EMAIL_CHANGE_REQUESTS,
+} from "./rate-limit";
 
 /**
  * Signing in with whatever you have, and getting back in when you forget.
@@ -565,6 +575,238 @@ export async function confirmPhoneChange(userId: string, code: string): Promise<
   await audit({ actorUserId: userId, action: "account.mobile.confirm" });
 
   return { ok: true, hint: phoneHint(phone) };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Proving you hold the address                                                */
+/* -------------------------------------------------------------------------- */
+
+const EMAIL_PURPOSE = "EMAIL_CHANGE";
+
+export type EmailChange = { ok: boolean; error?: string; sentTo?: string };
+
+/**
+ * Step one of changing the email on an account: send a code to the new one.
+ *
+ * ⚠ THERE WAS NO WAY TO DO THIS AT ALL. An address arrived at account creation —
+ * registration, a teacher invite, an expert invite — and then it was permanent.
+ * A family that changed email provider, a teacher who left the school whose
+ * address they signed up with, a pupil who outgrew the handle a class code gave
+ * them: all of them were stuck with an account reachable at an address they no
+ * longer read, which for a password reset means an account they cannot recover.
+ * Their only route was an account merge or asking the school.
+ *
+ * THE ADDRESS IS NOT STORED YET, exactly as with the phone. It waits in the
+ * token's `meta` so an unconfirmed address exists nowhere a lookup can reach it
+ * — which matters more here than it does for a number, because `User.email` IS
+ * the login key. Writing it early would sign somebody in under an address they
+ * had not yet proved they hold.
+ *
+ * NOT PUT IN `AuthToken.email` either, though the column is right there and
+ * indexed. That column holds addresses a message WAS sent to for auditing; this
+ * one is a claim, and a claim that sits in an indexed column is a claim
+ * something will eventually search on.
+ */
+export async function startEmailChange(userId: string, rawEmail: string): Promise<EmailChange> {
+  const email = rawEmail.trim().toLowerCase();
+
+  /**
+   * Shape first, and `isDeliverableEmail` second — they refuse different things.
+   * The first refuses `not an address`; the second refuses
+   * `somebody@edulink.local`, which IS a well-formed address and is the one
+   * domain in the system guaranteed not to route. Typing a handle domain by hand
+   * would otherwise mint an account nobody can ever send a reset to.
+   */
+  if (!/^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) || email.length > 320) {
+    return { ok: false, error: "That does not look like an email address." };
+  }
+  if (!isDeliverableEmail(email)) {
+    return { ok: false, error: "That address cannot receive mail. Use one you can read." };
+  }
+
+  const current = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
+  if (current?.email === email) {
+    return { ok: false, error: "That is already the address on your account." };
+  }
+
+  /**
+   * ANY match, not just a confirmed one — unlike the phone check next door, and
+   * the difference is the schema rather than a change of mind. `User.email` is
+   * unique AND every account has one, verified or not, because it doubles as the
+   * login key and as a pupil's handle. An unverified address still occupies the
+   * row, so letting this through would only move the refusal to a constraint
+   * error at confirm time, fifteen minutes later, with no sentence attached.
+   *
+   * SAYING SO IS A NARROW ENUMERATION ORACLE and it is the same trade
+   * `startPhoneChange` already makes: three probes per fifteen minutes, per
+   * signed-in account, against a message that otherwise has to lie to somebody
+   * who genuinely owns both accounts and is trying to consolidate them. The
+   * alternative — pretending to send, then failing silently — traps that person
+   * with no way to find out why.
+   */
+  const taken = await db.user.findFirst({
+    where: { email, id: { not: userId } },
+    select: { id: true },
+  });
+  if (taken) {
+    return {
+      ok: false,
+      error:
+        "Another account already uses that address. If both are yours, join them together from your account page instead.",
+    };
+  }
+
+  const gate = await consume(
+    `email-change:${userId}`,
+    EMAIL_CHANGE_REQUESTS.limit,
+    EMAIL_CHANGE_REQUESTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      error: `Too many codes requested. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+    };
+  }
+
+  const code = String(randomSixDigits()).padStart(6, "0");
+
+  /**
+   * Asking again spends the previous code, so only one is ever live.
+   *
+   * SURVIVES MUTATION TESTING ON ITS OWN, and that is deliberate rather than a
+   * gap — the same arrangement `resetPassword` documents. `confirmEmailChange`
+   * additionally refuses any token that is not the newest, so removing either
+   * line leaves the tests green and removing BOTH fails three of them. Which was
+   * run: without the pair, a code from a request the person abandoned twenty
+   * minutes ago still moves their address.
+   */
+  await db.authToken.updateMany({
+    where: { userId, purpose: EMAIL_PURPOSE, consumedAt: null },
+    data: { consumedAt: new Date() },
+  });
+
+  await db.authToken.create({
+    data: {
+      userId,
+      purpose: EMAIL_PURPOSE,
+      // Salted with the user id and the purpose, so a six-digit code issued for
+      // one person and one job cannot collide with — or open — another's.
+      tokenHash: hashToken(`${userId}:${EMAIL_PURPOSE}:${code}`),
+      meta: JSON.stringify({ attempts: 0, email }),
+      expiresAt: new Date(Date.now() + RESET_TTL_MINUTES * 60_000),
+    },
+  });
+
+  await sendEmailChangeCode(email, code, RESET_TTL_MINUTES);
+  await audit({ actorUserId: userId, action: "account.email.code" });
+
+  return { ok: true, sentTo: email };
+}
+
+/**
+ * Step two: the code proves they read that inbox, so the address becomes theirs.
+ *
+ * SETS `emailVerifiedAt`, and this is the first place in the app that ever does
+ * on a real change. Registration mints an `EMAIL_VERIFY` token and emails a link
+ * to `/verify`, which does not exist — so a school admin's address has sat
+ * unverified since the day they signed up. That is a separate bug and is
+ * reported rather than fixed here, but it is the reason this function sets the
+ * column itself rather than assuming something upstream did.
+ *
+ * THE PASSWORD IS NOT RE-ASKED FOR, deliberately. They are signed in, they have
+ * proved they read the new inbox, and the old address is told the moment it
+ * changes — see `sendEmailChangedNotice`, which is what actually protects the
+ * previous owner. Demanding a password on top would stop nobody who already has
+ * a live session and would block every parent who cannot remember theirs, which
+ * is the population this feature exists for.
+ */
+export async function confirmEmailChange(userId: string, code: string): Promise<EmailChange> {
+  const generic: EmailChange = {
+    ok: false,
+    error: "That code is not right, or it has expired. Ask for a new one.",
+  };
+
+  const live = await db.authToken.findFirst({
+    where: { userId, purpose: EMAIL_PURPOSE, consumedAt: null, expiresAt: { gt: new Date() } },
+    select: { id: true, meta: true },
+    orderBy: { createdAt: "desc" },
+  });
+  if (!live) return generic;
+
+  const meta = readJson<{ attempts?: number; email?: string }>(live.meta, {});
+  const attempts = meta.attempts ?? 0;
+  if (attempts >= MAX_RESET_ATTEMPTS) {
+    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+    return generic;
+  }
+
+  const token = await db.authToken.findUnique({
+    where: { tokenHash: hashToken(`${userId}:${EMAIL_PURPOSE}:${code.trim()}`) },
+    select: { id: true },
+  });
+
+  if (!token || token.id !== live.id) {
+    await db.authToken.update({
+      where: { id: live.id },
+      data: { meta: JSON.stringify({ ...meta, attempts: attempts + 1 }) },
+    });
+    return generic;
+  }
+
+  const email = meta.email;
+  if (!email) return generic;
+
+  /**
+   * Re-checked, because ten minutes is long enough for somebody else to have
+   * claimed the address — an invite accepted, a parent signing up. The database
+   * would refuse it either way, `User.email` being unique, but a constraint
+   * error is not a sentence anybody can act on.
+   *
+   * A race narrower than this — two confirms in the same millisecond — is left
+   * to the constraint. Catching it would add a branch no test can reach, and a
+   * branch nothing can reach is one that will one day be believed to work.
+   */
+  const taken = await db.user.findFirst({
+    where: { email, id: { not: userId } },
+    select: { id: true },
+  });
+  if (taken) {
+    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+    return {
+      ok: false,
+      error: "Another account claimed that address in the meantime. Ask your school for help.",
+    };
+  }
+
+  // Read BEFORE the update, because it is the thing being replaced and it is
+  // where the warning has to go.
+  const previous = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
+
+  await db.user.update({
+    where: { id: userId },
+    data: { email, emailVerifiedAt: new Date() },
+  });
+  await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+
+  /**
+   * ⚠ THE OLD ADDRESS IS TOLD, and this is the security of the whole feature.
+   *
+   * Skipped only when there was nothing deliverable to tell — a pupil's
+   * `@edulink.local` handle, which has no previous owner and no route.
+   *
+   * AFTER the write and not inside a transaction, on purpose: a mail transport
+   * that is down must not roll back a change the person has already been shown
+   * as done. The alternative fails a legitimate change because of an unrelated
+   * outage, which is a worse and much more common outcome than a warning that
+   * arrives late.
+   */
+  if (isDeliverableEmail(previous?.email)) {
+    await sendEmailChangedNotice(previous!.email!, email);
+  }
+
+  await audit({ actorUserId: userId, action: "account.email.confirm" });
+
+  return { ok: true, sentTo: email };
 }
 
 /**

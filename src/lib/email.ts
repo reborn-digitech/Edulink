@@ -133,6 +133,77 @@ export async function sendVerifyEmail(to: string, url: string, schoolName: strin
   });
 }
 
+/**
+ * A code confirming an address somebody just typed into their own settings.
+ *
+ * A CODE RATHER THAN A LINK, for a different reason than the reset above. This
+ * is confirmed by somebody who is ALREADY SIGNED IN, on the device in front of
+ * them, with the form open and waiting. A link is a promise that whatever opens
+ * it is the same session — and the address being confirmed is usually a new one,
+ * on a phone, in a mail app that opens its own browser. They would land signed
+ * out, on a page that cannot tell them apart from anyone else holding the link.
+ * Six digits typed back into the open form has none of that failure mode.
+ *
+ * It also keeps ONE SHAPE for "prove you hold this contact" across the two
+ * things an account can be reached at, which is what `MobileForm` and
+ * `EmailForm` being the same two steps is worth.
+ */
+export async function sendEmailChangeCode(to: string, code: string, minutes: number) {
+  await sendEmail({
+    to,
+    purpose: "EMAIL_CHANGE",
+    subject: `${code} is your EduLink code`,
+    text:
+      `${code} is your code to confirm this email address on EduLink.\n\n` +
+      `It works once and expires in ${minutes} minutes.\n\n` +
+      `If you did not ask for it, ignore this email — nothing will change, and ` +
+      `this address has not been added to any account.`,
+    html: layout(
+      "Confirm this email address",
+      `<p>Use this code to confirm this address on your EduLink account. It works once and expires in ${minutes} minutes.</p>
+       <p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>
+       <p>If you did not ask for it, ignore this email. Nothing will change, and this address has not been added to any account.</p>`,
+    ),
+  });
+}
+
+/**
+ * ⚠ TOLD TO THE ADDRESS BEING LEFT, NOT THE ONE BEING ADDED.
+ *
+ * This is the part of the feature that matters most, and it is easy to leave
+ * out because nobody asks for it. Changing the email on an account changes where
+ * a password reset goes — so somebody who has got into an account can point its
+ * recovery at themselves, and every future "forgot password" reaches them
+ * instead of the owner. Session revocation does not help: the attacker's own
+ * session survives it.
+ *
+ * The one thing that does help is the previous address finding out while it is
+ * still the one on record everywhere else. So this goes out AFTER the change,
+ * unconditionally, and says what happened plainly enough to act on.
+ *
+ * Not sent when the old address was a pupil's `@edulink.local` handle — see
+ * `isDeliverableEmail`. There is no previous owner to warn, and the domain does
+ * not route.
+ */
+export async function sendEmailChangedNotice(to: string, newEmail: string) {
+  await sendEmail({
+    to,
+    purpose: "EMAIL_CHANGE",
+    subject: "The email on your EduLink account was changed",
+    text:
+      `The email address on your EduLink account was changed to ${newEmail}.\n\n` +
+      `Sign-in and password-reset messages will go there from now on.\n\n` +
+      `If you did not do this, contact your school straight away — whoever made ` +
+      `the change can now reset the password on this account.`,
+    html: layout(
+      "Your EduLink email was changed",
+      `<p>The email address on your EduLink account was changed to <strong>${escapeHtml(newEmail)}</strong>.</p>
+       <p>Sign-in and password-reset messages will go there from now on.</p>
+       <p><strong>If you did not do this</strong>, contact your school straight away — whoever made the change can now reset the password on this account.</p>`,
+    ),
+  });
+}
+
 export async function sendTeacherInvite(
   to: string,
   url: string,

@@ -10,7 +10,13 @@ import { audit } from "@/lib/audit";
 import { revokeOtherSessions, revokeSession } from "@/lib/session";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
 import { requireApiUser } from "@/lib/tenancy";
-import { startPhoneChange, confirmPhoneChange, removePhone } from "@/lib/passwords";
+import {
+  startPhoneChange,
+  confirmPhoneChange,
+  removePhone,
+  startEmailChange,
+  confirmEmailChange,
+} from "@/lib/passwords";
 
 export type PrefsState = { ok: boolean; errors: FieldErrors };
 
@@ -185,5 +191,35 @@ export async function clearMobile(): Promise<PhoneState> {
   const session = await requireApiUser();
   const result = await removePhone(session.user.id);
   revalidatePath("/account");
+  return result;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Your email address                                                          */
+/* -------------------------------------------------------------------------- */
+
+export type EmailState = { ok: boolean; error?: string; sentTo?: string };
+
+/**
+ * THE SAME TWO STEPS AS THE MOBILE NUMBER, and that is the point rather than
+ * duplication. An address and a number are the two things this account can be
+ * reached at, and "prove you hold it" should not be two different experiences
+ * depending on which one somebody is changing.
+ *
+ * There is no `clearEmail` to match `clearMobile`. `User.email` is the login
+ * key — for a pupil who joined with a class code it holds their handle, which is
+ * the only thing they sign in with — so emptying it makes an account nobody can
+ * get into. Changing replaces; it never clears.
+ */
+export async function sendEmailCode(raw: string): Promise<EmailState> {
+  const session = await requireApiUser();
+  return startEmailChange(session.user.id, raw);
+}
+
+export async function confirmEmail(code: string): Promise<EmailState> {
+  const session = await requireApiUser();
+  const result = await confirmEmailChange(session.user.id, code);
+  // The header on this page shows the address, and so does the shell.
+  if (result.ok) revalidatePath("/account");
   return result;
 }
