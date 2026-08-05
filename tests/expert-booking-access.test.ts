@@ -289,6 +289,73 @@ describe("cancelling, which had no test at all", () => {
     await expect(cancelBooking(otherExpert, id)).rejects.toBeInstanceOf(AccessError);
   });
 
+  it("⚠ and the freed hour can actually be booked again", async () => {
+    /**
+     * THE POINT OF FREEING IT. Cancelling clears `ExpertSlot.bookedAt`, so the
+     * marketplace offers the hour again — verified by eye. That is worth
+     * nothing if the next school to press Book meets an error, and
+     * `ExpertBooking.slotId` is UNIQUE, so the cancelled booking still holds
+     * the row for that slot.
+     *
+     * Asserted end to end rather than by reading the schema: book, cancel, book
+     * again as the same school.
+     */
+    const slotId = await freshSlot();
+    const original = await db.expertSlot.findUniqueOrThrow({ where: { id: slotId } });
+    const first = await bookSlot(admin, slotId, "The first school");
+    await cancelBooking(admin, first.bookingId);
+
+    /**
+     * Found the way the MARKETPLACE finds it — an unbooked, uncancelled slot at
+     * that time — rather than by reusing the old id. The hour is what is being
+     * offered again; which row carries it is an implementation detail, and a
+     * test that asserted the id would have been asserting the bug.
+     */
+    const offered = await db.expertSlot.findFirstOrThrow({
+      where: {
+        expertProfileId: original.expertProfileId,
+        startsAt: original.startsAt,
+        bookedAt: null,
+        cancelledAt: null,
+      },
+    });
+    expect(offered.id).not.toBe(slotId);
+
+    const second = await bookSlot(teacher, offered.id, "The second school");
+    expect(second.bookingId).not.toBe(first.bookingId);
+
+    // The consumed row is retired, not left looking bookable.
+    expect((await db.expertSlot.findUniqueOrThrow({ where: { id: slotId } })).cancelledAt)
+      .not.toBeNull();
+
+    // And the older one is still on record as cancelled — re-booking must not
+    // resurrect or overwrite it.
+    expect((await db.expertBooking.findUniqueOrThrow({ where: { id: first.bookingId } })).status)
+      .toBe("CANCELLED");
+  });
+
+  it("⚠ cancelling twice does not mint two replacement hours", async () => {
+    // Two people pressing the button, or one pressing it twice on a slow
+    // connection, is the ordinary case rather than an attack — and it would
+    // otherwise duplicate the expert's availability every time.
+    const slotId = await freshSlot();
+    const original = await db.expertSlot.findUniqueOrThrow({ where: { id: slotId } });
+    const { bookingId } = await bookSlot(admin, slotId, "Cancelled twice");
+
+    await cancelBooking(admin, bookingId);
+    await cancelBooking(expert, bookingId);
+
+    const offered = await db.expertSlot.findMany({
+      where: {
+        expertProfileId: original.expertProfileId,
+        startsAt: original.startsAt,
+        bookedAt: null,
+        cancelledAt: null,
+      },
+    });
+    expect(offered).toHaveLength(1);
+  });
+
   it("⚠ a cancelled booking cannot be written in", async () => {
     const id = await aBooking();
     await cancelBooking(admin, id);

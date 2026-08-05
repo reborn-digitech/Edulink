@@ -2173,18 +2173,27 @@ and a second offering **MENTORING** only.
 - ☐ Signed out → redirected to log in
 - ☐ **⚠️** An expert with a **different** booking → 404 on this one
 
-### ⚠️ What this walk found
+### Cancelling, and the hour coming back
 
-One is fixed and is now a check to keep; one is still open and will fail.
+Both of these were found by walking this section while writing it, and both are
+fixed. They are checks to keep, not known failures.
 
-- ☐ **⚠️ NOTHING CAN CANCEL A BOOKING.** Look for a cancel control on the
-  booking page, on **Your bookings**, and on the expert's own list. There is
-  none on any of the three. `cancelBooking` exists in `src/lib/experts.ts` and
-  is exported as a server action `cancel` in
-  `src/app/(app)/experts/actions.ts` — **and no component imports it**. So a
-  school that books the wrong hour, or an expert who falls ill, has no way to
-  release it, and the slot stays consumed. The library function is also tested
-  nowhere.
+- ☐ On a **future** booking, **Cancel this booking** is offered — to the school
+  and to the expert, on the same page
+- ☐ **⚠️** It asks first, and says what happens: *This frees the time for
+  another school to book, and the other side will see that it was cancelled*
+- ☐ Confirm → the badge reads **This booking was cancelled**, the cancel control
+  goes, and the message box goes with it
+- ☐ **⚠️ THE CHECK THAT MATTERS: go back to Experts and book that hour again.**
+  It must be offered, and booking it must **work**. Cancelling used to free the
+  slot while `ExpertBooking.slotId` — which is UNIQUE — still held it, so the
+  hour reappeared and the next school to press Book met a constraint error. An
+  advertised hour nobody can take is worse than one that never came back
+- ☐ Press cancel twice, or have both sides cancel → the expert's availability
+  must show that hour **once**, not twice
+- ☐ **⚠️** On a booking whose time has **already passed**, no cancel control is
+  offered at all. Cancelling something that happened frees nothing, and would
+  let a session be quietly marked as never having taken place
 - ☑ **⚠️ A PUPIL COULD ONCE READ AND POST IN A BOOKING CHAT. Check it stays
   shut.** Open `/experts/bookings/<id>` as a **pupil** and as a **guardian** →
   both must get **404**, not 403 and not an empty page: they must not be able to
@@ -2284,13 +2293,14 @@ marketplace and booking were the last two, and they now have §12al.
 **⚠️ THAT LIST WAS NEVER A FORMALITY, and both entries proved it on the way
 off.** While mentoring had no section, six notifications pointed at routes that
 had never existed and 7,351 stored rows carried a link to a 404 (§12ak). Writing
-§12al found two more. **No booking can be cancelled by anybody** — the library
-function and the server action both exist and no component calls either — which
-is **still open** and is a failing box in §12al. And **any member of a school,
-including a pupil, could read and post in a booking chat with an outside
-expert**, which was fixed straight away and is now a check to keep shut. Both
-are written down either way, so whoever walks the section sees what is true
-today rather than what was intended.
+§12al found two more, and both are fixed. **No booking could be cancelled by
+anybody** — the library function and the server action both existed and no
+component called either — and **any member of a school, including a pupil,
+could read and post in a booking chat with an outside expert**. Adding the
+cancel button then exposed a third: cancelling freed the hour into the
+marketplace while the unique `slotId` still held it, so the next school to book
+that hour met a constraint error. Nothing could reach that until a cancel
+existed.
 
 The list being empty means every built feature has instructions. It does not
 mean anybody has followed them.

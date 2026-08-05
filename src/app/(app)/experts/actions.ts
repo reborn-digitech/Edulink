@@ -22,9 +22,18 @@ export async function book(slotId: string, topic: string) {
   return run(async () => bookSlot(await requireApiRole("ADMIN", "TEACHER"), slotId, topic));
 }
 
-/** Either side may cancel, so this takes any signed-in user and checks inside. */
+/**
+ * Either side may cancel, so this takes any signed-in user and checks inside.
+ *
+ * REVALIDATES BOTH LISTS, not just the school's. `run` refreshes `/experts`;
+ * the expert's own bookings live at `/expert`, and when the EXPERT is the one
+ * cancelling that is the page they are about to walk back to. Missing it means
+ * they cancel, press back, and see the booking still sitting there.
+ */
 export async function cancel(bookingId: string) {
-  return run(async () => cancelBooking(await requireApiUser(), bookingId));
+  const result = await run(async () => cancelBooking(await requireApiUser(), bookingId));
+  if (result.ok) revalidatePath("/expert");
+  return result;
 }
 
 /** Shared by the school view and the expert view — the lib decides who may. */

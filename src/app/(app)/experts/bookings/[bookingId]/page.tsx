@@ -7,6 +7,7 @@ import { getBooking } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookingThread } from "./thread";
+import { CancelButton } from "./cancel-button";
 
 export const metadata: Metadata = { title: "Booking", robots: { index: false, follow: false } };
 
@@ -48,6 +49,21 @@ export default async function BookingPage({
 
       {booking.status === "CANCELLED" && (
         <Badge tone="danger" size="sm">This booking was cancelled</Badge>
+      )}
+
+      {/*
+        ⚠ NOTHING COULD CANCEL A BOOKING UNTIL THIS LINE. `cancelBooking` and the
+        `cancel` server action both existed and no component called either, so a
+        school that booked the wrong hour could not release it. See the note on
+        `CancelButton`.
+
+        NOT OFFERED ONCE THE TIME HAS PASSED. Cancelling something that already
+        happened does not free anything anybody can use, and it would let a
+        session be quietly marked as never having taken place. A past booking
+        simply stops offering the control.
+      */}
+      {booking.status !== "CANCELLED" && booking.startsAt.getTime() > Date.now() && (
+        <CancelButton bookingId={booking.id} />
       )}
 
       <Card>

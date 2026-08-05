@@ -163,7 +163,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,372 tests) |
+| `npm test` | Full suite (1,374 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -1717,6 +1717,41 @@ One line each, with the default rejected.
   has 17 now, including that cancelling frees the slot. 5 mutations, 5 caught —
   among them restoring the original bug exactly.
 
+- **A booking can be cancelled, and the hour it held really comes back.**
+  `cancelBooking` and the `cancel` server action had both existed since the
+  feature was built with **no component importing either**, so a school that
+  booked the wrong hour could not release it. One button, on the page BOTH sides
+  reach — the school arrives from *Your bookings*, the expert from their own
+  list, and that page already branches on `isExpert` for everything else. Two
+  steps, because the hour goes back to the marketplace the moment it lands and
+  the other party sees the booking turn red.
+  **⚠ AND ADDING THE BUTTON EXPOSED A BUG THAT COULD NOT PREVIOUSLY BE
+  REACHED.** Cancelling cleared `ExpertSlot.bookedAt`, which put the time back
+  in the marketplace looking perfectly bookable — but `ExpertBooking.slotId` is
+  UNIQUE and the cancelled booking still holds that row, so the next school to
+  press **Book** met `Unique constraint failed on the fields: (slotId)`. An hour
+  advertised and un-bookable. Nobody had ever hit it because until this button
+  existed nothing could free a slot; the button is what made it reachable, and a
+  test that books, cancels and books *again* is what caught it before it
+  shipped.
+  So the consumed row is now RETIRED rather than freed — `cancelledAt` keeps it
+  out of both the marketplace and `bookSlot` — and an identical unbooked slot
+  takes its place. The expert offered that time and has not withdrawn it; what
+  changes is only which row carries it. **Not a schema change**: the tidier data
+  model is dropping the unique constraint for a partial index on "not
+  cancelled", and it is a migration this does not need, because one live booking
+  per slot stays exactly true when a retired slot can never be booked again.
+  **Idempotent**, so two people pressing cancel — or one pressing twice on a
+  slow connection — does not duplicate the expert's availability.
+  **Not offered once the time has passed**: cancelling something that already
+  happened frees nothing anybody can use, and would let a session be quietly
+  marked as never having taken place.
+  **Walked in a production build, the whole loop:** booked the only slot and
+  watched it leave the list, cancelled it, saw the badge and the compose box go,
+  found the hour offered again in the marketplace, and **booked it a second
+  time with no error** — the exact call that threw before the fix. 3 mutations,
+  3 caught, including restoring the old free-the-slot behaviour.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -2493,14 +2528,8 @@ next run rather than in a role audit six months later.
   in the changelog above.
 - ~~**`/record` throws on every signed-out visit, and the log fills up.**~~
   **Fixed.** See the changelog entry above.
-- **⚠ A booking with an expert cannot be cancelled by anybody.** `cancelBooking`
-  exists in `src/lib/experts.ts`, is exported as the server action `cancel` in
-  `src/app/(app)/experts/actions.ts`, and **no component imports it** — there is
-  no control on the booking page, on *Your bookings*, or on the expert's own
-  list. A school that books the wrong hour, or an expert who falls ill, cannot
-  release the slot; it stays consumed and the booking stays CONFIRMED. The
-  library function is tested nowhere either. Found by walking §12al while
-  writing it.
+- ~~**A booking with an expert cannot be cancelled by anybody.**~~ **Fixed.**
+  See the changelog entry above.
 - ~~**Any member of a school can read and post in a booking chat, including a
   pupil.**~~ **Fixed.** See the changelog entry above.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).

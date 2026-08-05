@@ -388,7 +388,15 @@ export async function bookSlot(
 export async function cancelBooking(session: ActiveContext, bookingId: string): Promise<void> {
   const booking = await db.expertBooking.findFirst({
     where: { id: bookingId },
-    select: { id: true, slotId: true, schoolId: true, expert: { select: { userId: true } } },
+    select: {
+      id: true,
+      status: true,
+      schoolId: true,
+      expert: { select: { userId: true } },
+      slot: {
+        select: { id: true, expertProfileId: true, startsAt: true, endsAt: true, note: true },
+      },
+    },
   });
   if (!booking) throw new AccessError("Booking not found", "NOT_FOUND");
 
@@ -398,8 +406,47 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
   const isTheExpert = session.role === "EXPERT" && session.user.id === booking.expert.userId;
   if (!isSchoolStaff && !isTheExpert) throw new AccessError("Not your booking to cancel");
 
+  // Idempotent. Two people pressing cancel, or one pressing twice, must not
+  // mint two replacement hours below.
+  if (booking.status === "CANCELLED") return;
+
   await db.expertBooking.update({ where: { id: bookingId }, data: { status: "CANCELLED" } });
-  await db.expertSlot.updateMany({ where: { id: booking.slotId }, data: { bookedAt: null } });
+
+  /**
+   * ⚠ THE HOUR COMES BACK AS A NEW SLOT, and clearing `bookedAt` on the old one
+   * — which is what this used to do — did not work.
+   *
+   * `ExpertBooking.slotId` is UNIQUE, and a cancelled booking still holds that
+   * row. So freeing the slot put the time back in the marketplace looking
+   * perfectly bookable, and the next school to press Book met
+   * `Unique constraint failed on the fields: (slotId)` — a slot advertised and
+   * un-bookable. Nobody had hit it because until the cancel button existed
+   * nothing could free a slot this way; adding the button is what made it
+   * reachable, and a test that books, cancels, and books again is what caught
+   * it before it shipped.
+   *
+   * So the consumed row is retired rather than freed — `cancelledAt` keeps it
+   * out of `listMarketplace` and out of `bookSlot` — and an identical, unbooked
+   * slot takes its place. The expert offered that time and has not withdrawn
+   * it; what changed is only which row represents it.
+   *
+   * NOT a schema change. The alternative is dropping the unique constraint and
+   * replacing it with a partial index on "not cancelled", which is the tidier
+   * data model and a migration this does not need: one live booking per slot is
+   * still exactly true, because a retired slot can never be booked again.
+   */
+  await db.expertSlot.update({
+    where: { id: booking.slot.id },
+    data: { cancelledAt: new Date(), bookedAt: null },
+  });
+  await db.expertSlot.create({
+    data: {
+      expertProfileId: booking.slot.expertProfileId,
+      startsAt: booking.slot.startsAt,
+      endsAt: booking.slot.endsAt,
+      note: booking.slot.note,
+    },
+  });
 
   await audit({
     schoolId: booking.schoolId,
