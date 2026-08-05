@@ -39,6 +39,27 @@ import type { ActiveContext } from "./session";
  *
  * Closing a mentorship removes the expert's access on the next request, because
  * the tenant set is recomputed per request rather than granted.
+ *
+ * ⚠ EVERY NOTIFICATION FROM THIS FILE LINKS TO `/mentoring/{threadId}`, AND
+ * THERE IS NO ROLE-SPECIFIC VARIANT. Six of them used to point at
+ * `/parent/mentoring/…`, `/expert/mentoring/…` and `/student/margdarshak/…`,
+ * none of which have ever existed — so every mentoring notification this app has
+ * ever sent, in the app and by push, led to a 404. Nearly 7,400 stored rows
+ * carried one.
+ *
+ * ONE ROUTE IS RIGHT, not a compromise. `/mentoring/[threadId]` calls
+ * `getMentorship`, which settles entitlement from `readerOf` — expert, child,
+ * guardian, staff — so the page already renders the correct thing for each of
+ * them, and every role's navigation already points at `/mentoring`. A per-role
+ * URL would be four ways to reach one page, three of which somebody has to
+ * remember to keep in step with the fourth.
+ *
+ * NOTHING INSIDE THE APP LINKED TO THESE, which is exactly why they survived:
+ * `npm run sweep` follows the navigation, and a URL that exists only inside a
+ * notification is one the navigation never mentions. The sweep now opens a
+ * thread as each of the four readers — see `scripts/sweep.ts` — and
+ * `tests/mentoring-links.test.ts` asserts that every URL this file emits is a
+ * route that exists.
  */
 
 export type MentorSummary = {
@@ -325,7 +346,7 @@ export async function createMentorship(
     kind: "EXPERT",
     title: `A mentor has been suggested for ${childName}`,
     body: `${expert.user.name} — ${purpose}. They cannot message ${childName} until you agree.`,
-    url: `/parent/mentoring/${thread.id}`,
+    url: `/mentoring/${thread.id}`,
   }));
 
   await audit({
@@ -367,7 +388,7 @@ export async function consentToMentorship(
     kind: "EXPERT",
     title: "A mentorship has been approved",
     body: thread.purpose,
-    url: `/expert/mentoring/${threadId}`,
+    url: `/mentoring/${threadId}`,
   });
 
   await audit({
@@ -516,14 +537,14 @@ export async function postMentorMessage(
       kind: "EXPERT",
       title: `${expert.user.name} sent you a message`,
       body: clean.slice(0, 120),
-      url: `/student/margdarshak/${threadId}`,
+      url: `/mentoring/${threadId}`,
     });
     await notifyGuardians(thread.studentMembershipId, (childName) => ({
       schoolId: thread.schoolId,
       kind: "EXPERT",
       title: `${expert.user.name} messaged ${childName}`,
       body: "You can read the whole conversation at any time.",
-      url: `/parent/mentoring/${threadId}`,
+      url: `/mentoring/${threadId}`,
     }));
   } else {
     await notify({
@@ -532,7 +553,7 @@ export async function postMentorMessage(
       kind: "EXPERT",
       title: `${student.user.name} replied`,
       body: clean.slice(0, 120),
-      url: `/expert/mentoring/${threadId}`,
+      url: `/mentoring/${threadId}`,
     });
   }
 }
@@ -922,7 +943,7 @@ export async function decideMentorRequest(
     kind: "EXPERT",
     title: `${childName} has asked for a mentor, and the school agrees`,
     body: `${thread.expert.user.name} — ${thread.purpose}. They cannot message ${childName} until you agree.`,
-    url: `/parent/mentoring/${thread.id}`,
+    url: `/mentoring/${thread.id}`,
   }));
 
   await audit({

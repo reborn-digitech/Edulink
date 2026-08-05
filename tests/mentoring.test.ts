@@ -303,6 +303,37 @@ describe("⚠ consent gates every message", () => {
     expect(thread.messages).toHaveLength(2);
   });
 
+  it("⚠ and every notification it sends links to a page that exists", async () => {
+    /**
+     * THE BUG THIS PINS. Six `url:` values here pointed at
+     * `/parent/mentoring/…`, `/expert/mentoring/…` and `/student/margdarshak/…`,
+     * none of which have ever been routes — so every mentoring notification the
+     * app had ever sent, in the app and by push, led to a 404. Nearly 7,400
+     * stored rows carried one.
+     *
+     * `tests/mentoring-links.test.ts` reads the literals out of the source,
+     * which catches a wrong one being written. THIS asserts what is actually
+     * WRITTEN TO THE DATABASE when real people message each other — the two
+     * fail for different reasons, and the source check alone would not notice a
+     * url assembled somewhere other than a literal.
+     */
+    const id = await pair();
+    await consentToMentorship(guardian, id);
+    await postMentorMessage(expert, id, "Hello there");
+    await postMentorMessage(child, id, "Hi");
+
+    const sent = await db.notification.findMany({
+      where: { kind: "EXPERT", url: { contains: id } },
+      select: { url: true },
+    });
+
+    // The count first: zero notifications would satisfy every assertion below.
+    expect(sent.length).toBeGreaterThan(0);
+    for (const row of sent) {
+      expect(row.url).toBe(`/mentoring/${id}`);
+    }
+  });
+
   it("⚠ writes NOTHING when it refuses — the throw is not the only guarantee", async () => {
     // The two tests above assert that posting throws. Neither would notice a
     // gate that threw AFTER writing the row, or one removed while some other

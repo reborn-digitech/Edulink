@@ -2068,6 +2068,55 @@ screen.
   `/magic` 500 in §12ai and this were found in the same twenty lines of output,
   during a walkthrough of something else
 
+## 12ak. A mentoring thread, and the notification that points at it
+
+Mentoring had **no section here at all**, and that is where the bug was hiding:
+six notifications pointed at `/parent/mentoring/…`, `/expert/mentoring/…` and
+`/student/margdarshak/…`, none of which have ever been routes. **7,351 stored
+notifications carried a link to a 404.**
+
+**Walk this by tapping the notification**, never by typing the thread URL. The
+whole failure is a destination nothing in the app links to, so a URL pasted from
+this document proves the page exists and nothing about whether anybody arrives.
+
+### Getting there the way a person does
+
+- ☐ As an admin, pair an expert with a pupil, and as the guardian **consent**
+- ☐ As the expert, send a message
+- ☐ **⚠️** Sign in as the **guardian**, open `/notifications` → the message is
+  there. **Tap it.** You land on the thread — not a 404, and not the mentoring
+  list
+- ☐ It is a `<button>` that navigates, not a link, so it will not show a URL on
+  hover. Tapping is the only way to check it
+- ☐ Do the same from the **pupil's** notification, and from the **expert's**
+
+### One page, four readers
+
+- ☐ Open the same thread as the **expert**, the **child**, the **guardian** and
+  an **admin** → all four get the conversation
+- ☐ **⚠️** The expert has no membership and no school on their session. Their
+  access is derived from this very thread, so a 200 here also proves that
+  derivation still works
+- ☐ **⚠️** The guardian and the admin see the messages and **no compose box**.
+  A mentorship is a conversation two people have and others can read, not a
+  group chat
+- ☐ Every reader, including the child, is told at the top that the conversation
+  is not private — before they read a word
+- ☐ **⚠️** Another school's admin → **404**. A classmate not in the thread →
+  **404**. The same 404 as an id that never existed, because "that is not your
+  thread" answers a question nobody asking it is entitled to have answered
+- ☐ Signed out → redirected to log in
+
+### The rot that was already written
+
+- ☐ **⚠️** Old notifications stored their destination, so fixing the code does
+  not fix them. `npx tsx scripts/fix-mentoring-links.ts` reports how many point
+  nowhere; `--write` repairs them. Run it twice — the second run must report
+  **zero**, which is what makes it safe to run on a schedule or twice by mistake
+- ☐ A notification whose thread has since been **deleted** is a 404, and that is
+  correct — the row outliving its target is a different thing from a route that
+  never existed
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -2130,7 +2179,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 285 checks in `npm run sweep`
+Every route in the navigation now renders — all 292 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every
@@ -2145,9 +2194,16 @@ SSO, SMS, real email delivery.
 ranking of SCHOOLS. A board naming children from other schools is refused rather
 than pending, and the README says why.
 
-**Built but with no section here:** the expert marketplace, booking an expert,
-and mentoring threads. Only the expert's own profile (§12r) is covered, because
-that is the page the role audit found broken. The rest is untested by hand.
+**Built but with no section here:** the expert marketplace and booking an
+expert. Only the expert's own profile (§12r) is covered, because that is the
+page the role audit found broken. The rest is untested by hand.
+
+**⚠️ Mentoring threads used to be on that list, and the gap was not harmless.**
+While there was no section, six notifications pointed at routes that had never
+existed and 7,351 stored rows carried a link to a 404 — in the one feature where
+an adult from outside the school talks to a child. It has a section now (§12ak).
+Read the remaining two names above as a list of places a bug is currently free
+to sit, not as a formality.
 
 Built since this list was last trimmed, and now with sections of their own:
 global feed, weighted grade categories, suspend-user (§12l), the operator area
@@ -2158,9 +2214,10 @@ their record (§12s), the weekly timetable and its cover resolution (§§12ac–
 the cross-school leaderboard (§12ae), an account reachable with no school at
 all (§12af), signing in by mobile number with a password reset (§12ag), changing
 the address you sign in with (§12ah), the two links that arrive by email
-(§12ai), and a redirect that was hiding an exception (§12aj).
+(§12ai), a redirect that was hiding an exception (§12aj), and a mentoring thread
+with the notification that points at it (§12ak).
 
-**None of §§12ac–12aj has been walked by anybody but the author.** Each was
+**None of §§12ac–12ak has been walked by anybody but the author.** Each was
 driven end to end in a production build while it was being built — that is
 recorded in the README's Status — but a walkthrough by somebody who did not
 write it has caught things every single time it has been run here.

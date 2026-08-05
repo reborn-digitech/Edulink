@@ -163,7 +163,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,336 tests) |
+| `npm test` | Full suite (1,355 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -178,11 +178,12 @@ applies here: you cannot revoke the only one.
 | `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
+| `npx tsx scripts/fix-mentoring-links.ts` | One-off repair for notifications pointing at routes that never existed. Reports; add `--write` to fix |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 285 route/role/negative combinations
+mints a real session per role, requests all 292 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -1636,6 +1637,55 @@ One line each, with the default rejected.
   A status-code sweep could not have caught this and still cannot; what caught
   it was reading the server log during an unrelated walkthrough.
 
+- **Every mentoring notification led to a 404, and 7,351 stored rows carried
+  one.** Six `url:` values in `mentoring.ts` pointed at `/parent/mentoring/…`,
+  `/expert/mentoring/…` and `/student/margdarshak/…`. **None of those routes has
+  ever existed.** A guardian told that a stranger had messaged their child, an
+  expert told a mentorship was approved, a pupil told their mentor had written —
+  every one of them tapped the notification and got nothing.
+  **FOUND BY LOOKING FOR MORE OF THE SAME BUG.** After `/verify` and `/magic`,
+  the obvious question was whether any other destination the app mints points
+  nowhere. The four emailed URLs were fine. These six were not.
+  **ONE ROUTE IS RIGHT, not a compromise.** `/mentoring/[threadId]` calls
+  `getMentorship`, which settles entitlement from `readerOf` — expert, child,
+  guardian, staff — and every role's navigation already points at `/mentoring`.
+  Confirmed before collapsing them rather than assumed: the sweep now opens a
+  real thread as **all four readers** and gets 200, while another school's admin
+  and an unrelated classmate get 404 and a signed-out visitor gets 307.
+  **THE SWEEP HAD NEVER ONCE OPENED A THREAD** — it visited `/mentoring` for
+  four roles and stopped. It also could not have caught this by walking
+  navigation, because nothing in the navigation mentions those URLs; they exist
+  only inside a notification. That is the same shape as the emailed links above,
+  and it is the third time this repo has been bitten by a destination nothing
+  links to.
+  **TWO TESTS, FAILING FOR DIFFERENT REASONS.** `mentoring-links.test.ts` reads
+  the literals out of source and resolves each against the App Router tree —
+  route groups and all — so a wrong one written tomorrow fails. The other
+  asserts what is actually WRITTEN TO THE DATABASE when real people message each
+  other, which the source check would miss if a url were ever assembled rather
+  than written literally. Both pin the three dead prefixes as `false` so they
+  cannot come back.
+  **THE FIRST DRAFT OF THAT TEST WAS ITSELF THE BUG IT CHECKS FOR.** It listed
+  the sending libraries by hand, named two that do not exist (`grades.ts`,
+  `posts.ts` — they are `grading.ts` and `bulletin.ts`), missed six more, and
+  hid both mistakes behind a `.filter(existsSync)` so the suite went green while
+  covering two-thirds of what it claimed. It derives the list from the
+  filesystem now. All 13 senders resolve.
+  **THE CODE FIX DOES NOT REACH ROWS ALREADY WRITTEN**, so
+  `scripts/fix-mentoring-links.ts` repairs them — idempotent, report-only unless
+  given `--write`, one parameterised statement per prefix rather than 7,351 round
+  trips. Its first version failed with Postgres `42883` and wrote **nothing**,
+  which is the good way to get it wrong: a JS number crosses as `bigint` and
+  `substring(text from bigint)` does not exist. It measures the prefix with
+  `length()` now. Run against dev: **6,826 + 525 rewritten, 0 remaining**, every
+  thread id preserved exactly (checked row by row against a snapshot taken
+  first), total notification count unchanged.
+  **Walked in a production build:** signed in as the guardian, opened
+  `/notifications`, clicked the notification — which is a `<button>` that
+  navigates, not an anchor — and landed on the thread, read-only, with the "this
+  conversation is not private" banner and no compose box, which is exactly what
+  a guardian should get.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1653,7 +1703,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 285 checks in
+**Every route referenced by the navigation renders.** All 292 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for

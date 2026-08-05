@@ -289,6 +289,118 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
 }
 
 /**
+ * ⚠ OPENING A MENTORING THREAD, WHICH THIS SWEEP HAD NEVER ONCE DONE.
+ *
+ * It visited `/mentoring` for four roles and stopped there — and that gap is
+ * precisely how six notifications came to point at `/parent/mentoring/…`,
+ * `/expert/mentoring/…` and `/student/margdarshak/…`, none of which have ever
+ * been routes. Nearly 7,400 stored notifications carried a link to a 404.
+ *
+ * The sweep could not have caught it by walking navigation, because nothing in
+ * the navigation ever mentions those URLs — they exist only inside a
+ * notification. What it CAN do is prove the one real thread route serves every
+ * reader `readerOf` grants, which is what makes collapsing all six onto it
+ * correct rather than merely tidy.
+ *
+ * FOUR READERS, THREE OUTCOMES. The expert and the child are in the
+ * conversation; the guardian and the school read it and cannot write. A pupil
+ * from another family gets a 404 — the same 404 as an id that never existed,
+ * because "that is not your thread" answers a question nobody asking it is
+ * entitled to have answered.
+ *
+ * Everything here is made for the length of the check and removed in the
+ * `finally`, including on the failure path.
+ */
+async function mentorshipThread(
+  schoolId: string,
+  parent: Actor,
+  admin: Actor,
+  otherAdmin: Actor,
+): Promise<void> {
+  const child = await db.guardianship.findFirst({
+    where: { parent: { email: "parent@example.com" }, status: "ACTIVE", studentSchoolId: schoolId },
+    select: { studentMembershipId: true },
+  });
+  if (!child) return skip("the mentoring thread", "no guardian-linked pupil to mentor");
+
+  const expertUser = await db.user.upsert({
+    where: { email: "zz.sweep.mentor@edulink.test" },
+    create: { email: "zz.sweep.mentor@edulink.test", name: "ZZ Sweep Mentor", prefs: "{}" },
+    update: {},
+  });
+  const profile = await db.expertProfile.upsert({
+    where: { userId: expertUser.id },
+    create: { userId: expertUser.id, headline: "ZZ Sweep mentor", publishedAt: new Date() },
+    update: { publishedAt: new Date() },
+  });
+
+  // ACTIVE and consented: the state a notification actually links to. A
+  // PENDING_CONSENT thread would 200 as well and would not prove the same thing.
+  const thread = await db.mentorThread.create({
+    data: {
+      schoolId,
+      expertProfileId: profile.id,
+      expertUserId: expertUser.id,
+      studentMembershipId: child.studentMembershipId,
+      purpose: "ZZ sweep mentorship",
+      status: "ACTIVE",
+      parentConsentAt: new Date(),
+    },
+    select: { id: true },
+  });
+
+  try {
+    const path = `/mentoring/${thread.id}`;
+
+    // THE EXPERT. No membership and no school on their session — their tenant
+    // access is derived from this very thread, so a 200 here also proves that
+    // derivation still works.
+    const mentor = await mint("zz.sweep.mentor@edulink.test", "EXPERT", null, "mentor");
+    await check(mentor, path, 200, "⚠ the expert opens the thread a notification links to");
+
+    // THE CHILD, whose notification says "your mentor sent you a message".
+    const pupil = await db.membership.findUniqueOrThrow({
+      where: { id: child.studentMembershipId },
+      include: { user: { select: { email: true } } },
+    });
+    if (pupil.user.email) {
+      const kid = await mint(pupil.user.email, "STUDENT", schoolId, "mentored-pupil");
+      await check(kid, path, 200, "⚠ …and so does the child");
+    }
+
+    // THE GUARDIAN — the reader with the most notifications pointing here, and
+    // the one whose links were dead: 6,826 of the 7,351 said /parent/mentoring/.
+    await check(parent, path, 200, "⚠ …and the guardian, whose link was the broken one");
+
+    // THE SCHOOL, which may always read.
+    await check(admin, path, 200, "⚠ …and their school, which is never optional");
+
+    // AND NOBODY ELSE.
+    await check(otherAdmin, path, 404, "⚠ …but not another school");
+    const stranger = await db.membership.findFirst({
+      where: {
+        schoolId,
+        role: "STUDENT",
+        status: "ACTIVE",
+        id: { not: child.studentMembershipId },
+      },
+      include: { user: { select: { email: true } } },
+    });
+    if (stranger?.user.email) {
+      const classmate = await mint(stranger.user.email, "STUDENT", schoolId, "not-mentored");
+      await check(classmate, path, 404, "⚠ …nor a classmate who is not in it");
+    }
+    await check(null, path, 307, "signed out");
+  } finally {
+    await db.mentorMessage.deleteMany({ where: { threadId: thread.id } });
+    await db.mentorThread.deleteMany({ where: { id: thread.id } });
+    await db.expertProfile.deleteMany({ where: { userId: expertUser.id } });
+    await db.session.deleteMany({ where: { userId: expertUser.id } });
+    await db.user.deleteMany({ where: { id: expertUser.id } });
+  }
+}
+
+/**
  * ⚠ AN ALUMNUS: SIGNED IN, NO SCHOOL, AND THEIR RECORD STILL THERE.
  *
  * The state nothing else in this sweep reaches. A pupil who has left every
@@ -1600,6 +1712,8 @@ async function main() {
     await db.session.deleteMany({ where: { userId: sweepExpertUser.id } });
     await db.user.deleteMany({ where: { id: sweepExpertUser.id } });
   }
+
+  await mentorshipThread(riverside.id, parent, admin, otherAdmin);
 
   await suspension(riverside.id);
   await transfer(riverside.id, oakfield.id);
