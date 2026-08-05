@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it, beforeEach } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { hashPassword } from "@/lib/crypto";
 import { mergeAccounts, previewMerge } from "@/lib/account-merge";
@@ -248,6 +248,16 @@ async function wipe(): Promise<void> {
 }
 
 afterEach(wipe);
+
+/**
+ * `login()` is rate limited per identifier, and RateLimit rows OUTLIVE a test
+ * run — so a suite that signs in twice per run exhausts its allowance after a
+ * few `npm test`s and then fails in a file nobody edited. Cleared here for the
+ * identifiers this file uses, by the same make-your-own-fixtures rule.
+ */
+beforeEach(async () => {
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "login:" } } });
+});
 
 afterAll(async () => {
   await wipe();

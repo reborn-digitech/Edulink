@@ -1890,6 +1890,14 @@ The bug this closes: `/account` used to need an active role.
   same thing, and nothing is sent. Compare the two screens word for word
 
 ### The limits
+- ☐ **⚠️** On `/join/student`, type wrong codes over and over → eventually
+  *Too many tries. Wait in about N minutes.* — and then a **valid** code is
+  refused too, which is what makes it a limit rather than a filter
+- ☐ **⚠️** At `/parent/link`, put in a real student code and the WRONG date of
+  birth eleven times → refused with a time. Then try the RIGHT date: still
+  refused. A limit that lets the correct guess through after the wrong ones is
+  the last step of a birthday search, not a defence
+
 
 - ☐ Ask for a reset **four** times for the same number → the fourth is refused
   with *Too many requests … try again in about 15 minutes*

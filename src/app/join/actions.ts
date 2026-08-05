@@ -11,6 +11,15 @@ import { writeJson } from "@/lib/json";
 import { sendParentClaimNotice } from "@/lib/email";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
+  consume,
+  consumeByCaller,
+  retryHint,
+  CLAIM_ATTEMPTS,
+  CLAIM_PER_CODE,
+  CODE_LOOKUPS,
+  SIGNUPS,
+} from "@/lib/rate-limit";
+import {
   claimChildSchema,
   fieldErrors,
   parentSignupSchema,
@@ -40,6 +49,26 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
   const code = normalizeCode(raw ?? "");
   if (code.length < 4) return { ok: false, error: "That code looks too short." };
   if (code.length > 32) return { ok: false, error: "That code looks too long." };
+
+  /**
+   * ⚠ NOT A SECRET, BUT NOT ENUMERABLE EITHER.
+   *
+   * A class code is printed on a poster and photographed off a whiteboard, and
+   * this function is deliberately readable with no session because working out
+   * which school a code belongs to IS the question. What it must not be is a
+   * loop: grind the space, find a real class, and `joinAsStudent` turns that
+   * into a pupil account inside somebody's school.
+   *
+   * Keyed on the client address, with the caveat spelled out on CODE_LOOKUPS —
+   * behind a proxy that sets `x-forwarded-for` this is the caller; in front of
+   * one it is forgeable. It raises the cost of enumeration from nothing to
+   * something rather than being a wall, and the reason that is tolerable is
+   * that a code grants a PENDING membership and sight of nothing.
+   */
+  const gate = await consumeByCaller("code-lookup", CODE_LOOKUPS);
+  if (!gate.allowed) {
+    return { ok: false, error: `Too many tries. Wait ${retryHint(gate.retryAfterSeconds)}.` };
+  }
 
   // BOTH lookups run under the code itself. There is no school to scope them to
   // — working out which school this code belongs to is the entire question — so
@@ -121,6 +150,13 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 
   const { schoolCode: rawCode, name, preferredName, avatarKey, birthdate, password } = parsed.data;
 
+  /**
+   * DELIBERATELY NO SEPARATE SIGNUP LIMIT HERE. `lookupCode` below refuses
+   * without a valid class code and carries its own limit, so the rate is
+   * already bounded and the code requirement is already the gate. A second
+   * limit on the same address would only give a class of thirty children
+   * joining together a second way to fail. See SIGNUPS.
+   */
   const lookup = await lookupCode(rawCode);
   if (!lookup.ok) return { ok: false, errors: { schoolCode: lookup.error } };
 
@@ -233,6 +269,14 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
 
   const { name, email, password, consentNotifications } = parsed.data;
 
+  const gate = await consumeByCaller("signup", SIGNUPS);
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many accounts from here just now. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+    };
+  }
+
   const problems = passwordProblems(password, [name, email]);
   if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
 
@@ -279,8 +323,20 @@ export type ClaimState = {
  * read aloud — so the birthdate is the second factor.
  *
  * Every failure returns the same message and does the same work, so this cannot
- * be used to test whether a code is real, or to brute-force a birthdate against
- * a known-good code and learn a child's date of birth.
+ * be used to test whether a code is real.
+ *
+ * ⚠ THAT SENTENCE USED TO CONTINUE "…or to brute-force a birthdate against a
+ * known-good code", AND IT WAS WRONG. Indistinguishable failures stop an
+ * attacker learning WHICH guess was close; they do nothing about how many
+ * guesses are possible. A schoolchild's date of birth has a few thousand
+ * plausible values, and there was no limit at all — so a known-good code plus a
+ * loop got somebody a guardianship over another family's child in minutes, with
+ * their attendance, marks, messages and record behind it. That is the most
+ * serious thing an unlimited form in this app could do.
+ *
+ * The rate is now bounded from both directions — see CLAIM_ATTEMPTS and
+ * CLAIM_PER_CODE, which stop different attacks and neither of which is
+ * sufficient alone.
  */
 export async function claimChild(input: unknown): Promise<ClaimState> {
   const session = await getSession();
@@ -301,6 +357,35 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   const code = normalizeCode(rawCode);
   const birthDate = parseDateOnly(birthdate);
   if (!birthDate) return { ok: false, errors: { birthdate: "Use a real date." } };
+
+  /**
+   * BOTH LIMITS BEFORE ANY LOOKUP, so a refusal costs the same whether the code
+   * is real or not — the same reason the failures below are indistinguishable.
+   *
+   * Per CALLER first: every attempt costs a signed-in account, which is what
+   * makes grinding expensive. Per CODE second, and loosely, so many accounts
+   * cannot grind one child — loose because a tight limit here would let an
+   * attacker lock a real parent out of claiming their own child.
+   */
+  const perCaller = await consume(
+    `claim:user:${session.user.id}`,
+    CLAIM_ATTEMPTS.limit,
+    CLAIM_ATTEMPTS.windowMs,
+  );
+  if (!perCaller.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many attempts. Try again ${retryHint(perCaller.retryAfterSeconds)}.` },
+    };
+  }
+
+  const perCode = await consume(`claim:code:${code}`, CLAIM_PER_CODE.limit, CLAIM_PER_CODE.windowMs);
+  if (!perCode.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many attempts for that code. Try again ${retryHint(perCode.retryAfterSeconds)}.` },
+    };
+  }
 
   // Same bootstrap as a join code: a parent claiming their child has no
   // membership of that school and cannot be scoped to it, so the student code

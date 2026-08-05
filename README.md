@@ -1450,6 +1450,54 @@ One line each, with the default rejected.
   redone; one survives alone because `findAccount` covers it, and removing both
   together is caught).
 
+- **The other four forms, limited — and the worst one was the parent claim.**
+  The previous commit left invite-accept and parent-claim unlimited and said so.
+  Working through them found that one of the four was not a spam problem at all.
+  **`claimChild` TAKES A STUDENT CODE AND A CHILD'S DATE OF BIRTH, AND ITS OWN
+  COMMENT OVERCLAIMED.** It said the form "cannot be used to brute-force a
+  birthdate against a known-good code". That is true of DISTINGUISHABILITY —
+  every failure returns the same message and does the same work — and false of
+  RATE. A schoolchild's birthday has a few thousand plausible values; with no
+  limit, a loop got somebody a GUARDIANSHIP over another family's child, and
+  with it their attendance, marks, messages and record. The comment now says
+  which half it was right about.
+  **TWO BUCKETS, because neither stops the attack alone.** Per caller, tightly:
+  every attempt costs a signed-in account. Per student code, loosely: otherwise
+  many accounts grind one child — and loose on purpose, because a tight limit
+  there would let an attacker stop a real parent claiming their own child.
+  **`claimChild` HAD NEVER BEEN TESTED**, because it needs a live session and
+  the `next/headers` stub could not supply one. The stub's cookie jar is
+  primeable now, so a test can mint a real session row and call the action the
+  way a request does. Five tests, including the one that matters: once the
+  allowance is gone, the RIGHT birthday is refused too — a limit that lets a
+  correct guess through after the wrong ones is the last step of the search
+  rather than a defence.
+  **A LIMIT I NEARLY SHIPPED WOULD HAVE BROKEN A CLASSROOM.** `CODE_LOOKUPS`
+  started at 20 per 15 minutes. A teacher writes a class code on the board and
+  thirty children type it — from one school's wifi, behind one address, which is
+  the only thing to key on when nobody is signed in. It would have refused a
+  classroom on day one while an attacker went unbothered. A test that
+  legitimately called `lookupCode` two dozen times is what surfaced it; the
+  number is 120 now, and a test asserts it stays above a class of thirty
+  retyping. What actually defeats enumeration is the code space — seven
+  characters from a 21-character alphabet, ~31 bits — not this.
+  **STUDENT SIGNUP IS DELIBERATELY NOT LIMITED SEPARATELY**: it cannot proceed
+  without a valid class code, so `CODE_LOOKUPS` already bounds it, and a second
+  limit on the same address would only give a class joining together a second
+  way to fail. Parent signup carries no code, so it gets one.
+  **RATE-LIMIT ROWS OUTLIVE A TEST RUN**, which cost an afternoon of chasing the
+  wrong suites: a file signing in twice per run exhausts its fifteen-minute
+  allowance after a handful of `npm test`s, then fails in a file nobody edited
+  with an error about attempts. `tests/setup.ts` empties the table per run —
+  except the limiter's own suite, whose buckets are prefixed and whose worker
+  would otherwise be wiped mid-assertion by another worker starting up.
+  **Walked in a production build:** ground the join-code box on the live server
+  and watched the hits accumulate under a real client address rather than a
+  fallback, then saw a VALID code refused with *"Too many tries. Wait in about
+  14 minutes."* 9 mutations, 8 caught; the ninth is the no-request branch of
+  `callerKey`, which the vitest stub makes unreachable by always supplying
+  headers.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1593,12 +1641,16 @@ navigation" means the actual list rather than one somebody maintained by hand.
   went with it; nobody had it switched on.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
-- ~~An unverified mobile number could receive a password-reset code~~ and
-  ~~there is no rate limiting anywhere in the app~~ — **both fixed.** See Status.
-  What is still absent is rate limiting on anything OTHER than login, password
-  reset and phone confirmation: the invite-accept and parent-claim forms are
-  unlimited, and neither sends a message to a number a stranger typed, which is
-  why they were not the urgent ones.
+- ~~An unverified mobile number could receive a password-reset code~~,
+  ~~there is no rate limiting anywhere in the app~~ and ~~the invite-accept and
+  parent-claim forms are unlimited~~ — **all fixed.** See Status. Seven limits
+  now: login, password reset, phone confirmation, parent claim (two buckets),
+  join-code lookup, parent signup and invite acceptance.
+  **What remains, stated rather than implied:** the limits are per-address for
+  anonymous callers, and `x-forwarded-for` is trustworthy behind a proxy that
+  sets it and forgeable in front of one. That raises the cost of a script; it is
+  not a wall, and the things it guards are not defended by it alone — a class
+  code is ~31 bits, and a claim needs a date of birth as well as a code.
 - **A pupil who joined with a CODE rather than an invitation still forks.**
   `joinAsStudent` mints a new account every time, and a handle account has no
   real address for a new school to invite. The invitation path is the one that

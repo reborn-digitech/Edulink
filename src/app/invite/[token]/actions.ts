@@ -10,6 +10,7 @@ import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
+import { consumeByCaller, retryHint, INVITE_ACCEPTS } from "@/lib/rate-limit";
 
 export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
 
@@ -26,6 +27,21 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const { token, name, password, title, bio, subjects, birthdate } = parsed.data;
+
+  /**
+   * NOT ABOUT GUESSING THE TOKEN — it is 32 random bytes, brute force is
+   * infeasible, and a rate limit would not be what stopped it. It is about the
+   * same thing the signup limits are: this endpoint creates accounts and joins
+   * them to a school, and an endpoint that does that should not be free to call
+   * in a loop.
+   */
+  const gate = await consumeByCaller("invite-accept", INVITE_ACCEPTS);
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many attempts from here. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+    };
+  }
 
   // The token opens exactly its own invitation and nothing else — including
   // not the school it belongs to, whose row the token does not name. So the

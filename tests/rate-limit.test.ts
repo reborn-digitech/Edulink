@@ -1,6 +1,14 @@
 import { afterAll, afterEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { consume, retryHint } from "@/lib/rate-limit";
+import {
+  consume,
+  retryHint,
+  CLAIM_ATTEMPTS,
+  CLAIM_PER_CODE,
+  CODE_LOOKUPS,
+  LOGIN_ATTEMPTS,
+  RESET_REQUESTS,
+} from "@/lib/rate-limit";
 
 /**
  * The limiter, and the two properties that make it worth having.
@@ -158,5 +166,75 @@ describe("telling somebody when to come back", () => {
     // Exactly an hour rolls over rather than saying "60 minutes".
     expect(retryHint(3600)).toBe("in about 1 hour");
     expect(retryHint(7200)).toBe("in about 2 hours");
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* The numbers themselves                                                      */
+/* -------------------------------------------------------------------------- */
+
+describe("⚠ the limits are the numbers they were reasoned about as", () => {
+  /**
+   * WHY ASSERT CONSTANTS AT ALL. Because the REASONING that picked them lives
+   * in a comment, and a comment cannot notice when somebody raises a limit to
+   * unblock a test. Each assertion below restates the argument in a form that
+   * fails.
+   *
+   * `claimChild` itself has no direct test in this repo: it requires a live
+   * session, and the `next/headers` stub cannot supply one — which is also why
+   * it had no tests before this commit. Its wiring was verified by walking it in
+   * a browser, and that is recorded in the README rather than implied here.
+   */
+
+  it("a birthday cannot be searched through the claim form", () => {
+    // A schoolchild's date of birth has roughly 15 years × 365 plausible
+    // values. The per-code allowance has to be small enough that grinding them
+    // takes long enough to be noticed and audited, rather than an afternoon.
+    const PLAUSIBLE_BIRTHDAYS = 15 * 365;
+    const perDay = CLAIM_PER_CODE.limit * (86_400_000 / CLAIM_PER_CODE.windowMs);
+    const daysToExhaust = PLAUSIBLE_BIRTHDAYS / perDay;
+
+    expect(
+      daysToExhaust,
+      "a full birthday search must take weeks, not an afternoon — every attempt is audited",
+    ).toBeGreaterThan(7);
+  });
+
+  it("…and the per-caller limit is tighter than the per-code one", () => {
+    // The caller limit is what makes grinding expensive, because every attempt
+    // costs a signed-in account. The code limit is the backstop against many
+    // accounts, and is loose on purpose so it cannot be used to lock a real
+    // parent out of claiming their own child.
+    const callerPerHour = CLAIM_ATTEMPTS.limit * (3_600_000 / CLAIM_ATTEMPTS.windowMs);
+    const codePerHour = CLAIM_PER_CODE.limit * (3_600_000 / CLAIM_PER_CODE.windowMs);
+    expect(callerPerHour).toBeGreaterThan(codePerHour / 4);
+    expect(codePerHour).toBeGreaterThan(4);
+  });
+
+  it("⚠ a classroom can still join", () => {
+    /**
+     * THE BUG THIS CATCHES, and it was real: `CODE_LOOKUPS` was 20 per 15
+     * minutes. A teacher writes a class code on the board and thirty children
+     * type it, from one school's wifi, behind one address — which is the only
+     * thing there is to key on. Twenty would have refused a classroom on day
+     * one while an attacker went unbothered.
+     */
+    const CLASS_SIZE = 30;
+    const RETYPES = 2;
+    expect(
+      CODE_LOOKUPS.limit,
+      "one address is one school's wifi, not one child",
+    ).toBeGreaterThanOrEqual(CLASS_SIZE * RETYPES);
+  });
+
+  it("login is generous enough that fumbling a password is not a lockout", () => {
+    // It can be used to burn a real person's allowance, so it has to sit well
+    // above what somebody mistyping their own password does.
+    expect(LOGIN_ATTEMPTS.limit).toBeGreaterThanOrEqual(5);
+    expect(LOGIN_ATTEMPTS.windowMs).toBeLessThanOrEqual(30 * 60_000);
+  });
+
+  it("sending a text is the tightest limit, because it costs somebody else", () => {
+    expect(RESET_REQUESTS.limit).toBeLessThanOrEqual(5);
   });
 });

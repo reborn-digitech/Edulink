@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { lookupCode } from "@/app/join/actions";
+import { CODE_LOOKUPS } from "@/lib/rate-limit";
 import { sameCalendarDay, parseDateOnly } from "@/lib/dates";
 import { normalizeCode } from "@/lib/codes";
 
@@ -116,6 +117,32 @@ describe("lookupCode", () => {
     if (!riverside.ok || !oakfield.ok) return;
     expect(riverside.schoolId).not.toBe(oakfield.schoolId);
     expect(oakfield.schoolName).toBe("Oakfield Academy");
+  });
+});
+
+describe("⚠ the join-code box cannot be ground through", () => {
+  it("refuses once the allowance is gone, and says when to come back", async () => {
+    /**
+     * THE WIRING, not the counter — `rate-limit.test.ts` owns the counter. This
+     * asserts that `lookupCode` actually consults it, which a mutation run said
+     * nothing about until this existed: deleting the limit from `lookupCode`
+     * left every other test green.
+     *
+     * Signed out and keyed on the client address, which a test does not have —
+     * so this whole file shares one bucket, and `tests/setup.ts` empties it at
+     * the start of every run. That is why this test can count on a fresh
+     * allowance and why it is the last word in this file on the subject.
+     */
+    let refusal: string | null = null;
+    for (let i = 0; i < CODE_LOOKUPS.limit + 1; i++) {
+      const result = await lookupCode("NOSUCHCODE");
+      if (!result.ok && /too many/i.test(result.error)) {
+        refusal = result.error;
+        break;
+      }
+    }
+    expect(refusal, "grinding the code box must stop").not.toBeNull();
+    expect(refusal).toMatch(/wait/i);
   });
 });
 
