@@ -2117,6 +2117,87 @@ this document proves the page exists and nothing about whether anybody arrives.
   correct — the row outliving its target is a different thing from a route that
   never existed
 
+## 12al. Booking an expert
+
+The marketplace and booking were the last things built with **no section here**,
+and writing this one found two things. Both are recorded below as unchecked
+boxes with what actually happens, so nobody walks past them assuming they are
+covered.
+
+Set-up: a published expert offering **SESSIONS** with a couple of future slots,
+and a second offering **MENTORING** only.
+
+### The marketplace, as a school sees it
+
+- ☐ As an **admin or teacher**, open **Experts** → published experts only
+- ☐ A **verified** expert carries the badge; publishing and verifying are
+  separate claims (§12r), so an unverified one still lists
+- ☐ **⚠️** A slot in the **past** is not offered. Only future, unbooked,
+  uncancelled times appear
+- ☐ **⚠️** The **mentoring-only** expert shows **no Book button at all** — the
+  card says *Available for mentoring rather than sessions. Set a mentorship up
+  from Mentoring.* An expert may hold slots for arranging mentoring times, and
+  those are not a school's to book for a workshop
+- ☐ **⚠️** A **pupil** or a **guardian** opening `/experts` is turned away.
+  Booking is a staff act
+
+### Making the booking
+
+- ☐ Press **Book** on a slot → it asks *What would you like to discuss with …?*
+- ☐ **⚠️** Type one or two characters → **Confirm booking stays disabled**. It
+  is prevented rather than refused, so there is no error message to look for —
+  check the button, not the page
+- ☐ Type a real topic and confirm → a **Your bookings** section appears, and
+  **⚠️ the slot disappears from the available list**. Two schools cannot hold
+  the same hour
+- ☐ **⚠️** Open the booking → the topic, the expert, the time, and a message box
+- ☐ Send a message → it appears immediately, attributed to **You**
+
+### The expert's side
+
+- ☐ **⚠️** Sign in as the **expert**. They have a notification — *A school has
+  booked you* — pointing at `/expert/bookings/<id>`. **Tap it** rather than
+  typing the URL (§12ak explains why that distinction earns its own instruction)
+- ☐ They see the same conversation and can reply
+- ☐ **⚠️** The expert has **no membership and no school** on their session.
+  Their access to this school is derived from the live booking, so this page
+  working at all is also a check that the derivation works
+- ☐ The expert can also open the school-side URL `/experts/bookings/<id>` and
+  gets the same booking. Two presentations, one entitlement — not a leak, and
+  nothing in their navigation points there
+
+### Who must not get in
+
+- ☐ **⚠️** **Another school's admin** on either URL → **404**, both the
+  `/experts/…` and `/expert/…` spellings
+- ☐ Signed out → redirected to log in
+- ☐ **⚠️** An expert with a **different** booking → 404 on this one
+
+### ⚠️ Two things this walk found — expect them to fail
+
+- ☐ **⚠️ NOTHING CAN CANCEL A BOOKING.** Look for a cancel control on the
+  booking page, on **Your bookings**, and on the expert's own list. There is
+  none on any of the three. `cancelBooking` exists in `src/lib/experts.ts` and
+  is exported as a server action `cancel` in
+  `src/app/(app)/experts/actions.ts` — **and no component imports it**. So a
+  school that books the wrong hour, or an expert who falls ill, has no way to
+  release it, and the slot stays consumed. The library function is also tested
+  nowhere.
+- ☐ **⚠️ ANY MEMBER OF THE SCHOOL CAN READ AND POST IN A BOOKING CHAT,
+  INCLUDING A PUPIL.** Open `/experts/bookings/<id>` as a **pupil** and as a
+  **guardian** → both get **200**, both read the staff↔expert conversation, and
+  both are offered a compose box. The page gate is `requireApiUser()` — anybody
+  signed in — and `assertBookingAccess` then matches only on **schoolId**, so
+  "may read this booking" currently means "belongs to this school" rather than
+  "is staff of this school, or is the expert".
+  `postMessage`'s own comment says *"Both sides are adults, so there is no
+  gate"*, and on the school side that is not true.
+  It is **not reachable by browsing** — the marketplace 307s for both roles and
+  nothing lists booking ids to them, and an id is a cuid — so this is a wrong
+  boundary rather than an open door. But it is the same shape as the thing
+  `mentoring.ts` calls the one thing that feature must never become: an
+  unsupervised channel between a child and an adult from outside the school.
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -2194,16 +2275,20 @@ SSO, SMS, real email delivery.
 ranking of SCHOOLS. A board naming children from other schools is refused rather
 than pending, and the README says why.
 
-**Built but with no section here:** the expert marketplace and booking an
-expert. Only the expert's own profile (§12r) is covered, because that is the
-page the role audit found broken. The rest is untested by hand.
+**Built but with no section here:** nothing, for the first time. The expert
+marketplace and booking were the last two, and they now have §12al.
 
-**⚠️ Mentoring threads used to be on that list, and the gap was not harmless.**
-While there was no section, six notifications pointed at routes that had never
-existed and 7,351 stored rows carried a link to a 404 — in the one feature where
-an adult from outside the school talks to a child. It has a section now (§12ak).
-Read the remaining two names above as a list of places a bug is currently free
-to sit, not as a formality.
+**⚠️ THAT LIST WAS NEVER A FORMALITY, and both entries proved it on the way
+off.** While mentoring had no section, six notifications pointed at routes that
+had never existed and 7,351 stored rows carried a link to a 404 (§12ak). Writing
+§12al found that **no booking can be cancelled by anybody** — the library
+function and the server action both exist and no component calls either — and
+that **any member of a school, including a pupil, can read and post in a booking
+chat with an outside expert**. Both are recorded as failing boxes in §12al
+rather than quietly fixed, so whoever walks it sees what is true today.
+
+The list being empty means every built feature has instructions. It does not
+mean anybody has followed them.
 
 Built since this list was last trimmed, and now with sections of their own:
 global feed, weighted grade categories, suspend-user (§12l), the operator area
@@ -2214,10 +2299,10 @@ their record (§12s), the weekly timetable and its cover resolution (§§12ac–
 the cross-school leaderboard (§12ae), an account reachable with no school at
 all (§12af), signing in by mobile number with a password reset (§12ag), changing
 the address you sign in with (§12ah), the two links that arrive by email
-(§12ai), a redirect that was hiding an exception (§12aj), and a mentoring thread
-with the notification that points at it (§12ak).
+(§12ai), a redirect that was hiding an exception (§12aj), a mentoring thread
+with the notification that points at it (§12ak), and booking an expert (§12al).
 
-**None of §§12ac–12ak has been walked by anybody but the author.** Each was
+**None of §§12ac–12al has been walked by anybody but the author.** Each was
 driven end to end in a production build while it was being built — that is
 recorded in the README's Status — but a walkthrough by somebody who did not
 write it has caught things every single time it has been run here.

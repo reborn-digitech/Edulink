@@ -2462,6 +2462,28 @@ next run rather than in a role audit six months later.
   in the changelog above.
 - ~~**`/record` throws on every signed-out visit, and the log fills up.**~~
   **Fixed.** See the changelog entry above.
+- **⚠ A booking with an expert cannot be cancelled by anybody.** `cancelBooking`
+  exists in `src/lib/experts.ts`, is exported as the server action `cancel` in
+  `src/app/(app)/experts/actions.ts`, and **no component imports it** — there is
+  no control on the booking page, on *Your bookings*, or on the expert's own
+  list. A school that books the wrong hour, or an expert who falls ill, cannot
+  release the slot; it stays consumed and the booking stays CONFIRMED. The
+  library function is tested nowhere either. Found by walking §12al while
+  writing it.
+- **⚠ Any member of a school can read and post in a booking chat, including a
+  pupil.** `/experts/bookings/[bookingId]` gates on `requireApiUser()` — anybody
+  signed in — and `assertBookingAccess` then matches only on `schoolId`. So "may
+  read this booking" means "belongs to this school" rather than "is staff of
+  this school, or is the expert". Confirmed by opening a live booking as a pupil
+  and as a guardian: both got 200, both read the staff↔expert conversation, both
+  were offered a compose box. `postMessage`'s comment says *"Both sides are
+  adults, so there is no gate"*, which is false on the school side.
+  **Not reachable by browsing** — `/experts` 307s for both roles, nothing lists
+  booking ids to them, and an id is a cuid — so this is a wrong boundary rather
+  than an open door. It is still the shape `mentoring.ts` calls the one thing
+  that feature must never become: an unsupervised channel between a child and an
+  adult from outside the school. The fix is a staff-or-expert check in
+  `assertBookingAccess`; it is not folded into a documentation commit.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
