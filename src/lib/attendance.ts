@@ -4,7 +4,7 @@ import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import { formatDateKey } from "./dates";
-import { ATTENDANCE_META, type AttendanceStatus } from "./constants";
+import { ATTENDANCE_STATUS_EN, type AttendanceStatus } from "./constants";
 
 /**
  * Attendance write path.
@@ -169,12 +169,27 @@ export async function saveAttendanceBatch(opts: {
   // they were already told about — otherwise a flaky connection spams parents.
   if (opts.notify !== false) {
     const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
+    /**
+     * ⚠ THIS ONE STAYS ENGLISH, and that is a decision rather than an oversight.
+     *
+     * Every other reader of ATTENDANCE_META resolves the key at RENDER time, in
+     * the reader's language. A notification is written once by the TEACHER and
+     * read later by the GUARDIAN, and `Notification.title` stores the finished
+     * sentence — so translating here would stamp the teacher's language onto the
+     * guardian's notification. A Marathi-speaking parent would get Hindi because
+     * the teacher who took the register happens to read Hindi, which is worse
+     * than the English they get today.
+     *
+     * Fixing it properly means storing a key plus its parameters and rendering
+     * at read time — a schema change and a migration for every notification
+     * already written. Recorded in the README rather than bodged here.
+     */
     await Promise.all(
       newlyAbsent.map(({ studentMembershipId, status }) =>
         notifyGuardians(studentMembershipId, (childName) => ({
           kind: "ATTENDANCE",
           schoolId,
-          title: `${childName} was marked ${ATTENDANCE_META[status].label.toLowerCase()}`,
+          title: `${childName} was marked ${ATTENDANCE_STATUS_EN[status].toLowerCase()}`,
           body: `${pretty}. Tap to see the details or message the teacher.`,
           url: "/parent/attendance",
           meta: { dateKey, status },

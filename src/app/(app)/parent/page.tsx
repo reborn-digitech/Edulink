@@ -186,7 +186,7 @@ export default async function ParentDashboard({
                 <p className="mt-0.5 font-semibold text-fg">
                   {childName} was marked{" "}
                   <span style={{ color: `var(--att-${ATTENDANCE_META[todayRecord.status as AttendanceStatus].token})` }}>
-                    {ATTENDANCE_META[todayRecord.status as AttendanceStatus].label.toLowerCase()}
+                    {t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey).toLowerCase()}
                   </span>
                 </p>
               ) : (

@@ -10,11 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import Link from "next/link";
 import { myCards } from "@/lib/report-cards";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "My grades" };
 
 export default async function StudentGradesPage() {
   const ctx = await requireRole("STUDENT");
+  const t = await getT();
   const cards = await myCards(ctx);
 
   const grades = await db.grade.findMany({
@@ -77,7 +79,7 @@ export default async function StudentGradesPage() {
           find the document their family was sent. */}
       {cards.length > 0 && (
         <Card>
-          <CardHeader title="Report cards" description="Issued by your class teacher" />
+          <CardHeader title={t("student.reportCards")} description={t("student.issuedBy")} />
           <CardBody>
             <ul className="space-y-1.5">
               {cards.map((card) => (
@@ -102,7 +104,7 @@ export default async function StudentGradesPage() {
         </Card>
       )}
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">My grades</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myGrades")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {grades.length === 0
             ? "Nothing marked yet"
@@ -113,22 +115,22 @@ export default async function StudentGradesPage() {
       {grades.length === 0 ? (
         <EmptyState
           icon={<ChartLineUpIcon weight="duotone" className="size-8" />}
-          title="No grades yet"
-          description="When a teacher marks your work it appears here, along with anything they wrote to you."
+          title={t("student.noGradesYet")}
+          description={t("student.gradesEmpty")}
         />
       ) : (
         <>
           <div className="grid gap-3 sm:grid-cols-3">
             <StatTile
-              label="Overall"
+              label={t("student.overall")}
               value={overall === null ? "—" : `${overall}%`}
               tone={overall !== null && overall >= 70 ? "ok" : "neutral"}
               icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
               hint={`${formatMilli(earned)} of ${formatMilli(available)} points`}
             />
-            <StatTile label="Marked" value={grades.length} hint="Pieces of work" />
+            <StatTile label={t("student.marked")} value={grades.length} hint={t("student.piecesOfWork")} />
             <StatTile
-              label="Your best"
+              label={t("student.yourBest")}
               value={best ? `${best.percent}%` : "—"}
               tone="ok"
               hint={best ? best.title : "Nothing yet"}
@@ -136,7 +138,7 @@ export default async function StudentGradesPage() {
           </div>
 
           <Card>
-            <CardHeader title="Everything, newest first" />
+            <CardHeader title={t("student.newestFirst")} />
             <CardBody>
               <ul className="divide-y divide-border">
                 {grades.map((grade) => {

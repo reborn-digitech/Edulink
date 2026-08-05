@@ -89,7 +89,7 @@ export default async function ParentAttendancePage({
         {ATTENDANCE_STATUSES.filter((s) => s !== "PRESENT").map((status) => (
           <StatTile
             key={status}
-            label={ATTENDANCE_META[status].label}
+            label={t(ATTENDANCE_META[status].labelKey)}
             value={summary.counts[status]}
             tone={
               summary.counts[status] === 0
@@ -100,7 +100,7 @@ export default async function ParentAttendancePage({
                     ? "warn"
                     : "neutral"
             }
-            hint={ATTENDANCE_META[status].hint}
+            hint={t(ATTENDANCE_META[status].hintKey)}
           />
         ))}
       </div>

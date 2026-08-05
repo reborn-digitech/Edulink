@@ -54,13 +54,13 @@ export default async function PracticePage({
       {topics.length === 0 ? (
         <EmptyState
           icon={<BrainIcon weight="duotone" className="size-8" />}
-          title="No practice topics yet"
-          description="Your school has not added any practice questions for your class yet."
+          title={t("student.noTopics")}
+          description={t("student.noTopicsBody")}
         />
       ) : (
         <>
           {subjects.length > 1 && (
-            <nav aria-label="Subjects" className="flex flex-wrap gap-2">
+            <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
               <Link
                 href="/student/practice"
                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
@@ -100,7 +100,7 @@ export default async function PracticePage({
                         <MedalIcon
                           weight="fill"
                           className="size-6 shrink-0 text-accent-strong"
-                          aria-label="Badge earned"
+                          aria-label={t("student.badgeEarned")}
                         />
                       )}
                     </div>

@@ -15,6 +15,7 @@ import { EmptyState } from "@/components/ui/states";
 import { cn } from "@/lib/cn";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { enqueue, flushQueue, newClientId, countQueued } from "@/lib/offline-queue";
+import { useT } from "@/lib/i18n";
 
 export type RosterEntry = {
   membershipId: string;
@@ -52,6 +53,7 @@ export function Register({
   initialRoster: RosterEntry[];
   readOnly?: boolean;
 }) {
+  const t = useT();
   const { toast } = useToast();
   const [roster, setRoster] = useState(initialRoster);
   const [query, setQuery] = useState("");
@@ -264,7 +266,7 @@ export function Register({
                 color: `var(--att-${ATTENDANCE_META[status].token})`,
               }}
             >
-              {counts[status]} {ATTENDANCE_META[status].label}
+              {counts[status]} {t(ATTENDANCE_META[status].labelKey)}
             </span>
           ))}
           {counts.unmarked > 0 && (
@@ -354,6 +356,7 @@ function StudentRow({
   onMark: (status: AttendanceStatus) => void;
   onOpenNote: () => void;
 }) {
+  const t = useT();
   return (
     <div
       className={cn(
@@ -403,8 +406,8 @@ function StudentRow({
               aria-pressed={active}
               // The full word is in the accessible name; the visible glyph is
               // the initial. Colour alone never carries the meaning.
-              aria-label={`${meta.label} — ${meta.hint}`}
-              title={meta.label}
+              aria-label={`${t(meta.labelKey)} — ${t(meta.hintKey)}`}
+              title={t(meta.labelKey)}
               className={cn(
                 "grid size-11 place-items-center rounded-[--radius-sm] text-sm font-bold",
                 "transition-[transform,background-color,color] duration-[--dur-fast]",
@@ -420,7 +423,7 @@ function StudentRow({
                   : undefined
               }
             >
-              <span aria-hidden="true">{meta.short}</span>
+              <span aria-hidden="true">{t(meta.shortKey)}</span>
             </button>
           );
         })}

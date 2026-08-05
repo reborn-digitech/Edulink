@@ -115,36 +115,54 @@ export type GuardianRelation = (typeof GUARDIAN_RELATIONS)[number];
 
 export const ATTENDANCE_META: Record<
   AttendanceStatus,
-  { label: string; short: string; token: string; softToken: string; hint: string }
+  { labelKey: TranslationKey; shortKey: TranslationKey; token: string; softToken: string; hintKey: TranslationKey }
 > = {
   PRESENT: {
-    label: "Present",
-    short: "P",
+    labelKey: "attendance.present",
+    shortKey: "attendance.presentShort",
     token: "present",
     softToken: "present-soft",
-    hint: "Here on time",
+    hintKey: "attendance.presentHint",
   },
   LATE: {
-    label: "Late",
-    short: "L",
+    labelKey: "attendance.late",
+    shortKey: "attendance.lateShort",
     token: "late",
     softToken: "late-soft",
-    hint: "Arrived after the bell",
+    hintKey: "attendance.lateHint",
   },
   ABSENT: {
-    label: "Absent",
-    short: "A",
+    labelKey: "attendance.absent",
+    shortKey: "attendance.absentShort",
     token: "absent",
     softToken: "absent-soft",
-    hint: "Not here, no reason given",
+    hintKey: "attendance.absentHint",
   },
   EXCUSED: {
-    label: "Excused",
-    short: "E",
+    labelKey: "attendance.excused",
+    shortKey: "attendance.excusedShort",
     token: "excused",
     softToken: "excused-soft",
-    hint: "Away with a known reason",
+    hintKey: "attendance.excusedHint",
   },
+};
+/**
+ * ⚠ ENGLISH WORDS, FOR STORED TEXT ONLY.
+ *
+ * `ATTENDANCE_META` above holds KEYS, resolved in the reader's language at
+ * render time. A notification is different: it is written once by a teacher and
+ * read later by a guardian, and the finished sentence is stored on the row — so
+ * a key resolved at write time would stamp the writer's language onto the
+ * reader's screen. Until notifications store a key and its parameters instead
+ * of a sentence, the one place that composes them uses these.
+ *
+ * Nothing else may use this. If you are rendering, you want `ATTENDANCE_META`.
+ */
+export const ATTENDANCE_STATUS_EN: Record<AttendanceStatus, string> = {
+  PRESENT: "Present",
+  LATE: "Late",
+  ABSENT: "Absent",
+  EXCUSED: "Excused",
 };
 
 /**

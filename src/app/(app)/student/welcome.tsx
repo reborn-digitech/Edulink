@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CopyIcon, SparkleIcon, XIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 
 /**
  * First-run welcome for a brand-new student.
@@ -14,6 +15,7 @@ import { Button } from "@/components/ui/button";
  * to save it with a grown-up.
  */
 export function StudentWelcome({ name, handle }: { name: string; handle: string | null }) {
+  const t = useT();
   const { toast } = useToast();
   const [dismissed, setDismissed] = useState(false);
   if (dismissed) return null;
@@ -23,7 +25,7 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
       <button
         type="button"
         onClick={() => setDismissed(true)}
-        aria-label="Hide this message"
+        aria-label={t("student.hideMessage")}
         className="absolute right-2 top-2 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
       >
         <XIcon weight="bold" className="size-4" />
@@ -36,13 +38,13 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
         <div className="min-w-0">
           <h2 className="text-lg font-bold text-fg">You&rsquo;re in, {name}!</h2>
           <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-            This is your dashboard. Your work, your marks and your attendance all live here.
+            {t("student.welcomeBody")}
           </p>
 
           {handle && (
             <div className="mt-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                Your login name — save this with a grown-up
+                {t("student.saveLogin")}
               </p>
               <div className="mt-1.5 flex items-center gap-2">
                 <code className="flex-1 truncate font-mono text-sm font-bold text-fg">
@@ -55,21 +57,21 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
                   onClick={async () => {
                     try {
                       await navigator.clipboard.writeText(handle);
-                      toast({ tone: "ok", title: "Login name copied" });
+                      toast({ tone: "ok", title: t("student.copied") });
                     } catch {
                       toast({
                         tone: "warn",
-                        title: "Could not copy",
-                        description: "Write it down instead.",
+                        title: t("student.couldNotCopy"),
+                        description: t("student.writeItDown"),
                       });
                     }
                   }}
                 >
-                  Copy
+                  {t("student.copy")}
                 </Button>
               </div>
               <p className="mt-1.5 text-xs text-fg-muted">
-                Use this and your password to log back in.
+                {t("student.useThis")}
               </p>
             </div>
           )}

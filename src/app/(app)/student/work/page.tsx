@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { SubmitPanel } from "./submit-panel";
 import { AttachmentList } from "@/components/attachment-list";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "My work" };
 
@@ -17,11 +18,12 @@ export default async function StudentWorkPage() {
   await requireRole("STUDENT");
   const session = (await getSession())!;
   const { upcoming, past } = await getStudentWork(session);
+  const t = await getT();
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">My work</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myWork")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {upcoming.length === 0
             ? "Nothing to do right now"
@@ -33,8 +35,8 @@ export default async function StudentWorkPage() {
         <EmptyState
           tone="celebrate"
           icon={<CheckCircleIcon weight="duotone" className="size-8" />}
-          title="You're all caught up"
-          description="Nothing is waiting for you. New work shows up here the moment a teacher sets it."
+          title={t("student.nothingDue")}
+          description={t("student.workEmpty")}
         />
       ) : (
         <ul className="space-y-2">
@@ -62,7 +64,7 @@ export default async function StudentWorkPage() {
                     {item.attachments.length > 0 && (
                       <div className="mt-2.5">
                         <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                          From your teacher
+                          {t("student.fromTeacher")}
                         </p>
                         <AttachmentList
                           className="mt-1"
@@ -77,7 +79,7 @@ export default async function StudentWorkPage() {
 
                     <div className="mt-2.5">
                       <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                        Your files
+                        {t("student.yourFiles")}
                       </p>
                       <AttachmentList
                         className="mt-1"
@@ -111,8 +113,8 @@ export default async function StudentWorkPage() {
         <Card>
           <CardHeader
             icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-            title="Marked already"
-            description={`${past.length} piece${past.length === 1 ? "" : "s"} of work`}
+            title={t("student.markedAlready")}
+            description={`${past.length} ${t("student.piecesOfWork")}`}
           />
           <CardBody>
             <ul className="divide-y divide-border">

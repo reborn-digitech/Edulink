@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitWork } from "./actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * Hand-in panel, collapsed until the student opens it.
@@ -26,6 +27,7 @@ export function SubmitPanel({
   submittedAt: Date | null;
   existingBody: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -51,8 +53,8 @@ export function SubmitPanel({
       setOpen(false);
       toast({
         tone: "ok",
-        title: "Handed in 🎉",
-        description: `Your teacher has been told about “${title}”.`,
+        title: t("student.handedInCheer"),
+        description: t("student.teacherTold", { title }),
       });
       router.refresh();
     });
@@ -62,14 +64,14 @@ export function SubmitPanel({
     return (
       <div className="mt-2.5 flex flex-wrap items-center gap-2 rounded-[--radius-md] bg-ok-soft p-2.5">
         <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-ok" />
-        <p className="min-w-0 flex-1 text-sm font-medium text-ok">Handed in</p>
+        <p className="min-w-0 flex-1 text-sm font-medium text-ok">{t("student.handedIn")}</p>
         <Button
           size="sm"
           variant="ghost"
           icon={<PencilSimpleIcon weight="bold" />}
           onClick={() => setOpen(true)}
         >
-          Change it
+          {t("student.changeIt")}
         </Button>
       </div>
     );
@@ -84,7 +86,7 @@ export function SubmitPanel({
         icon={<PaperPlaneTiltIcon weight="bold" />}
         onClick={() => setOpen(true)}
       >
-        Hand it in
+        {t("student.handItIn")}
       </Button>
     );
   }
@@ -92,7 +94,7 @@ export function SubmitPanel({
   return (
     <div className="mt-2.5 space-y-2 rounded-[--radius-md] border border-accent bg-accent-soft/40 p-3">
       <label htmlFor={`submit-${assignmentId}`} className="block text-sm font-medium text-fg">
-        Your answer
+        {t("student.yourAnswer")}
       </label>
       <textarea
         id={`submit-${assignmentId}`}
@@ -103,7 +105,7 @@ export function SubmitPanel({
         }}
         rows={5}
         autoFocus
-        placeholder="Type or paste your work here."
+        placeholder={t("student.answerPlaceholder")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? `submit-error-${assignmentId}` : undefined}
         className={cn(
@@ -133,7 +135,7 @@ export function SubmitPanel({
             setError(null);
           }}
         >
-          Cancel
+          {t("student.cancel")}
         </Button>
         <Button
           size="sm"
@@ -142,7 +144,7 @@ export function SubmitPanel({
           icon={<PaperPlaneTiltIcon weight="bold" />}
           onClick={submit}
         >
-          {done ? "Update" : "Hand it in"}
+          {done ? t("student.changeIt") : t("student.handItIn")}
         </Button>
       </div>
     </div>

@@ -16,6 +16,7 @@ import { AttendanceBadge, Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Today" };
 
@@ -25,6 +26,7 @@ export default async function StudentHome({
   searchParams: Promise<{ welcome?: string; handle?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
+  const t = await getT();
   const { welcome, handle } = await searchParams;
 
   const membership = await db.membership.findUniqueOrThrow({
@@ -86,10 +88,10 @@ export default async function StudentHome({
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
-          label="Today"
+          label={t("student.today")}
           value={
             todayRecord
-              ? ATTENDANCE_META[todayRecord.status as AttendanceStatus].label
+              ? t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey)
               : "Not yet"
           }
           tone={
@@ -105,7 +107,7 @@ export default async function StudentHome({
           hint={todayRecord ? "Register taken" : "Your teacher hasn't taken it yet"}
         />
         <StatTile
-          label="Streak"
+          label={t("student.streak")}
           value={streak}
           tone={streak >= 5 ? "ok" : "neutral"}
           icon={<FireIcon weight="duotone" className="size-5" />}
@@ -118,18 +120,18 @@ export default async function StudentHome({
           }
         />
         <StatTile
-          label="Attendance"
+          label={t("student.attendance")}
           value={attendance.percent === null ? "—" : `${attendance.percent}%`}
           tone={attendance.percent !== null && attendance.percent >= 95 ? "ok" : "neutral"}
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          hint="Last 4 weeks"
+          hint={t("student.lastFourWeeks")}
         />
       </div>
 
       <Card>
         <CardHeader
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          title="What's coming up"
+          title={t("student.whatIsDue")}
           description={upcoming.length === 0 ? "Nothing due" : `${upcoming.length} to do`}
         />
         <CardBody>
@@ -138,8 +140,8 @@ export default async function StudentHome({
               className="border-0 bg-transparent py-6"
               tone="celebrate"
               icon={<CheckIcon />}
-              title="Nothing due right now"
-              description="Enjoy it. New work will show up here the moment a teacher sets it."
+              title={t("student.nothingDue")}
+              description={t("student.nothingDueBody")}
             />
           ) : (
             <ul className="space-y-2">
@@ -173,7 +175,7 @@ export default async function StudentHome({
       <Card>
         <CardHeader
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          title="Your recent marks"
+          title={t("student.recentMarks")}
           description={grades.length === 0 ? "Nothing marked yet" : "Newest first"}
         />
         <CardBody>
@@ -223,12 +225,12 @@ export default async function StudentHome({
       <Card>
         <CardHeader
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          title="Your attendance"
-          description="The last two weeks"
+          title={t("student.yourAttendance")}
+          description={t("student.lastTwoWeeks")}
         />
         <CardBody>
           {attendance.recent.length === 0 ? (
-            <p className="py-4 text-center text-sm text-fg-muted">Nothing recorded yet.</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("student.attendanceEmpty")}</p>
           ) : (
             <ul className="divide-y divide-border">
               {attendance.recent.slice(0, 10).map((day) => (

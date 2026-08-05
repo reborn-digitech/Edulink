@@ -1,7 +1,10 @@
+"use client";
+
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import type { ReactNode } from "react";
+import { useT } from "@/lib/i18n";
 
 const badge = cva(
   "inline-flex items-center gap-1.5 rounded-full font-semibold whitespace-nowrap",
@@ -54,6 +57,7 @@ export function AttendanceBadge({
   compact?: boolean;
   className?: string;
 }) {
+  const t = useT();
   const meta = ATTENDANCE_META[status];
   return (
     <span
@@ -69,11 +73,11 @@ export function AttendanceBadge({
     >
       {compact ? (
         <>
-          <span aria-hidden="true">{meta.short}</span>
-          <span className="sr-only">{meta.label}</span>
+          <span aria-hidden="true">{t(meta.shortKey)}</span>
+          <span className="sr-only">{t(meta.labelKey)}</span>
         </>
       ) : (
-        meta.label
+        t(meta.labelKey)
       )}
     </span>
   );

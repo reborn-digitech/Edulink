@@ -11,6 +11,7 @@ import { formatMilli } from "@/lib/validation";
 import { Avatar } from "@/components/ui/avatar";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { PrintButton } from "./print-button";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Progress report", robots: { index: false, follow: false } };
 
@@ -34,6 +35,7 @@ export default async function ReportPage({
   searchParams: Promise<{ from?: string; to?: string }>;
 }) {
   const session = await requireUser();
+  const t = await getT();
   const { studentMembershipId } = await params;
   const { from, to } = await searchParams;
 
@@ -117,7 +119,7 @@ export default async function ReportPage({
               {statuses.map((status) => (
                 <div key={status} className="rounded-[--radius-md] border border-border p-2.5">
                   <dt className="text-xs uppercase tracking-wide text-fg-muted">
-                    {ATTENDANCE_META[status].label}
+                    {t(ATTENDANCE_META[status].labelKey)}
                   </dt>
                   <dd className="text-lg font-semibold">{report.attendance.counts[status]}</dd>
                 </div>

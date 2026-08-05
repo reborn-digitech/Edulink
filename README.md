@@ -1826,6 +1826,31 @@ One line each, with the default rejected.
   keys carry, now over 300. A teacher who speaks these every day should read
   them before a real school does.
 
+- **The pupil's surface, and the four marks a register can carry.** Eight more
+  files — today, grades, work, hand-in, profile, practice, the welcome card —
+  plus `ATTENDANCE_META`, which is shared: translating it once fixes the
+  guardian's attendance page *and* the teacher's register, and both were checked
+  in मराठी.
+  **KEYS, NOT WORDS, FOLLOWING `ROLE_META`** — the convention was already in
+  `constants.ts` and this file now matches it. Converting the constant turned
+  every consumer into a compile error, which is how all seven were found rather
+  than grepped for.
+  **⚠ ONE CONSUMER DELIBERATELY STAYS ENGLISH.** `attendance.ts` composes a
+  NOTIFICATION, written once by the teacher and read later by the guardian, with
+  the finished sentence stored on the row. Resolving a key there would stamp the
+  WRITER's language onto the READER's screen — a Marathi-speaking parent would
+  get Hindi because the teacher who took the register reads Hindi, which is
+  worse than the English they get today. It uses a separate English-only map
+  whose comment says nothing else may. Fixing it properly means storing a key
+  and its parameters and rendering at read time: a schema change and a migration
+  for every notification already written.
+  **A SURROGATE PAIR BROKE THE WRITER MID-FILE.** Generating these blocks with
+  `\uXXXX` escapes worked until an emoji, whose surrogate pair `unicode_escape`
+  cannot round-trip — it threw halfway and truncated `en.ts` to 400 lines short.
+  `git checkout` and a rewrite in literal UTF-8 fixed it; the lesson is that a
+  half-written dictionary is a build failure rather than a silent one, which is
+  the good version of getting it wrong.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1946,9 +1971,11 @@ navigation" means the actual list rather than one somebody maintained by hand.
   navigation, role labels, the account page, login and **the whole guardian
   surface** are translated; every other page is still English. The switcher
   itself carries that sentence, so nobody meets an English page and wonders
-  whether it is broken. `npm run i18n` prints exactly what is left — **201 files
-  and 1,617 strings**, plus ~70 date calls that still render in English whatever
-  the reader's language — and that total is a floor rather than a certainty.
+  whether it is broken. **The guardian's and the pupil's surfaces are both done**,
+  and so are the four attendance marks, which appear on a teacher's register as
+  well. `npm run i18n` prints exactly what is left — **199 files and 1,566
+  strings**, plus ~70 date calls that still render in English whatever the
+  reader's language — and that total is a floor rather than a certainty.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
 - SSO (Google/Microsoft/Apple)
