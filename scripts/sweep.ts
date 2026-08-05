@@ -1401,9 +1401,33 @@ async function main() {
     // which has to work for somebody whose sessions their own reset just
     // revoked.
     "/forgot", "/forgot?id=someone%40example.test", "/login?reset=1",
+    /**
+     * ⚠ THE TWO ROUTES THAT DID NOT EXIST while the app emailed links to them.
+     * Registration sent `/verify?token=…` and the login page sent
+     * `/magic?token=…`, and both 404ed — which this sweep did not catch for the
+     * only reason it could not: a route nothing links to INSIDE the app is a
+     * route a link-following sweep never visits. They are listed by hand now.
+     *
+     * Bare and with a junk token, because both have to answer a person holding
+     * a mangled link, and both must do it signed out.
+     */
+    "/verify", "/verify?token=not-a-real-token",
+    // The three ways a sign-in link can fail, each landing on the login form
+    // with its own sentence. `/magic` itself is a route handler and redirects.
+    "/login?link=expired", "/login?link=used", "/login?link=bad",
   ]) {
     await check(null, p);
   }
+  /**
+   * ⚠ A DEAD SIGN-IN LINK REDIRECTS, IT DOES NOT RENDER. `/magic` is a route
+   * handler because signing somebody in writes a cookie, which Next.js refuses
+   * from a Server Component. The first version was a page, and it rendered
+   * perfectly for every FAILING token — so a junk token here went green while
+   * the success path 500ed. That is why this asserts the redirect rather than a
+   * 200, and why a real emailed link was opened by hand.
+   */
+  await check(null, "/magic?token=not-a-real-token", 307, "a dead sign-in link goes to the form");
+  await check(null, "/magic", 307, "no token at all goes to the form");
   await check(null, "/dev/mailbox", 404, "must 404 in production");
   await check(null, "/admin", 307, "signed-out admin redirects to login");
   await check(null, "/api/push", 401, "unauthenticated push registration");

@@ -2,7 +2,10 @@ import "server-only";
 import { randomInt } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
-import { hashPassword, hashToken, passwordProblems } from "./crypto";
+import { claimToken } from "./auth-tokens";
+import { forUser } from "./tenant-context";
+import { EMAIL_VERIFY_TTL_HOURS } from "./constants";
+import { generateToken, hashPassword, hashToken, passwordProblems } from "./crypto";
 import { readJson } from "./json";
 import { isDeliverableEmail, toLoginEmail } from "./login-name";
 import { identifierKind, normalisePhone, phoneHint } from "./phone";
@@ -11,6 +14,7 @@ import {
   sendResetCode as sendResetEmail,
   sendEmailChangeCode,
   sendEmailChangedNotice,
+  sendVerifyEmail,
 } from "./email";
 import {
   consume,
@@ -45,6 +49,10 @@ import {
 
 /** Ten minutes: long enough to find a phone, short enough to be worthless later. */
 export const RESET_TTL_MINUTES = 10;
+
+// Same spelling as `register/actions.ts`, which is where the verification link
+// this file now redeems is first built.
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 /**
  * Five wrong codes and the token is spent.
@@ -807,6 +815,162 @@ export async function confirmEmailChange(userId: string, code: string): Promise<
   await audit({ actorUserId: userId, action: "account.email.confirm" });
 
   return { ok: true, sentTo: email };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Confirming the address you registered with                                  */
+/* -------------------------------------------------------------------------- */
+
+export type VerifyResult =
+  | { ok: true; email: string }
+  | { ok: false; reason: "UNKNOWN" }
+  | { ok: false; reason: "USED"; email: string | null }
+  | { ok: false; reason: "EXPIRED"; userId: string; email: string | null }
+  /** Real and live, but the account has moved to a different address since. */
+  | { ok: false; reason: "STALE" };
+
+/**
+ * Redeems the link registration has been emailing since day one.
+ *
+ * ⚠ THE ROUTE IT POINTED AT DID NOT EXIST. `register/actions.ts` has always
+ * minted an `EMAIL_VERIFY` token and sent `${APP_URL}/verify?token=…`, and
+ * nothing anywhere consumed one — so every school admin's address has sat
+ * unverified, and the button in their welcome email led to a 404. Its own
+ * comment said "the admin can re-request verification", which was also not a
+ * thing that existed.
+ *
+ * ⚠ VERIFIES THE ADDRESS THE LINK WAS SENT TO, NOT WHOEVER'S ROW IT NAMES.
+ * This is the check that only became necessary once an address could be changed
+ * at all. A token minted for `head@oldschool.test` and clicked a week after that
+ * person moved their account to `head@newschool.test` would otherwise stamp
+ * `emailVerifiedAt` onto an address nobody has proved anything about — turning a
+ * link into a way to launder an unverified address into a verified one. The
+ * token records where it was sent; if that is no longer the account's address,
+ * this refuses and says so.
+ */
+export async function verifyEmailByToken(rawToken: string | undefined): Promise<VerifyResult> {
+  const claim = await claimToken(rawToken, "EMAIL_VERIFY");
+
+  if (!claim.ok && claim.reason === "UNKNOWN") return { ok: false, reason: "UNKNOWN" };
+  if (!claim.ok && claim.reason === "USED") return { ok: false, reason: "USED", email: claim.email };
+  if (!claim.ok) return { ok: false, reason: "EXPIRED", userId: claim.userId, email: claim.email };
+
+  /**
+   * A token with no address recorded on it cannot say what it proved. This app
+   * does not mint one — registration always sets it — so rather than guess that
+   * it meant "whatever the account holds now", it is refused as unknown.
+   */
+  if (!claim.email) return { ok: false, reason: "UNKNOWN" };
+
+  const user = await db.user.findUnique({
+    where: { id: claim.userId },
+    select: { email: true },
+  });
+  if (!user) return { ok: false, reason: "UNKNOWN" };
+  if (user.email !== claim.email) return { ok: false, reason: "STALE" };
+
+  await db.user.update({
+    where: { id: claim.userId },
+    data: { emailVerifiedAt: new Date() },
+  });
+  await audit({ actorUserId: claim.userId, action: "auth.email.verified" });
+
+  return { ok: true, email: claim.email };
+}
+
+/**
+ * Sends a fresh confirmation link to the address on the account.
+ *
+ * ⚠ TAKES THE EXPIRED TOKEN, NOT A USER ID, and the first draft of this took the
+ * id. That was wrong in the way that matters: the page has it, so passing it
+ * looked natural — but a server action's arguments are client input, and an
+ * action that emails whichever account it is handed is an unauthenticated
+ * mailer pointed at any id somebody can produce. The rate limit would have
+ * bounded the volume and not the aim.
+ *
+ * Holding the token is the proof, exactly as it is for redeeming one. An
+ * expired token is never consumed — `claimToken` requires an unexpired row to
+ * spend one — so the row is still there to be re-read, and the userId comes off
+ * the server's own record rather than off the request.
+ *
+ * It deliberately does NOT take an address either: this posts a second copy to
+ * the inbox that already received the first and can reach nowhere new.
+ *
+ * A HANDLE IS NOT AN ADDRESS, so a pupil account is refused rather than mailed
+ * at `.local` — the same rule as everywhere else that sends.
+ */
+export async function resendVerification(
+  rawToken: string | undefined,
+): Promise<{ ok: boolean; error?: string }> {
+  const token = rawToken?.trim();
+  if (!token) return { ok: false, error: "That link is not one we can renew." };
+
+  /**
+   * Deliberately does NOT require the row to be live. Expired is the ordinary
+   * case, and consumed is what a second press of the button looks like once the
+   * first resend has swept the old tokens. The token is a RECEIPT here — proof
+   * of which inbox already received a link — not a credential, and it buys
+   * nothing except another copy to that same inbox.
+   */
+  const row = await db.authToken.findUnique({
+    where: { tokenHash: hashToken(token) },
+    select: { userId: true, purpose: true },
+  });
+  if (!row?.userId || row.purpose !== "EMAIL_VERIFY") {
+    return { ok: false, error: "That link is not one we can renew." };
+  }
+  const userId = row.userId;
+
+  const gate = await consume(
+    `verify-resend:${userId}`,
+    EMAIL_CHANGE_REQUESTS.limit,
+    EMAIL_CHANGE_REQUESTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return { ok: false, error: `Too many requests. Try again ${retryHint(gate.retryAfterSeconds)}.` };
+  }
+
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { email: true, emailVerifiedAt: true, disabledAt: true },
+  });
+  if (!user || user.disabledAt) return { ok: false, error: "That account cannot be verified." };
+  if (!isDeliverableEmail(user.email)) {
+    return { ok: false, error: "There is no email address on that account to send to." };
+  }
+  if (user.emailVerifiedAt) return { ok: true };
+
+  // The school is only for the subject line, and reading Membership needs a
+  // tenant bound — there is no session here. `forUser` answers "your own rows"
+  // without one, the same way login resolves a role before a session exists.
+  const schoolName = await forUser(userId, async () => {
+    const membership = await db.membership.findFirst({
+      where: { userId, status: "ACTIVE", leftAt: null },
+      select: { school: { select: { name: true } } },
+      orderBy: { joinedAt: "asc" },
+    });
+    return membership?.school.name ?? "EduLink";
+  });
+
+  const fresh = generateToken();
+  await db.authToken.updateMany({
+    where: { userId, purpose: "EMAIL_VERIFY", consumedAt: null },
+    data: { consumedAt: new Date() },
+  });
+  await db.authToken.create({
+    data: {
+      userId,
+      email: user.email,
+      purpose: "EMAIL_VERIFY",
+      tokenHash: hashToken(fresh),
+      expiresAt: new Date(Date.now() + EMAIL_VERIFY_TTL_HOURS * 3_600_000),
+    },
+  });
+
+  await sendVerifyEmail(user.email!, `${APP_URL}/verify?token=${fresh}`, schoolName);
+  await audit({ actorUserId: userId, action: "auth.email.verify.resent" });
+
+  return { ok: true };
 }
 
 /**

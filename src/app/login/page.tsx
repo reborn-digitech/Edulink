@@ -13,12 +13,12 @@ export const metadata: Metadata = { title: "Log in" };
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string; expired?: string; reset?: string }>;
+  searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string }>;
 }) {
   const session = await getSession();
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
-  const { expired, reset } = await searchParams;
+  const { expired, reset, link } = await searchParams;
   const t = await getT();
 
   return (
@@ -44,6 +44,28 @@ export default async function LoginPage({
               className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {t("login.expired")}
+            </p>
+          )}
+
+          {/*
+            A sign-in link that did not work, explained beside the password box
+            that still does. `/magic` is a route handler and cannot render, so
+            it sends the reason here rather than to a page of its own.
+
+            ONE MESSAGE PER REASON AND NO ACCOUNT NAMED. This is reachable by
+            anybody holding any string, so saying whose link it was would turn a
+            guessed token into a lookup.
+          */}
+          {link && (
+            <p
+              role="status"
+              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+            >
+              {link === "expired"
+                ? "That sign-in link has expired — they last 20 minutes. Ask for another below, or use your password."
+                : link === "used"
+                  ? "That sign-in link has already been used. They work once. Ask for another below, or use your password."
+                  : "That sign-in link did not work. It may have been cut in half by a mail app. Ask for another below, or use your password."}
             </p>
           )}
 

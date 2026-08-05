@@ -12,7 +12,7 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
-import { consume, retryHint, LOGIN_ATTEMPTS } from "@/lib/rate-limit";
+import { consume, retryHint, LOGIN_ATTEMPTS, RESET_REQUESTS } from "@/lib/rate-limit";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
@@ -125,6 +125,27 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const { email } = parsed.data;
+
+  /**
+   * ⚠ THIS SENDS MAIL AND HAD NO LIMIT, which went unnoticed while the link it
+   * sent led nowhere. Building the route that redeems it turned a dead endpoint
+   * into a working mailer, and a working mailer with no ceiling is the thing
+   * `RESET_REQUESTS` was added to prevent — someone can put a registered
+   * address in and hold the button.
+   *
+   * Keyed on what was TYPED and consumed BEFORE the lookup, for the reason the
+   * reset flow spells out: an address matching nobody must be limited exactly
+   * like one that does, or the limiter becomes the enumeration oracle this
+   * function's "always report success" is careful not to be.
+   */
+  const gate = await consume(`magic:${email}`, RESET_REQUESTS.limit, RESET_REQUESTS.windowMs);
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many requests. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+    };
+  }
+
   const user = await db.user.findUnique({ where: { email }, select: { id: true, disabledAt: true } });
 
   if (user && !user.disabledAt) {

@@ -163,7 +163,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,318 tests) |
+| `npm test` | Full suite (1,336 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -182,7 +182,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 278 route/role/negative combinations
+mints a real session per role, requests all 285 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -285,6 +285,7 @@ src/lib/                  All business logic. Pages are thin.
   school-day.ts           Client-safe half of the above. Minutes from midnight; WEEK_DAYS is Mon–Sat.
   phone.ts                ★ Client-safe. ONE stored shape for a number, or nothing. `User.phone` is unique.
   passwords.ts            ★ Login by email/mobile/handle, the reset, and changing either contact.
+  auth-tokens.ts          ★ Spending an emailed link, ONCE. Conditional UPDATE, not read-then-write.
   sms.ts                  Text transport. Devbox only, same shape as email.ts. Fails loudly.
   rate-limit.ts           ★ The FIRST rate limit here. Fails OPEN — see the header for why.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
@@ -664,6 +665,12 @@ One line each, with the default rejected.
 - Landing page, registration wizard (3 steps, live validation, resumable draft),
   login (password, magic link, **and bare student handles**), role switcher,
   admin dashboard with a *derived* checklist, teacher home, dev mailbox.
+  **⚠ "magic link" was on this list while the link 404ed**, and had been for a
+  long time: the form that REQUESTS one has always worked and was what got
+  walked, and nobody followed the email to the end. It is true now — a real link
+  was read out of the mailbox and opened — but the lesson is that "login works"
+  is not a claim a form can support on its own. Where a flow ends in an email,
+  the check has to end in the inbox.
 - **Offline loop, production build:** marked a student absent with the network
   forced down → payload queued in IndexedDB → nothing on the server →
   reconnected → synced with the **same `clientId`** → parent notified.
@@ -1559,6 +1566,54 @@ One line each, with the default rejected.
   an earlier suffix filter; the shape-based filter is the part that keeps being
   wrong.
 
+- **Two emailed links had no route to land on, and one of them was an advertised
+  way to sign in.** Registration has always minted an `EMAIL_VERIFY` token and
+  sent `${APP_URL}/verify?token=…`; the login page's "email me a sign-in link
+  instead" has always minted a `MAGIC_LINK` token and sent
+  `${APP_URL}/magic?token=…`. Neither route existed. Every school admin's welcome
+  email led to a 404, and anybody without their password who took the magic-link
+  offer got nowhere — **while this file listed magic-link login under "Verified
+  working"**. Found while building the email change, because that was the first
+  thing in the app to set `emailVerifiedAt` on a real change.
+  **THE SWEEP COULD NOT HAVE CAUGHT THIS, and that is worth stating rather than
+  excusing.** It walks routes the app links to; a URL that exists only inside an
+  email is one nothing links to. Both are listed by hand now.
+  **THE CONSUMING HALF IS ONE FUNCTION.** `claimToken` spends a token with a
+  CONDITIONAL UPDATE rather than read-then-write, so a mail client that
+  prefetches a link and the person who then clicks it cannot both succeed —
+  which for a magic link is two sessions from one email. Asserted with three
+  concurrent claims and exactly one winner.
+  **⚠ `/magic` IS A ROUTE HANDLER, NOT A PAGE, AND THE FIRST VERSION WAS A
+  PAGE.** Signing somebody in writes a cookie, which Next.js refuses from a
+  Server Component — *"Cookies can only be modified in a Server Action or Route
+  Handler"*. The page rendered perfectly for every FAILING token, which is
+  exactly what a junk token in the sweep exercises, so the 500 lived only on the
+  success path and **went green in a 282-check sweep**. Opening a real emailed
+  link is what found it. The sweep now asserts a 307 there instead of a 200, for
+  the same reason.
+  **⚠ VERIFICATION CHECKS THE ADDRESS THE LINK WAS SENT TO**, not merely whose
+  row it names — a check that only became necessary last commit. A token minted
+  for an old address and clicked after the account moved would otherwise stamp
+  `emailVerifiedAt` onto an address nobody has proved anything about, laundering
+  an unverified address into a verified one.
+  **⚠ THE RESEND TAKES THE TOKEN, AND THE FIRST DRAFT TOOK A USER ID.** The page
+  had the id, so passing it looked natural — but a server action's arguments are
+  client input, and an action that emails whichever account it is handed is an
+  unauthenticated mailer aimed by the caller. The rate limit would have bounded
+  the volume and not the aim. An expired token is never consumed, so the row is
+  still there to be re-read as a receipt.
+  **`requestMagicLink` HAD NO RATE LIMIT**, which went unnoticed for as long as
+  the link it sent led nowhere. Building the route turned a dead endpoint into a
+  working mailer; it is limited like the reset now, keyed on what was typed.
+  **Walked in a production build, both of them:** asked for a real sign-in link
+  from the login page, read it out of the dev mailbox, opened it, landed on the
+  teacher home as Tom — then re-opened the same link and got *"That sign-in link
+  has already been used"* beside the password box that still works. Then took an
+  expired confirmation link, pressed "Send me a new link", opened what arrived,
+  and watched it confirm; a second visit says *"Already confirmed"* rather than
+  *"invalid"*, because it is usually the back button.
+  18 tests, 8 mutations, 8 caught.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1576,7 +1631,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 278 checks in
+**Every route referenced by the navigation renders.** All 285 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -2330,18 +2385,18 @@ next run rather than in a role audit six months later.
   change together. A school that teaches on Sunday, or closes on Saturday, gets
   a column it does not want and none it does — visibly rather than silently, but
   wrong all the same.
-- **⚠ Registration emails a confirmation link to a route that does not exist.**
-  `src/app/register/actions.ts` mints an `EMAIL_VERIFY` token and sends
-  `${APP_URL}/verify?token=…`. There is no `/verify` route and nothing anywhere
-  consumes an `EMAIL_VERIFY` token, so every school admin who has ever
-  registered got an email whose button leads to a 404, and their address has sat
-  unverified since. Found while building the email change, which is the first
-  thing in the app that sets `emailVerifiedAt` on a real change — the asymmetry
-  is what surfaced it. Not fixed here: it is a separate flow with its own
-  decisions to make (what an unverified admin should be blocked from, whether an
-  expired token can be reissued), and folding it into an unrelated commit would
-  bury both. The token, the TTL and the message all already exist; what is
-  missing is the route that consumes them.
+- ~~**Registration emails a confirmation link to a route that does not exist.**~~
+  **Fixed**, along with the identical bug in the magic-link login. See the entry
+  in the changelog above.
+- **⚠ `/record` throws on every signed-out visit, and the log fills up.**
+  `src/app/record/page.tsx:24` reads `(await getSession())!` and hands the result
+  to `myRecord`, which reads `session.user`. The redirect that protects the route
+  lives in its layout, so the RESPONSE is a correct 307 and the sweep is right to
+  assert one — but the page body still executes and throws a `TypeError` first.
+  Reproduced three times out of three with a stale session cookie. It is a
+  one-line change to redirect rather than assert; left alone because it is a
+  different defect from the email links it was found beside, and folding it in
+  would bury it.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
