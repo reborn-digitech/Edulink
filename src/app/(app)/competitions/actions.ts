@@ -10,6 +10,7 @@ import {
   giveConsent,
   recordResult,
   setCompetitionStatus,
+  setLeaderboard,
   submitEntry,
   withdrawEntry,
 } from "@/lib/competitions";
@@ -148,6 +149,9 @@ const createSchema = z
     requiresParentConsent: z
       .union([z.literal("on"), z.literal("true"), z.undefined(), z.literal("")])
       .transform((v) => v === "on" || v === "true"),
+    leaderboardEnabled: z
+      .union([z.literal("on"), z.literal("true"), z.undefined(), z.literal("")])
+      .transform((v) => v === "on" || v === "true"),
   })
   .refine((v) => !v.startsAt || !v.endsAt || v.startsAt <= v.endsAt, {
     message: "The end cannot be before the start.",
@@ -184,6 +188,36 @@ export async function createCompetitionAction(input: unknown): Promise<CreateCom
     const competitionId = await createCompetition(session, parsed.data);
     revalidatePath("/competitions");
     return { ok: true, competitionId };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: error.message };
+    throw error;
+  }
+}
+
+const leaderboardSchema = z.object({
+  id: z.string().cuid(),
+  enabled: z.boolean(),
+});
+
+/**
+ * The organiser publishes the cross-school board, or takes it down.
+ *
+ * `revalidatePath` on the detail route because the board is rendered there for
+ * every school — a cached page still showing standings after the organiser
+ * switched them off would keep publishing something they had withdrawn.
+ */
+export async function setLeaderboardAction(input: unknown): Promise<CompetitionActionState> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: "Not signed in." };
+
+  const parsed = leaderboardSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: "That is not a competition." };
+
+  try {
+    await setLeaderboard(session, parsed.data.id, parsed.data.enabled);
+    revalidatePath(`/competitions/${parsed.data.id}`);
+    revalidatePath("/competitions");
+    return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     throw error;

@@ -1270,6 +1270,84 @@ async function main() {
       `school B deleted ${deletedNeighbour} of school A's lessons — DELETE is authorised by USING alone`,
     );
 
+    /**
+     * THE CROSS-SCHOOL LEADERBOARD, which is the second place in this schema
+     * where one school reads another school's row — and the first where the
+     * question "what exactly crosses" had to be decided rather than inherited.
+     *
+     * These checks are the enforcement. The library returns an empty board when
+     * the flag is off, but that is belt and braces; what makes the claim true is
+     * that the POLICY refuses another school's standing for a competition whose
+     * organiser has not switched the leaderboard on, and refuses every
+     * `CompetitionEntry` — where the children are — under all conditions.
+     */
+    psql(
+      DB,
+      `INSERT INTO "Competition" (id,title,summary,"organizerName",status,"leaderboardEnabled","updatedAt") VALUES
+         ('verify-comp-open','Open board','x','Org','PUBLISHED',true,now()),
+         ('verify-comp-shut','Shut board','x','Org','PUBLISHED',false,now());
+       INSERT INTO "CompetitionStanding" (id,"competitionId","schoolId","schoolName",entrants,"bestRank","updatedAt") VALUES
+         ('verify-stand-open-a','verify-comp-open','verify-a','A',3,2,now()),
+         ('verify-stand-shut-a','verify-comp-shut','verify-a','A',3,1,now());
+       INSERT INTO "CompetitionEntry" (id,"competitionId","studentMembershipId","schoolId",status,rank,"updatedAt")
+         VALUES ('verify-entry-a','verify-comp-open','verify-m-pupil-a','verify-a','RESULTS',2,now());`,
+    );
+
+    const boardFromB = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { competitionStanding: { count: (a?: unknown) => Promise<number> } })
+        .competitionStanding.count({ where: { competitionId: "verify-comp-open" } }),
+    );
+    check(
+      "⚠ a school reads ANOTHER school's standing when the leaderboard is on",
+      boardFromB === 1,
+      "school B saw no standings — the leaderboard cannot work across schools at all",
+    );
+
+    const shutBoardFromB = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { competitionStanding: { count: (a?: unknown) => Promise<number> } })
+        .competitionStanding.count({ where: { competitionId: "verify-comp-shut" } }),
+    );
+    check(
+      "⚠ …and reads NOTHING when the organiser has not switched it on",
+      shutBoardFromB === 0,
+      `school B saw ${shutBoardFromB} standing(s) for a competition with the leaderboard off — the flag is not in the predicate`,
+    );
+
+    /**
+     * THE ONE THAT MATTERS. The whole design rests on entries never crossing:
+     * the standings carry a school, a count and a place, and the NAMES are in
+     * CompetitionEntry. If this ever returns a row, a leaderboard has become a
+     * list of other people's children.
+     */
+    const entriesFromB = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { competitionEntry: { count: (a?: unknown) => Promise<number> } })
+        .competitionEntry.count({ where: { competitionId: "verify-comp-open" } }),
+    );
+    check(
+      "⚠ …and NEVER another school's entries, which is where the children are",
+      entriesFromB === 0,
+      `school B read ${entriesFromB} of school A's competition entries — a leaderboard is now a list of other schools' children`,
+    );
+
+    let wroteStanding = 0;
+    try {
+      await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { competitionStanding: { update: (a: unknown) => Promise<unknown> } })
+          .competitionStanding.update({
+            where: { id: "verify-stand-open-a" },
+            data: { bestRank: 99 },
+          }),
+      );
+      wroteStanding = 1;
+    } catch {
+      wroteStanding = 0;
+    }
+    check(
+      "⚠ …and cannot edit another school's place on the board",
+      wroteStanding === 0,
+      "a school rewrote another school's standing — the global clause reached WITH CHECK",
+    );
+
     // LAST, because it deliberately poisons the connection: the mistake this
     // design exists to prevent, demonstrated rather than described — a plain
     // SET, outside a transaction, on a pooled connection. Anything added after

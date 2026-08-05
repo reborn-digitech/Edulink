@@ -65,42 +65,43 @@ model School {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  memberships      Membership[]
-  classes          Class[]
-  gradeCategories  GradeCategory[]
-  globalPostHides  GlobalPostHide[]
-  expertBookings   ExpertBooking[]
-  expertMessages   ExpertMessage[]
-  expertInvites    ExpertInvite[]
-  mentorThreads    MentorThread[]
-  mentorMessages   MentorMessage[]
-  invites          Invite[]
-  posts            Post[]
-  competitions     Competition[]
-  auditLogs        AuditLog[]
-  attendance       AttendanceSession[]
-  attendanceCovers AttendanceCover[]
-  timetablePeriods TimetablePeriod[]
-  timetableSlots   TimetableSlot[]
-  leaveRequests    LeaveRequest[]
-  reportCards      ReportCard[]
-  reportCardItems  ReportCardItem[]
-  assignments      Assignment[]
-  remarks          RemarkThread[]
-  reports          Report[]
-  classTeachers    ClassTeacher[]
-  enrollments      Enrollment[]
-  remarkMessages   RemarkMessage[]
-  comments         Comment[]
-  reactions        Reaction[]
-  academicYears    AcademicYear[]
-  holidays         Holiday[]
-  earnedBadges     EarnedBadge[]
-  quizAttempts     QuizAttempt[]
-  quizResponses    QuizResponse[]
-  quizMastery      QuizMastery[]
-  schoolRecords    SchoolRecord[]
-  operatorAccess   OperatorAccess[]
+  memberships          Membership[]
+  classes              Class[]
+  gradeCategories      GradeCategory[]
+  globalPostHides      GlobalPostHide[]
+  expertBookings       ExpertBooking[]
+  expertMessages       ExpertMessage[]
+  expertInvites        ExpertInvite[]
+  mentorThreads        MentorThread[]
+  mentorMessages       MentorMessage[]
+  invites              Invite[]
+  posts                Post[]
+  competitions         Competition[]
+  auditLogs            AuditLog[]
+  attendance           AttendanceSession[]
+  attendanceCovers     AttendanceCover[]
+  timetablePeriods     TimetablePeriod[]
+  competitionStandings CompetitionStanding[]
+  timetableSlots       TimetableSlot[]
+  leaveRequests        LeaveRequest[]
+  reportCards          ReportCard[]
+  reportCardItems      ReportCardItem[]
+  assignments          Assignment[]
+  remarks              RemarkThread[]
+  reports              Report[]
+  classTeachers        ClassTeacher[]
+  enrollments          Enrollment[]
+  remarkMessages       RemarkMessage[]
+  comments             Comment[]
+  reactions            Reaction[]
+  academicYears        AcademicYear[]
+  holidays             Holiday[]
+  earnedBadges         EarnedBadge[]
+  quizAttempts         QuizAttempt[]
+  quizResponses        QuizResponse[]
+  quizMastery          QuizMastery[]
+  schoolRecords        SchoolRecord[]
+  operatorAccess       OperatorAccess[]
 
   @@index([code])
 }
@@ -1069,10 +1070,75 @@ model Competition {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  organizerSchool School?            @relation(fields: [organizerSchoolId], references: [id], onDelete: SetNull)
+  organizerSchool School?               @relation(fields: [organizerSchoolId], references: [id], onDelete: SetNull)
   entries         CompetitionEntry[]
+  standings       CompetitionStanding[]
 
   @@index([status, registrationClosesAt])
+}
+
+/// How one SCHOOL is doing in a competition. The cross-school surface.
+///
+/// THE CHILDREN ARE NOT IN THIS TABLE, AND THAT IS THE ENTIRE DESIGN. A ranking
+/// across schools would otherwise be the first thing in this app to show one
+/// school another school's children — which the README named as a decision
+/// rather than a feature, and this is the decision: SCHOOLS ARE RANKED,
+/// CHILDREN ARE NOT. Riverside can see that Oakfield entered nine pupils and
+/// that their best place was third. It cannot learn one of their names, one of
+/// their scores, or which nine.
+///
+/// DENORMALISED RATHER THAN COMPUTED ACROSS THE BOUNDARY, for the same reason
+/// `Post.globalSchoolName` is: the rows an aggregate would have to read —
+/// `CompetitionEntry` — are school-scoped by policy, and widening THAT to make a
+/// leaderboard work would open every entrant's name and score to every school on
+/// the server to solve a display problem. Instead each school maintains its own
+/// one-row summary, recomputed from its own entries whenever a result is
+/// recorded, and only the summary crosses.
+///
+/// WRITTEN EVEN WHEN THE LEADERBOARD IS OFF. The row is not the disclosure; the
+/// POLICY is (see GLOBALLY_READABLE in scripts/gen-rls.ts, which opens it only
+/// for competitions whose organiser has switched the leaderboard on). Keeping it
+/// current regardless is what lets an organiser turn a leaderboard on in week
+/// three and see true standings, rather than an empty board until every school
+/// happens to re-enter a result.
+///
+/// `schoolName` is a SNAPSHOT, exactly like `Post.globalSchoolName` and for the
+/// same two reasons: School's own policy correctly hides the school row from
+/// other tenants, so a join renders "Unknown school" on the one page whose point
+/// is naming who did what; and a school that renames itself keeps the name it
+/// competed under.
+model CompetitionStanding {
+  id            String @id @default(cuid())
+  competitionId String
+  schoolId      String
+
+  /// The name this school competed under. Snapshot — see above.
+  schoolName String
+
+  /// How many of this school's entries have a recorded result.
+  ///
+  /// Context for the place, and it is needed: a school placing fourth with one
+  /// entrant and a school placing fourth with thirty have not done the same
+  /// thing. A count of children is not a child.
+  entrants Int @default(0)
+
+  /// The best individual place this school achieved. Null when nobody was
+  /// ranked — plenty of competitions score without placing.
+  bestRank Int?
+
+  /// The highest score any of this school's entries recorded, in thousandths.
+  /// Integers, like every other score in this schema.
+  bestScoreMilli Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  competition Competition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+  school      School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([competitionId, schoolId])
+  @@index([competitionId, bestRank])
+  @@index([schoolId])
 }
 
 model CompetitionEntry {

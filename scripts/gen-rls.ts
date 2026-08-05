@@ -308,6 +308,38 @@ const OPERATOR_LOG_TABLES = new Set(["OperatorAccess"]);
  */
 const GLOBALLY_READABLE: Record<string, string> = {
   Post: `"scope" = 'GLOBAL' AND "status" = 'APPROVED'`,
+  /**
+   * A SCHOOL'S standing in a competition whose organiser has switched the
+   * leaderboard on. The second row in this map, and the reasoning is the same
+   * shape as the first with one addition worth spelling out.
+   *
+   * WHAT CROSSES IS A SCHOOL, NOT A CHILD. `CompetitionStanding` holds a school
+   * name, a count, a best place and a best score, and no column that could name
+   * or identify a pupil — see the model. The alternative was to widen
+   * `CompetitionEntry`, which is where the names and the individual scores are,
+   * and that would have made a leaderboard the first feature in this app to
+   * show one school another school's children. That is a decision, it was made
+   * deliberately, and it was made the other way.
+   *
+   * THE FLAG IS IN THE PREDICATE, exactly as `status = 'APPROVED'` is for Post.
+   * `leaderboardEnabled` alone governs whether a standing leaves its school, so
+   * turning a leaderboard off closes the board in the DATABASE rather than in a
+   * page's `if`. Rows keep being maintained either way, which is what lets an
+   * organiser switch it on mid-competition and see the truth.
+   *
+   * THE SUBQUERY IS SAFE AND DEPENDS ON NOTHING. `Competition` carries no policy
+   * at all (it belongs to no school — see NO_SCHOOL_POLICY), so this cannot fail
+   * closed for the wrong reason and cannot recurse.
+   *
+   * READ ONLY, like every clause here: USING only, never WITH CHECK, so a school
+   * maintains its own standing row and can never write, edit or delete another
+   * school's.
+   */
+  CompetitionStanding: `EXISTS (
+           SELECT 1 FROM "Competition" c
+            WHERE c."id" = "CompetitionStanding"."competitionId"
+              AND c."leaderboardEnabled" = true
+         )`,
 };
 
 /**
@@ -491,10 +523,17 @@ function generate(): string {
     }
     if (globalClause) {
       usingNote.push(
-        `  -- …and any post its own school has APPROVED for the global feed, which`,
-        `  -- is the one row in this schema a different school may read. Status is`,
-        `  -- in the predicate so nothing reaches other schools before the school`,
-        `  -- that wrote it has approved it.`,
+        ...(table === "Post"
+          ? [
+              `  -- …and any post its own school has APPROVED for the global feed. The`,
+              `  -- status is in the predicate so nothing reaches other schools before`,
+              `  -- the school that wrote it has approved it.`,
+            ]
+          : [
+              `  -- …and one row of this table belonging to ANOTHER school, by the`,
+              `  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for`,
+              `  -- what that predicate opens and why it is safe to open it.`,
+            ]),
       );
     }
     if (memberClause) {

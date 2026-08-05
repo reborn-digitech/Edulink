@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { AccessError } from "@/lib/tenancy";
-import { getCompetition, pendingConsents } from "@/lib/competitions";
+import { getCompetition, pendingConsents, leaderboard, ordinal } from "@/lib/competitions";
 import { Card, CardBody } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,6 +50,11 @@ export default async function CompetitionPage({
   const waiting = (await pendingConsents(session)).filter(
     (w) => w.competitionId === competition.id,
   );
+
+  // Empty unless the organiser has switched the board on — and the policy on
+  // CompetitionStanding refuses other schools' rows regardless, so this is the
+  // second lock rather than the only one.
+  const board = await leaderboard(session, competition.id);
 
   const closes = when(competition.registrationClosesAt);
   const starts = when(competition.startsAt);
@@ -165,6 +170,7 @@ export default async function CompetitionPage({
               competitionId={competition.id}
               status={competition.status}
               entered={competition.enteredCount}
+              leaderboardEnabled={competition.leaderboardEnabled}
             />
           )}
 
@@ -231,6 +237,59 @@ export default async function CompetitionPage({
           <CardBody>
             <h2 className="mb-2 text-sm font-semibold">About</h2>
             <p className="whitespace-pre-wrap text-[0.9375rem] leading-relaxed">{competition.body}</p>
+          </CardBody>
+        </Card>
+      )}
+
+      {board.length > 0 && (
+        <Card>
+          <CardBody>
+            <h2 className="text-sm font-semibold">How the schools are doing</h2>
+            {/* Said on the page, not only in the code. A reader looking for
+                names should be told they are not here, and why. */}
+            <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
+              Schools are ranked, not children. No pupil from any school is named here
+              {/* The entries page is staff-only, so pointing a pupil at it sends
+                  them to a 404 to be told where their own name is. */}
+              {session.role === "ADMIN" || session.role === "TEACHER" ? (
+                <> — your own school&rsquo;s results, by name, are on your entries page.</>
+              ) : (
+                <>.</>
+              )}
+            </p>
+            <ol className="mt-3 divide-y divide-border">
+              {board.map((row, index) => (
+                <li
+                  key={row.schoolId}
+                  className={
+                    row.isOwnSchool
+                      ? "flex items-baseline gap-3 rounded-[--radius-sm] bg-accent-soft px-2 py-2.5"
+                      : "flex items-baseline gap-3 px-2 py-2.5"
+                  }
+                >
+                  <span className="w-6 shrink-0 text-sm font-semibold tabular-nums text-fg-muted">
+                    {index + 1}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-medium text-fg">
+                      {row.schoolName}
+                      {row.isOwnSchool && (
+                        <span className="ml-1.5 text-xs font-normal text-accent-strong">
+                          your school
+                        </span>
+                      )}
+                    </span>
+                    <span className="block text-xs text-fg-muted">
+                      {row.entrants} {row.entrants === 1 ? "result" : "results"}
+                      {row.bestRank !== null && <> · best place {ordinal(row.bestRank)}</>}
+                      {row.bestScoreMilli !== null && (
+                        <> · best score {(row.bestScoreMilli / 1000).toFixed(1)}</>
+                      )}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </CardBody>
         </Card>
       )}

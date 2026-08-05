@@ -55,6 +55,15 @@ const DIRECT = [
   "TimetableSlot",
   "Class",
   "ClassTeacher",
+  /**
+   * The cross-school leaderboard's one table. Carries `schoolId` and reaches its
+   * tenant the ordinary way; its policy additionally opens the row to OTHER
+   * schools when the organiser has switched the leaderboard on — see
+   * GLOBALLY_READABLE in scripts/gen-rls.ts. It is in this list because the
+   * question here is how it reaches its tenant, and the answer is the ordinary
+   * one. What it may NOT carry is a child: see the model.
+   */
+  "CompetitionStanding",
   "Comment",
   "EarnedBadge",
   "QuizAttempt",
@@ -140,7 +149,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(55);
+    ).toBe(56);
   });
 });
 

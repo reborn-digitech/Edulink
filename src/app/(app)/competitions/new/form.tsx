@@ -147,6 +147,15 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
         error={errors.requiresParentConsent}
         />
 
+      {/* Says exactly what crosses, because "leaderboard" on its own sounds
+          like a list of names and an admin should not have to guess. */}
+      <CheckboxField
+        name="leaderboardEnabled"
+        label="Show a leaderboard across schools"
+        description="Ranks the SCHOOLS taking part — how many results each has, their best place and best score. No child from any school is named, including yours. You can turn this on or off later."
+        error={errors.leaderboardEnabled}
+        />
+
       <div className="flex flex-wrap items-center gap-3 pt-1">
         <Button type="submit" icon={<TrophyIcon weight="bold" />} disabled={pending}>
           {pending ? "Saving…" : "Save as a draft"}

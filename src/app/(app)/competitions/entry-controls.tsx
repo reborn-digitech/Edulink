@@ -10,6 +10,7 @@ import {
   consentAction,
   enterAction,
   setStatusAction,
+  setLeaderboardAction,
   submitAction,
   withdrawAction,
 } from "./actions";
@@ -213,14 +214,34 @@ export function OrganiserControls({
   competitionId,
   status,
   entered,
+  leaderboardEnabled,
 }: {
   competitionId: string;
   status: string;
   entered: number;
+  leaderboardEnabled: boolean;
 }) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
+
+  function toggleBoard() {
+    startTransition(async () => {
+      const result = await setLeaderboardAction({ id: competitionId, enabled: !leaderboardEnabled });
+      if (!result.ok) {
+        toast({ tone: "danger", title: "That did not go through", description: result.error });
+        return;
+      }
+      toast({
+        tone: "ok",
+        title: leaderboardEnabled ? "Leaderboard taken down" : "Leaderboard published",
+        description: leaderboardEnabled
+          ? "Standings are kept, and only your school can see yours."
+          : "Schools are ranked. No child is named.",
+      });
+      router.refresh();
+    });
+  }
 
   function change(next: "PUBLISHED" | "ARCHIVED" | "DRAFT") {
     startTransition(async () => {
@@ -263,6 +284,33 @@ export function OrganiserControls({
           takes it off the list.
         </p>
       )}
+
+      {/* The cross-school board. Says what it ranks, every time it is offered —
+          an organiser deciding whether to publish one should not have to
+          remember that it is schools and not children. */}
+      <div className="rounded-[--radius-sm] border border-border p-3">
+        <p className="text-sm font-medium text-fg">
+          {leaderboardEnabled ? "The leaderboard is published" : "No leaderboard"}
+        </p>
+        <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
+          A leaderboard ranks the SCHOOLS taking part — results recorded, best place, best score. No
+          child from any school is named, including yours.
+        </p>
+        <Button
+          size="sm"
+          variant={leaderboardEnabled ? "ghost" : "secondary"}
+          className="mt-2"
+          disabled={pending}
+          onClick={toggleBoard}
+        >
+          {leaderboardEnabled ? "Take the leaderboard down" : "Publish a leaderboard"}
+        </Button>
+        {leaderboardEnabled && (
+          <p className="mt-1.5 text-xs text-fg-subtle">
+            Taking it down keeps every standing — it stops other schools seeing them.
+          </p>
+        )}
+      </div>
     </div>
   );
 }

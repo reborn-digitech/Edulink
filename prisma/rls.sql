@@ -342,10 +342,9 @@ CREATE POLICY "Post_tenant_isolation" ON "Post"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
-  -- …and any post its own school has APPROVED for the global feed, which
-  -- is the one row in this schema a different school may read. Status is
-  -- in the predicate so nothing reaches other schools before the school
-  -- that wrote it has approved it.
+  -- …and any post its own school has APPROVED for the global feed. The
+  -- status is in the predicate so nothing reaches other schools before
+  -- the school that wrote it has approved it.
   -- It is in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "Post_readable" ON "Post"
   FOR SELECT
@@ -379,6 +378,30 @@ DROP POLICY IF EXISTS "Report_readable" ON "Report";
 CREATE POLICY "Report_tenant_isolation" ON "Report"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- CompetitionStanding
+ALTER TABLE "CompetitionStanding" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "CompetitionStanding" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "CompetitionStanding_tenant_isolation" ON "CompetitionStanding";
+DROP POLICY IF EXISTS "CompetitionStanding_readable" ON "CompetitionStanding";
+CREATE POLICY "CompetitionStanding_tenant_isolation" ON "CompetitionStanding"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "CompetitionStanding_readable" ON "CompetitionStanding"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+           SELECT 1 FROM "Competition" c
+            WHERE c."id" = "CompetitionStanding"."competitionId"
+              AND c."leaderboardEnabled" = true
+         ))
+        );
 
 -- CompetitionEntry
 ALTER TABLE "CompetitionEntry" ENABLE ROW LEVEL SECURITY;

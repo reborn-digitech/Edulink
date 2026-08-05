@@ -355,6 +355,16 @@ export async function withdrawEntry(session: ActiveContext, entryId: string): Pr
 
   await db.competitionEntry.delete({ where: { id: entry.id } });
 
+  /**
+   * A WITHDRAWAL CAN CHANGE THE BOARD, and forgetting this is how a leaderboard
+   * ends up counting a child who is no longer in the competition — or, worse,
+   * keeps a school's best place that was won by an entry that no longer exists.
+   * Only matters when the entry actually had a result; `refreshStanding` is a
+   * recompute, so calling it when nothing changed is a no-op rather than a
+   * special case to get right here.
+   */
+  await refreshStanding(entry.schoolId, entry.competitionId);
+
   await audit({
     schoolId: entry.schoolId,
     actorUserId: session.user.id,
@@ -465,9 +475,13 @@ export type ScorableEntry = {
  *
  * That is the right default and it is why results are recorded by the child's
  * own school rather than by the organiser: a school records what its own pupils
- * scored, in its own competitions and in the national ones it sits. Anything
- * else is the cross-school question that leaderboards raise, and that is a
- * decision before it is code — see Not built in the README.
+ * scored, in its own competitions and in the national ones it sits.
+ *
+ * IT IS ALSO WHY THE LEADERBOARD RANKS SCHOOLS. This function is the only place
+ * a child's name and their score appear together, and it is school-scoped by
+ * policy. The cross-school board is built from `CompetitionStanding` — a school,
+ * a count, a place — precisely so that nothing here has to be widened to make it
+ * work. See the note above `refreshStanding`.
  */
 export async function listEntriesForResults(
   session: ActiveContext,
@@ -542,6 +556,17 @@ export async function recordResult(
     },
   });
 
+  /**
+   * The school's own summary, recomputed from its own entries.
+   *
+   * BEFORE the audit and the notifications rather than after, so that a failure
+   * to send a push cannot leave a recorded result missing from the board. It is
+   * also the reason CLEARING a result runs this too: a cleared score has to come
+   * off the school's standing, and the early `return` for `cleared` is below
+   * this line for exactly that reason.
+   */
+  await refreshStanding(entry.schoolId, entry.competitionId);
+
   await audit({
     schoolId: entry.schoolId,
     actorUserId: session.user.id,
@@ -603,6 +628,8 @@ export type CompetitionInput = {
   startsAt?: Date | null;
   endsAt?: Date | null;
   requiresParentConsent: boolean;
+  /** Publish a cross-school leaderboard. Schools are ranked, never children. */
+  leaderboardEnabled?: boolean;
 };
 
 /**
@@ -652,6 +679,7 @@ export async function createCompetition(
       startsAt: input.startsAt ?? null,
       endsAt: input.endsAt ?? null,
       requiresParentConsent: input.requiresParentConsent,
+      leaderboardEnabled: input.leaderboardEnabled ?? false,
       status: "DRAFT",
     },
   });
@@ -746,4 +774,206 @@ export async function pendingConsents(session: ActiveContext) {
       closesAt: r.competition.registrationClosesAt,
       childName: r.student.user.preferredName ?? r.student.user.name,
     }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* The cross-school leaderboard                                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * SCHOOLS ARE RANKED, CHILDREN ARE NOT.
+ *
+ * This is the decision the README deferred, made. A ranking across schools would
+ * otherwise be the first thing in this app to show one school another school's
+ * children, and every other cross-boundary feature here — the global feed, the
+ * leaving certificate, the expert marketplace — is narrow, deliberate and
+ * accountable. A leaderboard that named other people's eleven-year-olds and
+ * their marks would be none of those things, and no competition needs it: what a
+ * school wants to know is how IT did, and what a child wants to know is how they
+ * did, which their own school already tells them by name.
+ *
+ * So what crosses the boundary is a school-level summary — entrants with a
+ * result, best place, best score — held in `CompetitionStanding` and opened by a
+ * policy keyed on the organiser's `leaderboardEnabled` flag. `CompetitionEntry`,
+ * where the names and individual scores live, is not widened by one row.
+ *
+ * THE HONEST LIMIT, stated because it is real: a school that enters exactly one
+ * child and places first has told every other school the winner's school. It has
+ * not told them the winner's name, class, age or score-by-name, and a published
+ * competition result is a public thing. That is a different order of disclosure
+ * from a table of named children, which is the one being refused.
+ */
+
+export type StandingRow = {
+  schoolId: string;
+  schoolName: string;
+  entrants: number;
+  bestRank: number | null;
+  bestScoreMilli: number | null;
+  /** This is the reader's own school — the row they can also see by name. */
+  isOwnSchool: boolean;
+};
+
+/**
+ * Recomputes ONE school's standing in ONE competition, from its own entries.
+ *
+ * FROM SCRATCH EVERY TIME rather than adjusted incrementally, and that is worth
+ * a sentence: a running total has to be right after a clear, after a withdrawal,
+ * after a correction of a typo'd score, and after two of those racing. A
+ * recompute is right after all of them by construction, and the query it costs
+ * is one indexed read over a handful of rows.
+ *
+ * The read is scoped by the POLICY, not by a WHERE this function writes — so it
+ * cannot accidentally aggregate another school's entries even if called with the
+ * wrong school id. It writes the row for the school it just counted.
+ */
+export async function refreshStanding(
+  schoolId: string,
+  competitionId: string,
+): Promise<void> {
+  const scored = await db.competitionEntry.findMany({
+    where: {
+      competitionId,
+      schoolId,
+      // A result means a place, a score, or both. An entry that is merely
+      // registered is not a standing — counting it would let a school climb the
+      // board by entering people.
+      OR: [{ rank: { not: null } }, { scoreMilli: { not: null } }],
+    },
+    select: { rank: true, scoreMilli: true },
+  });
+
+  if (scored.length === 0) {
+    // Every result cleared or withdrawn: the school is off the board rather than
+    // sitting on it with a zero, which would read as having competed and lost.
+    await db.competitionStanding.deleteMany({ where: { competitionId, schoolId } });
+    return;
+  }
+
+  const ranks = scored.map((e) => e.rank).filter((r): r is number => r !== null);
+  const scores = scored.map((e) => e.scoreMilli).filter((s): s is number => s !== null);
+
+  const bestRank = ranks.length > 0 ? Math.min(...ranks) : null;
+  const bestScoreMilli = scores.length > 0 ? Math.max(...scores) : null;
+
+  const school = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { name: true },
+  });
+  // Falls back rather than throwing: a standing with a placeholder name is worth
+  // more than a recorded result that failed to save because a display string
+  // could not be read.
+  const schoolName = school?.name ?? "A school";
+
+  await db.competitionStanding.upsert({
+    where: { competitionId_schoolId: { competitionId, schoolId } },
+    create: {
+      competitionId,
+      schoolId,
+      schoolName,
+      entrants: scored.length,
+      bestRank,
+      bestScoreMilli,
+    },
+    update: {
+      // The name is refreshed too, so a school that renames itself appears under
+      // its current name in competitions it is still competing in.
+      schoolName,
+      entrants: scored.length,
+      bestRank,
+      bestScoreMilli,
+    },
+  });
+}
+
+/**
+ * The leaderboard, as any school may read it.
+ *
+ * Returns EMPTY when the organiser has not switched the leaderboard on. That is
+ * belt and braces rather than the real defence — the policy on
+ * `CompetitionStanding` already refuses other schools' rows for a competition
+ * whose flag is off, so this returning rows would take a policy change and not
+ * merely a mistake here.
+ *
+ * ORDERED BY BEST PLACE, then by best score, then by name. Schools with no place
+ * at all sort last rather than first, which is what `null` would do naturally in
+ * ascending order and is exactly wrong.
+ */
+export async function leaderboard(
+  session: ActiveContext,
+  competitionId: string,
+): Promise<StandingRow[]> {
+  const competition = await db.competition.findUnique({
+    where: { id: competitionId },
+    select: { leaderboardEnabled: true, status: true },
+  });
+  if (!competition?.leaderboardEnabled) return [];
+  // A draft competition's board is nobody's business but its organiser's, and
+  // they can see their own school's row on their own entries page.
+  if (competition.status === "DRAFT") return [];
+
+  const rows = await db.competitionStanding.findMany({
+    where: { competitionId },
+    select: {
+      schoolId: true,
+      schoolName: true,
+      entrants: true,
+      bestRank: true,
+      bestScoreMilli: true,
+    },
+    take: 500,
+  });
+
+  return rows
+    .map((row) => ({ ...row, isOwnSchool: row.schoolId === session.schoolId }))
+    .sort((a, b) => {
+      // Unranked last. `a.bestRank - b.bestRank` on nulls coerces to 0 and
+      // silently interleaves them among the medals.
+      if (a.bestRank !== b.bestRank) {
+        if (a.bestRank === null) return 1;
+        if (b.bestRank === null) return -1;
+        return a.bestRank - b.bestRank;
+      }
+      if (a.bestScoreMilli !== b.bestScoreMilli) {
+        if (a.bestScoreMilli === null) return 1;
+        if (b.bestScoreMilli === null) return -1;
+        return b.bestScoreMilli - a.bestScoreMilli;
+      }
+      return a.schoolName.localeCompare(b.schoolName);
+    });
+}
+
+/**
+ * The organiser switches the leaderboard on or off.
+ *
+ * Scoped by `organizerSchoolId`, like `setCompetitionStatus` — a school may only
+ * do this to a competition it actually organises, and an externally-organised
+ * one belongs to nobody and so belongs to no school's switch.
+ *
+ * NOTHING IS DELETED WHEN IT GOES OFF. The standings keep being maintained and
+ * simply stop being readable outside their own school, because that is what the
+ * policy is keyed on. An organiser who switches it off by mistake, or off for a
+ * week while results are checked, does not destroy the board.
+ */
+export async function setLeaderboard(
+  session: ActiveContext,
+  competitionId: string,
+  enabled: boolean,
+): Promise<void> {
+  if (session.role !== "ADMIN" || !session.schoolId) {
+    throw new AccessError("Only a school admin can do that");
+  }
+
+  const updated = await db.competition.updateMany({
+    where: { id: competitionId, organizerSchoolId: session.schoolId },
+    data: { leaderboardEnabled: enabled },
+  });
+  if (updated.count === 0) throw new AccessError("Competition not found", "NOT_FOUND");
+
+  await audit({
+    schoolId: session.schoolId,
+    actorUserId: session.user.id,
+    action: enabled ? "competition.leaderboard.on" : "competition.leaderboard.off",
+    meta: { competitionId },
+  });
 }

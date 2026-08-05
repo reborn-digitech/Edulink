@@ -1310,13 +1310,21 @@ navigation" means the actual list rather than one somebody maintained by hand.
   pretending it is closed**: a school controls what it publishes and what it
   shows, and nobody can take another school's post down for everyone. That is
   stated on the page itself, to admins, in those words.
-- Competition **leaderboards**, and cross-school results generally. Submissions
-  and scoring are built (see Status); `leaderboardEnabled` is still the one
-  column nothing writes. It is deliberately last: entries are school-scoped by
-  policy, so a school records its OWN pupils' results and cannot see anybody
-  else's. A ranking across schools would be the first thing in this app to show
-  one school another school's children — a decision, and a policy change, before
-  it is a page.
+- **Individual cross-school rankings.** The competition leaderboard is built and
+  ranks SCHOOLS — results recorded, best place, best score — and that is the
+  whole of what crosses. This entry used to say a cross-school ranking "would be
+  the first thing in this app to show one school another school's children — a
+  decision, and a policy change, before it is a page". The decision was made the
+  other way: `CompetitionStanding` carries a school, a count and a place and has
+  no column that could name a pupil, and `CompetitionEntry` — where the names and
+  individual scores are — was not widened by one row. A school named a child on
+  a national board would need a new table, a new policy and a new consent story,
+  and none of the three is built.
+
+  The honest limit: a school that enters exactly one child and places first has
+  told every other school the winner's school. Not their name, class, age or
+  which of their pupils it was — and a published competition result is a public
+  thing. That is a different order of disclosure from a table of named children.
 - **The Practice question BANK, at scale.** The engine is built and works end to
   end; the bank is **105 questions across 9 topics**, covering all six subjects
   and spread evenly over all six levels (L1–L5 have 18 each, L6 has 15). The ask
