@@ -9,6 +9,7 @@ import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
 import { ChildSwitcher } from "../child-switcher";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Timetable" };
 
@@ -30,6 +31,7 @@ export default async function ParentTimetablePage({
   searchParams: Promise<{ child?: string; week?: string }>;
 }) {
   const session = await requireParent();
+  const t = await getT();
   const params = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -65,7 +67,7 @@ export default async function ParentTimetablePage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Overview
+        {t("parent.overview")}
       </Link>
 
       {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/timetable" />}
@@ -77,7 +79,7 @@ export default async function ParentTimetablePage({
         <p className="mt-1 text-sm text-fg-muted">{student.school.name}</p>
       </div>
 
-      <nav aria-label="Week" className="flex flex-wrap items-center gap-2">
+      <nav aria-label={t("parent.week")} className="flex flex-wrap items-center gap-2">
         <Link
           href={link_(previous)}
           className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
@@ -89,7 +91,7 @@ export default async function ParentTimetablePage({
             href={link_(weekStartKey(today))}
             className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
           >
-            This week
+            {t("parent.thisWeek")}
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
@@ -99,27 +101,27 @@ export default async function ParentTimetablePage({
           href={link_(next)}
           className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
-          Next →
+          {t("parent.nextWeek")}
         </Link>
       </nav>
 
       {grid.periods.length === 0 ? (
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-          title="No timetable yet"
-          description={`${student.school.name} has not set its school day up. There is nothing to show until it does.`}
+          title={t("parent.noTimetableYet")}
+          description={t("parent.noSchoolDay", { school: student.school.name })}
         />
       ) : grid.slots.length === 0 ? (
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-          title="Nothing timetabled this week"
+          title={t("parent.nothingTimetabled")}
           description={`${childName}'s classes have no lessons on the timetable for this week.`}
         />
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? "This week" : `Week of ${formatDateKey(monday)}`}
-            description="If a teacher is away, whoever is covering shows in their place."
+            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday)}`}
+            description={t("parent.coverNote")}
           />
           <CardBody>
             <WeekGridView {...grid} showTeacher showClass={spansClasses} emptyLabel="Free" />

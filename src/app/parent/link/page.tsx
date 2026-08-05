@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { ClaimChildForm } from "./form";
 import { getSession, listContexts } from "@/lib/session";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Link to your child" };
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = { title: "Link to your child" };
  */
 export default async function ParentLinkPage() {
   const session = await getSession();
+  const t = await getT();
   if (!session) redirect("/join/parent");
 
   const { children } = await listContexts(session.user.id);
@@ -24,12 +26,12 @@ export default async function ParentLinkPage() {
     <div data-role="parent" className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-lg items-center justify-between px-4">
-          <Link href="/" aria-label="EduLink home">
+          <Link href="/" aria-label={t("shell.homeLink")}>
             <Wordmark size={26} />
           </Link>
           {children.length > 0 && (
             <Link href="/parent" className="text-sm font-medium text-accent-strong hover:underline">
-              Go to my dashboard
+              {t("parent.goToDashboard")}
             </Link>
           )}
         </div>
@@ -47,7 +49,7 @@ export default async function ParentLinkPage() {
         {children.length > 0 && (
           <div className="mt-6 rounded-[--radius-lg] border border-border bg-surface p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-              Already linked
+              {t("parent.alreadyLinked")}
             </p>
             <ul className="mt-2 space-y-1">
               {children.map((child) => (

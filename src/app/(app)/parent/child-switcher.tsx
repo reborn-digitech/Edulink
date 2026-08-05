@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Avatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 
 /**
  * Child selector for parents with more than one child.
@@ -26,8 +27,9 @@ export function ChildSwitcher({
   selectedId: string;
   basePath?: string;
 }) {
+  const t = useT();
   return (
-    <nav aria-label="Choose a child">
+    <nav aria-label={t("parent.chooseChild")}>
       <ul className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
         {children.map((child) => {
           const active = child.studentMembershipId === selectedId;

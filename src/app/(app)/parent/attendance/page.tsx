@@ -10,6 +10,7 @@ import { AttendanceBadge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Attendance" };
 
@@ -21,6 +22,7 @@ export default async function ParentAttendancePage({
   searchParams: Promise<{ child?: string }>;
 }) {
   const session = await requireParent();
+  const t = await getT();
   const { child: requested } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -50,7 +52,7 @@ export default async function ParentAttendancePage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Overview
+        {t("parent.overview")}
       </Link>
 
       {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/attendance" />}
@@ -66,7 +68,7 @@ export default async function ParentAttendancePage({
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
-          label="Overall"
+          label={t("parent.overall")}
           value={summary.percent === null ? "—" : `${summary.percent}%`}
           tone={
             summary.percent === null
@@ -106,7 +108,7 @@ export default async function ParentAttendancePage({
       <Card>
         <CardHeader
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          title="Day by day"
+          title={t("parent.dayByDay")}
           description={
             summary.total === 0
               ? "Nothing recorded yet"
@@ -117,8 +119,8 @@ export default async function ParentAttendancePage({
           {days.length === 0 ? (
             <EmptyState
               className="border-0 bg-transparent py-6"
-              title="No attendance recorded yet"
-              description="As soon as a teacher takes the register, every day will be listed here."
+              title={t("parent.noAttendanceYet")}
+              description={t("parent.attendanceLongEmpty")}
             />
           ) : (
             <ul className="divide-y divide-border">
@@ -143,7 +145,7 @@ export default async function ParentAttendancePage({
                         that are perfectly normal.
                       */
                       !isTeachingDay(day.dateKey) && (
-                        <p className="text-xs text-fg-subtle">Sunday session</p>
+                        <p className="text-xs text-fg-subtle">{t("parent.sundaySession")}</p>
                       )
                     )}
                   </div>

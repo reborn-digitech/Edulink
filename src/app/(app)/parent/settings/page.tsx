@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "@/app/account/appearance-form";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Settings" };
 
@@ -29,6 +30,7 @@ export const metadata: Metadata = { title: "Settings" };
  */
 export default async function ParentSettingsPage() {
   const session = await requireParent();
+  const t = await getT();
 
   const [user, contexts] = await Promise.all([
     db.user.findUniqueOrThrow({
@@ -44,16 +46,16 @@ export default async function ParentSettingsPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Settings</h1>
-        <p className="mt-1 text-sm text-fg-muted">How and when the school reaches you</p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("parent.settings")}</h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("parent.settingsBody")}</p>
       </div>
 
       {/* ---------- notifications ---------- */}
       <Card>
         <CardHeader
           icon={<BellIcon weight="duotone" className="size-5" />}
-          title="Notifications"
-          description="What you are told, and when"
+          title={t("parent.notifications")}
+          description={t("parent.whatYouAreTold")}
         />
         <CardBody className="space-y-4">
           <PushToggle />
@@ -65,13 +67,13 @@ export default async function ParentSettingsPage() {
       <Card>
         <CardHeader
           icon={<UsersIcon weight="duotone" className="size-5" />}
-          title="Who you hear about"
+          title={t("parent.whoYouHearAbout")}
           description={
             children.length === 1 ? "One child linked" : `${children.length} children linked`
           }
           action={
             <Button asChild size="sm" variant="secondary">
-              <Link href="/parent/link">Link another</Link>
+              <Link href="/parent/link">{t("parent.linkAnotherShort")}</Link>
             </Button>
           }
         />
@@ -92,7 +94,7 @@ export default async function ParentSettingsPage() {
                   </span>
                 </span>
                 <Badge tone="accent" size="sm">
-                  Linked
+                  {t("parent.linked")}
                 </Badge>
               </li>
             ))}
@@ -108,11 +110,11 @@ export default async function ParentSettingsPage() {
       <Card>
         <CardHeader
           icon={<GearIcon weight="duotone" className="size-5" />}
-          title="Your account"
-          description="Appearance, signed-in devices and signing out"
+          title={t("parent.yourAccount")}
+          description={t("parent.accountBody")}
           action={
             <Button asChild size="sm" variant="secondary">
-              <Link href="/account">Open</Link>
+              <Link href="/account">{t("parent.open")}</Link>
             </Button>
           }
         />

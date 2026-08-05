@@ -25,6 +25,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
+import { getT, getLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Your children" };
 
@@ -34,6 +35,8 @@ export default async function ParentDashboard({
   searchParams: Promise<{ child?: string }>;
 }) {
   const session = await requireParent();
+  const t = await getT();
+  const locale = await getLocale();
   const { child: requestedChild } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -131,7 +134,7 @@ export default async function ParentDashboard({
           </h1>
           <p className="text-sm text-fg-muted">
             {student.school.name}
-            {student.gradeLevel ? ` · Grade ${student.gradeLevel}` : ""}
+            {student.gradeLevel ? ` · ${t("parent.gradeLevel", { level: student.gradeLevel })}` : ""}
           </p>
         </div>
       </div>
@@ -141,8 +144,8 @@ export default async function ParentDashboard({
         <Card className="border-warn/40">
           <CardHeader
             icon={<TrophyIcon weight="duotone" className="size-5" />}
-            title="Waiting for you"
-            description="They cannot take part until you say yes."
+            title={t("parent.consentTitle")}
+            description={t("parent.consentBody")}
           />
           <CardBody className="space-y-3 pt-0">
             {awaitingConsent.map((item) => (
@@ -177,7 +180,7 @@ export default async function ParentDashboard({
             </span>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                Today · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
+                {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
               </p>
               {todayRecord ? (
                 <p className="mt-0.5 font-semibold text-fg">
@@ -188,7 +191,7 @@ export default async function ParentDashboard({
                 </p>
               ) : (
                 <p className="mt-0.5 font-semibold text-fg-muted">
-                  The register has not been taken yet
+                  {t("parent.notTakenYet")}
                 </p>
               )}
               {todayRecord?.note && (
@@ -203,7 +206,7 @@ export default async function ParentDashboard({
       {/* ---------------- at a glance ---------------- */}
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
-          label="Attendance"
+          label={t("parent.attendance")}
           value={attendance.percent === null ? "—" : `${attendance.percent}%`}
           tone={
             attendance.percent === null
@@ -215,21 +218,21 @@ export default async function ParentDashboard({
                   : "danger"
           }
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          hint={attendance.total === 0 ? "No records yet" : "Last 4 weeks"}
+          hint={attendance.total === 0 ? t("parent.noRecordsYet") : t("parent.lastFourWeeks")}
         />
         <StatTile
-          label="Average grade"
+          label={t("parent.averageGrade")}
           value={averagePercent === null ? "—" : `${averagePercent}%`}
           tone={averagePercent === null ? "neutral" : averagePercent >= 70 ? "ok" : "warn"}
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          hint={scored.length === 0 ? "Nothing graded yet" : `Across ${scored.length} pieces`}
+          hint={scored.length === 0 ? t("parent.nothingGradedYet") : t("parent.acrossPieces", { count: scored.length })}
         />
         <StatTile
-          label="Attendance streak"
+          label={t("parent.streak")}
           value={streak}
           tone={streak >= 5 ? "ok" : "neutral"}
           icon={<FireIcon weight="duotone" className="size-5" />}
-          hint={streak === 0 ? "Starts on the next day in" : `${streak} school day${streak === 1 ? "" : "s"} in a row`}
+          hint={streak === 0 ? t("parent.streakStart") : t("parent.streakDays", { count: streak })}
         />
       </div>
 
@@ -237,17 +240,17 @@ export default async function ParentDashboard({
       <Card>
         <CardHeader
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          title="Recent attendance"
+          title={t("parent.recentAttendance")}
           description={
             attendance.total === 0
-              ? "Nothing recorded yet"
+              ? t("parent.nothingRecordedYet")
               : `${attendance.counts.PRESENT} present · ${attendance.counts.LATE} late · ${attendance.counts.ABSENT} absent · ${attendance.counts.EXCUSED} excused`
           }
         />
         <CardBody>
           {attendance.recent.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              Once the register is taken, it will show up here the moment it happens.
+              {t("parent.attendanceEmpty")}
             </p>
           ) : (
             <ul className="divide-y divide-border">
@@ -255,7 +258,7 @@ export default async function ParentDashboard({
                 <li key={day.dateKey} className="flex items-center justify-between gap-3 py-2.5">
                   <span className="min-w-0">
                     <span className="block text-sm font-medium text-fg">
-                      {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" })}
+                      {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" }, locale)}
                     </span>
                     {day.note && (
                       <span className="block truncate text-xs text-fg-muted">{day.note}</span>
@@ -273,18 +276,18 @@ export default async function ParentDashboard({
       <Card>
         <CardHeader
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          title="Recent grades"
-          description={grades.length === 0 ? "Nothing graded yet" : "Newest first"}
+          title={t("parent.recentGrades")}
+          description={grades.length === 0 ? t("parent.nothingGradedYet") : t("parent.newestFirst")}
           action={
             <Button asChild size="sm" variant="secondary">
-              <Link href={`/reports/${selectedId}`}>Progress report</Link>
+              <Link href={`/reports/${selectedId}`}>{t("parent.progressReport")}</Link>
             </Button>
           }
         />
         <CardBody>
           {grades.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              Grades appear here as soon as a teacher returns work.
+              {t("parent.gradesEmpty")}
             </p>
           ) : (
             <ul className="divide-y divide-border">
@@ -299,7 +302,7 @@ export default async function ParentDashboard({
                         {grade.assignment.title}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {grade.assignment.category ?? "Work"} · {relativeTime(grade.gradedAt)}
+                        {grade.assignment.category ?? t("parent.work")} · {relativeTime(grade.gradedAt, undefined, locale)}
                       </span>
                       {grade.comment && (
                         <span className="mt-0.5 block truncate text-xs italic text-fg-muted">
@@ -330,13 +333,13 @@ export default async function ParentDashboard({
       <Card>
         <CardHeader
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          title="Coming up"
-          description="Work due soon"
+          title={t("parent.comingUp")}
+          description={t("parent.workDueSoon")}
         />
         <CardBody>
           {upcoming.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              Nothing due right now.
+              {t("parent.nothingDue")}
             </p>
           ) : (
             <ul className="divide-y divide-border">
@@ -349,7 +352,7 @@ export default async function ParentDashboard({
                     <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                   </span>
                   <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt) : "No due date"}
+                    {assignment.dueAt ? relativeTime(assignment.dueAt, undefined, locale) : t("parent.noDueDate")}
                   </span>
                 </li>
               ))}
@@ -362,11 +365,11 @@ export default async function ParentDashboard({
       <Card>
         <CardHeader
           icon={<ChatCircleDotsIcon weight="duotone" className="size-5" />}
-          title="Teacher messages"
-          description="Private conversations about your child"
+          title={t("parent.teacherMessages")}
+          description={t("parent.teacherMessagesBody")}
           action={
             <Button asChild size="sm" variant="ghost">
-              <Link href="/remarks">Open</Link>
+              <Link href="/remarks">{t("parent.open")}</Link>
             </Button>
           }
         />
@@ -374,8 +377,8 @@ export default async function ParentDashboard({
           {threads.length === 0 ? (
             <EmptyState
               className="border-0 bg-transparent py-6"
-              title="No messages yet"
-              description="If a teacher wants a quiet word, it will arrive here — and you can reply."
+              title={t("parent.noMessages")}
+              description={t("parent.noMessagesBody")}
             />
           ) : (
             <ul className="divide-y divide-border">
@@ -391,7 +394,7 @@ export default async function ParentDashboard({
                       {thread.subject}
                     </span>
                     <span className="block truncate text-xs text-fg-muted">
-                      {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt)}
+                      {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt, undefined, locale)}
                     </span>
                   </span>
                 </li>
@@ -403,7 +406,7 @@ export default async function ParentDashboard({
 
       <div className="flex justify-center pb-4">
         <Button asChild variant="secondary" icon={<PlusIcon weight="bold" />}>
-          <Link href="/parent/link">Link another child</Link>
+          <Link href="/parent/link">{t("parent.linkAnother")}</Link>
         </Button>
       </div>
     </div>

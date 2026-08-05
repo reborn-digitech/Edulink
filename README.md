@@ -178,6 +178,7 @@ applies here: you cannot revoke the only one.
 | `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
+| `npm run i18n` | What is still hardcoded English, per file. `-- <path>` for one file |
 | `npx tsx scripts/fix-mentoring-links.ts` | One-off repair for notifications pointing at routes that never existed. Reports; add `--write` to fix |
 | `node scripts/gen-icons.mjs` | Regenerate the PWA icon set |
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
@@ -1791,6 +1792,40 @@ One line each, with the default rejected.
   teacher check turns the sweep red. Restoring the booking bug turns four checks
   red.
 
+- **The guardian's whole surface, in all three languages — and a counter that
+  makes the rest finishable.** Eight files and 66 strings: the dashboard,
+  grades, attendance, the timetable, settings, the child switcher and the
+  claim form. `npm run i18n` reports what is left, per file, and `-- <path>`
+  dumps one file's strings.
+  **THE COUNTER CAME FIRST ON PURPOSE.** "Translate the rest of the app" is 200
+  files; by eye it is impossible to say whether it is a third or nine tenths
+  done, to prove a file is finished, or to notice the next English string
+  somebody adds.
+  **⚠ AND THE FIRST TWO VERSIONS OF THE COUNTER BOTH LIED, each caught by a
+  screenshot rather than by the tool.**
+  *Dates.* `formatDateKey` and `relativeTime` both take a locale and both
+  DEFAULT to `"en"`, and **every one of ~70 call sites omitted it** — so a fully
+  translated Hindi page still read *WEDNESDAY, AUGUST 5* and *3 days ago* in the
+  middle of a Hindi sentence. None of that is a hardcoded string, so the counter
+  called the page finished. It counts them separately now.
+  *Lookup tables.* The counter only opened `.tsx`. The guardian's attendance
+  page reported CLEAR while still showing *Late*, *Absent*, *Arrived after the
+  bell* — those live in `ATTENDANCE_META`, a plain object in `constants.ts`, and
+  the same shape hides in `badges.ts`, `holidays.ts`, `onboarding.ts`,
+  `quiz.ts` and `school-day.ts`. Reading `src/lib` too moved the honest total
+  from 1,193 to **1,617**. The same shape bit the claim form's relation
+  dropdown, which is now keyed.
+  **A counter that only looks where you expect the problem reports the problem
+  solved.** The number it prints is a floor.
+  **THE TYPE SYSTEM DID ITS JOB TWICE**: a key added to `en.ts` and missing from
+  `hi.ts`/`mr.ts` failed the build, and so did every `t("parent.…")` written
+  before the namespace existed.
+  **Walked in a production build in हिन्दी and मराठी**, which is how both
+  counter bugs were found.
+  **⚠ WRITTEN BY ME, NOT A NATIVE SPEAKER** — the same caveat the existing 212
+  keys carry, now over 300. A teacher who speaks these every day should read
+  them before a real school does.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1908,9 +1943,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   per user from Settings, stored in the same `prefs.locale` that already drove
   Practice — one field, one switch, so a Marathi app can never serve Hindi
   questions. **Coverage is partial and the app says so**: the shell, all
-  navigation, role labels, the account page and login are translated; every other
-  page is still English. The switcher itself carries that sentence, so nobody
-  meets an English page and wonders whether it is broken.
+  navigation, role labels, the account page, login and **the whole guardian
+  surface** are translated; every other page is still English. The switcher
+  itself carries that sentence, so nobody meets an English page and wonders
+  whether it is broken. `npm run i18n` prints exactly what is left — **201 files
+  and 1,617 strings**, plus ~70 date calls that still render in English whatever
+  the reader's language — and that total is a floor rather than a certainty.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
 - SSO (Google/Microsoft/Apple)

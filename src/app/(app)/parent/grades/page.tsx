@@ -12,6 +12,7 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Grades" };
 
@@ -21,6 +22,7 @@ export default async function ParentGradesPage({
   searchParams: Promise<{ child?: string }>;
 }) {
   const session = await requireParent();
+  const t = await getT();
   const { child: requested } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -104,7 +106,7 @@ export default async function ParentGradesPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Overview
+        {t("parent.overview")}
       </Link>
 
       {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/grades" />}
@@ -120,8 +122,8 @@ export default async function ParentGradesPage({
         <Card>
           <CardHeader
             icon={<CertificateIcon weight="duotone" className="size-5" />}
-            title="Report cards"
-            description={`Issued by ${childName}'s class teacher`}
+            title={t("parent.reportCards")}
+            description={t("parent.issuedBy", { name: childName })}
           />
           <CardBody>
             <ul className="space-y-1.5">
@@ -156,7 +158,7 @@ export default async function ParentGradesPage({
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
-          label="Overall"
+          label={t("parent.overall")}
           value={overall === null ? "—" : `${overall}%`}
           tone={overall === null ? "neutral" : overall >= 70 ? "ok" : overall >= 50 ? "warn" : "danger"}
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
@@ -167,12 +169,12 @@ export default async function ParentGradesPage({
           }
         />
         <StatTile
-          label="Pieces graded"
+          label={t("parent.piecesGraded")}
           value={grades.length}
           hint={grades.length === 0 ? "None yet" : "Returned by a teacher"}
         />
         <StatTile
-          label="Subjects"
+          label={t("parent.subjects")}
           value={categories.size}
           hint={categories.size === 0 ? "None yet" : "With graded work"}
         />
@@ -180,7 +182,7 @@ export default async function ParentGradesPage({
 
       {categories.size > 1 && (
         <Card>
-          <CardHeader title="By category" description="Where the marks are coming from" />
+          <CardHeader title={t("parent.byCategory")} description={t("parent.whereMarksCome")} />
           <CardBody>
             <ul className="space-y-3">
               {[...categories.entries()].map(([name, stats]) => {
@@ -214,15 +216,15 @@ export default async function ParentGradesPage({
       <Card>
         <CardHeader
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          title="Every piece of work"
+          title={t("parent.everyPiece")}
           description={grades.length === 0 ? "Nothing graded yet" : "Newest first"}
         />
         <CardBody>
           {grades.length === 0 ? (
             <EmptyState
               className="border-0 bg-transparent py-6"
-              title="No grades yet"
-              description="As soon as a teacher returns a piece of work, it will appear here with any comment they left."
+              title={t("parent.noGradesYet")}
+              description={t("parent.gradesLongEmpty")}
             />
           ) : (
             <ul className="divide-y divide-border">

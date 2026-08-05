@@ -9,12 +9,19 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { claimChild } from "@/app/join/actions";
 import { GUARDIAN_RELATIONS } from "@/lib/constants";
+import { useT } from "@/lib/i18n";
 
-const RELATION_LABELS: Record<string, string> = {
-  PARENT: "Parent",
-  GUARDIAN: "Guardian",
-  OTHER: "Other family member",
-};
+/**
+ * ⚠ NOT CAUGHT BY `npm run i18n`, and worth saying so where somebody will read
+ * it. The audit reads JSX text and reader-facing props; these are values in a
+ * lookup table, so they were invisible to it and would have stayed English
+ * inside an otherwise Marathi form. Keys, resolved at render.
+ */
+const RELATION_KEYS = {
+  PARENT: "parent.relationParent",
+  GUARDIAN: "parent.relationGuardian",
+  OTHER: "parent.relationOther",
+} as const;
 
 export function ClaimChildForm({
   className,
@@ -23,6 +30,7 @@ export function ClaimChildForm({
   className?: string;
   hasChildren: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -88,10 +96,10 @@ export function ClaimChildForm({
               setBirthdate("");
             }}
           >
-            Link another child
+            {t("parent.linkAnother")}
           </Button>
           <Button block onClick={() => router.push("/parent")} iconRight={<ArrowRightIcon weight="bold" />}>
-            See their dashboard
+            {t("parent.seeDashboard")}
           </Button>
         </div>
       </div>
@@ -110,7 +118,7 @@ export function ClaimChildForm({
       )}
 
       <TextField
-        label="Student code"
+        label={t("parent.studentCode")}
         required
         autoFocus
         autoComplete="off"
@@ -120,26 +128,26 @@ export function ClaimChildForm({
         error={errors.studentCode}
         onChange={(e) => setStudentCode(formatCode(e.target.value))}
         className="[&_input]:font-mono [&_input]:text-lg [&_input]:tracking-widest"
-        hint="On the letter from school, or in your child's profile."
+        hint={t("parent.codeHint")}
       />
 
       <DateField
-        label="Their date of birth"
+        label={t("parent.dateOfBirth")}
         required
         value={birthdate}
         error={errors.birthdate}
         onChange={(e) => setBirthdate(e.target.value)}
-        hint="We ask for this so a code alone is never enough to see a child's data."
+        hint={t("parent.dobHint")}
       />
 
       <SelectField
-        label="You are their…"
+        label={t("parent.youAreTheir")}
         value={relation}
         onChange={(e) => setRelation(e.target.value)}
       >
         {GUARDIAN_RELATIONS.map((r) => (
           <option key={r} value={r}>
-            {RELATION_LABELS[r]}
+            {t(RELATION_KEYS[r as keyof typeof RELATION_KEYS])}
           </option>
         ))}
       </SelectField>
