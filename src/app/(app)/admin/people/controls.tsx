@@ -83,8 +83,8 @@ export function DirectoryControls({
           type="search"
           value={text}
           onChange={(e) => onType(e.target.value)}
-          placeholder="Search by name or email…"
-          aria-label="Search the directory"
+          placeholder={t("people.searchPlaceholder")}
+          aria-label={t("people.searchLabel")}
           className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-11 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         {pending && (
@@ -99,7 +99,7 @@ export function DirectoryControls({
               setText("");
               navigate({ q: "" });
             }}
-            aria-label="Clear search"
+            aria-label={t("people.clearSearch")}
             className="absolute right-2 top-1/2 grid size-9 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
           >
             <XIcon weight="bold" className="size-4" />
@@ -115,14 +115,14 @@ export function DirectoryControls({
       {(suspendedCount > 0 || leftCount > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           <FilterChip active={status === "ACTIVE"} onClick={() => navigate({ status: "" })}>
-            In the school
+            {t("people.inTheSchool")}
           </FilterChip>
           {suspendedCount > 0 && (
             <FilterChip
               active={status === "SUSPENDED"}
               onClick={() => navigate({ status: "SUSPENDED" })}
             >
-              Paused ({suspendedCount})
+              {t("people.pausedCount", { count: suspendedCount })}
             </FilterChip>
           )}
           {/* A THIRD TAB, NOT A SECOND MEANING FOR "PAUSED". A school in
@@ -130,7 +130,7 @@ export function DirectoryControls({
               and one list holding both cannot answer it. */}
           {leftCount > 0 && (
             <FilterChip active={status === "LEFT"} onClick={() => navigate({ status: "LEFT" })}>
-              Left ({leftCount})
+              {t("people.leftCount", { count: leftCount })}
             </FilterChip>
           )}
         </div>
@@ -138,7 +138,7 @@ export function DirectoryControls({
 
       <div className="flex flex-wrap items-center gap-2">
         <FilterChip active={!role} onClick={() => navigate({ role: "" })}>
-          Everyone
+          {t("people.everyone")}
         </FilterChip>
         {SCHOOL_ROLES.map((r) => (
           <FilterChip key={r} active={role === r} onClick={() => navigate({ role: r })}>
@@ -150,10 +150,10 @@ export function DirectoryControls({
           <select
             value={classId}
             onChange={(e) => navigate({ classId: e.target.value })}
-            aria-label="Filter by class"
+            aria-label={t("people.filterByClass")}
             className="ml-auto min-h-10 rounded-full border border-border bg-surface px-3.5 text-sm text-fg outline-none focus:border-accent"
           >
-            <option value="">All classes</option>
+            <option value="">{t("people.allClasses")}</option>
             {classes.map((klass) => (
               <option key={klass.id} value={klass.id}>
                 {klass.name}
@@ -165,11 +165,11 @@ export function DirectoryControls({
         <select
           value={sort}
           onChange={(e) => navigate({ sort: e.target.value })}
-          aria-label="Sort by"
+          aria-label={t("people.sortBy")}
           className="min-h-10 rounded-full border border-border bg-surface px-3.5 text-sm text-fg outline-none focus:border-accent"
         >
-          <option value="name">Sort: name</option>
-          <option value="recent">Sort: recently joined</option>
+          <option value="name">{t("people.sortName")}</option>
+          <option value="recent">{t("people.sortRecent")}</option>
         </select>
       </div>
     </div>

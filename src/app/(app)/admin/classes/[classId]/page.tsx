@@ -37,6 +37,7 @@ export default async function ClassStaffingPage({
 }: {
   params: Promise<{ classId: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const { classId } = await params;
 
@@ -94,7 +95,7 @@ export default async function ClassStaffingPage({
     listCohort(ctx, classId),
   ]);
 
-  const title = [klass.name, klass.section ? `Section ${klass.section}` : null]
+  const title = [klass.name, klass.section ? t("classes.section", { section: klass.section }) : null]
     .filter(Boolean)
     .join(" · ");
 
@@ -105,20 +106,23 @@ export default async function ClassStaffingPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All classes
+        {t("classes.allClasses")}
       </Link>
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{title}</h1>
         <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-fg-muted">
-          {klass.gradeLevel ? <span>Grade {klass.gradeLevel}</span> : null}
+          {klass.gradeLevel ? <span>{t("classes.grade", { grade: klass.gradeLevel })}</span> : null}
           {klass.subject ? <span>· {klass.subject}</span> : null}
           <span>
-            · {klass._count.enrollments} student{klass._count.enrollments === 1 ? "" : "s"}
+            ·{" "}
+            {klass._count.enrollments === 1
+              ? t("classes.studentsOne")
+              : t("classes.studentsMany", { count: klass._count.enrollments })}
           </span>
           {klass.archivedAt && (
             <Badge tone="neutral" size="sm">
-              archived
+              {t("classes.archived")}
             </Badge>
           )}
         </p>
@@ -127,8 +131,8 @@ export default async function ClassStaffingPage({
       <Card>
         <CardHeader
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
-          title="Who marks this register"
-          description="Class teachers, and cover when somebody is away"
+          title={t("classes.whoMarks")}
+          description={t("classes.whoMarksBody")}
         />
         <CardBody>
           <Staffing
@@ -172,10 +176,8 @@ export default async function ClassStaffingPage({
             <CertificateIcon weight="duotone" className="size-6" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">Report cards</span>
-            <span className="block text-xs text-fg-muted">
-              Normally the class teacher&rsquo;s job. You can do it if nobody else can.
-            </span>
+            <span className="block font-semibold text-fg">{t("classes.reportCards")}</span>
+            <span className="block text-xs text-fg-muted">{t("classes.reportCardsBody")}</span>
           </span>
           <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
         </Link>
@@ -184,8 +186,8 @@ export default async function ClassStaffingPage({
       <Card>
         <CardHeader
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-          title="Who is in this class"
-          description={`${cohort.length} on the roll`}
+          title={t("classes.whoIsIn")}
+          description={t("classes.onTheRoll", { count: cohort.length })}
         />
         <CardBody>
           <CohortPanel

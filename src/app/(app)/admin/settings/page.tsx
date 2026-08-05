@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SettingsPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
 
   const school = await db.school.findUniqueOrThrow({
@@ -39,21 +40,21 @@ export default async function SettingsPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">School settings</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("settings.title")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          School code{" "}
+          {t("settings.codePrefix")}{" "}
           <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
             {school.code}
           </code>{" "}
-          — this cannot be changed.
+          {t("settings.codeSuffix")}
         </p>
       </div>
 
       <Card>
         <CardHeader
           icon={<PaletteIcon weight="duotone" className="size-5" />}
-          title="Logo"
-          description="Families recognise your school before they read the name"
+          title={t("settings.logo")}
+          description={t("settings.logoBody")}
         />
         <CardBody>
           <LogoPicker schoolName={school.name} logoPath={school.logoPath} />
@@ -63,8 +64,8 @@ export default async function SettingsPage() {
       <Card>
         <CardHeader
           icon={<BuildingsIcon weight="duotone" className="size-5" />}
-          title="Details"
-          description="Used on invitations and in the directory"
+          title={t("settings.details")}
+          description={t("settings.detailsBody")}
         />
         <CardBody>
           <DetailsForm school={school} />

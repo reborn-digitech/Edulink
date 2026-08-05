@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { removePerson } from "./actions";
 import type { RemovalBlocker } from "@/lib/membership";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 /**
  * Removing a pupil who was added by mistake.
@@ -37,6 +39,7 @@ export function RemoveActions({
   membershipId: string;
   name: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -52,29 +55,25 @@ export function RemoveActions({
         icon={<TrashIcon weight="bold" />}
         onClick={() => setOpen(true)}
       >
-        <span className="sr-only">Remove {name} from this school</span>
-        <span aria-hidden="true">Remove</span>
+        <span className="sr-only">{t("people.removeFrom", { name })}</span>
+        <span aria-hidden="true">{t("people.remove")}</span>
       </Button>
     );
   }
 
   return (
     <div className="w-full rounded-[--radius-md] border border-danger/30 bg-danger-soft p-3">
-      <p className="text-sm font-semibold text-fg">Remove {name} from this school?</p>
+      <p className="text-sm font-semibold text-fg">{t("people.removeTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-        For somebody added by mistake — a duplicate, a typo, the wrong school. Their row here and
-        their place on every class roll are <strong className="text-fg">deleted</strong>, and this
-        cannot be undone.
+        {t("people.removeBodyPrefix")}{" "}
+        <strong className="text-fg">{t("people.removeBodyDeleted")}</strong>
+        {t("people.removeBodySuffix")}
       </p>
       <p className="mt-2 text-xs leading-relaxed text-fg-muted">
-        <strong className="text-fg">Changed school instead?</strong> Use <em>Left</em>. That keeps
-        everything and gives the family a school record to hand to their next school — this does
-        neither.
+        <strong className="text-fg">{t("people.changedSchoolInstead")}</strong>{" "}
+        {t("people.changedSchoolUse")} <em>{t("people.left")}</em>. {t("people.changedSchoolBody")}
       </p>
-      <p className="mt-2 text-xs leading-relaxed text-fg-muted">
-        Their EduLink account is not touched. They may be a pupil somewhere else, or somebody&rsquo;s
-        parent.
-      </p>
+      <p className="mt-2 text-xs leading-relaxed text-fg-muted">{t("people.accountUntouched")}</p>
 
       {error && (
         <div role="alert" className="mt-3 rounded-[--radius-sm] bg-surface p-2.5">
@@ -82,20 +81,31 @@ export function RemoveActions({
           {blockers && (
             <ul className="mt-1.5 space-y-0.5 text-xs text-fg-muted">
               {blockers.attendance > 0 && (
-                <li>{blockers.attendance} day{blockers.attendance === 1 ? "" : "s"} on a register</li>
+                <li>
+                  {blockers.attendance === 1
+                    ? t("people.blockerAttendanceOne")
+                    : t("people.blockerAttendanceMany", { count: blockers.attendance })}
+                </li>
               )}
               {blockers.marks > 0 && (
-                <li>{blockers.marks} mark{blockers.marks === 1 ? "" : "s"}</li>
+                <li>
+                  {blockers.marks === 1
+                    ? t("people.blockerMarksOne")
+                    : t("people.blockerMarksMany", { count: blockers.marks })}
+                </li>
               )}
               {blockers.submissions > 0 && (
                 <li>
-                  {blockers.submissions} piece{blockers.submissions === 1 ? "" : "s"} of work handed
-                  in
+                  {blockers.submissions === 1
+                    ? t("people.blockerWorkOne")
+                    : t("people.blockerWorkMany", { count: blockers.submissions })}
                 </li>
               )}
               {blockers.reportCards > 0 && (
                 <li>
-                  {blockers.reportCards} report card{blockers.reportCards === 1 ? "" : "s"}
+                  {blockers.reportCards === 1
+                    ? t("people.blockerCardsOne")
+                    : t("people.blockerCardsMany", { count: blockers.reportCards })}
                 </li>
               )}
             </ul>
@@ -114,21 +124,21 @@ export function RemoveActions({
             startTransition(async () => {
               const result = await removePerson(membershipId);
               if (!result.ok) {
-                setError(result.error ?? "That did not work.");
+                setError(actionError(t, result, "people.didNotWork"));
                 setBlockers(result.blockers ?? null);
                 return;
               }
               setOpen(false);
               toast({
                 tone: "ok",
-                title: `${name} has been removed`,
-                description: "Their account is untouched — only this school's row is gone.",
+                title: t("people.removed", { name }),
+                description: t("people.removedBody"),
               });
               router.refresh();
             });
           }}
         >
-          Remove them
+          {t("people.removeThem")}
         </Button>
         <Button
           size="sm"
@@ -139,7 +149,7 @@ export function RemoveActions({
             setBlockers(null);
           }}
         >
-          Cancel
+          {t("common.cancel")}
         </Button>
       </div>
     </div>

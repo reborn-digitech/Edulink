@@ -6,6 +6,8 @@ import { ArrowsClockwiseIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { resendInvite, revokeInvite } from "./actions";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 export function InviteRowActions({
   inviteId,
@@ -16,6 +18,7 @@ export function InviteRowActions({
   label: string;
   canResend: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -26,8 +29,8 @@ export function InviteRowActions({
         <Button
           size="icon-sm"
           variant="ghost"
-          aria-label={`Resend invitation to ${label}`}
-          title="Resend"
+          aria-label={t("invites.resendTo", { name: label })}
+          title={t("invites.resend")}
           disabled={pending}
           onClick={() =>
             startTransition(async () => {
@@ -36,10 +39,14 @@ export function InviteRowActions({
                 result.ok
                   ? {
                       tone: "ok",
-                      title: "Invitation resent",
-                      description: "The previous link no longer works.",
+                      title: t("invites.resent"),
+                      description: t("invites.previousLinkDead"),
                     }
-                  : { tone: "danger", title: "Could not resend", description: result.error },
+                  : {
+                      tone: "danger",
+                      title: t("invites.couldNotResend"),
+                      description: actionError(t, result),
+                    },
               );
               router.refresh();
             })
@@ -52,8 +59,8 @@ export function InviteRowActions({
       <Button
         size="icon-sm"
         variant="ghost"
-        aria-label={`Withdraw invitation for ${label}`}
-        title="Withdraw"
+        aria-label={t("invites.withdrawFor", { name: label })}
+        title={t("invites.withdraw")}
         disabled={pending}
         className="text-danger hover:bg-danger-soft"
         onClick={() =>
@@ -63,10 +70,14 @@ export function InviteRowActions({
               result.ok
                 ? {
                     tone: "neutral",
-                    title: "Invitation withdrawn",
-                    description: `${label} can no longer use their link.`,
+                    title: t("invites.withdrawnToast"),
+                    description: t("invites.linkNoLongerWorks", { name: label }),
                   }
-                : { tone: "danger", title: "Could not withdraw", description: result.error },
+                : {
+                    tone: "danger",
+                    title: t("invites.couldNotWithdraw"),
+                    description: actionError(t, result),
+                  },
             );
             router.refresh();
           })

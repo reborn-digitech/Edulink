@@ -12,6 +12,7 @@ import { accessHistory } from "@/lib/superuser";
 import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
 import { getLocale, getT } from "@/lib/i18n/server";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -19,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const TABS = [
-  { id: "open", label: "To deal with" },
-  { id: "closed", label: "Resolved" },
-  { id: "audit", label: "Audit log" },
-] as const;
+  { id: "open", labelKey: "safety.tabOpen" },
+  { id: "closed", labelKey: "safety.tabClosed" },
+  { id: "audit", labelKey: "safety.tabAudit" },
+] as const satisfies readonly { id: string; labelKey: TranslationKey }[];
 
 export default async function SafetyPage({
   searchParams,
@@ -30,6 +31,7 @@ export default async function SafetyPage({
   searchParams: Promise<{ tab?: string }>;
 }) {
   const locale = await getLocale();
+  const tr = await getT();
   await requireRole("ADMIN");
   const session = (await getSession())!;
   const { tab } = await searchParams;
@@ -63,11 +65,13 @@ export default async function SafetyPage({
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Safety centre</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{tr("safety.title")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {openCount === 0
-            ? "Nothing needs your attention"
-            : `${openCount} ${openCount === 1 ? "thing" : "things"} to deal with`}
+            ? tr("safety.nothingNeeded")
+            : openCount === 1
+              ? tr("safety.toDealWithOne")
+              : tr("safety.toDealWithMany", { count: openCount })}
         </p>
       </div>
 
@@ -75,8 +79,8 @@ export default async function SafetyPage({
         <Card className="border-warn/40">
           <CardHeader
             icon={<BuildingsIcon weight="duotone" className="size-5 text-warn" />}
-            title="When the EduLink team opened your school"
-            description="They cannot see inside without opening it, and cannot open it without saying why."
+            title={tr("safety.operatorTitle")}
+            description={tr("safety.operatorBody")}
           />
           <CardBody>
             <ul className="space-y-2">
@@ -86,7 +90,7 @@ export default async function SafetyPage({
                     {visit.operatorName}
                     {visit.live && (
                       <Badge tone="warn" size="sm">
-                        In your school now
+                        {tr("safety.operatorLive")}
                       </Badge>
                     )}
                   </p>
@@ -97,16 +101,14 @@ export default async function SafetyPage({
               ))}
             </ul>
             <p className="mt-3 text-xs leading-relaxed text-fg-muted">
-              Anything they did while they were in is in the trail below, marked{" "}
-              <span className="font-mono">operator.</span> They cannot read private messages
-              between your staff and families, and cannot change a mark, a register or a report
-              card.
+              {tr("safety.operatorFootPrefix")} <span className="font-mono">operator.</span>{" "}
+              {tr("safety.operatorFootSuffix")}
             </p>
           </CardBody>
         </Card>
       )}
 
-      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Section">
+      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={tr("safety.section")}>
         {TABS.map((t) => (
           <Link
             key={t.id}
@@ -116,8 +118,9 @@ export default async function SafetyPage({
               active === t.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >
-            {t.label}
-            {t.id === "open" && openCount > 0 ? ` (${openCount})` : ""}
+            {t.id === "open" && openCount > 0
+              ? tr("safety.tabOpenCount", { count: openCount })
+              : tr(t.labelKey)}
           </Link>
         ))}
       </nav>
@@ -126,14 +129,13 @@ export default async function SafetyPage({
         (groups.length === 0 ? (
           <EmptyState
             icon={<ShieldCheckIcon weight="duotone" className="size-8" />}
-            title="Nothing reported"
-            description="When someone reports a post, a comment or a person, it arrives here — with the most serious reasons first."
+            title={tr("safety.nothingReported")}
+            description={tr("safety.nothingReportedBody")}
           />
         ) : (
           <>
             <p className="text-xs leading-relaxed text-fg-muted">
-              Grouped by what was reported, so three people reporting the same thing is one
-              decision. Anything flagged as unkind or unsafe sorts to the top.
+              {tr("safety.groupedNote")}
             </p>
             <ul className="space-y-3">
               {groups.map((group) => (
@@ -147,7 +149,10 @@ export default async function SafetyPage({
 
       {active === "closed" &&
         (closed.length === 0 ? (
-          <EmptyState title="Nothing resolved yet" description="Reports you have dealt with appear here." />
+          <EmptyState
+            title={tr("safety.nothingResolved")}
+            description={tr("safety.nothingResolvedBody")}
+          />
         ) : (
           <ul className="space-y-3">
             {closed.map((group) => (
@@ -160,12 +165,14 @@ export default async function SafetyPage({
 
       {active === "audit" &&
         (auditRows.length === 0 ? (
-          <EmptyState title="Nothing logged yet" description="Actions taken in your school appear here." />
+          <EmptyState
+            title={tr("safety.nothingLogged")}
+            description={tr("safety.nothingLoggedBody")}
+          />
         ) : (
           <>
             <p className="text-xs leading-relaxed text-fg-muted">
-              Append-only, and scoped to your school. This is how you answer &ldquo;who changed
-              this?&rdquo; after the fact, so nothing in EduLink can edit or delete it.
+              {tr("safety.auditNote")}
             </p>
             <AuditTable rows={auditRows} />
           </>

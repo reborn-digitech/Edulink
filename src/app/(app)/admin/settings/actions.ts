@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { deleteStoredFile, storeFile, UploadError } from "@/lib/storage";
@@ -59,7 +60,17 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
   return { ok: true, errors: {} };
 }
 
-export type LogoState = { ok: boolean; error?: string; logoPath?: string };
+/**
+ * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy.
+ *
+ * `errorKey` is everything this file decides itself, returned as a key so the
+ * form resolves it in the reader's language. `error` is the one case it cannot:
+ * an `AccessError` from the tenancy layer, whose message is minted app-wide.
+ */
+export type LogoState = { ok: boolean; error?: string; logoPath?: string;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+};
 
 /**
  * Replaces the school logo.
@@ -79,14 +90,14 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
   }
 
   const file = formData.get("logo");
-  if (!(file instanceof File)) return { ok: false, error: "Choose an image first." };
+  if (!(file instanceof File)) return { ok: false, errorKey: "settings.chooseImageFirst" };
 
   let storedFileId: string;
   try {
     const result = await storeFile(file, { maxBytes: LOGO_MAX_BYTES });
     if (result.kind !== "image") {
       await deleteStoredFile(result.fileId);
-      return { ok: false, error: "That needs to be an image, not a document." };
+      return { ok: false, errorKey: "settings.mustBeImage" };
     }
     storedFileId = result.fileId;
   } catch (error) {
@@ -94,7 +105,7 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
     // through rather than replacing them with something generic.
     if (error instanceof UploadError) return { ok: false, error: error.message };
     console.error("[uploadLogo]", error);
-    return { ok: false, error: "We could not save that image." };
+    return { ok: false, errorKey: "settings.couldNotSaveImage" };
   }
 
   const previous = await db.school.findUniqueOrThrow({
@@ -111,7 +122,7 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
     // Do not leave an orphan on disk if the row did not take.
     await deleteStoredFile(storedFileId);
     console.error("[uploadLogo] db write failed", error);
-    return { ok: false, error: "We could not save that image." };
+    return { ok: false, errorKey: "settings.couldNotSaveImage" };
   }
 
   if (previous.logoPath && previous.logoPath !== storedFileId) {
@@ -158,6 +169,6 @@ export async function removeLogo(): Promise<LogoState> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[removeLogo]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }

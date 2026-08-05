@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { searchCandidates, addToCohort, dropFromCohort } from "./actions";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 type Member = {
   membershipId: string;
@@ -46,6 +48,7 @@ export function CohortPanel({
   members: Member[];
   gradeLevel: string | null;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -89,12 +92,12 @@ export function CohortPanel({
     startTransition(async () => {
       const result = await addToCohort(classId, [...picked]);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not added", description: result.error });
+        toast({ tone: "danger", title: t("classes.notAdded"), description: actionError(t, result) });
         return;
       }
       toast({
         tone: "ok",
-        title: `${result.added} added to the class`,
+        title: t("classes.addedToClass", { count: result.added ?? 0 }),
       });
       setPicked(new Set());
       setOpen(false);
@@ -107,10 +110,10 @@ export function CohortPanel({
     startTransition(async () => {
       const result = await dropFromCohort(classId, membershipId);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not removed", description: result.error });
+        toast({ tone: "danger", title: t("classes.notRemoved"), description: actionError(t, result) });
         return;
       }
-      toast({ tone: "ok", title: `${name} taken off the roll` });
+      toast({ tone: "ok", title: t("classes.takenOffRoll", { name }) });
       router.refresh();
     });
   }
@@ -119,12 +122,11 @@ export function CohortPanel({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-xs leading-relaxed text-fg-muted">
-          {members.length} on the roll. Taking somebody off keeps everything they did in this
-          class — their marks and attendance are not deleted.
+          {t("classes.rollNote", { count: members.length })}
         </p>
         {!open && (
           <Button size="sm" variant="secondary" icon={<PlusIcon weight="bold" />} onClick={() => setOpen(true)}>
-            Add students
+            {t("classes.addStudents")}
           </Button>
         )}
       </div>
@@ -141,25 +143,24 @@ export function CohortPanel({
               autoFocus
               value={query}
               onChange={(e) => onType(e.target.value)}
-              placeholder="Search pupils by name…"
-              aria-label="Search pupils to add"
+              placeholder={t("classes.searchPupils")}
+              aria-label={t("classes.searchPupilsLabel")}
               className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-3 text-[0.9375rem] outline-none focus:border-accent"
             />
           </div>
 
           {gradeLevel && (
             <p className="mt-2 text-xs text-fg-muted">
-              Grade {gradeLevel} pupils are listed first. Anybody in the school can be added — a
-              child repeating a year, or taking a subject a year up, is ordinary.
+              {t("classes.gradeFirst", { grade: gradeLevel })}
             </p>
           )}
 
           <div className="mt-3 max-h-72 overflow-y-auto scrollbar-thin">
             {loading ? (
-              <p className="py-6 text-center text-sm text-fg-muted">Looking…</p>
+              <p className="py-6 text-center text-sm text-fg-muted">{t("classes.looking")}</p>
             ) : candidates.length === 0 ? (
               <p className="py-6 text-center text-sm text-fg-muted">
-                {query ? "Nobody matches that." : "Every pupil in the school is already in this class."}
+                {query ? t("classes.nobodyMatches") : t("classes.everyoneAlreadyIn")}
               </p>
             ) : (
               <ul className="space-y-1">
@@ -188,9 +189,11 @@ export function CohortPanel({
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-medium">{candidate.name}</span>
                           <span className="block truncate text-xs text-fg-muted">
-                            {candidate.gradeLevel ? `Grade ${candidate.gradeLevel}` : "No grade set"}
+                            {candidate.gradeLevel
+                              ? t("classes.grade", { grade: candidate.gradeLevel })
+                              : t("classes.noGradeSet")}
                             {candidate.alreadyIn.length > 0
-                              ? ` · already in ${candidate.alreadyIn.join(", ")}`
+                              ? ` · ${t("classes.alreadyIn", { classes: candidate.alreadyIn.join(", ") })}`
                               : ""}
                           </span>
                         </span>
@@ -204,7 +207,9 @@ export function CohortPanel({
 
           <div className="mt-4 flex flex-wrap gap-2">
             <Button size="sm" loading={pending} disabled={picked.size === 0} onClick={commit}>
-              Add {picked.size > 0 ? `${picked.size} ` : ""}to the class
+              {picked.size > 0
+                ? t("classes.addCountToClass", { count: picked.size })
+                : t("classes.addToClass")}
             </Button>
             <Button
               size="sm"
@@ -215,7 +220,7 @@ export function CohortPanel({
                 setQuery("");
               }}
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
           </div>
         </div>
@@ -223,8 +228,7 @@ export function CohortPanel({
 
       {members.length === 0 ? (
         <p className="rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
-          Nobody is in this class yet. Add them here, or give them the class join code and let them
-          add themselves.
+          {t("classes.nobodyInClass")}
         </p>
       ) : (
         <ul className="space-y-1.5">
@@ -236,7 +240,9 @@ export function CohortPanel({
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-fg">{member.name}</span>
                 {member.gradeLevel && (
-                  <span className="block text-xs text-fg-muted">Grade {member.gradeLevel}</span>
+                  <span className="block text-xs text-fg-muted">
+                    {t("classes.grade", { grade: member.gradeLevel })}
+                  </span>
                 )}
               </span>
               {member.studentCode && (
@@ -248,7 +254,7 @@ export function CohortPanel({
                 size="sm"
                 variant="ghost"
                 loading={pending}
-                aria-label={`Take ${member.name} off this class`}
+                aria-label={t("classes.takeOff", { name: member.name })}
                 onClick={() => remove(member.membershipId, member.name)}
               >
                 <XIcon weight="bold" className="size-4" />

@@ -6,6 +6,8 @@ import { PauseCircleIcon, ArrowCounterClockwiseIcon } from "@phosphor-icons/reac
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { suspend, reinstate } from "./actions";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 /**
  * Pause and restore, per person, from the directory.
@@ -29,6 +31,7 @@ export function RowActions({
   name: string;
   suspended: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -41,12 +44,12 @@ export function RowActions({
     startTransition(async () => {
       const result = await suspend(membershipId, reason);
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(actionError(t, result, "people.didNotWork"));
         return;
       }
       setOpen(false);
       setReason("");
-      toast({ tone: "ok", title: `${name}'s access is paused` });
+      toast({ tone: "ok", title: t("people.paused", { name }) });
       router.refresh();
     });
   }
@@ -55,10 +58,10 @@ export function RowActions({
     startTransition(async () => {
       const result = await reinstate(membershipId);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not restored", description: result.error });
+        toast({ tone: "danger", title: t("people.notRestored"), description: actionError(t, result) });
         return;
       }
-      toast({ tone: "ok", title: `${name} can sign in again` });
+      toast({ tone: "ok", title: t("people.canSignInAgain", { name }) });
       router.refresh();
     });
   }
@@ -72,7 +75,7 @@ export function RowActions({
         icon={<ArrowCounterClockwiseIcon weight="bold" />}
         onClick={doReinstate}
       >
-        Restore
+        {t("people.restore")}
       </Button>
     );
   }
@@ -85,22 +88,19 @@ export function RowActions({
         icon={<PauseCircleIcon weight="bold" />}
         onClick={() => setOpen(true)}
       >
-        <span className="sr-only">Pause access for {name}</span>
-        <span aria-hidden="true">Pause</span>
+        <span className="sr-only">{t("people.pauseAccessFor", { name })}</span>
+        <span aria-hidden="true">{t("people.pause")}</span>
       </Button>
     );
   }
 
   return (
     <div className="w-full rounded-[--radius-md] border border-warn/30 bg-warn-soft p-3">
-      <p className="text-sm font-semibold text-fg">Pause {name}&rsquo;s access?</p>
-      <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-        They will not be able to open this school until you restore it. Nothing is deleted, and
-        this does not affect any other school they belong to.
-      </p>
+      <p className="text-sm font-semibold text-fg">{t("people.pauseTitle", { name })}</p>
+      <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.pauseBody")}</p>
 
       <label className="mt-3 block">
-        <span className="block text-xs font-medium text-fg">Why (kept in the audit log)</span>
+        <span className="block text-xs font-medium text-fg">{t("people.pauseWhy")}</span>
         <textarea
           value={reason}
           autoFocus
@@ -119,7 +119,7 @@ export function RowActions({
 
       <div className="mt-3 flex gap-2">
         <Button size="sm" variant="danger" loading={pending} onClick={doSuspend}>
-          Pause access
+          {t("people.pauseAction")}
         </Button>
         <Button
           size="sm"
@@ -129,7 +129,7 @@ export function RowActions({
             setError(null);
           }}
         >
-          Cancel
+          {t("common.cancel")}
         </Button>
       </div>
     </div>

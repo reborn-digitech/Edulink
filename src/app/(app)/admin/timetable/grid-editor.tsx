@@ -10,6 +10,9 @@ import { cn } from "@/lib/cn";
 import { formatTimeRange, WEEK_DAYS, weekdayName, weekdayShortName } from "@/lib/school-day";
 import { saveLesson, removeLesson, duplicateDay } from "./actions";
 import type { PeriodRow, SlotView } from "@/lib/timetable";
+import { actionError } from "@/lib/action-error";
+import { useLocale, useT } from "@/lib/i18n";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 /**
  * The grid an admin builds.
@@ -47,6 +50,8 @@ export function GridEditor({
   /** `weekday:periodId` → membershipId → what they are already teaching. */
   busy: Record<string, Record<string, string>>;
 }) {
+  const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -63,15 +68,18 @@ export function GridEditor({
     startTransition(async () => {
       const result = await duplicateDay(classId, Number(copySource), Number(copyTarget));
       if (!result.ok) {
-        toast({ tone: "danger", title: result.error ?? "Could not copy that day." });
+        toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotCopyDay") });
         return;
       }
       toast({
         tone: "ok",
-        title: `${result.copied} lessons copied to ${weekdayName(Number(copyTarget))}`,
+        title: t("timetable.lessonsCopied", {
+          count: result.copied ?? 0,
+          day: weekdayName(Number(copyTarget), locale),
+        }),
         description:
           result.unstaffed && result.unstaffed > 0
-            ? `${result.unstaffed} came across without a teacher — they were already busy then.`
+            ? t("timetable.cameWithoutTeacher", { count: result.unstaffed })
             : undefined,
       });
       setCopySource("");
@@ -82,10 +90,7 @@ export function GridEditor({
 
   if (lessonPeriods.length === 0) {
     return (
-      <p className="text-sm leading-relaxed text-fg-muted">
-        Set the school day up first — a lesson has to go in a period, and this school has none
-        that are not breaks.
-      </p>
+      <p className="text-sm leading-relaxed text-fg-muted">{t("timetable.setDayFirst")}</p>
     );
   }
 
@@ -98,8 +103,9 @@ export function GridEditor({
         >
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
           <span>
-            {unstaffed} {unstaffed === 1 ? "lesson has" : "lessons have"} no teacher yet. They are
-            on the timetable and will show as unstaffed to the class.
+            {unstaffed === 1
+              ? t("timetable.unstaffedOne")
+              : t("timetable.unstaffedMany", { count: unstaffed })}
           </span>
         </p>
       )}
@@ -107,9 +113,9 @@ export function GridEditor({
       {/* ---------------- phone: a day at a time ---------------- */}
       <div className="space-y-4 md:hidden">
         {WEEK_DAYS.map((weekday) => (
-          <section key={weekday} aria-label={weekdayName(weekday)}>
+          <section key={weekday} aria-label={weekdayName(weekday, locale)}>
             <h3 className="mb-2 border-b border-border pb-1 text-sm font-semibold text-fg">
-              {weekdayName(weekday)}
+              {weekdayName(weekday, locale)}
             </h3>
             <ul className="space-y-1.5">
               {lessonPeriods.map((period) => {
@@ -118,7 +124,11 @@ export function GridEditor({
                   <li key={period.id}>
                     <CellButton
                       slot={slot}
-                      label={`${period.name}, ${weekdayName(weekday)}`}
+                      label={t("timetable.cellLabel", {
+                        period: period.name,
+                        day: weekdayName(weekday, locale),
+                      })}
+                      t={t}
                       onClick={() => setOpen({ weekday, periodId: period.id })}
                       lead={
                         <span className="w-24 shrink-0">
@@ -140,20 +150,22 @@ export function GridEditor({
       {/* ---------------- desktop: the grid ---------------- */}
       <div className="hidden overflow-x-auto md:block">
         <table className="w-full min-w-[46rem] border-separate border-spacing-1">
-          <caption className="sr-only">{className} — click a cell to set the lesson</caption>
+          <caption className="sr-only">
+            {t("timetable.clickCellCaption", { name: className })}
+          </caption>
           <thead>
             <tr>
               <th scope="col" className="w-28 p-2 text-left">
                 <span className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                  Period
+                  {t("timetable.period")}
                 </span>
               </th>
               {WEEK_DAYS.map((weekday) => (
                 <th key={weekday} scope="col" className="p-2 text-left text-sm font-semibold text-fg">
-                  <abbr title={weekdayName(weekday)} className="no-underline lg:hidden">
-                    {weekdayShortName(weekday)}
+                  <abbr title={weekdayName(weekday, locale)} className="no-underline lg:hidden">
+                    {weekdayShortName(weekday, locale)}
                   </abbr>
-                  <span className="hidden lg:inline">{weekdayName(weekday)}</span>
+                  <span className="hidden lg:inline">{weekdayName(weekday, locale)}</span>
                 </th>
               ))}
             </tr>
@@ -179,7 +191,11 @@ export function GridEditor({
                     <td key={weekday} className="p-0 align-top">
                       <CellButton
                         slot={index.get(`${weekday}:${period.id}`)}
-                        label={`${period.name}, ${weekdayName(weekday)}`}
+                        label={t("timetable.cellLabel", {
+                          period: period.name,
+                          day: weekdayName(weekday, locale),
+                        })}
+                        t={t}
                         onClick={() => setOpen({ weekday, periodId: period.id })}
                       />
                     </td>
@@ -194,28 +210,28 @@ export function GridEditor({
       {/* ---------------- copy a day ---------------- */}
       <div className="flex flex-wrap items-end gap-3 rounded-[--radius-sm] border border-border p-3">
         <SelectField
-          label="Copy"
+          label={t("timetable.copy")}
           className="w-40"
           value={copySource}
           onChange={(e) => setCopySource(e.target.value === "" ? "" : Number(e.target.value))}
         >
-          <option value="">Pick a day</option>
+          <option value="">{t("timetable.pickADay")}</option>
           {WEEK_DAYS.map((weekday) => (
             <option key={weekday} value={weekday}>
-              {weekdayName(weekday)}
+              {weekdayName(weekday, locale)}
             </option>
           ))}
         </SelectField>
         <SelectField
-          label="Onto"
+          label={t("timetable.onto")}
           className="w-40"
           value={copyTarget}
           onChange={(e) => setCopyTarget(e.target.value === "" ? "" : Number(e.target.value))}
         >
-          <option value="">Pick a day</option>
+          <option value="">{t("timetable.pickADay")}</option>
           {WEEK_DAYS.map((weekday) => (
             <option key={weekday} value={weekday}>
-              {weekdayName(weekday)}
+              {weekdayName(weekday, locale)}
             </option>
           ))}
         </SelectField>
@@ -224,11 +240,10 @@ export function GridEditor({
           onClick={copy}
           disabled={copySource === "" || copyTarget === "" || pending}
         >
-          Copy day
+          {t("timetable.copyDay")}
         </Button>
         <p className="basis-full text-xs text-fg-muted">
-          Replaces everything on the target day. A teacher already busy at that time comes across
-          without a name rather than being dropped.
+          {t("timetable.copyNote")}
         </p>
       </div>
 
@@ -257,17 +272,23 @@ function CellButton({
   label,
   onClick,
   lead,
+  t,
 }: {
   slot: SlotView | undefined;
   label: string;
   onClick: () => void;
   lead?: React.ReactNode;
+  t: Translate;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label={slot ? `${slot.subject} — ${label}. Change it.` : `Add a lesson at ${label}`}
+      aria-label={
+        slot
+          ? t("timetable.changeIt", { subject: slot.subject, where: label })
+          : t("timetable.addLessonAt", { where: label })
+      }
       className={cn(
         "flex w-full items-start gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
@@ -285,13 +306,13 @@ function CellButton({
                 slot.teacherName ? "text-fg-muted" : "text-warning",
               )}
             >
-              {slot.teacherName ?? "No teacher yet"}
+              {slot.teacherName ?? t("timetable.noTeacherYet")}
             </span>
             {slot.room && <span className="block truncate text-xs text-fg-muted">{slot.room}</span>}
           </>
         ) : (
           <span className="flex items-center gap-1 text-xs text-fg-muted">
-            <PlusIcon className="size-3.5" /> Add
+            <PlusIcon className="size-3.5" /> {t("timetable.add")}
           </span>
         )}
       </span>
@@ -320,6 +341,8 @@ function LessonDialog({
   onClose: () => void;
   onSaved: () => void;
 }) {
+  const t = useT();
+  const locale = useLocale();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [subject, setSubject] = useState(slot?.subject ?? "");
@@ -343,7 +366,7 @@ function LessonDialog({
   function save() {
     setError(null);
     if (subject.trim().length < 1) {
-      setError("Say what is taught in this lesson.");
+      setError(t("timetable.saySubject"));
       return;
     }
     startTransition(async () => {
@@ -356,10 +379,16 @@ function LessonDialog({
         room: room.trim() || null,
       });
       if (!result.ok) {
-        setError(result.error ?? "Could not save that.");
+        setError(actionError(t, result, "timetable.couldNotSave"));
         return;
       }
-      toast({ tone: "ok", title: `${subject.trim()} set for ${weekdayName(cell.weekday)}` });
+      toast({
+        tone: "ok",
+        title: t("timetable.lessonSet", {
+          subject: subject.trim(),
+          day: weekdayName(cell.weekday, locale),
+        }),
+      });
       onSaved();
     });
   }
@@ -368,10 +397,10 @@ function LessonDialog({
     startTransition(async () => {
       const result = await removeLesson(classId, cell.weekday, cell.periodId);
       if (!result.ok) {
-        setError(result.error ?? "Could not remove that.");
+        setError(actionError(t, result, "timetable.couldNotRemove"));
         return;
       }
-      toast({ tone: "ok", title: "Lesson removed" });
+      toast({ tone: "ok", title: t("timetable.lessonRemoved") });
       onSaved();
     });
   }
@@ -386,7 +415,7 @@ function LessonDialog({
         className="w-full max-w-md rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
       >
         <h2 id="lesson-title" className="text-lg font-bold text-fg">
-          {weekdayName(cell.weekday)}, {period.name}
+          {weekdayName(cell.weekday, locale)}, {period.name}
         </h2>
         <p className="mt-1 text-sm text-fg-muted">
           {className} · {formatTimeRange(period.startMinute, period.endMinute)}
@@ -403,36 +432,36 @@ function LessonDialog({
 
         <div className="mt-4 space-y-3">
           <TextField
-            label="Subject"
+            label={t("timetable.subject")}
             required
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            placeholder="Mathematics"
+            placeholder={t("timetable.subjectPlaceholder")}
           />
 
           <SelectField
-            label="Teacher"
+            label={t("timetable.teacher")}
             value={teacher}
             onChange={(e) => setTeacher(e.target.value)}
             hint={
               taken.length > 0
-                ? `${free.length} free at this time; ${taken.length} already teaching.`
-                : "Everybody is free at this time."
+                ? t("timetable.freeAndBusy", { free: free.length, busy: taken.length })
+                : t("timetable.everybodyFree")
             }
           >
-            <option value="">No teacher yet</option>
+            <option value="">{t("timetable.noTeacherYet")}</option>
             {free.length > 0 && (
-              <optgroup label="Free at this time">
+              <optgroup label={t("timetable.freeAtThisTime")}>
                 {free.map((option) => (
                   <option key={option.membershipId} value={option.membershipId}>
                     {option.name}
-                    {option.load > 0 ? ` · ${option.load} lessons a week` : ""}
+                    {option.load > 0 ? t("timetable.lessonsAWeek", { count: option.load }) : ""}
                   </option>
                 ))}
               </optgroup>
             )}
             {taken.length > 0 && (
-              <optgroup label="Already teaching then">
+              <optgroup label={t("timetable.alreadyTeaching")}>
                 {taken.map((option) => (
                   /* Disabled rather than absent: "why is she not in the list"
                      is a question the list should answer itself. */
@@ -445,24 +474,24 @@ function LessonDialog({
           </SelectField>
 
           <TextField
-            label="Room"
+            label={t("timetable.room")}
             value={room}
             onChange={(e) => setRoom(e.target.value)}
-            placeholder="Optional — lab, hall, field"
+            placeholder={t("timetable.roomPlaceholder")}
           />
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
           <Button onClick={save} loading={pending} className="flex-1">
-            Save
+            {t("common.save")}
           </Button>
           {slot && (
             <Button variant="ghost" onClick={clear} disabled={pending}>
-              Remove
+              {t("common.remove")}
             </Button>
           )}
           <Button variant="ghost" onClick={onClose} disabled={pending}>
-            Cancel
+            {t("common.cancel")}
           </Button>
         </div>
       </div>

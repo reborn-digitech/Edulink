@@ -10,6 +10,8 @@
  * CRLF or LF line endings, and a UTF-8 BOM from Excel.
  */
 
+import type { TranslationKey } from "./i18n/dictionary";
+
 export type CsvRow = Record<string, string>;
 
 export type ParsedCsv = {
@@ -145,8 +147,15 @@ export type InviteRow = {
 
 export type InviteCsvResult = {
   valid: InviteRow[];
-  /** Rows that could not be used, with a reason the admin can act on. */
-  problems: { line: number; value: string; reason: string }[];
+  /**
+   * Rows that could not be used, with a reason the admin can act on.
+   *
+   * ⚠ A KEY AND ITS NUMBERS, NOT A SENTENCE. This parser runs in TWO places —
+   * the live preview in the browser and the invite action on the server — and
+   * only one of them knows who is reading. Returning finished English put "Not
+   * a valid email address" in the middle of a Marathi form.
+   */
+  problems: { line: number; value: string; reasonKey: TranslationKey; reasonVars?: Record<string, string | number> }[];
   /** Duplicate emails within the file itself, reported once each. */
   duplicates: string[];
 };
@@ -187,22 +196,30 @@ export function parseInviteCsv(input: string): InviteCsvResult {
     const subjectsRaw = (headerless ? row.__2 : subjectsKey ? row[subjectsKey] : "") ?? "";
 
     if (!email) {
-      problems.push({ line, value: name || "(blank row)", reason: "No email address" });
+      // Empty `value` means "there was nothing on this row to show" — the
+      // renderer says so in the reader's language rather than us baking in
+      // "(blank row)" here.
+      problems.push({ line, value: name, reasonKey: "invites.noEmail" });
       continue;
     }
     if (!EMAIL_RE.test(email)) {
-      problems.push({ line, value: email, reason: "Not a valid email address" });
+      problems.push({ line, value: email, reasonKey: "invites.invalidEmail" });
       continue;
     }
     if (email.length > 320) {
-      problems.push({ line, value: email.slice(0, 40) + "…", reason: "Email is too long" });
+      problems.push({ line, value: email.slice(0, 40) + "…", reasonKey: "invites.emailTooLong" });
       continue;
     }
 
     const firstSeen = seen.get(email);
     if (firstSeen !== undefined) {
       if (!duplicates.includes(email)) duplicates.push(email);
-      problems.push({ line, value: email, reason: `Already listed on line ${firstSeen}` });
+      problems.push({
+        line,
+        value: email,
+        reasonKey: "invites.duplicateOfLine",
+        reasonVars: { line: firstSeen },
+      });
       continue;
     }
     seen.set(email, line);

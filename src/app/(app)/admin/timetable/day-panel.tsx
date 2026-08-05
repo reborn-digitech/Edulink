@@ -17,6 +17,8 @@ import {
 } from "@/lib/school-day";
 import { savePeriod, retirePeriod, bringBackPeriod, useSuggestedDay } from "./actions";
 import type { PeriodRow } from "@/lib/timetable";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 /**
  * Step one: what time is this school open, and where are the bells.
@@ -33,6 +35,7 @@ import type { PeriodRow } from "@/lib/timetable";
  * time rather than guessing.
  */
 export function DayPanel({ periods }: { periods: PeriodRow[] }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -47,10 +50,10 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
     startTransition(async () => {
       const result = await useSuggestedDay();
       if (!result.ok) {
-        toast({ tone: "danger", title: result.error ?? "Could not set that up." });
+        toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotSetUp") });
         return;
       }
-      toast({ tone: "ok", title: `${result.created} periods added — edit them to fit` });
+      toast({ tone: "ok", title: t("timetable.periodsAdded", { count: result.created ?? 0 }) });
       router.refresh();
     });
   }
@@ -59,10 +62,10 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
     startTransition(async () => {
       const result = await retirePeriod(period.id);
       if (!result.ok) {
-        toast({ tone: "danger", title: result.error ?? "Could not retire that." });
+        toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotRetire") });
         return;
       }
-      toast({ tone: "ok", title: `${period.name} retired` });
+      toast({ tone: "ok", title: t("timetable.retired", { name: period.name }) });
       router.refresh();
     });
   }
@@ -71,10 +74,10 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
     startTransition(async () => {
       const result = await bringBackPeriod(period.id);
       if (!result.ok) {
-        toast({ tone: "danger", title: result.error ?? "Could not bring that back." });
+        toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotBringBack") });
         return;
       }
-      toast({ tone: "ok", title: `${period.name} is back on the day` });
+      toast({ tone: "ok", title: t("timetable.broughtBack", { name: period.name }) });
       router.refresh();
     });
   }
@@ -82,16 +85,13 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
   if (periods.length === 0) {
     return (
       <div className="space-y-4">
-        <p className="text-sm leading-relaxed text-fg-muted">
-          Nothing is set up yet. Start from a typical day and change the times to match this
-          school — it is faster than typing eight rows from scratch, and nothing here is fixed.
-        </p>
+        <p className="text-sm leading-relaxed text-fg-muted">{t("timetable.nothingSetUp")}</p>
         <div className="flex flex-wrap gap-2">
           <Button onClick={seed} loading={pending}>
-            Start from a typical day
+            {t("timetable.startTypicalDay")}
           </Button>
           <Button variant="secondary" onClick={() => setAdding(true)}>
-            Add one period
+            {t("timetable.addOnePeriod")}
           </Button>
         </div>
         {adding && (
@@ -114,8 +114,8 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
           role="status"
           className="rounded-[--radius-md] border border-warning/30 bg-warning-soft px-3 py-2 text-sm text-warning"
         >
-          {clashes.map(([a, b]) => `${a} overlaps ${b}`).join("; ")}. Saved anyway — a split lunch
-          or an exam session across two periods is a real thing. Worth a look if it was not meant.
+          {clashes.map(([a, b]) => t("timetable.overlaps", { a, b })).join("; ")}
+          {t("timetable.overlapNote")}
         </p>
       )}
 
@@ -141,14 +141,14 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
                 <span className="block truncate text-sm font-medium text-fg">{period.name}</span>
                 <span className="block text-xs tabular-nums text-fg-muted">
                   {formatTimeRange(period.startMinute, period.endMinute)}
-                  {period.kind === "BREAK" && " · break"}
+                  {period.kind === "BREAK" && t("timetable.breakSuffix")}
                 </span>
               </span>
               <Button size="sm" variant="ghost" onClick={() => setEditing(period.id)}>
-                Edit
+                {t("common.edit")}
               </Button>
               <Button size="sm" variant="ghost" onClick={() => retire(period)} disabled={pending}>
-                Retire
+                {t("timetable.retire")}
               </Button>
             </li>
           ),
@@ -165,21 +165,20 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
         />
       ) : (
         <Button variant="secondary" size="sm" onClick={() => setAdding(true)}>
-          Add a period
+          {t("timetable.addAPeriod")}
         </Button>
       )}
 
       {retired.length > 0 && (
         <details className="rounded-[--radius-sm] border border-border p-3">
           <summary className="cursor-pointer text-sm font-medium text-fg-muted">
-            {retired.length} retired {retired.length === 1 ? "period" : "periods"}
+            {retired.length === 1
+              ? t("timetable.retiredCountOne")
+              : t("timetable.retiredCountMany", { count: retired.length })}
           </summary>
           {/* Said out loud, because "retire" reading as "delete" is the fear
               that stops an admin from tidying a day up. */}
-          <p className="mt-2 text-xs text-fg-muted">
-            Retiring takes a period off the grid and keeps every lesson that was in it. Bring it
-            back and the lessons are there.
-          </p>
+          <p className="mt-2 text-xs text-fg-muted">{t("timetable.retiredNote")}</p>
           <ul className="mt-2 space-y-1.5">
             {retired.map((period) => (
               <li key={period.id} className="flex items-center gap-3 text-sm">
@@ -187,7 +186,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
                   {period.name} · {formatTimeRange(period.startMinute, period.endMinute)}
                 </span>
                 <Button size="sm" variant="ghost" onClick={() => restore(period)} disabled={pending}>
-                  Bring back
+                  {t("timetable.bringBack")}
                 </Button>
               </li>
             ))}
@@ -207,6 +206,7 @@ function PeriodForm({
   onDone: () => void;
   onCancel: () => void;
 }) {
+  const t = useT();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [name, setName] = useState(period?.name ?? "");
@@ -222,18 +222,18 @@ function PeriodForm({
     const startMinute = parseTimeOfDay(start);
     const endMinute = parseTimeOfDay(end);
     if (startMinute === null || endMinute === null) {
-      setError("Give both times as HH:MM — 08:30, 13:05.");
+      setError(t("timetable.bothTimes"));
       return;
     }
     // The SAME function the server calls, so the two cannot disagree about
     // which times are usable.
     const timeError = periodTimeError({ startMinute, endMinute });
     if (timeError) {
-      setError(timeError);
+      setError(t(timeError.key, timeError.vars));
       return;
     }
     if (name.trim().length < 1) {
-      setError("Give the period a name.");
+      setError(t("timetable.needPeriodName"));
       return;
     }
 
@@ -246,10 +246,15 @@ function PeriodForm({
         kind,
       });
       if (!result.ok) {
-        setError(result.error ?? "Could not save that.");
+        setError(actionError(t, result, "timetable.couldNotSave"));
         return;
       }
-      toast({ tone: "ok", title: period ? `${name.trim()} updated` : `${name.trim()} added` });
+      toast({
+        tone: "ok",
+        title: period
+          ? t("timetable.periodUpdated", { name: name.trim() })
+          : t("timetable.periodAdded", { name: name.trim() }),
+      });
       onDone();
     });
   }
@@ -269,15 +274,15 @@ function PeriodForm({
         </p>
       )}
       <TextField
-        label="Name"
+        label={t("timetable.name")}
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Period 1"
+        placeholder={t("timetable.namePlaceholder")}
       />
       <div className="grid grid-cols-2 gap-3">
         <TextField
-          label="Starts"
+          label={t("timetable.starts")}
           required
           value={start}
           onChange={(e) => setStart(e.target.value)}
@@ -285,7 +290,7 @@ function PeriodForm({
           inputMode="numeric"
         />
         <TextField
-          label="Ends"
+          label={t("timetable.ends")}
           required
           value={end}
           onChange={(e) => setEnd(e.target.value)}
@@ -294,27 +299,27 @@ function PeriodForm({
         />
       </div>
       <SelectField
-        label="Kind"
+        label={t("timetable.kind")}
         value={kind}
         onChange={(e) => setKind(e.target.value as PeriodKind)}
-        hint={PERIOD_KIND_META[kind].description}
+        hint={t(PERIOD_KIND_META[kind].descriptionKey)}
       >
         {(Object.keys(PERIOD_KIND_META) as PeriodKind[]).map((option) => (
           <option key={option} value={option}>
-            {PERIOD_KIND_META[option].label}
+            {t(PERIOD_KIND_META[option].labelKey)}
           </option>
         ))}
       </SelectField>
       <div className="flex gap-2">
         <Button type="submit" size="sm" loading={pending}>
-          {period ? "Save" : "Add"}
+          {period ? t("common.save") : t("timetable.add")}
         </Button>
         <Button type="button" size="sm" variant="ghost" onClick={onCancel}>
-          Cancel
+          {t("common.cancel")}
         </Button>
       </div>
       <p className="flex items-center gap-1.5 text-xs text-fg-muted">
-        <ClockIcon className="size-3.5" /> 24-hour time. The day re-sorts itself by the clock.
+        <ClockIcon className="size-3.5" /> {t("timetable.twentyFourHour")}
       </p>
     </form>
   );

@@ -5,8 +5,8 @@ import { MagnifyingGlassIcon, WarningIcon } from "@phosphor-icons/react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
-import { describeAction, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
-import { useLocale } from "@/lib/i18n";
+import { actionKey, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
+import { useLocale, useT } from "@/lib/i18n";
 
 /**
  * Audit log viewer.
@@ -18,8 +18,16 @@ import { useLocale } from "@/lib/i18n";
  */
 export function AuditTable({ rows }: { rows: AuditEntry[] }) {
   const locale = useLocale();
+  const t = useT();
   const [query, setQuery] = useState("");
   const [sensitiveOnly, setSensitiveOnly] = useState(false);
+
+  /* An action with no wording falls back to its raw key — `class.archive`
+     rather than a blank cell. Not prose, and the same in every language. */
+  const describe = (action: string) => {
+    const key = actionKey(action);
+    return key ? t(key) : action;
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -29,16 +37,17 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
       return (
         row.actorName.toLowerCase().includes(q) ||
         row.action.toLowerCase().includes(q) ||
-        describeAction(row.action).toLowerCase().includes(q)
+        describe(row.action).toLowerCase().includes(q)
       );
     });
-  }, [rows, query, sensitiveOnly]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows, query, sensitiveOnly, t]);
 
   return (
     <div className="space-y-3">
       <div className="flex flex-col gap-2 sm:flex-row">
         <label className="relative flex-1">
-          <span className="sr-only">Search the audit log</span>
+          <span className="sr-only">{t("safety.searchAudit")}</span>
           <MagnifyingGlassIcon
             className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
             aria-hidden="true"
@@ -47,7 +56,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by person or action…"
+            placeholder={t("safety.searchAuditPlaceholder")}
             className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent"
           />
         </label>
@@ -63,18 +72,18 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
           )}
         >
           <WarningIcon weight={sensitiveOnly ? "fill" : "regular"} className="size-4" />
-          Sensitive only
+          {t("safety.sensitiveOnly")}
         </button>
       </div>
 
       <p className="text-xs text-fg-muted" aria-live="polite">
-        {filtered.length} of {rows.length} entries
-        {rows.length >= 200 && " (most recent 200)"}
+        {t("safety.entryCount", { shown: filtered.length, total: rows.length })}
+        {rows.length >= 200 && t("safety.mostRecent200")}
       </p>
 
       {filtered.length === 0 ? (
         <p className="rounded-[--radius-md] bg-surface-muted p-6 text-center text-sm text-fg-muted">
-          Nothing matches that.
+          {t("safety.nothingMatches")}
         </p>
       ) : (
         <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface">
@@ -84,10 +93,10 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
               <li key={row.id} className={cn("p-3.5", sensitive && "bg-danger-soft/30")}>
                 <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                   <span className="text-sm font-semibold text-fg">{row.actorName}</span>
-                  <span className="text-sm text-fg-muted">{describeAction(row.action)}</span>
+                  <span className="text-sm text-fg-muted">{describe(row.action)}</span>
                   {sensitive && (
                     <Badge tone="danger" size="sm">
-                      Sensitive
+                      {t("safety.sensitive")}
                     </Badge>
                   )}
                   <span className="ml-auto shrink-0 text-xs text-fg-subtle">

@@ -11,12 +11,21 @@
  * schema for why it is not a DateTime and not a string.
  */
 
+import type { TranslationKey } from "./i18n/dictionary";
+
 export const PERIOD_KINDS = ["LESSON", "BREAK"] as const;
 export type PeriodKind = (typeof PERIOD_KINDS)[number];
 
-export const PERIOD_KIND_META: Record<PeriodKind, { label: string; description: string }> = {
-  LESSON: { label: "Lesson", description: "A teaching period. Classes are timetabled into it." },
-  BREAK: { label: "Break", description: "Lunch, assembly, a gap. Nothing is timetabled into it." },
+/**
+ * ⚠ KEYS, NOT WORDS — see `ROLE_META`. Rendered in the period form, which is a
+ * fully translated admin page.
+ */
+export const PERIOD_KIND_META: Record<
+  PeriodKind,
+  { labelKey: TranslationKey; descriptionKey: TranslationKey }
+> = {
+  LESSON: { labelKey: "timetable.lesson", descriptionKey: "timetable.lessonHint" },
+  BREAK: { labelKey: "timetable.break", descriptionKey: "timetable.breakHint" },
 };
 
 /** Minutes in a day. An end time may equal this; a start time may not. */
@@ -84,23 +93,36 @@ export function formatTimeRange(startMinute: number, endMinute: number): string 
 export const WEEK_DAYS = [1, 2, 3, 4, 5, 6] as const;
 export type Weekday = (typeof WEEK_DAYS)[number];
 
-const DAY_NAMES = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-] as const;
-
-export function weekdayName(weekday: number): string {
-  return DAY_NAMES[weekday] ?? "";
+/**
+ * The name of a weekday, in the reader's language.
+ *
+ * ⚠ WAS A HARDCODED ENGLISH ARRAY, and `weekdayShortName` was `.slice(0, 3)` on
+ * top of it. Two failures for the price of one: a fully translated timetable had
+ * "Monday" down its side, and the slice is meaningless outside Latin script —
+ * three characters of "सोमवार" is not an abbreviation of anything.
+ *
+ * `Intl` fixes both. 2024-01-07 was a Sunday, so `7 + weekday` lands on the day
+ * asked for; the date is arbitrary and never shown. Defaults to English for the
+ * same reason `formatDateKey` does — so every existing call site kept compiling
+ * while the pages that render it were threaded.
+ */
+function weekdayDate(weekday: number): Date {
+  return new Date(Date.UTC(2024, 0, 7 + weekday));
 }
 
-/** "Mon", "Tue" — for a column header on a narrow screen. */
-export function weekdayShortName(weekday: number): string {
-  return weekdayName(weekday).slice(0, 3);
+export function weekdayName(weekday: number, locale = "en"): string {
+  if (!Number.isInteger(weekday) || weekday < 0 || weekday > 6) return "";
+  return new Intl.DateTimeFormat(locale, { weekday: "long", timeZone: "UTC" }).format(
+    weekdayDate(weekday),
+  );
+}
+
+/** "Mon", "सोम" — for a column header on a narrow screen. */
+export function weekdayShortName(weekday: number, locale = "en"): string {
+  if (!Number.isInteger(weekday) || weekday < 0 || weekday > 6) return "";
+  return new Intl.DateTimeFormat(locale, { weekday: "short", timeZone: "UTC" }).format(
+    weekdayDate(weekday),
+  );
 }
 
 export function isWeekdayNumber(value: unknown): value is number {
@@ -116,24 +138,27 @@ export type PeriodTimes = { startMinute: number; endMinute: number };
 /**
  * Why these times are not usable, or null if they are.
  *
- * Returns the MESSAGE rather than a boolean so the form and the server action
- * cannot drift into disagreeing about which of them is wrong.
+ * Returns the KEY of the message rather than a boolean, so the form and the
+ * server action cannot drift into disagreeing about which of them is wrong —
+ * and the reader gets it in their own language on either path.
  */
-export function periodTimeError(times: PeriodTimes): string | null {
+export type PeriodTimeError = { key: TranslationKey; vars?: Record<string, string | number> };
+
+export function periodTimeError(times: PeriodTimes): PeriodTimeError | null {
   const { startMinute, endMinute } = times;
   if (!Number.isInteger(startMinute) || !Number.isInteger(endMinute)) {
-    return "Give both times as HH:MM.";
+    return { key: "timetable.bothTimes" };
   }
-  if (startMinute < 0 || startMinute >= MINUTES_IN_DAY) return "That start time is not a time.";
-  if (endMinute <= 0 || endMinute > MINUTES_IN_DAY) return "That end time is not a time.";
+  if (startMinute < 0 || startMinute >= MINUTES_IN_DAY) return { key: "timetable.startNotATime" };
+  if (endMinute <= 0 || endMinute > MINUTES_IN_DAY) return { key: "timetable.endNotATime" };
   if (endMinute <= startMinute) {
     // A period ending before it starts is a typo. A period crossing midnight is
     // not a thing a school day does, and treating it as one would break every
     // ordering below — so both are refused with the message that fits.
-    return "The period has to end after it starts.";
+    return { key: "timetable.endAfterStart" };
   }
   if (endMinute - startMinute < MIN_PERIOD_MINUTES) {
-    return `A period has to be at least ${MIN_PERIOD_MINUTES} minutes long.`;
+    return { key: "timetable.tooShort", vars: { minutes: MIN_PERIOD_MINUTES } };
   }
   return null;
 }

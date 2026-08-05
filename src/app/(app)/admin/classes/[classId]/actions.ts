@@ -1,5 +1,6 @@
 "use server";
 
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { setAttendanceRight, arrangeCover, cancelCover, type CoverInput } from "@/lib/register-duty";
@@ -20,12 +21,22 @@ import {
  * else's staffing.
  */
 
-type Result = { ok: boolean; error?: string };
+/**
+ * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy.
+ *
+ * `errorKey` is everything this file decides itself, returned as a key so the
+ * form resolves it in the reader's language. `error` is the one case it cannot:
+ * an `AccessError` from the tenancy layer, whose message is minted app-wide.
+ */
+type Result = { ok: boolean; error?: string;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+};
 
 function failure(error: unknown): Result {
   if (error instanceof AccessError) return { ok: false, error: error.message };
   console.error("[class-staffing]", error);
-  return { ok: false, error: "Something went wrong. Try again in a moment." };
+  return { ok: false, errorKey: "common.tryAgainMoment" };
 }
 
 export async function toggleAttendanceRight(

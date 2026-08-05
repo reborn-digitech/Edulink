@@ -132,7 +132,7 @@ async function period(name: string, startMinute: number): Promise<string> {
     endMinute: startMinute + 45,
     kind: "LESSON",
   });
-  if (!result.ok || !result.id) throw new Error(result.error ?? "period not created");
+  if (!result.ok || !result.id) throw new Error(result.errorKey ?? "period not created");
   return result.id;
 }
 
@@ -261,7 +261,7 @@ describe("the school day", () => {
       kind: "LESSON",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/end after it starts/);
+    expect(result.errorKey).toBe("timetable.endAfterStart");
   });
 
   it("refuses a period with no name", async () => {
@@ -272,7 +272,7 @@ describe("the school day", () => {
       kind: "LESSON",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/name/);
+    expect(result.errorKey).toBe("timetable.needPeriodName");
   });
 
   it("⚠ retiring a period keeps the lessons that were in it", async () => {
@@ -297,7 +297,7 @@ describe("the school day", () => {
     expect((await archivePeriod(admin, p1)).ok).toBe(true);
     const again = await archivePeriod(admin, p1);
     expect(again.ok).toBe(false);
-    expect(again.error).toMatch(/already retired/);
+    expect(again.errorKey).toBe("timetable.alreadyRetired");
   });
 
   it("lays out a first day for a school with none, and refuses to do it twice", async () => {
@@ -307,7 +307,7 @@ describe("the school day", () => {
 
     const again = await applySuggestedDay(admin);
     expect(again.ok).toBe(false);
-    expect(again.error).toMatch(/already has a day/);
+    expect(again.errorKey).toBe("timetable.dayExists");
   });
 
   it("⚠ will not lay out a day over one that was retired", async () => {
@@ -394,7 +394,7 @@ describe("a lesson on the grid", () => {
 
     const again = await clearSlot(admin, classA, 1, p1);
     expect(again.ok).toBe(false);
-    expect(again.error).toMatch(/no lesson/);
+    expect(again.errorKey).toBe("timetable.noLessonThere");
   });
 
   it("requires a subject", async () => {
@@ -405,7 +405,7 @@ describe("a lesson on the grid", () => {
       subject: "   ",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/what is taught/);
+    expect(result.errorKey).toBe("timetable.saySubject");
   });
 
   it("⚠ refuses a break — nothing is timetabled into lunch", async () => {
@@ -422,7 +422,7 @@ describe("a lesson on the grid", () => {
       subject: "Maths",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/is a break/);
+    expect(result.errorKey).toBe("timetable.isABreak");
   });
 
   it("refuses Sunday and anything that is not a day", async () => {
@@ -446,7 +446,7 @@ describe("a lesson on the grid", () => {
       subject: "Maths",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not in this school/);
+    expect(result.errorKey).toBe("timetable.classNotHere");
   });
 
   it("⚠ refuses a period from another school", async () => {
@@ -467,7 +467,7 @@ describe("a lesson on the grid", () => {
       subject: "Maths",
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not on this school's day/);
+    expect(result.errorKey).toBe("timetable.periodNotOnDay");
   });
 
   it("⚠ refuses a teacher from another school", async () => {
@@ -480,7 +480,7 @@ describe("a lesson on the grid", () => {
       teacherMembershipId: outsider.membershipId,
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not teaching staff/);
+    expect(result.errorKey).toBe("timetable.notTeachingStaff");
   });
 
   it("refuses a pupil as the teacher of a lesson", async () => {
@@ -492,7 +492,7 @@ describe("a lesson on the grid", () => {
       teacherMembershipId: pupil,
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not teaching staff/);
+    expect(result.errorKey).toBe("timetable.notTeachingStaff");
   });
 
   it("truncates rather than refusing an over-long subject", async () => {
@@ -534,8 +534,11 @@ describe("a lesson on the grid", () => {
       expect(result.ok).toBe(false);
       // The message has to say WHICH lesson is in the way; "unavailable" leaves
       // the admin to go looking through six days for it.
-      expect(result.error).toContain("Class 5A");
-      expect(result.error).toContain("Maths");
+      // The class and subject travel as VARS now rather than baked into a
+      // sentence, so this asserts the same fact one layer earlier: the clash
+      // names which lesson stood in the way.
+      expect(result.errorKey).toBe("timetable.teacherClash");
+      expect(result.errorVars).toEqual({ class: "Class 5A", subject: "Maths" });
     });
 
     it("allows the same teacher at the same time on a DIFFERENT day", async () => {
@@ -810,8 +813,8 @@ describe("copying a day", () => {
 
   it("refuses copying a day onto itself, and an empty day", async () => {
     await setSlot(admin, { classId: classA, periodId: p1, weekday: 1, subject: "Maths" });
-    expect((await copyDay(admin, classA, 1, 1)).error).toMatch(/same day/);
-    expect((await copyDay(admin, classA, 4, 5)).error).toMatch(/nothing on that day/);
+    expect((await copyDay(admin, classA, 1, 1)).errorKey).toBe("timetable.sameDay");
+    expect((await copyDay(admin, classA, 4, 5)).errorKey).toBe("timetable.nothingToCopy");
   });
 
   it("refuses Sunday at either end", async () => {

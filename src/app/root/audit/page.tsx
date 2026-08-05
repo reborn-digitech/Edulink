@@ -2,11 +2,11 @@ import Link from "next/link";
 import { ArrowLeftIcon, ScrollIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { listServerAudit } from "@/lib/superuser";
-import { describeAction } from "@/lib/safety-labels";
+import { actionKey } from "@/lib/safety-labels";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
-import { getLocale } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
 
 export const metadata = { title: "Server log" };
 
@@ -25,6 +25,7 @@ export const metadata = { title: "Server log" };
  */
 export default async function ServerAuditPage() {
   const locale = await getLocale();
+  const t = await getT();
   const session = await requireSuperuser();
   const rows = await listServerAudit(session, { take: 300 });
 
@@ -62,7 +63,10 @@ export default async function ServerAuditPage() {
                 <li key={row.id} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 p-4">
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-medium text-fg">
-                      {describeAction(row.action)}
+                      {(() => {
+                        const key = actionKey(row.action);
+                        return key ? t(key) : row.action;
+                      })()}
                     </span>
                     <span className="block text-xs text-fg-muted">
                       {row.actorName}

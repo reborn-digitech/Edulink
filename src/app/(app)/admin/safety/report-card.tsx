@@ -9,14 +9,22 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
-import { reasonLabel, type ReportGroup } from "@/lib/safety-labels";
+import { reasonKey, type ReportGroup } from "@/lib/safety-labels";
 import { dismiss, takeDown } from "./actions";
-import { useLocale } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
+import { useLocale, useT } from "@/lib/i18n";
 
 const URGENT = new Set(["UNSAFE", "BULLYING"]);
 
 export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?: boolean }) {
   const locale = useLocale();
+  const t = useT();
+  /* No wording for a reason we do not know falls back to the stored value —
+     a debugging aid, not prose, and the same in every language. */
+  const reasonText = (reason: string) => {
+    const key = reasonKey(reason);
+    return key ? t(key) : reason;
+  };
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -30,7 +38,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
     startTransition(async () => {
       const result = await fn();
       if (!result.ok) {
-        toast({ tone: "danger", title: "Could not do that", description: result.error });
+        toast({ tone: "danger", title: t("safety.couldNotDoThat"), description: actionError(t, result) });
         return;
       }
       toast({ tone: "ok", title: success });
@@ -56,13 +64,20 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
       >
         {urgent && !readOnly && <WarningIcon weight="fill" className="size-4" />}
         <span>
-          {group.count} report{group.count === 1 ? "" : "s"} ·{" "}
-          {group.targetType === "POST" ? "a post" : group.targetType === "COMMENT" ? "a comment" : "a person"}
+          {group.count === 1
+            ? t("safety.reportsOne")
+            : t("safety.reportsMany", { count: group.count })}{" "}
+          ·{" "}
+          {group.targetType === "POST"
+            ? t("safety.aPost")
+            : group.targetType === "COMMENT"
+              ? t("safety.aComment")
+              : t("safety.aPerson")}
         </span>
         <span className="ml-auto font-normal">{relativeTime(group.latestAt, undefined, locale)}</span>
         {readOnly && (
           <Badge tone={group.status === "ACTIONED" ? "danger" : "neutral"} size="sm">
-            {group.status === "ACTIONED" ? "Removed" : "Dismissed"}
+            {group.status === "ACTIONED" ? t("safety.removed") : t("safety.dismissed")}
           </Badge>
         )}
       </header>
@@ -72,7 +87,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
           {group.reasons.map((reason) => (
             <li key={reason.reason}>
               <Badge tone={URGENT.has(reason.reason) ? "danger" : "neutral"} size="sm">
-                {reasonLabel(reason.reason)}
+                {reasonText(reason.reason)}
                 {reason.count > 1 ? ` ×${reason.count}` : ""}
               </Badge>
             </li>
@@ -108,7 +123,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                   href={group.target.href}
                   className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong hover:underline"
                 >
-                  Open it <ArrowSquareOutIcon className="size-3.5" />
+                  {t("safety.openIt")} <ArrowSquareOutIcon className="size-3.5" />
                 </Link>
               </>
             )}
@@ -116,8 +131,9 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
             {group.target.kind === "COMMENT" && (
               <>
                 <p className="text-xs text-fg-muted">
-                  <span className="font-semibold text-fg">{group.target.authorName}</span> commented
-                  on <span className="italic">{group.target.postTitle}</span> ·{" "}
+                  <span className="font-semibold text-fg">{group.target.authorName}</span>{" "}
+                  {t("safety.commentedOn")}{" "}
+                  <span className="italic">{group.target.postTitle}</span> ·{" "}
                   {relativeTime(group.target.createdAt, undefined, locale)}
                   {group.target.status !== "APPROVED" && ` · ${group.target.status.toLowerCase()}`}
                 </p>
@@ -128,7 +144,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                   href={group.target.href}
                   className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong hover:underline"
                 >
-                  Open the post <ArrowSquareOutIcon className="size-3.5" />
+                  {t("safety.openThePost")} <ArrowSquareOutIcon className="size-3.5" />
                 </Link>
               </>
             )}
@@ -141,12 +157,11 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                 </p>
                 {group.target.suspended ? (
                   <p className="mt-2 text-xs font-medium leading-relaxed text-warn">
-                    Their access to this school is already paused.
+                    {t("safety.alreadyPaused")}
                   </p>
                 ) : (
                   <p className="mt-2 text-xs leading-relaxed text-fg-muted">
-                    You can pause their access from the directory. It stops them opening this
-                    school, deletes nothing, and is reversible in one click.
+                    {t("safety.canPauseBody")}
                   </p>
                 )}
                 {group.target.href && (
@@ -154,7 +169,9 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                     href={group.target.href}
                     className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong hover:underline"
                   >
-                    {group.target.suspended ? "Open in the directory" : "Pause their access"}{" "}
+                    {group.target.suspended
+                      ? t("safety.openInDirectory")
+                      : t("safety.pauseTheirAccess")}{" "}
                     <ArrowSquareOutIcon className="size-3.5" />
                   </Link>
                 )}
@@ -164,10 +181,9 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
         ) : (
           /* A dangling report must still be clearable. (§5) */
           <div className="rounded-[--radius-md] border border-dashed border-border p-3.5">
-            <p className="text-sm font-medium text-fg-muted">This content is no longer available</p>
+            <p className="text-sm font-medium text-fg-muted">{t("safety.noLongerAvailable")}</p>
             <p className="mt-1 text-xs leading-relaxed text-fg-subtle">
-              It may have been deleted since it was reported. You can still read the reports below
-              and close this off.
+              {t("safety.noLongerAvailableBody")}
             </p>
           </div>
         )}
@@ -175,14 +191,14 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
         {/* ---- what the reporters said ---- */}
         <details className="rounded-[--radius-md] border border-border">
           <summary className="cursor-pointer px-3.5 py-2.5 text-sm font-medium text-fg">
-            What {group.count === 1 ? "the reporter" : "reporters"} said
+            {group.count === 1 ? t("safety.whatReporterSaid") : t("safety.whatReportersSaid")}
           </summary>
           <ul className="divide-y divide-border border-t border-border">
             {group.details.map((detail, index) => (
               <li key={index} className="px-3.5 py-2.5">
                 <p className="text-xs text-fg-muted">
                   <span className="font-semibold text-fg">{detail.reporterName}</span> ·{" "}
-                  {reasonLabel(detail.reason)} · {relativeTime(detail.at, undefined, locale)}
+                  {reasonText(detail.reason)} · {relativeTime(detail.at, undefined, locale)}
                 </p>
                 {detail.detail && (
                   <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-fg">
@@ -197,7 +213,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
         {readOnly && group.resolutionNote && (
           <div className="rounded-[--radius-md] bg-surface-muted p-3.5">
             <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-              What you decided
+              {t("safety.whatYouDecided")}
             </p>
             <p className="mt-1 text-sm text-fg">{group.resolutionNote}</p>
           </div>
@@ -210,9 +226,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
           {mode ? (
             <div className="space-y-2">
               <label htmlFor={`note-${group.targetId}`} className="block text-sm font-medium text-fg">
-                {mode === "remove"
-                  ? "Why is it coming down? The author sees this."
-                  : "Why is this alright? Only staff see this."}
+                {mode === "remove" ? t("safety.whyComingDown") : t("safety.whyAlright")}
               </label>
               <textarea
                 id={`note-${group.targetId}`}
@@ -222,8 +236,8 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                 autoFocus
                 placeholder={
                   mode === "remove"
-                    ? "This named another pupil. Please repost without their name."
-                    : "Checked with the class teacher — this is a misunderstanding, no action needed."
+                    ? t("safety.removePlaceholder")
+                    : t("safety.dismissPlaceholder")
                 }
                 className="w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
               />
@@ -237,7 +251,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                     setNote("");
                   }}
                 >
-                  Cancel
+                  {t("common.cancel")}
                 </Button>
                 <Button
                   size="sm"
@@ -254,7 +268,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                               targetId: group.targetId,
                               note,
                             }),
-                          "Taken down and the author told",
+                          t("safety.takenDown"),
                         )
                       : run(
                           () =>
@@ -263,11 +277,13 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                               targetId: group.targetId,
                               note,
                             }),
-                          `${group.count} report${group.count === 1 ? "" : "s"} closed`,
+                          group.count === 1
+                            ? t("safety.closedOne")
+                            : t("safety.closedMany", { count: group.count }),
                         )
                   }
                 >
-                  {mode === "remove" ? "Take it down" : "Close the reports"}
+                  {mode === "remove" ? t("safety.takeItDown") : t("safety.closeTheReports")}
                 </Button>
               </div>
             </div>
@@ -281,7 +297,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                 icon={<CheckIcon weight="bold" />}
                 onClick={() => setMode("dismiss")}
               >
-                Nothing wrong — close it
+                {t("safety.nothingWrong")}
               </Button>
               {removable && (
                 <Button
@@ -292,7 +308,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                   icon={<TrashIcon weight="bold" />}
                   onClick={() => setMode("remove")}
                 >
-                  Take it down
+                  {t("safety.takeItDown")}
                 </Button>
               )}
             </div>

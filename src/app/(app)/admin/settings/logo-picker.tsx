@@ -6,6 +6,8 @@ import { ImageIcon, TrashIcon, UploadSimpleIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { removeLogo, uploadLogo } from "./actions";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 const OUTPUT_SIZE = 512;
 const MAX_INPUT_BYTES = 8 * 1024 * 1024;
@@ -28,6 +30,7 @@ export function LogoPicker({
   schoolName: string;
   logoPath: string | null;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -81,17 +84,17 @@ export function LogoPicker({
     setError(null);
 
     if (file.size > MAX_INPUT_BYTES) {
-      setError("That image is very large. Try one under 8 MB.");
+      setError(t("settings.tooLarge"));
       return;
     }
     if (!file.type.startsWith("image/")) {
-      setError("Choose an image file.");
+      setError(t("settings.notAnImage"));
       return;
     }
     // SVG is refused server-side (it is an executable document), so say so here
     // rather than letting the upload fail after the crop.
     if (file.type === "image/svg+xml") {
-      setError("SVG is not supported. Export it as a PNG first.");
+      setError(t("settings.noSvg"));
       return;
     }
 
@@ -107,7 +110,7 @@ export function LogoPicker({
       URL.revokeObjectURL(url);
     };
     image.onerror = () => {
-      setError("That file could not be read as an image.");
+      setError(t("settings.unreadable"));
       URL.revokeObjectURL(url);
     };
     image.src = url;
@@ -135,10 +138,10 @@ export function LogoPicker({
 
       const result = await uploadLogo(formData);
       if (!result.ok) {
-        setError(result.error ?? "Could not save that.");
+        setError(actionError(t, result, "settings.couldNotSaveLogo"));
         return;
       }
-      toast({ tone: "ok", title: "Logo saved" });
+      toast({ tone: "ok", title: t("settings.logoSaved") });
       setSource(null);
       setPreview(null);
       router.refresh();
@@ -153,12 +156,12 @@ export function LogoPicker({
         <span className="grid size-20 shrink-0 place-items-center overflow-hidden rounded-[--radius-lg] border border-border bg-surface-muted">
           {preview ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={preview} alt="Your new logo, cropped" className="size-full object-cover" />
+            <img src={preview} alt={t("settings.newLogoAlt")} className="size-full object-cover" />
           ) : currentLogoUrl ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={currentLogoUrl}
-              alt={`${schoolName} logo`}
+              alt={t("settings.schoolLogoAlt", { name: schoolName })}
               className="size-full object-cover"
             />
           ) : (
@@ -168,11 +171,13 @@ export function LogoPicker({
 
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-fg">
-            {preview ? "Ready to save" : currentLogoUrl ? "Current logo" : "No logo yet"}
+            {preview
+              ? t("settings.readyToSave")
+              : currentLogoUrl
+                ? t("settings.currentLogo")
+                : t("settings.noLogoYet")}
           </p>
-          <p className="text-xs text-fg-muted">
-            Square works best. We crop and resize to 512×512 before uploading.
-          </p>
+          <p className="text-xs text-fg-muted">{t("settings.squareBest")}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             <Button
               size="sm"
@@ -180,7 +185,7 @@ export function LogoPicker({
               icon={<UploadSimpleIcon weight="bold" />}
               onClick={() => fileRef.current?.click()}
             >
-              {currentLogoUrl || preview ? "Choose another" : "Choose an image"}
+              {currentLogoUrl || preview ? t("settings.chooseAnother") : t("settings.chooseImage")}
             </Button>
             {currentLogoUrl && !preview && (
               <Button
@@ -194,14 +199,18 @@ export function LogoPicker({
                     const result = await removeLogo();
                     toast(
                       result.ok
-                        ? { tone: "neutral", title: "Logo removed" }
-                        : { tone: "danger", title: "Could not remove it", description: result.error },
+                        ? { tone: "neutral", title: t("settings.logoRemoved") }
+                        : {
+                            tone: "danger",
+                            title: t("settings.couldNotRemoveLogo"),
+                            description: actionError(t, result),
+                          },
                     );
                     router.refresh();
                   })
                 }
               >
-                Remove
+                {t("common.remove")}
               </Button>
             )}
           </div>
@@ -233,7 +242,7 @@ export function LogoPicker({
       {source && (
         <div className="space-y-3 rounded-[--radius-md] border border-accent bg-accent-soft/40 p-4">
           <label className="block">
-            <span className="block text-sm font-medium text-fg">Zoom</span>
+            <span className="block text-sm font-medium text-fg">{t("settings.zoom")}</span>
             <input
               type="range"
               min={1}
@@ -247,7 +256,7 @@ export function LogoPicker({
 
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="block">
-              <span className="block text-sm font-medium text-fg">Move sideways</span>
+              <span className="block text-sm font-medium text-fg">{t("settings.moveSideways")}</span>
               <input
                 type="range"
                 min={-200}
@@ -259,7 +268,7 @@ export function LogoPicker({
               />
             </label>
             <label className="block">
-              <span className="block text-sm font-medium text-fg">Move up and down</span>
+              <span className="block text-sm font-medium text-fg">{t("settings.moveUpDown")}</span>
               <input
                 type="range"
                 min={-200}
@@ -283,10 +292,10 @@ export function LogoPicker({
                 setError(null);
               }}
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button size="sm" block loading={pending} onClick={save}>
-              Save this logo
+              {t("settings.saveThisLogo")}
             </Button>
           </div>
         </div>

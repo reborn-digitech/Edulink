@@ -35,6 +35,7 @@ export default async function AdminDashboard({
   searchParams: Promise<{ welcome?: string }>;
 }) {
   const locale = await getLocale();
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const { welcome } = await searchParams;
 
@@ -80,15 +81,15 @@ export default async function AdminDashboard({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} · School
-            code{" "}
+            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
+            {t("admin.schoolCode")}{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}
             </code>
           </p>
         </div>
         <Button asChild variant="secondary" size="sm">
-          <Link href="/admin/invites/new">Invite people</Link>
+          <Link href="/admin/invites/new">{t("admin.invitePeople")}</Link>
         </Button>
       </div>
 
@@ -109,14 +110,11 @@ export default async function AdminDashboard({
               <GraduationCapIcon weight="fill" className="size-6" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="font-semibold text-fg">Start your academic year</p>
-              <p className="mt-0.5 text-sm text-fg-muted">
-                Attendance badges are counted from the start of the year and are kept forever when
-                you close it. Until you set one up they look back a rolling 60 days and never reset.
-              </p>
+              <p className="font-semibold text-fg">{t("admin.startYear")}</p>
+              <p className="mt-0.5 text-sm text-fg-muted">{t("admin.startYearBody")}</p>
             </div>
             <Button asChild>
-              <Link href="/admin/calendar">Set up the year</Link>
+              <Link href="/admin/calendar">{t("admin.setUpYear")}</Link>
             </Button>
           </CardBody>
         </Card>
@@ -129,16 +127,20 @@ export default async function AdminDashboard({
                 {academicYear.name}
                 <span className="ml-2 font-normal text-fg-muted">
                   {coming
-                    ? `Next up: ${coming.name}, ${formatDateKey(coming.startDateKey, {
-                        day: "numeric",
-                        month: "long",
-                      }, locale)}`
-                    : "Nothing on the calendar ahead"}
+                    ? t("admin.nextUp", {
+                        name: coming.name,
+                        date: formatDateKey(
+                          coming.startDateKey,
+                          { day: "numeric", month: "long" },
+                          locale,
+                        ),
+                      })
+                    : t("admin.nothingAhead")}
                 </span>
               </p>
             </div>
             <Button asChild variant="secondary" size="sm">
-              <Link href="/admin/calendar">Update the calendar</Link>
+              <Link href="/admin/calendar">{t("admin.updateCalendar")}</Link>
             </Button>
           </CardBody>
         </Card>
@@ -149,8 +151,11 @@ export default async function AdminDashboard({
         <Card>
           <CardHeader
             icon={<ConfettiIcon weight="duotone" className="size-5" />}
-            title="Finish setting up"
-            description={`${checklist.done} of ${checklist.total} done — you can come back to this any time.`}
+            title={t("admin.finishSetup")}
+            description={t("admin.setupCount", {
+              done: checklist.done,
+              total: checklist.total,
+            })}
             action={
               <span className="text-sm font-bold tabular-nums text-accent-strong">
                 {Math.round((checklist.done / checklist.total) * 100)}%
@@ -164,7 +169,7 @@ export default async function AdminDashboard({
               aria-valuenow={checklist.done}
               aria-valuemin={0}
               aria-valuemax={checklist.total}
-              aria-label="Setup progress"
+              aria-label={t("admin.setupProgress")}
             >
               <div
                 className="h-full rounded-full bg-accent transition-[width] duration-[--dur-slow] ease-[--ease-out]"
@@ -197,19 +202,21 @@ export default async function AdminDashboard({
                           step.done ? "text-fg-muted line-through" : "text-fg",
                         )}
                       >
-                        {step.title}
+                        {t(step.titleKey)}
                       </p>
-                      <p className="truncate text-xs text-fg-muted">{step.description}</p>
+                      <p className="truncate text-xs text-fg-muted">
+                        {t(step.descriptionKey, step.descriptionVars)}
+                      </p>
                     </div>
 
                     {!step.done &&
                       (step.blockedBy ? (
                         <Badge tone="neutral" size="sm">
-                          Create a class first
+                          {t("admin.createClassFirst")}
                         </Badge>
                       ) : (
                         <Button asChild size="sm" variant="soft">
-                          <Link href={step.href}>{step.cta}</Link>
+                          <Link href={step.href}>{t(step.ctaKey)}</Link>
                         </Button>
                       ))}
                   </div>
@@ -225,8 +232,8 @@ export default async function AdminDashboard({
               <CheckCircleIcon weight="fill" className="size-6" />
             </span>
             <div>
-              <p className="font-semibold text-fg">Your school is fully set up</p>
-              <p className="text-sm text-fg-muted">Everything on the checklist is done. Nice work.</p>
+              <p className="font-semibold text-fg">{t("admin.fullySetUp")}</p>
+              <p className="text-sm text-fg-muted">{t("admin.fullySetUpBody")}</p>
             </div>
           </CardBody>
         </Card>
@@ -235,33 +242,47 @@ export default async function AdminDashboard({
       {/* ---------------- at a glance ---------------- */}
       <section aria-labelledby="glance">
         <h2 id="glance" className="mb-3 text-sm font-semibold uppercase tracking-wide text-fg-muted">
-          At a glance
+          {t("admin.atAGlance")}
         </h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <StatTile
-            label="Teachers"
+            label={t("admin.teachers")}
             value={teacherCount}
             icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
-            hint={pendingInvites > 0 ? `${pendingInvites} invite${pendingInvites === 1 ? "" : "s"} pending` : "All invites accepted"}
+            hint={
+              pendingInvites > 0
+                ? t("admin.invitesPending", { count: pendingInvites })
+                : t("admin.allInvitesAccepted")
+            }
           />
           <StatTile
-            label="Students"
+            label={t("admin.students")}
             value={studentCount}
             icon={<GraduationCapIcon weight="duotone" className="size-5" />}
-            hint={studentCount === 0 ? "None yet" : `Across ${classCount} class${classCount === 1 ? "" : "es"}`}
+            hint={
+              studentCount === 0
+                ? t("admin.noneYet")
+                : classCount === 1
+                  ? t("admin.acrossClassesOne")
+                  : t("admin.acrossClassesMany", { count: classCount })
+            }
           />
           <StatTile
-            label="Classes"
+            label={t("admin.classes")}
             value={classCount}
             icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-            hint={classCount === 0 ? "None yet" : "Active this term"}
+            hint={classCount === 0 ? t("admin.noneYet") : t("admin.activeThisTerm")}
           />
           <StatTile
-            label="Register taken"
+            label={t("admin.registerTaken")}
             value={classesTotal === 0 ? "—" : `${attendanceTaken}%`}
             tone={attendanceTaken === 100 ? "ok" : attendanceTaken > 0 ? "warn" : "neutral"}
             icon={<EnvelopeSimpleIcon weight="duotone" className="size-5" />}
-            hint={classesTotal === 0 ? "No classes yet" : `${todaySessions} of ${classesTotal} today`}
+            hint={
+              classesTotal === 0
+                ? t("admin.noClassesYet")
+                : t("admin.takenToday", { done: todaySessions, total: classesTotal })
+            }
           />
         </div>
       </section>
@@ -270,16 +291,16 @@ export default async function AdminDashboard({
       {teacherCount === 0 && (
         <EmptyState
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-          title="No teachers yet"
-          description="Teachers are the fastest way to bring the rest of the school in — they create classes, and their students follow."
+          title={t("admin.noTeachersYet")}
+          description={t("admin.noTeachersBody")}
           action={
             <Button asChild iconRight={<ArrowRightIcon weight="bold" />}>
-              <Link href="/admin/invites/new?role=TEACHER">Invite your first teacher</Link>
+              <Link href="/admin/invites/new?role=TEACHER">{t("admin.inviteFirstTeacher")}</Link>
             </Button>
           }
           secondaryAction={
             <Button asChild variant="ghost">
-              <Link href="/admin/classes/new">Or create a class first</Link>
+              <Link href="/admin/classes/new">{t("admin.orCreateClass")}</Link>
             </Button>
           }
         />

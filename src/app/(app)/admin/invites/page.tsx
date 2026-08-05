@@ -12,6 +12,7 @@ import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { getLocale } from "@/lib/i18n/server";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -19,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const TABS = [
-  { id: "PENDING", label: "Pending" },
-  { id: "ACCEPTED", label: "Accepted" },
-  { id: "REVOKED", label: "Withdrawn" },
-] as const;
+  { id: "PENDING", labelKey: "invites.pending" },
+  { id: "ACCEPTED", labelKey: "invites.accepted" },
+  { id: "REVOKED", labelKey: "invites.withdrawn" },
+] as const satisfies readonly { id: string; labelKey: TranslationKey }[];
 
 export default async function InvitesPage({
   searchParams,
@@ -54,17 +55,20 @@ export default async function InvitesPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Invitations</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("invites.title")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {countFor("PENDING")} waiting to be accepted
+            {t("invites.waitingCount", { count: countFor("PENDING") })}
           </p>
         </div>
         <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/admin/invites/new">Invite people</Link>
+          <Link href="/admin/invites/new">{t("invites.invitePeople")}</Link>
         </Button>
       </div>
 
-      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Filter">
+      <nav
+        className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+        aria-label={t("invites.filter")}
+      >
         {TABS.map((tab) => (
           <Link
             key={tab.id}
@@ -74,7 +78,7 @@ export default async function InvitesPage({
               active === tab.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >
-            {tab.label} ({countFor(tab.id)})
+            {t("invites.tabCount", { label: t(tab.labelKey), count: countFor(tab.id) })}
           </Link>
         ))}
       </nav>
@@ -84,20 +88,18 @@ export default async function InvitesPage({
           icon={<EnvelopeSimpleIcon weight="duotone" className="size-8" />}
           title={
             active === "PENDING"
-              ? "No invitations waiting"
+              ? t("invites.nonePending")
               : active === "ACCEPTED"
-                ? "Nobody has accepted yet"
-                : "Nothing withdrawn"
+                ? t("invites.noneAccepted")
+                : t("invites.noneWithdrawn")
           }
           description={
-            active === "PENDING"
-              ? "Invite teachers and students by email, or share your school code and approve them here."
-              : "Invitations move here once they are dealt with."
+            active === "PENDING" ? t("invites.nonePendingBody") : t("invites.noneOtherBody")
           }
           action={
             active === "PENDING" ? (
               <Button asChild>
-                <Link href="/admin/invites/new">Invite people</Link>
+                <Link href="/admin/invites/new">{t("invites.invitePeople")}</Link>
               </Button>
             ) : undefined
           }
@@ -124,28 +126,32 @@ export default async function InvitesPage({
                       </p>
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {invite.status === "ACCEPTED" && invite.acceptedAt
-                          ? `Joined ${relativeTime(invite.acceptedAt, undefined, locale)}`
+                          ? t("invites.joinedAgo", {
+                              when: relativeTime(invite.acceptedAt, undefined, locale),
+                            })
                           : expired
-                            ? "Expired"
-                            : `Expires ${relativeTime(invite.expiresAt, undefined, locale)}`}
+                            ? t("invites.expired")
+                            : t("invites.expiresIn", {
+                                when: relativeTime(invite.expiresAt, undefined, locale),
+                              })}
                       </p>
                     </div>
 
                     {invite.status === "PENDING" && (
                       <Badge tone={expired ? "warn" : "neutral"} size="sm">
-                        {expired ? "Expired" : "Pending"}
+                        {expired ? t("invites.expired") : t("invites.pending")}
                       </Badge>
                     )}
                     {invite.status === "ACCEPTED" && (
                       <Badge tone="ok" size="sm">
-                        Joined
+                        {t("invites.joined")}
                       </Badge>
                     )}
 
                     {invite.status === "PENDING" && (
                       <InviteRowActions
                         inviteId={invite.id}
-                        label={invite.name || invite.email || "this invitation"}
+                        label={invite.name || invite.email || t("invites.thisInvitation")}
                         canResend={Boolean(invite.email)}
                       />
                     )}

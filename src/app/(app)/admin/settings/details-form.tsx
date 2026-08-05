@@ -8,17 +8,21 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { saveSchoolDetails } from "./actions";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-const COLOURS = [
-  { value: "", name: "Role colours" },
-  { value: "#2563eb", name: "Blue" },
-  { value: "#0f766e", name: "Teal" },
-  { value: "#15803d", name: "Green" },
-  { value: "#b45309", name: "Amber" },
-  { value: "#b91c1c", name: "Red" },
-  { value: "#7e22ce", name: "Purple" },
-  { value: "#be185d", name: "Pink" },
-  { value: "#334155", name: "Slate" },
+/* Swatch names are the `aria-label` and the `title`, so they are read aloud and
+   hovered — words, and therefore keys. */
+const COLOURS: { value: string; nameKey: TranslationKey }[] = [
+  { value: "", nameKey: "settings.roleColours" },
+  { value: "#2563eb", nameKey: "settings.blue" },
+  { value: "#0f766e", nameKey: "settings.teal" },
+  { value: "#15803d", nameKey: "settings.green" },
+  { value: "#b45309", nameKey: "settings.amber" },
+  { value: "#b91c1c", nameKey: "settings.red" },
+  { value: "#7e22ce", nameKey: "settings.purple" },
+  { value: "#be185d", nameKey: "settings.pink" },
+  { value: "#334155", nameKey: "settings.slate" },
 ];
 
 type School = {
@@ -38,6 +42,7 @@ type School = {
 };
 
 export function DetailsForm({ school }: { school: School }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -110,12 +115,12 @@ export function DetailsForm({ school }: { school: School }) {
     setErrors({});
 
     const next: Record<string, string> = {};
-    if (draft.name.trim().length < 2) next.name = "Enter the school's name.";
+    if (draft.name.trim().length < 2) next.name = t("settings.needName");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(draft.contactEmail.trim())) {
-      next.contactEmail = "Enter a valid contact email.";
+      next.contactEmail = t("settings.needEmail");
     }
     if (draft.website && !/^https?:\/\/\S+\.\S+/.test(draft.website.trim())) {
-      next.website = "Start with http:// or https://";
+      next.website = t("settings.websiteHint");
     }
     setErrors(next);
     if (Object.keys(next).length > 0) return;
@@ -130,12 +135,12 @@ export function DetailsForm({ school }: { school: School }) {
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "Not saved",
-          description: result.errors._form ?? "Check the highlighted fields.",
+          title: t("settings.notSaved"),
+          description: result.errors._form ?? t("settings.checkFields"),
         });
         return;
       }
-      toast({ tone: "ok", title: "Settings saved" });
+      toast({ tone: "ok", title: t("settings.saved") });
       router.refresh();
     });
   }
@@ -152,7 +157,7 @@ export function DetailsForm({ school }: { school: School }) {
       )}
 
       <TextField
-        label="School name"
+        label={t("settings.schoolName")}
         required
         value={draft.name}
         error={errors.name}
@@ -160,15 +165,15 @@ export function DetailsForm({ school }: { school: School }) {
       />
 
       <fieldset>
-        <legend className="text-sm font-medium text-fg">Accent colour</legend>
+        <legend className="text-sm font-medium text-fg">{t("settings.accentColour")}</legend>
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-          Overrides the per-role colours everywhere. Leave it on{" "}
-          <strong className="text-fg">Role colours</strong> to keep teachers blue, students green
-          and parents purple.
+          {t("settings.accentPrefix")}{" "}
+          <strong className="text-fg">{t("settings.roleColours")}</strong>{" "}
+          {t("settings.accentSuffix")}
         </p>
         <div
           role="radiogroup"
-          aria-label="Accent colour"
+          aria-label={t("settings.accentColour")}
           className="mt-2 flex flex-wrap items-center gap-2"
         >
           {COLOURS.map((option) => (
@@ -177,8 +182,8 @@ export function DetailsForm({ school }: { school: School }) {
               type="button"
               role="radio"
               aria-checked={draft.brandPrimary === option.value}
-              aria-label={option.name}
-              title={option.name}
+              aria-label={t(option.nameKey)}
+              title={t(option.nameKey)}
               onClick={() => previewColour(option.value)}
               className={cn(
                 "grid size-11 place-items-center rounded-full transition-transform active:scale-90",
@@ -200,7 +205,7 @@ export function DetailsForm({ school }: { school: School }) {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Contact email"
+          label={t("settings.contactEmail")}
           required
           type="email"
           inputMode="email"
@@ -209,40 +214,40 @@ export function DetailsForm({ school }: { school: School }) {
           onChange={(e) => set("contactEmail", e.target.value)}
         />
         <TextField
-          label="Phone"
+          label={t("settings.phone")}
           type="tel"
           inputMode="tel"
-          placeholder="Optional"
+          placeholder={t("settings.optional")}
           value={draft.contactPhone}
           onChange={(e) => set("contactPhone", e.target.value)}
         />
       </div>
 
       <TextField
-        label="Website"
+        label={t("settings.website")}
         type="url"
         inputMode="url"
-        placeholder="https://your-school.example"
+        placeholder={t("settings.websitePlaceholder")}
         value={draft.website}
         error={errors.website}
         onChange={(e) => set("website", e.target.value)}
       />
 
       <TextField
-        label="Address"
-        placeholder="Optional"
+        label={t("settings.address")}
+        placeholder={t("settings.optional")}
         value={draft.addressLine}
         onChange={(e) => set("addressLine", e.target.value)}
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Town or city"
+          label={t("settings.city")}
           value={draft.city}
           onChange={(e) => set("city", e.target.value)}
         />
         <TextField
-          label="Region or state"
+          label={t("settings.region")}
           value={draft.region}
           onChange={(e) => set("region", e.target.value)}
         />
@@ -250,12 +255,12 @@ export function DetailsForm({ school }: { school: School }) {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Postcode"
+          label={t("settings.postcode")}
           value={draft.postalCode}
           onChange={(e) => set("postalCode", e.target.value)}
         />
         <TextField
-          label="Country"
+          label={t("settings.country")}
           value={draft.country}
           onChange={(e) => set("country", e.target.value)}
         />
@@ -263,13 +268,13 @@ export function DetailsForm({ school }: { school: School }) {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Lowest grade"
+          label={t("settings.lowestGrade")}
           placeholder="K"
           value={draft.gradeLow}
           onChange={(e) => set("gradeLow", e.target.value)}
         />
         <TextField
-          label="Highest grade"
+          label={t("settings.highestGrade")}
           placeholder="6"
           value={draft.gradeHigh}
           onChange={(e) => set("gradeHigh", e.target.value)}
@@ -277,12 +282,12 @@ export function DetailsForm({ school }: { school: School }) {
       </div>
 
       <SelectField
-        label="Timezone"
+        label={t("settings.timezone")}
         required
         value={draft.timezone}
         error={errors.timezone}
         onChange={(e) => set("timezone", e.target.value)}
-        hint="Attendance days and due dates are worked out in this timezone. Changing it does not move existing records."
+        hint={t("settings.timezoneHint")}
       >
         {timezones.map((tz) => (
           <option key={tz} value={tz}>
@@ -293,9 +298,9 @@ export function DetailsForm({ school }: { school: School }) {
 
       {dirty && (
         <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
-          <p className="min-w-0 flex-1 text-sm font-medium text-fg">Unsaved changes</p>
+          <p className="min-w-0 flex-1 text-sm font-medium text-fg">{t("settings.unsaved")}</p>
           <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
-            Save
+            {t("common.save")}
           </Button>
         </div>
       )}

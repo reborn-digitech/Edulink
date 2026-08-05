@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { schoolLeave, LEAVE_KIND_LABEL, type LeaveKind } from "@/lib/leave";
+import { schoolLeave, LEAVE_KIND_LABEL_KEY, type LeaveKind } from "@/lib/leave";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * that do not.
  */
 export default async function PrincipalLeavePage() {
+  const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
 
   const [all, staff] = await Promise.all([
@@ -150,7 +151,9 @@ export default async function PrincipalLeavePage() {
                   <span className="block truncate text-xs text-fg-muted">
                     {request.fromDateKey}
                     {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""} ·{" "}
-                    {LEAVE_KIND_LABEL[request.kind as LeaveKind] ?? request.kind}
+                    {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
+                      ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
+                      : request.kind}
                     {request.decidedByName ? ` · ${request.decidedByName}` : ""}
                   </span>
                 </span>

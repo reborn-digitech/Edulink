@@ -1,5 +1,6 @@
 import "server-only";
 import { db } from "./db";
+import type { TranslationKey } from "./i18n/dictionary";
 
 /**
  * Admin setup checklist.
@@ -8,14 +9,24 @@ import { db } from "./db";
  * flag. A flag drifts the moment someone deletes their only class, and then the
  * checklist cheerfully claims the school is set up when it is not. Deriving
  * costs five indexed counts and is always honest.
+ *
+ * ⚠ KEYS AND THEIR NUMBERS, NOT SENTENCES — the same rule as `ROLE_META` and
+ * `ATTENDANCE_META`. This runs on the server with no idea who is reading, and
+ * the honest thing for it to return is "the teachers step, with three" rather
+ * than a finished English clause. `t` is applied by the page, in the reader's
+ * language. It is also why the counted lines come in `…One`/`…Many` pairs:
+ * "1 teachers have joined" is wrong in all three languages, and choosing
+ * between two keys is the smallest thing that is right.
  */
 
 export type ChecklistStep = {
   id: string;
-  title: string;
-  description: string;
+  titleKey: TranslationKey;
+  descriptionKey: TranslationKey;
+  /** Substituted into `descriptionKey` by `t`. Absent when it has no `{…}`. */
+  descriptionVars?: Record<string, string | number>;
   href: string;
-  cta: string;
+  ctaKey: TranslationKey;
   done: boolean;
   /** Steps that only make sense once an earlier one is done. */
   blockedBy?: string;
@@ -42,68 +53,76 @@ export async function getChecklist(schoolId: string): Promise<{
   const steps: ChecklistStep[] = [
     {
       id: "verify",
-      title: "Confirm your email address",
-      description: "We sent you a link. It keeps your school's account recoverable.",
+      titleKey: "checklist.verifyTitle",
+      descriptionKey: "checklist.verifyBody",
       href: "/account/verify",
-      cta: "Resend link",
+      ctaKey: "checklist.verifyCta",
       done: Boolean(school?.verifiedAt),
     },
     {
       id: "teachers",
-      title: "Invite your teachers",
-      description:
+      titleKey: "checklist.teachersTitle",
+      descriptionKey:
         teachers > 0
-          ? `${teachers} ${teachers === 1 ? "teacher has" : "teachers have"} joined.`
+          ? teachers === 1
+            ? "checklist.teachersJoinedOne"
+            : "checklist.teachersJoinedMany"
           : invites > 0
-            ? `${invites} ${invites === 1 ? "invitation is" : "invitations are"} waiting to be accepted.`
-            : "Send invitations by email, or paste a list of everyone at once.",
+            ? invites === 1
+              ? "checklist.invitesWaitingOne"
+              : "checklist.invitesWaitingMany"
+            : "checklist.teachersBody",
+      descriptionVars: { count: teachers > 0 ? teachers : invites },
       href: "/admin/invites/new?role=TEACHER",
-      cta: teachers > 0 ? "Invite more" : "Invite teachers",
+      ctaKey: teachers > 0 ? "checklist.teachersMoreCta" : "checklist.teachersCta",
       done: teachers > 0,
     },
     {
       id: "classes",
-      title: "Create your classes",
-      description:
+      titleKey: "checklist.classesTitle",
+      descriptionKey:
         classes > 0
-          ? `${classes} ${classes === 1 ? "class" : "classes"} set up.`
-          : "Each class gets its own join code and QR for students.",
+          ? classes === 1
+            ? "checklist.classesSetUpOne"
+            : "checklist.classesSetUpMany"
+          : "checklist.classesBody",
+      descriptionVars: { count: classes },
       href: "/admin/classes/new",
-      cta: classes > 0 ? "Add another" : "Create a class",
+      ctaKey: classes > 0 ? "checklist.classesMoreCta" : "checklist.classesCta",
       done: classes > 0,
     },
     {
       id: "students",
-      title: "Add your students",
-      description:
+      titleKey: "checklist.studentsTitle",
+      descriptionKey:
         students > 0
-          ? `${students} ${students === 1 ? "student has" : "students have"} joined.`
-          : "Share the class code, or invite them by email.",
+          ? students === 1
+            ? "checklist.studentsJoinedOne"
+            : "checklist.studentsJoinedMany"
+          : "checklist.studentsBody",
+      descriptionVars: { count: students },
       href: "/admin/invites/new?role=STUDENT",
-      cta: students > 0 ? "Add more" : "Add students",
+      ctaKey: students > 0 ? "checklist.studentsMoreCta" : "checklist.studentsCta",
       done: students > 0,
       blockedBy: classes === 0 ? "classes" : undefined,
     },
     {
       id: "branding",
-      title: "Make it look like your school",
-      description:
+      titleKey: "checklist.brandingTitle",
+      descriptionKey:
         school?.logoPath || school?.brandPrimary
-          ? "Your colours are applied across the app."
-          : "Add your logo and colour so families recognise it instantly.",
+          ? "checklist.brandingDone"
+          : "checklist.brandingBody",
       href: "/admin/settings",
-      cta: "Customise",
+      ctaKey: "checklist.brandingCta",
       done: Boolean(school?.logoPath || school?.brandPrimary),
     },
     {
       id: "bulletin",
-      title: "Post your first bulletin",
-      description:
-        posts > 0
-          ? "Your noticeboard is live."
-          : "Say hello. It is the first thing families will see.",
+      titleKey: "checklist.bulletinTitle",
+      descriptionKey: posts > 0 ? "checklist.bulletinDone" : "checklist.bulletinBody",
       href: "/bulletin/new",
-      cta: "Write a post",
+      ctaKey: "checklist.bulletinCta",
       done: posts > 0,
     },
   ];

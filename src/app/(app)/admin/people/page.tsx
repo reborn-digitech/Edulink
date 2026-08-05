@@ -138,14 +138,20 @@ export default async function DirectoryPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Directory</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("people.title")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {roleCounts.map((c) => `${c._count} ${t(ROLE_META[c.role as SchoolRole].pluralKey).toLowerCase()}`).join(" · ") ||
-              "Nobody yet"}
+            {roleCounts
+              .map((c) =>
+                t("people.countOfRole", {
+                  count: c._count,
+                  role: t(ROLE_META[c.role as SchoolRole].pluralKey).toLowerCase(),
+                }),
+              )
+              .join(" · ") || t("people.nobodyYet")}
           </p>
         </div>
         <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
-          <a href={exportHref}>Export CSV</a>
+          <a href={exportHref}>{t("people.exportCsv")}</a>
         </Button>
       </div>
 
@@ -162,36 +168,37 @@ export default async function DirectoryPage({
 
       {status === "SUSPENDED" && (
         <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
-          These people cannot open this school. Their work, marks and attendance are untouched, and
-          none of this affects any other school they belong to.
+          {t("people.suspendedNote")}
         </p>
       )}
 
       {status === "LEFT" && (
         <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg">
-          These pupils have gone. Everything they did here is still here — you are still the school
-          that holds it. Each of them has a school record they and their family can show to their
-          next school, and undoing a departure puts them back on the roll.
+          {t("people.leftNote")}
         </p>
       )}
 
       {members.length === 0 ? (
         <EmptyState
           icon={<UsersThreeIcon weight="duotone" className="size-8" />}
-          title={query || roleFilter || classFilter ? "Nobody matches those filters" : "Nobody here yet"}
+          title={
+            query || roleFilter || classFilter
+              ? t("people.noMatches")
+              : t("people.nobodyHereYet")
+          }
           description={
             query || roleFilter || classFilter
-              ? "Try a different spelling, or clear the filters to see everyone."
-              : "Invite teachers and students, and they will appear here as they join."
+              ? t("people.noMatchesBody")
+              : t("people.nobodyHereBody")
           }
           action={
             query || roleFilter || classFilter ? (
               <Button asChild variant="secondary">
-                <Link href="/admin/people">Clear filters</Link>
+                <Link href="/admin/people">{t("people.clearFilters")}</Link>
               </Button>
             ) : (
               <Button asChild>
-                <Link href="/admin/invites/new">Invite people</Link>
+                <Link href="/admin/invites/new">{t("people.invitePeople")}</Link>
               </Button>
             )
           }
@@ -199,7 +206,11 @@ export default async function DirectoryPage({
       ) : (
         <>
           <p className="text-xs text-fg-muted" aria-live="polite">
-            Showing {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, total)} of {total}
+            {t("people.showingRange", {
+              from: (page - 1) * PAGE_SIZE + 1,
+              to: Math.min(page * PAGE_SIZE, total),
+              total,
+            })}
           </p>
 
           <ul className="space-y-2">
@@ -227,7 +238,7 @@ export default async function DirectoryPage({
                         {/* Student emails are school-issued but still PII; only
                             admins see this page, and it is never public. */}
                         <p className="truncate text-xs text-fg-muted">
-                          {member.title ?? member.user.email ?? "No email"}
+                          {member.title ?? member.user.email ?? t("people.noEmail")}
                         </p>
                         {classNames.length > 0 && (
                           <p className="mt-0.5 truncate text-xs text-fg-subtle">
@@ -241,15 +252,21 @@ export default async function DirectoryPage({
                         )}
                         {member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-                            Left {relativeTime(member.leftAt, undefined, locale)}
+                            {t("people.leftAgo", {
+                              when: relativeTime(member.leftAt, undefined, locale),
+                            })}
                             {member.schoolRecord?.destination
-                              ? ` · went to ${member.schoolRecord.destination}`
+                              ? ` · ${t("people.wentTo", { where: member.schoolRecord.destination })}`
                               : ""}
                           </p>
                         )}
                         {member.status === "SUSPENDED" && !member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-warn">
-                            Paused {member.suspendedAt ? relativeTime(member.suspendedAt, undefined, locale) : ""}
+                            {t("people.pausedAgo", {
+                              when: member.suspendedAt
+                                ? relativeTime(member.suspendedAt, undefined, locale)
+                                : "",
+                            })}
                             {member.suspendedReason ? ` · ${member.suspendedReason}` : ""}
                           </p>
                         )}
@@ -301,7 +318,7 @@ export default async function DirectoryPage({
           </ul>
 
           {pages > 1 && (
-            <nav className="flex items-center justify-between gap-3 pt-2" aria-label="Pagination">
+            <nav className="flex items-center justify-between gap-3 pt-2" aria-label={t("people.pagination")}>
               <Button
                 asChild={page > 1}
                 variant="secondary"
@@ -309,13 +326,13 @@ export default async function DirectoryPage({
                 disabled={page === 1}
               >
                 {page > 1 ? (
-                  <Link href={buildHref(params, page - 1)}>Previous</Link>
+                  <Link href={buildHref(params, page - 1)}>{t("people.previous")}</Link>
                 ) : (
-                  <span>Previous</span>
+                  <span>{t("people.previous")}</span>
                 )}
               </Button>
               <span className="text-xs text-fg-muted">
-                Page {page} of {pages}
+                {t("people.pageOf", { page, pages })}
               </span>
               <Button
                 asChild={page < pages}
@@ -324,9 +341,9 @@ export default async function DirectoryPage({
                 disabled={page >= pages}
               >
                 {page < pages ? (
-                  <Link href={buildHref(params, page + 1)}>Next</Link>
+                  <Link href={buildHref(params, page + 1)}>{t("people.next")}</Link>
                 ) : (
-                  <span>Next</span>
+                  <span>{t("people.next")}</span>
                 )}
               </Button>
             </nav>

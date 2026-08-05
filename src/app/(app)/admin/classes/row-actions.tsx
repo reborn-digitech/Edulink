@@ -7,6 +7,8 @@ import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { archiveClass, regenerateJoinCode, restoreClass } from "./actions";
 import { cn } from "@/lib/cn";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 /**
  * Row-level class actions.
@@ -27,6 +29,7 @@ export function ClassRowActions({
   archived: boolean;
   enrollmentCount: number;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -38,7 +41,7 @@ export function ClassRowActions({
     startTransition(async () => {
       const result = await fn();
       if (!result.ok) {
-        toast({ tone: "danger", title: "That did not work", description: result.error });
+        toast({ tone: "danger", title: t("classes.didNotWork"), description: actionError(t, result) });
         return;
       }
       toast({ tone: "ok", title: success });
@@ -54,7 +57,7 @@ export function ClassRowActions({
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          aria-label={`Actions for ${className}`}
+          aria-label={t("classes.actionsFor", { name: className })}
           aria-expanded={open}
           className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted hover:text-fg"
         >
@@ -66,7 +69,7 @@ export function ClassRowActions({
             {/* Click-away layer, so the menu cannot get stranded open. */}
             <button
               type="button"
-              aria-label="Close menu"
+              aria-label={t("classes.closeMenu")}
               className="fixed inset-0 z-30 cursor-default"
               onClick={() => setOpen(false)}
             />
@@ -78,14 +81,14 @@ export function ClassRowActions({
                     onClick={async () => {
                       try {
                         await navigator.clipboard.writeText(code);
-                        toast({ tone: "ok", title: "Class code copied", description: code });
+                        toast({ tone: "ok", title: t("classes.classCodeCopied"), description: code });
                       } catch {
-                        toast({ tone: "warn", title: "Could not copy", description: code });
+                        toast({ tone: "warn", title: t("classes.couldNotCopy"), description: code });
                       }
                       setOpen(false);
                     }}
                   >
-                    Copy join code
+                    {t("classes.copyJoinCode")}
                   </MenuItem>
 
                   <MenuItem
@@ -95,21 +98,25 @@ export function ClassRowActions({
                       startTransition(async () => {
                         const result = await regenerateJoinCode(classId);
                         if (!result.ok) {
-                          toast({ tone: "danger", title: "Could not rotate the code", description: result.error });
+                          toast({
+                            tone: "danger",
+                            title: t("classes.couldNotRotate"),
+                            description: actionError(t, result),
+                          });
                           return;
                         }
                         setCode(result.joinCode!);
                         toast({
                           tone: "ok",
-                          title: "New class code",
-                          description: `${result.joinCode} — the old one no longer works.`,
+                          title: t("classes.newClassCode"),
+                          description: t("classes.oldCodeDead", { code: result.joinCode! }),
                         });
                         setOpen(false);
                         router.refresh();
                       })
                     }
                   >
-                    New join code
+                    {t("classes.newJoinCode")}
                   </MenuItem>
 
                   <MenuItem
@@ -120,7 +127,7 @@ export function ClassRowActions({
                       setConfirming(true);
                     }}
                   >
-                    Archive class
+                    {t("classes.archiveClass")}
                   </MenuItem>
                 </>
               )}
@@ -129,9 +136,11 @@ export function ClassRowActions({
                 <MenuItem
                   icon={<ArrowCounterClockwiseIcon className="size-4" />}
                   disabled={pending}
-                  onClick={() => run(() => restoreClass(classId), `${className} restored`)}
+                  onClick={() =>
+                    run(() => restoreClass(classId), t("classes.restored", { name: className }))
+                  }
                 >
-                  Restore class
+                  {t("classes.restoreClass")}
                 </MenuItem>
               )}
             </div>
@@ -152,32 +161,38 @@ export function ClassRowActions({
             className="w-full max-w-sm rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
           >
             <h2 id="archive-title" className="text-lg font-bold text-fg">
-              Archive {className}?
+              {t("classes.archiveTitle", { name: className })}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-fg-muted">
               {enrollmentCount > 0 ? (
                 <>
-                  <strong className="text-fg">{enrollmentCount} student
-                  {enrollmentCount === 1 ? "" : "s"}</strong> will no longer see this class, and no
-                  more registers can be taken for it.
+                  <strong className="text-fg">
+                    {enrollmentCount === 1
+                      ? t("classes.archiveWarnOne")
+                      : t("classes.archiveWarnMany", { count: enrollmentCount })}
+                  </strong>{" "}
+                  {t("classes.archiveWarnRest")}
                 </>
               ) : (
-                <>No more registers can be taken for this class.</>
+                <>{t("classes.archiveWarnEmpty")}</>
               )}{" "}
-              All attendance and grade history is <strong className="text-fg">kept</strong>, and you
-              can restore it at any time.
+              {t("classes.archiveKept")}{" "}
+              <strong className="text-fg">{t("classes.archiveKeptWord")}</strong>
+              {t("classes.archiveKeptRest")}
             </p>
             <div className="mt-5 flex gap-2">
               <Button variant="ghost" block onClick={() => setConfirming(false)}>
-                Cancel
+                {t("common.cancel")}
               </Button>
               <Button
                 variant="danger"
                 block
                 loading={pending}
-                onClick={() => run(() => archiveClass(classId), `${className} archived`)}
+                onClick={() =>
+                  run(() => archiveClass(classId), t("classes.archivedToast", { name: className }))
+                }
               >
-                Archive
+                {t("classes.archiveConfirm")}
               </Button>
             </div>
           </div>

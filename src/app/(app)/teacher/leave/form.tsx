@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { LEAVE_KINDS, LEAVE_KIND_LABEL, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
+import { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
 import { apply, withdraw } from "./actions";
 import { DateField } from "@/components/ui/field";
 import { useT } from "@/lib/i18n";
@@ -130,7 +130,7 @@ export function LeaveForm({
                     kind === option ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
                   )}
                 >
-                  {LEAVE_KIND_LABEL[option]}
+                  {t(LEAVE_KIND_LABEL_KEY[option])}
                 </button>
               ))}
             </div>
@@ -203,7 +203,9 @@ export function LeaveForm({
                     {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""}
                   </p>
                   <p className="text-xs text-fg-muted">
-                    {LEAVE_KIND_LABEL[request.kind as LeaveKind] ?? request.kind}
+                    {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
+                      ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
+                      : request.kind}
                     {request.nominatedName ? ` · suggested cover: ${request.nominatedName}` : ""}
                   </p>
                   <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">

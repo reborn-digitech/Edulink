@@ -1,3 +1,4 @@
+import type { TranslationKey } from "./i18n/dictionary";
 import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -139,16 +140,34 @@ export type PeriodInput = {
   kind: PeriodKind;
 };
 
-export type Result = { ok: boolean; error?: string; id?: string };
+/**
+ * ⚠ `errorKey` AND `errorVars`, NOT A SENTENCE. Every write path here is
+ * reached from a form, and the message it hands back is read by whoever is
+ * standing at that form — see the note on `periodTimeError`.
+ */
+export type Result = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+  /**
+   * The one message this layer cannot key: an `AccessError` from the tenancy
+   * layer, whose text is minted app-wide and shared by every route. See the
+   * same note on `CreateInvitesState`.
+   */
+  error?: string;
+  id?: string;
+};
 
-function cleanPeriodInput(input: PeriodInput): { error?: string; data?: PeriodInput } {
+function cleanPeriodInput(
+  input: PeriodInput,
+): { errorKey?: TranslationKey; errorVars?: Record<string, string | number>; data?: PeriodInput } {
   const name = input.name.trim().slice(0, NAME_MAX);
-  if (name.length < 1) return { error: "Give the period a name." };
+  if (name.length < 1) return { errorKey: "timetable.needPeriodName" };
   if (!(PERIOD_KINDS as readonly string[]).includes(input.kind)) {
-    return { error: "Choose whether this is a lesson or a break." };
+    return { errorKey: "timetable.lessonOrBreak" };
   }
   const timeError = periodTimeError(input);
-  if (timeError) return { error: timeError };
+  if (timeError) return { errorKey: timeError.key, errorVars: timeError.vars };
   return {
     data: {
       name,
@@ -162,7 +181,9 @@ function cleanPeriodInput(input: PeriodInput): { error?: string; data?: PeriodIn
 export async function createPeriod(ctx: ActiveContext, input: PeriodInput): Promise<Result> {
   assertAdmin(ctx);
   const cleaned = cleanPeriodInput(input);
-  if (cleaned.error || !cleaned.data) return { ok: false, error: cleaned.error };
+  if (cleaned.errorKey || !cleaned.data) {
+    return { ok: false, errorKey: cleaned.errorKey, errorVars: cleaned.errorVars };
+  }
 
   const existing = await db.timetablePeriod.count({
     where: { schoolId: ctx.schoolId, archivedAt: null },
@@ -170,7 +191,8 @@ export async function createPeriod(ctx: ActiveContext, input: PeriodInput): Prom
   if (existing >= MAX_PERIODS) {
     return {
       ok: false,
-      error: `A school day here tops out at ${MAX_PERIODS} periods. Retire one first.`,
+      errorKey: "timetable.tooManyPeriods",
+      errorVars: { max: MAX_PERIODS },
     };
   }
 
@@ -205,13 +227,15 @@ export async function updatePeriod(
 ): Promise<Result> {
   assertAdmin(ctx);
   const cleaned = cleanPeriodInput(input);
-  if (cleaned.error || !cleaned.data) return { ok: false, error: cleaned.error };
+  if (cleaned.errorKey || !cleaned.data) {
+    return { ok: false, errorKey: cleaned.errorKey, errorVars: cleaned.errorVars };
+  }
 
   const result = await db.timetablePeriod.updateMany({
     where: { id: periodId, schoolId: ctx.schoolId },
     data: cleaned.data,
   });
-  if (result.count === 0) return { ok: false, error: "That period is not in this school." };
+  if (result.count === 0) return { ok: false, errorKey: "timetable.periodNotHere" };
   await resequence(ctx.schoolId);
 
   await audit({
@@ -240,7 +264,7 @@ export async function archivePeriod(ctx: ActiveContext, periodId: string): Promi
     where: { id: periodId, schoolId: ctx.schoolId, archivedAt: null },
     data: { archivedAt: new Date() },
   });
-  if (result.count === 0) return { ok: false, error: "That period is already retired." };
+  if (result.count === 0) return { ok: false, errorKey: "timetable.alreadyRetired" };
   await resequence(ctx.schoolId);
 
   await audit({
@@ -259,7 +283,7 @@ export async function restorePeriod(ctx: ActiveContext, periodId: string): Promi
     where: { id: periodId, schoolId: ctx.schoolId, archivedAt: { not: null } },
     data: { archivedAt: null },
   });
-  if (result.count === 0) return { ok: false, error: "That period is not retired." };
+  if (result.count === 0) return { ok: false, errorKey: "timetable.notRetired" };
   await resequence(ctx.schoolId);
 
   await audit({
@@ -283,7 +307,7 @@ export async function applySuggestedDay(ctx: ActiveContext): Promise<Result & { 
   assertAdmin(ctx);
   const existing = await db.timetablePeriod.count({ where: { schoolId: ctx.schoolId } });
   if (existing > 0) {
-    return { ok: false, error: "This school already has a day set up. Edit it instead." };
+    return { ok: false, errorKey: "timetable.dayExists" };
   }
 
   let created = 0;
@@ -356,13 +380,13 @@ export type SlotInput = {
 export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Result> {
   assertAdmin(ctx);
 
-  if (!isWeekdayNumber(input.weekday)) return { ok: false, error: "That is not a day of the week." };
+  if (!isWeekdayNumber(input.weekday)) return { ok: false, errorKey: "timetable.notAWeekday" };
   if (!(WEEK_DAYS as readonly number[]).includes(input.weekday)) {
-    return { ok: false, error: "The timetable covers Monday to Saturday." };
+    return { ok: false, errorKey: "timetable.mondayToSaturday" };
   }
 
   const subject = input.subject.trim().slice(0, SUBJECT_MAX);
-  if (subject.length < 1) return { ok: false, error: "Say what is taught in this lesson." };
+  if (subject.length < 1) return { ok: false, errorKey: "timetable.saySubject" };
 
   const [klass, period] = await Promise.all([
     db.class.findFirst({
@@ -374,10 +398,14 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
       select: { id: true, name: true, kind: true },
     }),
   ]);
-  if (!klass) return { ok: false, error: "That class is not in this school." };
-  if (!period) return { ok: false, error: "That period is not on this school's day." };
+  if (!klass) return { ok: false, errorKey: "timetable.classNotHere" };
+  if (!period) return { ok: false, errorKey: "timetable.periodNotOnDay" };
   if (period.kind === "BREAK") {
-    return { ok: false, error: `${period.name} is a break. Nothing is timetabled into it.` };
+    return {
+      ok: false,
+      errorKey: "timetable.isABreak",
+      errorVars: { name: period.name },
+    };
   }
 
   // The teacher is re-read against the school and the role, like every id that
@@ -394,7 +422,7 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
       },
       select: { id: true },
     });
-    if (!teacher) return { ok: false, error: "That person is not teaching staff at this school." };
+    if (!teacher) return { ok: false, errorKey: "timetable.notTeachingStaff" };
     teacherMembershipId = teacher.id;
   }
 
@@ -412,7 +440,8 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
     if (clash) {
       return {
         ok: false,
-        error: `They already teach ${clash.class.name} — ${clash.subject} at that time.`,
+        errorKey: "timetable.teacherClash",
+        errorVars: { class: clash.class.name, subject: clash.subject },
       };
     }
   }
@@ -465,7 +494,7 @@ export async function clearSlot(
   const result = await db.timetableSlot.deleteMany({
     where: { schoolId: ctx.schoolId, classId, weekday, periodId },
   });
-  if (result.count === 0) return { ok: false, error: "There is no lesson in that slot." };
+  if (result.count === 0) return { ok: false, errorKey: "timetable.noLessonThere" };
 
   await audit({
     schoolId: ctx.schoolId,
@@ -496,25 +525,25 @@ export async function copyDay(
   toWeekday: number,
 ): Promise<Result & { copied?: number; unstaffed?: number }> {
   assertAdmin(ctx);
-  if (fromWeekday === toWeekday) return { ok: false, error: "Those are the same day." };
+  if (fromWeekday === toWeekday) return { ok: false, errorKey: "timetable.sameDay" };
   if (
     !(WEEK_DAYS as readonly number[]).includes(fromWeekday) ||
     !(WEEK_DAYS as readonly number[]).includes(toWeekday)
   ) {
-    return { ok: false, error: "The timetable covers Monday to Saturday." };
+    return { ok: false, errorKey: "timetable.mondayToSaturday" };
   }
 
   const klass = await db.class.findFirst({
     where: { id: classId, schoolId: ctx.schoolId, archivedAt: null },
     select: { id: true },
   });
-  if (!klass) return { ok: false, error: "That class is not in this school." };
+  if (!klass) return { ok: false, errorKey: "timetable.classNotHere" };
 
   const source = await db.timetableSlot.findMany({
     where: { schoolId: ctx.schoolId, classId, weekday: fromWeekday },
     select: { periodId: true, subject: true, teacherMembershipId: true, room: true },
   });
-  if (source.length === 0) return { ok: false, error: "There is nothing on that day to copy." };
+  if (source.length === 0) return { ok: false, errorKey: "timetable.nothingToCopy" };
 
   // Everyone already teaching somebody else at these times on the target day.
   const busy = await db.timetableSlot.findMany({

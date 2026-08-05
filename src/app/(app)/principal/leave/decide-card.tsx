@@ -6,8 +6,9 @@ import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
-import { LEAVE_KIND_LABEL, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
+import { LEAVE_KIND_LABEL_KEY, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
 import { decide } from "./actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * One request, and the decision.
@@ -34,6 +35,7 @@ export function DecideCard({
    */
   classesCovered: number;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -73,7 +75,9 @@ export function DecideCard({
           <p className="text-xs text-fg-muted">
             {request.fromDateKey}
             {request.toDateKey !== request.fromDateKey ? ` to ${request.toDateKey}` : ""} ·{" "}
-            {LEAVE_KIND_LABEL[request.kind as LeaveKind] ?? request.kind}
+            {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
+              ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
+              : request.kind}
           </p>
           <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-fg">
             {request.reason}

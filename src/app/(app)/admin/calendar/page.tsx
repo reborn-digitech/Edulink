@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { CakeIcon, CalendarBlankIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { approvedLeaveBetween, LEAVE_KIND_LABEL, type LeaveKind } from "@/lib/leave";
+import { approvedLeaveBetween, LEAVE_KIND_LABEL_KEY, type LeaveKind } from "@/lib/leave";
 import { db } from "@/lib/db";
-import { listHolidays, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holidays";
+import { listHolidays, type HolidayKind } from "@/lib/holidays";
 import { listAcademicYears } from "@/lib/academic-year";
 import { todayKey, addDaysToKey, isoToDisplayDate } from "@/lib/dates";
 import { birthdaysBetween } from "@/lib/birthdays";
@@ -73,9 +73,7 @@ export default async function CalendarPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.calendar")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          The school year, and the days the school is shut.
-        </p>
+        <p className="mt-1 text-sm text-fg-muted">{t("calendar.subtitle")}</p>
       </div>
 
       {/* ---------------- staff away ---------------- */}
@@ -83,8 +81,8 @@ export default async function CalendarPage() {
         <section aria-labelledby="leave-heading">
           <Card>
             <CardHeader
-              title={<span id="leave-heading">Staff away</span>}
-              description="Approved leave for the next few months. Staff only — never shown to students or parents."
+              title={<span id="leave-heading">{t("calendar.staffAway")}</span>}
+              description={t("calendar.staffAwayBody")}
             />
             <CardBody>
               <ul className="space-y-1.5">
@@ -98,9 +96,13 @@ export default async function CalendarPage() {
                         {row.applicantName}
                       </span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {row.fromDateKey}
-                        {row.toDateKey !== row.fromDateKey ? ` to ${row.toDateKey}` : ""} ·{" "}
-                        {LEAVE_KIND_LABEL[row.kind as LeaveKind] ?? row.kind}
+                        {row.toDateKey !== row.fromDateKey
+                          ? t("calendar.rangeTo", { from: row.fromDateKey, to: row.toDateKey })
+                          : row.fromDateKey}{" "}
+                        ·{" "}
+                        {LEAVE_KIND_LABEL_KEY[row.kind as LeaveKind]
+                          ? t(LEAVE_KIND_LABEL_KEY[row.kind as LeaveKind])
+                          : row.kind}
                       </span>
                     </span>
                   </li>
@@ -119,19 +121,15 @@ export default async function CalendarPage() {
         <Card>
           <CardHeader
             icon={<CakeIcon weight="duotone" className="size-5" />}
-            title={<span id="birthday-heading">Birthdays</span>}
-            description="The next few months, from what people gave when they joined. Staff only — a date of birth is what a parent proves a claim with."
+            title={<span id="birthday-heading">{t("calendar.birthdays")}</span>}
+            description={t("calendar.birthdaysBody")}
           />
           <CardBody>
             {birthdays.length === 0 ? (
               /* NOT AN ERROR STATE. Almost nobody has a birthday on file until
                  people start joining with one, and saying so is more use than
                  an empty box that reads as broken. */
-              <p className="text-sm leading-relaxed text-fg-muted">
-                Nobody has a birthday coming up on file. Dates are collected when somebody joins or
-                accepts an invitation, and it is optional — so this fills in over time rather than
-                all at once.
-              </p>
+              <p className="text-sm leading-relaxed text-fg-muted">{t("calendar.noBirthdays")}</p>
             ) : (
               <ul className="space-y-1.5">
                 {birthdays.map((row) => (
@@ -143,10 +141,10 @@ export default async function CalendarPage() {
                       <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
                       <span className="block truncate text-xs text-fg-muted">
                         {isoToDisplayDate(row.dateKey)}
-                        {row.turning !== null && <> · turning {row.turning}</>}
+                        {row.turning !== null && <> · {t("calendar.turning", { age: row.turning })}</>}
                         {/* Said rather than silently shifted: somebody looking
                             for the 29th needs to know why it is on the 28th. */}
-                        {row.movedFromLeapDay && <> · born on 29 February</>}
+                        {row.movedFromLeapDay && <> · {t("calendar.bornLeapDay")}</>}
                       </span>
                     </span>
                     <Badge tone="neutral" size="sm">
@@ -167,9 +165,7 @@ export default async function CalendarPage() {
             icon={<GraduationCapIcon weight="duotone" className="size-5" />}
             title={<span id="year-heading">{t("feature.academicYear")}</span>}
             description={
-              current
-                ? `Running ${current.name}. Badges earned this year reset when it is closed — and are kept forever once they are.`
-                : "Nothing set up yet. Attendance badges fall back to a rolling 60 days until a year exists."
+              current ? t("calendar.yearRunning", { name: current.name }) : t("calendar.yearNone")
             }
           />
           <CardBody>
@@ -193,8 +189,8 @@ export default async function CalendarPage() {
         <Card className="lg:sticky lg:top-4 lg:self-start">
           <CardHeader
             icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
-            title="Add to the calendar"
-            description="A festival, a break, an exam week or a sports day."
+            title={t("calendar.addTitle")}
+            description={t("calendar.addBody")}
           />
           <CardBody>
             <EntryForm today={today} />
@@ -203,14 +199,14 @@ export default async function CalendarPage() {
 
         <div className="space-y-3">
           <h2 id="calendar-heading" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-            This school's calendar
+            {t("calendar.listTitle")}
           </h2>
 
           {entries.length === 0 ? (
             <EmptyState
               icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-              title="Nothing on the calendar yet"
-              description="Add the year's festivals and breaks so teachers are warned before they take a register on a day the school is shut."
+              title={t("calendar.nothingYet")}
+              description={t("calendar.nothingYetBody")}
             />
           ) : (
             <EntryList
@@ -220,10 +216,10 @@ export default async function CalendarPage() {
                 name: entry.name,
                 startDateKey: entry.startDateKey,
                 endDateKey: entry.endDateKey,
+                /* The KIND crosses over, not a label. `EntryList` is a client
+                   component with the reader's `t`; resolving the word here
+                   would resolve it in nobody's language in particular. */
                 kind: entry.kind as HolidayKind,
-                kindLabel: HOLIDAY_KIND_META[entry.kind as HolidayKind]?.label ?? entry.kind,
-                closesSchool:
-                  HOLIDAY_KIND_META[entry.kind as HolidayKind]?.closesSchool ?? false,
                 note: entry.note,
               }))}
             />

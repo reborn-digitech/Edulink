@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CheckCircleIcon, CopyIcon, XIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 
 /**
  * One-time welcome shown straight after registration.
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
  * first-time tours)
  */
 export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; schoolCode: string }) {
+  const t = useT();
   const { toast } = useToast();
   const [dismissed, setDismissed] = useState(false);
   if (dismissed) return null;
@@ -22,7 +24,7 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
       <button
         type="button"
         onClick={() => setDismissed(true)}
-        aria-label="Dismiss welcome message"
+        aria-label={t("admin.dismissWelcome")}
         className="absolute right-2 top-2 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
       >
         <XIcon weight="bold" className="size-4" />
@@ -33,11 +35,10 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
           <CheckCircleIcon weight="fill" className="size-7" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-lg font-bold text-fg">Welcome to EduLink, {schoolName}</h2>
-          <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-            Your school is live. Share this code with teachers and students so they can join — and
-            work through the checklist below whenever you have a moment.
-          </p>
+          <h2 className="text-lg font-bold text-fg">
+            {t("admin.welcomeTitle", { name: schoolName })}
+          </h2>
+          <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("admin.welcomeBody")}</p>
 
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <code className="rounded-[--radius-sm] border-2 border-dashed border-accent bg-surface px-3 py-2 text-base font-bold tracking-[0.12em] text-accent-strong">
@@ -50,17 +51,17 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(schoolCode);
-                  toast({ tone: "ok", title: "School code copied" });
+                  toast({ tone: "ok", title: t("admin.codeCopied") });
                 } catch {
                   toast({
                     tone: "warn",
-                    title: "Could not copy automatically",
-                    description: "Select the code above to copy it.",
+                    title: t("admin.couldNotCopy"),
+                    description: t("admin.selectToCopy"),
                   });
                 }
               }}
             >
-              Copy code
+              {t("admin.copyCode")}
             </Button>
           </div>
         </div>

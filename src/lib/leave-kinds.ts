@@ -1,3 +1,5 @@
+import type { TranslationKey } from "./i18n/dictionary";
+
 /**
  * The vocabulary of staff leave, minus anything that touches a database.
  *
@@ -14,11 +16,17 @@
 export const LEAVE_KINDS = ["CASUAL", "SICK", "UNPAID", "OTHER"] as const;
 export type LeaveKind = (typeof LEAVE_KINDS)[number];
 
-export const LEAVE_KIND_LABEL: Record<LeaveKind, string> = {
-  CASUAL: "Casual leave",
-  SICK: "Sick leave",
-  UNPAID: "Unpaid leave",
-  OTHER: "Other",
+/**
+ * ⚠ KEYS, NOT WORDS — see `ROLE_META`. This table is read by three different
+ * roles on three different pages, and it was English on all of them: a Hindi
+ * teacher's own leave form offered "Casual leave" beside fully translated
+ * labels, and had done since the teacher surface was translated.
+ */
+export const LEAVE_KIND_LABEL_KEY: Record<LeaveKind, TranslationKey> = {
+  CASUAL: "leaveKind.casual",
+  SICK: "leaveKind.sick",
+  UNPAID: "leaveKind.unpaid",
+  OTHER: "leaveKind.other",
 };
 
 export const LEAVE_STATUSES = ["PENDING", "APPROVED", "DECLINED", "CANCELLED"] as const;

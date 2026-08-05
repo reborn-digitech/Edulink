@@ -132,8 +132,8 @@ describe("parseInviteCsv", () => {
     // Header is line 1, so the two bad rows are on lines 3 and 4.
     expect(result.valid).toHaveLength(1);
     expect(result.problems).toHaveLength(2);
-    expect(result.problems[0]).toMatchObject({ line: 3, reason: "No email address" });
-    expect(result.problems[1]).toMatchObject({ line: 4, reason: "Not a valid email address" });
+    expect(result.problems[0]).toMatchObject({ line: 3, reasonKey: "invites.noEmail" });
+    expect(result.problems[1]).toMatchObject({ line: 4, reasonKey: "invites.invalidEmail" });
   });
 
   it("reports in-file duplicates once, pointing at the first occurrence", () => {
@@ -142,7 +142,8 @@ describe("parseInviteCsv", () => {
     );
     expect(result.valid).toHaveLength(1);
     expect(result.duplicates).toEqual(["priya@x.school"]);
-    expect(result.problems[0]!.reason).toBe("Already listed on line 2");
+    expect(result.problems[0]!.reasonKey).toBe("invites.duplicateOfLine");
+    expect(result.problems[0]!.reasonVars).toEqual({ line: 2 });
   });
 
   it("survives a quoted name containing a comma", () => {

@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { recordLeaving, undoLeaving } from "./actions";
 import { DateField } from "@/components/ui/field";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 const REASONS = [
-  { value: "TRANSFERRED", label: "Transferred to another school" },
-  { value: "GRADUATED", label: "Finished their schooling here" },
-  { value: "LEFT", label: "Left, for another reason" },
-] as const;
+  { value: "TRANSFERRED", labelKey: "people.transferred" },
+  { value: "GRADUATED", labelKey: "people.graduated" },
+  { value: "LEFT", labelKey: "people.leftOther" },
+] as const satisfies readonly { value: string; labelKey: TranslationKey }[];
 
 /**
  * Recording that a pupil has left, from the directory.
@@ -37,6 +40,7 @@ export function LeavingActions({
   name: string;
   hasLeft: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -58,19 +62,19 @@ export function LeavingActions({
           startTransition(async () => {
             const result = await undoLeaving(membershipId);
             if (!result.ok) {
-              toast({ tone: "danger", title: "Not undone", description: result.error });
+              toast({ tone: "danger", title: t("people.notUndone"), description: actionError(t, result) });
               return;
             }
             toast({
               tone: "ok",
-              title: `${name} is back on the roll`,
-              description: "Add them to a class again from the class page.",
+              title: t("people.backOnRoll", { name }),
+              description: t("people.backOnRollBody"),
             });
             router.refresh();
           })
         }
       >
-        Undo leaving
+        {t("people.undoLeaving")}
       </Button>
     );
   }
@@ -83,23 +87,19 @@ export function LeavingActions({
         icon={<SignOutIcon weight="bold" />}
         onClick={() => setOpen(true)}
       >
-        <span className="sr-only">Record that {name} has left</span>
-        <span aria-hidden="true">Left</span>
+        <span className="sr-only">{t("people.recordLeftFor", { name })}</span>
+        <span aria-hidden="true">{t("people.left")}</span>
       </Button>
     );
   }
 
   return (
     <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
-      <p className="text-sm font-semibold text-fg">Record that {name} has left?</p>
-      <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-        Their access to this school ends today and they come off every class roll. Nothing is
-        deleted — their marks and attendance stay here. They and their family get a school record
-        they can show to their next school, and you can undo this.
-      </p>
+      <p className="text-sm font-semibold text-fg">{t("people.leavingTitle", { name })}</p>
+      <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.leavingBody")}</p>
 
       <label className="mt-3 block">
-        <span className="block text-xs font-medium text-fg">Why</span>
+        <span className="block text-xs font-medium text-fg">{t("people.leavingWhy")}</span>
         <select
           value={reason}
           onChange={(event) => setReason(event.target.value)}
@@ -107,7 +107,7 @@ export function LeavingActions({
         >
           {REASONS.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {t(option.labelKey)}
             </option>
           ))}
         </select>
@@ -116,20 +116,21 @@ export function LeavingActions({
       <div className="mt-2 flex flex-wrap gap-2">
         <label className="min-w-[10rem] flex-1">
           <span className="block text-xs font-medium text-fg">
-            Where they went <span className="font-normal text-fg-muted">(optional)</span>
+            {t("people.whereTheyWent")}{" "}
+            <span className="font-normal text-fg-muted">{t("people.optional")}</span>
           </span>
           <input
             type="text"
             value={destination}
             maxLength={200}
-            placeholder="Oakfield Academy"
+            placeholder={t("people.destinationPlaceholder")}
             onChange={(event) => setDestination(event.target.value)}
             className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
           />
         </label>
         <div className="min-w-[11rem]">
           <DateField
-            label="Last day"
+label={t("people.lastDay")}
             value={leftOn}
             onChange={(event) => setLeftOn(event.target.value)}
           />
@@ -138,8 +139,8 @@ export function LeavingActions({
 
       <label className="mt-2 block">
         <span className="block text-xs font-medium text-fg">
-          A line for their next school{" "}
-          <span className="font-normal text-fg-muted">(optional — the family reads this)</span>
+          {t("people.lineForNextSchool")}{" "}
+          <span className="font-normal text-fg-muted">{t("people.optionalFamilyReads")}</span>
         </span>
         <textarea
           value={note}
@@ -170,20 +171,20 @@ export function LeavingActions({
                 leftOn,
               });
               if (!result.ok) {
-                setError(result.error ?? "That did not work.");
+                setError(actionError(t, result, "people.didNotWork"));
                 return;
               }
               setOpen(false);
               toast({
                 tone: "ok",
-                title: `${name} is recorded as having left`,
-                description: "Their family has been told and can see the record.",
+                title: t("people.recordedAsLeft", { name }),
+                description: t("people.recordedAsLeftBody"),
               });
               router.refresh();
             });
           }}
         >
-          Record it
+          {t("people.recordIt")}
         </Button>
         <Button
           size="sm"
@@ -193,7 +194,7 @@ export function LeavingActions({
             setError(null);
           }}
         >
-          Cancel
+          {t("common.cancel")}
         </Button>
       </div>
     </div>

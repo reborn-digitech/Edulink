@@ -6,12 +6,9 @@ import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { addCalendarEntry } from "./actions";
-
-const KINDS = [
-  { value: "HOLIDAY", label: "Holiday — school is shut" },
-  { value: "EXAM", label: "Exam — school is open" },
-  { value: "EVENT", label: "Event — school is open" },
-] as const;
+import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holiday-kinds";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 /**
  * Adding a day, or a stretch of days.
@@ -26,6 +23,7 @@ const KINDS = [
  * that the school is shut.
  */
 export function EntryForm({ today }: { today: string }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -33,7 +31,7 @@ export function EntryForm({ today }: { today: string }) {
   const [name, setName] = useState("");
   const [start, setStart] = useState(today);
   const [end, setEnd] = useState("");
-  const [kind, setKind] = useState<(typeof KINDS)[number]["value"]>("HOLIDAY");
+  const [kind, setKind] = useState<HolidayKind>("HOLIDAY");
   const [note, setNote] = useState("");
   const [multiDay, setMultiDay] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,17 +41,17 @@ export function EntryForm({ today }: { today: string }) {
     setError(null);
 
     if (name.trim().length < 2) {
-      setError("Give it a name — “Diwali” or “Half-yearly exams”.");
+      setError(t("calendar.needName"));
       return;
     }
     if (!start) {
-      setError("Pick the date it starts.");
+      setError(t("calendar.needStart"));
       return;
     }
     // Caught here for a fast, in-place message; re-checked on the server, which
     // is the check that counts.
     if (multiDay && end && end < start) {
-      setError("The end date cannot be before the start date.");
+      setError(t("calendar.endBeforeStart"));
       return;
     }
 
@@ -67,11 +65,11 @@ export function EntryForm({ today }: { today: string }) {
       });
 
       if (!result.ok) {
-        setError(result.error ?? "Could not add that.");
+        setError(actionError(t, result, "calendar.couldNotAdd"));
         return;
       }
 
-      toast({ tone: "ok", title: `${name.trim()} added to the calendar` });
+      toast({ tone: "ok", title: t("calendar.added", { name: name.trim() }) });
       setName("");
       setNote("");
       setEnd("");
@@ -92,28 +90,28 @@ export function EntryForm({ today }: { today: string }) {
       )}
 
       <TextField
-        label="What is it"
+        label={t("calendar.whatIsIt")}
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Diwali"
+        placeholder={t("calendar.namePlaceholder")}
       />
 
       <SelectField
-        label="Kind"
+        label={t("calendar.kind")}
         value={kind}
-        onChange={(e) => setKind(e.target.value as (typeof KINDS)[number]["value"])}
-        hint="Only a holiday warns teachers off taking the register."
+        onChange={(e) => setKind(e.target.value as HolidayKind)}
+        hint={t("calendar.kindHint")}
       >
-        {KINDS.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+        {HOLIDAY_KINDS.map((option) => (
+          <option key={option} value={option}>
+            {t(HOLIDAY_KIND_META[option].optionKey)}
           </option>
         ))}
       </SelectField>
 
       <DateField
-        label={multiDay ? "Starts" : "Date"}
+        label={multiDay ? t("calendar.starts") : t("calendar.date")}
         required
         value={start}
         onChange={(e) => setStart(e.target.value)}
@@ -121,10 +119,10 @@ export function EntryForm({ today }: { today: string }) {
 
       {multiDay ? (
         <DateField
-          label="Ends"
+          label={t("calendar.ends")}
           value={end}
           onChange={(e) => setEnd(e.target.value)}
-          hint="Included — the last day the school is shut."
+          hint={t("calendar.endsHint")}
         />
       ) : (
         <button
@@ -135,20 +133,20 @@ export function EntryForm({ today }: { today: string }) {
           }}
           className="text-sm font-medium text-accent-strong underline underline-offset-4"
         >
-          It lasts more than a day
+          {t("calendar.lastsLonger")}
         </button>
       )}
 
       <TextAreaField
-        label="Note"
+        label={t("calendar.note")}
         rows={2}
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        hint="Optional. Anything staff should know."
+        hint={t("calendar.noteHint")}
       />
 
       <Button type="submit" block loading={pending}>
-        {pending ? "Adding…" : "Add to calendar"}
+        {pending ? t("common.adding") : t("calendar.addAction")}
       </Button>
     </form>
   );

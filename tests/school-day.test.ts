@@ -79,26 +79,44 @@ describe("whether a period is usable", () => {
   });
 
   it("⚠ refuses one that ends before it starts, and one that ends when it starts", () => {
-    expect(periodTimeError({ startMinute: 555, endMinute: 510 })).toMatch(/end after it starts/);
-    expect(periodTimeError({ startMinute: 510, endMinute: 510 })).toMatch(/end after it starts/);
+    // The KEY, not the wording. `periodTimeError` returns one now, so this
+    // asserts which fault was found rather than how it happens to be phrased —
+    // which is both stronger and survives a copy change in `en.ts`.
+    expect(periodTimeError({ startMinute: 555, endMinute: 510 })).toEqual({
+      key: "timetable.endAfterStart",
+    });
+    expect(periodTimeError({ startMinute: 510, endMinute: 510 })).toEqual({
+      key: "timetable.endAfterStart",
+    });
   });
 
   it("refuses a period too short to be one", () => {
-    expect(
-      periodTimeError({ startMinute: 510, endMinute: 510 + MIN_PERIOD_MINUTES - 1 }),
-    ).toMatch(/at least/);
+    expect(periodTimeError({ startMinute: 510, endMinute: 510 + MIN_PERIOD_MINUTES - 1 })).toEqual({
+      key: "timetable.tooShort",
+      vars: { minutes: MIN_PERIOD_MINUTES },
+    });
     expect(periodTimeError({ startMinute: 510, endMinute: 510 + MIN_PERIOD_MINUTES })).toBeNull();
   });
 
   it("refuses times outside a day", () => {
-    expect(periodTimeError({ startMinute: -1, endMinute: 100 })).toMatch(/not a time/);
-    expect(periodTimeError({ startMinute: 1440, endMinute: 1450 })).toMatch(/not a time/);
-    expect(periodTimeError({ startMinute: 100, endMinute: 1441 })).toMatch(/not a time/);
+    expect(periodTimeError({ startMinute: -1, endMinute: 100 })?.key).toBe(
+      "timetable.startNotATime",
+    );
+    expect(periodTimeError({ startMinute: 1440, endMinute: 1450 })?.key).toBe(
+      "timetable.startNotATime",
+    );
+    expect(periodTimeError({ startMinute: 100, endMinute: 1441 })?.key).toBe(
+      "timetable.endNotATime",
+    );
   });
 
   it("refuses anything that is not a whole number of minutes", () => {
-    expect(periodTimeError({ startMinute: 510.5, endMinute: 555 })).toMatch(/HH:MM/);
-    expect(periodTimeError({ startMinute: Number.NaN, endMinute: 555 })).toMatch(/HH:MM/);
+    expect(periodTimeError({ startMinute: 510.5, endMinute: 555 })?.key).toBe(
+      "timetable.bothTimes",
+    );
+    expect(periodTimeError({ startMinute: Number.NaN, endMinute: 555 })?.key).toBe(
+      "timetable.bothTimes",
+    );
   });
 
   it("allows a period ending at midnight, which is the only 1440 that is real", () => {

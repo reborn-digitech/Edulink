@@ -20,6 +20,7 @@ export default async function ClassesPage({
 }: {
   searchParams: Promise<{ archived?: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const { archived } = await searchParams;
   const showArchived = archived === "1";
@@ -44,20 +45,22 @@ export default async function ClassesPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Classes</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("classes.title")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {showArchived
-              ? `${classes.length} archived`
-              : `${classes.length} active class${classes.length === 1 ? "" : "es"}`}
+              ? t("classes.archivedCount", { count: classes.length })
+              : classes.length === 1
+                ? t("classes.activeCountOne")
+                : t("classes.activeCountMany", { count: classes.length })}
           </p>
         </div>
         <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/admin/classes/new">New class</Link>
+          <Link href="/admin/classes/new">{t("classes.newClass")}</Link>
         </Button>
       </div>
 
       {archivedCount > 0 && (
-        <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Filter">
+        <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("classes.filter")}>
           <Link
             href="/admin/classes"
             aria-current={!showArchived ? "page" : undefined}
@@ -65,7 +68,7 @@ export default async function ClassesPage({
               !showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >
-            Active
+            {t("classes.active")}
           </Link>
           <Link
             href="/admin/classes?archived=1"
@@ -74,7 +77,7 @@ export default async function ClassesPage({
               showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >
-            Archived ({archivedCount})
+            {t("classes.archivedTab", { count: archivedCount })}
           </Link>
         </nav>
       )}
@@ -82,20 +85,18 @@ export default async function ClassesPage({
       {classes.length === 0 ? (
         <EmptyState
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-          title={showArchived ? "Nothing archived" : "No classes yet"}
+          title={showArchived ? t("classes.nothingArchived") : t("classes.noClassesYet")}
           description={
-            showArchived
-              ? "Archived classes keep all their attendance and grade history, and can be restored at any time."
-              : "A class is where attendance, assignments and grades live. Create your first one and you will get a join code students can use straight away."
+            showArchived ? t("classes.nothingArchivedBody") : t("classes.noClassesBody")
           }
           action={
             !showArchived ? (
               <Button asChild>
-                <Link href="/admin/classes/new">Create a class</Link>
+                <Link href="/admin/classes/new">{t("classes.createClass")}</Link>
               </Button>
             ) : (
               <Button asChild variant="secondary">
-                <Link href="/admin/classes">Back to active</Link>
+                <Link href="/admin/classes">{t("classes.backToActive")}</Link>
               </Button>
             )
           }
@@ -124,23 +125,24 @@ export default async function ClassesPage({
                         {klass.section ? ` · ${klass.section}` : ""}
                       </Link>
                       <p className="truncate text-xs text-fg-muted">
-                        {klass._count.enrollments} student
-                        {klass._count.enrollments === 1 ? "" : "s"}
+                        {klass._count.enrollments === 1
+                          ? t("classes.studentsOne")
+                          : t("classes.studentsMany", { count: klass._count.enrollments })}
                         {klass.subject ? ` · ${klass.subject}` : ""}
-                        {klass.room ? ` · Room ${klass.room}` : ""}
+                        {klass.room ? ` · ${t("classes.room", { room: klass.room })}` : ""}
                       </p>
                       <p className="mt-0.5 truncate text-xs text-fg-subtle">
                         {teacherNames.length > 0 ? (
                           teacherNames.join(", ")
                         ) : (
-                          <span className="text-warn">No teacher assigned</span>
+                          <span className="text-warn">{t("classes.noTeacherAssigned")}</span>
                         )}{" "}
                         ·{" "}
                         <Link
                           href={`/admin/classes/${klass.id}`}
                           className="font-medium text-accent-strong hover:underline"
                         >
-                          staffing
+                          {t("classes.staffingLink")}
                         </Link>
                       </p>
                     </div>

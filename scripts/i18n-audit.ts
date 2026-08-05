@@ -40,6 +40,33 @@ const ROOTS = ["src/app", "src/components"];
  */
 const LIB_ROOTS = ["src/lib"];
 
+/**
+ * ⚠ AND THE SERVER ACTIONS, which were the THIRD blind spot and were found the
+ * same way as the first two: by reading a form that had just been translated.
+ *
+ * `ROOTS` above walks `.tsx`. Every `actions.ts` beside those components is
+ * `.ts`, so none of them were ever opened — and a server action's whole
+ * user-visible surface is `return { ok: false, error: "…" }`, which is the
+ * sentence a reader sees the moment they mistype something. A Marathi admin
+ * filling in a fully-translated class form and leaving the name blank got
+ * "Give the class a name." back in English.
+ *
+ * Counted here rather than in `userVisible`, because the shape is different:
+ * not JSX and not a `label:` in a lookup table, but the value of an `error`,
+ * `_form` or `errors` field on a returned object.
+ */
+const APP_TS_ROOTS = ["src/app"];
+
+function actionMessages(source: string): string[] {
+  const code = source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const found: string[] = [];
+  for (const key of ["error", "_form", "message", "reason"]) {
+    const re = new RegExp(`\\b${key}:\\s*["'\`]([^"'\`]{6,200})["'\`]`, "g");
+    for (const m of code.matchAll(re)) found.push(m[1]!.trim());
+  }
+  return [...new Set(found)].filter((s) => /[a-z]/.test(s) && /\s/.test(s));
+}
+
 /** Same in every language, or not shown to a reader. */
 const SKIP_EXACT = new Set([
   "EduLink", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
@@ -95,8 +122,13 @@ function userVisible(source: string): string[] {
   const found: string[] = [];
 
   // 1. JSX text nodes: >Some words<
-  for (const m of code.matchAll(/>\s*([A-Z][^<>{}\n]{3,120}?)\s*</g)) {
-    found.push(m[1]!.trim());
+  //
+  // ⚠ NOT AFTER AN ARROW. `=> Promise<…>` is a return type, and the `>` of the
+  // arrow made every one of them look like a JSX text node saying "Promise".
+  // Three files reported one untranslated string that did not exist, which is
+  // the kind of noise that teaches you to stop reading the output.
+  for (const m of code.matchAll(/(^|[^=])>\s*([A-Z][^<>{}\n]{3,120}?)\s*</gm)) {
+    found.push(m[2]!.trim());
   }
 
   // 1b. Reader-facing VALUES in lookup tables — `label: "Late"` and friends.
@@ -117,6 +149,10 @@ function userVisible(source: string): string[] {
     .filter((s) => /[a-z]/.test(s))          // needs lowercase letters: skips ACRONYMS
     .filter((s) => !SKIP_EXACT.has(s))
     .filter((s) => !/^[a-z-]+$/.test(s))     // css-ish tokens
+    // A DOTTED KEY IS THE FIX, NOT THE PROBLEM. Once a lookup table holds
+    // `labelKey: "classes.duplicateName"` the `name:`/`label:` rules above
+    // match the KEY, and a finished file reports itself as unfinished.
+    .filter((s) => !/^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9]+)+$/.test(s))
     .filter((s) => !s.includes("t(\""));
 }
 
@@ -124,12 +160,15 @@ function scan(): Finding[] {
   const files = [
     ...ROOTS.flatMap((root) => walk(root, ".tsx")),
     ...LIB_ROOTS.flatMap((root) => walk(root, ".ts")).filter((f) => !f.includes("i18n")),
+    ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();
 
   const out: Finding[] = [];
   for (const file of files) {
     const source = readFileSync(file, "utf8");
-    const strings = userVisible(source);
+    const strings = file.endsWith(".ts")
+      ? [...new Set([...userVisible(source), ...actionMessages(source)])]
+      : userVisible(source);
     const dates = unlocalisedDates(source);
     if (strings.length > 0 || dates > 0) out.push({ file, strings, dates });
   }

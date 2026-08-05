@@ -10,7 +10,7 @@ import { URGENT_REASONS, type AuditEntry, type ReportGroup, type ReportTarget } 
 // Re-exported so server code has one import site; client components must import
 // from ./safety-labels directly (this module is server-only).
 export type { AuditEntry, ReportGroup, ReportTarget };
-export { reasonLabel, describeAction, isSensitiveAction } from "./safety-labels";
+export { reasonKey, actionKey, isSensitiveAction } from "./safety-labels";
 
 /**
  * Safety centre.

@@ -9,16 +9,21 @@ import { Avatar } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { createClass, setClassTeacher } from "../actions";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-const COLORS = [
-  { value: "#f59e0b", name: "Amber" },
-  { value: "#10b981", name: "Emerald" },
-  { value: "#3b82f6", name: "Blue" },
-  { value: "#6366f1", name: "Indigo" },
-  { value: "#ec4899", name: "Pink" },
-  { value: "#8b5cf6", name: "Violet" },
-  { value: "#14b8a6", name: "Teal" },
-  { value: "#ef4444", name: "Red" },
+/* The swatch labels are the `aria-label` a screen reader announces, so they are
+   words rather than decoration — keys, like everything else a reader hears. */
+const COLORS: { value: string; nameKey: TranslationKey }[] = [
+  { value: "#f59e0b", nameKey: "classes.amber" },
+  { value: "#10b981", nameKey: "classes.emerald" },
+  { value: "#3b82f6", nameKey: "classes.blue" },
+  { value: "#6366f1", nameKey: "classes.indigo" },
+  { value: "#ec4899", nameKey: "classes.pink" },
+  { value: "#8b5cf6", nameKey: "classes.violet" },
+  { value: "#14b8a6", nameKey: "classes.teal" },
+  { value: "#ef4444", nameKey: "classes.red" },
 ];
 
 type Teacher = { membershipId: string; name: string; avatarKey: string | null };
@@ -35,6 +40,7 @@ export function ClassForm({
   gradeRangeLabel: string | null;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -54,7 +60,7 @@ export function ClassForm({
     setErrors({});
 
     if (name.trim().length < 1) {
-      setErrors({ name: "Give the class a name." });
+      setErrors({ name: t("classes.needName") });
       return;
     }
 
@@ -69,7 +75,17 @@ export function ClassForm({
       });
 
       if (!result.ok) {
-        setErrors(result.errors);
+        // Zod's messages first, this action's keyed ones over the top — see the
+        // note on `ClassState` for why they arrive in two pieces.
+        setErrors({
+          ...result.errors,
+          ...Object.fromEntries(
+            Object.entries(result.errorKeys ?? {}).map(([field, key]) => [
+              field,
+              t(key, result.errorVars?.[field]),
+            ]),
+          ),
+        });
         return;
       }
 
@@ -80,8 +96,8 @@ export function ClassForm({
         if (!assigned.ok) {
           toast({
             tone: "warn",
-            title: "Class created, but the teacher was not assigned",
-            description: assigned.error ?? "You can assign them from the class list.",
+            title: t("classes.createdNotAssigned"),
+            description: actionError(t, assigned, "classes.assignFromList"),
           });
         }
       }
@@ -97,11 +113,8 @@ export function ClassForm({
         <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
           <CheckCircleIcon weight="fill" className="size-10" />
         </div>
-        <h2 className="text-xl font-bold text-fg">{name} is ready</h2>
-        <p className="mx-auto mt-2 max-w-sm text-sm text-fg-muted">
-          Students join by entering this class code. Write it on the board, or share it in
-          your next newsletter.
-        </p>
+        <h2 className="text-xl font-bold text-fg">{t("classes.ready", { name })}</h2>
+        <p className="mx-auto mt-2 max-w-sm text-sm text-fg-muted">{t("classes.readyBody")}</p>
 
         <div className="mx-auto mt-5 flex max-w-xs items-center gap-2">
           <code className="flex-1 rounded-[--radius-md] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
@@ -110,13 +123,17 @@ export function ClassForm({
           <Button
             variant="secondary"
             size="icon"
-            aria-label="Copy class code"
+            aria-label={t("classes.copyClassCode")}
             onClick={async () => {
               try {
                 await navigator.clipboard.writeText(created.joinCode);
-                toast({ tone: "ok", title: "Class code copied" });
+                toast({ tone: "ok", title: t("classes.classCodeCopied") });
               } catch {
-                toast({ tone: "warn", title: "Could not copy", description: "Select the code to copy it." });
+                toast({
+                  tone: "warn",
+                  title: t("classes.couldNotCopy"),
+                  description: t("classes.selectToCopy"),
+                });
               }
             }}
           >
@@ -135,10 +152,10 @@ export function ClassForm({
               setRoom("");
             }}
           >
-            Create another
+            {t("classes.createAnother")}
           </Button>
           <Button block onClick={() => router.push("/admin/classes")}>
-            Done
+            {t("classes.done")}
           </Button>
         </div>
       </div>
@@ -157,20 +174,20 @@ export function ClassForm({
       )}
 
       <TextField
-        label="Class name"
+        label={t("classes.name")}
         required
         autoFocus
-        placeholder="Grade 5 · Sunflower"
+        placeholder={t("classes.namePlaceholder")}
         value={name}
         error={errors.name}
         onChange={(e) => setName(e.target.value)}
-        hint="Whatever your school actually calls it."
+        hint={t("classes.nameHint")}
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Subject"
-          placeholder="Mathematics"
+          label={t("classes.subject")}
+          placeholder={t("classes.subjectPlaceholder")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
@@ -182,13 +199,13 @@ export function ClassForm({
             would be worse than no help at all. */}
         {grades.length > 0 ? (
           <label className="block">
-            <span className="block text-sm font-medium text-fg">Grade or year</span>
+            <span className="block text-sm font-medium text-fg">{t("classes.gradeOrYear")}</span>
             <select
               value={gradeLevel}
               onChange={(e) => setGradeLevel(e.target.value)}
               className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
             >
-              <option value="">Not tied to a grade</option>
+              <option value="">{t("classes.notTiedToGrade")}</option>
               {grades.map((grade) => (
                 <option key={grade} value={grade}>
                   {grade}
@@ -197,46 +214,44 @@ export function ClassForm({
             </select>
             {gradeRangeLabel && (
               <span className="mt-1 block text-xs text-fg-muted">
-                This school teaches {gradeRangeLabel}.
+                {t("classes.schoolTeaches", { range: gradeRangeLabel })}
               </span>
             )}
           </label>
         ) : (
           <TextField
-            label="Grade or year"
+            label={t("classes.gradeOrYear")}
             placeholder="5"
             value={gradeLevel}
             error={errors.gradeLevel}
             onChange={(e) => setGradeLevel(e.target.value)}
             hint={
               gradeRangeLabel
-                ? `This school teaches ${gradeRangeLabel}.`
-                : "No grade range is set for this school yet."
+                ? t("classes.schoolTeaches", { range: gradeRangeLabel })
+                : t("classes.noGradeRange")
             }
           />
         )}
       </div>
 
       <TextField
-        label="Section (optional)"
+        label={t("classes.sectionOptional")}
         placeholder="A"
         value={section}
         onChange={(e) => setSection(e.target.value)}
-        hint="For a school that splits a grade — 5A, 5B. Leave it empty if there is only one Class 5."
+        hint={t("classes.sectionHint")}
       />
 
       <TextField
-        label="Room"
+        label={t("classes.roomLabel")}
         placeholder="B12"
         value={room}
         onChange={(e) => setRoom(e.target.value)}
       />
 
       <fieldset>
-        <legend className="text-sm font-medium text-fg">Colour</legend>
-        <p className="mt-0.5 text-xs text-fg-muted">
-          Helps teachers spot the right class at a glance.
-        </p>
+        <legend className="text-sm font-medium text-fg">{t("classes.colour")}</legend>
+        <p className="mt-0.5 text-xs text-fg-muted">{t("classes.colourHint")}</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {COLORS.map((option) => (
             <button
@@ -244,7 +259,7 @@ export function ClassForm({
               type="button"
               onClick={() => setColor(option.value)}
               aria-pressed={color === option.value}
-              aria-label={option.name}
+              aria-label={t(option.nameKey)}
               className={cn(
                 "grid size-11 place-items-center rounded-full transition-transform active:scale-90",
                 color === option.value && "ring-2 ring-accent ring-offset-2 ring-offset-[--surface]",
@@ -265,10 +280,8 @@ export function ClassForm({
 
       {teachers.length > 0 && (
         <fieldset>
-          <legend className="text-sm font-medium text-fg">Class teacher</legend>
-          <p className="mt-0.5 text-xs text-fg-muted">
-            Only assigned teachers can take this register. You can change it later.
-          </p>
+          <legend className="text-sm font-medium text-fg">{t("classes.classTeacher")}</legend>
+          <p className="mt-0.5 text-xs text-fg-muted">{t("classes.classTeacherHint")}</p>
           <div className="mt-2 space-y-1.5">
             {teachers.map((teacher) => (
               <button
@@ -299,7 +312,7 @@ export function ClassForm({
       )}
 
       <Button type="submit" block size="lg" loading={pending}>
-        {pending ? "Creating…" : "Create class"}
+        {pending ? t("classes.creating") : t("classes.createAction")}
       </Button>
     </form>
   );

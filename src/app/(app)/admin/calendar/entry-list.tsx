@@ -10,8 +10,9 @@ import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { cn } from "@/lib/cn";
 import { editCalendarEntry, removeCalendarEntry } from "./actions";
-import type { HolidayKind } from "@/lib/holidays";
-import { useLocale } from "@/lib/i18n";
+import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holiday-kinds";
+import { actionError } from "@/lib/action-error";
+import { useLocale, useT } from "@/lib/i18n";
 
 export type Entry = {
   id: string;
@@ -19,16 +20,8 @@ export type Entry = {
   startDateKey: string;
   endDateKey: string;
   kind: HolidayKind;
-  kindLabel: string;
-  closesSchool: boolean;
   note: string | null;
 };
-
-const KINDS: { value: HolidayKind; label: string }[] = [
-  { value: "HOLIDAY", label: "Holiday — school is shut" },
-  { value: "EXAM", label: "Exam — school is open" },
-  { value: "EVENT", label: "Event — school is open" },
-];
 
 /**
  * The year's calendar, grouped by month.
@@ -73,6 +66,9 @@ export function EntryList({ entries, today }: { entries: Entry[]; today: string 
 }
 
 function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale: string }) {
+  /* The hook, not a prop — this whole file is `"use client"`, so unlike the
+     leaf date components in server pages there is a provider above it. */
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -90,11 +86,11 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
   function save() {
     setError(null);
     if (name.trim().length < 2) {
-      setError("Give it a name.");
+      setError(t("calendar.needNameShort"));
       return;
     }
     if (end < start) {
-      setError("The end date cannot be before the start date.");
+      setError(t("calendar.endBeforeStart"));
       return;
     }
     startTransition(async () => {
@@ -105,10 +101,10 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
         kind,
       });
       if (!result.ok) {
-        setError(result.error ?? "Could not save that.");
+        setError(actionError(t, result, "calendar.couldNotSave"));
         return;
       }
-      toast({ tone: "ok", title: "Calendar updated" });
+      toast({ tone: "ok", title: t("calendar.updated") });
       setEditing(false);
       router.refresh();
     });
@@ -118,10 +114,10 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
     startTransition(async () => {
       const result = await removeCalendarEntry(entry.id);
       if (!result.ok) {
-        toast({ tone: "warn", title: "Could not remove it", description: result.error });
+        toast({ tone: "warn", title: t("calendar.couldNotRemove"), description: actionError(t, result) });
         return;
       }
-      toast({ tone: "ok", title: `${entry.name} removed` });
+      toast({ tone: "ok", title: t("calendar.removed", { name: entry.name }) });
       router.refresh();
     });
   }
@@ -134,21 +130,37 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
             {error}
           </p>
         )}
-        <TextField label="What is it" value={name} onChange={(e) => setName(e.target.value)} />
-        <SelectField label="Kind" value={kind} onChange={(e) => setKind(e.target.value as HolidayKind)}>
-          {KINDS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
+        <TextField
+          label={t("calendar.whatIsIt")}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <SelectField
+          label={t("calendar.kind")}
+          value={kind}
+          onChange={(e) => setKind(e.target.value as HolidayKind)}
+        >
+          {HOLIDAY_KINDS.map((option) => (
+            <option key={option} value={option}>
+              {t(HOLIDAY_KIND_META[option].optionKey)}
             </option>
           ))}
         </SelectField>
         <div className="grid gap-3 sm:grid-cols-2">
-          <DateField label="Starts"  value={start} onChange={(e) => setStart(e.target.value)} />
-          <DateField label="Ends"  value={end} onChange={(e) => setEnd(e.target.value)} />
+          <DateField
+            label={t("calendar.starts")}
+            value={start}
+            onChange={(e) => setStart(e.target.value)}
+          />
+          <DateField
+            label={t("calendar.ends")}
+            value={end}
+            onChange={(e) => setEnd(e.target.value)}
+          />
         </div>
         <div className="flex gap-2">
           <Button size="sm" loading={pending} icon={<CheckIcon weight="bold" className="size-4" />} onClick={save}>
-            Save
+            {t("common.save")}
           </Button>
           <Button
             size="sm"
@@ -163,7 +175,7 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
               setKind(entry.kind);
             }}
           >
-            Cancel
+            {t("common.cancel")}
           </Button>
         </div>
       </li>
@@ -189,17 +201,17 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
 
       {/* Label as well as tone — the difference between an exam and a holiday is
           never carried by colour alone. WCAG 1.4.1. */}
-      <Badge tone={entry.closesSchool ? "accent" : "neutral"} size="sm">
-        {entry.kindLabel}
+      <Badge tone={HOLIDAY_KIND_META[entry.kind].closesSchool ? "accent" : "neutral"} size="sm">
+        {t(HOLIDAY_KIND_META[entry.kind].labelKey)}
       </Badge>
 
       {confirmDelete ? (
         <span className="flex items-center gap-1.5">
           <Button size="sm" variant="danger" loading={pending} onClick={remove}>
-            Remove
+            {t("common.remove")}
           </Button>
           <Button size="sm" variant="ghost" onClick={() => setConfirmDelete(false)}>
-            Keep
+            {t("common.keep")}
           </Button>
         </span>
       ) : (
@@ -207,7 +219,7 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
           <Button
             size="icon-sm"
             variant="ghost"
-            aria-label={`Edit ${entry.name}`}
+            aria-label={t("calendar.editEntry", { name: entry.name })}
             onClick={() => setEditing(true)}
           >
             <PencilSimpleIcon weight="bold" className="size-4" />
@@ -215,7 +227,7 @@ function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale
           <Button
             size="icon-sm"
             variant="ghost"
-            aria-label={`Remove ${entry.name}`}
+            aria-label={t("calendar.removeEntry", { name: entry.name })}
             onClick={() => setConfirmDelete(true)}
           >
             <TrashIcon weight="bold" className="size-4" />

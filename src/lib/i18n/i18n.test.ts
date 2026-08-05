@@ -53,10 +53,35 @@ const SHARED_WITH_ENGLISH = new Set([
    * month and year in the reader's own language); the mask stays put.
    */
   "field.datePlaceholder",
+  /**
+   * An EXAMPLE ADDRESS, on the same grounds as `login.emailPlaceholder` above.
+   * A reader typing their school's real URL over it is helped by seeing the
+   * shape of one; `your-school` is not a word being withheld from them.
+   */
+  "settings.websitePlaceholder",
 ]);
 
 const placeholdersIn = (value: string): Set<string> =>
   new Set([...value.matchAll(/\{(\w+)\}/g)].map((m) => m[1]!));
+
+/**
+ * A value with no letters of its own — `"{period}, {day}"`, `"{label} ({count})"`.
+ *
+ * ⚠ A RULE RATHER THAN A LIST, and the difference matters. These arrived when
+ * the admin surface needed strings that join two already-translated pieces, and
+ * the two checks below both flagged them: identical to English (of course — a
+ * comma is a comma) and containing no Devanagari (of course — it contains no
+ * letters at all). Adding each one to `SHARED_WITH_ENGLISH` would have worked
+ * and would have been a lie: that set means "a word we are deliberately not
+ * translating", and there is no word here. A predicate keeps the next one from
+ * needing a decision.
+ *
+ * Deliberately narrow. The moment a template carries ONE real word —
+ * `"{count} students"` — it has letters and both checks apply again.
+ */
+function isPureTemplate(value: string): boolean {
+  return !/\p{L}/u.test(value.replace(/\{\w+\}/g, ""));
+}
 
 describe("every language says the same things", () => {
   it("has a dictionary for every language offered in the switcher", () => {
@@ -87,7 +112,9 @@ describe("⚠ nothing was left in English by accident", () => {
   it.each(LOCALES.filter((l) => l.code !== "en"))("$english translates every string", (language) => {
     const flat = FLAT.get(language.code)!;
     const untranslated = [...flat]
-      .filter(([key, value]) => !SHARED_WITH_ENGLISH.has(key) && value === ENGLISH.get(key))
+      .filter(([key]) => !SHARED_WITH_ENGLISH.has(key))
+      .filter(([, value]) => !isPureTemplate(value))
+      .filter(([key, value]) => value === ENGLISH.get(key))
       .map(([key]) => key);
 
     expect(
@@ -103,6 +130,7 @@ describe("⚠ nothing was left in English by accident", () => {
     for (const code of ["hi", "mr"] as const) {
       const noDevanagari = [...FLAT.get(code)!]
         .filter(([key]) => !SHARED_WITH_ENGLISH.has(key))
+        .filter(([, value]) => !isPureTemplate(value))
         .filter(([, value]) => !/[ऀ-ॿ]/.test(value))
         .map(([key]) => key);
       expect(noDevanagari, `${code} values with no Devanagari at all`).toEqual([]);

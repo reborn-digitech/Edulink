@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { startAcademicYear, rollOverAcademicYear } from "./actions";
-import { useLocale } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
+import { useLocale, useT } from "@/lib/i18n";
 
 type Year = {
   id: string;
@@ -30,6 +31,7 @@ type Year = {
  */
 export function YearPanel({ years, today }: { years: Year[]; today: string }) {
   const locale = useLocale();
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -56,11 +58,11 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
     setError(null);
 
     if (name.trim().length < 2) {
-      setError("Give the year a name — “2026–27” is what most schools write.");
+      setError(t("calendar.yearNeedName"));
       return;
     }
     if (end <= start) {
-      setError("The year has to end after it starts.");
+      setError(t("calendar.yearEndAfterStart"));
       return;
     }
 
@@ -71,15 +73,13 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
         endDateKey: end,
       });
       if (!result.ok) {
-        setError(result.error ?? "Could not save that year.");
+        setError(actionError(t, result, "calendar.couldNotSaveYear"));
         return;
       }
       toast({
         tone: "ok",
-        title: `${name.trim()} added`,
-        description: current
-          ? "It is waiting — close the current year when you are ready to move into it."
-          : "This is now your current year. Attendance badges are counted from its start date.",
+        title: t("calendar.yearAdded", { name: name.trim() }),
+        description: current ? t("calendar.yearIsWaiting") : t("calendar.yearNowCurrent"),
       });
       setShowForm(false);
       router.refresh();
@@ -91,15 +91,16 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
     startTransition(async () => {
       const result = await rollOverAcademicYear(current.id, nextYearId);
       if (!result.ok) {
-        toast({ tone: "warn", title: "Could not close the year", description: result.error });
+        toast({ tone: "warn", title: t("calendar.couldNotClose"), description: actionError(t, result) });
         return;
       }
       toast({
         tone: "ok",
-        title: `${current.name} is closed`,
-        description: `${result.badgesArchived ?? 0} badges kept for good across ${
-          result.studentsArchived ?? 0
-        } students.`,
+        title: t("calendar.yearClosed", { name: current.name }),
+        description: t("calendar.badgesKept", {
+          badges: result.badgesArchived ?? 0,
+          students: result.studentsArchived ?? 0,
+        }),
       });
       setConfirming(false);
       setNextYearId("");
@@ -118,19 +119,26 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-fg">{current.name}</p>
             <p className="text-sm text-fg-muted">
-              {formatDateKey(current.startDateKey, { day: "numeric", month: "long", year: "numeric" }, locale)}{" "}
-              to{" "}
-              {formatDateKey(current.endDateKey, { day: "numeric", month: "long", year: "numeric" }, locale)}
+              {t("calendar.rangeTo", {
+                from: formatDateKey(
+                  current.startDateKey,
+                  { day: "numeric", month: "long", year: "numeric" },
+                  locale,
+                ),
+                to: formatDateKey(
+                  current.endDateKey,
+                  { day: "numeric", month: "long", year: "numeric" },
+                  locale,
+                ),
+              })}
             </p>
           </div>
           <Badge tone="ok" size="sm">
-            Current
+            {t("calendar.current")}
           </Badge>
         </div>
       ) : (
-        <p className="text-sm text-fg-muted">
-          Until a year is set up, attendance badges look back a rolling 60 days and never reset.
-        </p>
+        <p className="text-sm text-fg-muted">{t("calendar.noYearBody")}</p>
       )}
 
       {/* ---------------- years waiting or finished ---------------- */}
@@ -149,7 +157,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
                   {formatDateKey(year.endDateKey, { day: "numeric", month: "short", year: "numeric" }, locale)}
                 </span>
                 <Badge tone={year.closedAt ? "neutral" : "info"} size="sm">
-                  {year.closedAt ? "Closed" : "Waiting"}
+                  {year.closedAt ? t("calendar.closed") : t("calendar.waiting")}
                 </Badge>
               </li>
             ))}
@@ -169,45 +177,45 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
           )}
 
           <TextField
-            label="Year name"
+            label={t("calendar.yearName")}
             required
             autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="2026–27"
-            hint="However your school writes it — this is what parents will see."
+            hint={t("calendar.yearNameHint")}
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
             <DateField
-              label="Starts"
+              label={t("calendar.starts")}
               required
               value={start}
               onChange={(e) => setStart(e.target.value)}
             />
             <DateField
-              label="Ends"
+              label={t("calendar.ends")}
               required
               value={end}
               onChange={(e) => setEnd(e.target.value)}
-              hint="A guide, not a trigger — you close the year yourself."
+              hint={t("calendar.yearEndsHint")}
             />
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row">
             <Button type="submit" loading={pending}>
-              {current ? "Add this year" : "Start the academic year"}
+              {current ? t("calendar.addThisYear") : t("calendar.startTheYear")}
             </Button>
             {current && (
               <Button type="button" variant="ghost" onClick={() => setShowForm(false)}>
-                Cancel
+                {t("common.cancel")}
               </Button>
             )}
           </div>
         </form>
       ) : (
         <Button variant="secondary" size="sm" onClick={() => setShowForm(true)}>
-          Add next year
+          {t("calendar.addNextYear")}
         </Button>
       )}
 
@@ -217,31 +225,29 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
           <div className="flex items-start gap-2.5">
             <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" />
             <div className="min-w-0 space-y-1">
-              <p className="font-semibold text-fg">End {current.name}</p>
+              <p className="font-semibold text-fg">
+                {t("calendar.endYear", { name: current.name })}
+              </p>
               {/*
                 Said in full, because this is the one irreversible thing on the
                 page. An admin who does not know that badges are archived rather
                 than deleted will not press it; one who thinks nothing happens
                 will press it in the middle of term.
               */}
-              <p className="text-sm text-fg-muted">
-                Every badge each child holds right now is written into their profile and kept
-                forever. The new year then starts empty — nobody holds an attendance badge until
-                they have built one up again.
-              </p>
+              <p className="text-sm text-fg-muted">{t("calendar.endYearBody")}</p>
             </div>
           </div>
 
           <div className="mt-3 space-y-3">
             <SelectField
-              label="Move into"
+              label={t("calendar.moveInto")}
               value={nextYearId}
               onChange={(e) => {
                 setNextYearId(e.target.value);
                 setConfirming(false);
               }}
             >
-              <option value="">Choose a year…</option>
+              <option value="">{t("calendar.chooseYear")}</option>
               {candidates.map((year) => (
                 <option key={year.id} value={year.id}>
                   {year.name}
@@ -252,10 +258,10 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
             {confirming ? (
               <div className="flex flex-col gap-2 sm:flex-row">
                 <Button variant="danger" loading={pending} onClick={rollOver}>
-                  Yes, close {current.name}
+                  {t("calendar.confirmClose", { name: current.name })}
                 </Button>
                 <Button variant="ghost" onClick={() => setConfirming(false)}>
-                  Not yet
+                  {t("calendar.notYet")}
                 </Button>
               </div>
             ) : (
@@ -264,7 +270,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
                 disabled={!nextYearId}
                 onClick={() => setConfirming(true)}
               >
-                Close the year
+                {t("calendar.closeTheYear")}
               </Button>
             )}
           </div>

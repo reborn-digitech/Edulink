@@ -17,6 +17,7 @@ export default async function NewInvitePage({
 }: {
   searchParams: Promise<{ role?: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const { role } = await searchParams;
 
@@ -42,14 +43,11 @@ export default async function NewInvitePage({
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All invitations
+        {t("invites.allInvitations")}
       </Link>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Invite people</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">
-        Paste one email per line, or a whole CSV exported from your MIS. We will tell you
-        exactly which rows worked.
-      </p>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("invites.invitePeople")}</h1>
+      <p className="mt-1.5 text-sm text-fg-muted">{t("invites.newSubtitle")}</p>
 
       <InviteForm
         className="mt-7"

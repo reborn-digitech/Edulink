@@ -8,6 +8,8 @@ import { parseInviteCsv } from "@/lib/csv";
 import { sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { INVITE_TTL_DAYS, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
+import type { InviteCsvResult } from "@/lib/csv";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -15,14 +17,26 @@ export type InviteOutcome = {
   email: string;
   name: string;
   status: "sent" | "skipped" | "failed";
-  reason?: string;
+  reasonKey?: TranslationKey;
 };
 
+/**
+ * ⚠ TWO ERROR FIELDS, AND THE SPLIT IS HONEST RATHER THAN UNTIDY.
+ *
+ * `errorKey` is everything this action decides itself, returned as a key so the
+ * form resolves it in the reader's language. `error` is the one case it cannot:
+ * an `AccessError` thrown by the tenancy layer, whose `message` is an English
+ * string minted app-wide and shared by every route. Collapsing them would mean
+ * either pretending the AccessError is translated or dropping it on the floor.
+ * When AccessError learns to carry a key, this field goes.
+ */
 export type CreateInvitesState = {
   ok: boolean;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
   error?: string;
   outcomes: InviteOutcome[];
-  problems: { line: number; value: string; reason: string }[];
+  problems: InviteCsvResult["problems"];
   sent: number;
 };
 
@@ -49,23 +63,23 @@ export async function createInvites(input: {
   }
 
   if (!SCHOOL_ROLES.includes(input.role as SchoolRole)) {
-    return { ok: false, error: "Unknown role.", outcomes: [], problems: [], sent: 0 };
+    return { ok: false, errorKey: "invites.unknownRole", outcomes: [], problems: [], sent: 0 };
   }
   const role = input.role as SchoolRole;
 
   const text = (input.csv ?? "").trim();
   if (!text) {
-    return { ok: false, error: "Add at least one email address.", outcomes: [], problems: [], sent: 0 };
+    return { ok: false, errorKey: "invites.needOneEmail", outcomes: [], problems: [], sent: 0 };
   }
   if (text.length > 500_000) {
-    return { ok: false, error: "That list is too large. Split it into smaller batches.", outcomes: [], problems: [], sent: 0 };
+    return { ok: false, errorKey: "invites.listTooLarge", outcomes: [], problems: [], sent: 0 };
   }
 
   const { valid, problems } = parseInviteCsv(text);
   if (valid.length === 0) {
     return {
       ok: false,
-      error: "None of those rows had a usable email address.",
+      errorKey: "invites.noUsableRows",
       outcomes: [],
       problems,
       sent: 0,
@@ -74,7 +88,8 @@ export async function createInvites(input: {
   if (valid.length > 500) {
     return {
       ok: false,
-      error: `That is ${valid.length} invitations at once. Please do 500 or fewer per batch.`,
+      errorKey: "invites.tooManyAtOnce",
+      errorVars: { count: valid.length },
       outcomes: [],
       problems,
       sent: 0,
@@ -90,7 +105,7 @@ export async function createInvites(input: {
       select: { id: true },
     });
     if (!klass) {
-      return { ok: false, error: "That class is not in your school.", outcomes: [], problems, sent: 0 };
+      return { ok: false, errorKey: "invites.classNotYours", outcomes: [], problems, sent: 0 };
     }
     classId = klass.id;
   }
@@ -120,7 +135,7 @@ export async function createInvites(input: {
         email: row.email,
         name: row.name,
         status: "skipped",
-        reason: "Already in your school with this role",
+        reasonKey: "invites.alreadyInSchool",
       });
       continue;
     }
@@ -134,7 +149,7 @@ export async function createInvites(input: {
         email: row.email,
         name: row.name,
         status: "skipped",
-        reason: "An invitation is already waiting for them",
+        reasonKey: "invites.alreadyInvited",
       });
       continue;
     }
@@ -171,7 +186,7 @@ export async function createInvites(input: {
         email: row.email,
         name: row.name,
         status: "failed",
-        reason: "We could not send this one. Try again.",
+        reasonKey: "invites.couldNotSendRow",
       });
     }
   }
@@ -189,7 +204,9 @@ export async function createInvites(input: {
   return { ok: true, outcomes, problems, sent };
 }
 
-export async function revokeInvite(inviteId: string): Promise<{ ok: boolean; error?: string }> {
+export async function revokeInvite(
+  inviteId: string,
+): Promise<{ ok: boolean; error?: string; errorKey?: TranslationKey }> {
   try {
     const ctx = await requireApiRole("ADMIN");
 
@@ -198,7 +215,7 @@ export async function revokeInvite(inviteId: string): Promise<{ ok: boolean; err
       where: { id: inviteId, schoolId: ctx.schoolId, status: "PENDING" },
       data: { status: "REVOKED" },
     });
-    if (result.count === 0) return { ok: false, error: "That invitation is no longer pending." };
+    if (result.count === 0) return { ok: false, errorKey: "invites.notPending" };
 
     await audit({
       schoolId: ctx.schoolId,
@@ -212,14 +229,14 @@ export async function revokeInvite(inviteId: string): Promise<{ ok: boolean; err
     return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
 /** Issues a fresh token and emails it again. The old link stops working. */
 export async function resendInvite(
   inviteId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; error?: string; errorKey?: TranslationKey }> {
   try {
     const ctx = await requireApiRole("ADMIN");
 
@@ -227,7 +244,7 @@ export async function resendInvite(
       where: { id: inviteId, schoolId: ctx.schoolId, status: "PENDING" },
       include: { school: { select: { name: true } } },
     });
-    if (!invite?.email) return { ok: false, error: "That invitation cannot be resent." };
+    if (!invite?.email) return { ok: false, errorKey: "invites.cannotResend" };
 
     const token = generateToken();
     await db.invite.update({
@@ -257,6 +274,6 @@ export async function resendInvite(
     return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }

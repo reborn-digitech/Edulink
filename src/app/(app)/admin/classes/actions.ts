@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "@/lib/db";
 import { requireApiRole, assertClassAccess, AccessError } from "@/lib/tenancy";
 import { classSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
@@ -8,7 +9,43 @@ import { classCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { gradesInRange } from "@/lib/superuser";
 
-export type ClassState = { ok: boolean; errors: FieldErrors; classId?: string; joinCode?: string };
+/**
+ * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy.
+ *
+ * `errorKey` is everything this file decides itself, returned as a key so the
+ * form resolves it in the reader's language. `error` is the one case it cannot:
+ * an `AccessError` from the tenancy layer, whose message is minted app-wide.
+ */
+export type ClassActionResult = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+  error?: string;
+};
+
+/**
+ * ⚠ TWO ERROR CHANNELS, AND THE SPLIT IS THE ZOD LAYER'S FAULT, NOT A WHIM.
+ *
+ * `errors` is filled by `fieldErrors(parsed.error)` — zod's own messages, which
+ * are English and are shared by every schema in `validation.ts`. Keying those
+ * means keying that layer, which every form in the app depends on, and belongs
+ * in its own change.
+ *
+ * `errorKeys` is what THIS file decides, keyed, so the three messages an admin
+ * actually meets on the class form — a duplicate name, a grade the school does
+ * not teach, a code that would not mint — arrive in their language.
+ *
+ * The form merges them, keyed last. Mixing keys and finished sentences in one
+ * map is what this avoids: the renderer would have no way to tell which it held.
+ */
+export type ClassState = {
+  ok: boolean;
+  errors: FieldErrors;
+  errorKeys?: Record<string, TranslationKey>;
+  errorVars?: Record<string, Record<string, string | number>>;
+  classId?: string;
+  joinCode?: string;
+};
 
 /**
  * Creates a class.
@@ -40,9 +77,9 @@ export async function createClass(input: unknown): Promise<ClassState> {
   if (gradeLevel && offered.length > 0 && !offered.includes(gradeLevel)) {
     return {
       ok: false,
-      errors: {
-        gradeLevel: `This school teaches ${school.gradeLow} to ${school.gradeHigh}. Ask whoever runs the server to widen it first.`,
-      },
+      errors: {},
+      errorKeys: { gradeLevel: "classes.gradeOutOfRange" },
+      errorVars: { gradeLevel: { low: school.gradeLow ?? "", high: school.gradeHigh ?? "" } },
     };
   }
 
@@ -53,7 +90,8 @@ export async function createClass(input: unknown): Promise<ClassState> {
   if (duplicate) {
     return {
       ok: false,
-      errors: { name: "A class with that name already exists. Give this one a different name." },
+      errors: {},
+      errorKeys: { name: "classes.duplicateName" },
     };
   }
 
@@ -81,7 +119,7 @@ export async function createClass(input: unknown): Promise<ClassState> {
   }
 
   if (!created) {
-    return { ok: false, errors: { _form: "Could not allocate a class code. Please try again." } };
+    return { ok: false, errors: {}, errorKeys: { _form: "classes.couldNotAllocateCode" } };
   }
 
   await audit({
@@ -103,7 +141,7 @@ export async function setClassTeacher(
   classId: string,
   teacherMembershipId: string,
   assign: boolean,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<ClassActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN");
     await assertClassAccess(ctx, classId, { write: true });
@@ -119,7 +157,7 @@ export async function setClassTeacher(
       },
       select: { id: true },
     });
-    if (!teacher) return { ok: false, error: "That teacher is not in your school." };
+    if (!teacher) return { ok: false, errorKey: "classes.teacherNotInSchool" };
 
     if (assign) {
       await db.classTeacher.upsert({
@@ -145,7 +183,7 @@ export async function setClassTeacher(
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[setClassTeacher]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
@@ -156,7 +194,7 @@ export async function setClassTeacher(
  * a child's record with it, so archiving is the only destructive action offered
  * here — and it is reversible. (§10)
  */
-export async function archiveClass(classId: string): Promise<{ ok: boolean; error?: string }> {
+export async function archiveClass(classId: string): Promise<ClassActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN");
     await assertClassAccess(ctx, classId, { write: true });
@@ -176,11 +214,11 @@ export async function archiveClass(classId: string): Promise<{ ok: boolean; erro
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[archiveClass]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
-export async function restoreClass(classId: string): Promise<{ ok: boolean; error?: string }> {
+export async function restoreClass(classId: string): Promise<ClassActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN");
     // assertClassAccess rejects archived classes for writes, so scope by hand.
@@ -188,7 +226,7 @@ export async function restoreClass(classId: string): Promise<{ ok: boolean; erro
       where: { id: classId, schoolId: ctx.schoolId },
       select: { id: true },
     });
-    if (!klass) return { ok: false, error: "Class not found in your school." };
+    if (!klass) return { ok: false, errorKey: "classes.classNotFound" };
 
     await db.class.update({ where: { id: classId }, data: { archivedAt: null } });
     await audit({
@@ -202,14 +240,14 @@ export async function restoreClass(classId: string): Promise<{ ok: boolean; erro
     return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
 /** Rotates the join code — the fix when a class code leaks outside the school. */
 export async function regenerateJoinCode(
   classId: string,
-): Promise<{ ok: boolean; joinCode?: string; error?: string }> {
+): Promise<ClassActionResult & { joinCode?: string }> {
   try {
     const ctx = await requireApiRole("ADMIN");
     await assertClassAccess(ctx, classId, { write: true });
@@ -229,10 +267,10 @@ export async function regenerateJoinCode(
       revalidatePath("/admin/classes");
       return { ok: true, joinCode: code };
     }
-    return { ok: false, error: "Could not allocate a new code. Please try again." };
+    return { ok: false, errorKey: "classes.couldNotAllocateNewCode" };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
@@ -241,5 +279,5 @@ function accessFailure(error: unknown): ClassState {
     return { ok: false, errors: { _form: error.message } };
   }
   console.error("[classes] unexpected", error);
-  return { ok: false, errors: { _form: "Something went wrong." } };
+  return { ok: false, errors: {}, errorKeys: { _form: "common.somethingWrong" } };
 }

@@ -34,29 +34,10 @@ import type { ActiveContext } from "./session";
  * than a colour.
  */
 
-export const HOLIDAY_KINDS = ["HOLIDAY", "EXAM", "EVENT"] as const;
-export type HolidayKind = (typeof HOLIDAY_KINDS)[number];
+import { HOLIDAY_KINDS, HOLIDAY_KIND_META, type HolidayKind } from "./holiday-kinds";
 
-export const HOLIDAY_KIND_META: Record<
-  HolidayKind,
-  { label: string; description: string; closesSchool: boolean }
-> = {
-  HOLIDAY: {
-    label: "Holiday",
-    description: "School is shut. No register is expected.",
-    closesSchool: true,
-  },
-  EXAM: {
-    label: "Exam",
-    description: "School is open and the register is still taken.",
-    closesSchool: false,
-  },
-  EVENT: {
-    label: "Event",
-    description: "School is open — sports day, a trip, a function.",
-    closesSchool: false,
-  },
-};
+export { HOLIDAY_KINDS, HOLIDAY_KIND_META };
+export type { HolidayKind };
 
 /**
  * A single entry may not span more than a year.

@@ -39,6 +39,7 @@ export default async function AdminTimetablePage({
 }: {
   searchParams: Promise<{ class?: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
 
@@ -82,10 +83,8 @@ export default async function AdminTimetablePage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Timetable</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          The school day, then the week for each class. Teachers and pupils see their own.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("timetable.title")}</h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("timetable.subtitle")}</p>
       </div>
 
       {/* ---------------- step one: the school day ---------------- */}
@@ -93,8 +92,8 @@ export default async function AdminTimetablePage({
         <Card>
           <CardHeader
             icon={<ClockIcon weight="duotone" className="size-5" />}
-            title={<span id="day-heading">The school day</span>}
-            description="When the bells go. Shared by every class — lessons are slotted into these."
+            title={<span id="day-heading">{t("timetable.schoolDay")}</span>}
+            description={t("timetable.schoolDayBody")}
           />
           <CardBody>
             <DayPanel periods={periods} />
@@ -105,26 +104,26 @@ export default async function AdminTimetablePage({
       {/* ---------------- step two: the grid ---------------- */}
       <section aria-labelledby="grid-heading" className="space-y-3">
         <h2 id="grid-heading" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-          A class's week
+          {t("timetable.classWeek")}
         </h2>
 
         {classes.length === 0 ? (
           <EmptyState
             icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-            title="No classes yet"
-            description="A timetable needs classes to put lessons in."
+            title={t("timetable.noClasses")}
+            description={t("timetable.noClassesBody")}
             action={
               <Link
                 href="/admin/classes/new"
                 className="text-sm font-semibold text-accent-strong underline underline-offset-4"
               >
-                Create a class
+                {t("timetable.createClass")}
               </Link>
             }
           />
         ) : (
           <>
-            <nav aria-label="Choose a class" className="flex flex-wrap gap-2">
+            <nav aria-label={t("timetable.chooseClass")} className="flex flex-wrap gap-2">
               {classes.map((klass) => (
                 <Link
                   key={klass.id}
@@ -148,8 +147,8 @@ export default async function AdminTimetablePage({
                   title={selected.name}
                   description={
                     selected.room
-                      ? `Usually in ${selected.room}. Click a slot to set the lesson.`
-                      : "Click a slot to set the lesson."
+                      ? t("timetable.usuallyIn", { room: selected.room })
+                      : t("timetable.clickASlot")
                   }
                 />
                 <CardBody>

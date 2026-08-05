@@ -31,7 +31,7 @@ import type { ActiveContext } from "./session";
 // not for callers. See leave-kinds.ts.
 import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
 
-export { LEAVE_KINDS, LEAVE_KIND_LABEL, LEAVE_STATUSES } from "./leave-kinds";
+export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
 
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;

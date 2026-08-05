@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NewClassPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
 
   const school = await db.school.findUniqueOrThrow({
@@ -36,14 +37,11 @@ export default async function NewClassPage() {
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All classes
+        {t("classes.allClasses")}
       </Link>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Create a class</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">
-        Every class gets its own join code, so students can add themselves without you
-        typing in 30 email addresses.
-      </p>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("classes.createClass")}</h1>
+      <p className="mt-1.5 text-sm text-fg-muted">{t("classes.createSubtitle")}</p>
 
       <ClassForm
         className="mt-7"

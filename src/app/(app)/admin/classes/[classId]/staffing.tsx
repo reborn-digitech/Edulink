@@ -9,6 +9,8 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { toggleAttendanceRight, addCover, removeCover, addTeacher, dropTeacher } from "./actions";
 import { DateField } from "@/components/ui/field";
+import { actionError } from "@/lib/action-error";
+import { useT } from "@/lib/i18n";
 
 type ClassTeacherRow = {
   id: string;
@@ -51,6 +53,7 @@ export function Staffing({
   staff: StaffOption[];
   today: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -70,11 +73,14 @@ export function Staffing({
     startTransition(async () => {
       const result = await addTeacher(classId, newTeacher, newRole);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not assigned", description: result.error });
+        toast({ tone: "danger", title: t("classes.notAssigned"), description: actionError(t, result) });
         return;
       }
       setNewTeacher("");
-      toast({ tone: "ok", title: newRole === "LEAD" ? "Class teacher assigned" : "Teacher added" });
+      toast({
+        tone: "ok",
+        title: newRole === "LEAD" ? t("classes.teacherAssigned") : t("classes.teacherAdded"),
+      });
       router.refresh();
     });
   }
@@ -83,7 +89,7 @@ export function Staffing({
     startTransition(async () => {
       const result = await dropTeacher(classId, row.membershipId);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not removed", description: result.error });
+        toast({ tone: "danger", title: t("classes.notRemoved"), description: actionError(t, result) });
         return;
       }
       router.refresh();
@@ -94,7 +100,7 @@ export function Staffing({
     startTransition(async () => {
       const result = await toggleAttendanceRight(classId, row.id, !row.canTakeAttendance);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not changed", description: result.error });
+        toast({ tone: "danger", title: t("classes.notChanged"), description: actionError(t, result) });
         return;
       }
       router.refresh();
@@ -113,13 +119,13 @@ export function Staffing({
         reason,
       });
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(actionError(t, result, "classes.didNotWorkShort"));
         return;
       }
       setOpen(false);
       setWho("");
       setReason("");
-      toast({ tone: "ok", title: "Cover arranged" });
+      toast({ tone: "ok", title: t("classes.coverArranged") });
       router.refresh();
     });
   }
@@ -128,7 +134,7 @@ export function Staffing({
     startTransition(async () => {
       const result = await removeCover(classId, coverId);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not cancelled", description: result.error });
+        toast({ tone: "danger", title: t("classes.notCancelled"), description: actionError(t, result) });
         return;
       }
       router.refresh();
@@ -138,16 +144,12 @@ export function Staffing({
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-sm font-semibold text-fg">Class teachers</h2>
-        <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-          Turn the register off for anybody who teaches this class but should not be marking it — a
-          visiting subject teacher attached to six classes does not mark six registers.
-        </p>
+        <h2 className="text-sm font-semibold text-fg">{t("classes.classTeachers")}</h2>
+        <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">{t("classes.classTeachersBody")}</p>
 
         {teachers.length === 0 ? (
           <p className="mt-3 rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
-            Nobody is assigned to this class yet. Until somebody is, only an admin can mark its
-            register.
+            {t("classes.nobodyAssigned")}
           </p>
         ) : (
           <ul className="mt-3 space-y-1.5">
@@ -159,14 +161,14 @@ export function Staffing({
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
                   <span className="block text-xs text-fg-muted">
-                    {row.role === "LEAD" ? "Class teacher" : "Also teaches this class"}
+                    {row.role === "LEAD" ? t("classes.classTeacher") : t("classes.alsoTeaches")}
                   </span>
                 </span>
                 <Button
                   size="sm"
                   variant="ghost"
                   loading={pending}
-                  aria-label={`Take ${row.name} off this class`}
+                  aria-label={t("classes.takeOff", { name: row.name })}
                   onClick={() => unassign(row)}
                 >
                   <XIcon weight="bold" className="size-4" />
@@ -175,7 +177,7 @@ export function Staffing({
                   type="button"
                   role="switch"
                   aria-checked={row.canTakeAttendance}
-                  aria-label={`Register duty for ${row.name}`}
+                  aria-label={t("classes.registerDutyFor", { name: row.name })}
                   disabled={pending}
                   onClick={() => toggle(row)}
                   className={cn(
@@ -185,7 +187,7 @@ export function Staffing({
                       : "bg-surface text-fg-muted ring-1 ring-border",
                   )}
                 >
-                  {row.canTakeAttendance ? "Takes the register" : "Does not"}
+                  {row.canTakeAttendance ? t("classes.takesRegister") : t("classes.doesNot")}
                 </button>
               </li>
             ))}
@@ -194,13 +196,13 @@ export function Staffing({
 
         <form onSubmit={assign} className="mt-3 flex flex-wrap items-end gap-2">
           <label className="min-w-[12rem] flex-1">
-            <span className="block text-xs font-medium text-fg">Add a teacher</span>
+            <span className="block text-xs font-medium text-fg">{t("classes.addTeacher")}</span>
             <select
               value={newTeacher}
               onChange={(e) => setNewTeacher(e.target.value)}
               className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
-              <option value="">Choose somebody…</option>
+              <option value="">{t("classes.chooseSomebody")}</option>
               {staff
                 .filter((person) => person.role !== "ADMIN")
                 .filter((person) => !teachers.some((t) => t.membershipId === person.membershipId))
@@ -212,18 +214,18 @@ export function Staffing({
             </select>
           </label>
           <label>
-            <span className="block text-xs font-medium text-fg">As</span>
+            <span className="block text-xs font-medium text-fg">{t("classes.asRole")}</span>
             <select
               value={newRole}
               onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO")}
               className="mt-1 min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
-              <option value="LEAD">Class teacher</option>
-              <option value="CO">Also teaches</option>
+              <option value="LEAD">{t("classes.classTeacher")}</option>
+              <option value="CO">{t("classes.alsoTeachesShort")}</option>
             </select>
           </label>
           <Button type="submit" size="sm" variant="secondary" loading={pending} disabled={!newTeacher}>
-            Assign
+            {t("classes.assign")}
           </Button>
         </form>
 
@@ -232,7 +234,7 @@ export function Staffing({
           // a school mid-handover has two for a fortnight. Having NONE is the
           // case nobody intends, so that is the one worth saying.
           <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
-            This class has no class teacher. Nobody is down to write its report cards.
+            {t("classes.noLeadWarning")}
           </p>
         )}
 
@@ -240,7 +242,7 @@ export function Staffing({
           // Said out loud rather than discovered on a Monday morning. It is
           // allowed — an admin can always mark it — but it is rarely intended.
           <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
-            Nobody but an admin can mark this register.
+            {t("classes.onlyAdminWarning")}
           </p>
         )}
       </section>
@@ -248,15 +250,12 @@ export function Staffing({
       <section className="border-t border-border pt-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h2 className="text-sm font-semibold text-fg">Cover</h2>
-            <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-              Somebody else may mark this register for a few days. It adds a person and never
-              removes one, so the class teacher can still mark it if they come in after all.
-            </p>
+            <h2 className="text-sm font-semibold text-fg">{t("classes.cover")}</h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">{t("classes.coverBody")}</p>
           </div>
           {!open && (
             <Button size="sm" variant="secondary" icon={<PlusIcon weight="bold" />} onClick={() => setOpen(true)}>
-              Arrange cover
+              {t("classes.arrangeCover")}
             </Button>
           )}
         </div>
@@ -270,14 +269,14 @@ export function Staffing({
             )}
 
             <label className="block">
-              <span className="block text-sm font-medium text-fg">Who is covering</span>
+              <span className="block text-sm font-medium text-fg">{t("classes.whoIsCovering")}</span>
               <select
                 value={who}
                 required
                 onChange={(e) => setWho(e.target.value)}
                 className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
               >
-                <option value="">Choose somebody…</option>
+                <option value="">{t("classes.chooseSomebody")}</option>
                 {staff.map((person) => (
                   <option key={person.membershipId} value={person.membershipId}>
                     {person.name}
@@ -289,13 +288,13 @@ export function Staffing({
 
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               <DateField
-                label="First day"
+label={t("classes.firstDay")}
                 value={from}
                 required
                 onChange={(e) => setFrom(e.target.value)}
               />
               <DateField
-                label="Last day"
+label={t("classes.lastDay")}
                 value={to}
                 required
                 onChange={(e) => setTo(e.target.value)}
@@ -303,7 +302,7 @@ export function Staffing({
             </div>
 
             <label className="mt-3 block">
-              <span className="block text-sm font-medium text-fg">Why (optional)</span>
+              <span className="block text-sm font-medium text-fg">{t("classes.whyOptional")}</span>
               <input
                 type="text"
                 value={reason}
@@ -315,10 +314,10 @@ export function Staffing({
 
             <div className="mt-4 flex gap-2">
               <Button type="submit" size="sm" loading={pending} disabled={!who}>
-                Arrange cover
+                {t("classes.arrangeCover")}
               </Button>
               <Button type="button" size="sm" variant="ghost" onClick={() => setOpen(false)}>
-                Cancel
+                {t("common.cancel")}
               </Button>
             </div>
           </form>
@@ -334,21 +333,22 @@ export function Staffing({
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-fg">{cover.name}</span>
                   <span className="block text-xs text-fg-muted">
-                    {cover.fromDateKey}
-                    {cover.toDateKey !== cover.fromDateKey ? ` to ${cover.toDateKey}` : ""}
+                    {cover.toDateKey !== cover.fromDateKey
+                      ? t("calendar.rangeTo", { from: cover.fromDateKey, to: cover.toDateKey })
+                      : cover.fromDateKey}
                     {cover.reason ? ` · ${cover.reason}` : ""}
                   </span>
                 </span>
                 {cover.fromLeave && (
                   <Badge tone="neutral" size="sm">
-                    from approved leave
+                    {t("classes.fromApprovedLeave")}
                   </Badge>
                 )}
                 <Button
                   size="sm"
                   variant="ghost"
                   loading={pending}
-                  aria-label={`Cancel cover for ${cover.name}`}
+                  aria-label={t("classes.cancelCoverFor", { name: cover.name })}
                   onClick={() => drop(cover.id)}
                 >
                   <XIcon weight="bold" className="size-4" />
