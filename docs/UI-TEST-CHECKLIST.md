@@ -1862,9 +1862,11 @@ The bug this closes: `/account` used to need an active role.
   no country code. In. Try `+919876543210` and `09876543210` too: same account
 - ☐ **⚠️** A wrong password on any of the three says *that login and password do
   not match* — never "no such account", and never naming which kind it was
-- ☐ **⚠️** Try to save a number another account already has → refused, plainly.
-  (The one deliberate exception to the never-confirm rule; you are signed in, on
-  your own settings page — see `saveMobile`)
+- ☐ **⚠️** Only a **confirmed** number blocks another account from claiming it,
+  which is the opposite of the email rule in §12ah. That is the schema and not a
+  change of mind: a number can be absent, an address never is
+- ☐ Changing the **email** on this account is §12ah. It is the same two steps on
+  the same card, deliberately
 
 ### Getting back in
 
@@ -1910,6 +1912,161 @@ The bug this closes: `/account` used to need an active role.
   attempts*, with a time. It says so out loud rather than hiding behind the
   generic failure, which leaks nothing because the limit applies to logins that
   exist and logins that do not, identically
+
+## 12ah. Changing the address you sign in with
+
+Until this was built there was **no way to change an email address at all**. One
+arrived when the account was created and stayed forever, so a family that
+changed provider held an account whose password reset went somewhere they could
+not read.
+
+### The ordinary change
+
+- ☐ Sign in as **Priya** and open `/account` → *How you sign in* now holds **two**
+  forms: an email and a mobile number
+- ☐ **⚠️** They do not both say **Send me a code**. One says **Email me a code**
+  and the other **Text me a code**. (A walkthrough found two identical green
+  buttons a centimetre apart, and neither said which was which)
+- ☐ Type a new address → the hint names it back: *We will email a code to … to
+  check it is yours*
+- ☐ **⚠️ NOTHING HAS MOVED YET.** Press the button, then look at the account row —
+  or just read the page header, which still shows the OLD address. Only the code
+  coming back changes it
+- ☐ Read the code at **`/dev/mailbox`**, enter it → the page header and the card
+  both follow, and the address reads **confirmed** with a tick. (The side rail
+  shows the person's NAME, not their address — it will not change, and that is
+  not a bug)
+- ☐ **⚠️ THE PART THAT MATTERS.** Go back to `/dev/mailbox` and find the message
+  sent to the **OLD** address: *The email on your EduLink account was changed
+  to …*, and *if you did not do this, contact your school straight away*. An
+  attacker with a live session can otherwise repoint an account's recovery at
+  themselves in silence — signing sessions out does not help, because theirs is
+  the one that survives
+- ☐ Sign out and sign in with the **new** address → in. Try the **old** one →
+  *that login and password do not match*
+- ☐ Ask for a password reset at `/forgot` with the new address → the code arrives
+  there
+
+### What it refuses
+
+- ☐ `not-an-address` → *That does not look like an email address*
+- ☐ **⚠️** `someone@edulink.local` → *That address cannot receive mail.* It is a
+  perfectly well-formed address and the one domain in the system guaranteed never
+  to route — accepting it mints an account that can never be sent a reset code
+- ☐ The address already on the account → *That is already the address on your
+  account*
+- ☐ **⚠️** An address **another account** holds → refused plainly, and it is
+  refused whether or not that other account ever confirmed it. Unlike the mobile
+  rule next door, and deliberately: `User.email` is unique either way, so letting
+  it through only moves the failure to a constraint error ten minutes later
+- ☐ Ask for a code **four** times → the fourth is refused with a time
+- ☐ **⚠️** Use a **different address each time** → they still share one allowance.
+  The bucket is keyed on the user, not the address; otherwise swapping the
+  address buys a fresh set of emails, which is the whole loop
+- ☐ **⚠️** Confirming a number does **not** eat the email allowance, or the other
+  way round. Do three of one, then one of the other → the fourth of the first
+  kind is refused and the other kind still works
+- ☐ Enter five wrong codes → the sixth fails with the right one too
+- ☐ **⚠️** Ask for a code, then ask again, then use the **first** code → refused.
+  Only the newest one is live
+
+### A pupil who joined with a class code
+
+- ☐ Sign in as a pupil with a **handle** (`rosie.kvjn`) and open `/account`
+- ☐ **⚠️** The card does not pretend they have an email. It shows the **login
+  name** they actually type, and says that adding an address will replace it —
+  before they do it, not after
+- ☐ Add a real address and confirm it → they can now sign in with it, and reset
+  their own password for the first time
+- ☐ **⚠️** Check `/dev/mailbox`: **no** "your email was changed" notice was sent
+  to `…@edulink.local`. There is no previous owner to warn and the domain does
+  not route
+- ☐ The old handle no longer signs them in
+
+## 12ai. The two links that arrive by email
+
+Registration has always emailed `/verify?token=…` and the login page
+`/magic?token=…`. **Neither route existed.** Every school admin's welcome email
+led to a 404, and the magic-link login — offered three clicks from the front
+door — signed nobody in, while this repo called it verified working.
+
+**Walk these by opening the real email**, never by typing the URL. The whole
+class of bug is a link nothing inside the app points at, so a URL pasted from
+this document proves the route exists and nothing about whether anybody can
+reach it.
+
+### Signing in by link
+
+- ☐ At `/login`, press **Email me a sign-in link instead**, give Tom's address →
+  *Check your email*
+- ☐ Open `/dev/mailbox`, find the message, and **click the link in it**
+- ☐ **⚠️** You land signed in, on the **teacher home** — not on a page telling you
+  to log in. It should pick the role Tom last used
+- ☐ **⚠️** Now open the **same link again** → `/login` with *That sign-in link has
+  already been used. They work once.* — and the message sits beside the password
+  box that still works
+- ☐ Wait one out (or expire it in the database) → *That sign-in link has expired
+  — they last 20 minutes*
+- ☐ Mangle the token by deleting characters → *That sign-in link did not work. It
+  may have been cut in half by a mail app*
+- ☐ **⚠️** None of the three names an account or an address. This page is
+  reachable by anybody holding any string, so naming whose link it was would turn
+  a guessed token into a lookup
+- ☐ Ask for **four** links for the same address in fifteen minutes → the fourth is
+  refused with a time
+- ☐ **⚠️** Suspend a teacher's membership (§12l), then use a sign-in link minted
+  BEFORE you suspended it → they authenticate, and land with **no active role**,
+  exactly as a password login would. Suspension is per-membership, so it is
+  `resolveContext` finding no `ACTIVE` row that turns them away — not the link
+- ☐ **⚠️** A user whose account was **merged away** (§12t) has `disabledAt` set,
+  and an old link for it is refused outright. That check is repeated in the magic
+  route on purpose: the equivalent at password login lives in `login`, which this
+  route does not go through
+
+### Confirming the address you registered with
+
+- ☐ Register a **new school** and open `/dev/mailbox` → the welcome email's
+  **Confirm my email** button. Click it
+- ☐ It confirms, names the address, and says resets will reach you there
+- ☐ Open `/account` → the address now reads **confirmed** rather than *not
+  confirmed*
+- ☐ **⚠️** Open the same link **again** → *Already confirmed. That link has been
+  used.* Not *invalid* — it is usually the back button, and telling somebody
+  their address is broken when it is fine is the worse failure
+- ☐ Expire a confirmation link and open it → *That link has expired*, with **Send
+  me a new link**. Press it, read what arrives, open that → confirmed
+- ☐ **⚠️ THE ONE NOBODY WOULD GUESS.** Get a confirmation link, then **change the
+  account's email** (§12ah) before opening it → *That address has changed*, and
+  nothing is confirmed. A stale link must not stamp "verified" onto an address
+  nobody has proved anything about
+- ☐ **⚠️** Press **Send me a new link** four times → refused with a time
+- ☐ Both pages work **signed out**, in a browser that has never seen this app.
+  That is the ordinary case: mail opened on a phone, in an app that launches its
+  own browser
+
+## 12aj. A redirect that was hiding an exception
+
+The bug this closes: `/record` returned a correct **307** to signed-out visitors
+while the page body threw a `TypeError` behind it, on every single request. The
+gate lived in the layout, and **a layout and its page render in parallel** — so
+the redirect won the response and the page ran anyway.
+
+**This one is not visible from the browser.** Watch the server output, not the
+screen.
+
+- ☐ Run a production build (`npm run build && npm start`) and watch its output
+- ☐ Signed out, open `/record` → **307** to `/login`, and **nothing in the log**
+- ☐ Open `/record/<any-id>` signed out → same
+- ☐ **⚠️** With a **stale** session cookie — one naming a session that no longer
+  exists — do both again. Still 307, still silent. This was the reliable repro:
+  nine requests, nine logged `TypeError: Cannot read properties of null`
+- ☐ Signed in as an **alumnus** with no membership, `/record` still renders their
+  own record (§12s), and a guardian still reaches their child's
+- ☐ **⚠️ THE LESSON, worth carrying to any page you add:** a status code is not
+  evidence that nothing went wrong. If a page's only gate is in its layout, the
+  page still runs. Keep the server log open while walking any section here — the
+  `/magic` 500 in §12ai and this were found in the same twenty lines of output,
+  during a walkthrough of something else
 
 ## 13. Authorisation — try to break in
 
@@ -1973,7 +2130,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 278 checks in `npm run sweep`
+Every route in the navigation now renders — all 285 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every
@@ -1999,12 +2156,29 @@ register duty (§12n), staff leave (§12o), report cards (§12p), the principal'
 dashboard (§12q), the expert's profile (§12r) and a pupil leaving school with
 their record (§12s), the weekly timetable and its cover resolution (§§12ac–12ad),
 the cross-school leaderboard (§12ae), an account reachable with no school at
-all (§12af), and signing in by mobile number with a password reset (§12ag).
+all (§12af), signing in by mobile number with a password reset (§12ag), changing
+the address you sign in with (§12ah), the two links that arrive by email
+(§12ai), and a redirect that was hiding an exception (§12aj).
 
-**None of §§12ac–12ag has been walked by anybody but the author.** Each was
+**None of §§12ac–12aj has been walked by anybody but the author.** Each was
 driven end to end in a production build while it was being built — that is
 recorded in the README's Status — but a walkthrough by somebody who did not
 write it has caught things every single time it has been run here.
+
+**⚠️ §§12ah–12aj were written three commits after the features they cover**, and
+for a stretch the newest work in the repo was the least walkable by anybody
+else — the code was verified and the instructions for verifying it did not
+exist. Worth saying because it is the failure mode of a checklist maintained by
+the person who writes the code: it lags exactly when the code is moving fastest.
+
+**§12ai must be walked by opening the emails**, not by pasting its URLs. The bug
+it covers was two routes that did not exist while the app emailed links to them
+— a class of failure that is invisible to anything which only visits URLs
+somebody already knows about, including this document and `npm run sweep`.
+
+**§12aj is read in the server log, not the browser.** It is the only section
+here whose evidence is output rather than a screen, and the reason is that the
+bug it covers returned a correct status code the whole time it was broken.
 
 **§12m0 is new and should be walked first.** It is the only section that tests
 the JOINS between screens rather than a screen, and the first time anybody
