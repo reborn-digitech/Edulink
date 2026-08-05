@@ -16,6 +16,7 @@ const KEYS = [
   "DATABASE_URL",
   "NEXT_PUBLIC_APP_URL",
   "EMAIL_TRANSPORT",
+  "SMS_TRANSPORT",
   "NODE_ENV",
 ] as const;
 
@@ -46,6 +47,7 @@ describe("checkEnv — VAPID", () => {
       DATABASE_URL: "postgres://x",
       NEXT_PUBLIC_APP_URL: "https://edulink.example",
       EMAIL_TRANSPORT: "smtp",
+      SMS_TRANSPORT: "twilio",
     });
     expect(checkEnv()).toEqual([]);
   });
@@ -175,6 +177,40 @@ describe("checkEnv — deployment footguns", () => {
       EMAIL_TRANSPORT: "devbox",
     });
     expect(checkEnv().some((p) => p.key === "EMAIL_TRANSPORT" && p.fatal)).toBe(true);
+  });
+
+  it("⚠ refuses the devbox SMS transport in production", () => {
+    /**
+     * THE SAME FAILURE AS THE EMAIL ONE, and it arrived with password reset by
+     * mobile number. "No text was actually sent" has no symptom a deployment
+     * notices — except a parent who cannot get into their account and cannot
+     * tell whether the code is late or was never sent.
+     */
+    set({
+      NODE_ENV: "production",
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+      VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+      DATABASE_URL: "postgres://x",
+      NEXT_PUBLIC_APP_URL: "https://edulink.example",
+      EMAIL_TRANSPORT: "smtp",
+      SMS_TRANSPORT: "devbox",
+    });
+    expect(checkEnv().some((p) => p.key === "SMS_TRANSPORT" && p.fatal)).toBe(true);
+  });
+
+  it("says nothing about either transport in development", () => {
+    set({
+      NODE_ENV: "development",
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+      VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+      DATABASE_URL: "postgres://x",
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000",
+      EMAIL_TRANSPORT: "devbox",
+      SMS_TRANSPORT: "devbox",
+    });
+    // The dev mailbox is how both flows are exercised at all.
+    expect(checkEnv().some((p) => p.key === "SMS_TRANSPORT")).toBe(false);
+    expect(checkEnv().some((p) => p.key === "EMAIL_TRANSPORT")).toBe(false);
   });
 
   it("refuses the devbox email transport in production", () => {

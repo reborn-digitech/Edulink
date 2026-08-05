@@ -94,6 +94,25 @@ export function checkEnv(): EnvProblem[] {
     });
   }
 
+  /**
+   * THE SAME GATE FOR TEXT MESSAGES, and it was missing.
+   *
+   * The email one has been here since v1 because "no email is actually sent"
+   * has no symptom a deployment would notice. Password reset by mobile number
+   * made that exactly true of SMS as well — and worse, because the person
+   * affected is locked out of their account and has no way to tell whether the
+   * code is late or was never sent. Fatal for the same reason: a school
+   * discovering this from a parent who cannot get in has discovered it too late.
+   */
+  if (isProd && (process.env.SMS_TRANSPORT ?? "devbox") === "devbox") {
+    problems.push({
+      key: "SMS_TRANSPORT",
+      message:
+        'SMS_TRANSPORT is "devbox" in production: no text will actually be sent, so password reset by mobile number silently goes nowhere. Implement a real transport in src/lib/sms.ts.',
+      fatal: true,
+    });
+  }
+
   return problems;
 }
 

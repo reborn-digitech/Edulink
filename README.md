@@ -66,6 +66,16 @@ ignore every policy, because owners and superusers bypass row-level security.
 A seed cannot run as the app role, incidentally: its inserts are checked against
 `app.school_ids`, and it is creating the schools in the first place.
 
+**`.env.example` has two settings worth reading before a real deployment.**
+`SMS_TRANSPORT` and `EMAIL_TRANSPORT` both default to `"devbox"`, which writes
+messages to the database and renders them at `/dev/mailbox` — and `env.ts`
+refuses to boot a production origin with either still set that way, because "no
+message was actually sent" has no symptom until somebody cannot get into their
+account. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
+number belongs to; it defaults to `+91`, and getting it wrong does not fail
+loudly — it files everybody under the wrong country and turns two spellings of
+one number into two accounts.
+
 **Two settings, not one.** `app.school_ids` is the tenant. `app.user_id` exists
 for a single question a school-scoped policy cannot answer: *which schools do I
 belong to?* — which is the first thing a login has to ask, before any school is
@@ -171,7 +181,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 275 route/role/negative combinations
+mints a real session per role, requests all 278 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -231,7 +241,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ### Where things live
 
 ```
-prisma/schema.prisma      51 models. Read the header comment first.
+prisma/schema.prisma      55 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
 prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.
@@ -270,15 +280,24 @@ src/lib/                  All business logic. Pages are thin.
   birthdays.ts            ★ Derived from User.birthdate, never stored. Staff-only — see the DOB note.
   account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
   login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
+  timetable.ts            ★ Three layers: periods, a dateless TEMPLATE, and a week resolved against leave.
+  school-day.ts           Client-safe half of the above. Minutes from midnight; WEEK_DAYS is Mon–Sat.
+  phone.ts                ★ Client-safe. ONE stored shape for a number, or nothing. `User.phone` is unique.
+  passwords.ts            ★ Login by email/mobile/handle, and the reset. Neither end says who exists.
+  sms.ts                  Text transport. Devbox only, same shape as email.ts. Fails loudly.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
   env.ts                  Boot-time config gate.
   offline-queue.ts        IndexedDB outbox (client-side).
   constants.ts            Every status string, single source of truth.
-src/app/(app)/            Signed-in routes (share the nav shell).
+src/app/(app)/            Signed-in routes that belong to a SCHOOL (share the nav shell, need a role).
 src/app/root/             ★ The operator area. OUTSIDE (app) — the shell needs a role, and they have none.
-src/app/                  Public routes: login, register, join, invite, switch, suspended.
+src/app/account/          ★ Also outside (app), for the same reason: an alumnus and a paused member
+                          have no role and must still reach their own settings. Renders the ordinary
+                          shell when there IS a role — see components/nav/signed-in-shell.tsx.
+src/app/record/           ★ Outside (app) too. A leaver's own record, and nothing else.
+src/app/                  Public routes: login, forgot, register, join, invite, switch, suspended.
 src/components/ui/        Design system.
   slot.tsx                ★ `asChild`. Deliberately NOT "use client" — see Gotchas.
   file-picker.tsx         Pick-before-submit control (assignment handouts).
@@ -908,7 +927,7 @@ One line each, with the default rejected.
   removing the widening turns 8 sweep checks red, and swapping the override's
   `run` for `enterWith` — the leak that would put another school within reach for
   the rest of the request — fails three of those unit tests.
-- **618 tests**, stable across repeated runs. The date, avatar, CSV, attendance,
+- **618 tests at the time of this entry** (1,266 now), stable across repeated runs. The date, avatar, CSV, attendance,
   tenancy, tenant-request, competitions, reports, audit, academic-year, holidays, onboarding, remarks, grading, bulletin, safety, storage, files,
   file-cache, badges, academic-year, holidays, quiz, slot, image-metadata, uploads, orphans, invite-lifecycle, switch-context, quiet-hours and env suites are each **mutation-tested** — for the bulletin that means four separate
   breaks of the safety model (student posts auto-publishing, visibility ignoring
@@ -1403,7 +1422,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 275 checks in
+**Every route referenced by the navigation renders.** All 278 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for
@@ -1513,9 +1532,10 @@ navigation" means the actual list rather than one somebody maintained by hand.
   "devbox" implementation only — messages persist and render at `/dev/mailbox`.
   Wiring a provider is one branch in `src/lib/email.ts` and one in
   `src/lib/sms.ts`; nothing else in the app changes, and both throw loudly
-  rather than dropping a password-reset code silently. **The password reset
-  works end to end today** against the dev mailbox, which is how its tests read
-  the codes.
+  rather than dropping a password-reset code silently. `env.ts` additionally
+  refuses to boot a production origin with either still on devbox. **The
+  password reset works end to end today** against the dev mailbox, which is how
+  its tests read the codes.
 - **2FA — BUILT, THEN REMOVED ON PURPOSE.** TOTP was here, proven against the
   RFC 4226 and RFC 6238 vectors, with single-use steps and ten hashed recovery
   codes. It was taken out at the product owner's direction in favour of one
