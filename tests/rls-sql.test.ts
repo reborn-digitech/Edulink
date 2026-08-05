@@ -42,11 +42,50 @@ describe("prisma/rls.sql", () => {
     // Every enabled table is forced, and every table has a write policy. A count
     // that drifts apart means a table was half-configured.
     expect(forced).toHaveLength(enabled.length);
+
+    /**
+     * ONE APPEND-ONLY TABLE, NAMED, so that "a table with no tenant isolation
+     * policy" cannot become a category things drift into.
+     *
+     * `OperatorAccess` is the operator's visitor book and deliberately has no
+     * `_tenant_isolation` policy: reads are the school's, writes are the
+     * operator's, and DELETE is nobody's. Listing it here means a SECOND table
+     * appearing without isolation still fails this test, which is the whole
+     * point of counting.
+     */
+    const APPEND_ONLY = ["OperatorAccess"];
     const isolation = sql.match(/CREATE POLICY "\w+_tenant_isolation"/g) ?? [];
-    expect(isolation).toHaveLength(enabled.length);
+    expect(isolation).toHaveLength(enabled.length - APPEND_ONLY.length);
+
+    for (const table of APPEND_ONLY) {
+      expect(sql).toContain(`CREATE POLICY "${table}_readable"`);
+      expect(sql).toContain(`CREATE POLICY "${table}_operator_insert"`);
+      expect(sql).toContain(`CREATE POLICY "${table}_operator_update"`);
+    }
     // Some tables carry a SECOND, read-only policy; never fewer than one each.
     expect(policies.length).toBeGreaterThanOrEqual(enabled.length);
     expect(policies.length).toBeGreaterThanOrEqual(20);
+  });
+
+  it("⚠ nobody at all may DELETE from the operator's visitor book", () => {
+    const sql = readFileSync(resolve(ROOT, "prisma/rls.sql"), "utf8");
+
+    /**
+     * THE PROPERTY THE WHOLE OVERSIGHT FEATURE RESTS ON.
+     *
+     * An operator may now open a school and is bound to it exactly as an admin
+     * is. What makes that defensible rather than a master key is that the
+     * school can see it happened — so the record of it must survive both
+     * parties. Postgres denies what no policy permits, so the guarantee is the
+     * ABSENCE of a policy, and an absence is precisely the kind of thing a
+     * later edit adds back without noticing.
+     *
+     * Asserted by reading the generated SQL rather than by trusting the
+     * generator, because the generator is the thing that would be edited.
+     */
+    expect(sql).toContain('CREATE POLICY "OperatorAccess_readable"');
+    expect(sql).not.toMatch(/CREATE POLICY "OperatorAccess\w*"\s+ON "OperatorAccess"\s+FOR DELETE/);
+    expect(sql).not.toMatch(/ON "OperatorAccess"\s+FOR ALL/);
   });
 
   it("⚠ every read-widening policy is SELECT-only and has no WITH CHECK", () => {

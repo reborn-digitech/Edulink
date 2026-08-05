@@ -4,6 +4,7 @@ import { ArrowLeftIcon, BuildingsIcon, UserPlusIcon } from "@phosphor-icons/reac
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites } from "@/lib/superuser";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
 
@@ -35,6 +36,20 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           {school.timezone}
         </p>
       </div>
+
+      {/* The way in, from the school's own operator page. Deliberately worded
+          as a door rather than as a tab: "Look inside" is what it is. */}
+      <Card>
+        <CardHeader
+          title="Look inside this school"
+          description="Closed by default. Opening is recorded in the school's own Safety Centre."
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href={`/root/${schoolId}/inside`}>Open the door</Link>
+            </Button>
+          }
+        />
+      </Card>
 
       <Card>
         <CardHeader

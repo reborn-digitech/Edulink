@@ -1378,6 +1378,46 @@ hands one school a window into another.
 
 ---
 
+## 12z. The operator looking inside a school
+
+### The door is shut
+
+- ☐ As the server operator, `/root` → a school → **Open the door**
+- ☐ **⚠️** It says *This school is closed to you* and shows a reason box, not
+  the school
+- ☐ **⚠️** Try to open with a two-word reason → refused
+- ☐ Write a real sentence → **Open this school**
+
+### Inside
+
+- ☐ The school in numbers, its posts, and a search box
+- ☐ **⚠️** There is **no list of everybody** — searching needs a name
+- ☐ Take a post down. It becomes **rejected**; the words are still there
+- ☐ Search a pupil by name → **Pause access** → asks why
+- ☐ **⚠️** Try to pause the school's **only** admin → refused. A school with no
+  admin cannot run itself, and the host bricking it is worse, not better
+- ☐ **Close now**
+
+### What the school sees — the half that makes this defensible
+
+- ☐ Sign in as that school's admin → `/admin/safety`
+- ☐ **⚠️** Above the tabs: *When the EduLink team opened your school* — your
+  name, how long ago, and the reason you typed
+- ☐ **⚠️** While a grant is live it says **In your school now**
+- ☐ **Audit log** tab → `operator.school.open`, `operator.post.takedown`,
+  `operator.membership.suspend`, each with the reason
+- ☐ **⚠️** The paused person's directory row says *Paused by the EduLink team*,
+  so the school does not read it as their own decision
+
+### What it will not do
+
+- ☐ **⚠️** There is no route from here to a private teacher↔parent thread
+- ☐ **⚠️** Nothing changes a mark, a register or a report card
+- ☐ **⚠️** Open school A, then edit the URL to school B's id → you get school
+  B's **door**, not school B. A grant is one school
+
+---
+
 ## 12x. Listing an expert, and what they agreed to offer
 
 ### The queue

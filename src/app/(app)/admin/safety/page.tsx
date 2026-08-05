@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheckIcon } from "@phosphor-icons/react/ssr";
+import { BuildingsIcon, ShieldCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { getSession } from "@/lib/session";
 import { listReports, listAudit, openReportCount } from "@/lib/safety";
 import { EmptyState } from "@/components/ui/states";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { relativeTime } from "@/lib/dates";
+import { accessHistory } from "@/lib/superuser";
 import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
 
@@ -25,6 +29,19 @@ export default async function SafetyPage({
   const session = (await getSession())!;
   const { tab } = await searchParams;
   const active = TABS.find((t) => t.id === tab)?.id ?? "open";
+
+  /**
+   * WHO OUTSIDE THIS SCHOOL HAS LOOKED INSIDE IT.
+   *
+   * Shown unconditionally and above the tabs, not tucked into the audit tab,
+   * because it is the one thing on this page a school has no other way of
+   * finding out. Every action an operator takes is also in the audit trail
+   * below, but a school should not have to go looking to discover that the
+   * people hosting their data opened it.
+   *
+   * Empty in the ordinary case, and then this renders nothing at all.
+   */
+  const visits = await accessHistory(session.schoolId!, 10);
 
   const [openCount, groups, closed, auditRows] = await Promise.all([
     openReportCount(session),
@@ -48,6 +65,41 @@ export default async function SafetyPage({
             : `${openCount} ${openCount === 1 ? "thing" : "things"} to deal with`}
         </p>
       </div>
+
+      {visits.length > 0 && (
+        <Card className="border-warn/40">
+          <CardHeader
+            icon={<BuildingsIcon weight="duotone" className="size-5 text-warn" />}
+            title="When the EduLink team opened your school"
+            description="They cannot see inside without opening it, and cannot open it without saying why."
+          />
+          <CardBody>
+            <ul className="space-y-2">
+              {visits.map((visit) => (
+                <li key={visit.id} className="rounded-[--radius-sm] bg-surface-muted p-3">
+                  <p className="flex flex-wrap items-center gap-2 text-sm font-medium text-fg">
+                    {visit.operatorName}
+                    {visit.live && (
+                      <Badge tone="warn" size="sm">
+                        In your school now
+                      </Badge>
+                    )}
+                  </p>
+                  <p className="mt-0.5 text-xs text-fg-muted">
+                    {relativeTime(visit.startedAt)} — {visit.reason}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs leading-relaxed text-fg-muted">
+              Anything they did while they were in is in the trail below, marked{" "}
+              <span className="font-mono">operator.</span> They cannot read private messages
+              between your staff and families, and cannot change a mark, a register or a report
+              card.
+            </p>
+          </CardBody>
+        </Card>
+      )}
 
       <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Section">
         {TABS.map((t) => (

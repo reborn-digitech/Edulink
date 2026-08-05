@@ -36,6 +36,15 @@ function globSource(dir: string): string[] {
 
 /** Models that carry `schoolId` and can take a one-line RLS predicate. */
 const DIRECT = [
+  /**
+   * The operator's visitor book. Carries `schoolId` directly like everything
+   * else here, but its policy is bespoke: readable by the school, writable only
+   * by whoever runs the server, and DELETABLE BY NOBODY — see
+   * OPERATOR_LOG_TABLES in scripts/gen-rls.ts. It is in this list because the
+   * question this file asks is "how does it reach its tenant", and the answer
+   * is the ordinary one.
+   */
+  "OperatorAccess",
   "AcademicYear",
   "Assignment",
   "AttendanceRecord",
@@ -129,7 +138,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(52);
+    ).toBe(53);
   });
 });
 

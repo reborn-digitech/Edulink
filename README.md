@@ -262,6 +262,7 @@ src/lib/                  All business logic. Pages are thin.
   quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
   school-record.ts        ★ Leaving certificates. A document frozen at issue, never a query.
   student-record.ts       ★ A child's record, read with NO school bound. Outlives every membership.
+  operator-oversight.ts   ★ What the host can do inside a school they OPENED. One door: withSchoolAccess.
   birthdays.ts            ★ Derived from User.birthdate, never stored. Staff-only — see the DOB note.
   account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
   login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
@@ -1445,6 +1446,61 @@ inside it stays, and the comment says why: deleting it keeps every check green
 today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
+
+### The operator can look inside a school, and the school is told
+
+**This reverses the strongest claim this README made**, so it is worth stating
+plainly. `superuser.ts` said setting a school up is administration and reading
+what happens inside one is surveillance, and that the boundary had to be
+somewhere the UI could not move. That was the right default and it is still the
+default. What it could not answer is the ordinary reason a host needs to look: a
+school reports abuse it cannot see the whole of, a safeguarding referral arrives
+about content on this installation, a bug corrupts one school's register.
+
+**So the answer is not a master key, it is a signed-out one.** The operator does
+not hold every school open. They OPEN ONE, with a written reason, for 60
+minutes — and opening, every action inside, and closing are audited **against
+that school's id**, so they appear in that school's own Safety Centre above the
+tabs. The operator gains sight; they give up doing it unobserved. That trade is
+the feature, and if you remove the second half you have built the thing the
+original comment was refusing to build.
+
+**`app.is_superuser` still opens exactly School and Invite.** Nothing about the
+flag widened. What widened is a deliberate, recorded, expiring grant: while it
+is live the operator is bound to that ONE school through `forTenant`, so every
+ordinary tenant policy governs them exactly as it governs that school's admin.
+Nine live `rls:verify` checks hold it, and the negatives are the ones that
+matter — holding a grant on school A reads **none** of school B's posts and
+**none** of their register, flag or no flag.
+
+**`OperatorAccess` is the only append-only table in the schema, and it has NO
+DELETE POLICY for anybody.** Postgres denies what no policy permits. The school
+cannot tear pages out of its own visitor book, and — the one that actually
+matters — neither can the operator, who is bound to that school while the grant
+is live and could otherwise look, act, and erase the evidence they had been
+there. Both directions are checked live.
+
+**Two powers, and the absences are the design.** Take a post down — REJECTED,
+never deleted, because a host removing content and leaving nothing behind is
+indistinguishable from the content never existing. And pause a person —
+reversible, audited, with the **last-admin rule restated** rather than
+inherited, because a school with no admin is bricked and "the host did it" makes
+that worse. Not here: reading private messages between a parent, a teacher and a
+child; changing a mark, a register or a report card; ending an account
+permanently. And there is no list-everybody — search needs a name, so an
+operator arriving with one can find that person and an operator with idle
+curiosity is not handed a directory of children.
+
+**A bug the unit suite structurally could not see, and how it surfaced.** The
+first version bound the school with `forSchool`, which derives
+`app.is_superuser` from an override store that is empty on a fresh request. The
+INSERT policy refused: *new row violates row-level security policy*. Every unit
+test passed either way, because they run as the owner with the policies off. It
+was found by pressing the button. The sweep check I then wrote to catch it
+**does not** — it inserts the grant as the database owner, so it exercises the
+read path only, and that was verified by reintroducing the bug and watching it
+stay green. It is labelled for what it proves; the write path is pinned in
+`rls:verify` instead.
 
 ### The expert marketplace had no door handle, and birthdays had no source
 

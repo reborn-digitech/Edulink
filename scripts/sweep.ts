@@ -783,6 +783,10 @@ async function operatorArea() {
   // closed as the rest of this area.
   await check(actor, "/root/experts", 307, "⚠ …as is the expert queue");
   await check(null, "/root/experts", 307, "…to nobody at all either");
+  // The inside of a school is the widest thing in this area, so it is the
+  // one most worth checking is shut to everybody else.
+  await check(actor, `/root/${staff.schoolId}/inside`, 307, "⚠ …as is the inside of a school");
+  await check(null, `/root/${staff.schoolId}/inside`, 307, "…to nobody at all either");
 
   try {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: true } });
@@ -795,6 +799,69 @@ async function operatorArea() {
     // marketplace and nothing in the app could set it — only the seed — so no
     // expert could ever be listed on a real installation.
     await check(actor, "/root/experts", 200, "⚠ …and may list an expert on the marketplace");
+    /**
+     * ⚠ THE DOOR RENDERS, AND IS SHUT.
+     *
+     * 200 with no grant is the CORRECT answer here — the page shows the
+     * form asking why, not the school. So the status alone proves nothing
+     * and the body is read: it must offer the door and must NOT be
+     * showing the school behind it.
+     */
+    const inside = await hit(actor, `/root/${staff.schoolId}/inside`);
+    results.push({
+      role: "would-be-operator",
+      path: "/root/[school]/inside",
+      status: inside.status,
+      expected: 200,
+      ok:
+        inside.status === 200 &&
+        inside.body.includes("This school is closed to you") &&
+        !inside.body.includes("You are inside this school"),
+      note: "⚠ an operator with no grant is shown the door, not the school",
+    });
+
+    /**
+     * ⚠ A LIVE GRANT ACTUALLY OPENS THE SCHOOL.
+     *
+     * The READ half, end to end against the real policies: with a grant in
+     * place the operator sees the school rather than the door.
+     *
+     * IT DOES NOT COVER THE WRITE HALF, and saying so matters because I tried
+     * to make it. The grant below is inserted as the database OWNER, which
+     * bypasses RLS — so this check passes whether or not the application sets
+     * `app.is_superuser` when writing one. It was verified by deliberately
+     * reintroducing the bug: still green. The write path is proved in
+     * `rls:verify` (the policy) and by walking the form in a browser (the
+     * application). A check that passes for two different reasons proves
+     * nothing, and this one is labelled for what it does prove.
+     */
+    const openedGrant = await db.operatorAccess.create({
+      data: {
+        schoolId: staff.schoolId,
+        userId: staff.user.id,
+        reason: "ZZ sweep: checking the door opens at all",
+        expiresAt: new Date(Date.now() + 3_600_000),
+      },
+      select: { id: true },
+    });
+    try {
+      const opened = await hit(actor, `/root/${staff.schoolId}/inside`);
+      results.push({
+        role: "would-be-operator",
+        path: "/root/[school]/inside (open)",
+        status: opened.status,
+        expected: 200,
+        ok:
+          opened.status === 200 &&
+          opened.body.includes("You are inside this school") &&
+          opened.body.includes("The school, in numbers"),
+        note: "⚠ a grant actually opens the school, through the real policies",
+      });
+    } finally {
+      // Deleted as the OWNER. The app role cannot — there is no DELETE policy
+      // on this table for anybody, which is the point of it.
+      await db.operatorAccess.deleteMany({ where: { id: openedGrant.id } });
+    }
   } finally {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
   }

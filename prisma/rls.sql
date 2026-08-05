@@ -616,6 +616,38 @@ CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
           ))
         );
 
+-- OperatorAccess
+--
+-- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
+-- what no policy permits, so neither the school nor the operator can
+-- remove a row saying the operator opened this school. The school could
+-- otherwise tear pages out of its own visitor book; the operator, who is
+-- bound to the school exactly like an admin while a grant is live, could
+-- otherwise look, act, and erase the evidence they had been there.
+--
+-- READS are the SCHOOL'S, which is what puts the visit in their Safety
+-- Centre, plus the operator's own so they can see their grants. WRITES
+-- are the operator's alone: a school cannot forge a grant it never gave,
+-- and cannot rewrite the reason it was given.
+ALTER TABLE "OperatorAccess" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "OperatorAccess" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "OperatorAccess_readable" ON "OperatorAccess";
+DROP POLICY IF EXISTS "OperatorAccess_operator_insert" ON "OperatorAccess";
+DROP POLICY IF EXISTS "OperatorAccess_operator_update" ON "OperatorAccess";
+CREATE POLICY "OperatorAccess_readable" ON "OperatorAccess"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR current_setting('app.is_superuser', true) = '1');
+CREATE POLICY "OperatorAccess_operator_insert" ON "OperatorAccess"
+  FOR INSERT
+  WITH CHECK (current_setting('app.is_superuser', true) = '1');
+-- UPDATE exists only so a grant can be CLOSED early. There is no DELETE
+-- policy on purpose — see above.
+CREATE POLICY "OperatorAccess_operator_update" ON "OperatorAccess"
+  FOR UPDATE
+  USING (current_setting('app.is_superuser', true) = '1')
+  WITH CHECK (current_setting('app.is_superuser', true) = '1');
+
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
 --   Competition

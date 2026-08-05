@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
+import { forTenant } from "./tenant-context";
 import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
 import { sendTeacherInvite } from "./email";
@@ -639,4 +640,241 @@ export async function setExpertStanding(
   });
 
   return { ok: true };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Looking inside a school                                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE BOUNDARY THIS FILE SPENT ITS FIRST 150 LINES DEFENDING, OPENED ON PURPOSE.
+ *
+ * The header above says setting a school up is administration and reading what
+ * happens inside one is surveillance, and that the person hosting this software
+ * has no business knowing how a particular eleven-year-old is doing. That was
+ * the right default and it is still the default. What it could not answer is the
+ * ordinary reason a host needs to look: a school reports abuse it cannot see the
+ * whole of, a safeguarding referral arrives about content on this installation,
+ * a bug corrupts one school's register and somebody has to find out how.
+ *
+ * SO THE ANSWER IS NOT A MASTER KEY, IT IS A SIGNED-OUT ONE. An operator does
+ * not hold every school open. They OPEN ONE, having written down why, for a
+ * bounded time, and the school is told — opening, every action taken inside, and
+ * closing are all audited against that school's id, so they surface in that
+ * school's own Safety Centre next to everything else. The operator gains sight;
+ * they give up doing it unobserved. That trade is the feature.
+ *
+ * WHAT DID NOT CHANGE. `app.is_superuser` still opens exactly two tables, School
+ * and Invite. There is no policy anywhere that says "a superuser may read
+ * grades". While a grant is live the operator is bound to that ONE school
+ * through `asOperatorIn`, so every ordinary tenant policy applies to them exactly
+ * as it does to that school's admin — including the part where the school next
+ * door stays invisible. `npm run rls:verify` proves that specifically.
+ *
+ * AND WHAT REMAINS TRUE ABOUT ALL OF IT: whoever runs the server has `psql`.
+ * None of this is a defence against them, and pretending otherwise would be the
+ * dishonest version. It is a defence against doing it casually, against doing it
+ * without saying why, and against doing it without the school ever knowing —
+ * which are the three things that turn a support tool into surveillance.
+ */
+
+/**
+ * Binds one school AS THE OPERATOR, carrying the flag with it.
+ *
+ * NOT `forSchool`, and the difference cost a real bug. `forSchool` derives
+ * `userId` and `isSuperuser` from the OVERRIDE STORE — which is exactly right
+ * when it is narrowing inside an existing context, and empty on a fresh request.
+ * So an operator writing their own grant arrived at Postgres with
+ * `app.is_superuser` unset, and the INSERT policy refused it: `new row violates
+ * row-level security policy for table "OperatorAccess"`.
+ *
+ * WHICH IS THE POLICY DOING ITS JOB. The application intended to write that row
+ * and the database would not let it, because nothing had said who was asking.
+ * The fix is to say so — explicitly, from the session in hand — rather than to
+ * loosen the policy, and it is worth writing down because the failure was loud
+ * only by luck: a SELECT in the same state returns zero rows and looks like an
+ * empty school.
+ */
+function asOperatorIn<T>(session: ActiveContext, schoolId: string, work: () => Promise<T>): Promise<T> {
+  return forTenant(
+    { schoolIds: [schoolId], userId: session.user.id, joinCode: null, isSuperuser: true },
+    work,
+  );
+}
+
+/** How long a grant lasts before it has to be asked for again. */
+export const OPERATOR_ACCESS_MINUTES = 60;
+
+export type OperatorGrant = {
+  id: string;
+  schoolId: string;
+  reason: string;
+  startedAt: Date;
+  expiresAt: Date;
+};
+
+/**
+ * The grant this operator currently holds on this school, if any.
+ *
+ * Expiry is checked HERE rather than by a background job, because a grant that
+ * lapses only when something sweeps it is a grant that is open for as long as
+ * nothing runs.
+ */
+export async function activeGrant(
+  session: ActiveContext,
+  schoolId: string,
+): Promise<OperatorGrant | null> {
+  if (!session.user.isSuperuser) return null;
+
+  const row = await db.operatorAccess.findFirst({
+    where: {
+      schoolId,
+      userId: session.user.id,
+      endedAt: null,
+      expiresAt: { gt: new Date() },
+    },
+    orderBy: { startedAt: "desc" },
+    select: { id: true, schoolId: true, reason: true, startedAt: true, expiresAt: true },
+  });
+  return row;
+}
+
+export type OpenResult = { ok: true; grant: OperatorGrant } | { ok: false; error: string };
+
+/**
+ * Opens one school, for a stated reason.
+ *
+ * THE REASON IS REQUIRED AND IS NOT DECORATION. It is written into the row and
+ * into the school's own audit log, so what the school reads is not "the operator
+ * looked" but "the operator looked, on this date, because of this". A free-text
+ * box somebody can type "x" into is admittedly weak; it is still the difference
+ * between a decision somebody made and a habit nobody notices.
+ */
+export async function openSchool(
+  session: ActiveContext,
+  schoolId: string,
+  reason: string,
+): Promise<OpenResult> {
+  assertSuperuser(session);
+
+  const clean = reason.trim();
+  if (clean.length < 10) {
+    return {
+      ok: false,
+      error: "Say why you are opening this school, in a sentence. The school will read it.",
+    };
+  }
+  if (clean.length > 500) return { ok: false, error: "That reason is too long." };
+
+  // The school has to exist, and reading it is something the operator flag
+  // already permits — so this is not a widening, it is a spelling check.
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true } });
+  if (!school) return { ok: false, error: "No such school." };
+
+  const existing = await activeGrant(session, schoolId);
+  if (existing) return { ok: true, grant: existing };
+
+  const expiresAt = new Date(Date.now() + OPERATOR_ACCESS_MINUTES * 60_000);
+  // Written INSIDE the school, because that is where the row lives and where the
+  // policy expects it. Insert is permitted by the operator flag alone; see
+  // OPERATOR_LOG_TABLES in gen-rls.ts.
+  const grant = await asOperatorIn(session, schoolId, () =>
+    db.operatorAccess.create({
+      data: { schoolId, userId: session.user.id, reason: clean, expiresAt },
+      select: { id: true, schoolId: true, reason: true, startedAt: true, expiresAt: true },
+    }),
+  );
+
+  /**
+   * AUDITED AGAINST THE SCHOOL, not against nothing.
+   *
+   * Every other operator action in this file is audited with `schoolId` null on
+   * purpose, so an operator's own housekeeping does not clutter a tenant's
+   * Safety Centre. This one is the exact opposite case and the reason is the
+   * whole design: a school must be able to see that somebody outside it opened
+   * their data. Filing it where only the operator can read it would make the
+   * accountability half of this feature ornamental.
+   */
+  await audit({
+    schoolId,
+    actorUserId: session.user.id,
+    action: "operator.school.open",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { reason: clean, minutes: OPERATOR_ACCESS_MINUTES },
+  });
+
+  return { ok: true, grant };
+}
+
+/** Closes a grant early. The row stays; only `endedAt` is set. */
+export async function closeSchool(session: ActiveContext, schoolId: string): Promise<void> {
+  assertSuperuser(session);
+
+  const grant = await activeGrant(session, schoolId);
+  if (!grant) return;
+
+  await asOperatorIn(session, schoolId, () =>
+    db.operatorAccess.update({ where: { id: grant.id }, data: { endedAt: new Date() } }),
+  );
+
+  await audit({
+    schoolId,
+    actorUserId: session.user.id,
+    action: "operator.school.close",
+    targetType: "School",
+    targetId: schoolId,
+  });
+}
+
+/**
+ * Runs `work` bound to a school the operator currently holds a grant on.
+ *
+ * THE ONLY WAY INTO A SCHOOL'S ROWS FROM THIS FILE, and everything that reads or
+ * writes school data goes through it. Two separate things have to be true —
+ * they run the server AND they have an open, unexpired grant for this school —
+ * and both are checked here rather than at each call site, because a check
+ * repeated in eight places is a check missing from the ninth.
+ *
+ * `asOperatorIn` narrows to exactly that school, so the tenant policies do the rest
+ * and the school next door is as invisible to the operator as it is to anybody.
+ */
+export async function withSchoolAccess<T>(
+  session: ActiveContext,
+  schoolId: string,
+  work: () => Promise<T>,
+): Promise<T> {
+  assertSuperuser(session);
+  const grant = await activeGrant(session, schoolId);
+  if (!grant) {
+    throw new AccessError("Open this school first, and say why", "NOT_FOUND");
+  }
+  return asOperatorIn(session, schoolId, work);
+}
+
+/** Every time this school has been opened, newest first. For the school to read. */
+export async function accessHistory(schoolId: string, take = 50) {
+  const rows = await db.operatorAccess.findMany({
+    where: { schoolId },
+    orderBy: { startedAt: "desc" },
+    take,
+    select: {
+      id: true,
+      reason: true,
+      startedAt: true,
+      expiresAt: true,
+      endedAt: true,
+      user: { select: { name: true, email: true } },
+    },
+  });
+  return rows.map((row) => ({
+    id: row.id,
+    reason: row.reason,
+    startedAt: row.startedAt,
+    expiresAt: row.expiresAt,
+    endedAt: row.endedAt,
+    operatorName: row.user.name,
+    operatorEmail: row.user.email,
+    live: row.endedAt === null && row.expiresAt.getTime() > Date.now(),
+  }));
 }

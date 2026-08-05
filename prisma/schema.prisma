@@ -98,6 +98,7 @@ model School {
   quizResponses    QuizResponse[]
   quizMastery      QuizMastery[]
   schoolRecords    SchoolRecord[]
+  operatorAccess   OperatorAccess[]
 
   @@index([code])
 }
@@ -196,6 +197,7 @@ model User {
   expertMessages    ExpertMessage[]
   mentorMessages    MentorMessage[]
   schoolRecords     SchoolRecord[]
+  operatorAccess    OperatorAccess[]
 
   @@index([email])
 }
@@ -1093,6 +1095,43 @@ model AuditLog {
 
   @@index([schoolId, createdAt])
   @@index([actorUserId, createdAt])
+}
+
+/// A time-boxed, reasoned grant letting whoever runs the server look inside one
+/// school.
+///
+/// THE WHOLE POINT IS THAT IT IS NOT A STANDING POWER. The operator flag opens
+/// exactly two tables — School and Invite — and that has not changed. What this
+/// row does is let one named person open ONE named school for a bounded time,
+/// having written down why, with the school able to see that it happened.
+///
+/// WHY A ROW AND NOT A BOOLEAN ON USER. Because the three things that make this
+/// defensible are all properties of an occasion rather than of a person: the
+/// REASON, the SCHOOL, and the fact that it EXPIRES. A flag saying "may look
+/// inside schools" is a master key; this is a signed-out key with a time on it.
+///
+/// The school reads it in their own Safety Centre, because opening and closing
+/// are audited against that school's id like any other event. That is the trade
+/// this feature is: the operator gains sight, and gives up doing it unobserved.
+model OperatorAccess {
+  id       String @id @default(cuid())
+  schoolId String
+  /// The operator. Not a Membership — they hold none, by definition.
+  userId   String
+
+  /// Written before the door opens, and shown to the school afterwards.
+  reason String
+
+  startedAt DateTime  @default(now())
+  expiresAt DateTime
+  /// Set when they close it by hand, before it would have run out.
+  endedAt   DateTime?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, startedAt])
+  @@index([userId, expiresAt])
 }
 
 /// Dev-only outbox. EMAIL_TRANSPORT="devbox" writes here instead of sending,

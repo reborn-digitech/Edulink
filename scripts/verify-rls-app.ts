@@ -851,6 +851,197 @@ async function main() {
     );
 
     /* ---------------------------------------------------------------- *
+     * THE OPERATOR, INSIDE ONE SCHOOL.
+     *
+     * The oversight feature binds ONE school with `forSchool` while a grant is
+     * live, so the operator is governed by the ordinary tenant clause exactly
+     * as that school's admin is. That is the whole containment argument, and
+     * the unit suite cannot test it: it runs as the owner with the policies
+     * off, where a bug that opened every school would pass silently.
+     *
+     * These bind school A and check that B stays dark — including with the
+     * superuser flag ALSO set, which is the state an operator is actually in.
+     * ---------------------------------------------------------------- */
+
+    const asOperatorInSchool = async <T>(
+      schoolIds: string,
+      work: (tx: TxLike) => Promise<T>,
+    ): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.school_ids', $1, true)`, schoolIds);
+        await tx.$executeRawUnsafe(`SELECT set_config('app.is_superuser', '1', true)`);
+        return work(tx);
+      });
+
+    const postsIn = (tx: TxLike, schoolId: string) =>
+      (tx as unknown as { post: { count: (a: unknown) => Promise<number> } }).post.count({
+        where: { schoolId, scope: { not: "GLOBAL" } },
+      });
+
+    const ownSchool = await asOperatorInSchool("verify-a", (tx) => postsIn(tx, "verify-a"));
+    check(
+      "⚠ an operator holding a grant on ONE school reads that school",
+      ownSchool >= 1,
+      `read ${ownSchool} of school A's posts — an opened school shows nothing, so oversight does nothing`,
+    );
+
+    const nextDoor = await asOperatorInSchool("verify-a", (tx) => postsIn(tx, "verify-b"));
+    check(
+      "⚠ …and the school NEXT DOOR stays dark, flag or no flag",
+      nextDoor === 0,
+      `read ${nextDoor} of school B's posts while holding a grant on A — opening one school opened another`,
+    );
+
+    // The register is the sharpest version of the same question: a grant is a
+    // school binding, not a key to children's attendance everywhere.
+    const attendanceNextDoor = await asOperatorInSchool("verify-a", (tx) =>
+      (
+        tx as unknown as { attendanceRecord: { count: (a: unknown) => Promise<number> } }
+      ).attendanceRecord.count({ where: { schoolId: "verify-b" } }),
+    );
+    check(
+      "⚠ …including their register",
+      attendanceNextDoor === 0,
+      `read ${attendanceNextDoor} of school B's attendance rows from a grant on school A`,
+    );
+
+    /* -- The visitor book, which is what makes the whole thing accountable. -- */
+
+    psql(
+      DB,
+      `INSERT INTO "OperatorAccess" (id,"schoolId","userId",reason,"expiresAt") VALUES
+         ('verify-grant','verify-a','verify-u','Checking a report', now() + interval '1 hour');`,
+    );
+
+    const schoolSeesGrant = await withTenantOn(client, "verify-a", (tx) =>
+      (
+        tx as unknown as { operatorAccess: { count: (a?: unknown) => Promise<number> } }
+      ).operatorAccess.count(),
+    );
+    check(
+      "⚠ a school can READ that the operator opened it",
+      schoolSeesGrant === 1,
+      "the school cannot see the visit — the accountability half of oversight is ornamental",
+    );
+
+    const otherSchoolSeesGrant = await withTenantOn(client, "verify-b", (tx) =>
+      (
+        tx as unknown as { operatorAccess: { count: (a?: unknown) => Promise<number> } }
+      ).operatorAccess.count(),
+    );
+    check(
+      "⚠ …and no other school can",
+      otherSchoolSeesGrant === 0,
+      `school B read ${otherSchoolSeesGrant} of school A's operator visits`,
+    );
+
+    // NO DELETE POLICY EXISTS, so nobody may remove a row saying the operator
+    // was here — not the school whose book it is, and not the operator, who is
+    // bound to that school while the grant is live and could otherwise look,
+    // act, and erase the evidence.
+    let schoolDeleted = 0;
+    try {
+      await withTenantOn(client, "verify-a", (tx) =>
+        (
+          tx as unknown as {
+            operatorAccess: { deleteMany: (a: unknown) => Promise<{ count: number }> };
+          }
+        ).operatorAccess.deleteMany({ where: { id: "verify-grant" } }),
+      );
+      schoolDeleted = psqlCount(`SELECT count(*) FROM "OperatorAccess" WHERE id = 'verify-grant'`);
+    } catch {
+      schoolDeleted = 1;
+    }
+    check(
+      "⚠ …and the SCHOOL cannot tear the page out",
+      schoolDeleted === 1,
+      "a school deleted the record of an operator visit — the visitor book is not a record",
+    );
+
+    let operatorDeleted = 0;
+    try {
+      await asOperatorInSchool("verify-a", (tx) =>
+        (
+          tx as unknown as {
+            operatorAccess: { deleteMany: (a: unknown) => Promise<{ count: number }> };
+          }
+        ).operatorAccess.deleteMany({ where: { id: "verify-grant" } }),
+      );
+      operatorDeleted = psqlCount(`SELECT count(*) FROM "OperatorAccess" WHERE id = 'verify-grant'`);
+    } catch {
+      operatorDeleted = 1;
+    }
+    check(
+      "⚠ …and NEITHER CAN THE OPERATOR, which is the point",
+      operatorDeleted === 1,
+      "the operator deleted the record of their own visit — they can look, act and cover their tracks",
+    );
+
+    /**
+     * ⚠ WRITING THE VISITOR BOOK NEEDS THE OPERATOR FLAG, NOT JUST A SCHOOL.
+     *
+     * The half the sweep cannot reach. The application binds the school AND
+     * sets `app.is_superuser` when it opens a grant; the first version bound
+     * only the school, because `forSchool` derives the flag from an override
+     * store that is empty on a fresh request. Postgres refused the INSERT,
+     * which is how the bug was found at all — a SELECT in the same state
+     * returns zero rows and looks like an empty school.
+     */
+    let insertedWithSchoolOnly = 0;
+    try {
+      await withTenantOn(client, "verify-a", (tx) =>
+        (
+          tx as unknown as { operatorAccess: { create: (a: unknown) => Promise<unknown> } }
+        ).operatorAccess.create({
+          data: {
+            id: "verify-grant-nosu",
+            schoolId: "verify-a",
+            userId: "verify-u",
+            reason: "No flag set",
+            expiresAt: new Date(Date.now() + 3_600_000),
+          },
+        }),
+      );
+      insertedWithSchoolOnly = psqlCount(
+        `SELECT count(*) FROM "OperatorAccess" WHERE id = 'verify-grant-nosu'`,
+      );
+    } catch {
+      insertedWithSchoolOnly = 0; // refused outright is the pass
+    }
+    check(
+      "⚠ a grant cannot be written by binding a school alone",
+      insertedWithSchoolOnly === 0,
+      "anybody who can bind a school can forge an operator visit, which makes the visitor book worthless",
+    );
+
+    let insertedAsOperator = 0;
+    try {
+      await asOperatorInSchool("verify-a", (tx) =>
+        (
+          tx as unknown as { operatorAccess: { create: (a: unknown) => Promise<unknown> } }
+        ).operatorAccess.create({
+          data: {
+            id: "verify-grant-su",
+            schoolId: "verify-a",
+            userId: "verify-u",
+            reason: "Flag set",
+            expiresAt: new Date(Date.now() + 3_600_000),
+          },
+        }),
+      );
+      insertedAsOperator = psqlCount(
+        `SELECT count(*) FROM "OperatorAccess" WHERE id = 'verify-grant-su'`,
+      );
+    } catch {
+      insertedAsOperator = 0;
+    }
+    check(
+      "⚠ …and CAN be written with the operator flag set, which is what opening does",
+      insertedAsOperator === 1,
+      "the operator cannot record their own visit, so opening a school fails outright",
+    );
+
+    /* ---------------------------------------------------------------- *
      * The superuser boundary.
      *
      * This is the whole reason the flag is safe to have, and it is a NEGATIVE
