@@ -12,6 +12,7 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
+import { consume, retryHint, LOGIN_ATTEMPTS } from "@/lib/rate-limit";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
@@ -47,6 +48,34 @@ export async function login(input: unknown): Promise<LoginState> {
 
   const { identifier, password } = parsed.data;
   const generic = { ok: false, errors: { _form: "That login and password do not match." } };
+
+  /**
+   * ⚠ HOW MANY TIMES THIS LOGIN HAS BEEN TRIED LATELY.
+   *
+   * Argon2 and `fakePasswordWork` make each guess slow; they do not make an
+   * unlimited number of them impossible, and until now nothing did.
+   *
+   * THE MESSAGE SAYS SO, which does not leak anything BECAUSE the limit applies
+   * to identifiers that exist and identifiers that do not, identically — the
+   * bucket is built before any lookup. Hiding it behind the generic failure
+   * would leave somebody who mistyped their password ten times staring at "that
+   * does not match" for a password they know is right.
+   *
+   * The allowance is generous on purpose: this can be used to burn a real
+   * person's attempts and keep them out, so ten-in-fifteen-minutes has to sit
+   * well above what somebody fumbling their own password does.
+   */
+  const gate = await consume(
+    `login:${identifier.toLowerCase()}`,
+    LOGIN_ATTEMPTS.limit,
+    LOGIN_ATTEMPTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      errors: { _form: `Too many attempts. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+    };
+  }
 
   const account = await findAccount(identifier);
   if (!account || account.disabled) {
@@ -254,6 +283,7 @@ export async function requestReset(input: unknown): Promise<ResetRequestState> {
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const result = await requestPasswordReset(parsed.data.identifier);
+  if (!result.ok) return { ok: false, errors: { _form: result.error ?? "Try again shortly." } };
   return { ok: true, errors: {}, hint: result.hint, channel: result.channel };
 }
 

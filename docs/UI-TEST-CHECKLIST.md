@@ -1847,7 +1847,17 @@ The bug this closes: `/account` used to need an active role.
 - ☐ Sign in as **Priya** with her **email** and password → in
 - ☐ Sign in with a **student handle** (`rosie.kvjn` — no `@`) and password → in
 - ☐ Add a mobile number at `/account` → **⚠️** the hint shows the normalised
-  form as you type: `98765 43210` reads back as *Saved as +91 98765 43210*
+  form as you type, and says a code is coming: `98765 43210` reads back as
+  *We will text a code to +91 98765 43210 to check it is yours*
+- ☐ **⚠️ NOTHING IS SAVED YET.** Press **Send me a code**, then look at the
+  account row (or just cancel): the number is **not** on it. Only the code
+  coming back writes it. This is the whole point — a mistyped digit costs one
+  text to a stranger, not your reset codes forever
+- ☐ Read the code at `/dev/mailbox`, enter it → confirmed, and the row now shows
+  the number with **confirmed** beside it
+- ☐ **⚠️** Enter five wrong codes → the sixth fails with the right one too
+- ☐ **⚠️** Try to confirm a number another account has already confirmed →
+  refused, plainly
 - ☐ **⚠️** Sign out and sign in with `98765 43210` — national digits, a space,
   no country code. In. Try `+919876543210` and `09876543210` too: same account
 - ☐ **⚠️** A wrong password on any of the three says *that login and password do
@@ -1878,6 +1888,20 @@ The bug this closes: `/account` used to need an active role.
 - ☐ The old password no longer works; the new one does
 - ☐ **⚠️** Ask for a reset for an address nobody has → the page says exactly the
   same thing, and nothing is sent. Compare the two screens word for word
+
+### The limits
+
+- ☐ Ask for a reset **four** times for the same number → the fourth is refused
+  with *Too many requests … try again in about 15 minutes*
+- ☐ **⚠️** Do the same for a number that belongs to NOBODY → refused at exactly
+  the same point. If a real identifier and a fake one start refusing at
+  different times, the limiter has become a way to test which accounts exist
+- ☐ **⚠️** Try three spellings of one number (`+9198…`, `098…`, `98765 …`) →
+  they share one allowance. Three spellings must not buy three sets of texts
+- ☐ Get a password wrong **eleven** times → the eleventh says *Too many
+  attempts*, with a time. It says so out loud rather than hiding behind the
+  generic failure, which leaks nothing because the limit applies to logins that
+  exist and logins that do not, identically
 
 ## 13. Authorisation — try to break in
 

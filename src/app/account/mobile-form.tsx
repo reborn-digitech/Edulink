@@ -2,55 +2,167 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { DeviceMobileIcon } from "@phosphor-icons/react";
+import { CheckCircleIcon, DeviceMobileIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { formatPhone, normalisePhone } from "@/lib/phone";
-import { saveMobile } from "./actions";
+import { sendMobileCode, confirmMobile, clearMobile } from "./actions";
 
 /**
- * The number this account can sign in with, and be sent a reset code on.
+ * The number this account signs in with, and gets a reset code on.
  *
- * SHOWS THE NORMALISED FORM BACK, live, as they type. `98765 43210` becoming
- * `+91 98765 43210` in front of somebody is the cheapest possible way to say
- * "this is what we will store" — and the number they will later type into a
- * login box, on a phone, from memory. A field that silently reformats on save
- * teaches nobody anything.
+ * TWO STEPS, BECAUSE THE NUMBER IS A CREDENTIAL DESTINATION. Typing it is a
+ * claim; the code coming back is the proof. Nothing is stored in between — see
+ * `startPhoneChange` — so a mistyped digit costs one text to a stranger and
+ * then nothing, rather than pointing this person's reset codes at them forever.
+ *
+ * SHOWS THE NORMALISED FORM AS THEY TYPE. `98765 43210` reading back as
+ * `+91 98765 43210` in front of somebody is the cheapest way to say what will
+ * be stored — and it is the number they will later type into a login box, on a
+ * phone, from memory.
  */
-export function MobileForm({ current }: { current: string | null }) {
+export function MobileForm({
+  current,
+  confirmed,
+}: {
+  current: string | null;
+  confirmed: boolean;
+}) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [value, setValue] = useState(current ? formatPhone(current) : "");
+
+  const [step, setStep] = useState<"idle" | "code">("idle");
+  const [value, setValue] = useState("");
+  const [code, setCode] = useState("");
+  const [hint, setHint] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const normalised = normalisePhone(value);
-  const dirty = (normalised ?? "") !== (current ?? "");
 
-  function submit(event: React.FormEvent) {
+  function send(event?: React.FormEvent) {
+    event?.preventDefault();
+    setError(null);
+    startTransition(async () => {
+      const result = await sendMobileCode(value);
+      if (!result.ok) {
+        setError(result.error ?? "That did not send.");
+        return;
+      }
+      setHint(result.hint ?? "");
+      setStep("code");
+    });
+  }
+
+  function confirm(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await saveMobile(value);
+      const result = await confirmMobile(code);
       if (!result.ok) {
-        setError(result.error ?? "That did not save.");
+        setError(result.error ?? "That did not work.");
         return;
       }
       toast({
         tone: "ok",
-        title: result.phone ? "Mobile number saved" : "Mobile number removed",
-        description: result.phone
-          ? "You can sign in with it, and we can send a reset code to it."
-          : undefined,
+        title: "Mobile number confirmed",
+        description: "You can sign in with it, and get a reset code on it.",
       });
-      setValue(result.phone ? formatPhone(result.phone) : "");
+      setStep("idle");
+      setValue("");
+      setCode("");
       router.refresh();
     });
   }
 
+  function remove() {
+    startTransition(async () => {
+      await clearMobile();
+      toast({ tone: "ok", title: "Mobile number removed" });
+      setValue("");
+      router.refresh();
+    });
+  }
+
+  /* ------------------------------------------------------ waiting for a code */
+  if (step === "code") {
+    return (
+      <form onSubmit={confirm} className="space-y-3" noValidate>
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
+          We sent a code to the number ending <strong>{hint}</strong>. It expires in 10 minutes.
+          {/* Said plainly: nothing has changed yet, so a wrong number costs
+              nothing but one text. */}
+          <span className="mt-1 block text-xs text-fg-muted">
+            Your account is unchanged until you enter it.
+          </span>
+        </p>
+
+        {error && (
+          <p
+            role="alert"
+            className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          >
+            {error}
+          </p>
+        )}
+
+        <TextField
+          label="The code"
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          autoFocus
+          required
+          placeholder="000000"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+
+        <div className="flex flex-wrap items-center gap-2">
+          <Button type="submit" size="sm" loading={pending} disabled={code.trim().length === 0}>
+            Confirm
+          </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            disabled={pending}
+            onClick={() => {
+              setStep("idle");
+              setCode("");
+              setError(null);
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
+    );
+  }
+
+  /* ------------------------------------------------------------------ normal */
   return (
-    <form onSubmit={submit} className="space-y-3" noValidate>
+    <form onSubmit={send} className="space-y-3" noValidate>
+      {current && (
+        <p className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm">
+          <CheckCircleIcon weight="fill" className="size-4 shrink-0 text-ok" />
+          <span className="font-medium text-fg">{formatPhone(current)}</span>
+          <span className="text-xs text-fg-muted">
+            {confirmed ? "confirmed" : "not confirmed"}
+          </span>
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            className="ml-auto"
+            disabled={pending}
+            onClick={remove}
+          >
+            Remove
+          </Button>
+        </p>
+      )}
+
       {error && (
         <p
           role="alert"
@@ -61,7 +173,7 @@ export function MobileForm({ current }: { current: string | null }) {
       )}
 
       <TextField
-        label="Mobile number"
+        label={current ? "Change it" : "Mobile number"}
         type="text"
         inputMode="tel"
         autoComplete="tel"
@@ -72,22 +184,18 @@ export function MobileForm({ current }: { current: string | null }) {
           value.trim().length === 0
             ? "Optional. Add one and you can sign in with it, and get a reset code by text."
             : normalised
-              ? `Saved as ${formatPhone(normalised)}`
+              ? `We will text a code to ${formatPhone(normalised)} to check it is yours.`
               : "That does not look like a mobile number yet."
         }
       />
 
       <div className="flex flex-wrap items-center gap-2">
-        <Button type="submit" size="sm" loading={pending} disabled={!dirty || (value.trim().length > 0 && !normalised)}>
-          {value.trim().length === 0 && current ? "Remove it" : "Save"}
+        <Button type="submit" size="sm" loading={pending} disabled={!normalised}>
+          Send me a code
         </Button>
-        {/* Said plainly rather than implied by a missing tick. Anybody can type
-            a number they do not hold, and a reset code goes to whatever is
-            here — so the person who owns the account should know that nothing
-            has confirmed it. */}
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">
           <DeviceMobileIcon className="size-3.5" />
-          Not confirmed by code yet — anyone could type any number here.
+          Nothing is saved until the code comes back.
         </p>
       </div>
     </form>

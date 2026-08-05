@@ -9,8 +9,8 @@ import { readJson, writeJson } from "@/lib/json";
 import { audit } from "@/lib/audit";
 import { revokeOtherSessions, revokeSession } from "@/lib/session";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
-import { normalisePhone } from "@/lib/phone";
 import { requireApiUser } from "@/lib/tenancy";
+import { startPhoneChange, confirmPhoneChange, removePhone } from "@/lib/passwords";
 
 export type PrefsState = { ok: boolean; errors: FieldErrors };
 
@@ -154,65 +154,36 @@ export async function signOutEverywhereElse(): Promise<{ ok: boolean; count: num
 /* Your mobile number                                                          */
 /* -------------------------------------------------------------------------- */
 
-export type PhoneState = { ok: boolean; error?: string; phone?: string | null };
+export type PhoneState = { ok: boolean; error?: string; hint?: string };
 
 /**
- * Adds, changes or removes the mobile number this account signs in with.
+ * TWO STEPS, AND THE FIRST ONE WRITES NOTHING.
  *
- * NORMALISED BEFORE IT IS STORED, always, through the same function the login
- * box and the reset form use. `User.phone` is unique, so two spellings of one
- * number are two accounts — or, more often, one account and one unique-constraint
- * error that means nothing to the person reading it.
+ * This was one step: type a number, it lands on the account, `phoneVerifiedAt`
+ * stays null, and the page apologises for that in small print. Which meant a
+ * mistyped digit pointed somebody's password-reset codes at a stranger's phone
+ * permanently — and they would not find out until the day they needed one.
  *
- * THE CLASH IS REPORTED PLAINLY, and that is a deliberate exception to the
- * enumeration rule this codebase follows everywhere else. Refusing with "that
- * did not work" would leave somebody retyping a number that is correct; and the
- * person being told is signed in, on their own settings page, typing a number
- * they claim is theirs. The failure they need to hear is "somebody already has
- * this", because the answer is to talk to their school rather than to try again.
- *
- * NOT VERIFIED YET. Storing a number nobody has proved they hold means a reset
- * code can be sent to it — so `phoneVerifiedAt` stays null and is the hook for
- * a confirm-by-code step. Said out loud on the page rather than implied.
+ * Now the number waits in a token until a code sent TO IT comes back. Nothing
+ * that looks up an account by phone can see it in the meantime, so an
+ * unconfirmed number is not a login and not a reset destination.
  */
-export async function saveMobile(raw: string): Promise<PhoneState> {
+export async function sendMobileCode(raw: string): Promise<PhoneState> {
   const session = await requireApiUser();
-  const trimmed = raw.trim();
+  return startPhoneChange(session.user.id, raw);
+}
 
-  if (trimmed.length === 0) {
-    await db.user.update({
-      where: { id: session.user.id },
-      data: { phone: null, phoneVerifiedAt: null },
-    });
-    await audit({ actorUserId: session.user.id, action: "account.mobile.remove" });
-    revalidatePath("/account");
-    return { ok: true, phone: null };
-  }
+export async function confirmMobile(code: string): Promise<PhoneState> {
+  const session = await requireApiUser();
+  const result = await confirmPhoneChange(session.user.id, code);
+  if (result.ok) revalidatePath("/account");
+  return result;
+}
 
-  const phone = normalisePhone(trimmed);
-  if (!phone) {
-    return {
-      ok: false,
-      error: "That is not a mobile number we can use. Try it with the country code, like +91 98765 43210.",
-    };
-  }
-
-  const taken = await db.user.findFirst({
-    where: { phone, id: { not: session.user.id } },
-    select: { id: true },
-  });
-  if (taken) {
-    return {
-      ok: false,
-      error: "Another account already uses that number. If it is yours, ask your school for help.",
-    };
-  }
-
-  await db.user.update({
-    where: { id: session.user.id },
-    data: { phone, phoneVerifiedAt: null },
-  });
-  await audit({ actorUserId: session.user.id, action: "account.mobile.set" });
+/** Taking it off needs no code — see the note on `removePhone`. */
+export async function clearMobile(): Promise<PhoneState> {
+  const session = await requireApiUser();
+  const result = await removePhone(session.user.id);
   revalidatePath("/account");
-  return { ok: true, phone };
+  return result;
 }

@@ -241,7 +241,7 @@ Everything a fresh session needs to continue without re-deriving it.
 ### Where things live
 
 ```
-prisma/schema.prisma      55 models. Read the header comment first.
+prisma/schema.prisma      56 models. Read the header comment first.
 prisma/seed.ts            Two schools on purpose (isolation testing).
 prisma/rls.sql            GENERATED tenant policies. npm run rls:generate.
 src/lib/                  All business logic. Pages are thin.
@@ -285,6 +285,7 @@ src/lib/                  All business logic. Pages are thin.
   phone.ts                ★ Client-safe. ONE stored shape for a number, or nothing. `User.phone` is unique.
   passwords.ts            ★ Login by email/mobile/handle, and the reset. Neither end says who exists.
   sms.ts                  Text transport. Devbox only, same shape as email.ts. Fails loudly.
+  rate-limit.ts           ★ The FIRST rate limit here. Fails OPEN — see the header for why.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
@@ -1405,6 +1406,50 @@ One line each, with the default rejected.
   remove both and they fail. That is recorded in the code. A third was genuinely
   dead and was deleted.
 
+- **The two gaps the last commit left, closed.** Both were mine, both were named
+  in this file before they were fixed, and both were in the flow that replaced
+  2FA.
+  **A NUMBER NOBODY PROVED THEY HELD COULD RECEIVE A RESET CODE.** `saveMobile`
+  wrote whatever was typed straight onto the account with `phoneVerifiedAt`
+  null, and the page apologised for that in small print. One mistyped digit
+  pointed somebody's reset codes at a stranger's phone permanently — discovered
+  on the day they needed one. Adding a number now costs a code sent TO it, and
+  **nothing is written until the code comes back**: the pending number waits in
+  the token's `meta`, so an unconfirmed number is nowhere a lookup can reach it.
+  `findAccount` additionally refuses an unconfirmed phone, so it is neither a
+  login nor a destination — one predicate, no third state where it is one but
+  not the other. Removing a number needs no code, because demanding proof to
+  remove one would strand somebody with a number they cannot receive codes on,
+  which is the exact failure being fixed.
+  **THERE WAS NO RATE LIMITING ANYWHERE IN THE APP.** Tolerable while the worst
+  an unlimited form could do was let somebody guess a password against argon2.
+  Reset by mobile number changed the shape of it: the app will send a text to a
+  number the CALLER types, so an attacker picks a stranger's number, loops, and
+  this software becomes the thing harassing them at the deployment's expense.
+  `rate-limit.ts` is the first one — in the database rather than in memory,
+  because the two moments a limiter matters most are a deploy and a busy
+  afternoon. Three reset requests per identifier per 15 minutes, ten logins,
+  three phone codes per USER (keyed on the user, not the number, or swapping the
+  number buys a fresh allowance).
+  **IT IS KEYED ON WHAT WAS TYPED, NOT ON THE ACCOUNT IT RESOLVES TO** — an
+  identifier matching nobody is limited identically to one that does, or the
+  limiter becomes the enumeration oracle the reset flow spent its effort
+  avoiding. There is a test for exactly that.
+  **IT FAILS OPEN, AND THAT IS THE UNCOMFORTABLE HALF.** A limiter outage must
+  not become an authentication outage locking every family out of every account.
+  Asserted rather than described — and the first version of that assertion
+  proved nothing: it used a 20,000-character bucket assuming the column would
+  refuse it, Postgres `text` has no length limit, the row inserted happily, and
+  `allowed: true` was the ORDINARY answer. It now replaces the delegate with one
+  that throws, and removing the fallback turns it red.
+  **Walked in a production build:** typed a number, confirmed the account row was
+  still `null` while the code was in flight, entered the code, watched
+  `phoneVerifiedAt` appear — then hit the reset limit on the fourth request and
+  the login limit on the eleventh attempt, both with a time rather than a
+  shrug. 14 mutations, 0 real survivors (two were malformed on my part and were
+  redone; one survives alone because `findAccount` covers it, and removing both
+  together is caught).
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1548,6 +1593,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   went with it; nobody had it switched on.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
+- ~~An unverified mobile number could receive a password-reset code~~ and
+  ~~there is no rate limiting anywhere in the app~~ — **both fixed.** See Status.
+  What is still absent is rate limiting on anything OTHER than login, password
+  reset and phone confirmation: the invite-accept and parent-claim forms are
+  unlimited, and neither sends a message to a number a stranger typed, which is
+  why they were not the urgent ones.
 - **A pupil who joined with a CODE rather than an invitation still forks.**
   `joinAsStudent` mints a new account every time, and a handle account has no
   real address for a new school to invite. The invitation path is the one that

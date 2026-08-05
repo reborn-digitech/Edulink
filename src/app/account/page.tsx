@@ -44,6 +44,7 @@ export default async function AccountPage() {
         preferredName: true,
         email: true,
         phone: true,
+        phoneVerifiedAt: true,
         avatarKey: true,
         prefs: true,
         emailVerifiedAt: true,
@@ -95,7 +96,7 @@ export default async function AccountPage() {
           description="Your email, your mobile number, or the login name your school gave you — any of them, with your password."
         />
         <CardBody>
-          <MobileForm current={user.phone} />
+          <MobileForm current={user.phone} confirmed={user.phoneVerifiedAt !== null} />
         </CardBody>
       </Card>
 

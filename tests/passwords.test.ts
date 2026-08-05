@@ -4,9 +4,13 @@ import {
   findAccount,
   requestPasswordReset,
   resetPassword,
+  startPhoneChange,
+  confirmPhoneChange,
+  removePhone,
   MAX_RESET_ATTEMPTS,
   RESET_TTL_MINUTES,
 } from "@/lib/passwords";
+import { RESET_REQUESTS } from "@/lib/rate-limit";
 import { hashPassword, verifyPassword } from "@/lib/crypto";
 
 /**
@@ -53,12 +57,25 @@ let userId: string;
 const made: string[] = [];
 
 async function makeUser(
-  over: { email?: string | null; phone?: string | null; password?: string | null; disabled?: boolean } = {},
+  over: {
+    email?: string | null;
+    phone?: string | null;
+    password?: string | null;
+    disabled?: boolean;
+    /** Defaults to CONFIRMED — an unconfirmed number is not a login. */
+    phoneConfirmed?: boolean;
+  } = {},
 ): Promise<string> {
+  const phone = over.phone === null ? null : (over.phone ?? PHONE);
   const user = await db.user.create({
     data: {
       email: over.email === null ? null : (over.email ?? `rhea${SUFFIX}`),
-      phone: over.phone === null ? null : (over.phone ?? PHONE),
+      phone,
+      // The default is confirmed, because that is what every phone in the
+      // database now IS: `startPhoneChange` will not write one until a code
+      // sent to it comes back. A fixture writing an unconfirmed number is
+      // describing a state the app can no longer produce, so it has to say so.
+      phoneVerifiedAt: phone && over.phoneConfirmed !== false ? new Date() : null,
       name: "Rhea",
       prefs: "{}",
       passwordHash: over.password === null ? null : await hashPassword(over.password ?? PASSWORD),
@@ -85,6 +102,15 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  // The reset limit is 3 per 15 minutes per identifier, and this file asks far
+  // more often than a person would. Cleared between tests so each one starts
+  // from a fresh allowance rather than inheriting the last one's.
+  await db.rateLimit.deleteMany({ where: { bucket: { contains: SUFFIX } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset:+9198765" } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset:+9199999" } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset:noreach" } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "phone-verify:" } } });
+  await db.outboundEmail.deleteMany({ where: { purpose: "PHONE_VERIFY" } });
   await db.outboundEmail.deleteMany({ where: { purpose: "PASSWORD_RESET" } });
   await db.authToken.deleteMany({ where: { userId: { in: made } } });
   await db.session.deleteMany({ where: { userId: { in: made } } });
@@ -319,5 +345,167 @@ describe("using the code", () => {
     const code = await requestAndRead();
     await db.user.update({ where: { id: userId }, data: { disabledAt: new Date() } });
     expect((await resetPassword(`rhea${SUFFIX}`, code, "a brand new password")).ok).toBe(false);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* A number nobody proved they hold                                            */
+/* -------------------------------------------------------------------------- */
+
+describe("⚠ an unconfirmed mobile number", () => {
+  it("is not a login", async () => {
+    /**
+     * THE BUG THIS CLOSES. `saveMobile` wrote whatever was typed straight onto
+     * the account with `phoneVerifiedAt` null, so anybody could put any number
+     * on their own record — and one mistyped digit pointed their password-reset
+     * codes at a stranger's phone, permanently, discovered on the day they
+     * needed one.
+     */
+    const id = await makeUser({
+      email: `unconfirmed${SUFFIX}`,
+      phone: "+919876500009",
+      phoneConfirmed: false,
+    });
+    expect(await findAccount("+919876500009")).toBeNull();
+    // …and the account is still perfectly findable by its address.
+    expect((await findAccount(`unconfirmed${SUFFIX}`))?.userId).toBe(id);
+  });
+
+  it("⚠ is not a reset destination either", async () => {
+    await makeUser({
+      email: `unconfirmed${SUFFIX}`,
+      phone: "+919876500009",
+      phoneConfirmed: false,
+    });
+    const result = await requestPasswordReset("+919876500009");
+    expect(result.ok).toBe(true); // says the same thing as always
+    expect(await lastCode(), "no code may go to an unproven number").toBeNull();
+  });
+});
+
+describe("proving you hold a number", () => {
+  /** The code, out of the mailbox it was texted to. */
+  async function phoneCode(): Promise<string | null> {
+    const message = await db.outboundEmail.findFirst({
+      where: { purpose: "PHONE_VERIFY" },
+      orderBy: { createdAt: "desc" },
+      select: { text: true },
+    });
+    return message ? (/\b(\d{6})\b/.exec(message.text)?.[1] ?? null) : null;
+  }
+
+  it("⚠ writes NOTHING until the code comes back", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    expect((await startPhoneChange(id, "98765 00021")).ok).toBe(true);
+
+    // The number is in a token, not on the account. This is the property the
+    // whole two-step exists for: an unconfirmed number is nowhere a lookup
+    // can reach it.
+    const before = await db.user.findUniqueOrThrow({ where: { id } });
+    expect(before.phone).toBeNull();
+    expect(await findAccount("+919876500021")).toBeNull();
+
+    const code = (await phoneCode())!;
+    expect((await confirmPhoneChange(id, code)).ok).toBe(true);
+
+    const after = await db.user.findUniqueOrThrow({ where: { id } });
+    expect(after.phone).toBe("+919876500021");
+    expect(after.phoneVerifiedAt).not.toBeNull();
+    expect((await findAccount("98765 00021"))?.userId).toBe(id);
+  });
+
+  it("normalises before it stores, so one number is one account", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    await startPhoneChange(id, "098765 00022");
+    await confirmPhoneChange(id, (await phoneCode())!);
+    expect((await db.user.findUniqueOrThrow({ where: { id } })).phone).toBe("+919876500022");
+  });
+
+  it("refuses a number that is not one, before sending anything", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    const result = await startPhoneChange(id, "not a number");
+    expect(result.ok).toBe(false);
+    expect(await phoneCode()).toBeNull();
+  });
+
+  it("⚠ refuses a number another account has CONFIRMED", async () => {
+    await makeUser({ email: `holder${SUFFIX}`, phone: "+919876500023" });
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    const result = await startPhoneChange(id, "9876500023");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/already uses/i);
+  });
+
+  it("⚠ gives up after five wrong codes", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    await startPhoneChange(id, "98765 00024");
+    const code = (await phoneCode())!;
+
+    for (let i = 0; i < MAX_RESET_ATTEMPTS; i++) {
+      const wrong = String((Number(code) + i + 1) % 1_000_000).padStart(6, "0");
+      expect((await confirmPhoneChange(id, wrong)).ok).toBe(false);
+    }
+    expect((await confirmPhoneChange(id, code)).ok).toBe(false);
+    expect((await db.user.findUniqueOrThrow({ where: { id } })).phone).toBeNull();
+  });
+
+  it("⚠ a code for one account cannot confirm another's number", async () => {
+    const mine = await makeUser({ email: `mine${SUFFIX}`, phone: null });
+    const theirs = await makeUser({ email: `theirs${SUFFIX}`, phone: null });
+    await startPhoneChange(mine, "98765 00025");
+    const code = (await phoneCode())!;
+
+    expect((await confirmPhoneChange(theirs, code)).ok).toBe(false);
+    expect((await db.user.findUniqueOrThrow({ where: { id: theirs } })).phone).toBeNull();
+  });
+
+  it("removing needs no code — otherwise a wrong number is a trap", async () => {
+    // Demanding proof to REMOVE would strand somebody with a number they
+    // cannot receive codes on, which is the failure this feature prevents.
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: "+919876500026" });
+    expect((await removePhone(id)).ok).toBe(true);
+    const after = await db.user.findUniqueOrThrow({ where: { id } });
+    expect(after.phone).toBeNull();
+    expect(after.phoneVerifiedAt).toBeNull();
+  });
+});
+
+describe("⚠ how often a code may be asked for", () => {
+  it("refuses after the limit, and says when to come back", async () => {
+    /**
+     * THE OTHER HALF OF THIS COMMIT. Without a limit, an attacker types a
+     * stranger's mobile number and presses the button in a loop: the app sends
+     * the texts, the stranger's phone rings all evening, and the deployment
+     * pays for every one. Nothing else in the flow bounds it — the account does
+     * not have to exist and the caller does not have to be signed in.
+     */
+    const victim = "+919876500031";
+    for (let i = 0; i < RESET_REQUESTS.limit; i++) {
+      expect((await requestPasswordReset(victim)).ok, `request ${i + 1}`).toBe(true);
+    }
+    const refused = await requestPasswordReset(victim);
+    expect(refused.ok).toBe(false);
+    expect(refused.error).toMatch(/too many/i);
+  });
+
+  it("⚠ limits an identifier that matches NOBODY exactly the same", async () => {
+    /**
+     * Otherwise the limiter is the enumeration oracle the rest of this file
+     * spends its effort avoiding: "that one started refusing me, so it must be
+     * a real account". The bucket is built before anything is looked up.
+     */
+    const nobody = "+919876500032";
+    for (let i = 0; i < RESET_REQUESTS.limit; i++) {
+      expect((await requestPasswordReset(nobody)).ok).toBe(true);
+    }
+    expect((await requestPasswordReset(nobody)).ok).toBe(false);
+  });
+
+  it("⚠ counts the number, not the spelling of it", async () => {
+    // Three ways of writing one number must not buy three allowances.
+    for (const written of ["+919876500033", "09876500033", "98765 00033"]) {
+      expect((await requestPasswordReset(written)).ok).toBe(true);
+    }
+    expect((await requestPasswordReset("9876500033")).ok).toBe(false);
   });
 });

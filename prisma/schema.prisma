@@ -1324,6 +1324,52 @@ model OutboundEmail {
   @@index([to, createdAt])
 }
 
+/// How many times something has been tried lately.
+///
+/// THE FIRST RATE LIMIT IN THIS CODEBASE, and it arrived with the feature that
+/// made its absence dangerous. Before password reset, the worst an unlimited
+/// login form could do was let somebody guess a password — bounded by argon2
+/// and by `fakePasswordWork`, slow and noisy. Reset by mobile number changed
+/// the shape of that: the app will send a text to a number the CALLER types, so
+/// with no limit an attacker picks a stranger's number and the app becomes the
+/// thing harassing them, at the deployment's expense.
+///
+/// IN THE DATABASE, NOT IN MEMORY. An in-process map is one restart away from
+/// forgetting everything, and one instance away from being bypassed — and the
+/// two moments a limiter matters most are a deploy and a busy afternoon. It
+/// costs one indexed upsert per attempt, on a table nobody reads for anything
+/// else.
+///
+/// A FIXED WINDOW rather than a sliding one. The honest limit: an attacker who
+/// times a burst either side of a boundary gets 2× the allowance for one
+/// moment. That is a rounding error against the threat — somebody sending a
+/// stranger six texts instead of three — and a sliding window costs a row per
+/// hit and a range scan to answer.
+///
+/// NO SCHOOL, AND NO POLICY. Every write happens before there is a session, let
+/// alone a tenant, which is exactly why the limit is needed. Listed in
+/// NO_SCHOOL_POLICY for the same reason OutboundEmail is.
+model RateLimit {
+  id String @id @default(cuid())
+
+  /// What is being counted, and for whom: `reset:+919876543210`,
+  /// `login:amara@school.test`. Built by the caller so one table serves every
+  /// limit, and unique so the upsert is a single statement.
+  bucket String @unique
+
+  hits Int @default(0)
+
+  /// When the current window ends. A hit arriving after it resets the count
+  /// rather than adding to it — see `consume`.
+  windowEndsAt DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  /// Swept by whatever cleans up; nothing depends on old rows existing.
+  @@index([windowEndsAt])
+}
+
 /// ---------------------------------------------------------------------------
 /// Academic year, holidays, and badges that outlive them
 /// ---------------------------------------------------------------------------

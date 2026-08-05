@@ -86,3 +86,12 @@ export async function sendResetCode(to: string, code: string, minutes: number): 
     purpose: "PASSWORD_RESET",
   });
 }
+
+/** Confirming that somebody holds the number they just typed. */
+export async function sendPhoneCode(to: string, code: string, minutes: number): Promise<void> {
+  await sendSms({
+    to,
+    text: `${code} is your EduLink code to confirm this mobile number. It expires in ${minutes} minutes. If you did not add your number to EduLink, ignore this message — nothing will happen.`,
+    purpose: "PHONE_VERIFY",
+  });
+}

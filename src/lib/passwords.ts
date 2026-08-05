@@ -6,8 +6,9 @@ import { hashPassword, hashToken, passwordProblems } from "./crypto";
 import { readJson } from "./json";
 import { isDeliverableEmail, toLoginEmail } from "./login-name";
 import { identifierKind, normalisePhone, phoneHint } from "./phone";
-import { sendResetCode as sendResetSms } from "./sms";
+import { sendResetCode as sendResetSms, sendPhoneCode } from "./sms";
 import { sendResetCode as sendResetEmail } from "./email";
+import { consume, retryHint, RESET_REQUESTS, PHONE_VERIFY_REQUESTS } from "./rate-limit";
 
 /**
  * Signing in with whatever you have, and getting back in when you forget.
@@ -52,8 +53,25 @@ export type ResolvedAccount = {
   userId: string;
   email: string | null;
   phone: string | null;
+  /** A number nobody proved they hold is not a login and not a destination. */
+  phoneConfirmed: boolean;
   disabled: boolean;
 };
+
+/**
+ * ⚠ ONLY A CONFIRMED NUMBER IS A LOGIN.
+ *
+ * `saveMobile` used to write whatever was typed straight onto the account, so
+ * anybody could put any number on their own record and a reset code would go to
+ * it. One mistyped digit sent somebody's codes to a stranger's phone,
+ * permanently, and they would not find out until the day they needed them.
+ *
+ * Setting a number now costs a code sent to it — see `startPhoneChange` — and
+ * this predicate is what makes that mean something. Both lookups use it, so an
+ * unconfirmed number is not a login and not a reset destination; there is no
+ * third state where it is one but not the other.
+ */
+const CONFIRMED_PHONE = { phoneVerifiedAt: { not: null } } as const;
 
 /**
  * The one account an identifier names, or null.
@@ -83,9 +101,15 @@ export async function findAccount(rawIdentifier: string): Promise<ResolvedAccoun
 
   if (!where) return null;
 
-  const user = await db.user.findUnique({
-    where,
-    select: { id: true, email: true, phone: true, disabledAt: true },
+  /**
+   * `findFirst`, not `findUnique`, ONLY because the confirmed-phone clause is
+   * not part of a unique key. It still resolves to at most one row: `phone` and
+   * `email` are both unique, so the extra condition can narrow one row to none
+   * and never one to two.
+   */
+  const user = await db.user.findFirst({
+    where: kind === "PHONE" ? { ...where, ...CONFIRMED_PHONE } : where,
+    select: { id: true, email: true, phone: true, phoneVerifiedAt: true, disabledAt: true },
   });
   if (!user) return null;
 
@@ -93,6 +117,7 @@ export async function findAccount(rawIdentifier: string): Promise<ResolvedAccoun
     userId: user.id,
     email: user.email,
     phone: user.phone,
+    phoneConfirmed: user.phoneVerifiedAt !== null,
     disabled: user.disabledAt !== null,
   };
 }
@@ -102,12 +127,17 @@ export async function findAccount(rawIdentifier: string): Promise<ResolvedAccoun
 /* -------------------------------------------------------------------------- */
 
 export type ResetRequest = {
-  /** Always true. See the note on enumeration above. */
-  ok: true;
+  /**
+   * False ONLY when the caller has asked too many times. Never false because an
+   * account was not found — see the note on enumeration above.
+   */
+  ok: boolean;
   /** The last four digits of what the CALLER typed, never of what we hold. */
   hint: string;
   /** Which channel it would have gone down, from the shape of the input. */
   channel: "EMAIL" | "PHONE";
+  /** Set when `ok` is false: a sentence saying when to come back. */
+  error?: string;
 };
 
 /**
@@ -129,6 +159,36 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
   const channel: "EMAIL" | "PHONE" = kind === "PHONE" ? "PHONE" : "EMAIL";
   const hint = channel === "PHONE" ? phoneHint(normalisePhone(raw) ?? raw) : "";
 
+  /**
+   * ⚠ HOW MANY TIMES THIS NUMBER HAS BEEN ASKED FOR, and the limit is the whole
+   * reason this function is not a way to harass somebody.
+   *
+   * Without it, an attacker types a stranger's mobile number and presses the
+   * button in a loop: the app sends the texts, the stranger's phone rings all
+   * evening, and whoever runs the deployment pays for every one. Nothing else
+   * in this flow bounds that — the account does not have to exist, and the
+   * caller does not have to be signed in.
+   *
+   * KEYED ON WHAT WAS TYPED, NOT ON THE ACCOUNT IT RESOLVES TO. That is
+   * deliberate: an identifier matching nobody has to be limited exactly like
+   * one that does, or the limiter becomes the enumeration oracle the rest of
+   * this function spends its effort avoiding — "that one refused me, so it must
+   * be real". The bucket is built before anything is looked up, for that reason.
+   */
+  const gate = await consume(
+    `reset:${channel === "PHONE" ? (normalisePhone(raw) ?? raw.toLowerCase()) : raw.toLowerCase()}`,
+    RESET_REQUESTS.limit,
+    RESET_REQUESTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      hint,
+      channel,
+      error: `Too many requests for that. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+    };
+  }
+
   const account = await findAccount(raw);
 
   // Everything below is conditional; everything returned is not.
@@ -145,7 +205,12 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
      */
     const destination =
       channel === "PHONE"
-        ? account.phone
+        ? // Reached only through `findAccount`, which already refuses an
+          // unconfirmed number — belt and braces, because this is the line that
+          // decides where a credential is sent.
+          account.phoneConfirmed
+          ? account.phone
+          : null
         : isDeliverableEmail(account.email)
           ? account.email
           : null;
@@ -342,5 +407,180 @@ export async function resetPassword(
 
   await audit({ actorUserId: account.userId, action: "auth.reset.completed" });
 
+  return { ok: true };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Proving you hold the number                                                 */
+/* -------------------------------------------------------------------------- */
+
+const PHONE_PURPOSE = "PHONE_VERIFY";
+
+export type PhoneChange = { ok: boolean; error?: string; hint?: string };
+
+/**
+ * Step one of putting a mobile number on an account: send a code to it.
+ *
+ * THE NUMBER IS NOT STORED YET, and that is the entire point. Writing it
+ * immediately with `phoneVerifiedAt` null — which is what this used to do —
+ * meant anybody could put any number on their own account and have password
+ * reset codes delivered to it. A typo pointed somebody's codes at a stranger
+ * for good; a deliberate entry pointed this app's SMS at whoever they liked.
+ *
+ * It waits in the token's `meta` instead, so an unconfirmed number exists
+ * nowhere a lookup can reach it.
+ *
+ * THE CLASH IS CHECKED HERE AND AGAIN AT CONFIRM, because fifteen minutes pass
+ * in between and somebody else may confirm the same number first. The database
+ * would catch it either way — `User.phone` is unique — but a constraint error
+ * is not a sentence anybody can act on.
+ */
+export async function startPhoneChange(
+  userId: string,
+  rawPhone: string,
+): Promise<PhoneChange> {
+  const phone = normalisePhone(rawPhone);
+  if (!phone) {
+    return {
+      ok: false,
+      error: "That is not a mobile number we can use. Try it with the country code, like +91 98765 43210.",
+    };
+  }
+
+  const taken = await db.user.findFirst({
+    where: { phone, phoneVerifiedAt: { not: null }, id: { not: userId } },
+    select: { id: true },
+  });
+  if (taken) {
+    return {
+      ok: false,
+      error: "Another account already uses that number. If it is yours, ask your school for help.",
+    };
+  }
+
+  /**
+   * ⚠ KEYED ON THE USER, not on the number. A caller who swapped the number
+   * every time would otherwise get a fresh allowance for each one, which is
+   * precisely the loop that makes this a way to send strangers text messages.
+   */
+  const gate = await consume(
+    `phone-verify:${userId}`,
+    PHONE_VERIFY_REQUESTS.limit,
+    PHONE_VERIFY_REQUESTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return {
+      ok: false,
+      error: `Too many codes requested. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+    };
+  }
+
+  const code = String(randomSixDigits()).padStart(6, "0");
+
+  await db.authToken.updateMany({
+    where: { userId, purpose: PHONE_PURPOSE, consumedAt: null },
+    data: { consumedAt: new Date() },
+  });
+
+  await db.authToken.create({
+    data: {
+      userId,
+      purpose: PHONE_PURPOSE,
+      // Salted with the user id, for the same reason the reset code is.
+      tokenHash: hashToken(`${userId}:${PHONE_PURPOSE}:${code}`),
+      // WHERE THE NUMBER LIVES until it is confirmed.
+      meta: JSON.stringify({ attempts: 0, phone }),
+      expiresAt: new Date(Date.now() + RESET_TTL_MINUTES * 60_000),
+    },
+  });
+
+  await sendPhoneCode(phone, code, RESET_TTL_MINUTES);
+  await audit({ actorUserId: userId, action: "account.mobile.code" });
+
+  return { ok: true, hint: phoneHint(phone) };
+}
+
+/**
+ * Step two: the code proves they hold it, so it goes on the account.
+ *
+ * Same attempt cap and same single message for every failure as the password
+ * reset — a person confirming their own number is not somebody to be told which
+ * of the three things went wrong.
+ */
+export async function confirmPhoneChange(userId: string, code: string): Promise<PhoneChange> {
+  const generic: PhoneChange = {
+    ok: false,
+    error: "That code is not right, or it has expired. Ask for a new one.",
+  };
+
+  const live = await db.authToken.findFirst({
+    where: { userId, purpose: PHONE_PURPOSE, consumedAt: null, expiresAt: { gt: new Date() } },
+    select: { id: true, meta: true },
+    orderBy: { createdAt: "desc" },
+  });
+  if (!live) return generic;
+
+  const meta = readJson<{ attempts?: number; phone?: string }>(live.meta, {});
+  const attempts = meta.attempts ?? 0;
+  if (attempts >= MAX_RESET_ATTEMPTS) {
+    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+    return generic;
+  }
+
+  const token = await db.authToken.findUnique({
+    where: { tokenHash: hashToken(`${userId}:${PHONE_PURPOSE}:${code.trim()}`) },
+    select: { id: true },
+  });
+
+  if (!token || token.id !== live.id) {
+    await db.authToken.update({
+      where: { id: live.id },
+      data: { meta: JSON.stringify({ ...meta, attempts: attempts + 1 }) },
+    });
+    return generic;
+  }
+
+  const phone = meta.phone;
+  if (!phone) return generic;
+
+  // Re-checked, because fifteen minutes is long enough for somebody else to
+  // have confirmed the same number.
+  const taken = await db.user.findFirst({
+    where: { phone, phoneVerifiedAt: { not: null }, id: { not: userId } },
+    select: { id: true },
+  });
+  if (taken) {
+    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+    return {
+      ok: false,
+      error: "Another account claimed that number in the meantime. Ask your school for help.",
+    };
+  }
+
+  await db.user.update({
+    where: { id: userId },
+    data: { phone, phoneVerifiedAt: new Date() },
+  });
+  await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+  await audit({ actorUserId: userId, action: "account.mobile.confirm" });
+
+  return { ok: true, hint: phoneHint(phone) };
+}
+
+/**
+ * Taking a number off. No code needed.
+ *
+ * Removing is not a claim about holding anything — they are signed in, and it is
+ * their own row. Demanding a code to remove a number somebody typed wrongly
+ * would trap them with a number they cannot receive codes on, which is the
+ * failure this whole feature exists to prevent.
+ */
+export async function removePhone(userId: string): Promise<PhoneChange> {
+  await db.user.update({ where: { id: userId }, data: { phone: null, phoneVerifiedAt: null } });
+  await db.authToken.updateMany({
+    where: { userId, purpose: PHONE_PURPOSE, consumedAt: null },
+    data: { consumedAt: new Date() },
+  });
+  await audit({ actorUserId: userId, action: "account.mobile.remove" });
   return { ok: true };
 }
