@@ -1378,6 +1378,52 @@ hands one school a window into another.
 
 ---
 
+## 12x. Listing an expert, and what they agreed to offer
+
+### The queue
+
+- ☐ Sign in as the server operator → `/root` → **Experts**
+- ☐ **⚠️** An expert who has accepted an invitation appears under **Waiting for
+  you**, not mixed into the list of people already dealt with
+- ☐ **⚠️** Open `/experts` as a school admin — that person is **not** there
+- ☐ Back in `/root/experts`, press **List them**
+- ☐ **⚠️** Now they appear on `/experts`, and **without** a Verified badge.
+  Listing and identity-checking are separate claims
+- ☐ Press **Mark identity checked** → the badge appears
+- ☐ **⚠️** Try to list somebody whose profile has no headline → refused. A blank
+  card in a marketplace is worse than an empty marketplace
+
+### What they offer
+
+- ☐ As the expert, `/expert/profile` → choose **Workshops and sessions**
+- ☐ **⚠️** As an admin, try to set up a mentorship with them → refused
+- ☐ Switch them to **Mentoring one child at a time**
+- ☐ **⚠️** On `/experts` their card says so and offers **no booking button**
+- ☐ Set **Both**, and a cap of **1**
+- ☐ Pair one child with them. Try a second → refused
+- ☐ **⚠️** Now do the second from a **different school**. Still refused — the cap
+  is a promise to children, not a per-school allowance
+- ☐ End the first mentorship → a place frees up
+- ☐ **⚠️** Take them off the list. The child who has them as a mentor **keeps
+  them** — it stops them being found, not being anybody's mentor
+
+---
+
+## 12y. Birthdays on the calendar
+
+- ☐ Accept an invitation and fill in **Your date of birth** (dd/mm/yyyy)
+- ☐ **⚠️** Leave it blank on another invitation — it still accepts. Optional
+- ☐ `/admin/calendar` → **Birthdays**
+- ☐ Names, dates in **dd/mm/yyyy**, ages, and Student/Teacher badges
+- ☐ **⚠️** Somebody recorded as having **left** does not appear
+- ☐ **⚠️** Somebody **paused** does not appear
+- ☐ **⚠️** Sign in as a pupil and try `/admin/calendar` → redirected. A date of
+  birth is what a parent proves a claim with, so this is staff-only on purpose
+- ☐ **⚠️** A school with nobody's birthday on file gets a sentence explaining
+  that dates arrive as people join — not an empty box that reads as broken
+
+---
+
 ## 12w. An alumnus — signed in, no school, record intact
 
 **The state nothing else in this file reaches.** Set it up by recording the same

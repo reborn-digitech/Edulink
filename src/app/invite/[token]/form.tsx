@@ -4,7 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRightIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { TextField, TextAreaField } from "@/components/ui/field";
+import { DateField, TextField, TextAreaField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { passwordStrength } from "@/lib/password-strength";
 import { cn } from "@/lib/cn";
@@ -42,6 +42,7 @@ export function AcceptForm({
   const [bio, setBio] = useState("");
   const [subjects, setSubjects] = useState<string[]>(defaultSubjects);
   const [subjectDraft, setSubjectDraft] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const strength = useMemo(() => passwordStrength(password, [name]), [password, name]);
@@ -78,6 +79,7 @@ export function AcceptForm({
         // already has one, precisely so nobody can type into a field that goes
         // nowhere. Sending an empty string would be doing it by the back door.
         password: hasAccount ? undefined : password,
+        birthdate: birthdate || undefined,
         title: title.trim() || undefined,
         bio: bio.trim() || undefined,
         subjects,
@@ -123,6 +125,23 @@ export function AcceptForm({
         value={name}
         error={errors.name}
         onChange={(e) => setName(e.target.value)}
+      />
+
+      {/*
+        ASKED, NOT DEMANDED. `joinAsStudent` has always taken a birthday and an
+        invitation never did — so every invited pupil and every member of staff
+        had none, the school calendar could show a birthday for almost nobody,
+        and a guardian claiming an invited child was refused outright for want
+        of a second factor. Optional because an invitation is often the first
+        thing somebody does on a Monday morning, and a date they would rather
+        not give must not be what stops them accepting a job.
+      */}
+      <DateField
+        label="Your date of birth"
+        hint="Optional. Your school uses it for the birthday calendar, and a parent needs it to link to their child."
+        value={birthdate}
+        error={errors.birthdate}
+        onChange={(e) => setBirthdate(e.target.value)}
       />
 
       {!hasAccount && (

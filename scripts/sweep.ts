@@ -607,6 +607,19 @@ async function onboardingSignposts(schoolId: string) {
       ok: cal.status === 200 && boxes > 0 && isoInputs >= boxes,
       note: `⚠ ${boxes} date box(es) ask dd/mm/yyyy, each backed by an ISO input`,
     });
+
+    // 1b. The birthdays section renders at all. A 200 proves the page came
+    //     back; it does not prove the section derived from User.birthdate is on
+    //     it, and a heading that silently stopped rendering would look exactly
+    //     like a school where nobody has a birthday on file.
+    results.push({
+      role: "date-format",
+      path: "/admin/calendar (birthdays)",
+      status: cal.status,
+      expected: 200,
+      ok: cal.status === 200 && cal.body.includes("Birthdays"),
+      note: "⚠ the staff calendar carries a birthdays section",
+    });
   }
 
   // 2. A school's FIRST invitation names its recipient. Operator invites carry
@@ -634,8 +647,14 @@ async function onboardingSignposts(schoolId: string) {
       path: "/invite/[operator-token]",
       status: page.status,
       expected: 200,
-      ok: page.status === 200 && page.body.includes("zz.sweep.first@edulink.test"),
-      note: "⚠ an invitation with no sender still names who it is for",
+      ok:
+        page.status === 200 &&
+        page.body.includes("zz.sweep.first@edulink.test") &&
+        // The birthday field, which is what fills the calendar and gives a
+        // guardian something to claim against. A 200 proves the page rendered,
+        // not that the field somebody has to type into is on it.
+        page.body.includes("Your date of birth"),
+      note: "⚠ an invitation names who it is for, and asks for a birthday",
     });
   } finally {
     await db.invite.deleteMany({ where: { id: invite.id } });

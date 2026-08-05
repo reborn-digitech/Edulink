@@ -131,6 +131,21 @@ export const acceptInviteSchema = z.object({
   title: trimmed(0, 80).optional(),
   bio: trimmed(0, 600).optional(),
   subjects: z.array(trimmed(1, 60)).max(20).default([]),
+  /**
+   * OPTIONAL, and it stays optional on purpose.
+   *
+   * `joinAsStudent` has always asked for a birthday; an invitation never did,
+   * so every invited pupil and every member of staff had none — which meant the
+   * school calendar could not show a birthday for most of the school, and a
+   * guardian claiming an invited child was refused outright because there was
+   * no second factor on file.
+   *
+   * Not REQUIRED because an invitation is often the first thing a teacher does
+   * on a Monday morning and a date they do not want to give must not be the
+   * thing that stops them accepting a job. It is asked for, and what it is for
+   * is said next to it.
+   */
+  birthdate: trimmed(0, 32).optional(),
 });
 
 /* -------------------------------------------------------------------------- */

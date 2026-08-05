@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { CalendarBlankIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
+import { CakeIcon, CalendarBlankIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { approvedLeaveBetween, LEAVE_KIND_LABEL, type LeaveKind } from "@/lib/leave";
 import { db } from "@/lib/db";
 import { listHolidays, HOLIDAY_KIND_META, type HolidayKind } from "@/lib/holidays";
 import { listAcademicYears } from "@/lib/academic-year";
-import { todayKey, addDaysToKey } from "@/lib/dates";
+import { todayKey, addDaysToKey, isoToDisplayDate } from "@/lib/dates";
+import { birthdaysBetween } from "@/lib/birthdays";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { YearPanel } from "./year-panel";
 import { EntryForm } from "./entry-form";
@@ -52,6 +54,18 @@ export default async function CalendarPage() {
   // Holiday row with a filter on it. A filter is something somebody forgets once.
   const leave = await approvedLeaveBetween(ctx, today, addDaysToKey(today, 120));
 
+  /**
+   * Birthdays, over the same window as the leave above.
+   *
+   * DERIVED FROM `User.birthdate` and never stored — see birthdays.ts. And
+   * STAFF-ONLY for the same reason the leave list is, but with a sharper edge:
+   * a child's date of birth is the second factor when a guardian claims them
+   * with a student code, so a page pupils could open would quietly reduce that
+   * to one factor. This page is behind `requireRole("ADMIN", "PRINCIPAL")` and
+   * pupils have no calendar at all.
+   */
+  const birthdays = await birthdaysBetween(ctx, today, addDaysToKey(today, 120));
+
   return (
     <div className="space-y-6">
       <div>
@@ -96,6 +110,52 @@ export default async function CalendarPage() {
           </Card>
         </section>
       )}
+
+      {/* ---------------- birthdays ---------------- */}
+      <section aria-labelledby="birthday-heading">
+        <Card>
+          <CardHeader
+            icon={<CakeIcon weight="duotone" className="size-5" />}
+            title={<span id="birthday-heading">Birthdays</span>}
+            description="The next few months, from what people gave when they joined. Staff only — a date of birth is what a parent proves a claim with."
+          />
+          <CardBody>
+            {birthdays.length === 0 ? (
+              /* NOT AN ERROR STATE. Almost nobody has a birthday on file until
+                 people start joining with one, and saying so is more use than
+                 an empty box that reads as broken. */
+              <p className="text-sm leading-relaxed text-fg-muted">
+                Nobody has a birthday coming up on file. Dates are collected when somebody joins or
+                accepts an invitation, and it is optional — so this fills in over time rather than
+                all at once.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {birthdays.map((row) => (
+                  <li
+                    key={`${row.membershipId}-${row.dateKey}`}
+                    className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {isoToDisplayDate(row.dateKey)}
+                        {row.turning !== null && <> · turning {row.turning}</>}
+                        {/* Said rather than silently shifted: somebody looking
+                            for the 29th needs to know why it is on the 28th. */}
+                        {row.movedFromLeapDay && <> · born on 29 February</>}
+                      </span>
+                    </span>
+                    <Badge tone="neutral" size="sm">
+                      {row.role === "STUDENT" ? t("role.student") : t("role.teacher")}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CardBody>
+        </Card>
+      </section>
 
       {/* ---------------- the academic year ---------------- */}
       <section aria-labelledby="year-heading">

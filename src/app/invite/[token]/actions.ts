@@ -7,6 +7,7 @@ import { acceptInviteSchema, fieldErrors, type FieldErrors } from "@/lib/validat
 import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
+import { parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 
@@ -24,7 +25,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   const parsed = acceptInviteSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
-  const { token, name, password, title, bio, subjects } = parsed.data;
+  const { token, name, password, title, bio, subjects, birthdate } = parsed.data;
 
   // The token opens exactly its own invitation and nothing else — including
   // not the school it belongs to, whose row the token does not name. So the
@@ -97,6 +98,22 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
   }
 
+  /**
+   * The birthday, validated here rather than trusted or silently dropped.
+   *
+   * A date the person typed that we cannot read is refused — quietly storing
+   * null would put them on no calendar and give a guardian nothing to claim
+   * against, and they would never find out why.
+   */
+  let birthDate: Date | null = null;
+  if (birthdate && birthdate.trim().length > 0) {
+    birthDate = parseDateOnly(birthdate);
+    if (!birthDate) return { ok: false, errors: { birthdate: "Use a real date." } };
+    if (birthDate.getTime() > Date.now()) {
+      return { ok: false, errors: { birthdate: "That date is in the future." } };
+    }
+  }
+
   const role = invite.role as Role;
   const passwordHash = password ? await hashPassword(password) : null;
 
@@ -136,6 +153,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             // Clicking a link we emailed proves control of the address.
             emailVerifiedAt: new Date(),
             bio: bio || null,
+            birthdate: birthDate,
             prefs: writeJson({ theme: "system", locale: "en" }),
           },
           select: { id: true, passwordHash: true },

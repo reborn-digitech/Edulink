@@ -262,6 +262,7 @@ src/lib/                  All business logic. Pages are thin.
   quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
   school-record.ts        ★ Leaving certificates. A document frozen at issue, never a query.
   student-record.ts       ★ A child's record, read with NO school bound. Outlives every membership.
+  birthdays.ts            ★ Derived from User.birthdate, never stored. Staff-only — see the DOB note.
   account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
   login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
@@ -1444,6 +1445,65 @@ inside it stays, and the comment says why: deleting it keeps every check green
 today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
+
+### The expert marketplace had no door handle, and birthdays had no source
+
+**`publishedAt` gated the marketplace and nothing could set it.** An unpublished
+expert is invisible, unbookable and unpairable — the gate worked. Only
+`prisma/seed.ts` ever wrote the column, so on a real installation no expert
+could reach the marketplace without psql: a finished feature behind a door with
+no handle, the same shape as the empty VAPID keys. `/root/experts` is the
+handle, unpublished first because that is the queue.
+
+**It is the operator's and not a school's.** An expert belongs to no school, so
+no school can vouch for one, and a school that could publish would be putting an
+adult in front of every other school on the installation. Admins and teachers
+still invite; an invitation buys a profile, not an audience. **No policy change
+was needed** — `ExpertProfile` is in `NO_SCHOOL_POLICY`, so the operator writing
+it is not a widening of `SUPERUSER_TABLES` and they still cannot read a register.
+Published and verified stay separate: one is "may schools find this person", the
+other is "has a human checked who they are".
+
+**An expert now says what they are offering.** A workshop for a hall and a term
+with one eleven-year-old are different commitments, and every published expert
+was silently available for both — a retired engineer happy to talk for an hour
+was one click from being made responsible for one child. `SESSIONS`, `MENTORING`
+or `BOTH`, enforced on booking and on pairing rather than filtered in a page.
+
+**The cap lives on `ExpertProfile`, not counted from `MentorThread`**, and the
+test called *counts ACROSS SCHOOLS* is why: that table is school-scoped, so
+counting it from inside one school waves the expert past their limit at every
+school after the first. Claimed with a conditional UPDATE like a slot, released
+on close. Two mutations survived first and both were real — the already-closed
+guard passes with ONE mentorship because the `gt: 0` floor masks it, and nothing
+covered booking a mentoring-only expert at all.
+
+**Birthdays are derived, never stored.** A birthday is not an event a school
+decided to hold; it is a fact about a person that recurs. Holiday rows would
+mean 400 a year to delete when children leave, going stale when a date is
+corrected. Nothing converts a timezone either — a birthday is a calendar date,
+not an instant, and converting moves it by a day for half the world.
+
+**And an invitation now asks for one.** `joinAsStudent` always did; an
+invitation never did, so every invited pupil and every member of staff had none
+— the calendar could show a birthday for almost nobody, and a guardian claiming
+an invited child was refused for want of a second factor. Optional, because a
+date somebody would rather not give must not be what stops them accepting a job.
+
+**STAFF-ONLY, and this is the load-bearing bit.** A child's date of birth is the
+SECOND FACTOR when a guardian claims them with a student code, so publishing
+birthdays to classmates would quietly reduce that to one factor. The section
+lives on `/admin/calendar`, behind `requireRole("ADMIN", "PRINCIPAL")`, and
+pupils have no calendar page at all — an admin can already read the directory
+and link a guardian by hand, so this tells them nothing new. **If it ever moves
+to a page pupils can open, the claim gate has to be revisited.**
+
+**The two cases that break the arithmetic both have tests.** The year wrap —
+"the next 120 days" asked in November spans two years, and comparing months as
+numbers returns nothing for all of it. And 29 February, which three years in
+four do not have: a leap-day child shows on the 28th, flagged, rather than being
+missing while their classmates are named. `year % 4 === 0` passed the whole
+suite until a test pinned 2100.
 
 ### The record is the child's, and it outlives every school
 
