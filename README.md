@@ -163,7 +163,7 @@ applies here: you cannot revoke the only one.
 |---|---|
 | `npm run dev` | Dev server (no service worker) |
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
-| `npm test` | Full suite (1,355 tests) |
+| `npm test` | Full suite (1,372 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
@@ -1686,6 +1686,37 @@ One line each, with the default rejected.
   conversation is not private" banner and no compose box, which is exactly what
   a guardian should get.
 
+- **A pupil could read, and write in, their school's conversation with an
+  outside expert.** `assertBookingAccess` matched on `schoolId` alone, so "may
+  read this booking" meant "belongs to this school" — and a child belongs to
+  their school. `postMessage` shares that gate, so they could post into it too.
+  Confirmed against a live booking before the fix and again after: pupil and
+  guardian went **200 → 404**, the admin stayed 200.
+  **`postMessage`'S OWN COMMENT WAS THE REASON NOBODY LOOKED.** It said *"Both
+  sides are adults, so there is no gate"* — true of the expert, false of the
+  school side, which was whoever the predicate let through. The comment is kept
+  and corrected rather than deleted, because the sentence is the artefact.
+  **NOT REACHABLE BY BROWSING**, and worth saying plainly rather than
+  overstating: `/experts` turns away everyone but staff, nothing lists booking
+  ids to a child, and an id is a cuid. This was a wrong boundary, not an open
+  door. It is still the exact shape `mentoring.ts` spends consent, guardian
+  visibility and staff-only pairing to prevent — an unsupervised channel between
+  a child and an adult from outside the school — and this offered one for free.
+  **ADMIN OR TEACHER, matching `bookSlot` and `cancelBooking` exactly**, so this
+  file has one definition of staff rather than three that can drift. **A
+  PRINCIPAL IS DELIBERATELY NOT INCLUDED**: they cannot book, cannot cancel, and
+  `/experts` is not in their navigation, so adding them would be widening access
+  under cover of a security fix. That decision has its own test.
+  Refused as `NOT_FOUND`, so a pupil cannot tell a booking that exists from an
+  id that never did.
+  **`listBookings` GOT THE SAME CHECK**, though both its callers are role-gated
+  pages today — the `/record` lesson three commits ago was that a gate living
+  somewhere else is not a gate this function has.
+  **BOOKING HAD NO TEST FILE AT ALL**: `bookSlot` appeared twice inside the
+  curation tests as a fixture step and `cancelBooking` was tested nowhere. It
+  has 17 now, including that cancelling frees the slot. 5 mutations, 5 caught —
+  among them restoring the original bug exactly.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -2470,20 +2501,8 @@ next run rather than in a role audit six months later.
   release the slot; it stays consumed and the booking stays CONFIRMED. The
   library function is tested nowhere either. Found by walking §12al while
   writing it.
-- **⚠ Any member of a school can read and post in a booking chat, including a
-  pupil.** `/experts/bookings/[bookingId]` gates on `requireApiUser()` — anybody
-  signed in — and `assertBookingAccess` then matches only on `schoolId`. So "may
-  read this booking" means "belongs to this school" rather than "is staff of
-  this school, or is the expert". Confirmed by opening a live booking as a pupil
-  and as a guardian: both got 200, both read the staff↔expert conversation, both
-  were offered a compose box. `postMessage`'s comment says *"Both sides are
-  adults, so there is no gate"*, which is false on the school side.
-  **Not reachable by browsing** — `/experts` 307s for both roles, nothing lists
-  booking ids to them, and an id is a cuid — so this is a wrong boundary rather
-  than an open door. It is still the shape `mentoring.ts` calls the one thing
-  that feature must never become: an unsupervised channel between a child and an
-  adult from outside the school. The fix is a staff-or-expert check in
-  `assertBookingAccess`; it is not folded into a documentation commit.
+- ~~**Any member of a school can read and post in a booking chat, including a
+  pupil.**~~ **Fixed.** See the changelog entry above.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably

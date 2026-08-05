@@ -436,6 +436,16 @@ export type BookingSummary = {
  */
 export async function listBookings(session: ActiveContext): Promise<BookingSummary[]> {
   const isExpert = session.role === "EXPERT";
+  /**
+   * STAFF OR THE EXPERT, the same rule as `assertBookingAccess` — and it is
+   * here rather than left to the two pages that call it for the reason the
+   * `/record` bug taught: a gate that lives somewhere else is not a gate this
+   * function has. Both callers happen to be role-gated today; the third one
+   * somebody adds will not be, and this returning a school's whole booking list
+   * to a pupil is the kind of thing that then looks like it was always allowed.
+   */
+  const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+  if (!isExpert && !isStaff) return [];
   if (!isExpert && !session.schoolId) return [];
 
   const bookings = await db.expertBooking.findMany({
@@ -471,17 +481,48 @@ export async function listBookings(session: ActiveContext): Promise<BookingSumma
 /**
  * One booking, with its messages, for whoever is entitled to it.
  *
- * `assertBookingAccess` is the security of this function and of `postMessage`
+ * `assertBookingAccess` is the security of `getBooking` and of `postMessage`
  * below: it re-resolves the booking against the SESSION rather than trusting the
- * id in the URL. For a school that is the tenant predicate; for an expert it is
- * an equality on their own user id, so one expert cannot read another expert's
- * booking even at the same school.
+ * id in the URL. For an expert that is an equality on their own user id, so one
+ * expert cannot read another's booking even at the same school.
+ *
+ * ⚠ FOR A SCHOOL IT IS STAFF OF THAT SCHOOL — NOT MERELY A MEMBER OF IT, and
+ * the difference was a safeguarding hole. The predicate used to be the tenant
+ * one alone, so "may read this booking" meant "belongs to this school": a
+ * PUPIL, or a guardian, could open `/experts/bookings/<id>` and read the whole
+ * staff↔expert conversation, and `postMessage` shares this gate, so they could
+ * write in it too. `postMessage`'s own comment said "both sides are adults,
+ * so there is no gate" — true of the expert, false of the school.
+ *
+ * It was never reachable by browsing: `/experts` turns away everyone but staff,
+ * nothing lists booking ids to a child, and an id is a cuid. It was a wrong
+ * boundary rather than an open door. But an unsupervised channel between a child
+ * and an adult from outside the school is the exact thing `mentoring.ts` spends
+ * consent, guardian visibility and staff-only pairing to prevent, and this
+ * offered one for free.
+ *
+ * ADMIN OR TEACHER, matching `bookSlot` and `cancelBooking` exactly — one
+ * definition of "staff" in this file rather than three that can drift. A
+ * PRINCIPAL is deliberately NOT included: they cannot book, cannot cancel, and
+ * `/experts` is not in their navigation, so adding them here would be widening
+ * access under cover of a security fix. If a principal should see these, that
+ * is a decision to make on its own.
+ *
+ * REFUSED WITH THE SAME `NOT_FOUND` AS AN ID THAT NEVER EXISTED. A pupil must
+ * not learn that a booking exists, which is the same reasoning the mentoring
+ * thread and the report pages already use.
  */
 async function assertBookingAccess(session: ActiveContext, bookingId: string) {
+  const isExpert = session.role === "EXPERT";
+  const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+
+  // Checked before the query, so a pupil's request never becomes a lookup.
+  if (!isExpert && !isStaff) throw new AccessError("Booking not found", "NOT_FOUND");
+
   const booking = await db.expertBooking.findFirst({
     where: {
       id: bookingId,
-      ...(session.role === "EXPERT"
+      ...(isExpert
         ? { expert: { userId: session.user.id } }
         : { schoolId: session.schoolId ?? "__none__" }),
     },
@@ -524,7 +565,16 @@ export async function getBooking(session: ActiveContext, bookingId: string) {
   };
 }
 
-/** Adds a message to a booking. Both sides are adults, so there is no gate. */
+/**
+ * Adds a message to a booking.
+ *
+ * ⚠ THIS USED TO SAY "both sides are adults, so there is no gate", and that was
+ * half right in the way that matters. The expert is an adult; the school side
+ * was whoever `assertBookingAccess` let through, which was every member of the
+ * school — including its pupils. The gate is that function, and it now means
+ * staff or the expert. The comment is kept as a note rather than deleted
+ * because the sentence was the reason nobody looked.
+ */
 export async function postMessage(
   session: ActiveContext,
   bookingId: string,

@@ -2173,7 +2173,9 @@ and a second offering **MENTORING** only.
 - ☐ Signed out → redirected to log in
 - ☐ **⚠️** An expert with a **different** booking → 404 on this one
 
-### ⚠️ Two things this walk found — expect them to fail
+### ⚠️ What this walk found
+
+One is fixed and is now a check to keep; one is still open and will fail.
 
 - ☐ **⚠️ NOTHING CAN CANCEL A BOOKING.** Look for a cancel control on the
   booking page, on **Your bookings**, and on the expert's own list. There is
@@ -2183,20 +2185,21 @@ and a second offering **MENTORING** only.
   school that books the wrong hour, or an expert who falls ill, has no way to
   release it, and the slot stays consumed. The library function is also tested
   nowhere.
-- ☐ **⚠️ ANY MEMBER OF THE SCHOOL CAN READ AND POST IN A BOOKING CHAT,
-  INCLUDING A PUPIL.** Open `/experts/bookings/<id>` as a **pupil** and as a
-  **guardian** → both get **200**, both read the staff↔expert conversation, and
-  both are offered a compose box. The page gate is `requireApiUser()` — anybody
-  signed in — and `assertBookingAccess` then matches only on **schoolId**, so
-  "may read this booking" currently means "belongs to this school" rather than
-  "is staff of this school, or is the expert".
-  `postMessage`'s own comment says *"Both sides are adults, so there is no
-  gate"*, and on the school side that is not true.
-  It is **not reachable by browsing** — the marketplace 307s for both roles and
-  nothing lists booking ids to them, and an id is a cuid — so this is a wrong
-  boundary rather than an open door. But it is the same shape as the thing
-  `mentoring.ts` calls the one thing that feature must never become: an
-  unsupervised channel between a child and an adult from outside the school.
+- ☑ **⚠️ A PUPIL COULD ONCE READ AND POST IN A BOOKING CHAT. Check it stays
+  shut.** Open `/experts/bookings/<id>` as a **pupil** and as a **guardian** →
+  both must get **404**, not 403 and not an empty page: they must not be able to
+  tell a booking that exists from an id that never did. Try posting too — the
+  read and the write share one gate today, and a change that splits them must
+  not let a child write.
+  `assertBookingAccess` matched on **schoolId** alone until this was fixed, so
+  "may read this booking" meant "belongs to this school". Pinned by
+  `tests/expert-booking-access.test.ts`; the failing box below is the one still
+  open.
+- ☐ **⚠️ A PRINCIPAL IS ALSO REFUSED, AND THAT IS A DECISION RATHER THAN AN
+  OVERSIGHT.** They cannot book and cannot cancel, and Experts is not in their
+  navigation, so they were left out rather than swept in with a security fix. If
+  your school expects a head to see these, that is a change to ask for — not a
+  bug to report.
 
 ## 13. Authorisation — try to break in
 
@@ -2281,11 +2284,13 @@ marketplace and booking were the last two, and they now have §12al.
 **⚠️ THAT LIST WAS NEVER A FORMALITY, and both entries proved it on the way
 off.** While mentoring had no section, six notifications pointed at routes that
 had never existed and 7,351 stored rows carried a link to a 404 (§12ak). Writing
-§12al found that **no booking can be cancelled by anybody** — the library
-function and the server action both exist and no component calls either — and
-that **any member of a school, including a pupil, can read and post in a booking
-chat with an outside expert**. Both are recorded as failing boxes in §12al
-rather than quietly fixed, so whoever walks it sees what is true today.
+§12al found two more. **No booking can be cancelled by anybody** — the library
+function and the server action both exist and no component calls either — which
+is **still open** and is a failing box in §12al. And **any member of a school,
+including a pupil, could read and post in a booking chat with an outside
+expert**, which was fixed straight away and is now a check to keep shut. Both
+are written down either way, so whoever walks the section sees what is true
+today rather than what was intended.
 
 The list being empty means every built feature has instructions. It does not
 mean anybody has followed them.
