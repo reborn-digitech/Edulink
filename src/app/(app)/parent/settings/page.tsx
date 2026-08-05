@@ -10,7 +10,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
-import { AppearanceForm } from "../../account/appearance-form";
+import { AppearanceForm } from "@/app/account/appearance-form";
 
 export const metadata: Metadata = { title: "Settings" };
 

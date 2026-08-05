@@ -99,9 +99,18 @@ export default async function AccountPage() {
           icon={<UserIcon weight="duotone" className="size-5" />}
           title={t("account.belongTitle")}
           description={
-            contexts.memberships.length + contexts.children.length === 1
-              ? t("account.belongOne")
-              : t("account.belongMany")
+            /**
+             * THREE STATES, NOT TWO. "You can switch at any time" over an empty
+             * list is what this card said to an alumnus the moment `/account`
+             * became reachable without a role — a heading, a reassurance about
+             * switching, and nothing to switch between. Somebody who has left
+             * every school is exactly who this page now exists for.
+             */
+            contexts.memberships.length + contexts.children.length === 0
+              ? t("account.belongNone")
+              : contexts.memberships.length + contexts.children.length === 1
+                ? t("account.belongOne")
+                : t("account.belongMany")
           }
           action={
             contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0) > 1 ? (
@@ -112,6 +121,9 @@ export default async function AccountPage() {
           }
         />
         <CardBody>
+          {contexts.memberships.length + contexts.children.length === 0 && (
+            <p className="text-sm leading-relaxed text-fg-muted">{t("account.belongNoneBody")}</p>
+          )}
           <ul className="space-y-1.5">
             {contexts.memberships.map((membership) => (
               <li

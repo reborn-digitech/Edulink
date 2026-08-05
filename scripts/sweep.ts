@@ -144,12 +144,18 @@ async function suspension(schoolId: string) {
     await check(actor, "/admin/people", 307, "⚠ …and anything else scoped to it");
     await check(actor, "/suspended", 200, "…and is told why, rather than sent to a join code");
 
-    // KNOWN LIMITATION, asserted rather than wished away. /account lives inside
-    // the role-gated shell, so somebody with no remaining context cannot reach
-    // their own settings — not a consequence of suspension, but most visible
-    // here. /suspended carries sign-out for that reason. Moving the account page
-    // out from behind the role gate is its own change.
-    await check(actor, "/account", 307, "the account page is behind the role gate");
+    /**
+     * ⚠ AND CAN STILL REACH THEIR OWN ACCOUNT, which is the fix this asserts.
+     *
+     * This check read 307 for months, with a comment calling it a known
+     * limitation: `/account` lived inside the role-gated shell, so a paused
+     * member could not reach their own language, password or notification
+     * settings. It has moved out. The pages under it never needed a role — they
+     * have always been `requireUser` — so this is the layout no longer refusing
+     * on behalf of a page that was happy to render.
+     */
+    await check(actor, "/account", 200, "⚠ …but can still reach their OWN settings");
+    await check(actor, "/account/merge", 200, "⚠ …including joining two accounts");
   } finally {
     await db.membership.update({
       where: { id: victim.id },
@@ -372,9 +378,18 @@ async function alumniRecord(schoolId: string) {
 
     // …AND NOTHING ELSE. Each of these is a school's working surface and each
     // one independently requires a live membership.
-    for (const path of ["/student", "/student/practice", "/bulletin", "/student/grades", "/account"]) {
+    for (const path of ["/student", "/student/practice", "/bulletin", "/student/grades"]) {
       await check(alumnus, path, 307, "⚠ …and the school's own pages are closed to them");
     }
+
+    /**
+     * ⚠ THEIR OWN ACCOUNT IS NOT ONE OF THOSE, and that is the distinction the
+     * whole move rests on. A school's working surface needs a school. A
+     * person's own settings do not — and an alumnus is the population this
+     * created: they left the only school they were at, so they have no role,
+     * and they were locked out of their own language, password and sign-out.
+     */
+    await check(alumnus, "/account", 200, "⚠ …but their OWN account is theirs, with no school at all");
 
     // A guardian follows the same child, across a school the child has left.
     const parent = await db.user.create({

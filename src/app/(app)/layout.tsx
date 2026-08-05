@@ -1,31 +1,35 @@
 import { redirect } from "next/navigation";
-import { AppShell } from "@/components/nav/app-shell";
 import { getSession, listContexts } from "@/lib/session";
 import { hasRecord } from "@/lib/student-record";
-import { getT } from "@/lib/i18n/server";
+import { SignedInShell } from "@/components/nav/signed-in-shell";
 import { db } from "@/lib/db";
-import type { Role } from "@/lib/constants";
 
 /**
- * Shell for every signed-in area.
+ * Shell for every signed-in area THAT BELONGS TO A SCHOOL.
  *
  * The role/school on the session has already been re-verified against a live
  * Membership row by `getSession`, so anything below this layout can trust
  * `session.schoolId` without re-checking membership. What it must still do is
  * scope each individual query by that id — see src/lib/tenancy.ts.
+ *
+ * THE GATE IS THE POINT OF THIS FILE, and it is why `/account` is no longer
+ * under it. Everything below here is a school's working surface and needs a
+ * school; a person's own settings are not, and requiring a role to reach them
+ * locked alumni and paused members out of their own account. The chrome itself
+ * moved to `SignedInShell` so both places render the same thing.
  */
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
   if (!session) redirect("/login");
 
-  const contexts = await listContexts(session.user.id);
-  const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);
-
-  // Signed in but with no usable context. Two very different reasons, and
+  // Signed in but with no usable context. Several very different reasons, and
   // telling them apart is the whole point: a brand-new parent needs a join code,
   // and somebody whose school has paused them needs to be told that instead of
   // being handed a code that cannot help. (§7 no dead ends)
   if (!session.role) {
+    const contexts = await listContexts(session.user.id);
+    const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);
+
     if (contextCount === 0) {
       // Somebody who runs the server and teaches nowhere is the ORDINARY case
       // for a superuser, not an error state. Sending them to a join-code box
@@ -57,33 +61,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     redirect("/switch");
   }
 
-  const role = session.role as Role;
-  const t = await getT();
-
-  const [schoolName, unreadCount] = await Promise.all([
-    session.schoolId
-      ? db.school
-          .findUnique({ where: { id: session.schoolId }, select: { name: true } })
-          // "EduLink" is a name, so it is not translated. What sits in this slot
-          // for a parent is a description of where they are, so it is.
-          .then((s) => s?.name ?? "EduLink")
-      : Promise.resolve(t("shell.yourChildren")),
-    db.notification.count({ where: { userId: session.user.id, readAt: null } }),
-  ]);
-
   return (
-    <AppShell
-      user={{
-        name: session.user.preferredName ?? session.user.name,
-        avatarKey: session.user.avatarKey,
-        role,
-        schoolName,
-        contextCount,
-        isSuperuser: session.user.isSuperuser,
-      }}
-      unreadCount={unreadCount}
-    >
-      {children}
-    </AppShell>
+    <SignedInShell session={session as typeof session & { role: string }}>{children}</SignedInShell>
   );
 }

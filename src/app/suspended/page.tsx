@@ -94,8 +94,16 @@ export default async function SuspendedPage() {
             <a href="/switch">{t("palette.switchContext")}</a>
           </Button>
         )}
+        {/* Their own account, which is no longer unreachable from here. Sign-out
+            was the ONLY button on this page for months because `/account` sat
+            behind the role gate and a paused member has no role — so the one
+            place they could still change their password was the one place they
+            could not get to. */}
+        <Button asChild variant="secondary" block>
+          <a href="/account">{t("nav.account")}</a>
+        </Button>
         <form action="/api/auth/logout" method="post">
-          <Button type="submit" variant="secondary" block>
+          <Button type="submit" variant="ghost" block>
             {t("suspended.signOut")}
           </Button>
         </form>

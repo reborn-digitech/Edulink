@@ -184,6 +184,8 @@ export const en = {
     belongTitle: "Where you belong",
     belongOne: "One place",
     belongMany: "You can switch at any time",
+    belongNone: "Not at a school just now",
+    belongNoneBody: "You are not an active member of any school on EduLink. Your account, and anything a school recorded about you, stays yours.",
     switch: "Switch",
     notificationsTitle: "Notifications",
     notificationsDescription: "What you are told, and when",

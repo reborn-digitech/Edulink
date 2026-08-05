@@ -156,6 +156,8 @@ export const hi: Dictionary = {
     belongTitle: "आप कहाँ जुड़े हैं",
     belongOne: "एक जगह",
     belongMany: "आप कभी भी बदल सकते हैं",
+    belongNone: "अभी किसी स्कूल में नहीं",
+    belongNoneBody: "आप EduLink के किसी भी स्कूल के सक्रिय सदस्य नहीं हैं। आपका खाता, और स्कूल ने आपके बारे में जो दर्ज किया है, वह आपका ही रहता है।",
     switch: "बदलें",
     notificationsTitle: "सूचनाएँ",
     notificationsDescription: "आपको क्या बताया जाए, और कब",

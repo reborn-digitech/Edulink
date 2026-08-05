@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { TranslateIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import { LOCALES, useLocale, useT, type Locale } from "@/lib/i18n";
-import { setLocale } from "@/app/(app)/account/actions";
+import { setLocale } from "@/app/account/actions";
 
 /**
  * The language control. ONE OF THESE, used everywhere.

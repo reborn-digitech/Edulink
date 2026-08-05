@@ -42,6 +42,14 @@ export default async function RecordLayout({ children }: { children: React.React
                 <Link href="/switch">Back to school</Link>
               </Button>
             )}
+            {/* Their own settings — language, password, sign-out on every
+                device. Offered to everybody here, because the people most
+                likely to be on this page are the ones with no role, and until
+                `/account` moved out of the role-gated shell it was the one
+                thing they could not reach. */}
+            <Button asChild size="sm" variant="ghost">
+              <Link href="/account">Account</Link>
+            </Button>
             <form action="/api/auth/logout" method="post">
               <Button type="submit" size="sm" variant="secondary">
                 Sign out
