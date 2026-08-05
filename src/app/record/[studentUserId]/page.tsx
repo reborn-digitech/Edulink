@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
-import { getSession } from "@/lib/session";
+import { requireUser } from "@/lib/tenancy";
 import { recordFor } from "@/lib/student-record";
 import { RecordView } from "../record-view";
 
@@ -25,7 +25,11 @@ export default async function ChildRecordPage({
 }: {
   params: Promise<{ studentUserId: string }>;
 }) {
-  const session = (await getSession())!;
+  // `requireUser()` rather than a non-null assertion, for the reason spelled
+  // out on the parent page: the layout's redirect wins the response but does
+  // not stop this body running, so the assertion threw on every signed-out
+  // visit behind a 307 that looked correct.
+  const session = await requireUser();
   const { studentUserId } = await params;
 
   const record = await recordFor(session, studentUserId);

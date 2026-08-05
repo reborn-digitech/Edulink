@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
-import { getSession } from "@/lib/session";
+import { requireUser } from "@/lib/tenancy";
 import { myChildren, myRecord } from "@/lib/student-record";
 import { RecordView } from "./record-view";
 
@@ -21,7 +21,26 @@ export const metadata: Metadata = { title: "Your record", robots: { index: false
  * which of those a person "is", and the answer is both.
  */
 export default async function RecordPage() {
-  const session = (await getSession())!;
+  /**
+   * ⚠ `requireUser()`, NOT `(await getSession())!`, AND THE DIFFERENCE IS NOT
+   * STYLE. The `!` said "the layout already redirected, so there is a session
+   * here" — which is a true statement about the RESPONSE and a false one about
+   * this function. A layout and its page render in PARALLEL: the layout's
+   * redirect wins the response, so a signed-out visit correctly returned 307
+   * and the sweep was right to assert one, but this body had already run and
+   * thrown a TypeError on `session.user` inside `myRecord`. Nine requests, nine
+   * logged errors, invisible from outside.
+   *
+   * A gate that is somewhere else is not a gate this function has. `requireUser`
+   * redirects the same way and costs the same lookup.
+   *
+   * THE ASSERTION IS FINE WHERE THE GATE IS AWAITED IN THE SAME FUNCTION —
+   * `student/work`, `admin/safety` and `/account` all call `requireRole` or
+   * `requireUser` on the line above, so the redirect throws before the `!` is
+   * reached. Checked, and left alone. It is the gate living in a LAYOUT that
+   * makes it a lie.
+   */
+  const session = await requireUser();
 
   const [record, children] = await Promise.all([myRecord(session), myChildren(session)]);
 

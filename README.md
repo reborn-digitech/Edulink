@@ -1614,6 +1614,28 @@ One line each, with the default rejected.
   *"invalid"*, because it is usually the back button.
   18 tests, 8 mutations, 8 caught.
 
+- **A 307 that was right about the response and wrong about what ran.** Both
+  `/record` pages read `(await getSession())!` and handed the result to
+  `myRecord` / `recordFor`, which read `session.user`. The redirect protecting
+  the area lives in `record/layout.tsx` — and **a layout and its page render in
+  PARALLEL**, so the layout's redirect won the response while the page body had
+  already run and thrown a `TypeError`. Every signed-out visit returned a
+  correct 307 with a stack trace behind it: nine requests, nine logged errors,
+  and nothing visible from outside. The sweep asserted the 307 and was right to.
+  **THE ASSERTION WAS TRUE ABOUT THE RESPONSE AND FALSE ABOUT THE FUNCTION**,
+  which is the whole lesson. A gate that lives somewhere else is not a gate this
+  function has. Both pages call `requireUser()` now, which redirects the same
+  way and costs the same lookup.
+  **THE OTHER THREE `!`s IN THE APP WERE CHECKED AND LEFT ALONE.**
+  `student/work`, `admin/safety` and `/account` each `await` a `requireRole` or
+  `requireUser` on the line ABOVE, in the same function, so the redirect throws
+  before the assertion is reached. There the `!` is honest. Fixing them to match
+  would have been a change that says the distinction does not matter.
+  **Proved by the repro rather than by reading it**: the identical nine requests
+  before and after — same nine 307s, `9` logged `TypeError`s before, `0` after.
+  A status-code sweep could not have caught this and still cannot; what caught
+  it was reading the server log during an unrelated walkthrough.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -2388,15 +2410,8 @@ next run rather than in a role audit six months later.
 - ~~**Registration emails a confirmation link to a route that does not exist.**~~
   **Fixed**, along with the identical bug in the magic-link login. See the entry
   in the changelog above.
-- **⚠ `/record` throws on every signed-out visit, and the log fills up.**
-  `src/app/record/page.tsx:24` reads `(await getSession())!` and hands the result
-  to `myRecord`, which reads `session.user`. The redirect that protects the route
-  lives in its layout, so the RESPONSE is a correct 307 and the sweep is right to
-  assert one — but the page body still executes and throws a `TypeError` first.
-  Reproduced three times out of three with a stale session cookie. It is a
-  one-line change to redirect rather than assert; left alone because it is a
-  different defect from the email links it was found beside, and folding it in
-  would bury it.
+- ~~**`/record` throws on every signed-out visit, and the log fills up.**~~
+  **Fixed.** See the changelog entry above.
 - Rebuilding over a running `next start` corrupts `.next` (see Gotchas).
 - Outside a page render the tenant is resolved per query, which costs one session
   lookup and one membership check each. Correct everywhere, and measurably
