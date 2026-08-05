@@ -7,8 +7,12 @@ import { getCompetition, listEntriesForResults } from "@/lib/competitions";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { ResultsRow } from "./results-row";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Entries" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.entries") };
+}
 
 /**
  * This school's entries for one competition, and what they scored.

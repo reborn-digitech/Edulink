@@ -10,8 +10,12 @@ import { EmptyState } from "@/components/ui/states";
 import { NotificationList } from "./list";
 import { BulkActions } from "./bulk-actions";
 import type { NotificationKind } from "@/lib/constants";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Notifications" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.notifications") };
+}
 
 const TABS = [
   { id: "all", label: "All" },
@@ -23,6 +27,7 @@ export default async function NotificationsPage({
 }: {
   searchParams: Promise<{ filter?: string }>;
 }) {
+  const locale = await getLocale();
   const session = await requireUser();
   const { filter } = await searchParams;
   const showUnreadOnly = filter === "unread";
@@ -111,7 +116,7 @@ export default async function NotificationsPage({
               body: row.body,
               url: row.url,
               read: row.readAt !== null,
-              when: relativeTime(row.createdAt),
+              when: relativeTime(row.createdAt, undefined, locale),
             }))}
           />
         </Card>

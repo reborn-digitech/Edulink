@@ -8,8 +8,12 @@ import { todayKey, addDaysToKey, formatDateKey, isDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Timetable" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.timetable") };
+}
 
 /**
  * Your own week.
@@ -30,6 +34,7 @@ export default async function MyTimetablePage({
 }: {
   searchParams: Promise<{ week?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("TEACHER", "STUDENT");
   const params = await searchParams;
 
@@ -92,7 +97,7 @@ export default async function MyTimetablePage({
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
-          Week of {formatDateKey(monday, { day: "numeric", month: "long" })}
+          Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
         </span>
         <Link
           href={`/timetable?week=${next}`}
@@ -121,7 +126,7 @@ export default async function MyTimetablePage({
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? "This week" : `Week of ${formatDateKey(monday)}`}
+            title={isThisWeek ? "This week" : `Week of ${formatDateKey(monday, undefined, locale)}`}
             description={
               ctx.role === "TEACHER"
                 ? "Cover you are taking on shows here too, marked as somebody else's lesson."
@@ -130,6 +135,7 @@ export default async function MyTimetablePage({
           />
           <CardBody>
             <WeekGridView
+              locale={locale}
               {...grid}
               showClass={ctx.role === "TEACHER" || spansClasses}
               showTeacher={ctx.role === "STUDENT"}

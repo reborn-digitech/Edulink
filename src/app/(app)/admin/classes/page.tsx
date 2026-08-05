@@ -8,8 +8,12 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { ClassRowActions } from "./row-actions";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Classes" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.classes") };
+}
 
 export default async function ClassesPage({
   searchParams,

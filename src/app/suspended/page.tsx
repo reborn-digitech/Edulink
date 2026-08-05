@@ -8,10 +8,13 @@ import { suspendedSchoolsFor } from "@/lib/membership";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_HOME } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Access paused",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.accessPaused"),
   robots: { index: false, follow: false },
 };
+}
 
 /**
  * What somebody sees when their school has paused their access.

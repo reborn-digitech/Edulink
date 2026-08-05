@@ -17,8 +17,12 @@ import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "School directory" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.schoolDirectory") };
+}
 
 const PAGE_SIZE = 50;
 
@@ -34,6 +38,7 @@ export default async function DirectoryPage({
     status?: string;
   }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
   const t = await getT();
@@ -236,7 +241,7 @@ export default async function DirectoryPage({
                         )}
                         {member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-                            Left {relativeTime(member.leftAt)}
+                            Left {relativeTime(member.leftAt, undefined, locale)}
                             {member.schoolRecord?.destination
                               ? ` · went to ${member.schoolRecord.destination}`
                               : ""}
@@ -244,7 +249,7 @@ export default async function DirectoryPage({
                         )}
                         {member.status === "SUSPENDED" && !member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-warn">
-                            Paused {member.suspendedAt ? relativeTime(member.suspendedAt) : ""}
+                            Paused {member.suspendedAt ? relativeTime(member.suspendedAt, undefined, locale) : ""}
                             {member.suspendedReason ? ` · ${member.suspendedReason}` : ""}
                           </p>
                         )}

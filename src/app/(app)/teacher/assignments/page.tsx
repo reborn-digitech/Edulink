@@ -10,10 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Assignments" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.assignments") };
+}
 
 export default async function AssignmentsPage() {
+  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
@@ -105,7 +110,7 @@ export default async function AssignmentsPage() {
                       </p>
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {assignment.dueAt
-                          ? `Due ${relativeTime(assignment.dueAt)}`
+                          ? `Due ${relativeTime(assignment.dueAt, undefined, locale)}`
                           : "No due date"}
                         {" · "}
                         {graded} of {roster} marked

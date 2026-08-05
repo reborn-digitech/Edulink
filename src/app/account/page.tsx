@@ -29,10 +29,15 @@ import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Your account" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.yourAccount") };
+}
 
 export default async function AccountPage() {
+  const locale = await getLocale();
   const session = await requireUser();
   const live = (await getSession())!;
   const t = await getT();
@@ -260,8 +265,8 @@ export default async function AccountPage() {
               id: s.id,
               label: describeDevice(s.userAgent) ?? t("account.unknownDevice"),
               ip: s.ip,
-              lastSeen: relativeTime(s.lastSeenAt),
-              since: relativeTime(s.createdAt),
+              lastSeen: relativeTime(s.lastSeenAt, undefined, locale),
+              since: relativeTime(s.createdAt, undefined, locale),
             }))}
           />
         </CardBody>

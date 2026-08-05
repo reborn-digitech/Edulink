@@ -7,11 +7,15 @@ import { getMentorship } from "@/lib/mentoring";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MentorPanel } from "./panel";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Mentoring",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.mentoring"),
   robots: { index: false, follow: false },
 };
+}
 
 export default async function MentorThreadPage({
   params,

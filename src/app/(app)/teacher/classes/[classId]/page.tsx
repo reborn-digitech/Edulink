@@ -23,8 +23,12 @@ import { listGradeCategories } from "@/lib/grading";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Class" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.klass") };
+}
 
 const RANGE_DAYS = 28;
 
@@ -33,6 +37,7 @@ export default async function ClassDetailPage({
 }: {
   params: Promise<{ classId: string }>;
 }) {
+  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await params;
@@ -168,7 +173,7 @@ export default async function ClassDetailPage({
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
           hint={
             todaySession
-              ? `${todaySession._count.records} marked ${relativeTime(todaySession.takenAt)}`
+              ? `${todaySession._count.records} marked ${relativeTime(todaySession.takenAt, undefined, locale)}`
               : "Nobody marked yet"
           }
         />
@@ -317,7 +322,7 @@ export default async function ClassDetailPage({
                         {assignment.title}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {assignment.dueAt ? `Due ${relativeTime(assignment.dueAt)}` : "No due date"}
+                        {assignment.dueAt ? `Due ${relativeTime(assignment.dueAt, undefined, locale)}` : "No due date"}
                         {" · "}
                         {assignment._count.grades} of {roster.length} marked
                       </span>

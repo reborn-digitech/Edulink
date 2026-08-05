@@ -5,8 +5,12 @@ import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { InviteForm } from "./form";
 import { SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Invite people" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.invitePeople") };
+}
 
 export default async function NewInvitePage({
   searchParams,

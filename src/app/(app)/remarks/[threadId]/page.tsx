@@ -10,10 +10,15 @@ import { ReplyBox } from "./reply-box";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Message", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.message"), robots: { index: false, follow: false } };
+}
 
 export default async function ThreadPage({ params }: { params: Promise<{ threadId: string }> }) {
+  const locale = await getLocale();
   const session = await requireUser();
   const { threadId } = await params;
 
@@ -81,7 +86,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
                   {message.mine ? "You" : message.authorName}
                 </span>{" "}
                 · <time dateTime={message.createdAt.toISOString()}>
-                  {relativeTime(message.createdAt)}
+                  {relativeTime(message.createdAt, undefined, locale)}
                 </time>
               </p>
               <div

@@ -10,8 +10,12 @@ import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Timetable" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.timetable") };
+}
 
 /**
  * A guardian reading their child's week.
@@ -30,6 +34,7 @@ export default async function ParentTimetablePage({
 }: {
   searchParams: Promise<{ child?: string; week?: string }>;
 }) {
+  const locale = await getLocale();
   const session = await requireParent();
   const t = await getT();
   const params = await searchParams;
@@ -95,7 +100,7 @@ export default async function ParentTimetablePage({
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
-          Week of {formatDateKey(monday, { day: "numeric", month: "long" })}
+          Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
         </span>
         <Link
           href={link_(next)}
@@ -120,11 +125,11 @@ export default async function ParentTimetablePage({
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday)}`}
+            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday, undefined, locale)}`}
             description={t("parent.coverNote")}
           />
           <CardBody>
-            <WeekGridView {...grid} showTeacher showClass={spansClasses} emptyLabel="Free" />
+            <WeekGridView {...grid} showTeacher showClass={spansClasses} emptyLabel="Free" locale={locale} />
           </CardBody>
         </Card>
       )}

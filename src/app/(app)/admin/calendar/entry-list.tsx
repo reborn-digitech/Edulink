@@ -11,6 +11,7 @@ import { formatDateKey } from "@/lib/dates";
 import { cn } from "@/lib/cn";
 import { editCalendarEntry, removeCalendarEntry } from "./actions";
 import type { HolidayKind } from "@/lib/holidays";
+import { useLocale } from "@/lib/i18n";
 
 export type Entry = {
   id: string;
@@ -41,6 +42,7 @@ const KINDS: { value: HolidayKind; label: string }[] = [
  * attendance looks odd needs to see that the school was shut for a week.
  */
 export function EntryList({ entries, today }: { entries: Entry[]; today: string }) {
+  const locale = useLocale();
   const groups = new Map<string, Entry[]>();
   for (const entry of entries) {
     const month = entry.startDateKey.slice(0, 7);
@@ -57,11 +59,11 @@ export function EntryList({ entries, today }: { entries: Entry[]; today: string 
             id={`month-${month}`}
             className="mb-2 text-xs font-semibold uppercase tracking-wide text-fg-muted"
           >
-            {formatDateKey(`${month}-01`, { month: "long", year: "numeric" })}
+            {formatDateKey(`${month}-01`, { month: "long", year: "numeric" }, locale)}
           </h3>
           <ul className="space-y-1.5">
             {monthEntries.map((entry) => (
-              <EntryRow key={entry.id} entry={entry} past={entry.endDateKey < today} />
+              <EntryRow key={entry.id} entry={entry} past={entry.endDateKey < today} locale={locale} />
             ))}
           </ul>
         </section>
@@ -70,7 +72,7 @@ export function EntryList({ entries, today }: { entries: Entry[]; today: string 
   );
 }
 
-function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
+function EntryRow({ entry, past, locale }: { entry: Entry; past: boolean; locale: string }) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -179,11 +181,8 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
         <p className="font-medium text-fg">{entry.name}</p>
         <p className="text-sm text-fg-muted">
           {single
-            ? formatDateKey(entry.startDateKey, { weekday: "short", day: "numeric", month: "long" })
-            : `${formatDateKey(entry.startDateKey, { day: "numeric", month: "short" })} – ${formatDateKey(
-                entry.endDateKey,
-                { day: "numeric", month: "short" },
-              )}`}
+            ? formatDateKey(entry.startDateKey, { weekday: "short", day: "numeric", month: "long" }, locale)
+            : `${formatDateKey(entry.startDateKey, { day: "numeric", month: "short" }, locale)} – ${formatDateKey(entry.endDateKey, { day: "numeric", month: "short" }, locale)}`}
           {entry.note ? ` · ${entry.note}` : ""}
         </p>
       </div>

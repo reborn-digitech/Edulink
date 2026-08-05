@@ -6,8 +6,12 @@ import { postableClasses } from "@/lib/bulletin";
 import { ComposeForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "New post" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.newPost") };
+}
 
 export default async function NewPostPage() {
   const session = await requireUser();

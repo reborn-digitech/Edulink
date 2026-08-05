@@ -8,7 +8,9 @@ import { getLocale, getT } from "@/lib/i18n/server";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
   metadataBase: new URL(APP_URL),
   title: {
     default: "EduLink — school, home, connected",
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "EduLink",
+    title: t("meta.eduLink"),
     // "default" keeps the status bar legible against the themed header; black
     // -translucent would put the clock on top of our own content.
     statusBarStyle: "default",
@@ -41,6 +43,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
+}
 
 export const viewport: Viewport = {
   // viewportFit: "cover" is what makes env(safe-area-inset-*) non-zero; without

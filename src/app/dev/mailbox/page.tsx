@@ -5,8 +5,12 @@ import { db } from "@/lib/db";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Dev mailbox", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.devMailbox"), robots: { index: false, follow: false } };
+}
 export const dynamic = "force-dynamic";
 
 /**

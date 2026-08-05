@@ -4,8 +4,12 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { NewCompetitionForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Post a competition" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.postCompetition") };
+}
 
 export default async function NewCompetitionPage() {
   const ctx = await requireRole("ADMIN");

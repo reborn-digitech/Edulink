@@ -19,12 +19,16 @@ import { Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "EduLink — school, home, connected",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.tagline"),
   description:
     "Attendance in ten seconds. Grades parents actually see. A calm, safe place for schools, students and families. Installs as an app and works offline.",
 };
+}
 
 export default async function LandingPage() {
   // Signed-in visitors get a route back to their own dashboard rather than a

@@ -17,8 +17,12 @@ import { Badge } from "@/components/ui/badge";
 import { Staffing } from "./staffing";
 import { CohortPanel } from "./cohort-panel";
 import { listCohort } from "@/lib/cohort";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Class staffing" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.classStaffing") };
+}
 
 /**
  * Staffing one class.

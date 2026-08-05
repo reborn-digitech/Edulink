@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { HourglassIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Awaiting review" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.awaitingReview") };
+}
 
 /**
  * Where an unpublished expert lands.

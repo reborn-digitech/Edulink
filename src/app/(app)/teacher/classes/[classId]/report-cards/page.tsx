@@ -8,7 +8,10 @@ import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report
 import { Builder } from "./builder";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Report cards" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.reportCards") };
+}
 
 export default async function ReportCardsPage({
   params,

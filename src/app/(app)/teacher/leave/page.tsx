@@ -7,7 +7,10 @@ import { todayKey } from "@/lib/dates";
 import { LeaveForm } from "./form";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Leave" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.leave") };
+}
 
 export default async function TeacherLeavePage() {
   const t = await getT();

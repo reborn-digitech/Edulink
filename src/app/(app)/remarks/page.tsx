@@ -8,10 +8,15 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Messages" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.messages") };
+}
 
 export default async function RemarksPage() {
+  const locale = await getLocale();
   const session = await requireUser();
   const threads = await listThreads(session);
   const isTeacher = session.role === "TEACHER";
@@ -99,7 +104,7 @@ export default async function RemarksPage() {
                   </div>
 
                   <div className="shrink-0 text-right">
-                    <p className="text-xs text-fg-muted">{relativeTime(thread.lastMessageAt)}</p>
+                    <p className="text-xs text-fg-muted">{relativeTime(thread.lastMessageAt, undefined, locale)}</p>
                     <p className="text-xs text-fg-subtle">
                       {thread.messageCount} message{thread.messageCount === 1 ? "" : "s"}
                     </p>

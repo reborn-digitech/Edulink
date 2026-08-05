@@ -6,8 +6,12 @@ import { Wordmark } from "@/components/brand";
 import { StudentJoinFlow } from "./flow";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Join with a code" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.joinWithCode") };
+}
 
 export default async function StudentJoinPage() {
   const session = await getSession();

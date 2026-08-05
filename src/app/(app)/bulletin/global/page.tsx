@@ -8,8 +8,12 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { GlobalPostControls } from "./controls";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Global feed" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.globalFeed") };
+}
 
 /**
  * The global feed.
@@ -21,6 +25,7 @@ export const metadata: Metadata = { title: "Global feed" };
  * that carries pending student posts and rejection reasons.
  */
 export default async function GlobalFeedPage() {
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
   const isAdmin = ctx.role === "ADMIN";
   const posts = await listGlobalFeed(ctx);
@@ -71,7 +76,7 @@ export default async function GlobalFeedPage() {
                       </Badge>
                     )}
                     <span className="ml-auto text-xs text-fg-muted">
-                      {relativeTime(post.createdAt)}
+                      {relativeTime(post.createdAt, undefined, locale)}
                     </span>
                   </div>
 

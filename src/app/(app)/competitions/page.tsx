@@ -7,8 +7,12 @@ import { Card, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { ConsentControls } from "./entry-controls";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Competitions" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.competitions") };
+}
 
 /**
  * The marketplace.

@@ -5,8 +5,12 @@ import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { gradesInRange } from "@/lib/superuser";
 import { ClassForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Create a class" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.createClass") };
+}
 
 export default async function NewClassPage() {
   const ctx = await requireRole("ADMIN");

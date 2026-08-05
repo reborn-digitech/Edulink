@@ -13,7 +13,10 @@ import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "@/app/account/appearance-form";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Settings" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.settings") };
+}
 
 /**
  * Parent settings.

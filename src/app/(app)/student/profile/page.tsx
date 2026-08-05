@@ -8,8 +8,12 @@ import { SchoolRecordList } from "@/components/school-record-list";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ProfileForm } from "./form";
 import { BadgeGrid } from "./badges";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "My profile" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.myProfile") };
+}
 
 export default async function StudentProfilePage() {
   const ctx = await requireRole("STUDENT");

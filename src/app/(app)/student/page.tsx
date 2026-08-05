@@ -17,14 +17,19 @@ import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Today" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.today") };
+}
 
 export default async function StudentHome({
   searchParams,
 }: {
   searchParams: Promise<{ welcome?: string; handle?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const { welcome, handle } = await searchParams;
@@ -80,7 +85,7 @@ export default async function StudentHome({
             Hi {name} 👋
           </h1>
           <p className="text-sm text-fg-muted">
-            {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
+            {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
             {membership.enrollments[0] ? ` · ${membership.enrollments[0].class.name}` : ""}
           </p>
         </div>
@@ -162,7 +167,7 @@ export default async function StudentHome({
                     </span>
                     {/* Gentle, never alarming — "soon", not "OVERDUE" in red. */}
                     <Badge tone={dueSoon ? "warn" : "neutral"} size="sm">
-                      {assignment.dueAt ? relativeTime(assignment.dueAt) : "No date"}
+                      {assignment.dueAt ? relativeTime(assignment.dueAt, undefined, locale) : "No date"}
                     </Badge>
                   </li>
                 );
@@ -236,7 +241,7 @@ export default async function StudentHome({
               {attendance.recent.slice(0, 10).map((day) => (
                 <li key={day.dateKey} className="flex items-center justify-between gap-3 py-2.5">
                   <span className="text-sm font-medium text-fg">
-                    {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" })}
+                    {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" }, locale)}
                   </span>
                   <AttendanceBadge status={day.status} />
                 </li>

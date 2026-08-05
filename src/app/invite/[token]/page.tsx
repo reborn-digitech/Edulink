@@ -12,10 +12,13 @@ import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { ROLE_META, type Role } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Accept your invitation",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.acceptInvite"),
   robots: { index: false, follow: false },
 };
+}
 
 export default async function InvitePage({ params }: { params: Promise<{ token: string }> }) {
   const t = await getT();

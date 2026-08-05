@@ -5,11 +5,15 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { recordFor } from "@/lib/student-record";
 import { RecordView } from "../record-view";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "School record",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.schoolRecord"),
   robots: { index: false, follow: false },
 };
+}
 
 /**
  * One child's record, for a guardian.

@@ -6,7 +6,10 @@ import { ClaimChildForm } from "./form";
 import { getSession, listContexts } from "@/lib/session";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Link to your child" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.linkChild") };
+}
 
 /**
  * Deliberately OUTSIDE the (app) group.

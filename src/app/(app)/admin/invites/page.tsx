@@ -11,8 +11,12 @@ import { InviteRowActions } from "./row-actions";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Invitations" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.invitations") };
+}
 
 const TABS = [
   { id: "PENDING", label: "Pending" },
@@ -25,6 +29,7 @@ export default async function InvitesPage({
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN");
   const { status } = await searchParams;
   const t = await getT();
@@ -119,10 +124,10 @@ export default async function InvitesPage({
                       </p>
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {invite.status === "ACCEPTED" && invite.acceptedAt
-                          ? `Joined ${relativeTime(invite.acceptedAt)}`
+                          ? `Joined ${relativeTime(invite.acceptedAt, undefined, locale)}`
                           : expired
                             ? "Expired"
-                            : `Expires ${relativeTime(invite.expiresAt)}`}
+                            : `Expires ${relativeTime(invite.expiresAt, undefined, locale)}`}
                       </p>
                     </div>
 

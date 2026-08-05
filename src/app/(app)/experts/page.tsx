@@ -10,7 +10,10 @@ import { BookButton } from "./book-button";
 import { getT } from "@/lib/i18n/server";
 import { EXPERT_OFFERING_META } from "@/lib/constants";
 
-export const metadata: Metadata = { title: "Experts" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.experts") };
+}
 
 /**
  * Experts — the marketplace.

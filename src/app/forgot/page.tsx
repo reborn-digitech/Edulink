@@ -3,8 +3,12 @@ import Link from "next/link";
 import { Wordmark } from "@/components/brand";
 import { LanguageSwitch } from "@/components/language-switch";
 import { ForgotForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Set a new password" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.setPassword") };
+}
 
 /**
  * Getting back in.

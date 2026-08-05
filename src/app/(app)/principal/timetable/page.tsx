@@ -8,8 +8,12 @@ import { todayKey, addDaysToKey, formatDateKey, isDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Class timetables" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.classTimetables") };
+}
 
 /**
  * Any class's week, read-only.
@@ -29,6 +33,7 @@ export default async function ClassTimetablesPage({
 }: {
   searchParams: Promise<{ class?: string; week?: string }>;
 }) {
+  const locale = await getLocale();
   // ADMIN too — they build these, and being sent to the editor to read one
   // week's cover would be a detour. The editor stays theirs alone.
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
@@ -111,7 +116,7 @@ export default async function ClassTimetablesPage({
               </Link>
             )}
             <span className="px-1 text-sm font-medium text-fg">
-              Week of {formatDateKey(monday, { day: "numeric", month: "long" })}
+              Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
             </span>
             <Link
               href={link(next, selected?.id)}
@@ -151,7 +156,7 @@ export default async function ClassTimetablesPage({
                 }
               />
               <CardBody>
-                <WeekGridView {...grid} showTeacher emptyLabel="Free" />
+                <WeekGridView {...grid} showTeacher emptyLabel="Free" locale={locale} />
               </CardBody>
             </Card>
           )}

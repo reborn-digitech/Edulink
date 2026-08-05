@@ -9,8 +9,12 @@ import { Button } from "@/components/ui/button";
 import { requireUser } from "@/lib/tenancy";
 import { myChildren, myRecord } from "@/lib/student-record";
 import { RecordView } from "./record-view";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Your record", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.yourRecord"), robots: { index: false, follow: false } };
+}
 
 /**
  * Somebody's own record, and the way in to their children's.

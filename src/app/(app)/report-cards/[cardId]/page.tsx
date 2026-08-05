@@ -3,11 +3,15 @@ import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
 import { formatDateKey } from "@/lib/dates";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Report card",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.reportCard"),
   robots: { index: false, follow: false },
 };
+}
 
 /**
  * One report card, as it will be printed.
@@ -33,6 +37,7 @@ export default async function ReportCardPage({
 }: {
   params: Promise<{ cardId: string }>;
 }) {
+  const locale = await getLocale();
   const session = await requireUser();
   const { cardId } = await params;
 
@@ -77,8 +82,8 @@ export default async function ReportCardPage({
         <section className="flex flex-wrap items-baseline justify-between gap-3 py-5">
           <h2 className="text-2xl font-bold text-fg print:text-black">{card.studentName}</h2>
           <p className="text-xs text-fg-muted print:text-black/70">
-            {formatDateKey(card.fromDateKey, { day: "numeric", month: "short" })} –{" "}
-            {formatDateKey(card.toDateKey, { day: "numeric", month: "short", year: "numeric" })}
+            {formatDateKey(card.fromDateKey, { day: "numeric", month: "short" }, locale)} –{" "}
+            {formatDateKey(card.toDateKey, { day: "numeric", month: "short", year: "numeric" }, locale)}
           </p>
         </section>
 

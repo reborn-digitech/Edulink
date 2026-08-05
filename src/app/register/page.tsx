@@ -5,11 +5,15 @@ import { Wordmark } from "@/components/brand";
 import { RegisterWizard } from "./wizard";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Register your school",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.registerSchool"),
   description: "Set up your school on EduLink in about five minutes.",
 };
+}
 
 export default async function RegisterPage() {
   // Already signed in? Registering a second school from here would silently

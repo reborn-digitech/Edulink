@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { readExpertInvite } from "@/lib/experts";
 import { AcceptForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Expert invitation",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.expertInvite"),
   robots: { index: false, follow: false },
 };
+}
 
 /**
  * Accepting an expert invitation.

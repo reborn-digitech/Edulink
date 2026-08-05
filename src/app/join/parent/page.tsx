@@ -6,8 +6,12 @@ import { Wordmark } from "@/components/brand";
 import { ParentSignupForm } from "./form";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Parent sign-up" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.parentSignUp") };
+}
 
 export default async function ParentJoinPage() {
   const session = await getSession();

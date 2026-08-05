@@ -14,8 +14,12 @@ import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { DayPanel } from "./day-panel";
 import { GridEditor, type StaffOption } from "./grid-editor";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Timetable" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.timetable") };
+}
 
 /**
  * Building the week.

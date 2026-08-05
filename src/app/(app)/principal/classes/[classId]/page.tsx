@@ -20,8 +20,12 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../../window-picker";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Class insights" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.classInsights") };
+}
 
 /**
  * One class, pupil by pupil.
@@ -42,6 +46,7 @@ export default async function PrincipalClassPage({
   params: Promise<{ classId: string }>;
   searchParams: Promise<{ days?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { classId } = await params;
   const { days } = await searchParams;
@@ -106,8 +111,8 @@ export default async function PrincipalClassPage({
           </h1>
           <p className="mt-1 text-sm text-fg-muted">
             {data.pupils.length} pupil{data.pupils.length === 1 ? "" : "s"} ·{" "}
-            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" })} to{" "}
-            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" })}
+            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale)} to{" "}
+            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale)}
           </p>
         </div>
         <WindowPicker days={span} />

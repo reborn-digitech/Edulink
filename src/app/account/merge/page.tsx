@@ -6,8 +6,12 @@ import { db } from "@/lib/db";
 import { toDisplayLoginName } from "@/lib/login-name";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { MergeForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Join two accounts" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.joinAccounts") };
+}
 
 /**
  * The page a transferring family lands on.

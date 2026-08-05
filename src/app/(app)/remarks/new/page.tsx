@@ -9,8 +9,12 @@ import { AskForm } from "./ask-form";
 import { ComposeForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "New message" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.newMessage") };
+}
 
 export default async function NewRemarkPage({
   searchParams,

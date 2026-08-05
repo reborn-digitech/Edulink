@@ -8,6 +8,7 @@ import {
   SealCheckIcon,
   ShieldCheckIcon,
 } from "@phosphor-icons/react/ssr";
+import { getT } from "@/lib/i18n/server";
 import { requireUser } from "@/lib/tenancy";
 import { AccessError } from "@/lib/tenancy";
 import { getCompetition, pendingConsents, leaderboard, ordinal } from "@/lib/competitions";
@@ -22,7 +23,10 @@ import {
   SubmitPanel,
 } from "../entry-controls";
 
-export const metadata: Metadata = { title: "Competition" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.competition") };
+}
 
 function when(date: Date | null): string | null {
   if (!date) return null;

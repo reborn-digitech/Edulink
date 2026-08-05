@@ -7,7 +7,10 @@ import { AssignmentForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "New assignment" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.newAssignment") };
+}
 
 export default async function NewAssignmentPage({
   searchParams,

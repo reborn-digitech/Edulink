@@ -8,7 +8,10 @@ import { getSession } from "@/lib/session";
 import { ROLE_HOME } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Log in" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.logIn") };
+}
 
 export default async function LoginPage({
   searchParams,

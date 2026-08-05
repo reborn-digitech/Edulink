@@ -6,8 +6,12 @@ import { getOwnProfile } from "@/lib/experts";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProfileForm } from "./profile-form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Profile" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.profile") };
+}
 
 /**
  * The expert's own profile.

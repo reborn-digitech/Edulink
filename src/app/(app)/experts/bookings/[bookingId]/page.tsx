@@ -8,8 +8,12 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookingThread } from "./thread";
 import { CancelButton } from "./cancel-button";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Booking", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.booking"), robots: { index: false, follow: false } };
+}
 
 export default async function BookingPage({
   params,

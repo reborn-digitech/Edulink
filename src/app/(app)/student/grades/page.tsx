@@ -11,10 +11,15 @@ import { EmptyState } from "@/components/ui/states";
 import Link from "next/link";
 import { myCards } from "@/lib/report-cards";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "My grades" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.myGrades") };
+}
 
 export default async function StudentGradesPage() {
+  const locale = await getLocale();
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const cards = await myCards(ctx);
@@ -157,7 +162,7 @@ export default async function StudentGradesPage() {
                           <p className="truncate text-xs text-fg-muted">
                             {grade.assignment.class.name}
                             {grade.assignment.category ? ` · ${grade.assignment.category}` : ""} ·{" "}
-                            {relativeTime(grade.gradedAt)}
+                            {relativeTime(grade.gradedAt, undefined, locale)}
                           </p>
                         </div>
                         <div className="shrink-0 text-right">

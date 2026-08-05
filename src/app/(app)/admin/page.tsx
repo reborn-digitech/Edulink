@@ -22,14 +22,19 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "School overview" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.schoolOverview") };
+}
 
 export default async function AdminDashboard({
   searchParams,
 }: {
   searchParams: Promise<{ welcome?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN");
   const { welcome } = await searchParams;
 
@@ -75,7 +80,7 @@ export default async function AdminDashboard({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} · School
+            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} · School
             code{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}
@@ -127,7 +132,7 @@ export default async function AdminDashboard({
                     ? `Next up: ${coming.name}, ${formatDateKey(coming.startDateKey, {
                         day: "numeric",
                         month: "long",
-                      })}`
+                      }, locale)}`
                     : "Nothing on the calendar ahead"}
                 </span>
               </p>

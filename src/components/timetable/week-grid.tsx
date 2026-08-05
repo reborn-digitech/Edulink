@@ -32,6 +32,13 @@ export type WeekGridProps = WeekGrid & {
    * that put a child's name on their own record page.
    */
   viewerMembershipId?: string | null;
+  /**
+   * The reader's language, so the dates along the top of the grid are not
+   * always English. A PROP rather than a hook because this component has no
+   * "use client" and renders inside server pages; defaulting to "en" keeps
+   * every existing call site compiling while the pages are threaded through.
+   */
+  locale?: string;
 };
 
 function slotKey(weekday: number, periodId: string): string {
@@ -126,7 +133,7 @@ function PeriodLabel({ period }: { period: PeriodRow }) {
   );
 }
 
-function DayHeading({ day }: { day: DayColumn }) {
+function DayHeading({ day, locale }: { day: DayColumn; locale: string }) {
   return (
     <>
       <span className={cn("block text-sm font-semibold", day.isToday ? "text-accent-strong" : "text-fg")}>
@@ -134,7 +141,7 @@ function DayHeading({ day }: { day: DayColumn }) {
       </span>
       {day.dateKey && (
         <span className="block text-xs text-fg-muted">
-          {formatDateKey(day.dateKey, { day: "numeric", month: "short" })}
+          {formatDateKey(day.dateKey, { day: "numeric", month: "short" }, locale)}
           {day.isToday && " · today"}
         </span>
       )}
@@ -155,6 +162,7 @@ export function WeekGridView({
   showClass = false,
   showTeacher = false,
   viewerMembershipId = null,
+  locale = "en",
 }: WeekGridProps) {
   const index = indexSlots(slots);
   const lessons = periods.filter((period) => period.kind === "LESSON");
@@ -190,7 +198,7 @@ export function WeekGridView({
                   day.isToday && "border-accent",
                 )}
               >
-                <DayHeading day={day} />
+                <DayHeading day={day} locale={locale} />
               </h3>
               {onThisDay.length === 0 ? (
                 <p className="text-sm text-fg-muted">
@@ -261,7 +269,7 @@ export function WeekGridView({
                     {weekdayShortName(day.weekday)}
                   </abbr>
                   <span className="hidden lg:block">
-                    <DayHeading day={day} />
+                    <DayHeading day={day} locale={locale} />
                   </span>
                 </th>
               ))}

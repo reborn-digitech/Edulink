@@ -11,8 +11,12 @@ import { relativeTime } from "@/lib/dates";
 import { accessHistory } from "@/lib/superuser";
 import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Safety centre" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.safety") };
+}
 
 const TABS = [
   { id: "open", label: "To deal with" },
@@ -25,6 +29,7 @@ export default async function SafetyPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
+  const locale = await getLocale();
   await requireRole("ADMIN");
   const session = (await getSession())!;
   const { tab } = await searchParams;
@@ -86,7 +91,7 @@ export default async function SafetyPage({
                     )}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
-                    {relativeTime(visit.startedAt)} — {visit.reason}
+                    {relativeTime(visit.startedAt, undefined, locale)} — {visit.reason}
                   </p>
                 </li>
               ))}

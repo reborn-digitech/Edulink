@@ -17,8 +17,12 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "./window-picker";
+import { getLocale, getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Dashboard" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.dashboard") };
+}
 
 /**
  * The school, seen whole.
@@ -38,6 +42,7 @@ export default async function PrincipalDashboard({
 }: {
   searchParams: Promise<{ days?: string }>;
 }) {
+  const locale = await getLocale();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { days } = await searchParams;
 
@@ -57,8 +62,8 @@ export default async function PrincipalDashboard({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Dashboard</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" })} to{" "}
-            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" })}
+            {formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale)} to{" "}
+            {formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale)}
           </p>
         </div>
         <WindowPicker days={span} />

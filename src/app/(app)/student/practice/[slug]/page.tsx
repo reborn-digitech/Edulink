@@ -7,8 +7,12 @@ import { db } from "@/lib/db";
 import { listTopics, normaliseLanguage } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Player } from "./player";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Practice", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.practice"), robots: { index: false, follow: false } };
+}
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
   const ctx = await requireRole("STUDENT");

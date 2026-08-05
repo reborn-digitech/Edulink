@@ -9,7 +9,10 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "My classes" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.myClasses") };
+}
 
 export default async function TeacherClassesPage() {
   const t = await getT();

@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
+import { getLocale } from "@/lib/i18n/server";
 
 export const metadata = { title: "Schools" };
 
 export default async function RootPage() {
+  const locale = await getLocale();
   const session = await requireSuperuser();
   const schools = await listSchools(session);
 
@@ -59,7 +61,7 @@ export default async function RootPage() {
                       <p className="truncate font-semibold text-fg">{school.name}</p>
                       <p className="truncate text-xs text-fg-muted">
                         {[school.city, school.country].filter(Boolean).join(", ") || "No address"} ·
-                        joined {relativeTime(school.createdAt)}
+                        joined {relativeTime(school.createdAt, undefined, locale)}
                       </p>
                       <p className="mt-0.5 truncate text-xs text-fg-subtle">
                         Join code <span className="font-mono font-semibold">{school.code}</span>

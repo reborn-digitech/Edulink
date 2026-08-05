@@ -6,8 +6,12 @@ import { listBookings } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "My bookings" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.myBookings") };
+}
 
 export default async function ExpertHome() {
   const ctx = await requireExpert();

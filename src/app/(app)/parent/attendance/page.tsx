@@ -11,8 +11,12 @@ import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Attendance" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.attendance") };
+}
 
 const RANGE_DAYS = 60;
 
@@ -21,6 +25,7 @@ export default async function ParentAttendancePage({
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
+  const locale = await getLocale();
   const session = await requireParent();
   const t = await getT();
   const { child: requested } = await searchParams;
@@ -132,7 +137,7 @@ export default async function ParentAttendancePage({
                         weekday: "long",
                         day: "numeric",
                         month: "long",
-                      })}
+                      }, locale)}
                     </p>
                     {day.note ? (
                       <p className="text-xs text-fg-muted">&ldquo;{day.note}&rdquo;</p>

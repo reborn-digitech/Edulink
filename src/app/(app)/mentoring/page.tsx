@@ -17,7 +17,10 @@ import { AskForm } from "./ask-form";
 import { RequestQueue } from "./request-queue";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Mentoring" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.mentoring") };
+}
 
 /**
  * Mentoring, from whichever side you are on.

@@ -11,11 +11,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
 import { ROLE_HOME, type Role } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Join your school",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.joinSchool"),
   description: "Join EduLink with a code from your school, or link to your child.",
 };
+}
 
 export default async function JoinPage({
   searchParams,

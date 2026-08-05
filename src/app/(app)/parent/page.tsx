@@ -27,7 +27,10 @@ import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Your children" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.yourChildren") };
+}
 
 export default async function ParentDashboard({
   searchParams,

@@ -15,7 +15,10 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Practice" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.practice") };
+}
 
 /**
  * Practice — the topic list.

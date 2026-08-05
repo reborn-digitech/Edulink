@@ -4,8 +4,12 @@ import { requireExpert } from "@/lib/tenancy";
 import { listOwnSlots } from "@/lib/experts";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { SlotManager } from "./slots";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Availability" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.availability") };
+}
 
 export default async function AvailabilityPage() {
   const ctx = await requireExpert();

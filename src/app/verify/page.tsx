@@ -6,8 +6,12 @@ import { Button } from "@/components/ui/button";
 import { verifyEmailByToken } from "@/lib/passwords";
 import { getSession } from "@/lib/session";
 import { ResendButton } from "./resend-button";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Confirm your email" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.confirmEmail") };
+}
 
 /**
  * The route registration has been emailing links to since day one.

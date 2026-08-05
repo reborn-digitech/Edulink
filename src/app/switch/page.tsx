@@ -12,7 +12,10 @@ import { switchContext } from "./actions";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 
-export const metadata: Metadata = { title: "Choose where to go" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.chooseWhere") };
+}
 
 /**
  * Role/school picker.

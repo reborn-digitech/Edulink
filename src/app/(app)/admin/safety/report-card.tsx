@@ -11,10 +11,12 @@ import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { reasonLabel, type ReportGroup } from "@/lib/safety-labels";
 import { dismiss, takeDown } from "./actions";
+import { useLocale } from "@/lib/i18n";
 
 const URGENT = new Set(["UNSAFE", "BULLYING"]);
 
 export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?: boolean }) {
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -57,7 +59,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
           {group.count} report{group.count === 1 ? "" : "s"} ·{" "}
           {group.targetType === "POST" ? "a post" : group.targetType === "COMMENT" ? "a comment" : "a person"}
         </span>
-        <span className="ml-auto font-normal">{relativeTime(group.latestAt)}</span>
+        <span className="ml-auto font-normal">{relativeTime(group.latestAt, undefined, locale)}</span>
         {readOnly && (
           <Badge tone={group.status === "ACTIONED" ? "danger" : "neutral"} size="sm">
             {group.status === "ACTIONED" ? "Removed" : "Dismissed"}
@@ -89,7 +91,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                       {group.target.authorRole.toLowerCase()}
                     </Badge>
                   )}
-                  <span>· {relativeTime(group.target.createdAt)}</span>
+                  <span>· {relativeTime(group.target.createdAt, undefined, locale)}</span>
                   {group.target.status !== "APPROVED" && (
                     <Badge tone="warn" size="sm">
                       {group.target.status.toLowerCase()}
@@ -116,7 +118,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                 <p className="text-xs text-fg-muted">
                   <span className="font-semibold text-fg">{group.target.authorName}</span> commented
                   on <span className="italic">{group.target.postTitle}</span> ·{" "}
-                  {relativeTime(group.target.createdAt)}
+                  {relativeTime(group.target.createdAt, undefined, locale)}
                   {group.target.status !== "APPROVED" && ` · ${group.target.status.toLowerCase()}`}
                 </p>
                 <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">
@@ -180,7 +182,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
               <li key={index} className="px-3.5 py-2.5">
                 <p className="text-xs text-fg-muted">
                   <span className="font-semibold text-fg">{detail.reporterName}</span> ·{" "}
-                  {reasonLabel(detail.reason)} · {relativeTime(detail.at)}
+                  {reasonLabel(detail.reason)} · {relativeTime(detail.at, undefined, locale)}
                 </p>
                 {detail.detail && (
                   <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-fg">

@@ -6,8 +6,12 @@ import { schoolLeave, LEAVE_KIND_LABEL, type LeaveKind } from "@/lib/leave";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Staff leave" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.staffLeave") };
+}
 
 /**
  * Leave, from the principal's side.

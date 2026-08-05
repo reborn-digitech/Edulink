@@ -8,8 +8,12 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PostCard } from "./post-card";
 import type { PostStatus } from "@/lib/constants";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "Bulletin" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.bulletin") };
+}
 
 export default async function BulletinPage({
   searchParams,

@@ -15,7 +15,10 @@ import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "School calendar" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.schoolCalendar") };
+}
 
 /**
  * The school's year, on one page.

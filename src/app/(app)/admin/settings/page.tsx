@@ -5,8 +5,12 @@ import { db } from "@/lib/db";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { LogoPicker } from "./logo-picker";
 import { DetailsForm } from "./details-form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: "School settings" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.schoolSettings") };
+}
 
 export default async function SettingsPage() {
   const ctx = await requireRole("ADMIN");

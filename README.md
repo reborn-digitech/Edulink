@@ -1865,6 +1865,29 @@ One line each, with the default rejected.
   leave, all rendering आज / माझे वर्ग / कामे / हजेरी घ्या / रजा with the offline
   banner in Marathi above them.
 
+- **Every date, and every browser-tab title.** Two passes that cut across all
+  five roles, done as sweeps rather than role by role — doing them per-role
+  would have meant revisiting the same files five times.
+  **DATES: 70 → 2.** `formatDateKey` and `relativeTime` both take a locale and
+  both default to `"en"`, and every call site omitted it. 37 files threaded
+  through. Marathi now renders Devanagari numerals — *बुधवार, ५ ऑगस्ट* — because
+  that is what `Intl` does for `mr`, which is the point of passing a locale
+  rather than formatting by hand.
+  **THREE COMPONENTS TAKE THE LOCALE AS A PROP RATHER THAN A HOOK.**
+  `WeekGridView`, `EntryRow` and `ClosedDayNotice` are leaves rendered inside
+  server pages with no `"use client"`, so a hook was not available; the prop
+  defaults to `"en"` so no call site broke while the pages were threaded.
+  **TITLES: 80 files, 73 distinct.** `export const metadata` is a STATIC export
+  and cannot await anything, so each became `generateMetadata()`. That is why
+  this was a category of its own rather than a remnant of the role passes.
+  **ONE CONVERSION BROKE A FILE AND THE BUILD SAID SO**: the import was inserted
+  after the last line starting `import `, which in one file was the opening
+  `import {` of a multi-line list. Repaired, and worth recording because the
+  same naive rule sits in the other scripts here.
+  **Walked all three languages end to end**: `/teacher` reads *Today · EduLink*,
+  *आज · EduLink*, *आज · EduLink*, and `/teacher/attendance` *Take the register*,
+  *हाज़िरी लें*, *हजेरी घ्या* — with the dates on the page changing with them.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1986,11 +2009,17 @@ navigation" means the actual list rather than one somebody maintained by hand.
   surface** are translated; every other page is still English. The switcher
   itself carries that sentence, so nobody meets an English page and wonders
   whether it is broken. **The guardian's, the pupil's and the teacher's surfaces
-  are all done**, as are the four attendance marks and the offline banner that
-  sits above every page. `npm run i18n` prints exactly what is left — **193 files
-  and 1,412 strings**, plus ~70 date calls that still render in English whatever
-  the reader's language and **87 page `metadata` titles** (the browser tab), and
-  that total is a floor rather than a certainty.
+  are all done**, as are the four attendance marks, the offline banner above
+  every page, **every date in the app** and **every browser-tab title**. `npm run
+  i18n` prints exactly what is left — **178 files and 1,356 strings** — and that
+  total is a floor rather than a certainty.
+  **ONE LANGUAGE AT A TIME, ALWAYS.** `getLocale()` resolves a single locale per
+  request — `prefs.locale` when there is a session, the cookie before there is
+  one — and every `t` for that render comes from it. The switcher shows three
+  OPTIONS; it never shows three languages of content. Verified by toggling
+  en → हिन्दी → मराठी and reading the page, the dates and the tab title each
+  time. What DOES mix today is partial coverage: a screen with translated labels
+  beside untranslated English, which is what finishing removes.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
 - SSO (Google/Microsoft/Apple)

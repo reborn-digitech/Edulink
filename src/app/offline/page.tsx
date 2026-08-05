@@ -2,11 +2,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/brand";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Offline",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+  title: t("meta.offline"),
   description: "You are offline. Cached pages and queued changes are still available.",
 };
+}
 
 /**
  * Service-worker navigation fallback.

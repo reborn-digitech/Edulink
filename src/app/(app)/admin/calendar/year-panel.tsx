@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { startAcademicYear, rollOverAcademicYear } from "./actions";
+import { useLocale } from "@/lib/i18n";
 
 type Year = {
   id: string;
@@ -28,6 +29,7 @@ type Year = {
  * plainly what it is about to do, in the numbers the admin will see afterwards.
  */
 export function YearPanel({ years, today }: { years: Year[]; today: string }) {
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -116,9 +118,9 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-fg">{current.name}</p>
             <p className="text-sm text-fg-muted">
-              {formatDateKey(current.startDateKey, { day: "numeric", month: "long", year: "numeric" })}{" "}
+              {formatDateKey(current.startDateKey, { day: "numeric", month: "long", year: "numeric" }, locale)}{" "}
               to{" "}
-              {formatDateKey(current.endDateKey, { day: "numeric", month: "long", year: "numeric" })}
+              {formatDateKey(current.endDateKey, { day: "numeric", month: "long", year: "numeric" }, locale)}
             </p>
           </div>
           <Badge tone="ok" size="sm">
@@ -143,8 +145,8 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
               >
                 <span className="flex-1 font-medium text-fg">{year.name}</span>
                 <span className="text-fg-muted">
-                  {formatDateKey(year.startDateKey, { day: "numeric", month: "short" })} –{" "}
-                  {formatDateKey(year.endDateKey, { day: "numeric", month: "short", year: "numeric" })}
+                  {formatDateKey(year.startDateKey, { day: "numeric", month: "short" }, locale)} –{" "}
+                  {formatDateKey(year.endDateKey, { day: "numeric", month: "short", year: "numeric" }, locale)}
                 </span>
                 <Badge tone={year.closedAt ? "neutral" : "info"} size="sm">
                   {year.closedAt ? "Closed" : "Waiting"}
