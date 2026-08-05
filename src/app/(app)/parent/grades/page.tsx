@@ -107,7 +107,7 @@ export default async function ParentGradesPage({
         Overview
       </Link>
 
-      {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} />}
+      {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/grades" />}
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">

@@ -102,6 +102,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
     { href: "/parent/attendance", labelKey: "nav.attendance", icon: "checks", primary: true, prefix: true },
     { href: "/parent/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
+    { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },

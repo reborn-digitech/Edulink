@@ -1061,35 +1061,87 @@ export async function teacherWeek(
   return { periods, days, slots: kept };
 }
 
-/** A pupil's own week, merged across every class they are enrolled in. */
+/**
+ * One pupil's week, merged across every class they are enrolled in.
+ *
+ * TAKES A SCHOOL ID RATHER THAN A CONTEXT, so that the two callers can each
+ * establish their own right to be here. A pupil's own claim comes from the
+ * school on their session; a guardian's comes from an ACTIVE Guardianship and
+ * from nothing else — a parent's session has no school at all. Passing a
+ * context in would have meant one of the two synthesising a fake one, which is
+ * how an authorisation check quietly becomes a formality.
+ */
+async function weekForStudent(
+  schoolId: string,
+  studentMembershipId: string,
+  opts: { weekOf: string; todayKey?: string | null },
+): Promise<WeekGrid> {
+  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
+
+  const enrolments = await db.enrollment.findMany({
+    where: { schoolId, studentMembershipId, status: "ACTIVE" },
+    select: { classId: true },
+  });
+  const classIds = enrolments.map((row) => row.classId);
+
+  const [periods, rows, days] = await Promise.all([
+    listPeriods(schoolId),
+    classIds.length === 0
+      ? Promise.resolve([] as RawSlot[])
+      : db.timetableSlot.findMany({
+          where: { schoolId, classId: { in: classIds } },
+          select: SLOT_SELECT,
+        }),
+    buildDays(schoolId, dayKeys, opts.todayKey ?? null),
+  ]);
+
+  const slots = await resolveWeek(schoolId, rows, dayKeys);
+  return { periods, days, slots };
+}
+
+/** A pupil's own week. */
 export async function studentWeek(
   ctx: ActiveContext,
   studentMembershipId: string,
   opts: { weekOf: string; todayKey?: string | null },
 ): Promise<WeekGrid> {
   if (!ctx.schoolId) throw new AccessError("No active school selected");
+  return weekForStudent(ctx.schoolId, studentMembershipId, opts);
+}
 
-  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
-
-  const enrolments = await db.enrollment.findMany({
-    where: { schoolId: ctx.schoolId, studentMembershipId, status: "ACTIVE" },
-    select: { classId: true },
+/**
+ * A guardian reading their child's week.
+ *
+ * THE GUARDIANSHIP IS THE AUTHORISATION, and it is re-read here rather than
+ * trusted from the page — the same rule every other id arriving from a request
+ * follows. A parent holds no membership and no school, so there is no tenant on
+ * their session to check the child against; the link row IS the check, and the
+ * school comes out of it rather than going into it.
+ *
+ * WHAT A PARENT GETS is exactly what their child gets: the same resolved week,
+ * cover and closures included. Not more — there is no class picker here, so a
+ * guardian cannot read the timetable of a class their child is not in.
+ *
+ * The database agrees separately: a parent's request is bound to their
+ * children's schools and to no others (see resolveRequestTenant), so a forged
+ * membership id from a school they have no child at returns nothing at all.
+ */
+export async function childWeek(
+  ctx: ActiveContext,
+  studentMembershipId: string,
+  opts: { weekOf: string; todayKey?: string | null },
+): Promise<WeekGrid> {
+  const link = await db.guardianship.findFirst({
+    where: {
+      parentUserId: ctx.user.id,
+      studentMembershipId,
+      status: "ACTIVE",
+    },
+    select: { student: { select: { schoolId: true } } },
   });
-  const classIds = enrolments.map((row) => row.classId);
+  if (!link) throw new AccessError("Not your child", "NOT_FOUND");
 
-  const [periods, rows, days] = await Promise.all([
-    listPeriods(ctx.schoolId),
-    classIds.length === 0
-      ? Promise.resolve([] as RawSlot[])
-      : db.timetableSlot.findMany({
-          where: { schoolId: ctx.schoolId, classId: { in: classIds } },
-          select: SLOT_SELECT,
-        }),
-    buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null),
-  ]);
-
-  const slots = await resolveWeek(ctx.schoolId, rows, dayKeys);
-  return { periods, days, slots };
+  return weekForStudent(link.student.schoolId, studentMembershipId, opts);
 }
 
 /** Classes an admin or principal can pick from, for the class picker. */

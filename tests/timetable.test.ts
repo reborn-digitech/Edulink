@@ -13,6 +13,7 @@ import {
   classWeek,
   teacherWeek,
   studentWeek,
+  childWeek,
   teacherAvailability,
   schoolBusyMap,
   teachingLoad,
@@ -1222,6 +1223,151 @@ describe("a pupil's own week", () => {
     const week = await studentWeek(ctx, orphan.membershipId, { weekOf: MONDAY });
     expect(week.slots).toEqual([]);
     expect(week.periods).toHaveLength(1);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* A guardian reading their child's week                                       */
+/* -------------------------------------------------------------------------- */
+
+describe("a guardian's view of their child's week", () => {
+  let p1: string;
+  let parentCtx: ActiveContext;
+  let parentUserId: string;
+
+  beforeEach(async () => {
+    p1 = await period("Period 1", 510);
+    await db.enrollment.create({
+      data: { schoolId, classId: classA, studentMembershipId: pupil, status: "ACTIVE" },
+    });
+    await setSlot(admin, {
+      classId: classA,
+      periodId: p1,
+      weekday: 2,
+      subject: "Maths",
+      teacherMembershipId: rao,
+    });
+
+    const parent = await db.user.create({
+      data: { email: `guardian${EMAIL_SUFFIX}`, name: "Guardian", prefs: "{}" },
+    });
+    parentUserId = parent.id;
+    await db.guardianship.create({
+      data: {
+        parentUserId: parent.id,
+        studentMembershipId: pupil,
+        studentSchoolId: schoolId,
+        status: "ACTIVE",
+      },
+    });
+    // A parent holds no membership and no school — which is exactly why this
+    // cannot go through `studentWeek`.
+    parentCtx = context({ userId: parent.id, schoolId: null, role: "PARENT" });
+  });
+
+  it("shows the same week the child sees", async () => {
+    const mine = await studentWeek(
+      context({ userId: "s", membershipId: pupil, schoolId, role: "STUDENT" }),
+      pupil,
+      { weekOf: MONDAY },
+    );
+    const theirs = await childWeek(parentCtx, pupil, { weekOf: MONDAY });
+
+    // Not "a summary of" — the same rows. A parent and a child disagreeing
+    // about Thursday is the one thing this page exists to prevent.
+    expect(theirs.slots).toEqual(mine.slots);
+    expect(theirs.periods).toEqual(mine.periods);
+  });
+
+  it("shows the replacement when the teacher is away", async () => {
+    const leaveId = await approvedLeave(rao, TUESDAY, TUESDAY);
+    await db.attendanceCover.create({
+      data: {
+        schoolId,
+        classId: classA,
+        coveringMembershipId: khan,
+        fromDateKey: TUESDAY,
+        toDateKey: TUESDAY,
+        leaveRequestId: leaveId,
+      },
+    });
+    const week = await childWeek(parentCtx, pupil, { weekOf: MONDAY });
+    expect(week.slots[0]).toMatchObject({ coveringName: "Khan", teacherName: "Rao" });
+  });
+
+  it("⚠ refuses a child who is not theirs — one who HAS a guardian, just not this one", async () => {
+    /**
+     * THE CHILD HERE MUST HAVE A GUARDIAN. A stranger with no Guardianship row
+     * at all is refused whether or not `parentUserId` is in the WHERE clause,
+     * so testing with one proves only that the query found nothing — mutation
+     * testing removed the parent check entirely and this test stayed green.
+     * With a link belonging to SOMEBODY ELSE, dropping the check finds their
+     * row and hands this parent another family's child.
+     */
+    const stranger = await member("Stranger", "STUDENT");
+    const otherParent = await db.user.create({
+      data: { email: `otherguardian${EMAIL_SUFFIX}`, name: "Other guardian", prefs: "{}" },
+    });
+    await db.guardianship.create({
+      data: {
+        parentUserId: otherParent.id,
+        studentMembershipId: stranger.membershipId,
+        studentSchoolId: schoolId,
+        status: "ACTIVE",
+      },
+    });
+
+    await expect(childWeek(parentCtx, stranger.membershipId, { weekOf: MONDAY })).rejects.toThrow(
+      AccessError,
+    );
+  });
+
+  it("⚠ refuses once the guardianship is no longer active", async () => {
+    // A link that was revoked has to stop working immediately. Filtering on
+    // ACTIVE is the whole of that, so it gets its own test.
+    await db.guardianship.updateMany({
+      where: { parentUserId, studentMembershipId: pupil },
+      data: { status: "REVOKED" },
+    });
+    await expect(childWeek(parentCtx, pupil, { weekOf: MONDAY })).rejects.toThrow(AccessError);
+  });
+
+  it("⚠ refuses a child at a school this parent has no child at", async () => {
+    const otherClass = await makeClass("Their class", otherSchoolId);
+    const otherPupil = await member("Elsewhere", "STUDENT", otherSchoolId);
+    await db.enrollment.create({
+      data: {
+        schoolId: otherSchoolId,
+        classId: otherClass,
+        studentMembershipId: otherPupil.membershipId,
+        status: "ACTIVE",
+      },
+    });
+    // Guarded by a DIFFERENT parent, for the same reason as the test above.
+    const outsideParent = await db.user.create({
+      data: { email: `outsideguardian${EMAIL_SUFFIX}`, name: "Outside guardian", prefs: "{}" },
+    });
+    await db.guardianship.create({
+      data: {
+        parentUserId: outsideParent.id,
+        studentMembershipId: otherPupil.membershipId,
+        studentSchoolId: otherSchoolId,
+        status: "ACTIVE",
+      },
+    });
+
+    await expect(
+      childWeek(parentCtx, otherPupil.membershipId, { weekOf: MONDAY }),
+    ).rejects.toThrow(AccessError);
+  });
+
+  it("takes the school from the LINK, not from the caller", async () => {
+    // The context carries no school at all. If this ever starts reading one
+    // off the context, a parent whose session went stale would silently get an
+    // empty week rather than their child's.
+    expect(parentCtx.schoolId).toBeNull();
+    const week = await childWeek(parentCtx, pupil, { weekOf: MONDAY });
+    expect(week.slots).toHaveLength(1);
   });
 });
 

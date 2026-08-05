@@ -10,13 +10,21 @@ import { cn } from "@/lib/cn";
  * A horizontal rail rather than a dropdown: with two or three children the
  * options are worth showing at all times, and it stays thumb-reachable. The
  * selection lives in the URL so a parent can bookmark one child directly.
+ *
+ * SWITCHING CHILD KEEPS YOU ON THE PAGE YOU ARE ON. `basePath` was hardcoded to
+ * `/parent`, so a guardian comparing two children's attendance was thrown back
+ * to the overview on every switch and had to navigate in again — and on a page
+ * about one child, a control that silently changes the SUBJECT and the TOPIC at
+ * once is worse than one that does neither.
  */
 export function ChildSwitcher({
   children,
   selectedId,
+  basePath = "/parent",
 }: {
   children: { studentMembershipId: string; name: string; schoolName: string }[];
   selectedId: string;
+  basePath?: string;
 }) {
   return (
     <nav aria-label="Choose a child">
@@ -26,7 +34,7 @@ export function ChildSwitcher({
           return (
             <li key={child.studentMembershipId} className="shrink-0">
               <Link
-                href={`/parent?child=${child.studentMembershipId}`}
+                href={`${basePath}?child=${child.studentMembershipId}`}
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "flex items-center gap-2.5 rounded-full border py-1.5 pl-1.5 pr-4 transition-colors",

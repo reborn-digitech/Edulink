@@ -53,7 +53,7 @@ export default async function ParentAttendancePage({
         Overview
       </Link>
 
-      {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} />}
+      {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/attendance" />}
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
