@@ -2272,7 +2272,7 @@ Each of these must **fail**. Run them logged out and as the wrong role.
 
 ## Known gaps (do not file these as bugs)
 
-Every route in the navigation now renders — all 292 checks in `npm run sweep`
+Every route in the navigation now renders — all 315 checks in `npm run sweep`
 were requested as a signed-in user of the owning role and returned the status
 that role should get. **That claim is now derived rather than maintained**: the
 sweep reads the navigation model itself and follows every static link, so "every

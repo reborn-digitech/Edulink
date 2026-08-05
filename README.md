@@ -183,7 +183,7 @@ applies here: you cannot revoke the only one.
 | `tsx --tsconfig scripts/tsconfig.json scripts/badge-count.ts` | Who holds which badge in the seeded class, under the CURRENT rule |
 
 `npm run sweep` is the one that catches what unit tests structurally cannot. It
-mints a real session per role, requests all 292 route/role/negative combinations
+mints a real session per role, requests all 315 route/role/negative combinations
 and asserts **200 specifically** — not "200 or a redirect", which is what let a
 404 and a five-commit-old 500 through an earlier sweep. Run it against
 `npm start`, not `npm run dev`: two of the three bugs it has caught only exist in
@@ -1752,6 +1752,45 @@ One line each, with the default rejected.
   time with no error** — the exact call that threw before the fix. 3 mutations,
   3 caught, including restoring the old free-the-slot behaviour.
 
+- **Five routes the sweep had never once requested.** Comparing every route on
+  disk against every path the sweep actually asks for turned up
+  `/experts/bookings/[id]`, `/expert/bookings/[id]`, `/api/files/[fileId]`,
+  `/parent/link` and `/expert/pending`. All five are reached from OUTSIDE the
+  navigation — a notification, an emailed claim, an id in a URL — and the sweep
+  derives its list from the navigation, so `everyNavLink` was never going to
+  find them. 292 → **315 checks**.
+  **THE TWO BOOKING URLS ARE WHY THIS MATTERED.** That is where a pupil was
+  found reading their school's conversation with an outside expert two commits
+  ago. The fix had nineteen library tests and the *route* — the thing an
+  attacker calls — was exercised by nothing. It is now, on both spellings.
+  **⚠ AND THE FIRST VERSION OF THE GUARDIAN CHECK PASSED WHILE THE BUG WAS
+  LIVE.** The sweep's ordinary `parent` actor is minted with no school, which is
+  what `resolveContext` gives a guardian on login — so the old tenant-only
+  predicate never matched and they got a 404 for a reason unrelated to the
+  boundary. Caught by re-introducing the bug and finding only two of the four
+  checks turned red. There is now a second actor with the school bound, which is
+  a session `setActiveContext` will genuinely produce: for PARENT it validates
+  only that a guardianship exists and takes the school id from the switch form.
+  What keeps that from being a cross-tenant hole is the database —
+  `resolveRequestTenant` builds a parent's school set from their actual
+  guardianships and ignores the session's claim.
+  **THE FILE ROUTE NEEDED REAL BYTES.** A fabricated id 404s for everybody,
+  authorised or not, because `readStoredFile` returns null — so a check using
+  one would pass with the authorisation removed. The sweep writes a 1×1 PNG the
+  way `storeFile` does (that module is `server-only` and cannot be imported into
+  a Node script) and removes it in the `finally`.
+  **AND IT FOUND A RULE I HAD GUESSED WRONG**: a teacher must teach the
+  assignment's CLASS, not merely belong to the school. The first version
+  expected a 200 and got a 404. That refusal is now asserted rather than
+  designed around, and the admin carries the positive — which is exactly the
+  claim this file already made, that another school's admin gets a 404 "even for
+  an admin".
+  **WHICH LAYER REFUSES WHICH, established by mutation:** neutering the
+  cross-school branch of `authorizeFileRead` changes nothing, because RLS has
+  already hidden the assignment — that branch is defence in depth. Neutering the
+  teacher check turns the sweep red. Restoring the booking bug turns four checks
+  red.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1769,7 +1808,7 @@ Renders and typechecks; treat as `Untested:`.
 
 ### Not built
 
-**Every route referenced by the navigation renders.** All 292 checks in
+**Every route referenced by the navigation renders.** All 315 checks in
 `npm run sweep` were requested as a signed-in user of the owning role and
 returned **200** — not "200 or a redirect", which is what let a 404 and a 500
 through an earlier sweep. Rendering is not the same as working: see Gotchas for

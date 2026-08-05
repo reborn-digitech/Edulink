@@ -9,7 +9,9 @@
  * Run: tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts
  */
 import { PrismaClient } from "@prisma/client";
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { mkdir, writeFile, rm } from "node:fs/promises";
+import { join, resolve } from "node:path";
 import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
 import { ROLES, type Role } from "@/lib/constants";
@@ -285,6 +287,222 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
     if (newMembershipId) await db.membership.deleteMany({ where: { id: newMembershipId } });
     await db.schoolRecord.deleteMany({ where: { id: record.id } });
     await db.membership.update({ where: { id: pupil.id }, data: { leftAt: null } });
+  }
+}
+
+/**
+ * ⚠ A BOOKING WITH AN EXPERT, ON BOTH OF ITS URLS.
+ *
+ * Neither `/experts/bookings/<id>` nor `/expert/bookings/<id>` had ever been
+ * requested by this sweep, and that is where a pupil was found reading their
+ * school's conversation with an adult from outside it: `assertBookingAccess`
+ * matched on `schoolId` alone, so "may read this booking" meant "belongs to
+ * this school". It is fixed and has nineteen library tests — but the library is
+ * not what an attacker calls. This asserts the boundary at the ROUTE.
+ *
+ * BOTH SPELLINGS, because the two pages are one component and one entitlement,
+ * and a future split must not quietly authorise one of them differently.
+ *
+ * `/expert/pending` rides along, because it needs the same thing this function
+ * already builds — an expert to be signed in as — and the sweep had never
+ * requested it either.
+ */
+async function expertBooking(
+  schoolId: string,
+  parent: Actor,
+  admin: Actor,
+  otherAdmin: Actor,
+  student: Actor,
+): Promise<void> {
+  const EMAIL = "zz.sweep.booked@edulink.test";
+  const booker = await db.membership.findFirst({
+    where: { schoolId, role: "ADMIN", status: "ACTIVE" },
+    select: { id: true },
+  });
+  if (!booker) return skip("the expert booking", "no admin to book with");
+
+  const expertUser = await db.user.upsert({
+    where: { email: EMAIL },
+    create: { email: EMAIL, name: "ZZ Sweep Bookable", prefs: "{}" },
+    update: {},
+  });
+  const profile = await db.expertProfile.upsert({
+    where: { userId: expertUser.id },
+    create: { userId: expertUser.id, headline: "ZZ bookable", offering: "SESSIONS", publishedAt: new Date() },
+    update: { publishedAt: new Date(), offering: "SESSIONS" },
+  });
+  const startsAt = new Date(Date.now() + 21 * 86_400_000);
+  const slot = await db.expertSlot.create({
+    data: {
+      expertProfileId: profile.id,
+      startsAt,
+      endsAt: new Date(startsAt.getTime() + 3_600_000),
+      bookedAt: new Date(),
+    },
+  });
+  const booking = await db.expertBooking.create({
+    data: {
+      schoolId,
+      expertProfileId: profile.id,
+      expertUserId: expertUser.id,
+      slotId: slot.id,
+      bookedByMembershipId: booker.id,
+      topic: "ZZ sweep booking",
+      status: "CONFIRMED",
+    },
+    select: { id: true },
+  });
+
+  try {
+    const expert = await mint(EMAIL, "EXPERT", null, "booked-expert");
+
+    /**
+     * ⚠ A GUARDIAN WITH THE SCHOOL BOUND TO THEIR SESSION, and the ordinary
+     * `parent` actor cannot stand in for them.
+     *
+     * That actor is minted with no school — which is what `resolveContext`
+     * gives a guardian on login — so the old tenant-only predicate
+     * (`schoolId ?? "__none__"`) never matched and they got a 404 for a reason
+     * that had nothing to do with the boundary. It passed while the bug was
+     * live. A check that is right for the wrong reason is worth less than no
+     * check, because it reads as covered.
+     *
+     * A session like this one is reachable: `setActiveContext` validates only
+     * that a guardianship EXISTS when the role is PARENT, and takes the school
+     * id from the switch form, so a guardian can carry one. What stops it being
+     * a cross-tenant hole is the database — `resolveRequestTenant` builds a
+     * parent's school set from their actual guardianships and ignores the
+     * session's claim — which is the layering `tenant-request.ts` describes.
+     */
+    const guardianInSchool = await mint("parent@example.com", "PARENT", schoolId, "guardian-bound");
+
+    for (const spelling of ["/experts/bookings", "/expert/bookings"]) {
+      const path = `${spelling}/${booking.id}`;
+      await check(admin, path, 200, "the school that booked it");
+      await check(expert, path, 200, "and the expert it is with");
+      // ⚠ THE BOUNDARY. Both of these were 200 before it was fixed.
+      await check(student, path, 404, "⚠ NOT a pupil at that school");
+      await check(guardianInSchool, path, 404, "⚠ nor a guardian, even with the school bound");
+      await check(parent, path, 404, "nor a guardian without one");
+      await check(otherAdmin, path, 404, "nor another school");
+      await check(null, path, 307, "signed out");
+    }
+
+    await check(expert, "/expert/pending", 200, "an expert waiting to be reviewed");
+  } finally {
+    await db.expertMessage.deleteMany({ where: { bookingId: booking.id } });
+    await db.expertBooking.deleteMany({ where: { id: booking.id } });
+    await db.expertSlot.deleteMany({ where: { expertProfileId: profile.id } });
+    await db.expertProfile.deleteMany({ where: { userId: expertUser.id } });
+    await db.notification.deleteMany({ where: { userId: expertUser.id } });
+    await db.session.deleteMany({ where: { userId: expertUser.id } });
+    await db.user.deleteMany({ where: { id: expertUser.id } });
+  }
+}
+
+/**
+ * ⚠ SERVING A STORED FILE, which nothing automated has ever requested.
+ *
+ * This file's own header says every refusal is a 404 rather than a 403, because
+ * a distinguishable error confirms the file exists. The README and §13 of the
+ * checklist both claim another school's file 404s "even for an admin", and
+ * until now **nothing asserted it**: `tests/uploads.test.ts` exercises the
+ * storage library, not the route.
+ *
+ * ⚠ IT WRITES REAL BYTES, and that is the point rather than thoroughness for
+ * its own sake. A fabricated id 404s for EVERYBODY — authorised or not — because
+ * `readStoredFile` returns null, so a test using one would pass for the wrong
+ * reason and keep passing with the authorisation removed. The 200 is what makes
+ * the 404s mean something.
+ *
+ * THE PATH SCHEME IS DUPLICATED FROM `storage.ts` ON PURPOSE. That module is
+ * `server-only` and cannot be imported into a plain Node script; the layout it
+ * mirrors is `<STORAGE_DIR>/<first two chars>/<fileId>`, and if it ever changes
+ * this check fails loudly by returning 404 where it expects 200, which is the
+ * failure mode to want.
+ */
+async function storedFile(
+  schoolId: string,
+  admin: Actor,
+  teacher: Actor,
+  otherAdmin: Actor,
+): Promise<void> {
+  /**
+   * ⚠ AN ASSIGNMENT THE SWEEP'S TEACHER DOES NOT TEACH, chosen deliberately.
+   *
+   * The first version took any assignment in the school and expected the
+   * teacher to read it — and got a 404, because `authorizeFileRead` requires a
+   * teacher to teach that assignment's CLASS. Being at the school is not
+   * enough. That refusal is worth asserting rather than designing around, so
+   * the admin carries the 200 (an admin at the owning school is allowed
+   * unconditionally, which is exactly the claim the README makes) and the
+   * teacher becomes a negative.
+   */
+  const tom = await db.user.findUnique({
+    where: { email: "tom@riverside.school" },
+    select: { id: true },
+  });
+  const hisClasses = tom
+    ? (
+        await db.classTeacher.findMany({
+          where: { schoolId, teacher: { userId: tom.id } },
+          select: { classId: true },
+        })
+      ).map((row) => row.classId)
+    : [];
+
+  const assignment = await db.assignment.findFirst({
+    where: { schoolId, attachments: "[]", classId: { notIn: hisClasses } },
+    select: { id: true, attachments: true },
+  });
+  if (!assignment) return skip("the file route", "no assignment outside the teacher's classes");
+
+  // A 1×1 PNG, small enough to inline and real enough to sniff as an image.
+  const png = Buffer.from(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+    "base64",
+  );
+  const fileId = `${randomUUID()}.png`;
+  const root = resolve(process.cwd(), process.env.STORAGE_DIR ?? "./storage");
+  const dir = join(root, fileId.slice(0, 2));
+  await mkdir(dir, { recursive: true });
+  await writeFile(join(dir, fileId), png);
+
+  await db.assignment.update({
+    where: { id: assignment.id },
+    data: {
+      attachments: JSON.stringify([
+        { fileId, name: "zz-sweep.png", size: png.byteLength, mime: "image/png" },
+      ]),
+    },
+  });
+
+  try {
+    const path = `/api/files/${fileId}`;
+    /**
+     * The 200 first: every 404 below is only evidence if this one works.
+     *
+     * ⚠ WHICH LAYER REFUSES WHICH, established by mutation rather than assumed.
+     * Neutering the cross-school branch of `authorizeFileRead` does NOT turn
+     * the other school's 404 green — ROW-LEVEL SECURITY has already hidden the
+     * assignment, so that branch never runs and is defence in depth behind the
+     * database. Neutering the teacher-teaches-this-class check DOES turn its
+     * check red, because that refusal happens inside one school where RLS
+     * cannot help. The teacher line is the one carrying its own weight here.
+     */
+    await check(admin, path, 200, "⚠ an admin at the owning school reads it");
+    await check(teacher, path, 404, "⚠ …but NOT a teacher of a different class");
+    await check(otherAdmin, path, 404, "⚠ …and not ANOTHER SCHOOL'S ADMIN");
+    await check(null, path, 404, "⚠ …nor anybody signed out — 404, never 401");
+    await check(teacher, `/api/files/${randomUUID()}.png`, 404, "an id that names nothing");
+    // Traversal, since the id becomes a path segment.
+    await check(teacher, "/api/files/..%2F..%2Fpackage.json", 404, "⚠ …and no way out of the folder");
+  } finally {
+    await db.assignment.update({
+      where: { id: assignment.id },
+      data: { attachments: assignment.attachments },
+    });
+    await rm(join(dir, fileId), { force: true });
   }
 }
 
@@ -1714,6 +1932,17 @@ async function main() {
   }
 
   await mentorshipThread(riverside.id, parent, admin, otherAdmin);
+  await expertBooking(riverside.id, parent, admin, otherAdmin, student);
+  await storedFile(riverside.id, admin, teacher, otherAdmin);
+
+  /**
+   * ⚠ TWO PAGES THIS SWEEP HAD NEVER REQUESTED. Both are reached from outside
+   * the navigation — `/parent/link` from a claim email and the join flow,
+   * `/expert/pending` from an expert's own landing after they accept an
+   * invitation — so `everyNavLink` was never going to find either.
+   */
+  await check(parent, "/parent/link", 200, "a guardian links another child");
+  await check(null, "/parent/link", 307, "⚠ signed out, it sends them to sign up first");
 
   await suspension(riverside.id);
   await transfer(riverside.id, oakfield.id);
