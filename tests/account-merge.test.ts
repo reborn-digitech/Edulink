@@ -348,7 +348,7 @@ describe("merging", () => {
     // It worked a moment ago, and that half matters as much as the other: a
     // test that only shows the login failing AFTER cannot tell a closed account
     // apart from a fixture whose password was never right.
-    const before = await login({ email: OLD_EMAIL, password: PASSWORD });
+    const before = await login({ identifier: OLD_EMAIL, password: PASSWORD });
     expect(before.ok).toBe(true);
 
     await mergeAccounts(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
@@ -356,7 +356,7 @@ describe("merging", () => {
     // "The old login stops working" is written on the confirm screen, so it is
     // a promise rather than an implementation detail. `disabledAt` being set is
     // not the same claim — this asks the function the promise is about.
-    const after = await login({ email: OLD_EMAIL, password: PASSWORD });
+    const after = await login({ identifier: OLD_EMAIL, password: PASSWORD });
     expect(after.ok).toBe(false);
   });
 
@@ -533,37 +533,6 @@ describe("what it refuses", () => {
     expect(result.ok).toBe(false);
     const old = await db.user.findUniqueOrThrow({ where: { id: oldUserId } });
     expect(old.disabledAt).toBeNull();
-  });
-
-  it("demands the second factor when the old account has one", async () => {
-    await makeForkedPupil();
-    await db.user.update({
-      where: { id: oldUserId },
-      data: {
-        // A real base32 secret; the code below is deliberately not derived from
-        // it, because what is under test is that a code is DEMANDED at all.
-        twoFactorSecret: "JBSWY3DPEHPK3PXP",
-        twoFactorEnabledAt: new Date(),
-      },
-    });
-
-    const keeper = ctx({ userId: newUserId, membershipId: newMembershipId, schoolId: destinationId, role: "STUDENT" });
-
-    const noCode = await mergeAccounts(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
-    expect(noCode.ok).toBe(false);
-    expect(noCode.ok === false && noCode.error).toMatch(/two-factor/i);
-
-    const wrongCode = await mergeAccounts(keeper, {
-      identifier: OLD_EMAIL,
-      password: PASSWORD,
-      code: "000000",
-    });
-    expect(wrongCode.ok).toBe(false);
-
-    // The password alone must not have been enough to take the account.
-    const old = await db.user.findUniqueOrThrow({ where: { id: oldUserId } });
-    expect(old.disabledAt).toBeNull();
-    expect(old.mergedIntoUserId).toBeNull();
   });
 });
 

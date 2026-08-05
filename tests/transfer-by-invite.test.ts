@@ -250,10 +250,10 @@ describe("the password an existing account is asked for", () => {
 
     // The claim as a child would meet it, through the real login action rather
     // than through a hash comparison.
-    const signedIn = await login({ email: PUPIL_EMAIL, password: OLD_PASSWORD });
+    const signedIn = await login({ identifier: PUPIL_EMAIL, password: OLD_PASSWORD });
     expect(signedIn.ok).toBe(true);
 
-    const withTheOneTheyTyped = await login({ email: PUPIL_EMAIL, password: TYPED_PASSWORD });
+    const withTheOneTheyTyped = await login({ identifier: PUPIL_EMAIL, password: TYPED_PASSWORD });
     expect(withTheOneTheyTyped.ok).toBe(false);
   });
 

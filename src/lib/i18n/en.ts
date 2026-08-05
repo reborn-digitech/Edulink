@@ -261,10 +261,10 @@ export const en = {
     expired: "That link has expired. Ask for a new one below.",
     newSchoolPrefix: "Setting up a new school?",
     registerHere: "Register it here",
-    emailOrLoginName: "Email or login name",
+    emailOrLoginName: "Email, mobile number or login name",
     emailLabel: "Email",
     emailPlaceholder: "you@school.org",
-    emailOrHandlePlaceholder: "you@school.org or amara.k4f9",
+    emailOrHandlePlaceholder: "you@school.org, 98765 43210, or amara.k4f9",
     studentHint: "Students: use the login name your school gave you.",
     password: "Password",
     submit: "Log in",
@@ -276,12 +276,8 @@ export const en = {
     magicSent:
       "If an account exists for {email}, a sign-in link is on its way. It works once and expires in 20 minutes.",
     useDifferentEmail: "Use a different email",
-    codeTitle: "Enter your code",
-    codeHint:
-      "Open your authenticator app and type the six-digit code. No recovery code to hand? Any of the ones you saved works here too.",
     signIn: "Sign in",
-    recoveryUsed: "Recovery code used",
-    recoveryUsedHint: "{count} left. Set two-factor up again to get a fresh set.",
+    forgot: "Forgotten your password?",
   },
 
   /* ---------------------------------------------------------------------- */

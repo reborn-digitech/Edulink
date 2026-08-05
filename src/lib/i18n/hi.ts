@@ -219,10 +219,10 @@ export const hi: Dictionary = {
     expired: "वह लिंक समाप्त हो चुका है। नीचे से नया माँगें।",
     newSchoolPrefix: "नया स्कूल शुरू कर रहे हैं?",
     registerHere: "इसे यहाँ पंजीकृत करें",
-    emailOrLoginName: "ईमेल या लॉगिन नाम",
+    emailOrLoginName: "ईमेल, मोबाइल नंबर या लॉगिन नाम",
     emailLabel: "ईमेल",
     emailPlaceholder: "you@school.org",
-    emailOrHandlePlaceholder: "you@school.org या amara.k4f9",
+    emailOrHandlePlaceholder: "you@school.org, 98765 43210, या amara.k4f9",
     studentHint: "विद्यार्थी: अपने स्कूल से मिला लॉगिन नाम उपयोग करें।",
     password: "पासवर्ड",
     submit: "लॉग इन करें",
@@ -234,12 +234,8 @@ export const hi: Dictionary = {
     magicSent:
       "यदि {email} के लिए कोई खाता है, तो साइन-इन लिंक भेजा जा रहा है। वह एक बार काम करता है और 20 मिनट में समाप्त हो जाता है।",
     useDifferentEmail: "कोई दूसरा ईमेल उपयोग करें",
-    codeTitle: "अपना कोड डालें",
-    codeHint:
-      "अपना ऑथेंटिकेटर ऐप खोलें और छह अंकों का कोड डालें। कोड नहीं मिल रहा? आपने जो रिकवरी कोड सहेजे थे, उनमें से कोई भी यहाँ काम करेगा।",
     signIn: "साइन इन",
-    recoveryUsed: "रिकवरी कोड उपयोग हुआ",
-    recoveryUsedHint: "{count} बचे हैं। नया सेट पाने के लिए दो-चरणीय सत्यापन फिर से सेट करें।",
+    forgot: "पासवर्ड भूल गए?",
   },
 
   suspended: {

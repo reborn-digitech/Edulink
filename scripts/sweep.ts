@@ -1394,7 +1394,14 @@ async function main() {
   const thread = await db.remarkThread.findFirst({ where: { schoolId: riverside.id } });
 
   /* ---- public routes, signed out ---- */
-  for (const p of ["/", "/login", "/register", "/join", "/join/student", "/join/parent", "/offline", "/manifest.webmanifest"]) {
+  for (const p of [
+    "/", "/login", "/register", "/join", "/join/student", "/join/parent", "/offline",
+    "/manifest.webmanifest",
+    // Getting back in, which by definition nobody signed in is doing — and
+    // which has to work for somebody whose sessions their own reset just
+    // revoked.
+    "/forgot", "/forgot?id=someone%40example.test", "/login?reset=1",
+  ]) {
     await check(null, p);
   }
   await check(null, "/dev/mailbox", 404, "must 404 in production");

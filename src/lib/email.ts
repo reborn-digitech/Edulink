@@ -92,6 +92,33 @@ export async function sendMagicLink(to: string, url: string, minutes: number) {
   });
 }
 
+/**
+ * A password-reset code, by email.
+ *
+ * A CODE RATHER THAN A LINK, and the same six digits the SMS carries. The two
+ * channels reach one screen, so a person who has both an address and a number on
+ * file does not meet a different flow depending on which message they opened
+ * first. A link would be the nicer email on its own; two flows that must stay in
+ * step is the worse system.
+ */
+export async function sendResetCode(to: string, code: string, minutes: number) {
+  await sendEmail({
+    to,
+    subject: `${code} is your EduLink code`,
+    text:
+      `${code} is your code to set a new EduLink password.\n\n` +
+      `It works once and expires in ${minutes} minutes.\n\n` +
+      `If you did not ask for it, you can ignore this email — nothing has changed.`,
+    html: layout(
+      "Set a new password",
+      `<p>Use this code to set a new password. It works once and expires in ${minutes} minutes.</p>
+       <p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>
+       <p>If you did not ask for it, ignore this email — nothing has changed, and nobody can use the code without it.</p>`,
+    ),
+    purpose: "PASSWORD_RESET",
+  });
+}
+
 export async function sendVerifyEmail(to: string, url: string, schoolName: string) {
   await sendEmail({
     to,

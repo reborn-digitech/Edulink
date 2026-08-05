@@ -1692,9 +1692,6 @@ I'm a student). That mints a SECOND account. Note both login names.
 - ☐ **⚠️** Enter **your own** login name and password. Refused, and it says so
   plainly rather than generically — you have just proved that account is yours
 - ☐ **⚠️** Try the same merge a second time. Refused: that account is gone
-- ☐ If either account has two-factor on, the password alone is **not** enough —
-  a code is demanded. This is the check that stops the merge being a way past
-  somebody's second factor
 
 ### The thing that is not there
 
@@ -1841,6 +1838,47 @@ The bug this closes: `/account` used to need an active role.
   **Account** as well as sign-out. Their own password is reachable; their
   school is not
 
+## 12ag. Signing in with what you have, and getting back in
+
+2FA is gone. One password, and one box that takes three kinds of login.
+
+### One box, three logins
+
+- ☐ Sign in as **Priya** with her **email** and password → in
+- ☐ Sign in with a **student handle** (`rosie.kvjn` — no `@`) and password → in
+- ☐ Add a mobile number at `/account` → **⚠️** the hint shows the normalised
+  form as you type: `98765 43210` reads back as *Saved as +91 98765 43210*
+- ☐ **⚠️** Sign out and sign in with `98765 43210` — national digits, a space,
+  no country code. In. Try `+919876543210` and `09876543210` too: same account
+- ☐ **⚠️** A wrong password on any of the three says *that login and password do
+  not match* — never "no such account", and never naming which kind it was
+- ☐ **⚠️** Try to save a number another account already has → refused, plainly.
+  (The one deliberate exception to the never-confirm rule; you are signed in, on
+  your own settings page — see `saveMobile`)
+
+### Getting back in
+
+- ☐ `/forgot`, or **Forgotten your password?** on the login form — **⚠️** which
+  carries whatever you had already typed, so you do not type it twice
+- ☐ Type an **email** → hint says it will email. Type a **number** → hint says
+  it will text. Type a **handle** → **⚠️** it warns there may be nowhere to
+  send, and to ask the school
+- ☐ Send a code, then read it at **`/dev/mailbox`** — an SMS shows there too,
+  subject *SMS to +91 …*
+- ☐ Enter a **wrong** code → refused. Do it five times → **⚠️** the sixth
+  attempt fails even with the RIGHT code. Ask for a new one to continue
+- ☐ **⚠️** Enter a code and a **short** password → refused for the password, and
+  the code is **still usable**. Somebody who has proved they hold the phone
+  should not need a second message
+- ☐ Set a real password → you land on `/login?reset=1` with a banner, **not**
+  signed in
+- ☐ **⚠️** THE POINT OF THE WHOLE THING: another browser that was signed in as
+  that account is now **signed out**. A reset that leaves the other person's
+  session alive achieves nothing
+- ☐ The old password no longer works; the new one does
+- ☐ **⚠️** Ask for a reset for an address nobody has → the page says exactly the
+  same thing, and nothing is sent. Compare the two screens word for word
+
 ## 13. Authorisation — try to break in
 
 Each of these must **fail**. Run them logged out and as the wrong role.
@@ -1923,15 +1961,15 @@ and mentoring threads. Only the expert's own profile (§12r) is covered, because
 that is the page the role audit found broken. The rest is untested by hand.
 
 Built since this list was last trimmed, and now with sections of their own:
-global feed, weighted grade categories, suspend-user (§12l), two-factor
-authentication, the operator area and its server log (§12m), class sections and
+global feed, weighted grade categories, suspend-user (§12l), the operator area
+and its server log (§12m), class sections and
 register duty (§12n), staff leave (§12o), report cards (§12p), the principal's
 dashboard (§12q), the expert's profile (§12r) and a pupil leaving school with
 their record (§12s), the weekly timetable and its cover resolution (§§12ac–12ad),
-the cross-school leaderboard (§12ae) and an account reachable with no school at
-all (§12af).
+the cross-school leaderboard (§12ae), an account reachable with no school at
+all (§12af), and signing in by mobile number with a password reset (§12ag).
 
-**None of §§12ac–12af has been walked by anybody but the author.** Each was
+**None of §§12ac–12ag has been walked by anybody but the author.** Each was
 driven end to end in a production build while it was being built — that is
 recorded in the README's Status — but a walkthrough by somebody who did not
 write it has caught things every single time it has been run here.

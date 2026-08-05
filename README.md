@@ -110,6 +110,10 @@ checks all four corners of that.
 
 Password for every account: `copper-lantern-47-brook`
 
+Sign in with an **email, a mobile number, or a student handle** — one box takes
+all three. No seeded account has a number on it; add one at `/account` to try
+that path, and `/forgot` sends a reset code to whichever you type.
+
 | Email | Role |
 |---|---|
 | `priya@riverside.school` | Admin **and** teacher (lands on the role switcher) |
@@ -468,7 +472,8 @@ Break these and something quietly goes wrong for a child or a parent.
   | `db.$tenantTransaction(…)` | rolled back — atomic |
 
   Found at five sites: recovery codes deleted and not replaced (a second factor
-  with no way past it), a leave request cancelled with its cover still standing,
+  with no way past it — that feature has since been removed, but the bug it
+  demonstrates has not), a leave request cancelled with its cover still standing,
   a class left with no weighting categories at all. **No test could see any of
   it**: `npm test` has no session cookie, so the tenant resolves empty, the
   extension short-circuits, and both broken forms behave like healthy Prisma
@@ -514,17 +519,17 @@ Break these and something quietly goes wrong for a child or a parent.
 ### Next steps, in priority order
 
 1. **SSO.** Cannot be verified without real provider credentials — budget for
-   that rather than discovering it at the end. 2FA is **built** and proven
-   against the RFC's own vectors; SSO is the half that still needs an account
-   with Google, Microsoft or Apple to test against.
+   that rather than discovering it at the end. It is now the only
+   identity-provider work outstanding: 2FA was removed by decision (see Not
+   built), and password reset by email or mobile number ships in its place.
 1b. **Click the paths that are only reasoned about.** The list is shorter than
    it was: leave → approval → cover has since been walked end to end in a
    production build, from both sides, as part of the timetable work — a teacher
    applied, an admin approved with a named cover, and the replacement appeared
    on four different people's screens. What is still only reasoned about is
-   **the 2FA login step** — typechecked, mutation-tested, and nobody has typed a
-   real code into a browser — and the tail of the staff chain, report card →
-   dashboard. §§12m–12q of the checklist exist for exactly this.
+   the tail of the staff chain, report card → dashboard. §§12m–12q of the
+   checklist exist for exactly this. (The 2FA login step used to head this list
+   and no longer exists — see Not built.)
 2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
@@ -1342,6 +1347,45 @@ One line each, with the default rejected.
   time* over an empty list, to exactly the person the page now exists for. Three
   states, in all three languages.
 
+- **2FA removed; one password, and a reset by email or mobile number.** The
+  product decision is recorded under Not built, including that it lowered the
+  account-security floor. What replaced it:
+  **ONE BOX TAKES THREE LOGINS** — an email, a mobile number, or the handle a
+  pupil who joined with a class code was given. `identifierKind` decides by
+  shape and `findAccount` resolves each to exactly one row, because `email` and
+  `phone` are both unique. The failure message names none of the three.
+  **EVERY WAY SOMEBODY WRITES THEIR OWN NUMBER LANDS ON ONE STRING.** `+91 98765
+  43210`, `09876543210`, `98765-43210` and `9876543210` all store as
+  `+919876543210` — which matters because `User.phone` is unique, so two
+  spellings are one account and one constraint error nobody can act on. The
+  default country is a setting, not a constant, because the first deployment
+  outside India would otherwise file every parent under the wrong one.
+  **FOUR BUGS IN THAT FUNCTION WERE FOUND BY ITS OWN TESTS**, before any of it
+  ran: a greedy `\d{1,3}` rendered an Indian number as `+919 876543210`;
+  `12345` inflated to a plausible `+9112345`; a `+` in the middle was accepted
+  as a country code; and one of the tests asserted that last behaviour as
+  CORRECT — written the wrong way round, and the implementation obliged.
+  **THE RESET SENT CODES TO `@edulink.local`.** A pupil's handle is a lookup key
+  wearing the shape of an email, and `.local` will never route — so with a real
+  transport configured that is a credential for a child's account sent to a
+  domain nobody owns. `isDeliverableEmail` now refuses it, silently, because
+  saying so would confirm the account exists.
+  **SIX DIGITS, MADE DEFENSIBLE BY EVERYTHING AROUND THEM**: hashed together
+  with the user id so a code cannot be tried against an account it was not
+  issued for, five attempts, ten minutes, previous codes consumed on request,
+  and every session and token revoked on success. Neither end says whether an
+  account exists — the "we sent a code to the number ending 3210" hint is the
+  last four digits of what the CALLER typed, never of what we hold.
+  **Walked in a browser, production build:** added a number, watched it
+  normalise live, signed out, signed in with `98765 43210`, asked for a reset,
+  read the SMS at `/dev/mailbox`, was refused a wrong code, set a new password,
+  and confirmed the old password dead, zero live sessions and zero unconsumed
+  tokens.
+  Two of the four mutation survivors turned out to be complementary rather than
+  untested — remove either "only the newest code works" check and the tests hold;
+  remove both and they fail. That is recorded in the code. A third was genuinely
+  dead and was deleted.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1464,14 +1508,24 @@ navigation" means the actual list rather than one somebody maintained by hand.
   meets an English page and wonders whether it is broken.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
-- SSO (Google/Microsoft/Apple), SMS, real email transport
-- ~~2FA~~ **built.** TOTP, verified against the RFC 4226 and RFC 6238 test
-  vectors, so it accepts codes from any standard authenticator rather than only
-  from itself. Single-use per 30-second step, ten hashed single-use recovery
-  codes, and a login that issues a five-minute challenge token instead of a
-  session when a second factor is owed. **Not clicked end to end** — the wiring
-  from the login form through `completeLogin` is typechecked and its library is
-  mutation-tested, but nobody has typed a real code into a browser.
+- SSO (Google/Microsoft/Apple)
+- **Real SMS and email delivery.** Both transports are written and both ship the
+  "devbox" implementation only — messages persist and render at `/dev/mailbox`.
+  Wiring a provider is one branch in `src/lib/email.ts` and one in
+  `src/lib/sms.ts`; nothing else in the app changes, and both throw loudly
+  rather than dropping a password-reset code silently. **The password reset
+  works end to end today** against the dev mailbox, which is how its tests read
+  the codes.
+- **2FA — BUILT, THEN REMOVED ON PURPOSE.** TOTP was here, proven against the
+  RFC 4226 and RFC 6238 vectors, with single-use steps and ten hashed recovery
+  codes. It was taken out at the product owner's direction in favour of one
+  password and a reset by email or mobile number. **Recorded rather than
+  quietly dropped, because it lowered the account-security floor**: a teacher or
+  admin account opens every child's record in a school, and a password is now
+  the only thing in front of it. What replaced it is a reset flow that revokes
+  every session, a six-digit code capped at five attempts and ten minutes, and
+  no account-enumeration oracle on either end. The columns and `RecoveryCode`
+  went with it; nobody had it switched on.
 - ~~Postgres RLS~~ **done and enforcing.** See Status.
 
 - **A pupil who joined with a CODE rather than an invitation still forks.**
@@ -1878,9 +1932,9 @@ password the child remembers and the one their new school emails; bringing the
 old life forward is also fewer rows than pushing the new one back.
 
 **Authorisation is ownership of both, and there is deliberately no other way
-in.** The old account's password, plus its second factor if it has one —
-otherwise this becomes the way to take a 2FA-protected account without the
-second factor. **No admin can do this.** A school admin who could merge accounts
+in.** The old account's password: you have to be able to sign in to both. (It
+asked for a second factor too, until 2FA was removed — see Not built.)
+**No admin can do this.** A school admin who could merge accounts
 could absorb a child's account from a school they cannot otherwise see, which is
 the boundary the rest of this codebase exists to hold, so the page lives under
 `/account` and says so in those words.

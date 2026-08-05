@@ -40,6 +40,27 @@ export function toLoginEmail(raw: string): string {
 }
 
 /**
+ * Is this a real address somebody could be emailed at?
+ *
+ * A HANDLE IS NOT AN ADDRESS. `amara.k4f9@edulink.local` is a lookup key
+ * wearing the shape of an email so that one unique index serves every account
+ * type — nobody reads mail there, the domain is not ours, and `.local` is
+ * reserved for mDNS and will never route.
+ *
+ * This exists because the password reset sent a code to one. In the dev mailbox
+ * that looks harmless; with a real transport configured it is a message to a
+ * domain we do not control, carrying a credential for a child's account. The
+ * shape that made handles convenient is exactly the shape that made them look
+ * deliverable.
+ */
+export function isDeliverableEmail(email: string | null | undefined): boolean {
+  if (!email) return false;
+  const trimmed = email.trim().toLowerCase();
+  if (!trimmed.includes("@")) return false;
+  return !trimmed.endsWith(HANDLE_SUFFIX);
+}
+
+/**
  * The other direction, for anything that shows an account back to a person.
  *
  * Showing `amara.k4f9@edulink.local` invites somebody to email it, and it is the

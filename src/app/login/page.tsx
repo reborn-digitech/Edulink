@@ -13,12 +13,12 @@ export const metadata: Metadata = { title: "Log in" };
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string; expired?: string }>;
+  searchParams: Promise<{ next?: string; expired?: string; reset?: string }>;
 }) {
   const session = await getSession();
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
-  const { expired } = await searchParams;
+  const { expired, reset } = await searchParams;
   const t = await getT();
 
   return (
@@ -44,6 +44,16 @@ export default async function LoginPage({
               className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {t("login.expired")}
+            </p>
+          )}
+
+          {reset === "1" && (
+            <p
+              role="status"
+              className="mt-5 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-4 py-3 text-sm font-medium text-ok"
+            >
+              Your password has been changed, and everything that was signed in has been signed
+              out. Log in with the new one.
             </p>
           )}
 

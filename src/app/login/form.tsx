@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { EnvelopeSimpleIcon, LockKeyIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { login, completeLogin, requestMagicLink } from "./actions";
+import { login, requestMagicLink } from "./actions";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 
@@ -19,8 +20,6 @@ export function LoginForm({ className }: { className?: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [challenge, setChallenge] = useState<string | null>(null);
-  const [secondFactor, setSecondFactor] = useState("");
   const [magicSent, setMagicSent] = useState(false);
 
   function submit(event: React.FormEvent) {
@@ -40,71 +39,15 @@ export function LoginForm({ className }: { className?: string }) {
         return;
       }
 
-      const result = await login({ email, password });
+      const result = await login({ identifier: email, password });
       if (!result.ok) {
         setErrors(result.errors);
-        return;
-      }
-      // The password was right and there is still no session. What came back is
-      // a challenge token, not a way in.
-      if (result.needsSecondFactor && result.challenge) {
-        setChallenge(result.challenge);
-        setErrors({});
         return;
       }
       toast({ tone: "ok", title: t("login.welcome") });
       router.push(result.redirectTo ?? "/");
       router.refresh();
     });
-  }
-
-  if (challenge) {
-    return (
-      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6", className)}>
-        <h2 className="font-semibold text-fg">{t("login.codeTitle")}</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("login.codeHint")}</p>
-        <input
-          type="text"
-          inputMode="numeric"
-          autoComplete="one-time-code"
-          autoFocus
-          value={secondFactor}
-          onChange={(event) => setSecondFactor(event.target.value)}
-          className="mt-4 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-center font-mono text-lg tracking-widest text-fg"
-        />
-        {errors._form && <p className="mt-2 text-sm font-medium text-danger">{errors._form}</p>}
-        <Button
-          block
-          className="mt-3"
-          loading={pending}
-          disabled={secondFactor.trim().length < 6}
-          onClick={() =>
-            startTransition(async () => {
-              const result = await completeLogin(challenge, secondFactor);
-              if (!result.ok) {
-                setErrors(result.errors);
-                return;
-              }
-              if (result.remainingRecoveryCodes !== undefined) {
-                toast({
-                  tone: "warn",
-                  title: t("login.recoveryUsed"),
-                  description: t("login.recoveryUsedHint", {
-                    count: result.remainingRecoveryCodes,
-                  }),
-                });
-              } else {
-                toast({ tone: "ok", title: t("login.welcome") });
-              }
-              router.push(result.redirectTo ?? "/");
-              router.refresh();
-            })
-          }
-        >
-          {t("login.signIn")}
-        </Button>
-      </div>
-    );
   }
 
   if (magicSent) {
@@ -150,21 +93,33 @@ export function LoginForm({ className }: { className?: string }) {
           mode === "password" ? t("login.emailOrHandlePlaceholder") : t("login.emailPlaceholder")
         }
         value={email}
-        error={errors.email}
+        error={errors.email ?? errors.identifier}
         onChange={(e) => setEmail(e.target.value)}
         hint={mode === "password" ? t("login.studentHint") : undefined}
       />
 
       {mode === "password" && (
-        <TextField
-          label={t("login.password")}
-          type="password"
-          autoComplete="current-password"
-          required
-          value={password}
-          error={errors.password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <>
+          <TextField
+            label={t("login.password")}
+            type="password"
+            autoComplete="current-password"
+            required
+            value={password}
+            error={errors.password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {/* Carries whatever they have already typed, so the reset page does
+              not ask for it a second time. */}
+          <p className="-mt-1 text-right">
+            <Link
+              href={email.trim() ? `/forgot?id=${encodeURIComponent(email.trim())}` : "/forgot"}
+              className="text-sm font-medium text-accent-strong underline underline-offset-4"
+            >
+              {t("login.forgot")}
+            </Link>
+          </p>
+        </>
       )}
 
       <Button

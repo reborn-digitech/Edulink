@@ -44,7 +44,6 @@ export function MergeForm() {
 
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
-  const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>({ kind: "enter" });
 
@@ -52,7 +51,7 @@ export function MergeForm() {
     event.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await check({ identifier, password, code });
+      const result = await check({ identifier, password });
       if (!result.ok) {
         setError(result.error);
         return;
@@ -64,7 +63,7 @@ export function MergeForm() {
   function submitJoin() {
     setError(null);
     startTransition(async () => {
-      const result = await join({ identifier, password, code });
+      const result = await join({ identifier, password });
       if (!result.ok) {
         setError(result.error);
         // Back to the form: whatever went wrong, the answer is to check the
@@ -74,7 +73,6 @@ export function MergeForm() {
       }
       const name = phase.kind === "confirm" ? phase.other.name : "";
       setPassword("");
-      setCode("");
       setPhase({ kind: "done", counts: result.counts, name });
       router.refresh();
     });
@@ -250,16 +248,6 @@ export function MergeForm() {
         hint="You have to be able to sign in to both accounts. Nobody else — not even your school — can do this for you."
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <TextField
-        label="Its two-factor code, if it has one"
-        inputMode="numeric"
-        autoComplete="off"
-        placeholder="000000"
-        hint="Leave this empty unless the other account asks for a code when you sign in. A recovery code works here too."
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
       />
 
       <Button

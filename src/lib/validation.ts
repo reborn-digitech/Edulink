@@ -88,12 +88,36 @@ export const registerSchoolSchema = z.object({
 /* Auth                                                                        */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * ONE BOX, NOT AN EMAIL BOX.
+ *
+ * A person signs in with an email, a mobile number, or the handle a pupil who
+ * joined with a class code was given — and `emailSchema` refused two of the
+ * three before the database was ever asked. It is validated as a non-empty
+ * string here and resolved by shape in `findAccount`; the refusal that matters
+ * is "that login and password do not match", which is one message for all three
+ * so the form cannot be used to test which identifiers exist.
+ */
+export const identifierSchema = z
+  .string()
+  .trim()
+  .min(1, "Enter your email, mobile number or username.")
+  .max(320);
+
 export const loginSchema = z.object({
-  email: emailSchema,
+  identifier: identifierSchema,
   password: z.string().min(1, "Enter your password."),
 });
 
 export const magicLinkSchema = z.object({ email: emailSchema });
+
+export const resetRequestSchema = z.object({ identifier: identifierSchema });
+
+export const resetSchema = z.object({
+  identifier: identifierSchema,
+  code: z.string().trim().min(1, "Enter the code you were sent."),
+  password: passwordSchema,
+});
 
 /* -------------------------------------------------------------------------- */
 /* Invites & membership                                                        */

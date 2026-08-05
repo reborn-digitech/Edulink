@@ -2,7 +2,6 @@ import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
 import { fakePasswordWork, verifyPassword } from "./crypto";
-import { checkSecondFactor, isEnabled } from "./two-factor";
 import { toDisplayLoginName, toLoginEmail } from "./login-name";
 import { forTenant, forUser } from "./tenant-context";
 import type { ActiveContext } from "./session";
@@ -29,9 +28,7 @@ import type { ActiveContext } from "./session";
  * No admin can do this: a school admin who could merge accounts could absorb a
  * child's account from a school they cannot otherwise see, which is precisely
  * the boundary the rest of this codebase spends its effort holding. So the proof
- * is the old account's password — and its second factor if it has one, because
- * otherwise this becomes the way to get at a 2FA-protected account without the
- * second factor.
+ * is the old account's password: you have to be able to sign in to both.
  *
  * WHAT MOVES is everything keyed to the PERSON: memberships (and therefore, for
  * free, every mark, register, report card and enrolment hanging off them),
@@ -39,9 +36,9 @@ import type { ActiveContext } from "./session";
  * reactions and remark messages.
  *
  * WHAT DOES NOT MOVE, each for its own reason:
- *   - Credentials — password, 2FA secret, recovery codes, sessions, tokens,
- *     push subscriptions. They are how you prove you are the OLD account, and
- *     the whole point is that it stops existing.
+ *   - Credentials — password, sessions, tokens, push subscriptions. They are
+ *     how you prove you are the OLD account, and the whole point is that it
+ *     stops existing.
  *   - Audit log entries. A log of who did what at the time is not improved by
  *     rewriting who did it.
  *   - Safeguarding reports. `Report.reporterUserId` is closer to a signature
@@ -66,8 +63,6 @@ export type MergeInput = {
   /** Email, or the bare handle a pupil was given. */
   identifier: string;
   password: string;
-  /** TOTP or recovery code, when the old account has a second factor. */
-  code?: string | null;
 };
 
 export type OtherSchool = {
@@ -82,7 +77,6 @@ export type OtherAccount = {
   userId: string;
   name: string;
   loginName: string;
-  needsSecondFactor: boolean;
   schools: OtherSchool[];
   certificates: number;
   children: number;
@@ -184,8 +178,6 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
     return { ok: false, error: "Server administrator accounts cannot be joined this way." };
   }
 
-  const needsSecondFactor = await isEnabled(other.id);
-
   /**
    * A's rows, read while bound to A.
    *
@@ -259,27 +251,6 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
     };
   }
 
-  if (needsSecondFactor) {
-    const code = (input.code ?? "").trim();
-    if (code.length === 0) {
-      return {
-        ok: false,
-        error: "That account has two-factor authentication. Enter a code from its authenticator app, or one of its recovery codes.",
-      };
-    }
-    const result = await checkSecondFactor(other.id, code);
-    if (!result.ok) {
-      await audit({
-        actorUserId: ctx.user.id,
-        action: "account.merge.failed",
-        targetType: "User",
-        targetId: other.id,
-        meta: { reason: "secondFactor" },
-      });
-      return { ok: false, error: "That code was not right. Codes work once, and only for about a minute." };
-    }
-  }
-
   return {
     ok: true,
     schoolIds,
@@ -287,7 +258,6 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
       userId: other.id,
       name: other.preferredName ?? other.name,
       loginName: toDisplayLoginName(other.email),
-      needsSecondFactor,
       certificates,
       children,
       schools: memberships.map((m) => ({

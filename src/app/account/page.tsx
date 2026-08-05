@@ -6,6 +6,7 @@ import {
   PaletteIcon,
   TranslateIcon,
   UserIcon,
+  DeviceMobileIcon,
   UsersThreeIcon,
   CertificateIcon,
 } from "@phosphor-icons/react/ssr";
@@ -23,11 +24,10 @@ import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "./appearance-form";
 import { LanguageForm } from "./language-form";
+import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
-import { status as twoFactorStatus } from "@/lib/two-factor";
-import { TwoFactor } from "./two-factor";
 
 export const metadata: Metadata = { title: "Your account" };
 
@@ -43,6 +43,7 @@ export default async function AccountPage() {
         name: true,
         preferredName: true,
         email: true,
+        phone: true,
         avatarKey: true,
         prefs: true,
         emailVerifiedAt: true,
@@ -63,7 +64,6 @@ export default async function AccountPage() {
   // non-routable domain; showing "amara@edulink.local" as an email is a lie.
   const isHandle = user.email?.endsWith(`@${HANDLE_DOMAIN}`) ?? false;
 
-  const twoFactor = await twoFactorStatus(session);
   const showRecord = await hasRecord(session);
 
   return (
@@ -87,11 +87,17 @@ export default async function AccountPage() {
         </div>
       </div>
 
-      <TwoFactor
-        enabled={twoFactor.enabled}
-        hasPassword={twoFactor.hasPassword}
-        remaining={twoFactor.remainingRecoveryCodes}
-      />
+      {/* ---------- how you sign in ---------- */}
+      <Card>
+        <CardHeader
+          icon={<DeviceMobileIcon weight="duotone" className="size-5" />}
+          title="How you sign in"
+          description="Your email, your mobile number, or the login name your school gave you — any of them, with your password."
+        />
+        <CardBody>
+          <MobileForm current={user.phone} />
+        </CardBody>
+      </Card>
 
       {/* ---------- roles ---------- */}
       <Card>

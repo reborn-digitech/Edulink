@@ -9,6 +9,8 @@ import { readJson, writeJson } from "@/lib/json";
 import { audit } from "@/lib/audit";
 import { revokeOtherSessions, revokeSession } from "@/lib/session";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
+import { normalisePhone } from "@/lib/phone";
+import { requireApiUser } from "@/lib/tenancy";
 
 export type PrefsState = { ok: boolean; errors: FieldErrors };
 
@@ -146,4 +148,71 @@ export async function signOutEverywhereElse(): Promise<{ ok: boolean; count: num
 
   revalidatePath("/account");
   return { ok: true, count };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Your mobile number                                                          */
+/* -------------------------------------------------------------------------- */
+
+export type PhoneState = { ok: boolean; error?: string; phone?: string | null };
+
+/**
+ * Adds, changes or removes the mobile number this account signs in with.
+ *
+ * NORMALISED BEFORE IT IS STORED, always, through the same function the login
+ * box and the reset form use. `User.phone` is unique, so two spellings of one
+ * number are two accounts — or, more often, one account and one unique-constraint
+ * error that means nothing to the person reading it.
+ *
+ * THE CLASH IS REPORTED PLAINLY, and that is a deliberate exception to the
+ * enumeration rule this codebase follows everywhere else. Refusing with "that
+ * did not work" would leave somebody retyping a number that is correct; and the
+ * person being told is signed in, on their own settings page, typing a number
+ * they claim is theirs. The failure they need to hear is "somebody already has
+ * this", because the answer is to talk to their school rather than to try again.
+ *
+ * NOT VERIFIED YET. Storing a number nobody has proved they hold means a reset
+ * code can be sent to it — so `phoneVerifiedAt` stays null and is the hook for
+ * a confirm-by-code step. Said out loud on the page rather than implied.
+ */
+export async function saveMobile(raw: string): Promise<PhoneState> {
+  const session = await requireApiUser();
+  const trimmed = raw.trim();
+
+  if (trimmed.length === 0) {
+    await db.user.update({
+      where: { id: session.user.id },
+      data: { phone: null, phoneVerifiedAt: null },
+    });
+    await audit({ actorUserId: session.user.id, action: "account.mobile.remove" });
+    revalidatePath("/account");
+    return { ok: true, phone: null };
+  }
+
+  const phone = normalisePhone(trimmed);
+  if (!phone) {
+    return {
+      ok: false,
+      error: "That is not a mobile number we can use. Try it with the country code, like +91 98765 43210.",
+    };
+  }
+
+  const taken = await db.user.findFirst({
+    where: { phone, id: { not: session.user.id } },
+    select: { id: true },
+  });
+  if (taken) {
+    return {
+      ok: false,
+      error: "Another account already uses that number. If it is yours, ask your school for help.",
+    };
+  }
+
+  await db.user.update({
+    where: { id: session.user.id },
+    data: { phone, phoneVerifiedAt: null },
+  });
+  await audit({ actorUserId: session.user.id, action: "account.mobile.set" });
+  revalidatePath("/account");
+  return { ok: true, phone };
 }

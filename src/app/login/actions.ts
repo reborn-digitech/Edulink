@@ -2,13 +2,19 @@
 
 import { db } from "@/lib/db";
 import { fakePasswordWork, generateToken, hashToken, verifyPassword } from "@/lib/crypto";
-import { checkSecondFactor, isEnabled } from "@/lib/two-factor";
 import { createSession } from "@/lib/session";
-import { loginSchema, magicLinkSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
+import {
+  loginSchema,
+  magicLinkSchema,
+  resetRequestSchema,
+  resetSchema,
+  fieldErrors,
+  type FieldErrors,
+} from "@/lib/validation";
+import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
-import { toLoginEmail } from "@/lib/login-name";
 import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -17,89 +23,54 @@ export type LoginState = {
   ok: boolean;
   errors: FieldErrors;
   redirectTo?: string;
-  /** Set when the password was right but a second factor is still owed. */
-  needsSecondFactor?: boolean;
-  /** The short-lived token that redeems that challenge. Never a session. */
-  challenge?: string;
 };
 
-/** Namespaced so a challenge can never be mistaken for a magic link. */
-const TWO_FACTOR_PURPOSE = "TWO_FACTOR";
-
 /**
- * Students who joined with a class code have no real email address — they get a
- * generated handle like `amara.k4f9`, stored against an internal domain so one
- * unique lookup still serves every account type. See login-name.ts, which owns
- * that rule now that three places depend on it.
+ * Password login, with whatever the person actually has.
  *
- * A child typing just their handle must work. Without this, the email validator
- * rejects it before it ever reaches the database and they are locked out of the
- * account they created ninety seconds ago.
- */
-function normalizeIdentifier(input: unknown): unknown {
-  if (typeof input !== "object" || input === null) return input;
-  const record = input as Record<string, unknown>;
-  const email = record.email;
-  if (typeof email !== "string") return input;
-
-  return { ...record, email: toLoginEmail(email) };
-}
-
-/**
- * Password login.
+ * AN EMAIL, A MOBILE NUMBER, OR A HANDLE, resolved by shape in `findAccount` —
+ * a pupil who joined with a class code has a generated handle like `amara.k4f9`
+ * and no address at all, and a parent is far more likely to remember a phone
+ * number than which address the school typed in.
  *
  * Failure is always the same message and always costs roughly the same time,
  * whether the account exists, has no password set, or the password is wrong.
  * Anything else turns the login form into an account-enumeration oracle — which
  * for a service holding children's records is a real safeguarding problem, not
- * a theoretical one.
+ * a theoretical one. That is also why the message names no channel: "that login
+ * and password do not match" says nothing about whether the login was one we
+ * recognise.
  */
 export async function login(input: unknown): Promise<LoginState> {
-  const parsed = loginSchema.safeParse(normalizeIdentifier(input));
+  const parsed = loginSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
-  const { email, password } = parsed.data;
-  const generic = { ok: false, errors: { _form: "That email and password do not match." } };
+  const { identifier, password } = parsed.data;
+  const generic = { ok: false, errors: { _form: "That login and password do not match." } };
+
+  const account = await findAccount(identifier);
+  if (!account || account.disabled) {
+    await fakePasswordWork();
+    return generic;
+  }
 
   const user = await db.user.findUnique({
-    where: { email },
-    select: { id: true, passwordHash: true, disabledAt: true, lastRole: true, lastSchoolId: true },
+    where: { id: account.userId },
+    select: { id: true, passwordHash: true, lastRole: true, lastSchoolId: true },
   });
 
   if (!user?.passwordHash) {
     await fakePasswordWork();
     return generic;
   }
-  if (user.disabledAt) {
-    await fakePasswordWork();
-    return generic;
-  }
 
   const valid = await verifyPassword(user.passwordHash, password);
   if (!valid) {
-    await audit({ actorUserId: user.id, action: "auth.login.failed", meta: { email } });
+    // The identifier is NOT recorded: a failed-login trail that stores what was
+    // typed accumulates other people's phone numbers and addresses in a table
+    // a school admin can read.
+    await audit({ actorUserId: user.id, action: "auth.login.failed" });
     return generic;
-  }
-
-  // THE PASSWORD IS NOT ENOUGH FROM HERE. No session is created and nothing is
-  // returned that could be turned into one: what goes back is a short-lived
-  // challenge token bound to this user, redeemable only by `completeLogin`
-  // below. Creating the session first and "asking" for a code afterwards would
-  // make the second factor a suggestion.
-  if (await isEnabled(user.id)) {
-    const token = generateToken();
-    await db.authToken.create({
-      data: {
-        userId: user.id,
-        purpose: TWO_FACTOR_PURPOSE,
-        tokenHash: hashToken(token),
-        // Five minutes: long enough to open an authenticator app, short enough
-        // that a challenge left on a shared screen is worthless.
-        expiresAt: new Date(Date.now() + 5 * 60_000),
-      },
-    });
-    await audit({ actorUserId: user.id, action: "auth.login.secondFactorRequired" });
-    return { ok: true, errors: {}, needsSecondFactor: true, challenge: token };
   }
 
   // Restore the role they last used, but only if it is still valid.
@@ -114,70 +85,6 @@ export async function login(input: unknown): Promise<LoginState> {
   });
 
   return { ok: true, errors: {}, redirectTo: context.redirectTo };
-}
-
-/**
- * Redeems a two-factor challenge and finishes the login.
- *
- * SINGLE-USE AND TIME-LIMITED, checked in that order. The token is consumed the
- * moment a correct code is supplied, so a challenge cannot be replayed even if
- * the second factor itself were somehow reusable — which it is not, because
- * `checkSecondFactor` refuses a TOTP step it has already accepted and marks a
- * recovery code used.
- *
- * A WRONG CODE DOES NOT CONSUME THE CHALLENGE. Somebody mistyping six digits
- * should not have to start from their password again, and the five-minute
- * expiry already bounds how long guessing can go on.
- */
-export async function completeLogin(
-  challenge: string,
-  code: string,
-): Promise<LoginState & { remainingRecoveryCodes?: number }> {
-  const generic = { ok: false as const, errors: { _form: "That code is not right." } };
-
-  const token = await db.authToken.findUnique({
-    where: { tokenHash: hashToken(challenge) },
-    select: { id: true, userId: true, purpose: true, expiresAt: true, consumedAt: true },
-  });
-
-  if (
-    !token ||
-    !token.userId ||
-    token.purpose !== TWO_FACTOR_PURPOSE ||
-    token.consumedAt ||
-    token.expiresAt.getTime() < Date.now()
-  ) {
-    return { ok: false, errors: { _form: "That sign-in attempt has expired. Start again." } };
-  }
-
-  const result = await checkSecondFactor(token.userId, code);
-  if (!result.ok) {
-    await audit({ actorUserId: token.userId, action: "auth.secondFactor.failed" });
-    return generic;
-  }
-
-  await db.authToken.update({ where: { id: token.id }, data: { consumedAt: new Date() } });
-
-  const user = await db.user.findUniqueOrThrow({
-    where: { id: token.userId },
-    select: { id: true, lastRole: true, lastSchoolId: true },
-  });
-  const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
-  await createSession(user.id, { schoolId: context.schoolId, role: context.role });
-
-  await audit({
-    schoolId: context.schoolId,
-    actorUserId: user.id,
-    action: "auth.login",
-    meta: { role: context.role, secondFactor: result.usedRecoveryCode ? "recovery" : "totp" },
-  });
-
-  return {
-    ok: true,
-    errors: {},
-    redirectTo: context.redirectTo,
-    remainingRecoveryCodes: result.usedRecoveryCode ? result.remaining : undefined,
-  };
 }
 
 /**
@@ -322,4 +229,49 @@ async function resolveContextForUser(
 
   // Signed in, but belongs to nothing yet.
   return { role: null, schoolId: null, redirectTo: "/join?first=1" };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Forgotten passwords                                                         */
+/* -------------------------------------------------------------------------- */
+
+export type ResetRequestState = {
+  ok: boolean;
+  errors: FieldErrors;
+  /** Last four digits of what the caller typed, for a phone. Never ours. */
+  hint?: string;
+  channel?: "EMAIL" | "PHONE";
+};
+
+/**
+ * "Send me a code."
+ *
+ * Reports the same thing whether or not the account exists, exactly as the
+ * magic link does — see the note on `requestPasswordReset`.
+ */
+export async function requestReset(input: unknown): Promise<ResetRequestState> {
+  const parsed = resetRequestSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+
+  const result = await requestPasswordReset(parsed.data.identifier);
+  return { ok: true, errors: {}, hint: result.hint, channel: result.channel };
+}
+
+/** "Here is the code, and my new password." */
+export async function completeReset(input: unknown): Promise<LoginState> {
+  const parsed = resetSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+
+  const { identifier, code, password } = parsed.data;
+  const result = await resetPassword(identifier, code, password);
+  if (!result.ok) return { ok: false, errors: { _form: result.error ?? "That did not work." } };
+
+  /**
+   * NO SESSION IS CREATED HERE, on purpose. `resetPassword` has just revoked
+   * every session this account had — signing the browser straight back in would
+   * mean the one action whose purpose is "lock everybody out" ends with somebody
+   * logged in, and it would do it before they have typed the new password once.
+   * They go to the login form and use it.
+   */
+  return { ok: true, errors: {}, redirectTo: "/login?reset=1" };
 }

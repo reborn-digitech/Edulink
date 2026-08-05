@@ -216,10 +216,10 @@ export const mr: Dictionary = {
     expired: "ती लिंक कालबाह्य झाली आहे. खाली नवीन मागवा.",
     newSchoolPrefix: "नवीन शाळा सुरू करत आहात?",
     registerHere: "ती इथे नोंदवा",
-    emailOrLoginName: "ईमेल किंवा लॉगिन नाव",
+    emailOrLoginName: "ईमेल, मोबाइल क्रमांक किंवा लॉगिन नाव",
     emailLabel: "ईमेल",
     emailPlaceholder: "you@school.org",
-    emailOrHandlePlaceholder: "you@school.org किंवा amara.k4f9",
+    emailOrHandlePlaceholder: "you@school.org, 98765 43210, किंवा amara.k4f9",
     studentHint: "विद्यार्थी: शाळेने दिलेले लॉगिन नाव वापरा.",
     password: "पासवर्ड",
     submit: "लॉग इन करा",
@@ -231,12 +231,8 @@ export const mr: Dictionary = {
     magicSent:
       "{email} साठी खाते असल्यास, साइन-इन लिंक पाठवली जात आहे. ती एकदाच चालते आणि 20 मिनिटांत कालबाह्य होते.",
     useDifferentEmail: "वेगळा ईमेल वापरा",
-    codeTitle: "तुमचा कोड टाका",
-    codeHint:
-      "तुमचे ऑथेंटिकेटर ॲप उघडा आणि सहा अंकी कोड टाका. कोड सापडत नाही? तुम्ही जतन केलेल्या रिकव्हरी कोडपैकी कोणताही इथे चालतो.",
     signIn: "साइन इन",
-    recoveryUsed: "रिकव्हरी कोड वापरला",
-    recoveryUsedHint: "{count} शिल्लक. नवीन संच मिळवण्यासाठी दोन-टप्पी पडताळणी पुन्हा सेट करा.",
+    forgot: "पासवर्ड विसरलात?",
   },
 
   suspended: {
