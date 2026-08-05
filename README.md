@@ -1447,6 +1447,53 @@ today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
 
+### One room: a teacher, the pupil, and the pupil's guardians
+
+**Three separate channels was the obvious build and it is wrong twice.**
+teacher↔parent, teacher↔pupil and parent↔pupil splits one conversation into
+three places where the same thing gets said differently — and a teacher↔pupil
+channel with nobody else in it is exactly the shape safeguarding policy exists
+to prevent.
+
+**The room was already the right shape.** `RemarkThread` has always been keyed
+on `(student, teacher)` and has always been readable by that child's guardians.
+The child was the one participant standing outside their own conversation. So
+most of this is letting them in — and the guardians are in it by construction,
+with the school's admin able to read it, so no adult is ever alone with a child
+in here.
+
+**Three people can now open the same room, and each proves a different thing.**
+A teacher proves they teach this pupil; a pupil proves the teacher teaches them;
+a guardian proves both — that this is their child, AND that the teacher teaches
+them. One `teacherTeaches` join asked from both ends, because writing it three
+times is how the third copy comes to mean "share a school". Before this a parent
+with a question had to wait to be messaged first, and a child had no way to
+reach a teacher at all.
+
+**`replyToThread` notified "the other side", which assumed there were two.** It
+hard-coded the titles to match — *"New reply from a parent"*, *"New message from
+your child's teacher"* — and both were wrong the moment the pupil joined: a
+child's message told the guardians it came from a teacher, and nothing at all
+reached the child. Recipients now come from the THREAD rather than from the
+author's role, which is what stops that returning the next time somebody is
+added to the room.
+
+**An existing test asserted the opposite, and it was right when it was written.**
+*"refuses the student the thread is ABOUT — notes are written about a child, not
+to them"* described a real design. It is reversed here rather than deleted, with
+the old reasoning kept in the comment, and a second pupil added to the fixture —
+because "admits the child it is about" and "admits pupils" are indistinguishable
+if the only pupil in the suite is the one the thread names.
+
+**Ten mutations, all caught**, including the two that matter most: a pupil naming
+a teacher who does not teach them, and a guardian pairing their own child with
+one who does not.
+
+**And the copy that quietly became untrue.** The thread header said *"About X ·
+with Y"* and the padlock line named the teacher, the guardians and the admins —
+not the child, who was reading it. Small untruths on a page somebody is trusting
+are how they start wondering what else it is not saying.
+
 ### The operator can look inside a school, and the school is told
 
 **This reverses the strongest claim this README made**, so it is worth stating

@@ -21,15 +21,22 @@ export default async function RemarksPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Messages</h1>
+          {/* Each of these described a two-sided conversation, which is what
+              this was. The room now holds the teacher, the pupil and the
+              pupil's guardians, and every one of them reads this line. */}
           <p className="mt-1 text-sm text-fg-muted">
             {isTeacher
-              ? "Private conversations with parents about one student."
+              ? "One conversation per pupil, with them and their guardians."
               : session.role === "ADMIN"
-                ? "Every teacher–parent conversation in your school."
-                : "Private conversations with your child's teachers."}
+                ? "Every conversation between your staff, your pupils and their families."
+                : session.role === "STUDENT"
+                  ? "Your teachers, and the grown-ups at home. Everyone sees everything."
+                  : "Your child's teachers, with your child in the conversation."}
           </p>
         </div>
-        {isTeacher && (
+        {/* All three can start one now — a pupil and a guardian previously had
+            to wait to be messaged first. */}
+        {session.role !== "ADMIN" && (
           <Button asChild icon={<PlusIcon weight="bold" />}>
             <Link href="/remarks/new">New message</Link>
           </Button>

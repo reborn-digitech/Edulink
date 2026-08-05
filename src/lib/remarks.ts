@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { readJsonArray, writeJson } from "./json";
 import { publish, channel } from "./realtime";
-import { notify, notifyGuardians } from "./notify";
+import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertRemarkAccess, assertStudentAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
@@ -39,6 +39,10 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
     where = { schoolId, teacherMembershipId: membershipId };
   } else if (role === "ADMIN" && schoolId) {
     where = { schoolId };
+  } else if (role === "STUDENT" && schoolId && membershipId) {
+    // Their own conversations, and only those. A pupil is one participant in a
+    // room that also holds their teacher and their guardians.
+    where = { schoolId, studentMembershipId: membershipId };
   } else {
     // Parent: only threads about children they actively guard.
     const links = await db.guardianship.findMany({
@@ -163,18 +167,166 @@ export async function markThreadRead(session: ActiveContext, threadId: string): 
   if (updates.length > 0) await Promise.all(updates);
 }
 
-export async function createThread(
-  session: ActiveContext,
-  input: { studentMembershipId: string; subject: string; body: string },
-): Promise<{ threadId: string }> {
-  const { role, schoolId, membershipId } = session;
-  if (role !== "TEACHER" || !schoolId || !membershipId) {
-    throw new AccessError("Only a teacher can start a thread about a student.");
+/**
+ * Does this teacher teach this pupil?
+ *
+ * ONE JOIN, ASKED FROM BOTH ENDS. `assertStudentAccess` asks it for a teacher
+ * naming a pupil; a pupil naming a teacher and a guardian naming their child's
+ * teacher need the same answer, and writing it three times is how the third
+ * copy ends up meaning "share a school".
+ *
+ * Shared classes, ACTIVE on both sides. A teacher who has left the class and a
+ * pupil who has left the roll are both correctly no longer connected — which is
+ * what stops a conversation being opened with somebody's last-year teacher.
+ */
+async function teacherTeaches(
+  schoolId: string,
+  teacherMembershipId: string,
+  studentMembershipId: string,
+): Promise<boolean> {
+  const shared = await db.enrollment.count({
+    where: {
+      schoolId,
+      studentMembershipId,
+      status: "ACTIVE",
+      class: { teachers: { some: { teacherMembershipId } } },
+    },
+  });
+  return shared > 0;
+}
+
+/**
+ * Tells everybody in the room except whoever just spoke.
+ *
+ * THE ROOM IS THREE-SIDED NOW, so "notify the other side" no longer means
+ * anything — a message from a parent has two other sides, and a message from a
+ * child has two more. Working the participants out from the thread rather than
+ * from the author's role is what stops the pupil being the one nobody tells,
+ * which is precisely the bug the old two-branch version would have grown.
+ */
+async function notifyParticipants(
+  thread: {
+    schoolId: string;
+    studentMembershipId: string;
+    teacherMembershipId: string;
+    threadId: string;
+  },
+  authorUserId: string,
+  subject: string,
+): Promise<void> {
+  const [teacher, student, guardians] = await Promise.all([
+    db.membership.findUnique({
+      where: { id: thread.teacherMembershipId },
+      select: { userId: true },
+    }),
+    db.membership.findUnique({
+      where: { id: thread.studentMembershipId },
+      select: { userId: true, user: { select: { name: true, preferredName: true } } },
+    }),
+    db.guardianship.findMany({
+      where: { studentMembershipId: thread.studentMembershipId, status: "ACTIVE" },
+      select: { parentUserId: true },
+    }),
+  ]);
+
+  const childName = student?.user.preferredName ?? student?.user.name ?? "your child";
+  const url = `/remarks/${thread.threadId}`;
+
+  const targets: { userId: string; title: string }[] = [];
+  if (teacher) targets.push({ userId: teacher.userId, title: `New message about ${childName}` });
+  // The child is told in the second person; everybody else is told about them.
+  if (student) targets.push({ userId: student.userId, title: "New message from your school" });
+  for (const guardian of guardians) {
+    targets.push({ userId: guardian.parentUserId, title: `New message about ${childName}` });
   }
 
-  // Re-checks that this teacher actually teaches this student, not merely that
-  // they share a school. (§6)
-  await assertStudentAccess({ schoolId, membershipId, role }, input.studentMembershipId);
+  await Promise.all(
+    targets
+      .filter((target) => target.userId !== authorUserId)
+      .map((target) =>
+        notify({
+          userId: target.userId,
+          schoolId: thread.schoolId,
+          kind: "REMARK",
+          title: target.title,
+          body: subject,
+          url,
+        }),
+      ),
+  );
+}
+
+/**
+ * Starts a conversation between a teacher, a pupil and that pupil's guardians.
+ *
+ * THREE PEOPLE CAN OPEN THE SAME ROOM, and until now only one could. A teacher
+ * could start a thread; a parent with a question had no way to ask it, and a
+ * child had no way to reach their teacher at all. The thread that results is
+ * identical whoever opened it — same participants, same visibility — because
+ * who happened to speak first is not a property worth modelling.
+ *
+ * ONE THREAD PER PAIR IS NOT ENFORCED, deliberately. A subject line is how a
+ * school separates "missed homework" from "hospital appointment", and collapsing
+ * every exchange with one teacher into a single unbounded scroll is how the
+ * second one gets lost under the first.
+ *
+ * EACH STARTER PROVES A DIFFERENT THING, and that is the whole of the guard
+ * below: a teacher proves they teach this child, a guardian proves they are
+ * this child's guardian, and a pupil proves the teacher teaches them. None of
+ * the three can name a pair they have nothing to do with.
+ */
+export async function createThread(
+  session: ActiveContext,
+  input: { studentMembershipId?: string; teacherMembershipId?: string; subject: string; body: string },
+): Promise<{ threadId: string }> {
+  const { role, schoolId } = session;
+  if (!schoolId) throw new AccessError("No school in context");
+
+  let studentMembershipId: string;
+  let teacherMembershipId: string;
+
+  if (role === "TEACHER" && session.membershipId) {
+    if (!input.studentMembershipId) throw new AccessError("Choose a pupil");
+    // Re-checks that this teacher actually teaches this student, not merely that
+    // they share a school. (§6)
+    await assertStudentAccess(
+      { schoolId, membershipId: session.membershipId, role },
+      input.studentMembershipId,
+    );
+    studentMembershipId = input.studentMembershipId;
+    teacherMembershipId = session.membershipId;
+  } else if (role === "STUDENT" && session.membershipId) {
+    if (!input.teacherMembershipId) throw new AccessError("Choose a teacher");
+    // The pupil proves the teacher teaches them, by the same join the teacher's
+    // own check runs in the other direction.
+    const teaches = await teacherTeaches(schoolId, input.teacherMembershipId, session.membershipId);
+    if (!teaches) throw new AccessError("That teacher does not teach you", "NOT_FOUND");
+    studentMembershipId = session.membershipId;
+    teacherMembershipId = input.teacherMembershipId;
+  } else if (role === "PARENT") {
+    if (!input.studentMembershipId || !input.teacherMembershipId) {
+      throw new AccessError("Choose your child and a teacher");
+    }
+    const guardian = await db.guardianship.findFirst({
+      where: {
+        parentUserId: session.user.id,
+        studentMembershipId: input.studentMembershipId,
+        status: "ACTIVE",
+      },
+      select: { id: true },
+    });
+    if (!guardian) throw new AccessError("That is not your child", "NOT_FOUND");
+    const teaches = await teacherTeaches(
+      schoolId,
+      input.teacherMembershipId,
+      input.studentMembershipId,
+    );
+    if (!teaches) throw new AccessError("That teacher does not teach your child", "NOT_FOUND");
+    studentMembershipId = input.studentMembershipId;
+    teacherMembershipId = input.teacherMembershipId;
+  } else {
+    throw new AccessError("Only a teacher, a pupil or their guardian can start a conversation.");
+  }
 
   // `$tenantTransaction`, not `db.$transaction`: the per-query extension does
   // not reach inside an interactive transaction, so the callback's client sets
@@ -185,8 +337,8 @@ export async function createThread(
     const created = await tx.remarkThread.create({
       data: {
         schoolId,
-        studentMembershipId: input.studentMembershipId,
-        teacherMembershipId: membershipId,
+        studentMembershipId,
+        teacherMembershipId,
         subject: input.subject,
       },
     });
@@ -206,18 +358,17 @@ export async function createThread(
     return created;
   });
 
-  publish([channel.school(schoolId), channel.student(input.studentMembershipId)], {
+  publish([channel.school(schoolId), channel.student(studentMembershipId)], {
     type: "remark.message",
     threadId: thread.id,
   });
 
-  await notifyGuardians(input.studentMembershipId, (childName) => ({
-    kind: "REMARK",
-    schoolId,
-    title: `New message about ${childName}`,
-    body: input.subject,
-    url: `/remarks/${thread.id}`,
-  }));
+  // Everybody in the room except whoever just spoke.
+  await notifyParticipants(
+    { schoolId, studentMembershipId, teacherMembershipId, threadId: thread.id },
+    session.user.id,
+    input.subject,
+  );
 
   await audit({
     schoolId,
@@ -257,43 +408,28 @@ export async function replyToThread(
     threadId: thread.id,
   });
 
-  // Notify the other side, never the author. A teacher replying should not
-  // ping themselves, and a parent replying should reach the teacher who owns
-  // the thread rather than every guardian.
-  const teacher = await db.membership.findUnique({
-    where: { id: thread.teacherMembershipId },
-    select: { userId: true },
-  });
-
-  if (teacher && teacher.userId !== session.user.id) {
-    await notify({
-      userId: teacher.userId,
+  /**
+   * EVERYBODY IN THE ROOM EXCEPT THE AUTHOR.
+   *
+   * This used to notify "the other side", which assumed two of them — the
+   * teacher, and the guardians — and hard-coded the titles to match ("New reply
+   * from a parent", "New message from your child's teacher"). Both were wrong
+   * the moment the pupil joined their own conversation: a child's message told
+   * the guardians it came from a teacher, and nothing at all reached the child.
+   *
+   * Working the recipients out from the THREAD rather than from the author's
+   * role is what stops that class of bug returning the next time somebody is
+   * added to the room.
+   */
+  await notifyParticipants(
+    {
       schoolId: thread.schoolId,
-      kind: "REMARK",
-      title: "New reply from a parent",
-      body: thread.subject,
-      url: `/remarks/${thread.id}`,
-    });
-  }
-
-  const guardians = await db.guardianship.findMany({
-    where: { studentMembershipId: thread.studentMembershipId, status: "ACTIVE" },
-    select: { parentUserId: true },
-  });
-
-  await Promise.all(
-    guardians
-      .filter((g) => g.parentUserId !== session.user.id)
-      .map((g) =>
-        notify({
-          userId: g.parentUserId,
-          schoolId: thread.schoolId,
-          kind: "REMARK",
-          title: "New message from your child's teacher",
-          body: thread.subject,
-          url: `/remarks/${thread.id}`,
-        }),
-      ),
+      studentMembershipId: thread.studentMembershipId,
+      teacherMembershipId: thread.teacherMembershipId,
+      threadId: thread.id,
+    },
+    session.user.id,
+    thread.subject,
   );
 
   return { messageId: message.id };
@@ -333,4 +469,75 @@ export async function studentsForTeacher(schoolId: string, membershipId: string)
     // Surfaced so a teacher knows a message will reach nobody before writing it.
     guardianCount: student.guardianships.length,
   }));
+}
+
+/**
+ * Teachers a pupil — or their guardian — may start a conversation with.
+ *
+ * The mirror of `studentsForTeacher`, and it has to exist for the same reason
+ * that one does: a chooser built from "everybody at the school" would let a
+ * child message a teacher who has never taught them, and the guard in
+ * `createThread` would then refuse it after they had typed the message.
+ *
+ * ONE ROW PER TEACHER, with the classes they teach this child rolled up.
+ * Somebody who takes them for two subjects is one person to talk to, and
+ * showing them twice makes a chooser look broken.
+ */
+export async function teachersForStudent(schoolId: string, studentMembershipId: string) {
+  const enrolments = await db.enrollment.findMany({
+    where: { schoolId, studentMembershipId, status: "ACTIVE" },
+    select: {
+      class: {
+        select: {
+          name: true,
+          subject: true,
+          teachers: {
+            select: {
+              teacherMembershipId: true,
+              role: true,
+              teacher: {
+                select: {
+                  title: true,
+                  user: { select: { name: true, preferredName: true, avatarKey: true } },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  const byTeacher = new Map<
+    string,
+    { membershipId: string; name: string; title: string | null; avatarKey: string | null; classes: string[]; lead: boolean }
+  >();
+
+  for (const enrolment of enrolments) {
+    for (const link of enrolment.class.teachers) {
+      const existing = byTeacher.get(link.teacherMembershipId);
+      const className = enrolment.class.subject
+        ? `${enrolment.class.name} · ${enrolment.class.subject}`
+        : enrolment.class.name;
+      if (existing) {
+        if (!existing.classes.includes(className)) existing.classes.push(className);
+        // LEAD wins if any of their classes makes them the class teacher — that
+        // is the person a family asks for first, and it should sort to the top.
+        existing.lead = existing.lead || link.role === "LEAD";
+        continue;
+      }
+      byTeacher.set(link.teacherMembershipId, {
+        membershipId: link.teacherMembershipId,
+        name: link.teacher.user.preferredName ?? link.teacher.user.name,
+        title: link.teacher.title,
+        avatarKey: link.teacher.user.avatarKey,
+        classes: [className],
+        lead: link.role === "LEAD",
+      });
+    }
+  }
+
+  return [...byTeacher.values()].sort(
+    (a, b) => Number(b.lead) - Number(a.lead) || a.name.localeCompare(b.name),
+  );
 }

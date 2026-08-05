@@ -275,6 +275,30 @@ export async function assertRemarkAccess(
   }
   if (role === "ADMIN" && schoolId === thread.schoolId) return thread;
 
+  /**
+   * THE CHILD THE THREAD IS ABOUT, who was the one participant missing from
+   * their own conversation.
+   *
+   * A thread has always been keyed on (student, teacher) and has always been
+   * readable by that child's guardians — so the room was already the right
+   * shape and the child was standing outside it. Letting them in is what makes
+   * this one common chat rather than a teacher talking to a parent about
+   * somebody in the third person.
+   *
+   * AND IT IS WHY A SEPARATE TEACHER-TO-CHILD CHAT IS NOT BEING BUILT. A
+   * private channel between an adult and a pupil, with nobody else in it, is
+   * the shape safeguarding policy exists to prevent. Here the guardians are in
+   * the room by construction and the school's admin can read it, so a message
+   * to a child is never unobserved.
+   */
+  if (
+    role === "STUDENT" &&
+    schoolId === thread.schoolId &&
+    membershipId === thread.studentMembershipId
+  ) {
+    return thread;
+  }
+
   const guardian = await db.guardianship.findFirst({
     where: {
       parentUserId: user.id,

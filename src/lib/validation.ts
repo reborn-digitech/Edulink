@@ -243,8 +243,18 @@ export const gradeSchema = z.object({
 /* Remarks, posts, reports                                                     */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * BOTH IDS OPTIONAL HERE, and which one is required depends on who is asking —
+ * a question this schema cannot answer and `createThread` can.
+ *
+ * A teacher names the pupil and is themselves the teacher. A pupil names the
+ * teacher and is themselves the pupil. A guardian names both, and proves a
+ * claim on each. Making either field mandatory here would refuse two of those
+ * three before the guard that actually knows the answer ever ran.
+ */
 export const remarkThreadSchema = z.object({
-  studentMembershipId: z.string().cuid(),
+  studentMembershipId: z.string().cuid().optional(),
+  teacherMembershipId: z.string().cuid().optional(),
   subject: trimmed(2, 160),
   body: trimmed(1, 8_000),
 });

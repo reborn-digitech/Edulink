@@ -1378,6 +1378,43 @@ hands one school a window into another.
 
 ---
 
+## 12aa. One chat: teacher, pupil and guardians
+
+### A pupil starts one
+
+- ☐ As a pupil, **Messages** → **New message**
+- ☐ **⚠️** Only teachers who actually teach you are listed — the class teacher
+  first
+- ☐ **⚠️** Before you type, it says the grown-ups at home will see this, and so
+  can the school
+- ☐ Send it
+
+### It is one room
+
+- ☐ As that teacher, **Messages** → the pupil's thread is there
+- ☐ Reply
+- ☐ **⚠️** As the pupil's **guardian**, the same thread appears — with **both**
+  messages, and they did not start it
+- ☐ Reply as the guardian; all three messages are in one place
+- ☐ **⚠️** The padlock line names the pupil, the teacher, the guardians and the
+  admins — everyone actually in the room
+
+### A guardian starts one
+
+- ☐ As a guardian, **New message** → pick the child, then a teacher
+- ☐ **⚠️** With two children, choosing one changes the teacher list
+
+### What it refuses
+
+- ☐ **⚠️** As a pupil, no teacher who does not teach you is offered
+- ☐ **⚠️** As a guardian, no teacher who does not teach *that* child is offered
+- ☐ **⚠️** A classmate cannot open the thread — try the URL directly → 404
+- ☐ **⚠️** Another family's parent cannot either
+- ☐ The school's admin **can** read it. That is deliberate: it is what keeps a
+  teacher from being alone with a child
+
+---
+
 ## 12z. The operator looking inside a school
 
 ### The door is shut

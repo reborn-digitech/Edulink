@@ -85,6 +85,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
+    // A pupil's own conversations with their teachers. Their guardians are in
+    // every one of them by construction — see assertRemarkAccess.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true },
   ],
@@ -154,10 +157,11 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   ],
   STUDENT: [
     { href: "/student/work", labelKey: "action.whatIsDue", icon: "clipboard", descriptionKey: "action.whatIsDueHint" },
+    { href: "/remarks/new", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
     { href: "/bulletin/new", labelKey: "action.shareSomething", icon: "plus", descriptionKey: "action.shareSomethingHint" },
   ],
   PARENT: [
-    { href: "/remarks", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
+    { href: "/remarks/new", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
     { href: "/parent/settings", labelKey: "action.notificationSettings", icon: "bell", descriptionKey: "action.notificationSettingsHint" },
   ],
   EXPERT: [

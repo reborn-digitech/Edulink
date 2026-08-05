@@ -50,6 +50,7 @@ let otherSchoolAdmin: ActiveContext;
 let guardian: ActiveContext;
 let strangerParent: ActiveContext;
 let studentSelf: ActiveContext;
+let otherStudent: ActiveContext;
 let threadId: string;
 let studentMembershipId: string;
 
@@ -111,6 +112,28 @@ beforeAll(async () => {
   studentSelf = ctx({
     userId: guardianship.student.userId,
     membershipId: studentMembershipId,
+    schoolId: riverside.id,
+    role: "STUDENT",
+  });
+
+  /**
+   * A DIFFERENT PUPIL AT THE SAME SCHOOL, and the reason is precise: the room
+   * now admits the child it is about, and "admits the child it is about" and
+   * "admits pupils" are indistinguishable if the only pupil in the suite is the
+   * one the thread names.
+   */
+  const classmate = await db.membership.findFirstOrThrow({
+    where: {
+      schoolId: riverside.id,
+      role: "STUDENT",
+      status: "ACTIVE",
+      id: { not: studentMembershipId },
+    },
+    select: { id: true, userId: true },
+  });
+  otherStudent = ctx({
+    userId: classmate.userId,
+    membershipId: classmate.id,
     schoolId: riverside.id,
     role: "STUDENT",
   });
@@ -178,9 +201,29 @@ describe("thread visibility", () => {
     await expectDenied(getThread(strangerParent, threadId));
   });
 
-  it("refuses the student the thread is ABOUT", async () => {
-    // Notes are written about a child, not to them.
-    await expectDenied(getThread(studentSelf, threadId));
+  /**
+   * ⚠ REVERSED ON PURPOSE, and the old assertion is left here in words because
+   * it was right when it was written.
+   *
+   * This test used to read "refuses the student the thread is ABOUT — notes are
+   * written about a child, not to them", and that described a genuine design:
+   * the thread was a teacher's note to a family. It is now one common room
+   * holding the teacher, the child and the child's guardians, so the child
+   * being outside it is the bug rather than the rule.
+   *
+   * The safeguarding argument survives the change and is the reason the room is
+   * shaped this way rather than as a teacher↔pupil channel: the guardians are
+   * in it by construction, and the school's admin can read it, so no adult is
+   * ever alone with a child in here.
+   */
+  it("⚠ ADMITS the student the thread is about — it is their conversation too", async () => {
+    const thread = await getThread(studentSelf, threadId);
+    expect(thread.id).toBe(threadId);
+  });
+
+  it("⚠ …but still refuses a different pupil at the same school", async () => {
+    // The widening is to the child the thread is ABOUT, not to pupils.
+    await expectDenied(getThread(otherStudent, threadId));
   });
 
   it("refuses a made-up thread id", async () => {
@@ -231,7 +274,15 @@ describe("replies", () => {
 
   it("refuses a reply from someone who cannot see the thread", async () => {
     await expectDenied(replyToThread(otherTeacher, { threadId, body: "sneaky" }));
-    await expectDenied(replyToThread(studentSelf, { threadId, body: "sneaky" }));
+    await expectDenied(replyToThread(otherStudent, { threadId, body: "sneaky" }));
+  });
+
+  it("⚠ accepts a reply from the pupil the thread is about", async () => {
+    const before = (await getThread(owningTeacher, threadId)).messages.length;
+    await replyToThread(studentSelf, { threadId, body: "Thanks, I will bring it tomorrow." });
+    const after = await getThread(owningTeacher, threadId);
+    expect(after.messages).toHaveLength(before + 1);
+    expect(after.messages.at(-1)!.body).toBe("Thanks, I will bring it tomorrow.");
   });
 
   it("moves the thread to the top by updating lastMessageAt", async () => {

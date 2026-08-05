@@ -50,16 +50,22 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
         <Avatar avatarKey={thread.student.avatarKey} name={thread.student.fullName} size="md" />
         <div className="min-w-0 flex-1">
           <h1 className="text-lg font-bold tracking-tight text-fg">{thread.subject}</h1>
+          {/* "About X, with Y" was true when this was a note a teacher wrote to
+              a family. The child is in the room now, so it is a conversation
+              BETWEEN people rather than one about somebody. */}
           <p className="text-sm text-fg-muted">
-            About {thread.student.fullName} · with {thread.teacher.name}
+            {thread.student.fullName} · {thread.teacher.name} · guardians
           </p>
         </div>
       </header>
 
       <p className="mt-2 flex items-center justify-center gap-1.5 text-xs text-fg-subtle">
         <LockKeyIcon weight="fill" className="size-3.5" />
-        Only {thread.teacher.name}, school admins and {thread.student.name}&rsquo;s guardians can
-        see this
+        {/* NAMES THE PUPIL, because they are in it. Leaving them out of the
+            list while they read it is the kind of small untruth that makes
+            somebody wonder what else the page is not saying. */}
+        Only {thread.student.name}, {thread.teacher.name}, {thread.student.name}&rsquo;s guardians
+        and school admins can see this
       </p>
 
       <ol className="mt-5 space-y-4">
