@@ -80,6 +80,8 @@ model School {
   auditLogs        AuditLog[]
   attendance       AttendanceSession[]
   attendanceCovers AttendanceCover[]
+  timetablePeriods TimetablePeriod[]
+  timetableSlots   TimetableSlot[]
   leaveRequests    LeaveRequest[]
   reportCards      ReportCard[]
   reportCardItems  ReportCardItem[]
@@ -241,6 +243,7 @@ model Membership {
   attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
   attendanceCovering     AttendanceCover[]   @relation("AttendanceCovering")
   attendanceCoversMade   AttendanceCover[]   @relation("AttendanceCoverCreator")
+  timetableSlots         TimetableSlot[]     @relation("TimetableTeacher")
   reportCards            ReportCard[]        @relation("ReportCardStudent")
   reportCardsWritten     ReportCard[]        @relation("ReportCardAuthor")
   leaveRequests          LeaveRequest[]      @relation("LeaveApplicant")
@@ -329,6 +332,7 @@ model Class {
   reportCards      ReportCard[]
   enrollments      Enrollment[]
   attendance       AttendanceSession[]
+  timetableSlots   TimetableSlot[]
   assignments      Assignment[]
   posts            Post[]
   gradeCategories  GradeCategory[]
@@ -608,6 +612,122 @@ model AttendanceRecord {
   @@unique([sessionId, studentMembershipId])
   @@index([schoolId, studentMembershipId])
   @@index([clientId])
+}
+
+// ---------------------------------------------------------------------------
+// The timetable
+//
+// TWO TABLES, AND THE SPLIT IS THE WHOLE DESIGN. `TimetablePeriod` is the
+// school's day — the bells, shared by every class, set once. `TimetableSlot` is
+// one lesson: this class, this weekday, this period, this subject, this teacher.
+//
+// Periods are school-wide rather than per-class because that is what a bell is.
+// Per-class periods would let 5A's third lesson start at a different time from
+// 5B's, which no school with one corridor can do — and would make "who is free
+// at 11:15" a question with no answer, which is exactly the question the builder
+// has to answer to stop a teacher being timetabled into two rooms at once.
+// ---------------------------------------------------------------------------
+
+/// One bell-to-bell stretch of the school day. School-wide.
+///
+/// TIMES ARE MINUTES FROM LOCAL MIDNIGHT, as integers. 08:30 is 510. Not a
+/// DateTime, which would carry a meaningless date component that somebody would
+/// eventually compare, and would shift by an hour twice a year in any zone with
+/// DST — a bell does not move because the clocks did. Not a "08:30" string
+/// either: comparing and ordering those works right up until a school types
+/// "8:30". Integers sort, subtract and validate, and the only formatting rule
+/// lives in one function. Same reasoning as `scoreMilli`. (§10)
+///
+/// BREAKS ARE PERIODS. Lunch and the morning break sit in this table with
+/// kind = BREAK, rather than being gaps between periods. A gap cannot be
+/// labelled, so a timetable rendered from gaps has an unexplained hole in the
+/// middle of it; and a school that wants "Assembly" on the grid has nowhere to
+/// put it. A BREAK period simply takes no slots.
+model TimetablePeriod {
+  id       String @id @default(cuid())
+  schoolId String
+
+  /// "Period 1", "Lunch", "Assembly" — whatever the school calls it.
+  name String
+
+  /// Minutes from local midnight, in School.timezone. 0–1439.
+  startMinute Int
+  /// Exclusive end, so 09:15–10:00 and 10:00–10:45 do not read as overlapping.
+  endMinute   Int
+
+  kind String @default("LESSON") // LESSON | BREAK
+
+  /// Display order. Held explicitly rather than derived from startMinute so an
+  /// admin can insert a period mid-list without every later one being renamed.
+  position Int
+
+  /// Retiring a period keeps the slots that pointed at it, the same way
+  /// archiving a class keeps its register. Deleting one mid-year would silently
+  /// take every lesson in that column with it.
+  archivedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slots  TimetableSlot[]
+
+  @@index([schoolId, position])
+}
+
+/// One lesson on the weekly grid.
+///
+/// WEEKDAY IS 0=SUNDAY … 6=SATURDAY, which is `Date.getUTCDay()` and therefore
+/// `weekdayOfKey()` in dates.ts. ISO's 1=Monday reads better in a timetable and
+/// would mean a conversion at every boundary between this table and a date key;
+/// one convention with an ugly Sunday beats two conventions with an off-by-one.
+///
+/// THE TEACHER IS NULLABLE, ON PURPOSE. An admin lays the grid out first —
+/// "maths at period 1 on Monday" — and staffs it afterwards, which is the order
+/// they described and the order a paper timetable is built in. Forcing a name
+/// into every cell before any of them are decided makes the tool unusable on the
+/// afternoon it is most needed. An unstaffed slot is shown loudly rather than
+/// hidden.
+///
+/// TWO UNIQUE CONSTRAINTS, and the second is a safety property rather than
+/// tidiness. `(classId, weekday, periodId)` says a class has one lesson at a
+/// time. `(schoolId, weekday, periodId, teacherMembershipId)` says a TEACHER
+/// does — nobody is in two rooms at 11:15. Postgres treats NULLs as distinct in
+/// a unique index, so the second constraint does not collide across the many
+/// slots that have no teacher yet, which is precisely the behaviour needed.
+/// The application checks first and gives a message naming the clash; the
+/// constraint is what holds when two admins press save at the same moment.
+model TimetableSlot {
+  id       String @id @default(cuid())
+  schoolId String
+  classId  String
+  periodId String
+
+  /// 0 = Sunday … 6 = Saturday. See the note above.
+  weekday Int
+
+  /// What is taught. Free text, like Class.subject — subject naming is not
+  /// universal and a fixed list would be wrong in the second school to use it.
+  subject String
+
+  /// Null until the lesson is staffed.
+  teacherMembershipId String?
+
+  /// Overrides Class.room for this lesson — a lab, a field, the hall.
+  room String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class   Class           @relation(fields: [classId], references: [id], onDelete: Cascade)
+  period  TimetablePeriod @relation(fields: [periodId], references: [id], onDelete: Cascade)
+  teacher Membership?     @relation("TimetableTeacher", fields: [teacherMembershipId], references: [id], onDelete: SetNull)
+
+  @@unique([classId, weekday, periodId])
+  @@unique([schoolId, weekday, periodId, teacherMembershipId])
+  @@index([schoolId, teacherMembershipId, weekday])
+  @@index([schoolId, classId])
 }
 
 // ---------------------------------------------------------------------------

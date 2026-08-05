@@ -212,21 +212,53 @@ export async function decideLeave(
     const coverId = opts.coverMembershipId ?? request.nominatedCoverMembershipId;
 
     if (coverId) {
-      const classes = await db.classTeacher.findMany({
-        where: {
-          schoolId: ctx.schoolId,
-          teacherMembershipId: request.teacherMembershipId,
-          canTakeAttendance: true,
-          class: { archivedAt: null },
-        },
-        select: { classId: true },
-      });
+      /**
+       * EVERY CLASS THIS PERSON IS DUE IN, from two different lists.
+       *
+       * `ClassTeacher` is who takes a register. `TimetableSlot` is who stands in
+       * a room at 11:15 on Tuesday, and the two are NOT the same set — a
+       * visiting music teacher takes six classes for one period each and marks
+       * none of their registers. Covering only the first list left every one of
+       * those lessons with an absent teacher and nobody arranged, which the
+       * timetable then reported as an uncovered gap. Correctly: there was one.
+       *
+       * The cover row grants register duty for a class this person may only
+       * teach one period of, which is wider than the lesson strictly needs.
+       * That is the direction `AttendanceCover` deliberately errs in — see the
+       * model: a cover ADDS a person and never removes one, and a class is
+       * harmed by nobody being able to mark it, never by two people being able
+       * to. The widening is bounded by the dates of the leave.
+       */
+      const [registers, lessons] = await Promise.all([
+        db.classTeacher.findMany({
+          where: {
+            schoolId: ctx.schoolId,
+            teacherMembershipId: request.teacherMembershipId,
+            canTakeAttendance: true,
+            class: { archivedAt: null },
+          },
+          select: { classId: true },
+        }),
+        db.timetableSlot.findMany({
+          where: {
+            schoolId: ctx.schoolId,
+            teacherMembershipId: request.teacherMembershipId,
+            class: { archivedAt: null },
+          },
+          select: { classId: true },
+          distinct: ["classId"],
+        }),
+      ]);
 
-      for (const klass of classes) {
+      const classIds = [
+        ...new Set([...registers.map((r) => r.classId), ...lessons.map((l) => l.classId)]),
+      ];
+
+      for (const classId of classIds) {
         const result = await arrangeCover(
           ctx,
           {
-            classId: klass.classId,
+            classId,
             coveringMembershipId: coverId,
             fromDateKey: request.fromDateKey,
             toDateKey: request.toDateKey,

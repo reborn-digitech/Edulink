@@ -1,0 +1,1108 @@
+import "server-only";
+import { db } from "./db";
+import { audit } from "./audit";
+import { AccessError } from "./tenancy";
+import { isDateKey, addDaysToKey, weekdayOfKey } from "./dates";
+import { listHolidays, closedDayKeys } from "./holidays";
+import {
+  PERIOD_KINDS,
+  WEEK_DAYS,
+  isWeekdayNumber,
+  periodTimeError,
+  SUGGESTED_DAY,
+  type PeriodKind,
+} from "./school-day";
+import type { ActiveContext } from "./session";
+
+/**
+ * The weekly timetable: the school's day, the grid of lessons, and who is
+ * actually standing in front of each class on a given date.
+ *
+ * THREE LAYERS, AND KEEPING THEM APART IS THE DESIGN.
+ *
+ *   1. THE PERIODS are the school's bells. School-wide, set once.
+ *   2. THE GRID is a TEMPLATE — "Class 5A does maths with Mrs Rao at period 1
+ *      on Mondays". It has no dates in it at all, because a timetable is a
+ *      recurring statement rather than a list of events. Storing one row per
+ *      lesson per week would mean a term's worth of rows to edit when one
+ *      lesson moves, and a timetable that stops existing the moment somebody
+ *      forgets to generate next term's.
+ *   3. THE RESOLVED WEEK applies real dates to the template — and this is the
+ *      only layer that knows about leave, cover and holidays. A cover NEVER
+ *      changes the grid; it changes what the grid RESOLVES TO on the days it
+ *      applies. Editing the template because somebody is ill for two days is
+ *      how a timetable quietly becomes wrong for the rest of the year.
+ *
+ * WHO MAY DO WHAT. An ADMIN edits any class's grid and the school's periods. A
+ * PRINCIPAL reads any class's grid and edits nothing — the same split as the
+ * calendar, and for the same reason. A TEACHER reads their own week, including
+ * lessons they are covering. A STUDENT reads their own. Nobody but an admin
+ * writes.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Shapes                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export type PeriodRow = {
+  id: string;
+  name: string;
+  startMinute: number;
+  endMinute: number;
+  kind: PeriodKind;
+  position: number;
+  archivedAt: Date | null;
+};
+
+/** One cell of a resolved grid. */
+export type SlotView = {
+  id: string;
+  classId: string;
+  className: string;
+  periodId: string;
+  weekday: number;
+  subject: string;
+  room: string | null;
+  teacherMembershipId: string | null;
+  teacherName: string | null;
+  /** The person actually taking it, when the assigned teacher is away. */
+  coveringMembershipId: string | null;
+  coveringName: string | null;
+  /** Assigned teacher is on approved leave and nobody was arranged. */
+  uncovered: boolean;
+  /** True on a teacher's own week for a lesson that is not theirs this week. */
+  borrowed: boolean;
+};
+
+export type DayColumn = {
+  weekday: number;
+  /** Present only on a dated week. */
+  dateKey: string | null;
+  /** The school is shut, per the calendar. */
+  closed: boolean;
+  closedName: string | null;
+  isToday: boolean;
+};
+
+export type WeekGrid = {
+  periods: PeriodRow[];
+  days: DayColumn[];
+  slots: SlotView[];
+};
+
+/* -------------------------------------------------------------------------- */
+/* The school's day                                                            */
+/* -------------------------------------------------------------------------- */
+
+const MAX_PERIODS = 20;
+const NAME_MAX = 60;
+
+function assertAdmin(ctx: ActiveContext): asserts ctx is ActiveContext & { schoolId: string } {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) {
+    throw new AccessError("Only an admin can change the timetable");
+  }
+}
+
+/**
+ * The school's periods.
+ *
+ * Archived ones are included only when asked for, because every reader except
+ * the builder wants the day as it is now — and a grid that renders a retired
+ * period as an empty row looks like a bug rather than like history.
+ */
+export async function listPeriods(
+  schoolId: string,
+  opts: { includeArchived?: boolean } = {},
+): Promise<PeriodRow[]> {
+  const rows = await db.timetablePeriod.findMany({
+    where: { schoolId, ...(opts.includeArchived ? {} : { archivedAt: null }) },
+    orderBy: [{ position: "asc" }, { startMinute: "asc" }],
+    take: MAX_PERIODS * 4,
+  });
+  return rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    startMinute: row.startMinute,
+    endMinute: row.endMinute,
+    kind: (PERIOD_KINDS as readonly string[]).includes(row.kind)
+      ? (row.kind as PeriodKind)
+      : "LESSON",
+    position: row.position,
+    archivedAt: row.archivedAt,
+  }));
+}
+
+export type PeriodInput = {
+  name: string;
+  startMinute: number;
+  endMinute: number;
+  kind: PeriodKind;
+};
+
+export type Result = { ok: boolean; error?: string; id?: string };
+
+function cleanPeriodInput(input: PeriodInput): { error?: string; data?: PeriodInput } {
+  const name = input.name.trim().slice(0, NAME_MAX);
+  if (name.length < 1) return { error: "Give the period a name." };
+  if (!(PERIOD_KINDS as readonly string[]).includes(input.kind)) {
+    return { error: "Choose whether this is a lesson or a break." };
+  }
+  const timeError = periodTimeError(input);
+  if (timeError) return { error: timeError };
+  return {
+    data: {
+      name,
+      startMinute: input.startMinute,
+      endMinute: input.endMinute,
+      kind: input.kind,
+    },
+  };
+}
+
+export async function createPeriod(ctx: ActiveContext, input: PeriodInput): Promise<Result> {
+  assertAdmin(ctx);
+  const cleaned = cleanPeriodInput(input);
+  if (cleaned.error || !cleaned.data) return { ok: false, error: cleaned.error };
+
+  const existing = await db.timetablePeriod.count({
+    where: { schoolId: ctx.schoolId, archivedAt: null },
+  });
+  if (existing >= MAX_PERIODS) {
+    return {
+      ok: false,
+      error: `A school day here tops out at ${MAX_PERIODS} periods. Retire one first.`,
+    };
+  }
+
+  const created = await db.timetablePeriod.create({
+    data: {
+      schoolId: ctx.schoolId,
+      ...cleaned.data,
+      // Appended, then re-sorted by time below, so a period typed out of order
+      // still lands where the day actually puts it.
+      position: existing,
+    },
+    select: { id: true },
+  });
+  await resequence(ctx.schoolId);
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.period.create",
+    targetType: "TimetablePeriod",
+    targetId: created.id,
+    meta: { name: cleaned.data.name, start: cleaned.data.startMinute },
+  });
+
+  return { ok: true, id: created.id };
+}
+
+export async function updatePeriod(
+  ctx: ActiveContext,
+  periodId: string,
+  input: PeriodInput,
+): Promise<Result> {
+  assertAdmin(ctx);
+  const cleaned = cleanPeriodInput(input);
+  if (cleaned.error || !cleaned.data) return { ok: false, error: cleaned.error };
+
+  const result = await db.timetablePeriod.updateMany({
+    where: { id: periodId, schoolId: ctx.schoolId },
+    data: cleaned.data,
+  });
+  if (result.count === 0) return { ok: false, error: "That period is not in this school." };
+  await resequence(ctx.schoolId);
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.period.update",
+    targetType: "TimetablePeriod",
+    targetId: periodId,
+    meta: { name: cleaned.data.name },
+  });
+
+  return { ok: true, id: periodId };
+}
+
+/**
+ * Retires a period, keeping every lesson that was in it.
+ *
+ * NOT A DELETE, and the cascade is why. `TimetableSlot.periodId` cascades, so
+ * deleting period 4 in March would take every class's fourth lesson with it —
+ * silently, and with no way back. Archiving takes the column off the grid and
+ * leaves the rows underneath, exactly as archiving a class leaves its register.
+ */
+export async function archivePeriod(ctx: ActiveContext, periodId: string): Promise<Result> {
+  assertAdmin(ctx);
+  const result = await db.timetablePeriod.updateMany({
+    where: { id: periodId, schoolId: ctx.schoolId, archivedAt: null },
+    data: { archivedAt: new Date() },
+  });
+  if (result.count === 0) return { ok: false, error: "That period is already retired." };
+  await resequence(ctx.schoolId);
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.period.archive",
+    targetType: "TimetablePeriod",
+    targetId: periodId,
+  });
+  return { ok: true, id: periodId };
+}
+
+export async function restorePeriod(ctx: ActiveContext, periodId: string): Promise<Result> {
+  assertAdmin(ctx);
+  const result = await db.timetablePeriod.updateMany({
+    where: { id: periodId, schoolId: ctx.schoolId, archivedAt: { not: null } },
+    data: { archivedAt: null },
+  });
+  if (result.count === 0) return { ok: false, error: "That period is not retired." };
+  await resequence(ctx.schoolId);
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.period.restore",
+    targetType: "TimetablePeriod",
+    targetId: periodId,
+  });
+  return { ok: true, id: periodId };
+}
+
+/**
+ * Lays out a first school day for a school that has none.
+ *
+ * REFUSES IF ANY PERIOD ALREADY EXISTS, including a retired one. The point is to
+ * remove the blank-page problem, not to be an "undo my afternoon" button that
+ * appends eight more rows to a day somebody has already built.
+ */
+export async function applySuggestedDay(ctx: ActiveContext): Promise<Result & { created?: number }> {
+  assertAdmin(ctx);
+  const existing = await db.timetablePeriod.count({ where: { schoolId: ctx.schoolId } });
+  if (existing > 0) {
+    return { ok: false, error: "This school already has a day set up. Edit it instead." };
+  }
+
+  let created = 0;
+  for (const [index, period] of SUGGESTED_DAY.entries()) {
+    await db.timetablePeriod.create({
+      data: { schoolId: ctx.schoolId, ...period, position: index },
+      select: { id: true },
+    });
+    created++;
+  }
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.period.seed",
+    targetType: "School",
+    targetId: ctx.schoolId,
+    meta: { created },
+  });
+
+  return { ok: true, created };
+}
+
+/**
+ * Renumbers `position` so it agrees with the clock.
+ *
+ * Run after every write rather than trusting the number an admin was shown: a
+ * period edited from 08:00 to 14:00 would otherwise stay at the top of the grid
+ * while the times below it went backwards, which reads as data corruption.
+ * Retired periods are ordered too, so restoring one puts it back in its place.
+ */
+async function resequence(schoolId: string): Promise<void> {
+  const rows = await db.timetablePeriod.findMany({
+    where: { schoolId },
+    orderBy: [{ startMinute: "asc" }, { endMinute: "asc" }],
+    select: { id: true, position: true },
+  });
+  for (const [index, row] of rows.entries()) {
+    if (row.position === index) continue;
+    await db.timetablePeriod.update({ where: { id: row.id }, data: { position: index } });
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* The grid                                                                    */
+/* -------------------------------------------------------------------------- */
+
+const SUBJECT_MAX = 60;
+const ROOM_MAX = 40;
+
+export type SlotInput = {
+  classId: string;
+  periodId: string;
+  weekday: number;
+  subject: string;
+  teacherMembershipId?: string | null;
+  room?: string | null;
+};
+
+/**
+ * Puts a lesson in a cell, or changes the one that is there.
+ *
+ * THE DOUBLE-BOOKING CHECK IS THE INTERESTING PART. A teacher cannot be in two
+ * rooms at 11:15 on a Tuesday, and a timetable that says otherwise is worse than
+ * no timetable — somebody builds a term around it. It is refused here with a
+ * message naming the class they are already in, and refused again by a unique
+ * index underneath, because two admins saving at the same moment would both pass
+ * the check and only one can be right. The database is the one that holds.
+ */
+export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Result> {
+  assertAdmin(ctx);
+
+  if (!isWeekdayNumber(input.weekday)) return { ok: false, error: "That is not a day of the week." };
+  if (!(WEEK_DAYS as readonly number[]).includes(input.weekday)) {
+    return { ok: false, error: "The timetable covers Monday to Saturday." };
+  }
+
+  const subject = input.subject.trim().slice(0, SUBJECT_MAX);
+  if (subject.length < 1) return { ok: false, error: "Say what is taught in this lesson." };
+
+  const [klass, period] = await Promise.all([
+    db.class.findFirst({
+      where: { id: input.classId, schoolId: ctx.schoolId, archivedAt: null },
+      select: { id: true, name: true },
+    }),
+    db.timetablePeriod.findFirst({
+      where: { id: input.periodId, schoolId: ctx.schoolId, archivedAt: null },
+      select: { id: true, name: true, kind: true },
+    }),
+  ]);
+  if (!klass) return { ok: false, error: "That class is not in this school." };
+  if (!period) return { ok: false, error: "That period is not on this school's day." };
+  if (period.kind === "BREAK") {
+    return { ok: false, error: `${period.name} is a break. Nothing is timetabled into it.` };
+  }
+
+  // The teacher is re-read against the school and the role, like every id that
+  // arrives from a form. A principal may teach; an admin may not.
+  let teacherMembershipId: string | null = null;
+  if (input.teacherMembershipId) {
+    const teacher = await db.membership.findFirst({
+      where: {
+        id: input.teacherMembershipId,
+        schoolId: ctx.schoolId,
+        role: { in: ["TEACHER", "PRINCIPAL"] },
+        status: "ACTIVE",
+        leftAt: null,
+      },
+      select: { id: true },
+    });
+    if (!teacher) return { ok: false, error: "That person is not teaching staff at this school." };
+    teacherMembershipId = teacher.id;
+  }
+
+  if (teacherMembershipId) {
+    const clash = await db.timetableSlot.findFirst({
+      where: {
+        schoolId: ctx.schoolId,
+        weekday: input.weekday,
+        periodId: input.periodId,
+        teacherMembershipId,
+        classId: { not: input.classId },
+      },
+      select: { subject: true, class: { select: { name: true } } },
+    });
+    if (clash) {
+      return {
+        ok: false,
+        error: `They already teach ${clash.class.name} — ${clash.subject} at that time.`,
+      };
+    }
+  }
+
+  const slot = await db.timetableSlot.upsert({
+    where: {
+      classId_weekday_periodId: {
+        classId: input.classId,
+        weekday: input.weekday,
+        periodId: input.periodId,
+      },
+    },
+    create: {
+      schoolId: ctx.schoolId,
+      classId: input.classId,
+      periodId: input.periodId,
+      weekday: input.weekday,
+      subject,
+      teacherMembershipId,
+      room: input.room?.trim().slice(0, ROOM_MAX) || null,
+    },
+    update: {
+      subject,
+      teacherMembershipId,
+      room: input.room?.trim().slice(0, ROOM_MAX) || null,
+    },
+    select: { id: true },
+  });
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.slot.set",
+    targetType: "Class",
+    targetId: input.classId,
+    meta: { weekday: input.weekday, periodId: input.periodId, subject, teacherMembershipId },
+  });
+
+  return { ok: true, id: slot.id };
+}
+
+/** Empties a cell. */
+export async function clearSlot(
+  ctx: ActiveContext,
+  classId: string,
+  weekday: number,
+  periodId: string,
+): Promise<Result> {
+  assertAdmin(ctx);
+  const result = await db.timetableSlot.deleteMany({
+    where: { schoolId: ctx.schoolId, classId, weekday, periodId },
+  });
+  if (result.count === 0) return { ok: false, error: "There is no lesson in that slot." };
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.slot.clear",
+    targetType: "Class",
+    targetId: classId,
+    meta: { weekday, periodId },
+  });
+  return { ok: true };
+}
+
+/**
+ * Copies one day's lessons onto another day.
+ *
+ * The single most repetitive thing about building a timetable by hand, and the
+ * reason a "tool" is different from a form. OVERWRITES the target day — a copy
+ * that merged would leave yesterday's lessons interleaved with today's and no
+ * way to tell which was meant. Slots whose teacher is already busy on the target
+ * day are copied WITHOUT the teacher rather than skipped: the lesson is what the
+ * admin asked for, and an unstaffed cell is visible and fixable where a missing
+ * one is not.
+ */
+export async function copyDay(
+  ctx: ActiveContext,
+  classId: string,
+  fromWeekday: number,
+  toWeekday: number,
+): Promise<Result & { copied?: number; unstaffed?: number }> {
+  assertAdmin(ctx);
+  if (fromWeekday === toWeekday) return { ok: false, error: "Those are the same day." };
+  if (
+    !(WEEK_DAYS as readonly number[]).includes(fromWeekday) ||
+    !(WEEK_DAYS as readonly number[]).includes(toWeekday)
+  ) {
+    return { ok: false, error: "The timetable covers Monday to Saturday." };
+  }
+
+  const klass = await db.class.findFirst({
+    where: { id: classId, schoolId: ctx.schoolId, archivedAt: null },
+    select: { id: true },
+  });
+  if (!klass) return { ok: false, error: "That class is not in this school." };
+
+  const source = await db.timetableSlot.findMany({
+    where: { schoolId: ctx.schoolId, classId, weekday: fromWeekday },
+    select: { periodId: true, subject: true, teacherMembershipId: true, room: true },
+  });
+  if (source.length === 0) return { ok: false, error: "There is nothing on that day to copy." };
+
+  // Everyone already teaching somebody else at these times on the target day.
+  const busy = await db.timetableSlot.findMany({
+    where: {
+      schoolId: ctx.schoolId,
+      weekday: toWeekday,
+      classId: { not: classId },
+      teacherMembershipId: { not: null },
+    },
+    select: { periodId: true, teacherMembershipId: true },
+  });
+  const busyAt = new Set(busy.map((row) => `${row.periodId}:${row.teacherMembershipId}`));
+
+  await db.timetableSlot.deleteMany({
+    where: { schoolId: ctx.schoolId, classId, weekday: toWeekday },
+  });
+
+  let copied = 0;
+  let unstaffed = 0;
+  for (const row of source) {
+    const free =
+      row.teacherMembershipId && !busyAt.has(`${row.periodId}:${row.teacherMembershipId}`);
+    if (row.teacherMembershipId && !free) unstaffed++;
+    await db.timetableSlot.create({
+      data: {
+        schoolId: ctx.schoolId,
+        classId,
+        periodId: row.periodId,
+        weekday: toWeekday,
+        subject: row.subject,
+        teacherMembershipId: free ? row.teacherMembershipId : null,
+        room: row.room,
+      },
+      select: { id: true },
+    });
+    copied++;
+  }
+
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "timetable.day.copy",
+    targetType: "Class",
+    targetId: classId,
+    meta: { fromWeekday, toWeekday, copied, unstaffed },
+  });
+
+  return { ok: true, copied, unstaffed };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Who is free                                                                 */
+/* -------------------------------------------------------------------------- */
+
+export type TeacherOption = {
+  membershipId: string;
+  name: string;
+  /** Null when they are free at this time. */
+  busyWith: string | null;
+};
+
+/**
+ * Every member of teaching staff, and what each is doing at this time.
+ *
+ * SHOWS THE BUSY ONES RATHER THAN HIDING THEM. A picker that silently omits
+ * three names leaves an admin wondering whether Mrs Rao has left the school; one
+ * that says "Class 6B — Science" answers the question they were about to ask and
+ * tells them what would have to move. The busy entries are not selectable, which
+ * is the same information the double-booking refusal carries, delivered before
+ * the mistake instead of after it.
+ */
+export async function teacherAvailability(
+  ctx: ActiveContext,
+  weekday: number,
+  periodId: string,
+  opts: { forClassId?: string } = {},
+): Promise<TeacherOption[]> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) {
+    throw new AccessError("Only an admin can see who is free");
+  }
+
+  const [staff, taken] = await Promise.all([
+    db.membership.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        role: { in: ["TEACHER", "PRINCIPAL"] },
+        status: "ACTIVE",
+        leftAt: null,
+      },
+      select: { id: true, user: { select: { name: true, preferredName: true } } },
+      take: 500,
+    }),
+    db.timetableSlot.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        weekday,
+        periodId,
+        teacherMembershipId: { not: null },
+        // The lesson being edited does not count as a clash with itself.
+        ...(opts.forClassId ? { classId: { not: opts.forClassId } } : {}),
+      },
+      select: {
+        teacherMembershipId: true,
+        subject: true,
+        class: { select: { name: true } },
+      },
+    }),
+  ]);
+
+  const busy = new Map(
+    taken.map((row) => [row.teacherMembershipId!, `${row.class.name} — ${row.subject}`]),
+  );
+
+  return staff
+    .map((row) => ({
+      membershipId: row.id,
+      name: row.user.preferredName ?? row.user.name,
+      busyWith: busy.get(row.id) ?? null,
+    }))
+    .sort((a, b) => {
+      // Free first — the list exists to answer "who can take this".
+      if ((a.busyWith === null) !== (b.busyWith === null)) return a.busyWith === null ? -1 : 1;
+      return a.name.localeCompare(b.name);
+    });
+}
+
+/**
+ * Everyone who is already teaching, at every time of the week, EXCEPT in one
+ * class. Keyed `weekday:periodId` → membershipId → what they are doing.
+ *
+ * ONE QUERY FOR THE WHOLE BUILDER. `teacherAvailability` answers the question
+ * for a single cell, which is right for a form and wrong for a grid: an admin
+ * clicking around forty cells would fire forty round trips, each one a pause
+ * before the list of names appears. The grid is edited as a whole, so the
+ * answer is computed for the whole grid once and the picker reads it locally.
+ *
+ * Bounded by the school's own size — one row per staffed lesson in the school,
+ * which for twenty classes over a six-day week is under a thousand small rows.
+ */
+export async function schoolBusyMap(
+  ctx: ActiveContext,
+  exceptClassId: string | null,
+): Promise<Record<string, Record<string, string>>> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) {
+    throw new AccessError("Only an admin can see who is free");
+  }
+  const rows = await db.timetableSlot.findMany({
+    where: {
+      schoolId: ctx.schoolId,
+      teacherMembershipId: { not: null },
+      ...(exceptClassId ? { classId: { not: exceptClassId } } : {}),
+    },
+    select: {
+      weekday: true,
+      periodId: true,
+      teacherMembershipId: true,
+      subject: true,
+      class: { select: { name: true } },
+    },
+    take: 5000,
+  });
+
+  const busy: Record<string, Record<string, string>> = {};
+  for (const row of rows) {
+    const key = `${row.weekday}:${row.periodId}`;
+    busy[key] ??= {};
+    busy[key]![row.teacherMembershipId!] = `${row.class.name} — ${row.subject}`;
+  }
+  return busy;
+}
+
+/**
+ * How many lessons a week each teacher is carrying.
+ *
+ * The other half of "assign based on availability": free at 11:15 on Tuesday is
+ * a different question from carrying a fair share of the week, and an admin
+ * building a timetable is answering both. Counts LESSONS, not hours — periods
+ * differ in length and a school talks in periods.
+ */
+export async function teachingLoad(ctx: ActiveContext): Promise<Map<string, number>> {
+  if (!ctx.schoolId) return new Map();
+  const rows = await db.timetableSlot.groupBy({
+    by: ["teacherMembershipId"],
+    where: { schoolId: ctx.schoolId, teacherMembershipId: { not: null } },
+    _count: { _all: true },
+  });
+  const load = new Map<string, number>();
+  for (const row of rows) {
+    if (row.teacherMembershipId) load.set(row.teacherMembershipId, row._count._all);
+  }
+  return load;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reading a week                                                              */
+/* -------------------------------------------------------------------------- */
+
+/** The Monday on or before `dateKey`. */
+export function weekStartKey(dateKey: string): string {
+  if (!isDateKey(dateKey)) throw new AccessError("That is not a date");
+  const weekday = weekdayOfKey(dateKey);
+  // 0 is Sunday, which belongs to the week that has just finished — a pupil
+  // opening this on Sunday evening wants tomorrow, not six days ago.
+  const backTo = weekday === 0 ? -6 : 1 - weekday;
+  return addDaysToKey(dateKey, backTo);
+}
+
+/** The date key each weekday column falls on, for a week starting Monday. */
+function dayKeysFrom(mondayKey: string): Map<number, string> {
+  const keys = new Map<number, string>();
+  for (const [index, weekday] of WEEK_DAYS.entries()) {
+    keys.set(weekday, addDaysToKey(mondayKey, index));
+  }
+  return keys;
+}
+
+type RawSlot = {
+  id: string;
+  classId: string;
+  periodId: string;
+  weekday: number;
+  subject: string;
+  room: string | null;
+  teacherMembershipId: string | null;
+  class: { name: string };
+  teacher: { user: { name: string; preferredName: string | null } } | null;
+};
+
+const SLOT_SELECT = {
+  id: true,
+  classId: true,
+  periodId: true,
+  weekday: true,
+  subject: true,
+  room: true,
+  teacherMembershipId: true,
+  class: { select: { name: true } },
+  teacher: { select: { user: { select: { name: true, preferredName: true } } } },
+} as const;
+
+/**
+ * Applies real dates to a template, and with them leave, cover and holidays.
+ *
+ * THE RULE, in one place so it cannot be spelled differently on two pages:
+ *
+ *   - the assigned teacher is on APPROVED leave on that date, and a cover was
+ *     arranged for that class → the covering teacher is shown, in their place;
+ *   - on leave, and no cover → `uncovered`, said loudly. A class with nobody in
+ *     front of it is the one thing this feature exists to make visible;
+ *   - otherwise the assigned teacher, unchanged.
+ *
+ * THE COVER IS MATCHED TO THE ABSENCE WHERE IT CAN BE. `AttendanceCover` carries
+ * `leaveRequestId` when approving leave created it, so the replacement for THIS
+ * absence is preferred over any other cover that happens to overlap the class
+ * that week. Cover arranged by hand, with no leave behind it, is still used —
+ * it just cannot be attributed, so it is the fallback rather than the first
+ * answer.
+ */
+async function resolveWeek(
+  schoolId: string,
+  slots: RawSlot[],
+  dayKeys: Map<number, string>,
+  opts: { borrowedIds?: Set<string> } = {},
+): Promise<SlotView[]> {
+  const dates = [...dayKeys.values()].sort();
+  const from = dates[0]!;
+  const to = dates[dates.length - 1]!;
+
+  const teacherIds = [
+    ...new Set(slots.map((s) => s.teacherMembershipId).filter((id): id is string => Boolean(id))),
+  ];
+  const classIds = [...new Set(slots.map((s) => s.classId))];
+
+  const [leave, covers] = await Promise.all([
+    teacherIds.length === 0
+      ? Promise.resolve([])
+      : db.leaveRequest.findMany({
+          where: {
+            schoolId,
+            status: "APPROVED",
+            teacherMembershipId: { in: teacherIds },
+            fromDateKey: { lte: to },
+            toDateKey: { gte: from },
+          },
+          select: { id: true, teacherMembershipId: true, fromDateKey: true, toDateKey: true },
+        }),
+    db.attendanceCover.findMany({
+      where: {
+        schoolId,
+        classId: { in: classIds },
+        fromDateKey: { lte: to },
+        toDateKey: { gte: from },
+      },
+      select: {
+        classId: true,
+        coveringMembershipId: true,
+        fromDateKey: true,
+        toDateKey: true,
+        leaveRequestId: true,
+        covering: { select: { user: { select: { name: true, preferredName: true } } } },
+      },
+    }),
+  ]);
+
+  return slots.map((slot) => {
+    const dateKey = dayKeys.get(slot.weekday) ?? null;
+    const teacherName = slot.teacher
+      ? (slot.teacher.user.preferredName ?? slot.teacher.user.name)
+      : null;
+
+    const base: SlotView = {
+      id: slot.id,
+      classId: slot.classId,
+      className: slot.class.name,
+      periodId: slot.periodId,
+      weekday: slot.weekday,
+      subject: slot.subject,
+      room: slot.room,
+      teacherMembershipId: slot.teacherMembershipId,
+      teacherName,
+      coveringMembershipId: null,
+      coveringName: null,
+      uncovered: false,
+      borrowed: opts.borrowedIds?.has(slot.id) ?? false,
+    };
+
+    if (!dateKey || !slot.teacherMembershipId) return base;
+
+    const absence = leave.find(
+      (row) =>
+        row.teacherMembershipId === slot.teacherMembershipId &&
+        row.fromDateKey <= dateKey &&
+        row.toDateKey >= dateKey,
+    );
+    if (!absence) return base;
+
+    const applicable = covers.filter(
+      (row) => row.classId === slot.classId && row.fromDateKey <= dateKey && row.toDateKey >= dateKey,
+    );
+    const cover =
+      applicable.find((row) => row.leaveRequestId === absence.id) ?? applicable[0] ?? null;
+
+    if (!cover) return { ...base, uncovered: true };
+
+    return {
+      ...base,
+      coveringMembershipId: cover.coveringMembershipId,
+      coveringName: cover.covering.user.preferredName ?? cover.covering.user.name,
+    };
+  });
+}
+
+/** The day columns, with the holidays marked. */
+async function buildDays(
+  schoolId: string,
+  dayKeys: Map<number, string> | null,
+  todayDateKey: string | null,
+): Promise<DayColumn[]> {
+  if (!dayKeys) {
+    return WEEK_DAYS.map((weekday) => ({
+      weekday,
+      dateKey: null,
+      closed: false,
+      closedName: null,
+      isToday: false,
+    }));
+  }
+
+  const window = [...dayKeys.values()].sort();
+  const entries = await listHolidays(schoolId, {
+    fromKey: window[0],
+    toKey: window[window.length - 1],
+  });
+  const closed = closedDayKeys(entries);
+  // A name for the banner, so "closed" is not an unexplained grey column.
+  const nameFor = (dateKey: string): string | null => {
+    const hit = entries.find(
+      (entry) => entry.startDateKey <= dateKey && entry.endDateKey >= dateKey && entry.kind === "HOLIDAY",
+    );
+    return hit?.name ?? null;
+  };
+
+  return WEEK_DAYS.map((weekday) => {
+    const dateKey = dayKeys.get(weekday) ?? null;
+    return {
+      weekday,
+      dateKey,
+      closed: dateKey ? closed.has(dateKey) : false,
+      closedName: dateKey ? nameFor(dateKey) : null,
+      isToday: dateKey !== null && dateKey === todayDateKey,
+    };
+  });
+}
+
+/**
+ * One class's week.
+ *
+ * `weekOf` null gives the bare TEMPLATE — no dates, no cover, no holidays —
+ * which is what the builder edits. A date key gives the resolved week, which is
+ * what everybody else reads.
+ */
+export async function classWeek(
+  ctx: ActiveContext,
+  classId: string,
+  opts: { weekOf?: string | null; todayKey?: string | null } = {},
+): Promise<WeekGrid> {
+  if (!ctx.schoolId) throw new AccessError("No active school selected");
+  if (ctx.role === "STUDENT" || ctx.role === "TEACHER") {
+    // A pupil and a teacher read their OWN week through the functions below.
+    // Letting them name a class here would hand a pupil every class's timetable,
+    // which is not a secret but is not theirs to browse either.
+    throw new AccessError("Only staff can look up a class timetable");
+  }
+
+  const klass = await db.class.findFirst({
+    where: { id: classId, schoolId: ctx.schoolId },
+    select: { id: true },
+  });
+  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+
+  const dayKeys = opts.weekOf ? dayKeysFrom(weekStartKey(opts.weekOf)) : null;
+
+  const [periods, rows, days] = await Promise.all([
+    listPeriods(ctx.schoolId),
+    db.timetableSlot.findMany({
+      where: { schoolId: ctx.schoolId, classId },
+      select: SLOT_SELECT,
+    }),
+    buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null),
+  ]);
+
+  const slots = dayKeys
+    ? await resolveWeek(ctx.schoolId, rows, dayKeys)
+    : rows.map(bareView);
+
+  return { periods, days, slots };
+}
+
+/** The template view — used where there are no dates to resolve against. */
+function bareView(slot: RawSlot): SlotView {
+  return {
+    id: slot.id,
+    classId: slot.classId,
+    className: slot.class.name,
+    periodId: slot.periodId,
+    weekday: slot.weekday,
+    subject: slot.subject,
+    room: slot.room,
+    teacherMembershipId: slot.teacherMembershipId,
+    teacherName: slot.teacher
+      ? (slot.teacher.user.preferredName ?? slot.teacher.user.name)
+      : null,
+    coveringMembershipId: null,
+    coveringName: null,
+    uncovered: false,
+    borrowed: false,
+  };
+}
+
+/**
+ * A teacher's own week — including the lessons they are covering.
+ *
+ * THE BORROWED HALF IS THE POINT. Cover has always told the person covering that
+ * they are marking a register; it never told them WHEN, or what the lesson is.
+ * Here, a lesson whose assigned teacher is away and whose cover is you appears
+ * in your week, at the right time, marked as somebody else's. Without it, the
+ * replacement showing up on the timetable would only be true from the outside —
+ * visible to the class and invisible to the person who has to be in the room.
+ */
+export async function teacherWeek(
+  ctx: ActiveContext,
+  teacherMembershipId: string,
+  opts: { weekOf: string; todayKey?: string | null },
+): Promise<WeekGrid> {
+  if (!ctx.schoolId) throw new AccessError("No active school selected");
+
+  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
+  const dates = [...dayKeys.values()].sort();
+  const from = dates[0]!;
+  const to = dates[dates.length - 1]!;
+
+  const [periods, own, covers] = await Promise.all([
+    listPeriods(ctx.schoolId),
+    db.timetableSlot.findMany({
+      where: { schoolId: ctx.schoolId, teacherMembershipId },
+      select: SLOT_SELECT,
+    }),
+    db.attendanceCover.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        coveringMembershipId: teacherMembershipId,
+        fromDateKey: { lte: to },
+        toDateKey: { gte: from },
+      },
+      select: { classId: true, fromDateKey: true, toDateKey: true },
+    }),
+  ]);
+
+  const borrowed: RawSlot[] = [];
+  if (covers.length > 0) {
+    // Only the days this cover actually applies to. A Monday-to-Wednesday cover
+    // must not put Friday's lesson in somebody's week.
+    const coveredDays = new Map<string, Set<number>>();
+    for (const cover of covers) {
+      for (const [weekday, dateKey] of dayKeys) {
+        if (cover.fromDateKey <= dateKey && cover.toDateKey >= dateKey) {
+          const set = coveredDays.get(cover.classId) ?? new Set<number>();
+          set.add(weekday);
+          coveredDays.set(cover.classId, set);
+        }
+      }
+    }
+
+    const candidates = await db.timetableSlot.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        classId: { in: [...coveredDays.keys()] },
+        teacherMembershipId: { not: null },
+      },
+      select: SLOT_SELECT,
+    });
+
+    const ownIds = new Set(own.map((row) => row.id));
+    for (const slot of candidates) {
+      if (ownIds.has(slot.id)) continue;
+      if (!coveredDays.get(slot.classId)?.has(slot.weekday)) continue;
+      borrowed.push(slot);
+    }
+  }
+
+  const combined = [...own, ...borrowed];
+  const borrowedIds = new Set(borrowed.map((row) => row.id));
+  const resolved = await resolveWeek(ctx.schoolId, combined, dayKeys, { borrowedIds });
+
+  // A borrowed lesson only belongs in this week if the cover is ACTUALLY in
+  // force — that is, the assigned teacher turned out to be on leave. A cover
+  // arranged for an absence that was later cancelled leaves the row behind, and
+  // resolveWeek is the one place that knows the difference.
+  const kept = resolved.filter(
+    (slot) => !slot.borrowed || slot.coveringMembershipId === teacherMembershipId,
+  );
+
+  const days = await buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null);
+  return { periods, days, slots: kept };
+}
+
+/** A pupil's own week, merged across every class they are enrolled in. */
+export async function studentWeek(
+  ctx: ActiveContext,
+  studentMembershipId: string,
+  opts: { weekOf: string; todayKey?: string | null },
+): Promise<WeekGrid> {
+  if (!ctx.schoolId) throw new AccessError("No active school selected");
+
+  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
+
+  const enrolments = await db.enrollment.findMany({
+    where: { schoolId: ctx.schoolId, studentMembershipId, status: "ACTIVE" },
+    select: { classId: true },
+  });
+  const classIds = enrolments.map((row) => row.classId);
+
+  const [periods, rows, days] = await Promise.all([
+    listPeriods(ctx.schoolId),
+    classIds.length === 0
+      ? Promise.resolve([] as RawSlot[])
+      : db.timetableSlot.findMany({
+          where: { schoolId: ctx.schoolId, classId: { in: classIds } },
+          select: SLOT_SELECT,
+        }),
+    buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null),
+  ]);
+
+  const slots = await resolveWeek(ctx.schoolId, rows, dayKeys);
+  return { periods, days, slots };
+}
+
+/** Classes an admin or principal can pick from, for the class picker. */
+export async function timetableClasses(ctx: ActiveContext) {
+  if (!ctx.schoolId) return [];
+  if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") {
+    throw new AccessError("Only staff can list class timetables");
+  }
+  const rows = await db.class.findMany({
+    where: { schoolId: ctx.schoolId, archivedAt: null },
+    orderBy: [{ gradeLevel: "asc" }, { name: "asc" }],
+    select: { id: true, name: true, gradeLevel: true, section: true, room: true },
+    take: 300,
+  });
+  return rows;
+}

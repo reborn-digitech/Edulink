@@ -27,7 +27,11 @@ export function DecideCard({
 }: {
   request: LeaveRow;
   staff: { membershipId: string; name: string }[];
-  /** How many registers this person is down to mark — what cover will apply to. */
+  /**
+   * How many CLASSES this person is due in — the registers they mark and the
+   * lessons they teach, de-duplicated. Exactly the number of cover rows
+   * approving will write.
+   */
   classesCovered: number;
 }) {
   const router = useRouter();
@@ -82,11 +86,11 @@ export function DecideCard({
 
       <div className="mt-4 rounded-[--radius-sm] bg-surface-muted p-3">
         <label className="block">
-          <span className="block text-xs font-medium text-fg">Who covers their registers</span>
+          <span className="block text-xs font-medium text-fg">Who covers their classes</span>
           <span className="mt-0.5 block text-xs text-fg-muted">
             {classesCovered === 0
-              ? "They are not down to mark any register, so no cover is needed."
-              : `Applies to ${classesCovered} class${classesCovered === 1 ? "" : "es"} they mark.`}
+              ? "They have no registers and no timetabled lessons, so no cover is needed."
+              : `Applies to ${classesCovered} class${classesCovered === 1 ? "" : "es"} they are due in.`}
             {request.nominatedName ? ` They suggested ${request.nominatedName}.` : ""}
           </span>
           <select

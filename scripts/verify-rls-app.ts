@@ -1177,6 +1177,99 @@ async function main() {
       "the operator wrote a Membership row — they can join any school they like, which defeats the boundary",
     );
 
+    /**
+     * THE TIMETABLE, which is the first table in this schema that every role in
+     * a school reads and only one role writes.
+     *
+     * Worth its own checks rather than trusting "it got the standard policy",
+     * because the standard policy is what makes the app-layer admin gate the
+     * ONLY thing standing between a pupil and their own timetable — so it had
+     * better be true that the school boundary underneath it holds. Reads and
+     * writes both, in both directions.
+     */
+    await withTenantOn(client, "verify-a", (tx) =>
+      (tx as unknown as { timetablePeriod: { create: (a: unknown) => Promise<unknown> } })
+        .timetablePeriod.create({
+          data: {
+            id: "verify-period-a",
+            schoolId: "verify-a",
+            name: "Period 1",
+            startMinute: 510,
+            endMinute: 555,
+            kind: "LESSON",
+            position: 0,
+          },
+        }),
+    );
+    // `verify-class-a` was created for the report-card checks above and is
+    // reused rather than duplicated — a second class with the same id fails on
+    // the primary key and takes the whole run down before anything is asserted.
+    psql(
+      DB,
+      `INSERT INTO "TimetableSlot" (id,"schoolId","classId","periodId",weekday,subject,"updatedAt")
+         VALUES ('verify-slot-a','verify-a','verify-class-a','verify-period-a',1,'Maths',now());`,
+    );
+
+    const ownSlots = await withTenantOn(client, "verify-a", (tx) =>
+      (tx as unknown as { timetableSlot: { count: (a?: unknown) => Promise<number> } })
+        .timetableSlot.count(),
+    );
+    check(
+      "⚠ a school reads its own timetable",
+      ownSlots === 1,
+      `saw ${ownSlots} slot(s) — the policy is refusing the school its own grid`,
+    );
+
+    const neighbourSlots = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { timetableSlot: { count: (a?: unknown) => Promise<number> } })
+        .timetableSlot.count(),
+    );
+    check(
+      "⚠ …and the school next door reads none of it",
+      neighbourSlots === 0,
+      `school B saw ${neighbourSlots} of school A's lessons — who teaches whom, and when`,
+    );
+
+    let wroteIntoNeighbour = 0;
+    try {
+      await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { timetableSlot: { create: (a: unknown) => Promise<unknown> } })
+          .timetableSlot.create({
+            data: {
+              id: "verify-slot-forged",
+              schoolId: "verify-a",
+              classId: "verify-class-a",
+              periodId: "verify-period-a",
+              weekday: 2,
+              subject: "Forged",
+            },
+          }),
+      );
+      wroteIntoNeighbour = 1;
+    } catch {
+      wroteIntoNeighbour = 0;
+    }
+    check(
+      "⚠ …and cannot write a lesson into it",
+      wroteIntoNeighbour === 0,
+      "a school wrote a lesson into another school's timetable — WITH CHECK is not holding",
+    );
+
+    let deletedNeighbour = 0;
+    try {
+      deletedNeighbour = await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { timetableSlot: { deleteMany: (a: unknown) => Promise<{ count: number }> } })
+          .timetableSlot.deleteMany({ where: { schoolId: "verify-a" } }),
+      ).then((r) => (r as unknown as { count: number }).count);
+    } catch {
+      deletedNeighbour = 0;
+    }
+    check(
+      "⚠ …and cannot delete one either",
+      deletedNeighbour === 0,
+      `school B deleted ${deletedNeighbour} of school A's lessons — DELETE is authorised by USING alone`,
+    );
+
     // LAST, because it deliberately poisons the connection: the mistake this
     // design exists to prevent, demonstrated rather than described — a plain
     // SET, outside a transaction, on a pooled connection. Anything added after

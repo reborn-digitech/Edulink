@@ -37,21 +37,53 @@ export default async function PrincipalLeavePage() {
   const pending = all.filter((row) => row.status === "PENDING");
   const decided = all.filter((row) => row.status !== "PENDING");
 
-  // How many registers each applicant is down to mark, so the decision screen
-  // can say what approving will actually cover before it is pressed.
+  /**
+   * How many classes each applicant is DUE IN, so the decision screen can say
+   * what approving will actually cover before it is pressed.
+   *
+   * COUNTED FROM BOTH LISTS, and it has to be. `decideLeave` arranges cover for
+   * every class the applicant marks a register for AND every class they hold a
+   * lesson in on the timetable, because those are different sets of people — a
+   * visiting music teacher marks no registers and is due in six rooms. Counting
+   * registers alone told a principal "applies to 1 class" and then created two,
+   * and told a pure subject teacher's approver that no cover was needed at all.
+   */
   const dutyCounts = new Map<string, number>();
   if (pending.length > 0) {
-    const counts = await db.classTeacher.groupBy({
-      by: ["teacherMembershipId"],
-      where: {
-        schoolId: ctx.schoolId,
-        canTakeAttendance: true,
-        class: { archivedAt: null },
-        teacherMembershipId: { in: pending.map((p) => p.applicantMembershipId) },
-      },
-      _count: true,
-    });
-    for (const row of counts) dutyCounts.set(row.teacherMembershipId, row._count);
+    const applicants = pending.map((p) => p.applicantMembershipId);
+    const [registers, lessons] = await Promise.all([
+      db.classTeacher.findMany({
+        where: {
+          schoolId: ctx.schoolId,
+          canTakeAttendance: true,
+          class: { archivedAt: null },
+          teacherMembershipId: { in: applicants },
+        },
+        select: { teacherMembershipId: true, classId: true },
+      }),
+      db.timetableSlot.findMany({
+        where: {
+          schoolId: ctx.schoolId,
+          class: { archivedAt: null },
+          teacherMembershipId: { in: applicants },
+        },
+        select: { teacherMembershipId: true, classId: true },
+        distinct: ["teacherMembershipId", "classId"],
+      }),
+    ]);
+
+    // The union, per applicant — the same de-duplication `decideLeave` does, so
+    // the number shown is the number of cover rows that will be written.
+    const byApplicant = new Map<string, Set<string>>();
+    for (const row of [...registers, ...lessons]) {
+      if (!row.teacherMembershipId) continue;
+      const set = byApplicant.get(row.teacherMembershipId) ?? new Set<string>();
+      set.add(row.classId);
+      byApplicant.set(row.teacherMembershipId, set);
+    }
+    for (const [membershipId, classes] of byApplicant) {
+      dutyCounts.set(membershipId, classes.size);
+    }
   }
 
   const staffOptions = staff.map((person) => ({
@@ -64,8 +96,8 @@ export default async function PrincipalLeavePage() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Staff leave</h1>
         <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-          Approving arranges cover for every register the applicant is down to mark. Nothing here is
-          visible to students or parents.
+          Approving arranges cover for every class the applicant is due in — the registers they
+          mark and the lessons they teach. Nothing here is visible to students or parents.
         </p>
       </div>
 

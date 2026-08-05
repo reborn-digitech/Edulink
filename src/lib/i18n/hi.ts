@@ -50,6 +50,7 @@ export const hi: Dictionary = {
     leave: "अवकाश",
     reportCards: "प्रगति पत्रक",
     staff: "स्टाफ़",
+    timetable: "समय-सारणी",
   },
 
   action: {
@@ -63,6 +64,8 @@ export const hi: Dictionary = {
     inviteTeacherHint: "आमंत्रण ईमेल भेजें",
     createClass: "कक्षा बनाएँ",
     createClassHint: "नई कक्षा या अनुभाग जोड़ें",
+    buildTimetable: "समय-सारणी बनाएँ",
+    buildTimetableHint: "स्कूल का दिन तय करें और पीरियड भरें",
     schoolBranding: "स्कूल की पहचान",
     schoolBrandingHint: "लोगो और रंग",
     newAssignment: "नया कार्य",

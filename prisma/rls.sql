@@ -251,6 +251,24 @@ CREATE POLICY "AttendanceRecord_readable" ON "AttendanceRecord"
           ))
         );
 
+-- TimetablePeriod
+ALTER TABLE "TimetablePeriod" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "TimetablePeriod" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "TimetablePeriod_tenant_isolation" ON "TimetablePeriod";
+DROP POLICY IF EXISTS "TimetablePeriod_readable" ON "TimetablePeriod";
+CREATE POLICY "TimetablePeriod_tenant_isolation" ON "TimetablePeriod"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- TimetableSlot
+ALTER TABLE "TimetableSlot" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "TimetableSlot" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "TimetableSlot_tenant_isolation" ON "TimetableSlot";
+DROP POLICY IF EXISTS "TimetableSlot_readable" ON "TimetableSlot";
+CREATE POLICY "TimetableSlot_tenant_isolation" ON "TimetableSlot"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Assignment
 ALTER TABLE "Assignment" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Assignment" FORCE ROW LEVEL SECURITY;

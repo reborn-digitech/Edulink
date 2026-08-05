@@ -50,6 +50,7 @@ export const en = {
     leave: "Leave",
     reportCards: "Report cards",
     staff: "Staff",
+    timetable: "Timetable",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -66,6 +67,8 @@ export const en = {
     inviteTeacherHint: "Send an invitation email",
     createClass: "Create a class",
     createClassHint: "Add a new class or section",
+    buildTimetable: "Build the timetable",
+    buildTimetableHint: "Set the school day and slot in lessons",
     schoolBranding: "School branding",
     schoolBrandingHint: "Logo and colours",
     newAssignment: "New assignment",

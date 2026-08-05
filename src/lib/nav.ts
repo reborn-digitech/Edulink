@@ -39,6 +39,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/people", labelKey: "nav.directory", icon: "users", primary: true, prefix: true },
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/admin/invites", labelKey: "nav.invites", icon: "envelope", primary: true, prefix: true },
+    { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
@@ -60,6 +61,7 @@ export const NAV: Record<Role, NavItem[]> = {
   PRINCIPAL: [
     { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true },
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
@@ -71,6 +73,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
     { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true },
     { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
     { href: "/teacher/assignments", labelKey: "nav.work", icon: "clipboard", primary: true, prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
     { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
@@ -83,6 +86,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student", labelKey: "nav.today", icon: "house", primary: true },
     { href: "/student/work", labelKey: "nav.myWork", icon: "clipboard", primary: true, prefix: true },
     { href: "/student/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
+    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
     // A pupil's own conversations with their teachers. Their guardians are in
@@ -145,6 +149,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   ADMIN: [
     { href: "/admin/invites/new", labelKey: "action.inviteTeacher", icon: "userPlus", descriptionKey: "action.inviteTeacherHint" },
     { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
+    { href: "/admin/timetable", labelKey: "action.buildTimetable", icon: "clock", descriptionKey: "action.buildTimetableHint" },
     { href: "/principal/leave", labelKey: "action.reviewLeave", icon: "calendar", descriptionKey: "action.reviewLeaveHint" },
     { href: "/admin/settings", labelKey: "action.schoolBranding", icon: "palette", descriptionKey: "action.schoolBrandingHint" },
   ],
