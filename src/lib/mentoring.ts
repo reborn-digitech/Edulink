@@ -21,9 +21,15 @@ import type { ActiveContext } from "./session";
  *    between an outside adult and a child is the thing this feature must not be
  *    able to become.
  *
- * 2. ONLY SCHOOL STAFF MAY PAIR. Not the expert, who would otherwise choose
- *    their own mentee; not the child, who cannot meaningfully consent to a
- *    stranger. The staff member who did it is recorded on the row.
+ * 2. ONLY SCHOOL STAFF MAY PAIR, and a pupil ASKING is not pairing. The expert
+ *    may not choose their own mentee, and a child cannot meaningfully consent
+ *    to a stranger — so a pupil's request creates a REQUESTED thread that
+ *    grants nothing at all: the expert cannot see it, nobody can write in it,
+ *    and it does not occupy one of the expert's mentee places. A school
+ *    approves it, and only then is a guardian asked. Two adults still decide;
+ *    what changed is that the child can now start the conversation about it
+ *    instead of waiting to be noticed. Whoever asked and whoever decided are
+ *    both recorded on the row.
  *
  * 3. PARENT CONSENT GATES THE FIRST MESSAGE. Until a guardian says yes the
  *    thread is PENDING_CONSENT and `postMentorMessage` refuses everybody,
@@ -72,7 +78,19 @@ async function readerOf(session: ActiveContext, threadId: string) {
   });
   if (!thread) throw new AccessError("Mentorship not found", "NOT_FOUND");
 
-  const isExpert = session.user.id === thread.expertUserId;
+  /**
+   * ⚠ NOT WHILE IT IS ONLY A REQUEST.
+   *
+   * `listMentorships` filters REQUESTED out of an expert's list; this is the
+   * same rule for somebody who has the id. Without it an expert could open a
+   * request by URL and learn that a named child had asked for them before any
+   * school had vetted the pairing — a disclosure about a child to a stranger,
+   * made by the child, which is the thing the approval step exists to prevent.
+   *
+   * The expert is simply not a reader of this row yet, so it is a 404 like any
+   * other thread that is none of their business.
+   */
+  const isExpert = session.user.id === thread.expertUserId && thread.status !== "REQUESTED";
   const isStudent = session.membershipId === thread.studentMembershipId;
   const isStaff =
     (session.role === "ADMIN" || session.role === "TEACHER") &&
@@ -120,7 +138,16 @@ async function readerOf(session: ActiveContext, threadId: string) {
 export async function listMentorships(session: ActiveContext): Promise<MentorSummary[]> {
   let where;
   if (session.role === "EXPERT") {
-    where = { expertUserId: session.user.id };
+    /**
+     * ⚠ A REQUEST THE SCHOOL HAS NOT APPROVED IS INVISIBLE TO THE EXPERT.
+     *
+     * The sharpest consequence of letting pupils ask. Without this exclusion an
+     * outside adult would learn that a named eleven-year-old had asked for them
+     * — before any school had vetted the pairing, and whether or not it is ever
+     * approved. That is a disclosure about a child to a stranger, made by the
+     * child, which is exactly what the approval step exists to prevent.
+     */
+    where = { expertUserId: session.user.id, status: { not: "REQUESTED" } };
   } else if (session.role === "STUDENT") {
     where = { studentMembershipId: session.membershipId ?? "__none__" };
   } else if (session.role === "PARENT") {
@@ -365,6 +392,16 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
   // them be given a child over their cap.
   if (thread.status === "CLOSED") return;
 
+  /**
+   * ⚠ A REQUEST NEVER TOOK A PLACE, SO CLOSING ONE MUST NOT GIVE ONE BACK.
+   *
+   * The place is claimed when a school APPROVES, not when a pupil asks — see
+   * `decideMentorRequest`. Decrementing here for a REQUESTED thread would hand
+   * the expert a place they never used, and because the counter is
+   * denormalised that place comes out of somebody else's cap.
+   */
+  const heldAPlace = thread.status !== "REQUESTED";
+
   await db.mentorThread.update({
     where: { id: threadId },
     data: { status: "CLOSED", closedAt: new Date() },
@@ -379,10 +416,12 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
    * denormalised, and the one thing worse than a drifting count is a negative
    * one that reads as infinite capacity.
    */
-  await db.expertProfile.updateMany({
-    where: { id: thread.expertProfileId, activeMentorships: { gt: 0 } },
-    data: { activeMentorships: { decrement: 1 } },
-  });
+  if (heldAPlace) {
+    await db.expertProfile.updateMany({
+      where: { id: thread.expertProfileId, activeMentorships: { gt: 0 } },
+      data: { activeMentorships: { decrement: 1 } },
+    });
+  }
 
   await audit({
     schoolId: thread.schoolId,
@@ -445,6 +484,9 @@ export async function postMentorMessage(
 
   const { thread, student, expert, isExpert, isStudent } = await readerOf(session, threadId);
 
+  if (thread.status === "REQUESTED") {
+    throw new AccessError("Nobody can message until your school has approved this request");
+  }
   if (thread.status === "PENDING_CONSENT") {
     throw new AccessError("Nobody can message until a guardian has agreed to this mentorship");
   }
@@ -558,4 +600,398 @@ export async function pairingOptions(session: ActiveContext): Promise<PairingOpt
       )
       .sort((a, b) => a.name.localeCompare(b.name)),
   };
+}
+
+/* -------------------------------------------------------------------------- */
+/* A pupil asking                                                              */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * How many requests a pupil may have outstanding at once.
+ *
+ * Small on purpose. A child who has asked three different adults to mentor them
+ * and is waiting on all three has not been served by a fourth box to type in —
+ * and without a cap, a bad afternoon produces forty requests a school has to
+ * work through one at a time.
+ */
+export const MAX_OPEN_REQUESTS = 3;
+
+export type RequestResult = { ok: true; threadId: string } | { ok: false; error: string };
+
+/**
+ * A pupil asks for a mentor.
+ *
+ * IT GRANTS NOTHING, and that is the whole design. The thread it creates is
+ * REQUESTED: the expert cannot see it (see `listMentorships`), nobody can write
+ * in it, it gives the expert no tenant access, and it does not occupy one of
+ * their mentee places. It is a message to the pupil's own school, stored in the
+ * shape the mentorship will take if the school and a guardian both agree.
+ *
+ * SO THE CHECKS HERE ARE ABOUT NOT WASTING ANYBODY'S TIME rather than about
+ * safety — the safety is that approval is somebody else's. Refusing a
+ * sessions-only expert or one who is full at this point means a child is told
+ * now, by a machine, rather than in a week by an adult.
+ */
+export async function requestMentor(
+  session: ActiveContext,
+  input: { expertProfileId: string; purpose: string },
+): Promise<RequestResult> {
+  if (session.role !== "STUDENT" || !session.schoolId || !session.membershipId) {
+    throw new AccessError("Only a pupil can ask for a mentor");
+  }
+
+  const purpose = input.purpose.trim();
+  if (purpose.length < 15) {
+    return {
+      ok: false,
+      error: "Say a bit more about what you would like help with — a sentence or two.",
+    };
+  }
+  if (purpose.length > 1000) return { ok: false, error: "That is longer than it needs to be." };
+
+  const expert = await db.expertProfile.findFirst({
+    where: { id: input.expertProfileId, publishedAt: { not: null } },
+    select: {
+      id: true,
+      userId: true,
+      offering: true,
+      mentorCapacity: true,
+      activeMentorships: true,
+      user: { select: { name: true } },
+    },
+  });
+  // Unpublished and non-existent are the same answer: an uncurated profile is
+  // not a person to put in front of a child, and saying which it was would let
+  // somebody enumerate the ones waiting to be listed.
+  if (!expert) return { ok: false, error: "That mentor is not available." };
+
+  if (expert.offering === "SESSIONS") {
+    return { ok: false, error: `${expert.user.name} gives workshops rather than mentoring.` };
+  }
+  if (expert.mentorCapacity !== null && expert.activeMentorships >= expert.mentorCapacity) {
+    return {
+      ok: false,
+      error: `${expert.user.name} is mentoring as many people as they have agreed to just now.`,
+    };
+  }
+
+  const existing = await db.mentorThread.findUnique({
+    where: {
+      expertProfileId_studentMembershipId: {
+        expertProfileId: expert.id,
+        studentMembershipId: session.membershipId,
+      },
+    },
+    select: { id: true, status: true },
+  });
+  if (existing) {
+    // Including CLOSED, because the unique key does not care and a second ask
+    // after a mentorship ended is a conversation to have with the school rather
+    // than a row to create.
+    return { ok: false, error: "You have already asked this mentor. Your school has it." };
+  }
+
+  const open = await db.mentorThread.count({
+    where: { studentMembershipId: session.membershipId, status: "REQUESTED" },
+  });
+  if (open >= MAX_OPEN_REQUESTS) {
+    return {
+      ok: false,
+      error: `You already have ${open} requests waiting. Talk to your school about those first.`,
+    };
+  }
+
+  const thread = await db.mentorThread.create({
+    data: {
+      schoolId: session.schoolId,
+      expertProfileId: expert.id,
+      expertUserId: expert.userId,
+      studentMembershipId: session.membershipId,
+      // The pupil themselves. `createdByMembershipId` has always recorded who
+      // did the pairing; for a request it records who asked, and `decidedBy`
+      // below records who let it through.
+      createdByMembershipId: session.membershipId,
+      purpose,
+      status: "REQUESTED",
+    },
+    select: { id: true },
+  });
+
+  /**
+   * THE SCHOOL IS TOLD, and the guardians are NOT — yet.
+   *
+   * A request the school may decline is not something to raise with a family:
+   * a child asking for help with maths should not turn into a conversation at
+   * home about a stranger they will never be paired with. Guardians are asked
+   * once, at the point it becomes real, by the existing consent step.
+   */
+  const staff = await db.membership.findMany({
+    where: { schoolId: session.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+    select: { userId: true },
+  });
+  const childName = session.user.preferredName ?? session.user.name;
+  await Promise.all(
+    staff.map((member) =>
+      notify({
+        userId: member.userId,
+        schoolId: session.schoolId!,
+        kind: "EXPERT",
+        title: `${childName} has asked for a mentor`,
+        body: purpose,
+        url: `/mentoring`,
+      }),
+    ),
+  );
+
+  await audit({
+    schoolId: session.schoolId,
+    actorUserId: session.user.id,
+    action: "mentorship.request",
+    targetType: "MentorThread",
+    targetId: thread.id,
+    meta: { expert: expert.user.name },
+  });
+
+  return { ok: true, threadId: thread.id };
+}
+
+export type PendingRequest = {
+  threadId: string;
+  studentName: string;
+  studentMembershipId: string;
+  expertName: string;
+  expertHeadline: string;
+  expertVerified: boolean;
+  purpose: string;
+  askedAt: Date;
+};
+
+/** Requests waiting on this school. */
+export async function listMentorRequests(session: ActiveContext): Promise<PendingRequest[]> {
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
+    throw new AccessError("Only school staff can review mentoring requests");
+  }
+
+  const threads = await db.mentorThread.findMany({
+    where: { schoolId: session.schoolId, status: "REQUESTED" },
+    orderBy: { createdAt: "asc" },
+    select: {
+      id: true,
+      purpose: true,
+      createdAt: true,
+      studentMembershipId: true,
+      student: { select: { user: { select: { name: true, preferredName: true } } } },
+      expert: {
+        select: {
+          headline: true,
+          verifiedAt: true,
+          user: { select: { name: true } },
+        },
+      },
+    },
+  });
+
+  return threads.map((thread) => ({
+    threadId: thread.id,
+    studentName: thread.student.user.preferredName ?? thread.student.user.name,
+    studentMembershipId: thread.studentMembershipId,
+    expertName: thread.expert.user.name,
+    expertHeadline: thread.expert.headline,
+    expertVerified: thread.expert.verifiedAt !== null,
+    purpose: thread.purpose,
+    askedAt: thread.createdAt,
+  }));
+}
+
+export type DecisionResult = { ok: true } | { ok: false; error: string };
+
+/**
+ * The school decides.
+ *
+ * APPROVING IS WHERE THE PLACE IS CLAIMED, not where the pupil asked. A request
+ * that occupied one of an expert's mentee places would let three children with
+ * pending requests close an expert to a school that had approved nobody — and
+ * would make declining a request quietly free up capacity, which is a strange
+ * thing for a refusal to do.
+ *
+ * So the same conditional UPDATE `createMentorship` uses runs here, at the
+ * moment the pairing becomes real. An expert who filled up while the request
+ * sat in the queue is refused now, with a message, rather than silently taking
+ * an extra child.
+ */
+export async function decideMentorRequest(
+  session: ActiveContext,
+  threadId: string,
+  decision: { approve: boolean; reason?: string },
+): Promise<DecisionResult> {
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
+    throw new AccessError("Only school staff can review mentoring requests");
+  }
+
+  // Scoped find: a thread id from another school does not resolve.
+  const thread = await db.mentorThread.findFirst({
+    where: { id: threadId, schoolId: session.schoolId, status: "REQUESTED" },
+    select: {
+      id: true,
+      purpose: true,
+      studentMembershipId: true,
+      expertProfileId: true,
+      expert: {
+        select: { mentorCapacity: true, user: { select: { name: true } } },
+      },
+    },
+  });
+  if (!thread) return { ok: false, error: "That request is no longer waiting." };
+
+  if (!decision.approve) {
+    const reason = (decision.reason ?? "").trim();
+    await db.mentorThread.update({
+      where: { id: thread.id },
+      data: {
+        status: "CLOSED",
+        closedAt: new Date(),
+        decidedByMembershipId: session.membershipId,
+        decidedAt: new Date(),
+        declineReason: reason || null,
+      },
+    });
+
+    // The pupil is told, by the school rather than by silence. A request that
+    // simply never becomes anything is the worst version of this feature.
+    const student = await db.membership.findUnique({
+      where: { id: thread.studentMembershipId },
+      select: { userId: true },
+    });
+    if (student) {
+      await notify({
+        userId: student.userId,
+        schoolId: session.schoolId,
+        kind: "EXPERT",
+        title: "Your school has answered your mentor request",
+        body: reason || "Talk to your teacher about it.",
+        url: "/mentoring",
+      });
+    }
+
+    await audit({
+      schoolId: session.schoolId,
+      actorUserId: session.user.id,
+      action: "mentorship.request.decline",
+      targetType: "MentorThread",
+      targetId: thread.id,
+      meta: { reason: reason || null },
+    });
+    return { ok: true };
+  }
+
+  // Claim the place, exactly as createMentorship does, and for the same reason:
+  // two schools approving an expert's last place at the same moment.
+  if (thread.expert.mentorCapacity !== null) {
+    const claimed = await db.expertProfile.updateMany({
+      where: {
+        id: thread.expertProfileId,
+        activeMentorships: { lt: thread.expert.mentorCapacity },
+      },
+      data: { activeMentorships: { increment: 1 } },
+    });
+    if (claimed.count === 0) {
+      return {
+        ok: false,
+        error: `${thread.expert.user.name} filled up while this was waiting. Decline it and suggest somebody else.`,
+      };
+    }
+  } else {
+    await db.expertProfile.update({
+      where: { id: thread.expertProfileId },
+      data: { activeMentorships: { increment: 1 } },
+    });
+  }
+
+  await db.mentorThread.update({
+    where: { id: thread.id },
+    data: {
+      status: "PENDING_CONSENT",
+      decidedByMembershipId: session.membershipId,
+      decidedAt: new Date(),
+    },
+  });
+
+  // NOW the guardians are asked — the first time this becomes their business.
+  await notifyGuardians(thread.studentMembershipId, (childName) => ({
+    schoolId: session.schoolId!,
+    kind: "EXPERT",
+    title: `${childName} has asked for a mentor, and the school agrees`,
+    body: `${thread.expert.user.name} — ${thread.purpose}. They cannot message ${childName} until you agree.`,
+    url: `/parent/mentoring/${thread.id}`,
+  }));
+
+  await audit({
+    schoolId: session.schoolId,
+    actorUserId: session.user.id,
+    action: "mentorship.request.approve",
+    targetType: "MentorThread",
+    targetId: thread.id,
+    meta: { expert: thread.expert.user.name },
+  });
+
+  return { ok: true };
+}
+
+export type RequestableExpert = {
+  id: string;
+  name: string;
+  headline: string;
+  bio: string;
+  specialisms: string[];
+  verified: boolean;
+};
+
+/**
+ * Mentors a pupil may ask for.
+ *
+ * NARROWER THAN THE STAFF CHOOSER, and the narrowing is the point. `pairingOptions`
+ * lists every published expert because a member of staff choosing one is
+ * expected to read a profile and use judgement. A child is offered only people
+ * who are actually available to mentor — published, offering it at all, and not
+ * already at the cap they agreed to — so the list is the set of asks that could
+ * succeed rather than a catalogue of adults.
+ */
+export async function requestableExperts(session: ActiveContext): Promise<RequestableExpert[]> {
+  if (session.role !== "STUDENT" || !session.membershipId) return [];
+
+  const experts = await db.expertProfile.findMany({
+    where: { publishedAt: { not: null }, offering: { not: "SESSIONS" } },
+    select: {
+      id: true,
+      headline: true,
+      bio: true,
+      specialisms: true,
+      verifiedAt: true,
+      mentorCapacity: true,
+      activeMentorships: true,
+      user: { select: { name: true, preferredName: true } },
+    },
+    orderBy: [{ verifiedAt: "desc" }, { publishedAt: "desc" }],
+  });
+
+  // Anybody this pupil has already asked, in any state — the unique key would
+  // refuse a second row anyway, and offering somebody a button that returns
+  // "you have already asked this mentor" is worse than not offering it.
+  const alreadyAsked = await db.mentorThread.findMany({
+    where: { studentMembershipId: session.membershipId },
+    select: { expertProfileId: true },
+  });
+  const asked = new Set(alreadyAsked.map((t) => t.expertProfileId));
+
+  return experts
+    .filter((e) => !asked.has(e.id))
+    .filter((e) => e.mentorCapacity === null || e.activeMentorships < e.mentorCapacity)
+    .map((e) => ({
+      id: e.id,
+      name: e.user.preferredName ?? e.user.name,
+      headline: e.headline,
+      bio: e.bio,
+      specialisms: readJsonArray<string>(e.specialisms),
+      verified: e.verifiedAt !== null,
+    }));
 }

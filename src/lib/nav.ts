@@ -88,6 +88,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // A pupil's own conversations with their teachers. Their guardians are in
     // every one of them by construction — see assertRemarkAccess.
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
+    // A pupil can now ASK for a mentor. The page was already theirs to read;
+    // without a link they had to be sent one.
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true },
   ],

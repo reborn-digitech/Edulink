@@ -2,11 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HandshakeIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
-import { listMentorships, pairingOptions } from "@/lib/mentoring";
+import {
+  MAX_OPEN_REQUESTS,
+  listMentorRequests,
+  listMentorships,
+  pairingOptions,
+  requestableExperts,
+} from "@/lib/mentoring";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { PairForm } from "./pair-form";
+import { AskForm } from "./ask-form";
+import { RequestQueue } from "./request-queue";
 import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Mentoring" };
@@ -23,11 +31,19 @@ export default async function MentoringPage() {
   const t = await getT();
   const ctx = await requireUser();
   const isStaff = ctx.role === "ADMIN" || ctx.role === "TEACHER";
-  const [threads, options] = await Promise.all([
+  // Reviewing requests is the ADMIN's and the PRINCIPAL's, not every teacher's
+  // — a pupil asking an outside adult into their life is a school-level
+  // decision. `listMentorRequests` enforces it; this only decides what to fetch.
+  const reviews = ctx.role === "ADMIN" || ctx.role === "PRINCIPAL";
+
+  const [threads, options, askable, requests] = await Promise.all([
     listMentorships(ctx),
     isStaff ? pairingOptions(ctx) : Promise.resolve({ experts: [], pupils: [] }),
+    requestableExperts(ctx),
+    reviews ? listMentorRequests(ctx) : Promise.resolve([]),
   ]);
   const waiting = threads.filter((t) => t.awaitingConsent);
+  const myOpenRequests = threads.filter((t) => t.status === "REQUESTED").length;
 
   return (
     <div className="space-y-5">
@@ -40,6 +56,12 @@ export default async function MentoringPage() {
       </div>
 
       {isStaff && <PairForm experts={options.experts} pupils={options.pupils} />}
+
+      {reviews && <RequestQueue requests={requests} />}
+
+      {ctx.role === "STUDENT" && (
+        <AskForm experts={askable} openRequests={myOpenRequests} max={MAX_OPEN_REQUESTS} />
+      )}
 
       {ctx.role === "PARENT" && waiting.length > 0 && (
         <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-sm text-fg">

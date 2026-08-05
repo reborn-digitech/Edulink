@@ -1430,8 +1430,9 @@ async function main() {
     "/student", "/student/work", "/student/grades", "/student/profile",
     "/student/practice", "/student/practice?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
     "/bulletin/new", "/notifications", "/account", "/account/merge", "/record",
-    // A pupil is now a participant in their own conversations with a teacher.
-    "/remarks", "/remarks/new",
+    // A pupil is now a participant in their own conversations with a teacher,
+    // and may ask for a mentor.
+    "/remarks", "/remarks/new", "/mentoring",
   ]) {
     await check(student, p);
   }

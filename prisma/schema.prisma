@@ -1704,8 +1704,21 @@ model MentorThread {
 
   /// Why this pairing exists. Shown to the guardian being asked to consent.
   purpose String
-  /// PENDING_CONSENT | ACTIVE | CLOSED
+  /// REQUESTED | PENDING_CONSENT | ACTIVE | CLOSED
+  ///
+  /// REQUESTED is a PUPIL asking, and it is deliberately a state before the one
+  /// staff-created pairings start in. It grants nothing: the expert cannot see
+  /// it, nobody can message in it, and it does not occupy one of the expert's
+  /// mentee places. A school has to approve it first, and only then does a
+  /// guardian get asked.
   status  String @default("PENDING_CONSENT")
+
+  /// Who dealt with the request, and when. Null on staff-created pairings,
+  /// which never pass through REQUESTED.
+  decidedByMembershipId String?
+  decidedAt             DateTime?
+  /// Why it was turned down. Read by the pupil who asked.
+  declineReason         String?
 
   parentConsentAt     DateTime?
   parentConsentUserId String?

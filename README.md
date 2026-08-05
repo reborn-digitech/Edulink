@@ -1447,6 +1447,46 @@ today only because Membership's own policy already narrows the subquery, and a
 clause whose safety depends on another table's policy is one a change over there
 silently rewrites.
 
+### A pupil can ask for a mentor, and asking grants nothing
+
+**The rule this changes, and the one it does not.** `mentoring.ts` has always
+said only school staff may pair a child with an outside adult — not the expert,
+who would otherwise choose their own mentee, and not the child, who cannot
+meaningfully consent to a stranger. That still holds. **A pupil ASKING is not
+pairing.** Two adults still decide; what changed is that the child can start the
+conversation instead of waiting to be noticed.
+
+**A request grants nothing at all.** The thread is `REQUESTED`: the expert
+cannot see it, nobody can write in it, it gives the expert no tenant access, and
+it does not occupy one of their mentee places. It is a message to the pupil's own
+school, stored in the shape the mentorship will take if the school and a guardian
+both agree.
+
+**The sharpest rule is that the expert cannot see a request.** An outside adult
+learning that a named eleven-year-old asked for them — before anybody vetted it,
+and whether or not it is ever approved — is a disclosure about a child to a
+stranger, made by the child. It is filtered from their list AND refused by id,
+because one without the other is a URL away from being useless.
+
+**Guardians are told at APPROVAL, not at the ask.** A request the school may
+decline should not become a conversation at home about a stranger the child will
+never be paired with. They are asked once, when it becomes real.
+
+**The place is claimed at approval too.** Claiming at request time would let
+three children with pending requests close an expert to a school that had
+approved nobody — and would make *declining* quietly free up capacity, which is
+a strange thing for a refusal to do. An expert who filled up while the request
+sat in the queue is refused with a message rather than silently taking an extra
+child. Requests are capped at three per pupil.
+
+**Declining is a real answer.** It asks for a reason and sends it to the pupil,
+because a child's request that simply never becomes anything is worse than a no.
+
+Eleven mutations, two survived and both were real. Releasing a place a request
+never held passes at a count of zero — the `gt: 0` floor hides it — and fails
+with a real mentorship running alongside. And nothing covered a school deciding
+*another* school's request until a second school went into the fixture.
+
 ### One room: a teacher, the pupil, and the pupil's guardians
 
 **Three separate channels was the obvious build and it is wrong twice.**

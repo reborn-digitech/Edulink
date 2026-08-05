@@ -1378,6 +1378,47 @@ hands one school a window into another.
 
 ---
 
+## 12ab. A pupil asking for a mentor
+
+**Needs a published mentor** — see §12x. If `/root/experts` lists nobody, list
+somebody first; the pupil's chooser is empty by design until then.
+
+### The ask
+
+- ☐ As a pupil, **Mentoring**
+- ☐ **⚠️** Before any button: *asking is not the same as being paired*, the
+  school looks first, then a grown-up at home
+- ☐ **⚠️** Only mentors offering mentoring appear — a workshops-only expert does
+  not, and neither does one who is full
+- ☐ Pick one, say why, **Ask your school**
+- ☐ **⚠️** Ask a fourth mentor → refused. Three waiting is the cap
+
+### The expert must NOT see it
+
+- ☐ **⚠️** Sign in as that expert → **Mentoring** shows nothing
+- ☐ **⚠️** Paste the thread URL directly → **404**. This is the one that matters:
+  a stranger must not learn a named child asked for them before anybody vetted it
+
+### The school decides
+
+- ☐ As the school **admin**, **Mentoring** → the request is in a queue at the top
+- ☐ **⚠️** As a **teacher**, the queue is not there — this is a school-level call
+- ☐ **Agree, and ask the family**
+- ☐ **⚠️** Only NOW does the guardian hear about it — check their notifications
+  before and after
+- ☐ As the guardian, the mentorship is *waiting for a guardian*; agree
+- ☐ Now the expert sees it, and messaging works
+
+### Declining
+
+- ☐ Ask again with a different mentor, then **No, and tell them why**
+- ☐ **⚠️** The pupil is notified with the reason. A request that just disappears
+  is worse than a no
+- ☐ **⚠️** The mentor's free places are unchanged — a declined request never took
+  one
+
+---
+
 ## 12aa. One chat: teacher, pupil and guardians
 
 ### A pupil starts one
