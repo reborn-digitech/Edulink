@@ -22,6 +22,7 @@ import { EmptyState } from "@/components/ui/states";
 import { listGradeCategories } from "@/lib/grading";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Class" };
 
@@ -32,6 +33,7 @@ export default async function ClassDetailPage({
 }: {
   params: Promise<{ classId: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await params;
 
@@ -132,7 +134,7 @@ export default async function ClassDetailPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        My classes
+        {t("teacher.myClasses")}
       </Link>
 
       <div className="flex flex-wrap items-end justify-between gap-3">
@@ -160,8 +162,8 @@ export default async function ClassDetailPage({
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
-          label="Register today"
-          value={todaySession ? "Done" : "To do"}
+          label={t("teacher.registerToday")}
+          value={todaySession ? t("teacher.done") : t("teacher.toDo")}
           tone={todaySession ? "ok" : "warn"}
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
           hint={
@@ -171,21 +173,21 @@ export default async function ClassDetailPage({
           }
         />
         <StatTile
-          label="To mark"
+          label={t("teacher.toMark")}
           value={ungraded}
           tone={ungraded > 0 ? "warn" : "neutral"}
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           hint={ungraded === 0 ? "Nothing waiting" : "Handed in, not marked"}
         />
         <StatTile
-          label="Attendance concern"
+          label={t("teacher.attendanceConcern")}
           value={ofConcern.length}
           tone={ofConcern.length > 0 ? "warn" : "ok"}
           icon={<WarningCircleIcon weight="duotone" className="size-5" />}
-          hint={`Below 90% in ${RANGE_DAYS} days`}
+          hint={t("teacher.belowNinety", { days: RANGE_DAYS })}
         />
         <StatTile
-          label="No guardian"
+          label={t("teacher.noGuardian")}
           value={withoutGuardian}
           tone={withoutGuardian > 0 ? "warn" : "ok"}
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
@@ -205,9 +207,9 @@ export default async function ClassDetailPage({
           className="flex items-center gap-3 p-4"
         >
           <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">Report cards</span>
+            <span className="block font-semibold text-fg">{t("teacher.reportCards")}</span>
             <span className="block text-xs text-fg-muted">
-              Choose the tests that count, write a remark, publish to families
+              {t("teacher.reportCardsBlurb")}
             </span>
           </span>
         </Link>
@@ -219,15 +221,15 @@ export default async function ClassDetailPage({
       <Card>
         <CardHeader
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-          title="Who is in this class"
-          description={`Attendance over the last ${RANGE_DAYS} days`}
+          title={t("teacher.whoIsInClass")}
+          description={t("teacher.attendanceOver", { days: RANGE_DAYS })}
         />
         <CardBody>
           {roster.length === 0 ? (
             <EmptyState
               className="border-0 bg-transparent py-6"
-              title="Nobody has joined yet"
-              description="Share the class code above and students can add themselves."
+              title={t("teacher.nobodyJoined")}
+              description={t("teacher.shareCodeBlurb")}
             />
           ) : (
             <ul className="divide-y divide-border">
@@ -241,7 +243,7 @@ export default async function ClassDetailPage({
 
                   {!student.hasGuardian && (
                     <Badge tone="warn" size="sm">
-                      No guardian
+                      {t("teacher.noGuardian")}
                     </Badge>
                   )}
 
@@ -290,17 +292,17 @@ export default async function ClassDetailPage({
       <Card>
         <CardHeader
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          title="Recent work"
+          title={t("teacher.recentWork")}
           action={
             <Button asChild size="sm" variant="ghost">
-              <Link href={`/teacher/assignments/new?classId=${klass.id}`}>Set work</Link>
+              <Link href={`/teacher/assignments/new?classId=${klass.id}`}>{t("teacher.setWork")}</Link>
             </Button>
           }
         />
         <CardBody>
           {assignments.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              Nothing set yet for this class.
+              {t("teacher.nothingSetYet")}
             </p>
           ) : (
             <ul className="divide-y divide-border">
@@ -322,7 +324,7 @@ export default async function ClassDetailPage({
                     </span>
                     {!assignment.publishedAt && (
                       <Badge tone="warn" size="sm">
-                        Draft
+                        {t("teacher.draft")}
                       </Badge>
                     )}
                   </Link>

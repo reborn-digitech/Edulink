@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { flushQueue, onQueueEvent } from "@/lib/offline-queue";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 
 /**
  * Cross-cutting client runtime, mounted once in the root layout:
@@ -15,6 +16,7 @@ import { cn } from "@/lib/cn";
  * Renders nothing except the connectivity banner.
  */
 export function AppRuntime() {
+  const t = useT();
   const { toast } = useToast();
   const [online, setOnline] = useState(true);
   const [updateReady, setUpdateReady] = useState(false);
@@ -148,7 +150,7 @@ export function AppRuntime() {
           />
           <path d="M2 2l12 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
-        Offline — your changes are saved and will sync
+        {t("shell.offline")}
       </div>
 
       {updateReady && (

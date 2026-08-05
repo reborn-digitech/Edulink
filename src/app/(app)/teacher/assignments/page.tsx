@@ -9,10 +9,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Assignments" };
 
 export default async function AssignmentsPage() {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
   const classIds =
@@ -29,8 +31,8 @@ export default async function AssignmentsPage() {
     return (
       <EmptyState
         icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-        title="No classes yet"
-        description="Assignments belong to a class. Once you have one, you can set work here."
+        title={t("teacher.noClassesYet")}
+        description={t("teacher.assignmentsBelong")}
       />
     );
   }
@@ -49,7 +51,7 @@ export default async function AssignmentsPage() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Assignments</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.assignments")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {assignments.length === 0
               ? "Nothing set yet"
@@ -57,18 +59,18 @@ export default async function AssignmentsPage() {
           </p>
         </div>
         <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/teacher/assignments/new">New assignment</Link>
+          <Link href="/teacher/assignments/new">{t("teacher.newAssignment")}</Link>
         </Button>
       </div>
 
       {assignments.length === 0 ? (
         <EmptyState
           icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-          title="No assignments yet"
-          description="Set a piece of work and everyone in the class — and their families — is told straight away."
+          title={t("teacher.noAssignmentsYet")}
+          description={t("teacher.setWorkBlurb")}
           action={
             <Button asChild>
-              <Link href="/teacher/assignments/new">Set some work</Link>
+              <Link href="/teacher/assignments/new">{t("teacher.setSomeWork")}</Link>
             </Button>
           }
         />
@@ -112,11 +114,11 @@ export default async function AssignmentsPage() {
 
                     {!assignment.publishedAt ? (
                       <Badge tone="warn" size="sm">
-                        Draft
+                        {t("teacher.draft")}
                       </Badge>
                     ) : allGraded ? (
                       <Badge tone="ok" size="sm">
-                        Marked
+                        {t("teacher.marked")}
                       </Badge>
                     ) : (
                       <Badge tone="neutral" size="sm">

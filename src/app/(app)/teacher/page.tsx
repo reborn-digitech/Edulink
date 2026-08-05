@@ -12,10 +12,12 @@ import { formatDateKey, relativeTime, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Today" };
 
 export default async function TeacherHome() {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
   const school = await db.school.findUniqueOrThrow({
@@ -30,8 +32,8 @@ export default async function TeacherHome() {
     return (
       <EmptyState
         icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-        title="No classes assigned yet"
-        description="Ask an admin to add you to a class, and your day will appear here."
+        title={t("teacher.noClassesYet")}
+        description={t("teacher.noClassesBody")}
       />
     );
   }
@@ -72,7 +74,7 @@ export default async function TeacherHome() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Today</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.today")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
           {school.name}
@@ -81,20 +83,20 @@ export default async function TeacherHome() {
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
-          label="Registers left"
+          label={t("teacher.registersLeft")}
           value={outstanding.length}
           tone={outstanding.length === 0 ? "ok" : "warn"}
           icon={<ChecksIcon weight="duotone" className="size-5" />}
           hint={outstanding.length === 0 ? "All done — nice." : "Tap below to take one"}
         />
         <StatTile
-          label="Classes"
+          label={t("teacher.classes")}
           value={classes.length}
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          hint={`${classes.reduce((sum, c) => sum + c._count.enrollments, 0)} students`}
+          hint={t("teacher.studentsCount", { count: classes.reduce((sum, c) => sum + c._count.enrollments, 0) })}
         />
         <StatTile
-          label="To grade"
+          label={t("teacher.toGrade")}
           value={ungraded}
           tone={ungraded > 0 ? "warn" : "neutral"}
           icon={<WarningCircleIcon weight="duotone" className="size-5" />}
@@ -105,7 +107,7 @@ export default async function TeacherHome() {
       <Card>
         <CardHeader
           icon={<ChecksIcon weight="duotone" className="size-5" />}
-          title="Registers"
+          title={t("teacher.registers")}
           description={
             outstanding.length === 0
               ? "Every register is taken for today."
@@ -132,7 +134,7 @@ export default async function TeacherHome() {
                         {klass.name}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {klass._count.enrollments} students
+                        {t("teacher.studentsCount", { count: klass._count.enrollments })}
                       </span>
                     </span>
                     <span
@@ -156,18 +158,18 @@ export default async function TeacherHome() {
       <Card>
         <CardHeader
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          title="Coming up"
-          description="Work due in your classes"
+          title={t("teacher.comingUp")}
+          description={t("teacher.workDueIn")}
           action={
             <Button asChild size="sm" variant="ghost">
-              <Link href="/teacher/assignments">See all</Link>
+              <Link href="/teacher/assignments">{t("teacher.seeAll")}</Link>
             </Button>
           }
         />
         <CardBody>
           {dueSoon.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              Nothing due. A good moment to set something.
+              {t("teacher.nothingDue")}
             </p>
           ) : (
             <ul className="divide-y divide-border">

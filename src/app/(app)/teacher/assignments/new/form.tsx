@@ -9,6 +9,7 @@ import { FilePicker } from "@/components/ui/file-picker";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { newAssignment } from "../actions";
+import { useT } from "@/lib/i18n";
 
 const CATEGORIES = ["Homework", "Classwork", "Quiz", "Test", "Project", "Reading"];
 
@@ -21,6 +22,7 @@ export function AssignmentForm({
   preselected: string;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -79,7 +81,7 @@ export function AssignmentForm({
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "Could not save",
+          title: t("teacher.couldNotSave"),
           description: result.errors._form ?? "Check the highlighted fields.",
         });
         return;
@@ -115,7 +117,7 @@ export function AssignmentForm({
         </p>
       )}
 
-      <SelectField label="Class" required value={classId} onChange={(e) => setClassId(e.target.value)}>
+      <SelectField label={t("teacher.classField")} required value={classId} onChange={(e) => setClassId(e.target.value)}>
         {classes.map((klass) => (
           <option key={klass.id} value={klass.id}>
             {klass.name} ({klass.studentCount} student{klass.studentCount === 1 ? "" : "s"})
@@ -124,10 +126,10 @@ export function AssignmentForm({
       </SelectField>
 
       <TextField
-        label="Title"
+        label={t("teacher.title")}
         required
         autoFocus
-        placeholder="Fractions worksheet 3"
+        placeholder={t("teacher.titlePlaceholder")}
         value={title}
         error={errors.title}
         onChange={(e) => setTitle(e.target.value)}
@@ -135,25 +137,25 @@ export function AssignmentForm({
 
       <div>
         <label htmlFor="assignment-body" className="block text-sm font-medium text-fg">
-          Instructions
+          {t("teacher.instructions")}
         </label>
         <textarea
           id="assignment-body"
           value={body}
           onChange={(e) => setBody(e.target.value.slice(0, 20_000))}
           rows={5}
-          placeholder="Complete questions 1–12. Show your working."
+          placeholder={t("teacher.instructionsPlaceholder")}
           className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
-        <p className="mt-1 text-xs text-fg-muted">Optional — students see this with the task.</p>
+        <p className="mt-1 text-xs text-fg-muted">{t("teacher.instructionsHint")}</p>
       </div>
 
       <FilePicker
         idPrefix="assignment"
-        label="Handouts"
+        label={t("teacher.handouts")}
         files={files}
         error={errors.files}
-        hint="Optional. Up to 5 files, 5 MB each — PDF or an image. Everyone in the class can open these once the work is set."
+        hint={t("teacher.handoutsHint")}
         onChange={(next, error) => {
           setFiles(next);
           setErrors((e) => ({ ...e, files: error ?? "" }));
@@ -161,7 +163,7 @@ export function AssignmentForm({
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <SelectField label="Category" value={category} onChange={(e) => setCategory(e.target.value)}>
+        <SelectField label={t("teacher.category")} value={category} onChange={(e) => setCategory(e.target.value)}>
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>
               {c}
@@ -170,7 +172,7 @@ export function AssignmentForm({
         </SelectField>
 
         <TextField
-          label="Points available"
+          label={t("teacher.pointsAvailable")}
           type="number"
           inputMode="decimal"
           min={0}
@@ -178,23 +180,23 @@ export function AssignmentForm({
           value={points}
           error={errors.points}
           onChange={(e) => setPoints(e.target.value)}
-          hint="Leave blank for unmarked work."
+          hint={t("teacher.pointsHint")}
         />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <DateField
-          label="Due date"
+          label={t("teacher.dueDate")}
           value={dueDate}
           error={errors.dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />
         <TextField
-          label="Due time"
+          label={t("teacher.dueTime")}
           type="time"
           value={dueTime}
           onChange={(e) => setDueTime(e.target.value)}
-          hint="Defaults to the end of the school day."
+          hint={t("teacher.dueTimeHint")}
         />
       </div>
 
@@ -207,7 +209,7 @@ export function AssignmentForm({
           icon={<FloppyDiskIcon weight="bold" />}
           onClick={() => submit(false)}
         >
-          Save as draft
+          {t("teacher.saveAsDraft")}
         </Button>
         <Button
           type="submit"

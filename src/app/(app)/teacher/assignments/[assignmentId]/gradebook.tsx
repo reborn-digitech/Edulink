@@ -17,6 +17,7 @@ import { EmptyState } from "@/components/ui/states";
 import { formatMilli, fromMilli } from "@/lib/validation";
 import { cn } from "@/lib/cn";
 import { submitGrades } from "../actions";
+import { useT } from "@/lib/i18n";
 
 export type GradeRow = {
   membershipId: string;
@@ -53,6 +54,7 @@ export function Gradebook({
   rows: GradeRow[];
   stats: { total: number; submitted: number; graded: number; averagePercent: number | null };
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -121,7 +123,7 @@ export function Gradebook({
     if (invalid.length > 0) {
       toast({
         tone: "danger",
-        title: "Check those marks",
+        title: t("teacher.checkMarks"),
         description: `${invalid.length} ${invalid.length === 1 ? "mark is" : "marks are"} not a usable number.`,
       });
       return;
@@ -138,13 +140,13 @@ export function Gradebook({
       });
 
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not saved", description: result.error });
+        toast({ tone: "danger", title: t("teacher.notSaved"), description: result.error });
         return;
       }
 
       toast({
         tone: "ok",
-        title: `${result.saved} mark${result.saved === 1 ? "" : "s"} saved`,
+        title: t("teacher.marksSaved", { count: result.saved ?? 0 }),
         description:
           (result.cleared ? `${result.cleared} cleared. ` : "") +
           (result.rejected ? `${result.rejected} rejected. ` : "") +
@@ -163,28 +165,28 @@ export function Gradebook({
   return (
     <div className="space-y-4">
       <div className="grid gap-3 sm:grid-cols-4">
-        <StatTile label="Students" value={stats.total} />
+        <StatTile label={t("teacher.students")} value={stats.total} />
         <StatTile
-          label="Handed in"
+          label={t("teacher.handedIn")}
           value={stats.submitted}
           tone={stats.submitted === stats.total ? "ok" : "neutral"}
-          hint={`${stats.total - stats.submitted} outstanding`}
+          hint={t("teacher.outstanding", { count: stats.total - stats.submitted })}
         />
         <StatTile
-          label="Marked"
+          label={t("teacher.marked")}
           value={stats.graded}
           tone={stats.graded === stats.total ? "ok" : "warn"}
-          hint={`${stats.total - stats.graded} to go`}
+          hint={t("teacher.toGoCount", { count: stats.total - stats.graded })}
         />
         <StatTile
-          label="Class average"
+          label={t("teacher.classAverage")}
           value={stats.averagePercent === null ? "—" : `${stats.averagePercent}%`}
           hint={stats.graded === 0 ? "Nothing marked yet" : `Across ${stats.graded} marked`}
         />
       </div>
 
       <label className="relative block">
-        <span className="sr-only">Search this class</span>
+        <span className="sr-only">{t("teacher.searchClass")}</span>
         <MagnifyingGlassIcon
           className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
           aria-hidden="true"
@@ -192,7 +194,7 @@ export function Gradebook({
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Find a student…"
+          placeholder={t("teacher.findStudent")}
           className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </label>
@@ -204,7 +206,7 @@ export function Gradebook({
           action={
             query ? (
               <Button variant="secondary" onClick={() => setQuery("")}>
-                Clear search
+                {t("teacher.clearSearch")}
               </Button>
             ) : undefined
           }
@@ -239,12 +241,12 @@ export function Gradebook({
                       <p className="truncate text-xs text-fg-muted">
                         {row.submittedAt ? (
                           row.late ? (
-                            <span className="text-warn">Handed in late</span>
+                            <span className="text-warn">{t("teacher.handedInLate")}</span>
                           ) : (
                             "Handed in"
                           )
                         ) : (
-                          <span className="text-fg-subtle">Not handed in</span>
+                          <span className="text-fg-subtle">{t("teacher.notHandedIn")}</span>
                         )}
                         {row.gradedAt && !isDirty && " · marked"}
                       </p>
@@ -285,7 +287,7 @@ export function Gradebook({
                             score: e.target.value.replace(/[^0-9.]/g, ""),
                           })
                         }
-                        aria-label={`Mark for ${row.name}${maxPoints ? ` out of ${maxPoints}` : ""}`}
+                        aria-label={t("teacher.markFor", { name: row.name })}
                         aria-invalid={isInvalid || undefined}
                         placeholder="—"
                         className={cn(
@@ -314,11 +316,11 @@ export function Gradebook({
                         }
                         rows={2}
                         autoFocus
-                        placeholder="Lovely working out — keep showing your steps."
+                        placeholder={t("teacher.commentPlaceholder")}
                         className="w-full resize-y rounded-[--radius-sm] border border-border bg-surface p-2.5 text-sm outline-none focus:border-accent"
                       />
                       <p className="mt-1 text-xs text-fg-muted">
-                        The student and their guardians see this.
+                        {t("teacher.familySeesThis")}
                       </p>
                     </div>
                   )}
@@ -347,7 +349,7 @@ export function Gradebook({
             disabled={invalid.length > 0}
             icon={<FloppyDiskIcon weight="bold" />}
           >
-            Save marks
+            {t("teacher.saveMarks")}
           </Button>
         </div>
       )}

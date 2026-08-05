@@ -5,10 +5,12 @@ import { db } from "@/lib/db";
 import { myLeave } from "@/lib/leave";
 import { todayKey } from "@/lib/dates";
 import { LeaveForm } from "./form";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Leave" };
 
 export default async function TeacherLeavePage() {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "PRINCIPAL");
 
   const school = await db.school.findUniqueOrThrow({
@@ -39,7 +41,7 @@ export default async function TeacherLeavePage() {
           <CalendarIcon weight="duotone" className="size-6" />
         </span>
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Leave</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.leave")}</h1>
           <p className="mt-1 text-sm leading-relaxed text-fg-muted">
             Ask to be away. The principal answers, and if it is approved your registers are covered
             automatically — you do not have to arrange that separately.

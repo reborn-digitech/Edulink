@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { generate, publish, saveRemark, withdraw } from "./actions";
+import { useT } from "@/lib/i18n";
 
 type Assessment = {
   assignmentId: string;
@@ -54,6 +55,7 @@ export function Builder({
   cards: CardRow[];
   selectedTitle: string | null;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -81,7 +83,7 @@ export function Builder({
       }
       toast({
         tone: "ok",
-        title: `${(result.created ?? 0) + (result.updated ?? 0)} drafts ready`,
+        title: t("teacher.draftsReady", { count: (result.created ?? 0) + (result.updated ?? 0) }),
         description: result.skippedPublished
           ? `${result.skippedPublished} already published and left alone.`
           : undefined,
@@ -112,7 +114,7 @@ export function Builder({
 
         {assessments.length === 0 ? (
           <p className="mt-3 rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
-            This class has no published assignments yet. Set some work and mark it first.
+            {t("teacher.noPublishedWork")}
           </p>
         ) : (
           <ul className="mt-3 space-y-1">
@@ -149,7 +151,7 @@ export function Builder({
                     {unmarked && (
                       <span
                         className="flex shrink-0 items-center gap-1 text-xs font-medium text-warn"
-                        title="Nobody has a mark for this yet — it will be blank on every card"
+                        title={t("teacher.noMarkYet")}
                       >
                         <WarningIcon weight="bold" className="size-4" />
                         unmarked
@@ -168,7 +170,7 @@ export function Builder({
         <h2 className="text-sm font-semibold text-fg">2. Generate the drafts</h2>
         <div className="mt-3 flex flex-wrap items-end gap-3">
           <label className="min-w-[12rem] flex-1">
-            <span className="block text-xs font-medium text-fg">What this report is called</span>
+            <span className="block text-xs font-medium text-fg">{t("teacher.reportName")}</span>
             <input
               type="text"
               value={title}
@@ -189,7 +191,7 @@ export function Builder({
             icon={<SparkleIcon weight="bold" />}
             onClick={build}
           >
-            Generate for the class
+            {t("teacher.generateForClass")}
           </Button>
         </div>
       </section>
@@ -216,10 +218,10 @@ export function Builder({
                   startTransition(async () => {
                     const result = await publish(classId, selectedTitle!);
                     if (!result.ok) {
-                      toast({ tone: "danger", title: "Not published", description: result.error });
+                      toast({ tone: "danger", title: t("teacher.notPublished"), description: result.error });
                       return;
                     }
-                    toast({ tone: "ok", title: `${result.published} report cards sent out` });
+                    toast({ tone: "ok", title: t("teacher.cardsSent", { count: result.published ?? 0 }) });
                     router.refresh();
                   })
                 }
@@ -235,15 +237,15 @@ export function Builder({
                   startTransition(async () => {
                     const result = await withdraw(classId, selectedTitle!);
                     if (!result.ok) {
-                      toast({ tone: "danger", title: "Not withdrawn", description: result.error });
+                      toast({ tone: "danger", title: t("teacher.notWithdrawn"), description: result.error });
                       return;
                     }
-                    toast({ tone: "warn", title: `${result.withdrawn ?? 0} withdrawn` });
+                    toast({ tone: "warn", title: t("teacher.withdrawnCount", { count: result.withdrawn ?? 0 }) });
                     router.refresh();
                   })
                 }
               >
-                Withdraw all
+                {t("teacher.withdrawAll")}
               </Button>
             )}
           </div>
@@ -272,7 +274,7 @@ export function Builder({
                     href={`/report-cards/${card.id}`}
                     className="flex items-center gap-1 text-xs font-semibold text-accent-strong hover:underline"
                   >
-                    Preview <ArrowSquareOutIcon className="size-3.5" />
+                    {t("teacher.preview")} <ArrowSquareOutIcon className="size-3.5" />
                   </Link>
                 </div>
 
@@ -282,7 +284,7 @@ export function Builder({
                     <textarea
                       rows={2}
                       maxLength={2000}
-                      placeholder="A sentence for the family…"
+                      placeholder={t("teacher.remarkPlaceholder")}
                       defaultValue={card.remark ?? ""}
                       onChange={(e) =>
                         setRemarks((r) => ({ ...r, [card.id]: e.target.value }))
@@ -293,7 +295,7 @@ export function Builder({
                         startTransition(async () => {
                           const result = await saveRemark(classId, card.id, next);
                           if (!result.ok) {
-                            toast({ tone: "danger", title: "Remark not saved", description: result.error });
+                            toast({ tone: "danger", title: t("teacher.remarkNotSaved"), description: result.error });
                           }
                         });
                       }}

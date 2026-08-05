@@ -1851,6 +1851,20 @@ One line each, with the default rejected.
   half-written dictionary is a build failure rather than a silent one, which is
   the good version of getting it wrong.
 
+- **The teacher's surface — the role staff live in every day.** All 17 files:
+  today, the register, classes, assignments, the gradebook, report cards, grade
+  weights, leave and the class join code. ~130 keys. 1,566 → **1,412 strings**.
+  **THE OFFLINE BANNER WENT WITH IT**, which is one string on every signed-in
+  page and was sitting in English above a fully Marathi dashboard.
+  **WHAT IS LEFT ON THESE PAGES IS A CATEGORY, NOT A REMNANT**: `export const
+  metadata = { title: … }` in **87 files**. That is the browser tab, it is a
+  static export rather than a render, and translating it means `generateMetadata`
+  and a locale read per page — a different shape of change from the rest, worth
+  doing as one pass rather than trickling.
+  **Walked in मराठी**: the dashboard, classes, assignments, the register and
+  leave, all rendering आज / माझे वर्ग / कामे / हजेरी घ्या / रजा with the offline
+  banner in Marathi above them.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
@@ -1971,11 +1985,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   navigation, role labels, the account page, login and **the whole guardian
   surface** are translated; every other page is still English. The switcher
   itself carries that sentence, so nobody meets an English page and wonders
-  whether it is broken. **The guardian's and the pupil's surfaces are both done**,
-  and so are the four attendance marks, which appear on a teacher's register as
-  well. `npm run i18n` prints exactly what is left — **199 files and 1,566
-  strings**, plus ~70 date calls that still render in English whatever the
-  reader's language — and that total is a floor rather than a certainty.
+  whether it is broken. **The guardian's, the pupil's and the teacher's surfaces
+  are all done**, as are the four attendance marks and the offline banner that
+  sits above every page. `npm run i18n` prints exactly what is left — **193 files
+  and 1,412 strings**, plus ~70 date calls that still render in English whatever
+  the reader's language and **87 page `metadata` titles** (the browser tab), and
+  that total is a floor rather than a certainty.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
 - SSO (Google/Microsoft/Apple)

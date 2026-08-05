@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
 import { saveWeights } from "./actions";
+import { useT } from "@/lib/i18n";
 
 type Row = { name: string; percent: string };
 
@@ -33,6 +34,7 @@ export function GradeWeights({
   /** Category names that assignments actually use, for the "not weighted" hint. */
   categoriesInUse: string[];
 }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -79,8 +81,8 @@ export function GradeWeights({
   return (
     <Card>
       <CardHeader
-        title="Grade weights"
-        description="Decide how much each kind of work counts towards this class's overall mark."
+        title={t("teacher.gradeWeights")}
+        description={t("teacher.weightsBlurb")}
         icon={<ScalesIcon weight="duotone" className="size-5" />}
       />
       <CardBody className="space-y-4">
@@ -90,8 +92,8 @@ export function GradeWeights({
               <input
                 type="text"
                 value={row.name}
-                placeholder="Homework"
-                aria-label={`Category ${index + 1} name`}
+                placeholder={t("teacher.categoryPlaceholder")}
+                aria-label={t("teacher.categoryName", { n: index + 1 })}
                 onChange={(e) => update(index, { name: e.target.value })}
                 className="min-w-0 flex-1 rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
               />
@@ -104,7 +106,7 @@ export function GradeWeights({
                   step="0.01"
                   value={row.percent}
                   placeholder="20"
-                  aria-label={`Category ${index + 1} weight, percent`}
+                  aria-label={t("teacher.categoryWeight", { n: index + 1 })}
                   onChange={(e) => update(index, { percent: e.target.value })}
                   className="w-20 rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-right text-sm tabular-nums text-fg"
                 />
@@ -113,7 +115,7 @@ export function GradeWeights({
               <Button
                 variant="ghost"
                 size="sm"
-                aria-label={`Remove category ${index + 1}`}
+                aria-label={t("teacher.removeCategory", { n: index + 1 })}
                 onClick={() => {
                   setSaved(false);
                   setRows((current) => current.filter((_, i) => i !== index));
@@ -134,7 +136,7 @@ export function GradeWeights({
               setRows((current) => [...current, { name: "", percent: "" }]);
             }}
           >
-            Add a category
+            {t("teacher.addCategory")}
           </Button>
 
           <p
@@ -161,11 +163,11 @@ export function GradeWeights({
         )}
 
         {error && <p className="text-sm font-medium text-danger">{error}</p>}
-        {saved && !error && <p className="text-sm font-medium text-ok">Weights saved.</p>}
+        {saved && !error && <p className="text-sm font-medium text-ok">{t("teacher.weightsSaved")}</p>}
 
         <div className="flex items-center gap-3">
           <Button onClick={submit} loading={pending} disabled={!balanced}>
-            Save weights
+            {t("teacher.saveWeights")}
           </Button>
           <p className="text-xs text-fg-muted">
             {isEmpty

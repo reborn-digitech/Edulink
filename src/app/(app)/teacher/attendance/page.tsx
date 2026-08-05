@@ -11,6 +11,7 @@ import { Register } from "./register";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Take the register" };
 
@@ -19,6 +20,7 @@ export default async function AttendancePage({
 }: {
   searchParams: Promise<{ classId?: string; date?: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const params = await searchParams;
 
@@ -43,12 +45,12 @@ export default async function AttendancePage({
     return (
       <EmptyState
         icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title="No register for you today"
-        description="You are not down to mark any register today. An admin assigns class teachers, and can arrange cover if somebody is away."
+        title={t("teacher.noRegisterToday")}
+        description={t("teacher.noRegisterBody")}
         action={
           ctx.role === "ADMIN" ? (
             <Button asChild>
-              <Link href="/admin/classes/new">Create a class</Link>
+              <Link href="/admin/classes/new">{t("teacher.createClass")}</Link>
             </Button>
           ) : undefined
         }
@@ -81,7 +83,7 @@ export default async function AttendancePage({
     return (
       <div className="space-y-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg">Take the register</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.takeRegister")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
           </p>
@@ -112,11 +114,11 @@ export default async function AttendancePage({
                   </span>
                   {takenSet.has(klass.id) ? (
                     <span className="shrink-0 rounded-full bg-ok-soft px-2.5 py-1 text-xs font-semibold text-ok">
-                      Done
+                      {t("teacher.done")}
                     </span>
                   ) : (
                     <span className="shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn">
-                      To do
+                      {t("teacher.toDo")}
                     </span>
                   )}
                   <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
@@ -139,15 +141,15 @@ export default async function AttendancePage({
     return (
       <EmptyState
         icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title="This register is not yours today"
-        description="An admin assigns who takes each register, and can arrange cover when somebody is away."
+        title={t("teacher.notYourRegister")}
+        description={t("teacher.notYoursBody")}
       />
     );
   }
 
   const register = await getRegister(ctx.schoolId, selectedId, dateKey);
   if (!register) {
-    return <EmptyState title="That class could not be found" description="It may have been archived." />;
+    return <EmptyState title={t("teacher.classNotFound")} description={t("teacher.mayBeArchived")} />;
   }
 
   return (

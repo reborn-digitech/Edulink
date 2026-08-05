@@ -6,6 +6,7 @@ import { requireRole, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report-cards";
 import { Builder } from "./builder";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Report cards" };
 
@@ -16,6 +17,7 @@ export default async function ReportCardsPage({
   params: Promise<{ classId: string }>;
   searchParams: Promise<{ title?: string }>;
 }) {
+  const t = await getT();
   // PRINCIPAL is here because `cohort.ts` lets a school make one the LEAD class
   // teacher — in a small school the head takes Class 5 on Tuesdays, and that was
   // a deliberate decision. Without this line that head was redirected at the
@@ -63,12 +65,12 @@ export default async function ReportCardsPage({
       </Link>
 
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Report cards</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.reportCards")}</h1>
         <p className="mt-1 text-sm text-fg-muted">{heading}</p>
       </div>
 
       {titles.length > 1 && (
-        <nav aria-label="Reports" className="flex flex-wrap gap-1.5">
+        <nav aria-label={t("teacher.reports")} className="flex flex-wrap gap-1.5">
           {titles.map((existing) => (
             <Link
               key={existing}

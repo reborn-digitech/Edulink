@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CopyIcon, PrinterIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
+import { useT } from "@/lib/i18n";
 
 /**
  * The class join code, with a printable card for the classroom wall.
@@ -16,6 +17,7 @@ import { useToast } from "@/components/ui/toast";
  * and says so.
  */
 export function ClassCode({ joinCode, className }: { joinCode: string; className: string }) {
+  const t = useT();
   const { toast } = useToast();
   const [showQr, setShowQr] = useState(false);
 
@@ -27,13 +29,13 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
       <div className="flex flex-wrap items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-            Class join code
+            {t("teacher.classJoinCode")}
           </p>
           <code className="mt-1 block font-mono text-2xl font-bold tracking-[0.15em] text-accent-strong">
             {joinCode}
           </code>
           <p className="mt-1 text-xs text-fg-muted">
-            Students enter this at <span className="font-medium text-fg">{joinUrl}</span> and join
+            {t("teacher.studentsEnterAt")} <span className="font-medium text-fg">{joinUrl}</span> and join
             this class straight away.
           </p>
         </div>
@@ -46,17 +48,17 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
             onClick={async () => {
               try {
                 await navigator.clipboard.writeText(joinCode);
-                toast({ tone: "ok", title: "Class code copied" });
+                toast({ tone: "ok", title: t("teacher.codeCopied") });
               } catch {
                 toast({
                   tone: "warn",
-                  title: "Could not copy",
-                  description: "Select the code to copy it.",
+                  title: t("teacher.couldNotCopy"),
+                  description: t("teacher.selectToCopy"),
                 });
               }
             }}
           >
-            Copy
+            {t("teacher.copy")}
           </Button>
           <Button
             size="sm"
@@ -75,19 +77,19 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
               on a wall, and read across a classroom. */}
           <div className="mx-auto max-w-xs rounded-[--radius-lg] border-2 border-fg bg-white p-6 text-center text-black">
             <p className="text-sm font-bold uppercase tracking-wide">{className}</p>
-            <p className="mt-1 text-xs">Join EduLink</p>
+            <p className="mt-1 text-xs">{t("teacher.joinEduLink")}</p>
             <p className="mt-4 font-mono text-3xl font-black tracking-[0.15em]">{joinCode}</p>
             <p className="mt-4 text-xs leading-relaxed">
-              Go to <strong>{joinUrl}</strong> and type this code.
+              {t("teacher.goTo")} <strong>{joinUrl}</strong> and type this code.
             </p>
           </div>
           <div className="mt-3 flex justify-center">
             <Button size="sm" variant="ghost" onClick={() => window.print()}>
-              Print it
+              {t("teacher.printIt")}
             </Button>
           </div>
           <p className="mt-2 text-center text-xs text-fg-subtle">
-            No QR code yet — students type the code above.
+            {t("teacher.noQr")}
           </p>
         </div>
       )}

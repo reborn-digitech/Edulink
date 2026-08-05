@@ -6,8 +6,10 @@ import { PaperPlaneTiltIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { publishNow } from "../actions";
+import { useT } from "@/lib/i18n";
 
 export function PublishBar({ assignmentId }: { assignmentId: string }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -16,7 +18,7 @@ export function PublishBar({ assignmentId }: { assignmentId: string }) {
     <div className="flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft p-4">
       <WarningIcon weight="fill" className="size-5 shrink-0 text-warn" />
       <p className="min-w-0 flex-1 text-sm font-medium text-warn">
-        This is still a draft. Students cannot see it and nobody has been told.
+        {t("teacher.stillDraft")}
       </p>
       <Button
         size="sm"
@@ -29,16 +31,16 @@ export function PublishBar({ assignmentId }: { assignmentId: string }) {
               result.ok
                 ? {
                     tone: "ok",
-                    title: "Published",
-                    description: "The class and their guardians have been told.",
+                    title: t("teacher.published"),
+                    description: t("teacher.classTold"),
                   }
-                : { tone: "danger", title: "Could not publish", description: result.error },
+                : { tone: "danger", title: t("teacher.couldNotPublish"), description: result.error },
             );
             router.refresh();
           })
         }
       >
-        Publish now
+        {t("teacher.publishNow")}
       </Button>
     </div>
   );

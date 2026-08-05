@@ -143,9 +143,9 @@ export function Register({
         toast({
           tone: "danger",
           duration: null,
-          title: "That did not save",
+          title: t("teacher.didNotSave"),
           description: detail.error ?? "Please check your connection and try again.",
-          action: { label: "Retry", onClick: () => void flush() },
+          action: { label: t("teacher.retry"), onClick: () => void flush() },
         });
         return;
       }
@@ -155,8 +155,8 @@ export function Register({
       if (result.rejected.length > 0) {
         toast({
           tone: "warn",
-          title: "Some marks were not saved",
-          description: `${result.rejected.length} student(s) are no longer in this class.`,
+          title: t("teacher.someNotSaved"),
+          description: t("teacher.noLongerInClass", { count: result.rejected.length }),
         });
       }
     } catch {
@@ -229,8 +229,8 @@ export function Register({
 
     toast({
       tone: "ok",
-      title: `${unmarked.length} marked present`,
-      description: "Now just change the ones who are not.",
+      title: t("teacher.markedPresent", { count: unmarked.length }),
+      description: t("teacher.nowChange"),
       onUndo: () => {
         setRoster(snapshot);
         for (const entry of unmarked) {
@@ -284,7 +284,7 @@ export function Register({
       )}
 
       <label className="relative block">
-        <span className="sr-only">Search this class</span>
+        <span className="sr-only">{t("teacher.searchClass")}</span>
         <MagnifyingGlassIcon
           className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
           aria-hidden="true"
@@ -292,7 +292,7 @@ export function Register({
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Find a student…"
+          placeholder={t("teacher.findStudent")}
           className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </label>
@@ -308,7 +308,7 @@ export function Register({
           action={
             query ? (
               <Button variant="secondary" onClick={() => setQuery("")}>
-                Clear search
+                {t("teacher.clearSearch")}
               </Button>
             ) : undefined
           }
@@ -391,7 +391,7 @@ function StudentRow({
 
       <div
         role="group"
-        aria-label={`Attendance for ${entry.name}`}
+        aria-label={t("teacher.attendanceFor", { name: entry.name })}
         className="flex shrink-0 gap-1"
       >
         {ATTENDANCE_STATUSES.map((status) => {
@@ -443,6 +443,7 @@ function SyncPill({
   online: boolean;
   complete: boolean;
 }) {
+  const t = useT();
   if (!online || state === "queued" || queued > 0) {
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-warn-soft px-3 py-1.5 text-xs font-semibold text-warn">
@@ -455,14 +456,14 @@ function SyncPill({
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-muted px-3 py-1.5 text-xs font-semibold text-fg-muted">
         <CloudArrowUpIcon weight="bold" className="size-4 animate-pulse" />
-        Saving…
+        {t("teacher.saving")}
       </span>
     );
   }
   if (state === "error") {
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-danger-soft px-3 py-1.5 text-xs font-semibold text-danger">
-        Not saved
+        {t("teacher.notSaved")}
       </span>
     );
   }
@@ -488,6 +489,7 @@ function NoteSheet({
   onClose: () => void;
   onSave: (note: string) => void;
 }) {
+  const t = useT();
   const [value, setValue] = useState(entry.note ?? "");
   const ref = useRef<HTMLTextAreaElement>(null);
 
@@ -505,13 +507,13 @@ function NoteSheet({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={`Note for ${entry.name}`}
+        aria-label={t("teacher.noteFor", { name: entry.name })}
         onClick={(event) => event.stopPropagation()}
         className="w-full max-w-md rounded-t-[--radius-xl] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[--radius-xl] sm:pb-5"
       >
-        <h2 className="text-base font-bold text-fg">Note for {entry.name}</h2>
+        <h2 className="text-base font-bold text-fg">{t("teacher.noteFor", { name: entry.name })}</h2>
         <p className="mt-0.5 text-xs text-fg-muted">
-          Only staff and this student&rsquo;s guardians can see this.
+          {t("teacher.guardiansSeeNote")}
         </p>
 
         <textarea
@@ -520,17 +522,17 @@ function NoteSheet({
           onChange={(event) => setValue(event.target.value)}
           rows={3}
           maxLength={500}
-          placeholder="Left early for a dentist appointment"
+          placeholder={t("teacher.notePlaceholder")}
           className="mt-3 w-full rounded-[--radius-md] border border-border bg-surface p-3 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-right text-xs text-fg-subtle">{value.length}/500</p>
 
         <div className="mt-3 flex gap-2">
           <Button variant="ghost" block onClick={onClose}>
-            Cancel
+            {t("teacher.cancel")}
           </Button>
           <Button block onClick={() => onSave(value.trim())}>
-            Save note
+            {t("teacher.saveNote")}
           </Button>
         </div>
       </div>

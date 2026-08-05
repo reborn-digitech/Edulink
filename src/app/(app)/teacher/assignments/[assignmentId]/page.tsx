@@ -9,6 +9,7 @@ import { PublishBar } from "./publish-bar";
 import { AttachmentList } from "@/components/attachment-list";
 import { formatMilli } from "@/lib/validation";
 import { relativeTime } from "@/lib/dates";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "Mark work" };
 
@@ -17,6 +18,7 @@ export default async function AssignmentPage({
 }: {
   params: Promise<{ assignmentId: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { assignmentId } = await params;
 
@@ -38,7 +40,7 @@ export default async function AssignmentPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All assignments
+        {t("teacher.allAssignments")}
       </Link>
 
       <div>
@@ -63,7 +65,7 @@ export default async function AssignmentPage({
 
       <div>
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-          Files for the class
+          {t("teacher.filesForClass")}
         </h2>
         <AttachmentList
           className="mt-2"

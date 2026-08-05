@@ -7,10 +7,12 @@ import { todayKey } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "My classes" };
 
 export default async function TeacherClassesPage() {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
   const classIds =
@@ -27,8 +29,8 @@ export default async function TeacherClassesPage() {
     return (
       <EmptyState
         icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title="No classes assigned to you yet"
-        description="Ask an admin to add you to a class. Everything else — the register, work, messages — follows from there."
+        title={t("teacher.noClassesAssigned")}
+        description={t("teacher.noClassesAssignedBody")}
       />
     );
   }
@@ -63,7 +65,7 @@ export default async function TeacherClassesPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">My classes</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.myClasses")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {classes.length} class{classes.length === 1 ? "" : "es"} ·{" "}
           {classes.reduce((sum, c) => sum + c._count.enrollments, 0)} students

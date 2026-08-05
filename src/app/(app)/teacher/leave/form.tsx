@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { LEAVE_KINDS, LEAVE_KIND_LABEL, type LeaveKind, type LeaveRow } from "@/lib/leave-kinds";
 import { apply, withdraw } from "./actions";
 import { DateField } from "@/components/ui/field";
+import { useT } from "@/lib/i18n";
 
 /**
  * Applying to be away.
@@ -33,6 +34,7 @@ export function LeaveForm({
   staff: { membershipId: string; name: string }[];
   today: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -62,7 +64,7 @@ export function LeaveForm({
       setReason("");
       setNominee("");
       setOpen(false);
-      toast({ tone: "ok", title: "Sent to the principal" });
+      toast({ tone: "ok", title: t("teacher.sentToPrincipal") });
       router.refresh();
     });
   }
@@ -71,10 +73,10 @@ export function LeaveForm({
     startTransition(async () => {
       const result = await withdraw(id);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not withdrawn", description: result.error });
+        toast({ tone: "danger", title: t("teacher.notWithdrawn"), description: result.error });
         return;
       }
-      toast({ tone: "ok", title: "Withdrawn" });
+      toast({ tone: "ok", title: t("teacher.withdrawn") });
       router.refresh();
     });
   }
@@ -83,7 +85,7 @@ export function LeaveForm({
     <div className="space-y-5">
       {!open && (
         <Button icon={<PaperPlaneTiltIcon weight="bold" />} onClick={() => setOpen(true)}>
-          Apply for leave
+          {t("teacher.applyForLeave")}
         </Button>
       )}
 
@@ -100,13 +102,13 @@ export function LeaveForm({
 
           <div className="grid gap-4 sm:grid-cols-2">
             <DateField
-              label="First day away"
+              label={t("teacher.firstDay")}
               required
               value={from}
               onChange={(e) => setFrom(e.target.value)}
             />
             <DateField
-              label="Last day away"
+              label={t("teacher.lastDay")}
               required
               value={to}
               onChange={(e) => setTo(e.target.value)}
@@ -114,7 +116,7 @@ export function LeaveForm({
           </div>
 
           <fieldset className="mt-4">
-            <legend className="text-sm font-medium text-fg">Kind of leave</legend>
+            <legend className="text-sm font-medium text-fg">{t("teacher.kindOfLeave")}</legend>
             <div className="mt-2 flex flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1">
               {LEAVE_KINDS.map((option) => (
                 <button
@@ -155,17 +157,17 @@ export function LeaveForm({
 
           <label className="mt-4 block">
             <span className="block text-sm font-medium text-fg">
-              Who could cover your classes (optional)
+              {t("teacher.whoCouldCover")}
             </span>
             <span className="mt-0.5 block text-xs text-fg-muted">
-              A suggestion. The principal decides, and may name somebody else.
+              {t("teacher.coverHint")}
             </span>
             <select
               value={nominee}
               onChange={(e) => setNominee(e.target.value)}
               className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
             >
-              <option value="">No suggestion</option>
+              <option value="">{t("teacher.noSuggestion")}</option>
               {staff.map((person) => (
                 <option key={person.membershipId} value={person.membershipId}>
                   {person.name}
@@ -176,11 +178,11 @@ export function LeaveForm({
 
           <div className="mt-5 flex gap-2">
             <Button type="submit" loading={pending} icon={<PaperPlaneTiltIcon weight="bold" />}>
-              Send to the principal
+              {t("teacher.sendToPrincipal")}
             </Button>
             {requests.length > 0 && (
               <Button type="button" variant="ghost" onClick={() => setOpen(false)}>
-                Cancel
+                {t("teacher.cancel")}
               </Button>
             )}
           </div>
@@ -233,7 +235,7 @@ export function LeaveForm({
                     size="sm"
                     variant="ghost"
                     loading={pending}
-                    aria-label="Withdraw this request"
+                    aria-label={t("teacher.withdrawRequest")}
                     onClick={() => cancel(request.id)}
                   >
                     <XIcon weight="bold" className="size-4" />

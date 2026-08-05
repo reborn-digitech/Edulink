@@ -5,6 +5,7 @@ import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { AssignmentForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = { title: "New assignment" };
 
@@ -13,6 +14,7 @@ export default async function NewAssignmentPage({
 }: {
   searchParams: Promise<{ classId?: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await searchParams;
 
@@ -35,8 +37,8 @@ export default async function NewAssignmentPage({
   if (classes.length === 0) {
     return (
       <EmptyState
-        title="No classes yet"
-        description="Assignments belong to a class. Ask an admin to add you to one."
+        title={t("teacher.noClassesYet")}
+        description={t("teacher.assignmentsBelongAdmin")}
       />
     );
   }
@@ -50,10 +52,10 @@ export default async function NewAssignmentPage({
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All assignments
+        {t("teacher.allAssignments")}
       </Link>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Set some work</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.setSomeWork")}</h1>
       <p className="mt-1.5 text-sm text-fg-muted">
         Publishing tells every student in the class and their guardians. Save as a draft if
         you are not ready.
