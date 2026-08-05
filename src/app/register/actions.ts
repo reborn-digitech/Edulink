@@ -1,7 +1,6 @@
 "use server";
 
 import { randomUUID } from "node:crypto";
-import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { hashPassword, passwordProblems, generateToken, hashToken } from "@/lib/crypto";
 import { schoolCode, slugify } from "@/lib/codes";
@@ -197,8 +196,4 @@ export async function checkEmailAvailable(email: string): Promise<boolean> {
     select: { id: true },
   });
   return !existing;
-}
-
-export async function finishRegistration(): Promise<never> {
-  redirect("/admin?welcome=1");
 }
