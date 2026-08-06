@@ -71,7 +71,10 @@ export function AppShell({
     // recolours per role from one attribute.
     <div data-role={user.role.toLowerCase()} className="min-h-safe bg-bg">
       {/* ---------- desktop side rail ---------- */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex">
+      {/* print:hidden on every piece of chrome: the sheet is the page's content,
+          not the app around it. Found the hard way — the first printed progress
+          report carried the side rail, the bottom tabs and the FAB. */}
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex print:hidden">
         <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
           <Logo size={28} />
           <div className="min-w-0">
@@ -124,7 +127,7 @@ export function AppShell({
       </aside>
 
       {/* ---------- mobile top bar ---------- */}
-      <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden">
+      <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden print:hidden">
         <Link href={items[0]!.href} className="flex min-w-0 items-center gap-2">
           <Logo size={26} />
           <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
@@ -161,10 +164,10 @@ export function AppShell({
       </header>
 
       {/* ---------- content ---------- */}
-      <div className="lg:pl-64">
+      <div className="lg:pl-64 print:pl-0">
         <main
           id="main"
-          className="mx-auto max-w-5xl px-4 pb-32 pt-4 sm:px-6 lg:pb-12 lg:pt-8"
+          className="mx-auto max-w-5xl px-4 pb-32 pt-4 sm:px-6 lg:pb-12 lg:pt-8 print:p-0"
         >
           {children}
         </main>
@@ -178,7 +181,7 @@ export function AppShell({
             "fixed bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] right-4 z-40",
             "flex h-14 items-center gap-2 rounded-full bg-accent px-5 font-semibold text-accent-fg shadow-lg",
             "transition-transform duration-[--dur-fast] active:scale-95",
-            "lg:bottom-8 lg:right-8",
+            "lg:bottom-8 lg:right-8 print:hidden",
           )}
         >
           <NavIcon name={action.icon} className="size-5" weight="bold" />
@@ -190,7 +193,7 @@ export function AppShell({
       {/* ---------- mobile bottom bar ---------- */}
       <nav
         aria-label={t("shell.mainNav")}
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 pb-safe backdrop-blur-md lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 pb-safe backdrop-blur-md lg:hidden print:hidden"
       >
         <ul className="flex">
           {primaryItems.map((item) => {

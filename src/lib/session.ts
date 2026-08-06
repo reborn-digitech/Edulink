@@ -305,6 +305,11 @@ async function readContexts(userId: string) {
           include: { school: { select: { id: true, name: true } }, user: { select: { name: true, preferredName: true } } },
         },
       },
+      // `children[0]` is the child every parent page opens on. Without an
+      // orderBy that was Postgres row order — which a vacuum or re-seed can
+      // flip, silently changing which child a parent lands on. First claimed,
+      // first shown, same as memberships above.
+      orderBy: { createdAt: "asc" },
     }),
   ]);
 

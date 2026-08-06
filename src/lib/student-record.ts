@@ -358,6 +358,9 @@ export async function myChildren(ctx: ActiveContext): Promise<RecordChild[]> {
       userId: true,
       user: { select: { name: true, preferredName: true, avatarKey: true } },
     },
+    // The dedup map below keeps insertion order, and without this that was
+    // Postgres row order — the same silent coin-toss `readContexts` had.
+    orderBy: { user: { name: "asc" } },
   });
 
   const byChild = new Map<string, RecordChild>();

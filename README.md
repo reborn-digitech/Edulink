@@ -546,14 +546,33 @@ Break these and something quietly goes wrong for a child or a parent.
    that rather than discovering it at the end. It is now the only
    identity-provider work outstanding: 2FA was removed by decision (see Not
    built), and password reset by email or mobile number ships in its place.
-1b. **Click the paths that are only reasoned about.** Nearly empty now:
-   §§12m0–12q were walked end to end in a production build — including report
-   card → publish → the parent's dashboard, which used to be this item's tail.
-   What is still only reasoned about: the principal-as-LEAD builder case (the
-   mechanism is proven through the class teacher), print output, quiet-hours
-   delivery timing, and the multi-pupil ordering checks a one-pupil school
-   cannot exercise. (The 2FA login step used to head this list and no longer
-   exists — see Not built.)
+1b. **Click the paths that are only reasoned about.** ~~Nearly empty now~~
+   **EMPTY.** The last four items were exercised, and three of the four were
+   hiding real bugs — which is the whole argument for this list having existed:
+   - *Principal-as-LEAD*: `tests/principal-lead.test.ts` walks the appointment
+     through the real `assignTeacher` (an ADMIN membership is refused; a
+     PRINCIPAL one goes through), then generates and publishes a card as the
+     head. Refused before the appointment, refused again on demotion to CO.
+   - *Quiet-hours delivery*: `tests/notify-delivery.test.ts` registers a real
+     HTTPS endpoint as the user's push subscription and watches the web-push
+     POST arrive or not — suppressed inside the window, delivered outside it
+     and when urgent, and the in-app row written every time.
+   - *Print output* — TWO BUGS. The first printed progress report carried the
+     side rail, bottom tabs and the FAB (`.no-print` covered only the page's
+     own controls), and a dark-theme user's print kept the dark variables:
+     grey-on-nothing headings, since browsers don't print backgrounds. The
+     shell chrome is now `print:hidden` and every dark palette block sits in
+     `@media screen` — paper is always the light theme. Seen fixed in an
+     actual print-to-PDF of a signed-in page, not reasoned about.
+   - *Multi-pupil ordering* — ONE BUG. The guardianship query behind
+     `children[0]` — the child every parent page opens on — had NO orderBy, so
+     the default child was Postgres row order (the grading.test.ts coin-toss,
+     one layer up). Now `createdAt: "asc"` (first claimed, first shown), same
+     for the /record page's children (by name), pinned by
+     `tests/children-order.test.ts` with fixtures inserted in the OPPOSITE
+     order to what is asserted. Verified live with the seeded two-school
+     parent: stable order on five pages, default child correct, `?child=`
+     honoured.
 2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
