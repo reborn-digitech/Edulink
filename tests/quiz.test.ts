@@ -225,12 +225,12 @@ describe("badge ids", () => {
 let schoolId = "";
 let otherSchoolId = "";
 /** Users this file creates, removed in `afterAll` — see the note in `mk`. */
-let madeUserIds: string[] = [];
+const madeUserIds: string[] = [];
 let topicId = "";
 let student: ActiveContext;
 let otherStudent: ActiveContext;
 let teacher: ActiveContext;
-let questionIds: string[] = [];
+const questionIds: string[] = [];
 
 const SLUG = "test-topic-abhyaas";
 

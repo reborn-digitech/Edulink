@@ -106,7 +106,7 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
   } catch (error) {
     // UploadError messages are written for the person uploading, so pass them
     // through rather than replacing them with something generic.
-    if (error instanceof UploadError) return { ok: false, error: error.message };
+    if (error instanceof UploadError) return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[uploadLogo]", error);
     return { ok: false, errorKey: "settings.couldNotSaveImage" };
   }

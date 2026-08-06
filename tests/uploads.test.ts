@@ -2,6 +2,7 @@ import { afterAll, describe, expect, it } from "vitest";
 import { readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { storeAttachments, discard, AttachmentError, MAX_ATTACHMENTS } from "@/lib/uploads";
+import { translator } from "@/lib/i18n/dictionary";
 
 /**
  * Attachment storage, all-or-nothing.
@@ -92,9 +93,11 @@ describe("all or nothing", () => {
   });
 
   it("reports the reason in words meant for the person uploading", async () => {
-    await expect(
-      storeAttachments([file(NOT_REALLY_A_PNG, "sneaky.png", "image/png")]),
-    ).rejects.toThrow(/not supported/i);
+    const error = await storeAttachments([file(NOT_REALLY_A_PNG, "sneaky.png", "image/png")]).catch(
+      (e) => e,
+    );
+    expect(error).toBeInstanceOf(AttachmentError);
+    expect(translator("en")(error.key, error.vars)).toMatch(/not supported/i);
   });
 });
 

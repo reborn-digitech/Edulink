@@ -2,7 +2,6 @@ import "server-only";
 import { db } from "./db";
 import {
   getAttendanceSummary,
-  computeBestStreak,
   computeStreak,
   currentAttendanceRate,
 } from "./attendance";

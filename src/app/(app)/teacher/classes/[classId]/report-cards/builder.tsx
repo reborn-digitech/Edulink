@@ -97,10 +97,9 @@ export function Builder({
     <div className="space-y-6">
       {/* ---------------- 1. what counts ---------------- */}
       <section>
-        <h2 className="text-sm font-semibold text-fg">1. What goes on the card</h2>
+        <h2 className="text-sm font-semibold text-fg">{t("teacher.builderStepOne")}</h2>
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-          Choose the tests and assignments this report covers. They appear in the order you pick
-          them.
+          {t("teacher.builderPickExplainer")}
         </p>
 
         {error && (
@@ -167,7 +166,7 @@ export function Builder({
 
       {/* ---------------- 2. generate ---------------- */}
       <section className="border-t border-border pt-5">
-        <h2 className="text-sm font-semibold text-fg">2. Generate the drafts</h2>
+        <h2 className="text-sm font-semibold text-fg">{t("teacher.builderStepTwo")}</h2>
         <div className="mt-3 flex flex-wrap items-end gap-3">
           <label className="min-w-[12rem] flex-1">
             <span className="block text-xs font-medium text-fg">{t("teacher.reportName")}</span>

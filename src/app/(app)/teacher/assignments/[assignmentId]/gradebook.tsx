@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { StatTile } from "@/components/ui/card";
 import { useToast } from "@/components/ui/toast";
 import { EmptyState } from "@/components/ui/states";
-import { formatMilli, fromMilli } from "@/lib/validation";
+import { fromMilli } from "@/lib/validation";
 import { cn } from "@/lib/cn";
 import { submitGrades } from "../actions";
 import { useT } from "@/lib/i18n";

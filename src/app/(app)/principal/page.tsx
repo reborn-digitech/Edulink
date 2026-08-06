@@ -4,7 +4,6 @@ import {
   CalendarCheckIcon,
   CaretRightIcon,
   ChalkboardTeacherIcon,
-  WarningIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import {

@@ -46,8 +46,7 @@ export default async function TeacherLeavePage() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.leave")}</h1>
           <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-            Ask to be away. The principal answers, and if it is approved your registers are covered
-            automatically — you do not have to arrange that separately.
+            {t("teacher.leaveExplainer")}
           </p>
         </div>
       </div>

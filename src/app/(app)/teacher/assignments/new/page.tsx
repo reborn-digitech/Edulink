@@ -60,8 +60,7 @@ export default async function NewAssignmentPage({
 
       <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.setSomeWork")}</h1>
       <p className="mt-1.5 text-sm text-fg-muted">
-        Publishing tells every student in the class and their guardians. Save as a draft if
-        you are not ready.
+        {t("teacher.publishExplainer")}
       </p>
 
       <AssignmentForm

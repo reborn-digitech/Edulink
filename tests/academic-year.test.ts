@@ -61,7 +61,7 @@ let teacher: ActiveContext;
 let schoolId: string;
 let timezone: string;
 let subjectMembershipId: string;
-let sessionIds: string[] = [];
+const sessionIds: string[] = [];
 
 async function cleanup() {
   await db.earnedBadge.deleteMany({ where: { schoolId } });

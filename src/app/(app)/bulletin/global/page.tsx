@@ -59,7 +59,7 @@ export default async function GlobalFeedPage() {
                 <CardBody className="space-y-3 pt-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge tone={post.ours ? "accent" : "neutral"} size="sm">
-                      {post.schoolName}
+                      {post.schoolName || t("bulletin.unknownSchool")}
                     </Badge>
                     {post.ours && (
                       <Badge tone="accent" size="sm">
@@ -114,10 +114,7 @@ export default async function GlobalFeedPage() {
 
       {isAdmin && (
         <p className="max-w-prose text-xs text-fg-muted">
-          Hiding a post removes it for your school only — the school that published it is not
-          notified and no other school is affected. There is no way to remove another school's post
-          for everyone: that would need someone with authority over every school, and no such role
-          exists in EduLink.
+          {t("bulletin.hideExplainer")}
         </p>
       )}
     </div>

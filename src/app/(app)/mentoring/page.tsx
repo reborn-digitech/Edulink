@@ -11,7 +11,18 @@ import {
 } from "@/lib/mentoring";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { EmptyState } from "@/components/ui/states";
+
+/**
+ * The thread's lifecycle, in the reader's words. PENDING_CONSENT never reaches
+ * this table — the awaitingConsent branch above the Badge names it first.
+ */
+const MENTOR_STATUS_KEY: Partial<Record<string, TranslationKey>> = {
+  ACTIVE: "mentoring.statusActive",
+  CLOSED: "mentoring.statusClosed",
+  REQUESTED: "mentoring.statusRequested",
+};
 import { PairForm } from "./pair-form";
 import { AskForm } from "./ask-form";
 import { RequestQueue } from "./request-queue";
@@ -99,7 +110,7 @@ export default async function MentoringPage() {
                       >
                         {thread.awaitingConsent
                           ? t("mentoring.waitingForGuardian")
-                          : thread.status.toLowerCase()}
+                          : t(MENTOR_STATUS_KEY[thread.status] ?? "mentoring.statusActive")}
                       </Badge>
                       <span className="text-sm font-semibold text-fg">
                         {thread.studentName} &amp; {thread.expertName}

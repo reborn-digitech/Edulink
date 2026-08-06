@@ -63,6 +63,14 @@ export function ComposeForm({
   >([]);
   const pickerRef = useRef<HTMLInputElement>(null);
 
+  // A ref so the unmount cleanup below sees the CURRENT list rather than the
+  // empty one it closed over on first render. Written from an effect, not
+  // during render: a render React throws away must not move the ref.
+  const picturesRef = useRef(pictures);
+  useEffect(() => {
+    picturesRef.current = pictures;
+  }, [pictures]);
+
   // Release every outstanding preview when the form goes away. Removal revokes
   // its own; this catches navigating away mid-compose.
   useEffect(() => {
@@ -70,11 +78,6 @@ export function ComposeForm({
       for (const picture of picturesRef.current) URL.revokeObjectURL(picture.preview);
     };
   }, []);
-
-  // A ref so the unmount cleanup above sees the CURRENT list rather than the
-  // empty one it closed over on first render.
-  const picturesRef = useRef(pictures);
-  picturesRef.current = pictures;
 
   function choosePictures(chosen: FileList | null) {
     if (!chosen) return;

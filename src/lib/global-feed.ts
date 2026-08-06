@@ -108,7 +108,8 @@ export async function listGlobalFeed(
       // The denormalised name FIRST: it is the only one readable from another
       // school. The relation is the fallback for our own posts and for any row
       // published before this column existed.
-      schoolName: post.globalSchoolName ?? post.school?.name ?? "Unknown school",
+      // Empty when the school is gone; the page renders its own words for that.
+      schoolName: post.globalSchoolName ?? post.school?.name ?? "",
       schoolId: post.school?.id ?? "",
       ours: post.schoolId === schoolId,
       hiddenHere: hidden.has(post.id),

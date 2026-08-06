@@ -49,7 +49,7 @@ export default async function NewRemarkPage({
     const teachers = await teachersForStudent(ctx.schoolId, ctx.membershipId);
     return (
       <AskShell title={t("remarks.messageATeacher")} t={t}>
-        <AskForm children={[{ membershipId: ctx.membershipId, name: "", teachers }]} />
+        <AskForm pupils={[{ membershipId: ctx.membershipId, name: "", teachers }]} />
       </AskShell>
     );
   }
@@ -75,7 +75,7 @@ export default async function NewRemarkPage({
 
     return (
       <AskShell title={t("remarks.messageATeacher")} t={t}>
-        <AskForm children={children} />
+        <AskForm pupils={children} />
       </AskShell>
     );
   }

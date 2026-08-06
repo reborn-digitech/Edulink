@@ -93,7 +93,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       }));
     } catch (error) {
       // AttachmentError messages are written for the person uploading.
-      if (error instanceof AttachmentError) return { ok: false, errors: { image: error.message } };
+      if (error instanceof AttachmentError) return { ok: false, errors: { image: (await getT())(error.key, error.vars) } };
       console.error("[submitPost] upload failed", error);
       return { ok: false, errors: { image: (await getT())("bulletin.couldNotSavePictures") } };
     }

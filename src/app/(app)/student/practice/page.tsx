@@ -10,7 +10,7 @@ import {
   type QuizSubject,
 } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
-import { Card, CardBody } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";

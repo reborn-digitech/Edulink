@@ -83,7 +83,7 @@ export async function bringBackPeriod(periodId: string): Promise<Result> {
   }
 }
 
-export async function useSuggestedDay(): Promise<Result & { created?: number }> {
+export async function seedSuggestedDay(): Promise<Result & { created?: number }> {
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await applySuggestedDay(ctx);

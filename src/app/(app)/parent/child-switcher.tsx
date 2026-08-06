@@ -8,22 +8,22 @@ import { useT } from "@/lib/i18n";
 /**
  * Child selector for parents with more than one child.
  *
- * A horizontal rail rather than a dropdown: with two or three children the
+ * A horizontal rail rather than a dropdown: with two or three pupils the
  * options are worth showing at all times, and it stays thumb-reachable. The
  * selection lives in the URL so a parent can bookmark one child directly.
  *
  * SWITCHING CHILD KEEPS YOU ON THE PAGE YOU ARE ON. `basePath` was hardcoded to
- * `/parent`, so a guardian comparing two children's attendance was thrown back
+ * `/parent`, so a guardian comparing two pupils's attendance was thrown back
  * to the overview on every switch and had to navigate in again — and on a page
  * about one child, a control that silently changes the SUBJECT and the TOPIC at
  * once is worse than one that does neither.
  */
 export function ChildSwitcher({
-  children,
+  pupils,
   selectedId,
   basePath = "/parent",
 }: {
-  children: { studentMembershipId: string; name: string; schoolName: string }[];
+  pupils: { studentMembershipId: string; name: string; schoolName: string }[];
   selectedId: string;
   basePath?: string;
 }) {
@@ -31,7 +31,7 @@ export function ChildSwitcher({
   return (
     <nav aria-label={t("parent.chooseChild")}>
       <ul className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-        {children.map((child) => {
+        {pupils.map((child) => {
           const active = child.studentMembershipId === selectedId;
           return (
             <li key={child.studentMembershipId} className="shrink-0">

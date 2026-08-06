@@ -51,7 +51,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   try {
     attachments = await storeAttachments(formData.getAll("files").filter(isFile));
   } catch (error) {
-    if (error instanceof AttachmentError) return { ok: false, errors: { files: error.message } };
+    if (error instanceof AttachmentError) return { ok: false, errors: { files: (await getT())(error.key, error.vars) } };
     console.error("[newAssignment] upload failed", error);
     return { ok: false, errors: { files: (await getT())("teacher.filesNotSaved") } };
   }

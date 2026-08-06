@@ -1,6 +1,7 @@
 import "server-only";
 import { deleteStoredFile, storeFile, UploadError, type StoredFile } from "./storage";
 import type { Attachment } from "./json";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Turning picked files into stored attachments.
@@ -21,7 +22,16 @@ import type { Attachment } from "./json";
 /** Total attachments per record. Matches the copy already shipped in the UI. */
 export const MAX_ATTACHMENTS = 5;
 
-export class AttachmentError extends Error {}
+/** Same rule as UploadError below it: the message is a KEY, the boundary owns the words. */
+export class AttachmentError extends Error {
+  constructor(
+    readonly key: TranslationKey,
+    readonly vars?: Record<string, string | number>,
+  ) {
+    super(key);
+    this.name = "AttachmentError";
+  }
+}
 
 /**
  * Stores every file, or none of them.
@@ -39,7 +49,7 @@ export async function storeAttachments(
 
   if (real.length === 0) return [];
   if (real.length > max) {
-    throw new AttachmentError(`You can attach up to ${max} files.`);
+    throw new AttachmentError(max === 1 ? "ui.upToFilesOne" : "ui.upToFilesMany", { max });
   }
 
   const stored: StoredFile[] = [];
@@ -51,7 +61,7 @@ export async function storeAttachments(
     await discard(stored.map((s) => s.fileId));
     // UploadError messages are written for the person uploading; anything else
     // is ours and should not be shown to a child as-is.
-    if (error instanceof UploadError) throw new AttachmentError(error.message);
+    if (error instanceof UploadError) throw new AttachmentError(error.key, error.vars);
     throw error;
   }
 

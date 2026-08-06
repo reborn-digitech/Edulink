@@ -3,6 +3,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { stripImageMetadata } from "./image-metadata";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Local file storage.
@@ -39,7 +40,21 @@ export type StoredFile = {
   kind: "image" | "file";
 };
 
-export class UploadError extends Error {}
+/**
+ * ⚠ THE MESSAGE IS A KEY — the AccessError rule, because these ARE shown.
+ * The audit skips thrown Error messages on the assumption nobody reads them;
+ * these four are the exception: every catch boundary hands them straight to
+ * the person uploading, so they carry a TranslationKey the boundary resolves.
+ */
+export class UploadError extends Error {
+  constructor(
+    readonly key: TranslationKey,
+    readonly vars?: Record<string, string | number>,
+  ) {
+    super(key);
+    this.name = "UploadError";
+  }
+}
 
 /**
  * Magic-byte check. A browser-supplied Content-Type is attacker-controlled, so
@@ -63,18 +78,18 @@ function sniff(bytes: Uint8Array): string | null {
 export async function storeFile(file: File, opts: { maxBytes?: number } = {}): Promise<StoredFile> {
   const maxBytes = opts.maxBytes ?? MAX_UPLOAD_BYTES;
 
-  if (file.size === 0) throw new UploadError("That file is empty.");
+  if (file.size === 0) throw new UploadError("refusal.fileEmpty");
   if (file.size > maxBytes) {
-    throw new UploadError(`That file is too large. The limit is ${Math.round(maxBytes / 1024 / 1024)} MB.`);
+    throw new UploadError("refusal.fileTooLargeLimit", { mb: Math.round(maxBytes / 1024 / 1024) });
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
   // Re-check after reading: `file.size` is also client-reported.
-  if (buffer.byteLength > maxBytes) throw new UploadError("That file is too large.");
+  if (buffer.byteLength > maxBytes) throw new UploadError("refusal.fileTooLarge");
 
   const detected = sniff(buffer);
   if (!detected || !ALLOWED[detected]) {
-    throw new UploadError("That file type is not supported. Use PNG, JPEG, WebP, GIF or PDF.");
+    throw new UploadError("refusal.fileTypeUnsupported");
   }
 
   const spec = ALLOWED[detected]!;

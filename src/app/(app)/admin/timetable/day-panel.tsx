@@ -15,7 +15,7 @@ import {
   PERIOD_KIND_META,
   type PeriodKind,
 } from "@/lib/school-day";
-import { savePeriod, retirePeriod, bringBackPeriod, useSuggestedDay } from "./actions";
+import { savePeriod, retirePeriod, bringBackPeriod, seedSuggestedDay } from "./actions";
 import type { PeriodRow } from "@/lib/timetable";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
@@ -48,7 +48,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
 
   function seed() {
     startTransition(async () => {
-      const result = await useSuggestedDay();
+      const result = await seedSuggestedDay();
       if (!result.ok) {
         toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotSetUp") });
         return;

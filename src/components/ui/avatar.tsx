@@ -130,9 +130,11 @@ export function Avatar({
         className,
       )}
       // The visible name is almost always adjacent, so the image itself is
-      // decorative; announcing "Sunset fox" too would just add noise.
+      // decorative; announcing "Sunset fox" too would just add noise. The label
+      // is the NAME ALONE — a value, the same in every language — because
+      // "'s avatar" was the last English a Marathi screen-reader user heard.
       role="img"
-      aria-label={`${name}'s avatar`}
+      aria-label={name}
     >
       <CreatureSvg creature={parsed.creature} palette={parsed.palette} />
     </span>

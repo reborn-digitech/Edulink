@@ -131,7 +131,7 @@ function userVisible(source: string): string[] {
   // rule 1's `[^{}\n]` window). "Week of {date}", "Hi {name} 👋", and whole
   // paragraphs wrapped by prettier all lived here, on pages reported finished.
   for (const line of code.split("\n")) {
-    const m = line.match(/^\s*([A-Z][a-zA-Z0-9,'’&\- ]{8,})(\{|$)/);
+    const m = line.match(/^\s*([A-Z][a-zA-Z0-9,'’&—.\- ]{8,})(\{|$)/);
     if (
       m &&
       /\s/.test(m[1]!.trim()) && // a lone token is an import member, not a sentence

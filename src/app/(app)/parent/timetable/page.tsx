@@ -75,7 +75,7 @@ export default async function ParentTimetablePage({
         {t("parent.overview")}
       </Link>
 
-      {children.length > 1 && <ChildSwitcher children={children} selectedId={selectedId} basePath="/parent/timetable" />}
+      {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/timetable" />}
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">

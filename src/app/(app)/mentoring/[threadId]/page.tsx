@@ -56,8 +56,7 @@ export default async function MentorThreadPage({
       <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
         <EyeIcon weight="bold" className="mt-0.5 size-4 shrink-0" />
         <span>
-          This conversation is not private. {thread.studentName}&apos;s guardians and
-          {" "}{thread.schoolName} can read every message.
+          {t("mentoring.notPrivateNote", { name: thread.studentName, school: thread.schoolName })}
         </span>
       </p>
 

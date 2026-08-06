@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -183,7 +184,7 @@ export function Player({
             </>
           )}
           <Button asChild variant="secondary">
-            <a href="/student/practice">{t("practice.backToPractice")}</a>
+            <Link href="/student/practice">{t("practice.backToPractice")}</Link>
           </Button>
         </CardBody>
       </Card>

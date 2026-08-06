@@ -1,11 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
-import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
-import { getSession, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
-import { readJson, writeJson } from "@/lib/json";
 import {
   startAttempt,
   nextQuestion,

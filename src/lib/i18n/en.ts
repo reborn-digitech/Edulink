@@ -388,6 +388,8 @@ export const en = {
   /* The bulletin — feed, one post, compose, moderation, the global feed     */
   /* ---------------------------------------------------------------------- */
   bulletin: {
+    hideExplainer: "Hiding a post removes it for your school only — the school that published it is not notified and no other school is affected. There is no way to remove another school’s post for everyone: that would need someone with authority over every school, and no such role exists in EduLink.",
+    unknownSchool: "Unknown school",
     title: "Bulletin",
     noSchool: "No school selected",
     noSchoolBody: "The bulletin belongs to a school. Pick one to see its notices.",
@@ -754,6 +756,10 @@ export const en = {
   /* Mentoring — asking, deciding, consenting, the thread                    */
   /* ---------------------------------------------------------------------- */
   mentoring: {
+    notPrivateNote: "This conversation is not private. {name}’s guardians and {school} can read every message.",
+    statusActive: "Active",
+    statusClosed: "Closed",
+    statusRequested: "Requested",
     waitingForGuardian: "Waiting for a guardian",
     intro: "One-to-one mentoring. Every conversation can be read by the pupil’s guardians and by the school — mentoring here is never private.",
     all: "All mentoring",
@@ -1264,6 +1270,9 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    fileEmpty: "That file is empty.",
+    fileTooLargeLimit: "That file is too large. The limit is {mb} MB.",
+    fileTypeUnsupported: "That file type is not supported. Use PNG, JPEG, WebP, GIF or PDF.",
     required: "This is required.",
     notValid: "That is not valid.",
     atLeastChars: "Use at least {count} characters.",
@@ -2338,6 +2347,11 @@ export const en = {
   /* A teacher's pages — the role staff live in every day                    */
   /* ---------------------------------------------------------------------- */
   teacher: {
+    publishExplainer: "Publishing tells every student in the class and their guardians. Save as a draft if you are not ready.",
+    leaveExplainer: "Ask to be away. The principal answers, and if it is approved your registers are covered automatically — you do not have to arrange that separately.",
+    builderStepOne: "1. What goes on the card",
+    builderStepTwo: "2. Generate the drafts",
+    builderPickExplainer: "Choose the tests and assignments this report covers. They appear in the order you pick them.",
     coveringUntil: "You are covering this register until {date}.",
     markAllPresent: "Mark all {count} present",
     commentForName: "Comment for {name}",

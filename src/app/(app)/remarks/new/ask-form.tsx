@@ -41,11 +41,11 @@ export type ChildChoice = {
  * afterwards is.
  */
 export function AskForm({
-  children,
+  pupils,
   className,
 }: {
   /** One entry per child. A pupil messaging their own teachers gets exactly one. */
-  children: ChildChoice[];
+  pupils: ChildChoice[];
   className?: string;
 }) {
   const t = useT();
@@ -53,15 +53,15 @@ export function AskForm({
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
-  const [childId, setChildId] = useState(children.length === 1 ? children[0]!.membershipId : "");
+  const [childId, setChildId] = useState(pupils.length === 1 ? pupils[0]!.membershipId : "");
   const [teacherId, setTeacherId] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const child = children.find((c) => c.membershipId === childId);
+  const child = pupils.find((c) => c.membershipId === childId);
   const teachers = child?.teachers ?? [];
-  const selfOnly = children.length === 1 && children[0]!.name === "";
+  const selfOnly = pupils.length === 1 && pupils[0]!.name === "";
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -107,11 +107,11 @@ export function AskForm({
         </p>
       )}
 
-      {children.length > 1 && (
+      {pupils.length > 1 && (
         <div>
           <p className="text-sm font-medium text-fg">{t("remarks.whichChild")}</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            {children.map((c) => (
+            {pupils.map((c) => (
               <Button
                 key={c.membershipId}
                 type="button"

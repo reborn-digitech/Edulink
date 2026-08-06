@@ -245,7 +245,7 @@ async function storeAll(
   try {
     return { stored: await storeAttachments(files, { max: MAX_ATTACHMENTS - existingCount }) };
   } catch (error) {
-    if (error instanceof AttachmentError) return { error: error.message };
+    if (error instanceof AttachmentError) return { error: (await getT())(error.key, error.vars) };
     console.error("[storeAll]", error);
     return { error: (await getT())("ui.couldNotSaveFiles") };
   }

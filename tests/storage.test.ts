@@ -1,6 +1,7 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { readFile } from "node:fs/promises";
 import { deleteStoredFile, etagFor, readStoredFile, storeFile, UploadError, MAX_UPLOAD_BYTES } from "@/lib/storage";
+import { translator } from "@/lib/i18n/dictionary";
 
 /**
  * File storage.
@@ -105,7 +106,12 @@ describe("content-type is sniffed, not trusted", () => {
   });
 
   it("names the accepted formats in the error, so the message is actionable", async () => {
-    await expect(storeFile(file(Buffer.from("nope"), "x.png", "image/png"))).rejects.toThrow(/PNG/);
+    // The error carries a KEY; what the reader sees is its rendering. The
+    // point of the test is unchanged: the sentence must name the formats.
+    const error = await storeFile(file(Buffer.from("nope"), "x.png", "image/png")).catch((e) => e);
+    expect(error).toBeInstanceOf(UploadError);
+    expect(error.key).toBe("refusal.fileTypeUnsupported");
+    expect(translator("en")(error.key, error.vars)).toMatch(/PNG/);
   });
 });
 
@@ -132,9 +138,12 @@ describe("size limits", () => {
     // 48-byte file against a 1 MB cap and asserted on a rejection that never
     // came.
     const overOneMb = Buffer.concat([PNG, Buffer.alloc(1024 * 1024)]);
-    await expect(
-      storeFile(file(overOneMb, "big.png", "image/png"), { maxBytes: 1024 * 1024 }),
-    ).rejects.toThrow(/1 MB/);
+    const error = await storeFile(file(overOneMb, "big.png", "image/png"), {
+      maxBytes: 1024 * 1024,
+    }).catch((e) => e);
+    expect(error).toBeInstanceOf(UploadError);
+    expect(error.key).toBe("refusal.fileTooLargeLimit");
+    expect(translator("en")(error.key, error.vars)).toMatch(/1 MB/);
   });
 });
 

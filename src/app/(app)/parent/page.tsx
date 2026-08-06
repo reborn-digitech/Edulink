@@ -125,7 +125,7 @@ export default async function ParentDashboard({
   return (
     <div className="space-y-6">
       {children.length > 1 && (
-        <ChildSwitcher children={children} selectedId={selectedId} />
+        <ChildSwitcher pupils={children} selectedId={selectedId} />
       )}
 
       <div className="flex items-center gap-4">

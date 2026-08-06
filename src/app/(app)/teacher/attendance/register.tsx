@@ -14,7 +14,7 @@ import { useToast } from "@/components/ui/toast";
 import { EmptyState } from "@/components/ui/states";
 import { cn } from "@/lib/cn";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
-import { enqueue, flushQueue, newClientId, countQueued } from "@/lib/offline-queue";
+import { enqueue, newClientId, countQueued } from "@/lib/offline-queue";
 import { useT } from "@/lib/i18n";
 
 export type RosterEntry = {
@@ -145,6 +145,9 @@ export function Register({
           duration: null,
           title: t("teacher.didNotSave"),
           description: detail.error ?? t("teacher.checkConnection"),
+          // Self-reference is safe: the retry can only be tapped long after
+          // `flush` finishes initialising.
+          // eslint-disable-next-line react-hooks/immutability
           action: { label: t("teacher.retry"), onClick: () => void flush() },
         });
         return;
@@ -164,7 +167,7 @@ export function Register({
       setQueued(await countQueued(`attendance:${classId}`));
       setState("queued");
     }
-  }, [classId, dateKey, toast]);
+  }, [classId, dateKey, toast, t]);
 
   /** Debounced: tapping down a roster of 24 sends one request, not 24. */
   const scheduleSave = useCallback(() => {
