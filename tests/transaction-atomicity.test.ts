@@ -65,14 +65,76 @@ afterAll(async () => {
   await db2.$disconnect();
 });
 
+async function probeName(): Promise<string> {
+  const after = await db2.class.findUniqueOrThrow({ where: { id: probeId } });
+  return after.name;
+}
+
+/**
+ * Long enough that only a real rollback ever spends it.
+ *
+ * Measured rather than guessed: over 25 runs the orphaned write landed in a
+ * median of 0ms and a maximum of 1ms. The cap is four orders of magnitude above
+ * that because being generous is free — it is only ever paid IN FULL when the
+ * rename never arrives, which is a red test either way.
+ */
+const ORPHAN_SETTLE_MS = 5_000;
+const POLL_MS = 5;
+
+/**
+ * The name once a statement nobody awaited has had its chance to land.
+ *
+ * ⚠ WHY THIS WAITS AT ALL. Reading the row once, the instant `work()` rejected,
+ * failed about one run in six — reporting the rename rolled back when moments
+ * later it was permanently there.
+ *
+ * The array form is why. Each statement is re-issued in its OWN transaction by
+ * the extension, so `$transaction([a, b])` rejects the moment b's transaction
+ * fails while a's is still in flight on another connection. A rejected promise
+ * says nothing about whether its sibling has finished. That is not a quirk of
+ * this test: it is the same "they never join" defect the file documents,
+ * surfacing one layer out.
+ *
+ * ⚠ A ROW LOCK IS NOT ENOUGH, WHICH IS WORTH KNOWING BEFORE REACHING FOR ONE.
+ * `SELECT … FOR UPDATE` was the obvious fix and it only cut the rate to one in
+ * twenty-five, because there are two windows and it closes one: it waits when
+ * the orphan already HOLDS the row, and sails straight past while the orphan is
+ * still doing the four `set_config` round-trips the extension issues before
+ * every query — holding no lock yet, with nothing to wait on. Only time closes
+ * that one, and once time closes it the lock has nothing left to do. Thirty
+ * runs with the lock removed and the poll kept were green, so it is not here.
+ *
+ * Waiting does not weaken the assertion. An uncommitted write is invisible to
+ * another connection under READ COMMITTED, so a genuinely atomic helper can
+ * never flash `CHANGED` and then take it back — a poll that keeps seeing
+ * `UNTOUCHED` for five seconds has seen a real rollback.
+ */
+async function nameAfterOrphan(): Promise<string> {
+  const deadline = Date.now() + ORPHAN_SETTLE_MS;
+  for (;;) {
+    const name = await probeName();
+    if (name !== UNTOUCHED || Date.now() >= deadline) return name;
+    await new Promise((resolve) => setTimeout(resolve, POLL_MS));
+  }
+}
+
 /**
  * Runs `work` with a tenant bound, expecting it to fail on its SECOND statement,
  * and reports whether the FIRST survived.
  *
  * The first statement renames our probe class; the second collides with a join
  * code that is already taken. Anything atomic rolls the rename back.
+ *
+ * `orphans` says whether this transaction FORM can leave a statement in flight
+ * after its promise has rejected — a fact about the helper under test, not about
+ * the answer expected. Only the array form can: it hands both statements out at
+ * once and rejects on the first failure, whereas the interactive forms await
+ * each in turn, so by the time they reject there is nothing still running.
  */
-async function firstStatementSurvives(work: () => Promise<unknown>): Promise<boolean> {
+async function firstStatementSurvives(
+  work: () => Promise<unknown>,
+  opts: { orphans?: boolean } = {},
+): Promise<boolean> {
   await db2.class.update({ where: { id: probeId }, data: { name: UNTOUCHED } });
 
   let threw = false;
@@ -86,8 +148,8 @@ async function firstStatementSurvives(work: () => Promise<unknown>): Promise<boo
   // If the second statement did not fail, this test proves nothing at all.
   expect(threw).toBe(true);
 
-  const after = await db2.class.findUniqueOrThrow({ where: { id: probeId } });
-  return after.name !== UNTOUCHED;
+  const after = opts.orphans ? await nameAfterOrphan() : await probeName();
+  return after !== UNTOUCHED;
 }
 
 const RENAME = { where: { id: "" }, data: { name: "ZZ Atomicity CHANGED" } };
@@ -95,11 +157,14 @@ const COLLIDE = { data: { schoolId: "", name: "ZZ Atomicity Duplicate", joinCode
 
 describe("⚠ db.$transaction is NOT atomic on the extended client", () => {
   it("the ARRAY form leaves the first statement committed", async () => {
-    const survived = await firstStatementSurvives(() =>
-      db.$transaction([
-        db.class.update({ ...RENAME, where: { id: probeId } }),
-        db.class.create({ data: { ...COLLIDE.data, schoolId } }),
-      ]),
+    const survived = await firstStatementSurvives(
+      () =>
+        db.$transaction([
+          db.class.update({ ...RENAME, where: { id: probeId } }),
+          db.class.create({ data: { ...COLLIDE.data, schoolId } }),
+        ]),
+      // The only form that can still be writing after it has rejected.
+      { orphans: true },
     );
     // ⚠ This is the bug, asserted rather than described. `cancelLeave` used
     // this form: a leave request cancelled while its cover still stood.
