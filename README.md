@@ -2238,6 +2238,21 @@ navigation" means the actual list rather than one somebody maintained by hand.
   landmark-year recall stays folded and capped: 276 rows, all from the table
   a person can read. 267 topics now (258 generated + 9 hand-written);
   1406/1406 after import.
+
+  **Then every rung got a badge.** Six per chapter — Beginner, Learner,
+  Amateur, Expert, Pro, Master — earned by PROVING the level, which means the
+  same thing on every rung: two right in a row at that level. For L1–L5 that
+  is exactly the mastery ladder's promotion; L6 has nowhere to promote to, so
+  the same streak at the top earns Master. Permanent from the moment they are
+  earned (`awardPermanentBadge`, which now reports whether it actually created
+  the row so a genuinely new award is audited and an old one is not), kept
+  through demotion — the badge says the level WAS proven — and idempotent
+  under re-proving, which `tests/quiz-tier-badges.test.ts` drives through the
+  real serving path with a disposable pupil: climb, fall, re-climb, one badge.
+  Badge ids extend the stored-identity scheme (`abhyaas:<slug>:tier-<n>`), the
+  practice card shows a medal count ("3/6") next to the level chip, and the
+  child's record page lists each badge by its stored English label — the
+  stored-artifact precedent, same as the clean-completion badge beside it.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form

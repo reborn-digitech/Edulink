@@ -1447,7 +1447,7 @@ model EarnedBadge {
   studentMembershipId String
   academicYearId      String?
 
-  badgeId     String // matches the derived badge ids in badges.ts, or a quiz topic
+  badgeId     String // derived ids from badges.ts, a quiz topic (abhyaas:<slug>), or a ladder tier (abhyaas:<slug>:tier-<n>)
   label       String
   description String  @default("")
   /// Permanent badges ignore the academic year entirely and are never archived

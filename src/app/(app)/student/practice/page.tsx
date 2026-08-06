@@ -146,6 +146,15 @@ export default async function PracticePage({
                       <span className="text-xs text-fg-muted">
                         {t("practice.triedOfTotal", { seen: topic.seenCount, total: topic.questionCount })}
                       </span>
+                      {topic.tierCount > 0 && (
+                        <span
+                          className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong"
+                          title={t("practice.tierBadges", { n: topic.tierCount })}
+                        >
+                          <MedalIcon weight="fill" className="size-3.5" />
+                          {topic.tierCount}/6
+                        </span>
+                      )}
                       {topic.completed && !topic.badgeEarned && (
                         <span className="inline-flex items-center gap-1 text-xs text-fg-muted">
                           <CheckCircleIcon weight="fill" className="size-3.5" />

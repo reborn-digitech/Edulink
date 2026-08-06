@@ -816,6 +816,7 @@ export const hi: Dictionary = {
     allClasses: "सभी कक्षाएँ",
     classN: "कक्षा {n}",
     triedOfTotal: "{total} में से {seen} किए",
+    tierBadges: "6 में से {n} स्तर बैज अर्जित",
     intro: "अभ्यास जो तुम्हारे साथ चलता है। दो सही करो तो कठिन होता है; दो गलत तो आसान।",
     allSubjects: "सब",
     level1: "याद रखो · Remember",

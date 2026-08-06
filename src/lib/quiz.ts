@@ -157,6 +157,19 @@ export function topicBadgeId(slug: string): string {
   return `abhyaas:${slug}`;
 }
 
+/**
+ * One badge per rung of a chapter's ladder, named like a ranking a child
+ * would brag about. Index is level − 1: Beginner is proving L1, Master is
+ * holding your own at Olympiad level.
+ */
+export const TIER_NAMES = ["Beginner", "Learner", "Amateur", "Expert", "Pro", "Master"] as const;
+
+/** The badge id one PROVEN LEVEL of a topic earns. Level is part of the
+ * identity, so climbing the ladder collects six distinct badges. */
+export function topicTierBadgeId(slug: string, level: number): string {
+  return `abhyaas:${slug}:tier-${clampLevel(level)}`;
+}
+
 /* -------------------------------------------------------------------------- */
 /* The adaptive step — pure, so it can be tested without a database            */
 /* -------------------------------------------------------------------------- */
@@ -263,6 +276,8 @@ export type TopicSummary = {
   correctCount: number;
   completed: boolean;
   badgeEarned: boolean;
+  /** Ladder-tier badges earned in this chapter, 0–6 (Beginner … Master). */
+  tierCount: number;
 };
 
 /** Topics for a class, with this child's progress against each. */
@@ -313,6 +328,22 @@ export async function listTopics(
       : [];
   const byTopic = new Map(mastery.map((m) => [m.topicId, m]));
 
+  // Tier badges are stored rows, not derived state, so the card can show them
+  // without recomputing anything. One query for the child's whole collection;
+  // the badge id carries the slug and the tier, so parsing it is enough.
+  const tierRows = membershipId
+    ? await db.earnedBadge.findMany({
+        where: { studentMembershipId: membershipId, permanent: true, badgeId: { contains: ":tier-" } },
+        select: { badgeId: true },
+      })
+    : [];
+  const tiersBySlug = new Map<string, number>();
+  for (const row of tierRows) {
+    const match = /^abhyaas:(.+):tier-[1-6]$/.exec(row.badgeId);
+    if (!match) continue;
+    tiersBySlug.set(match[1]!, (tiersBySlug.get(match[1]!) ?? 0) + 1);
+  }
+
   return topics.map((topic) => {
     const mine = byTopic.get(topic.id);
     const spread = spreadByTopic.get(topic.id) ?? (new Array(MAX_LEVEL).fill(0) as number[]);
@@ -335,6 +366,7 @@ export async function listTopics(
       correctCount: mine?.correctCount ?? 0,
       completed: (mine?.seenCount ?? 0) >= questionCount && questionCount > 0,
       badgeEarned: mine?.cleanCompletionAt != null,
+      tierCount: tiersBySlug.get(topic.slug) ?? 0,
     };
   });
 }
@@ -559,6 +591,42 @@ export async function submitAnswer(
         correctCount: correct ? { increment: 1 } : undefined,
       },
     });
+
+    // TIER BADGES: one per rung of the chapter's ladder, earned the moment a
+    // level is PROVEN and kept forever. Proving means the same thing on every
+    // rung — two right in a row at that level. For L1–L5 that is exactly the
+    // promotion; L6 has nowhere to promote to, so the same streak at the top
+    // earns Master. A child who is later demoted keeps the badge (it says the
+    // level WAS proven, not that it is still held), and re-proving a level is
+    // an idempotent no-op, so the ladder can be climbed, fallen down, and
+    // climbed again without ever duplicating a badge.
+    const provedLevel =
+      next.level > mastery.level
+        ? mastery.level
+        : next.level === MAX_LEVEL && next.streakRight >= PROMOTE_AFTER
+          ? MAX_LEVEL
+          : null;
+    if (provedLevel !== null) {
+      const topic = await db.quizTopic.findUniqueOrThrow({
+        where: { id: attempt.topicId },
+        select: { slug: true, name: true },
+      });
+      const created = await awardPermanentBadge(schoolId, membershipId, {
+        badgeId: topicTierBadgeId(topic.slug, provedLevel),
+        label: `${topic.name} · ${TIER_NAMES[provedLevel - 1]}`,
+        description: `Answered ${PROMOTE_AFTER} in a row right at Level ${provedLevel} of ${topic.name}`,
+      });
+      if (created) {
+        await audit({
+          schoolId,
+          actorUserId: null,
+          action: "quiz.tierBadge",
+          targetType: "QuizTopic",
+          targetId: attempt.topicId,
+          meta: { slug: topic.slug, membershipId, level: provedLevel },
+        });
+      }
+    }
   }
 
   await db.quizResponse.upsert({

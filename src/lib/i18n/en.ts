@@ -939,6 +939,7 @@ export const en = {
     allClasses: "All classes",
     classN: "Class {n}",
     triedOfTotal: "{seen} of {total} tried",
+    tierBadges: "{n} of 6 level badges earned",
     /* Level labels are deliberately bilingual in every language — the Hindi
        word is part of the product voice ("Yaad rakho · Remember"). */
     level1: "Yaad rakho · Remember",

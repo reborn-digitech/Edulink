@@ -216,17 +216,18 @@ export async function awardPermanentBadge(
   schoolId: string,
   studentMembershipId: string,
   badge: { badgeId: string; label: string; description?: string },
-): Promise<void> {
+): Promise<boolean> {
   // findFirst + create rather than upsert: a compound unique cannot be TARGETED
   // through a null member, and a permanent badge deliberately has no year. The
   // unique index still stops a duplicate if two requests race — which is why the
   // create is allowed to fail quietly below rather than being trusted to be the
-  // only writer.
+  // only writer. Returns whether THIS call created the badge, so a caller can
+  // audit or announce a genuinely new award without re-announcing an old one.
   const existing = await db.earnedBadge.findFirst({
     where: { studentMembershipId, badgeId: badge.badgeId, academicYearId: null },
     select: { id: true },
   });
-  if (existing) return;
+  if (existing) return false;
 
   try {
     await db.earnedBadge.create({
@@ -240,11 +241,13 @@ export async function awardPermanentBadge(
         permanent: true,
       },
     });
+    return true;
   } catch (error) {
     // A unique violation here means somebody else just awarded the same badge,
     // which is the outcome we wanted. Anything else is ours.
     const duplicate =
       typeof error === "object" && error !== null && (error as { code?: string }).code === "P2002";
     if (!duplicate) throw error;
+    return false;
   }
 }
