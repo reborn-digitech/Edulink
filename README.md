@@ -546,14 +546,14 @@ Break these and something quietly goes wrong for a child or a parent.
    that rather than discovering it at the end. It is now the only
    identity-provider work outstanding: 2FA was removed by decision (see Not
    built), and password reset by email or mobile number ships in its place.
-1b. **Click the paths that are only reasoned about.** The list is shorter than
-   it was: leave → approval → cover has since been walked end to end in a
-   production build, from both sides, as part of the timetable work — a teacher
-   applied, an admin approved with a named cover, and the replacement appeared
-   on four different people's screens. What is still only reasoned about is
-   the tail of the staff chain, report card → dashboard. §§12m–12q of the
-   checklist exist for exactly this. (The 2FA login step used to head this list
-   and no longer exists — see Not built.)
+1b. **Click the paths that are only reasoned about.** Nearly empty now:
+   §§12m0–12q were walked end to end in a production build — including report
+   card → publish → the parent's dashboard, which used to be this item's tail.
+   What is still only reasoned about: the principal-as-LEAD builder case (the
+   mechanism is proven through the class teacher), print output, quiet-hours
+   delivery timing, and the multi-pupil ordering checks a one-pupil school
+   cannot exercise. (The 2FA login step used to head this list and no longer
+   exists — see Not built.)
 2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
    badge and the English/Hindi/Marathi switch are all done and proven; what is
    missing is only content, and content does not block anything else in this
@@ -562,16 +562,20 @@ Break these and something quietly goes wrong for a child or a parent.
    as unproven out loud, and `npm run quiz:verify` runs before each import — its
    separate counts are the measure of progress, never the total.
 
-**Before any of them, something cheaper.** Nothing in
-`docs/UI-TEST-CHECKLIST.md` has been walked by hand since the policies went on,
-and four of the last five bugs lived in states no signed-in test ever reaches.
-Walk sections 2, 5, 7 and 8 **signed out**, and then §§12m–12q, which have never
-been walked at all.
+**The cheap thing got done.** Sections 2, 5, 7 and 8 were walked signed out and
+§§12m0–12q walked for the first time — roughly 150 boxes against a production
+build, from a school registered from nothing. The prediction held exactly: the
+two real bugs it found (the first-parent claim 500, the guardian report-card
+404) lived in states no signed-in test ever reaches, behind pages that were a
+healthy 200 throughout. Both are fixed and the walk's box-by-box log names
+which boxes were retracted, which were stale, and which cannot be walked in an
+automated harness.
 
-**The single highest-value box in that file** is the one in §12p that says: change
-a mark that is on a published report card, reopen the card, and check the number
-has not moved. Three unit tests assert it, but it is the property a school would
-notice last and trust least, and it is worth seeing once with your own eyes.
+**The single highest-value box has been seen.** A mark was changed under a
+published report card and the card did not move — 75.0% and 15/20 before,
+75.0% and 15/20 after, regenerate leaving it alone, and only
+withdraw-then-regenerate picking up the new 90%. The three unit tests were
+telling the truth.
 
 
 **A pattern worth internalising before you add anything:** three separate
@@ -1865,28 +1869,80 @@ One line each, with the default rejected.
   leave, all rendering आज / माझे वर्ग / कामे / हजेरी घ्या / रजा with the offline
   banner in Marathi above them.
 
-- **Every date, and every browser-tab title.** Two passes that cut across all
-  five roles, done as sweeps rather than role by role — doing them per-role
-  would have meant revisiting the same files five times.
-  **DATES: 70 → 2.** `formatDateKey` and `relativeTime` both take a locale and
-  both default to `"en"`, and every call site omitted it. 37 files threaded
-  through. Marathi now renders Devanagari numerals — *बुधवार, ५ ऑगस्ट* — because
-  that is what `Intl` does for `mr`, which is the point of passing a locale
-  rather than formatting by hand.
-  **THREE COMPONENTS TAKE THE LOCALE AS A PROP RATHER THAN A HOOK.**
-  `WeekGridView`, `EntryRow` and `ClosedDayNotice` are leaves rendered inside
-  server pages with no `"use client"`, so a hook was not available; the prop
-  defaults to `"en"` so no call site broke while the pages were threaded.
+- **Every browser-tab title, and then the DATES DECISION REVERSED.**
   **TITLES: 80 files, 73 distinct.** `export const metadata` is a STATIC export
-  and cannot await anything, so each became `generateMetadata()`. That is why
-  this was a category of its own rather than a remnant of the role passes.
-  **ONE CONVERSION BROKE A FILE AND THE BUILD SAID SO**: the import was inserted
-  after the last line starting `import `, which in one file was the opening
-  `import {` of a multi-line list. Repaired, and worth recording because the
-  same naive rule sits in the other scripts here.
-  **Walked all three languages end to end**: `/teacher` reads *Today · EduLink*,
-  *आज · EduLink*, *आज · EduLink*, and `/teacher/attendance` *Take the register*,
-  *हाज़िरी लें*, *हजेरी घ्या* — with the dates on the page changing with them.
+  and cannot await anything, so each became `generateMetadata()`.
+  **DATES ARE DATA NOW, AND DATA DOES NOT TOGGLE.** An earlier pass threaded a
+  locale through `formatDateKey` and `relativeTime` so Marathi rendered
+  Devanagari numerals — and the result was one line mixing numeral systems
+  (`१४ सप्टें` beside an ASCII `{count}`). The product rule that settled it: the
+  language switch moves LABELS AND HEADINGS and nothing else; dates, times and
+  "2 hours ago" are values and read identically in every language. Enforced
+  where it cannot rot: the formatters in `lib/dates.ts` no longer HAVE a locale
+  parameter, so a call site that tries to pass one is a type error. The one
+  exception is `weekdayName`/`weekdayShortName` — column headings are a fixed
+  seven-label set, which makes them labels.
+
+- **The whole app answers in the reader's language, and every refusal is a
+  key.** English, Hindi and Marathi — ~3,400 keys, with `hi.ts`/`mr.ts` typed
+  from `en.ts` so a missing key fails the BUILD. Every error family now mints
+  `TranslationKey`s and lets the boundary own the words: the 211 `AccessError`
+  throw sites (the constructor's type refuses an English sentence), the refusal
+  family (passwords, crypto, membership, school-record, register-duty, cohort,
+  account-merge), the upload pair (`UploadError`/`AttachmentError` — thrown
+  Errors whose messages every catch was showing to the uploader), the password
+  meter, and the zod layer: custom messages are keys, and `fieldErrors` reads
+  the issue CODE for the defaults, so a bare `.min(2)` answers "Use at least 2
+  characters." in Marathi instead of zod's English. **Proven live over the
+  wire**: an empty login form refused in Hindi, a 321-character login name
+  refused in Marathi with the bound spliced in.
+  **THE AUDIT GREW THREE MORE EYES DOING IT.** Its fourth and fifth blind spots
+  — expression-position strings (ternary hints, toast titles, `setError`,
+  template literals) and JSX text spanning lines or holding an
+  `{interpolation}` — hid ~110 visible strings on pages the counter called
+  finished, including whole safeguarding paragraphs. All keyed, and the audit
+  reads those shapes now. What it still counts (38 files) is the decided pile:
+  stored/sent artifacts, operator- and machine-facing text, and data.
+  **The translations themselves are the caveat**: written here, reviewed by
+  nobody who reads Hindi or Marathi daily. A teacher should read them before a
+  school does.
+
+- **The never-walked checklist sections, walked — §§2, 5, 7, 8 signed out and
+  §§12m0–12q — and they earned their keep.** A school registered from nothing,
+  a messy CSV triaged row by row, a child joining lowercase-and-hyphenless, a
+  parent claiming her with a birthday, cover arranged and told about both ways,
+  leave self-approval refused, the §12p freeze SEEN: a mark changed under a
+  published card and the card did not move. Roughly 150 boxes. Two of them
+  found real bugs, both the shape the walk exists for — every page involved a
+  healthy 200:
+  **The FIRST parent ever to claim a child 500'd.** `Membership`'s RLS honours
+  a student code but `School`'s never did, so the claim's required school came
+  back null and Prisma threw. Every seeded walk had passed because those
+  parents already had visible schools. The generator now grants the school
+  BEHIND a student code the same single-row read the code itself gets.
+  **Every guardian's "open the report card" link 404'd.** `getCard` demanded a
+  session `schoolId`, which a guardian — authorised through Guardianship, not
+  Membership — has never had. The card names its own school now and the
+  relationship decides. Re-tested: parent 200, drafts still hidden, builder
+  permissions unchanged.
+  **And the walk's smaller findings were closed**: the duplicate-email refusal
+  at registration was stored under `"admin.email"` while the field listened for
+  `"adminEmail"` (a silent no, now mapped and shown); the wizard restores the
+  STEP after a refresh, not just the answers; the join wizard's Next refuses an
+  invalid birthday instead of silently dropping it; the leave action forwards
+  the `errorKey`s its lib was already minting; and the server log is an
+  ALLOWLIST — sign-ins and signups belong to a person, not a tenant, and
+  `schoolId: null` alone was pouring every user's login history into the
+  operator's page.
+
+- **ESLint exists now** — flat config through `eslint-config-next` v16,
+  `npm run lint`, zero errors. Its first run paid for itself: a server action
+  named like a hook (`useSuggestedDay`, now `seedSuggestedDay`), a `children`
+  prop holding the guardian's actual children (now `pupils`), a ref written
+  during render, and four whole English paragraphs both audit heuristics had
+  walked past. The 28 remaining warnings are test-fixture variables and two
+  React-compiler-era rules deliberately downgraded with the reasoning in
+  `eslint.config.mjs`.
 
 ### Built but not click-through verified
 
@@ -1895,13 +1951,11 @@ Renders and typechecks; treat as `Untested:`.
 - **The install button.** Chrome only fires `beforeinstallprompt` on a real
   visit over a real origin, so the affordance cannot be driven from an automated
   browser. Everything either side of it is covered.
-- **Invite revoke and resend BUTTONS** — the two controls, not the behaviour.
-  What they do to an invitation is pinned by `invite-lifecycle.test.ts`: a
-  revoked link is refused, a resent link kills its predecessor, an expired one is
-  refused and recorded as expired. The accept path is no longer on this list — a
-  real token was redeemed, signed out, in a production build, into a TEACHER
-  membership on the right class. What remains unclicked is the two admin buttons
-  that put an invitation into those states.
+- ~~Invite revoke and resend BUTTONS~~ **clicked, during the checklist walk.**
+  Withdraw moved the invitation to the Withdrawn tab with a toast; Resend was
+  clicked and its effect verified the strong way — the predecessor link
+  answered "no longer valid" while the fresh one carried the same prefilled
+  name. Nothing remains on this list from the invitation lifecycle.
 
 ### Not built
 
