@@ -10,7 +10,6 @@ import { useToast } from "@/components/ui/toast";
 import { relativeTime } from "@/lib/dates";
 import { decideRequest } from "./actions";
 import type { PendingRequest } from "@/lib/mentoring";
-import { useLocale } from "@/lib/i18n";
 
 /**
  * The school answering.
@@ -21,7 +20,6 @@ import { useLocale } from "@/lib/i18n";
  * where they stand.
  */
 export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
-  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -69,7 +67,7 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
               )}
             </p>
             <p className="mt-0.5 text-xs text-fg-muted">
-              {request.expertHeadline} · asked {relativeTime(request.askedAt, undefined, locale)}
+              {request.expertHeadline} · asked {relativeTime(request.askedAt)}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-fg">“{request.purpose}”</p>
             <div className="mt-3 flex flex-wrap gap-2">

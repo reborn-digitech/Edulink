@@ -118,7 +118,7 @@ export default async function ClassTimetablesPage({
             )}
             <span className="px-1 text-sm font-medium text-fg">
               {t("principal.weekOf", {
-                date: formatDateKey(monday, { day: "numeric", month: "long" }, locale),
+                date: formatDateKey(monday, { day: "numeric", month: "long" }),
               })}
             </span>
             <Link

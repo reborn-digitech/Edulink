@@ -12,7 +12,6 @@ import { Avatar } from "@/components/ui/avatar";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { PrintButton } from "./print-button";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -38,7 +37,6 @@ export default async function ReportPage({
   params: Promise<{ studentMembershipId: string }>;
   searchParams: Promise<{ from?: string; to?: string }>;
 }) {
-  const locale = await getLocale();
   const session = await requireUser();
   const t = await getT();
   const { studentMembershipId } = await params;
@@ -97,8 +95,8 @@ export default async function ReportPage({
         <div className="text-sm text-fg-muted sm:text-right">
           <p className="font-medium text-fg">Progress report</p>
           <p>
-            {formatDateKey(report.window.fromKey, { day: "numeric", month: "long" }, locale)} to{" "}
-            {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" }, locale)}
+            {formatDateKey(report.window.fromKey, { day: "numeric", month: "long" })} to{" "}
+            {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" })}
           </p>
         </div>
       </header>
@@ -246,8 +244,8 @@ export default async function ReportPage({
           })}
         </p>
         <p className="mt-0.5">
-          Covers {formatDateKey(report.window.fromKey, { day: "numeric", month: "long", year: "numeric" }, locale)} to{" "}
-          {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" }, locale)}. Ask
+          Covers {formatDateKey(report.window.fromKey, { day: "numeric", month: "long", year: "numeric" })} to{" "}
+          {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" })}. Ask
           the school if anything here looks wrong.
         </p>
       </footer>

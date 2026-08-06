@@ -158,7 +158,7 @@ function DayHeading({ day, locale, t }: { day: DayColumn; locale: string; t: Tra
       </span>
       {day.dateKey && (
         <span className="block text-xs text-fg-muted">
-          {formatDateKey(day.dateKey, { day: "numeric", month: "short" }, locale)}
+          {formatDateKey(day.dateKey, { day: "numeric", month: "short" })}
           {day.isToday && t("timetable.today")}
         </span>
       )}

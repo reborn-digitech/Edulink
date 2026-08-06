@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BellIcon, BellSlashIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
 /**
@@ -37,6 +38,7 @@ function urlBase64ToUint8Array(base64: string): Uint8Array {
 }
 
 export function PushToggle({ className }: { className?: string }) {
+  const t = useT();
   const { toast } = useToast();
   const [state, setState] = useState<State>("checking");
   const [devices, setDevices] = useState(0);
@@ -124,8 +126,8 @@ export function PushToggle({ className }: { className?: string }) {
         // here means a local build with no keys generated.
         toast({
           tone: "danger",
-          title: "Push is not configured",
-          description: "No VAPID public key. Run `npm run vapid` and restart.",
+          title: t("push.notConfigured"),
+          description: t("push.noVapid"),
         });
         setState("off");
         return;
@@ -139,7 +141,7 @@ export function PushToggle({ className }: { className?: string }) {
       const ok = await registerWithServer(subscription);
       if (!ok) {
         await subscription.unsubscribe().catch(() => {});
-        toast({ tone: "danger", title: "Could not turn notifications on" });
+        toast({ tone: "danger", title: t("push.couldNotTurnOn") });
         setState("off");
         return;
       }
@@ -148,14 +150,14 @@ export function PushToggle({ className }: { className?: string }) {
       setDevices((d) => d + 1);
       toast({
         tone: "ok",
-        title: "Notifications on",
-        description: "This device will be told about absences, grades and messages.",
+        title: t("push.onToastTitle"),
+        description: t("push.onToastBody"),
       });
     } catch (error) {
       console.error("[push] subscribe failed", error);
       toast({
         tone: "danger",
-        title: "Could not turn notifications on",
+        title: t("push.couldNotTurnOn"),
         description: error instanceof Error ? error.message : undefined,
       });
       setState("off");
@@ -177,10 +179,10 @@ export function PushToggle({ className }: { className?: string }) {
       }
       setState("off");
       setDevices((d) => Math.max(0, d - 1));
-      toast({ tone: "neutral", title: "Notifications off for this device" });
+      toast({ tone: "neutral", title: t("push.offToast") });
     } catch {
       setState("on");
-      toast({ tone: "danger", title: "Could not turn notifications off" });
+      toast({ tone: "danger", title: t("push.couldNotTurnOff") });
     }
   }
 
@@ -196,16 +198,14 @@ export function PushToggle({ className }: { className?: string }) {
   );
 
   if (state === "checking") {
-    return shell(<p className="text-sm text-fg-muted">Checking notifications…</p>);
+    return shell(<p className="text-sm text-fg-muted">{t("push.checking")}</p>);
   }
 
   if (state === "unsupported") {
     return shell(
       <>
         <BellSlashIcon className="size-5 shrink-0 text-fg-subtle" aria-hidden="true" />
-        <p className="min-w-0 flex-1 text-sm text-fg-muted">
-          This browser cannot do push notifications. You will still see everything in the app.
-        </p>
+        <p className="min-w-0 flex-1 text-sm text-fg-muted">{t("push.unsupported")}</p>
       </>,
     );
   }
@@ -214,10 +214,7 @@ export function PushToggle({ className }: { className?: string }) {
     return shell(
       <>
         <WarningIcon weight="fill" className="size-5 shrink-0 text-warn" aria-hidden="true" />
-        <p className="min-w-0 flex-1 text-sm text-fg-muted">
-          Push needs the installed app or a production build. Notifications still appear
-          in the app.
-        </p>
+        <p className="min-w-0 flex-1 text-sm text-fg-muted">{t("push.needsApp")}</p>
       </>,
     );
   }
@@ -226,10 +223,7 @@ export function PushToggle({ className }: { className?: string }) {
     return shell(
       <>
         <BellSlashIcon className="size-5 shrink-0 text-danger" aria-hidden="true" />
-        <p className="min-w-0 flex-1 text-sm text-fg-muted">
-          You blocked notifications for this site. Only you can undo that — reset it in your
-          browser&rsquo;s site settings, then come back.
-        </p>
+        <p className="min-w-0 flex-1 text-sm text-fg-muted">{t("push.blocked")}</p>
       </>,
     );
   }
@@ -248,14 +242,14 @@ export function PushToggle({ className }: { className?: string }) {
       </span>
       <div className="min-w-0 flex-1">
         <p className="text-sm font-semibold text-fg">
-          {on ? "Notifications are on for this device" : "Notifications are off for this device"}
+          {on ? t("push.onTitle") : t("push.offTitle")}
         </p>
         <p className="text-xs text-fg-muted">
           {on
             ? devices > 1
-              ? `${devices} devices registered.`
-              : "You will be told even when the app is closed."
-            : "Turn them on to hear about absences, grades and teacher messages."}
+              ? t("push.devicesRegistered", { count: devices })
+              : t("push.toldWhenClosed")
+            : t("push.turnOnHint")}
         </p>
       </div>
       <Button
@@ -263,7 +257,7 @@ export function PushToggle({ className }: { className?: string }) {
         loading={state === "working"}
         onClick={on ? disable : enable}
       >
-        {on ? "Turn off" : "Turn on"}
+        {on ? t("push.turnOff") : t("push.turnOn")}
       </Button>
     </>,
   );

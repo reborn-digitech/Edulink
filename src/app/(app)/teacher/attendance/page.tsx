@@ -12,7 +12,6 @@ import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -24,7 +23,6 @@ export default async function AttendancePage({
 }: {
   searchParams: Promise<{ classId?: string; date?: string }>;
 }) {
-  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const params = await searchParams;
@@ -90,11 +88,11 @@ export default async function AttendancePage({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.takeRegister")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
+            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
           </p>
         </div>
 
-        <ClosedDayNotice calendar={calendar} dateKey={dateKey} locale={locale} />
+        <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
 
         <ul className="space-y-2">
           {classes.map((klass) => (
@@ -159,20 +157,20 @@ export default async function AttendancePage({
 
   return (
     <div className="space-y-4">
-      <ClosedDayNotice calendar={calendar} dateKey={dateKey} locale={locale} />
+      <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
       {duty.reason === "COVER" && (
         // Said out loud, because somebody marking a register they do not
         // normally mark should know why they can, and until when.
         <p className="rounded-[--radius-md] border border-accent/30 bg-accent-soft px-4 py-3 text-sm font-medium text-accent-strong">
           You are covering this register until{" "}
-          {formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" }, locale)}.
+          {formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" })}.
         </p>
       )}
       <Register
         classId={selectedId}
       className={register.class.name}
       dateKey={dateKey}
-      dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
+      dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
         initialRoster={register.roster}
         readOnly={dateKey > today}
       />
@@ -199,16 +197,14 @@ export default async function AttendancePage({
 function ClosedDayNotice({
   calendar,
   dateKey,
-  locale,
 }: {
   calendar: { closed: boolean; entries: { name: string; kind: string }[] };
   dateKey: string;
-  locale: string;
 }) {
   if (calendar.entries.length === 0) return null;
 
   const names = calendar.entries.map((entry) => entry.name).join(" · ");
-  const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale);
+  const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
 
   if (!calendar.closed) {
     return (

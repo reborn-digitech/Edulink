@@ -75,53 +75,25 @@ const SKIP_EXACT = new Set([
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];
 
-export type Finding = { file: string; strings: string[]; dates: number };
+export type Finding = { file: string; strings: string[] };
 
 /**
- * ⚠ DATES ARE THE MISS A STRING COUNT CANNOT SEE, and a screenshot caught it.
+ * ⚠ THERE USED TO BE A DATE COUNTER HERE, AND ITS ABSENCE IS A DECISION.
  *
- * `formatDateKey` and `relativeTime` both take a locale and both DEFAULT TO
- * "en". Every call site in the app omitted it, so a fully translated Hindi page
- * still read "WEDNESDAY, AUGUST 5" and "3 days ago" in the middle of a Hindi
- * sentence. Nothing about that is a hardcoded string, so the counter above was
- * blind to it and reported the page finished.
+ * For a while this script also counted date-formatter calls that omitted a
+ * `locale`, because a fully translated Hindi page still read "WEDNESDAY,
+ * AUGUST 5" mid-sentence. Threading the locale through produced something
+ * worse: Marathi dates in Devanagari digits (`१४ सप्टें`) next to ASCII
+ * `{count}`s, so one line mixed numeral systems. The product rule that settled
+ * it: THE LANGUAGE TOGGLE MOVES LABELS AND HEADINGS — static visible text —
+ * AND NOTHING ELSE. Dates, times and "2 hours ago" are values, and values read
+ * the same in every language.
  *
- * Counted separately rather than folded into the string total: they are a
- * different fix (thread the locale through) and mixing them would make the
- * headline number mean two things.
+ * The rule is enforced where it cannot rot: the formatters in `lib/dates.ts`
+ * no longer HAVE a locale parameter, so a call site that tries to pass one is
+ * a type error, not an audit finding. A counter here would be a second, weaker
+ * copy of what the compiler already refuses.
  */
-function unlocalisedDates(source: string): number {
-  const code = source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
-  let n = 0;
-  // ⚠ GREEDY, AND LINE-BOUNDED. This was non-greedy, so it stopped at the FIRST
-  // `)` — and `formatUtcMoment(new Date(slot.startsAt), locale)` hides its
-  // locale behind a nested call. Two correct call sites were reported as
-  // unlocalised, which is the kind of noise that teaches you to stop reading.
-  // Greedy to the last `)` on the line fixes it; the cost is that two calls on
-  // ONE line are judged together, which no call site here does.
-  for (const m of code.matchAll(
-    /\b(formatDateKey|relativeTime|formatInZone|formatUtcMoment|formatUtcTime)\(([^;\n]*)\)/g,
-  )) {
-    // Crude but adequate: a call that never mentions `locale` is not passing one.
-    if (!/\blocale\b/.test(m[2] ?? "")) n++;
-  }
-  /**
-   * ⚠ AND `toUTCString`, WHICH IS THE SAME MISS WITH NO LOCALE TO FORGET.
-   *
-   * Six screens of the expert surface rendered a date as
-   * `startsAt.toUTCString().slice(0, 22)`. It takes no locale, so the rule above
-   * had nothing to check; it is not a string literal, so the counter could not
-   * see it either. A fully translated Marathi page read `Mon, 14 Sep 2026 09:00`
-   * and BOTH numbers above said the file was finished.
-   *
-   * `.slice(17, 22)` on its own is just `HH:MM` and reads the same in every
-   * language, so only the calls that keep the weekday and month are counted.
-   */
-  for (const m of code.matchAll(/\.toUTCString\(\)(\.slice\(\s*(\d+)\s*,\s*\d+\s*\))?/g)) {
-    if (m[2] === undefined || Number(m[2]) === 0) n++;
-  }
-  return n;
-}
 
 /** Every .tsx under a directory. No dependency, so this runs anywhere. */
 function walk(dir: string, ext: string): string[] {
@@ -196,8 +168,7 @@ function scan(): Finding[] {
     const strings = file.endsWith(".ts")
       ? [...new Set([...userVisible(source), ...actionMessages(source)])]
       : userVisible(source);
-    const dates = unlocalisedDates(source);
-    if (strings.length > 0 || dates > 0) out.push({ file, strings, dates });
+    if (strings.length > 0) out.push({ file, strings });
   }
   return out;
 }
@@ -219,25 +190,20 @@ if (target) {
     process.exit(0);
   }
   const strings = matches.reduce((n, f) => n + f.strings.length, 0);
-  const dates = matches.reduce((n, f) => n + f.dates, 0);
   console.log(
-    `${matches.length} file${matches.length === 1 ? "" : "s"} matching "${target}" — ` +
-      `${strings} strings, ${dates} unlocalised dates`,
+    `${matches.length} file${matches.length === 1 ? "" : "s"} matching "${target}" — ${strings} strings`,
   );
   for (const one of matches) {
-    console.log(`\n${one.file} — ${one.strings.length} strings, ${one.dates} unlocalised dates\n`);
+    console.log(`\n${one.file} — ${one.strings.length} strings\n`);
     for (const s of one.strings) console.log(`  ${s}`);
   }
   process.exit(0);
 }
 
 const total = findings.reduce((n, f) => n + f.strings.length, 0);
-const dateTotal = findings.reduce((n, f) => n + f.dates, 0);
-console.log(`${findings.length} files still hold hardcoded English — ${total} strings.`);
-console.log(`${dateTotal} date calls still render in English whatever the reader's language.\n`);
+console.log(`${findings.length} files still hold hardcoded English — ${total} strings.\n`);
 for (const f of findings.slice(0, 25)) {
-  const d = f.dates > 0 ? `  (+${f.dates} dates)` : "";
-  console.log(`  ${String(f.strings.length).padStart(4)}  ${f.file}${d}`);
+  console.log(`  ${String(f.strings.length).padStart(4)}  ${f.file}`);
 }
 if (findings.length > 25) console.log(`  … and ${findings.length - 25} more files`);
 console.log(`\nOne file at a time:  npm run i18n -- <path fragment>`);

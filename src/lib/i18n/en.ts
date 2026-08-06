@@ -172,8 +172,11 @@ export const en = {
     groupLabel: "Choose a language",
     readIn: "Read in",
     saved: "Language changed",
+    /* Kept honest as translation progresses — this line once claimed only
+        navigation and login were done, and later undersold the rest. Dates,
+        times and other values stay English by design in every language. */
     partial:
-      "Navigation, your account and the login page are translated. The rest of EduLink is still in English.",
+      "Most of EduLink is translated. Anything not yet translated — and all dates and times — appears in English.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -210,6 +213,201 @@ export const en = {
     mergeTitle: "Another account?",
     mergeDescription: "Changed school and had to start again with a new login",
     mergeAction: "Join them",
+
+    /* ------------------------------ how you sign in ----------------------- */
+    signInTitle: "How you sign in",
+    signInDescription:
+      "Your email, your mobile number, or the login name your school gave you — any of them, with your password.",
+    /** The no-role header's link — the one or two places such a person can go. */
+    yourRecordLink: "Your record",
+
+    /* ------------------------------ devices ------------------------------- */
+    thisDevice: "This device",
+    /** The times inside are relative-time VALUES and stay English — the toggle
+        moves labels, not data. */
+    deviceMeta: "Last used {lastSeen} · signed in {since}",
+    deviceSignedOut: "Device signed out",
+    couldNotSignOut: "Could not sign it out",
+    devicesOutOne: "1 device signed out",
+    devicesOutMany: "{count} devices signed out",
+    stillSignedInHere: "You are still signed in here.",
+    signOutEverywhereElse: "Sign out everywhere else",
+    thisDeviceUseSignOut: "That is this device. Use Sign out instead.",
+    deviceAlreadyOut: "That device is already signed out.",
+
+    /* ------------------------------ email --------------------------------- */
+    emailCodeSent: "We sent a code to {email}. It expires in 10 minutes.",
+    unchangedUntilCode: "Your account is unchanged until you enter it.",
+    theCode: "The code",
+    emailConfirmedTitle: "Email address confirmed",
+    emailConfirmedBody: "You can sign in with it, and get a reset code at it.",
+    /** Lowercase on purpose: a status flag beside the address, not a heading. */
+    confirmedFlag: "confirmed",
+    notConfirmedFlag: "not confirmed",
+    signInWithLoginName: "You sign in with the login name {name}.",
+    addEmailExplainer:
+      "Add an email address and you will sign in with that instead, and be able to reset your own password. Ask a parent or your teacher if you are not sure.",
+    emailAddress: "Email address",
+    emailHintEmpty: "We will email a code to check you can read it.",
+    emailHintNamed: "We will email a code to {email} to check it is yours.",
+    emailMeCode: "Email me a code",
+    nothingChangesUntilCode: "Nothing changes until the code comes back.",
+    didNotSend: "That did not send.",
+    didNotWork: "That did not work.",
+
+    /* ------------------------------ mobile -------------------------------- */
+    mobileCodeSent: "We sent a code to the number ending {digits}. It expires in 10 minutes.",
+    mobileConfirmedTitle: "Mobile number confirmed",
+    mobileConfirmedBody: "You can sign in with it, and get a reset code on it.",
+    mobileRemoved: "Mobile number removed",
+    mobileNumber: "Mobile number",
+    mobileHintEmpty: "Optional. Add one and you can sign in with it, and get a reset code by text.",
+    mobileHintNamed: "We will text a code to {phone} to check it is yours.",
+    mobileHintInvalid: "That does not look like a mobile number yet.",
+    textMeCode: "Text me a code",
+    nothingSavedUntilCode: "Nothing is saved until the code comes back.",
+
+    /* ------------------------------ preferences --------------------------- */
+    quietSameTime: "Start and end cannot be the same time.",
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* Joining two accounts — /account/merge                                   */
+  /* ---------------------------------------------------------------------- */
+  merge: {
+    heading: "Join two accounts",
+    /** Whole sentences with placeholders, because the name and login land
+        mid-sentence and Hindi and Marathi place them differently. The mono
+        styling on the login is given up for the same reason bold was on the
+        invitation page. */
+    introNamed:
+      "Changed school and started again with a new login? Bring the old one here and everything arrives on this account — {name} ({login}).",
+    intro:
+      "Changed school and started again with a new login? Bring the old one here and everything arrives on this account — {name}.",
+    whatComesTitle: "What comes across",
+    whatComesDescription: "Your schools, your marks, and your record from the school you left",
+    body1:
+      "Every school the other account belonged to moves onto this one, and brings its registers, marks and report cards with it. So does your school record — the leaving certificate your old school wrote, which is what shows your new school where you came from.",
+    /* The bold lead and its follow-on are SEPARATE SENTENCES, so splitting
+       them into two keys is safe — unlike splitting inside one. */
+    oldLoginStops: "The old login stops working.",
+    oldLoginStopsBody:
+      "The account itself is not deleted: anything it has already posted or written stays exactly where it is, so nothing disappears from a class page.",
+    onlyYou: "Only you can do this.",
+    onlyYouBody:
+      "It needs the password for both accounts, so no school and no administrator can join accounts on somebody else’s behalf — including yours.",
+    alreadyJoined: "Already joined into this account",
+
+    otherLogin: "The other account's login name or email",
+    pupilLoginHint:
+      "A pupil's login name is not an email address — it looks like a name followed by four characters.",
+    thatPassword: "That account's password",
+    bothPasswordsHint:
+      "You have to be able to sign in to both accounts. Nobody else — not even your school — can do this for you.",
+    findThatAccount: "Find that account",
+
+    isRightAccount: "Is this the right account?",
+    nothingChangedYet: "Nothing has changed yet. Check the name and the schools before you go on.",
+    /** The date is a VALUE and renders in English — labels toggle, data does not. */
+    leftOn: "Left {date}",
+    noSchools: "No schools on that account.",
+    recordsCountOne: "1 school record",
+    recordsCountMany: "{count} school records",
+    childrenLinkedOne: "1 child linked",
+    childrenLinkedMany: "{count} children linked",
+    cannotBeUndone: "This cannot be undone from here.",
+    stopsSignIn:
+      "{login} will stop being a way to sign in. Nothing is deleted — everything above moves onto the account you are using now.",
+    yesJoin: "Yes, join these accounts",
+    noGoBack: "No, go back",
+
+    nowOne: "Your accounts are now one",
+    everythingBelowHere: "Everything below is on the account you are signed in to right now.",
+    schoolsMovedOne: "1 school moved across, with every mark, register and report card that belonged to it.",
+    schoolsMovedMany:
+      "{count} schools moved across, with every mark, register and report card that belonged to them.",
+    recordsMovedOne: "1 school record — your previous school, now on your profile.",
+    recordsMovedMany: "{count} school records — your previous school, now on your profile.",
+    childrenMovedOne: "1 child linked to you.",
+    childrenMovedMany: "{count} children linked to you.",
+    doneNoteNamed:
+      "The old login no longer works. Nothing was deleted — anything it had already written is still there, and still has {name}’s name on it.",
+    doneNote:
+      "The old login no longer works. Nothing was deleted — anything it had already written is still there, and still has their name on it.",
+    backToAccount: "Back to your account",
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* The permanent record — /record, its layout, and the shared view         */
+  /* ---------------------------------------------------------------------- */
+  record: {
+    yourRecord: "Your record",
+    account: "Account",
+    backToSchool: "Back to school",
+    schoolsOne: "1 school",
+    schoolsMany: "{count} schools",
+    /** One neutral voice for three readers — see the note on `REASON_LABEL`
+        in record-view. The bold "yours" was given up for the placeholder rule. */
+    selfIntro:
+      "This is yours, and it stays here whether or not you are at a school on EduLink. Report cards, attendance and badges are kept exactly as each school wrote them — no school can change what another one said, and neither can you.",
+    otherIntro:
+      "{name}’s record across every school you are linked to, kept exactly as each school wrote it. It stays here whether or not they are currently at a school on EduLink.",
+    attendance: "Attendance",
+    reportCards: "Report cards",
+    badges: "Badges",
+    badgesEarned: "Badges earned",
+    emptyTitle: "Nothing here yet",
+    emptyBody: "A school record appears once a school has marked a register or issued a report card.",
+    /* Three standalone pieces, not one sentence split around a link. */
+    joiningPrompt: "Joining a school on EduLink?",
+    appearsAutomatically: "It will appear here automatically.",
+    /** The open end of a date range — "Sep 2025 – now". */
+    now: "now",
+    gradeLevel: "Grade {level}",
+    hereNow: "Here now",
+    left: "Left",
+    reasonTransferred: "Transferred to another school",
+    reasonGraduated: "Finished school here",
+    reasonLeft: "Left this school",
+    wentOnTo: "Went on to {destination}",
+    noRegisterMarked: "No register was ever marked here.",
+    daysMarked: "{present} of {marked} days marked",
+    noneIssued: "None issued here.",
+    daysOf: "{present} of {total} days",
+    frozen: "Frozen as this school left it. Nothing above can change now.",
+
+    noRecordYet: "No record yet",
+    noRecordBody:
+      "A record appears once a school on EduLink has marked a register, issued a report card, or recorded that you have left. If you are joining a school, log in when they invite you and it will build itself.",
+    joinWithCode: "Join a school with a code",
+    childrenRecords: "Your children's records",
+    childrenIntro: "Everything each school has written, across every school you are linked to.",
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* The push-notification toggle, on the account page                       */
+  /* ---------------------------------------------------------------------- */
+  push: {
+    checking: "Checking notifications…",
+    unsupported: "This browser cannot do push notifications. You will still see everything in the app.",
+    needsApp: "Push needs the installed app or a production build. Notifications still appear in the app.",
+    blocked:
+      "You blocked notifications for this site. Only you can undo that — reset it in your browser’s site settings, then come back.",
+    onTitle: "Notifications are on for this device",
+    offTitle: "Notifications are off for this device",
+    devicesRegistered: "{count} devices registered.",
+    toldWhenClosed: "You will be told even when the app is closed.",
+    turnOnHint: "Turn them on to hear about absences, grades and teacher messages.",
+    turnOn: "Turn on",
+    turnOff: "Turn off",
+    notConfigured: "Push is not configured",
+    /** Dev-machine-only; the command stays literal in every language. */
+    noVapid: "No VAPID public key. Run `npm run vapid` and restart.",
+    couldNotTurnOn: "Could not turn notifications on",
+    couldNotTurnOff: "Could not turn notifications off",
+    onToastTitle: "Notifications on",
+    onToastBody: "This device will be told about absences, grades and messages.",
+    offToast: "Notifications off for this device",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1079,6 +1277,7 @@ export const en = {
   common: {
     save: "Save",
     saving: "Saving…",
+    confirm: "Confirm",
     cancel: "Cancel",
     remove: "Remove",
     removing: "Removing…",

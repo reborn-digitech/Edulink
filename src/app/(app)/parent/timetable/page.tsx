@@ -100,7 +100,7 @@ export default async function ParentTimetablePage({
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
-          Week of {formatDateKey(monday, { day: "numeric", month: "long" }, locale)}
+          Week of {formatDateKey(monday, { day: "numeric", month: "long" })}
         </span>
         <Link
           href={link_(next)}
@@ -125,7 +125,7 @@ export default async function ParentTimetablePage({
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday, undefined, locale)}`}
+            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday)}`}
             description={t("parent.coverNote")}
           />
           <CardBody>

@@ -45,6 +45,7 @@ export default async function RecordPage() {
    * makes it a lie.
    */
   const session = await requireUser();
+  const t = await getT();
 
   const [record, children] = await Promise.all([myRecord(session), myChildren(session)]);
 
@@ -53,11 +54,11 @@ export default async function RecordPage() {
   if (!record && children.length === 0) {
     return (
       <EmptyState
-        title="No record yet"
-        description="A record appears once a school on EduLink has marked a register, issued a report card, or recorded that you have left. If you are joining a school, log in when they invite you and it will build itself."
+        title={t("record.noRecordYet")}
+        description={t("record.noRecordBody")}
         action={
           <Button asChild variant="secondary">
-            <Link href="/join">Join a school with a code</Link>
+            <Link href="/join">{t("record.joinWithCode")}</Link>
           </Button>
         }
       />
@@ -78,11 +79,9 @@ export default async function RecordPage() {
         <section className="space-y-3">
           <div>
             <h2 className="text-lg font-bold tracking-tight text-fg">
-              {record ? "Your children" : "Your children's records"}
+              {record ? t("shell.yourChildren") : t("record.childrenRecords")}
             </h2>
-            <p className="mt-1 text-sm text-fg-muted">
-              Everything each school has written, across every school you are linked to.
-            </p>
+            <p className="mt-1 text-sm text-fg-muted">{t("record.childrenIntro")}</p>
           </div>
           <ul className="space-y-3">
             {children.map((child) => (
@@ -98,7 +97,9 @@ export default async function RecordPage() {
                         {child.preferredName ?? child.name}
                       </span>
                       <span className="block text-sm text-fg-muted">
-                        {child.schoolCount} school{child.schoolCount === 1 ? "" : "s"}
+                        {child.schoolCount === 1
+                          ? t("record.schoolsOne")
+                          : t("record.schoolsMany", { count: child.schoolCount })}
                       </span>
                     </span>
                     <ArrowRightIcon

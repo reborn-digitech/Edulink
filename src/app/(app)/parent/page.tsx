@@ -25,7 +25,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -39,7 +39,6 @@ export default async function ParentDashboard({
 }) {
   const session = await requireParent();
   const t = await getT();
-  const locale = await getLocale();
   const { child: requestedChild } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -183,7 +182,7 @@ export default async function ParentDashboard({
             </span>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
+                {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
               </p>
               {todayRecord ? (
                 <p className="mt-0.5 font-semibold text-fg">
@@ -261,7 +260,7 @@ export default async function ParentDashboard({
                 <li key={day.dateKey} className="flex items-center justify-between gap-3 py-2.5">
                   <span className="min-w-0">
                     <span className="block text-sm font-medium text-fg">
-                      {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" }, locale)}
+                      {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" })}
                     </span>
                     {day.note && (
                       <span className="block truncate text-xs text-fg-muted">{day.note}</span>
@@ -305,7 +304,7 @@ export default async function ParentDashboard({
                         {grade.assignment.title}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {grade.assignment.category ?? t("parent.work")} · {relativeTime(grade.gradedAt, undefined, locale)}
+                        {grade.assignment.category ?? t("parent.work")} · {relativeTime(grade.gradedAt)}
                       </span>
                       {grade.comment && (
                         <span className="mt-0.5 block truncate text-xs italic text-fg-muted">
@@ -355,7 +354,7 @@ export default async function ParentDashboard({
                     <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                   </span>
                   <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt, undefined, locale) : t("parent.noDueDate")}
+                    {assignment.dueAt ? relativeTime(assignment.dueAt) : t("parent.noDueDate")}
                   </span>
                 </li>
               ))}
@@ -397,7 +396,7 @@ export default async function ParentDashboard({
                       {thread.subject}
                     </span>
                     <span className="block truncate text-xs text-fg-muted">
-                      {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt, undefined, locale)}
+                      {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt)}
                     </span>
                   </span>
                 </li>

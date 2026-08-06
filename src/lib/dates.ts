@@ -147,13 +147,33 @@ export function isTeachingDay(dateKey: string): boolean {
 /* Display                                                                     */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * ⚠ DATES ARE DATA, AND DATA DOES NOT CHANGE WHEN THE LANGUAGE DOES.
+ *
+ * These formatters took a `locale` for a while, and the result was a page that
+ * was worse in Marathi than either all-English or all-Marathi would have been:
+ * `Intl` renders Marathi dates in Devanagari digits (`१४ सप्टें`) while every
+ * `{count}` in the translated copy stayed ASCII, so one line read
+ * "१४ सप्टें … जास्तीत जास्त 3". The product rule that resolved it: the
+ * language toggle moves LABELS AND HEADINGS — static visible text — and
+ * nothing else. A date, a time, a "2 hours ago" are values, and a value reads
+ * the same in every language, the way the numerals already did.
+ *
+ * The one deliberate exception lives in `school-day.ts`: `weekdayName` /
+ * `weekdayShortName` keep their locale, because "सोमवार" atop a timetable
+ * column is a heading — a fixed set of seven labels, not a formatted value.
+ *
+ * So `LOCALE` below is a constant, not a parameter. If a locale parameter
+ * grows back here, the mixed-digit line comes back with it.
+ */
+const LOCALE = "en";
+
 export function formatDateKey(
   dateKey: string,
   opts: Intl.DateTimeFormatOptions = { weekday: "short", day: "numeric", month: "short" },
-  locale = "en",
 ): string {
   const [y, m, d] = dateKey.split("-").map(Number) as [number, number, number];
-  return new Intl.DateTimeFormat(locale, { ...opts, timeZone: "UTC" }).format(
+  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone: "UTC" }).format(
     new Date(Date.UTC(y, m - 1, d)),
   );
 }
@@ -162,40 +182,36 @@ export function formatInZone(
   instant: Date,
   timeZone: string,
   opts: Intl.DateTimeFormatOptions = { dateStyle: "medium", timeStyle: "short" },
-  locale = "en",
 ): string {
-  return new Intl.DateTimeFormat(locale, { ...opts, timeZone }).format(instant);
+  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone }).format(instant);
 }
 
 /**
- * An instant, in UTC, in the reader's language — "Mon, 14 Sep 2026, 09:00".
+ * An instant, in UTC — "Mon, 14 Sep 2026, 09:00".
  *
  * ⚠ WHAT THIS REPLACES, AND WHY A STRING COUNT COULD NOT SEE IT.
  * `toUTCString().slice(0, 22)` was doing this job on six screens of the expert
- * surface. It is not a hardcoded string, so the audit's counter reported those
- * files finished; it is not `formatDateKey` or `relativeTime` either, so the
- * unlocalised-date check did not see it. A fully translated Marathi page still
- * read `Mon, 14 Sep 2026 09:00` in the middle of a Devanagari sentence, and it
- * took a screenshot of the actual page to notice — the third time on this
- * project that a date has been the thing a counter is blind to.
+ * surface, each site clipping the string by hand and none of them the same
+ * width. It is not a hardcoded string, so the audit's counter reported those
+ * files finished, and it took a screenshot of the actual page to notice.
  *
  * ⚠ AND UTC IS DELIBERATE HERE, not an oversight. Expert slots are stored and
  * shown in UTC on purpose: an expert and a school may be in different zones, and
  * every one of these pages says out loud that the times are UTC. Rendering them
  * in the reader's local zone would quietly move a booked hour.
  */
-export function formatUtcMoment(instant: Date, locale = "en"): string {
-  return formatInZone(instant, "UTC", { dateStyle: "medium", timeStyle: "short" }, locale);
+export function formatUtcMoment(instant: Date): string {
+  return formatInZone(instant, "UTC", { dateStyle: "medium", timeStyle: "short" });
 }
 
 /** Just the clock part of an instant, in UTC — the "to" half of a range. */
-export function formatUtcTime(instant: Date, locale = "en"): string {
-  return formatInZone(instant, "UTC", { timeStyle: "short" }, locale);
+export function formatUtcTime(instant: Date): string {
+  return formatInZone(instant, "UTC", { timeStyle: "short" });
 }
 
 /** "in 3 days", "2 hours ago" — for due dates and activity feeds. */
-export function relativeTime(target: Date, now: Date = new Date(), locale = "en"): string {
-  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+export function relativeTime(target: Date, now: Date = new Date()): string {
+  const rtf = new Intl.RelativeTimeFormat(LOCALE, { numeric: "auto" });
   const diffMs = target.getTime() - now.getTime();
   const units: [Intl.RelativeTimeFormatUnit, number][] = [
     ["year", 31_536_000_000],

@@ -11,7 +11,6 @@ import { InviteRowActions } from "./row-actions";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
-import { getLocale } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +29,6 @@ export default async function InvitesPage({
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
-  const locale = await getLocale();
   const ctx = await requireRole("ADMIN");
   const { status } = await searchParams;
   const t = await getT();
@@ -127,12 +125,12 @@ export default async function InvitesPage({
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {invite.status === "ACCEPTED" && invite.acceptedAt
                           ? t("invites.joinedAgo", {
-                              when: relativeTime(invite.acceptedAt, undefined, locale),
+                              when: relativeTime(invite.acceptedAt),
                             })
                           : expired
                             ? t("invites.expired")
                             : t("invites.expiresIn", {
-                                when: relativeTime(invite.expiresAt, undefined, locale),
+                                when: relativeTime(invite.expiresAt),
                               })}
                       </p>
                     </div>

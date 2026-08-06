@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../../window-picker";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,7 +47,6 @@ export default async function PrincipalClassPage({
   params: Promise<{ classId: string }>;
   searchParams: Promise<{ days?: string }>;
 }) {
-  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { classId } = await params;
@@ -117,8 +116,8 @@ export default async function PrincipalClassPage({
               : t("principal.pupilsMany", { count: data.pupils.length })}{" "}
             ·{" "}
             {t("principal.rangeTo", {
-              from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }, locale),
-              to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }, locale),
+              from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }),
+              to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }),
             })}
           </p>
         </div>

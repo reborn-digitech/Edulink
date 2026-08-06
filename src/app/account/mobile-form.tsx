@@ -6,6 +6,7 @@ import { CheckCircleIcon, DeviceMobileIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
+import { useT } from "@/lib/i18n";
 import { formatPhone, normalisePhone } from "@/lib/phone";
 import { sendMobileCode, confirmMobile, clearMobile } from "./actions";
 
@@ -29,6 +30,7 @@ export function MobileForm({
   current: string | null;
   confirmed: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -47,7 +49,7 @@ export function MobileForm({
     startTransition(async () => {
       const result = await sendMobileCode(value);
       if (!result.ok) {
-        setError(result.error ?? "That did not send.");
+        setError(result.error ?? t("account.didNotSend"));
         return;
       }
       setHint(result.hint ?? "");
@@ -61,13 +63,13 @@ export function MobileForm({
     startTransition(async () => {
       const result = await confirmMobile(code);
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("account.didNotWork"));
         return;
       }
       toast({
         tone: "ok",
-        title: "Mobile number confirmed",
-        description: "You can sign in with it, and get a reset code on it.",
+        title: t("account.mobileConfirmedTitle"),
+        description: t("account.mobileConfirmedBody"),
       });
       setStep("idle");
       setValue("");
@@ -79,7 +81,7 @@ export function MobileForm({
   function remove() {
     startTransition(async () => {
       await clearMobile();
-      toast({ tone: "ok", title: "Mobile number removed" });
+      toast({ tone: "ok", title: t("account.mobileRemoved") });
       setValue("");
       router.refresh();
     });
@@ -90,11 +92,13 @@ export function MobileForm({
     return (
       <form onSubmit={confirm} className="space-y-3" noValidate>
         <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
-          We sent a code to the number ending <strong>{hint}</strong>. It expires in 10 minutes.
+          {/* One sentence with a placeholder — see the matching note in
+              `EmailForm`. */}
+          {t("account.mobileCodeSent", { digits: hint })}
           {/* Said plainly: nothing has changed yet, so a wrong number costs
               nothing but one text. */}
           <span className="mt-1 block text-xs text-fg-muted">
-            Your account is unchanged until you enter it.
+            {t("account.unchangedUntilCode")}
           </span>
         </p>
 
@@ -108,7 +112,7 @@ export function MobileForm({
         )}
 
         <TextField
-          label="The code"
+          label={t("account.theCode")}
           inputMode="numeric"
           autoComplete="one-time-code"
           autoFocus
@@ -120,7 +124,7 @@ export function MobileForm({
 
         <div className="flex flex-wrap items-center gap-2">
           <Button type="submit" size="sm" loading={pending} disabled={code.trim().length === 0}>
-            Confirm
+            {t("common.confirm")}
           </Button>
           <Button
             type="button"
@@ -133,7 +137,7 @@ export function MobileForm({
               setError(null);
             }}
           >
-            Cancel
+            {t("common.cancel")}
           </Button>
         </div>
       </form>
@@ -148,7 +152,7 @@ export function MobileForm({
           <CheckCircleIcon weight="fill" className="size-4 shrink-0 text-ok" />
           <span className="font-medium text-fg">{formatPhone(current)}</span>
           <span className="text-xs text-fg-muted">
-            {confirmed ? "confirmed" : "not confirmed"}
+            {confirmed ? t("account.confirmedFlag") : t("account.notConfirmedFlag")}
           </span>
           <Button
             type="button"
@@ -158,7 +162,7 @@ export function MobileForm({
             disabled={pending}
             onClick={remove}
           >
-            Remove
+            {t("common.remove")}
           </Button>
         </p>
       )}
@@ -175,7 +179,7 @@ export function MobileForm({
       <TextField
         // Always what it is, never "Change it" — see the matching note in
         // `EmailForm`. Two forms in one card make a bare "Change it" ambiguous.
-        label="Mobile number"
+        label={t("account.mobileNumber")}
         type="text"
         inputMode="tel"
         autoComplete="tel"
@@ -184,21 +188,21 @@ export function MobileForm({
         onChange={(e) => setValue(e.target.value)}
         hint={
           value.trim().length === 0
-            ? "Optional. Add one and you can sign in with it, and get a reset code by text."
+            ? t("account.mobileHintEmpty")
             : normalised
-              ? `We will text a code to ${formatPhone(normalised)} to check it is yours.`
-              : "That does not look like a mobile number yet."
+              ? t("account.mobileHintNamed", { phone: formatPhone(normalised) })
+              : t("account.mobileHintInvalid")
         }
       />
 
       <div className="flex flex-wrap items-center gap-2">
         {/* Names its channel — see the matching note in `EmailForm`. */}
         <Button type="submit" size="sm" loading={pending} disabled={!normalised}>
-          Text me a code
+          {t("account.textMeCode")}
         </Button>
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">
           <DeviceMobileIcon className="size-3.5" />
-          Nothing is saved until the code comes back.
+          {t("account.nothingSavedUntilCode")}
         </p>
       </div>
     </form>

@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -19,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
-  const locale = await getLocale();
   const t = await getT();
   const session = await requireUser();
   const { postId } = await params;
@@ -67,7 +65,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
             </p>
             <p className="text-xs text-fg-muted">
               {post.scope === "CLASS" ? (post.class?.name ?? "Class") : "Whole school"} ·{" "}
-              {relativeTime(post.createdAt, undefined, locale)}
+              {relativeTime(post.createdAt)}
             </p>
           </div>
           {post.status !== "APPROVED" && (
@@ -136,7 +134,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                       <span className="font-semibold text-fg">
                         {mine ? "You" : (entry.author.preferredName ?? entry.author.name)}
                       </span>{" "}
-                      · {relativeTime(entry.createdAt, undefined, locale)}
+                      · {relativeTime(entry.createdAt)}
                     </p>
                     <p className="mt-0.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">
                       {entry.body}

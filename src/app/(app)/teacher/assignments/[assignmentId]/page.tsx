@@ -10,7 +10,6 @@ import { AttachmentList } from "@/components/attachment-list";
 import { formatMilli } from "@/lib/validation";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -22,7 +21,6 @@ export default async function AssignmentPage({
 }: {
   params: Promise<{ assignmentId: string }>;
 }) {
-  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { assignmentId } = await params;
@@ -56,7 +54,7 @@ export default async function AssignmentPage({
           {assignment.className}
           {assignment.category ? ` · ${assignment.category}` : ""}
           {assignment.pointsMilli ? ` · out of ${formatMilli(assignment.pointsMilli)}` : ""}
-          {assignment.dueAt ? ` · due ${relativeTime(assignment.dueAt, undefined, locale)}` : ""}
+          {assignment.dueAt ? ` · due ${relativeTime(assignment.dueAt)}` : ""}
         </p>
       </div>
 

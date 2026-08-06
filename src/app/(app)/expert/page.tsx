@@ -6,7 +6,7 @@ import { listBookings } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 import { EXPERT_BOOKING_STATUS_KEY, type ExpertBookingStatus } from "@/lib/constants";
 import { formatUtcMoment } from "@/lib/dates";
 
@@ -17,7 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ExpertHome() {
   const t = await getT();
-  const locale = await getLocale();
   const ctx = await requireExpert();
   const bookings = await listBookings(ctx);
 
@@ -60,7 +59,7 @@ export default async function ExpertHome() {
                         </Badge>
                       )}
                       <span className="ml-auto text-xs text-fg-muted">
-                        {formatUtcMoment(booking.startsAt, locale)}
+                        {formatUtcMoment(booking.startsAt)}
                       </span>
                     </div>
                     <p className="text-[0.9375rem] text-fg-muted">{booking.topic}</p>

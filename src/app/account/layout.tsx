@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SignedInShell } from "@/components/nav/signed-in-shell";
 import { getSession } from "@/lib/session";
 import { hasRecord } from "@/lib/student-record";
+import { getT } from "@/lib/i18n/server";
 
 /**
  * Your own settings, which belong to YOU rather than to a school.
@@ -47,13 +48,13 @@ export default async function AccountLayout({ children }: { children: React.Reac
   }
 
   // No role: their own account, and the one or two places they can actually go.
-  const showRecord = await hasRecord(session);
+  const [showRecord, t] = await Promise.all([hasRecord(session), getT()]);
 
   return (
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-2xl items-center justify-between gap-3 px-4">
-          <Link href="/account" aria-label="Your account">
+          <Link href="/account" aria-label={t("shell.yourAccount")}>
             <Wordmark size={26} />
           </Link>
           <div className="flex items-center gap-2">
@@ -61,12 +62,12 @@ export default async function AccountLayout({ children }: { children: React.Reac
                 dead end this whole area exists to avoid. */}
             {showRecord && (
               <Button asChild size="sm" variant="ghost">
-                <Link href="/record">Your record</Link>
+                <Link href="/record">{t("account.yourRecordLink")}</Link>
               </Button>
             )}
             <form action="/api/auth/logout" method="post">
               <Button type="submit" size="sm" variant="secondary">
-                Sign out
+                {t("shell.signOut")}
               </Button>
             </form>
           </div>

@@ -10,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { TextField } from "@/components/ui/field";
 import { isoToDisplayDate } from "@/lib/dates";
 import type { MergeCounts, OtherAccount } from "@/lib/account-merge";
+import { ROLE_META, type Role } from "@/lib/constants";
+import { useT } from "@/lib/i18n";
 import { check, join } from "./actions";
 
 /**
@@ -39,6 +41,7 @@ function displayDate(value: Date | string | null): string {
 }
 
 export function MergeForm() {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
@@ -86,36 +89,40 @@ export function MergeForm() {
       <Card className="border-ok/40">
         <CardHeader
           icon={<CheckCircleIcon weight="duotone" className="size-5 text-ok" />}
-          title="Your accounts are now one"
-          description="Everything below is on the account you are signed in to right now."
+          title={t("merge.nowOne")}
+          description={t("merge.everythingBelowHere")}
         />
         <CardBody className="space-y-4">
+          {/* Paired One/Many keys, whole sentences — the bold on the number
+              went with the fragments, the way it did on the invitation page. */}
           <ul className="space-y-1.5 text-sm text-fg">
             <li className="rounded-[--radius-sm] bg-surface-muted p-3">
-              <strong className="font-semibold">{counts.schools}</strong>{" "}
-              {counts.schools === 1 ? "school" : "schools"} moved across, with every mark, register
-              and report card that belonged to them.
+              {counts.schools === 1
+                ? t("merge.schoolsMovedOne")
+                : t("merge.schoolsMovedMany", { count: counts.schools })}
             </li>
             {counts.certificates > 0 && (
               <li className="rounded-[--radius-sm] bg-surface-muted p-3">
-                <strong className="font-semibold">{counts.certificates}</strong>{" "}
-                {counts.certificates === 1 ? "school record" : "school records"} — your previous
-                school, now on your profile.
+                {counts.certificates === 1
+                  ? t("merge.recordsMovedOne")
+                  : t("merge.recordsMovedMany", { count: counts.certificates })}
               </li>
             )}
             {counts.children > 0 && (
               <li className="rounded-[--radius-sm] bg-surface-muted p-3">
-                <strong className="font-semibold">{counts.children}</strong>{" "}
-                {counts.children === 1 ? "child" : "children"} linked to you.
+                {counts.children === 1
+                  ? t("merge.childrenMovedOne")
+                  : t("merge.childrenMovedMany", { count: counts.children })}
               </li>
             )}
           </ul>
           <p className="text-sm leading-relaxed text-fg-muted">
-            The old login no longer works. Nothing was deleted — anything it had already written is
-            still there, and still has {phase.name ? `${phase.name}’s` : "their"} name on it.
+            {/* The possessive is exactly what Hindi and Marathi restructure, so
+                the named and unnamed cases are two whole sentences. */}
+            {phase.name ? t("merge.doneNoteNamed", { name: phase.name }) : t("merge.doneNote")}
           </p>
           <Button asChild block>
-            <Link href="/account">Back to your account</Link>
+            <Link href="/account">{t("merge.backToAccount")}</Link>
           </Button>
         </CardBody>
       </Card>
@@ -130,8 +137,8 @@ export function MergeForm() {
       <Card className="border-warn/40">
         <CardHeader
           icon={<WarningIcon weight="duotone" className="size-5 text-warn" />}
-          title="Is this the right account?"
-          description="Nothing has changed yet. Check the name and the schools before you go on."
+          title={t("merge.isRightAccount")}
+          description={t("merge.nothingChangedYet")}
         />
         <CardBody className="space-y-5">
           <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4">
@@ -151,43 +158,44 @@ export function MergeForm() {
                       </span>
                       {school.leftAt && (
                         <span className="block text-xs text-fg-muted">
-                          Left {displayDate(school.leftAt)}
+                          {/* The date is a value and renders in English. */}
+                          {t("merge.leftOn", { date: displayDate(school.leftAt) })}
                         </span>
                       )}
                     </span>
                     <Badge tone="accent" size="sm">
-                      {school.role.toLowerCase()}
+                      {/* The role TABLE, not `.toLowerCase()` — a role name is
+                          a label, and labels toggle. */}
+                      {t(ROLE_META[school.role as Role]?.labelKey ?? "role.student")}
                     </Badge>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="mt-3 text-sm text-fg-muted">No schools on that account.</p>
+              <p className="mt-3 text-sm text-fg-muted">{t("merge.noSchools")}</p>
             )}
 
             {(other.certificates > 0 || other.children > 0) && (
               <p className="mt-3 text-sm text-fg-muted">
-                {other.certificates > 0 && (
-                  <>
-                    {other.certificates}{" "}
-                    {other.certificates === 1 ? "school record" : "school records"}
-                  </>
-                )}
+                {other.certificates > 0 &&
+                  (other.certificates === 1
+                    ? t("merge.recordsCountOne")
+                    : t("merge.recordsCountMany", { count: other.certificates }))}
                 {other.certificates > 0 && other.children > 0 && " · "}
-                {other.children > 0 && (
-                  <>
-                    {other.children} {other.children === 1 ? "child" : "children"} linked
-                  </>
-                )}
+                {other.children > 0 &&
+                  (other.children === 1
+                    ? t("merge.childrenLinkedOne")
+                    : t("merge.childrenLinkedMany", { count: other.children }))}
               </p>
             )}
           </div>
 
           <div className="rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4">
-            <p className="text-sm font-semibold text-fg">This cannot be undone from here.</p>
+            <p className="text-sm font-semibold text-fg">{t("merge.cannotBeUndone")}</p>
             <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-              <span className="font-mono">{other.loginName}</span> will stop being a way to sign in.
-              Nothing is deleted — everything above moves onto the account you are using now.
+              {/* Whole sentence with a placeholder; the mono styling on the
+                  login went with the fragments. */}
+              {t("merge.stopsSignIn", { login: other.loginName })}
             </p>
           </div>
 
@@ -202,10 +210,10 @@ export function MergeForm() {
 
           <div className="flex flex-wrap gap-2">
             <Button onClick={submitJoin} loading={pending} disabled={pending}>
-              Yes, join these accounts
+              {t("merge.yesJoin")}
             </Button>
             <Button variant="secondary" onClick={() => setPhase({ kind: "enter" })} disabled={pending}>
-              No, go back
+              {t("merge.noGoBack")}
             </Button>
           </div>
         </CardBody>
@@ -227,25 +235,25 @@ export function MergeForm() {
       )}
 
       <TextField
-        label="The other account's login name or email"
+        label={t("merge.otherLogin")}
         required
         autoFocus
         autoComplete="off"
         spellCheck={false}
         autoCapitalize="none"
         placeholder="amara.k4f9"
-        hint="A pupil's login name is not an email address — it looks like a name followed by four characters."
+        hint={t("merge.pupilLoginHint")}
         value={identifier}
         onChange={(e) => setIdentifier(e.target.value)}
       />
 
       <TextField
-        label="That account's password"
+        label={t("merge.thatPassword")}
         required
         type="password"
         autoComplete="off"
         placeholder="••••••••••"
-        hint="You have to be able to sign in to both accounts. Nobody else — not even your school — can do this for you."
+        hint={t("merge.bothPasswordsHint")}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
@@ -257,7 +265,7 @@ export function MergeForm() {
         iconRight={<ArrowRightIcon weight="bold" className="size-4" />}
         block
       >
-        Find that account
+        {t("merge.findThatAccount")}
       </Button>
     </form>
   );

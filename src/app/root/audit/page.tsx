@@ -6,7 +6,7 @@ import { actionKey } from "@/lib/safety-labels";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata = { title: "Server log" };
 
@@ -24,7 +24,6 @@ export const metadata = { title: "Server log" };
  * handful of rows a month, not a hundred a day.
  */
 export default async function ServerAuditPage() {
-  const locale = await getLocale();
   const t = await getT();
   const session = await requireSuperuser();
   const rows = await listServerAudit(session, { take: 300 });
@@ -80,7 +79,7 @@ export default async function ServerAuditPage() {
                     title={row.at.toISOString()}
                     className="shrink-0 text-xs text-fg-subtle"
                   >
-                    {relativeTime(row.at, undefined, locale)}
+                    {relativeTime(row.at)}
                   </time>
                 </li>
               );

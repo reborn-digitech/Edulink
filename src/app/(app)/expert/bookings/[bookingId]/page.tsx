@@ -7,7 +7,7 @@ import { getBooking } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookingThread } from "./thread";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 import { formatUtcMoment } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +21,6 @@ export default async function BookingPage({
   params: Promise<{ bookingId: string }>;
 }) {
   const t = await getT();
-  const locale = await getLocale();
   const ctx = await requireApiUser();
   const { bookingId } = await params;
 
@@ -49,7 +48,7 @@ export default async function BookingPage({
         <h1 className="text-2xl font-bold tracking-tight text-fg">{booking.topic}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {isExpert ? booking.schoolName : booking.expertName} ·{" "}
-          {formatUtcMoment(booking.startsAt, locale)}
+          {formatUtcMoment(booking.startsAt)}
         </p>
       </div>
 

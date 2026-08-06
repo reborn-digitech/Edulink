@@ -22,7 +22,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,7 +34,6 @@ export default async function AdminDashboard({
 }: {
   searchParams: Promise<{ welcome?: string }>;
 }) {
-  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("ADMIN");
   const { welcome } = await searchParams;
@@ -81,7 +80,7 @@ export default async function AdminDashboard({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
           <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
+            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
             {t("admin.schoolCode")}{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}
@@ -129,11 +128,10 @@ export default async function AdminDashboard({
                   {coming
                     ? t("admin.nextUp", {
                         name: coming.name,
-                        date: formatDateKey(
-                          coming.startDateKey,
-                          { day: "numeric", month: "long" },
-                          locale,
-                        ),
+                        date: formatDateKey(coming.startDateKey, {
+                          day: "numeric",
+                          month: "long",
+                        }),
                       })
                     : t("admin.nothingAhead")}
                 </span>

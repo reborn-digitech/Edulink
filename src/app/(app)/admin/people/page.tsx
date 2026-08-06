@@ -17,7 +17,6 @@ import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -38,7 +37,6 @@ export default async function DirectoryPage({
     status?: string;
   }>;
 }) {
-  const locale = await getLocale();
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
   const t = await getT();
@@ -253,7 +251,7 @@ export default async function DirectoryPage({
                         {member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-fg-muted">
                             {t("people.leftAgo", {
-                              when: relativeTime(member.leftAt, undefined, locale),
+                              when: relativeTime(member.leftAt),
                             })}
                             {member.schoolRecord?.destination
                               ? ` · ${t("people.wentTo", { where: member.schoolRecord.destination })}`
@@ -264,7 +262,7 @@ export default async function DirectoryPage({
                           <p className="mt-1 text-xs leading-relaxed text-warn">
                             {t("people.pausedAgo", {
                               when: member.suspendedAt
-                                ? relativeTime(member.suspendedAt, undefined, locale)
+                                ? relativeTime(member.suspendedAt)
                                 : "",
                             })}
                             {member.suspendedReason ? ` · ${member.suspendedReason}` : ""}

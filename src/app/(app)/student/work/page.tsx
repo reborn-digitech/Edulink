@@ -11,7 +11,6 @@ import { EmptyState } from "@/components/ui/states";
 import { SubmitPanel } from "./submit-panel";
 import { AttachmentList } from "@/components/attachment-list";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -19,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function StudentWorkPage() {
-  const locale = await getLocale();
   await requireRole("STUDENT");
   const session = (await getSession())!;
   const { upcoming, past } = await getStudentWork(session);
@@ -105,7 +103,7 @@ export default async function StudentWorkPage() {
                   </div>
                   {/* Gentle: "3 days late", never a red OVERDUE stamp. (§6) */}
                   <Badge tone={item.overdue ? "warn" : "neutral"} size="sm">
-                    {item.dueAt ? relativeTime(item.dueAt, undefined, locale) : "No date"}
+                    {item.dueAt ? relativeTime(item.dueAt) : "No date"}
                   </Badge>
                 </div>
               </Card>

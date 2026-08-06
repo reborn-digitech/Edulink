@@ -29,7 +29,6 @@ import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -37,7 +36,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AccountPage() {
-  const locale = await getLocale();
   const session = await requireUser();
   const live = (await getSession())!;
   const t = await getT();
@@ -98,8 +96,8 @@ export default async function AccountPage() {
       <Card>
         <CardHeader
           icon={<DeviceMobileIcon weight="duotone" className="size-5" />}
-          title="How you sign in"
-          description="Your email, your mobile number, or the login name your school gave you — any of them, with your password."
+          title={t("account.signInTitle")}
+          description={t("account.signInDescription")}
         />
         <CardBody className="space-y-5">
           <EmailForm
@@ -265,8 +263,12 @@ export default async function AccountPage() {
               id: s.id,
               label: describeDevice(s.userAgent) ?? t("account.unknownDevice"),
               ip: s.ip,
-              lastSeen: relativeTime(s.lastSeenAt, undefined, locale),
-              since: relativeTime(s.createdAt, undefined, locale),
+              // The relative times inside are VALUES and render in English —
+              // the sentence around them is the part that translates.
+              meta: t("account.deviceMeta", {
+                lastSeen: relativeTime(s.lastSeenAt),
+                since: relativeTime(s.createdAt),
+              }),
             }))}
           />
         </CardBody>

@@ -9,6 +9,7 @@ import { readJson, writeJson } from "@/lib/json";
 import { audit } from "@/lib/audit";
 import { revokeOtherSessions, revokeSession } from "@/lib/session";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
+import { getT } from "@/lib/i18n/server";
 import { requireApiUser } from "@/lib/tenancy";
 import {
   startPhoneChange,
@@ -28,8 +29,9 @@ export type PrefsState = { ok: boolean; errors: FieldErrors };
  * follows the user to a new device.
  */
 export async function savePrefs(input: unknown): Promise<PrefsState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
 
   const parsed = prefsSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
@@ -41,7 +43,7 @@ export async function savePrefs(input: unknown): Promise<PrefsState> {
   if (next.quietHours && next.quietHours.start === next.quietHours.end) {
     return {
       ok: false,
-      errors: { "quietHours.end": "Start and end cannot be the same time." },
+      errors: { "quietHours.end": t("account.quietSameTime") },
     };
   }
 
@@ -119,15 +121,16 @@ export async function setLocale(raw: string): Promise<{ ok: boolean; locale: Loc
 
 /** Device management — the reason sessions are server-side and revocable. */
 export async function signOutDevice(sessionId: string): Promise<{ ok: boolean; error?: string }> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: t("common.logInAgain") };
 
   if (sessionId === session.sessionId) {
-    return { ok: false, error: "That is this device. Use Sign out instead." };
+    return { ok: false, error: t("account.thisDeviceUseSignOut") };
   }
 
   const revoked = await revokeSession(sessionId, session.user.id);
-  if (!revoked) return { ok: false, error: "That device is already signed out." };
+  if (!revoked) return { ok: false, error: t("account.deviceAlreadyOut") };
 
   await audit({
     actorUserId: session.user.id,

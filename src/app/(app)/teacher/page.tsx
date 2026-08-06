@@ -13,7 +13,6 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -21,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TeacherHome() {
-  const locale = await getLocale();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
@@ -81,7 +79,7 @@ export default async function TeacherHome() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.today")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
+          {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
           {school.name}
         </p>
       </div>
@@ -187,7 +185,7 @@ export default async function TeacherHome() {
                     <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                   </span>
                   <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt, undefined, locale) : "No due date"}
+                    {assignment.dueAt ? relativeTime(assignment.dueAt) : "No due date"}
                   </span>
                 </li>
               ))}

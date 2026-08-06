@@ -11,7 +11,7 @@ import { relativeTime } from "@/lib/dates";
 import { accessHistory } from "@/lib/superuser";
 import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +30,6 @@ export default async function SafetyPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
-  const locale = await getLocale();
   const tr = await getT();
   await requireRole("ADMIN");
   const session = (await getSession())!;
@@ -95,7 +94,7 @@ export default async function SafetyPage({
                     )}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
-                    {relativeTime(visit.startedAt, undefined, locale)} — {visit.reason}
+                    {relativeTime(visit.startedAt)} — {visit.reason}
                   </p>
                 </li>
               ))}

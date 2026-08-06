@@ -23,6 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function MergeAccountsPage() {
   const session = await requireUser();
+  const t = await getT();
 
   const me = await db.user.findUniqueOrThrow({
     where: { id: session.user.id },
@@ -46,50 +47,45 @@ export default async function MergeAccountsPage() {
           className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
         >
           <ArrowLeftIcon weight="bold" className="size-4" aria-hidden="true" />
-          Your account
+          {t("shell.yourAccount")}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold tracking-tight text-fg">Join two accounts</h1>
+        <h1 className="mt-2 text-2xl font-bold tracking-tight text-fg">{t("merge.heading")}</h1>
         <p className="mt-1 text-fg-muted">
-          Changed school and started again with a new login? Bring the old one here and everything
-          arrives on this account — {me.preferredName ?? me.name}
-          {me.email && (
-            <>
-              {" "}
-              (<span className="font-mono">{toDisplayLoginName(me.email)}</span>)
-            </>
-          )}
-          .
+          {/* Whole sentences with placeholders — the name and login land
+              mid-sentence, and the mono styling went with the fragments. */}
+          {me.email
+            ? t("merge.introNamed", {
+                name: me.preferredName ?? me.name,
+                login: toDisplayLoginName(me.email),
+              })
+            : t("merge.intro", { name: me.preferredName ?? me.name })}
         </p>
       </div>
 
       <Card>
         <CardHeader
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-          title="What comes across"
-          description="Your schools, your marks, and your record from the school you left"
+          title={t("merge.whatComesTitle")}
+          description={t("merge.whatComesDescription")}
         />
         <CardBody className="space-y-3 text-sm leading-relaxed text-fg-muted">
+          <p>{t("merge.body1")}</p>
+          {/* The bold lead and its follow-on are separate SENTENCES, so two
+              keys per paragraph is safe — unlike splitting inside one. */}
           <p>
-            Every school the other account belonged to moves onto this one, and brings its registers,
-            marks and report cards with it. So does your school record — the leaving certificate your
-            old school wrote, which is what shows your new school where you came from.
+            <strong className="font-semibold text-fg">{t("merge.oldLoginStops")}</strong>{" "}
+            {t("merge.oldLoginStopsBody")}
           </p>
           <p>
-            <strong className="font-semibold text-fg">The old login stops working.</strong> The
-            account itself is not deleted: anything it has already posted or written stays exactly
-            where it is, so nothing disappears from a class page.
-          </p>
-          <p>
-            <strong className="font-semibold text-fg">Only you can do this.</strong> It needs the
-            password for both accounts, so no school and no administrator can join accounts on
-            somebody else&rsquo;s behalf — including yours.
+            <strong className="font-semibold text-fg">{t("merge.onlyYou")}</strong>{" "}
+            {t("merge.onlyYouBody")}
           </p>
         </CardBody>
       </Card>
 
       {absorbed.length > 0 && (
         <Card>
-          <CardHeader title="Already joined into this account" />
+          <CardHeader title={t("merge.alreadyJoined")} />
           <CardBody>
             <ul className="space-y-1.5">
               {absorbed.map((account) => (

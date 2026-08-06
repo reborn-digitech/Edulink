@@ -7,7 +7,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { BookButton } from "./book-button";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 import { EXPERT_OFFERING_META } from "@/lib/constants";
 import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
 
@@ -25,7 +25,6 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function ExpertsPage() {
   const t = await getT();
-  const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "TEACHER");
   const [experts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
   const live = bookings.filter((b) => b.status !== "CANCELLED");
@@ -56,7 +55,7 @@ export default async function ExpertsPage() {
                         </Badge>
                       )}
                       <span className="ml-auto text-xs text-fg-muted">
-                        {formatUtcMoment(booking.startsAt, locale)}
+                        {formatUtcMoment(booking.startsAt)}
                       </span>
                     </CardBody>
                   </Link>
@@ -144,8 +143,8 @@ export default async function ExpertsPage() {
                           >
                             <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-fg">
-                                {formatUtcMoment(slot.startsAt, locale)} —{" "}
-                                {formatUtcTime(slot.endsAt, locale)}
+                                {formatUtcMoment(slot.startsAt)} —{" "}
+                                {formatUtcTime(slot.endsAt)}
                               </p>
                               {slot.note && <p className="text-xs text-fg-muted">{slot.note}</p>}
                             </div>

@@ -6,14 +6,16 @@ import { SignOutIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
+import { useT } from "@/lib/i18n";
 import { signOutDevice, signOutEverywhereElse } from "./actions";
 
 export type Device = {
   id: string;
   label: string;
   ip: string | null;
-  lastSeen: string;
-  since: string;
+  /** "Last used … · signed in …", already translated by the server page —
+      the relative times inside are values and stay English. */
+  meta: string;
 };
 
 /**
@@ -30,6 +32,7 @@ export function DeviceList({
   devices: Device[];
   currentSessionId: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -51,12 +54,12 @@ export function DeviceList({
                   <span className="truncate">{device.label}</span>
                   {isCurrent && (
                     <Badge tone="ok" size="sm">
-                      This device
+                      {t("account.thisDevice")}
                     </Badge>
                   )}
                 </p>
                 <p className="text-xs text-fg-muted">
-                  Last used {device.lastSeen} · signed in {device.since}
+                  {device.meta}
                   {device.ip ? ` · ${device.ip}` : ""}
                 </p>
               </div>
@@ -72,14 +75,18 @@ export function DeviceList({
                       const result = await signOutDevice(device.id);
                       toast(
                         result.ok
-                          ? { tone: "ok", title: "Device signed out" }
-                          : { tone: "danger", title: "Could not sign it out", description: result.error },
+                          ? { tone: "ok", title: t("account.deviceSignedOut") }
+                          : {
+                              tone: "danger",
+                              title: t("account.couldNotSignOut"),
+                              description: result.error,
+                            },
                       );
                       router.refresh();
                     })
                   }
                 >
-                  Sign out
+                  {t("shell.signOut")}
                 </Button>
               )}
             </li>
@@ -98,14 +105,17 @@ export function DeviceList({
               const result = await signOutEverywhereElse();
               toast({
                 tone: "ok",
-                title: `${result.count} device${result.count === 1 ? "" : "s"} signed out`,
-                description: "You are still signed in here.",
+                title:
+                  result.count === 1
+                    ? t("account.devicesOutOne")
+                    : t("account.devicesOutMany", { count: result.count }),
+                description: t("account.stillSignedInHere"),
               });
               router.refresh();
             })
           }
         >
-          Sign out everywhere else
+          {t("account.signOutEverywhereElse")}
         </Button>
       )}
     </div>

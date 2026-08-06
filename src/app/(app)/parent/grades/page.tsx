@@ -13,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
-import { getLocale } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -25,7 +24,6 @@ export default async function ParentGradesPage({
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
-  const locale = await getLocale();
   const session = await requireParent();
   const t = await getT();
   const { child: requested } = await searchParams;
@@ -144,7 +142,7 @@ export default async function ParentGradesPage({
                       </span>
                       {card.publishedAt && (
                         <span className="block text-xs text-fg-muted">
-                          Issued {relativeTime(card.publishedAt, undefined, locale)}
+                          Issued {relativeTime(card.publishedAt)}
                         </span>
                       )}
                     </span>
@@ -249,7 +247,7 @@ export default async function ParentGradesPage({
                         <p className="truncate text-xs text-fg-muted">
                           {grade.assignment.class.name}
                           {grade.assignment.category ? ` · ${grade.assignment.category}` : ""} ·{" "}
-                          {relativeTime(grade.gradedAt, undefined, locale)}
+                          {relativeTime(grade.gradedAt)}
                         </p>
                       </div>
                       <div className="shrink-0 text-right">

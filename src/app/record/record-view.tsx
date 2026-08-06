@@ -6,6 +6,8 @@ import { Avatar } from "@/components/ui/avatar";
 import { EmptyState } from "@/components/ui/states";
 import { isoToDisplayDate } from "@/lib/dates";
 import type { RecordSchool, StudentRecord } from "@/lib/student-record";
+import { getT } from "@/lib/i18n/server";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * A record, rendered the same way whether the reader is the pupil or a parent.
@@ -26,17 +28,18 @@ import type { RecordSchool, StudentRecord } from "@/lib/student-record";
  * reading their child's. Neutral phrasing is the only wording that is correct
  * for all three readers, and one label is better than three.
  */
-const REASON_LABEL: Record<string, string> = {
-  TRANSFERRED: "Transferred to another school",
-  GRADUATED: "Finished school here",
-  LEFT: "Left this school",
+const REASON_KEY: Record<string, TranslationKey> = {
+  TRANSFERRED: "record.reasonTransferred",
+  GRADUATED: "record.reasonGraduated",
+  LEFT: "record.reasonLeft",
 };
 
 function monthYear(value: Date): string {
   return value.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
 }
 
-export function RecordView({ record, self }: { record: StudentRecord; self: boolean }) {
+export async function RecordView({ record, self }: { record: StudentRecord; self: boolean }) {
+  const t = await getT();
   const who = record.preferredName ?? record.name;
 
   return (
@@ -45,14 +48,16 @@ export function RecordView({ record, self }: { record: StudentRecord; self: bool
         <Avatar avatarKey={record.avatarKey} name={record.name} size="lg" ring />
         <div className="min-w-0">
           <h1 className="truncate text-2xl font-bold tracking-tight text-fg">
-            {self ? "Your record" : who}
+            {self ? t("record.yourRecord") : who}
           </h1>
           <p className="truncate text-sm text-fg-muted">
             {record.name}
             {record.totals.schools > 0 && (
               <>
                 {" · "}
-                {record.totals.schools} school{record.totals.schools === 1 ? "" : "s"}
+                {record.totals.schools === 1
+                  ? t("record.schoolsOne")
+                  : t("record.schoolsMany", { count: record.totals.schools })}
               </>
             )}
           </p>
@@ -66,46 +71,40 @@ export function RecordView({ record, self }: { record: StudentRecord; self: bool
       */}
       <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4">
         <p className="text-sm leading-relaxed text-fg-muted">
-          {self ? (
-            <>
-              This is <strong className="text-fg">yours</strong>, and it stays here whether or not
-              you are at a school on EduLink. Report cards, attendance and badges are kept exactly
-              as each school wrote them — no school can change what another one said, and neither
-              can you.
-            </>
-          ) : (
-            <>
-              {who}&rsquo;s record across every school you are linked to, kept exactly as each
-              school wrote it. It stays here whether or not they are currently at a school on
-              EduLink.
-            </>
-          )}
+          {/* Whole paragraphs — the bold "yours" went with the fragments, and
+              the possessive in the parent's version is a placeholder for the
+              same reason it is on the merge page. */}
+          {self ? t("record.selfIntro") : t("record.otherIntro", { name: who })}
         </p>
       </div>
 
       {record.totals.attendanceMarked > 0 && (
         <div className="grid grid-cols-3 gap-3">
-          <Figure label="Attendance" value={`${record.totals.attendancePercent}%`} />
-          <Figure label="Report cards" value={String(record.totals.cards)} />
-          <Figure label="Badges" value={String(record.totals.badges)} />
+          <Figure label={t("record.attendance")} value={`${record.totals.attendancePercent}%`} />
+          <Figure label={t("record.reportCards")} value={String(record.totals.cards)} />
+          <Figure label={t("record.badges")} value={String(record.totals.badges)} />
         </div>
       )}
 
       {record.schools.length === 0 ? (
         <EmptyState
-          title="Nothing here yet"
-          description="A school record appears once a school has marked a register or issued a report card."
+          title={t("record.emptyTitle")}
+          description={t("record.emptyBody")}
         />
       ) : (
-        record.schools.map((school) => <SchoolBlock key={school.membershipId} school={school} />)
+        record.schools.map((school) => (
+          <SchoolBlock key={school.membershipId} school={school} t={t} />
+        ))
       )}
 
+      {/* Three standalone pieces rather than one sentence split around a link
+          — a fragment on each side of an <a> cannot be reordered. */}
       <p className="pb-4 text-center text-xs text-fg-muted">
-        Joining a school on EduLink?{" "}
+        {t("record.joiningPrompt")}{" "}
         <Link href="/login" className="font-semibold text-accent-strong underline underline-offset-4">
-          Log in
+          {t("login.title")}
         </Link>{" "}
-        and it will appear here automatically.
+        {t("record.appearsAutomatically")}
       </p>
     </div>
   );
@@ -120,7 +119,9 @@ function Figure({ label, value }: { label: string; value: string }) {
   );
 }
 
-function SchoolBlock({ school }: { school: RecordSchool }) {
+/* `t` is a prop for the same reason it is in `week-grid`: a plain function
+   rendered by a server component has no hook provider above it. */
+function SchoolBlock({ school, t }: { school: RecordSchool; t: Translate }) {
   return (
     <Card>
       <CardHeader
@@ -128,18 +129,18 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
         description={
           <>
             {monthYear(school.joinedAt)} –{" "}
-            {school.leftAt ? monthYear(school.leftAt) : "now"}
-            {school.gradeLevel && <> · Grade {school.gradeLevel}</>}
+            {school.leftAt ? monthYear(school.leftAt) : t("record.now")}
+            {school.gradeLevel && <> · {t("record.gradeLevel", { level: school.gradeLevel })}</>}
           </>
         }
         action={
           school.current ? (
             <Badge tone="ok" size="sm">
-              Here now
+              {t("record.hereNow")}
             </Badge>
           ) : (
             <Badge tone="neutral" size="sm">
-              Left
+              {t("record.left")}
             </Badge>
           )
         }
@@ -149,11 +150,13 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
           <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3">
             <p className="flex items-center gap-1.5 text-sm font-semibold text-fg">
               <CertificateIcon weight="duotone" className="size-4" aria-hidden="true" />
-              {REASON_LABEL[school.certificate.reason] ?? school.certificate.reason}
+              {REASON_KEY[school.certificate.reason]
+                ? t(REASON_KEY[school.certificate.reason]!)
+                : school.certificate.reason}
             </p>
             {school.certificate.destination && (
               <p className="mt-1 text-sm text-fg-muted">
-                Went on to {school.certificate.destination}
+                {t("record.wentOnTo", { destination: school.certificate.destination })}
               </p>
             )}
             {school.certificate.note && (
@@ -165,18 +168,24 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
         )}
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-fg-subtle">Attendance</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-fg-subtle">
+            {t("record.attendance")}
+          </p>
           {/* NULL IS NOT ZERO. A pupil who joined in the last week of term has
               no attendance, which is not the same as never turning up. */}
           {school.attendanceMarked === 0 ? (
-            <p className="mt-1 text-sm text-fg-muted">No register was ever marked here.</p>
+            <p className="mt-1 text-sm text-fg-muted">{t("record.noRegisterMarked")}</p>
           ) : (
             <p className="mt-1 text-sm text-fg">
               <strong className="text-lg font-bold tabular-nums">
                 {school.attendancePercent}%
               </strong>{" "}
               <span className="text-fg-muted">
-                — {school.attendancePresent} of {school.attendanceMarked} days marked
+                —{" "}
+                {t("record.daysMarked", {
+                  present: school.attendancePresent,
+                  marked: school.attendanceMarked,
+                })}
               </span>
             </p>
           )}
@@ -184,10 +193,10 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-fg-subtle">
-            Report cards
+            {t("record.reportCards")}
           </p>
           {school.cards.length === 0 ? (
-            <p className="mt-1 text-sm text-fg-muted">None issued here.</p>
+            <p className="mt-1 text-sm text-fg-muted">{t("record.noneIssued")}</p>
           ) : (
             <ul className="mt-2 space-y-2">
               {school.cards.map((card) => (
@@ -202,7 +211,10 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
                   </div>
                   <p className="mt-0.5 text-xs text-fg-muted">
                     {isoToDisplayDate(card.fromDateKey)} – {isoToDisplayDate(card.toDateKey)} ·{" "}
-                    {card.attendancePresent} of {card.attendanceTotal} days
+                    {t("record.daysOf", {
+                      present: card.attendancePresent,
+                      total: card.attendanceTotal,
+                    })}
                   </p>
                   {card.items.length > 0 && (
                     <ul className="mt-2 space-y-0.5">
@@ -235,7 +247,7 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
         {school.badges.length > 0 && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-fg-subtle">
-              Badges earned
+              {t("record.badgesEarned")}
             </p>
             <ul className="mt-2 flex flex-wrap gap-2">
               {school.badges.map((badge) => (
@@ -254,7 +266,7 @@ function SchoolBlock({ school }: { school: RecordSchool }) {
         {school.leftAt && (
           <p className="flex items-start gap-1.5 text-xs leading-relaxed text-fg-muted">
             <SealCheckIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-            Frozen as this school left it. Nothing above can change now.
+            {t("record.frozen")}
           </p>
         )}
       </CardBody>

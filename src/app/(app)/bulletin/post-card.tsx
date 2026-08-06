@@ -23,7 +23,6 @@ import { relativeTime } from "@/lib/dates";
 import { pin, react, review, report } from "./actions";
 import { useT } from "@/lib/i18n";
 import { REACTION_KINDS, ROLE_META, type ReactionKind, type Role } from "@/lib/constants";
-import { useLocale } from "@/lib/i18n";
 
 type Post = {
   id: string;
@@ -67,7 +66,6 @@ const REPORT_REASONS = [
 ] as const;
 
 export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | null }) {
-  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const t = useT();
@@ -145,7 +143,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             </p>
             <p className="text-xs text-fg-muted">
               {post.scope === "CLASS" ? (post.className ?? "Class") : "Whole school"} ·{" "}
-              {relativeTime(post.createdAt, undefined, locale)}
+              {relativeTime(post.createdAt)}
             </p>
           </div>
         </header>

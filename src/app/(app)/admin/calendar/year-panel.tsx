@@ -10,7 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
 import { startAcademicYear, rollOverAcademicYear } from "./actions";
 import { actionError } from "@/lib/action-error";
-import { useLocale, useT } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 
 type Year = {
   id: string;
@@ -30,7 +30,6 @@ type Year = {
  * plainly what it is about to do, in the numbers the admin will see afterwards.
  */
 export function YearPanel({ years, today }: { years: Year[]; today: string }) {
-  const locale = useLocale();
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -120,16 +119,16 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
             <p className="font-semibold text-fg">{current.name}</p>
             <p className="text-sm text-fg-muted">
               {t("calendar.rangeTo", {
-                from: formatDateKey(
-                  current.startDateKey,
-                  { day: "numeric", month: "long", year: "numeric" },
-                  locale,
-                ),
-                to: formatDateKey(
-                  current.endDateKey,
-                  { day: "numeric", month: "long", year: "numeric" },
-                  locale,
-                ),
+                from: formatDateKey(current.startDateKey, {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                }),
+                to: formatDateKey(current.endDateKey, {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                }),
               })}
             </p>
           </div>
@@ -153,8 +152,8 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
               >
                 <span className="flex-1 font-medium text-fg">{year.name}</span>
                 <span className="text-fg-muted">
-                  {formatDateKey(year.startDateKey, { day: "numeric", month: "short" }, locale)} –{" "}
-                  {formatDateKey(year.endDateKey, { day: "numeric", month: "short", year: "numeric" }, locale)}
+                  {formatDateKey(year.startDateKey, { day: "numeric", month: "short" })} –{" "}
+                  {formatDateKey(year.endDateKey, { day: "numeric", month: "short", year: "numeric" })}
                 </span>
                 <Badge tone={year.closedAt ? "neutral" : "info"} size="sm">
                   {year.closedAt ? t("calendar.closed") : t("calendar.waiting")}

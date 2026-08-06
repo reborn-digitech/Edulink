@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { PlusIcon, TrashIcon, LockIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { offer, withdraw } from "./actions";
-import { useT, useLocale } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
 import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
 
@@ -27,7 +27,6 @@ type Slot = {
  */
 export function SlotManager({ slots }: { slots: Slot[] }) {
   const t = useT();
-  const locale = useLocale();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -63,8 +62,8 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           >
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-fg">
-                {formatUtcMoment(new Date(slot.startsAt), locale)} —{" "}
-                {formatUtcTime(new Date(slot.endsAt), locale)}
+                {formatUtcMoment(new Date(slot.startsAt))} —{" "}
+                {formatUtcTime(new Date(slot.endsAt))}
               </p>
               {slot.note && <p className="text-xs text-fg-muted">{slot.note}</p>}
             </div>

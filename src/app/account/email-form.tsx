@@ -6,6 +6,7 @@ import { CheckCircleIcon, EnvelopeSimpleIcon, WarningCircleIcon } from "@phospho
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
+import { useT } from "@/lib/i18n";
 import { sendEmailCode, confirmEmail } from "./actions";
 
 /**
@@ -41,6 +42,7 @@ export function EmailForm({
   /** The handle without its domain — what the child actually types to sign in. */
   loginName: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -57,7 +59,7 @@ export function EmailForm({
     startTransition(async () => {
       const result = await sendEmailCode(value);
       if (!result.ok) {
-        setError(result.error ?? "That did not send.");
+        setError(result.error ?? t("account.didNotSend"));
         return;
       }
       setSentTo(result.sentTo ?? value.trim().toLowerCase());
@@ -71,13 +73,13 @@ export function EmailForm({
     startTransition(async () => {
       const result = await confirmEmail(code);
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("account.didNotWork"));
         return;
       }
       toast({
         tone: "ok",
-        title: "Email address confirmed",
-        description: "You can sign in with it, and get a reset code at it.",
+        title: t("account.emailConfirmedTitle"),
+        description: t("account.emailConfirmedBody"),
       });
       setStep("idle");
       setValue("");
@@ -91,12 +93,13 @@ export function EmailForm({
     return (
       <form onSubmit={confirm} className="space-y-3" noValidate>
         <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
-          We sent a code to <strong className="break-all">{sentTo}</strong>. It expires in 10
-          minutes.
+          {/* One sentence with a placeholder, not fragments around a <strong> —
+              Hindi and Marathi put the address elsewhere in the sentence. */}
+          {t("account.emailCodeSent", { email: sentTo })}
           {/* Said plainly: nothing has moved yet, so a mistyped address costs
               one email to a stranger and then nothing. */}
           <span className="mt-1 block text-xs text-fg-muted">
-            Your account is unchanged until you enter it.
+            {t("account.unchangedUntilCode")}
           </span>
         </p>
 
@@ -110,7 +113,7 @@ export function EmailForm({
         )}
 
         <TextField
-          label="The code"
+          label={t("account.theCode")}
           inputMode="numeric"
           autoComplete="one-time-code"
           autoFocus
@@ -122,7 +125,7 @@ export function EmailForm({
 
         <div className="flex flex-wrap items-center gap-2">
           <Button type="submit" size="sm" loading={pending} disabled={code.trim().length === 0}>
-            Confirm
+            {t("common.confirm")}
           </Button>
           <Button
             type="button"
@@ -135,7 +138,7 @@ export function EmailForm({
               setError(null);
             }}
           >
-            Cancel
+            {t("common.cancel")}
           </Button>
         </div>
       </form>
@@ -154,7 +157,7 @@ export function EmailForm({
           )}
           <span className="min-w-0 break-all font-medium text-fg">{current}</span>
           <span className="text-xs text-fg-muted">
-            {confirmed ? "confirmed" : "not confirmed"}
+            {confirmed ? t("account.confirmedFlag") : t("account.notConfirmedFlag")}
           </span>
         </p>
       )}
@@ -163,11 +166,11 @@ export function EmailForm({
         // The one state where the account has no address at all. Saying what
         // they lose — the name they have been typing — before they change it.
         <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
-          You sign in with the login name{" "}
-          <code className="rounded bg-surface px-1.5 py-0.5 font-semibold">{loginName}</code>.
+          {/* Whole sentence with a placeholder; the <code> styling on the name
+              went with the fragments, the way bold did on the invitation. */}
+          {t("account.signInWithLoginName", { name: loginName })}
           <span className="mt-1 block text-xs text-fg-muted">
-            Add an email address and you will sign in with that instead, and be able to reset your
-            own password. Ask a parent or your teacher if you are not sure.
+            {t("account.addEmailExplainer")}
           </span>
         </p>
       )}
@@ -187,17 +190,17 @@ export function EmailForm({
         change what — and the current value is already shown above it.
       */}
       <TextField
-        label="Email address"
+        label={t("account.emailAddress")}
         type="email"
         inputMode="email"
         autoComplete="email"
-        placeholder="you@example.com"
+        placeholder={t("join.genericEmailPlaceholder")}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         hint={
           value.trim().length === 0
-            ? "We will email a code to check you can read it."
-            : `We will email a code to ${value.trim().toLowerCase()} to check it is yours.`
+            ? t("account.emailHintEmpty")
+            : t("account.emailHintNamed", { email: value.trim().toLowerCase() })
         }
       />
 
@@ -210,11 +213,11 @@ export function EmailForm({
           and removes the question.
         */}
         <Button type="submit" size="sm" loading={pending} disabled={value.trim().length === 0}>
-          Email me a code
+          {t("account.emailMeCode")}
         </Button>
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">
           <EnvelopeSimpleIcon className="size-3.5" />
-          Nothing changes until the code comes back.
+          {t("account.nothingChangesUntilCode")}
         </p>
       </div>
     </form>

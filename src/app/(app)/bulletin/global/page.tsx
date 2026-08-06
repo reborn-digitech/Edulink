@@ -8,7 +8,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { GlobalPostControls } from "./controls";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -25,7 +25,6 @@ export async function generateMetadata(): Promise<Metadata> {
  * that carries pending student posts and rejection reasons.
  */
 export default async function GlobalFeedPage() {
-  const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
   const isAdmin = ctx.role === "ADMIN";
   const posts = await listGlobalFeed(ctx);
@@ -76,7 +75,7 @@ export default async function GlobalFeedPage() {
                       </Badge>
                     )}
                     <span className="ml-auto text-xs text-fg-muted">
-                      {relativeTime(post.createdAt, undefined, locale)}
+                      {relativeTime(post.createdAt)}
                     </span>
                   </div>
 

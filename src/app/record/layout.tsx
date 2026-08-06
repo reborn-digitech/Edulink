@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
+import { getT } from "@/lib/i18n/server";
 
 /**
  * The record area, deliberately OUTSIDE `(app)`.
@@ -22,12 +23,13 @@ import { getSession } from "@/lib/session";
 export default async function RecordLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
   if (!session) redirect("/login");
+  const t = await getT();
 
   return (
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-2xl items-center justify-between gap-3 px-4">
-          <Link href="/record" aria-label="Your record">
+          <Link href="/record" aria-label={t("record.yourRecord")}>
             <Wordmark size={26} />
           </Link>
           <div className="flex items-center gap-2">
@@ -39,7 +41,7 @@ export default async function RecordLayout({ children }: { children: React.React
             */}
             {session.role && (
               <Button asChild size="sm" variant="ghost">
-                <Link href="/switch">Back to school</Link>
+                <Link href="/switch">{t("record.backToSchool")}</Link>
               </Button>
             )}
             {/* Their own settings — language, password, sign-out on every
@@ -48,11 +50,11 @@ export default async function RecordLayout({ children }: { children: React.React
                 `/account` moved out of the role-gated shell it was the one
                 thing they could not reach. */}
             <Button asChild size="sm" variant="ghost">
-              <Link href="/account">Account</Link>
+              <Link href="/account">{t("record.account")}</Link>
             </Button>
             <form action="/api/auth/logout" method="post">
               <Button type="submit" size="sm" variant="secondary">
-                Sign out
+                {t("shell.signOut")}
               </Button>
             </form>
           </div>

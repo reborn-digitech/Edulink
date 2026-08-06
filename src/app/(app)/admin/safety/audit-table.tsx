@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { actionKey, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
-import { useLocale, useT } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 
 /**
  * Audit log viewer.
@@ -17,7 +17,6 @@ import { useLocale, useT } from "@/lib/i18n";
  * raising, move the filter into the query.
  */
 export function AuditTable({ rows }: { rows: AuditEntry[] }) {
-  const locale = useLocale();
   const t = useT();
   const [query, setQuery] = useState("");
   const [sensitiveOnly, setSensitiveOnly] = useState(false);
@@ -100,7 +99,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
                     </Badge>
                   )}
                   <span className="ml-auto shrink-0 text-xs text-fg-subtle">
-                    {relativeTime(row.at, undefined, locale)}
+                    {relativeTime(row.at)}
                   </span>
                 </div>
 

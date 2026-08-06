@@ -99,7 +99,7 @@ export default async function MyTimetablePage({
         )}
         <span className="px-1 text-sm font-medium text-fg">
           {t("principal.weekOf", {
-            date: formatDateKey(monday, { day: "numeric", month: "long" }, locale),
+            date: formatDateKey(monday, { day: "numeric", month: "long" }),
           })}
         </span>
         <Link
@@ -134,7 +134,7 @@ export default async function MyTimetablePage({
             title={
               isThisWeek
                 ? t("principal.thisWeek")
-                : t("principal.weekOf", { date: formatDateKey(monday, undefined, locale) })
+                : t("principal.weekOf", { date: formatDateKey(monday) })
             }
             description={
               ctx.role === "TEACHER"

@@ -34,6 +34,7 @@ export default async function ChildRecordPage({
   // not stop this body running, so the assertion threw on every signed-out
   // visit behind a 307 that looked correct.
   const session = await requireUser();
+  const t = await getT();
   const { studentUserId } = await params;
 
   const record = await recordFor(session, studentUserId);
@@ -46,7 +47,7 @@ export default async function ChildRecordPage({
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" aria-hidden="true" />
-        Back
+        {t("common.back")}
       </Link>
       <RecordView record={record} self={record.studentUserId === session.user.id} />
     </div>
