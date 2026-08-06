@@ -543,6 +543,12 @@ Break these and something quietly goes wrong for a child or a parent.
 
 ### Next steps, in priority order
 
+**This list has nearly emptied itself.** Item 1b is EMPTY and item 2 is
+FILLED (both below, with the receipts). What genuinely remains is item 1 —
+SSO, blocked on provider credentials — and the go-live wiring no list item
+ever captured: real email/SMS transports, a git remote, one real-origin visit
+for the install button, and a native reader for the Hindi and Marathi.
+
 1. **SSO.** Cannot be verified without real provider credentials — budget for
    that rather than discovering it at the end. It is now the only
    identity-provider work outstanding: 2FA was removed by decision (see Not
