@@ -153,14 +153,20 @@ export default async function ParentDashboard({
             {awaitingConsent.map((item) => (
               <div key={item.entryId} className="space-y-2">
                 <p className="text-[0.9375rem]">
-                  <strong>{item.childName}</strong> would like to enter{" "}
+                  {/* One sentence with placeholders, whole thing linked — the
+                      same shape /competitions renders. The fragment version
+                      ("would like to enter", ", run by") sat here in English
+                      on an otherwise-translated dashboard. */}
                   <Link
                     href={`/competitions/${item.competitionId}`}
                     className="underline underline-offset-4"
                   >
-                    {item.title}
+                    {t("competitions.wouldLikeToEnter", {
+                      child: item.childName,
+                      title: item.title,
+                      organiser: item.organizerName,
+                    })}
                   </Link>
-                  , run by {item.organizerName}.
                 </p>
                 <ConsentControls
                   entryId={item.entryId}

@@ -141,6 +141,22 @@ function userVisible(source: string): string[] {
     }
   }
 
+  // 1d. THE SIXTH BLIND SPOT: English TRAILING an inline element. Rule 1
+  // anchors on a capital letter after `>`, but a fragment that CONTINUES a
+  // sentence starts lowercase — `<strong>{url}</strong> and type this code.`
+  // — so the wall poster's tail and the parent dashboard's "would like to
+  // enter …, run by …" walked past every rule here. Two shapes: lowercase
+  // words after a closing tag, and a line that OPENS with a comma and prose
+  // (the fragment that follows a </Link> wrapped to its own line).
+  for (const m of code.matchAll(/<\/\w+>\s*([a-z][a-zA-Z,'’ ]{6,120}?)(?=[<{.\n]|$)/g)) {
+    const text = m[1]!.trim();
+    if (/\s[a-z]/.test(text)) found.push(text);
+  }
+  for (const line of code.split("\n")) {
+    const m = line.match(/^\s*(,\s*[a-z][a-zA-Z'’ ]{4,})[{.]/);
+    if (m && /\s[a-z]/.test(m[1]!)) found.push(m[1]!.trim());
+  }
+
   // 1b. Reader-facing VALUES in lookup tables — `label: "Late"` and friends.
   for (const key of ["label", "short", "hint", "title", "description", "name"]) {
     const re = new RegExp(`\\b${key}:\\s*["'\`]([^"'\`]{4,160})["'\`]`, "g");

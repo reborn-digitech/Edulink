@@ -1998,6 +1998,14 @@ One line each, with the default rejected.
   itself, not just the `inQuietHours` arithmetic that was already tested.
   What this leaves unexercised is what a machine cannot reach: the install
   button, and translations no native reader has read.
+  **A later gap hunt over the same ground found the SIXTH audit blind spot**:
+  English *trailing* an inline element, which starts lowercase and so slipped
+  every capital-anchored rule — "<strong>{url}</strong> and type this code."
+  on the wall poster (twice in that one file), and "would like to enter …,
+  run by …" on the parent dashboard, which had a key minted and never wired.
+  All three fixed, the audit reads the shape now, and the poster's Print
+  button prints the POSTER — `.print-isolate` blanks the rest of the class
+  page, which previously came along for the ride.
 
 ### Built but not click-through verified
 

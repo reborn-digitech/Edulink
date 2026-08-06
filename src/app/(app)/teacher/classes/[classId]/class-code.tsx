@@ -35,8 +35,10 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
             {joinCode}
           </code>
           <p className="mt-1 text-xs text-fg-muted">
-            {t("teacher.studentsEnterAt")} <span className="font-medium text-fg">{joinUrl}</span> and join
-            this class straight away.
+            {/* The sentence ends BEFORE the URL — "and join this class straight
+                away" used to trail it in English regardless of language. */}
+            {t("teacher.studentsEnterAt")}{" "}
+            <span className="font-medium text-fg">{joinUrl}</span>
           </p>
         </div>
 
@@ -75,12 +77,16 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
         <div className="mt-4 border-t border-border pt-4">
           {/* Deliberately plain and high-contrast: this gets printed and stuck
               on a wall, and read across a classroom. */}
-          <div className="mx-auto max-w-xs rounded-[--radius-lg] border-2 border-fg bg-white p-6 text-center text-black">
+          <div className="print-isolate mx-auto max-w-xs rounded-[--radius-lg] border-2 border-fg bg-white p-6 text-center text-black">
             <p className="text-sm font-bold uppercase tracking-wide">{className}</p>
             <p className="mt-1 text-xs">{t("teacher.joinEduLink")}</p>
             <p className="mt-4 font-mono text-3xl font-black tracking-[0.15em]">{joinCode}</p>
             <p className="mt-4 text-xs leading-relaxed">
-              {t("teacher.goTo")} <strong>{joinUrl}</strong> and type this code.
+              {/* The URL on its own line rather than mid-sentence, so no
+                  language has to bend around English word order — "and type
+                  this code" used to sit here in English on a Marathi poster. */}
+              {t("teacher.typeCodeAt")}
+              <strong className="mt-1 block">{joinUrl}</strong>
             </p>
           </div>
           <div className="mt-3 flex justify-center">

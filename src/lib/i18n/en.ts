@@ -2542,10 +2542,10 @@ export const en = {
     belowNinety: "Below 90% in {days} days",
 
     classJoinCode: "Class join code",
-    studentsEnterAt: "Students enter this at",
+    studentsEnterAt: "Students join this class straight away by typing the code at:",
     copy: "Copy",
     joinEduLink: "Join EduLink",
-    goTo: "Go to",
+    typeCodeAt: "Type this code at:",
     printIt: "Print it",
     noQr: "No QR code yet — students type the code above.",
     codeCopied: "Class code copied",

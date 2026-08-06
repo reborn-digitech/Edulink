@@ -555,4 +555,23 @@
 @media print {
   .no-print { display: none !important; }
   body { background: #fff; color: #000; }
+
+  /* When a .print-isolate element is on the page, it IS the page: everything
+     else vanishes from the sheet. Visibility rather than display so the
+     layout tree stays intact — display:none on ancestors would take the
+     poster down with them. Exists for the classroom join-code poster, whose
+     Print button used to print the roster, the assignments and the rest of
+     the class page around a card meant for a wall. */
+  body:has(.print-isolate) * {
+    visibility: hidden;
+  }
+  body:has(.print-isolate) .print-isolate,
+  body:has(.print-isolate) .print-isolate * {
+    visibility: visible;
+  }
+  body:has(.print-isolate) .print-isolate {
+    position: absolute;
+    inset: 1.5rem auto auto 50%;
+    transform: translateX(-50%);
+  }
 }
