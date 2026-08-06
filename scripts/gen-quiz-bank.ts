@@ -2442,118 +2442,342 @@ function spread(deficit: number, weights: number[]): number[] {
 }
 
 /* ------------------------------- fillers ---------------------------------- */
+/*
+ * Each subject's former single "drill" topic is now a SET of chapter topics
+ * named after the NCERT/CBSE syllabus for that grade, generalized where the
+ * syllabus has no numerical chapter (grade-3 EVS has no "Ohm's law"). The
+ * SAME template instances with the SAME tags, ranges and want-arithmetic are
+ * regrouped — so the stems, the counts and the per-grade totals are provably
+ * identical to the plan the dry run already proved; only topic names, slugs
+ * and within-topic level numbering change.
+ *
+ * HISTORY IS THE HONEST EXCEPTION: chapter-true history ("When People Rebel"
+ * holding only 1857-era drills) would shrink each chapter's event pool far
+ * below drillable size — the events table holds 27 rows, not 300. Timeline
+ * topics therefore carry the grade's NCERT BOOK name, and true chapter fidelity
+ * waits on a bigger curated table.
+ */
 
-function mathsFiller(grade: number, position: number, deficit: number): TopicSpec {
+type ChapterName = { en: string; hi: string; mr: string };
+const CN = (en: string, hi: string, mr: string): ChapterName => ({ en, hi, mr });
+
+function chapterTopic(
+  grade: number,
+  key: string,
+  name: ChapterName,
+  templates: Template[],
+  subject: Subject,
+): TopicSpec {
+  return mkTopic(grade, 0, key, name.en, name.hi, name.mr, templates, subject);
+}
+
+function mathsFiller(grade: number, deficit: number): TopicSpec[] {
   const w = spread(deficit, [0.08, 0.15, 0.25, 0.25, 0.17, 0.1]);
   const base = 10_000 + (grade - 3) * 9_000;
   const mulBase = 1_000 + (grade - 3) * 800;
   const divBase = 100 + (grade - 3) * 80;
   const g = `g${grade}`;
-  return mkTopic(grade, position, "mixed", "Mixed practice", "मिश्रित अभ्यास", "संमिश्र सराव", [
-    fAdd(`${g}mixL1`, 1, w[0]!, R(base, base + 4499), R(base, base + 4499)),
-    fSub(`${g}mixL2`, 2, w[1]!, R(base + 4500, base + 8999), R(base, base + 4499)),
-    fMul(`${g}mixL3`, 3, w[2]!, R(mulBase, mulBase + 799), R(11, 99)),
-    fDiv(`${g}mixL4`, 4, w[3]!, R(divBase, divBase + 79), R(11, 99)),
-    fAdd(`${g}mixL5`, 5, w[4]!, R(base + 4500, base + 8999), R(base + 4500, base + 8999)),
-    fSub(`${g}mixL6`, 6, w[5]!, R(base, base + 4499), R(1000 + (grade - 3) * 350, 1000 + (grade - 3) * 350 + 349)),
-  ]);
+  const NAME: Record<number, ChapterName> = {
+    3: CN("Fun with Give and Take", "लेन-देन का खेल", "देवाण-घेवाणीची गंमत"),
+    4: CN("Tables and Shares", "पहाड़े और बँटवारा", "पाढे आणि वाटण्या"),
+    5: CN("Ways to Multiply and Divide", "गुणा-भाग के तरीके", "गुणाकार-भागाकाराच्या रीती"),
+    6: CN("Whole Numbers Practice", "पूर्ण संख्याओं का अभ्यास", "पूर्ण संख्यांचा सराव"),
+    7: CN("Number Operations Practice", "संख्या संक्रियाओं का अभ्यास", "संख्या क्रियांचा सराव"),
+    8: CN("Number Operations Practice", "संख्या संक्रियाओं का अभ्यास", "संख्या क्रियांचा सराव"),
+    9: CN("Number Systems Practice", "संख्या पद्धति अभ्यास", "संख्या पद्धती सराव"),
+    10: CN("Real Numbers Practice", "वास्तविक संख्याओं का अभ्यास", "वास्तव संख्यांचा सराव"),
+    11: CN("Number Practice", "संख्या अभ्यास", "संख्या सराव"),
+    12: CN("Number Practice", "संख्या अभ्यास", "संख्या सराव"),
+  };
+  return [
+    chapterTopic(grade, "mixed", NAME[grade]!, [
+      fAdd(`${g}mixL1`, 1, w[0]!, R(base, base + 4499), R(base, base + 4499)),
+      fSub(`${g}mixL2`, 2, w[1]!, R(base + 4500, base + 8999), R(base, base + 4499)),
+      fMul(`${g}mixL3`, 3, w[2]!, R(mulBase, mulBase + 799), R(11, 99)),
+      fDiv(`${g}mixL4`, 4, w[3]!, R(divBase, divBase + 79), R(11, 99)),
+      fAdd(`${g}mixL5`, 5, w[4]!, R(base + 4500, base + 8999), R(base + 4500, base + 8999)),
+      fSub(`${g}mixL6`, 6, w[5]!, R(base, base + 4499), R(1000 + (grade - 3) * 350, 1000 + (grade - 3) * 350 + 349)),
+    ], "MATHS"),
+  ];
 }
 
-function sciFiller(grade: number, position: number, deficit: number): TopicSpec {
+function sciFiller(grade: number, deficit: number): TopicSpec[] {
   const w = spread(deficit, [0.08, 0.15, 0.25, 0.25, 0.17, 0.1]);
   const o = grade - 3;
   const g = `g${grade}`;
-  return mkTopic(
-    grade, position, "scidrill", "Science numericals", "विज्ञान के सवाल", "विज्ञानाची गणिते",
-    [
-      fSciSpeed(`${g}sfL1`, 1, w[0]!, R(5 + 300 * o, 299 + 300 * o), R(2, 19)),
-      fSciDensity(`${g}sfL2`, 2, w[1]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
-      fSciForce(`${g}sfL3`, 3, w[2]!, R(2 + 60 * o, 61 + 60 * o), R(2, 99)),
-      fSciOhm(`${g}sfL4`, 4, w[3]!, R(1 + 50 * o, 50 + 50 * o), R(2, 99)),
-      fSciWork(`${g}sfL5`, 5, w[4]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
-      fSciPower(`${g}sfL6`, 6, w[5]!, R(5 + 80 * o, 84 + 80 * o), R(2, 60)),
-    ],
-    "SCIENCE",
-  );
+  const motion: Record<number, ChapterName> = {
+    3: CN("Moving Things", "चलती चीज़ें", "हलणाऱ्या वस्तू"),
+    4: CN("Moving Things", "चलती चीज़ें", "हलणाऱ्या वस्तू"),
+    5: CN("Fast and Slow", "तेज़ और धीमा", "जलद आणि हळू"),
+    6: CN("Motion and Measurement of Distances", "गति एवं दूरियों का मापन", "गती आणि अंतरांचे मापन"),
+    7: CN("Motion and Time", "गति एवं समय", "गती आणि वेळ"),
+    8: CN("Motion Practice", "गति अभ्यास", "गती सराव"),
+    9: CN("Motion", "गति", "गती"),
+    10: CN("Motion Practice", "गति अभ्यास", "गती सराव"),
+    11: CN("Motion in a Straight Line", "सरल रेखा में गति", "सरळ रेषेतील गती"),
+    12: CN("Kinematics Revision", "गतिकी पुनरावृत्ति", "गतिकी उजळणी"),
+  };
+  const matter: Record<number, ChapterName> = {
+    3: CN("Materials Around Us", "हमारे आस-पास की सामग्री", "आपल्या भोवतालचे पदार्थ"),
+    4: CN("Materials Around Us", "हमारे आस-पास की सामग्री", "आपल्या भोवतालचे पदार्थ"),
+    5: CN("Materials Around Us", "हमारे आस-पास की सामग्री", "आपल्या भोवतालचे पदार्थ"),
+    6: CN("Sorting Materials into Groups", "वस्तुओं के समूह बनाना", "पदार्थांचे गट करणे"),
+    7: CN("Matter and Density", "पदार्थ और घनत्व", "पदार्थ आणि घनता"),
+    8: CN("Materials: Density", "सामग्री: घनत्व", "पदार्थ: घनता"),
+    9: CN("Matter in Our Surroundings", "हमारे आस-पास के पदार्थ", "आपल्या सभोवतालचे पदार्थ"),
+    10: CN("Matter Practice", "पदार्थ अभ्यास", "पदार्थ सराव"),
+    11: CN("Mechanical Properties of Fluids", "तरलों के यांत्रिक गुण", "द्रवांचे यांत्रिक गुणधर्म"),
+    12: CN("Properties of Matter", "पदार्थ के गुण", "पदार्थांचे गुणधर्म"),
+  };
+  const force: Record<number, ChapterName> = {
+    3: CN("Pushes and Pulls", "धक्का और खिंचाव", "ढकलणे आणि ओढणे"),
+    4: CN("Pushes and Pulls", "धक्का और खिंचाव", "ढकलणे आणि ओढणे"),
+    5: CN("Pushes and Pulls", "धक्का और खिंचाव", "ढकलणे आणि ओढणे"),
+    6: CN("Forces Around Us", "हमारे आस-पास के बल", "आपल्या भोवतालची बले"),
+    7: CN("Forces and Their Effects", "बल और उनके प्रभाव", "बले आणि त्यांचे परिणाम"),
+    8: CN("Force and Pressure", "बल तथा दाब", "बल आणि दाब"),
+    9: CN("Force and Laws of Motion", "बल तथा गति के नियम", "बल आणि गतीचे नियम"),
+    10: CN("Force Practice", "बल अभ्यास", "बल सराव"),
+    11: CN("Laws of Motion", "गति के नियम", "गतीचे नियम"),
+    12: CN("Mechanics Revision", "यांत्रिकी पुनरावृत्ति", "यांत्रिकी उजळणी"),
+  };
+  const elec: Record<number, ChapterName> = {
+    3: CN("Simple Circuits", "सरल परिपथ", "साधे परिपथ"),
+    4: CN("Simple Circuits", "सरल परिपथ", "साधे परिपथ"),
+    5: CN("Simple Circuits", "सरल परिपथ", "साधे परिपथ"),
+    6: CN("Electricity and Circuits", "विद्युत तथा परिपथ", "विद्युत आणि परिपथ"),
+    7: CN("Electric Current and Its Effects", "विद्युत धारा और इसके प्रभाव", "विद्युत धारा आणि तिचे परिणाम"),
+    8: CN("Chemical Effects of Electric Current", "विद्युत धारा के रासायनिक प्रभाव", "विद्युत धारेचे रासायनिक परिणाम"),
+    9: CN("Electric Circuits", "विद्युत परिपथ", "विद्युत परिपथ"),
+    10: CN("Electricity", "विद्युत", "विद्युत"),
+    11: CN("Current Electricity Basics", "विद्युत धारा की मूल बातें", "विद्युत धारेची मूलतत्त्वे"),
+    12: CN("Current Electricity", "विद्युत धारा", "विद्युत धारा"),
+  };
+  const work: Record<number, ChapterName> = {
+    3: CN("Work and Play", "काम और खेल", "काम आणि खेळ"),
+    4: CN("Work and Play", "काम और खेल", "काम आणि खेळ"),
+    5: CN("Work and Play", "काम और खेल", "काम आणि खेळ"),
+    6: CN("Work and Energy Basics", "कार्य और ऊर्जा की मूल बातें", "कार्य आणि ऊर्जेची मूलतत्त्वे"),
+    7: CN("Energy at Work", "काम में ऊर्जा", "कामातील ऊर्जा"),
+    8: CN("Work and Energy Basics", "कार्य और ऊर्जा की मूल बातें", "कार्य आणि ऊर्जेची मूलतत्त्वे"),
+    9: CN("Work and Energy", "कार्य तथा ऊर्जा", "कार्य आणि ऊर्जा"),
+    10: CN("Energy Calculations", "ऊर्जा की गणनाएँ", "ऊर्जेची आकडेमोड"),
+    11: CN("Work, Energy and Power", "कार्य, ऊर्जा और शक्ति", "कार्य, ऊर्जा आणि शक्ती"),
+    12: CN("Work and Power Revision", "कार्य और शक्ति पुनरावृत्ति", "कार्य आणि शक्ती उजळणी"),
+  };
+  return [
+    chapterTopic(grade, "sci-motion", motion[grade]!, [fSciSpeed(`${g}sfL1`, 1, w[0]!, R(5 + 300 * o, 299 + 300 * o), R(2, 19))], "SCIENCE"),
+    chapterTopic(grade, "sci-matter", matter[grade]!, [fSciDensity(`${g}sfL2`, 1, w[1]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99))], "SCIENCE"),
+    chapterTopic(grade, "sci-force", force[grade]!, [fSciForce(`${g}sfL3`, 1, w[2]!, R(2 + 60 * o, 61 + 60 * o), R(2, 99))], "SCIENCE"),
+    chapterTopic(grade, "sci-elec", elec[grade]!, [fSciOhm(`${g}sfL4`, 1, w[3]!, R(1 + 50 * o, 50 + 50 * o), R(2, 99))], "SCIENCE"),
+    chapterTopic(grade, "sci-work", work[grade]!, [
+      fSciWork(`${g}sfL5`, 1, w[4]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
+      fSciPower(`${g}sfL6`, 2, w[5]!, R(5 + 80 * o, 84 + 80 * o), R(2, 60)),
+    ], "SCIENCE"),
+  ];
 }
 
-function geoFiller(grade: number, position: number, deficit: number): TopicSpec {
+function geoFiller(grade: number, deficit: number): TopicSpec[] {
   const w = spread(deficit, [0.2, 0.1, 0.25, 0.2, 0.15, 0.1]);
   const o = grade - 3;
   const g = `g${grade}`;
-  return mkTopic(
-    grade, position, "geodrill", "Maps and numbers", "नक्शे और संख्याएँ", "नकाशे आणि संख्या",
-    [
+  const maps: Record<number, ChapterName> = {
+    3: CN("Reading Maps", "नक्शा पढ़ना", "नकाशा वाचणे"),
+    4: CN("Reading Maps", "नक्शा पढ़ना", "नकाशा वाचणे"),
+    5: CN("Mapping Your Way", "नक्शे से राह", "नकाशाने वाट"),
+    6: CN("Maps", "मानचित्र", "नकाशे"),
+    7: CN("Map Skills", "मानचित्र कौशल", "नकाशा कौशल्ये"),
+    8: CN("Map Skills", "मानचित्र कौशल", "नकाशा कौशल्ये"),
+    9: CN("Map Skills", "मानचित्र कौशल", "नकाशा कौशल्ये"),
+    10: CN("Map Skills", "मानचित्र कौशल", "नकाशा कौशल्ये"),
+    11: CN("Practical Work: Map Scale", "प्रायोगिक कार्य: मानचित्र पैमाना", "प्रात्यक्षिक: नकाशा प्रमाण"),
+    12: CN("Map Skills", "मानचित्र कौशल", "नकाशा कौशल्ये"),
+  };
+  const globe: Record<number, ChapterName> = {
+    3: CN("Day and Night", "दिन और रात", "दिवस आणि रात्र"),
+    4: CN("Day and Night", "दिन और रात", "दिवस आणि रात्र"),
+    5: CN("The Turning Earth", "घूमती पृथ्वी", "फिरणारी पृथ्वी"),
+    6: CN("Globe: Latitudes and Longitudes", "ग्लोब: अक्षांश एवं देशांतर", "पृथ्वीगोल: अक्षांश आणि रेखांश"),
+    7: CN("Latitudes and Longitudes Practice", "अक्षांश-देशांतर अभ्यास", "अक्षांश-रेखांश सराव"),
+    8: CN("Latitudes and Longitudes Practice", "अक्षांश-देशांतर अभ्यास", "अक्षांश-रेखांश सराव"),
+    9: CN("India – Size and Location", "भारत – आकार और स्थिति", "भारत – आकार आणि स्थान"),
+    10: CN("Longitude and Time", "देशांतर और समय", "रेखांश आणि वेळ"),
+    11: CN("Earth's Rotation and Time", "पृथ्वी का घूर्णन और समय", "पृथ्वीचे परिवलन आणि वेळ"),
+    12: CN("Longitude and Time", "देशांतर और समय", "रेखांश आणि वेळ"),
+  };
+  const pop: Record<number, ChapterName> = {
+    3: CN("People and Places", "लोग और स्थान", "लोक आणि ठिकाणे"),
+    4: CN("People and Places", "लोग और स्थान", "लोक आणि ठिकाणे"),
+    5: CN("People and Places", "लोग और स्थान", "लोक आणि ठिकाणे"),
+    6: CN("Where People Live", "लोग कहाँ रहते हैं", "लोक कुठे राहतात"),
+    7: CN("Human Environment: Settlement", "मानवीय पर्यावरण: बस्तियाँ", "मानवी पर्यावरण: वस्ती"),
+    8: CN("Human Resources", "मानव संसाधन", "मानवी साधनसंपत्ती"),
+    9: CN("Population", "जनसंख्या", "लोकसंख्या"),
+    10: CN("Population Practice", "जनसंख्या अभ्यास", "लोकसंख्या सराव"),
+    11: CN("Population Practice", "जनसंख्या अभ्यास", "लोकसंख्या सराव"),
+    12: CN("The World Population", "विश्व जनसंख्या", "जगाची लोकसंख्या"),
+  };
+  return [
+    chapterTopic(grade, "geo-maps", maps[grade]!, [
       fGeoScale(`${g}gfL1`, 1, w[0]!, R(2 + 100 * o, 101 + 100 * o), R(2, 49)),
-      fGeoLong(`${g}gfL2`, 2, w[1]!, R(0, 89), R(1 + 30 * o, 30 + 30 * o)),
-      fGeoPopDen(`${g}gfL3`, 3, w[2]!, R(50 + 600 * o, 349 + 600 * o), R(2, 99)),
-      fGeoScale(`${g}gfL4`, 4, w[3]!, R(2 + 100 * o, 101 + 100 * o), R(50, 99)),
-      fGeoPopDen(`${g}gfL5`, 5, w[4]!, R(350 + 600 * o, 649 + 600 * o), R(2, 99)),
-      fGeoLong(`${g}gfL6`, 6, w[5]!, R(90, 179), R(1 + 30 * o, 30 + 30 * o)),
-    ],
-    "GEOGRAPHY",
-  );
+      fGeoScale(`${g}gfL4`, 2, w[3]!, R(2 + 100 * o, 101 + 100 * o), R(50, 99)),
+    ], "GEOGRAPHY"),
+    chapterTopic(grade, "geo-globe", globe[grade]!, [
+      fGeoLong(`${g}gfL2`, 1, w[1]!, R(0, 89), R(1 + 30 * o, 30 + 30 * o)),
+      fGeoLong(`${g}gfL6`, 2, w[5]!, R(90, 179), R(1 + 30 * o, 30 + 30 * o)),
+    ], "GEOGRAPHY"),
+    chapterTopic(grade, "geo-pop", pop[grade]!, [
+      fGeoPopDen(`${g}gfL3`, 1, w[2]!, R(50 + 600 * o, 349 + 600 * o), R(2, 99)),
+      fGeoPopDen(`${g}gfL5`, 2, w[4]!, R(350 + 600 * o, 649 + 600 * o), R(2, 99)),
+    ], "GEOGRAPHY"),
+  ];
 }
 
-function histFiller(grade: number, position: number, deficit: number): TopicSpec {
+function histFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
   const fixed = 100 + 55 + 100;
   const each = Math.floor((deficit - fixed) / 3);
   const last = deficit - fixed - 2 * each;
   const base = 2 + 195 * o;
   const g = `g${grade}`;
-  return mkTopic(
-    grade, position, "histdrill", "Timeline practice", "समयरेखा अभ्यास", "कालरेषा सराव",
-    [
+  const book: Record<number, ChapterName> = {
+    3: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+    4: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+    5: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+    6: CN("Our Pasts: Timelines", "हमारे अतीत: समयरेखाएँ", "आपले भूतकाळ: कालरेषा"),
+    7: CN("Our Pasts II: Timelines", "हमारे अतीत II: समयरेखाएँ", "आपले भूतकाळ II: कालरेषा"),
+    8: CN("Our Pasts III: Timelines", "हमारे अतीत III: समयरेखाएँ", "आपले भूतकाळ III: कालरेषा"),
+    9: CN("India and the Contemporary World: Timelines", "भारत और समकालीन विश्व: समयरेखाएँ", "भारत आणि समकालीन जग: कालरेषा"),
+    10: CN("India and the Contemporary World II: Timelines", "भारत और समकालीन विश्व II: समयरेखाएँ", "भारत आणि समकालीन जग II: कालरेषा"),
+    11: CN("Themes in World History: Timelines", "विश्व इतिहास के विषय: समयरेखाएँ", "जागतिक इतिहासातील विषय: कालरेषा"),
+    12: CN("Themes in Indian History: Timelines", "भारतीय इतिहास के विषय: समयरेखाएँ", "भारतीय इतिहासातील विषय: कालरेषा"),
+  };
+  const centuries = CN("Centuries and Calendars", "शताब्दियाँ और कैलेंडर", "शतके आणि दिनदर्शिका");
+  return [
+    chapterTopic(grade, "hist-timeline", book[grade]!, [
       fHistAfter(`${g}hfL1`, 1, each, R(base, base + 64)),
-      fHistCentury(`${g}hfL2`, 2, 100, R(1201 + 140 * o, 1270 + 140 * o)),
+      fHistBetween(`${g}hfL4`, 2, 55),
       fHistAfter(`${g}hfL3`, 3, each, R(base + 65, base + 129)),
-      fHistBetween(`${g}hfL4`, 4, 55),
-      fHistAfter(`${g}hfL5`, 5, last, R(base + 130, base + 194)),
-      fHistCentury(`${g}hfL6`, 6, 100, R(1271 + 140 * o, 1340 + 140 * o)),
-    ],
-    "HISTORY",
-  );
+      fHistAfter(`${g}hfL5`, 4, last, R(base + 130, base + 194)),
+    ], "HISTORY"),
+    chapterTopic(grade, "hist-century", centuries, [
+      fHistCentury(`${g}hfL2`, 1, 100, R(1201 + 140 * o, 1270 + 140 * o)),
+      fHistCentury(`${g}hfL6`, 2, 100, R(1271 + 140 * o, 1340 + 140 * o)),
+    ], "HISTORY"),
+  ];
 }
 
-function civFiller(grade: number, position: number, deficit: number): TopicSpec {
+function civFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
   const fixed = 250 + 360 + 120;
   const each = Math.floor((deficit - fixed) / 3);
   const last = deficit - fixed - 2 * each;
   const g = `g${grade}`;
-  return mkTopic(
-    grade, position, "civdrill", "Numbers of democracy", "लोकतंत्र की संख्याएँ", "लोकशाहीच्या संख्या",
-    [
-      fCivQuorum(`${g}cfL1`, 1, 250, R(2 + 80 * o, 81 + 80 * o)),
-      fCivMajority(`${g}cfL2`, 2, 360, R(50 + 450 * o, 499 + 450 * o)),
-      fCivRep(`${g}cfL3`, 3, each, R(10, 199), R(100 + 600 * o, 299 + 600 * o)),
-      fCivRep(`${g}cfL4`, 4, each, R(10, 199), R(300 + 600 * o, 499 + 600 * o)),
-      fCivRep(`${g}cfL5`, 5, last, R(10, 199), R(500 + 600 * o, 699 + 600 * o)),
-      fCivTerm(`${g}cfL6`, 6, 120, R(1900 + 50 * o, 1949 + 50 * o)),
-    ],
-    "CIVICS",
-  );
+  const quorum: Record<number, ChapterName> = {
+    3: CN("Meetings and Sharing", "बैठकें और साझेदारी", "सभा आणि वाटणी"),
+    4: CN("Meetings and Sharing", "बैठकें और साझेदारी", "सभा आणि वाटणी"),
+    5: CN("Meetings and Sharing", "बैठकें और साझेदारी", "सभा आणि वाटणी"),
+    6: CN("Panchayati Raj", "पंचायती राज", "पंचायत राज"),
+    7: CN("How the State Government Works", "राज्य सरकार कैसे काम करती है", "राज्य शासन कसे चालते"),
+    8: CN("Quorums and Meetings", "कोरम और बैठकें", "गणपूर्ती आणि सभा"),
+    9: CN("Working of Institutions", "संस्थाओं का कामकाज", "संस्थांचे कामकाज"),
+    10: CN("Quorums and Meetings", "कोरम और बैठकें", "गणपूर्ती आणि सभा"),
+    11: CN("Legislature: Quorums", "विधायिका: कोरम", "कायदेमंडळ: गणपूर्ती"),
+    12: CN("Quorums and Meetings", "कोरम और बैठकें", "गणपूर्ती आणि सभा"),
+  };
+  const majority: Record<number, ChapterName> = {
+    3: CN("Deciding Together", "मिलकर तय करना", "मिळून ठरवणे"),
+    4: CN("Deciding Together", "मिलकर तय करना", "मिळून ठरवणे"),
+    5: CN("Deciding Together", "मिलकर तय करना", "मिळून ठरवणे"),
+    6: CN("Deciding Together", "मिलकर तय करना", "मिळून ठरवणे"),
+    7: CN("Majority Decisions", "बहुमत के फ़ैसले", "बहुमताचे निर्णय"),
+    8: CN("Why Do We Need a Parliament?", "हमें संसद क्यों चाहिए?", "आपल्याला संसद का हवी?"),
+    9: CN("Majority Decisions", "बहुमत के फ़ैसले", "बहुमताचे निर्णय"),
+    10: CN("Majority Decisions", "बहुमत के फ़ैसले", "बहुमताचे निर्णय"),
+    11: CN("Parliament: Majorities", "संसद: बहुमत", "संसद: बहुमत"),
+    12: CN("Majority Decisions", "बहुमत के फ़ैसले", "बहुमताचे निर्णय"),
+  };
+  const rep: Record<number, ChapterName> = {
+    3: CN("Counting Our Community", "अपने समुदाय की गिनती", "आपल्या समुदायाची मोजणी"),
+    4: CN("Counting Our Community", "अपने समुदाय की गिनती", "आपल्या समुदायाची मोजणी"),
+    5: CN("Counting Our Community", "अपने समुदाय की गिनती", "आपल्या समुदायाची मोजणी"),
+    6: CN("Representation Numbers", "प्रतिनिधित्व की संख्याएँ", "प्रतिनिधित्वाच्या संख्या"),
+    7: CN("Representation Numbers", "प्रतिनिधित्व की संख्याएँ", "प्रतिनिधित्वाच्या संख्या"),
+    8: CN("Representation Numbers", "प्रतिनिधित्व की संख्याएँ", "प्रतिनिधित्वाच्या संख्या"),
+    9: CN("Electoral Politics", "चुनावी राजनीति", "निवडणुकीचे राजकारण"),
+    10: CN("Representation Numbers", "प्रतिनिधित्व की संख्याएँ", "प्रतिनिधित्वाच्या संख्या"),
+    11: CN("Elections and Representation", "चुनाव और प्रतिनिधित्व", "निवडणुका आणि प्रतिनिधित्व"),
+    12: CN("Representation Numbers", "प्रतिनिधित्व की संख्याएँ", "प्रतिनिधित्वाच्या संख्या"),
+  };
+  const term = CN("Election Terms", "चुनावी कार्यकाल", "निवडणूक कार्यकाळ");
+  return [
+    chapterTopic(grade, "civ-quorum", quorum[grade]!, [fCivQuorum(`${g}cfL1`, 1, 250, R(2 + 80 * o, 81 + 80 * o))], "CIVICS"),
+    chapterTopic(grade, "civ-majority", majority[grade]!, [fCivMajority(`${g}cfL2`, 1, 360, R(50 + 450 * o, 499 + 450 * o))], "CIVICS"),
+    chapterTopic(grade, "civ-rep", rep[grade]!, [
+      fCivRep(`${g}cfL3`, 1, each, R(10, 199), R(100 + 600 * o, 299 + 600 * o)),
+      fCivRep(`${g}cfL4`, 2, each, R(10, 199), R(300 + 600 * o, 499 + 600 * o)),
+      fCivRep(`${g}cfL5`, 3, last, R(10, 199), R(500 + 600 * o, 699 + 600 * o)),
+    ], "CIVICS"),
+    chapterTopic(grade, "civ-term", term, [fCivTerm(`${g}cfL6`, 1, 120, R(1900 + 50 * o, 1949 + 50 * o))], "CIVICS"),
+  ];
 }
 
-function ecoFiller(grade: number, position: number, deficit: number): TopicSpec {
+function ecoFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
   const fixed = 380;
   const rest = deficit - fixed;
   const w = spread(rest, [0.2, 0.3, 0.2, 0.15, 0.15]);
   const g = `g${grade}`;
-  return mkTopic(
-    grade, position, "ecodrill", "Money maths", "पैसों का गणित", "पैशांचे गणित",
-    [
+  const prices: Record<number, ChapterName> = {
+    3: CN("Buying and Selling", "खरीदना और बेचना", "खरेदी आणि विक्री"),
+    4: CN("Buying and Selling", "खरीदना और बेचना", "खरेदी आणि विक्री"),
+    5: CN("Buying and Selling", "खरीदना और बेचना", "खरेदी आणि विक्री"),
+    6: CN("Markets Around Us", "हमारे आस-पास के बाज़ार", "आपल्या भोवतालचे बाजार"),
+    7: CN("Markets Around Us", "हमारे आस-पास के बाज़ार", "आपल्या भोवतालचे बाजार"),
+    8: CN("Prices, Discounts and Taxes", "दाम, छूट और कर", "किमती, सूट आणि कर"),
+    9: CN("Prices, Discounts and Taxes", "दाम, छूट और कर", "किमती, सूट आणि कर"),
+    10: CN("Prices, Discounts and Taxes", "दाम, छूट और कर", "किमती, सूट आणि कर"),
+    11: CN("Prices, Discounts and Taxes", "दाम, छूट और कर", "किमती, सूट आणि कर"),
+    12: CN("GST and Prices", "जीएसटी और दाम", "जीएसटी आणि किमती"),
+  };
+  const income: Record<number, ChapterName> = {
+    3: CN("Earning and Saving", "कमाई और बचत", "कमाई आणि बचत"),
+    4: CN("Earning and Saving", "कमाई और बचत", "कमाई आणि बचत"),
+    5: CN("Earning and Saving", "कमाई और बचत", "कमाई आणि बचत"),
+    6: CN("Livelihoods and Incomes", "आजीविका और आय", "उपजीविका आणि उत्पन्न"),
+    7: CN("Livelihoods and Incomes", "आजीविका और आय", "उपजीविका आणि उत्पन्न"),
+    8: CN("Livelihoods and Incomes", "आजीविका और आय", "उपजीविका आणि उत्पन्न"),
+    9: CN("People as Resource", "संसाधन के रूप में लोग", "साधन म्हणून माणसे"),
+    10: CN("Development: Per Capita Income", "विकास: प्रति व्यक्ति आय", "विकास: दरडोई उत्पन्न"),
+    11: CN("Incomes and Averages", "आय और औसत", "उत्पन्न आणि सरासरी"),
+    12: CN("National Income Aggregates", "राष्ट्रीय आय समुच्चय", "राष्ट्रीय उत्पन्न एकत्रित"),
+  };
+  const growth: Record<number, ChapterName> = {
+    3: CN("Growing More", "और उगाना", "अधिक पिकवणे"),
+    4: CN("Growing More", "और उगाना", "अधिक पिकवणे"),
+    5: CN("Growing More", "और उगाना", "अधिक पिकवणे"),
+    6: CN("Farms and Growth", "खेत और वृद्धि", "शेते आणि वाढ"),
+    7: CN("Farms and Growth", "खेत और वृद्धि", "शेते आणि वाढ"),
+    8: CN("Farms and Growth", "खेत और वृद्धि", "शेते आणि वाढ"),
+    9: CN("The Story of Village Palampur: Farm Numbers", "गाँव पालमपुर की कहानी: खेती के आँकड़े", "पालमपूर गावाची गोष्ट: शेतीचे आकडे"),
+    10: CN("Growth Rates", "वृद्धि दरें", "वाढीचे दर"),
+    11: CN("Growth Rates", "वृद्धि दरें", "वाढीचे दर"),
+    12: CN("Growth Rates", "वृद्धि दरें", "वाढीचे दर"),
+  };
+  return [
+    chapterTopic(grade, "eco-prices", prices[grade]!, [
       fEcoDiscount(`${g}efL1`, 1, w[0]!, R(2 + 150 * o, 151 + 150 * o)),
       fEcoGST(`${g}efL2`, 2, fixed, R(2 + 120 * o, 121 + 120 * o)),
-      fEcoPerCapita(`${g}efL3`, 3, w[1]!, R(50 + 300 * o, 199 + 300 * o), R(2, 99)),
-      fEcoGrowth(`${g}efL4`, 4, w[2]!, R(2 + 140 * o, 71 + 140 * o), R(5, 60)),
-      fEcoPerCapita(`${g}efL5`, 5, w[3]!, R(200 + 300 * o, 349 + 300 * o), R(2, 99)),
-      fEcoGrowth(`${g}efL6`, 6, w[4]!, R(72 + 140 * o, 141 + 140 * o), R(5, 60)),
-    ],
-    "ECONOMICS",
-  );
+    ], "ECONOMICS"),
+    chapterTopic(grade, "eco-income", income[grade]!, [
+      fEcoPerCapita(`${g}efL3`, 1, w[1]!, R(50 + 300 * o, 199 + 300 * o), R(2, 99)),
+      fEcoPerCapita(`${g}efL5`, 2, w[3]!, R(200 + 300 * o, 349 + 300 * o), R(2, 99)),
+    ], "ECONOMICS"),
+    chapterTopic(grade, "eco-growth", growth[grade]!, [
+      fEcoGrowth(`${g}efL4`, 1, w[2]!, R(2 + 140 * o, 71 + 140 * o), R(5, 60)),
+      fEcoGrowth(`${g}efL6`, 2, w[4]!, R(72 + 140 * o, 141 + 140 * o), R(5, 60)),
+    ], "ECONOMICS"),
+  ];
 }
 
 /* ----------------------------- curricula ---------------------------------- */
@@ -2563,7 +2787,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
   switch (grade) {
     case 3:
       return [
-        mkTopic(3, 0, "addsub", "Addition and subtraction", "जोड़ और घटाव", "बेरीज आणि वजाबाकी", [
+        mkTopic(3, 0, "addsub", "Give and Take", "लेन-देन", "देवाण-घेवाण", [
           fAdd(`${g}a1`, 1, 800, R(10, 49), R(10, 49)),
           fAdd(`${g}a2`, 2, 1500, R(50, 99), R(10, 99)),
           fSub(`${g}a3`, 3, 2500, R(60, 99), R(10, 59)),
@@ -2571,7 +2795,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fSub(`${g}a5`, 5, 1750, R(500, 999), R(100, 499)),
           fAdd(`${g}a6`, 6, 1000, R(1000, 4999), R(1000, 4999)),
         ]),
-        mkTopic(3, 1, "tables", "Multiplication tables", "पहाड़े", "पाढे", [
+        mkTopic(3, 1, "tables", "How Many Times?", "कितनी बार?", "किती वेळा?", [
           fMul(`${g}t1`, 1, 450, R(2, 9), R(2, 19)),
           fMul(`${g}t2`, 2, 1500, R(2, 9), R(20, 99)),
           fMul(`${g}t3`, 3, 2500, R(10, 19), R(11, 99)),
@@ -2579,7 +2803,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fMul(`${g}t5`, 5, 1750, R(50, 99), R(11, 99)),
           fMul(`${g}t6`, 6, 1000, R(100, 999), R(2, 9)),
         ]),
-        mkTopic(3, 2, "division", "Division", "भाग", "भागाकार", [
+        mkTopic(3, 2, "division", "Can We Share?", "क्या हम बाँट सकते हैं?", "आपण वाटू शकतो का?", [
           fDiv(`${g}d1`, 1, 200, R(2, 9), R(2, 9)),
           fDiv(`${g}d2`, 2, 250, R(2, 9), R(10, 19)),
           fDiv(`${g}d3`, 3, 2200, R(10, 99), R(2, 9)),
@@ -2587,7 +2811,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fRem(`${g}d5`, 5, 1750, R(10, 99), R(3, 9), R(1, 8)),
           fRem(`${g}d6`, 6, 1000, R(100, 999), R(3, 9), R(1, 8)),
         ]),
-        mkTopic(3, 3, "place", "Place value and rounding", "स्थानीय मान और पूर्णांकन", "स्थानिक किंमत व पूर्णांकन", [
+        mkTopic(3, 3, "place", "Fun with Numbers", "संख्याओं के साथ मस्ती", "संख्यांची गंमत", [
           fRound(`${g}p1`, 1, 140, R(11, 99), 10),
           fRound(`${g}p2`, 2, 1400, R(101, 999), 10),
           fPlace(`${g}p3`, 3, 2500, 4),
@@ -2595,7 +2819,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fPlace(`${g}p5`, 5, 1750, 5),
           fRound(`${g}p6`, 6, 1000, R(10001, 99999), 1000),
         ]),
-        mkTopic(3, 4, "units", "Time and measurement", "समय और मापन", "वेळ आणि मापन", [
+        mkTopic(3, 4, "units", "Time Goes On", "समय चलता रहता है", "वेळ पुढे जातो", [
           fTime(`${g}u1`, 1, 150, R(2, 49)),
           fTime(`${g}u2`, 2, 480, R(50, 199)),
           fMetric(`${g}u3`, 3, 630, R(2, 199)),
@@ -2603,7 +2827,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fMetric(`${g}u5`, 5, 1750, R(200, 999)),
           fTime(`${g}u6`, 6, 1000, R(1000, 9999)),
         ]),
-        mkTopic(3, 5, "shapes", "Perimeter and area", "परिमाप और क्षेत्रफल", "परिमिती आणि क्षेत्रफळ", [
+        mkTopic(3, 5, "shapes", "Shapes and Designs", "आकृतियाँ और डिज़ाइन", "आकार आणि रचना", [
           fSquareGeo(`${g}s1`, 1, 75, R(2, 49), "perimeter"),
           fPerimRect(`${g}s2`, 2, 1200, R(11, 99), R(2, 10)),
           fSquareGeo(`${g}s3`, 3, 155, R(2, 99), "area"),
@@ -2622,7 +2846,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fMul(`${g}b5`, 5, 1750, R(300, 599), R(300, 999)),
           fMul(`${g}b6`, 6, 1000, R(600, 999), R(300, 999)),
         ]),
-        mkTopic(4, 1, "longdiv", "Long division", "लंबा भाग", "दीर्घ भागाकार", [
+        mkTopic(4, 1, "longdiv", "Tables and Shares", "पहाड़े और बँटवारा", "पाढे आणि वाटण्या", [
           fDiv(`${g}l1`, 1, 800, R(100, 199), R(2, 9)),
           fDiv(`${g}l2`, 2, 1500, R(100, 299), R(11, 19)),
           fDiv(`${g}l3`, 3, 2500, R(100, 499), R(21, 49)),
@@ -2638,7 +2862,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fHcf(`${g}f5`, 5, 1200, R(16, 30), R(2, 12), R(2, 12)),
           fLcm(`${g}f6`, 6, 1000, R(31, 60), R(31, 60)),
         ]),
-        mkTopic(4, 3, "fracintro", "Fractions", "भिन्न", "अपूर्णांक", [
+        mkTopic(4, 3, "fracintro", "Halves and Quarters", "आधा और चौथाई", "अर्धा आणि पाव", [
           fFracOf(`${g}fr1`, 1, 800, R(2, 30)),
           fEquiv(`${g}fr2`, 2, 640, R(2, 6)),
           fFracOf(`${g}fr3`, 3, 2200, R(31, 90)),
@@ -2654,7 +2878,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fMetric(`${g}u5`, 5, 1750, R(2000, 2999)),
           fTime(`${g}u6`, 6, 1000, R(11500, 11999)),
         ]),
-        mkTopic(4, 5, "geo4", "Rectangles: perimeter and area", "आयत: परिमाप और क्षेत्रफल", "आयत: परिमिती व क्षेत्रफळ", [
+        mkTopic(4, 5, "geo4", "Fields and Fences", "खेत और बाड़", "शेते आणि कुंपणे", [
           fPerimRect(`${g}ge1`, 1, 800, R(500, 999), R(100, 499)),
           fAreaRect(`${g}ge2`, 2, 1500, R(100, 199), R(11, 99)),
           fPerimRect(`${g}ge3`, 3, 2500, R(1000, 4999), R(100, 999)),
@@ -2665,7 +2889,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
       ];
     case 5:
       return [
-        mkTopic(5, 0, "decimals", "Decimals", "दशमलव", "दशांश", [
+        mkTopic(5, 0, "decimals", "Tenths and Hundredths", "दसवाँ और सौवाँ भाग", "दशांश आणि शतांश", [
           fDec(`${g}de1`, 1, 800, R(11, 99), R(11, 99), "+"),
           fDec(`${g}de2`, 2, 1500, R(101, 999), R(11, 99), "+"),
           fDec(`${g}de3`, 3, 2500, R(101, 999), R(11, 99), "-"),
@@ -2673,7 +2897,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fDec(`${g}de5`, 5, 1750, R(1001, 9999), R(101, 999), "-"),
           fDec(`${g}de6`, 6, 1000, R(101, 299), R(11, 19), "*"),
         ]),
-        mkTopic(5, 1, "frac5", "Fraction arithmetic", "भिन्नों की गणना", "अपूर्णांकांची गणना", [
+        mkTopic(5, 1, "frac5", "Parts and Wholes", "हिस्से और पूरा", "भाग आणि पूर्ण", [
           fFracAdd(`${g}fa1`, 1, 300, 19, 32),
           fFracOf(`${g}fa2`, 2, 1500, R(151, 220)),
           fEquiv(`${g}fa3`, 3, 1000, R(13, 20)),
@@ -2681,7 +2905,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fFracAdd(`${g}fa5`, 5, 380, 33, 45),
           fFracOf(`${g}fa6`, 6, 1000, R(321, 400)),
         ]),
-        mkTopic(5, 2, "avg5", "Averages", "औसत", "सरासरी", [
+        mkTopic(5, 2, "avg5", "Smart Charts: Averages", "स्मार्ट चार्ट: औसत", "स्मार्ट तक्ते: सरासरी", [
           fAvg(`${g}av1`, 1, 500, R(20, 99)),
           fAvg(`${g}av2`, 2, 1500, R(100, 299)),
           fAvg(`${g}av3`, 3, 1500, R(300, 499)),
@@ -2689,7 +2913,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fAvg(`${g}av5`, 5, 1500, R(700, 899)),
           fAvg(`${g}av6`, 6, 780, R(900, 999)),
         ]),
-        mkTopic(5, 3, "volume", "Volume", "आयतन", "घनफळ", [
+        mkTopic(5, 3, "volume", "How Big? How Heavy?", "कितना बड़ा? कितना भारी?", "किती मोठे? किती जड?", [
           fVolCube(`${g}vo1`, 1, 75, R(2, 49)),
           fVolCuboid(`${g}vo2`, 2, 1500, R(2, 20), R(2, 20), R(2, 20)),
           fVolCuboid(`${g}vo3`, 3, 2500, R(21, 40), R(2, 20), R(2, 20)),
@@ -2716,7 +2940,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fInt(`${g}in5`, 5, 1750, R(500, 999), R(2, 999)),
           fInt(`${g}in6`, 6, 1000, R(1000, 1999), R(2, 1999)),
         ]),
-        mkTopic(6, 1, "ratio", "Ratio and proportion", "अनुपात और समानुपात", "गुणोत्तर आणि प्रमाण", [
+        mkTopic(6, 1, "ratio", "Ratio and Proportion", "अनुपात और समानुपात", "गुणोत्तर आणि प्रमाण", [
           fRatio(`${g}ra1`, 1, 700, R(2, 24)),
           fRatio(`${g}ra2`, 2, 1400, R(25, 49)),
           fRatio(`${g}ra3`, 3, 2100, R(50, 99)),
@@ -2724,7 +2948,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fRatio(`${g}ra5`, 5, 1700, R(100, 149)),
           fRatio(`${g}ra6`, 6, 1000, R(200, 229)),
         ]),
-        mkTopic(6, 2, "angles", "Angles", "कोण", "कोन", [
+        mkTopic(6, 2, "angles", "Understanding Elementary Shapes", "प्रारंभिक आकारों को समझना", "मूलभूत आकार समजून घेणे", [
           fAngle(`${g}an1`, 1, 110, R(10, 80), "complementary"),
           fAngle(`${g}an2`, 2, 255, R(10, 170), "supplementary"),
           fTriAngle(`${g}an3`, 3, 2500, R(20, 80), R(20, 80)),
@@ -2732,7 +2956,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fTriAngle(`${g}an5`, 5, 900, R(20, 80), R(81, 99)),
           fTriAngle(`${g}an6`, 6, 600, R(101, 140), R(20, 39)),
         ]),
-        mkTopic(6, 3, "algintro", "A first look at algebra", "बीजगणित की शुरुआत", "बीजगणिताची सुरुवात", [
+        mkTopic(6, 3, "algintro", "Algebra", "बीजगणित", "बीजगणित", [
           fEvalLin(`${g}al1`, 1, 400, R(2, 9), R(1, 20), R(2, 9)),
           fSolve(`${g}al2`, 2, 750, R(2, 9), R(2, 20), R(1, 30)),
           fEvalLin(`${g}al3`, 3, 1250, R(2, 12), R(21, 60), R(10, 19)),
@@ -2740,7 +2964,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fEvalLin(`${g}al5`, 5, 875, R(13, 19), R(1, 60), R(2, 19)),
           fSolve(`${g}al6`, 6, 500, R(13, 19), R(2, 50), R(1, 60)),
         ]),
-        mkTopic(6, 4, "lcmhcf", "LCM and HCF", "लघुत्तम और महत्तम", "लसावि आणि मसावि", [
+        mkTopic(6, 4, "lcmhcf", "Playing with Numbers", "संख्याओं के साथ खेलना", "संख्यांशी खेळ", [
           fLcm(`${g}lh1`, 1, 500, R(61, 80), R(2, 30)),
           fHcf(`${g}lh2`, 2, 1200, R(31, 45), R(2, 12), R(2, 12)),
           fLcm(`${g}lh3`, 3, 2000, R(61, 99), R(31, 99)),
@@ -2748,7 +2972,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fLcm(`${g}lh5`, 5, 850, R(81, 99), R(2, 30)),
           fHcf(`${g}lh6`, 6, 1000, R(61, 75), R(2, 12), R(2, 12)),
         ]),
-        mkTopic(6, 5, "mensuration6", "Perimeter and area", "परिमाप और क्षेत्रफल", "परिमिती व क्षेत्रफळ", [
+        mkTopic(6, 5, "mensuration6", "Mensuration", "क्षेत्रमिति", "क्षेत्रमिती", [
           fSquareGeo(`${g}me1`, 1, 150, R(200, 299), "perimeter"),
           fAreaTri(`${g}me2`, 2, 1500, R(2, 30), R(2, 60)),
           fSquareGeo(`${g}me3`, 3, 155, R(200, 299), "area"),
@@ -2759,7 +2983,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
       ];
     case 7:
       return [
-        mkTopic(7, 0, "int7", "Integers, further", "पूर्णांक, आगे", "पूर्णांक, पुढे", [
+        mkTopic(7, 0, "int7", "Integers", "पूर्णांक", "पूर्णांक", [
           fInt(`${g}i1`, 1, 800, R(2000, 2999), R(2, 999)),
           fInt(`${g}i2`, 2, 1500, R(3000, 3999), R(2, 999)),
           fInt(`${g}i3`, 3, 2500, R(4000, 4999), R(2, 1999)),
@@ -2767,7 +2991,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fInt(`${g}i5`, 5, 1750, R(6000, 6999), R(2, 2999)),
           fInt(`${g}i6`, 6, 1000, R(7000, 7999), R(2, 2999)),
         ]),
-        mkTopic(7, 1, "eq7", "Simple equations", "सरल समीकरण", "साधी समीकरणे", [
+        mkTopic(7, 1, "eq7", "Simple Equations", "सरल समीकरण", "साधी समीकरणे", [
           fSolve(`${g}e1`, 1, 800, R(2, 9), R(51, 99), R(61, 99)),
           fSolve(`${g}e2`, 2, 1500, R(2, 12), R(100, 199), R(1, 99)),
           fSolve(`${g}e3`, 3, 2500, R(13, 25), R(51, 150), R(1, 99)),
@@ -2775,7 +2999,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fSolve(`${g}e5`, 5, 1750, R(41, 60), R(2, 99), R(200, 299)),
           fSolve(`${g}e6`, 6, 1000, R(61, 80), R(2, 99), R(300, 399)),
         ]),
-        mkTopic(7, 2, "exp7", "Exponents", "घातांक", "घातांक", [
+        mkTopic(7, 2, "exp7", "Exponents and Powers", "घातांक और घात", "घातांक आणि घात", [
           fSquare(`${g}x1`, 1, 150, R(2, 99)),
           fPow(`${g}x2`, 2, 130, R(2, 15), R(2, 5)),
           fSquare(`${g}x3`, 3, 780, R(100, 599)),
@@ -2783,7 +3007,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fPow(`${g}x5`, 5, 100, R(16, 30), R(2, 4)),
           fSquare(`${g}x6`, 6, 620, R(600, 999)),
         ]),
-        mkTopic(7, 3, "dec7", "Decimal operations", "दशमलव संक्रियाएँ", "दशांश क्रिया", [
+        mkTopic(7, 3, "dec7", "Fractions and Decimals", "भिन्न एवं दशमलव", "अपूर्णांक आणि दशांश", [
           fDec(`${g}d1`, 1, 800, R(301, 999), R(101, 299), "-"),
           fDec(`${g}d2`, 2, 1500, R(10001, 19999), R(101, 999), "+"),
           fDec(`${g}d3`, 3, 2500, R(300, 999), R(21, 99), "*"),
@@ -2794,7 +3018,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
       ];
     case 8:
       return [
-        mkTopic(8, 0, "lineq", "Linear equations", "रैखिक समीकरण", "रेषीय समीकरणे", [
+        mkTopic(8, 0, "lineq", "Linear Equations in One Variable", "एक चर वाले रैखिक समीकरण", "एका चलातील रेषीय समीकरणे", [
           fSolve(`${g}l1`, 1, 800, R(81, 99), R(2, 99), R(1, 99)),
           fSolve(`${g}l2`, 2, 1500, R(100, 125), R(2, 99), R(1, 99)),
           fSolve(`${g}l3`, 3, 2500, R(126, 160), R(2, 99), R(100, 199)),
@@ -2802,7 +3026,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fSolve(`${g}l5`, 5, 1750, R(200, 249), R(2, 99), R(300, 399)),
           fSolve(`${g}l6`, 6, 1000, R(250, 299), R(2, 99), R(400, 499)),
         ]),
-        mkTopic(8, 1, "roots", "Squares, cubes and roots", "वर्ग, घन और मूल", "वर्ग, घन आणि मुळे", [
+        mkTopic(8, 1, "roots", "Squares, Cubes and Roots", "वर्ग, घन और मूल", "वर्ग, घन आणि मुळे", [
           fSquare(`${g}r1`, 1, 700, R(1000, 1499)),
           fSqrt(`${g}r2`, 2, 470, R(2, 300)),
           fCube(`${g}r3`, 3, 140, R(61, 150)),
@@ -2810,7 +3034,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fSqrt(`${g}r5`, 5, 470, R(301, 600)),
           fCbrt(`${g}r6`, 6, 100, R(61, 130)),
         ]),
-        mkTopic(8, 2, "circle8", "Circles", "वृत्त", "वर्तुळे", [
+        mkTopic(8, 2, "circle8", "Mensuration: Circles", "क्षेत्रमिति: वृत्त", "क्षेत्रमिती: वर्तुळे", [
           fCircle(`${g}ci1`, 1, 60, R(1, 40), "circumference"),
           fCircle(`${g}ci2`, 2, 60, R(1, 40), "area"),
           fCircle(`${g}ci3`, 3, 90, R(41, 99), "circumference"),
@@ -2818,7 +3042,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fCircle(`${g}ci5`, 5, 80, R(100, 150), "circumference"),
           fCircle(`${g}ci6`, 6, 80, R(100, 150), "area"),
         ]),
-        mkTopic(8, 3, "solids", "Solids: volume", "ठोस: आयतन", "घनाकृती: घनफळ", [
+        mkTopic(8, 3, "solids", "Mensuration: Solids", "क्षेत्रमिति: ठोस", "क्षेत्रमिती: घनाकृती", [
           fVolCube(`${g}so1`, 1, 100, R(121, 199)),
           fCylVol(`${g}so2`, 2, 400, R(1, 20), R(2, 30)),
           fVolCuboid(`${g}so3`, 3, 2500, R(200, 299), R(2, 30), R(2, 20)),
@@ -2826,7 +3050,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fVolCuboid(`${g}so5`, 5, 1750, R(300, 399), R(2, 30), R(2, 20)),
           fCylVol(`${g}so6`, 6, 450, R(41, 60), R(2, 30)),
         ]),
-        mkTopic(8, 4, "poly8", "Evaluating polynomials", "बहुपद का मान", "बहुपदींची किंमत", [
+        mkTopic(8, 4, "poly8", "Algebraic Expressions", "बीजीय व्यंजक", "बैजिक राशी", [
           fEvalLin(`${g}po1`, 1, 800, R(20, 29), R(1, 99), R(2, 20)),
           fPoly(`${g}po2`, 2, 1500, R(-9, 9), R(-15, 15), R(2, 8)),
           fEvalLin(`${g}po3`, 3, 2500, R(30, 45), R(1, 99), R(2, 30)),
@@ -2853,7 +3077,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fDist(`${g}co5`, 5, 1050, R(46, 70), R(1, 8)),
           fSlope(`${g}co6`, 6, 570, R(0, 12), R(1, 9), R(36, 55)),
         ]),
-        mkTopic(9, 2, "tri9", "Triangles: area", "त्रिभुज: क्षेत्रफल", "त्रिकोण: क्षेत्रफळ", [
+        mkTopic(9, 2, "tri9", "Areas of Triangles", "त्रिभुजों के क्षेत्रफल", "त्रिकोणांची क्षेत्रफळे", [
           fAreaTri(`${g}t1`, 1, 400, R(121, 160), R(2, 99)),
           fAreaTri(`${g}t2`, 2, 750, R(161, 220), R(2, 99)),
           fAreaTri(`${g}t3`, 3, 1250, R(221, 320), R(2, 99)),
@@ -2877,7 +3101,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fProb(`${g}pr5`, 5, 800, R(51, 85), R(36, 70)),
           fProb(`${g}pr6`, 6, 500, R(86, 110), R(1, 40)),
         ]),
-        mkTopic(9, 5, "solids9", "Surface areas and volumes", "पृष्ठ क्षेत्रफल और आयतन", "पृष्ठफळ आणि घनफळ", [
+        mkTopic(9, 5, "solids9", "Surface Areas and Volumes", "पृष्ठीय क्षेत्रफल एवं आयतन", "पृष्ठफळ आणि घनफळ", [
           fVolCuboid(`${g}so1`, 1, 800, R(400, 499), R(2, 30), R(2, 20)),
           fCylVol(`${g}so2`, 2, 450, R(61, 80), R(2, 30)),
           fVolCuboid(`${g}so3`, 3, 2500, R(500, 649), R(2, 40), R(2, 25)),
@@ -2888,7 +3112,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
       ];
     case 10:
       return [
-        mkTopic(10, 0, "quad", "Quadratic equations", "द्विघात समीकरण", "वर्गसमीकरणे", [
+        mkTopic(10, 0, "quad", "Quadratic Equations", "द्विघात समीकरण", "वर्गसमीकरणे", [
           fQuad(`${g}q1`, 1, 700, R(1, 30), R(1, 30)),
           fQuad(`${g}q2`, 2, 700, R(31, 60), R(1, 30)),
           fQuad(`${g}q3`, 3, 700, R(61, 90), R(1, 30)),
@@ -2896,7 +3120,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fQuad(`${g}q5`, 5, 700, R(121, 150), R(1, 30)),
           fQuad(`${g}q6`, 6, 700, R(151, 180), R(1, 30)),
         ]),
-        mkTopic(10, 1, "ap", "Arithmetic progressions", "समांतर श्रेढ़ी", "अंकगणिती श्रेढी", [
+        mkTopic(10, 1, "ap", "Arithmetic Progressions", "समांतर श्रेढ़ियाँ", "अंकगणिती श्रेढी", [
           fApN(`${g}a1`, 1, 800, R(2, 60), R(2, 30), R(5, 60)),
           fApSum(`${g}a2`, 2, 1500, R(2, 60), R(2, 30), R(5, 60)),
           fApN(`${g}a3`, 3, 2500, R(61, 150), R(2, 40), R(5, 80)),
@@ -2904,7 +3128,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fApN(`${g}a5`, 5, 1750, R(151, 250), R(2, 50), R(5, 99)),
           fApSum(`${g}a6`, 6, 1000, R(151, 250), R(2, 50), R(5, 99)),
         ]),
-        mkTopic(10, 2, "trig", "Trigonometric ratios", "त्रिकोणमितीय अनुपात", "त्रिकोणमितीय गुणोत्तरे", [
+        mkTopic(10, 2, "trig", "Introduction to Trigonometry", "त्रिकोणमिति का परिचय", "त्रिकोणमितीची ओळख", [
           fTrig(`${g}t1`, 1, 180, R(1, 10)),
           fTrig(`${g}t2`, 2, 300, R(11, 27)),
           fTrig(`${g}t3`, 3, 350, R(28, 46)),
@@ -2931,7 +3155,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
       ];
     case 11:
       return [
-        mkTopic(11, 0, "counting", "Permutations and combinations", "क्रमचय और संचय", "क्रमांतरण आणि संयोग", [
+        mkTopic(11, 0, "counting", "Permutations and Combinations", "क्रमचय और संचय", "क्रमांतरण आणि संयोग", [
           fNpr(`${g}c1`, 1, 95, R(5, 30), R(2, 3)),
           fNcr(`${g}c2`, 2, 130, R(5, 30), R(2, 4)),
           fNpr(`${g}c3`, 3, 100, R(31, 60), R(2, 3)),
@@ -2939,7 +3163,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fNpr(`${g}c5`, 5, 90, R(61, 90), R(2, 3)),
           fNcr(`${g}c6`, 6, 120, R(61, 90), R(2, 4)),
         ]),
-        mkTopic(11, 1, "seq11", "Sequences and series", "अनुक्रम और श्रेणी", "श्रेढी आणि श्रेणी", [
+        mkTopic(11, 1, "seq11", "Sequences and Series", "अनुक्रम तथा श्रेणी", "श्रेढी आणि श्रेणी", [
           fApN(`${g}s1`, 1, 800, R(251, 350), R(2, 60), R(5, 99)),
           fGpN(`${g}s2`, 2, 100, R(1, 6), R(2, 4), R(3, 9)),
           fApSum(`${g}s3`, 3, 2500, R(251, 350), R(2, 60), R(5, 99)),
@@ -2947,7 +3171,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fApN(`${g}s5`, 5, 1750, R(351, 450), R(2, 70), R(5, 99)),
           fApSum(`${g}s6`, 6, 1000, R(351, 450), R(2, 70), R(5, 99)),
         ]),
-        mkTopic(11, 2, "lines", "Straight lines", "सरल रेखाएँ", "सरळ रेषा", [
+        mkTopic(11, 2, "lines", "Straight Lines", "सरल रेखाएँ", "सरळ रेषा", [
           fSlope(`${g}l1`, 1, 800, R(0, 12), R(1, 9), R(126, 145)),
           fDist(`${g}l2`, 2, 1500, R(156, 185), R(1, 8)),
           fSlope(`${g}l3`, 3, 2500, R(0, 12), R(1, 9), R(146, 175)),
@@ -2955,7 +3179,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fSlope(`${g}l5`, 5, 1750, R(0, 12), R(1, 9), R(176, 205)),
           fDist(`${g}l6`, 6, 1000, R(216, 245), R(1, 8)),
         ]),
-        mkTopic(11, 3, "trig11", "Trigonometry, further", "त्रिकोणमिति, आगे", "त्रिकोणमिती, पुढे", [
+        mkTopic(11, 3, "trig11", "Trigonometric Functions", "त्रिकोणमितीय फलन", "त्रिकोणमितीय फले", [
           fTrig(`${g}t1`, 1, 180, R(100, 110)),
           fTrig(`${g}t2`, 2, 300, R(111, 127)),
           fTrig(`${g}t3`, 3, 350, R(128, 146)),
@@ -2971,7 +3195,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fAvg(`${g}st5`, 5, 1750, R(4100, 4399)),
           fAvg(`${g}st6`, 6, 1000, R(4400, 4599)),
         ]),
-        mkTopic(11, 5, "quad11", "Quadratics, further", "द्विघात, आगे", "वर्गसमीकरणे, पुढे", [
+        mkTopic(11, 5, "quad11", "Complex Numbers and Quadratic Equations", "सम्मिश्र संख्याएँ और द्विघात समीकरण", "संमिश्र संख्या आणि वर्गसमीकरणे", [
           fQuad(`${g}q1`, 1, 700, R(181, 210), R(1, 30)),
           fQuad(`${g}q2`, 2, 700, R(211, 240), R(1, 30)),
           fQuad(`${g}q3`, 3, 700, R(241, 270), R(1, 30)),
@@ -2998,7 +3222,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fDot(`${g}v5`, 5, 875, R(0, 16)),
           fDot(`${g}v6`, 6, 500, R(0, 18)),
         ]),
-        mkTopic(12, 2, "deriv", "Derivatives", "अवकलज", "अवकलज", [
+        mkTopic(12, 2, "deriv", "Continuity and Differentiability", "सांतत्य तथा अवकलनीयता", "सांतत्य आणि अवकलनीयता", [
           fDeriv(`${g}d1`, 1, 400, R(1, 9), R(-9, 9), R(1, 6)),
           fDeriv(`${g}d2`, 2, 750, R(1, 12), R(-12, 12), R(7, 12)),
           fDeriv(`${g}d3`, 3, 1250, R(1, 15), R(-15, 15), R(13, 20)),
@@ -3006,7 +3230,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fDeriv(`${g}d5`, 5, 875, R(1, 21), R(-21, 21), R(29, 36)),
           fDeriv(`${g}d6`, 6, 500, R(1, 24), R(-24, 24), R(37, 44)),
         ]),
-        mkTopic(12, 3, "integ", "Definite integrals", "निश्चित समाकल", "निश्चित संकलन", [
+        mkTopic(12, 3, "integ", "Integrals", "समाकलन", "संकलन", [
           fInteg(`${g}i1`, 1, 400, R(1, 20), R(0, 10), R(1, 10)),
           fInteg(`${g}i2`, 2, 750, R(1, 30), R(0, 12), R(11, 20)),
           fInteg(`${g}i3`, 3, 1250, R(1, 40), R(0, 14), R(21, 32)),
@@ -3022,7 +3246,7 @@ function mathsCurriculum(grade: number): TopicSpec[] {
           fProb(`${g}p5`, 5, 1000, R(466, 500), R(1, 45)),
           fProb(`${g}p6`, 6, 700, R(501, 530), R(1, 40)),
         ]),
-        mkTopic(12, 5, "series12", "Series and sums", "श्रेणियाँ और योग", "श्रेणी आणि बेरजा", [
+        mkTopic(12, 5, "series12", "Sequences and Series Revision", "अनुक्रम-श्रेणी पुनरावृत्ति", "श्रेढी-श्रेणी उजळणी", [
           fApSum(`${g}s1`, 1, 800, R(451, 550), R(2, 80), R(5, 99)),
           fGpN(`${g}s2`, 2, 100, R(13, 18), R(2, 4), R(3, 9)),
           fApSum(`${g}s3`, 3, 2500, R(551, 650), R(2, 80), R(5, 99)),
@@ -3047,7 +3271,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
   if (subject === "SCIENCE") {
     if (grade === 5)
       return [
-        mkTopic(5, 0, "scispeed5", "Speed and motion", "चाल और गति", "वेग आणि गती", [
+        mkTopic(5, 0, "scispeed5", "Fast and Slow: Speed", "तेज़ और धीमा: चाल", "जलद आणि हळू: वेग", [
           fSpeed(`${g}un2`, 1, 550, R(5, 90), R(2, 9)),
           fSpeed(`${g}un4`, 2, 1300, R(91, 299), R(2, 9)),
           fSpeed(`${g}un6`, 3, 1000, R(300, 480), R(2, 9)),
@@ -3055,7 +3279,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 6)
       return [
-        mkTopic(6, 0, "scimeasure", "Measuring the world", "मापन की दुनिया", "मापनाचे जग", [
+        mkTopic(6, 0, "scimeasure", "Motion and Measurement", "गति और मापन", "गती आणि मापन", [
           fRecall(`${g}siunits`, 1, 20, SI_UNITS, UNIT_SKIN),
           fSciCF(`${g}cf`, 2, 30, R(1, 20)),
           fSpeed(`${g}ra6`, 3, 1000, R(481, 660), R(2, 9)),
@@ -3063,7 +3287,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 8)
       return [
-        mkTopic(8, 0, "scielements", "Elements and symbols", "तत्व और प्रतीक", "मूलद्रव्ये आणि चिन्हे", [
+        mkTopic(8, 0, "scielements", "Materials: Elements and Symbols", "सामग्री: तत्व और प्रतीक", "पदार्थ: मूलद्रव्ये आणि चिन्हे", [
           fRecall(`${g}elem`, 1, 38, ELEMENTS, ELEMENT_SKIN),
           fRecall(`${g}sym`, 2, 38, reverseFacts(ELEMENTS), SYMBOL_SKIN),
           fSciHeat(`${g}heat`, 3, 400, R(2, 21), R(5, 40)),
@@ -3071,13 +3295,13 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 9)
       return [
-        mkTopic(9, 0, "scimoles9", "Moles and matter", "मोल और पदार्थ", "मोल आणि पदार्थ", [
+        mkTopic(9, 0, "scimoles9", "Atoms and Molecules", "परमाणु एवं अणु", "अणू आणि रेणू", [
           fSciMoles(`${g}mol`, 1, 450, R(2, 60)),
         ], "SCIENCE"),
       ];
     if (grade === 10)
       return [
-        mkTopic(10, 0, "sciwaves10", "Waves", "तरंगें", "तरंग", [
+        mkTopic(10, 0, "sciwaves10", "Sound and Waves", "ध्वनि और तरंगें", "ध्वनी आणि तरंग", [
           fSciWave(`${g}wave`, 1, 400, R(2, 60), R(2, 20)),
         ], "SCIENCE"),
       ];
@@ -3085,7 +3309,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
   }
   if (subject === "GEOGRAPHY") {
     if (grade === 4)
-      return [mkTopic(4, 0, "geostates", "States and capitals", "राज्य और राजधानियाँ", "राज्ये आणि राजधान्या", [fRecall(`${g}caps`, 1, 44, STATES, CAPITAL_SKIN)], "GEOGRAPHY")];
+      return [mkTopic(4, 0, "geostates", "Our Country: States and Capitals", "हमारा देश: राज्य और राजधानियाँ", "आपला देश: राज्ये आणि राजधान्या", [fRecall(`${g}caps`, 1, 44, STATES, CAPITAL_SKIN)], "GEOGRAPHY")];
     if (grade === 5)
       return [mkTopic(5, 0, "geocapitals", "Capitals and their states", "राजधानियाँ और उनके राज्य", "राजधान्या आणि त्यांची राज्ये", [fRecall(`${g}rev`, 1, 44, reverseFacts(STATES), OF_CAPITAL_SKIN)], "GEOGRAPHY")];
     if (grade === 6)
@@ -3101,13 +3325,13 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
   }
   if (subject === "CIVICS") {
     if (grade === 9)
-      return [mkTopic(9, 0, "civnumbers", "The Constitution's numbers", "संविधान की संख्याएँ", "संविधानाच्या संख्या", [fCivNumber(`${g}facts`, 1, 12)], "CIVICS")];
+      return [mkTopic(9, 0, "civnumbers", "Constitutional Design: The Numbers", "संविधान निर्माण: संख्याएँ", "संविधान रचना: संख्या", [fCivNumber(`${g}facts`, 1, 12)], "CIVICS")];
     return [];
   }
   if (subject === "ECONOMICS") {
     if (grade === 3)
       return [
-        mkTopic(3, 0, "money", "Money", "पैसे", "पैसे", [
+        mkTopic(3, 0, "money", "Rupees and Paise", "रुपये और पैसे", "रुपये आणि पैसे", [
           fSpend(`${g}m1`, 1, 800, R(11, 59), R(11, 59)),
           fSpend(`${g}m2`, 2, 800, R(60, 199), R(25, 199)),
           fChange(`${g}m3`, 3, 120, 100, R(11, 88)),
@@ -3118,7 +3342,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 4)
       return [
-        mkTopic(4, 0, "money4", "Money problems", "पैसों के सवाल", "पैशांची गणिते", [
+        mkTopic(4, 0, "money4", "The Junk Seller", "कबाड़ीवाली", "भंगारवाली", [
           fSpend(`${g}mo1`, 1, 400, R(1000, 2999), R(1000, 2999)),
           fChange(`${g}mo2`, 2, 600, 1000, R(115, 985)),
           fUnitCost(`${g}mo3`, 3, 900, R(2, 12), R(2, 99)),
@@ -3148,7 +3372,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 8)
       return [
-        mkTopic(8, 0, "ci8", "Compound interest", "चक्रवृद्धि ब्याज", "चक्रवाढ व्याज", [
+        mkTopic(8, 0, "ci8", "Comparing Quantities: Interest", "राशियों की तुलना: ब्याज", "राशींची तुलना: व्याज", [
           fCI(`${g}c1`, 1, 130, R(2, 20), R(2, 10)),
           fCI(`${g}c2`, 2, 220, R(21, 40), R(2, 15)),
           fCI(`${g}c3`, 3, 300, R(41, 60), R(2, 20)),
@@ -3159,7 +3383,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       ];
     if (grade === 10)
       return [
-        mkTopic(10, 0, "interest10", "Interest, revisited", "ब्याज, दोबारा", "व्याज, पुन्हा", [
+        mkTopic(10, 0, "interest10", "Money and Credit", "मुद्रा और साख", "पैसा आणि पत", [
           fSI(`${g}si1`, 1, 800, R(400, 499), R(2, 15), R(2, 9)),
           fCI(`${g}si2`, 2, 450, R(121, 150), R(2, 20)),
           fSI(`${g}si3`, 3, 2500, R(500, 699), R(2, 15), R(2, 9)),
@@ -3173,7 +3397,7 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
   return [];
 }
 
-const FILLERS: Record<Subject, (grade: number, position: number, deficit: number) => TopicSpec> = {
+const FILLERS: Record<Subject, (grade: number, deficit: number) => TopicSpec[]> = {
   MATHS: mathsFiller,
   SCIENCE: sciFiller,
   GEOGRAPHY: geoFiller,
@@ -3195,7 +3419,7 @@ function gradeTopics(grade: number): TopicSpec[] {
       throw new Error(`grade ${grade} ${subject}: curriculum ${planned} ≥ target ${targets[subject]}`);
     }
     for (const t of topics) out.push({ ...t, position: position++ });
-    out.push({ ...FILLERS[subject](grade, position++, deficit) });
+    for (const t of FILLERS[subject](grade, deficit)) out.push({ ...t, position: position++ });
   }
   const total = out.flatMap((t) => t.templates).reduce((a, t) => a + t.want, 0);
   if (total !== GRADE_TARGET) throw new Error(`grade ${grade} plans ${total}, not ${GRADE_TARGET}`);

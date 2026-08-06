@@ -2161,11 +2161,29 @@ navigation" means the actual list rather than one somebody maintained by hand.
   chips; and `tests/drill-bank.test.ts` re-proves a deterministic sample of
   IMPORTED rows on every `npm test`, which catches what generator-side
   verification cannot — a bug in the import itself. Live numbers against the
-  six-subject bank: 141-topic list 125ms, drill topic page 93ms, subject and
-  class filters composing, all six subjects on the wire. The clean-completion
-  badge is untouched and truthful — effectively out of reach in a drill topic,
-  where the mastery ladder is the progression that matters; the hand-written
-  topics stay completable.
+  six-subject bank: topic list well under 200ms, drill topic pages ~35–95ms,
+  subject and class filters composing, all six subjects on the wire. The
+  clean-completion badge is untouched and truthful — effectively out of reach
+  in a drill topic, where the mastery ladder is the progression that matters;
+  the hand-written topics stay completable.
+
+  **Then the topics were renamed and split to the NCERT/CBSE syllabus.** The
+  per-subject drill blobs ("Science numericals", 18–27k in one topic) were
+  regrouped into chapter topics carrying the grade's actual chapter names —
+  grade 9 science reads Motion / Force and Laws of Motion / Work and Energy /
+  Matter in Our Surroundings / Atoms and Molecules; grade 10 gets Electricity;
+  grade 6 geography gets Maps and Globe: Latitudes and Longitudes; grade 8
+  civics gets Why Do We Need a Parliament?; grade 10 economics gets Money and
+  Credit and Development: Per Capita Income — generalized names where the
+  syllabus has no numerical chapter (grade-3 EVS has no Ohm's law). The
+  regroup moved the SAME template instances (same stems, same wants — the dry
+  run reproduced every grade at exactly 100,500 before anything was written),
+  so it was renaming and repartitioning, not regeneration: **261 topics** now,
+  each named in English, Hindi and Marathi. The honest limit: HISTORY timeline
+  topics carry the NCERT book umbrella ("India and the Contemporary World:
+  Timelines") rather than per-chapter names, because chapter-true history —
+  only 1857-era events inside "When People Rebel" — needs a curated events
+  table ten times the current 27 rows before the drills would fill it.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
