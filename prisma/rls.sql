@@ -47,11 +47,16 @@ CREATE POLICY "School_tenant_isolation" ON "School"
 
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
-  -- It is in a SELECT-ONLY policy: readable, never writable.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "School_readable" ON "School"
   FOR SELECT
   USING (("id" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1')
          OR "code" = current_setting('app.join_code', true)
+         OR (EXISTS (
+            SELECT 1 FROM "Membership" cm
+             WHERE cm."schoolId" = "School"."id"
+               AND cm."studentCode" = current_setting('app.join_code', true)
+          ))
         );
 
 -- Membership

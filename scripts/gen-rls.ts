@@ -164,6 +164,26 @@ const GUARDIAN_READABLE: Record<string, string> = {
   SchoolRecord: guardianOf(`"SchoolRecord"."studentMembershipId"`),
 };
 
+/**
+ * ⚠ THE SCHOOL BEHIND A STUDENT CODE, which the parent claim was crashing on.
+ *
+ * The CODE_READABLE comment below promises "a parent typing their child's
+ * student code" a way in — and Membership honours it — but School was only
+ * ever readable by its OWN code, so `claimChild`'s required `school` include
+ * came back null and Prisma threw a 500 at the first parent whose tenant set
+ * was still empty. A parent with a child already visible never hit it, which
+ * is why every seeded walk passed.
+ *
+ * Same shape as the code clause itself: read-only, an equality against a code
+ * the caller already typed, one school's id and name — exactly what the claim
+ * form is about to show them on success anyway.
+ */
+const CODE_SCHOOL_READABLE = `EXISTS (
+            SELECT 1 FROM "Membership" cm
+             WHERE cm."schoolId" = "School"."id"
+               AND cm."studentCode" = current_setting('app.join_code', true)
+          )`;
+
 /** "…is an active guardian of the pupil this membership belongs to." */
 function guardianOf(membershipRef: string): string {
   return `EXISTS (
@@ -499,6 +519,9 @@ function generate(): string {
     const alsoReadable: string[] = [];
     if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
     if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
+    // …and, for School only, the school BEHIND a student code — see the note
+    // on CODE_SCHOOL_READABLE for the 500 this closes.
+    if (table === "School") alsoReadable.push(`(${CODE_SCHOOL_READABLE})`);
     if (globalClause) alsoReadable.push(`(${globalClause})`);
     const memberClause = MEMBER_READABLE[table];
     if (memberClause) alsoReadable.push(`(${memberClause})`);

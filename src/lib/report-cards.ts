@@ -497,12 +497,18 @@ export async function cardsForClass(ctx: ActiveContext, classId: string, title?:
  * "nobody has the link yet" is not access control.
  */
 export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card | null> {
-  if (!ctx.schoolId) return null;
-
+  // ⚠ NO schoolId GATE. A guardian's session has no school — they are
+  // authorised through Guardianship, not Membership — and requiring one here
+  // was why every parent's "open the report card" link answered 404 while the
+  // summary rendered happily on /parent/grades. The card names its own school,
+  // Postgres has already scoped what this request may read, and `mayRead`
+  // below owns the relationship question. Staff sessions still pin the query
+  // to their active school.
   const card = await db.reportCard.findFirst({
-    where: { id: cardId, schoolId: ctx.schoolId },
+    where: { id: cardId, ...(ctx.schoolId ? { schoolId: ctx.schoolId } : {}) },
     select: {
       id: true,
+      schoolId: true,
       title: true,
       status: true,
       remark: true,
@@ -530,7 +536,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
   if (!allowed) return null;
 
   const school = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
+    where: { id: card.schoolId },
     select: { name: true, logoPath: true },
   });
 
@@ -583,17 +589,18 @@ async function mayRead(
 
   if (ctx.role === "STUDENT") return ctx.membershipId === card.studentMembershipId;
 
-  if (ctx.role === "PARENT") {
-    const guardian = await db.guardianship.findFirst({
-      where: {
-        parentUserId: ctx.user.id,
-        studentMembershipId: card.studentMembershipId,
-        status: "ACTIVE",
-      },
-      select: { id: true },
-    });
-    return guardian !== null;
-  }
+  // The relationship, not the role: a session whose active context is unset
+  // (a guardian fresh from login has no school to activate) still reads their
+  // own child's PUBLISHED card.
+  const guardian = await db.guardianship.findFirst({
+    where: {
+      parentUserId: ctx.user.id,
+      studentMembershipId: card.studentMembershipId,
+      status: "ACTIVE",
+    },
+    select: { id: true },
+  });
+  if (guardian) return true;
 
   return false;
 }
