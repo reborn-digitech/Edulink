@@ -1264,6 +1264,16 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    required: "This is required.",
+    notValid: "That is not valid.",
+    atLeastChars: "Use at least {count} characters.",
+    tooLongMax: "That is too long — {count} characters max.",
+    numberAtLeast: "Use {min} or more.",
+    numberAtMost: "Use {max} or less.",
+    addAtLeastOne: "Add at least one.",
+    addAtLeastMany: "Add at least {count}.",
+    tooManyItems: "That is too many — {count} max.",
+    notValidChoice: "That is not one of the choices.",
     pwMeterTooShort: "Too short",
     pwMeterWeak: "Weak — make it longer",
     pwMeterGettingThere: "Getting there",

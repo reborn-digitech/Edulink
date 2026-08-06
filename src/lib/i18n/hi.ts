@@ -1110,6 +1110,16 @@ export const hi: Dictionary = {
   },
 
   refusal: {
+    required: "यह ज़रूरी है।",
+    notValid: "यह मान्य नहीं है।",
+    atLeastChars: "कम से कम {count} अक्षर लिखें।",
+    tooLongMax: "यह बहुत लंबा है — अधिकतम {count} अक्षर।",
+    numberAtLeast: "{min} या उससे अधिक भरें।",
+    numberAtMost: "{max} या उससे कम भरें।",
+    addAtLeastOne: "कम से कम एक जोड़ें।",
+    addAtLeastMany: "कम से कम {count} जोड़ें।",
+    tooManyItems: "ये बहुत ज़्यादा हैं — अधिकतम {count}।",
+    notValidChoice: "यह विकल्पों में से नहीं है।",
     pwMeterTooShort: "बहुत छोटा",
     pwMeterWeak: "कमज़ोर — इसे लंबा करें",
     pwMeterGettingThere: "ठीक हो रहा है",

@@ -1107,6 +1107,16 @@ export const mr: Dictionary = {
   },
 
   refusal: {
+    required: "हे आवश्यक आहे.",
+    notValid: "हे वैध नाही.",
+    atLeastChars: "किमान {count} अक्षरे वापरा.",
+    tooLongMax: "हे खूप लांब आहे — जास्तीत जास्त {count} अक्षरे.",
+    numberAtLeast: "{min} किंवा त्याहून अधिक भरा.",
+    numberAtMost: "{max} किंवा त्याहून कमी भरा.",
+    addAtLeastOne: "किमान एक जोडा.",
+    addAtLeastMany: "किमान {count} जोडा.",
+    tooManyItems: "हे खूप जास्त आहे — जास्तीत जास्त {count}.",
+    notValidChoice: "हे पर्यायांपैकी नाही.",
     pwMeterTooShort: "खूप लहान",
     pwMeterWeak: "कमकुवत — आणखी लांब करा",
     pwMeterGettingThere: "जमत आहे",

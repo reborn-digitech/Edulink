@@ -364,19 +364,66 @@ export type FieldErrors = Record<string, string>;
 
 /**
  * A custom message on a shared schema is a KEY (see the messages above), so a
- * flattened error can be handed to a reader only after translation. The zod
- * DEFAULTS — a bare `.min(2)` on a name field — are still English sentences;
- * keying every last one means a custom message on every bound, its own change.
+ * flattened error can be handed to a reader only after translation.
  */
 const KEY_SHAPED = /^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9]+)+$/;
+
+/**
+ * ⚠ THE ZOD DEFAULTS ARE KEYED HERE, NOT ON EVERY BOUND. A bare `.min(2)` on a
+ * name field used to answer in zod's own English ("String must contain at
+ * least 2 character(s)") no matter what language the form was in. Writing a
+ * custom message onto every bound in this file would fix that once and rot the
+ * first time somebody adds a field — so instead the issue itself is read at
+ * the one chokepoint every form already passes through: the CODE says what
+ * went wrong, the issue carries the bound, and the sentence is minted from a
+ * key with the number spliced in. `issue.message` survives only as the
+ * fallback for shapes no schema here produces.
+ */
+function issueText(issue: z.ZodIssue, t?: Translate): string {
+  // A custom message that is a key is the schema author's exact words — wins.
+  if (KEY_SHAPED.test(issue.message)) return t ? t(issue.message as TranslationKey) : issue.message;
+  if (!t) return issue.message;
+
+  switch (issue.code) {
+    case z.ZodIssueCode.invalid_type:
+      // A missing field and a wrong-typed one read the same to the person who
+      // left the box empty — and a genuinely wrong TYPE is a tampered request,
+      // not something the form UI can produce.
+      return issue.received === "undefined" ? t("refusal.required") : t("refusal.notValid");
+    case z.ZodIssueCode.too_small: {
+      const min = Number(issue.minimum);
+      if (issue.type === "string") {
+        return min <= 1 ? t("refusal.required") : t("refusal.atLeastChars", { count: min });
+      }
+      if (issue.type === "number") return t("refusal.numberAtLeast", { min });
+      if (issue.type === "array") {
+        return min <= 1 ? t("refusal.addAtLeastOne") : t("refusal.addAtLeastMany", { count: min });
+      }
+      break;
+    }
+    case z.ZodIssueCode.too_big: {
+      const max = Number(issue.maximum);
+      if (issue.type === "string") return t("refusal.tooLongMax", { count: max });
+      if (issue.type === "number") return t("refusal.numberAtMost", { max });
+      if (issue.type === "array") return t("refusal.tooManyItems", { count: max });
+      break;
+    }
+    case z.ZodIssueCode.invalid_string:
+      if (issue.validation === "email") return t("register.enterValidEmail");
+      return t("refusal.notValid");
+    case z.ZodIssueCode.invalid_enum_value:
+    case z.ZodIssueCode.invalid_literal:
+      return t("refusal.notValidChoice");
+  }
+  return issue.message;
+}
 
 /** Flattens a ZodError into { fieldPath: firstMessage } for inline form errors. */
 export function fieldErrors(error: z.ZodError, t?: Translate): FieldErrors {
   const out: FieldErrors = {};
   for (const issue of error.issues) {
     const path = issue.path.join(".") || "_form";
-    out[path] ??=
-      t && KEY_SHAPED.test(issue.message) ? t(issue.message as TranslationKey) : issue.message;
+    out[path] ??= issueText(issue, t);
   }
   return out;
 }
