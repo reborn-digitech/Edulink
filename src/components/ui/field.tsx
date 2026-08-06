@@ -262,11 +262,19 @@ export function DateField({
   min,
   max,
   disabled,
+  onInvalidChange,
   ...rest
 }: Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
   label: string;
   hint?: ReactNode;
   error?: string;
+  /**
+   * Fires when the TYPED text flips between parseable and not. The onChange
+   * contract reports "" for junk — correct for the server, but it left a
+   * wizard's Next button no way to tell "no date" from "31/02"; the join flow
+   * used to walk a child straight past a birthday that was never saved.
+   */
+  onInvalidChange?: (invalid: boolean) => void;
 }) {
   const t = useT();
   const nativeRef = useRef<HTMLInputElement>(null);
@@ -297,6 +305,12 @@ export function DateField({
 
   const asIso = displayDateToIso(typed);
   const incomplete = typed.trim().length > 0 && asIso === null;
+
+  useEffect(() => {
+    onInvalidChange?.(incomplete);
+    // The callback identity is the caller's business; what matters is the flip.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incomplete]);
 
   function report(next: string) {
     setTyped(next);

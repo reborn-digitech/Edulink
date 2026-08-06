@@ -459,7 +459,21 @@ export async function listServerAudit(
   assertSuperuser(session);
 
   const rows = await db.auditLog.findMany({
-    where: { schoolId: null },
+    // ⚠ AN ALLOWLIST, NOT "everything with no school". Sign-ins, signups and
+    // account changes are also written with no schoolId — they belong to a
+    // PERSON, not a tenant — and `schoolId: null` alone poured every user's
+    // login history into the operator's log. The server log is what the
+    // OPERATOR did to the server: schools, their administrators, the flag
+    // itself, and the expert programme, which is the one thing that lives
+    // outside every school on purpose.
+    where: {
+      schoolId: null,
+      OR: [
+        { action: { startsWith: "superuser." } },
+        { action: { startsWith: "operator." } },
+        { action: { in: ["expert.invite", "expert.profile.update"] } },
+      ],
+    },
     orderBy: { createdAt: "desc" },
     take: Math.min(opts.take ?? 200, 500),
   });

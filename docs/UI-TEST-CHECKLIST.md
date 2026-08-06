@@ -984,7 +984,8 @@ Budget twenty minutes. Use a school name you will recognise and delete after.
 - ☐ `/root` → **Add a school** → name, contact email, grade range **3 to 10**,
   timezone **Asia/Kolkata** → created, with a join code
 - ☐ **⚠️** Back on `/root`, the new school does **not** say *Needs setup* — you
-  gave it a grade range. Neither do the seeded ones
+  gave it a grade range. The seeded schools have none, so they DO say it —
+  that contrast is the check
 - ☐ On the school page, the **Details** form is filled in with what you typed,
   not blank. (A blank form here would wipe the school on Save)
 - ☐ Invite an **Administrator** by email
@@ -1244,7 +1245,11 @@ membership directly.
 - ☐ As the pupil → `/student/grades` lists the card, and it opens
 - ☐ **⚠️ THE ONE THAT MATTERS.** Go to the gradebook and **change a mark** that is
   on a published card. Reopen the card → **the number has not moved**
-- ☐ **⚠️** Rename that assignment → the card still shows the **old title**
+- ☐ **⚠️** The card's item titles are COPIES, not references — confirm in the
+  gradebook that there is deliberately no rename control for an assignment, and
+  that the card's item still reads the title it was generated with. (This box
+  used to say "rename that assignment"; no such control exists, which is itself
+  the design: a title that cannot change cannot desynchronise a published card.)
 - ☐ Press **Generate** again → the report says N were already published and left
   alone; the card is unchanged
 - ☐ **Withdraw all** → back to draft. Generate again → now it picks up the new

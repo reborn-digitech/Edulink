@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { applyForLeave, cancelLeave, type ApplyInput } from "@/lib/leave";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Applying for leave, and withdrawing it.
@@ -14,7 +15,12 @@ import { applyForLeave, cancelLeave, type ApplyInput } from "@/lib/leave";
  * principal.
  */
 
-type Result = { ok: boolean; error?: string };
+type Result = {
+  ok: boolean;
+  error?: string;
+  errorKey?: TranslationKey;
+  errorVars?: Record<string, string | number>;
+};
 
 async function failure(error: unknown): Promise<Result> {
   if (error instanceof AccessError)
@@ -29,7 +35,9 @@ export async function apply(input: ApplyInput): Promise<Result> {
     const result = await applyForLeave(ctx, input);
     revalidatePath("/teacher/leave");
     revalidatePath("/principal/leave");
-    return { ok: result.ok, error: result.error };
+    // The lib mints a KEY; forward it whole. Stripping it here was why an
+    // overlap or a backwards date range answered with the generic fallback.
+    return { ok: result.ok, error: result.error, errorKey: result.errorKey, errorVars: result.errorVars };
   } catch (error) {
     return failure(error);
   }
@@ -41,7 +49,9 @@ export async function withdraw(leaveId: string): Promise<Result> {
     const result = await cancelLeave(ctx, leaveId);
     revalidatePath("/teacher/leave");
     revalidatePath("/principal/leave");
-    return { ok: result.ok, error: result.error };
+    // The lib mints a KEY; forward it whole. Stripping it here was why an
+    // overlap or a backwards date range answered with the generic fallback.
+    return { ok: result.ok, error: result.error, errorKey: result.errorKey, errorVars: result.errorVars };
   } catch (error) {
     return failure(error);
   }

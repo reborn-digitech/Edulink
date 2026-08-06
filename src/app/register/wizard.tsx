@@ -88,7 +88,17 @@ export function RegisterWizard() {
   useEffect(() => {
     try {
       const saved = sessionStorage.getItem(DRAFT_KEY);
-      if (saved) setDraft({ ...EMPTY, ...JSON.parse(saved) });
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setDraft({ ...EMPTY, ...parsed });
+        // Come back to the STEP they were on, not step 1 — a refresh
+        // mid-wizard used to keep every answer and still lose their place.
+        // Never past the password step: the password is deliberately not
+        // saved, so the review would be confirming an account with none.
+        if (typeof parsed.step === "number") {
+          setStep(Math.min(Math.max(0, parsed.step), 1));
+        }
+      }
     } catch {
       // Corrupt draft is not worth surfacing; the user just starts fresh.
     }
@@ -100,11 +110,11 @@ export function RegisterWizard() {
 
   useEffect(() => {
     try {
-      sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ ...draft, step }));
     } catch {
       // Private mode / quota. Losing the draft is acceptable; crashing is not.
     }
-  }, [draft]);
+  }, [draft, step]);
 
   /* ---- move focus to the new step heading for screen readers ---- */
   useEffect(() => {
@@ -128,7 +138,11 @@ export function RegisterWizard() {
 
   const timezones = useMemo(() => {
     const supported = (Intl as { supportedValuesOf?: (k: string) => string[] }).supportedValuesOf;
-    const list = supported ? supported("timeZone") : ["UTC"];
+    // Some ICU builds still hand out colonial-era aliases; a school in Pune
+    // should be offered the city's own name. Both are valid IANA zones.
+    const list = (supported ? supported("timeZone") : ["UTC"]).map((z) =>
+      z === "Asia/Calcutta" ? "Asia/Kolkata" : z,
+    );
     return list.includes("UTC") ? list : ["UTC", ...list];
   }, []);
 
@@ -194,7 +208,24 @@ export function RegisterWizard() {
       });
 
       if (!result.ok) {
-        setErrors(result.errors);
+        // The server names fields by their schema path ("admin.email"); the
+        // form names them by its own state ("adminEmail"). Left unmapped, the
+        // duplicate-email refusal bounced the wizard back to step 2 with the
+        // message stored under a key no field ever reads — a silent no.
+        const FIELD_KEY: Record<string, string> = {
+          "school.name": "name",
+          "school.contactEmail": "contactEmail",
+          "school.website": "website",
+          "admin.name": "adminName",
+          "admin.email": "adminEmail",
+          "admin.password": "password",
+          acceptedTerms: "accepted",
+        };
+        setErrors(
+          Object.fromEntries(
+            Object.entries(result.errors).map(([k, v]) => [FIELD_KEY[k] ?? k, v]),
+          ),
+        );
         // Send the user back to the step that owns the failing field, rather
         // than showing an error they cannot see or fix from here.
         const keys = Object.keys(result.errors);

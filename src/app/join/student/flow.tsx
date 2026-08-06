@@ -49,6 +49,7 @@ export function StudentJoinFlow() {
   const [preferredName, setPreferredName] = useState("");
   const [avatarKey, setAvatarKey] = useState(AVATAR_PRESETS[0]!);
   const [birthdate, setBirthdate] = useState("");
+  const [birthdateInvalid, setBirthdateInvalid] = useState(false);
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -103,6 +104,12 @@ export function StudentJoinFlow() {
     if (step === "name") {
       if (name.trim().length < 2) {
         setErrors({ name: t("join.typeFullName") });
+        return;
+      }
+      // The box already says "Give the date as dd/mm/yyyy"; this stops Next
+      // from walking past it — advancing would silently drop what they typed.
+      if (birthdateInvalid) {
+        setErrors({ birthdate: t("join.useRealDate") });
         return;
       }
       setStep("avatar");
@@ -294,6 +301,7 @@ export function StudentJoinFlow() {
               value={birthdate}
               error={errors.birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
+              onInvalidChange={setBirthdateInvalid}
               hint={t("join.birthdayHint")}
             />
           </div>
