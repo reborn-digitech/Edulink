@@ -2253,6 +2253,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   practice card shows a medal count ("3/6") next to the level chip, and the
   child's record page lists each badge by its stored English label — the
   stored-artifact precedent, same as the clean-completion badge beside it.
+  Full battery after: typecheck, `quiz:verify` and `rls:verify` clean;
+  **1409/1409 tests across 73 files** (the three new tier-badge tests drive
+  the real serving path); eslint 0 errors, 29 known warnings; i18n decided
+  pile 38 files / 193 strings (+2: the stored badge label and description,
+  English by the stored-artifact rule); production build clean; **sweep
+  315/315** against the production server.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
