@@ -2187,11 +2187,12 @@ navigation" means the actual list rather than one somebody maintained by hand.
   regroup moved the SAME template instances (same stems, same wants — the dry
   run reproduced every grade at exactly 100,500 before anything was written),
   so it was renaming and repartitioning, not regeneration: 261 topics at that
-  point, each named in English, Hindi and Marathi. The honest limit: HISTORY
-  timeline topics carry the NCERT book umbrella ("India and the Contemporary
-  World: Timelines") rather than per-chapter names, because chapter-true
-  history — only 1857-era events inside "When People Rebel" — needs a curated
-  events table ten times the current 27 rows before the drills would fill it.
+  point, each named in English, Hindi and Marathi. The honest limit AT THE
+  TIME: HISTORY timeline topics carried the NCERT book umbrella rather than
+  per-chapter names, because chapter-true history — only 1857-era events
+  inside "When People Rebel" — needed a curated events table ten times the
+  then-27 rows. That limit has since been paid down — see the history
+  paragraph below.
 
   **Then every chapter got the full six-rung ladder.** The regrouped chapters
   had inherited flat difficulty — six thousand one-step Ohm's-law reps at L1
@@ -2215,6 +2216,28 @@ navigation" means the actual list rather than one somebody maintained by hand.
   difficulty of any question whose stem survived a rebalance (same
   content-hash id, new level — previously a silent drift). After the rebuild:
   1406/1406 tests, 315/315 sweep, typecheck/lint/RLS/i18n audit unchanged.
+
+  **Then history became chapter-true.** The curated events table grew from 27
+  to 145 rows — every one a settled, single-year date, named in three
+  languages, with an explicit key — and grades 7–12 traded their book-umbrella
+  timeline topic for THREE era chapters each, drilling only events from their
+  own NCERT chapter's period: The Delhi Sultans / The Mughal Empire /
+  Eighteenth-Century Political Formations (7); From Trade to Territory / When
+  People Rebel: 1857 and After / The Making of the National Movement (8); The
+  French Revolution / Socialism and the Russian Revolution / Nazism (9);
+  Nationalism in Europe / Nationalism in India / The Making of a Global World
+  (10); Changing Cultural Traditions / The Industrial Revolution / Paths to
+  Modernisation (11); Colonialism and the Countryside / Gandhi and the
+  Nationalist Movement / Framing the Constitution (12). Pools are named by
+  event KEY (a typo throws at plan time), within-grade pools are asserted
+  disjoint, and each chapter still climbs L1–L6 — including a new
+  midway-year puzzle family. The honest limits that remain: grades 3–5 keep
+  generalized timeline-skills names (their EVS syllabus has no history
+  chapters) and grade 6 keeps the Our Pasts umbrella, because ancient India's
+  dates are too contested for a drill bank that promises settled years. The
+  landmark-year recall stays folded and capped: 276 rows, all from the table
+  a person can read. 267 topics now (258 generated + 9 hand-written);
+  1406/1406 after import.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form

@@ -1741,36 +1741,210 @@ const SI_UNITS: Fact[] = [
   { en: "resistance", hi: "प्रतिरोध", mr: "रोध", ansEn: "ohm", ansHi: "ओम", ansMr: "ओम" },
 ];
 
-/** Events with settled, single-year dates only — anything contested stays out. */
-const EVENTS: { en: string; hi: string; mr: string; year: number }[] = [
-  { en: "Vasco da Gama reaching Calicut", hi: "वास्को डी गामा का कालीकट पहुँचना", mr: "वास्को द गामा कालिकतला पोहोचणे", year: 1498 },
-  { en: "the First Battle of Panipat", hi: "पानीपत की पहली लड़ाई", mr: "पानिपतची पहिली लढाई", year: 1526 },
-  { en: "the chartering of the East India Company", hi: "ईस्ट इंडिया कंपनी की स्थापना", mr: "ईस्ट इंडिया कंपनीची स्थापना", year: 1600 },
-  { en: "the coronation of Shivaji Maharaj", hi: "शिवाजी महाराज का राज्याभिषेक", mr: "शिवाजी महाराजांचा राज्याभिषेक", year: 1674 },
-  { en: "the Battle of Plassey", hi: "प्लासी का युद्ध", mr: "प्लासीची लढाई", year: 1757 },
-  { en: "the Battle of Buxar", hi: "बक्सर का युद्ध", mr: "बक्सारची लढाई", year: 1764 },
-  { en: "the beginning of the French Revolution", hi: "फ्रांसीसी क्रांति की शुरुआत", mr: "फ्रेंच राज्यक्रांतीची सुरुवात", year: 1789 },
-  { en: "the abolition of sati", hi: "सती प्रथा का अंत", mr: "सती प्रथेचे उच्चाटन", year: 1829 },
-  { en: "the first railway line from Bombay to Thane", hi: "बंबई से ठाणे तक पहली रेल", mr: "मुंबई ते ठाणे पहिली रेल्वे", year: 1853 },
-  { en: "the Revolt of 1857", hi: "1857 की क्रांति", mr: "1857 चा उठाव", year: 1857 },
-  { en: "the founding of the Indian National Congress", hi: "भारतीय राष्ट्रीय कांग्रेस की स्थापना", mr: "भारतीय राष्ट्रीय काँग्रेसची स्थापना", year: 1885 },
-  { en: "the Partition of Bengal", hi: "बंगाल का विभाजन", mr: "बंगालची फाळणी", year: 1905 },
-  { en: "the beginning of the First World War", hi: "प्रथम विश्व युद्ध की शुरुआत", mr: "पहिल्या महायुद्धाची सुरुवात", year: 1914 },
-  { en: "the end of the First World War", hi: "प्रथम विश्व युद्ध का अंत", mr: "पहिल्या महायुद्धाचा शेवट", year: 1918 },
-  { en: "the Jallianwala Bagh massacre", hi: "जलियाँवाला बाग हत्याकांड", mr: "जालियनवाला बाग हत्याकांड", year: 1919 },
-  { en: "the launch of the Non-Cooperation Movement", hi: "असहयोग आंदोलन की शुरुआत", mr: "असहकार चळवळीची सुरुवात", year: 1920 },
-  { en: "the Purna Swaraj resolution at Lahore", hi: "लाहौर में पूर्ण स्वराज प्रस्ताव", mr: "लाहोरचा संपूर्ण स्वराज्य ठराव", year: 1929 },
-  { en: "the Dandi March", hi: "दांडी यात्रा", mr: "दांडी यात्रा", year: 1930 },
-  { en: "the Government of India Act", hi: "भारत सरकार अधिनियम", mr: "भारत सरकार कायदा", year: 1935 },
-  { en: "the beginning of the Second World War", hi: "द्वितीय विश्व युद्ध की शुरुआत", mr: "दुसऱ्या महायुद्धाची सुरुवात", year: 1939 },
-  { en: "the Quit India Movement", hi: "भारत छोड़ो आंदोलन", mr: "चले जाव चळवळ", year: 1942 },
-  { en: "the end of the Second World War", hi: "द्वितीय विश्व युद्ध का अंत", mr: "दुसऱ्या महायुद्धाचा शेवट", year: 1945 },
-  { en: "the independence of India", hi: "भारत की स्वतंत्रता", mr: "भारताचे स्वातंत्र्य", year: 1947 },
-  { en: "the adoption of the Constitution", hi: "संविधान को अंगीकार करना", mr: "संविधानाचा स्वीकार", year: 1949 },
-  { en: "the Constitution coming into force", hi: "संविधान का लागू होना", mr: "संविधान अंमलात येणे", year: 1950 },
-  { en: "the launch of Sputnik", hi: "स्पूतनिक का प्रक्षेपण", mr: "स्पुटनिकचे प्रक्षेपण", year: 1957 },
-  { en: "the first Moon landing", hi: "चंद्रमा पर पहला कदम", mr: "चंद्रावर पहिले पाऊल", year: 1969 },
+/** Events with settled, single-year dates only — anything contested stays out.
+ * Each row carries a key so the era chapters below can name their pools
+ * explicitly; the same row may serve several grades' chapters. */
+type HistEvent = { key: string; en: string; hi: string; mr: string; year: number };
+const EVENTS: HistEvent[] = [
+  { key: "vasco1498", en: "Vasco da Gama reaching Calicut", hi: "वास्को डी गामा का कालीकट पहुँचना", mr: "वास्को द गामा कालिकतला पोहोचणे", year: 1498 },
+  { key: "panipat1526", en: "the First Battle of Panipat", hi: "पानीपत की पहली लड़ाई", mr: "पानिपतची पहिली लढाई", year: 1526 },
+  { key: "eic1600", en: "the chartering of the East India Company", hi: "ईस्ट इंडिया कंपनी की स्थापना", mr: "ईस्ट इंडिया कंपनीची स्थापना", year: 1600 },
+  { key: "shivaji1674", en: "the coronation of Shivaji Maharaj", hi: "शिवाजी महाराज का राज्याभिषेक", mr: "शिवाजी महाराजांचा राज्याभिषेक", year: 1674 },
+  { key: "plassey1757", en: "the Battle of Plassey", hi: "प्लासी का युद्ध", mr: "प्लासीची लढाई", year: 1757 },
+  { key: "buxar1764", en: "the Battle of Buxar", hi: "बक्सर का युद्ध", mr: "बक्सारची लढाई", year: 1764 },
+  { key: "frrev1789", en: "the beginning of the French Revolution", hi: "फ्रांसीसी क्रांति की शुरुआत", mr: "फ्रेंच राज्यक्रांतीची सुरुवात", year: 1789 },
+  { key: "sati1829", en: "the abolition of sati", hi: "सती प्रथा का अंत", mr: "सती प्रथेचे उच्चाटन", year: 1829 },
+  { key: "rail1853", en: "the first railway line from Bombay to Thane", hi: "बंबई से ठाणे तक पहली रेल", mr: "मुंबई ते ठाणे पहिली रेल्वे", year: 1853 },
+  { key: "revolt1857", en: "the Revolt of 1857", hi: "1857 की क्रांति", mr: "1857 चा उठाव", year: 1857 },
+  { key: "inc1885", en: "the founding of the Indian National Congress", hi: "भारतीय राष्ट्रीय कांग्रेस की स्थापना", mr: "भारतीय राष्ट्रीय काँग्रेसची स्थापना", year: 1885 },
+  { key: "bengal1905", en: "the Partition of Bengal", hi: "बंगाल का विभाजन", mr: "बंगालची फाळणी", year: 1905 },
+  { key: "ww1start1914", en: "the beginning of the First World War", hi: "प्रथम विश्व युद्ध की शुरुआत", mr: "पहिल्या महायुद्धाची सुरुवात", year: 1914 },
+  { key: "ww1end1918", en: "the end of the First World War", hi: "प्रथम विश्व युद्ध का अंत", mr: "पहिल्या महायुद्धाचा शेवट", year: 1918 },
+  { key: "jallianwala1919", en: "the Jallianwala Bagh massacre", hi: "जलियाँवाला बाग हत्याकांड", mr: "जालियनवाला बाग हत्याकांड", year: 1919 },
+  { key: "noncoop1920", en: "the launch of the Non-Cooperation Movement", hi: "असहयोग आंदोलन की शुरुआत", mr: "असहकार चळवळीची सुरुवात", year: 1920 },
+  { key: "purnaswaraj1929", en: "the Purna Swaraj resolution at Lahore", hi: "लाहौर में पूर्ण स्वराज प्रस्ताव", mr: "लाहोरचा संपूर्ण स्वराज्य ठराव", year: 1929 },
+  { key: "dandi1930", en: "the Dandi March", hi: "दांडी यात्रा", mr: "दांडी यात्रा", year: 1930 },
+  { key: "goi1935", en: "the Government of India Act", hi: "भारत सरकार अधिनियम", mr: "भारत सरकार कायदा", year: 1935 },
+  { key: "ww2start1939", en: "the beginning of the Second World War", hi: "द्वितीय विश्व युद्ध की शुरुआत", mr: "दुसऱ्या महायुद्धाची सुरुवात", year: 1939 },
+  { key: "quitindia1942", en: "the Quit India Movement", hi: "भारत छोड़ो आंदोलन", mr: "चले जाव चळवळ", year: 1942 },
+  { key: "ww2end1945", en: "the end of the Second World War", hi: "द्वितीय विश्व युद्ध का अंत", mr: "दुसऱ्या महायुद्धाचा शेवट", year: 1945 },
+  { key: "independence1947", en: "the independence of India", hi: "भारत की स्वतंत्रता", mr: "भारताचे स्वातंत्र्य", year: 1947 },
+  { key: "constadopt1949", en: "the adoption of the Constitution", hi: "संविधान को अंगीकार करना", mr: "संविधानाचा स्वीकार", year: 1949 },
+  { key: "constforce1950", en: "the Constitution coming into force", hi: "संविधान का लागू होना", mr: "संविधान अंमलात येणे", year: 1950 },
+  { key: "sputnik1957", en: "the launch of Sputnik", hi: "स्पूतनिक का प्रक्षेपण", mr: "स्पुटनिकचे प्रक्षेपण", year: 1957 },
+  { key: "moon1969", en: "the first Moon landing", hi: "चंद्रमा पर पहला कदम", mr: "चंद्रावर पहिले पाऊल", year: 1969 },
+  // The Delhi Sultans (grade 7)
+  { key: "tarain1192", en: "the Second Battle of Tarain", hi: "तराइन की दूसरी लड़ाई", mr: "तराईनची दुसरी लढाई", year: 1192 },
+  { key: "sultanate1206", en: "the founding of the Delhi Sultanate", hi: "दिल्ली सल्तनत की स्थापना", mr: "दिल्ली सल्तनतीची स्थापना", year: 1206 },
+  { key: "razia1236", en: "the accession of Razia Sultan", hi: "रज़िया सुल्तान का राज्यारोहण", mr: "रझिया सुलतानचे राज्यारोहण", year: 1236 },
+  { key: "khalji1290", en: "the beginning of the Khalji dynasty", hi: "ख़िलजी वंश की शुरुआत", mr: "खिलजी घराण्याची सुरुवात", year: 1290 },
+  { key: "tughlaq1320", en: "the beginning of the Tughlaq dynasty", hi: "तुग़लक़ वंश की शुरुआत", mr: "तुघलक घराण्याची सुरुवात", year: 1320 },
+  { key: "vijaynagar1336", en: "the founding of the Vijayanagara empire", hi: "विजयनगर साम्राज्य की स्थापना", mr: "विजयनगर साम्राज्याची स्थापना", year: 1336 },
+  { key: "bahmani1347", en: "the founding of the Bahmani kingdom", hi: "बहमनी राज्य की स्थापना", mr: "बहमनी राज्याची स्थापना", year: 1347 },
+  { key: "timur1398", en: "Timur's sack of Delhi", hi: "तैमूर का दिल्ली पर आक्रमण", mr: "तैमूरची दिल्लीवर स्वारी", year: 1398 },
+  { key: "sayyid1414", en: "the beginning of the Sayyid dynasty", hi: "सैयद वंश की शुरुआत", mr: "सय्यद घराण्याची सुरुवात", year: 1414 },
+  { key: "lodi1451", en: "the beginning of the Lodi dynasty", hi: "लोदी वंश की शुरुआत", mr: "लोदी घराण्याची सुरुवात", year: 1451 },
+  { key: "nanak1469", en: "the birth of Guru Nanak", hi: "गुरु नानक का जन्म", mr: "गुरु नानक यांचा जन्म", year: 1469 },
+  { key: "krishnadeva1509", en: "the accession of Krishnadevaraya", hi: "कृष्णदेवराय का राज्यारोहण", mr: "कृष्णदेवरायांचे राज्यारोहण", year: 1509 },
+  // The Mughal Empire (grade 7)
+  { key: "humayun1530", en: "the accession of Humayun", hi: "हुमायूँ का राज्यारोहण", mr: "हुमायूनचे राज्यारोहण", year: 1530 },
+  { key: "kannauj1540", en: "Sher Shah's victory at Kannauj", hi: "कन्नौज में शेरशाह की विजय", mr: "कनौजमध्ये शेरशहाचा विजय", year: 1540 },
+  { key: "panipat2_1556", en: "the Second Battle of Panipat", hi: "पानीपत की दूसरी लड़ाई", mr: "पानिपतची दुसरी लढाई", year: 1556 },
+  { key: "talikota1565", en: "the Battle of Talikota", hi: "तालीकोटा का युद्ध", mr: "तालिकोटची लढाई", year: 1565 },
+  { key: "sikri1571", en: "the founding of Fatehpur Sikri", hi: "फ़तेहपुर सीकरी की स्थापना", mr: "फतेहपूर सिक्रीची स्थापना", year: 1571 },
+  { key: "haldighati1576", en: "the Battle of Haldighati", hi: "हल्दीघाटी का युद्ध", mr: "हळदीघाटीची लढाई", year: 1576 },
+  { key: "jahangir1605", en: "the accession of Jahangir", hi: "जहाँगीर का राज्यारोहण", mr: "जहांगीरचे राज्यारोहण", year: 1605 },
+  { key: "shahjahan1628", en: "the accession of Shah Jahan", hi: "शाहजहाँ का राज्यारोहण", mr: "शाहजहानचे राज्यारोहण", year: 1628 },
+  { key: "aurangzeb1658", en: "the accession of Aurangzeb", hi: "औरंगज़ेब का राज्यारोहण", mr: "औरंगजेबचे राज्यारोहण", year: 1658 },
+  { key: "shivajideath1680", en: "the death of Shivaji Maharaj", hi: "शिवाजी महाराज का निधन", mr: "शिवाजी महाराजांचे निधन", year: 1680 },
+  // Eighteenth-century political formations (grade 7)
+  { key: "aurangzebdeath1707", en: "the death of Aurangzeb", hi: "औरंगज़ेब की मृत्यु", mr: "औरंगजेबाचा मृत्यू", year: 1707 },
+  { key: "nizam1724", en: "the founding of the Hyderabad state", hi: "हैदराबाद राज्य की स्थापना", mr: "हैदराबाद संस्थानाची स्थापना", year: 1724 },
+  { key: "nadir1739", en: "Nadir Shah's sack of Delhi", hi: "नादिर शाह की दिल्ली की लूट", mr: "नादिरशहाची दिल्लीची लूट", year: 1739 },
+  { key: "panipat3_1761", en: "the Third Battle of Panipat", hi: "पानीपत की तीसरी लड़ाई", mr: "पानिपतची तिसरी लढाई", year: 1761 },
+  { key: "diwani1765", en: "the grant of the Diwani of Bengal", hi: "बंगाल की दीवानी की प्राप्ति", mr: "बंगालच्या दिवाणीची प्राप्ती", year: 1765 },
+  { key: "regulating1773", en: "the Regulating Act", hi: "रेग्युलेटिंग ऐक्ट", mr: "रेग्युलेटिंग कायदा", year: 1773 },
+  { key: "pitts1784", en: "Pitt's India Act", hi: "पिट्स इंडिया ऐक्ट", mr: "पिट्स इंडिया कायदा", year: 1784 },
+  { key: "permanent1793", en: "the Permanent Settlement of Bengal", hi: "बंगाल का स्थायी बंदोबस्त", mr: "बंगालची कायमधारा पद्धत", year: 1793 },
+  { key: "srirangapatna1799", en: "the fall of Srirangapatna", hi: "श्रीरंगपट्टनम का पतन", mr: "श्रीरंगपट्टणचे पतन", year: 1799 },
+  // From trade to territory (grade 8)
+  { key: "roe1615", en: "Thomas Roe's arrival at Jahangir's court", hi: "जहाँगीर के दरबार में टॉमस रो का आगमन", mr: "जहांगीरच्या दरबारी टॉमस रोचे आगमन", year: 1615 },
+  { key: "madras1639", en: "the founding of Fort St George at Madras", hi: "मद्रास में फ़ोर्ट सेंट जॉर्ज की स्थापना", mr: "मद्रासमध्ये फोर्ट सेंट जॉर्जची स्थापना", year: 1639 },
+  { key: "calcutta1690", en: "the founding of the English settlement at Calcutta", hi: "कलकत्ता में अंग्रेज़ी बस्ती की स्थापना", mr: "कलकत्त्यात इंग्रजी वसाहतीची स्थापना", year: 1690 },
+  { key: "maratha1818", en: "the defeat of the last Peshwa", hi: "अंतिम पेशवा की पराजय", mr: "शेवटच्या पेशव्याचा पराभव", year: 1818 },
+  { key: "punjab1849", en: "the annexation of Punjab", hi: "पंजाब का विलय", mr: "पंजाबचे विलिनीकरण", year: 1849 },
+  // When people rebel: 1857 and after (grade 8)
+  { key: "awadh1856", en: "the annexation of Awadh", hi: "अवध का विलय", mr: "अवधचे विलिनीकरण", year: 1856 },
+  { key: "crown1858", en: "the transfer of India to the British Crown", hi: "भारत का ब्रिटिश ताज के अधीन जाना", mr: "भारत ब्रिटिश राजसत्तेखाली जाणे", year: 1858 },
+  { key: "councils1861", en: "the Indian Councils Act of 1861", hi: "1861 का भारतीय परिषद अधिनियम", mr: "1861 चा भारतीय परिषद कायदा", year: 1861 },
+  { key: "gandhibirth1869", en: "the birth of Mahatma Gandhi", hi: "महात्मा गांधी का जन्म", mr: "महात्मा गांधींचा जन्म", year: 1869 },
+  { key: "census1872", en: "the first all-India census", hi: "पहली अखिल भारतीय जनगणना", mr: "पहिली अखिल भारतीय जनगणना", year: 1872 },
+  { key: "arya1875", en: "the founding of the Arya Samaj", hi: "आर्य समाज की स्थापना", mr: "आर्य समाजाची स्थापना", year: 1875 },
+  { key: "empress1876", en: "the Royal Titles Act", hi: "रॉयल टाइटल्स ऐक्ट", mr: "रॉयल टायटल्स कायदा", year: 1876 },
+  { key: "vernacular1878", en: "the Vernacular Press Act", hi: "देशी भाषा प्रेस अधिनियम", mr: "देशी भाषा वृत्तपत्र कायदा", year: 1878 },
+  { key: "ilbert1883", en: "the Ilbert Bill controversy", hi: "इल्बर्ट बिल विवाद", mr: "इल्बर्ट विधेयक वाद", year: 1883 },
+  // The making of the national movement (grades 8 and 10)
+  { key: "league1906", en: "the founding of the Muslim League", hi: "मुस्लिम लीग की स्थापना", mr: "मुस्लिम लीगची स्थापना", year: 1906 },
+  { key: "surat1907", en: "the Surat split of the Congress", hi: "कांग्रेस का सूरत विभाजन", mr: "काँग्रेसची सुरत फूट", year: 1907 },
+  { key: "delhi1911", en: "the announcement of Delhi as the capital", hi: "दिल्ली को राजधानी घोषित करना", mr: "दिल्लीला राजधानी घोषित करणे", year: 1911 },
+  { key: "lucknow1916", en: "the Lucknow Pact", hi: "लखनऊ समझौता", mr: "लखनौ करार", year: 1916 },
+  { key: "rowlatt1919", en: "the Rowlatt Act", hi: "रौलट ऐक्ट", mr: "रौलट कायदा", year: 1919 },
+  { key: "chaurichaura1922", en: "the Chauri Chaura incident", hi: "चौरी चौरा कांड", mr: "चौरी चौरा घटना", year: 1922 },
+  { key: "simon1928", en: "the arrival of the Simon Commission", hi: "साइमन कमीशन का आगमन", mr: "सायमन कमिशनचे आगमन", year: 1928 },
+  { key: "gandhiirwin1931", en: "the Gandhi–Irwin Pact", hi: "गांधी-इरविन समझौता", mr: "गांधी-आयर्विन करार", year: 1931 },
+  { key: "poona1932", en: "the Poona Pact", hi: "पूना समझौता", mr: "पुणे करार", year: 1932 },
+  { key: "cabinet1946", en: "the Cabinet Mission", hi: "कैबिनेट मिशन", mr: "कॅबिनेट मिशन", year: 1946 },
+  // The French Revolution (grade 9)
+  { key: "louis1774", en: "the accession of Louis XVI", hi: "लुई सोलहवें का राज्यारोहण", mr: "सोळावा लुई गादीवर येणे", year: 1774 },
+  { key: "usdecl1776", en: "the American Declaration of Independence", hi: "अमेरिकी स्वतंत्रता की घोषणा", mr: "अमेरिकेची स्वातंत्र्य घोषणा", year: 1776 },
+  { key: "frconst1791", en: "the French Constitution of 1791", hi: "1791 का फ़्रांसीसी संविधान", mr: "1791 ची फ्रेंच राज्यघटना", year: 1791 },
+  { key: "frrepublic1792", en: "France becoming a republic", hi: "फ़्रांस का गणराज्य बनना", mr: "फ्रान्स प्रजासत्ताक होणे", year: 1792 },
+  { key: "louisexec1793", en: "the execution of Louis XVI", hi: "लुई सोलहवें को मृत्युदंड", mr: "सोळाव्या लुईला देहदंड", year: 1793 },
+  { key: "robespierre1794", en: "the fall of Robespierre", hi: "रोबेस्पियर का पतन", mr: "रोबस्पिएरचे पतन", year: 1794 },
+  { key: "napoleoncoup1799", en: "Napoleon's seizure of power", hi: "नेपोलियन का सत्ता पर क़ब्ज़ा", mr: "नेपोलियनने सत्ता हाती घेणे", year: 1799 },
+  { key: "napoleonemp1804", en: "Napoleon crowning himself Emperor", hi: "नेपोलियन का स्वयं को सम्राट घोषित करना", mr: "नेपोलियनने स्वतःला सम्राट घोषित करणे", year: 1804 },
+  { key: "russia1812", en: "Napoleon's invasion of Russia", hi: "नेपोलियन का रूस पर आक्रमण", mr: "नेपोलियनची रशियावर स्वारी", year: 1812 },
+  { key: "waterloo1815", en: "the Battle of Waterloo", hi: "वाटरलू का युद्ध", mr: "वॉटर्लूची लढाई", year: 1815 },
+  // Socialism in Europe and the Russian Revolution (grade 9)
+  { key: "manifesto1848", en: "the publication of the Communist Manifesto", hi: "कम्युनिस्ट घोषणापत्र का प्रकाशन", mr: "कम्युनिस्ट जाहीरनाम्याचे प्रकाशन", year: 1848 },
+  { key: "serfs1861", en: "the emancipation of the Russian serfs", hi: "रूसी कृषिदासों की मुक्ति", mr: "रशियन भूदासांची मुक्तता", year: 1861 },
+  { key: "commune1871", en: "the Paris Commune", hi: "पेरिस कम्यून", mr: "पॅरिस कम्यून", year: 1871 },
+  { key: "rsdlp1898", en: "the founding of the Russian Social Democratic Workers' Party", hi: "रूसी सामाजिक लोकतांत्रिक श्रमिक दल की स्थापना", mr: "रशियन सोशल डेमोक्रॅटिक कामगार पक्षाची स्थापना", year: 1898 },
+  { key: "russojapan1904", en: "the start of the Russo-Japanese War", hi: "रूस-जापान युद्ध की शुरुआत", mr: "रशिया-जपान युद्धाची सुरुवात", year: 1904 },
+  { key: "rev1905", en: "the 1905 Revolution in Russia", hi: "रूस की 1905 की क्रांति", mr: "रशियातील 1905 ची क्रांती", year: 1905 },
+  { key: "october1917", en: "the October Revolution", hi: "अक्टूबर क्रांति", mr: "ऑक्टोबर क्रांती", year: 1917 },
+  { key: "ussr1922", en: "the formation of the Soviet Union", hi: "सोवियत संघ का गठन", mr: "सोव्हिएत संघाची स्थापना", year: 1922 },
+  { key: "lenin1924", en: "the death of Lenin", hi: "लेनिन की मृत्यु", mr: "लेनिनचा मृत्यू", year: 1924 },
+  // Nazism and the rise of Hitler (grade 9)
+  { key: "versailles1919", en: "the Treaty of Versailles", hi: "वर्साय की संधि", mr: "व्हर्सायचा तह", year: 1919 },
+  { key: "putsch1923", en: "the Munich Beer Hall Putsch", hi: "म्यूनिख का असफल विद्रोह", mr: "म्युनिकमधील फसलेले बंड", year: 1923 },
+  { key: "crash1929", en: "the Wall Street Crash", hi: "वॉल स्ट्रीट का शेयर बाज़ार धराशायी होना", mr: "वॉल स्ट्रीट शेअर बाजार कोसळणे", year: 1929 },
+  { key: "hitler1933", en: "Hitler becoming Chancellor of Germany", hi: "हिटलर का जर्मनी का चांसलर बनना", mr: "हिटलर जर्मनीचा चॅन्सेलर होणे", year: 1933 },
+  { key: "nuremberg1935", en: "the Nuremberg Laws", hi: "न्यूरेम्बर्ग क़ानून", mr: "न्युरेम्बर्ग कायदे", year: 1935 },
+  { key: "olympics1936", en: "the Berlin Olympics", hi: "बर्लिन ओलंपिक", mr: "बर्लिन ऑलिम्पिक", year: 1936 },
+  { key: "anschluss1938", en: "the German annexation of Austria", hi: "जर्मनी द्वारा ऑस्ट्रिया का विलय", mr: "जर्मनीने ऑस्ट्रिया गिळंकृत करणे", year: 1938 },
+  { key: "barbarossa1941", en: "the German invasion of the Soviet Union", hi: "जर्मनी का सोवियत संघ पर आक्रमण", mr: "जर्मनीची सोव्हिएत संघावर स्वारी", year: 1941 },
+  // The rise of nationalism in Europe (grade 10)
+  { key: "vienna1815", en: "the Congress of Vienna", hi: "वियना कांग्रेस", mr: "व्हिएन्ना परिषद", year: 1815 },
+  { key: "greek1821", en: "the start of the Greek war of independence", hi: "यूनानी स्वतंत्रता संग्राम की शुरुआत", mr: "ग्रीक स्वातंत्र्ययुद्धाची सुरुवात", year: 1821 },
+  { key: "july1830", en: "the July Revolution in France", hi: "फ़्रांस की जुलाई क्रांति", mr: "फ्रान्समधील जुलै क्रांती", year: 1830 },
+  { key: "greece1832", en: "the recognition of Greek independence", hi: "यूनान की स्वतंत्रता को मान्यता", mr: "ग्रीसच्या स्वातंत्र्याला मान्यता", year: 1832 },
+  { key: "zollverein1834", en: "the start of the German customs union", hi: "जर्मन सीमा-शुल्क संघ की शुरुआत", mr: "जर्मन जकात संघाची सुरुवात", year: 1834 },
+  { key: "rev1848", en: "the revolutions of 1848 in Europe", hi: "यूरोप की 1848 की क्रांतियाँ", mr: "युरोपातील 1848 च्या क्रांत्या", year: 1848 },
+  { key: "italy1859", en: "the start of the war for Italian unification", hi: "इतालवी एकीकरण युद्ध की शुरुआत", mr: "इटालियन एकीकरण युद्धाची सुरुवात", year: 1859 },
+  { key: "italy1861", en: "the proclamation of the Kingdom of Italy", hi: "इटली राज्य की घोषणा", mr: "इटली राज्याची घोषणा", year: 1861 },
+  { key: "austroprussian1866", en: "the Austro-Prussian War", hi: "ऑस्ट्रिया-प्रशिया युद्ध", mr: "ऑस्ट्रिया-प्रशिया युद्ध", year: 1866 },
+  { key: "rome1870", en: "Rome joining united Italy", hi: "रोम का संयुक्त इटली में मिलना", mr: "रोम एकत्रित इटलीत सामील होणे", year: 1870 },
+  { key: "germany1871", en: "the proclamation of the German Empire", hi: "जर्मन साम्राज्य की घोषणा", mr: "जर्मन साम्राज्याची घोषणा", year: 1871 },
+  // The making of a global world (grade 10)
+  { key: "voc1602", en: "the founding of the Dutch East India Company", hi: "डच ईस्ट इंडिया कंपनी की स्थापना", mr: "डच ईस्ट इंडिया कंपनीची स्थापना", year: 1602 },
+  { key: "mayflower1620", en: "the voyage of the Mayflower", hi: "मेफ़्लावर की यात्रा", mr: "मेफ्लॉवरचा प्रवास", year: 1620 },
+  { key: "watt1769", en: "Watt's patent on the improved steam engine", hi: "वाट का उन्नत भाप इंजन का पेटेंट", mr: "वॅटचे सुधारित वाफेच्या इंजिनाचे पेटंट", year: 1769 },
+  { key: "stockton1825", en: "the opening of the Stockton–Darlington railway", hi: "स्टॉकटन-डार्लिंगटन रेलमार्ग का उद्घाटन", mr: "स्टॉकटन-डार्लिंग्टन रेल्वेचे उद्घाटन", year: 1825 },
+  { key: "suez1869", en: "the opening of the Suez Canal", hi: "स्वेज़ नहर का उद्घाटन", mr: "सुएझ कालव्याचे उद्घाटन", year: 1869 },
+  { key: "berlin1885", en: "the conclusion of the Berlin Conference", hi: "बर्लिन सम्मेलन का समापन", mr: "बर्लिन परिषदेची सांगता", year: 1885 },
+  { key: "wright1903", en: "the Wright brothers' first flight", hi: "राइट बंधुओं की पहली उड़ान", mr: "राइट बंधूंचे पहिले उड्डाण", year: 1903 },
+  { key: "ford1913", en: "the start of Ford's moving assembly line", hi: "फ़ोर्ड की चलती असेंबली लाइन की शुरुआत", mr: "फोर्डच्या फिरत्या जुळणी रेषेची सुरुवात", year: 1913 },
+  { key: "bretton1944", en: "the Bretton Woods conference", hi: "ब्रेटन वुड्स सम्मेलन", mr: "ब्रेटन वूड्स परिषद", year: 1944 },
+  { key: "un1945", en: "the founding of the United Nations", hi: "संयुक्त राष्ट्र की स्थापना", mr: "संयुक्त राष्ट्रांची स्थापना", year: 1945 },
+  // Changing cultural traditions (grade 11)
+  { key: "constantinople1453", en: "the fall of Constantinople", hi: "क़ुस्तुंतुनिया का पतन", mr: "कॉन्स्टँटिनोपलचे पतन", year: 1453 },
+  { key: "gutenberg1455", en: "Gutenberg's printed Bible", hi: "गुटेनबर्ग की छपी बाइबिल", mr: "गुटेनबर्गचे छापील बायबल", year: 1455 },
+  { key: "columbus1492", en: "Columbus reaching the Americas", hi: "कोलंबस का अमेरिका पहुँचना", mr: "कोलंबस अमेरिकेला पोहोचणे", year: 1492 },
+  { key: "luther1517", en: "Luther's Ninety-five Theses", hi: "लूथर के पचानबे सिद्धांत", mr: "ल्यूथरची पंचाण्णव प्रमेये", year: 1517 },
+  { key: "magellan1519", en: "the departure of Magellan's expedition", hi: "मैगेलन के अभियान की रवानगी", mr: "मॅगेलनच्या मोहिमेचे प्रस्थान", year: 1519 },
+  { key: "tenochtitlan1521", en: "the fall of the Aztec capital Tenochtitlan", hi: "एज़्टेक राजधानी तेनोच्तित्लान का पतन", mr: "अ‍ॅझ्टेक राजधानी तेनोच्तित्लानचे पतन", year: 1521 },
+  { key: "inca1532", en: "Pizarro's capture of the Inca emperor", hi: "पिज़ारो द्वारा इंका सम्राट को बंदी बनाना", mr: "पिझारोने इंका सम्राटाला कैद करणे", year: 1532 },
+  { key: "copernicus1543", en: "the publication of Copernicus's heliocentric theory", hi: "कोपरनिकस के सूर्यकेंद्री सिद्धांत का प्रकाशन", mr: "कोपर्निकसच्या सूर्यकेंद्री सिद्धांताचे प्रकाशन", year: 1543 },
+  { key: "galileo1564", en: "the birth of Galileo", hi: "गैलीलियो का जन्म", mr: "गॅलिलिओचा जन्म", year: 1564 },
+  // The Industrial Revolution (grade 11)
+  { key: "newcomen1712", en: "Newcomen's steam engine", hi: "न्यूकॉमन का भाप इंजन", mr: "न्यूकॉमनचे वाफेचे इंजिन", year: 1712 },
+  { key: "shuttle1733", en: "Kay's flying shuttle", hi: "के की उड़न ढरकी", mr: "केची उडती धोटी", year: 1733 },
+  { key: "jenny1764", en: "Hargreaves' spinning jenny", hi: "हरग्रीव्ज़ की 'स्पिनिंग जेनी'", mr: "हरग्रीव्जची 'स्पिनिंग जेनी'", year: 1764 },
+  { key: "mule1779", en: "Crompton's spinning mule", hi: "क्रॉम्पटन की 'म्यूल' कताई मशीन", mr: "क्रॉम्प्टनचे 'म्यूल' सूतकताई यंत्र", year: 1779 },
+  { key: "loom1785", en: "Cartwright's power loom", hi: "कार्टराइट का शक्तिचालित करघा", mr: "कार्टराइटचा यंत्रमाग", year: 1785 },
+  { key: "steamboat1807", en: "Fulton's steamboat service", hi: "फुल्टन की भाप-नौका सेवा", mr: "फुल्टनची वाफेची नौका सेवा", year: 1807 },
+  { key: "liverpool1830", en: "the opening of the Liverpool–Manchester railway", hi: "लिवरपूल-मैनचेस्टर रेलमार्ग का उद्घाटन", mr: "लिव्हरपूल-मँचेस्टर रेल्वेचे उद्घाटन", year: 1830 },
+  { key: "pennypost1840", en: "the introduction of the Penny Post", hi: "पेनी पोस्ट की शुरुआत", mr: "पेनी पोस्टची सुरुवात", year: 1840 },
+  { key: "exhibition1851", en: "the Great Exhibition in London", hi: "लंदन की महाप्रदर्शनी", mr: "लंडनचे महाप्रदर्शन", year: 1851 },
+  { key: "bessemer1856", en: "the Bessemer steel process", hi: "बेसेमर इस्पात प्रक्रिया", mr: "बेसेमर पोलाद प्रक्रिया", year: 1856 },
+  // Paths to modernisation (grade 11)
+  { key: "opium1839", en: "the start of the First Opium War", hi: "पहले अफ़ीम युद्ध की शुरुआत", mr: "पहिल्या अफू युद्धाची सुरुवात", year: 1839 },
+  { key: "nanjing1842", en: "the Treaty of Nanjing", hi: "नानजिंग की संधि", mr: "नानजिंगचा तह", year: 1842 },
+  { key: "perry1853", en: "Commodore Perry's arrival in Japan", hi: "कमोडोर पेरी का जापान आगमन", mr: "कमोडोर पेरीचे जपानला आगमन", year: 1853 },
+  { key: "meiji1868", en: "the Meiji Restoration", hi: "मेइजी पुनर्स्थापना", mr: "मेइजी पुनर्स्थापना", year: 1868 },
+  { key: "meijiconst1889", en: "the Meiji Constitution", hi: "मेइजी संविधान", mr: "मेइजी राज्यघटना", year: 1889 },
+  { key: "sinojapan1894", en: "the start of the Sino-Japanese War", hi: "चीन-जापान युद्ध की शुरुआत", mr: "चीन-जपान युद्धाची सुरुवात", year: 1894 },
+  { key: "chinarev1911", en: "the Chinese Revolution of 1911", hi: "चीन की 1911 की क्रांति", mr: "चीनची 1911 ची क्रांती", year: 1911 },
+  { key: "mayfourth1919", en: "the May Fourth Movement in China", hi: "चीन का चार मई आंदोलन", mr: "चीनची चार मे चळवळ", year: 1919 },
+  { key: "japanchina1937", en: "Japan's invasion of China", hi: "जापान का चीन पर आक्रमण", mr: "जपानची चीनवर स्वारी", year: 1937 },
+  { key: "prc1949", en: "the founding of the People's Republic of China", hi: "चीनी जनवादी गणराज्य की स्थापना", mr: "चीनच्या जनता प्रजासत्ताकाची स्थापना", year: 1949 },
+  // Colonialism and the countryside (grade 12)
+  { key: "famine1770", en: "the Great Bengal Famine", hi: "बंगाल का महाअकाल", mr: "बंगालचा महादुष्काळ", year: 1770 },
+  { key: "charter1813", en: "the Charter Act of 1813", hi: "1813 का चार्टर अधिनियम", mr: "1813 चा सनदी कायदा", year: 1813 },
+  { key: "macaulay1835", en: "Macaulay's Minute on Education", hi: "शिक्षा पर मैकाले का विवरण-पत्र", mr: "शिक्षणावरील मेकॉलेचा खलिता", year: 1835 },
+  // Mahatma Gandhi and the national movement (grade 12)
+  { key: "gandhisa1893", en: "Gandhi's departure for South Africa", hi: "गांधी का दक्षिण अफ़्रीका प्रस्थान", mr: "गांधींचे दक्षिण आफ्रिकेला प्रस्थान", year: 1893 },
+  { key: "gandhireturn1915", en: "Gandhi's return to India", hi: "गांधी की भारत वापसी", mr: "गांधींचे भारतात पुनरागमन", year: 1915 },
+  { key: "champaran1917", en: "the Champaran satyagraha", hi: "चंपारण सत्याग्रह", mr: "चंपारण सत्याग्रह", year: 1917 },
+  { key: "ahmedabad1918", en: "the Ahmedabad mill workers' satyagraha", hi: "अहमदाबाद मिल मज़दूर सत्याग्रह", mr: "अहमदाबाद गिरणी कामगार सत्याग्रह", year: 1918 },
+  { key: "gandhideath1948", en: "the assassination of Mahatma Gandhi", hi: "महात्मा गांधी की हत्या", mr: "महात्मा गांधींची हत्या", year: 1948 },
+  // Framing the constitution (grade 12)
+  { key: "nehrureport1928", en: "the Nehru Report", hi: "नेहरू रिपोर्ट", mr: "नेहरू अहवाल", year: 1928 },
+  { key: "lahore1940", en: "the Lahore Resolution", hi: "लाहौर प्रस्ताव", mr: "लाहोर ठराव", year: 1940 },
+  { key: "assembly1946", en: "the first sitting of the Constituent Assembly", hi: "संविधान सभा की पहली बैठक", mr: "संविधान सभेची पहिली बैठक", year: 1946 },
+  { key: "amendment1951", en: "the First Amendment to the Constitution", hi: "संविधान का पहला संशोधन", mr: "राज्यघटनेची पहिली दुरुस्ती", year: 1951 },
+  { key: "loksabha1952", en: "the first Lok Sabha convening", hi: "पहली लोकसभा का गठन", mr: "पहिल्या लोकसभेची स्थापना", year: 1952 },
 ];
+
+/** Resolve an era-chapter pool from event keys; a typo throws at plan time. */
+function POOL(...keys: string[]): HistEvent[] {
+  return keys.map((k) => {
+    const e = EVENTS.find((x) => x.key === k);
+    if (!e) throw new Error(`unknown event key ${k}`);
+    return e;
+  });
+}
 
 /** Constitution numbers. Small, numeric, and checkable by any civics teacher. */
 const CIV_NUMBERS: { en: string; hi: string; mr: string; value: number }[] = [
@@ -3161,44 +3335,59 @@ const fGeoMergeDen = (tag: string, lvl: number, want: number, rR: Range, a1R: Ra
    the stem, so the sum is machine-proven while the fact stays table-curated.
    -------------------------------------------------------------------------- */
 
-const HIST_PAIRS: [number, number][] = [];
-for (let hp1 = 0; hp1 < EVENTS.length; hp1++)
-  for (let hp2 = hp1 + 1; hp2 < EVENTS.length; hp2++)
-    if (EVENTS[hp1]!.year !== EVENTS[hp2]!.year) HIST_PAIRS.push([hp1, hp2]);
+/** Year-ordered, distinct-year pairs from a pool (the whole table by default).
+ * Ordering by YEAR matters: the table is grouped by chapter, not sorted. */
+function histPairs(pool: HistEvent[]): [HistEvent, HistEvent][] {
+  const out: [HistEvent, HistEvent][] = [];
+  for (let i = 0; i < pool.length; i++)
+    for (let j = i + 1; j < pool.length; j++) {
+      const x = pool[i]!, y = pool[j]!;
+      if (x.year === y.year) continue;
+      out.push(x.year < y.year ? [x, y] : [y, x]);
+    }
+  return out;
+}
 
-const fHistBetween = (tag: string, lvl: number, want: number) =>
-  T(
-    `histbetween:${tag}`,
-    lvl,
-    want,
-    [HIST_PAIRS.length],
-    {
-      en: ["How many years passed between {e1} ({y1}) and {e2} ({y2})?", "{e1} was in {y1} and {e2} in {y2}. How many years apart are they?"],
-      hi: ["{h1} ({y1}) और {h2} ({y2}) के बीच कितने वर्ष बीते?", "{h1} {y1} में और {h2} {y2} में हुआ। दोनों में कितने वर्षों का अंतर है?"],
-      mr: ["{m1} ({y1}) आणि {m2} ({y2}) यांच्यामध्ये किती वर्षे गेली?", "{m1} {y1} मध्ये व {m2} {y2} मध्ये घडले. दोघांत किती वर्षांचे अंतर आहे?"],
-      sen: "Subtract the years: {y2} − {y1} = {ans} years.",
-      shi: "वर्ष घटाएँ: {y2} − {y1} = {ans} वर्ष।",
-      smr: "वर्षे वजा करा: {y2} − {y1} = {ans} वर्षे.",
-    },
-    ([i]) => {
-      const [a, b] = HIST_PAIRS[i!]!;
-      const e1 = EVENTS[a]!, e2 = EVENTS[b]!;
-      const gap = e2.year - e1.year;
-      return {
-        vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year },
-        answer: gap,
-        expr: `${e2.year}-${e1.year}`,
-        decoys: [gap + 10, gap - 10, gap + 1],
-      };
-    },
-  );
+const BETWEEN_SKINS: SkinSet = {
+  en: [
+    "How many years passed between {e1} ({y1}) and {e2} ({y2})?",
+    "{e1} was in {y1} and {e2} in {y2}. How many years apart are they?",
+    "Find the number of years separating {e1} ({y1}) from {e2} ({y2}).",
+  ],
+  hi: [
+    "{h1} ({y1}) और {h2} ({y2}) के बीच कितने वर्ष बीते?",
+    "{h1} {y1} में और {h2} {y2} में हुआ। दोनों में कितने वर्षों का अंतर है?",
+    "{h1} ({y1}) को {h2} ({y2}) से अलग करने वाले वर्षों की संख्या निकालिए।",
+  ],
+  mr: [
+    "{m1} ({y1}) आणि {m2} ({y2}) यांच्यामध्ये किती वर्षे गेली?",
+    "{m1} {y1} मध्ये व {m2} {y2} मध्ये घडले. दोघांत किती वर्षांचे अंतर आहे?",
+    "{m1} ({y1}) आणि {m2} ({y2}) यांना वेगळी करणारी वर्षे मोजा.",
+  ],
+  sen: "Subtract the years: {y2} − {y1} = {ans} years.",
+  shi: "वर्ष घटाएँ: {y2} − {y1} = {ans} वर्ष।",
+  smr: "वर्षे वजा करा: {y2} − {y1} = {ans} वर्षे.",
+};
+const fHistBetween = (tag: string, lvl: number, want: number, pool: HistEvent[] = EVENTS) => {
+  const pairs = histPairs(pool);
+  return T(`histbetween:${tag}`, lvl, want, [pairs.length], BETWEEN_SKINS, ([i]) => {
+    const [e1, e2] = pairs[i!]!;
+    const gap = e2.year - e1.year;
+    return {
+      vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year },
+      answer: gap,
+      expr: `${e2.year}-${e1.year}`,
+      decoys: [gap + 10, gap - 10, gap + 1],
+    };
+  });
+};
 
-const fHistAfter = (tag: string, lvl: number, want: number, n: Range) =>
+const fHistAfter = (tag: string, lvl: number, want: number, n: Range, pool: HistEvent[] = EVENTS) =>
   T(
     `histafter:${tag}`,
     lvl,
     want,
-    [EVENTS.length, n.n],
+    [pool.length, n.n],
     {
       en: ["{e} took place in {y}. Which year came {n} years later?", "Count {n} years on from {e} ({y}). Which year do you reach?"],
       hi: ["{h} {y} में हुआ। उसके {n} वर्ष बाद कौन-सा वर्ष आया?", "{h} ({y}) से {n} वर्ष आगे गिनिए। कौन-सा वर्ष आता है?"],
@@ -3208,7 +3397,7 @@ const fHistAfter = (tag: string, lvl: number, want: number, n: Range) =>
       smr: "वर्षे मिळवा: {y} + {n} = {ans}.",
     },
     ([i, j]) => {
-      const e = EVENTS[i!]!, add = at(n, j!);
+      const e = pool[i!]!, add = at(n, j!);
       const y2 = e.year + add;
       return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, n: add }, answer: y2, expr: `${e.year}+${add}`, decoys: [y2 + 10, y2 - 10, y2 + 1] };
     },
@@ -3244,9 +3433,9 @@ const HISTBEFORE: SkinSet = {
   shi: "वर्ष घटाएँ: {y} − {n} = {ans}।",
   smr: "वर्षे वजा करा: {y} − {n} = {ans}.",
 };
-const fHistBefore = (tag: string, lvl: number, want: number, n: Range) =>
-  T(`histbefore:${tag}`, lvl, want, [EVENTS.length, n.n], HISTBEFORE, ([i, j]) => {
-    const e = EVENTS[i!]!, sub = at(n, j!), y2 = e.year - sub;
+const fHistBefore = (tag: string, lvl: number, want: number, n: Range, pool: HistEvent[] = EVENTS) =>
+  T(`histbefore:${tag}`, lvl, want, [pool.length, n.n], HISTBEFORE, ([i, j]) => {
+    const e = pool[i!]!, sub = at(n, j!), y2 = e.year - sub;
     return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, n: sub }, answer: y2, expr: `${e.year}-${sub}`, decoys: [y2 + 10, y2 - 10, y2 + 1] };
   });
 
@@ -3269,14 +3458,14 @@ const HISTCHAIN: SkinSet = {
   shi: "दोनों अंतराल जोड़ें: {y} + {k} + {n} = {ans}।",
   smr: "दोन्ही अंतरे मिळवा: {y} + {k} + {n} = {ans}.",
 };
-const fHistChain = (tag: string, lvl: number, want: number, k: Range, n: Range) =>
-  T(`histchain:${tag}`, lvl, want, [CHAIN_EVENTS.length, k.n, n.n], HISTCHAIN, ([i, j, l]) => {
-    const e = CHAIN_EVENTS[i!]!, add1 = at(k, j!), add2 = at(n, l!), y2 = e.year + add1 + add2;
+const fHistChain = (tag: string, lvl: number, want: number, k: Range, n: Range, pool: HistEvent[] = CHAIN_EVENTS) =>
+  T(`histchain:${tag}`, lvl, want, [pool.length, k.n, n.n], HISTCHAIN, ([i, j, l]) => {
+    const e = pool[i!]!, add1 = at(k, j!), add2 = at(n, l!), y2 = e.year + add1 + add2;
     return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, k: add1, n: add2 }, answer: y2, expr: `${e.year}+${add1}+${add2}`, decoys: [y2 - add2, y2 + 10, y2 - 1] };
   });
 
 /** Pairs far enough apart that a lifetime fits between them. */
-const BIG_PAIRS = HIST_PAIRS.filter(([a, b]) => EVENTS[b]!.year - EVENTS[a]!.year >= 55);
+const BIG_PAIRS = histPairs(EVENTS).filter(([a, b]) => b.year - a.year >= 55);
 const HISTAGE: SkinSet = {
   en: [
     "A person was born {b} years after {e1} ({y1}). How old were they at the time of {e2} ({y2})?",
@@ -3299,8 +3488,8 @@ const HISTAGE: SkinSet = {
 };
 const fHistAge = (tag: string, lvl: number, want: number, b: Range) =>
   T(`histage:${tag}`, lvl, want, [BIG_PAIRS.length, b.n], HISTAGE, ([i, j]) => {
-    const [ai, bi] = BIG_PAIRS[i!]!;
-    const e1 = EVENTS[ai]!, e2 = EVENTS[bi]!, born = at(b, j!);
+    const [e1, e2] = BIG_PAIRS[i!]!;
+    const born = at(b, j!);
     const age = e2.year - e1.year - born;
     return {
       vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year, b: born },
@@ -3329,11 +3518,47 @@ const HISTBACK: SkinSet = {
   shi: "पहले पीछे, फिर आगे: {y} − {k} + {n} = {ans}।",
   smr: "आधी मागे, मग पुढे: {y} − {k} + {n} = {ans}.",
 };
-const fHistChainBack = (tag: string, lvl: number, want: number, k: Range, n: Range) =>
-  T(`histback:${tag}`, lvl, want, [BACK_EVENTS.length, k.n, n.n], HISTBACK, ([i, j, l]) => {
-    const e = BACK_EVENTS[i!]!, back = at(k, j!), fwd = at(n, l!), y2 = e.year - back + fwd;
+const fHistChainBack = (tag: string, lvl: number, want: number, k: Range, n: Range, pool: HistEvent[] = BACK_EVENTS) =>
+  T(`histback:${tag}`, lvl, want, [pool.length, k.n, n.n], HISTBACK, ([i, j, l]) => {
+    const e = pool[i!]!, back = at(k, j!), fwd = at(n, l!), y2 = e.year - back + fwd;
     return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, k: back, n: fwd }, answer: y2, expr: `${e.year}-${back}+${fwd}`, decoys: [e.year + back + fwd, y2 + 10, y2 - 1] };
   });
+
+/** Midway year between two events of the same parity — a favourite puzzle
+ * shape on timeline rounds; only same-parity pairs keep the answer whole. */
+const HISTMID: SkinSet = {
+  en: [
+    "Which year lies exactly midway between {e1} ({y1}) and {e2} ({y2})?",
+    "Find the year halfway between {e1} ({y1}) and {e2} ({y2}).",
+    "{e1} was in {y1} and {e2} in {y2}. Which year sits at the exact middle?",
+  ],
+  hi: [
+    "{h1} ({y1}) और {h2} ({y2}) के ठीक बीच में कौन-सा वर्ष आता है?",
+    "{h1} ({y1}) और {h2} ({y2}) के मध्य का वर्ष निकालिए।",
+    "{h1} {y1} में और {h2} {y2} में हुआ। ठीक बीच में कौन-सा वर्ष है?",
+  ],
+  mr: [
+    "{m1} ({y1}) आणि {m2} ({y2}) यांच्या नेमक्या मध्यावर कोणते वर्ष येते?",
+    "{m1} ({y1}) आणि {m2} ({y2}) यांच्या मधले वर्ष काढा.",
+    "{m1} {y1} मध्ये व {m2} {y2} मध्ये घडले. नेमक्या मध्यावर कोणते वर्ष आहे?",
+  ],
+  sen: "Average the two years: ({y1} + {y2}) ÷ 2 = {ans}.",
+  shi: "दोनों वर्षों का औसत लें: ({y1} + {y2}) ÷ 2 = {ans}।",
+  smr: "दोन्ही वर्षांची सरासरी घ्या: ({y1} + {y2}) ÷ 2 = {ans}.",
+};
+const fHistMid = (tag: string, lvl: number, want: number, pool: HistEvent[]) => {
+  const pairs = histPairs(pool).filter(([a, b]) => (a.year + b.year) % 2 === 0);
+  return T(`histmid:${tag}`, lvl, want, [pairs.length], HISTMID, ([i]) => {
+    const [e1, e2] = pairs[i!]!;
+    const mid = (e1.year + e2.year) / 2;
+    return {
+      vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year },
+      answer: mid,
+      expr: `(${e1.year}+${e2.year})/2`,
+      decoys: [mid + 5, mid - 5, e2.year - e1.year],
+    };
+  });
+};
 
 const HISTDECADE: SkinSet = {
   en: ["Which year begins the decade that contains the year {y}?", "The year {y} falls in a decade. What is that decade's first year?", "Name the starting year of the decade holding {y}."],
@@ -4406,7 +4631,7 @@ function mathsFiller(grade: number, deficit: number): TopicSpec[] {
   const g = `g${grade}`;
   const NAME: Record<number, ChapterName> = {
     3: CN("Fun with Give and Take", "लेन-देन का खेल", "देवाण-घेवाणीची गंमत"),
-    4: CN("Tables and Shares", "पहाड़े और बँटवारा", "पाढे आणि वाटण्या"),
+    4: CN("Tables and Shares: Practice", "पहाड़े और बँटवारा: अभ्यास", "पाढे आणि वाटण्या: सराव"),
     5: CN("Ways to Multiply and Divide", "गुणा-भाग के तरीके", "गुणाकार-भागाकाराच्या रीती"),
     6: CN("Whole Numbers Practice", "पूर्ण संख्याओं का अभ्यास", "पूर्ण संख्यांचा सराव"),
     7: CN("Number Operations Practice", "संख्या संक्रियाओं का अभ्यास", "संख्या क्रियांचा सराव"),
@@ -4436,7 +4661,7 @@ function sciFiller(grade: number, deficit: number): TopicSpec[] {
   const motion: Record<number, ChapterName> = {
     3: CN("Moving Things", "चलती चीज़ें", "हलणाऱ्या वस्तू"),
     4: CN("Moving Things", "चलती चीज़ें", "हलणाऱ्या वस्तू"),
-    5: CN("Fast and Slow", "तेज़ और धीमा", "जलद आणि हळू"),
+    5: CN("Motion All Around", "गति हमारे चारों ओर", "गती आपल्या भोवती"),
     6: CN("Motion and Measurement of Distances", "गति एवं दूरियों का मापन", "गती आणि अंतरांचे मापन"),
     7: CN("Motion and Time", "गति एवं समय", "गती आणि वेळ"),
     8: CN("Motion Practice", "गति अभ्यास", "गती सराव"),
@@ -4619,52 +4844,142 @@ function geoFiller(grade: number, deficit: number): TopicSpec[] {
   ];
 }
 
+/**
+ * Chapter-true history for grades 7–12: each chapter drills ONLY events from
+ * its own NCERT chapter's era, named by explicit key so a typo throws at plan
+ * time. Grades 3–5 keep generalized timeline-skills names (their EVS syllabus
+ * has no history chapters) and grade 6 keeps the book umbrella — Our Pasts I
+ * is ancient India, whose dates are too contested for an honest drill.
+ */
+type EraChapter = { key: string; name: ChapterName; pool: HistEvent[] };
+const ERA_CHAPTERS: Record<number, EraChapter[]> = {
+  7: [
+    { key: "hist-sultans", name: CN("The Delhi Sultans", "दिल्ली के सुल्तान", "दिल्लीचे सुलतान"),
+      pool: POOL("tarain1192", "sultanate1206", "razia1236", "khalji1290", "tughlaq1320", "vijaynagar1336", "bahmani1347", "timur1398", "sayyid1414", "lodi1451", "nanak1469", "krishnadeva1509") },
+    { key: "hist-mughal", name: CN("The Mughal Empire", "मुग़ल साम्राज्य", "मुघल साम्राज्य"),
+      pool: POOL("panipat1526", "humayun1530", "kannauj1540", "panipat2_1556", "talikota1565", "sikri1571", "haldighati1576", "jahangir1605", "shahjahan1628", "aurangzeb1658", "shivaji1674", "shivajideath1680") },
+    { key: "hist-c18", name: CN("Eighteenth-Century Political Formations", "अठारहवीं सदी में नए राजनीतिक गठन", "अठराव्या शतकातील राजकीय घडामोडी"),
+      pool: POOL("aurangzebdeath1707", "nizam1724", "nadir1739", "plassey1757", "panipat3_1761", "buxar1764", "diwani1765", "regulating1773", "pitts1784", "permanent1793", "srirangapatna1799") },
+  ],
+  8: [
+    { key: "hist-trade", name: CN("From Trade to Territory", "व्यापार से साम्राज्य तक", "व्यापाराकडून सत्तेकडे"),
+      pool: POOL("eic1600", "roe1615", "madras1639", "calcutta1690", "plassey1757", "buxar1764", "diwani1765", "srirangapatna1799", "maratha1818", "sati1829", "punjab1849", "rail1853") },
+    { key: "hist-rebel", name: CN("When People Rebel: 1857 and After", "जब जनता बग़ावत करती है: 1857 और उसके बाद", "लोक बंड करतात तेव्हा: 1857 आणि नंतर"),
+      pool: POOL("awadh1856", "revolt1857", "crown1858", "councils1861", "gandhibirth1869", "census1872", "arya1875", "empress1876", "vernacular1878", "ilbert1883") },
+    { key: "hist-natmove", name: CN("The Making of the National Movement", "राष्ट्रीय आंदोलन का संगठन", "राष्ट्रीय चळवळीची जडणघडण"),
+      pool: POOL("inc1885", "bengal1905", "league1906", "surat1907", "delhi1911", "lucknow1916", "jallianwala1919", "noncoop1920", "chaurichaura1922", "purnaswaraj1929", "dandi1930", "gandhiirwin1931", "goi1935", "quitindia1942", "cabinet1946", "independence1947") },
+  ],
+  9: [
+    { key: "hist-frrev", name: CN("The French Revolution", "फ्रांसीसी क्रांति", "फ्रेंच राज्यक्रांती"),
+      pool: POOL("louis1774", "usdecl1776", "frrev1789", "frconst1791", "frrepublic1792", "louisexec1793", "robespierre1794", "napoleoncoup1799", "napoleonemp1804", "russia1812", "waterloo1815") },
+    { key: "hist-russia", name: CN("Socialism in Europe and the Russian Revolution", "यूरोप में समाजवाद एवं रूसी क्रांति", "युरोपातील समाजवाद आणि रशियन क्रांती"),
+      pool: POOL("manifesto1848", "serfs1861", "commune1871", "rsdlp1898", "russojapan1904", "rev1905", "ww1start1914", "october1917", "ww1end1918", "ussr1922", "lenin1924") },
+    { key: "hist-nazism", name: CN("Nazism and the Rise of Hitler", "नात्सीवाद और हिटलर का उदय", "नाझीवाद आणि हिटलरचा उदय"),
+      pool: POOL("versailles1919", "putsch1923", "crash1929", "hitler1933", "nuremberg1935", "olympics1936", "anschluss1938", "ww2start1939", "barbarossa1941", "ww2end1945") },
+  ],
+  10: [
+    { key: "hist-eunat", name: CN("The Rise of Nationalism in Europe", "यूरोप में राष्ट्रवाद का उदय", "युरोपात राष्ट्रवादाचा उदय"),
+      pool: POOL("vienna1815", "greek1821", "july1830", "greece1832", "zollverein1834", "rev1848", "italy1859", "italy1861", "austroprussian1866", "rome1870", "germany1871") },
+    { key: "hist-indnat", name: CN("Nationalism in India", "भारत में राष्ट्रवाद", "भारतातील राष्ट्रवाद"),
+      pool: POOL("bengal1905", "league1906", "surat1907", "delhi1911", "lucknow1916", "rowlatt1919", "noncoop1920", "chaurichaura1922", "simon1928", "dandi1930", "gandhiirwin1931", "poona1932", "quitindia1942", "independence1947") },
+    { key: "hist-global", name: CN("The Making of a Global World", "भूमंडलीकृत विश्व का बनना", "जागतिक जगाची घडण"),
+      pool: POOL("eic1600", "voc1602", "mayflower1620", "watt1769", "stockton1825", "suez1869", "berlin1885", "wright1903", "ford1913", "bretton1944", "un1945") },
+  ],
+  11: [
+    { key: "hist-culture", name: CN("Changing Cultural Traditions", "बदलती सांस्कृतिक परंपराएँ", "बदलत्या सांस्कृतिक परंपरा"),
+      pool: POOL("constantinople1453", "gutenberg1455", "columbus1492", "vasco1498", "luther1517", "magellan1519", "tenochtitlan1521", "inca1532", "copernicus1543", "galileo1564") },
+    { key: "hist-industry", name: CN("The Industrial Revolution", "औद्योगिक क्रांति", "औद्योगिक क्रांती"),
+      pool: POOL("newcomen1712", "shuttle1733", "jenny1764", "mule1779", "loom1785", "steamboat1807", "liverpool1830", "pennypost1840", "exhibition1851", "bessemer1856") },
+    { key: "hist-modern", name: CN("Paths to Modernisation", "आधुनिकीकरण के रास्ते", "आधुनिकीकरणाचे मार्ग"),
+      pool: POOL("opium1839", "nanjing1842", "perry1853", "meiji1868", "meijiconst1889", "sinojapan1894", "chinarev1911", "mayfourth1919", "japanchina1937", "prc1949") },
+  ],
+  12: [
+    { key: "hist-country", name: CN("Colonialism and the Countryside", "उपनिवेशवाद और देहात", "वसाहतवाद आणि ग्रामीण भाग"),
+      pool: POOL("plassey1757", "buxar1764", "diwani1765", "famine1770", "regulating1773", "permanent1793", "srirangapatna1799", "charter1813", "maratha1818", "macaulay1835", "rail1853", "awadh1856") },
+    { key: "hist-gandhi", name: CN("Mahatma Gandhi and the Nationalist Movement", "महात्मा गांधी और राष्ट्रीय आंदोलन", "महात्मा गांधी आणि राष्ट्रीय चळवळ"),
+      pool: POOL("gandhibirth1869", "gandhisa1893", "gandhireturn1915", "champaran1917", "ahmedabad1918", "noncoop1920", "chaurichaura1922", "dandi1930", "gandhiirwin1931", "poona1932", "quitindia1942", "gandhideath1948") },
+    { key: "hist-consti", name: CN("Framing the Constitution", "संविधान का निर्माण", "संविधानाची निर्मिती"),
+      pool: POOL("nehrureport1928", "purnaswaraj1929", "goi1935", "lahore1940", "assembly1946", "independence1947", "constadopt1949", "constforce1950", "amendment1951", "loksabha1952") },
+  ],
+};
+
 function histFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
   const base = 2 + 195 * o;
   const g = `g${grade}`;
-  // Former stand-alone landmark-year topics fold in as L1 recall rungs.
-  const yearRecall: Template[] =
-    grade === 7 ? [fEventYear(`${g}early`, 1, 16, 1400, 1900)]
+  const centuries = CN("Centuries and Calendars", "शताब्दियाँ और कैलेंडर", "शतके आणि दिनदर्शिका");
+  const centuryTopic = chapterTopic(grade, "hist-century", centuries, [
+    fHistCentury(`${g}hfL2`, 1, 100, R(1201 + 140 * o, 1270 + 140 * o)),
+    fHistDecade(`${g}hcL2`, 2, 100, R(1450 + 50 * o, 1499 + 50 * o)),
+    fHistCentury(`${g}hfL6`, 3, 100, R(1271 + 140 * o, 1340 + 140 * o)),
+    fHistCenturyEnd(`${g}hcL4`, 4, 100, R(1101 + 60 * o, 1160 + 60 * o)),
+    fHistSpanCent(`${g}hcL5`, 5, 100, R(1301 + 50 * o, 1350 + 50 * o)),
+    fHistCentAfter(`${g}hcL6`, 6, 100, R(1421 + 40 * o, 1460 + 40 * o), R(2, 6)),
+  ], "HISTORY");
+
+  if (grade <= 6) {
+    const book: Record<number, ChapterName> = {
+      3: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+      4: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+      5: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
+      6: CN("Our Pasts: Timelines", "हमारे अतीत: समयरेखाएँ", "आपले भूतकाळ: कालरेषा"),
+    };
+    const timelineL1 = deficit - 600 - (900 + 55 + 900 + 2000 + 800 + 1500);
+    return [
+      chapterTopic(grade, "hist-timeline", book[grade]!, [
+        fHistAfter(`${g}hfL1`, 1, timelineL1, R(base, base + 80)),
+        fHistBefore(`${g}htL2`, 2, 900, R(2 + 40 * o, 41 + 40 * o)),
+        fHistBetween(`${g}hfL4`, 3, 55),
+        fHistAfter(`${g}hfL3`, 3, 900, R(base + 81, base + 150)),
+        fHistChain(`${g}htL4`, 4, 2000, R(2 + 5 * o, 6 + 5 * o), R(2, 25)),
+        fHistAge(`${g}htL5`, 5, 800, R(2, 40)),
+        fHistChainBack(`${g}htL6`, 6, 1500, R(2 + 9 * o, 10 + 9 * o), R(2, 60)),
+      ], "HISTORY"),
+      centuryTopic,
+    ];
+  }
+
+  // Era chapters. Bands stride by e = grade − 7 so chapters in different
+  // grades may share events without ever sharing a stem; within one grade the
+  // pools must be disjoint, asserted here.
+  const e = grade - 7;
+  const chapters = ERA_CHAPTERS[grade]!;
+  const seenKeys = new Set<string>();
+  for (const ch of chapters) {
+    for (const ev of ch.pool) {
+      if (seenKeys.has(ev.key)) throw new Error(`grade ${grade}: event ${ev.key} sits in two era chapters`);
+      seenKeys.add(ev.key);
+    }
+    const years = new Set(ch.pool.map((x) => x.year));
+    if (ch.pool.length < 10 || years.size < 10) {
+      throw new Error(`grade ${grade} ${ch.key}: pool of ${ch.pool.length} events / ${years.size} years cannot fill six rungs`);
+    }
+  }
+  // Landmark-year recall stays folded at L1 of the first chapter, its range
+  // trimmed to the grade's own book so the recall is chapter-true as well.
+  const recall: Template[] =
+    grade === 7 ? [fEventYear(`${g}early`, 1, 16, 1192, 1799)]
     : grade === 9 ? [fEventYear(`${g}modern`, 1, 24, 1901, 2000)]
     : [];
-  const yearRecallN = yearRecall.reduce((a, t) => a + t.want, 0);
-  // Centuries chapter holds a fixed 600; upper timeline rungs take fixed
-  // wants (chain/age spaces are wide); L1 absorbs the rest.
-  const timelineL1 = deficit - 600 - (900 + 55 + 900 + 2000 + 800 + 1500) - yearRecallN;
-  const book: Record<number, ChapterName> = {
-    3: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
-    4: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
-    5: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
-    6: CN("Our Pasts: Timelines", "हमारे अतीत: समयरेखाएँ", "आपले भूतकाळ: कालरेषा"),
-    7: CN("Our Pasts II: Timelines", "हमारे अतीत II: समयरेखाएँ", "आपले भूतकाळ II: कालरेषा"),
-    8: CN("Our Pasts III: Timelines", "हमारे अतीत III: समयरेखाएँ", "आपले भूतकाळ III: कालरेषा"),
-    9: CN("India and the Contemporary World: Timelines", "भारत और समकालीन विश्व: समयरेखाएँ", "भारत आणि समकालीन जग: कालरेषा"),
-    10: CN("India and the Contemporary World II: Timelines", "भारत और समकालीन विश्व II: समयरेखाएँ", "भारत आणि समकालीन जग II: कालरेषा"),
-    11: CN("Themes in World History: Timelines", "विश्व इतिहास के विषय: समयरेखाएँ", "जागतिक इतिहासातील विषय: कालरेषा"),
-    12: CN("Themes in Indian History: Timelines", "भारतीय इतिहास के विषय: समयरेखाएँ", "भारतीय इतिहासातील विषय: कालरेषा"),
-  };
-  const centuries = CN("Centuries and Calendars", "शताब्दियाँ और कैलेंडर", "शतके आणि दिनदर्शिका");
-  return [
-    chapterTopic(grade, "hist-timeline", book[grade]!, [
-      fHistAfter(`${g}hfL1`, 1, timelineL1, R(base, base + 80)),
-      ...yearRecall,
-      fHistBefore(`${g}htL2`, 2, 900, R(2 + 40 * o, 41 + 40 * o)),
-      fHistBetween(`${g}hfL4`, 3, 55),
-      fHistAfter(`${g}hfL3`, 3, 900, R(base + 81, base + 150)),
-      fHistChain(`${g}htL4`, 4, 2000, R(2 + 5 * o, 6 + 5 * o), R(2, 25)),
-      fHistAge(`${g}htL5`, 5, 800, R(2, 40)),
-      fHistChainBack(`${g}htL6`, 6, 1500, R(2 + 9 * o, 10 + 9 * o), R(2, 60)),
-    ], "HISTORY"),
-    chapterTopic(grade, "hist-century", centuries, [
-      fHistCentury(`${g}hfL2`, 1, 100, R(1201 + 140 * o, 1270 + 140 * o)),
-      fHistDecade(`${g}hcL2`, 2, 100, R(1450 + 50 * o, 1499 + 50 * o)),
-      fHistCentury(`${g}hfL6`, 3, 100, R(1271 + 140 * o, 1340 + 140 * o)),
-      fHistCenturyEnd(`${g}hcL4`, 4, 100, R(1101 + 60 * o, 1160 + 60 * o)),
-      fHistSpanCent(`${g}hcL5`, 5, 100, R(1301 + 50 * o, 1350 + 50 * o)),
-      fHistCentAfter(`${g}hcL6`, 6, 100, R(1421 + 40 * o, 1460 + 40 * o), R(2, 6)),
-    ], "HISTORY"),
-  ];
+  const recallN = recall.reduce((a, t) => a + t.want, 0);
+  const budgets = spread(deficit - 600, [0.34, 0.33, 0.33]);
+  const eraTopics = chapters.map((ch, ci) => {
+    const remaining = budgets[ci]! - (200 + 250 + 40 + 700 + 30 + 500) - (ci === 0 ? recallN : 0);
+    const l4 = Math.floor(remaining * 0.72);
+    const l1 = remaining - l4;
+    return chapterTopic(grade, ch.key, ch.name, [
+      fHistAfter(`${g}${ch.key}L1`, 1, l1, R(2 + 30 * e, 31 + 30 * e), ch.pool),
+      ...(ci === 0 ? recall : []),
+      fHistBefore(`${g}${ch.key}L2`, 2, 200, R(2 + 30 * e, 31 + 30 * e), ch.pool),
+      fHistAfter(`${g}${ch.key}L3`, 3, 250, R(202 + 30 * e, 231 + 30 * e), ch.pool),
+      fHistBetween(`${g}${ch.key}L3b`, 3, 40, ch.pool),
+      fHistChain(`${g}${ch.key}L4`, 4, l4, R(2 + 5 * e, 6 + 5 * e), R(2, 25), ch.pool),
+      fHistChainBack(`${g}${ch.key}L5`, 5, 700, R(2 + 9 * e, 10 + 9 * e), R(2, 30), ch.pool),
+      fHistMid(`${g}${ch.key}L5m`, 5, 30, ch.pool),
+      fHistChainBack(`${g}${ch.key}L6`, 6, 500, R(60 + 9 * e, 68 + 9 * e), R(2, 29), ch.pool),
+    ], "HISTORY");
+  });
+  return [...eraTopics, centuryTopic];
 }
 
 function civFiller(grade: number, deficit: number): TopicSpec[] {
