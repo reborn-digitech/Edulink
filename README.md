@@ -599,7 +599,14 @@ for the install button, and a native reader for the Hindi and Marathi.
    `tests/drill-bank.test.ts` pins the ratio: recall may never exceed 0.1% of
    the bank. The 105 hand-written questions are untouched; the generated
    Hindi/Marathi (templates AND fact-table names) carry the same native-reader
-   caveat as the rest of the app.
+   caveat as the rest of the app. A later pass rebuilt every chapter to climb
+   the FULL L1–L6 ladder — the one-step questions that used to pile at L1 were
+   scrapped and regenerated as multi-step Olympiad/NSO-style material at the
+   top rungs (harmonic-mean round trips, net forces, series circuits and
+   electricity bills, map areas scaling by n², timeline age chains, successive
+   discounts), still checkExpr-proven, still with a worked solution per
+   question in all three languages; `gradeTopics()` refuses any plan whose
+   chapter misses a rung.
 
 **The cheap thing got done.** Sections 2, 5, 7 and 8 were walked signed out and
 §§12m0–12q walked for the first time — roughly 150 boxes against a production
@@ -2025,9 +2032,10 @@ One line each, with the default rejected.
   REDONE across all six subjects when the ask was clarified.** The first cut
   was maths-only; the real ask was ~100,000 per grade split across the
   subjects. `npm run quiz:generate` now builds 1,005,000 questions (grades
-  3–12, 100,500 each, 132 topics over MATHS/SCIENCE/GEOGRAPHY/HISTORY/CIVICS/
-  ECONOMICS, six-level ladders, English/Hindi/Marathi on every row) in ~16s
-  and imports them in ~6.5min, deterministically — same run, same stems, same
+  3–12, 100,500 each, 246 chapter topics over MATHS/SCIENCE/GEOGRAPHY/HISTORY/
+  CIVICS/ECONOMICS, every chapter spanning the full L1–L6 ladder,
+  English/Hindi/Marathi on every row) in ~17s and imports them in ~9min,
+  deterministically — same run, same stems, same
   ids, so re-running is a no-op, editing a template is a clean diff, and the
   redo itself deleted the obsolete plan's topics before writing the new one. Every question's `checkExpr` is evaluated against its marked option
   BEFORE the row is written, through the same evaluator the verifier uses;
@@ -2125,7 +2133,7 @@ navigation" means the actual list rather than one somebody maintained by hand.
   the database, split across ALL SIX SUBJECTS**: 1,005,000 generated drills
   (grades 3–12, exactly 100,500 each; per grade, maths 40–55k, science
   18–27k, geography 10–12k, history 8–10k, civics 4.5–6.5k, economics 5–7k,
-  across 132 topics) beside the 105 hand-written (9 topics). How the two
+  across 246 chapter topics) beside the 105 hand-written (9 topics). How the two
   positions below survived the scale-up matters more than the number:
 
   **Not scraped — unchanged.** Nothing was copied from anywhere. The generated
@@ -2178,12 +2186,35 @@ navigation" means the actual list rather than one somebody maintained by hand.
   syllabus has no numerical chapter (grade-3 EVS has no Ohm's law). The
   regroup moved the SAME template instances (same stems, same wants — the dry
   run reproduced every grade at exactly 100,500 before anything was written),
-  so it was renaming and repartitioning, not regeneration: **261 topics** now,
-  each named in English, Hindi and Marathi. The honest limit: HISTORY timeline
-  topics carry the NCERT book umbrella ("India and the Contemporary World:
-  Timelines") rather than per-chapter names, because chapter-true history —
-  only 1857-era events inside "When People Rebel" — needs a curated events
-  table ten times the current 27 rows before the drills would fill it.
+  so it was renaming and repartitioning, not regeneration: 261 topics at that
+  point, each named in English, Hindi and Marathi. The honest limit: HISTORY
+  timeline topics carry the NCERT book umbrella ("India and the Contemporary
+  World: Timelines") rather than per-chapter names, because chapter-true
+  history — only 1857-era events inside "When People Rebel" — needs a curated
+  events table ten times the current 27 rows before the drills would fill it.
+
+  **Then every chapter got the full six-rung ladder.** The regrouped chapters
+  had inherited flat difficulty — six thousand one-step Ohm's-law reps at L1
+  and nothing above — so the excess bottom-rung questions were scrapped and
+  regenerated as genuinely harder material: ~60 new trilingual template
+  families modelled on Olympiad/NSO/competitive-exam patterns (harmonic-mean
+  round trips, alloy densities, net forces and lift tension, series circuits,
+  I²R power and electricity-bill costing, map areas scaling by n²,
+  longitude↔time across the prime meridian, event-age and back-then-forward
+  timeline chains, present-and-voting majorities, joint-sitting two-thirds,
+  successive discounts, markup-then-discount profit). All 246 generated
+  chapters now span exactly L1–L6 — enforced by an assertion in
+  `gradeTopics()` and re-verified against the live rows — and the bank-wide
+  mix went from L1-heavy (370k at L1) to a proper pyramid (L1 151k · L2 144k ·
+  L3 213k · L4 219k · L5 161k · L6 116k). The six recall micro-topics
+  (capitals, elements, landmark years, the Constitution's numbers) folded in
+  as L1 rungs of their chapters, so **255 topics** now: 246 generated + 9
+  hand-written. Same honesty rule throughout: every new question proven
+  through the shared evaluator before writing, a worked solution on every row
+  in all three languages, and `importTopic()` now repairs the stored
+  difficulty of any question whose stem survived a rebalance (same
+  content-hash id, new level — previously a silent drift). After the rebuild:
+  1406/1406 tests, 315/315 sweep, typecheck/lint/RLS/i18n audit unchanged.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
