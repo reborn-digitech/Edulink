@@ -38,28 +38,28 @@ export default async function VerifyPage({
 }: {
   searchParams: Promise<{ token?: string }>;
 }) {
+  const t = await getT();
   const { token } = await searchParams;
   const result = await verifyEmailByToken(token);
 
   // Where to send them next. Somebody already signed in has somewhere to be;
   // somebody who opened this on a different device does not, and gets the door.
   const session = await getSession();
-  const onwards = session ? { href: "/account", label: "Go to your account" } : null;
+  const onwards = session ? { href: "/account", label: t("verify.goToAccount") } : null;
 
   return (
     <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-sm">
-        <Link href="/" className="mb-8 inline-block" aria-label="EduLink home">
+        <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
           <Wordmark />
         </Link>
 
         {result.ok && (
           <>
             <CheckCircleIcon weight="duotone" className="size-9 text-ok" />
-            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">Email confirmed</h1>
+            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.confirmed")}</h1>
             <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              <strong className="break-all font-semibold text-fg">{result.email}</strong> is
-              confirmed. Password resets and school notices will reach you there.
+              {t("verify.confirmedBody", { email: result.email ?? "" })}
             </p>
           </>
         )}
@@ -70,27 +70,19 @@ export default async function VerifyPage({
                 prefetched the link before they clicked it. Saying "invalid"
                 here would worry a person whose address is perfectly fine. */}
             <CheckCircleIcon weight="duotone" className="size-9 text-ok" />
-            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">Already confirmed</h1>
-            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              That link has been used. Nothing more to do — your address is confirmed.
-            </p>
+            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.alreadyConfirmed")}</h1>
+            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("verify.alreadyConfirmedBody")}</p>
           </>
         )}
 
         {!result.ok && result.reason === "EXPIRED" && (
           <>
             <ClockCountdownIcon weight="duotone" className="size-9 text-warn" />
-            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">That link has expired</h1>
+            <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.expired")}</h1>
             <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              Confirmation links last 48 hours. We can send a new one to
-              {result.email ? (
-                <>
-                  {" "}
-                  <strong className="break-all font-semibold text-fg">{result.email}</strong>.
-                </>
-              ) : (
-                " the address on your account."
-              )}
+              {result.email
+                ? t("verify.expiredBodyWithEmail", { email: result.email })
+                : t("verify.expiredBodyNoEmail")}
             </p>
             {/* The TOKEN goes back, never the user id — see the note on the
                 action. It is expired, so it is not a credential; it is only a
@@ -103,12 +95,9 @@ export default async function VerifyPage({
           <>
             <WarningCircleIcon weight="duotone" className="size-9 text-warn" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">
-              That address has changed
+              {t("verify.changed")}
             </h1>
-            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              This link confirms an address the account no longer uses, so it cannot be applied.
-              Sign in and confirm the current address from your account page.
-            </p>
+            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("verify.changedBody")}</p>
           </>
         )}
 
@@ -116,12 +105,9 @@ export default async function VerifyPage({
           <>
             <WarningCircleIcon weight="duotone" className="size-9 text-danger" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">
-              That link does not work
+              {t("verify.broken")}
             </h1>
-            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              It may have been mistyped or cut in half by a mail app. Sign in and send yourself a
-              fresh one from your account page.
-            </p>
+            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("verify.brokenBody")}</p>
           </>
         )}
 
@@ -132,7 +118,7 @@ export default async function VerifyPage({
             </Button>
           ) : (
             <Button asChild size="sm">
-              <Link href="/login">Log in</Link>
+              <Link href="/login">{t("login.title")}</Link>
             </Button>
           )}
         </div>

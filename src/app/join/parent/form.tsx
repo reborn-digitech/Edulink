@@ -9,8 +9,10 @@ import { useToast } from "@/components/ui/toast";
 import { passwordStrength } from "@/lib/password-strength";
 import { cn } from "@/lib/cn";
 import { signUpParent } from "../actions";
+import { useT } from "@/lib/i18n";
 
 export function ParentSignupForm({ className }: { className?: string }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -29,10 +31,10 @@ export function ParentSignupForm({ className }: { className?: string }) {
     setErrors({});
 
     const next: Record<string, string> = {};
-    if (name.trim().length < 2) next.name = "Enter your full name.";
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) next.email = "Enter a valid email address.";
+    if (name.trim().length < 2) next.name = t("register.enterFullName");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) next.email = t("register.enterValidEmail");
     if (strength.problems.length > 0) next.password = strength.problems[0]!;
-    if (!consentSharing) next.consentSharing = "We need your consent to show you your child's data.";
+    if (!consentSharing) next.consentSharing = t("join.needConsent");
     if (Object.keys(next).length > 0) {
       setErrors(next);
       return;
@@ -52,7 +54,7 @@ export function ParentSignupForm({ className }: { className?: string }) {
         return;
       }
 
-      toast({ tone: "ok", title: "Account created" });
+      toast({ tone: "ok", title: t("join.accountCreated") });
       router.push(result.redirectTo ?? "/parent/link");
       router.refresh();
     });
@@ -70,23 +72,23 @@ export function ParentSignupForm({ className }: { className?: string }) {
       )}
 
       <TextField
-        label="Your full name"
+        label={t("register.yourName")}
         required
         autoFocus
         autoComplete="name"
-        placeholder="Jordan Okafor"
+        placeholder={t("join.parentNamePlaceholder")}
         value={name}
         error={errors.name}
         onChange={(e) => setName(e.target.value)}
       />
 
       <TextField
-        label="Your email"
+        label={t("register.yourEmail")}
         required
         type="email"
         inputMode="email"
         autoComplete="email"
-        placeholder="you@example.com"
+        placeholder={t("join.genericEmailPlaceholder")}
         value={email}
         error={errors.email}
         onChange={(e) => setEmail(e.target.value)}
@@ -94,14 +96,14 @@ export function ParentSignupForm({ className }: { className?: string }) {
 
       <div>
         <TextField
-          label="Password"
+          label={t("register.password")}
           required
           type="password"
           autoComplete="new-password"
           value={password}
           error={errors.password}
           onChange={(e) => setPassword(e.target.value)}
-          hint="At least 10 characters."
+          hint={t("join.passwordHintShort")}
         />
         {password.length > 0 && (
           <div className="mt-2">
@@ -132,22 +134,22 @@ export function ParentSignupForm({ className }: { className?: string }) {
       {/* Consent is recorded separately for sharing and for notifications, and
           both are timestamped on the guardianship row. (§6) */}
       <CheckboxField
-        label="I consent to seeing my child's school data"
-        description="Attendance, grades, teacher remarks and school notices. You can withdraw this at any time, and we log every time it is used."
+        label={t("join.consentSharing")}
+        description={t("join.consentSharingBody")}
         checked={consentSharing}
         error={errors.consentSharing}
         onChange={(e) => setConsentSharing(e.target.checked)}
       />
 
       <CheckboxField
-        label="Send me notifications"
-        description="Absences, new grades and teacher messages. You choose the channels and quiet hours afterwards."
+        label={t("join.consentNotifications")}
+        description={t("join.consentNotificationsBody")}
         checked={consentNotifications}
         onChange={(e) => setConsentNotifications(e.target.checked)}
       />
 
       <Button type="submit" block size="lg" loading={pending} iconRight={<ArrowRightIcon weight="bold" />}>
-        {pending ? "Creating your account…" : "Create account"}
+        {pending ? t("join.creatingAccount") : t("join.createAccountCta")}
       </Button>
     </form>
   );

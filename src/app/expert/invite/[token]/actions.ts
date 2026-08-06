@@ -8,6 +8,8 @@ import { createSession } from "@/lib/session";
 import { acceptExpertInvite, readExpertInvite } from "@/lib/experts";
 import { audit } from "@/lib/audit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { getLocale } from "@/lib/i18n/server";
+import { writeJson } from "@/lib/json";
 
 /**
  * ⚠ `errorKey` AND `error`, same split as the other expert actions.
@@ -57,7 +59,14 @@ export async function acceptInvite(
     if (taken) return { ok: false, errorKey: "expert.emailTaken" };
 
     const user = await db.user.create({
-      data: { email, name, passwordHash: await hashPassword(input.password), prefs: "{}" },
+      data: {
+        email,
+        name,
+        passwordHash: await hashPassword(input.password),
+        // The language they accepted in. `"{}"` here meant every expert account
+        // came out English whatever page they had just read.
+        prefs: writeJson({ locale: await getLocale() }),
+      },
       select: { id: true },
     });
 

@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ParentJoinPage() {
+  const t = await getT();
   const session = await getSession();
   // Already signed in but with no children linked yet -> straight to the claim.
   if (session?.role) redirect(ROLE_HOME[session.role]);
@@ -23,7 +24,7 @@ export default async function ParentJoinPage() {
     <div data-role="parent" className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-lg items-center justify-between px-4">
-          <Link href="/" aria-label="EduLink home">
+          <Link href="/" aria-label={t("common.homeLink")}>
             <Wordmark size={26} />
           </Link>
           <Link
@@ -31,24 +32,21 @@ export default async function ParentJoinPage() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
           >
             <ArrowLeftIcon weight="bold" className="size-4" />
-            Back
+            {t("common.back")}
           </Link>
         </div>
       </header>
 
       <main id="main" className="mx-auto max-w-lg px-4 py-10 sm:py-14">
-        <h1 className="text-3xl font-bold tracking-tight text-fg">Create your account</h1>
-        <p className="mt-2 text-fg-muted">
-          One account covers every one of your children, even if they are at different
-          schools. Next you will link to them.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight text-fg">{t("join.createAccountTitle")}</h1>
+        <p className="mt-2 text-fg-muted">{t("join.createAccountBody")}</p>
 
         <ParentSignupForm className="mt-8" />
 
         <p className="mt-8 text-center text-sm text-fg-muted">
-          Already have an account?{" "}
+          {t("register.alreadyHaveAccount")}{" "}
           <Link href="/login" className="font-semibold text-accent-strong underline underline-offset-4">
-            Log in
+            {t("login.title")}
           </Link>
         </p>
       </main>

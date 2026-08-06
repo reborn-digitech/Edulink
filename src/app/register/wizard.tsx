@@ -17,6 +17,8 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { registerSchool, checkEmailAvailable } from "./actions";
 import { passwordStrength } from "@/lib/password-strength";
+import { useT } from "@/lib/i18n";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Three-step school registration.
@@ -30,11 +32,12 @@ import { passwordStrength } from "@/lib/password-strength";
  *   * Steps are not skippable forward, but always navigable backward.
  */
 
+/** ⚠ KEYS, NOT WORDS — the step rail is rendered on every step. */
 const STEPS = [
-  { id: "school", label: "Your school", icon: BuildingsIcon },
-  { id: "admin", label: "Your account", icon: UserCircleIcon },
-  { id: "confirm", label: "Confirm", icon: ShieldCheckIcon },
-] as const;
+  { id: "school", labelKey: "register.stepSchool", icon: BuildingsIcon },
+  { id: "admin", labelKey: "register.stepAccount", icon: UserCircleIcon },
+  { id: "confirm", labelKey: "register.stepConfirm", icon: ShieldCheckIcon },
+] as const satisfies readonly { id: string; labelKey: TranslationKey; icon: unknown }[];
 
 const DRAFT_KEY = "edulink.register.draft";
 
@@ -67,6 +70,7 @@ const EMPTY: Draft = {
 };
 
 export function RegisterWizard() {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -133,27 +137,27 @@ export function RegisterWizard() {
     const next: Record<string, string> = {};
 
     if (index === 0) {
-      if (draft.name.trim().length < 2) next.name = "Enter your school's name.";
+      if (draft.name.trim().length < 2) next.name = t("register.enterSchoolName");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(draft.contactEmail.trim())) {
-        next.contactEmail = "Enter a valid contact email for the school.";
+        next.contactEmail = t("register.enterContactEmail");
       }
       if (draft.website && !/^https?:\/\/\S+\.\S+/.test(draft.website.trim())) {
-        next.website = "Start with http:// or https://";
+        next.website = t("register.websiteScheme");
       }
     }
 
     if (index === 1) {
-      if (draft.adminName.trim().length < 2) next.adminName = "Enter your full name.";
+      if (draft.adminName.trim().length < 2) next.adminName = t("register.enterFullName");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(draft.adminEmail.trim())) {
-        next.adminEmail = "Enter a valid email address.";
+        next.adminEmail = t("register.enterValidEmail");
       } else if (emailTaken) {
-        next.adminEmail = "An account already uses this email. Log in instead.";
+        next.adminEmail = t("register.emailTaken");
       }
       if (strength.problems.length > 0) next.password = strength.problems[0]!;
     }
 
     if (index === 2 && !accepted) {
-      next.accepted = "Please confirm you are authorised to set up this school.";
+      next.accepted = t("register.confirmAuthorised");
     }
 
     setErrors(next);
@@ -198,8 +202,8 @@ export function RegisterWizard() {
         else if (keys.some((k) => k.startsWith("admin."))) setStep(1);
         toast({
           tone: "danger",
-          title: "We could not finish that",
-          description: result.errors._form ?? "Please check the highlighted fields.",
+          title: t("register.couldNotFinish"),
+          description: result.errors._form ?? t("register.checkFields"),
         });
         return;
       }
@@ -213,13 +217,15 @@ export function RegisterWizard() {
     });
   }
 
-  if (done) return <SuccessPanel code={done.code} onContinue={() => router.push("/admin?welcome=1")} />;
+  if (done) {
+    return <SuccessPanel t={t} code={done.code} onContinue={() => router.push("/admin?welcome=1")} />;
+  }
 
   const StepIcon = STEPS[step]!.icon;
 
   return (
     <div>
-      <ol className="mb-8 flex items-center gap-2" aria-label="Progress">
+      <ol className="mb-8 flex items-center gap-2" aria-label={t("register.progress")}>
         {STEPS.map((s, i) => {
           const state = i < step ? "done" : i === step ? "current" : "todo";
           return (
@@ -252,7 +258,7 @@ export function RegisterWizard() {
                     state === "current" ? "text-fg" : "text-fg-muted",
                   )}
                 >
-                  {s.label}
+                  {t(s.labelKey)}
                 </span>
               </button>
               {i < STEPS.length - 1 && (
@@ -277,14 +283,14 @@ export function RegisterWizard() {
               tabIndex={-1}
               className="text-xl font-bold tracking-tight text-fg outline-none sm:text-2xl"
             >
-              {step === 0 && "Tell us about your school"}
-              {step === 1 && "Create your admin account"}
-              {step === 2 && "One last check"}
+              {step === 0 && t("register.schoolTitle")}
+              {step === 1 && t("register.accountTitle")}
+              {step === 2 && t("register.confirmTitle")}
             </h1>
             <p className="mt-0.5 text-sm text-fg-muted">
-              {step === 0 && "Only the name and a contact email are required — the rest can wait."}
-              {step === 1 && "This is the account you will use to run the school."}
-              {step === 2 && "Confirm and we will set everything up."}
+              {step === 0 && t("register.schoolBody")}
+              {step === 1 && t("register.accountBody")}
+              {step === 2 && t("register.confirmBody")}
             </p>
           </div>
         </div>
@@ -301,46 +307,46 @@ export function RegisterWizard() {
         {step === 0 && (
           <div className="space-y-5">
             <TextField
-              label="School name"
+              label={t("register.schoolName")}
               required
               autoFocus
               autoComplete="organization"
-              placeholder="Riverside Primary School"
+              placeholder={t("register.schoolNamePlaceholder")}
               value={draft.name}
               error={errors.name}
               onChange={(e) => set("name", e.target.value)}
               onBlur={() => validateStep(0)}
-              hint="This is what students, parents and teachers will see."
+              hint={t("register.schoolNameHint")}
             />
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField
-                label="School contact email"
+                label={t("register.contactEmail")}
                 required
                 type="email"
                 inputMode="email"
                 autoComplete="email"
-                placeholder="office@riverside.school"
+                placeholder={t("register.contactEmailPlaceholder")}
                 value={draft.contactEmail}
                 error={errors.contactEmail}
                 onChange={(e) => set("contactEmail", e.target.value)}
               />
               <TextField
-                label="Phone"
+                label={t("register.phone")}
                 type="tel"
                 inputMode="tel"
                 autoComplete="tel"
-                placeholder="Optional"
+                placeholder={t("common.optional")}
                 value={draft.contactPhone}
                 onChange={(e) => set("contactPhone", e.target.value)}
               />
             </div>
 
             <TextField
-              label="Website"
+              label={t("register.website")}
               type="url"
               inputMode="url"
-              placeholder="https://riverside.school"
+              placeholder={t("register.websitePlaceholder")}
               value={draft.website}
               error={errors.website}
               onChange={(e) => set("website", e.target.value)}
@@ -348,16 +354,16 @@ export function RegisterWizard() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField
-                label="Town or city"
+                label={t("register.city")}
                 autoComplete="address-level2"
-                placeholder="Optional"
+                placeholder={t("common.optional")}
                 value={draft.city}
                 onChange={(e) => set("city", e.target.value)}
               />
               <TextField
-                label="Country"
+                label={t("register.country")}
                 autoComplete="country-name"
-                placeholder="Optional"
+                placeholder={t("common.optional")}
                 value={draft.country}
                 onChange={(e) => set("country", e.target.value)}
               />
@@ -365,25 +371,25 @@ export function RegisterWizard() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField
-                label="Lowest grade"
-                placeholder="e.g. K"
+                label={t("register.gradeLow")}
+                placeholder={t("register.gradeLowPlaceholder")}
                 value={draft.gradeLow}
                 onChange={(e) => set("gradeLow", e.target.value)}
               />
               <TextField
-                label="Highest grade"
-                placeholder="e.g. 6"
+                label={t("register.gradeHigh")}
+                placeholder={t("register.gradeHighPlaceholder")}
                 value={draft.gradeHigh}
                 onChange={(e) => set("gradeHigh", e.target.value)}
               />
             </div>
 
             <SelectField
-              label="Timezone"
+              label={t("register.timezone")}
               required
               value={draft.timezone}
               onChange={(e) => set("timezone", e.target.value)}
-              hint="Attendance days and due dates are worked out in this timezone."
+              hint={t("register.timezoneHint")}
             >
               {timezones.map((tz) => (
                 <option key={tz} value={tz}>
@@ -397,23 +403,23 @@ export function RegisterWizard() {
         {step === 1 && (
           <div className="space-y-5">
             <TextField
-              label="Your full name"
+              label={t("register.yourName")}
               required
               autoFocus
               autoComplete="name"
-              placeholder="Priya Raman"
+              placeholder={t("register.yourNamePlaceholder")}
               value={draft.adminName}
               error={errors.adminName}
               onChange={(e) => set("adminName", e.target.value)}
             />
 
             <TextField
-              label="Your email"
+              label={t("register.yourEmail")}
               required
               type="email"
               inputMode="email"
               autoComplete="email"
-              placeholder="priya@riverside.school"
+              placeholder={t("register.yourEmailPlaceholder")}
               value={draft.adminEmail}
               error={errors.adminEmail}
               onChange={(e) => {
@@ -428,16 +434,16 @@ export function RegisterWizard() {
                 if (!available) {
                   setErrors((e) => ({
                     ...e,
-                    adminEmail: "An account already uses this email. Log in instead.",
+                    adminEmail: t("register.emailTaken"),
                   }));
                 }
               }}
-              hint="We will send a confirmation link here."
+              hint={t("register.yourEmailHint")}
             />
 
             <div>
               <TextField
-                label="Password"
+                label={t("register.password")}
                 required
                 type="password"
                 autoComplete="new-password"
@@ -451,7 +457,7 @@ export function RegisterWizard() {
                     return nextErrors;
                   });
                 }}
-                hint="At least 10 characters. A short sentence works well."
+                hint={t("register.passwordHint")}
               />
               {password.length > 0 && <StrengthMeter strength={strength} />}
             </div>
@@ -461,16 +467,21 @@ export function RegisterWizard() {
         {step === 2 && (
           <div className="space-y-5">
             <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
-              <Row label="School" value={draft.name} />
-              <Row label="Contact" value={draft.contactEmail} />
-              {draft.city && <Row label="Location" value={[draft.city, draft.country].filter(Boolean).join(", ")} />}
-              <Row label="Timezone" value={draft.timezone} />
-              <Row label="Admin" value={`${draft.adminName} · ${draft.adminEmail}`} />
+              <Row label={t("register.rowSchool")} value={draft.name} />
+              <Row label={t("register.rowContact")} value={draft.contactEmail} />
+              {draft.city && (
+                <Row
+                  label={t("register.rowLocation")}
+                  value={[draft.city, draft.country].filter(Boolean).join(", ")}
+                />
+              )}
+              <Row label={t("register.rowTimezone")} value={draft.timezone} />
+              <Row label={t("register.rowAdmin")} value={`${draft.adminName} · ${draft.adminEmail}`} />
             </dl>
 
             <CheckboxField
-              label="I am authorised to set up EduLink for this school"
-              description="You will be the first admin. You can add more admins straight afterwards."
+              label={t("register.authorisedLabel")}
+              description={t("register.authorisedDescription")}
               checked={accepted}
               error={errors.accepted}
               onChange={(e) => {
@@ -484,9 +495,7 @@ export function RegisterWizard() {
             />
 
             <p className="rounded-[--radius-md] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
-              EduLink stores children&rsquo;s data on behalf of your school. Student profiles are never
-              public, posts to the wider feed are reviewed before anyone outside the school sees
-              them, and you can export or delete everything at any time from your settings.
+              {t("register.dataNote")}
             </p>
           </div>
         )}
@@ -498,16 +507,16 @@ export function RegisterWizard() {
             disabled={step === 0 || pending}
             icon={<ArrowLeftIcon weight="bold" />}
           >
-            Back
+            {t("common.back")}
           </Button>
 
           {step < STEPS.length - 1 ? (
             <Button onClick={next} iconRight={<ArrowRightIcon weight="bold" />}>
-              Continue
+              {t("register.continue")}
             </Button>
           ) : (
             <Button onClick={submit} loading={pending} iconRight={<ArrowRightIcon weight="bold" />}>
-              {pending ? "Creating your school…" : "Create my school"}
+              {pending ? t("register.creating") : t("register.createSchool")}
             </Button>
           )}
         </div>
@@ -555,7 +564,15 @@ function StrengthMeter({ strength }: { strength: ReturnType<typeof passwordStren
   );
 }
 
-function SuccessPanel({ code, onContinue }: { code: string; onContinue: () => void }) {
+function SuccessPanel({
+  t,
+  code,
+  onContinue,
+}: {
+  t: Translate;
+  code: string;
+  onContinue: () => void;
+}) {
   const { toast } = useToast();
 
   return (
@@ -564,11 +581,8 @@ function SuccessPanel({ code, onContinue }: { code: string; onContinue: () => vo
         <CheckCircleIcon weight="fill" className="size-12" />
       </div>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Your school is ready</h1>
-      <p className="mx-auto mt-2 max-w-md text-fg-muted">
-        This is your school code. Teachers and students use it to join — write it on the board, or
-        share it in the invite emails we are about to help you send.
-      </p>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("register.readyTitle")}</h1>
+      <p className="mx-auto mt-2 max-w-md text-fg-muted">{t("register.readyBody")}</p>
 
       <div className="mx-auto mt-6 flex max-w-xs items-center gap-2">
         <code className="flex-1 rounded-[--radius-md] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
@@ -577,15 +591,19 @@ function SuccessPanel({ code, onContinue }: { code: string; onContinue: () => vo
         <Button
           variant="secondary"
           size="icon"
-          aria-label="Copy school code"
+          aria-label={t("register.copyCode")}
           onClick={async () => {
             try {
               await navigator.clipboard.writeText(code);
-              toast({ tone: "ok", title: "School code copied" });
+              toast({ tone: "ok", title: t("register.codeCopied") });
             } catch {
               // Clipboard is permission-gated and blocked in some contexts;
               // the code is visible on screen either way.
-              toast({ tone: "warn", title: "Could not copy", description: "Select the code to copy it." });
+              toast({
+                tone: "warn",
+                title: t("register.couldNotCopy"),
+                description: t("register.couldNotCopyBody"),
+              });
             }
           }}
         >
@@ -594,7 +612,7 @@ function SuccessPanel({ code, onContinue }: { code: string; onContinue: () => vo
       </div>
 
       <Button className="mt-8" size="lg" onClick={onContinue} iconRight={<ArrowRightIcon weight="bold" />}>
-        Go to my dashboard
+        {t("landing.goToDashboard")}
       </Button>
     </div>
   );

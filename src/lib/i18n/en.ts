@@ -255,6 +255,413 @@ export const en = {
   /* ---------------------------------------------------------------------- */
   /* Logging in                                                              */
   /* ---------------------------------------------------------------------- */
+  /* ---------------------------------------------------------------------- */
+  /* The landing page — the FIRST thing anybody sees, and until now the one   */
+  /* page in the app that could only be read in English. A parent sent a link */
+  /* by their child's school met a wall of English before they had any way to */
+  /* change the language.                                                     */
+  /* ---------------------------------------------------------------------- */
+  landing: {
+    metaDescription:
+      "Attendance in ten seconds. Grades parents actually see. A calm, safe place for schools, students and families. Installs as an app and works offline.",
+
+    joinWithCode: "Join with a code",
+    goToDashboard: "Go to my dashboard",
+    registerSchool: "Register your school",
+
+    badge: "Works offline · Installs like a real app",
+    /* Two halves of one sentence, because the second is set in a gradient on
+       its own line. Kept apart so a translator can put the break where the
+       grammar wants it rather than where English happens to need it. */
+    heroLead: "School and home,",
+    heroEmphasis: "finally on the same page.",
+    heroBody:
+      "Take the register in ten seconds — even with no signal. Parents see attendance, grades and teacher notes the moment they happen. Children get a place that is genuinely theirs, and genuinely safe.",
+    ctaRegister: "Register your school — free",
+    ctaHaveCode: "I have a school code",
+    noCardNeeded: "No card needed. Set up in about five minutes.",
+
+    rolesTitle: "One app. Four very different days.",
+    rolesBody: "EduLink shows each person exactly what they need and nothing they do not.",
+
+    teachers: "Teachers",
+    teachersLead: "Ten seconds, not ten minutes.",
+    teachersPoint1: "One-tap register that works with no signal",
+    teachersPoint2: "Assignments and grading in the same place",
+    teachersPoint3: "Message a parent without giving out your number",
+
+    students: "Students",
+    studentsLead: "A place that feels like yours.",
+    studentsPoint1: "Today's work, no scrolling required",
+    studentsPoint2: "Pick an avatar, collect gentle streaks",
+    studentsPoint3: "Share what you have made — safely reviewed first",
+
+    parents: "Parents",
+    parentsLead: "Know before you have to ask.",
+    parentsPoint1: "Attendance and grades for every child, one screen",
+    parentsPoint2: "Reply to a teacher without a phone-tag chain",
+    parentsPoint3: "Choose what you get told, and when",
+
+    admins: "School admins",
+    adminsLead: "See the whole school clearly.",
+    adminsPoint1: "Invite staff and classes in bulk",
+    adminsPoint2: "Attendance and engagement trends",
+    adminsPoint3: "Moderation queue and full audit trail",
+
+    offlineTitle: "Built for the back of the field trip bus",
+    offlineBody:
+      "Mark the register with no bars at all. Your changes queue on the device and sync themselves the moment signal returns — nothing to remember, nothing to re-enter.",
+    installTitle: "A real app, without an app store",
+    installBody:
+      "Install straight from the browser on Android. Home-screen icon, full screen, push notifications that arrive when the app is closed. No downloads, no approvals, no waiting.",
+    safeTitle: "Safe by construction, not by policy",
+    safeBody:
+      "Every school's data is walled off. Children's posts are reviewed before anyone sees them. No public profiles, no student-to-stranger messaging, full export and deletion on request.",
+
+    setupTitle: "Set up your school before your tea goes cold",
+    step1Title: "Register the school",
+    step1Body: "Name, logo, contact. You get a code like RIVER-7X9K.",
+    step2Title: "Invite your teachers",
+    step2Body: "Paste a list of emails or upload a CSV. One click each to accept.",
+    step3Title: "Share the class code",
+    step3Body:
+      "Students join with a code or the classroom QR. Parents link to their child.",
+    startCta: "Start with your school",
+
+    footerRegister: "Register a school",
+    footerOffline: "Offline",
+    footerTagline: "Built for schools, students and families.",
+
+    /* The mock register on the hero. FAKE DATA ON PURPOSE — no school's real
+       roster is on the front page — but it is read like any other screen, so
+       the words around the fake names are translated like any other screen. */
+    previewClass: "Grade 5 · Sunflower",
+    previewMeta: "Monday 27 July · 24 students",
+    previewOffline: "Offline",
+    previewSaved: "6 saved on this device",
+    previewNotified: "Parents notified on sync",
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* Registering a school — three steps, and the first thing a head teacher   */
+  /* ever types into this product.                                            */
+  /* ---------------------------------------------------------------------- */
+  /* ---------------------------------------------------------------------- */
+  /* Getting in — the pupil's four-screen flow, the guardian's sign-up, and   */
+  /* the page that decides which of those you are.                            */
+  /* ---------------------------------------------------------------------- */
+  invite: {
+    invalidTitle: "This invitation is no longer valid",
+    invalidBody:
+      "It may have been used already, withdrawn, or simply expired. Ask whoever invited you to send a fresh link — it only takes them a moment.",
+    goToLogIn: "Go to log in",
+
+    roleInvitation: "{role} invitation",
+    addSchoolToAccount: "Add {school} to your account",
+    joinSchool: "Join {school}",
+    /* ⚠ WHOLE SENTENCES, ONE PER CASE. This paragraph used to be assembled
+       from four JSX fragments — "{inviter} invited you" + "at {email}" + ", which
+       already has an account…" — which bakes English word order and English
+       punctuation into the markup. Hindi and Marathi put the postposition after
+       the address and end the clause differently; no arrangement of those
+       fragments reads correctly. Six keys is more than four fragments and it is
+       the only version a translator can actually move around. */
+    invitedBy: "{name} invited you.",
+    invitedByAt: "{name} invited you, at {email}.",
+    invitedToHelpRun: "You have been invited to help run this school.",
+    invitedToHelpRunAt: "You have been invited to help run this school, at {email}.",
+    invitedToJoin: "You have been invited to join this school.",
+    invitedToJoinAt: "You have been invited to join this school, at {email}.",
+    transferNote:
+      "That address already has an EduLink account. Accepting adds this school to it — your password does not change, and everything already on your account comes with you.",
+    signupNote: "Set a password and you are in.",
+    changedSchool:
+      "Changed school? This is the right way to do it. Your record from your last school travels with your account, so {school} can see where you came from.",
+    signedInAs:
+      "You are signed in as {name}. Accepting this invitation will sign you out and sign in as {invited}.",
+    thePersonItWasSentTo: "the person it was sent to",
+
+    fullName: "Your full name",
+    fullNamePlaceholder: "Tom Fielding",
+    birthdate: "Your date of birth",
+    birthdateHint:
+      "Optional. Your school uses it for the birthday calendar, and a parent needs it to link to their child.",
+    choosePassword: "Choose a password",
+    passwordHint: "At least 10 characters. A short sentence works well.",
+    roleAtSchool: "Your role at the school",
+    roleAtSchoolPlaceholder: "Class teacher",
+    roleAtSchoolHint: "Optional — shown in the school directory.",
+    subjects: "Subjects you teach",
+    subjectPlaceholder: "Mathematics",
+    removeSubject: "Remove {subject}",
+    bio: "A short bio",
+    bioPlaceholder: "I have taught Year 5 at Riverside for six years.",
+    bioHint: "Optional — parents and students see this.",
+    didNotWork: "That did not work",
+    addedToAccount: "Added to your account",
+    welcomeAboard: "You're in — welcome aboard",
+    signInAsAlways: "Sign in as you always have.",
+
+    tooManyAttempts: "Too many attempts from here. Try again {when}.",
+    noLongerValid: "That invitation is no longer valid.",
+    expired: "That invitation has expired. Ask your admin to send a new one.",
+    noEmailAttached: "That invitation has no email address attached.",
+    alreadyUsed: "That invitation has already been used.",
+    couldNotComplete: "We could not complete that. Please try again.",
+  },
+  forgot: {
+    title: "Set a new password",
+    subtitle: "Tell us your email or mobile number and we will send a code.",
+    rememberedIt: "Remembered it?",
+    backToLogIn: "Back to log in",
+
+    codeSent:
+      "If an account exists for {who}, a six-digit code is on its way. It works once and expires in 10 minutes.",
+    numberEnding: "the number ending {digits}",
+    theCode: "The code",
+    codePlaceholder: "000000",
+    newPassword: "Your new password",
+    newPasswordHint:
+      "At least 10 characters. Everything signed in right now will be signed out.",
+    setNewPassword: "Set the new password",
+    useDifferent: "Use a different email or number",
+    sendAnother: "Send another code",
+
+    identifierLabel: "Email or mobile number",
+    identifierPlaceholder: "you@school.org or 98765 43210",
+    hintEmpty: "Whichever the school has for you.",
+    hintPhone: "We will text a code to this number.",
+    hintEmail: "We will email a code to this address.",
+    hintHandle:
+      "That looks like a school login name. If it has no email or mobile number on it, ask your school to reset it for you.",
+    sendMeCode: "Send me a code",
+    passwordChanged: "Password changed",
+    passwordChangedBody: "You have been signed out everywhere. Log in with the new one.",
+  },
+  verify: {
+    confirmed: "Email confirmed",
+    confirmedBody:
+      "{email} is confirmed. Password resets and school notices will reach you there.",
+    alreadyConfirmed: "Already confirmed",
+    alreadyConfirmedBody:
+      "That link has been used. Nothing more to do — your address is confirmed.",
+    expired: "That link has expired",
+    expiredBodyWithEmail: "Confirmation links last 48 hours. We can send a new one to {email}.",
+    expiredBodyNoEmail:
+      "Confirmation links last 48 hours. We can send a new one to the address on your account.",
+    changed: "That address has changed",
+    changedBody:
+      "This link confirms an address the account no longer uses, so it cannot be applied. Sign in and confirm the current address from your account page.",
+    broken: "That link does not work",
+    brokenBody:
+      "It may have been mistyped or cut in half by a mail app. Sign in and send yourself a fresh one from your account page.",
+    goToAccount: "Go to your account",
+    resendSent: "Sent. Check that inbox — the new link lasts 48 hours.",
+    resendCta: "Send me a new link",
+    resendFailed: "That did not send.",
+  },
+  offline: {
+    metaDescription: "You are offline. Cached pages and queued changes are still available.",
+    title: "You are offline",
+    body:
+      "This page has not been saved to your device yet. Anything you have already marked is safe and will sync by itself as soon as you have signal again.",
+    goHome: "Go to the home page",
+    stillWorks:
+      "Pages you have opened recently still work offline, including today's register and recent grades.",
+  },
+  switch: {
+    notPartOfSchool: "You are not part of a school yet",
+    notPartBody: "Join with a school or class code, or ask an admin to invite you.",
+    joinWithCode: "Join with a code",
+    whereToGo: "Where would you like to go?",
+    switchAnyTime: "You can switch at any time from your account menu.",
+    childrenCount: "{count} children",
+    parentAt: "Parent · {school}",
+    parentSchools: "Parent · {count} schools",
+    everySchool: "Every school on this server",
+  },
+  join: {
+    metaDescription: "Join EduLink with a code from your school, or link to your child.",
+    almostThere: "Almost there",
+    letsGetYouIn: "Let's get you in",
+    accountReady: "Your account is ready — now connect it to a school or a child.",
+    pickOne: "Pick the one that sounds like you.",
+
+    signedInAs: "You are signed in as {name}",
+    signedInBody:
+      "Joining with a code adds a NEW person to a school. If this is not you — if you are a pupil using a teacher's laptop — sign out first.",
+    signOutAndJoin: "Sign out and join",
+    backToDashboard: "Back to my dashboard",
+
+    imStudent: "I'm a student",
+    imStudentBody: "You need the code your teacher gave you.",
+    imParent: "I'm a parent or guardian",
+    imParentBody: "Link to your child and see their day.",
+    wasInvited: "I was sent an invitation",
+    wasInvitedBody: "Open the link in your email — it signs you straight in.",
+    settingUpSchool: "Setting up a whole school?",
+    registerItHere: "Register it here",
+
+    /* -- the guardian's sign-up -- */
+    createAccountTitle: "Create your account",
+    createAccountBody:
+      "One account covers every one of your children, even if they are at different schools. Next you will link to them.",
+    parentNamePlaceholder: "Jordan Okafor",
+    genericEmailPlaceholder: "you@example.com",
+    passwordHintShort: "At least 10 characters.",
+    consentSharing: "I consent to seeing my child's school data",
+    consentSharingBody:
+      "Attendance, grades, teacher remarks and school notices. You can withdraw this at any time, and we log every time it is used.",
+    consentNotifications: "Send me notifications",
+    consentNotificationsBody:
+      "Absences, new grades and teacher messages. You choose the channels and quiet hours afterwards.",
+    needConsent: "We need your consent to show you your child's data.",
+    creatingAccount: "Creating your account…",
+    createAccountCta: "Create account",
+    accountCreated: "Account created",
+
+    /* -- the pupil's four screens. Written for an eight-year-old. -- */
+    stepOf: "Step {n} of 4",
+    whatsYourCode: "What's your code?",
+    codeBody: "Your teacher will have written it on the board, or sent it home.",
+    codeLabel: "School or class code",
+    codePlaceholder: "ABC-1234",
+    checkMyCode: "Check my code",
+    checkCodeFirst: "Check your code first.",
+    classIs: "Class: {name}",
+    wholeSchool: "Whole school",
+
+    whatsYourName: "What's your name?",
+    nameBody: "Your teacher needs your full name for the register.",
+    typeFullName: "Type your first and last name.",
+    studentNamePlaceholder: "Amara Okafor",
+    whatCallYou: "What should we call you?",
+    whatCallYouFallback: "Amara",
+    whatCallYouHint: "This is the name you'll see around the app.",
+    yourBirthday: "Your birthday",
+    birthdayHint: "This is how a parent proves they're yours when they link to you.",
+
+    pickYourLook: "Pick your look",
+    pickLookBody: "{count} to choose from. You can change it whenever you like.",
+    chooseAvatar: "Choose your avatar",
+
+    makePassword: "Make a secret password",
+    /* Three parts because the example is bold in the middle of the sentence.
+       One key with a placeholder cannot carry the markup, and splitting lets a
+       translator put the example where their grammar wants it. */
+    makePasswordLead: "Pick three words you can remember, like",
+    makePasswordExample: "purple-otter-rocket",
+    makePasswordTail: "Don't tell anyone except a grown-up at home.",
+    yourPassword: "Your password",
+    greatPassword: "Great password!",
+    joiningSchool: "You're joining {school}.",
+    joiningClass: "You're joining {school} in {class}.",
+    next: "Next",
+    settingUp: "Setting up…",
+    letsGo: "Let's go!",
+    didNotWork: "That did not work",
+    lookAtHighlighted: "Have a look at the highlighted box.",
+    youreIn: "You're in! 🎉",
+
+    /* -- what the server says when it refuses -- */
+    codeTooShort: "That code looks too short.",
+    codeTooLong: "That code looks too long.",
+    tooManyTries: "Too many tries. Wait {when}.",
+    codeNotFound:
+      "We could not find that code. Check each letter — it is easy to mix up a 3 and an E.",
+    couldNotSetUp: "We could not set that up just then. Please try again.",
+    tooManyAccounts: "Too many accounts from here just now. Try again {when}.",
+    emailInUseParent:
+      "An account already uses this email. Log in and add your child from there.",
+    tooManyAttempts: "Too many attempts. Try again {when}.",
+    tooManyForCode: "Too many attempts for that code. Try again {when}.",
+    claimMismatch:
+      "That code and date of birth do not match a student. Check both with the school — the code is on the letter they sent home.",
+    useRealDate: "Use a real date.",
+    dateInFuture: "That date is in the future.",
+    noBirthdateOnFile:
+      "We cannot verify this student's date of birth. Ask the school to link you instead — they can do it in seconds.",
+    alreadyLinked: "You are already linked to this student.",
+  },
+
+  register: {
+    metaDescription: "Set up your school on EduLink in about five minutes.",
+    alreadyHaveAccount: "Already have an account?",
+
+    progress: "Progress",
+    stepSchool: "Your school",
+    stepAccount: "Your account",
+    stepConfirm: "Confirm",
+
+    schoolTitle: "Tell us about your school",
+    schoolBody: "Only the name and a contact email are required — the rest can wait.",
+    accountTitle: "Create your admin account",
+    accountBody: "This is the account you will use to run the school.",
+    confirmTitle: "One last check",
+    confirmBody: "Confirm and we will set everything up.",
+
+    enterSchoolName: "Enter your school's name.",
+    enterContactEmail: "Enter a valid contact email for the school.",
+    websiteScheme: "Start with http:// or https://",
+    enterFullName: "Enter your full name.",
+    enterValidEmail: "Enter a valid email address.",
+    emailTaken: "An account already uses this email. Log in instead.",
+    emailTakenLong:
+      "An account already uses this email. Log in instead, and you can add a school from your dashboard.",
+    confirmAuthorised: "Please confirm you are authorised to set up this school.",
+    couldNotCreate: "We could not create your school just then. Please try again in a moment.",
+
+    schoolName: "School name",
+    schoolNamePlaceholder: "Riverside Primary School",
+    schoolNameHint: "This is what students, parents and teachers will see.",
+    contactEmail: "School contact email",
+    contactEmailPlaceholder: "office@riverside.school",
+    phone: "Phone",
+    website: "Website",
+    websitePlaceholder: "https://riverside.school",
+    city: "Town or city",
+    country: "Country",
+    gradeLow: "Lowest grade",
+    gradeLowPlaceholder: "e.g. K",
+    gradeHigh: "Highest grade",
+    gradeHighPlaceholder: "e.g. 6",
+    timezone: "Timezone",
+    timezoneHint: "Attendance days and due dates are worked out in this timezone.",
+
+    yourName: "Your full name",
+    yourNamePlaceholder: "Priya Raman",
+    yourEmail: "Your email",
+    yourEmailPlaceholder: "priya@riverside.school",
+    yourEmailHint: "We will send a confirmation link here.",
+    password: "Password",
+    passwordHint: "At least 10 characters. A short sentence works well.",
+
+    rowSchool: "School",
+    rowContact: "Contact",
+    rowLocation: "Location",
+    rowTimezone: "Timezone",
+    rowAdmin: "Admin",
+    authorisedLabel: "I am authorised to set up EduLink for this school",
+    authorisedDescription:
+      "You will be the first admin. You can add more admins straight afterwards.",
+    dataNote:
+      "EduLink stores children's data on behalf of your school. Student profiles are never public, posts to the wider feed are reviewed before anyone outside the school sees them, and you can export or delete everything at any time from your settings.",
+
+    continue: "Continue",
+    creating: "Creating your school…",
+    createSchool: "Create my school",
+    couldNotFinish: "We could not finish that",
+    checkFields: "Please check the highlighted fields.",
+
+    readyTitle: "Your school is ready",
+    readyBody:
+      "This is your school code. Teachers and students use it to join — write it on the board, or share it in the invite emails we are about to help you send.",
+    copyCode: "Copy school code",
+    codeCopied: "School code copied",
+    couldNotCopy: "Could not copy",
+    couldNotCopyBody: "Select the code to copy it.",
+  },
+
   login: {
     title: "Log in",
     welcome: "Welcome back",
@@ -280,6 +687,14 @@ export const en = {
     useDifferentEmail: "Use a different email",
     signIn: "Sign in",
     forgot: "Forgotten your password?",
+    noMatch: "That login and password do not match.",
+    tooManyAttempts: "Too many attempts. Try again {when}.",
+    tooManyRequests: "Too many requests. Try again {when}.",
+    tryAgainShortly: "Try again shortly.",
+    didNotWork: "That did not work.",
+    quote:
+      "\u201cThe register used to eat the first ten minutes of every lesson. Now it is done before the class has sat down.\u201d",
+    quoteAttribution: "A Year 5 teacher",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -679,6 +1094,28 @@ export const en = {
     /* Whose message this is, in a thread. "You" rather than the reader's own
        name: the name is on the other side of every conversation they have. */
     you: "You",
+
+    /* ⚠ LANDMARK LABELS, WHICH ONLY A SCREEN READER EVER HEARS — and which
+       were therefore the last English on nine otherwise-translated signed-out
+       pages. The same lesson as the sr-only "required" on the login form: a
+       string nobody can see is a string nobody notices is untranslated, and
+       its readers are the ones least able to work around it. */
+    mainContent: "Main",
+    footerNav: "Footer",
+    homeLink: "EduLink home",
+    /** As a placeholder in a field nobody has to fill in. */
+    optional: "Optional",
+
+    /* ⚠ HOW LONG TO WAIT, as the tail of a rate-limit refusal. `retryHint`
+       built these in English and every caller dropped the result into a
+       template — so "in about 5 minutes" turned up inside otherwise-translated
+       sentences. Paired One/Many keys rather than plural machinery, per the
+       rule the rest of this file follows. */
+    retryInAMinute: "in a minute",
+    retryInMinutesOne: "in about 1 minute",
+    retryInMinutesMany: "in about {count} minutes",
+    retryInHoursOne: "in about 1 hour",
+    retryInHoursMany: "in about {count} hours",
   },
   /* ---------------------------------------------------------------------- */
   /* Kinds of staff leave. Rendered on the principal's decision page, the    */

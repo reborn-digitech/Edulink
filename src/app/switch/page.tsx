@@ -46,11 +46,11 @@ export default async function SwitchPage() {
       <main id="main" className="mx-auto max-w-md px-4 py-16">
         <Wordmark className="mb-8" />
         <EmptyState
-          title="You are not part of a school yet"
-          description="Join with a school or class code, or ask an admin to invite you."
+          title={t("switch.notPartOfSchool")}
+          description={t("switch.notPartBody")}
           action={
             <Button asChild>
-              <Link href="/join">Join with a code</Link>
+              <Link href="/join">{t("switch.joinWithCode")}</Link>
             </Button>
           }
         />
@@ -61,9 +61,9 @@ export default async function SwitchPage() {
   return (
     <main id="main" className="mx-auto max-w-md px-4 py-12">
       <Wordmark className="mb-8" />
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Where would you like to go?</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("switch.whereToGo")}</h1>
       <p className="mt-1.5 text-sm text-fg-muted">
-        You can switch at any time from your account menu.
+        {t("switch.switchAnyTime")}
       </p>
 
       <ul className="mt-7 space-y-2">
@@ -86,11 +86,17 @@ export default async function SwitchPage() {
             <form action={switchContext}>
               <input type="hidden" name="role" value="PARENT" />
               <ContextButton
-                title={children.length === 1 ? children[0]!.name : `${children.length} children`}
+                title={
+                  children.length === 1
+                    ? children[0]!.name
+                    : t("switch.childrenCount", { count: children.length })
+                }
                 subtitle={
                   children.length === 1
-                    ? `Parent · ${children[0]!.schoolName}`
-                    : `Parent · ${new Set(children.map((c) => c.schoolName)).size} schools`
+                    ? t("switch.parentAt", { school: children[0]!.schoolName })
+                    : t("switch.parentSchools", {
+                        count: new Set(children.map((c) => c.schoolName)).size,
+                      })
                 }
                 role="PARENT"
               />
@@ -120,8 +126,8 @@ export default async function SwitchPage() {
             <BuildingsIcon weight="duotone" className="size-5" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block truncate font-semibold text-fg">Server administration</span>
-            <span className="block text-sm text-fg-muted">Every school on this server</span>
+            <span className="block truncate font-semibold text-fg">{t("shell.serverAdmin")}</span>
+            <span className="block text-sm text-fg-muted">{t("switch.everySchool")}</span>
           </span>
           <CaretRightIcon className="size-5 shrink-0 text-fg-subtle" aria-hidden="true" />
         </Link>
@@ -129,7 +135,7 @@ export default async function SwitchPage() {
 
       <form action="/api/auth/logout" method="post" className="mt-8">
         <Button type="submit" variant="ghost" block>
-          Sign out
+          {t("suspended.signOut")}
         </Button>
       </form>
     </main>

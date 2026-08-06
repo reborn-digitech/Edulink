@@ -1,5 +1,6 @@
 import "server-only";
 import { db } from "./db";
+import type { TranslationKey } from "./i18n/dictionary";
 
 /**
  * How many times something may be tried in a window.
@@ -103,6 +104,36 @@ export function retryHint(seconds: number): string {
   if (minutes < 60) return `in about ${minutes} minute${minutes === 1 ? "" : "s"}`;
   const hours = Math.ceil(minutes / 60);
   return `in about ${hours} hour${hours === 1 ? "" : "s"}`;
+}
+
+/**
+ * The same answer as a KEY, for callers that have a reader's language.
+ *
+ * ⚠ WHY BOTH EXIST, briefly, so the duplication is a decision and not a mess.
+ * `retryHint` above returns English and its result is dropped into a template
+ * by every caller — which put "in about 5 minutes" inside otherwise translated
+ * refusals on the join, login and invite forms. This returns the key instead,
+ * the same shape `periodTimeError` uses, and the caller resolves it with its
+ * own `t`.
+ *
+ * The English one survives for `lib/passwords.ts`, whose messages are not
+ * translated yet. When they are, this becomes the only one and that is the
+ * point — it is not a permanent pair.
+ */
+export type RetryHint = { key: TranslationKey; vars?: { count: number } };
+
+export function retryHintKey(seconds: number): RetryHint {
+  if (seconds <= 60) return { key: "common.retryInAMinute" };
+  const minutes = Math.ceil(seconds / 60);
+  if (minutes < 60) {
+    return minutes === 1
+      ? { key: "common.retryInMinutesOne" }
+      : { key: "common.retryInMinutesMany", vars: { count: minutes } };
+  }
+  const hours = Math.ceil(minutes / 60);
+  return hours === 1
+    ? { key: "common.retryInHoursOne" }
+    : { key: "common.retryInHoursMany", vars: { count: hours } };
 }
 
 /* -------------------------------------------------------------------------- */

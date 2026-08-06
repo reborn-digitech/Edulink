@@ -10,6 +10,7 @@ import { passwordStrength } from "@/lib/password-strength";
 import { cn } from "@/lib/cn";
 import { acceptInvite } from "./actions";
 import type { Role } from "@/lib/constants";
+import { useT } from "@/lib/i18n";
 
 export function AcceptForm({
   token,
@@ -32,6 +33,7 @@ export function AcceptForm({
   hasAccount: boolean;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -64,7 +66,7 @@ export function AcceptForm({
     setErrors({});
 
     const next: Record<string, string> = {};
-    if (name.trim().length < 2) next.name = "Enter your full name.";
+    if (name.trim().length < 2) next.name = t("register.enterFullName");
     if (!hasAccount && strength.problems.length > 0) next.password = strength.problems[0]!;
     if (Object.keys(next).length > 0) {
       setErrors(next);
@@ -89,16 +91,16 @@ export function AcceptForm({
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "That did not work",
-          description: result.errors._form ?? "Please check the highlighted fields.",
+          title: t("invite.didNotWork"),
+          description: result.errors._form ?? t("register.checkFields"),
         });
         return;
       }
 
       toast({
         tone: "ok",
-        title: hasAccount ? "Added to your account" : "You're in — welcome aboard",
-        description: hasAccount ? "Sign in as you always have." : undefined,
+        title: hasAccount ? t("invite.addedToAccount") : t("invite.welcomeAboard"),
+        description: hasAccount ? t("invite.signInAsAlways") : undefined,
       });
       router.push(result.redirectTo ?? "/");
       router.refresh();
@@ -117,11 +119,11 @@ export function AcceptForm({
       )}
 
       <TextField
-        label="Your full name"
+        label={t("invite.fullName")}
         required
         autoFocus
         autoComplete="name"
-        placeholder="Tom Fielding"
+        placeholder={t("invite.fullNamePlaceholder")}
         value={name}
         error={errors.name}
         onChange={(e) => setName(e.target.value)}
@@ -138,8 +140,8 @@ export function AcceptForm({
       */}
       <DateField
         name="birthdate"
-        label="Your date of birth"
-        hint="Optional. Your school uses it for the birthday calendar, and a parent needs it to link to their child."
+        label={t("invite.birthdate")}
+        hint={t("invite.birthdateHint")}
         value={birthdate}
         error={errors.birthdate}
         onChange={(e) => setBirthdate(e.target.value)}
@@ -148,14 +150,14 @@ export function AcceptForm({
       {!hasAccount && (
       <div>
         <TextField
-          label="Choose a password"
+          label={t("invite.choosePassword")}
           required
           type="password"
           autoComplete="new-password"
           value={password}
           error={errors.password}
           onChange={(e) => setPassword(e.target.value)}
-          hint="At least 10 characters. A short sentence works well."
+          hint={t("invite.passwordHint")}
         />
         {password.length > 0 && (
           <div className="mt-2">
@@ -193,16 +195,16 @@ export function AcceptForm({
       {role === "TEACHER" && (
         <>
           <TextField
-            label="Your role at the school"
-            placeholder="Class teacher"
+            label={t("invite.roleAtSchool")}
+            placeholder={t("invite.roleAtSchoolPlaceholder")}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            hint="Optional — shown in the school directory."
+            hint={t("invite.roleAtSchoolHint")}
           />
 
           <div>
             <label htmlFor="subject-input" className="block text-sm font-medium text-fg">
-              Subjects you teach
+              {t("invite.subjects")}
             </label>
             <div className="mt-1.5 flex gap-2">
               <input
@@ -216,7 +218,7 @@ export function AcceptForm({
                     addSubject();
                   }
                 }}
-                placeholder="Mathematics"
+                placeholder={t("invite.subjectPlaceholder")}
                 className="min-h-12 flex-1 rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
               />
               <Button type="button" variant="secondary" onClick={addSubject}>
@@ -232,7 +234,7 @@ export function AcceptForm({
                       <button
                         type="button"
                         onClick={() => setSubjects((c) => c.filter((s) => s !== subject))}
-                        aria-label={`Remove ${subject}`}
+                        aria-label={t("invite.removeSubject", { subject })}
                         className="grid size-6 place-items-center rounded-full hover:bg-surface/60"
                       >
                         <XIcon weight="bold" className="size-3" />
@@ -245,13 +247,13 @@ export function AcceptForm({
           </div>
 
           <TextAreaField
-            label="A short bio"
-            placeholder="I have taught Year 5 at Riverside for six years."
+            label={t("invite.bio")}
+            placeholder={t("invite.bioPlaceholder")}
             value={bio}
             rows={3}
             maxLength={600}
             onChange={(e) => setBio(e.target.value)}
-            hint="Optional — parents and students see this."
+            hint={t("invite.bioHint")}
           />
         </>
       )}

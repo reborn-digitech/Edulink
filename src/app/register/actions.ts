@@ -11,6 +11,7 @@ import { audit } from "@/lib/audit";
 import { forSchool } from "@/lib/tenant-context";
 import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
 import { writeJson } from "@/lib/json";
+import { getT, getLocale } from "@/lib/i18n/server";
 
 export type RegisterState = {
   ok: boolean;
@@ -42,19 +43,27 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     return { ok: false, errors: { "admin.password": problems[0]! } };
   }
 
+  const t = await getT();
+
   const existing = await db.user.findUnique({ where: { email: admin.email }, select: { id: true } });
   if (existing) {
-    return {
-      ok: false,
-      errors: {
-        "admin.email":
-          "An account already uses this email. Log in instead, and you can add a school from your dashboard.",
-      },
-    };
+    return { ok: false, errors: { "admin.email": t("register.emailTakenLong") } };
   }
 
   const passwordHash = await hashPassword(admin.password);
   const verifyToken = generateToken();
+
+  /**
+   * ⚠ THE LANGUAGE THEY REGISTERED IN, not "en".
+   *
+   * This wrote `locale: "en"` flat. `getLocale` prefers `prefs.locale` the
+   * moment a session exists, so a head teacher who read the landing page in
+   * Marathi, filled this form in in Marathi and pressed the button was signed
+   * straight into an English dashboard — and the only way back was a settings
+   * page they now could not read. The cookie is the ONLY signal there is before
+   * an account exists, which is exactly what it is for.
+   */
+  const locale = await getLocale();
 
   let created: { schoolId: string; userId: string; code: string } | undefined;
 
@@ -112,7 +121,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           email: admin.email,
           name: admin.name,
           passwordHash,
-          prefs: writeJson({ theme: "system", locale: "en" }),
+          prefs: writeJson({ theme: "system", locale }),
         },
       });
 
@@ -149,20 +158,12 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
       if (taken && attempt < 5) continue;
 
       console.error("[register] transaction failed", error);
-      return {
-        ok: false,
-        errors: {
-          _form: "We could not create your school just then. Please try again in a moment.",
-        },
-      };
+      return { ok: false, errors: { _form: t("register.couldNotCreate") } };
     }
   }
 
   if (!created) {
-    return {
-      ok: false,
-      errors: { _form: "We could not create your school just then. Please try again in a moment." },
-    };
+    return { ok: false, errors: { _form: t("register.couldNotCreate") } };
   }
 
   // Outside the transaction: an email provider hiccup must not roll back a

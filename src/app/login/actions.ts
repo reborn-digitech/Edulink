@@ -12,11 +12,19 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
-import { consume, retryHint, LOGIN_ATTEMPTS, RESET_REQUESTS } from "@/lib/rate-limit";
+import { consume, retryHintKey, LOGIN_ATTEMPTS, RESET_REQUESTS } from "@/lib/rate-limit";
+import { getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
 import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
+
+/** "in about 5 minutes", in the reader's language. See `retryHintKey`. */
+function hint(t: Translate, seconds: number): string {
+  const h = retryHintKey(seconds);
+  return t(h.key, h.vars);
+}
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -43,11 +51,12 @@ export type LoginState = {
  * recognise.
  */
 export async function login(input: unknown): Promise<LoginState> {
+  const t = await getT();
   const parsed = loginSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const { identifier, password } = parsed.data;
-  const generic = { ok: false, errors: { _form: "That login and password do not match." } };
+  const generic = { ok: false, errors: { _form: t("login.noMatch") } };
 
   /**
    * ⚠ HOW MANY TIMES THIS LOGIN HAS BEEN TRIED LATELY.
@@ -73,7 +82,7 @@ export async function login(input: unknown): Promise<LoginState> {
   if (!gate.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many attempts. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+      errors: { _form: t("login.tooManyAttempts", { when: hint(t, gate.retryAfterSeconds) }) },
     };
   }
 
@@ -121,6 +130,7 @@ export async function login(input: unknown): Promise<LoginState> {
  * address is registered.
  */
 export async function requestMagicLink(input: unknown): Promise<LoginState> {
+  const t = await getT();
   const parsed = magicLinkSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
@@ -142,7 +152,7 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
   if (!gate.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many requests. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+      errors: { _form: t("login.tooManyRequests", { when: hint(t, gate.retryAfterSeconds) }) },
     };
   }
 
@@ -300,22 +310,24 @@ export type ResetRequestState = {
  * magic link does — see the note on `requestPasswordReset`.
  */
 export async function requestReset(input: unknown): Promise<ResetRequestState> {
+  const t = await getT();
   const parsed = resetRequestSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const result = await requestPasswordReset(parsed.data.identifier);
-  if (!result.ok) return { ok: false, errors: { _form: result.error ?? "Try again shortly." } };
+  if (!result.ok) return { ok: false, errors: { _form: result.error ?? t("login.tryAgainShortly") } };
   return { ok: true, errors: {}, hint: result.hint, channel: result.channel };
 }
 
 /** "Here is the code, and my new password." */
 export async function completeReset(input: unknown): Promise<LoginState> {
+  const t = await getT();
   const parsed = resetSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const { identifier, code, password } = parsed.data;
   const result = await resetPassword(identifier, code, password);
-  if (!result.ok) return { ok: false, errors: { _form: result.error ?? "That did not work." } };
+  if (!result.ok) return { ok: false, errors: { _form: result.error ?? t("login.didNotWork") } };
 
   /**
    * NO SESSION IS CREATED HERE, on purpose. `resetPassword` has just revoked

@@ -28,26 +28,25 @@ export default async function ForgotPage({
 }: {
   searchParams: Promise<{ id?: string }>;
 }) {
+  const t = await getT();
   const { id } = await searchParams;
 
   return (
     <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-sm">
-        <Link href="/" className="mb-8 inline-block" aria-label="EduLink home">
+        <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
           <Wordmark />
         </Link>
 
-        <h1 className="text-2xl font-bold tracking-tight text-fg">Set a new password</h1>
-        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-          Tell us your email or mobile number and we will send a code.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg">{t("forgot.title")}</h1>
+        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("forgot.subtitle")}</p>
 
         <ForgotForm className="mt-7" initialIdentifier={(id ?? "").slice(0, 320)} />
 
         <p className="mt-8 text-center text-sm text-fg-muted">
-          Remembered it?{" "}
+          {t("forgot.rememberedIt")}{" "}
           <Link href="/login" className="font-semibold text-accent-strong underline underline-offset-4">
-            Back to log in
+            {t("forgot.backToLogIn")}
           </Link>
         </p>
 

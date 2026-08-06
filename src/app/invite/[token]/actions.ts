@@ -10,7 +10,8 @@ import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
-import { consumeByCaller, retryHint, INVITE_ACCEPTS } from "@/lib/rate-limit";
+import { consumeByCaller, retryHintKey, INVITE_ACCEPTS } from "@/lib/rate-limit";
+import { getT, getLocale } from "@/lib/i18n/server";
 
 export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
 
@@ -23,6 +24,9 @@ export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: strin
  * cannot both get a membership.
  */
 export async function acceptInvite(input: unknown): Promise<AcceptState> {
+  const t = await getT();
+  // The language they accepted in. See the note in register/actions.ts.
+  const locale = await getLocale();
   const parsed = acceptInviteSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
@@ -39,7 +43,12 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   if (!gate.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many attempts from here. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+      errors: {
+        _form: (() => {
+          const h = retryHintKey(gate.retryAfterSeconds);
+          return t("invite.tooManyAttempts", { when: t(h.key, h.vars) });
+        })(),
+      },
     };
   }
 
@@ -51,13 +60,13 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   );
 
   if (!invite || invite.status !== "PENDING") {
-    return { ok: false, errors: { _form: "That invitation is no longer valid." } };
+    return { ok: false, errors: { _form: t("invite.noLongerValid") } };
   }
   if (invite.expiresAt.getTime() < Date.now()) {
     await db.invite.update({ where: { id: invite.id }, data: { status: "EXPIRED" } });
     return {
       ok: false,
-      errors: { _form: "That invitation has expired. Ask your admin to send a new one." },
+      errors: { _form: t("invite.expired") },
     };
   }
 
@@ -67,7 +76,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
 
   const email = invite.email?.toLowerCase() ?? null;
   if (!email) {
-    return { ok: false, errors: { _form: "That invitation has no email address attached." } };
+    return { ok: false, errors: { _form: t("invite.noEmailAttached") } };
   }
 
   /**
@@ -170,7 +179,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             emailVerifiedAt: new Date(),
             bio: bio || null,
             birthdate: birthDate,
-            prefs: writeJson({ theme: "system", locale: "en" }),
+            prefs: writeJson({ theme: "system", locale }),
           },
           select: { id: true, passwordHash: true },
         });
@@ -252,13 +261,13 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     );
   } catch (error) {
     if (error instanceof Error && error.message === "ALREADY_USED") {
-      return { ok: false, errors: { _form: "That invitation has already been used." } };
+      return { ok: false, errors: { _form: t("invite.alreadyUsed") } };
     }
     if (error instanceof Error && error.message === "NEEDS_PASSWORD") {
       return { ok: false, errors: { password: "Choose a password." } };
     }
     console.error("[acceptInvite]", error);
-    return { ok: false, errors: { _form: "We could not complete that. Please try again." } };
+    return { ok: false, errors: { _form: t("invite.couldNotComplete") } };
   }
 
   await audit({

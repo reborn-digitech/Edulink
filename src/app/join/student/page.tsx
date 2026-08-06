@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function StudentJoinPage() {
+  const t = await getT();
   const session = await getSession();
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
@@ -21,7 +22,7 @@ export default async function StudentJoinPage() {
     <div data-role="student" className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-lg items-center justify-between px-4">
-          <Link href="/" aria-label="EduLink home">
+          <Link href="/" aria-label={t("common.homeLink")}>
             <Wordmark size={26} />
           </Link>
           <Link
@@ -29,7 +30,7 @@ export default async function StudentJoinPage() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
           >
             <ArrowLeftIcon weight="bold" className="size-4" />
-            Back
+            {t("common.back")}
           </Link>
         </div>
       </header>

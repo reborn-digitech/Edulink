@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return {
   title: t("meta.joinSchool"),
-  description: "Join EduLink with a code from your school, or link to your child.",
+  description: t("join.metaDescription"),
 };
 }
 
@@ -26,6 +26,7 @@ export default async function JoinPage({
 }: {
   searchParams: Promise<{ first?: string }>;
 }) {
+  const t = await getT();
   const session = await getSession();
   const { first } = await searchParams;
 
@@ -50,12 +51,12 @@ export default async function JoinPage({
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-lg items-center justify-between px-4">
-          <Link href="/" aria-label="EduLink home">
+          <Link href="/" aria-label={t("common.homeLink")}>
             <Wordmark size={26} />
           </Link>
           {!session && (
             <Link href="/login" className="text-sm font-medium text-fg-muted hover:text-fg">
-              Log in
+              {t("login.title")}
             </Link>
           )}
         </div>
@@ -63,12 +64,10 @@ export default async function JoinPage({
 
       <main id="main" className="mx-auto max-w-lg px-4 py-10 sm:py-14">
         <h1 className="text-3xl font-bold tracking-tight text-fg">
-          {first === "1" ? "Almost there" : "Let's get you in"}
+          {first === "1" ? t("join.almostThere") : t("join.letsGetYouIn")}
         </h1>
         <p className="mt-2 text-fg-muted">
-          {first === "1"
-            ? "Your account is ready — now connect it to a school or a child."
-            : "Pick the one that sounds like you."}
+          {first === "1" ? t("join.accountReady") : t("join.pickOne")}
         </p>
 
         {signedInAs && (
@@ -80,20 +79,19 @@ export default async function JoinPage({
             className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4"
           >
             <p id="signed-in-warning" className="text-sm font-semibold text-fg">
-              You are signed in as {signedInAs}
+              {t("join.signedInAs", { name: signedInAs })}
             </p>
             <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-              Joining with a code adds a NEW person to a school. If this is not you — if you are a
-              pupil using a teacher&rsquo;s laptop — sign out first.
+              {t("join.signedInBody")}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               <form action="/api/auth/logout" method="post">
                 <Button type="submit" size="sm" variant="secondary">
-                  Sign out and join
+                  {t("join.signOutAndJoin")}
                 </Button>
               </form>
               <Button asChild size="sm" variant="ghost">
-                <Link href={ROLE_HOME[session!.role as Role]}>Back to my dashboard</Link>
+                <Link href={ROLE_HOME[session!.role as Role]}>{t("join.backToDashboard")}</Link>
               </Button>
             </div>
           </section>
@@ -104,32 +102,32 @@ export default async function JoinPage({
             href="/join/student"
             role="student"
             icon={<GraduationCapIcon weight="duotone" className="size-8" />}
-            title="I'm a student"
-            body="You need the code your teacher gave you."
+            title={t("join.imStudent")}
+            body={t("join.imStudentBody")}
           />
           <JoinOption
             href="/join/parent"
             role="parent"
             icon={<HandHeartIcon weight="duotone" className="size-8" />}
-            title="I'm a parent or guardian"
-            body="Link to your child and see their day."
+            title={t("join.imParent")}
+            body={t("join.imParentBody")}
           />
           <JoinOption
             href="/login"
             role="teacher"
             icon={<TicketIcon weight="duotone" className="size-8" />}
-            title="I was sent an invitation"
-            body="Open the link in your email — it signs you straight in."
+            title={t("join.wasInvited")}
+            body={t("join.wasInvitedBody")}
           />
         </div>
 
         <p className="mt-8 text-center text-sm text-fg-muted">
-          Setting up a whole school?{" "}
+          {t("join.settingUpSchool")}{" "}
           <Link
             href="/register"
             className="font-semibold text-accent-strong underline underline-offset-4"
           >
-            Register it here
+            {t("join.registerItHere")}
           </Link>
         </p>
       </main>

@@ -71,6 +71,30 @@ const SHARED_WITH_ENGLISH = new Set([
    * so a deployment outside India can suggest its own zone.
    */
   "expert.timezonePlaceholder",
+  /**
+   * EXAMPLE ADDRESSES ON THE REGISTRATION FORM, on exactly the grounds
+   * `login.emailPlaceholder` and `settings.websitePlaceholder` are already here
+   * for: a head teacher typing their school's real address over the top is
+   * helped by seeing the shape of one, and `riverside.school` is not a word
+   * being withheld from them. The NAMES beside them are translated —
+   * `register.schoolNamePlaceholder` and `register.yourNamePlaceholder` read as
+   * रिवरसाइड and प्रिया, because those are words.
+   */
+  "register.contactEmailPlaceholder",
+  "register.websitePlaceholder",
+  "register.yourEmailPlaceholder",
+  /**
+   * An EXAMPLE ADDRESS on the guardian sign-up, same grounds as the three
+   * above.
+   */
+  "join.genericEmailPlaceholder",
+  /**
+   * A CODE MASK, not prose — the same argument as `field.datePlaceholder`.
+   * `ABC-1234` shows the shape of what to type, and join codes are generated
+   * from ASCII letters and digits: अबक-१२३४ would be a pattern the input
+   * cannot accept and no teacher has ever written on a board.
+   */
+  "join.codePlaceholder",
 ]);
 
 const placeholdersIn = (value: string): Set<string> =>

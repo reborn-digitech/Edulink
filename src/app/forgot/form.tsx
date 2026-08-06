@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { identifierKind } from "@/lib/phone";
 import { requestReset, completeReset } from "../login/actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * Two steps on one page, and the identifier is typed once.
@@ -30,6 +31,7 @@ export function ForgotForm({
   className?: string;
   initialIdentifier?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -66,8 +68,8 @@ export function ForgotForm({
       }
       toast({
         tone: "ok",
-        title: "Password changed",
-        description: "You have been signed out everywhere. Log in with the new one.",
+        title: t("forgot.passwordChanged"),
+        description: t("forgot.passwordChangedBody"),
       });
       router.push(result.redirectTo ?? "/login");
       router.refresh();
@@ -87,16 +89,18 @@ export function ForgotForm({
             below is the last four digits of what the READER typed — never of
             anything we hold.
           */}
+          {/* ⚠ ONE SENTENCE WITH A PLACEHOLDER, not a clause with a bolded
+              fragment spliced into the middle of it. The English version put
+              "If an account exists for" before the address and ", a six-digit
+              code is on its way" after — an order neither Hindi nor Marathi
+              uses. */}
           <p className="text-sm leading-relaxed text-fg">
-            If an account exists for{" "}
-            {sentTo?.channel === "PHONE" && sentTo.hint ? (
-              <>
-                the number ending <strong>{sentTo.hint}</strong>
-              </>
-            ) : (
-              <strong className="break-all">{identifier}</strong>
-            )}
-            , a six-digit code is on its way. It works once and expires in 10 minutes.
+            {t("forgot.codeSent", {
+              who:
+                sentTo?.channel === "PHONE" && sentTo.hint
+                  ? t("forgot.numberEnding", { digits: sentTo.hint })
+                  : identifier,
+            })}
           </p>
         </div>
 
@@ -110,30 +114,30 @@ export function ForgotForm({
         )}
 
         <TextField
-          label="The code"
+          label={t("forgot.theCode")}
           inputMode="numeric"
           autoComplete="one-time-code"
           autoFocus
           required
-          placeholder="000000"
+          placeholder={t("forgot.codePlaceholder")}
           value={code}
           error={errors.code}
           onChange={(e) => setCode(e.target.value)}
         />
 
         <TextField
-          label="Your new password"
+          label={t("forgot.newPassword")}
           type="password"
           autoComplete="new-password"
           required
           value={password}
           error={errors.password}
           onChange={(e) => setPassword(e.target.value)}
-          hint="At least 10 characters. Everything signed in right now will be signed out."
+          hint={t("forgot.newPasswordHint")}
         />
 
         <Button type="submit" block size="lg" loading={pending} icon={<LockKeyIcon weight="bold" />}>
-          Set the new password
+          {t("forgot.setNewPassword")}
         </Button>
 
         <div className="flex flex-wrap justify-between gap-2 text-sm">
@@ -146,7 +150,7 @@ export function ForgotForm({
             }}
             className="font-medium text-fg-muted underline underline-offset-4 hover:text-fg"
           >
-            Use a different email or number
+            {t("forgot.useDifferent")}
           </button>
           <button
             type="button"
@@ -154,7 +158,7 @@ export function ForgotForm({
             onClick={() => send()}
             className="font-medium text-accent-strong underline underline-offset-4 disabled:opacity-50"
           >
-            Send another code
+            {t("forgot.sendAnother")}
           </button>
         </div>
       </form>
@@ -175,7 +179,7 @@ export function ForgotForm({
       )}
 
       <TextField
-        label="Email or mobile number"
+        label={t("forgot.identifierLabel")}
         // Not type="email" or type="tel": one box takes both, and either
         // built-in validation would refuse half of what is valid here.
         type="text"
@@ -185,21 +189,21 @@ export function ForgotForm({
         spellCheck={false}
         required
         autoFocus
-        placeholder="you@school.org or 98765 43210"
+        placeholder={t("forgot.identifierPlaceholder")}
         value={identifier}
         error={errors.identifier}
         onChange={(e) => setIdentifier(e.target.value)}
         hint={
           identifier.trim().length === 0
-            ? "Whichever the school has for you."
+            ? t("forgot.hintEmpty")
             : kind === "PHONE"
-              ? "We will text a code to this number."
+              ? t("forgot.hintPhone")
               : kind === "EMAIL"
-                ? "We will email a code to this address."
+                ? t("forgot.hintEmail")
                 : /* A pupil's handle has no address and no number attached to
                      it, so there is nowhere to send a code. Said here rather
                      than after they press the button and nothing arrives. */
-                  "That looks like a school login name. If it has no email or mobile number on it, ask your school to reset it for you."
+                  t("forgot.hintHandle")
         }
       />
 
@@ -211,7 +215,7 @@ export function ForgotForm({
         disabled={identifier.trim().length === 0}
         icon={<PaperPlaneTiltIcon weight="bold" />}
       >
-        Send me a code
+        {t("forgot.sendMeCode")}
       </Button>
     </form>
   );

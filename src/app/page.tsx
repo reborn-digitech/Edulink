@@ -18,19 +18,17 @@ import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
 import { getSession } from "@/lib/session";
-import { ROLE_HOME } from "@/lib/constants";
+import { ROLE_HOME, ATTENDANCE_META } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
-  title: t("meta.tagline"),
-  description:
-    "Attendance in ten seconds. Grades parents actually see. A calm, safe place for schools, students and families. Installs as an app and works offline.",
-};
+  return { title: t("meta.tagline"), description: t("landing.metaDescription") };
 }
 
 export default async function LandingPage() {
+  const t = await getT();
   // Signed-in visitors get a route back to their own dashboard rather than a
   // marketing page they have already been sold. (§7 no dead ends)
   const session = await getSession();
@@ -40,27 +38,27 @@ export default async function LandingPage() {
     <div className="min-h-safe bg-bg">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-bg/85 backdrop-blur-md">
         <nav
-          aria-label="Main"
+          aria-label={t("common.mainContent")}
           className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
         >
-          <Link href="/" className="rounded-[--radius-sm]" aria-label="EduLink home">
+          <Link href="/" className="rounded-[--radius-sm]" aria-label={t("common.homeLink")}>
             <Wordmark />
           </Link>
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-              <Link href="/join">Join with a code</Link>
+              <Link href="/join">{t("landing.joinWithCode")}</Link>
             </Button>
             {home ? (
               <Button asChild size="sm" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href={home}>Go to my dashboard</Link>
+                <Link href={home}>{t("landing.goToDashboard")}</Link>
               </Button>
             ) : (
               <>
                 <Button asChild variant="ghost" size="sm">
-                  <Link href="/login">Log in</Link>
+                  <Link href="/login">{t("login.title")}</Link>
                 </Button>
                 <Button asChild size="sm">
-                  <Link href="/register">Register your school</Link>
+                  <Link href="/register">{t("landing.registerSchool")}</Link>
                 </Button>
               </>
             )}
@@ -78,34 +76,30 @@ export default async function LandingPage() {
           <div className="relative mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-semibold text-fg-muted shadow-sm">
               <SparkleIcon weight="fill" className="text-accent" />
-              Works offline · Installs like a real app
+              {t("landing.badge")}
             </span>
 
             <h1 className="mt-6 text-[2.5rem] font-bold leading-[1.08] tracking-tight text-fg sm:text-6xl">
-              School and home,
+              {t("landing.heroLead")}
               <span className="block bg-gradient-to-r from-[#4f8dfb] to-[#7e22ce] bg-clip-text text-transparent">
-                finally on the same page.
+                {t("landing.heroEmphasis")}
               </span>
             </h1>
 
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-fg-muted">
-              Take the register in ten seconds — even with no signal. Parents see attendance,
-              grades and teacher notes the moment they happen. Children get a place that is
-              genuinely theirs, and genuinely safe.
+              {t("landing.heroBody")}
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href="/register">Register your school — free</Link>
+                <Link href="/register">{t("landing.ctaRegister")}</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/join">I have a school code</Link>
+                <Link href="/join">{t("landing.ctaHaveCode")}</Link>
               </Button>
             </div>
 
-            <p className="mt-4 text-sm text-fg-muted">
-              No card needed. Set up in about five minutes.
-            </p>
+            <p className="mt-4 text-sm text-fg-muted">{t("landing.noCardNeeded")}</p>
 
             <div className="mt-6 flex justify-center">
               <InstallButton />
@@ -113,7 +107,7 @@ export default async function LandingPage() {
           </div>
 
           <div className="relative mx-auto mt-14 max-w-5xl">
-            <AttendancePreview />
+            <AttendancePreview t={t} />
           </div>
         </section>
 
@@ -121,55 +115,55 @@ export default async function LandingPage() {
         <section className="border-y border-border bg-surface px-4 py-16 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-center text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-              One app. Four very different days.
+              {t("landing.rolesTitle")}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-fg-muted">
-              EduLink shows each person exactly what they need and nothing they do not.
+              {t("landing.rolesBody")}
             </p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <RoleCard
                 role="teacher"
                 icon={<ChalkboardTeacherIcon weight="duotone" className="size-7" />}
-                title="Teachers"
-                lead="Ten seconds, not ten minutes."
+                title={t("landing.teachers")}
+                lead={t("landing.teachersLead")}
                 points={[
-                  "One-tap register that works with no signal",
-                  "Assignments and grading in the same place",
-                  "Message a parent without giving out your number",
+                  t("landing.teachersPoint1"),
+                  t("landing.teachersPoint2"),
+                  t("landing.teachersPoint3"),
                 ]}
               />
               <RoleCard
                 role="student"
                 icon={<GraduationCapIcon weight="duotone" className="size-7" />}
-                title="Students"
-                lead="A place that feels like yours."
+                title={t("landing.students")}
+                lead={t("landing.studentsLead")}
                 points={[
-                  "Today's work, no scrolling required",
-                  "Pick an avatar, collect gentle streaks",
-                  "Share what you have made — safely reviewed first",
+                  t("landing.studentsPoint1"),
+                  t("landing.studentsPoint2"),
+                  t("landing.studentsPoint3"),
                 ]}
               />
               <RoleCard
                 role="parent"
                 icon={<HandHeartIcon weight="duotone" className="size-7" />}
-                title="Parents"
-                lead="Know before you have to ask."
+                title={t("landing.parents")}
+                lead={t("landing.parentsLead")}
                 points={[
-                  "Attendance and grades for every child, one screen",
-                  "Reply to a teacher without a phone-tag chain",
-                  "Choose what you get told, and when",
+                  t("landing.parentsPoint1"),
+                  t("landing.parentsPoint2"),
+                  t("landing.parentsPoint3"),
                 ]}
               />
               <RoleCard
                 role="admin"
                 icon={<UsersThreeIcon weight="duotone" className="size-7" />}
-                title="School admins"
-                lead="See the whole school clearly."
+                title={t("landing.admins")}
+                lead={t("landing.adminsLead")}
                 points={[
-                  "Invite staff and classes in bulk",
-                  "Attendance and engagement trends",
-                  "Moderation queue and full audit trail",
+                  t("landing.adminsPoint1"),
+                  t("landing.adminsPoint2"),
+                  t("landing.adminsPoint3"),
                 ]}
               />
             </div>
@@ -181,18 +175,18 @@ export default async function LandingPage() {
           <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
             <Feature
               icon={<WifiSlashIcon weight="duotone" className="size-6" />}
-              title="Built for the back of the field trip bus"
-              body="Mark the register with no bars at all. Your changes queue on the device and sync themselves the moment signal returns — nothing to remember, nothing to re-enter."
+              title={t("landing.offlineTitle")}
+              body={t("landing.offlineBody")}
             />
             <Feature
               icon={<DeviceMobileIcon weight="duotone" className="size-6" />}
-              title="A real app, without an app store"
-              body="Install straight from the browser on Android. Home-screen icon, full screen, push notifications that arrive when the app is closed. No downloads, no approvals, no waiting."
+              title={t("landing.installTitle")}
+              body={t("landing.installBody")}
             />
             <Feature
               icon={<LockKeyIcon weight="duotone" className="size-6" />}
-              title="Safe by construction, not by policy"
-              body="Every school's data is walled off. Children's posts are reviewed before anyone sees them. No public profiles, no student-to-stranger messaging, full export and deletion on request."
+              title={t("landing.safeTitle")}
+              body={t("landing.safeBody")}
             />
           </div>
         </section>
@@ -201,13 +195,13 @@ export default async function LandingPage() {
         <section className="border-t border-border bg-surface px-4 py-16 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-              Set up your school before your tea goes cold
+              {t("landing.setupTitle")}
             </h2>
             <ol className="mx-auto mt-10 grid gap-4 text-left sm:grid-cols-3">
               {[
-                { n: 1, title: "Register the school", body: "Name, logo, contact. You get a code like RIVER-7X9K." },
-                { n: 2, title: "Invite your teachers", body: "Paste a list of emails or upload a CSV. One click each to accept." },
-                { n: 3, title: "Share the class code", body: "Students join with a code or the classroom QR. Parents link to their child." },
+                { n: 1, title: t("landing.step1Title"), body: t("landing.step1Body") },
+                { n: 2, title: t("landing.step2Title"), body: t("landing.step2Body") },
+                { n: 3, title: t("landing.step3Title"), body: t("landing.step3Body") },
               ].map((step) => (
                 <li key={step.n} className="rounded-[--radius-lg] border border-border bg-bg p-5">
                   <span className="grid size-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-fg">
@@ -221,7 +215,7 @@ export default async function LandingPage() {
 
             <div className="mt-10">
               <Button asChild size="lg" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href="/register">Start with your school</Link>
+                <Link href="/register">{t("landing.startCta")}</Link>
               </Button>
             </div>
           </div>
@@ -231,13 +225,13 @@ export default async function LandingPage() {
       <footer className="border-t border-border px-4 py-10 sm:px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-fg-muted sm:flex-row">
           <Wordmark size={24} />
-          <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link href="/login" className="hover:text-fg">Log in</Link>
-            <Link href="/join" className="hover:text-fg">Join with a code</Link>
-            <Link href="/register" className="hover:text-fg">Register a school</Link>
-            <Link href="/offline" className="hover:text-fg">Offline</Link>
+          <nav aria-label={t("common.footerNav")} className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link href="/login" className="hover:text-fg">{t("login.title")}</Link>
+            <Link href="/join" className="hover:text-fg">{t("landing.joinWithCode")}</Link>
+            <Link href="/register" className="hover:text-fg">{t("landing.footerRegister")}</Link>
+            <Link href="/offline" className="hover:text-fg">{t("landing.footerOffline")}</Link>
           </nav>
-          <p>Built for schools, students and families.</p>
+          <p>{t("landing.footerTagline")}</p>
         </div>
       </footer>
     </div>
@@ -295,8 +289,14 @@ function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; 
   );
 }
 
-/** Static preview of the register screen — the product's core moment. */
-function AttendancePreview() {
+/**
+ * Static preview of the register screen — the product's core moment.
+ *
+ * TAKES `t` AS A PROP. There is no `"use client"` here and so no provider above
+ * it; this is a plain function the server component calls, which is the same
+ * shape `week-grid.tsx` settled on for the same reason.
+ */
+function AttendancePreview({ t }: { t: Translate }) {
   const roster = [
     { name: "Amara O.", status: "PRESENT" as const },
     { name: "Ben C.", status: "PRESENT" as const },
@@ -313,12 +313,12 @@ function AttendancePreview() {
     >
       <div className="flex items-center justify-between gap-3 border-b border-border bg-accent-soft px-4 py-3">
         <div>
-          <p className="text-sm font-bold text-fg">Grade 5 · Sunflower</p>
-          <p className="text-xs text-fg-muted">Monday 27 July · 24 students</p>
+          <p className="text-sm font-bold text-fg">{t("landing.previewClass")}</p>
+          <p className="text-xs text-fg-muted">{t("landing.previewMeta")}</p>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn">
           <WifiSlashIcon weight="bold" className="size-3.5" />
-          Offline
+          {t("landing.previewOffline")}
         </span>
       </div>
 
@@ -331,14 +331,19 @@ function AttendancePreview() {
               </span>
               <span className="text-sm font-medium text-fg">{student.name}</span>
             </div>
+            {/* ⚠ THE SAME TABLE THE REAL REGISTER USES, so the shop window
+                cannot drift from the product — and so "Present" is not the one
+                English word left on a Marathi front page. The colour token
+                comes from the table too, rather than being re-lowercased here
+                and quietly disagreeing with it. */}
             <span
               className="rounded-full px-2.5 py-1 text-xs font-semibold"
               style={{
-                backgroundColor: `var(--att-${student.status.toLowerCase()}-soft)`,
-                color: `var(--att-${student.status.toLowerCase()})`,
+                backgroundColor: `var(--att-${ATTENDANCE_META[student.status].softToken})`,
+                color: `var(--att-${ATTENDANCE_META[student.status].token})`,
               }}
             >
-              {student.status.charAt(0) + student.status.slice(1).toLowerCase()}
+              {t(ATTENDANCE_META[student.status].labelKey)}
             </span>
           </li>
         ))}
@@ -347,11 +352,11 @@ function AttendancePreview() {
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
         <span className="inline-flex items-center gap-1.5 text-xs font-medium text-fg-muted">
           <ClipboardTextIcon weight="bold" className="size-4" />
-          6 saved on this device
+          {t("landing.previewSaved")}
         </span>
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong">
           <ChatCircleDotsIcon weight="fill" className="size-4" />
-          Parents notified on sync
+          {t("landing.previewNotified")}
         </span>
       </div>
     </div>

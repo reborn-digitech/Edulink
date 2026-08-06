@@ -13,7 +13,7 @@ import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
   consume,
   consumeByCaller,
-  retryHint,
+  retryHintKey,
   CLAIM_ATTEMPTS,
   CLAIM_PER_CODE,
   CODE_LOOKUPS,
@@ -27,8 +27,21 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { CONSENT_AGE } from "@/lib/constants";
+import { getT, getLocale } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+/**
+ * "in about 5 minutes", in the reader's language.
+ *
+ * A one-line wrapper so the four rate-limit refusals below read as sentences
+ * rather than as two nested `t(…)` calls each. See `retryHintKey`.
+ */
+function hint(t: Translate, seconds: number): string {
+  const h = retryHintKey(seconds);
+  return t(h.key, h.vars);
+}
 
 /* -------------------------------------------------------------------------- */
 /* Code lookup                                                                 */
@@ -46,9 +59,10 @@ export type CodeLookup =
  * know, and should not have to know, which kind it is. (§7 no dead ends)
  */
 export async function lookupCode(raw: string): Promise<CodeLookup> {
+  const t = await getT();
   const code = normalizeCode(raw ?? "");
-  if (code.length < 4) return { ok: false, error: "That code looks too short." };
-  if (code.length > 32) return { ok: false, error: "That code looks too long." };
+  if (code.length < 4) return { ok: false, error: t("join.codeTooShort") };
+  if (code.length > 32) return { ok: false, error: t("join.codeTooLong") };
 
   /**
    * ⚠ NOT A SECRET, BUT NOT ENUMERABLE EITHER.
@@ -67,7 +81,7 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
    */
   const gate = await consumeByCaller("code-lookup", CODE_LOOKUPS);
   if (!gate.allowed) {
-    return { ok: false, error: `Too many tries. Wait ${retryHint(gate.retryAfterSeconds)}.` };
+    return { ok: false, error: t("join.tooManyTries", { when: hint(t, gate.retryAfterSeconds) }) };
   }
 
   // BOTH lookups run under the code itself. There is no school to scope them to
@@ -126,7 +140,7 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
 
   return {
     ok: false,
-    error: "We could not find that code. Check each letter — it is easy to mix up a 3 and an E.",
+    error: t("join.codeNotFound"),
   };
 }
 
@@ -145,6 +159,9 @@ export type JoinState = { ok: boolean; errors: FieldErrors; redirectTo?: string 
  * handle instead; a parent or teacher can attach an email later.
  */
 export async function joinAsStudent(input: unknown): Promise<JoinState> {
+  const t = await getT();
+  // The language they filled the form in. See the note in register/actions.ts.
+  const locale = await getLocale();
   const parsed = studentJoinSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
@@ -165,10 +182,10 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 
   const birthDate = birthdate ? parseDateOnly(birthdate) : null;
   if (birthdate && !birthDate) {
-    return { ok: false, errors: { birthdate: "Use a real date." } };
+    return { ok: false, errors: { birthdate: t("join.useRealDate") } };
   }
   if (birthDate && birthDate.getTime() > Date.now()) {
-    return { ok: false, errors: { birthdate: "That date is in the future." } };
+    return { ok: false, errors: { birthdate: t("join.dateInFuture") } };
   }
 
   // Under the consent age gets the stricter defaults: no global-feed posting
@@ -208,7 +225,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
           avatarKey,
           birthdate: birthDate,
           isMinor,
-          prefs: writeJson({ theme: "system", locale: "en" }),
+          prefs: writeJson({ theme: "system", locale }),
         },
       });
 
@@ -243,7 +260,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
     console.error("[joinAsStudent]", error);
     return {
       ok: false,
-      errors: { _form: "We could not set that up just then. Please try again." },
+      errors: { _form: t("join.couldNotSetUp") },
     };
   }
 
@@ -264,6 +281,8 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 /* -------------------------------------------------------------------------- */
 
 export async function signUpParent(input: unknown): Promise<JoinState> {
+  const t = await getT();
+  const locale = await getLocale();
   const parsed = parentSignupSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
@@ -273,7 +292,7 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   if (!gate.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many accounts from here just now. Try again ${retryHint(gate.retryAfterSeconds)}.` },
+      errors: { _form: t("join.tooManyAccounts", { when: hint(t, gate.retryAfterSeconds) }) },
     };
   }
 
@@ -284,7 +303,7 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   if (existing) {
     return {
       ok: false,
-      errors: { email: "An account already uses this email. Log in and add your child from there." },
+      errors: { email: t("join.emailInUseParent") },
     };
   }
 
@@ -297,7 +316,7 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
       passwordHash,
       prefs: writeJson({
         theme: "system",
-        locale: "en",
+        locale,
         channels: { push: consentNotifications, email: consentNotifications },
       }),
     },
@@ -339,8 +358,9 @@ export type ClaimState = {
  * sufficient alone.
  */
 export async function claimChild(input: unknown): Promise<ClaimState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
 
   const parsed = claimChildSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
@@ -349,14 +369,13 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   const generic: ClaimState = {
     ok: false,
     errors: {
-      _form:
-        "That code and date of birth do not match a student. Check both with the school — the code is on the letter they sent home.",
+      _form: t("join.claimMismatch"),
     },
   };
 
   const code = normalizeCode(rawCode);
   const birthDate = parseDateOnly(birthdate);
-  if (!birthDate) return { ok: false, errors: { birthdate: "Use a real date." } };
+  if (!birthDate) return { ok: false, errors: { birthdate: t("join.useRealDate") } };
 
   /**
    * BOTH LIMITS BEFORE ANY LOOKUP, so a refusal costs the same whether the code
@@ -375,7 +394,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   if (!perCaller.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many attempts. Try again ${retryHint(perCaller.retryAfterSeconds)}.` },
+      errors: { _form: t("join.tooManyAttempts", { when: hint(t, perCaller.retryAfterSeconds) }) },
     };
   }
 
@@ -383,7 +402,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   if (!perCode.allowed) {
     return {
       ok: false,
-      errors: { _form: `Too many attempts for that code. Try again ${retryHint(perCode.retryAfterSeconds)}.` },
+      errors: { _form: t("join.tooManyForCode", { when: hint(t, perCode.retryAfterSeconds) }) },
     };
   }
 
@@ -413,8 +432,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
     return {
       ok: false,
       errors: {
-        _form:
-          "We cannot verify this student's date of birth. Ask the school to link you instead — they can do it in seconds.",
+        _form: t("join.noBirthdateOnFile"),
       },
     };
   }
@@ -444,7 +462,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   if (existing?.status === "ACTIVE") {
     return {
       ok: false,
-      errors: { _form: "You are already linked to this student." },
+      errors: { _form: t("join.alreadyLinked") },
     };
   }
 

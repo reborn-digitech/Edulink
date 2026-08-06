@@ -28,7 +28,7 @@ export default async function LoginPage({
     <div className="grid min-h-safe bg-bg lg:grid-cols-2">
       <div className="flex flex-col justify-center px-4 py-10 sm:px-8">
         <div className="mx-auto w-full max-w-sm">
-          <Link href="/" className="mb-8 inline-block" aria-label="EduLink home">
+          <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
             <Wordmark />
           </Link>
 
@@ -119,10 +119,9 @@ export default async function LoginPage({
       >
         <blockquote className="max-w-md text-white">
           <p className="text-2xl font-semibold leading-snug">
-            &ldquo;The register used to eat the first ten minutes of every lesson. Now it is done
-            before the class has sat down.&rdquo;
+            {t("login.quote")}
           </p>
-          <footer className="mt-4 text-sm text-white/80">A Year 5 teacher</footer>
+          <footer className="mt-4 text-sm text-white/80">{t("login.quoteAttribution")}</footer>
         </blockquote>
       </div>
     </div>

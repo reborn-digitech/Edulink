@@ -15,6 +15,7 @@ import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { passwordStrength } from "@/lib/password-strength";
 import { cn } from "@/lib/cn";
 import { joinAsStudent, lookupCode, type CodeLookup } from "../actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * Kid-first join flow.
@@ -34,6 +35,7 @@ type Step = "code" | "name" | "avatar" | "password";
 const STEP_ORDER: Step[] = ["code", "name", "avatar", "password"];
 
 export function StudentJoinFlow() {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -91,7 +93,7 @@ export function StudentJoinFlow() {
 
     if (step === "code") {
       if (!found) {
-        setErrors({ code: "Check your code first." });
+        setErrors({ code: t("join.checkCodeFirst") });
         return;
       }
       setStep("name");
@@ -100,7 +102,7 @@ export function StudentJoinFlow() {
 
     if (step === "name") {
       if (name.trim().length < 2) {
-        setErrors({ name: "Type your first and last name." });
+        setErrors({ name: t("join.typeFullName") });
         return;
       }
       setStep("avatar");
@@ -132,13 +134,13 @@ export function StudentJoinFlow() {
         if (result.errors.schoolCode) setStep("code");
         toast({
           tone: "danger",
-          title: "That did not work",
-          description: result.errors._form ?? "Have a look at the highlighted box.",
+          title: t("join.didNotWork"),
+          description: result.errors._form ?? t("join.lookAtHighlighted"),
         });
         return;
       }
 
-      toast({ tone: "ok", title: "You're in! 🎉" });
+      toast({ tone: "ok", title: t("join.youreIn") });
       router.push(result.redirectTo ?? "/student");
       router.refresh();
     });
@@ -148,7 +150,7 @@ export function StudentJoinFlow() {
     <div>
       {/* Progress dots — deliberately not a percentage bar; "3 of 4" is easier
           for a child to read than "75%". */}
-      <div className="mb-7 flex items-center gap-2" role="group" aria-label={`Step ${index + 1} of 4`}>
+      <div className="mb-7 flex items-center gap-2" role="group" aria-label={t("join.stepOf", { n: index + 1 })}>
         {STEP_ORDER.map((s, i) => (
           <span
             key={s}
@@ -181,15 +183,13 @@ export function StudentJoinFlow() {
             tabIndex={-1}
             className="text-3xl font-bold tracking-tight text-fg outline-none"
           >
-            What&rsquo;s your code?
+            {t("join.whatsYourCode")}
           </h1>
-          <p className="mt-2 text-fg-muted">
-            Your teacher will have written it on the board, or sent it home.
-          </p>
+          <p className="mt-2 text-fg-muted">{t("join.codeBody")}</p>
 
           <div className="mt-6">
             <label htmlFor="join-code" className="sr-only">
-              School or class code
+              {t("join.codeLabel")}
             </label>
             <input
               id="join-code"
@@ -210,7 +210,7 @@ export function StudentJoinFlow() {
               autoComplete="off"
               spellCheck={false}
               inputMode="text"
-              placeholder="ABC-1234"
+              placeholder={t("join.codePlaceholder")}
               aria-invalid={Boolean(errors.code) || undefined}
               aria-describedby={errors.code ? "join-code-error" : undefined}
               className={cn(
@@ -237,7 +237,9 @@ export function StudentJoinFlow() {
               <div className="min-w-0">
                 <p className="font-bold text-fg">{found.schoolName}</p>
                 <p className="text-sm text-fg-muted">
-                  {found.kind === "class" ? `Class: ${found.className}` : "Whole school"}
+                  {found.kind === "class"
+                    ? t("join.classIs", { name: found.className })
+                    : t("join.wholeSchool")}
                 </p>
               </div>
             </div>
@@ -251,7 +253,7 @@ export function StudentJoinFlow() {
               disabled={code.replace(/[^A-Z0-9]/g, "").length < 4}
               onClick={checkCode}
             >
-              Check my code
+              {t("join.checkMyCode")}
             </Button>
           )}
         </div>
@@ -265,36 +267,34 @@ export function StudentJoinFlow() {
             tabIndex={-1}
             className="text-3xl font-bold tracking-tight text-fg outline-none"
           >
-            What&rsquo;s your name?
+            {t("join.whatsYourName")}
           </h1>
-          <p className="mt-2 text-fg-muted">
-            Your teacher needs your full name for the register.
-          </p>
+          <p className="mt-2 text-fg-muted">{t("join.nameBody")}</p>
 
           <div className="mt-6 space-y-5">
             <TextField
-              label="Your full name"
+              label={t("register.yourName")}
               required
               autoFocus
               autoComplete="name"
-              placeholder="Amara Okafor"
+              placeholder={t("join.studentNamePlaceholder")}
               value={name}
               error={errors.name}
               onChange={(e) => setName(e.target.value)}
             />
             <TextField
-              label="What should we call you?"
-              placeholder={name.split(" ")[0] || "Amara"}
+              label={t("join.whatCallYou")}
+              placeholder={name.split(" ")[0] || t("join.whatCallYouFallback")}
               value={preferredName}
               onChange={(e) => setPreferredName(e.target.value)}
-              hint="This is the name you'll see around the app."
+              hint={t("join.whatCallYouHint")}
             />
             <DateField
-              label="Your birthday"
+              label={t("join.yourBirthday")}
               value={birthdate}
               error={errors.birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
-              hint="This is how a parent proves they're yours when they link to you."
+              hint={t("join.birthdayHint")}
             />
           </div>
         </div>
@@ -308,10 +308,10 @@ export function StudentJoinFlow() {
             tabIndex={-1}
             className="text-3xl font-bold tracking-tight text-fg outline-none"
           >
-            Pick your look
+            {t("join.pickYourLook")}
           </h1>
           <p className="mt-2 text-fg-muted">
-            {AVATAR_PRESETS.length} to choose from. You can change it whenever you like.
+            {t("join.pickLookBody", { count: AVATAR_PRESETS.length })}
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-4">
@@ -324,7 +324,7 @@ export function StudentJoinFlow() {
 
           <div
             role="radiogroup"
-            aria-label="Choose your avatar"
+            aria-label={t("join.chooseAvatar")}
             className="mt-6 grid max-h-80 grid-cols-5 gap-2 overflow-y-auto rounded-[--radius-lg] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
           >
             {AVATAR_PRESETS.map((preset) => {
@@ -360,17 +360,17 @@ export function StudentJoinFlow() {
             tabIndex={-1}
             className="text-3xl font-bold tracking-tight text-fg outline-none"
           >
-            Make a secret password
+            {t("join.makePassword")}
           </h1>
           <p className="mt-2 text-fg-muted">
-            Pick three words you can remember, like{" "}
-            <span className="font-semibold text-fg">purple-otter-rocket</span>. Don&rsquo;t tell
-            anyone except a grown-up at home.
+            {t("join.makePasswordLead")}{" "}
+            <span className="font-semibold text-fg">{t("join.makePasswordExample")}</span>.{" "}
+            {t("join.makePasswordTail")}
           </p>
 
           <div className="mt-6">
             <TextField
-              label="Your password"
+              label={t("join.yourPassword")}
               required
               autoFocus
               type="password"
@@ -409,7 +409,7 @@ export function StudentJoinFlow() {
                         : "text-fg-muted",
                   )}
                 >
-                  {strength.score >= 3 ? "Great password!" : strength.label}
+                  {strength.score >= 3 ? t("join.greatPassword") : strength.label}
                 </p>
               </div>
             )}
@@ -418,14 +418,19 @@ export function StudentJoinFlow() {
           <div className="mt-6 flex items-start gap-3 rounded-[--radius-md] bg-accent-soft p-4">
             <SparkleIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-accent-strong" />
             <p className="text-sm leading-relaxed text-fg-muted">
-              You&rsquo;re joining <strong className="text-fg">{found?.schoolName}</strong>
-              {found?.kind === "class" ? (
-                <>
-                  {" "}
-                  in <strong className="text-fg">{found.className}</strong>
-                </>
-              ) : null}
-              .
+              {/* ⚠ ONE KEY PER SENTENCE, and the bold on the school name is
+                  gone on purpose. It used to be `joining <b>{school}</b> in
+                  <b>{class}</b>.` — JSX that fixes English word order into the
+                  markup. Hindi and Marathi put the postposition after the noun,
+                  so no arrangement of those fragments reads correctly in either.
+                  A whole sentence with placeholders can be reordered; bold text
+                  spliced between them cannot. */}
+              {found?.kind === "class"
+                ? t("join.joiningClass", {
+                    school: found.schoolName,
+                    class: found.className,
+                  })
+                : t("join.joiningSchool", { school: found?.schoolName ?? "" })}
             </p>
           </div>
         </div>
@@ -441,7 +446,7 @@ export function StudentJoinFlow() {
             icon={<ArrowLeftIcon weight="bold" />}
             onClick={() => setStep(STEP_ORDER[index - 1]!)}
           >
-            Back
+            {t("common.back")}
           </Button>
         )}
         <Button
@@ -452,7 +457,7 @@ export function StudentJoinFlow() {
           iconRight={<ArrowRightIcon weight="bold" />}
           onClick={next}
         >
-          {step === "password" ? (pending ? "Setting up…" : "Let's go!") : "Next"}
+          {step === "password" ? (pending ? t("join.settingUp") : t("join.letsGo")) : t("join.next")}
         </Button>
       </div>
     </div>

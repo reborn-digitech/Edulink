@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { ROLE_META, type Role } from "@/lib/constants";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -54,13 +55,13 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
 
   if (!usable) {
     return (
-      <Shell>
+      <Shell t={t}>
         <EmptyState
-          title="This invitation is no longer valid"
-          description="It may have been used already, withdrawn, or simply expired. Ask whoever invited you to send a fresh link — it only takes them a moment."
+          title={t("invite.invalidTitle")}
+          description={t("invite.invalidBody")}
           action={
             <Button asChild variant="secondary">
-              <Link href="/login">Go to log in</Link>
+              <Link href="/login">{t("invite.goToLogIn")}</Link>
             </Button>
           }
         />
@@ -100,14 +101,16 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   const signedInAs = current ? (current.user.preferredName ?? current.user.name) : null;
 
   return (
-    <Shell brand={context?.school.brandPrimary ?? null}>
+    <Shell t={t} brand={context?.school.brandPrimary ?? null}>
       <div data-role={role.toLowerCase()}>
         <span className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent-strong">
-          {t(ROLE_META[role].labelKey)} invitation
+          {t("invite.roleInvitation", { role: t(ROLE_META[role].labelKey) })}
         </span>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {hasAccount ? <>Add {context?.school.name} to your account</> : <>Join {context?.school.name}</>}
+          {hasAccount
+            ? t("invite.addSchoolToAccount", { school: context?.school.name ?? "" })
+            : t("invite.joinSchool", { school: context?.school.name ?? "" })}
         </h1>
         {/*
           THE ADDRESS IS SHOWN WHETHER OR NOT THERE IS A SENDER, and that split
@@ -122,39 +125,32 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           informative. Found by walking the onboarding in a browser.
         */}
         <p className="mt-2 text-sm leading-relaxed text-fg-muted">
-          {inviter ? (
-            <>
-              <strong className="text-fg">{inviter}</strong> invited you
-            </>
-          ) : role === "ADMIN" ? (
-            // The operator's invitation, which is how a school starts: there is
-            // genuinely nobody at the school to name yet.
-            <>You have been invited to help run this school</>
-          ) : (
-            // …and every other senderless invitation. "Help run this school"
-            // was being said to pupils, because the branch above was written
-            // for the one case that has no inviter and then met the others.
-            <>You have been invited to join this school</>
-          )}
-          {invite.email ? (
-            <>
-              {" "}
-              at <strong className="text-fg">{invite.email}</strong>
-            </>
-          ) : null}
-          {hasAccount ? (
-            <>
-              , which already has an EduLink account. Accepting adds this school to it —{" "}
-              {/* The id is what the sweep reads. It hangs on the element the
-                  promise lives in, so deleting the promise deletes the hook. */}
-              <strong id="password-unchanged" className="text-fg">
-                your password does not change
-              </strong>
-              , and everything already on your account comes with you.
-            </>
-          ) : (
-            <>. Set a password and you are in.</>
-          )}
+          {inviter
+            ? invite.email
+              ? t("invite.invitedByAt", { name: inviter, email: invite.email })
+              : t("invite.invitedBy", { name: inviter })
+            : role === "ADMIN"
+              // The operator's invitation, which is how a school starts: there
+              // is genuinely nobody at the school to name yet.
+              ? invite.email
+                ? t("invite.invitedToHelpRunAt", { email: invite.email })
+                : t("invite.invitedToHelpRun")
+              // …and every other senderless invitation. "Help run this school"
+              // was being said to pupils, because the branch above was written
+              // for the one case that has no inviter and then met the others.
+              : invite.email
+                ? t("invite.invitedToJoinAt", { email: invite.email })
+                : t("invite.invitedToJoin")}
+        </p>
+
+        {/* ⚠ ITS OWN SENTENCE, in its own paragraph. This was a clause glued to
+            the end of the one above, which fixed English word order into the
+            markup. The id stays exactly where it was — the sweep reads it. */}
+        <p
+          id={hasAccount ? "password-unchanged" : undefined}
+          className="mt-2 text-sm leading-relaxed text-fg-muted"
+        >
+          {hasAccount ? t("invite.transferNote") : t("invite.signupNote")}
         </p>
 
         {/*
@@ -166,8 +162,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
         */}
         {hasAccount && (
           <p className="mt-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
-            Changed school? This is the right way to do it. Your record from your last school
-            travels with your account, so {context?.school.name} can see where you came from.
+            {t("invite.changedSchool", { school: context?.school.name ?? "" })}
           </p>
         )}
 
@@ -179,9 +174,10 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
         */}
         {signedInAs && (
           <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
-            You are signed in as <strong>{signedInAs}</strong>. Accepting this
-            invitation will sign you out and sign in as{" "}
-            {invite.email ?? "the person it was sent to"}.
+            {t("invite.signedInAs", {
+              name: signedInAs,
+              invited: invite.email ?? t("invite.thePersonItWasSentTo"),
+            })}
           </p>
         )}
 
@@ -198,7 +194,15 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   );
 }
 
-function Shell({ children, brand }: { children: React.ReactNode; brand?: string | null }) {
+function Shell({
+  t,
+  children,
+  brand,
+}: {
+  t: Translate;
+  children: React.ReactNode;
+  brand?: string | null;
+}) {
   return (
     <div
       className="min-h-safe bg-bg"
@@ -207,7 +211,7 @@ function Shell({ children, brand }: { children: React.ReactNode; brand?: string 
     >
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-16 max-w-lg items-center px-4">
-          <Link href="/" aria-label="EduLink home">
+          <Link href="/" aria-label={t("common.homeLink")}>
             <Wordmark size={26} />
           </Link>
         </div>
