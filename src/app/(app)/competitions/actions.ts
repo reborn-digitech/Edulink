@@ -45,7 +45,8 @@ async function run(
     revalidatePath("/parent");
     return { ok: true, message };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -75,7 +76,8 @@ export async function consentAction(input: unknown): Promise<CompetitionActionSt
     revalidatePath("/parent");
     return { ok: true, message: t("competitions.consentGivenDot") };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -94,7 +96,8 @@ export async function withdrawAction(input: unknown): Promise<CompetitionActionS
     revalidatePath("/parent");
     return { ok: true, message: t("competitions.withdrawnDot") };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -202,7 +205,8 @@ export async function createCompetitionAction(input: unknown): Promise<CreateCom
     revalidatePath("/competitions");
     return { ok: true, competitionId };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -233,7 +237,8 @@ export async function setLeaderboardAction(input: unknown): Promise<CompetitionA
     revalidatePath("/competitions");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -265,7 +270,8 @@ export async function setStatusAction(input: unknown): Promise<CompetitionAction
             : t("competitions.backToADraft"),
     };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -302,7 +308,8 @@ export async function submitAction(input: unknown): Promise<CompetitionActionSta
     revalidatePath("/competitions");
     return { ok: true, message: t("competitions.handedInDot") };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }
@@ -353,7 +360,8 @@ export async function recordResultAction(input: unknown): Promise<CompetitionAct
       message: parsed.data.score === null && parsed.data.rank === null ? t("competitions.resultCleared") : t("competitions.resultSaved"),
     };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 }

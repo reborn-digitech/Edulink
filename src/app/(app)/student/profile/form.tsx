@@ -75,7 +75,7 @@ export function ProfileForm({
         <Avatar avatarKey={draft.avatarKey} name={fullName} size="xl" ring />
         <div className="min-w-0">
           <p className="text-lg font-bold text-fg">{draft.preferredName || fullName}</p>
-          <p className="text-sm text-fg-muted">{describeAvatar(draft.avatarKey)}</p>
+          <p className="text-sm text-fg-muted">{describeAvatar(draft.avatarKey, t)}</p>
           <Button
             type="button"
             size="sm"
@@ -102,7 +102,7 @@ export function ProfileForm({
                 type="button"
                 role="radio"
                 aria-checked={selected}
-                aria-label={describeAvatar(preset)}
+                aria-label={describeAvatar(preset, t)}
                 onClick={() => setDraft((d) => ({ ...d, avatarKey: preset }))}
                 className={cn(
                   "rounded-full transition-transform duration-[--dur-fast] active:scale-90",
@@ -111,7 +111,7 @@ export function ProfileForm({
                     : "hover:scale-105",
                 )}
               >
-                <Avatar avatarKey={preset} name={describeAvatar(preset)} size="md" />
+                <Avatar avatarKey={preset} name={describeAvatar(preset, t)} size="md" />
               </button>
             );
           })}

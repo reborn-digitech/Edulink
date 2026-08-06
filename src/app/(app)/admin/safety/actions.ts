@@ -32,7 +32,7 @@ export async function takeDown(input: {
     revalidatePath("/bulletin");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     console.error("[takeDown]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }
@@ -51,7 +51,7 @@ export async function dismiss(input: {
     revalidatePath("/admin/safety");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     console.error("[dismiss]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

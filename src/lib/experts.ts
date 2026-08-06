@@ -88,7 +88,7 @@ export async function inviteExpert(
   input: { email?: string; name?: string },
 ): Promise<ExpertInviteResult> {
   if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
-    throw new AccessError("Only a teacher or an admin can invite an expert");
+    throw new AccessError("access.onlyATeacherOrAnAdminCan2");
   }
   return createExpertInvite({
     schoolId: session.schoolId,
@@ -183,7 +183,7 @@ export async function acceptExpertInvite(
   profile: { headline: string; bio?: string; organisation?: string },
 ): Promise<{ expertProfileId: string }> {
   const headline = profile.headline.trim();
-  if (headline.length < 3) throw new AccessError("Say what you do, in a few words");
+  if (headline.length < 3) throw new AccessError("access.sayWhatYouDoInAFew");
 
   /**
    * `$tenantTransaction`, not `db.$transaction`. See db.ts and the note in
@@ -207,10 +207,10 @@ export async function acceptExpertInvite(
         select: { id: true, acceptedAt: true, revokedAt: true, expiresAt: true, schoolId: true },
       });
       if (!invite || invite.revokedAt || invite.acceptedAt) {
-        throw new AccessError("That invitation cannot be used", "NOT_FOUND");
+        throw new AccessError("access.thatInvitationCannotBeUsed", "NOT_FOUND");
       }
       if (invite.expiresAt.getTime() < Date.now()) {
-        throw new AccessError("That invitation has expired", "NOT_FOUND");
+        throw new AccessError("access.thatInvitationHasExpired", "NOT_FOUND");
       }
 
       const existing = await tx.expertProfile.findUnique({
@@ -335,10 +335,10 @@ export async function bookSlot(
   topic: string,
 ): Promise<{ bookingId: string }> {
   if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
-    throw new AccessError("Only a teacher or an admin can book an expert");
+    throw new AccessError("access.onlyATeacherOrAnAdminCan");
   }
   const cleanTopic = topic.trim();
-  if (cleanTopic.length < 3) throw new AccessError("Say what you would like to discuss");
+  if (cleanTopic.length < 3) throw new AccessError("access.sayWhatYouWouldLikeToDiscuss");
 
   const slot = await db.expertSlot.findUnique({
     where: { id: slotId },
@@ -353,22 +353,22 @@ export async function bookSlot(
       },
     },
   });
-  if (!slot || !slot.expert.publishedAt) throw new AccessError("No such slot", "NOT_FOUND");
+  if (!slot || !slot.expert.publishedAt) throw new AccessError("access.noSuchSlot", "NOT_FOUND");
   // WHAT THEY AGREED TO DO, checked rather than assumed. An expert offering
   // mentoring only may still have slots — mentors and mentees arrange times —
   // and those are not a school's to book for a workshop.
   if (slot.expert.offering === "MENTORING") {
-    throw new AccessError("This expert is offering mentoring rather than sessions", "NOT_FOUND");
+    throw new AccessError("access.thisExpertIsOfferingMentoringRatherThan", "NOT_FOUND");
   }
-  if (slot.cancelledAt) throw new AccessError("That time is no longer offered");
-  if (slot.startsAt.getTime() < Date.now()) throw new AccessError("That time has already passed");
+  if (slot.cancelledAt) throw new AccessError("access.thatTimeIsNoLongerOffered");
+  if (slot.startsAt.getTime() < Date.now()) throw new AccessError("access.thatTimeHasAlreadyPassed");
 
   // Claim it. Zero rows means somebody else got there first.
   const claimed = await db.expertSlot.updateMany({
     where: { id: slotId, bookedAt: null, cancelledAt: null },
     data: { bookedAt: new Date() },
   });
-  if (claimed.count === 0) throw new AccessError("Somebody booked that time just now");
+  if (claimed.count === 0) throw new AccessError("access.somebodyBookedThatTimeJustNow");
 
   try {
     const booking = await db.expertBooking.create({
@@ -427,13 +427,13 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
       },
     },
   });
-  if (!booking) throw new AccessError("Booking not found", "NOT_FOUND");
+  if (!booking) throw new AccessError("access.bookingNotFound", "NOT_FOUND");
 
   const isSchoolStaff =
     (session.role === "ADMIN" || session.role === "TEACHER") &&
     session.schoolId === booking.schoolId;
   const isTheExpert = session.role === "EXPERT" && session.user.id === booking.expert.userId;
-  if (!isSchoolStaff && !isTheExpert) throw new AccessError("Not your booking to cancel");
+  if (!isSchoolStaff && !isTheExpert) throw new AccessError("access.notYourBookingToCancel");
 
   // Idempotent. Two people pressing cancel, or one pressing twice, must not
   // mint two replacement hours below.
@@ -593,7 +593,7 @@ async function assertBookingAccess(session: ActiveContext, bookingId: string) {
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
 
   // Checked before the query, so a pupil's request never becomes a lookup.
-  if (!isExpert && !isStaff) throw new AccessError("Booking not found", "NOT_FOUND");
+  if (!isExpert && !isStaff) throw new AccessError("access.bookingNotFound", "NOT_FOUND");
 
   const booking = await db.expertBooking.findFirst({
     where: {
@@ -608,7 +608,7 @@ async function assertBookingAccess(session: ActiveContext, bookingId: string) {
       expert: { include: { user: { select: { name: true, preferredName: true } } } },
     },
   });
-  if (!booking) throw new AccessError("Booking not found", "NOT_FOUND");
+  if (!booking) throw new AccessError("access.bookingNotFound", "NOT_FOUND");
   return booking;
 }
 
@@ -657,12 +657,12 @@ export async function postMessage(
   body: string,
 ): Promise<void> {
   const clean = body.trim();
-  if (!clean) throw new AccessError("Write something first");
-  if (clean.length > 5000) throw new AccessError("That message is too long");
+  if (!clean) throw new AccessError("access.writeSomethingFirst");
+  if (clean.length > 5000) throw new AccessError("access.thatMessageIsTooLong");
 
   const booking = await assertBookingAccess(session, bookingId);
   if (booking.status === "CANCELLED") {
-    throw new AccessError("This booking was cancelled");
+    throw new AccessError("access.thisBookingWasCancelled");
   }
 
   await db.expertMessage.create({
@@ -716,7 +716,7 @@ export async function postMessage(
 /* -------------------------------------------------------------------------- */
 
 export async function listOwnSlots(session: ActiveContext) {
-  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
   return db.expertSlot.findMany({
     where: { expert: { userId: session.user.id }, cancelledAt: null },
     orderBy: { startsAt: "asc" },
@@ -729,19 +729,19 @@ export async function addSlot(
   session: ActiveContext,
   input: { startsAt: Date; endsAt: Date; note?: string },
 ): Promise<void> {
-  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
 
   const profile = await db.expertProfile.findUnique({
     where: { userId: session.user.id },
     select: { id: true },
   });
-  if (!profile) throw new AccessError("No expert profile", "NOT_FOUND");
+  if (!profile) throw new AccessError("access.noExpertProfile", "NOT_FOUND");
 
   if (Number.isNaN(input.startsAt.getTime()) || Number.isNaN(input.endsAt.getTime())) {
-    throw new AccessError("Those dates are not dates");
+    throw new AccessError("access.thoseDatesAreNotDates");
   }
-  if (input.endsAt <= input.startsAt) throw new AccessError("It has to end after it starts");
-  if (input.startsAt.getTime() < Date.now()) throw new AccessError("That time is in the past");
+  if (input.endsAt <= input.startsAt) throw new AccessError("access.itHasToEndAfterItStarts");
+  if (input.startsAt.getTime() < Date.now()) throw new AccessError("access.thatTimeIsInThePast");
 
   // Overlap is refused rather than allowed and sorted out later: a school that
   // books two overlapping slots has booked the same hour twice, and the expert
@@ -755,7 +755,7 @@ export async function addSlot(
     },
     select: { id: true },
   });
-  if (clash) throw new AccessError("That overlaps a time you already offer");
+  if (clash) throw new AccessError("access.thatOverlapsATimeYouAlreadyOffer");
 
   await db.expertSlot.create({
     data: {
@@ -769,14 +769,14 @@ export async function addSlot(
 
 /** Withdraws an unbooked slot. A booked one has to be cancelled instead. */
 export async function removeSlot(session: ActiveContext, slotId: string): Promise<void> {
-  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
 
   const slot = await db.expertSlot.findFirst({
     where: { id: slotId, expert: { userId: session.user.id } },
     select: { id: true, bookedAt: true },
   });
-  if (!slot) throw new AccessError("No such slot", "NOT_FOUND");
-  if (slot.bookedAt) throw new AccessError("A school has booked that time — cancel the booking");
+  if (!slot) throw new AccessError("access.noSuchSlot", "NOT_FOUND");
+  if (slot.bookedAt) throw new AccessError("access.aSchoolHasBookedThatTimeCancel");
 
   await db.expertSlot.update({ where: { id: slotId }, data: { cancelledAt: new Date() } });
 }
@@ -806,7 +806,7 @@ export type OwnProfile = {
  * thought to list; a link is now checked against the routes that exist.
  */
 export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile> {
-  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
 
   const profile = await db.expertProfile.findUnique({
     where: { userId: session.user.id },
@@ -822,7 +822,7 @@ export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile>
       verifiedAt: true,
     },
   });
-  if (!profile) throw new AccessError("No expert profile", "NOT_FOUND");
+  if (!profile) throw new AccessError("access.noExpertProfile", "NOT_FOUND");
 
   return {
     headline: profile.headline,
@@ -866,20 +866,20 @@ export async function updateOwnProfile(
   session: ActiveContext,
   input: ProfileInput,
 ): Promise<void> {
-  if (session.role !== "EXPERT") throw new AccessError("Not an expert");
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
 
   const profile = await db.expertProfile.findUnique({
     where: { userId: session.user.id },
     select: { id: true },
   });
-  if (!profile) throw new AccessError("No expert profile", "NOT_FOUND");
+  if (!profile) throw new AccessError("access.noExpertProfile", "NOT_FOUND");
 
   const headline = input.headline.trim();
-  if (headline.length < 3) throw new AccessError("Give yourself a headline");
-  if (headline.length > 120) throw new AccessError("That headline is too long");
+  if (headline.length < 3) throw new AccessError("access.giveYourselfAHeadline");
+  if (headline.length > 120) throw new AccessError("access.thatHeadlineIsTooLong");
 
   const bio = input.bio.trim();
-  if (bio.length > 4000) throw new AccessError("That description is too long");
+  if (bio.length > 4000) throw new AccessError("access.thatDescriptionIsTooLong");
 
   // Empty strings dropped, duplicates dropped, order kept. A specialism list
   // with three blanks in it is what an unbounded tag input produces on the
@@ -902,7 +902,7 @@ export async function updateOwnProfile(
   try {
     new Intl.DateTimeFormat("en", { timeZone: timezone });
   } catch {
-    throw new AccessError("That is not a timezone this server knows");
+    throw new AccessError("access.thatIsNotATimezoneThisServer");
   }
 
   /**
@@ -915,7 +915,7 @@ export async function updateOwnProfile(
    * to BOTH would widen the commitment of whoever sent it.
    */
   if (!EXPERT_OFFERINGS.includes(input.offering)) {
-    throw new AccessError("Say whether you are offering sessions, mentoring, or both");
+    throw new AccessError("access.sayWhetherYouAreOfferingSessionsMentoring");
   }
 
   /**
@@ -929,12 +929,12 @@ export async function updateOwnProfile(
   if (mentors && input.mentorCapacity !== null && input.mentorCapacity !== undefined) {
     const capacity = Math.floor(input.mentorCapacity);
     if (!Number.isFinite(capacity) || capacity < 1) {
-      throw new AccessError("How many children will you mentor at once? Use 1 or more.");
+      throw new AccessError("access.howManyChildrenWillYouMentorAt");
     }
     // A ceiling, because the number is a promise to children. Somebody typing
     // 500 has misunderstood what they are agreeing to, and the honest response
     // is to say so rather than to record it.
-    if (capacity > 50) throw new AccessError("That is more children than one person can mentor");
+    if (capacity > 50) throw new AccessError("access.thatIsMoreChildrenThanOnePerson");
     mentorCapacity = capacity;
   }
 

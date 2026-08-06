@@ -35,7 +35,7 @@ export type ActionResult = { ok: boolean; error?: string; id?: string;
 
 /** AccessError carries a message meant for a person; anything else does not. */
 function failure(error: unknown): ActionResult {
-  if (error instanceof AccessError) return { ok: false, error: error.message };
+  if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[calendar]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }
@@ -104,7 +104,7 @@ export async function removeCalendarEntry(holidayId: string): Promise<ActionResu
  */
 function asUtcDate(dateKey: string): Date {
   const parsed = new Date(`${dateKey}T00:00:00.000Z`);
-  if (Number.isNaN(parsed.getTime())) throw new AccessError("That is not a real date");
+  if (Number.isNaN(parsed.getTime())) throw new AccessError("access.thatIsNotARealDate");
   return parsed;
 }
 

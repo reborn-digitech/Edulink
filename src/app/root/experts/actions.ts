@@ -30,7 +30,8 @@ export async function setStanding(
     revalidatePath("/experts");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[root-experts]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

@@ -126,7 +126,7 @@ export async function listGlobalFeed(
  */
 export async function publishGlobally(session: ActiveContext, postId: string): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can publish to the global feed");
+    throw new AccessError("access.onlyASchoolAdminCanPublishTo");
   }
 
   // Scoped find before the write. RLS would refuse a cross-school update, but
@@ -135,9 +135,9 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
     where: { id: postId, schoolId: session.schoolId },
     select: { id: true, status: true, scope: true, title: true, school: { select: { name: true } } },
   });
-  if (!post) throw new AccessError("No such post", "NOT_FOUND");
+  if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
   if (post.status !== "APPROVED") {
-    throw new AccessError("Approve the post for your own school first");
+    throw new AccessError("access.approveThePostForYourOwnSchool");
   }
   if (post.scope === "GLOBAL") return; // already there; not an error
 
@@ -161,14 +161,14 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
 /** Takes this school's post back off the global feed. Returns it to SCHOOL scope. */
 export async function unpublishGlobally(session: ActiveContext, postId: string): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can change what their school publishes");
+    throw new AccessError("access.onlyASchoolAdminCanChangeWhat");
   }
 
   const post = await db.post.findFirst({
     where: { id: postId, schoolId: session.schoolId, scope: "GLOBAL" },
     select: { id: true, title: true },
   });
-  if (!post) throw new AccessError("No such post", "NOT_FOUND");
+  if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
 
   await db.post.update({ where: { id: post.id }, data: { scope: "SCHOOL" } });
 
@@ -196,7 +196,7 @@ export async function hideGlobalPost(
   reason?: string,
 ): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can hide a global post");
+    throw new AccessError("access.onlyASchoolAdminCanHideA");
   }
 
   // Readable through the global clause, which is exactly the set that may be
@@ -205,7 +205,7 @@ export async function hideGlobalPost(
     where: { id: postId, scope: "GLOBAL", status: "APPROVED" },
     select: { id: true, title: true, schoolId: true },
   });
-  if (!post) throw new AccessError("No such post", "NOT_FOUND");
+  if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
 
   await db.globalPostHide.upsert({
     where: { schoolId_postId: { schoolId: session.schoolId, postId } },
@@ -231,7 +231,7 @@ export async function hideGlobalPost(
 /** Undoes a hide. Deleting the row is the whole operation. */
 export async function unhideGlobalPost(session: ActiveContext, postId: string): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can unhide a global post");
+    throw new AccessError("access.onlyASchoolAdminCanUnhideA");
   }
 
   await db.globalPostHide.deleteMany({ where: { schoolId: session.schoolId, postId } });

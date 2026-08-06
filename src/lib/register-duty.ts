@@ -125,7 +125,7 @@ export async function assertMayTakeRegister(
   const duty = await registerDuty(ctx, classId, dateKey);
   if (!duty.may) {
     throw new AccessError(
-      "You are not down to take this register. Ask an admin to assign it or arrange cover.",
+      "access.notYourRegister",
     );
   }
   return duty;
@@ -182,7 +182,7 @@ export async function setAttendanceRight(
   canTake: boolean,
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can change who takes a register");
+    throw new AccessError("access.onlyAnAdminCanChangeWhoTakes");
   }
 
   const row = await db.classTeacher.findFirst({
@@ -231,7 +231,7 @@ export async function arrangeCover(
   // arrange it at any time. A teacher may not hand their own register to
   // somebody else — that is a staffing decision, not a personal one.
   if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) {
-    throw new AccessError("Only an admin or the principal can arrange cover");
+    throw new AccessError("access.onlyAnAdminOrThePrincipalCan");
   }
 
   if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
@@ -321,7 +321,7 @@ export async function cancelCover(
   coverId: string,
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) {
-    throw new AccessError("Only an admin or the principal can cancel cover");
+    throw new AccessError("access.onlyAnAdminOrThePrincipalCan2");
   }
 
   // Read before deleting, because the row is the only record of WHO has been
@@ -377,7 +377,7 @@ export async function listCovers(
 ) {
   if (!ctx.schoolId) return [];
   if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") {
-    throw new AccessError("Only an admin or the principal can see the cover list");
+    throw new AccessError("access.onlyAnAdminOrThePrincipalCan3");
   }
 
   return db.attendanceCover.findMany({

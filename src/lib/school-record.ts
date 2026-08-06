@@ -117,7 +117,7 @@ export async function recordDeparture(
   input: DepartureInput,
 ): Promise<DepartureResult> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can record a pupil leaving");
+    throw new AccessError("access.onlyAnAdminCanRecordAPupil");
   }
   if (!LEAVING_REASONS.includes(input.reason)) {
     return { ok: false, errorKey: "refusal.sayTransferReason" };
@@ -294,7 +294,7 @@ export async function undoDeparture(
   membershipId: string,
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can undo a leaving record");
+    throw new AccessError("access.onlyAnAdminCanUndoALeaving");
   }
   const schoolId = ctx.schoolId;
 
@@ -448,7 +448,7 @@ export async function departuresFrom(ctx: ActiveContext): Promise<
   (SchoolRecordView & { studentName: string; studentMembershipId: string })[]
 > {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can see who has left");
+    throw new AccessError("access.onlyAnAdminCanSeeWhoHas");
   }
 
   const rows = await db.schoolRecord.findMany({

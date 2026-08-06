@@ -94,13 +94,13 @@ export type Card = {
  * that appointment; refusing it here would be the app disagreeing with itself.
  */
 export async function assertMayWriteCards(ctx: ActiveContext, classId: string) {
-  if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("access.noActiveSchoolSelected");
 
   const klass = await db.class.findFirst({
     where: { id: classId, schoolId: ctx.schoolId },
     select: { id: true, name: true, section: true, gradeLevel: true },
   });
-  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+  if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
 
   if (ctx.role === "ADMIN") return klass;
 
@@ -114,7 +114,7 @@ export async function assertMayWriteCards(ctx: ActiveContext, classId: string) {
     select: { id: true },
   });
   if (!lead) {
-    throw new AccessError("Only this class's teacher can write its report cards");
+    throw new AccessError("access.onlyThisClassSTeacherCanWrite");
   }
   return klass;
 }
@@ -632,10 +632,10 @@ export async function cardsForChild(ctx: ActiveContext, studentMembershipId: str
       where: { parentUserId: ctx.user.id, studentMembershipId, status: "ACTIVE" },
       select: { student: { select: { schoolId: true } } },
     });
-    if (!guardian) throw new AccessError("That is not your child", "NOT_FOUND");
+    if (!guardian) throw new AccessError("access.thatIsNotYourChild", "NOT_FOUND");
     schoolId = guardian.student.schoolId;
   } else if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL" && ctx.role !== "TEACHER") {
-    throw new AccessError("Not allowed");
+    throw new AccessError("access.notAllowed");
   }
 
   if (!schoolId) return [];

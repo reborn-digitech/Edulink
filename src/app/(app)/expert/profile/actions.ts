@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { updateOwnProfile } from "@/lib/experts";
 import type { ExpertOffering } from "@/lib/constants";
@@ -26,7 +27,8 @@ export async function save(input: {
     revalidatePath("/experts");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[expert-profile]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

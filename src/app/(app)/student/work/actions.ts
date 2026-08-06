@@ -32,7 +32,8 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   try {
     ctx = await requireApiRole("STUDENT");
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 

@@ -395,7 +395,7 @@ describe("creating calendar entries", () => {
         endDateKey: "2026-11-06",
         kind: "HOLIDAY",
       }),
-    ).rejects.toThrow(/before the start/);
+    ).rejects.toThrow("access.theEndDateCannotBeBeforeThe");
   });
 
   it("refuses a range longer than a year", async () => {
@@ -406,7 +406,7 @@ describe("creating calendar entries", () => {
         endDateKey: "2028-01-01",
         kind: "HOLIDAY",
       }),
-    ).rejects.toThrow(/longer than a year/);
+    ).rejects.toThrow("access.rangeTooLong");
   });
 
   it("refuses a date that is not a date", async () => {
@@ -417,7 +417,7 @@ describe("creating calendar entries", () => {
         endDateKey: "2026-02-30",
         kind: "HOLIDAY",
       }),
-    ).rejects.toThrow(/not a real date/);
+    ).rejects.toThrow("access.startDateIsNotARealDate");
   });
 
   it("refuses a nameless entry", async () => {
@@ -428,7 +428,7 @@ describe("creating calendar entries", () => {
         endDateKey: "2026-11-06",
         kind: "HOLIDAY",
       }),
-    ).rejects.toThrow(/name/);
+    ).rejects.toThrow("access.giveTheEntryAName");
   });
 
   it("refuses a kind it does not know", async () => {
@@ -439,7 +439,7 @@ describe("creating calendar entries", () => {
         endDateKey: "2026-11-06",
         kind: "STRIKE" as never,
       }),
-    ).rejects.toThrow(/holiday, exam or event/);
+    ).rejects.toThrow("access.pickHolidayExamOrEvent");
   });
 });
 

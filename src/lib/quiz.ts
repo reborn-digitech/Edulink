@@ -334,7 +334,7 @@ export async function listTopics(
 
 function requireStudent(session: ActiveContext): { schoolId: string; membershipId: string } {
   if (session.role !== "STUDENT" || !session.schoolId || !session.membershipId) {
-    throw new AccessError("Only a pupil can practise");
+    throw new AccessError("access.onlyAPupilCanPractise");
   }
   return { schoolId: session.schoolId, membershipId: session.membershipId };
 }
@@ -347,7 +347,7 @@ export async function startAttempt(
   const { schoolId, membershipId } = requireStudent(session);
 
   const topic = await db.quizTopic.findUnique({ where: { slug: topicSlug }, select: { id: true } });
-  if (!topic) throw new AccessError("No such topic", "NOT_FOUND");
+  if (!topic) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
 
   // Resuming rather than starting afresh matters for the badge: a child who
   // closes the tab and comes back has not started a clean run, they are in the
@@ -394,7 +394,7 @@ export async function nextQuestion(
     where: { id: attemptId, schoolId, studentMembershipId: membershipId },
     select: { id: true, topicId: true },
   });
-  if (!attempt) throw new AccessError("Attempt not found", "NOT_FOUND");
+  if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const [pool, seen, mastery] = await Promise.all([
     db.quizQuestion.findMany({
@@ -475,13 +475,13 @@ export async function submitAnswer(
     where: { id: attemptId, schoolId, studentMembershipId: membershipId },
     select: { id: true, topicId: true, revealedAny: true, finishedAt: true },
   });
-  if (!attempt) throw new AccessError("Attempt not found", "NOT_FOUND");
+  if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const question = await db.quizQuestion.findFirst({
     where: { id: questionId, topicId: attempt.topicId },
     select: { id: true, answerIndex: true, solution: true, difficulty: true, choices: true },
   });
-  if (!question) throw new AccessError("Question not found", "NOT_FOUND");
+  if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
 
   const choices = parseChoices(question.choices);
   // A forged index must not be stored as an answer to something. Out of range is
@@ -576,13 +576,13 @@ export async function revealSolution(
     where: { id: attemptId, schoolId, studentMembershipId: membershipId },
     select: { id: true, topicId: true, revealedAny: true },
   });
-  if (!attempt) throw new AccessError("Attempt not found", "NOT_FOUND");
+  if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const question = await db.quizQuestion.findFirst({
     where: { id: questionId, topicId: attempt.topicId },
     select: { id: true, solution: true, answerIndex: true, difficulty: true },
   });
-  if (!question) throw new AccessError("Question not found", "NOT_FOUND");
+  if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
 
   await db.quizAttempt.update({ where: { id: attempt.id }, data: { revealedAny: true } });
 

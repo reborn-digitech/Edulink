@@ -34,7 +34,7 @@ type Result = { ok: boolean; error?: string;
 };
 
 function failure(error: unknown): Result {
-  if (error instanceof AccessError) return { ok: false, error: error.message };
+  if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[class-staffing]", error);
   return { ok: false, errorKey: "common.tryAgainMoment" };
 }

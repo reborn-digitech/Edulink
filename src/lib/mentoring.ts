@@ -98,7 +98,7 @@ async function readerOf(session: ActiveContext, threadId: string) {
       parentConsentAt: true,
     },
   });
-  if (!thread) throw new AccessError("Mentorship not found", "NOT_FOUND");
+  if (!thread) throw new AccessError("access.mentorshipNotFound", "NOT_FOUND");
 
   /**
    * ⚠ NOT WHILE IT IS ONLY A REQUEST.
@@ -131,7 +131,7 @@ async function readerOf(session: ActiveContext, threadId: string) {
     })) > 0;
 
   if (!isExpert && !isStudent && !isStaff && !isGuardian) {
-    throw new AccessError("Mentorship not found", "NOT_FOUND");
+    throw new AccessError("access.mentorshipNotFound", "NOT_FOUND");
   }
 
   // Names, fetched separately and allowed to be null. A reader entitled to the
@@ -151,7 +151,7 @@ async function readerOf(session: ActiveContext, threadId: string) {
 
   // Entitled to the row but unable to resolve who it is about means the tenant
   // has not been granted yet. Refuse rather than render half a page about a child.
-  if (!student || !expert) throw new AccessError("Mentorship not found", "NOT_FOUND");
+  if (!student || !expert) throw new AccessError("access.mentorshipNotFound", "NOT_FOUND");
 
   return { thread, student, expert, school, isExpert, isStudent, isStaff, isGuardian };
 }
@@ -247,10 +247,10 @@ export async function createMentorship(
   input: { expertProfileId: string; studentMembershipId: string; purpose: string },
 ): Promise<{ threadId: string }> {
   if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
-    throw new AccessError("Only a teacher or an admin can set up a mentorship");
+    throw new AccessError("access.onlyATeacherOrAnAdminCan4");
   }
   const purpose = input.purpose.trim();
-  if (purpose.length < 5) throw new AccessError("Say what the mentoring is for");
+  if (purpose.length < 5) throw new AccessError("access.sayWhatTheMentoringIsFor");
 
   const expert = await db.expertProfile.findFirst({
     where: { id: input.expertProfileId, publishedAt: { not: null } },
@@ -262,7 +262,7 @@ export async function createMentorship(
       user: { select: { name: true } },
     },
   });
-  if (!expert) throw new AccessError("No such expert", "NOT_FOUND");
+  if (!expert) throw new AccessError("access.noSuchExpert", "NOT_FOUND");
 
   /**
    * WHAT THEY AGREED TO, enforced rather than displayed.
@@ -275,7 +275,9 @@ export async function createMentorship(
    */
   if (expert.offering === "SESSIONS") {
     throw new AccessError(
-      `${expert.user.name} offers workshops and sessions rather than mentoring.`,
+      "access.offersSessionsNotMentoring",
+      "FORBIDDEN",
+      { name: expert.user.name },
     );
   }
 
@@ -285,7 +287,7 @@ export async function createMentorship(
     where: { id: input.studentMembershipId, schoolId: session.schoolId, role: "STUDENT" },
     select: { id: true },
   });
-  if (!student) throw new AccessError("No such pupil", "NOT_FOUND");
+  if (!student) throw new AccessError("access.noSuchPupil", "NOT_FOUND");
 
   const existing = await db.mentorThread.findUnique({
     where: {
@@ -317,7 +319,9 @@ export async function createMentorship(
     });
     if (claimed.count === 0) {
       throw new AccessError(
-        `${expert.user.name} is already mentoring as many children as they have agreed to.`,
+        "access.atMentorCapacity",
+        "FORBIDDEN",
+        { name: expert.user.name },
       );
     }
   } else {
@@ -367,11 +371,11 @@ export async function consentToMentorship(
   session: ActiveContext,
   threadId: string,
 ): Promise<void> {
-  if (session.role !== "PARENT") throw new AccessError("Only a guardian can agree to this");
+  if (session.role !== "PARENT") throw new AccessError("access.onlyAGuardianCanAgreeToThis");
 
   const { thread, isGuardian } = await readerOf(session, threadId);
-  if (!isGuardian) throw new AccessError("Mentorship not found", "NOT_FOUND");
-  if (thread.status === "CLOSED") throw new AccessError("This mentorship has ended");
+  if (!isGuardian) throw new AccessError("access.mentorshipNotFound", "NOT_FOUND");
+  if (thread.status === "CLOSED") throw new AccessError("access.thisMentorshipHasEnded");
   if (thread.status === "ACTIVE") return;
 
   await db.mentorThread.update({
@@ -405,7 +409,7 @@ export async function consentToMentorship(
 export async function closeMentorship(session: ActiveContext, threadId: string): Promise<void> {
   const { thread, isStaff, isGuardian } = await readerOf(session, threadId);
   if (!isStaff && !isGuardian) {
-    throw new AccessError("Only the school or a guardian can end a mentorship");
+    throw new AccessError("access.onlyTheSchoolOrAGuardianCan");
   }
 
   // ALREADY CLOSED IS A NO-OP, and it has to be checked rather than assumed.
@@ -501,20 +505,20 @@ export async function postMentorMessage(
   body: string,
 ): Promise<void> {
   const clean = body.trim();
-  if (!clean) throw new AccessError("Write something first");
-  if (clean.length > 5000) throw new AccessError("That message is too long");
+  if (!clean) throw new AccessError("access.writeSomethingFirst");
+  if (clean.length > 5000) throw new AccessError("access.thatMessageIsTooLong");
 
   const { thread, student, expert, isExpert, isStudent } = await readerOf(session, threadId);
 
   if (thread.status === "REQUESTED") {
-    throw new AccessError("Nobody can message until your school has approved this request");
+    throw new AccessError("access.nobodyCanMessageUntilYourSchoolHas");
   }
   if (thread.status === "PENDING_CONSENT") {
-    throw new AccessError("Nobody can message until a guardian has agreed to this mentorship");
+    throw new AccessError("access.nobodyCanMessageUntilAGuardianHas");
   }
-  if (thread.status === "CLOSED") throw new AccessError("This mentorship has ended");
+  if (thread.status === "CLOSED") throw new AccessError("access.thisMentorshipHasEnded");
   if (!isExpert && !isStudent) {
-    throw new AccessError("Only the mentor and the pupil can write here");
+    throw new AccessError("access.onlyTheMentorAndThePupilCan");
   }
 
   await db.mentorMessage.create({
@@ -666,7 +670,7 @@ export async function requestMentor(
   input: { expertProfileId: string; purpose: string },
 ): Promise<RequestResult> {
   if (session.role !== "STUDENT" || !session.schoolId || !session.membershipId) {
-    throw new AccessError("Only a pupil can ask for a mentor");
+    throw new AccessError("access.onlyAPupilCanAskForA");
   }
 
   const purpose = input.purpose.trim();
@@ -789,7 +793,7 @@ export type PendingRequest = {
 /** Requests waiting on this school. */
 export async function listMentorRequests(session: ActiveContext): Promise<PendingRequest[]> {
   if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
-    throw new AccessError("Only school staff can review mentoring requests");
+    throw new AccessError("access.onlySchoolStaffCanReviewMentoringRequests");
   }
 
   const threads = await db.mentorThread.findMany({
@@ -847,7 +851,7 @@ export async function decideMentorRequest(
   decision: { approve: boolean; reason?: string },
 ): Promise<DecisionResult> {
   if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
-    throw new AccessError("Only school staff can review mentoring requests");
+    throw new AccessError("access.onlySchoolStaffCanReviewMentoringRequests");
   }
 
   // Scoped find: a thread id from another school does not resolve.

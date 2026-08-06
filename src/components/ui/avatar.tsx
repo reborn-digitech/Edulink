@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Avatars.
@@ -14,7 +15,9 @@ import { cn } from "@/lib/cn";
 
 type Creature = {
   id: string;
-  name: string;
+  /** ⚠ A KEY, not a word — "Coral fox" is read aloud on the join screen, in
+      the reader's language. */
+  nameKey: TranslationKey;
   /** ear/topper geometry, drawn behind the head */
   ears: "pointed" | "round" | "tall" | "none" | "horns" | "tuft";
   muzzle: boolean;
@@ -23,39 +26,49 @@ type Creature = {
 };
 
 export const CREATURES: Creature[] = [
-  { id: "fox", name: "Fox", ears: "pointed", muzzle: true, marks: "patch" },
-  { id: "cat", name: "Cat", ears: "pointed", muzzle: true, marks: "stripes" },
-  { id: "panda", name: "Panda", ears: "round", muzzle: true, marks: "patch" },
-  { id: "bear", name: "Bear", ears: "round", muzzle: true, marks: "none" },
-  { id: "bunny", name: "Bunny", ears: "tall", muzzle: true, marks: "blush" },
-  { id: "owl", name: "Owl", ears: "tuft", muzzle: false, marks: "beak" },
-  { id: "frog", name: "Frog", ears: "none", muzzle: false, marks: "blush" },
-  { id: "penguin", name: "Penguin", ears: "none", muzzle: false, marks: "beak" },
-  { id: "dino", name: "Dino", ears: "horns", muzzle: true, marks: "spots" },
-  { id: "koala", name: "Koala", ears: "round", muzzle: true, marks: "none" },
-  { id: "tiger", name: "Tiger", ears: "pointed", muzzle: true, marks: "stripes" },
-  { id: "monkey", name: "Monkey", ears: "round", muzzle: true, marks: "blush" },
+  { id: "fox", nameKey: "avatar.fox", ears: "pointed", muzzle: true, marks: "patch" },
+  { id: "cat", nameKey: "avatar.cat", ears: "pointed", muzzle: true, marks: "stripes" },
+  { id: "panda", nameKey: "avatar.panda", ears: "round", muzzle: true, marks: "patch" },
+  { id: "bear", nameKey: "avatar.bear", ears: "round", muzzle: true, marks: "none" },
+  { id: "bunny", nameKey: "avatar.bunny", ears: "tall", muzzle: true, marks: "blush" },
+  { id: "owl", nameKey: "avatar.owl", ears: "tuft", muzzle: false, marks: "beak" },
+  { id: "frog", nameKey: "avatar.frog", ears: "none", muzzle: false, marks: "blush" },
+  { id: "penguin", nameKey: "avatar.penguin", ears: "none", muzzle: false, marks: "beak" },
+  { id: "dino", nameKey: "avatar.dino", ears: "horns", muzzle: true, marks: "spots" },
+  { id: "koala", nameKey: "avatar.koala", ears: "round", muzzle: true, marks: "none" },
+  { id: "tiger", nameKey: "avatar.tiger", ears: "pointed", muzzle: true, marks: "stripes" },
+  { id: "monkey", nameKey: "avatar.monkey", ears: "round", muzzle: true, marks: "blush" },
 ];
 
-type Palette = { id: string; name: string; bg: string; body: string; accent: string; dark: string };
+type Palette = { id: string; nameKey: TranslationKey; bg: string; body: string; accent: string; dark: string };
 
 export const PALETTES: Palette[] = [
-  { id: "sunset", name: "Sunset", bg: "#ffe8d6", body: "#f4956a", accent: "#ffd9c0", dark: "#7c3f22" },
-  { id: "mint", name: "Mint", bg: "#d9f5e7", body: "#5cc9a0", accent: "#e6fbf1", dark: "#1e5c46" },
-  { id: "sky", name: "Sky", bg: "#dcecff", body: "#6fa8f5", accent: "#eaf3ff", dark: "#20406e" },
-  { id: "grape", name: "Grape", bg: "#ece0ff", body: "#a984ea", accent: "#f5efff", dark: "#442a75" },
-  { id: "lemon", name: "Lemon", bg: "#fff2c9", body: "#f2c14e", accent: "#fff8e0", dark: "#7a5a12" },
-  { id: "berry", name: "Berry", bg: "#ffe0ec", body: "#ef7ea6", accent: "#fff0f5", dark: "#7a2547" },
+  { id: "sunset", nameKey: "avatar.sunset", bg: "#ffe8d6", body: "#f4956a", accent: "#ffd9c0", dark: "#7c3f22" },
+  { id: "mint", nameKey: "avatar.mint", bg: "#d9f5e7", body: "#5cc9a0", accent: "#e6fbf1", dark: "#1e5c46" },
+  { id: "sky", nameKey: "avatar.sky", bg: "#dcecff", body: "#6fa8f5", accent: "#eaf3ff", dark: "#20406e" },
+  { id: "grape", nameKey: "avatar.grape", bg: "#ece0ff", body: "#a984ea", accent: "#f5efff", dark: "#442a75" },
+  { id: "lemon", nameKey: "avatar.lemon", bg: "#fff2c9", body: "#f2c14e", accent: "#fff8e0", dark: "#7a5a12" },
+  { id: "berry", nameKey: "avatar.berry", bg: "#ffe0ec", body: "#ef7ea6", accent: "#fff0f5", dark: "#7a2547" },
 ];
 
 export const AVATAR_PRESETS: string[] = CREATURES.flatMap((c) =>
   PALETTES.map((p) => `preset:${c.id}-${p.id}`),
 );
 
-export function describeAvatar(key: string): string {
+/**
+ * "Sunset fox", in the reader's language. `t` is required — the two screens
+ * that read this aloud (the pupil's join flow and their profile) both have it,
+ * and an English fallback here would be the last English on a Marathi screen.
+ * The creature values are stored lowercase in English because they only ever
+ * appear mid-phrase; Devanagari has no case to worry about.
+ */
+export function describeAvatar(key: string, t: Translate): string {
   const parsed = parseKey(key);
-  if (!parsed) return "Avatar";
-  return `${parsed.palette.name} ${parsed.creature.name.toLowerCase()}`;
+  if (!parsed) return t("avatar.plain");
+  return t("avatar.name", {
+    color: t(parsed.palette.nameKey),
+    animal: t(parsed.creature.nameKey),
+  });
 }
 
 function parseKey(key: string | null | undefined) {

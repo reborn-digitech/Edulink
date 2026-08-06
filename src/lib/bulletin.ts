@@ -226,7 +226,7 @@ export async function getPost(session: ActiveContext, postId: string) {
     },
   });
 
-  if (!post) throw new AccessError("Post not found", "NOT_FOUND");
+  if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
   return post;
 }
 
@@ -245,7 +245,7 @@ export async function getPost(session: ActiveContext, postId: string) {
  * rather than guessing a tenant for it.
  */
 function schoolOf(post: { schoolId: string | null }): string {
-  if (!post.schoolId) throw new AccessError("Post not found", "NOT_FOUND");
+  if (!post.schoolId) throw new AccessError("access.postNotFound", "NOT_FOUND");
   return post.schoolId;
 }
 
@@ -261,17 +261,17 @@ export async function createPost(
   },
 ): Promise<{ postId: string; status: PostStatus }> {
   const { schoolId, membershipId, role, user } = session;
-  if (!schoolId || !role) throw new AccessError("No active school selected");
+  if (!schoolId || !role) throw new AccessError("access.noActiveSchoolSelected");
 
   // GLOBAL (cross-school) posting is not built. Refuse rather than silently
   // downgrading it to a school post, which would put a child's work somewhere
   // they did not choose.
   if (input.scope === "GLOBAL") {
-    throw new AccessError("Posting to the global feed is not available yet.");
+    throw new AccessError("access.postingToTheGlobalFeedIsNot");
   }
 
   if (input.scope === "CLASS") {
-    if (!input.classId) throw new AccessError("Choose a class.");
+    if (!input.classId) throw new AccessError("access.chooseAClass");
     if (role === "STUDENT") {
       // A student may only post to a class they are actually enrolled in.
       const enrolled = await db.enrollment.findFirst({
@@ -283,7 +283,7 @@ export async function createPost(
         },
         select: { id: true },
       });
-      if (!enrolled) throw new AccessError("You are not in that class", "NOT_FOUND");
+      if (!enrolled) throw new AccessError("access.youAreNotInThatClass", "NOT_FOUND");
     } else {
       await assertClassAccess({ schoolId, membershipId: membershipId ?? "", role }, input.classId);
     }
@@ -382,30 +382,30 @@ export async function moderatePost(
 ): Promise<void> {
   const { schoolId, membershipId, role, user } = session;
   if (!schoolId || !membershipId || (role !== "TEACHER" && role !== "ADMIN")) {
-    throw new AccessError("You cannot review posts");
+    throw new AccessError("access.youCannotReviewPosts");
   }
 
   const post = await db.post.findFirst({
     where: { id: postId, schoolId },
     select: { id: true, scope: true, classId: true, status: true, authorUserId: true, title: true },
   });
-  if (!post) throw new AccessError("Post not found", "NOT_FOUND");
-  if (post.status !== "PENDING") throw new AccessError("That post has already been reviewed");
+  if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (post.status !== "PENDING") throw new AccessError("access.thatPostHasAlreadyBeenReviewed");
 
   if (role === "TEACHER") {
     if (post.scope !== "CLASS" || !post.classId) {
-      throw new AccessError("Only an admin can review a school-wide post");
+      throw new AccessError("access.onlyAnAdminCanReviewASchool");
     }
     const teaches = await db.classTeacher.findFirst({
       where: { classId: post.classId, teacherMembershipId: membershipId },
       select: { id: true },
     });
-    if (!teaches) throw new AccessError("Post not found", "NOT_FOUND");
+    if (!teaches) throw new AccessError("access.postNotFound", "NOT_FOUND");
   }
 
   if (decision === "REJECT" && !reason?.trim()) {
     // A rejection with no reason teaches a child the system is arbitrary.
-    throw new AccessError("Give a reason so the student knows what to change.");
+    throw new AccessError("access.giveAReasonSoTheStudentKnows");
   }
 
   await db.post.update({
@@ -449,13 +449,13 @@ export async function moderatePost(
 /** Pin / unpin. Admin-only: pinning is a whole-school editorial decision. */
 export async function togglePin(session: ActiveContext, postId: string): Promise<boolean> {
   const { schoolId, role, user } = session;
-  if (role !== "ADMIN" || !schoolId) throw new AccessError("Only an admin can pin a post");
+  if (role !== "ADMIN" || !schoolId) throw new AccessError("access.onlyAnAdminCanPinAPost");
 
   const post = await db.post.findFirst({
     where: { id: postId, schoolId, status: "APPROVED" },
     select: { pinnedAt: true },
   });
-  if (!post) throw new AccessError("Post not found", "NOT_FOUND");
+  if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   const pinned = post.pinnedAt === null;
   await db.post.update({
@@ -485,7 +485,7 @@ export async function toggleReaction(
     where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds)] },
     select: { id: true, schoolId: true },
   });
-  if (!visible) throw new AccessError("Post not found", "NOT_FOUND");
+  if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   const existing = await db.reaction.findUnique({
     where: { postId_userId_kind: { postId, userId: session.user.id, kind } },
@@ -513,7 +513,7 @@ export async function addComment(
     where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds)] },
     select: { id: true, authorUserId: true, schoolId: true, title: true },
   });
-  if (!visible) throw new AccessError("Post not found", "NOT_FOUND");
+  if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   // Same rule as posts: a child's words are reviewed, an adult's are not.
   const status = session.role === "STUDENT" ? "PENDING" : "APPROVED";

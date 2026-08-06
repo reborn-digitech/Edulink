@@ -280,13 +280,13 @@ export async function createThread(
   input: { studentMembershipId?: string; teacherMembershipId?: string; subject: string; body: string },
 ): Promise<{ threadId: string }> {
   const { role, schoolId } = session;
-  if (!schoolId) throw new AccessError("No school in context");
+  if (!schoolId) throw new AccessError("access.noSchoolInContext");
 
   let studentMembershipId: string;
   let teacherMembershipId: string;
 
   if (role === "TEACHER" && session.membershipId) {
-    if (!input.studentMembershipId) throw new AccessError("Choose a pupil");
+    if (!input.studentMembershipId) throw new AccessError("access.chooseAPupil");
     // Re-checks that this teacher actually teaches this student, not merely that
     // they share a school. (§6)
     await assertStudentAccess(
@@ -296,16 +296,16 @@ export async function createThread(
     studentMembershipId = input.studentMembershipId;
     teacherMembershipId = session.membershipId;
   } else if (role === "STUDENT" && session.membershipId) {
-    if (!input.teacherMembershipId) throw new AccessError("Choose a teacher");
+    if (!input.teacherMembershipId) throw new AccessError("access.chooseATeacher");
     // The pupil proves the teacher teaches them, by the same join the teacher's
     // own check runs in the other direction.
     const teaches = await teacherTeaches(schoolId, input.teacherMembershipId, session.membershipId);
-    if (!teaches) throw new AccessError("That teacher does not teach you", "NOT_FOUND");
+    if (!teaches) throw new AccessError("access.thatTeacherDoesNotTeachYou", "NOT_FOUND");
     studentMembershipId = session.membershipId;
     teacherMembershipId = input.teacherMembershipId;
   } else if (role === "PARENT") {
     if (!input.studentMembershipId || !input.teacherMembershipId) {
-      throw new AccessError("Choose your child and a teacher");
+      throw new AccessError("access.chooseYourChildAndATeacher");
     }
     const guardian = await db.guardianship.findFirst({
       where: {
@@ -315,17 +315,17 @@ export async function createThread(
       },
       select: { id: true },
     });
-    if (!guardian) throw new AccessError("That is not your child", "NOT_FOUND");
+    if (!guardian) throw new AccessError("access.thatIsNotYourChild", "NOT_FOUND");
     const teaches = await teacherTeaches(
       schoolId,
       input.teacherMembershipId,
       input.studentMembershipId,
     );
-    if (!teaches) throw new AccessError("That teacher does not teach your child", "NOT_FOUND");
+    if (!teaches) throw new AccessError("access.thatTeacherDoesNotTeachYourChild", "NOT_FOUND");
     studentMembershipId = input.studentMembershipId;
     teacherMembershipId = input.teacherMembershipId;
   } else {
-    throw new AccessError("Only a teacher, a pupil or their guardian can start a conversation.");
+    throw new AccessError("access.onlyATeacherAPupilOrTheir");
   }
 
   // `$tenantTransaction`, not `db.$transaction`: the per-query extension does
@@ -386,7 +386,7 @@ export async function replyToThread(
   input: { threadId: string; body: string },
 ): Promise<{ messageId: string }> {
   const thread = await assertRemarkAccess(session, input.threadId);
-  if (thread.closedAt) throw new AccessError("This conversation is closed.");
+  if (thread.closedAt) throw new AccessError("access.thisConversationIsClosed");
 
   const message = await db.remarkMessage.create({
     data: {

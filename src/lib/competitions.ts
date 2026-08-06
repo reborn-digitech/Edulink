@@ -123,7 +123,7 @@ export async function listCompetitions(
  */
 export async function getCompetition(session: ActiveContext, competitionId: string) {
   const competition = await db.competition.findUnique({ where: { id: competitionId } });
-  if (!competition) throw new AccessError("Competition not found", "NOT_FOUND");
+  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
   const isOrganiser =
     session.role === "ADMIN" &&
@@ -131,7 +131,7 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     competition.organizerSchoolId === session.schoolId;
 
   if (competition.status !== "PUBLISHED" && !isOrganiser) {
-    throw new AccessError("Competition not found", "NOT_FOUND");
+    throw new AccessError("access.competitionNotFound", "NOT_FOUND");
   }
 
   const entries = await entriesFor(session, [competition.id]);
@@ -225,16 +225,16 @@ export async function enterCompetition(
   competitionId: string,
 ): Promise<EnterResult> {
   if (session.role !== "STUDENT" || !session.membershipId || !session.schoolId) {
-    throw new AccessError("Only a student can enter a competition");
+    throw new AccessError("access.onlyAStudentCanEnterACompetition");
   }
 
   const competition = await db.competition.findFirst({
     where: { id: competitionId, status: "PUBLISHED" },
   });
-  if (!competition) throw new AccessError("Competition not found", "NOT_FOUND");
+  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
   if (!registrationOpen(competition)) {
-    throw new AccessError("Entries for this competition have closed");
+    throw new AccessError("access.entriesForThisCompetitionHaveClosed");
   }
 
   const existing = await db.competitionEntry.findUnique({
@@ -289,13 +289,13 @@ export async function enterCompetition(
  * own children and nobody else's, and no route param can change that.
  */
 export async function giveConsent(session: ActiveContext, entryId: string): Promise<void> {
-  if (session.role !== "PARENT") throw new AccessError("Only a guardian can give consent");
+  if (session.role !== "PARENT") throw new AccessError("access.onlyAGuardianCanGiveConsent");
 
   const entry = await db.competitionEntry.findUnique({
     where: { id: entryId },
     include: { competition: { select: { title: true } } },
   });
-  if (!entry) throw new AccessError("Entry not found", "NOT_FOUND");
+  if (!entry) throw new AccessError("access.entryNotFound", "NOT_FOUND");
 
   // Throws NOT_FOUND when this is not their child.
   await assertGuardianAccess(session.user.id, entry.studentMembershipId);
@@ -341,16 +341,16 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
  */
 export async function withdrawEntry(session: ActiveContext, entryId: string): Promise<void> {
   const entry = await db.competitionEntry.findUnique({ where: { id: entryId } });
-  if (!entry) throw new AccessError("Entry not found", "NOT_FOUND");
+  if (!entry) throw new AccessError("access.entryNotFound", "NOT_FOUND");
 
   if (session.role === "PARENT") {
     await assertGuardianAccess(session.user.id, entry.studentMembershipId);
   } else if (session.role === "STUDENT") {
     if (entry.studentMembershipId !== session.membershipId) {
-      throw new AccessError("Entry not found", "NOT_FOUND");
+      throw new AccessError("access.entryNotFound", "NOT_FOUND");
     }
   } else {
-    throw new AccessError("Only the child or their guardian can withdraw an entry");
+    throw new AccessError("access.onlyTheChildOrTheirGuardianCan");
   }
 
   await db.competitionEntry.delete({ where: { id: entry.id } });
@@ -412,14 +412,14 @@ export async function submitEntry(
   submissionUrl: string,
 ): Promise<void> {
   if (session.role !== "STUDENT" || !session.membershipId) {
-    throw new AccessError("Only the child taking part can hand in their entry");
+    throw new AccessError("access.onlyTheChildTakingPartCanHand");
   }
 
   const competition = await db.competition.findFirst({
     where: { id: competitionId, status: "PUBLISHED" },
   });
-  if (!competition) throw new AccessError("Competition not found", "NOT_FOUND");
-  if (!submissionOpen(competition)) throw new AccessError("This competition has finished");
+  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  if (!submissionOpen(competition)) throw new AccessError("access.thisCompetitionHasFinished");
 
   const entry = await db.competitionEntry.findUnique({
     where: {
@@ -429,10 +429,10 @@ export async function submitEntry(
       },
     },
   });
-  if (!entry) throw new AccessError("You have not entered this competition", "NOT_FOUND");
+  if (!entry) throw new AccessError("access.youHaveNotEnteredThisCompetition", "NOT_FOUND");
 
   if (competition.requiresParentConsent && entry.parentConsentAt === null) {
-    throw new AccessError("A grown-up needs to say yes before you can hand this in");
+    throw new AccessError("access.aGrownUpNeedsToSayYes");
   }
 
   await db.competitionEntry.update({
@@ -526,13 +526,13 @@ export async function recordResult(
   result: { scoreMilli: number | null; rank: number | null },
 ): Promise<void> {
   if (session.role !== "ADMIN" && session.role !== "TEACHER") {
-    throw new AccessError("Only school staff can record a result");
+    throw new AccessError("access.onlySchoolStaffCanRecordAResult");
   }
   if (result.scoreMilli !== null && result.scoreMilli < 0) {
-    throw new AccessError("A score cannot be negative");
+    throw new AccessError("access.aScoreCannotBeNegative");
   }
   if (result.rank !== null && (!Number.isInteger(result.rank) || result.rank < 1)) {
-    throw new AccessError("A place has to be a whole number, first or better");
+    throw new AccessError("access.aPlaceHasToBeAWhole");
   }
 
   // Scoped by the policy rather than by a WHERE this function writes: an entry
@@ -541,7 +541,7 @@ export async function recordResult(
     where: { id: entryId },
     include: { competition: { select: { title: true } } },
   });
-  if (!entry) throw new AccessError("Entry not found", "NOT_FOUND");
+  if (!entry) throw new AccessError("access.entryNotFound", "NOT_FOUND");
 
   const cleared = result.scoreMilli === null && result.rank === null;
 
@@ -653,7 +653,7 @@ export async function createCompetition(
   input: CompetitionInput,
 ): Promise<string> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can post a competition");
+    throw new AccessError("access.onlyASchoolAdminCanPostA");
   }
 
   const school = await db.school.findUniqueOrThrow({
@@ -713,7 +713,7 @@ export async function setCompetitionStatus(
   status: "PUBLISHED" | "ARCHIVED" | "DRAFT",
 ): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can do that");
+    throw new AccessError("access.onlyASchoolAdminCanDoThat");
   }
 
   const updated = await db.competition.updateMany({
@@ -721,7 +721,7 @@ export async function setCompetitionStatus(
     data: { status },
   });
 
-  if (updated.count === 0) throw new AccessError("Competition not found", "NOT_FOUND");
+  if (updated.count === 0) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
   await audit({
     schoolId: session.schoolId,
@@ -961,14 +961,14 @@ export async function setLeaderboard(
   enabled: boolean,
 ): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can do that");
+    throw new AccessError("access.onlyASchoolAdminCanDoThat");
   }
 
   const updated = await db.competition.updateMany({
     where: { id: competitionId, organizerSchoolId: session.schoolId },
     data: { leaderboardEnabled: enabled },
   });
-  if (updated.count === 0) throw new AccessError("Competition not found", "NOT_FOUND");
+  if (updated.count === 0) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 
   await audit({
     schoolId: session.schoolId,

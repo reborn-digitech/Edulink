@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { addSlot, removeSlot } from "@/lib/experts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -20,7 +21,8 @@ async function run(work: () => Promise<void>): Promise<Result> {
     revalidatePath("/expert/availability");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[expert-availability]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

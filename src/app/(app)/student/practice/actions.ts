@@ -31,7 +31,8 @@ type Failure = { ok: false; error: string };
 type Ok<T> = { ok: true } & T;
 
 async function failure(error: unknown): Promise<Failure> {
-  if (error instanceof AccessError) return { ok: false, error: error.message };
+  if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
   console.error("[practice]", error);
   return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }

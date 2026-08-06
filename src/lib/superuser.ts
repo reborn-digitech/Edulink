@@ -57,7 +57,7 @@ export type SchoolSummary = {
 /** Throws unless this session belongs to somebody who runs the server. */
 export function assertSuperuser(session: ActiveContext): void {
   if (!session.user.isSuperuser) {
-    throw new AccessError("This area belongs to whoever runs the server", "NOT_FOUND");
+    throw new AccessError("access.thisAreaBelongsToWhoeverRunsThe", "NOT_FOUND");
   }
 }
 
@@ -852,7 +852,7 @@ export async function withSchoolAccess<T>(
   assertSuperuser(session);
   const grant = await activeGrant(session, schoolId);
   if (!grant) {
-    throw new AccessError("Open this school first, and say why", "NOT_FOUND");
+    throw new AccessError("access.openThisSchoolFirstAndSayWhy", "NOT_FOUND");
   }
   return asOperatorIn(session, schoolId, work);
 }

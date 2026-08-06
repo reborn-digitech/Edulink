@@ -115,7 +115,8 @@ export async function submitPost(formData: FormData): Promise<PostState> {
     // existed, nothing will ever reference this file again — remove it now
     // rather than leave an unowned image on disk.
     await discard(media.map((item) => item.fileId));
-    if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
+    if (error instanceof AccessError)
+      return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     console.error("[submitPost]", error);
     return { ok: false, errors: { _form: (await getT())("bulletin.couldNotPostTryAgain") } };
   }
@@ -134,7 +135,8 @@ export async function review(
     revalidatePath("/bulletin");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[review]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
@@ -148,7 +150,8 @@ export async function pin(postId: string): Promise<{ ok: boolean; pinned?: boole
     revalidatePath("/bulletin");
     return { ok: true, pinned };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
@@ -165,7 +168,8 @@ export async function react(input: unknown): Promise<{ ok: boolean; added?: bool
     revalidatePath("/bulletin");
     return { ok: true, added: result.added };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
@@ -185,7 +189,8 @@ export async function comment(
     revalidatePath("/bulletin");
     return { ok: true, held: result.status === "PENDING" };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

@@ -42,7 +42,7 @@ export async function decide(
       coversCreated: result.coversCreated,
     };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     console.error("[leave-decide]", error);
     return { ok: false, errorKey: "common.tryAgainMoment" };
   }

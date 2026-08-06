@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { translator } from "@/lib/i18n/dictionary";
+
+const t = translator("en");
 import { AVATAR_PRESETS, CREATURES, PALETTES, describeAvatar, fallbackKey } from "./avatar";
 
 /**
@@ -67,15 +70,17 @@ describe("catalogue", () => {
 
   it("describes every preset in words, for the avatar picker's labels", () => {
     for (const key of AVATAR_PRESETS) {
-      const described = describeAvatar(key);
+      const described = describeAvatar(key, t);
       expect(described).not.toBe("Avatar");
       expect(described.length).toBeGreaterThan(3);
+      // Composed through the dictionary, so no raw key may leak out.
+      expect(described).not.toMatch(/avatar\./);
     }
   });
 
   it("falls back gracefully for a malformed or unknown key", () => {
-    expect(describeAvatar("preset:dragon-neon")).toBe("Avatar");
-    expect(describeAvatar("upload:abc")).toBe("Avatar");
-    expect(describeAvatar("")).toBe("Avatar");
+    expect(describeAvatar("preset:dragon-neon", t)).toBe("Avatar");
+    expect(describeAvatar("upload:abc", t)).toBe("Avatar");
+    expect(describeAvatar("", t)).toBe("Avatar");
   });
 });

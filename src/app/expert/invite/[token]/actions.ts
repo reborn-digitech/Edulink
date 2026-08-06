@@ -83,7 +83,8 @@ export async function acceptInvite(
 
     await createSession(user.id, { schoolId: null, role: "EXPERT" });
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[expert-accept]", error);
     return { ok: false, errorKey: "expert.tryLinkAgain" };
   }

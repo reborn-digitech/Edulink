@@ -58,10 +58,10 @@ export async function createAcademicYear(
   input: AcademicYearInput,
 ): Promise<string> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can set up an academic year");
+    throw new AccessError("access.onlyASchoolAdminCanSetUp");
   }
   if (input.endDate <= input.startDate) {
-    throw new AccessError("The year has to end after it starts");
+    throw new AccessError("access.theYearHasToEndAfterIt");
   }
 
   const schoolId = session.schoolId;
@@ -110,14 +110,14 @@ export async function closeAcademicYear(
   nextYearId: string,
 ): Promise<{ studentsArchived: number; badgesArchived: number }> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can close the academic year");
+    throw new AccessError("access.onlyASchoolAdminCanCloseThe");
   }
   const schoolId = session.schoolId;
 
   const closing = await db.academicYear.findFirst({ where: { id: closingYearId, schoolId } });
   const next = await db.academicYear.findFirst({ where: { id: nextYearId, schoolId } });
-  if (!closing || !next) throw new AccessError("Academic year not found", "NOT_FOUND");
-  if (closing.id === next.id) throw new AccessError("Pick a different year to move into");
+  if (!closing || !next) throw new AccessError("access.academicYearNotFound", "NOT_FOUND");
+  if (closing.id === next.id) throw new AccessError("access.pickADifferentYearToMoveInto");
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: schoolId },

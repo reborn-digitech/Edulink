@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "@/lib/db";
 import { requireApiRole, assertClassAccess, AccessError } from "@/lib/tenancy";
@@ -181,7 +182,7 @@ export async function setClassTeacher(
     revalidatePath("/admin/classes");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     console.error("[setClassTeacher]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }
@@ -212,7 +213,7 @@ export async function archiveClass(classId: string): Promise<ClassActionResult> 
     revalidatePath("/admin");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     console.error("[archiveClass]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }
@@ -239,7 +240,7 @@ export async function restoreClass(classId: string): Promise<ClassActionResult> 
     revalidatePath("/admin/classes");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
@@ -269,14 +270,15 @@ export async function regenerateJoinCode(
     }
     return { ok: false, errorKey: "classes.couldNotAllocateNewCode" };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
-function accessFailure(error: unknown): ClassState {
+async function accessFailure(error: unknown): Promise<ClassState> {
   if (error instanceof AccessError) {
-    return { ok: false, errors: { _form: error.message } };
+    // The throw site mints a KEY; this boundary owns the words.
+    return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
   }
   console.error("[classes] unexpected", error);
   return { ok: false, errors: {}, errorKeys: { _form: "common.somethingWrong" } };

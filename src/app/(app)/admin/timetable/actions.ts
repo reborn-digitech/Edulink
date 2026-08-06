@@ -24,7 +24,7 @@ import type { PeriodKind } from "@/lib/school-day";
  */
 
 function failure(error: unknown): Result {
-  if (error instanceof AccessError) return { ok: false, error: error.message };
+  if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[timetable]", error);
   return { ok: false, errorKey: "common.somethingWrong" };
 }

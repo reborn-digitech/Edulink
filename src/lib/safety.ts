@@ -33,7 +33,7 @@ export async function listReports(
   status: "OPEN" | "ACTIONED" | "DISMISSED" = "OPEN",
 ): Promise<ReportGroup[]> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only an admin can see the safety centre");
+    throw new AccessError("access.onlyAnAdminCanSeeTheSafety");
   }
 
   const reports = await db.report.findMany({
@@ -203,17 +203,17 @@ export async function removeContent(
   input: { targetType: "POST" | "COMMENT"; targetId: string; note: string },
 ): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId || !session.membershipId) {
-    throw new AccessError("Only an admin can remove content");
+    throw new AccessError("access.onlyAnAdminCanRemoveContent");
   }
   const note = input.note.trim();
-  if (!note) throw new AccessError("Write a note so the author knows what happened.");
+  if (!note) throw new AccessError("access.writeANoteSoTheAuthorKnows");
 
   if (input.targetType === "POST") {
     const post = await db.post.findFirst({
       where: { id: input.targetId, schoolId: session.schoolId },
       select: { id: true, authorUserId: true, title: true },
     });
-    if (!post) throw new AccessError("That content no longer exists", "NOT_FOUND");
+    if (!post) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
 
     await db.post.update({
       where: { id: post.id },
@@ -238,7 +238,7 @@ export async function removeContent(
       where: { id: input.targetId, post: { schoolId: session.schoolId } },
       select: { id: true, authorUserId: true },
     });
-    if (!comment) throw new AccessError("That content no longer exists", "NOT_FOUND");
+    if (!comment) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
 
     await db.comment.update({ where: { id: comment.id }, data: { status: "REMOVED" } });
 
@@ -261,10 +261,10 @@ export async function dismissReports(
   input: { targetType: "POST" | "COMMENT" | "USER"; targetId: string; note: string },
 ): Promise<void> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only an admin can resolve reports");
+    throw new AccessError("access.onlyAnAdminCanResolveReports");
   }
   const note = input.note.trim();
-  if (!note) throw new AccessError("Write a short note explaining the decision.");
+  if (!note) throw new AccessError("access.writeAShortNoteExplainingTheDecision");
 
   await closeReports(session, input.targetType, input.targetId, "DISMISSED", note);
 }
@@ -309,7 +309,7 @@ export async function listAudit(
   opts: { action?: string; take?: number } = {},
 ): Promise<AuditEntry[]> {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only an admin can see the audit log");
+    throw new AccessError("access.onlyAnAdminCanSeeTheAudit");
   }
 
   const rows = await db.auditLog.findMany({

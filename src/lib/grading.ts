@@ -294,7 +294,7 @@ export async function saveGradeCategories(
   categories: { name: string; weightBps: number }[],
 ): Promise<void> {
   if (session.role !== "TEACHER" && session.role !== "ADMIN") {
-    throw new AccessError("Only a teacher or an admin can set grade weights");
+    throw new AccessError("access.onlyATeacherOrAnAdminCan3");
   }
   const klass = await assertClassAccess(
     { schoolId: session.schoolId!, membershipId: session.membershipId!, role: session.role },
@@ -307,22 +307,24 @@ export async function saveGradeCategories(
     .filter((c) => c.name.length > 0);
 
   for (const category of clean) {
-    if (category.name.length > 40) throw new AccessError("Category names must be 40 characters or fewer");
-    if (category.weightBps < 0) throw new AccessError("A weight cannot be negative");
-    if (category.weightBps > WEIGHT_SCALE) throw new AccessError("A single weight cannot exceed 100%");
+    if (category.name.length > 40) throw new AccessError("access.categoryNamesMustBe40CharactersOr");
+    if (category.weightBps < 0) throw new AccessError("access.aWeightCannotBeNegative");
+    if (category.weightBps > WEIGHT_SCALE) throw new AccessError("access.aSingleWeightCannotExceed100");
   }
 
   const names = new Set(clean.map((c) => c.name.toLowerCase()));
   if (names.size !== clean.length) {
     // Two categories of the same name would both match the same assignments,
     // so the work would be counted twice under two different weights.
-    throw new AccessError("Two categories cannot share a name");
+    throw new AccessError("access.twoCategoriesCannotShareAName");
   }
 
   const total = clean.reduce((sum, c) => sum + c.weightBps, 0);
   if (clean.length > 0 && total !== WEIGHT_SCALE) {
     throw new AccessError(
-      `The weights add up to ${(total / 100).toFixed(2)}% — they have to total exactly 100%`,
+      "access.weightsMustTotal",
+      "FORBIDDEN",
+      { total: (total / 100).toFixed(2) },
     );
   }
 
@@ -691,7 +693,7 @@ export async function publishAssignment(
   assignmentId: string,
 ): Promise<void> {
   const assignment = await assertAssignmentAccess(ctx, assignmentId);
-  if (assignment.publishedAt) throw new AccessError("That is already published.");
+  if (assignment.publishedAt) throw new AccessError("access.thatIsAlreadyPublished");
 
   await db.assignment.update({
     where: { id: assignmentId },

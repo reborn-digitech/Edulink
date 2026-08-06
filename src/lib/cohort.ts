@@ -40,13 +40,13 @@ export type Candidate = {
 
 async function assertAdminOfClass(ctx: ActiveContext, classId: string) {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can change a class roll");
+    throw new AccessError("access.onlyAnAdminCanChangeAClass");
   }
   const klass = await db.class.findFirst({
     where: { id: classId, schoolId: ctx.schoolId },
     select: { id: true, name: true, gradeLevel: true },
   });
-  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+  if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
   return klass;
 }
 

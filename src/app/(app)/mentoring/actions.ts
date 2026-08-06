@@ -13,7 +13,8 @@ async function run(work: () => Promise<unknown>): Promise<Result> {
     revalidatePath("/mentoring");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[mentoring]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
@@ -60,7 +61,8 @@ export async function askForMentor(input: {
     revalidatePath("/mentoring");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[askForMentor]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
@@ -77,7 +79,8 @@ export async function decideRequest(
     revalidatePath("/mentoring");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[decideRequest]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }

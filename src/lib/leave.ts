@@ -68,7 +68,7 @@ export async function applyForLeave(
   // A principal may apply too — they are staff, and somebody has to be able to
   // approve it. The approval side refuses self-approval separately.
   if ((ctx.role !== "TEACHER" && ctx.role !== "PRINCIPAL") || !ctx.schoolId || !ctx.membershipId) {
-    throw new AccessError("Only teaching staff can apply for leave");
+    throw new AccessError("access.onlyTeachingStaffCanApplyForLeave");
   }
 
   if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
@@ -179,7 +179,7 @@ export async function decideLeave(
   opts: { note?: string; coverMembershipId?: string | null } = {},
 ): Promise<LeaveResult & { coversCreated?: number }> {
   if ((ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") || !ctx.schoolId || !ctx.membershipId) {
-    throw new AccessError("Only the principal or an admin can decide leave");
+    throw new AccessError("access.onlyThePrincipalOrAnAdminCan");
   }
 
   const request = await db.leaveRequest.findFirst({
@@ -334,7 +334,7 @@ type TenantTx = {
  * what `leaveRequestId` is for.
  */
 export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<LeaveResult> {
-  if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("access.noActiveSchoolSelected");
 
   const request = await db.leaveRequest.findFirst({
     where: { id: leaveId, schoolId: ctx.schoolId },
@@ -345,7 +345,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
   const isOwner = request.teacherMembershipId === ctx.membershipId;
   const isStaffLead = ctx.role === "PRINCIPAL" || ctx.role === "ADMIN";
   if (!isOwner && !isStaffLead) {
-    throw new AccessError("That is not your leave request");
+    throw new AccessError("access.thatIsNotYourLeaveRequest");
   }
   if (request.status === "CANCELLED" || request.status === "DECLINED") {
     return { ok: false, errorKey: "leaveKind.alreadyClosed" };
@@ -439,7 +439,7 @@ export async function schoolLeave(
   status?: "PENDING" | "APPROVED" | "DECLINED" | "CANCELLED",
 ): Promise<LeaveRow[]> {
   if ((ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") || !ctx.schoolId) {
-    throw new AccessError("Only the principal or an admin can see staff leave");
+    throw new AccessError("access.onlyThePrincipalOrAnAdminCan2");
   }
   const rows = await db.leaveRequest.findMany({
     where: { schoolId: ctx.schoolId, ...(status ? { status } : {}) },
@@ -462,7 +462,7 @@ export async function approvedLeaveBetween(
   toDateKey: string,
 ): Promise<LeaveRow[]> {
   if (ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN" && ctx.role !== "TEACHER") {
-    throw new AccessError("Staff leave is not shown outside the staff room");
+    throw new AccessError("access.staffLeaveIsNotShownOutsideThe");
   }
   if (!ctx.schoolId) return [];
 

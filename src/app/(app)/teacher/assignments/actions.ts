@@ -28,7 +28,8 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   try {
     ctx = await requireApiRole("TEACHER", "ADMIN");
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
+    if (error instanceof AccessError)
+      return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     throw error;
   }
 
@@ -66,7 +67,8 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   } catch (error) {
     // Nothing will reference these now, and nothing can reach them either.
     await discard(attachments.map((a) => a.fileId));
-    if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
+    if (error instanceof AccessError)
+      return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     console.error("[newAssignment]", error);
     return { ok: false, errors: { _form: (await getT())("teacher.couldNotCreate") } };
   }
@@ -94,7 +96,8 @@ export async function submitGrades(input: unknown): Promise<GradeSaveState> {
   try {
     ctx = await requireApiRole("TEACHER", "ADMIN");
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 
@@ -118,7 +121,8 @@ export async function submitGrades(input: unknown): Promise<GradeSaveState> {
       rejected: result.rejected.length,
     };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[submitGrades]", error);
     return { ok: false, error: (await getT())("teacher.couldNotSaveMarks") };
   }
@@ -135,7 +139,8 @@ export async function publishNow(assignmentId: string): Promise<{ ok: boolean; e
     revalidatePath(`/teacher/assignments/${assignmentId}`);
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[publishNow]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }

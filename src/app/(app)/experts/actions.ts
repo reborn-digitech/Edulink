@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiRole, requireApiUser, AccessError } from "@/lib/tenancy";
 import { bookSlot, cancelBooking, postMessage, inviteExpert } from "@/lib/experts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -14,7 +15,8 @@ async function run<T>(work: () => Promise<T>): Promise<(Result & { data?: T })> 
     revalidatePath("/experts");
     return { ok: true, data };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[experts]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

@@ -100,7 +100,7 @@ const NAME_MAX = 60;
 
 function assertAdmin(ctx: ActiveContext): asserts ctx is ActiveContext & { schoolId: string } {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can change the timetable");
+    throw new AccessError("access.onlyAnAdminCanChangeTheTimetable");
   }
 }
 
@@ -622,7 +622,7 @@ export async function teacherAvailability(
   opts: { forClassId?: string } = {},
 ): Promise<TeacherOption[]> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can see who is free");
+    throw new AccessError("access.onlyAnAdminCanSeeWhoIs");
   }
 
   const [staff, taken] = await Promise.all([
@@ -688,7 +688,7 @@ export async function schoolBusyMap(
   exceptClassId: string | null,
 ): Promise<Record<string, Record<string, string>>> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can see who is free");
+    throw new AccessError("access.onlyAnAdminCanSeeWhoIs");
   }
   const rows = await db.timetableSlot.findMany({
     where: {
@@ -743,7 +743,7 @@ export async function teachingLoad(ctx: ActiveContext): Promise<Map<string, numb
 
 /** The Monday on or before `dateKey`. */
 export function weekStartKey(dateKey: string): string {
-  if (!isDateKey(dateKey)) throw new AccessError("That is not a date");
+  if (!isDateKey(dateKey)) throw new AccessError("access.thatIsNotADate");
   const weekday = weekdayOfKey(dateKey);
   // 0 is Sunday, which belongs to the week that has just finished — a pupil
   // opening this on Sunday evening wants tomorrow, not six days ago.
@@ -950,19 +950,19 @@ export async function classWeek(
   classId: string,
   opts: { weekOf?: string | null; todayKey?: string | null } = {},
 ): Promise<WeekGrid> {
-  if (!ctx.schoolId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
   if (ctx.role === "STUDENT" || ctx.role === "TEACHER") {
     // A pupil and a teacher read their OWN week through the functions below.
     // Letting them name a class here would hand a pupil every class's timetable,
     // which is not a secret but is not theirs to browse either.
-    throw new AccessError("Only staff can look up a class timetable");
+    throw new AccessError("access.onlyStaffCanLookUpAClass");
   }
 
   const klass = await db.class.findFirst({
     where: { id: classId, schoolId: ctx.schoolId },
     select: { id: true },
   });
-  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+  if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
 
   const dayKeys = opts.weekOf ? dayKeysFrom(weekStartKey(opts.weekOf)) : null;
 
@@ -1018,7 +1018,7 @@ export async function teacherWeek(
   teacherMembershipId: string,
   opts: { weekOf: string; todayKey?: string | null },
 ): Promise<WeekGrid> {
-  if (!ctx.schoolId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
 
   const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
   const dates = [...dayKeys.values()].sort();
@@ -1134,7 +1134,7 @@ export async function studentWeek(
   studentMembershipId: string,
   opts: { weekOf: string; todayKey?: string | null },
 ): Promise<WeekGrid> {
-  if (!ctx.schoolId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
   return weekForStudent(ctx.schoolId, studentMembershipId, opts);
 }
 
@@ -1168,7 +1168,7 @@ export async function childWeek(
     },
     select: { student: { select: { schoolId: true } } },
   });
-  if (!link) throw new AccessError("Not your child", "NOT_FOUND");
+  if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
 
   return weekForStudent(link.student.schoolId, studentMembershipId, opts);
 }
@@ -1177,7 +1177,7 @@ export async function childWeek(
 export async function timetableClasses(ctx: ActiveContext) {
   if (!ctx.schoolId) return [];
   if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") {
-    throw new AccessError("Only staff can list class timetables");
+    throw new AccessError("access.onlyStaffCanListClassTimetables");
   }
   const rows = await db.class.findMany({
     where: { schoolId: ctx.schoolId, archivedAt: null },

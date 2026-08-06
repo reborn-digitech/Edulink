@@ -40,7 +40,8 @@ export async function saveWeights(
     revalidatePath(`/teacher/classes/${classId}`);
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[grade-weights]", error);
     return { ok: false, error: (await getT())("teacher.weightsSaveFailed") };
   }

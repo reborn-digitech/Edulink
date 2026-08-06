@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { generateToken, hashToken } from "@/lib/crypto";
@@ -57,7 +58,7 @@ export async function createInvites(input: {
     ctx = await requireApiRole("ADMIN");
   } catch (error) {
     if (error instanceof AccessError) {
-      return { ok: false, error: error.message, outcomes: [], problems: [], sent: 0 };
+      return { ok: false, error: (await getT())(error.key, error.vars), outcomes: [], problems: [], sent: 0 };
     }
     throw error;
   }
@@ -228,7 +229,8 @@ export async function revokeInvite(
     revalidatePath("/admin/invites");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
@@ -273,7 +275,8 @@ export async function resendInvite(
     revalidatePath("/admin/invites");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }

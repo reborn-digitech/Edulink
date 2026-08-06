@@ -1,4 +1,5 @@
 import type { Prisma } from "@prisma/client";
+import { getT } from "@/lib/i18n/server";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { toCsv } from "@/lib/csv";
@@ -111,7 +112,7 @@ export async function GET(request: Request) {
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : 403;
-      return new Response(error.message, { status });
+      return new Response((await getT())(error.key, error.vars), { status });
     }
     console.error("[directory export]", error);
     return new Response("Something went wrong.", { status: 500 });

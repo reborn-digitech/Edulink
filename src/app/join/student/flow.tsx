@@ -318,7 +318,7 @@ export function StudentJoinFlow() {
             <Avatar avatarKey={avatarKey} name={preferredName || name || "You"} size="2xl" ring />
             <div>
               <p className="text-lg font-bold text-fg">{preferredName || name || "You"}</p>
-              <p className="text-sm text-fg-muted">{describeAvatar(avatarKey)}</p>
+              <p className="text-sm text-fg-muted">{describeAvatar(avatarKey, t)}</p>
             </div>
           </div>
 
@@ -335,7 +335,7 @@ export function StudentJoinFlow() {
                   type="button"
                   role="radio"
                   aria-checked={selected}
-                  aria-label={describeAvatar(preset)}
+                  aria-label={describeAvatar(preset, t)}
                   onClick={() => setAvatarKey(preset)}
                   className={cn(
                     "rounded-full transition-transform duration-[--dur-fast] active:scale-90",
@@ -344,7 +344,7 @@ export function StudentJoinFlow() {
                       : "hover:scale-105",
                   )}
                 >
-                  <Avatar avatarKey={preset} name={describeAvatar(preset)} size="md" />
+                  <Avatar avatarKey={preset} name={describeAvatar(preset, t)} size="md" />
                 </button>
               );
             })}

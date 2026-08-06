@@ -1,5 +1,6 @@
 import "server-only";
 import { ROLE_HOME } from "./constants";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { redirect } from "next/navigation";
 import { db } from "./db";
 import { getSession, type ActiveContext } from "./session";
@@ -19,12 +20,24 @@ import type { Role } from "./constants";
  * in the WHERE clause. A row from another tenant simply does not come back.
  */
 
+/**
+ * ⚠ THE MESSAGE IS A KEY, and the constructor's type is what enforces it.
+ *
+ * These refusals are minted 200+ places deep in the libs and read by whoever
+ * asked, in whatever language they read. So a throw site names WHAT went wrong
+ * as a `TranslationKey` and the action boundary owns the words — the compiler
+ * refuses a new English sentence here the same way it refuses a missing
+ * dictionary entry. `message` still carries the key, so logs and `toThrow`
+ * assertions read it directly; `key` is the typed alias boundaries use.
+ */
 export class AccessError extends Error {
   constructor(
-    message: string,
+    readonly key: TranslationKey,
     readonly code: "UNAUTHENTICATED" | "FORBIDDEN" | "NOT_FOUND" = "FORBIDDEN",
+    /** For the few refusals that carry a number or a name into the sentence. */
+    readonly vars?: Record<string, string | number>,
   ) {
-    super(message);
+    super(key);
     this.name = "AccessError";
   }
 }
@@ -48,7 +61,7 @@ export async function requireUser(): Promise<ActiveContext> {
  */
 export async function requireApiUser(): Promise<ActiveContext> {
   const session = await getSession();
-  if (!session) throw new AccessError("Please log in again");
+  if (!session) throw new AccessError("access.pleaseLogInAgain");
   return session;
 }
 
@@ -98,12 +111,12 @@ export async function requireApiRole<R extends Role>(
   ...roles: R[]
 ): Promise<ActiveContext & { role: R; schoolId: string; membershipId: string }> {
   const session = await getSession();
-  if (!session) throw new AccessError("Not signed in", "UNAUTHENTICATED");
+  if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
   if (!session.role || !roles.includes(session.role as R)) {
-    throw new AccessError("Wrong role for this action");
+    throw new AccessError("access.wrongRoleForThisAction");
   }
   if (!session.schoolId || !session.membershipId) {
-    throw new AccessError("No active school selected");
+    throw new AccessError("access.noActiveSchoolSelected");
   }
   return session as ActiveContext & { role: R; schoolId: string; membershipId: string };
 }
@@ -168,9 +181,9 @@ export async function assertClassAccess(
     },
   });
 
-  if (!klass) throw new AccessError("Class not found in your school", "NOT_FOUND");
-  if (opts.write && ctx.role === "STUDENT") throw new AccessError("Students cannot edit a class");
-  if (klass.archivedAt && opts.write) throw new AccessError("This class is archived");
+  if (!klass) throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+  if (opts.write && ctx.role === "STUDENT") throw new AccessError("access.studentsCannotEditAClass");
+  if (klass.archivedAt && opts.write) throw new AccessError("access.thisClassIsArchived");
   return klass;
 }
 
@@ -199,7 +212,7 @@ export async function assertStudentAccess(
     include: { user: { select: { id: true, name: true, preferredName: true, avatarKey: true } } },
   });
 
-  if (!student) throw new AccessError("Student not found in your classes", "NOT_FOUND");
+  if (!student) throw new AccessError("access.studentNotFoundInYourClasses", "NOT_FOUND");
   return student;
 }
 
@@ -221,7 +234,7 @@ export async function assertGuardianAccess(parentUserId: string, studentMembersh
     },
   });
 
-  if (!link) throw new AccessError("Not your child", "NOT_FOUND");
+  if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
   return link;
 }
 
@@ -246,7 +259,7 @@ export async function assertAssignmentAccess(
     include: { class: { select: { id: true, name: true } } },
   });
 
-  if (!assignment) throw new AccessError("Assignment not found", "NOT_FOUND");
+  if (!assignment) throw new AccessError("access.assignmentNotFound", "NOT_FOUND");
   return assignment;
 }
 
@@ -266,7 +279,7 @@ export async function assertRemarkAccess(
       teacher: { include: { user: { select: { name: true, avatarKey: true } } } },
     },
   });
-  if (!thread) throw new AccessError("Thread not found", "NOT_FOUND");
+  if (!thread) throw new AccessError("access.threadNotFound", "NOT_FOUND");
 
   const { role, schoolId, membershipId, user } = session;
 
@@ -309,7 +322,7 @@ export async function assertRemarkAccess(
   });
   if (guardian) return thread;
 
-  throw new AccessError("Thread not found", "NOT_FOUND");
+  throw new AccessError("access.threadNotFound", "NOT_FOUND");
 }
 
 /* -------------------------------------------------------------------------- */

@@ -70,9 +70,9 @@ export type PupilInsight = {
 
 function assertOversight(ctx: ActiveContext) {
   if (ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") {
-    throw new AccessError("Only the principal or an admin can see the whole school");
+    throw new AccessError("access.onlyThePrincipalOrAnAdminCan3");
   }
-  if (!ctx.schoolId) throw new AccessError("No active school selected");
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
   return ctx.schoolId;
 }
 
@@ -313,7 +313,7 @@ export async function pupilInsights(
     where: { id: classId, schoolId },
     select: { id: true, name: true, section: true },
   });
-  if (!klass) throw new AccessError("That class is not in this school", "NOT_FOUND");
+  if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
 
   const roll = await db.enrollment.findMany({
     where: { schoolId, classId, status: "ACTIVE" },

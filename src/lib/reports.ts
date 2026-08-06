@@ -80,7 +80,7 @@ async function assertReportAccess(session: ActiveContext, studentMembershipId: s
 
   if (session.role === "STUDENT") {
     if (session.membershipId !== studentMembershipId) {
-      throw new AccessError("Report not found", "NOT_FOUND");
+      throw new AccessError("access.reportNotFound", "NOT_FOUND");
     }
     return;
   }
@@ -93,7 +93,7 @@ async function assertReportAccess(session: ActiveContext, studentMembershipId: s
     return;
   }
 
-  throw new AccessError("Report not found", "NOT_FOUND");
+  throw new AccessError("access.reportNotFound", "NOT_FOUND");
 }
 
 export async function buildProgressReport(
@@ -112,12 +112,12 @@ export async function buildProgressReport(
   });
   // The access check above passed, so a miss here means the row is gone rather
   // than hidden — but the message stays the same either way.
-  if (!membership) throw new AccessError("Report not found", "NOT_FOUND");
+  if (!membership) throw new AccessError("access.reportNotFound", "NOT_FOUND");
 
   const timezone = membership.school.timezone;
   const toKey = range.toKey ?? todayKey(timezone);
   const fromKey = range.fromKey ?? addDaysToKey(toKey, -DEFAULT_REPORT_DAYS);
-  if (fromKey > toKey) throw new AccessError("That date range runs backwards");
+  if (fromKey > toKey) throw new AccessError("access.thatDateRangeRunsBackwards");
 
   const [attendance, grades, badges] = await Promise.all([
     getAttendanceSummary(membership.schoolId, studentMembershipId, fromKey, toKey),

@@ -243,7 +243,7 @@ export async function closedOn(
 
 function requireAdmin(session: ActiveContext): string {
   if (session.role !== "ADMIN" || !session.schoolId) {
-    throw new AccessError("Only a school admin can edit the calendar");
+    throw new AccessError("access.onlyASchoolAdminCanEditThe");
   }
   return session.schoolId;
 }
@@ -257,23 +257,25 @@ function requireAdmin(session: ActiveContext): string {
  */
 function normalise(input: HolidayInput): HolidayInput {
   const name = input.name.trim();
-  if (name.length < 2) throw new AccessError("Give the entry a name");
-  if (name.length > 120) throw new AccessError("That name is too long");
+  if (name.length < 2) throw new AccessError("access.giveTheEntryAName");
+  if (name.length > 120) throw new AccessError("access.thatNameIsTooLong");
 
-  if (!isDateKey(input.startDateKey)) throw new AccessError("Start date is not a real date");
+  if (!isDateKey(input.startDateKey)) throw new AccessError("access.startDateIsNotARealDate");
   const endDateKey = input.endDateKey || input.startDateKey;
-  if (!isDateKey(endDateKey)) throw new AccessError("End date is not a real date");
+  if (!isDateKey(endDateKey)) throw new AccessError("access.endDateIsNotARealDate");
   if (endDateKey < input.startDateKey) {
-    throw new AccessError("The end date cannot be before the start date");
+    throw new AccessError("access.theEndDateCannotBeBeforeThe");
   }
   const length = spanLengthDays({ ...input, endDateKey });
   if (length > MAX_HOLIDAY_SPAN_DAYS) {
     throw new AccessError(
-      `That range covers ${length} days — a single entry cannot be longer than a year`,
+      "access.rangeTooLong",
+      "FORBIDDEN",
+      { days: length },
     );
   }
   if (!HOLIDAY_KINDS.includes(input.kind)) {
-    throw new AccessError("Pick holiday, exam or event");
+    throw new AccessError("access.pickHolidayExamOrEvent");
   }
 
   return {
@@ -344,7 +346,7 @@ export async function updateHoliday(
     where: { id: holidayId, schoolId },
     select: { id: true },
   });
-  if (!existing) throw new AccessError("Calendar entry not found", "NOT_FOUND");
+  if (!existing) throw new AccessError("access.calendarEntryNotFound", "NOT_FOUND");
 
   await db.holiday.update({
     where: { id: holidayId },
@@ -377,7 +379,7 @@ export async function deleteHoliday(
     where: { id: holidayId, schoolId },
     select: { id: true, name: true, startDateKey: true },
   });
-  if (!existing) throw new AccessError("Calendar entry not found", "NOT_FOUND");
+  if (!existing) throw new AccessError("access.calendarEntryNotFound", "NOT_FOUND");
 
   await db.holiday.delete({ where: { id: holidayId } });
 

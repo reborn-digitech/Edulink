@@ -53,7 +53,7 @@ export async function suspendMembership(
   reason: string,
 ): Promise<SuspensionResult> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can pause access");
+    throw new AccessError("access.onlyAnAdminCanPauseAccess");
   }
 
   // An admin suspending themselves is the single most likely way to lock a
@@ -157,7 +157,7 @@ export async function reinstateMembership(
   membershipId: string,
 ): Promise<SuspensionResult> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can restore access");
+    throw new AccessError("access.onlyAnAdminCanRestoreAccess");
   }
 
   const schoolId = ctx.schoolId;
@@ -296,7 +296,7 @@ export async function removeMembership(
   membershipId: string,
 ): Promise<RemovalResult> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
-    throw new AccessError("Only an admin can remove somebody from a school");
+    throw new AccessError("access.onlyAnAdminCanRemoveSomebodyFrom");
   }
   if (membershipId === ctx.membershipId) {
     return { ok: false, errorKey: "refusal.removeSelf" };

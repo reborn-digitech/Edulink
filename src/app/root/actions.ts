@@ -24,7 +24,8 @@ import {
 type Result = { ok: boolean; error?: string; schoolId?: string; code?: string };
 
 async function failure(error: unknown): Promise<Result> {
-  if (error instanceof AccessError) return { ok: false, error: error.message };
+  if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
   console.error("[root]", error);
   return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }

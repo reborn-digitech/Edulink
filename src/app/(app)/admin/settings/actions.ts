@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
@@ -18,7 +19,8 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
   try {
     ctx = await requireApiRole("ADMIN");
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
+    if (error instanceof AccessError)
+      return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     throw error;
   }
 
@@ -85,7 +87,8 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
   try {
     ctx = await requireApiRole("ADMIN");
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     throw error;
   }
 
@@ -167,7 +170,8 @@ export async function removeLogo(): Promise<LogoState> {
     revalidatePath("/admin");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[removeLogo]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }

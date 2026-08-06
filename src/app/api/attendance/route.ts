@@ -72,7 +72,7 @@ export async function POST(request: Request) {
     if (error instanceof AccessError) {
       const status =
         error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
-      return NextResponse.json({ error: error.message }, { status });
+      return NextResponse.json({ error: (await getT())(error.key, error.vars) }, { status });
     }
     console.error("[api/attendance] unexpected", error);
     return NextResponse.json({ error: (await getT())("attendance.saveFailed") }, { status: 500 });
@@ -108,7 +108,7 @@ export async function GET(request: Request) {
     if (error instanceof AccessError) {
       const status =
         error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
-      return NextResponse.json({ error: error.message }, { status });
+      return NextResponse.json({ error: (await getT())(error.key, error.vars) }, { status });
     }
     console.error("[api/attendance] unexpected", error);
     return NextResponse.json({ error: (await getT())("common.somethingWrong") }, { status: 500 });

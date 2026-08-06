@@ -527,14 +527,15 @@ describe("⚠ the visitor book", () => {
       (e: unknown) => e as AccessError,
     );
     expect(asOutsider).toBeInstanceOf(AccessError);
-    expect((asOutsider as AccessError).message).toMatch(/runs the server/i);
-    expect((asOutsider as AccessError).message).not.toMatch(/open this school/i);
+    // The message IS the key now — the two doors must still refuse differently.
+    expect((asOutsider as AccessError).key).toBe("access.thisAreaBelongsToWhoeverRunsThe");
+    expect((asOutsider as AccessError).key).not.toBe("access.openThisSchoolFirstAndSayWhy");
 
     const asOperator = await withSchoolAccess(operator, schoolId, async () => "in").catch(
       (e: unknown) => e as AccessError,
     );
     expect(asOperator).toBeInstanceOf(AccessError);
-    expect((asOperator as AccessError).message).toMatch(/open this school/i);
+    expect((asOperator as AccessError).key).toBe("access.openThisSchoolFirstAndSayWhy");
 
     await openSchool(operator, schoolId, REASON);
     expect(await withSchoolAccess(operator, schoolId, async () => "in")).toBe("in");

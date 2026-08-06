@@ -19,7 +19,8 @@ async function run(work: () => Promise<void>): Promise<Result> {
     revalidatePath("/bulletin");
     return { ok: true };
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: error.message };
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[global-feed]", error);
     return { ok: false, error: (await getT())("common.tryAgainMoment") };
   }
