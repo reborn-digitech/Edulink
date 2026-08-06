@@ -80,7 +80,7 @@ export default async function StudentHome({
         <Avatar avatarKey={membership.user.avatarKey} name={membership.user.name} size="lg" ring />
         <div className="min-w-0">
           <h1 className="truncate text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            Hi {name} 👋
+            {t("student.hiName", { name })}
           </h1>
           <p className="text-sm text-fg-muted">
             {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
@@ -95,7 +95,7 @@ export default async function StudentHome({
           value={
             todayRecord
               ? t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey)
-              : "Not yet"
+              : t("student.notYet")
           }
           tone={
             !todayRecord
@@ -107,7 +107,7 @@ export default async function StudentHome({
                   : "danger"
           }
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          hint={todayRecord ? "Register taken" : "Your teacher hasn't taken it yet"}
+          hint={todayRecord ? t("student.registerTaken") : t("student.registerNotTakenYet")}
         />
         <StatTile
           label={t("student.streak")}
@@ -116,10 +116,12 @@ export default async function StudentHome({
           icon={<FireIcon weight="duotone" className="size-5" />}
           hint={
             streak === 0
-              ? "Turn up tomorrow to start one"
+              ? t("student.streakStartHint")
               : streak >= 5
-                ? "You're on a roll!"
-                : `${streak} day${streak === 1 ? "" : "s"} in a row`
+                ? t("student.onARoll")
+                : streak === 1
+                  ? t("student.streakDaysOne")
+                  : t("student.streakDaysMany", { count: streak })
           }
         />
         <StatTile
@@ -135,7 +137,13 @@ export default async function StudentHome({
         <CardHeader
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           title={t("student.whatIsDue")}
-          description={upcoming.length === 0 ? "Nothing due" : `${upcoming.length} to do`}
+          description={
+            upcoming.length === 0
+              ? t("student.nothingDueShort")
+              : upcoming.length === 1
+                ? t("student.toDoCountOne")
+                : t("student.toDoCountMany", { count: upcoming.length })
+          }
         />
         <CardBody>
           {upcoming.length === 0 ? (
@@ -165,7 +173,7 @@ export default async function StudentHome({
                     </span>
                     {/* Gentle, never alarming — "soon", not "OVERDUE" in red. */}
                     <Badge tone={dueSoon ? "warn" : "neutral"} size="sm">
-                      {assignment.dueAt ? relativeTime(assignment.dueAt) : "No date"}
+                      {assignment.dueAt ? relativeTime(assignment.dueAt) : t("student.noDate")}
                     </Badge>
                   </li>
                 );
@@ -179,7 +187,7 @@ export default async function StudentHome({
         <CardHeader
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
           title={t("student.recentMarks")}
-          description={grades.length === 0 ? "Nothing marked yet" : "Newest first"}
+          description={grades.length === 0 ? t("student.nothingMarkedYet") : t("student.newestFirstShort")}
         />
         <CardBody>
           {grades.length === 0 ? (

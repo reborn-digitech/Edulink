@@ -53,8 +53,8 @@ export default async function AssignmentPage({
         <p className="mt-1 text-sm text-fg-muted">
           {assignment.className}
           {assignment.category ? ` · ${assignment.category}` : ""}
-          {assignment.pointsMilli ? ` · out of ${formatMilli(assignment.pointsMilli)}` : ""}
-          {assignment.dueAt ? ` · due ${relativeTime(assignment.dueAt)}` : ""}
+          {assignment.pointsMilli ? ` · ${t("teacher.outOfPoints", { points: formatMilli(assignment.pointsMilli) })}` : ""}
+          {assignment.dueAt ? ` · ${t("teacher.dueWhenLower", { when: relativeTime(assignment.dueAt) })}` : ""}
         </p>
       </div>
 

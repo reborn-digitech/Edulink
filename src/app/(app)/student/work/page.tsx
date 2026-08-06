@@ -29,8 +29,10 @@ export default async function StudentWorkPage() {
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myWork")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {upcoming.length === 0
-            ? "Nothing to do right now"
-            : `${upcoming.length} thing${upcoming.length === 1 ? "" : "s"} to do`}
+            ? t("student.nothingToDo")
+            : upcoming.length === 1
+              ? t("student.thingsToDoOne")
+              : t("student.thingsToDoMany", { count: upcoming.length })}
         </p>
       </div>
 
@@ -103,7 +105,7 @@ export default async function StudentWorkPage() {
                   </div>
                   {/* Gentle: "3 days late", never a red OVERDUE stamp. (§6) */}
                   <Badge tone={item.overdue ? "warn" : "neutral"} size="sm">
-                    {item.dueAt ? relativeTime(item.dueAt) : "No date"}
+                    {item.dueAt ? relativeTime(item.dueAt) : t("student.noDate")}
                   </Badge>
                 </div>
               </Card>

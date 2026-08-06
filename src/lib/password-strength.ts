@@ -1,3 +1,5 @@
+import type { TranslationKey } from "@/lib/i18n/dictionary";
+
 /**
  * Password feedback for the signup meter.
  *
@@ -5,6 +7,10 @@
  * when the password contains the person's own name/email or is a known-common
  * choice. Runs on the client for instant feedback; `passwordProblems` in
  * crypto.ts is the authoritative server-side gate — this is UX, that is policy.
+ *
+ * ⚠ RETURNS KEYS, NOT SENTENCES, and the SAME keys crypto.ts mints for the
+ * same problems: the meter and the server gate describe one rule in one voice,
+ * in the reader's language. The consuming form owns the words via t().
  */
 
 const COMMON = new Set([
@@ -16,21 +22,21 @@ const COMMON = new Set([
 export type Strength = {
   /** 0–4 */
   score: number;
-  label: string;
-  problems: string[];
+  labelKey: TranslationKey;
+  problemKeys: TranslationKey[];
 };
 
 export function passwordStrength(password: string, context: string[] = []): Strength {
-  const problems: string[] = [];
+  const problemKeys: TranslationKey[] = [];
 
-  if (password.length < 10) problems.push("Use at least 10 characters.");
-  if (password.length > 200) problems.push("That is too long — 200 characters max.");
-  if (/^\s|\s$/.test(password)) problems.push("Remove the space at the start or end.");
+  if (password.length < 10) problemKeys.push("refusal.pwAtLeast10");
+  if (password.length > 200) problemKeys.push("refusal.pwTooLong");
+  if (/^\s|\s$/.test(password)) problemKeys.push("refusal.pwTrimSpace");
   if (COMMON.has(password.toLowerCase())) {
-    problems.push("That is one of the most common passwords. Pick something else.");
+    problemKeys.push("refusal.pwTooCommon");
   }
   if (password.length > 0 && /^(.)\1+$/.test(password)) {
-    problems.push("Repeating one character is not enough.");
+    problemKeys.push("refusal.pwRepeats");
   }
 
   const lower = password.toLowerCase();
@@ -43,10 +49,14 @@ export function passwordStrength(password: string, context: string[] = []): Stre
       if (t.length >= 4 && lower.includes(t)) containsContext = true;
     }
   }
-  if (containsContext) problems.push("Do not include your name or email in your password.");
+  if (containsContext) problemKeys.push("refusal.pwContainsName");
 
-  if (problems.length > 0) {
-    return { score: Math.min(1, password.length > 0 ? 1 : 0), label: problems[0]!, problems };
+  if (problemKeys.length > 0) {
+    return {
+      score: Math.min(1, password.length > 0 ? 1 : 0),
+      labelKey: problemKeys[0]!,
+      problemKeys,
+    };
   }
 
   let score = 1;
@@ -56,13 +66,13 @@ export function passwordStrength(password: string, context: string[] = []): Stre
   if (classes >= 3) score++;
 
   score = Math.min(4, score);
-  const labels = [
-    "Too short",
-    "Weak — make it longer",
-    "Getting there",
-    "Good password",
-    "Excellent password",
+  const labelKeys: TranslationKey[] = [
+    "refusal.pwMeterTooShort",
+    "refusal.pwMeterWeak",
+    "refusal.pwMeterGettingThere",
+    "refusal.pwMeterGood",
+    "refusal.pwMeterExcellent",
   ];
 
-  return { score, label: labels[score]!, problems: [] };
+  return { score, labelKey: labelKeys[score]!, problemKeys: [] };
 }

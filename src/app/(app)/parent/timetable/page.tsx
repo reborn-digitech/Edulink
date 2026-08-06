@@ -79,7 +79,7 @@ export default async function ParentTimetablePage({
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {childName}&rsquo;s timetable
+          {t("parent.childsTimetable", { name: childName })}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">{student.school.name}</p>
       </div>
@@ -89,7 +89,7 @@ export default async function ParentTimetablePage({
           href={link_(previous)}
           className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
-          ← Previous
+          {t("parent.previousWeek")}
         </Link>
         {!isThisWeek && (
           <Link
@@ -100,7 +100,7 @@ export default async function ParentTimetablePage({
           </Link>
         )}
         <span className="px-1 text-sm font-medium text-fg">
-          Week of {formatDateKey(monday, { day: "numeric", month: "long" })}
+          {t("parent.weekOf", { date: formatDateKey(monday, { day: "numeric", month: "long" }) })}
         </span>
         <Link
           href={link_(next)}
@@ -120,7 +120,7 @@ export default async function ParentTimetablePage({
         <EmptyState
           icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
           title={t("parent.nothingTimetabled")}
-          description={`${childName}'s classes have no lessons on the timetable for this week.`}
+          description={t("parent.noLessonsThisWeek", { name: childName })}
         />
       ) : (
         <Card>

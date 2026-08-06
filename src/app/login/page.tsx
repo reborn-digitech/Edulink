@@ -65,10 +65,10 @@ export default async function LoginPage({
               className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {link === "expired"
-                ? "That sign-in link has expired — they last 20 minutes. Ask for another below, or use your password."
+                ? t("login.linkExpired")
                 : link === "used"
-                  ? "That sign-in link has already been used. They work once. Ask for another below, or use your password."
-                  : "That sign-in link did not work. It may have been cut in half by a mail app. Ask for another below, or use your password."}
+                  ? t("login.linkUsed")
+                  : t("login.linkBroken")}
             </p>
           )}
 
@@ -77,8 +77,7 @@ export default async function LoginPage({
               role="status"
               className="mt-5 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-4 py-3 text-sm font-medium text-ok"
             >
-              Your password has been changed, and everything that was signed in has been signed
-              out. Log in with the new one.
+              {t("login.passwordChangedNotice")}
             </p>
           )}
 

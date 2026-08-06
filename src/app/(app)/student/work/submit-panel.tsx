@@ -38,7 +38,7 @@ export function SubmitPanel({
 
   function submit() {
     if (body.trim().length === 0) {
-      setError("Write something before handing it in.");
+      setError(t("student.writeBeforeHandIn"));
       return;
     }
     setError(null);
@@ -46,7 +46,7 @@ export function SubmitPanel({
     startTransition(async () => {
       const result = await submitWork({ assignmentId, body: body.trim() });
       if (!result.ok) {
-        setError(result.error ?? "That did not go through.");
+        setError(result.error ?? t("student.notGoThrough"));
         return;
       }
       setDone(true);

@@ -1,8 +1,8 @@
 import { afterAll, afterEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import {
+  retryHintKey,
   consume,
-  retryHint,
   CLAIM_ATTEMPTS,
   CLAIM_PER_CODE,
   CODE_LOOKUPS,
@@ -158,14 +158,14 @@ describe("⚠ failing open", () => {
 
 describe("telling somebody when to come back", () => {
   it("rounds up, so a second refusal is not earned", () => {
-    expect(retryHint(1)).toBe("in a minute");
-    expect(retryHint(60)).toBe("in a minute");
-    expect(retryHint(61)).toBe("in about 2 minutes");
-    expect(retryHint(290)).toBe("in about 5 minutes");
-    expect(retryHint(3540)).toBe("in about 59 minutes");
+    expect(retryHintKey(1)).toEqual({ key: "common.retryInAMinute" });
+    expect(retryHintKey(60)).toEqual({ key: "common.retryInAMinute" });
+    expect(retryHintKey(61)).toEqual({ key: "common.retryInMinutesMany", vars: { count: 2 } });
+    expect(retryHintKey(290)).toEqual({ key: "common.retryInMinutesMany", vars: { count: 5 } });
+    expect(retryHintKey(3540)).toEqual({ key: "common.retryInMinutesMany", vars: { count: 59 } });
     // Exactly an hour rolls over rather than saying "60 minutes".
-    expect(retryHint(3600)).toBe("in about 1 hour");
-    expect(retryHint(7200)).toBe("in about 2 hours");
+    expect(retryHintKey(3600)).toEqual({ key: "common.retryInHoursOne" });
+    expect(retryHintKey(7200)).toEqual({ key: "common.retryInHoursMany", vars: { count: 2 } });
   });
 });
 

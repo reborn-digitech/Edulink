@@ -28,7 +28,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   // The language they accepted in. See the note in register/actions.ts.
   const locale = await getLocale();
   const parsed = acceptInviteSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { token, name, password, title, bio, subjects, birthdate } = parsed.data;
 
@@ -109,15 +109,14 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     return {
       ok: false,
       errors: {
-        password:
-          "You already have a password for this email. Accepting adds this school to that account — nothing about your login changes.",
+        password: (await getT())("invite.alreadyHavePassword"),
       },
     };
   }
 
   if (!keepsExistingPassword) {
     if (!password) {
-      return { ok: false, errors: { password: "Choose a password." } };
+      return { ok: false, errors: { password: (await getT())("invite.choosePassword") } };
     }
     const problems = passwordProblems(password, [name, invite.email ?? "", school.name]);
     if (problems.length > 0) return { ok: false, errors: { password: (await getT())(problems[0]!) } };
@@ -133,9 +132,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   let birthDate: Date | null = null;
   if (birthdate && birthdate.trim().length > 0) {
     birthDate = parseDateOnly(birthdate);
-    if (!birthDate) return { ok: false, errors: { birthdate: "Use a real date." } };
+    if (!birthDate) return { ok: false, errors: { birthdate: (await getT())("invite.useRealDate") } };
     if (birthDate.getTime() > Date.now()) {
-      return { ok: false, errors: { birthdate: "That date is in the future." } };
+      return { ok: false, errors: { birthdate: (await getT())("invite.dateInFuture") } };
     }
   }
 
@@ -264,7 +263,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
       return { ok: false, errors: { _form: t("invite.alreadyUsed") } };
     }
     if (error instanceof Error && error.message === "NEEDS_PASSWORD") {
-      return { ok: false, errors: { password: "Choose a password." } };
+      return { ok: false, errors: { password: t("invite.choosePassword") } };
     }
     console.error("[acceptInvite]", error);
     return { ok: false, errors: { _form: t("invite.couldNotComplete") } };

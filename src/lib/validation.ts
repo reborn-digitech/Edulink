@@ -7,6 +7,7 @@ import {
   SCHOOL_ROLES,
 } from "./constants";
 import { isDateKey, isValidTimeZone } from "./dates";
+import type { Translate, TranslationKey } from "./i18n/dictionary";
 
 /**
  * Server-side validation for every trust boundary.
@@ -23,24 +24,24 @@ export const emailSchema = z
   .toLowerCase()
   .min(3)
   .max(320)
-  .email("Enter a valid email address.");
+  .email("register.enterValidEmail");
 
 export const passwordSchema = z
   .string()
-  .min(10, "Use at least 10 characters.")
-  .max(200, "That is too long — 200 characters max.");
+  .min(10, "refusal.pwAtLeast10")
+  .max(200, "refusal.pwTooLong");
 
 export const dateKeySchema = z
   .string()
-  .refine(isDateKey, "Use a real date in YYYY-MM-DD form.");
+  .refine(isDateKey, "refusal.useRealDateForm");
 
 export const timeZoneSchema = z
   .string()
-  .refine(isValidTimeZone, "That is not a timezone this server recognises.");
+  .refine(isValidTimeZone, "refusal.timezoneUnknown");
 
 export const hexColorSchema = z
   .string()
-  .regex(/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, "Use a hex colour like #2563eb.");
+  .regex(/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, "refusal.useHexColour");
 
 /* -------------------------------------------------------------------------- */
 /* Registration                                                                */
@@ -56,7 +57,7 @@ export const schoolDetailsSchema = z.object({
     .max(300)
     .refine(
       (v) => v === "" || /^https?:\/\/[^\s]+\.[^\s]+$/.test(v),
-      "Start with http:// or https://",
+      "refusal.startWithHttp",
     )
     .optional(),
   addressLine: trimmed(0, 200).optional(),
@@ -102,12 +103,12 @@ export const registerSchoolSchema = z.object({
 export const identifierSchema = z
   .string()
   .trim()
-  .min(1, "Enter your email, mobile number or username.")
+  .min(1, "refusal.enterIdentifier")
   .max(320);
 
 export const loginSchema = z.object({
   identifier: identifierSchema,
-  password: z.string().min(1, "Enter your password."),
+  password: z.string().min(1, "refusal.enterPassword"),
 });
 
 export const magicLinkSchema = z.object({ email: emailSchema });
@@ -116,7 +117,7 @@ export const resetRequestSchema = z.object({ identifier: identifierSchema });
 
 export const resetSchema = z.object({
   identifier: identifierSchema,
-  code: z.string().trim().min(1, "Enter the code you were sent."),
+  code: z.string().trim().min(1, "refusal.enterCode"),
   password: passwordSchema,
 });
 
@@ -135,7 +136,7 @@ export const inviteSchema = z.object({
 export const bulkInviteSchema = z.object({
   role: z.enum(SCHOOL_ROLES),
   /** Raw CSV text. Parsed and validated row-by-row by parseInviteCsv. */
-  csv: z.string().min(1, "Paste at least one row.").max(500_000, "That file is too large."),
+  csv: z.string().min(1, "refusal.pasteOneRow").max(500_000, "refusal.fileTooLarge"),
 });
 
 export const acceptInviteSchema = z.object({
@@ -250,7 +251,7 @@ export const assignmentSchema = z.object({
   category: trimmed(0, 60).optional(),
   points: z
     .number()
-    .min(0, "Points cannot be negative.")
+    .min(0, "refusal.pointsNegative")
     .max(10_000)
     .optional(),
   dueAt: z.string().datetime().optional().or(z.literal("")),
@@ -260,7 +261,7 @@ export const assignmentSchema = z.object({
 export const gradeSchema = z.object({
   assignmentId: z.string().cuid(),
   studentMembershipId: z.string().cuid(),
-  score: z.number().min(0, "Scores cannot be negative.").max(10_000).nullable(),
+  score: z.number().min(0, "refusal.scoresNegative").max(10_000).nullable(),
   letter: trimmed(0, 8).optional(),
   comment: z.string().trim().max(4_000).optional(),
 });
@@ -343,8 +344,8 @@ export const prefsSchema = z.object({
     .default({ push: true, email: true }),
   quietHours: z
     .object({
-      start: z.string().regex(/^\d{1,2}:\d{2}$/, "Use HH:MM."),
-      end: z.string().regex(/^\d{1,2}:\d{2}$/, "Use HH:MM."),
+      start: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
+      end: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
     })
     .nullable()
     .default(null),
@@ -361,12 +362,21 @@ export const pushSubscribeSchema = z.object({
 
 export type FieldErrors = Record<string, string>;
 
+/**
+ * A custom message on a shared schema is a KEY (see the messages above), so a
+ * flattened error can be handed to a reader only after translation. The zod
+ * DEFAULTS — a bare `.min(2)` on a name field — are still English sentences;
+ * keying every last one means a custom message on every bound, its own change.
+ */
+const KEY_SHAPED = /^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9]+)+$/;
+
 /** Flattens a ZodError into { fieldPath: firstMessage } for inline form errors. */
-export function fieldErrors(error: z.ZodError): FieldErrors {
+export function fieldErrors(error: z.ZodError, t?: Translate): FieldErrors {
   const out: FieldErrors = {};
   for (const issue of error.issues) {
     const path = issue.path.join(".") || "_form";
-    out[path] ??= issue.message;
+    out[path] ??=
+      t && KEY_SHAPED.test(issue.message) ? t(issue.message as TranslationKey) : issue.message;
   }
   return out;
 }

@@ -222,7 +222,7 @@ export function LeaveForm({
                     {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
                       ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
                       : request.kind}
-                    {request.nominatedName ? ` · suggested cover: ${request.nominatedName}` : ""}
+                    {request.nominatedName ? ` · ${t("teacher.suggestedCover", { name: request.nominatedName })}` : ""}
                   </p>
                   <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">
                     {request.reason}

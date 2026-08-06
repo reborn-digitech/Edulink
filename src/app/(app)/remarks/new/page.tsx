@@ -113,8 +113,7 @@ export default async function NewRemarkPage({
 
       <h1 className="text-2xl font-bold tracking-tight text-fg">{t("remarks.newMessage")}</h1>
       <p className="mt-1.5 text-sm text-fg-muted">
-        This goes to the student&rsquo;s guardians only. Other teachers cannot see it, and
-        neither can the student.
+        {t("remarks.goesToGuardiansOnly")}
       </p>
 
       <ComposeForm className="mt-7" students={students} preselected={preselected} />

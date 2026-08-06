@@ -25,7 +25,7 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
   }
 
   const parsed = schoolDetailsSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   const d = parsed.data;
 

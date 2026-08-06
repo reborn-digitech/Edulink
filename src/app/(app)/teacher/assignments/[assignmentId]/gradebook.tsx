@@ -184,7 +184,7 @@ export function Gradebook({
         <StatTile
           label={t("teacher.classAverage")}
           value={stats.averagePercent === null ? "—" : `${stats.averagePercent}%`}
-          hint={stats.graded === 0 ? "Nothing marked yet" : `Across ${stats.graded} marked`}
+          hint={stats.graded === 0 ? t("teacher.nothingMarkedYet") : t("teacher.acrossMarked", { count: stats.graded })}
         />
       </div>
 
@@ -204,8 +204,8 @@ export function Gradebook({
 
       {filtered.length === 0 ? (
         <EmptyState
-          title={query ? `Nobody matches “${query}”` : "Nobody is in this class"}
-          description={query ? "Clear the search to see everyone." : "Add students to the class."}
+          title={query ? t("teacher.nobodyMatches", { query }) : t("teacher.nobodyInClass")}
+          description={query ? t("teacher.clearSearchSeeEveryone") : t("teacher.addStudentsToClass")}
           action={
             query ? (
               <Button variant="secondary" onClick={() => setQuery("")}>
@@ -246,7 +246,7 @@ export function Gradebook({
                           row.late ? (
                             <span className="text-warn">{t("teacher.handedInLate")}</span>
                           ) : (
-                            "Handed in"
+                            t("teacher.handedIn")
                           )
                         ) : (
                           <span className="text-fg-subtle">{t("teacher.notHandedIn")}</span>
@@ -313,7 +313,7 @@ export function Gradebook({
                   {openComment === row.membershipId && (
                     <div className="mt-2.5 border-t border-border pt-2.5">
                       <label htmlFor={`comment-${row.membershipId}`} className="sr-only">
-                        Comment for {row.name}
+                        {t("teacher.commentForName", { name: row.name })}
                       </label>
                       <textarea
                         id={`comment-${row.membershipId}`}

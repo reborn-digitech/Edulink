@@ -80,10 +80,9 @@ export function ClaimChildForm({
         <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
           <CheckCircleIcon weight="fill" className="size-10" />
         </div>
-        <h2 className="text-xl font-bold text-fg">You&rsquo;re linked to {linked.name}</h2>
+        <h2 className="text-xl font-bold text-fg">{t("parent.youreLinkedTo", { name: linked.name })}</h2>
         <p className="mx-auto mt-2 max-w-sm text-sm text-fg-muted">
-          You can now see their attendance, grades and teacher messages at{" "}
-          <strong className="text-fg">{linked.schoolName}</strong>.
+          {t("parent.canNowSeeAt", { school: linked.schoolName })}
         </p>
 
         <div className="mt-7 flex flex-col gap-2 sm:flex-row">
@@ -159,7 +158,7 @@ export function ClaimChildForm({
         loading={pending}
         icon={<HandHeartIcon weight="bold" />}
       >
-        {pending ? "Checking…" : "Link to my child"}
+        {pending ? t("parent.checkingLink") : t("parent.linkToMyChild")}
       </Button>
 
       {!hasChildren && (

@@ -1,11 +1,11 @@
 import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import type { SchoolRecordView } from "@/lib/school-record";
-import type { Translate } from "@/lib/i18n/dictionary";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
-const REASON_LABEL: Record<string, string> = {
-  TRANSFERRED: "Transferred",
-  GRADUATED: "Completed their schooling",
-  LEFT: "Left",
+const REASON_KEY: Record<string, TranslationKey> = {
+  TRANSFERRED: "ui.reasonTransferred",
+  GRADUATED: "ui.reasonGraduated",
+  LEFT: "ui.reasonLeft",
 };
 
 function when(date: Date): string {
@@ -58,11 +58,11 @@ export function SchoolRecordList({
               <span className="block font-semibold text-fg">{record.schoolName}</span>
               <span className="block text-xs text-fg-muted">
                 {when(record.joinedAt)} – {when(record.leftAt)}
-                {record.gradeLevel ? ` · left in Grade ${record.gradeLevel}` : ""}
+                {record.gradeLevel ? ` · ${t("ui.leftInGrade", { grade: record.gradeLevel })}` : ""}
               </span>
             </span>
             <span className="shrink-0 text-xs font-medium text-fg-muted">
-              {REASON_LABEL[record.reason] ?? record.reason}
+              {REASON_KEY[record.reason] ? t(REASON_KEY[record.reason]!) : record.reason}
             </span>
           </div>
 
@@ -77,7 +77,7 @@ export function SchoolRecordList({
               </dd>
               <dd className="text-xs text-fg-muted">
                 {record.attendanceMarked === 0
-                  ? "No register taken"
+                  ? t("ui.noRegisterTaken")
                   : `${record.attendancePresent} of ${record.attendanceMarked} days`}
               </dd>
             </div>
@@ -87,7 +87,7 @@ export function SchoolRecordList({
                 {record.reportCardCount}
               </dd>
               <dd className="text-xs text-fg-muted">
-                {record.reportCardCount === 0 ? "None" : "Ask the family for copies"}
+                {record.reportCardCount === 0 ? t("ui.noneShort") : t("ui.askFamilyCopies")}
               </dd>
             </div>
             {record.destination && (

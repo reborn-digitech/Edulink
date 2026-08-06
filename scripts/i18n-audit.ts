@@ -126,6 +126,21 @@ function userVisible(source: string): string[] {
     found.push(m[2]!.trim());
   }
 
+  // 1c. JSX text the one-line rule cannot see: a sentence that starts its own
+  // line (the node spans lines, or holds an `{interpolation}` — both broke
+  // rule 1's `[^{}\n]` window). "Week of {date}", "Hi {name} 👋", and whole
+  // paragraphs wrapped by prettier all lived here, on pages reported finished.
+  for (const line of code.split("\n")) {
+    const m = line.match(/^\s*([A-Z][a-zA-Z0-9,'’&\- ]{8,})(\{|$)/);
+    if (
+      m &&
+      /\s/.test(m[1]!.trim()) && // a lone token is an import member, not a sentence
+      !/\b(const|let|return|export|import|function|type|interface)\b/.test(line)
+    ) {
+      found.push(m[1]!.trim());
+    }
+  }
+
   // 1b. Reader-facing VALUES in lookup tables — `label: "Late"` and friends.
   for (const key of ["label", "short", "hint", "title", "description", "name"]) {
     const re = new RegExp(`\\b${key}:\\s*["'\`]([^"'\`]{4,160})["'\`]`, "g");
@@ -136,6 +151,37 @@ function userVisible(source: string): string[] {
   for (const prop of PROPS) {
     const re = new RegExp(`\\b${prop}=\\{?["'\`]([^"'\`]{3,160})["'\`]`, "g");
     for (const m of code.matchAll(re)) found.push(m[1]!.trim());
+  }
+
+  // 3. EXPRESSION-POSITION STRINGS — the FOURTH blind spot, found the same way
+  // as the other three: by reading a page the counter called finished. Rules 1
+  // and 2 see JSX text nodes and static props, so `hint="Register taken"` is
+  // counted but `hint={taken ? "Register taken" : "Not yet"}` is invisible —
+  // and so is every toast title, every `setError("…")`, every `?? "fallback"`.
+  // Twenty finished-looking files held ~50 strings in exactly these shapes.
+  //
+  // Pre-strip what is never read by a person: class lists, hrefs, keys,
+  // console noise and thrown errors (the last two excluded by design — see the
+  // header). Then: a quoted string in an expression context (after ?, :, a
+  // comma, an opening paren or brace) that starts with a capital and holds at
+  // least two words is treated as a sentence somebody will read.
+  const exprCode = code
+    .replace(/\b(className|href|key|src|id|htmlFor|style|accept)=\{[^{}]*(\{[^}]*\}[^{}]*)*\}/g, "")
+    .replace(/\b(className|href|key|src|id|htmlFor|accept)="[^"]*"/g, "")
+    .replace(/console\.\w+\([^)]*\)/g, "")
+    .replace(/throw new \w*Error\([^)]*\)/g, "");
+  for (const m of exprCode.matchAll(/[?(:,{]\s*"([A-Z][^"\n]*\s[^"\n]{2,})"/g)) {
+    found.push(m[1]!.trim());
+  }
+  // Template literals: strip the `${…}` holes, and what remains must still
+  // contain running words ("waiting to sync") — not a path, not a query string.
+  for (const m of exprCode.matchAll(/`([^`\n]{4,200})`/g)) {
+    const raw = m[1]!;
+    if (/^[/.]|:\/\//.test(raw)) continue;
+    const stripped = raw.replace(/\$\{[^}]*\}/g, " ");
+    if (/[A-Za-z]{3,}\s+[a-z]{2,}/.test(stripped) && !/[a-z]-[a-z].*[a-z]-[a-z]/.test(stripped)) {
+      found.push(raw.replace(/\s+/g, " ").trim());
+    }
   }
 
   return [...new Set(found)]

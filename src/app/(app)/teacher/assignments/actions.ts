@@ -45,7 +45,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   });
   // Validate the assignment before writing any bytes, so a rejected form does
   // not leave handouts on disk.
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   let attachments;
   try {
@@ -53,7 +53,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   } catch (error) {
     if (error instanceof AttachmentError) return { ok: false, errors: { files: error.message } };
     console.error("[newAssignment] upload failed", error);
-    return { ok: false, errors: { files: "Those files could not be saved." } };
+    return { ok: false, errors: { files: (await getT())("teacher.filesNotSaved") } };
   }
 
   try {

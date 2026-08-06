@@ -115,6 +115,6 @@ export async function GET(request: Request) {
       return new Response((await getT())(error.key, error.vars), { status });
     }
     console.error("[directory export]", error);
-    return new Response("Something went wrong.", { status: 500 });
+    return new Response((await getT())("common.somethingWrong"), { status: 500 });
   }
 }

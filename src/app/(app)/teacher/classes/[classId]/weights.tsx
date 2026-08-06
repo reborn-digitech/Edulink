@@ -70,7 +70,7 @@ export function GradeWeights({
     startTransition(async () => {
       const result = await saveWeights(classId, rows);
       if (!result.ok) {
-        setError(result.error ?? "Could not save.");
+        setError(result.error ?? t("teacher.couldNotSave"));
         return;
       }
       setSaved(true);
@@ -146,8 +146,10 @@ export function GradeWeights({
             )}
             aria-live="polite"
           >
-            {isEmpty ? "No weighting" : `Total ${totalPercent.toFixed(2).replace(/\.00$/, "")}%`}
-            {!isEmpty && !balanced && " — must be 100%"}
+            {isEmpty
+              ? t("teacher.noWeighting")
+              : t("teacher.totalPercent", { percent: totalPercent.toFixed(2).replace(/\.00$/, "") })}
+            {!isEmpty && !balanced && ` ${t("teacher.mustBe100")}`}
           </p>
         </div>
 
@@ -155,9 +157,9 @@ export function GradeWeights({
           <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-xs text-fg">
             <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" />
             <span>
-              Work filed under {unweighted.map((c) => `“${c}”`).join(", ")} is not in any category
-              above, so it will not count towards the overall mark. Add it, or rename the
-              assignments.
+              {t("teacher.unweightedWarning", {
+                categories: unweighted.map((c) => `“${c}”`).join(", "),
+              })}
             </span>
           </p>
         )}
@@ -171,8 +173,8 @@ export function GradeWeights({
           </Button>
           <p className="text-xs text-fg-muted">
             {isEmpty
-              ? "Saving with no categories turns weighting off — the overall mark goes back to a straight points total."
-              : "A category with nothing marked in it yet is left out, and the rest are scaled up to fill 100%."}
+              ? t("teacher.weightsOffHint")
+              : t("teacher.weightsScaleHint")}
           </p>
         </div>
       </CardBody>

@@ -78,14 +78,14 @@ export function Builder({
     startTransition(async () => {
       const result = await generate(classId, { title, assignmentIds: picked });
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("teacher.thatDidNotWork"));
         return;
       }
       toast({
         tone: "ok",
         title: t("teacher.draftsReady", { count: (result.created ?? 0) + (result.updated ?? 0) }),
         description: result.skippedPublished
-          ? `${result.skippedPublished} already published and left alone.`
+          ? t("teacher.skippedPublished", { count: result.skippedPublished })
           : undefined,
       });
       router.push(`/teacher/classes/${classId}/report-cards?title=${encodeURIComponent(title)}`);
@@ -226,7 +226,7 @@ export function Builder({
                   })
                 }
               >
-                Publish all {drafts}
+                {t("teacher.publishAllCount", { count: drafts })}
               </Button>
             ) : (
               <Button
@@ -260,7 +260,7 @@ export function Builder({
                     </span>
                     <span className="block text-xs text-fg-muted">
                       {card.overallPercentMilli === null
-                        ? "No marks yet"
+                        ? t("teacher.noMarksYetShort")
                         : `${(card.overallPercentMilli / 1000).toFixed(1)}%`}
                       {card.attendanceTotal > 0
                         ? ` · ${card.attendancePresent}/${card.attendanceTotal} days`

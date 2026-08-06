@@ -72,7 +72,7 @@ export default async function ParentSettingsPage() {
           icon={<UsersIcon weight="duotone" className="size-5" />}
           title={t("parent.whoYouHearAbout")}
           description={
-            children.length === 1 ? "One child linked" : `${children.length} children linked`
+            children.length === 1 ? t("parent.oneChildLinked") : t("parent.childrenLinked", { count: children.length })
           }
           action={
             <Button asChild size="sm" variant="secondary">
@@ -103,8 +103,7 @@ export default async function ParentSettingsPage() {
             ))}
           </ul>
           <p className="mt-3 text-xs leading-relaxed text-fg-muted">
-            These settings apply to every child above. Turning notifications off here stops
-            messages about all of them.
+            {t("parent.settingsApplyAll")}
           </p>
         </CardBody>
       </Card>

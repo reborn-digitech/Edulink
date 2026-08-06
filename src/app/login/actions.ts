@@ -54,7 +54,7 @@ export type LoginState = {
 export async function login(input: unknown): Promise<LoginState> {
   const t = await getT();
   const parsed = loginSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { identifier, password } = parsed.data;
   const generic = { ok: false, errors: { _form: t("login.noMatch") } };
@@ -133,7 +133,7 @@ export async function login(input: unknown): Promise<LoginState> {
 export async function requestMagicLink(input: unknown): Promise<LoginState> {
   const t = await getT();
   const parsed = magicLinkSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { email } = parsed.data;
 
@@ -313,7 +313,7 @@ export type ResetRequestState = {
 export async function requestReset(input: unknown): Promise<ResetRequestState> {
   const t = await getT();
   const parsed = resetRequestSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const result = await requestPasswordReset(parsed.data.identifier);
   if (!result.ok) {
@@ -334,7 +334,7 @@ export async function requestReset(input: unknown): Promise<ResetRequestState> {
 export async function completeReset(input: unknown): Promise<LoginState> {
   const t = await getT();
   const parsed = resetSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { identifier, code, password } = parsed.data;
   const result = await resetPassword(identifier, code, password);

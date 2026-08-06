@@ -110,8 +110,10 @@ export default async function StudentGradesPage() {
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myGrades")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {grades.length === 0
-            ? "Nothing marked yet"
-            : `${grades.length} piece${grades.length === 1 ? "" : "s"} marked`}
+            ? t("student.nothingMarkedYet")
+            : grades.length === 1
+              ? t("student.piecesMarkedOne")
+              : t("student.piecesMarkedMany", { count: grades.length })}
         </p>
       </div>
 
@@ -136,7 +138,7 @@ export default async function StudentGradesPage() {
               label={t("student.yourBest")}
               value={best ? `${best.percent}%` : "—"}
               tone="ok"
-              hint={best ? best.title : "Nothing yet"}
+              hint={best ? best.title : t("student.nothingYet")}
             />
           </div>
 

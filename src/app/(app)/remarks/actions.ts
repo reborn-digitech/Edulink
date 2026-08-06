@@ -14,7 +14,7 @@ export async function startThread(input: unknown): Promise<RemarkState> {
   if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
 
   const parsed = remarkThreadSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   try {
     const { threadId } = await createThread(session, parsed.data);
@@ -33,7 +33,7 @@ export async function sendReply(input: unknown): Promise<RemarkState> {
   if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
 
   const parsed = remarkReplySchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   try {
     await replyToThread(session, parsed.data);

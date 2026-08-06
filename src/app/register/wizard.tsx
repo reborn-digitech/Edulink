@@ -153,7 +153,7 @@ export function RegisterWizard() {
       } else if (emailTaken) {
         next.adminEmail = t("register.emailTaken");
       }
-      if (strength.problems.length > 0) next.password = strength.problems[0]!;
+      if (strength.problemKeys.length > 0) next.password = t(strength.problemKeys[0]!);
     }
 
     if (index === 2 && !accepted) {
@@ -537,6 +537,7 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 function StrengthMeter({ strength }: { strength: ReturnType<typeof passwordStrength> }) {
+  const t = useT();
   const tones = ["bg-danger", "bg-danger", "bg-warn", "bg-ok", "bg-ok"];
   return (
     <div className="mt-2">
@@ -558,7 +559,7 @@ function StrengthMeter({ strength }: { strength: ReturnType<typeof passwordStren
         )}
         aria-live="polite"
       >
-        {strength.label}
+        {t(strength.labelKey)}
       </p>
     </div>
   );

@@ -98,7 +98,7 @@ export default async function MentoringPage() {
                         size="sm"
                       >
                         {thread.awaitingConsent
-                          ? "Waiting for a guardian"
+                          ? t("mentoring.waitingForGuardian")
                           : thread.status.toLowerCase()}
                       </Badge>
                       <span className="text-sm font-semibold text-fg">

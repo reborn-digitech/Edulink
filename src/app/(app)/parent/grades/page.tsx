@@ -116,7 +116,7 @@ export default async function ParentGradesPage({
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {childName}&rsquo;s grades
+          {t("parent.childsGrades", { name: childName })}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">{student.school.name}</p>
       </div>
@@ -142,7 +142,7 @@ export default async function ParentGradesPage({
                       </span>
                       {card.publishedAt && (
                         <span className="block text-xs text-fg-muted">
-                          Issued {relativeTime(card.publishedAt)}
+                          {t("parent.issuedWhen", { when: relativeTime(card.publishedAt) })}
                         </span>
                       )}
                     </span>
@@ -167,19 +167,19 @@ export default async function ParentGradesPage({
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
           hint={
             scored.length === 0
-              ? "Nothing graded yet"
-              : `${formatMilli(earned)} of ${formatMilli(available)} points`
+              ? t("parent.nothingGradedYet")
+              : t("student.pointsOf", { earned: formatMilli(earned), available: formatMilli(available) })
           }
         />
         <StatTile
           label={t("parent.piecesGraded")}
           value={grades.length}
-          hint={grades.length === 0 ? "None yet" : "Returned by a teacher"}
+          hint={grades.length === 0 ? t("parent.noneYet") : t("parent.returnedByTeacher")}
         />
         <StatTile
           label={t("parent.subjects")}
           value={categories.size}
-          hint={categories.size === 0 ? "None yet" : "With graded work"}
+          hint={categories.size === 0 ? t("parent.noneYet") : t("parent.withGradedWork")}
         />
       </div>
 
@@ -220,7 +220,7 @@ export default async function ParentGradesPage({
         <CardHeader
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
           title={t("parent.everyPiece")}
-          description={grades.length === 0 ? "Nothing graded yet" : "Newest first"}
+          description={grades.length === 0 ? t("parent.nothingGradedYet") : t("parent.newestFirst")}
         />
         <CardBody>
           {grades.length === 0 ? (

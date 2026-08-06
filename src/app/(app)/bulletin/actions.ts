@@ -53,7 +53,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   // Validate the text BEFORE writing any bytes, so a post that was never going
   // to be accepted does not leave a file behind.
   const parsed = postSchema.safeParse(fields);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   // Two lists in the same order — the form appends a file and its alt text in
   // lockstep, and FormData preserves insertion order per key. Zipped rather than

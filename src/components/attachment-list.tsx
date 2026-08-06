@@ -55,12 +55,12 @@ export function AttachmentList({
           : await attachToSubmission(formData);
 
       if (!result.ok) {
-        setError(result.error ?? "Could not attach that.");
+        setError(result.error ?? t("ui.couldNotAttach"));
         return;
       }
       toast({
         tone: "ok",
-        title: files.length === 1 ? "File attached" : `${files.length} files attached`,
+        title: files.length === 1 ? t("ui.fileAttached") : t("ui.filesAttached", { count: files.length }),
       });
       router.refresh();
     });
@@ -140,7 +140,7 @@ export function AttachmentList({
             icon={<PaperclipIcon weight="bold" />}
             onClick={() => inputRef.current?.click()}
           >
-            {attachments.length === 0 ? "Attach a file" : "Attach another"}
+            {attachments.length === 0 ? t("ui.attachFile") : t("ui.attachAnother")}
           </Button>
           <input
             ref={inputRef}

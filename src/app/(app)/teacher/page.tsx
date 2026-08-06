@@ -90,7 +90,7 @@ export default async function TeacherHome() {
           value={outstanding.length}
           tone={outstanding.length === 0 ? "ok" : "warn"}
           icon={<ChecksIcon weight="duotone" className="size-5" />}
-          hint={outstanding.length === 0 ? "All done — nice." : "Tap below to take one"}
+          hint={outstanding.length === 0 ? t("teacher.allDoneNice") : t("teacher.tapBelowTakeOne")}
         />
         <StatTile
           label={t("teacher.classes")}
@@ -103,7 +103,7 @@ export default async function TeacherHome() {
           value={ungraded}
           tone={ungraded > 0 ? "warn" : "neutral"}
           icon={<WarningCircleIcon weight="duotone" className="size-5" />}
-          hint={ungraded === 0 ? "Nothing waiting" : "Submissions handed in"}
+          hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.submissionsHandedIn")}
         />
       </div>
 
@@ -113,8 +113,10 @@ export default async function TeacherHome() {
           title={t("teacher.registers")}
           description={
             outstanding.length === 0
-              ? "Every register is taken for today."
-              : `${outstanding.length} still to take.`
+              ? t("teacher.everyRegisterTaken")
+              : outstanding.length === 1
+                ? t("teacher.stillToTakeOne")
+                : t("teacher.stillToTakeMany", { count: outstanding.length })
           }
         />
         <CardBody>
@@ -147,7 +149,7 @@ export default async function TeacherHome() {
                           : "shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn"
                       }
                     >
-                      {taken ? "Done" : "Take it"}
+                      {taken ? t("teacher.done") : t("teacher.takeIt")}
                     </span>
                     <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
                   </Link>
@@ -185,7 +187,7 @@ export default async function TeacherHome() {
                     <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                   </span>
                   <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt) : "No due date"}
+                    {assignment.dueAt ? relativeTime(assignment.dueAt) : t("teacher.noDueDate")}
                   </span>
                 </li>
               ))}

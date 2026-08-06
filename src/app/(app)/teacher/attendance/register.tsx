@@ -144,7 +144,7 @@ export function Register({
           tone: "danger",
           duration: null,
           title: t("teacher.didNotSave"),
-          description: detail.error ?? "Please check your connection and try again.",
+          description: detail.error ?? t("teacher.checkConnection"),
           action: { label: t("teacher.retry"), onClick: () => void flush() },
         });
         return;
@@ -279,7 +279,7 @@ export function Register({
 
       {!readOnly && counts.unmarked > 0 && (
         <Button block variant="soft" size="lg" onClick={markAllPresent} icon={<CheckCircleIcon weight="bold" />}>
-          Mark all {counts.unmarked} present
+          {t("teacher.markAllPresent", { count: counts.unmarked })}
         </Button>
       )}
 
@@ -299,11 +299,11 @@ export function Register({
 
       {filtered.length === 0 ? (
         <EmptyState
-          title={query ? `No one matches “${query}”` : "Nobody is in this class yet"}
+          title={query ? t("teacher.noOneMatches", { query }) : t("teacher.nobodyInClassYet")}
           description={
             query
-              ? "Check the spelling, or clear the search to see everyone."
-              : "Add students to this class and they will appear here."
+              ? t("teacher.checkSpellingClear")
+              : t("teacher.addStudentsAppear")
           }
           action={
             query ? (
@@ -455,7 +455,11 @@ function SyncPill({
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-warn-soft px-3 py-1.5 text-xs font-semibold text-warn">
         <WifiSlashIcon weight="bold" className="size-4" />
-        {queued > 0 ? `${queued} waiting to sync` : "Saved on this device"}
+        {queued > 0
+          ? queued === 1
+            ? t("teacher.waitingToSyncOne")
+            : t("teacher.waitingToSyncMany", { count: queued })
+          : t("teacher.savedOnDevice")}
       </span>
     );
   }
@@ -482,7 +486,7 @@ function SyncPill({
       )}
     >
       <CheckCircleIcon weight="fill" className="size-4" />
-      {complete ? "Register complete" : state === "saved" ? "Saved" : "Ready"}
+      {complete ? t("teacher.registerComplete") : state === "saved" ? t("teacher.savedShort") : t("teacher.readyShort")}
     </span>
   );
 }

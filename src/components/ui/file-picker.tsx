@@ -57,12 +57,12 @@ export function FilePicker({
 
     const room = max - files.length;
     if (incoming.length > room) {
-      onChange(files, `You can attach up to ${max} file${max === 1 ? "" : "s"}.`);
+      onChange(files, max === 1 ? t("ui.upToFilesOne") : t("ui.upToFilesMany", { max }));
       return;
     }
     const tooBig = incoming.find((f) => f.size > MAX_FILE_BYTES);
     if (tooBig) {
-      onChange(files, `“${tooBig.name}” is bigger than 5 MB.`);
+      onChange(files, t("ui.biggerThan5MB", { name: tooBig.name }));
       return;
     }
 
@@ -112,7 +112,7 @@ export function FilePicker({
             icon={<PaperclipIcon weight="bold" />}
             onClick={() => inputRef.current?.click()}
           >
-            {files.length === 0 ? "Attach a file" : "Add another"}
+            {files.length === 0 ? t("ui.attachFile") : t("ui.addAnotherFile")}
           </Button>
           <input
             ref={inputRef}

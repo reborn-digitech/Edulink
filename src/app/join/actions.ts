@@ -163,7 +163,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
   // The language they filled the form in. See the note in register/actions.ts.
   const locale = await getLocale();
   const parsed = studentJoinSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { schoolCode: rawCode, name, preferredName, avatarKey, birthdate, password } = parsed.data;
 
@@ -285,13 +285,9 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   const locale = await getLocale();
   const parsed = parentSignupSchema.safeParse(input);
   if (!parsed.success) {
-    const errors = fieldErrors(parsed.error);
-    // The schema is module-level, so its consent message is minted as a KEY —
-    // this is the boundary that owns the words.
-    if (errors.consentSharing === "refusal.consentSharing") {
-      errors.consentSharing = (await getT())("refusal.consentSharing");
-    }
-    return { ok: false, errors };
+    // Custom messages on the shared schemas are KEYS; `fieldErrors` turns
+    // them into this reader's words when handed `t`.
+    return { ok: false, errors: fieldErrors(parsed.error, t) };
   }
 
   const { name, email, password, consentNotifications } = parsed.data;
@@ -371,7 +367,7 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
   if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
 
   const parsed = claimChildSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { studentCode: rawCode, birthdate, relation } = parsed.data;
   const generic: ClaimState = {

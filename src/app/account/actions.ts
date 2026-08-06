@@ -35,7 +35,7 @@ export async function savePrefs(input: unknown): Promise<PrefsState> {
   if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
 
   const parsed = prefsSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const next = parsed.data;
 

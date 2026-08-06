@@ -31,13 +31,9 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export async function registerSchool(input: unknown): Promise<RegisterState> {
   const parsed = registerSchoolSchema.safeParse(input);
   if (!parsed.success) {
-    const errors = fieldErrors(parsed.error);
-    // The schema is module-level, so its consent message is minted as a KEY —
-    // this is the boundary that owns the words.
-    if (errors.acceptedTerms === "refusal.acceptTerms") {
-      errors.acceptedTerms = (await getT())("refusal.acceptTerms");
-    }
-    return { ok: false, errors };
+    // Custom messages on the shared schemas are KEYS; `fieldErrors` turns
+    // them into this reader's words when handed `t`.
+    return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
   }
 
   const { school, admin } = parsed.data;

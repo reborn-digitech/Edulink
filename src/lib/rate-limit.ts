@@ -93,32 +93,15 @@ export async function consume(
 }
 
 /**
- * How long to say. "Try again in about 5 minutes" beats "in 287 seconds".
+ * How long to say, as a KEY the caller resolves with its own `t`.
  *
- * ROUNDED UP, always: telling somebody to come back in 4 minutes when it is
- * really 4 minutes 50 earns a second refusal and a worse mood.
- */
-export function retryHint(seconds: number): string {
-  if (seconds <= 60) return "in a minute";
-  const minutes = Math.ceil(seconds / 60);
-  if (minutes < 60) return `in about ${minutes} minute${minutes === 1 ? "" : "s"}`;
-  const hours = Math.ceil(minutes / 60);
-  return `in about ${hours} hour${hours === 1 ? "" : "s"}`;
-}
-
-/**
- * The same answer as a KEY, for callers that have a reader's language.
+ * "Try again in about 5 minutes" beats "in 287 seconds" — and ROUNDED UP,
+ * always: telling somebody to come back in 4 minutes when it is really
+ * 4 minutes 50 earns a second refusal and a worse mood.
  *
- * ⚠ WHY BOTH EXIST, briefly, so the duplication is a decision and not a mess.
- * `retryHint` above returns English and its result is dropped into a template
- * by every caller — which put "in about 5 minutes" inside otherwise translated
- * refusals on the join, login and invite forms. This returns the key instead,
- * the same shape `periodTimeError` uses, and the caller resolves it with its
- * own `t`.
- *
- * The English one survives for `lib/passwords.ts`, whose messages are not
- * translated yet. When they are, this becomes the only one and that is the
- * point — it is not a permanent pair.
+ * There used to be an English twin here for `lib/passwords.ts`, kept alive
+ * only until those messages were translated. They are, so it is gone — a
+ * caller that wants the sentence goes through `refusalText`.
  */
 export type RetryHint = { key: TranslationKey; vars?: { count: number } };
 

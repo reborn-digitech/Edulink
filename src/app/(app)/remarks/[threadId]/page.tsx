@@ -69,8 +69,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
         {/* NAMES THE PUPIL, because they are in it. Leaving them out of the
             list while they read it is the kind of small untruth that makes
             somebody wonder what else the page is not saying. */}
-        Only {thread.student.name}, {thread.teacher.name}, {thread.student.name}&rsquo;s guardians
-        and school admins can see this
+        {t("remarks.onlyVisibleTo", { student: thread.student.name, teacher: thread.teacher.name })}
       </p>
 
       <ol className="mt-5 space-y-4">

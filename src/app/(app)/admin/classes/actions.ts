@@ -27,10 +27,10 @@ export type ClassActionResult = {
 /**
  * ⚠ TWO ERROR CHANNELS, AND THE SPLIT IS THE ZOD LAYER'S FAULT, NOT A WHIM.
  *
- * `errors` is filled by `fieldErrors(parsed.error)` — zod's own messages, which
- * are English and are shared by every schema in `validation.ts`. Keying those
- * means keying that layer, which every form in the app depends on, and belongs
- * in its own change.
+ * `errors` is filled by `fieldErrors(parsed.error, t)` — the custom messages on
+ * the shared schemas are keys and arrive translated. What remains English in
+ * that channel is zod's own DEFAULTS (a bare `.min(2)` on a name bound);
+ * keying every last bound is its own change, noted in `validation.ts`.
  *
  * `errorKeys` is what THIS file decides, keyed, so the three messages an admin
  * actually meets on the class form — a duplicate name, a grade the school does
@@ -63,7 +63,7 @@ export async function createClass(input: unknown): Promise<ClassState> {
   }
 
   const parsed = classSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   const { name, subject, gradeLevel, section, room, color } = parsed.data;
 

@@ -24,7 +24,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
     event.preventDefault();
     const trimmed = body.trim();
     if (trimmed.length === 0) {
-      setError("Write something first.");
+      setError(t("remarks.writeSomethingFirst"));
       return;
     }
     setError(null);
@@ -32,7 +32,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
     startTransition(async () => {
       const result = await sendReply({ threadId, body: trimmed });
       if (!result.ok) {
-        setError(result.errors._form ?? result.errors.body ?? "Could not send that.");
+        setError(result.errors._form ?? result.errors.body ?? t("remarks.couldNotSend"));
         return;
       }
       setBody("");
@@ -82,7 +82,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
           </p>
         ) : (
           <p id="reply-hint" className="text-xs text-fg-subtle">
-            {body.length > MAX - 500 ? `${MAX - body.length} characters left` : "⌘↵ to send"}
+            {body.length > MAX - 500 ? t("remarks.charactersLeft", { count: MAX - body.length }) : "⌘↵ to send"}
           </p>
         )}
         <Button

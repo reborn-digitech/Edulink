@@ -162,8 +162,9 @@ export default async function AttendancePage({
         // Said out loud, because somebody marking a register they do not
         // normally mark should know why they can, and until when.
         <p className="rounded-[--radius-md] border border-accent/30 bg-accent-soft px-4 py-3 text-sm font-medium text-accent-strong">
-          You are covering this register until{" "}
-          {formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" })}.
+          {t("teacher.coveringUntil", {
+            date: formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" }),
+          })}
         </p>
       )}
       <Register

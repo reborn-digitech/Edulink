@@ -42,7 +42,7 @@ export default async function ParentLinkPage() {
 
       <main id="main" className="mx-auto max-w-lg px-4 py-10 sm:py-14">
         <h1 className="text-3xl font-bold tracking-tight text-fg">
-          {children.length > 0 ? "Add another child" : "Link to your child"}
+          {children.length > 0 ? t("parent.addAnotherChild") : t("parent.linkToYourChild")}
         </h1>
         <p className="mt-2 text-fg-muted">
           You need their student code and their date of birth. The school sends the code

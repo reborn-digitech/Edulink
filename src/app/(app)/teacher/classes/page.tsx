@@ -100,7 +100,7 @@ export default async function TeacherClassesPage() {
                 </div>
 
                 <Badge tone={done.has(klass.id) ? "ok" : "warn"} size="sm">
-                  {done.has(klass.id) ? "Register done" : "Register to do"}
+                  {done.has(klass.id) ? t("teacher.registerDone") : t("teacher.registerToDo")}
                 </Badge>
                 <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
               </Link>

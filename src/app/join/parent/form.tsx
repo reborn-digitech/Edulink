@@ -33,7 +33,7 @@ export function ParentSignupForm({ className }: { className?: string }) {
     const next: Record<string, string> = {};
     if (name.trim().length < 2) next.name = t("register.enterFullName");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) next.email = t("register.enterValidEmail");
-    if (strength.problems.length > 0) next.password = strength.problems[0]!;
+    if (strength.problemKeys.length > 0) next.password = t(strength.problemKeys[0]!);
     if (!consentSharing) next.consentSharing = t("join.needConsent");
     if (Object.keys(next).length > 0) {
       setErrors(next);
@@ -125,7 +125,7 @@ export function ParentSignupForm({ className }: { className?: string }) {
               ))}
             </div>
             <p aria-live="polite" className="mt-1.5 text-xs font-medium text-fg-muted">
-              {strength.label}
+              {t(strength.labelKey)}
             </p>
           </div>
         )}

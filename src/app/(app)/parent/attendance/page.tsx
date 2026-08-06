@@ -62,7 +62,7 @@ export default async function ParentAttendancePage({
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {childName}&rsquo;s attendance
+          {t("parent.childsAttendance", { name: childName })}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">
           {student.school.name} · last {RANGE_DAYS} days
@@ -85,7 +85,7 @@ export default async function ParentAttendancePage({
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
           hint={
             summary.total === 0
-              ? "No records"
+              ? t("parent.noRecords")
               : `${summary.counts.PRESENT + summary.counts.LATE} of ${summary.total} days`
           }
         />
@@ -114,8 +114,10 @@ export default async function ParentAttendancePage({
           title={t("parent.dayByDay")}
           description={
             summary.total === 0
-              ? "Nothing recorded yet"
-              : `${summary.total} day${summary.total === 1 ? "" : "s"} recorded`
+              ? t("parent.nothingRecordedYet")
+              : summary.total === 1
+                ? t("parent.daysRecordedOne")
+                : t("parent.daysRecordedMany", { count: summary.total })
           }
         />
         <CardBody>
@@ -162,11 +164,9 @@ export default async function ParentAttendancePage({
 
       {summary.percent !== null && summary.percent < 90 && (
         <p className="rounded-[--radius-md] border border-warn/40 bg-warn-soft p-4 text-sm leading-relaxed text-warn">
-          Attendance below 90% usually means the school will want a conversation — not a
-          telling-off, just a check that everything is alright. You can message
-          {childName}&rsquo;s teacher from the{" "}
+          {t("parent.below90Body", { name: childName })}{" "}
           <Link href="/remarks" className="font-semibold underline underline-offset-2">
-            messages page
+            {t("parent.messagesPageLink")}
           </Link>
           .
         </p>

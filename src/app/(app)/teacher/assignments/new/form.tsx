@@ -82,17 +82,19 @@ export function AssignmentForm({
         toast({
           tone: "danger",
           title: t("teacher.couldNotSave"),
-          description: result.errors._form ?? "Check the highlighted fields.",
+          description: result.errors._form ?? t("teacher.checkHighlighted"),
         });
         return;
       }
 
       toast({
         tone: "ok",
-        title: publish ? "Work set" : "Saved as a draft",
+        title: publish ? t("teacher.workSetToast") : t("teacher.savedAsDraft"),
         description: publish
-          ? `${result.notified} student${result.notified === 1 ? "" : "s"} and their guardians were told.`
-          : "Nobody has been notified yet.",
+          ? result.notified === 1
+            ? t("teacher.studentsToldOne")
+            : t("teacher.studentsToldMany", { count: result.notified ?? 0 })
+          : t("teacher.nobodyNotifiedYet"),
       });
       router.push(`/teacher/assignments/${result.assignmentId}`);
       router.refresh();
@@ -218,8 +220,10 @@ export function AssignmentForm({
           icon={<PaperPlaneTiltIcon weight="bold" />}
         >
           {pending
-            ? "Setting…"
-            : `Publish to ${selectedClass?.studentCount ?? 0} student${selectedClass?.studentCount === 1 ? "" : "s"}`}
+            ? t("teacher.settingEllipsis")
+            : (selectedClass?.studentCount ?? 0) === 1
+              ? t("teacher.publishToOne")
+              : t("teacher.publishToMany", { count: selectedClass?.studentCount ?? 0 })}
         </Button>
       </div>
     </form>

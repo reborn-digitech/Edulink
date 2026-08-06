@@ -28,8 +28,9 @@ export async function POST(request: Request) {
 
     const parsed = attendanceBatchSchema.safeParse(body);
     if (!parsed.success) {
+      const t = await getT();
       return NextResponse.json(
-        { error: (await getT())("attendance.dataInvalid"), issues: fieldErrors(parsed.error) },
+        { error: t("attendance.dataInvalid"), issues: fieldErrors(parsed.error, t) },
         { status: 422 },
       );
     }

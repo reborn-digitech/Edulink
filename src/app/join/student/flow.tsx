@@ -114,8 +114,8 @@ export function StudentJoinFlow() {
       return;
     }
 
-    if (strength.problems.length > 0) {
-      setErrors({ password: strength.problems[0]! });
+    if (strength.problemKeys.length > 0) {
+      setErrors({ password: t(strength.problemKeys[0]!) });
       return;
     }
 
@@ -409,7 +409,7 @@ export function StudentJoinFlow() {
                         : "text-fg-muted",
                   )}
                 >
-                  {strength.score >= 3 ? t("join.greatPassword") : strength.label}
+                  {strength.score >= 3 ? t("join.greatPassword") : t(strength.labelKey)}
                 </p>
               </div>
             )}

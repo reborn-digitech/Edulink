@@ -67,7 +67,7 @@ export function AcceptForm({
 
     const next: Record<string, string> = {};
     if (name.trim().length < 2) next.name = t("register.enterFullName");
-    if (!hasAccount && strength.problems.length > 0) next.password = strength.problems[0]!;
+    if (!hasAccount && strength.problemKeys.length > 0) next.password = t(strength.problemKeys[0]!);
     if (Object.keys(next).length > 0) {
       setErrors(next);
       return;
@@ -185,7 +185,7 @@ export function AcceptForm({
                 strength.score >= 3 ? "text-ok" : strength.score === 2 ? "text-warn" : "text-fg-muted",
               )}
             >
-              {strength.label}
+              {t(strength.labelKey)}
             </p>
           </div>
         )}
@@ -267,11 +267,11 @@ export function AcceptForm({
       >
         {pending
           ? hasAccount
-            ? "Adding it…"
-            : "Setting you up…"
+            ? t("invite.addingIt")
+            : t("invite.settingYouUp")
           : hasAccount
-            ? "Add this school to my account"
-            : "Accept and join"}
+            ? t("invite.addThisSchool")
+            : t("invite.acceptAndJoin")}
       </Button>
     </form>
   );

@@ -66,7 +66,7 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
             icon={<PrinterIcon weight="bold" />}
             onClick={() => setShowQr((v) => !v)}
           >
-            {showQr ? "Hide" : "Show"} poster
+            {showQr ? t("teacher.hidePoster") : t("teacher.showPoster")}
           </Button>
         </div>
       </div>

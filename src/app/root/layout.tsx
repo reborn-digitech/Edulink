@@ -5,10 +5,13 @@ import { Button } from "@/components/ui/button";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: { default: "Server administration", template: "%s · EduLink server" },
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return {
+    title: { default: t("root.serverAdministration"), template: "%s · EduLink server" },
+    robots: { index: false, follow: false },
+  };
+}
 
 /**
  * The operator's area. Deliberately outside `(app)`.

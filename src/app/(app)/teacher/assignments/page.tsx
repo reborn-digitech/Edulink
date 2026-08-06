@@ -57,8 +57,10 @@ export default async function AssignmentsPage() {
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.assignments")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {assignments.length === 0
-              ? "Nothing set yet"
-              : `${assignments.length} piece${assignments.length === 1 ? "" : "s"} of work`}
+              ? t("teacher.nothingSetYetShort")
+              : assignments.length === 1
+                ? t("teacher.piecesOfWorkOne")
+                : t("teacher.piecesOfWorkMany", { count: assignments.length })}
           </p>
         </div>
         <Button asChild icon={<PlusIcon weight="bold" />}>
@@ -108,8 +110,8 @@ export default async function AssignmentsPage() {
                       </p>
                       <p className="mt-0.5 text-xs text-fg-subtle">
                         {assignment.dueAt
-                          ? `Due ${relativeTime(assignment.dueAt)}`
-                          : "No due date"}
+                          ? t("teacher.dueWhen", { when: relativeTime(assignment.dueAt) })
+                          : t("teacher.noDueDate")}
                         {" · "}
                         {graded} of {roster} marked
                       </p>

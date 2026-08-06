@@ -158,7 +158,7 @@ export default async function ClassDetailPage({
         </div>
         <Button asChild>
           <Link href={`/teacher/attendance?classId=${klass.id}`}>
-            {todaySession ? "Edit today's register" : "Take the register"}
+            {todaySession ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")}
           </Link>
         </Button>
       </div>
@@ -171,8 +171,8 @@ export default async function ClassDetailPage({
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
           hint={
             todaySession
-              ? `${todaySession._count.records} marked ${relativeTime(todaySession.takenAt)}`
-              : "Nobody marked yet"
+              ? t("teacher.markedAgo", { count: todaySession._count.records, when: relativeTime(todaySession.takenAt) })
+              : t("teacher.nobodyMarkedYet")
           }
         />
         <StatTile
@@ -180,7 +180,7 @@ export default async function ClassDetailPage({
           value={ungraded}
           tone={ungraded > 0 ? "warn" : "neutral"}
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          hint={ungraded === 0 ? "Nothing waiting" : "Handed in, not marked"}
+          hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.handedInNotMarked")}
         />
         <StatTile
           label={t("teacher.attendanceConcern")}
@@ -196,8 +196,8 @@ export default async function ClassDetailPage({
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
           hint={
             withoutGuardian === 0
-              ? "Every child is linked"
-              : "Nobody receives their notifications"
+              ? t("teacher.everyChildLinked")
+              : t("teacher.nobodyReceivesNotifs")
           }
         />
       </div>
@@ -281,7 +281,7 @@ export default async function ClassDetailPage({
                   <Button asChild size="sm" variant="ghost" className="shrink-0">
                     <Link href={`/remarks/new?student=${student.membershipId}`}>
                       <ChatCircleDotsIcon weight="bold" className="size-4" />
-                      <span className="sr-only">Message {student.name}&rsquo;s guardians</span>
+                      <span className="sr-only">{t("teacher.messageGuardiansOf", { name: student.name })}</span>
                     </Link>
                   </Button>
                 </li>
@@ -320,7 +320,7 @@ export default async function ClassDetailPage({
                         {assignment.title}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {assignment.dueAt ? `Due ${relativeTime(assignment.dueAt)}` : "No due date"}
+                        {assignment.dueAt ? t("teacher.dueWhen", { when: relativeTime(assignment.dueAt) }) : t("teacher.noDueDate")}
                         {" · "}
                         {assignment._count.grades} of {roster.length} marked
                       </span>
