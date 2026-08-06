@@ -3,8 +3,13 @@ import { requireSuperuser } from "@/lib/tenancy";
 import { listExpertsForCuration } from "@/lib/superuser";
 import { EmptyState } from "@/components/ui/states";
 import { CurationRow } from "./curation-row";
+import { getT } from "@/lib/i18n/server";
+import type { Metadata } from "next";
 
-export const metadata = { title: "Experts" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.experts") };
+}
 
 /**
  * The marketplace queue.
@@ -17,6 +22,7 @@ export const metadata = { title: "Experts" };
  * audience.
  */
 export default async function RootExpertsPage() {
+  const t = await getT();
   const session = await requireSuperuser();
   const experts = await listExpertsForCuration(session);
 
@@ -26,24 +32,25 @@ export default async function RootExpertsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Experts</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("expert.curationTitle")}
+        </h1>
         <p className="mt-1 text-sm text-fg-muted">
           {experts.length === 0
-            ? "Nobody has accepted an expert invitation yet"
-            : `${waiting.length} waiting · ${listed.length} listed`}
+            ? t("expert.curationNobodyYet")
+            : t("expert.curationCount", { waiting: waiting.length, listed: listed.length })}
         </p>
       </div>
 
       <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
-        Schools and teachers can invite an expert; only you can put one in front of schools. Until
-        you list somebody they cannot be found, cannot be booked, and cannot be paired with a child.
+        {t("expert.curationNote")}
       </p>
 
       {experts.length === 0 ? (
         <EmptyState
           icon={<UsersThreeIcon weight="duotone" className="size-8" />}
-          title="No expert profiles yet"
-          description="An expert appears here once they accept an invitation and write a profile. Schools send those invitations; you decide who is listed."
+          title={t("expert.curationEmpty")}
+          description={t("expert.curationEmptyBody")}
         />
       ) : (
         <>
@@ -52,7 +59,7 @@ export default async function RootExpertsPage() {
           {waiting.length > 0 && (
             <section className="space-y-3">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-                Waiting for you
+                {t("expert.waitingForYou")}
               </h2>
               {waiting.map((entry) => (
                 <CurationRow key={entry.profileId} entry={entry} />
@@ -63,7 +70,7 @@ export default async function RootExpertsPage() {
           {listed.length > 0 && (
             <section className="space-y-3">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-                On the marketplace
+                {t("expert.onMarketplace")}
               </h2>
               {listed.map((entry) => (
                 <CurationRow key={entry.profileId} entry={entry} />

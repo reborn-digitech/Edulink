@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { PlusIcon, TrashIcon, LockIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { offer, withdraw } from "./actions";
+import { useT, useLocale } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
+import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
 
 type Slot = {
   id: string;
@@ -23,6 +26,8 @@ type Slot = {
  * than left guessing.
  */
 export function SlotManager({ slots }: { slots: Slot[] }) {
+  const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +40,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
     startTransition(async () => {
       const result = await work();
       if (!result.ok) {
-        setError(result.error ?? "Could not do that.");
+        setError(actionError(t, result, "common.tryAgain"));
         return;
       }
       setStart("");
@@ -49,7 +54,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
     <div className="space-y-4">
       <ul className="space-y-2">
         {slots.length === 0 && (
-          <li className="text-sm text-fg-muted">You have not offered any times yet.</li>
+          <li className="text-sm text-fg-muted">{t("expert.noTimesYet")}</li>
         )}
         {slots.map((slot) => (
           <li
@@ -58,22 +63,22 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           >
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-fg">
-                {new Date(slot.startsAt).toUTCString().slice(0, 22)} —{" "}
-                {new Date(slot.endsAt).toUTCString().slice(17, 22)}
+                {formatUtcMoment(new Date(slot.startsAt), locale)} —{" "}
+                {formatUtcTime(new Date(slot.endsAt), locale)}
               </p>
               {slot.note && <p className="text-xs text-fg-muted">{slot.note}</p>}
             </div>
             {slot.bookedBy ? (
               <span className="flex items-center gap-1.5 text-xs font-medium text-fg-muted">
                 <LockIcon weight="fill" className="size-3.5" />
-                Booked by {slot.bookedBy}
+                {t("expert.bookedBy", { school: slot.bookedBy })}
               </span>
             ) : (
               <Button
                 size="sm"
                 variant="ghost"
                 loading={pending}
-                aria-label="Withdraw this time"
+                aria-label={t("expert.withdrawTime")}
                 icon={<TrashIcon weight="bold" className="size-4" />}
                 onClick={() => act(() => withdraw(slot.id))}
               />
@@ -85,7 +90,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
       <div className="space-y-2 rounded-[--radius-md] border border-border bg-surface-muted p-3">
         <div className="flex flex-wrap gap-2">
           <label className="flex-1 text-xs text-fg-muted">
-            Starts
+            {t("expert.starts")}
             <input
               type="datetime-local"
               value={start}
@@ -94,7 +99,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
             />
           </label>
           <label className="flex-1 text-xs text-fg-muted">
-            Ends
+            {t("expert.ends")}
             <input
               type="datetime-local"
               value={end}
@@ -106,7 +111,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
         <input
           type="text"
           value={note}
-          placeholder="What this time is for (optional)"
+          placeholder={t("expert.timeNotePlaceholder")}
           onChange={(e) => setNote(e.target.value)}
           className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
@@ -118,7 +123,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           icon={<PlusIcon weight="bold" className="size-4" />}
           onClick={() => act(() => offer(new Date(start).toISOString(), new Date(end).toISOString(), note))}
         >
-          Offer this time
+          {t("expert.offerTime")}
         </Button>
       </div>
     </div>

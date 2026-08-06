@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * empty bookings page does not.
  */
 export default async function ExpertProfilePage() {
+  const t = await getT();
   const session = await requireExpert();
 
   let profile;
@@ -41,34 +42,32 @@ export default async function ExpertProfilePage() {
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Your profile</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          What a school reads before booking an hour of your time.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("expert.yourProfile")}
+        </h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("expert.yourProfileBody")}</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone={profile.published ? "ok" : "warn"} size="sm">
-          {profile.published ? "Listed" : "Not listed yet"}
+          {profile.published ? t("expert.listed") : t("expert.notListedYet")}
         </Badge>
         {profile.verified && (
           <Badge tone="accent" size="sm">
             <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
-            Verified
+            {t("expert.verified")}
           </Badge>
         )}
         <p className="text-xs text-fg-muted">
-          {profile.published
-            ? "Schools can find you and book your times."
-            : "Nobody can see you yet. Whoever runs EduLink lists a profile once they have checked it."}
+          {profile.published ? t("expert.listedBody") : t("expert.notListedBody")}
         </p>
       </div>
 
       <Card>
         <CardHeader
           icon={<UserIcon weight="duotone" className="size-5" />}
-          title="About you"
-          description="Saved as soon as you press the button — there is no draft"
+          title={t("expert.aboutYou")}
+          description={t("expert.profileCardBody")}
         />
         <CardBody>
           <ProfileForm

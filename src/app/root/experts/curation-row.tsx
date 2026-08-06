@@ -8,6 +8,8 @@ import { useToast } from "@/components/ui/toast";
 import { EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
 import { setStanding } from "./actions";
 import type { CurationEntry } from "@/lib/superuser";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 /**
  * One expert, and the two decisions an operator makes about them.
@@ -21,6 +23,7 @@ import type { CurationEntry } from "@/lib/superuser";
  * somebody no school can see is a claim with no reader.
  */
 export function CurationRow({ entry }: { entry: CurationEntry }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -34,7 +37,7 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
     startTransition(async () => {
       const result = await setStanding(entry.profileId, next);
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(actionError(t, result, "common.tryAgain"));
         return;
       }
       toast({ tone: "ok", title: done });
@@ -50,21 +53,21 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
             {entry.name}
             {published ? (
               <Badge tone="ok" size="sm">
-                Listed
+                {t("expert.listed")}
               </Badge>
             ) : (
               <Badge tone="warn" size="sm">
-                Waiting
+                {t("expert.waiting")}
               </Badge>
             )}
             {verified && (
               <Badge tone="accent" size="sm">
-                Identity checked
+                {t("expert.identityChecked")}
               </Badge>
             )}
           </p>
           <p className="mt-0.5 truncate text-sm text-fg-muted">
-            {entry.headline || <em>No headline yet</em>}
+            {entry.headline || <em>{t("expert.noHeadline")}</em>}
             {entry.organisation && <> · {entry.organisation}</>}
           </p>
           {entry.email && <p className="mt-0.5 font-mono text-xs text-fg-subtle">{entry.email}</p>}
@@ -73,12 +76,17 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
 
       <p className="mt-3 text-sm text-fg">
         <span className="font-semibold">
-          {EXPERT_OFFERING_META[entry.offering as ExpertOffering]?.label ?? entry.offering}
+          {EXPERT_OFFERING_META[entry.offering as ExpertOffering]
+            ? t(EXPERT_OFFERING_META[entry.offering as ExpertOffering].labelKey)
+            : entry.offering}
         </span>
         {entry.mentorCapacity !== null && (
           <span className="text-fg-muted">
-            {" "}
-            · up to {entry.mentorCapacity} at a time, {entry.activeMentorships} now
+            {" · "}
+            {t("expert.capacityAndActive", {
+              cap: entry.mentorCapacity,
+              active: entry.activeMentorships,
+            })}
           </span>
         )}
       </p>
@@ -114,10 +122,13 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
               variant="secondary"
               loading={pending}
               onClick={() =>
-                apply({ published: false, verified: false }, `${entry.name} is off the list`)
+                apply(
+                  { published: false, verified: false },
+                  t("expert.offListToast", { name: entry.name }),
+                )
               }
             >
-              Take off the list
+              {t("expert.takeOffList")}
             </Button>
             {!verified && (
               <Button
@@ -125,10 +136,10 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
                 variant="ghost"
                 loading={pending}
                 onClick={() =>
-                  apply({ published: true, verified: true }, "Marked as identity checked")
+                  apply({ published: true, verified: true }, t("expert.markedCheckedToast"))
                 }
               >
-                Mark identity checked
+                {t("expert.markIdentityChecked")}
               </Button>
             )}
           </>
@@ -138,30 +149,33 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
               size="sm"
               loading={pending}
               onClick={() =>
-                apply({ published: true, verified: false }, `${entry.name} is now listed`)
+                apply(
+                  { published: true, verified: false },
+                  t("expert.nowListedToast", { name: entry.name }),
+                )
               }
             >
-              List them
+              {t("expert.listThem")}
             </Button>
             <Button
               size="sm"
               variant="secondary"
               loading={pending}
               onClick={() =>
-                apply({ published: true, verified: true }, `${entry.name} is listed and checked`)
+                apply(
+                  { published: true, verified: true },
+                  t("expert.listedAndCheckedToast", { name: entry.name }),
+                )
               }
             >
-              List and mark checked
+              {t("expert.listAndCheck")}
             </Button>
           </>
         )}
       </div>
 
       {published && (
-        <p className="mt-3 text-xs leading-relaxed text-fg-muted">
-          Taking somebody off the list stops schools finding them. It does not end a session already
-          booked or a mentorship already agreed — those stay exactly as they are.
-        </p>
+        <p className="mt-3 text-xs leading-relaxed text-fg-muted">{t("expert.takeOffNote")}</p>
       )}
     </div>
   );

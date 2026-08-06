@@ -6,6 +6,7 @@ import { AccessError } from "./tenancy";
 import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
+import { forJoinCode } from "./tenant-context";
 import type { ActiveContext } from "./session";
 
 /**
@@ -111,17 +112,34 @@ export type InviteState =
  * needs to know which happened in order to audit it.
  */
 export async function readExpertInvite(token: string): Promise<InviteState> {
-  const invite = await db.expertInvite.findUnique({
-    where: { tokenHash: hashToken(token) },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      expiresAt: true,
-      acceptedAt: true,
-      revokedAt: true,
-    },
-  });
+  /**
+   * ⚠ `forJoinCode`, AND WITHOUT IT EVERY EXPERT INVITATION LINK WAS DEAD.
+   *
+   * `ExpertInvite_readable` opens exactly one row: the one whose `tokenHash`
+   * equals `app.join_code`. Nothing else can, and nothing else should — an
+   * invitation is read by somebody with no session, no school and no
+   * membership, so holding the token IS the authorisation. This function read
+   * the table without binding it, Postgres correctly returned nothing, and the
+   * page said "That invitation cannot be used" to every valid link ever sent.
+   *
+   * The pupil invite page has always done this right — `/invite/[token]` wraps
+   * its lookup the same way. This one was written from the same idea and missed
+   * the one line that makes it work. Found by walking the page in a browser
+   * after translating it, which is the whole argument for walking it.
+   */
+  const invite = await forJoinCode(hashToken(token), () =>
+    db.expertInvite.findUnique({
+      where: { tokenHash: hashToken(token) },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        expiresAt: true,
+        acceptedAt: true,
+        revokedAt: true,
+      },
+    }),
+  );
   if (!invite) return { ok: false, reason: "unknown" };
   if (invite.revokedAt) return { ok: false, reason: "revoked" };
   if (invite.acceptedAt) return { ok: false, reason: "used" };
@@ -174,40 +192,51 @@ export async function acceptExpertInvite(
    * holds nothing together. Here that would mean a profile created and the
    * invitation left unaccepted — the exact double-spend the comment above
    * claims this transaction prevents.
+   *
+   * ⚠ AND INSIDE `forJoinCode`, for the reason spelt out on `readExpertInvite`
+   * — this transaction reads the same invitation row, so without the code bound
+   * it found nothing and refused an invitation it had just been handed. The
+   * wrapper goes OUTSIDE: `$tenantTransaction` asks the resolver what to bind
+   * before it opens, so the override has to be in scope by then.
    */
-  return db.$tenantTransaction(async (txUnknown: unknown) => {
-    const tx = txUnknown as AcceptTx;
-    const invite = await tx.expertInvite.findUnique({
-      where: { tokenHash: hashToken(token) },
-      select: { id: true, acceptedAt: true, revokedAt: true, expiresAt: true, schoolId: true },
-    });
-    if (!invite || invite.revokedAt || invite.acceptedAt) {
-      throw new AccessError("That invitation cannot be used", "NOT_FOUND");
-    }
-    if (invite.expiresAt.getTime() < Date.now()) {
-      throw new AccessError("That invitation has expired", "NOT_FOUND");
-    }
+  return forJoinCode(hashToken(token), () =>
+    db.$tenantTransaction(async (txUnknown: unknown) => {
+      const tx = txUnknown as AcceptTx;
+      const invite = await tx.expertInvite.findUnique({
+        where: { tokenHash: hashToken(token) },
+        select: { id: true, acceptedAt: true, revokedAt: true, expiresAt: true, schoolId: true },
+      });
+      if (!invite || invite.revokedAt || invite.acceptedAt) {
+        throw new AccessError("That invitation cannot be used", "NOT_FOUND");
+      }
+      if (invite.expiresAt.getTime() < Date.now()) {
+        throw new AccessError("That invitation has expired", "NOT_FOUND");
+      }
 
-    const existing = await tx.expertProfile.findUnique({ where: { userId }, select: { id: true } });
-    const created =
-      existing ??
-      (await tx.expertProfile.create({
-        data: {
-          userId,
-          headline,
-          bio: profile.bio?.trim() ?? "",
-          organisation: profile.organisation?.trim() || null,
-        },
+      const existing = await tx.expertProfile.findUnique({
+        where: { userId },
         select: { id: true },
-      }));
+      });
+      const created =
+        existing ??
+        (await tx.expertProfile.create({
+          data: {
+            userId,
+            headline,
+            bio: profile.bio?.trim() ?? "",
+            organisation: profile.organisation?.trim() || null,
+          },
+          select: { id: true },
+        }));
 
-    await tx.expertInvite.update({
-      where: { id: invite.id },
-      data: { acceptedAt: new Date(), acceptedUserId: userId },
-    });
+      await tx.expertInvite.update({
+        where: { id: invite.id },
+        data: { acceptedAt: new Date(), acceptedUserId: userId },
+      });
 
-    return { expertProfileId: created.id };
-  });
+      return { expertProfileId: created.id };
+    }),
+  );
 }
 
 /* -------------------------------------------------------------------------- */

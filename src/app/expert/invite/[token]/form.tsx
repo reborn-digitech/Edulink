@@ -3,6 +3,8 @@
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { acceptInvite } from "./actions";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 /**
  * The accept form.
@@ -20,6 +22,7 @@ export function AcceptForm({
   suggestedName: string | null;
   suggestedEmail: string | null;
 }) {
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState(suggestedName ?? "");
@@ -33,7 +36,7 @@ export function AcceptForm({
   return (
     <div className="mt-6 space-y-3">
       <label className="block text-sm text-fg-muted">
-        Your name
+        {t("expert.yourName")}
         <input
           type="text"
           value={name}
@@ -42,7 +45,7 @@ export function AcceptForm({
         />
       </label>
       <label className="block text-sm text-fg-muted">
-        Email
+        {t("expert.email")}
         <input
           type="email"
           autoComplete="username"
@@ -52,7 +55,7 @@ export function AcceptForm({
         />
       </label>
       <label className="block text-sm text-fg-muted">
-        Choose a password
+        {t("expert.choosePassword")}
         <input
           type="password"
           autoComplete="new-password"
@@ -62,11 +65,11 @@ export function AcceptForm({
         />
       </label>
       <label className="block text-sm text-fg-muted">
-        What you do, in a line
+        {t("expert.whatYouDo")}
         <input
           type="text"
           value={headline}
-          placeholder="Careers adviser, 12 years in engineering"
+          placeholder={t("expert.whatYouDoPlaceholder")}
           onChange={(e) => setHeadline(e.target.value)}
           className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
@@ -82,16 +85,13 @@ export function AcceptForm({
           startTransition(async () => {
             setError(null);
             const result = await acceptInvite(token, { name, email, password, headline });
-            if (result && !result.ok) setError(result.error ?? "Could not create the account.");
+            if (result && !result.ok) setError(actionError(t, result, "expert.couldNotCreate"));
           })
         }
       >
-        Create my expert account
+        {t("expert.createAccount")}
       </Button>
-      <p className="text-xs text-fg-muted">
-        Your profile is reviewed before any school can see or book you. You will not need to do
-        anything else.
-      </p>
+      <p className="text-xs text-fg-muted">{t("expert.reviewedNote")}</p>
     </div>
   );
 }

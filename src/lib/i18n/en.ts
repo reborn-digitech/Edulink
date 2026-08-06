@@ -675,6 +675,10 @@ export const en = {
     tryAgainMoment: "Something went wrong. Try again in a moment.",
     logInAgain: "Please log in again.",
     somethingWrong: "Something went wrong",
+    back: "Back",
+    /* Whose message this is, in a thread. "You" rather than the reader's own
+       name: the name is on the other side of every conversation they have. */
+    you: "You",
   },
   /* ---------------------------------------------------------------------- */
   /* Kinds of staff leave. Rendered on the principal's decision page, the    */
@@ -1732,6 +1736,181 @@ export const en = {
     takenOffRoll: "{name} taken off the roll",
     nobodyInClass:
       "Nobody is in this class yet. Add them here, or give them the class join code and let them add themselves.",
+  },
+  /* ---------------------------------------------------------------------- */
+  /* Experts — ONE NAMESPACE FOR FOUR AUDIENCES, because it is one feature   */
+  /* and the four screens hand off to each other. An expert reads their own  */
+  /* profile and availability; a school browses the marketplace and books;   */
+  /* whoever runs the server decides who is listed at all; and both sides of */
+  /* a booking read the same thread. Splitting it per role would put the two */
+  /* halves of "up to N at a time" in different namespaces.                  */
+  /* ---------------------------------------------------------------------- */
+  expert: {
+    /* -- the expert's own bookings -- */
+    bookings: "Bookings",
+    bookingsBody:
+      "Schools that have booked one of your times. You can see a school only while a booking with them is live.",
+    noBookings: "No bookings yet",
+    noBookingsBody:
+      "Offer some times under Availability and schools will be able to book them.",
+    newCount: "{count} new",
+
+    /* ⚠ The badge rendered `status.toLowerCase()`, which put "confirmed" in
+       the middle of a Marathi page and would print nothing at all for a
+       status nobody thought of. Same fix as `LEAVE_STATUS_KEY`. */
+    statusConfirmed: "confirmed",
+    statusCancelled: "cancelled",
+    statusCompleted: "completed",
+
+    /* -- waiting to be listed -- */
+    underReview: "Your profile is being reviewed",
+    underReviewBody:
+      "Your account is set up. Schools cannot see or book you until someone at EduLink has checked your profile — you will not need to do anything else.",
+
+    /* -- availability -- */
+    availability: "Availability",
+    availabilityBody:
+      "Times you are offering. Any school can book a free one; a booked time can only be freed by cancelling the booking.",
+    yourTimes: "Your times",
+    timesInUtc: "All times are stored in UTC.",
+    noTimesYet: "You have not offered any times yet.",
+    bookedBy: "Booked by {school}",
+    withdrawTime: "Withdraw this time",
+    starts: "Starts",
+    ends: "Ends",
+    timeNotePlaceholder: "What this time is for (optional)",
+    offerTime: "Offer this time",
+
+    /* -- the expert's own profile -- */
+    yourProfile: "Your profile",
+    yourProfileBody: "What a school reads before booking an hour of your time.",
+    listed: "Listed",
+    notListedYet: "Not listed yet",
+    verified: "Verified",
+    listedBody: "Schools can find you and book your times.",
+    notListedBody:
+      "Nobody can see you yet. Whoever runs EduLink lists a profile once they have checked it.",
+    aboutYou: "About you",
+    profileCardBody: "Saved as soon as you press the button — there is no draft",
+    headline: "Headline",
+    headlineHint: "One line. This is what a school sees first.",
+    headlinePlaceholder: "Careers adviser, 15 years in engineering",
+    bioHint: "What you offer, and who it is for.",
+    organisation: "Where you work",
+    organisationHint: "Optional.",
+    specialisms: "Specialisms",
+    specialismsHint: "Up to {max}. Schools browse by these.",
+    addSpecialism: "Add a specialism",
+    specialismPlaceholder: "Olympiad maths",
+    specialismLimit: "That is the limit",
+    removeSpecialism: "Remove {tag}",
+    offeringQuestion: "What are you offering?",
+    mentorCapacity: "How many children at once?",
+    mentorCapacityHint:
+      "A cap, not a target. Schools cannot pair another child with you past this.",
+    timezone: "Your timezone",
+    timezoneHint:
+      "Times you offer are stored in UTC; this is how they are read back to you.",
+    /* An IANA zone identifier, shown as an example of the FORMAT. A key
+       rather than a literal so a deployment elsewhere can suggest its own. */
+    timezonePlaceholder: "Asia/Kolkata",
+    saveProfile: "Save profile",
+    profileSaved: "Profile saved",
+    didNotSave: "That did not save.",
+
+    /* -- what an expert has agreed to do. Read on three screens: their own
+          profile form, the school's marketplace card, the operator's queue. -- */
+    offeringSessions: "Workshops and sessions",
+    offeringSessionsHint:
+      "One-off talks or virtual sessions a school books for a class or a year group.",
+    offeringMentoring: "Mentoring one child at a time",
+    offeringMentoringHint:
+      "A continuing relationship with one pupil, with their guardian's agreement.",
+    offeringBoth: "Both",
+    offeringBothHint: "Available for sessions and for mentoring.",
+
+    /* -- the school's marketplace -- */
+    marketplaceBody:
+      "Book time with a curated expert. They can see your school only while a booking with you is live.",
+    yourBookings: "Your bookings",
+    availableExperts: "Available experts",
+    noneListed: "No experts listed yet",
+    noneListedBody:
+      "Experts appear here once they have been reviewed and have offered times.",
+    takingMentees: "taking mentees",
+    upToAtATime: "up to {count} at a time",
+    notTakingMentees: "not taking more mentees just now",
+    mentoringOnly:
+      "Available for mentoring rather than sessions. Set a mentorship up from Mentoring.",
+    noFreeTimes: "No free times at the moment.",
+
+    /* -- booking a time -- */
+    book: "Book",
+    bookTopic: "What would you like to discuss with {name}?",
+    confirmBooking: "Confirm booking",
+    couldNotBook: "Could not book that time.",
+    bookingCancelled: "This booking was cancelled",
+    cancelBooking: "Cancel this booking",
+    cancelWarning:
+      "This frees the time for another school to book, and the other side will see that it was cancelled. You cannot undo it.",
+    confirmCancel: "Yes, cancel it",
+    keepBooking: "Keep the booking",
+
+    /* -- the conversation, read by both sides -- */
+    noMessages: "No messages yet. Say hello.",
+    writeMessage: "Write a message…",
+    send: "Send",
+    couldNotSend: "Could not send that.",
+
+    /* -- accepting an invitation, signed out -- */
+    inviteInvalid: "That invitation cannot be used",
+    inviteInvalidBody:
+      "It may have expired, or already been used. Ask whoever sent it for a new link.",
+    joinTitle: "Join EduLink as an expert",
+    joinBody:
+      "Tell schools what you do. Your profile is reviewed before any school can see or book you.",
+    yourName: "Your name",
+    email: "Email",
+    choosePassword: "Choose a password",
+    whatYouDo: "What you do, in a line",
+    whatYouDoPlaceholder: "Careers adviser, 12 years in engineering",
+    createAccount: "Create my expert account",
+    reviewedNote:
+      "Your profile is reviewed before any school can see or book you. You will not need to do anything else.",
+    couldNotCreate: "Could not create the account.",
+    inviteCannotBeUsed: "That invitation cannot be used.",
+    giveYourName: "Please give your name.",
+    emailLooksWrong: "That email does not look right.",
+    sayWhatYouDo: "Say what you do, in a few words.",
+    emailTaken:
+      "There is already an account with that email. Log in first, then open this link.",
+    tryLinkAgain: "Something went wrong. Try the link again.",
+
+    /* -- the operator's queue -- */
+    curationTitle: "Experts",
+    curationCount: "{waiting} waiting · {listed} listed",
+    curationNobodyYet: "Nobody has accepted an expert invitation yet",
+    curationNote:
+      "Schools and teachers can invite an expert; only you can put one in front of schools. Until you list somebody they cannot be found, cannot be booked, and cannot be paired with a child.",
+    curationEmpty: "No expert profiles yet",
+    curationEmptyBody:
+      "An expert appears here once they accept an invitation and write a profile. Schools send those invitations; you decide who is listed.",
+    waitingForYou: "Waiting for you",
+    onMarketplace: "On the marketplace",
+    waiting: "Waiting",
+    identityChecked: "Identity checked",
+    noHeadline: "No headline yet",
+    capacityAndActive: "up to {cap} at a time, {active} now",
+    takeOffList: "Take off the list",
+    markIdentityChecked: "Mark identity checked",
+    listThem: "List them",
+    listAndCheck: "List and mark checked",
+    offListToast: "{name} is off the list",
+    nowListedToast: "{name} is now listed",
+    listedAndCheckedToast: "{name} is listed and checked",
+    markedCheckedToast: "Marked as identity checked",
+    takeOffNote:
+      "Taking somebody off the list stops schools finding them. It does not end a session already booked or a mentorship already agreed — those stay exactly as they are.",
   },
   /* ---------------------------------------------------------------------- */
   /* The setup checklist. Its steps are BUILT IN `lib/onboarding.ts`, which  */

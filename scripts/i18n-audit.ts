@@ -93,9 +93,32 @@ export type Finding = { file: string; strings: string[]; dates: number };
 function unlocalisedDates(source: string): number {
   const code = source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
   let n = 0;
-  for (const m of code.matchAll(/\b(formatDateKey|relativeTime)\(([^;]*?)\)/g)) {
+  // ⚠ GREEDY, AND LINE-BOUNDED. This was non-greedy, so it stopped at the FIRST
+  // `)` — and `formatUtcMoment(new Date(slot.startsAt), locale)` hides its
+  // locale behind a nested call. Two correct call sites were reported as
+  // unlocalised, which is the kind of noise that teaches you to stop reading.
+  // Greedy to the last `)` on the line fixes it; the cost is that two calls on
+  // ONE line are judged together, which no call site here does.
+  for (const m of code.matchAll(
+    /\b(formatDateKey|relativeTime|formatInZone|formatUtcMoment|formatUtcTime)\(([^;\n]*)\)/g,
+  )) {
     // Crude but adequate: a call that never mentions `locale` is not passing one.
     if (!/\blocale\b/.test(m[2] ?? "")) n++;
+  }
+  /**
+   * ⚠ AND `toUTCString`, WHICH IS THE SAME MISS WITH NO LOCALE TO FORGET.
+   *
+   * Six screens of the expert surface rendered a date as
+   * `startsAt.toUTCString().slice(0, 22)`. It takes no locale, so the rule above
+   * had nothing to check; it is not a string literal, so the counter could not
+   * see it either. A fully translated Marathi page read `Mon, 14 Sep 2026 09:00`
+   * and BOTH numbers above said the file was finished.
+   *
+   * `.slice(17, 22)` on its own is just `HH:MM` and reads the same in every
+   * language, so only the calls that keep the weekday and month are counted.
+   */
+  for (const m of code.matchAll(/\.toUTCString\(\)(\.slice\(\s*(\d+)\s*,\s*\d+\s*\))?/g)) {
+    if (m[2] === undefined || Number(m[2]) === 0) n++;
   }
   return n;
 }
@@ -153,7 +176,11 @@ function userVisible(source: string): string[] {
     // `labelKey: "classes.duplicateName"` the `name:`/`label:` rules above
     // match the KEY, and a finished file reports itself as unfinished.
     .filter((s) => !/^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9]+)+$/.test(s))
-    .filter((s) => !s.includes("t(\""));
+    .filter((s) => !s.includes("t(\""))
+    // ⚠ NOR A CONDITION THAT HAPPENS TO CONTAIN A `>`. Rule 1 reads a JSX text
+    // node as "> words <", and `…getTime() > Date.now() && (` looks exactly
+    // like one. No sentence a parent reads contains `&&`, `||`, `=>` or a call.
+    .filter((s) => !/&&|\|\||=>|\w\(\)/.test(s));
 }
 
 function scan(): Finding[] {
@@ -179,13 +206,28 @@ const target = process.argv[2];
 const findings = scan();
 
 if (target) {
-  const one = findings.find((f) => f.file.includes(target));
-  if (!one) {
+  /**
+   * ⚠ EVERY MATCH, NOT THE FIRST ONE. This was `findings.find(…)`, and the
+   * fragment is how a whole surface gets translated one role at a time — so
+   * `-- expert` answered with a single file holding one string and looked like
+   * a finished job. The role had thirteen files. A tool used to decide "am I
+   * done here" must not stop at the first answer it likes.
+   */
+  const matches = findings.filter((f) => f.file.includes(target));
+  if (matches.length === 0) {
     console.log(`No untranslated strings found in anything matching "${target}".`);
     process.exit(0);
   }
-  console.log(`${one.file} — ${one.strings.length} strings, ${one.dates} unlocalised dates\n`);
-  for (const s of one.strings) console.log(`  ${s}`);
+  const strings = matches.reduce((n, f) => n + f.strings.length, 0);
+  const dates = matches.reduce((n, f) => n + f.dates, 0);
+  console.log(
+    `${matches.length} file${matches.length === 1 ? "" : "s"} matching "${target}" — ` +
+      `${strings} strings, ${dates} unlocalised dates`,
+  );
+  for (const one of matches) {
+    console.log(`\n${one.file} — ${one.strings.length} strings, ${one.dates} unlocalised dates\n`);
+    for (const s of one.strings) console.log(`  ${s}`);
+  }
   process.exit(0);
 }
 

@@ -6,7 +6,9 @@ import { listBookings } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
+import { EXPERT_BOOKING_STATUS_KEY, type ExpertBookingStatus } from "@/lib/constants";
+import { formatUtcMoment } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -14,24 +16,25 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ExpertHome() {
+  const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireExpert();
   const bookings = await listBookings(ctx);
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Bookings</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Schools that have booked one of your times. You can see a school only while a booking
-          with them is live.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("expert.bookings")}
+        </h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("expert.bookingsBody")}</p>
       </div>
 
       {bookings.length === 0 ? (
         <EmptyState
           icon={<BriefcaseIcon weight="duotone" className="size-8" />}
-          title="No bookings yet"
-          description="Offer some times under Availability and schools will be able to book them."
+          title={t("expert.noBookings")}
+          description={t("expert.noBookingsBody")}
         />
       ) : (
         <ul className="space-y-3">
@@ -42,17 +45,22 @@ export default async function ExpertHome() {
                   <CardBody className="space-y-2 pt-5">
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge tone={booking.status === "CANCELLED" ? "danger" : "accent"} size="sm">
-                        {booking.status.toLowerCase()}
+                        {/* The KEY, not `.toLowerCase()` on the column — which
+                            put "confirmed" in the middle of a Marathi page.
+                            The `??` covers a status the table has not met. */}
+                        {EXPERT_BOOKING_STATUS_KEY[booking.status as ExpertBookingStatus]
+                          ? t(EXPERT_BOOKING_STATUS_KEY[booking.status as ExpertBookingStatus])
+                          : booking.status.toLowerCase()}
                       </Badge>
                       <span className="text-sm font-semibold text-fg">{booking.schoolName}</span>
                       {booking.unread > 0 && (
                         <Badge tone="accent" size="sm">
                           <ChatCircleDotsIcon weight="fill" className="mr-1 inline size-3" />
-                          {booking.unread} new
+                          {t("expert.newCount", { count: booking.unread })}
                         </Badge>
                       )}
                       <span className="ml-auto text-xs text-fg-muted">
-                        {booking.startsAt.toUTCString().slice(0, 22)}
+                        {formatUtcMoment(booking.startsAt, locale)}
                       </span>
                     </div>
                     <p className="text-[0.9375rem] text-fg-muted">{booking.topic}</p>

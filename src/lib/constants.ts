@@ -96,16 +96,42 @@ export const GUARDIAN_RELATIONS = ["PARENT", "GUARDIAN", "OTHER"] as const;
 export const EXPERT_OFFERINGS = ["SESSIONS", "MENTORING", "BOTH"] as const;
 export type ExpertOffering = (typeof EXPERT_OFFERINGS)[number];
 
-export const EXPERT_OFFERING_META: Record<ExpertOffering, { label: string; hint: string }> = {
+/**
+ * ⚠ KEYS, NOT WORDS — the `ROLE_META` and `ATTENDANCE_META` precedent, and this
+ * table had the widest reach of any of them. It is read on the expert's own
+ * profile form, on the school's marketplace card, and in the operator's
+ * curation queue: three roles, three languages, one English answer.
+ */
+export const EXPERT_OFFERING_META: Record<
+  ExpertOffering,
+  { labelKey: TranslationKey; hintKey: TranslationKey }
+> = {
   SESSIONS: {
-    label: "Workshops and sessions",
-    hint: "One-off talks or virtual sessions a school books for a class or a year group.",
+    labelKey: "expert.offeringSessions",
+    hintKey: "expert.offeringSessionsHint",
   },
   MENTORING: {
-    label: "Mentoring one child at a time",
-    hint: "A continuing relationship with one pupil, with their guardian's agreement.",
+    labelKey: "expert.offeringMentoring",
+    hintKey: "expert.offeringMentoringHint",
   },
-  BOTH: { label: "Both", hint: "Available for sessions and for mentoring." },
+  BOTH: { labelKey: "expert.offeringBoth", hintKey: "expert.offeringBothHint" },
+};
+
+export const EXPERT_BOOKING_STATUSES = ["CONFIRMED", "CANCELLED", "COMPLETED"] as const;
+export type ExpertBookingStatus = (typeof EXPERT_BOOKING_STATUSES)[number];
+
+/**
+ * What a booking currently IS, as a word.
+ *
+ * ⚠ Rendered by `.toLowerCase()` on the raw column on the expert's own bookings
+ * list — the same defect `LEAVE_STATUS_KEY` was written for. It printed
+ * "confirmed" in the middle of a Marathi page, and would have printed nothing
+ * readable at all for a status nobody thought of.
+ */
+export const EXPERT_BOOKING_STATUS_KEY: Record<ExpertBookingStatus, TranslationKey> = {
+  CONFIRMED: "expert.statusConfirmed",
+  CANCELLED: "expert.statusCancelled",
+  COMPLETED: "expert.statusCompleted",
 };
 export type GuardianRelation = (typeof GUARDIAN_RELATIONS)[number];
 

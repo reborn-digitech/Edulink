@@ -59,6 +59,18 @@ const SHARED_WITH_ENGLISH = new Set([
    * shape of one; `your-school` is not a word being withheld from them.
    */
   "settings.websitePlaceholder",
+  /**
+   * AN IANA TIME ZONE IDENTIFIER, which is an ASCII key in a global database
+   * and not a word. `Asia/Kolkata` is what the field must contain to work — the
+   * expert types their real zone over it, and every zone in the list is spelt
+   * this way whatever language is reading. एशिया/कोलकाता would be a placeholder
+   * showing the shape of something the input cannot accept.
+   *
+   * The sentence around it IS translated: `expert.timezoneHint` explains what
+   * the field is for in the reader's own language. A key rather than a literal
+   * so a deployment outside India can suggest its own zone.
+   */
+  "expert.timezonePlaceholder",
 ]);
 
 const placeholdersIn = (value: string): Set<string> =>

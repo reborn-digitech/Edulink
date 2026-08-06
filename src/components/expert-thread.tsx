@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { PaperPlaneRightIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 export type ThreadMessage = {
   id: string;
@@ -30,6 +32,7 @@ export function ExpertThread({
   onSend: (body: string) => Promise<{ ok: boolean; error?: string }>;
   disabled?: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [body, setBody] = useState("");
@@ -39,7 +42,7 @@ export function ExpertThread({
     <div className="space-y-4">
       <ul className="space-y-3">
         {messages.length === 0 && (
-          <li className="text-sm text-fg-muted">No messages yet. Say hello.</li>
+          <li className="text-sm text-fg-muted">{t("expert.noMessages")}</li>
         )}
         {messages.map((message) => (
           <li
@@ -57,7 +60,7 @@ export function ExpertThread({
               <p className="whitespace-pre-wrap">{message.body}</p>
             </div>
             <span className="text-xs text-fg-muted">
-              {message.mine ? "You" : message.authorName}
+              {message.mine ? t("common.you") : message.authorName}
             </span>
           </li>
         ))}
@@ -69,7 +72,7 @@ export function ExpertThread({
             rows={3}
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            placeholder="Write a message…"
+            placeholder={t("expert.writeMessage")}
             className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
           {error && <p className="text-sm font-medium text-danger">{error}</p>}
@@ -82,7 +85,7 @@ export function ExpertThread({
                 setError(null);
                 const result = await onSend(body);
                 if (!result.ok) {
-                  setError(result.error ?? "Could not send that.");
+                  setError(actionError(t, result, "expert.couldNotSend"));
                   return;
                 }
                 setBody("");
@@ -90,7 +93,7 @@ export function ExpertThread({
               })
             }
           >
-            Send
+            {t("expert.send")}
           </Button>
         </div>
       )}

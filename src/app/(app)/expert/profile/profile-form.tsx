@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { save } from "./actions";
 import { EXPERT_OFFERINGS, EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 type Props = {
   headline: string;
@@ -42,6 +44,7 @@ export function ProfileForm({
   offering,
   mentorCapacity,
 }: Props) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -86,10 +89,10 @@ export function ProfileForm({
         mentorCapacity: mentors && capacity.trim() !== "" ? Number(capacity) : null,
       });
       if (!result.ok) {
-        setError(result.error ?? "That did not save.");
+        setError(actionError(t, result, "expert.didNotSave"));
         return;
       }
-      toast({ tone: "ok", title: "Profile saved" });
+      toast({ tone: "ok", title: t("expert.profileSaved") });
       router.refresh();
     });
   }
@@ -106,25 +109,21 @@ export function ProfileForm({
       )}
 
       <label className="block">
-        <span className="block text-sm font-medium text-fg">Headline</span>
-        <span className="block text-xs text-fg-muted">
-          One line. This is what a school sees first.
-        </span>
+        <span className="block text-sm font-medium text-fg">{t("expert.headline")}</span>
+        <span className="block text-xs text-fg-muted">{t("expert.headlineHint")}</span>
         <input
           type="text"
           value={head}
           maxLength={120}
           onChange={(e) => setHead(e.target.value)}
-          placeholder="Careers adviser, 15 years in engineering"
+          placeholder={t("expert.headlinePlaceholder")}
           className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 
       <label className="block">
-        <span className="block text-sm font-medium text-fg">About you</span>
-        <span className="block text-xs text-fg-muted">
-          What you offer, and who it is for.
-        </span>
+        <span className="block text-sm font-medium text-fg">{t("expert.aboutYou")}</span>
+        <span className="block text-xs text-fg-muted">{t("expert.bioHint")}</span>
         <textarea
           rows={6}
           value={about}
@@ -135,8 +134,8 @@ export function ProfileForm({
       </label>
 
       <label className="block">
-        <span className="block text-sm font-medium text-fg">Where you work</span>
-        <span className="block text-xs text-fg-muted">Optional.</span>
+        <span className="block text-sm font-medium text-fg">{t("expert.organisation")}</span>
+        <span className="block text-xs text-fg-muted">{t("expert.organisationHint")}</span>
         <input
           type="text"
           value={org}
@@ -147,9 +146,9 @@ export function ProfileForm({
       </label>
 
       <div>
-        <span className="block text-sm font-medium text-fg">Specialisms</span>
+        <span className="block text-sm font-medium text-fg">{t("expert.specialisms")}</span>
         <span className="block text-xs text-fg-muted">
-          Up to {MAX_SPECIALISMS}. Schools browse by these.
+          {t("expert.specialismsHint", { max: MAX_SPECIALISMS })}
         </span>
 
         {tags.length > 0 && (
@@ -163,7 +162,7 @@ export function ProfileForm({
                 >
                   {tag}
                   <XIcon weight="bold" className="size-3.5" aria-hidden="true" />
-                  <span className="sr-only">Remove {tag}</span>
+                  <span className="sr-only">{t("expert.removeSpecialism", { tag })}</span>
                 </button>
               </li>
             ))}
@@ -185,8 +184,12 @@ export function ProfileForm({
                 addTag();
               }
             }}
-            placeholder={tags.length >= MAX_SPECIALISMS ? "That is the limit" : "Olympiad maths"}
-            aria-label="Add a specialism"
+            placeholder={
+              tags.length >= MAX_SPECIALISMS
+                ? t("expert.specialismLimit")
+                : t("expert.specialismPlaceholder")
+            }
+            aria-label={t("expert.addSpecialism")}
             className="min-h-11 flex-1 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-50"
           />
           <Button
@@ -195,7 +198,7 @@ export function ProfileForm({
             icon={<PlusIcon weight="bold" />}
             onClick={addTag}
           >
-            Add
+            {t("common.add")}
           </Button>
         </div>
       </div>
@@ -208,7 +211,9 @@ export function ProfileForm({
         not merely filtered here.
       */}
       <fieldset className="rounded-[--radius-md] border border-border p-4">
-        <legend className="px-1 text-sm font-medium text-fg">What are you offering?</legend>
+        <legend className="px-1 text-sm font-medium text-fg">
+          {t("expert.offeringQuestion")}
+        </legend>
         <div className="space-y-2">
           {EXPERT_OFFERINGS.map((value) => (
             <label key={value} className="flex cursor-pointer items-start gap-3">
@@ -221,10 +226,10 @@ export function ProfileForm({
               />
               <span className="min-w-0">
                 <span className="block text-sm font-medium text-fg">
-                  {EXPERT_OFFERING_META[value].label}
+                  {t(EXPERT_OFFERING_META[value].labelKey)}
                 </span>
                 <span className="block text-xs leading-relaxed text-fg-muted">
-                  {EXPERT_OFFERING_META[value].hint}
+                  {t(EXPERT_OFFERING_META[value].hintKey)}
                 </span>
               </span>
             </label>
@@ -236,10 +241,10 @@ export function ProfileForm({
         {mentors && (
           <label className="mt-4 block border-t border-border pt-4">
             <span className="block text-sm font-medium text-fg">
-              How many children at once?
+              {t("expert.mentorCapacity")}
             </span>
             <span className="block text-xs leading-relaxed text-fg-muted">
-              A cap, not a target. Schools cannot pair another child with you past this.
+              {t("expert.mentorCapacityHint")}
             </span>
             <input
               type="number"
@@ -256,22 +261,20 @@ export function ProfileForm({
       </fieldset>
 
       <label className="block">
-        <span className="block text-sm font-medium text-fg">Your timezone</span>
-        <span className="block text-xs text-fg-muted">
-          Times you offer are stored in UTC; this is how they are read back to you.
-        </span>
+        <span className="block text-sm font-medium text-fg">{t("expert.timezone")}</span>
+        <span className="block text-xs text-fg-muted">{t("expert.timezoneHint")}</span>
         <input
           type="text"
           value={zone}
           maxLength={64}
           onChange={(e) => setZone(e.target.value)}
-          placeholder="Asia/Kolkata"
+          placeholder={t("expert.timezonePlaceholder")}
           className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 
       <Button loading={pending} disabled={head.trim().length < 3} onClick={submit}>
-        Save profile
+        {t("expert.saveProfile")}
       </Button>
     </div>
   );

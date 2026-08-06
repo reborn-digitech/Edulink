@@ -7,8 +7,9 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { BookButton } from "./book-button";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { EXPERT_OFFERING_META } from "@/lib/constants";
+import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -24,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function ExpertsPage() {
   const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "TEACHER");
   const [experts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
   const live = bookings.filter((b) => b.status !== "CANCELLED");
@@ -32,16 +34,13 @@ export default async function ExpertsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.experts")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">
-          Book time with a curated expert. They can see your school only while a booking with you
-          is live.
-        </p>
+        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("expert.marketplaceBody")}</p>
       </div>
 
       {live.length > 0 && (
         <section className="space-y-2">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-            Your bookings
+            {t("expert.yourBookings")}
           </h2>
           <ul className="space-y-2">
             {live.map((booking) => (
@@ -52,10 +51,12 @@ export default async function ExpertsPage() {
                       <span className="font-medium text-fg">{booking.expertName}</span>
                       <span className="text-sm text-fg-muted">{booking.topic}</span>
                       {booking.unread > 0 && (
-                        <Badge tone="accent" size="sm">{booking.unread} new</Badge>
+                        <Badge tone="accent" size="sm">
+                          {t("expert.newCount", { count: booking.unread })}
+                        </Badge>
                       )}
                       <span className="ml-auto text-xs text-fg-muted">
-                        {booking.startsAt.toUTCString().slice(0, 22)}
+                        {formatUtcMoment(booking.startsAt, locale)}
                       </span>
                     </CardBody>
                   </Link>
@@ -68,14 +69,14 @@ export default async function ExpertsPage() {
 
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-          Available experts
+          {t("expert.availableExperts")}
         </h2>
 
         {experts.length === 0 ? (
           <EmptyState
             icon={<BriefcaseIcon weight="duotone" className="size-8" />}
-            title="No experts listed yet"
-            description="Experts appear here once they have been reviewed and have offered times."
+            title={t("expert.noneListed")}
+            description={t("expert.noneListedBody")}
           />
         ) : (
           <ul className="space-y-3">
@@ -88,7 +89,7 @@ export default async function ExpertsPage() {
                       {expert.verified && (
                         <Badge tone="ok" size="sm">
                           <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
-                          Verified
+                          {t("expert.verified")}
                         </Badge>
                       )}
                       {expert.organisation && (
@@ -114,15 +115,15 @@ export default async function ExpertsPage() {
                       is so the refusal is never a surprise.
                     */}
                     <p className="text-xs font-medium text-fg-muted">
-                      {EXPERT_OFFERING_META[expert.offering].label}
+                      {t(EXPERT_OFFERING_META[expert.offering].labelKey)}
                       {expert.offering !== "SESSIONS" && (
                         <>
                           {" · "}
                           {expert.mentoringOpen
                             ? expert.mentorCapacity === null
-                              ? "taking mentees"
-                              : `up to ${expert.mentorCapacity} at a time`
-                            : "not taking more mentees just now"}
+                              ? t("expert.takingMentees")
+                              : t("expert.upToAtATime", { count: expert.mentorCapacity })
+                            : t("expert.notTakingMentees")}
                         </>
                       )}
                     </p>
@@ -131,12 +132,9 @@ export default async function ExpertsPage() {
                       // Their times are for mentoring, and a school cannot take
                       // one for a workshop. Offering the button would be
                       // offering something the server refuses.
-                      <p className="text-xs text-fg-muted">
-                        Available for mentoring rather than sessions. Set a mentorship up from
-                        Mentoring.
-                      </p>
+                      <p className="text-xs text-fg-muted">{t("expert.mentoringOnly")}</p>
                     ) : expert.openSlots.length === 0 ? (
-                      <p className="text-xs text-fg-muted">No free times at the moment.</p>
+                      <p className="text-xs text-fg-muted">{t("expert.noFreeTimes")}</p>
                     ) : (
                       <ul className="space-y-2">
                         {expert.openSlots.map((slot) => (
@@ -146,8 +144,8 @@ export default async function ExpertsPage() {
                           >
                             <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-fg">
-                                {slot.startsAt.toUTCString().slice(0, 22)} —{" "}
-                                {slot.endsAt.toUTCString().slice(17, 22)}
+                                {formatUtcMoment(slot.startsAt, locale)} —{" "}
+                                {formatUtcTime(slot.endsAt, locale)}
                               </p>
                               {slot.note && <p className="text-xs text-fg-muted">{slot.note}</p>}
                             </div>

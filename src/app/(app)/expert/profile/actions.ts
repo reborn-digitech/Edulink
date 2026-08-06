@@ -4,8 +4,10 @@ import { revalidatePath } from "next/cache";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { updateOwnProfile } from "@/lib/experts";
 import type { ExpertOffering } from "@/lib/constants";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-type Result = { ok: boolean; error?: string };
+/** See the note in `expert/availability/actions.ts` on the two-field shape. */
+type Result = { ok: boolean; errorKey?: TranslationKey; error?: string };
 
 export async function save(input: {
   headline: string;
@@ -26,6 +28,6 @@ export async function save(input: {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[expert-profile]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }

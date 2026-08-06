@@ -3,8 +3,16 @@
 import { revalidatePath } from "next/cache";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { addSlot, removeSlot } from "@/lib/experts";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-type Result = { ok: boolean; error?: string };
+/**
+ * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy — the
+ * same shape `admin/classes/actions.ts` settled on. What this file decides
+ * itself travels as a key and is resolved in the reader's language; an
+ * `AccessError` message is minted app-wide and is still English, so it travels
+ * as a string and `actionError` picks whichever arrived.
+ */
+type Result = { ok: boolean; errorKey?: TranslationKey; error?: string };
 
 async function run(work: () => Promise<void>): Promise<Result> {
   try {
@@ -14,7 +22,7 @@ async function run(work: () => Promise<void>): Promise<Result> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[expert-availability]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 

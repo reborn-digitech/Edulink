@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cancel } from "../../actions";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 /**
  * Releasing a booked hour.
@@ -33,6 +35,7 @@ import { cancel } from "../../actions";
  * request.
  */
 export function CancelButton({ bookingId }: { bookingId: string }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [asking, setAsking] = useState(false);
@@ -50,7 +53,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
           </p>
         )}
         <Button size="sm" variant="ghost" onClick={() => setAsking(true)}>
-          Cancel this booking
+          {t("expert.cancelBooking")}
         </Button>
       </div>
     );
@@ -60,8 +63,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
     <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-3">
       <p className="text-sm leading-relaxed text-fg">
         {/* Says what actually happens, to both parties, before they press it. */}
-        This frees the time for another school to book, and the other side will
-        see that it was cancelled. You cannot undo it.
+        {t("expert.cancelWarning")}
       </p>
 
       {error && (
@@ -83,7 +85,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
               setError(null);
               const result = await cancel(bookingId);
               if (result?.ok === false) {
-                setError(result.error ?? "That did not work.");
+                setError(actionError(t, result, "common.tryAgain"));
                 return;
               }
               setAsking(false);
@@ -91,10 +93,10 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
             })
           }
         >
-          Yes, cancel it
+          {t("expert.confirmCancel")}
         </Button>
         <Button size="sm" variant="ghost" disabled={pending} onClick={() => setAsking(false)}>
-          Keep the booking
+          {t("expert.keepBooking")}
         </Button>
       </div>
     </div>

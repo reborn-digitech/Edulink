@@ -17,13 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
  * app assumes it is broken.
  */
 export default async function ExpertPendingPage() {
+  const t = await getT();
   await requireUser();
   return (
     <div className="mx-auto max-w-lg py-10">
       <EmptyState
         icon={<HourglassIcon weight="duotone" className="size-8" />}
-        title="Your profile is being reviewed"
-        description="Your account is set up. Schools cannot see or book you until someone at EduLink has checked your profile — you will not need to do anything else."
+        title={t("expert.underReview")}
+        description={t("expert.underReviewBody")}
       />
     </div>
   );

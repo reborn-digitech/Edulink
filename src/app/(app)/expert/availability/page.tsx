@@ -12,23 +12,23 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AvailabilityPage() {
+  const t = await getT();
   const ctx = await requireExpert();
   const slots = await listOwnSlots(ctx);
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Availability</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Times you are offering. Any school can book a free one; a booked time can only be freed
-          by cancelling the booking.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {t("expert.availability")}
+        </h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("expert.availabilityBody")}</p>
       </div>
 
       <Card>
         <CardHeader
-          title="Your times"
-          description="All times are stored in UTC."
+          title={t("expert.yourTimes")}
+          description={t("expert.timesInUtc")}
           icon={<CalendarIcon weight="duotone" className="size-5" />}
         />
         <CardBody>

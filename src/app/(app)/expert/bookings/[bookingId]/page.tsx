@@ -7,7 +7,8 @@ import { getBooking } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookingThread } from "./thread";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
+import { formatUtcMoment } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -19,6 +20,8 @@ export default async function BookingPage({
 }: {
   params: Promise<{ bookingId: string }>;
 }) {
+  const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireApiUser();
   const { bookingId } = await params;
 
@@ -39,19 +42,19 @@ export default async function BookingPage({
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Back
+        {t("common.back")}
       </Link>
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg">{booking.topic}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {isExpert ? booking.schoolName : booking.expertName} ·{" "}
-          {booking.startsAt.toUTCString().slice(0, 22)}
+          {formatUtcMoment(booking.startsAt, locale)}
         </p>
       </div>
 
       {booking.status === "CANCELLED" && (
-        <Badge tone="danger" size="sm">This booking was cancelled</Badge>
+        <Badge tone="danger" size="sm">{t("expert.bookingCancelled")}</Badge>
       )}
 
       <Card>

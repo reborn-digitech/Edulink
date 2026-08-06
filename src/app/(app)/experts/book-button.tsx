@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { book } from "./actions";
+import { useT } from "@/lib/i18n";
+import { actionError } from "@/lib/action-error";
 
 /**
  * Booking a slot, with the topic asked for BEFORE the claim.
@@ -13,6 +15,7 @@ import { book } from "./actions";
  * accepting a booking that says nothing has agreed to an unknown.
  */
 export function BookButton({ slotId, expertName }: { slotId: string; expertName: string }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
@@ -22,7 +25,7 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
   if (!open) {
     return (
       <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
-        Book
+        {t("expert.book")}
       </Button>
     );
   }
@@ -30,7 +33,7 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
   return (
     <div className="w-full space-y-2">
       <label className="block text-xs text-fg-muted">
-        What would you like to discuss with {expertName}?
+        {t("expert.bookTopic", { name: expertName })}
         <input
           type="text"
           autoFocus
@@ -50,7 +53,7 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
               setError(null);
               const result = await book(slotId, topic);
               if (!result.ok) {
-                setError(result.error ?? "Could not book that time.");
+                setError(actionError(t, result, "expert.couldNotBook"));
                 return;
               }
               setOpen(false);
@@ -58,10 +61,10 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
             })
           }
         >
-          Confirm booking
+          {t("expert.confirmBooking")}
         </Button>
         <Button size="sm" variant="ghost" onClick={() => setOpen(false)}>
-          Cancel
+          {t("common.cancel")}
         </Button>
       </div>
     </div>

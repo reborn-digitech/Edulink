@@ -167,6 +167,32 @@ export function formatInZone(
   return new Intl.DateTimeFormat(locale, { ...opts, timeZone }).format(instant);
 }
 
+/**
+ * An instant, in UTC, in the reader's language — "Mon, 14 Sep 2026, 09:00".
+ *
+ * ⚠ WHAT THIS REPLACES, AND WHY A STRING COUNT COULD NOT SEE IT.
+ * `toUTCString().slice(0, 22)` was doing this job on six screens of the expert
+ * surface. It is not a hardcoded string, so the audit's counter reported those
+ * files finished; it is not `formatDateKey` or `relativeTime` either, so the
+ * unlocalised-date check did not see it. A fully translated Marathi page still
+ * read `Mon, 14 Sep 2026 09:00` in the middle of a Devanagari sentence, and it
+ * took a screenshot of the actual page to notice — the third time on this
+ * project that a date has been the thing a counter is blind to.
+ *
+ * ⚠ AND UTC IS DELIBERATE HERE, not an oversight. Expert slots are stored and
+ * shown in UTC on purpose: an expert and a school may be in different zones, and
+ * every one of these pages says out loud that the times are UTC. Rendering them
+ * in the reader's local zone would quietly move a booked hour.
+ */
+export function formatUtcMoment(instant: Date, locale = "en"): string {
+  return formatInZone(instant, "UTC", { dateStyle: "medium", timeStyle: "short" }, locale);
+}
+
+/** Just the clock part of an instant, in UTC — the "to" half of a range. */
+export function formatUtcTime(instant: Date, locale = "en"): string {
+  return formatInZone(instant, "UTC", { timeStyle: "short" }, locale);
+}
+
 /** "in 3 days", "2 hours ago" — for due dates and activity feeds. */
 export function relativeTime(target: Date, now: Date = new Date(), locale = "en"): string {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });

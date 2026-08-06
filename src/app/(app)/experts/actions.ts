@@ -3,8 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { requireApiRole, requireApiUser, AccessError } from "@/lib/tenancy";
 import { bookSlot, cancelBooking, postMessage, inviteExpert } from "@/lib/experts";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
-type Result = { ok: boolean; error?: string };
+/** See the note in `expert/availability/actions.ts` on the two-field shape. */
+type Result = { ok: boolean; errorKey?: TranslationKey; error?: string };
 
 async function run<T>(work: () => Promise<T>): Promise<(Result & { data?: T })> {
   try {
@@ -14,7 +16,7 @@ async function run<T>(work: () => Promise<T>): Promise<(Result & { data?: T })> 
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[experts]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
 
