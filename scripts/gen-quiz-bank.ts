@@ -353,13 +353,35 @@ async function importTopic(topic: TopicSpec, questions: GenQ[]): Promise<void> {
 
   // Generated rows this run no longer produces are deleted — matched by the
   // source marker, so a hand-written question in the same topic (there are
-  // none today, but the guard costs nothing) can never be collateral.
-  const keep = new Set(rows.map((r) => r.id));
+  // none today, but the guard costs nothing) can never be collateral. Rows
+  // whose stem survived a plan change keep their content-hash id, which means
+  // createMany skipDuplicates leaves them untouched — so a question that moved
+  // rungs (same stem, new level) must have its stored difficulty repaired here
+  // or the ladder in the DB would silently disagree with the plan.
+  const keep = new Map(rows.map((r) => [r.id, r.difficulty]));
   const existing = await db.quizQuestion.findMany({
     where: { topicId: row.id, source: GEN_SOURCE },
-    select: { id: true },
+    select: { id: true, difficulty: true },
   });
-  const stale = existing.filter((e) => !keep.has(e.id)).map((e) => e.id);
+  const stale: string[] = [];
+  const drifted = new Map<number, string[]>();
+  for (const e of existing) {
+    const want = keep.get(e.id);
+    if (want === undefined) stale.push(e.id);
+    else if (want !== e.difficulty) {
+      const bucket = drifted.get(want) ?? [];
+      bucket.push(e.id);
+      drifted.set(want, bucket);
+    }
+  }
+  for (const [level, ids] of drifted) {
+    for (let i = 0; i < ids.length; i += BATCH) {
+      await db.quizQuestion.updateMany({
+        where: { id: { in: ids.slice(i, i + BATCH) } },
+        data: { difficulty: level },
+      });
+    }
+  }
   for (let i = 0; i < stale.length; i += BATCH) {
     await db.quizQuestion.deleteMany({ where: { id: { in: stale.slice(i, i + BATCH) } } });
   }
@@ -2063,6 +2085,674 @@ const fSciMoles = (tag: string, lvl: number, want: number, k: Range) =>
   );
 
 /* --------------------------------------------------------------------------
+   Science — the upper rungs. Every chapter climbs L1→L6: single-formula work
+   at the bottom, then rearranged formulas, then the multi-step compositions
+   that Olympiad and NSO papers actually ask. All checkExpr-proven.
+   -------------------------------------------------------------------------- */
+
+const SCIDIST: SkinSet = {
+  en: ["A bus travels at {v} km/h for {t} hours. How far does it go?", "At a steady {v} km/h, what distance is covered in {t} hours?"],
+  hi: ["एक बस {t} घंटों तक {v} किमी/घंटा से चलती है। वह कितनी दूर जाती है?", "{v} किमी/घंटा की स्थिर चाल से {t} घंटों में कितनी दूरी तय होगी?"],
+  mr: ["एक बस {t} तास {v} किमी/तास वेगाने जाते. ती किती दूर जाते?", "{v} किमी/तास या स्थिर वेगाने {t} तासांत किती अंतर कापले जाईल?"],
+  sen: "Distance = speed × time = {v} × {t} = {ans} km.",
+  shi: "दूरी = चाल × समय = {v} × {t} = {ans} किमी।",
+  smr: "अंतर = वेग × वेळ = {v} × {t} = {ans} किमी.",
+};
+const fSciDist = (tag: string, lvl: number, want: number, v: Range, t: Range) =>
+  T(`scidist:${tag}`, lvl, want, [v.n, t.n], SCIDIST, ([i, j]) => {
+    const s = at(v, i!), tt = at(t, j!), d = s * tt;
+    return { vars: { v: s, t: tt }, answer: d, expr: `${s}*${tt}`, decoys: [d + s, d - tt, s + tt], render: (n) => `${fmt(n)} km` };
+  });
+
+const SCITIME: SkinSet = {
+  en: ["A train covers {d} km at a steady {v} km/h. How long does the journey take?", "How many hours does it take to travel {d} km at {v} km/h?"],
+  hi: ["एक रेलगाड़ी {v} किमी/घंटा की स्थिर चाल से {d} किमी तय करती है। यात्रा में कितना समय लगेगा?", "{v} किमी/घंटा से {d} किमी जाने में कितने घंटे लगेंगे?"],
+  mr: ["एक रेल्वे {v} किमी/तास या स्थिर वेगाने {d} किमी अंतर कापते. प्रवासाला किती वेळ लागेल?", "{v} किमी/तास वेगाने {d} किमी जाण्यास किती तास लागतील?"],
+  sen: "Time = distance ÷ speed = {d} ÷ {v} = {ans} hours.",
+  shi: "समय = दूरी ÷ चाल = {d} ÷ {v} = {ans} घंटे।",
+  smr: "वेळ = अंतर ÷ वेग = {d} ÷ {v} = {ans} तास.",
+};
+const fSciTime = (tag: string, lvl: number, want: number, v: Range, t: Range) =>
+  T(`scitime:${tag}`, lvl, want, [v.n, t.n], SCITIME, ([i, j]) => {
+    const s = at(v, i!), tt = at(t, j!), d = s * tt;
+    return { vars: { d, v: s }, answer: tt, expr: `${d}/${s}`, decoys: [tt + 1, tt + 2, d - s], render: (n) => `${fmt(n)} h` };
+  });
+
+const SCIAVG: SkinSet = {
+  en: [
+    "A cyclist rides at {v1} km/h for {t} hours, then at {v2} km/h for another {t} hours. What is the average speed for the whole ride?",
+    "A car does {d1} km in the first {t} hours and {d2} km in the next {t} hours. Find its average speed.",
+  ],
+  hi: [
+    "एक साइकिल सवार {t} घंटे {v1} किमी/घंटा से, फिर {t} घंटे {v2} किमी/घंटा से चलता है। पूरी यात्रा की औसत चाल क्या है?",
+    "एक कार पहले {t} घंटों में {d1} किमी और अगले {t} घंटों में {d2} किमी चलती है। उसकी औसत चाल निकालिए।",
+  ],
+  mr: [
+    "एक सायकलस्वार {t} तास {v1} किमी/तास वेगाने, मग {t} तास {v2} किमी/तास वेगाने जातो. संपूर्ण प्रवासाचा सरासरी वेग किती?",
+    "एक कार पहिल्या {t} तासांत {d1} किमी आणि पुढील {t} तासांत {d2} किमी जाते. तिचा सरासरी वेग काढा.",
+  ],
+  sen: "Average speed = total distance ÷ total time = ({d1} + {d2}) ÷ ({t} + {t}) = {ans} km/h.",
+  shi: "औसत चाल = कुल दूरी ÷ कुल समय = ({d1} + {d2}) ÷ ({t} + {t}) = {ans} किमी/घंटा।",
+  smr: "सरासरी वेग = एकूण अंतर ÷ एकूण वेळ = ({d1} + {d2}) ÷ ({t} + {t}) = {ans} किमी/तास.",
+};
+const fSciAvgSpeed = (tag: string, lvl: number, want: number, v1r: Range, kr: Range, tr: Range) =>
+  T(`sciavg:${tag}`, lvl, want, [v1r.n, kr.n, tr.n], SCIAVG, ([i, j, k]) => {
+    const v1 = at(v1r, i!), v2 = v1 + 2 * at(kr, j!), t = at(tr, k!);
+    const d1 = v1 * t, d2 = v2 * t, avg = (v1 + v2) / 2;
+    return { vars: { v1, v2, t, d1, d2 }, answer: avg, expr: `(${d1}+${d2})/(${t}+${t})`, decoys: [avg + 2, avg - 2, v2], render: (n) => `${fmt(n)} km/h` };
+  });
+
+const SCITRIP: SkinSet = {
+  en: [
+    "A bus covers {d1} km in {t1} hours, then {d2} km in {t2} more hours. What is the average speed over the whole trip?",
+    "On a journey, a van does {d1} km in the first {t1} hours and {d2} km in the remaining {t2} hours. Find the average speed.",
+  ],
+  hi: [
+    "एक बस {t1} घंटों में {d1} किमी, फिर {t2} और घंटों में {d2} किमी चलती है। पूरी यात्रा की औसत चाल क्या है?",
+    "एक यात्रा में वैन पहले {t1} घंटों में {d1} किमी और बाकी {t2} घंटों में {d2} किमी चलती है। औसत चाल निकालिए।",
+  ],
+  mr: [
+    "एक बस {t1} तासांत {d1} किमी, मग आणखी {t2} तासांत {d2} किमी जाते. संपूर्ण प्रवासाचा सरासरी वेग किती?",
+    "एका प्रवासात व्हॅन पहिल्या {t1} तासांत {d1} किमी आणि उरलेल्या {t2} तासांत {d2} किमी जाते. सरासरी वेग काढा.",
+  ],
+  sen: "Average speed = total distance ÷ total time = ({d1} + {d2}) ÷ ({t1} + {t2}) = {ans} km/h.",
+  shi: "औसत चाल = कुल दूरी ÷ कुल समय = ({d1} + {d2}) ÷ ({t1} + {t2}) = {ans} किमी/घंटा।",
+  smr: "सरासरी वेग = एकूण अंतर ÷ एकूण वेळ = ({d1} + {d2}) ÷ ({t1} + {t2}) = {ans} किमी/तास.",
+};
+/** avg banded; t1 = t2·j so v2 = avg − δ·j stays an integer. */
+const fSciTrip = (tag: string, lvl: number, want: number, avgR: Range) =>
+  T(`scitrip:${tag}`, lvl, want, [avgR.n, 5, 3, 4], SCITRIP, ([i, j, k, l]) => {
+    const avg = at(avgR, i!), t2 = 2 + j!, mul = 1 + k!, delta = 1 + l!;
+    const t1 = t2 * mul, v1 = avg + delta, v2 = avg - delta * mul;
+    const d1 = v1 * t1, d2 = v2 * t2;
+    return { vars: { d1, t1, d2, t2 }, answer: avg, expr: `(${d1}+${d2})/(${t1}+${t2})`, decoys: [avg + 3, avg - 3, v1], render: (n) => `${fmt(n)} km/h` };
+  });
+
+const SCIROUND: SkinSet = {
+  en: [
+    "A plane flies {d} km to a city at {v1} km/h and returns over the same {d} km at {v2} km/h. What is the average speed for the round trip?",
+    "A boat goes {d} km downstream at {v1} km/h and comes back the same {d} km at {v2} km/h. Find the average speed of the whole trip.",
+  ],
+  hi: [
+    "एक विमान {v1} किमी/घंटा से {d} किमी दूर शहर जाता है और वही {d} किमी {v2} किमी/घंटा से लौटता है। पूरे सफ़र की औसत चाल क्या है?",
+    "एक नाव {v1} किमी/घंटा से {d} किमी धारा की ओर जाती है और वही {d} किमी {v2} किमी/घंटा से लौटती है। पूरे सफ़र की औसत चाल निकालिए।",
+  ],
+  mr: [
+    "एक विमान {v1} किमी/तास वेगाने {d} किमी दूरच्या शहरी जाते आणि तेच {d} किमी {v2} किमी/तास वेगाने परत येते. संपूर्ण फेरीचा सरासरी वेग किती?",
+    "एक नाव {v1} किमी/तास वेगाने {d} किमी प्रवाहाबरोबर जाते आणि तेच {d} किमी {v2} किमी/तास वेगाने परत येते. संपूर्ण फेरीचा सरासरी वेग काढा.",
+  ],
+  sen: "Average speed = total distance ÷ total time = 2 × {d} ÷ ({d}/{v1} + {d}/{v2}) = {ans} km/h — NOT the midpoint of the two speeds.",
+  shi: "औसत चाल = कुल दूरी ÷ कुल समय = 2 × {d} ÷ ({d}/{v1} + {d}/{v2}) = {ans} किमी/घंटा — दोनों चालों का मध्य नहीं।",
+  smr: "सरासरी वेग = एकूण अंतर ÷ एकूण वेळ = 2 × {d} ÷ ({d}/{v1} + {d}/{v2}) = {ans} किमी/तास — दोन वेगांचा मध्य नव्हे.",
+};
+/** v1 = 3m, v2 = 6m, d = 6mj → both leg times integer; answer 4m. */
+const fSciRoundTrip = (tag: string, lvl: number, want: number, mR: Range, jR: Range) =>
+  T(`sciround:${tag}`, lvl, want, [mR.n, jR.n], SCIROUND, ([i, j]) => {
+    const m = at(mR, i!), v1 = 3 * m, v2 = 6 * m, d = 6 * m * at(jR, j!);
+    const avg = 4 * m;
+    return { vars: { d, v1, v2 }, answer: avg, expr: `2*${d}/(${d}/${v1}+${d}/${v2})`, decoys: [(v1 + v2) / 2, avg + m, v2], render: (n) => `${fmt(n)} km/h` };
+  });
+
+const SCIMASS: SkinSet = {
+  en: ["A liquid has density {r} g/cm³. What is the mass of {v} cm³ of it?", "Find the mass of {v} cm³ of a material of density {r} g/cm³."],
+  hi: ["एक द्रव का घनत्व {r} ग्राम/सेमी³ है। उसके {v} सेमी³ का द्रव्यमान क्या है?", "{r} ग्राम/सेमी³ घनत्व वाले पदार्थ के {v} सेमी³ का द्रव्यमान निकालिए।"],
+  mr: ["एका द्रवाची घनता {r} ग्रॅम/सेमी³ आहे. त्याच्या {v} सेमी³ चे वस्तुमान किती?", "{r} ग्रॅम/सेमी³ घनतेच्या पदार्थाच्या {v} सेमी³ चे वस्तुमान काढा."],
+  sen: "Mass = density × volume = {r} × {v} = {ans} g.",
+  shi: "द्रव्यमान = घनत्व × आयतन = {r} × {v} = {ans} ग्राम।",
+  smr: "वस्तुमान = घनता × आकारमान = {r} × {v} = {ans} ग्रॅम.",
+};
+const fSciMass = (tag: string, lvl: number, want: number, r: Range, v: Range) =>
+  T(`scimass:${tag}`, lvl, want, [r.n, v.n], SCIMASS, ([i, j]) => {
+    const rho = at(r, i!), vol = at(v, j!), m = rho * vol;
+    return { vars: { r: rho, v: vol }, answer: m, expr: `${rho}*${vol}`, decoys: [m + rho, m - vol, rho + vol], render: (n) => `${fmt(n)} g` };
+  });
+
+const SCIVOL: SkinSet = {
+  en: ["A block of density {r} g/cm³ has mass {m} g. What is its volume?", "Find the volume of {m} g of a material whose density is {r} g/cm³."],
+  hi: ["{r} ग्राम/सेमी³ घनत्व के गुटके का द्रव्यमान {m} ग्राम है। उसका आयतन क्या है?", "{r} ग्राम/सेमी³ घनत्व वाले पदार्थ के {m} ग्राम का आयतन निकालिए।"],
+  mr: ["{r} ग्रॅम/सेमी³ घनतेच्या ठोकळ्याचे वस्तुमान {m} ग्रॅम आहे. त्याचे आकारमान किती?", "{r} ग्रॅम/सेमी³ घनतेच्या पदार्थाच्या {m} ग्रॅमचे आकारमान काढा."],
+  sen: "Volume = mass ÷ density = {m} ÷ {r} = {ans} cm³.",
+  shi: "आयतन = द्रव्यमान ÷ घनत्व = {m} ÷ {r} = {ans} सेमी³।",
+  smr: "आकारमान = वस्तुमान ÷ घनता = {m} ÷ {r} = {ans} सेमी³.",
+};
+const fSciVol = (tag: string, lvl: number, want: number, r: Range, v: Range) =>
+  T(`scivol:${tag}`, lvl, want, [r.n, v.n], SCIVOL, ([i, j]) => {
+    const rho = at(r, i!), vol = at(v, j!), m = rho * vol;
+    return { vars: { m, r: rho }, answer: vol, expr: `${m}/${rho}`, decoys: [vol + 2, vol - 1, m - rho], render: (n) => `${fmt(n)} cm³` };
+  });
+
+const SCIMIX: SkinSet = {
+  en: [
+    "Two blocks are glued together: one of mass {m1} g and volume {v1} cm³, the other of mass {m2} g and volume {v2} cm³. What is the density of the combined block?",
+    "A {m1} g, {v1} cm³ piece and a {m2} g, {v2} cm³ piece are joined. Find the density of the whole.",
+  ],
+  hi: [
+    "दो गुटके जोड़े गए: एक {m1} ग्राम और {v1} सेमी³ का, दूसरा {m2} ग्राम और {v2} सेमी³ का। जुड़े हुए गुटके का घनत्व क्या है?",
+    "{m1} ग्राम, {v1} सेमी³ का टुकड़ा और {m2} ग्राम, {v2} सेमी³ का टुकड़ा जोड़े गए। पूरे का घनत्व निकालिए।",
+  ],
+  mr: [
+    "दोन ठोकळे जोडले: एक {m1} ग्रॅम व {v1} सेमी³ चा, दुसरा {m2} ग्रॅम व {v2} सेमी³ चा. जोडलेल्या ठोकळ्याची घनता किती?",
+    "{m1} ग्रॅम, {v1} सेमी³ चा तुकडा आणि {m2} ग्रॅम, {v2} सेमी³ चा तुकडा जोडले. संपूर्णाची घनता काढा.",
+  ],
+  sen: "Density of the whole = total mass ÷ total volume = ({m1} + {m2}) ÷ ({v1} + {v2}) = {ans} g/cm³.",
+  shi: "पूरे का घनत्व = कुल द्रव्यमान ÷ कुल आयतन = ({m1} + {m2}) ÷ ({v1} + {v2}) = {ans} ग्राम/सेमी³।",
+  smr: "संपूर्णाची घनता = एकूण वस्तुमान ÷ एकूण आकारमान = ({m1} + {m2}) ÷ ({v1} + {v2}) = {ans} ग्रॅम/सेमी³.",
+};
+/** Combined density lands exactly on rho: m1 = (rho+1)·v1, m2 = rho·v2 − v1. */
+const fSciMix = (tag: string, lvl: number, want: number, r: Range, v1r: Range, v2r: Range) =>
+  T(`scimix:${tag}`, lvl, want, [r.n, v1r.n, v2r.n], SCIMIX, ([i, j, k]) => {
+    const rho = at(r, i!), v1 = at(v1r, j!), v2 = at(v2r, k!);
+    const m1 = (rho + 1) * v1, m2 = rho * v2 - v1;
+    return { vars: { m1, v1, m2, v2 }, answer: rho, expr: `(${m1}+${m2})/(${v1}+${v2})`, decoys: [rho + 1, rho - 1, rho + 2], render: (n) => `${fmt(n)} g/cm³` };
+  });
+
+const SCIALLOY: SkinSet = {
+  en: [
+    "Equal volumes ({v} cm³ each) of two materials with densities {a} g/cm³ and {b} g/cm³ are fused into one piece. What is the density of the alloy?",
+    "An alloy is made from {v} cm³ of a metal of density {a} g/cm³ and {v} cm³ of another of density {b} g/cm³. Find the alloy's density.",
+  ],
+  hi: [
+    "{a} ग्राम/सेमी³ और {b} ग्राम/सेमी³ घनत्व वाले दो पदार्थों के बराबर आयतन ({v} सेमी³ प्रत्येक) मिलाए गए। मिश्र धातु का घनत्व क्या है?",
+    "{a} ग्राम/सेमी³ घनत्व की धातु के {v} सेमी³ और {b} ग्राम/सेमी³ की धातु के {v} सेमी³ से मिश्र धातु बनी। उसका घनत्व निकालिए।",
+  ],
+  mr: [
+    "{a} ग्रॅम/सेमी³ आणि {b} ग्रॅम/सेमी³ घनतेच्या दोन पदार्थांची समान आकारमाने ({v} सेमी³ प्रत्येकी) एकत्र केली. मिश्रधातूची घनता किती?",
+    "{a} ग्रॅम/सेमी³ घनतेच्या धातूचे {v} सेमी³ आणि {b} ग्रॅम/सेमी³ च्या धातूचे {v} सेमी³ यांपासून मिश्रधातू बनली. तिची घनता काढा.",
+  ],
+  sen: "Total mass = {a}×{v} + {b}×{v}; total volume = 2×{v}; density = ({a}×{v} + {b}×{v}) ÷ (2×{v}) = {ans} g/cm³.",
+  shi: "कुल द्रव्यमान = {a}×{v} + {b}×{v}; कुल आयतन = 2×{v}; घनत्व = ({a}×{v} + {b}×{v}) ÷ (2×{v}) = {ans} ग्राम/सेमी³।",
+  smr: "एकूण वस्तुमान = {a}×{v} + {b}×{v}; एकूण आकारमान = 2×{v}; घनता = ({a}×{v} + {b}×{v}) ÷ (2×{v}) = {ans} ग्रॅम/सेमी³.",
+};
+const fSciAlloy = (tag: string, lvl: number, want: number, aR: Range, kR: Range, vR: Range) =>
+  T(`scialloy:${tag}`, lvl, want, [aR.n, kR.n, vR.n], SCIALLOY, ([i, j, k]) => {
+    const a = at(aR, i!), b = a + 2 * at(kR, j!), v = at(vR, k!);
+    const ans = (a + b) / 2;
+    return { vars: { a, b, v }, answer: ans, expr: `(${a}*${v}+${b}*${v})/(2*${v})`, decoys: [ans + 1, ans - 1, a + b], render: (n) => `${fmt(n)} g/cm³` };
+  });
+
+const SCICUBE: SkinSet = {
+  en: ["A solid cube of side {s} cm has mass {m} g. What is the density of its material?", "A cube with edge {s} cm weighs {m} g. Find the density."],
+  hi: ["{s} सेमी भुजा वाले ठोस घन का द्रव्यमान {m} ग्राम है। उसके पदार्थ का घनत्व क्या है?", "{s} सेमी किनारे वाले घन का द्रव्यमान {m} ग्राम है। घनत्व निकालिए।"],
+  mr: ["{s} सेमी बाजूच्या भरीव घनाचे वस्तुमान {m} ग्रॅम आहे. त्याच्या पदार्थाची घनता किती?", "{s} सेमी कडेच्या घनाचे वस्तुमान {m} ग्रॅम आहे. घनता काढा."],
+  sen: "Volume of the cube = {s}³ cm³; density = mass ÷ volume = {m} ÷ {s}³ = {ans} g/cm³.",
+  shi: "घन का आयतन = {s}³ सेमी³; घनत्व = द्रव्यमान ÷ आयतन = {m} ÷ {s}³ = {ans} ग्राम/सेमी³।",
+  smr: "घनाचे आकारमान = {s}³ सेमी³; घनता = वस्तुमान ÷ आकारमान = {m} ÷ {s}³ = {ans} ग्रॅम/सेमी³.",
+};
+const fSciCubeDen = (tag: string, lvl: number, want: number, r: Range, s: Range) =>
+  T(`scicube:${tag}`, lvl, want, [r.n, s.n], SCICUBE, ([i, j]) => {
+    const rho = at(r, i!), side = at(s, j!), m = rho * side * side * side;
+    return { vars: { s: side, m }, answer: rho, expr: `${m}/(${side}^3)`, decoys: [rho + 1, rho - 1, rho + 2], render: (n) => `${fmt(n)} g/cm³` };
+  });
+
+const SCIACCEL: SkinSet = {
+  en: ["A force of {f} N acts on a mass of {m} kg. What acceleration does it produce?", "Find the acceleration when {f} N pushes a {m} kg body."],
+  hi: ["{m} किग्रा के द्रव्यमान पर {f} न्यूटन का बल लगता है। कितना त्वरण उत्पन्न होगा?", "{f} न्यूटन बल {m} किग्रा के पिंड को धकेलता है। त्वरण निकालिए।"],
+  mr: ["{m} किग्रॅ वस्तुमानावर {f} न्यूटन बल कार्य करते. किती त्वरण निर्माण होईल?", "{f} न्यूटन बल {m} किग्रॅ वस्तूला ढकलते. त्वरण काढा."],
+  sen: "Acceleration = force ÷ mass = {f} ÷ {m} = {ans} m/s².",
+  shi: "त्वरण = बल ÷ द्रव्यमान = {f} ÷ {m} = {ans} मी/से²।",
+  smr: "त्वरण = बल ÷ वस्तुमान = {f} ÷ {m} = {ans} मी/से².",
+};
+const fSciAccel = (tag: string, lvl: number, want: number, m: Range, a: Range) =>
+  T(`sciaccel:${tag}`, lvl, want, [m.n, a.n], SCIACCEL, ([i, j]) => {
+    const mass = at(m, i!), acc = at(a, j!), f = mass * acc;
+    return { vars: { f, m: mass }, answer: acc, expr: `${f}/${mass}`, decoys: [acc + 1, acc + 2, f - mass], render: (n) => `${fmt(n)} m/s²` };
+  });
+
+const SCIMASSF: SkinSet = {
+  en: ["A force of {f} N gives a body an acceleration of {a} m/s². What is the body's mass?", "Find the mass that {f} N accelerates at {a} m/s²."],
+  hi: ["{f} न्यूटन का बल किसी पिंड को {a} मी/से² का त्वरण देता है। पिंड का द्रव्यमान क्या है?", "{f} न्यूटन जिस द्रव्यमान को {a} मी/से² से त्वरित करता है, वह निकालिए।"],
+  mr: ["{f} न्यूटन बल एका वस्तूला {a} मी/से² त्वरण देते. वस्तूचे वस्तुमान किती?", "{f} न्यूटन ज्या वस्तुमानाला {a} मी/से² ने त्वरित करते, ते काढा."],
+  sen: "Mass = force ÷ acceleration = {f} ÷ {a} = {ans} kg.",
+  shi: "द्रव्यमान = बल ÷ त्वरण = {f} ÷ {a} = {ans} किग्रा।",
+  smr: "वस्तुमान = बल ÷ त्वरण = {f} ÷ {a} = {ans} किग्रॅ.",
+};
+const fSciMassF = (tag: string, lvl: number, want: number, a: Range, m: Range) =>
+  T(`scimassf:${tag}`, lvl, want, [a.n, m.n], SCIMASSF, ([i, j]) => {
+    const acc = at(a, i!), mass = at(m, j!), f = mass * acc;
+    return { vars: { f, a: acc }, answer: mass, expr: `${f}/${acc}`, decoys: [mass + 2, mass - 1, f - acc], render: (n) => `${fmt(n)} kg` };
+  });
+
+const SCINET: SkinSet = {
+  en: [
+    "A {m} kg cart is pushed forward with {f1} N while friction pulls back with {f2} N. What is the cart's acceleration?",
+    "Forces of {f1} N forward and {f2} N backward act on a {m} kg body. Find its acceleration.",
+  ],
+  hi: [
+    "{m} किग्रा की गाड़ी को {f1} न्यूटन से आगे धकेला जाता है और घर्षण {f2} न्यूटन से पीछे खींचता है। गाड़ी का त्वरण क्या है?",
+    "{m} किग्रा के पिंड पर {f1} न्यूटन आगे और {f2} न्यूटन पीछे बल लगते हैं। त्वरण निकालिए।",
+  ],
+  mr: [
+    "{m} किग्रॅ ची गाडी {f1} न्यूटन बलाने पुढे ढकलली जाते आणि घर्षण {f2} न्यूटनने मागे ओढते. गाडीचे त्वरण किती?",
+    "{m} किग्रॅ वस्तूवर {f1} न्यूटन पुढे व {f2} न्यूटन मागे बले कार्य करतात. त्वरण काढा.",
+  ],
+  sen: "Net force = {f1} − {f2}; acceleration = net force ÷ mass = ({f1} − {f2}) ÷ {m} = {ans} m/s².",
+  shi: "परिणामी बल = {f1} − {f2}; त्वरण = परिणामी बल ÷ द्रव्यमान = ({f1} − {f2}) ÷ {m} = {ans} मी/से²।",
+  smr: "निव्वळ बल = {f1} − {f2}; त्वरण = निव्वळ बल ÷ वस्तुमान = ({f1} − {f2}) ÷ {m} = {ans} मी/से².",
+};
+const fSciNet = (tag: string, lvl: number, want: number, m: Range, a: Range, f2r: Range) =>
+  T(`scinet:${tag}`, lvl, want, [m.n, a.n, f2r.n], SCINET, ([i, j, k]) => {
+    const mass = at(m, i!), acc = at(a, j!), f2 = at(f2r, k!), f1 = mass * acc + f2;
+    return { vars: { m: mass, f1, f2 }, answer: acc, expr: `(${f1}-${f2})/${mass}`, decoys: [acc + 1, acc + 2, f1 - f2], render: (n) => `${fmt(n)} m/s²` };
+  });
+
+const SCITENSION: SkinSet = {
+  en: [
+    "A crane cable lifts a {m} kg crate upward with acceleration {a} m/s². Taking g = 10 m/s², what is the tension in the cable?",
+    "A lift cable pulls a {m} kg load up at {a} m/s² (g = 10 m/s²). Find the cable tension.",
+  ],
+  hi: [
+    "क्रेन की केबल {m} किग्रा के बक्से को {a} मी/से² के त्वरण से ऊपर उठाती है। g = 10 मी/से² लेकर केबल में तनाव निकालिए।",
+    "लिफ़्ट की केबल {m} किग्रा का भार {a} मी/से² से ऊपर खींचती है (g = 10 मी/से²)। केबल का तनाव क्या है?",
+  ],
+  mr: [
+    "क्रेनची केबल {m} किग्रॅ चे खोके {a} मी/से² त्वरणाने वर उचलते. g = 10 मी/से² घेऊन केबलमधील ताण काढा.",
+    "लिफ्टची केबल {m} किग्रॅ चे वजन {a} मी/से² ने वर ओढते (g = 10 मी/से²). केबलचा ताण किती?",
+  ],
+  sen: "Tension must beat gravity and accelerate the load: T = m × (g + a) = {m} × (10 + {a}) = {ans} N.",
+  shi: "तनाव को गुरुत्व हराकर भार को त्वरित करना है: T = m × (g + a) = {m} × (10 + {a}) = {ans} न्यूटन।",
+  smr: "ताणाला गुरुत्व जिंकून भार त्वरित करायचा आहे: T = m × (g + a) = {m} × (10 + {a}) = {ans} न्यूटन.",
+};
+const fSciTension = (tag: string, lvl: number, want: number, m: Range, a: Range) =>
+  T(`scitension:${tag}`, lvl, want, [m.n, a.n], SCITENSION, ([i, j]) => {
+    const mass = at(m, i!), acc = at(a, j!), t = mass * (10 + acc);
+    return { vars: { m: mass, a: acc }, answer: t, expr: `${mass}*(10+${acc})`, decoys: [mass * 10, mass * acc, t + mass], render: (n) => `${fmt(n)} N` };
+  });
+
+const SCIMOMENTUM: SkinSet = {
+  en: [
+    "A {m} kg body speeds up from {u} m/s to {v} m/s in {t} seconds. What constant force acted on it?",
+    "In {t} s, a force changes the velocity of a {m} kg object from {u} m/s to {v} m/s. Find the force.",
+  ],
+  hi: [
+    "{m} किग्रा का पिंड {t} सेकंड में {u} मी/से से {v} मी/से हो जाता है। उस पर कितना नियत बल लगा?",
+    "{t} सेकंड में एक बल {m} किग्रा की वस्तु का वेग {u} मी/से से {v} मी/से कर देता है। बल निकालिए।",
+  ],
+  mr: [
+    "{m} किग्रॅ ची वस्तू {t} सेकंदांत {u} मी/से वरून {v} मी/से वेग गाठते. तिच्यावर किती स्थिर बल कार्य करत होते?",
+    "{t} सेकंदांत एक बल {m} किग्रॅ वस्तूचा वेग {u} मी/से वरून {v} मी/से करते. बल काढा.",
+  ],
+  sen: "Force = change in momentum ÷ time = {m} × ({v} − {u}) ÷ {t} = {ans} N.",
+  shi: "बल = संवेग परिवर्तन ÷ समय = {m} × ({v} − {u}) ÷ {t} = {ans} न्यूटन।",
+  smr: "बल = संवेग बदल ÷ वेळ = {m} × ({v} − {u}) ÷ {t} = {ans} न्यूटन.",
+};
+const fSciMomentum = (tag: string, lvl: number, want: number, m: Range, u: Range, tR: Range, kR: Range) =>
+  T(`scimom:${tag}`, lvl, want, [m.n, u.n, tR.n, kR.n], SCIMOMENTUM, ([i, j, k, l]) => {
+    const mass = at(m, i!), u0 = at(u, j!), t = at(tR, k!), gain = at(kR, l!);
+    const v = u0 + t * gain, f = mass * gain;
+    return { vars: { m: mass, u: u0, v, t }, answer: f, expr: `${mass}*(${v}-${u0})/${t}`, decoys: [f + mass, mass * v, f + gain], render: (n) => `${fmt(n)} N` };
+  });
+
+const SCICURRENT: SkinSet = {
+  en: ["A {v} V battery drives current through a {r} Ω resistor. How much current flows?", "Find the current when {v} V is applied across {r} Ω."],
+  hi: ["{v} वोल्ट की बैटरी {r} ओम के प्रतिरोध से धारा भेजती है। कितनी धारा बहेगी?", "{r} ओम पर {v} वोल्ट लगाने पर धारा निकालिए।"],
+  mr: ["{v} व्होल्टची बॅटरी {r} ओम रोधातून धारा पाठवते. किती धारा वाहील?", "{r} ओमवर {v} व्होल्ट लावल्यास धारा काढा."],
+  sen: "Ohm's law: I = V ÷ R = {v} ÷ {r} = {ans} A.",
+  shi: "ओम का नियम: I = V ÷ R = {v} ÷ {r} = {ans} ऐम्पियर।",
+  smr: "ओमचा नियम: I = V ÷ R = {v} ÷ {r} = {ans} अँपिअर.",
+};
+const fSciCurrent = (tag: string, lvl: number, want: number, r: Range, iR: Range) =>
+  T(`scicurrent:${tag}`, lvl, want, [r.n, iR.n], SCICURRENT, ([i, j]) => {
+    const res = at(r, i!), cur = at(iR, j!), v = res * cur;
+    return { vars: { v, r: res }, answer: cur, expr: `${v}/${res}`, decoys: [cur + 1, cur + 2, v - res], render: (n) => `${fmt(n)} A` };
+  });
+
+const SCIRES: SkinSet = {
+  en: ["A potential difference of {v} V pushes {i} A through a resistor. What is its resistance?", "Find R when V = {v} V and I = {i} A."],
+  hi: ["{v} वोल्ट का विभवांतर {i} ऐम्पियर धारा भेजता है। प्रतिरोध क्या है?", "V = {v} V और I = {i} A हो तो R निकालिए।"],
+  mr: ["{v} व्होल्टचे विभवांतर {i} अँपिअर धारा पाठवते. रोध किती?", "V = {v} V आणि I = {i} A असता R काढा."],
+  sen: "Ohm's law: R = V ÷ I = {v} ÷ {i} = {ans} Ω.",
+  shi: "ओम का नियम: R = V ÷ I = {v} ÷ {i} = {ans} ओम।",
+  smr: "ओमचा नियम: R = V ÷ I = {v} ÷ {i} = {ans} ओम.",
+};
+const fSciRes = (tag: string, lvl: number, want: number, iR: Range, rR: Range) =>
+  T(`scires:${tag}`, lvl, want, [iR.n, rR.n], SCIRES, ([i, j]) => {
+    const cur = at(iR, i!), res = at(rR, j!), v = res * cur;
+    return { vars: { v, i: cur }, answer: res, expr: `${v}/${cur}`, decoys: [res + 2, res - 1, v - cur], render: (n) => `${fmt(n)} Ω` };
+  });
+
+const SCISERIES: SkinSet = {
+  en: [
+    "Resistors of {r1} Ω and {r2} Ω are in series across a {v} V supply. What current flows in the circuit?",
+    "A {v} V battery is connected to {r1} Ω and {r2} Ω joined in series. Find the current.",
+  ],
+  hi: [
+    "{r1} ओम और {r2} ओम के प्रतिरोध श्रेणीक्रम में {v} वोल्ट से जुड़े हैं। परिपथ में कितनी धारा बहेगी?",
+    "{v} वोल्ट की बैटरी श्रेणीक्रम में जुड़े {r1} ओम और {r2} ओम से जुड़ी है। धारा निकालिए।",
+  ],
+  mr: [
+    "{r1} ओम आणि {r2} ओम रोध एकसर जोडणीत {v} व्होल्टला जोडले आहेत. परिपथात किती धारा वाहील?",
+    "{v} व्होल्टची बॅटरी एकसर जोडलेल्या {r1} ओम व {r2} ओमला जोडली आहे. धारा काढा.",
+  ],
+  sen: "In series the resistances add: R = {r1} + {r2}; then I = V ÷ R = {v} ÷ ({r1} + {r2}) = {ans} A.",
+  shi: "श्रेणीक्रम में प्रतिरोध जुड़ते हैं: R = {r1} + {r2}; फिर I = V ÷ R = {v} ÷ ({r1} + {r2}) = {ans} ऐम्पियर।",
+  smr: "एकसर जोडणीत रोध मिळवतात: R = {r1} + {r2}; मग I = V ÷ R = {v} ÷ ({r1} + {r2}) = {ans} अँपिअर.",
+};
+const fSciSeries = (tag: string, lvl: number, want: number, r1R: Range, r2R: Range, iR: Range) =>
+  T(`sciseries:${tag}`, lvl, want, [r1R.n, r2R.n, iR.n], SCISERIES, ([i, j, k]) => {
+    const r1 = at(r1R, i!), r2 = at(r2R, j!), cur = at(iR, k!), v = cur * (r1 + r2);
+    return { vars: { r1, r2, v }, answer: cur, expr: `${v}/(${r1}+${r2})`, decoys: [cur + 1, cur + 2, v - r1 - r2], render: (n) => `${fmt(n)} A` };
+  });
+
+const SCIPOWER2: SkinSet = {
+  en: ["A current of {i} A flows through a {r} Ω resistor. How much power is dissipated?", "Find the power lost as heat in {r} Ω carrying {i} A."],
+  hi: ["{r} ओम के प्रतिरोध से {i} ऐम्पियर धारा बहती है। कितनी शक्ति व्यय होती है?", "{i} ऐम्पियर धारा वाले {r} ओम में ऊष्मा रूप में खोई शक्ति निकालिए।"],
+  mr: ["{r} ओम रोधातून {i} अँपिअर धारा वाहते. किती शक्ती खर्च होते?", "{i} अँपिअर धारा वाहणाऱ्या {r} ओममध्ये उष्णतेच्या रूपात जाणारी शक्ती काढा."],
+  sen: "Power = I² × R = {i}² × {r} = {ans} W.",
+  shi: "शक्ति = I² × R = {i}² × {r} = {ans} वाट।",
+  smr: "शक्ती = I² × R = {i}² × {r} = {ans} वॅट.",
+};
+const fSciPowerI2R = (tag: string, lvl: number, want: number, r: Range, iR: Range) =>
+  T(`scip2r:${tag}`, lvl, want, [r.n, iR.n], SCIPOWER2, ([i, j]) => {
+    const res = at(r, i!), cur = at(iR, j!), p = cur * cur * res;
+    return { vars: { i: cur, r: res }, answer: p, expr: `(${cur}^2)*${res}`, decoys: [cur * res, p + res, p - cur], render: (n) => `${fmt(n)} W` };
+  });
+
+const SCICOST: SkinSet = {
+  en: [
+    "A {p} W appliance runs {h} hours a day for {d} days. At ₹{c} per kWh, what is the electricity bill?",
+    "Running a {p} W device for {h} hours daily over {d} days, with energy at ₹{c} per unit, costs how much?",
+  ],
+  hi: [
+    "{p} वाट का उपकरण {d} दिनों तक रोज़ {h} घंटे चलता है। ₹{c} प्रति यूनिट की दर से बिजली का बिल कितना होगा?",
+    "{p} वाट का यंत्र {d} दिनों तक प्रतिदिन {h} घंटे चलाने पर, ₹{c} प्रति यूनिट की दर से, कितना खर्च आएगा?",
+  ],
+  mr: [
+    "{p} वॅटचे उपकरण {d} दिवस रोज {h} तास चालते. ₹{c} प्रति युनिट दराने विजेचे बिल किती येईल?",
+    "{p} वॅटचे यंत्र {d} दिवस दररोज {h} तास चालवल्यास, ₹{c} प्रति युनिट दराने, किती खर्च येईल?",
+  ],
+  sen: "Energy = {p} W × {h} h × {d} days ÷ 1000 = {u} kWh; bill = {u} × ₹{c} = ₹{ans}.",
+  shi: "ऊर्जा = {p} वाट × {h} घंटे × {d} दिन ÷ 1000 = {u} यूनिट; बिल = {u} × ₹{c} = ₹{ans}।",
+  smr: "ऊर्जा = {p} वॅट × {h} तास × {d} दिवस ÷ 1000 = {u} युनिट; बिल = {u} × ₹{c} = ₹{ans}.",
+};
+const SCICOST_DAYS = [10, 20, 30];
+const fSciEnergyCost = (tag: string, lvl: number, want: number, pR: Range, hR: Range, cR: Range) =>
+  T(`scicost:${tag}`, lvl, want, [pR.n, hR.n, SCICOST_DAYS.length, cR.n], SCICOST, ([i, j, k, l]) => {
+    const p100 = at(pR, i!), h = at(hR, j!), d = SCICOST_DAYS[k!]!, c = at(cR, l!);
+    const p = 100 * p100, units = (p * h * d) / 1000, cost = units * c;
+    return { vars: { p, h, d, c, u: units }, answer: cost, expr: `${p}*${h}*${d}/1000*${c}`, decoys: [units, cost + c, cost - units], render: rupees };
+  });
+
+const SCIENERGYW: SkinSet = {
+  en: ["A machine works at a steady {p} W for {t} seconds. How much energy does it deliver?", "How much work does a {p} W motor do in {t} seconds?"],
+  hi: ["एक मशीन {t} सेकंड तक {p} वाट पर काम करती है। वह कितनी ऊर्जा देती है?", "{p} वाट की मोटर {t} सेकंड में कितना कार्य करती है?"],
+  mr: ["एक यंत्र {t} सेकंद {p} वॅटवर काम करते. ते किती ऊर्जा देते?", "{p} वॅटची मोटर {t} सेकंदांत किती कार्य करते?"],
+  sen: "Energy = power × time = {p} × {t} = {ans} J.",
+  shi: "ऊर्जा = शक्ति × समय = {p} × {t} = {ans} जूल।",
+  smr: "ऊर्जा = शक्ती × वेळ = {p} × {t} = {ans} ज्यूल.",
+};
+const fSciEnergyW = (tag: string, lvl: number, want: number, pR: Range, tR: Range) =>
+  T(`scienergyw:${tag}`, lvl, want, [pR.n, tR.n], SCIENERGYW, ([i, j]) => {
+    const p = at(pR, i!), t = at(tR, j!), w = p * t;
+    return { vars: { p, t }, answer: w, expr: `${p}*${t}`, decoys: [w + p, w - t, p + t], render: (n) => `${fmt(n)} J` };
+  });
+
+const SCIPE: SkinSet = {
+  en: ["A {m} kg mass is lifted to a height of {h} m. Taking g = 10 m/s², what potential energy does it gain?", "Find the potential energy of {m} kg raised {h} m (g = 10 m/s²)."],
+  hi: ["{m} किग्रा का द्रव्यमान {h} मीटर ऊँचाई तक उठाया जाता है। g = 10 मी/से² लेकर स्थितिज ऊर्जा निकालिए।", "{h} मीटर ऊपर उठाए गए {m} किग्रा की स्थितिज ऊर्जा क्या है? (g = 10 मी/से²)"],
+  mr: ["{m} किग्रॅ वस्तुमान {h} मीटर उंचीवर उचलले जाते. g = 10 मी/से² घेऊन स्थितिज ऊर्जा काढा.", "{h} मीटर वर उचललेल्या {m} किग्रॅ ची स्थितिज ऊर्जा किती? (g = 10 मी/से²)"],
+  sen: "Potential energy = m × g × h = {m} × 10 × {h} = {ans} J.",
+  shi: "स्थितिज ऊर्जा = m × g × h = {m} × 10 × {h} = {ans} जूल।",
+  smr: "स्थितिज ऊर्जा = m × g × h = {m} × 10 × {h} = {ans} ज्यूल.",
+};
+const fSciPE = (tag: string, lvl: number, want: number, m: Range, h: Range) =>
+  T(`scipe:${tag}`, lvl, want, [m.n, h.n], SCIPE, ([i, j]) => {
+    const mass = at(m, i!), ht = at(h, j!), pe = mass * 10 * ht;
+    return { vars: { m: mass, h: ht }, answer: pe, expr: `${mass}*10*${ht}`, decoys: [mass * ht, pe + 10, pe - mass], render: (n) => `${fmt(n)} J` };
+  });
+
+const SCIKE: SkinSet = {
+  en: ["A {m} kg object moves at {v} m/s. What is its kinetic energy?", "Find the kinetic energy of a {m} kg body travelling at {v} m/s."],
+  hi: ["{m} किग्रा की वस्तु {v} मी/से से चलती है। उसकी गतिज ऊर्जा क्या है?", "{v} मी/से से चलते {m} किग्रा के पिंड की गतिज ऊर्जा निकालिए।"],
+  mr: ["{m} किग्रॅ ची वस्तू {v} मी/से वेगाने जाते. तिची गतिज ऊर्जा किती?", "{v} मी/से वेगाने जाणाऱ्या {m} किग्रॅ वस्तूची गतिज ऊर्जा काढा."],
+  sen: "Kinetic energy = ½ × m × v² = ½ × {m} × {v}² = {ans} J.",
+  shi: "गतिज ऊर्जा = ½ × m × v² = ½ × {m} × {v}² = {ans} जूल।",
+  smr: "गतिज ऊर्जा = ½ × m × v² = ½ × {m} × {v}² = {ans} ज्यूल.",
+};
+const fSciKE = (tag: string, lvl: number, want: number, jR: Range, v: Range) =>
+  T(`scike:${tag}`, lvl, want, [jR.n, v.n], SCIKE, ([i, j]) => {
+    const half = at(jR, i!), m = 2 * half, vel = at(v, j!), ke = half * vel * vel;
+    return { vars: { m, v: vel }, answer: ke, expr: `${m}*(${vel}^2)/2`, decoys: [m * vel, ke * 2, ke + vel], render: (n) => `${fmt(n)} J` };
+  });
+
+const SCIPUMP: SkinSet = {
+  en: [
+    "A pump raises {m} kg of water to a height of {h} m in {t} seconds. Taking g = 10 m/s², what is the pump's power?",
+    "A motor lifts {m} kg through {h} m in {t} s (g = 10 m/s²). Find its power.",
+  ],
+  hi: [
+    "एक पंप {t} सेकंड में {m} किग्रा पानी {h} मीटर ऊँचाई तक चढ़ाता है। g = 10 मी/से² लेकर पंप की शक्ति निकालिए।",
+    "एक मोटर {t} सेकंड में {m} किग्रा को {h} मीटर उठाती है (g = 10 मी/से²)। उसकी शक्ति क्या है?",
+  ],
+  mr: [
+    "एक पंप {t} सेकंदांत {m} किग्रॅ पाणी {h} मीटर उंचीवर चढवतो. g = 10 मी/से² घेऊन पंपाची शक्ती काढा.",
+    "एक मोटर {t} सेकंदांत {m} किग्रॅ वजन {h} मीटर उचलते (g = 10 मी/से²). तिची शक्ती किती?",
+  ],
+  sen: "Work = m × g × h = {m} × 10 × {h} J; power = work ÷ time = {m} × 10 × {h} ÷ {t} = {ans} W.",
+  shi: "कार्य = m × g × h = {m} × 10 × {h} जूल; शक्ति = कार्य ÷ समय = {m} × 10 × {h} ÷ {t} = {ans} वाट।",
+  smr: "कार्य = m × g × h = {m} × 10 × {h} ज्यूल; शक्ती = कार्य ÷ वेळ = {m} × 10 × {h} ÷ {t} = {ans} वॅट.",
+};
+const fSciPump = (tag: string, lvl: number, want: number, tR: Range, jR: Range, h: Range) =>
+  T(`scipump:${tag}`, lvl, want, [tR.n, jR.n, h.n], SCIPUMP, ([i, j, k]) => {
+    const t = at(tR, i!), m = t * at(jR, j!), ht = at(h, k!), p = (m * 10 * ht) / t;
+    return { vars: { m, h: ht, t }, answer: p, expr: `${m}*10*${ht}/${t}`, decoys: [p * t, p + ht, p - 10], render: (n) => `${fmt(n)} W` };
+  });
+
+const SCIFC2: SkinSet = {
+  en: ["A furnace gauge reads {f}°F. What is that in Celsius?", "Convert {f}°F to °C."],
+  hi: ["भट्टी का मापक {f}°F दिखाता है। सेल्सियस में यह कितना है?", "{f}°F को °C में बदलिए।"],
+  mr: ["भट्टीचे मापक {f}°F दाखवते. सेल्सिअसमध्ये ते किती?", "{f}°F चे °C मध्ये रूपांतर करा."],
+  sen: "°C = ({f} − 32) × 5 ÷ 9 = {ans}°C.",
+  shi: "°C = ({f} − 32) × 5 ÷ 9 = {ans}°C।",
+  smr: "°C = ({f} − 32) × 5 ÷ 9 = {ans}°C.",
+};
+const fSciFC = (tag: string, lvl: number, want: number, c5: Range) =>
+  T(`scifc:${tag}`, lvl, want, [c5.n], SCIFC2, ([i]) => {
+    const c = 5 * at(c5, i!), f = (9 * c) / 5 + 32;
+    return { vars: { f }, answer: c, expr: `(${f}-32)*5/9`, decoys: [c + 5, c - 5, f - 32], render: (n) => `${fmt(n)}°C` };
+  });
+
+const SCIHEATM: SkinSet = {
+  en: ["Absorbing {q} J of heat warms a sample of specific heat {c} J/kg·°C by {dt}°C. What is the sample's mass?"],
+  hi: ["{q} जूल ऊष्मा लेकर, {c} जूल/किग्रा·°C विशिष्ट ऊष्मा वाला नमूना {dt}°C गर्म होता है। नमूने का द्रव्यमान क्या है?"],
+  mr: ["{q} ज्यूल उष्णता घेऊन, {c} ज्यूल/किग्रॅ·°C विशिष्ट उष्मा असलेला नमुना {dt}°C ने तापतो. नमुन्याचे वस्तुमान किती?"],
+  sen: "From Q = m × c × ΔT: m = Q ÷ (c × ΔT) = {q} ÷ ({c} × {dt}) = {ans} kg.",
+  shi: "Q = m × c × ΔT से: m = Q ÷ (c × ΔT) = {q} ÷ ({c} × {dt}) = {ans} किग्रा।",
+  smr: "Q = m × c × ΔT वरून: m = Q ÷ (c × ΔT) = {q} ÷ ({c} × {dt}) = {ans} किग्रॅ.",
+};
+const fSciHeatM = (tag: string, lvl: number, want: number, m: Range, dt: Range) =>
+  T(`sciheatm:${tag}`, lvl, want, [m.n, dt.n, HEAT_C.length], SCIHEATM, ([i, j, k]) => {
+    const mass = at(m, i!), delta = at(dt, j!), c = HEAT_C[k!]!, q = mass * c * delta;
+    return { vars: { q, c, dt: delta }, answer: mass, expr: `${q}/(${c}*${delta})`, decoys: [mass + 1, mass + 2, mass * delta], render: (n) => `${fmt(n)} kg` };
+  });
+
+const SCIHEATT: SkinSet = {
+  en: ["A {m} kg sample of specific heat {c} J/kg·°C absorbs {q} J. By how many degrees does its temperature rise?"],
+  hi: ["{c} जूल/किग्रा·°C विशिष्ट ऊष्मा वाला {m} किग्रा का नमूना {q} जूल लेता है। तापमान कितने डिग्री बढ़ेगा?"],
+  mr: ["{c} ज्यूल/किग्रॅ·°C विशिष्ट उष्मा असलेला {m} किग्रॅ चा नमुना {q} ज्यूल घेतो. तापमान किती अंशांनी वाढेल?"],
+  sen: "From Q = m × c × ΔT: ΔT = Q ÷ (m × c) = {q} ÷ ({m} × {c}) = {ans}°C.",
+  shi: "Q = m × c × ΔT से: ΔT = Q ÷ (m × c) = {q} ÷ ({m} × {c}) = {ans}°C।",
+  smr: "Q = m × c × ΔT वरून: ΔT = Q ÷ (m × c) = {q} ÷ ({m} × {c}) = {ans}°C.",
+};
+const fSciHeatT = (tag: string, lvl: number, want: number, m: Range, dt: Range) =>
+  T(`sciheatt:${tag}`, lvl, want, [m.n, dt.n, HEAT_C.length], SCIHEATT, ([i, j, k]) => {
+    const mass = at(m, i!), delta = at(dt, j!), c = HEAT_C[k!]!, q = mass * c * delta;
+    return { vars: { q, c, m: mass }, answer: delta, expr: `${q}/(${mass}*${c})`, decoys: [delta + 5, delta - 2, delta * 2], render: (n) => `${fmt(n)}°C` };
+  });
+
+const MOLAR_MASSES = [2, 4, 12, 14, 16, 18, 28, 32, 44, 64];
+const SCIMOLMASS: SkinSet = {
+  en: ["What is the mass of {n} moles of a substance whose molar mass is {M} g/mol?", "Find the mass of {n} mol of a compound with molar mass {M} g/mol."],
+  hi: ["{M} ग्राम/मोल मोलर द्रव्यमान वाले पदार्थ के {n} मोल का द्रव्यमान क्या है?", "{M} ग्राम/मोल वाले यौगिक के {n} मोल का द्रव्यमान निकालिए।"],
+  mr: ["{M} ग्रॅम/मोल मोलर वस्तुमान असलेल्या पदार्थाच्या {n} मोलचे वस्तुमान किती?", "{M} ग्रॅम/मोल असलेल्या संयुगाच्या {n} मोलचे वस्तुमान काढा."],
+  sen: "Mass = moles × molar mass = {n} × {M} = {ans} g.",
+  shi: "द्रव्यमान = मोल × मोलर द्रव्यमान = {n} × {M} = {ans} ग्राम।",
+  smr: "वस्तुमान = मोल × मोलर वस्तुमान = {n} × {M} = {ans} ग्रॅम.",
+};
+const fSciMolesMass = (tag: string, lvl: number, want: number, n: Range) =>
+  T(`scimolmass:${tag}`, lvl, want, [n.n, MOLAR_MASSES.length], SCIMOLMASS, ([i, j]) => {
+    const mol = at(n, i!), M = MOLAR_MASSES[j!]!, m = mol * M;
+    return { vars: { n: mol, M }, answer: m, expr: `${mol}*${M}`, decoys: [m + M, m - mol, mol + M], render: (n2) => `${fmt(n2)} g` };
+  });
+
+const SCIMOLARM: SkinSet = {
+  en: ["{m} g of a substance is exactly {n} moles. What is its molar mass?", "If {n} mol of a compound weighs {m} g, find the molar mass."],
+  hi: ["किसी पदार्थ के {m} ग्राम ठीक {n} मोल हैं। उसका मोलर द्रव्यमान क्या है?", "यदि यौगिक के {n} मोल का द्रव्यमान {m} ग्राम है, तो मोलर द्रव्यमान निकालिए।"],
+  mr: ["एका पदार्थाचे {m} ग्रॅम म्हणजे नेमके {n} मोल आहेत. त्याचे मोलर वस्तुमान किती?", "संयुगाच्या {n} मोलचे वस्तुमान {m} ग्रॅम असल्यास मोलर वस्तुमान काढा."],
+  sen: "Molar mass = mass ÷ moles = {m} ÷ {n} = {ans} g/mol.",
+  shi: "मोलर द्रव्यमान = द्रव्यमान ÷ मोल = {m} ÷ {n} = {ans} ग्राम/मोल।",
+  smr: "मोलर वस्तुमान = वस्तुमान ÷ मोल = {m} ÷ {n} = {ans} ग्रॅम/मोल.",
+};
+const fSciMolarM = (tag: string, lvl: number, want: number, n: Range) =>
+  T(`scimolarm:${tag}`, lvl, want, [n.n, MOLAR_MASSES.length], SCIMOLARM, ([i, j]) => {
+    const mol = at(n, i!), M = MOLAR_MASSES[j!]!, m = mol * M;
+    return { vars: { m, n: mol }, answer: M, expr: `${m}/${mol}`, decoys: [M + 2, M - 2, m - mol], render: (n2) => `${fmt(n2)} g/mol` };
+  });
+
+const SCIHYDRO: SkinSet = {
+  en: [
+    "A molecule has {x} carbon atoms and {y} hydrogen atoms (C = 12, H = 1). What is the mass of {n} moles of the compound?",
+    "For a compound C{x}H{y} (atomic masses C = 12, H = 1), find the mass of {n} mol.",
+  ],
+  hi: [
+    "एक अणु में {x} कार्बन और {y} हाइड्रोजन परमाणु हैं (C = 12, H = 1)। यौगिक के {n} मोल का द्रव्यमान क्या है?",
+    "यौगिक C{x}H{y} (परमाणु द्रव्यमान C = 12, H = 1) के {n} मोल का द्रव्यमान निकालिए।",
+  ],
+  mr: [
+    "एका रेणूत {x} कार्बन आणि {y} हायड्रोजन अणू आहेत (C = 12, H = 1). संयुगाच्या {n} मोलचे वस्तुमान किती?",
+    "C{x}H{y} या संयुगाच्या (अणुवस्तुमान C = 12, H = 1) {n} मोलचे वस्तुमान काढा.",
+  ],
+  sen: "Molar mass = 12 × {x} + 1 × {y} = {M} g/mol; mass = {n} × {M} = {ans} g.",
+  shi: "मोलर द्रव्यमान = 12 × {x} + 1 × {y} = {M} ग्राम/मोल; द्रव्यमान = {n} × {M} = {ans} ग्राम।",
+  smr: "मोलर वस्तुमान = 12 × {x} + 1 × {y} = {M} ग्रॅम/मोल; वस्तुमान = {n} × {M} = {ans} ग्रॅम.",
+};
+const fSciMolesCompound = (tag: string, lvl: number, want: number, x: Range, y: Range, n: Range) =>
+  T(`scihydro:${tag}`, lvl, want, [x.n, y.n, n.n], SCIHYDRO, ([i, j, k]) => {
+    const cx = at(x, i!), hy = at(y, j!), mol = at(n, k!);
+    const M = 12 * cx + hy, m = mol * M;
+    return { vars: { x: cx, y: hy, n: mol, M }, answer: m, expr: `${mol}*(12*${cx}+${hy})`, decoys: [m + M, mol * 12 * cx, m - hy], render: (n2) => `${fmt(n2)} g` };
+  });
+
+const SCIMOLMIX: SkinSet = {
+  en: ["A beaker holds {m1} g of a substance of molar mass {M1} g/mol and {m2} g of another of molar mass {M2} g/mol. How many moles is that in total?"],
+  hi: ["एक बीकर में {M1} ग्राम/मोल वाले पदार्थ के {m1} ग्राम और {M2} ग्राम/मोल वाले पदार्थ के {m2} ग्राम हैं। कुल कितने मोल हुए?"],
+  mr: ["एका बीकरमध्ये {M1} ग्रॅम/मोल असलेल्या पदार्थाचे {m1} ग्रॅम आणि {M2} ग्रॅम/मोल असलेल्याचे {m2} ग्रॅम आहेत. एकूण किती मोल?"],
+  sen: "Moles = {m1} ÷ {M1} + {m2} ÷ {M2} = {n1} + {n2} = {ans} mol.",
+  shi: "मोल = {m1} ÷ {M1} + {m2} ÷ {M2} = {n1} + {n2} = {ans} मोल।",
+  smr: "मोल = {m1} ÷ {M1} + {m2} ÷ {M2} = {n1} + {n2} = {ans} मोल.",
+};
+const fSciMolesMix = (tag: string, lvl: number, want: number, n1: Range, n2: Range) =>
+  T(`scimolmix:${tag}`, lvl, want, [n1.n, n2.n, MOLAR_MASSES.length, MOLAR_MASSES.length - 1], SCIMOLMIX, ([i, j, k, l]) => {
+    const a = at(n1, i!), b = at(n2, j!), M1 = MOLAR_MASSES[k!]!;
+    const M2 = MOLAR_MASSES[l! >= k! ? l! + 1 : l!]!;
+    const m1 = a * M1, m2 = b * M2, total = a + b;
+    return { vars: { m1, M1, m2, M2, n1: a, n2: b }, answer: total, expr: `${m1}/${M1}+${m2}/${M2}`, decoys: [total + 1, total - 1, m1 + m2], render: (n2r) => `${fmt(n2r)} mol` };
+  });
+
+const SCIMOLARITY: SkinSet = {
+  en: ["{m} g of a solute of molar mass {M} g/mol is dissolved to make {v} L of solution. What is the molarity?"],
+  hi: ["{M} ग्राम/मोल मोलर द्रव्यमान वाले विलेय के {m} ग्राम से {v} लीटर विलयन बनाया गया। मोलरता क्या है?"],
+  mr: ["{M} ग्रॅम/मोल मोलर वस्तुमान असलेल्या द्राव्याच्या {m} ग्रॅमपासून {v} लिटर द्रावण बनवले. मोलरता किती?"],
+  sen: "Moles = {m} ÷ {M}; molarity = moles ÷ volume = {m} ÷ ({M} × {v}) = {ans} mol/L.",
+  shi: "मोल = {m} ÷ {M}; मोलरता = मोल ÷ आयतन = {m} ÷ ({M} × {v}) = {ans} मोल/लीटर।",
+  smr: "मोल = {m} ÷ {M}; मोलरता = मोल ÷ आकारमान = {m} ÷ ({M} × {v}) = {ans} मोल/लिटर.",
+};
+const fSciMolarity = (tag: string, lvl: number, want: number, molR: Range, vR: Range) =>
+  T(`scimolarity:${tag}`, lvl, want, [molR.n, vR.n, MOLAR_MASSES.length], SCIMOLARITY, ([i, j, k]) => {
+    const conc = at(molR, i!), v = at(vR, j!), M = MOLAR_MASSES[k!]!, m = conc * v * M;
+    return { vars: { m, M, v }, answer: conc, expr: `${m}/(${M}*${v})`, decoys: [conc + 1, conc * v, m / M], render: (n) => `${fmt(n)} mol/L` };
+  });
+
+const SCIWAVEL: SkinSet = {
+  en: ["A wave of speed {v} m/s has frequency {f} Hz. What is its wavelength?", "Find the wavelength when v = {v} m/s and f = {f} Hz."],
+  hi: ["{v} मी/से चाल वाली तरंग की आवृत्ति {f} हर्ट्ज़ है। तरंगदैर्घ्य क्या है?", "v = {v} मी/से और f = {f} Hz हो तो तरंगदैर्घ्य निकालिए।"],
+  mr: ["{v} मी/से वेगाच्या तरंगाची वारंवारता {f} हर्ट्झ आहे. तरंगलांबी किती?", "v = {v} मी/से आणि f = {f} Hz असता तरंगलांबी काढा."],
+  sen: "Wavelength = speed ÷ frequency = {v} ÷ {f} = {ans} m.",
+  shi: "तरंगदैर्घ्य = चाल ÷ आवृत्ति = {v} ÷ {f} = {ans} मीटर।",
+  smr: "तरंगलांबी = वेग ÷ वारंवारता = {v} ÷ {f} = {ans} मीटर.",
+};
+const fSciWaveL = (tag: string, lvl: number, want: number, f: Range, l: Range) =>
+  T(`sciwavel:${tag}`, lvl, want, [f.n, l.n], SCIWAVEL, ([i, j]) => {
+    const freq = at(f, i!), lam = at(l, j!), v = freq * lam;
+    return { vars: { v, f: freq }, answer: lam, expr: `${v}/${freq}`, decoys: [lam + 1, lam + 2, v - freq], render: (n) => `${fmt(n)} m` };
+  });
+
+const SCIWAVEF: SkinSet = {
+  en: ["A wave travels at {v} m/s with wavelength {l} m. What is its frequency?", "Find the frequency when v = {v} m/s and λ = {l} m."],
+  hi: ["{v} मी/से से चलती तरंग का तरंगदैर्घ्य {l} मीटर है। आवृत्ति क्या है?", "v = {v} मी/से और λ = {l} m हो तो आवृत्ति निकालिए।"],
+  mr: ["{v} मी/से वेगाने जाणाऱ्या तरंगाची तरंगलांबी {l} मीटर आहे. वारंवारता किती?", "v = {v} मी/से आणि λ = {l} m असता वारंवारता काढा."],
+  sen: "Frequency = speed ÷ wavelength = {v} ÷ {l} = {ans} Hz.",
+  shi: "आवृत्ति = चाल ÷ तरंगदैर्घ्य = {v} ÷ {l} = {ans} हर्ट्ज़।",
+  smr: "वारंवारता = वेग ÷ तरंगलांबी = {v} ÷ {l} = {ans} हर्ट्झ.",
+};
+const fSciWaveF = (tag: string, lvl: number, want: number, f: Range, l: Range) =>
+  T(`sciwavef:${tag}`, lvl, want, [f.n, l.n], SCIWAVEF, ([i, j]) => {
+    const freq = at(f, i!), lam = at(l, j!), v = freq * lam;
+    return { vars: { v, l: lam }, answer: freq, expr: `${v}/${lam}`, decoys: [freq + 2, freq - 1, v - lam], render: (n) => `${fmt(n)} Hz` };
+  });
+
+const SCIVIB: SkinSet = {
+  en: ["A tuning fork vibrates at {f} Hz. How long does it take to complete {n} vibrations?", "At {f} vibrations per second, how many seconds do {n} vibrations take?"],
+  hi: ["एक स्वरित्र {f} हर्ट्ज़ पर कंपन करता है। {n} कंपन पूरे करने में कितना समय लगेगा?", "{f} कंपन प्रति सेकंड की दर से {n} कंपन में कितने सेकंड लगेंगे?"],
+  mr: ["एक स्वरकाटा {f} हर्ट्झवर कंप पावतो. {n} कंपने पूर्ण करण्यास किती वेळ लागेल?", "{f} कंपने प्रति सेकंद या दराने {n} कंपनांना किती सेकंद लागतील?"],
+  sen: "Time = vibrations ÷ frequency = {n} ÷ {f} = {ans} s.",
+  shi: "समय = कंपन ÷ आवृत्ति = {n} ÷ {f} = {ans} सेकंड।",
+  smr: "वेळ = कंपने ÷ वारंवारता = {n} ÷ {f} = {ans} सेकंद.",
+};
+const fSciWaveCount = (tag: string, lvl: number, want: number, f: Range, kR: Range) =>
+  T(`scivib:${tag}`, lvl, want, [f.n, kR.n], SCIVIB, ([i, j]) => {
+    const freq = at(f, i!), t = at(kR, j!), n = freq * t;
+    return { vars: { f: freq, n }, answer: t, expr: `${n}/${freq}`, decoys: [t + 1, t + 2, n - freq], render: (n2) => `${fmt(n2)} s` };
+  });
+
+const SCIECHO: SkinSet = {
+  en: [
+    "A cliff stands {d} m away and sound travels at {v} m/s. After a shout, when does the echo return?",
+    "Sound moving at {v} m/s reflects off a wall {d} m away. Find the time for the echo to come back.",
+  ],
+  hi: [
+    "चट्टान {d} मीटर दूर है और ध्वनि {v} मी/से से चलती है। चीखने के बाद प्रतिध्वनि कब लौटेगी?",
+    "{v} मी/से से चलती ध्वनि {d} मीटर दूर दीवार से टकराती है। प्रतिध्वनि लौटने का समय निकालिए।",
+  ],
+  mr: [
+    "कडा {d} मीटर दूर आहे आणि ध्वनी {v} मी/से वेगाने जातो. ओरडल्यानंतर प्रतिध्वनी केव्हा परत येईल?",
+    "{v} मी/से वेगाचा ध्वनी {d} मीटर दूरच्या भिंतीवरून परावर्तित होतो. प्रतिध्वनी परत येण्याचा वेळ काढा.",
+  ],
+  sen: "The sound goes there and back: time = 2 × {d} ÷ {v} = {ans} s.",
+  shi: "ध्वनि जाकर लौटती है: समय = 2 × {d} ÷ {v} = {ans} सेकंड।",
+  smr: "ध्वनी जाऊन परत येतो: वेळ = 2 × {d} ÷ {v} = {ans} सेकंद.",
+};
+const ECHO_V = [300, 320, 340, 350];
+const fSciEcho = (tag: string, lvl: number, want: number, jR: Range) =>
+  T(`sciecho:${tag}`, lvl, want, [jR.n, ECHO_V.length], SCIECHO, ([i, j]) => {
+    const k = at(jR, i!), v = ECHO_V[j!]!, d = v * k, t = 2 * k;
+    return { vars: { d, v }, answer: t, expr: `2*${d}/${v}`, decoys: [k, t + 1, t * 2], render: (n) => `${fmt(n)} s` };
+  });
+
+const SCISONAR: SkinSet = {
+  en: [
+    "A ship's sonar pulse travels at {v} m/s and returns from the seabed after {t} seconds. How deep is the sea there?",
+    "A sonar ping ({v} m/s in water) echoes back in {t} s. Find the depth.",
+  ],
+  hi: [
+    "जहाज़ की सोनार तरंग {v} मी/से से चलती है और {t} सेकंड बाद समुद्रतल से लौटती है। वहाँ समुद्र कितना गहरा है?",
+    "सोनार संकेत (पानी में {v} मी/से) {t} सेकंड में लौटता है। गहराई निकालिए।",
+  ],
+  mr: [
+    "जहाजाची सोनार तरंग {v} मी/से वेगाने जाते आणि {t} सेकंदांनी समुद्रतळावरून परत येते. तिथे समुद्र किती खोल आहे?",
+    "सोनार संदेश (पाण्यात {v} मी/से) {t} सेकंदांत परत येतो. खोली काढा.",
+  ],
+  sen: "The pulse covers twice the depth: depth = {v} × {t} ÷ 2 = {ans} m.",
+  shi: "तरंग दुगनी गहराई तय करती है: गहराई = {v} × {t} ÷ 2 = {ans} मीटर।",
+  smr: "तरंग दुप्पट खोली कापते: खोली = {v} × {t} ÷ 2 = {ans} मीटर.",
+};
+const SONAR_V = [1400, 1450, 1500];
+const fSciSonar = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`scisonar:${tag}`, lvl, want, [kR.n, SONAR_V.length], SCISONAR, ([i, j]) => {
+    const k = at(kR, i!), v = SONAR_V[j!]!, t = 2 * k, d = v * k;
+    return { vars: { v, t }, answer: d, expr: `${v}*${t}/2`, decoys: [v * t, d / 2, d + v], render: (n) => `${fmt(n)} m` };
+  });
+
+/* --------------------------------------------------------------------------
    Geography — computable map and population arithmetic.
    -------------------------------------------------------------------------- */
 
@@ -2093,9 +2783,18 @@ const fGeoLong = (tag: string, lvl: number, want: number, d1: Range, gap: Range)
     want,
     [d1.n, gap.n],
     {
-      en: ["Place A is at {a}°E and place B at {b}°E. The Earth turns 1° in 4 minutes. How many minutes ahead is B's local time?"],
-      hi: ["स्थान A {a}°E पर और स्थान B {b}°E पर है। पृथ्वी 1° चार मिनट में घूमती है। B का स्थानीय समय कितने मिनट आगे है?"],
-      mr: ["ठिकाण A {a}°E वर व ठिकाण B {b}°E वर आहे. पृथ्वी 1° चार मिनिटांत फिरते. B ची स्थानिक वेळ किती मिनिटे पुढे आहे?"],
+      en: [
+        "Place A is at {a}°E and place B at {b}°E. The Earth turns 1° in 4 minutes. How many minutes ahead is B's local time?",
+        "Town A lies on {a}°E and town B on {b}°E. Since 1° of longitude equals 4 minutes, by how many minutes is B's local time ahead?",
+      ],
+      hi: [
+        "स्थान A {a}°E पर और स्थान B {b}°E पर है। पृथ्वी 1° चार मिनट में घूमती है। B का स्थानीय समय कितने मिनट आगे है?",
+        "कस्बा A {a}°E पर और कस्बा B {b}°E पर है। 1° देशांतर = 4 मिनट, तो B का स्थानीय समय कितने मिनट आगे है?",
+      ],
+      mr: [
+        "ठिकाण A {a}°E वर व ठिकाण B {b}°E वर आहे. पृथ्वी 1° चार मिनिटांत फिरते. B ची स्थानिक वेळ किती मिनिटे पुढे आहे?",
+        "गाव A {a}°E वर आणि गाव B {b}°E वर आहे. 1° रेखांश = 4 मिनिटे, तर B ची स्थानिक वेळ किती मिनिटे पुढे आहे?",
+      ],
       sen: "Difference = ({b} − {a})° × 4 minutes = {ans} minutes.",
       shi: "अंतर = ({b} − {a})° × 4 मिनट = {ans} मिनट।",
       smr: "फरक = ({b} − {a})° × 4 मिनिटे = {ans} मिनिटे.",
@@ -2126,6 +2825,336 @@ const fGeoPopDen = (tag: string, lvl: number, want: number, den: Range, area: Ra
       return { vars: { p, a }, answer: d, expr: `${p}/${a}`, decoys: [d + 10, d - 10, p - a], render: (n2) => `${fmt(n2)}/km²` };
     },
   );
+
+const GEOSCALEINV: SkinSet = {
+  en: [
+    "A map's scale is 1 cm : {n} km. Two cities are {real} km apart in reality. How far apart are they on the map?",
+    "On a map where 1 cm stands for {n} km, what map distance shows a real distance of {real} km?",
+  ],
+  hi: [
+    "नक्शे का पैमाना 1 सेमी : {n} किमी है। दो शहर वास्तव में {real} किमी दूर हैं। नक्शे पर वे कितनी दूर होंगे?",
+    "जिस नक्शे पर 1 सेमी = {n} किमी है, उस पर {real} किमी की वास्तविक दूरी कितने सेमी में दिखेगी?",
+  ],
+  mr: [
+    "नकाशाचे प्रमाण 1 सेमी : {n} किमी आहे. दोन शहरे प्रत्यक्षात {real} किमी दूर आहेत. नकाशावर ती किती दूर असतील?",
+    "ज्या नकाशावर 1 सेमी = {n} किमी आहे, त्यावर {real} किमी खरे अंतर किती सेमीमध्ये दिसेल?",
+  ],
+  sen: "Map distance = real distance ÷ scale = {real} ÷ {n} = {ans} cm.",
+  shi: "नक्शे की दूरी = वास्तविक दूरी ÷ पैमाना = {real} ÷ {n} = {ans} सेमी।",
+  smr: "नकाशावरील अंतर = खरे अंतर ÷ प्रमाण = {real} ÷ {n} = {ans} सेमी.",
+};
+const fGeoScaleInv = (tag: string, lvl: number, want: number, n: Range, cmR: Range) =>
+  T(`geoscaleinv:${tag}`, lvl, want, [n.n, cmR.n], GEOSCALEINV, ([i, j]) => {
+    const scale = at(n, i!), dist = at(cmR, j!), real = scale * dist;
+    return { vars: { n: scale, real }, answer: dist, expr: `${real}/${scale}`, decoys: [dist + 2, dist - 1, real - scale], render: cm };
+  });
+
+const GEORATIO: SkinSet = {
+  en: [
+    "A map uses the representative fraction 1 : {rf}, so 1 cm stands for {n} km. What real distance is {cm} cm on this map?",
+    "On a 1 : {rf} map (1 cm = {n} km), two villages are {cm} cm apart. Find the actual distance.",
+  ],
+  hi: [
+    "नक्शा 1 : {rf} निरूपक भिन्न पर बना है, यानी 1 सेमी = {n} किमी। इस नक्शे पर {cm} सेमी कितनी वास्तविक दूरी है?",
+    "1 : {rf} के नक्शे पर (1 सेमी = {n} किमी) दो गाँव {cm} सेमी दूर हैं। वास्तविक दूरी निकालिए।",
+  ],
+  mr: [
+    "नकाशा 1 : {rf} या दर्शक अपूर्णांकावर आहे, म्हणजे 1 सेमी = {n} किमी. या नकाशावर {cm} सेमी म्हणजे किती खरे अंतर?",
+    "1 : {rf} च्या नकाशावर (1 सेमी = {n} किमी) दोन गावे {cm} सेमी दूर आहेत. खरे अंतर काढा.",
+  ],
+  sen: "1 : {rf} means 1 cm = {n} km on the ground; real distance = {cm} × {n} = {ans} km.",
+  shi: "1 : {rf} का अर्थ 1 सेमी = {n} किमी; वास्तविक दूरी = {cm} × {n} = {ans} किमी।",
+  smr: "1 : {rf} म्हणजे 1 सेमी = {n} किमी; खरे अंतर = {cm} × {n} = {ans} किमी.",
+};
+const fGeoRatio = (tag: string, lvl: number, want: number, n: Range, cmR: Range) =>
+  T(`georatio:${tag}`, lvl, want, [n.n, cmR.n], GEORATIO, ([i, j]) => {
+    const scale = at(n, i!), dist = at(cmR, j!), real = scale * dist;
+    return { vars: { rf: scale * 100000, n: scale, cm: dist }, answer: real, expr: `${scale}*${dist}`, decoys: [real + scale, real - dist, scale + dist], render: (x) => `${fmt(x)} km` };
+  });
+
+const GEOTRIP: SkinSet = {
+  en: [
+    "A road on a map runs {a} cm to a junction, then {b} cm to a town, with a scale of 1 cm : {n} km. How long is the road in reality?",
+    "On a 1 cm : {n} km map, a route measures {a} cm plus {b} cm. Find its real length.",
+  ],
+  hi: [
+    "नक्शे पर सड़क पहले {a} सेमी चौराहे तक, फिर {b} सेमी कस्बे तक जाती है; पैमाना 1 सेमी : {n} किमी है। सड़क वास्तव में कितनी लंबी है?",
+    "1 सेमी : {n} किमी के नक्शे पर एक मार्ग {a} सेमी और {b} सेमी का है। उसकी वास्तविक लंबाई निकालिए।",
+  ],
+  mr: [
+    "नकाशावर रस्ता आधी {a} सेमी चौकापर्यंत, मग {b} सेमी गावापर्यंत जातो; प्रमाण 1 सेमी : {n} किमी आहे. रस्ता प्रत्यक्षात किती लांब आहे?",
+    "1 सेमी : {n} किमी च्या नकाशावर एक मार्ग {a} सेमी अधिक {b} सेमी आहे. त्याची खरी लांबी काढा.",
+  ],
+  sen: "Total on the map = {a} + {b} cm; real length = ({a} + {b}) × {n} = {ans} km.",
+  shi: "नक्शे पर कुल = {a} + {b} सेमी; वास्तविक लंबाई = ({a} + {b}) × {n} = {ans} किमी।",
+  smr: "नकाशावर एकूण = {a} + {b} सेमी; खरी लांबी = ({a} + {b}) × {n} = {ans} किमी.",
+};
+const fGeoTrip = (tag: string, lvl: number, want: number, n: Range, aR: Range, bR: Range) =>
+  T(`geotrip:${tag}`, lvl, want, [n.n, aR.n, bR.n], GEOTRIP, ([i, j, k]) => {
+    const scale = at(n, i!), a = at(aR, j!), b = at(bR, k!), real = (a + b) * scale;
+    return { vars: { a, b, n: scale }, answer: real, expr: `(${a}+${b})*${scale}`, decoys: [a * scale + b, real + scale, (a + b) * (scale + 1)], render: (x) => `${fmt(x)} km` };
+  });
+
+const GEOAREASQ: SkinSet = {
+  en: [
+    "A square plot appears with side {s} cm on a map of scale 1 cm : {n} km. What is the plot's real area?",
+    "On a 1 cm : {n} km map, a square region has {s} cm sides. Find its actual area.",
+  ],
+  hi: [
+    "1 सेमी : {n} किमी पैमाने के नक्शे पर वर्गाकार भूखंड की भुजा {s} सेमी है। भूखंड का वास्तविक क्षेत्रफल क्या है?",
+    "1 सेमी : {n} किमी के नक्शे पर वर्गाकार क्षेत्र की भुजाएँ {s} सेमी हैं। वास्तविक क्षेत्रफल निकालिए।",
+  ],
+  mr: [
+    "1 सेमी : {n} किमी प्रमाणाच्या नकाशावर चौरस भूखंडाची बाजू {s} सेमी आहे. भूखंडाचे खरे क्षेत्रफळ किती?",
+    "1 सेमी : {n} किमी च्या नकाशावर चौरस प्रदेशाच्या बाजू {s} सेमी आहेत. खरे क्षेत्रफळ काढा.",
+  ],
+  sen: "Real side = {s} × {n} km; area = ({s} × {n})² = {ans} km². Lengths scale by {n}, areas by {n}².",
+  shi: "वास्तविक भुजा = {s} × {n} किमी; क्षेत्रफल = ({s} × {n})² = {ans} किमी²। लंबाई {n} गुना, क्षेत्रफल {n}² गुना।",
+  smr: "खरी बाजू = {s} × {n} किमी; क्षेत्रफळ = ({s} × {n})² = {ans} किमी². लांबी {n} पट, क्षेत्रफळ {n}² पट.",
+};
+const fGeoAreaScale = (tag: string, lvl: number, want: number, n: Range, sR: Range) =>
+  T(`geoareasq:${tag}`, lvl, want, [n.n, sR.n], GEOAREASQ, ([i, j]) => {
+    const scale = at(n, i!), s = at(sR, j!), side = s * scale, area = side * side;
+    return { vars: { s, n: scale }, answer: area, expr: `(${s}*${scale})^2`, decoys: [s * s * scale, side, area + side], render: (x) => `${fmt(x)} km²` };
+  });
+
+const GEOAREARECT: SkinSet = {
+  en: [
+    "A district appears as a {a} cm × {b} cm rectangle on a map of scale 1 cm : {n} km. What is the district's real area?",
+    "On a 1 cm : {n} km map, a farm block measures {a} cm by {b} cm. Find its actual area.",
+  ],
+  hi: [
+    "1 सेमी : {n} किमी पैमाने के नक्शे पर जिला {a} सेमी × {b} सेमी के आयत जैसा दिखता है। जिले का वास्तविक क्षेत्रफल क्या है?",
+    "1 सेमी : {n} किमी के नक्शे पर खेत का खंड {a} सेमी × {b} सेमी का है। वास्तविक क्षेत्रफल निकालिए।",
+  ],
+  mr: [
+    "1 सेमी : {n} किमी प्रमाणाच्या नकाशावर जिल्हा {a} सेमी × {b} सेमी च्या आयतासारखा दिसतो. जिल्ह्याचे खरे क्षेत्रफळ किती?",
+    "1 सेमी : {n} किमी च्या नकाशावर शेताचा भाग {a} सेमी × {b} सेमी आहे. खरे क्षेत्रफळ काढा.",
+  ],
+  sen: "Each side scales by {n}: real area = {a} × {b} × {n}² = {ans} km².",
+  shi: "हर भुजा {n} गुना होती है: वास्तविक क्षेत्रफल = {a} × {b} × {n}² = {ans} किमी²।",
+  smr: "प्रत्येक बाजू {n} पट होते: खरे क्षेत्रफळ = {a} × {b} × {n}² = {ans} किमी².",
+};
+const fGeoAreaRect = (tag: string, lvl: number, want: number, n: Range, aR: Range, bR: Range) =>
+  T(`geoarearect:${tag}`, lvl, want, [n.n, aR.n, bR.n], GEOAREARECT, ([i, j, k]) => {
+    const scale = at(n, i!), a = at(aR, j!), b = at(bR, k!), area = a * b * scale * scale;
+    return { vars: { a, b, n: scale }, answer: area, expr: `${a}*${b}*(${scale}^2)`, decoys: [a * b * scale, area + scale, a * b], render: (x) => `${fmt(x)} km²` };
+  });
+
+const GEOWEST: SkinSet = {
+  en: [
+    "Place A is at {a}°E and place B at {b}°E, to its west. The Earth turns 1° in 4 minutes. How many minutes BEHIND A is B's local time?",
+    "Town B ({b}°E) lies west of town A ({a}°E). With 1° = 4 minutes, by how many minutes does B's clock trail A's?",
+  ],
+  hi: [
+    "स्थान A {a}°E पर है और स्थान B {b}°E पर, उसके पश्चिम में। पृथ्वी 1° चार मिनट में घूमती है। B का स्थानीय समय A से कितने मिनट पीछे है?",
+    "कस्बा B ({b}°E) कस्बे A ({a}°E) के पश्चिम में है। 1° = 4 मिनट, तो B की घड़ी A से कितने मिनट पीछे रहेगी?",
+  ],
+  mr: [
+    "ठिकाण A {a}°E वर आहे आणि ठिकाण B {b}°E वर, त्याच्या पश्चिमेस. पृथ्वी 1° चार मिनिटांत फिरते. B ची स्थानिक वेळ A पेक्षा किती मिनिटे मागे आहे?",
+    "गाव B ({b}°E) गाव A ({a}°E) च्या पश्चिमेस आहे. 1° = 4 मिनिटे, तर B चे घड्याळ A पेक्षा किती मिनिटे मागे राहील?",
+  ],
+  sen: "West means behind: difference = ({a} − {b})° × 4 minutes = {ans} minutes.",
+  shi: "पश्चिम यानी पीछे: अंतर = ({a} − {b})° × 4 मिनट = {ans} मिनट।",
+  smr: "पश्चिम म्हणजे मागे: फरक = ({a} − {b})° × 4 मिनिटे = {ans} मिनिटे.",
+};
+const fGeoLongWest = (tag: string, lvl: number, want: number, aR: Range, gap: Range) =>
+  T(`geowest:${tag}`, lvl, want, [aR.n, gap.n], GEOWEST, ([i, j]) => {
+    const a = at(aR, i!), g = at(gap, j!), b = a - g, mins = g * 4;
+    return { vars: { a, b }, answer: mins, expr: `(${a}-${b})*4`, decoys: [g, mins + 4, mins - 4], render: (x) => `${fmt(x)} min` };
+  });
+
+const GEODEG: SkinSet = {
+  en: [
+    "The local time at place {Q} is {m} minutes ahead of place {P}. Since the Earth turns 1° in 4 minutes, how many degrees of longitude separate them?",
+    "The clocks of stations {P} and {Q} differ by {m} minutes. With 1° = 4 minutes of time, what is their difference in longitude?",
+  ],
+  hi: [
+    "स्थान {Q} का स्थानीय समय स्थान {P} से {m} मिनट आगे है। पृथ्वी 1° चार मिनट में घूमती है, तो दोनों के बीच कितने डिग्री देशांतर का अंतर है?",
+    "स्टेशन {P} और {Q} की घड़ियों में {m} मिनट का अंतर है। 1° = 4 मिनट, तो देशांतर का अंतर कितना है?",
+  ],
+  mr: [
+    "ठिकाण {Q} ची स्थानिक वेळ ठिकाण {P} पेक्षा {m} मिनिटे पुढे आहे. पृथ्वी 1° चार मिनिटांत फिरते, तर दोघांमध्ये किती अंश रेखांशाचा फरक आहे?",
+    "स्थानक {P} आणि {Q} च्या घड्याळांत {m} मिनिटांचा फरक आहे. 1° = 4 मिनिटे, तर रेखांशाचा फरक किती?",
+  ],
+  sen: "Degrees = minutes ÷ 4 = {m} ÷ 4 = {ans}°.",
+  shi: "डिग्री = मिनट ÷ 4 = {m} ÷ 4 = {ans}°।",
+  smr: "अंश = मिनिटे ÷ 4 = {m} ÷ 4 = {ans}°.",
+};
+const GEODEG_PAIRS: [string, string][] = [["P", "Q"], ["A", "B"], ["C", "D"], ["E", "F"], ["G", "H"], ["K", "L"], ["M", "N"], ["R", "S"], ["T", "U"], ["X", "Y"]];
+const fGeoDegrees = (tag: string, lvl: number, want: number, dR: Range) =>
+  T(`geodeg:${tag}`, lvl, want, [dR.n, GEODEG_PAIRS.length], GEODEG, ([i, j]) => {
+    const d = at(dR, i!), m = 4 * d, [P, Q] = GEODEG_PAIRS[j!]!;
+    return { vars: { m, P, Q }, answer: d, expr: `${m}/4`, decoys: [m, d + 4, d - 1], render: (x) => `${fmt(x)}°` };
+  });
+
+const GEOACROSS: SkinSet = {
+  en: [
+    "City A is at {a}°E and city B at {b}°W. The Earth turns 1° in 4 minutes. What is the difference between their local times, in minutes?",
+    "One port lies on {a}°E, another on {b}°W. With 1° = 4 minutes, find the local time difference.",
+  ],
+  hi: [
+    "शहर A {a}°E पर और शहर B {b}°W पर है। पृथ्वी 1° चार मिनट में घूमती है। दोनों के स्थानीय समय में कितने मिनट का अंतर है?",
+    "एक बंदरगाह {a}°E पर, दूसरा {b}°W पर है। 1° = 4 मिनट, तो स्थानीय समय का अंतर निकालिए।",
+  ],
+  mr: [
+    "शहर A {a}°E वर आणि शहर B {b}°W वर आहे. पृथ्वी 1° चार मिनिटांत फिरते. दोघांच्या स्थानिक वेळांत किती मिनिटांचा फरक आहे?",
+    "एक बंदर {a}°E वर, दुसरे {b}°W वर आहे. 1° = 4 मिनिटे, तर स्थानिक वेळेचा फरक काढा.",
+  ],
+  sen: "Across the prime meridian the longitudes add: ({a} + {b})° × 4 = {ans} minutes.",
+  shi: "प्रधान मध्याह्न रेखा के आर-पार देशांतर जुड़ते हैं: ({a} + {b})° × 4 = {ans} मिनट।",
+  smr: "मूळ मध्यान्ह रेषेच्या दोन्ही बाजूंचे रेखांश मिळवतात: ({a} + {b})° × 4 = {ans} मिनिटे.",
+};
+const fGeoAcross = (tag: string, lvl: number, want: number, aR: Range, bR: Range) =>
+  T(`geoacross:${tag}`, lvl, want, [aR.n, bR.n], GEOACROSS, ([i, j]) => {
+    const a = at(aR, i!), b = at(bR, j!), mins = (a + b) * 4;
+    return { vars: { a, b }, answer: mins, expr: `(${a}+${b})*4`, decoys: [a + b, mins - 4, (a - b > 0 ? a - b : b - a) * 4], render: (x) => `${fmt(x)} min` };
+  });
+
+const GEOCLOCK: SkinSet = {
+  en: [
+    "When it is {h}:00 at place P ({a}°E), place Q lies at {b}°E. The Earth turns 1° in 4 minutes. How many minutes ahead of P is Q's local time?",
+  ],
+  hi: [
+    "जब स्थान P ({a}°E) पर {h}:00 बजते हैं, स्थान Q {b}°E पर है। पृथ्वी 1° चार मिनट में घूमती है। Q का स्थानीय समय P से कितने मिनट आगे है?",
+  ],
+  mr: [
+    "ठिकाण P ({a}°E) वर {h}:00 वाजतात तेव्हा ठिकाण Q {b}°E वर आहे. पृथ्वी 1° चार मिनिटांत फिरते. Q ची स्थानिक वेळ P पेक्षा किती मिनिटे पुढे आहे?",
+  ],
+  sen: "The clock reading does not change the gap: ({b} − {a})° × 4 = {ans} minutes ahead.",
+  shi: "घड़ी का समय अंतर नहीं बदलता: ({b} − {a})° × 4 = {ans} मिनट आगे।",
+  smr: "घड्याळाची वेळ फरक बदलत नाही: ({b} − {a})° × 4 = {ans} मिनिटे पुढे.",
+};
+const fGeoClock = (tag: string, lvl: number, want: number, aR: Range, gap: Range) =>
+  T(`geoclock:${tag}`, lvl, want, [aR.n, gap.n, 12], GEOCLOCK, ([i, j, k]) => {
+    const a = at(aR, i!), g = at(gap, j!), b = a + g, h = 1 + k!, mins = g * 4;
+    return { vars: { h, a, b }, answer: mins, expr: `(${b}-${a})*4`, decoys: [g, mins + 4, mins + 8], render: (x) => `${fmt(x)} min` };
+  });
+
+const GEOHOURS: SkinSet = {
+  en: [
+    "At {h}:{mm} local time in place A ({a}°E), what is the time DIFFERENCE in hours to place B at {b}°E? (The Earth turns 15° per hour.)",
+    "Place A sits on {a}°E and place B on {b}°E. Using 15° per hour, how many hours separate their local times? (It is {h}:{mm} at A.)",
+  ],
+  hi: [
+    "स्थान A ({a}°E) पर स्थानीय समय {h}:{mm} है। {b}°E पर स्थित स्थान B से समय का अंतर कितने घंटे है? (पृथ्वी 15° प्रति घंटा घूमती है।)",
+    "स्थान A {a}°E पर और स्थान B {b}°E पर है। 15° प्रति घंटा की दर से दोनों के स्थानीय समय में कितने घंटों का अंतर है? (A पर {h}:{mm} बजे हैं।)",
+  ],
+  mr: [
+    "ठिकाण A ({a}°E) वर स्थानिक वेळ {h}:{mm} आहे. {b}°E वरील ठिकाण B शी वेळेचा फरक किती तास आहे? (पृथ्वी दर तासाला 15° फिरते.)",
+    "ठिकाण A {a}°E वर आणि ठिकाण B {b}°E वर आहे. दर तासाला 15° या दराने दोघांच्या स्थानिक वेळांत किती तासांचा फरक आहे? (A वर {h}:{mm} वाजले आहेत.)",
+  ],
+  sen: "Difference = ({b} − {a})° ÷ 15 = {ans} hours.",
+  shi: "अंतर = ({b} − {a})° ÷ 15 = {ans} घंटे।",
+  smr: "फरक = ({b} − {a})° ÷ 15 = {ans} तास.",
+};
+const GEOHOURS_MM = ["00", "30"];
+const fGeoLongHours = (tag: string, lvl: number, want: number) =>
+  T(`geohours:${tag}`, lvl, want, [15, 11, 12, GEOHOURS_MM.length], GEOHOURS, ([i, j, k, l]) => {
+    const a = i!, hours = 1 + j!, b = a + 15 * hours, h = 1 + k!, mm = GEOHOURS_MM[l!]!;
+    return { vars: { a, b, h, mm }, answer: hours, expr: `(${b}-${a})/15`, decoys: [hours + 1, hours - 1, (b - a) / 5], render: (x) => `${fmt(x)} h` };
+  });
+
+const GEOPOP2: SkinSet = {
+  en: ["A district covers {a} km² with a population density of {d} people per km². What is its population?", "Find the population of a {a} km² region whose density is {d} per km²."],
+  hi: ["एक जिला {a} किमी² में फैला है और जनसंख्या घनत्व {d} व्यक्ति प्रति किमी² है। उसकी जनसंख्या क्या है?", "{a} किमी² के क्षेत्र की जनसंख्या निकालिए जिसका घनत्व {d} प्रति किमी² है।"],
+  mr: ["एक जिल्हा {a} किमी² वर पसरला आहे आणि लोकसंख्येची घनता {d} व्यक्ती प्रति किमी² आहे. त्याची लोकसंख्या किती?", "{a} किमी² च्या प्रदेशाची लोकसंख्या काढा, ज्याची घनता {d} प्रति किमी² आहे."],
+  sen: "Population = density × area = {d} × {a} = {ans}.",
+  shi: "जनसंख्या = घनत्व × क्षेत्रफल = {d} × {a} = {ans}।",
+  smr: "लोकसंख्या = घनता × क्षेत्रफळ = {d} × {a} = {ans}.",
+};
+const fGeoPop = (tag: string, lvl: number, want: number, den: Range, area: Range) =>
+  T(`geopop2:${tag}`, lvl, want, [den.n, area.n], GEOPOP2, ([i, j]) => {
+    const d = at(den, i!), a = at(area, j!), p = d * a;
+    return { vars: { d, a }, answer: p, expr: `${d}*${a}`, decoys: [p + d, p - a, d + a], render: fmt };
+  });
+
+const GEOAREA2: SkinSet = {
+  en: ["A region has population {p} and density {d} people per km². What is its area?", "Find the area of a district of {p} people at {d} per km²."],
+  hi: ["किसी क्षेत्र की जनसंख्या {p} और घनत्व {d} व्यक्ति प्रति किमी² है। उसका क्षेत्रफल क्या है?", "{d} प्रति किमी² घनत्व वाले {p} जनसंख्या के जिले का क्षेत्रफल निकालिए।"],
+  mr: ["एका प्रदेशाची लोकसंख्या {p} आणि घनता {d} व्यक्ती प्रति किमी² आहे. त्याचे क्षेत्रफळ किती?", "{d} प्रति किमी² घनतेच्या {p} लोकसंख्येच्या जिल्ह्याचे क्षेत्रफळ काढा."],
+  sen: "Area = population ÷ density = {p} ÷ {d} = {ans} km².",
+  shi: "क्षेत्रफल = जनसंख्या ÷ घनत्व = {p} ÷ {d} = {ans} किमी²।",
+  smr: "क्षेत्रफळ = लोकसंख्या ÷ घनता = {p} ÷ {d} = {ans} किमी².",
+};
+const fGeoAreaFromPop = (tag: string, lvl: number, want: number, den: Range, area: Range) =>
+  T(`geoarea2:${tag}`, lvl, want, [den.n, area.n], GEOAREA2, ([i, j]) => {
+    const d = at(den, i!), a = at(area, j!), p = d * a;
+    return { vars: { p, d }, answer: a, expr: `${p}/${d}`, decoys: [a + 5, a - 2, p - d], render: (x) => `${fmt(x)} km²` };
+  });
+
+const GEODENGROW: SkinSet = {
+  en: [
+    "A city's population density is {d} per km². If the population grows {p}% while the area stays the same, what will the density become?",
+    "A town packs {d} people per km² today. After {p}% population growth on the same land, find the new density.",
+  ],
+  hi: [
+    "शहर का जनसंख्या घनत्व {d} प्रति किमी² है। क्षेत्रफल वही रहे और जनसंख्या {p}% बढ़े, तो घनत्व कितना हो जाएगा?",
+    "आज कस्बे में {d} व्यक्ति प्रति किमी² हैं। उसी ज़मीन पर {p}% वृद्धि के बाद नया घनत्व निकालिए।",
+  ],
+  mr: [
+    "शहराची लोकसंख्या घनता {d} प्रति किमी² आहे. क्षेत्रफळ तेच राहून लोकसंख्या {p}% वाढली, तर घनता किती होईल?",
+    "आज गावात {d} व्यक्ती प्रति किमी² आहेत. त्याच जमिनीवर {p}% वाढीनंतर नवी घनता काढा.",
+  ],
+  sen: "New density = {d} × (100 + {p}) ÷ 100 = {ans} per km².",
+  shi: "नया घनत्व = {d} × (100 + {p}) ÷ 100 = {ans} प्रति किमी²।",
+  smr: "नवी घनता = {d} × (100 + {p}) ÷ 100 = {ans} प्रति किमी².",
+};
+const fGeoDenGrow = (tag: string, lvl: number, want: number, kR: Range, pR: Range) =>
+  T(`geodengrow:${tag}`, lvl, want, [kR.n, pR.n], GEODENGROW, ([i, j]) => {
+    const k = at(kR, i!), p = 5 * at(pR, j!), d = 20 * k, nd = (d * (100 + p)) / 100;
+    return { vars: { d, p }, answer: nd, expr: `${d}*(100+${p})/100`, decoys: [d + p, nd + k, (d * p) / 100], render: (x) => `${fmt(x)}/km²` };
+  });
+
+const GEODENCMP: SkinSet = {
+  en: [
+    "District X has {p1} people in {a1} km²; district Y has {p2} people in {a2} km². How many MORE people per km² does X have than Y?",
+    "Compare densities: X ({p1} people, {a1} km²) against Y ({p2} people, {a2} km²). Find the difference in people per km².",
+  ],
+  hi: [
+    "जिले X में {a1} किमी² में {p1} लोग हैं; जिले Y में {a2} किमी² में {p2} लोग। X में Y से प्रति किमी² कितने अधिक लोग हैं?",
+    "घनत्व तुलना: X ({p1} लोग, {a1} किमी²) बनाम Y ({p2} लोग, {a2} किमी²)। प्रति किमी² अंतर निकालिए।",
+  ],
+  mr: [
+    "जिल्हा X मध्ये {a1} किमी² मध्ये {p1} लोक आहेत; जिल्हा Y मध्ये {a2} किमी² मध्ये {p2} लोक. X मध्ये Y पेक्षा प्रति किमी² किती जास्त लोक आहेत?",
+    "घनतेची तुलना: X ({p1} लोक, {a1} किमी²) विरुद्ध Y ({p2} लोक, {a2} किमी²). प्रति किमी² फरक काढा.",
+  ],
+  sen: "Density of X = {p1} ÷ {a1}; density of Y = {p2} ÷ {a2}; difference = {ans} per km².",
+  shi: "X का घनत्व = {p1} ÷ {a1}; Y का घनत्व = {p2} ÷ {a2}; अंतर = {ans} प्रति किमी²।",
+  smr: "X ची घनता = {p1} ÷ {a1}; Y ची घनता = {p2} ÷ {a2}; फरक = {ans} प्रति किमी².",
+};
+const GEODENCMP_AREAS: [number, number][] = [[4, 5], [6, 8], [10, 12], [15, 20], [25, 30]];
+const fGeoDenCompare = (tag: string, lvl: number, want: number, d1R: Range, deltaR: Range) =>
+  T(`geodencmp:${tag}`, lvl, want, [d1R.n, deltaR.n, GEODENCMP_AREAS.length], GEODENCMP, ([i, j, k]) => {
+    const d1 = at(d1R, i!), delta = at(deltaR, j!), d2 = d1 - delta;
+    const [a1, a2] = GEODENCMP_AREAS[k!]!;
+    const p1 = d1 * a1, p2 = d2 * a2;
+    return { vars: { p1, a1, p2, a2 }, answer: delta, expr: `${p1}/${a1}-${p2}/${a2}`, decoys: [delta + 10, delta - 5, d1], render: (x) => `${fmt(x)}/km²` };
+  });
+
+const GEOMERGE: SkinSet = {
+  en: [
+    "Two blocks merge into one district: {p1} people on {a1} km² and {p2} people on {a2} km². What is the density of the merged district?",
+    "A district is formed from {p1} people in {a1} km² plus {p2} people in {a2} km². Find its overall density.",
+  ],
+  hi: [
+    "दो खंड मिलकर एक जिला बनते हैं: {a1} किमी² में {p1} लोग और {a2} किमी² में {p2} लोग। मिले हुए जिले का घनत्व क्या है?",
+    "{a1} किमी² में {p1} लोगों और {a2} किमी² में {p2} लोगों से जिला बना। उसका कुल घनत्व निकालिए।",
+  ],
+  mr: [
+    "दोन विभाग मिळून एक जिल्हा होतो: {a1} किमी² मध्ये {p1} लोक आणि {a2} किमी² मध्ये {p2} लोक. एकत्रित जिल्ह्याची घनता किती?",
+    "{a1} किमी² मधील {p1} लोक अधिक {a2} किमी² मधील {p2} लोक यांचा जिल्हा बनला. त्याची एकूण घनता काढा.",
+  ],
+  sen: "Merged density = total people ÷ total area = ({p1} + {p2}) ÷ ({a1} + {a2}) = {ans} per km².",
+  shi: "कुल घनत्व = कुल जनसंख्या ÷ कुल क्षेत्रफल = ({p1} + {p2}) ÷ ({a1} + {a2}) = {ans} प्रति किमी²।",
+  smr: "एकत्रित घनता = एकूण लोक ÷ एकूण क्षेत्रफळ = ({p1} + {p2}) ÷ ({a1} + {a2}) = {ans} प्रति किमी².",
+};
+const fGeoMergeDen = (tag: string, lvl: number, want: number, rR: Range, a1R: Range, a2R: Range, dR: Range) =>
+  T(`geomerge:${tag}`, lvl, want, [rR.n, a1R.n, a2R.n, dR.n], GEOMERGE, ([i, j, k, l]) => {
+    const rho = at(rR, i!), a1 = at(a1R, j!), a2 = at(a2R, k!), delta = at(dR, l!);
+    const p1 = (rho + delta) * a1, p2 = rho * (a1 + a2) - p1;
+    return { vars: { p1, a1, p2, a2 }, answer: rho, expr: `(${p1}+${p2})/(${a1}+${a2})`, decoys: [rho + delta, rho - delta, rho + 1], render: (x) => `${fmt(x)}/km²` };
+  });
 
 /* --------------------------------------------------------------------------
    History — timeline arithmetic over the events table; years are GIVEN in
@@ -2206,6 +3235,161 @@ const fHistCentury = (tag: string, lvl: number, want: number, y: Range) =>
       return { vars: { y: year }, answer: century, expr: `(${year}-1-${rem})/100+1`, decoys: [century + 1, century - 1, Math.round(year / 100) === century ? century + 2 : Math.round(year / 100)] };
     },
   );
+
+const HISTBEFORE: SkinSet = {
+  en: ["{e} took place in {y}. Which year was {n} years earlier?", "Count {n} years back from {e} ({y}). Which year do you reach?"],
+  hi: ["{h} {y} में हुआ। उससे {n} वर्ष पहले कौन-सा वर्ष था?", "{h} ({y}) से {n} वर्ष पीछे गिनिए। कौन-सा वर्ष आता है?"],
+  mr: ["{m} {y} मध्ये घडले. त्याआधी {n} वर्षे कोणते वर्ष होते?", "{m} ({y}) पासून {n} वर्षे मागे मोजा. कोणते वर्ष येते?"],
+  sen: "Subtract the years: {y} − {n} = {ans}.",
+  shi: "वर्ष घटाएँ: {y} − {n} = {ans}।",
+  smr: "वर्षे वजा करा: {y} − {n} = {ans}.",
+};
+const fHistBefore = (tag: string, lvl: number, want: number, n: Range) =>
+  T(`histbefore:${tag}`, lvl, want, [EVENTS.length, n.n], HISTBEFORE, ([i, j]) => {
+    const e = EVENTS[i!]!, sub = at(n, j!), y2 = e.year - sub;
+    return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, n: sub }, answer: y2, expr: `${e.year}-${sub}`, decoys: [y2 + 10, y2 - 10, y2 + 1] };
+  });
+
+/** Chain arithmetic stays in the past: only events up to 1935 anchor it. */
+const CHAIN_EVENTS = EVENTS.filter((e) => e.year <= 1935);
+const HISTCHAIN: SkinSet = {
+  en: [
+    "{e} took place in {y}. A town school opened {k} years after that, and its library {n} years after the school. In which year did the library open?",
+    "{k} years after {e} ({y}), a printing press was set up; {n} years later still, it printed its first newspaper. Which year was that?",
+  ],
+  hi: [
+    "{h} {y} में हुआ। उसके {k} वर्ष बाद कस्बे का विद्यालय खुला, और विद्यालय के {n} वर्ष बाद उसका पुस्तकालय। पुस्तकालय किस वर्ष खुला?",
+    "{h} ({y}) के {k} वर्ष बाद एक छापाखाना लगा; उसके {n} वर्ष बाद उसका पहला अख़बार छपा। वह कौन-सा वर्ष था?",
+  ],
+  mr: [
+    "{m} {y} मध्ये घडले. त्यानंतर {k} वर्षांनी गावाची शाळा उघडली, आणि शाळेनंतर {n} वर्षांनी तिचे ग्रंथालय. ग्रंथालय कोणत्या वर्षी उघडले?",
+    "{m} ({y}) नंतर {k} वर्षांनी एक छापखाना सुरू झाला; त्यानंतर {n} वर्षांनी त्याचे पहिले वृत्तपत्र छापले गेले. ते कोणते वर्ष होते?",
+  ],
+  sen: "Add both gaps: {y} + {k} + {n} = {ans}.",
+  shi: "दोनों अंतराल जोड़ें: {y} + {k} + {n} = {ans}।",
+  smr: "दोन्ही अंतरे मिळवा: {y} + {k} + {n} = {ans}.",
+};
+const fHistChain = (tag: string, lvl: number, want: number, k: Range, n: Range) =>
+  T(`histchain:${tag}`, lvl, want, [CHAIN_EVENTS.length, k.n, n.n], HISTCHAIN, ([i, j, l]) => {
+    const e = CHAIN_EVENTS[i!]!, add1 = at(k, j!), add2 = at(n, l!), y2 = e.year + add1 + add2;
+    return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, k: add1, n: add2 }, answer: y2, expr: `${e.year}+${add1}+${add2}`, decoys: [y2 - add2, y2 + 10, y2 - 1] };
+  });
+
+/** Pairs far enough apart that a lifetime fits between them. */
+const BIG_PAIRS = HIST_PAIRS.filter(([a, b]) => EVENTS[b]!.year - EVENTS[a]!.year >= 55);
+const HISTAGE: SkinSet = {
+  en: [
+    "A person was born {b} years after {e1} ({y1}). How old were they at the time of {e2} ({y2})?",
+    "Someone's birth came {b} years after {e1}, which was in {y1}. What was their age when {e2} happened in {y2}?",
+    "Born {b} years after {e1} ({y1}), how old was this person during {e2} ({y2})?",
+  ],
+  hi: [
+    "एक व्यक्ति का जन्म {h1} ({y1}) के {b} वर्ष बाद हुआ। {h2} ({y2}) के समय उसकी आयु कितनी थी?",
+    "किसी का जन्म {h1} के {b} वर्ष बाद हुआ, जो {y1} में था। {y2} में {h2} के समय उसकी उम्र क्या थी?",
+    "{h1} ({y1}) के {b} वर्ष बाद जन्मा व्यक्ति {h2} ({y2}) के समय कितने वर्ष का था?",
+  ],
+  mr: [
+    "एका व्यक्तीचा जन्म {m1} ({y1}) नंतर {b} वर्षांनी झाला. {m2} ({y2}) च्या वेळी तिचे वय किती होते?",
+    "कोणाचा जन्म {m1} नंतर {b} वर्षांनी झाला, जे {y1} मध्ये घडले. {y2} मध्ये {m2} च्या वेळी वय किती होते?",
+    "{m1} ({y1}) नंतर {b} वर्षांनी जन्मलेली व्यक्ती {m2} ({y2}) च्या वेळी किती वर्षांची होती?",
+  ],
+  sen: "Birth year = {y1} + {b}; age = {y2} − ({y1} + {b}) = {ans} years.",
+  shi: "जन्म वर्ष = {y1} + {b}; आयु = {y2} − ({y1} + {b}) = {ans} वर्ष।",
+  smr: "जन्म वर्ष = {y1} + {b}; वय = {y2} − ({y1} + {b}) = {ans} वर्षे.",
+};
+const fHistAge = (tag: string, lvl: number, want: number, b: Range) =>
+  T(`histage:${tag}`, lvl, want, [BIG_PAIRS.length, b.n], HISTAGE, ([i, j]) => {
+    const [ai, bi] = BIG_PAIRS[i!]!;
+    const e1 = EVENTS[ai]!, e2 = EVENTS[bi]!, born = at(b, j!);
+    const age = e2.year - e1.year - born;
+    return {
+      vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year, b: born },
+      answer: age,
+      expr: `${e2.year}-(${e1.year}+${born})`,
+      decoys: [age + born, e2.year - e1.year, age + 10],
+    };
+  });
+
+/** Backward-then-forward chains anchor on events up to 1950. */
+const BACK_EVENTS = EVENTS.filter((e) => e.year <= 1950);
+const HISTBACK: SkinSet = {
+  en: [
+    "An archive was founded {k} years BEFORE {e} ({y}), and moved to a new building {n} years after its founding. In which year did it move?",
+    "A fort was completed {k} years before {e}, which happened in {y}. Its main gate was rebuilt {n} years after the completion. Which year was the gate rebuilt?",
+  ],
+  hi: [
+    "{h} ({y}) से {k} वर्ष पहले एक अभिलेखागार बना, और बनने के {n} वर्ष बाद नए भवन में गया। वह किस वर्ष स्थानांतरित हुआ?",
+    "{h} से {k} वर्ष पहले एक किला पूरा हुआ, जो {y} में हुआ था। पूरा होने के {n} वर्ष बाद उसका मुख्य द्वार फिर बना। द्वार किस वर्ष बना?",
+  ],
+  mr: [
+    "{m} ({y}) च्या {k} वर्षे आधी एक दप्तरखाना स्थापन झाला, आणि स्थापनेनंतर {n} वर्षांनी नव्या इमारतीत गेला. तो कोणत्या वर्षी हलला?",
+    "{m} च्या {k} वर्षे आधी एक किल्ला पूर्ण झाला, जे {y} मध्ये घडले. पूर्ण झाल्यानंतर {n} वर्षांनी त्याचे मुख्य द्वार पुन्हा बांधले गेले. द्वार कोणत्या वर्षी बांधले?",
+  ],
+  sen: "Go back, then forward: {y} − {k} + {n} = {ans}.",
+  shi: "पहले पीछे, फिर आगे: {y} − {k} + {n} = {ans}।",
+  smr: "आधी मागे, मग पुढे: {y} − {k} + {n} = {ans}.",
+};
+const fHistChainBack = (tag: string, lvl: number, want: number, k: Range, n: Range) =>
+  T(`histback:${tag}`, lvl, want, [BACK_EVENTS.length, k.n, n.n], HISTBACK, ([i, j, l]) => {
+    const e = BACK_EVENTS[i!]!, back = at(k, j!), fwd = at(n, l!), y2 = e.year - back + fwd;
+    return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, k: back, n: fwd }, answer: y2, expr: `${e.year}-${back}+${fwd}`, decoys: [e.year + back + fwd, y2 + 10, y2 - 1] };
+  });
+
+const HISTDECADE: SkinSet = {
+  en: ["Which year begins the decade that contains the year {y}?", "The year {y} falls in a decade. What is that decade's first year?", "Name the starting year of the decade holding {y}."],
+  hi: ["वर्ष {y} जिस दशक में आता है, वह किस वर्ष से शुरू होता है?", "वर्ष {y} एक दशक में आता है। उस दशक का पहला वर्ष क्या है?", "{y} वाले दशक का प्रारंभिक वर्ष बताइए।"],
+  mr: ["{y} हे वर्ष ज्या दशकात येते, ते दशक कोणत्या वर्षी सुरू होते?", "{y} हे वर्ष एका दशकात येते. त्या दशकाचे पहिले वर्ष कोणते?", "{y} असलेल्या दशकाचे सुरुवातीचे वर्ष सांगा."],
+  sen: "Drop the last digit to zero: the decade of {y} runs from {ans} to {ans} + 9.",
+  shi: "अंतिम अंक शून्य कीजिए: {y} का दशक {ans} से {ans} + 9 तक चलता है।",
+  smr: "शेवटचा अंक शून्य करा: {y} चे दशक {ans} ते {ans} + 9 असे चालते.",
+};
+const fHistDecade = (tag: string, lvl: number, want: number, y: Range) =>
+  T(`histdecade:${tag}`, lvl, want, [y.n], HISTDECADE, ([i]) => {
+    const year = at(y, i!), rem = year % 10, start = year - rem;
+    return { vars: { y: year }, answer: start, expr: `${year}-${rem}`, decoys: [start + 10, start - 10, year], render: (x) => String(x) };
+  });
+
+const HISTCENTEND: SkinSet = {
+  en: ["In which year does the century containing the year {y} END?", "The year {y} sits in a century. What is that century's final year?", "Find the last year of the century that holds {y}."],
+  hi: ["वर्ष {y} वाली शताब्दी किस वर्ष समाप्त होती है?", "वर्ष {y} एक शताब्दी में है। उस शताब्दी का अंतिम वर्ष क्या है?", "{y} वाली शताब्दी का आख़िरी वर्ष निकालिए।"],
+  mr: ["{y} हे वर्ष असलेले शतक कोणत्या वर्षी संपते?", "{y} हे वर्ष एका शतकात आहे. त्या शतकाचे शेवटचे वर्ष कोणते?", "{y} असलेल्या शतकाचे अखेरचे वर्ष काढा."],
+  sen: "Centuries run x01 to x00: the century of {y} ends in {ans}.",
+  shi: "शताब्दी x01 से x00 तक चलती है: {y} की शताब्दी {ans} में समाप्त होती है।",
+  smr: "शतक x01 ते x00 चालते: {y} चे शतक {ans} मध्ये संपते.",
+};
+const fHistCenturyEnd = (tag: string, lvl: number, want: number, y: Range) =>
+  T(`histcentend:${tag}`, lvl, want, [y.n], HISTCENTEND, ([i]) => {
+    const year = at(y, i!), rem = (year - 1) % 100, century = (year - 1 - rem) / 100 + 1, end = century * 100;
+    return { vars: { y: year }, answer: end, expr: `((${year}-1-${rem})/100+1)*100`, decoys: [end - 100, end + 100, end - 1], render: (x) => String(x) };
+  });
+
+const HISTSPANCENT: SkinSet = {
+  en: ["Starting from the year {y}, how many years remain until its century ends?", "How many years lie between {y} and the final year of its own century?", "From {y}, count the years left in that century."],
+  hi: ["वर्ष {y} से उसकी शताब्दी समाप्त होने तक कितने वर्ष बचे हैं?", "{y} और उसकी अपनी शताब्दी के अंतिम वर्ष के बीच कितने वर्ष हैं?", "{y} से उस शताब्दी के बचे वर्ष गिनिए।"],
+  mr: ["{y} या वर्षापासून त्याचे शतक संपेपर्यंत किती वर्षे उरली आहेत?", "{y} आणि त्याच्या शतकाच्या शेवटच्या वर्षामध्ये किती वर्षे आहेत?", "{y} पासून त्या शतकातील उरलेली वर्षे मोजा."],
+  sen: "The century of {y} ends at {end}; remaining years = {end} − {y} = {ans}.",
+  shi: "{y} की शताब्दी {end} में समाप्त होती है; बचे वर्ष = {end} − {y} = {ans}।",
+  smr: "{y} चे शतक {end} मध्ये संपते; उरलेली वर्षे = {end} − {y} = {ans}.",
+};
+const fHistSpanCent = (tag: string, lvl: number, want: number, y: Range) =>
+  T(`histspancent:${tag}`, lvl, want, [y.n], HISTSPANCENT, ([i]) => {
+    const year = at(y, i!), rem = (year - 1) % 100, end = ((year - 1 - rem) / 100 + 1) * 100, left = end - year;
+    return { vars: { y: year, end }, answer: left, expr: `${end}-${year}`, decoys: [left + 10, left - 10, 100 - left], render: (x) => String(x) };
+  });
+
+const HISTCENTAFTER: SkinSet = {
+  en: ["Which year falls exactly {k} centuries after the year {y}?", "Add {k} full centuries to the year {y}. Which year do you get?", "Starting at {y}, jump forward {k} centuries. Where do you land?"],
+  hi: ["वर्ष {y} के ठीक {k} शताब्दी बाद कौन-सा वर्ष आता है?", "वर्ष {y} में {k} पूरी शताब्दियाँ जोड़िए। कौन-सा वर्ष मिलता है?", "{y} से {k} शताब्दी आगे कूदिए। कहाँ पहुँचते हैं?"],
+  mr: ["{y} या वर्षानंतर नेमक्या {k} शतकांनी कोणते वर्ष येते?", "{y} या वर्षात {k} पूर्ण शतके मिळवा. कोणते वर्ष मिळते?", "{y} पासून {k} शतके पुढे जा. कुठे पोहोचता?"],
+  sen: "One century is 100 years: {y} + {k} × 100 = {ans}.",
+  shi: "एक शताब्दी = 100 वर्ष: {y} + {k} × 100 = {ans}।",
+  smr: "एक शतक = 100 वर्षे: {y} + {k} × 100 = {ans}.",
+};
+const fHistCentAfter = (tag: string, lvl: number, want: number, y: Range, k: Range) =>
+  T(`histcentafter:${tag}`, lvl, want, [y.n, k.n], HISTCENTAFTER, ([i, j]) => {
+    const year = at(y, i!), cent = at(k, j!), y2 = year + 100 * cent;
+    return { vars: { y: year, k: cent }, answer: y2, expr: `${year}+${cent}*100`, decoys: [y2 - 100, y2 + 100, year + cent * 10], render: (x) => String(x) };
+  });
 
 /* --------------------------------------------------------------------------
    Civics — the numbers democracy actually runs on.
@@ -2300,6 +3484,425 @@ const fCivTerm = (tag: string, lvl: number, want: number, y: Range) =>
     },
   );
 
+const CIVQREV: SkinSet = {
+  en: ["A council needs {frac} of its members for a quorum, which comes to {q} members. How many members does the council have in all?", "If {frac} of a house is its quorum and the quorum is {q}, find the house's full strength."],
+  hi: ["सभा में कोरम के लिए {frach} सदस्य चाहिए, जो {q} सदस्य होते हैं। सभा में कुल कितने सदस्य हैं?", "यदि सदन का {frach} उसका कोरम है और कोरम {q} है, तो सदन की पूरी संख्या निकालिए।"],
+  mr: ["सभेत गणपूर्तीसाठी {fracm} सदस्य हवेत, म्हणजे {q} सदस्य. सभेत एकूण किती सदस्य आहेत?", "सभागृहाचा {fracm} भाग म्हणजे गणपूर्ती असून ती {q} आहे, तर सभागृहाची पूर्ण संख्या काढा."],
+  sen: "Full strength = quorum × {div} = {q} × {div} = {ans} members.",
+  shi: "पूरी संख्या = कोरम × {div} = {q} × {div} = {ans} सदस्य।",
+  smr: "पूर्ण संख्या = गणपूर्ती × {div} = {q} × {div} = {ans} सदस्य.",
+};
+const fCivQuorumRev = (tag: string, lvl: number, want: number, k: Range) =>
+  T(`civqrev:${tag}`, lvl, want, [k.n, QUORUM_FRACS.length], CIVQREV, ([i, j]) => {
+    const f = QUORUM_FRACS[j!]!, q = at(k, i!), n = q * f.div;
+    return { vars: { q, frac: f.en, frach: f.hi, fracm: f.mr, div: f.div }, answer: n, expr: `${q}*${f.div}`, decoys: [n + f.div, n - q, q + f.div] };
+  });
+
+const CIVQSHORT: SkinSet = {
+  en: [
+    "A council of {n} members needs {frac} of them ({q}) for a quorum, but only {p} have arrived. How many more members are needed?",
+    "Quorum in a {n}-member house is {frac} of the strength, i.e. {q}. With {p} present, how many are still short?",
+  ],
+  hi: [
+    "{n} सदस्यों की सभा में कोरम के लिए {frach} ({q}) चाहिए, पर केवल {p} आए हैं। और कितने सदस्य चाहिए?",
+    "{n} सदस्यीय सदन में कोरम {frach} यानी {q} है। {p} उपस्थित हों तो कितने कम हैं?",
+  ],
+  mr: [
+    "{n} सदस्यांच्या सभेत गणपूर्तीसाठी {fracm} ({q}) हवेत, पण फक्त {p} आले आहेत. आणखी किती सदस्य हवेत?",
+    "{n} सदस्यांच्या सभागृहात गणपूर्ती {fracm} म्हणजे {q} आहे. {p} हजर असल्यास किती कमी आहेत?",
+  ],
+  sen: "Still needed = quorum − present = {q} − {p} = {ans} members.",
+  shi: "और चाहिए = कोरम − उपस्थित = {q} − {p} = {ans} सदस्य।",
+  smr: "आणखी हवेत = गणपूर्ती − हजर = {q} − {p} = {ans} सदस्य.",
+};
+const fCivQuorumShort = (tag: string, lvl: number, want: number, k: Range, sR: Range) =>
+  T(`civqshort:${tag}`, lvl, want, [k.n, QUORUM_FRACS.length, sR.n], CIVQSHORT, ([i, j, l]) => {
+    const f = QUORUM_FRACS[j!]!, q = at(k, i!), n = q * f.div, s = at(sR, l!), p = q - s;
+    return { vars: { n, frac: f.en, frach: f.hi, fracm: f.mr, q, p }, answer: s, expr: `${q}-${p}`, decoys: [s + 1, q, n - p] };
+  });
+
+const CIVTWOTHIRDS: SkinSet = {
+  en: ["A special resolution needs two-thirds of a {n}-member body present. How many members is that?", "Two-thirds of the {n} members of a council must attend a special session. Find that number."],
+  hi: ["विशेष प्रस्ताव के लिए {n} सदस्यीय निकाय के दो-तिहाई उपस्थित चाहिए। यह कितने सदस्य हैं?", "परिषद के {n} सदस्यों में से दो-तिहाई को विशेष सत्र में आना है। वह संख्या निकालिए।"],
+  mr: ["विशेष ठरावासाठी {n} सदस्यांच्या मंडळाचे दोन-तृतीयांश हजर हवेत. म्हणजे किती सदस्य?", "परिषदेच्या {n} सदस्यांपैकी दोन-तृतीयांशांनी विशेष सत्राला यायचे आहे. ती संख्या काढा."],
+  sen: "Two-thirds of {n} = {n} × 2 ÷ 3 = {ans} members.",
+  shi: "{n} का दो-तिहाई = {n} × 2 ÷ 3 = {ans} सदस्य।",
+  smr: "{n} चे दोन-तृतीयांश = {n} × 2 ÷ 3 = {ans} सदस्य.",
+};
+const fCivTwoThirds = (tag: string, lvl: number, want: number, k: Range) =>
+  T(`civ23:${tag}`, lvl, want, [k.n], CIVTWOTHIRDS, ([i]) => {
+    const third = at(k, i!), n = 3 * third, ans = 2 * third;
+    return { vars: { n }, answer: ans, expr: `${n}*2/3`, decoys: [third, ans + 1, n - third + 1] };
+  });
+
+const CIVPRESENT: SkinSet = {
+  en: [
+    "A house has {n} members but {a} are absent. Of those present, more than half must vote yes to pass a motion. What is the smallest number of yes votes needed?",
+    "Out of {n} members, {a} miss the sitting. A motion passes on a majority of those present. Find the minimum yes votes.",
+  ],
+  hi: [
+    "सदन में {n} सदस्य हैं पर {a} अनुपस्थित हैं। प्रस्ताव पारित करने के लिए उपस्थित सदस्यों में से आधे से अधिक की हाँ चाहिए। न्यूनतम कितने हाँ-मत चाहिए?",
+    "{n} सदस्यों में से {a} बैठक में नहीं हैं। प्रस्ताव उपस्थित सदस्यों के बहुमत से पारित होता है। न्यूनतम हाँ-मत निकालिए।",
+  ],
+  mr: [
+    "सभागृहात {n} सदस्य आहेत पण {a} गैरहजर आहेत. ठराव मंजूर होण्यासाठी हजर सदस्यांपैकी निम्म्याहून अधिकांची होय हवी. किमान किती होय-मते हवीत?",
+    "{n} सदस्यांपैकी {a} बैठकीला नाहीत. ठराव हजर सदस्यांच्या बहुमताने मंजूर होतो. किमान होय-मते काढा.",
+  ],
+  sen: "Present = {n} − {a}; majority of present = ({n} − {a}) ÷ 2 + 1 = {ans} votes.",
+  shi: "उपस्थित = {n} − {a}; उपस्थित का बहुमत = ({n} − {a}) ÷ 2 + 1 = {ans} मत।",
+  smr: "हजर = {n} − {a}; हजरांचे बहुमत = ({n} − {a}) ÷ 2 + 1 = {ans} मते.",
+};
+const fCivPresentMaj = (tag: string, lvl: number, want: number, hR: Range, aR: Range) =>
+  T(`civpresent:${tag}`, lvl, want, [hR.n, aR.n], CIVPRESENT, ([i, j]) => {
+    const half = at(hR, i!), a = at(aR, j!), n = 2 * half + a, maj = half + 1;
+    return { vars: { n, a }, answer: maj, expr: `(${n}-${a})/2+1`, decoys: [half, n / 2 + 1, maj + 1] };
+  });
+
+const CIVQPCT: SkinSet = {
+  en: ["In a body of {n} members, {p} attended the session. What percentage of the membership was present?", "{p} of the {n} members of a council came to vote. Find the attendance percentage."],
+  hi: ["{n} सदस्यों के निकाय में {p} सत्र में आए। सदस्यता का कितना प्रतिशत उपस्थित था?", "परिषद के {n} सदस्यों में से {p} मतदान करने आए। उपस्थिति का प्रतिशत निकालिए।"],
+  mr: ["{n} सदस्यांच्या मंडळात {p} सत्राला आले. सदस्यत्वाच्या किती टक्के हजर होते?", "परिषदेच्या {n} सदस्यांपैकी {p} मतदानाला आले. हजेरीची टक्केवारी काढा."],
+  sen: "Percentage = present × 100 ÷ total = {p} × 100 ÷ {n} = {ans}%.",
+  shi: "प्रतिशत = उपस्थित × 100 ÷ कुल = {p} × 100 ÷ {n} = {ans}%।",
+  smr: "टक्केवारी = हजर × 100 ÷ एकूण = {p} × 100 ÷ {n} = {ans}%.",
+};
+const CIVQPCT_PCTS = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
+const fCivQuorumPct = (tag: string, lvl: number, want: number, jR: Range) =>
+  T(`civqpct:${tag}`, lvl, want, [jR.n, CIVQPCT_PCTS.length], CIVQPCT, ([i, j]) => {
+    const n = 20 * at(jR, i!), pct = CIVQPCT_PCTS[j!]!, p = (n * pct) / 100;
+    return { vars: { n, p }, answer: pct, expr: `${p}*100/${n}`, decoys: [pct + 5, pct - 5, p], render: (x) => `${fmt(x)}%` };
+  });
+
+const CIVMAJGAP: SkinSet = {
+  en: [
+    "A house of {n} members needs {maj} votes for a majority. A party holds {p} seats. How many more seats does it need for a majority on its own?",
+    "In a {n}-seat assembly (majority mark {maj}), a party won {p} seats. Find its shortfall from a majority.",
+  ],
+  hi: [
+    "{n} सदस्यों के सदन में बहुमत के लिए {maj} मत चाहिए। एक दल के पास {p} सीटें हैं। अकेले बहुमत के लिए उसे और कितनी सीटें चाहिए?",
+    "{n} सीटों की विधानसभा (बहुमत का आँकड़ा {maj}) में दल ने {p} सीटें जीतीं। बहुमत से उसकी कमी निकालिए।",
+  ],
+  mr: [
+    "{n} सदस्यांच्या सभागृहात बहुमतासाठी {maj} मते हवीत. एका पक्षाकडे {p} जागा आहेत. स्वबळावर बहुमतासाठी त्याला आणखी किती जागा हव्यात?",
+    "{n} जागांच्या विधानसभेत (बहुमताचा आकडा {maj}) पक्षाने {p} जागा जिंकल्या. बहुमतापासूनची तूट काढा.",
+  ],
+  sen: "Shortfall = majority mark − seats won = {maj} − {p} = {ans} seats.",
+  shi: "कमी = बहुमत का आँकड़ा − जीती सीटें = {maj} − {p} = {ans} सीटें।",
+  smr: "तूट = बहुमताचा आकडा − जिंकलेल्या जागा = {maj} − {p} = {ans} जागा.",
+};
+const fCivMajGap = (tag: string, lvl: number, want: number, hR: Range, sR: Range) =>
+  T(`civmajgap:${tag}`, lvl, want, [hR.n, sR.n], CIVMAJGAP, ([i, j]) => {
+    const half = at(hR, i!), n = 2 * half, maj = half + 1, s = at(sR, j!), p = maj - s;
+    return { vars: { n, maj, p }, answer: s, expr: `${maj}-${p}`, decoys: [s + 1, s - 1, half - p] };
+  });
+
+const CIVAMEND: SkinSet = {
+  en: [
+    "A constitutional amendment needs at least two-thirds of the {n} members present and voting. All {n} vote. What is the minimum number of yes votes?",
+    "All {n} members vote on an amendment that requires a two-thirds majority. Find the smallest passing count.",
+  ],
+  hi: [
+    "संविधान संशोधन के लिए उपस्थित और मतदान करने वाले {n} सदस्यों के कम से कम दो-तिहाई चाहिए। सभी {n} मतदान करते हैं। न्यूनतम हाँ-मत कितने?",
+    "सभी {n} सदस्य ऐसे संशोधन पर मतदान करते हैं जिसे दो-तिहाई बहुमत चाहिए। न्यूनतम पारित संख्या निकालिए।",
+  ],
+  mr: [
+    "घटनादुरुस्तीसाठी हजर राहून मतदान करणाऱ्या {n} सदस्यांपैकी किमान दोन-तृतीयांश हवेत. सर्व {n} मतदान करतात. किमान होय-मते किती?",
+    "दोन-तृतीयांश बहुमत लागणाऱ्या दुरुस्तीवर सर्व {n} सदस्य मतदान करतात. किमान मंजुरीची संख्या काढा.",
+  ],
+  sen: "Two-thirds of {n} = {n} × 2 ÷ 3 = {ans} yes votes.",
+  shi: "{n} का दो-तिहाई = {n} × 2 ÷ 3 = {ans} हाँ-मत।",
+  smr: "{n} चे दोन-तृतीयांश = {n} × 2 ÷ 3 = {ans} होय-मते.",
+};
+const fCivTwoThirdsVote = (tag: string, lvl: number, want: number, k: Range) =>
+  T(`civamend:${tag}`, lvl, want, [k.n], CIVAMEND, ([i]) => {
+    const third = at(k, i!), n = 3 * third, ans = 2 * third;
+    return { vars: { n }, answer: ans, expr: `${n}*2/3`, decoys: [third, n / 3 + 1, ans - 1] };
+  });
+
+const CIVCOAL: SkinSet = {
+  en: [
+    "An assembly of {n} seats has a majority mark of {maj}. Two allied parties hold {p1} and {p2} seats. How many more seats does the alliance need for a majority?",
+    "In a {n}-member house (majority {maj}), partners with {p1} and {p2} seats join hands. Find their shortfall.",
+  ],
+  hi: [
+    "{n} सीटों की विधानसभा में बहुमत का आँकड़ा {maj} है। दो सहयोगी दलों के पास {p1} और {p2} सीटें हैं। गठबंधन को बहुमत के लिए और कितनी सीटें चाहिए?",
+    "{n} सदस्यीय सदन (बहुमत {maj}) में {p1} और {p2} सीटों वाले साथी मिलते हैं। उनकी कमी निकालिए।",
+  ],
+  mr: [
+    "{n} जागांच्या विधानसभेत बहुमताचा आकडा {maj} आहे. दोन मित्रपक्षांकडे {p1} व {p2} जागा आहेत. आघाडीला बहुमतासाठी आणखी किती जागा हव्यात?",
+    "{n} सदस्यांच्या सभागृहात (बहुमत {maj}) {p1} आणि {p2} जागांचे भागीदार एकत्र येतात. त्यांची तूट काढा.",
+  ],
+  sen: "Alliance = {p1} + {p2}; shortfall = {maj} − ({p1} + {p2}) = {ans} seats.",
+  shi: "गठबंधन = {p1} + {p2}; कमी = {maj} − ({p1} + {p2}) = {ans} सीटें।",
+  smr: "आघाडी = {p1} + {p2}; तूट = {maj} − ({p1} + {p2}) = {ans} जागा.",
+};
+const fCivCoalition = (tag: string, lvl: number, want: number, hR: Range, aR: Range, sR: Range) =>
+  T(`civcoal:${tag}`, lvl, want, [hR.n, aR.n, sR.n], CIVCOAL, ([i, j, k]) => {
+    const half = at(hR, i!), n = 2 * half, maj = half + 1, p1 = at(aR, j!), s = at(sR, k!);
+    const p2 = maj - s - p1;
+    return { vars: { n, maj, p1, p2 }, answer: s, expr: `${maj}-(${p1}+${p2})`, decoys: [s + 1, s - 1, maj - p1] };
+  });
+
+const CIVRATIO: SkinSet = {
+  en: [
+    "In a {n}-seat council, two parties split every seat in the ratio {ra} : {rb}. How many seats does the larger party get?",
+    "A house of {n} seats divides {ra} : {rb} between two parties. Find the bigger share.",
+  ],
+  hi: [
+    "{n} सीटों की परिषद में दो दल हर सीट {ra} : {rb} के अनुपात में बाँटते हैं। बड़े दल को कितनी सीटें मिलती हैं?",
+    "{n} सीटों का सदन दो दलों में {ra} : {rb} बँटता है। बड़ा हिस्सा निकालिए।",
+  ],
+  mr: [
+    "{n} जागांच्या परिषदेत दोन पक्ष प्रत्येक जागा {ra} : {rb} या प्रमाणात वाटतात. मोठ्या पक्षाला किती जागा मिळतात?",
+    "{n} जागांचे सभागृह दोन पक्षांत {ra} : {rb} असे वाटले जाते. मोठा वाटा काढा.",
+  ],
+  sen: "Each ratio unit = {n} ÷ ({ra} + {rb}); larger share = {n} × {ra} ÷ ({ra} + {rb}) = {ans} seats.",
+  shi: "अनुपात की एक इकाई = {n} ÷ ({ra} + {rb}); बड़ा हिस्सा = {n} × {ra} ÷ ({ra} + {rb}) = {ans} सीटें।",
+  smr: "प्रमाणाचे एक एकक = {n} ÷ ({ra} + {rb}); मोठा वाटा = {n} × {ra} ÷ ({ra} + {rb}) = {ans} जागा.",
+};
+const CIV_RATIOS: [number, number][] = [[2, 1], [3, 1], [3, 2], [4, 1], [4, 3], [5, 2], [5, 3], [5, 4], [7, 3], [7, 5]];
+const fCivRatioSeats = (tag: string, lvl: number, want: number, uR: Range) =>
+  T(`civratio:${tag}`, lvl, want, [uR.n, CIV_RATIOS.length], CIVRATIO, ([i, j]) => {
+    const u = at(uR, i!), [ra, rb] = CIV_RATIOS[j!]!, n = (ra + rb) * u, big = ra * u;
+    return { vars: { n, ra, rb }, answer: big, expr: `${n}*${ra}/(${ra}+${rb})`, decoys: [rb * u, big + u, n - u] };
+  });
+
+const CIVIMPEACH: SkinSet = {
+  en: [
+    "A special resolution must be passed by two-thirds of the combined strength of two houses with {n1} and {n2} members. How many votes are needed?",
+    "Two chambers of {n1} and {n2} members sit together; a motion needs two-thirds of the joint sitting. Find the required votes.",
+  ],
+  hi: [
+    "{n1} और {n2} सदस्यों वाले दोनों सदनों की संयुक्त संख्या के दो-तिहाई से विशेष प्रस्ताव पारित होना है। कितने मत चाहिए?",
+    "{n1} और {n2} सदस्यों के दो सदन साथ बैठते हैं; प्रस्ताव को संयुक्त बैठक के दो-तिहाई चाहिए। आवश्यक मत निकालिए।",
+  ],
+  mr: [
+    "{n1} आणि {n2} सदस्यांच्या दोन सभागृहांच्या एकत्रित संख्येच्या दोन-तृतीयांशांनी विशेष ठराव मंजूर व्हायचा आहे. किती मते हवीत?",
+    "{n1} व {n2} सदस्यांची दोन सभागृहे एकत्र बसतात; ठरावाला संयुक्त बैठकीचे दोन-तृतीयांश हवेत. आवश्यक मते काढा.",
+  ],
+  sen: "Joint strength = {n1} + {n2}; two-thirds = ({n1} + {n2}) × 2 ÷ 3 = {ans} votes.",
+  shi: "संयुक्त संख्या = {n1} + {n2}; दो-तिहाई = ({n1} + {n2}) × 2 ÷ 3 = {ans} मत।",
+  smr: "एकत्रित संख्या = {n1} + {n2}; दोन-तृतीयांश = ({n1} + {n2}) × 2 ÷ 3 = {ans} मते.",
+};
+const fCivImpeach = (tag: string, lvl: number, want: number, kR: Range, n2R: Range) =>
+  T(`civimpeach:${tag}`, lvl, want, [kR.n, n2R.n], CIVIMPEACH, ([i, j]) => {
+    const k = at(kR, i!), total = 3 * k, n2 = at(n2R, j!), n1 = total - n2, ans = 2 * k;
+    return { vars: { n1, n2 }, answer: ans, expr: `(${n1}+${n2})*2/3`, decoys: [k, ans + 1, total / 2 + 1] };
+  });
+
+const CIVREPPOP: SkinSet = {
+  en: ["Each of the {s} seats in an assembly represents {per} people on average. What is the total population?", "An assembly's {s} seats average {per} people per seat. Find the population it represents."],
+  hi: ["विधानसभा की {s} सीटों में हर सीट औसतन {per} लोगों का प्रतिनिधित्व करती है। कुल जनसंख्या क्या है?", "विधानसभा की {s} सीटें औसतन {per} व्यक्ति प्रति सीट हैं। वह कितनी जनसंख्या का प्रतिनिधित्व करती है?"],
+  mr: ["विधानसभेच्या {s} जागांपैकी प्रत्येक जागा सरासरी {per} लोकांचे प्रतिनिधित्व करते. एकूण लोकसंख्या किती?", "विधानसभेच्या {s} जागा सरासरी {per} व्यक्ती प्रति जागा आहेत. ती किती लोकसंख्येचे प्रतिनिधित्व करते?"],
+  sen: "Population = seats × people per seat = {s} × {per} = {ans}.",
+  shi: "जनसंख्या = सीटें × व्यक्ति प्रति सीट = {s} × {per} = {ans}।",
+  smr: "लोकसंख्या = जागा × व्यक्ती प्रति जागा = {s} × {per} = {ans}.",
+};
+const fCivRepPop = (tag: string, lvl: number, want: number, s: Range, u: Range) =>
+  T(`civreppop:${tag}`, lvl, want, [s.n, u.n], CIVREPPOP, ([i, j]) => {
+    const seats = at(s, i!), per = at(u, j!), p = seats * per;
+    return { vars: { s: seats, per }, answer: p, expr: `${seats}*${per}`, decoys: [p + per, p - seats, seats + per] };
+  });
+
+const CIVREPSEATS: SkinSet = {
+  en: ["A population of {p} is represented at {per} people per seat. How many seats is that?", "With one seat for every {per} people, how many seats does a population of {p} get?"],
+  hi: ["{p} जनसंख्या का प्रतिनिधित्व {per} व्यक्ति प्रति सीट की दर से होता है। कितनी सीटें बनीं?", "हर {per} लोगों पर एक सीट हो तो {p} जनसंख्या को कितनी सीटें मिलेंगी?"],
+  mr: ["{p} लोकसंख्येचे प्रतिनिधित्व {per} व्यक्ती प्रति जागा या दराने होते. किती जागा होतात?", "दर {per} लोकांमागे एक जागा असल्यास {p} लोकसंख्येला किती जागा मिळतील?"],
+  sen: "Seats = population ÷ people per seat = {p} ÷ {per} = {ans}.",
+  shi: "सीटें = जनसंख्या ÷ व्यक्ति प्रति सीट = {p} ÷ {per} = {ans}।",
+  smr: "जागा = लोकसंख्या ÷ व्यक्ती प्रति जागा = {p} ÷ {per} = {ans}.",
+};
+const fCivRepSeats = (tag: string, lvl: number, want: number, s: Range, u: Range) =>
+  T(`civrepseats:${tag}`, lvl, want, [s.n, u.n], CIVREPSEATS, ([i, j]) => {
+    const seats = at(s, i!), per = at(u, j!), p = seats * per;
+    return { vars: { p, per }, answer: seats, expr: `${p}/${per}`, decoys: [seats + 5, seats - 2, per] };
+  });
+
+const CIVREPGROW: SkinSet = {
+  en: [
+    "A constituency's seat now represents {per} people. If the population grows {p}% with no new seats, how many people will the seat represent?",
+    "Today one seat stands for {per} people. After {p}% growth and the same seat count, find the new number per seat.",
+  ],
+  hi: [
+    "निर्वाचन क्षेत्र की सीट अभी {per} लोगों का प्रतिनिधित्व करती है। जनसंख्या {p}% बढ़े और नई सीटें न बनें, तो सीट कितने लोगों की होगी?",
+    "आज एक सीट {per} लोगों की है। {p}% वृद्धि के बाद, उतनी ही सीटों पर, नई प्रति-सीट संख्या निकालिए।",
+  ],
+  mr: [
+    "मतदारसंघाची जागा आता {per} लोकांचे प्रतिनिधित्व करते. लोकसंख्या {p}% वाढली आणि नव्या जागा नाहीत, तर जागेवर किती लोक येतील?",
+    "आज एक जागा {per} लोकांची आहे. {p}% वाढीनंतर, तितक्याच जागांवर, नवी प्रति-जागा संख्या काढा.",
+  ],
+  sen: "New count = {per} × (100 + {p}) ÷ 100 = {ans} people per seat.",
+  shi: "नई संख्या = {per} × (100 + {p}) ÷ 100 = {ans} व्यक्ति प्रति सीट।",
+  smr: "नवी संख्या = {per} × (100 + {p}) ÷ 100 = {ans} व्यक्ती प्रति जागा.",
+};
+const fCivRepGrow = (tag: string, lvl: number, want: number, jR: Range, pR: Range) =>
+  T(`civrepgrow:${tag}`, lvl, want, [jR.n, pR.n], CIVREPGROW, ([i, j]) => {
+    const per = 20 * at(jR, i!), p = 5 * at(pR, j!), np = (per * (100 + p)) / 100;
+    return { vars: { per, p }, answer: np, expr: `${per}*(100+${p})/100`, decoys: [per + p, np + 20, (per * p) / 100] };
+  });
+
+const CIVREPTWO: SkinSet = {
+  en: [
+    "State X gives each of its {s1} seats {per1} people; state Y gives each of its {s2} seats {per2} people. How many MORE people does an X seat represent than a Y seat?",
+    "Compare representation: X ({s1} seats, {per1} people each) and Y ({s2} seats, {per2} people each). Find the per-seat difference.",
+  ],
+  hi: [
+    "राज्य X की {s1} सीटों में हर सीट {per1} लोगों की है; राज्य Y की {s2} सीटों में हर सीट {per2} लोगों की। X की सीट Y की सीट से कितने अधिक लोगों की है?",
+    "प्रतिनिधित्व तुलना: X ({s1} सीटें, {per1} प्रति सीट) और Y ({s2} सीटें, {per2} प्रति सीट)। प्रति-सीट अंतर निकालिए।",
+  ],
+  mr: [
+    "राज्य X च्या {s1} जागांपैकी प्रत्येक जागा {per1} लोकांची आहे; राज्य Y च्या {s2} जागांपैकी प्रत्येक {per2} लोकांची. X ची जागा Y च्या जागेपेक्षा किती जास्त लोकांची आहे?",
+    "प्रतिनिधित्वाची तुलना: X ({s1} जागा, प्रत्येकी {per1}) आणि Y ({s2} जागा, प्रत्येकी {per2}). प्रति-जागा फरक काढा.",
+  ],
+  sen: "Difference = {per1} − {per2} = {ans} people per seat.",
+  shi: "अंतर = {per1} − {per2} = {ans} व्यक्ति प्रति सीट।",
+  smr: "फरक = {per1} − {per2} = {ans} व्यक्ती प्रति जागा.",
+};
+const CIVREPTWO_SEATS: [number, number][] = [[40, 60], [50, 80], [70, 90], [120, 150]];
+const fCivRepTwo = (tag: string, lvl: number, want: number, perR: Range, dR: Range) =>
+  T(`civreptwo:${tag}`, lvl, want, [perR.n, dR.n, CIVREPTWO_SEATS.length], CIVREPTWO, ([i, j, k]) => {
+    const per1 = at(perR, i!), d = at(dR, j!), per2 = per1 - d;
+    const [s1, s2] = CIVREPTWO_SEATS[k!]!;
+    return { vars: { s1, per1, s2, per2 }, answer: d, expr: `${per1}-${per2}`, decoys: [d + 50, d - 10, per1], render: fmt };
+  });
+
+const CIVREPMERGE: SkinSet = {
+  en: [
+    "Two districts merge: one with {s1} seats for {p1} people, the other with {s2} seats for {p2} people. After the merger, how many people does each seat represent on average?",
+    "A merged council keeps all {s1} + {s2} seats for populations of {p1} and {p2}. Find the new average per seat.",
+  ],
+  hi: [
+    "दो जिले मिलते हैं: एक में {p1} लोगों के लिए {s1} सीटें, दूसरे में {p2} लोगों के लिए {s2} सीटें। विलय के बाद हर सीट औसतन कितने लोगों की होगी?",
+    "विलय के बाद परिषद {p1} और {p2} जनसंख्या के लिए {s1} + {s2} सीटें रखती है। नई प्रति-सीट औसत निकालिए।",
+  ],
+  mr: [
+    "दोन जिल्हे विलीन होतात: एकात {p1} लोकांसाठी {s1} जागा, दुसऱ्यात {p2} लोकांसाठी {s2} जागा. विलीनीकरणानंतर प्रत्येक जागा सरासरी किती लोकांची असेल?",
+    "विलीन परिषदेकडे {p1} व {p2} लोकसंख्येसाठी {s1} + {s2} जागा राहतात. नवी प्रति-जागा सरासरी काढा.",
+  ],
+  sen: "Average = total people ÷ total seats = ({p1} + {p2}) ÷ ({s1} + {s2}) = {ans} people per seat.",
+  shi: "औसत = कुल जनसंख्या ÷ कुल सीटें = ({p1} + {p2}) ÷ ({s1} + {s2}) = {ans} व्यक्ति प्रति सीट।",
+  smr: "सरासरी = एकूण लोक ÷ एकूण जागा = ({p1} + {p2}) ÷ ({s1} + {s2}) = {ans} व्यक्ती प्रति जागा.",
+};
+const fCivRepMerge = (tag: string, lvl: number, want: number, rR: Range, s1R: Range, s2R: Range, dR: Range) =>
+  T(`civrepmerge:${tag}`, lvl, want, [rR.n, s1R.n, s2R.n, dR.n], CIVREPMERGE, ([i, j, k, l]) => {
+    const rho = at(rR, i!), s1 = at(s1R, j!), s2 = at(s2R, k!), delta = at(dR, l!);
+    const p1 = (rho + delta) * s1, p2 = rho * (s1 + s2) - p1;
+    return { vars: { s1, p1, s2, p2 }, answer: rho, expr: `(${p1}+${p2})/(${s1}+${s2})`, decoys: [rho + delta, rho - delta, rho + 1], render: fmt };
+  });
+
+const CIVTERMBACK: SkinSet = {
+  en: ["A body's full {t}-year term ends in {y}. In which year was it elected?", "If a {t}-year term runs out in {y}, when did it begin?"],
+  hi: ["निकाय का पूरा {t} वर्ष का कार्यकाल {y} में समाप्त होता है। वह किस वर्ष चुना गया था?", "यदि {t} वर्ष का कार्यकाल {y} में पूरा होता है, तो वह कब शुरू हुआ?"],
+  mr: ["संस्थेचा पूर्ण {t} वर्षांचा कार्यकाळ {y} मध्ये संपतो. ती कोणत्या वर्षी निवडली गेली?", "{t} वर्षांचा कार्यकाळ {y} मध्ये संपत असेल, तर तो केव्हा सुरू झाला?"],
+  sen: "Subtract the term: {y} − {t} = {ans}.",
+  shi: "कार्यकाल घटाएँ: {y} − {t} = {ans}।",
+  smr: "कार्यकाळ वजा करा: {y} − {t} = {ans}.",
+};
+const fCivTermBack = (tag: string, lvl: number, want: number, y: Range) =>
+  T(`civtermback:${tag}`, lvl, want, [y.n, 3], CIVTERMBACK, ([i, j]) => {
+    const y0 = at(y, i!), t = [4, 5, 6][j!]!, start = y0 - t;
+    return { vars: { y: y0, t }, answer: start, expr: `${y0}-${t}`, decoys: [start + 1, start - 1, y0 - 10] };
+  });
+
+const CIVTERMCOUNT: SkinSet = {
+  en: [
+    "A council is elected in {y} and every {t} years after that. Counting the {y} election, how many elections happen up to and including the year {y2}?",
+    "Elections run every {t} years starting in {y}. How many take place from {y} to {y2} inclusive?",
+  ],
+  hi: [
+    "परिषद {y} में और उसके बाद हर {t} वर्ष में चुनी जाती है। {y} का चुनाव गिनते हुए, {y2} तक कुल कितने चुनाव होंगे?",
+    "{y} से हर {t} वर्ष में चुनाव होते हैं। {y} से {y2} तक (दोनों मिलाकर) कितने होंगे?",
+  ],
+  mr: [
+    "परिषद {y} मध्ये आणि त्यानंतर दर {t} वर्षांनी निवडली जाते. {y} ची निवडणूक धरून, {y2} पर्यंत एकूण किती निवडणुका होतील?",
+    "{y} पासून दर {t} वर्षांनी निवडणुका होतात. {y} ते {y2} (दोन्ही धरून) किती होतील?",
+  ],
+  sen: "Years elapsed = {y2} − {y} = {n}; elections = {n} ÷ {t} + 1 = {ans}.",
+  shi: "बीते वर्ष = {y2} − {y} = {n}; चुनाव = {n} ÷ {t} + 1 = {ans}।",
+  smr: "गेलेली वर्षे = {y2} − {y} = {n}; निवडणुका = {n} ÷ {t} + 1 = {ans}.",
+};
+const fCivTermCount = (tag: string, lvl: number, want: number, y: Range, kR: Range) =>
+  T(`civtermcount:${tag}`, lvl, want, [y.n, 3, kR.n], CIVTERMCOUNT, ([i, j, l]) => {
+    const y0 = at(y, i!), t = [4, 5, 6][j!]!, k = at(kR, l!), n = t * k, y2 = y0 + n;
+    return { vars: { y: y0, t, y2, n }, answer: k + 1, expr: `${n}/${t}+1`, decoys: [k, k + 2, n], render: fmt };
+  });
+
+const CIVTERMNTH: SkinSet = {
+  en: [
+    "A body is first elected in {y} with a fixed {t}-year term. In which year is its {nth}th election held?",
+    "Starting from the {y} election and repeating every {t} years, when does election number {nth} take place?",
+  ],
+  hi: [
+    "निकाय पहली बार {y} में चुना जाता है, कार्यकाल {t} वर्ष का है। उसका {nth}वाँ चुनाव किस वर्ष होगा?",
+    "{y} के चुनाव से शुरू होकर हर {t} वर्ष में दोहराते हुए, {nth}वाँ चुनाव कब होगा?",
+  ],
+  mr: [
+    "संस्था पहिल्यांदा {y} मध्ये निवडली जाते, कार्यकाळ {t} वर्षांचा आहे. तिची {nth}वी निवडणूक कोणत्या वर्षी होईल?",
+    "{y} च्या निवडणुकीपासून दर {t} वर्षांनी होत, {nth}वी निवडणूक केव्हा होईल?",
+  ],
+  sen: "Election {nth} comes after {nth} − 1 terms: {y} + ({nth} − 1) × {t} = {ans}.",
+  shi: "{nth}वाँ चुनाव {nth} − 1 कार्यकाल बाद: {y} + ({nth} − 1) × {t} = {ans}।",
+  smr: "{nth}वी निवडणूक {nth} − 1 कार्यकाळांनंतर: {y} + ({nth} − 1) × {t} = {ans}.",
+};
+const fCivTermNth = (tag: string, lvl: number, want: number, y: Range, nthR: Range) =>
+  T(`civtermnth:${tag}`, lvl, want, [y.n, 3, nthR.n], CIVTERMNTH, ([i, j, l]) => {
+    const y0 = at(y, i!), t = [4, 5, 6][j!]!, nth = at(nthR, l!), y2 = y0 + (nth - 1) * t;
+    return { vars: { y: y0, t, nth }, answer: y2, expr: `${y0}+(${nth}-1)*${t}`, decoys: [y2 + t, y2 - t, y0 + nth * t] };
+  });
+
+const CIVTERMMID: SkinSet = {
+  en: [
+    "A council elected in {y} completes {c} full {t}-year terms; {d} years into the next term it is dissolved and a fresh election is held. In which year?",
+    "From {y}, a body serves {c} complete terms of {t} years each, then falls {d} years into the following term. Which year is that?",
+  ],
+  hi: [
+    "{y} में चुनी परिषद {t}-{t} वर्ष के {c} पूरे कार्यकाल निभाती है; अगले कार्यकाल के {d} वर्ष बाद वह भंग होती है और नया चुनाव होता है। किस वर्ष?",
+    "{y} से निकाय {t} वर्ष के {c} पूरे कार्यकाल चलाता है, फिर अगले कार्यकाल में {d} वर्ष बीतते हैं। वह कौन-सा वर्ष है?",
+  ],
+  mr: [
+    "{y} मध्ये निवडलेली परिषद {t} वर्षांचे {c} पूर्ण कार्यकाळ पार पाडते; पुढील कार्यकाळात {d} वर्षांनी ती विसर्जित होऊन नवी निवडणूक होते. कोणत्या वर्षी?",
+    "{y} पासून संस्था {t} वर्षांचे {c} पूर्ण कार्यकाळ चालवते, मग पुढील कार्यकाळात {d} वर्षे जातात. ते कोणते वर्ष?",
+  ],
+  sen: "Count forward: {y} + {c} × {t} + {d} = {ans}.",
+  shi: "आगे गिनें: {y} + {c} × {t} + {d} = {ans}।",
+  smr: "पुढे मोजा: {y} + {c} × {t} + {d} = {ans}.",
+};
+const fCivTermMid = (tag: string, lvl: number, want: number, y: Range, cR: Range, dR: Range) =>
+  T(`civtermmid:${tag}`, lvl, want, [y.n, 3, cR.n, dR.n], CIVTERMMID, ([i, j, k, l]) => {
+    const y0 = at(y, i!), t = [4, 5, 6][j!]!, c = at(cR, k!), d = at(dR, l!), y2 = y0 + c * t + d;
+    return { vars: { y: y0, t, c, d }, answer: y2, expr: `${y0}+${c}*${t}+${d}`, decoys: [y2 - d, y2 + t, y2 - 1] };
+  });
+
+const CIVTERMSYNC: SkinSet = {
+  en: [
+    "A village council (term {t1} years) and a district board (term {t2} years) are both elected in {y}. In which year are their elections next held together?",
+    "Two bodies elected together in {y} have terms of {t1} and {t2} years. When do their election years coincide again?",
+    "In {y} both a municipal committee ({t1}-year term) and a state assembly ({t2}-year term) go to polls. Which year sees the next joint election?",
+    "Elections for terms of {t1} and {t2} years both fall in {y}. Find the next common election year.",
+  ],
+  hi: [
+    "ग्राम परिषद (कार्यकाल {t1} वर्ष) और जिला बोर्ड (कार्यकाल {t2} वर्ष) दोनों {y} में चुने जाते हैं। उनके चुनाव अगली बार एक साथ किस वर्ष होंगे?",
+    "{y} में साथ चुने गए दो निकायों के कार्यकाल {t1} और {t2} वर्ष हैं। उनके चुनावी वर्ष फिर कब मिलेंगे?",
+    "{y} में नगर समिति ({t1} वर्ष) और विधानसभा ({t2} वर्ष) दोनों के चुनाव होते हैं। अगला साझा चुनावी वर्ष कौन-सा होगा?",
+    "{t1} और {t2} वर्ष के कार्यकालों के चुनाव दोनों {y} में पड़ते हैं। अगला समान चुनावी वर्ष निकालिए।",
+  ],
+  mr: [
+    "ग्रामपरिषद (कार्यकाळ {t1} वर्षे) आणि जिल्हा मंडळ (कार्यकाळ {t2} वर्षे) दोन्ही {y} मध्ये निवडली जातात. त्यांच्या निवडणुका पुढे एकत्र कोणत्या वर्षी होतील?",
+    "{y} मध्ये एकत्र निवडलेल्या दोन संस्थांचे कार्यकाळ {t1} व {t2} वर्षे आहेत. त्यांची निवडणूक वर्षे पुन्हा केव्हा जुळतील?",
+    "{y} मध्ये नगर समिती ({t1} वर्षे) आणि विधानसभा ({t2} वर्षे) दोघांच्या निवडणुका होतात. पुढील सामायिक निवडणूक वर्ष कोणते?",
+    "{t1} आणि {t2} वर्षांच्या कार्यकाळांच्या निवडणुका दोन्ही {y} मध्ये येतात. पुढील समान निवडणूक वर्ष काढा.",
+  ],
+  sen: "They meet after the LCM of {t1} and {t2}, i.e. {lcm} years: {y} + {lcm} = {ans}.",
+  shi: "वे {t1} और {t2} के लघुत्तम समापवर्त्य यानी {lcm} वर्ष बाद मिलते हैं: {y} + {lcm} = {ans}।",
+  smr: "ते {t1} व {t2} च्या लसावि म्हणजे {lcm} वर्षांनी जुळतात: {y} + {lcm} = {ans}.",
+};
+const CIV_SYNC: [number, number, number][] = [[4, 5, 20], [4, 6, 12], [5, 6, 30]];
+const fCivTermSync = (tag: string, lvl: number, want: number, y: Range) =>
+  T(`civtermsync:${tag}`, lvl, want, [y.n, CIV_SYNC.length], CIVTERMSYNC, ([i, j]) => {
+    const y0 = at(y, i!), [t1, t2, lcm] = CIV_SYNC[j!]!, y2 = y0 + lcm;
+    return { vars: { y: y0, t1, t2, lcm }, answer: y2, expr: `${y0}+${lcm}`, decoys: [y0 + t1 * t2, y0 + t1 + t2, y2 + t1] };
+  });
+
 /* --------------------------------------------------------------------------
    Economics — the money maths a household actually does.
    -------------------------------------------------------------------------- */
@@ -2389,6 +3992,324 @@ const fEcoGrowth = (tag: string, lvl: number, want: number, m: Range, p: Range) 
     },
   );
 
+const ECODISCPCT: SkinSet = {
+  en: ["An item marked ₹{mp} sells for ₹{sp}. What discount percentage is that?", "The list price is ₹{mp} but you pay ₹{sp}. Find the discount per cent."],
+  hi: ["₹{mp} अंकित मूल्य की वस्तु ₹{sp} में बिकती है। छूट का प्रतिशत क्या है?", "सूची मूल्य ₹{mp} है पर आप ₹{sp} देते हैं। छूट प्रतिशत निकालिए।"],
+  mr: ["₹{mp} छापील किमतीची वस्तू ₹{sp} ला विकली जाते. सुटीची टक्केवारी किती?", "यादी किंमत ₹{mp} आहे पण तुम्ही ₹{sp} देता. सूट टक्के काढा."],
+  sen: "Discount = {mp} − {sp}; per cent = ({mp} − {sp}) × 100 ÷ {mp} = {ans}%.",
+  shi: "छूट = {mp} − {sp}; प्रतिशत = ({mp} − {sp}) × 100 ÷ {mp} = {ans}%।",
+  smr: "सूट = {mp} − {sp}; टक्के = ({mp} − {sp}) × 100 ÷ {mp} = {ans}%.",
+};
+const ECODISC_PCTS = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
+const fEcoDiscPct = (tag: string, lvl: number, want: number, u: Range) =>
+  T(`ecodiscpct:${tag}`, lvl, want, [u.n, ECODISC_PCTS.length], ECODISCPCT, ([i, j]) => {
+    const mp = 20 * at(u, i!), d = ECODISC_PCTS[j!]!, sp = mp - (mp * d) / 100;
+    return { vars: { mp, sp }, answer: d, expr: `(${mp}-${sp})*100/${mp}`, decoys: [d + 5, d - 5, mp - sp], render: (x) => `${fmt(x)}%` };
+  });
+
+const ECODISCGST: SkinSet = {
+  en: [
+    "An item marked ₹{mp} gets a {d}% discount, then {t}% tax is added on the discounted price. What is the final bill?",
+    "After {d}% off on ₹{mp} and {t}% tax on what remains, how much do you pay?",
+  ],
+  hi: [
+    "₹{mp} अंकित वस्तु पर {d}% छूट मिलती है, फिर घटे दाम पर {t}% कर जुड़ता है। अंतिम बिल कितना है?",
+    "₹{mp} पर {d}% छूट और बचे दाम पर {t}% कर के बाद आप कितना देंगे?",
+  ],
+  mr: [
+    "₹{mp} छापील वस्तूवर {d}% सूट मिळते, मग घटलेल्या किमतीवर {t}% कर लागतो. अंतिम बिल किती?",
+    "₹{mp} वर {d}% सूट आणि उरलेल्या किमतीवर {t}% करानंतर तुम्ही किती द्याल?",
+  ],
+  sen: "After discount: {mp} × (100 − {d}) ÷ 100; after tax: × (100 + {t}) ÷ 100 = ₹{ans}.",
+  shi: "छूट के बाद: {mp} × (100 − {d}) ÷ 100; कर के बाद: × (100 + {t}) ÷ 100 = ₹{ans}।",
+  smr: "सुटीनंतर: {mp} × (100 − {d}) ÷ 100; करानंतर: × (100 + {t}) ÷ 100 = ₹{ans}.",
+};
+const ECODG_D = [10, 20, 30, 40, 50];
+const ECODG_T = [10, 20];
+const fEcoDiscGST = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`ecodiscgst:${tag}`, lvl, want, [kR.n, ECODG_D.length, ECODG_T.length], ECODISCGST, ([i, j, k]) => {
+    const mp = 100 * at(kR, i!), d = ECODG_D[j!]!, t = ECODG_T[k!]!;
+    const final = (mp * (100 - d) * (100 + t)) / 10000;
+    return { vars: { mp, d, t }, answer: final, expr: `${mp}*(100-${d})*(100+${t})/10000`, decoys: [(mp * (100 - d)) / 100, mp - (mp * (d - t)) / 100, final + 10], render: rupees };
+  });
+
+const ECOSUCC: SkinSet = {
+  en: [
+    "A shop gives two successive discounts of {a}% and then {b}% on an item marked ₹{mp}. What do you finally pay?",
+    "₹{mp} is reduced by {a}%, and the reduced price by another {b}%. Find the final price.",
+  ],
+  hi: [
+    "दुकान ₹{mp} अंकित वस्तु पर {a}% और फिर {b}% की दो क्रमिक छूट देती है। अंत में आप कितना देंगे?",
+    "₹{mp} में {a}% की कमी होती है, और घटे दाम में और {b}% की। अंतिम दाम निकालिए।",
+  ],
+  mr: [
+    "दुकान ₹{mp} छापील वस्तूवर {a}% आणि मग {b}% अशा दोन क्रमागत सुटी देते. शेवटी तुम्ही किती द्याल?",
+    "₹{mp} मध्ये {a}% घट होते, आणि घटलेल्या किमतीत आणखी {b}%. अंतिम किंमत काढा.",
+  ],
+  sen: "Apply both cuts in turn: {mp} × (100 − {a}) ÷ 100 × (100 − {b}) ÷ 100 = ₹{ans} — not the same as {a} + {b} per cent off.",
+  shi: "दोनों कटौतियाँ क्रम से लगाएँ: {mp} × (100 − {a}) ÷ 100 × (100 − {b}) ÷ 100 = ₹{ans} — यह {a} + {b} प्रतिशत छूट नहीं है।",
+  smr: "दोन्ही कपाती क्रमाने लावा: {mp} × (100 − {a}) ÷ 100 × (100 − {b}) ÷ 100 = ₹{ans} — हे {a} + {b} टक्के सुटीसारखे नाही.",
+};
+const ECOSUCC_A = [10, 20, 30, 40, 50];
+const ECOSUCC_B = [10, 20, 30, 40];
+const fEcoSuccDisc = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`ecosucc:${tag}`, lvl, want, [kR.n, ECOSUCC_A.length, ECOSUCC_B.length], ECOSUCC, ([i, j, k]) => {
+    const mp = 100 * at(kR, i!), a = ECOSUCC_A[j!]!, b = ECOSUCC_B[k!]!;
+    const final = (mp * (100 - a) * (100 - b)) / 10000;
+    return { vars: { mp, a, b }, answer: final, expr: `${mp}*(100-${a})*(100-${b})/10000`, decoys: [mp - (mp * (a + b)) / 100, (mp * (100 - a)) / 100, final + 10], render: rupees };
+  });
+
+const ECOMARKUP: SkinSet = {
+  en: [
+    "A trader buys an item for ₹{cp}, marks it up by {m}%, then sells at a {d}% discount on the marked price. What is the profit per cent?",
+    "Cost price ₹{cp}; markup {m}%; discount {d}% on the marked price. Find the overall profit percentage.",
+  ],
+  hi: [
+    "व्यापारी वस्तु ₹{cp} में खरीदता है, {m}% बढ़ाकर अंकित करता है, फिर अंकित मूल्य पर {d}% छूट से बेचता है। लाभ प्रतिशत क्या है?",
+    "क्रय मूल्य ₹{cp}; {m}% वृद्धि; अंकित मूल्य पर {d}% छूट। कुल लाभ प्रतिशत निकालिए।",
+  ],
+  mr: [
+    "व्यापारी वस्तू ₹{cp} ला घेतो, {m}% वाढवून किंमत छापतो, मग छापील किमतीवर {d}% सुटीने विकतो. नफ्याची टक्केवारी किती?",
+    "खरेदी किंमत ₹{cp}; {m}% वाढ; छापील किमतीवर {d}% सूट. एकूण नफा टक्के काढा.",
+  ],
+  sen: "Selling price = {cp} × (100 + {m}) ÷ 100 × (100 − {d}) ÷ 100; profit % = (100 + {m}) × (100 − {d}) ÷ 100 − 100 = {ans}%.",
+  shi: "विक्रय मूल्य = {cp} × (100 + {m}) ÷ 100 × (100 − {d}) ÷ 100; लाभ % = (100 + {m}) × (100 − {d}) ÷ 100 − 100 = {ans}%।",
+  smr: "विक्री किंमत = {cp} × (100 + {m}) ÷ 100 × (100 − {d}) ÷ 100; नफा % = (100 + {m}) × (100 − {d}) ÷ 100 − 100 = {ans}%.",
+};
+/** (markup %, discount %) pairs whose combined profit % is a positive integer. */
+const ECOMARKUP_COMBOS: [number, number][] = [[20, 10], [30, 10], [40, 10], [50, 10], [40, 20], [50, 20], [60, 20], [50, 30], [60, 30], [80, 30]];
+const fEcoMarkup = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`ecomarkup:${tag}`, lvl, want, [kR.n, ECOMARKUP_COMBOS.length], ECOMARKUP, ([i, j]) => {
+    const cp = 100 * at(kR, i!), [m, d] = ECOMARKUP_COMBOS[j!]!;
+    const profit = ((100 + m) * (100 - d)) / 100 - 100;
+    return { vars: { cp, m, d }, answer: profit, expr: `(100+${m})*(100-${d})/100-100`, decoys: [m - d, profit + 5, m], render: (x) => `${fmt(x)}%` };
+  });
+
+const ECOTOTAL: SkinSet = {
+  en: ["A town of {n} people has an average yearly income of ₹{per} per person. What is the town's total yearly income?", "Find the total income of {n} people averaging ₹{per} each per year."],
+  hi: ["{n} लोगों के कस्बे में प्रति व्यक्ति औसत वार्षिक आय ₹{per} है। कस्बे की कुल वार्षिक आय क्या है?", "प्रति वर्ष औसतन ₹{per} कमाने वाले {n} लोगों की कुल आय निकालिए।"],
+  mr: ["{n} लोकांच्या गावात दरडोई सरासरी वार्षिक उत्पन्न ₹{per} आहे. गावाचे एकूण वार्षिक उत्पन्न किती?", "दरवर्षी सरासरी ₹{per} कमावणाऱ्या {n} लोकांचे एकूण उत्पन्न काढा."],
+  sen: "Total = people × average = {n} × {per} = ₹{ans}.",
+  shi: "कुल = लोग × औसत = {n} × {per} = ₹{ans}।",
+  smr: "एकूण = लोक × सरासरी = {n} × {per} = ₹{ans}.",
+};
+const fEcoTotal = (tag: string, lvl: number, want: number, n: Range, u: Range) =>
+  T(`ecototal:${tag}`, lvl, want, [n.n, u.n], ECOTOTAL, ([i, j]) => {
+    const people = at(n, i!), per = 100 * at(u, j!), t = people * per;
+    return { vars: { n: people, per }, answer: t, expr: `${people}*${per}`, decoys: [t + per, t - people, people + per], render: rupees };
+  });
+
+const ECOPEOPLE: SkinSet = {
+  en: ["A village earns ₹{t} a year in all, averaging ₹{per} per person. How many people live there?", "Total income ₹{t}; average ₹{per} per head. Find the number of people."],
+  hi: ["गाँव कुल ₹{t} प्रति वर्ष कमाता है, औसतन ₹{per} प्रति व्यक्ति। वहाँ कितने लोग रहते हैं?", "कुल आय ₹{t}; औसत ₹{per} प्रति व्यक्ति। लोगों की संख्या निकालिए।"],
+  mr: ["गाव दरवर्षी एकूण ₹{t} कमावते, सरासरी ₹{per} प्रति व्यक्ती. तिथे किती लोक राहतात?", "एकूण उत्पन्न ₹{t}; सरासरी ₹{per} प्रति डोई. लोकांची संख्या काढा."],
+  sen: "People = total ÷ average = {t} ÷ {per} = {ans}.",
+  shi: "लोग = कुल ÷ औसत = {t} ÷ {per} = {ans}।",
+  smr: "लोक = एकूण ÷ सरासरी = {t} ÷ {per} = {ans}.",
+};
+const fEcoPeople = (tag: string, lvl: number, want: number, n: Range, u: Range) =>
+  T(`ecopeople:${tag}`, lvl, want, [n.n, u.n], ECOPEOPLE, ([i, j]) => {
+    const people = at(n, i!), per = 100 * at(u, j!), t = people * per;
+    return { vars: { t, per }, answer: people, expr: `${t}/${per}`, decoys: [people + 10, people - 5, per], render: fmt };
+  });
+
+const ECOPCGROW: SkinSet = {
+  en: [
+    "A district's per capita income is ₹{per}. If total income rises {p}% while the population stays the same, what does per capita income become?",
+    "Per capita income stands at ₹{per}. After {p}% growth in income with unchanged population, find the new figure.",
+  ],
+  hi: [
+    "जिले की प्रति व्यक्ति आय ₹{per} है। जनसंख्या वही रहे और कुल आय {p}% बढ़े, तो प्रति व्यक्ति आय कितनी होगी?",
+    "प्रति व्यक्ति आय ₹{per} है। जनसंख्या अपरिवर्तित रहते आय में {p}% वृद्धि के बाद नया आँकड़ा निकालिए।",
+  ],
+  mr: [
+    "जिल्ह्याचे दरडोई उत्पन्न ₹{per} आहे. लोकसंख्या तीच राहून एकूण उत्पन्न {p}% वाढले, तर दरडोई उत्पन्न किती होईल?",
+    "दरडोई उत्पन्न ₹{per} आहे. लोकसंख्या न बदलता उत्पन्नात {p}% वाढीनंतर नवा आकडा काढा.",
+  ],
+  sen: "New per capita = {per} × (100 + {p}) ÷ 100 = ₹{ans}.",
+  shi: "नई प्रति व्यक्ति आय = {per} × (100 + {p}) ÷ 100 = ₹{ans}।",
+  smr: "नवे दरडोई उत्पन्न = {per} × (100 + {p}) ÷ 100 = ₹{ans}.",
+};
+const fEcoPCGrow = (tag: string, lvl: number, want: number, jR: Range, pR: Range) =>
+  T(`ecopcgrow:${tag}`, lvl, want, [jR.n, pR.n], ECOPCGROW, ([i, j]) => {
+    const per = 20 * at(jR, i!), p = 5 * at(pR, j!), np = (per * (100 + p)) / 100;
+    return { vars: { per, p }, answer: np, expr: `${per}*(100+${p})/100`, decoys: [per + p, np + 20, (per * p) / 100], render: rupees };
+  });
+
+const ECOWEIGHT: SkinSet = {
+  en: [
+    "In a village, {n1} workers earn ₹{a} a day each and {n2} workers earn ₹{b} a day each. What is the average daily wage?",
+    "{n1} people at ₹{a} per day and {n2} people at ₹{b} per day — find the average wage.",
+  ],
+  hi: [
+    "गाँव में {n1} मज़दूर रोज़ ₹{a} और {n2} मज़दूर रोज़ ₹{b} कमाते हैं। औसत दैनिक मज़दूरी क्या है?",
+    "{n1} लोग ₹{a} प्रतिदिन और {n2} लोग ₹{b} प्रतिदिन — औसत मज़दूरी निकालिए।",
+  ],
+  mr: [
+    "गावात {n1} कामगार रोज ₹{a} आणि {n2} कामगार रोज ₹{b} कमावतात. सरासरी रोजची मजुरी किती?",
+    "{n1} लोक ₹{a} प्रतिदिन आणि {n2} लोक ₹{b} प्रतिदिन — सरासरी मजुरी काढा.",
+  ],
+  sen: "Average = ({n1} × {a} + {n2} × {b}) ÷ ({n1} + {n2}) = ₹{ans} — weight each wage by how many earn it.",
+  shi: "औसत = ({n1} × {a} + {n2} × {b}) ÷ ({n1} + {n2}) = ₹{ans} — हर मज़दूरी को कमाने वालों की संख्या से तौलें।",
+  smr: "सरासरी = ({n1} × {a} + {n2} × {b}) ÷ ({n1} + {n2}) = ₹{ans} — प्रत्येक मजुरीला कमावणाऱ्यांच्या संख्येने तोला.",
+};
+const fEcoWeighted = (tag: string, lvl: number, want: number, rR: Range, dR: Range, jR: Range, n2R: Range) =>
+  T(`ecoweight:${tag}`, lvl, want, [rR.n, dR.n, jR.n, n2R.n], ECOWEIGHT, ([i, j, k, l]) => {
+    const avg = at(rR, i!), delta = at(dR, j!), mul = at(jR, k!), n2 = at(n2R, l!);
+    const n1 = n2 * mul, a = avg + delta, b = avg - delta * mul;
+    return { vars: { n1, a, n2, b }, answer: avg, expr: `(${n1}*${a}+${n2}*${b})/(${n1}+${n2})`, decoys: [(a + b) / 2, avg + delta, avg - 1], render: rupees };
+  });
+
+const ECOMERGEV: SkinSet = {
+  en: [
+    "Two villages merge: one of {n1} people with total yearly income ₹{t1}, the other of {n2} people with ₹{t2}. What is the merged village's per capita income?",
+    "After merging {n1} people earning ₹{t1} in all with {n2} people earning ₹{t2}, find the combined per capita income.",
+  ],
+  hi: [
+    "दो गाँव मिलते हैं: {n1} लोगों का, कुल वार्षिक आय ₹{t1}, और {n2} लोगों का, ₹{t2}। मिले गाँव की प्रति व्यक्ति आय क्या है?",
+    "कुल ₹{t1} कमाने वाले {n1} लोगों और ₹{t2} कमाने वाले {n2} लोगों के विलय के बाद संयुक्त प्रति व्यक्ति आय निकालिए।",
+  ],
+  mr: [
+    "दोन गावे विलीन होतात: {n1} लोकांचे, एकूण वार्षिक उत्पन्न ₹{t1}, आणि {n2} लोकांचे, ₹{t2}. विलीन गावाचे दरडोई उत्पन्न किती?",
+    "एकूण ₹{t1} कमावणारे {n1} लोक आणि ₹{t2} कमावणारे {n2} लोक यांच्या विलीनीकरणानंतर एकत्रित दरडोई उत्पन्न काढा.",
+  ],
+  sen: "Per capita = total income ÷ total people = ({t1} + {t2}) ÷ ({n1} + {n2}) = ₹{ans}.",
+  shi: "प्रति व्यक्ति = कुल आय ÷ कुल लोग = ({t1} + {t2}) ÷ ({n1} + {n2}) = ₹{ans}।",
+  smr: "दरडोई = एकूण उत्पन्न ÷ एकूण लोक = ({t1} + {t2}) ÷ ({n1} + {n2}) = ₹{ans}.",
+};
+const fEcoMergeVillages = (tag: string, lvl: number, want: number, rR: Range, n1R: Range, n2R: Range, dR: Range) =>
+  T(`ecomergev:${tag}`, lvl, want, [rR.n, n1R.n, n2R.n, dR.n], ECOMERGEV, ([i, j, k, l]) => {
+    const rho = at(rR, i!), n1 = at(n1R, j!), n2 = at(n2R, k!), delta = at(dR, l!);
+    const t1 = (rho + delta) * n1, t2 = rho * (n1 + n2) - t1;
+    return { vars: { n1, t1, n2, t2 }, answer: rho, expr: `(${t1}+${t2})/(${n1}+${n2})`, decoys: [rho + delta, rho - delta, rho + 1], render: rupees };
+  });
+
+const ECOGROWABS: SkinSet = {
+  en: ["A farm produced {a} quintals last season. Production rises by {p}%. What is the new production?", "Output of {a} quintals grows {p}%. Find the new output."],
+  hi: ["खेत ने पिछले मौसम {a} क्विंटल पैदा किए। उत्पादन {p}% बढ़ता है। नया उत्पादन क्या है?", "{a} क्विंटल उत्पादन {p}% बढ़ता है। नया उत्पादन निकालिए।"],
+  mr: ["शेताने मागील हंगामात {a} क्विंटल पिकवले. उत्पादन {p}% ने वाढते. नवे उत्पादन किती?", "{a} क्विंटल उत्पादन {p}% वाढते. नवे उत्पादन काढा."],
+  sen: "New production = {a} × (100 + {p}) ÷ 100 = {ans} quintals.",
+  shi: "नया उत्पादन = {a} × (100 + {p}) ÷ 100 = {ans} क्विंटल।",
+  smr: "नवे उत्पादन = {a} × (100 + {p}) ÷ 100 = {ans} क्विंटल.",
+};
+const fEcoGrowAbs = (tag: string, lvl: number, want: number, kR: Range, pR: Range) =>
+  T(`ecogrowabs:${tag}`, lvl, want, [kR.n, pR.n], ECOGROWABS, ([i, j]) => {
+    const a = 20 * at(kR, i!), p = 5 * at(pR, j!), b = (a * (100 + p)) / 100;
+    return { vars: { a, p }, answer: b, expr: `${a}*(100+${p})/100`, decoys: [a + p, b + 20, (a * p) / 100], render: (x) => `${fmt(x)} quintals` };
+  });
+
+const ECODECLINE: SkinSet = {
+  en: ["A drought year cuts a harvest of {a} quintals by {p}%. What does the harvest fall to?", "Production of {a} quintals drops {p}%. Find the reduced output."],
+  hi: ["सूखे के वर्ष में {a} क्विंटल की फ़सल {p}% घट जाती है। फ़सल कितनी रह जाती है?", "{a} क्विंटल उत्पादन {p}% गिरता है। घटा हुआ उत्पादन निकालिए।"],
+  mr: ["दुष्काळाच्या वर्षी {a} क्विंटलचे पीक {p}% ने घटते. पीक किती उरते?", "{a} क्विंटल उत्पादन {p}% ने घसरते. घटलेले उत्पादन काढा."],
+  sen: "Reduced output = {a} × (100 − {p}) ÷ 100 = {ans} quintals.",
+  shi: "घटा उत्पादन = {a} × (100 − {p}) ÷ 100 = {ans} क्विंटल।",
+  smr: "घटलेले उत्पादन = {a} × (100 − {p}) ÷ 100 = {ans} क्विंटल.",
+};
+const fEcoDecline = (tag: string, lvl: number, want: number, kR: Range, pR: Range) =>
+  T(`ecodecline:${tag}`, lvl, want, [kR.n, pR.n], ECODECLINE, ([i, j]) => {
+    const a = 20 * at(kR, i!), p = 5 * at(pR, j!), b = (a * (100 - p)) / 100;
+    return { vars: { a, p }, answer: b, expr: `${a}*(100-${p})/100`, decoys: [a - p, (a * p) / 100, b - 20], render: (x) => `${fmt(x)} quintals` };
+  });
+
+const ECOTWOYEAR: SkinSet = {
+  en: [
+    "A dairy's output of {a} litres grows {p}% one year and {q}% the next. What is the output after both years?",
+    "Starting at {a} litres, production rises {p}% and then {q}% in successive years. Find the final figure.",
+  ],
+  hi: [
+    "डेयरी का {a} लीटर उत्पादन एक वर्ष {p}% और अगले वर्ष {q}% बढ़ता है। दोनों वर्षों बाद उत्पादन क्या है?",
+    "{a} लीटर से शुरू होकर उत्पादन क्रमशः {p}% और {q}% बढ़ता है। अंतिम आँकड़ा निकालिए।",
+  ],
+  mr: [
+    "दुग्धशाळेचे {a} लिटर उत्पादन एका वर्षी {p}% आणि पुढच्या वर्षी {q}% वाढते. दोन्ही वर्षांनंतर उत्पादन किती?",
+    "{a} लिटरपासून उत्पादन क्रमाने {p}% आणि {q}% वाढते. अंतिम आकडा काढा.",
+  ],
+  sen: "Apply each year in turn: {a} × (100 + {p}) ÷ 100 × (100 + {q}) ÷ 100 = {ans} litres.",
+  shi: "हर वर्ष क्रम से लगाएँ: {a} × (100 + {p}) ÷ 100 × (100 + {q}) ÷ 100 = {ans} लीटर।",
+  smr: "प्रत्येक वर्ष क्रमाने लावा: {a} × (100 + {p}) ÷ 100 × (100 + {q}) ÷ 100 = {ans} लिटर.",
+};
+const ECO2Y_PCTS = [10, 20, 30, 40, 50];
+const fEcoTwoYear = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`ecotwoyear:${tag}`, lvl, want, [kR.n, ECO2Y_PCTS.length, ECO2Y_PCTS.length], ECOTWOYEAR, ([i, j, k]) => {
+    const a = 100 * at(kR, i!), p = ECO2Y_PCTS[j!]!, q = ECO2Y_PCTS[k!]!;
+    const b = (a * (100 + p) * (100 + q)) / 10000;
+    return { vars: { a, p, q }, answer: b, expr: `${a}*(100+${p})*(100+${q})/10000`, decoys: [(a * (100 + p + q)) / 100, (a * (100 + p)) / 100, b + 10], render: (x) => `${fmt(x)} litres` };
+  });
+
+const ECONET: SkinSet = {
+  en: [
+    "A factory's output (currently {B} units) rises {p}% one year and falls {q}% the next. What is the NET percentage change over the two years?",
+    "Production grows {p}%, then shrinks {q}% the following year (starting from {B} units). Find the overall percentage change.",
+  ],
+  hi: [
+    "कारख़ाने का उत्पादन (अभी {B} इकाई) एक वर्ष {p}% बढ़ता है और अगले वर्ष {q}% गिरता है। दो वर्षों में शुद्ध प्रतिशत परिवर्तन क्या है?",
+    "उत्पादन {p}% बढ़ता है, फिर अगले वर्ष {q}% घटता है ({B} इकाई से शुरू)। कुल प्रतिशत परिवर्तन निकालिए।",
+  ],
+  mr: [
+    "कारखान्याचे उत्पादन (सध्या {B} एकके) एका वर्षी {p}% वाढते आणि पुढच्या वर्षी {q}% घटते. दोन वर्षांतील निव्वळ शेकडा बदल किती?",
+    "उत्पादन {p}% वाढते, मग पुढील वर्षी {q}% घटते ({B} एककांपासून). एकूण शेकडा बदल काढा.",
+  ],
+  sen: "Net % = {p} − {q} − {p} × {q} ÷ 100 = {ans}% — the fall applies to the already-grown amount.",
+  shi: "शुद्ध % = {p} − {q} − {p} × {q} ÷ 100 = {ans}% — गिरावट बढ़ी हुई राशि पर लगती है।",
+  smr: "निव्वळ % = {p} − {q} − {p} × {q} ÷ 100 = {ans}% — घट वाढलेल्या रकमेवर लागू होते.",
+};
+/** (rise %, fall %) pairs with a positive integer net change. */
+const ECONET_COMBOS: [number, number][] = [[20, 10], [30, 10], [30, 20], [40, 10], [40, 20], [50, 10], [50, 20], [50, 30], [60, 20], [60, 30]];
+const fEcoNetChange = (tag: string, lvl: number, want: number, kR: Range) =>
+  T(`econet:${tag}`, lvl, want, [kR.n, ECONET_COMBOS.length], ECONET, ([i, j]) => {
+    const B = 100 * at(kR, i!), [p, q] = ECONET_COMBOS[j!]!;
+    const net = p - q - (p * q) / 100;
+    return { vars: { B, p, q }, answer: net, expr: `${p}-${q}-${p}*${q}/100`, decoys: [p - q, net + 5, q - p + 2], render: (x) => `${fmt(x)}%` };
+  });
+
+const ECOSPLIT: SkinSet = {
+  en: [
+    "A family income of ₹{I} a month is split between saving and spending in the ratio {ra} : {rb}. How much is saved?",
+    "₹{I} of monthly income divides {ra} : {rb} into savings and expenses. Find the savings.",
+  ],
+  hi: [
+    "₹{I} मासिक आय बचत और खर्च में {ra} : {rb} के अनुपात में बँटती है। कितनी बचत होती है?",
+    "₹{I} मासिक आय {ra} : {rb} में बचत और खर्च में बँटती है। बचत निकालिए।",
+  ],
+  mr: [
+    "₹{I} मासिक उत्पन्न बचत आणि खर्च यांत {ra} : {rb} या प्रमाणात वाटले जाते. किती बचत होते?",
+    "₹{I} मासिक उत्पन्न {ra} : {rb} असे बचत व खर्चात वाटले जाते. बचत काढा.",
+  ],
+  sen: "One ratio unit = {I} ÷ ({ra} + {rb}); savings = {I} × {ra} ÷ ({ra} + {rb}) = ₹{ans}.",
+  shi: "अनुपात की एक इकाई = {I} ÷ ({ra} + {rb}); बचत = {I} × {ra} ÷ ({ra} + {rb}) = ₹{ans}।",
+  smr: "प्रमाणाचे एक एकक = {I} ÷ ({ra} + {rb}); बचत = {I} × {ra} ÷ ({ra} + {rb}) = ₹{ans}.",
+};
+const fEcoRatioSplit = (tag: string, lvl: number, want: number, mR: Range) =>
+  T(`ecosplit:${tag}`, lvl, want, [mR.n, CIV_RATIOS.length], ECOSPLIT, ([i, j]) => {
+    const u = 100 * at(mR, i!), [ra, rb] = CIV_RATIOS[j!]!, I = (ra + rb) * u, sav = ra * u;
+    return { vars: { I, ra, rb }, answer: sav, expr: `${I}*${ra}/(${ra}+${rb})`, decoys: [rb * u, sav + u, I - u], render: rupees };
+  });
+
+const SHOPCHANGE: SkinSet = {
+  en: [
+    "You buy {k} notebooks at ₹{u} each and pay with a ₹{N} note. How much change do you get?",
+    "{k} pens cost ₹{u} apiece. Paying with ₹{N}, what change comes back?",
+  ],
+  hi: [
+    "आप ₹{u} वाली {k} कॉपियाँ खरीदते हैं और ₹{N} का नोट देते हैं। कितने पैसे वापस मिलेंगे?",
+    "{k} कलमों का दाम ₹{u} प्रति कलम है। ₹{N} देने पर कितना वापस मिलेगा?",
+  ],
+  mr: [
+    "तुम्ही ₹{u} च्या {k} वह्या घेता आणि ₹{N} ची नोट देता. किती पैसे परत मिळतील?",
+    "{k} पेनांची किंमत प्रत्येकी ₹{u} आहे. ₹{N} दिल्यावर किती परत मिळतील?",
+  ],
+  sen: "Cost = {k} × {u} = ₹{cost}; change = {N} − {cost} = ₹{ans}.",
+  shi: "कीमत = {k} × {u} = ₹{cost}; वापसी = {N} − {cost} = ₹{ans}।",
+  smr: "किंमत = {k} × {u} = ₹{cost}; परतावा = {N} − {cost} = ₹{ans}.",
+};
+const SHOP_NOTES = [1000, 2000];
+const fShopChange = (tag: string, lvl: number, want: number, kR: Range, uR: Range) =>
+  T(`shopchange:${tag}`, lvl, want, [kR.n, uR.n, SHOP_NOTES.length], SHOPCHANGE, ([i, j, k]) => {
+    const cnt = at(kR, i!), u = at(uR, j!), N = SHOP_NOTES[k!]!, cost = cnt * u, ch = N - cost;
+    return { vars: { k: cnt, u, N, cost }, answer: ch, expr: `${N}-${cnt}*${u}`, decoys: [cost, ch + 10, ch - 10], render: rupees };
+  });
+
 /* ========================================================================== */
 /* The grade plans                                                             */
 /* ========================================================================== */
@@ -2443,13 +4364,12 @@ function spread(deficit: number, weights: number[]): number[] {
 
 /* ------------------------------- fillers ---------------------------------- */
 /*
- * Each subject's former single "drill" topic is now a SET of chapter topics
- * named after the NCERT/CBSE syllabus for that grade, generalized where the
- * syllabus has no numerical chapter (grade-3 EVS has no "Ohm's law"). The
- * SAME template instances with the SAME tags, ranges and want-arithmetic are
- * regrouped — so the stems, the counts and the per-grade totals are provably
- * identical to the plan the dry run already proved; only topic names, slugs
- * and within-topic level numbering change.
+ * Every chapter topic climbs the FULL six-rung ladder: L1–L2 are single-formula
+ * work, L3 rearranges the formula, and L4–L6 are the multi-step compositions
+ * that Olympiad and NSO papers actually set (net forces, harmonic-mean round
+ * trips, successive discounts, joint-sitting majorities). L2–L6 take fixed
+ * slices of each chapter's budget and L1 absorbs the remainder, so per-grade
+ * subject totals still land exactly on target.
  *
  * HISTORY IS THE HONEST EXCEPTION: chapter-true history ("When People Rebel"
  * holding only 1857-era drills) would shrink each chapter's event pool far
@@ -2457,6 +4377,13 @@ function spread(deficit: number, weights: number[]): number[] {
  * topics therefore carry the grade's NCERT BOOK name, and true chapter fidelity
  * waits on a bigger curated table.
  */
+
+/** L2..L6 get fixed slices of a chapter budget; L1 absorbs the remainder. */
+function rungs(budget: number): [number, number, number, number, number, number] {
+  const l2 = Math.floor(budget * 0.15), l3 = Math.floor(budget * 0.2), l4 = Math.floor(budget * 0.2);
+  const l5 = Math.floor(budget * 0.15), l6 = Math.floor(budget * 0.1);
+  return [budget - l2 - l3 - l4 - l5 - l6, l2, l3, l4, l5, l6];
+}
 
 type ChapterName = { en: string; hi: string; mr: string };
 const CN = (en: string, hi: string, mr: string): ChapterName => ({ en, hi, mr });
@@ -2502,7 +4429,8 @@ function mathsFiller(grade: number, deficit: number): TopicSpec[] {
 }
 
 function sciFiller(grade: number, deficit: number): TopicSpec[] {
-  const w = spread(deficit, [0.08, 0.15, 0.25, 0.25, 0.17, 0.1]);
+  const [cMotion, cMatter, cForce, cElec, cWork] = spread(deficit, [0.18, 0.18, 0.22, 0.22, 0.2]);
+  const mo = rungs(cMotion!), ma = rungs(cMatter!), fo = rungs(cForce!), el = rungs(cElec!), wo = rungs(cWork!);
   const o = grade - 3;
   const g = `g${grade}`;
   const motion: Record<number, ChapterName> = {
@@ -2566,21 +4494,65 @@ function sciFiller(grade: number, deficit: number): TopicSpec[] {
     12: CN("Work and Power Revision", "कार्य और शक्ति पुनरावृत्ति", "कार्य आणि शक्ती उजळणी"),
   };
   return [
-    chapterTopic(grade, "sci-motion", motion[grade]!, [fSciSpeed(`${g}sfL1`, 1, w[0]!, R(5 + 300 * o, 299 + 300 * o), R(2, 19))], "SCIENCE"),
-    chapterTopic(grade, "sci-matter", matter[grade]!, [fSciDensity(`${g}sfL2`, 1, w[1]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99))], "SCIENCE"),
-    chapterTopic(grade, "sci-force", force[grade]!, [fSciForce(`${g}sfL3`, 1, w[2]!, R(2 + 60 * o, 61 + 60 * o), R(2, 99))], "SCIENCE"),
-    chapterTopic(grade, "sci-elec", elec[grade]!, [fSciOhm(`${g}sfL4`, 1, w[3]!, R(1 + 50 * o, 50 + 50 * o), R(2, 99))], "SCIENCE"),
+    chapterTopic(grade, "sci-motion", motion[grade]!, [
+      fSciSpeed(`${g}sfL1`, 1, mo[0], R(5 + 300 * o, 299 + 300 * o), R(2, 19)),
+      fSciDist(`${g}smoL2`, 2, mo[1], R(5 + 120 * o, 124 + 120 * o), R(2, 29)),
+      fSciTime(`${g}smoL3`, 3, mo[2], R(6 + 90 * o, 95 + 90 * o), R(2, 49)),
+      fSciAvgSpeed(`${g}smoL4`, 4, mo[3], R(10 + 80 * o, 89 + 80 * o), R(1, 15), R(2, 9)),
+      fSciTrip(`${g}smoL5`, 5, mo[4], R(30 + 60 * o, 89 + 60 * o)),
+      fSciRoundTrip(`${g}smoL6`, 6, mo[5], R(3 + 8 * o, 10 + 8 * o), R(2, 60)),
+    ], "SCIENCE"),
+    chapterTopic(grade, "sci-matter", matter[grade]!, [
+      fSciDensity(`${g}sfL2`, 1, ma[0], R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
+      fSciMass(`${g}smaL2`, 2, ma[1], R(2 + 40 * o, 41 + 40 * o), R(2, 60)),
+      fSciVol(`${g}smaL3`, 3, ma[2], R(2 + 40 * o, 41 + 40 * o), R(2, 60)),
+      fSciMix(`${g}smaL4`, 4, ma[3], R(3 + 30 * o, 32 + 30 * o), R(2, 12), R(13, 30)),
+      fSciAlloy(`${g}smaL5`, 5, ma[4], R(3 + 40 * o, 42 + 40 * o), R(1, 15), R(2, 10)),
+      fSciCubeDen(`${g}smaL6`, 6, ma[5], R(2 + 40 * o, 41 + 40 * o), R(2, 12)),
+    ], "SCIENCE"),
+    chapterTopic(grade, "sci-force", force[grade]!, [
+      fSciForce(`${g}sfL3`, 1, fo[0], R(2 + 60 * o, 61 + 60 * o), R(2, 99)),
+      fSciAccel(`${g}sfoL2`, 2, fo[1], R(2 + 40 * o, 41 + 40 * o), R(2, 49)),
+      fSciMassF(`${g}sfoL3`, 3, fo[2], R(2 + 25 * o, 26 + 25 * o), R(2, 60)),
+      fSciNet(`${g}sfoL4`, 4, fo[3], R(2 + 30 * o, 31 + 30 * o), R(2, 25), R(5, 40)),
+      fSciTension(`${g}sfoL5`, 5, fo[4], R(2 + 60 * o, 61 + 60 * o), R(1, 15)),
+      fSciMomentum(`${g}sfoL6`, 6, fo[5], R(2 + 30 * o, 31 + 30 * o), R(2, 20), R(2, 6), R(1, 12)),
+    ], "SCIENCE"),
+    chapterTopic(grade, "sci-elec", elec[grade]!, [
+      fSciOhm(`${g}sfL4`, 1, el[0], R(1 + 50 * o, 50 + 50 * o), R(2, 99)),
+      fSciCurrent(`${g}selL2`, 2, el[1], R(2 + 40 * o, 41 + 40 * o), R(2, 40)),
+      fSciSeries(`${g}selL3`, 3, el[2], R(2 + 30 * o, 31 + 30 * o), R(2, 49), R(2, 20)),
+      fSciPowerI2R(`${g}selL4`, 4, el[3], R(2 + 40 * o, 41 + 40 * o), R(2, 25)),
+      fSciRes(`${g}selL5`, 5, el[4], R(2 + 30 * o, 31 + 30 * o), R(2, 60)),
+      fSciEnergyCost(`${g}selL6`, 6, el[5], R(2 + 10 * o, 11 + 10 * o), R(2, 12), R(4, 9)),
+    ], "SCIENCE"),
     chapterTopic(grade, "sci-work", work[grade]!, [
-      fSciWork(`${g}sfL5`, 1, w[4]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
-      fSciPower(`${g}sfL6`, 2, w[5]!, R(5 + 80 * o, 84 + 80 * o), R(2, 60)),
+      fSciWork(`${g}sfL5`, 1, wo[0], R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
+      fSciPower(`${g}sfL6`, 2, wo[1], R(5 + 80 * o, 84 + 80 * o), R(2, 60)),
+      fSciEnergyW(`${g}swoL3`, 3, wo[2], R(5 + 60 * o, 64 + 60 * o), R(2, 50)),
+      fSciPE(`${g}swoL4`, 4, wo[3], R(2 + 40 * o, 41 + 40 * o), R(2, 30)),
+      fSciKE(`${g}swoL5`, 5, wo[4], R(2 + 40 * o, 41 + 40 * o), R(2, 30)),
+      fSciPump(`${g}swoL6`, 6, wo[5], R(2, 10), R(2 + 20 * o, 21 + 20 * o), R(2, 30)),
     ], "SCIENCE"),
   ];
 }
 
 function geoFiller(grade: number, deficit: number): TopicSpec[] {
-  const w = spread(deficit, [0.2, 0.1, 0.25, 0.2, 0.15, 0.1]);
+  const [cMaps, cGlobe, cPop] = spread(deficit, [0.4, 0.2, 0.4]);
   const o = grade - 3;
   const g = `g${grade}`;
+  // Former stand-alone recall micro-topics fold in as L1 rungs of their chapter.
+  const mapsRecall: Template[] =
+    grade === 4 ? [fRecall(`${g}caps`, 1, 44, STATES, CAPITAL_SKIN)]
+    : grade === 5 ? [fRecall(`${g}rev`, 1, 44, reverseFacts(STATES), OF_CAPITAL_SKIN)]
+    : [];
+  const popRecall: Template[] = grade === 6 ? [fRecall(`${g}world`, 1, 40, COUNTRIES, CAPITAL_SKIN)] : [];
+  const mapsRecallN = mapsRecall.reduce((a, t) => a + t.want, 0);
+  const popRecallN = popRecall.reduce((a, t) => a + t.want, 0);
+  const mp = rungs(cMaps!), po = rungs(cPop!);
+  // Globe rungs are space-capped (degrees only stretch to 180), so they take
+  // fixed wants and L1 absorbs the chapter's remainder.
+  const gl = [cGlobe! - 1750, 300, 200, 350, 500, 400] as const;
   const maps: Record<number, ChapterName> = {
     3: CN("Reading Maps", "नक्शा पढ़ना", "नकाशा वाचणे"),
     4: CN("Reading Maps", "नक्शा पढ़ना", "नकाशा वाचणे"),
@@ -2619,27 +4591,47 @@ function geoFiller(grade: number, deficit: number): TopicSpec[] {
   };
   return [
     chapterTopic(grade, "geo-maps", maps[grade]!, [
-      fGeoScale(`${g}gfL1`, 1, w[0]!, R(2 + 100 * o, 101 + 100 * o), R(2, 49)),
-      fGeoScale(`${g}gfL4`, 2, w[3]!, R(2 + 100 * o, 101 + 100 * o), R(50, 99)),
+      fGeoScale(`${g}gfL1`, 1, mp[0] - mapsRecallN, R(2 + 100 * o, 101 + 100 * o), R(2, 49)),
+      ...mapsRecall,
+      fGeoScaleInv(`${g}gmL2`, 2, mp[1], R(2 + 80 * o, 81 + 80 * o), R(2, 40)),
+      fGeoRatio(`${g}gmL3`, 3, mp[2], R(1 + 40 * o, 40 + 40 * o), R(2, 60)),
+      fGeoTrip(`${g}gmL4`, 4, mp[3], R(2 + 50 * o, 51 + 50 * o), R(2, 20), R(3, 30)),
+      fGeoAreaScale(`${g}gmL5`, 5, mp[4], R(2 + 40 * o, 41 + 40 * o), R(2, 17)),
+      fGeoAreaRect(`${g}gmL6`, 6, mp[5], R(2 + 25 * o, 26 + 25 * o), R(2, 12), R(2, 12)),
     ], "GEOGRAPHY"),
     chapterTopic(grade, "geo-globe", globe[grade]!, [
-      fGeoLong(`${g}gfL2`, 1, w[1]!, R(0, 89), R(1 + 30 * o, 30 + 30 * o)),
-      fGeoLong(`${g}gfL6`, 2, w[5]!, R(90, 179), R(1 + 30 * o, 30 + 30 * o)),
+      fGeoLong(`${g}gfL2`, 1, gl[0], R(0, 89), R(1 + 9 * o, 9 + 9 * o)),
+      fGeoLongWest(`${g}ggL2`, 2, gl[1], R(95, 179), R(1 + 9 * o, 9 + 9 * o)),
+      fGeoDegrees(`${g}ggL3`, 3, gl[2], R(1 + 18 * o, 18 + 18 * o)),
+      fGeoAcross(`${g}ggL4`, 4, gl[3], R(1 + 9 * o, 9 + 9 * o), R(1, 89)),
+      fGeoClock(`${g}ggL5`, 5, gl[4], R(0, 89), R(1 + 9 * o, 9 + 9 * o)),
+      fGeoLongHours(`${g}ggL6`, 6, gl[5]),
     ], "GEOGRAPHY"),
     chapterTopic(grade, "geo-pop", pop[grade]!, [
-      fGeoPopDen(`${g}gfL3`, 1, w[2]!, R(50 + 600 * o, 349 + 600 * o), R(2, 99)),
-      fGeoPopDen(`${g}gfL5`, 2, w[4]!, R(350 + 600 * o, 649 + 600 * o), R(2, 99)),
+      fGeoPopDen(`${g}gfL3`, 1, po[0] - popRecallN, R(50 + 600 * o, 349 + 600 * o), R(2, 99)),
+      ...popRecall,
+      fGeoPop(`${g}gpL2`, 2, po[1], R(50 + 300 * o, 349 + 300 * o), R(2, 99)),
+      fGeoAreaFromPop(`${g}gpL3`, 3, po[2], R(50 + 200 * o, 249 + 200 * o), R(2, 99)),
+      fGeoDenGrow(`${g}gpL4`, 4, po[3], R(2 + 40 * o, 41 + 40 * o), R(1, 19)),
+      fGeoDenCompare(`${g}gpL5`, 5, po[4], R(100 + 150 * o, 249 + 150 * o), R(10, 99)),
+      fGeoMergeDen(`${g}gpL6`, 6, po[5], R(100 + 100 * o, 199 + 100 * o), R(2, 12), R(13, 30), R(5, 20)),
     ], "GEOGRAPHY"),
   ];
 }
 
 function histFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
-  const fixed = 100 + 55 + 100;
-  const each = Math.floor((deficit - fixed) / 3);
-  const last = deficit - fixed - 2 * each;
   const base = 2 + 195 * o;
   const g = `g${grade}`;
+  // Former stand-alone landmark-year topics fold in as L1 recall rungs.
+  const yearRecall: Template[] =
+    grade === 7 ? [fEventYear(`${g}early`, 1, 16, 1400, 1900)]
+    : grade === 9 ? [fEventYear(`${g}modern`, 1, 24, 1901, 2000)]
+    : [];
+  const yearRecallN = yearRecall.reduce((a, t) => a + t.want, 0);
+  // Centuries chapter holds a fixed 600; upper timeline rungs take fixed
+  // wants (chain/age spaces are wide); L1 absorbs the rest.
+  const timelineL1 = deficit - 600 - (900 + 55 + 900 + 2000 + 800 + 1500) - yearRecallN;
   const book: Record<number, ChapterName> = {
     3: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
     4: CN("Long Ago: Timeline Skills", "बहुत पहले: समयरेखा कौशल", "फार पूर्वी: कालरेषा कौशल्ये"),
@@ -2655,24 +4647,38 @@ function histFiller(grade: number, deficit: number): TopicSpec[] {
   const centuries = CN("Centuries and Calendars", "शताब्दियाँ और कैलेंडर", "शतके आणि दिनदर्शिका");
   return [
     chapterTopic(grade, "hist-timeline", book[grade]!, [
-      fHistAfter(`${g}hfL1`, 1, each, R(base, base + 64)),
-      fHistBetween(`${g}hfL4`, 2, 55),
-      fHistAfter(`${g}hfL3`, 3, each, R(base + 65, base + 129)),
-      fHistAfter(`${g}hfL5`, 4, last, R(base + 130, base + 194)),
+      fHistAfter(`${g}hfL1`, 1, timelineL1, R(base, base + 80)),
+      ...yearRecall,
+      fHistBefore(`${g}htL2`, 2, 900, R(2 + 40 * o, 41 + 40 * o)),
+      fHistBetween(`${g}hfL4`, 3, 55),
+      fHistAfter(`${g}hfL3`, 3, 900, R(base + 81, base + 150)),
+      fHistChain(`${g}htL4`, 4, 2000, R(2 + 5 * o, 6 + 5 * o), R(2, 25)),
+      fHistAge(`${g}htL5`, 5, 800, R(2, 40)),
+      fHistChainBack(`${g}htL6`, 6, 1500, R(2 + 9 * o, 10 + 9 * o), R(2, 60)),
     ], "HISTORY"),
     chapterTopic(grade, "hist-century", centuries, [
       fHistCentury(`${g}hfL2`, 1, 100, R(1201 + 140 * o, 1270 + 140 * o)),
-      fHistCentury(`${g}hfL6`, 2, 100, R(1271 + 140 * o, 1340 + 140 * o)),
+      fHistDecade(`${g}hcL2`, 2, 100, R(1450 + 50 * o, 1499 + 50 * o)),
+      fHistCentury(`${g}hfL6`, 3, 100, R(1271 + 140 * o, 1340 + 140 * o)),
+      fHistCenturyEnd(`${g}hcL4`, 4, 100, R(1101 + 60 * o, 1160 + 60 * o)),
+      fHistSpanCent(`${g}hcL5`, 5, 100, R(1301 + 50 * o, 1350 + 50 * o)),
+      fHistCentAfter(`${g}hcL6`, 6, 100, R(1421 + 40 * o, 1460 + 40 * o), R(2, 6)),
     ], "HISTORY"),
   ];
 }
 
 function civFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
-  const fixed = 250 + 360 + 120;
-  const each = Math.floor((deficit - fixed) / 3);
-  const last = deficit - fixed - 2 * each;
   const g = `g${grade}`;
+  // Constitution-numbers recall folds in as an L1 rung of the terms chapter.
+  const termRecall: Template[] = grade === 9 ? [fCivNumber(`${g}facts`, 1, 12)] : [];
+  const termRecallN = termRecall.reduce((a, t) => a + t.want, 0);
+  // Quorum and majority chapters take fixed six-rung totals of 1,500 each and
+  // the terms chapter 600; representation absorbs the rest of the deficit.
+  const repBudget = deficit - 1500 - 1500 - 600 - termRecallN;
+  const rl2 = Math.floor(repBudget * 0.15), rl3 = Math.floor(repBudget * 0.15);
+  const rl4 = Math.floor(repBudget * 0.12), rl5 = Math.floor(repBudget * 0.12), rl6 = Math.floor(repBudget * 0.1);
+  const rl1 = repBudget - rl2 - rl3 - rl4 - rl5 - rl6;
   const quorum: Record<number, ChapterName> = {
     3: CN("Meetings and Sharing", "बैठकें और साझेदारी", "सभा आणि वाटणी"),
     4: CN("Meetings and Sharing", "बैठकें और साझेदारी", "सभा आणि वाटणी"),
@@ -2711,22 +4717,46 @@ function civFiller(grade: number, deficit: number): TopicSpec[] {
   };
   const term = CN("Election Terms", "चुनावी कार्यकाल", "निवडणूक कार्यकाळ");
   return [
-    chapterTopic(grade, "civ-quorum", quorum[grade]!, [fCivQuorum(`${g}cfL1`, 1, 250, R(2 + 80 * o, 81 + 80 * o))], "CIVICS"),
-    chapterTopic(grade, "civ-majority", majority[grade]!, [fCivMajority(`${g}cfL2`, 1, 360, R(50 + 450 * o, 499 + 450 * o))], "CIVICS"),
-    chapterTopic(grade, "civ-rep", rep[grade]!, [
-      fCivRep(`${g}cfL3`, 1, each, R(10, 199), R(100 + 600 * o, 299 + 600 * o)),
-      fCivRep(`${g}cfL4`, 2, each, R(10, 199), R(300 + 600 * o, 499 + 600 * o)),
-      fCivRep(`${g}cfL5`, 3, last, R(10, 199), R(500 + 600 * o, 699 + 600 * o)),
+    chapterTopic(grade, "civ-quorum", quorum[grade]!, [
+      fCivQuorum(`${g}cfL1`, 1, 200, R(2 + 80 * o, 81 + 80 * o)),
+      fCivQuorumRev(`${g}cqL2`, 2, 250, R(2 + 60 * o, 61 + 60 * o)),
+      fCivQuorumShort(`${g}cqL3`, 3, 350, R(2 + 50 * o, 51 + 50 * o), R(1, 15)),
+      fCivTwoThirds(`${g}cqL4`, 4, 250, R(10 + 150 * o, 159 + 150 * o)),
+      fCivPresentMaj(`${g}cqL5`, 5, 250, R(20 + 100 * o, 119 + 100 * o), R(2, 40)),
+      fCivQuorumPct(`${g}cqL6`, 6, 200, R(6 + 15 * o, 20 + 15 * o)),
     ], "CIVICS"),
-    chapterTopic(grade, "civ-term", term, [fCivTerm(`${g}cfL6`, 1, 120, R(1900 + 50 * o, 1949 + 50 * o))], "CIVICS"),
+    chapterTopic(grade, "civ-majority", majority[grade]!, [
+      fCivMajority(`${g}cfL2`, 1, 250, R(50 + 450 * o, 499 + 450 * o)),
+      fCivMajGap(`${g}cmL2`, 2, 250, R(30 + 200 * o, 229 + 200 * o), R(1, 20)),
+      fCivTwoThirdsVote(`${g}cmL3`, 3, 150, R(50 + 100 * o, 149 + 100 * o)),
+      fCivCoalition(`${g}cmL4`, 4, 350, R(150 + 120 * o, 269 + 120 * o), R(30 + 80 * o, 109 + 80 * o), R(1, 25)),
+      fCivRatioSeats(`${g}cmL5`, 5, 250, R(10 + 50 * o, 59 + 50 * o)),
+      fCivImpeach(`${g}cmL6`, 6, 250, R(80 + 120 * o, 199 + 120 * o), R(50, 199)),
+    ], "CIVICS"),
+    chapterTopic(grade, "civ-rep", rep[grade]!, [
+      fCivRep(`${g}cfL3`, 1, rl1, R(10, 199), R(100 + 600 * o, 299 + 600 * o)),
+      fCivRepPop(`${g}crL2`, 2, rl2, R(10, 199), R(300 + 600 * o, 499 + 600 * o)),
+      fCivRepSeats(`${g}crL3`, 3, rl3, R(10, 199), R(500 + 600 * o, 699 + 600 * o)),
+      fCivRepGrow(`${g}crL4`, 4, rl4, R(10 + 50 * o, 59 + 50 * o), R(1, 15)),
+      fCivRepTwo(`${g}crL5`, 5, rl5, R(500 + 500 * o, 899 + 500 * o), R(10, 109)),
+      fCivRepMerge(`${g}crL6`, 6, rl6, R(200 + 300 * o, 499 + 300 * o), R(10, 30), R(31, 60), R(1, 20)),
+    ], "CIVICS"),
+    chapterTopic(grade, "civ-term", term, [
+      fCivTerm(`${g}cfL6`, 1, 100, R(1900 + 50 * o, 1949 + 50 * o)),
+      ...termRecall,
+      fCivTermBack(`${g}ctL2`, 2, 100, R(1904 + 50 * o, 1953 + 50 * o)),
+      fCivTermCount(`${g}ctL3`, 3, 100, R(1900 + 50 * o, 1911 + 50 * o), R(2, 7)),
+      fCivTermNth(`${g}ctL4`, 4, 100, R(1912 + 50 * o, 1923 + 50 * o), R(3, 9)),
+      fCivTermMid(`${g}ctL5`, 5, 100, R(1924 + 50 * o, 1935 + 50 * o), R(2, 5), R(1, 3)),
+      fCivTermSync(`${g}ctL6`, 6, 100, R(1936 + 50 * o, 1947 + 50 * o)),
+    ], "CIVICS"),
   ];
 }
 
 function ecoFiller(grade: number, deficit: number): TopicSpec[] {
   const o = grade - 3;
-  const fixed = 380;
-  const rest = deficit - fixed;
-  const w = spread(rest, [0.2, 0.3, 0.2, 0.15, 0.15]);
+  const [cPrices, cIncome, cGrowth] = spread(deficit, [0.4, 0.27, 0.33]);
+  const pr = rungs(cPrices!), inc = rungs(cIncome!), gr = rungs(cGrowth!);
   const g = `g${grade}`;
   const prices: Record<number, ChapterName> = {
     3: CN("Buying and Selling", "खरीदना और बेचना", "खरेदी आणि विक्री"),
@@ -2766,16 +4796,28 @@ function ecoFiller(grade: number, deficit: number): TopicSpec[] {
   };
   return [
     chapterTopic(grade, "eco-prices", prices[grade]!, [
-      fEcoDiscount(`${g}efL1`, 1, w[0]!, R(2 + 150 * o, 151 + 150 * o)),
-      fEcoGST(`${g}efL2`, 2, fixed, R(2 + 120 * o, 121 + 120 * o)),
+      fEcoDiscount(`${g}efL1`, 1, pr[0], R(2 + 150 * o, 151 + 150 * o)),
+      fEcoGST(`${g}efL2`, 2, pr[1], R(2 + 120 * o, 121 + 120 * o)),
+      fEcoDiscPct(`${g}epL3`, 3, pr[2], R(2 + 100 * o, 101 + 100 * o)),
+      fEcoDiscGST(`${g}epL4`, 4, pr[3], R(2 + 60 * o, 61 + 60 * o)),
+      fEcoSuccDisc(`${g}epL5`, 5, pr[4], R(2 + 60 * o, 61 + 60 * o)),
+      fEcoMarkup(`${g}epL6`, 6, pr[5], R(2 + 40 * o, 41 + 40 * o)),
     ], "ECONOMICS"),
     chapterTopic(grade, "eco-income", income[grade]!, [
-      fEcoPerCapita(`${g}efL3`, 1, w[1]!, R(50 + 300 * o, 199 + 300 * o), R(2, 99)),
-      fEcoPerCapita(`${g}efL5`, 2, w[3]!, R(200 + 300 * o, 349 + 300 * o), R(2, 99)),
+      fEcoPerCapita(`${g}efL3`, 1, inc[0], R(50 + 300 * o, 199 + 300 * o), R(2, 99)),
+      fEcoTotal(`${g}eiL2`, 2, inc[1], R(200 + 300 * o, 349 + 300 * o), R(2, 99)),
+      fEcoPeople(`${g}eiL3`, 3, inc[2], R(30 + 120 * o, 149 + 120 * o), R(2, 99)),
+      fEcoPCGrow(`${g}eiL4`, 4, inc[3], R(10 + 50 * o, 59 + 50 * o), R(1, 15)),
+      fEcoWeighted(`${g}eiL5`, 5, inc[4], R(100 + 100 * o, 199 + 100 * o), R(1, 6), R(2, 4), R(10, 49)),
+      fEcoMergeVillages(`${g}eiL6`, 6, inc[5], R(300 + 200 * o, 499 + 200 * o), R(10, 30), R(31, 60), R(1, 15)),
     ], "ECONOMICS"),
     chapterTopic(grade, "eco-growth", growth[grade]!, [
-      fEcoGrowth(`${g}efL4`, 1, w[2]!, R(2 + 140 * o, 71 + 140 * o), R(5, 60)),
-      fEcoGrowth(`${g}efL6`, 2, w[4]!, R(72 + 140 * o, 141 + 140 * o), R(5, 60)),
+      fEcoGrowth(`${g}efL4`, 1, gr[0], R(2 + 140 * o, 71 + 140 * o), R(5, 60)),
+      fEcoGrowAbs(`${g}egL2`, 2, gr[1], R(2 + 50 * o, 51 + 50 * o), R(1, 15)),
+      fEcoDecline(`${g}egL3`, 3, gr[2], R(2 + 50 * o, 51 + 50 * o), R(1, 15)),
+      fEcoTwoYear(`${g}egL4`, 4, gr[3], R(2 + 40 * o, 41 + 40 * o)),
+      fEcoNetChange(`${g}egL5`, 5, gr[4], R(2 + 40 * o, 41 + 40 * o)),
+      fEcoRatioSplit(`${g}egL6`, 6, gr[5], R(5 + 40 * o, 44 + 40 * o)),
     ], "ECONOMICS"),
   ];
 }
@@ -3273,8 +5315,11 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       return [
         mkTopic(5, 0, "scispeed5", "Fast and Slow: Speed", "तेज़ और धीमा: चाल", "जलद आणि हळू: वेग", [
           fSpeed(`${g}un2`, 1, 550, R(5, 90), R(2, 9)),
-          fSpeed(`${g}un4`, 2, 1300, R(91, 299), R(2, 9)),
+          fSpeed(`${g}un4`, 2, 650, R(91, 299), R(2, 9)),
           fSpeed(`${g}un6`, 3, 1000, R(300, 480), R(2, 9)),
+          fSpeed(`${g}un8`, 4, 300, R(661, 760), R(2, 9)),
+          fSciDist(`${g}un10`, 5, 200, R(1300, 1399), R(2, 29)),
+          fSciAvgSpeed(`${g}un12`, 6, 150, R(850, 909), R(1, 15), R(2, 9)),
         ], "SCIENCE"),
       ];
     if (grade === 6)
@@ -3283,6 +5328,9 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
           fRecall(`${g}siunits`, 1, 20, SI_UNITS, UNIT_SKIN),
           fSciCF(`${g}cf`, 2, 30, R(1, 20)),
           fSpeed(`${g}ra6`, 3, 1000, R(481, 660), R(2, 9)),
+          fSciFC(`${g}fc6`, 4, 60, R(21, 80)),
+          fSciDist(`${g}md6`, 5, 400, R(1210, 1269), R(2, 29)),
+          fSciAvgSpeed(`${g}ma6`, 6, 300, R(920, 979), R(1, 15), R(2, 9)),
         ], "SCIENCE"),
       ];
     if (grade === 8)
@@ -3291,43 +5339,38 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
           fRecall(`${g}elem`, 1, 38, ELEMENTS, ELEMENT_SKIN),
           fRecall(`${g}sym`, 2, 38, reverseFacts(ELEMENTS), SYMBOL_SKIN),
           fSciHeat(`${g}heat`, 3, 400, R(2, 21), R(5, 40)),
+          fSciHeat(`${g}heat2`, 4, 400, R(22, 41), R(5, 40)),
+          fSciHeatM(`${g}heatm`, 5, 300, R(2, 30), R(5, 30)),
+          fSciHeatT(`${g}heatt`, 6, 300, R(2, 30), R(31, 55)),
         ], "SCIENCE"),
       ];
     if (grade === 9)
       return [
         mkTopic(9, 0, "scimoles9", "Atoms and Molecules", "परमाणु एवं अणु", "अणू आणि रेणू", [
           fSciMoles(`${g}mol`, 1, 450, R(2, 60)),
+          fSciMolesMass(`${g}molm`, 2, 350, R(2, 40)),
+          fSciMolarM(`${g}molM`, 3, 300, R(2, 50)),
+          fSciMolesCompound(`${g}molc`, 4, 300, R(1, 10), R(2, 20), R(2, 20)),
+          fSciMolesMix(`${g}molx`, 5, 250, R(2, 20), R(2, 20)),
+          fSciMolarity(`${g}molr`, 6, 250, R(1, 10), R(2, 8)),
         ], "SCIENCE"),
       ];
     if (grade === 10)
       return [
         mkTopic(10, 0, "sciwaves10", "Sound and Waves", "ध्वनि और तरंगें", "ध्वनी आणि तरंग", [
           fSciWave(`${g}wave`, 1, 400, R(2, 60), R(2, 20)),
+          fSciWaveL(`${g}wavl`, 2, 300, R(2, 50), R(2, 30)),
+          fSciWaveF(`${g}wavf`, 3, 300, R(2, 50), R(31, 60)),
+          fSciWaveCount(`${g}wavc`, 4, 250, R(5, 60), R(2, 30)),
+          fSciEcho(`${g}wave5`, 5, 250, R(1, 60)),
+          fSciSonar(`${g}wave6`, 6, 250, R(1, 50)),
         ], "SCIENCE"),
       ];
     return [];
   }
-  if (subject === "GEOGRAPHY") {
-    if (grade === 4)
-      return [mkTopic(4, 0, "geostates", "Our Country: States and Capitals", "हमारा देश: राज्य और राजधानियाँ", "आपला देश: राज्ये आणि राजधान्या", [fRecall(`${g}caps`, 1, 44, STATES, CAPITAL_SKIN)], "GEOGRAPHY")];
-    if (grade === 5)
-      return [mkTopic(5, 0, "geocapitals", "Capitals and their states", "राजधानियाँ और उनके राज्य", "राजधान्या आणि त्यांची राज्ये", [fRecall(`${g}rev`, 1, 44, reverseFacts(STATES), OF_CAPITAL_SKIN)], "GEOGRAPHY")];
-    if (grade === 6)
-      return [mkTopic(6, 0, "geocountries", "Countries and capitals", "देश और राजधानियाँ", "देश आणि राजधान्या", [fRecall(`${g}world`, 1, 40, COUNTRIES, CAPITAL_SKIN)], "GEOGRAPHY")];
-    return [];
-  }
-  if (subject === "HISTORY") {
-    if (grade === 7)
-      return [mkTopic(7, 0, "histyears7", "Landmark years to 1900", "1900 तक के मील के पत्थर", "1900 पर्यंतचे टप्पे", [fEventYear(`${g}early`, 1, 16, 1400, 1900)], "HISTORY")];
-    if (grade === 9)
-      return [mkTopic(9, 0, "histyears9", "Landmark years since 1900", "1900 के बाद के मील के पत्थर", "1900 नंतरचे टप्पे", [fEventYear(`${g}modern`, 1, 24, 1901, 2000)], "HISTORY")];
-    return [];
-  }
-  if (subject === "CIVICS") {
-    if (grade === 9)
-      return [mkTopic(9, 0, "civnumbers", "Constitutional Design: The Numbers", "संविधान निर्माण: संख्याएँ", "संविधान रचना: संख्या", [fCivNumber(`${g}facts`, 1, 12)], "CIVICS")];
-    return [];
-  }
+  // Geography, history and civics recall micro-topics fold into their filler
+  // chapters as L1 rungs — see geoFiller/histFiller/civFiller.
+  if (subject === "GEOGRAPHY" || subject === "HISTORY" || subject === "CIVICS") return [];
   if (subject === "ECONOMICS") {
     if (grade === 3)
       return [
@@ -3355,8 +5398,11 @@ function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
       return [
         mkTopic(5, 0, "shop5", "Shop maths", "दुकान का गणित", "दुकानाचे गणित", [
           fUnitCost(`${g}un1`, 1, 500, R(26, 32), R(2, 99)),
-          fUnitCost(`${g}un3`, 2, 1600, R(33, 44), R(2, 99)),
-          fUnitCost(`${g}un5`, 3, 1700, R(45, 56), R(2, 99)),
+          fUnitCost(`${g}un3`, 2, 800, R(33, 44), R(2, 99)),
+          fUnitCost(`${g}un5`, 3, 900, R(45, 56), R(2, 99)),
+          fSpend(`${g}un7`, 4, 700, R(10000, 19999), R(10000, 19999)),
+          fChange(`${g}un9`, 5, 500, 10000, R(1115, 9885)),
+          fShopChange(`${g}un11`, 6, 400, R(3, 9), R(57, 99)),
         ], "ECONOMICS"),
       ];
     if (grade === 7)
@@ -3423,6 +5469,13 @@ function gradeTopics(grade: number): TopicSpec[] {
   }
   const total = out.flatMap((t) => t.templates).reduce((a, t) => a + t.want, 0);
   if (total !== GRADE_TARGET) throw new Error(`grade ${grade} plans ${total}, not ${GRADE_TARGET}`);
+  // Every chapter must climb the full ladder: exactly levels 1..MAX_LEVEL.
+  for (const t of out) {
+    const levels = new Set(t.templates.map((x) => x.level));
+    if (levels.size !== MAX_LEVEL || Math.min(...levels) !== 1 || Math.max(...levels) !== MAX_LEVEL) {
+      throw new Error(`${t.slug}: levels {${[...levels].sort((a, b) => a - b).join(",")}} — every chapter must span L1–L${MAX_LEVEL}`);
+    }
+  }
   return out;
 }
 
