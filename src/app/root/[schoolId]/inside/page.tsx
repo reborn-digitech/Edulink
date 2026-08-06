@@ -68,30 +68,32 @@ export default async function InsideSchoolPage({
       {grant ? (
         <>
           {overview && (
-            <Card>
-              <CardHeader title="The school, in numbers" />
-              <CardBody>
-                <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {[
-                    ["Classes", overview.classes],
-                    ["Posts waiting", overview.pendingPosts],
-                    ["Open reports", overview.openReports],
-                    [
-                      "People",
-                      overview.members.reduce((sum, m) => sum + m.count, 0),
-                    ],
-                  ].map(([label, value]) => (
-                    <li
-                      key={String(label)}
-                      className="rounded-[--radius-md] border border-border p-3 text-center"
-                    >
-                      <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
-                      <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
-                    </li>
-                  ))}
-                </ul>
-              </CardBody>
-            </Card>
+            <section aria-labelledby="numbers-heading">
+              <Card>
+                <CardHeader title={<span id="numbers-heading">The school, in numbers</span>} />
+                <CardBody>
+                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    {[
+                      ["Classes", overview.classes],
+                      ["Posts waiting", overview.pendingPosts],
+                      ["Open reports", overview.openReports],
+                      [
+                        "People",
+                        overview.members.reduce((sum, m) => sum + m.count, 0),
+                      ],
+                    ].map(([label, value]) => (
+                      <li
+                        key={String(label)}
+                        className="rounded-[--radius-md] border border-border p-3 text-center"
+                      >
+                        <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
+                        <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </CardBody>
+              </Card>
+            </section>
           )}
           <OversightPanel
             schoolId={schoolId}
@@ -100,15 +102,17 @@ export default async function InsideSchoolPage({
           />
         </>
       ) : (
-        <Card>
-          <CardHeader
-            title="This school is closed to you"
-            description="Which is the default, and stays the default."
-          />
-          <CardBody>
-            <OpenForm schoolId={schoolId} minutes={OPERATOR_ACCESS_MINUTES} />
-          </CardBody>
-        </Card>
+        <section aria-labelledby="closed-heading">
+          <Card>
+            <CardHeader
+              title={<span id="closed-heading">This school is closed to you</span>}
+              description="Which is the default, and stays the default."
+            />
+            <CardBody>
+              <OpenForm schoolId={schoolId} minutes={OPERATOR_ACCESS_MINUTES} />
+            </CardBody>
+          </Card>
+        </section>
       )}
 
       {/* THE VISITOR BOOK, shown to the operator as well as to the school —

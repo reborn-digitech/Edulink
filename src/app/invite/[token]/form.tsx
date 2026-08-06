@@ -106,7 +106,7 @@ export function AcceptForm({
   }
 
   return (
-    <form onSubmit={submit} className={cn("space-y-5", className)} noValidate>
+    <form id="accept-invite" onSubmit={submit} className={cn("space-y-5", className)} noValidate>
       {errors._form && (
         <p
           role="alert"
@@ -137,6 +137,7 @@ export function AcceptForm({
         not give must not be what stops them accepting a job.
       */}
       <DateField
+        name="birthdate"
         label="Your date of birth"
         hint="Optional. Your school uses it for the birthday calendar, and a parent needs it to link to their child."
         value={birthdate}

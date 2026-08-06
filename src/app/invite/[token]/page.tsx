@@ -145,8 +145,12 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           {hasAccount ? (
             <>
               , which already has an EduLink account. Accepting adds this school to it —{" "}
-              <strong className="text-fg">your password does not change</strong>, and everything
-              already on your account comes with you.
+              {/* The id is what the sweep reads. It hangs on the element the
+                  promise lives in, so deleting the promise deletes the hook. */}
+              <strong id="password-unchanged" className="text-fg">
+                your password does not change
+              </strong>
+              , and everything already on your account comes with you.
             </>
           ) : (
             <>. Set a password and you are in.</>

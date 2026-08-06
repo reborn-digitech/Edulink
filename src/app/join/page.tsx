@@ -72,8 +72,14 @@ export default async function JoinPage({
         </p>
 
         {signedInAs && (
-          <div className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4">
-            <p className="text-sm font-semibold text-fg">
+          /* A SECTION named by its own first line, which gives the warning an
+             accessible name it did not have — and makes `id="signed-in-warning"`
+             load-bearing markup rather than a hook invented for a test. */
+          <section
+            aria-labelledby="signed-in-warning"
+            className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4"
+          >
+            <p id="signed-in-warning" className="text-sm font-semibold text-fg">
               You are signed in as {signedInAs}
             </p>
             <p className="mt-1 text-sm leading-relaxed text-fg-muted">
@@ -90,7 +96,7 @@ export default async function JoinPage({
                 <Link href={ROLE_HOME[session!.role as Role]}>Back to my dashboard</Link>
               </Button>
             </div>
-          </div>
+          </section>
         )}
 
         <div className="mt-8 space-y-3">

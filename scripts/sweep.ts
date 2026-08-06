@@ -49,6 +49,39 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
   return { status: res.status, body, loc: res.headers.get("location") };
 }
 
+/**
+ * ⚠ WHAT A BODY CHECK IS ALLOWED TO LOOK FOR: MARKUP, NEVER PROSE.
+ *
+ * Status alone proves the route rendered, not that the thing worth rendering is
+ * on it, so about a dozen checks in this file read the body. They used to read
+ * it for an English sentence — and the day the app was translated, every one of
+ * them quietly stopped being a fact about the ROUTE and became a fact about the
+ * ACTOR'S LANGUAGE.
+ *
+ * That is not theoretical. `/admin/calendar` looked for "Birthdays" and went red
+ * for an admin whose `prefs.locale` was Marathi, with nothing whatsoever wrong
+ * with the page. A net that cries about its reader is worse than no net: it
+ * teaches you to disbelieve it.
+ *
+ * SO THE HOOK IS STRUCTURE — an `id` an `aria-labelledby` points at, a `data-`
+ * attribute, an `href`, a `type="password"`. All identical in every language,
+ * and all load-bearing, so deleting the feature deletes the hook and the check
+ * goes red for the right reason.
+ *
+ * ⚠ WHAT THIS DELIBERATELY GIVES UP, because it should be said rather than
+ * discovered: rewording is no longer caught. A page that renders the right
+ * regions with the wrong sentences in them passes. That is the correct trade —
+ * "the birthdays section is on the staff calendar" is a claim about the route
+ * and holds in every language; "the page says Birthdays" never was one.
+ *
+ * NOT DONE, and rejected on purpose: setting each actor's `prefs.locale` to
+ * English before the check. That writes to rows the sweep did not create, which
+ * this project treats as destructive whether the write adds, edits, or removes.
+ *
+ * Fixture names the sweep itself made ("ZZ Sweep Term"), school names, and the
+ * Devanagari check that proves the language switcher renders `मराठी` are all
+ * fine and stay: none of them is prose the app translates.
+ */
 const results: { role: string; path: string; status: number; expected: number; ok: boolean; note: string }[] = [];
 
 /**
@@ -962,15 +995,9 @@ async function onboardingSignposts(schoolId: string) {
       path: "/admin/calendar (birthdays)",
       status: cal.status,
       expected: 200,
-      // ⚠ THE ID, NOT THE WORD. This asserted `body.includes("Birthdays")`,
-      // which stopped being a fact about the page the moment the calendar was
-      // translated — it became a fact about the ACTOR'S LANGUAGE. It went red
-      // for a Marathi admin with nothing wrong, which is the worst kind of
-      // red: a net that cries about the reader instead of the route.
-      //
+      // THE ID, NOT THE WORD — this is the check that taught the rule above.
       // `id="birthday-heading"` is what `aria-labelledby` points at, so it is
-      // load-bearing markup rather than a convenience — and it is the same in
-      // every language.
+      // load-bearing rather than a convenience.
       ok: cal.status === 200 && cal.body.includes('id="birthday-heading"'),
       note: "⚠ the staff calendar carries a birthdays section",
     });
@@ -1003,11 +1030,13 @@ async function onboardingSignposts(schoolId: string) {
       expected: 200,
       ok:
         page.status === 200 &&
+        // An address the sweep itself wrote, not app copy — safe to read.
         page.body.includes("zz.sweep.first@edulink.test") &&
         // The birthday field, which is what fills the calendar and gives a
         // guardian something to claim against. A 200 proves the page rendered,
-        // not that the field somebody has to type into is on it.
-        page.body.includes("Your date of birth"),
+        // not that the field somebody has to type into is on it. `name` is the
+        // attribute `DateField` puts on the input that carries the ISO value.
+        page.body.includes('name="birthdate"'),
       note: "⚠ an invitation names who it is for, and asks for a birthday",
     });
   } finally {
@@ -1050,8 +1079,11 @@ async function onboardingSignposts(schoolId: string) {
         expected: 200,
         ok:
           page.status === 200 &&
-          page.body.includes("your password does not change") &&
-          !page.body.includes("Choose a password"),
+          // The promise, by the id on the element that carries it…
+          page.body.includes('id="password-unchanged"') &&
+          // …and no password field at all. `type="password"` is the input's own
+          // markup, so this stays true of a page in any language.
+          !page.body.includes('type="password"'),
         note: "⚠ an invitation to a known address adds a school and asks for no password",
       });
     } finally {
@@ -1086,7 +1118,7 @@ async function sharedDeviceSignposts(schoolId: string) {
     path: "/join",
     status: join.status,
     expected: 200,
-    ok: join.status === 200 && join.body.includes("You are signed in as"),
+    ok: join.status === 200 && join.body.includes('id="signed-in-warning"'),
     note: "⚠ a signed-in visitor is told, not silently bounced",
   });
 
@@ -1098,7 +1130,10 @@ async function sharedDeviceSignposts(schoolId: string) {
     path: "/switch",
     status: plainSwitch.status,
     expected: 200,
-    ok: plainSwitch.status === 200 && !plainSwitch.body.includes("Server administration"),
+    // THE DESTINATION, NOT ITS LABEL. `/root` is the one thing on this page that
+    // is not a school, and the link to it is the whole feature — so the href is
+    // both the most load-bearing thing to read and the same in every language.
+    ok: plainSwitch.status === 200 && !plainSwitch.body.includes('href="/root"'),
     note: "⚠ …and an ordinary teacher is offered no operator area",
   });
 
@@ -1110,7 +1145,7 @@ async function sharedDeviceSignposts(schoolId: string) {
       path: "/switch",
       status: asOperator.status,
       expected: 200,
-      ok: asOperator.status === 200 && asOperator.body.includes("Server administration"),
+      ok: asOperator.status === 200 && asOperator.body.includes('href="/root"'),
       note: "⚠ …while a superuser with a school role IS, on the page that asks where to go",
     });
   } finally {
@@ -1169,8 +1204,11 @@ async function operatorArea() {
       expected: 200,
       ok:
         inside.status === 200 &&
-        inside.body.includes("This school is closed to you") &&
-        !inside.body.includes("You are inside this school"),
+        // The door — the heading its own `<section aria-labelledby>` points at.
+        inside.body.includes('id="closed-heading"') &&
+        // …and not the banner that only an open grant renders. Two hooks on two
+        // different elements, so this still fails if the page shows both.
+        !inside.body.includes('id="inside-banner"'),
       note: "⚠ an operator with no grant is shown the door, not the school",
     });
 
@@ -1207,8 +1245,10 @@ async function operatorArea() {
         expected: 200,
         ok:
           opened.status === 200 &&
-          opened.body.includes("You are inside this school") &&
-          opened.body.includes("The school, in numbers"),
+          opened.body.includes('id="inside-banner"') &&
+          // The overview too, which is the half that actually reads the school's
+          // rows through the policies rather than just announcing the grant.
+          opened.body.includes('id="numbers-heading"'),
         note: "⚠ a grant actually opens the school, through the real policies",
       });
     } finally {
@@ -1659,8 +1699,10 @@ async function joinCodeBootstrap(riversideId: string) {
       status: page.status,
       expected: 200,
       // The page renders either way; what matters is whether it could READ the
-      // invitation, or fell through to "no longer valid".
-      ok: page.status === 200 && !page.body.includes("no longer valid"),
+      // invitation, or fell through to the refusal. Asserted the POSITIVE way
+      // round now: the accept form only exists on the branch that read it, so
+      // this says what the check means instead of naming the failure's wording.
+      ok: page.status === 200 && page.body.includes('id="accept-invite"'),
       note: "a real invitation link, signed out",
     });
 

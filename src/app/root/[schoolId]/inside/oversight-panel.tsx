@@ -52,8 +52,15 @@ export function OversightPanel({
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft p-4">
-        <p className="text-sm text-fg">
+      {/* A SECTION, so the banner has an accessible name rather than being an
+          unlabelled box of coloured text — and so `id="inside-banner"` is
+          load-bearing markup the sweep can read instead of the sentence, which
+          is a fact about the reader's language rather than about the grant. */}
+      <section
+        aria-labelledby="inside-banner"
+        className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft p-4"
+      >
+        <p id="inside-banner" className="text-sm text-fg">
           <strong className="font-semibold">You are inside this school.</strong> Access ends at{" "}
           {expiresAt}. Everything you do is in their Safety Centre.
         </p>
@@ -66,7 +73,7 @@ export function OversightPanel({
         >
           Close now
         </Button>
-      </div>
+      </section>
 
       {error && (
         <p
