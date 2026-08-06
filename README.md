@@ -580,20 +580,26 @@ for the install button, and a native reader for the Hindi and Marathi.
      order to what is asserted. Verified live with the seeded two-school
      parent: stable order on five pages, default child correct, `?child=`
      honoured.
-2. ~~**Fill the Practice bank.**~~ **FILLED — 1,005,105 questions, and every
-   generated one proves itself.** The ask moved to a million (~100,000 per
-   class, 3–12) and the only honest way to that number was taken: a
-   deterministic template generator (`npm run quiz:generate`,
-   `scripts/gen-quiz-bank.ts`) whose every emitted question derives its answer
-   from a `checkExpr` evaluated through the SAME shared evaluator the verifier
-   uses, before it is allowed into the database. 100,500 per grade across 72
-   drill topics, English/Hindi/Marathi on every row, MATHS only — because
-   arithmetic is the one subject a machine can vouch for, and generating what
-   cannot be checked was rejected here once and stays rejected. The 105
-   hand-written questions (six subjects, human-review counts) are untouched.
-   What remains for a human: the hand-written subjects still grow by reviewed
-   batches, and the generated Hindi/Marathi templates carry the same
-   native-reader caveat as the rest of the app.
+2. ~~**Fill the Practice bank.**~~ **FILLED — 1,005,105 questions across all
+   six subjects, 99.97% of them self-proving.** The ask: ~100,000 per class
+   (3–12), split across the subjects, not just maths. Each grade holds exactly
+   100,500 — maths carries the most (40–55k, shrinking as science grows to
+   18–27k), with geography, history, civics and economics holding a steady
+   band — via `npm run quiz:generate` (`scripts/gen-quiz-bank.ts`),
+   deterministic and idempotent. The honesty rule bent without breaking:
+   every NUMERICAL question — all of maths, science numericals (speed,
+   density, F=ma, Ohm's law, Q=mcΔT), map scale and longitude-time, timeline
+   arithmetic over dated events, quorum/majority/representation, discount/GST/
+   per-capita — derives its answer from a `checkExpr` evaluated through the
+   verifier's own evaluator before the row is written: 1,004,724 of 1,005,000.
+   The remaining **276 are fact recall** (state capitals, element symbols,
+   event years, the Constitution's numbers), generated ONLY from curated fact
+   tables in the script — a few hundred rows a person can actually read, which
+   is what reviewing them means — and counted out loud as machine-unproven.
+   `tests/drill-bank.test.ts` pins the ratio: recall may never exceed 0.1% of
+   the bank. The 105 hand-written questions are untouched; the generated
+   Hindi/Marathi (templates AND fact-table names) carry the same native-reader
+   caveat as the rest of the app.
 
 **The cheap thing got done.** Sections 2, 5, 7 and 8 were walked signed out and
 §§12m0–12q walked for the first time — roughly 150 boxes against a production
@@ -1037,8 +1043,9 @@ One line each, with the default rejected.
 - **What `quiz:verify` will NOT tell you**, printed by the tool itself on every
   run: 60 of the 105 hand-written questions are not machine-checkable, because
   there is no program that can confirm "Dandi March, 1930" answers a history
-  question. (The generated drill bank is the inverse by construction — 100%
-  checkExpr-proven, 0% human-read — which is exactly why it is MATHS only.) It reports
+  question. (The generated drill bank holds the same line at scale: 99.97%
+  checkExpr-proven, and its 276 recall questions may only come from the fact
+  tables in the generator — reviewable as a few hundred rows.) It reports
   structure, arithmetic and human-review counts as three separate numbers and
   never collapses them into "verified". A bank that claims to be verified correct
   by a script is telling you about the script.
@@ -2014,12 +2021,15 @@ One line each, with the default rejected.
   itself, not just the `inQuietHours` arithmetic that was already tested.
   What this leaves unexercised is what a machine cannot reach: the install
   button, and translations no native reader has read.
-- **The million-question drill bank, generated, proven and served.**
-  `npm run quiz:generate` builds 1,005,000 questions (grades 3–12, 100,500
-  each, 72 MATHS topics, six-level ladders, English/Hindi/Marathi on every
-  row) in ~17s and imports them in ~5min, deterministically — same run, same
-  stems, same ids, so re-running is a no-op and editing a template is a clean
-  diff. Every question's `checkExpr` is evaluated against its marked option
+- **The million-question drill bank, generated, proven and served — then
+  REDONE across all six subjects when the ask was clarified.** The first cut
+  was maths-only; the real ask was ~100,000 per grade split across the
+  subjects. `npm run quiz:generate` now builds 1,005,000 questions (grades
+  3–12, 100,500 each, 132 topics over MATHS/SCIENCE/GEOGRAPHY/HISTORY/CIVICS/
+  ECONOMICS, six-level ladders, English/Hindi/Marathi on every row) in ~16s
+  and imports them in ~6.5min, deterministically — same run, same stems, same
+  ids, so re-running is a no-op, editing a template is a clean diff, and the
+  redo itself deleted the obsolete plan's topics before writing the new one. Every question's `checkExpr` is evaluated against its marked option
   BEFORE the row is written, through the same evaluator the verifier uses;
   the wanted-vs-produced guard caught nine template bugs during authoring
   (parameter spaces too small, ranges swallowing each other, a probability
@@ -2112,38 +2122,50 @@ navigation" means the actual list rather than one somebody maintained by hand.
   which of their pupils it was — and a published competition result is a public
   thing. That is a different order of disclosure from a table of named children.
 - ~~The Practice question BANK, at scale.~~ **BUILT — 1,005,105 questions in
-  the database**: 1,005,000 generated drills (grades 3–12, 100,500 each, 72
-  topics, MATHS) beside the 105 hand-written (six subjects, 9 topics). How the
-  two positions below survived the scale-up matters more than the number:
+  the database, split across ALL SIX SUBJECTS**: 1,005,000 generated drills
+  (grades 3–12, exactly 100,500 each; per grade, maths 40–55k, science
+  18–27k, geography 10–12k, history 8–10k, civics 4.5–6.5k, economics 5–7k,
+  across 132 topics) beside the 105 hand-written (9 topics). How the two
+  positions below survived the scale-up matters more than the number:
 
   **Not scraped — unchanged.** Nothing was copied from anywhere. The generated
-  bank is parameterized templates written for this repo
-  (`scripts/gen-quiz-bank.ts`), CC0, `source` and `licence` stamped on every
-  row.
+  bank is parameterized templates and small curated fact tables written for
+  this repo (`scripts/gen-quiz-bank.ts`), CC0, `source` and `licence` stamped
+  on every row.
 
   **"Not bulk-generated" REFINED, not abandoned.** The old position was that a
   wrong answer in a children's bank is worse than a missing one and nobody can
-  check 150,000 items. Both halves still hold — so the generator is only
-  allowed to emit what a machine CAN check: every generated question carries a
-  `checkExpr`, evaluated against its marked option through the same shared
-  evaluator the verifier uses (`scripts/quiz-arith.ts`), before the row is
-  written; one failure aborts the run. History, science and everything
-  non-computable remain hand-written-and-reviewed only. The generated bank's
-  honest ledger, printed on every run: arithmetic-checked 1,005,000 of
-  1,005,000; read by a person, 0.
+  check 150,000 items. Both halves still hold, and they shaped what each
+  subject was ALLOWED to generate: everything numerical — all of maths;
+  science numericals (speed, density, F=ma, Ohm's law, Q=mcΔT, moles);
+  map-scale, longitude-time and population-density geography; timeline
+  arithmetic whose event years are GIVEN in the stem; quorum, majority,
+  representation and term civics; discount, GST, per-capita and growth
+  economics — carries a `checkExpr` evaluated against its marked option
+  through the shared evaluator (`scripts/quiz-arith.ts`) before the row is
+  written; one failure aborts the run. That is 1,004,724 of 1,005,000. The
+  other **276 are fact recall** — state capitals, country capitals, element
+  symbols, SI units, event years, the Constitution's numbers — and they may
+  come ONLY from the fact tables in the generator: a few hundred
+  human-checkable rows whose review reviews every question they generate.
+  The ledger prints both numbers on every run, and
+  `tests/drill-bank.test.ts` pins recall below 0.1% of the bank so the count
+  can never quietly grow. Read by a person: still 0, still said out loud.
 
   **What the scale-up cost, engineering-wise:** two serving paths that loaded a
   topic's whole question pool per request were rewritten as queries
   (`listTopics` counts by GROUP BY; `nextQuestion` reproduces `pickQuestion`'s
-  pinned semantics as a difficulty-ladder query — its unit tests are the spec);
-  the practice page grew a class filter; and `tests/drill-bank.test.ts`
-  re-proves a deterministic sample of IMPORTED rows on every `npm test`, which
-  catches what generator-side verification cannot — a bug in the import itself.
-  Live numbers against the full bank: topic list 165ms, drill topic page 83ms,
-  the same rows read back in Hindi. The clean-completion badge is untouched
-  and truthful — and effectively out of reach in a 10,050-question drill
-  topic, where the mastery ladder is the progression that matters; the
-  hand-written topics stay completable. Table cost: ~1.35 GB.
+  pinned semantics — first as a difficulty-ladder probe, then as one GROUP BY
+  when the probes made small-topic tests crawl; the unit tests are the spec
+  both times); the practice page grew a class filter to go with the subject
+  chips; and `tests/drill-bank.test.ts` re-proves a deterministic sample of
+  IMPORTED rows on every `npm test`, which catches what generator-side
+  verification cannot — a bug in the import itself. Live numbers against the
+  six-subject bank: 141-topic list 125ms, drill topic page 93ms, subject and
+  class filters composing, all six subjects on the wire. The clean-completion
+  badge is untouched and truthful — effectively out of reach in a drill topic,
+  where the mastery ladder is the progression that matters; the hand-written
+  topics stay completable.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form

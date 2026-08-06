@@ -134,7 +134,7 @@ function optionsText(
   correct: string,
   decoys: string[],
   seed: string,
-): { choices: string[]; answerIndex: number } {
+): { choices: string[]; answerIndex: number; order: number[] } {
   const used = new Set<string>([correct]);
   const picked = decoys.filter((d) => {
     if (used.has(d)) return false;
@@ -145,12 +145,14 @@ function optionsText(
   const all = [correct, ...picked.slice(0, 3)];
   const order = [0, 1, 2, 3].sort((x, y) => hnum(`${seed}#${x}`) - hnum(`${seed}#${y}`));
   const shuffled = order.map((i) => all[i]!);
-  return { choices: shuffled, answerIndex: shuffled.indexOf(correct) };
+  return { choices: shuffled, answerIndex: shuffled.indexOf(correct), order };
 }
 
 /* -------------------------------------------------------------------------- */
 /* Shapes                                                                      */
 /* -------------------------------------------------------------------------- */
+
+type Subject = "MATHS" | "SCIENCE" | "HISTORY" | "GEOGRAPHY" | "CIVICS" | "ECONOMICS";
 
 type GenQ = {
   level: number;
@@ -158,9 +160,15 @@ type GenQ = {
   choices: string[];
   answerIndex: number;
   solution: string;
-  checkExpr: string;
-  hi: { stem: string; solution: string };
-  mr: { stem: string; solution: string };
+  /**
+   * Null ONLY for fact-recall questions (capitals, symbols, event years) —
+   * answers a machine cannot derive. Those come exclusively from the curated
+   * fact tables below, are a small fraction of the bank, and are counted out
+   * loud as unproven. Everything numerical carries an expression.
+   */
+  checkExpr: string | null;
+  hi: { stem: string; solution: string; choices?: string[] };
+  mr: { stem: string; solution: string; choices?: string[] };
 };
 
 type Template = {
@@ -173,6 +181,7 @@ type Template = {
 
 type TopicSpec = {
   slug: string;
+  subject: Subject;
   classLevel: number;
   chapter: string;
   name: string;
@@ -200,6 +209,18 @@ function validate(q: GenQ, at: string): void {
   }
   if (q.answerIndex < 0 || q.answerIndex >= q.choices.length) die("answerIndex out of range");
   if (q.solution.trim().length < 20) die("solution too short to be a worked solution");
+  if (q.checkExpr === null) {
+    // A recall question: no expression to prove. Structure was still checked,
+    // and the translated choice arrays must stay aligned with the original —
+    // a different length would leave answerIndex pointing at the wrong option.
+    for (const lang of ["hi", "mr"] as const) {
+      const tr = q[lang].choices;
+      if (tr && tr.length !== q.choices.length) die(`${lang} choices misaligned`);
+      if (tr && tr.some((c) => !c.trim())) die(`${lang} has a blank choice`);
+    }
+    if (!q.hi.stem.trim() || !q.mr.stem.trim()) die("missing translation stem");
+    return;
+  }
   if (!/[+\-*/^]/.test(q.checkExpr)) die(`checkExpr "${q.checkExpr}" is a bare literal`);
   const expected = evaluate(q.checkExpr);
   if (expected === null) throw new Error(`${at}: checkExpr "${q.checkExpr}" does not evaluate\n  stem: ${q.stem}`);
@@ -218,11 +239,16 @@ function validate(q: GenQ, at: string): void {
 
 /** 48-bit stem fingerprints; a false hit skips one variant, harmless. */
 const seenStems = new Set<string>();
+let checkedCount = 0;
+let recallCount = 0;
 
 function generateTopic(topic: TopicSpec): GenQ[] {
   const out: GenQ[] = [];
   const levels = new Set<number>();
   for (const tmpl of topic.templates) {
+    if (tmpl.want <= 0) {
+      throw new Error(`${topic.slug}/${tmpl.key}: want ${tmpl.want} — a filler's deficit ran below its fixed wants`);
+    }
     let kept = 0;
     // Oversample: dedup skips cost variants, so ask the walk for extra room.
     for (const idx of walk(tmpl.space, tmpl.space, tmpl.key)) {
@@ -232,6 +258,8 @@ function generateTopic(topic: TopicSpec): GenQ[] {
       const fp = sha(q.stem.trim().toLowerCase()).slice(0, 12);
       if (seenStems.has(fp)) continue;
       seenStems.add(fp);
+      if (q.checkExpr === null) recallCount++;
+      else checkedCount++;
       out.push(q);
       kept++;
     }
@@ -258,7 +286,7 @@ async function importTopic(topic: TopicSpec, questions: GenQ[]): Promise<void> {
   const row = await db.quizTopic.upsert({
     where: { slug: topic.slug },
     create: {
-      subject: "MATHS",
+      subject: topic.subject,
       classLevel: topic.classLevel,
       chapter: topic.chapter,
       name: topic.name,
@@ -267,7 +295,7 @@ async function importTopic(topic: TopicSpec, questions: GenQ[]): Promise<void> {
       position: topic.position,
     },
     update: {
-      subject: "MATHS",
+      subject: topic.subject,
       classLevel: topic.classLevel,
       chapter: topic.chapter,
       name: topic.name,
@@ -309,10 +337,10 @@ async function importTopic(topic: TopicSpec, questions: GenQ[]): Promise<void> {
       questionId: rows[i]!.id,
       language,
       stem: q[language].stem,
-      // The same option strings on purpose: numbers do not translate, and a
-      // translated choices array of a different length would make answerIndex
-      // point at the wrong option — the misalignment the verifier refuses.
-      choices: JSON.stringify(q.choices),
+      // Numbers do not translate, so numeric questions reuse the original
+      // choices; NAME choices (capitals, elements) carry per-language arrays,
+      // validated same-length so answerIndex can never point at the wrong one.
+      choices: JSON.stringify(q[language].choices ?? q.choices),
       solution: q[language].solution,
     })),
   );
@@ -354,15 +382,33 @@ async function main() {
 
   const allSlugs = new Set<string>();
 
+  // On a FULL run, generated topics the new plan no longer names are deleted
+  // before anything is written — "redo the bank" must not leave the old one
+  // interleaved with the new. Matched by the drill- prefix, so hand-written
+  // topics cannot be touched; partial runs (--grade) skip this on purpose.
+  if (!dry && !only) {
+    const planned = grades.flatMap((g) => gradeTopics(g).map((t) => t.slug));
+    const obsolete = await db.quizTopic.findMany({
+      where: { slug: { startsWith: "drill-", notIn: planned } },
+      select: { id: true, slug: true },
+    });
+    if (obsolete.length) {
+      await db.quizTopic.deleteMany({ where: { id: { in: obsolete.map((o) => o.id) } } });
+      console.log(`Deleted ${obsolete.length} obsolete generated topics.\n`);
+    }
+  }
+
   for (const grade of grades) {
     const topics = gradeTopics(grade);
     let gradeTotal = 0;
+    const bySubject: Record<string, number> = {};
     for (const topic of topics) {
       if (allSlugs.has(topic.slug)) throw new Error(`duplicate slug ${topic.slug}`);
       allSlugs.add(topic.slug);
       const questions = generateTopic(topic);
       for (const q of questions) levelTotals[q.level - 1]!++;
       gradeTotal += questions.length;
+      bySubject[topic.subject] = (bySubject[topic.subject] ?? 0) + questions.length;
       if (!dry) await importTopic(topic, questions);
       console.log(
         `  ${topic.slug.padEnd(34)} ${String(questions.length).padStart(6)} questions${dry ? " (dry)" : ""}`,
@@ -370,7 +416,12 @@ async function main() {
     }
     perGrade[grade] = gradeTotal;
     grand += gradeTotal;
-    console.log(`Grade ${grade}: ${gradeTotal} questions\n`);
+    console.log(
+      `Grade ${grade}: ${gradeTotal} — ${Object.entries(bySubject)
+        .sort()
+        .map(([s, n]) => `${s} ${n}`)
+        .join(", ")}\n`,
+    );
     if (gradeTotal < 100_000) {
       throw new Error(`grade ${grade} produced ${gradeTotal} — the ask is ~100,000 per grade`);
     }
@@ -379,7 +430,10 @@ async function main() {
   console.log("— generated drill bank —");
   console.log(`  questions            ${grand}`);
   console.log(`  by level             ${levelTotals.map((n, i) => `L${i + 1}:${n}`).join("  ")}`);
-  console.log(`  arithmetic-checked   ${grand}  (every generated question carries checkExpr)`);
+  console.log(`  arithmetic-checked   ${checkedCount}  (checkExpr evaluated against the marked answer)`);
+  console.log(
+    `  fact-recall          ${recallCount}  ← from the curated fact tables, unproven by machine`,
+  );
   console.log(`  read by a person     0  ← generated, unreviewed; the honest number`);
   console.log(`  translated           hi:${grand}/${grand}  mr:${grand}/${grand}`);
   console.log(`  took                 ${Math.round((Date.now() - started) / 1000)}s`);
@@ -407,12 +461,16 @@ function fill(template: string, vars: Record<string, string | number>): string {
 type MadeQ = {
   vars: Record<string, string | number>;
   answer: number;
-  expr: string;
+  /** Null only for fact-recall — see GenQ.checkExpr. */
+  expr: string | null;
   decoys: number[];
   render?: (n: number) => string;
-  /** Fraction-style questions provide the exact option strings instead. */
+  /** Fraction- and name-style questions provide the exact option strings. */
   answerText?: string;
   decoyTexts?: string[];
+  /** For NAME choices: per-language arrays aligned to [answer, ...decoys]. */
+  textHi?: string[];
+  textMr?: string[];
 };
 
 function T(
@@ -439,6 +497,22 @@ function T(
         : options(m.answer, m.decoys, seed, m.render);
       const ansShown = m.answerText ?? (m.render ? m.render(m.answer) : fmt(m.answer));
       const vars = { ...m.vars, ans: ansShown };
+      // Name choices translate; the SAME shuffle order is applied to every
+      // language so answerIndex stays true in all three. The order indexes
+      // [answer, ...decoys], so a duplicate decoy — which optionsText would
+      // silently filter, shifting everything — is a template bug, refused.
+      if (m.textHi || m.textMr) {
+        const four = [m.answerText!, ...(m.decoyTexts ?? []).slice(0, 3)];
+        if (new Set(four).size !== 4) throw new Error(`${key}: recall decoys collide: ${four.join(" | ")}`);
+        for (const all of [m.textHi, m.textMr]) {
+          if (all && all.length !== (m.decoyTexts ?? []).length + 1) {
+            throw new Error(`${key}: translated choice array misaligned`);
+          }
+        }
+      }
+      const order = "order" in picked ? (picked as { order: number[] }).order : null;
+      const trChoices = (all?: string[]) =>
+        all && order ? order.map((i) => all[i]!) : undefined;
       return {
         level,
         stem: fill(skins.en[skin]!, vars),
@@ -446,8 +520,8 @@ function T(
         answerIndex: picked.answerIndex,
         solution: fill(skins.sen, vars),
         checkExpr: m.expr,
-        hi: { stem: fill(skins.hi[skin]!, vars), solution: fill(skins.shi, vars) },
-        mr: { stem: fill(skins.mr[skin]!, vars), solution: fill(skins.smr, vars) },
+        hi: { stem: fill(skins.hi[skin]!, vars), solution: fill(skins.shi, vars), choices: trChoices(m.textHi) },
+        mr: { stem: fill(skins.mr[skin]!, vars), solution: fill(skins.smr, vars), choices: trChoices(m.textMr) },
       };
     },
   };
@@ -1541,6 +1615,780 @@ const fTrig = (tag: string, lvl: number, want: number, k: Range) =>
     };
   });
 
+/* ==========================================================================
+   FACT TABLES — the only source recall questions may draw from.
+
+   Each row is one human-checkable fact. Reviewing the TABLE reviews every
+   question generated from it, which is what makes recall generation honest
+   at all: the per-question risk collapses onto a few hundred rows a person
+   can actually read. Devanagari names are the author's, under the same
+   native-reader caveat as the rest of the app.
+   ========================================================================== */
+
+type Fact = { en: string; hi: string; mr: string; ansEn: string; ansHi: string; ansMr: string };
+
+/** Indian states and their capitals. Haryana is deliberately absent: it
+ * shares Chandigarh with Punjab, which would make the reverse question
+ * ("Chandigarh is the capital of…?") have two right answers. */
+const STATES: Fact[] = [
+  { en: "Maharashtra", hi: "महाराष्ट्र", mr: "महाराष्ट्र", ansEn: "Mumbai", ansHi: "मुंबई", ansMr: "मुंबई" },
+  { en: "Karnataka", hi: "कर्नाटक", mr: "कर्नाटक", ansEn: "Bengaluru", ansHi: "बेंगलुरु", ansMr: "बेंगळुरू" },
+  { en: "Tamil Nadu", hi: "तमिलनाडु", mr: "तामिळनाडू", ansEn: "Chennai", ansHi: "चेन्नई", ansMr: "चेन्नई" },
+  { en: "Kerala", hi: "केरल", mr: "केरळ", ansEn: "Thiruvananthapuram", ansHi: "तिरुवनंतपुरम", ansMr: "तिरुवनंतपुरम" },
+  { en: "Gujarat", hi: "गुजरात", mr: "गुजरात", ansEn: "Gandhinagar", ansHi: "गांधीनगर", ansMr: "गांधीनगर" },
+  { en: "Rajasthan", hi: "राजस्थान", mr: "राजस्थान", ansEn: "Jaipur", ansHi: "जयपुर", ansMr: "जयपूर" },
+  { en: "Punjab", hi: "पंजाब", mr: "पंजाब", ansEn: "Chandigarh", ansHi: "चंडीगढ़", ansMr: "चंदीगड" },
+  { en: "Uttar Pradesh", hi: "उत्तर प्रदेश", mr: "उत्तर प्रदेश", ansEn: "Lucknow", ansHi: "लखनऊ", ansMr: "लखनौ" },
+  { en: "Madhya Pradesh", hi: "मध्य प्रदेश", mr: "मध्य प्रदेश", ansEn: "Bhopal", ansHi: "भोपाल", ansMr: "भोपाळ" },
+  { en: "West Bengal", hi: "पश्चिम बंगाल", mr: "पश्चिम बंगाल", ansEn: "Kolkata", ansHi: "कोलकाता", ansMr: "कोलकाता" },
+  { en: "Bihar", hi: "बिहार", mr: "बिहार", ansEn: "Patna", ansHi: "पटना", ansMr: "पाटणा" },
+  { en: "Odisha", hi: "ओडिशा", mr: "ओडिशा", ansEn: "Bhubaneswar", ansHi: "भुवनेश्वर", ansMr: "भुवनेश्वर" },
+  { en: "Assam", hi: "असम", mr: "आसाम", ansEn: "Dispur", ansHi: "दिसपुर", ansMr: "दिसपूर" },
+  { en: "Telangana", hi: "तेलंगाना", mr: "तेलंगणा", ansEn: "Hyderabad", ansHi: "हैदराबाद", ansMr: "हैदराबाद" },
+  { en: "Andhra Pradesh", hi: "आंध्र प्रदेश", mr: "आंध्र प्रदेश", ansEn: "Amaravati", ansHi: "अमरावती", ansMr: "अमरावती" },
+  { en: "Jharkhand", hi: "झारखंड", mr: "झारखंड", ansEn: "Ranchi", ansHi: "रांची", ansMr: "रांची" },
+  { en: "Chhattisgarh", hi: "छत्तीसगढ़", mr: "छत्तीसगड", ansEn: "Raipur", ansHi: "रायपुर", ansMr: "रायपूर" },
+  { en: "Uttarakhand", hi: "उत्तराखंड", mr: "उत्तराखंड", ansEn: "Dehradun", ansHi: "देहरादून", ansMr: "डेहराडून" },
+  { en: "Himachal Pradesh", hi: "हिमाचल प्रदेश", mr: "हिमाचल प्रदेश", ansEn: "Shimla", ansHi: "शिमला", ansMr: "शिमला" },
+  { en: "Goa", hi: "गोवा", mr: "गोवा", ansEn: "Panaji", ansHi: "पणजी", ansMr: "पणजी" },
+  { en: "Sikkim", hi: "सिक्किम", mr: "सिक्कीम", ansEn: "Gangtok", ansHi: "गंगटोक", ansMr: "गंगटोक" },
+  { en: "Manipur", hi: "मणिपुर", mr: "मणिपूर", ansEn: "Imphal", ansHi: "इंफाल", ansMr: "इंफाळ" },
+  { en: "Meghalaya", hi: "मेघालय", mr: "मेघालय", ansEn: "Shillong", ansHi: "शिलांग", ansMr: "शिलाँग" },
+  { en: "Tripura", hi: "त्रिपुरा", mr: "त्रिपुरा", ansEn: "Agartala", ansHi: "अगरतला", ansMr: "आगरताळा" },
+  { en: "Nagaland", hi: "नागालैंड", mr: "नागालँड", ansEn: "Kohima", ansHi: "कोहिमा", ansMr: "कोहिमा" },
+  { en: "Mizoram", hi: "मिजोरम", mr: "मिझोराम", ansEn: "Aizawl", ansHi: "आइजोल", ansMr: "ऐझॉल" },
+  { en: "Arunachal Pradesh", hi: "अरुणाचल प्रदेश", mr: "अरुणाचल प्रदेश", ansEn: "Itanagar", ansHi: "ईटानगर", ansMr: "इटानगर" },
+];
+
+const COUNTRIES: Fact[] = [
+  { en: "India", hi: "भारत", mr: "भारत", ansEn: "New Delhi", ansHi: "नई दिल्ली", ansMr: "नवी दिल्ली" },
+  { en: "Nepal", hi: "नेपाल", mr: "नेपाळ", ansEn: "Kathmandu", ansHi: "काठमांडू", ansMr: "काठमांडू" },
+  { en: "China", hi: "चीन", mr: "चीन", ansEn: "Beijing", ansHi: "बीजिंग", ansMr: "बीजिंग" },
+  { en: "Japan", hi: "जापान", mr: "जपान", ansEn: "Tokyo", ansHi: "टोक्यो", ansMr: "टोकियो" },
+  { en: "France", hi: "फ्रांस", mr: "फ्रान्स", ansEn: "Paris", ansHi: "पेरिस", ansMr: "पॅरिस" },
+  { en: "Germany", hi: "जर्मनी", mr: "जर्मनी", ansEn: "Berlin", ansHi: "बर्लिन", ansMr: "बर्लिन" },
+  { en: "Italy", hi: "इटली", mr: "इटली", ansEn: "Rome", ansHi: "रोम", ansMr: "रोम" },
+  { en: "Spain", hi: "स्पेन", mr: "स्पेन", ansEn: "Madrid", ansHi: "मैड्रिड", ansMr: "माद्रिद" },
+  { en: "the United Kingdom", hi: "यूनाइटेड किंगडम", mr: "युनायटेड किंग्डम", ansEn: "London", ansHi: "लंदन", ansMr: "लंडन" },
+  { en: "the United States", hi: "संयुक्त राज्य अमेरिका", mr: "अमेरिका", ansEn: "Washington DC", ansHi: "वॉशिंगटन डीसी", ansMr: "वॉशिंग्टन डीसी" },
+  { en: "Russia", hi: "रूस", mr: "रशिया", ansEn: "Moscow", ansHi: "मॉस्को", ansMr: "मॉस्को" },
+  { en: "Brazil", hi: "ब्राज़ील", mr: "ब्राझील", ansEn: "Brasilia", ansHi: "ब्रासीलिया", ansMr: "ब्राझिलिया" },
+  { en: "Australia", hi: "ऑस्ट्रेलिया", mr: "ऑस्ट्रेलिया", ansEn: "Canberra", ansHi: "कैनबरा", ansMr: "कॅनबेरा" },
+  { en: "Canada", hi: "कनाडा", mr: "कॅनडा", ansEn: "Ottawa", ansHi: "ओटावा", ansMr: "ओटावा" },
+  { en: "Egypt", hi: "मिस्र", mr: "इजिप्त", ansEn: "Cairo", ansHi: "काहिरा", ansMr: "कैरो" },
+  { en: "Kenya", hi: "केन्या", mr: "केनिया", ansEn: "Nairobi", ansHi: "नैरोबी", ansMr: "नैरोबी" },
+  { en: "Iran", hi: "ईरान", mr: "इराण", ansEn: "Tehran", ansHi: "तेहरान", ansMr: "तेहरान" },
+  { en: "Bangladesh", hi: "बांग्लादेश", mr: "बांगलादेश", ansEn: "Dhaka", ansHi: "ढाका", ansMr: "ढाका" },
+  { en: "Pakistan", hi: "पाकिस्तान", mr: "पाकिस्तान", ansEn: "Islamabad", ansHi: "इस्लामाबाद", ansMr: "इस्लामाबाद" },
+  { en: "Indonesia", hi: "इंडोनेशिया", mr: "इंडोनेशिया", ansEn: "Jakarta", ansHi: "जकार्ता", ansMr: "जकार्ता" },
+  { en: "Thailand", hi: "थाईलैंड", mr: "थायलंड", ansEn: "Bangkok", ansHi: "बैंकॉक", ansMr: "बँकॉक" },
+  { en: "Greece", hi: "यूनान", mr: "ग्रीस", ansEn: "Athens", ansHi: "एथेंस", ansMr: "अथेन्स" },
+  { en: "Turkey", hi: "तुर्की", mr: "तुर्की", ansEn: "Ankara", ansHi: "अंकारा", ansMr: "अंकारा" },
+  { en: "Argentina", hi: "अर्जेंटीना", mr: "अर्जेंटिना", ansEn: "Buenos Aires", ansHi: "ब्यूनस आयर्स", ansMr: "ब्युनोस आयर्स" },
+];
+
+/** Chemical elements and symbols. Transliterated names serve hi and mr both,
+ * matching how Indian chemistry classrooms actually say them. */
+const ELEMENTS: Fact[] = (
+  [
+    ["Hydrogen", "हाइड्रोजन", "H"], ["Helium", "हीलियम", "He"], ["Lithium", "लीथियम", "Li"],
+    ["Carbon", "कार्बन", "C"], ["Nitrogen", "नाइट्रोजन", "N"], ["Oxygen", "ऑक्सीजन", "O"],
+    ["Sodium", "सोडियम", "Na"], ["Magnesium", "मैग्नीशियम", "Mg"], ["Aluminium", "ऐलुमिनियम", "Al"],
+    ["Silicon", "सिलिकॉन", "Si"], ["Phosphorus", "फ़ॉस्फोरस", "P"], ["Sulphur", "सल्फर", "S"],
+    ["Chlorine", "क्लोरीन", "Cl"], ["Potassium", "पोटैशियम", "K"], ["Calcium", "कैल्शियम", "Ca"],
+    ["Iron", "आयरन", "Fe"], ["Copper", "कॉपर", "Cu"], ["Zinc", "ज़िंक", "Zn"],
+    ["Silver", "सिल्वर", "Ag"], ["Gold", "गोल्ड", "Au"], ["Mercury", "मरकरी", "Hg"],
+    ["Lead", "लेड", "Pb"], ["Tin", "टिन", "Sn"], ["Nickel", "निकल", "Ni"],
+  ] as [string, string, string][]
+).map(([en, dev, sym]) => ({ en, hi: dev, mr: dev, ansEn: sym, ansHi: sym, ansMr: sym }));
+
+/** SI units by quantity. */
+const SI_UNITS: Fact[] = [
+  { en: "length", hi: "लंबाई", mr: "लांबी", ansEn: "metre", ansHi: "मीटर", ansMr: "मीटर" },
+  { en: "mass", hi: "द्रव्यमान", mr: "वस्तुमान", ansEn: "kilogram", ansHi: "किलोग्राम", ansMr: "किलोग्रॅम" },
+  { en: "time", hi: "समय", mr: "वेळ", ansEn: "second", ansHi: "सेकंड", ansMr: "सेकंद" },
+  { en: "electric current", hi: "विद्युत धारा", mr: "विद्युत धारा", ansEn: "ampere", ansHi: "ऐम्पियर", ansMr: "अँपिअर" },
+  { en: "temperature", hi: "ताप", mr: "तापमान", ansEn: "kelvin", ansHi: "केल्विन", ansMr: "केल्व्हिन" },
+  { en: "force", hi: "बल", mr: "बल", ansEn: "newton", ansHi: "न्यूटन", ansMr: "न्यूटन" },
+  { en: "pressure", hi: "दाब", mr: "दाब", ansEn: "pascal", ansHi: "पास्कल", ansMr: "पास्कल" },
+  { en: "energy", hi: "ऊर्जा", mr: "ऊर्जा", ansEn: "joule", ansHi: "जूल", ansMr: "ज्यूल" },
+  { en: "power", hi: "शक्ति", mr: "शक्ती", ansEn: "watt", ansHi: "वाट", ansMr: "वॅट" },
+  { en: "frequency", hi: "आवृत्ति", mr: "वारंवारता", ansEn: "hertz", ansHi: "हर्ट्ज़", ansMr: "हर्ट्झ" },
+  { en: "electric charge", hi: "विद्युत आवेश", mr: "विद्युत प्रभार", ansEn: "coulomb", ansHi: "कूलॉम", ansMr: "कुलोम" },
+  { en: "potential difference", hi: "विभवांतर", mr: "विभवांतर", ansEn: "volt", ansHi: "वोल्ट", ansMr: "व्होल्ट" },
+  { en: "resistance", hi: "प्रतिरोध", mr: "रोध", ansEn: "ohm", ansHi: "ओम", ansMr: "ओम" },
+];
+
+/** Events with settled, single-year dates only — anything contested stays out. */
+const EVENTS: { en: string; hi: string; mr: string; year: number }[] = [
+  { en: "Vasco da Gama reaching Calicut", hi: "वास्को डी गामा का कालीकट पहुँचना", mr: "वास्को द गामा कालिकतला पोहोचणे", year: 1498 },
+  { en: "the First Battle of Panipat", hi: "पानीपत की पहली लड़ाई", mr: "पानिपतची पहिली लढाई", year: 1526 },
+  { en: "the chartering of the East India Company", hi: "ईस्ट इंडिया कंपनी की स्थापना", mr: "ईस्ट इंडिया कंपनीची स्थापना", year: 1600 },
+  { en: "the coronation of Shivaji Maharaj", hi: "शिवाजी महाराज का राज्याभिषेक", mr: "शिवाजी महाराजांचा राज्याभिषेक", year: 1674 },
+  { en: "the Battle of Plassey", hi: "प्लासी का युद्ध", mr: "प्लासीची लढाई", year: 1757 },
+  { en: "the Battle of Buxar", hi: "बक्सर का युद्ध", mr: "बक्सारची लढाई", year: 1764 },
+  { en: "the beginning of the French Revolution", hi: "फ्रांसीसी क्रांति की शुरुआत", mr: "फ्रेंच राज्यक्रांतीची सुरुवात", year: 1789 },
+  { en: "the abolition of sati", hi: "सती प्रथा का अंत", mr: "सती प्रथेचे उच्चाटन", year: 1829 },
+  { en: "the first railway line from Bombay to Thane", hi: "बंबई से ठाणे तक पहली रेल", mr: "मुंबई ते ठाणे पहिली रेल्वे", year: 1853 },
+  { en: "the Revolt of 1857", hi: "1857 की क्रांति", mr: "1857 चा उठाव", year: 1857 },
+  { en: "the founding of the Indian National Congress", hi: "भारतीय राष्ट्रीय कांग्रेस की स्थापना", mr: "भारतीय राष्ट्रीय काँग्रेसची स्थापना", year: 1885 },
+  { en: "the Partition of Bengal", hi: "बंगाल का विभाजन", mr: "बंगालची फाळणी", year: 1905 },
+  { en: "the beginning of the First World War", hi: "प्रथम विश्व युद्ध की शुरुआत", mr: "पहिल्या महायुद्धाची सुरुवात", year: 1914 },
+  { en: "the end of the First World War", hi: "प्रथम विश्व युद्ध का अंत", mr: "पहिल्या महायुद्धाचा शेवट", year: 1918 },
+  { en: "the Jallianwala Bagh massacre", hi: "जलियाँवाला बाग हत्याकांड", mr: "जालियनवाला बाग हत्याकांड", year: 1919 },
+  { en: "the launch of the Non-Cooperation Movement", hi: "असहयोग आंदोलन की शुरुआत", mr: "असहकार चळवळीची सुरुवात", year: 1920 },
+  { en: "the Purna Swaraj resolution at Lahore", hi: "लाहौर में पूर्ण स्वराज प्रस्ताव", mr: "लाहोरचा संपूर्ण स्वराज्य ठराव", year: 1929 },
+  { en: "the Dandi March", hi: "दांडी यात्रा", mr: "दांडी यात्रा", year: 1930 },
+  { en: "the Government of India Act", hi: "भारत सरकार अधिनियम", mr: "भारत सरकार कायदा", year: 1935 },
+  { en: "the beginning of the Second World War", hi: "द्वितीय विश्व युद्ध की शुरुआत", mr: "दुसऱ्या महायुद्धाची सुरुवात", year: 1939 },
+  { en: "the Quit India Movement", hi: "भारत छोड़ो आंदोलन", mr: "चले जाव चळवळ", year: 1942 },
+  { en: "the end of the Second World War", hi: "द्वितीय विश्व युद्ध का अंत", mr: "दुसऱ्या महायुद्धाचा शेवट", year: 1945 },
+  { en: "the independence of India", hi: "भारत की स्वतंत्रता", mr: "भारताचे स्वातंत्र्य", year: 1947 },
+  { en: "the adoption of the Constitution", hi: "संविधान को अंगीकार करना", mr: "संविधानाचा स्वीकार", year: 1949 },
+  { en: "the Constitution coming into force", hi: "संविधान का लागू होना", mr: "संविधान अंमलात येणे", year: 1950 },
+  { en: "the launch of Sputnik", hi: "स्पूतनिक का प्रक्षेपण", mr: "स्पुटनिकचे प्रक्षेपण", year: 1957 },
+  { en: "the first Moon landing", hi: "चंद्रमा पर पहला कदम", mr: "चंद्रावर पहिले पाऊल", year: 1969 },
+];
+
+/** Constitution numbers. Small, numeric, and checkable by any civics teacher. */
+const CIV_NUMBERS: { en: string; hi: string; mr: string; value: number }[] = [
+  { en: "the minimum voting age in India", hi: "भारत में मतदान की न्यूनतम आयु", mr: "भारतात मतदानाचे किमान वय", value: 18 },
+  { en: "the minimum age to contest a Lok Sabha election", hi: "लोकसभा चुनाव लड़ने की न्यूनतम आयु", mr: "लोकसभा निवडणूक लढवण्याचे किमान वय", value: 25 },
+  { en: "the minimum age to be a Rajya Sabha member", hi: "राज्यसभा सदस्य बनने की न्यूनतम आयु", mr: "राज्यसभा सदस्य होण्याचे किमान वय", value: 30 },
+  { en: "the minimum age to be President of India", hi: "भारत का राष्ट्रपति बनने की न्यूनतम आयु", mr: "भारताचे राष्ट्रपती होण्याचे किमान वय", value: 35 },
+  { en: "the term of the Lok Sabha, in years", hi: "लोकसभा का कार्यकाल (वर्षों में)", mr: "लोकसभेचा कार्यकाळ (वर्षांत)", value: 5 },
+  { en: "the term of a Rajya Sabha member, in years", hi: "राज्यसभा सदस्य का कार्यकाल (वर्षों में)", mr: "राज्यसभा सदस्याचा कार्यकाळ (वर्षांत)", value: 6 },
+  { en: "the number of fundamental duties in the Constitution", hi: "संविधान में मौलिक कर्तव्यों की संख्या", mr: "संविधानातील मूलभूत कर्तव्यांची संख्या", value: 11 },
+  { en: "the number of schedules in the Constitution", hi: "संविधान की अनुसूचियों की संख्या", mr: "संविधानाच्या अनुसूचींची संख्या", value: 12 },
+];
+
+/* --------------------------------------------------------------------------
+   Recall families — every question drawn from a table row.
+   -------------------------------------------------------------------------- */
+
+/** Three decoys = the answers of the next three table rows, so they are the
+ * same KIND of thing as the answer and never accidentally equal to it. */
+function fRecall(tag: string, lvl: number, want: number, rows: Fact[], skins: SkinSet): Template {
+  return T(`recall:${tag}`, lvl, want, [rows.length], skins, ([i]) => {
+    const row = rows[i!]!;
+    const pick = (k: number) => rows[(i! + k) % rows.length]!;
+    const [d1, d2, d3] = [pick(1), pick(2), pick(3)];
+    return {
+      vars: { q: row.en, qh: row.hi, qm: row.mr },
+      answer: 0,
+      expr: null,
+      decoys: [],
+      answerText: row.ansEn,
+      decoyTexts: [d1.ansEn, d2.ansEn, d3.ansEn],
+      textHi: [row.ansHi, d1.ansHi, d2.ansHi, d3.ansHi],
+      textMr: [row.ansMr, d1.ansMr, d2.ansMr, d3.ansMr],
+    };
+  });
+}
+
+const reverseFacts = (rows: Fact[]): Fact[] =>
+  rows.map((r) => ({ en: r.ansEn, hi: r.ansHi, mr: r.ansMr, ansEn: r.en, ansHi: r.hi, ansMr: r.mr }));
+
+const CAPITAL_SKIN: SkinSet = {
+  en: ["What is the capital of {q}?", "Name the capital of {q}."],
+  hi: ["{qh} की राजधानी क्या है?", "{qh} की राजधानी बताइए।"],
+  mr: ["{qm} ची राजधानी कोणती?", "{qm} ची राजधानी सांगा."],
+  sen: "The capital of {q} is {ans}. Find it on the map once and it will stay found.",
+  shi: "{qh} की राजधानी {ans} है। नक्शे पर एक बार खोज लें, याद रह जाएगी।",
+  smr: "{qm} ची राजधानी {ans} आहे. नकाशावर एकदा शोधा, लक्षात राहील.",
+};
+const OF_CAPITAL_SKIN: SkinSet = {
+  en: ["{q} is the capital of which state?", "Which state has {q} as its capital?"],
+  hi: ["{qh} किस राज्य की राजधानी है?", "किस राज्य की राजधानी {qh} है?"],
+  mr: ["{qm} ही कोणत्या राज्याची राजधानी आहे?", "कोणत्या राज्याची राजधानी {qm} आहे?"],
+  sen: "{q} is the capital of {ans}. Find it on the map once and it will stay found.",
+  shi: "{qh} {ans} की राजधानी है। नक्शे पर एक बार खोज लें, याद रह जाएगी।",
+  smr: "{qm} ही {ans} ची राजधानी आहे. नकाशावर एकदा शोधा, लक्षात राहील.",
+};
+const ELEMENT_SKIN: SkinSet = {
+  en: ["What is the chemical symbol of {q}?", "Which symbol stands for {q}?"],
+  hi: ["{qh} का रासायनिक प्रतीक क्या है?", "{qh} के लिए कौन-सा प्रतीक है?"],
+  mr: ["{qm} चे रासायनिक चिन्ह कोणते?", "{qm} साठी कोणते चिन्ह आहे?"],
+  sen: "The symbol of {q} is {ans}, as the periodic table writes it.",
+  shi: "{qh} का प्रतीक {ans} है, जैसा आवर्त सारणी में लिखा है।",
+  smr: "{qm} चे चिन्ह {ans} आहे, आवर्त सारणीत असेच लिहिले आहे.",
+};
+const SYMBOL_SKIN: SkinSet = {
+  en: ["Which element has the symbol {q}?", "The symbol {q} stands for which element?"],
+  hi: ["प्रतीक {qh} किस तत्व का है?", "{qh} प्रतीक किस तत्व के लिए है?"],
+  mr: ["{qm} हे चिन्ह कोणत्या मूलद्रव्याचे आहे?", "{qm} चिन्ह कोणत्या मूलद्रव्यासाठी आहे?"],
+  sen: "The symbol {q} stands for {ans}, as the periodic table writes it.",
+  shi: "प्रतीक {qh} तत्व {ans} का है, जैसा आवर्त सारणी में लिखा है।",
+  smr: "{qm} हे चिन्ह {ans} या मूलद्रव्याचे आहे, आवर्त सारणीत असेच आहे.",
+};
+const UNIT_SKIN: SkinSet = {
+  en: ["What is the SI unit of {q}?", "Name the SI unit of {q}."],
+  hi: ["{qh} की SI इकाई क्या है?", "{qh} की SI इकाई बताइए।"],
+  mr: ["{qm} चे SI एकक कोणते?", "{qm} चे SI एकक सांगा."],
+  sen: "The SI unit of {q} is the {ans}.",
+  shi: "{qh} की SI इकाई {ans} है।",
+  smr: "{qm} चे SI एकक {ans} आहे.",
+};
+
+/** "In which year…" — numeric recall; choices are nearby plausible years. */
+const YEAR_SKIN: SkinSet = {
+  en: ["In which year did {q} take place?", "{q} — which year?"],
+  hi: ["{qh} किस वर्ष हुआ?", "{qh} — कौन-सा वर्ष?"],
+  mr: ["{qm} कोणत्या वर्षी घडले?", "{qm} — कोणते वर्ष?"],
+  sen: "It happened in {ans}. Place it on your timeline next to what came before and after.",
+  shi: "यह {ans} में हुआ। इसे अपनी समयरेखा पर आगे-पीछे की घटनाओं के पास रखिए।",
+  smr: "हे {ans} मध्ये घडले. आधी-नंतरच्या घटनांच्या शेजारी हे कालरेषेवर ठेवा.",
+};
+const fEventYear = (tag: string, lvl: number, want: number, from: number, to: number) => {
+  const rows = EVENTS.filter((e) => e.year >= from && e.year <= to);
+  return T(`histyear:${tag}`, lvl, want, [rows.length], YEAR_SKIN, ([i]) => {
+    const e = rows[i!]!;
+    return {
+      vars: { q: e.en, qh: e.hi, qm: e.mr },
+      answer: e.year,
+      expr: null,
+      decoys: [e.year + 10, e.year - 10, e.year + 3, e.year - 7],
+    };
+  });
+};
+
+const fCivNumber = (tag: string, lvl: number, want: number) =>
+  T(
+    `civnum:${tag}`,
+    lvl,
+    want,
+    [CIV_NUMBERS.length],
+    {
+      en: ["What is {q}?", "State {q}."],
+      hi: ["{qh} क्या है?", "{qh} बताइए।"],
+      mr: ["{qm} किती आहे?", "{qm} सांगा."],
+      sen: "The Constitution and election law set {q} at {ans}.",
+      shi: "{qh} संविधान और चुनाव कानून के अनुसार {ans} है।",
+      smr: "{qm} संविधान व निवडणूक कायद्यानुसार {ans} आहे.",
+    },
+    ([i]) => {
+      const row = CIV_NUMBERS[i!]!;
+      return {
+        vars: { q: row.en, qh: row.hi, qm: row.mr },
+        answer: row.value,
+        expr: null,
+        decoys: [row.value + 2, Math.max(1, row.value - 2), row.value + 5],
+      };
+    },
+  );
+
+/* --------------------------------------------------------------------------
+   Science — numericals, every one checkExpr-proven.
+   -------------------------------------------------------------------------- */
+
+const mkSci =
+  (key: string, skins: SkinSet, build: (c: number[], r1: Range, r2: Range) => MadeQ) =>
+  (tag: string, lvl: number, want: number, r1: Range, r2: Range) =>
+    T(`${key}:${tag}`, lvl, want, [r1.n, r2.n], skins, (c) => build(c, r1, r2));
+
+const fSciSpeed = mkSci(
+  "scispeed",
+  {
+    en: ["A cyclist rides {d} km in {t} hours at a steady pace. What is the speed?", "An object moves {d} km in {t} hours. Find its speed."],
+    hi: ["एक साइकिल सवार {t} घंटों में {d} किमी चलता है। चाल क्या है?", "कोई वस्तु {t} घंटों में {d} किमी चलती है। उसकी चाल निकालिए।"],
+    mr: ["एक सायकलस्वार {t} तासांत {d} किमी जातो. वेग किती?", "एक वस्तू {t} तासांत {d} किमी जाते. तिचा वेग काढा."],
+    sen: "Speed = distance ÷ time = {d} ÷ {t} = {ans} km/h.",
+    shi: "चाल = दूरी ÷ समय = {d} ÷ {t} = {ans} किमी/घंटा।",
+    smr: "वेग = अंतर ÷ वेळ = {d} ÷ {t} = {ans} किमी/तास.",
+  },
+  ([i, j], r1, r2) => {
+    const v = at(r1, i!), t = at(r2, j!), d = v * t;
+    return { vars: { d, t }, answer: v, expr: `${d}/${t}`, decoys: [v + 5, v - 5, d - t], render: (n) => `${fmt(n)} km/h` };
+  },
+);
+
+const fSciDensity = mkSci(
+  "scidensity",
+  {
+    en: ["A block has mass {m} g and volume {v} cm³. What is its density?", "Find the density of an object of mass {m} g and volume {v} cm³."],
+    hi: ["एक गुटके का द्रव्यमान {m} ग्राम और आयतन {v} सेमी³ है। घनत्व क्या है?", "द्रव्यमान {m} ग्राम और आयतन {v} सेमी³ वाली वस्तु का घनत्व निकालिए।"],
+    mr: ["एका ठोकळ्याचे वस्तुमान {m} ग्रॅम व आकारमान {v} सेमी³ आहे. घनता किती?", "वस्तुमान {m} ग्रॅम व आकारमान {v} सेमी³ असलेल्या वस्तूची घनता काढा."],
+    sen: "Density = mass ÷ volume = {m} ÷ {v} = {ans} g/cm³.",
+    shi: "घनत्व = द्रव्यमान ÷ आयतन = {m} ÷ {v} = {ans} ग्राम/सेमी³।",
+    smr: "घनता = वस्तुमान ÷ आकारमान = {m} ÷ {v} = {ans} ग्रॅम/सेमी³.",
+  },
+  ([i, j], r1, r2) => {
+    const rho = at(r1, i!), v = at(r2, j!), m = rho * v;
+    return { vars: { m, v }, answer: rho, expr: `${m}/${v}`, decoys: [rho + 1, rho + 2, m - v], render: (n) => `${fmt(n)} g/cm³` };
+  },
+);
+
+const fSciForce = mkSci(
+  "sciforce",
+  {
+    en: ["A mass of {m} kg accelerates at {a} m/s². What force acts on it?", "Find the force on a {m} kg body accelerating at {a} m/s²."],
+    hi: ["{m} किग्रा का पिंड {a} मी/से² से त्वरित होता है। उस पर कितना बल लगता है?", "{a} मी/से² से त्वरित {m} किग्रा के पिंड पर बल निकालिए।"],
+    mr: ["{m} किग्रॅ वस्तुमान {a} मी/से² ने त्वरित होते. त्यावर किती बल आहे?", "{a} मी/से² त्वरण असलेल्या {m} किग्रॅ वस्तूवरील बल काढा."],
+    sen: "Force = mass × acceleration = {m} × {a} = {ans} N.",
+    shi: "बल = द्रव्यमान × त्वरण = {m} × {a} = {ans} न्यूटन।",
+    smr: "बल = वस्तुमान × त्वरण = {m} × {a} = {ans} न्यूटन.",
+  },
+  ([i, j], r1, r2) => {
+    const m = at(r1, i!), a = at(r2, j!), f = m * a;
+    return { vars: { m, a }, answer: f, expr: `${m}*${a}`, decoys: [f + m, f - a, m + a], render: (n) => `${fmt(n)} N` };
+  },
+);
+
+const fSciOhm = mkSci(
+  "sciohm",
+  {
+    en: ["A current of {i} A flows through a resistance of {r} Ω. What is the potential difference?", "Find V when I = {i} A and R = {r} Ω."],
+    hi: ["{r} ओम के प्रतिरोध से {i} ऐम्पियर धारा बहती है। विभवांतर क्या है?", "I = {i} A और R = {r} Ω हो तो V निकालिए।"],
+    mr: ["{r} ओम रोधातून {i} अँपिअर धारा वाहते. विभवांतर किती?", "I = {i} A आणि R = {r} Ω असता V काढा."],
+    sen: "Ohm's law: V = I × R = {i} × {r} = {ans} V.",
+    shi: "ओम का नियम: V = I × R = {i} × {r} = {ans} वोल्ट।",
+    smr: "ओमचा नियम: V = I × R = {i} × {r} = {ans} व्होल्ट.",
+  },
+  ([i, j], r1, r2) => {
+    const cur = at(r1, i!), res = at(r2, j!), v = cur * res;
+    return { vars: { i: cur, r: res }, answer: v, expr: `${cur}*${res}`, decoys: [v + res, v - cur, cur + res], render: (n) => `${fmt(n)} V` };
+  },
+);
+
+const fSciWork = mkSci(
+  "sciwork",
+  {
+    en: ["A force of {f} N moves an object {d} m in its own direction. How much work is done?", "Find the work done by {f} N over {d} m."],
+    hi: ["{f} न्यूटन का बल वस्तु को अपनी दिशा में {d} मीटर खिसकाता है। कितना कार्य हुआ?", "{d} मीटर पर {f} न्यूटन बल का कार्य निकालिए।"],
+    mr: ["{f} न्यूटन बल वस्तूला त्याच दिशेने {d} मीटर सरकवते. किती कार्य झाले?", "{d} मीटरवर {f} न्यूटन बलाचे कार्य काढा."],
+    sen: "Work = force × distance = {f} × {d} = {ans} J.",
+    shi: "कार्य = बल × दूरी = {f} × {d} = {ans} जूल।",
+    smr: "कार्य = बल × अंतर = {f} × {d} = {ans} ज्यूल.",
+  },
+  ([i, j], r1, r2) => {
+    const f = at(r1, i!), d = at(r2, j!), w = f * d;
+    return { vars: { f, d }, answer: w, expr: `${f}*${d}`, decoys: [w + f, w - d, f + d], render: (n) => `${fmt(n)} J` };
+  },
+);
+
+const fSciPower = mkSci(
+  "scipower",
+  {
+    en: ["A machine does {w} J of work in {t} seconds. What is its power?", "Find the power of a machine doing {w} J in {t} s."],
+    hi: ["एक मशीन {t} सेकंड में {w} जूल कार्य करती है। उसकी शक्ति क्या है?", "{t} सेकंड में {w} जूल कार्य करने वाली मशीन की शक्ति निकालिए।"],
+    mr: ["एक यंत्र {t} सेकंदांत {w} ज्यूल कार्य करते. त्याची शक्ती किती?", "{t} सेकंदांत {w} ज्यूल कार्य करणाऱ्या यंत्राची शक्ती काढा."],
+    sen: "Power = work ÷ time = {w} ÷ {t} = {ans} W.",
+    shi: "शक्ति = कार्य ÷ समय = {w} ÷ {t} = {ans} वाट।",
+    smr: "शक्ती = कार्य ÷ वेळ = {w} ÷ {t} = {ans} वॅट.",
+  },
+  ([i, j], r1, r2) => {
+    const p = at(r1, i!), t = at(r2, j!), w = p * t;
+    return { vars: { w, t }, answer: p, expr: `${w}/${t}`, decoys: [p + 10, p - 10, w - t], render: (n) => `${fmt(n)} W` };
+  },
+);
+
+const fSciWave = mkSci(
+  "sciwave",
+  {
+    en: ["A wave has frequency {f} Hz and wavelength {l} m. What is its speed?", "Find the speed of a wave with f = {f} Hz and λ = {l} m."],
+    hi: ["एक तरंग की आवृत्ति {f} हर्ट्ज़ और तरंगदैर्घ्य {l} मीटर है। उसकी चाल क्या है?", "f = {f} Hz और λ = {l} m वाली तरंग की चाल निकालिए।"],
+    mr: ["एका तरंगाची वारंवारता {f} हर्ट्झ व तरंगलांबी {l} मीटर आहे. त्याचा वेग किती?", "f = {f} Hz आणि λ = {l} m असलेल्या तरंगाचा वेग काढा."],
+    sen: "Wave speed = frequency × wavelength = {f} × {l} = {ans} m/s.",
+    shi: "तरंग चाल = आवृत्ति × तरंगदैर्घ्य = {f} × {l} = {ans} मी/से।",
+    smr: "तरंग वेग = वारंवारता × तरंगलांबी = {f} × {l} = {ans} मी/से.",
+  },
+  ([i, j], r1, r2) => {
+    const f = at(r1, i!), l = at(r2, j!), v = f * l;
+    return { vars: { f, l }, answer: v, expr: `${f}*${l}`, decoys: [v + f, v - l, f + l], render: (n) => `${fmt(n)} m/s` };
+  },
+);
+
+const HEAT_C = [390, 420, 900, 1000, 2100, 4200];
+const fSciHeat = (tag: string, lvl: number, want: number, m: Range, dt: Range) =>
+  T(
+    `sciheat:${tag}`,
+    lvl,
+    want,
+    [m.n, dt.n, HEAT_C.length],
+    {
+      en: ["A {m} kg sample with specific heat {c} J/kg·°C warms by {dt}°C. How much heat was absorbed?"],
+      hi: ["{m} किग्रा का नमूना, विशिष्ट ऊष्मा {c} जूल/किग्रा·°C, {dt}°C गर्म होता है। कितनी ऊष्मा अवशोषित हुई?"],
+      mr: ["{m} किग्रॅ नमुना, विशिष्ट उष्मा {c} ज्यूल/किग्रॅ·°C, {dt}°C ने तापतो. किती उष्णता शोषली गेली?"],
+      sen: "Q = m × c × ΔT = {m} × {c} × {dt} = {ans} J.",
+      shi: "Q = m × c × ΔT = {m} × {c} × {dt} = {ans} जूल।",
+      smr: "Q = m × c × ΔT = {m} × {c} × {dt} = {ans} ज्यूल.",
+    },
+    ([i, j, k]) => {
+      const mass = at(m, i!), delta = at(dt, j!), c = HEAT_C[k!]!;
+      const q = mass * c * delta;
+      return { vars: { m: mass, c, dt: delta }, answer: q, expr: `${mass}*${c}*${delta}`, decoys: [q / 2, q + c, mass * c], render: (n) => `${fmt(n)} J` };
+    },
+  );
+
+const fSciCF = (tag: string, lvl: number, want: number, c5: Range) =>
+  T(
+    `scicf:${tag}`,
+    lvl,
+    want,
+    [c5.n],
+    {
+      en: ["Convert {c}°C to Fahrenheit.", "What is {c}°C in °F?"],
+      hi: ["{c}°C को फ़ारेनहाइट में बदलिए।", "{c}°C कितने °F होते हैं?"],
+      mr: ["{c}°C फॅरेनहाइटमध्ये रूपांतरित करा.", "{c}°C म्हणजे किती °F?"],
+      sen: "°F = 9 × °C ÷ 5 + 32 = 9 × {c} ÷ 5 + 32 = {ans}°F.",
+      shi: "°F = 9 × °C ÷ 5 + 32 = 9 × {c} ÷ 5 + 32 = {ans}°F।",
+      smr: "°F = 9 × °C ÷ 5 + 32 = 9 × {c} ÷ 5 + 32 = {ans}°F.",
+    },
+    ([i]) => {
+      const c = 5 * at(c5, i!);
+      const f = (9 * c) / 5 + 32;
+      return { vars: { c }, answer: f, expr: `9*${c}/5+32`, decoys: [f - 32, c + 32, f + 5], render: (n) => `${fmt(n)}°F` };
+    },
+  );
+
+const fSciMoles = (tag: string, lvl: number, want: number, k: Range) =>
+  T(
+    `scimoles:${tag}`,
+    lvl,
+    want,
+    [k.n, 10],
+    {
+      en: ["A substance has molar mass {M} g/mol. How many moles are in {m} g of it?"],
+      hi: ["किसी पदार्थ का मोलर द्रव्यमान {M} ग्राम/मोल है। उसके {m} ग्राम में कितने मोल हैं?"],
+      mr: ["एका पदार्थाचे मोलर वस्तुमान {M} ग्रॅम/मोल आहे. त्याच्या {m} ग्रॅममध्ये किती मोल आहेत?"],
+      sen: "Moles = mass ÷ molar mass = {m} ÷ {M} = {ans} mol.",
+      shi: "मोल = द्रव्यमान ÷ मोलर द्रव्यमान = {m} ÷ {M} = {ans} मोल।",
+      smr: "मोल = वस्तुमान ÷ मोलर वस्तुमान = {m} ÷ {M} = {ans} मोल.",
+    },
+    ([i, j]) => {
+      const MOLAR = [2, 4, 12, 14, 16, 18, 28, 32, 44, 64];
+      const M = MOLAR[j!]!, n = at(k, i!), m = n * M;
+      return { vars: { M, m }, answer: n, expr: `${m}/${M}`, decoys: [n + 1, n - 1, m - M], render: (n2) => `${fmt(n2)} mol` };
+    },
+  );
+
+/* --------------------------------------------------------------------------
+   Geography — computable map and population arithmetic.
+   -------------------------------------------------------------------------- */
+
+const fGeoScale = (tag: string, lvl: number, want: number, n: Range, cm: Range) =>
+  T(
+    `geoscale:${tag}`,
+    lvl,
+    want,
+    [n.n, cm.n],
+    {
+      en: ["On a map, 1 cm stands for {n} km. Two towns are {cm} cm apart on it. What is the real distance?", "A map's scale is 1 cm : {n} km. What real distance is {cm} cm on the map?"],
+      hi: ["नक्शे पर 1 सेमी {n} किमी दर्शाता है। दो कस्बे नक्शे पर {cm} सेमी दूर हैं। वास्तविक दूरी क्या है?", "नक्शे का पैमाना 1 सेमी : {n} किमी है। नक्शे पर {cm} सेमी कितनी वास्तविक दूरी है?"],
+      mr: ["नकाशावर 1 सेमी म्हणजे {n} किमी. दोन गावे नकाशावर {cm} सेमी अंतरावर आहेत. खरे अंतर किती?", "नकाशाचे प्रमाण 1 सेमी : {n} किमी आहे. नकाशावरील {cm} सेमी म्हणजे किती खरे अंतर?"],
+      sen: "Real distance = map distance × scale = {cm} × {n} = {ans} km.",
+      shi: "वास्तविक दूरी = नक्शे की दूरी × पैमाना = {cm} × {n} = {ans} किमी।",
+      smr: "खरे अंतर = नकाशावरील अंतर × प्रमाण = {cm} × {n} = {ans} किमी.",
+    },
+    ([i, j]) => {
+      const scale = at(n, i!), dist = at(cm, j!), real = scale * dist;
+      return { vars: { n: scale, cm: dist }, answer: real, expr: `${scale}*${dist}`, decoys: [real + scale, real - dist, scale + dist], render: (n2) => `${fmt(n2)} km` };
+    },
+  );
+
+const fGeoLong = (tag: string, lvl: number, want: number, d1: Range, gap: Range) =>
+  T(
+    `geolong:${tag}`,
+    lvl,
+    want,
+    [d1.n, gap.n],
+    {
+      en: ["Place A is at {a}°E and place B at {b}°E. The Earth turns 1° in 4 minutes. How many minutes ahead is B's local time?"],
+      hi: ["स्थान A {a}°E पर और स्थान B {b}°E पर है। पृथ्वी 1° चार मिनट में घूमती है। B का स्थानीय समय कितने मिनट आगे है?"],
+      mr: ["ठिकाण A {a}°E वर व ठिकाण B {b}°E वर आहे. पृथ्वी 1° चार मिनिटांत फिरते. B ची स्थानिक वेळ किती मिनिटे पुढे आहे?"],
+      sen: "Difference = ({b} − {a})° × 4 minutes = {ans} minutes.",
+      shi: "अंतर = ({b} − {a})° × 4 मिनट = {ans} मिनट।",
+      smr: "फरक = ({b} − {a})° × 4 मिनिटे = {ans} मिनिटे.",
+    },
+    ([i, j]) => {
+      const a = at(d1, i!), b = a + at(gap, j!);
+      const mins = (b - a) * 4;
+      return { vars: { a, b }, answer: mins, expr: `(${b}-${a})*4`, decoys: [b - a, mins + 4, mins - 4], render: (n2) => `${fmt(n2)} min` };
+    },
+  );
+
+const fGeoPopDen = (tag: string, lvl: number, want: number, den: Range, area: Range) =>
+  T(
+    `geopop:${tag}`,
+    lvl,
+    want,
+    [den.n, area.n],
+    {
+      en: ["A district of {a} km² has a population of {p}. What is its population density?"],
+      hi: ["{a} किमी² के जिले की जनसंख्या {p} है। जनसंख्या घनत्व क्या है?"],
+      mr: ["{a} किमी² च्या जिल्ह्याची लोकसंख्या {p} आहे. लोकसंख्येची घनता किती?"],
+      sen: "Density = population ÷ area = {p} ÷ {a} = {ans} people per km².",
+      shi: "घनत्व = जनसंख्या ÷ क्षेत्रफल = {p} ÷ {a} = {ans} व्यक्ति प्रति किमी²।",
+      smr: "घनता = लोकसंख्या ÷ क्षेत्रफळ = {p} ÷ {a} = {ans} व्यक्ती प्रति किमी².",
+    },
+    ([i, j]) => {
+      const d = at(den, i!), a = at(area, j!), p = d * a;
+      return { vars: { p, a }, answer: d, expr: `${p}/${a}`, decoys: [d + 10, d - 10, p - a], render: (n2) => `${fmt(n2)}/km²` };
+    },
+  );
+
+/* --------------------------------------------------------------------------
+   History — timeline arithmetic over the events table; years are GIVEN in
+   the stem, so the sum is machine-proven while the fact stays table-curated.
+   -------------------------------------------------------------------------- */
+
+const HIST_PAIRS: [number, number][] = [];
+for (let hp1 = 0; hp1 < EVENTS.length; hp1++)
+  for (let hp2 = hp1 + 1; hp2 < EVENTS.length; hp2++)
+    if (EVENTS[hp1]!.year !== EVENTS[hp2]!.year) HIST_PAIRS.push([hp1, hp2]);
+
+const fHistBetween = (tag: string, lvl: number, want: number) =>
+  T(
+    `histbetween:${tag}`,
+    lvl,
+    want,
+    [HIST_PAIRS.length],
+    {
+      en: ["How many years passed between {e1} ({y1}) and {e2} ({y2})?", "{e1} was in {y1} and {e2} in {y2}. How many years apart are they?"],
+      hi: ["{h1} ({y1}) और {h2} ({y2}) के बीच कितने वर्ष बीते?", "{h1} {y1} में और {h2} {y2} में हुआ। दोनों में कितने वर्षों का अंतर है?"],
+      mr: ["{m1} ({y1}) आणि {m2} ({y2}) यांच्यामध्ये किती वर्षे गेली?", "{m1} {y1} मध्ये व {m2} {y2} मध्ये घडले. दोघांत किती वर्षांचे अंतर आहे?"],
+      sen: "Subtract the years: {y2} − {y1} = {ans} years.",
+      shi: "वर्ष घटाएँ: {y2} − {y1} = {ans} वर्ष।",
+      smr: "वर्षे वजा करा: {y2} − {y1} = {ans} वर्षे.",
+    },
+    ([i]) => {
+      const [a, b] = HIST_PAIRS[i!]!;
+      const e1 = EVENTS[a]!, e2 = EVENTS[b]!;
+      const gap = e2.year - e1.year;
+      return {
+        vars: { e1: e1.en, e2: e2.en, h1: e1.hi, h2: e2.hi, m1: e1.mr, m2: e2.mr, y1: e1.year, y2: e2.year },
+        answer: gap,
+        expr: `${e2.year}-${e1.year}`,
+        decoys: [gap + 10, gap - 10, gap + 1],
+      };
+    },
+  );
+
+const fHistAfter = (tag: string, lvl: number, want: number, n: Range) =>
+  T(
+    `histafter:${tag}`,
+    lvl,
+    want,
+    [EVENTS.length, n.n],
+    {
+      en: ["{e} took place in {y}. Which year came {n} years later?", "Count {n} years on from {e} ({y}). Which year do you reach?"],
+      hi: ["{h} {y} में हुआ। उसके {n} वर्ष बाद कौन-सा वर्ष आया?", "{h} ({y}) से {n} वर्ष आगे गिनिए। कौन-सा वर्ष आता है?"],
+      mr: ["{m} {y} मध्ये घडले. त्यानंतर {n} वर्षांनी कोणते वर्ष आले?", "{m} ({y}) पासून {n} वर्षे पुढे मोजा. कोणते वर्ष येते?"],
+      sen: "Add the years: {y} + {n} = {ans}.",
+      shi: "वर्ष जोड़ें: {y} + {n} = {ans}।",
+      smr: "वर्षे मिळवा: {y} + {n} = {ans}.",
+    },
+    ([i, j]) => {
+      const e = EVENTS[i!]!, add = at(n, j!);
+      const y2 = e.year + add;
+      return { vars: { e: e.en, h: e.hi, m: e.mr, y: e.year, n: add }, answer: y2, expr: `${e.year}+${add}`, decoys: [y2 + 10, y2 - 10, y2 + 1] };
+    },
+  );
+
+const fHistCentury = (tag: string, lvl: number, want: number, y: Range) =>
+  T(
+    `histcentury:${tag}`,
+    lvl,
+    want,
+    [y.n],
+    {
+      en: ["The year {y} falls in which century?", "Which century does the year {y} belong to?"],
+      hi: ["वर्ष {y} किस शताब्दी में आता है?", "वर्ष {y} किस शताब्दी का है?"],
+      mr: ["{y} हे वर्ष कोणत्या शतकात येते?", "{y} हे वर्ष कोणत्या शतकातील आहे?"],
+      sen: "Centuries run from year x01 to x00, so {y} is in century {ans}.",
+      shi: "शताब्दी x01 से x00 तक चलती है, इसलिए {y} शताब्दी {ans} में है।",
+      smr: "शतक x01 ते x00 असे असते, म्हणून {y} हे शतक {ans} मध्ये आहे.",
+    },
+    ([i]) => {
+      const year = at(y, i!);
+      const rem = (year - 1) % 100;
+      const century = (year - 1 - rem) / 100 + 1;
+      return { vars: { y: year }, answer: century, expr: `(${year}-1-${rem})/100+1`, decoys: [century + 1, century - 1, Math.round(year / 100) === century ? century + 2 : Math.round(year / 100)] };
+    },
+  );
+
+/* --------------------------------------------------------------------------
+   Civics — the numbers democracy actually runs on.
+   -------------------------------------------------------------------------- */
+
+const QUORUM_FRACS: { div: number; en: string; hi: string; mr: string }[] = [
+  { div: 10, en: "one-tenth", hi: "दसवाँ भाग", mr: "एक दशांश" },
+  { div: 4, en: "one-quarter", hi: "चौथाई", mr: "एक चतुर्थांश" },
+  { div: 3, en: "one-third", hi: "एक तिहाई", mr: "एक तृतीयांश" },
+  { div: 2, en: "half", hi: "आधा", mr: "अर्धा" },
+];
+const fCivQuorum = (tag: string, lvl: number, want: number, k: Range) =>
+  T(
+    `civquorum:${tag}`,
+    lvl,
+    want,
+    [k.n, QUORUM_FRACS.length],
+    {
+      en: ["A council of {n} members needs {frac} of them present for a quorum. How many members is that?"],
+      hi: ["{n} सदस्यों की सभा में कोरम के लिए {frach} सदस्य उपस्थित चाहिए। यह कितने सदस्य हैं?"],
+      mr: ["{n} सदस्यांच्या सभेत गणपूर्तीसाठी {fracm} सदस्य हजर हवेत. म्हणजे किती सदस्य?"],
+      sen: "Divide: {n} ÷ {div} = {ans} members.",
+      shi: "भाग दें: {n} ÷ {div} = {ans} सदस्य।",
+      smr: "भागा: {n} ÷ {div} = {ans} सदस्य.",
+    },
+    ([i, j]) => {
+      const f = QUORUM_FRACS[j!]!;
+      const per = at(k, i!), n = per * f.div;
+      return { vars: { n, frac: f.en, frach: f.hi, fracm: f.mr, div: f.div }, answer: per, expr: `${n}/${f.div}`, decoys: [per + 1, per - 1, n - per] };
+    },
+  );
+
+const fCivMajority = (tag: string, lvl: number, want: number, k: Range) =>
+  T(
+    `civmaj:${tag}`,
+    lvl,
+    want,
+    [k.n],
+    {
+      en: ["A house has {n} members, all voting. What is the smallest number of votes that makes a majority?"],
+      hi: ["एक सदन में {n} सदस्य हैं, सभी मतदान करते हैं। बहुमत के लिए न्यूनतम कितने मत चाहिए?"],
+      mr: ["एका सभागृहात {n} सदस्य आहेत, सर्व मतदान करतात. बहुमतासाठी किमान किती मते हवीत?"],
+      sen: "A majority is more than half: {n} ÷ 2 + 1 = {ans} votes.",
+      shi: "बहुमत यानी आधे से अधिक: {n} ÷ 2 + 1 = {ans} मत।",
+      smr: "बहुमत म्हणजे निम्म्याहून अधिक: {n} ÷ 2 + 1 = {ans} मते.",
+    },
+    ([i]) => {
+      const n = 2 * at(k, i!);
+      const maj = n / 2 + 1;
+      return { vars: { n }, answer: maj, expr: `${n}/2+1`, decoys: [n / 2, maj + 1, n - maj] };
+    },
+  );
+
+const fCivRep = (tag: string, lvl: number, want: number, s: Range, u: Range) =>
+  T(
+    `civrep:${tag}`,
+    lvl,
+    want,
+    [s.n, u.n],
+    {
+      en: ["An assembly has {s} seats for a population of {p}. On average, how many people does one seat represent?"],
+      hi: ["{p} जनसंख्या के लिए विधानसभा में {s} सीटें हैं। औसतन एक सीट कितने लोगों का प्रतिनिधित्व करती है?"],
+      mr: ["{p} लोकसंख्येसाठी विधानसभेत {s} जागा आहेत. सरासरी एक जागा किती लोकांचे प्रतिनिधित्व करते?"],
+      sen: "Divide: {p} ÷ {s} = {ans} people per seat.",
+      shi: "भाग दें: {p} ÷ {s} = {ans} व्यक्ति प्रति सीट।",
+      smr: "भागा: {p} ÷ {s} = {ans} व्यक्ती प्रति जागा.",
+    },
+    ([i, j]) => {
+      const seats = at(s, i!), per = at(u, j!), p = seats * per;
+      return { vars: { s: seats, p }, answer: per, expr: `${p}/${seats}`, decoys: [per + 100, per - 100, p - seats] };
+    },
+  );
+
+const fCivTerm = (tag: string, lvl: number, want: number, y: Range) =>
+  T(
+    `civterm:${tag}`,
+    lvl,
+    want,
+    [y.n, 3],
+    {
+      en: ["A body elected in {y} serves a full {t}-year term. In which year is the next election due?"],
+      hi: ["{y} में चुना गया निकाय पूरा {t} वर्ष का कार्यकाल पूरा करता है। अगला चुनाव किस वर्ष होगा?"],
+      mr: ["{y} मध्ये निवडलेली संस्था पूर्ण {t} वर्षांचा कार्यकाळ पूर्ण करते. पुढील निवडणूक कोणत्या वर्षी येईल?"],
+      sen: "Add the term: {y} + {t} = {ans}.",
+      shi: "कार्यकाल जोड़ें: {y} + {t} = {ans}।",
+      smr: "कार्यकाळ मिळवा: {y} + {t} = {ans}.",
+    },
+    ([i, j]) => {
+      const y0 = at(y, i!), t = [4, 5, 6][j!]!;
+      const next = y0 + t;
+      return { vars: { y: y0, t }, answer: next, expr: `${y0}+${t}`, decoys: [next + 1, next - 1, y0 + 10] };
+    },
+  );
+
+/* --------------------------------------------------------------------------
+   Economics — the money maths a household actually does.
+   -------------------------------------------------------------------------- */
+
+const fEcoDiscount = (tag: string, lvl: number, want: number, u: Range) =>
+  T(
+    `ecodisc:${tag}`,
+    lvl,
+    want,
+    [u.n, 18],
+    {
+      en: ["A shop offers {p}% off on an item priced ₹{price}. What do you pay?", "An item costs ₹{price} with a {p}% discount. Find the final price."],
+      hi: ["₹{price} की वस्तु पर दुकान {p}% छूट देती है। आप कितना चुकाएँगे?", "₹{price} की वस्तु पर {p}% छूट है। अंतिम कीमत निकालिए।"],
+      mr: ["₹{price} च्या वस्तूवर दुकान {p}% सूट देते. तुम्ही किती द्याल?", "₹{price} च्या वस्तूवर {p}% सूट आहे. अंतिम किंमत काढा."],
+      sen: "Discount = {price} × {p} ÷ 100; pay {price} − discount = ₹{ans}.",
+      shi: "छूट = {price} × {p} ÷ 100; भुगतान = {price} − छूट = ₹{ans}।",
+      smr: "सूट = {price} × {p} ÷ 100; द्यायचे = {price} − सूट = ₹{ans}.",
+    },
+    ([i, j]) => {
+      const p = 5 * (1 + j!);
+      const price = 20 * at(u, i!);
+      const pay = price - (price * p) / 100;
+      return { vars: { p, price }, answer: pay, expr: `${price}-${price}*${p}/100`, decoys: [(price * p) / 100, price - p, pay + 5], render: rupees };
+    },
+  );
+
+const fEcoGST = (tag: string, lvl: number, want: number, u: Range) =>
+  T(
+    `ecogst:${tag}`,
+    lvl,
+    want,
+    [u.n, 4],
+    {
+      en: ["An item's base price is ₹{price} and tax is charged at {p}%. What is the total bill?"],
+      hi: ["वस्तु का मूल दाम ₹{price} है और {p}% कर लगता है। कुल बिल कितना होगा?"],
+      mr: ["वस्तूची मूळ किंमत ₹{price} आहे आणि {p}% कर लागतो. एकूण बिल किती?"],
+      sen: "Tax = {price} × {p} ÷ 100; total = {price} + tax = ₹{ans}.",
+      shi: "कर = {price} × {p} ÷ 100; कुल = {price} + कर = ₹{ans}।",
+      smr: "कर = {price} × {p} ÷ 100; एकूण = {price} + कर = ₹{ans}.",
+    },
+    ([i, j]) => {
+      const p = [5, 12, 18, 28][j!]!;
+      const price = 100 * at(u, i!);
+      const total = price + (price * p) / 100;
+      return { vars: { p, price }, answer: total, expr: `${price}+${price}*${p}/100`, decoys: [(price * p) / 100, price - (price * p) / 100, total + 10], render: rupees };
+    },
+  );
+
+const fEcoPerCapita = (tag: string, lvl: number, want: number, n: Range, u: Range) =>
+  T(
+    `ecopc:${tag}`,
+    lvl,
+    want,
+    [n.n, u.n],
+    {
+      en: ["A village of {n} people earns ₹{t} in a year altogether. What is the average income per person?"],
+      hi: ["{n} लोगों का गाँव वर्ष में कुल ₹{t} कमाता है। प्रति व्यक्ति औसत आय क्या है?"],
+      mr: ["{n} लोकांचे गाव वर्षात एकूण ₹{t} कमावते. दरडोई सरासरी उत्पन्न किती?"],
+      sen: "Per-person income = total ÷ people = {t} ÷ {n} = ₹{ans}.",
+      shi: "प्रति व्यक्ति आय = कुल ÷ लोग = {t} ÷ {n} = ₹{ans}।",
+      smr: "दरडोई उत्पन्न = एकूण ÷ लोक = {t} ÷ {n} = ₹{ans}.",
+    },
+    ([i, j]) => {
+      const people = at(n, i!), per = 100 * at(u, j!), t = people * per;
+      return { vars: { n: people, t }, answer: per, expr: `${t}/${people}`, decoys: [per + 100, per - 100, t - people], render: rupees };
+    },
+  );
+
+const fEcoGrowth = (tag: string, lvl: number, want: number, m: Range, p: Range) =>
+  T(
+    `ecogrow:${tag}`,
+    lvl,
+    want,
+    [m.n, p.n],
+    {
+      en: ["A farm's production rose from {a} to {b} quintals. What is the percentage increase?"],
+      hi: ["खेत का उत्पादन {a} से बढ़कर {b} क्विंटल हो गया। प्रतिशत वृद्धि क्या है?"],
+      mr: ["शेताचे उत्पादन {a} वरून {b} क्विंटल झाले. शेकडा वाढ किती?"],
+      sen: "Increase = {b} − {a}; percentage = increase × 100 ÷ {a} = {ans}%.",
+      shi: "वृद्धि = {b} − {a}; प्रतिशत = वृद्धि × 100 ÷ {a} = {ans}%।",
+      smr: "वाढ = {b} − {a}; शेकडेवारी = वाढ × 100 ÷ {a} = {ans}%.",
+    },
+    ([i, j]) => {
+      const base = 20 * at(m, i!), pct = at(p, j!);
+      const b = base + (base * pct) / 100;
+      return { vars: { a: base, b }, answer: pct, expr: `(${b}-${base})*100/${base}`, decoys: [pct + 5, pct - 5, pct * 2], render: (n2) => `${fmt(n2)}%` };
+    },
+  );
+
 /* ========================================================================== */
 /* The grade plans                                                             */
 /* ========================================================================== */
@@ -1553,9 +2401,11 @@ function mkTopic(
   nameHi: string,
   nameMr: string,
   templates: Template[],
+  subject: Subject = "MATHS",
 ): TopicSpec {
   return {
     slug: `drill-g${grade}-${key}`,
+    subject,
     classLevel: grade,
     chapter: `Class ${grade} drills`,
     name: nameEn,
@@ -1570,29 +2420,145 @@ function mkTopic(
 const GRADE_TARGET = 100_500;
 
 /**
- * The mixed-practice filler that tops every grade up to GRADE_TARGET. Its
- * parameter bands are DISJOINT PER GRADE (base slides with the grade) so ten
- * grades drawing from the same families can never exhaust each other's stems.
+ * How each grade's ~100,500 splits across the six subjects. Maths carries the
+ * most because arithmetic is the most drillable thing a machine can prove;
+ * science grows and maths shrinks as the grades climb, the social sciences
+ * hold a steady band, and every grade's six numbers sum to GRADE_TARGET.
  */
-function filler(grade: number, position: number, deficit: number): TopicSpec {
-  const weights = [0.08, 0.15, 0.25, 0.25, 0.17, 0.1];
+function split(grade: number): Record<Subject, number> {
+  if (grade <= 5)
+    return { MATHS: 55_000, SCIENCE: 18_000, GEOGRAPHY: 10_000, HISTORY: 8_000, CIVICS: 4_500, ECONOMICS: 5_000 };
+  if (grade <= 8)
+    return { MATHS: 45_000, SCIENCE: 22_000, GEOGRAPHY: 12_000, HISTORY: 10_000, CIVICS: 6_000, ECONOMICS: 5_500 };
+  return { MATHS: 40_000, SCIENCE: 27_000, GEOGRAPHY: 10_000, HISTORY: 10_000, CIVICS: 6_500, ECONOMICS: 7_000 };
+}
+
+/** deficit split across six ladder levels; the last rung absorbs rounding. */
+function spread(deficit: number, weights: number[]): number[] {
   const wants = weights.map((w) => Math.floor(deficit * w));
-  wants[5] = deficit - wants.slice(0, 5).reduce((a, b) => a + b, 0);
+  wants[wants.length - 1] = deficit - wants.slice(0, -1).reduce((a, b) => a + b, 0);
+  if (wants.some((w) => w < 0)) throw new Error(`spread: negative want from deficit ${deficit}`);
+  return wants;
+}
+
+/* ------------------------------- fillers ---------------------------------- */
+
+function mathsFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const w = spread(deficit, [0.08, 0.15, 0.25, 0.25, 0.17, 0.1]);
   const base = 10_000 + (grade - 3) * 9_000;
   const mulBase = 1_000 + (grade - 3) * 800;
   const divBase = 100 + (grade - 3) * 80;
   const g = `g${grade}`;
   return mkTopic(grade, position, "mixed", "Mixed practice", "मिश्रित अभ्यास", "संमिश्र सराव", [
-    fAdd(`${g}mixL1`, 1, wants[0]!, R(base, base + 4499), R(base, base + 4499)),
-    fSub(`${g}mixL2`, 2, wants[1]!, R(base + 4500, base + 8999), R(base, base + 4499)),
-    fMul(`${g}mixL3`, 3, wants[2]!, R(mulBase, mulBase + 799), R(11, 99)),
-    fDiv(`${g}mixL4`, 4, wants[3]!, R(divBase, divBase + 79), R(11, 99)),
-    fAdd(`${g}mixL5`, 5, wants[4]!, R(base + 4500, base + 8999), R(base + 4500, base + 8999)),
-    fSub(`${g}mixL6`, 6, wants[5]!, R(base, base + 4499), R(1000 + (grade - 3) * 350, 1000 + (grade - 3) * 350 + 349)),
+    fAdd(`${g}mixL1`, 1, w[0]!, R(base, base + 4499), R(base, base + 4499)),
+    fSub(`${g}mixL2`, 2, w[1]!, R(base + 4500, base + 8999), R(base, base + 4499)),
+    fMul(`${g}mixL3`, 3, w[2]!, R(mulBase, mulBase + 799), R(11, 99)),
+    fDiv(`${g}mixL4`, 4, w[3]!, R(divBase, divBase + 79), R(11, 99)),
+    fAdd(`${g}mixL5`, 5, w[4]!, R(base + 4500, base + 8999), R(base + 4500, base + 8999)),
+    fSub(`${g}mixL6`, 6, w[5]!, R(base, base + 4499), R(1000 + (grade - 3) * 350, 1000 + (grade - 3) * 350 + 349)),
   ]);
 }
 
-function curriculum(grade: number): TopicSpec[] {
+function sciFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const w = spread(deficit, [0.08, 0.15, 0.25, 0.25, 0.17, 0.1]);
+  const o = grade - 3;
+  const g = `g${grade}`;
+  return mkTopic(
+    grade, position, "scidrill", "Science numericals", "विज्ञान के सवाल", "विज्ञानाची गणिते",
+    [
+      fSciSpeed(`${g}sfL1`, 1, w[0]!, R(5 + 300 * o, 299 + 300 * o), R(2, 19)),
+      fSciDensity(`${g}sfL2`, 2, w[1]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
+      fSciForce(`${g}sfL3`, 3, w[2]!, R(2 + 60 * o, 61 + 60 * o), R(2, 99)),
+      fSciOhm(`${g}sfL4`, 4, w[3]!, R(1 + 50 * o, 50 + 50 * o), R(2, 99)),
+      fSciWork(`${g}sfL5`, 5, w[4]!, R(2 + 80 * o, 81 + 80 * o), R(2, 99)),
+      fSciPower(`${g}sfL6`, 6, w[5]!, R(5 + 80 * o, 84 + 80 * o), R(2, 60)),
+    ],
+    "SCIENCE",
+  );
+}
+
+function geoFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const w = spread(deficit, [0.2, 0.1, 0.25, 0.2, 0.15, 0.1]);
+  const o = grade - 3;
+  const g = `g${grade}`;
+  return mkTopic(
+    grade, position, "geodrill", "Maps and numbers", "नक्शे और संख्याएँ", "नकाशे आणि संख्या",
+    [
+      fGeoScale(`${g}gfL1`, 1, w[0]!, R(2 + 100 * o, 101 + 100 * o), R(2, 49)),
+      fGeoLong(`${g}gfL2`, 2, w[1]!, R(0, 89), R(1 + 30 * o, 30 + 30 * o)),
+      fGeoPopDen(`${g}gfL3`, 3, w[2]!, R(50 + 600 * o, 349 + 600 * o), R(2, 99)),
+      fGeoScale(`${g}gfL4`, 4, w[3]!, R(2 + 100 * o, 101 + 100 * o), R(50, 99)),
+      fGeoPopDen(`${g}gfL5`, 5, w[4]!, R(350 + 600 * o, 649 + 600 * o), R(2, 99)),
+      fGeoLong(`${g}gfL6`, 6, w[5]!, R(90, 179), R(1 + 30 * o, 30 + 30 * o)),
+    ],
+    "GEOGRAPHY",
+  );
+}
+
+function histFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const o = grade - 3;
+  const fixed = 100 + 55 + 100;
+  const each = Math.floor((deficit - fixed) / 3);
+  const last = deficit - fixed - 2 * each;
+  const base = 2 + 195 * o;
+  const g = `g${grade}`;
+  return mkTopic(
+    grade, position, "histdrill", "Timeline practice", "समयरेखा अभ्यास", "कालरेषा सराव",
+    [
+      fHistAfter(`${g}hfL1`, 1, each, R(base, base + 64)),
+      fHistCentury(`${g}hfL2`, 2, 100, R(1201 + 140 * o, 1270 + 140 * o)),
+      fHistAfter(`${g}hfL3`, 3, each, R(base + 65, base + 129)),
+      fHistBetween(`${g}hfL4`, 4, 55),
+      fHistAfter(`${g}hfL5`, 5, last, R(base + 130, base + 194)),
+      fHistCentury(`${g}hfL6`, 6, 100, R(1271 + 140 * o, 1340 + 140 * o)),
+    ],
+    "HISTORY",
+  );
+}
+
+function civFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const o = grade - 3;
+  const fixed = 250 + 360 + 120;
+  const each = Math.floor((deficit - fixed) / 3);
+  const last = deficit - fixed - 2 * each;
+  const g = `g${grade}`;
+  return mkTopic(
+    grade, position, "civdrill", "Numbers of democracy", "लोकतंत्र की संख्याएँ", "लोकशाहीच्या संख्या",
+    [
+      fCivQuorum(`${g}cfL1`, 1, 250, R(2 + 80 * o, 81 + 80 * o)),
+      fCivMajority(`${g}cfL2`, 2, 360, R(50 + 450 * o, 499 + 450 * o)),
+      fCivRep(`${g}cfL3`, 3, each, R(10, 199), R(100 + 600 * o, 299 + 600 * o)),
+      fCivRep(`${g}cfL4`, 4, each, R(10, 199), R(300 + 600 * o, 499 + 600 * o)),
+      fCivRep(`${g}cfL5`, 5, last, R(10, 199), R(500 + 600 * o, 699 + 600 * o)),
+      fCivTerm(`${g}cfL6`, 6, 120, R(1900 + 50 * o, 1949 + 50 * o)),
+    ],
+    "CIVICS",
+  );
+}
+
+function ecoFiller(grade: number, position: number, deficit: number): TopicSpec {
+  const o = grade - 3;
+  const fixed = 380;
+  const rest = deficit - fixed;
+  const w = spread(rest, [0.2, 0.3, 0.2, 0.15, 0.15]);
+  const g = `g${grade}`;
+  return mkTopic(
+    grade, position, "ecodrill", "Money maths", "पैसों का गणित", "पैशांचे गणित",
+    [
+      fEcoDiscount(`${g}efL1`, 1, w[0]!, R(2 + 150 * o, 151 + 150 * o)),
+      fEcoGST(`${g}efL2`, 2, fixed, R(2 + 120 * o, 121 + 120 * o)),
+      fEcoPerCapita(`${g}efL3`, 3, w[1]!, R(50 + 300 * o, 199 + 300 * o), R(2, 99)),
+      fEcoGrowth(`${g}efL4`, 4, w[2]!, R(2 + 140 * o, 71 + 140 * o), R(5, 60)),
+      fEcoPerCapita(`${g}efL5`, 5, w[3]!, R(200 + 300 * o, 349 + 300 * o), R(2, 99)),
+      fEcoGrowth(`${g}efL6`, 6, w[4]!, R(72 + 140 * o, 141 + 140 * o), R(5, 60)),
+    ],
+    "ECONOMICS",
+  );
+}
+
+/* ----------------------------- curricula ---------------------------------- */
+
+function mathsCurriculum(grade: number): TopicSpec[] {
   const g = `g${grade}`;
   switch (grade) {
     case 3:
@@ -1629,15 +2595,7 @@ function curriculum(grade: number): TopicSpec[] {
           fPlace(`${g}p5`, 5, 1750, 5),
           fRound(`${g}p6`, 6, 1000, R(10001, 99999), 1000),
         ]),
-        mkTopic(3, 4, "money", "Money", "पैसे", "पैसे", [
-          fSpend(`${g}m1`, 1, 800, R(11, 59), R(11, 59)),
-          fSpend(`${g}m2`, 2, 1500, R(60, 199), R(25, 199)),
-          fChange(`${g}m3`, 3, 120, 100, R(11, 88)),
-          fChange(`${g}m4`, 4, 670, 500, R(38, 461)),
-          fChange(`${g}m5`, 5, 1750, 2000, R(115, 1885)),
-          fSpend(`${g}m6`, 6, 1000, R(200, 999), R(200, 999)),
-        ]),
-        mkTopic(3, 5, "units", "Time and measurement", "समय और मापन", "वेळ आणि मापन", [
+        mkTopic(3, 4, "units", "Time and measurement", "समय और मापन", "वेळ आणि मापन", [
           fTime(`${g}u1`, 1, 150, R(2, 49)),
           fTime(`${g}u2`, 2, 480, R(50, 199)),
           fMetric(`${g}u3`, 3, 630, R(2, 199)),
@@ -1645,7 +2603,7 @@ function curriculum(grade: number): TopicSpec[] {
           fMetric(`${g}u5`, 5, 1750, R(200, 999)),
           fTime(`${g}u6`, 6, 1000, R(1000, 9999)),
         ]),
-        mkTopic(3, 6, "shapes", "Perimeter and area", "परिमाप और क्षेत्रफल", "परिमिती आणि क्षेत्रफळ", [
+        mkTopic(3, 5, "shapes", "Perimeter and area", "परिमाप और क्षेत्रफल", "परिमिती आणि क्षेत्रफळ", [
           fSquareGeo(`${g}s1`, 1, 75, R(2, 49), "perimeter"),
           fPerimRect(`${g}s2`, 2, 1200, R(11, 99), R(2, 10)),
           fSquareGeo(`${g}s3`, 3, 155, R(2, 99), "area"),
@@ -1688,15 +2646,7 @@ function curriculum(grade: number): TopicSpec[] {
           fFracAdd(`${g}fr5`, 5, 400, 5, 18),
           fFracOf(`${g}fr6`, 6, 1000, R(91, 150)),
         ]),
-        mkTopic(4, 4, "money4", "Money problems", "पैसों के सवाल", "पैशांची गणिते", [
-          fSpend(`${g}mo1`, 1, 800, R(1000, 2999), R(1000, 2999)),
-          fChange(`${g}mo2`, 2, 900, 1000, R(115, 985)),
-          fUnitCost(`${g}mo3`, 3, 1700, R(2, 12), R(2, 99)),
-          fSpend(`${g}mo4`, 4, 2500, R(3000, 9999), R(1000, 9999)),
-          fChange(`${g}mo5`, 5, 1750, 5000, R(1115, 4885)),
-          fUnitCost(`${g}mo6`, 6, 1000, R(13, 25), R(100, 299)),
-        ]),
-        mkTopic(4, 5, "units4", "Measurement conversions", "मापन रूपांतरण", "मापन रूपांतरण", [
+        mkTopic(4, 4, "units4", "Measurement conversions", "मापन रूपांतरण", "मापन रूपांतरण", [
           fMetric(`${g}u1`, 1, 600, R(1000, 1199)),
           fTime(`${g}u2`, 2, 1500, R(10000, 10499)),
           fMetric(`${g}u3`, 3, 2500, R(1200, 1999)),
@@ -1704,7 +2654,7 @@ function curriculum(grade: number): TopicSpec[] {
           fMetric(`${g}u5`, 5, 1750, R(2000, 2999)),
           fTime(`${g}u6`, 6, 1000, R(11500, 11999)),
         ]),
-        mkTopic(4, 6, "geo4", "Rectangles: perimeter and area", "आयत: परिमाप और क्षेत्रफल", "आयत: परिमिती व क्षेत्रफळ", [
+        mkTopic(4, 5, "geo4", "Rectangles: perimeter and area", "आयत: परिमाप और क्षेत्रफल", "आयत: परिमिती व क्षेत्रफळ", [
           fPerimRect(`${g}ge1`, 1, 800, R(500, 999), R(100, 499)),
           fAreaRect(`${g}ge2`, 2, 1500, R(100, 199), R(11, 99)),
           fPerimRect(`${g}ge3`, 3, 2500, R(1000, 4999), R(100, 999)),
@@ -1739,15 +2689,7 @@ function curriculum(grade: number): TopicSpec[] {
           fAvg(`${g}av5`, 5, 1500, R(700, 899)),
           fAvg(`${g}av6`, 6, 780, R(900, 999)),
         ]),
-        mkTopic(5, 3, "unitary", "The unitary method", "ऐकिक नियम", "एकमान पद्धत", [
-          fUnitCost(`${g}un1`, 1, 500, R(26, 32), R(2, 99)),
-          fSpeed(`${g}un2`, 2, 550, R(5, 90), R(2, 9)),
-          fUnitCost(`${g}un3`, 3, 1600, R(33, 44), R(2, 99)),
-          fSpeed(`${g}un4`, 4, 1300, R(91, 299), R(2, 9)),
-          fUnitCost(`${g}un5`, 5, 1700, R(45, 56), R(2, 99)),
-          fSpeed(`${g}un6`, 6, 1000, R(300, 480), R(2, 9)),
-        ]),
-        mkTopic(5, 4, "volume", "Volume", "आयतन", "घनफळ", [
+        mkTopic(5, 3, "volume", "Volume", "आयतन", "घनफळ", [
           fVolCube(`${g}vo1`, 1, 75, R(2, 49)),
           fVolCuboid(`${g}vo2`, 2, 1500, R(2, 20), R(2, 20), R(2, 20)),
           fVolCuboid(`${g}vo3`, 3, 2500, R(21, 40), R(2, 20), R(2, 20)),
@@ -1755,7 +2697,7 @@ function curriculum(grade: number): TopicSpec[] {
           fVolCuboid(`${g}vo5`, 5, 1750, R(100, 199), R(2, 30), R(2, 20)),
           fVolCube(`${g}vo6`, 6, 100, R(50, 120)),
         ]),
-        mkTopic(5, 5, "pct5", "Percentages", "प्रतिशत", "शेकडेवारी", [
+        mkTopic(5, 4, "pct5", "Percentages", "प्रतिशत", "शेकडेवारी", [
           fPct(`${g}pc1`, 1, 500, R(2, 20)),
           fPct(`${g}pc2`, 2, 900, R(21, 50)),
           fPct(`${g}pc3`, 3, 1400, R(51, 99)),
@@ -1778,9 +2720,9 @@ function curriculum(grade: number): TopicSpec[] {
           fRatio(`${g}ra1`, 1, 700, R(2, 24)),
           fRatio(`${g}ra2`, 2, 1400, R(25, 49)),
           fRatio(`${g}ra3`, 3, 2100, R(50, 99)),
-          fUnitCost(`${g}ra4`, 4, 1700, R(57, 68), R(2, 99)),
+          fRatio(`${g}ra4`, 4, 1700, R(150, 199)),
           fRatio(`${g}ra5`, 5, 1700, R(100, 149)),
-          fSpeed(`${g}ra6`, 6, 1000, R(481, 660), R(2, 9)),
+          fRatio(`${g}ra6`, 6, 1000, R(200, 229)),
         ]),
         mkTopic(6, 2, "angles", "Angles", "कोण", "कोन", [
           fAngle(`${g}an1`, 1, 110, R(10, 80), "complementary"),
@@ -1791,12 +2733,12 @@ function curriculum(grade: number): TopicSpec[] {
           fTriAngle(`${g}an6`, 6, 600, R(101, 140), R(20, 39)),
         ]),
         mkTopic(6, 3, "algintro", "A first look at algebra", "बीजगणित की शुरुआत", "बीजगणिताची सुरुवात", [
-          fEvalLin(`${g}al1`, 1, 800, R(2, 9), R(1, 20), R(2, 9)),
-          fSolve(`${g}al2`, 2, 1500, R(2, 9), R(2, 20), R(1, 30)),
-          fEvalLin(`${g}al3`, 3, 2500, R(2, 12), R(21, 60), R(10, 19)),
-          fSolve(`${g}al4`, 4, 2500, R(2, 12), R(21, 50), R(31, 60)),
-          fEvalLin(`${g}al5`, 5, 1750, R(13, 19), R(1, 60), R(2, 19)),
-          fSolve(`${g}al6`, 6, 1000, R(13, 19), R(2, 50), R(1, 60)),
+          fEvalLin(`${g}al1`, 1, 400, R(2, 9), R(1, 20), R(2, 9)),
+          fSolve(`${g}al2`, 2, 750, R(2, 9), R(2, 20), R(1, 30)),
+          fEvalLin(`${g}al3`, 3, 1250, R(2, 12), R(21, 60), R(10, 19)),
+          fSolve(`${g}al4`, 4, 1250, R(2, 12), R(21, 50), R(31, 60)),
+          fEvalLin(`${g}al5`, 5, 875, R(13, 19), R(1, 60), R(2, 19)),
+          fSolve(`${g}al6`, 6, 500, R(13, 19), R(2, 50), R(1, 60)),
         ]),
         mkTopic(6, 4, "lcmhcf", "LCM and HCF", "लघुत्तम और महत्तम", "लसावि आणि मसावि", [
           fLcm(`${g}lh1`, 1, 500, R(61, 80), R(2, 30)),
@@ -1833,23 +2775,7 @@ function curriculum(grade: number): TopicSpec[] {
           fSolve(`${g}e5`, 5, 1750, R(41, 60), R(2, 99), R(200, 299)),
           fSolve(`${g}e6`, 6, 1000, R(61, 80), R(2, 99), R(300, 399)),
         ]),
-        mkTopic(7, 2, "profit", "Profit and loss", "लाभ और हानि", "नफा आणि तोटा", [
-          fProfit(`${g}p1`, 1, 490, R(2, 20), R(5, 30)),
-          fProfit(`${g}p2`, 2, 1000, R(21, 50), R(5, 40)),
-          fProfit(`${g}p3`, 3, 2500, R(51, 99), R(5, 60)),
-          fProfit(`${g}p4`, 4, 2000, R(100, 149), R(5, 60)),
-          fProfit(`${g}p5`, 5, 1750, R(150, 199), R(5, 60)),
-          fProfit(`${g}p6`, 6, 1000, R(200, 249), R(5, 60)),
-        ]),
-        mkTopic(7, 3, "si7", "Simple interest", "साधारण ब्याज", "सरळ व्याज", [
-          fSI(`${g}s1`, 1, 680, R(2, 20), R(2, 10), R(2, 5)),
-          fSI(`${g}s2`, 2, 1450, R(21, 50), R(2, 12), R(2, 6)),
-          fSI(`${g}s3`, 3, 2500, R(51, 99), R(2, 15), R(2, 8)),
-          fSI(`${g}s4`, 4, 2500, R(100, 199), R(2, 15), R(2, 9)),
-          fSI(`${g}s5`, 5, 1750, R(200, 299), R(2, 15), R(2, 9)),
-          fSI(`${g}s6`, 6, 1000, R(300, 399), R(2, 15), R(2, 9)),
-        ]),
-        mkTopic(7, 4, "exp7", "Exponents", "घातांक", "घातांक", [
+        mkTopic(7, 2, "exp7", "Exponents", "घातांक", "घातांक", [
           fSquare(`${g}x1`, 1, 150, R(2, 99)),
           fPow(`${g}x2`, 2, 130, R(2, 15), R(2, 5)),
           fSquare(`${g}x3`, 3, 780, R(100, 599)),
@@ -1857,7 +2783,7 @@ function curriculum(grade: number): TopicSpec[] {
           fPow(`${g}x5`, 5, 100, R(16, 30), R(2, 4)),
           fSquare(`${g}x6`, 6, 620, R(600, 999)),
         ]),
-        mkTopic(7, 5, "dec7", "Decimal operations", "दशमलव संक्रियाएँ", "दशांश क्रिया", [
+        mkTopic(7, 3, "dec7", "Decimal operations", "दशमलव संक्रियाएँ", "दशांश क्रिया", [
           fDec(`${g}d1`, 1, 800, R(301, 999), R(101, 299), "-"),
           fDec(`${g}d2`, 2, 1500, R(10001, 19999), R(101, 999), "+"),
           fDec(`${g}d3`, 3, 2500, R(300, 999), R(21, 99), "*"),
@@ -1884,15 +2810,7 @@ function curriculum(grade: number): TopicSpec[] {
           fSqrt(`${g}r5`, 5, 470, R(301, 600)),
           fCbrt(`${g}r6`, 6, 100, R(61, 130)),
         ]),
-        mkTopic(8, 2, "ci8", "Compound interest", "चक्रवृद्धि ब्याज", "चक्रवाढ व्याज", [
-          fCI(`${g}c1`, 1, 130, R(2, 20), R(2, 10)),
-          fCI(`${g}c2`, 2, 220, R(21, 40), R(2, 15)),
-          fCI(`${g}c3`, 3, 300, R(41, 60), R(2, 20)),
-          fCI(`${g}c4`, 4, 300, R(61, 80), R(2, 20)),
-          fCI(`${g}c5`, 5, 280, R(81, 99), R(2, 20)),
-          fCI(`${g}c6`, 6, 310, R(100, 120), R(2, 20)),
-        ]),
-        mkTopic(8, 3, "circle8", "Circles", "वृत्त", "वर्तुळे", [
+        mkTopic(8, 2, "circle8", "Circles", "वृत्त", "वर्तुळे", [
           fCircle(`${g}ci1`, 1, 60, R(1, 40), "circumference"),
           fCircle(`${g}ci2`, 2, 60, R(1, 40), "area"),
           fCircle(`${g}ci3`, 3, 90, R(41, 99), "circumference"),
@@ -1900,7 +2818,7 @@ function curriculum(grade: number): TopicSpec[] {
           fCircle(`${g}ci5`, 5, 80, R(100, 150), "circumference"),
           fCircle(`${g}ci6`, 6, 80, R(100, 150), "area"),
         ]),
-        mkTopic(8, 4, "solids", "Solids: volume", "ठोस: आयतन", "घनाकृती: घनफळ", [
+        mkTopic(8, 3, "solids", "Solids: volume", "ठोस: आयतन", "घनाकृती: घनफळ", [
           fVolCube(`${g}so1`, 1, 100, R(121, 199)),
           fCylVol(`${g}so2`, 2, 400, R(1, 20), R(2, 30)),
           fVolCuboid(`${g}so3`, 3, 2500, R(200, 299), R(2, 30), R(2, 20)),
@@ -1908,7 +2826,7 @@ function curriculum(grade: number): TopicSpec[] {
           fVolCuboid(`${g}so5`, 5, 1750, R(300, 399), R(2, 30), R(2, 20)),
           fCylVol(`${g}so6`, 6, 450, R(41, 60), R(2, 30)),
         ]),
-        mkTopic(8, 5, "poly8", "Evaluating polynomials", "बहुपद का मान", "बहुपदींची किंमत", [
+        mkTopic(8, 4, "poly8", "Evaluating polynomials", "बहुपद का मान", "बहुपदींची किंमत", [
           fEvalLin(`${g}po1`, 1, 800, R(20, 29), R(1, 99), R(2, 20)),
           fPoly(`${g}po2`, 2, 1500, R(-9, 9), R(-15, 15), R(2, 8)),
           fEvalLin(`${g}po3`, 3, 2500, R(30, 45), R(1, 99), R(2, 30)),
@@ -1928,28 +2846,28 @@ function curriculum(grade: number): TopicSpec[] {
           fPoly(`${g}p6`, 6, 1000, R(-45, 45), R(-55, 55), R(59, 66)),
         ]),
         mkTopic(9, 1, "coord", "Coordinate geometry", "निर्देशांक ज्यामिति", "निर्देशक भूमिती", [
-          fDist(`${g}co1`, 1, 800, R(0, 20), R(1, 8)),
-          fSlope(`${g}co2`, 2, 1500, R(0, 12), R(1, 9), R(0, 15)),
-          fDist(`${g}co3`, 3, 2500, R(21, 45), R(1, 8)),
-          fSlope(`${g}co4`, 4, 2500, R(0, 12), R(1, 9), R(16, 35)),
-          fDist(`${g}co5`, 5, 1750, R(46, 70), R(1, 8)),
-          fSlope(`${g}co6`, 6, 1000, R(0, 12), R(1, 9), R(36, 55)),
+          fDist(`${g}co1`, 1, 480, R(0, 20), R(1, 8)),
+          fSlope(`${g}co2`, 2, 900, R(0, 12), R(1, 9), R(0, 15)),
+          fDist(`${g}co3`, 3, 1500, R(21, 45), R(1, 8)),
+          fSlope(`${g}co4`, 4, 1500, R(0, 12), R(1, 9), R(16, 35)),
+          fDist(`${g}co5`, 5, 1050, R(46, 70), R(1, 8)),
+          fSlope(`${g}co6`, 6, 570, R(0, 12), R(1, 9), R(36, 55)),
         ]),
         mkTopic(9, 2, "tri9", "Triangles: area", "त्रिभुज: क्षेत्रफल", "त्रिकोण: क्षेत्रफळ", [
-          fAreaTri(`${g}t1`, 1, 800, R(121, 160), R(2, 99)),
-          fAreaTri(`${g}t2`, 2, 1500, R(161, 220), R(2, 99)),
-          fAreaTri(`${g}t3`, 3, 2500, R(221, 320), R(2, 99)),
-          fAreaTri(`${g}t4`, 4, 2500, R(321, 420), R(2, 99)),
-          fAreaTri(`${g}t5`, 5, 1750, R(421, 520), R(2, 99)),
-          fAreaTri(`${g}t6`, 6, 1000, R(521, 620), R(2, 99)),
+          fAreaTri(`${g}t1`, 1, 400, R(121, 160), R(2, 99)),
+          fAreaTri(`${g}t2`, 2, 750, R(161, 220), R(2, 99)),
+          fAreaTri(`${g}t3`, 3, 1250, R(221, 320), R(2, 99)),
+          fAreaTri(`${g}t4`, 4, 1250, R(321, 420), R(2, 99)),
+          fAreaTri(`${g}t5`, 5, 875, R(421, 520), R(2, 99)),
+          fAreaTri(`${g}t6`, 6, 475, R(521, 620), R(2, 99)),
         ]),
         mkTopic(9, 3, "stats9", "Statistics", "सांख्यिकी", "संख्याशास्त्र", [
-          fAvg(`${g}st1`, 1, 800, R(1000, 1199)),
-          fAvg(`${g}st2`, 2, 1500, R(1200, 1499)),
-          fAvg(`${g}st3`, 3, 2500, R(1500, 1899)),
-          fAvg(`${g}st4`, 4, 2500, R(1900, 2299)),
-          fAvg(`${g}st5`, 5, 1750, R(2300, 2599)),
-          fAvg(`${g}st6`, 6, 1000, R(2600, 2799)),
+          fAvg(`${g}st1`, 1, 400, R(1000, 1199)),
+          fAvg(`${g}st2`, 2, 750, R(1200, 1499)),
+          fAvg(`${g}st3`, 3, 1250, R(1500, 1899)),
+          fAvg(`${g}st4`, 4, 1250, R(1900, 2299)),
+          fAvg(`${g}st5`, 5, 875, R(2300, 2599)),
+          fAvg(`${g}st6`, 6, 475, R(2600, 2799)),
         ]),
         mkTopic(9, 4, "prob9", "Probability", "प्रायिकता", "संभाव्यता", [
           fProb(`${g}pr1`, 1, 300, R(1, 20), R(1, 20)),
@@ -2010,14 +2928,6 @@ function curriculum(grade: number): TopicSpec[] {
           fDist(`${g}co5`, 5, 1750, R(126, 155), R(1, 8)),
           fSlope(`${g}co6`, 6, 1000, R(0, 12), R(1, 9), R(100, 125)),
         ]),
-        mkTopic(10, 5, "interest10", "Interest, revisited", "ब्याज, दोबारा", "व्याज, पुन्हा", [
-          fSI(`${g}si1`, 1, 800, R(400, 499), R(2, 15), R(2, 9)),
-          fCI(`${g}si2`, 2, 450, R(121, 150), R(2, 20)),
-          fSI(`${g}si3`, 3, 2500, R(500, 699), R(2, 15), R(2, 9)),
-          fCI(`${g}si4`, 4, 600, R(151, 190), R(2, 20)),
-          fSI(`${g}si5`, 5, 1750, R(700, 899), R(2, 15), R(2, 9)),
-          fCI(`${g}si6`, 6, 440, R(191, 220), R(2, 20)),
-        ]),
       ];
     case 11:
       return [
@@ -2073,36 +2983,36 @@ function curriculum(grade: number): TopicSpec[] {
     case 12:
       return [
         mkTopic(12, 0, "matrices", "Matrices and determinants", "आव्यूह और सारणिक", "सारण्या आणि निर्धारक", [
-          fDet(`${g}m1`, 1, 800, R(0, 10)),
-          fDet(`${g}m2`, 2, 1500, R(0, 14)),
-          fDet(`${g}m3`, 3, 2500, R(0, 18)),
-          fDet(`${g}m4`, 4, 2500, R(0, 22)),
-          fDet(`${g}m5`, 5, 1750, R(0, 26)),
-          fDet(`${g}m6`, 6, 1000, R(0, 30)),
+          fDet(`${g}m1`, 1, 400, R(0, 10)),
+          fDet(`${g}m2`, 2, 750, R(0, 14)),
+          fDet(`${g}m3`, 3, 1250, R(0, 18)),
+          fDet(`${g}m4`, 4, 1250, R(0, 22)),
+          fDet(`${g}m5`, 5, 875, R(0, 26)),
+          fDet(`${g}m6`, 6, 500, R(0, 30)),
         ]),
         mkTopic(12, 1, "vectors", "Vectors", "सदिश", "सदिश", [
-          fDot(`${g}v1`, 1, 800, R(0, 8)),
-          fDot(`${g}v2`, 2, 1500, R(0, 10)),
-          fDot(`${g}v3`, 3, 2500, R(0, 12)),
-          fDot(`${g}v4`, 4, 2500, R(0, 14)),
-          fDot(`${g}v5`, 5, 1750, R(0, 16)),
-          fDot(`${g}v6`, 6, 1000, R(0, 18)),
+          fDot(`${g}v1`, 1, 400, R(0, 8)),
+          fDot(`${g}v2`, 2, 750, R(0, 10)),
+          fDot(`${g}v3`, 3, 1250, R(0, 12)),
+          fDot(`${g}v4`, 4, 1250, R(0, 14)),
+          fDot(`${g}v5`, 5, 875, R(0, 16)),
+          fDot(`${g}v6`, 6, 500, R(0, 18)),
         ]),
         mkTopic(12, 2, "deriv", "Derivatives", "अवकलज", "अवकलज", [
-          fDeriv(`${g}d1`, 1, 800, R(1, 9), R(-9, 9), R(1, 6)),
-          fDeriv(`${g}d2`, 2, 1500, R(1, 12), R(-12, 12), R(7, 12)),
-          fDeriv(`${g}d3`, 3, 2500, R(1, 15), R(-15, 15), R(13, 20)),
-          fDeriv(`${g}d4`, 4, 2500, R(1, 18), R(-18, 18), R(21, 28)),
-          fDeriv(`${g}d5`, 5, 1750, R(1, 21), R(-21, 21), R(29, 36)),
-          fDeriv(`${g}d6`, 6, 1000, R(1, 24), R(-24, 24), R(37, 44)),
+          fDeriv(`${g}d1`, 1, 400, R(1, 9), R(-9, 9), R(1, 6)),
+          fDeriv(`${g}d2`, 2, 750, R(1, 12), R(-12, 12), R(7, 12)),
+          fDeriv(`${g}d3`, 3, 1250, R(1, 15), R(-15, 15), R(13, 20)),
+          fDeriv(`${g}d4`, 4, 1250, R(1, 18), R(-18, 18), R(21, 28)),
+          fDeriv(`${g}d5`, 5, 875, R(1, 21), R(-21, 21), R(29, 36)),
+          fDeriv(`${g}d6`, 6, 500, R(1, 24), R(-24, 24), R(37, 44)),
         ]),
         mkTopic(12, 3, "integ", "Definite integrals", "निश्चित समाकल", "निश्चित संकलन", [
-          fInteg(`${g}i1`, 1, 800, R(1, 20), R(0, 10), R(1, 10)),
-          fInteg(`${g}i2`, 2, 1500, R(1, 30), R(0, 12), R(11, 20)),
-          fInteg(`${g}i3`, 3, 2500, R(1, 40), R(0, 14), R(21, 32)),
-          fInteg(`${g}i4`, 4, 2500, R(1, 50), R(0, 16), R(33, 44)),
-          fInteg(`${g}i5`, 5, 1750, R(1, 60), R(0, 18), R(45, 56)),
-          fInteg(`${g}i6`, 6, 1000, R(1, 70), R(0, 20), R(57, 68)),
+          fInteg(`${g}i1`, 1, 400, R(1, 20), R(0, 10), R(1, 10)),
+          fInteg(`${g}i2`, 2, 750, R(1, 30), R(0, 12), R(11, 20)),
+          fInteg(`${g}i3`, 3, 1250, R(1, 40), R(0, 14), R(21, 32)),
+          fInteg(`${g}i4`, 4, 1250, R(1, 50), R(0, 16), R(33, 44)),
+          fInteg(`${g}i5`, 5, 875, R(1, 60), R(0, 18), R(45, 56)),
+          fInteg(`${g}i6`, 6, 500, R(1, 70), R(0, 20), R(57, 68)),
         ]),
         mkTopic(12, 4, "prob12", "Probability", "प्रायिकता", "संभाव्यता", [
           fProb(`${g}p1`, 1, 500, R(321, 350), R(1, 40)),
@@ -2122,17 +3032,174 @@ function curriculum(grade: number): TopicSpec[] {
         ]),
       ];
     default:
-      throw new Error(`no plan for grade ${grade}`);
+      throw new Error(`no maths plan for grade ${grade}`);
   }
 }
 
+/**
+ * Subject curricula beyond maths. Small and specific: recall topics appear in
+ * exactly ONE grade each (a fact question exists once in the whole bank), and
+ * the moved money/interest/profit families keep their original ranges so no
+ * stem collides with anything the maths plans ever generated.
+ */
+function subjectCurriculum(grade: number, subject: Subject): TopicSpec[] {
+  const g = `g${grade}`;
+  if (subject === "SCIENCE") {
+    if (grade === 5)
+      return [
+        mkTopic(5, 0, "scispeed5", "Speed and motion", "चाल और गति", "वेग आणि गती", [
+          fSpeed(`${g}un2`, 1, 550, R(5, 90), R(2, 9)),
+          fSpeed(`${g}un4`, 2, 1300, R(91, 299), R(2, 9)),
+          fSpeed(`${g}un6`, 3, 1000, R(300, 480), R(2, 9)),
+        ], "SCIENCE"),
+      ];
+    if (grade === 6)
+      return [
+        mkTopic(6, 0, "scimeasure", "Measuring the world", "मापन की दुनिया", "मापनाचे जग", [
+          fRecall(`${g}siunits`, 1, 20, SI_UNITS, UNIT_SKIN),
+          fSciCF(`${g}cf`, 2, 30, R(1, 20)),
+          fSpeed(`${g}ra6`, 3, 1000, R(481, 660), R(2, 9)),
+        ], "SCIENCE"),
+      ];
+    if (grade === 8)
+      return [
+        mkTopic(8, 0, "scielements", "Elements and symbols", "तत्व और प्रतीक", "मूलद्रव्ये आणि चिन्हे", [
+          fRecall(`${g}elem`, 1, 38, ELEMENTS, ELEMENT_SKIN),
+          fRecall(`${g}sym`, 2, 38, reverseFacts(ELEMENTS), SYMBOL_SKIN),
+          fSciHeat(`${g}heat`, 3, 400, R(2, 21), R(5, 40)),
+        ], "SCIENCE"),
+      ];
+    if (grade === 9)
+      return [
+        mkTopic(9, 0, "scimoles9", "Moles and matter", "मोल और पदार्थ", "मोल आणि पदार्थ", [
+          fSciMoles(`${g}mol`, 1, 450, R(2, 60)),
+        ], "SCIENCE"),
+      ];
+    if (grade === 10)
+      return [
+        mkTopic(10, 0, "sciwaves10", "Waves", "तरंगें", "तरंग", [
+          fSciWave(`${g}wave`, 1, 400, R(2, 60), R(2, 20)),
+        ], "SCIENCE"),
+      ];
+    return [];
+  }
+  if (subject === "GEOGRAPHY") {
+    if (grade === 4)
+      return [mkTopic(4, 0, "geostates", "States and capitals", "राज्य और राजधानियाँ", "राज्ये आणि राजधान्या", [fRecall(`${g}caps`, 1, 44, STATES, CAPITAL_SKIN)], "GEOGRAPHY")];
+    if (grade === 5)
+      return [mkTopic(5, 0, "geocapitals", "Capitals and their states", "राजधानियाँ और उनके राज्य", "राजधान्या आणि त्यांची राज्ये", [fRecall(`${g}rev`, 1, 44, reverseFacts(STATES), OF_CAPITAL_SKIN)], "GEOGRAPHY")];
+    if (grade === 6)
+      return [mkTopic(6, 0, "geocountries", "Countries and capitals", "देश और राजधानियाँ", "देश आणि राजधान्या", [fRecall(`${g}world`, 1, 40, COUNTRIES, CAPITAL_SKIN)], "GEOGRAPHY")];
+    return [];
+  }
+  if (subject === "HISTORY") {
+    if (grade === 7)
+      return [mkTopic(7, 0, "histyears7", "Landmark years to 1900", "1900 तक के मील के पत्थर", "1900 पर्यंतचे टप्पे", [fEventYear(`${g}early`, 1, 16, 1400, 1900)], "HISTORY")];
+    if (grade === 9)
+      return [mkTopic(9, 0, "histyears9", "Landmark years since 1900", "1900 के बाद के मील के पत्थर", "1900 नंतरचे टप्पे", [fEventYear(`${g}modern`, 1, 24, 1901, 2000)], "HISTORY")];
+    return [];
+  }
+  if (subject === "CIVICS") {
+    if (grade === 9)
+      return [mkTopic(9, 0, "civnumbers", "The Constitution's numbers", "संविधान की संख्याएँ", "संविधानाच्या संख्या", [fCivNumber(`${g}facts`, 1, 12)], "CIVICS")];
+    return [];
+  }
+  if (subject === "ECONOMICS") {
+    if (grade === 3)
+      return [
+        mkTopic(3, 0, "money", "Money", "पैसे", "पैसे", [
+          fSpend(`${g}m1`, 1, 800, R(11, 59), R(11, 59)),
+          fSpend(`${g}m2`, 2, 800, R(60, 199), R(25, 199)),
+          fChange(`${g}m3`, 3, 120, 100, R(11, 88)),
+          fChange(`${g}m4`, 4, 400, 500, R(38, 461)),
+          fChange(`${g}m5`, 5, 500, 2000, R(115, 1885)),
+          fSpend(`${g}m6`, 6, 600, R(200, 999), R(200, 999)),
+        ], "ECONOMICS"),
+      ];
+    if (grade === 4)
+      return [
+        mkTopic(4, 0, "money4", "Money problems", "पैसों के सवाल", "पैशांची गणिते", [
+          fSpend(`${g}mo1`, 1, 400, R(1000, 2999), R(1000, 2999)),
+          fChange(`${g}mo2`, 2, 600, 1000, R(115, 985)),
+          fUnitCost(`${g}mo3`, 3, 900, R(2, 12), R(2, 99)),
+          fSpend(`${g}mo4`, 4, 800, R(3000, 9999), R(1000, 9999)),
+          fChange(`${g}mo5`, 5, 800, 5000, R(1115, 4885)),
+          fUnitCost(`${g}mo6`, 6, 600, R(13, 25), R(100, 299)),
+        ], "ECONOMICS"),
+      ];
+    if (grade === 5)
+      return [
+        mkTopic(5, 0, "shop5", "Shop maths", "दुकान का गणित", "दुकानाचे गणित", [
+          fUnitCost(`${g}un1`, 1, 500, R(26, 32), R(2, 99)),
+          fUnitCost(`${g}un3`, 2, 1600, R(33, 44), R(2, 99)),
+          fUnitCost(`${g}un5`, 3, 1700, R(45, 56), R(2, 99)),
+        ], "ECONOMICS"),
+      ];
+    if (grade === 7)
+      return [
+        mkTopic(7, 0, "profit", "Profit and loss", "लाभ और हानि", "नफा आणि तोटा", [
+          fProfit(`${g}p1`, 1, 490, R(2, 20), R(5, 30)),
+          fProfit(`${g}p2`, 2, 1000, R(21, 50), R(5, 40)),
+          fProfit(`${g}p3`, 3, 1200, R(51, 99), R(5, 60)),
+          fProfit(`${g}p4`, 4, 1000, R(100, 149), R(5, 60)),
+          fProfit(`${g}p5`, 5, 800, R(150, 199), R(5, 60)),
+          fProfit(`${g}p6`, 6, 500, R(200, 249), R(5, 60)),
+        ], "ECONOMICS"),
+      ];
+    if (grade === 8)
+      return [
+        mkTopic(8, 0, "ci8", "Compound interest", "चक्रवृद्धि ब्याज", "चक्रवाढ व्याज", [
+          fCI(`${g}c1`, 1, 130, R(2, 20), R(2, 10)),
+          fCI(`${g}c2`, 2, 220, R(21, 40), R(2, 15)),
+          fCI(`${g}c3`, 3, 300, R(41, 60), R(2, 20)),
+          fCI(`${g}c4`, 4, 300, R(61, 80), R(2, 20)),
+          fCI(`${g}c5`, 5, 280, R(81, 99), R(2, 20)),
+          fCI(`${g}c6`, 6, 310, R(100, 120), R(2, 20)),
+        ], "ECONOMICS"),
+      ];
+    if (grade === 10)
+      return [
+        mkTopic(10, 0, "interest10", "Interest, revisited", "ब्याज, दोबारा", "व्याज, पुन्हा", [
+          fSI(`${g}si1`, 1, 800, R(400, 499), R(2, 15), R(2, 9)),
+          fCI(`${g}si2`, 2, 450, R(121, 150), R(2, 20)),
+          fSI(`${g}si3`, 3, 2500, R(500, 699), R(2, 15), R(2, 9)),
+          fCI(`${g}si4`, 4, 600, R(151, 190), R(2, 20)),
+          fSI(`${g}si5`, 5, 1750, R(700, 899), R(2, 15), R(2, 9)),
+          fCI(`${g}si6`, 6, 440, R(191, 220), R(2, 20)),
+        ], "ECONOMICS"),
+      ];
+    return [];
+  }
+  return [];
+}
+
+const FILLERS: Record<Subject, (grade: number, position: number, deficit: number) => TopicSpec> = {
+  MATHS: mathsFiller,
+  SCIENCE: sciFiller,
+  GEOGRAPHY: geoFiller,
+  HISTORY: histFiller,
+  CIVICS: civFiller,
+  ECONOMICS: ecoFiller,
+};
+
 function gradeTopics(grade: number): TopicSpec[] {
-  const topics = curriculum(grade);
-  const planned = topics.flatMap((t) => t.templates).reduce((a, t) => a + t.want, 0);
-  const deficit = GRADE_TARGET - planned;
-  if (deficit <= 0) throw new Error(`grade ${grade}: curriculum already at ${planned}, filler cannot be empty`);
-  topics.push(filler(grade, topics.length, deficit));
-  return topics;
+  const targets = split(grade);
+  const out: TopicSpec[] = [];
+  let position = 0;
+  for (const subject of Object.keys(targets) as Subject[]) {
+    const topics =
+      subject === "MATHS" ? mathsCurriculum(grade) : subjectCurriculum(grade, subject);
+    const planned = topics.flatMap((t) => t.templates).reduce((a, t) => a + t.want, 0);
+    const deficit = targets[subject] - planned;
+    if (deficit <= 0) {
+      throw new Error(`grade ${grade} ${subject}: curriculum ${planned} ≥ target ${targets[subject]}`);
+    }
+    for (const t of topics) out.push({ ...t, position: position++ });
+    out.push({ ...FILLERS[subject](grade, position++, deficit) });
+  }
+  const total = out.flatMap((t) => t.templates).reduce((a, t) => a + t.want, 0);
+  if (total !== GRADE_TARGET) throw new Error(`grade ${grade} plans ${total}, not ${GRADE_TARGET}`);
+  return out;
 }
 
 main().catch(async (error) => {

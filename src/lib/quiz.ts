@@ -429,20 +429,34 @@ export async function nextQuestion(
    */
   const wanted = clampLevel(mastery?.level ?? MIN_LEVEL);
   const seenList = [...seenIds];
-  let full: { id: string; difficulty: number; stem: string; choices: string } | null = null;
-  for (let distance = 0; distance < MAX_LEVEL && !full; distance++) {
-    const rungs = distance === 0 ? [wanted] : [wanted - distance, wanted + distance];
-    for (const level of rungs) {
-      if (level < MIN_LEVEL || level > MAX_LEVEL) continue;
-      full = await db.quizQuestion.findFirst({
-        where: { topicId: attempt.topicId, difficulty: level, id: { notIn: seenList } },
-        select: { id: true, difficulty: true, stem: true, choices: true },
-        orderBy: { id: "asc" },
-      });
-      if (full) break;
+  // One GROUP BY finds the first unseen candidate (min id) AT EVERY level,
+  // then the nearest level to the wanted one wins, lower level breaking ties —
+  // which is pickQuestion's pool order (difficulty asc, id asc) exactly. Two
+  // queries whether the topic holds twelve questions or ten thousand, and an
+  // exhausted topic answers in one.
+  const byLevel = await db.quizQuestion.groupBy({
+    by: ["difficulty"],
+    where: { topicId: attempt.topicId, id: { notIn: seenList } },
+    _min: { id: true },
+  });
+  let bestId: string | null = null;
+  let bestLevel = 0;
+  for (const g of byLevel) {
+    const level = clampLevel(g.difficulty);
+    if (
+      bestId === null ||
+      Math.abs(level - wanted) < Math.abs(bestLevel - wanted) ||
+      (Math.abs(level - wanted) === Math.abs(bestLevel - wanted) && level < bestLevel)
+    ) {
+      bestId = g._min.id;
+      bestLevel = level;
     }
   }
-  if (!full) return null;
+  if (bestId === null) return null;
+  const full = await db.quizQuestion.findUniqueOrThrow({
+    where: { id: bestId },
+    select: { id: true, difficulty: true, stem: true, choices: true },
+  });
 
   // Fetched for the ONE question being served, not for the whole pool — the
   // pool query above is the hot path and runs on every question.

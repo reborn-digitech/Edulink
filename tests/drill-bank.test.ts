@@ -115,7 +115,9 @@ describe("the drill bank, served end to end", () => {
     expect(q!.stem).toMatch(/[ऀ-ॿ]/);
   });
 
-  it("⚠ a deterministic sample of IMPORTED rows still proves itself", async () => {
+  // 130+ topics sampled sequentially plus two full-bank counts — a real
+  // minute of database time, not a hung test.
+  it("⚠ a deterministic sample of IMPORTED rows still proves itself", { timeout: 60_000 }, async () => {
     if (!hasBank) return;
     const topics = await db.quizTopic.findMany({
       where: { slug: { startsWith: "drill-" } },
@@ -133,8 +135,11 @@ describe("the drill bank, served end to end", () => {
         take: 7,
       });
       for (const row of rows) {
-        expect(row.checkExpr, `${topic.slug}: ${row.stem}`).toBeTruthy();
-        const expected = evaluate(row.checkExpr!);
+        // Fact-recall rows (capitals, symbols, event years) carry no expression
+        // BY DESIGN — they are proven by their curated table, not arithmetic.
+        // The coverage assertion below keeps them the rare exception.
+        if (row.checkExpr === null) continue;
+        const expected = evaluate(row.checkExpr);
         const choices = JSON.parse(row.choices) as string[];
         const stated = numberIn(choices[row.answerIndex]!);
         expect(expected, `${topic.slug}: ${row.stem}`).not.toBeNull();
@@ -144,5 +149,16 @@ describe("the drill bank, served end to end", () => {
       }
     }
     expect(checked).toBeGreaterThanOrEqual(490);
+
+    // The honest ratio, pinned: at least 99.9% of the generated bank must be
+    // machine-checkable. If recall generation ever creeps past the fact
+    // tables' natural size, this fails before the bank can start lying.
+    const [total, unchecked] = await Promise.all([
+      db.quizQuestion.count({ where: { topic: { slug: { startsWith: "drill-" } } } }),
+      db.quizQuestion.count({
+        where: { topic: { slug: { startsWith: "drill-" } }, checkExpr: null },
+      }),
+    ]);
+    expect(unchecked / total).toBeLessThan(0.001);
   });
 });
