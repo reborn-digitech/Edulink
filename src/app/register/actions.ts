@@ -31,7 +31,13 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export async function registerSchool(input: unknown): Promise<RegisterState> {
   const parsed = registerSchoolSchema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, errors: fieldErrors(parsed.error) };
+    const errors = fieldErrors(parsed.error);
+    // The schema is module-level, so its consent message is minted as a KEY —
+    // this is the boundary that owns the words.
+    if (errors.acceptedTerms === "refusal.acceptTerms") {
+      errors.acceptedTerms = (await getT())("refusal.acceptTerms");
+    }
+    return { ok: false, errors };
   }
 
   const { school, admin } = parsed.data;
@@ -40,7 +46,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
   // generic length rule cannot see.
   const problems = passwordProblems(admin.password, [admin.name, admin.email, school.name]);
   if (problems.length > 0) {
-    return { ok: false, errors: { "admin.password": problems[0]! } };
+    return { ok: false, errors: { "admin.password": (await getT())(problems[0]!) } };
   }
 
   const t = await getT();

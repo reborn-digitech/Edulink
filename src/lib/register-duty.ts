@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -179,7 +180,7 @@ export async function setAttendanceRight(
   ctx: ActiveContext,
   classTeacherId: string,
   canTake: boolean,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
     throw new AccessError("Only an admin can change who takes a register");
   }
@@ -188,7 +189,7 @@ export async function setAttendanceRight(
     where: { id: classTeacherId, schoolId: ctx.schoolId },
     select: { id: true, classId: true, teacherMembershipId: true },
   });
-  if (!row) return { ok: false, error: "That teacher is not on this class." };
+  if (!row) return { ok: false, errorKey: "refusal.teacherNotOnClass" };
 
   // Withdrawing the last one would leave a class whose register only an admin
   // can mark. Allowed, because a school genuinely may not have decided yet — but
@@ -225,7 +226,7 @@ export async function arrangeCover(
   ctx: ActiveContext,
   input: CoverInput,
   opts: { leaveRequestId?: string | null } = {},
-): Promise<{ ok: boolean; error?: string; coverId?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey; coverId?: string }> {
   // A principal may arrange cover as part of approving leave; an admin may
   // arrange it at any time. A teacher may not hand their own register to
   // somebody else — that is a staffing decision, not a personal one.
@@ -234,17 +235,17 @@ export async function arrangeCover(
   }
 
   if (!DATE_KEY.test(input.fromDateKey) || !DATE_KEY.test(input.toDateKey)) {
-    return { ok: false, error: "Give both dates as YYYY-MM-DD." };
+    return { ok: false, errorKey: "refusal.bothDatesYmd" };
   }
   if (input.toDateKey < input.fromDateKey) {
-    return { ok: false, error: "The last day cannot be before the first." };
+    return { ok: false, errorKey: "refusal.lastBeforeFirstDuty" };
   }
 
   const klass = await db.class.findFirst({
     where: { id: input.classId, schoolId: ctx.schoolId },
     select: { id: true, name: true },
   });
-  if (!klass) return { ok: false, error: "That class is not in this school." };
+  if (!klass) return { ok: false, errorKey: "refusal.classNotHere" };
 
   // The person covering must be staff HERE. Checked against the school rather
   // than trusted from the form, like every other id that arrives in a request.
@@ -257,7 +258,7 @@ export async function arrangeCover(
     },
     select: { id: true, userId: true },
   });
-  if (!covering) return { ok: false, error: "That person is not active staff at this school." };
+  if (!covering) return { ok: false, errorKey: "refusal.notActiveStaff" };
 
   const cover = await db.attendanceCover.create({
     data: {
@@ -318,7 +319,7 @@ export async function arrangeCover(
 export async function cancelCover(
   ctx: ActiveContext,
   coverId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) {
     throw new AccessError("Only an admin or the principal can cancel cover");
   }
@@ -335,12 +336,12 @@ export async function cancelCover(
       class: { select: { name: true } },
     },
   });
-  if (!cover) return { ok: false, error: "That cover no longer exists." };
+  if (!cover) return { ok: false, errorKey: "refusal.coverGone" };
 
   const result = await db.attendanceCover.deleteMany({
     where: { id: coverId, schoolId: ctx.schoolId },
   });
-  if (result.count === 0) return { ok: false, error: "That cover no longer exists." };
+  if (result.count === 0) return { ok: false, errorKey: "refusal.coverGone" };
 
   await audit({
     schoolId: ctx.schoolId,

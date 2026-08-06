@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { fakePasswordWork, verifyPassword } from "./crypto";
@@ -82,7 +83,13 @@ export type OtherAccount = {
   children: number;
 };
 
-export type MergePreview = { ok: true; other: OtherAccount } | { ok: false; error: string };
+/** ⚠ `errorKey` + vars, not a sentence — translated at the action boundary. */
+export type MergeRefusal = {
+  ok: false;
+  errorKey: TranslationKey;
+  errorVars?: Record<string, string | number>;
+};
+export type MergePreview = { ok: true; other: OtherAccount } | MergeRefusal;
 
 export type MergeCounts = {
   schools: number;
@@ -91,7 +98,7 @@ export type MergeCounts = {
   posts: number;
 };
 
-export type MergeResult = { ok: true; counts: MergeCounts } | { ok: false; error: string };
+export type MergeResult = { ok: true; counts: MergeCounts } | MergeRefusal;
 
 /**
  * ONE MESSAGE FOR EVERY WAY THE CREDENTIALS CAN BE WRONG.
@@ -102,8 +109,7 @@ export type MergeResult = { ok: true; counts: MergeCounts } | { ok: false; error
  * offers the same oracle to somebody with no session at all and takes the same
  * care; it must not be worse.
  */
-const GENERIC =
-  "That login name and password do not match an account. Check both, and remember a pupil's login name is not an email address.";
+const GENERIC = "refusal.mergeGeneric" as const;
 
 /* -------------------------------------------------------------------------- */
 /* Authentication of the other side                                            */
@@ -111,7 +117,7 @@ const GENERIC =
 
 type Authenticated =
   | { ok: true; other: OtherAccount; schoolIds: string[] }
-  | { ok: false; error: string };
+  | MergeRefusal;
 
 /**
  * Verifies the old account's credentials and works out what merging would move.
@@ -126,7 +132,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   const email = toLoginEmail(input.identifier ?? "");
   if (email.length === 0 || (input.password ?? "").length === 0) {
     await fakePasswordWork();
-    return { ok: false, error: GENERIC };
+    return { ok: false, errorKey: GENERIC };
   }
 
   const other = await db.user.findUnique({
@@ -147,7 +153,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   // the same thing. See GENERIC.
   if (!other?.passwordHash || other.disabledAt || other.mergedIntoUserId) {
     await fakePasswordWork();
-    return { ok: false, error: GENERIC };
+    return { ok: false, errorKey: GENERIC };
   }
 
   if (!(await verifyPassword(other.passwordHash, input.password))) {
@@ -157,7 +163,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
       targetType: "User",
       targetId: other.id,
     });
-    return { ok: false, error: GENERIC };
+    return { ok: false, errorKey: GENERIC };
   }
 
   /* -- From here the caller has PROVED they hold the other account, so the
@@ -167,7 +173,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   if (other.id === ctx.user.id) {
     return {
       ok: false,
-      error: "That is the account you are already signed in to. Enter your OTHER account's details.",
+      errorKey: "refusal.mergeSameAccount",
     };
   }
 
@@ -175,7 +181,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   // into one, in either direction. An operator with two accounts is a database
   // job, not a self-service form.
   if (other.isSuperuser || ctx.user.isSuperuser) {
-    return { ok: false, error: "Server administrator accounts cannot be joined this way." };
+    return { ok: false, errorKey: "refusal.mergeServerAccounts" };
   }
 
   /**
@@ -233,7 +239,10 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
     // that share no school cannot collide on any school-scoped unique key.
     return {
       ok: false,
-      error: `Both accounts are already at ${names.get(clash.schoolId) ?? "the same school"} as a ${clash.role.toLowerCase()}. Ask that school to remove one of them first — joining the accounts cannot decide which is right.`,
+      errorKey: "refusal.mergeBothAtSchool",
+      // `role` travels as the ENUM; the boundary swaps in the reader's role
+      // label, and "the same school" is itself a key resolved there.
+      errorVars: { school: names.get(clash.schoolId) ?? "", role: clash.role },
     };
   }
 
@@ -247,7 +256,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   if (expertProfiles > 0) {
     return {
       ok: false,
-      error: "One of these accounts is an expert account. Those hold bookings and mentorships, so they have to be joined by hand — contact support.",
+      errorKey: "refusal.mergeExpert",
     };
   }
 
@@ -285,7 +294,7 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
  */
 export async function previewMerge(ctx: ActiveContext, input: MergeInput): Promise<MergePreview> {
   const result = await authenticate(ctx, input);
-  if (!result.ok) return { ok: false, error: result.error };
+  if (!result.ok) return { ok: false, errorKey: result.errorKey, errorVars: result.errorVars };
   return { ok: true, other: result.other };
 }
 
@@ -328,7 +337,7 @@ type MergeTx = {
  */
 export async function mergeAccounts(ctx: ActiveContext, input: MergeInput): Promise<MergeResult> {
   const auth = await authenticate(ctx, input);
-  if (!auth.ok) return { ok: false, error: auth.error };
+  if (!auth.ok) return { ok: false, errorKey: auth.errorKey, errorVars: auth.errorVars };
 
   const { other, schoolIds } = auth;
   const keeperId = ctx.user.id;

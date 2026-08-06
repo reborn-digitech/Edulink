@@ -19,6 +19,7 @@ import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { forUser } from "@/lib/tenant-context";
 import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
+import { refusalText } from "@/lib/i18n/refusal";
 
 /** "in about 5 minutes", in the reader's language. See `retryHintKey`. */
 function hint(t: Translate, seconds: number): string {
@@ -315,7 +316,17 @@ export async function requestReset(input: unknown): Promise<ResetRequestState> {
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
 
   const result = await requestPasswordReset(parsed.data.identifier);
-  if (!result.ok) return { ok: false, errors: { _form: result.error ?? t("login.tryAgainShortly") } };
+  if (!result.ok) {
+    // The lib mints a KEY; this boundary turns it into the reader's words.
+    return {
+      ok: false,
+      errors: {
+        _form: result.errorKey
+          ? refusalText(t, { errorKey: result.errorKey, retryAfterSeconds: result.retryAfterSeconds })
+          : t("login.tryAgainShortly"),
+      },
+    };
+  }
   return { ok: true, errors: {}, hint: result.hint, channel: result.channel };
 }
 
@@ -327,7 +338,14 @@ export async function completeReset(input: unknown): Promise<LoginState> {
 
   const { identifier, code, password } = parsed.data;
   const result = await resetPassword(identifier, code, password);
-  if (!result.ok) return { ok: false, errors: { _form: result.error ?? t("login.didNotWork") } };
+  if (!result.ok) {
+    return {
+      ok: false,
+      errors: {
+        _form: result.errorKey ? refusalText(t, { errorKey: result.errorKey }) : t("login.didNotWork"),
+      },
+    };
+  }
 
   /**
    * NO SESSION IS CREATED HERE, on purpose. `resetPassword` has just revoked

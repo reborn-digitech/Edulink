@@ -8,7 +8,7 @@ import { createSession } from "@/lib/session";
 import { acceptExpertInvite, readExpertInvite } from "@/lib/experts";
 import { audit } from "@/lib/audit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { getLocale } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
 import { writeJson } from "@/lib/json";
 
 /**
@@ -50,7 +50,7 @@ export async function acceptInvite(
     if (headline.length < 3) return { ok: false, errorKey: "expert.sayWhatYouDo" };
 
     const problems = passwordProblems(input.password, [name, email]);
-    if (problems.length > 0) return { ok: false, error: problems[0]! };
+    if (problems.length > 0) return { ok: false, error: (await getT())(problems[0]!) };
 
     // An email already in use is refused rather than merged: silently attaching
     // an expert profile to somebody else's account would be an account takeover

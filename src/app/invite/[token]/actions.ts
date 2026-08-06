@@ -120,7 +120,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
       return { ok: false, errors: { password: "Choose a password." } };
     }
     const problems = passwordProblems(password, [name, invite.email ?? "", school.name]);
-    if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
+    if (problems.length > 0) return { ok: false, errors: { password: (await getT())(problems[0]!) } };
   }
 
   /**

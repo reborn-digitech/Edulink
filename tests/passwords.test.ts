@@ -324,7 +324,8 @@ describe("using the code", () => {
     const code = await requestAndRead();
     const weak = await resetPassword(`rhea${SUFFIX}`, code, "short");
     expect(weak.ok).toBe(false);
-    expect(weak.error).not.toMatch(/expired/i);
+    // A KEY now — a weak password must be the password key, not the code key.
+    expect(weak.errorKey).not.toBe("refusal.codeWrong");
 
     expect((await resetPassword(`rhea${SUFFIX}`, code, "a long enough password")).ok).toBe(true);
   });
@@ -336,7 +337,7 @@ describe("using the code", () => {
         await resetPassword(`nobody${SUFFIX}`, code, "a brand new password"),
         await resetPassword(`rhea${SUFFIX}`, "000000", "a brand new password"),
         await resetPassword(`rhea${SUFFIX}`, "", "a brand new password"),
-      ].map((r) => r.error),
+      ].map((r) => r.errorKey),
     );
     expect(messages.size, "no account, wrong code and empty code must be indistinguishable").toBe(1);
   });
@@ -433,7 +434,7 @@ describe("proving you hold a number", () => {
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
     const result = await startPhoneChange(id, "9876500023");
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/already uses/i);
+    expect(result.errorKey).toBe("refusal.numberTaken");
   });
 
   it("⚠ gives up after five wrong codes", async () => {
@@ -485,7 +486,7 @@ describe("⚠ how often a code may be asked for", () => {
     }
     const refused = await requestPasswordReset(victim);
     expect(refused.ok).toBe(false);
-    expect(refused.error).toMatch(/too many/i);
+    expect(refused.errorKey).toBe("refusal.tooManyRetry");
   });
 
   it("⚠ limits an identifier that matches NOBODY exactly the same", async () => {

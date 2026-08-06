@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -32,7 +33,8 @@ import type { Role } from "./constants";
  * the blast radius this file exists to avoid.
  */
 
-export type SuspensionResult = { ok: true } | { ok: false; error: string };
+/** ⚠ `errorKey`, not a sentence — translated at the action boundary. */
+export type SuspensionResult = { ok: true } | { ok: false; errorKey: TranslationKey };
 
 /** What the directory needs to render one suspended person. */
 export type SuspendedSchool = { schoolId: string; schoolName: string; role: Role; at: Date | null };
@@ -58,14 +60,14 @@ export async function suspendMembership(
   // school out of its own account, and it is always a mistake rather than a
   // decision. Refused before anything else so the message is the specific one.
   if (membershipId === ctx.membershipId) {
-    return { ok: false, error: "You cannot pause your own access." };
+    return { ok: false, errorKey: "refusal.pauseSelf" };
   }
 
   const trimmed = reason.trim().slice(0, 500);
   if (trimmed.length < 3) {
     // Deliberately required. A suspension with no stated reason is one nobody
     // can review, appeal or reverse with confidence six months later.
-    return { ok: false, error: "Say why, briefly. This is kept in the audit log." };
+    return { ok: false, errorKey: "refusal.sayWhyAudit" };
   }
 
   const schoolId = ctx.schoolId;
@@ -92,10 +94,10 @@ export async function suspendMembership(
         where: { id: membershipId, schoolId },
         select: { id: true, role: true, status: true, userId: true },
       });
-      if (!target) throw new StateError("That person is not in this school.");
-      if (target.status === "SUSPENDED") throw new StateError("Their access is already paused.");
+      if (!target) throw new StateError("refusal.personNotHere");
+      if (target.status === "SUSPENDED") throw new StateError("refusal.alreadyPausedState");
       if (target.status !== "ACTIVE") {
-        throw new StateError("They have not accepted their invitation yet. Revoke the invite instead.");
+        throw new StateError("refusal.inviteNotAccepted");
       }
 
       if (target.role === "ADMIN") {
@@ -109,9 +111,7 @@ export async function suspendMembership(
           },
         });
         if (otherAdmins === 0) {
-          throw new StateError(
-            "This is the school's only admin. Make somebody else an admin first.",
-          );
+          throw new StateError("refusal.onlyAdminLeft");
         }
       }
 
@@ -121,7 +121,7 @@ export async function suspendMembership(
       });
     });
   } catch (error) {
-    if (error instanceof StateError) return { ok: false, error: error.message };
+    if (error instanceof StateError) return { ok: false, errorKey: error.key };
     throw error;
   }
 
@@ -166,8 +166,8 @@ export async function reinstateMembership(
     where: { id: membershipId, schoolId },
     select: { id: true, status: true, userId: true, role: true },
   });
-  if (!target) return { ok: false, error: "That person is not in this school." };
-  if (target.status !== "SUSPENDED") return { ok: false, error: "Their access is not paused." };
+  if (!target) return { ok: false, errorKey: "refusal.personNotHere" };
+  if (target.status !== "SUSPENDED") return { ok: false, errorKey: "refusal.notPaused" };
 
   // No lock needed: restoring an admin can only ever increase the number of
   // admins, which is the direction that is always safe.
@@ -257,7 +257,7 @@ export type RemovalBlocker = {
 
 export type RemovalResult =
   | { ok: true }
-  | { ok: false; error: string; blockers?: RemovalBlocker };
+  | { ok: false; errorKey: TranslationKey; blockers?: RemovalBlocker };
 
 /**
  * THE THIRD VERB, and the reason there are three rather than two.
@@ -299,7 +299,7 @@ export async function removeMembership(
     throw new AccessError("Only an admin can remove somebody from a school");
   }
   if (membershipId === ctx.membershipId) {
-    return { ok: false, error: "You cannot remove yourself from your own school." };
+    return { ok: false, errorKey: "refusal.removeSelf" };
   }
 
   const schoolId = ctx.schoolId;
@@ -308,7 +308,7 @@ export async function removeMembership(
     where: { id: membershipId, schoolId },
     select: { id: true, role: true, userId: true, leftAt: true },
   });
-  if (!target) return { ok: false, error: "That person is not in this school." };
+  if (!target) return { ok: false, errorKey: "refusal.personNotHere" };
 
   // PUPILS ONLY, matching `recordDeparture`. Staff carry rows this check does
   // not look at — classes they lead, registers they took, leave they were
@@ -317,7 +317,7 @@ export async function removeMembership(
   if (target.role !== "STUDENT") {
     return {
       ok: false,
-      error: "Only a pupil can be removed this way. Pause a member of staff's access instead.",
+      errorKey: "refusal.onlyPupilRemoved",
     };
   }
 
@@ -346,8 +346,7 @@ export async function removeMembership(
     return {
       ok: false,
       blockers,
-      error:
-        "They have a record at this school, so removing them would delete it. Record them as having left instead — that keeps everything and gives the family a school record to take with them.",
+      errorKey: "refusal.hasRecord",
     };
   }
 
@@ -357,7 +356,7 @@ export async function removeMembership(
   if (target.leftAt) {
     return {
       ok: false,
-      error: "They are already recorded as having left, which is a document. Undo that first if you really meant to remove them.",
+      errorKey: "refusal.alreadyLeftDoc",
     };
   }
 
@@ -385,7 +384,12 @@ export async function removeMembership(
 }
 
 /** Thrown inside the transaction to roll it back with a message for the user. */
-class StateError extends Error {}
+/** Carries a KEY, so the catch site can hand it to the boundary untranslated. */
+class StateError extends Error {
+  constructor(public readonly key: TranslationKey) {
+    super(key);
+  }
+}
 
 type TenantTx = {
   $queryRaw(strings: TemplateStringsArray, ...values: unknown[]): Promise<unknown>;

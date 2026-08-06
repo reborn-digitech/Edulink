@@ -95,7 +95,7 @@ describe("asking for a code", () => {
     const next = address("after");
     const result = await startEmailChange(userId, next);
 
-    expect(result.ok, result.error).toBe(true);
+    expect(result.ok, result.errorKey).toBe(true);
     expect(result.sentTo).toBe(next);
 
     // ⚠ THE PROPERTY THE WHOLE TWO-STEP SHAPE EXISTS FOR. A mistyped address
@@ -144,13 +144,13 @@ describe("asking for a code", () => {
 
     const result = await startEmailChange(userId, handleAddress);
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/cannot receive mail/i);
+    expect(result.errorKey).toBe("refusal.emailUnreceivable");
   });
 
   it("refuses the address already on the account", async () => {
     const result = await startEmailChange(userId, originalEmail.toUpperCase());
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/already the address/i);
+    expect(result.errorKey).toBe("refusal.emailAlreadyYours");
   });
 
   it("refuses an address another account holds, verified or not", async () => {
@@ -162,7 +162,7 @@ describe("asking for a code", () => {
 
     const result = await startEmailChange(userId, theirs);
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/another account/i);
+    expect(result.errorKey).toBe("refusal.emailTakenJoin");
     expect(await db.authToken.count({ where: { userId, purpose: "EMAIL_CHANGE" } })).toBe(0);
   });
 
@@ -170,13 +170,12 @@ describe("asking for a code", () => {
     let refusal: string | undefined;
     for (let i = 0; i < EMAIL_CHANGE_REQUESTS.limit + 1; i++) {
       const result = await startEmailChange(userId, address(`loop${i}`));
-      if (!result.ok && /too many/i.test(result.error ?? "")) {
-        refusal = result.error;
+      if (!result.ok && result.errorKey === "refusal.tooManyCodes") {
+        refusal = result.errorKey;
         break;
       }
     }
-    expect(refusal, "the loop must stop").toBeDefined();
-    expect(refusal).toMatch(/try again/i);
+    expect(refusal, "the loop must stop").toBe("refusal.tooManyCodes");
   });
 
   it("⚠ a new address does not buy a fresh allowance", async () => {
@@ -188,7 +187,7 @@ describe("asking for a code", () => {
     }
     const result = await startEmailChange(userId, address("brand-new"));
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/too many/i);
+    expect(result.errorKey).toBe("refusal.tooManyCodes");
   });
 
   it("only the newest code is live", async () => {
@@ -218,7 +217,7 @@ describe("using the code", () => {
     const code = await codeSentTo(next);
 
     const result = await confirmEmailChange(userId, code);
-    expect(result.ok, result.error).toBe(true);
+    expect(result.ok, result.errorKey).toBe(true);
 
     const user = await db.user.findUniqueOrThrow({
       where: { id: userId },
@@ -313,7 +312,7 @@ describe("using the code", () => {
   it("refuses when there is no live request at all", async () => {
     const result = await confirmEmailChange(userId, "123456");
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not right|expired/i);
+    expect(result.errorKey).toBe("refusal.codeWrong");
   });
 
   it("refuses an expired code", async () => {
@@ -341,7 +340,7 @@ describe("using the code", () => {
 
     const result = await confirmEmailChange(userId, code);
     expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/in the meantime/i);
+    expect(result.errorKey).toBe("refusal.emailClaimed");
     const user = await db.user.findUniqueOrThrow({
       where: { id: userId },
       select: { email: true },
@@ -370,10 +369,10 @@ describe("a pupil who joined with a class code", () => {
   it("can set a real address for the first time", async () => {
     const real = address("asha-real");
     const started = await startEmailChange(pupilId, real);
-    expect(started.ok, started.error).toBe(true);
+    expect(started.ok, started.errorKey).toBe(true);
 
     const result = await confirmEmailChange(pupilId, await codeSentTo(real));
-    expect(result.ok, result.error).toBe(true);
+    expect(result.ok, result.errorKey).toBe(true);
 
     expect((await findAccount(real))?.userId).toBe(pupilId);
   });

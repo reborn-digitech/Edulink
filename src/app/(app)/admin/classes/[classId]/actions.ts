@@ -62,7 +62,7 @@ export async function addCover(input: CoverInput): Promise<Result> {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const result = await arrangeCover(ctx, input);
     revalidatePath(`/admin/classes/${input.classId}`);
-    return { ok: result.ok, error: result.error };
+    return { ok: result.ok, errorKey: result.errorKey };
   } catch (error) {
     return failure(error);
   }
@@ -130,7 +130,7 @@ export async function addToCohort(
     const ctx = await requireApiRole("ADMIN");
     const result = await enrolStudents(ctx, classId, studentMembershipIds);
     revalidatePath(`/admin/classes/${classId}`);
-    return { ok: result.ok, error: result.error, added: result.added };
+    return { ok: result.ok, errorKey: result.errorKey, added: result.added };
   } catch (error) {
     return failure(error);
   }

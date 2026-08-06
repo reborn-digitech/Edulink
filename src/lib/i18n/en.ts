@@ -1238,6 +1238,86 @@ export const en = {
     wentOnTo: "Went on to",
   },
 
+  /* ---------------------------------------------------------------------- */
+  /* Server refusals — minted as keys in libs, translated at the boundary    */
+  /* ---------------------------------------------------------------------- */
+  refusal: {
+    /* ------------------------------ passwords ----------------------------- */
+    tooManyRetry: "Too many requests for that. Try again {hint}.",
+    tooManyCodes: "Too many codes requested. Try again {hint}.",
+    tooManyRequests: "Too many requests. Try again {hint}.",
+    codeWrong: "That code is not right, or it has expired. Ask for a new one.",
+    badMobile: "That is not a mobile number we can use. Try it with the country code, like +91 98765 43210.",
+    numberTaken: "Another account already uses that number. If it is yours, ask your school for help.",
+    numberClaimed: "Another account claimed that number in the meantime. Ask your school for help.",
+    emailLooksWrong: "That does not look like an email address.",
+    emailUnreceivable: "That address cannot receive mail. Use one you can read.",
+    emailAlreadyYours: "That is already the address on your account.",
+    emailTakenJoin: "Another account already uses that address. If both are yours, join them together from your account page instead.",
+    emailClaimed: "Another account claimed that address in the meantime. Ask your school for help.",
+    linkNotRenewable: "That link is not one we can renew.",
+    cannotVerify: "That account cannot be verified.",
+    noEmailOnAccount: "There is no email address on that account to send to.",
+
+    /* ---------------------------- password quality ------------------------ */
+    pwAtLeast10: "Use at least 10 characters.",
+    pwTooLong: "That is too long — 200 characters max.",
+    pwTrimSpace: "Remove the space at the start or end.",
+    pwTooCommon: "That is one of the most common passwords. Pick something else.",
+    pwRepeats: "Repeating one character is not enough.",
+    pwContainsName: "Do not include your name or email in your password.",
+
+    /* ------------------------------- merging ------------------------------ */
+    mergeGeneric: "That login name and password do not match an account. Check both, and remember a pupil's login name is not an email address.",
+    mergeSameAccount: "That is the account you are already signed in to. Enter your OTHER account's details.",
+    mergeServerAccounts: "Server administrator accounts cannot be joined this way.",
+    /** The role inside is the reader's translated role label. */
+    mergeBothAtSchool: "Both accounts are already at {school} as a {role}. Ask that school to remove one of them first — joining the accounts cannot decide which is right.",
+    mergeExpert: "One of these accounts is an expert account. Those hold bookings and mentorships, so they have to be joined by hand — contact support.",
+    theSameSchool: "the same school",
+
+    /* ----------------------------- membership ----------------------------- */
+    pauseSelf: "You cannot pause your own access.",
+    sayWhyAudit: "Say why, briefly. This is kept in the audit log.",
+    personNotHere: "That person is not in this school.",
+    notPaused: "Their access is not paused.",
+    alreadyPausedState: "Their access is already paused.",
+    inviteNotAccepted: "They have not accepted their invitation yet. Revoke the invite instead.",
+    onlyAdminLeft: "This is the school's only admin. Make somebody else an admin first.",
+    removeSelf: "You cannot remove yourself from your own school.",
+    onlyPupilRemoved: "Only a pupil can be removed this way. Pause a member of staff's access instead.",
+    hasRecord: "They have a record at this school, so removing them would delete it. Record them as having left instead — that keeps everything and gives the family a school record to take with them.",
+    alreadyLeftDoc: "They are already recorded as having left, which is a document. Undo that first if you really meant to remove them.",
+
+    /* ---------------------------- school record --------------------------- */
+    sayTransferReason: "Say whether they transferred, graduated or left.",
+    leaveDateInvalid: "That leaving date is not a date.",
+    pupilNotHere: "That pupil is not in this school.",
+    onlyPupilLeaves: "Only a pupil can be recorded as leaving. Pause staff access instead.",
+    alreadyLeft: "They are already recorded as having left.",
+    leaveBeforeJoin: "They cannot leave before the day they joined.",
+    notLeft: "They are not recorded as having left.",
+
+    /* ---------------------------- register duty --------------------------- */
+    teacherNotOnClass: "That teacher is not on this class.",
+    bothDatesYmd: "Give both dates as YYYY-MM-DD.",
+    lastBeforeFirstDuty: "The last day cannot be before the first.",
+    classNotHere: "That class is not in this school.",
+    notActiveStaff: "That person is not active staff at this school.",
+    coverGone: "That cover no longer exists.",
+
+    /* ------------------------------- cohort ------------------------------- */
+    nobodySelected: "Nobody was selected.",
+    notPupilsHere: "None of those are pupils at this school.",
+    notOnRoll: "They are not on this class roll.",
+    notTeachingStaff: "That person is not teaching staff at this school.",
+    notOnClass: "They are not on this class.",
+
+    /* ------------------------------- consent ------------------------------ */
+    acceptTerms: "You need to accept the terms to create a school.",
+    consentSharing: "We need your consent to show you your child's data.",
+  },
+
   push: {
     checking: "Checking notifications…",
     unsupported: "This browser cannot do push notifications. You will still see everything in the app.",

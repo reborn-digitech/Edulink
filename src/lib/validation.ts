@@ -80,7 +80,8 @@ export const registerSchoolSchema = z.object({
   school: schoolDetailsSchema,
   admin: adminAccountSchema,
   acceptedTerms: z.literal(true, {
-    errorMap: () => ({ message: "You need to accept the terms to create a school." }),
+    // ⚠ A KEY, not a sentence — the consuming action translates it.
+    errorMap: () => ({ message: "refusal.acceptTerms" }),
   }),
 });
 
@@ -206,7 +207,8 @@ export const parentSignupSchema = z.object({
   email: emailSchema,
   password: passwordSchema,
   consentSharing: z.literal(true, {
-    errorMap: () => ({ message: "We need your consent to show you your child's data." }),
+    // ⚠ A KEY, not a sentence — the consuming action translates it.
+    errorMap: () => ({ message: "refusal.consentSharing" }),
   }),
   consentNotifications: z.boolean().default(false),
 });

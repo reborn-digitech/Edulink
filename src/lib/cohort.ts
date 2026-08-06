@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
@@ -150,7 +151,8 @@ export async function candidatesFor(
     });
 }
 
-export type EnrolResult = { ok: boolean; added: number; error?: string };
+/** ⚠ `errorKey`, not a sentence — translated at the boundary. */
+export type EnrolResult = { ok: boolean; added: number; errorKey?: TranslationKey };
 
 /** Adds children to a class. Idempotent, and safe to call with a mixed list. */
 export async function enrolStudents(
@@ -161,7 +163,7 @@ export async function enrolStudents(
   await assertAdminOfClass(ctx, classId);
 
   const ids = [...new Set(studentMembershipIds)].slice(0, 500);
-  if (ids.length === 0) return { ok: false, added: 0, error: "Nobody was selected." };
+  if (ids.length === 0) return { ok: false, added: 0, errorKey: "refusal.nobodySelected" };
 
   // Re-queried with the school AND the role in the WHERE clause, so a membership
   // id copied from anywhere — another school, or a teacher's — simply is not
@@ -177,7 +179,7 @@ export async function enrolStudents(
     select: { id: true },
   });
   if (valid.length === 0) {
-    return { ok: false, added: 0, error: "None of those are pupils at this school." };
+    return { ok: false, added: 0, errorKey: "refusal.notPupilsHere" };
   }
 
   let added = 0;
@@ -219,14 +221,14 @@ export async function removeFromCohort(
   ctx: ActiveContext,
   classId: string,
   studentMembershipId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   await assertAdminOfClass(ctx, classId);
 
   const result = await db.enrollment.updateMany({
     where: { classId, schoolId: ctx.schoolId!, studentMembershipId, status: "ACTIVE" },
     data: { status: "REMOVED", removedAt: new Date() },
   });
-  if (result.count === 0) return { ok: false, error: "They are not on this class roll." };
+  if (result.count === 0) return { ok: false, errorKey: "refusal.notOnRoll" };
 
   await audit({
     schoolId: ctx.schoolId,
@@ -259,7 +261,7 @@ export async function assignTeacher(
   classId: string,
   teacherMembershipId: string,
   opts: { role?: "LEAD" | "CO"; canTakeAttendance?: boolean } = {},
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   await assertAdminOfClass(ctx, classId);
 
   const teacher = await db.membership.findFirst({
@@ -274,7 +276,7 @@ export async function assignTeacher(
     },
     select: { id: true },
   });
-  if (!teacher) return { ok: false, error: "That person is not teaching staff at this school." };
+  if (!teacher) return { ok: false, errorKey: "refusal.notTeachingStaff" };
 
   const role = opts.role ?? "LEAD";
   await db.classTeacher.upsert({
@@ -311,13 +313,13 @@ export async function unassignTeacher(
   ctx: ActiveContext,
   classId: string,
   teacherMembershipId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   await assertAdminOfClass(ctx, classId);
 
   const result = await db.classTeacher.deleteMany({
     where: { classId, schoolId: ctx.schoolId!, teacherMembershipId },
   });
-  if (result.count === 0) return { ok: false, error: "They are not on this class." };
+  if (result.count === 0) return { ok: false, errorKey: "refusal.notOnClass" };
 
   await audit({
     schoolId: ctx.schoolId,

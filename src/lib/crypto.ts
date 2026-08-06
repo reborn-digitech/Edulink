@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
 import { hash as argonHash, verify as argonVerify } from "@node-rs/argon2";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Password hashing and token handling.
@@ -84,20 +85,21 @@ const COMMON = new Set([
   "password1", "monkey12", "trustno1", "dragon12", "school12", "teacher1",
 ]);
 
-export function passwordProblems(password: string, context: string[] = []): string[] {
-  const problems: string[] = [];
-  if (password.length < 10) problems.push("Use at least 10 characters.");
-  if (password.length > 200) problems.push("That is too long — 200 characters max.");
-  if (/^\s|\s$/.test(password)) problems.push("Remove the space at the start or end.");
+/** ⚠ KEYS, not sentences — the caller translates them for whoever typed. */
+export function passwordProblems(password: string, context: string[] = []): TranslationKey[] {
+  const problems: TranslationKey[] = [];
+  if (password.length < 10) problems.push("refusal.pwAtLeast10");
+  if (password.length > 200) problems.push("refusal.pwTooLong");
+  if (/^\s|\s$/.test(password)) problems.push("refusal.pwTrimSpace");
   if (COMMON.has(password.toLowerCase())) {
-    problems.push("That is one of the most common passwords. Pick something else.");
+    problems.push("refusal.pwTooCommon");
   }
-  if (/^(.)\1+$/.test(password)) problems.push("Repeating one character is not enough.");
+  if (/^(.)\1+$/.test(password)) problems.push("refusal.pwRepeats");
   const lower = password.toLowerCase();
   for (const term of context) {
     const t = term.trim().toLowerCase();
     if (t.length >= 4 && lower.includes(t)) {
-      problems.push("Do not include your name or email in your password.");
+      problems.push("refusal.pwContainsName");
       break;
     }
   }

@@ -178,7 +178,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
   if (!lookup.ok) return { ok: false, errors: { schoolCode: lookup.error } };
 
   const problems = passwordProblems(password, [name, preferredName ?? ""]);
-  if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
+  if (problems.length > 0) return { ok: false, errors: { password: (await getT())(problems[0]!) } };
 
   const birthDate = birthdate ? parseDateOnly(birthdate) : null;
   if (birthdate && !birthDate) {
@@ -284,7 +284,15 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   const t = await getT();
   const locale = await getLocale();
   const parsed = parentSignupSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
+  if (!parsed.success) {
+    const errors = fieldErrors(parsed.error);
+    // The schema is module-level, so its consent message is minted as a KEY —
+    // this is the boundary that owns the words.
+    if (errors.consentSharing === "refusal.consentSharing") {
+      errors.consentSharing = (await getT())("refusal.consentSharing");
+    }
+    return { ok: false, errors };
+  }
 
   const { name, email, password, consentNotifications } = parsed.data;
 
@@ -297,7 +305,7 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   }
 
   const problems = passwordProblems(password, [name, email]);
-  if (problems.length > 0) return { ok: false, errors: { password: problems[0]! } };
+  if (problems.length > 0) return { ok: false, errors: { password: (await getT())(problems[0]!) } };
 
   const existing = await db.user.findUnique({ where: { email }, select: { id: true } });
   if (existing) {

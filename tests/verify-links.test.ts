@@ -258,7 +258,7 @@ describe("asking for a fresh link", () => {
     const token = await mintVerify(userId, email, { expired: true });
     const result = await resendVerification(token);
 
-    expect(result.ok, result.error).toBe(true);
+    expect(result.ok, result.errorKey).toBe(true);
     const sent = await db.outboundEmail.findFirst({
       where: { to: email, purpose: "EMAIL_VERIFY" },
       select: { text: true },
@@ -323,8 +323,8 @@ describe("asking for a fresh link", () => {
     let refusal: string | undefined;
     for (let i = 0; i < 5; i++) {
       const result = await resendVerification(token);
-      if (!result.ok && /too many/i.test(result.error ?? "")) {
-        refusal = result.error;
+      if (!result.ok && result.errorKey === "refusal.tooManyRequests") {
+        refusal = result.errorKey;
         break;
       }
     }

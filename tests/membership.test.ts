@@ -252,7 +252,7 @@ describe("⚠ a school can never end up with no admin", () => {
     // rather than a decision.
     const result = await suspendMembership(admin, adminMembershipId, REASON);
     expect(result.ok).toBe(false);
-    expect(result).toMatchObject({ error: expect.stringContaining("your own") });
+    expect(result).toMatchObject({ errorKey: "refusal.pauseSelf" });
 
     const row = await db.membership.findUniqueOrThrow({ where: { id: adminMembershipId } });
     expect(row.status).toBe("ACTIVE");
@@ -275,7 +275,7 @@ describe("⚠ a school can never end up with no admin", () => {
 
     const result = await suspendMembership(secondAdminCtx, adminMembershipId, REASON);
     expect(result.ok).toBe(false);
-    expect(result).toMatchObject({ error: expect.stringContaining("only admin") });
+    expect(result).toMatchObject({ errorKey: "refusal.onlyAdminLeft" });
 
     const row = await db.membership.findUniqueOrThrow({ where: { id: adminMembershipId } });
     expect(row.status).toBe("ACTIVE");

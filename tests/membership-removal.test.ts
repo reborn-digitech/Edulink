@@ -219,7 +219,7 @@ describe("⚠ what it refuses, because removing would destroy a record", () => {
     expect(result.ok).toBe(false);
     expect(result.ok === false && result.blockers?.attendance).toBe(1);
     // …and points at the verb that does not destroy anything.
-    expect(result.ok === false && result.error).toMatch(/left/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.hasRecord");
 
     expect(await db.membership.findUnique({ where: { id: pupilMembershipId } })).not.toBeNull();
   });
@@ -302,7 +302,7 @@ describe("⚠ what it refuses, because removing would destroy a record", () => {
 
     const result = await removeMembership(admin, pupilMembershipId);
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/already recorded as having left/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.alreadyLeftDoc");
     expect(await db.membership.findUnique({ where: { id: pupilMembershipId } })).not.toBeNull();
   });
 });
@@ -313,7 +313,7 @@ describe("⚠ who may do it, and to whom", () => {
 
     const result = await removeMembership(admin, staffMembershipId);
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/pupil/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.onlyPupilRemoved");
     expect(await db.membership.findUnique({ where: { id: staffMembershipId } })).not.toBeNull();
   });
 
@@ -336,8 +336,8 @@ describe("⚠ who may do it, and to whom", () => {
      * one. Asserting the outcome could never have shown that. Asserting the
      * words can.
      */
-    expect(result.ok === false && result.error).toMatch(/yourself/i);
-    expect(result.ok === false && result.error).not.toMatch(/pause/i);
+    // A KEY now: refusing yourself is its own answer, never the staff-pause one.
+    expect(result.ok === false && result.errorKey).toBe("refusal.removeSelf");
   });
 
   it("⚠ refuses a membership in another school, as 'not in this school'", async () => {
@@ -353,7 +353,7 @@ describe("⚠ who may do it, and to whom", () => {
     const result = await removeMembership(stranger, pupilMembershipId);
     expect(result.ok).toBe(false);
     // Never "somebody else's pupil" — assert, don't accept.
-    expect(result.ok === false && result.error).toMatch(/not in this school/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.personNotHere");
     expect(await db.membership.findUnique({ where: { id: pupilMembershipId } })).not.toBeNull();
   });
 

@@ -475,7 +475,7 @@ describe("what it refuses", () => {
 
     const result = await mergeAccounts(asOldAccount, { identifier: OLD_EMAIL, password: PASSWORD });
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/already signed in to/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.mergeSameAccount");
   });
 
   it("refuses when both accounts are at the same school in the same role", async () => {
@@ -490,7 +490,9 @@ describe("what it refuses", () => {
     const result = await mergeAccounts(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
 
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/ZZ Merge Origin School/);
+    // The school name travels as a VAR now, beside the key.
+    expect(result.ok === false && result.errorKey).toBe("refusal.mergeBothAtSchool");
+    expect(result.ok === false && result.errorVars?.school).toMatch(/ZZ Merge Origin School/);
     const old = await db.user.findUniqueOrThrow({ where: { id: oldUserId } });
     expect(old.disabledAt).toBeNull();
   });
@@ -502,7 +504,7 @@ describe("what it refuses", () => {
     const keeper = ctx({ userId: newUserId, membershipId: newMembershipId, schoolId: destinationId, role: "STUDENT" });
     const absorbing = await mergeAccounts(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
     expect(absorbing.ok).toBe(false);
-    expect(absorbing.ok === false && absorbing.error).toMatch(/administrator/i);
+    expect(absorbing.ok === false && absorbing.errorKey).toBe("refusal.mergeServerAccounts");
 
     await db.user.update({ where: { id: oldUserId }, data: { isSuperuser: false } });
     const asSuperuser = ctx({
@@ -529,7 +531,7 @@ describe("what it refuses", () => {
     const result = await mergeAccounts(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
 
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/expert account/i);
+    expect(result.ok === false && result.errorKey).toBe("refusal.mergeExpert");
   });
 
   it("refuses an account with no password rather than treating it as open", async () => {

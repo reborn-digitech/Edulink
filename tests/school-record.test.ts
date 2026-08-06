@@ -281,7 +281,7 @@ describe("who may record a departure", () => {
     const result = await recordDeparture(otherSchoolAdmin, pupilMembershipId, LEAVING);
     expect(result.ok).toBe(false);
     if (result.ok) return;
-    expect(result.error).toContain("not in this school");
+    expect(result.ok === false && result.errorKey).toBe("refusal.pupilNotHere");
   });
 
   it("⚠ refuses to issue one for a member of staff", async () => {
@@ -290,7 +290,7 @@ describe("who may record a departure", () => {
     const result = await recordDeparture(admin, spareStaffMembershipId, LEAVING);
     expect(result.ok).toBe(false);
     if (result.ok) return;
-    expect(result.error).toContain("Only a pupil");
+    expect(result.ok === false && result.errorKey).toBe("refusal.onlyPupilLeaves");
   });
 
   it("refuses a reason it does not recognise", async () => {

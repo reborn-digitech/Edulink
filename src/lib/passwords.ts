@@ -16,9 +16,9 @@ import {
   sendEmailChangedNotice,
   sendVerifyEmail,
 } from "./email";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   consume,
-  retryHint,
   RESET_REQUESTS,
   PHONE_VERIFY_REQUESTS,
   EMAIL_CHANGE_REQUESTS,
@@ -154,8 +154,10 @@ export type ResetRequest = {
   hint: string;
   /** Which channel it would have gone down, from the shape of the input. */
   channel: "EMAIL" | "PHONE";
-  /** Set when `ok` is false: a sentence saying when to come back. */
-  error?: string;
+  /** ⚠ Set when `ok` is false: a KEY, translated at the action boundary. */
+  errorKey?: TranslationKey;
+  /** For rate-limit refusals: the boundary composes "{hint}" from this. */
+  retryAfterSeconds?: number;
 };
 
 /**
@@ -203,7 +205,8 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
       ok: false,
       hint,
       channel,
-      error: `Too many requests for that. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+      errorKey: "refusal.tooManyRetry",
+      retryAfterSeconds: gate.retryAfterSeconds,
     };
   }
 
@@ -294,7 +297,7 @@ function randomSixDigits(): number {
 /* Using it                                                                    */
 /* -------------------------------------------------------------------------- */
 
-export type ResetResult = { ok: boolean; error?: string };
+export type ResetResult = { ok: boolean; errorKey?: TranslationKey };
 
 /**
  * Sets a new password, given the identifier and the code that was sent to it.
@@ -316,10 +319,7 @@ export async function resetPassword(
   code: string,
   newPassword: string,
 ): Promise<ResetResult> {
-  const generic: ResetResult = {
-    ok: false,
-    error: "That code is not right, or it has expired. Ask for a new one.",
-  };
+  const generic: ResetResult = { ok: false, errorKey: "refusal.codeWrong" };
 
   const trimmedCode = code.trim();
   if (trimmedCode.length === 0) return generic;
@@ -392,7 +392,7 @@ export async function resetPassword(
   // code — somebody who has proved they hold the phone should not have to ask
   // for a second message because they typed a short password first.
   const problems = passwordProblems(newPassword, [account.email ?? "", account.phone ?? ""]);
-  if (problems.length > 0) return { ok: false, error: problems[0] };
+  if (problems.length > 0) return { ok: false, errorKey: problems[0] };
 
   const passwordHash = await hashPassword(newPassword);
 
@@ -434,7 +434,13 @@ export async function resetPassword(
 
 const PHONE_PURPOSE = "PHONE_VERIFY";
 
-export type PhoneChange = { ok: boolean; error?: string; hint?: string };
+/** ⚠ `errorKey`, not a sentence — translated at the action boundary. */
+export type PhoneChange = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  retryAfterSeconds?: number;
+  hint?: string;
+};
 
 /**
  * Step one of putting a mobile number on an account: send a code to it.
@@ -461,7 +467,7 @@ export async function startPhoneChange(
   if (!phone) {
     return {
       ok: false,
-      error: "That is not a mobile number we can use. Try it with the country code, like +91 98765 43210.",
+      errorKey: "refusal.badMobile",
     };
   }
 
@@ -472,7 +478,7 @@ export async function startPhoneChange(
   if (taken) {
     return {
       ok: false,
-      error: "Another account already uses that number. If it is yours, ask your school for help.",
+      errorKey: "refusal.numberTaken",
     };
   }
 
@@ -489,7 +495,8 @@ export async function startPhoneChange(
   if (!gate.allowed) {
     return {
       ok: false,
-      error: `Too many codes requested. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+      errorKey: "refusal.tooManyCodes",
+      retryAfterSeconds: gate.retryAfterSeconds,
     };
   }
 
@@ -528,7 +535,7 @@ export async function startPhoneChange(
 export async function confirmPhoneChange(userId: string, code: string): Promise<PhoneChange> {
   const generic: PhoneChange = {
     ok: false,
-    error: "That code is not right, or it has expired. Ask for a new one.",
+    errorKey: "refusal.codeWrong",
   };
 
   const live = await db.authToken.findFirst({
@@ -571,7 +578,7 @@ export async function confirmPhoneChange(userId: string, code: string): Promise<
     await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
     return {
       ok: false,
-      error: "Another account claimed that number in the meantime. Ask your school for help.",
+      errorKey: "refusal.numberClaimed",
     };
   }
 
@@ -591,7 +598,12 @@ export async function confirmPhoneChange(userId: string, code: string): Promise<
 
 const EMAIL_PURPOSE = "EMAIL_CHANGE";
 
-export type EmailChange = { ok: boolean; error?: string; sentTo?: string };
+export type EmailChange = {
+  ok: boolean;
+  errorKey?: TranslationKey;
+  retryAfterSeconds?: number;
+  sentTo?: string;
+};
 
 /**
  * Step one of changing the email on an account: send a code to the new one.
@@ -626,15 +638,15 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
    * would otherwise mint an account nobody can ever send a reset to.
    */
   if (!/^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) || email.length > 320) {
-    return { ok: false, error: "That does not look like an email address." };
+    return { ok: false, errorKey: "refusal.emailLooksWrong" };
   }
   if (!isDeliverableEmail(email)) {
-    return { ok: false, error: "That address cannot receive mail. Use one you can read." };
+    return { ok: false, errorKey: "refusal.emailUnreceivable" };
   }
 
   const current = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
   if (current?.email === email) {
-    return { ok: false, error: "That is already the address on your account." };
+    return { ok: false, errorKey: "refusal.emailAlreadyYours" };
   }
 
   /**
@@ -659,8 +671,7 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
   if (taken) {
     return {
       ok: false,
-      error:
-        "Another account already uses that address. If both are yours, join them together from your account page instead.",
+      errorKey: "refusal.emailTakenJoin",
     };
   }
 
@@ -672,7 +683,8 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
   if (!gate.allowed) {
     return {
       ok: false,
-      error: `Too many codes requested. Try again ${retryHint(gate.retryAfterSeconds)}.`,
+      errorKey: "refusal.tooManyCodes",
+      retryAfterSeconds: gate.retryAfterSeconds,
     };
   }
 
@@ -731,7 +743,7 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
 export async function confirmEmailChange(userId: string, code: string): Promise<EmailChange> {
   const generic: EmailChange = {
     ok: false,
-    error: "That code is not right, or it has expired. Ask for a new one.",
+    errorKey: "refusal.codeWrong",
   };
 
   const live = await db.authToken.findFirst({
@@ -782,7 +794,7 @@ export async function confirmEmailChange(userId: string, code: string): Promise<
     await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
     return {
       ok: false,
-      error: "Another account claimed that address in the meantime. Ask your school for help.",
+      errorKey: "refusal.emailClaimed",
     };
   }
 
@@ -901,9 +913,9 @@ export async function verifyEmailByToken(rawToken: string | undefined): Promise<
  */
 export async function resendVerification(
   rawToken: string | undefined,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey; retryAfterSeconds?: number }> {
   const token = rawToken?.trim();
-  if (!token) return { ok: false, error: "That link is not one we can renew." };
+  if (!token) return { ok: false, errorKey: "refusal.linkNotRenewable" };
 
   /**
    * Deliberately does NOT require the row to be live. Expired is the ordinary
@@ -917,7 +929,7 @@ export async function resendVerification(
     select: { userId: true, purpose: true },
   });
   if (!row?.userId || row.purpose !== "EMAIL_VERIFY") {
-    return { ok: false, error: "That link is not one we can renew." };
+    return { ok: false, errorKey: "refusal.linkNotRenewable" };
   }
   const userId = row.userId;
 
@@ -927,16 +939,16 @@ export async function resendVerification(
     EMAIL_CHANGE_REQUESTS.windowMs,
   );
   if (!gate.allowed) {
-    return { ok: false, error: `Too many requests. Try again ${retryHint(gate.retryAfterSeconds)}.` };
+    return { ok: false, errorKey: "refusal.tooManyRequests", retryAfterSeconds: gate.retryAfterSeconds };
   }
 
   const user = await db.user.findUnique({
     where: { id: userId },
     select: { email: true, emailVerifiedAt: true, disabledAt: true },
   });
-  if (!user || user.disabledAt) return { ok: false, error: "That account cannot be verified." };
+  if (!user || user.disabledAt) return { ok: false, errorKey: "refusal.cannotVerify" };
   if (!isDeliverableEmail(user.email)) {
-    return { ok: false, error: "There is no email address on that account to send to." };
+    return { ok: false, errorKey: "refusal.noEmailOnAccount" };
   }
   if (user.emailVerifiedAt) return { ok: true };
 

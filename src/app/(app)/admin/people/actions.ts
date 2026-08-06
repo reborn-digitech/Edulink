@@ -46,7 +46,7 @@ export async function suspend(membershipId: string, reason: string): Promise<Res
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await suspendMembership(ctx, membershipId, reason);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     revalidatePath("/admin/safety");
     return { ok: true };
@@ -59,7 +59,7 @@ export async function reinstate(membershipId: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await reinstateMembership(ctx, membershipId);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     revalidatePath("/admin/safety");
     return { ok: true };
@@ -92,7 +92,7 @@ export async function recordLeaving(
       // worse than being asked again.
       leftOn: input.leftOn ? new Date(input.leftOn) : undefined,
     });
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     return { ok: true, recordId: result.recordId };
   } catch (error) {
@@ -104,7 +104,7 @@ export async function undoLeaving(membershipId: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await undoDeparture(ctx, membershipId);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     return { ok: true };
   } catch (error) {
@@ -128,7 +128,7 @@ export async function removePerson(membershipId: string): Promise<RemovalActionR
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await removeMembership(ctx, membershipId);
-    if (!result.ok) return { ok: false, error: result.error, blockers: result.blockers };
+    if (!result.ok) return { ok: false, errorKey: result.errorKey, blockers: result.blockers };
     revalidatePath("/admin/people");
     revalidatePath("/admin/classes");
     return { ok: true };

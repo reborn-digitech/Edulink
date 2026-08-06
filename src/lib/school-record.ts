@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
@@ -65,7 +66,10 @@ export type DepartureInput = {
   leftOn?: Date;
 };
 
-export type DepartureResult = { ok: true; recordId: string } | { ok: false; error: string };
+/** ⚠ `errorKey`, not a sentence — translated at the boundary (the leave.ts pattern). */
+export type DepartureResult =
+  | { ok: true; recordId: string }
+  | { ok: false; errorKey: TranslationKey };
 
 /**
  * The certificate as anybody reads it.
@@ -116,13 +120,13 @@ export async function recordDeparture(
     throw new AccessError("Only an admin can record a pupil leaving");
   }
   if (!LEAVING_REASONS.includes(input.reason)) {
-    return { ok: false, error: "Say whether they transferred, graduated or left." };
+    return { ok: false, errorKey: "refusal.sayTransferReason" };
   }
 
   const schoolId = ctx.schoolId;
   const leftAt = input.leftOn ?? new Date();
   if (Number.isNaN(leftAt.getTime())) {
-    return { ok: false, error: "That leaving date is not a date." };
+    return { ok: false, errorKey: "refusal.leaveDateInvalid" };
   }
 
   const membership = await db.membership.findFirst({
@@ -137,7 +141,7 @@ export async function recordDeparture(
       leftAt: true,
     },
   });
-  if (!membership) return { ok: false, error: "That pupil is not in this school." };
+  if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
 
   // PUPILS ONLY, and this is a real guard rather than a type narrowing. Staff
   // leave schools too, and when they do the school owes them a payslip and a
@@ -145,14 +149,14 @@ export async function recordDeparture(
   // a departure for a teacher would produce a document that reads like nonsense
   // and would put their `leftAt` in a code path nothing else expects.
   if (membership.role !== "STUDENT") {
-    return { ok: false, error: "Only a pupil can be recorded as leaving. Pause staff access instead." };
+    return { ok: false, errorKey: "refusal.onlyPupilLeaves" };
   }
-  if (membership.leftAt) return { ok: false, error: "They are already recorded as having left." };
+  if (membership.leftAt) return { ok: false, errorKey: "refusal.alreadyLeft" };
 
   if (leftAt < membership.joinedAt) {
     // A certificate saying somebody left before they arrived is the kind of
     // thing nobody notices until a receiving school asks about it.
-    return { ok: false, error: "They cannot leave before the day they joined." };
+    return { ok: false, errorKey: "refusal.leaveBeforeJoin" };
   }
 
   const school = await db.school.findUniqueOrThrow({
@@ -288,7 +292,7 @@ export async function recordDeparture(
 export async function undoDeparture(
   ctx: ActiveContext,
   membershipId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) {
     throw new AccessError("Only an admin can undo a leaving record");
   }
@@ -298,8 +302,8 @@ export async function undoDeparture(
     where: { id: membershipId, schoolId, role: "STUDENT" },
     select: { id: true, leftAt: true },
   });
-  if (!membership) return { ok: false, error: "That pupil is not in this school." };
-  if (!membership.leftAt) return { ok: false, error: "They are not recorded as having left." };
+  if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
+  if (!membership.leftAt) return { ok: false, errorKey: "refusal.notLeft" };
 
   await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;

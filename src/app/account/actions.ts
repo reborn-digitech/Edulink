@@ -10,6 +10,7 @@ import { audit } from "@/lib/audit";
 import { revokeOtherSessions, revokeSession } from "@/lib/session";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
 import { getT } from "@/lib/i18n/server";
+import { refusalText } from "@/lib/i18n/refusal";
 import { requireApiUser } from "@/lib/tenancy";
 import {
   startPhoneChange,
@@ -177,16 +178,27 @@ export type PhoneState = { ok: boolean; error?: string; hint?: string };
  * that looks up an account by phone can see it in the meantime, so an
  * unconfirmed number is not a login and not a reset destination.
  */
+/** The lib mints a KEY; this boundary turns it into the reader's words. */
+async function phoneState(result: Awaited<ReturnType<typeof startPhoneChange>>): Promise<PhoneState> {
+  if (result.ok || !result.errorKey) return { ok: result.ok, hint: result.hint };
+  const t = await getT();
+  return {
+    ok: false,
+    hint: result.hint,
+    error: refusalText(t, { errorKey: result.errorKey, retryAfterSeconds: result.retryAfterSeconds }),
+  };
+}
+
 export async function sendMobileCode(raw: string): Promise<PhoneState> {
   const session = await requireApiUser();
-  return startPhoneChange(session.user.id, raw);
+  return phoneState(await startPhoneChange(session.user.id, raw));
 }
 
 export async function confirmMobile(code: string): Promise<PhoneState> {
   const session = await requireApiUser();
   const result = await confirmPhoneChange(session.user.id, code);
   if (result.ok) revalidatePath("/account");
-  return result;
+  return phoneState(result);
 }
 
 /** Taking it off needs no code — see the note on `removePhone`. */
@@ -194,7 +206,7 @@ export async function clearMobile(): Promise<PhoneState> {
   const session = await requireApiUser();
   const result = await removePhone(session.user.id);
   revalidatePath("/account");
-  return result;
+  return phoneState(result);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -214,9 +226,18 @@ export type EmailState = { ok: boolean; error?: string; sentTo?: string };
  * the only thing they sign in with — so emptying it makes an account nobody can
  * get into. Changing replaces; it never clears.
  */
+async function emailState(result: Awaited<ReturnType<typeof startEmailChange>>): Promise<EmailState> {
+  if (result.ok || !result.errorKey) return { ok: result.ok, sentTo: result.sentTo };
+  const t = await getT();
+  return {
+    ok: false,
+    error: refusalText(t, { errorKey: result.errorKey, retryAfterSeconds: result.retryAfterSeconds }),
+  };
+}
+
 export async function sendEmailCode(raw: string): Promise<EmailState> {
   const session = await requireApiUser();
-  return startEmailChange(session.user.id, raw);
+  return emailState(await startEmailChange(session.user.id, raw));
 }
 
 export async function confirmEmail(code: string): Promise<EmailState> {
@@ -224,5 +245,5 @@ export async function confirmEmail(code: string): Promise<EmailState> {
   const result = await confirmEmailChange(session.user.id, code);
   // The header on this page shows the address, and so does the shell.
   if (result.ok) revalidatePath("/account");
-  return result;
+  return emailState(result);
 }
