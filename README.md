@@ -1963,6 +1963,42 @@ One line each, with the default rejected.
   React-compiler-era rules deliberately downgraded with the reasoning in
   `eslint.config.mjs`.
 
+- **The only-reasoned-about list is empty, and three of its four items were
+  bugs.** The last four paths no test or walk had ever exercised —
+  principal-as-LEAD, quiet-hours delivery, print output, multi-pupil ordering —
+  were exercised, which is the strongest argument the list ever made for
+  itself:
+  **PRINTING A PROGRESS REPORT PRINTED THE APP.** The first real print-to-PDF
+  of a signed-in report carried the side rail, the bottom tab bar and the
+  "Take the register" button onto the sheet — `.no-print` had only ever been
+  applied to the page's own controls — and a dark-theme user's print kept the
+  dark text variables on paper that doesn't print backgrounds: grey-on-nothing
+  headings on the one artifact a school hands to a parent. The shell chrome is
+  `print:hidden` now, and every dark palette block sits inside `@media screen`,
+  so paper always gets the light ink. Seen fixed the same way it was seen
+  broken: a before and after PDF of the same page.
+  **WHICH CHILD A PARENT LANDED ON WAS A COIN TOSS.** The guardianship query
+  behind `children[0]` — the default child on every parent page — had no
+  `orderBy`, so it was Postgres row order: `grading.test.ts`'s
+  findFirst-without-orderBy bug, one layer up, on a page not a test. First
+  claimed, first shown now; the /record page's children order by name; and
+  `tests/children-order.test.ts` inserts its fixtures in the OPPOSITE order to
+  what it asserts, so deleting either `orderBy` fails loudly. Verified live
+  with the seeded parent whose two children are at two different schools and
+  whose claims are one millisecond apart — the exact pair row order would
+  scramble.
+  **The other two worked as designed, and are now pinned rather than presumed.**
+  `tests/principal-lead.test.ts` appoints a PRINCIPAL membership LEAD through
+  the real `assignTeacher` (an ADMIN membership is refused — that is an office
+  role), builds and publishes a report card as the head, and is refused again
+  on demotion to CO. `tests/notify-delivery.test.ts` registers a live local
+  HTTPS endpoint as the user's push subscription, so the web-push POST arriving
+  or not IS the delivery: suppressed inside the quiet window, delivered outside
+  it and when urgent, the in-app row written every time — the suppression point
+  itself, not just the `inQuietHours` arithmetic that was already tested.
+  What this leaves unexercised is what a machine cannot reach: the install
+  button, and translations no native reader has read.
+
 ### Built but not click-through verified
 
 Renders and typechecks; treat as `Untested:`.
