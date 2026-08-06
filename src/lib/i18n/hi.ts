@@ -813,6 +813,9 @@ export const hi: Dictionary = {
   },
 
   practice: {
+    allClasses: "सभी कक्षाएँ",
+    classN: "कक्षा {n}",
+    triedOfTotal: "{total} में से {seen} किए",
     intro: "अभ्यास जो तुम्हारे साथ चलता है। दो सही करो तो कठिन होता है; दो गलत तो आसान।",
     allSubjects: "सब",
     level1: "याद रखो · Remember",

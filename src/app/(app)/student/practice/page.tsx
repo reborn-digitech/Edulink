@@ -31,15 +31,21 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PracticePage({
   searchParams,
 }: {
-  searchParams: Promise<{ subject?: string }>;
+  searchParams: Promise<{ subject?: string; grade?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
-  const { subject } = await searchParams;
+  const { subject, grade } = await searchParams;
   const t = await getT();
 
   const language = normaliseLanguage(ctx.user.prefs.locale);
   const topics = await listTopics(ctx, { subject, language });
   const subjects = [...new Set(topics.map((t) => t.subject))];
+  // The drill bank made this list ten grades deep, so a class filter joined
+  // the subject filter. Filtered AFTER the query on purpose: the grade chips
+  // must list every class that exists, which the filtered rows can't tell us.
+  const grades = [...new Set(topics.map((t) => t.classLevel))].sort((a, b) => a - b);
+  const gradeNum = grade ? Number(grade) : null;
+  const shown = gradeNum ? topics.filter((t) => t.classLevel === gradeNum) : topics;
 
   return (
     <div className="space-y-6">
@@ -62,7 +68,7 @@ export default async function PracticePage({
           {subjects.length > 1 && (
             <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
               <Link
-                href="/student/practice"
+                href={`/student/practice${gradeNum ? `?grade=${gradeNum}` : ""}`}
                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
@@ -72,7 +78,7 @@ export default async function PracticePage({
               {subjects.map((s) => (
                 <Link
                   key={s}
-                  href={`/student/practice?subject=${s}`}
+                  href={`/student/practice?subject=${s}${gradeNum ? `&grade=${gradeNum}` : ""}`}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
@@ -83,16 +89,40 @@ export default async function PracticePage({
             </nav>
           )}
 
+          {grades.length > 1 && (
+            <nav aria-label={t("practice.allClasses")} className="flex flex-wrap gap-2">
+              <Link
+                href={`/student/practice${subject ? `?subject=${subject}` : ""}`}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                  !gradeNum ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
+                }`}
+              >
+                {t("practice.allClasses")}
+              </Link>
+              {grades.map((g) => (
+                <Link
+                  key={g}
+                  href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=${g}`}
+                  className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                    gradeNum === g ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
+                  }`}
+                >
+                  {t("practice.classN", { n: g })}
+                </Link>
+              ))}
+            </nav>
+          )}
+
           <ul className="grid gap-3 sm:grid-cols-2">
-            {topics.map((topic) => (
+            {shown.map((topic) => (
               <li key={topic.id}>
                 <Card interactive className="h-full">
                   <Link href={`/student/practice/${topic.slug}`} className="block p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                          {SUBJECT_LABEL[topic.subject as QuizSubject] ?? topic.subject} · Class{" "}
-                          {topic.classLevel}
+                          {SUBJECT_LABEL[topic.subject as QuizSubject] ?? topic.subject} ·{" "}
+                          {t("practice.classN", { n: topic.classLevel })}
                         </p>
                         <p className="mt-0.5 font-semibold text-fg">{topic.name}</p>
                       </div>
@@ -114,7 +144,7 @@ export default async function PracticePage({
                         {t(QUIZ_LEVELS[topic.level - 1]?.labelKey ?? "practice.level1")}
                       </Badge>
                       <span className="text-xs text-fg-muted">
-                        {topic.seenCount} of {topic.questionCount} tried
+                        {t("practice.triedOfTotal", { seen: topic.seenCount, total: topic.questionCount })}
                       </span>
                       {topic.completed && !topic.badgeEarned && (
                         <span className="inline-flex items-center gap-1 text-xs text-fg-muted">

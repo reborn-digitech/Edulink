@@ -280,7 +280,6 @@ export async function listTopics(
       ...(opts.classLevel ? { classLevel: opts.classLevel } : {}),
     },
     include: {
-      questions: { select: { id: true, difficulty: true } },
       // Nothing is fetched for English, so the default path costs exactly what
       // it did before translations existed.
       translations:
@@ -290,6 +289,21 @@ export async function listTopics(
     },
     orderBy: [{ subject: "asc" }, { classLevel: "asc" }, { position: "asc" }],
   });
+
+  // Counts by GROUP BY, never by loading rows. This used to include every
+  // question's id and difficulty per topic to add them up in JS — fine at 105
+  // questions, and a million-row page load the day the generated bank landed.
+  const grouped = await db.quizQuestion.groupBy({
+    by: ["topicId", "difficulty"],
+    where: { topicId: { in: topics.map((t) => t.id) } },
+    _count: { _all: true },
+  });
+  const spreadByTopic = new Map<string, number[]>();
+  for (const g of grouped) {
+    const spread = spreadByTopic.get(g.topicId) ?? (new Array(MAX_LEVEL).fill(0) as number[]);
+    spread[clampLevel(g.difficulty) - 1]! += g._count._all;
+    spreadByTopic.set(g.topicId, spread);
+  }
 
   const mastery =
     membershipId && schoolId
@@ -301,11 +315,8 @@ export async function listTopics(
 
   return topics.map((topic) => {
     const mine = byTopic.get(topic.id);
-    const spread = new Array(MAX_LEVEL).fill(0) as number[];
-    for (const q of topic.questions) {
-      const index = clampLevel(q.difficulty) - 1;
-      spread[index] = (spread[index] ?? 0) + 1;
-    }
+    const spread = spreadByTopic.get(topic.id) ?? (new Array(MAX_LEVEL).fill(0) as number[]);
+    const questionCount = spread.reduce((a, b) => a + b, 0);
 
     const t = "translations" in topic ? topic.translations?.[0] : undefined;
 
@@ -317,12 +328,12 @@ export async function listTopics(
       subject: topic.subject,
       classLevel: topic.classLevel,
       summary: pick(t?.summary, topic.summary),
-      questionCount: topic.questions.length,
+      questionCount,
       levelSpread: spread,
       level: mine?.level ?? MIN_LEVEL,
       seenCount: mine?.seenCount ?? 0,
       correctCount: mine?.correctCount ?? 0,
-      completed: (mine?.seenCount ?? 0) >= topic.questions.length && topic.questions.length > 0,
+      completed: (mine?.seenCount ?? 0) >= questionCount && questionCount > 0,
       badgeEarned: mine?.cleanCompletionAt != null,
     };
   });
@@ -396,24 +407,42 @@ export async function nextQuestion(
   });
   if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
-  const [pool, seen, mastery] = await Promise.all([
-    db.quizQuestion.findMany({
-      where: { topicId: attempt.topicId },
-      select: { id: true, difficulty: true, stem: true, choices: true },
-      orderBy: [{ difficulty: "asc" }, { id: "asc" }],
-    }),
+  const [seen, mastery, totalCount] = await Promise.all([
     db.quizResponse.findMany({ where: { attemptId }, select: { questionId: true } }),
     db.quizMastery.findUnique({
       where: { studentMembershipId_topicId: { studentMembershipId: membershipId, topicId: attempt.topicId } },
       select: { level: true },
     }),
+    db.quizQuestion.count({ where: { topicId: attempt.topicId } }),
   ]);
-
   const seenIds = new Set(seen.map((s) => s.questionId));
-  const picked = pickQuestion(pool, mastery?.level ?? MIN_LEVEL, seenIds);
-  if (!picked) return null;
 
-  const full = pool.find((q) => q.id === picked.id)!;
+  /**
+   * `pickQuestion`, AS A QUERY. This used to load the topic's entire pool and
+   * pick in JS — fine at a hundred questions, five thousand rows per served
+   * question once the generated bank landed. The unit tests on `pickQuestion`
+   * are the spec this must keep: nearest difficulty to the wanted level wins;
+   * on a tie in distance the LOWER level wins (it came first in a pool sorted
+   * difficulty-asc); within a level, id order decides; seen questions never
+   * come back. The ladder below walks distances outward trying lower-first,
+   * which is exactly that ordering.
+   */
+  const wanted = clampLevel(mastery?.level ?? MIN_LEVEL);
+  const seenList = [...seenIds];
+  let full: { id: string; difficulty: number; stem: string; choices: string } | null = null;
+  for (let distance = 0; distance < MAX_LEVEL && !full; distance++) {
+    const rungs = distance === 0 ? [wanted] : [wanted - distance, wanted + distance];
+    for (const level of rungs) {
+      if (level < MIN_LEVEL || level > MAX_LEVEL) continue;
+      full = await db.quizQuestion.findFirst({
+        where: { topicId: attempt.topicId, difficulty: level, id: { notIn: seenList } },
+        select: { id: true, difficulty: true, stem: true, choices: true },
+        orderBy: { id: "asc" },
+      });
+      if (full) break;
+    }
+  }
+  if (!full) return null;
 
   // Fetched for the ONE question being served, not for the whole pool — the
   // pool query above is the hot path and runs on every question.
@@ -439,7 +468,7 @@ export async function nextQuestion(
     difficulty: full.difficulty,
     levelLabelKey: QUIZ_LEVELS[clampLevel(full.difficulty) - 1]!.labelKey,
     askedCount: seenIds.size,
-    totalCount: pool.length,
+    totalCount,
   };
 }
 

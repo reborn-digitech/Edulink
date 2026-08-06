@@ -936,6 +936,9 @@ export const en = {
   practice: {
     intro: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off.",
     allSubjects: "All",
+    allClasses: "All classes",
+    classN: "Class {n}",
+    triedOfTotal: "{seen} of {total} tried",
     /* Level labels are deliberately bilingual in every language — the Hindi
        word is part of the product voice ("Yaad rakho · Remember"). */
     level1: "Yaad rakho · Remember",

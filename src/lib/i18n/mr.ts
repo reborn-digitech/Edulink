@@ -810,6 +810,9 @@ export const mr: Dictionary = {
   },
 
   practice: {
+    allClasses: "सर्व इयत्ता",
+    classN: "इयत्ता {n}",
+    triedOfTotal: "{total} पैकी {seen} सोडवले",
     intro: "तुझ्यासोबत चालणारा सराव. दोन बरोबर आले की कठीण होते; दोन चुकले की सोपे.",
     allSubjects: "सर्व",
     level1: "याद रखो · लक्षात ठेवा",

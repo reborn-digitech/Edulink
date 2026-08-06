@@ -173,8 +173,9 @@ applies here: you cannot revoke the only one.
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
-| `npm run quiz:verify` | Check the question bank. Structure + arithmetic. **Says what it cannot check** |
+| `npm run quiz:verify` | Check the hand-written question bank. Structure + arithmetic. **Says what it cannot check** |
 | `npm run quiz:import` | Load `content/quiz/*.json`. Verifies first and refuses the run if anything fails |
+| `npm run quiz:generate` | Generate + import the 1M drill bank (grades 3–12). Deterministic, idempotent, every question checkExpr-proven before writing. `--dry` generates and verifies without touching the DB |
 | `npm run rls:generate` | Regenerate `prisma/rls.sql` from the schema |
 | `npm run rls:verify` | **Needs Postgres.** Proves tenant isolation end to end |
 | `npm run sweep` | **Needs the app running.** Every route, as the role that owns it |
@@ -573,13 +574,20 @@ Break these and something quietly goes wrong for a child or a parent.
      order to what is asserted. Verified live with the seeded two-school
      parent: stable order on five pages, default child correct, `?child=`
      honoured.
-2. **Fill the Practice bank.** DELIBERATELY LAST. The engine, importer, verifier,
-   badge and the English/Hindi/Marathi switch are all done and proven; what is
-   missing is only content, and content does not block anything else in this
-   list. 105 questions across 9 topics against an ask of 150,000. Every
-   computable answer carries a `checkExpr`, every non-computable one is counted
-   as unproven out loud, and `npm run quiz:verify` runs before each import — its
-   separate counts are the measure of progress, never the total.
+2. ~~**Fill the Practice bank.**~~ **FILLED — 1,005,105 questions, and every
+   generated one proves itself.** The ask moved to a million (~100,000 per
+   class, 3–12) and the only honest way to that number was taken: a
+   deterministic template generator (`npm run quiz:generate`,
+   `scripts/gen-quiz-bank.ts`) whose every emitted question derives its answer
+   from a `checkExpr` evaluated through the SAME shared evaluator the verifier
+   uses, before it is allowed into the database. 100,500 per grade across 72
+   drill topics, English/Hindi/Marathi on every row, MATHS only — because
+   arithmetic is the one subject a machine can vouch for, and generating what
+   cannot be checked was rejected here once and stays rejected. The 105
+   hand-written questions (six subjects, human-review counts) are untouched.
+   What remains for a human: the hand-written subjects still grow by reviewed
+   batches, and the generated Hindi/Marathi templates carry the same
+   native-reader caveat as the rest of the app.
 
 **The cheap thing got done.** Sections 2, 5, 7 and 8 were walked signed out and
 §§12m0–12q walked for the first time — roughly 150 boxes against a production
@@ -1021,8 +1029,10 @@ One line each, with the default rejected.
   for putting a machine-checkable expression on every question whose answer is
   computable — 45 of the current 105 carry one.
 - **What `quiz:verify` will NOT tell you**, printed by the tool itself on every
-  run: 60 of 105 questions are not machine-checkable, because there is no program
-  that can confirm "Dandi March, 1930" answers a history question. It reports
+  run: 60 of the 105 hand-written questions are not machine-checkable, because
+  there is no program that can confirm "Dandi March, 1930" answers a history
+  question. (The generated drill bank is the inverse by construction — 100%
+  checkExpr-proven, 0% human-read — which is exactly why it is MATHS only.) It reports
   structure, arithmetic and human-review counts as three separate numbers and
   never collapses them into "verified". A bank that claims to be verified correct
   by a script is telling you about the script.
@@ -1998,6 +2008,22 @@ One line each, with the default rejected.
   itself, not just the `inQuietHours` arithmetic that was already tested.
   What this leaves unexercised is what a machine cannot reach: the install
   button, and translations no native reader has read.
+- **The million-question drill bank, generated, proven and served.**
+  `npm run quiz:generate` builds 1,005,000 questions (grades 3–12, 100,500
+  each, 72 MATHS topics, six-level ladders, English/Hindi/Marathi on every
+  row) in ~17s and imports them in ~5min, deterministically — same run, same
+  stems, same ids, so re-running is a no-op and editing a template is a clean
+  diff. Every question's `checkExpr` is evaluated against its marked option
+  BEFORE the row is written, through the same evaluator the verifier uses;
+  the wanted-vs-produced guard caught nine template bugs during authoring
+  (parameter spaces too small, ranges swallowing each other, a probability
+  decoy numerically equal to the answer under a different spelling — two
+  correct options, child marked wrong for the honest one). The serving paths
+  were rewritten for the scale (GROUP BY counts; `pickQuestion` semantics as
+  a ladder query, its unit tests kept as the spec), proven live: 165ms topic
+  list, 83ms drill page, Hindi read back off the wire, and 567 imported rows
+  re-proving their own arithmetic in `tests/drill-bank.test.ts` on every
+  `npm test`. 1406/1406 tests, 315/315 sweep, all green after.
   **A later gap hunt over the same ground found the SIXTH audit blind spot**:
   English *trailing* an inline element, which starts lowercase and so slipped
   every capital-anchored rule — "<strong>{url}</strong> and type this code."
@@ -2079,31 +2105,39 @@ navigation" means the actual list rather than one somebody maintained by hand.
   told every other school the winner's school. Not their name, class, age or
   which of their pupils it was — and a published competition result is a public
   thing. That is a different order of disclosure from a table of named children.
-- **The Practice question BANK, at scale.** The engine is built and works end to
-  end; the bank is **105 questions across 9 topics**, covering all six subjects
-  and spread evenly over all six levels (L1–L5 have 18 each, L6 has 15). The ask
-  was 500 a chapter, 5,000+ a subject a class — across six subjects and five
-  class-levels, 150,000+ questions with worked solutions. So this is **0.07% of
-  the ask**, and saying so is the point: the counts below are what the bank has
-  earned, not what it was asked for. It is a content programme, not a commit, and
-  the honest position is:
+- ~~The Practice question BANK, at scale.~~ **BUILT — 1,005,105 questions in
+  the database**: 1,005,000 generated drills (grades 3–12, 100,500 each, 72
+  topics, MATHS) beside the 105 hand-written (six subjects, 9 topics). How the
+  two positions below survived the scale-up matters more than the number:
 
-  **Not scraped, and this is deliberate.** Olympiad papers, textbook exercises
-  and commercial test-prep collections are copyrighted, individually and again
-  as curated collections; bulk-scraping them into a database served to
-  schoolchildren is infringement and reformatting does not change that. Facts
-  are not copyrightable, so every question here is written for this bank against
-  the same syllabus, and `source` + `licence` are NOT NULL so provenance cannot
-  rot. See `content/quiz/README.md`.
+  **Not scraped — unchanged.** Nothing was copied from anywhere. The generated
+  bank is parameterized templates written for this repo
+  (`scripts/gen-quiz-bank.ts`), CC0, `source` and `licence` stamped on every
+  row.
 
-  **Not bulk-generated, and this is also deliberate.** A wrong answer in a
-  children's question bank is worse than a missing one — it teaches the wrong
-  thing and it is trusted. At 150,000 items nobody can check them, and
-  `quiz:verify` is explicit that it checks structure and arithmetic, not
-  history. The route that works is batches, each with `checkExpr` where the
-  answer is computable and a person's name in `reviewedBy` where it is not, with
-  real counts reported per batch. `quiz:verify` prints exactly those counts so
-  the bank can never claim more than it has earned.
+  **"Not bulk-generated" REFINED, not abandoned.** The old position was that a
+  wrong answer in a children's bank is worse than a missing one and nobody can
+  check 150,000 items. Both halves still hold — so the generator is only
+  allowed to emit what a machine CAN check: every generated question carries a
+  `checkExpr`, evaluated against its marked option through the same shared
+  evaluator the verifier uses (`scripts/quiz-arith.ts`), before the row is
+  written; one failure aborts the run. History, science and everything
+  non-computable remain hand-written-and-reviewed only. The generated bank's
+  honest ledger, printed on every run: arithmetic-checked 1,005,000 of
+  1,005,000; read by a person, 0.
+
+  **What the scale-up cost, engineering-wise:** two serving paths that loaded a
+  topic's whole question pool per request were rewritten as queries
+  (`listTopics` counts by GROUP BY; `nextQuestion` reproduces `pickQuestion`'s
+  pinned semantics as a difficulty-ladder query — its unit tests are the spec);
+  the practice page grew a class filter; and `tests/drill-bank.test.ts`
+  re-proves a deterministic sample of IMPORTED rows on every `npm test`, which
+  catches what generator-side verification cannot — a bug in the import itself.
+  Live numbers against the full bank: topic list 165ms, drill topic page 83ms,
+  the same rows read back in Hindi. The clean-completion badge is untouched
+  and truthful — and effectively out of reach in a 10,050-question drill
+  topic, where the mastery ladder is the progression that matters; the
+  hand-written topics stay completable. Table cost: ~1.35 GB.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
