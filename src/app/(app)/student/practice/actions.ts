@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { getSession, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
@@ -29,10 +30,10 @@ import type { ActiveContext } from "@/lib/session";
 type Failure = { ok: false; error: string };
 type Ok<T> = { ok: true } & T;
 
-function failure(error: unknown): Failure {
+async function failure(error: unknown): Promise<Failure> {
   if (error instanceof AccessError) return { ok: false, error: error.message };
   console.error("[practice]", error);
-  return { ok: false, error: "Something went wrong. Try again in a moment." };
+  return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }
 
 /**

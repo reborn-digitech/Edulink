@@ -14,6 +14,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/states";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import { begin, answer, advance, reveal } from "../actions";
 import type { ServedQuestion } from "@/lib/quiz";
 
@@ -46,6 +47,7 @@ export function Player({
   alreadyEarned: boolean;
 }) {
   const router = useRouter();
+  const t = useT();
   const [pending, startTransition] = useTransition();
 
   const [attemptId, setAttemptId] = useState<string | null>(null);
@@ -141,7 +143,7 @@ export function Player({
           <WarningIcon weight="fill" className="mx-auto size-8 text-warn" />
           <p className="font-semibold text-fg">{error}</p>
           <Button variant="secondary" onClick={() => router.refresh()}>
-            Try again
+            {t("practice.tryAgain")}
           </Button>
         </CardBody>
       </Card>
@@ -170,24 +172,18 @@ export function Player({
           {done.badgeAwarded || alreadyEarned ? (
             <>
               <MedalIcon weight="fill" className="mx-auto size-12 text-accent-strong" />
-              <h2 className="text-xl font-bold text-fg">{topicName} — done, without peeking</h2>
-              <p className="mx-auto max-w-sm text-sm text-fg-muted">
-                This badge is yours for good. It does not reset at the end of the year and nothing
-                can take it away.
-              </p>
+              <h2 className="text-xl font-bold text-fg">{t("practice.doneNoPeek", { topic: topicName })}</h2>
+              <p className="mx-auto max-w-sm text-sm text-fg-muted">{t("practice.badgeYours")}</p>
             </>
           ) : (
             <>
               <CheckCircleIcon weight="fill" className="mx-auto size-12 text-ok" />
-              <h2 className="text-xl font-bold text-fg">{topicName} — finished</h2>
-              <p className="mx-auto max-w-sm text-sm text-fg-muted">
-                You went through every question. The badge is for finishing without opening a
-                solution — come back and try a clean run whenever you like.
-              </p>
+              <h2 className="text-xl font-bold text-fg">{t("practice.finishedTitle", { topic: topicName })}</h2>
+              <p className="mx-auto max-w-sm text-sm text-fg-muted">{t("practice.wentThroughAll")}</p>
             </>
           )}
           <Button asChild variant="secondary">
-            <a href="/student/practice">Back to practice</a>
+            <a href="/student/practice">{t("practice.backToPractice")}</a>
           </Button>
         </CardBody>
       </Card>
@@ -203,10 +199,10 @@ export function Player({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Badge tone="accent" size="sm">
-          {question.levelLabel}
+          {t(question.levelLabelKey)}
         </Badge>
         <span className="text-xs text-fg-muted">
-          {question.askedCount + 1} of {totalCount || question.totalCount}
+          {t("practice.nOfTotal", { n: question.askedCount + 1, total: totalCount || question.totalCount })}
         </span>
       </div>
 
@@ -216,7 +212,7 @@ export function Player({
         aria-valuenow={question.askedCount}
         aria-valuemin={0}
         aria-valuemax={question.totalCount}
-        aria-label="Questions answered"
+        aria-label={t("practice.questionsAnswered")}
       >
         <div
           className="h-full rounded-full bg-accent transition-[width] duration-[--dur-slow]"
@@ -269,7 +265,7 @@ export function Player({
           {shown && (
             <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                How it works
+                {t("practice.howItWorks")}
               </p>
               <p className="mt-1.5 text-sm leading-relaxed text-fg">
                 {outcome?.solution ?? peeked?.solution}
@@ -279,33 +275,32 @@ export function Player({
 
           {forfeited && (
             <p className="text-xs text-fg-muted">
-              You have opened a solution in this run, so the badge for {topicName} is not available
-              this time. Everything else still counts, and you can start a clean run later.
+              {t("practice.forfeitedNote", { topic: topicName })}
             </p>
           )}
 
           {/* ---------------- controls ---------------- */}
           {outcome ? (
             <Button block onClick={next} loading={pending}>
-              Next question
+              {t("practice.nextQuestion")}
             </Button>
           ) : peeked ? (
             <Button block variant="secondary" onClick={next} loading={pending}>
-              Skip to the next one
+              {t("practice.skipNext")}
             </Button>
           ) : confirmReveal ? (
             <div className="space-y-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/30 p-3.5">
               <p className="text-sm font-medium text-fg">
                 {forfeited
-                  ? "Show the working for this one?"
-                  : `Showing the working means no badge for ${topicName} this run.`}
+                  ? t("practice.showWorkingThis")
+                  : t("practice.noBadgeThisRun", { topic: topicName })}
               </p>
               <div className="flex flex-col gap-2 sm:flex-row">
                 <Button size="sm" variant="secondary" loading={pending} onClick={doReveal}>
-                  Yes, show me
+                  {t("practice.yesShowMe")}
                 </Button>
                 <Button size="sm" variant="ghost" onClick={() => setConfirmReveal(false)}>
-                  I'll keep trying
+                  {t("practice.keepTrying")}
                 </Button>
               </div>
             </div>
@@ -316,7 +311,7 @@ export function Player({
               icon={<EyeIcon weight="bold" className="size-4" />}
               onClick={() => setConfirmReveal(true)}
             >
-              Show me how it works
+              {t("practice.showMeHow")}
             </Button>
           )}
         </CardBody>

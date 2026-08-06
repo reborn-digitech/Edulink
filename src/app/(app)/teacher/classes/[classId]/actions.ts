@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { saveGradeCategories, WEIGHT_SCALE } from "@/lib/grading";
 
@@ -41,6 +42,6 @@ export async function saveWeights(
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[grade-weights]", error);
-    return { ok: false, error: "Something went wrong saving the weights." };
+    return { ok: false, error: (await getT())("teacher.weightsSaveFailed") };
   }
 }

@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
@@ -137,7 +138,7 @@ export async function listPosts(
   });
 }
 
-export type OversightResult = { ok: true } | { ok: false; error: string };
+export type OversightResult = { ok: true } | { ok: false; errorKey: TranslationKey };
 
 /**
  * Takes a post down.
@@ -159,7 +160,7 @@ export async function takeDownPost(
   reason: string,
 ): Promise<OversightResult> {
   const clean = reason.trim();
-  if (clean.length < 5) return { ok: false, error: "Say why, in a few words." };
+  if (clean.length < 5) return { ok: false, errorKey: "root.sayWhyShort" };
 
   return withSchoolAccess(session, schoolId, async () => {
     // Scoped find, exactly as every other assert-don't-accept lookup here: an id
@@ -169,8 +170,8 @@ export async function takeDownPost(
       where: { id: postId, schoolId },
       select: { id: true, title: true, status: true },
     });
-    if (!post) return { ok: false, error: "No such post in this school." };
-    if (post.status === "REJECTED") return { ok: false, error: "That post is already down." };
+    if (!post) return { ok: false, errorKey: "root.noSuchPost" };
+    if (post.status === "REJECTED") return { ok: false, errorKey: "root.postAlreadyDown" };
 
     await db.post.update({
       where: { id: post.id },
@@ -217,7 +218,7 @@ export async function setMembershipSuspension(
 ): Promise<OversightResult> {
   const clean = next.reason.trim();
   if (next.suspended && clean.length < 5) {
-    return { ok: false, error: "Say why, in a few words. The school will read it." };
+    return { ok: false, errorKey: "root.sayWhySchoolReads" };
   }
 
   return withSchoolAccess(session, schoolId, async () => {
@@ -225,10 +226,10 @@ export async function setMembershipSuspension(
       where: { id: membershipId, schoolId },
       select: { id: true, role: true, status: true, user: { select: { name: true } } },
     });
-    if (!target) return { ok: false, error: "That person is not in this school." };
+    if (!target) return { ok: false, errorKey: "root.personNotHere" };
 
     if (next.suspended) {
-      if (target.status === "SUSPENDED") return { ok: false, error: "Already paused." };
+      if (target.status === "SUSPENDED") return { ok: false, errorKey: "root.alreadyPaused" };
 
       /**
        * THE LAST ADMIN RULE, restated rather than inherited.
@@ -250,11 +251,7 @@ export async function setMembershipSuspension(
           },
         });
         if (others === 0) {
-          return {
-            ok: false,
-            error:
-              "This is the school's only admin. Pausing them would leave the school unable to run itself — invite another admin first.",
-          };
+          return { ok: false, errorKey: "root.onlyAdmin" };
         }
       }
 
@@ -267,7 +264,7 @@ export async function setMembershipSuspension(
         },
       });
     } else {
-      if (target.status !== "SUSPENDED") return { ok: false, error: "Their access is not paused." };
+      if (target.status !== "SUSPENDED") return { ok: false, errorKey: "root.notPaused" };
       await db.membership.update({
         where: { id: membershipId },
         data: { status: "ACTIVE", suspendedAt: null, suspendedReason: null },

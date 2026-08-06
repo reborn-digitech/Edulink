@@ -6,6 +6,7 @@ import { overallForStudent } from "./grading";
 import { getBadges } from "./badges";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { AttendanceStatus } from "./constants";
 
 /**
@@ -57,7 +58,7 @@ export type ProgressReport = {
       comment: string | null;
     }[];
   };
-  badges: { id: string; label: string; description: string }[];
+  badges: { id: string; labelKey: TranslationKey; descriptionKey: TranslationKey }[];
   generatedAt: Date;
 };
 
@@ -207,7 +208,7 @@ export async function buildProgressReport(
     // fell short, which is not what this document is for.
     badges: badges
       .filter((b) => b.earned)
-      .map((b) => ({ id: b.id, label: b.label, description: b.description })),
+      .map((b) => ({ id: b.id, labelKey: b.labelKey, descriptionKey: b.descriptionKey })),
     generatedAt: new Date(),
   };
 }

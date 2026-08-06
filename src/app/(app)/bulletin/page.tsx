@@ -20,6 +20,7 @@ export default async function BulletinPage({
 }: {
   searchParams: Promise<{ filter?: string; tag?: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { filter, tag } = await searchParams;
 
@@ -27,11 +28,11 @@ export default async function BulletinPage({
     return (
       <EmptyState
         icon={<MegaphoneIcon weight="duotone" className="size-8" />}
-        title="No school selected"
-        description="The bulletin belongs to a school. Pick one to see its notices."
+        title={t("bulletin.noSchool")}
+        description={t("bulletin.noSchoolBody")}
         action={
           <Button asChild>
-            <Link href="/switch">Choose a school</Link>
+            <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
           </Button>
         }
       />
@@ -56,22 +57,24 @@ export default async function BulletinPage({
   ]);
 
   const tabs = [
-    { id: "", label: "Everything" },
-    ...(isStaff ? [{ id: "pending", label: `To review${queue > 0 ? ` (${queue})` : ""}` }] : []),
-    { id: "mine", label: session.role === "STUDENT" ? "My posts" : "Mine" },
+    { id: "", label: t("bulletin.tabEverything") },
+    ...(isStaff
+      ? [{ id: "pending", label: t("bulletin.tabToReview") + (queue > 0 ? ` (${queue})` : "") }]
+      : []),
+    { id: "mine", label: session.role === "STUDENT" ? t("bulletin.tabMyPosts") : t("bulletin.tabMine") },
   ];
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Bulletin</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("bulletin.title")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {tag ? (
               <>
-                Tagged <strong className="text-fg">#{tag}</strong> ·{" "}
+                {t("bulletin.tagged")} <strong className="text-fg">#{tag}</strong> ·{" "}
                 <Link href="/bulletin" className="text-accent-strong underline underline-offset-2">
-                  clear
+                  {t("bulletin.clearFilter")}
                 </Link>
               </>
             ) : (
@@ -81,11 +84,11 @@ export default async function BulletinPage({
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Button asChild variant="secondary" icon={<GlobeIcon weight="bold" />}>
-            <Link href="/bulletin/global">Global feed</Link>
+            <Link href="/bulletin/global">{t("bulletin.globalFeed")}</Link>
           </Button>
           <Button asChild icon={<PlusIcon weight="bold" />}>
             <Link href="/bulletin/new">
-              {session.role === "STUDENT" ? "Share something" : "New post"}
+              {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost")}
             </Link>
           </Button>
         </div>
@@ -94,16 +97,16 @@ export default async function BulletinPage({
       {/* Students get told the rule up front, not after their post disappears. */}
       {session.role === "STUDENT" && !showMine && (
         <p className="rounded-[--radius-md] bg-accent-soft p-3.5 text-xs leading-relaxed text-fg-muted">
-          Anything you post is read by a teacher before anyone else sees it. That usually
-          takes a few hours — you can always see where yours are up to under{" "}
+          {/* Whole sentences, with the link standing alone after them — a
+              fragment on each side of a link cannot be reordered. */}
+          {t("bulletin.studentNotice")}{" "}
           <Link href="/bulletin?filter=mine" className="font-semibold text-accent-strong underline underline-offset-2">
-            My posts
+            {t("bulletin.tabMyPosts")}
           </Link>
-          .
         </p>
       )}
 
-      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Filter">
+      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
         {tabs.map((t) => {
           const active = (filter ?? "") === t.id;
           return (
@@ -126,23 +129,23 @@ export default async function BulletinPage({
           icon={<MegaphoneIcon weight="duotone" className="size-8" />}
           title={
             showPending
-              ? "Nothing waiting for review"
+              ? t("bulletin.emptyPendingTitle")
               : showMine
-                ? "You have not posted yet"
-                : "The bulletin is empty"
+                ? t("bulletin.emptyMineTitle")
+                : t("bulletin.emptyTitle")
           }
           description={
             showPending
-              ? "Student posts appear here for you to approve before anyone else sees them."
+              ? t("bulletin.emptyPendingBody")
               : showMine
-                ? "Share something you have made or found. A teacher checks it first."
-                : "Notices, celebrations and reminders from the school will show up here."
+                ? t("bulletin.emptyMineBody")
+                : t("bulletin.emptyBody")
           }
           action={
             !showPending ? (
               <Button asChild>
                 <Link href="/bulletin/new">
-                  {session.role === "STUDENT" ? "Share something" : "Write the first post"}
+                  {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.writeFirst")}
                 </Link>
               </Button>
             ) : undefined

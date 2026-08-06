@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -173,9 +174,11 @@ export type GenerateInput = {
   toDateKey?: string;
 };
 
+/** ⚠ `errorKey`, not a sentence — the leave.ts pattern. The action boundary
+    translates it into the reader's language. */
 export type GenerateResult = {
   ok: boolean;
-  error?: string;
+  errorKey?: TranslationKey;
   created?: number;
   updated?: number;
   skippedPublished?: number;
@@ -189,9 +192,9 @@ export async function generateCards(
   const klass = await assertMayWriteCards(ctx, classId);
 
   const title = input.title.trim().slice(0, 120);
-  if (title.length < 2) return { ok: false, error: "Give the report a name, like “Term 1”." };
+  if (title.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
   if (input.assignmentIds.length === 0) {
-    return { ok: false, error: "Choose at least one test or assignment to report on." };
+    return { ok: false, errorKey: "reportCards.chooseOne" };
   }
 
   const school = await db.school.findUniqueOrThrow({
@@ -201,7 +204,7 @@ export async function generateCards(
   const toDateKey = input.toDateKey ?? todayKey(school.timezone);
   const fromDateKey = input.fromDateKey ?? addDaysToKey(toDateKey, -DEFAULT_WINDOW_DAYS);
   if (fromDateKey > toDateKey) {
-    return { ok: false, error: "The window starts after it ends." };
+    return { ok: false, errorKey: "reportCards.windowBackwards" };
   }
 
   // Re-queried against THIS class. An assignment id from another class — or
@@ -216,7 +219,7 @@ export async function generateCards(
     select: { id: true, title: true, category: true, pointsMilli: true },
   });
   if (assignments.length === 0) {
-    return { ok: false, error: "None of those assessments belong to this class." };
+    return { ok: false, errorKey: "reportCards.notThisClass" };
   }
   // Keep the teacher's chosen order rather than the database's.
   const order = new Map(input.assignmentIds.map((id, index) => [id, index]));
@@ -226,7 +229,7 @@ export async function generateCards(
     where: { schoolId: ctx.schoolId!, classId, status: "ACTIVE" },
     select: { studentMembershipId: true },
   });
-  if (roll.length === 0) return { ok: false, error: "Nobody is on this class roll yet." };
+  if (roll.length === 0) return { ok: false, errorKey: "reportCards.emptyRoll" };
 
   const grades = await db.grade.findMany({
     where: {
@@ -340,16 +343,16 @@ export async function setRemark(
   ctx: ActiveContext,
   cardId: string,
   remark: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   const card = await db.reportCard.findFirst({
     where: { id: cardId, schoolId: ctx.schoolId ?? "" },
     select: { id: true, classId: true, status: true },
   });
-  if (!card) return { ok: false, error: "That report card is not in this school." };
+  if (!card) return { ok: false, errorKey: "reportCards.notInSchool" };
   await assertMayWriteCards(ctx, card.classId);
 
   if (card.status === "PUBLISHED") {
-    return { ok: false, error: "That card is published. Withdraw it first to change it." };
+    return { ok: false, errorKey: "reportCards.publishedLocked" };
   }
 
   await db.reportCard.update({
@@ -371,7 +374,7 @@ export async function publishCards(
   ctx: ActiveContext,
   classId: string,
   title: string,
-): Promise<{ ok: boolean; error?: string; published?: number }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey; published?: number }> {
   await assertMayWriteCards(ctx, classId);
 
   const drafts = await db.reportCard.findMany({
@@ -382,7 +385,7 @@ export async function publishCards(
       student: { select: { userId: true, user: { select: { name: true, preferredName: true } } } },
     },
   });
-  if (drafts.length === 0) return { ok: false, error: "There are no drafts to publish." };
+  if (drafts.length === 0) return { ok: false, errorKey: "reportCards.noDrafts" };
 
   await db.reportCard.updateMany({
     where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
@@ -441,14 +444,14 @@ export async function withdrawCards(
   ctx: ActiveContext,
   classId: string,
   title: string,
-): Promise<{ ok: boolean; error?: string; withdrawn?: number }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey; withdrawn?: number }> {
   await assertMayWriteCards(ctx, classId);
 
   const result = await db.reportCard.updateMany({
     where: { schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" },
     data: { status: "DRAFT", publishedAt: null },
   });
-  if (result.count === 0) return { ok: false, error: "Nothing published under that name." };
+  if (result.count === 0) return { ok: false, errorKey: "reportCards.nothingUnderName" };
 
   await audit({
     schoolId: ctx.schoolId,

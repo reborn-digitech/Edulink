@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 
 /**
  * Toasts with a built-in undo affordance.
@@ -52,6 +53,7 @@ export function useToast(): ToastContextValue {
 let counter = 0;
 
 export function ToastProvider({ children }: { children: ReactNode }) {
+  const t2 = useT();
   const [toasts, setToasts] = useState<Toast[]>([]);
   const timers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
 
@@ -96,7 +98,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       {children}
       <div
         role="region"
-        aria-label="Notifications"
+        aria-label={t2("shell.notifications")}
         className="pointer-events-none fixed inset-x-0 bottom-0 z-[80] flex flex-col items-center gap-2 p-4 pb-[calc(env(safe-area-inset-bottom,0px)+5.5rem)] sm:items-end sm:pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]"
       >
         {toasts.map((t) => (
@@ -108,6 +110,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 }
 
 function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }) {
+  const t = useT();
   const tones = {
     neutral: "border-border",
     ok: "border-ok/40",
@@ -148,7 +151,7 @@ function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }
           }}
           className="shrink-0 rounded-[--radius-sm] px-2.5 py-1.5 text-xs font-bold text-accent-strong hover:bg-accent-soft"
         >
-          Undo
+          {t("ui.undo")}
         </button>
       )}
       {toast.action && (
@@ -167,7 +170,7 @@ function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }
       <button
         type="button"
         onClick={onDismiss}
-        aria-label="Dismiss notification"
+        aria-label={t("ui.dismissNotification")}
         className="shrink-0 rounded-[--radius-sm] p-1.5 text-fg-subtle hover:bg-surface-muted hover:text-fg"
       >
         <svg viewBox="0 0 16 16" className="size-4" aria-hidden="true">

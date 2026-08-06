@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import {
   publishGlobally,
@@ -20,7 +21,7 @@ async function run(work: () => Promise<void>): Promise<Result> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[global-feed]", error);
-    return { ok: false, error: "Something went wrong. Try again in a moment." };
+    return { ok: false, error: (await getT())("common.tryAgainMoment") };
   }
 }
 

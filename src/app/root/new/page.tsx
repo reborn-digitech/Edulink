@@ -2,10 +2,15 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { SchoolForm } from "../school-form";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata = { title: "Add a school" };
+export async function generateMetadata() {
+  const t = await getT();
+  return { title: t("root.addSchool") };
+}
 
 export default async function NewSchoolPage() {
+  const t = await getT();
   await requireSuperuser();
 
   return (
@@ -15,15 +20,12 @@ export default async function NewSchoolPage() {
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All schools
+        {t("root.allSchools")}
       </Link>
 
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Add a school</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Creating a school does not give it anybody to run it. Invite an administrator afterwards — that
-          is the next screen.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.addSchool")}</h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("root.newSchoolIntro")}</p>
       </div>
 
       <SchoolForm />

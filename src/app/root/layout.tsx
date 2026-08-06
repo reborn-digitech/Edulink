@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { requireSuperuser } from "@/lib/tenancy";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   title: { default: "Server administration", template: "%s · EduLink server" },
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
  */
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   await requireSuperuser();
+  const t = await getT();
 
   return (
     <div className="min-h-safe bg-bg">
@@ -31,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Link href="/root" className="flex min-w-0 items-center gap-2.5">
             <Wordmark size={24} />
             <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-muted">
-              Server
+              {t("root.serverBadge")}
             </span>
           </Link>
           <div className="flex items-center gap-1">
@@ -46,14 +48,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               handle.
             */}
             <Button asChild variant="ghost" size="sm">
-              <Link href="/root/experts">Experts</Link>
+              <Link href="/root/experts">{t("root.experts")}</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
-              <Link href="/root/audit">Server log</Link>
+              <Link href="/root/audit">{t("root.serverLog")}</Link>
             </Button>
             <form action="/api/auth/logout" method="post">
               <Button type="submit" variant="ghost" size="sm">
-                Sign out
+                {t("shell.signOut")}
               </Button>
             </form>
           </div>

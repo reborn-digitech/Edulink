@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { randomUUID } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -126,7 +127,11 @@ export type SchoolDetails = {
   brandPrimary?: string | null;
 };
 
-export type CreateResult = { ok: true; schoolId: string; code: string } | { ok: false; error: string };
+/** ⚠ `errorKey`, not a sentence — the leave.ts pattern; the action boundary
+    translates into the reader's language. */
+export type CreateResult =
+  | { ok: true; schoolId: string; code: string }
+  | { ok: false; errorKey: TranslationKey };
 
 /**
  * Creates a school.
@@ -145,11 +150,11 @@ export async function createSchool(
   assertSuperuser(session);
 
   const name = details.name.trim();
-  if (name.length < 2) return { ok: false, error: "Give the school a name." };
-  if (!details.contactEmail.trim()) return { ok: false, error: "A contact email is required." };
+  if (name.length < 2) return { ok: false, errorKey: "root.giveSchoolName" };
+  if (!details.contactEmail.trim()) return { ok: false, errorKey: "root.contactEmailRequired" };
 
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
-  if (rangeProblem) return { ok: false, error: rangeProblem };
+  if (rangeProblem) return { ok: false, errorKey: rangeProblem };
 
   const baseSlug = slugify(name);
 
@@ -200,24 +205,24 @@ export async function createSchool(
     }
   }
 
-  return { ok: false, error: "That name keeps colliding. Try a slightly different one." };
+  return { ok: false, errorKey: "root.nameCollides" };
 }
 
 export async function updateSchool(
   session: ActiveContext,
   schoolId: string,
   details: Partial<SchoolDetails> & { logoPath?: string | null },
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
 
   if (details.name !== undefined && details.name.trim().length < 2) {
-    return { ok: false, error: "Give the school a name." };
+    return { ok: false, errorKey: "root.giveSchoolName" };
   }
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
-  if (rangeProblem) return { ok: false, error: rangeProblem };
+  if (rangeProblem) return { ok: false, errorKey: rangeProblem };
 
   const existing = await db.school.findUnique({ where: { id: schoolId }, select: { id: true } });
-  if (!existing) return { ok: false, error: "No such school." };
+  if (!existing) return { ok: false, errorKey: "root.noSuchSchool" };
 
   await db.school.update({
     where: { id: schoolId },
@@ -267,19 +272,19 @@ export async function inviteAdmin(
   session: ActiveContext,
   schoolId: string,
   input: { email: string; name?: string | null; role?: "ADMIN" | "PRINCIPAL" },
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
 
   const email = input.email.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { ok: false, error: "That does not look like an email address." };
+    return { ok: false, errorKey: "root.emailLooksWrong" };
   }
 
   const school = await db.school.findUnique({
     where: { id: schoolId },
     select: { id: true, name: true },
   });
-  if (!school) return { ok: false, error: "No such school." };
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
 
   const role = input.role ?? "ADMIN";
 
@@ -287,7 +292,7 @@ export async function inviteAdmin(
     where: { schoolId, email, status: "PENDING" },
     select: { id: true },
   });
-  if (already) return { ok: false, error: "An invitation is already waiting for them." };
+  if (already) return { ok: false, errorKey: "root.inviteAlreadyWaiting" };
 
   const token = generateToken();
   await db.invite.create({
@@ -340,13 +345,13 @@ export async function listAdminInvites(session: ActiveContext, schoolId: string)
 export async function revokeInvite(
   session: ActiveContext,
   inviteId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
   const result = await db.invite.updateMany({
     where: { id: inviteId, status: "PENDING" },
     data: { status: "REVOKED" },
   });
-  if (result.count === 0) return { ok: false, error: "That invitation is no longer pending." };
+  if (result.count === 0) return { ok: false, errorKey: "root.inviteNotPending" };
 
   await audit({
     schoolId: null,
@@ -382,11 +387,11 @@ export function gradeToNumber(grade: string | null | undefined): number | null {
 export function checkGradeRange(
   low: string | null | undefined,
   high: string | null | undefined,
-): string | null {
+): TranslationKey | null {
   const lowNum = gradeToNumber(low);
   const highNum = gradeToNumber(high);
   if (lowNum === null || highNum === null) return null; // not both numeric: accept as written
-  if (lowNum > highNum) return "The lowest grade cannot be above the highest.";
+  if (lowNum > highNum) return "root.lowestAboveHighest";
   return null;
 }
 
@@ -581,7 +586,7 @@ export async function listExpertsForCuration(session: ActiveContext): Promise<Cu
   }));
 }
 
-export type CurationResult = { ok: true } | { ok: false; error: string };
+export type CurationResult = { ok: true } | { ok: false; errorKey: TranslationKey };
 
 /**
  * Puts an expert in front of schools, or takes them back out.
@@ -607,12 +612,12 @@ export async function setExpertStanding(
     where: { id: profileId },
     select: { id: true, headline: true, publishedAt: true, user: { select: { name: true } } },
   });
-  if (!profile) return { ok: false, error: "No such expert." };
+  if (!profile) return { ok: false, errorKey: "root.noSuchExpert" };
 
   if (next.published && profile.headline.trim().length < 3) {
     return {
       ok: false,
-      error: "That profile has no headline yet. Ask them to fill it in before you list them.",
+      errorKey: "root.noHeadline",
     };
   }
 
@@ -739,7 +744,7 @@ export async function activeGrant(
   return row;
 }
 
-export type OpenResult = { ok: true; grant: OperatorGrant } | { ok: false; error: string };
+export type OpenResult = { ok: true; grant: OperatorGrant } | { ok: false; errorKey: TranslationKey };
 
 /**
  * Opens one school, for a stated reason.
@@ -761,15 +766,15 @@ export async function openSchool(
   if (clean.length < 10) {
     return {
       ok: false,
-      error: "Say why you are opening this school, in a sentence. The school will read it.",
+      errorKey: "root.sayWhyOpening",
     };
   }
-  if (clean.length > 500) return { ok: false, error: "That reason is too long." };
+  if (clean.length > 500) return { ok: false, errorKey: "root.reasonTooLong" };
 
   // The school has to exist, and reading it is something the operator flag
   // already permits — so this is not a widening, it is a spelling check.
   const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true } });
-  if (!school) return { ok: false, error: "No such school." };
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
 
   const existing = await activeGrant(session, schoolId);
   if (existing) return { ok: true, grant: existing };

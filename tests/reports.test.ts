@@ -313,7 +313,7 @@ describe("the figures", () => {
     // A report is a record of what a child has done, not a list of ways they
     // fell short.
     const report = await buildProgressReport(guardian, childMembershipId);
-    expect(report.badges.every((b) => b.label.length > 0)).toBe(true);
+    expect(report.badges.every((b) => b.labelKey.startsWith("practice."))).toBe(true);
   });
 
   it("says what window it covered, so two reports can be compared", async () => {

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireApiUser, requireApiRole, AccessError } from "@/lib/tenancy";
 import { createMentorship, consentToMentorship, closeMentorship, postMentorMessage, requestMentor, decideMentorRequest } from "@/lib/mentoring";
+import { getT } from "@/lib/i18n/server";
 
 type Result = { ok: boolean; error?: string };
 
@@ -14,7 +15,7 @@ async function run(work: () => Promise<unknown>): Promise<Result> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[mentoring]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
@@ -54,13 +55,14 @@ export async function askForMentor(input: {
   try {
     const session = await requireApiUser();
     const result = await requestMentor(session, input);
-    if (!result.ok) return { ok: false, error: result.error };
+    // The lib mints a KEY; this boundary is where it becomes the reader's words.
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey, result.errorVars) };
     revalidatePath("/mentoring");
     return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[askForMentor]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
@@ -71,12 +73,12 @@ export async function decideRequest(
   try {
     const session = await requireApiUser();
     const result = await decideMentorRequest(session, threadId, decision);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey, result.errorVars) };
     revalidatePath("/mentoring");
     return { ok: true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[decideRequest]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

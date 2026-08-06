@@ -38,6 +38,7 @@ export default async function CompetitionPage({
 }: {
   params: Promise<{ competitionId: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { competitionId } = await params;
 
@@ -71,7 +72,7 @@ export default async function CompetitionPage({
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Competitions
+        {t("competitions.title")}
       </Link>
 
       <header className="space-y-2">
@@ -80,17 +81,17 @@ export default async function CompetitionPage({
           {competition.verified && (
             <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-strong">
               <SealCheckIcon weight="fill" className="size-4" />
-              Checked by EduLink
+              {t("competitions.verified")}
             </span>
           )}
           {competition.status !== "PUBLISHED" && (
             <span className="rounded-[--radius-sm] bg-surface-muted px-2 py-0.5 text-xs font-medium text-fg-muted">
-              {competition.status === "DRAFT" ? "Not published yet" : "Archived"}
+              {competition.status === "DRAFT" ? t("competitions.notPublishedYet") : t("competitions.archived")}
             </span>
           )}
         </div>
         <p className="text-fg-muted">{competition.summary}</p>
-        <p className="text-sm text-fg-muted">Run by {competition.organizerName}</p>
+        <p className="text-sm text-fg-muted">{t("competitions.runBy", { name: competition.organizerName })}</p>
       </header>
 
       {/* What the caller can do about it, before the wall of detail. */}
@@ -114,8 +115,8 @@ export default async function CompetitionPage({
                   canSubmit={!competition.entry.awaitingConsent && competition.acceptingWork}
                   reason={
                     competition.entry.awaitingConsent
-                      ? "You can hand your entry in once a grown-up has said yes."
-                      : "This competition has finished."
+                      ? t("competitions.handInOnceYes")
+                      : t("competitions.finished")
                   }
                 />
               </>
@@ -130,8 +131,7 @@ export default async function CompetitionPage({
                 {competition.open && competition.requiresParentConsent && (
                   <p className="inline-flex items-start gap-1.5 text-sm text-fg-muted">
                     <ShieldCheckIcon weight="duotone" className="mt-0.5 size-4 shrink-0" />
-                    A grown-up at home will be asked first. You will not take part until they say
-                    yes.
+                    {t("competitions.grownUpAskedFirst")}
                   </p>
                 )}
               </>
@@ -142,7 +142,7 @@ export default async function CompetitionPage({
               waiting.map((item) => (
                 <div key={item.entryId} className="space-y-2.5">
                   <p className="text-[0.9375rem]">
-                    <strong>{item.childName}</strong> would like to take part.
+                    {t("competitions.wouldLikeToTakePart", { child: item.childName })}
                   </p>
                   <ConsentControls
                     entryId={item.entryId}
@@ -164,9 +164,7 @@ export default async function CompetitionPage({
                 />
               </>
             ) : (
-              <p className="text-sm text-fg-muted">
-                None of your children have asked to enter this one.
-              </p>
+              <p className="text-sm text-fg-muted">{t("competitions.noChildAsked")}</p>
             ))}
 
           {competition.isOrganiser && (
@@ -181,7 +179,7 @@ export default async function CompetitionPage({
           {(session.role === "ADMIN" || session.role === "TEACHER") && (
             <Button asChild variant="secondary" size="sm">
               <Link href={`/competitions/${competition.id}/entries`}>
-                Your school's entries and results
+                {t("competitions.entriesAndResultsLink")}
               </Link>
             </Button>
           )}
@@ -189,15 +187,17 @@ export default async function CompetitionPage({
           {(session.role === "ADMIN" || session.role === "TEACHER") && (
             <p className="text-sm text-fg-muted">
               {competition.enteredCount === 0
-                ? "No pupils from your school are taking part yet."
-                : `${competition.enteredCount} ${competition.enteredCount === 1 ? "pupil" : "pupils"} from your school ${competition.enteredCount === 1 ? "is" : "are"} taking part.`}
+                ? t("competitions.noPupilsYet")
+                : competition.enteredCount === 1
+                  ? t("competitions.pupilsTakingPartOne")
+                  : t("competitions.pupilsTakingPartMany", { count: competition.enteredCount })}
             </p>
           )}
 
           {competition.externalUrl && (
             <Button asChild variant="secondary" size="sm">
               <a href={competition.externalUrl} target="_blank" rel="noopener noreferrer nofollow">
-                Organiser's own page
+                {t("competitions.organiserPage")}
                 <ArrowSquareOutIcon weight="bold" className="size-4" />
               </a>
             </Button>
@@ -210,24 +210,24 @@ export default async function CompetitionPage({
           <CardBody>
             <h2 className="mb-2 inline-flex items-center gap-1.5 text-sm font-semibold">
               <CalendarBlankIcon weight="duotone" className="size-4" />
-              Dates
+              {t("competitions.dates")}
             </h2>
             <dl className="space-y-1 text-sm">
               {closes && (
                 <div className="flex gap-2">
-                  <dt className="w-32 shrink-0 text-fg-muted">Entries close</dt>
+                  <dt className="w-32 shrink-0 text-fg-muted">{t("competitions.entriesClose")}</dt>
                   <dd>{closes}</dd>
                 </div>
               )}
               {starts && (
                 <div className="flex gap-2">
-                  <dt className="w-32 shrink-0 text-fg-muted">Starts</dt>
+                  <dt className="w-32 shrink-0 text-fg-muted">{t("competitions.starts")}</dt>
                   <dd>{starts}</dd>
                 </div>
               )}
               {ends && (
                 <div className="flex gap-2">
-                  <dt className="w-32 shrink-0 text-fg-muted">Ends</dt>
+                  <dt className="w-32 shrink-0 text-fg-muted">{t("competitions.ends")}</dt>
                   <dd>{ends}</dd>
                 </div>
               )}
@@ -239,7 +239,7 @@ export default async function CompetitionPage({
       {competition.body && (
         <Card>
           <CardBody>
-            <h2 className="mb-2 text-sm font-semibold">About</h2>
+            <h2 className="mb-2 text-sm font-semibold">{t("competitions.about")}</h2>
             <p className="whitespace-pre-wrap text-[0.9375rem] leading-relaxed">{competition.body}</p>
           </CardBody>
         </Card>
@@ -248,18 +248,16 @@ export default async function CompetitionPage({
       {board.length > 0 && (
         <Card>
           <CardBody>
-            <h2 className="text-sm font-semibold">How the schools are doing</h2>
+            <h2 className="text-sm font-semibold">{t("competitions.schoolsDoing")}</h2>
             {/* Said on the page, not only in the code. A reader looking for
                 names should be told they are not here, and why. */}
+            {/* The entries page is staff-only, so pointing a pupil at it sends
+                them to a 404 to be told where their own name is. Two whole
+                sentences rather than a spliced tail. */}
             <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-              Schools are ranked, not children. No pupil from any school is named here
-              {/* The entries page is staff-only, so pointing a pupil at it sends
-                  them to a 404 to be told where their own name is. */}
-              {session.role === "ADMIN" || session.role === "TEACHER" ? (
-                <> — your own school&rsquo;s results, by name, are on your entries page.</>
-              ) : (
-                <>.</>
-              )}
+              {session.role === "ADMIN" || session.role === "TEACHER"
+                ? t("competitions.rankedNotNamedStaff")
+                : t("competitions.rankedNotNamed")}
             </p>
             <ol className="mt-3 divide-y divide-border">
               {board.map((row, index) => (
@@ -279,15 +277,21 @@ export default async function CompetitionPage({
                       {row.schoolName}
                       {row.isOwnSchool && (
                         <span className="ml-1.5 text-xs font-normal text-accent-strong">
-                          your school
+                          {t("competitions.yourSchool")}
                         </span>
                       )}
                     </span>
                     <span className="block text-xs text-fg-muted">
-                      {row.entrants} {row.entrants === 1 ? "result" : "results"}
-                      {row.bestRank !== null && <> · best place {ordinal(row.bestRank)}</>}
+                      {row.entrants === 1
+                        ? t("competitions.resultsOne")
+                        : t("competitions.resultsMany", { count: row.entrants })}
+                      {/* The ordinal ("3rd") is an English VALUE, like a date —
+                          the label around it is what translates. */}
+                      {row.bestRank !== null && (
+                        <> · {t("competitions.bestPlace", { n: ordinal(row.bestRank) })}</>
+                      )}
                       {row.bestScoreMilli !== null && (
-                        <> · best score {(row.bestScoreMilli / 1000).toFixed(1)}</>
+                        <> · {t("competitions.bestScore", { n: (row.bestScoreMilli / 1000).toFixed(1) })}</>
                       )}
                     </span>
                   </span>
@@ -303,19 +307,19 @@ export default async function CompetitionPage({
           <CardBody className="space-y-3">
             {competition.eligibility && (
               <section>
-                <h2 className="text-sm font-semibold">Who can enter</h2>
+                <h2 className="text-sm font-semibold">{t("competitions.whoCanEnter")}</h2>
                 <p className="whitespace-pre-wrap text-[0.9375rem]">{competition.eligibility}</p>
               </section>
             )}
             {competition.rules && (
               <section>
-                <h2 className="text-sm font-semibold">Rules</h2>
+                <h2 className="text-sm font-semibold">{t("competitions.rules")}</h2>
                 <p className="whitespace-pre-wrap text-[0.9375rem]">{competition.rules}</p>
               </section>
             )}
             {competition.prizes && (
               <section>
-                <h2 className="text-sm font-semibold">Prizes</h2>
+                <h2 className="text-sm font-semibold">{t("competitions.prizes")}</h2>
                 <p className="whitespace-pre-wrap text-[0.9375rem]">{competition.prizes}</p>
               </section>
             )}

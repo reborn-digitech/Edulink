@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { AVATAR_PRESETS } from "@/components/ui/avatar";
@@ -25,9 +26,9 @@ export async function saveProfile(input: {
   avatarKey: string;
 }): Promise<ProfileState> {
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
   if (session.role !== "STUDENT") {
-    return { ok: false, errors: { _form: "Only a student can edit this profile." } };
+    return { ok: false, errors: { _form: (await getT())("student.onlyStudentEdits") } };
   }
 
   const errors: Record<string, string> = {};

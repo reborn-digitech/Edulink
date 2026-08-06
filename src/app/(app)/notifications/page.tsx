@@ -17,9 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.notifications") };
 }
 
+/* Keys, not words — resolved per render in the reader's language. */
 const TABS = [
-  { id: "all", label: "All" },
-  { id: "unread", label: "Unread" },
+  { id: "all", labelKey: "notif.tabAll" },
+  { id: "unread", labelKey: "notif.tabUnread" },
 ] as const;
 
 export default async function NotificationsPage({
@@ -27,6 +28,7 @@ export default async function NotificationsPage({
 }: {
   searchParams: Promise<{ filter?: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { filter } = await searchParams;
   const showUnreadOnly = filter === "unread";
@@ -45,23 +47,23 @@ export default async function NotificationsPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Notifications</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("shell.notifications")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {unreadCount === 0
               ? totalCount === 0
-                ? "Nothing yet"
-                : "All caught up"
-              : `${unreadCount} unread`}
+                ? t("notif.nothingYet")
+                : t("notif.allCaughtUp")
+              : t("notif.unreadCount", { count: unreadCount })}
           </p>
         </div>
         <Button asChild variant="secondary" size="sm" icon={<GearIcon weight="bold" />}>
-          <Link href="/account">Settings</Link>
+          <Link href="/account">{t("notif.settings")}</Link>
         </Button>
       </div>
 
       {totalCount > 0 && (
         <>
-          <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label="Filter">
+          <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
             {TABS.map((tab) => {
               const active = (tab.id === "unread") === showUnreadOnly;
               return (
@@ -73,7 +75,7 @@ export default async function NotificationsPage({
                     active ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
                   }`}
                 >
-                  {tab.label}
+                  {t(tab.labelKey)}
                   {tab.id === "unread" && unreadCount > 0 ? ` (${unreadCount})` : ""}
                 </Link>
               );
@@ -87,20 +89,16 @@ export default async function NotificationsPage({
       {rows.length === 0 ? (
         <EmptyState
           icon={<BellIcon weight="duotone" className="size-8" />}
-          title={showUnreadOnly ? "Nothing unread" : "No notifications yet"}
-          description={
-            showUnreadOnly
-              ? "You have read everything. Anything new will appear at the top."
-              : "Attendance, new grades, teacher messages and school notices land here — and on your phone if you turn push on."
-          }
+          title={showUnreadOnly ? t("notif.emptyUnreadTitle") : t("notif.emptyTitle")}
+          description={showUnreadOnly ? t("notif.emptyUnreadBody") : t("notif.emptyBody")}
           action={
             showUnreadOnly ? (
               <Button asChild variant="secondary">
-                <Link href="/notifications">See all</Link>
+                <Link href="/notifications">{t("teacher.seeAll")}</Link>
               </Button>
             ) : (
               <Button asChild variant="secondary">
-                <Link href="/account">Notification settings</Link>
+                <Link href="/account">{t("notif.notifSettings")}</Link>
               </Button>
             )
           }

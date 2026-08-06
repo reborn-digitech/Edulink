@@ -7,10 +7,15 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata = { title: "School", robots: { index: false, follow: false } };
+export async function generateMetadata() {
+  const t = await getT();
+  return { title: t("root.schoolMeta"), robots: { index: false, follow: false } };
+}
 
 export default async function SchoolPage({ params }: { params: Promise<{ schoolId: string }> }) {
+  const t = await getT();
   const session = await requireSuperuser();
   const { schoolId } = await params;
 
@@ -26,13 +31,13 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All schools
+        {t("root.allSchools")}
       </Link>
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          Join code <span className="font-mono font-semibold text-fg">{school.code}</span> ·{" "}
+          {t("root.joinCode")} <span className="font-mono font-semibold text-fg">{school.code}</span> ·{" "}
           {school.timezone}
         </p>
       </div>
@@ -41,11 +46,11 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           as a door rather than as a tab: "Look inside" is what it is. */}
       <Card>
         <CardHeader
-          title="Look inside this school"
-          description="Closed by default. Opening is recorded in the school's own Safety Centre."
+          title={t("root.lookInside")}
+          description={t("root.closedByDefault")}
           action={
             <Button asChild size="sm" variant="secondary">
-              <Link href={`/root/${schoolId}/inside`}>Open the door</Link>
+              <Link href={`/root/${schoolId}/inside`}>{t("root.openDoor")}</Link>
             </Button>
           }
         />
@@ -54,8 +59,8 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
       <Card>
         <CardHeader
           icon={<UserPlusIcon weight="duotone" className="size-5" />}
-          title="Who runs this school"
-          description="An invitation, not an account — they accept it themselves"
+          title={t("root.whoRuns")}
+          description={t("root.inviteNotAccount")}
         />
         <CardBody>
           <InvitePanel schoolId={school.id} invites={invites} />
@@ -65,8 +70,8 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
       <Card>
         <CardHeader
           icon={<BuildingsIcon weight="duotone" className="size-5" />}
-          title="Details"
-          description="Name, grades taught, address and timezone"
+          title={t("root.details")}
+          description={t("root.detailsDescription")}
         />
         <CardBody>
           <SchoolForm
@@ -94,11 +99,7 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           here. An operator setting a school's logo would be deciding how somebody
           else's school looks, and the upload path is already built and authorised
           on that side. */}
-      <p className="text-xs leading-relaxed text-fg-muted">
-        The school&rsquo;s logo and brand colour are set by its own administrator under School
-        settings, where the upload is authorised against that school. Report cards pick it up from
-        there automatically.
-      </p>
+      <p className="text-xs leading-relaxed text-fg-muted">{t("root.logoNote")}</p>
     </div>
   );
 }

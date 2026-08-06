@@ -30,6 +30,7 @@ export default async function EntriesPage({
 }: {
   params: Promise<{ competitionId: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { competitionId } = await params;
 
@@ -56,20 +57,18 @@ export default async function EntriesPage({
       </Link>
 
       <header className="space-y-1">
-        <h1 className="text-2xl font-bold tracking-tight">Entries and results</h1>
-        <p className="text-sm text-fg-muted">
-          Your school&apos;s pupils only. Other schools record their own.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight">{t("competitions.entriesAndResults")}</h1>
+        <p className="text-sm text-fg-muted">{t("competitions.yourPupilsOnly")}</p>
       </header>
 
       {entries.length === 0 ? (
         <EmptyState
           icon={<TrophyIcon weight="duotone" className="size-8" />}
-          title="Nobody has entered yet"
-          description="When a pupil at your school asks to take part, they will appear here — and once a guardian has said yes, you can record what they scored."
+          title={t("competitions.nobodyEntered")}
+          description={t("competitions.nobodyEnteredBody")}
           action={
             <Button asChild variant="secondary">
-              <Link href={`/competitions/${competitionId}`}>Back to the competition</Link>
+              <Link href={`/competitions/${competitionId}`}>{t("competitions.backToCompetition")}</Link>
             </Button>
           }
         />

@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
 import {
@@ -38,7 +39,7 @@ const MAX_PICTURES = 10;
  */
 export async function submitPost(formData: FormData): Promise<PostState> {
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
 
   const fields = {
     scope: String(formData.get("scope") ?? ""),
@@ -61,7 +62,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   const alts = formData.getAll("alts").map((v) => String(v).trim());
 
   if (files.length > MAX_PICTURES) {
-    return { ok: false, errors: { image: `Up to ${MAX_PICTURES} pictures.` } };
+    return { ok: false, errors: { image: (await getT())("bulletin.upToPictures", { max: MAX_PICTURES }) } };
   }
 
   // A picture with no words is unreadable to the children who most need them,
@@ -71,7 +72,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   if (missing !== -1) {
     return {
       ok: false,
-      errors: { [`alt-${missing}`]: "Describe this picture, so it makes sense read aloud." },
+      errors: { [`alt-${missing}`]: (await getT())("bulletin.describeThisPicture") },
     };
   }
 
@@ -83,7 +84,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       const notPictures = stored.filter((item) => !item.mime.startsWith("image/"));
       if (notPictures.length > 0) {
         await discard(stored.map((item) => item.fileId));
-        return { ok: false, errors: { image: "Those all need to be pictures." } };
+        return { ok: false, errors: { image: (await getT())("bulletin.allPictures") } };
       }
       media = stored.map((item, index) => ({
         fileId: item.fileId,
@@ -94,7 +95,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       // AttachmentError messages are written for the person uploading.
       if (error instanceof AttachmentError) return { ok: false, errors: { image: error.message } };
       console.error("[submitPost] upload failed", error);
-      return { ok: false, errors: { image: "Those pictures could not be saved." } };
+      return { ok: false, errors: { image: (await getT())("bulletin.couldNotSavePictures") } };
     }
   }
 
@@ -116,7 +117,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
     await discard(media.map((item) => item.fileId));
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[submitPost]", error);
-    return { ok: false, errors: { _form: "We could not post that. Please try again." } };
+    return { ok: false, errors: { _form: (await getT())("bulletin.couldNotPostTryAgain") } };
   }
 }
 
@@ -126,7 +127,7 @@ export async function review(
   reason?: string,
 ): Promise<{ ok: boolean; error?: string }> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   try {
     await moderatePost(session, postId, decision, reason);
@@ -135,29 +136,29 @@ export async function review(
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[review]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
 export async function pin(postId: string): Promise<{ ok: boolean; pinned?: boolean; error?: string }> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
   try {
     const pinned = await togglePin(session, postId);
     revalidatePath("/bulletin");
     return { ok: true, pinned };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
 export async function react(input: unknown): Promise<{ ok: boolean; added?: boolean; error?: string }> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   const parsed = reactionSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "Unknown reaction." };
+  if (!parsed.success) return { ok: false, error: (await getT())("bulletin.unknownReaction") };
 
   try {
     const result = await toggleReaction(session, parsed.data.postId, parsed.data.kind);
@@ -165,7 +166,7 @@ export async function react(input: unknown): Promise<{ ok: boolean; added?: bool
     return { ok: true, added: result.added };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
@@ -174,9 +175,9 @@ export async function comment(
   body: string,
 ): Promise<{ ok: boolean; held?: boolean; error?: string }> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
-  if (body.trim().length === 0) return { ok: false, error: "Write something first." };
-  if (body.length > 4000) return { ok: false, error: "That is too long." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+  if (body.trim().length === 0) return { ok: false, error: (await getT())("bulletin.writeSomethingFirst") };
+  if (body.length > 4000) return { ok: false, error: (await getT())("bulletin.tooLong") };
 
   try {
     const result = await addComment(session, postId, body);
@@ -185,16 +186,16 @@ export async function comment(
     return { ok: true, held: result.status === "PENDING" };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }
 
 export async function report(input: unknown): Promise<{ ok: boolean; error?: string }> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   const parsed = reportSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "Pick a reason." };
+  if (!parsed.success) return { ok: false, error: (await getT())("bulletin.pickReason") };
 
   try {
     await reportContent(session, parsed.data);
@@ -207,7 +208,7 @@ export async function report(input: unknown): Promise<{ ok: boolean; error?: str
     console.error("[report] FAILED TO RECORD REPORT", error);
     return {
       ok: false,
-      error: "We could not send that report. Please tell a teacher or an adult at home directly.",
+      error: (await getT())("bulletin.reportFailed"),
     };
   }
 }

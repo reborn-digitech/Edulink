@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { EyeSlashIcon, EyeIcon, GlobeIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 import { hide, unhide, unpublish } from "./actions";
 
 /**
@@ -25,6 +26,7 @@ export function GlobalPostControls({
   ours: boolean;
   hiddenHere: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +36,7 @@ export function GlobalPostControls({
     startTransition(async () => {
       const result = await work();
       if (!result.ok) {
-        setError(result.error ?? "Could not do that.");
+        setError(result.error ?? t("bulletin.couldNotDo"));
         return;
       }
       router.refresh();
@@ -51,7 +53,7 @@ export function GlobalPostControls({
           icon={<EyeIcon weight="bold" className="size-4" />}
           onClick={() => act(() => unhide(postId))}
         >
-          Show at our school again
+          {t("bulletin.showAgain")}
         </Button>
       ) : (
         <Button
@@ -61,7 +63,7 @@ export function GlobalPostControls({
           icon={<EyeSlashIcon weight="bold" className="size-4" />}
           onClick={() => act(() => hide(postId))}
         >
-          Hide at our school
+          {t("bulletin.hideHere")}
         </Button>
       )}
 
@@ -73,7 +75,7 @@ export function GlobalPostControls({
           icon={<GlobeIcon weight="bold" className="size-4" />}
           onClick={() => act(() => unpublish(postId))}
         >
-          Take off the global feed
+          {t("bulletin.takeOffGlobal")}
         </Button>
       )}
 

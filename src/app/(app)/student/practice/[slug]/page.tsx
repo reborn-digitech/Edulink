@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
+  const t = await getT();
   const ctx = await requireRole("STUDENT");
   const { slug } = await params;
 
@@ -37,7 +38,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All practice
+        {t("practice.allPractice")}
       </Link>
 
       <div className="flex flex-wrap items-start justify-between gap-4">

@@ -9,6 +9,7 @@ import { storeAttachments, discard, AttachmentError, MAX_ATTACHMENTS } from "@/l
 import { readAttachments } from "@/lib/files";
 import { writeJson, type Attachment } from "@/lib/json";
 import { audit } from "@/lib/audit";
+import { getT } from "@/lib/i18n/server";
 
 /**
  * Attachment uploads for assignments and submissions.
@@ -24,14 +25,14 @@ export type AttachResult = { ok: boolean; error?: string; attachments?: Attachme
 /** Files a teacher attaches to a piece of work they set. */
 export async function attachToAssignment(formData: FormData): Promise<AttachResult> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   const assignmentId = formData.get("assignmentId");
-  if (typeof assignmentId !== "string") return { ok: false, error: "Missing assignment." };
+  if (typeof assignmentId !== "string") return { ok: false, error: (await getT())("ui.missingAssignment") };
 
   const { schoolId, membershipId, role } = session;
   if (!schoolId || !membershipId || (role !== "TEACHER" && role !== "ADMIN")) {
-    return { ok: false, error: "Only a teacher can attach files to work." };
+    return { ok: false, error: (await getT())("ui.onlyTeacherAttaches") };
   }
 
   let assignment;
@@ -40,7 +41,7 @@ export async function attachToAssignment(formData: FormData): Promise<AttachResu
     // class they teach.
     assignment = await assertAssignmentAccess({ schoolId, membershipId, role }, assignmentId);
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: "That work could not be found." };
+    if (error instanceof AccessError) return { ok: false, error: (await getT())("ui.workNotFound") };
     throw error;
   }
 
@@ -64,7 +65,7 @@ export async function attachToAssignment(formData: FormData): Promise<AttachResu
   } catch (error) {
     await discard(result.stored.map((a) => a.fileId));
     console.error("[attachToAssignment]", error);
-    return { ok: false, error: "We could not save those files." };
+    return { ok: false, error: (await getT())("ui.couldNotSaveFiles") };
   }
 
   await audit({
@@ -83,21 +84,21 @@ export async function attachToAssignment(formData: FormData): Promise<AttachResu
 /** Files a student attaches to their own submission. */
 export async function attachToSubmission(formData: FormData): Promise<AttachResult> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   const assignmentId = formData.get("assignmentId");
-  if (typeof assignmentId !== "string") return { ok: false, error: "Missing assignment." };
+  if (typeof assignmentId !== "string") return { ok: false, error: (await getT())("ui.missingAssignment") };
 
   const { schoolId, membershipId, role } = session;
   if (role !== "STUDENT" || !schoolId || !membershipId) {
-    return { ok: false, error: "Only a student can hand work in." };
+    return { ok: false, error: (await getT())("ui.onlyStudentHandsIn") };
   }
 
   try {
     // Restricts to published assignments for classes they are enrolled in.
     await assertAssignmentAccess({ schoolId, membershipId, role }, assignmentId);
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: "That work is not available." };
+    if (error instanceof AccessError) return { ok: false, error: (await getT())("student.workNotAvailable") };
     throw error;
   }
 
@@ -111,7 +112,7 @@ export async function attachToSubmission(formData: FormData): Promise<AttachResu
   if (graded) {
     return {
       ok: false,
-      error: "This has already been marked, so it cannot be changed. Message your teacher instead.",
+      error: (await getT())("student.alreadyMarked"),
     };
   }
 
@@ -145,7 +146,7 @@ export async function attachToSubmission(formData: FormData): Promise<AttachResu
   } catch (error) {
     await discard(result.stored.map((a) => a.fileId));
     console.error("[attachToSubmission]", error);
-    return { ok: false, error: "We could not save those files." };
+    return { ok: false, error: (await getT())("ui.couldNotSaveFiles") };
   }
 
   await audit({
@@ -174,19 +175,19 @@ export async function detach(input: {
   fileId: string;
 }): Promise<AttachResult> {
   const session = await getSession();
-  if (!session) return { ok: false, error: "Please log in again." };
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
 
   const { schoolId, membershipId, role } = session;
-  if (!schoolId || !membershipId) return { ok: false, error: "No active school." };
+  if (!schoolId || !membershipId) return { ok: false, error: (await getT())("ui.noActiveSchool") };
 
   if (input.target === "assignment") {
     if (role !== "TEACHER" && role !== "ADMIN") {
-      return { ok: false, error: "Only a teacher can remove these." };
+      return { ok: false, error: (await getT())("ui.onlyTeacherRemoves") };
     }
     try {
       await assertAssignmentAccess({ schoolId, membershipId, role }, input.id);
     } catch {
-      return { ok: false, error: "That work could not be found." };
+      return { ok: false, error: (await getT())("ui.workNotFound") };
     }
     const row = await db.assignment.findUniqueOrThrow({
       where: { id: input.id },
@@ -207,7 +208,7 @@ export async function detach(input: {
     where: { id: input.id, studentMembershipId: membershipId },
     select: { id: true, attachments: true },
   });
-  if (!submission) return { ok: false, error: "That work could not be found." };
+  if (!submission) return { ok: false, error: (await getT())("ui.workNotFound") };
 
   const remaining = readAttachments(submission.attachments).filter(
     (a) => a.fileId !== input.fileId,
@@ -236,9 +237,9 @@ async function storeAll(
   existingCount: number,
 ): Promise<{ stored: Attachment[] } | { error: string }> {
   const files = entries.filter((entry): entry is File => entry instanceof File && entry.size > 0);
-  if (files.length === 0) return { error: "Choose at least one file." };
+  if (files.length === 0) return { error: (await getT())("ui.chooseOneFile") };
   if (existingCount + files.length > MAX_ATTACHMENTS) {
-    return { error: `Up to ${MAX_ATTACHMENTS} files. You already have ${existingCount}.` };
+    return { error: (await getT())("ui.upToFiles", { max: MAX_ATTACHMENTS, have: existingCount }) };
   }
 
   try {
@@ -246,6 +247,6 @@ async function storeAll(
   } catch (error) {
     if (error instanceof AttachmentError) return { error: error.message };
     console.error("[storeAll]", error);
-    return { error: "We could not save those files." };
+    return { error: (await getT())("ui.couldNotSaveFiles") };
   }
 }

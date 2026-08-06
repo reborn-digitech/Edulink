@@ -10,6 +10,7 @@ import { TextAreaField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { askForMentor } from "./actions";
+import { useT } from "@/lib/i18n";
 import type { RequestableExpert } from "@/lib/mentoring";
 
 /**
@@ -26,6 +27,7 @@ export function AskForm({ experts, openRequests, max }: {
   openRequests: number;
   max: number;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -41,26 +43,25 @@ export function AskForm({ experts, openRequests, max }: {
     <Card>
       <CardHeader
         icon={<HandshakeIcon weight="duotone" className="size-5" />}
-        title="Ask for a mentor"
-        description="Someone from outside school who can help you with something over time"
+        title={t("mentoring.askTitle")}
+        description={t("mentoring.askDescription")}
       />
       <CardBody className="space-y-4">
         <p className="rounded-[--radius-md] border border-border bg-surface-muted p-3 text-sm leading-relaxed text-fg-muted">
-          Asking is not the same as being paired.{" "}
-          <strong className="text-fg">Your school looks at it first</strong>, and if they agree,{" "}
-          <strong className="text-fg">a grown-up at home has to say yes too</strong>. Nobody can
-          message you until both have. If the answer is no, your school will tell you why.
+          {/* One paragraph — the bold spans went with the fragments. */}
+          {t("mentoring.askExplainer")}
         </p>
 
         {atLimit ? (
           <p className="text-sm text-fg-muted">
-            You have {openRequests} request{openRequests === 1 ? "" : "s"} waiting already. Have a
-            word with your school about those before asking anyone else.
+            {openRequests === 1
+              ? t("mentoring.atLimitOne")
+              : t("mentoring.atLimitMany", { count: openRequests })}
           </p>
         ) : (
           <>
             <div>
-              <p className="text-sm font-medium text-fg">Who would you like to ask?</p>
+              <p className="text-sm font-medium text-fg">{t("mentoring.whoToAsk")}</p>
               <ul className="mt-2 space-y-2">
                 {experts.map((expert) => (
                   <li key={expert.id}>
@@ -80,7 +81,7 @@ export function AskForm({ experts, openRequests, max }: {
                         {expert.verified && (
                           <Badge tone="ok" size="sm">
                             <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
-                            Checked
+                            {t("mentoring.checked")}
                           </Badge>
                         )}
                       </span>
@@ -106,14 +107,14 @@ export function AskForm({ experts, openRequests, max }: {
             {chosen && (
               <>
                 <TextAreaField
-                  label="What would you like help with?"
+                  label={t("mentoring.helpWithWhat")}
                   required
                   rows={4}
                   value={why}
                   error={error ?? undefined}
                   maxLength={1000}
                   onChange={(e) => setWhy(e.target.value)}
-                  hint="A sentence or two. Your school and your family will read this."
+                  hint={t("mentoring.helpHint")}
                 />
                 <Button
                   loading={pending}
@@ -126,13 +127,13 @@ export function AskForm({ experts, openRequests, max }: {
                         purpose: why.trim(),
                       });
                       if (!result.ok) {
-                        setError(result.error ?? "That did not work.");
+                        setError(result.error ?? t("mentoring.didNotWork"));
                         return;
                       }
                       toast({
                         tone: "ok",
-                        title: "Sent to your school",
-                        description: "They will look at it and let you know.",
+                        title: t("mentoring.sentToSchool"),
+                        description: t("mentoring.willLetYouKnow"),
                       });
                       setChosen(null);
                       setWhy("");
@@ -140,7 +141,7 @@ export function AskForm({ experts, openRequests, max }: {
                     });
                   }}
                 >
-                  Ask your school
+                  {t("mentoring.askYourSchool")}
                 </Button>
               </>
             )}

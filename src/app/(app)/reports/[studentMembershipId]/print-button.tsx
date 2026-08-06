@@ -2,6 +2,7 @@
 
 import { PrinterIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 
 /**
  * The whole "export".
@@ -13,9 +14,10 @@ import { Button } from "@/components/ui/button";
  * sheet, which is why the report has to be a page rather than a modal.
  */
 export function PrintButton() {
+  const t = useT();
   return (
     <Button variant="secondary" size="sm" icon={<PrinterIcon weight="bold" />} onClick={() => window.print()}>
-      Print or save as PDF
+      {t("reportView.printOrSave")}
     </Button>
   );
 }

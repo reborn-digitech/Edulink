@@ -78,7 +78,7 @@ export default async function ReportPage({
           className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
         >
           <ArrowLeftIcon weight="bold" className="size-4" />
-          Back
+          {t("common.back")}
         </Link>
         <PrintButton />
       </div>
@@ -89,11 +89,11 @@ export default async function ReportPage({
           <h1 className="text-2xl font-bold tracking-tight">{report.student.name}</h1>
           <p className="text-sm text-fg-muted">
             {report.school.name}
-            {report.student.gradeLevel ? ` · Grade ${report.student.gradeLevel}` : ""}
+            {report.student.gradeLevel ? ` · ${t("reportView.gradeLevel", { level: report.student.gradeLevel })}` : ""}
           </p>
         </div>
         <div className="text-sm text-fg-muted sm:text-right">
-          <p className="font-medium text-fg">Progress report</p>
+          <p className="font-medium text-fg">{t("reportView.progressReport")}</p>
           <p>
             {formatDateKey(report.window.fromKey, { day: "numeric", month: "long" })} to{" "}
             {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" })}
@@ -103,19 +103,21 @@ export default async function ReportPage({
 
       <section aria-labelledby="attendance-heading" className="space-y-2.5">
         <h2 id="attendance-heading" className="text-lg font-semibold">
-          Attendance
+          {t("reportView.attendance")}
         </h2>
         {report.attendance.total === 0 ? (
           <p className="text-sm text-fg-muted">
-            No register was taken for {name} in this period.
+            {t("reportView.noRegisterFor", { name })}
           </p>
         ) : (
           <>
             <p className="text-[0.9375rem]">
-              <strong className="text-2xl font-bold">{report.attendance.percent}%</strong> of{" "}
-              {report.attendance.total} school {report.attendance.total === 1 ? "day" : "days"}.
+              <strong className="text-2xl font-bold">{report.attendance.percent}%</strong>{" "}
+              {report.attendance.total === 1
+                ? t("reportView.percentOfDaysOne")
+                : t("reportView.percentOfDaysMany", { count: report.attendance.total })}
               {report.attendance.bestStreak > 1 && (
-                <> Longest run present: {report.attendance.bestStreak} days.</>
+                <> {t("reportView.longestRun", { count: report.attendance.bestStreak })}</>
               )}
             </p>
             <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -128,19 +130,17 @@ export default async function ReportPage({
                 </div>
               ))}
             </dl>
-            <p className="text-xs text-fg-muted">
-              A late arrival counts as attended — a child who was there is counted as there.
-            </p>
+            <p className="text-xs text-fg-muted">{t("reportView.lateCounts")}</p>
           </>
         )}
       </section>
 
       <section aria-labelledby="work-heading" className="space-y-2.5">
         <h2 id="work-heading" className="text-lg font-semibold">
-          Work
+          {t("reportView.work")}
         </h2>
         {report.grades.marked.length === 0 ? (
-          <p className="text-sm text-fg-muted">Nothing has been marked for {name} yet.</p>
+          <p className="text-sm text-fg-muted">{t("reportView.nothingMarkedFor", { name })}</p>
         ) : (
           <>
             <p className="text-[0.9375rem]">
@@ -150,22 +150,22 @@ export default async function ReportPage({
             </p>
             <p className="text-xs text-fg-muted">
               {report.grades.method === "weighted"
-                ? "Each class is scored by the weights its teacher set, and the classes then count equally. A category with nothing marked in it yet is left out."
-                : "Points earned out of points available — a five-point quiz does not count as much as a hundred-point exam."}
+                ? t("reportView.weightedExplainer")
+                : t("reportView.pointsExplainer")}
             </p>
             {report.grades.uncategorised > 0 && (
               <p className="text-xs text-warn">
-                {report.grades.uncategorised} marked{" "}
-                {report.grades.uncategorised === 1 ? "piece" : "pieces"} of work {report.grades.uncategorised === 1 ? "is" : "are"} filed under a
-                category that carries no weight, so {report.grades.uncategorised === 1 ? "it does" : "they do"} not count towards this figure.
+                {report.grades.uncategorised === 1
+                  ? t("reportView.uncategorisedOne")
+                  : t("reportView.uncategorisedMany", { count: report.grades.uncategorised })}
               </p>
             )}
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
-                  <th scope="col" className="py-1.5 font-medium">Work</th>
-                  <th scope="col" className="py-1.5 font-medium">Class</th>
-                  <th scope="col" className="py-1.5 text-right font-medium">Score</th>
+                  <th scope="col" className="py-1.5 font-medium">{t("reportView.work")}</th>
+                  <th scope="col" className="py-1.5 font-medium">{t("reportView.klass")}</th>
+                  <th scope="col" className="py-1.5 text-right font-medium">{t("reportView.score")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -193,7 +193,7 @@ export default async function ReportPage({
       {report.badges.length > 0 && (
         <section aria-labelledby="badges-heading" className="space-y-2.5">
           <h2 id="badges-heading" className="text-lg font-semibold">
-            Earned along the way
+            {t("reportView.earnedAlongWay")}
           </h2>
           {/*
             Said out loud, because otherwise this section contradicts the one
@@ -205,16 +205,12 @@ export default async function ReportPage({
             wording would have been a printed sheet telling a parent something the
             app no longer does.
           */}
-          <p className="text-xs text-fg-muted">
-            Attendance badges describe the last few weeks rather than the window above, and are held
-            only while they are still true — so these may not match the figures above, and that is
-            not a mistake. Badges earned in a past school year are kept for good.
-          </p>
+          <p className="text-xs text-fg-muted">{t("reportView.badgesExplainer")}</p>
           <ul className="grid gap-2 sm:grid-cols-2">
             {report.badges.map((badge) => (
               <li key={badge.id} className="rounded-[--radius-md] border border-border p-2.5">
-                <p className="text-sm font-medium">{badge.label}</p>
-                <p className="text-xs text-fg-muted">{badge.description}</p>
+                <p className="text-sm font-medium">{t(badge.labelKey)}</p>
+                <p className="text-xs text-fg-muted">{t(badge.descriptionKey)}</p>
               </li>
             ))}
           </ul>
@@ -224,29 +220,29 @@ export default async function ReportPage({
       {previous.length > 0 && (
         <section aria-labelledby="previous-heading" className="space-y-2.5">
           <h2 id="previous-heading" className="text-lg font-semibold">
-            Before {name} came here
+            {t("reportView.beforeCameHere", { name })}
           </h2>
-          <p className="text-xs text-fg-muted">
-            Written and signed off by each school as {name} left it. A summary, not a copy of their
-            file — ask the family for the report cards those schools issued.
-          </p>
-          <SchoolRecordList records={previous} />
+          <p className="text-xs text-fg-muted">{t("reportView.beforeExplainer", { name })}</p>
+          <SchoolRecordList records={previous} t={t} />
         </section>
       )}
 
       <footer className="border-t border-border pt-3 text-xs text-fg-muted">
         <p>
-          {report.school.name} · generated{" "}
-          {report.generatedAt.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
+          {t("reportView.generatedOn", {
+            school: report.school.name,
+            date: report.generatedAt.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
           })}
         </p>
         <p className="mt-0.5">
-          Covers {formatDateKey(report.window.fromKey, { day: "numeric", month: "long", year: "numeric" })} to{" "}
-          {formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" })}. Ask
-          the school if anything here looks wrong.
+          {t("reportView.coversAsk", {
+            from: formatDateKey(report.window.fromKey, { day: "numeric", month: "long", year: "numeric" }),
+            to: formatDateKey(report.window.toKey, { day: "numeric", month: "long", year: "numeric" }),
+          })}
         </p>
       </footer>
     </div>

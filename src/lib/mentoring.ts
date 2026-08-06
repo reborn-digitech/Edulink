@@ -1,5 +1,6 @@
 import "server-only";
 import { db } from "./db";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { notify, notifyGuardians } from "./notify";
@@ -637,7 +638,14 @@ export async function pairingOptions(session: ActiveContext): Promise<PairingOpt
  */
 export const MAX_OPEN_REQUESTS = 3;
 
-export type RequestResult = { ok: true; threadId: string } | { ok: false; error: string };
+/**
+ * ⚠ `errorKey` AND `errorVars`, NOT A SENTENCE — the leave.ts pattern. These
+ * refusals are read by whoever asked, in whatever language they read, so the
+ * lib mints a key and the action boundary translates it.
+ */
+export type RequestResult =
+  | { ok: true; threadId: string }
+  | { ok: false; errorKey: TranslationKey; errorVars?: Record<string, string | number> };
 
 /**
  * A pupil asks for a mentor.
@@ -663,12 +671,9 @@ export async function requestMentor(
 
   const purpose = input.purpose.trim();
   if (purpose.length < 15) {
-    return {
-      ok: false,
-      error: "Say a bit more about what you would like help with — a sentence or two.",
-    };
+    return { ok: false, errorKey: "mentoring.sayABitMore" };
   }
-  if (purpose.length > 1000) return { ok: false, error: "That is longer than it needs to be." };
+  if (purpose.length > 1000) return { ok: false, errorKey: "mentoring.tooLong" };
 
   const expert = await db.expertProfile.findFirst({
     where: { id: input.expertProfileId, publishedAt: { not: null } },
@@ -684,16 +689,13 @@ export async function requestMentor(
   // Unpublished and non-existent are the same answer: an uncurated profile is
   // not a person to put in front of a child, and saying which it was would let
   // somebody enumerate the ones waiting to be listed.
-  if (!expert) return { ok: false, error: "That mentor is not available." };
+  if (!expert) return { ok: false, errorKey: "mentoring.mentorUnavailable" };
 
   if (expert.offering === "SESSIONS") {
-    return { ok: false, error: `${expert.user.name} gives workshops rather than mentoring.` };
+    return { ok: false, errorKey: "mentoring.givesWorkshops", errorVars: { name: expert.user.name } };
   }
   if (expert.mentorCapacity !== null && expert.activeMentorships >= expert.mentorCapacity) {
-    return {
-      ok: false,
-      error: `${expert.user.name} is mentoring as many people as they have agreed to just now.`,
-    };
+    return { ok: false, errorKey: "mentoring.atCapacity", errorVars: { name: expert.user.name } };
   }
 
   const existing = await db.mentorThread.findUnique({
@@ -709,17 +711,14 @@ export async function requestMentor(
     // Including CLOSED, because the unique key does not care and a second ask
     // after a mentorship ended is a conversation to have with the school rather
     // than a row to create.
-    return { ok: false, error: "You have already asked this mentor. Your school has it." };
+    return { ok: false, errorKey: "mentoring.alreadyAsked" };
   }
 
   const open = await db.mentorThread.count({
     where: { studentMembershipId: session.membershipId, status: "REQUESTED" },
   });
   if (open >= MAX_OPEN_REQUESTS) {
-    return {
-      ok: false,
-      error: `You already have ${open} requests waiting. Talk to your school about those first.`,
-    };
+    return { ok: false, errorKey: "mentoring.openRequests", errorVars: { count: open } };
   }
 
   const thread = await db.mentorThread.create({
@@ -824,7 +823,9 @@ export async function listMentorRequests(session: ActiveContext): Promise<Pendin
   }));
 }
 
-export type DecisionResult = { ok: true } | { ok: false; error: string };
+export type DecisionResult =
+  | { ok: true }
+  | { ok: false; errorKey: TranslationKey; errorVars?: Record<string, string | number> };
 
 /**
  * The school decides.
@@ -862,7 +863,7 @@ export async function decideMentorRequest(
       },
     },
   });
-  if (!thread) return { ok: false, error: "That request is no longer waiting." };
+  if (!thread) return { ok: false, errorKey: "mentoring.noLongerWaiting" };
 
   if (!decision.approve) {
     const reason = (decision.reason ?? "").trim();
@@ -918,7 +919,8 @@ export async function decideMentorRequest(
     if (claimed.count === 0) {
       return {
         ok: false,
-        error: `${thread.expert.user.name} filled up while this was waiting. Decline it and suggest somebody else.`,
+        errorKey: "mentoring.filledUp",
+        errorVars: { name: thread.expert.user.name },
       };
     }
   } else {

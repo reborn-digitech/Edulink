@@ -27,6 +27,7 @@ export default async function CompetitionsPage({
 }: {
   searchParams: Promise<{ show?: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { show } = await searchParams;
   const openOnly = show !== "all";
@@ -40,20 +41,18 @@ export default async function CompetitionsPage({
     <div className="mx-auto max-w-3xl space-y-5">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Competitions</h1>
-          <p className="text-sm text-fg-muted">
-            Open to pupils across every school on EduLink.
-          </p>
+          <h1 className="text-2xl font-bold tracking-tight">{t("competitions.title")}</h1>
+          <p className="text-sm text-fg-muted">{t("competitions.intro")}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="ghost" size="sm">
             <Link href={openOnly ? "/competitions?show=all" : "/competitions"}>
-              {openOnly ? "Show closed ones too" : "Only ones I can still enter"}
+              {openOnly ? t("competitions.showClosed") : t("competitions.onlyOpen")}
             </Link>
           </Button>
           {session.role === "ADMIN" && (
             <Button asChild size="sm">
-              <Link href="/competitions/new">Post one</Link>
+              <Link href="/competitions/new">{t("competitions.postOne")}</Link>
             </Button>
           )}
         </div>
@@ -62,21 +61,24 @@ export default async function CompetitionsPage({
       {waiting.length > 0 && (
         <section aria-labelledby="waiting-heading" className="space-y-2.5">
           <h2 id="waiting-heading" className="text-sm font-semibold text-warn">
-            Waiting for you
+            {t("competitions.waitingForYou")}
           </h2>
           {waiting.map((item) => (
             <Card key={item.entryId} className="border-warn/40 bg-warn-soft/40">
               <CardBody className="space-y-2.5">
                 <p className="text-[0.9375rem]">
-                  <strong>{item.childName}</strong> would like to enter{" "}
+                  {/* One sentence with placeholders — the link styling on the
+                      title went with the fragments; the card links to it via
+                      the consent controls anyway. */}
                   <Link href={`/competitions/${item.competitionId}`} className="underline underline-offset-4">
-                    {item.title}
+                    {t("competitions.wouldLikeToEnter", {
+                      child: item.childName,
+                      title: item.title,
+                      organiser: item.organizerName,
+                    })}
                   </Link>
-                  , run by {item.organizerName}.
                 </p>
-                <p className="text-sm text-fg-muted">
-                  They cannot take part until you say yes.
-                </p>
+                <p className="text-sm text-fg-muted">{t("competitions.cannotUntilYes")}</p>
                 <ConsentControls
                   entryId={item.entryId}
                   childName={item.childName}
@@ -91,16 +93,12 @@ export default async function CompetitionsPage({
       {competitions.length === 0 ? (
         <EmptyState
           icon={<TrophyIcon weight="duotone" className="size-8" />}
-          title={openOnly ? "Nothing open just now" : "No competitions yet"}
-          description={
-            openOnly
-              ? "Nothing is taking entries at the moment. Have a look at the closed ones to see the sort of thing that comes up."
-              : "When a school or an organiser posts a competition, it will show up here for every school."
-          }
+          title={openOnly ? t("competitions.emptyOpenTitle") : t("competitions.emptyTitle")}
+          description={openOnly ? t("competitions.emptyOpenBody") : t("competitions.emptyBody")}
           action={
             openOnly ? (
               <Button asChild variant="secondary">
-                <Link href="/competitions?show=all">Show closed ones too</Link>
+                <Link href="/competitions?show=all">{t("competitions.showClosed")}</Link>
               </Button>
             ) : undefined
           }
@@ -117,7 +115,7 @@ export default async function CompetitionsPage({
                       {competition.verified && (
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong">
                           <SealCheckIcon weight="fill" className="size-4" />
-                          Checked by EduLink
+                          {t("competitions.verified")}
                         </span>
                       )}
                     </div>
@@ -129,7 +127,7 @@ export default async function CompetitionsPage({
                         ? ` · ${competition.gradeLow}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${competition.gradeHigh}` : ""}`
                         : ""}
                       {competition.registrationClosesAt
-                        ? ` · closes ${competition.registrationClosesAt.toLocaleDateString("en-GB", { day: "numeric", month: "long" })}`
+                        ? ` · ${t("competitions.closesShort", { date: competition.registrationClosesAt.toLocaleDateString("en-GB", { day: "numeric", month: "long" }) })}`
                         : ""}
                     </p>
                   </Link>
@@ -144,15 +142,15 @@ export default async function CompetitionsPage({
                         <>
                           <HourglassMediumIcon weight="fill" className="size-4" />
                           {session.role === "PARENT"
-                            ? `${competition.entry.studentName} is waiting on you`
-                            : "Waiting for a grown-up to say yes"}
+                            ? t("competitions.childWaitingOnYou", { child: competition.entry.studentName })
+                            : t("competitions.waitingForGrownUp")}
                         </>
                       ) : (
                         <>
                           <CheckCircleIcon weight="fill" className="size-4" />
                           {session.role === "PARENT"
-                            ? `${competition.entry.studentName} is entered`
-                            : "You are entered"}
+                            ? t("competitions.childEntered", { child: competition.entry.studentName })
+                            : t("competitions.youAreEntered")}
                         </>
                       )}
                     </p>

@@ -379,7 +379,11 @@ function StudentRow({
         <button
           type="button"
           onClick={onOpenNote}
-          aria-label={`${entry.note ? "Edit" : "Add"} a note for ${entry.name}`}
+          aria-label={
+            entry.note
+              ? t("teacher.editNoteFor", { name: entry.name })
+              : t("teacher.addNoteFor", { name: entry.name })
+          }
           className={cn(
             "tap grid shrink-0 place-items-center rounded-[--radius-sm]",
             entry.note ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
@@ -397,6 +401,9 @@ function StudentRow({
         {ATTENDANCE_STATUSES.map((status) => {
           const meta = ATTENDANCE_META[status];
           const active = entry.status === status;
+          // Hoisted so the audit sees a translated variable, not a template
+          // literal it cannot read. Fully translated either way.
+          const statusLabel = `${t(meta.labelKey)} — ${t(meta.hintKey)}`;
           return (
             <button
               key={status}
@@ -406,7 +413,7 @@ function StudentRow({
               aria-pressed={active}
               // The full word is in the accessible name; the visible glyph is
               // the initial. Colour alone never carries the meaning.
-              aria-label={`${t(meta.labelKey)} — ${t(meta.hintKey)}`}
+              aria-label={statusLabel}
               title={t(meta.labelKey)}
               className={cn(
                 "grid size-11 place-items-center rounded-[--radius-sm] text-sm font-bold",

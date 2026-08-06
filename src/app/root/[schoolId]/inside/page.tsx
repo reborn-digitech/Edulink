@@ -12,8 +12,12 @@ import { listPosts, schoolOverview } from "@/lib/operator-oversight";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { OpenForm } from "./open-form";
 import { OversightPanel } from "./oversight-panel";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata = { title: "Inside a school", robots: { index: false, follow: false } };
+export async function generateMetadata() {
+  const t = await getT();
+  return { title: t("root.insideMeta"), robots: { index: false, follow: false } };
+}
 
 /**
  * The inside of one school, for whoever runs the server.
@@ -29,6 +33,7 @@ export default async function InsideSchoolPage({
 }: {
   params: Promise<{ schoolId: string }>;
 }) {
+  const t = await getT();
   const session = await requireSuperuser();
   const { schoolId } = await params;
 
@@ -57,12 +62,9 @@ export default async function InsideSchoolPage({
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          Inside {school.name}
+          {t("root.insideTitle", { school: school.name })}
         </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Running the server is not by itself a way in. Open the school, say why, and the school
-          sees that you did.
-        </p>
+        <p className="mt-1 text-sm text-fg-muted">{t("root.insideIntro")}</p>
       </div>
 
       {grant ? (
@@ -70,15 +72,15 @@ export default async function InsideSchoolPage({
           {overview && (
             <section aria-labelledby="numbers-heading">
               <Card>
-                <CardHeader title={<span id="numbers-heading">The school, in numbers</span>} />
+                <CardHeader title={<span id="numbers-heading">{t("root.inNumbers")}</span>} />
                 <CardBody>
                   <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                     {[
-                      ["Classes", overview.classes],
-                      ["Posts waiting", overview.pendingPosts],
-                      ["Open reports", overview.openReports],
+                      [t("root.classes"), overview.classes],
+                      [t("root.postsWaiting"), overview.pendingPosts],
+                      [t("root.openReports"), overview.openReports],
                       [
-                        "People",
+                        t("root.people"),
                         overview.members.reduce((sum, m) => sum + m.count, 0),
                       ],
                     ].map(([label, value]) => (
@@ -105,8 +107,8 @@ export default async function InsideSchoolPage({
         <section aria-labelledby="closed-heading">
           <Card>
             <CardHeader
-              title={<span id="closed-heading">This school is closed to you</span>}
-              description="Which is the default, and stays the default."
+              title={<span id="closed-heading">{t("root.closedToYou")}</span>}
+              description={t("root.staysDefault")}
             />
             <CardBody>
               <OpenForm schoolId={schoolId} minutes={OPERATOR_ACCESS_MINUTES} />
@@ -120,19 +122,19 @@ export default async function InsideSchoolPage({
           opened, including by them. */}
       <Card>
         <CardHeader
-          title="Every time this school has been opened"
-          description="The school sees this list too."
+          title={t("root.everyTimeOpened")}
+          description={t("root.schoolSeesList")}
         />
         <CardBody>
           {history.length === 0 ? (
-            <p className="text-sm text-fg-muted">Never.</p>
+            <p className="text-sm text-fg-muted">{t("root.never")}</p>
           ) : (
             <ul className="space-y-2">
               {history.map((row) => (
                 <li key={row.id} className="rounded-[--radius-sm] bg-surface-muted p-3">
                   <p className="text-sm font-medium text-fg">
                     {row.operatorName}
-                    {row.live && " · open now"}
+                    {row.live && ` · ${t("root.openNow")}`}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
                     {row.startedAt.toUTCString().slice(0, 22)} — {row.reason}

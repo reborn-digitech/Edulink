@@ -129,7 +129,7 @@ export default async function StudentGradesPage() {
               value={overall === null ? "—" : `${overall}%`}
               tone={overall !== null && overall >= 70 ? "ok" : "neutral"}
               icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-              hint={`${formatMilli(earned)} of ${formatMilli(available)} points`}
+              hint={t("student.pointsOf", { earned: formatMilli(earned), available: formatMilli(available) })}
             />
             <StatTile label={t("student.marked")} value={grades.length} hint={t("student.piecesOfWork")} />
             <StatTile

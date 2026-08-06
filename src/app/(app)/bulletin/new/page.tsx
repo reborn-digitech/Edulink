@@ -14,16 +14,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NewPostPage() {
+  const t = await getT();
   const session = await requireUser();
 
   if (!session.schoolId || !session.role) {
     return (
       <EmptyState
-        title="No school selected"
-        description="Pick a school before posting."
+        title={t("bulletin.noSchool")}
+        description={t("bulletin.pickBeforePosting")}
         action={
           <Button asChild>
-            <Link href="/switch">Choose a school</Link>
+            <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
           </Button>
         }
       />
@@ -36,8 +37,8 @@ export default async function NewPostPage() {
   if (isStudent && classes.length === 0) {
     return (
       <EmptyState
-        title="You are not in a class yet"
-        description="Once you are in a class you can share things with it."
+        title={t("bulletin.notInClassTitle")}
+        description={t("bulletin.notInClassBody")}
       />
     );
   }
@@ -49,16 +50,14 @@ export default async function NewPostPage() {
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Bulletin
+        {t("bulletin.title")}
       </Link>
 
       <h1 className="text-2xl font-bold tracking-tight text-fg">
-        {isStudent ? "Share something" : "New post"}
+        {isStudent ? t("bulletin.shareSomething") : t("bulletin.newPost")}
       </h1>
       <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-        {isStudent
-          ? "A teacher reads it before anyone else does. If they ask for a change they will tell you why."
-          : "This publishes straight away to everyone you choose."}
+        {isStudent ? t("bulletin.studentIntro") : t("bulletin.staffIntro")}
       </p>
 
       <ComposeForm

@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/toast";
 import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/cn";
 import { saveProfile } from "./actions";
+import { useT } from "@/lib/i18n";
 
 export function ProfileForm({
   fullName,
@@ -25,6 +26,7 @@ export function ProfileForm({
   handle: string | null;
   studentCode: string | null;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -49,10 +51,10 @@ export function ProfileForm({
       const result = await saveProfile(draft);
       if (!result.ok) {
         setErrors(result.errors);
-        toast({ tone: "danger", title: "Not saved", description: result.errors._form });
+        toast({ tone: "danger", title: t("student.notSaved"), description: result.errors._form });
         return;
       }
-      toast({ tone: "ok", title: "Saved" });
+      toast({ tone: "ok", title: t("student.saved") });
       setPicking(false);
       router.refresh();
     });
@@ -81,7 +83,7 @@ export function ProfileForm({
             className="mt-2"
             onClick={() => setPicking((v) => !v)}
           >
-            {picking ? "Done choosing" : "Change my look"}
+            {picking ? t("student.doneChoosing") : t("student.changeMyLook")}
           </Button>
         </div>
       </div>
@@ -89,7 +91,7 @@ export function ProfileForm({
       {picking && (
         <div
           role="radiogroup"
-          aria-label="Choose your avatar"
+          aria-label={t("student.chooseAvatar")}
           className="grid max-h-72 grid-cols-5 gap-2 overflow-y-auto rounded-[--radius-lg] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
         >
           {AVATAR_PRESETS.map((preset) => {
@@ -117,60 +119,58 @@ export function ProfileForm({
       )}
 
       <TextField
-        label="What should we call you?"
+        label={t("student.callYou")}
         placeholder={fullName.split(" ")[0]}
         value={draft.preferredName}
         error={errors.preferredName}
         maxLength={60}
         onChange={(e) => setDraft((d) => ({ ...d, preferredName: e.target.value }))}
-        hint="This is the name you'll see around the app."
+        hint={t("student.nameYoullSee")}
       />
 
       <TextAreaField
-        label="A bit about you"
-        placeholder="I like football and I am learning the drums."
+        label={t("student.aboutYou")}
+        placeholder={t("student.aboutPlaceholder")}
         value={draft.bio}
         error={errors.bio}
         rows={3}
         maxLength={600}
         onChange={(e) => setDraft((d) => ({ ...d, bio: e.target.value }))}
-        hint="Your teacher and classmates can read this. Don't put your address or phone number here."
+        hint={t("student.bioHint")}
       />
 
       {/* Read-only facts, kept together so they are easy to find and hard to
           mistake for something editable. */}
       <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
         <div className="flex items-baseline justify-between gap-4 px-4 py-3">
-          <dt className="text-sm text-fg-muted">Your full name</dt>
+          <dt className="text-sm text-fg-muted">{t("student.fullName")}</dt>
           <dd className="text-right text-sm font-medium text-fg">{fullName}</dd>
         </div>
         {handle && (
           <div className="flex items-baseline justify-between gap-4 px-4 py-3">
-            <dt className="text-sm text-fg-muted">Your login name</dt>
+            <dt className="text-sm text-fg-muted">{t("student.loginName")}</dt>
             <dd className="text-right font-mono text-sm font-medium text-fg">{handle}</dd>
           </div>
         )}
         {studentCode && (
           <div className="flex items-baseline justify-between gap-4 px-4 py-3">
             <dt className="text-sm text-fg-muted">
-              Student code
+              {t("student.studentCode")}
               <span className="mt-0.5 block text-xs text-fg-subtle">
-                A grown-up at home needs this to link to you
+                {t("student.codeHint")}
               </span>
             </dt>
             <dd className="text-right font-mono text-sm font-medium text-fg">{studentCode}</dd>
           </div>
         )}
       </dl>
-      <p className="text-xs text-fg-muted">
-        Your full name is what your teacher sees on the register, so only they can change it.
-      </p>
+      <p className="text-xs text-fg-muted">{t("student.nameHint")}</p>
 
       {dirty && (
         <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
-          <p className="min-w-0 flex-1 text-sm font-medium text-fg">Unsaved changes</p>
+          <p className="min-w-0 flex-1 text-sm font-medium text-fg">{t("student.unsaved")}</p>
           <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
-            Save
+            {t("student.save")}
           </Button>
         </div>
       )}

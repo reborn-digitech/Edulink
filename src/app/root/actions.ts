@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import {
   createSchool,
@@ -22,10 +23,10 @@ import {
 
 type Result = { ok: boolean; error?: string; schoolId?: string; code?: string };
 
-function failure(error: unknown): Result {
+async function failure(error: unknown): Promise<Result> {
   if (error instanceof AccessError) return { ok: false, error: error.message };
   console.error("[root]", error);
-  return { ok: false, error: "Something went wrong. Try again in a moment." };
+  return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }
 
 export async function createSchoolAction(details: SchoolDetails): Promise<Result> {
@@ -33,7 +34,8 @@ export async function createSchoolAction(details: SchoolDetails): Promise<Result
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await createSchool(session, details);
-    if (!result.ok) return { ok: false, error: result.error };
+    // The lib mints a KEY; this boundary turns it into the reader's words.
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     return { ok: true, schoolId: result.schoolId, code: result.code };
   } catch (error) {
@@ -49,7 +51,7 @@ export async function updateSchoolAction(
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await updateSchool(session, schoolId, details);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);
     return { ok: true };
@@ -66,7 +68,7 @@ export async function inviteAdminAction(
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await inviteAdmin(session, schoolId, input);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath(`/root/${schoolId}`);
     return { ok: true };
   } catch (error) {
@@ -79,7 +81,7 @@ export async function revokeInviteAction(schoolId: string, inviteId: string): Pr
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await revokeInvite(session, inviteId);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath(`/root/${schoolId}`);
     return { ok: true };
   } catch (error) {

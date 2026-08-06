@@ -7,6 +7,7 @@ import {
   currentAttendanceRate,
 } from "./attendance";
 import { addDaysToKey, todayKey } from "./dates";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
  * Student badges.
@@ -35,10 +36,13 @@ import { addDaysToKey, todayKey } from "./dates";
  * the note in student/profile/page.tsx about "3 of 7".
  */
 
+/* Keys, not words — the labels resolve at render time in the reader's
+   language. Archived copies (EarnedBadge rows) store the English rendering,
+   the way every stored artifact in this codebase does. */
 export type Badge = {
   id: string;
-  label: string;
-  description: string;
+  labelKey: TranslationKey;
+  descriptionKey: TranslationKey;
   earned: boolean;
   /** Progress toward it, when that is encouraging rather than pressuring. */
   progress?: { current: number; target: number };
@@ -130,17 +134,17 @@ export async function getBadges(
   return [
     {
       id: "here-all-week",
-      label: "Here all week",
-      description: "Five school days in a row",
+      labelKey: "practice.badgeWeek",
+      descriptionKey: "practice.badgeWeekHint",
       earned: currentStreak >= 5,
       progress: currentStreak < 5 ? { current: currentStreak, target: 5 } : undefined,
       icon: "fire",
     },
     {
       id: "regular",
-      label: "Rock solid",
+      labelKey: "practice.badgeSolid",
       // Present tense now, because it is a statement about how things stand.
-      description: "Holding 95% attendance",
+      descriptionKey: "practice.badgeSolidHint",
       // null still means "not enough school days yet to say", which is not the
       // same as failing — a child in their first week has not missed anything.
       earned: spell !== null && spell >= 95,
@@ -148,37 +152,37 @@ export async function getBadges(
     },
     {
       id: "first-hand-in",
-      label: "Handed it in",
-      description: "Handed in your first piece of work",
+      labelKey: "practice.badgeFirstWork",
+      descriptionKey: "practice.badgeFirstWorkHint",
       earned: handedIn >= 1,
       icon: "clipboard",
     },
     {
       id: "five-hand-ins",
-      label: "On top of it",
-      description: "Handed in five pieces of work",
+      labelKey: "practice.badgeFiveWorks",
+      descriptionKey: "practice.badgeFiveWorksHint",
       earned: handedIn >= 5,
       progress: handedIn < 5 ? { current: handedIn, target: 5 } : undefined,
       icon: "clipboard",
     },
     {
       id: "marked",
-      label: "Getting feedback",
-      description: "Had work marked by a teacher",
+      labelKey: "practice.badgeFeedback",
+      descriptionKey: "practice.badgeFeedbackHint",
       earned: gradedCount >= 1,
       icon: "chart",
     },
     {
       id: "top-marks",
-      label: "Top marks",
-      description: "Scored 90% or more on a piece of work",
+      labelKey: "practice.badgeTopMarks",
+      descriptionKey: "practice.badgeTopMarksHint",
       earned: bestPercent >= 90,
       icon: "star",
     },
     {
       id: "shared",
-      label: "Shared something",
-      description: "Had a post published on the bulletin",
+      labelKey: "practice.badgeShared",
+      descriptionKey: "practice.badgeSharedHint",
       earned: approvedPosts >= 1,
       icon: "megaphone",
     },

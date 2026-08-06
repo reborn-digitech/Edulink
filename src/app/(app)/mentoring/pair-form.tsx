@@ -6,6 +6,7 @@ import { HandshakeIcon, SealCheckIcon, WarningIcon } from "@phosphor-icons/react
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { pair } from "./actions";
+import { useT } from "@/lib/i18n";
 
 type Option = { id: string; name: string };
 type Expert = Option & { headline: string; verified: boolean };
@@ -23,6 +24,7 @@ type Expert = Option & { headline: string; verified: boolean };
  * exists to be read, and an always-open form invites an accidental one.
  */
 export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Option[] }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
@@ -38,9 +40,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
       <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
         <WarningIcon weight="bold" className="mt-0.5 size-4 shrink-0" />
         <span>
-          {experts.length === 0
-            ? "No reviewed experts are available yet, so there is nobody to pair a pupil with."
-            : "You have no pupils to pair. Admins can pair any pupil in the school; teachers only their own."}
+          {experts.length === 0 ? t("mentoring.noExpertsYet") : t("mentoring.noPupils")}
         </span>
       </p>
     );
@@ -53,7 +53,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
         icon={<HandshakeIcon weight="bold" className="size-4" />}
         onClick={() => setOpen(true)}
       >
-        Set up mentoring
+        {t("mentoring.setUp")}
       </Button>
     );
   }
@@ -61,19 +61,19 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
   return (
     <Card>
       <CardHeader
-        title="Set up mentoring"
-        description="A guardian is asked first. Nobody can send a message until they agree."
+        title={t("mentoring.setUp")}
+        description={t("mentoring.guardianFirst")}
         icon={<HandshakeIcon weight="duotone" className="size-5" />}
       />
       <CardBody className="space-y-3">
         <label className="block text-sm text-fg-muted">
-          Pupil
+          {t("mentoring.pupil")}
           <select
             value={pupilId}
             onChange={(e) => setPupilId(e.target.value)}
             className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
           >
-            <option value="">Choose a pupil…</option>
+            <option value="">{t("mentoring.choosePupil")}</option>
             {pupils.map((pupil) => (
               <option key={pupil.id} value={pupil.id}>
                 {pupil.name}
@@ -83,17 +83,17 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
         </label>
 
         <label className="block text-sm text-fg-muted">
-          Mentor
+          {t("mentoring.mentor")}
           <select
             value={expertId}
             onChange={(e) => setExpertId(e.target.value)}
             className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
           >
-            <option value="">Choose a mentor…</option>
+            <option value="">{t("mentoring.chooseMentor")}</option>
             {experts.map((expert) => (
               <option key={expert.id} value={expert.id}>
                 {expert.name} — {expert.headline}
-                {expert.verified ? " (verified)" : ""}
+                {expert.verified ? ` ${t("mentoring.verifiedMark")}` : ""}
               </option>
             ))}
           </select>
@@ -102,22 +102,20 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
         {experts.find((e) => e.id === expertId && !e.verified) && (
           <p className="flex items-start gap-2 text-xs text-warn">
             <SealCheckIcon weight="bold" className="mt-0.5 size-4 shrink-0" />
-            <span>This mentor has been published but their identity is not verified.</span>
+            <span>{t("mentoring.notVerified")}</span>
           </p>
         )}
 
         <label className="block text-sm text-fg-muted">
-          What is the mentoring for?
+          {t("mentoring.forWhat")}
           <input
             type="text"
             value={purpose}
-            placeholder="Careers conversation about engineering routes"
+            placeholder={t("mentoring.purposePlaceholder")}
             onChange={(e) => setPurpose(e.target.value)}
             className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
-          <span className="mt-1 block text-xs text-fg-subtle">
-            The guardian sees this when they are asked to agree, so write it for them.
-          </span>
+          <span className="mt-1 block text-xs text-fg-subtle">{t("mentoring.guardianSees")}</span>
         </label>
 
         {error && <p className="text-sm font-medium text-danger">{error}</p>}
@@ -131,7 +129,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
                 setError(null);
                 const result = await pair(expertId, pupilId, purpose);
                 if (!result.ok) {
-                  setError(result.error ?? "Could not set that up.");
+                  setError(result.error ?? t("mentoring.couldNotSetUp"));
                   return;
                 }
                 setOpen(false);
@@ -142,10 +140,10 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
               })
             }
           >
-            Ask the guardian
+            {t("mentoring.askTheGuardian")}
           </Button>
           <Button variant="ghost" onClick={() => setOpen(false)}>
-            Cancel
+            {t("common.cancel")}
           </Button>
         </div>
       </CardBody>

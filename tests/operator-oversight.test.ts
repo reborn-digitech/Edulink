@@ -443,7 +443,8 @@ describe("pausing somebody", () => {
       reason: "Pending a safeguarding review",
     });
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/only admin/i);
+    // The lib mints a KEY now; the boundary owns the words.
+    expect(result.ok === false && result.errorKey).toBe("root.onlyAdmin");
 
     const admin = await db.membership.findUniqueOrThrow({ where: { id: adminMembershipId } });
     expect(admin.status).toBe("ACTIVE");

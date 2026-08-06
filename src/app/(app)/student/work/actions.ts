@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireApiRole, assertAssignmentAccess, AccessError } from "@/lib/tenancy";
@@ -36,16 +37,16 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   }
 
   const parsed = submitSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That submission is not valid." };
+  if (!parsed.success) return { ok: false, error: (await getT())("student.submissionNotValid") };
 
   const { assignmentId, body } = parsed.data;
-  if (body.length === 0) return { ok: false, error: "Write something before handing it in." };
+  if (body.length === 0) return { ok: false, error: (await getT())("student.writeBeforeHandIn") };
 
   let assignment;
   try {
     assignment = await assertAssignmentAccess(ctx, assignmentId);
   } catch (error) {
-    if (error instanceof AccessError) return { ok: false, error: "That work is not available." };
+    if (error instanceof AccessError) return { ok: false, error: (await getT())("student.workNotAvailable") };
     throw error;
   }
 
@@ -63,7 +64,7 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   if (existingGrade) {
     return {
       ok: false,
-      error: "This has already been marked, so it cannot be changed. Message your teacher instead.",
+      error: (await getT())("student.alreadyMarked"),
     };
   }
 

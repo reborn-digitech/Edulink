@@ -1,5 +1,6 @@
 import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import type { SchoolRecordView } from "@/lib/school-record";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 const REASON_LABEL: Record<string, string> = {
   TRANSFERRED: "Transferred",
@@ -27,10 +28,14 @@ function when(date: Date): string {
  * grade, no rank, and nothing comparing this child to another — the same rule
  * the dashboards and the badges follow.
  */
+/* `t` is a prop — a plain function rendered by server components has no hook
+   provider above it (the week-grid precedent). */
 export function SchoolRecordList({
   records,
   emptyNote,
+  t,
 }: {
+  t: Translate;
   records: SchoolRecordView[];
   emptyNote?: string;
 }) {
@@ -63,7 +68,7 @@ export function SchoolRecordList({
 
           <dl className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
             <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
-              <dt className="text-xs text-fg-muted">Attendance</dt>
+              <dt className="text-xs text-fg-muted">{t("record.attendance")}</dt>
               <dd className="text-lg font-semibold tabular-nums text-fg">
                 {/* Never 0% for a child nobody ever marked. A pupil who joined
                     in the last week of term has no attendance, which is a
@@ -77,7 +82,7 @@ export function SchoolRecordList({
               </dd>
             </div>
             <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
-              <dt className="text-xs text-fg-muted">Report cards issued</dt>
+              <dt className="text-xs text-fg-muted">{t("ui.reportCardsIssued")}</dt>
               <dd className="text-lg font-semibold tabular-nums text-fg">
                 {record.reportCardCount}
               </dd>
@@ -87,7 +92,7 @@ export function SchoolRecordList({
             </div>
             {record.destination && (
               <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
-                <dt className="text-xs text-fg-muted">Went on to</dt>
+                <dt className="text-xs text-fg-muted">{t("ui.wentOnTo")}</dt>
                 <dd className="text-sm font-medium text-fg">{record.destination}</dd>
               </div>
             )}

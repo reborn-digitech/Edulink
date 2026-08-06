@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { formatBytes, type Attachment } from "@/lib/json";
 import { attachToAssignment, attachToSubmission, detach } from "@/app/(app)/attachments/actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * Attachment strip with upload.
@@ -34,6 +35,7 @@ export function AttachmentList({
   canEdit: boolean;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -97,7 +99,7 @@ export function AttachmentList({
                 <button
                   type="button"
                   disabled={pending}
-                  aria-label={`Remove ${attachment.name}`}
+                  aria-label={t("ui.removeFile", { name: attachment.name })}
                   className="tap grid shrink-0 place-items-center rounded-full text-fg-subtle hover:text-danger disabled:opacity-50"
                   onClick={() =>
                     startTransition(async () => {
@@ -108,8 +110,8 @@ export function AttachmentList({
                       });
                       toast(
                         result.ok
-                          ? { tone: "neutral", title: "Removed" }
-                          : { tone: "danger", title: "Could not remove it", description: result.error },
+                          ? { tone: "neutral", title: t("ui.removed") }
+                          : { tone: "danger", title: t("ui.couldNotRemove"), description: result.error },
                       );
                       router.refresh();
                     })
@@ -151,9 +153,7 @@ export function AttachmentList({
               e.target.value = "";
             }}
           />
-          <p className="text-xs text-fg-subtle">
-            Images or PDFs, up to 5 MB each, 5 files in total.
-          </p>
+          <p className="text-xs text-fg-subtle">{t("ui.attachHint")}</p>
         </>
       )}
     </div>

@@ -68,15 +68,15 @@ export function AppRuntime() {
       if (sent > 0) {
         toast({
           tone: "ok",
-          title: `Synced ${sent} ${sent === 1 ? "change" : "changes"}`,
-          description: "Everything you did offline is saved.",
+          title: sent === 1 ? t("ui.syncedOne") : t("ui.syncedMany", { count: sent }),
+          description: t("ui.offlineSaved"),
         });
       }
       if (failed > 0) {
         toast({
           tone: "warn",
-          title: "Some changes are still waiting",
-          description: `${failed} could not be sent yet. We will keep trying.`,
+          title: t("ui.stillWaiting"),
+          description: t("ui.couldNotSendYet", { count: failed }),
         });
       }
     };
@@ -107,9 +107,9 @@ export function AppRuntime() {
           toast({
             tone: "danger",
             duration: null,
-            title: "A saved change was rejected",
+            title: t("ui.changeRejected"),
             description:
-              "One offline change could not be applied and has been discarded. Please check and redo it.",
+              t("ui.changeDiscarded"),
           });
         }
       }),
@@ -155,13 +155,13 @@ export function AppRuntime() {
 
       {updateReady && (
         <div className="fixed inset-x-0 bottom-0 z-[95] flex items-center justify-center gap-3 border-t border-border bg-surface px-4 py-3 pb-[calc(env(safe-area-inset-bottom,0px)+0.75rem)] shadow-lg">
-          <span className="text-sm font-medium text-fg">A new version of EduLink is ready.</span>
+          <span className="text-sm font-medium text-fg">{t("ui.newVersion")}</span>
           <button
             type="button"
             onClick={() => window.location.reload()}
             className="rounded-[--radius-md] bg-accent px-4 py-2 text-sm font-semibold text-accent-fg"
           >
-            Refresh
+            {t("ui.refresh")}
           </button>
         </div>
       )}

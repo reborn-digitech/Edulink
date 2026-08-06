@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NewCompetitionPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN");
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
@@ -25,14 +26,12 @@ export default async function NewCompetitionPage() {
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Competitions
+        {t("competitions.title")}
       </Link>
 
       <header className="space-y-1">
-        <h1 className="text-2xl font-bold tracking-tight">Post a competition</h1>
-        <p className="text-sm text-fg-muted">
-          Once you publish it, pupils at every school on EduLink can see it and ask to enter.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight">{t("competitions.postACompetition")}</h1>
+        <p className="text-sm text-fg-muted">{t("competitions.postIntro")}</p>
       </header>
 
       <NewCompetitionForm schoolName={school.name} />

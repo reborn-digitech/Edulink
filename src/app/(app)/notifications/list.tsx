@@ -16,6 +16,7 @@ import {
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import { markNotificationRead } from "./actions";
+import { useT } from "@/lib/i18n";
 import type { NotificationKind } from "@/lib/constants";
 
 export type NotificationItem = {
@@ -41,6 +42,7 @@ const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; 
 };
 
 export function NotificationList({ items }: { items: NotificationItem[] }) {
+  const t = useT();
   const router = useRouter();
   const [, startTransition] = useTransition();
 
@@ -94,7 +96,7 @@ export function NotificationList({ items }: { items: NotificationItem[] }) {
                   {!item.read && (
                     <span
                       className="size-2 shrink-0 rounded-full bg-accent"
-                      aria-label="Unread"
+                      aria-label={t("notif.tabUnread")}
                     />
                   )}
                 </span>

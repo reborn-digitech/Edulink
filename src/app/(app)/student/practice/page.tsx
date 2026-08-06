@@ -46,10 +46,7 @@ export default async function PracticePage({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.practice")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            Practice that follows you. Get two right and it gets harder; get two wrong and it eases
-            off.
-          </p>
+          <p className="mt-1 text-sm text-fg-muted">{t("practice.intro")}</p>
         </div>
         <LanguageSwitch showLabel />
       </div>
@@ -70,7 +67,7 @@ export default async function PracticePage({
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
               >
-                All
+                {t("practice.allSubjects")}
               </Link>
               {subjects.map((s) => (
                 <Link
@@ -114,7 +111,7 @@ export default async function PracticePage({
 
                     <div className="mt-3 flex flex-wrap items-center gap-2">
                       <Badge tone="accent" size="sm">
-                        {QUIZ_LEVELS[topic.level - 1]?.label ?? "Level 1"}
+                        {t(QUIZ_LEVELS[topic.level - 1]?.labelKey ?? "practice.level1")}
                       </Badge>
                       <span className="text-xs text-fg-muted">
                         {topic.seenCount} of {topic.questionCount} tried
@@ -122,7 +119,7 @@ export default async function PracticePage({
                       {topic.completed && !topic.badgeEarned && (
                         <span className="inline-flex items-center gap-1 text-xs text-fg-muted">
                           <CheckCircleIcon weight="fill" className="size-3.5" />
-                          Finished
+                          {t("practice.finished")}
                         </span>
                       )}
                     </div>

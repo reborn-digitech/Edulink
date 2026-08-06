@@ -84,6 +84,14 @@ const SHARED_WITH_ENGLISH = new Set([
   "register.websitePlaceholder",
   "register.yourEmailPlaceholder",
   /**
+   * URL SCHEMES. `https://…` is the shape the input must start with to be
+   * accepted at all — the validation refuses anything else — and a scheme is
+   * ASCII protocol syntax, not a word. The hint sentences around both ARE
+   * translated (`competitions.linkToWork`, `competitions.externalUrlHint`).
+   */
+  "competitions.urlPlaceholder",
+  "competitions.exampleUrlPlaceholder",
+  /**
    * An EXAMPLE ADDRESS on the guardian sign-up, same grounds as the three
    * above.
    */

@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { inviteAdminAction, revokeInviteAction } from "../actions";
+import { useT } from "@/lib/i18n";
 
 type Invite = {
   id: string;
@@ -36,6 +37,7 @@ type Invite = {
  * school can invite anybody.
  */
 export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: Invite[] }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -50,12 +52,12 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
     startTransition(async () => {
       const result = await inviteAdminAction(schoolId, { email, name, role });
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("root.didNotWork"));
         return;
       }
       setEmail("");
       setName("");
-      toast({ tone: "ok", title: "Invitation sent" });
+      toast({ tone: "ok", title: t("root.invitationSent") });
       router.refresh();
     });
   }
@@ -64,7 +66,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
     startTransition(async () => {
       const result = await revokeInviteAction(schoolId, inviteId);
       if (!result.ok) {
-        toast({ tone: "danger", title: "Not revoked", description: result.error });
+        toast({ tone: "danger", title: t("root.notRevoked"), description: result.error });
         return;
       }
       router.refresh();
@@ -81,10 +83,10 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
         )}
 
         <fieldset>
-          <legend className="text-sm font-medium text-fg">Invite as</legend>
+          <legend className="text-sm font-medium text-fg">{t("root.inviteAs")}</legend>
           <div
             role="radiogroup"
-            aria-label="Role"
+            aria-label={t("root.role")}
             className="mt-2 flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
           >
             {(["ADMIN", "PRINCIPAL"] as const).map((option) => (
@@ -99,27 +101,25 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
                   role === option ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
                 )}
               >
-                {option === "ADMIN" ? "Administrator" : "Principal"}
+                {option === "ADMIN" ? t("root.administrator") : t("role.principal")}
               </button>
             ))}
           </div>
           <p className="mt-1.5 text-xs leading-relaxed text-fg-muted">
-            {role === "ADMIN"
-              ? "Sets the school up: classes, sections, who teaches what, who takes which register."
-              : "Reads the school whole, and decides who may be away. No register, no gradebook."}
+            {role === "ADMIN" ? t("root.adminExplainer") : t("root.principalExplainer")}
           </p>
         </fieldset>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField
-            label="Email"
+            label={t("root.email")}
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            label="Name (optional)"
+            label={t("root.nameOptional")}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -131,7 +131,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
           disabled={!email.trim()}
           icon={<PaperPlaneTiltIcon weight="bold" />}
         >
-          Send invitation
+          {t("root.sendInvitation")}
         </Button>
       </form>
 
@@ -145,7 +145,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-fg">{invite.email}</span>
                 <span className="block truncate text-xs text-fg-muted">
-                  {invite.role === "PRINCIPAL" ? "Principal" : "Administrator"}
+                  {invite.role === "PRINCIPAL" ? t("role.principal") : t("root.administrator")}
                   {invite.name ? ` · ${invite.name}` : ""}
                 </span>
               </span>
@@ -163,7 +163,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
               </Badge>
               {invite.status === "PENDING" && (
                 <Button size="sm" variant="ghost" loading={pending} onClick={() => revoke(invite.id)}>
-                  Revoke
+                  {t("root.revoke")}
                 </Button>
               )}
             </li>

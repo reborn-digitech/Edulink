@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { relativeTime } from "@/lib/dates";
 import { decideRequest } from "./actions";
+import { useT } from "@/lib/i18n";
 import type { PendingRequest } from "@/lib/mentoring";
 
 /**
@@ -20,6 +21,7 @@ import type { PendingRequest } from "@/lib/mentoring";
  * where they stand.
  */
 export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -32,10 +34,10 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
     startTransition(async () => {
       const result = await decideRequest(threadId, { approve, reason });
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("mentoring.didNotWork"));
         return;
       }
-      toast({ tone: "ok", title: approve ? "Sent to the family" : "The pupil has been told" });
+      toast({ tone: "ok", title: approve ? t("mentoring.sentToFamily") : t("mentoring.pupilTold") });
       router.refresh();
     });
   }
@@ -43,8 +45,12 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
   return (
     <Card className="border-warn/40">
       <CardHeader
-        title={`${requests.length} pupil${requests.length === 1 ? "" : "s"} asking for a mentor`}
-        description="Your decision comes first. A guardian is asked only if you agree."
+        title={
+          requests.length === 1
+            ? t("mentoring.askingOne")
+            : t("mentoring.askingMany", { count: requests.length })
+        }
+        description={t("mentoring.decisionFirst")}
       />
       <CardBody className="space-y-3">
         {error && (
@@ -62,17 +68,17 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
               {request.expertVerified && (
                 <Badge tone="ok" size="sm" className="ml-2">
                   <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
-                  Checked
+                  {t("mentoring.checked")}
                 </Badge>
               )}
             </p>
             <p className="mt-0.5 text-xs text-fg-muted">
-              {request.expertHeadline} · asked {relativeTime(request.askedAt)}
+              {request.expertHeadline} · {t("mentoring.askedAgo", { when: relativeTime(request.askedAt) })}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-fg">“{request.purpose}”</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Button size="sm" loading={pending} onClick={() => decide(request.threadId, true)}>
-                Agree, and ask the family
+                {t("mentoring.agreeAsk")}
               </Button>
               <Button
                 size="sm"
@@ -80,13 +86,13 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
                 loading={pending}
                 onClick={() => {
                   const reason = window.prompt(
-                    `Why not? ${request.studentName} will read this.`,
+                    t("mentoring.whyNotPrompt", { name: request.studentName }),
                   );
                   if (reason === null) return;
                   decide(request.threadId, false, reason);
                 }}
               >
-                No, and tell them why
+                {t("mentoring.noTellWhy")}
               </Button>
             </div>
           </div>

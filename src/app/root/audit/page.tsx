@@ -8,7 +8,10 @@ import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 
-export const metadata = { title: "Server log" };
+export async function generateMetadata() {
+  const t = await getT();
+  return { title: t("root.serverLog") };
+}
 
 /**
  * What has been done from outside any school.
@@ -35,22 +38,19 @@ export default async function ServerAuditPage() {
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Schools
+        {t("root.schools")}
       </Link>
 
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Server log</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          Everything done from outside a school — schools added, details corrected, administrators
-          invited. A school&rsquo;s own history stays inside that school.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.serverLog")}</h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("root.auditIntro")}</p>
       </div>
 
       {rows.length === 0 ? (
         <EmptyState
           icon={<ScrollIcon weight="duotone" className="size-8" />}
-          title="Nothing recorded yet"
-          description="Adding a school or inviting an administrator will appear here."
+          title={t("root.nothingRecorded")}
+          description={t("root.addingWillAppear")}
         />
       ) : (
         <Card>

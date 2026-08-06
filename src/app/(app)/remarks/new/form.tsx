@@ -9,6 +9,8 @@ import { Avatar } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { startThread } from "../actions";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 type Student = {
   membershipId: string;
@@ -19,12 +21,13 @@ type Student = {
   guardianCount: number;
 };
 
-const SUGGESTIONS = [
-  "A quick update",
-  "Something lovely today",
-  "A small concern",
-  "Homework check-in",
-  "Absence follow-up",
+/* Keys, not words — looked up at render time in the reader's language. */
+const SUGGESTIONS: TranslationKey[] = [
+  "remarks.suggestionUpdate",
+  "remarks.suggestionLovely",
+  "remarks.suggestionConcern",
+  "remarks.suggestionHomework",
+  "remarks.suggestionAbsence",
 ];
 
 export function ComposeForm({
@@ -36,6 +39,7 @@ export function ComposeForm({
   preselected?: string;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -59,9 +63,9 @@ export function ComposeForm({
   function submit(event: React.FormEvent) {
     event.preventDefault();
     const next: Record<string, string> = {};
-    if (!studentId) next.studentMembershipId = "Choose a student.";
-    if (subject.trim().length < 2) next.subject = "Give it a short subject.";
-    if (body.trim().length < 1) next.body = "Write your message.";
+    if (!studentId) next.studentMembershipId = t("remarks.chooseStudentDot");
+    if (subject.trim().length < 2) next.subject = t("remarks.shortSubject");
+    if (body.trim().length < 1) next.body = t("remarks.writeYourMessage");
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
@@ -76,13 +80,13 @@ export function ComposeForm({
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "Could not send",
-          description: result.errors._form ?? "Check the highlighted fields.",
+          title: t("remarks.couldNotSend"),
+          description: result.errors._form ?? t("remarks.checkHighlighted"),
         });
         return;
       }
 
-      toast({ tone: "ok", title: "Message sent", description: "Their guardians are notified." });
+      toast({ tone: "ok", title: t("remarks.messageSent"), description: t("remarks.guardiansNotified") });
       router.push(`/remarks/${result.threadId}`);
       router.refresh();
     });
@@ -100,7 +104,7 @@ export function ComposeForm({
       )}
 
       <fieldset>
-        <legend className="text-sm font-medium text-fg">Which student?</legend>
+        <legend className="text-sm font-medium text-fg">{t("remarks.whichStudent")}</legend>
 
         <div className="relative mt-2">
           <MagnifyingGlassIcon
@@ -111,20 +115,20 @@ export function ComposeForm({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Find a student…"
-            aria-label="Search students"
+            placeholder={t("remarks.findStudent")}
+            aria-label={t("remarks.searchStudents")}
             className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
           />
         </div>
 
         {filtered.length === 0 ? (
           <p className="mt-3 rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
-            Nobody matches &ldquo;{query}&rdquo;.
+            {t("remarks.nobodyMatches", { query })}
           </p>
         ) : (
           <div
             role="radiogroup"
-            aria-label="Choose a student"
+            aria-label={t("remarks.chooseStudent")}
             className="mt-2 max-h-64 space-y-1.5 overflow-y-auto rounded-[--radius-md] border border-border p-2 scrollbar-thin"
           >
             {filtered.map((student) => {
@@ -164,7 +168,7 @@ export function ComposeForm({
                   </span>
                   {student.guardianCount === 0 && (
                     <span className="shrink-0 rounded-full bg-warn-soft px-2 py-0.5 text-[0.6875rem] font-semibold text-warn">
-                      No guardian
+                      {t("remarks.noGuardian")}
                     </span>
                   )}
                 </button>
@@ -184,18 +188,15 @@ export function ComposeForm({
       {selected && selected.guardianCount === 0 && (
         <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft p-3.5 text-sm text-warn">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
-          <span>
-            <strong>{selected.fullName}</strong> has no guardian linked yet, so nobody will
-            receive this. The thread will be waiting for them when someone links.
-          </span>
+          <span>{t("remarks.noGuardianWarning", { name: selected.fullName })}</span>
         </p>
       )}
 
       <div>
         <TextField
-          label="Subject"
+          label={t("remarks.subject")}
           required
-          placeholder="A quick update"
+          placeholder={t("remarks.subjectPlaceholder")}
           value={subject}
           error={errors.subject}
           onChange={(e) => setSubject(e.target.value)}
@@ -206,10 +207,10 @@ export function ComposeForm({
             <button
               key={suggestion}
               type="button"
-              onClick={() => setSubject(suggestion)}
+              onClick={() => setSubject(t(suggestion))}
               className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
             >
-              {suggestion}
+              {t(suggestion)}
             </button>
           ))}
         </div>
@@ -217,14 +218,14 @@ export function ComposeForm({
 
       <div>
         <label htmlFor="remark-body" className="block text-sm font-medium text-fg">
-          Message <span className="text-danger">*</span>
+          {t("remarks.message")} <span className="text-danger">*</span>
         </label>
         <textarea
           id="remark-body"
           value={body}
           onChange={(e) => setBody(e.target.value.slice(0, 8000))}
           rows={6}
-          placeholder="Hello — I wanted to let you know…"
+          placeholder={t("remarks.messagePlaceholder")}
           aria-invalid={Boolean(errors.body) || undefined}
           className={cn(
             "mt-1.5 w-full resize-y rounded-[--radius-md] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
@@ -247,7 +248,7 @@ export function ComposeForm({
         loading={pending}
         icon={<PaperPlaneTiltIcon weight="bold" />}
       >
-        {pending ? "Sending…" : "Send message"}
+        {pending ? t("common.sending") : t("common.send")}
       </Button>
     </form>
   );

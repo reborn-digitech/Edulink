@@ -117,7 +117,7 @@ export default async function StudentWorkPage() {
           <CardHeader
             icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
             title={t("student.markedAlready")}
-            description={`${past.length} ${t("student.piecesOfWork")}`}
+            description={t("student.pastWorkCount", { count: past.length })}
           />
           <CardBody>
             <ul className="divide-y divide-border">

@@ -15,6 +15,8 @@ import {
   withdrawEntry,
 } from "@/lib/competitions";
 import { toMilli } from "@/lib/validation";
+import { getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 const idSchema = z.object({ id: z.string().cuid() });
 
@@ -29,11 +31,12 @@ async function run(
   input: unknown,
   work: (session: NonNullable<Awaited<ReturnType<typeof getSession>>>, id: string) => Promise<string>,
 ): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
   const parsed = idSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That is not a valid competition." };
+  if (!parsed.success) return { ok: false, error: t("competitions.notValidCompetition") };
 
   try {
     const message = await work(session, parsed.data.id);
@@ -48,27 +51,29 @@ async function run(
 }
 
 export async function enterAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   return run(input, async (session, id) => {
     const result = await enterCompetition(session, id);
     return result.awaitingConsent
-      ? "Asked to enter. A grown-up needs to say yes before you take part."
-      : "You are entered.";
+      ? t("competitions.askedToEnterMsg")
+      : t("competitions.youAreEnteredDot");
   });
 }
 
 /** `id` here is the ENTRY, not the competition — consent is per child. */
 export async function consentAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
   const parsed = idSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That is not a valid entry." };
+  if (!parsed.success) return { ok: false, error: t("competitions.notValidEntry") };
 
   try {
     await giveConsent(session, parsed.data.id);
     revalidatePath("/competitions");
     revalidatePath("/parent");
-    return { ok: true, message: "Consent given." };
+    return { ok: true, message: t("competitions.consentGivenDot") };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     throw error;
@@ -76,17 +81,18 @@ export async function consentAction(input: unknown): Promise<CompetitionActionSt
 }
 
 export async function withdrawAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
   const parsed = idSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That is not a valid entry." };
+  if (!parsed.success) return { ok: false, error: t("competitions.notValidEntry") };
 
   try {
     await withdrawEntry(session, parsed.data.id);
     revalidatePath("/competitions");
     revalidatePath("/parent");
-    return { ok: true, message: "Withdrawn." };
+    return { ok: true, message: t("competitions.withdrawnDot") };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     throw error;
@@ -111,21 +117,27 @@ const optionalText = z
  * `new Date("")` is Invalid Date, which Prisma stores as a crash rather than a
  * null.
  */
-const optionalDate = z
-  .string()
-  .trim()
-  .transform((v) => (v.length === 0 ? null : v))
-  .nullable()
-  .optional()
-  .refine((v) => v === null || v === undefined || !Number.isNaN(Date.parse(v)), {
-    message: "That is not a date.",
-  })
-  .transform((v) => (v ? new Date(v) : null));
+const optionalDate = (t: Translate) =>
+  z
+    .string()
+    .trim()
+    .transform((v) => (v.length === 0 ? null : v))
+    .nullable()
+    .optional()
+    .refine((v) => v === null || v === undefined || !Number.isNaN(Date.parse(v)), {
+      message: t("competitions.notADate"),
+    })
+    .transform((v) => (v ? new Date(v) : null));
 
-const createSchema = z
+/**
+ * ⚠ A FACTORY, not a module-level schema. The messages inside are shown to the
+ * person who typed, so they must resolve in that person's language — a
+ * module-level schema bakes them in whatever language the module loaded in.
+ */
+const createSchema = (t: Translate) => z
   .object({
-    title: z.string().trim().min(3, "Give it a title.").max(140),
-    summary: z.string().trim().min(3, "One line about it, please.").max(200),
+    title: z.string().trim().min(3, t("competitions.giveTitle")).max(140),
+    summary: z.string().trim().min(3, t("competitions.oneLinePlease")).max(200),
     body: optionalText,
     subject: z.string().trim().max(40).transform((v) => (v.length === 0 ? null : v)).nullable().optional(),
     gradeLow: z.string().trim().max(10).transform((v) => (v.length === 0 ? null : v)).nullable().optional(),
@@ -141,11 +153,11 @@ const createSchema = z
       .nullable()
       .optional()
       .refine((v) => v === null || v === undefined || /^https:\/\/\S+$/.test(v), {
-        message: "Links must start with https://",
+        message: t("competitions.httpsOnly"),
       }),
-    registrationClosesAt: optionalDate,
-    startsAt: optionalDate,
-    endsAt: optionalDate,
+    registrationClosesAt: optionalDate(t),
+    startsAt: optionalDate(t),
+    endsAt: optionalDate(t),
     requiresParentConsent: z
       .union([z.literal("on"), z.literal("true"), z.undefined(), z.literal("")])
       .transform((v) => v === "on" || v === "true"),
@@ -154,11 +166,11 @@ const createSchema = z
       .transform((v) => v === "on" || v === "true"),
   })
   .refine((v) => !v.startsAt || !v.endsAt || v.startsAt <= v.endsAt, {
-    message: "The end cannot be before the start.",
+    message: t("competitions.endBeforeStart"),
     path: ["endsAt"],
   })
   .refine((v) => !v.registrationClosesAt || !v.startsAt || v.registrationClosesAt <= v.startsAt, {
-    message: "Entries would close after it has already started.",
+    message: t("competitions.closesAfterStart"),
     path: ["registrationClosesAt"],
   });
 
@@ -170,10 +182,11 @@ export type CreateCompetitionState = {
 };
 
 export async function createCompetitionAction(input: unknown): Promise<CreateCompetitionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
-  const parsed = createSchema.safeParse(input);
+  const parsed = createSchema(t).safeParse(input);
   if (!parsed.success) {
     // Every bad field reported at once, never the first one only. (§6)
     const fieldErrors: Record<string, string> = {};
@@ -181,7 +194,7 @@ export async function createCompetitionAction(input: unknown): Promise<CreateCom
       const key = String(issue.path[0] ?? "form");
       fieldErrors[key] ??= issue.message;
     }
-    return { ok: false, fieldErrors, error: "Some of that needs another look." };
+    return { ok: false, fieldErrors, error: t("competitions.needsAnotherLook") };
   }
 
   try {
@@ -207,11 +220,12 @@ const leaderboardSchema = z.object({
  * switched them off would keep publishing something they had withdrawn.
  */
 export async function setLeaderboardAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
   const parsed = leaderboardSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That is not a competition." };
+  if (!parsed.success) return { ok: false, error: t("competitions.notACompetition") };
 
   try {
     await setLeaderboard(session, parsed.data.id, parsed.data.enabled);
@@ -230,11 +244,12 @@ const statusSchema = z.object({
 });
 
 export async function setStatusAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
   const parsed = statusSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, error: "That is not a valid change." };
+  if (!parsed.success) return { ok: false, error: t("competitions.notValidChange") };
 
   try {
     await setCompetitionStatus(session, parsed.data.id, parsed.data.status);
@@ -244,10 +259,10 @@ export async function setStatusAction(input: unknown): Promise<CompetitionAction
       ok: true,
       message:
         parsed.data.status === "PUBLISHED"
-          ? "Published. Pupils at every school can see it now."
+          ? t("competitions.publishedMsg")
           : parsed.data.status === "ARCHIVED"
-            ? "Withdrawn from the list."
-            : "Back to a draft.",
+            ? t("competitions.withdrawnFromList")
+            : t("competitions.backToADraft"),
     };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
@@ -259,31 +274,33 @@ export async function setStatusAction(input: unknown): Promise<CompetitionAction
 /* Handing in, and what it scored                                              */
 /* -------------------------------------------------------------------------- */
 
-const submitSchema = z.object({
-  id: z.string().cuid(),
-  // https only, for the same reason the organiser's own link is: this ends up
-  // as something a child clicks.
-  url: z
-    .string()
-    .trim()
-    .max(500)
-    .refine((v) => /^https:\/\/\S+$/.test(v), { message: "Links must start with https://" }),
-});
+const submitSchema = (t: Translate) =>
+  z.object({
+    id: z.string().cuid(),
+    // https only, for the same reason the organiser's own link is: this ends up
+    // as something a child clicks.
+    url: z
+      .string()
+      .trim()
+      .max(500)
+      .refine((v) => /^https:\/\/\S+$/.test(v), { message: t("competitions.httpsOnly") }),
+  });
 
 export async function submitAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
-  const parsed = submitSchema.safeParse(input);
+  const parsed = submitSchema(t).safeParse(input);
   if (!parsed.success) {
-    return { ok: false, error: parsed.error.issues[0]?.message ?? "That link is not valid." };
+    return { ok: false, error: parsed.error.issues[0]?.message ?? t("competitions.linkNotValid") };
   }
 
   try {
     await submitEntry(session, parsed.data.id, parsed.data.url);
     revalidatePath(`/competitions/${parsed.data.id}`);
     revalidatePath("/competitions");
-    return { ok: true, message: "Handed in." };
+    return { ok: true, message: t("competitions.handedInDot") };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     throw error;
@@ -296,31 +313,33 @@ export async function submitAction(input: unknown): Promise<CompetitionActionSta
  * Empty means "not recorded", which is NOT zero. A competition where zero is a
  * real score would otherwise have no way to undo a typo.
  */
-const resultSchema = z.object({
-  entryId: z.string().cuid(),
-  score: z
-    .string()
-    .trim()
-    .transform((v) => (v.length === 0 ? null : Number(v)))
-    .refine((v) => v === null || (Number.isFinite(v) && v >= 0), {
-      message: "A score has to be a number, and cannot be negative.",
-    }),
-  rank: z
-    .string()
-    .trim()
-    .transform((v) => (v.length === 0 ? null : Number(v)))
-    .refine((v) => v === null || (Number.isInteger(v) && v >= 1), {
-      message: "A place has to be a whole number, first or better.",
-    }),
-});
+const resultSchema = (t: Translate) =>
+  z.object({
+    entryId: z.string().cuid(),
+    score: z
+      .string()
+      .trim()
+      .transform((v) => (v.length === 0 ? null : Number(v)))
+      .refine((v) => v === null || (Number.isFinite(v) && v >= 0), {
+        message: t("competitions.scoreRule"),
+      }),
+    rank: z
+      .string()
+      .trim()
+      .transform((v) => (v.length === 0 ? null : Number(v)))
+      .refine((v) => v === null || (Number.isInteger(v) && v >= 1), {
+        message: t("competitions.placeRule"),
+      }),
+  });
 
 export async function recordResultAction(input: unknown): Promise<CompetitionActionState> {
+  const t = await getT();
   const session = await getSession();
-  if (!session) return { ok: false, error: "Not signed in." };
+  if (!session) return { ok: false, error: t("competitions.notSignedIn") };
 
-  const parsed = resultSchema.safeParse(input);
+  const parsed = resultSchema(t).safeParse(input);
   if (!parsed.success) {
-    return { ok: false, error: parsed.error.issues[0]?.message ?? "That result is not valid." };
+    return { ok: false, error: parsed.error.issues[0]?.message ?? t("competitions.resultNotValid") };
   }
 
   try {
@@ -331,7 +350,7 @@ export async function recordResultAction(input: unknown): Promise<CompetitionAct
     revalidatePath("/competitions");
     return {
       ok: true,
-      message: parsed.data.score === null && parsed.data.rank === null ? "Result cleared." : "Result saved.",
+      message: parsed.data.score === null && parsed.data.rank === null ? t("competitions.resultCleared") : t("competitions.resultSaved"),
     };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };

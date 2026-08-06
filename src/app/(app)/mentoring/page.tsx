@@ -52,10 +52,7 @@ export default async function MentoringPage() {
     <div className="space-y-5">
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.mentoring")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">
-          One-to-one mentoring. Every conversation can be read by the pupil&apos;s guardians and
-          by the school — mentoring here is never private.
-        </p>
+        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("mentoring.intro")}</p>
       </div>
 
       {isStaff && <PairForm experts={options.experts} pupils={options.pupils} />}
@@ -79,8 +76,8 @@ export default async function MentoringPage() {
       {threads.length === 0 ? (
         <EmptyState
           icon={<HandshakeIcon weight="duotone" className="size-8" />}
-          title="No mentoring yet"
-          description="A teacher or admin sets up mentoring between a pupil and an expert. A guardian has to agree before it starts."
+          title={t("mentoring.emptyTitle")}
+          description={t("mentoring.emptyBody")}
         />
       ) : (
         <ul className="space-y-3">

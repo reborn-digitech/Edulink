@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Bulletin
+        {t("bulletin.title")}
       </Link>
 
       <article className="rounded-[--radius-lg] border border-border bg-surface p-5">
@@ -64,13 +64,13 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
               )}
             </p>
             <p className="text-xs text-fg-muted">
-              {post.scope === "CLASS" ? (post.class?.name ?? "Class") : "Whole school"} ·{" "}
+              {post.scope === "CLASS" ? (post.class?.name ?? t("bulletin.classField")) : t("bulletin.wholeSchool")} ·{" "}
               {relativeTime(post.createdAt)}
             </p>
           </div>
           {post.status !== "APPROVED" && (
             <Badge tone={post.status === "PENDING" ? "warn" : "danger"} size="sm">
-              {post.status === "PENDING" ? "Awaiting review" : "Not published"}
+              {post.status === "PENDING" ? t("bulletin.awaitingReview") : t("bulletin.notPublished")}
             </Badge>
           )}
         </header>
@@ -104,13 +104,15 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
           {post.comments.length === 0
-            ? "Comments"
-            : `${post.comments.length} comment${post.comments.length === 1 ? "" : "s"}`}
+            ? t("bulletin.comments")
+            : post.comments.length === 1
+              ? t("bulletin.commentsOne")
+              : t("bulletin.commentsMany", { count: post.comments.length })}
         </h2>
 
         {post.comments.length === 0 ? (
           <p className="mt-2 rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">
-            Nothing yet. Be kind — everyone in the class can read this.
+            {t("bulletin.noCommentsYet")}
           </p>
         ) : (
           <ul className="mt-2 space-y-2">
@@ -132,7 +134,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-fg-muted">
                       <span className="font-semibold text-fg">
-                        {mine ? "You" : (entry.author.preferredName ?? entry.author.name)}
+                        {mine ? t("common.you") : (entry.author.preferredName ?? entry.author.name)}
                       </span>{" "}
                       · {relativeTime(entry.createdAt)}
                     </p>
@@ -142,9 +144,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                     {held && (
                       <p className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-warn">
                         <ClockIcon weight="fill" className="size-3.5" />
-                        {mine
-                          ? "A teacher is checking this before others see it"
-                          : "Awaiting review"}
+                        {mine ? t("bulletin.checkingBeforeOthers") : t("bulletin.awaitingReview")}
                       </p>
                     )}
                   </div>
@@ -163,9 +163,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
         )}
 
         {isStaff && post.comments.some((c) => c.status === "PENDING") && (
-          <p className="mt-3 text-xs text-fg-muted">
-            Comments awaiting review are shown to you and their author only.
-          </p>
+          <p className="mt-3 text-xs text-fg-muted">{t("bulletin.pendingVisibleToYou")}</p>
         )}
       </section>
     </div>

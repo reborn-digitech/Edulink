@@ -10,11 +10,13 @@ import {
   StarIcon,
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 type Badge = {
   id: string;
-  label: string;
-  description: string;
+  labelKey: TranslationKey;
+  descriptionKey: TranslationKey;
   earned: boolean;
   progress?: { current: number; target: number };
   icon: string;
@@ -39,6 +41,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string; weight?: "
  * shown where being part-way is genuinely encouraging.
  */
 export function BadgeGrid({ badges }: { badges: Badge[] }) {
+  const t = useT();
   const earned = badges.filter((b) => b.earned);
   const rest = badges.filter((b) => !b.earned);
 
@@ -56,14 +59,14 @@ export function BadgeGrid({ badges }: { badges: Badge[] }) {
 
       {earned.length === 0 && (
         <p className="rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
-          Badges turn up on their own as you go. Nothing to chase.
+          {t("student.badgesTurnUp")}
         </p>
       )}
 
       {rest.length > 0 && (
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-            On the way
+            {t("student.onTheWay")}
           </p>
           <ul className="mt-2 grid gap-2 sm:grid-cols-2">
             {rest.map((badge) => (
@@ -79,6 +82,7 @@ export function BadgeGrid({ badges }: { badges: Badge[] }) {
 }
 
 function BadgeCard({ badge }: { badge: Badge }) {
+  const t = useT();
   const Icon = ICONS[badge.icon] ?? SealCheckIcon;
 
   return (
@@ -99,9 +103,9 @@ function BadgeCard({ badge }: { badge: Badge }) {
 
       <div className="min-w-0 flex-1">
         <p className={cn("text-sm font-bold", badge.earned ? "text-fg" : "text-fg-muted")}>
-          {badge.label}
+          {t(badge.labelKey)}
         </p>
-        <p className="text-xs leading-relaxed text-fg-muted">{badge.description}</p>
+        <p className="text-xs leading-relaxed text-fg-muted">{t(badge.descriptionKey)}</p>
 
         {badge.progress && (
           <div className="mt-1.5">

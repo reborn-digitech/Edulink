@@ -13,11 +13,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
   metadataBase: new URL(APP_URL),
   title: {
-    default: "EduLink — school, home, connected",
+    default: t("meta.tagline"),
     template: "%s · EduLink",
   },
-  description:
-    "Attendance, assignments, grades and teacher messages for schools, students and parents. Installs as an app and works offline.",
+  description: t("meta.appDescription"),
   applicationName: "EduLink",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -36,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "EduLink — school, home, connected",
-    description: "One calm place for attendance, assignments, grades and school messages.",
+    title: t("meta.tagline"),
+    description: t("meta.ogDescription"),
     type: "website",
     siteName: "EduLink",
   },

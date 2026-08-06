@@ -7,10 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata = { title: "Schools" };
+export async function generateMetadata() {
+  const t = await getT();
+  return { title: t("root.schools") };
+}
 
 export default async function RootPage() {
+  const t = await getT();
   const session = await requireSuperuser();
   const schools = await listSchools(session);
 
@@ -18,33 +23,33 @@ export default async function RootPage() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Schools</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.schools")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {schools.length === 0
-              ? "Nothing here yet"
-              : `${schools.length} school${schools.length === 1 ? "" : "s"} on this server`}
+              ? t("root.nothingHereYet")
+              : schools.length === 1
+                ? t("root.schoolsOnServerOne")
+                : t("root.schoolsOnServerMany", { count: schools.length })}
           </p>
         </div>
         <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/root/new">Add a school</Link>
+          <Link href="/root/new">{t("root.addSchool")}</Link>
         </Button>
       </div>
 
       {/* Said once, on the page it applies to, rather than only in a comment. */}
       <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
-        You can create schools, correct their details and invite the people who will run them. You
-        cannot see inside one — no register, no marks, no messages. That is enforced by the database,
-        not by this page.
+        {t("root.operatorIntro")}
       </p>
 
       {schools.length === 0 ? (
         <EmptyState
           icon={<BuildingsIcon weight="duotone" className="size-8" />}
-          title="No schools yet"
-          description="Add the first one, then invite somebody to administer it."
+          title={t("root.noSchoolsYet")}
+          description={t("root.addFirstOne")}
           action={
             <Button asChild>
-              <Link href="/root/new">Add a school</Link>
+              <Link href="/root/new">{t("root.addSchool")}</Link>
             </Button>
           }
         />
@@ -58,30 +63,31 @@ export default async function RootPage() {
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-fg">{school.name}</p>
                       <p className="truncate text-xs text-fg-muted">
-                        {[school.city, school.country].filter(Boolean).join(", ") || "No address"} ·
-                        joined {relativeTime(school.createdAt)}
+                        {[school.city, school.country].filter(Boolean).join(", ") || t("root.noAddress")} ·{" "}
+                        {t("root.joinedAgo", { when: relativeTime(school.createdAt) })}
                       </p>
                       <p className="mt-0.5 truncate text-xs text-fg-subtle">
-                        Join code <span className="font-mono font-semibold">{school.code}</span>
+                        {t("root.joinCode")} <span className="font-mono font-semibold">{school.code}</span>
                         {school.gradeLow && school.gradeHigh
-                          ? ` · grades ${school.gradeLow}–${school.gradeHigh}`
-                          : " · no grade range set"}
+                          ? ` · ${t("root.gradesRange", { low: school.gradeLow, high: school.gradeHigh })}`
+                          : ` · ${t("root.noGradeRange")}`}
                       </p>
                     </div>
 
                     {school.pendingAdminInvites > 0 && (
                       <Badge tone="warn" size="sm">
-                        {school.pendingAdminInvites} invite
-                        {school.pendingAdminInvites === 1 ? "" : "s"} pending
+                        {school.pendingAdminInvites === 1
+                          ? t("root.invitesPendingOne")
+                          : t("root.invitesPendingMany", { count: school.pendingAdminInvites })}
                       </Badge>
                     )}
                     {!school.gradeLow || !school.gradeHigh ? (
                       <span
                         className="flex items-center gap-1 text-xs font-medium text-warn"
-                        title="Without a grade range the admin cannot be offered a list of classes to create"
+                        title={t("root.needsSetupTitle")}
                       >
                         <WarningIcon weight="bold" className="size-4" />
-                        Needs setup
+                        {t("root.needsSetup")}
                       </span>
                     ) : null}
                   </div>

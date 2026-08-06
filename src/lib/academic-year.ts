@@ -4,6 +4,10 @@ import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { getBadges } from "./badges";
 import type { ActiveContext } from "./session";
+import { translator } from "@/lib/i18n/dictionary";
+
+/** Stored badge copies are written once — in English, the stored-text precedent. */
+const tEn = translator("en");
 
 /**
  * The academic year, and what survives the end of one.
@@ -146,8 +150,10 @@ export async function closeAcademicYear(
           studentMembershipId: student.id,
           academicYearId: closing.id,
           badgeId: badge.id,
-          label: badge.label,
-          description: badge.description,
+          // Stored artifacts keep the English rendering — the notify()/email
+          // precedent. The LIVE profile renders the key in the reader's language.
+          label: tEn(badge.labelKey),
+          description: tEn(badge.descriptionKey),
           permanent: false,
         },
         update: {},

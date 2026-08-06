@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RemarksPage() {
+  const t = await getT();
   const session = await requireUser();
   const threads = await listThreads(session);
   const isTeacher = session.role === "TEACHER";
@@ -24,25 +25,25 @@ export default async function RemarksPage() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Messages</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("remarks.title")}</h1>
           {/* Each of these described a two-sided conversation, which is what
               this was. The room now holds the teacher, the pupil and the
               pupil's guardians, and every one of them reads this line. */}
           <p className="mt-1 text-sm text-fg-muted">
             {isTeacher
-              ? "One conversation per pupil, with them and their guardians."
+              ? t("remarks.introTeacher")
               : session.role === "ADMIN"
-                ? "Every conversation between your staff, your pupils and their families."
+                ? t("remarks.introAdmin")
                 : session.role === "STUDENT"
-                  ? "Your teachers, and the grown-ups at home. Everyone sees everything."
-                  : "Your child's teachers, with your child in the conversation."}
+                  ? t("remarks.introStudent")
+                  : t("remarks.introParent")}
           </p>
         </div>
         {/* All three can start one now — a pupil and a guardian previously had
             to wait to be messaged first. */}
         {session.role !== "ADMIN" && (
           <Button asChild icon={<PlusIcon weight="bold" />}>
-            <Link href="/remarks/new">New message</Link>
+            <Link href="/remarks/new">{t("remarks.newMessage")}</Link>
           </Button>
         )}
       </div>
@@ -50,16 +51,12 @@ export default async function RemarksPage() {
       {threads.length === 0 ? (
         <EmptyState
           icon={<ChatCircleDotsIcon weight="duotone" className="size-8" />}
-          title="No messages yet"
-          description={
-            isTeacher
-              ? "Start a private thread about a student and their guardians will be notified. Nobody else at the school sees it, and the student never does."
-              : "If a teacher wants a quiet word about your child, it will arrive here — and you can reply."
-          }
+          title={t("remarks.noMessagesYet")}
+          description={isTeacher ? t("remarks.emptyTeacher") : t("remarks.emptyOther")}
           action={
             isTeacher ? (
               <Button asChild>
-                <Link href="/remarks/new">Write a message</Link>
+                <Link href="/remarks/new">{t("remarks.writeMessage")}</Link>
               </Button>
             ) : undefined
           }
@@ -90,7 +87,7 @@ export default async function RemarksPage() {
                       {thread.unread && (
                         <span
                           className="size-2 shrink-0 rounded-full bg-accent"
-                          aria-label="Unread"
+                          aria-label={t("remarks.unread")}
                         />
                       )}
                     </div>

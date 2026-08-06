@@ -6,6 +6,7 @@ import { ArrowSquareOutIcon, HourglassMediumIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { fromMilli } from "@/lib/validation";
+import { useT } from "@/lib/i18n";
 import { recordResultAction } from "../../actions";
 
 /**
@@ -36,6 +37,7 @@ export function ResultsRow({
   rank: number | null;
   awaitingConsent: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -54,11 +56,11 @@ export function ResultsRow({
         {awaitingConsent ? (
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-warn">
             <HourglassMediumIcon weight="fill" className="size-4" />
-            Waiting on a guardian
+            {t("competitions.waitingOnGuardian")}
           </span>
         ) : (
           <span className="text-xs text-fg-muted">
-            {status === "RESULTS" ? "Result recorded" : status === "SUBMITTED" ? "Handed in" : "Entered"}
+            {status === "RESULTS" ? t("competitions.resultRecorded") : status === "SUBMITTED" ? t("competitions.handedIn") : t("competitions.entered")}
           </span>
         )}
       </div>
@@ -70,11 +72,11 @@ export function ResultsRow({
           rel="noopener noreferrer nofollow"
           className="mt-1 inline-flex items-center gap-1.5 text-sm text-accent-strong underline underline-offset-4"
         >
-          Open their entry
+          {t("competitions.openTheirEntry")}
           <ArrowSquareOutIcon weight="bold" className="size-3.5" />
         </a>
       ) : (
-        <p className="mt-1 text-sm text-fg-muted">Nothing handed in yet.</p>
+        <p className="mt-1 text-sm text-fg-muted">{t("competitions.nothingHandedIn")}</p>
       )}
 
       <form
@@ -85,17 +87,17 @@ export function ResultsRow({
           startTransition(async () => {
             const result = await recordResultAction({ entryId, score, rank: place });
             if (!result.ok) {
-              setError(result.error ?? "That did not save.");
+              setError(result.error ?? t("competitions.didNotSave"));
               return;
             }
-            toast({ tone: "ok", title: result.message ?? "Saved", description: studentName });
+            toast({ tone: "ok", title: result.message ?? t("competitions.saved"), description: studentName });
             router.refresh();
           });
         }}
       >
         <div>
           <label htmlFor={`score-${entryId}`} className="block text-xs font-medium text-fg-muted">
-            Score
+            {t("competitions.score")}
           </label>
           <input
             id={`score-${entryId}`}
@@ -107,7 +109,7 @@ export function ResultsRow({
         </div>
         <div>
           <label htmlFor={`rank-${entryId}`} className="block text-xs font-medium text-fg-muted">
-            Place
+            {t("competitions.place")}
           </label>
           <input
             id={`rank-${entryId}`}
@@ -118,11 +120,9 @@ export function ResultsRow({
           />
         </div>
         <Button type="submit" size="sm" variant="secondary" disabled={pending || !dirty}>
-          {pending ? "Saving…" : "Save"}
+          {pending ? t("common.saving") : t("common.save")}
         </Button>
-        <p className="basis-full text-xs text-fg-muted">
-          Leave both empty to clear the result. A score of 0 is a real score.
-        </p>
+        <p className="basis-full text-xs text-fg-muted">{t("competitions.emptyClears")}</p>
       </form>
 
       {error && <p className="mt-1 text-sm text-danger">{error}</p>}

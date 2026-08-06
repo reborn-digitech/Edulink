@@ -8,6 +8,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
+import { useT } from "@/lib/i18n";
 import type { Role } from "@/lib/constants";
 
 /**
@@ -32,6 +33,7 @@ export function ComposeForm({
   allowSchoolWide: boolean;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -84,8 +86,10 @@ export function ComposeForm({
         ...e,
         image:
           room === 0
-            ? `That is already ${MAX_PICTURES} pictures.`
-            : `You can add ${room} more picture${room === 1 ? "" : "s"}.`,
+            ? t("bulletin.alreadyMax", { max: MAX_PICTURES })
+            : room === 1
+              ? t("bulletin.roomForOne")
+              : t("bulletin.roomForMany", { count: room }),
       }));
       return;
     }
@@ -95,12 +99,12 @@ export function ComposeForm({
     // is told immediately instead of after a 5 MB upload. (§6)
     const wrongType = incoming.find((f) => !f.type.startsWith("image/"));
     if (wrongType) {
-      setErrors((e) => ({ ...e, image: `“${wrongType.name}” is not a picture.` }));
+      setErrors((e) => ({ ...e, image: t("bulletin.notAPicture", { name: wrongType.name }) }));
       return;
     }
     const tooBig = incoming.find((f) => f.size > MAX_IMAGE_BYTES);
     if (tooBig) {
-      setErrors((e) => ({ ...e, image: `“${tooBig.name}” is bigger than 5 MB.` }));
+      setErrors((e) => ({ ...e, image: t("bulletin.pictureTooBig", { name: tooBig.name }) }));
       return;
     }
 
@@ -142,13 +146,13 @@ export function ComposeForm({
   function submit(event: React.FormEvent) {
     event.preventDefault();
     const next: Record<string, string> = {};
-    if (title.trim().length < 2) next.title = "Give it a title.";
-    if (scope === "CLASS" && !classId) next.classId = "Choose a class.";
+    if (title.trim().length < 2) next.title = t("bulletin.giveTitle");
+    if (scope === "CLASS" && !classId) next.classId = t("bulletin.chooseClass");
     // A picture nobody can hear is a picture some children cannot read at all.
     // Reported per picture, so it is obvious WHICH one is missing its words.
     pictures.forEach((picture, index) => {
       if (!picture.alt.trim()) {
-        next[`alt-${index}`] = "Describe this picture, so it makes sense read aloud.";
+        next[`alt-${index}`] = t("bulletin.describeThisPicture");
       }
     });
     setErrors(next);
@@ -177,8 +181,8 @@ export function ComposeForm({
         setErrors(result.errors);
         toast({
           tone: "danger",
-          title: "Could not post that",
-          description: result.errors._form ?? "Check the highlighted fields.",
+          title: t("bulletin.couldNotPost"),
+          description: result.errors._form ?? t("bulletin.checkHighlighted"),
         });
         return;
       }
@@ -186,13 +190,13 @@ export function ComposeForm({
       if (result.status === "PENDING") {
         toast({
           tone: "ok",
-          title: "Sent to your teacher",
-          description: "You will be told as soon as they have looked at it.",
+          title: t("bulletin.sentToTeacher"),
+          description: t("bulletin.toldWhenChecked"),
           duration: 7000,
         });
         router.push("/bulletin?filter=mine");
       } else {
-        toast({ tone: "ok", title: "Posted" });
+        toast({ tone: "ok", title: t("bulletin.posted") });
         router.push("/bulletin");
       }
       router.refresh();
@@ -212,10 +216,10 @@ export function ComposeForm({
 
       {(classes.length > 0 || allowSchoolWide) && (
         <fieldset>
-          <legend className="text-sm font-medium text-fg">Who sees it</legend>
+          <legend className="text-sm font-medium text-fg">{t("bulletin.whoSees")}</legend>
           <div
             role="radiogroup"
-            aria-label="Who sees it"
+            aria-label={t("bulletin.whoSees")}
             className="mt-2 flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
           >
             {classes.length > 0 && (
@@ -229,7 +233,7 @@ export function ComposeForm({
                   scope === "CLASS" ? "bg-surface text-fg shadow-sm" : "text-fg-muted",
                 )}
               >
-                One class
+                {t("bulletin.oneClass")}
               </button>
             )}
             {allowSchoolWide && (
@@ -243,7 +247,7 @@ export function ComposeForm({
                   scope === "SCHOOL" ? "bg-surface text-fg shadow-sm" : "text-fg-muted",
                 )}
               >
-                Whole school
+                {t("bulletin.wholeSchool")}
               </button>
             )}
           </div>
@@ -252,7 +256,7 @@ export function ComposeForm({
 
       {scope === "CLASS" && classes.length > 0 && (
         <SelectField
-          label="Class"
+          label={t("bulletin.classField")}
           required
           value={classId}
           error={errors.classId}
@@ -267,10 +271,14 @@ export function ComposeForm({
       )}
 
       <TextField
-        label="Title"
+        label={t("bulletin.titleField")}
         required
         autoFocus
-        placeholder={role === "STUDENT" ? "My volcano model" : "Sports day is moving to Friday"}
+        placeholder={
+          role === "STUDENT"
+            ? t("bulletin.titlePlaceholderStudent")
+            : t("bulletin.titlePlaceholderStaff")
+        }
         value={title}
         error={errors.title}
         onChange={(e) => setTitle(e.target.value)}
@@ -279,7 +287,7 @@ export function ComposeForm({
 
       <div>
         <label htmlFor="post-body" className="block text-sm font-medium text-fg">
-          What do you want to say?
+          {t("bulletin.bodyLabel")}
         </label>
         <textarea
           id="post-body"
@@ -288,15 +296,15 @@ export function ComposeForm({
           rows={6}
           placeholder={
             role === "STUDENT"
-              ? "I built it out of papier-mâché and it actually erupts…"
-              : "Because of the weather forecast, sports day moves to Friday. Same times."
+              ? t("bulletin.bodyPlaceholderStudent")
+              : t("bulletin.bodyPlaceholderStaff")
           }
           className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </div>
 
       <div>
-        <span className="block text-sm font-medium text-fg">Pictures</span>
+        <span className="block text-sm font-medium text-fg">{t("bulletin.pictures")}</span>
 
         {pictures.length > 0 && (
           <ul className="mt-1.5 space-y-3">
@@ -325,23 +333,23 @@ export function ComposeForm({
                     size="sm"
                     onClick={() => removePicture(index)}
                   >
-                    Remove
+                    {t("common.remove")}
                   </Button>
                 </div>
 
                 <TextField
                   label={
                     pictures.length === 1
-                      ? "Describe the picture"
-                      : `Describe picture ${index + 1}`
+                      ? t("bulletin.describeOne")
+                      : t("bulletin.describeN", { n: index + 1 })
                   }
                   required
                   value={picture.alt}
                   error={errors[`alt-${index}`]}
                   onChange={(e) => describePicture(index, e.target.value)}
                   maxLength={300}
-                  placeholder="Our class relay team crossing the line"
-                  hint="Read out to anyone who cannot see it. Say what is happening, not who is in it."
+                  placeholder={t("bulletin.altPlaceholder")}
+                  hint={t("bulletin.altHint")}
                 />
               </li>
             ))}
@@ -355,7 +363,7 @@ export function ComposeForm({
               className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[--radius-md] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
             >
               <ImageIcon weight="duotone" className="size-5" />
-              {pictures.length === 0 ? "Add a picture" : "Add another"}
+              {pictures.length === 0 ? t("bulletin.addPicture") : t("bulletin.addAnother")}
             </label>
             <input
               ref={pickerRef}
@@ -375,14 +383,13 @@ export function ComposeForm({
           </p>
         )}
         <p className="mt-1 text-xs text-fg-muted">
-          Optional. Up to {MAX_PICTURES} pictures — PNG, JPEG, WebP or GIF, 5 MB each.
-          Location information is removed from photos automatically.
+          {t("bulletin.picturesHint", { max: MAX_PICTURES })}
         </p>
       </div>
 
       <div>
         <label htmlFor="post-tag" className="block text-sm font-medium text-fg">
-          Tags
+          {t("bulletin.tags")}
         </label>
         <div className="mt-1.5 flex gap-2">
           <input
@@ -395,11 +402,11 @@ export function ComposeForm({
                 addTag();
               }
             }}
-            placeholder="science"
+            placeholder={t("bulletin.tagPlaceholder")}
             className="min-h-12 flex-1 rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent"
           />
           <Button type="button" variant="secondary" onClick={addTag}>
-            Add
+            {t("common.add")}
           </Button>
         </div>
         {tags.length > 0 && (
@@ -411,7 +418,7 @@ export function ComposeForm({
                   <button
                     type="button"
                     onClick={() => setTags((c) => c.filter((t) => t !== tag))}
-                    aria-label={`Remove ${tag}`}
+                    aria-label={t("bulletin.removeTag", { tag })}
                     className="grid size-6 place-items-center rounded-full hover:bg-surface/60"
                   >
                     <XIcon weight="bold" className="size-3" />
@@ -421,19 +428,14 @@ export function ComposeForm({
             ))}
           </ul>
         )}
-        <p className="mt-1 text-xs text-fg-muted">
-          Optional. Tags let people find related posts.
-        </p>
+        <p className="mt-1 text-xs text-fg-muted">{t("bulletin.tagsHint")}</p>
       </div>
 
       {/* The rule, restated right where they press the button. */}
       {role === "STUDENT" && (
         <p className="flex items-start gap-2 rounded-[--radius-md] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
           <ClockIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-accent" />
-          <span>
-            A teacher checks this before anyone else sees it. Do not include other
-            children&rsquo;s full names, or anything you would not say out loud in class.
-          </span>
+          <span>{t("bulletin.studentRule")}</span>
         </p>
       )}
 
@@ -444,7 +446,7 @@ export function ComposeForm({
         loading={pending}
         icon={<PaperPlaneTiltIcon weight="bold" />}
       >
-        {pending ? "Sending…" : role === "STUDENT" ? "Send to my teacher" : "Post it"}
+        {pending ? t("common.sending") : role === "STUDENT" ? t("bulletin.sendToTeacher") : t("bulletin.postIt")}
       </Button>
     </form>
   );

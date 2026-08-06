@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { sendReply } from "../actions";
+import { useT } from "@/lib/i18n";
 
 const MAX = 8000;
 
 export function ReplyBox({ threadId, className }: { threadId: string; className?: string }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -35,7 +37,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
       }
       setBody("");
       router.refresh();
-      toast({ tone: "ok", title: "Sent" });
+      toast({ tone: "ok", title: t("remarks.sent") });
       ref.current?.focus();
     });
   }
@@ -43,7 +45,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
   return (
     <form onSubmit={submit} className={cn("space-y-2", className)}>
       <label htmlFor="reply" className="sr-only">
-        Write a reply
+        {t("remarks.writeReply")}
       </label>
       <textarea
         id="reply"
@@ -62,7 +64,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
           }
         }}
         rows={3}
-        placeholder="Write a reply…"
+        placeholder={t("remarks.writeReplyPlaceholder")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? "reply-error" : "reply-hint"}
         className={cn(
@@ -89,7 +91,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
           disabled={body.trim().length === 0}
           icon={<PaperPlaneTiltIcon weight="bold" />}
         >
-          Send
+          {t("common.send")}
         </Button>
       </div>
     </form>

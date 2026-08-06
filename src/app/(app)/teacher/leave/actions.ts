@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { applyForLeave, cancelLeave, type ApplyInput } from "@/lib/leave";
 
@@ -15,10 +16,10 @@ import { applyForLeave, cancelLeave, type ApplyInput } from "@/lib/leave";
 
 type Result = { ok: boolean; error?: string };
 
-function failure(error: unknown): Result {
+async function failure(error: unknown): Promise<Result> {
   if (error instanceof AccessError) return { ok: false, error: error.message };
   console.error("[leave]", error);
-  return { ok: false, error: "Something went wrong. Try again in a moment." };
+  return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }
 
 export async function apply(input: ApplyInput): Promise<Result> {

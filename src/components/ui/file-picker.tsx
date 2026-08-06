@@ -5,6 +5,7 @@ import { PaperclipIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "./button";
 import { cn } from "@/lib/cn";
 import { formatBytes } from "@/lib/json";
+import { useT } from "@/lib/i18n";
 
 /**
  * Attach-a-file control.
@@ -45,6 +46,7 @@ export function FilePicker({
   idPrefix: string;
   className?: string;
 }) {
+  const t = useT();
   const inputRef = useRef<HTMLInputElement>(null);
   const inputId = `${idPrefix}-files`;
   const full = files.length >= max;
@@ -86,7 +88,7 @@ export function FilePicker({
               </span>
               <button
                 type="button"
-                aria-label={`Remove ${file.name}`}
+                aria-label={t("ui.removeFile", { name: file.name })}
                 onClick={() => {
                   onChange(files.filter((_, i) => i !== index));
                   if (inputRef.current) inputRef.current.value = "";

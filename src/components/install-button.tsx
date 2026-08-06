@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { DeviceMobileIcon, ShareNetworkIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/i18n";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -18,6 +19,7 @@ type BeforeInstallPromptEvent = Event & {
  * Add to Home Screen instructions instead of a button that would do nothing.
  */
 export function InstallButton({ className }: { className?: string }) {
+  const t = useT();
   const [installable, setInstallable] = useState(false);
   const [standalone, setStandalone] = useState(false);
   const [iosHint, setIosHint] = useState(false);
@@ -52,7 +54,7 @@ export function InstallButton({ className }: { className?: string }) {
       <p className={className}>
         <span className="inline-flex items-center gap-2 rounded-full bg-ok-soft px-3.5 py-1.5 text-xs font-semibold text-ok">
           <DeviceMobileIcon weight="fill" className="size-4" />
-          Running as an installed app
+          {t("ui.installedApp")}
         </span>
       </p>
     );
@@ -64,8 +66,9 @@ export function InstallButton({ className }: { className?: string }) {
         className={`inline-flex flex-wrap items-center justify-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-xs text-fg-muted ${className ?? ""}`}
       >
         <ShareNetworkIcon weight="bold" className="size-4 text-accent" />
-        To install: tap <strong className="text-fg">Share</strong>, then
-        <strong className="text-fg">Add to Home Screen</strong>
+        {/* One sentence — the bold OS names went with the fragments, and the
+            names themselves are the ones iOS shows in this language. */}
+        {t("ui.installHowTo")}
       </p>
     );
   }
@@ -96,7 +99,7 @@ export function InstallButton({ className }: { className?: string }) {
         }
       }}
     >
-      Install EduLink
+      {t("ui.install")}
     </Button>
   );
 }

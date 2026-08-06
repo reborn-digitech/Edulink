@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
 import { createThread, replyToThread, markThreadRead } from "@/lib/remarks";
@@ -10,7 +11,7 @@ export type RemarkState = { ok: boolean; errors: FieldErrors; threadId?: string 
 
 export async function startThread(input: unknown): Promise<RemarkState> {
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
 
   const parsed = remarkThreadSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
@@ -22,13 +23,13 @@ export async function startThread(input: unknown): Promise<RemarkState> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[startThread]", error);
-    return { ok: false, errors: { _form: "We could not send that. Please try again." } };
+    return { ok: false, errors: { _form: (await getT())("remarks.couldNotSendTryAgain") } };
   }
 }
 
 export async function sendReply(input: unknown): Promise<RemarkState> {
   const session = await getSession();
-  if (!session) return { ok: false, errors: { _form: "Please log in again." } };
+  if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
 
   const parsed = remarkReplySchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error) };
@@ -41,7 +42,7 @@ export async function sendReply(input: unknown): Promise<RemarkState> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[sendReply]", error);
-    return { ok: false, errors: { _form: "We could not send that. Please try again." } };
+    return { ok: false, errors: { _form: (await getT())("remarks.couldNotSendTryAgain") } };
   }
 }
 

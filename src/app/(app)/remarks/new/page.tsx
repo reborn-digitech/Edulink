@@ -10,6 +10,7 @@ import { ComposeForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -37,6 +38,7 @@ export default async function NewRemarkPage({
    * the role switcher, which is a dead end for the one role the page was being
    * opened for. The route sweep caught it as a 307 where a 200 was wanted.
    */
+  const t = await getT();
   const ctx = await requireUser();
   if (ctx.role !== "TEACHER" && ctx.role !== "STUDENT" && ctx.role !== "PARENT") {
     redirect("/switch");
@@ -46,7 +48,7 @@ export default async function NewRemarkPage({
     if (!ctx.schoolId || !ctx.membershipId) redirect("/switch");
     const teachers = await teachersForStudent(ctx.schoolId, ctx.membershipId);
     return (
-      <AskShell title="Message a teacher">
+      <AskShell title={t("remarks.messageATeacher")} t={t}>
         <AskForm children={[{ membershipId: ctx.membershipId, name: "", teachers }]} />
       </AskShell>
     );
@@ -72,7 +74,7 @@ export default async function NewRemarkPage({
     );
 
     return (
-      <AskShell title="Message a teacher">
+      <AskShell title={t("remarks.messageATeacher")} t={t}>
         <AskForm children={children} />
       </AskShell>
     );
@@ -86,11 +88,11 @@ export default async function NewRemarkPage({
   if (students.length === 0) {
     return (
       <EmptyState
-        title="No students to message yet"
-        description="Once students are enrolled in a class you teach, you can start a private conversation with their guardians."
+        title={t("remarks.noStudentsYet")}
+        description={t("remarks.noStudentsBody")}
         action={
           <Button asChild variant="secondary">
-            <Link href="/teacher">Back to today</Link>
+            <Link href="/teacher">{t("remarks.backToToday")}</Link>
           </Button>
         }
       />
@@ -106,10 +108,10 @@ export default async function NewRemarkPage({
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All messages
+        {t("remarks.all")}
       </Link>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">New message</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("remarks.newMessage")}</h1>
       <p className="mt-1.5 text-sm text-fg-muted">
         This goes to the student&rsquo;s guardians only. Other teachers cannot see it, and
         neither can the student.
@@ -121,7 +123,9 @@ export default async function NewRemarkPage({
 }
 
 /** The same frame around the pupil's and the guardian's compose form. */
-function AskShell({ title, children }: { title: string; children: React.ReactNode }) {
+/* `t` is a prop — a plain function rendered by a server component has no hook
+   provider above it (the week-grid precedent). */
+function AskShell({ title, children, t }: { title: string; children: React.ReactNode; t: Translate }) {
   return (
     <div className="mx-auto max-w-xl">
       <Link
@@ -129,11 +133,11 @@ function AskShell({ title, children }: { title: string; children: React.ReactNod
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All messages
+        {t("remarks.all")}
       </Link>
       <h1 className="text-2xl font-bold tracking-tight text-fg">{title}</h1>
       <p className="mb-6 mt-1 text-sm text-fg-muted">
-        One conversation, with everyone who needs to be in it.
+        {t("remarks.oneConversation")}
       </p>
       {children}
     </div>

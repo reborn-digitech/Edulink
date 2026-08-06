@@ -39,42 +39,44 @@ import type { ActiveContext } from "./session";
 /* The ladder                                                                  */
 /* -------------------------------------------------------------------------- */
 
+/* Keys, not words — looked up at render time in the reader's language. The
+   bilingual voice ("Yaad rakho · Remember") lives in the dictionaries. */
 export const QUIZ_LEVELS = [
   {
     level: 1,
     key: "RECALL",
-    label: "Yaad rakho · Remember",
-    description: "Name the formula, the theorem, the discoverer.",
+    labelKey: "practice.level1" as TranslationKey,
+    descriptionKey: "practice.level1Hint" as TranslationKey,
   },
   {
     level: 2,
     key: "UNDERSTAND",
-    label: "Samjho · Understand",
-    description: "State what it means and when it applies.",
+    labelKey: "practice.level2" as TranslationKey,
+    descriptionKey: "practice.level2Hint" as TranslationKey,
   },
   {
     level: 3,
     key: "APPLY",
-    label: "Lagao · Apply",
-    description: "One step. Put the numbers in.",
+    labelKey: "practice.level3" as TranslationKey,
+    descriptionKey: "practice.level3Hint" as TranslationKey,
   },
   {
     level: 4,
     key: "ANALYSE",
-    label: "Socho · Work it out",
-    description: "Several steps, the way an exam asks.",
+    labelKey: "practice.level4" as TranslationKey,
+    descriptionKey: "practice.level4Hint" as TranslationKey,
   },
   {
     level: 5,
     key: "COMPETITIVE",
-    label: "Muqabla · Competitive",
-    description: "NTSE, NSO, NSEJS — the scholarship papers.",
+    labelKey: "practice.level5" as TranslationKey,
+    descriptionKey: "practice.level5Hint" as TranslationKey,
   },
   {
     level: 6,
     key: "OLYMPIAD",
-    label: "Olympiad",
-    description: "National and international Olympiad standard.",
+    labelKey: "practice.level6" as TranslationKey,
+    descriptionKey: "practice.level6Hint" as TranslationKey,
   },
 ] as const;
 
@@ -94,6 +96,7 @@ const DEMOTE_AFTER = 2;
 // are deliberate: inside the quiz engine a locale is what a QUESTION is written
 // in, and `language` reads better there than `locale`.
 import { normaliseLocale, type Locale } from "./i18n/locales";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export {
   LOCALES as QUIZ_LANGUAGES,
@@ -368,7 +371,7 @@ export type ServedQuestion = {
   stem: string;
   choices: string[];
   difficulty: number;
-  levelLabel: string;
+  levelLabelKey: TranslationKey;
   askedCount: number;
   totalCount: number;
 };
@@ -434,7 +437,7 @@ export async function nextQuestion(
     stem: pick(tr?.stem, full.stem),
     choices: pickChoices(tr?.choices, original),
     difficulty: full.difficulty,
-    levelLabel: QUIZ_LEVELS[clampLevel(full.difficulty) - 1]!.label,
+    levelLabelKey: QUIZ_LEVELS[clampLevel(full.difficulty) - 1]!.labelKey,
     askedCount: seenIds.size,
     totalCount: pool.length,
   };

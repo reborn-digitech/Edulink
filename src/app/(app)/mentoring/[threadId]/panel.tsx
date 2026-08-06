@@ -6,6 +6,7 @@ import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { ExpertThread, type ThreadMessage } from "@/components/expert-thread";
 import { consent, close, say } from "../actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * The mentoring thread and its controls.
@@ -30,6 +31,7 @@ export function MentorPanel({
   isGuardian: boolean;
   canClose: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +41,7 @@ export function MentorPanel({
     startTransition(async () => {
       const result = await work();
       if (!result.ok) {
-        setError(result.error ?? "Could not do that.");
+        setError(result.error ?? t("mentoring.couldNotDo"));
         return;
       }
       router.refresh();
@@ -50,12 +52,8 @@ export function MentorPanel({
     <div className="space-y-4">
       {isGuardian && awaitingConsent && (
         <div className="space-y-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/30 p-3.5">
-          <p className="text-sm font-medium text-fg">
-            Do you agree to this mentoring going ahead?
-          </p>
-          <p className="text-xs text-fg-muted">
-            You can read every message, and you can end it at any time.
-          </p>
+          <p className="text-sm font-medium text-fg">{t("mentoring.doYouAgree")}</p>
+          <p className="text-xs text-fg-muted">{t("mentoring.canReadAndEnd")}</p>
           <div className="flex flex-wrap gap-2">
             <Button
               size="sm"
@@ -63,7 +61,7 @@ export function MentorPanel({
               icon={<CheckIcon weight="bold" className="size-4" />}
               onClick={() => act(() => consent(threadId))}
             >
-              Yes, go ahead
+              {t("mentoring.yesGoAhead")}
             </Button>
             <Button
               size="sm"
@@ -72,7 +70,7 @@ export function MentorPanel({
               icon={<XIcon weight="bold" className="size-4" />}
               onClick={() => act(() => close(threadId))}
             >
-              No, end it
+              {t("mentoring.noEndIt")}
             </Button>
           </div>
         </div>
@@ -93,7 +91,7 @@ export function MentorPanel({
           loading={pending}
           onClick={() => act(() => close(threadId))}
         >
-          End this mentorship
+          {t("mentoring.endThis")}
         </Button>
       )}
     </div>

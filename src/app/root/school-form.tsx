@@ -8,6 +8,7 @@ import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { createSchoolAction, updateSchoolAction } from "./actions";
 import type { SchoolDetails } from "@/lib/superuser";
+import { useT } from "@/lib/i18n";
 
 /**
  * School details, for creating and for correcting.
@@ -29,6 +30,7 @@ export function SchoolForm({
   schoolId?: string;
   initial?: Partial<SchoolDetails>;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -63,15 +65,15 @@ export function SchoolForm({
         : await createSchoolAction(form);
 
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("root.didNotWork"));
         return;
       }
       if (schoolId) {
-        toast({ tone: "ok", title: "Saved" });
+        toast({ tone: "ok", title: t("competitions.saved") });
         router.refresh();
         return;
       }
-      toast({ tone: "ok", title: `${form.name} created`, description: `Join code ${result.code}` });
+      toast({ tone: "ok", title: t("root.created", { name: form.name }), description: t("root.joinCodeIs", { code: result.code ?? "" }) });
       router.push(`/root/${result.schoolId}`);
     });
   }
@@ -88,16 +90,16 @@ export function SchoolForm({
       )}
 
       <fieldset className="space-y-4">
-        <legend className="text-sm font-semibold text-fg">The school</legend>
+        <legend className="text-sm font-semibold text-fg">{t("root.theSchool")}</legend>
         <TextField
-          label="Name"
+          label={t("root.name")}
           required
           value={form.name}
           onChange={(e) => set("name", e.target.value)}
-          hint="As the school writes it. Parents will see this."
+          hint={t("root.nameHint")}
         />
         <TextField
-          label="Contact email"
+          label={t("root.contactEmail")}
           type="email"
           required
           value={form.contactEmail}
@@ -105,12 +107,12 @@ export function SchoolForm({
         />
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField
-            label="Phone"
+            label={t("root.phone")}
             value={form.contactPhone ?? ""}
             onChange={(e) => set("contactPhone", e.target.value)}
           />
           <TextField
-            label="Website"
+            label={t("root.website")}
             value={form.website ?? ""}
             onChange={(e) => set("website", e.target.value)}
           />
@@ -118,21 +120,17 @@ export function SchoolForm({
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-sm font-semibold text-fg">Grades taught</legend>
-        <p className="text-xs leading-relaxed text-fg-muted">
-          The range this school actually teaches — 3 to 10, 5 to 12, K to 5. Its administrator will
-          be offered exactly these when they create classes, so getting it right here saves them
-          scrolling past years the school does not run. Any label works: 1, K, LKG, Nursery.
-        </p>
+        <legend className="text-sm font-semibold text-fg">{t("root.gradesTaught")}</legend>
+        <p className="text-xs leading-relaxed text-fg-muted">{t("root.gradesExplainer")}</p>
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField
-            label="Lowest grade"
+            label={t("root.lowestGrade")}
             value={form.gradeLow ?? ""}
             placeholder="3"
             onChange={(e) => set("gradeLow", e.target.value)}
           />
           <TextField
-            label="Highest grade"
+            label={t("root.highestGrade")}
             value={form.gradeHigh ?? ""}
             placeholder="10"
             onChange={(e) => set("gradeHigh", e.target.value)}
@@ -141,45 +139,45 @@ export function SchoolForm({
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-sm font-semibold text-fg">Where it is</legend>
+        <legend className="text-sm font-semibold text-fg">{t("root.whereItIs")}</legend>
         <TextField
-          label="Address"
+          label={t("root.address")}
           value={form.addressLine ?? ""}
           onChange={(e) => set("addressLine", e.target.value)}
         />
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField
-            label="City"
+            label={t("root.city")}
             value={form.city ?? ""}
             onChange={(e) => set("city", e.target.value)}
           />
           <TextField
-            label="State or region"
+            label={t("root.stateRegion")}
             value={form.region ?? ""}
             onChange={(e) => set("region", e.target.value)}
           />
           <TextField
-            label="Postal code"
+            label={t("root.postalCode")}
             value={form.postalCode ?? ""}
             onChange={(e) => set("postalCode", e.target.value)}
           />
           <TextField
-            label="Country"
+            label={t("root.country")}
             value={form.country ?? ""}
             onChange={(e) => set("country", e.target.value)}
           />
         </div>
         <TextField
-          label="Timezone"
+          label={t("root.timezone")}
           required
           value={form.timezone}
           onChange={(e) => set("timezone", e.target.value)}
-          hint="An IANA zone, e.g. Asia/Kolkata. Every register date is resolved against this, so it is not cosmetic."
+          hint={t("root.timezoneHint")}
         />
       </fieldset>
 
       <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
-        {schoolId ? "Save changes" : "Create school"}
+        {schoolId ? t("root.saveChanges") : t("root.createSchool")}
       </Button>
     </form>
   );

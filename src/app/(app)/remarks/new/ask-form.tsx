@@ -9,6 +9,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { startThread } from "../actions";
+import { useT } from "@/lib/i18n";
 
 export type TeacherChoice = {
   membershipId: string;
@@ -47,6 +48,7 @@ export function AskForm({
   children: ChildChoice[];
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -64,10 +66,10 @@ export function AskForm({
   function submit(event: React.FormEvent) {
     event.preventDefault();
     const next: Record<string, string> = {};
-    if (!childId) next.child = "Choose who this is about.";
-    if (!teacherId) next.teacher = "Choose a teacher.";
-    if (subject.trim().length < 2) next.subject = "Give it a short subject.";
-    if (body.trim().length < 1) next.body = "Write your message.";
+    if (!childId) next.child = t("remarks.chooseWhoAbout");
+    if (!teacherId) next.teacher = t("remarks.chooseTeacher");
+    if (subject.trim().length < 2) next.subject = t("remarks.shortSubject");
+    if (body.trim().length < 1) next.body = t("remarks.writeYourMessage");
     if (Object.keys(next).length > 0) {
       setErrors(next);
       return;
@@ -88,7 +90,7 @@ export function AskForm({
         setErrors(result.errors);
         return;
       }
-      toast({ tone: "ok", title: "Message sent" });
+      toast({ tone: "ok", title: t("remarks.messageSent") });
       router.push(`/remarks/${result.threadId}`);
       router.refresh();
     });
@@ -107,7 +109,7 @@ export function AskForm({
 
       {children.length > 1 && (
         <div>
-          <p className="text-sm font-medium text-fg">Which child?</p>
+          <p className="text-sm font-medium text-fg">{t("remarks.whichChild")}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {children.map((c) => (
               <Button
@@ -129,36 +131,40 @@ export function AskForm({
       )}
 
       <div>
-        <p className="text-sm font-medium text-fg">Who are you writing to?</p>
+        <p className="text-sm font-medium text-fg">{t("remarks.writingToWhom")}</p>
         {teachers.length === 0 ? (
           <p className="mt-1.5 text-sm text-fg-muted">
-            No teachers to write to yet — that appears once {selfOnly ? "you are" : "they are"} on a
-            class roll.
+            {selfOnly ? t("remarks.noTeachersSelf") : t("remarks.noTeachersChild")}
           </p>
         ) : (
           <ul className="mt-2 space-y-2">
-            {teachers.map((t) => (
-              <li key={t.membershipId}>
+            {/* `teacher`, not `t` — the shorter name shadowed the translator. */}
+            {teachers.map((teacher) => (
+              <li key={teacher.membershipId}>
                 <button
                   type="button"
-                  onClick={() => setTeacherId(t.membershipId)}
-                  aria-pressed={teacherId === t.membershipId}
+                  onClick={() => setTeacherId(teacher.membershipId)}
+                  aria-pressed={teacherId === teacher.membershipId}
                   className={cn(
                     "flex w-full items-center gap-3 rounded-[--radius-md] border p-3 text-left",
-                    teacherId === t.membershipId
+                    teacherId === teacher.membershipId
                       ? "border-accent bg-accent-soft"
                       : "border-border bg-surface hover:border-border-strong",
                   )}
                 >
-                  <Avatar avatarKey={t.avatarKey} name={t.name} size="sm" />
+                  <Avatar avatarKey={teacher.avatarKey} name={teacher.name} size="sm" />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-fg">
-                      {t.name}
-                      {t.lead && <span className="ml-2 text-xs font-normal text-fg-muted">class teacher</span>}
+                      {teacher.name}
+                      {teacher.lead && (
+                        <span className="ml-2 text-xs font-normal text-fg-muted">
+                          {t("remarks.classTeacher")}
+                        </span>
+                      )}
                     </span>
                     <span className="block truncate text-xs text-fg-muted">
-                      {t.title ? `${t.title} · ` : ""}
-                      {t.classes.join(", ")}
+                      {teacher.title ? `${teacher.title} · ` : ""}
+                      {teacher.classes.join(", ")}
                     </span>
                   </span>
                 </button>
@@ -177,33 +183,23 @@ export function AskForm({
       <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs leading-relaxed text-fg-muted">
         <UsersThreeIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
         <span>
-          {selfOnly ? (
-            <>
-              This is one conversation between you, your teacher and the grown-ups at home linked to
-              you. Everyone in it sees everything.
-            </>
-          ) : (
-            <>
-              This is one conversation between you, the teacher and your child. Everyone in it sees
-              everything.
-            </>
-          )}{" "}
-          Your school can also read it, as it can any message between staff and families.
+          {selfOnly ? t("remarks.roomSelf") : t("remarks.roomChild")}{" "}
+          {t("remarks.schoolCanRead")}
         </span>
       </p>
 
       <TextField
-        label="Subject"
+        label={t("remarks.subject")}
         required
         value={subject}
         error={errors.subject}
         maxLength={160}
-        placeholder="A question about homework"
+        placeholder={t("remarks.askPlaceholder")}
         onChange={(e) => setSubject(e.target.value)}
       />
 
       <TextAreaField
-        label="Your message"
+        label={t("remarks.yourMessage")}
         required
         rows={6}
         value={body}
@@ -219,7 +215,7 @@ export function AskForm({
         icon={<PaperPlaneTiltIcon weight="bold" />}
         block
       >
-        Send
+        {t("common.send")}
       </Button>
     </form>
   );

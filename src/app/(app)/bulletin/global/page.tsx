@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * that carries pending student posts and rejection reasons.
  */
 export default async function GlobalFeedPage() {
+  const t = await getT();
   const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
   const isAdmin = ctx.role === "ADMIN";
   const posts = await listGlobalFeed(ctx);
@@ -36,22 +37,19 @@ export default async function GlobalFeedPage() {
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        Our school's bulletin
+        {t("bulletin.ourBulletin")}
       </Link>
 
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Global feed</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">
-          Posts schools have chosen to share with everyone. Each one says which school published
-          it, and each school decides for itself what to publish and what to show.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("bulletin.globalFeed")}</h1>
+        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("bulletin.globalIntro")}</p>
       </div>
 
       {posts.length === 0 ? (
         <EmptyState
           icon={<GlobeIcon weight="duotone" className="size-8" />}
-          title="Nothing shared yet"
-          description="When a school publishes one of its notices to the global feed, it appears here."
+          title={t("bulletin.nothingShared")}
+          description={t("bulletin.nothingSharedBody")}
         />
       ) : (
         <ul className="space-y-3">
@@ -65,13 +63,13 @@ export default async function GlobalFeedPage() {
                     </Badge>
                     {post.ours && (
                       <Badge tone="accent" size="sm">
-                        Ours
+                        {t("bulletin.ours")}
                       </Badge>
                     )}
                     {post.hiddenHere && (
                       <Badge tone="warn" size="sm">
                         <EyeSlashIcon weight="fill" className="mr-1 inline size-3" />
-                        Hidden at our school
+                        {t("bulletin.hiddenHere")}
                       </Badge>
                     )}
                     <span className="ml-auto text-xs text-fg-muted">
@@ -81,7 +79,7 @@ export default async function GlobalFeedPage() {
 
                   <div>
                     <h2 className="text-lg font-semibold text-fg">{post.title}</h2>
-                    <p className="mt-1 text-xs text-fg-muted">by {post.authorName}</p>
+                    <p className="mt-1 text-xs text-fg-muted">{t("bulletin.byAuthor", { name: post.authorName })}</p>
                   </div>
 
                   {post.body && (

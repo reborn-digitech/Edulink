@@ -279,7 +279,8 @@ describe("a pupil asks", () => {
       purpose: WHY,
     });
     expect(result.ok).toBe(false);
-    expect(result.ok === false && result.error).toMatch(/waiting/i);
+    // The lib mints a KEY now; the action boundary owns the words.
+    expect(result.ok === false && result.errorKey).toBe("mentoring.openRequests");
   });
 
   it("refuses asking the same mentor twice", async () => {
@@ -406,7 +407,7 @@ describe("the school decides", () => {
 
     const decision = await decideMentorRequest(admin, result.threadId, { approve: true });
     expect(decision.ok).toBe(false);
-    expect(decision.ok === false && decision.error).toMatch(/filled up/i);
+    expect(decision.ok === false && decision.errorKey).toBe("mentoring.filledUp");
 
     // Still waiting, not silently approved over the cap.
     const thread = await db.mentorThread.findUniqueOrThrow({ where: { id: result.threadId } });

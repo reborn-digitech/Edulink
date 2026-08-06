@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CheckboxField, DateField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { createCompetitionAction } from "../actions";
+import { useT } from "@/lib/i18n";
 
 /**
  * Posting a competition.
@@ -17,6 +18,7 @@ import { createCompetitionAction } from "../actions";
  * get there by a stray Enter.
  */
 export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -39,15 +41,15 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
         setErrors(result.fieldErrors ?? {});
         toast({
           tone: "danger",
-          title: "Not saved",
-          description: result.error ?? "Have a look at the highlighted fields.",
+          title: t("competitions.notSaved"),
+          description: result.error ?? t("competitions.lookAtHighlighted"),
         });
         return;
       }
       toast({
         tone: "ok",
-        title: "Saved as a draft",
-        description: "Nobody else can see it until you publish it.",
+        title: t("competitions.savedDraft"),
+        description: t("competitions.nobodySeesUntilPublish"),
       });
       router.push(`/competitions/${result.competitionId}`);
       router.refresh();
@@ -63,44 +65,44 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
       className="space-y-4"
     >
       <TextField
-        label="Title"
+        label={t("competitions.formTitle")}
         name="title"
         required
         maxLength={140}
         error={errors.title}
-        placeholder="Riverside Spelling Bee"
+        placeholder={t("competitions.formTitlePlaceholder")}
       />
 
       <TextField
-        label="One line about it"
+        label={t("competitions.oneLine")}
         name="summary"
         required
         maxLength={200}
         error={errors.summary}
-        hint="This is what people read in the list."
-        placeholder="Our own spelling bee, in the hall, on a Friday afternoon."
+        hint={t("competitions.oneLineHint")}
+        placeholder={t("competitions.oneLinePlaceholder")}
       />
 
       <TextAreaField
-        label="The details"
+        label={t("competitions.details")}
         name="body"
         rows={5}
         maxLength={5000}
         error={errors.body}
-        hint="Optional. Shown on the competition's own page."
+        hint={t("competitions.detailsHint")}
       />
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <TextField label="Subject" name="subject" maxLength={40} error={errors.subject} placeholder="English" />
+        <TextField label={t("competitions.subject")} name="subject" maxLength={40} error={errors.subject} placeholder={t("competitions.subjectPlaceholder")} />
         <TextField
-          label="Lowest year group"
+          label={t("competitions.lowestYear")}
           name="gradeLow"
           maxLength={10}
           error={errors.gradeLow}
           placeholder="4"
       />
         <TextField
-          label="Highest year group"
+          label={t("competitions.highestYear")}
           name="gradeHigh"
           maxLength={10}
           error={errors.gradeHigh}
@@ -110,40 +112,40 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
 
       <div className="grid gap-4 sm:grid-cols-3">
         <DateField
-          label="Entries close"
+          label={t("competitions.entriesClose")}
           name="registrationClosesAt"
           error={errors.registrationClosesAt}
         />
-        <DateField label="Starts" name="startsAt" error={errors.startsAt} />
-        <DateField label="Ends" name="endsAt" error={errors.endsAt} />
+        <DateField label={t("competitions.starts")} name="startsAt" error={errors.startsAt} />
+        <DateField label={t("competitions.ends")} name="endsAt" error={errors.endsAt} />
       </div>
 
       <TextAreaField
-        label="Who can enter"
+        label={t("competitions.whoCanEnter")}
         name="eligibility"
         rows={2}
         maxLength={1000}
         error={errors.eligibility}
-        placeholder="Any pupil in Years 4 to 6."
+        placeholder={t("competitions.eligibilityPlaceholder")}
       />
-      <TextAreaField label="Rules" name="rules" rows={2} maxLength={2000} error={errors.rules} />
-      <TextAreaField label="Prizes" name="prizes" rows={2} maxLength={1000} error={errors.prizes} />
+      <TextAreaField label={t("competitions.rules")} name="rules" rows={2} maxLength={2000} error={errors.rules} />
+      <TextAreaField label={t("competitions.prizes")} name="prizes" rows={2} maxLength={1000} error={errors.prizes} />
 
       <TextField
-        label="Organiser's own page"
+        label={t("competitions.organiserPage")}
         name="externalUrl"
         type="url"
         maxLength={500}
         error={errors.externalUrl}
-        hint="Optional, and must start with https://"
-        placeholder="https://example.org/…"
+        hint={t("competitions.externalUrlHint")}
+        placeholder={t("competitions.exampleUrlPlaceholder")}
         />
 
       <CheckboxField
         name="requiresParentConsent"
         defaultChecked
-        label="Ask a parent before a child takes part"
-        description="Leave this on unless the whole thing happens inside school and no child's details leave the building."
+        label={t("competitions.askParentFirst")}
+        description={t("competitions.askParentHint")}
         error={errors.requiresParentConsent}
         />
 
@@ -151,17 +153,17 @@ export function NewCompetitionForm({ schoolName }: { schoolName: string }) {
           like a list of names and an admin should not have to guess. */}
       <CheckboxField
         name="leaderboardEnabled"
-        label="Show a leaderboard across schools"
-        description="Ranks the SCHOOLS taking part — how many results each has, their best place and best score. No child from any school is named, including yours. You can turn this on or off later."
+        label={t("competitions.showBoard")}
+        description={t("competitions.showBoardHint")}
         error={errors.leaderboardEnabled}
         />
 
       <div className="flex flex-wrap items-center gap-3 pt-1">
         <Button type="submit" icon={<TrophyIcon weight="bold" />} disabled={pending}>
-          {pending ? "Saving…" : "Save as a draft"}
+          {pending ? t("common.saving") : t("competitions.saveDraft")}
         </Button>
         <p className="text-sm text-fg-muted">
-          Posted as {schoolName}. You publish it on the next screen.
+          {t("competitions.postedAs", { school: schoolName })}
         </p>
       </div>
     </form>

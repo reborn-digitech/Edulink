@@ -184,7 +184,7 @@ export default async function StudentHome({
         <CardBody>
           {grades.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
-              When a teacher marks your work, it will appear here.
+              {t("student.markedAppearsHere")}
             </p>
           ) : (
             <ul className="divide-y divide-border">

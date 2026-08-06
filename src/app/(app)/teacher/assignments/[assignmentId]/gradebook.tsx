@@ -124,7 +124,10 @@ export function Gradebook({
       toast({
         tone: "danger",
         title: t("teacher.checkMarks"),
-        description: `${invalid.length} ${invalid.length === 1 ? "mark is" : "marks are"} not a usable number.`,
+        description:
+          invalid.length === 1
+            ? t("teacher.invalidMarkOne")
+            : t("teacher.invalidMarkMany", { count: invalid.length }),
       });
       return;
     }
@@ -267,7 +270,11 @@ export function Gradebook({
                       onClick={() =>
                         setOpenComment((c) => (c === row.membershipId ? null : row.membershipId))
                       }
-                      aria-label={`${draft.comment ? "Edit" : "Add"} a comment for ${row.name}`}
+                      aria-label={
+                        draft.comment
+                          ? t("teacher.editCommentFor", { name: row.name })
+                          : t("teacher.addCommentFor", { name: row.name })
+                      }
                       aria-expanded={openComment === row.membershipId}
                       className={cn(
                         "tap grid shrink-0 place-items-center rounded-[--radius-sm]",

@@ -37,6 +37,7 @@ export default async function ReportCardPage({
 }: {
   params: Promise<{ cardId: string }>;
 }) {
+  const t = await getT();
   const session = await requireUser();
   const { cardId } = await params;
 
@@ -51,7 +52,7 @@ export default async function ReportCardPage({
         // Only staff can see a draft at all, but a teacher printing one by
         // mistake and handing it to a parent is the accident worth preventing.
         <p className="mb-4 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-semibold text-warn print:hidden">
-          Draft — not published. Families cannot see this yet.
+          {t("reportView.draftBanner")}
         </p>
       )}
 
@@ -89,25 +90,25 @@ export default async function ReportCardPage({
         {/* ---------------- headline figures ---------------- */}
         <section className="grid gap-3 sm:grid-cols-2">
           <Figure
-            label="Overall"
+            label={t("reportView.overall")}
             value={card.overallPercent === null ? "—" : `${card.overallPercent.toFixed(1)}%`}
             hint={
               card.overallPercent === null
-                ? "No marks counted"
+                ? t("reportView.noMarksCounted")
                 : card.gradingMethod === "weighted"
-                  ? "Weighted by category"
-                  : "Across the assessments below"
+                  ? t("reportView.weightedBy")
+                  : t("reportView.acrossBelow")
             }
           />
           <Figure
-            label="Attendance"
+            label={t("reportView.attendance")}
             value={
               card.attendancePercent === null ? "—" : `${card.attendancePercent.toFixed(1)}%`
             }
             hint={
               card.attendanceTotal === 0
-                ? "No register taken in this window"
-                : `${card.attendancePresent} of ${card.attendanceTotal} days`
+                ? t("reportView.noRegisterWindow")
+                : t("reportView.daysOf", { present: card.attendancePresent, total: card.attendanceTotal })
             }
           />
         </section>
@@ -115,16 +116,16 @@ export default async function ReportCardPage({
         {/* ---------------- the assessments ---------------- */}
         <section className="mt-6">
           <h3 className="text-sm font-semibold text-fg print:text-black">
-            What this covers
+            {t("reportView.whatThisCovers")}
           </h3>
           <table className="mt-2 w-full text-sm">
             <thead>
               <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
                 <th scope="col" className="py-2 font-medium">
-                  Assessment
+                  {t("reportView.assessment")}
                 </th>
                 <th scope="col" className="py-2 text-right font-medium">
-                  Mark
+                  {t("reportView.mark")}
                 </th>
               </tr>
             </thead>
@@ -161,7 +162,7 @@ export default async function ReportCardPage({
         {card.remark && (
           <section className="mt-6">
             <h3 className="text-sm font-semibold text-fg print:text-black">
-              From the class teacher
+              {t("reportView.fromClassTeacher")}
             </h3>
             <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black">
               {card.remark}
@@ -170,10 +171,11 @@ export default async function ReportCardPage({
         )}
 
         <footer className="mt-8 border-t border-border pt-4 text-xs text-fg-muted print:border-black/20 print:text-black/70">
-          {card.authorName ? `Written by ${card.authorName}. ` : ""}
+          {/* Whole sentences with placeholders; the date is a value. */}
+          {card.authorName ? `${t("reportView.writtenBy", { name: card.authorName })} ` : ""}
           {card.publishedAt
-            ? `Issued ${card.publishedAt.toLocaleDateString()}.`
-            : "Not yet issued."}
+            ? t("reportView.issuedOn", { date: card.publishedAt.toLocaleDateString() })
+            : t("reportView.notYetIssued")}
         </footer>
       </div>
     </article>

@@ -9,6 +9,7 @@ import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { close, search, setSuspension, takeDown } from "./actions";
 import type { OversightPerson, OversightPost } from "@/lib/operator-oversight";
+import { useT } from "@/lib/i18n";
 
 /**
  * What an operator can actually do once they are inside.
@@ -30,6 +31,7 @@ export function OversightPanel({
   posts: OversightPost[];
   expiresAt: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -42,7 +44,7 @@ export function OversightPanel({
     startTransition(async () => {
       const result = await work();
       if (!result.ok) {
-        setError(result.error ?? "That did not work.");
+        setError(result.error ?? t("root.didNotWork"));
         return;
       }
       toast({ tone: "ok", title: done });
@@ -61,17 +63,18 @@ export function OversightPanel({
         className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft p-4"
       >
         <p id="inside-banner" className="text-sm text-fg">
-          <strong className="font-semibold">You are inside this school.</strong> Access ends at{" "}
-          {expiresAt}. Everything you do is in their Safety Centre.
+          {/* One sentence with a placeholder; the bold lead went with the
+              fragments, and the time inside is a value. */}
+          {t("root.youAreInside", { time: expiresAt })}
         </p>
         <Button
           size="sm"
           variant="secondary"
           icon={<LockKeyIcon weight="bold" />}
           loading={pending}
-          onClick={() => act(() => close(schoolId), "Closed")}
+          onClick={() => act(() => close(schoolId), t("root.closedToast"))}
         >
-          Close now
+          {t("root.closeNow")}
         </Button>
       </section>
 
@@ -87,10 +90,10 @@ export function OversightPanel({
       {/* ---------------- posts ---------------- */}
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-          What this school has published
+          {t("root.whatPublished")}
         </h2>
         {posts.length === 0 ? (
-          <p className="text-sm text-fg-muted">Nothing posted.</p>
+          <p className="text-sm text-fg-muted">{t("root.nothingPosted")}</p>
         ) : (
           <ul className="space-y-2">
             {posts.map((post) => (
@@ -116,14 +119,12 @@ export function OversightPanel({
                     variant="danger"
                     loading={pending}
                     onClick={() => {
-                      const reason = window.prompt(
-                        "Why is this coming down? The school reads this.",
-                      );
+                      const reason = window.prompt(t("root.whyComingDown"));
                       if (!reason) return;
-                      act(() => takeDown(schoolId, post.id, reason), "Taken down");
+                      act(() => takeDown(schoolId, post.id, reason), t("root.takenDown"));
                     }}
                   >
-                    Take it down
+                    {t("root.takeItDown")}
                   </Button>
                 )}
               </li>
@@ -135,14 +136,12 @@ export function OversightPanel({
       {/* ---------------- people ---------------- */}
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-          Find somebody
+          {t("root.findSomebody")}
         </h2>
-        <p className="text-sm text-fg-muted">
-          By name or email. There is no list of everybody on purpose.
-        </p>
+        <p className="text-sm text-fg-muted">{t("root.byNameOrEmail")}</p>
         <div className="flex gap-2">
           <TextField
-            label="Name or email"
+            label={t("root.nameOrEmail")}
             className="flex-1"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -156,12 +155,12 @@ export function OversightPanel({
               startTransition(async () => setPeople(await search(schoolId, query)))
             }
           >
-            Search
+            {t("root.search")}
           </Button>
         </div>
 
         {people !== null && people.length === 0 && (
-          <p className="text-sm text-fg-muted">Nobody matched.</p>
+          <p className="text-sm text-fg-muted">{t("root.nobodyMatched")}</p>
         )}
         {people && people.length > 0 && (
           <ul className="space-y-2">
@@ -188,11 +187,11 @@ export function OversightPanel({
                             suspended: false,
                             reason: "",
                           }),
-                        "Access restored",
+                        t("root.accessRestored"),
                       )
                     }
                   >
-                    Restore access
+                    {t("root.restoreAccess")}
                   </Button>
                 ) : (
                   <Button
@@ -200,9 +199,7 @@ export function OversightPanel({
                     variant="danger"
                     loading={pending}
                     onClick={() => {
-                      const reason = window.prompt(
-                        "Why is this person being paused? The school reads this.",
-                      );
+                      const reason = window.prompt(t("root.whyPaused"));
                       if (!reason) return;
                       act(
                         () =>
@@ -210,11 +207,11 @@ export function OversightPanel({
                             suspended: true,
                             reason,
                           }),
-                        "Access paused",
+                        t("root.accessPaused"),
                       );
                     }}
                   >
-                    Pause access
+                    {t("root.pauseAccess")}
                   </Button>
                 )}
               </li>
@@ -224,11 +221,7 @@ export function OversightPanel({
       </section>
 
       {/* Said last, where somebody has just finished doing something. */}
-      <p className="text-xs leading-relaxed text-fg-muted">
-        Nothing here changes a mark, a register or a report card, and nothing here reads a private
-        message between a parent, a teacher and a child. Ending an account permanently is the
-        school&rsquo;s decision about its own member.
-      </p>
+      <p className="text-xs leading-relaxed text-fg-muted">{t("root.powersNote")}</p>
     </div>
   );
 }

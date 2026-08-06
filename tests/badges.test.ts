@@ -63,8 +63,9 @@ describe("shape", () => {
     expect(badges.length).toBeGreaterThanOrEqual(7);
     expect(new Set(badges.map((b) => b.id)).size).toBe(badges.length);
     for (const badge of badges) {
-      expect(badge.label.length).toBeGreaterThan(0);
-      expect(badge.description.length).toBeGreaterThan(0);
+      // Keys, not words — the reader's language resolves them at render time.
+      expect(badge.labelKey.startsWith("practice.")).toBe(true);
+      expect(badge.descriptionKey.startsWith("practice.")).toBe(true);
       expect(typeof badge.earned).toBe("boolean");
     }
   });
@@ -74,7 +75,7 @@ describe("shape", () => {
     // the word "scored" inside the description "scored 90% or more", which is
     // ordinary English and not a score field at all.
     const badges = await getBadges(schoolId, membershipId, timezone);
-    const allowedKeys = new Set(["id", "label", "description", "earned", "progress", "icon"]);
+    const allowedKeys = new Set(["id", "labelKey", "descriptionKey", "earned", "progress", "icon"]);
 
     for (const badge of badges) {
       for (const key of Object.keys(badge)) {

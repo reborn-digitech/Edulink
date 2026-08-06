@@ -4,13 +4,13 @@ import { notFound } from "next/navigation";
 import { ArrowLeftIcon, LockKeyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { getThread } from "@/lib/remarks";
+import { getT } from "@/lib/i18n/server";
 import { markRead } from "../actions";
 import { Avatar } from "@/components/ui/avatar";
 import { ReplyBox } from "./reply-box";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
-import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ThreadPage({ params }: { params: Promise<{ threadId: string }> }) {
+  const t = await getT();
   const session = await requireUser();
   const { threadId } = await params;
 
@@ -47,7 +48,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All messages
+        {t("remarks.all")}
       </Link>
 
       <header className="flex items-start gap-3 rounded-[--radius-lg] border border-border bg-surface p-4">
@@ -112,7 +113,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
 
       {thread.closedAt ? (
         <p className="mt-6 rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
-          This conversation has been closed.
+          {t("remarks.closed")}
         </p>
       ) : (
         <ReplyBox threadId={thread.id} className="mt-6" />

@@ -6,6 +6,7 @@ import { CheckCircleIcon, HourglassMediumIcon, TrophyIcon, XIcon } from "@phosph
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { formatMilli } from "@/lib/validation";
+import { useT } from "@/lib/i18n";
 import {
   consentAction,
   enterAction,
@@ -34,14 +35,13 @@ export function EnterButton({
   open: boolean;
   requiresParentConsent: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
   if (!open) {
-    return (
-      <p className="text-sm text-muted">Entries for this one have closed.</p>
-    );
+    return <p className="text-sm text-muted">{t("competitions.entriesClosed")}</p>;
   }
 
   return (
@@ -52,21 +52,21 @@ export function EnterButton({
         startTransition(async () => {
           const result = await enterAction({ id: competitionId });
           if (!result.ok) {
-            toast({ tone: "danger", title: "That did not go through", description: result.error });
+            toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
             return;
           }
           toast({
             tone: "ok",
-            title: requiresParentConsent ? "Asked to enter 🎉" : "You are entered 🎉",
+            title: requiresParentConsent ? t("competitions.askedToEnter") : t("competitions.enteredToast"),
             description: requiresParentConsent
-              ? `A grown-up needs to say yes before you take part in ${title}.`
-              : `You are taking part in ${title}.`,
+              ? t("competitions.grownUpMustYes", { title })
+              : t("competitions.takingPartIn", { title }),
           });
           router.refresh();
         })
       }
     >
-      {pending ? "Just a moment…" : "Enter this"}
+      {pending ? t("competitions.justAMoment") : t("competitions.enterThis")}
     </Button>
   );
 }
@@ -81,6 +81,7 @@ export function EntryStatus({
   awaitingConsent: boolean;
   canWithdraw: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -95,12 +96,12 @@ export function EntryStatus({
         {awaitingConsent ? (
           <>
             <HourglassMediumIcon weight="fill" className="size-4" />
-            Waiting for a grown-up to say yes
+            {t("competitions.waitingForGrownUp")}
           </>
         ) : (
           <>
             <CheckCircleIcon weight="fill" className="size-4" />
-            You are entered
+            {t("competitions.youAreEntered")}
           </>
         )}
       </span>
@@ -115,15 +116,15 @@ export function EntryStatus({
             startTransition(async () => {
               const result = await withdrawAction({ id: entryId });
               if (!result.ok) {
-                toast({ tone: "danger", title: "That did not go through", description: result.error });
+                toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
                 return;
               }
-              toast({ tone: "ok", title: "Withdrawn", description: "You can always ask again." });
+              toast({ tone: "ok", title: t("competitions.withdrawn"), description: t("competitions.canAskAgain") });
               router.refresh();
             })
           }
         >
-          Withdraw
+          {t("competitions.withdraw")}
         </Button>
       )}
     </div>
@@ -147,6 +148,7 @@ export function ConsentControls({
   childName: string;
   title: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -161,19 +163,19 @@ export function ConsentControls({
           startTransition(async () => {
             const result = await consentAction({ id: entryId });
             if (!result.ok) {
-              toast({ tone: "danger", title: "That did not go through", description: result.error });
+              toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
               return;
             }
             toast({
               tone: "ok",
-              title: "Consent given",
-              description: `${childName} can take part in ${title}.`,
+              title: t("competitions.consentGiven"),
+              description: t("competitions.childCanTakePart", { child: childName, title }),
             });
             router.refresh();
           })
         }
       >
-        {pending ? "Just a moment…" : "Allow"}
+        {pending ? t("competitions.justAMoment") : t("competitions.allow")}
       </Button>
 
       <Button
@@ -184,19 +186,19 @@ export function ConsentControls({
           startTransition(async () => {
             const result = await withdrawAction({ id: entryId });
             if (!result.ok) {
-              toast({ tone: "danger", title: "That did not go through", description: result.error });
+              toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
               return;
             }
             toast({
               tone: "ok",
-              title: "Not this time",
-              description: `${childName} has been taken out of ${title}.`,
+              title: t("competitions.notThisTime"),
+              description: t("competitions.childTakenOut", { child: childName, title }),
             });
             router.refresh();
           })
         }
       >
-        Not this time
+        {t("competitions.notThisTime")}
       </Button>
     </div>
   );
@@ -221,6 +223,7 @@ export function OrganiserControls({
   entered: number;
   leaderboardEnabled: boolean;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -229,15 +232,15 @@ export function OrganiserControls({
     startTransition(async () => {
       const result = await setLeaderboardAction({ id: competitionId, enabled: !leaderboardEnabled });
       if (!result.ok) {
-        toast({ tone: "danger", title: "That did not go through", description: result.error });
+        toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
         return;
       }
       toast({
         tone: "ok",
-        title: leaderboardEnabled ? "Leaderboard taken down" : "Leaderboard published",
+        title: leaderboardEnabled ? t("competitions.boardTakenDown") : t("competitions.boardPublishedToast"),
         description: leaderboardEnabled
-          ? "Standings are kept, and only your school can see yours."
-          : "Schools are ranked. No child is named.",
+          ? t("competitions.standingsKept")
+          : t("competitions.schoolsRankedNoChild"),
       });
       router.refresh();
     });
@@ -247,10 +250,10 @@ export function OrganiserControls({
     startTransition(async () => {
       const result = await setStatusAction({ id: competitionId, status: next });
       if (!result.ok) {
-        toast({ tone: "danger", title: "That did not go through", description: result.error });
+        toast({ tone: "danger", title: t("competitions.thatDidNotGo"), description: result.error });
         return;
       }
-      toast({ tone: "ok", title: "Done", description: result.message });
+      toast({ tone: "ok", title: t("competitions.done"), description: result.message });
       router.refresh();
     });
   }
@@ -258,30 +261,31 @@ export function OrganiserControls({
   return (
     <div className="space-y-2.5">
       <p className="text-sm text-fg-muted">
-        Your school is organising this one.
-        {status === "DRAFT" && " Nobody else can see it yet."}
+        {t("competitions.yourSchoolOrganising")}
+        {status === "DRAFT" && ` ${t("competitions.nobodyElseSeesYet")}`}
       </p>
       <div className="flex flex-wrap gap-2">
         {status !== "PUBLISHED" && (
           <Button size="sm" disabled={pending} onClick={() => change("PUBLISHED")}>
-            {pending ? "Just a moment…" : "Publish it"}
+            {pending ? t("competitions.justAMoment") : t("competitions.publishIt")}
           </Button>
         )}
         {status === "PUBLISHED" && (
           <Button size="sm" variant="secondary" disabled={pending} onClick={() => change("ARCHIVED")}>
-            Withdraw it
+            {t("competitions.withdrawIt")}
           </Button>
         )}
         {status === "ARCHIVED" && (
           <Button size="sm" variant="ghost" disabled={pending} onClick={() => change("DRAFT")}>
-            Put it back as a draft
+            {t("competitions.backToDraft")}
           </Button>
         )}
       </div>
       {status === "PUBLISHED" && entered > 0 && (
         <p className="text-xs text-fg-muted">
-          Withdrawing keeps the {entered} {entered === 1 ? "entry" : "entries"} already made — it just
-          takes it off the list.
+          {entered === 1
+            ? t("competitions.withdrawKeepsOne")
+            : t("competitions.withdrawKeepsMany", { count: entered })}
         </p>
       )}
 
@@ -290,11 +294,10 @@ export function OrganiserControls({
           remember that it is schools and not children. */}
       <div className="rounded-[--radius-sm] border border-border p-3">
         <p className="text-sm font-medium text-fg">
-          {leaderboardEnabled ? "The leaderboard is published" : "No leaderboard"}
+          {leaderboardEnabled ? t("competitions.boardPublished") : t("competitions.noBoard")}
         </p>
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-          A leaderboard ranks the SCHOOLS taking part — results recorded, best place, best score. No
-          child from any school is named, including yours.
+          {t("competitions.boardExplainer")}
         </p>
         <Button
           size="sm"
@@ -303,12 +306,10 @@ export function OrganiserControls({
           disabled={pending}
           onClick={toggleBoard}
         >
-          {leaderboardEnabled ? "Take the leaderboard down" : "Publish a leaderboard"}
+          {leaderboardEnabled ? t("competitions.takeBoardDown") : t("competitions.publishBoard")}
         </Button>
         {leaderboardEnabled && (
-          <p className="mt-1.5 text-xs text-fg-subtle">
-            Taking it down keeps every standing — it stops other schools seeing them.
-          </p>
+          <p className="mt-1.5 text-xs text-fg-subtle">{t("competitions.takingDownKeeps")}</p>
         )}
       </div>
     </div>
@@ -334,6 +335,7 @@ export function SubmitPanel({
   canSubmit: boolean;
   reason: string | null;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -353,27 +355,27 @@ export function SubmitPanel({
         startTransition(async () => {
           const result = await submitAction({ id: competitionId, url: url.trim() });
           if (!result.ok) {
-            setError(result.error ?? "That did not go through.");
+            setError(result.error ?? t("competitions.thatDidNotGo"));
             return;
           }
           toast({
             tone: "ok",
-            title: existingUrl ? "Changed 🎉" : "Handed in 🎉",
-            description: "Your teacher can see it now.",
+            title: existingUrl ? t("competitions.changed") : t("competitions.handedInToast"),
+            description: t("competitions.teacherCanSee"),
           });
           router.refresh();
         });
       }}
     >
       <label htmlFor="entry-url" className="block text-sm font-medium">
-        {existingUrl ? "Your entry" : "Hand in your entry"}
+        {existingUrl ? t("competitions.yourEntry") : t("competitions.handInYourEntry")}
       </label>
       <input
         id="entry-url"
         type="url"
         value={url}
         onChange={(event) => setUrl(event.target.value)}
-        placeholder="https://…"
+        placeholder={t("competitions.urlPlaceholder")}
         required
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? "entry-url-error" : undefined}
@@ -381,14 +383,14 @@ export function SubmitPanel({
           error ? "border-danger" : "border-border"
         }`}
       />
-      <p className="text-xs text-fg-muted">A link to your work — it must start with https://</p>
+      <p className="text-xs text-fg-muted">{t("competitions.linkToWork")}</p>
       {error && (
         <p id="entry-url-error" className="text-sm text-danger">
           {error}
         </p>
       )}
       <Button type="submit" size="sm" disabled={pending || url.trim().length === 0}>
-        {pending ? "Just a moment…" : existingUrl ? "Change it" : "Hand it in"}
+        {pending ? t("competitions.justAMoment") : existingUrl ? t("competitions.changeIt") : t("competitions.handItIn")}
       </Button>
     </form>
   );
@@ -396,19 +398,22 @@ export function SubmitPanel({
 
 /** What a child sees once somebody has recorded what they scored. */
 export function ResultBadge({ scoreMilli, rank }: { scoreMilli: number | null; rank: number | null }) {
+  const t = useT();
   if (scoreMilli === null && rank === null) return null;
   return (
     <p className="inline-flex items-center gap-2 rounded-[--radius-md] bg-ok-soft px-2.5 py-1.5 text-sm font-medium text-ok">
       <TrophyIcon weight="fill" className="size-4" />
-      {rank !== null && <span>{ordinalLabel(rank)}</span>}
-      {scoreMilli !== null && <span>{formatMilli(scoreMilli)} points</span>}
+      {/* The ordinal ("3rd") is an English VALUE, like a date — the word
+          around it is the part that translates. */}
+      {rank !== null && <span>{t("competitions.placeLabel", { n: ordinalValue(rank) })}</span>}
+      {scoreMilli !== null && <span>{t("competitions.pointsLabel", { n: formatMilli(scoreMilli) })}</span>}
     </p>
   );
 }
 
-function ordinalLabel(n: number): string {
+function ordinalValue(n: number): string {
   const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 13) return `${n}th place`;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
   const suffix = { 1: "st", 2: "nd", 3: "rd" }[n % 10] ?? "th";
-  return `${n}${suffix} place`;
+  return `${n}${suffix}`;
 }

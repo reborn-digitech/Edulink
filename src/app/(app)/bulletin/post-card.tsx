@@ -22,6 +22,7 @@ import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { pin, react, review, report } from "./actions";
 import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { REACTION_KINDS, ROLE_META, type ReactionKind, type Role } from "@/lib/constants";
 
 type Post = {
@@ -46,24 +47,26 @@ type Post = {
   mine: boolean;
 };
 
+/* Keys, not words — the ROLE_META precedent. The label is looked up at render
+   time in the reader's language. */
 const REACTION_META: Record<
   ReactionKind,
-  { icon: React.ComponentType<{ className?: string; weight?: "fill" | "bold" }>; label: string }
+  { icon: React.ComponentType<{ className?: string; weight?: "fill" | "bold" }>; labelKey: TranslationKey }
 > = {
-  CLAP: { icon: HandsClappingIcon, label: "Well done" },
-  STAR: { icon: StarIcon, label: "Brilliant" },
-  IDEA: { icon: LightbulbIcon, label: "Made me think" },
-  HEART: { icon: HeartIcon, label: "Love this" },
+  CLAP: { icon: HandsClappingIcon, labelKey: "bulletin.reactClap" },
+  STAR: { icon: StarIcon, labelKey: "bulletin.reactStar" },
+  IDEA: { icon: LightbulbIcon, labelKey: "bulletin.reactIdea" },
+  HEART: { icon: HeartIcon, labelKey: "bulletin.reactHeart" },
 };
 
 const REPORT_REASONS = [
-  { value: "BULLYING", label: "It is unkind or bullying" },
-  { value: "UNSAFE", label: "Someone might be unsafe" },
-  { value: "PRIVACY", label: "It shares private information" },
-  { value: "WRONG_INFO", label: "It is not true" },
-  { value: "SPAM", label: "It is spam" },
-  { value: "OTHER", label: "Something else" },
-] as const;
+  { value: "BULLYING", labelKey: "bulletin.reasonBullying" },
+  { value: "UNSAFE", labelKey: "bulletin.reasonUnsafe" },
+  { value: "PRIVACY", labelKey: "bulletin.reasonPrivacy" },
+  { value: "WRONG_INFO", labelKey: "bulletin.reasonWrong" },
+  { value: "SPAM", labelKey: "bulletin.reasonSpam" },
+  { value: "OTHER", labelKey: "bulletin.reasonOther" },
+] as const satisfies readonly { value: string; labelKey: TranslationKey }[];
 
 export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | null }) {
   const router = useRouter();
@@ -111,19 +114,19 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           {post.pinned && !isPending && !isRejected && (
             <>
               <PushPinIcon weight="fill" className="size-3.5" />
-              Pinned by the school
+              {t("bulletin.pinnedBySchool")}
             </>
           )}
           {isPending && (
             <>
               <ChatCircleIcon weight="fill" className="size-3.5" />
-              {post.mine ? "Waiting for a teacher to check it" : "Needs review"}
+              {post.mine ? t("bulletin.waitingForCheck") : t("bulletin.needsReview")}
             </>
           )}
           {isRejected && (
             <>
               <XCircleIcon weight="fill" className="size-3.5" />
-              Not published
+              {t("bulletin.notPublished")}
             </>
           )}
         </div>
@@ -142,7 +145,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
               )}
             </p>
             <p className="text-xs text-fg-muted">
-              {post.scope === "CLASS" ? (post.className ?? "Class") : "Whole school"} ·{" "}
+              {post.scope === "CLASS" ? (post.className ?? t("bulletin.classField")) : t("bulletin.wholeSchool")} ·{" "}
               {relativeTime(post.createdAt)}
             </p>
           </div>
@@ -218,12 +221,10 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
         {isRejected && post.mine && post.rejectionReason && (
           <div className="mt-3 rounded-[--radius-md] bg-danger-soft p-3.5">
             <p className="text-xs font-semibold uppercase tracking-wide text-danger">
-              What your teacher said
+              {t("bulletin.whatTeacherSaid")}
             </p>
             <p className="mt-1 text-sm leading-relaxed text-fg">{post.rejectionReason}</p>
-            <p className="mt-2 text-xs text-fg-muted">
-              You can write a new post with this changed — nothing is held against you.
-            </p>
+            <p className="mt-2 text-xs text-fg-muted">{t("bulletin.writeNewPost")}</p>
           </div>
         )}
       </div>
@@ -234,7 +235,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           {rejecting ? (
             <div className="space-y-2">
               <label htmlFor={`reason-${post.id}`} className="block text-sm font-medium text-fg">
-                Why not? The student will see this.
+                {t("bulletin.whyNot")}
               </label>
               <textarea
                 id={`reason-${post.id}`}
@@ -242,12 +243,12 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 onChange={(e) => setReason(e.target.value.slice(0, 500))}
                 rows={2}
                 autoFocus
-                placeholder="Lovely idea — but it has Ella's surname in it. Take that out and repost?"
+                placeholder={t("bulletin.rejectPlaceholder")}
                 className="w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
               />
               <div className="flex gap-2">
                 <Button size="sm" variant="ghost" block onClick={() => setRejecting(false)}>
-                  Cancel
+                  {t("common.cancel")}
                 </Button>
                 <Button
                   size="sm"
@@ -260,15 +261,15 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                       const result = await review(post.id, "REJECT", reason);
                       toast(
                         result.ok
-                          ? { tone: "neutral", title: "Sent back with your note" }
-                          : { tone: "danger", title: "Could not do that", description: result.error },
+                          ? { tone: "neutral", title: t("bulletin.sentBackWithNote") }
+                          : { tone: "danger", title: t("bulletin.couldNotDo"), description: result.error },
                       );
                       setRejecting(false);
                       router.refresh();
                     })
                   }
                 >
-                  Send back
+                  {t("bulletin.sendBack")}
                 </Button>
               </div>
             </div>
@@ -282,7 +283,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 icon={<XCircleIcon weight="bold" />}
                 onClick={() => setRejecting(true)}
               >
-                Send back
+                {t("bulletin.sendBack")}
               </Button>
               <Button
                 size="sm"
@@ -294,14 +295,14 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                     const result = await review(post.id, "APPROVE");
                     toast(
                       result.ok
-                        ? { tone: "ok", title: "Published", description: "The class can see it now." }
-                        : { tone: "danger", title: "Could not publish", description: result.error },
+                        ? { tone: "ok", title: t("bulletin.published"), description: t("bulletin.classCanSee") }
+                        : { tone: "danger", title: t("bulletin.couldNotPublish"), description: result.error },
                     );
                     router.refresh();
                   })
                 }
               >
-                Publish it
+                {t("bulletin.publishIt")}
               </Button>
             </div>
           )}
@@ -313,16 +314,18 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
         <footer className="flex flex-wrap items-center gap-1.5 border-t border-border px-3 py-2.5">
           {REACTION_KINDS.map((kind) => {
             const meta = REACTION_META[kind];
+            const label = t(meta.labelKey);
             const Icon = meta.icon;
             const count = reactionCount(kind);
             const mine = isMine(kind);
+            const ariaLabel = count > 0 ? `${label} (${count})` : label;
             return (
               <button
                 key={kind}
                 type="button"
-                aria-label={`${meta.label}${count > 0 ? ` (${count})` : ""}`}
+                aria-label={ariaLabel}
                 aria-pressed={mine}
-                title={meta.label}
+                title={label}
                 className={cn(
                   "inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold",
                   "transition-[transform,background-color] duration-[--dur-fast] active:scale-90",
@@ -338,7 +341,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                     const result = await react({ postId: post.id, kind });
                     if (!result.ok) {
                       setOptimistic(null);
-                      toast({ tone: "danger", title: "Could not react", description: result.error });
+                      toast({ tone: "danger", title: t("bulletin.couldNotReact"), description: result.error });
                       return;
                     }
                     router.refresh();
@@ -357,15 +360,15 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
           >
             <ChatCircleIcon className="size-4" />
-            {post.commentCount > 0 ? post.commentCount : "Comment"}
+            {post.commentCount > 0 ? post.commentCount : t("bulletin.comment")}
           </Link>
 
           <div className="ml-auto flex items-center gap-1">
             {viewerRole === "ADMIN" && (
               <button
                 type="button"
-                aria-label={post.pinned ? "Unpin this post" : "Pin this post"}
-                title={post.pinned ? "Unpin" : "Pin to the top"}
+                aria-label={post.pinned ? t("bulletin.unpinThisPost") : t("bulletin.pinThisPost")}
+                title={post.pinned ? t("bulletin.unpin") : t("bulletin.pinToTop")}
                 className={cn(
                   "tap grid place-items-center rounded-full",
                   post.pinned ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
@@ -375,8 +378,8 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                     const result = await pin(post.id);
                     toast(
                       result.ok
-                        ? { tone: "ok", title: result.pinned ? "Pinned to the top" : "Unpinned" }
-                        : { tone: "danger", title: "Could not pin", description: result.error },
+                        ? { tone: "ok", title: result.pinned ? t("bulletin.pinnedToTop") : t("bulletin.unpinned") }
+                        : { tone: "danger", title: t("bulletin.couldNotPin"), description: result.error },
                     );
                     router.refresh();
                   })
@@ -389,8 +392,8 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             {!post.mine && (
               <button
                 type="button"
-                aria-label="Report this post"
-                title="Report"
+                aria-label={t("bulletin.reportThisPost")}
+                title={t("bulletin.report")}
                 className="tap grid place-items-center rounded-full text-fg-subtle hover:text-danger"
                 onClick={() => setReporting(true)}
               >
@@ -411,10 +414,10 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
               ok
                 ? {
                     tone: "ok",
-                    title: "Thank you for telling us",
-                    description: "A teacher will look at this. You do not need to do anything else.",
+                    title: t("bulletin.thanksForTelling"),
+                    description: t("bulletin.teacherWillLook"),
                   }
-                : { tone: "danger", duration: null, title: "That did not send", description: error },
+                : { tone: "danger", duration: null, title: t("bulletin.didNotSend"), description: error },
             );
           }}
         />
@@ -432,6 +435,7 @@ function ReportSheet({
   onClose: () => void;
   onDone: (ok: boolean, error?: string) => void;
 }) {
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const [reason, setReason] = useState<string | null>(null);
   const [detail, setDetail] = useState("");
@@ -449,13 +453,13 @@ function ReportSheet({
         className="w-full max-w-md rounded-t-[--radius-xl] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[--radius-xl] sm:pb-5"
       >
         <h2 id={`report-title-${postId}`} className="text-base font-bold text-fg">
-          Tell us what is wrong
+          {t("bulletin.tellWhatWrong")}
         </h2>
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
-          A teacher will see this. The person who posted it will not be told who reported it.
+          {t("bulletin.teacherWillSee")}
         </p>
 
-        <div role="radiogroup" aria-label="Reason" className="mt-3 space-y-1.5">
+        <div role="radiogroup" aria-label={t("bulletin.reasonLabel")} className="mt-3 space-y-1.5">
           {REPORT_REASONS.map((option) => (
             <button
               key={option.value}
@@ -470,7 +474,7 @@ function ReportSheet({
                   : "border-border text-fg hover:bg-surface-muted",
               )}
             >
-              {option.label}
+              {t(option.labelKey)}
             </button>
           ))}
         </div>
@@ -479,14 +483,14 @@ function ReportSheet({
           value={detail}
           onChange={(e) => setDetail(e.target.value.slice(0, 2000))}
           rows={2}
-          placeholder="Anything else you want to say (you do not have to)"
-          aria-label="More detail"
+          placeholder={t("bulletin.detailPlaceholder")}
+          aria-label={t("bulletin.moreDetail")}
           className="mt-3 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
         />
 
         <div className="mt-3 flex gap-2">
           <Button variant="ghost" block onClick={onClose}>
-            Cancel
+            {t("common.cancel")}
           </Button>
           <Button
             block
@@ -504,7 +508,7 @@ function ReportSheet({
               })
             }
           >
-            Send
+            {t("common.send")}
           </Button>
         </div>
       </div>

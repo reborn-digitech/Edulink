@@ -22,6 +22,7 @@ export default async function MentorThreadPage({
 }: {
   params: Promise<{ threadId: string }>;
 }) {
+  const t = await getT();
   const ctx = await requireUser();
   const { threadId } = await params;
 
@@ -40,7 +41,7 @@ export default async function MentorThreadPage({
         className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        All mentoring
+        {t("mentoring.all")}
       </Link>
 
       <div>
@@ -62,11 +63,11 @@ export default async function MentorThreadPage({
 
       {thread.awaitingConsent && (
         <Badge tone="warn" size="sm">
-          Waiting for a guardian to agree — nobody can send a message yet
+          {t("mentoring.awaitingGuardian")}
         </Badge>
       )}
       {thread.status === "CLOSED" && (
-        <Badge tone="neutral" size="sm">This mentorship has ended</Badge>
+        <Badge tone="neutral" size="sm">{t("mentoring.ended")}</Badge>
       )}
 
       <Card>

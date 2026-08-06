@@ -6,6 +6,7 @@ import { ChecksIcon, TrashIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { clearRead, markAllRead } from "./actions";
+import { useT } from "@/lib/i18n";
 
 export function BulkActions({
   unreadCount,
@@ -14,6 +15,7 @@ export function BulkActions({
   unreadCount: number;
   readCount: number;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -33,13 +35,13 @@ export function BulkActions({
               const result = await markAllRead();
               toast({
                 tone: "ok",
-                title: `${result.count} marked as read`,
+                title: t("notif.markedRead", { count: result.count }),
               });
               router.refresh();
             })
           }
         >
-          Mark all as read
+          {t("notif.markAllRead")}
         </Button>
       )}
 
@@ -55,16 +57,16 @@ export function BulkActions({
               const result = await clearRead();
               toast({
                 tone: "neutral",
-                title: `${result.count} cleared`,
+                title: t("notif.clearedCount", { count: result.count }),
                 // Says what was NOT touched, so nobody wonders whether a
                 // message about their child was thrown away.
-                description: "Anything still unread was kept.",
+                description: t("notif.unreadKept"),
               });
               router.refresh();
             })
           }
         >
-          Clear {readCount} read
+          {t("notif.clearRead", { count: readCount })}
         </Button>
       )}
     </div>

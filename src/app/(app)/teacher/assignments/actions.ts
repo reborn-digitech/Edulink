@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { z } from "zod";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { createAssignment, saveGrades, publishAssignment } from "@/lib/grading";
@@ -67,7 +68,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
     await discard(attachments.map((a) => a.fileId));
     if (error instanceof AccessError) return { ok: false, errors: { _form: error.message } };
     console.error("[newAssignment]", error);
-    return { ok: false, errors: { _form: "We could not create that. Please try again." } };
+    return { ok: false, errors: { _form: (await getT())("teacher.couldNotCreate") } };
   }
 }
 
@@ -99,7 +100,7 @@ export async function submitGrades(input: unknown): Promise<GradeSaveState> {
 
   const parsed = batchSchema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, error: "Some of those marks are not valid numbers." };
+    return { ok: false, error: (await getT())("teacher.marksNotNumbers") };
   }
 
   try {
@@ -119,7 +120,7 @@ export async function submitGrades(input: unknown): Promise<GradeSaveState> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[submitGrades]", error);
-    return { ok: false, error: "We could not save those marks." };
+    return { ok: false, error: (await getT())("teacher.couldNotSaveMarks") };
   }
 }
 
@@ -136,6 +137,6 @@ export async function publishNow(assignmentId: string): Promise<{ ok: boolean; e
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: error.message };
     console.error("[publishNow]", error);
-    return { ok: false, error: "Something went wrong." };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

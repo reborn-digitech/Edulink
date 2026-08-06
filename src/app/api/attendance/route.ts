@@ -5,6 +5,7 @@ import { saveAttendanceBatch, getRegister } from "@/lib/attendance";
 import { assertMayTakeRegister } from "@/lib/register-duty";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
+import { getT } from "@/lib/i18n/server";
 
 /**
  * Attendance endpoint.
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
     const parsed = attendanceBatchSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "That attendance data is not valid.", issues: fieldErrors(parsed.error) },
+        { error: (await getT())("attendance.dataInvalid"), issues: fieldErrors(parsed.error) },
         { status: 422 },
       );
     }
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
     });
     if (dateKey > todayKey(school.timezone)) {
       return NextResponse.json(
-        { error: "You cannot take a register for a future date." },
+        { error: (await getT())("attendance.futureRegister") },
         { status: 422 },
       );
     }
@@ -74,7 +75,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status });
     }
     console.error("[api/attendance] unexpected", error);
-    return NextResponse.json({ error: "Something went wrong saving that." }, { status: 500 });
+    return NextResponse.json({ error: (await getT())("attendance.saveFailed") }, { status: 500 });
   }
 }
 
@@ -97,7 +98,7 @@ export async function GET(request: Request) {
     const dateKey = url.searchParams.get("date") ?? todayKey(school.timezone);
 
     const register = await getRegister(ctx.schoolId, classId, dateKey);
-    if (!register) return NextResponse.json({ error: "Class not found." }, { status: 404 });
+    if (!register) return NextResponse.json({ error: (await getT())("attendance.classNotFound") }, { status: 404 });
 
     return NextResponse.json(register, {
       // Private: this is one school's roster. A shared cache must never hold it.
@@ -110,6 +111,6 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: error.message }, { status });
     }
     console.error("[api/attendance] unexpected", error);
-    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
+    return NextResponse.json({ error: (await getT())("common.somethingWrong") }, { status: 500 });
   }
 }

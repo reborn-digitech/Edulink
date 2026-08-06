@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function StudentProfilePage() {
+  const t = await getT();
   const ctx = await requireRole("STUDENT");
 
   const membership = await db.membership.findUniqueOrThrow({
@@ -48,7 +49,7 @@ export default async function StudentProfilePage() {
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">My profile</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myProfile")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           {membership.school.name}
           {membership.enrollments[0] ? ` · ${membership.enrollments[0].class.name}` : ""}
@@ -58,8 +59,8 @@ export default async function StudentProfilePage() {
       <Card>
         <CardHeader
           icon={<UserIcon weight="duotone" className="size-5" />}
-          title="How you look"
-          description="Your teacher and classmates see this"
+          title={t("student.howYouLook")}
+          description={t("student.classmatesSee")}
         />
         <CardBody>
           <ProfileForm
@@ -77,11 +78,11 @@ export default async function StudentProfilePage() {
         <Card>
           <CardHeader
             icon={<GraduationCapIcon weight="duotone" className="size-5" />}
-            title="Schools you have been to"
-            description="Written by each school when you left. Your new school can see this too."
+            title={t("student.schoolsBeenTo")}
+            description={t("student.recordNote")}
           />
           <CardBody>
-            <SchoolRecordList records={previous} />
+            <SchoolRecordList records={previous} t={t} />
           </CardBody>
         </Card>
       )}
@@ -89,7 +90,7 @@ export default async function StudentProfilePage() {
       <Card>
         <CardHeader
           icon={<SealCheckIcon weight="duotone" className="size-5" />}
-          title="Your badges"
+          title={t("student.yourBadges")}
           /*
            * Deliberately NOT "3 of 7".
            *
@@ -103,8 +104,8 @@ export default async function StudentProfilePage() {
            */
           description={
             earned.length === 0
-              ? "Nothing yet — they arrive on their own"
-              : "What you have earned so far"
+              ? t("student.badgesNothingYet")
+              : t("student.badgesSoFar")
           }
         />
         <CardBody>

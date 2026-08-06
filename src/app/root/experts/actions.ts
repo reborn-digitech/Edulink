@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getT } from "@/lib/i18n/server";
 import { requireSuperuser, AccessError } from "@/lib/tenancy";
 import { setExpertStanding } from "@/lib/superuser";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -22,7 +23,7 @@ export async function setStanding(
   try {
     const session = await requireSuperuser();
     const result = await setExpertStanding(session, profileId, next);
-    if (!result.ok) return { ok: false, error: result.error };
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root/experts");
     // The marketplace reads the same row. Without this a school browsing
     // `/experts` keeps seeing yesterday's list.

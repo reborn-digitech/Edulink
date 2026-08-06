@@ -6,6 +6,7 @@ import { PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import { comment } from "../actions";
 
 export function CommentBox({
@@ -17,6 +18,7 @@ export function CommentBox({
   willBeHeld: boolean;
   className?: string;
 }) {
+  const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -29,14 +31,14 @@ export function CommentBox({
       onSubmit={(event) => {
         event.preventDefault();
         if (body.trim().length === 0) {
-          setError("Write something first.");
+          setError(t("bulletin.writeSomethingFirst"));
           return;
         }
         setError(null);
         startTransition(async () => {
           const result = await comment(postId, body);
           if (!result.ok) {
-            setError(result.error ?? "Could not send that.");
+            setError(result.error ?? t("bulletin.couldNotSend"));
             return;
           }
           setBody("");
@@ -44,17 +46,17 @@ export function CommentBox({
             result.held
               ? {
                   tone: "ok",
-                  title: "Sent to a teacher",
-                  description: "Others will see it once it has been checked.",
+                  title: t("bulletin.sentToATeacher"),
+                  description: t("bulletin.visibleOnceChecked"),
                 }
-              : { tone: "ok", title: "Posted" },
+              : { tone: "ok", title: t("bulletin.posted") },
           );
           router.refresh();
         });
       }}
     >
       <label htmlFor="comment" className="sr-only">
-        Write a comment
+        {t("bulletin.writeComment")}
       </label>
       <textarea
         id="comment"
@@ -64,7 +66,7 @@ export function CommentBox({
           if (error) setError(null);
         }}
         rows={3}
-        placeholder="Say something kind…"
+        placeholder={t("bulletin.sayKind")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? "comment-error" : "comment-hint"}
         className={cn(
@@ -81,9 +83,7 @@ export function CommentBox({
         ) : (
           <p id="comment-hint" className="text-xs text-fg-muted">
             {/* Stated before they write, not after it disappears. */}
-            {willBeHeld
-              ? "A teacher checks your comment before others see it."
-              : "Everyone who can see this post can read your comment."}
+            {willBeHeld ? t("bulletin.teacherChecksComment") : t("bulletin.everyoneCanRead")}
           </p>
         )}
         <Button
@@ -93,7 +93,7 @@ export function CommentBox({
           disabled={body.trim().length === 0}
           icon={<PaperPlaneTiltIcon weight="bold" />}
         >
-          Send
+          {t("common.send")}
         </Button>
       </div>
     </form>
