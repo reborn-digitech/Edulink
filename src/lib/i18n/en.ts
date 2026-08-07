@@ -51,6 +51,7 @@ export const en = {
     reportCards: "Report cards",
     staff: "Staff",
     timetable: "Timetable",
+    exams: "Exams",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1084,6 +1085,9 @@ export const en = {
     assessment: "Assessment",
     mark: "Mark",
     fromClassTeacher: "From the class teacher",
+    practiceTitle: "Self-practice",
+    practiceHint:
+      "Where the practice ladder stood on the day this card was written — each chapter climbs six levels, with a badge for each level proven.",
     /** The name and date are VALUES; the sentences around them translate. */
     writtenBy: "Written by {name}.",
     issuedOn: "Issued {date}.",
@@ -1457,6 +1461,18 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAdminsSetExams: "Only an admin can set up exams.",
+    giveTheExamAName: "Give the exam series a name.",
+    chooseAGradeForTheExam: "Choose which grade this exam is for.",
+    thatExamAlreadyExists: "That grade already has an exam series with this name.",
+    examNotFound: "That exam could not be found.",
+    giveTheSubjectAName: "Give the paper a subject.",
+    pickADayForThePaper: "Pick a day for the paper.",
+    maxMarksOutOfRange: "Maximum marks must be between 1 and 1000.",
+    aDateSheetNeedsAtLeastOnePaper: "A date sheet needs at least one paper before it can be published.",
+    onlyTeachersEnterMarks: "Only teachers and admins can enter exam marks.",
+    thatPaperIsForAnotherGrade: "That paper belongs to another grade's exam.",
+    marksOutOfRange: "Marks must be between 0 and {max}.",
     weightsMustTotal: "The weights add up to {total}% — they have to total exactly 100%",
     rangeTooLong: "That range covers {days} days — a single entry cannot be longer than a year",
     offersSessionsNotMentoring: "{name} offers workshops and sessions rather than mentoring.",
@@ -3303,7 +3319,53 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  exams: {
+    adminTitle: "Exams",
+    adminIntro:
+      "Set each term's date sheet, publish it to families, and archive the series when the term closes.",
+    newSeriesTitle: "New exam series",
+    newSeriesHint: "One series per grade — “Term 1” for Class 5, with a dated paper per subject.",
+    fieldName: "Name",
+    namePlaceholder: "Term 1",
+    fieldGrade: "Grade",
+    createSeries: "Create the series",
+    noneYet: "No exam series yet. Create the first one above.",
+    publishedHint: "Families and pupils can see this date sheet.",
+    draftHint: "A draft — only staff see it. Publish when the dates are settled.",
+    published: "Published",
+    publish: "Publish",
+    archive: "Archive",
+    colSubject: "Subject",
+    colDay: "Day",
+    colTime: "Time",
+    colMaxMarks: "Out of",
+    fieldStart: "Starts",
+    fieldEnd: "Ends",
+    addPaper: "Add a paper",
+    sheetTitle: "Exams",
+    sheetIntro: "Published date sheets for the exams that concern you.",
+    sheetEmptyTitle: "No exams announced",
+    sheetEmptyBody: "When the school publishes a date sheet, it will appear here.",
+    marksTitle: "Exam marks",
+    marksIntro:
+      "Pick a class and a paper, then enter marks against the register. Saved marks flow straight into grades and report cards.",
+    savedNote: "Marks saved.",
+    noPapersTitle: "No papers for this class yet",
+    noPapersBody: "When the office sets up this grade's exam series, its papers appear here.",
+    pickPaper: "Papers",
+    gridHint: "This paper is out of {max}. Halves are fine.",
+    emptyRoll: "Nobody is enrolled in this class yet.",
+    blankMeansAbsent:
+      "Leave a box empty for a child who did not sit the paper — an absence is not a zero.",
+    saveMarks: "Save marks",
+  },
+
   audit: {
+    examSeriesCreate: "Created an exam series",
+    examSeriesPublish: "Published a date sheet",
+    examSeriesArchive: "Archived an exam series",
+    examSlotChange: "Changed a date sheet",
+    examMarksSave: "Entered exam marks",
     schoolCreate: "Created the school",
     authLogin: "Signed in",
     authLoginFailed: "Failed sign-in attempt",

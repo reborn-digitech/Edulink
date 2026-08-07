@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
+import { SUBJECT_LABEL, type QuizSubject } from "@/lib/quiz";
 import { formatDateKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 
@@ -157,6 +158,51 @@ export default async function ReportCardPage({
             </tbody>
           </table>
         </section>
+
+        {/* ---------------- the practice annexure ---------------- */}
+        {card.practice && (
+          <section className="mt-6">
+            <h3 className="text-sm font-semibold text-fg print:text-black">
+              {t("reportView.practiceTitle")}
+            </h3>
+            <p className="mt-0.5 text-xs text-fg-muted print:text-black/70">
+              {t("reportView.practiceHint")}
+            </p>
+            <table className="mt-2 w-full text-sm">
+              <thead>
+                <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
+                  <th scope="col" className="py-2 font-medium">
+                    {t("practice.colChapter")}
+                  </th>
+                  <th scope="col" className="py-2 text-right font-medium">
+                    {t("practice.colLevel")}
+                  </th>
+                  <th scope="col" className="py-2 text-right font-medium">
+                    {t("practice.colBadges")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {card.practice.map((row, index) => (
+                  <tr key={index} className="border-b border-border/60 print:border-black/10">
+                    <td className="py-2 pr-3 text-fg print:text-black">
+                      {row.name}
+                      <span className="block text-xs text-fg-muted print:text-black/60">
+                        {SUBJECT_LABEL[row.subject as QuizSubject] ?? row.subject}
+                      </span>
+                    </td>
+                    <td className="py-2 text-right tabular-nums text-fg print:text-black">
+                      L{row.level}/6
+                    </td>
+                    <td className="py-2 text-right tabular-nums text-fg print:text-black">
+                      {row.tiers}/6
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
 
         {/* ---------------- the teacher's words ---------------- */}
         {card.remark && (

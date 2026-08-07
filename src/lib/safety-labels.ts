@@ -95,6 +95,11 @@ export const URGENT_REASONS = new Set(["UNSAFE", "BULLYING"]);
 
 /** The dictionary key for an audit action, or null if it has no wording yet. */
 const ACTION_KEYS: Record<string, TranslationKey> = {
+  "exam.seriesCreate": "audit.examSeriesCreate",
+  "exam.seriesPublish": "audit.examSeriesPublish",
+  "exam.seriesArchive": "audit.examSeriesArchive",
+  "exam.slotChange": "audit.examSlotChange",
+  "exam.marksSave": "audit.examMarksSave",
   "school.create": "audit.schoolCreate",
   "auth.login": "audit.authLogin",
   "auth.login.failed": "audit.authLoginFailed",

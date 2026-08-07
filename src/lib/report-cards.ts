@@ -73,6 +73,21 @@ export type Card = {
   authorName: string | null;
   items: CardItem[];
   school: { name: string; logoPath: string | null };
+  practice: PracticeAnnexureRow[] | null;
+};
+
+/**
+ * One chapter on the practice annexure: where the child's self-practice ladder
+ * stood ON THE DAY THE CARD WAS GENERATED. Snapshot like everything else on the
+ * document — the ladder keeps moving; the card must not.
+ */
+export type PracticeAnnexureRow = {
+  subject: string;
+  name: string;
+  /** The rung the child stands on, 1–6. */
+  level: number;
+  /** Tier badges earned in this chapter, 0–6. */
+  tiers: number;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -245,6 +260,47 @@ export async function generateCards(
 
   const weights = new Map([[classId, await listGradeCategories(ctx, classId)]]);
 
+  // The practice annexure, fetched once for the whole roll: every chapter each
+  // child has touched, with the rung they stand on and the tier badges earned.
+  // Snapshot into the card so a term's document keeps saying what was true at
+  // generation, however far the ladder moves afterwards.
+  const rollIds = roll.map((r) => r.studentMembershipId);
+  const [masteries, tierBadges] = await Promise.all([
+    db.quizMastery.findMany({
+      where: { schoolId: ctx.schoolId!, studentMembershipId: { in: rollIds } },
+      select: {
+        studentMembershipId: true,
+        level: true,
+        topic: { select: { slug: true, name: true, subject: true } },
+      },
+    }),
+    db.earnedBadge.findMany({
+      where: { schoolId: ctx.schoolId!, studentMembershipId: { in: rollIds }, badgeId: { contains: ":tier-" } },
+      select: { studentMembershipId: true, badgeId: true },
+    }),
+  ]);
+  const tiersBy = new Map<string, number>(); // `${membershipId}:${slug}` -> count
+  for (const badge of tierBadges) {
+    const match = /^abhyaas:(.+):tier-[1-6]$/.exec(badge.badgeId);
+    if (!match) continue;
+    const key = `${badge.studentMembershipId}:${match[1]}`;
+    tiersBy.set(key, (tiersBy.get(key) ?? 0) + 1);
+  }
+  const practiceBy = new Map<string, PracticeAnnexureRow[]>();
+  for (const mastery of masteries) {
+    const rows = practiceBy.get(mastery.studentMembershipId) ?? [];
+    rows.push({
+      subject: mastery.topic.subject,
+      name: mastery.topic.name,
+      level: mastery.level,
+      tiers: tiersBy.get(`${mastery.studentMembershipId}:${mastery.topic.slug}`) ?? 0,
+    });
+    practiceBy.set(mastery.studentMembershipId, rows);
+  }
+  for (const rows of practiceBy.values()) {
+    rows.sort((a, b) => a.subject.localeCompare(b.subject) || a.name.localeCompare(b.name));
+  }
+
   let created = 0;
   let updated = 0;
   let skippedPublished = 0;
@@ -298,6 +354,10 @@ export async function generateCards(
       overallPercentMilli:
         overall.percent === null ? null : Math.round(overall.percent * 1000),
       gradingMethod: overall.method,
+      practice: (() => {
+        const rows = practiceBy.get(row.studentMembershipId);
+        return rows && rows.length > 0 ? JSON.stringify(rows) : null;
+      })(),
       createdByMembershipId: ctx.membershipId,
     };
 
@@ -520,6 +580,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       attendanceTotal: true,
       overallPercentMilli: true,
       gradingMethod: true,
+      practice: true,
       publishedAt: true,
       class: { select: { name: true, section: true } },
       student: { select: { user: { select: { name: true, preferredName: true } } } },
@@ -566,6 +627,16 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       : null,
     items: card.items,
     school,
+    practice: (() => {
+      if (!card.practice) return null;
+      try {
+        const rows = JSON.parse(card.practice) as PracticeAnnexureRow[];
+        return Array.isArray(rows) && rows.length > 0 ? rows : null;
+      } catch {
+        // A malformed snapshot must not take the whole card down with it.
+        return null;
+      }
+    })(),
   };
 }
 
