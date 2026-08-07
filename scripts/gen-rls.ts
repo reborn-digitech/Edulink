@@ -28,6 +28,9 @@ const NO_SCHOOL_POLICY = new Set([
   "User",
   "Session",
   "AuthToken",
+  // An external login bound to a user — read and written while signing in,
+  // before any school is known. Same standing as AuthToken.
+  "SsoIdentity",
   "PushSubscription",
   "Guardianship",
   "Competition",

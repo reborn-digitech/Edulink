@@ -549,10 +549,27 @@ SSO, blocked on provider credentials — and the go-live wiring no list item
 ever captured: real email/SMS transports, a git remote, one real-origin visit
 for the install button, and a native reader for the Hindi and Marathi.
 
-1. **SSO.** Cannot be verified without real provider credentials — budget for
-   that rather than discovering it at the end. It is now the only
-   identity-provider work outstanding: 2FA was removed by decision (see Not
-   built), and password reset by email or mobile number ships in its place.
+1. **SSO.** ~~Blocked~~ **BUILT** — Google, Microsoft and Apple as plain OIDC
+   authorization-code + PKCE on `fetch` and `node:crypto`, no SDK
+   (`src/lib/sso.ts`, `/api/sso/[provider]/start` + `/callback`). The design
+   decisions are the safety decisions: **SSO signs people in, never up** — an
+   identity matching no account is refused with directions, because school
+   accounts come from invites and join codes where somebody vouches for you;
+   the provider `sub` is the key and a verified email only the introduction
+   (an address change at Google keeps the account, a recycled address cannot
+   inherit somebody's children); a disabled account is refused exactly as at
+   password login. ID tokens are verified against the provider's JWKS — RS256
+   only, `alg:none` and downgrades refused — plus issuer/audience/expiry/
+   nonce; Apple's ES256 self-signed client secret is minted with a
+   five-minute life. A provider exists only while its `SSO_*` env vars do:
+   unconfigured, the login page shows no buttons and the routes 404. Seven
+   tests pin the linking policy, the verification (own keys, real
+   signatures, every downgrade), and Apple's secret; a live probe with fake
+   credentials confirmed button rendering, the PKCE-S256 authorize redirect,
+   and a forged callback bouncing to `/login?sso=state`. **What genuinely
+   remains is only the walk with real credentials** — registering the three
+   redirect URIs (documented in `.env.example`) is dashboard work only the
+   operator can do, and Apple additionally requires HTTPS end to end.
 1b. **Click the paths that are only reasoned about.** ~~Nearly empty now~~
    **EMPTY.** The last four items were exercised, and three of the four were
    hiding real bugs — which is the whole argument for this list having existed:
@@ -2448,7 +2465,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   beside untranslated English, which is what finishing removes.
   **Hindi and Marathi were written by me, not by a native speaker** — good first
   draft, wants a real teacher's eye before a real school reads it.
-- SSO (Google/Microsoft/Apple)
+- ~~SSO (Google/Microsoft/Apple)~~ **Built** — see Next steps item 1; only the
+  live walk with real provider credentials remains.
 - **Real SMS and email delivery.** Both transports are written and both ship the
   "devbox" implementation only — messages persist and render at `/dev/mailbox`.
   Wiring a provider is one branch in `src/lib/email.ts` and one in

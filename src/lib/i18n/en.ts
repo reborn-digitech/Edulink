@@ -2145,6 +2145,12 @@ export const en = {
     linkExpired: "That sign-in link has expired — they last 20 minutes. Ask for another below, or use your password.",
     linkUsed: "That sign-in link has already been used. They work once. Ask for another below, or use your password.",
     linkBroken: "That sign-in link did not work. It may have been cut in half by a mail app. Ask for another below, or use your password.",
+    ssoContinue: "Continue with {provider}",
+    ssoDenied: "You cancelled the sign-in. Nothing happened. Use the password box, or try the button again.",
+    ssoNoAccount:
+      "No EduLink account uses that email address. Signing in this way needs an account first — ask your school for an invite, join with a code, or register a school.",
+    ssoDisabled: "That account is not able to sign in. Speak to your school.",
+    ssoFailed: "That sign-in did not complete. Nothing happened — try again, or use your password.",
     title: "Log in",
     welcome: "Welcome back",
     subtitlePrefix: "Log in to your school, or",
@@ -3515,6 +3521,7 @@ export const en = {
 
   audit: {
     attendanceAlert: "Told a family about attendance",
+    authSsoLink: "Linked an external sign-in",
     complianceExport: "Exported a compliance file",
     meetingSlotPublish: "Offered meeting times",
     meetingBook: "Booked a meeting",

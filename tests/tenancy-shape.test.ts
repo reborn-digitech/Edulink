@@ -121,6 +121,7 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   User: "spans schools on purpose — a parent has children in two, a teacher may work at two",
   Session: "belongs to a user, not a school; a session survives switching school",
   AuthToken: "belongs to a user, before any school is chosen",
+  SsoIdentity: "an external login bound to a user, before any school is chosen — like AuthToken",
   PushSubscription: "belongs to a user's device",
   Guardianship: "deliberately cross-school: it is the link between a parent and a child",
   Competition: "organizerSchoolId is nullable because a competition may be run by nobody's school",
@@ -155,7 +156,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(62);
+    ).toBe(63);
   });
 });
 

@@ -762,6 +762,7 @@ CREATE POLICY "OperatorAccess_operator_update" ON "OperatorAccess"
 --   QuizTopicTranslation
 --   RateLimit
 --   Session
+--   SsoIdentity
 --   User
 -- They are scoped by user instead, which the application layer already does.
 

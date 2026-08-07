@@ -182,6 +182,7 @@ model User {
 
   memberships       Membership[]
   sessions          Session[]
+  ssoIdentities     SsoIdentity[]
   guardianships     Guardianship[]     @relation("ParentGuardianships")
   authTokens        AuthToken[]
   notifications     Notification[]
@@ -1367,6 +1368,42 @@ model CompetitionEntry {
 // ---------------------------------------------------------------------------
 // Sessions, invites, tokens, notifications, audit
 // ---------------------------------------------------------------------------
+
+/// One external login bound to one EduLink account: "Google says this is
+/// sub 118…" belongs to this User.
+///
+/// SSO SIGNS PEOPLE IN; IT NEVER SIGNS THEM UP. Accounts in a school system
+/// come from invites, join codes and registration — an SSO-minted account
+/// would be an orphan with no school and no roles, so an identity that
+/// matches no existing account is refused with directions, not created.
+///
+/// THE SUBJECT IS THE KEY, THE EMAIL IS ONLY THE INTRODUCTION. First sign-in
+/// links by verified email; every later sign-in matches (provider, subject),
+/// so a family changing their Google address does not lose their account, and
+/// a recycled email address cannot inherit somebody else's children. The email
+/// column here is a snapshot of what the provider said at link time, kept for
+/// the account page to display — never re-used for matching.
+///
+/// Not tenant-scoped: like AuthToken, it belongs to a user before any school
+/// is chosen — resolving the school is what signing in is FOR.
+model SsoIdentity {
+  id       String @id @default(cuid())
+  userId   String
+  provider String // "google" | "microsoft" | "apple"
+  /// The provider's stable `sub` claim.
+  subject  String
+
+  /// What the provider reported at link time. Display only — see above.
+  email String?
+
+  createdAt  DateTime @default(now())
+  lastUsedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, subject])
+  @@index([userId])
+}
 
 model Session {
   id        String @id @default(cuid())

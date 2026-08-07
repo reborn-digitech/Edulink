@@ -5,8 +5,16 @@ import { Wordmark } from "@/components/brand";
 import { LoginForm } from "./form";
 import { LanguageSwitch } from "@/components/language-switch";
 import { getSession } from "@/lib/session";
+import { enabledProviders, type SsoProviderId } from "@/lib/sso";
 import { ROLE_HOME } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+
+/** Brand names are proper nouns; the sentence around them translates. */
+const SSO_BRAND: Record<SsoProviderId, string> = {
+  google: "Google",
+  microsoft: "Microsoft",
+  apple: "Apple",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -16,13 +24,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string }>;
+  searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string; sso?: string }>;
 }) {
   const session = await getSession();
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
-  const { expired, reset, link } = await searchParams;
+  const { expired, reset, link, sso } = await searchParams;
   const t = await getT();
+  const ssoProviders = enabledProviders();
 
   return (
     <div className="grid min-h-safe bg-bg lg:grid-cols-2">
@@ -72,6 +81,24 @@ export default async function LoginPage({
             </p>
           )}
 
+          {/* An SSO attempt that went nowhere, explained the same way a dead
+              magic link is: beside the form that still works, one message per
+              reason, no account named. */}
+          {sso && (
+            <p
+              role="status"
+              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+            >
+              {sso === "denied"
+                ? t("login.ssoDenied")
+                : sso === "noaccount"
+                  ? t("login.ssoNoAccount")
+                  : sso === "disabled"
+                    ? t("login.ssoDisabled")
+                    : t("login.ssoFailed")}
+            </p>
+          )}
+
           {reset === "1" && (
             <p
               role="status"
@@ -82,6 +109,23 @@ export default async function LoginPage({
           )}
 
           <LoginForm className="mt-7" />
+
+          {/* Rendered only for providers whose credentials exist — with none
+              configured this whole block is invisible, not half-working. Brand
+              names stay untranslated; the sentence around them does not. */}
+          {ssoProviders.length > 0 && (
+            <div className="mt-5 space-y-2">
+              {ssoProviders.map((provider) => (
+                <a
+                  key={provider}
+                  href={`/api/sso/${provider}/start`}
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-[--radius-md] border border-border bg-surface px-4 text-sm font-semibold text-fg hover:border-accent"
+                >
+                  {t("login.ssoContinue", { provider: SSO_BRAND[provider] })}
+                </a>
+              ))}
+            </div>
+          )}
 
           <p className="mt-8 text-center text-sm text-fg-muted">
             {t("login.newSchoolPrefix")}{" "}
