@@ -155,6 +155,76 @@ async function gradesFor(session: ActiveContext): Promise<string[]> {
   return [];
 }
 
+/**
+ * The schools a guardian's children attend, oldest link first — the same
+ * ordering rule as listContexts' children, so "the default school" is always
+ * the same school everywhere.
+ */
+async function guardianSchoolIds(userId: string): Promise<string[]> {
+  const links = await db.guardianship.findMany({
+    where: { parentUserId: userId, status: "ACTIVE" },
+    orderBy: { createdAt: "asc" },
+    select: { studentSchoolId: true },
+  });
+  return [...new Set(links.map((link) => link.studentSchoolId))];
+}
+
+/**
+ * A guardian's session deliberately carries NO school — parents are
+ * cross-school by design (see setActiveContext). But a bulletin belongs to a
+ * school, so every read in this module resolves one first: the school of the
+ * post being opened when a postId is known, an explicitly chosen school when
+ * the feed offers a picker, or the family's first school otherwise. A school
+ * the caller has no child in never resolves — the session stays school-less
+ * and every query downstream answers "not found", which is the truth.
+ *
+ * Non-parent sessions, and parent sessions that somehow carry a school, pass
+ * through untouched.
+ */
+async function scoped(
+  session: ActiveContext,
+  opts: { schoolId?: string | null; postId?: string } = {},
+): Promise<ActiveContext> {
+  if (session.schoolId || session.role !== "PARENT") return session;
+  const schools = await guardianSchoolIds(session.user.id);
+  if (schools.length === 0) return session;
+
+  if (opts.postId) {
+    const post = await db.post.findUnique({
+      where: { id: opts.postId },
+      select: { schoolId: true },
+    });
+    if (post?.schoolId && schools.includes(post.schoolId)) {
+      return { ...session, schoolId: post.schoolId };
+    }
+    return session;
+  }
+
+  if (opts.schoolId && schools.includes(opts.schoolId)) {
+    return { ...session, schoolId: opts.schoolId };
+  }
+  return { ...session, schoolId: schools[0]! };
+}
+
+/**
+ * The schools whose bulletins this guardian may read, with names, for the
+ * feed's school picker. Empty for everyone who is not a school-less parent.
+ */
+export async function parentBulletinSchools(
+  session: ActiveContext,
+): Promise<{ id: string; name: string }[]> {
+  if (session.schoolId || session.role !== "PARENT") return [];
+  const ids = await guardianSchoolIds(session.user.id);
+  if (ids.length === 0) return [];
+  const schools = await db.school.findMany({
+    where: { id: { in: ids } },
+    select: { id: true, name: true },
+  });
+  // Keep the guardianship ordering, not the database's.
+  const byId = new Map(schools.map((s) => [s.id, s]));
+  return ids.map((id) => byId.get(id)).filter((s): s is { id: string; name: string } => Boolean(s));
+}
+
 async function classIdsFor(session: ActiveContext): Promise<string[]> {
   const { schoolId, membershipId, role } = session;
   if (!schoolId) return [];
@@ -182,8 +252,9 @@ async function classIdsFor(session: ActiveContext): Promise<string[]> {
 
 export async function listFeed(
   session: ActiveContext,
-  opts: { tag?: string; status?: PostStatus; mineOnly?: boolean } = {},
+  opts: { tag?: string; status?: PostStatus; mineOnly?: boolean; schoolId?: string | null } = {},
 ): Promise<FeedPost[]> {
+  session = await scoped(session, { schoolId: opts.schoolId });
   if (!session.schoolId) return [];
 
   const classIds = await classIdsFor(session);
@@ -278,6 +349,7 @@ export async function pendingCount(session: ActiveContext): Promise<number> {
 }
 
 export async function getPost(session: ActiveContext, postId: string) {
+  session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const post = await db.post.findFirst({
@@ -574,6 +646,7 @@ export async function toggleReaction(
   postId: string,
   kind: ReactionKind,
 ): Promise<{ added: boolean }> {
+  session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
@@ -603,6 +676,7 @@ export async function addComment(
   postId: string,
   body: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
+  session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
@@ -698,6 +772,7 @@ export async function reportContent(
  * tap felt uncertain must read as success, the same stance reportContent takes.
  */
 export async function acknowledgePost(session: ActiveContext, postId: string): Promise<void> {
+  session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const visible = await db.post.findFirst({

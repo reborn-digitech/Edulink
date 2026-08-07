@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MegaphoneIcon, PlusIcon, GlobeIcon} from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
-import { listFeed, pendingCount } from "@/lib/bulletin";
+import { listFeed, pendingCount, parentBulletinSchools } from "@/lib/bulletin";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
@@ -18,13 +18,22 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BulletinPage({
   searchParams,
 }: {
-  searchParams: Promise<{ filter?: string; tag?: string }>;
+  searchParams: Promise<{ filter?: string; tag?: string; school?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { filter, tag } = await searchParams;
+  const { filter, tag, school: requestedSchool } = await searchParams;
 
-  if (!session.schoolId) {
+  // A guardian's session carries no school by design; their children's
+  // schools are the bulletins they may read. One child-school opens directly,
+  // several get a picker below — "no school selected" is reserved for people
+  // who genuinely have none.
+  const parentSchools = await parentBulletinSchools(session);
+  const activeSchoolId =
+    session.schoolId ??
+    (parentSchools.find((s) => s.id === requestedSchool)?.id ?? parentSchools[0]?.id ?? null);
+
+  if (!activeSchoolId) {
     return (
       <EmptyState
         icon={<MegaphoneIcon weight="duotone" className="size-8" />}
@@ -48,10 +57,11 @@ export default async function BulletinPage({
       tag,
       status: showPending ? ("PENDING" as PostStatus) : undefined,
       mineOnly: showMine,
+      schoolId: activeSchoolId,
     }),
     pendingCount(session),
     db.school.findUniqueOrThrow({
-      where: { id: session.schoolId },
+      where: { id: activeSchoolId },
       select: { name: true },
     }),
   ]);
@@ -86,13 +96,35 @@ export default async function BulletinPage({
           <Button asChild variant="secondary" icon={<GlobeIcon weight="bold" />}>
             <Link href="/bulletin/global">{t("bulletin.globalFeed")}</Link>
           </Button>
-          <Button asChild icon={<PlusIcon weight="bold" />}>
-            <Link href="/bulletin/new">
-              {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost")}
-            </Link>
-          </Button>
+          {/* Guardians read; they do not post — no membership, no compose. A
+              visible button that dead-ends on "pick a school" is worse than
+              no button. */}
+          {session.role !== "PARENT" && (
+            <Button asChild icon={<PlusIcon weight="bold" />}>
+              <Link href="/bulletin/new">
+                {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost")}
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
+
+      {/* A family with children at two schools reads two bulletins. */}
+      {parentSchools.length > 1 && (
+        <nav aria-label={t("bulletin.chooseSchool")} className="flex flex-wrap gap-2">
+          {parentSchools.map((s) => (
+            <Link
+              key={s.id}
+              href={`/bulletin?school=${s.id}`}
+              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                activeSchoolId === s.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
+              }`}
+            >
+              {s.name}
+            </Link>
+          ))}
+        </nav>
+      )}
 
       {/* Students get told the rule up front, not after their post disappears. */}
       {session.role === "STUDENT" && !showMine && (
@@ -142,7 +174,7 @@ export default async function BulletinPage({
                 : t("bulletin.emptyBody")
           }
           action={
-            !showPending ? (
+            !showPending && session.role !== "PARENT" ? (
               <Button asChild>
                 <Link href="/bulletin/new">
                   {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.writeFirst")}

@@ -38,7 +38,12 @@ function ctxFor(
   return {
     sessionId: "test-session",
     membershipId,
-    schoolId,
+    // ⚠ THE REAL SHAPE. A guardian's session carries NO school —
+    // setActiveContext stores null for PARENT on purpose — and building test
+    // parents WITH a school was exactly the fixture blind spot that let
+    // "parents cannot read circulars" ship. The library must resolve the
+    // school from guardianship itself.
+    schoolId: role === "PARENT" ? null : schoolId,
     role,
     user: {
       id: userId,

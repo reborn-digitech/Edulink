@@ -201,6 +201,8 @@ export type DateSheet = {
   id: string;
   name: string;
   gradeLevel: string;
+  /** Which school's sheet this is — a family can straddle two. */
+  schoolName: string;
   slots: {
     id: string;
     subject: string;
@@ -214,45 +216,72 @@ export type DateSheet = {
 /**
  * Published, unarchived series relevant to the viewer: a pupil sees their own
  * grades' sheets, a guardian their children's, staff see every grade.
+ *
+ * A GUARDIAN'S SESSION CARRIES NO SCHOOL — parents are cross-school by design
+ * (see setActiveContext) — so their sheets are resolved from guardianship:
+ * every (school, grade) their children are enrolled in, merged into one list.
+ * Requiring ctx.schoolId here was the bug that showed a parent
+ * "No exams announced" while their child could read the sheet.
  */
 export async function dateSheetsFor(ctx: ActiveContext): Promise<DateSheet[]> {
   const { schoolId, membershipId, role, user } = ctx;
-  if (!schoolId) return [];
 
-  let grades: string[] | null = null; // null = unrestricted (staff)
-  if (role === "STUDENT" && membershipId) {
+  // (schoolId, grades) the viewer is connected to; grades null = every grade.
+  let scopes: { schoolId: string; grades: string[] | null }[];
+
+  if (role === "PARENT") {
+    const rows = await db.enrollment.findMany({
+      where: {
+        status: "ACTIVE",
+        student: { guardianships: { some: { parentUserId: user.id, status: "ACTIVE" } } },
+      },
+      select: { schoolId: true, class: { select: { gradeLevel: true } } },
+    });
+    const bySchool = new Map<string, Set<string>>();
+    for (const row of rows) {
+      if (row.class.gradeLevel === null) continue;
+      const set = bySchool.get(row.schoolId) ?? new Set<string>();
+      set.add(row.class.gradeLevel);
+      bySchool.set(row.schoolId, set);
+    }
+    scopes = [...bySchool.entries()].map(([id, grades]) => ({ schoolId: id, grades: [...grades] }));
+  } else if (role === "STUDENT" && membershipId && schoolId) {
     const rows = await db.enrollment.findMany({
       where: { studentMembershipId: membershipId, status: "ACTIVE", class: { schoolId } },
       select: { class: { select: { gradeLevel: true } } },
     });
-    grades = [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
-  } else if (role === "PARENT") {
-    const rows = await db.enrollment.findMany({
-      where: {
-        status: "ACTIVE",
-        class: { schoolId },
-        student: { guardianships: { some: { parentUserId: user.id, status: "ACTIVE" } } },
-      },
-      select: { class: { select: { gradeLevel: true } } },
-    });
-    grades = [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
+    const grades = [
+      ...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null)),
+    ];
+    scopes = [{ schoolId, grades }];
+  } else if (schoolId) {
+    scopes = [{ schoolId, grades: null }]; // staff: the whole school
+  } else {
+    scopes = [];
   }
+  if (scopes.length === 0) return [];
 
   const series = await db.examSeries.findMany({
     where: {
-      schoolId,
       archivedAt: null,
       publishedAt: { not: null },
-      ...(grades !== null ? { gradeLevel: { in: grades } } : {}),
+      OR: scopes.map((scope) => ({
+        schoolId: scope.schoolId,
+        ...(scope.grades !== null ? { gradeLevel: { in: scope.grades } } : {}),
+      })),
     },
     orderBy: [{ gradeLevel: "asc" }, { createdAt: "desc" }],
-    include: { slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }] } },
+    include: {
+      slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }] },
+      school: { select: { name: true } },
+    },
   });
 
   return series.map((s) => ({
     id: s.id,
     name: s.name,
     gradeLevel: s.gradeLevel,
+    schoolName: s.school.name,
     slots: s.slots.map((slot) => ({
       id: slot.id,
       subject: slot.subject,

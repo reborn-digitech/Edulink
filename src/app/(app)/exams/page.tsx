@@ -22,6 +22,8 @@ export default async function ExamsPage() {
   const session = await requireUser();
   const t = await getT();
   const sheets = await dateSheetsFor(session);
+  // A family can straddle two schools; only then is the school worth naming.
+  const multiSchool = new Set(sheets.map((s) => s.schoolName)).size > 1;
 
   return (
     <div className="space-y-6">
@@ -42,6 +44,7 @@ export default async function ExamsPage() {
             <CardHeader
               icon={<ExamIcon weight="duotone" className="size-5" />}
               title={`${sheet.name} · ${t("practice.classN", { n: sheet.gradeLevel })}`}
+              description={multiSchool ? sheet.schoolName : undefined}
             />
             <CardBody className="overflow-x-auto p-0">
               <table className="w-full text-sm">

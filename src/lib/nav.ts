@@ -112,6 +112,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/homework", labelKey: "nav.homework", icon: "clipboard", prefix: true },
     { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
     { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },

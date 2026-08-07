@@ -2374,6 +2374,25 @@ navigation" means the actual list rather than one somebody maintained by hand.
   categories the pile already held. All new hi/mr strings are mine and await
   the same native-reader pass as the rest.
 
+  **A second role-by-role UX walk then caught what the fixtures had hidden**:
+  a guardian's session deliberately carries NO school (parents are
+  cross-school), and both the bulletin and the exam date sheet were gated on
+  `session.schoolId` — so the parents' circular was unreachable by its own
+  audience, and /exams told a parent "No exams announced" while their child
+  read the sheet. The integration tests had passed because their parent
+  fixtures carried a schoolId. **Fixed at the surfaces, not the session**:
+  every bulletin read now resolves the guardian's school itself (from the
+  post being opened, from a school picker when the family straddles two
+  schools, from the first guardianship otherwise), `dateSheetsFor` merges
+  sheets across every school the children attend (named per card when they
+  differ), the parent nav gained Bulletin, and the compose buttons hide for
+  guardians — who read, and do not post. The parent test fixtures now carry
+  the REAL shape (`schoolId: null`, with a warning comment saying why), so
+  this class of bug cannot pass the suite again. Verified live with the
+  seeded two-school family: chips for both schools, a forged `?school=`
+  falling back safely, and the Oakfield chip switching the feed. Sweep grew
+  to **326/326**.
+
   **The whole battery was then re-run cold, end to end, on a fresh build** —
   typecheck, 1449/1449, eslint 0/29, i18n 46/210, RLS all checks passed,
   build clean, sweep 325/325 against a freshly started production server —

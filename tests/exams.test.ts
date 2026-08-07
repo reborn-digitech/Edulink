@@ -48,7 +48,9 @@ function ctxFor(
   return {
     sessionId: "test-session",
     membershipId,
-    schoolId,
+    // The real shape: a guardian's session carries no school (see the note in
+    // bulletin-circulars.test.ts). dateSheetsFor must resolve it itself.
+    schoolId: role === "PARENT" ? null : schoolId,
     role,
     user: {
       id: userId,
@@ -174,6 +176,7 @@ describe("term exams", () => {
     expect(parentSheets).toHaveLength(1);
     expect(parentSheets[0]!.slots[0]!.subject).toBe("Maths");
     expect(parentSheets[0]!.slots[0]!.maxMarks).toBe(80);
+    expect(parentSheets[0]!.schoolName).toBe("Riverside Primary School");
     expect((await dateSheetsFor(pupil))[0]!.name).toBe("ZZ Term 1");
   });
 
