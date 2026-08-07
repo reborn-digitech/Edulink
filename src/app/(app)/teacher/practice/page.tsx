@@ -76,11 +76,16 @@ export default async function TeacherPracticePage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("practice.teacherTitle")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("practice.teacherIntro")}</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {t("practice.teacherTitle")}
+          </h1>
+          <p className="mt-1 text-sm text-fg-muted">{t("practice.teacherIntro")}</p>
+        </div>
+        <Button asChild variant="secondary" size="sm">
+          <Link href="/teacher/worksheets">{t("worksheets.title")}</Link>
+        </Button>
       </div>
 
       {classes.length > 1 && (

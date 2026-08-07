@@ -1473,6 +1473,9 @@ export const en = {
     onlyTeachersEnterMarks: "Only teachers and admins can enter exam marks.",
     thatPaperIsForAnotherGrade: "That paper belongs to another grade's exam.",
     marksOutOfRange: "Marks must be between 0 and {max}.",
+    onlyStaffPrintWorksheets: "Only teachers and admins can print worksheets.",
+    chapterNotFound: "That chapter could not be found.",
+    noQuestionsAtThatLevel: "That chapter has no questions at that level.",
     weightsMustTotal: "The weights add up to {total}% — they have to total exactly 100%",
     rangeTooLong: "That range covers {days} days — a single entry cannot be longer than a year",
     offersSessionsNotMentoring: "{name} offers workshops and sessions rather than mentoring.",
@@ -3319,6 +3322,35 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  journey: {
+    title: "My journey",
+    intro: "How far you have come — compared only with yourself.",
+    weeksInARow: "weeks in a row practicing",
+    tierBadges: "level badges earned",
+    questionsAnswered: "questions answered",
+    monthlyTitle: "Climbs by month",
+    monthlyHint: "Level badges you earned in each of the last six months.",
+    timelineTitle: "Badge timeline",
+    emptyTitle: "No badges yet",
+    emptyBody: "Answer two in a row right at any level of any chapter and your first badge lands here.",
+    privateNote: "This page is yours alone. Nobody is ranked here, and nobody else's numbers appear.",
+  },
+
+  worksheets: {
+    title: "Worksheets",
+    intro:
+      "Print a paper straight from the practice bank — pick a chapter, a level and a count, and the answer key comes out on its own sheet.",
+    formTitle: "Build a worksheet",
+    formHint: "The same link always prints the same paper; reshuffle for a fresh one.",
+    fieldCount: "Questions",
+    build: "Build the worksheet",
+    reshuffle: "Reshuffle",
+    paperMeta: "{count} questions · paper {seed}",
+    nameLine: "Name:",
+    dateLine: "Date:",
+    keyTitle: "Answer key",
+  },
+
   exams: {
     adminTitle: "Exams",
     adminIntro:

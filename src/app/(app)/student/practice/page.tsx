@@ -86,7 +86,16 @@ export default async function PracticePage({
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.practice")}</h1>
           <p className="mt-1 text-sm text-fg-muted">{t("practice.intro")}</p>
         </div>
-        <LanguageSwitch showLabel />
+        <div className="flex items-center gap-3">
+          <Link
+            href="/student/practice/journey"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong underline-offset-2 hover:underline"
+          >
+            <MedalIcon weight="fill" className="size-4" />
+            {t("journey.title")}
+          </Link>
+          <LanguageSwitch showLabel />
+        </div>
       </div>
 
       {topics.length === 0 ? (

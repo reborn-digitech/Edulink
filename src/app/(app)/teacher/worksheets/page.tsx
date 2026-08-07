@@ -1,0 +1,96 @@
+import type { Metadata } from "next";
+import { PrinterIcon } from "@phosphor-icons/react/ssr";
+import { requireRole } from "@/lib/tenancy";
+import { worksheetTopics } from "@/lib/worksheets";
+import { SUBJECT_LABEL, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { getT } from "@/lib/i18n/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("worksheets.title") };
+}
+
+/**
+ * The form is a GET to the print view, so the resulting worksheet is a URL —
+ * reprintable, shareable with the office, and stable for a given seed.
+ */
+export default async function WorksheetsPage() {
+  const ctx = await requireRole("TEACHER");
+  const t = await getT();
+  const topics = await worksheetTopics(ctx);
+
+  // A fresh seed on every visit of the form; the print URL then pins it.
+  const seed = Math.random().toString(36).slice(2, 8);
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("worksheets.title")}</h1>
+        <p className="mt-1 text-sm text-fg-muted">{t("worksheets.intro")}</p>
+      </div>
+
+      <Card>
+        <CardHeader
+          icon={<PrinterIcon weight="duotone" className="size-5" />}
+          title={t("worksheets.formTitle")}
+          description={t("worksheets.formHint")}
+        />
+        <CardBody>
+          <form action="/teacher/worksheets/print" method="get" className="grid gap-3 sm:grid-cols-3">
+            <input type="hidden" name="seed" value={seed} />
+            <label className="block text-sm sm:col-span-3">
+              <span className="mb-1 block font-medium text-fg">{t("practice.fieldChapter")}</span>
+              <select
+                name="slug"
+                required
+                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+              >
+                {topics.map((topic) => (
+                  <option key={topic.slug} value={topic.slug}>
+                    {t("practice.classN", { n: topic.classLevel })} ·{" "}
+                    {SUBJECT_LABEL[topic.subject as QuizSubject]?.split(" · ")[1] ?? topic.subject} ·{" "}
+                    {topic.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block text-sm">
+              <span className="mb-1 block font-medium text-fg">{t("practice.fieldTarget")}</span>
+              <select
+                name="level"
+                required
+                defaultValue="3"
+                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+              >
+                {Array.from({ length: MAX_LEVEL }, (_, i) => (
+                  <option key={i + 1} value={i + 1}>
+                    L{i + 1} · {TIER_NAMES[i]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block text-sm">
+              <span className="mb-1 block font-medium text-fg">{t("worksheets.fieldCount")}</span>
+              <input
+                type="number"
+                name="count"
+                min={1}
+                max={30}
+                defaultValue={10}
+                required
+                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+              />
+            </label>
+            <div className="flex items-end">
+              <Button type="submit" icon={<PrinterIcon weight="bold" />}>
+                {t("worksheets.build")}
+              </Button>
+            </div>
+          </form>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}

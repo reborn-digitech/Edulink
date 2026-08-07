@@ -555,3 +555,107 @@ export async function assignmentsForStudent(
     };
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/* The child's own journey                                                     */
+/* -------------------------------------------------------------------------- */
+
+export type Journey = {
+  /** Every badge, newest first. Bounded, because a page is not an archive. */
+  badges: { label: string; description: string; earnedAt: Date; isTier: boolean }[];
+  /** Tier badges per month, oldest first, the last six months. */
+  monthly: { label: string; tiers: number }[];
+  /** Consecutive weeks (ending now, with a one-week grace) with any practice. */
+  practiceWeeks: number;
+  totalAnswers: number;
+  totalTiers: number;
+};
+
+/**
+ * A child's private "how far I've come" view. PRIVATE is the design: this
+ * reads one membership's rows and compares them only with that child's own
+ * past — the no-leaderboard rule holds here the way it holds everywhere.
+ */
+export async function journey(ctx: ActiveContext): Promise<Journey> {
+  const { schoolId, membershipId, role } = requireScope(ctx);
+  if (role !== "STUDENT") throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+
+  const WEEK = 7 * 24 * 60 * 60 * 1000;
+  const since = new Date(Date.now() - 26 * WEEK);
+
+  const [badges, totalTiers, recentTiers, totalAnswers, recent] = await Promise.all([
+    db.earnedBadge.findMany({
+      where: { schoolId, studentMembershipId: membershipId },
+      orderBy: { earnedAt: "desc" },
+      take: 60,
+      select: { label: true, description: true, earnedAt: true, badgeId: true },
+    }),
+    db.earnedBadge.count({
+      where: { schoolId, studentMembershipId: membershipId, badgeId: { contains: ":tier-" } },
+    }),
+    db.earnedBadge.findMany({
+      // The monthly bars must not inherit the timeline's 60-row cap.
+      where: {
+        schoolId,
+        studentMembershipId: membershipId,
+        badgeId: { contains: ":tier-" },
+        earnedAt: { gte: new Date(Date.now() - 190 * 24 * 60 * 60 * 1000) },
+      },
+      select: { earnedAt: true },
+    }),
+    db.quizResponse.count({
+      where: { attempt: { studentMembershipId: membershipId, schoolId } },
+    }),
+    db.quizResponse.findMany({
+      where: {
+        attempt: { studentMembershipId: membershipId, schoolId },
+        answeredAt: { gte: since },
+      },
+      select: { answeredAt: true },
+    }),
+  ]);
+
+  // Weeks-in-a-row, counted in rolling 7-day steps back from today so the
+  // streak never resets because of what the server calls Monday. Grace of one
+  // step: a streak survives until a whole week has passed empty.
+  const weeksAgo = new Set(recent.map((r) => Math.floor((Date.now() - r.answeredAt.getTime()) / WEEK)));
+  let practiceWeeks = 0;
+  let cursor = weeksAgo.has(0) ? 0 : 1;
+  while (weeksAgo.has(cursor)) {
+    practiceWeeks += 1;
+    cursor += 1;
+  }
+
+  const isTier = (badgeId: string) => /:tier-[1-6]$/.test(badgeId);
+
+  // The last six calendar months, oldest first, zero-filled so a quiet month
+  // shows as quiet rather than vanishing.
+  const monthly: { label: string; tiers: number }[] = [];
+  const monthKey = (d: Date) => `${d.getUTCFullYear()}-${d.getUTCMonth()}`;
+  const counts = new Map<string, number>();
+  for (const badge of recentTiers) {
+    const key = monthKey(badge.earnedAt);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  const now = new Date();
+  for (let back = 5; back >= 0; back--) {
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
+    monthly.push({
+      label: new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" }).format(d),
+      tiers: counts.get(monthKey(d)) ?? 0,
+    });
+  }
+
+  return {
+    badges: badges.map((b) => ({
+      label: b.label,
+      description: b.description,
+      earnedAt: b.earnedAt,
+      isTier: isTier(b.badgeId),
+    })),
+    monthly,
+    practiceWeeks,
+    totalAnswers,
+    totalTiers,
+  };
+}

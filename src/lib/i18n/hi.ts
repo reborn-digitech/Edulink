@@ -1303,6 +1303,9 @@ export const hi: Dictionary = {
     onlyTeachersEnterMarks: "केवल शिक्षक और एडमिन ही परीक्षा अंक भर सकते हैं।",
     thatPaperIsForAnotherGrade: "वह प्रश्नपत्र दूसरी कक्षा की परीक्षा का है।",
     marksOutOfRange: "अंक 0 और {max} के बीच होने चाहिए।",
+    onlyStaffPrintWorksheets: "केवल शिक्षक और एडमिन ही वर्कशीट छाप सकते हैं।",
+    chapterNotFound: "वह अध्याय नहीं मिला।",
+    noQuestionsAtThatLevel: "उस अध्याय में उस स्तर के प्रश्न नहीं हैं।",
     weightsMustTotal: "भार जोड़कर {total}% होते हैं — कुल ठीक 100% होना चाहिए",
     rangeTooLong: "वह सीमा {days} दिनों की है — एक प्रविष्टि एक वर्ष से लंबी नहीं हो सकती",
     offersSessionsNotMentoring: "{name} मेंटरिंग नहीं, कार्यशालाएँ और सत्र देते हैं।",
@@ -2945,6 +2948,35 @@ export const hi: Dictionary = {
     reasonSpam: "स्पैम",
     reasonOther: "कुछ और",
   },
+  journey: {
+    title: "मेरी यात्रा",
+    intro: "आप कितनी दूर आए हैं — तुलना सिर्फ़ अपने आप से।",
+    weeksInARow: "लगातार सप्ताह अभ्यास",
+    tierBadges: "स्तर बैज मिले",
+    questionsAnswered: "प्रश्न हल किए",
+    monthlyTitle: "महीने-दर-महीने चढ़ाई",
+    monthlyHint: "पिछले छह महीनों में हर महीने मिले स्तर बैज।",
+    timelineTitle: "बैज समयरेखा",
+    emptyTitle: "अभी कोई बैज नहीं",
+    emptyBody: "किसी भी अध्याय के किसी भी स्तर पर लगातार दो सही जवाब दें — पहला बैज यहाँ आ जाएगा।",
+    privateNote: "यह पन्ना सिर्फ़ आपका है। यहाँ किसी की रैंकिंग नहीं होती, और किसी और के आँकड़े नहीं दिखते।",
+  },
+
+  worksheets: {
+    title: "वर्कशीट",
+    intro:
+      "अभ्यास बैंक से सीधे पेपर छापें — अध्याय, स्तर और प्रश्न-संख्या चुनें; उत्तर-कुंजी अलग पन्ने पर निकलती है।",
+    formTitle: "वर्कशीट बनाएँ",
+    formHint: "एक ही लिंक हमेशा वही पेपर छापता है; नए पेपर के लिए फेंटें।",
+    fieldCount: "प्रश्न",
+    build: "वर्कशीट बनाएँ",
+    reshuffle: "फेंटें",
+    paperMeta: "{count} प्रश्न · पेपर {seed}",
+    nameLine: "नाम:",
+    dateLine: "दिनांक:",
+    keyTitle: "उत्तर-कुंजी",
+  },
+
   exams: {
     adminTitle: "परीक्षाएँ",
     adminIntro:

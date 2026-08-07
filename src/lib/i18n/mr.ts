@@ -1300,6 +1300,9 @@ export const mr: Dictionary = {
     onlyTeachersEnterMarks: "फक्त शिक्षक आणि प्रशासकच परीक्षेचे गुण भरू शकतात.",
     thatPaperIsForAnotherGrade: "तो पेपर दुसऱ्या इयत्तेच्या परीक्षेचा आहे.",
     marksOutOfRange: "गुण 0 आणि {max} दरम्यान असावेत.",
+    onlyStaffPrintWorksheets: "फक्त शिक्षक आणि प्रशासकच वर्कशीट छापू शकतात.",
+    chapterNotFound: "तो धडा सापडला नाही.",
+    noQuestionsAtThatLevel: "त्या धड्यात त्या पातळीचे प्रश्न नाहीत.",
     weightsMustTotal: "भार मिळून {total}% होतात — एकूण नेमके 100% असायला हवेत",
     rangeTooLong: "ती मर्यादा {days} दिवसांची आहे — एक नोंद वर्षाहून लांब असू शकत नाही",
     offersSessionsNotMentoring: "{name} मेंटरिंग नाही, कार्यशाळा आणि सत्रे देतात.",
@@ -2942,6 +2945,35 @@ export const mr: Dictionary = {
     reasonSpam: "स्पॅम",
     reasonOther: "काहीतरी वेगळे",
   },
+  journey: {
+    title: "माझा प्रवास",
+    intro: "तुम्ही किती पुढे आलात — तुलना फक्त स्वतःशी.",
+    weeksInARow: "सलग आठवडे सराव",
+    tierBadges: "पातळी बॅज मिळाले",
+    questionsAnswered: "प्रश्न सोडवले",
+    monthlyTitle: "महिन्या-महिन्याची चढाई",
+    monthlyHint: "गेल्या सहा महिन्यांत दर महिन्याला मिळालेले पातळी बॅज.",
+    timelineTitle: "बॅज कालरेषा",
+    emptyTitle: "अजून बॅज नाहीत",
+    emptyBody: "कोणत्याही धड्याच्या कोणत्याही पातळीवर सलग दोन बरोबर उत्तरे द्या — पहिला बॅज इथे येईल.",
+    privateNote: "हे पान फक्त तुमचे आहे. इथे कोणाचीही क्रमवारी नाही, आणि दुसऱ्या कोणाचे आकडे दिसत नाहीत.",
+  },
+
+  worksheets: {
+    title: "वर्कशीट",
+    intro:
+      "सराव बँकेतून थेट पेपर छापा — धडा, पातळी आणि प्रश्नसंख्या निवडा; उत्तरसूची वेगळ्या पानावर येते.",
+    formTitle: "वर्कशीट तयार करा",
+    formHint: "एकच दुवा नेहमी तोच पेपर छापतो; नव्या पेपरसाठी पुन्हा मिसळा.",
+    fieldCount: "प्रश्न",
+    build: "वर्कशीट तयार करा",
+    reshuffle: "पुन्हा मिसळा",
+    paperMeta: "{count} प्रश्न · पेपर {seed}",
+    nameLine: "नाव:",
+    dateLine: "दिनांक:",
+    keyTitle: "उत्तरसूची",
+  },
+
   exams: {
     adminTitle: "परीक्षा",
     adminIntro:

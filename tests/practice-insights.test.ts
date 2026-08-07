@@ -13,6 +13,7 @@ import {
   archivePracticeAssignment,
   assignmentsForClass,
   assignmentsForStudent,
+  journey,
 } from "@/lib/practice-insights";
 import type { ActiveContext } from "@/lib/session";
 
@@ -236,6 +237,22 @@ describe("practice insights", () => {
     expect(topic!.level).toBeGreaterThanOrEqual(1);
     expect(topic!.tierCount).toBeGreaterThanOrEqual(1);
     expect(view.weeklyCount).toBeGreaterThanOrEqual(3);
+  });
+
+  it("tells the child their own journey, and only theirs", { timeout: 60_000 }, async () => {
+    if (!hasBank) return;
+    const view = await journey(pupil);
+    // 3, not 4: the revision re-answer lands in the same open attempt and
+    // replaces the wrong response for that question rather than adding a row.
+    expect(view.totalAnswers).toBeGreaterThanOrEqual(3);
+    expect(view.totalTiers).toBeGreaterThanOrEqual(1); // the Beginner climb
+    expect(view.practiceWeeks).toBeGreaterThanOrEqual(1); // practiced this week
+    expect(view.monthly).toHaveLength(6);
+    expect(view.monthly.reduce((sum, m) => sum + m.tiers, 0)).toBeGreaterThanOrEqual(1);
+    expect(view.badges.some((b) => b.isTier)).toBe(true);
+
+    // A teacher has no journey here: the page is the child's alone.
+    await expect(journey(teacher)).rejects.toThrow();
   });
 
   it("archives an assignment out of every list", { timeout: 60_000 }, async () => {
