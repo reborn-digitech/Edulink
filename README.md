@@ -2373,6 +2373,13 @@ navigation" means the actual list rather than one somebody maintained by hand.
   addition is a notification body or a stored-artifact title, the same two
   categories the pile already held. All new hi/mr strings are mine and await
   the same native-reader pass as the rest.
+
+  **The whole battery was then re-run cold, end to end, on a fresh build** —
+  typecheck, 1449/1449, eslint 0/29, i18n 46/210, RLS all checks passed,
+  build clean, sweep 325/325 against a freshly started production server —
+  with every number identical to the first run, and the database checked
+  afterwards for fixture residue: **zero ZZ users, zero ZZ classes** left
+  behind by the thirty-four new tests.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
