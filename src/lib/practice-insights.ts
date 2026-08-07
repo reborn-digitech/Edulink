@@ -1,0 +1,557 @@
+import "server-only";
+import { db } from "./db";
+import { AccessError, assertClassAccess, assertGuardianAccess } from "./tenancy";
+import type { ActiveContext } from "./session";
+import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, TIER_NAMES, type QuizLanguage } from "./quiz";
+import { normaliseLocale } from "./i18n/locales";
+import { audit } from "./audit";
+
+/**
+ * Practice insights — the read side of the drill bank, for everyone AROUND the
+ * child: the child's own "continue" card and revision queue, the parent's
+ * progress view, and the teacher's heatmap and chapter assignments.
+ *
+ * Two rules carried over from the rest of the practice surface:
+ *
+ * NOTHING HERE COMPARES CHILDREN TO EACH OTHER. The teacher's heatmap counts
+ * how many pupils stand on each rung — it never ranks them, and the per-pupil
+ * assignment table exists so a teacher can help the ones who are stuck, which
+ * is the opposite of a leaderboard.
+ *
+ * ATTAINMENT IS DERIVED, NEVER STORED. A practice assignment has no submission
+ * and no marking: whether a child reached the rung is read from QuizMastery at
+ * render time, so it cannot drift from what the child actually did.
+ */
+
+function pick(translated: string | null | undefined, original: string): string {
+  const value = (translated ?? "").trim();
+  return value.length > 0 ? value : original;
+}
+
+/** Narrow a context to a school-scoped one, the shape assertClassAccess wants. */
+function requireScope(ctx: ActiveContext): {
+  schoolId: string;
+  membershipId: string;
+  role: NonNullable<ActiveContext["role"]>;
+} {
+  if (!ctx.schoolId || !ctx.membershipId || !ctx.role) {
+    throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+  }
+  return { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role };
+}
+
+const topicWithTranslation = (language: QuizLanguage) => ({
+  select: {
+    id: true,
+    slug: true,
+    name: true,
+    subject: true,
+    classLevel: true,
+    translations:
+      language === "en"
+        ? undefined
+        : { where: { language }, select: { name: true }, take: 1 },
+  },
+});
+
+type TopicRow = {
+  id: string;
+  slug: string;
+  name: string;
+  subject: string;
+  classLevel: number;
+  translations?: { name: string }[];
+};
+
+const topicName = (topic: TopicRow) => pick(topic.translations?.[0]?.name, topic.name);
+
+/* -------------------------------------------------------------------------- */
+/* The child's own cards                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The grade this pupil is enrolled in, or null when no active enrolment names
+ * one. Drives the practice page's default filter: a Grade 5 child should land
+ * on Grade 5 chapters, not on Class 3 civics.
+ */
+export async function enrolledGradeLevel(ctx: ActiveContext): Promise<number | null> {
+  if (!ctx.membershipId || !ctx.schoolId) return null;
+  const rows = await db.enrollment.findMany({
+    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, status: "ACTIVE" },
+    select: { class: { select: { gradeLevel: true } } },
+  });
+  const grades = rows
+    .map((r) => Number.parseInt(r.class.gradeLevel ?? "", 10))
+    .filter((n) => Number.isInteger(n) && n >= 1 && n <= 12);
+  if (grades.length === 0) return null;
+  // A child in a form group AND a subject class across grades takes the lowest
+  // — the form group is where they live.
+  return Math.min(...grades);
+}
+
+export type ContinueCard = {
+  slug: string;
+  name: string;
+  subject: string;
+  level: number;
+  tierCount: number;
+  /** Consecutive right answers still needed at this level to prove it — the
+   * promotion streak. Null once every rung of this chapter is proven. */
+  remainingForBadge: number | null;
+  nextTierName: string | null;
+};
+
+/** The chapter this child most recently practised, to resume in one tap. */
+export async function continueCard(
+  ctx: ActiveContext,
+  language: QuizLanguage = "en",
+): Promise<ContinueCard | null> {
+  if (!ctx.membershipId || !ctx.schoolId) return null;
+  const mastery = await db.quizMastery.findFirst({
+    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, seenCount: { gt: 0 } },
+    orderBy: { updatedAt: "desc" },
+    include: { topic: topicWithTranslation(language) },
+  });
+  if (!mastery) return null;
+
+  const tiers = await db.earnedBadge.count({
+    where: {
+      studentMembershipId: ctx.membershipId,
+      permanent: true,
+      badgeId: { startsWith: `abhyaas:${mastery.topic.slug}:tier-` },
+    },
+  });
+  const level = clampLevel(mastery.level);
+  const allProven = tiers >= MAX_LEVEL;
+  return {
+    slug: mastery.topic.slug,
+    name: topicName(mastery.topic),
+    subject: mastery.topic.subject,
+    level,
+    tierCount: tiers,
+    remainingForBadge: allProven ? null : Math.max(1, PROMOTE_AFTER - mastery.streakRight),
+    nextTierName: allProven ? null : TIER_NAMES[level - 1]!,
+  };
+}
+
+/**
+ * Questions answered in the last seven days — a rolling window rather than a
+ * calendar week, so the number never resets to zero at midnight on a day
+ * that depends on the server's idea of Monday.
+ */
+export async function weeklyPracticeCount(ctx: ActiveContext): Promise<number> {
+  if (!ctx.membershipId || !ctx.schoolId) return 0;
+  const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  return db.quizResponse.count({
+    where: {
+      attempt: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId },
+      answeredAt: { gte: since },
+    },
+  });
+}
+
+/** The child's own weekly target. Fixed, private, and deliberately modest —
+ * a number to beat yourself with, not each other. */
+export const WEEKLY_GOAL = 50;
+
+export type RevisionItem = {
+  questionId: string;
+  topicSlug: string;
+  topicName: string;
+  subject: string;
+};
+
+/**
+ * Questions whose LATEST answer was wrong, once they have rested for at least
+ * `minAgeDays` — asking again ten minutes later tests short-term memory, which
+ * is not the thing revision is for.
+ *
+ * Reads the child's most recent responses (bounded) and keeps only each
+ * question's latest verdict, so a question later answered right never comes
+ * back. Capped small: a revision queue a child can finish is one they will
+ * actually start.
+ */
+export async function revisionQueue(
+  ctx: ActiveContext,
+  opts: { minAgeDays?: number; limit?: number; language?: QuizLanguage } = {},
+): Promise<RevisionItem[]> {
+  if (!ctx.membershipId || !ctx.schoolId) return [];
+  const minAgeDays = opts.minAgeDays ?? 2;
+  const limit = opts.limit ?? 12;
+  const language = normaliseLocale(opts.language ?? "en");
+  const cutoff = new Date(Date.now() - minAgeDays * 24 * 60 * 60 * 1000);
+
+  const recent = await db.quizResponse.findMany({
+    where: { attempt: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId } },
+    orderBy: { answeredAt: "desc" },
+    take: 500,
+    select: { questionId: true, correct: true, answeredAt: true },
+  });
+
+  const latest = new Map<string, { correct: boolean; answeredAt: Date }>();
+  for (const row of recent) {
+    if (!latest.has(row.questionId)) latest.set(row.questionId, row);
+  }
+  const due = [...latest.entries()]
+    .filter(([, r]) => !r.correct && r.answeredAt <= cutoff)
+    .sort((a, b) => a[1].answeredAt.getTime() - b[1].answeredAt.getTime())
+    .slice(0, limit)
+    .map(([questionId]) => questionId);
+  if (due.length === 0) return [];
+
+  const questions = await db.quizQuestion.findMany({
+    where: { id: { in: due } },
+    select: { id: true, topic: topicWithTranslation(language) },
+  });
+  const byId = new Map(questions.map((q) => [q.id, q]));
+  return due
+    .map((id) => byId.get(id))
+    .filter((q): q is NonNullable<typeof q> => Boolean(q))
+    .map((q) => ({
+      questionId: q.id,
+      topicSlug: q.topic.slug,
+      topicName: topicName(q.topic),
+      subject: q.topic.subject,
+    }));
+}
+
+/**
+ * One revision question, re-served. The child must have answered it before —
+ * this is a queue of THEIR history, not a second way to browse the bank.
+ * Never returns the answer; marking goes through submitAnswer as usual.
+ */
+export async function reviseQuestion(
+  ctx: ActiveContext,
+  questionId: string,
+  language: QuizLanguage = "en",
+): Promise<{ questionId: string; topicSlug: string; stem: string; choices: string[]; difficulty: number }> {
+  if (!ctx.membershipId || !ctx.schoolId) throw new AccessError("access.onlyAPupilCanPractise");
+  const prior = await db.quizResponse.findFirst({
+    where: { questionId, attempt: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId } },
+    select: { id: true },
+  });
+  if (!prior) throw new AccessError("access.questionNotFound", "NOT_FOUND");
+
+  const question = await db.quizQuestion.findUniqueOrThrow({
+    where: { id: questionId },
+    select: { id: true, stem: true, choices: true, difficulty: true, topic: { select: { slug: true } } },
+  });
+  const lang = normaliseLocale(language);
+  const tr =
+    lang === "en"
+      ? null
+      : await db.quizQuestionTranslation.findUnique({
+          where: { questionId_language: { questionId, language: lang } },
+          select: { stem: true, choices: true },
+        });
+  const original = JSON.parse(question.choices) as string[];
+  const translated = tr?.choices ? (JSON.parse(tr.choices) as string[]) : null;
+  const choices =
+    translated && translated.length === original.length
+      ? translated.map((c, i) => pick(c, original[i]!))
+      : original;
+  return {
+    questionId: question.id,
+    topicSlug: question.topic.slug,
+    stem: pick(tr?.stem, question.stem),
+    choices,
+    difficulty: question.difficulty,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The parent's view                                                           */
+/* -------------------------------------------------------------------------- */
+
+export type ChildTopicProgress = {
+  slug: string;
+  name: string;
+  subject: string;
+  classLevel: number;
+  level: number;
+  seenCount: number;
+  correctCount: number;
+  tierCount: number;
+  cleanCompletion: boolean;
+};
+
+/**
+ * Every chapter this child has touched, for their guardian. Guardianship is
+ * asserted here — the page passes the requested child id straight through.
+ */
+export async function childPracticeProgress(
+  parentUserId: string,
+  studentMembershipId: string,
+  language: QuizLanguage = "en",
+): Promise<{ childName: string; topics: ChildTopicProgress[]; weeklyCount: number }> {
+  const link = await assertGuardianAccess(parentUserId, studentMembershipId);
+
+  const masteries = await db.quizMastery.findMany({
+    where: { studentMembershipId, seenCount: { gt: 0 } },
+    orderBy: { updatedAt: "desc" },
+    include: { topic: topicWithTranslation(language) },
+  });
+  const tiers = await db.earnedBadge.findMany({
+    where: { studentMembershipId, permanent: true, badgeId: { contains: ":tier-" } },
+    select: { badgeId: true },
+  });
+  const tierCount = new Map<string, number>();
+  for (const row of tiers) {
+    const match = /^abhyaas:(.+):tier-[1-6]$/.exec(row.badgeId);
+    if (!match) continue;
+    tierCount.set(match[1]!, (tierCount.get(match[1]!) ?? 0) + 1);
+  }
+  const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const weeklyCount = await db.quizResponse.count({
+    where: { attempt: { studentMembershipId }, answeredAt: { gte: since } },
+  });
+
+  return {
+    childName: link.student.user.preferredName ?? link.student.user.name,
+    weeklyCount,
+    topics: masteries.map((m) => ({
+      slug: m.topic.slug,
+      name: topicName(m.topic),
+      subject: m.topic.subject,
+      classLevel: m.topic.classLevel,
+      level: clampLevel(m.level),
+      seenCount: m.seenCount,
+      correctCount: m.correctCount,
+      tierCount: tierCount.get(m.topic.slug) ?? 0,
+      cleanCompletion: m.cleanCompletionAt != null,
+    })),
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The teacher's view                                                          */
+/* -------------------------------------------------------------------------- */
+
+export type HeatmapRow = {
+  slug: string;
+  name: string;
+  subject: string;
+  classLevel: number;
+  /** How many of the class's pupils currently stand on each rung, index = level − 1. */
+  atLevel: number[];
+  tried: number;
+};
+
+/**
+ * Chapter × rung, for one class: how many pupils stand where. Counts, never
+ * names — the per-pupil view lives on the assignment table, where a teacher
+ * is looking at one chapter with a reason.
+ */
+export async function classPracticeHeatmap(
+  ctx: ActiveContext,
+  classId: string,
+  language: QuizLanguage = "en",
+): Promise<{ pupilCount: number; rows: HeatmapRow[] }> {
+  await assertClassAccess(requireScope(ctx), classId);
+  const enrolled = await db.enrollment.findMany({
+    where: { classId, schoolId: ctx.schoolId!, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+  const pupilIds = enrolled.map((e) => e.studentMembershipId);
+  if (pupilIds.length === 0) return { pupilCount: 0, rows: [] };
+
+  const masteries = await db.quizMastery.findMany({
+    where: { studentMembershipId: { in: pupilIds }, seenCount: { gt: 0 } },
+    include: { topic: topicWithTranslation(language) },
+  });
+  const byTopic = new Map<string, HeatmapRow>();
+  for (const m of masteries) {
+    const row =
+      byTopic.get(m.topic.slug) ??
+      ({
+        slug: m.topic.slug,
+        name: topicName(m.topic),
+        subject: m.topic.subject,
+        classLevel: m.topic.classLevel,
+        atLevel: new Array(MAX_LEVEL).fill(0) as number[],
+        tried: 0,
+      } satisfies HeatmapRow);
+    row.atLevel[clampLevel(m.level) - 1]! += 1;
+    row.tried += 1;
+    byTopic.set(m.topic.slug, row);
+  }
+  const rows = [...byTopic.values()].sort((a, b) => b.tried - a.tried).slice(0, 30);
+  return { pupilCount: pupilIds.length, rows };
+}
+
+export type PracticeAssignmentView = {
+  id: string;
+  topicSlug: string;
+  topicName: string;
+  subject: string;
+  classLevel: number;
+  targetLevel: number;
+  targetTierName: string;
+  note: string | null;
+  dueAt: Date | null;
+  createdAt: Date;
+};
+
+/** Teacher sets a chapter and a rung for a class. Nothing to hand in. */
+export async function createPracticeAssignment(
+  ctx: ActiveContext,
+  input: { classId: string; topicSlug: string; targetLevel: number; note?: string; dueAt?: Date | null },
+): Promise<{ id: string }> {
+  if (ctx.role !== "TEACHER" && ctx.role !== "ADMIN") {
+    throw new AccessError("access.onlyTeachersSetPractice");
+  }
+  await assertClassAccess(requireScope(ctx), input.classId, { write: true });
+  const topic = await db.quizTopic.findUnique({
+    where: { slug: input.topicSlug },
+    select: { id: true },
+  });
+  if (!topic) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
+  const target = Math.trunc(input.targetLevel);
+  if (!Number.isInteger(target) || target < MIN_LEVEL || target > MAX_LEVEL) {
+    throw new AccessError("access.practiceTargetOutOfRange");
+  }
+  const note = (input.note ?? "").trim().slice(0, 200) || null;
+
+  const created = await db.practiceAssignment.create({
+    data: {
+      schoolId: ctx.schoolId!,
+      classId: input.classId,
+      topicId: topic.id,
+      targetLevel: target,
+      note,
+      dueAt: input.dueAt ?? null,
+      createdById: ctx.membershipId!,
+    },
+    select: { id: true },
+  });
+  await audit({
+    schoolId: ctx.schoolId!,
+    actorUserId: ctx.user.id,
+    action: "practice.assign",
+    targetType: "PracticeAssignment",
+    targetId: created.id,
+    meta: { classId: input.classId, topicSlug: input.topicSlug, targetLevel: target },
+  });
+  return created;
+}
+
+export async function archivePracticeAssignment(ctx: ActiveContext, id: string): Promise<void> {
+  const assignment = await db.practiceAssignment.findFirst({
+    where: { id, schoolId: ctx.schoolId ?? "" },
+    select: { id: true, classId: true },
+  });
+  if (!assignment) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
+  await assertClassAccess(requireScope(ctx), assignment.classId, { write: true });
+  await db.practiceAssignment.update({ where: { id }, data: { archivedAt: new Date() } });
+}
+
+/** Active assignments for a class, each with derived attainment per pupil. */
+export async function assignmentsForClass(
+  ctx: ActiveContext,
+  classId: string,
+  language: QuizLanguage = "en",
+): Promise<
+  (PracticeAssignmentView & {
+    reached: number;
+    pupilCount: number;
+    pupils: { name: string; level: number; reached: boolean }[];
+  })[]
+> {
+  await assertClassAccess(requireScope(ctx), classId);
+  const assignments = await db.practiceAssignment.findMany({
+    where: { classId, schoolId: ctx.schoolId!, archivedAt: null },
+    orderBy: { createdAt: "desc" },
+    include: { topic: topicWithTranslation(language) },
+  });
+  if (assignments.length === 0) return [];
+
+  const enrolled = await db.enrollment.findMany({
+    where: { classId, schoolId: ctx.schoolId!, status: "ACTIVE" },
+    select: {
+      studentMembershipId: true,
+      student: { select: { user: { select: { name: true, preferredName: true } } } },
+    },
+    take: 60,
+  });
+  const pupilIds = enrolled.map((e) => e.studentMembershipId);
+  const masteries = await db.quizMastery.findMany({
+    where: {
+      studentMembershipId: { in: pupilIds },
+      topicId: { in: assignments.map((a) => a.topicId) },
+    },
+    select: { studentMembershipId: true, topicId: true, level: true },
+  });
+  const levelOf = new Map(masteries.map((m) => [`${m.studentMembershipId}|${m.topicId}`, m.level]));
+
+  return assignments.map((a) => {
+    const pupils = enrolled.map((e) => {
+      // 0 means "never opened the chapter" — distinct from standing on L1,
+      // which every pupil who has answered anything does by definition.
+      const raw = levelOf.get(`${e.studentMembershipId}|${a.topicId}`);
+      const level = raw === undefined ? 0 : clampLevel(raw);
+      return {
+        name: e.student.user.preferredName ?? e.student.user.name,
+        level,
+        reached: level >= a.targetLevel,
+      };
+    });
+    return {
+      id: a.id,
+      topicSlug: a.topic.slug,
+      topicName: topicName(a.topic),
+      subject: a.topic.subject,
+      classLevel: a.topic.classLevel,
+      targetLevel: a.targetLevel,
+      targetTierName: TIER_NAMES[a.targetLevel - 1]!,
+      note: a.note,
+      dueAt: a.dueAt,
+      createdAt: a.createdAt,
+      reached: pupils.filter((p) => p.reached).length,
+      pupilCount: pupils.length,
+      pupils,
+    };
+  });
+}
+
+/** Active assignments for the pupil's own classes, with their own standing. */
+export async function assignmentsForStudent(
+  ctx: ActiveContext,
+  language: QuizLanguage = "en",
+): Promise<(PracticeAssignmentView & { myLevel: number; reached: boolean })[]> {
+  if (!ctx.membershipId || !ctx.schoolId) return [];
+  const enrolments = await db.enrollment.findMany({
+    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, status: "ACTIVE" },
+    select: { classId: true },
+  });
+  if (enrolments.length === 0) return [];
+  const assignments = await db.practiceAssignment.findMany({
+    where: { classId: { in: enrolments.map((e) => e.classId) }, archivedAt: null },
+    orderBy: { createdAt: "desc" },
+    include: { topic: topicWithTranslation(language) },
+    take: 10,
+  });
+  if (assignments.length === 0) return [];
+  const masteries = await db.quizMastery.findMany({
+    where: { studentMembershipId: ctx.membershipId, topicId: { in: assignments.map((a) => a.topicId) } },
+    select: { topicId: true, level: true },
+  });
+  const levelOf = new Map(masteries.map((m) => [m.topicId, m.level]));
+  return assignments.map((a) => {
+    const raw = levelOf.get(a.topicId);
+    const myLevel = raw === undefined ? 0 : clampLevel(raw);
+    return {
+      id: a.id,
+      topicSlug: a.topic.slug,
+      topicName: topicName(a.topic),
+      subject: a.topic.subject,
+      classLevel: a.topic.classLevel,
+      targetLevel: a.targetLevel,
+      targetTierName: TIER_NAMES[a.targetLevel - 1]!,
+      note: a.note,
+      dueAt: a.dueAt,
+      createdAt: a.createdAt,
+      myLevel,
+      reached: myLevel >= a.targetLevel,
+    };
+  });
+}

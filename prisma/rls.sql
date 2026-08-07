@@ -548,6 +548,15 @@ CREATE POLICY "QuizMastery_tenant_isolation" ON "QuizMastery"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- PracticeAssignment
+ALTER TABLE "PracticeAssignment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PracticeAssignment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PracticeAssignment_tenant_isolation" ON "PracticeAssignment";
+DROP POLICY IF EXISTS "PracticeAssignment_readable" ON "PracticeAssignment";
+CREATE POLICY "PracticeAssignment_tenant_isolation" ON "PracticeAssignment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- ExpertBooking
 ALTER TABLE "ExpertBooking" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "ExpertBooking" FORCE ROW LEVEL SECURITY;

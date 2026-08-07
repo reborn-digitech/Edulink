@@ -100,6 +100,7 @@ model School {
   quizAttempts         QuizAttempt[]
   quizResponses        QuizResponse[]
   quizMastery          QuizMastery[]
+  practiceAssignments  PracticeAssignment[]
   schoolRecords        SchoolRecord[]
   operatorAccess       OperatorAccess[]
 
@@ -226,38 +227,39 @@ model Membership {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
-  guardianships          Guardianship[]      @relation("StudentGuardianships")
+  guardianships          Guardianship[]       @relation("StudentGuardianships")
   enrollments            Enrollment[]
   classTeachers          ClassTeacher[]
   attendance             AttendanceRecord[]
-  attendanceTaken        AttendanceSession[] @relation("AttendanceTaker")
-  attendanceCovering     AttendanceCover[]   @relation("AttendanceCovering")
-  attendanceCoversMade   AttendanceCover[]   @relation("AttendanceCoverCreator")
-  timetableSlots         TimetableSlot[]     @relation("TimetableTeacher")
-  reportCards            ReportCard[]        @relation("ReportCardStudent")
-  reportCardsWritten     ReportCard[]        @relation("ReportCardAuthor")
-  leaveRequests          LeaveRequest[]      @relation("LeaveApplicant")
-  leaveNominations       LeaveRequest[]      @relation("LeaveNominee")
-  leaveDecisions         LeaveRequest[]      @relation("LeaveDecider")
+  attendanceTaken        AttendanceSession[]  @relation("AttendanceTaker")
+  attendanceCovering     AttendanceCover[]    @relation("AttendanceCovering")
+  attendanceCoversMade   AttendanceCover[]    @relation("AttendanceCoverCreator")
+  timetableSlots         TimetableSlot[]      @relation("TimetableTeacher")
+  reportCards            ReportCard[]         @relation("ReportCardStudent")
+  reportCardsWritten     ReportCard[]         @relation("ReportCardAuthor")
+  leaveRequests          LeaveRequest[]       @relation("LeaveApplicant")
+  leaveNominations       LeaveRequest[]       @relation("LeaveNominee")
+  leaveDecisions         LeaveRequest[]       @relation("LeaveDecider")
   submissions            Submission[]
-  grades                 Grade[]             @relation("GradeStudent")
-  gradesGiven            Grade[]             @relation("GradeGrader")
+  grades                 Grade[]              @relation("GradeStudent")
+  gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
-  remarkThreadsAsStudent RemarkThread[]      @relation("RemarkStudent")
-  remarkThreadsAsTeacher RemarkThread[]      @relation("RemarkTeacher")
+  remarkThreadsAsStudent RemarkThread[]       @relation("RemarkStudent")
+  remarkThreadsAsTeacher RemarkThread[]       @relation("RemarkTeacher")
   competitionEntries     CompetitionEntry[]
-  postsAuthored          Post[]              @relation("PostAuthorMembership")
-  postsReviewed          Post[]              @relation("PostReviewer")
-  globalPostsHidden      GlobalPostHide[]    @relation("GlobalPostHider")
-  expertBookingsMade     ExpertBooking[]     @relation("ExpertBookingBooker")
-  expertInvitesCreated   ExpertInvite[]      @relation("ExpertInviteCreator")
+  postsAuthored          Post[]               @relation("PostAuthorMembership")
+  postsReviewed          Post[]               @relation("PostReviewer")
+  globalPostsHidden      GlobalPostHide[]     @relation("GlobalPostHider")
+  expertBookingsMade     ExpertBooking[]      @relation("ExpertBookingBooker")
+  expertInvitesCreated   ExpertInvite[]       @relation("ExpertInviteCreator")
   schoolRecord           SchoolRecord?
-  mentorshipsAsStudent   MentorThread[]      @relation("MentorStudent")
-  mentorshipsCreated     MentorThread[]      @relation("MentorCreator")
-  invitesCreated         Invite[]            @relation("InviteCreator")
+  mentorshipsAsStudent   MentorThread[]       @relation("MentorStudent")
+  mentorshipsCreated     MentorThread[]       @relation("MentorCreator")
+  invitesCreated         Invite[]             @relation("InviteCreator")
   earnedBadges           EarnedBadge[]
   quizAttempts           QuizAttempt[]
   quizMastery            QuizMastery[]
+  practiceAssignments    PracticeAssignment[] @relation("PracticeAssigner")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -316,16 +318,17 @@ model Class {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 
-  school           School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  teachers         ClassTeacher[]
-  attendanceCovers AttendanceCover[]
-  reportCards      ReportCard[]
-  enrollments      Enrollment[]
-  attendance       AttendanceSession[]
-  timetableSlots   TimetableSlot[]
-  assignments      Assignment[]
-  posts            Post[]
-  gradeCategories  GradeCategory[]
+  school              School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teachers            ClassTeacher[]
+  attendanceCovers    AttendanceCover[]
+  reportCards         ReportCard[]
+  enrollments         Enrollment[]
+  practiceAssignments PracticeAssignment[]
+  attendance          AttendanceSession[]
+  timetableSlots      TimetableSlot[]
+  assignments         Assignment[]
+  posts               Post[]
+  gradeCategories     GradeCategory[]
 
   @@index([schoolId, archivedAt])
 }
@@ -1505,10 +1508,11 @@ model QuizTopic {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  questions    QuizQuestion[]
-  attempts     QuizAttempt[]
-  mastery      QuizMastery[]
-  translations QuizTopicTranslation[]
+  questions           QuizQuestion[]
+  attempts            QuizAttempt[]
+  mastery             QuizMastery[]
+  translations        QuizTopicTranslation[]
+  practiceAssignments PracticeAssignment[]
 
   @@index([subject, classLevel, position])
 }
@@ -1693,6 +1697,33 @@ model QuizMastery {
 
   @@unique([studentMembershipId, topicId])
   @@index([schoolId, studentMembershipId])
+}
+
+/// A chapter a teacher asked a class to climb: "reach this rung of this
+/// chapter's ladder". There is nothing to hand in and nothing to mark — the
+/// practice engine already proves every answer, so attainment is DERIVED from
+/// QuizMastery at read time and can never disagree with what the child did.
+model PracticeAssignment {
+  id       String @id @default(cuid())
+  schoolId String
+  classId  String
+  topicId  String
+
+  /// 1-6, the rung the class is asked to reach.
+  targetLevel Int
+  note        String?
+  dueAt       DateTime?
+
+  createdById String
+  createdAt   DateTime  @default(now())
+  archivedAt  DateTime?
+
+  school    School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class     Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
+  topic     QuizTopic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  createdBy Membership @relation("PracticeAssigner", fields: [createdById], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, classId, archivedAt])
 }
 
 // ---------------------------------------------------------------------------

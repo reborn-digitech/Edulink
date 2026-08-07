@@ -84,7 +84,7 @@ export const MAX_LEVEL = 6;
 export const MIN_LEVEL = 1;
 
 /** Two in a row either way moves the level. Small on purpose — see below. */
-const PROMOTE_AFTER = 2;
+export const PROMOTE_AFTER = 2;
 const DEMOTE_AFTER = 2;
 
 // The language a question is READ in is the same setting as the language the

@@ -2259,6 +2259,41 @@ navigation" means the actual list rather than one somebody maintained by hand.
   pile 38 files / 193 strings (+2: the stored badge label and description,
   English by the stored-artifact rule); production build clean; **sweep
   315/315** against the production server.
+
+  **Then practice grew the surfaces AROUND the child** — the top five
+  recommendations of the role-by-role UX walk, built in one pass
+  (`src/lib/practice-insights.ts` + `tests/practice-insights.test.ts`):
+
+  1. **The practice page defaults to the child's own grade** (a Grade 5 pupil
+     no longer lands on Class 3 civics; `?grade=all` is the explicit way out)
+     and grew a **Continue card** — last chapter, current rung, "2 more right
+     in a row for your Beginner badge".
+  2. **Parents got a Practice tab** (`/parent/practice`): per child, every
+     chapter touched, the rung they stand on, tried counts, tier badges, and
+     the last-7-days number — guardianship asserted on every read, and the
+     same no-comparison rule as the child's own page.
+  3. **Teachers got Practice insights** (`/teacher/practice`): a chapter ×
+     rung heatmap per class (counts, never rankings) and **assignable
+     chapters** — pick a chapter and a target rung; attainment is DERIVED
+     from `QuizMastery` at read time, so there is nothing to hand in, nothing
+     to mark, and nothing that can disagree with what the child actually did.
+     One new table (`PracticeAssignment`, school-scoped, auto-policied by the
+     generated RLS — 60 policies now), audited as `practice.assign`.
+  4. **Smart revision** (`/student/practice/revision`): questions whose
+     LATEST answer was wrong come back after a two-day rest, capped at 12,
+     served through the SAME attempt machinery — revision moves the same
+     ladder and earns the same badges. A question later answered right never
+     returns.
+  5. **A private weekly goal** on the practice page: questions answered in a
+     rolling 7 days against a fixed target of 50, with the copy saying out
+     loud that nobody else sees it. No leaderboard, deliberately, still.
+
+  Six new integration tests drive all of it end to end with disposable
+  fixtures (ZZ class, pupil, teacher, guardian — deletion asserted), including
+  the honest edge: a pupil who never opened a chapter reads as level 0, NOT
+  L1, so "reach L1" cannot be satisfied by absence. After: **1415/1415 tests
+  across 74 files**, eslint 0 errors / 29 known warnings, i18n pile unchanged
+  at 38/193, build clean, **sweep 317/317** (two new nav routes, both walked).
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form

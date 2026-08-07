@@ -180,6 +180,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "operator.school.open": "audit.operatorSchoolOpen",
   "profile.update": "audit.profileUpdate",
   "quiz.badge": "audit.quizBadge",
+  "quiz.tierBadge": "audit.quizTierBadge",
+  "practice.assign": "audit.practiceAssign",
   "school.logo.remove": "audit.schoolLogoRemove",
   "school.logo.update": "audit.schoolLogoUpdate",
   "school.settings.update": "audit.schoolSettingsUpdate",

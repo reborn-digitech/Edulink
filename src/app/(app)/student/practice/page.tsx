@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrainIcon, MedalIcon, CheckCircleIcon } from "@phosphor-icons/react/ssr";
+import {
+  BrainIcon,
+  MedalIcon,
+  CheckCircleIcon,
+  ClockCounterClockwiseIcon,
+  FlagIcon,
+  PlayIcon,
+} from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import {
   listTopics,
@@ -10,6 +17,14 @@ import {
   type QuizSubject,
 } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
+import {
+  enrolledGradeLevel,
+  continueCard,
+  weeklyPracticeCount,
+  WEEKLY_GOAL,
+  revisionQueue,
+  assignmentsForStudent,
+} from "@/lib/practice-insights";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
@@ -38,13 +53,30 @@ export default async function PracticePage({
   const t = await getT();
 
   const language = normaliseLanguage(ctx.user.prefs.locale);
-  const topics = await listTopics(ctx, { subject, language });
+  const [topics, enrolledGrade, resume, weekly, revision, assigned] = await Promise.all([
+    listTopics(ctx, { subject, language }),
+    enrolledGradeLevel(ctx),
+    continueCard(ctx, language),
+    weeklyPracticeCount(ctx),
+    revisionQueue(ctx, { language }),
+    assignmentsForStudent(ctx, language),
+  ]);
   const subjects = [...new Set(topics.map((t) => t.subject))];
   // The drill bank made this list ten grades deep, so a class filter joined
   // the subject filter. Filtered AFTER the query on purpose: the grade chips
   // must list every class that exists, which the filtered rows can't tell us.
   const grades = [...new Set(topics.map((t) => t.classLevel))].sort((a, b) => a - b);
-  const gradeNum = grade ? Number(grade) : null;
+  // No explicit choice defaults to the child's OWN grade — a Grade 5 pupil
+  // should land on Grade 5 chapters, not on Class 3 civics. "all" is the
+  // explicit way out, so the All chip still works once the default exists.
+  const gradeNum =
+    grade === "all"
+      ? null
+      : grade
+        ? Number(grade)
+        : enrolledGrade && grades.includes(enrolledGrade)
+          ? enrolledGrade
+          : null;
   const shown = gradeNum ? topics.filter((t) => t.classLevel === gradeNum) : topics;
 
   return (
@@ -65,10 +97,121 @@ export default async function PracticePage({
         />
       ) : (
         <>
+          {(resume || revision.length > 0 || weekly > 0) && (
+            <div className="grid gap-3 sm:grid-cols-3">
+              {resume && (
+                <Card interactive>
+                  <Link href={`/student/practice/${resume.slug}`} className="block h-full p-4">
+                    <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                      <PlayIcon weight="fill" className="size-3.5" />
+                      {t("practice.continueTitle")}
+                    </p>
+                    <p className="mt-1 font-semibold text-fg">{resume.name}</p>
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <Badge tone="accent" size="sm">
+                        {t(QUIZ_LEVELS[resume.level - 1]?.labelKey ?? "practice.level1")}
+                      </Badge>
+                      {resume.tierCount > 0 && (
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong">
+                          <MedalIcon weight="fill" className="size-3.5" />
+                          {resume.tierCount}/6
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-2 text-xs text-fg-muted">
+                      {resume.remainingForBadge !== null && resume.nextTierName
+                        ? t("practice.continueBadgeHint", {
+                            n: resume.remainingForBadge,
+                            tier: resume.nextTierName,
+                          })
+                        : t("practice.continueAllProven")}
+                    </p>
+                  </Link>
+                </Card>
+              )}
+              <Card>
+                <div className="p-4">
+                  <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                    <FlagIcon weight="fill" className="size-3.5" />
+                    {t("practice.goalTitle")}
+                  </p>
+                  <p className="mt-1 text-2xl font-bold text-fg">
+                    {Math.min(weekly, WEEKLY_GOAL)}
+                    <span className="text-sm font-medium text-fg-muted"> / {WEEKLY_GOAL}</span>
+                  </p>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-muted">
+                    <div
+                      className="h-full rounded-full bg-accent"
+                      style={{ width: `${Math.min(100, Math.round((weekly * 100) / WEEKLY_GOAL))}%` }}
+                    />
+                  </div>
+                  <p className="mt-2 text-xs text-fg-muted">
+                    {t("practice.goalHint", { n: weekly, goal: WEEKLY_GOAL })}
+                  </p>
+                </div>
+              </Card>
+              {revision.length > 0 && (
+                <Card interactive>
+                  <Link href="/student/practice/revision" className="block h-full p-4">
+                    <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                      <ClockCounterClockwiseIcon weight="fill" className="size-3.5" />
+                      {t("practice.revisionTitle")}
+                    </p>
+                    <p className="mt-1 text-2xl font-bold text-fg">{revision.length}</p>
+                    <p className="mt-2 text-xs text-fg-muted">
+                      {t("practice.revisionHint", { n: revision.length })}
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-accent-strong">
+                      {t("practice.revisionStart")} →
+                    </p>
+                  </Link>
+                </Card>
+              )}
+            </div>
+          )}
+
+          {assigned.length > 0 && (
+            <Card>
+              <div className="p-4">
+                <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                  <FlagIcon weight="duotone" className="size-3.5" />
+                  {t("practice.assignedTitle")}
+                </p>
+                <ul className="mt-2 divide-y divide-border">
+                  {assigned.map((a) => (
+                    <li key={a.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
+                      <Link
+                        href={`/student/practice/${a.topicSlug}`}
+                        className="min-w-0 font-medium text-fg hover:underline"
+                      >
+                        {a.topicName}
+                      </Link>
+                      <span className="flex items-center gap-2 text-xs">
+                        <span className="text-fg-muted">
+                          {t("practice.assignedTarget", { tier: a.targetTierName, level: a.targetLevel })}
+                        </span>
+                        {a.reached ? (
+                          <span className="inline-flex items-center gap-1 font-medium text-ok">
+                            <CheckCircleIcon weight="fill" className="size-3.5" />
+                            {t("practice.assignedReached")}
+                          </span>
+                        ) : (
+                          <span className="font-medium text-accent-strong">
+                            {t("practice.assignedKeepGoing")}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Card>
+          )}
+
           {subjects.length > 1 && (
             <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
               <Link
-                href={`/student/practice${gradeNum ? `?grade=${gradeNum}` : ""}`}
+                href={`/student/practice?grade=${gradeNum ?? "all"}`}
                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
@@ -78,7 +221,7 @@ export default async function PracticePage({
               {subjects.map((s) => (
                 <Link
                   key={s}
-                  href={`/student/practice?subject=${s}${gradeNum ? `&grade=${gradeNum}` : ""}`}
+                  href={`/student/practice?subject=${s}&grade=${gradeNum ?? "all"}`}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
@@ -92,7 +235,7 @@ export default async function PracticePage({
           {grades.length > 1 && (
             <nav aria-label={t("practice.allClasses")} className="flex flex-wrap gap-2">
               <Link
-                href={`/student/practice${subject ? `?subject=${subject}` : ""}`}
+                href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=all`}
                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                   !gradeNum ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}

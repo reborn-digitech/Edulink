@@ -13,6 +13,7 @@ import {
   type QuizLanguage,
 } from "@/lib/quiz";
 import type { ActiveContext } from "@/lib/session";
+import { reviseQuestion } from "@/lib/practice-insights";
 
 /**
  * Practice, from the child's side.
@@ -89,6 +90,43 @@ export async function reveal(
     const ctx = await requireApiRole("STUDENT");
     const revealed = await revealSolution(ctx, attemptId, questionId, languageOf(ctx));
     return { ok: true, ...revealed };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Smart revision — the child's own missed questions, re-served               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * One revision question. The answer goes through the SAME attempt machinery as
+ * ordinary practice — an attempt is opened (or resumed) on the question's own
+ * topic, so a revision answer moves the same mastery ladder and can earn the
+ * same badges. Revision is practice, not a parallel scoring system.
+ */
+export async function reviseServe(
+  questionId: string,
+): Promise<Ok<{ stem: string; choices: string[]; topicSlug: string }> | Failure> {
+  try {
+    const ctx = await requireApiRole("STUDENT");
+    const q = await reviseQuestion(ctx, questionId, languageOf(ctx));
+    return { ok: true, stem: q.stem, choices: q.choices, topicSlug: q.topicSlug };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function reviseAnswer(
+  questionId: string,
+  chosenIndex: number,
+): Promise<Ok<{ result: AnswerResult }> | Failure> {
+  try {
+    const ctx = await requireApiRole("STUDENT");
+    const q = await reviseQuestion(ctx, questionId, languageOf(ctx));
+    const { attemptId } = await startAttempt(ctx, q.topicSlug);
+    const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
+    return { ok: true, result };
   } catch (error) {
     return failure(error);
   }
