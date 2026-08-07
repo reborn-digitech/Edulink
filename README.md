@@ -2430,6 +2430,14 @@ navigation" means the actual list rather than one somebody maintained by hand.
   passed, build clean, **sweep 326/326** against a freshly started
   production server — and the database checked afterwards for fixture
   residue: **zero ZZ users** left behind by any test or walk.
+
+  **And once more after SSO landed** (see Next steps item 1): typecheck
+  clean, **1456/1456 across 85 files** — the seven new tests holding the
+  linking policy, the ID-token verification and Apple's client secret —
+  eslint 0 errors / 29 known warnings, i18n steady at 46/210, RLS all
+  checks passed with `SsoIdentity` joining the user-owned tables, build
+  clean, **sweep 326/326**, and the residue check extended to the new
+  table: **zero ZZ users, zero stray SsoIdentity rows**.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
