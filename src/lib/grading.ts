@@ -6,7 +6,7 @@ import { writeJson, type Attachment } from "./json";
 import { publish, channel } from "./realtime";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
-import { AccessError, assertAssignmentAccess, assertClassAccess } from "./tenancy";
+import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 
 /**
@@ -787,5 +787,63 @@ export async function getStudentWork(session: ActiveContext) {
   return {
     upcoming: mapped.filter((a) => a.scoreMilli === null),
     past: mapped.filter((a) => a.scoreMilli !== null).reverse(),
+  };
+}
+
+/**
+ * A child's homework diary, for their guardian. The same rows the child's own
+ * work page reads, minus the submission bodies — a parent needs "what is due,
+ * did it go in, was it late", not the text of the essay. Guardianship is
+ * asserted, not assumed.
+ */
+export async function childWork(parentUserId: string, studentMembershipId: string) {
+  const link = await assertGuardianAccess(parentUserId, studentMembershipId);
+  const schoolId = link.student.school.id;
+  const childName = link.student.user.preferredName ?? link.student.user.name;
+
+  const assignments = await db.assignment.findMany({
+    where: {
+      schoolId,
+      publishedAt: { not: null },
+      class: { enrollments: { some: { studentMembershipId, status: "ACTIVE" } } },
+    },
+    include: {
+      class: { select: { name: true } },
+      submissions: {
+        where: { studentMembershipId },
+        select: { submittedAt: true, status: true },
+      },
+      grades: {
+        where: { studentMembershipId },
+        select: { scoreMilli: true, comment: true },
+      },
+    },
+    orderBy: { dueAt: "asc" },
+    take: 100,
+  });
+
+  const now = Date.now();
+  const rows = assignments.map((assignment) => ({
+    id: assignment.id,
+    title: assignment.title,
+    category: assignment.category,
+    className: assignment.class.name,
+    pointsMilli: assignment.pointsMilli,
+    dueAt: assignment.dueAt,
+    submittedAt: assignment.submissions[0]?.submittedAt ?? null,
+    returned: assignment.submissions[0]?.status === "RETURNED",
+    scoreMilli: assignment.grades[0]?.scoreMilli ?? null,
+    comment: assignment.grades[0]?.comment ?? null,
+    overdue: Boolean(
+      assignment.dueAt &&
+        assignment.dueAt.getTime() < now &&
+        !assignment.submissions[0]?.submittedAt,
+    ),
+  }));
+
+  return {
+    childName,
+    upcoming: rows.filter((row) => row.scoreMilli === null),
+    past: rows.filter((row) => row.scoreMilli !== null).reverse(),
   };
 }

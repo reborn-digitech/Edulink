@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import { CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { schoolLeave, LEAVE_KIND_LABEL_KEY, LEAVE_STATUS_KEY, type LeaveKind, type LeaveStatus } from "@/lib/leave";
+import {
+  schoolLeave,
+  coverCandidates,
+  LEAVE_KIND_LABEL_KEY,
+  LEAVE_STATUS_KEY,
+  type LeaveKind,
+  type LeaveStatus,
+} from "@/lib/leave";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
@@ -96,6 +103,37 @@ export default async function PrincipalLeavePage() {
     name: person.user.preferredName ?? person.user.name,
   }));
 
+  /**
+   * The timetable's advice, per request: who is actually FREE for the
+   * applicant's lessons in that window. Computed here so the picker can rank
+   * free people first and say why, instead of offering the alphabet.
+   */
+  const suggestionsBy = new Map<
+    string,
+    { lessonCount: number; options: { membershipId: string; name: string; hint: string | null }[] }
+  >();
+  for (const request of pending) {
+    const { lessonCount, candidates } = await coverCandidates(
+      ctx,
+      request.applicantMembershipId,
+      request.fromDateKey,
+      request.toDateKey,
+    );
+    suggestionsBy.set(request.id, {
+      lessonCount,
+      options: candidates.map((candidate) => ({
+        membershipId: candidate.membershipId,
+        name: candidate.name,
+        hint:
+          lessonCount === 0
+            ? null
+            : candidate.clashes === 0
+              ? t("principalCover.free")
+              : t("principalCover.busy", { busy: candidate.clashes, total: lessonCount }),
+      })),
+    });
+  }
+
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
@@ -125,9 +163,12 @@ export default async function PrincipalLeavePage() {
               <li key={request.id}>
                 <DecideCard
                   request={request}
-                  staff={staffOptions.filter(
-                    (person) => person.membershipId !== request.applicantMembershipId,
-                  )}
+                  staff={
+                    suggestionsBy.get(request.id)?.options ??
+                    staffOptions
+                      .filter((person) => person.membershipId !== request.applicantMembershipId)
+                      .map((person) => ({ ...person, hint: null }))
+                  }
                   classesCovered={dutyCounts.get(request.applicantMembershipId) ?? 0}
                 />
               </li>

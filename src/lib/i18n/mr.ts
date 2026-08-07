@@ -49,6 +49,7 @@ export const mr: Dictionary = {
     staff: "कर्मचारी",
     timetable: "वेळापत्रक",
     exams: "परीक्षा",
+    homework: "गृहपाठ",
   },
 
   action: {
@@ -2954,6 +2955,27 @@ export const mr: Dictionary = {
     reasonSpam: "स्पॅम",
     reasonOther: "काहीतरी वेगळे",
   },
+  principalCover: {
+    free: "त्यांच्या सर्व तासिकांसाठी मोकळे",
+    busy: "{total} पैकी {busy} तासिकांमध्ये आधीच शिकवत आहेत",
+  },
+
+  diary: {
+    title: "गृहपाठ",
+    headline: "{name} चा गृहपाठ",
+    intro: "काय दिले गेले, जमा झाले का, आणि काय परत आले.",
+    emptyTitle: "अजून काही दिलेले नाही",
+    emptyBody: "शिक्षक {name} ला गृहपाठ देतील तेव्हा तो इथे दिसेल.",
+    openTitle: "खुले",
+    openEmpty: "काहीही बाकी नाही. डायरी मोकळी आहे.",
+    markedTitle: "तपासलेले",
+    markedEmpty: "अजून काही तपासलेले नाही.",
+    due: "देय",
+    handedIn: "जमा झाले",
+    overdue: "वेळ उलटली",
+    notYet: "अजून जमा झाले नाही",
+  },
+
   attendanceIntel: {
     title: "हजेरी अंतर्दृष्टी",
     intro:

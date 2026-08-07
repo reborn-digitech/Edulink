@@ -52,6 +52,7 @@ export const en = {
     staff: "Staff",
     timetable: "Timetable",
     exams: "Exams",
+    homework: "Homework",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -3331,6 +3332,27 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  principalCover: {
+    free: "free for all their lessons",
+    busy: "already teaching through {busy} of {total} lessons",
+  },
+
+  diary: {
+    title: "Homework",
+    headline: "{name}'s homework",
+    intro: "What has been set, whether it went in, and what came back.",
+    emptyTitle: "Nothing set yet",
+    emptyBody: "When a teacher sets {name} homework, it will appear here.",
+    openTitle: "Open",
+    openEmpty: "Nothing outstanding. The diary is clear.",
+    markedTitle: "Marked",
+    markedEmpty: "Nothing has been marked yet.",
+    due: "due",
+    handedIn: "Handed in",
+    overdue: "Overdue",
+    notYet: "Not handed in yet",
+  },
+
   attendanceIntel: {
     title: "Attendance insights",
     intro:

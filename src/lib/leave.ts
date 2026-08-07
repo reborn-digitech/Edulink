@@ -4,6 +4,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { arrangeCover } from "./register-duty";
+import { dateKeyRange, weekdayOfKey } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -561,4 +562,106 @@ function spanDays(fromKey: string, toKey: string): number {
   const to = Date.parse(`${toKey}T00:00:00Z`);
   if (Number.isNaN(from) || Number.isNaN(to)) return 0;
   return Math.round((to - from) / 86_400_000) + 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Who could actually cover                                                    */
+/* -------------------------------------------------------------------------- */
+
+export type CoverCandidate = {
+  membershipId: string;
+  name: string;
+  /** Of the absent teacher's lessons in the window, how many this person is
+   * already teaching through. Zero means genuinely free for all of them. */
+  clashes: number;
+  /** Their own weekly teaching load, the tiebreak between two free people. */
+  load: number;
+};
+
+export type CoverSuggestions = {
+  /** Distinct (weekday, period) lessons of the applicant's inside the window. */
+  lessonCount: number;
+  candidates: CoverCandidate[];
+};
+
+/**
+ * Rank the staff room by who is actually free for the absent teacher's
+ * lessons. The picker used to be an alphabet; the timetable knows better —
+ * a candidate already teaching 7B through three of the four lessons is a
+ * worse answer than one who is free for all of them, whatever the alphabet
+ * says. Advice, not a decision: every member of staff stays choosable.
+ */
+export async function coverCandidates(
+  ctx: ActiveContext,
+  applicantMembershipId: string,
+  fromDateKey: string,
+  toDateKey: string,
+): Promise<CoverSuggestions> {
+  if ((ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") || !ctx.schoolId) {
+    throw new AccessError("access.onlyThePrincipalOrAnAdminCan");
+  }
+
+  // The weekdays this leave actually touches — a Monday-only absence needs
+  // nobody free on Thursday. Capped: past a fortnight every weekday is in.
+  const weekdays = new Set(dateKeyRange(fromDateKey, toDateKey, 14).map(weekdayOfKey));
+
+  const [applicantSlots, staff, allSlots] = await Promise.all([
+    db.timetableSlot.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        teacherMembershipId: applicantMembershipId,
+        class: { archivedAt: null },
+      },
+      select: { weekday: true, periodId: true },
+    }),
+    db.membership.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        role: { in: ["TEACHER", "PRINCIPAL"] },
+        status: "ACTIVE",
+        leftAt: null,
+        id: { not: applicantMembershipId },
+      },
+      select: { id: true, user: { select: { name: true, preferredName: true } } },
+      take: 500,
+    }),
+    db.timetableSlot.findMany({
+      where: {
+        schoolId: ctx.schoolId,
+        teacherMembershipId: { not: null },
+        class: { archivedAt: null },
+      },
+      select: { teacherMembershipId: true, weekday: true, periodId: true },
+    }),
+  ]);
+
+  const needed = new Set(
+    applicantSlots
+      .filter((slot) => weekdays.has(slot.weekday))
+      .map((slot) => `${slot.weekday}:${slot.periodId}`),
+  );
+
+  const clashesBy = new Map<string, Set<string>>();
+  const loadBy = new Map<string, number>();
+  for (const slot of allSlots) {
+    const who = slot.teacherMembershipId!;
+    loadBy.set(who, (loadBy.get(who) ?? 0) + 1);
+    const key = `${slot.weekday}:${slot.periodId}`;
+    if (needed.has(key)) {
+      const set = clashesBy.get(who) ?? new Set<string>();
+      set.add(key);
+      clashesBy.set(who, set);
+    }
+  }
+
+  const candidates = staff
+    .map((person) => ({
+      membershipId: person.id,
+      name: person.user.preferredName ?? person.user.name,
+      clashes: clashesBy.get(person.id)?.size ?? 0,
+      load: loadBy.get(person.id) ?? 0,
+    }))
+    .sort((a, b) => a.clashes - b.clashes || a.load - b.load || a.name.localeCompare(b.name));
+
+  return { lessonCount: needed.size, candidates };
 }

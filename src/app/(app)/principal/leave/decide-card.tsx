@@ -28,7 +28,8 @@ export function DecideCard({
   classesCovered,
 }: {
   request: LeaveRow;
-  staff: { membershipId: string; name: string }[];
+  /** Ranked by the timetable: free people first, each with a why. */
+  staff: { membershipId: string; name: string; hint: string | null }[];
   /**
    * How many CLASSES this person is due in — the registers they mark and the
    * lessons they teach, de-duplicated. Exactly the number of cover rows
@@ -117,6 +118,7 @@ export function DecideCard({
             {staff.map((person) => (
               <option key={person.membershipId} value={person.membershipId}>
                 {person.name}
+                {person.hint ? ` — ${person.hint}` : ""}
               </option>
             ))}
           </select>
