@@ -4,6 +4,7 @@ import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
 import { SUBJECT_LABEL, type QuizSubject } from "@/lib/quiz";
 import { formatDateKey } from "@/lib/dates";
+import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -147,9 +148,11 @@ export default async function ReportCardPage({
                       // mark of nought, and the card must not imply it was.
                       <span className="text-fg-muted print:text-black/50">not marked</span>
                     ) : (
+                      // formatMilli keeps a deliberate half-mark as 67.5 —
+                      // toFixed(0) showed a number no teacher entered.
                       <>
-                        {(item.scoreMilli / 1000).toFixed(0)}
-                        {item.pointsMilli ? ` / ${(item.pointsMilli / 1000).toFixed(0)}` : ""}
+                        {formatMilli(item.scoreMilli)}
+                        {item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}
                       </>
                     )}
                   </td>

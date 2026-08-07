@@ -2024,6 +2024,7 @@ export const mr: Dictionary = {
     lastFourWeeks: "मागचे 4 आठवडे",
     nothingGradedYet: "अजून काहीही तपासलेले नाही",
     acrossPieces: "{count} कामांवर आधारित",
+    acrossPiecesOne: "1 कामावर आधारित",
     streakStart: "पुढच्या शाळेच्या दिवसापासून सुरू",
     streakDays: "सलग {count} शाळेचे दिवस",
     recentAttendance: "अलीकडची हजेरी",
@@ -2967,6 +2968,12 @@ export const mr: Dictionary = {
     reasonSpam: "स्पॅम",
     reasonOther: "काहीतरी वेगळे",
   },
+  notFound: {
+    title: "ते पान इथे नाही",
+    body: "दुवा जुना असू शकतो, किंवा तो ज्याकडे निर्देश करत होता ते हलले असेल. काहीही बिघडलेले नाही.",
+    home: "सुरुवातीला परत जा",
+  },
+
   welcomeTour: {
     title: "स्वागत आहे",
     intro:
@@ -3110,6 +3117,7 @@ export const mr: Dictionary = {
     fieldStart: "सुरुवात",
     fieldEnd: "शेवट",
     addPaper: "पेपर जोडा",
+    removePaper: "{subject} चा पेपर काढा",
     sheetTitle: "परीक्षा",
     sheetIntro: "तुमच्याशी संबंधित परीक्षांच्या प्रकाशित डेट-शीट.",
     sheetEmptyTitle: "कोणतीही परीक्षा जाहीर नाही",

@@ -236,7 +236,13 @@ export default async function ParentDashboard({
           value={averagePercent === null ? "—" : `${averagePercent}%`}
           tone={averagePercent === null ? "neutral" : averagePercent >= 70 ? "ok" : "warn"}
           icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          hint={scored.length === 0 ? t("parent.nothingGradedYet") : t("parent.acrossPieces", { count: scored.length })}
+          hint={
+            scored.length === 0
+              ? t("parent.nothingGradedYet")
+              : scored.length === 1
+                ? t("parent.acrossPiecesOne")
+                : t("parent.acrossPieces", { count: scored.length })
+          }
         />
         <StatTile
           label={t("parent.streak")}

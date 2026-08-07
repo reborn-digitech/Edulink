@@ -11,7 +11,16 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
 import { getT } from "@/lib/i18n/server";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type Role } from "@/lib/constants";
+
+/* Same keys the feed card uses — the deep link must not say less than the
+   card the reader clicked. */
+const AUDIENCE_LABEL: Record<string, TranslationKey> = {
+  PARENTS: "bulletin.forParents",
+  TEACHERS: "bulletin.forTeachers",
+  STUDENTS: "bulletin.forStudents",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -77,6 +86,10 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
             <p className="text-xs text-fg-muted">
               {post.scope === "CLASS" ? (post.class?.name ?? t("bulletin.classField")) : t("bulletin.wholeSchool")} ·{" "}
               {relativeTime(post.createdAt)}
+              {post.audience !== "ALL" && AUDIENCE_LABEL[post.audience] && (
+                <> · {t(AUDIENCE_LABEL[post.audience]!)}</>
+              )}
+              {post.audienceGrade && <> · {t("practice.classN", { n: post.audienceGrade })}</>}
             </p>
           </div>
           {post.status !== "APPROVED" && (

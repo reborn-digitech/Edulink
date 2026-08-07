@@ -2248,6 +2248,7 @@ export const en = {
     // `{count}` is substituted by format(); see the note at the top of this
     // file on why there is no plural machinery.
     acrossPieces: "Across {count} pieces",
+    acrossPiecesOne: "Across 1 piece",
     streakStart: "Starts on the next day in",
     streakDays: "{count} school days in a row",
     recentAttendance: "Recent attendance",
@@ -3344,6 +3345,12 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  notFound: {
+    title: "That page is not here",
+    body: "The link may be old, or the thing it pointed at may have moved. Nothing is broken.",
+    home: "Back to the start",
+  },
+
   welcomeTour: {
     title: "Welcome",
     intro:
@@ -3487,6 +3494,7 @@ export const en = {
     fieldStart: "Starts",
     fieldEnd: "Ends",
     addPaper: "Add a paper",
+    removePaper: "Remove the {subject} paper",
     sheetTitle: "Exams",
     sheetIntro: "Published date sheets for the exams that concern you.",
     sheetEmptyTitle: "No exams announced",

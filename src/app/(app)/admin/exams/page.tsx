@@ -171,7 +171,14 @@ export default async function AdminExamsPage({
                           <td className="py-2.5 text-right">
                             <form action={removeSlotAction}>
                               <input type="hidden" name="slotId" value={slot.id} />
-                              <Button type="submit" size="sm" variant="ghost">
+                              {/* Named per paper: a column of bare "Remove"
+                                  buttons is unreadable to a screen reader. */}
+                              <Button
+                                type="submit"
+                                size="sm"
+                                variant="ghost"
+                                aria-label={t("exams.removePaper", { subject: slot.subject })}
+                              >
                                 {t("common.remove")}
                               </Button>
                             </form>

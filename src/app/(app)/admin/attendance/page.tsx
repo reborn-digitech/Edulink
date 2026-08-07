@@ -44,7 +44,15 @@ export default async function AdminAttendancePage({
       select: { id: true, name: true },
     }),
   ]);
-  const maxPercent = Math.max(1, ...trend.map((p) => p.percent ?? 0));
+  // Bars scale across the RANGE the data actually spans, not from zero —
+  // school attendance lives between 75% and 100%, and zero-anchored bars
+  // rendered 81% and 100% visually identical. A floor of 12px keeps the
+  // lowest week a bar rather than a sliver.
+  const percents = trend.map((p) => p.percent).filter((p): p is number => p !== null);
+  const lowest = percents.length > 0 ? Math.min(...percents) : 0;
+  const span = Math.max(1, (percents.length > 0 ? Math.max(...percents) : 0) - lowest);
+  const barHeight = (percent: number | null) =>
+    percent === null ? 4 : 12 + ((percent - lowest) / span) * 84;
   const thisMonth = new Date().toISOString().slice(0, 7);
 
   return (
@@ -89,9 +97,7 @@ export default async function AdminAttendancePage({
                 </span>
                 <div
                   className="w-full rounded-t-md bg-accent-soft"
-                  style={{
-                    height: `${point.percent === null ? 4 : Math.max(6, (point.percent / maxPercent) * 96)}px`,
-                  }}
+                  style={{ height: `${barHeight(point.percent)}px` }}
                 />
                 <span className="text-[10px] text-fg-muted">{point.label}</span>
               </div>

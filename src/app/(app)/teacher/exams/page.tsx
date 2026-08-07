@@ -48,7 +48,9 @@ export default async function TeacherExamsPage({
   const slots = selectedClass.series.flatMap((s) =>
     s.slots.map((slot) => ({ ...slot, seriesName: s.name })),
   );
-  const selectedSlot = slots.find((s) => s.id === requestedSlot) ?? null;
+  // The first paper self-selects: chips over dead space made a teacher's
+  // first visit a guessing game.
+  const selectedSlot = slots.find((s) => s.id === requestedSlot) ?? slots[0] ?? null;
 
   const grid = selectedSlot ? await marksGrid(ctx, selectedSlot.id, selectedClass.id) : null;
 

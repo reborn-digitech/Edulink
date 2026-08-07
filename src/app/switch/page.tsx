@@ -153,7 +153,13 @@ function ContextButton({
 }) {
   return (
     <Card interactive data-role={role.toLowerCase()} className="overflow-hidden">
-      <button type="submit" className="flex w-full items-center gap-3 p-4 text-left">
+      {/* Explicit name, not contents: the walk's accessibility pass read these
+          two buttons as nameless. */}
+      <button
+        type="submit"
+        aria-label={`${subtitle} — ${title}`}
+        className="flex w-full items-center gap-3 p-4 text-left"
+      >
         <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-accent-soft text-sm font-bold uppercase text-accent-strong">
           {title.slice(0, 2)}
         </span>

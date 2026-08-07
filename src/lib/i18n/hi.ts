@@ -2027,6 +2027,7 @@ export const hi: Dictionary = {
     lastFourWeeks: "पिछले 4 हफ़्ते",
     nothingGradedYet: "अभी कुछ भी जाँचा नहीं गया",
     acrossPieces: "{count} कामों के आधार पर",
+    acrossPiecesOne: "1 काम के आधार पर",
     streakStart: "अगले स्कूल दिन से शुरू",
     streakDays: "लगातार {count} स्कूल दिन",
     recentAttendance: "हाल की हाज़िरी",
@@ -2970,6 +2971,12 @@ export const hi: Dictionary = {
     reasonSpam: "स्पैम",
     reasonOther: "कुछ और",
   },
+  notFound: {
+    title: "वह पन्ना यहाँ नहीं है",
+    body: "लिंक पुराना हो सकता है, या जिस चीज़ की ओर वह इशारा करता था वह हट गई होगी। कुछ टूटा नहीं है।",
+    home: "शुरुआत पर लौटें",
+  },
+
   welcomeTour: {
     title: "स्वागत है",
     intro:
@@ -3113,6 +3120,7 @@ export const hi: Dictionary = {
     fieldStart: "प्रारंभ",
     fieldEnd: "समाप्ति",
     addPaper: "प्रश्नपत्र जोड़ें",
+    removePaper: "{subject} का प्रश्नपत्र हटाएँ",
     sheetTitle: "परीक्षाएँ",
     sheetIntro: "आपसे जुड़ी परीक्षाओं की प्रकाशित डेट-शीट।",
     sheetEmptyTitle: "कोई परीक्षा घोषित नहीं",

@@ -70,7 +70,9 @@ export default async function WorksheetPrintPage({
           <h1 className="text-xl font-bold tracking-tight text-fg print:text-black">{heading}</h1>
           <p className="mt-1 text-sm text-fg-muted print:text-black/70">
             {t("practice.classN", { n: sheet.classLevel })} ·{" "}
-            {SUBJECT_LABEL[sheet.subject] ?? sheet.subject} ·{" "}
+            {/* The English half of the bilingual label — "Ganit · Maths" read
+                as two subjects on a printed header. */}
+            {(SUBJECT_LABEL[sheet.subject] ?? sheet.subject).split(" · ").pop()} ·{" "}
             {t("worksheets.paperMeta", { count: sheet.questions.length, seed: sheet.seed })}
           </p>
           <p className="mt-3 text-sm text-fg-muted print:text-black/70">

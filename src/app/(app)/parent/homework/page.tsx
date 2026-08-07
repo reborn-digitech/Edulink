@@ -4,6 +4,7 @@ import { requireParent } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { childWork } from "@/lib/grading";
 import { formatInZone } from "@/lib/dates";
+import { formatMilli } from "@/lib/validation";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "../child-switcher";
@@ -117,9 +118,11 @@ export default async function ParentHomeworkPage({
                     <li key={item.id} className="px-5 py-3">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="font-medium text-fg">{item.title}</p>
+                        {/* formatMilli keeps a deliberate half-mark as 67.5 —
+                            toFixed(0) silently showed it as a different number. */}
                         <span className="text-sm font-semibold tabular-nums text-fg">
-                          {item.scoreMilli === null ? "—" : (item.scoreMilli / 1000).toFixed(0)}
-                          {item.pointsMilli ? ` / ${(item.pointsMilli / 1000).toFixed(0)}` : ""}
+                          {formatMilli(item.scoreMilli)}
+                          {item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}
                         </span>
                       </div>
                       <p className="text-xs text-fg-muted">

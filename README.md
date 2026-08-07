@@ -2393,6 +2393,18 @@ navigation" means the actual list rather than one somebody maintained by hand.
   falling back safely, and the Oakfield chip switching the feed. Sweep grew
   to **326/326**.
 
+  The walk's smaller findings were then swept in one pass: the post detail
+  page carries the same "For parents · Class 5" chips as the feed card; half
+  marks stopped rounding away (67.5 is 67.5 on the diary and the report card,
+  via the `formatMilli` the rest of the app already used); the first exam
+  paper self-selects on /teacher/exams; the attendance trend bars scale
+  across the range the data actually spans instead of from zero; the
+  worksheet header prints one subject name, not two; the role-switcher cards
+  and the per-paper Remove buttons carry explicit accessible names;
+  "Across 1 pieces" reads "Across 1 piece"; and the bare framework 404 became
+  a styled, translated page that deliberately says no more than "not found" —
+  which is also what a thing you may not see answers.
+
   **The whole battery was then re-run cold, end to end, on a fresh build** —
   typecheck, 1449/1449, eslint 0/29, i18n 46/210, RLS all checks passed,
   build clean, sweep 325/325 against a freshly started production server —
