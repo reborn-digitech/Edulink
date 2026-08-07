@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
+import { db } from "@/lib/db";
 import { postableClasses } from "@/lib/bulletin";
 import { ComposeForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
@@ -34,6 +35,20 @@ export default async function NewPostPage() {
   const classes = await postableClasses(session);
   const isStudent = session.role === "STUDENT";
 
+  // The grades a staff notice can be narrowed to — the grades the school's
+  // live classes actually name. Students never target, so they never pay for it.
+  const grades = isStudent
+    ? []
+    : (
+        await db.class.findMany({
+          where: { schoolId: session.schoolId, archivedAt: null, gradeLevel: { not: null } },
+          select: { gradeLevel: true },
+          distinct: ["gradeLevel"],
+        })
+      )
+        .map((c) => c.gradeLevel!)
+        .sort((a, b) => Number(a) - Number(b) || a.localeCompare(b));
+
   if (isStudent && classes.length === 0) {
     return (
       <EmptyState
@@ -63,6 +78,7 @@ export default async function NewPostPage() {
       <ComposeForm
         className="mt-7"
         classes={classes}
+        grades={grades}
         role={session.role}
         // Students cannot post school-wide without an admin reviewing it, and
         // admins are the only ones who should be addressing the whole school

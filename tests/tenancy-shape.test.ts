@@ -86,7 +86,12 @@ const DIRECT = [
   "Membership",
   "Notification",
   "Post",
+  "PostAck",
   "Reaction",
+  "ExamSeries",
+  "ExamSlot",
+  "MeetingSlot",
+  "MeetingBooking",
   "RemarkMessage",
   "RemarkThread",
   "Report",
@@ -150,7 +155,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(57);
+    ).toBe(62);
   });
 });
 

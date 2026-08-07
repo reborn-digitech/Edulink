@@ -48,7 +48,15 @@ export type FeedPost = {
   myReactions: ReactionKind[];
   canModerate: boolean;
   mine: boolean;
+  audience: PostAudience;
+  audienceGrade: string | null;
+  requiresAck: boolean;
+  acked: boolean;
+  ackCount: number;
 };
+
+export const POST_AUDIENCES = ["ALL", "PARENTS", "TEACHERS", "STUDENTS"] as const;
+export type PostAudience = (typeof POST_AUDIENCES)[number];
 
 /* -------------------------------------------------------------------------- */
 /* Reading                                                                     */
@@ -61,13 +69,20 @@ export type FeedPost = {
  * of that, an author sees their own posts in any state, and staff see the
  * pending queue. Nobody else ever sees a PENDING or REJECTED student post.
  */
-function visibilityWhere(session: ActiveContext, classIds: string[]): Prisma.PostWhereInput {
+function visibilityWhere(
+  session: ActiveContext,
+  classIds: string[],
+  grades: string[],
+): Prisma.PostWhereInput {
   const { schoolId, user, role } = session;
 
   const approved: Prisma.PostWhereInput = {
     schoolId,
     status: "APPROVED",
-    OR: [{ scope: "SCHOOL" }, { scope: "CLASS", classId: { in: classIds } }],
+    AND: [
+      { OR: [{ scope: "SCHOOL" }, { scope: "CLASS", classId: { in: classIds } }] },
+      ...audienceWhere(role, grades),
+    ],
   };
 
   const mine: Prisma.PostWhereInput = { schoolId, authorUserId: user.id };
@@ -88,6 +103,56 @@ function visibilityWhere(session: ActiveContext, classIds: string[]): Prisma.Pos
   }
   // Students and parents: approved, plus a student's own drafts/pending.
   return { OR: [approved, mine] };
+}
+
+/**
+ * The audience filter — a COURTESY, not a secrecy boundary. RLS still lets the
+ * whole school read the row; this only keeps a sports-day notice for Grade 5
+ * families out of a Grade 9 teenager's feed. Staff keep seeing TEACHERS posts
+ * plus everything untargeted; admins are filtered nowhere.
+ */
+function audienceWhere(role: Role | null, grades: string[]): Prisma.PostWhereInput[] {
+  if (role === "ADMIN") return [];
+  if (role === "TEACHER" || role === "PRINCIPAL") {
+    return [{ audience: { in: ["ALL", "TEACHERS"] } }];
+  }
+  const audiences = role === "PARENT" ? ["ALL", "PARENTS"] : ["ALL", "STUDENTS"];
+  return [
+    { audience: { in: audiences } },
+    { OR: [{ audienceGrade: null }, { audienceGrade: { in: grades } }] },
+  ];
+}
+
+/**
+ * The grades this reader is connected to: a pupil's own classes' grades, or —
+ * for a guardian — the grades of every child of theirs enrolled at this school.
+ * Staff never need the answer, so this stays cheap for the roles that do.
+ */
+async function gradesFor(session: ActiveContext): Promise<string[]> {
+  const { schoolId, membershipId, role, user } = session;
+  if (!schoolId) return [];
+
+  if (role === "STUDENT" && membershipId) {
+    const rows = await db.enrollment.findMany({
+      where: { studentMembershipId: membershipId, status: "ACTIVE", class: { schoolId } },
+      select: { class: { select: { gradeLevel: true } } },
+    });
+    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
+  }
+  if (role === "PARENT") {
+    const rows = await db.enrollment.findMany({
+      where: {
+        status: "ACTIVE",
+        class: { schoolId },
+        student: {
+          guardianships: { some: { parentUserId: user.id, status: "ACTIVE" } },
+        },
+      },
+      select: { class: { select: { gradeLevel: true } } },
+    });
+    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
+  }
+  return [];
 }
 
 async function classIdsFor(session: ActiveContext): Promise<string[]> {
@@ -122,7 +187,8 @@ export async function listFeed(
   if (!session.schoolId) return [];
 
   const classIds = await classIdsFor(session);
-  const base = visibilityWhere(session, classIds);
+  const grades = await gradesFor(session);
+  const base = visibilityWhere(session, classIds, grades);
 
   const where: Prisma.PostWhereInput = {
     AND: [
@@ -143,7 +209,8 @@ export async function listFeed(
       authorship: { select: { role: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
-      _count: { select: { comments: true } },
+      acks: { where: { userId: session.user.id }, select: { id: true } },
+      _count: { select: { comments: true, acks: true } },
     },
     // Pinned first, then newest. Two keys so a pinned post does not need its
     // createdAt fudged to stay at the top.
@@ -181,6 +248,11 @@ export async function listFeed(
       myReactions,
       canModerate,
       mine: post.authorUserId === session.user.id,
+      audience: post.audience as PostAudience,
+      audienceGrade: post.audienceGrade,
+      requiresAck: post.requiresAck,
+      acked: post.acks.length > 0,
+      ackCount: post._count.acks,
     };
   });
 }
@@ -207,13 +279,16 @@ export async function pendingCount(session: ActiveContext): Promise<number> {
 
 export async function getPost(session: ActiveContext, postId: string) {
   const classIds = await classIdsFor(session);
+  const grades = await gradesFor(session);
   const post = await db.post.findFirst({
-    where: { AND: [{ id: postId }, visibilityWhere(session, classIds)] },
+    where: { AND: [{ id: postId }, visibilityWhere(session, classIds, grades)] },
     include: {
       author: { select: { id: true, name: true, preferredName: true, avatarKey: true } },
       authorship: { select: { role: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
+      acks: { where: { userId: session.user.id }, select: { id: true } },
+      _count: { select: { acks: true } },
       comments: {
         where:
           session.role === "ADMIN" || session.role === "TEACHER"
@@ -258,10 +333,26 @@ export async function createPost(
     body: string;
     tags: string[];
     media: MediaItem[];
+    audience?: PostAudience;
+    audienceGrade?: string;
+    requiresAck?: boolean;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
   const { schoolId, membershipId, role, user } = session;
   if (!schoolId || !role) throw new AccessError("access.noActiveSchoolSelected");
+
+  // Targeting and "seen and understood" are staff instruments — a circular is
+  // something the SCHOOL sends. A student post is for everyone, always.
+  const isStaff = role === "ADMIN" || role === "PRINCIPAL" || role === "TEACHER";
+  const audience: PostAudience =
+    isStaff && input.audience && POST_AUDIENCES.includes(input.audience) ? input.audience : "ALL";
+  // A grade filter only means something on a school-wide notice aimed at pupils
+  // or their families; a class post already names its readers.
+  const audienceGrade =
+    isStaff && input.scope === "SCHOOL" && audience !== "TEACHERS"
+      ? input.audienceGrade?.trim() || null
+      : null;
+  const requiresAck = isStaff && input.requiresAck === true;
 
   // GLOBAL (cross-school) posting is not built. Refuse rather than silently
   // downgrading it to a school post, which would put a child's work somewhere
@@ -307,6 +398,9 @@ export async function createPost(
       body: input.body,
       tags: writeJson(input.tags),
       media: writeJson(input.media),
+      audience,
+      audienceGrade,
+      requiresAck,
       status,
       reviewedAt: status === "APPROVED" ? new Date() : null,
       reviewedByMembershipId: status === "APPROVED" ? membershipId : null,
@@ -481,8 +575,9 @@ export async function toggleReaction(
   kind: ReactionKind,
 ): Promise<{ added: boolean }> {
   const classIds = await classIdsFor(session);
+  const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
-    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds)] },
+    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds, grades)] },
     select: { id: true, schoolId: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
@@ -509,8 +604,9 @@ export async function addComment(
   body: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
   const classIds = await classIdsFor(session);
+  const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
-    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds)] },
+    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds, grades)] },
     select: { id: true, authorUserId: true, schoolId: true, title: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
@@ -590,6 +686,140 @@ export async function reportContent(
     targetType: input.targetType,
     targetId: input.targetId,
     meta: { reason: input.reason },
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Acknowledgements                                                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * One tap: "seen and understood". Idempotent — tapping twice because the first
+ * tap felt uncertain must read as success, the same stance reportContent takes.
+ */
+export async function acknowledgePost(session: ActiveContext, postId: string): Promise<void> {
+  const classIds = await classIdsFor(session);
+  const grades = await gradesFor(session);
+  const visible = await db.post.findFirst({
+    where: {
+      AND: [{ id: postId, status: "APPROVED", requiresAck: true }, visibilityWhere(session, classIds, grades)],
+    },
+    select: { id: true, schoolId: true },
+  });
+  if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
+
+  await db.postAck.upsert({
+    where: { postId_userId: { postId, userId: session.user.id } },
+    update: {},
+    create: { postId, userId: session.user.id, schoolId: schoolOf(visible) },
+  });
+}
+
+export type AckGroup = {
+  classId: string | null;
+  className: string;
+  total: number;
+  reached: number;
+  outstanding: string[];
+};
+
+/**
+ * Who a circular has reached, for the staff who sent it — grouped by class,
+ * because "chase up 5B" is the action a school can actually take.
+ *
+ * THE UNIT IS THE CHILD'S FAMILY, not the tapping finger: for a PARENTS
+ * circular a pupil counts as reached when ANY of their guardians acknowledged;
+ * for ALL, when the pupil or any guardian did. This is a delivery checklist —
+ * naming who has not seen a notice is the whole point, and nothing here ranks
+ * anybody.
+ *
+ * A teacher sees only their own classes; an admin sees every class. A TEACHERS
+ * circular has no classes to group by, so it comes back as one staff group.
+ */
+export async function ackReport(session: ActiveContext, postId: string): Promise<AckGroup[]> {
+  const { schoolId, membershipId, role } = session;
+  if (!schoolId || (role !== "ADMIN" && role !== "TEACHER")) {
+    throw new AccessError("access.postNotFound", "NOT_FOUND");
+  }
+
+  const post = await db.post.findFirst({
+    where: { id: postId, schoolId, requiresAck: true, status: "APPROVED" },
+    select: { id: true, audience: true, audienceGrade: true },
+  });
+  if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
+
+  const acks = await db.postAck.findMany({ where: { postId }, select: { userId: true } });
+  const ackSet = new Set(acks.map((a) => a.userId));
+
+  if (post.audience === "TEACHERS") {
+    // Staff notice: one group, every active teacher and admin by name.
+    const staff = await db.membership.findMany({
+      where: { schoolId, role: { in: ["ADMIN", "TEACHER"] }, status: "ACTIVE" },
+      select: { userId: true, user: { select: { name: true, preferredName: true } } },
+    });
+    // A user with two staff memberships is still one reader.
+    const byUser = new Map(staff.map((m) => [m.userId, m.user.preferredName ?? m.user.name]));
+    const outstanding = [...byUser.entries()].filter(([id]) => !ackSet.has(id)).map(([, name]) => name);
+    return [
+      {
+        classId: null,
+        className: "",
+        total: byUser.size,
+        reached: byUser.size - outstanding.length,
+        outstanding: outstanding.sort(),
+      },
+    ];
+  }
+
+  const classes = await db.class.findMany({
+    where: {
+      schoolId,
+      archivedAt: null,
+      ...(post.audienceGrade ? { gradeLevel: post.audienceGrade } : {}),
+      ...(role === "TEACHER" ? { teachers: { some: { teacherMembershipId: membershipId ?? "" } } } : {}),
+    },
+    orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      enrollments: {
+        where: { status: "ACTIVE" },
+        select: {
+          student: {
+            select: {
+              id: true,
+              userId: true,
+              user: { select: { name: true, preferredName: true } },
+              guardianships: { where: { status: "ACTIVE" }, select: { parentUserId: true } },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return classes.map((klass) => {
+    const outstanding: string[] = [];
+    let reached = 0;
+    for (const { student } of klass.enrollments) {
+      const guardianAcked = student.guardianships.some((g) => ackSet.has(g.parentUserId));
+      const pupilAcked = ackSet.has(student.userId);
+      const ok =
+        post.audience === "PARENTS"
+          ? guardianAcked
+          : post.audience === "STUDENTS"
+            ? pupilAcked
+            : pupilAcked || guardianAcked;
+      if (ok) reached += 1;
+      else outstanding.push(student.user.preferredName ?? student.user.name);
+    }
+    return {
+      classId: klass.id,
+      className: klass.name,
+      total: klass.enrollments.length,
+      reached,
+      outstanding: outstanding.sort(),
+    };
   });
 }
 

@@ -24,11 +24,13 @@ const MAX_PICTURES = 10;
 
 export function ComposeForm({
   classes,
+  grades,
   role,
   allowSchoolWide,
   className,
 }: {
   classes: { id: string; name: string }[];
+  grades: string[];
   role: Role;
   allowSchoolWide: boolean;
   className?: string;
@@ -42,6 +44,9 @@ export function ComposeForm({
     classes.length > 0 ? "CLASS" : "SCHOOL",
   );
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
+  const [audience, setAudience] = useState<"ALL" | "PARENTS" | "TEACHERS" | "STUDENTS">("ALL");
+  const [audienceGrade, setAudienceGrade] = useState("");
+  const [requiresAck, setRequiresAck] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState<string[]>([]);
@@ -167,6 +172,9 @@ export function ComposeForm({
       const payload = new FormData();
       payload.set("scope", scope);
       payload.set("classId", scope === "CLASS" ? classId : "");
+      payload.set("audience", scope === "SCHOOL" ? audience : "ALL");
+      payload.set("audienceGrade", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceGrade : "");
+      payload.set("requiresAck", requiresAck ? "on" : "");
       payload.set("title", title.trim());
       payload.set("body", body.trim());
       for (const tag of tags) payload.append("tags", tag);
@@ -271,6 +279,54 @@ export function ComposeForm({
             </option>
           ))}
         </SelectField>
+      )}
+
+      {/* A school-wide notice can be aimed: "Grade 5 parents" instead of
+          everyone-or-nothing. Staff only — a student post is for everyone. */}
+      {role !== "STUDENT" && scope === "SCHOOL" && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          <SelectField
+            label={t("bulletin.audienceLabel")}
+            value={audience}
+            onChange={(e) => setAudience(e.target.value as typeof audience)}
+          >
+            <option value="ALL">{t("bulletin.audienceAll")}</option>
+            <option value="PARENTS">{t("bulletin.audienceParents")}</option>
+            <option value="STUDENTS">{t("bulletin.audienceStudents")}</option>
+            <option value="TEACHERS">{t("bulletin.audienceTeachers")}</option>
+          </SelectField>
+          {audience !== "TEACHERS" && grades.length > 0 && (
+            <SelectField
+              label={t("bulletin.audienceGradeLabel")}
+              value={audienceGrade}
+              onChange={(e) => setAudienceGrade(e.target.value)}
+            >
+              <option value="">{t("bulletin.audienceGradeAny")}</option>
+              {grades.map((grade) => (
+                <option key={grade} value={grade}>
+                  {t("practice.classN", { n: grade })}
+                </option>
+              ))}
+            </SelectField>
+          )}
+        </div>
+      )}
+
+      {role !== "STUDENT" && (
+        <label className="flex items-start gap-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
+          <input
+            type="checkbox"
+            checked={requiresAck}
+            onChange={(e) => setRequiresAck(e.target.checked)}
+            className="mt-0.5 size-4 accent-[--color-accent]"
+          />
+          <span className="min-w-0">
+            <span className="block text-sm font-medium text-fg">{t("bulletin.requireAckLabel")}</span>
+            <span className="mt-0.5 block text-xs leading-relaxed text-fg-muted">
+              {t("bulletin.requireAckHint")}
+            </span>
+          </span>
+        </label>
       )}
 
       <TextField

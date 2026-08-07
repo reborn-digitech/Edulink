@@ -274,6 +274,24 @@ CREATE POLICY "TimetableSlot_tenant_isolation" ON "TimetableSlot"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- ExamSeries
+ALTER TABLE "ExamSeries" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ExamSeries" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ExamSeries_tenant_isolation" ON "ExamSeries";
+DROP POLICY IF EXISTS "ExamSeries_readable" ON "ExamSeries";
+CREATE POLICY "ExamSeries_tenant_isolation" ON "ExamSeries"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ExamSlot
+ALTER TABLE "ExamSlot" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ExamSlot" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ExamSlot_tenant_isolation" ON "ExamSlot";
+DROP POLICY IF EXISTS "ExamSlot_readable" ON "ExamSlot";
+CREATE POLICY "ExamSlot_tenant_isolation" ON "ExamSlot"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Assignment
 ALTER TABLE "Assignment" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Assignment" FORCE ROW LEVEL SECURITY;
@@ -337,6 +355,24 @@ CREATE POLICY "RemarkMessage_tenant_isolation" ON "RemarkMessage"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- MeetingSlot
+ALTER TABLE "MeetingSlot" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "MeetingSlot" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "MeetingSlot_tenant_isolation" ON "MeetingSlot";
+DROP POLICY IF EXISTS "MeetingSlot_readable" ON "MeetingSlot";
+CREATE POLICY "MeetingSlot_tenant_isolation" ON "MeetingSlot"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- MeetingBooking
+ALTER TABLE "MeetingBooking" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "MeetingBooking" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "MeetingBooking_tenant_isolation" ON "MeetingBooking";
+DROP POLICY IF EXISTS "MeetingBooking_readable" ON "MeetingBooking";
+CREATE POLICY "MeetingBooking_tenant_isolation" ON "MeetingBooking"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Post
 ALTER TABLE "Post" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Post" FORCE ROW LEVEL SECURITY;
@@ -372,6 +408,15 @@ ALTER TABLE "Reaction" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Reaction_tenant_isolation" ON "Reaction";
 DROP POLICY IF EXISTS "Reaction_readable" ON "Reaction";
 CREATE POLICY "Reaction_tenant_isolation" ON "Reaction"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PostAck
+ALTER TABLE "PostAck" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PostAck" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PostAck_tenant_isolation" ON "PostAck";
+DROP POLICY IF EXISTS "PostAck_readable" ON "PostAck";
+CREATE POLICY "PostAck_tenant_isolation" ON "PostAck"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 

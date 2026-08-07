@@ -294,6 +294,14 @@ export const remarkReplySchema = z.object({
 export const postSchema = z.object({
   scope: z.enum(POST_SCOPES),
   classId: z.string().cuid().optional().or(z.literal("")),
+  // Targeting; the lib re-checks that only staff may narrow or require an ack,
+  // so a forged student form degrades to an ordinary everyone-post.
+  audience: z.enum(["ALL", "PARENTS", "TEACHERS", "STUDENTS"]).default("ALL"),
+  audienceGrade: z.string().trim().max(20).default(""),
+  requiresAck: z
+    .string()
+    .default("")
+    .transform((v) => v === "on" || v === "true"),
   title: trimmed(2, 200),
   body: z.string().trim().max(20_000).default(""),
   tags: z.array(trimmed(1, 30)).max(8).default([]),

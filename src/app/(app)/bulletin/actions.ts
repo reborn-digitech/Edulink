@@ -5,6 +5,7 @@ import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
 import {
+  acknowledgePost,
   addComment,
   createPost,
   moderatePost,
@@ -44,6 +45,9 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   const fields = {
     scope: String(formData.get("scope") ?? ""),
     classId: String(formData.get("classId") ?? ""),
+    audience: String(formData.get("audience") ?? "ALL"),
+    audienceGrade: String(formData.get("audienceGrade") ?? ""),
+    requiresAck: String(formData.get("requiresAck") ?? ""),
     title: String(formData.get("title") ?? ""),
     body: String(formData.get("body") ?? ""),
     tags: formData.getAll("tags").map(String),
@@ -107,6 +111,9 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       body: parsed.data.body,
       tags: parsed.data.tags,
       media,
+      audience: parsed.data.audience,
+      audienceGrade: parsed.data.audienceGrade || undefined,
+      requiresAck: parsed.data.requiresAck,
     });
     revalidatePath("/bulletin");
     return { ok: true, errors: {}, ...result };
@@ -191,6 +198,23 @@ export async function comment(
   } catch (error) {
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };
+    return { ok: false, error: (await getT())("common.somethingWrong") };
+  }
+}
+
+export async function acknowledge(postId: string): Promise<{ ok: boolean; error?: string }> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+
+  try {
+    await acknowledgePost(session, postId);
+    revalidatePath("/bulletin");
+    revalidatePath(`/bulletin/${postId}`);
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[acknowledge]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

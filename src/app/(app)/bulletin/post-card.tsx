@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
-import { pin, react, review, report } from "./actions";
+import { acknowledge, pin, react, review, report } from "./actions";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { REACTION_KINDS, ROLE_META, type ReactionKind, type Role } from "@/lib/constants";
@@ -45,6 +45,17 @@ type Post = {
   myReactions: ReactionKind[];
   canModerate: boolean;
   mine: boolean;
+  audience: "ALL" | "PARENTS" | "TEACHERS" | "STUDENTS";
+  audienceGrade: string | null;
+  requiresAck: boolean;
+  acked: boolean;
+  ackCount: number;
+};
+
+const AUDIENCE_LABEL: Record<"PARENTS" | "TEACHERS" | "STUDENTS", TranslationKey> = {
+  PARENTS: "bulletin.forParents",
+  TEACHERS: "bulletin.forTeachers",
+  STUDENTS: "bulletin.forStudents",
 };
 
 /* Keys, not words — the ROLE_META precedent. The label is looked up at render
@@ -77,6 +88,8 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
   const [reason, setReason] = useState("");
   const [reporting, setReporting] = useState(false);
   const [optimistic, setOptimistic] = useState<{ kind: ReactionKind; added: boolean } | null>(null);
+  const [ackedNow, setAckedNow] = useState(false);
+  const acked = post.acked || ackedNow;
 
   const isPending = post.status === "PENDING";
   const isRejected = post.status === "REJECTED";
@@ -147,6 +160,8 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             <p className="text-xs text-fg-muted">
               {post.scope === "CLASS" ? (post.className ?? t("bulletin.classField")) : t("bulletin.wholeSchool")} ·{" "}
               {relativeTime(post.createdAt)}
+              {post.audience !== "ALL" && <> · {t(AUDIENCE_LABEL[post.audience])}</>}
+              {post.audienceGrade && <> · {t("practice.classN", { n: post.audienceGrade })}</>}
             </p>
           </div>
         </header>
@@ -305,6 +320,45 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 {t("bulletin.publishIt")}
               </Button>
             </div>
+          )}
+        </div>
+      )}
+
+      {/* ---- seen and understood ---- */}
+      {post.requiresAck && post.status === "APPROVED" && (
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border bg-accent-soft/40 px-3.5 py-2.5">
+          {acked ? (
+            <p className="inline-flex items-center gap-1.5 text-sm font-medium text-ok">
+              <CheckCircleIcon weight="fill" className="size-4" />
+              {t("bulletin.ackDone")}
+            </p>
+          ) : (
+            <Button
+              size="sm"
+              loading={pending}
+              icon={<CheckCircleIcon weight="bold" />}
+              onClick={() =>
+                startTransition(async () => {
+                  const result = await acknowledge(post.id);
+                  if (result.ok) {
+                    setAckedNow(true);
+                  } else {
+                    toast({ tone: "danger", title: t("bulletin.couldNotDo"), description: result.error });
+                  }
+                  router.refresh();
+                })
+              }
+            >
+              {t("bulletin.ackButton")}
+            </Button>
+          )}
+          {post.canModerate && (
+            <Link
+              href={`/bulletin/${post.id}`}
+              className="text-xs font-medium text-accent-strong underline underline-offset-2"
+            >
+              {t("bulletin.ackCount", { count: post.ackCount + (ackedNow && !post.acked ? 1 : 0) })}
+            </Link>
           )}
         </div>
       )}

@@ -103,6 +103,11 @@ model School {
   practiceAssignments  PracticeAssignment[]
   schoolRecords        SchoolRecord[]
   operatorAccess       OperatorAccess[]
+  postAcks             PostAck[]
+  examSeries           ExamSeries[]
+  examSlots            ExamSlot[]
+  meetingSlots         MeetingSlot[]
+  meetingBookings      MeetingBooking[]
 
   @@index([code])
 }
@@ -191,6 +196,8 @@ model User {
   mentorMessages    MentorMessage[]
   schoolRecords     SchoolRecord[]
   operatorAccess    OperatorAccess[]
+  postAcks          PostAck[]
+  meetingBookings   MeetingBooking[]
 
   @@index([email])
 }
@@ -260,6 +267,9 @@ model Membership {
   quizAttempts           QuizAttempt[]
   quizMastery            QuizMastery[]
   practiceAssignments    PracticeAssignment[] @relation("PracticeAssigner")
+  examSeriesCreated      ExamSeries[]         @relation("ExamSeriesAuthor")
+  meetingSlots           MeetingSlot[]        @relation("MeetingTeacher")
+  meetingsAsStudent      MeetingBooking[]     @relation("MeetingStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -455,6 +465,13 @@ model ReportCard {
   /// "points" or "weighted", carried through from `overallForStudent` so a
   /// reader is told which rule produced the number.
   gradingMethod       String @default("points")
+
+  /// The practice annexure: what the child's self-practice ladder looked like
+  /// on the day the card was generated. JSON, SNAPSHOT like everything else on
+  /// this document — the ladder keeps moving after the card is issued, and the
+  /// card must not. Null on cards generated before the annexure existed, and
+  /// the renderer treats null as "no annexure", not as "no practice".
+  practice String?
 
   createdByMembershipId String?
   publishedAt           DateTime?
@@ -724,6 +741,80 @@ model TimetableSlot {
 }
 
 // ---------------------------------------------------------------------------
+// Term exams — the date sheet, and the bridge into marks.
+//
+// AN EXAM IS NOT A NEW KIND OF MARK. The whole grading pipeline — Grade rows,
+// category weights, report-card snapshots — already exists for assignments, so
+// an exam paper IS an Assignment (category "Exam"), auto-created per class when
+// a teacher first opens the marks grid for a slot. What these two tables add is
+// the part schools actually lack digitally: the DATE SHEET — a named series
+// ("Term 1"), per grade, with one dated slot per subject — published to pupils
+// and families, and a marks-entry grid that fills the existing pipeline.
+// ---------------------------------------------------------------------------
+
+/// One named exam round for one grade: "Term 1", "Half-yearly 2026".
+///
+/// PER GRADE, NOT PER CLASS, because that is what a date sheet is — 5A and 5B
+/// sit the same paper on the same morning. Classes come back into the picture
+/// at marks entry, where each class gets its own auto-created Assignment per
+/// slot, because marks are entered register-by-register.
+///
+/// Unpublished series are the admin's scratchpad; publishing puts the date
+/// sheet in front of pupils and families. Marks entry works either way — a
+/// school that never publishes still gets its grid.
+model ExamSeries {
+  id       String @id @default(cuid())
+  schoolId String
+
+  name       String
+  /// Free text matching Class.gradeLevel, like every grade in this schema.
+  gradeLevel String
+
+  publishedAt DateTime?
+  archivedAt  DateTime?
+
+  createdByMembershipId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  createdBy Membership? @relation("ExamSeriesAuthor", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  slots     ExamSlot[]
+
+  @@unique([schoolId, gradeLevel, name])
+  @@index([schoolId, gradeLevel])
+}
+
+/// One subject's paper on the date sheet: what, when, out of how much.
+///
+/// Times are minutes from local midnight like TimetablePeriod, and nullable —
+/// plenty of schools publish only the day. Max marks are thousandths
+/// (`pointsMilli`) like every score in this codebase.
+model ExamSlot {
+  id       String @id @default(cuid())
+  schoolId String
+  seriesId String
+
+  subject     String
+  dateKey     String // YYYY-MM-DD in School.timezone
+  startMinute Int?
+  endMinute   Int?
+  pointsMilli Int // max marks, thousandths: out of 80 -> 80000
+  position    Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  series      ExamSeries   @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  assignments Assignment[]
+
+  @@unique([seriesId, subject])
+  @@index([schoolId, seriesId, dateKey])
+}
+
+// ---------------------------------------------------------------------------
 // Assignments & grades
 //
 // Scores are integer thousandths of a point (`scoreMilli`). 87.5 -> 87500.
@@ -748,13 +839,22 @@ model Assignment {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
+  /// Set when this assignment IS one class's sitting of an exam-slot paper —
+  /// the marks grid finds-or-creates it by (examSlotId, classId), and the
+  /// unique constraint is what makes that idempotent under two teachers
+  /// pressing save at once. Nulled, not cascaded, if the slot goes: entered
+  /// marks outlive a date-sheet edit.
+  examSlotId String?
+
   school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   class           Class            @relation(fields: [classId], references: [id], onDelete: Cascade)
   author          Membership       @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
+  examSlot        ExamSlot?        @relation(fields: [examSlotId], references: [id], onDelete: SetNull)
   submissions     Submission[]
   grades          Grade[]
   reportCardItems ReportCardItem[]
 
+  @@unique([examSlotId, classId])
   @@index([schoolId, dueAt])
   @@index([classId, publishedAt])
 }
@@ -916,6 +1016,73 @@ model RemarkMessage {
 }
 
 // ---------------------------------------------------------------------------
+// Parent–teacher meetings — slots a teacher publishes, bookings a family makes.
+//
+// The shape is ExpertSlot/ExpertBooking's, reused deliberately: an open window
+// owned by one person, and a booking row that claims it with a database-level
+// @unique rather than an application check, so two parents tapping the same
+// slot at the same moment cannot both get it.
+// ---------------------------------------------------------------------------
+
+/// One window in which a teacher will sit down with one family.
+model MeetingSlot {
+  id                  String @id @default(cuid())
+  schoolId            String
+  teacherMembershipId String
+
+  startsAt DateTime
+  endsAt   DateTime
+  /// "Room 4", "the office", "phone call" — where to turn up.
+  location String?
+  note     String?
+
+  /// Cancelling keeps the row so a family who saw the slot can be shown WHY it
+  /// went, rather than watching it vanish.
+  cancelledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school  School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teacher Membership     @relation("MeetingTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  booking MeetingBooking?
+
+  @@index([schoolId, teacherMembershipId, startsAt])
+  @@index([schoolId, startsAt])
+}
+
+/// One family's claim on one slot, about one child.
+///
+/// The parent is a USER (guardians have no membership); the child is named so
+/// a teacher with thirty families knows which conversation this is, and so a
+/// parent with two children at the school can book twice without ambiguity.
+model MeetingBooking {
+  id                  String @id @default(cuid())
+  schoolId            String
+  /// One booking per slot, enforced by the database rather than by a check.
+  slotId              String @unique
+  studentMembershipId String
+  parentUserId        String
+
+  /// What the parent wants to talk about. Optional — "just checking in" is a
+  /// fine reason to meet.
+  note String?
+
+  cancelledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school  School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slot    MeetingSlot @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  student Membership  @relation("MeetingStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  parent  User        @relation(fields: [parentUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, parentUserId])
+  @@index([studentMembershipId])
+}
+
+// ---------------------------------------------------------------------------
 // Bulletin + global feed
 // ---------------------------------------------------------------------------
 
@@ -931,6 +1098,20 @@ model Post {
   body  String @default("")
   media String @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
   tags  String @default("[]")
+
+  /// Who a SCHOOL post is FOR: everyone, only families, only staff, or only
+  /// pupils. A courtesy filter applied at QUERY time, never a secrecy boundary —
+  /// RLS still shows the row to the whole school, and the feed simply leaves it
+  /// out for people it does not concern. Making it secrecy would mean a policy
+  /// per audience, and "Grade 5 parents must not know sports day moved" is not
+  /// a secret any school keeps.
+  audience      String  @default("ALL") // ALL | PARENTS | TEACHERS | STUDENTS
+  /// Narrows a SCHOOL post to one grade's pupils and their families. Free text
+  /// matching Class.gradeLevel, like every grade in this schema.
+  audienceGrade String?
+  /// The author wants a "seen and understood" tap from each reader. What makes
+  /// a notice a circular: the school can finally answer "did this reach anyone".
+  requiresAck   Boolean @default(false)
 
   /// The publishing school's NAME, copied here when a post goes global.
   ///
@@ -964,6 +1145,7 @@ model Post {
   comments    Comment[]
   globalHides GlobalPostHide[]
   reactions   Reaction[]
+  acks        PostAck[]
 
   @@index([schoolId, status, createdAt])
   @@index([scope, status, createdAt])
@@ -1006,6 +1188,33 @@ model Reaction {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([postId, userId, kind])
+  @@index([schoolId])
+}
+
+/// One person's "seen and understood" on one circular.
+///
+/// KEYED BY USER, NOT MEMBERSHIP, because the reader a circular most needs to
+/// reach — a parent — has no membership at all; they reach the school through
+/// Guardianship. A userId covers every reader with one shape.
+///
+/// An ack is append-only in spirit: there is no "un-acknowledge", because the
+/// question the school is asking is "did this ever reach you", and the answer
+/// to that cannot become no again. Deleting the post takes its acks with it.
+model PostAck {
+  id       String @id @default(cuid())
+  postId   String
+  // Denormalised, like Comment and Reaction on the same post: it makes this
+  // table's RLS policy the same one-line predicate as everywhere else.
+  schoolId String
+  userId   String
+
+  createdAt DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
   @@index([schoolId])
 }
 

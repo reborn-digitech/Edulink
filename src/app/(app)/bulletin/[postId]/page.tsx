@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, ClockIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
-import { getPost } from "@/lib/bulletin";
+import { getPost, ackReport, type AckGroup } from "@/lib/bulletin";
+import { AckButton } from "./ack-button";
 import { readJsonArray } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
@@ -34,6 +35,16 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
 
   const tags = readJsonArray<string>(post.tags);
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+
+  // The delivery checklist, for the people who can chase it up.
+  let ackGroups: AckGroup[] = [];
+  if (isStaff && post.requiresAck && post.status === "APPROVED") {
+    try {
+      ackGroups = await ackReport(session, post.id);
+    } catch {
+      // A teacher with no classes simply gets no breakdown.
+    }
+  }
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -99,7 +110,44 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
             ))}
           </ul>
         )}
+
+        {post.requiresAck && post.status === "APPROVED" && (
+          <div className="mt-4 rounded-[--radius-md] bg-accent-soft/40 p-3.5">
+            <AckButton postId={post.id} acked={post.acks.length > 0} />
+          </div>
+        )}
       </article>
+
+      {/* ---- who this circular has reached, class by class ---- */}
+      {ackGroups.length > 0 && (
+        <section
+          aria-labelledby="ack-report"
+          className="rounded-[--radius-lg] border border-border bg-surface p-5"
+        >
+          <h2 id="ack-report" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
+            {t("bulletin.ackOutstandingTitle")}
+          </h2>
+          <ul className="mt-3 space-y-3">
+            {ackGroups.map((group) => (
+              <li key={group.classId ?? "staff"}>
+                <p className="flex items-baseline justify-between text-sm">
+                  <span className="font-semibold text-fg">
+                    {group.className || t("bulletin.audienceTeachers")}
+                  </span>
+                  <span className="text-fg-muted">
+                    {t("bulletin.ackReached", { reached: group.reached, total: group.total })}
+                  </span>
+                </p>
+                {group.outstanding.length > 0 && (
+                  <p className="mt-1 text-xs leading-relaxed text-fg-muted">
+                    {t("bulletin.ackStillWaiting")} {group.outstanding.join(", ")}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
