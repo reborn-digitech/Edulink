@@ -1484,6 +1484,7 @@ export const en = {
     onlyStaffPrintWorksheets: "Only teachers and admins can print worksheets.",
     chapterNotFound: "That chapter could not be found.",
     noQuestionsAtThatLevel: "That chapter has no questions at that level.",
+    pupilNotFoundInThisSchool: "That pupil could not be found in this school.",
     weightsMustTotal: "The weights add up to {total}% — they have to total exactly 100%",
     rangeTooLong: "That range covers {days} days — a single entry cannot be longer than a year",
     offersSessionsNotMentoring: "{name} offers workshops and sessions rather than mentoring.",
@@ -3330,6 +3331,31 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  attendanceIntel: {
+    title: "Attendance insights",
+    intro:
+      "The register read for the child, not the day: the trend, the children quietly slipping, and the statutory exports.",
+    trendTitle: "Eight weeks of the whole school",
+    trendHint: "Days attended as a share of days marked, week by week.",
+    flagsTitle: "Worth a conversation",
+    flagsHint:
+      "Children below 75% over the last month, or absent three registers running. Telling a family is one deliberate tap per child, audited, and repeated at most weekly.",
+    flagsEmpty: "Nobody is flagged. Every register tells the same steady story.",
+    chronicChip: "{percent}% attendance",
+    runChip: "{n} registers absent in a row",
+    marksCount: "{n} registers marked",
+    notify: "Tell the family",
+    notified: "Told {n} guardians.",
+    alreadyNotified: "This family was told within the last week — not sent again.",
+    noGuardians: "No guardian linked",
+    exportsTitle: "Compliance exports",
+    exportsHint:
+      "Inspection-shaped files: a class's monthly register grid, and the enrolment summary an annual return asks for. Every download is audited.",
+    fieldMonth: "Month",
+    exportRegister: "Download register (CSV)",
+    exportEnrolment: "Download enrolment summary (CSV)",
+  },
+
   journey: {
     title: "My journey",
     intro: "How far you have come — compared only with yourself.",
@@ -3401,6 +3427,8 @@ export const en = {
   },
 
   audit: {
+    attendanceAlert: "Told a family about attendance",
+    complianceExport: "Exported a compliance file",
     examSeriesCreate: "Created an exam series",
     examSeriesPublish: "Published a date sheet",
     examSeriesArchive: "Archived an exam series",

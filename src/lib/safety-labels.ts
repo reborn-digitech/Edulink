@@ -95,6 +95,8 @@ export const URGENT_REASONS = new Set(["UNSAFE", "BULLYING"]);
 
 /** The dictionary key for an audit action, or null if it has no wording yet. */
 const ACTION_KEYS: Record<string, TranslationKey> = {
+  "attendance.alert": "audit.attendanceAlert",
+  "compliance.export": "audit.complianceExport",
   "exam.seriesCreate": "audit.examSeriesCreate",
   "exam.seriesPublish": "audit.examSeriesPublish",
   "exam.seriesArchive": "audit.examSeriesArchive",
@@ -214,6 +216,7 @@ export function actionKey(action: string): TranslationKey | null {
 export function isSensitiveAction(action: string): boolean {
   return (
     action === "directory.export" ||
+    action === "compliance.export" ||
     action === "auth.login.failed" ||
     action === "parent.claim.failed" ||
     action.startsWith("report.") ||

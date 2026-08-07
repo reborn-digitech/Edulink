@@ -40,6 +40,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/admin/invites", labelKey: "nav.invites", icon: "envelope", primary: true, prefix: true },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
+    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
