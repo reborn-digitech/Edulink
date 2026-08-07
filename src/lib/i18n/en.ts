@@ -53,6 +53,7 @@ export const en = {
     timetable: "Timetable",
     exams: "Exams",
     homework: "Homework",
+    meetings: "Meetings",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1486,6 +1487,13 @@ export const en = {
     chapterNotFound: "That chapter could not be found.",
     noQuestionsAtThatLevel: "That chapter has no questions at that level.",
     pupilNotFoundInThisSchool: "That pupil could not be found in this school.",
+    onlyTeachersOfferMeetings: "Only teaching staff can offer meeting times.",
+    meetingLengthOutOfRange: "A slot must be between 5 and 120 minutes.",
+    meetingCountOutOfRange: "Offer between 1 and 20 slots at a time.",
+    pickAMeetingTime: "Pick a day and a start time.",
+    meetingsStartInTheFuture: "Meeting times have to be in the future.",
+    meetingNotFound: "That meeting slot could not be found.",
+    meetingAlreadyBooked: "Another family got there first. Pick a different time.",
     weightsMustTotal: "The weights add up to {total}% — they have to total exactly 100%",
     rangeTooLong: "That range covers {days} days — a single entry cannot be longer than a year",
     offersSessionsNotMentoring: "{name} offers workshops and sessions rather than mentoring.",
@@ -3332,6 +3340,38 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  meetings: {
+    teacherTitle: "Meetings",
+    teacherIntro:
+      "Offer windows for families to book. Cancelling one tells the family; a booking tells you.",
+    publishTitle: "Offer times",
+    publishHint: "A run of back-to-back slots — Friday from 3pm, six slots of fifteen minutes.",
+    fieldDate: "Day",
+    fieldFrom: "From",
+    fieldLength: "Minutes each",
+    fieldCount: "How many",
+    fieldWhere: "Where",
+    wherePlaceholder: "Room 4",
+    publish: "Offer these times",
+    upcomingTitle: "Your upcoming slots",
+    upcomingEmpty: "No slots offered yet. Offer a run above.",
+    bookedBy: "Booked for {child} by {parent}",
+    stillOpen: "Still open",
+    bookedChip: "Booked",
+    parentTitle: "Meet the teacher",
+    parentIntro:
+      "Open times from your child's own teachers. Book one; the teacher is told, and cancelling frees it for another family.",
+    mineTitle: "Your meetings",
+    openTitle: "Open times",
+    openHint: "Only teachers who actually teach your children appear here.",
+    openEmptyTitle: "No open times right now",
+    openEmptyBody: "When a teacher offers meeting slots, they will appear here.",
+    withTeacher: "With {teacher}",
+    aboutChild: "about {child}",
+    book: "Book",
+    bookedNote: "Booked. The teacher has been told.",
+  },
+
   principalCover: {
     free: "free for all their lessons",
     busy: "already teaching through {busy} of {total} lessons",
@@ -3451,6 +3491,9 @@ export const en = {
   audit: {
     attendanceAlert: "Told a family about attendance",
     complianceExport: "Exported a compliance file",
+    meetingSlotPublish: "Offered meeting times",
+    meetingBook: "Booked a meeting",
+    meetingCancel: "Cancelled a meeting",
     examSeriesCreate: "Created an exam series",
     examSeriesPublish: "Published a date sheet",
     examSeriesArchive: "Archived an exam series",
