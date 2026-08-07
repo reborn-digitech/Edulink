@@ -6,6 +6,7 @@ import { SUBJECT_LABEL, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/qu
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+import { FreshSeedInput } from "./fresh-seed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,9 +21,6 @@ export default async function WorksheetsPage() {
   const ctx = await requireRole("TEACHER");
   const t = await getT();
   const topics = await worksheetTopics(ctx);
-
-  // A fresh seed on every visit of the form; the print URL then pins it.
-  const seed = Math.random().toString(36).slice(2, 8);
 
   return (
     <div className="space-y-6">
@@ -39,7 +37,8 @@ export default async function WorksheetsPage() {
         />
         <CardBody>
           <form action="/teacher/worksheets/print" method="get" className="grid gap-3 sm:grid-cols-3">
-            <input type="hidden" name="seed" value={seed} />
+            {/* Minted client-side after mount — a server render stays pure. */}
+            <FreshSeedInput />
             <label className="block text-sm sm:col-span-3">
               <span className="mb-1 block font-medium text-fg">{t("practice.fieldChapter")}</span>
               <select

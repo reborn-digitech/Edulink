@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import {
   ChecksIcon,
@@ -15,6 +15,11 @@ import { useT } from "@/lib/i18n";
 
 const STORAGE_KEY = "edulink.parentWelcome.v1";
 
+function subscribeToStorage(onChange: () => void): () => void {
+  window.addEventListener("storage", onChange);
+  return () => window.removeEventListener("storage", onChange);
+}
+
 /**
  * The guardian's first-run orientation: pick your language FIRST — the reader
  * least likely to be comfortable in English is exactly the one this card is
@@ -27,17 +32,23 @@ const STORAGE_KEY = "edulink.parentWelcome.v1";
  */
 export function WelcomeTour() {
   const t = useT();
-  const [show, setShow] = useState(false);
+  // useSyncExternalStore rather than a set-state-in-effect: the server
+  // snapshot says "dismissed", so SSR renders nothing and the card appears
+  // only on a device whose storage says it has never been dismissed.
+  const dismissed = useSyncExternalStore(
+    subscribeToStorage,
+    () => {
+      try {
+        return window.localStorage.getItem(STORAGE_KEY) !== null;
+      } catch {
+        return true; // storage blocked: never show, never crash
+      }
+    },
+    () => true,
+  );
+  const [hiddenNow, setHiddenNow] = useState(false);
 
-  useEffect(() => {
-    try {
-      if (!window.localStorage.getItem(STORAGE_KEY)) setShow(true);
-    } catch {
-      // Storage blocked: never show, never crash.
-    }
-  }, []);
-
-  if (!show) return null;
+  if (dismissed || hiddenNow) return null;
 
   function dismiss() {
     try {
@@ -45,7 +56,7 @@ export function WelcomeTour() {
     } catch {
       // If it cannot be remembered, hiding it now is still right.
     }
-    setShow(false);
+    setHiddenNow(true);
   }
 
   const doors = [

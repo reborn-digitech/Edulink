@@ -2294,6 +2294,85 @@ navigation" means the actual list rather than one somebody maintained by hand.
   L1, so "reach L1" cannot be satisfied by absence. After: **1415/1415 tests
   across 74 files**, eslint 0 errors / 29 known warnings, i18n pile unchanged
   at 38/193, build clean, **sweep 317/317** (two new nav routes, both walked).
+
+  **Then the school around the classroom got built** — sixteen more
+  recommendations from the same UX walk, in one pass, one additive schema
+  wave (five new tables: `PostAck`, `ExamSeries`, `ExamSlot`, `MeetingSlot`,
+  `MeetingBooking` — **65 RLS policies**, every one the same one-line
+  predicate):
+
+  1. **Circulars** — a school-wide notice can be aimed (parents / staff /
+     pupils, optionally one grade) as a query-time courtesy, never a secrecy
+     boundary; an author can ask for one tap of "seen and understood"
+     (idempotent — the uncertain second tap reads as success), and the
+     delivery report counts THE FAMILY as the unit, class by class, naming
+     who is still waiting. A checklist, not a ranking.
+  2. **Term exams** (`/admin/exams`, `/exams`, `/teacher/exams`) — a
+     per-grade date sheet published to families, and a register-shaped marks
+     grid whose sittings are ordinary category-"Exam" Assignments keyed
+     `(slot, class)` so concurrent saves converge; marks are ordinary Grade
+     rows, so weighting, the child's grades page and the report-card builder
+     picked them up without another line of code. A blank cell clears: an
+     absence is not a zero.
+  3. **The report card grew a practice annexure** — chapter, rung, tier
+     badges, snapshot at generation and frozen by publishing like every
+     other number on the document (pinned by test: the child kept climbing
+     after publication and the card did not move).
+  4. **Worksheets** (`/teacher/worksheets`) — chapter + rung + count from
+     the million-question bank, printable, answer key forced onto its own
+     sheet, deterministic by a seed in the URL (same link, same paper),
+     staff-only because the key rides along.
+  5. **My journey** (`/student/practice/journey`) — badge timeline, climbs
+     per month, weeks-in-a-row; the child compared with nobody but their own
+     past, and the copy says so.
+  6. **The teacher's week + gap alerts** on `/teacher/practice` — pupils
+     practiced / answers / climbs / misses over rolling seven days, and a
+     "worth re-teaching" card for chapters where ≥2 pupils spent a fortnight
+     missing more than they make at the same rung. Counts, never names: a
+     stuck class is one teaching problem, not several private ones.
+  7. **Attendance intelligence** (`/admin/attendance`) — eight-week trend,
+     then a welfare list: below 75% over a month (minimum-marks floor) or
+     three registers absent running, excused never counted against a family.
+     Telling the family is one audited tap per child, deduplicated weekly.
+  8. **Compliance exports** on the same page — a class's monthly register
+     grid and a UDISE-shaped enrolment summary, CSV, audited as
+     `compliance.export` and flagged sensitive.
+  9. **The homework diary** (`/parent/homework`) — set / handed in / overdue
+     / marked-with-comment per child, read-only on purpose; a stranger's
+     userId is NOT_FOUND, never a peek.
+  10. **Substitution advice** — the leave cover picker now ranks the staff
+      room by who is actually FREE for the absent teacher's own lessons in
+      that window ("free for all their lessons" first), load as tiebreak;
+      the covers-on-the-timetable machinery already existed and does the rest.
+  11. **Parent–teacher meetings** (`/teacher/meetings`, `/parent/meetings`)
+      — a teacher publishes a run of back-to-back slots (wall-clock in the
+      SCHOOL's timezone), families of taught children book one per
+      conversation, one-booking-per-slot enforced by the database's unique,
+      and every cancellation tells the other side by name.
+  12. **The weekly digest** (`npm run digest:weekly`, cron-ready) — one
+      notification per family per week: days attended, practice, badges,
+      homework due, exams coming. Idempotent over six days; a week with
+      nothing to say sends nothing at all.
+  13. **The guardian's first-run** — language picker FIRST, then four doors
+      (attendance, homework, practice, meetings), dismissed per device.
+  14. **Practice survives the signal** — an answer that cannot reach the
+      server queues in the durable outbox (it survives closing the tab), the
+      question stays up under an honest banner, and recovery re-asks an
+      idempotent endpoint. Idempotent is PROVEN: `submitAnswer` moves streaks
+      on every call, so the guard is the unique response row — the test
+      delivers one tap four times and shows the ladder moved once.
+
+  Thirty-four new integration tests across ten files drive all of it on real
+  rows with disposable ZZ fixtures (deletion asserted every time). After:
+  **1449/1449 tests across 84 files**, typecheck clean, eslint 0 errors / 29
+  known warnings (three new ones introduced and fixed properly —
+  `useSyncExternalStore` for the welcome card, seed-minting moved into client
+  effects so server renders stay pure), RLS 65 policies verified, build
+  clean, **sweep 325/325** (eight new nav routes, all walked). The
+  deliberately-English pile grew 193 → 210 strings (38 → 46 files): every
+  addition is a notification body or a stored-artifact title, the same two
+  categories the pile already held. All new hi/mr strings are mine and await
+  the same native-reader pass as the rest.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form

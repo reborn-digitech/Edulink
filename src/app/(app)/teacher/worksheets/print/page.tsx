@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, ArrowsClockwiseIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, AccessError } from "@/lib/tenancy";
 import { buildWorksheet } from "@/lib/worksheets";
 import { SUBJECT_LABEL } from "@/lib/quiz";
-import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { PrintButton } from "./print-button";
+import { ReshuffleButton } from "../fresh-seed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -43,7 +43,6 @@ export default async function WorksheetPrintPage({
     throw error;
   }
 
-  const freshSeed = Math.random().toString(36).slice(2, 8);
   const heading = `${sheet.topicName} · L${sheet.level} ${sheet.tierName}`;
 
   return (
@@ -57,13 +56,11 @@ export default async function WorksheetPrintPage({
           {t("worksheets.title")}
         </Link>
         <div className="flex items-center gap-2">
-          <Button asChild variant="secondary" size="sm" icon={<ArrowsClockwiseIcon weight="bold" />}>
-            <Link
-              href={`/teacher/worksheets/print?slug=${params.slug}&level=${sheet.level}&count=${sheet.questions.length}&seed=${freshSeed}`}
-            >
-              {t("worksheets.reshuffle")}
-            </Link>
-          </Button>
+          <ReshuffleButton
+            slug={params.slug ?? ""}
+            level={sheet.level}
+            count={sheet.questions.length}
+          />
           <PrintButton />
         </div>
       </div>
