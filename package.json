@@ -28,6 +28,7 @@
     "quiz:import": "tsx --tsconfig scripts/tsconfig.json scripts/import-quiz.ts",
     "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-quiz-bank.ts",
     "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts",
+    "digest:weekly": "tsx --tsconfig scripts/tsconfig.json scripts/send-weekly-digest.ts",
     "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts",
     "db:grants": "node scripts/db-grants.mjs",
     "superuser": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-superuser.ts",
