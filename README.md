@@ -2405,12 +2405,14 @@ navigation" means the actual list rather than one somebody maintained by hand.
   a styled, translated page that deliberately says no more than "not found" —
   which is also what a thing you may not see answers.
 
-  **The whole battery was then re-run cold, end to end, on a fresh build** —
-  typecheck, 1449/1449, eslint 0/29, i18n 46/210, RLS all checks passed,
-  build clean, sweep 325/325 against a freshly started production server —
-  with every number identical to the first run, and the database checked
-  afterwards for fixture residue: **zero ZZ users, zero ZZ classes** left
-  behind by the thirty-four new tests.
+  **The whole battery was then re-run cold, end to end, on a fresh build,
+  after the walk's fixes landed** — typecheck clean, **1449/1449 across 84
+  files**, eslint 0 errors / 29 known warnings, i18n steady at 46/210 (one
+  new aria-label briefly tripped the audit and was reworked to join two
+  already-translated values rather than read as prose), RLS all checks
+  passed, build clean, **sweep 326/326** against a freshly started
+  production server — and the database checked afterwards for fixture
+  residue: **zero ZZ users** left behind by any test or walk.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
