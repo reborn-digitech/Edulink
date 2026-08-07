@@ -14,6 +14,8 @@ import {
   assignmentsForClass,
   assignmentsForStudent,
   journey,
+  classWeekly,
+  classGapAlerts,
 } from "@/lib/practice-insights";
 import type { ActiveContext } from "@/lib/session";
 
@@ -33,6 +35,7 @@ const SLUG = "drill-g3-addsub";
 const PUPIL_EMAIL = "zz.pupil.insights@riverside.test";
 const TEACHER_EMAIL = "zz.teacher.insights@riverside.test";
 const PARENT_EMAIL = "zz.parent.insights@riverside.test";
+const STUCK_EMAILS = ["zz.stuck.a@riverside.test", "zz.stuck.b@riverside.test"];
 
 let hasBank = false;
 let schoolId: string;
@@ -133,15 +136,29 @@ afterAll(async () => {
     await db.enrollment.deleteMany({ where: { classId } });
     await db.classTeacher.deleteMany({ where: { classId } });
     await db.class.deleteMany({ where: { id: classId } });
-    for (const email of [PUPIL_EMAIL, TEACHER_EMAIL, PARENT_EMAIL]) {
+    for (const email of [PUPIL_EMAIL, TEACHER_EMAIL, PARENT_EMAIL, ...STUCK_EMAILS]) {
       const user = await db.user.findUnique({ where: { email }, select: { id: true } });
       if (user) {
+        const memberships = await db.membership.findMany({
+          where: { userId: user.id },
+          select: { id: true },
+        });
+        const ids = memberships.map((m) => m.id);
+        await db.quizResponse.deleteMany({ where: { attempt: { studentMembershipId: { in: ids } } } });
+        await db.quizAttempt.deleteMany({ where: { studentMembershipId: { in: ids } } });
+        await db.quizMastery.deleteMany({ where: { studentMembershipId: { in: ids } } });
+        await db.earnedBadge.deleteMany({ where: { studentMembershipId: { in: ids } } });
+        await db.enrollment.deleteMany({ where: { studentMembershipId: { in: ids } } });
         await db.membership.deleteMany({ where: { userId: user.id } });
         await db.user.delete({ where: { id: user.id } });
       }
     }
     expect(await db.class.count({ where: { id: classId } })).toBe(0);
-    expect(await db.user.count({ where: { email: { in: [PUPIL_EMAIL, TEACHER_EMAIL, PARENT_EMAIL] } } })).toBe(0);
+    expect(
+      await db.user.count({
+        where: { email: { in: [PUPIL_EMAIL, TEACHER_EMAIL, PARENT_EMAIL, ...STUCK_EMAILS] } },
+      }),
+    ).toBe(0);
   }
   await db.$disconnect();
 });
@@ -253,6 +270,51 @@ describe("practice insights", () => {
 
     // A teacher has no journey here: the page is the child's alone.
     await expect(journey(teacher)).rejects.toThrow();
+  });
+
+  it("sees the week move, and flags a chapter the class is stuck on", { timeout: 60_000 }, async () => {
+    if (!hasBank) return;
+
+    // No gap yet: one child having a bad day is not a teaching problem.
+    expect(await classGapAlerts(teacher, classId)).toEqual([]);
+
+    // Two more pupils, each missing four in a row at L1 of the same chapter —
+    // that is the pattern that means the CLASS needs the chapter re-taught.
+    for (const email of STUCK_EMAILS) {
+      const user = await db.user.create({
+        data: { email, name: `ZZ Stuck ${email.includes(".a@") ? "A" : "B"}`, prefs: "{}" },
+      });
+      const membership = await db.membership.create({
+        data: { userId: user.id, schoolId, role: "STUDENT", status: "ACTIVE" },
+      });
+      await db.enrollment.create({
+        data: { classId, schoolId, studentMembershipId: membership.id },
+      });
+      const stuck = ctxFor(user.id, "ZZ Stuck", membership.id, "STUDENT");
+      const { attemptId } = await startAttempt(stuck, SLUG);
+      for (let i = 0; i < 4; i++) {
+        const served = await nextQuestion(stuck, attemptId);
+        expect(served).not.toBeNull();
+        const row = await db.quizQuestion.findUniqueOrThrow({
+          where: { id: served!.questionId },
+          select: { answerIndex: true, choices: true },
+        });
+        const wrong = (row.answerIndex + 1) % (JSON.parse(row.choices) as string[]).length;
+        await submitAnswer(stuck, attemptId, served!.questionId, wrong);
+      }
+    }
+
+    const gaps = await classGapAlerts(teacher, classId);
+    const flagged = gaps.find((g) => g.slug === SLUG);
+    expect(flagged).toBeDefined();
+    expect(flagged!.stuckCount).toBe(2);
+    expect(flagged!.level).toBe(1);
+
+    const week = await classWeekly(teacher, classId);
+    expect(week.pupilCount).toBe(3);
+    expect(week.practiced).toBe(3);
+    expect(week.misses).toBeGreaterThanOrEqual(8);
+    expect(week.climbs).toBeGreaterThanOrEqual(1); // the first pupil's Beginner
   });
 
   it("archives an assignment out of every list", { timeout: 60_000 }, async () => {

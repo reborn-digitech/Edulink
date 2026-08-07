@@ -4,7 +4,12 @@ import { BrainIcon, FlagIcon, CheckCircleIcon, WarningIcon } from "@phosphor-ico
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { normaliseLanguage, SUBJECT_LABEL, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
-import { classPracticeHeatmap, assignmentsForClass } from "@/lib/practice-insights";
+import {
+  classPracticeHeatmap,
+  assignmentsForClass,
+  classWeekly,
+  classGapAlerts,
+} from "@/lib/practice-insights";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
@@ -59,9 +64,11 @@ export default async function TeacherPracticePage({
 
   const selected = classes.find((c) => c.id === requested) ?? classes[0]!;
   const language = normaliseLanguage(ctx.user.prefs.locale);
-  const [heatmap, assignments] = await Promise.all([
+  const [heatmap, assignments, weekly, gaps] = await Promise.all([
     classPracticeHeatmap(ctx, selected.id, language),
     assignmentsForClass(ctx, selected.id, language),
+    classWeekly(ctx, selected.id),
+    classGapAlerts(ctx, selected.id, language),
   ]);
 
   // Chapters offered for assignment: the class's own grade when it names one,
@@ -109,6 +116,42 @@ export default async function TeacherPracticePage({
           <CardBody className="flex items-center gap-2 text-sm text-danger">
             <WarningIcon weight="fill" className="size-4 shrink-0" />
             {error}
+          </CardBody>
+        </Card>
+      )}
+
+      {/* ---- this week, at a glance ---- */}
+      {weekly.pupilCount > 0 && (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatTile value={`${weekly.practiced}/${weekly.pupilCount}`} label={t("practice.weeklyPracticed")} />
+          <StatTile value={String(weekly.answers)} label={t("practice.weeklyAnswers")} />
+          <StatTile value={String(weekly.climbs)} label={t("practice.weeklyClimbs")} />
+          <StatTile value={String(weekly.misses)} label={t("practice.weeklyMisses")} />
+        </div>
+      )}
+
+      {/* ---- where the class is stuck ---- */}
+      {gaps.length > 0 && (
+        <Card>
+          <CardHeader
+            icon={<WarningIcon weight="duotone" className="size-5" />}
+            title={t("practice.gapsTitle")}
+            description={t("practice.gapsHint")}
+          />
+          <CardBody className="space-y-2">
+            {gaps.map((gap) => (
+              <p key={gap.slug} className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+                <span className="font-medium text-fg">
+                  {gap.name}
+                  <span className="ml-2 text-xs text-fg-muted">
+                    {SUBJECT_LABEL[gap.subject as QuizSubject] ?? gap.subject}
+                  </span>
+                </span>
+                <span className="text-fg-muted">
+                  {t("practice.gapsStuck", { count: gap.stuckCount, level: gap.level })}
+                </span>
+              </p>
+            ))}
           </CardBody>
         </Card>
       )}
@@ -286,6 +329,15 @@ export default async function TeacherPracticePage({
           )}
         </CardBody>
       </Card>
+    </div>
+  );
+}
+
+function StatTile({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-[--radius-md] border border-border bg-surface p-3.5">
+      <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
+      <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
     </div>
   );
 }

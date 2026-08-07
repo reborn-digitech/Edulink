@@ -659,3 +659,162 @@ export async function journey(ctx: ActiveContext): Promise<Journey> {
     totalTiers,
   };
 }
+
+/* -------------------------------------------------------------------------- */
+/* The teacher's week, and where the class is stuck                            */
+/* -------------------------------------------------------------------------- */
+
+export type ClassWeekly = {
+  pupilCount: number;
+  practiced: number;
+  answers: number;
+  climbs: number;
+  misses: number;
+};
+
+/** The heatmap's time-derivative: what moved in the last seven days. */
+export async function classWeekly(ctx: ActiveContext, classId: string): Promise<ClassWeekly> {
+  await assertClassAccess(requireScope(ctx), classId);
+  const enrolled = await db.enrollment.findMany({
+    where: { classId, schoolId: ctx.schoolId!, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+  const pupilIds = enrolled.map((e) => e.studentMembershipId);
+  if (pupilIds.length === 0) return { pupilCount: 0, practiced: 0, answers: 0, climbs: 0, misses: 0 };
+
+  const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const [responses, climbs] = await Promise.all([
+    db.quizResponse.findMany({
+      where: {
+        attempt: { studentMembershipId: { in: pupilIds }, schoolId: ctx.schoolId! },
+        answeredAt: { gte: since },
+      },
+      select: { correct: true, attempt: { select: { studentMembershipId: true } } },
+    }),
+    db.earnedBadge.count({
+      where: {
+        schoolId: ctx.schoolId!,
+        studentMembershipId: { in: pupilIds },
+        badgeId: { contains: ":tier-" },
+        earnedAt: { gte: since },
+      },
+    }),
+  ]);
+
+  const whoPracticed = new Set(responses.map((r) => r.attempt.studentMembershipId));
+  return {
+    pupilCount: pupilIds.length,
+    practiced: whoPracticed.size,
+    answers: responses.length,
+    climbs,
+    misses: responses.filter((r) => !r.correct).length,
+  };
+}
+
+export type GapAlert = {
+  slug: string;
+  name: string;
+  subject: string;
+  /** The rung most of the trouble is on. */
+  level: number;
+  /** How many pupils are stuck there. A count, never a list of names. */
+  stuckCount: number;
+};
+
+/**
+ * Where the CLASS is stuck, as opposed to where one child is: chapters where
+ * several pupils are missing more than they make at the same rung, over the
+ * last fortnight. That pattern is not six individual problems — it is one
+ * teaching problem, which is why it surfaces here and nowhere on any child's
+ * own page. Counts only; the heatmap's no-names rule holds.
+ *
+ * "Stuck" is deliberately conservative: at least four recent answers at the
+ * rung and at least half of them wrong. Two pupils stuck flags the chapter —
+ * in a class of forty that is early, and early is the point.
+ */
+export async function classGapAlerts(
+  ctx: ActiveContext,
+  classId: string,
+  language: QuizLanguage = "en",
+): Promise<GapAlert[]> {
+  await assertClassAccess(requireScope(ctx), classId);
+  const enrolled = await db.enrollment.findMany({
+    where: { classId, schoolId: ctx.schoolId!, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+  const pupilIds = enrolled.map((e) => e.studentMembershipId);
+  if (pupilIds.length === 0) return [];
+
+  const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+  const responses = await db.quizResponse.findMany({
+    where: {
+      attempt: { studentMembershipId: { in: pupilIds }, schoolId: ctx.schoolId! },
+      answeredAt: { gte: since },
+    },
+    select: {
+      correct: true,
+      attempt: { select: { studentMembershipId: true, topicId: true } },
+      question: { select: { difficulty: true } },
+    },
+  });
+  if (responses.length === 0) return [];
+
+  // pupil × topic × rung -> [wrong, total]
+  const tally = new Map<string, { wrong: number; total: number }>();
+  for (const r of responses) {
+    const key = `${r.attempt.studentMembershipId}|${r.attempt.topicId}|${clampLevel(r.question.difficulty)}`;
+    const cell = tally.get(key) ?? { wrong: 0, total: 0 };
+    cell.total += 1;
+    if (!r.correct) cell.wrong += 1;
+    tally.set(key, cell);
+  }
+
+  // topic -> rung -> stuck pupil count
+  const stuck = new Map<string, Map<number, number>>();
+  for (const [key, cell] of tally) {
+    if (cell.total < 4 || cell.wrong * 2 < cell.total) continue;
+    const [, topicId, levelRaw] = key.split("|") as [string, string, string];
+    const level = Number(levelRaw);
+    const byLevel = stuck.get(topicId) ?? new Map<number, number>();
+    byLevel.set(level, (byLevel.get(level) ?? 0) + 1);
+    stuck.set(topicId, byLevel);
+  }
+
+  const flagged: { topicId: string; level: number; stuckCount: number }[] = [];
+  for (const [topicId, byLevel] of stuck) {
+    let bestLevel = 0;
+    let bestCount = 0;
+    let total = 0;
+    for (const [level, count] of byLevel) {
+      total += count;
+      if (count > bestCount) {
+        bestCount = count;
+        bestLevel = level;
+      }
+    }
+    if (total >= 2) flagged.push({ topicId, level: bestLevel, stuckCount: total });
+  }
+  if (flagged.length === 0) return [];
+
+  const topics = await db.quizTopic.findMany({
+    where: { id: { in: flagged.map((f) => f.topicId) } },
+    ...{ include: { translations: { where: { language } } } },
+  });
+  const topicById = new Map(topics.map((t) => [t.id, t]));
+
+  return flagged
+    .map((f) => {
+      const topic = topicById.get(f.topicId);
+      if (!topic) return null;
+      const translated = topic.translations[0]?.name;
+      return {
+        slug: topic.slug,
+        name: translated ?? topic.name,
+        subject: topic.subject,
+        level: f.level,
+        stuckCount: f.stuckCount,
+      };
+    })
+    .filter((f): f is GapAlert => f !== null)
+    .sort((a, b) => b.stuckCount - a.stuckCount);
+}
