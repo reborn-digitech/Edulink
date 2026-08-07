@@ -9,6 +9,7 @@ import {
   EyeIcon,
   MedalIcon,
   WarningIcon,
+  WifiSlashIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
@@ -17,6 +18,7 @@ import { Skeleton } from "@/components/ui/states";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { begin, answer, advance, reveal } from "../actions";
+import { enqueue, onQueueEvent } from "@/lib/offline-queue";
 import type { ServedQuestion } from "@/lib/quiz";
 
 /**
@@ -67,6 +69,18 @@ export function Player({
   const [forfeited, setForfeited] = useState(false);
   const [done, setDone] = useState<{ badgeAwarded: boolean } | null>(null);
 
+  /**
+   * A tap that could not reach the server. The answer is queued durably (the
+   * outbox survives the tab closing) and this state keeps the question on
+   * screen with an honest banner instead of a dead error page. Recovery below
+   * re-asks the idempotent endpoint for the verdict once the network returns.
+   */
+  const [offlineAnswer, setOfflineAnswer] = useState<{
+    questionId: string;
+    chosenIndex: number;
+  } | null>(null);
+  const [hiccup, setHiccup] = useState(false);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -88,51 +102,135 @@ export function Player({
   }, [slug]);
 
   function choose(index: number) {
-    if (!attemptId || !question || outcome) return;
+    if (!attemptId || !question || outcome || offlineAnswer) return;
     setChosen(index);
+    setHiccup(false);
     startTransition(async () => {
-      const result = await answer(attemptId, question.questionId, index);
-      if (!result.ok) {
-        setError(result.error);
-        return;
+      try {
+        const result = await answer(attemptId, question.questionId, index);
+        if (!result.ok) {
+          setError(result.error);
+          return;
+        }
+        setOutcome({
+          correct: result.result.correct,
+          answerIndex: result.result.answerIndex,
+          solution: result.result.solution,
+        });
+        if (result.result.finished) setDone({ badgeAwarded: result.result.badgeAwarded });
+      } catch {
+        // The network died between the tap and the server. Queue the answer
+        // durably — it survives even closing the tab — and keep the question
+        // on screen with an honest banner rather than a dead error page.
+        try {
+          await enqueue({
+            url: "/api/practice/answer",
+            method: "POST",
+            body: JSON.stringify({ attemptId, questionId: question.questionId, chosenIndex: index }),
+            tag: "practice",
+          });
+        } catch {
+          // No IndexedDB either; the recovery loop below still retries live.
+        }
+        setOfflineAnswer({ questionId: question.questionId, chosenIndex: index });
       }
-      setOutcome({
-        correct: result.result.correct,
-        answerIndex: result.result.answerIndex,
-        solution: result.result.solution,
-      });
-      if (result.result.finished) setDone({ badgeAwarded: result.result.badgeAwarded });
     });
   }
 
+  /**
+   * Recovery: while an answer is stranded, keep asking the idempotent endpoint
+   * for its verdict — on the outbox flushing, on the browser's `online` event,
+   * and on a slow timer as the backstop. The endpoint returns the STORED
+   * verdict if the outbox already delivered the answer, so no path can make
+   * one tap count twice.
+   */
+  useEffect(() => {
+    if (!offlineAnswer || !attemptId) return;
+    let cancelled = false;
+
+    const recover = async () => {
+      try {
+        const response = await fetch("/api/practice/answer", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            attemptId,
+            questionId: offlineAnswer.questionId,
+            chosenIndex: offlineAnswer.chosenIndex,
+          }),
+        });
+        if (!response.ok) return;
+        const data = (await response.json()) as {
+          ok: boolean;
+          result: { correct: boolean; answerIndex: number; solution: string; finished: boolean; badgeAwarded: boolean };
+        };
+        if (cancelled || !data.ok) return;
+        setOutcome({
+          correct: data.result.correct,
+          answerIndex: data.result.answerIndex,
+          solution: data.result.solution,
+        });
+        if (data.result.finished) setDone({ badgeAwarded: data.result.badgeAwarded });
+        setOfflineAnswer(null);
+      } catch {
+        // Still offline; the next trigger tries again.
+      }
+    };
+
+    const unsubscribe = onQueueEvent((event) => {
+      if (event.type === "flushed") void recover();
+    });
+    window.addEventListener("online", recover);
+    const timer = setInterval(recover, 10_000);
+    void recover();
+    return () => {
+      cancelled = true;
+      unsubscribe();
+      window.removeEventListener("online", recover);
+      clearInterval(timer);
+    };
+  }, [offlineAnswer, attemptId]);
+
   function next() {
     if (!attemptId) return;
+    setHiccup(false);
     startTransition(async () => {
-      const result = await advance(attemptId);
-      if (!result.ok) {
-        setError(result.error);
-        return;
+      try {
+        const result = await advance(attemptId);
+        if (!result.ok) {
+          setError(result.error);
+          return;
+        }
+        setChosen(null);
+        setOutcome(null);
+        setPeeked(null);
+        setConfirmReveal(false);
+        if (!result.question) setDone((d) => d ?? { badgeAwarded: false });
+        else setQuestion(result.question);
+      } catch {
+        // Serving the NEXT question genuinely needs the server; all that can
+        // be done honestly is say so and let the same button retry.
+        setHiccup(true);
       }
-      setChosen(null);
-      setOutcome(null);
-      setPeeked(null);
-      setConfirmReveal(false);
-      if (!result.question) setDone((d) => d ?? { badgeAwarded: false });
-      else setQuestion(result.question);
     });
   }
 
   function doReveal() {
     if (!attemptId || !question) return;
+    setHiccup(false);
     startTransition(async () => {
-      const result = await reveal(attemptId, question.questionId);
-      if (!result.ok) {
-        setError(result.error);
-        return;
+      try {
+        const result = await reveal(attemptId, question.questionId);
+        if (!result.ok) {
+          setError(result.error);
+          return;
+        }
+        setPeeked({ solution: result.solution, answerIndex: result.answerIndex });
+        setConfirmReveal(false);
+        if (result.badgeForfeited) setForfeited(true);
+      } catch {
+        setHiccup(true);
       }
-      setPeeked({ solution: result.solution, answerIndex: result.answerIndex });
-      setConfirmReveal(false);
-      if (result.badgeForfeited) setForfeited(true);
     });
   }
 
@@ -280,6 +378,25 @@ export function Player({
             </p>
           )}
 
+          {offlineAnswer && (
+            <div className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3.5">
+              <WifiSlashIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" />
+              <div>
+                <p className="text-sm font-semibold text-fg">{t("practice.offlineSavedTitle")}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
+                  {t("practice.offlineSavedBody")}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {hiccup && (
+            <p className="flex items-center gap-1.5 text-xs font-medium text-warn">
+              <WifiSlashIcon weight="fill" className="size-4" />
+              {t("practice.connectionHiccup")}
+            </p>
+          )}
+
           {/* ---------------- controls ---------------- */}
           {outcome ? (
             <Button block onClick={next} loading={pending}>
@@ -305,7 +422,7 @@ export function Player({
                 </Button>
               </div>
             </div>
-          ) : (
+          ) : offlineAnswer ? null : (
             <Button
               block
               variant="ghost"

@@ -999,6 +999,10 @@ export const en = {
     gapsHint:
       "Chapters where several pupils are missing more than they make at the same level, over the last two weeks. Counts, not names — this is one teaching problem, not several private ones.",
     gapsStuck: "{count} pupils stuck at L{level}",
+    offlineSavedTitle: "You're offline — your answer is saved",
+    offlineSavedBody:
+      "It will send itself the moment the connection comes back. You can even close this page; the answer will not be lost.",
+    connectionHiccup: "The connection dropped. Try that again.",
     heatmapEmpty: "Nobody in this class has practised yet.",
     colPupils: "Pupils",
     setTitle: "Set a chapter",
@@ -3340,6 +3344,19 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  welcomeTour: {
+    title: "Welcome",
+    intro:
+      "Everything about your child's school lives here. Start by choosing the language you read best.",
+    pickLanguage: "Your language",
+    doorAttendance: "Was my child in school?",
+    doorHomework: "What homework was set?",
+    doorPractice: "How is their practice going?",
+    doorMeetings: "Meet the teacher",
+    gotIt: "Got it — don't show this again",
+    dismiss: "Dismiss welcome",
+  },
+
   meetings: {
     teacherTitle: "Meetings",
     teacherIntro:

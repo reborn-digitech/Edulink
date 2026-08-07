@@ -23,6 +23,7 @@ import { AttendanceBadge, Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
+import { WelcomeTour } from "./welcome-tour";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
@@ -124,6 +125,8 @@ export default async function ParentDashboard({
 
   return (
     <div className="space-y-6">
+      <WelcomeTour />
+
       {children.length > 1 && (
         <ChildSwitcher pupils={children} selectedId={selectedId} />
       )}

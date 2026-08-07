@@ -814,3 +814,61 @@ export function parseChoices(raw: string): string[] {
     return [];
   }
 }
+
+/**
+ * `submitAnswer`, safe to call twice — the offline outbox's contract.
+ *
+ * `submitAnswer` itself moves streaks and mastery on every call, so a replayed
+ * duplicate would climb the ladder twice on one tap. The guard is the response
+ * row: (attemptId, questionId) is unique, so a row with a chosen answer means
+ * this answer already counted, and the STORED verdict comes back untouched. A
+ * row with chosenIndex null is a reveal, not an answer, and does not block.
+ */
+export async function submitAnswerIdempotent(
+  session: ActiveContext,
+  attemptId: string,
+  questionId: string,
+  chosenIndex: number,
+  language: Locale = "en",
+): Promise<{ replayed: boolean; result: AnswerResult }> {
+  const { schoolId, membershipId } = requireStudent(session);
+
+  const attempt = await db.quizAttempt.findFirst({
+    where: { id: attemptId, schoolId, studentMembershipId: membershipId },
+    select: { id: true },
+  });
+  if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
+
+  const existing = await db.quizResponse.findUnique({
+    where: { attemptId_questionId: { attemptId, questionId } },
+    select: {
+      chosenIndex: true,
+      correct: true,
+      question: { select: { id: true, answerIndex: true, solution: true } },
+    },
+  });
+
+  if (existing && existing.chosenIndex !== null) {
+    const lang = normaliseLocale(language);
+    const translation =
+      lang === "en"
+        ? null
+        : await db.quizQuestionTranslation.findUnique({
+            where: { questionId_language: { questionId: existing.question.id, language: lang } },
+            select: { solution: true },
+          });
+    return {
+      replayed: true,
+      result: {
+        correct: existing.correct,
+        answerIndex: existing.question.answerIndex,
+        solution: translation?.solution ?? existing.question.solution ?? "",
+        newLevel: 0,
+        finished: false,
+        badgeAwarded: false,
+      },
+    };
+  }
+
+  return { replayed: false, result: await submitAnswer(session, attemptId, questionId, chosenIndex, language) };
+}
