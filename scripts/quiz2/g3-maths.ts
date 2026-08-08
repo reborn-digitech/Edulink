@@ -9,7 +9,7 @@
  * ⚠ The hi/mr text is the author's own, pending a native reader, like every
  * translated string in this repository.
  */
-import type { OutQuestion, TopicFileOut } from "./engine";
+import type { Chapter, OutQuestion, TopicFileOut } from "./engine";
 import { rng } from "./engine";
 import { numQ, rupees } from "./numeric";
 
@@ -3154,6 +3154,269 @@ function smartCharts(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Play with Patterns                                            */
+/* ------------------------------------------------------------------------- */
+function playWithPatterns(): TopicFileOut {
+  const rand = rng("maths-3-play-with-patterns");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What comes next: 5, 10, 15, 20, …?",
+          hi: "आगे क्या आएगा: 5, 10, 15, 20, …?",
+          mr: "पुढे काय येईल: 5, 10, 15, 20, …?",
+        },
+        answer: 25,
+        wrong: [30, 21, 24],
+        checkExpr: "20+5",
+        solution: {
+          en: "Each step climbs by 5 — the fives table walking: after 20 comes 25. Thirty skips a step; 21 climbs by one.",
+          hi: "हर क़दम 5 चढ़ता है — पाँच का पहाड़ा चलते हुए: 20 के बाद 25। तीस एक क़दम लाँघता है; 21 एक-एक चढ़ता है।",
+          mr: "प्रत्येक पाऊल 5 ने चढते — पाचचा पाढा चालत: 20 नंतर 25. तीस एक पाऊल ओलांडते; 21 एकेकाने चढते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What comes next: 90, 80, 70, 60, …?",
+          hi: "आगे क्या आएगा: 90, 80, 70, 60, …?",
+          mr: "पुढे काय येईल: 90, 80, 70, 60, …?",
+        },
+        answer: 50,
+        wrong: [55, 40, 65],
+        checkExpr: "60-10",
+        solution: {
+          en: "This pattern walks DOWN by tens: 60 − 10 = 50. Forty jumps two steps at once; 55 halves the step size midway.",
+          hi: "यह पैटर्न दहाई-दहाई उतरता है: 60 − 10 = 50। चालीस एक साथ दो सीढ़ियाँ कूदता है; 55 बीच में क़दम आधा कर देता है।",
+          mr: "हा नमुना दहा-दहाने उतरतो: 60 − 10 = 50. चाळीस एकदम दोन पायऱ्या उडी मारते; 55 मध्येच पाऊल निम्मे करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Fill the gap: 7, 14, ▢, 28, 35.",
+          hi: "रिक्त भरें: 7, 14, ▢, 28, 35।",
+          mr: "रिकामी जागा भरा: 7, 14, ▢, 28, 35.",
+        },
+        answer: 21,
+        wrong: [20, 24, 18],
+        checkExpr: "14+7",
+        solution: {
+          en: "The sevens table: 7, 14, 21, 28, 35. The gap sits between 14 and 28, and only 21 is 7 away from both.",
+          hi: "सात का पहाड़ा: 7, 14, 21, 28, 35। रिक्त स्थान 14 और 28 के बीच है, और केवल 21 ही दोनों से 7 की दूरी पर है।",
+          mr: "साताचा पाढा: 7, 14, 21, 28, 35. रिकामी जागा 14 आणि 28 च्या मध्ये, आणि फक्त 21 च दोन्हींपासून 7 वर आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In the pattern A B B A B B A B B…, the letters repeat in a block. How many letters long is the repeating block?",
+          hi: "पैटर्न A B B A B B A B B… में अक्षर एक खंड में दोहराते हैं। दोहराने वाला खंड कितने अक्षरों का है?",
+          mr: "A B B A B B A B B… या नमुन्यात अक्षरे एका गटात पुनरावृत्त होतात. पुनरावृत्त गट किती अक्षरांचा आहे?",
+        },
+        answer: 3,
+        wrong: [2, 4, 6],
+        checkExpr: "9/3",
+        solution: {
+          en: "The chant is 'A B B' again and again — a block of 3. Hearing 'A B' as the block ignores the second B that always follows.",
+          hi: "रट है 'A B B' बार-बार — 3 का खंड। 'A B' को खंड सुनना उस दूसरे B को अनसुना करना है जो हर बार पीछे आता है।",
+          mr: "पालुपद आहे 'A B B' पुन्हा-पुन्हा — 3 चा गट. 'A B' ला गट मानणे म्हणजे दर वेळी मागून येणारा दुसरा B न ऐकणे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What comes next: 2, 4, 8, 16, …?",
+          hi: "आगे क्या आएगा: 2, 4, 8, 16, …?",
+          mr: "पुढे काय येईल: 2, 4, 8, 16, …?",
+        },
+        answer: 32,
+        wrong: [20, 24, 18],
+        checkExpr: "16*2",
+        solution: {
+          en: "Each number DOUBLES: 16 × 2 = 32. Adding 4 each time fits the first step but breaks at 8 — always test a rule on every step given.",
+          hi: "हर संख्या दुगनी होती है: 16 × 2 = 32। हर बार 4 जोड़ना पहले क़दम पर सही बैठता है पर 8 पर टूट जाता है — नियम को दिए गए हर क़दम पर परखिए।",
+          mr: "प्रत्येक संख्या दुप्पट होते: 16 × 2 = 32. दर वेळी 4 मिळवणे पहिल्या पावलावर जुळते पण 8 वर मोडते — नियम दिलेल्या प्रत्येक पावलावर तपासा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Rangoli dots are laid in rows: 1 dot, then 3, then 5, then 7. How many dots will the next row have?",
+          hi: "रंगोली के बिंदु क़तारों में हैं: 1, फिर 3, फिर 5, फिर 7। अगली क़तार में कितने बिंदु होंगे?",
+          mr: "रांगोळीचे ठिपके रांगांत आहेत: 1, मग 3, मग 5, मग 7. पुढच्या रांगेत किती ठिपके असतील?",
+        },
+        answer: 9,
+        wrong: [8, 11, 10],
+        checkExpr: "7+2",
+        solution: {
+          en: "The odd numbers march by twos: 1, 3, 5, 7, 9. Eight would break the pattern's promise that every row is odd.",
+          hi: "विषम संख्याएँ दो-दो से बढ़ती हैं: 1, 3, 5, 7, 9। आठ उस वादे को तोड़ता जो हर क़तार को विषम रखता है।",
+          mr: "विषम संख्या दोन-दोनने पुढे जातात: 1, 3, 5, 7, 9. आठने प्रत्येक रांग विषम ठेवण्याचे वचन मोडले असते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A number machine turns 3 into 8, turns 5 into 12, and turns 10 into 22. What will it turn 7 into?",
+          hi: "एक संख्या-मशीन 3 को 8, 5 को 12, और 10 को 22 बनाती है। वह 7 को क्या बनाएगी?",
+          mr: "एक संख्या-यंत्र 3 चे 8, 5 चे 12, आणि 10 चे 22 करते. ते 7 चे काय करेल?",
+        },
+        answer: 16,
+        wrong: [14, 12, 17],
+        checkExpr: "7*2+2",
+        solution: {
+          en: "Test the pairs: 3 → 8 and 5 → 12 both fit 'double, then add 2' — and 10 → 22 confirms it. So 7 → 7 × 2 + 2 = 16. 'Add 5' fits the first pair alone and dies on the second.",
+          hi: "जोड़ियाँ परखें: 3 → 8 और 5 → 12 दोनों पर 'दुगना करके 2 जोड़ो' सही बैठता है — और 10 → 22 पुष्टि करता है। तो 7 → 7 × 2 + 2 = 16। 'पाँच जोड़ो' पहली जोड़ी पर ही चलता है, दूसरी पर दम तोड़ देता है।",
+          mr: "जोड्या तपासा: 3 → 8 आणि 5 → 12 दोन्हींवर 'दुप्पट करून 2 मिळवा' जुळते — आणि 10 → 22 खात्री देते. म्हणून 7 → 7 × 2 + 2 = 16. 'पाच मिळवा' फक्त पहिल्या जोडीवर चालते, दुसऱ्यावर संपते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Beads are strung in repeats of: 2 red, 1 blue, 2 red, 1 blue… In a string of 24 beads, how many are blue?",
+          hi: "मोती इस दोहराव में पिरोए हैं: 2 लाल, 1 नीला, 2 लाल, 1 नीला… 24 मोतियों की माला में कितने नीले हैं?",
+          mr: "मणी या पुनरावृत्तीत ओवले आहेत: 2 लाल, 1 निळा, 2 लाल, 1 निळा… 24 मण्यांच्या माळेत किती निळे?",
+        },
+        answer: 8,
+        wrong: [12, 6, 3],
+        checkExpr: "24/3",
+        solution: {
+          en: "One block is 3 beads (red, red, blue), and 24 ÷ 3 = 8 blocks — one blue in each, so 8 blues. Twelve halves the string as if colours alternated one-for-one.",
+          hi: "एक खंड 3 मोतियों का है (लाल, लाल, नीला), और 24 ÷ 3 = 8 खंड — हर एक में एक नीला, यानी 8 नीले। बारह माला को ऐसे आधा करता है मानो रंग एक-एक कर बदलते हों।",
+          mr: "एक गट 3 मण्यांचा (लाल, लाल, निळा), आणि 24 ÷ 3 = 8 गट — प्रत्येकात एक निळा, म्हणजे 8 निळे. बारा माळ अशी निम्मी करते जणू रंग एक-एकाने बदलतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What comes next: 1, 2, 4, 7, 11, …?",
+          hi: "आगे क्या आएगा: 1, 2, 4, 7, 11, …?",
+          mr: "पुढे काय येईल: 1, 2, 4, 7, 11, …?",
+        },
+        answer: 16,
+        wrong: [15, 22, 13],
+        checkExpr: "11+5",
+        solution: {
+          en: "The jumps themselves grow: +1, +2, +3, +4 — so the next jump is +5, landing on 16. A pattern can hide in the gaps rather than the numbers.",
+          hi: "छलाँगें ख़ुद बढ़ती हैं: +1, +2, +3, +4 — अगली छलाँग +5, यानी 16 पर। पैटर्न संख्याओं के बजाय अंतरालों में छिप सकता है।",
+          mr: "उड्याच वाढतात: +1, +2, +3, +4 — पुढची उडी +5, म्हणजे 16 वर. नमुना संख्यांऐवजी अंतरांत लपलेला असू शकतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A staircase design uses 1 block for the first step, 2 for the second, 3 for the third, and so on. How many blocks build a staircase of 5 steps?",
+          hi: "सीढ़ी की डिज़ाइन में पहली सीढ़ी में 1 ब्लॉक, दूसरी में 2, तीसरी में 3, इसी तरह लगते हैं। 5 सीढ़ियों की सीढ़ी में कुल कितने ब्लॉक लगेंगे?",
+          mr: "जिन्याच्या नक्षीत पहिल्या पायरीला 1 ठोकळा, दुसरीला 2, तिसरीला 3, असे लागतात. 5 पायऱ्यांच्या जिन्याला एकूण किती ठोकळे?",
+        },
+        answer: 15,
+        wrong: [5, 25, 10],
+        checkExpr: "1+2+3+4+5",
+        solution: {
+          en: "Add the steps: 1 + 2 + 3 + 4 + 5 = 15 blocks. Pair the ends to see it fast: 1+5 and 2+4 make sixes, plus the 3. Twenty-five squares the steps instead of stacking them.",
+          hi: "सीढ़ियाँ जोड़ें: 1 + 2 + 3 + 4 + 5 = 15 ब्लॉक। सिरे मिलाकर जल्दी दिखता है: 1+5 और 2+4 के छक्के, और बीच का 3। पच्चीस सीढ़ियों का वर्ग बनाता है, चिनाई नहीं।",
+          mr: "पायऱ्या मिळवा: 1 + 2 + 3 + 4 + 5 = 15 ठोकळे. टोके जोडून पटकन दिसते: 1+5 आणि 2+4 चे सहा, आणि मधला 3. पंचवीस पायऱ्यांचा वर्ग करते, रचणी नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Look at this pattern of sums: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16. Following it, what is 1 + 3 + 5 + 7 + 9 + 11?",
+          hi: "योगों का यह पैटर्न देखें: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16। इसी क्रम में 1 + 3 + 5 + 7 + 9 + 11 कितना होगा?",
+          mr: "बेरजांचा हा नमुना पाहा: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16. याच क्रमाने 1 + 3 + 5 + 7 + 9 + 11 किती?",
+        },
+        answer: 36,
+        wrong: [25, 30, 42],
+        checkExpr: "6*6",
+        solution: {
+          en: "The sums are 2×2, 3×3, 4×4 — adding the first so-many odd numbers builds a square. Six odd numbers give 6 × 6 = 36. Plain adding confirms it: 4+5=9… all the way to 36.",
+          hi: "योग हैं 2×2, 3×3, 4×4 — पहले इतने विषम जोड़ने से वर्ग बनता है। छह विषम संख्याएँ 6 × 6 = 36 देती हैं। सीधी जोड़ भी यहीं पहुँचती है — 36 पर।",
+          mr: "बेरजा आहेत 2×2, 3×3, 4×4 — पहिल्या इतक्या विषम संख्या मिळवल्या की वर्ग होतो. सहा विषम संख्या 6 × 6 = 36 देतात. सरळ बेरीजही तिथेच — 36 वर — पोहोचते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The secret code shifts every letter one step forward (A→B, B→C … Z→A). A word was sent as 'DBU'. Counting A as 1, B as 2 and so on, what is the FIRST letter of the real word worth?",
+          hi: "गुप्त कोड हर अक्षर को एक क़दम आगे खिसकाता है (A→B, B→C … Z→A)। एक शब्द 'DBU' भेजा गया। A को 1, B को 2 गिनें तो असली शब्द का पहला अक्षर कितने का है?",
+          mr: "गुप्त सांकेतिक भाषा प्रत्येक अक्षर एक पाऊल पुढे सरकवते (A→B, B→C … Z→A). एक शब्द 'DBU' असा पाठवला. A ला 1, B ला 2 मोजल्यास खऱ्या शब्दाचे पहिले अक्षर कितीचे आहे?",
+        },
+        answer: 3,
+        wrong: [4, 2, 21],
+        checkExpr: "4-1",
+        solution: {
+          en: "To read the code, step each letter BACK: D→C, B→A, U→T — the word is CAT. C is the third letter, worth 3. Choosing 4 reads D itself, forgetting the code moved everything forward before sending.",
+          hi: "कोड पढ़ने के लिए हर अक्षर पीछे लौटाएँ: D→C, B→A, U→T — शब्द है CAT। C तीसरा अक्षर है, मान 3। 4 चुनना D को ही पढ़ना है — यह भूलकर कि भेजने से पहले कोड ने सब आगे खिसकाया था।",
+          mr: "सांकेतिक शब्द वाचायला प्रत्येक अक्षर मागे आणा: D→C, B→A, U→T — शब्द आहे CAT. C तिसरे अक्षर, किंमत 3. 4 निवडणे म्हणजे D च वाचणे — पाठवण्याआधी सर्व पुढे सरकवले होते हे विसरून.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 10 — Play with Patterns",
+      name: "Play with Patterns",
+      slug: "maths-3-play-with-patterns",
+      summary:
+        "Patterns in numbers, beads and letters — finding the rule, testing it on every step, and the odd numbers that build squares.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "पैटर्न से खेल",
+          summary: "संख्याओं, मोतियों और अक्षरों के पैटर्न — नियम ढूँढ़ना, हर क़दम पर परखना, और वर्ग बनाती विषम संख्याएँ।",
+        },
+        mr: {
+          name: "नमुन्यांचा खेळ",
+          summary: "संख्या, मणी आणि अक्षरांतले नमुने — नियम शोधणे, प्रत्येक पावलावर तपासणे, आणि वर्ग रचणाऱ्या विषम संख्या.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G3_MATHS: TopicFileOut[] = [
   funWithNumbers(),
   giveAndTake(),
@@ -3167,4 +3430,276 @@ export const G3_MATHS: TopicFileOut[] = [
   funWithGiveAndTake(),
   jugsAndMugs(),
   smartCharts(),
+  playWithPatterns(),
+];
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 1 — Where to Look From: views, not sums, so it runs through the   */
+/* conceptual engine rather than the numeric one.                            */
+/* ------------------------------------------------------------------------- */
+export const G3_MATHS_CONCEPT: Chapter[] = [
+  {
+    slug: "maths-3-where-to-look-from",
+    subject: "MATHS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 1 — Where to Look From",
+      hi: "अध्याय 1 — कहाँ से देखें",
+      mr: "प्रकरण 1 — कुठून पाहावे",
+    },
+    name: {
+      en: "Where to Look From",
+      hi: "कहाँ से देखें",
+      mr: "कुठून पाहावे",
+    },
+    summary: {
+      en: "The same thing looks different from the top, the side, up close and far away — and a map is a view from straight above.",
+      hi: "एक ही चीज़ ऊपर से, बग़ल से, पास से और दूर से अलग दिखती है — और नक़्शा ठीक ऊपर से लिया दृश्य है।",
+      mr: "एकच वस्तू वरून, बाजूने, जवळून आणि दुरून वेगळी दिसते — आणि नकाशा म्हणजे थेट वरून घेतलेले दृश्य.",
+    },
+    position: 1,
+    source: "EduLink original, written against NCERT Math Magic (Class 3)",
+    licence: "CC-BY-SA-4.0",
+    facts: [
+      {
+        id: "top",
+        name: { en: "From the top", hi: "ऊपर से", mr: "वरून" },
+        kind: "view",
+        prompt: {
+          en: "Seen from WHERE does a round glass of milk look like just a circle?",
+          hi: "कहाँ से देखने पर दूध का गोल गिलास केवल एक वृत्त-सा दिखता है?",
+          mr: "कुठून पाहिल्यावर दुधाचा गोल ग्लास फक्त एक वर्तुळासारखा दिसतो?",
+        },
+        statement: {
+          en: "From the top, a round glass shows only its rim — a circle — and a table shows its top and hides its legs.",
+          hi: "ऊपर से गोल गिलास केवल अपना किनारा दिखाता है — एक वृत्त — और मेज़ अपनी सतह दिखाकर टाँगें छिपा लेती है।",
+          mr: "वरून गोल ग्लास फक्त आपली कड दाखवतो — एक वर्तुळ — आणि टेबल आपला पृष्ठभाग दाखवून पाय लपवते.",
+        },
+        detail: {
+          en: "Looking straight down at a lunch plate, the round rotis on it become flat circles inside a bigger circle.",
+          hi: "थाली को सीधा ऊपर से देखने पर उस पर रखी गोल रोटियाँ बड़े वृत्त के भीतर छोटे चपटे वृत्त बन जाती हैं।",
+          mr: "ताटाकडे थेट वरून पाहिल्यावर त्यावरच्या गोल पोळ्या मोठ्या वर्तुळातील छोटी सपाट वर्तुळे होतात.",
+        },
+        pair: {
+          left: { en: "From the top", hi: "ऊपर से", mr: "वरून" },
+          right: { en: "only the rim shows", hi: "केवल किनारा दिखता है", mr: "फक्त कड दिसते" },
+        },
+      },
+      {
+        id: "side",
+        name: { en: "From the side", hi: "बग़ल से", mr: "बाजूने" },
+        kind: "view",
+        prompt: {
+          en: "Seen from where does a glass show how TALL it is?",
+          hi: "कहाँ से देखने पर गिलास की ऊँचाई दिखती है?",
+          mr: "कुठून पाहिल्यावर ग्लासाची उंची दिसते?",
+        },
+        statement: {
+          en: "From the side, things show their height — the glass looks tall, and the table shows its legs.",
+          hi: "बग़ल से चीज़ें अपनी ऊँचाई दिखाती हैं — गिलास लंबा दिखता है, और मेज़ की टाँगें दिखती हैं।",
+          mr: "बाजूने वस्तू आपली उंची दाखवतात — ग्लास उंच दिसतो, आणि टेबलाचे पाय दिसतात.",
+        },
+        pair: {
+          left: { en: "From the side", hi: "बग़ल से", mr: "बाजूने" },
+          right: { en: "height shows", hi: "ऊँचाई दिखती है", mr: "उंची दिसते" },
+        },
+      },
+      {
+        id: "aeroplane",
+        name: { en: "From an aeroplane", hi: "हवाई जहाज़ से", mr: "विमानातून" },
+        kind: "view",
+        prompt: {
+          en: "Seen from where do roads look like thin lines and houses like little boxes?",
+          hi: "कहाँ से देखने पर सड़कें पतली लकीरों-सी और घर छोटे डिब्बों-से दिखते हैं?",
+          mr: "कुठून पाहिल्यावर रस्ते बारीक रेषांसारखे आणि घरे छोट्या खोक्यांसारखी दिसतात?",
+        },
+        statement: {
+          en: "From an aeroplane, roads become thin lines, houses little boxes, and rivers silver ribbons.",
+          hi: "हवाई जहाज़ से सड़कें पतली लकीरें, घर छोटे डिब्बे, और नदियाँ चाँदी के फ़ीते बन जाती हैं।",
+          mr: "विमानातून रस्ते बारीक रेषा, घरे छोटी खोकी, आणि नद्या चांदीच्या फिती होतात.",
+        },
+        detail: {
+          en: "The higher you go, the more of the town fits in your eye at once — and the smaller each piece of it looks.",
+          hi: "जितना ऊँचा जाएँ, उतना ज़्यादा शहर एक साथ आँख में समाता है — और उसका हर टुकड़ा उतना ही छोटा दिखता है।",
+          mr: "जितके उंच जाल, तितके जास्त गाव एकदम नजरेत मावते — आणि त्याचा प्रत्येक तुकडा तितकाच लहान दिसतो.",
+        },
+        extra: {
+          en: "Even a big playground shrinks to the size of a postage stamp from that window seat.",
+          hi: "उस खिड़की वाली सीट से बड़ा-सा मैदान भी डाक-टिकट जितना सिकुड़ जाता है।",
+          mr: "त्या खिडकीच्या जागेवरून मोठे मैदानही पोस्टाच्या तिकिटाएवढे आकसते.",
+        },
+        pair: {
+          left: { en: "From an aeroplane", hi: "हवाई जहाज़ से", mr: "विमानातून" },
+          right: { en: "roads like thin lines", hi: "सड़कें पतली लकीरों-सी", mr: "रस्ते बारीक रेषांसारखे" },
+        },
+      },
+      {
+        id: "close",
+        name: { en: "From very close", hi: "बहुत पास से", mr: "अगदी जवळून" },
+        kind: "view",
+        prompt: {
+          en: "Seen from where might you see only the eye of an elephant and not the elephant?",
+          hi: "कहाँ से देखने पर हाथी की केवल आँख दिखे, पूरा हाथी नहीं?",
+          mr: "कुठून पाहिल्यावर हत्तीचा फक्त डोळा दिसेल, पूर्ण हत्ती नाही?",
+        },
+        statement: {
+          en: "From very close, one part fills your whole view — an eye, a wheel, a single letter on a poster.",
+          hi: "बहुत पास से एक हिस्सा ही पूरी नज़र भर देता है — एक आँख, एक पहिया, पोस्टर का एक अक्षर।",
+          mr: "अगदी जवळून एकच भाग सारी नजर व्यापतो — एक डोळा, एक चाक, भित्तिपत्रकावरचे एक अक्षर.",
+        },
+        pair: {
+          left: { en: "From very close", hi: "बहुत पास से", mr: "अगदी जवळून" },
+          right: { en: "one part fills the view", hi: "एक हिस्सा नज़र भरता है", mr: "एक भाग नजर व्यापतो" },
+        },
+      },
+      {
+        id: "far",
+        name: { en: "From far away", hi: "दूर से", mr: "दुरून" },
+        kind: "view",
+        prompt: {
+          en: "Seen from where does the WHOLE bus fit in your eye, but look small?",
+          hi: "कहाँ से देखने पर पूरी बस आँख में समा जाती है, पर छोटी दिखती है?",
+          mr: "कुठून पाहिल्यावर अख्खी बस नजरेत मावते, पण लहान दिसते?",
+        },
+        statement: {
+          en: "From far away, the whole thing fits in your view at once, but every part of it looks small.",
+          hi: "दूर से पूरी चीज़ एक साथ नज़र में आती है, पर उसका हर हिस्सा छोटा दिखता है।",
+          mr: "दुरून पूर्ण वस्तू एकदम नजरेत येते, पण तिचा प्रत्येक भाग लहान दिसतो.",
+        },
+      },
+      {
+        id: "map",
+        name: { en: "A map", hi: "नक़्शा", mr: "नकाशा" },
+        kind: "drawing",
+        prompt: {
+          en: "What do we call a drawing of a place made as if seen from straight above?",
+          hi: "किसी जगह का वह चित्र क्या कहलाता है जो ठीक ऊपर से देखे जैसा बनाया जाता है?",
+          mr: "एखाद्या जागेचे थेट वरून पाहिल्यासारखे काढलेले चित्र काय म्हणतात?",
+        },
+        statement: {
+          en: "A map draws a place as seen from straight above, which is why its roads are lines and its buildings are outlines.",
+          hi: "नक़्शा जगह को ठीक ऊपर से देखे जैसा बनाता है — इसीलिए उसकी सड़कें लकीरें और इमारतें ख़ाके होती हैं।",
+          mr: "नकाशा जागा थेट वरून पाहिल्यासारखी काढतो — म्हणूनच त्यातले रस्ते रेषा आणि इमारती आराखडे असतात.",
+        },
+        pair: {
+          left: { en: "A map", hi: "नक़्शा", mr: "नकाशा" },
+          right: { en: "drawn from straight above", hi: "ठीक ऊपर से बना", mr: "थेट वरून काढलेला" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Gappu walks toward a parked bus from the far end of the street. In which order does he see these: (1) only the driver's mirror filling his view, (2) the whole bus looking tiny, (3) the whole bus looking big?",
+          hi: "गप्पू गली के दूर छोर से खड़ी बस की ओर चलता है। वह इन्हें किस क्रम में देखेगा: (1) केवल ड्राइवर का शीशा नज़र भरता हुआ, (2) पूरी बस नन्ही-सी, (3) पूरी बस बड़ी-सी?",
+          mr: "गप्पू गल्लीच्या दूरच्या टोकाकडून उभ्या बसकडे चालतो. तो हे कोणत्या क्रमाने पाहील: (1) फक्त ड्रायव्हरचा आरसा नजर व्यापणारा, (2) अख्खी बस चिमुकली, (3) अख्खी बस मोठी?",
+        },
+        choices: [
+          { en: "2 → 3 → 1", hi: "2 → 3 → 1", mr: "2 → 3 → 1" },
+          { en: "1 → 2 → 3", hi: "1 → 2 → 3", mr: "1 → 2 → 3" },
+          { en: "3 → 2 → 1", hi: "3 → 2 → 1", mr: "3 → 2 → 1" },
+          { en: "2 → 1 → 3", hi: "2 → 1 → 3", mr: "2 → 1 → 3" },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Far away shows the whole bus small (2); nearer, the whole bus grows big (3); at arm's length one part — the mirror — fills his view (1). Distance decides both how much fits and how big it looks, in opposite directions.",
+          hi: "दूर से पूरी बस छोटी दिखती है (2); पास आने पर पूरी बस बड़ी (3); हाथ भर की दूरी पर एक हिस्सा — शीशा — नज़र भर देता है (1)। दूरी ही तय करती है कि कितना समाएगा और कितना बड़ा दिखेगा — दोनों उलटी दिशाओं में।",
+          mr: "दुरून अख्खी बस लहान दिसते (2); जवळ येताच अख्खी बस मोठी (3); हातभर अंतरावर एक भाग — आरसा — नजर व्यापतो (1). अंतरच ठरवते किती मावेल आणि किती मोठे दिसेल — दोन्ही उलट दिशांनी.",
+        },
+      },
+      {
+        level: 5,
+        stem: {
+          en: "From the rooftop, Seema looks straight down at 4 mats drying papads, 6 papads on each mat. Without going down, how many papads does she count?",
+          hi: "छत से सीमा ठीक नीचे देखती है: पापड़ सुखाने की 4 चटाइयाँ, हर चटाई पर 6 पापड़। नीचे उतरे बिना वह कितने पापड़ गिनती है?",
+          mr: "गच्चीवरून सीमा थेट खाली पाहते: पापड वाळवणाऱ्या 4 चटया, प्रत्येक चटईवर 6 पापड. खाली न उतरता ती किती पापड मोजते?",
+        },
+        choices: [
+          { en: "24", hi: "24", mr: "24" },
+          { en: "10", hi: "10", mr: "10" },
+          { en: "18", hi: "18", mr: "18" },
+          { en: "30", hi: "30", mr: "30" },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The top view lays everything out at once — 4 mats × 6 papads = 24. This is the rooftop's gift to counting: no papad hides behind another when you look from straight above.",
+          hi: "ऊपर का दृश्य सब कुछ एक साथ बिछा देता है — 4 चटाइयाँ × 6 पापड़ = 24। गिनती को छत का यही उपहार है: ठीक ऊपर से देखने पर कोई पापड़ किसी के पीछे नहीं छिपता।",
+          mr: "वरचे दृश्य सर्व एकदम मांडते — 4 चटया × 6 पापड = 24. मोजणीला गच्चीची हीच देणगी: थेट वरून पाहिल्यावर कोणताही पापड दुसऱ्यामागे लपत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A photo taken from straight above a table shows one big rectangle, two large circles and four small circles. What was most likely on the table?",
+          hi: "मेज़ के ठीक ऊपर से ली गई तस्वीर में एक बड़ा आयत, दो बड़े वृत्त और चार छोटे वृत्त दिखते हैं। मेज़ पर सबसे संभवतः क्या रखा था?",
+          mr: "टेबलाच्या थेट वरून घेतलेल्या छायाचित्रात एक मोठा आयत, दोन मोठी वर्तुळे आणि चार छोटी वर्तुळे दिसतात. टेबलावर बहुधा काय ठेवले होते?",
+        },
+        choices: [
+          {
+            en: "A tray with two plates and four bowls",
+            hi: "एक परात, दो थालियाँ और चार कटोरियाँ",
+            mr: "एक तबक, दोन ताटे आणि चार वाट्या",
+          },
+          {
+            en: "Two books and four pencils",
+            hi: "दो किताबें और चार पेंसिलें",
+            mr: "दोन पुस्तके आणि चार पेन्सिली",
+          },
+          {
+            en: "A bedsheet and four pillows",
+            hi: "एक चादर और चार तकिए",
+            mr: "एक चादर आणि चार उश्या",
+          },
+          {
+            en: "Six glasses of water",
+            hi: "पानी के छह गिलास",
+            mr: "पाण्याचे सहा ग्लास",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "From above, round things photograph as circles and rectangular things as rectangles: a tray (rectangle), plates (big circles), bowls (small circles) fit the count exactly. Books would add rectangles, not circles; six glasses would print six equal circles.",
+          hi: "ऊपर से गोल चीज़ें वृत्त और आयताकार चीज़ें आयत बनकर छपती हैं: परात (आयत), थालियाँ (बड़े वृत्त), कटोरियाँ (छोटे वृत्त) — गिनती ठीक बैठती है। किताबें आयत जोड़तीं, वृत्त नहीं; छह गिलास छह बराबर वृत्त छापते।",
+          mr: "वरून गोल वस्तू वर्तुळे आणि आयताकृती वस्तू आयत म्हणून उमटतात: तबक (आयत), ताटे (मोठी वर्तुळे), वाट्या (छोटी वर्तुळे) — मोजणी नेमकी जुळते. पुस्तकांनी आयत वाढले असते, वर्तुळे नव्हे; सहा ग्लासांनी सहा सारखी वर्तुळे उमटली असती.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "On a map of the school drawn from straight above, which one of these can the map NEVER show directly?",
+          hi: "ठीक ऊपर से बने स्कूल के नक़्शे में इनमें से क्या कभी सीधे नहीं दिख सकता?",
+          mr: "थेट वरून काढलेल्या शाळेच्या नकाशात यांपैकी काय कधीही थेट दिसू शकत नाही?",
+        },
+        choices: [
+          {
+            en: "How tall the flagpole is",
+            hi: "झंडे के खंभे की ऊँचाई",
+            mr: "झेंड्याच्या खांबाची उंची",
+          },
+          {
+            en: "Where the gate opens onto the road",
+            hi: "फाटक सड़क पर कहाँ खुलता है",
+            mr: "फाटक रस्त्यावर कुठे उघडते",
+          },
+          {
+            en: "The shape of the playground",
+            hi: "मैदान का आकार",
+            mr: "मैदानाचा आकार",
+          },
+          {
+            en: "Which building is nearest the well",
+            hi: "कौन-सी इमारत कुएँ के सबसे पास है",
+            mr: "कोणती इमारत विहिरीच्या सर्वांत जवळ आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A top-down view flattens the world: positions, shapes and distances survive, but height collapses to a dot. The flagpole becomes a point on the map — its tallness is exactly the direction the map cannot draw.",
+          hi: "ऊपर से लिया दृश्य दुनिया को चपटा कर देता है: स्थान, आकार और दूरियाँ बच जाती हैं, पर ऊँचाई सिमटकर बिंदु बन जाती है। झंडे का खंभा नक़्शे पर एक बिंदु है — उसकी ऊँचाई ठीक वही दिशा है जो नक़्शा नहीं खींच सकता।",
+          mr: "वरून घेतलेले दृश्य जग सपाट करते: जागा, आकार आणि अंतरे टिकतात, पण उंची आकसून ठिपका होते. झेंड्याचा खांब नकाशावर एक बिंदू — त्याची उंची हीच ती दिशा जी नकाशा काढूच शकत नाही.",
+        },
+      },
+    ],
+  },
 ];

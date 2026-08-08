@@ -1,0 +1,443 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 10 — Play with Patterns",
+  "name": "Play with Patterns",
+  "slug": "maths-3-play-with-patterns",
+  "summary": "Patterns in numbers, beads and letters — finding the rule, testing it on every step, and the odd numbers that build squares.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "पैटर्न से खेल",
+      "summary": "संख्याओं, मोतियों और अक्षरों के पैटर्न — नियम ढूँढ़ना, हर क़दम पर परखना, और वर्ग बनाती विषम संख्याएँ।"
+    },
+    "mr": {
+      "name": "नमुन्यांचा खेळ",
+      "summary": "संख्या, मणी आणि अक्षरांतले नमुने — नियम शोधणे, प्रत्येक पावलावर तपासणे, आणि वर्ग रचणाऱ्या विषम संख्या."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What comes next: 5, 10, 15, 20, …?",
+      "choices": [
+        "25",
+        "21",
+        "30",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "Each step climbs by 5 — the fives table walking: after 20 comes 25. Thirty skips a step; 21 climbs by one.",
+      "checkExpr": "20+5",
+      "translations": {
+        "hi": {
+          "stem": "आगे क्या आएगा: 5, 10, 15, 20, …?",
+          "choices": [
+            "25",
+            "21",
+            "30",
+            "24"
+          ],
+          "solution": "हर क़दम 5 चढ़ता है — पाँच का पहाड़ा चलते हुए: 20 के बाद 25। तीस एक क़दम लाँघता है; 21 एक-एक चढ़ता है।"
+        },
+        "mr": {
+          "stem": "पुढे काय येईल: 5, 10, 15, 20, …?",
+          "choices": [
+            "25",
+            "21",
+            "30",
+            "24"
+          ],
+          "solution": "प्रत्येक पाऊल 5 ने चढते — पाचचा पाढा चालत: 20 नंतर 25. तीस एक पाऊल ओलांडते; 21 एकेकाने चढते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What comes next: 90, 80, 70, 60, …?",
+      "choices": [
+        "50",
+        "55",
+        "40",
+        "65"
+      ],
+      "answerIndex": 0,
+      "solution": "This pattern walks DOWN by tens: 60 − 10 = 50. Forty jumps two steps at once; 55 halves the step size midway.",
+      "checkExpr": "60-10",
+      "translations": {
+        "hi": {
+          "stem": "आगे क्या आएगा: 90, 80, 70, 60, …?",
+          "choices": [
+            "50",
+            "55",
+            "40",
+            "65"
+          ],
+          "solution": "यह पैटर्न दहाई-दहाई उतरता है: 60 − 10 = 50। चालीस एक साथ दो सीढ़ियाँ कूदता है; 55 बीच में क़दम आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "पुढे काय येईल: 90, 80, 70, 60, …?",
+          "choices": [
+            "50",
+            "55",
+            "40",
+            "65"
+          ],
+          "solution": "हा नमुना दहा-दहाने उतरतो: 60 − 10 = 50. चाळीस एकदम दोन पायऱ्या उडी मारते; 55 मध्येच पाऊल निम्मे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Fill the gap: 7, 14, ▢, 28, 35.",
+      "choices": [
+        "18",
+        "21",
+        "20",
+        "24"
+      ],
+      "answerIndex": 1,
+      "solution": "The sevens table: 7, 14, 21, 28, 35. The gap sits between 14 and 28, and only 21 is 7 away from both.",
+      "checkExpr": "14+7",
+      "translations": {
+        "hi": {
+          "stem": "रिक्त भरें: 7, 14, ▢, 28, 35।",
+          "choices": [
+            "18",
+            "21",
+            "20",
+            "24"
+          ],
+          "solution": "सात का पहाड़ा: 7, 14, 21, 28, 35। रिक्त स्थान 14 और 28 के बीच है, और केवल 21 ही दोनों से 7 की दूरी पर है।"
+        },
+        "mr": {
+          "stem": "रिकामी जागा भरा: 7, 14, ▢, 28, 35.",
+          "choices": [
+            "18",
+            "21",
+            "20",
+            "24"
+          ],
+          "solution": "साताचा पाढा: 7, 14, 21, 28, 35. रिकामी जागा 14 आणि 28 च्या मध्ये, आणि फक्त 21 च दोन्हींपासून 7 वर आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In the pattern A B B A B B A B B…, the letters repeat in a block. How many letters long is the repeating block?",
+      "choices": [
+        "6",
+        "3",
+        "2",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The chant is 'A B B' again and again — a block of 3. Hearing 'A B' as the block ignores the second B that always follows.",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "पैटर्न A B B A B B A B B… में अक्षर एक खंड में दोहराते हैं। दोहराने वाला खंड कितने अक्षरों का है?",
+          "choices": [
+            "6",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "रट है 'A B B' बार-बार — 3 का खंड। 'A B' को खंड सुनना उस दूसरे B को अनसुना करना है जो हर बार पीछे आता है।"
+        },
+        "mr": {
+          "stem": "A B B A B B A B B… या नमुन्यात अक्षरे एका गटात पुनरावृत्त होतात. पुनरावृत्त गट किती अक्षरांचा आहे?",
+          "choices": [
+            "6",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "पालुपद आहे 'A B B' पुन्हा-पुन्हा — 3 चा गट. 'A B' ला गट मानणे म्हणजे दर वेळी मागून येणारा दुसरा B न ऐकणे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What comes next: 2, 4, 8, 16, …?",
+      "choices": [
+        "32",
+        "24",
+        "18",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Each number DOUBLES: 16 × 2 = 32. Adding 4 each time fits the first step but breaks at 8 — always test a rule on every step given.",
+      "checkExpr": "16*2",
+      "translations": {
+        "hi": {
+          "stem": "आगे क्या आएगा: 2, 4, 8, 16, …?",
+          "choices": [
+            "32",
+            "24",
+            "18",
+            "20"
+          ],
+          "solution": "हर संख्या दुगनी होती है: 16 × 2 = 32। हर बार 4 जोड़ना पहले क़दम पर सही बैठता है पर 8 पर टूट जाता है — नियम को दिए गए हर क़दम पर परखिए।"
+        },
+        "mr": {
+          "stem": "पुढे काय येईल: 2, 4, 8, 16, …?",
+          "choices": [
+            "32",
+            "24",
+            "18",
+            "20"
+          ],
+          "solution": "प्रत्येक संख्या दुप्पट होते: 16 × 2 = 32. दर वेळी 4 मिळवणे पहिल्या पावलावर जुळते पण 8 वर मोडते — नियम दिलेल्या प्रत्येक पावलावर तपासा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Rangoli dots are laid in rows: 1 dot, then 3, then 5, then 7. How many dots will the next row have?",
+      "choices": [
+        "10",
+        "11",
+        "8",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "The odd numbers march by twos: 1, 3, 5, 7, 9. Eight would break the pattern's promise that every row is odd.",
+      "checkExpr": "7+2",
+      "translations": {
+        "hi": {
+          "stem": "रंगोली के बिंदु क़तारों में हैं: 1, फिर 3, फिर 5, फिर 7। अगली क़तार में कितने बिंदु होंगे?",
+          "choices": [
+            "10",
+            "11",
+            "8",
+            "9"
+          ],
+          "solution": "विषम संख्याएँ दो-दो से बढ़ती हैं: 1, 3, 5, 7, 9। आठ उस वादे को तोड़ता जो हर क़तार को विषम रखता है।"
+        },
+        "mr": {
+          "stem": "रांगोळीचे ठिपके रांगांत आहेत: 1, मग 3, मग 5, मग 7. पुढच्या रांगेत किती ठिपके असतील?",
+          "choices": [
+            "10",
+            "11",
+            "8",
+            "9"
+          ],
+          "solution": "विषम संख्या दोन-दोनने पुढे जातात: 1, 3, 5, 7, 9. आठने प्रत्येक रांग विषम ठेवण्याचे वचन मोडले असते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A number machine turns 3 into 8, turns 5 into 12, and turns 10 into 22. What will it turn 7 into?",
+      "choices": [
+        "16",
+        "12",
+        "17",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "Test the pairs: 3 → 8 and 5 → 12 both fit 'double, then add 2' — and 10 → 22 confirms it. So 7 → 7 × 2 + 2 = 16. 'Add 5' fits the first pair alone and dies on the second.",
+      "checkExpr": "7*2+2",
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या-मशीन 3 को 8, 5 को 12, और 10 को 22 बनाती है। वह 7 को क्या बनाएगी?",
+          "choices": [
+            "16",
+            "12",
+            "17",
+            "14"
+          ],
+          "solution": "जोड़ियाँ परखें: 3 → 8 और 5 → 12 दोनों पर 'दुगना करके 2 जोड़ो' सही बैठता है — और 10 → 22 पुष्टि करता है। तो 7 → 7 × 2 + 2 = 16। 'पाँच जोड़ो' पहली जोड़ी पर ही चलता है, दूसरी पर दम तोड़ देता है।"
+        },
+        "mr": {
+          "stem": "एक संख्या-यंत्र 3 चे 8, 5 चे 12, आणि 10 चे 22 करते. ते 7 चे काय करेल?",
+          "choices": [
+            "16",
+            "12",
+            "17",
+            "14"
+          ],
+          "solution": "जोड्या तपासा: 3 → 8 आणि 5 → 12 दोन्हींवर 'दुप्पट करून 2 मिळवा' जुळते — आणि 10 → 22 खात्री देते. म्हणून 7 → 7 × 2 + 2 = 16. 'पाच मिळवा' फक्त पहिल्या जोडीवर चालते, दुसऱ्यावर संपते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Beads are strung in repeats of: 2 red, 1 blue, 2 red, 1 blue… In a string of 24 beads, how many are blue?",
+      "choices": [
+        "3",
+        "12",
+        "8",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "One block is 3 beads (red, red, blue), and 24 ÷ 3 = 8 blocks — one blue in each, so 8 blues. Twelve halves the string as if colours alternated one-for-one.",
+      "checkExpr": "24/3",
+      "translations": {
+        "hi": {
+          "stem": "मोती इस दोहराव में पिरोए हैं: 2 लाल, 1 नीला, 2 लाल, 1 नीला… 24 मोतियों की माला में कितने नीले हैं?",
+          "choices": [
+            "3",
+            "12",
+            "8",
+            "6"
+          ],
+          "solution": "एक खंड 3 मोतियों का है (लाल, लाल, नीला), और 24 ÷ 3 = 8 खंड — हर एक में एक नीला, यानी 8 नीले। बारह माला को ऐसे आधा करता है मानो रंग एक-एक कर बदलते हों।"
+        },
+        "mr": {
+          "stem": "मणी या पुनरावृत्तीत ओवले आहेत: 2 लाल, 1 निळा, 2 लाल, 1 निळा… 24 मण्यांच्या माळेत किती निळे?",
+          "choices": [
+            "3",
+            "12",
+            "8",
+            "6"
+          ],
+          "solution": "एक गट 3 मण्यांचा (लाल, लाल, निळा), आणि 24 ÷ 3 = 8 गट — प्रत्येकात एक निळा, म्हणजे 8 निळे. बारा माळ अशी निम्मी करते जणू रंग एक-एकाने बदलतात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What comes next: 1, 2, 4, 7, 11, …?",
+      "choices": [
+        "13",
+        "22",
+        "16",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "The jumps themselves grow: +1, +2, +3, +4 — so the next jump is +5, landing on 16. A pattern can hide in the gaps rather than the numbers.",
+      "checkExpr": "11+5",
+      "translations": {
+        "hi": {
+          "stem": "आगे क्या आएगा: 1, 2, 4, 7, 11, …?",
+          "choices": [
+            "13",
+            "22",
+            "16",
+            "15"
+          ],
+          "solution": "छलाँगें ख़ुद बढ़ती हैं: +1, +2, +3, +4 — अगली छलाँग +5, यानी 16 पर। पैटर्न संख्याओं के बजाय अंतरालों में छिप सकता है।"
+        },
+        "mr": {
+          "stem": "पुढे काय येईल: 1, 2, 4, 7, 11, …?",
+          "choices": [
+            "13",
+            "22",
+            "16",
+            "15"
+          ],
+          "solution": "उड्याच वाढतात: +1, +2, +3, +4 — पुढची उडी +5, म्हणजे 16 वर. नमुना संख्यांऐवजी अंतरांत लपलेला असू शकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A staircase design uses 1 block for the first step, 2 for the second, 3 for the third, and so on. How many blocks build a staircase of 5 steps?",
+      "choices": [
+        "15",
+        "10",
+        "25",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Add the steps: 1 + 2 + 3 + 4 + 5 = 15 blocks. Pair the ends to see it fast: 1+5 and 2+4 make sixes, plus the 3. Twenty-five squares the steps instead of stacking them.",
+      "checkExpr": "1+2+3+4+5",
+      "translations": {
+        "hi": {
+          "stem": "सीढ़ी की डिज़ाइन में पहली सीढ़ी में 1 ब्लॉक, दूसरी में 2, तीसरी में 3, इसी तरह लगते हैं। 5 सीढ़ियों की सीढ़ी में कुल कितने ब्लॉक लगेंगे?",
+          "choices": [
+            "15",
+            "10",
+            "25",
+            "5"
+          ],
+          "solution": "सीढ़ियाँ जोड़ें: 1 + 2 + 3 + 4 + 5 = 15 ब्लॉक। सिरे मिलाकर जल्दी दिखता है: 1+5 और 2+4 के छक्के, और बीच का 3। पच्चीस सीढ़ियों का वर्ग बनाता है, चिनाई नहीं।"
+        },
+        "mr": {
+          "stem": "जिन्याच्या नक्षीत पहिल्या पायरीला 1 ठोकळा, दुसरीला 2, तिसरीला 3, असे लागतात. 5 पायऱ्यांच्या जिन्याला एकूण किती ठोकळे?",
+          "choices": [
+            "15",
+            "10",
+            "25",
+            "5"
+          ],
+          "solution": "पायऱ्या मिळवा: 1 + 2 + 3 + 4 + 5 = 15 ठोकळे. टोके जोडून पटकन दिसते: 1+5 आणि 2+4 चे सहा, आणि मधला 3. पंचवीस पायऱ्यांचा वर्ग करते, रचणी नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Look at this pattern of sums: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16. Following it, what is 1 + 3 + 5 + 7 + 9 + 11?",
+      "choices": [
+        "30",
+        "42",
+        "25",
+        "36"
+      ],
+      "answerIndex": 3,
+      "solution": "The sums are 2×2, 3×3, 4×4 — adding the first so-many odd numbers builds a square. Six odd numbers give 6 × 6 = 36. Plain adding confirms it: 4+5=9… all the way to 36.",
+      "checkExpr": "6*6",
+      "translations": {
+        "hi": {
+          "stem": "योगों का यह पैटर्न देखें: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16। इसी क्रम में 1 + 3 + 5 + 7 + 9 + 11 कितना होगा?",
+          "choices": [
+            "30",
+            "42",
+            "25",
+            "36"
+          ],
+          "solution": "योग हैं 2×2, 3×3, 4×4 — पहले इतने विषम जोड़ने से वर्ग बनता है। छह विषम संख्याएँ 6 × 6 = 36 देती हैं। सीधी जोड़ भी यहीं पहुँचती है — 36 पर।"
+        },
+        "mr": {
+          "stem": "बेरजांचा हा नमुना पाहा: 1 + 3 = 4, 1 + 3 + 5 = 9, 1 + 3 + 5 + 7 = 16. याच क्रमाने 1 + 3 + 5 + 7 + 9 + 11 किती?",
+          "choices": [
+            "30",
+            "42",
+            "25",
+            "36"
+          ],
+          "solution": "बेरजा आहेत 2×2, 3×3, 4×4 — पहिल्या इतक्या विषम संख्या मिळवल्या की वर्ग होतो. सहा विषम संख्या 6 × 6 = 36 देतात. सरळ बेरीजही तिथेच — 36 वर — पोहोचते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The secret code shifts every letter one step forward (A→B, B→C … Z→A). A word was sent as 'DBU'. Counting A as 1, B as 2 and so on, what is the FIRST letter of the real word worth?",
+      "choices": [
+        "3",
+        "4",
+        "21",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "To read the code, step each letter BACK: D→C, B→A, U→T — the word is CAT. C is the third letter, worth 3. Choosing 4 reads D itself, forgetting the code moved everything forward before sending.",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "गुप्त कोड हर अक्षर को एक क़दम आगे खिसकाता है (A→B, B→C … Z→A)। एक शब्द 'DBU' भेजा गया। A को 1, B को 2 गिनें तो असली शब्द का पहला अक्षर कितने का है?",
+          "choices": [
+            "3",
+            "4",
+            "21",
+            "2"
+          ],
+          "solution": "कोड पढ़ने के लिए हर अक्षर पीछे लौटाएँ: D→C, B→A, U→T — शब्द है CAT। C तीसरा अक्षर है, मान 3। 4 चुनना D को ही पढ़ना है — यह भूलकर कि भेजने से पहले कोड ने सब आगे खिसकाया था।"
+        },
+        "mr": {
+          "stem": "गुप्त सांकेतिक भाषा प्रत्येक अक्षर एक पाऊल पुढे सरकवते (A→B, B→C … Z→A). एक शब्द 'DBU' असा पाठवला. A ला 1, B ला 2 मोजल्यास खऱ्या शब्दाचे पहिले अक्षर कितीचे आहे?",
+          "choices": [
+            "3",
+            "4",
+            "21",
+            "2"
+          ],
+          "solution": "सांकेतिक शब्द वाचायला प्रत्येक अक्षर मागे आणा: D→C, B→A, U→T — शब्द आहे CAT. C तिसरे अक्षर, किंमत 3. 4 निवडणे म्हणजे D च वाचणे — पाठवण्याआधी सर्व पुढे सरकवले होते हे विसरून."
+        }
+      }
+    }
+  ]
+}
