@@ -814,4 +814,568 @@ export const G8_GEOGRAPHY: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Agriculture (fields sorted by purpose and climate)          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-8-agriculture",
+    subject: "GEOGRAPHY",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 4 — Agriculture",
+      hi: "अध्याय 4 — कृषि",
+      mr: "प्रकरण 4 — शेती",
+    },
+    name: { en: "Agriculture", hi: "कृषि", mr: "शेती" },
+    summary: {
+      en: "Farming sorted by purpose: the family-first plot and the market-first estate, fields that move through the forest, grains assigned their plains by climate — and development as seeds, water and roads in one package.",
+      hi: "उद्देश्य से छँटी खेती: परिवार-प्रथम खेत और बाज़ार-प्रथम बाग़ान, जंगल में चलते-फिरते खेत, जलवायु से अपने मैदान पाए अनाज — और एक ही पोटली में बीज, पानी और सड़कें बना विकास।",
+      mr: "हेतूने निवडलेली शेती: कुटुंब-प्रथम वावर आणि बाजार-प्रथम मळा, जंगलातून फिरणारी शेते, जलवायुमानाने आपली मैदाने मिळालेली धान्ये — आणि एकाच गाठोड्यात बी, पाणी आणि रस्ते झालेला विकास.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "agriculture",
+        name: { en: "Agriculture", hi: "कृषि", mr: "शेती" },
+        kind: "activity",
+        prompt: {
+          en: "Growing crops and rearing livestock — which primary activity feeds every other occupation on Earth?",
+          hi: "फ़सल उगाना और पशु पालना — कौन-सी प्राथमिक गतिविधि धरती के हर दूसरे पेशे को खिलाती है?",
+          mr: "पिके पिकवणे आणि पशुपालन — कोणती प्राथमिक क्रिया पृथ्वीवरच्या प्रत्येक इतर व्यवसायाला पोसते?",
+        },
+        statement: {
+          en: "Agriculture is the primary activity of growing and rearing — every meal eaten anywhere began in someone's field.",
+          hi: "कृषि उगाने-पालने की प्राथमिक गतिविधि है — कहीं भी खाया गया हर भोजन किसी के खेत में शुरू हुआ था।",
+          mr: "शेती ही पिकवण्या-पोसण्याची प्राथमिक क्रिया — कुठेही खाल्लेले प्रत्येक जेवण कोणाच्या तरी शेतात सुरू झाले होते.",
+        },
+        pair: {
+          left: { en: "The feeding occupation", hi: "खिलाने वाला पेशा", mr: "पोसणारा व्यवसाय" },
+          right: {
+            en: "every meal's beginning",
+            hi: "हर भोजन की शुरुआत",
+            mr: "प्रत्येक जेवणाची सुरुवात",
+          },
+        },
+      },
+      {
+        id: "subsistence",
+        name: { en: "Subsistence farming", hi: "निर्वाह कृषि", mr: "निर्वाह शेती" },
+        kind: "type",
+        prompt: {
+          en: "Which farming grows barely enough for the farmer's own family — small plots, family labour, little left to sell?",
+          hi: "कौन-सी खेती किसान के अपने परिवार भर के लिए उगाती है — छोटे खेत, घर की मेहनत, बेचने को थोड़ा-सा?",
+          mr: "कोणती शेती शेतकऱ्याच्या स्वतःच्या कुटुंबापुरतीच पिकवते — लहान वावर, घरची मेहनत, विकायला थोडेसे?",
+        },
+        statement: {
+          en: "Subsistence farming feeds the household first — small plots, simple tools, and a surplus that rarely reaches any market.",
+          hi: "निर्वाह कृषि पहले घर खिलाती है — छोटे खेत, सादे औज़ार, और ऐसा बचत-अन्न जो शायद ही बाज़ार पहुँचे।",
+          mr: "निर्वाह शेती आधी घर पोसते — लहान वावर, साधी अवजारे, आणि क्वचितच बाजारापर्यंत पोहोचणारे शिल्लक धान्य.",
+        },
+        detail: {
+          en: "Where land is scarce and hands are many it turns intensive — every yard cropped, twice if the water allows.",
+          hi: "जहाँ ज़मीन कम और हाथ बहुत, वहाँ यह सघन हो जाती है — हर गज़ बोया हुआ, पानी दे तो दो बार।",
+          mr: "जिथे जमीन कमी आणि हात जास्त, तिथे ती सघन होते — प्रत्येक वार पेरलेला, पाण्याने साथ दिली तर दोनदा.",
+        },
+        extra: {
+          en: "Most of the world's farmers farm this way — the smallest farms, together, feed the most people.",
+          hi: "दुनिया के अधिकांश किसान यही खेती करते हैं — सबसे छोटे खेत मिलकर सबसे ज़्यादा लोगों को खिलाते हैं।",
+          mr: "जगातले बहुतेक शेतकरी हीच शेती करतात — सर्वांत लहान शेते मिळून सर्वाधिक लोकांना पोसतात.",
+        },
+        pair: {
+          left: { en: "The family-first farm", hi: "परिवार-प्रथम खेत", mr: "कुटुंब-प्रथम वावर" },
+          right: { en: "little left to sell", hi: "बेचने को थोड़ा", mr: "विकायला थोडे" },
+        },
+      },
+      {
+        id: "shifting",
+        name: { en: "Shifting cultivation", hi: "स्थानांतरी कृषि (झूम)", mr: "स्थलांतरित शेती (झूम)" },
+        kind: "type",
+        prompt: {
+          en: "Clear a forest patch, crop it till the soil tires, then move on and let the forest heal. Which practice is this — jhum in the northeast?",
+          hi: "जंगल का टुकड़ा साफ़ कीजिए, मिट्टी थकने तक बोइए, फिर आगे बढ़कर जंगल को भरने दीजिए। यह कौन-सी प्रथा है — पूर्वोत्तर की झूम?",
+          mr: "जंगलाचा तुकडा साफ करा, माती थकेपर्यंत पेरा, मग पुढे जाऊन जंगलाला भरू द्या. ही कोणती पद्धत — ईशान्येकडची झूम?",
+        },
+        statement: {
+          en: "Shifting cultivation rotates FIELDS, not crops — cleared, cropped, and rested back to forest on a long cycle.",
+          hi: "स्थानांतरी कृषि फ़सलें नहीं, खेत घुमाती है — साफ़ किया, बोया, और लंबे चक्र में वापस जंगल होने को छोड़ा।",
+          mr: "स्थलांतरित शेती पिके नव्हे, शेते फिरवते — साफ केले, पेरले, आणि दीर्घ चक्रात परत जंगल व्हायला सोडले.",
+        },
+        detail: {
+          en: "It is jhum in Assam, milpa in Mexico, roca in Brazil — one practice wearing many names.",
+          hi: "असम में झूम, मेक्सिको में मिल्पा, ब्राज़ील में रोका — कई नाम पहने एक ही प्रथा।",
+          mr: "आसामात झूम, मेक्सिकोत मिल्पा, ब्राझीलमध्ये रोका — अनेक नावे घातलेली एकच पद्धत.",
+        },
+        extra: {
+          en: "It works only while the resting years are honoured — press the cycle shorter and the soil quits for good.",
+          hi: "यह तभी चलती है जब विश्राम के वर्ष निभाए जाएँ — चक्र छोटा कीजिए और मिट्टी सदा को जवाब दे देती है।",
+          mr: "ती तेव्हाच चालते जेव्हा विश्रांतीची वर्षे पाळली जातात — चक्र आखडा आणि माती कायमची राजीनामा देते.",
+        },
+        pair: {
+          left: { en: "Fields that move", hi: "चलते-फिरते खेत", mr: "फिरणारी शेते" },
+          right: {
+            en: "cropped, then rested to forest",
+            hi: "बोया, फिर जंगल को लौटाया",
+            mr: "पेरले, मग जंगलाला परत दिले",
+          },
+        },
+      },
+      {
+        id: "commercial",
+        name: { en: "Commercial farming", hi: "वाणिज्यिक कृषि", mr: "व्यापारी शेती" },
+        kind: "type",
+        prompt: {
+          en: "Which farming grows for the market — big fields, machines, and single crops sold by the tonne?",
+          hi: "कौन-सी खेती बाज़ार के लिए उगाती है — बड़े खेत, मशीनें, और टन के भाव बिकती इकलौती फ़सलें?",
+          mr: "कोणती शेती बाजारासाठी पिकवते — मोठी शेते, यंत्रे, आणि टनाच्या भावाने विकली जाणारी एकच पिके?",
+        },
+        statement: {
+          en: "Commercial farming produces to sell — scale, machinery and single-crop fields all aimed at the market's scales.",
+          hi: "वाणिज्यिक कृषि बेचने को उपजाती है — पैमाना, मशीनें और एक-फ़सली खेत, सब बाज़ार के तराज़ू पर साधे हुए।",
+          mr: "व्यापारी शेती विकण्यासाठी पिकवते — प्रमाण, यंत्रे आणि एक-पिकी शेते, सारी बाजाराच्या तराजूवर रोखलेली.",
+        },
+        pair: {
+          left: { en: "The market-first farm", hi: "बाज़ार-प्रथम खेत", mr: "बाजार-प्रथम शेत" },
+          right: { en: "sold by the tonne", hi: "टन के भाव बिका", mr: "टनाच्या भावाने विकलेले" },
+        },
+      },
+      {
+        id: "plantation",
+        name: { en: "Plantation agriculture", hi: "बाग़ानी कृषि", mr: "मळा शेती" },
+        kind: "type",
+        prompt: {
+          en: "Tea in Assam, coffee in Karnataka, rubber in Kerala — which estate-style farming raises ONE crop over great acreage, with hired labour and a factory close by?",
+          hi: "असम की चाय, कर्नाटक की कॉफ़ी, केरल का रबर — कौन-सी बाग़ान-शैली की खेती विशाल रक़बे पर एक ही फ़सल उगाती है, भाड़े के मज़दूरों और पास के कारख़ाने समेत?",
+          mr: "आसामचा चहा, कर्नाटकची कॉफी, केरळचे रबर — कोणती मळा-शैलीची शेती प्रचंड क्षेत्रावर एकच पीक पिकवते, भाड्याच्या मजुरांसह आणि जवळच्या कारखान्यासह?",
+        },
+        statement: {
+          en: "Plantations marry farm and factory — one crop, vast acreage, hired hands, and processing at the estate's own gate.",
+          hi: "बाग़ान खेत और कारख़ाने का विवाह हैं — एक फ़सल, विशाल रक़बा, भाड़े के हाथ, और प्रसंस्करण बाग़ान के अपने फाटक पर।",
+          mr: "मळे म्हणजे शेत आणि कारखान्याचे लग्न — एक पीक, प्रचंड क्षेत्र, भाड्याचे हात, आणि प्रक्रिया मळ्याच्या स्वतःच्या फाटकावर.",
+        },
+        pair: {
+          left: { en: "One crop, vast acreage", hi: "एक फ़सल, विशाल रक़बा", mr: "एक पीक, प्रचंड क्षेत्र" },
+          right: {
+            en: "factory at the farm gate",
+            hi: "खेत के फाटक पर कारख़ाना",
+            mr: "शेताच्या फाटकावर कारखाना",
+          },
+        },
+      },
+      {
+        id: "rice-wheat",
+        name: {
+          en: "The rice and wheat belts",
+          hi: "चावल और गेहूँ की पेटियाँ",
+          mr: "तांदूळ आणि गव्हाचे पट्टे",
+        },
+        kind: "pattern",
+        prompt: {
+          en: "Rice where it is hot and drenched, wheat where it is cool and moderate — which pairing of crop to climate rules the world's plains?",
+          hi: "जहाँ गर्म और तर वहाँ चावल, जहाँ ठंडा और संयत वहाँ गेहूँ — फ़सल-जलवायु की कौन-सी जोड़ी दुनिया के मैदानों पर राज करती है?",
+          mr: "जिथे उष्ण आणि भिजलेले तिथे तांदूळ, जिथे थंड आणि मध्यम तिथे गहू — पीक-जलवायुमानाची कोणती जोडी जगाच्या मैदानांवर राज्य करते?",
+        },
+        statement: {
+          en: "Rice demands heat and standing water; wheat, cool growing weather and moderate rain — climate assigns each grain its plains.",
+          hi: "चावल माँगता है गर्मी और ठहरा पानी; गेहूँ, ठंडी बाढ़त और संयत बारिश — जलवायु हर अनाज को उसके मैदान बाँटती है।",
+          mr: "तांदूळ मागतो उष्णता आणि साचलेले पाणी; गहू, थंड वाढ आणि मध्यम पाऊस — जलवायुमान प्रत्येक धान्याला त्याची मैदाने वाटते.",
+        },
+        pair: {
+          left: {
+            en: "Grain assigned by climate",
+            hi: "जलवायु से बँटा अनाज",
+            mr: "जलवायुमानाने वाटलेले धान्य",
+          },
+          right: {
+            en: "rice drenched, wheat cool",
+            hi: "चावल तर, गेहूँ ठंडा",
+            mr: "तांदूळ भिजलेला, गहू थंड",
+          },
+        },
+      },
+      {
+        id: "agri-development",
+        name: { en: "Agricultural development", hi: "कृषि विकास", mr: "कृषी विकास" },
+        kind: "effort",
+        prompt: {
+          en: "Better seeds, assured irrigation, safe storage, roads to market — which effort lifts farm output and farmer income together?",
+          hi: "बेहतर बीज, पक्की सिंचाई, सुरक्षित भंडारण, बाज़ार तक सड़कें — कौन-सा प्रयास खेत की उपज और किसान की आय साथ-साथ उठाता है?",
+          mr: "चांगले बी, हमखास सिंचन, सुरक्षित साठवण, बाजारापर्यंत रस्ते — कोणता प्रयत्न शेताचे उत्पादन आणि शेतकऱ्याचे उत्पन्न एकत्र उचलतो?",
+        },
+        statement: {
+          en: "Agricultural development raises the field's yield and the farmer's earning in one motion — seeds, water, storage and roads travelling as a package.",
+          hi: "कृषि विकास एक ही चाल में खेत की उपज और किसान की कमाई उठाता है — बीज, पानी, भंडारण और सड़कें एक पोटली में चलते हुए।",
+          mr: "कृषी विकास एकाच चालीत शेताचे उत्पादन आणि शेतकऱ्याची कमाई उचलतो — बी, पाणी, साठवण आणि रस्ते एका गाठोड्यात चालणारे.",
+        },
+        pair: {
+          left: { en: "The lifted farm", hi: "उठाया गया खेत", mr: "उचललेले शेत" },
+          right: {
+            en: "yield and income together",
+            hi: "उपज और आय साथ",
+            mr: "उत्पादन आणि उत्पन्न एकत्र",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the farm to its type: A-a jhum patch resting back to forest, B-an Assam tea estate with its own factory, C-a half-acre plot feeding one household. Which trio is right?",
+          hi: "खेत को उसके प्रकार से मिलाइए: अ-वापस जंगल होने को छोड़ा झूम-टुकड़ा, ब-अपने कारख़ाने वाला असमिया चाय-बाग़ान, स-एक घर को पालता आधे एकड़ का खेत। कौन-सी तिकड़ी सही है?",
+          mr: "शेताला त्याच्या प्रकाराशी जुळवा: अ-परत जंगल व्हायला सोडलेला झूम-तुकडा, ब-स्वतःच्या कारखान्याचा आसामी चहा-मळा, क-एक घर पोसणारा अर्धा एकर वावर. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: shifting cultivation · B: plantation agriculture · C: subsistence farming",
+            hi: "अ: स्थानांतरी कृषि · ब: बाग़ानी कृषि · स: निर्वाह कृषि",
+            mr: "अ: स्थलांतरित शेती · ब: मळा शेती · क: निर्वाह शेती",
+          },
+          {
+            en: "A: plantation · B: subsistence · C: shifting",
+            hi: "अ: बाग़ानी · ब: निर्वाह · स: स्थानांतरी",
+            mr: "अ: मळा · ब: निर्वाह · क: स्थलांतरित",
+          },
+          {
+            en: "A: subsistence · B: shifting · C: plantation",
+            hi: "अ: निर्वाह · ब: स्थानांतरी · स: बाग़ानी",
+            mr: "अ: निर्वाह · ब: स्थलांतरित · क: मळा",
+          },
+          {
+            en: "All three are the same commercial farming",
+            hi: "तीनों एक ही वाणिज्यिक कृषि हैं",
+            mr: "तिन्ही एकच व्यापारी शेती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Ask each farm two questions: who eats the produce, and does the field stay put? The jhum patch moves and rests — shifting. The estate grows one crop for distant buyers with a factory at the gate — plantation, commercial to the bone. The half-acre feeds its own kitchen — subsistence. Type is purpose plus geography, never size alone.",
+          hi: "हर खेत से दो सवाल पूछिए: उपज कौन खाता है, और क्या खेत टिका रहता है? झूम-टुकड़ा चलता और सुस्ताता है — स्थानांतरी। बाग़ान दूर के ख़रीदारों के लिए एक फ़सल उगाता है, फाटक पर कारख़ाना — बाग़ानी, हड्डी तक वाणिज्यिक। आधा एकड़ अपनी रसोई पालता है — निर्वाह। प्रकार उद्देश्य और भूगोल है, अकेला आकार कभी नहीं।",
+          mr: "प्रत्येक शेताला दोन प्रश्न विचारा: उत्पादन कोण खाते, आणि शेत जागीच राहते का? झूम-तुकडा फिरतो आणि विसावतो — स्थलांतरित. मळा दूरच्या गिऱ्हाईकांसाठी एक पीक पिकवतो, फाटकावर कारखाना — मळा, हाडांपर्यंत व्यापारी. अर्धा एकर आपले स्वयंपाकघर पोसतो — निर्वाह. प्रकार म्हणजे हेतू अधिक भूगोल, एकटा आकार कधीच नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A Kansas wheat farm: one farmer, giant machines, thousands of acres. A Ganga-plain village: many families, small plots, few machines. Both are 'farming' — what does the contrast actually teach?",
+          hi: "कैनसस का गेहूँ-फ़ार्म: एक किसान, विराट मशीनें, हज़ारों एकड़। गंगा-मैदान का गाँव: कई परिवार, छोटे खेत, थोड़ी मशीनें। दोनों 'खेती' हैं — विरोध असल में क्या सिखाता है?",
+          mr: "कॅन्ससचे गहू-फार्म: एक शेतकरी, अवाढव्य यंत्रे, हजारो एकर. गंगा-मैदानातले गाव: अनेक कुटुंबे, लहान वावर, थोडी यंत्रे. दोन्ही 'शेती' — विरोध खरे काय शिकवतो?",
+        },
+        choices: [
+          {
+            en: "Farming is shaped by what is scarce: where land is plentiful and labour dear, machines replace hands; where hands are plentiful and land dear, labour replaces machines — neither is backward, each is arithmetic",
+            hi: "खेती को वही गढ़ता है जो दुर्लभ है: जहाँ ज़मीन प्रचुर और मज़दूरी महँगी, वहाँ मशीनें हाथों की जगह लेती हैं; जहाँ हाथ प्रचुर और ज़मीन महँगी, वहाँ श्रम मशीनों की — कोई पिछड़ा नहीं, दोनों गणित हैं",
+            mr: "शेतीला तेच घडवते जे दुर्मीळ आहे: जिथे जमीन विपुल आणि मजुरी महाग, तिथे यंत्रे हातांची जागा घेतात; जिथे हात विपुल आणि जमीन महाग, तिथे श्रम यंत्रांची — कोणीही मागास नाही, दोन्ही गणित आहेत",
+          },
+          {
+            en: "The Kansas farm is simply better in every respect",
+            hi: "कैनसस का फ़ार्म हर लिहाज़ से बस बेहतर है",
+            mr: "कॅन्ससचे फार्म प्रत्येक बाबतीत नुसते चांगले",
+          },
+          {
+            en: "The two grow different plants, so no comparison holds",
+            hi: "दोनों अलग पौधे उगाते हैं, अतः कोई तुलना नहीं बनती",
+            mr: "दोघे वेगळी झाडे पिकवतात, म्हणून तुलना होत नाही",
+          },
+          {
+            en: "Machines cannot work in Indian soil",
+            hi: "मशीनें भारतीय मिट्टी में काम नहीं कर सकतीं",
+            mr: "यंत्रे भारतीय मातीत काम करू शकत नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Every farm solves the same equation with different scarcities. Kansas has acres to spare and few hands, so capital — the combine — substitutes for labour; the Ganga plain has hands to spare and acres precious, so labour intensifies every yard instead. Each arrangement is the rational answer to its own price of land and labour. The deep lesson: geography does not rank farms as modern and backward; it explains each as the local arithmetic of scarcity — and development means changing the arithmetic, not shaming the answer.",
+          hi: "हर खेत एक ही समीकरण अलग-अलग दुर्लभताओं से हल करता है। कैनसस के पास फ़ालतू एकड़ और थोड़े हाथ हैं, अतः पूँजी — कंबाइन — श्रम की जगह लेती है; गंगा-मैदान के पास फ़ालतू हाथ और क़ीमती एकड़ हैं, अतः श्रम हर गज़ को सघन करता है। हर बंदोबस्त अपनी ज़मीन-श्रम की क़ीमतों का तर्कसंगत उत्तर है। गहरा सबक़: भूगोल खेतों को आधुनिक-पिछड़ा नहीं ठहराता; वह हर एक को दुर्लभता का स्थानीय गणित बताता है — और विकास का अर्थ गणित बदलना है, उत्तर को लजाना नहीं।",
+          mr: "प्रत्येक शेत तेच समीकरण वेगवेगळ्या दुर्मिळतांनी सोडवते. कॅन्ससकडे उदंड एकर आणि थोडे हात, म्हणून भांडवल — कंबाइन — श्रमांची जागा घेते; गंगा-मैदानाकडे उदंड हात आणि मोलाचे एकर, म्हणून श्रम प्रत्येक वार सघन करतात. प्रत्येक मांडणी आपल्या जमीन-श्रमांच्या किमतींचे तर्कशुद्ध उत्तर. खोल धडा: भूगोल शेतांना आधुनिक-मागास ठरवत नाही; तो प्रत्येकाला दुर्मिळतेचे स्थानिक गणित म्हणून समजावतो — आणि विकास म्हणजे गणित बदलणे, उत्तराला लाजवणे नव्हे.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Industries (transformation, and where it sits)              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-8-industries",
+    subject: "GEOGRAPHY",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 5 — Industries",
+      hi: "अध्याय 5 — उद्योग",
+      mr: "प्रकरण 5 — उद्योग",
+    },
+    name: { en: "Industries", hi: "उद्योग", mr: "उद्योग" },
+    summary: {
+      en: "Raw made valuable, and the committee of five that decides where: field-fed and mine-fed factories, cotton's trinity shared by Mumbai and Osaka, a steel city planned at a confluence — and the weightless industry that mines campuses instead.",
+      hi: "मूल्यवान बना कच्चा माल, और जगह तय करती पाँच की समिति: खेत-पले और खदान-पले कारख़ाने, मुंबई-ओसाका की साझी कपास-त्रयी, संगम पर नियोजित इस्पात-नगर — और वह भारहीन उद्योग जो खदानों की जगह परिसर खोदता है।",
+      mr: "मौल्यवान झालेला कच्चा माल, आणि जागा ठरवणारी पाचांची समिती: शेत-पोसलेले आणि खाण-पोसलेले कारखाने, मुंबई-ओसाकाची सामाईक कापूस-त्रयी, संगमावर आखलेले पोलाद-नगर — आणि खाणींऐवजी परिसर खोदणारा वजनहीन उद्योग.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "industry",
+        name: { en: "Industry", hi: "उद्योग", mr: "उद्योग" },
+        kind: "activity",
+        prompt: {
+          en: "Which secondary activity transforms raw material into more valuable goods — cotton into cloth, ore into steel?",
+          hi: "कौन-सी द्वितीयक गतिविधि कच्चे माल को अधिक मूल्यवान वस्तुओं में बदलती है — कपास को कपड़े में, अयस्क को इस्पात में?",
+          mr: "कोणती द्वितीयक क्रिया कच्च्या मालाला अधिक मौल्यवान वस्तूंत बदलते — कापसाला कापडात, धातुकाला पोलादात?",
+        },
+        statement: {
+          en: "Industry is transformation — raw material in, value added, product out: the secondary step between field and shop.",
+          hi: "उद्योग रूपांतरण है — कच्चा माल भीतर, मूल्य जुड़ा, उत्पाद बाहर: खेत और दुकान के बीच का द्वितीयक क़दम।",
+          mr: "उद्योग म्हणजे रूपांतरण — कच्चा माल आत, मूल्य जुळले, उत्पादन बाहेर: शेत आणि दुकानामधले द्वितीयक पाऊल.",
+        },
+        pair: {
+          left: { en: "Raw made valuable", hi: "मूल्यवान बना कच्चा", mr: "मौल्यवान झालेला कच्चा" },
+          right: { en: "cotton into cloth", hi: "कपास से कपड़ा", mr: "कापसाचे कापड" },
+        },
+      },
+      {
+        id: "location",
+        name: { en: "Industrial location", hi: "औद्योगिक अवस्थिति", mr: "औद्योगिक स्थान" },
+        kind: "decision",
+        prompt: {
+          en: "Raw material, power, labour, transport, market — which decision do these five factors sit as a committee to settle?",
+          hi: "कच्चा माल, शक्ति, श्रम, परिवहन, बाज़ार — ये पाँच कारक समिति बनकर कौन-सा फ़ैसला तय करते हैं?",
+          mr: "कच्चा माल, ऊर्जा, श्रम, वाहतूक, बाजार — हे पाच घटक समिती होऊन कोणता निर्णय ठरवतात?",
+        },
+        statement: {
+          en: "Industrial location is settled by a committee of five — materials, power, hands, transport and buyers all cast votes.",
+          hi: "औद्योगिक अवस्थिति पाँच की समिति तय करती है — माल, शक्ति, हाथ, परिवहन और ख़रीदार, सबके वोट पड़ते हैं।",
+          mr: "औद्योगिक स्थान पाचांची समिती ठरवते — माल, ऊर्जा, हात, वाहतूक आणि गिऱ्हाईक, साऱ्यांची मते पडतात.",
+        },
+        detail: {
+          en: "Perishables sit by their material, heavy ores pull smelters to the mine, fashion sits beside its market — the loudest voter differs by industry.",
+          hi: "जल्दी बिगड़ने वाले अपने माल के पास बैठते हैं, भारी अयस्क गलाने-घर खदान तक खींचते हैं, फ़ैशन अपने बाज़ार की बग़ल में — सबसे ऊँचा वोट उद्योग-दर-उद्योग बदलता है।",
+          mr: "नाशवंत आपल्या मालाजवळ बसतात, जड धातुके वितळण-घरे खाणीकडे ओढतात, फॅशन आपल्या बाजाराशेजारी — सर्वांत मोठे मत उद्योगागणिक बदलते.",
+        },
+        extra: {
+          en: "Governments tip the vote with cheap land and tax breaks — policy is the committee's quiet sixth member.",
+          hi: "सरकारें सस्ती ज़मीन और कर-छूट से वोट झुकाती हैं — नीति समिति की ख़ामोश छठी सदस्य है।",
+          mr: "सरकारे स्वस्त जमीन आणि कर-सवलतींनी मत झुकवतात — धोरण हा समितीचा मूक सहावा सदस्य.",
+        },
+        pair: {
+          left: { en: "The committee of five", hi: "पाँच की समिति", mr: "पाचांची समिती" },
+          right: {
+            en: "where the factory sits",
+            hi: "कारख़ाना कहाँ बैठे",
+            mr: "कारखाना कुठे बसणार",
+          },
+        },
+      },
+      {
+        id: "agro-based",
+        name: { en: "Agro-based industries", hi: "कृषि-आधारित उद्योग", mr: "कृषी-आधारित उद्योग" },
+        kind: "class",
+        prompt: {
+          en: "Cotton textiles, sugar, paper — which industries eat the FARM's produce as their raw material?",
+          hi: "सूती वस्त्र, चीनी, काग़ज़ — कौन-से उद्योग खेत की उपज को कच्चे माल की तरह खाते हैं?",
+          mr: "सुती कापड, साखर, कागद — कोणते उद्योग शेताचे उत्पादन कच्चा माल म्हणून खातात?",
+        },
+        statement: {
+          en: "Agro-based industries live off the field — cotton, cane and wood walk in; cloth, sugar and paper walk out.",
+          hi: "कृषि-आधारित उद्योग खेत पर जीते हैं — कपास, गन्ना और लकड़ी भीतर जाते हैं; कपड़ा, चीनी और काग़ज़ बाहर आते हैं।",
+          mr: "कृषी-आधारित उद्योग शेतावर जगतात — कापूस, ऊस आणि लाकूड आत जातात; कापड, साखर आणि कागद बाहेर येतात.",
+        },
+        pair: {
+          left: { en: "The field-fed factory", hi: "खेत-पला कारख़ाना", mr: "शेत-पोसलेला कारखाना" },
+          right: { en: "cane in, sugar out", hi: "गन्ना भीतर, चीनी बाहर", mr: "ऊस आत, साखर बाहेर" },
+        },
+      },
+      {
+        id: "mineral-based",
+        name: {
+          en: "Mineral-based industries",
+          hi: "खनिज-आधारित उद्योग",
+          mr: "खनिज-आधारित उद्योग",
+        },
+        kind: "class",
+        prompt: {
+          en: "Iron and steel, cement, aluminium — which industries eat the MINE's output?",
+          hi: "लोहा-इस्पात, सीमेंट, अल्युमिनियम — कौन-से उद्योग खदान की उपज खाते हैं?",
+          mr: "लोखंड-पोलाद, सिमेंट, अ‍ॅल्युमिनियम — कोणते उद्योग खाणीचे उत्पादन खातात?",
+        },
+        statement: {
+          en: "Mineral-based industries live off the mine — ores and rock in, metal and cement out; and other industries feed on THEIR output in turn.",
+          hi: "खनिज-आधारित उद्योग खदान पर जीते हैं — अयस्क और चट्टान भीतर, धातु और सीमेंट बाहर; और दूसरे उद्योग आगे इन्हीं की उपज पर पलते हैं।",
+          mr: "खनिज-आधारित उद्योग खाणीवर जगतात — धातुके आणि खडक आत, धातू आणि सिमेंट बाहेर; आणि इतर उद्योग पुढे यांच्याच उत्पादनावर पोसतात.",
+        },
+        pair: {
+          left: { en: "The mine-fed factory", hi: "खदान-पला कारख़ाना", mr: "खाण-पोसलेला कारखाना" },
+          right: { en: "ore in, steel out", hi: "अयस्क भीतर, इस्पात बाहर", mr: "धातुक आत, पोलाद बाहेर" },
+        },
+      },
+      {
+        id: "cotton-textiles",
+        name: {
+          en: "The cotton textile industry",
+          hi: "सूती वस्त्र उद्योग",
+          mr: "सुती कापड उद्योग",
+        },
+        kind: "industry",
+        prompt: {
+          en: "Which industry spins fibre to yarn and weaves yarn to cloth wherever cotton, moist air and markets meet?",
+          hi: "कौन-सा उद्योग जहाँ कपास, नम हवा और बाज़ार मिलें, वहाँ रेशे को सूत और सूत को कपड़ा बुनता है?",
+          mr: "कोणता उद्योग जिथे कापूस, दमट हवा आणि बाजार मिळतील, तिथे धाग्याचे सूत आणि सुताचे कापड विणतो?",
+        },
+        statement: {
+          en: "Cotton textiles follow their trinity — fibre, humid air for unbroken thread, and buyers: Mumbai and Osaka both rose on it.",
+          hi: "सूती वस्त्र अपनी त्रयी के पीछे चलते हैं — रेशा, अटूट धागे के लिए नम हवा, और ख़रीदार: मुंबई और ओसाका दोनों इसी पर उठे।",
+          mr: "सुती कापड आपल्या त्रयीमागून चालते — धागा, अखंड सुतासाठी दमट हवा, आणि गिऱ्हाईक: मुंबई आणि ओसाका दोन्ही यावरच उभी राहिली.",
+        },
+        pair: {
+          left: {
+            en: "Fibre, damp air, buyers",
+            hi: "रेशा, नम हवा, ख़रीदार",
+            mr: "धागा, दमट हवा, गिऱ्हाईक",
+          },
+          right: {
+            en: "Mumbai and Osaka's shared story",
+            hi: "मुंबई-ओसाका की साझी कथा",
+            mr: "मुंबई-ओसाकाची सामाईक कथा",
+          },
+        },
+      },
+      {
+        id: "it-industry",
+        name: {
+          en: "The information technology industry",
+          hi: "सूचना प्रौद्योगिकी उद्योग",
+          mr: "माहिती तंत्रज्ञान उद्योग",
+        },
+        kind: "industry",
+        prompt: {
+          en: "Bengaluru and Silicon Valley trade in which weightless raw material — skills and data rather than any ore?",
+          hi: "बेंगलुरु और सिलिकॉन वैली किस भारहीन कच्चे माल का कारोबार करते हैं — किसी अयस्क की जगह हुनर और डेटा?",
+          mr: "बेंगळूरु आणि सिलिकॉन व्हॅली कोणत्या वजनहीन कच्च्या मालाचा व्यापार करतात — कोणत्याही धातुकाऐवजी कौशल्ये आणि डेटा?",
+        },
+        statement: {
+          en: "IT is industry without freight — its raw material is trained minds, its product code and services, its transport a cable.",
+          hi: "आईटी बिना ढुलाई का उद्योग है — उसका कच्चा माल प्रशिक्षित दिमाग़, उत्पाद कोड और सेवाएँ, परिवहन एक केबल।",
+          mr: "आयटी हा वाहतुकीविनाचा उद्योग — त्याचा कच्चा माल प्रशिक्षित मने, उत्पादन कोड आणि सेवा, वाहतूक एक केबल.",
+        },
+        detail: {
+          en: "It clusters where universities pour out engineers — the 'mine' of this industry is the campus.",
+          hi: "वह वहाँ जमता है जहाँ विश्वविद्यालय इंजीनियर उँडेलते हैं — इस उद्योग की 'खदान' परिसर है।",
+          mr: "तो तिथे जमतो जिथे विद्यापीठे अभियंते ओततात — या उद्योगाची 'खाण' म्हणजे परिसर.",
+        },
+        extra: {
+          en: "Its location ignores rivers and coalfields entirely — a new industrial geography written by bandwidth.",
+          hi: "उसकी अवस्थिति नदियों और कोयला-क्षेत्रों की पूरी अनदेखी करती है — बैंडविड्थ से लिखा नया औद्योगिक भूगोल।",
+          mr: "त्याचे स्थान नद्या आणि कोळसा-क्षेत्रांकडे पूर्ण दुर्लक्ष करते — बँडविड्थने लिहिलेला नवा औद्योगिक भूगोल.",
+        },
+        pair: {
+          left: { en: "The weightless industry", hi: "भारहीन उद्योग", mr: "वजनहीन उद्योग" },
+          right: {
+            en: "minds as raw material",
+            hi: "कच्चा माल बने दिमाग़",
+            mr: "कच्चा माल झालेली मने",
+          },
+        },
+      },
+      {
+        id: "jamshedpur",
+        name: { en: "Jamshedpur", hi: "जमशेदपुर", mr: "जमशेदपूर" },
+        kind: "example",
+        prompt: {
+          en: "Which planned Indian steel city rose where iron ore, coal and river water met — Tata's town on the Subarnarekha?",
+          hi: "कौन-सा नियोजित भारतीय इस्पात-नगर वहाँ उठा जहाँ लौह अयस्क, कोयला और नदी-जल मिले — स्वर्णरेखा किनारे टाटा का नगर?",
+          mr: "कोणते नियोजित भारतीय पोलाद-नगर तिथे उभे राहिले जिथे लोह धातुक, कोळसा आणि नदीचे पाणी मिळाले — सुवर्णरेखेकाठचे टाटांचे नगर?",
+        },
+        statement: {
+          en: "Jamshedpur is location theory built in brick — ore from nearby hills, coal from Jharia, water from the river, and a whole city grown around the works.",
+          hi: "जमशेदपुर ईंटों में चुना अवस्थिति-सिद्धांत है — पास की पहाड़ियों से अयस्क, झरिया से कोयला, नदी से पानी, और कारख़ाने के गिर्द उगा पूरा नगर।",
+          mr: "जमशेदपूर म्हणजे विटांत बांधलेला स्थान-सिद्धान्त — जवळच्या टेकड्यांतून धातुक, झरियाहून कोळसा, नदीतून पाणी, आणि कारखान्याभोवती वाढलेले अख्खे नगर.",
+        },
+        pair: {
+          left: { en: "The steel city planned", hi: "नियोजित इस्पात-नगर", mr: "आखलेले पोलाद-नगर" },
+          right: {
+            en: "ore, coal and river met",
+            hi: "मिले अयस्क, कोयला और नदी",
+            mr: "मिळालेले धातुक, कोळसा आणि नदी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort the factories by what feeds them: A-a sugar mill, B-a cement works, C-a software park. Which trio is right?",
+          hi: "कारख़ानों को उनके भोजन से छाँटिए: अ-चीनी मिल, ब-सीमेंट संयंत्र, स-सॉफ़्टवेयर पार्क। कौन-सी तिकड़ी सही है?",
+          mr: "कारखान्यांना त्यांच्या खाद्याने निवडा: अ-साखर कारखाना, ब-सिमेंट प्रकल्प, क-सॉफ्टवेअर पार्क. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: agro-based (cane) · B: mineral-based (limestone) · C: skill-based (trained minds)",
+            hi: "अ: कृषि-आधारित (गन्ना) · ब: खनिज-आधारित (चूना-पत्थर) · स: कौशल-आधारित (प्रशिक्षित दिमाग़)",
+            mr: "अ: कृषी-आधारित (ऊस) · ब: खनिज-आधारित (चुनखडी) · क: कौशल्य-आधारित (प्रशिक्षित मने)",
+          },
+          {
+            en: "A: mineral-based · B: skill-based · C: agro-based",
+            hi: "अ: खनिज-आधारित · ब: कौशल-आधारित · स: कृषि-आधारित",
+            mr: "अ: खनिज-आधारित · ब: कौशल्य-आधारित · क: कृषी-आधारित",
+          },
+          {
+            en: "A: skill-based · B: agro-based · C: mineral-based",
+            hi: "अ: कौशल-आधारित · ब: कृषि-आधारित · स: खनिज-आधारित",
+            mr: "अ: कौशल्य-आधारित · ब: कृषी-आधारित · क: खनिज-आधारित",
+          },
+          {
+            en: "All three industries share one raw material",
+            hi: "तीनों उद्योगों का एक ही कच्चा माल है",
+            mr: "तिन्ही उद्योगांचा एकच कच्चा माल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Follow each factory's shopping list. The sugar mill buys cane by the cart — field produce, agro-based. The cement works quarries limestone — mine produce, mineral-based. The software park hires graduates — its input walks in on two feet. Classify an industry by what it EATS, and its geography, transport needs and neighbours all follow.",
+          hi: "हर कारख़ाने की ख़रीद-सूची देखिए। चीनी मिल गाड़ियों से गन्ना ख़रीदती है — खेत की उपज, कृषि-आधारित। सीमेंट संयंत्र चूना-पत्थर खोदता है — खदान की उपज, खनिज-आधारित। सॉफ़्टवेयर पार्क स्नातक रखता है — उसका माल दो पैरों पर चलकर आता है। उद्योग को उसके भोजन से वर्गीकृत कीजिए, और उसका भूगोल, परिवहन और पड़ोस सब पीछे-पीछे आते हैं।",
+          mr: "प्रत्येक कारखान्याची खरेदी-यादी पाहा. साखर कारखाना गाड्यांनी ऊस घेतो — शेताचे उत्पादन, कृषी-आधारित. सिमेंट प्रकल्प चुनखडी खोदतो — खाणीचे उत्पादन, खनिज-आधारित. सॉफ्टवेअर पार्क पदवीधर नेमतो — त्याचा माल दोन पायांवर चालत येतो. उद्योगाला त्याच्या खाद्याने वर्गीकृत करा, आणि त्याचा भूगोल, वाहतूक आणि शेजार सारे मागोमाग येतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Jamshedpur needed ore, coal and a river before a single girder was cast. Bengaluru's IT district needed none of the three — yet both follow the SAME location rule. What is the rule?",
+          hi: "जमशेदपुर को पहली धरन ढलने से पहले अयस्क, कोयला और नदी चाहिए थे। बेंगलुरु के आईटी ज़िले को तीनों में से कुछ नहीं — फिर भी दोनों एक ही अवस्थिति-नियम मानते हैं। नियम क्या है?",
+          mr: "जमशेदपूरला पहिली तुळई ओतण्याआधी धातुक, कोळसा आणि नदी हवी होती. बेंगळूरुच्या आयटी जिल्ह्याला तिन्हींतले काही नाही — तरी दोघे एकच स्थान-नियम पाळतात. नियम काय?",
+        },
+        choices: [
+          {
+            en: "Industry settles where its DECISIVE input is cheapest to gather: steel's inputs are heavy rocks, so it sat on them; IT's input is trained minds, so it sat beside colleges and airports — the rule held, only the input changed",
+            hi: "उद्योग वहीं बसता है जहाँ उसका निर्णायक कच्चा माल सबसे सस्ते में जुटे: इस्पात का माल भारी चट्टानें थीं, अतः वह उन्हीं पर बैठा; आईटी का माल प्रशिक्षित दिमाग़ हैं, अतः वह कॉलेजों और हवाई अड्डों की बग़ल में बैठा — नियम टिका रहा, केवल माल बदला",
+            mr: "उद्योग तिथेच वसतो जिथे त्याचा निर्णायक कच्चा माल सर्वांत स्वस्तात जमेल: पोलादाचा माल जड खडक होते, म्हणून तो त्यांवरच बसला; आयटीचा माल प्रशिक्षित मने, म्हणून तो महाविद्यालये आणि विमानतळांशेजारी बसला — नियम टिकला, फक्त माल बदलला",
+          },
+          {
+            en: "Modern industries no longer follow any location logic",
+            hi: "आधुनिक उद्योग अब कोई अवस्थिति-तर्क नहीं मानते",
+            mr: "आधुनिक उद्योग आता कोणतेही स्थान-तर्क मानत नाहीत",
+          },
+          {
+            en: "Bengaluru secretly has iron ore underneath",
+            hi: "बेंगलुरु के नीचे चुपचाप लौह अयस्क है",
+            mr: "बेंगळूरुखाली गुपचूप लोह धातुक आहे",
+          },
+          {
+            en: "Steel cities were placed by chance, IT cities by plan",
+            hi: "इस्पात-नगर संयोग से बसे, आईटी-नगर योजना से",
+            mr: "पोलाद-नगरे योगायोगाने वसली, आयटी-नगरे योजनेने",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The committee of five never disbanded; its loudest voter changed. When the decisive input weighed thousands of tonnes — ore, coal — hauling it was the great cost, and the factory walked to the mine. When the decisive input became engineers, the 'hauling' cost turned into salaries, commutes and flights, so the industry walked to the campuses, the pleasant climate, the airport. Same arithmetic of minimising the cost of the scarcest input; different century, different input. Location theory did not die with heavy industry — it merely changed its shopping list.",
+          hi: "पाँच की समिति कभी भंग नहीं हुई; उसका सबसे ऊँचा वोट बदल गया। जब निर्णायक माल हज़ारों टन का था — अयस्क, कोयला — तो ढुलाई सबसे बड़ा ख़र्च थी, और कारख़ाना खदान तक चला। जब निर्णायक माल इंजीनियर बने, तो 'ढुलाई' वेतन, आना-जाना और उड़ानें बन गई, और उद्योग परिसरों, सुहानी जलवायु और हवाई अड्डे तक चला। सबसे दुर्लभ माल का ख़र्च घटाने का वही गणित; सदी दूसरी, माल दूसरा। अवस्थिति-सिद्धांत भारी उद्योग के साथ नहीं मरा — उसने बस अपनी ख़रीद-सूची बदल ली।",
+          mr: "पाचांची समिती कधी बरखास्त झाली नाही; तिचे सर्वांत मोठे मत बदलले. निर्णायक माल हजारो टनांचा होता — धातुक, कोळसा — तेव्हा वाहतूक हा मोठा खर्च होता, आणि कारखाना खाणीकडे चालला. निर्णायक माल अभियंते झाले, तेव्हा 'वाहतूक' पगार, ये-जा आणि उड्डाणे झाली, आणि उद्योग परिसर, आल्हाददायक जलवायुमान आणि विमानतळाकडे चालला. सर्वांत दुर्मीळ मालाचा खर्च घटवण्याचे तेच गणित; शतक वेगळे, माल वेगळा. स्थान-सिद्धान्त जड उद्योगासोबत मेला नाही — त्याने फक्त आपली खरेदी-यादी बदलली.",
+        },
+      },
+    ],
+  },
 ];
