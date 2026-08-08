@@ -15,13 +15,18 @@ import { join } from "node:path";
 import { generateChapter, type TopicFileOut } from "./engine";
 import { G6_HISTORY } from "./g6-history";
 import { G3_MATHS } from "./g3-maths";
+import { G3_EVS } from "./g3-evs";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
 function main() {
   mkdirSync(DIR, { recursive: true });
   // Conceptual chapters run through the engine; numeric chapters arrive built.
-  const topics: TopicFileOut[] = [...G6_HISTORY.map(generateChapter), ...G3_MATHS];
+  const topics: TopicFileOut[] = [
+    ...G3_EVS.map(generateChapter),
+    ...G6_HISTORY.map(generateChapter),
+    ...G3_MATHS,
+  ];
   let total = 0;
   for (const out of topics) {
     const file = join(DIR, `${out.slug}.json`);

@@ -1,0 +1,443 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 9 — How Many Times?",
+  "name": "How Many Times?",
+  "slug": "maths-3-how-many-times",
+  "summary": "Multiplication as repeated addition — tables put to work on legs, eggs, rickshaws and rows of plants.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "कितनी बार?",
+      "summary": "बार-बार जोड़ के रूप में गुणा — पहाड़े पैरों, अंडों, रिक्शों और पौधों की क़तारों पर काम करते हुए।"
+    },
+    "mr": {
+      "name": "किती वेळा?",
+      "summary": "पुनःपुन्हा बेरजेच्या रूपातला गुणाकार — पाढे पाय, अंडी, रिक्षा आणि रोपांच्या रांगांवर कामाला."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "3 + 3 + 3 + 3 is the same as how many times 3?",
+      "choices": [
+        "4",
+        "7",
+        "3",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "Count the threes: there are four of them, so it is 4 times 3. Twelve is what they ADD to — the answer to a different question.",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "3 + 3 + 3 + 3, कितनी बार 3 के बराबर है?",
+          "choices": [
+            "4",
+            "7",
+            "3",
+            "12"
+          ],
+          "solution": "तीनों को गिनें: चार हैं, इसलिए यह 4 बार 3 है। बारह तो उनका योग है — किसी और सवाल का उत्तर।"
+        },
+        "mr": {
+          "stem": "3 + 3 + 3 + 3 म्हणजे किती वेळा 3?",
+          "choices": [
+            "4",
+            "7",
+            "3",
+            "12"
+          ],
+          "solution": "तीन मोजा: ते चार आहेत, म्हणून हे 4 वेळा 3. बारा ही तर त्यांची बेरीज — वेगळ्याच प्रश्नाचे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 6 × 4?",
+      "choices": [
+        "24",
+        "28",
+        "10",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Six fours: 4, 8, 12, 16, 20, 24. Getting 10 adds instead of multiplying; 28 is one four too many.",
+      "checkExpr": "6*4",
+      "translations": {
+        "hi": {
+          "stem": "6 × 4 कितना है?",
+          "choices": [
+            "24",
+            "28",
+            "10",
+            "20"
+          ],
+          "solution": "छह बार चार: 4, 8, 12, 16, 20, 24। 10 आने का मतलब गुणा की जगह जोड़ हुआ; 28 में एक चार ज़्यादा गिना गया।"
+        },
+        "mr": {
+          "stem": "6 × 4 किती?",
+          "choices": [
+            "24",
+            "28",
+            "10",
+            "20"
+          ],
+          "solution": "सहा वेळा चार: 4, 8, 12, 16, 20, 24. 10 म्हणजे गुणाकाराऐवजी बेरीज; 28 मध्ये एक चार जास्त मोजला."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A spider has 8 legs. How many legs do 5 spiders have?",
+      "choices": [
+        "35",
+        "13",
+        "45",
+        "40"
+      ],
+      "answerIndex": 3,
+      "solution": "5 spiders × 8 legs = 40 legs. Adding 8 + 5 = 13 mixes up the two jobs the numbers are doing.",
+      "checkExpr": "8*5",
+      "translations": {
+        "hi": {
+          "stem": "एक मकड़ी के 8 पैर होते हैं। 5 मकड़ियों के कितने पैर होंगे?",
+          "choices": [
+            "35",
+            "13",
+            "45",
+            "40"
+          ],
+          "solution": "5 मकड़ियाँ × 8 पैर = 40 पैर। 8 + 5 = 13 करना दोनों संख्याओं के अलग-अलग काम को गड्डमड्ड करना है।"
+        },
+        "mr": {
+          "stem": "एका कोळ्याला 8 पाय असतात. 5 कोळ्यांना किती पाय?",
+          "choices": [
+            "35",
+            "13",
+            "45",
+            "40"
+          ],
+          "solution": "5 कोळी × 8 पाय = 40 पाय. 8 + 5 = 13 म्हणजे दोन संख्यांची वेगवेगळी कामे एकमेकांत मिसळणे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which multiplication does this picture of eggs tell: 3 trays, 6 eggs in each?",
+      "choices": [
+        "9",
+        "36",
+        "12",
+        "18"
+      ],
+      "answerIndex": 3,
+      "solution": "3 trays of 6 make 3 × 6 = 18 eggs. Choosing 9 adds the numbers; 36 doubles a tray that is not there.",
+      "checkExpr": "3*6",
+      "translations": {
+        "hi": {
+          "stem": "अंडों की यह तस्वीर कौन-सा गुणा बताती है: 3 ट्रे, हर एक में 6 अंडे?",
+          "choices": [
+            "9",
+            "36",
+            "12",
+            "18"
+          ],
+          "solution": "6-6 की 3 ट्रे यानी 3 × 6 = 18 अंडे। 9 चुनना जोड़ है; 36 में एक ऐसी ट्रे दुगनी हुई जो है ही नहीं।"
+        },
+        "mr": {
+          "stem": "अंड्यांचे हे चित्र कोणता गुणाकार सांगते: 3 ट्रे, प्रत्येकीत 6 अंडी?",
+          "choices": [
+            "9",
+            "36",
+            "12",
+            "18"
+          ],
+          "solution": "6-6 च्या 3 ट्रे म्हणजे 3 × 6 = 18 अंडी. 9 निवडणे म्हणजे बेरीज; 36 मध्ये नसलेली ट्रे दुप्पट झाली."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rickshaw carries 3 children. How many children can 7 rickshaws carry?",
+      "choices": [
+        "21",
+        "18",
+        "10",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "7 rickshaws × 3 children = 21. The tables of 3 run 3, 6, 9, 12, 15, 18, 21 — 18 stops one rickshaw short.",
+      "checkExpr": "3*7",
+      "translations": {
+        "hi": {
+          "stem": "एक रिक्शे में 3 बच्चे बैठते हैं। 7 रिक्शों में कितने बच्चे बैठ सकते हैं?",
+          "choices": [
+            "21",
+            "18",
+            "10",
+            "24"
+          ],
+          "solution": "7 रिक्शे × 3 बच्चे = 21। तीन का पहाड़ा 3, 6, 9, 12, 15, 18, 21 चलता है — 18 एक रिक्शा पहले रुक जाता है।"
+        },
+        "mr": {
+          "stem": "एका रिक्षात 3 मुले बसतात. 7 रिक्षांत किती मुले बसतील?",
+          "choices": [
+            "21",
+            "18",
+            "10",
+            "24"
+          ],
+          "solution": "7 रिक्षा × 3 मुले = 21. तिचा पाढा 3, 6, 9, 12, 15, 18, 21 — 18 एक रिक्षा अलीकडेच थांबते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "One week has 7 days. How many days are there in 6 weeks?",
+      "choices": [
+        "42",
+        "13",
+        "36",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "6 weeks × 7 days = 42 days. 36 comes from 6 × 6 — the week lost a day on the way.",
+      "checkExpr": "7*6",
+      "translations": {
+        "hi": {
+          "stem": "एक सप्ताह में 7 दिन होते हैं। 6 सप्ताहों में कितने दिन होंगे?",
+          "choices": [
+            "42",
+            "13",
+            "36",
+            "48"
+          ],
+          "solution": "6 सप्ताह × 7 दिन = 42 दिन। 36, 6 × 6 से आता है — रास्ते में सप्ताह का एक दिन खो गया।"
+        },
+        "mr": {
+          "stem": "एका आठवड्यात 7 दिवस असतात. 6 आठवड्यांत किती दिवस?",
+          "choices": [
+            "42",
+            "13",
+            "36",
+            "48"
+          ],
+          "solution": "6 आठवडे × 7 दिवस = 42 दिवस. 36 हे 6 × 6 मधून येते — वाटेत आठवड्याचा एक दिवस हरवला."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What number goes in the box: 4 × ▢ = 32?",
+      "choices": [
+        "8",
+        "28",
+        "9",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "Four times something is 32, so share 32 into fours: 32 ÷ 4 = 8. Check: 4 × 8 = 32. Subtracting (28) undoes an addition nobody made.",
+      "checkExpr": "32/4",
+      "translations": {
+        "hi": {
+          "stem": "बॉक्स में कौन-सी संख्या आएगी: 4 × ▢ = 32?",
+          "choices": [
+            "8",
+            "28",
+            "9",
+            "7"
+          ],
+          "solution": "चार गुना कुछ 32 है, तो 32 को चार-चार में बाँटें: 32 ÷ 4 = 8। जाँच: 4 × 8 = 32। घटाना (28) उस जोड़ को उलटता है जो हुआ ही नहीं।"
+        },
+        "mr": {
+          "stem": "चौकटीत कोणती संख्या येईल: 4 × ▢ = 32?",
+          "choices": [
+            "8",
+            "28",
+            "9",
+            "7"
+          ],
+          "solution": "चार पट काहीतरी 32 आहे, तर 32 चे चार-चार करा: 32 ÷ 4 = 8. तपासा: 4 × 8 = 32. वजाबाकी (28) न झालेली बेरीज उलटवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A garden has 9 rows of plants with 6 plants in each row. Without counting one by one, how many plants are there?",
+      "choices": [
+        "56",
+        "54",
+        "45",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "Rows × plants-per-row: 9 × 6 = 54. The 45 answer slipped to 9 × 5 — a whole plant column vanished.",
+      "checkExpr": "9*6",
+      "translations": {
+        "hi": {
+          "stem": "एक बग़ीचे में पौधों की 9 क़तारें हैं, हर क़तार में 6 पौधे। एक-एक गिने बिना, कुल कितने पौधे हैं?",
+          "choices": [
+            "56",
+            "54",
+            "45",
+            "15"
+          ],
+          "solution": "क़तारें × प्रति-क़तार पौधे: 9 × 6 = 54। 45 वाला उत्तर 9 × 5 पर फिसल गया — पौधों की पूरी एक क़तार ग़ायब।"
+        },
+        "mr": {
+          "stem": "एका बागेत रोपांच्या 9 रांगा आहेत, प्रत्येक रांगेत 6 रोपे. एकेक न मोजता, एकूण किती रोपे?",
+          "choices": [
+            "56",
+            "54",
+            "45",
+            "15"
+          ],
+          "solution": "रांगा × प्रत्येक रांगेतील रोपे: 9 × 6 = 54. 45 हे उत्तर 9 × 5 वर घसरले — रोपांचा अख्खा एक स्तंभ गायब."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A packet holds 12 pencils. The teacher buys 4 packets and gives away 5 pencils. How many pencils remain?",
+      "choices": [
+        "53",
+        "43",
+        "28",
+        "48"
+      ],
+      "answerIndex": 1,
+      "solution": "Bought: 12 × 4 = 48. Given away: 48 − 5 = 43. Stopping at 48 skips the giving; adding the 5 instead lands on 53.",
+      "checkExpr": "12*4-5",
+      "translations": {
+        "hi": {
+          "stem": "एक पैकेट में 12 पेंसिलें आती हैं। शिक्षिका 4 पैकेट ख़रीदती हैं और 5 पेंसिलें बाँट देती हैं। कितनी पेंसिलें बचीं?",
+          "choices": [
+            "53",
+            "43",
+            "28",
+            "48"
+          ],
+          "solution": "ख़रीदीं: 12 × 4 = 48। बाँटीं: 48 − 5 = 43। 48 पर रुकना बाँटना भूलना है; 5 जोड़ देने पर 53 आ जाता है।"
+        },
+        "mr": {
+          "stem": "एका पाकिटात 12 पेन्सिली असतात. बाई 4 पाकिटे विकत घेतात आणि 5 पेन्सिली वाटतात. किती पेन्सिली उरल्या?",
+          "choices": [
+            "53",
+            "43",
+            "28",
+            "48"
+          ],
+          "solution": "घेतल्या: 12 × 4 = 48. वाटल्या: 48 − 5 = 43. 48 वर थांबणे म्हणजे वाटणे विसरणे; 5 मिळवले तर 53 येते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which costs more, and by how much: 3 kites at ₹8 each, or 2 balls at ₹13 each? Give the difference.",
+      "choices": [
+        "₹26",
+        "₹24",
+        "₹5",
+        "₹2"
+      ],
+      "answerIndex": 3,
+      "solution": "Kites: 3 × 8 = ₹24. Balls: 2 × 13 = ₹26. The balls cost ₹2 more. The other options are the two totals themselves, and 5 is just 13 − 8 — comparing prices without counting how many.",
+      "checkExpr": "13*2-8*3",
+      "translations": {
+        "hi": {
+          "stem": "कौन महँगा पड़ेगा और कितने से: ₹8 वाली 3 पतंगें, या ₹13 वाली 2 गेंदें? अंतर बताइए।",
+          "choices": [
+            "₹26",
+            "₹24",
+            "₹5",
+            "₹2"
+          ],
+          "solution": "पतंगें: 3 × 8 = ₹24। गेंदें: 2 × 13 = ₹26। गेंदें ₹2 महँगी। बाक़ी विकल्प दोनों योग ही हैं, और 5 केवल 13 − 8 है — बिना गिनती के दामों की तुलना।"
+        },
+        "mr": {
+          "stem": "कोणते महाग पडेल आणि किती ने: ₹8 चे 3 पतंग, की ₹13 चे 2 चेंडू? फरक सांगा.",
+          "choices": [
+            "₹26",
+            "₹24",
+            "₹5",
+            "₹2"
+          ],
+          "solution": "पतंग: 3 × 8 = ₹24. चेंडू: 2 × 13 = ₹26. चेंडू ₹2 ने महाग. इतर पर्याय म्हणजे दोन्ही बेरजाच, आणि 5 म्हणजे नुसते 13 − 8 — नग न मोजता किमतींची तुलना."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Rani says: 'I multiplied a number by itself and got 49.' What was her number?",
+      "choices": [
+        "24",
+        "6",
+        "8",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "A number times itself: 7 × 7 = 49. Its neighbours give 36 and 64, close but not 49 — and 24 halves 49 badly, treating 'by itself' as 'by two'.",
+      "checkExpr": "49/7",
+      "translations": {
+        "hi": {
+          "stem": "रानी कहती है: 'मैंने एक संख्या को उसी से गुणा किया और 49 मिला।' उसकी संख्या क्या थी?",
+          "choices": [
+            "24",
+            "6",
+            "8",
+            "7"
+          ],
+          "solution": "संख्या का अपने से गुणा: 7 × 7 = 49। पड़ोसी संख्याएँ 36 और 64 देती हैं — पास, पर 49 नहीं। और 24, 'उसी से' को 'दो से' समझने की भूल है।"
+        },
+        "mr": {
+          "stem": "राणी म्हणते: 'मी एका संख्येला तिनेच गुणले आणि 49 आले.' तिची संख्या कोणती?",
+          "choices": [
+            "24",
+            "6",
+            "8",
+            "7"
+          ],
+          "solution": "संख्येचा स्वतःशी गुणाकार: 7 × 7 = 49. शेजारच्या संख्या 36 आणि 64 देतात — जवळ, पण 49 नव्हे. आणि 24 म्हणजे 'तिनेच' ला 'दोनने' समजण्याची चूक."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A frog climbs 5 steps every hop, but slips back 2 after each hop. After 4 full hops, how many steps up is it?",
+      "choices": [
+        "8",
+        "3",
+        "20",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Each full hop truly gains 5 − 2 = 3 steps, and four hops gain 3 × 4 = 12. Twenty forgets the slipping entirely; 3 is a single hop's gain doing duty for four.",
+      "checkExpr": "(5-2)*4",
+      "translations": {
+        "hi": {
+          "stem": "एक मेंढक हर छलाँग में 5 सीढ़ियाँ चढ़ता है, पर हर छलाँग के बाद 2 फिसल जाता है। 4 पूरी छलाँगों के बाद वह कितनी सीढ़ियाँ ऊपर है?",
+          "choices": [
+            "8",
+            "3",
+            "20",
+            "12"
+          ],
+          "solution": "हर पूरी छलाँग असल में 5 − 2 = 3 सीढ़ियाँ चढ़ाती है, और चार छलाँगें 3 × 4 = 12। बीस में फिसलन पूरी भुला दी गई; 3 एक छलाँग की कमाई है जो चार का काम कर रही है।"
+        },
+        "mr": {
+          "stem": "एक बेडूक प्रत्येक उडीत 5 पायऱ्या चढतो, पण प्रत्येक उडीनंतर 2 घसरतो. 4 पूर्ण उड्यांनंतर तो किती पायऱ्या वर आहे?",
+          "choices": [
+            "8",
+            "3",
+            "20",
+            "12"
+          ],
+          "solution": "प्रत्येक पूर्ण उडी खरी 5 − 2 = 3 पायऱ्या चढवते, आणि चार उड्या 3 × 4 = 12. वीसमध्ये घसरण पूर्ण विसरली; 3 ही एका उडीची कमाई चौघांचे काम करते आहे."
+        }
+      }
+    }
+  ]
+}
