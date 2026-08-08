@@ -31,7 +31,7 @@ import type { ActiveContext } from "@/lib/session";
  */
 
 const db = new PrismaClient();
-const SLUG = "drill-g3-addsub";
+const SLUG = "history-6-what-where-how-and-when";
 const PUPIL_EMAIL = "zz.pupil.insights@riverside.test";
 const TEACHER_EMAIL = "zz.teacher.insights@riverside.test";
 const PARENT_EMAIL = "zz.parent.insights@riverside.test";

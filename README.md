@@ -2500,6 +2500,20 @@ navigation" means the actual list rather than one somebody maintained by hand.
   85 files**, eslint 0/29, i18n 46/210, RLS all checks passed, build
   clean, **sweep 326/326**, zero fixture residue.
 
+  **The 2026 bank refurbishment then replaced the bank outright.** On
+  explicit instruction the old bank was PURGED — all 267 pre-refurbishment
+  topics (258 generated drill topics and the nine 2025 hand-authored G8
+  chapters), 1,005,105 questions, their attempts, mastery and badges —
+  leaving only the new chapter-true bank: authored fact tables and
+  individually written numeric questions through `scripts/quiz2/`, every
+  computation proven by checkExpr, every chapter climbing L1–L6, no
+  question quota, no repetition, three languages by construction. The old
+  generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
+  with it; `quiz:generate` now points at quiz2. Current bank: 23 chapters
+  — Class 3 Maths complete (14/14), Class 3 EVS at 7, Class 6 History at
+  2 — growing grade by grade toward Class 12. Suite re-pointed and green:
+  84 files, 1453 tests.
+
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
   moved behind **one kebab per row**, the same idiom the class list

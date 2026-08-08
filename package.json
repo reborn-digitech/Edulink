@@ -26,7 +26,7 @@
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
     "quiz:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-quiz.ts",
     "quiz:import": "tsx --tsconfig scripts/tsconfig.json scripts/import-quiz.ts",
-    "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-quiz-bank.ts",
+    "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/quiz2/gen-quiz2.ts",
     "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts",
     "digest:weekly": "tsx --tsconfig scripts/tsconfig.json scripts/send-weekly-digest.ts",
     "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts",

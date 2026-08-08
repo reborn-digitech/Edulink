@@ -12,7 +12,7 @@ import type { ActiveContext } from "@/lib/session";
  */
 
 const db = new PrismaClient();
-const SLUG = "drill-g3-addsub";
+const SLUG = "history-6-what-where-how-and-when";
 const PUPIL_EMAIL = "zz.pupil.annexure@riverside.test";
 const TEACHER_EMAIL = "zz.teacher.annexure@riverside.test";
 

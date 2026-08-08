@@ -23,7 +23,7 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 const EMAIL = "zz.pupil.tiers@riverside.test";
-const SLUG = "drill-g3-addsub";
+const SLUG = "history-6-what-where-how-and-when";
 
 let hasBank = false;
 let riversideId: string;

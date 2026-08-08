@@ -76,26 +76,6 @@ type TopicFile = {
 /** The languages a translation block may name. Anything else is a typo. */
 const LANGUAGES = new Set(["hi", "mr"]);
 
-/**
- * Every refurbished chapter must climb the whole six-level ladder — the COUNT
- * of questions is deliberately not policed (a chapter carries what the
- * chapter holds; padding to a quota is how repetitive questions happen). The
- * nine files below predate the ladder rule — the 2025 hand-authored G8 set —
- * and are grandfathered ONLY until the refurbishment reaches Grade 8. A new
- * file can never join this list.
- */
-const LEGACY_SMALL = new Set([
-  "civics-8-indian-constitution.json",
-  "geography-8-resources.json",
-  "history-8-freedom-movement.json",
-  "maths-8-linear-equations.json",
-  "maths-8-mensuration.json",
-  "maths-8-squares-and-square-roots.json",
-  "science-8-chemical-effects-of-current.json",
-  "science-8-force-and-pressure.json",
-  "science-8-light.json",
-]);
-
 const errors: string[] = [];
 const warnings: string[] = [];
 let checkedByMachine = 0;
@@ -325,12 +305,11 @@ function verifyTopic(file: string, topic: TopicFile) {
   }
 
   // The refurbishment's bar: a chapter missing a level is a ladder nobody can
-  // climb to the top of. Hard failure, legacy files aside.
-  if (!LEGACY_SMALL.has(file)) {
-    for (let l = 1; l <= MAX_LEVEL; l++) {
-      if (!levelsPresent.has(l)) {
-        fail(where, `has nothing at level ${l} — every chapter climbs the whole L1–L${MAX_LEVEL} ladder`);
-      }
+  // climb to the top of. Hard failure, no exceptions — the last grandfathered
+  // files left with the 2026 purge of the old bank.
+  for (let l = 1; l <= MAX_LEVEL; l++) {
+    if (!levelsPresent.has(l)) {
+      fail(where, `has nothing at level ${l} — every chapter climbs the whole L1–L${MAX_LEVEL} ladder`);
     }
   }
 }

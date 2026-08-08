@@ -12,7 +12,7 @@ import type { ActiveContext } from "@/lib/session";
  */
 
 const db = new PrismaClient();
-const SLUG = "drill-g3-addsub";
+const SLUG = "history-6-what-where-how-and-when";
 let hasBank = false;
 
 function ctxFor(role: "TEACHER" | "STUDENT"): ActiveContext {
@@ -53,18 +53,18 @@ afterAll(async () => {
 describe("worksheets", () => {
   it("the same seed prints the same paper; a new seed prints a fresh one", async () => {
     if (!hasBank) return;
-    const first = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 2, count: 8, seed: "zz1" });
-    const again = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 2, count: 8, seed: "zz1" });
-    const other = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 2, count: 8, seed: "zz2" });
+    const first = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz1" });
+    const again = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz1" });
+    const other = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 4, count: 6, seed: "zz2" });
 
     expect(first.questions.map((q) => q.stem)).toEqual(again.questions.map((q) => q.stem));
-    expect(first.questions).toHaveLength(8);
+    expect(first.questions).toHaveLength(6);
     expect(other.questions.map((q) => q.stem)).not.toEqual(first.questions.map((q) => q.stem));
   });
 
   it("every key entry matches the bank's own answer", async () => {
     if (!hasBank) return;
-    const sheet = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 1, count: 10, seed: "zz3" });
+    const sheet = await buildWorksheet(ctxFor("TEACHER"), { slug: SLUG, level: 1, count: 5, seed: "zz3" });
     for (const q of sheet.questions) {
       expect(q.answerIndex).toBeGreaterThanOrEqual(0);
       expect(q.answerIndex).toBeLessThan(q.choices.length);
