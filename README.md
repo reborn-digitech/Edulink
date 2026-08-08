@@ -2475,6 +2475,23 @@ navigation" means the actual list rather than one somebody maintained by hand.
   checks passed with `SsoIdentity` joining the user-owned tables, build
   clean, **sweep 326/326**, and the residue check extended to the new
   table: **zero ZZ users, zero stray SsoIdentity rows**.
+
+  **The repository then left this one disk and got its house in order.**
+  Two private remotes now exist — `reborn-digitech/Edulink` (primary,
+  tracked by local `master`) and `ckulkarni03488/Edulink` (mirror) — with
+  ONE branch, `master`, identical in all three places, as every repo's
+  default. Consolidating the old branches paid for itself on the way out:
+  a stale worktree, inspected before force-deletion, held four files of
+  UNLANDED work from a past session — among them a fix for a still-live
+  1-in-36 flake (`register-duty.test.ts` minted a "nonexistent" membership
+  by overwriting the last character of a real cuid, which one run in
+  thirty-six named the principal for real). The fix was rescued, proven
+  with a 15/15 loop plus a full-suite pass, and landed with the fixture
+  notes it taught: **run a red file alone in a loop before blaming another
+  suite** — sequential-but-reordered runs impersonate parallel contention.
+  The battery after all of it, cold: typecheck clean, **1456/1456 across
+  85 files**, eslint 0/29, i18n 46/210, RLS all checks passed, build
+  clean, **sweep 326/326**, zero fixture residue.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite
   link, and 1:1 mentoring with a parent-consent gate — including the staff form
