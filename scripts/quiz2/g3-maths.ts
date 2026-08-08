@@ -1899,7 +1899,7 @@ function canWeShare(): TopicFileOut {
         wrong: [6, 8, 5],
         checkExpr: "(27+1)/4",
         solution: {
-          en: "Six boats seat 6 × 4 = 24, leaving 3 children on the bank — so a seventh boat must go, part empty. Division says 27 ÷ 4 = 6 remainder 3, and here the remainder ROUNDS UP: children cannot be left behind.",
+          en: "Six boats seat 6 × 4 = 24, leaving 3 children on the bank — so boat number 7 must go, part empty. Division says 27 ÷ 4 = 6 remainder 3, and here the remainder ROUNDS UP: children cannot be left behind.",
           hi: "छह नावों में 6 × 4 = 24 बैठते हैं, 3 बच्चे किनारे रह जाते हैं — इसलिए सातवीं नाव जानी ही चाहिए, भले अधूरी भरी। भाग कहता है 27 ÷ 4 = 6 शेष 3, और यहाँ शेष ऊपर चढ़ता है: बच्चे छोड़े नहीं जा सकते।",
           mr: "सहा होड्यांत 6 × 4 = 24 बसतात, 3 मुले काठावर उरतात — म्हणून सातवी होडी जायलाच हवी, अर्धी रिकामी असली तरी. भागाकार सांगतो 27 ÷ 4 = 6 बाकी 3, आणि इथे बाकी वर चढते: मुलांना मागे ठेवता येत नाही.",
         },
@@ -2207,6 +2207,953 @@ function whoIsHeavier(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 5 — Shapes and Designs (sides, corners, patterns of shapes)       */
+/* ------------------------------------------------------------------------- */
+function shapesAndDesigns(): TopicFileOut {
+  const rand = rng("maths-3-shapes-and-designs");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many sides does a triangle have?",
+          hi: "त्रिभुज की कितनी भुजाएँ होती हैं?",
+          mr: "त्रिकोणाला किती बाजू असतात?",
+        },
+        answer: 3,
+        wrong: [4, 2, 6],
+        checkExpr: "1+2",
+        solution: {
+          en: "Tri- means three: a triangle has 3 sides and 3 corners. Four sides make a rectangle or square — a different family.",
+          hi: "त्रि का अर्थ तीन: त्रिभुज की 3 भुजाएँ और 3 कोने होते हैं। चार भुजाओं से आयत या वर्ग बनता है — अलग परिवार।",
+          mr: "त्रि म्हणजे तीन: त्रिकोणाला 3 बाजू आणि 3 कोपरे. चार बाजूंनी आयत वा चौरस होतो — वेगळे कुटुंब.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A carrom board is a square. How many corners does it have?",
+          hi: "कैरम बोर्ड वर्गाकार होता है। उसके कितने कोने होते हैं?",
+          mr: "कॅरम बोर्ड चौरस असतो. त्याला किती कोपरे असतात?",
+        },
+        answer: 4,
+        wrong: [3, 8, 6],
+        checkExpr: "2+2",
+        solution: {
+          en: "A square has 4 corners, one pocket at each on a carrom board. Eight counts the pockets AND the side midpoints — only the corners were asked.",
+          hi: "वर्ग के 4 कोने होते हैं — कैरम पर हर कोने में एक गड्ढा। आठ में गड्ढों के साथ भुजाओं के बीच भी गिन लिए गए — पूछा तो केवल कोनों को था।",
+          mr: "चौरसाला 4 कोपरे — कॅरमवर प्रत्येक कोपऱ्यात एक खळगा. आठमध्ये खळग्यांसह बाजूंची मध्येही मोजली गेली — विचारले फक्त कोपरे होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Using matchsticks, Reena made 3 separate triangles. How many matchsticks did she use?",
+          hi: "माचिस की तीलियों से रीना ने 3 अलग-अलग त्रिभुज बनाए। उसने कितनी तीलियाँ लगाईं?",
+          mr: "काड्यांनी रीनाने 3 वेगवेगळे त्रिकोण केले. तिने किती काड्या वापरल्या?",
+        },
+        answer: 9,
+        wrong: [6, 12, 3],
+        checkExpr: "3*3",
+        solution: {
+          en: "Each separate triangle needs 3 sticks: 3 × 3 = 9. Twelve builds squares by mistake; 6 makes only two triangles.",
+          hi: "हर अलग त्रिभुज को 3 तीलियाँ चाहिए: 3 × 3 = 9। बारह से भूलवश वर्ग बनते हैं; 6 से केवल दो त्रिभुज।",
+          mr: "प्रत्येक वेगळ्या त्रिकोणाला 3 काड्या: 3 × 3 = 9. बाराने चुकून चौरस होतात; 6 ने फक्त दोन त्रिकोण.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A rectangle's long sides are 8 cm each and short sides 3 cm each. Walking right around its edge covers how many centimetres?",
+          hi: "आयत की लंबी भुजाएँ 8-8 सेमी और छोटी 3-3 सेमी हैं। उसके किनारे-किनारे पूरा चक्कर कितने सेंटीमीटर का होगा?",
+          mr: "आयताच्या लांब बाजू 8-8 सेमी आणि आखूड 3-3 सेमी आहेत. त्याच्या कडेकडेने पूर्ण फेरी किती सेंटिमीटरची होईल?",
+        },
+        answer: 22,
+        wrong: [11, 24, 19],
+        checkExpr: "8+3+8+3",
+        solution: {
+          en: "All four sides: 8 + 3 + 8 + 3 = 22 cm. Adding just one long and one short (11) walks only half way round.",
+          hi: "चारों भुजाएँ: 8 + 3 + 8 + 3 = 22 सेमी। केवल एक लंबी और एक छोटी जोड़ने पर (11) आधा ही चक्कर लगता है।",
+          mr: "चारही बाजू: 8 + 3 + 8 + 3 = 22 सेमी. फक्त एक लांब आणि एक आखूड मिळवली (11) की अर्धीच फेरी होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A design is made of 2 triangles and 3 squares. Counting every side of every shape, how many sides are drawn?",
+          hi: "एक डिज़ाइन 2 त्रिभुजों और 3 वर्गों से बना है। हर आकृति की हर भुजा गिनें तो कुल कितनी भुजाएँ खिंचीं?",
+          mr: "एक नक्षी 2 त्रिकोण आणि 3 चौरसांची आहे. प्रत्येक आकाराची प्रत्येक बाजू मोजली तर एकूण किती बाजू काढल्या?",
+        },
+        answer: 18,
+        wrong: [5, 12, 17],
+        checkExpr: "2*3+3*4",
+        solution: {
+          en: "Triangles bring 2 × 3 = 6 sides, squares 3 × 4 = 12; together 18. Five adds the shapes, not their sides.",
+          hi: "त्रिभुजों से 2 × 3 = 6 भुजाएँ, वर्गों से 3 × 4 = 12; कुल 18। पाँच में आकृतियाँ जुड़ीं, भुजाएँ नहीं।",
+          mr: "त्रिकोणांच्या 2 × 3 = 6 बाजू, चौरसांच्या 3 × 4 = 12; मिळून 18. पाचमध्ये आकार जुळले, बाजू नव्हेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A wall is tiled with rows of square tiles: 6 tiles in a row, 4 rows. How many tiles cover the wall?",
+          hi: "दीवार पर वर्गाकार टाइलों की क़तारें हैं: एक क़तार में 6 टाइलें, 4 क़तारें। दीवार पर कुल कितनी टाइलें लगीं?",
+          mr: "भिंतीवर चौरस फरश्यांच्या रांगा आहेत: एका रांगेत 6 फरश्या, 4 रांगा. भिंतीवर एकूण किती फरश्या?",
+        },
+        answer: 24,
+        wrong: [10, 20, 28],
+        checkExpr: "6*4",
+        solution: {
+          en: "Rows of equal tiles multiply: 6 × 4 = 24. Ten adds the row to the count of rows; the neighbours 20 and 28 are one row light and one row heavy.",
+          hi: "बराबर टाइलों की क़तारें गुणा होती हैं: 6 × 4 = 24। दस में क़तार और क़तारों की गिनती जुड़ गई; 20 और 28 एक क़तार कम और एक ज़्यादा हैं।",
+          mr: "समान फरश्यांच्या रांगा गुणल्या जातात: 6 × 4 = 24. दहामध्ये रांग आणि रांगांची संख्या जुळली; 20 आणि 28 एक रांग कमी व एक जास्त.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Reena joins 2 squares edge to edge to make one rectangle. How many sides does the NEW shape have on its outside?",
+          hi: "रीना 2 वर्गों को भुजा-से-भुजा जोड़कर एक आयत बनाती है। नई आकृति के बाहर की ओर कितनी भुजाएँ हैं?",
+          mr: "रीना 2 चौरस बाजूला बाजू जोडून एक आयत करते. नव्या आकाराच्या बाहेरच्या बाजू किती?",
+        },
+        answer: 4,
+        wrong: [8, 6, 7],
+        checkExpr: "8-4",
+        solution: {
+          en: "The two joined edges disappear inside, and their neighbours merge into longer sides: what remains outside is a plain rectangle with 4 sides. Eight counts both squares as if they never met.",
+          hi: "जुड़ी हुई दोनों भुजाएँ भीतर खो जाती हैं, और उनकी पड़ोसी भुजाएँ मिलकर लंबी हो जाती हैं: बाहर बचता है 4 भुजाओं वाला सीधा-सादा आयत। आठ दोनों वर्गों को ऐसे गिनता है मानो वे कभी मिले ही नहीं।",
+          mr: "जोडलेल्या दोन्ही बाजू आत लुप्त होतात, आणि त्यांच्या शेजारच्या बाजू मिळून लांब होतात: बाहेर उरतो 4 बाजूंचा साधा आयत. आठ दोन्ही चौरस जणू कधी भेटलेच नाहीत असे मोजते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A fence is built along one straight side of a field using posts 2 metres apart. With 7 posts standing, how long is the fence?",
+          hi: "खेत की एक सीधी ओर 2-2 मीटर की दूरी पर खंभे गाड़कर बाड़ बनाई गई। 7 खंभे खड़े हैं, तो बाड़ कितनी लंबी है?",
+          mr: "शेताच्या एका सरळ बाजूला 2-2 मीटर अंतरावर खांब रोवून कुंपण केले. 7 खांब उभे आहेत, तर कुंपण किती लांब?",
+        },
+        answer: 12,
+        wrong: [14, 10, 7],
+        checkExpr: "2*6",
+        solution: {
+          en: "Seven posts make only 6 gaps between them, and 6 × 2 = 12 metres. Multiplying posts by spacing (14) invents a gap beyond the last post — the fence-post error, named after exactly this.",
+          hi: "सात खंभों के बीच केवल 6 अंतराल बनते हैं, और 6 × 2 = 12 मीटर। खंभों को दूरी से गुणा करना (14) आख़िरी खंभे के आगे एक और अंतराल गढ़ देता है — 'खंभा-गिनती की चूक' का नाम इसी पर पड़ा।",
+          mr: "सात खांबांमध्ये फक्त 6 अंतरे होतात, आणि 6 × 2 = 12 मीटर. खांबांना अंतराने गुणणे (14) शेवटच्या खांबापलीकडे आणखी एक अंतर रचते — 'खांब-मोजणीची चूक' हे नाव यावरूनच पडले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A big square is cut into equal small squares, 3 along each side. The middle one is painted red. How many small squares are NOT red?",
+          hi: "एक बड़े वर्ग को बराबर छोटे वर्गों में काटा गया, हर ओर 3-3। बीच वाला लाल रंगा गया। कितने छोटे वर्ग लाल नहीं हैं?",
+          mr: "एक मोठा चौरस समान लहान चौरसांत कापला, प्रत्येक बाजूला 3-3. मधला लाल रंगवला. किती लहान चौरस लाल नाहीत?",
+        },
+        answer: 8,
+        wrong: [9, 6, 3],
+        checkExpr: "3*3-1",
+        solution: {
+          en: "Three along each side makes 3 × 3 = 9 small squares; taking out the painted middle leaves 8. Nine forgets the subtraction; 6 imagines only the edges.",
+          hi: "हर ओर तीन यानी 3 × 3 = 9 छोटे वर्ग; रँगा हुआ बीच वाला हटाने पर 8 बचे। नौ में घटाव भूला; 6 में केवल किनारे सूझे।",
+          mr: "प्रत्येक बाजूला तीन म्हणजे 3 × 3 = 9 लहान चौरस; रंगवलेला मधला काढला की 8 उरतात. नऊमध्ये वजाबाकी विसरली; 6 मध्ये फक्त कडाच दिसल्या.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Take a square sheet of paper and cut off ONE corner with a straight snip. How many corners does the sheet have now?",
+          hi: "काग़ज़ का एक वर्गाकार पन्ना लें और एक सीधी कैंची से उसका एक कोना काट दें। अब पन्ने के कितने कोने हैं?",
+          mr: "कागदाचा एक चौरस तुकडा घ्या आणि सरळ कात्रीने त्याचा एक कोपरा कापा. आता कागदाला किती कोपरे आहेत?",
+        },
+        answer: 5,
+        wrong: [3, 4, 6],
+        checkExpr: "4-1+2",
+        solution: {
+          en: "The snip removes 1 corner but its straight edge ENDS in 2 new ones: 4 − 1 + 2 = 5. The pull toward 3 comes from 'cutting off' feeling like pure loss — try it with real paper and count.",
+          hi: "कैंची 1 कोना ले जाती है, पर उसका सीधा किनारा 2 नए कोनों पर ख़त्म होता है: 4 − 1 + 2 = 5। 3 की ओर खिंचाव 'काटने' के शुद्ध घाटा लगने से आता है — असली काग़ज़ पर करके गिनें।",
+          mr: "कात्री 1 कोपरा नेते, पण तिची सरळ कड 2 नव्या कोपऱ्यांत संपते: 4 − 1 + 2 = 5. 3 कडचा ओढा 'कापणे' म्हणजे निव्वळ तोटा वाटण्याने येतो — खऱ्या कागदावर करून मोजा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "With exactly 10 matchsticks, what is the GREATEST number of separate squares Veer can make (no stick may be shared)?",
+          hi: "ठीक 10 तीलियों से वीर अधिकतम कितने अलग-अलग वर्ग बना सकता है (कोई तीली साझा नहीं हो सकती)?",
+          mr: "नेमक्या 10 काड्यांनी वीर जास्तीत जास्त किती वेगवेगळे चौरस करू शकतो (कोणतीही काडी सामायिक नाही)?",
+        },
+        answer: 2,
+        wrong: [3, 4, 1],
+        checkExpr: "8/4",
+        solution: {
+          en: "Each separate square eats 4 sticks. Two squares take 8, leaving 2 sticks — not enough for a third, which would need 12 in all. The answer is 2, with two sticks left over honestly unused.",
+          hi: "हर अलग वर्ग 4 तीलियाँ लेता है। दो वर्गों में 8 लगीं, 2 बचीं — तीसरे के लिए नाकाफ़ी, जिसे कुल 12 चाहिए होतीं। उत्तर 2 है, और दो तीलियाँ ईमानदारी से बिना लगे बचती हैं।",
+          mr: "प्रत्येक वेगळा चौरस 4 काड्या घेतो. दोन चौरसांत 8 गेल्या, 2 उरल्या — तिसऱ्यासाठी अपुऱ्या, त्याला एकूण 12 लागल्या असत्या. उत्तर 2, आणि दोन काड्या प्रामाणिकपणे न वापरता उरतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 5 — Shapes and Designs",
+      name: "Shapes and Designs",
+      slug: "maths-3-shapes-and-designs",
+      summary:
+        "Sides, corners and tilings — counting what shapes are made of, and what happens when you join or snip them.",
+      position: 5,
+      translations: {
+        hi: {
+          name: "आकृतियाँ और डिज़ाइन",
+          summary: "भुजाएँ, कोने और टाइलें — आकृतियाँ किससे बनी हैं यह गिनना, और जोड़ने-काटने पर क्या होता है।",
+        },
+        mr: {
+          name: "आकार आणि नक्षी",
+          summary: "बाजू, कोपरे आणि फरश्या — आकार कशाचे बनले आहेत ते मोजणे, आणि जोडल्या-कापल्यावर काय होते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — Fun with Give and Take (bigger sums, estimation)              */
+/* ------------------------------------------------------------------------- */
+function funWithGiveAndTake(): TopicFileOut {
+  const rand = rng("maths-3-fun-with-give-and-take");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 300 + 400?",
+          hi: "300 + 400 कितना है?",
+          mr: "300 + 400 किती?",
+        },
+        answer: 700,
+        wrong: [100, 34, 600],
+        checkExpr: "300+400",
+        solution: {
+          en: "Hundreds add like small numbers wearing zeros: 3 + 4 = 7, so 300 + 400 = 700. Getting 100 subtracts instead.",
+          hi: "सैकड़े शून्य पहने छोटे अंकों की तरह जुड़ते हैं: 3 + 4 = 7, तो 300 + 400 = 700। 100 में जोड़ की जगह घटाव हुआ।",
+          mr: "शतके शून्ये घातलेल्या लहान अंकांसारखी जुळतात: 3 + 4 = 7, म्हणून 300 + 400 = 700. 100 मध्ये बेरजेऐवजी वजाबाकी झाली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 500 − 143?",
+          hi: "500 − 143 कितना है?",
+          mr: "500 − 143 किती?",
+        },
+        answer: 357,
+        wrong: [443, 367, 357 + 100],
+        checkExpr: "500-143",
+        solution: {
+          en: "Borrow across the zeros: 500 − 143 = 357. A quicker road: 143 + 357 = 500, counting up 7 to 150, then 350 more, then… check lands true. The answer 443 subtracted only the hundred.",
+          hi: "शून्यों के पार उधार: 500 − 143 = 357। छोटा रास्ता: ऊपर की ओर गिनें — 143 से 150 तक 7, फिर 500 तक 350; कुल 357। 443 में केवल सैकड़ा घटा।",
+          mr: "शून्यांपलीकडे उसनवारी: 500 − 143 = 357. जवळचा रस्ता: वर मोजा — 143 पासून 150 पर्यंत 7, मग 500 पर्यंत 350; एकूण 357. 443 मध्ये फक्त शतक वजा झाले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Without adding exactly, ESTIMATE: 198 + 304 is closest to which number?",
+          hi: "बिना ठीक-ठीक जोड़े, अंदाज़ा लगाइए: 198 + 304 किस संख्या के सबसे पास है?",
+          mr: "नेमकी बेरीज न करता अंदाज करा: 198 + 304 कोणत्या संख्येच्या सर्वांत जवळ आहे?",
+        },
+        answer: 500,
+        wrong: [400, 600, 300],
+        checkExpr: "200+300",
+        solution: {
+          en: "Round first: 198 is nearly 200, 304 nearly 300, and 200 + 300 = 500. The true sum, 502, sits two steps away — a good estimate gets you there before the pencil moves.",
+          hi: "पहले गोल करें: 198 लगभग 200, 304 लगभग 300, और 200 + 300 = 500। सच्चा योग 502 दो ही क़दम दूर है — अच्छा अंदाज़ा पेंसिल चलने से पहले पहुँचा देता है।",
+          mr: "आधी पूर्णांक करा: 198 जवळजवळ 200, 304 जवळजवळ 300, आणि 200 + 300 = 500. खरी बेरीज 502 दोनच पावले दूर — चांगला अंदाज पेन्सिल हलण्याआधी पोहोचवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A school library has 425 story books and 238 picture books. How many books is that together?",
+          hi: "स्कूल के पुस्तकालय में 425 कहानी की और 238 चित्रों की किताबें हैं। दोनों मिलाकर कितनी किताबें हुईं?",
+          mr: "शाळेच्या ग्रंथालयात 425 गोष्टींची आणि 238 चित्रांची पुस्तके आहेत. मिळून किती पुस्तके झाली?",
+        },
+        answer: 663,
+        wrong: [653, 187, 673],
+        checkExpr: "425+238",
+        solution: {
+          en: "425 + 238: ones 5 + 8 = 13, carry one; tens 2 + 3 + 1 = 6; hundreds 4 + 2 = 6 — 663. Dropping the carry gives 653; 187 is the difference sneaking in.",
+          hi: "425 + 238: इकाई 5 + 8 = 13, एक हासिल; दहाई 2 + 3 + 1 = 6; सैकड़ा 4 + 2 = 6 — 663। हासिल छूटने पर 653; 187 चुपके से आया अंतर है।",
+          mr: "425 + 238: एकक 5 + 8 = 13, एक हातचा; दशक 2 + 3 + 1 = 6; शतक 4 + 2 = 6 — 663. हातचा गळाला की 653; 187 म्हणजे चोरपावलांनी आलेली वजाबाकी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A water tank held 800 litres in the morning. By evening 265 litres had been used. How many litres were left?",
+          hi: "सुबह टंकी में 800 लीटर पानी था। शाम तक 265 लीटर ख़र्च हो गया। कितने लीटर बचे?",
+          mr: "सकाळी टाकीत 800 लिटर पाणी होते. संध्याकाळपर्यंत 265 लिटर वापरले गेले. किती लिटर उरले?",
+        },
+        answer: 535,
+        wrong: [645, 545, 465],
+        checkExpr: "800-265",
+        solution: {
+          en: "800 − 265 = 535. Check upward: 265 + 535 = 800. The answer 545 borrows once and forgets once; 645 never borrows at all.",
+          hi: "800 − 265 = 535। ऊपर की ओर जाँचें: 265 + 535 = 800। 545 एक बार उधार लेकर एक बार भूला; 645 ने उधार लिया ही नहीं।",
+          mr: "800 − 265 = 535. वर तपासा: 265 + 535 = 800. 545 एकदा उसने घेऊन एकदा विसरले; 645 ने उसनेच घेतले नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What goes in the box: ▢ − 150 = 275?",
+          hi: "बॉक्स में क्या आएगा: ▢ − 150 = 275?",
+          mr: "चौकटीत काय येईल: ▢ − 150 = 275?",
+        },
+        answer: 425,
+        wrong: [125, 325, 275],
+        checkExpr: "275+150",
+        solution: {
+          en: "Something lost 150 and landed on 275, so it began at 275 + 150 = 425. Subtracting again (125) walks further down instead of back up.",
+          hi: "किसी संख्या ने 150 खोकर 275 पर उतरी, तो शुरुआत 275 + 150 = 425 से हुई थी। दोबारा घटाना (125) ऊपर लौटने की जगह और नीचे ले जाता है।",
+          mr: "एका संख्येने 150 गमावून 275 गाठले, म्हणून सुरुवात 275 + 150 = 425 पासून होती. पुन्हा वजाबाकी (125) वर परतण्याऐवजी आणखी खाली नेते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Two villages sent grain to a fair: Rampur sent 375 kg and Sitapur 480 kg. How much MORE did Sitapur send?",
+          hi: "दो गाँवों ने मेले में अनाज भेजा: रामपुर ने 375 किग्रा और सीतापुर ने 480 किग्रा। सीतापुर ने कितना अधिक भेजा?",
+          mr: "दोन गावांनी जत्रेत धान्य पाठवले: रामपूरने 375 किलो आणि सीतापूरने 480 किलो. सीतापूरने किती जास्त पाठवले?",
+        },
+        answer: 105,
+        wrong: [855, 115, 95],
+        checkExpr: "480-375",
+        solution: {
+          en: "'How much more' is a difference: 480 − 375 = 105 kg. The total 855 answers a question nobody asked; 115 and 95 are the borrow going astray by ten.",
+          hi: "'कितना अधिक' अंतर है: 480 − 375 = 105 किग्रा। 855 का योग बिन पूछा सवाल हल करता है; 115 और 95 में उधार दस से भटका।",
+          mr: "'किती जास्त' म्हणजे वजाबाकी: 480 − 375 = 105 किलो. 855 ची बेरीज न विचारलेला प्रश्न सोडवते; 115 आणि 95 मध्ये उसनवारी दहाने भरकटली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Ticket money collected on Saturday was ₹640 and on Sunday ₹580. Out of the total, ₹350 was spent on prizes. How much money remained?",
+          hi: "शनिवार को टिकटों से ₹640 और रविवार को ₹580 इकट्ठे हुए। कुल में से ₹350 इनामों पर ख़र्च हुए। कितने पैसे बचे?",
+          mr: "शनिवारी तिकिटांतून ₹640 आणि रविवारी ₹580 जमले. एकूणातून ₹350 बक्षिसांवर खर्च झाले. किती पैसे उरले?",
+        },
+        answer: 870,
+        wrong: [1220, 930, 770],
+        checkExpr: "640+580-350",
+        fmt: rupees,
+        solution: {
+          en: "Collect first: 640 + 580 = ₹1220. Spend next: 1220 − 350 = ₹870. Stopping at 1220 skips the prizes; 930 subtracts from Saturday alone and lets Sunday float free.",
+          hi: "पहले जमा: 640 + 580 = ₹1220। फिर ख़र्च: 1220 − 350 = ₹870। 1220 पर रुकना इनाम भूलना है; 930 केवल शनिवार से घटाकर रविवार को छुट्टा छोड़ देता है।",
+          mr: "आधी जमा: 640 + 580 = ₹1220. मग खर्च: 1220 − 350 = ₹870. 1220 वर थांबणे म्हणजे बक्षिसे विसरणे; 930 फक्त शनिवारमधून वजा करून रविवार मोकळा सोडते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A milkman had 900 litres. He delivered 356 litres in the morning and 278 in the evening. ESTIMATE first, then compute: how many litres were left?",
+          hi: "दूधवाले के पास 900 लीटर था। उसने सुबह 356 और शाम को 278 लीटर बाँटा। पहले अंदाज़ा, फिर गणना: कितने लीटर बचे?",
+          mr: "दूधवाल्याकडे 900 लिटर होते. त्याने सकाळी 356 आणि संध्याकाळी 278 लिटर घातले. आधी अंदाज, मग आकडेमोड: किती लिटर उरले?",
+        },
+        answer: 266,
+        wrong: [366, 276, 634],
+        checkExpr: "900-356-278",
+        solution: {
+          en: "Estimate: 900 − 360 − 280 ≈ 260, so expect something near it. Exactly: 356 + 278 = 634 delivered, and 900 − 634 = 266. The 634 option reports the delivered milk as if it stayed home.",
+          hi: "अंदाज़ा: 900 − 360 − 280 ≈ 260, तो उत्तर उसी के पास होगा। ठीक-ठीक: 356 + 278 = 634 बँटा, और 900 − 634 = 266। 634 वाला विकल्प बँटे दूध को घर बैठा बताता है।",
+          mr: "अंदाज: 900 − 360 − 280 ≈ 260, म्हणून उत्तर त्याच्या जवळ असणार. नेमके: 356 + 278 = 634 घातले, आणि 900 − 634 = 266. 634 हा पर्याय घातलेले दूध घरीच राहिले असे सांगतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Using the digits 5, 2 and 8 once each, make the largest and the smallest three-digit numbers — then subtract the smallest from the largest. What do you get?",
+          hi: "अंक 5, 2 और 8 को एक-एक बार लेकर सबसे बड़ी और सबसे छोटी तीन-अंकीय संख्याएँ बनाइए — फिर बड़ी में से छोटी घटाइए। क्या मिलता है?",
+          mr: "5, 2 आणि 8 हे अंक एकेकदा वापरून सर्वांत मोठी आणि सर्वांत लहान तीन-अंकी संख्या करा — मग मोठीतून लहान वजा करा. काय मिळते?",
+        },
+        answer: 594,
+        wrong: [606, 594 + 100, 494],
+        checkExpr: "852-258",
+        solution: {
+          en: "Largest 852, smallest 258, and 852 − 258 = 594. Both numbers use the same digits, so the difference comes only from where each digit stands — place value doing all the work again.",
+          hi: "सबसे बड़ी 852, सबसे छोटी 258, और 852 − 258 = 594। दोनों में अंक वही हैं, अतः अंतर केवल उनके स्थान से आता है — सारा काम फिर स्थानीय मान का।",
+          mr: "सर्वांत मोठी 852, सर्वांत लहान 258, आणि 852 − 258 = 594. दोन्हींत अंक तेच, म्हणून फरक फक्त त्यांच्या जागेतून येतो — सगळे काम पुन्हा स्थानिक किमतीचे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "In this sum each ★ hides the SAME digit: 6★ + ★3 = 96. Which digit is ★?",
+          hi: "इस जोड़ में हर ★ एक ही अंक छिपाए है: 6★ + ★3 = 96। ★ कौन-सा अंक है?",
+          mr: "या बेरजेत प्रत्येक ★ एकच अंक लपवतो: 6★ + ★3 = 96. ★ कोणता अंक?",
+        },
+        answer: 3,
+        wrong: [6, 2, 4],
+        checkExpr: "96-63-30",
+        solution: {
+          en: "The ones column says ★ + 3 ends in 6, so ★ = 3. Check the whole sum: 63 + 33 = 96 — it holds. Trying 6 gives 66 + 63 = 129, far past 96; the ones column alone rules out every option but 3.",
+          hi: "इकाई का स्तंभ कहता है ★ + 3 का अंत 6 पर हो, तो ★ = 3। पूरा जोड़ जाँचें: 63 + 33 = 96 — सही बैठता है। 6 लेने पर 66 + 63 = 129, 96 से बहुत आगे; अकेला इकाई-स्तंभ 3 के सिवा हर विकल्प काट देता है।",
+          mr: "एककाचा स्तंभ सांगतो ★ + 3 चा शेवट 6 वर हवा, म्हणून ★ = 3. पूर्ण बेरीज तपासा: 63 + 33 = 96 — जुळते. 6 घेतल्यास 66 + 63 = 129, 96 च्या फार पुढे; एकटा एकक-स्तंभ 3 खेरीज प्रत्येक पर्याय बाद करतो.",
+        },
+      },
+      rand,
+    ),
+
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 6 — Fun with Give and Take",
+      name: "Fun with Give and Take",
+      slug: "maths-3-fun-with-give-and-take",
+      summary:
+        "Bigger additions and subtractions — estimating before computing, borrowing across zeros, and digit puzzles.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "लेन-देन की मस्ती",
+          summary: "बड़े जोड़-घटाव — गणना से पहले अंदाज़ा, शून्यों के पार उधार, और अंकों की पहेलियाँ।",
+        },
+        mr: {
+          name: "देवाण-घेवाणीची गंमत",
+          summary: "मोठ्या बेरजा-वजाबाक्या — आकडेमोडीआधी अंदाज, शून्यांपलीकडची उसनवारी, आणि अंकांची कोडी.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Jugs and Mugs (capacity: litres and millilitres)             */
+/* ------------------------------------------------------------------------- */
+function jugsAndMugs(): TopicFileOut {
+  const rand = rng("maths-3-jugs-and-mugs");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many millilitres make one litre?",
+          hi: "एक लीटर में कितने मिलीलीटर होते हैं?",
+          mr: "एका लिटरमध्ये किती मिलिलिटर असतात?",
+        },
+        answer: 1000,
+        wrong: [100, 500, 250],
+        checkExpr: "4*250",
+        solution: {
+          en: "One litre is 1000 ml — 'milli' means a thousandth, so a thousand of them fill the whole. 500 and 250 are the familiar half and quarter bottles.",
+          hi: "एक लीटर 1000 मिली का है — 'मिली' का अर्थ हज़ारवाँ, तो हज़ार से पूरा भरता है। 500 और 250 जानी-पहचानी आधी और चौथाई बोतलें हैं।",
+          mr: "एक लिटर म्हणजे 1000 मिली — 'मिली' म्हणजे हजारावा, म्हणून हजाराने पूर्ण भरतो. 500 आणि 250 या ओळखीच्या अर्ध्या व पाव बाटल्या.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A medicine spoon holds 5 ml. How many spoonfuls empty a 30 ml bottle of tonic?",
+          hi: "दवा का चम्मच 5 मिली का है। 30 मिली की शीशी कितने चम्मचों में ख़ाली होगी?",
+          mr: "औषधाचा चमचा 5 मिलीचा आहे. 30 मिलीची बाटली किती चमच्यांत रिकामी होईल?",
+        },
+        answer: 6,
+        wrong: [5, 25, 35],
+        checkExpr: "30/5",
+        solution: {
+          en: "30 ÷ 5 = 6 spoonfuls. The wrong 25 and 35 add or subtract the spoon instead of counting how many times it fits.",
+          hi: "30 ÷ 5 = 6 चम्मच। 25 और 35 चम्मच को जोड़ते-घटाते हैं, यह गिनने की जगह कि वह कितनी बार समाता है।",
+          mr: "30 ÷ 5 = 6 चमचे. 25 आणि 35 चमचा मिळवतात-वजा करतात — तो किती वेळा मावतो हे मोजण्याऐवजी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Three 500 ml bottles of water are poured into a big jug. How many millilitres does the jug now hold?",
+          hi: "500-500 मिली की तीन बोतलें बड़े जग में उड़ेली गईं। जग में अब कितने मिलीलीटर पानी है?",
+          mr: "500-500 मिलीच्या तीन बाटल्या मोठ्या जगमध्ये ओतल्या. जगमध्ये आता किती मिलिलिटर पाणी आहे?",
+        },
+        answer: 1500,
+        wrong: [503, 1000, 2000],
+        checkExpr: "500*3",
+        solution: {
+          en: "3 × 500 = 1500 ml — one and a half litres. 1000 pours only two bottles; 503 adds the count to the size, mixing what the numbers mean.",
+          hi: "3 × 500 = 1500 मिली — डेढ़ लीटर। 1000 में दो ही बोतलें उड़ेलीं; 503 गिनती को नाप में जोड़कर संख्याओं के अर्थ गड्डमड्ड करता है।",
+          mr: "3 × 500 = 1500 मिली — दीड लिटर. 1000 मध्ये दोनच बाटल्या ओतल्या; 503 संख्या मापात मिळवून अर्थ मिसळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A jug of 1 litre of lassi is poured out. After filling four glasses of 200 ml each, how many millilitres remain in the jug?",
+          hi: "1 लीटर लस्सी का जग है। 200-200 मिली के चार गिलास भरने के बाद जग में कितने मिलीलीटर बचे?",
+          mr: "1 लिटर लस्सीचा जग आहे. 200-200 मिलीचे चार ग्लास भरल्यावर जगमध्ये किती मिलिलिटर उरली?",
+        },
+        answer: 200,
+        wrong: [800, 600, 0],
+        checkExpr: "1000-200*4",
+        solution: {
+          en: "Poured out: 4 × 200 = 800 ml. Left: 1000 − 800 = 200 ml — exactly one more glass. The 800 option reports what left the jug, not what stayed.",
+          hi: "उड़ेला: 4 × 200 = 800 मिली। बचा: 1000 − 800 = 200 मिली — ठीक एक और गिलास। 800 वाला विकल्प बताता है कि जग से क्या निकला, क्या बचा नहीं।",
+          mr: "ओतले: 4 × 200 = 800 मिली. उरले: 1000 − 800 = 200 मिली — बरोबर आणखी एक ग्लास. 800 हा पर्याय जगमधून काय गेले ते सांगतो, काय राहिले ते नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A bucket holds 8 litres. A mug holds 500 ml. How many mugfuls fill the bucket?",
+          hi: "बाल्टी 8 लीटर की है। मग 500 मिली का है। कितने मग बाल्टी भर देंगे?",
+          mr: "बादली 8 लिटरची आहे. मग 500 मिलीचा आहे. किती मगांनी बादली भरेल?",
+        },
+        answer: 16,
+        wrong: [8, 4, 20],
+        checkExpr: "8000/500",
+        solution: {
+          en: "8 litres = 8000 ml, and 8000 ÷ 500 = 16 mugs — two mugs to every litre. Eight counts one mug per litre, halving the truth.",
+          hi: "8 लीटर = 8000 मिली, और 8000 ÷ 500 = 16 मग — हर लीटर पर दो मग। आठ हर लीटर का एक ही मग गिनकर सच आधा कर देता है।",
+          mr: "8 लिटर = 8000 मिली, आणि 8000 ÷ 500 = 16 मग — दर लिटरमागे दोन मग. आठ दर लिटराचा एकच मग मोजून सत्य निम्मे करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A pot of 2 litres of dal must be shared equally into 8 bowls. How many millilitres go into each bowl?",
+          hi: "2 लीटर दाल 8 कटोरों में बराबर बाँटनी है। हर कटोरे में कितने मिलीलीटर जाएँगे?",
+          mr: "2 लिटर डाळ 8 वाट्यांत समान वाटायची आहे. प्रत्येक वाटीत किती मिलिलिटर जाईल?",
+        },
+        answer: 250,
+        wrong: [400, 200, 500],
+        checkExpr: "2000/8",
+        solution: {
+          en: "2000 ml ÷ 8 = 250 ml a bowl — a quarter litre each. The 400 answer divides 2000 by 5; 500 shares among only four bowls.",
+          hi: "2000 मिली ÷ 8 = 250 मिली प्रति कटोरा — चौथाई लीटर। 400 में 2000 को 5 से भागा गया; 500 केवल चार कटोरों में बाँटता है।",
+          mr: "2000 मिली ÷ 8 = 250 मिली प्रत्येक वाटीत — पाव लिटर. 400 मध्ये 2000 ला 5 ने भागले; 500 फक्त चार वाट्यांत वाटते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Which holds more, and the answer is that amount in ml: a 1 litre bottle, or five 250 ml cups together?",
+          hi: "किसमें अधिक समाता है — उत्तर वही मात्रा मिली में: 1 लीटर की बोतल, या 250-250 मिली के पाँच कप मिलाकर?",
+          mr: "कशात जास्त मावते — उत्तर तीच मात्रा मिलीमध्ये: 1 लिटरची बाटली, की 250-250 मिलीचे पाच कप मिळून?",
+        },
+        answer: 1250,
+        wrong: [1000, 250, 1500],
+        checkExpr: "250*5",
+        solution: {
+          en: "Five cups: 5 × 250 = 1250 ml, beating the bottle's 1000. Four cups would tie the bottle exactly — the fifth one settles the contest.",
+          hi: "पाँच कप: 5 × 250 = 1250 मिली, बोतल के 1000 से अधिक। चार कप बोतल की ठीक बराबरी करते — पाँचवाँ ही फ़ैसला करता है।",
+          mr: "पाच कप: 5 × 250 = 1250 मिली, बाटलीच्या 1000 हून जास्त. चार कपांनी बाटलीशी नेमकी बरोबरी झाली असती — पाचवाच निकाल लावतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A water cooler of 15 litres serves glasses of 250 ml. After 40 glasses have been filled, how many millilitres are left in the cooler?",
+          hi: "15 लीटर के वाटर-कूलर से 250-250 मिली के गिलास भरे जाते हैं। 40 गिलास भरने के बाद कूलर में कितने मिलीलीटर बचे?",
+          mr: "15 लिटरच्या वॉटर-कूलरमधून 250-250 मिलीचे ग्लास भरले जातात. 40 ग्लास भरल्यावर कूलरमध्ये किती मिलिलिटर उरले?",
+        },
+        answer: 5000,
+        wrong: [10000, 1000, 14750],
+        checkExpr: "15000-250*40",
+        solution: {
+          en: "Served: 40 × 250 = 10000 ml. Left: 15000 − 10000 = 5000 ml — five litres. The 10000 option is the water that walked away in glasses.",
+          hi: "परोसा: 40 × 250 = 10000 मिली। बचा: 15000 − 10000 = 5000 मिली — पाँच लीटर। 10000 वाला विकल्प वह पानी है जो गिलासों में चला गया।",
+          mr: "दिले: 40 × 250 = 10000 मिली. उरले: 15000 − 10000 = 5000 मिली — पाच लिटर. 10000 हा पर्याय म्हणजे ग्लासांतून निघून गेलेले पाणी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "You have only a 5 litre jug and a 3 litre jug, both unmarked, and a tap. Fill the 5, pour into the 3 till it is full — how many litres are now IN the 5 litre jug?",
+          hi: "आपके पास केवल 5 लीटर और 3 लीटर के दो बिना निशान वाले जग और एक नल है। 5 वाला भरें, फिर 3 वाले में तब तक उड़ेलें जब तक वह भर न जाए — अब 5 लीटर वाले जग में कितने लीटर हैं?",
+          mr: "तुमच्याकडे फक्त 5 लिटर आणि 3 लिटरचे खुणा नसलेले दोन जग आणि एक नळ आहे. 5 वाला भरा, मग 3 वाल्यात तो भरेपर्यंत ओता — आता 5 लिटरच्या जगमध्ये किती लिटर आहे?",
+        },
+        answer: 2,
+        wrong: [3, 5, 1],
+        checkExpr: "5-3",
+        solution: {
+          en: "Pouring stops when the 3 litre jug is full, so exactly 3 litres left the big jug: 5 − 3 = 2 litres remain. This is the first move of every classic jug puzzle — measuring without markings by letting the jugs measure each other.",
+          hi: "उड़ेलना तभी रुकता है जब 3 लीटर वाला भर जाए, यानी बड़े जग से ठीक 3 लीटर निकले: 5 − 3 = 2 लीटर बचे। हर मशहूर जग-पहेली की पहली चाल यही है — बिना निशान के नाप, जगों से एक-दूसरे को नपवाकर।",
+          mr: "3 लिटरचा भरला की ओतणे थांबते, म्हणजे मोठ्या जगमधून नेमके 3 लिटर गेले: 5 − 3 = 2 लिटर उरले. प्रत्येक प्रसिद्ध जग-कोड्याची पहिली खेळी हीच — खुणांशिवाय माप, जगांकडूनच एकमेकांना मोजून घेऊन.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A 1 litre bottle of squash says: mix 1 part squash with 4 parts water. Making ONE glass of 200 ml of the drink needs how many ml of squash?",
+          hi: "1 लीटर स्क्वैश की बोतल पर लिखा है: 1 भाग स्क्वैश में 4 भाग पानी मिलाएँ। 200 मिली का एक गिलास पेय बनाने में कितने मिली स्क्वैश लगेगा?",
+          mr: "1 लिटर स्क्वॅशच्या बाटलीवर लिहिले आहे: 1 भाग स्क्वॅशमध्ये 4 भाग पाणी मिसळा. 200 मिलीचा एक ग्लास पेय करण्यासाठी किती मिली स्क्वॅश लागेल?",
+        },
+        answer: 40,
+        wrong: [50, 200, 160],
+        checkExpr: "200/5",
+        solution: {
+          en: "One part squash plus four parts water makes 5 parts in all, so each part of a 200 ml glass is 200 ÷ 5 = 40 ml — that is the squash; the other 160 ml is water. Choosing 50 divides by four, forgetting the squash is itself one of the parts.",
+          hi: "1 भाग स्क्वैश और 4 भाग पानी मिलकर कुल 5 भाग हुए, तो 200 मिली गिलास का हर भाग 200 ÷ 5 = 40 मिली — यही स्क्वैश है; बाक़ी 160 मिली पानी। 50 चुनना चार से भाग देना है — यह भूलकर कि स्क्वैश ख़ुद भी एक भाग है।",
+          mr: "1 भाग स्क्वॅश आणि 4 भाग पाणी मिळून एकूण 5 भाग, म्हणून 200 मिली ग्लासाचा प्रत्येक भाग 200 ÷ 5 = 40 मिली — तोच स्क्वॅश; उरलेले 160 मिली पाणी. 50 निवडणे म्हणजे चाराने भागणे — स्क्वॅश स्वतःही एक भाग आहे हे विसरून.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 11 — Jugs and Mugs",
+      name: "Jugs and Mugs",
+      slug: "maths-3-jugs-and-mugs",
+      summary:
+        "Litres and millilitres — filling, sharing and the unmarked jugs that measure each other.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "जग और मग",
+          summary: "लीटर और मिलीलीटर — भरना, बाँटना, और बिना निशान के जग जो एक-दूसरे को नापते हैं।",
+        },
+        mr: {
+          name: "जग आणि मग",
+          summary: "लिटर आणि मिलिलिटर — भरणे, वाटणे, आणि खुणा नसलेले जग जे एकमेकांना मोजतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Smart Charts (reading and using data)                        */
+/* One survey carries the whole chapter, so every question reads the same    */
+/* small table — the way the textbook's own chapter works.                   */
+/* ------------------------------------------------------------------------- */
+function smartCharts(): TopicFileOut {
+  const rand = rng("maths-3-smart-charts");
+  const T = {
+    en: "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10.",
+    hi: "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10।",
+    mr: "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10.",
+  };
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: `${T.en} How many votes did the winning fruit get?`,
+          hi: `${T.hi} जीतने वाले फल को कितने मत मिले?`,
+          mr: `${T.mr} जिंकणाऱ्या फळाला किती मते मिळाली?`,
+        },
+        answer: 12,
+        wrong: [10, 5, 8],
+        checkExpr: "10+2",
+        solution: {
+          en: "Scan the counts: 12, 8, 5, 10 — the biggest is mango's 12. Reading a table starts with finding the largest and smallest at a glance.",
+          hi: "गिनतियाँ देखें: 12, 8, 5, 10 — सबसे बड़ी आम की 12। तालिका पढ़ना एक नज़र में सबसे बड़ा-छोटा ढूँढ़ने से शुरू होता है।",
+          mr: "संख्या पाहा: 12, 8, 5, 10 — सर्वांत मोठी आंब्याची 12. तक्ता वाचणे एका नजरेत मोठे-लहान शोधण्यापासून सुरू होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: `${T.en} How many MORE votes did mango get than guava?`,
+          hi: `${T.hi} आम को अमरूद से कितने अधिक मत मिले?`,
+          mr: `${T.mr} आंब्याला पेरूहून किती जास्त मते मिळाली?`,
+        },
+        answer: 7,
+        wrong: [17, 5, 12],
+        checkExpr: "12-5",
+        solution: {
+          en: "12 − 5 = 7 votes more. Adding them (17) measures the two groups together, not the gap between them.",
+          hi: "12 − 5 = 7 मत अधिक। जोड़ने पर (17) दोनों समूह एक साथ नपते हैं, उनका अंतर नहीं।",
+          mr: "12 − 5 = 7 मते जास्त. बेरीज (17) दोन्ही गट एकत्र मोजते, त्यांतले अंतर नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: `${T.en} In a picture-graph where one ● stands for 2 votes, how many ● does banana get?`,
+          hi: `${T.hi} चित्र-आलेख में एक ● = 2 मत हो, तो केले को कितने ● मिलेंगे?`,
+          mr: `${T.mr} चित्र-आलेखात एक ● = 2 मते असल्यास केळ्याला किती ● मिळतील?`,
+        },
+        answer: 4,
+        wrong: [8, 2, 16],
+        checkExpr: "8/2",
+        solution: {
+          en: "Banana's 8 votes at 2 votes a symbol need 8 ÷ 2 = 4 circles. Drawing 8 forgets the key; 16 doubles instead of halving.",
+          hi: "केले के 8 मत, 2 मत प्रति चिह्न — यानी 8 ÷ 2 = 4 गोले। 8 बनाना कुंजी भूलना है; 16 आधा करने की जगह दुगना करता है।",
+          mr: "केळ्याची 8 मते, 2 मते प्रति चिन्ह — म्हणजे 8 ÷ 2 = 4 वर्तुळे. 8 काढणे म्हणजे कळ विसरणे; 16 निम्म्याऐवजी दुप्पट करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: `${T.en} How many children voted in all?`,
+          hi: `${T.hi} कुल कितने बच्चों ने मत दिए?`,
+          mr: `${T.mr} एकूण किती मुलांनी मते दिली?`,
+        },
+        answer: 35,
+        wrong: [30, 25, 40],
+        checkExpr: "12+8+5+10",
+        solution: {
+          en: "Add every row: 12 + 8 + 5 + 10 = 35 children. Pairing helps: 12 + 8 = 20 and 5 + 10 = 15, then 20 + 15. Thirty drops the guava row.",
+          hi: "हर पंक्ति जोड़ें: 12 + 8 + 5 + 10 = 35 बच्चे। जोड़ियाँ आसान करती हैं: 12 + 8 = 20 और 5 + 10 = 15, फिर 20 + 15। तीस में अमरूद की पंक्ति छूटी।",
+          mr: "प्रत्येक ओळ मिळवा: 12 + 8 + 5 + 10 = 35 मुले. जोड्या सोप्या करतात: 12 + 8 = 20 आणि 5 + 10 = 15, मग 20 + 15. तीसमध्ये पेरूची ओळ गळाली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: `${T.en} The two CITRUS-free favourites, banana and apple, together got how many votes?`,
+          hi: `${T.hi} केले और सेब को मिलाकर कितने मत मिले?`,
+          mr: `${T.mr} केळे आणि सफरचंद मिळून किती मते?`,
+        },
+        answer: 18,
+        wrong: [22, 17, 20],
+        checkExpr: "8+10",
+        solution: {
+          en: "Pick just the rows asked for: banana 8 + apple 10 = 18. The 22 answer grabs mango and apple — reading the right rows is half of chart work.",
+          hi: "पूछी गई पंक्तियाँ ही लें: केला 8 + सेब 10 = 18। 22 में आम और सेब उठ गए — सही पंक्तियाँ पढ़ना ही तालिका-काम का आधा है।",
+          mr: "विचारलेल्या ओळीच घ्या: केळे 8 + सफरचंद 10 = 18. 22 मध्ये आंबा आणि सफरचंद उचलले — योग्य ओळी वाचणे हेच तक्ता-कामाचे अर्धे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: `${T.en} If every child who voted guava changes to mango, mango then leads banana by how many votes?`,
+          hi: `${T.hi} यदि अमरूद वाले सभी बच्चे आम में चले जाएँ, तो आम केले से कितने मतों से आगे होगा?`,
+          mr: `${T.mr} पेरूवाली सर्व मुले आंब्याकडे गेली, तर आंबा केळ्याहून किती मतांनी पुढे असेल?`,
+        },
+        answer: 9,
+        wrong: [4, 17, 12],
+        checkExpr: "12+5-8",
+        solution: {
+          en: "Mango grows to 12 + 5 = 17, banana stays 8, and the lead is 17 − 8 = 9. The 4 answer compares the OLD mango with banana, before anyone moved.",
+          hi: "आम बढ़कर 12 + 5 = 17, केला 8 पर, बढ़त 17 − 8 = 9। 4 वाला उत्तर पुराने आम की तुलना करता है — किसी के हिलने से पहले की।",
+          mr: "आंबा वाढून 12 + 5 = 17, केळे 8 वर, आघाडी 17 − 8 = 9. 4 हे उत्तर जुन्या आंब्याशी तुलना करते — कोणी हलण्याआधीची.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: `${T.en} In a bar chart of these votes where each square of the grid is 2 votes tall, how many squares high is the apple bar?`,
+          hi: `${T.hi} इन मतों के दंड-आलेख में ग्रिड का हर ख़ाना 2 मत ऊँचा है। सेब का दंड कितने ख़ानों ऊँचा होगा?`,
+          mr: `${T.mr} या मतांच्या स्तंभालेखात जाळीचा प्रत्येक चौकोन 2 मते उंच आहे. सफरचंदाचा स्तंभ किती चौकोन उंच असेल?`,
+        },
+        answer: 5,
+        wrong: [10, 2, 6],
+        checkExpr: "10/2",
+        solution: {
+          en: "Apple's 10 votes at 2 per square rise 10 ÷ 2 = 5 squares. Ten squares would double-count — the scale is the first thing to read on any chart.",
+          hi: "सेब के 10 मत, 2 प्रति ख़ाना — 10 ÷ 2 = 5 ख़ाने। दस ख़ाने दोहरी गिनती होती — किसी भी आलेख पर पैमाना सबसे पहले पढ़ा जाता है।",
+          mr: "सफरचंदाची 10 मते, 2 प्रति चौकोन — 10 ÷ 2 = 5 चौकोन. दहा चौकोन म्हणजे दुहेरी मोजणी — कोणत्याही आलेखावर प्रमाण आधी वाचायचे असते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: `${T.en} Next week 5 new children join and ALL vote for the same fruit, making it the new winner. Which count below is the smallest the new winner could have?`,
+          hi: `${T.hi} अगले सप्ताह 5 नए बच्चे आए और सबने एक ही फल को मत दिया, जिससे वह नया विजेता बन गया। नए विजेता की सबसे छोटी संभव गिनती कौन-सी है?`,
+          mr: `${T.mr} पुढच्या आठवड्यात 5 नवी मुले आली आणि सर्वांनी एकाच फळाला मते दिली, त्याने ते नवे विजेते झाले. नव्या विजेत्याची सर्वांत लहान शक्य संख्या कोणती?`,
+        },
+        answer: 13,
+        wrong: [15, 17, 10],
+        checkExpr: "8+5",
+        solution: {
+          en: "To beat mango's 12 with the smallest total, give the 5 votes to banana: 8 + 5 = 13, just past 12. Giving them to apple makes 15 — also a winner, but not the smallest one. Guava's 5 + 5 = 10 falls short.",
+          hi: "आम के 12 को सबसे छोटी गिनती से हराने के लिए 5 मत केले को दें: 8 + 5 = 13, 12 से ठीक आगे। सेब को देने पर 15 — विजेता तो है, पर सबसे छोटा नहीं। अमरूद के 5 + 5 = 10 कम पड़ते हैं।",
+          mr: "आंब्याच्या 12 ला सर्वांत लहान संख्येने हरवायला 5 मते केळ्याला द्या: 8 + 5 = 13, 12 च्या नेमके पुढे. सफरचंदाला दिली तर 15 — विजेते खरे, पण सर्वांत लहान नव्हे. पेरूचे 5 + 5 = 10 अपुरे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A different class's fruit table got smudged: mango 14, banana ▢, guava 6 — but the sheet still says 32 children voted in all. How many votes did banana get?",
+          hi: "दूसरी कक्षा की फल-तालिका धुँधली हो गई: आम 14, केला ▢, अमरूद 6 — पर पन्ने पर लिखा है कि कुल 32 बच्चों ने मत दिए। केले को कितने मत मिले?",
+          mr: "दुसऱ्या वर्गाचा फळ-तक्ता पुसट झाला: आंबा 14, केळे ▢, पेरू 6 — पण पानावर एकूण 32 मुलांनी मते दिल्याचे लिहिले आहे. केळ्याला किती मते मिळाली?",
+        },
+        answer: 12,
+        wrong: [20, 10, 18],
+        checkExpr: "32-14-6",
+        solution: {
+          en: "The total remembers what the smudge forgot: 32 − 14 − 6 = 12 votes for banana. Check by rebuilding: 14 + 12 + 6 = 32. A total row is the chart's own spare copy of every entry.",
+          hi: "योग वह याद रखता है जो धब्बा भुला गया: 32 − 14 − 6 = 12 मत केले के। फिर से जोड़कर जाँचें: 14 + 12 + 6 = 32। योग-पंक्ति तालिका की हर प्रविष्टि की अपनी अतिरिक्त प्रति है।",
+          mr: "बेरीज ते लक्षात ठेवते जे डागाने पुसले: 32 − 14 − 6 = 12 मते केळ्याला. पुन्हा जुळवून तपासा: 14 + 12 + 6 = 32. बेरीज-ओळ म्हणजे तक्त्याची प्रत्येक नोंदीची स्वतःची जादा प्रत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: `${T.en} The class wants to redraw the picture-graph so that GUAVA's row shows a whole number of symbols with none cut in half. Which of these vote-per-symbol keys works?`,
+          hi: `${T.hi} कक्षा चित्र-आलेख ऐसे बनाना चाहती है कि अमरूद की पंक्ति में पूरे चिह्न आएँ, कोई आधा न कटे। इनमें से कौन-सी 'मत प्रति चिह्न' कुंजी चलेगी?`,
+          mr: `${T.mr} वर्गाला चित्र-आलेख असा काढायचा आहे की पेरूच्या ओळीत पूर्ण चिन्हे येतील, अर्धे कापले जाणार नाही. यांपैकी कोणती 'मते प्रति चिन्ह' कळ चालेल?`,
+        },
+        answer: 5,
+        wrong: [2, 4, 10],
+        checkExpr: "5/1",
+        solution: {
+          en: "Guava has 5 votes, so the key must divide 5 exactly: only 5 works among the options, giving one whole symbol (1 works too, but it is not offered). A key of 2 leaves 5 ÷ 2 = two and a half symbols — the very half the class wants to avoid.",
+          hi: "अमरूद के 5 मत हैं, तो कुंजी को 5 को पूरा-पूरा बाँटना होगा: विकल्पों में केवल 5 चलती है — एक पूरा चिह्न। 2 की कुंजी से 5 ÷ 2 = ढाई चिह्न बनते हैं — वही आधा जो कक्षा नहीं चाहती।",
+          mr: "पेरूची 5 मते आहेत, म्हणून कळीने 5 ला पूर्ण भागले पाहिजे: पर्यायांत फक्त 5 चालते — एक पूर्ण चिन्ह. 2 च्या कळीने 5 ÷ 2 = अडीच चिन्हे होतात — नेमके तेच अर्धे जे वर्गाला नको आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 13 — Smart Charts",
+      name: "Smart Charts",
+      slug: "maths-3-smart-charts",
+      summary:
+        "One fruit-vote survey read every way — biggest and smallest, gaps and totals, keys and scales, and the smudge the total can repair.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "स्मार्ट चार्ट",
+          summary: "फलों के मतों की एक तालिका, हर तरह से पढ़ी हुई — बड़ा-छोटा, अंतर-योग, कुंजी-पैमाना, और वह धब्बा जिसे योग सुधार देता है।",
+        },
+        mr: {
+          name: "हुशार तक्ते",
+          summary: "फळ-मतांचा एक तक्ता, प्रत्येक रीतीने वाचलेला — मोठे-लहान, अंतर-बेरीज, कळ-प्रमाण, आणि बेरजेने दुरुस्त होणारा डाग.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G3_MATHS: TopicFileOut[] = [
   funWithNumbers(),
   giveAndTake(),
@@ -2216,4 +3163,8 @@ export const G3_MATHS: TopicFileOut[] = [
   timeGoesOn(),
   canWeShare(),
   whoIsHeavier(),
+  shapesAndDesigns(),
+  funWithGiveAndTake(),
+  jugsAndMugs(),
+  smartCharts(),
 ];

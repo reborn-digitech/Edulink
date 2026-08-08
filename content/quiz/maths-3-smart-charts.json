@@ -1,0 +1,373 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 13 — Smart Charts",
+  "name": "Smart Charts",
+  "slug": "maths-3-smart-charts",
+  "summary": "One fruit-vote survey read every way — biggest and smallest, gaps and totals, keys and scales, and the smudge the total can repair.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "स्मार्ट चार्ट",
+      "summary": "फलों के मतों की एक तालिका, हर तरह से पढ़ी हुई — बड़ा-छोटा, अंतर-योग, कुंजी-पैमाना, और वह धब्बा जिसे योग सुधार देता है।"
+    },
+    "mr": {
+      "name": "हुशार तक्ते",
+      "summary": "फळ-मतांचा एक तक्ता, प्रत्येक रीतीने वाचलेला — मोठे-लहान, अंतर-बेरीज, कळ-प्रमाण, आणि बेरजेने दुरुस्त होणारा डाग."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. How many votes did the winning fruit get?",
+      "choices": [
+        "10",
+        "5",
+        "8",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Scan the counts: 12, 8, 5, 10 — the biggest is mango's 12. Reading a table starts with finding the largest and smallest at a glance.",
+      "checkExpr": "10+2",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। जीतने वाले फल को कितने मत मिले?",
+          "choices": [
+            "10",
+            "5",
+            "8",
+            "12"
+          ],
+          "solution": "गिनतियाँ देखें: 12, 8, 5, 10 — सबसे बड़ी आम की 12। तालिका पढ़ना एक नज़र में सबसे बड़ा-छोटा ढूँढ़ने से शुरू होता है।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. जिंकणाऱ्या फळाला किती मते मिळाली?",
+          "choices": [
+            "10",
+            "5",
+            "8",
+            "12"
+          ],
+          "solution": "संख्या पाहा: 12, 8, 5, 10 — सर्वांत मोठी आंब्याची 12. तक्ता वाचणे एका नजरेत मोठे-लहान शोधण्यापासून सुरू होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. How many MORE votes did mango get than guava?",
+      "choices": [
+        "12",
+        "5",
+        "7",
+        "17"
+      ],
+      "answerIndex": 2,
+      "solution": "12 − 5 = 7 votes more. Adding them (17) measures the two groups together, not the gap between them.",
+      "checkExpr": "12-5",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। आम को अमरूद से कितने अधिक मत मिले?",
+          "choices": [
+            "12",
+            "5",
+            "7",
+            "17"
+          ],
+          "solution": "12 − 5 = 7 मत अधिक। जोड़ने पर (17) दोनों समूह एक साथ नपते हैं, उनका अंतर नहीं।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. आंब्याला पेरूहून किती जास्त मते मिळाली?",
+          "choices": [
+            "12",
+            "5",
+            "7",
+            "17"
+          ],
+          "solution": "12 − 5 = 7 मते जास्त. बेरीज (17) दोन्ही गट एकत्र मोजते, त्यांतले अंतर नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. In a picture-graph where one ● stands for 2 votes, how many ● does banana get?",
+      "choices": [
+        "4",
+        "16",
+        "2",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Banana's 8 votes at 2 votes a symbol need 8 ÷ 2 = 4 circles. Drawing 8 forgets the key; 16 doubles instead of halving.",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। चित्र-आलेख में एक ● = 2 मत हो, तो केले को कितने ● मिलेंगे?",
+          "choices": [
+            "4",
+            "16",
+            "2",
+            "8"
+          ],
+          "solution": "केले के 8 मत, 2 मत प्रति चिह्न — यानी 8 ÷ 2 = 4 गोले। 8 बनाना कुंजी भूलना है; 16 आधा करने की जगह दुगना करता है।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. चित्र-आलेखात एक ● = 2 मते असल्यास केळ्याला किती ● मिळतील?",
+          "choices": [
+            "4",
+            "16",
+            "2",
+            "8"
+          ],
+          "solution": "केळ्याची 8 मते, 2 मते प्रति चिन्ह — म्हणजे 8 ÷ 2 = 4 वर्तुळे. 8 काढणे म्हणजे कळ विसरणे; 16 निम्म्याऐवजी दुप्पट करते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. How many children voted in all?",
+      "choices": [
+        "35",
+        "30",
+        "40",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "Add every row: 12 + 8 + 5 + 10 = 35 children. Pairing helps: 12 + 8 = 20 and 5 + 10 = 15, then 20 + 15. Thirty drops the guava row.",
+      "checkExpr": "12+8+5+10",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। कुल कितने बच्चों ने मत दिए?",
+          "choices": [
+            "35",
+            "30",
+            "40",
+            "25"
+          ],
+          "solution": "हर पंक्ति जोड़ें: 12 + 8 + 5 + 10 = 35 बच्चे। जोड़ियाँ आसान करती हैं: 12 + 8 = 20 और 5 + 10 = 15, फिर 20 + 15। तीस में अमरूद की पंक्ति छूटी।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. एकूण किती मुलांनी मते दिली?",
+          "choices": [
+            "35",
+            "30",
+            "40",
+            "25"
+          ],
+          "solution": "प्रत्येक ओळ मिळवा: 12 + 8 + 5 + 10 = 35 मुले. जोड्या सोप्या करतात: 12 + 8 = 20 आणि 5 + 10 = 15, मग 20 + 15. तीसमध्ये पेरूची ओळ गळाली."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. The two CITRUS-free favourites, banana and apple, together got how many votes?",
+      "choices": [
+        "18",
+        "17",
+        "20",
+        "22"
+      ],
+      "answerIndex": 0,
+      "solution": "Pick just the rows asked for: banana 8 + apple 10 = 18. The 22 answer grabs mango and apple — reading the right rows is half of chart work.",
+      "checkExpr": "8+10",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। केले और सेब को मिलाकर कितने मत मिले?",
+          "choices": [
+            "18",
+            "17",
+            "20",
+            "22"
+          ],
+          "solution": "पूछी गई पंक्तियाँ ही लें: केला 8 + सेब 10 = 18। 22 में आम और सेब उठ गए — सही पंक्तियाँ पढ़ना ही तालिका-काम का आधा है।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. केळे आणि सफरचंद मिळून किती मते?",
+          "choices": [
+            "18",
+            "17",
+            "20",
+            "22"
+          ],
+          "solution": "विचारलेल्या ओळीच घ्या: केळे 8 + सफरचंद 10 = 18. 22 मध्ये आंबा आणि सफरचंद उचलले — योग्य ओळी वाचणे हेच तक्ता-कामाचे अर्धे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. If every child who voted guava changes to mango, mango then leads banana by how many votes?",
+      "choices": [
+        "12",
+        "17",
+        "4",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "Mango grows to 12 + 5 = 17, banana stays 8, and the lead is 17 − 8 = 9. The 4 answer compares the OLD mango with banana, before anyone moved.",
+      "checkExpr": "12+5-8",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। यदि अमरूद वाले सभी बच्चे आम में चले जाएँ, तो आम केले से कितने मतों से आगे होगा?",
+          "choices": [
+            "12",
+            "17",
+            "4",
+            "9"
+          ],
+          "solution": "आम बढ़कर 12 + 5 = 17, केला 8 पर, बढ़त 17 − 8 = 9। 4 वाला उत्तर पुराने आम की तुलना करता है — किसी के हिलने से पहले की।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. पेरूवाली सर्व मुले आंब्याकडे गेली, तर आंबा केळ्याहून किती मतांनी पुढे असेल?",
+          "choices": [
+            "12",
+            "17",
+            "4",
+            "9"
+          ],
+          "solution": "आंबा वाढून 12 + 5 = 17, केळे 8 वर, आघाडी 17 − 8 = 9. 4 हे उत्तर जुन्या आंब्याशी तुलना करते — कोणी हलण्याआधीची."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. In a bar chart of these votes where each square of the grid is 2 votes tall, how many squares high is the apple bar?",
+      "choices": [
+        "10",
+        "2",
+        "6",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Apple's 10 votes at 2 per square rise 10 ÷ 2 = 5 squares. Ten squares would double-count — the scale is the first thing to read on any chart.",
+      "checkExpr": "10/2",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। इन मतों के दंड-आलेख में ग्रिड का हर ख़ाना 2 मत ऊँचा है। सेब का दंड कितने ख़ानों ऊँचा होगा?",
+          "choices": [
+            "10",
+            "2",
+            "6",
+            "5"
+          ],
+          "solution": "सेब के 10 मत, 2 प्रति ख़ाना — 10 ÷ 2 = 5 ख़ाने। दस ख़ाने दोहरी गिनती होती — किसी भी आलेख पर पैमाना सबसे पहले पढ़ा जाता है।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. या मतांच्या स्तंभालेखात जाळीचा प्रत्येक चौकोन 2 मते उंच आहे. सफरचंदाचा स्तंभ किती चौकोन उंच असेल?",
+          "choices": [
+            "10",
+            "2",
+            "6",
+            "5"
+          ],
+          "solution": "सफरचंदाची 10 मते, 2 प्रति चौकोन — 10 ÷ 2 = 5 चौकोन. दहा चौकोन म्हणजे दुहेरी मोजणी — कोणत्याही आलेखावर प्रमाण आधी वाचायचे असते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. Next week 5 new children join and ALL vote for the same fruit, making it the new winner. Which count below is the smallest the new winner could have?",
+      "choices": [
+        "17",
+        "15",
+        "10",
+        "13"
+      ],
+      "answerIndex": 3,
+      "solution": "To beat mango's 12 with the smallest total, give the 5 votes to banana: 8 + 5 = 13, just past 12. Giving them to apple makes 15 — also a winner, but not the smallest one. Guava's 5 + 5 = 10 falls short.",
+      "checkExpr": "8+5",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। अगले सप्ताह 5 नए बच्चे आए और सबने एक ही फल को मत दिया, जिससे वह नया विजेता बन गया। नए विजेता की सबसे छोटी संभव गिनती कौन-सी है?",
+          "choices": [
+            "17",
+            "15",
+            "10",
+            "13"
+          ],
+          "solution": "आम के 12 को सबसे छोटी गिनती से हराने के लिए 5 मत केले को दें: 8 + 5 = 13, 12 से ठीक आगे। सेब को देने पर 15 — विजेता तो है, पर सबसे छोटा नहीं। अमरूद के 5 + 5 = 10 कम पड़ते हैं।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. पुढच्या आठवड्यात 5 नवी मुले आली आणि सर्वांनी एकाच फळाला मते दिली, त्याने ते नवे विजेते झाले. नव्या विजेत्याची सर्वांत लहान शक्य संख्या कोणती?",
+          "choices": [
+            "17",
+            "15",
+            "10",
+            "13"
+          ],
+          "solution": "आंब्याच्या 12 ला सर्वांत लहान संख्येने हरवायला 5 मते केळ्याला द्या: 8 + 5 = 13, 12 च्या नेमके पुढे. सफरचंदाला दिली तर 15 — विजेते खरे, पण सर्वांत लहान नव्हे. पेरूचे 5 + 5 = 10 अपुरे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A different class's fruit table got smudged: mango 14, banana ▢, guava 6 — but the sheet still says 32 children voted in all. How many votes did banana get?",
+      "choices": [
+        "12",
+        "18",
+        "10",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "The total remembers what the smudge forgot: 32 − 14 − 6 = 12 votes for banana. Check by rebuilding: 14 + 12 + 6 = 32. A total row is the chart's own spare copy of every entry.",
+      "checkExpr": "32-14-6",
+      "translations": {
+        "hi": {
+          "stem": "दूसरी कक्षा की फल-तालिका धुँधली हो गई: आम 14, केला ▢, अमरूद 6 — पर पन्ने पर लिखा है कि कुल 32 बच्चों ने मत दिए। केले को कितने मत मिले?",
+          "choices": [
+            "12",
+            "18",
+            "10",
+            "20"
+          ],
+          "solution": "योग वह याद रखता है जो धब्बा भुला गया: 32 − 14 − 6 = 12 मत केले के। फिर से जोड़कर जाँचें: 14 + 12 + 6 = 32। योग-पंक्ति तालिका की हर प्रविष्टि की अपनी अतिरिक्त प्रति है।"
+        },
+        "mr": {
+          "stem": "दुसऱ्या वर्गाचा फळ-तक्ता पुसट झाला: आंबा 14, केळे ▢, पेरू 6 — पण पानावर एकूण 32 मुलांनी मते दिल्याचे लिहिले आहे. केळ्याला किती मते मिळाली?",
+          "choices": [
+            "12",
+            "18",
+            "10",
+            "20"
+          ],
+          "solution": "बेरीज ते लक्षात ठेवते जे डागाने पुसले: 32 − 14 − 6 = 12 मते केळ्याला. पुन्हा जुळवून तपासा: 14 + 12 + 6 = 32. बेरीज-ओळ म्हणजे तक्त्याची प्रत्येक नोंदीची स्वतःची जादा प्रत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Class 3 voted for their favourite fruit — mango 12, banana 8, guava 5, apple 10. The class wants to redraw the picture-graph so that GUAVA's row shows a whole number of symbols with none cut in half. Which of these vote-per-symbol keys works?",
+      "choices": [
+        "4",
+        "10",
+        "2",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Guava has 5 votes, so the key must divide 5 exactly: only 5 works among the options, giving one whole symbol (1 works too, but it is not offered). A key of 2 leaves 5 ÷ 2 = two and a half symbols — the very half the class wants to avoid.",
+      "checkExpr": "5/1",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 3 ने अपने प्रिय फल के लिए मत दिए — आम 12, केला 8, अमरूद 5, सेब 10। कक्षा चित्र-आलेख ऐसे बनाना चाहती है कि अमरूद की पंक्ति में पूरे चिह्न आएँ, कोई आधा न कटे। इनमें से कौन-सी 'मत प्रति चिह्न' कुंजी चलेगी?",
+          "choices": [
+            "4",
+            "10",
+            "2",
+            "5"
+          ],
+          "solution": "अमरूद के 5 मत हैं, तो कुंजी को 5 को पूरा-पूरा बाँटना होगा: विकल्पों में केवल 5 चलती है — एक पूरा चिह्न। 2 की कुंजी से 5 ÷ 2 = ढाई चिह्न बनते हैं — वही आधा जो कक्षा नहीं चाहती।"
+        },
+        "mr": {
+          "stem": "इयत्ता 3 ने आवडत्या फळासाठी मते दिली — आंबा 12, केळे 8, पेरू 5, सफरचंद 10. वर्गाला चित्र-आलेख असा काढायचा आहे की पेरूच्या ओळीत पूर्ण चिन्हे येतील, अर्धे कापले जाणार नाही. यांपैकी कोणती 'मते प्रति चिन्ह' कळ चालेल?",
+          "choices": [
+            "4",
+            "10",
+            "2",
+            "5"
+          ],
+          "solution": "पेरूची 5 मते आहेत, म्हणून कळीने 5 ला पूर्ण भागले पाहिजे: पर्यायांत फक्त 5 चालते — एक पूर्ण चिन्ह. 2 च्या कळीने 5 ÷ 2 = अडीच चिन्हे होतात — नेमके तेच अर्धे जे वर्गाला नको आहे."
+        }
+      }
+    }
+  ]
+}

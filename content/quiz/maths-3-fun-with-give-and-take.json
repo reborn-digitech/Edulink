@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 6 — Fun with Give and Take",
+  "name": "Fun with Give and Take",
+  "slug": "maths-3-fun-with-give-and-take",
+  "summary": "Bigger additions and subtractions — estimating before computing, borrowing across zeros, and digit puzzles.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "लेन-देन की मस्ती",
+      "summary": "बड़े जोड़-घटाव — गणना से पहले अंदाज़ा, शून्यों के पार उधार, और अंकों की पहेलियाँ।"
+    },
+    "mr": {
+      "name": "देवाण-घेवाणीची गंमत",
+      "summary": "मोठ्या बेरजा-वजाबाक्या — आकडेमोडीआधी अंदाज, शून्यांपलीकडची उसनवारी, आणि अंकांची कोडी."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 300 + 400?",
+      "choices": [
+        "34",
+        "700",
+        "100",
+        "600"
+      ],
+      "answerIndex": 1,
+      "solution": "Hundreds add like small numbers wearing zeros: 3 + 4 = 7, so 300 + 400 = 700. Getting 100 subtracts instead.",
+      "checkExpr": "300+400",
+      "translations": {
+        "hi": {
+          "stem": "300 + 400 कितना है?",
+          "choices": [
+            "34",
+            "700",
+            "100",
+            "600"
+          ],
+          "solution": "सैकड़े शून्य पहने छोटे अंकों की तरह जुड़ते हैं: 3 + 4 = 7, तो 300 + 400 = 700। 100 में जोड़ की जगह घटाव हुआ।"
+        },
+        "mr": {
+          "stem": "300 + 400 किती?",
+          "choices": [
+            "34",
+            "700",
+            "100",
+            "600"
+          ],
+          "solution": "शतके शून्ये घातलेल्या लहान अंकांसारखी जुळतात: 3 + 4 = 7, म्हणून 300 + 400 = 700. 100 मध्ये बेरजेऐवजी वजाबाकी झाली."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 500 − 143?",
+      "choices": [
+        "357",
+        "443",
+        "457",
+        "367"
+      ],
+      "answerIndex": 0,
+      "solution": "Borrow across the zeros: 500 − 143 = 357. A quicker road: 143 + 357 = 500, counting up 7 to 150, then 350 more, then… check lands true. The answer 443 subtracted only the hundred.",
+      "checkExpr": "500-143",
+      "translations": {
+        "hi": {
+          "stem": "500 − 143 कितना है?",
+          "choices": [
+            "357",
+            "443",
+            "457",
+            "367"
+          ],
+          "solution": "शून्यों के पार उधार: 500 − 143 = 357। छोटा रास्ता: ऊपर की ओर गिनें — 143 से 150 तक 7, फिर 500 तक 350; कुल 357। 443 में केवल सैकड़ा घटा।"
+        },
+        "mr": {
+          "stem": "500 − 143 किती?",
+          "choices": [
+            "357",
+            "443",
+            "457",
+            "367"
+          ],
+          "solution": "शून्यांपलीकडे उसनवारी: 500 − 143 = 357. जवळचा रस्ता: वर मोजा — 143 पासून 150 पर्यंत 7, मग 500 पर्यंत 350; एकूण 357. 443 मध्ये फक्त शतक वजा झाले."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Without adding exactly, ESTIMATE: 198 + 304 is closest to which number?",
+      "choices": [
+        "600",
+        "400",
+        "300",
+        "500"
+      ],
+      "answerIndex": 3,
+      "solution": "Round first: 198 is nearly 200, 304 nearly 300, and 200 + 300 = 500. The true sum, 502, sits two steps away — a good estimate gets you there before the pencil moves.",
+      "checkExpr": "200+300",
+      "translations": {
+        "hi": {
+          "stem": "बिना ठीक-ठीक जोड़े, अंदाज़ा लगाइए: 198 + 304 किस संख्या के सबसे पास है?",
+          "choices": [
+            "600",
+            "400",
+            "300",
+            "500"
+          ],
+          "solution": "पहले गोल करें: 198 लगभग 200, 304 लगभग 300, और 200 + 300 = 500। सच्चा योग 502 दो ही क़दम दूर है — अच्छा अंदाज़ा पेंसिल चलने से पहले पहुँचा देता है।"
+        },
+        "mr": {
+          "stem": "नेमकी बेरीज न करता अंदाज करा: 198 + 304 कोणत्या संख्येच्या सर्वांत जवळ आहे?",
+          "choices": [
+            "600",
+            "400",
+            "300",
+            "500"
+          ],
+          "solution": "आधी पूर्णांक करा: 198 जवळजवळ 200, 304 जवळजवळ 300, आणि 200 + 300 = 500. खरी बेरीज 502 दोनच पावले दूर — चांगला अंदाज पेन्सिल हलण्याआधी पोहोचवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A school library has 425 story books and 238 picture books. How many books is that together?",
+      "choices": [
+        "663",
+        "673",
+        "187",
+        "653"
+      ],
+      "answerIndex": 0,
+      "solution": "425 + 238: ones 5 + 8 = 13, carry one; tens 2 + 3 + 1 = 6; hundreds 4 + 2 = 6 — 663. Dropping the carry gives 653; 187 is the difference sneaking in.",
+      "checkExpr": "425+238",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल के पुस्तकालय में 425 कहानी की और 238 चित्रों की किताबें हैं। दोनों मिलाकर कितनी किताबें हुईं?",
+          "choices": [
+            "663",
+            "673",
+            "187",
+            "653"
+          ],
+          "solution": "425 + 238: इकाई 5 + 8 = 13, एक हासिल; दहाई 2 + 3 + 1 = 6; सैकड़ा 4 + 2 = 6 — 663। हासिल छूटने पर 653; 187 चुपके से आया अंतर है।"
+        },
+        "mr": {
+          "stem": "शाळेच्या ग्रंथालयात 425 गोष्टींची आणि 238 चित्रांची पुस्तके आहेत. मिळून किती पुस्तके झाली?",
+          "choices": [
+            "663",
+            "673",
+            "187",
+            "653"
+          ],
+          "solution": "425 + 238: एकक 5 + 8 = 13, एक हातचा; दशक 2 + 3 + 1 = 6; शतक 4 + 2 = 6 — 663. हातचा गळाला की 653; 187 म्हणजे चोरपावलांनी आलेली वजाबाकी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A water tank held 800 litres in the morning. By evening 265 litres had been used. How many litres were left?",
+      "choices": [
+        "645",
+        "535",
+        "465",
+        "545"
+      ],
+      "answerIndex": 1,
+      "solution": "800 − 265 = 535. Check upward: 265 + 535 = 800. The answer 545 borrows once and forgets once; 645 never borrows at all.",
+      "checkExpr": "800-265",
+      "translations": {
+        "hi": {
+          "stem": "सुबह टंकी में 800 लीटर पानी था। शाम तक 265 लीटर ख़र्च हो गया। कितने लीटर बचे?",
+          "choices": [
+            "645",
+            "535",
+            "465",
+            "545"
+          ],
+          "solution": "800 − 265 = 535। ऊपर की ओर जाँचें: 265 + 535 = 800। 545 एक बार उधार लेकर एक बार भूला; 645 ने उधार लिया ही नहीं।"
+        },
+        "mr": {
+          "stem": "सकाळी टाकीत 800 लिटर पाणी होते. संध्याकाळपर्यंत 265 लिटर वापरले गेले. किती लिटर उरले?",
+          "choices": [
+            "645",
+            "535",
+            "465",
+            "545"
+          ],
+          "solution": "800 − 265 = 535. वर तपासा: 265 + 535 = 800. 545 एकदा उसने घेऊन एकदा विसरले; 645 ने उसनेच घेतले नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What goes in the box: ▢ − 150 = 275?",
+      "choices": [
+        "425",
+        "325",
+        "275",
+        "125"
+      ],
+      "answerIndex": 0,
+      "solution": "Something lost 150 and landed on 275, so it began at 275 + 150 = 425. Subtracting again (125) walks further down instead of back up.",
+      "checkExpr": "275+150",
+      "translations": {
+        "hi": {
+          "stem": "बॉक्स में क्या आएगा: ▢ − 150 = 275?",
+          "choices": [
+            "425",
+            "325",
+            "275",
+            "125"
+          ],
+          "solution": "किसी संख्या ने 150 खोकर 275 पर उतरी, तो शुरुआत 275 + 150 = 425 से हुई थी। दोबारा घटाना (125) ऊपर लौटने की जगह और नीचे ले जाता है।"
+        },
+        "mr": {
+          "stem": "चौकटीत काय येईल: ▢ − 150 = 275?",
+          "choices": [
+            "425",
+            "325",
+            "275",
+            "125"
+          ],
+          "solution": "एका संख्येने 150 गमावून 275 गाठले, म्हणून सुरुवात 275 + 150 = 425 पासून होती. पुन्हा वजाबाकी (125) वर परतण्याऐवजी आणखी खाली नेते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two villages sent grain to a fair: Rampur sent 375 kg and Sitapur 480 kg. How much MORE did Sitapur send?",
+      "choices": [
+        "115",
+        "105",
+        "95",
+        "855"
+      ],
+      "answerIndex": 1,
+      "solution": "'How much more' is a difference: 480 − 375 = 105 kg. The total 855 answers a question nobody asked; 115 and 95 are the borrow going astray by ten.",
+      "checkExpr": "480-375",
+      "translations": {
+        "hi": {
+          "stem": "दो गाँवों ने मेले में अनाज भेजा: रामपुर ने 375 किग्रा और सीतापुर ने 480 किग्रा। सीतापुर ने कितना अधिक भेजा?",
+          "choices": [
+            "115",
+            "105",
+            "95",
+            "855"
+          ],
+          "solution": "'कितना अधिक' अंतर है: 480 − 375 = 105 किग्रा। 855 का योग बिन पूछा सवाल हल करता है; 115 और 95 में उधार दस से भटका।"
+        },
+        "mr": {
+          "stem": "दोन गावांनी जत्रेत धान्य पाठवले: रामपूरने 375 किलो आणि सीतापूरने 480 किलो. सीतापूरने किती जास्त पाठवले?",
+          "choices": [
+            "115",
+            "105",
+            "95",
+            "855"
+          ],
+          "solution": "'किती जास्त' म्हणजे वजाबाकी: 480 − 375 = 105 किलो. 855 ची बेरीज न विचारलेला प्रश्न सोडवते; 115 आणि 95 मध्ये उसनवारी दहाने भरकटली."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Ticket money collected on Saturday was ₹640 and on Sunday ₹580. Out of the total, ₹350 was spent on prizes. How much money remained?",
+      "choices": [
+        "₹1220",
+        "₹770",
+        "₹870",
+        "₹930"
+      ],
+      "answerIndex": 2,
+      "solution": "Collect first: 640 + 580 = ₹1220. Spend next: 1220 − 350 = ₹870. Stopping at 1220 skips the prizes; 930 subtracts from Saturday alone and lets Sunday float free.",
+      "checkExpr": "640+580-350",
+      "translations": {
+        "hi": {
+          "stem": "शनिवार को टिकटों से ₹640 और रविवार को ₹580 इकट्ठे हुए। कुल में से ₹350 इनामों पर ख़र्च हुए। कितने पैसे बचे?",
+          "choices": [
+            "₹1220",
+            "₹770",
+            "₹870",
+            "₹930"
+          ],
+          "solution": "पहले जमा: 640 + 580 = ₹1220। फिर ख़र्च: 1220 − 350 = ₹870। 1220 पर रुकना इनाम भूलना है; 930 केवल शनिवार से घटाकर रविवार को छुट्टा छोड़ देता है।"
+        },
+        "mr": {
+          "stem": "शनिवारी तिकिटांतून ₹640 आणि रविवारी ₹580 जमले. एकूणातून ₹350 बक्षिसांवर खर्च झाले. किती पैसे उरले?",
+          "choices": [
+            "₹1220",
+            "₹770",
+            "₹870",
+            "₹930"
+          ],
+          "solution": "आधी जमा: 640 + 580 = ₹1220. मग खर्च: 1220 − 350 = ₹870. 1220 वर थांबणे म्हणजे बक्षिसे विसरणे; 930 फक्त शनिवारमधून वजा करून रविवार मोकळा सोडते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A milkman had 900 litres. He delivered 356 litres in the morning and 278 in the evening. ESTIMATE first, then compute: how many litres were left?",
+      "choices": [
+        "276",
+        "366",
+        "266",
+        "634"
+      ],
+      "answerIndex": 2,
+      "solution": "Estimate: 900 − 360 − 280 ≈ 260, so expect something near it. Exactly: 356 + 278 = 634 delivered, and 900 − 634 = 266. The 634 option reports the delivered milk as if it stayed home.",
+      "checkExpr": "900-356-278",
+      "translations": {
+        "hi": {
+          "stem": "दूधवाले के पास 900 लीटर था। उसने सुबह 356 और शाम को 278 लीटर बाँटा। पहले अंदाज़ा, फिर गणना: कितने लीटर बचे?",
+          "choices": [
+            "276",
+            "366",
+            "266",
+            "634"
+          ],
+          "solution": "अंदाज़ा: 900 − 360 − 280 ≈ 260, तो उत्तर उसी के पास होगा। ठीक-ठीक: 356 + 278 = 634 बँटा, और 900 − 634 = 266। 634 वाला विकल्प बँटे दूध को घर बैठा बताता है।"
+        },
+        "mr": {
+          "stem": "दूधवाल्याकडे 900 लिटर होते. त्याने सकाळी 356 आणि संध्याकाळी 278 लिटर घातले. आधी अंदाज, मग आकडेमोड: किती लिटर उरले?",
+          "choices": [
+            "276",
+            "366",
+            "266",
+            "634"
+          ],
+          "solution": "अंदाज: 900 − 360 − 280 ≈ 260, म्हणून उत्तर त्याच्या जवळ असणार. नेमके: 356 + 278 = 634 घातले, आणि 900 − 634 = 266. 634 हा पर्याय घातलेले दूध घरीच राहिले असे सांगतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Using the digits 5, 2 and 8 once each, make the largest and the smallest three-digit numbers — then subtract the smallest from the largest. What do you get?",
+      "choices": [
+        "494",
+        "594",
+        "694",
+        "606"
+      ],
+      "answerIndex": 1,
+      "solution": "Largest 852, smallest 258, and 852 − 258 = 594. Both numbers use the same digits, so the difference comes only from where each digit stands — place value doing all the work again.",
+      "checkExpr": "852-258",
+      "translations": {
+        "hi": {
+          "stem": "अंक 5, 2 और 8 को एक-एक बार लेकर सबसे बड़ी और सबसे छोटी तीन-अंकीय संख्याएँ बनाइए — फिर बड़ी में से छोटी घटाइए। क्या मिलता है?",
+          "choices": [
+            "494",
+            "594",
+            "694",
+            "606"
+          ],
+          "solution": "सबसे बड़ी 852, सबसे छोटी 258, और 852 − 258 = 594। दोनों में अंक वही हैं, अतः अंतर केवल उनके स्थान से आता है — सारा काम फिर स्थानीय मान का।"
+        },
+        "mr": {
+          "stem": "5, 2 आणि 8 हे अंक एकेकदा वापरून सर्वांत मोठी आणि सर्वांत लहान तीन-अंकी संख्या करा — मग मोठीतून लहान वजा करा. काय मिळते?",
+          "choices": [
+            "494",
+            "594",
+            "694",
+            "606"
+          ],
+          "solution": "सर्वांत मोठी 852, सर्वांत लहान 258, आणि 852 − 258 = 594. दोन्हींत अंक तेच, म्हणून फरक फक्त त्यांच्या जागेतून येतो — सगळे काम पुन्हा स्थानिक किमतीचे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In this sum each ★ hides the SAME digit: 6★ + ★3 = 96. Which digit is ★?",
+      "choices": [
+        "3",
+        "4",
+        "6",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "The ones column says ★ + 3 ends in 6, so ★ = 3. Check the whole sum: 63 + 33 = 96 — it holds. Trying 6 gives 66 + 63 = 129, far past 96; the ones column alone rules out every option but 3.",
+      "checkExpr": "96-63-30",
+      "translations": {
+        "hi": {
+          "stem": "इस जोड़ में हर ★ एक ही अंक छिपाए है: 6★ + ★3 = 96। ★ कौन-सा अंक है?",
+          "choices": [
+            "3",
+            "4",
+            "6",
+            "2"
+          ],
+          "solution": "इकाई का स्तंभ कहता है ★ + 3 का अंत 6 पर हो, तो ★ = 3। पूरा जोड़ जाँचें: 63 + 33 = 96 — सही बैठता है। 6 लेने पर 66 + 63 = 129, 96 से बहुत आगे; अकेला इकाई-स्तंभ 3 के सिवा हर विकल्प काट देता है।"
+        },
+        "mr": {
+          "stem": "या बेरजेत प्रत्येक ★ एकच अंक लपवतो: 6★ + ★3 = 96. ★ कोणता अंक?",
+          "choices": [
+            "3",
+            "4",
+            "6",
+            "2"
+          ],
+          "solution": "एककाचा स्तंभ सांगतो ★ + 3 चा शेवट 6 वर हवा, म्हणून ★ = 3. पूर्ण बेरीज तपासा: 63 + 33 = 96 — जुळते. 6 घेतल्यास 66 + 63 = 129, 96 च्या फार पुढे; एकटा एकक-स्तंभ 3 खेरीज प्रत्येक पर्याय बाद करतो."
+        }
+      }
+    }
+  ]
+}

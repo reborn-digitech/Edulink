@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 5 — Shapes and Designs",
+  "name": "Shapes and Designs",
+  "slug": "maths-3-shapes-and-designs",
+  "summary": "Sides, corners and tilings — counting what shapes are made of, and what happens when you join or snip them.",
+  "position": 5,
+  "translations": {
+    "hi": {
+      "name": "आकृतियाँ और डिज़ाइन",
+      "summary": "भुजाएँ, कोने और टाइलें — आकृतियाँ किससे बनी हैं यह गिनना, और जोड़ने-काटने पर क्या होता है।"
+    },
+    "mr": {
+      "name": "आकार आणि नक्षी",
+      "summary": "बाजू, कोपरे आणि फरश्या — आकार कशाचे बनले आहेत ते मोजणे, आणि जोडल्या-कापल्यावर काय होते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many sides does a triangle have?",
+      "choices": [
+        "6",
+        "2",
+        "4",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Tri- means three: a triangle has 3 sides and 3 corners. Four sides make a rectangle or square — a different family.",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की कितनी भुजाएँ होती हैं?",
+          "choices": [
+            "6",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "त्रि का अर्थ तीन: त्रिभुज की 3 भुजाएँ और 3 कोने होते हैं। चार भुजाओं से आयत या वर्ग बनता है — अलग परिवार।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाला किती बाजू असतात?",
+          "choices": [
+            "6",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "त्रि म्हणजे तीन: त्रिकोणाला 3 बाजू आणि 3 कोपरे. चार बाजूंनी आयत वा चौरस होतो — वेगळे कुटुंब."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A carrom board is a square. How many corners does it have?",
+      "choices": [
+        "6",
+        "4",
+        "3",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "A square has 4 corners, one pocket at each on a carrom board. Eight counts the pockets AND the side midpoints — only the corners were asked.",
+      "checkExpr": "2+2",
+      "translations": {
+        "hi": {
+          "stem": "कैरम बोर्ड वर्गाकार होता है। उसके कितने कोने होते हैं?",
+          "choices": [
+            "6",
+            "4",
+            "3",
+            "8"
+          ],
+          "solution": "वर्ग के 4 कोने होते हैं — कैरम पर हर कोने में एक गड्ढा। आठ में गड्ढों के साथ भुजाओं के बीच भी गिन लिए गए — पूछा तो केवल कोनों को था।"
+        },
+        "mr": {
+          "stem": "कॅरम बोर्ड चौरस असतो. त्याला किती कोपरे असतात?",
+          "choices": [
+            "6",
+            "4",
+            "3",
+            "8"
+          ],
+          "solution": "चौरसाला 4 कोपरे — कॅरमवर प्रत्येक कोपऱ्यात एक खळगा. आठमध्ये खळग्यांसह बाजूंची मध्येही मोजली गेली — विचारले फक्त कोपरे होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Using matchsticks, Reena made 3 separate triangles. How many matchsticks did she use?",
+      "choices": [
+        "3",
+        "6",
+        "12",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "Each separate triangle needs 3 sticks: 3 × 3 = 9. Twelve builds squares by mistake; 6 makes only two triangles.",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "माचिस की तीलियों से रीना ने 3 अलग-अलग त्रिभुज बनाए। उसने कितनी तीलियाँ लगाईं?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "9"
+          ],
+          "solution": "हर अलग त्रिभुज को 3 तीलियाँ चाहिए: 3 × 3 = 9। बारह से भूलवश वर्ग बनते हैं; 6 से केवल दो त्रिभुज।"
+        },
+        "mr": {
+          "stem": "काड्यांनी रीनाने 3 वेगवेगळे त्रिकोण केले. तिने किती काड्या वापरल्या?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "9"
+          ],
+          "solution": "प्रत्येक वेगळ्या त्रिकोणाला 3 काड्या: 3 × 3 = 9. बाराने चुकून चौरस होतात; 6 ने फक्त दोन त्रिकोण."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A rectangle's long sides are 8 cm each and short sides 3 cm each. Walking right around its edge covers how many centimetres?",
+      "choices": [
+        "19",
+        "24",
+        "22",
+        "11"
+      ],
+      "answerIndex": 2,
+      "solution": "All four sides: 8 + 3 + 8 + 3 = 22 cm. Adding just one long and one short (11) walks only half way round.",
+      "checkExpr": "8+3+8+3",
+      "translations": {
+        "hi": {
+          "stem": "आयत की लंबी भुजाएँ 8-8 सेमी और छोटी 3-3 सेमी हैं। उसके किनारे-किनारे पूरा चक्कर कितने सेंटीमीटर का होगा?",
+          "choices": [
+            "19",
+            "24",
+            "22",
+            "11"
+          ],
+          "solution": "चारों भुजाएँ: 8 + 3 + 8 + 3 = 22 सेमी। केवल एक लंबी और एक छोटी जोड़ने पर (11) आधा ही चक्कर लगता है।"
+        },
+        "mr": {
+          "stem": "आयताच्या लांब बाजू 8-8 सेमी आणि आखूड 3-3 सेमी आहेत. त्याच्या कडेकडेने पूर्ण फेरी किती सेंटिमीटरची होईल?",
+          "choices": [
+            "19",
+            "24",
+            "22",
+            "11"
+          ],
+          "solution": "चारही बाजू: 8 + 3 + 8 + 3 = 22 सेमी. फक्त एक लांब आणि एक आखूड मिळवली (11) की अर्धीच फेरी होते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A design is made of 2 triangles and 3 squares. Counting every side of every shape, how many sides are drawn?",
+      "choices": [
+        "5",
+        "18",
+        "17",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "Triangles bring 2 × 3 = 6 sides, squares 3 × 4 = 12; together 18. Five adds the shapes, not their sides.",
+      "checkExpr": "2*3+3*4",
+      "translations": {
+        "hi": {
+          "stem": "एक डिज़ाइन 2 त्रिभुजों और 3 वर्गों से बना है। हर आकृति की हर भुजा गिनें तो कुल कितनी भुजाएँ खिंचीं?",
+          "choices": [
+            "5",
+            "18",
+            "17",
+            "12"
+          ],
+          "solution": "त्रिभुजों से 2 × 3 = 6 भुजाएँ, वर्गों से 3 × 4 = 12; कुल 18। पाँच में आकृतियाँ जुड़ीं, भुजाएँ नहीं।"
+        },
+        "mr": {
+          "stem": "एक नक्षी 2 त्रिकोण आणि 3 चौरसांची आहे. प्रत्येक आकाराची प्रत्येक बाजू मोजली तर एकूण किती बाजू काढल्या?",
+          "choices": [
+            "5",
+            "18",
+            "17",
+            "12"
+          ],
+          "solution": "त्रिकोणांच्या 2 × 3 = 6 बाजू, चौरसांच्या 3 × 4 = 12; मिळून 18. पाचमध्ये आकार जुळले, बाजू नव्हेत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wall is tiled with rows of square tiles: 6 tiles in a row, 4 rows. How many tiles cover the wall?",
+      "choices": [
+        "28",
+        "10",
+        "20",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "Rows of equal tiles multiply: 6 × 4 = 24. Ten adds the row to the count of rows; the neighbours 20 and 28 are one row light and one row heavy.",
+      "checkExpr": "6*4",
+      "translations": {
+        "hi": {
+          "stem": "दीवार पर वर्गाकार टाइलों की क़तारें हैं: एक क़तार में 6 टाइलें, 4 क़तारें। दीवार पर कुल कितनी टाइलें लगीं?",
+          "choices": [
+            "28",
+            "10",
+            "20",
+            "24"
+          ],
+          "solution": "बराबर टाइलों की क़तारें गुणा होती हैं: 6 × 4 = 24। दस में क़तार और क़तारों की गिनती जुड़ गई; 20 और 28 एक क़तार कम और एक ज़्यादा हैं।"
+        },
+        "mr": {
+          "stem": "भिंतीवर चौरस फरश्यांच्या रांगा आहेत: एका रांगेत 6 फरश्या, 4 रांगा. भिंतीवर एकूण किती फरश्या?",
+          "choices": [
+            "28",
+            "10",
+            "20",
+            "24"
+          ],
+          "solution": "समान फरश्यांच्या रांगा गुणल्या जातात: 6 × 4 = 24. दहामध्ये रांग आणि रांगांची संख्या जुळली; 20 आणि 28 एक रांग कमी व एक जास्त."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Reena joins 2 squares edge to edge to make one rectangle. How many sides does the NEW shape have on its outside?",
+      "choices": [
+        "6",
+        "8",
+        "4",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "The two joined edges disappear inside, and their neighbours merge into longer sides: what remains outside is a plain rectangle with 4 sides. Eight counts both squares as if they never met.",
+      "checkExpr": "8-4",
+      "translations": {
+        "hi": {
+          "stem": "रीना 2 वर्गों को भुजा-से-भुजा जोड़कर एक आयत बनाती है। नई आकृति के बाहर की ओर कितनी भुजाएँ हैं?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "7"
+          ],
+          "solution": "जुड़ी हुई दोनों भुजाएँ भीतर खो जाती हैं, और उनकी पड़ोसी भुजाएँ मिलकर लंबी हो जाती हैं: बाहर बचता है 4 भुजाओं वाला सीधा-सादा आयत। आठ दोनों वर्गों को ऐसे गिनता है मानो वे कभी मिले ही नहीं।"
+        },
+        "mr": {
+          "stem": "रीना 2 चौरस बाजूला बाजू जोडून एक आयत करते. नव्या आकाराच्या बाहेरच्या बाजू किती?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "7"
+          ],
+          "solution": "जोडलेल्या दोन्ही बाजू आत लुप्त होतात, आणि त्यांच्या शेजारच्या बाजू मिळून लांब होतात: बाहेर उरतो 4 बाजूंचा साधा आयत. आठ दोन्ही चौरस जणू कधी भेटलेच नाहीत असे मोजते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A fence is built along one straight side of a field using posts 2 metres apart. With 7 posts standing, how long is the fence?",
+      "choices": [
+        "14",
+        "7",
+        "10",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Seven posts make only 6 gaps between them, and 6 × 2 = 12 metres. Multiplying posts by spacing (14) invents a gap beyond the last post — the fence-post error, named after exactly this.",
+      "checkExpr": "2*6",
+      "translations": {
+        "hi": {
+          "stem": "खेत की एक सीधी ओर 2-2 मीटर की दूरी पर खंभे गाड़कर बाड़ बनाई गई। 7 खंभे खड़े हैं, तो बाड़ कितनी लंबी है?",
+          "choices": [
+            "14",
+            "7",
+            "10",
+            "12"
+          ],
+          "solution": "सात खंभों के बीच केवल 6 अंतराल बनते हैं, और 6 × 2 = 12 मीटर। खंभों को दूरी से गुणा करना (14) आख़िरी खंभे के आगे एक और अंतराल गढ़ देता है — 'खंभा-गिनती की चूक' का नाम इसी पर पड़ा।"
+        },
+        "mr": {
+          "stem": "शेताच्या एका सरळ बाजूला 2-2 मीटर अंतरावर खांब रोवून कुंपण केले. 7 खांब उभे आहेत, तर कुंपण किती लांब?",
+          "choices": [
+            "14",
+            "7",
+            "10",
+            "12"
+          ],
+          "solution": "सात खांबांमध्ये फक्त 6 अंतरे होतात, आणि 6 × 2 = 12 मीटर. खांबांना अंतराने गुणणे (14) शेवटच्या खांबापलीकडे आणखी एक अंतर रचते — 'खांब-मोजणीची चूक' हे नाव यावरूनच पडले."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A big square is cut into equal small squares, 3 along each side. The middle one is painted red. How many small squares are NOT red?",
+      "choices": [
+        "6",
+        "8",
+        "9",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Three along each side makes 3 × 3 = 9 small squares; taking out the painted middle leaves 8. Nine forgets the subtraction; 6 imagines only the edges.",
+      "checkExpr": "3*3-1",
+      "translations": {
+        "hi": {
+          "stem": "एक बड़े वर्ग को बराबर छोटे वर्गों में काटा गया, हर ओर 3-3। बीच वाला लाल रंगा गया। कितने छोटे वर्ग लाल नहीं हैं?",
+          "choices": [
+            "6",
+            "8",
+            "9",
+            "3"
+          ],
+          "solution": "हर ओर तीन यानी 3 × 3 = 9 छोटे वर्ग; रँगा हुआ बीच वाला हटाने पर 8 बचे। नौ में घटाव भूला; 6 में केवल किनारे सूझे।"
+        },
+        "mr": {
+          "stem": "एक मोठा चौरस समान लहान चौरसांत कापला, प्रत्येक बाजूला 3-3. मधला लाल रंगवला. किती लहान चौरस लाल नाहीत?",
+          "choices": [
+            "6",
+            "8",
+            "9",
+            "3"
+          ],
+          "solution": "प्रत्येक बाजूला तीन म्हणजे 3 × 3 = 9 लहान चौरस; रंगवलेला मधला काढला की 8 उरतात. नऊमध्ये वजाबाकी विसरली; 6 मध्ये फक्त कडाच दिसल्या."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Take a square sheet of paper and cut off ONE corner with a straight snip. How many corners does the sheet have now?",
+      "choices": [
+        "3",
+        "6",
+        "5",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "The snip removes 1 corner but its straight edge ENDS in 2 new ones: 4 − 1 + 2 = 5. The pull toward 3 comes from 'cutting off' feeling like pure loss — try it with real paper and count.",
+      "checkExpr": "4-1+2",
+      "translations": {
+        "hi": {
+          "stem": "काग़ज़ का एक वर्गाकार पन्ना लें और एक सीधी कैंची से उसका एक कोना काट दें। अब पन्ने के कितने कोने हैं?",
+          "choices": [
+            "3",
+            "6",
+            "5",
+            "4"
+          ],
+          "solution": "कैंची 1 कोना ले जाती है, पर उसका सीधा किनारा 2 नए कोनों पर ख़त्म होता है: 4 − 1 + 2 = 5। 3 की ओर खिंचाव 'काटने' के शुद्ध घाटा लगने से आता है — असली काग़ज़ पर करके गिनें।"
+        },
+        "mr": {
+          "stem": "कागदाचा एक चौरस तुकडा घ्या आणि सरळ कात्रीने त्याचा एक कोपरा कापा. आता कागदाला किती कोपरे आहेत?",
+          "choices": [
+            "3",
+            "6",
+            "5",
+            "4"
+          ],
+          "solution": "कात्री 1 कोपरा नेते, पण तिची सरळ कड 2 नव्या कोपऱ्यांत संपते: 4 − 1 + 2 = 5. 3 कडचा ओढा 'कापणे' म्हणजे निव्वळ तोटा वाटण्याने येतो — खऱ्या कागदावर करून मोजा."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "With exactly 10 matchsticks, what is the GREATEST number of separate squares Veer can make (no stick may be shared)?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Each separate square eats 4 sticks. Two squares take 8, leaving 2 sticks — not enough for a third, which would need 12 in all. The answer is 2, with two sticks left over honestly unused.",
+      "checkExpr": "8/4",
+      "translations": {
+        "hi": {
+          "stem": "ठीक 10 तीलियों से वीर अधिकतम कितने अलग-अलग वर्ग बना सकता है (कोई तीली साझा नहीं हो सकती)?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "हर अलग वर्ग 4 तीलियाँ लेता है। दो वर्गों में 8 लगीं, 2 बचीं — तीसरे के लिए नाकाफ़ी, जिसे कुल 12 चाहिए होतीं। उत्तर 2 है, और दो तीलियाँ ईमानदारी से बिना लगे बचती हैं।"
+        },
+        "mr": {
+          "stem": "नेमक्या 10 काड्यांनी वीर जास्तीत जास्त किती वेगवेगळे चौरस करू शकतो (कोणतीही काडी सामायिक नाही)?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "प्रत्येक वेगळा चौरस 4 काड्या घेतो. दोन चौरसांत 8 गेल्या, 2 उरल्या — तिसऱ्यासाठी अपुऱ्या, त्याला एकूण 12 लागल्या असत्या. उत्तर 2, आणि दोन काड्या प्रामाणिकपणे न वापरता उरतात."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 11 — Jugs and Mugs",
+  "name": "Jugs and Mugs",
+  "slug": "maths-3-jugs-and-mugs",
+  "summary": "Litres and millilitres — filling, sharing and the unmarked jugs that measure each other.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "जग और मग",
+      "summary": "लीटर और मिलीलीटर — भरना, बाँटना, और बिना निशान के जग जो एक-दूसरे को नापते हैं।"
+    },
+    "mr": {
+      "name": "जग आणि मग",
+      "summary": "लिटर आणि मिलिलिटर — भरणे, वाटणे, आणि खुणा नसलेले जग जे एकमेकांना मोजतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many millilitres make one litre?",
+      "choices": [
+        "500",
+        "100",
+        "250",
+        "1000"
+      ],
+      "answerIndex": 3,
+      "solution": "One litre is 1000 ml — 'milli' means a thousandth, so a thousand of them fill the whole. 500 and 250 are the familiar half and quarter bottles.",
+      "checkExpr": "4*250",
+      "translations": {
+        "hi": {
+          "stem": "एक लीटर में कितने मिलीलीटर होते हैं?",
+          "choices": [
+            "500",
+            "100",
+            "250",
+            "1000"
+          ],
+          "solution": "एक लीटर 1000 मिली का है — 'मिली' का अर्थ हज़ारवाँ, तो हज़ार से पूरा भरता है। 500 और 250 जानी-पहचानी आधी और चौथाई बोतलें हैं।"
+        },
+        "mr": {
+          "stem": "एका लिटरमध्ये किती मिलिलिटर असतात?",
+          "choices": [
+            "500",
+            "100",
+            "250",
+            "1000"
+          ],
+          "solution": "एक लिटर म्हणजे 1000 मिली — 'मिली' म्हणजे हजारावा, म्हणून हजाराने पूर्ण भरतो. 500 आणि 250 या ओळखीच्या अर्ध्या व पाव बाटल्या."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A medicine spoon holds 5 ml. How many spoonfuls empty a 30 ml bottle of tonic?",
+      "choices": [
+        "6",
+        "5",
+        "25",
+        "35"
+      ],
+      "answerIndex": 0,
+      "solution": "30 ÷ 5 = 6 spoonfuls. The wrong 25 and 35 add or subtract the spoon instead of counting how many times it fits.",
+      "checkExpr": "30/5",
+      "translations": {
+        "hi": {
+          "stem": "दवा का चम्मच 5 मिली का है। 30 मिली की शीशी कितने चम्मचों में ख़ाली होगी?",
+          "choices": [
+            "6",
+            "5",
+            "25",
+            "35"
+          ],
+          "solution": "30 ÷ 5 = 6 चम्मच। 25 और 35 चम्मच को जोड़ते-घटाते हैं, यह गिनने की जगह कि वह कितनी बार समाता है।"
+        },
+        "mr": {
+          "stem": "औषधाचा चमचा 5 मिलीचा आहे. 30 मिलीची बाटली किती चमच्यांत रिकामी होईल?",
+          "choices": [
+            "6",
+            "5",
+            "25",
+            "35"
+          ],
+          "solution": "30 ÷ 5 = 6 चमचे. 25 आणि 35 चमचा मिळवतात-वजा करतात — तो किती वेळा मावतो हे मोजण्याऐवजी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Three 500 ml bottles of water are poured into a big jug. How many millilitres does the jug now hold?",
+      "choices": [
+        "1500",
+        "2000",
+        "503",
+        "1000"
+      ],
+      "answerIndex": 0,
+      "solution": "3 × 500 = 1500 ml — one and a half litres. 1000 pours only two bottles; 503 adds the count to the size, mixing what the numbers mean.",
+      "checkExpr": "500*3",
+      "translations": {
+        "hi": {
+          "stem": "500-500 मिली की तीन बोतलें बड़े जग में उड़ेली गईं। जग में अब कितने मिलीलीटर पानी है?",
+          "choices": [
+            "1500",
+            "2000",
+            "503",
+            "1000"
+          ],
+          "solution": "3 × 500 = 1500 मिली — डेढ़ लीटर। 1000 में दो ही बोतलें उड़ेलीं; 503 गिनती को नाप में जोड़कर संख्याओं के अर्थ गड्डमड्ड करता है।"
+        },
+        "mr": {
+          "stem": "500-500 मिलीच्या तीन बाटल्या मोठ्या जगमध्ये ओतल्या. जगमध्ये आता किती मिलिलिटर पाणी आहे?",
+          "choices": [
+            "1500",
+            "2000",
+            "503",
+            "1000"
+          ],
+          "solution": "3 × 500 = 1500 मिली — दीड लिटर. 1000 मध्ये दोनच बाटल्या ओतल्या; 503 संख्या मापात मिळवून अर्थ मिसळते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A jug of 1 litre of lassi is poured out. After filling four glasses of 200 ml each, how many millilitres remain in the jug?",
+      "choices": [
+        "0",
+        "600",
+        "200",
+        "800"
+      ],
+      "answerIndex": 2,
+      "solution": "Poured out: 4 × 200 = 800 ml. Left: 1000 − 800 = 200 ml — exactly one more glass. The 800 option reports what left the jug, not what stayed.",
+      "checkExpr": "1000-200*4",
+      "translations": {
+        "hi": {
+          "stem": "1 लीटर लस्सी का जग है। 200-200 मिली के चार गिलास भरने के बाद जग में कितने मिलीलीटर बचे?",
+          "choices": [
+            "0",
+            "600",
+            "200",
+            "800"
+          ],
+          "solution": "उड़ेला: 4 × 200 = 800 मिली। बचा: 1000 − 800 = 200 मिली — ठीक एक और गिलास। 800 वाला विकल्प बताता है कि जग से क्या निकला, क्या बचा नहीं।"
+        },
+        "mr": {
+          "stem": "1 लिटर लस्सीचा जग आहे. 200-200 मिलीचे चार ग्लास भरल्यावर जगमध्ये किती मिलिलिटर उरली?",
+          "choices": [
+            "0",
+            "600",
+            "200",
+            "800"
+          ],
+          "solution": "ओतले: 4 × 200 = 800 मिली. उरले: 1000 − 800 = 200 मिली — बरोबर आणखी एक ग्लास. 800 हा पर्याय जगमधून काय गेले ते सांगतो, काय राहिले ते नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A bucket holds 8 litres. A mug holds 500 ml. How many mugfuls fill the bucket?",
+      "choices": [
+        "4",
+        "8",
+        "16",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "8 litres = 8000 ml, and 8000 ÷ 500 = 16 mugs — two mugs to every litre. Eight counts one mug per litre, halving the truth.",
+      "checkExpr": "8000/500",
+      "translations": {
+        "hi": {
+          "stem": "बाल्टी 8 लीटर की है। मग 500 मिली का है। कितने मग बाल्टी भर देंगे?",
+          "choices": [
+            "4",
+            "8",
+            "16",
+            "20"
+          ],
+          "solution": "8 लीटर = 8000 मिली, और 8000 ÷ 500 = 16 मग — हर लीटर पर दो मग। आठ हर लीटर का एक ही मग गिनकर सच आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "बादली 8 लिटरची आहे. मग 500 मिलीचा आहे. किती मगांनी बादली भरेल?",
+          "choices": [
+            "4",
+            "8",
+            "16",
+            "20"
+          ],
+          "solution": "8 लिटर = 8000 मिली, आणि 8000 ÷ 500 = 16 मग — दर लिटरमागे दोन मग. आठ दर लिटराचा एकच मग मोजून सत्य निम्मे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A pot of 2 litres of dal must be shared equally into 8 bowls. How many millilitres go into each bowl?",
+      "choices": [
+        "500",
+        "250",
+        "200",
+        "400"
+      ],
+      "answerIndex": 1,
+      "solution": "2000 ml ÷ 8 = 250 ml a bowl — a quarter litre each. The 400 answer divides 2000 by 5; 500 shares among only four bowls.",
+      "checkExpr": "2000/8",
+      "translations": {
+        "hi": {
+          "stem": "2 लीटर दाल 8 कटोरों में बराबर बाँटनी है। हर कटोरे में कितने मिलीलीटर जाएँगे?",
+          "choices": [
+            "500",
+            "250",
+            "200",
+            "400"
+          ],
+          "solution": "2000 मिली ÷ 8 = 250 मिली प्रति कटोरा — चौथाई लीटर। 400 में 2000 को 5 से भागा गया; 500 केवल चार कटोरों में बाँटता है।"
+        },
+        "mr": {
+          "stem": "2 लिटर डाळ 8 वाट्यांत समान वाटायची आहे. प्रत्येक वाटीत किती मिलिलिटर जाईल?",
+          "choices": [
+            "500",
+            "250",
+            "200",
+            "400"
+          ],
+          "solution": "2000 मिली ÷ 8 = 250 मिली प्रत्येक वाटीत — पाव लिटर. 400 मध्ये 2000 ला 5 ने भागले; 500 फक्त चार वाट्यांत वाटते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which holds more, and the answer is that amount in ml: a 1 litre bottle, or five 250 ml cups together?",
+      "choices": [
+        "1250",
+        "1500",
+        "250",
+        "1000"
+      ],
+      "answerIndex": 0,
+      "solution": "Five cups: 5 × 250 = 1250 ml, beating the bottle's 1000. Four cups would tie the bottle exactly — the fifth one settles the contest.",
+      "checkExpr": "250*5",
+      "translations": {
+        "hi": {
+          "stem": "किसमें अधिक समाता है — उत्तर वही मात्रा मिली में: 1 लीटर की बोतल, या 250-250 मिली के पाँच कप मिलाकर?",
+          "choices": [
+            "1250",
+            "1500",
+            "250",
+            "1000"
+          ],
+          "solution": "पाँच कप: 5 × 250 = 1250 मिली, बोतल के 1000 से अधिक। चार कप बोतल की ठीक बराबरी करते — पाँचवाँ ही फ़ैसला करता है।"
+        },
+        "mr": {
+          "stem": "कशात जास्त मावते — उत्तर तीच मात्रा मिलीमध्ये: 1 लिटरची बाटली, की 250-250 मिलीचे पाच कप मिळून?",
+          "choices": [
+            "1250",
+            "1500",
+            "250",
+            "1000"
+          ],
+          "solution": "पाच कप: 5 × 250 = 1250 मिली, बाटलीच्या 1000 हून जास्त. चार कपांनी बाटलीशी नेमकी बरोबरी झाली असती — पाचवाच निकाल लावतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A water cooler of 15 litres serves glasses of 250 ml. After 40 glasses have been filled, how many millilitres are left in the cooler?",
+      "choices": [
+        "1000",
+        "10000",
+        "14750",
+        "5000"
+      ],
+      "answerIndex": 3,
+      "solution": "Served: 40 × 250 = 10000 ml. Left: 15000 − 10000 = 5000 ml — five litres. The 10000 option is the water that walked away in glasses.",
+      "checkExpr": "15000-250*40",
+      "translations": {
+        "hi": {
+          "stem": "15 लीटर के वाटर-कूलर से 250-250 मिली के गिलास भरे जाते हैं। 40 गिलास भरने के बाद कूलर में कितने मिलीलीटर बचे?",
+          "choices": [
+            "1000",
+            "10000",
+            "14750",
+            "5000"
+          ],
+          "solution": "परोसा: 40 × 250 = 10000 मिली। बचा: 15000 − 10000 = 5000 मिली — पाँच लीटर। 10000 वाला विकल्प वह पानी है जो गिलासों में चला गया।"
+        },
+        "mr": {
+          "stem": "15 लिटरच्या वॉटर-कूलरमधून 250-250 मिलीचे ग्लास भरले जातात. 40 ग्लास भरल्यावर कूलरमध्ये किती मिलिलिटर उरले?",
+          "choices": [
+            "1000",
+            "10000",
+            "14750",
+            "5000"
+          ],
+          "solution": "दिले: 40 × 250 = 10000 मिली. उरले: 15000 − 10000 = 5000 मिली — पाच लिटर. 10000 हा पर्याय म्हणजे ग्लासांतून निघून गेलेले पाणी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "You have only a 5 litre jug and a 3 litre jug, both unmarked, and a tap. Fill the 5, pour into the 3 till it is full — how many litres are now IN the 5 litre jug?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Pouring stops when the 3 litre jug is full, so exactly 3 litres left the big jug: 5 − 3 = 2 litres remain. This is the first move of every classic jug puzzle — measuring without markings by letting the jugs measure each other.",
+      "checkExpr": "5-3",
+      "translations": {
+        "hi": {
+          "stem": "आपके पास केवल 5 लीटर और 3 लीटर के दो बिना निशान वाले जग और एक नल है। 5 वाला भरें, फिर 3 वाले में तब तक उड़ेलें जब तक वह भर न जाए — अब 5 लीटर वाले जग में कितने लीटर हैं?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "5"
+          ],
+          "solution": "उड़ेलना तभी रुकता है जब 3 लीटर वाला भर जाए, यानी बड़े जग से ठीक 3 लीटर निकले: 5 − 3 = 2 लीटर बचे। हर मशहूर जग-पहेली की पहली चाल यही है — बिना निशान के नाप, जगों से एक-दूसरे को नपवाकर।"
+        },
+        "mr": {
+          "stem": "तुमच्याकडे फक्त 5 लिटर आणि 3 लिटरचे खुणा नसलेले दोन जग आणि एक नळ आहे. 5 वाला भरा, मग 3 वाल्यात तो भरेपर्यंत ओता — आता 5 लिटरच्या जगमध्ये किती लिटर आहे?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "5"
+          ],
+          "solution": "3 लिटरचा भरला की ओतणे थांबते, म्हणजे मोठ्या जगमधून नेमके 3 लिटर गेले: 5 − 3 = 2 लिटर उरले. प्रत्येक प्रसिद्ध जग-कोड्याची पहिली खेळी हीच — खुणांशिवाय माप, जगांकडूनच एकमेकांना मोजून घेऊन."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 1 litre bottle of squash says: mix 1 part squash with 4 parts water. Making ONE glass of 200 ml of the drink needs how many ml of squash?",
+      "choices": [
+        "40",
+        "200",
+        "50",
+        "160"
+      ],
+      "answerIndex": 0,
+      "solution": "One part squash plus four parts water makes 5 parts in all, so each part of a 200 ml glass is 200 ÷ 5 = 40 ml — that is the squash; the other 160 ml is water. Choosing 50 divides by four, forgetting the squash is itself one of the parts.",
+      "checkExpr": "200/5",
+      "translations": {
+        "hi": {
+          "stem": "1 लीटर स्क्वैश की बोतल पर लिखा है: 1 भाग स्क्वैश में 4 भाग पानी मिलाएँ। 200 मिली का एक गिलास पेय बनाने में कितने मिली स्क्वैश लगेगा?",
+          "choices": [
+            "40",
+            "200",
+            "50",
+            "160"
+          ],
+          "solution": "1 भाग स्क्वैश और 4 भाग पानी मिलकर कुल 5 भाग हुए, तो 200 मिली गिलास का हर भाग 200 ÷ 5 = 40 मिली — यही स्क्वैश है; बाक़ी 160 मिली पानी। 50 चुनना चार से भाग देना है — यह भूलकर कि स्क्वैश ख़ुद भी एक भाग है।"
+        },
+        "mr": {
+          "stem": "1 लिटर स्क्वॅशच्या बाटलीवर लिहिले आहे: 1 भाग स्क्वॅशमध्ये 4 भाग पाणी मिसळा. 200 मिलीचा एक ग्लास पेय करण्यासाठी किती मिली स्क्वॅश लागेल?",
+          "choices": [
+            "40",
+            "200",
+            "50",
+            "160"
+          ],
+          "solution": "1 भाग स्क्वॅश आणि 4 भाग पाणी मिळून एकूण 5 भाग, म्हणून 200 मिली ग्लासाचा प्रत्येक भाग 200 ÷ 5 = 40 मिली — तोच स्क्वॅश; उरलेले 160 मिली पाणी. 50 निवडणे म्हणजे चाराने भागणे — स्क्वॅश स्वतःही एक भाग आहे हे विसरून."
+        }
+      }
+    }
+  ]
+}
