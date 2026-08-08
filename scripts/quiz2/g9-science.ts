@@ -3772,4 +3772,348 @@ export const G9_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Improvement in Food Resources (feeding a growing land)     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-9-improvement-food-resources",
+    subject: "SCIENCE",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 13 — Improvement in Food Resources",
+      hi: "अध्याय 13 — खाद्य संसाधनों में सुधार",
+      mr: "प्रकरण 13 — अन्न संसाधनांत सुधारणा",
+    },
+    name: {
+      en: "Improvement in Food Resources",
+      hi: "खाद्य संसाधनों में सुधार",
+      mr: "अन्न संसाधनांत सुधारणा",
+    },
+    summary: {
+      en: "Growing more food without new land: better crop varieties bred for yield and resistance, soil fed by living manure or quick fertiliser, fields guarded from weeds and pests, and animals reared for milk, eggs, fish and honey — each a lever on the same harvest.",
+      hi: "नई ज़मीन बिना अधिक अन्न उगाना: उपज और प्रतिरोध को पाली बेहतर फ़सल-किस्में, जीवित खाद या तेज़ उर्वरक से पोषित मिट्टी, खरपतवार-कीटों से रखवाए खेत, और दूध-अंडे-मछली-शहद को पाले पशु — हर एक उसी फ़सल पर एक उत्तोलक।",
+      mr: "नवी जमीन न वापरता अधिक अन्न पिकवणे: उत्पादन आणि प्रतिकाराला जोपासलेल्या उत्तम पीक-जाती, जिवंत खत वा जलद खताने पोसलेली माती, तण-किडींपासून राखलेली शेते, आणि दूध-अंडी-मासे-मध यांना पाळलेले प्राणी — प्रत्येक त्याच पिकावर एक तरफा.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "variety-improvement",
+        name: {
+          en: "Crop variety improvement",
+          hi: "फ़सल-किस्म सुधार",
+          mr: "पीक-जाती सुधारणा",
+        },
+        kind: "method",
+        prompt: {
+          en: "To raise more grain from the same field, breeders cross two parent plants to combine yield, disease-resistance and early ripening into one new seed. What is this improvement of the seed itself called?",
+          hi: "उसी खेत से अधिक अन्न उठाने को प्रजनक दो जनक पौधों को संकरित कर उपज, रोग-प्रतिरोध और जल्दी पकना एक नए बीज में जोड़ते। बीज के इस सुधार को क्या कहते?",
+          mr: "त्याच शेतातून अधिक धान्य काढायला प्रजनक दोन मातृ रोपे संकरित करून उत्पादन, रोग-प्रतिकार आणि लवकर पिकणे एका नव्या बियात जोडतात. बियाच्या या सुधारणेला काय म्हणतात?",
+        },
+        statement: {
+          en: "Crop variety improvement breeds better seeds — by hybridisation or selection — to raise yield and add traits like disease-resistance, early maturing and tolerance of drought or salt.",
+          hi: "फ़सल-किस्म सुधार बेहतर बीज पालता — संकरण या चयन से — उपज बढ़ाने और रोग-प्रतिरोध, जल्दी पकना, सूखा या लवण सहना जैसे गुण जोड़ने को।",
+          mr: "पीक-जाती सुधारणा उत्तम बियाणे जोपासते — संकरण किंवा निवडीने — उत्पादन वाढवायला आणि रोग-प्रतिकार, लवकर पिकणे, दुष्काळ वा क्षार सहन असे गुण जोडायला.",
+        },
+        detail: {
+          en: "It powered the Green Revolution, when dwarf high-yielding wheat and rice multiplied India's grain harvest within a few years.",
+          hi: "इसने हरित क्रांति को शक्ति दी, जब बौने अधिक-उपज गेहूँ-चावल ने कुछ वर्षों में भारत की अन्न-फ़सल कई गुना की।",
+          mr: "याने हरित क्रांतीला शक्ती दिली, जेव्हा बुटक्या अधिक-उत्पादन गहू-तांदळाने काही वर्षांत भारताचे धान्य-पीक अनेक पट केले.",
+        },
+        extra: {
+          en: "A dwarf variety puts less into a tall stalk and more into grain, and stands up to wind and rain that would flatten a taller crop.",
+          hi: "बौनी किस्म ऊँचे डंठल में कम और अन्न में अधिक लगाती, और हवा-बारिश में खड़ी रहती जो ऊँची फ़सल को गिरा देती।",
+          mr: "बुटकी जात उंच खोडात कमी आणि धान्यात अधिक घालते, आणि वारा-पावसात उभी राहते जे उंच पिकाला पाडते.",
+        },
+        pair: {
+          left: {
+            en: "Breeding a better seed",
+            hi: "बेहतर बीज पालना",
+            mr: "उत्तम बी जोपासणे",
+          },
+          right: {
+            en: "crop variety improvement",
+            hi: "फ़सल-किस्म सुधार",
+            mr: "पीक-जाती सुधारणा",
+          },
+        },
+      },
+      {
+        id: "manure-fertiliser",
+        name: {
+          en: "Manure and fertiliser",
+          hi: "खाद और उर्वरक",
+          mr: "खत आणि रासायनिक खत",
+        },
+        kind: "method",
+        prompt: {
+          en: "Rotted cow dung fed to a field slowly builds its soil, while a factory-made bag of nitrogen salts feeds the crop fast. Which pair of nutrient sources works this way — one living and slow, one chemical and quick?",
+          hi: "गली गोबर-खाद खेत को दी उसकी मिट्टी धीरे बनाती, जबकि कारख़ाने का नाइट्रोजन-लवण का थैला फ़सल को तेज़ पोषता। कौन-सी पोषक-जोड़ी ऐसे काम करती — एक जीवित-धीमी, एक रासायनिक-तेज़?",
+          mr: "कुजलेले शेण-खत शेताला दिले त्याची माती हळू घडवते, तर कारखान्याचा नायट्रोजन-क्षारांचा पिशवी पिकाला जलद पोसतो. कोणती पोषक-जोडी अशी काम करते — एक जिवंत-मंद, एक रासायनिक-जलद?",
+        },
+        statement: {
+          en: "Manure is decomposed plant and animal waste that slowly enriches the soil with humus, while fertiliser is a factory-made chemical that quickly supplies nutrients but adds no humus.",
+          hi: "खाद विघटित पादप-पशु अपशिष्ट है जो मिट्टी को ह्यूमस से धीरे समृद्ध करती, जबकि उर्वरक कारख़ाने का रसायन है जो पोषक तेज़ देता पर ह्यूमस नहीं जोड़ता।",
+          mr: "खत कुजलेला वनस्पती-प्राणी कचरा आहे जो मातीला ह्युमसने हळू समृद्ध करते, तर रासायनिक खत कारखान्याचे रसायन आहे जे पोषक जलद देते पण ह्युमस जोडत नाही.",
+        },
+        detail: {
+          en: "Humus from manure holds water and air in the soil and feeds its living creatures — a benefit no bag of pure chemical can give.",
+          hi: "खाद का ह्यूमस मिट्टी में पानी-हवा थामता और उसके जीवों को पालता — लाभ जो शुद्ध रसायन का थैला नहीं दे सकता।",
+          mr: "खताचा ह्युमस मातीत पाणी-हवा धरतो आणि तिच्या जीवांना पोसतो — लाभ जो शुद्ध रसायनाचा पिशवी देऊ शकत नाही.",
+        },
+        extra: {
+          en: "Lean too hard on chemical fertiliser and the soil slowly loses its structure and its microbes — which is why the two are best used together.",
+          hi: "रासायनिक उर्वरक पर बहुत झुको तो मिट्टी धीरे अपनी संरचना और सूक्ष्मजीव खोती — इसी से दोनों साथ प्रयोग सर्वोत्तम।",
+          mr: "रासायनिक खतावर फार झुका तर माती हळू आपली रचना आणि सूक्ष्मजीव गमावते — म्हणूनच दोन्ही एकत्र वापरणे उत्तम.",
+        },
+        pair: {
+          left: {
+            en: "Rotted waste that builds humus",
+            hi: "ह्यूमस बनाता गला अपशिष्ट",
+            mr: "ह्युमस घडवणारा कुजलेला कचरा",
+          },
+          right: {
+            en: "manure",
+            hi: "खाद",
+            mr: "खत",
+          },
+        },
+      },
+      {
+        id: "irrigation",
+        name: { en: "Field irrigation", hi: "खेत की सिंचाई", mr: "शेताचे जलसिंचन" },
+        kind: "method",
+        prompt: {
+          en: "A crop cannot wait on an uncertain monsoon, so water is brought to the field from wells, canals, tanks and rivers. What is this supplying of water to crops called?",
+          hi: "फ़सल अनिश्चित मानसून पर नहीं ठहर सकती, अतः खेत को कुओं, नहरों, तालाबों और नदियों से पानी लाया जाता। फ़सलों को यह पानी देना क्या कहलाता?",
+          mr: "पीक अनिश्चित मान्सूनवर थांबू शकत नाही, म्हणून शेताला विहिरी, कालवे, तळी आणि नद्यांतून पाणी आणले जाते. पिकांना हे पाणी देणे काय म्हणतात?",
+        },
+        statement: {
+          en: "Irrigation is the supplying of water to crops from wells, canals, tanks and rivers, freeing the harvest from its dependence on an uncertain rainfall.",
+          hi: "सिंचाई फ़सलों को कुओं, नहरों, तालाबों और नदियों से पानी देना है, फ़सल को अनिश्चित वर्षा की निर्भरता से मुक्त करती।",
+          mr: "जलसिंचन पिकांना विहिरी, कालवे, तळी आणि नद्यांतून पाणी देणे आहे, पिकाला अनिश्चित पावसाच्या अवलंबनातून मुक्त करते.",
+        },
+        detail: {
+          en: "Drip and sprinkler systems deliver water straight to the roots, wasting far less than flooding a whole field — precious where water is scarce.",
+          hi: "टपक और फुहार प्रणालियाँ पानी सीधे जड़ों तक पहुँचातीं, पूरे खेत भरने से कहीं कम बर्बाद करतीं — जहाँ पानी दुर्लभ वहाँ बहुमूल्य।",
+          mr: "ठिबक आणि तुषार प्रणाली पाणी थेट मुळांपर्यंत पोहोचवतात, संपूर्ण शेत भरण्याहून कितीतरी कमी वाया घालवतात — जिथे पाणी दुर्मिळ तिथे मौल्यवान.",
+        },
+        extra: {
+          en: "Well-timed watering matters as much as its amount — too much drowns roots of air, too little starves the swelling grain.",
+          hi: "सही समय पर पानी उसकी मात्रा जितना अहम — बहुत अधिक जड़ों को हवा से डुबोता, बहुत कम फूलते अन्न को भूखा रखता।",
+          mr: "योग्य वेळी पाणी त्याच्या प्रमाणाइतकेच महत्त्वाचे — फार अधिक मुळांना हवेपासून बुडवते, फार कमी फुगत्या धान्याला उपाशी ठेवते.",
+        },
+        pair: {
+          left: {
+            en: "Bringing water to the field",
+            hi: "खेत को पानी लाना",
+            mr: "शेताला पाणी आणणे",
+          },
+          right: {
+            en: "irrigation",
+            hi: "सिंचाई",
+            mr: "जलसिंचन",
+          },
+        },
+      },
+      {
+        id: "cropping-patterns",
+        name: {
+          en: "Cropping patterns",
+          hi: "फ़सल-प्रतिरूप",
+          mr: "पीक-पद्धती",
+        },
+        kind: "method",
+        prompt: {
+          en: "A farmer may grow two crops in the same field at once in set rows, or grow different crops one after another across seasons. What is the general name for these planned ways of arranging crops?",
+          hi: "किसान उसी खेत में एक साथ नियत पंक्तियों में दो फ़सलें उगा सकता, या ऋतुओं में एक के बाद एक भिन्न फ़सलें। फ़सलों को व्यवस्थित करने के इन नियोजित तरीक़ों का सामान्य नाम क्या?",
+          mr: "शेतकरी त्याच शेतात एकाच वेळी ठराविक ओळींत दोन पिके घेऊ शकतो, किंवा ऋतूंत एकामागून एक वेगळी पिके. पिके मांडण्याच्या या नियोजित मार्गांचे सामान्य नाव काय?",
+        },
+        statement: {
+          en: "Cropping patterns are planned ways of growing crops — intercropping raises two crops together in set rows, while crop rotation grows different crops in the same field across successive seasons.",
+          hi: "फ़सल-प्रतिरूप फ़सल उगाने के नियोजित तरीक़े हैं — अंतरफ़सल नियत पंक्तियों में दो फ़सलें साथ उठाता, जबकि फ़सल-चक्र क्रमिक ऋतुओं में उसी खेत में भिन्न फ़सलें उगाता।",
+          mr: "पीक-पद्धती पिके घेण्याचे नियोजित मार्ग आहेत — आंतरपीक ठराविक ओळींत दोन पिके एकत्र काढते, तर पीक-फेरपालट क्रमवार ऋतूंत त्याच शेतात वेगळी पिके घेते.",
+        },
+        detail: {
+          en: "Rotating a grain with a pulse restores the soil, because the pulse's roots host bacteria that fix nitrogen from the air back into the ground.",
+          hi: "अनाज को दाल से बदलना मिट्टी लौटाता, क्योंकि दाल की जड़ें ऐसे जीवाणु बसातीं जो हवा से नाइट्रोजन ज़मीन में स्थिर करते।",
+          mr: "धान्याला डाळीने बदलणे माती परत आणते, कारण डाळीच्या मुळांत असे जीवाणू वसतात जे हवेतून नायट्रोजन जमिनीत स्थिर करतात.",
+        },
+        extra: {
+          en: "Growing two crops of differing needs together, like a deep-rooted with a shallow-rooted plant, lets one field feed both without their competing.",
+          hi: "भिन्न ज़रूरतों की दो फ़सलें साथ उगाना, जैसे गहरी-जड़ को उथली-जड़ के साथ, एक खेत को दोनों को बिना होड़ पालने देता।",
+          mr: "वेगळ्या गरजांची दोन पिके एकत्र घेणे, जसे खोल-मुळाला उथळ-मुळासोबत, एका शेताला दोन्हींना स्पर्धेविना पोसू देते.",
+        },
+        pair: {
+          left: {
+            en: "Different crops in the same field across seasons",
+            hi: "ऋतुओं में उसी खेत में भिन्न फ़सलें",
+            mr: "ऋतूंत त्याच शेतात वेगळी पिके",
+          },
+          right: {
+            en: "crop rotation",
+            hi: "फ़सल-चक्र",
+            mr: "पीक-फेरपालट",
+          },
+        },
+      },
+      {
+        id: "crop-protection",
+        name: {
+          en: "Crop protection and storage",
+          hi: "फ़सल-रक्षण और भंडारण",
+          mr: "पीक-रक्षण आणि साठवण",
+        },
+        kind: "method",
+        prompt: {
+          en: "Between sowing and the plate, a harvest is stalked by weeds that steal nutrients, insects that chew it, and — after cutting — moisture and rats in the store. What effort fights these losses?",
+          hi: "बोने से थाली तक फ़सल का पीछा करते पोषक चुराते खरपतवार, चबाते कीट, और — कटाई के बाद — भंडार में नमी और चूहे। इन हानियों से क्या प्रयास लड़ता?",
+          mr: "पेरणीपासून ताटापर्यंत पिकाचा पाठलाग करतात पोषक चोरणारे तण, कुरतडणाऱ्या किडी, आणि — कापणीनंतर — साठ्यात ओलावा आणि उंदीर. या हानींशी कोणता प्रयत्न लढतो?",
+        },
+        statement: {
+          en: "Crop protection guards the harvest from weeds, insect pests and diseases in the field, and from moisture, mould and rodents in storage — losses that can rival the whole gain in yield.",
+          hi: "फ़सल-रक्षण फ़सल को खेत में खरपतवार, कीट और रोगों से, और भंडार में नमी, फफूँद और कृंतकों से बचाता — हानियाँ जो पूरी उपज-वृद्धि की बराबरी कर सकतीं।",
+          mr: "पीक-रक्षण पिकाला शेतात तण, किडी आणि रोगांपासून, आणि साठ्यात ओलावा, बुरशी आणि उंदरांपासून वाचवते — हानी ज्या संपूर्ण उत्पादन-वाढीशी बरोबरी करू शकतात.",
+        },
+        detail: {
+          en: "Grain must be dried before storage — even a little moisture invites mould and insects to multiply through a whole sealed godown.",
+          hi: "अन्न भंडारण से पहले सुखाना चाहिए — थोड़ी नमी भी फफूँद-कीटों को पूरे बंद गोदाम में पनपने बुलाती।",
+          mr: "धान्य साठवण्याआधी वाळवावे — थोडा ओलावाही बुरशी-किडींना संपूर्ण बंद गोदामात वाढायला बोलावतो.",
+        },
+        extra: {
+          en: "The gentlest weapons are preventive — clean seed, timely sowing and crop rotation break a pest's life cycle before any spray is needed.",
+          hi: "सबसे कोमल हथियार निवारक — स्वच्छ बीज, समय पर बुवाई और फ़सल-चक्र किसी छिड़काव से पहले कीट का जीवन-चक्र तोड़ते।",
+          mr: "सर्वांत सौम्य शस्त्रे प्रतिबंधक — स्वच्छ बी, वेळेवर पेरणी आणि पीक-फेरपालट कोणत्याही फवारणीआधी किडीचे जीवनचक्र मोडतात.",
+        },
+        pair: {
+          left: {
+            en: "Guarding grain from pests and moisture",
+            hi: "अन्न को कीट-नमी से बचाना",
+            mr: "धान्याला किडी-ओलाव्यापासून वाचवणे",
+          },
+          right: {
+            en: "crop protection and storage",
+            hi: "फ़सल-रक्षण और भंडारण",
+            mr: "पीक-रक्षण आणि साठवण",
+          },
+        },
+      },
+      {
+        id: "animal-husbandry",
+        name: {
+          en: "Animal husbandry",
+          hi: "पशुपालन",
+          mr: "पशुपालन",
+        },
+        kind: "method",
+        prompt: {
+          en: "Beyond crops, food comes from reared animals — cattle for milk, hens for eggs and meat, ponds for fish and hives for honey. What is the scientific rearing and management of such animals called?",
+          hi: "फ़सलों से परे, भोजन पाले पशुओं से आता — दूध को मवेशी, अंडे-माँस को मुर्गियाँ, मछली को तालाब और शहद को छत्ते। ऐसे पशुओं का वैज्ञानिक पालन और प्रबंधन क्या कहलाता?",
+          mr: "पिकांपलीकडे, अन्न पाळलेल्या प्राण्यांतून येते — दुधाला गुरे, अंडी-मांसाला कोंबड्या, माशाला तळी आणि मधाला पोळी. अशा प्राण्यांचे वैज्ञानिक पालन आणि व्यवस्थापन काय म्हणतात?",
+        },
+        statement: {
+          en: "Animal husbandry is the scientific rearing and management of livestock — for milk, eggs, meat, fish and honey — including their feeding, breeding and protection from disease.",
+          hi: "पशुपालन पशुधन का वैज्ञानिक पालन और प्रबंधन है — दूध, अंडे, माँस, मछली और शहद को — उनके आहार, प्रजनन और रोग-रक्षण सहित।",
+          mr: "पशुपालन पशुधनाचे वैज्ञानिक पालन आणि व्यवस्थापन आहे — दूध, अंडी, मांस, मासे आणि मधासाठी — त्यांचे खाद्य, प्रजनन आणि रोग-रक्षणासह.",
+        },
+        detail: {
+          en: "Cross-breeding a hardy local cow with a high-yielding foreign one aims for offspring with both the milk and the resistance to disease.",
+          hi: "कठोर देशी गाय को अधिक-उपज विदेशी से संकरित करना ऐसी संतान चाहता जिसमें दूध और रोग-प्रतिरोध दोनों।",
+          mr: "कणखर देशी गायीला अधिक-उत्पादन परदेशी गायीशी संकरित करणे अशी संतती चाहते जिच्यात दूध आणि रोग-प्रतिकार दोन्ही.",
+        },
+        extra: {
+          en: "Fish come two ways: capture fishery nets them from the wild sea and rivers, while culture fishery farms them in managed ponds.",
+          hi: "मछली दो तरह आती: पकड़-मत्स्यन उन्हें जंगली सागर-नदियों से जाल में लेता, जबकि संवर्धन-मत्स्यन प्रबंधित तालाबों में पालता।",
+          mr: "मासे दोन प्रकारे येतात: पकड-मत्स्यन त्यांना जंगली समुद्र-नद्यांतून जाळ्यात घेते, तर संवर्धन-मत्स्यन व्यवस्थापित तळ्यांत पाळते.",
+        },
+        pair: {
+          left: {
+            en: "Scientific rearing of livestock",
+            hi: "पशुधन का वैज्ञानिक पालन",
+            mr: "पशुधनाचे वैज्ञानिक पालन",
+          },
+          right: {
+            en: "animal husbandry",
+            hi: "पशुपालन",
+            mr: "पशुपालन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Two neighbouring farmers grow the same crop. One pours only bagged chemical fertiliser; the first years his yield leaps ahead. The other mixes in cattle manure and compost; his yield rises more slowly but his soil stays dark, crumbly and full of worms while the first farmer's turns pale and hard. What is the trade-off between the two?",
+          hi: "दो पड़ोसी किसान वही फ़सल उगाते। एक केवल थैले का रासायनिक उर्वरक डालता; पहले वर्षों उसकी उपज आगे छलाँगती। दूसरा गोबर-खाद और कम्पोस्ट मिलाता; उसकी उपज धीरे चढ़ती पर मिट्टी गहरी, भुरभुरी और केंचुओं से भरी रहती जबकि पहले की पीली-कठोर हो जाती। दोनों में क्या अदला-बदली?",
+          mr: "दोन शेजारी शेतकरी तेच पीक घेतात. एक फक्त पिशवीचे रासायनिक खत ओततो; पहिल्या वर्षी त्याचे उत्पादन पुढे झेपावते. दुसरा शेण-खत आणि कंपोस्ट मिसळतो; त्याचे उत्पादन हळू चढते पण माती गडद, भुसभुशीत आणि गांडुळांनी भरलेली राहते तर पहिल्याची फिकट-कठीण होते. दोघांत काय देवाणघेवाण?",
+        },
+        choices: [
+          {
+            en: "Chemical fertiliser feeds the crop fast but adds no humus, so soil structure and its life slowly decline; manure feeds more slowly but builds humus that holds water and air and sustains soil organisms — quick yield versus lasting soil health",
+            hi: "रासायनिक उर्वरक फ़सल तेज़ पोषता पर ह्यूमस नहीं जोड़ता, अतः मिट्टी की संरचना और जीवन धीरे घटते; खाद धीरे पोषती पर ह्यूमस बनाती जो पानी-हवा थामता और मिट्टी के जीव पालता — तेज़ उपज बनाम टिकाऊ मिट्टी-स्वास्थ्य",
+            mr: "रासायनिक खत पिकाला जलद पोसते पण ह्युमस जोडत नाही, म्हणून मातीची रचना आणि जीवन हळू घटतात; खत हळू पोसते पण ह्युमस घडवते जे पाणी-हवा धरते आणि मातीचे जीव पोसते — जलद उत्पादन विरुद्ध टिकाऊ माती-आरोग्य",
+          },
+          {
+            en: "Manure is simply better in every way and chemical fertiliser has no use at all",
+            hi: "खाद बस हर तरह बेहतर और रासायनिक उर्वरक का कोई उपयोग नहीं",
+            mr: "खत फक्त प्रत्येक बाबतीत उत्तम आणि रासायनिक खताचा काही उपयोग नाही",
+          },
+          {
+            en: "Chemical fertiliser improves soil structure while manure harms it",
+            hi: "रासायनिक उर्वरक मिट्टी की संरचना सुधारता जबकि खाद हानि करती",
+            mr: "रासायनिक खत मातीची रचना सुधारते तर खत तिला हानी करते",
+          },
+          {
+            en: "There is no real difference; the soil colour is just a coincidence",
+            hi: "कोई असली अंतर नहीं; मिट्टी का रंग बस संयोग",
+            mr: "काही खरा फरक नाही; मातीचा रंग फक्त योगायोग",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two farmers are buying two different things. A bag of chemical fertiliser is a concentrated dose of specific nutrients — nitrogen, phosphorus, potassium — in a form the plant can drink up at once. That is why the first farmer's yield jumps early: the crop is richly and instantly fed. But the fertiliser adds nothing else — no humus, the dark spongy remains of decayed matter. Manure and compost, being rotted plant and animal waste, are weaker as a quick nutrient hit but rich in exactly that humus. Humus is what keeps soil dark, crumbly and open: it holds water and air between its particles, feeds the earthworms and microbes that keep the soil alive, and slowly releases nutrients over seasons. Lean only on chemicals and, with no humus renewed, the soil's structure collapses over years — it grows pale, hard and lifeless, and eventually even heavy fertiliser cannot coax good yields from dead ground. So the trade-off is speed against sustainability: fertiliser wins the first harvests, manure keeps the land able to give harvests for decades. The wise farmer uses both — fertiliser for the crop's immediate hunger, manure to keep the soil itself alive.",
+          hi: "दोनों किसान दो अलग चीज़ें खरीद रहे। रासायनिक उर्वरक का थैला विशिष्ट पोषकों की सांद्र खुराक — नाइट्रोजन, फ़ॉस्फ़ोरस, पोटैशियम — ऐसे रूप में जिसे पौधा तुरंत पी ले। इसी से पहले किसान की उपज जल्दी उछलती: फ़सल भरपूर और तत्काल पोषित। पर उर्वरक और कुछ नहीं जोड़ता — कोई ह्यूमस नहीं, सड़े पदार्थ का गहरा स्पंजी अवशेष। खाद-कम्पोस्ट, गले पादप-पशु अपशिष्ट होने से, तेज़ पोषण में कमज़ोर पर ठीक उस ह्यूमस में समृद्ध। ह्यूमस ही मिट्टी को गहरी, भुरभुरी और खुली रखता: अपने कणों के बीच पानी-हवा थामता, केंचुओं-सूक्ष्मजीवों को पालता जो मिट्टी जीवित रखते, और ऋतुओं में धीरे पोषक छोड़ता। केवल रसायन पर झुको तो, ह्यूमस न नवीकृत होने से, मिट्टी की संरचना वर्षों में ढहती — पीली, कठोर, निर्जीव होती, और अंततः भारी उर्वरक भी मृत ज़मीन से अच्छी उपज नहीं मना पाता। अतः अदला-बदली गति बनाम स्थायित्व: उर्वरक पहली फ़सलें जीतता, खाद ज़मीन को दशकों फ़सल देने योग्य रखती। बुद्धिमान किसान दोनों वापरता — फ़सल की तात्कालिक भूख को उर्वरक, मिट्टी को ही जीवित रखने को खाद।",
+          mr: "दोन्ही शेतकरी दोन वेगळ्या गोष्टी विकत घेताहेत. रासायनिक खताचा पिशवी विशिष्ट पोषकांचा संहत डोस — नायट्रोजन, फॉस्फरस, पोटॅशियम — अशा रूपात जो रोप लगेच पिऊ शकते. म्हणून पहिल्या शेतकऱ्याचे उत्पादन लवकर उसळते: पीक भरपूर आणि तत्काळ पोसलेले. पण खत आणखी काही जोडत नाही — ह्युमस नाही, कुजलेल्या पदार्थाचे गडद स्पंजी अवशेष. खत-कंपोस्ट, कुजलेला वनस्पती-प्राणी कचरा असल्याने, जलद पोषणात कमजोर पण नेमके त्या ह्युमसमध्ये समृद्ध. ह्युमसच मातीला गडद, भुसभुशीत आणि मोकळी ठेवते: आपल्या कणांमध्ये पाणी-हवा धरते, गांडुळ-सूक्ष्मजीवांना पोसते जे माती जिवंत ठेवतात, आणि ऋतूंत हळू पोषक सोडते. फक्त रसायनांवर झुका तर, ह्युमस नूतनीकरण न झाल्याने, मातीची रचना वर्षांत कोसळते — फिकट, कठीण, निर्जीव होते, आणि अखेर जड खतही मृत जमिनीतून चांगले उत्पादन काढू शकत नाही. म्हणून देवाणघेवाण वेग विरुद्ध शाश्वती: खत पहिली पिके जिंकते, शेण-खत जमिनीला दशके पिके देण्याजोगे ठेवते. शहाणा शेतकरी दोन्ही वापरतो — पिकाच्या तात्काळ भुकेला खत, मातीला जिवंत ठेवायला शेण-खत.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A farmer who grows wheat in the same field every year finds his soil growing poorer in nitrogen and his yields falling, even with fertiliser. An old farmer advises: 'Every third season, grow a pulse like gram or moong instead, and your soil will recover on its own.' What is the science behind this advice?",
+          hi: "जो किसान हर वर्ष उसी खेत में गेहूँ उगाता उसकी मिट्टी नाइट्रोजन में दरिद्र और उपज गिरती पाता, उर्वरक के बावजूद। एक बूढ़ा किसान सलाह देता: 'हर तीसरी ऋतु, बदले में चना या मूँग जैसी दाल उगाओ, और तुम्हारी मिट्टी स्वयं सुधरेगी।' इस सलाह के पीछे विज्ञान क्या?",
+          mr: "जो शेतकरी दरवर्षी त्याच शेतात गहू घेतो त्याची माती नायट्रोजनमध्ये दरिद्री आणि उत्पादन घटते, खत असूनही. एक वृद्ध शेतकरी सल्ला देतो: 'प्रत्येक तिसऱ्या ऋतूत, त्याऐवजी हरभरा वा मूग सारखी डाळ घ्या, आणि तुझी माती स्वतःहून सुधारेल.' या सल्ल्यामागे विज्ञान काय?",
+        },
+        choices: [
+          {
+            en: "Pulses host nitrogen-fixing bacteria (Rhizobium) in their root nodules, which take nitrogen from the air and lock it into the soil as compounds plants can use — so a pulse crop replenishes the very nitrogen that wheat keeps draining away",
+            hi: "दालें अपनी जड़-ग्रंथियों में नाइट्रोजन-स्थिरक जीवाणु (राइज़ोबियम) बसातीं, जो हवा से नाइट्रोजन लेकर मिट्टी में ऐसे यौगिकों में बाँधते जिन्हें पौधे वापर सकें — अतः दाल-फ़सल वही नाइट्रोजन भरती जिसे गेहूँ खींचता रहता",
+            mr: "डाळी आपल्या मूळ-गाठींत नायट्रोजन-स्थिरक जीवाणू (रायझोबियम) वसवतात, जे हवेतून नायट्रोजन घेऊन मातीत अशा संयुगांत बांधतात जी रोपे वापरू शकतात — म्हणून डाळ-पीक तोच नायट्रोजन भरते जो गहू खेचत राहतो",
+          },
+          {
+            en: "Pulses have deeper roots that simply break up the hard soil",
+            hi: "दालों की गहरी जड़ें बस कठोर मिट्टी तोड़तीं",
+            mr: "डाळींची खोल मुळे फक्त कठीण माती फोडतात",
+          },
+          {
+            en: "Growing any second crop rests the soil equally well, pulse or not",
+            hi: "कोई दूसरी फ़सल उगाना मिट्टी को बराबर विश्राम देता, दाल हो या न हो",
+            mr: "कोणतेही दुसरे पीक घेणे मातीला समान विश्रांती देते, डाळ असो वा नसो",
+          },
+          {
+            en: "Pulses take nothing from the soil at all, so it recovers by being left alone",
+            hi: "दालें मिट्टी से कुछ नहीं लेतीं, अतः वह अकेले छोड़े जाने से सुधरती",
+            mr: "डाळी मातीतून काही घेत नाहीत, म्हणून ती एकटे सोडल्याने सुधारते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The advice works because of a quiet partnership living in the roots of pulses. Wheat, like most crops, is a heavy nitrogen feeder: it pulls nitrogen compounds out of the soil to build its proteins and, grown season after season, steadily strips the soil of them — and while fertiliser can top up the nitrogen, it does nothing to renew the loss cheaply. Pulses (legumes such as gram, moong, peas and beans) do something no cereal can. On their roots grow small swellings called nodules, and inside these live Rhizobium bacteria in a mutual bargain: the plant shelters and feeds the bacteria, and in return the bacteria perform nitrogen fixation — they take nitrogen gas straight from the air in the soil (which plants themselves cannot use) and convert it into nitrogen compounds the plant, and later the soil, can absorb. So a pulse crop does not just avoid draining the soil's nitrogen; it actively puts nitrogen back, drawing it down from the endless supply in the air. Rotate a nitrogen-hungry cereal with a nitrogen-fixing pulse and the two balance each other: the wheat spends the nitrogen, the pulse replaces it, and the field stays fertile without ever-heavier doses of fertiliser. This is exactly why crop rotation with legumes is one of the oldest and cleverest tools of the farmer — a free nitrogen factory buried in the roots.",
+          hi: "सलाह इसलिए काम करती क्योंकि दालों की जड़ों में एक चुपचाप साझेदारी बसती। गेहूँ, अधिकांश फ़सलों की तरह, भारी नाइट्रोजन-भक्षक: वह अपने प्रोटीन बनाने को मिट्टी से नाइट्रोजन-यौगिक खींचता और, ऋतु-दर-ऋतु उगाया, मिट्टी को उनसे लगातार छीलता — और उर्वरक नाइट्रोजन भर तो सकता पर हानि सस्ते में नहीं लौटाता। दालें (चना, मूँग, मटर, सेम जैसी फलियाँ) वह करतीं जो कोई अनाज नहीं कर सकता। उनकी जड़ों पर ग्रंथियाँ नामक छोटी सूजनें उगतीं, और इनके भीतर राइज़ोबियम जीवाणु आपसी सौदे में बसते: पौधा जीवाणुओं को आश्रय-आहार देता, बदले में जीवाणु नाइट्रोजन-स्थिरीकरण करते — वे मिट्टी की हवा से सीधे नाइट्रोजन-गैस लेते (जिसे पौधे स्वयं वापर नहीं सकते) और उसे ऐसे नाइट्रोजन-यौगिकों में बदलते जिन्हें पौधा, और बाद में मिट्टी, सोख ले। अतः दाल-फ़सल केवल मिट्टी का नाइट्रोजन न खींचने से रुकती नहीं; वह सक्रिय नाइट्रोजन वापस डालती, हवा की अनंत आपूर्ति से खींचकर। नाइट्रोजन-भूखे अनाज को नाइट्रोजन-स्थिरक दाल से बदलो और दोनों एक-दूसरे को संतुलित करते: गेहूँ नाइट्रोजन खर्चता, दाल भरती, और खेत उपजाऊ रहता बिना बढ़ती उर्वरक-खुराक। ठीक इसीलिए फलियों संग फ़सल-चक्र किसान के सबसे पुराने और चतुर औज़ारों में — जड़ों में गड़ी मुफ़्त नाइट्रोजन-फ़ैक्ट्री।",
+          mr: "सल्ला म्हणून काम करतो कारण डाळींच्या मुळांत एक गुपचूप भागीदारी वसते. गहू, बहुतांश पिकांप्रमाणे, जड नायट्रोजन-भक्षक: तो आपली प्रथिने बनवायला मातीतून नायट्रोजन-संयुगे खेचतो आणि, ऋतूमागून ऋतू घेतला, मातीला त्यांपासून सतत सोलतो — आणि खत नायट्रोजन भरू शकते पण हानी स्वस्तात परत आणत नाही. डाळी (हरभरा, मूग, वाटाणा, शेंगा सारख्या शेंगावर्गीय) ते करतात जे कोणतेही धान्य करू शकत नाही. त्यांच्या मुळांवर गाठी नावाच्या लहान सुजा वाढतात, आणि यांच्या आत रायझोबियम जीवाणू परस्पर करारात वसतात: रोप जीवाणूंना आश्रय-अन्न देते, त्याबदल्यात जीवाणू नायट्रोजन-स्थिरीकरण करतात — ते मातीच्या हवेतून थेट नायट्रोजन-वायू घेतात (जो रोपे स्वतः वापरू शकत नाहीत) आणि त्याला अशा नायट्रोजन-संयुगांत बदलतात जी रोप, आणि नंतर माती, शोषू शकते. म्हणून डाळ-पीक फक्त मातीचा नायट्रोजन न खेचण्याने थांबत नाही; ते सक्रियपणे नायट्रोजन परत घालते, हवेच्या अनंत पुरवठ्यातून खेचून. नायट्रोजन-भुकेल्या धान्याला नायट्रोजन-स्थिरक डाळीने बदला आणि दोन्ही एकमेकांना संतुलित करतात: गहू नायट्रोजन खर्चतो, डाळ भरते, आणि शेत सुपीक राहते वाढत्या खत-डोसाविना. नेमके म्हणूनच शेंगावर्गीयांसह पीक-फेरपालट शेतकऱ्याच्या सर्वांत जुन्या आणि हुशार साधनांत — मुळांत पुरलेली फुकट नायट्रोजन-फॅक्टरी.",
+        },
+      },
+    ],
+  },
 ];
