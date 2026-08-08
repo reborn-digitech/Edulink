@@ -710,4 +710,618 @@ export const G9_ECONOMICS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 3 — Poverty as a Challenge                                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "economics-9-poverty-as-a-challenge",
+    subject: "ECONOMICS",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 3 — Poverty as a Challenge",
+      hi: "अध्याय 3 — निर्धनता: एक चुनौती",
+      mr: "प्रकरण 3 — दारिद्र्य: एक आव्हान",
+    },
+    name: {
+      en: "Poverty as a Challenge",
+      hi: "निर्धनता: एक चुनौती",
+      mr: "दारिद्र्य: एक आव्हान",
+    },
+    summary: {
+      en: "Poverty measured and explained: a line drawn below which a person is counted poor, the groups it strikes hardest, the deep causes that keep it turning, and the argument that a rupee line captures too little of what being poor really means.",
+      hi: "निर्धनता नापी और समझाई: एक रेखा जिसके नीचे व्यक्ति निर्धन गिना, वे समूह जिन पर यह सबसे कठोर, गहरे कारण जो इसे घुमाते रखते, और यह तर्क कि रुपये की रेखा निर्धन होने के असली अर्थ का बहुत कम पकड़ती।",
+      mr: "दारिद्र्य मोजलेले आणि समजावलेले: एक रेषा जिच्याखाली व्यक्ती दरिद्री मोजली, ते गट ज्यांवर हे सर्वांत कठोर, खोल कारणे जी ते फिरत ठेवतात, आणि हा युक्तिवाद की रुपयाची रेषा दरिद्री असण्याचा खरा अर्थ फार कमी पकडते.",
+    },
+    position: 3,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "poverty-line",
+        name: {
+          en: "The poverty line",
+          hi: "निर्धनता रेखा",
+          mr: "दारिद्र्यरेषा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "To count how many are poor, a cutoff level of income or consumption is fixed — the minimum needed for food and bare essentials — and anyone below it is counted as poor. What is this cutoff called?",
+          hi: "कितने निर्धन हैं गिनने को, आय या उपभोग का एक कटऑफ़ स्तर तय — भोजन और बुनियादी आवश्यकताओं को न्यूनतम — और इसके नीचे कोई भी निर्धन गिना। इस कटऑफ़ को क्या कहते?",
+          mr: "किती दरिद्री आहेत मोजायला, उत्पन्न वा उपभोगाची एक कटऑफ पातळी ठरवली — अन्न आणि मूलभूत गरजांना किमान — आणि तिच्याखाली कोणीही दरिद्री मोजला. या कटऑफला काय म्हणतात?",
+        },
+        statement: {
+          en: "The poverty line is a cutoff level of income or consumption fixed at the minimum needed for food and basic necessities; anyone living below it is counted as poor.",
+          hi: "निर्धनता रेखा आय या उपभोग का कटऑफ़ स्तर जो भोजन और बुनियादी आवश्यकताओं के न्यूनतम पर तय; इसके नीचे जीता कोई भी निर्धन गिना।",
+          mr: "दारिद्र्यरेषा उत्पन्न वा उपभोगाची कटऑफ पातळी जी अन्न आणि मूलभूत गरजांच्या किमानावर ठरवली; तिच्याखाली जगणारा कोणीही दरिद्री मोजला.",
+        },
+        detail: {
+          en: "It is worked out from a minimum daily calorie requirement plus the cost of clothing, footwear, fuel and a few other basics, converted into a rupee figure.",
+          hi: "यह न्यूनतम दैनिक कैलोरी आवश्यकता जमा कपड़े, जूते, ईंधन और कुछ अन्य बुनियादी वस्तुओं की लागत से निकाली, रुपये के आँकड़े में बदली।",
+          mr: "ती किमान दैनिक कॅलरी गरज अधिक कपडे, पादत्राणे, इंधन आणि काही इतर मूलभूत वस्तूंच्या खर्चातून काढली, रुपयाच्या आकड्यात बदलली.",
+        },
+        extra: {
+          en: "The line is higher in cities than villages, because things like housing and transport cost more in town, so more rupees are needed there for the same basics.",
+          hi: "रेखा गाँवों से शहरों में ऊँची, क्योंकि आवास-परिवहन जैसी चीज़ें नगर में अधिक क़ीमती, अतः वहाँ उन्हीं बुनियादी को अधिक रुपये चाहिए।",
+          mr: "रेषा गावांहून शहरांत उंच, कारण घर-वाहतुकीसारख्या गोष्टी शहरात अधिक महाग, म्हणून तिथे त्याच मूलभूतांना अधिक रुपये हवेत.",
+        },
+        pair: {
+          left: {
+            en: "The income cutoff for counting the poor",
+            hi: "निर्धन गिनने की आय-कटऑफ़",
+            mr: "दरिद्री मोजण्याची उत्पन्न-कटऑफ",
+          },
+          right: {
+            en: "the poverty line",
+            hi: "निर्धनता रेखा",
+            mr: "दारिद्र्यरेषा",
+          },
+        },
+      },
+      {
+        id: "vulnerable-groups",
+        name: {
+          en: "The most vulnerable groups",
+          hi: "सबसे संवेदनशील समूह",
+          mr: "सर्वांत असुरक्षित गट",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Poverty does not fall evenly — it strikes hardest at Scheduled Caste and Scheduled Tribe families, casual labourers and the landless, and among them women, the old and children suffer most. What does this uneven burden identify?",
+          hi: "निर्धनता समान नहीं पड़ती — यह अनुसूचित जाति-जनजाति परिवारों, दिहाड़ी मज़दूरों और भूमिहीनों पर सबसे कठोर, और उनमें स्त्रियाँ, बूढ़े और बच्चे सबसे अधिक झेलते। यह असमान बोझ क्या पहचानता?",
+          mr: "दारिद्र्य समान पडत नाही — ते अनुसूचित जाती-जमाती कुटुंबे, रोजंदारी मजूर आणि भूमिहीनांवर सर्वांत कठोर, आणि त्यांत स्त्रिया, वृद्ध आणि मुले सर्वांत जास्त सोसतात. हे असमान ओझे काय ओळखते?",
+        },
+        statement: {
+          en: "Poverty falls hardest on certain vulnerable groups — Scheduled Caste and Scheduled Tribe households, casual labourers and the landless — and within any poor family, women, the elderly and children bear the worst of it.",
+          hi: "निर्धनता कुछ संवेदनशील समूहों पर सबसे कठोर पड़ती — अनुसूचित जाति-जनजाति परिवार, दिहाड़ी मज़दूर और भूमिहीन — और किसी भी निर्धन परिवार में स्त्रियाँ, बूढ़े और बच्चे इसका सबसे बुरा झेलते।",
+          mr: "दारिद्र्य काही असुरक्षित गटांवर सर्वांत कठोर पडते — अनुसूचित जाती-जमाती कुटुंबे, रोजंदारी मजूर आणि भूमिहीन — आणि कोणत्याही दरिद्री कुटुंबात स्त्रिया, वृद्ध आणि मुले याचे सर्वांत वाईट सोसतात.",
+        },
+        detail: {
+          en: "This shows poverty is not just about lack of money but is tangled with old social inequalities of caste, land and gender.",
+          hi: "यह दिखाता निर्धनता केवल पैसे की कमी नहीं बल्कि जाति, भूमि और लिंग की पुरानी सामाजिक असमानताओं से उलझी।",
+          mr: "हे दाखवते दारिद्र्य फक्त पैशाची कमतरता नव्हे तर जात, जमीन आणि लिंगाच्या जुन्या सामाजिक असमानतांशी गुंतलेले.",
+        },
+        extra: {
+          en: "So the poorest of the poor is often a landless Dalit or Adivasi woman — hit at once by caste, by having no land, and by her gender.",
+          hi: "अतः निर्धनतम अक्सर एक भूमिहीन दलित या आदिवासी स्त्री — एक साथ जाति, बिना भूमि, और अपने लिंग से मारी।",
+          mr: "म्हणून दरिद्रीतम अनेकदा एक भूमिहीन दलित वा आदिवासी स्त्री — एकाच वेळी जात, जमीन नसणे, आणि आपल्या लिंगाने मारलेली.",
+        },
+        pair: {
+          left: {
+            en: "SC/ST, landless, casual labour hit hardest",
+            hi: "SC/ST, भूमिहीन, दिहाड़ी सबसे कठोर मारे",
+            mr: "SC/ST, भूमिहीन, रोजंदारी सर्वांत कठोर मारले",
+          },
+          right: {
+            en: "the most vulnerable groups",
+            hi: "सबसे संवेदनशील समूह",
+            mr: "सर्वांत असुरक्षित गट",
+          },
+        },
+      },
+      {
+        id: "causes-of-poverty",
+        name: {
+          en: "The causes of poverty",
+          hi: "निर्धनता के कारण",
+          mr: "दारिद्र्याची कारणे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "India's mass poverty has deep roots — a stagnant colonial economy, slow job growth, unequal ownership of land, rising population pressure and the trap of debt. What does this tangle of reasons explain?",
+          hi: "भारत की व्यापक निर्धनता की गहरी जड़ें — ठहरी औपनिवेशिक अर्थव्यवस्था, धीमी रोज़गार-वृद्धि, भूमि का असमान स्वामित्व, बढ़ता जनसंख्या दबाव और क़र्ज़ का जाल। कारणों का यह उलझाव क्या समझाता?",
+          mr: "भारताच्या व्यापक दारिद्र्याची खोल मुळे — थांबलेली वसाहती अर्थव्यवस्था, मंद रोजगार-वाढ, जमिनीची असमान मालकी, वाढता लोकसंख्या दाब आणि कर्जाचा सापळा. कारणांचा हा गुंता काय समजावतो?",
+        },
+        statement: {
+          en: "The causes of poverty are historical and structural — a colonial economy that held India back, slow growth of jobs, hugely unequal ownership of land, population pressure, and the grip of indebtedness.",
+          hi: "निर्धनता के कारण ऐतिहासिक और संरचनात्मक — औपनिवेशिक अर्थव्यवस्था जिसने भारत को रोका, रोज़गार की धीमी वृद्धि, भूमि का अत्यधिक असमान स्वामित्व, जनसंख्या दबाव, और ऋणग्रस्तता की पकड़।",
+          mr: "दारिद्र्याची कारणे ऐतिहासिक आणि संरचनात्मक — वसाहती अर्थव्यवस्था जिने भारताला रोखले, रोजगाराची मंद वाढ, जमिनीची अत्यंत असमान मालकी, लोकसंख्या दाब, आणि कर्जबाजारीपणाची पकड.",
+        },
+        detail: {
+          en: "Colonial rule stunted India's industries and drained its wealth, so the country began independent life already poor, with too few jobs for its people.",
+          hi: "औपनिवेशिक शासन ने भारत के उद्योग रोके और इसका धन निकाला, अतः देश स्वतंत्र जीवन पहले से निर्धन शुरू, अपने लोगों को बहुत कम रोज़गार के साथ।",
+          mr: "वसाहती राज्याने भारताचे उद्योग खुंटवले आणि त्याची संपत्ती काढली, म्हणून देश स्वतंत्र जीवन आधीच दरिद्री सुरू, आपल्या लोकांना फार कमी रोजगारासह.",
+        },
+        extra: {
+          en: "Debt often deepens poverty: a poor farmer borrows for seed or a wedding, then the interest swallows so much that he can never climb out.",
+          hi: "क़र्ज़ अक्सर निर्धनता गहराता: निर्धन किसान बीज या शादी को उधार लेता, फिर ब्याज इतना निगलता कि वह कभी बाहर नहीं चढ़ पाता।",
+          mr: "कर्ज अनेकदा दारिद्र्य खोल करते: दरिद्री शेतकरी बियाणे वा लग्नाला उधार घेतो, मग व्याज इतके गिळते की तो कधी बाहेर चढू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Colonial legacy, few jobs, unequal land, debt",
+            hi: "औपनिवेशिक विरासत, कम रोज़गार, असमान भूमि, क़र्ज़",
+            mr: "वसाहती वारसा, कमी रोजगार, असमान जमीन, कर्ज",
+          },
+          right: {
+            en: "the causes of poverty",
+            hi: "निर्धनता के कारण",
+            mr: "दारिद्र्याची कारणे",
+          },
+        },
+      },
+      {
+        id: "anti-poverty-measures",
+        name: {
+          en: "Anti-poverty measures",
+          hi: "निर्धनता-निवारण उपाय",
+          mr: "दारिद्र्य-निवारण उपाय",
+        },
+        kind: "idea",
+        prompt: {
+          en: "The government fights poverty by promoting overall economic growth and by running targeted schemes — guaranteed wage employment, self-employment loans, and support for the poorest. What are these efforts called?",
+          hi: "सरकार समग्र आर्थिक वृद्धि को बढ़ावा और लक्षित योजनाएँ चलाकर निर्धनता से लड़ती — गारंटीशुदा मज़दूरी रोज़गार, स्वरोज़गार ऋण, और निर्धनतम को सहारा। इन प्रयासों को क्या कहते?",
+          mr: "सरकार समग्र आर्थिक वाढीला चालना आणि लक्ष्यित योजना चालवून दारिद्र्याशी लढते — हमी दिलेला मजुरी रोजगार, स्वयंरोजगार कर्ज, आणि दरिद्रीतमांना आधार. या प्रयत्नांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Anti-poverty measures combine promoting broad economic growth with targeted schemes — guaranteed wage employment, self-employment loans, and food and support programmes aimed directly at the poor.",
+          hi: "निर्धनता-निवारण उपाय व्यापक आर्थिक वृद्धि को बढ़ावा देने को लक्षित योजनाओं से जोड़ते — गारंटीशुदा मज़दूरी रोज़गार, स्वरोज़गार ऋण, और सीधे निर्धनों को लक्षित भोजन-सहायता कार्यक्रम।",
+          mr: "दारिद्र्य-निवारण उपाय व्यापक आर्थिक वाढीला चालना देण्याला लक्ष्यित योजनांशी जोडतात — हमी दिलेला मजुरी रोजगार, स्वयंरोजगार कर्ज, आणि थेट दरिद्रींना लक्ष्यित अन्न-मदत कार्यक्रम.",
+        },
+        detail: {
+          en: "One well-known scheme guarantees rural households a set number of days of paid work each year, giving the poor a fallback when no other work is found.",
+          hi: "एक प्रसिद्ध योजना ग्रामीण परिवारों को हर वर्ष नियत दिनों का वेतनयुक्त काम गारंटी करती, निर्धनों को कोई अन्य काम न मिलने पर सहारा देती।",
+          mr: "एक प्रसिद्ध योजना ग्रामीण कुटुंबांना दरवर्षी ठराविक दिवसांचे वेतनयुक्त काम हमी देते, दरिद्रींना दुसरे काम न मिळाल्यावर आधार देत.",
+        },
+        extra: {
+          en: "Growth alone is not enough — without schemes aimed at them, the poorest are often left out of the prosperity a growing economy brings.",
+          hi: "वृद्धि अकेली काफ़ी नहीं — उन्हें लक्षित योजनाओं बिना, निर्धनतम अक्सर बढ़ती अर्थव्यवस्था की समृद्धि से छूट जाते।",
+          mr: "वाढ एकटी पुरेशी नाही — त्यांना लक्ष्यित योजनांविना, दरिद्रीतम अनेकदा वाढत्या अर्थव्यवस्थेच्या समृद्धीतून वगळले जातात.",
+        },
+        pair: {
+          left: {
+            en: "Growth plus schemes aimed at the poor",
+            hi: "वृद्धि साथ निर्धनों को लक्षित योजनाएँ",
+            mr: "वाढ अधिक दरिद्रींना लक्ष्यित योजना",
+          },
+          right: {
+            en: "anti-poverty measures",
+            hi: "निर्धनता-निवारण उपाय",
+            mr: "दारिद्र्य-निवारण उपाय",
+          },
+        },
+      },
+      {
+        id: "human-poverty",
+        name: {
+          en: "Poverty beyond income",
+          hi: "आय से परे निर्धनता",
+          mr: "उत्पन्नापलीकडे दारिद्र्य",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A person just above the rupee poverty line may still have no schooling, poor health, no clean water and no voice — hardships that money-counting misses. What broader view of poverty captures these?",
+          hi: "रुपये की निर्धनता रेखा से ठीक ऊपर व्यक्ति के पास अब भी कोई शिक्षा, ख़राब स्वास्थ्य, कोई स्वच्छ पानी और कोई आवाज़ न हो — कष्ट जो पैसा-गिनना चूकता। निर्धनता का कौन-सा व्यापक दृष्टिकोण इन्हें पकड़ता?",
+          mr: "रुपयाच्या दारिद्र्यरेषेच्या नेमके वर व्यक्तीकडे अजून कोणतेही शिक्षण, वाईट आरोग्य, स्वच्छ पाणी नाही आणि आवाज नाही — हालअपेष्टा ज्या पैसा-मोजणी चुकवते. दारिद्र्याचा कोणता व्यापक दृष्टिकोन हे पकडतो?",
+        },
+        statement: {
+          en: "A broader view sees poverty as more than low income — it is also the lack of education, health care, clean water, sanitation, security and dignity, deprivations a mere rupee line cannot measure.",
+          hi: "एक व्यापक दृष्टिकोण निर्धनता को कम आय से अधिक देखता — यह शिक्षा, स्वास्थ्य सेवा, स्वच्छ पानी, स्वच्छता, सुरक्षा और गरिमा की कमी भी, वंचनाएँ जो मात्र रुपये की रेखा नहीं नाप सकती।",
+          mr: "एक व्यापक दृष्टिकोन दारिद्र्याला कमी उत्पन्नाहून अधिक पाहतो — ते शिक्षण, आरोग्य सेवा, स्वच्छ पाणी, स्वच्छता, सुरक्षा आणि प्रतिष्ठेची कमतरताही, वंचना ज्या केवळ रुपयाची रेषा मोजू शकत नाही.",
+        },
+        detail: {
+          en: "By this fuller measure, two families with the same income can be very unequally poor, if one has a school and clinic nearby and the other has neither.",
+          hi: "इस पूर्ण माप से, समान आय वाले दो परिवार बहुत असमान निर्धन हो सकते, यदि एक के पास पास में स्कूल-क्लिनिक और दूसरे के पास कोई नहीं।",
+          mr: "या पूर्ण मापाने, समान उत्पन्न असलेली दोन कुटुंबे अतिशय असमान दरिद्री असू शकतात, जर एकाकडे जवळ शाळा-दवाखाना आणि दुसऱ्याकडे काहीच नाही.",
+        },
+        extra: {
+          en: "This is why modern goals speak of 'human poverty' and target schooling, health and dignity, not just raising incomes above a line.",
+          hi: "इसी से आधुनिक लक्ष्य 'मानव निर्धनता' की बात करते और शिक्षा, स्वास्थ्य और गरिमा को लक्षित करते, केवल आय को रेखा से ऊपर उठाना नहीं।",
+          mr: "म्हणूनच आधुनिक ध्येये 'मानवी दारिद्र्या'ची बात करतात आणि शिक्षण, आरोग्य आणि प्रतिष्ठेला लक्ष्य करतात, फक्त उत्पन्न रेषेच्या वर उंचावणे नाही.",
+        },
+        pair: {
+          left: {
+            en: "Lacking schooling, health and dignity, not just money",
+            hi: "केवल पैसा नहीं, शिक्षा-स्वास्थ्य-गरिमा की कमी",
+            mr: "फक्त पैसा नव्हे, शिक्षण-आरोग्य-प्रतिष्ठेची कमतरता",
+          },
+          right: {
+            en: "poverty beyond income",
+            hi: "आय से परे निर्धनता",
+            mr: "उत्पन्नापलीकडे दारिद्र्य",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The official poverty line is worked out mainly from the money needed to buy a minimum of calories and a few basics. Critics say a family lifted just above this line can still be desperately deprived. What is the weakness in measuring poverty by a rupee line alone?",
+          hi: "आधिकारिक निर्धनता रेखा मुख्यतः न्यूनतम कैलोरी और कुछ बुनियादी वस्तुएँ खरीदने को चाहिए पैसे से निकाली जाती। आलोचक कहते इस रेखा से ठीक ऊपर उठा परिवार अब भी बुरी तरह वंचित हो सकता। केवल रुपये की रेखा से निर्धनता नापने में कमज़ोरी क्या?",
+          mr: "अधिकृत दारिद्र्यरेषा मुख्यतः किमान कॅलरी आणि काही मूलभूत वस्तू विकत घ्यायला हव्या पैशातून काढली जाते. टीकाकार म्हणतात या रेषेच्या नेमके वर उचललेले कुटुंब अजून वाईट रीतीने वंचित असू शकते. फक्त रुपयाच्या रेषेने दारिद्र्य मोजण्यातील कमजोरी काय?",
+        },
+        choices: [
+          {
+            en: "A rupee-and-calorie line captures only the barest survival needs and ignores education, health care, clean water, sanitation, security and dignity; so someone counted 'not poor' for being just above it may still lack almost everything that makes a decent life",
+            hi: "रुपये-और-कैलोरी की रेखा केवल सबसे नंगी जीवित रहने की ज़रूरतें पकड़ती और शिक्षा, स्वास्थ्य सेवा, स्वच्छ पानी, स्वच्छता, सुरक्षा और गरिमा अनदेखी करती; अतः इससे ठीक ऊपर होने से 'निर्धन नहीं' गिना कोई अब भी लगभग सब कुछ जो शालीन जीवन बनाता उससे वंचित हो सकता",
+            mr: "रुपया-आणि-कॅलरीची रेषा फक्त अगदी उघड्या जगण्याच्या गरजा पकडते आणि शिक्षण, आरोग्य सेवा, स्वच्छ पाणी, स्वच्छता, सुरक्षा आणि प्रतिष्ठा दुर्लक्षते; म्हणून तिच्या नेमके वर असल्याने 'दरिद्री नाही' मोजलेला कोणी अजून जवळपास सारे जे सभ्य जीवन बनवते त्यापासून वंचित असू शकतो",
+          },
+          {
+            en: "There is no weakness; income measures capture everything about being poor",
+            hi: "कोई कमज़ोरी नहीं; आय-माप निर्धन होने के बारे में सब कुछ पकड़ते",
+            mr: "कोणतीही कमजोरी नाही; उत्पन्न-मापे दरिद्री असण्याबद्दल सारे पकडतात",
+          },
+          {
+            en: "The line is wrong only because it is measured in rupees rather than dollars",
+            hi: "रेखा ग़लत केवल इसलिए कि यह डॉलर के बजाय रुपये में नापी",
+            mr: "रेषा चुकीची फक्त म्हणून की ती डॉलरऐवजी रुपयात मोजली",
+          },
+          {
+            en: "The problem is that the line is set far too high for anyone to fall below",
+            hi: "समस्या कि रेखा किसी के नीचे गिरने को बहुत ऊँची तय",
+            mr: "समस्या की रेषा कोणाच्या खाली पडायला फार उंच ठरवली",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The criticism gets at a real limitation of how poverty is officially measured. The standard poverty line is built from a bare minimum: roughly the money needed to buy enough food to meet a calorie requirement, plus a small allowance for a few essentials like clothing and fuel. That gives a single rupee figure, and everyone below it is 'poor' while everyone above it is 'not poor'. The trouble is that this line captures only physical survival, and being genuinely not-poor means far more than not starving. A family lifted a rupee above the line might still have children who never see the inside of a school, no doctor or clinic within reach, no clean drinking water or toilet, no safety from violence, and no real say in the decisions that shape their lives. None of these deprivations shows up in the calorie-and-rupee calculation, yet each is central to a decent human life. So the number can badly understate real hardship: it treats 'able to buy enough calories' as the finish line, when in truth it is barely the starting point. This is why economists and bodies like the UN increasingly speak of 'human poverty', measuring deprivation in education, health, sanitation and dignity alongside income. The rupee line is still useful as a rough, comparable count, but read alone it hides how much of what makes a life livable the officially 'non-poor' may still lack.",
+          hi: "आलोचना निर्धनता को आधिकारिक रूप से कैसे नापा जाता उसकी असली सीमा पकड़ती। मानक निर्धनता रेखा एक नंगे न्यूनतम से बनी: मोटे तौर कैलोरी आवश्यकता पूरी करने भर भोजन खरीदने का पैसा, जमा कपड़े-ईंधन जैसी कुछ आवश्यक वस्तुओं का छोटा भत्ता। यह एक अकेला रुपये का आँकड़ा देता, और इसके नीचे सब 'निर्धन' जबकि ऊपर सब 'निर्धन नहीं'। मुसीबत कि यह रेखा केवल शारीरिक जीवित रहना पकड़ती, और सचमुच निर्धन-न-होने का अर्थ भूखे न रहने से कहीं अधिक। रेखा से एक रुपया ऊपर उठे परिवार के बच्चे अब भी स्कूल का भीतर कभी न देखें, पहुँच में कोई डॉक्टर-क्लिनिक नहीं, कोई स्वच्छ पेय जल या शौचालय नहीं, हिंसा से कोई सुरक्षा नहीं, और अपने जीवन गढ़ते निर्णयों में कोई असली आवाज़ नहीं। इनमें से कोई वंचना कैलोरी-और-रुपये गणना में नहीं दिखती, फिर भी हर एक शालीन मानव जीवन को केंद्रीय। अतः संख्या असली कष्ट को बुरी तरह कम आँक सकती: यह 'पर्याप्त कैलोरी खरीद सकना' को समाप्ति-रेखा मानती, जबकि सच में यह मुश्किल से आरंभ-बिंदु। इसी से अर्थशास्त्री और UN जैसे निकाय बढ़ते 'मानव निर्धनता' की बात करते, आय के साथ शिक्षा, स्वास्थ्य, स्वच्छता और गरिमा में वंचना नापते। रुपये की रेखा एक मोटी, तुलनीय गिनती के रूप में अब भी उपयोगी, पर अकेली पढ़ी यह छिपाती कि जीवन जीने योग्य बनाते कितने का आधिकारिक 'निर्धन-नहीं' अब भी अभाव।",
+          mr: "टीका दारिद्र्य अधिकृतपणे कसे मोजले जाते त्याची खरी मर्यादा पकडते. प्रमाण दारिद्र्यरेषा एका उघड्या किमानातून बनली: ढोबळमानाने कॅलरी गरज पूर्ण करण्याइतके अन्न विकत घ्यायचा पैसा, अधिक कपडे-इंधनासारख्या काही आवश्यक वस्तूंचा लहान भत्ता. ते एक एकटा रुपयाचा आकडा देते, आणि तिच्याखाली सारे 'दरिद्री' तर वर सारे 'दरिद्री नाही'. अडचण की ही रेषा फक्त शारीरिक जगणे पकडते, आणि खरोखर दरिद्री-न-असणे म्हणजे उपाशी न राहण्याहून कितीतरी अधिक. रेषेच्या एक रुपया वर उचललेल्या कुटुंबाची मुले अजून शाळेचा आत कधी न पाहोत, आवाक्यात कोणी डॉक्टर-दवाखाना नाही, स्वच्छ पिण्याचे पाणी वा शौचालय नाही, हिंसेपासून सुरक्षा नाही, आणि आपले जीवन घडवणाऱ्या निर्णयांत खरा आवाज नाही. यांतली कोणतीही वंचना कॅलरी-आणि-रुपया गणनेत दिसत नाही, तरी प्रत्येक सभ्य मानवी जीवनाला मध्यवर्ती. म्हणून संख्या खरे हाल वाईट रीतीने कमी लेखू शकते: ती 'पुरेशा कॅलरी विकत घेता येणे' समाप्ती-रेषा मानते, तर खरे तर ती जेमतेम सुरुवात-बिंदू. म्हणूनच अर्थतज्ज्ञ आणि UN सारखे निकाय वाढत 'मानवी दारिद्र्या'ची बात करतात, उत्पन्नासोबत शिक्षण, आरोग्य, स्वच्छता आणि प्रतिष्ठेतील वंचना मोजत. रुपयाची रेषा एका ढोबळ, तुलनीय मोजणीसाठी अजून उपयुक्त, पण एकटी वाचली ती लपवते की जीवन जगण्याजोगे बनवणाऱ्या किती गोष्टींची अधिकृत 'दरिद्री-नाही' अजून वानवा.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Poverty is often described as a vicious cycle that repeats from parents to children. What does this mean, and why can poor families find it so hard to escape poverty on their own?",
+          hi: "निर्धनता अक्सर एक दुष्चक्र बताई जाती जो माता-पिता से बच्चों तक दोहराता। इसका क्या अर्थ, और निर्धन परिवार स्वयं निर्धनता से बचना इतना कठिन क्यों पाते?",
+          mr: "दारिद्र्य अनेकदा एक दुष्टचक्र म्हणून वर्णिले जाते जे पालकांपासून मुलांपर्यंत पुनरावृत्त होते. याचा काय अर्थ, आणि दरिद्री कुटुंबे स्वतः दारिद्र्यातून सुटणे इतके कठीण का पाहतात?",
+        },
+        choices: [
+          {
+            en: "Poverty starves children of schooling, food and health, so they grow into low-earning adults who in turn cannot afford schooling, food and health for their own children — low income and low human capital feed each other, trapping family after family until outside help breaks the loop",
+            hi: "निर्धनता बच्चों को शिक्षा, भोजन और स्वास्थ्य से वंचित करती, अतः वे कम-कमाते वयस्क बनते जो बदले में अपने बच्चों को शिक्षा, भोजन और स्वास्थ्य नहीं दे सकते — कम आय और कम मानव पूँजी एक-दूसरे को पालते, परिवार-दर-परिवार फँसाते जब तक बाहरी मदद फंदा न तोड़े",
+            mr: "दारिद्र्य मुलांना शिक्षण, अन्न आणि आरोग्यापासून वंचित करते, म्हणून ते कमी-कमावणारे प्रौढ बनतात जे त्याबदल्यात आपल्या मुलांना शिक्षण, अन्न आणि आरोग्य देऊ शकत नाहीत — कमी उत्पन्न आणि कमी मानवी भांडवल एकमेकांना पोसतात, कुटुंबामागून कुटुंब अडकवत जोवर बाहेरची मदत फास तोडत नाही",
+          },
+          {
+            en: "It means poor families simply do not want to work hard enough",
+            hi: "इसका अर्थ निर्धन परिवार बस पर्याप्त मेहनत नहीं करना चाहते",
+            mr: "याचा अर्थ दरिद्री कुटुंबे फक्त पुरेशी मेहनत करू इच्छित नाहीत",
+          },
+          {
+            en: "It means poverty always disappears by itself within one generation",
+            hi: "इसका अर्थ निर्धनता सदा एक पीढ़ी में स्वयं ग़ायब हो जाती",
+            mr: "याचा अर्थ दारिद्र्य नेहमी एका पिढीत आपोआप नाहीसे होते",
+          },
+          {
+            en: "It means the children of the poor are born less capable than others",
+            hi: "इसका अर्थ निर्धनों के बच्चे दूसरों से कम सक्षम जन्मते",
+            mr: "याचा अर्थ दरिद्रींची मुले इतरांहून कमी सक्षम जन्मतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The 'vicious cycle of poverty' describes how poverty tends to reproduce itself across generations, not because of any fault or lack of will in the poor, but because of how deprivation feeds on itself. Trace the loop. A poor family cannot afford good food, health care or schooling for its children. Those children grow up undernourished, more often sick, and with little or no education or skills — in economic terms, they accumulate very little human capital. As adults with weak health and few skills, they can only get low-paid, insecure work, so they too remain poor. And being poor, they in turn cannot afford good food, health care or schooling for their own children — and the cycle begins again. Low income leads to low investment in the next generation, which leads to low earning capacity, which leads back to low income: each turn of the wheel hands the poverty down. This is why it is so hard for poor families to climb out purely by their own effort: the very thing that would lift them — investing in education and health — is the thing their poverty denies them, and no amount of daily labour by unhealthy, unskilled hands can bridge that gap alone. It is also why outside intervention matters so much. Free or subsidised schooling, health care, nutrition programmes and employment guarantees act from outside the family to break the loop, giving children the human capital their parents could not afford, so the next generation can earn its way out. Breaking the cycle is precisely the aim of anti-poverty measures — the loop rarely breaks on its own.",
+          hi: "'निर्धनता का दुष्चक्र' बताता कैसे निर्धनता पीढ़ियों में स्वयं को दोहराती, निर्धनों में किसी दोष या इच्छा-अभाव से नहीं, बल्कि कैसे वंचना स्वयं पर पलती। फंदे को खींचो। निर्धन परिवार अपने बच्चों को अच्छा भोजन, स्वास्थ्य सेवा या शिक्षा नहीं दे सकता। वे बच्चे कुपोषित बड़े होते, अधिक बार बीमार, और थोड़ी या कोई शिक्षा-कौशल के साथ — आर्थिक शब्दों में, वे बहुत कम मानव पूँजी जमा करते। कमज़ोर स्वास्थ्य और कम कौशल वाले वयस्क के रूप में, वे केवल कम-वेतन, असुरक्षित काम पा सकते, अतः वे भी निर्धन रहते। और निर्धन होकर, वे बदले में अपने बच्चों को अच्छा भोजन, स्वास्थ्य सेवा या शिक्षा नहीं दे सकते — और चक्र फिर शुरू। कम आय अगली पीढ़ी में कम निवेश की ओर, जो कम कमाने की क्षमता की ओर, जो वापस कम आय की ओर: पहिये का हर घुमाव निर्धनता नीचे सौंपता। इसी से निर्धन परिवारों को पूरी तरह अपने प्रयास से बाहर चढ़ना इतना कठिन: ठीक वह चीज़ जो उन्हें उठाती — शिक्षा-स्वास्थ्य में निवेश — वही जो उनकी निर्धनता उन्हें नकारती, और अस्वस्थ, अकुशल हाथों की कितनी भी दैनिक मेहनत वह खाई अकेले नहीं पाट सकती। यह भी क्यों बाहरी हस्तक्षेप इतना मायने रखता। मुफ़्त या सब्सिडी शिक्षा, स्वास्थ्य सेवा, पोषण कार्यक्रम और रोज़गार गारंटी परिवार के बाहर से फंदा तोड़ते, बच्चों को वह मानव पूँजी देते जो उनके माता-पिता न दे सके, अतः अगली पीढ़ी अपना रास्ता बाहर कमा सके। चक्र तोड़ना ठीक निर्धनता-निवारण उपायों का लक्ष्य — फंदा स्वयं शायद ही टूटता।",
+          mr: "'दारिद्र्याचे दुष्टचक्र' सांगते कसे दारिद्र्य पिढ्यांत स्वतःची पुनरावृत्ती करते, दरिद्रींतल्या कोणत्याही दोषाने वा इच्छा-अभावाने नाही, तर कशी वंचना स्वतःवर पोसते. फास खेचा. दरिद्री कुटुंब आपल्या मुलांना चांगले अन्न, आरोग्य सेवा वा शिक्षण देऊ शकत नाही. ती मुले कुपोषित वाढतात, अधिक वेळा आजारी, आणि थोडे वा कोणतेही शिक्षण-कौशल्यासह — आर्थिक भाषेत, ती फार कमी मानवी भांडवल साठवतात. कमजोर आरोग्य आणि कमी कौशल्याचे प्रौढ म्हणून, ते फक्त कमी-वेतन, असुरक्षित काम मिळवू शकतात, म्हणून तेही दरिद्री राहतात. आणि दरिद्री असल्याने, ते त्याबदल्यात आपल्या मुलांना चांगले अन्न, आरोग्य सेवा वा शिक्षण देऊ शकत नाहीत — आणि चक्र पुन्हा सुरू. कमी उत्पन्न पुढच्या पिढीत कमी गुंतवणुकीकडे, जे कमी कमावण्याच्या क्षमतेकडे, जे परत कमी उत्पन्नाकडे: चाकाचा प्रत्येक फेरा दारिद्र्य खाली सोपवतो. म्हणूनच दरिद्री कुटुंबांना पूर्णपणे आपल्या प्रयत्नाने बाहेर चढणे इतके कठीण: नेमकी ती गोष्ट जी त्यांना उचलेल — शिक्षण-आरोग्यातील गुंतवणूक — तीच जी त्यांचे दारिद्र्य त्यांना नाकारते, आणि अस्वस्थ, अकुशल हातांची कितीही दैनिक मेहनत ती दरी एकटी भरू शकत नाही. हे हेही का बाहेरचा हस्तक्षेप इतका महत्त्वाचा. फुकट वा अनुदानित शिक्षण, आरोग्य सेवा, पोषण कार्यक्रम आणि रोजगार हमी कुटुंबाबाहेरून फास तोडतात, मुलांना ते मानवी भांडवल देत जे त्यांचे पालक देऊ शकले नाहीत, म्हणून पुढची पिढी आपला मार्ग बाहेर कमवू शकते. चक्र तोडणे नेमके दारिद्र्य-निवारण उपायांचे ध्येय — फास स्वतः क्वचित तुटतो.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Food Security in India                                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "economics-9-food-security",
+    subject: "ECONOMICS",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 4 — Food Security in India",
+      hi: "अध्याय 4 — भारत में खाद्य सुरक्षा",
+      mr: "प्रकरण 4 — भारतातील अन्नसुरक्षा",
+    },
+    name: {
+      en: "Food Security in India",
+      hi: "भारत में खाद्य सुरक्षा",
+      mr: "भारतातील अन्नसुरक्षा",
+    },
+    summary: {
+      en: "Keeping a nation fed at all times: food that must be not only grown but reachable and affordable to the poorest, the buffer stock the state builds by buying grain at a fair price, the ration shops that pass it on cheaply, and the hard truth that full granaries do not by themselves end hunger.",
+      hi: "एक राष्ट्र को हर समय खिलाए रखना: अन्न जो न केवल उगाना बल्कि निर्धनतम तक पहुँच योग्य और वहनीय हो, वह बफ़र स्टॉक जो राज्य उचित क़ीमत पर अन्न खरीदकर बनाता, वे राशन दुकानें जो इसे सस्ते आगे देतीं, और यह कठोर सत्य कि भरे गोदाम स्वयं भूख समाप्त नहीं करते।",
+      mr: "एका राष्ट्राला सर्वकाळ पोसलेले ठेवणे: अन्न जे केवळ पिकवायचे नव्हे तर दरिद्रीतमांपर्यंत पोहोचण्याजोगे आणि परवडणारे असावे, तो बफर साठा जो राज्य वाजवी किमतीला धान्य विकत घेऊन बनवते, त्या रेशन दुकाने जी ते स्वस्तात पुढे देतात, आणि हे कठोर सत्य की भरलेली गोदामे स्वतः भूक संपवत नाहीत.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "food-security-meaning",
+        name: {
+          en: "The meaning of food security",
+          hi: "खाद्य सुरक्षा का अर्थ",
+          mr: "अन्नसुरक्षेचा अर्थ",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A country is truly food-secure only when enough food exists, everyone can physically reach it, and even the poorest can afford it — at all times. What is this three-part guarantee called?",
+          hi: "देश तभी सचमुच खाद्य-सुरक्षित जब पर्याप्त अन्न मौजूद, हर कोई इस तक भौतिक पहुँच रखे, और निर्धनतम भी इसे वहन कर सके — हर समय। इस तीन-भाग गारंटी को क्या कहते?",
+          mr: "देश तेव्हाच खरोखर अन्न-सुरक्षित जेव्हा पुरेसे अन्न अस्तित्वात, प्रत्येक त्यापर्यंत भौतिक पोहोच राखे, आणि दरिद्रीतमही ते परवडू शके — सर्वकाळ. या तीन-भाग हमीला काय म्हणतात?",
+        },
+        statement: {
+          en: "Food security means food is available, accessible and affordable to all people at all times — enough food must exist, everyone must be able to reach it, and even the poorest must be able to buy it.",
+          hi: "खाद्य सुरक्षा का अर्थ अन्न सभी लोगों को हर समय उपलब्ध, पहुँच योग्य और वहनीय — पर्याप्त अन्न मौजूद हो, हर कोई इस तक पहुँच सके, और निर्धनतम भी इसे खरीद सके।",
+          mr: "अन्नसुरक्षा म्हणजे अन्न सर्व लोकांना सर्वकाळ उपलब्ध, पोहोचण्याजोगे आणि परवडणारे — पुरेसे अन्न अस्तित्वात असावे, प्रत्येक त्यापर्यंत पोहोचू शके, आणि दरिद्रीतमही ते विकत घेऊ शके.",
+        },
+        detail: {
+          en: "All three must hold together — plenty of grain in the country is no use to a family that lives too far from a market or is too poor to buy any.",
+          hi: "तीनों साथ टिकें — देश में भरपूर अन्न उस परिवार के किसी काम का नहीं जो बाज़ार से बहुत दूर रहे या कोई खरीदने बहुत निर्धन।",
+          mr: "तिन्ही एकत्र टिकावे — देशात भरपूर धान्य त्या कुटुंबाच्या कोणत्याही उपयोगाचे नाही जे बाजारापासून फार दूर राहते वा काही विकत घ्यायला फार दरिद्री.",
+        },
+        extra: {
+          en: "'At all times' matters too — food security means being safe from hunger not just in a good year but through droughts, floods and lean seasons.",
+          hi: "'हर समय' भी मायने रखता — खाद्य सुरक्षा का अर्थ भूख से सुरक्षित रहना केवल अच्छे वर्ष नहीं बल्कि सूखों, बाढ़ों और दुबले मौसमों में भी।",
+          mr: "'सर्वकाळ'ही महत्त्वाचे — अन्नसुरक्षा म्हणजे भुकेपासून सुरक्षित राहणे फक्त चांगल्या वर्षी नव्हे तर दुष्काळ, पूर आणि दुबळ्या हंगामांतही.",
+        },
+        pair: {
+          left: {
+            en: "Available, accessible and affordable to all, always",
+            hi: "सबको, सदा, उपलब्ध, पहुँच योग्य और वहनीय",
+            mr: "सर्वांना, सदैव, उपलब्ध, पोहोचण्याजोगे आणि परवडणारे",
+          },
+          right: {
+            en: "food security",
+            hi: "खाद्य सुरक्षा",
+            mr: "अन्नसुरक्षा",
+          },
+        },
+      },
+      {
+        id: "buffer-stock",
+        name: {
+          en: "Buffer stock and MSP",
+          hi: "बफ़र स्टॉक और MSP",
+          mr: "बफर साठा आणि MSP",
+        },
+        kind: "idea",
+        prompt: {
+          en: "The government buys grain from farmers at a guaranteed fair price and stores the surplus in huge warehouses, to be released in times of shortage. What is this stored reserve, and the price at which it is bought, called?",
+          hi: "सरकार किसानों से गारंटीशुदा उचित क़ीमत पर अन्न खरीदती और अधिशेष विशाल गोदामों में जमा करती, कमी के समय छोड़ने को। इस जमा भंडार, और जिस क़ीमत पर खरीदा, को क्या कहते?",
+          mr: "सरकार शेतकऱ्यांकडून हमी दिलेल्या वाजवी किमतीला धान्य विकत घेते आणि अतिरिक्त प्रचंड गोदामांत साठवते, टंचाईच्या वेळी सोडायला. या साठवलेल्या साठ्याला, आणि ज्या किमतीला विकत घेतले, त्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The buffer stock is the reserve of grain the government builds by buying wheat and rice from farmers at a guaranteed Minimum Support Price (MSP), storing it to release in times of shortage.",
+          hi: "बफ़र स्टॉक वह अन्न-भंडार जो सरकार किसानों से गारंटीशुदा न्यूनतम समर्थन मूल्य (MSP) पर गेहूँ-चावल खरीदकर बनाती, कमी के समय छोड़ने को जमा करती।",
+          mr: "बफर साठा तो धान्य-साठा जो सरकार शेतकऱ्यांकडून हमी दिलेल्या किमान आधार किमतीला (MSP) गहू-तांदूळ विकत घेऊन बनवते, टंचाईच्या वेळी सोडायला साठवते.",
+        },
+        detail: {
+          en: "The MSP protects the farmer — it guarantees a fair price so a good harvest does not crash the market and ruin those who grew the food.",
+          hi: "MSP किसान को रक्षता — यह उचित क़ीमत गारंटी करता ताकि अच्छी फ़सल बाज़ार न गिराए और अन्न उगाने वालों को बर्बाद न करे।",
+          mr: "MSP शेतकऱ्याला रक्षतो — तो वाजवी किंमत हमी देतो जेणेकरून चांगले पीक बाजार पाडणार नाही आणि अन्न पिकवणाऱ्यांना उद्ध्वस्त करणार नाही.",
+        },
+        extra: {
+          en: "The Food Corporation of India does this buying and storing, holding a national reserve against the year a harvest fails.",
+          hi: "भारतीय खाद्य निगम यह खरीद-भंडारण करता, उस वर्ष के विरुद्ध राष्ट्रीय भंडार रखते जब फ़सल विफल हो।",
+          mr: "भारतीय अन्न महामंडळ हे खरेदी-साठवण करते, त्या वर्षाविरुद्ध राष्ट्रीय साठा राखत जेव्हा पीक अपयशी होते.",
+        },
+        pair: {
+          left: {
+            en: "Grain bought at a fair price and stored for shortage",
+            hi: "उचित क़ीमत पर खरीदा और कमी को जमा अन्न",
+            mr: "वाजवी किमतीला विकत घेतलेले आणि टंचाईला साठवलेले धान्य",
+          },
+          right: {
+            en: "buffer stock and MSP",
+            hi: "बफ़र स्टॉक और MSP",
+            mr: "बफर साठा आणि MSP",
+          },
+        },
+      },
+      {
+        id: "public-distribution-system",
+        name: {
+          en: "The Public Distribution System",
+          hi: "सार्वजनिक वितरण प्रणाली",
+          mr: "सार्वजनिक वितरण प्रणाली",
+        },
+        kind: "idea",
+        prompt: {
+          en: "The grain in the government's stores reaches poor families through a network of ration shops, which sell it to cardholders at prices far below the market. What is this delivery network called?",
+          hi: "सरकार के भंडारों का अन्न राशन दुकानों के जाल से निर्धन परिवारों तक पहुँचता, जो इसे कार्डधारकों को बाज़ार से कहीं कम क़ीमतों पर बेचतीं। इस वितरण-जाल को क्या कहते?",
+          mr: "सरकारच्या साठ्यांचे धान्य रेशन दुकानांच्या जाळ्यातून दरिद्री कुटुंबांपर्यंत पोहोचते, जी ते कार्डधारकांना बाजाराहून कितीतरी कमी किमतींना विकतात. या वितरण-जाळ्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The Public Distribution System (PDS) is the network of ration shops through which the government's stored grain is sold to cardholding families at subsidised prices well below the market.",
+          hi: "सार्वजनिक वितरण प्रणाली (PDS) राशन दुकानों का जाल जिससे सरकार का जमा अन्न कार्डधारक परिवारों को बाज़ार से कहीं कम रियायती क़ीमतों पर बेचा जाता।",
+          mr: "सार्वजनिक वितरण प्रणाली (PDS) रेशन दुकानांचे जाळे ज्यातून सरकारचे साठवलेले धान्य कार्डधारक कुटुंबांना बाजाराहून कितीतरी कमी अनुदानित किमतींना विकले जाते.",
+        },
+        detail: {
+          en: "A family shows its ration card and buys a fixed monthly quota of wheat, rice, sugar and kerosene at these low set prices.",
+          hi: "परिवार अपना राशन कार्ड दिखाता और इन कम तय क़ीमतों पर गेहूँ, चावल, चीनी और मिट्टी के तेल का नियत मासिक कोटा खरीदता।",
+          mr: "कुटुंब आपले रेशन कार्ड दाखवते आणि या कमी ठरलेल्या किमतींना गहू, तांदूळ, साखर आणि रॉकेलचा ठराविक मासिक कोटा विकत घेते.",
+        },
+        extra: {
+          en: "It is the main channel through which the buffer stock actually turns into food on the plates of the poor.",
+          hi: "यह मुख्य माध्यम जिससे बफ़र स्टॉक वास्तव में निर्धनों की थालियों पर अन्न में बदलता।",
+          mr: "हे मुख्य माध्यम ज्यातून बफर साठा प्रत्यक्षात दरिद्रींच्या ताटांवर अन्नात बदलतो.",
+        },
+        pair: {
+          left: {
+            en: "Ration shops selling cheap grain to cardholders",
+            hi: "कार्डधारकों को सस्ता अन्न बेचतीं राशन दुकानें",
+            mr: "कार्डधारकांना स्वस्त धान्य विकणारी रेशन दुकाने",
+          },
+          right: {
+            en: "the Public Distribution System",
+            hi: "सार्वजनिक वितरण प्रणाली",
+            mr: "सार्वजनिक वितरण प्रणाली",
+          },
+        },
+      },
+      {
+        id: "seasonal-chronic-hunger",
+        name: {
+          en: "Seasonal and chronic hunger",
+          hi: "मौसमी और दीर्घकालिक भूख",
+          mr: "हंगामी आणि दीर्घकालीन भूक",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Some hunger comes and goes with the farming season or a spell of no work, while another kind is a constant background of never quite having enough to eat. What two forms of hunger does this describe?",
+          hi: "कुछ भूख खेती के मौसम या बिना-काम के दौर से आती-जाती, जबकि दूसरा प्रकार कभी पर्याप्त खाने को न होने की एक निरंतर पृष्ठभूमि। यह भूख के कौन-से दो रूप बताता?",
+          mr: "काही भूक शेतीच्या हंगामासह वा बिना-कामाच्या काळासह येते-जाते, तर दुसरा प्रकार कधीच पुरेसे खायला नसण्याची एक सतत पार्श्वभूमी. हे भुकेचे कोणते दोन रूप सांगते?",
+        },
+        statement: {
+          en: "Seasonal hunger comes and goes with the crop cycle or spells of no work, while chronic hunger is a constant, ongoing shortage — never having enough food day after day, year after year.",
+          hi: "मौसमी भूख फ़सल-चक्र या बिना-काम के दौरों से आती-जाती, जबकि दीर्घकालिक भूख एक निरंतर, चलती कमी — दिन-दर-दिन, वर्ष-दर-वर्ष कभी पर्याप्त अन्न न होना।",
+          mr: "हंगामी भूक पीक-चक्र वा बिना-कामाच्या काळांसह येते-जाते, तर दीर्घकालीन भूक एक सतत, चालू टंचाई — दिवसामागून दिवस, वर्षामागून वर्ष कधीच पुरेसे अन्न नसणे.",
+        },
+        detail: {
+          en: "Seasonal hunger hits farm labourers between harvests, when there is no field work and so no wages to buy food.",
+          hi: "मौसमी भूख कृषि मज़दूरों को फ़सलों के बीच मारती, जब कोई खेत-काम नहीं और अतः अन्न खरीदने कोई मज़दूरी नहीं।",
+          mr: "हंगामी भूक शेतमजुरांना पिकांदरम्यान मारते, जेव्हा कोणतेही शेत-काम नाही आणि म्हणून अन्न विकत घ्यायला कोणतीही मजुरी नाही.",
+        },
+        extra: {
+          en: "Chronic hunger is the deeper problem — it comes not from a bad season but from being so poor that even in normal times the family can never buy enough.",
+          hi: "दीर्घकालिक भूख गहरी समस्या — यह ख़राब मौसम से नहीं बल्कि इतने निर्धन होने से कि सामान्य समय में भी परिवार कभी पर्याप्त नहीं खरीद सकता।",
+          mr: "दीर्घकालीन भूक खोल समस्या — ती वाईट हंगामातून नव्हे तर इतके दरिद्री असण्यातून की सामान्य वेळीही कुटुंब कधी पुरेसे विकत घेऊ शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "A constant, year-round shortage of food",
+            hi: "अन्न की निरंतर, साल भर कमी",
+            mr: "अन्नाची सतत, वर्षभर टंचाई",
+          },
+          right: {
+            en: "chronic hunger",
+            hi: "दीर्घकालिक भूख",
+            mr: "दीर्घकालीन भूक",
+          },
+        },
+      },
+      {
+        id: "cooperatives",
+        name: {
+          en: "Cooperatives in food security",
+          hi: "खाद्य सुरक्षा में सहकारी",
+          mr: "अन्नसुरक्षेत सहकारी संस्था",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Beyond the government, groups of people band together to run shops, dairies and grain stores that they own jointly, sharing the gains — as with the famous milk movement. What are such member-owned bodies called?",
+          hi: "सरकार से परे, लोगों के समूह मिलकर दुकानें, डेयरी और अन्न-भंडार चलाते जिन्हें वे संयुक्त रूप से रखते, लाभ बाँटते — प्रसिद्ध दुग्ध आंदोलन की तरह। ऐसे सदस्य-स्वामित्व निकायों को क्या कहते?",
+          mr: "सरकारपलीकडे, लोकांचे गट मिळून दुकाने, दुग्धशाळा आणि धान्य-साठे चालवतात जे ते संयुक्तपणे बाळगतात, लाभ वाटत — प्रसिद्ध दूध चळवळीसारखे. अशा सदस्य-मालकीच्या निकायांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Cooperatives are bodies owned jointly by their members, who run shops, dairies or grain stores together and share the benefits — an important non-government channel for food security.",
+          hi: "सहकारी अपने सदस्यों द्वारा संयुक्त रूप से स्वामित्व निकाय, जो मिलकर दुकानें, डेयरी या अन्न-भंडार चलाते और लाभ बाँटते — खाद्य सुरक्षा का एक महत्वपूर्ण ग़ैर-सरकारी माध्यम।",
+          mr: "सहकारी संस्था आपल्या सदस्यांनी संयुक्तपणे मालकीचे निकाय, जे मिळून दुकाने, दुग्धशाळा वा धान्य-साठे चालवतात आणि लाभ वाटतात — अन्नसुरक्षेचे एक महत्त्वाचे बिगर-सरकारी माध्यम.",
+        },
+        detail: {
+          en: "In many places cooperatives run fair-price shops selling low-cost goods, and the Amul milk cooperative shows how they can transform a whole industry.",
+          hi: "कई जगह सहकारी उचित-मूल्य दुकानें चलातीं कम-लागत वस्तुएँ बेचतीं, और अमूल दुग्ध सहकारी दिखाती वे कैसे पूरे उद्योग को बदल सकतीं।",
+          mr: "अनेक ठिकाणी सहकारी संस्था रास्त-भाव दुकाने चालवतात कमी-किमतीच्या वस्तू विकत, आणि अमूल दूध सहकारी दाखवते त्या कशा अख्ख्या उद्योगाला बदलू शकतात.",
+        },
+        extra: {
+          en: "Because the members own it themselves, a cooperative works for their benefit rather than an outside owner's profit.",
+          hi: "क्योंकि सदस्य स्वयं इसे रखते, सहकारी उनके लाभ को काम करती न कि किसी बाहरी मालिक के लाभ को।",
+          mr: "कारण सदस्य स्वतः ती बाळगतात, सहकारी त्यांच्या लाभासाठी काम करते न की कोणत्या बाहेरच्या मालकाच्या नफ्यासाठी.",
+        },
+        pair: {
+          left: {
+            en: "Member-owned shops and dairies sharing the gains",
+            hi: "लाभ बाँटतीं सदस्य-स्वामित्व दुकानें-डेयरी",
+            mr: "लाभ वाटणारी सदस्य-मालकीची दुकाने-दुग्धशाळा",
+          },
+          right: {
+            en: "cooperatives",
+            hi: "सहकारी",
+            mr: "सहकारी संस्था",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "During some years India's government warehouses have overflowed with wheat and rice, grain even rotting for want of storage — and yet in the very same years millions of Indians went hungry. How can a country have too much food and too much hunger at once?",
+          hi: "कुछ वर्षों भारत के सरकारी गोदाम गेहूँ-चावल से उमड़े, अन्न भंडारण के अभाव में सड़ता तक — फिर भी ठीक उन्हीं वर्षों करोड़ों भारतीय भूखे रहे। किसी देश के पास एक साथ बहुत अधिक अन्न और बहुत अधिक भूख कैसे हो सकती?",
+          mr: "काही वर्षी भारताची सरकारी गोदामे गहू-तांदळाने ओसंडली, धान्य साठवणुकीअभावी कुजतसुद्धा — तरी नेमके त्याच वर्षी कोट्यवधी भारतीय उपाशी राहिले. एखाद्या देशाकडे एकाच वेळी फार अधिक अन्न आणि फार अधिक भूक कशी असू शकते?",
+        },
+        choices: [
+          {
+            en: "Because food security needs not just availability but accessibility and affordability: the grain existed in the warehouses, but the hungry were too poor to buy it and the distribution failed to reach them — plenty in the store does not feed a family that cannot afford or obtain it",
+            hi: "क्योंकि खाद्य सुरक्षा को केवल उपलब्धता नहीं बल्कि पहुँच और वहनीयता चाहिए: अन्न गोदामों में मौजूद था, पर भूखे इसे खरीदने बहुत निर्धन और वितरण उन तक पहुँचने में विफल — भंडार में भरपूर उस परिवार को नहीं खिलाता जो इसे वहन या प्राप्त न कर सके",
+            mr: "कारण अन्नसुरक्षेला फक्त उपलब्धता नव्हे तर पोहोच आणि परवडणे हवे: धान्य गोदामांत अस्तित्वात होते, पण उपाशी ते विकत घ्यायला फार दरिद्री आणि वितरण त्यांच्यापर्यंत पोहोचायला अपयशी — साठ्यात भरपूर त्या कुटुंबाला पोसत नाही जे ते परवडू वा मिळवू शकत नाही",
+          },
+          {
+            en: "It is impossible; the report of full warehouses must be false",
+            hi: "यह असंभव; भरे गोदामों की रिपोर्ट झूठी होगी",
+            mr: "हे अशक्य; भरलेल्या गोदामांचा अहवाल खोटा असेल",
+          },
+          {
+            en: "The hungry people simply refused to eat the grain",
+            hi: "भूखे लोगों ने बस अन्न खाने से मना किया",
+            mr: "उपाशी लोकांनी फक्त धान्य खायला नकार दिला",
+          },
+          {
+            en: "The country grew too much food, which somehow causes hunger",
+            hi: "देश ने बहुत अधिक अन्न उगाया, जो किसी तरह भूख पैदा करता",
+            mr: "देशाने फार अधिक अन्न पिकवले, जे कसेतरी भूक निर्माण करते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This apparent contradiction is the single most important lesson of the whole chapter, and it turns on the difference between food being available and food being accessible and affordable. Food security has three parts, all of which must hold: enough food must exist (availability), people must be able to physically get it (accessibility), and they must be able to pay for it (affordability). Overflowing government warehouses satisfy only the first. They prove the country as a whole has grown plenty of grain — but grain sitting in a Food Corporation godown does nothing for a hungry family unless it actually reaches that family at a price they can pay. And that is exactly where things broke down. The people going hungry were the very poor: casual labourers, the landless, families with almost no income. Even with grain piled high nationally, they simply did not have the money to buy food at market prices, and where the Public Distribution System failed to reach them or excluded them, the surplus in the warehouse never turned into a meal on their plate. So hunger amid plenty is not a paradox at all once you see that producing enough food is only step one; the harder problem is getting that food to the poorest and making sure they can afford it. This is why economists insist food security is about entitlement and access, not just total production — and why a working PDS, employment that gives the poor income, and anti-poverty measures matter as much as a good harvest. Full granaries and empty stomachs can coexist precisely because availability is not the same as access.",
+          hi: "यह आभासी विरोधाभास पूरे अध्याय का सबसे महत्वपूर्ण सबक़, और यह अन्न के उपलब्ध होने और अन्न के पहुँच योग्य-वहनीय होने के अंतर पर मुड़ता। खाद्य सुरक्षा के तीन भाग, सभी टिकें: पर्याप्त अन्न मौजूद हो (उपलब्धता), लोग इसे भौतिक रूप से पा सकें (पहुँच), और वे इसका दाम चुका सकें (वहनीयता)। उमड़ते सरकारी गोदाम केवल पहला संतुष्ट करते। वे सिद्ध करते देश ने समग्र रूप से भरपूर अन्न उगाया — पर खाद्य निगम के गोदाम में पड़ा अन्न किसी भूखे परिवार के लिए कुछ नहीं करता जब तक यह वास्तव में उस परिवार तक ऐसी क़ीमत पर पहुँचे जो वे चुका सकें। और ठीक वहीं चीज़ें बिगड़ीं। भूखे रहते लोग निर्धनतम थे: दिहाड़ी मज़दूर, भूमिहीन, लगभग बिना आय के परिवार। राष्ट्रीय रूप से अन्न ऊँचा ढेर होने पर भी, उनके पास बस बाज़ार क़ीमतों पर अन्न खरीदने पैसा नहीं था, और जहाँ सार्वजनिक वितरण प्रणाली उन तक पहुँचने में विफल या उन्हें छोड़ती, गोदाम का अधिशेष कभी उनकी थाली पर भोजन में नहीं बदला। अतः भरपूर के बीच भूख कोई विरोधाभास नहीं जब तुम देखो कि पर्याप्त अन्न उगाना केवल पहला क़दम; कठिन समस्या वह अन्न निर्धनतम तक पहुँचाना और सुनिश्चित करना कि वे इसे वहन कर सकें। इसी से अर्थशास्त्री ज़ोर देते खाद्य सुरक्षा हक़दारी और पहुँच के बारे में, केवल कुल उत्पादन नहीं — और क्यों चलती PDS, निर्धनों को आय देता रोज़गार, और निर्धनता-निवारण उपाय अच्छी फ़सल जितने ही मायने रखते। भरे गोदाम और ख़ाली पेट ठीक इसलिए साथ रह सकते क्योंकि उपलब्धता पहुँच के बराबर नहीं।",
+          mr: "हा आभासी विरोधाभास अख्ख्या प्रकरणाचा सर्वांत महत्त्वाचा धडा, आणि तो अन्न उपलब्ध असणे आणि अन्न पोहोचण्याजोगे-परवडणारे असणे यांच्या फरकावर वळतो. अन्नसुरक्षेचे तीन भाग, सारे टिकावे: पुरेसे अन्न अस्तित्वात असावे (उपलब्धता), लोक ते भौतिकरीत्या मिळवू शकावे (पोहोच), आणि ते त्याची किंमत मोजू शकावे (परवडणे). ओसंडणारी सरकारी गोदामे फक्त पहिले पूर्ण करतात. ती सिद्ध करतात देशाने समग्रपणे भरपूर धान्य पिकवले — पण अन्न महामंडळाच्या गोदामात पडलेले धान्य कोणत्याही उपाशी कुटुंबासाठी काही करत नाही जोवर ते प्रत्यक्षात त्या कुटुंबापर्यंत अशा किमतीला पोहोचत नाही जी ते मोजू शकतील. आणि नेमके तिथेच गोष्टी बिघडल्या. उपाशी राहणारे लोक दरिद्रीतम होते: रोजंदारी मजूर, भूमिहीन, जवळपास बिना उत्पन्नाची कुटुंबे. राष्ट्रीयदृष्ट्या धान्य उंच रचलेले असतानाही, त्यांच्याकडे फक्त बाजार किमतींना अन्न विकत घ्यायला पैसा नव्हता, आणि जिथे सार्वजनिक वितरण प्रणाली त्यांच्यापर्यंत पोहोचायला अपयशी वा त्यांना वगळत, गोदामाचा अतिरिक्त कधी त्यांच्या ताटावर अन्नात बदलला नाही. म्हणून भरपूरीमध्ये भूक कोणताही विरोधाभास नाही जेव्हा तुम्ही पाहता की पुरेसे अन्न पिकवणे फक्त पहिले पाऊल; कठीण समस्या ते अन्न दरिद्रीतमांपर्यंत पोहोचवणे आणि सुनिश्चित करणे की ते परवडू शकतील. म्हणूनच अर्थतज्ज्ञ जोर देतात अन्नसुरक्षा हक्क आणि पोहोचेबद्दल, फक्त एकूण उत्पादन नव्हे — आणि का चालणारी PDS, दरिद्रींना उत्पन्न देणारा रोजगार, आणि दारिद्र्य-निवारण उपाय चांगल्या पिकाइतकेच महत्त्वाचे. भरलेली गोदामे आणि रिकामी पोटे नेमके म्हणून एकत्र राहू शकतात कारण उपलब्धता पोहोचेइतकी नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "India's food security rests on three linked tools: the Minimum Support Price paid to farmers, the buffer stock held by the government, and the Public Distribution System that sells cheap grain to the poor. How do these three work together, and whom does each mainly protect?",
+          hi: "भारत की खाद्य सुरक्षा तीन जुड़े औज़ारों पर टिकी: किसानों को दिया न्यूनतम समर्थन मूल्य, सरकार द्वारा रखा बफ़र स्टॉक, और निर्धनों को सस्ता अन्न बेचती सार्वजनिक वितरण प्रणाली। ये तीन कैसे साथ काम करते, और हर एक मुख्यतः किसे रक्षता?",
+          mr: "भारताची अन्नसुरक्षा तीन जोडलेल्या साधनांवर टिकते: शेतकऱ्यांना दिलेला किमान आधार किंमत, सरकारने राखलेला बफर साठा, आणि दरिद्रींना स्वस्त धान्य विकणारी सार्वजनिक वितरण प्रणाली. ही तीन कशी एकत्र काम करतात, आणि प्रत्येक मुख्यतः कोणाला रक्षतो?",
+        },
+        choices: [
+          {
+            en: "The government buys grain at the MSP, which guarantees farmers a fair price and protects the producer; that grain becomes the buffer stock, a national reserve against shortage; and the PDS then sells it cheaply to poor families, protecting the consumer — together they steady prices, shield both farmer and poor, and keep food reaching the needy year-round",
+            hi: "सरकार MSP पर अन्न खरीदती, जो किसानों को उचित क़ीमत गारंटी और उत्पादक को रक्षती; वह अन्न बफ़र स्टॉक बनता, कमी के विरुद्ध राष्ट्रीय भंडार; और PDS फिर इसे निर्धन परिवारों को सस्ते बेचती, उपभोक्ता को रक्षती — साथ मिलकर वे क़ीमतें स्थिर करते, किसान और निर्धन दोनों को ढालते, और अन्न ज़रूरतमंद तक साल भर पहुँचाते",
+            mr: "सरकार MSP ला धान्य विकत घेते, जे शेतकऱ्यांना वाजवी किंमत हमी आणि उत्पादकाला रक्षते; ते धान्य बफर साठा बनते, टंचाईविरुद्ध राष्ट्रीय साठा; आणि PDS मग ते दरिद्री कुटुंबांना स्वस्तात विकते, ग्राहकाला रक्षत — एकत्र ती किमती स्थिर करतात, शेतकरी आणि दरिद्री दोघांना ढाल देतात, आणि अन्न गरजूंपर्यंत वर्षभर पोहोचवतात",
+          },
+          {
+            en: "All three tools exist only to protect the government's own profits",
+            hi: "तीनों औज़ार केवल सरकार के अपने लाभ रक्षने को मौजूद",
+            mr: "तिन्ही साधने फक्त सरकारच्या स्वतःच्या नफ्याचे रक्षण करायला अस्तित्वात",
+          },
+          {
+            en: "The MSP protects the poor and the PDS protects the farmer, with the buffer stock doing nothing",
+            hi: "MSP निर्धनों को रक्षता और PDS किसान को, बफ़र स्टॉक कुछ नहीं करता",
+            mr: "MSP दरिद्रींना रक्षतो आणि PDS शेतकऱ्याला, बफर साठा काही करत नाही",
+          },
+          {
+            en: "The three tools work against each other and cancel out",
+            hi: "तीन औज़ार एक-दूसरे के विरुद्ध काम करते और रद्द होते",
+            mr: "तीन साधने एकमेकांविरुद्ध काम करतात आणि रद्द होतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The three tools form a single connected system, and the neat way to understand it is to follow the grain and ask, at each step, who is being protected. It begins with the farmer. When harvests are good, prices can crash so low that farmers lose money on the very crop they worked to grow — a disaster that would make them plant less next year. To prevent this, the government announces a Minimum Support Price before the sowing season and promises to buy grain at that price. This guarantees the producer a fair return no matter what the open market does, protecting the farmer and encouraging steady production. The grain the government buys at the MSP does not vanish; it is stored, and this accumulated reserve is the buffer stock, held by the Food Corporation of India. Its job is to protect the nation against future shortage: if a drought or flood wrecks a later harvest, the country can draw on this stockpile instead of facing famine, so the buffer smooths out the ups and downs between good and bad years. Finally, that stored grain is put to use through the Public Distribution System, the network of ration shops that sells wheat, rice and other essentials to poor cardholders at subsidised prices far below the market. This protects the consumer — specifically the poor, who could not otherwise afford enough food — by making food accessible and affordable, which, as we saw, is what availability alone cannot guarantee. So the chain runs: MSP (protect the farmer) → buffer stock (protect against shortage) → PDS (protect the poor consumer). Each tool guards a different vulnerability, and only together do they deliver real food security: fair prices for those who grow the food, a reserve against bad years, and affordable grain reaching the hungry. The system is not perfect — holding huge stocks is costly, some grain is wasted, and the PDS can leak or miss people — but its logic is exactly this careful balancing of farmer, reserve and poor consumer.",
+          hi: "तीन औज़ार एक जुड़ा तंत्र बनाते, और इसे समझने का सुथरा तरीक़ा अन्न का पीछा करना और हर क़दम पूछना, किसे रक्षा जा रहा। यह किसान से शुरू। जब फ़सलें अच्छी, क़ीमतें इतनी गिर सकतीं कि किसान उसी फ़सल पर पैसा खोएँ जिसे उगाने मेहनत की — एक विपत्ति जो उन्हें अगले वर्ष कम बोने कराए। इसे रोकने, सरकार बुवाई ऋतु से पहले न्यूनतम समर्थन मूल्य घोषित करती और उस क़ीमत पर अन्न खरीदने का वादा करती। यह उत्पादक को उचित प्रतिफल गारंटी करता चाहे खुला बाज़ार कुछ भी करे, किसान को रक्षते और स्थिर उत्पादन प्रोत्साहित करते। सरकार MSP पर जो अन्न खरीदती वह लुप्त नहीं होता; यह जमा होता, और यह संचित भंडार बफ़र स्टॉक, भारतीय खाद्य निगम द्वारा रखा। इसका काम राष्ट्र को भावी कमी से रक्षना: यदि सूखा या बाढ़ बाद की फ़सल बर्बाद करे, देश अकाल के बजाय इस भंडार पर खींच सकता, अतः बफ़र अच्छे-बुरे वर्षों के बीच उतार-चढ़ाव सम करता। अंततः, वह जमा अन्न सार्वजनिक वितरण प्रणाली से काम में लाया जाता, राशन दुकानों का जाल जो गेहूँ, चावल और अन्य आवश्यक निर्धन कार्डधारकों को बाज़ार से कहीं कम रियायती क़ीमतों पर बेचता। यह उपभोक्ता को रक्षता — ख़ासकर निर्धनों को, जो अन्यथा पर्याप्त अन्न वहन न कर सकें — अन्न को पहुँच योग्य-वहनीय बनाकर, जो, जैसा हमने देखा, उपलब्धता अकेली गारंटी नहीं कर सकती। अतः श्रृंखला चलती: MSP (किसान रक्षो) → बफ़र स्टॉक (कमी से रक्षो) → PDS (निर्धन उपभोक्ता रक्षो)। हर औज़ार भिन्न संवेदनशीलता रक्षता, और केवल साथ वे असली खाद्य सुरक्षा देते: अन्न उगाने वालों को उचित क़ीमतें, बुरे वर्षों के विरुद्ध भंडार, और भूखों तक पहुँचता वहनीय अन्न। तंत्र संपूर्ण नहीं — विशाल भंडार रखना महँगा, कुछ अन्न बर्बाद, और PDS रिस या लोगों को चूक सकती — पर इसका तर्क ठीक यही किसान, भंडार और निर्धन उपभोक्ता का सावधान संतुलन।",
+          mr: "तीन साधने एक जोडलेली यंत्रणा बनवतात, आणि हे समजण्याचा नीटनेटका मार्ग धान्याचा पाठलाग करणे आणि प्रत्येक पावलाला विचारणे, कोणाला रक्षले जात आहे. ते शेतकऱ्यापासून सुरू. जेव्हा पिके चांगली, किमती इतक्या घसरू शकतात की शेतकरी त्याच पिकावर पैसा गमावतात जे पिकवायला मेहनत केली — एक आपत्ती जी त्यांना पुढच्या वर्षी कमी पेरायला लावेल. हे रोखायला, सरकार पेरणी हंगामाआधी किमान आधार किंमत घोषित करते आणि त्या किमतीला धान्य विकत घ्यायचे वचन देते. हे उत्पादकाला वाजवी परतावा हमी देते खुला बाजार काहीही करो, शेतकऱ्याला रक्षत आणि स्थिर उत्पादन प्रोत्साहित करत. सरकार MSP ला जे धान्य विकत घेते ते नाहीसे होत नाही; ते साठवले जाते, आणि हा साठलेला साठा बफर साठा, भारतीय अन्न महामंडळाने राखलेला. त्याचे काम राष्ट्राला भविष्यातील टंचाईपासून रक्षणे: जर दुष्काळ वा पूर नंतरचे पीक उद्ध्वस्त करेल, देश दुष्काळाऐवजी या साठ्यावर खेचू शकतो, म्हणून बफर चांगल्या-वाईट वर्षांतील चढउतार सम करतो. अखेर, ते साठवलेले धान्य सार्वजनिक वितरण प्रणालीतून कामात आणले जाते, रेशन दुकानांचे जाळे जे गहू, तांदूळ आणि इतर आवश्यक दरिद्री कार्डधारकांना बाजाराहून कितीतरी कमी अनुदानित किमतींना विकते. हे ग्राहकाला रक्षते — विशेषतः दरिद्रींना, जे अन्यथा पुरेसे अन्न परवडू शकणार नाहीत — अन्न पोहोचण्याजोगे-परवडणारे बनवून, जे, जसे आपण पाहिले, उपलब्धता एकटी हमी देऊ शकत नाही. म्हणून साखळी चालते: MSP (शेतकऱ्याला रक्षा) → बफर साठा (टंचाईपासून रक्षा) → PDS (दरिद्री ग्राहकाला रक्षा). प्रत्येक साधन वेगळी असुरक्षितता रक्षते, आणि फक्त एकत्र ती खरी अन्नसुरक्षा देतात: अन्न पिकवणाऱ्यांना वाजवी किमती, वाईट वर्षांविरुद्ध साठा, आणि उपाशांपर्यंत पोहोचणारे परवडणारे अन्न. यंत्रणा परिपूर्ण नाही — प्रचंड साठे राखणे महाग, काही धान्य वाया, आणि PDS झिरपू वा लोकांना चुकवू शकते — पण तिचे तर्कशास्त्र नेमके हेच शेतकरी, साठा आणि दरिद्री ग्राहकाचा काळजीपूर्वक समतोल.",
+        },
+      },
+    ],
+  },
 ];
