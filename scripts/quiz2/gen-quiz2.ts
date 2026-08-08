@@ -38,6 +38,7 @@ import { G8_HISTORY } from "./g8-history";
 import { G8_CIVICS } from "./g8-civics";
 import { G9_SCIENCE } from "./g9-science";
 import { G9_HISTORY } from "./g9-history";
+import { G10_SCIENCE } from "./g10-science";
 import { G9_GEOGRAPHY } from "./g9-geography";
 import { G9_CIVICS } from "./g9-civics";
 import { G9_ECONOMICS } from "./g9-economics";
@@ -66,6 +67,7 @@ function main() {
     ...G8_CIVICS.map(generateChapter),
     ...G9_SCIENCE.map(generateChapter),
     ...G9_HISTORY.map(generateChapter),
+    ...G10_SCIENCE.map(generateChapter),
     ...G9_GEOGRAPHY.map(generateChapter),
     ...G9_CIVICS.map(generateChapter),
     ...G9_ECONOMICS.map(generateChapter),
