@@ -975,4 +975,1007 @@ export const G7_SCIENCE: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Acids, Bases and Salts (indicators and the great cancel)    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-acids-bases-salts",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 5 — Acids, Bases and Salts",
+      hi: "अध्याय 5 — अम्ल, क्षारक और लवण",
+      mr: "प्रकरण 5 — आम्ले, आम्लारी आणि क्षार",
+    },
+    name: {
+      en: "Acids, Bases and Salts",
+      hi: "अम्ल, क्षारक और लवण",
+      mr: "आम्ले, आम्लारी आणि क्षार",
+    },
+    summary: {
+      en: "The sour tribe and the bitter tribe, told apart by litmus, turmeric and china rose — and neutralisation, the great cancelling that leaves salt, water and warmth.",
+      hi: "खट्टा कुनबा और कड़वा कुनबा, लिटमस, हल्दी और गुड़हल से पहचाने हुए — और उदासीनीकरण, वह महा-कटौती जो लवण, पानी और गर्मी छोड़ जाती है।",
+      mr: "आंबट जमात आणि कडू जमात, लिटमस, हळद आणि जास्वंदाने ओळखलेल्या — आणि उदासिनीकरण, क्षार, पाणी व ऊब मागे ठेवणारी महा-रद्दबातल.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "acids",
+        name: { en: "Acids", hi: "अम्ल", mr: "आम्ले" },
+        kind: "class",
+        prompt: {
+          en: "Lemon, curd and vinegar share one sharp, sour taste. To which class of substances do they all belong?",
+          hi: "नींबू, दही और सिरके में एक ही तीखा खट्टापन है। ये सब किस वर्ग के पदार्थ हैं?",
+          mr: "लिंबू, दही आणि व्हिनेगरमध्ये एकच झणझणीत आंबटपणा आहे. हे सारे कोणत्या वर्गाचे पदार्थ?",
+        },
+        statement: {
+          en: "Acids taste sour — lemon's citric, curd's lactic and vinegar's acetic all belong to the tribe, and all turn blue litmus red.",
+          hi: "अम्ल खट्टे होते हैं — नींबू का सिट्रिक, दही का लैक्टिक और सिरके का ऐसीटिक सब इसी कुनबे के हैं, और सब नीले लिटमस को लाल करते हैं।",
+          mr: "आम्ले आंबट असतात — लिंबाचे सायट्रिक, दह्याचे लॅक्टिक आणि व्हिनेगरचे अ‍ॅसेटिक सारे याच जमातीचे, आणि सारे निळ्या लिटमसला लाल करतात.",
+        },
+        detail: {
+          en: "The lab's strong ones — sulphuric, hydrochloric — are never tasted; taste-testing is for food acids only, and even they are met diluted.",
+          hi: "प्रयोगशाला के तेज़ अम्ल — सल्फ़्यूरिक, हाइड्रोक्लोरिक — कभी चखे नहीं जाते; स्वाद-परीक्षा केवल भोजन के अम्लों की होती है, और वे भी घुले-मिले।",
+          mr: "प्रयोगशाळेतली कडक आम्ले — सल्फ्युरिक, हायड्रोक्लोरिक — कधीच चाखली जात नाहीत; चव-परीक्षा फक्त अन्नातल्या आम्लांची, तीही सौम्य रूपात.",
+        },
+        extra: {
+          en: "Ant stings and nettle hairs inject formic acid — the tribe has soldiers as well as cooks.",
+          hi: "चींटी का डंक और बिच्छू-बूटी के रोएँ फ़ॉर्मिक अम्ल चुभोते हैं — कुनबे में रसोइए ही नहीं, सिपाही भी हैं।",
+          mr: "मुंगीचा डंख आणि खाजकुइलीचे केस फॉर्मिक आम्ल टोचतात — जमातीत स्वयंपाकीच नव्हे, शिपाईही आहेत.",
+        },
+        pair: {
+          left: { en: "The sour tribe", hi: "खट्टा कुनबा", mr: "आंबट जमात" },
+          right: {
+            en: "blue litmus turned red",
+            hi: "लाल हुआ नीला लिटमस",
+            mr: "लाल झालेले निळे लिटमस",
+          },
+        },
+      },
+      {
+        id: "bases",
+        name: { en: "Bases", hi: "क्षारक", mr: "आम्लारी" },
+        kind: "class",
+        prompt: {
+          en: "Soap solution and baking soda feel slippery and taste bitter. To which class of substances do they belong?",
+          hi: "साबुन का घोल और खाने का सोडा फिसलते हैं और कड़वे लगते हैं। ये किस वर्ग के पदार्थ हैं?",
+          mr: "साबणाचे द्रावण आणि खाण्याचा सोडा निसरडे लागतात आणि कडू. हे कोणत्या वर्गाचे पदार्थ?",
+        },
+        statement: {
+          en: "Bases feel soapy and taste bitter — they are the acid's opposite camp, and they turn red litmus blue.",
+          hi: "क्षारक साबुन जैसे फिसलते और कड़वे होते हैं — अम्ल का विरोधी ख़ेमा, जो लाल लिटमस को नीला करता है।",
+          mr: "आम्लारी साबणासारखी निसरडी आणि कडू असतात — आम्लाची विरुद्ध छावणी, जी लाल लिटमसला निळे करते.",
+        },
+        pair: {
+          left: {
+            en: "The bitter, soapy tribe",
+            hi: "कड़वा, साबुनी कुनबा",
+            mr: "कडू, साबणी जमात",
+          },
+          right: {
+            en: "red litmus turned blue",
+            hi: "नीला हुआ लाल लिटमस",
+            mr: "निळे झालेले लाल लिटमस",
+          },
+        },
+      },
+      {
+        id: "litmus",
+        name: { en: "Litmus", hi: "लिटमस", mr: "लिटमस" },
+        kind: "indicator",
+        prompt: {
+          en: "Which dye, drawn from lichens, is the laboratory's classic acid-base indicator?",
+          hi: "शैकों से निकाला कौन-सा रंग प्रयोगशाला का क्लासिक अम्ल-क्षारक सूचक है?",
+          mr: "दगडफुलांतून काढलेला कोणता रंग प्रयोगशाळेचा अभिजात आम्ल-आम्लारी दर्शक आहे?",
+        },
+        statement: {
+          en: "Litmus, extracted from lichens, gives every substance a colour-verdict: red for acid, blue for base.",
+          hi: "शैकों से निकला लिटमस हर पदार्थ को रंग का फ़ैसला सुनाता है: अम्ल को लाल, क्षारक को नीला।",
+          mr: "दगडफुलांतून काढलेले लिटमस प्रत्येक पदार्थाला रंगाचा निकाल देते: आम्लाला लाल, आम्लारीला निळा.",
+        },
+        detail: {
+          en: "In distilled water it rests purple — the neutral shade between the two camps.",
+          hi: "आसुत जल में वह बैंगनी ठहरता है — दोनों ख़ेमों के बीच का उदासीन रंग।",
+          mr: "ऊर्ध्वपातित पाण्यात ते जांभळे थांबते — दोन छावण्यांमधली उदासीन छटा.",
+        },
+        extra: {
+          en: "It travels as solution and as paper strips — the strips are the field notebook of chemistry.",
+          hi: "वह घोल और काग़ज़ी पट्टियों, दोनों रूपों में चलता है — पट्टियाँ रसायनशास्त्र की फ़ील्ड-डायरी हैं।",
+          mr: "ते द्रावण आणि कागदी पट्ट्या, दोन्ही रूपांत फिरते — पट्ट्या म्हणजे रसायनशास्त्राची फील्ड-वही.",
+        },
+        pair: {
+          left: { en: "The lichen's dye", hi: "शैक का रंग", mr: "दगडफुलाचा रंग" },
+          right: {
+            en: "a colour for every camp",
+            hi: "हर ख़ेमे का एक रंग",
+            mr: "प्रत्येक छावणीला एक रंग",
+          },
+        },
+      },
+      {
+        id: "turmeric",
+        name: { en: "Turmeric", hi: "हल्दी", mr: "हळद" },
+        kind: "indicator",
+        prompt: {
+          en: "A curry stain on a white shirt turns red exactly where soap touches it. Which kitchen indicator is running that experiment?",
+          hi: "सफ़ेद क़मीज़ पर सब्ज़ी का दाग़ ठीक वहीं लाल हो जाता है जहाँ साबुन लगे। रसोई का कौन-सा सूचक वह प्रयोग चला रहा है?",
+          mr: "पांढऱ्या सदऱ्यावरचा भाजीचा डाग नेमका तिथेच लाल होतो जिथे साबण लागतो. स्वयंपाकघरातला कोणता दर्शक तो प्रयोग चालवतो आहे?",
+        },
+        statement: {
+          en: "Turmeric stays yellow in acid but turns red with bases — soap on a curry stain performs the test on laundry day.",
+          hi: "हल्दी अम्ल में पीली रहती है पर क्षारक से लाल हो जाती है — धुलाई के दिन सब्ज़ी के दाग़ पर साबुन यही जाँच करता है।",
+          mr: "हळद आम्लात पिवळी राहते पण आम्लारीने लाल होते — धुण्याच्या दिवशी भाजीच्या डागावर साबण हीच चाचणी करतो.",
+        },
+        detail: {
+          en: "Paint paper with turmeric paste and dry it — you own indicator strips for the price of a pinch.",
+          hi: "काग़ज़ पर हल्दी का लेप लगाकर सुखा लीजिए — चुटकी भर के दाम में सूचक-पट्टियाँ आपकी।",
+          mr: "कागदावर हळदीचा लेप लावून वाळवा — चिमूटभराच्या किमतीत दर्शक-पट्ट्या तुमच्या.",
+        },
+        extra: {
+          en: "In acid it simply stays yellow — in chemistry, silence is also an answer.",
+          hi: "अम्ल में वह बस पीली रहती है — रसायन में चुप्पी भी एक उत्तर है।",
+          mr: "आम्लात ती नुसती पिवळी राहते — रसायनशास्त्रात मौनही एक उत्तर आहे.",
+        },
+        pair: {
+          left: {
+            en: "The curry stain under soap",
+            hi: "साबुन तले सब्ज़ी का दाग़",
+            mr: "साबणाखालचा भाजीचा डाग",
+          },
+          right: { en: "a sudden red", hi: "अचानक लाली", mr: "अचानक लाली" },
+        },
+      },
+      {
+        id: "china-rose",
+        name: { en: "China rose (gudhal)", hi: "गुड़हल", mr: "जास्वंद" },
+        kind: "indicator",
+        prompt: {
+          en: "Which petal-made indicator turns acids dark pink and bases green?",
+          hi: "पंखुड़ियों से बना कौन-सा सूचक अम्लों को गहरा गुलाबी और क्षारकों को हरा कर देता है?",
+          mr: "पाकळ्यांपासून बनलेला कोणता दर्शक आम्लांना गडद गुलाबी आणि आम्लारींना हिरवे करतो?",
+        },
+        statement: {
+          en: "China rose indicator signals both ways — dark pink for acids, green for bases: a two-colour message from a flower.",
+          hi: "गुड़हल का सूचक दोनों ओर इशारा करता है — अम्ल को गहरा गुलाबी, क्षारक को हरा: फूल का दो-रंगा संदेश।",
+          mr: "जास्वंदाचा दर्शक दोन्हीकडे खुणावतो — आम्लाला गडद गुलाबी, आम्लारीला हिरवे: फुलाचा दुरंगी निरोप.",
+        },
+        pair: {
+          left: { en: "The hibiscus petals", hi: "गुड़हल की पंखुड़ियाँ", mr: "जास्वंदाच्या पाकळ्या" },
+          right: {
+            en: "pink for acid, green for base",
+            hi: "अम्ल को गुलाबी, क्षारक को हरा",
+            mr: "आम्लाला गुलाबी, आम्लारीला हिरवे",
+          },
+        },
+      },
+      {
+        id: "neutralisation",
+        name: { en: "Neutralisation", hi: "उदासीनीकरण", mr: "उदासिनीकरण" },
+        kind: "reaction",
+        prompt: {
+          en: "Acid and base cancel each other, forming salt and water and setting heat free. What is this reaction called?",
+          hi: "अम्ल और क्षारक एक-दूसरे को काटकर लवण और पानी बनाते हैं, गर्मी छोड़ते हुए। इस अभिक्रिया का नाम क्या है?",
+          mr: "आम्ल आणि आम्लारी एकमेकांना रद्द करून क्षार आणि पाणी बनवतात, उष्णता सोडत. या अभिक्रियेचे नाव काय?",
+        },
+        statement: {
+          en: "Neutralisation is acid meeting base: salt and water form, heat is released, and both fighters lose their natures.",
+          hi: "उदासीनीकरण अम्ल-क्षारक की मुठभेड़ है: लवण और पानी बनते हैं, गर्मी निकलती है, और दोनों योद्धा अपना स्वभाव खो बैठते हैं।",
+          mr: "उदासिनीकरण म्हणजे आम्ल-आम्लारीची गाठ: क्षार आणि पाणी बनतात, उष्णता सुटते, आणि दोन्ही लढवय्ये आपला स्वभाव गमावतात.",
+        },
+        detail: {
+          en: "The warmth is no metaphor — mix the dilute pair and the test tube heats in your palm.",
+          hi: "गर्मी कोई अलंकार नहीं — तनु जोड़ी मिलाइए और परखनली हथेली में गर्म हो उठती है।",
+          mr: "ऊब हा अलंकार नाही — सौम्य जोडी मिसळा आणि परीक्षानळी तळहातात गरम होते.",
+        },
+        extra: {
+          en: "Stomachs, soils, factory drains and stung skin all call on it — one reaction, many rescues.",
+          hi: "आमाशय, मिट्टी, कारख़ानों की नालियाँ और डंक लगी त्वचा — सब इसे पुकारते हैं: एक अभिक्रिया, अनेक बचाव।",
+          mr: "जठरे, माती, कारखान्यांची गटारे आणि डंख बसलेली त्वचा — सारे याला बोलावतात: एक अभिक्रिया, अनेक सुटका.",
+        },
+        pair: {
+          left: { en: "Acid meeting base", hi: "अम्ल से मिलता क्षारक", mr: "आम्लाला भेटणारी आम्लारी" },
+          right: {
+            en: "salt, water and warmth",
+            hi: "लवण, पानी और गर्मी",
+            mr: "क्षार, पाणी आणि ऊब",
+          },
+        },
+      },
+      {
+        id: "antacid",
+        name: {
+          en: "The antacid (milk of magnesia)",
+          hi: "प्रति-अम्ल (मिल्क ऑफ़ मैग्नीशिया)",
+          mr: "आम्लविरोधक (मिल्क ऑफ मॅग्नेशिया)",
+        },
+        kind: "remedy",
+        prompt: {
+          en: "Too much stomach acid burns. Which mild base does the doctor send down by the spoonful to calm it?",
+          hi: "आमाशय का बढ़ा अम्ल जलन देता है। डॉक्टर कौन-सा हल्का क्षारक चम्मच भर भेजते हैं उसे शांत करने?",
+          mr: "जठरातले वाढलेले आम्ल जळजळ देते. डॉक्टर कोणती सौम्य आम्लारी चमचाभर पाठवतात ते शांत करायला?",
+        },
+        statement: {
+          en: "Milk of magnesia, a mild base, neutralises the stomach's excess acid — medicine that is chemistry by the spoon.",
+          hi: "मिल्क ऑफ़ मैग्नीशिया, एक हल्का क्षारक, आमाशय का बढ़ा अम्ल उदासीन करता है — चम्मच से पिलाया रसायनशास्त्र।",
+          mr: "मिल्क ऑफ मॅग्नेशिया ही सौम्य आम्लारी जठरातले जादा आम्ल उदासीन करते — चमच्याने पाजलेले रसायनशास्त्र.",
+        },
+        pair: {
+          left: { en: "The burning stomach", hi: "जलता आमाशय", mr: "जळणारे जठर" },
+          right: {
+            en: "a mild base to calm it",
+            hi: "शांत करता हल्का क्षारक",
+            mr: "शांत करणारी सौम्य आम्लारी",
+          },
+        },
+      },
+      {
+        id: "lime-soil",
+        name: { en: "Lime (chuna) for sour soil", hi: "खट्टी मिट्टी के लिए चूना", mr: "आंबट मातीसाठी चुना" },
+        kind: "remedy",
+        prompt: {
+          en: "A field too acidic for crops is dusted with which base, sack by sack, to sweeten its soil?",
+          hi: "फ़सलों के लिए ज़्यादा अम्लीय खेत पर कौन-सा क्षारक बोरी-बोरी छिड़का जाता है, मिट्टी मीठी करने?",
+          mr: "पिकांसाठी फार आम्लीय झालेल्या शेतावर कोणती आम्लारी पोत्या-पोत्याने भुरभुरली जाते, माती गोड करायला?",
+        },
+        statement: {
+          en: "Quicklime and slaked lime neutralise acidic soil — the farmer's antacid, prescribed by the sackful.",
+          hi: "बिना बुझा और बुझा चूना अम्लीय मिट्टी को उदासीन करते हैं — किसान का प्रति-अम्ल, बोरी के हिसाब से लिखा नुस्ख़ा।",
+          mr: "कळीचा आणि विझवलेला चुना आम्लीय माती उदासीन करतो — शेतकऱ्याचा आम्लविरोधक, पोत्याच्या मापाने लिहिलेले औषध.",
+        },
+        detail: {
+          en: "Basic soil gets the opposite prescription — rotting organic manure, gently acidic, pulls it back to the middle.",
+          hi: "क्षारकीय मिट्टी को उल्टा नुस्ख़ा मिलता है — सड़ती जैविक खाद, हल्की अम्लीय, उसे बीच में लौटा लाती है।",
+          mr: "आम्लारीय मातीला उलटे औषध मिळते — कुजणारे सेंद्रिय खत, सौम्य आम्लीय, तिला मध्यावर परत आणते.",
+        },
+        extra: {
+          en: "Factory waste, often acidic, is limed before any river is made to drink it.",
+          hi: "कारख़ानों का प्रायः अम्लीय कचरा नदी को पिलाने से पहले चूने से साधा जाता है।",
+          mr: "कारखान्यांचा बहुधा आम्लीय कचरा नदीला पाजण्याआधी चुन्याने साधला जातो.",
+        },
+        pair: {
+          left: { en: "The sour field", hi: "खट्टा खेत", mr: "आंबट शेत" },
+          right: { en: "a dusting of lime", hi: "चूने का छिड़काव", mr: "चुन्याची भुरभुर" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Predict the colours: A-blue litmus in lemon juice, B-turmeric paper in soap solution, C-china rose in vinegar. Which trio is right?",
+          hi: "रंग बताइए: अ-नींबू रस में नीला लिटमस, ब-साबुन के घोल में हल्दी पत्र, स-सिरके में गुड़हल। कौन-सी तिकड़ी सही है?",
+          mr: "रंग सांगा: अ-लिंबाच्या रसात निळे लिटमस, ब-साबणाच्या द्रावणात हळद-कागद, क-व्हिनेगरमध्ये जास्वंद. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: red · B: red · C: dark pink",
+            hi: "अ: लाल · ब: लाल · स: गहरा गुलाबी",
+            mr: "अ: लाल · ब: लाल · क: गडद गुलाबी",
+          },
+          {
+            en: "A: blue · B: yellow · C: green",
+            hi: "अ: नीला · ब: पीला · स: हरा",
+            mr: "अ: निळा · ब: पिवळा · क: हिरवा",
+          },
+          {
+            en: "A: red · B: yellow · C: green",
+            hi: "अ: लाल · ब: पीला · स: हरा",
+            mr: "अ: लाल · ब: पिवळा · क: हिरवा",
+          },
+          {
+            en: "A: blue · B: red · C: dark pink",
+            hi: "अ: नीला · ब: लाल · स: गहरा गुलाबी",
+            mr: "अ: निळा · ब: लाल · क: गडद गुलाबी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Lemon juice is acid, so blue litmus goes red. Soap is basic, so turmeric goes red too — two different reds from two different causes. Vinegar is acid, and china rose answers acids with dark pink. The trap is assuming one substance gives one colour everywhere: the COLOUR belongs to the indicator-substance pair.",
+          hi: "नींबू रस अम्ल है, अतः नीला लिटमस लाल। साबुन क्षारकीय है, अतः हल्दी भी लाल — दो अलग कारणों से दो अलग लालियाँ। सिरका अम्ल है, और गुड़हल अम्लों को गहरे गुलाबी से जवाब देता है। जाल यह मानने में है कि एक पदार्थ हर जगह एक रंग देगा: रंग सूचक-पदार्थ की जोड़ी का होता है।",
+          mr: "लिंबाचा रस आम्ल, म्हणून निळे लिटमस लाल. साबण आम्लारीय, म्हणून हळदही लाल — दोन वेगळ्या कारणांनी दोन वेगळ्या लाली. व्हिनेगर आम्ल, आणि जास्वंद आम्लांना गडद गुलाबीने उत्तर देते. सापळा हा की एक पदार्थ सर्वत्र एकच रंग देईल असे मानणे: रंग दर्शक-पदार्थाच्या जोडीचा असतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "An ant's sting injects formic acid, and rubbing moist baking soda on it eases the pain. Why would rubbing vinegar on the same sting be a mistake?",
+          hi: "चींटी का डंक फ़ॉर्मिक अम्ल चुभोता है, और उस पर गीला खाने का सोडा मलने से आराम मिलता है। उसी डंक पर सिरका मलना ग़लती क्यों होगी?",
+          mr: "मुंगीचा डंख फॉर्मिक आम्ल टोचतो, आणि त्यावर ओला खाण्याचा सोडा चोळल्याने आराम मिळतो. त्याच डंखावर व्हिनेगर चोळणे चूक का ठरेल?",
+        },
+        choices: [
+          {
+            en: "The pain is an acid's work; soda, a mild base, neutralises it — vinegar is more acid and only reinforces the attacker",
+            hi: "दर्द अम्ल का काम है; सोडा, हल्का क्षारक, उसे उदासीन करता है — सिरका और अम्ल है, वह हमलावर की ही कुमक है",
+            mr: "वेदना आम्लाचे काम; सोडा ही सौम्य आम्लारी ते उदासीन करते — व्हिनेगर आणखी आम्ल आहे, ते हल्लेखोराचीच कुमक",
+          },
+          {
+            en: "Vinegar is too costly to waste on stings",
+            hi: "सिरका डंक पर बर्बाद करने के लिए बहुत महँगा है",
+            mr: "व्हिनेगर डंखावर वाया घालवण्यासाठी फार महाग आहे",
+          },
+          {
+            en: "Soda works only because it is white",
+            hi: "सोडा केवल इसलिए काम करता है कि वह सफ़ेद है",
+            mr: "सोडा फक्त पांढरा असल्यामुळे चालतो",
+          },
+          {
+            en: "Stings can only be treated with water",
+            hi: "डंक का इलाज केवल पानी से हो सकता है",
+            mr: "डंखावर फक्त पाण्यानेच उपचार होऊ शकतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Choosing a remedy means first naming the enemy. The sting's pain is formic acid at work, so the cure must come from the OTHER camp: baking soda neutralises it into harmless salt and water. Vinegar, an acid itself, joins the wrong side. The same logic runs the antacid bottle and the farmer's lime sack — always cancel with the opposite.",
+          hi: "इलाज चुनने से पहले दुश्मन का नाम लेना पड़ता है। डंक का दर्द फ़ॉर्मिक अम्ल की कारगुज़ारी है, अतः दवा दूसरे ख़ेमे से आनी चाहिए: सोडा उसे निरापद लवण और पानी में उदासीन कर देता है। सिरका स्वयं अम्ल है — ग़लत पाले में खड़ा। यही तर्क प्रति-अम्ल की शीशी और किसान की चूने की बोरी चलाता है — काटो हमेशा विपरीत से।",
+          mr: "उपाय निवडण्याआधी शत्रूचे नाव घ्यावे लागते. डंखाची वेदना फॉर्मिक आम्लाची करामत, म्हणून औषध दुसऱ्या छावणीतून यायला हवे: सोडा त्याला निरुपद्रवी क्षार आणि पाण्यात उदासीन करतो. व्हिनेगर स्वतः आम्ल — चुकीच्या बाजूला उभे. हाच तर्क आम्लविरोधकाची बाटली आणि शेतकऱ्याचे चुन्याचे पोते चालवतो — रद्द करा नेहमी विरुद्धाने.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Physical and Chemical Changes (reversible vs newborn)       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-physical-chemical-changes",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 6 — Physical and Chemical Changes",
+      hi: "अध्याय 6 — भौतिक एवं रासायनिक परिवर्तन",
+      mr: "प्रकरण 6 — भौतिक व रासायनिक बदल",
+    },
+    name: {
+      en: "Physical and Chemical Changes",
+      hi: "भौतिक एवं रासायनिक परिवर्तन",
+      mr: "भौतिक व रासायनिक बदल",
+    },
+    summary: {
+      en: "Two kinds of change: the fold-and-melt kind that leaves the substance itself untouched, and the burn-and-curdle kind that births something new — with rust, crystals and a dazzling ribbon as witnesses.",
+      hi: "परिवर्तन की दो जातियाँ: मोड़ने-पिघलने वाली, जो पदार्थ को अनछुआ छोड़ती है, और जलने-जमने वाली, जो कुछ नया जन्माती है — गवाही में ज़ंग, रवे और एक चौंधियाता फ़ीता।",
+      mr: "बदलांच्या दोन जाती: दुमडण्या-वितळण्याची, जी पदार्थाला अस्पर्श ठेवते, आणि जळण्या-विरजण्याची, जी नवे काही जन्माला घालते — साक्षीला गंज, स्फटिक आणि एक दिपवणारी फीत.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "physical",
+        name: { en: "A physical change", hi: "भौतिक परिवर्तन", mr: "भौतिक बदल" },
+        kind: "change",
+        prompt: {
+          en: "Ice melts, paper is folded, wax softens — shape or state shifts, yet no new substance is born. What kind of change is this?",
+          hi: "बर्फ़ पिघलती है, काग़ज़ मुड़ता है, मोम नरम पड़ता है — रूप या अवस्था बदलती है, पर कोई नया पदार्थ नहीं जन्मता। यह किस जाति का परिवर्तन है?",
+          mr: "बर्फ वितळतो, कागद दुमडतो, मेण मऊ होते — रूप वा अवस्था बदलते, पण नवा पदार्थ जन्मत नाही. हा कोणत्या जातीचा बदल?",
+        },
+        statement: {
+          en: "A physical change alters shape, size or state but makes no new substance — and the old one can usually be brought back.",
+          hi: "भौतिक परिवर्तन रूप, आकार या अवस्था बदलता है पर कोई नया पदार्थ नहीं बनाता — और पुराना प्रायः लौटाया जा सकता है।",
+          mr: "भौतिक बदल रूप, आकार वा अवस्था बदलतो पण नवा पदार्थ बनवत नाही — आणि जुना बहुधा परत आणता येतो.",
+        },
+        pair: {
+          left: { en: "The melted ice", hi: "पिघली बर्फ़", mr: "वितळलेला बर्फ" },
+          right: {
+            en: "water it always was",
+            hi: "पानी, जो वह सदा था",
+            mr: "पाणी, जे ते नेहमीच होते",
+          },
+        },
+      },
+      {
+        id: "chemical",
+        name: { en: "A chemical change", hi: "रासायनिक परिवर्तन", mr: "रासायनिक बदल" },
+        kind: "change",
+        prompt: {
+          en: "Paper burns to ash and smoke — substances that were never paper at all. What kind of change is this?",
+          hi: "काग़ज़ जलकर राख और धुआँ बनता है — ऐसे पदार्थ जो कभी काग़ज़ थे ही नहीं। यह किस जाति का परिवर्तन है?",
+          mr: "कागद जळून राख आणि धूर होतो — असे पदार्थ जे कधी कागद नव्हतेच. हा कोणत्या जातीचा बदल?",
+        },
+        statement: {
+          en: "A chemical change creates new substances — ash and smoke cannot be folded back into paper by any trick.",
+          hi: "रासायनिक परिवर्तन नए पदार्थ रचता है — राख और धुएँ को कोई तरकीब वापस काग़ज़ नहीं मोड़ सकती।",
+          mr: "रासायनिक बदल नवे पदार्थ घडवतो — राख आणि धुराला कोणतीही युक्ती परत कागदात दुमडू शकत नाही.",
+        },
+        detail: {
+          en: "Its telltales: heat, light, a gas, a smell, a colour — some newborn thing that was not on the table before.",
+          hi: "उसकी निशानियाँ: गर्मी, रोशनी, कोई गैस, गंध, रंग — कोई नवजात चीज़ जो पहले मेज़ पर नहीं थी।",
+          mr: "त्याच्या खुणा: उष्णता, प्रकाश, एखादा वायू, गंध, रंग — आधी टेबलावर नसलेले नवजात काही.",
+        },
+        extra: {
+          en: "Most are one-way doors — the reverse journey needs far more than cooling down.",
+          hi: "अधिकांश एकतरफ़ा दरवाज़े हैं — वापसी की राह ठंडा होने भर से नहीं खुलती।",
+          mr: "बहुतेक एकतर्फी दारे — परतीची वाट नुसत्या थंड होण्याने उघडत नाही.",
+        },
+        pair: {
+          left: { en: "The burnt paper", hi: "जला काग़ज़", mr: "जळलेला कागद" },
+          right: {
+            en: "ash that was never paper",
+            hi: "राख, जो कभी काग़ज़ न थी",
+            mr: "राख, जी कधी कागद नव्हती",
+          },
+        },
+      },
+      {
+        id: "rusting",
+        name: { en: "Rusting", hi: "ज़ंग लगना", mr: "गंजणे" },
+        kind: "reaction",
+        prompt: {
+          en: "Iron left in damp air slowly grows a flaky brown coat. What is this slow chemical change called?",
+          hi: "नम हवा में छूटे लोहे पर धीरे-धीरे भूरी परतदार चादर चढ़ती है। इस धीमे रासायनिक परिवर्तन का नाम क्या है?",
+          mr: "दमट हवेत राहिलेल्या लोखंडावर हळूहळू तपकिरी पापुद्र्याचे कवच चढते. या संथ रासायनिक बदलाचे नाव काय?",
+        },
+        statement: {
+          en: "Rusting turns iron into flaky brown rust — it needs BOTH air and moisture, and the coat is a brand-new substance.",
+          hi: "ज़ंग लोहे को भूरी परतदार ज़ंग में बदलता है — उसे हवा और नमी दोनों चाहिए, और वह चादर नया ही पदार्थ है।",
+          mr: "गंजणे लोखंडाला तपकिरी पापुद्री गंजात बदलते — त्याला हवा आणि ओल दोन्ही लागतात, आणि ते कवच नवाच पदार्थ आहे.",
+        },
+        detail: {
+          en: "Paint, oil and grease all win the same way — they lock the pair of culprits out of iron's reach.",
+          hi: "पेंट, तेल और ग्रीस एक ही ढंग से जीतते हैं — दोनों अपराधियों को लोहे की पहुँच से बाहर ताला लगाकर।",
+          mr: "रंग, तेल आणि ग्रीस एकाच रीतीने जिंकतात — दोन्ही अपराध्यांना लोखंडाच्या आवाक्याबाहेर कुलूप लावून.",
+        },
+        extra: {
+          en: "Ships, bridges and rail lines budget crores against this one quiet reaction.",
+          hi: "जहाज़, पुल और रेल-पटरियाँ इस एक ख़ामोश अभिक्रिया के ख़िलाफ़ करोड़ों का बजट रखती हैं।",
+          mr: "जहाजे, पूल आणि रेल्वे-रूळ या एका शांत अभिक्रियेविरुद्ध कोट्यवधींचे अंदाजपत्रक ठेवतात.",
+        },
+        pair: {
+          left: { en: "Iron in damp air", hi: "नम हवा में लोहा", mr: "दमट हवेतले लोखंड" },
+          right: { en: "a flaky brown coat", hi: "भूरी परतदार चादर", mr: "तपकिरी पापुद्री कवच" },
+        },
+      },
+      {
+        id: "galvanisation",
+        name: { en: "Galvanisation", hi: "यशदलेपन (गैल्वनीकरण)", mr: "जस्तलेपन (गॅल्व्हनायझेशन)" },
+        kind: "protection",
+        prompt: {
+          en: "Which protection wraps iron in a thin coat of zinc, so that damp air never finds the metal beneath?",
+          hi: "कौन-सी सुरक्षा लोहे पर जस्ते की पतली परत चढ़ाती है, ताकि नम हवा नीचे की धातु तक पहुँचे ही नहीं?",
+          mr: "कोणते संरक्षण लोखंडावर जस्ताचा पातळ थर चढवते, जेणेकरून दमट हवा खालच्या धातूपर्यंत पोहोचूच नये?",
+        },
+        statement: {
+          en: "Galvanisation coats iron with zinc — the sacrificial metal faces the weather so the iron underneath need not.",
+          hi: "यशदलेपन लोहे पर जस्ता चढ़ाता है — बलिदानी धातु मौसम झेलती है ताकि नीचे के लोहे को न झेलना पड़े।",
+          mr: "जस्तलेपन लोखंडावर जस्त चढवते — बळी जाणारा धातू हवामान झेलतो म्हणजे खालच्या लोखंडाला झेलावे लागू नये.",
+        },
+        pair: {
+          left: { en: "The zinc coat", hi: "जस्ते की परत", mr: "जस्ताचा थर" },
+          right: {
+            en: "weather met on iron's behalf",
+            hi: "लोहे की ओर से झेला मौसम",
+            mr: "लोखंडाच्या वतीने झेललेले हवामान",
+          },
+        },
+      },
+      {
+        id: "crystallisation",
+        name: { en: "Crystallisation", hi: "क्रिस्टलीकरण", mr: "स्फटिकीकरण" },
+        kind: "method",
+        prompt: {
+          en: "From a hot, saturated copper sulphate solution cooling slowly, large even-shaped blue crystals appear. What is this method called?",
+          hi: "धीरे-धीरे ठंडे होते गर्म, संतृप्त तूतिया के घोल से बड़े, सुडौल नीले रवे प्रकट होते हैं। इस विधि का नाम क्या है?",
+          mr: "हळूहळू निवणाऱ्या गरम, संपृक्त मोरचूद द्रावणातून मोठे, रेखीव निळे स्फटिक प्रकटतात. या पद्धतीचे नाव काय?",
+        },
+        statement: {
+          en: "Crystallisation grows large, pure crystals from a cooling saturated solution — order arriving slowly out of syrup.",
+          hi: "क्रिस्टलीकरण ठंडे होते संतृप्त घोल से बड़े, शुद्ध रवे उगाता है — शरबत में से धीरे-धीरे आती सुव्यवस्था।",
+          mr: "स्फटिकीकरण निवणाऱ्या संपृक्त द्रावणातून मोठे, शुद्ध स्फटिक वाढवते — पाकातून सावकाश येणारी सुव्यवस्था.",
+        },
+        detail: {
+          en: "It is a PHYSICAL change: the crystals are still copper sulphate, only better dressed.",
+          hi: "यह भौतिक परिवर्तन है: रवे अब भी तूतिया ही हैं, बस बेहतर पोशाक में।",
+          mr: "हा भौतिक बदल आहे: स्फटिक अजूनही मोरचूदच, फक्त चांगल्या पोशाखात.",
+        },
+        extra: {
+          en: "Sea-salt is its rougher cousin — evaporation in a hurry, crystals without the patience.",
+          hi: "समुद्री नमक इसका खुरदुरा चचेरा भाई है — जल्दी का वाष्पन, बिना सब्र के रवे।",
+          mr: "समुद्री मीठ हा त्याचा राठ चुलतभाऊ — घाईचे बाष्पीभवन, संयमाविनाचे स्फटिक.",
+        },
+        pair: {
+          left: {
+            en: "The cooling blue solution",
+            hi: "ठंडा होता नीला घोल",
+            mr: "निवणारे निळे द्रावण",
+          },
+          right: { en: "even-shaped crystals", hi: "सुडौल रवे", mr: "रेखीव स्फटिक" },
+        },
+      },
+      {
+        id: "curdling",
+        name: { en: "The curdling of milk", hi: "दूध का जमना", mr: "दुधाचे विरजणे" },
+        kind: "reaction",
+        prompt: {
+          en: "Warm milk with a spoon of starter becomes curd by morning, and no trick returns it to milk. Which everyday change is this?",
+          hi: "जामन की चम्मच पड़ा गुनगुना दूध सुबह तक दही बन जाता है, और कोई तरकीब उसे दूध नहीं लौटाती। यह कौन-सा रोज़मर्रा का परिवर्तन है?",
+          mr: "विरजणाचा चमचा पडलेले कोमट दूध सकाळपर्यंत दही होते, आणि कोणतीही युक्ती त्याला दूध परत करत नाही. हा कोणता रोजचा बदल?",
+        },
+        statement: {
+          en: "Milk setting into curd is a chemical change — a new substance forms, and there is no road back to milk.",
+          hi: "दूध का दही बनना रासायनिक परिवर्तन है — नया पदार्थ बनता है, और दूध तक लौटती कोई सड़क नहीं।",
+          mr: "दुधाचे दही होणे हा रासायनिक बदल — नवा पदार्थ बनतो, आणि दुधाकडे परतणारा रस्ता नाही.",
+        },
+        pair: {
+          left: { en: "Milk by night", hi: "रात का दूध", mr: "रात्रीचे दूध" },
+          right: {
+            en: "curd by morning, no return",
+            hi: "सुबह का दही, वापसी नहीं",
+            mr: "सकाळचे दही, परतीचा मार्ग नाही",
+          },
+        },
+      },
+      {
+        id: "magnesium",
+        name: {
+          en: "The burning magnesium ribbon",
+          hi: "जलता मैग्नीशियम फ़ीता",
+          mr: "जळणारी मॅग्नेशियम फीत",
+        },
+        kind: "reaction",
+        prompt: {
+          en: "Which classroom ribbon burns with a dazzling white flame, leaving a white ash whose solution turns red litmus blue?",
+          hi: "कक्षा का कौन-सा फ़ीता चौंधियाती सफ़ेद लौ से जलता है, ऐसी सफ़ेद राख छोड़ता हुआ जिसका घोल लाल लिटमस को नीला कर दे?",
+          mr: "वर्गातली कोणती फीत दिपवणाऱ्या पांढऱ्या ज्योतीने जळते, अशी पांढरी राख ठेवत जिचे द्रावण लाल लिटमसला निळे करते?",
+        },
+        statement: {
+          en: "Magnesium ribbon burns with brilliant white light into magnesium oxide — an ash that dissolves into a base.",
+          hi: "मैग्नीशियम फ़ीता चमकदार सफ़ेद रोशनी से जलकर मैग्नीशियम ऑक्साइड बनता है — ऐसी राख जो घुलकर क्षारक बन जाती है।",
+          mr: "मॅग्नेशियम फीत झळझळीत पांढऱ्या प्रकाशाने जळून मॅग्नेशियम ऑक्साइड होते — विरघळून आम्लारी बनणारी राख.",
+        },
+        detail: {
+          en: "Teachers warn: never stare at the flame — its light is fierce enough to hurt the eyes.",
+          hi: "शिक्षक चेताते हैं: लौ को घूरिए मत — उसकी रोशनी आँखें दुखाने जितनी तीव्र है।",
+          mr: "शिक्षक बजावतात: ज्योतीकडे टक लावू नका — तिचा प्रकाश डोळे दुखवण्याइतका तीव्र आहे.",
+        },
+        extra: {
+          en: "The ash-in-water experiment stitches two chapters together: a chemical change delivering a base.",
+          hi: "राख-पानी का प्रयोग दो अध्याय सी देता है: रासायनिक परिवर्तन जो एक क्षारक सौंपता है।",
+          mr: "राख-पाण्याचा प्रयोग दोन प्रकरणे शिवतो: आम्लारी सोपवणारा रासायनिक बदल.",
+        },
+        pair: {
+          left: { en: "The dazzling ribbon", hi: "चौंधियाता फ़ीता", mr: "दिपवणारी फीत" },
+          right: {
+            en: "white ash, basic water",
+            hi: "सफ़ेद राख, क्षारकीय पानी",
+            mr: "पांढरी राख, आम्लारीय पाणी",
+          },
+        },
+      },
+      {
+        id: "vinegar-soda",
+        name: {
+          en: "Vinegar meeting baking soda",
+          hi: "सिरके से मिलता खाने का सोडा",
+          mr: "व्हिनेगरला भेटणारा खाण्याचा सोडा",
+        },
+        kind: "reaction",
+        prompt: {
+          en: "Which kitchen pair fizzes furiously, releasing the gas that turns lime water milky?",
+          hi: "रसोई की कौन-सी जोड़ी ज़ोर से झाग उठाती है, वह गैस छोड़ती हुई जो चूने के पानी को दूधिया कर दे?",
+          mr: "स्वयंपाकघरातली कोणती जोडी जोरात फसफसते, चुन्याच्या निवळीला दुधाळ करणारा वायू सोडत?",
+        },
+        statement: {
+          en: "Vinegar and baking soda fizz out carbon dioxide — the escaping gas is the visible receipt of a chemical change.",
+          hi: "सिरका और खाने का सोडा कार्बन डाइऑक्साइड की फुहार छोड़ते हैं — निकलती गैस रासायनिक परिवर्तन की दिखती रसीद है।",
+          mr: "व्हिनेगर आणि खाण्याचा सोडा कार्बन डायऑक्साइड फसफसवतात — निसटणारा वायू ही रासायनिक बदलाची दिसणारी पावती.",
+        },
+        pair: {
+          left: { en: "The kitchen fizz", hi: "रसोई की फुहार", mr: "स्वयंपाकघरातली फसफस" },
+          right: {
+            en: "gas that clouds lime water",
+            hi: "चूना-पानी धुँधलाती गैस",
+            mr: "चुन्याची निवळी ढगाळणारा वायू",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Which list holds ONLY physical changes?",
+          hi: "किस सूची में केवल भौतिक परिवर्तन हैं?",
+          mr: "कोणत्या यादीत फक्त भौतिक बदल आहेत?",
+        },
+        choices: [
+          {
+            en: "Melting ice · folding paper · dissolving salt in water",
+            hi: "बर्फ़ पिघलना · काग़ज़ मोड़ना · पानी में नमक घोलना",
+            mr: "बर्फ वितळणे · कागद दुमडणे · पाण्यात मीठ विरघळवणे",
+          },
+          {
+            en: "Melting ice · burning paper · dissolving salt",
+            hi: "बर्फ़ पिघलना · काग़ज़ जलाना · नमक घोलना",
+            mr: "बर्फ वितळणे · कागद जाळणे · मीठ विरघळवणे",
+          },
+          {
+            en: "Rusting iron · folding paper · melting wax",
+            hi: "लोहे पर ज़ंग · काग़ज़ मोड़ना · मोम पिघलाना",
+            mr: "लोखंडाचा गंज · कागद दुमडणे · मेण वितळवणे",
+          },
+          {
+            en: "Curdling milk · melting ice · folding paper",
+            hi: "दूध जमना · बर्फ़ पिघलना · काग़ज़ मोड़ना",
+            mr: "दूध विरजणे · बर्फ वितळणे · कागद दुमडणे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Test each member: can the substance come back unchanged? Melted ice refreezes, folded paper unfolds, dissolved salt returns on evaporation — all physical. The other lists each smuggle in one one-way door: burning, rusting or curdling, where a NEW substance appears and the road back is closed.",
+          hi: "हर सदस्य को परखिए: क्या पदार्थ अनबदला लौट सकता है? पिघली बर्फ़ फिर जमती है, मुड़ा काग़ज़ खुलता है, घुला नमक वाष्पन पर लौट आता है — सब भौतिक। बाक़ी सूचियों में एक-एक एकतरफ़ा दरवाज़ा छिपा है: जलना, ज़ंग या जमना, जहाँ नया पदार्थ प्रकट होता है और वापसी की सड़क बंद।",
+          mr: "प्रत्येक सदस्याला तपासा: पदार्थ न बदलता परत येऊ शकतो का? वितळलेला बर्फ पुन्हा गोठतो, दुमडलेला कागद उलगडतो, विरघळलेले मीठ बाष्पीभवनाने परतते — सारे भौतिक. बाकी याद्यांत एक-एक एकतर्फी दार लपले आहे: जळणे, गंजणे वा विरजणे, जिथे नवा पदार्थ प्रकटतो आणि परतीचा रस्ता बंद.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A burning candle is the textbook's favourite riddle: teachers call it BOTH kinds of change at once. What are the two changes running together?",
+          hi: "जलती मोमबत्ती पाठ्यपुस्तक की प्रिय पहेली है: शिक्षक उसे एक साथ दोनों जाति का परिवर्तन कहते हैं। साथ-साथ चलते वे दो परिवर्तन कौन-से हैं?",
+          mr: "जळणारी मेणबत्ती ही पाठ्यपुस्तकाची आवडती कोडी: शिक्षक तिला एकाच वेळी दोन्ही जातींचा बदल म्हणतात. सोबत चालणारे ते दोन बदल कोणते?",
+        },
+        choices: [
+          {
+            en: "The wax MELTING is physical — it can resolidify; the wax BURNING to gases and soot is chemical — nothing brings those back to wax",
+            hi: "मोम का पिघलना भौतिक है — वह फिर जम सकता है; मोम का जलकर गैसें और कालिख बनना रासायनिक है — उन्हें कुछ भी मोम नहीं लौटाता",
+            mr: "मेणाचे वितळणे भौतिक — ते पुन्हा घट्ट होऊ शकते; मेणाचे जळून वायू आणि काजळी होणे रासायनिक — त्यांना काहीही मेणात परत आणत नाही",
+          },
+          {
+            en: "The flame is physical and the wick is chemical",
+            hi: "लौ भौतिक है और बत्ती रासायनिक",
+            mr: "ज्योत भौतिक आणि वात रासायनिक",
+          },
+          {
+            en: "Both changes are physical because the candle keeps its shape a while",
+            hi: "दोनों परिवर्तन भौतिक हैं क्योंकि मोमबत्ती कुछ देर आकार रखती है",
+            mr: "दोन्ही बदल भौतिक कारण मेणबत्ती काही वेळ आकार राखते",
+          },
+          {
+            en: "Nothing chemical happens until the candle is fully gone",
+            hi: "जब तक मोमबत्ती पूरी न चुके, कुछ रासायनिक नहीं होता",
+            mr: "मेणबत्ती पूर्ण संपेपर्यंत रासायनिक काही घडत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Watch the candle as two experiments sharing one wick. Near the flame, solid wax melts and trickles — cool it and it hardens back: physical. In the flame, wax vapour burns to carbon dioxide, water vapour and soot — new substances with no road home: chemical. One object, two changes, and the sorting rule — is anything NEW born? — separates them cleanly.",
+          hi: "मोमबत्ती को एक बत्ती साझा करते दो प्रयोगों की तरह देखिए। लौ के पास ठोस मोम पिघलकर बहता है — ठंडा कीजिए तो फिर जम जाता है: भौतिक। लौ के भीतर मोम की भाप जलकर कार्बन डाइऑक्साइड, जलवाष्प और कालिख बनती है — नए पदार्थ, जिनका घर लौटने का रास्ता नहीं: रासायनिक। एक वस्तु, दो परिवर्तन, और छाँटने का नियम — क्या कुछ नया जन्मा? — दोनों को साफ़ अलग कर देता है।",
+          mr: "मेणबत्तीकडे एक वात वाटून घेणाऱ्या दोन प्रयोगांसारखे पाहा. ज्योतीजवळ घट्ट मेण वितळून ओघळते — थंड करा आणि पुन्हा घट्ट होते: भौतिक. ज्योतीच्या आत मेणाची वाफ जळून कार्बन डायऑक्साइड, बाष्प आणि काजळी होते — घरी परतायचा रस्ता नसलेले नवे पदार्थ: रासायनिक. एक वस्तू, दोन बदल, आणि निवडीचा नियम — नवे काही जन्मले का? — दोघांना स्वच्छ वेगळे करतो.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Respiration in Organisms (the slow fire in every cell)     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-respiration-in-organisms",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 10 — Respiration in Organisms",
+      hi: "अध्याय 10 — जीवों में श्वसन",
+      mr: "प्रकरण 10 — सजीवांतील श्वसन",
+    },
+    name: {
+      en: "Respiration in Organisms",
+      hi: "जीवों में श्वसन",
+      mr: "सजीवांतील श्वसन",
+    },
+    summary: {
+      en: "The slow fire in every cell: oxygen's route and the oxygen-less shortcut, the sprinter's cramp, the diaphragm's pump — and spiracles, moist skin and gills, three other ways to breathe.",
+      hi: "हर कोशिका की धीमी आग: ऑक्सीजन की राह और बिना-ऑक्सीजन की पगडंडी, धावक की ऐंठन, डायाफ़्राम का पंप — और श्वास-रंध्र, नम त्वचा, गलफड़े: साँस की तीन और राहें।",
+      mr: "प्रत्येक पेशीतली संथ आग: ऑक्सिजनची वाट आणि ऑक्सिजनविनाची पायवाट, धावपटूचा पेटका, श्वासपटलाचा पंप — आणि श्वासरंध्रे, ओली त्वचा, कल्ले: श्वासाच्या आणखी तीन वाटा.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "cellular",
+        name: { en: "Cellular respiration", hi: "कोशिकीय श्वसन", mr: "पेशीय श्वसन" },
+        kind: "process",
+        prompt: {
+          en: "Inside every cell, food is broken down with oxygen to set its energy free. What is this process called?",
+          hi: "हर कोशिका के भीतर भोजन को ऑक्सीजन के साथ तोड़कर उसकी ऊर्जा मुक्त की जाती है। इस प्रक्रिया का नाम क्या है?",
+          mr: "प्रत्येक पेशीच्या आत अन्न ऑक्सिजनसह मोडून त्याची ऊर्जा मोकळी केली जाते. या प्रक्रियेचे नाव काय?",
+        },
+        statement: {
+          en: "Cellular respiration burns food gently inside cells — the released energy runs everything else the body does.",
+          hi: "कोशिकीय श्वसन कोशिकाओं के भीतर भोजन को धीमे जलाता है — निकली ऊर्जा शरीर का बाक़ी सब काम चलाती है।",
+          mr: "पेशीय श्वसन पेशींच्या आत अन्न हळुवार जाळते — सुटलेली ऊर्जा शरीराचे बाकी सारे काम चालवते.",
+        },
+        detail: {
+          en: "The slow fire has no flame — enzymes, not sparks, do this burning.",
+          hi: "धीमी आग में लौ नहीं — यह जलाना चिंगारियाँ नहीं, एंज़ाइम करते हैं।",
+          mr: "संथ आगीत ज्योत नाही — हे जाळणे ठिणग्या नव्हे, विकरे करतात.",
+        },
+        extra: {
+          en: "Every living cell runs it without pause, asleep or awake — stopping is not among its options.",
+          hi: "हर जीवित कोशिका इसे बिना रुके चलाती है, सोते-जागते — रुकना इसके विकल्पों में नहीं।",
+          mr: "प्रत्येक जिवंत पेशी हे अखंड चालवते, झोपेत-जागेपणी — थांबणे तिच्या पर्यायांत नाही.",
+        },
+        pair: {
+          left: { en: "Food met by oxygen", hi: "ऑक्सीजन से मिला भोजन", mr: "ऑक्सिजनला भेटलेले अन्न" },
+          right: { en: "energy set free", hi: "मुक्त हुई ऊर्जा", mr: "मोकळी झालेली ऊर्जा" },
+        },
+      },
+      {
+        id: "anaerobic",
+        name: { en: "Anaerobic respiration", hi: "अवायवीय श्वसन", mr: "विनॉक्सिश्वसन" },
+        kind: "process",
+        prompt: {
+          en: "Yeast — and your own tired muscles — can pull energy from food entirely WITHOUT oxygen. What is this oxygen-less route called?",
+          hi: "ख़मीर — और आपकी अपनी थकी माँसपेशियाँ — भोजन से ऊर्जा बिलकुल बिना ऑक्सीजन के खींच सकती हैं। इस बिना-ऑक्सीजन राह का नाम क्या है?",
+          mr: "यीस्ट — आणि तुमचे स्वतःचे थकलेले स्नायू — अन्नातून ऊर्जा पूर्णपणे ऑक्सिजनशिवाय ओढू शकतात. या ऑक्सिजनविनाच्या वाटेचे नाव काय?",
+        },
+        statement: {
+          en: "Anaerobic respiration works without oxygen — yeast makes alcohol by it, and overworked muscles make lactic acid.",
+          hi: "अवायवीय श्वसन बिना ऑक्सीजन चलता है — ख़मीर उससे अल्कोहल बनाता है, और हद से थकी माँसपेशियाँ लैक्टिक अम्ल।",
+          mr: "विनॉक्सिश्वसन ऑक्सिजनशिवाय चालते — यीस्ट त्याने अल्कोहोल बनवते, आणि अति थकलेले स्नायू लॅक्टिक आम्ल.",
+        },
+        detail: {
+          en: "It pays poorly — far less energy per meal than the oxygen route ever yields.",
+          hi: "यह कम चुकाता है — ऑक्सीजन वाली राह से प्रति भोजन कहीं कम ऊर्जा।",
+          mr: "हे कमी देते — ऑक्सिजनच्या वाटेहून प्रत्येक जेवणामागे कितीतरी कमी ऊर्जा.",
+        },
+        extra: {
+          en: "Yeast's version raises bread and brews — the dough's bubbles are its exhaled carbon dioxide.",
+          hi: "ख़मीर का संस्करण रोटी फुलाता और आसव बनाता है — आटे के बुलबुले उसकी छोड़ी कार्बन डाइऑक्साइड हैं।",
+          mr: "यीस्टची आवृत्ती पाव फुगवते आणि आसव घडवते — कणकेचे बुडबुडे म्हणजे तिने सोडलेला कार्बन डायऑक्साइड.",
+        },
+        pair: {
+          left: { en: "The oxygen-less route", hi: "बिना-ऑक्सीजन राह", mr: "ऑक्सिजनविनाची वाट" },
+          right: {
+            en: "less energy, quick loan",
+            hi: "कम ऊर्जा, फ़ौरी उधार",
+            mr: "कमी ऊर्जा, तातडीचे कर्ज",
+          },
+        },
+      },
+      {
+        id: "lactic",
+        name: { en: "Lactic acid", hi: "लैक्टिक अम्ल", mr: "लॅक्टिक आम्ल" },
+        kind: "substance",
+        prompt: {
+          en: "After a sudden sprint your calves knot and ache. Which acid, piled up in oxygen-starved muscles, is to blame?",
+          hi: "अचानक दौड़ के बाद पिंडलियाँ ऐंठकर दुखती हैं। ऑक्सीजन-भूखी माँसपेशियों में जमा कौन-सा अम्ल दोषी है?",
+          mr: "अचानक धावल्यावर पोटऱ्या आखडून दुखतात. ऑक्सिजन-भुकेल्या स्नायूंत साचलेले कोणते आम्ल दोषी?",
+        },
+        statement: {
+          en: "Lactic acid collects when muscles outrun their oxygen supply — the cramp is its calling card.",
+          hi: "जब माँसपेशियाँ अपनी ऑक्सीजन-आपूर्ति से आगे दौड़ जाती हैं तो लैक्टिक अम्ल जमा होता है — ऐंठन उसका परिचय-पत्र है।",
+          mr: "स्नायू आपल्या ऑक्सिजन-पुरवठ्याच्या पुढे धावले की लॅक्टिक आम्ल साचते — पेटका हे त्याचे ओळखपत्र.",
+        },
+        detail: {
+          en: "A hot-water bath or a massage eases the knot — better blood flow carries the acid away for disposal.",
+          hi: "गर्म पानी का सेंक या मालिश गाँठ खोल देती है — बेहतर रक्त-प्रवाह अम्ल को निपटान के लिए बहा ले जाता है।",
+          mr: "गरम पाण्याचा शेक वा मालीश गाठ सोडवते — सुधारलेला रक्तप्रवाह आम्लाला विल्हेवाटीसाठी वाहून नेतो.",
+        },
+        extra: {
+          en: "The debt is repaid later — that is why you pant AFTER the race is over.",
+          hi: "उधार बाद में चुकता है — इसीलिए हाँफना दौड़ ख़त्म होने के बाद भी चलता है।",
+          mr: "कर्ज नंतर फिटते — म्हणूनच धाप शर्यत संपल्यावरही चालू राहते.",
+        },
+        pair: {
+          left: { en: "The sprinter's cramp", hi: "धावक की ऐंठन", mr: "धावपटूचा पेटका" },
+          right: {
+            en: "an acid's calling card",
+            hi: "अम्ल का परिचय-पत्र",
+            mr: "आम्लाचे ओळखपत्र",
+          },
+        },
+      },
+      {
+        id: "breathing-rate",
+        name: { en: "The breathing rate", hi: "श्वसन दर", mr: "श्वसनाचा वेग" },
+        kind: "measure",
+        prompt: {
+          en: "An adult at rest takes about 15 to 18 of them each minute, and hard play multiplies the count. What is this count called?",
+          hi: "विश्राम में वयस्क हर मिनट इनमें से लगभग 15 से 18 लेता है, और कड़ा खेल गिनती कई गुना कर देता है। इस गिनती का नाम क्या है?",
+          mr: "विश्रांतीत प्रौढ दर मिनिटाला यांतले सुमारे 15 ते 18 घेतो, आणि दमवणारा खेळ मोजणी कैकपट करतो. या मोजणीचे नाव काय?",
+        },
+        statement: {
+          en: "The breathing rate counts breaths per minute — about 15 to 18 at rest, and several-fold higher when the body demands more oxygen.",
+          hi: "श्वसन दर प्रति मिनट साँसें गिनती है — विश्राम में लगभग 15 से 18, और शरीर के ज़्यादा ऑक्सीजन माँगते ही कई गुना।",
+          mr: "श्वसनाचा वेग दर मिनिटाला श्वास मोजतो — विश्रांतीत सुमारे 15 ते 18, आणि शरीराने जास्त ऑक्सिजन मागताच कैकपट.",
+        },
+        pair: {
+          left: { en: "Breaths in a minute", hi: "मिनट भर की साँसें", mr: "मिनिटभरातले श्वास" },
+          right: {
+            en: "fifteen-odd at rest",
+            hi: "विश्राम में पंद्रह-सोलह",
+            mr: "विश्रांतीत पंधरा-सोळा",
+          },
+        },
+      },
+      {
+        id: "diaphragm",
+        name: { en: "The diaphragm", hi: "डायाफ़्राम (मध्यपट)", mr: "श्वासपटल" },
+        kind: "organ",
+        prompt: {
+          en: "Which muscular sheet below the lungs moves down to draw breath in and rises to push it out?",
+          hi: "फेफड़ों के नीचे की कौन-सी माँसल चादर नीचे उतरकर साँस भीतर खींचती है और उठकर बाहर धकेलती है?",
+          mr: "फुप्फुसांखालची कोणती स्नायूची चादर खाली उतरून श्वास आत ओढते आणि वर येऊन बाहेर ढकलते?",
+        },
+        statement: {
+          en: "The diaphragm is breathing's pump-handle — down for air in, up for air out, tirelessly, all life long.",
+          hi: "डायाफ़्राम साँस का हत्था है — नीचे तो हवा भीतर, ऊपर तो बाहर; अथक, जीवन भर।",
+          mr: "श्वासपटल हा श्वासाचा दांडा — खाली तर हवा आत, वर तर बाहेर; अथक, आयुष्यभर.",
+        },
+        pair: {
+          left: { en: "The muscular floor", hi: "माँसल फ़र्श", mr: "स्नायूंचा तळ" },
+          right: {
+            en: "down for in, up for out",
+            hi: "नीचे तो भीतर, ऊपर तो बाहर",
+            mr: "खाली तर आत, वर तर बाहेर",
+          },
+        },
+      },
+      {
+        id: "spiracles",
+        name: {
+          en: "Spiracles and tracheae",
+          hi: "श्वास-रंध्र और वायु-नलियाँ",
+          mr: "श्वासरंध्रे आणि श्वासनलिका",
+        },
+        kind: "organ",
+        prompt: {
+          en: "Insects breathe through which side-openings, feeding a network of air-pipes that reaches every cell directly?",
+          hi: "कीट किन बग़ली छिद्रों से साँस लेते हैं, जो हर कोशिका तक सीधे पहुँचती वायु-नलियों के जाल को हवा देते हैं?",
+          mr: "कीटक कोणत्या बाजूच्या छिद्रांतून श्वास घेतात, जी प्रत्येक पेशीपर्यंत थेट पोहोचणाऱ्या हवाई-नळ्यांच्या जाळ्याला हवा पुरवतात?",
+        },
+        statement: {
+          en: "Insects breathe through spiracles into branching tracheae — air is piped door to door, and no lungs are involved at all.",
+          hi: "कीट श्वास-रंध्रों से शाखादार वायु-नलियों में साँस लेते हैं — हवा घर-घर नल से पहुँचती है, फेफड़ों का कोई काम नहीं।",
+          mr: "कीटक श्वासरंध्रांतून फांद्या फुटलेल्या श्वासनलिकांत श्वास घेतात — हवा घरोघरी नळाने पोहोचते, फुप्फुसांचे कामच नाही.",
+        },
+        pair: {
+          left: {
+            en: "The insect's side-doors",
+            hi: "कीट के बग़ली दरवाज़े",
+            mr: "कीटकाची बाजूची दारे",
+          },
+          right: {
+            en: "air piped to every cell",
+            hi: "हर कोशिका तक नल से हवा",
+            mr: "प्रत्येक पेशीपर्यंत नळाने हवा",
+          },
+        },
+      },
+      {
+        id: "earthworm-skin",
+        name: { en: "The earthworm's skin", hi: "केंचुए की त्वचा", mr: "गांडुळाची त्वचा" },
+        kind: "organ",
+        prompt: {
+          en: "Which moist surface lets the earthworm breathe through its entire body wall?",
+          hi: "कौन-सी नम सतह केंचुए को उसकी पूरी देह-दीवार से साँस लेने देती है?",
+          mr: "कोणता ओलसर पृष्ठभाग गांडुळाला त्याच्या सबंध देह-भिंतीतून श्वास घेऊ देतो?",
+        },
+        statement: {
+          en: "The earthworm breathes through its moist skin — let the skin dry, and the animal suffocates in the open air.",
+          hi: "केंचुआ अपनी नम त्वचा से साँस लेता है — त्वचा सूख जाए तो खुली हवा में भी उसका दम घुट जाता है।",
+          mr: "गांडूळ आपल्या ओल्या त्वचेतून श्वास घेते — त्वचा वाळली तर मोकळ्या हवेतही त्याचा जीव गुदमरतो.",
+        },
+        detail: {
+          en: "Rain floods its burrows, so it surfaces — trading the risk of drowning for the risk of daylight.",
+          hi: "बारिश उसके बिलों में पानी भर देती है, तो वह ऊपर आ जाता है — डूबने का जोखिम दिन के उजाले के जोखिम से बदलकर।",
+          mr: "पाऊस त्याची बिळे भरतो, म्हणून ते वर येते — बुडण्याचा धोका दिवसाउजेडाच्या धोक्याशी बदलून.",
+        },
+        extra: {
+          en: "Frogs run the same trick underwater, switching to lungs on land — two tools for one job.",
+          hi: "मेंढक पानी के भीतर यही तरकीब चलाते हैं, ज़मीन पर फेफड़ों पर लौटते हुए — एक काम के दो औज़ार।",
+          mr: "बेडूक पाण्याखाली हीच युक्ती चालवतात, जमिनीवर फुप्फुसांकडे वळत — एका कामाची दोन हत्यारे.",
+        },
+        pair: {
+          left: { en: "The moist body wall", hi: "नम देह-दीवार", mr: "ओली देह-भिंत" },
+          right: {
+            en: "breath without lungs",
+            hi: "बिना फेफड़ों की साँस",
+            mr: "फुप्फुसांविनाचा श्वास",
+          },
+        },
+      },
+      {
+        id: "gills",
+        name: { en: "Gills", hi: "गलफड़े", mr: "कल्ले" },
+        kind: "organ",
+        prompt: {
+          en: "Which feathery organs strain dissolved oxygen out of the water flowing past a fish's throat?",
+          hi: "कौन-से पंखनुमा अंग मछली के गले से बहते पानी में घुली ऑक्सीजन छान लेते हैं?",
+          mr: "कोणते पिसांसारखे अवयव माशाच्या गळ्याजवळून वाहणाऱ्या पाण्यातला विरघळलेला ऑक्सिजन गाळून घेतात?",
+        },
+        statement: {
+          en: "Gills take the oxygen dissolved in water — thin walls, rich blood supply, water in at the mouth and out past the flaps.",
+          hi: "गलफड़े पानी में घुली ऑक्सीजन लेते हैं — पतली दीवारें, भरपूर रक्त-आपूर्ति, मुँह से पानी भीतर और पल्लों के पार बाहर।",
+          mr: "कल्ले पाण्यात विरघळलेला ऑक्सिजन घेतात — पातळ भिंती, भरपूर रक्तपुरवठा, तोंडातून पाणी आत आणि झडपांपार बाहेर.",
+        },
+        pair: {
+          left: { en: "The feathery strainers", hi: "पंखनुमा छलनियाँ", mr: "पिसांसारख्या चाळण्या" },
+          right: {
+            en: "oxygen sieved from water",
+            hi: "पानी से छनी ऑक्सीजन",
+            mr: "पाण्यातून गाळलेला ऑक्सिजन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the breather to its breathing gear: A-cockroach, B-earthworm, C-fish. Which trio is right?",
+          hi: "साँस लेने वाले को उसके साँस-औज़ार से मिलाइए: अ-तिलचट्टा, ब-केंचुआ, स-मछली। कौन-सी तिकड़ी सही है?",
+          mr: "श्वास घेणाऱ्याला त्याच्या श्वास-हत्याराशी जुळवा: अ-झुरळ, ब-गांडूळ, क-मासा. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: spiracles · B: moist skin · C: gills",
+            hi: "अ: श्वास-रंध्र · ब: नम त्वचा · स: गलफड़े",
+            mr: "अ: श्वासरंध्रे · ब: ओली त्वचा · क: कल्ले",
+          },
+          {
+            en: "A: gills · B: spiracles · C: moist skin",
+            hi: "अ: गलफड़े · ब: श्वास-रंध्र · स: नम त्वचा",
+            mr: "अ: कल्ले · ब: श्वासरंध्रे · क: ओली त्वचा",
+          },
+          {
+            en: "A: moist skin · B: gills · C: spiracles",
+            hi: "अ: नम त्वचा · ब: गलफड़े · स: श्वास-रंध्र",
+            mr: "अ: ओली त्वचा · ब: कल्ले · क: श्वासरंध्रे",
+          },
+          {
+            en: "A: spiracles · B: gills · C: moist skin",
+            hi: "अ: श्वास-रंध्र · ब: गलफड़े · स: नम त्वचा",
+            mr: "अ: श्वासरंध्रे · ब: कल्ले · क: ओली त्वचा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Habitat writes the gear. The cockroach's dry armour needs piped air — spiracles and tracheae. The earthworm's damp burrow keeps its breathing skin moist. The fish lives where oxygen hides dissolved — gills sieve it out. Swap any two and the animal drowns, dries or suffocates.",
+          hi: "आवास ही औज़ार लिखता है। तिलचट्टे के सूखे कवच को नल से हवा चाहिए — श्वास-रंध्र और वायु-नलियाँ। केंचुए का नम बिल उसकी साँस लेती त्वचा को गीला रखता है। मछली वहाँ रहती है जहाँ ऑक्सीजन घुली छिपी है — गलफड़े उसे छान लेते हैं। कोई दो बदल दीजिए और जीव डूबता, सूखता या घुटता है।",
+          mr: "अधिवासच हत्यार लिहितो. झुरळाच्या कोरड्या चिलखताला नळाने हवा हवी — श्वासरंध्रे आणि श्वासनलिका. गांडुळाचे दमट बीळ त्याची श्वास घेणारी त्वचा ओली ठेवते. मासा तिथे राहतो जिथे ऑक्सिजन विरघळून लपला आहे — कल्ले तो गाळतात. कोणतेही दोन बदला आणि प्राणी बुडतो, वाळतो वा गुदमरतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Air holds far MORE oxygen than water does — yet a fish taken out of water dies of suffocation. How can it starve of oxygen inside a richer supply?",
+          hi: "हवा में पानी से कहीं ज़्यादा ऑक्सीजन है — फिर भी पानी से निकाली मछली दम घुटकर मरती है। भरपूर आपूर्ति के बीच वह ऑक्सीजन की भूखी कैसे रह जाती है?",
+          mr: "हवेत पाण्याहून कितीतरी जास्त ऑक्सिजन आहे — तरी पाण्याबाहेर काढलेला मासा गुदमरून मरतो. समृद्ध पुरवठ्यात तो ऑक्सिजनला उपाशी कसा राहतो?",
+        },
+        choices: [
+          {
+            en: "Gills work only wet and spread: in air the feathery filaments collapse and dry into a clump, and the absorbing surface is gone",
+            hi: "गलफड़े केवल गीले और फैले हुए चलते हैं: हवा में पंखनुमा तंतु सिमटकर सूख जाते हैं, और सोखने की सतह ही मिट जाती है",
+            mr: "कल्ले फक्त ओले आणि पसरलेले असतानाच चालतात: हवेत पिसांसारखे तंतू मिटून वाळतात, आणि शोषणारा पृष्ठभागच नाहीसा होतो",
+          },
+          {
+            en: "Air's oxygen is a different, poisonous kind",
+            hi: "हवा की ऑक्सीजन अलग, ज़हरीली क़िस्म की है",
+            mr: "हवेतला ऑक्सिजन वेगळ्या, विषारी जातीचा आहे",
+          },
+          {
+            en: "Fish die of fright, not of breathlessness",
+            hi: "मछलियाँ डर से मरती हैं, दम घुटने से नहीं",
+            mr: "मासे भीतीने मरतात, गुदमरून नाही",
+          },
+          {
+            en: "Fish simply refuse to breathe outside water",
+            hi: "मछलियाँ पानी के बाहर साँस लेने से इनकार कर देती हैं",
+            mr: "मासे पाण्याबाहेर श्वास घ्यायला नकारच देतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The oxygen is there; the INSTRUMENT fails. Gill filaments are built to float apart in water, spreading a huge thin-walled surface; air lets them slump together and dry, and a clumped, drying gill has almost no working surface left. An organ is a bargain with its medium — outside that medium, abundance is unreachable. The earthworm dies the mirrored death: dried skin in dry air, surrounded by oxygen it can no longer touch.",
+          hi: "ऑक्सीजन मौजूद है; औज़ार बिगड़ जाता है। गलफड़ों के तंतु पानी में अलग-अलग तैरने को बने हैं, विशाल पतली-दीवार वाली सतह फैलाते हुए; हवा उन्हें आपस में ढहाकर सुखा देती है, और सिमटे-सूखते गलफड़े के पास काम की सतह बचती ही नहीं। अंग अपने माध्यम से बँधा सौदा है — उस माध्यम के बाहर बहुतायत भी पहुँच से दूर है। केंचुआ इसका दर्पण-मरण मरता है: सूखी हवा में सूखी त्वचा, चारों ओर वह ऑक्सीजन जिसे वह अब छू नहीं सकता।",
+          mr: "ऑक्सिजन आहे; हत्यारच बिघडते. कल्ल्यांचे तंतू पाण्यात वेगवेगळे तरंगायला घडले आहेत, प्रचंड पातळ-भिंतीचा पृष्ठभाग पसरत; हवा त्यांना एकमेकांवर कोसळवून वाळवते, आणि मिटलेल्या-वाळणाऱ्या कल्ल्याकडे कामाचा पृष्ठभाग उरतच नाही. अवयव हा त्याच्या माध्यमाशी केलेला करार — त्या माध्यमाबाहेर विपुलताही आवाक्याबाहेर. गांडूळ याचेच आरसा-मरण मरते: कोरड्या हवेत वाळलेली त्वचा, भोवती तो ऑक्सिजन जो त्याला आता स्पर्शताही येत नाही.",
+        },
+      },
+    ],
+  },
 ];
