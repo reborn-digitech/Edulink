@@ -1924,4 +1924,910 @@ export const G6_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — The Living Organisms and Their Surroundings                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-living-organisms",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 9 — The Living Organisms and Their Surroundings",
+      hi: "अध्याय 9 — सजीव तथा उनका परिवेश",
+      mr: "प्रकरण 9 — सजीव आणि त्यांचा परिसर",
+    },
+    name: {
+      en: "The Living Organisms and Their Surroundings",
+      hi: "सजीव तथा उनका परिवेश",
+      mr: "सजीव आणि त्यांचा परिसर",
+    },
+    summary: {
+      en: "Habitats and the fittings for them — the camel's desert kit, the cactus's spines, the frog's two worlds — and the checklist that says what counts as alive.",
+      hi: "आवास और उनके लिए साज-सज्जा — ऊँट का रेगिस्तानी साज़, नागफनी के काँटे, मेंढक की दो दुनियाएँ — और वह सूची जो बताती है कि जीवित किसे कहें।",
+      mr: "अधिवास आणि त्यांच्यासाठीची जुळणी — उंटाचा वाळवंटी साज, निवडुंगाचे काटे, बेडकाची दोन जगे — आणि जिवंत कशाला म्हणायचे हे सांगणारी यादी.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "habitat",
+        name: { en: "The habitat", hi: "आवास", mr: "अधिवास" },
+        kind: "idea",
+        prompt: {
+          en: "Pond for the frog, desert for the camel, mango tree for the squirrel — what do we call the home ground that gives a creature its food, shelter and company?",
+          hi: "मेंढक को तालाब, ऊँट को रेगिस्तान, गिलहरी को आम का पेड़ — उस घर-ज़मीन को क्या कहते हैं जो जीव को भोजन, शरण और संगत देती है?",
+          mr: "बेडकाला तळे, उंटाला वाळवंट, खारीला आंब्याचे झाड — जिवाला अन्न, निवारा आणि सोबत देणाऱ्या घर-भूमीला काय म्हणतात?",
+        },
+        statement: {
+          en: "A habitat is the place a creature naturally lives in — it supplies the food, shelter, climate and company that particular life needs.",
+          hi: "आवास वह जगह है जहाँ जीव स्वभावतः रहता है — वह उस ख़ास जीवन की ज़रूरत का भोजन, शरण, जलवायु और संगत जुटाती है।",
+          mr: "अधिवास म्हणजे जीव स्वभावतः राहतो ती जागा — ती त्या विशिष्ट जीवनाला लागणारे अन्न, निवारा, हवामान आणि सोबत पुरवते.",
+        },
+        pair: {
+          left: { en: "The habitat", hi: "आवास", mr: "अधिवास" },
+          right: {
+            en: "home ground with full board",
+            hi: "पूरे इंतज़ाम वाली घर-ज़मीन",
+            mr: "पूर्ण सोयीची घर-भूमी",
+          },
+        },
+      },
+      {
+        id: "cameladapt",
+        name: { en: "The camel's desert kit", hi: "ऊँट का रेगिस्तानी साज़", mr: "उंटाचा वाळवंटी साज" },
+        kind: "adaptation",
+        prompt: {
+          en: "A fat-storing hump, long double lashes against sandstorms, dung dry as paper — whose body is a complete toolkit for the driest habitat?",
+          hi: "चर्बी जमा करता कूबड़, रेतीली आँधियों के विरुद्ध लंबी दोहरी पलकें, काग़ज़-सा सूखा गोबर — किसका शरीर सबसे सूखे आवास का पूरा औज़ार-थैला है?",
+          mr: "चरबी साठवणारे वशिंड, वाळूच्या वादळांविरुद्ध लांब दुहेरी पापण्या, कागदासारखे कोरडे शेण — कोणाचे शरीर सर्वांत कोरड्या अधिवासाची पूर्ण हत्यारपेटी आहे?",
+        },
+        statement: {
+          en: "The camel is fitted head to toe for the desert — a hump of stored fat, lashes that shut out sand, and a body so thrifty with water that even its droppings come out dry.",
+          hi: "ऊँट सिर से पाँव तक रेगिस्तान के लिए सजा है — जमा चर्बी का कूबड़, रेत रोकती पलकें, और पानी का ऐसा कंजूस शरीर कि उसका गोबर भी सूखा निकलता है।",
+          mr: "उंट डोक्यापासून पायापर्यंत वाळवंटासाठी सजलेला — साठवलेल्या चरबीचे वशिंड, वाळू अडवणाऱ्या पापण्या, आणि पाण्याबाबत इतके काटकसरी शरीर की त्याचे शेणही कोरडे पडते.",
+        },
+        detail: {
+          en: "The hump holds fat, not water — burning that fat is what lets it march for days unfed.",
+          hi: "कूबड़ में चर्बी है, पानी नहीं — वही चर्बी जलाकर वह बिना खाए दिनों चलता है।",
+          mr: "वशिंडात चरबी आहे, पाणी नाही — तीच चरबी जाळून तो न खाता दिवसन्दिवस चालतो.",
+        },
+        extra: {
+          en: "It sweats hardly at all — a body that refuses to waste what the desert will not replace.",
+          hi: "उसे पसीना न के बराबर आता है — ऐसा शरीर जो वह बर्बाद नहीं करता जो रेगिस्तान नहीं लौटाएगा।",
+          mr: "त्याला घाम जवळजवळ येतच नाही — वाळवंट परत देणार नाही ते वाया न घालवणारे शरीर.",
+        },
+        pair: {
+          left: { en: "The desert camel", hi: "रेगिस्तानी ऊँट", mr: "वाळवंटी उंट" },
+          right: {
+            en: "built for the waterless",
+            hi: "बे-पानी के लिए गढ़ा",
+            mr: "निर्जळासाठी घडलेला",
+          },
+        },
+      },
+      {
+        id: "cactus",
+        name: { en: "The cactus", hi: "नागफनी", mr: "निवडुंग" },
+        kind: "adaptation",
+        prompt: {
+          en: "Which desert plant turned its leaves into SPINES and handed the cooking of food to its thick green stem?",
+          hi: "किस रेगिस्तानी पौधे ने अपनी पत्तियाँ काँटों में बदल दीं और खाना पकाने का काम अपने मोटे हरे तने को सौंप दिया?",
+          mr: "कोणत्या वाळवंटी वनस्पतीने आपली पाने काट्यांत बदलली आणि अन्न शिजवण्याचे काम आपल्या जाड हिरव्या खोडाकडे सोपवले?",
+        },
+        statement: {
+          en: "The cactus wears spines where leaves would be — the green stem does the food-making and stores water in its thick flesh.",
+          hi: "नागफनी पत्तियों की जगह काँटे पहनती है — हरा तना भोजन बनाता है और अपने मोटे गूदे में पानी जमा रखता है।",
+          mr: "निवडुंग पानांच्या जागी काटे लेवून असतो — हिरवे खोड अन्न बनवते आणि आपल्या जाड गरात पाणी साठवते.",
+        },
+        detail: {
+          en: "Broad leaves would breathe away precious water all day — spines lose almost none.",
+          hi: "चौड़ी पत्तियाँ दिन भर अनमोल पानी उड़ाती रहतीं — काँटे लगभग कुछ नहीं खोते।",
+          mr: "रुंद पाने दिवसभर मोलाचे पाणी उडवत राहिली असती — काटे जवळजवळ काहीच गमावत नाहीत.",
+        },
+        extra: {
+          en: "The same spines guard its stored water from thirsty desert mouths.",
+          hi: "वही काँटे उसके जमा पानी को प्यासे रेगिस्तानी मुँहों से बचाते भी हैं।",
+          mr: "तेच काटे त्याचे साठवलेले पाणी तहानलेल्या वाळवंटी तोंडांपासून राखतातही.",
+        },
+        pair: {
+          left: { en: "The cactus", hi: "नागफनी", mr: "निवडुंग" },
+          right: {
+            en: "leaves traded for spines",
+            hi: "काँटों से बदली पत्तियाँ",
+            mr: "काट्यांशी बदललेली पाने",
+          },
+        },
+      },
+      {
+        id: "mountaingoat",
+        name: { en: "The mountain goat", hi: "पहाड़ी बकरी", mr: "डोंगरी शेळी" },
+        kind: "adaptation",
+        prompt: {
+          en: "On cliff faces where a slip is the end, which animal walks sure-footed on strong hooves made for steep rock?",
+          hi: "जिन चट्टानी दीवारों पर एक फिसलन ही अंत है, वहाँ कौन-सा पशु खड़ी चट्टान के लिए बने मज़बूत खुरों पर बेधड़क चलता है?",
+          mr: "जिथे एक घसरण म्हणजे शेवट अशा कड्यांवर, कोणता प्राणी उभ्या खडकासाठी घडलेल्या बळकट खुरांवर बेधडक चालतो?",
+        },
+        statement: {
+          en: "The mountain goat climbs steep rock on strong gripping hooves — its body low and sure where flat-country feet would slide.",
+          hi: "पहाड़ी बकरी मज़बूत जकड़ने वाले खुरों पर खड़ी चट्टान चढ़ती है — जहाँ मैदानी पैर फिसल जाते, वहाँ उसका शरीर झुका और सधा रहता है।",
+          mr: "डोंगरी शेळी बळकट पकड घेणाऱ्या खुरांवर उभा खडक चढते — जिथे सपाटीचे पाय घसरले असते तिथे तिचे शरीर सखल आणि सधलेले राहते.",
+        },
+      },
+      {
+        id: "frogadapt",
+        name: { en: "The frog's two worlds", hi: "मेंढक की दो दुनियाएँ", mr: "बेडकाची दोन जगे" },
+        kind: "adaptation",
+        prompt: {
+          en: "Webbed feet for rowing, strong back legs for leaping the bank — which creature is equipped for pond AND shore alike?",
+          hi: "खेने को झिल्लीदार पैर, किनारा फाँदने को ताक़तवर पिछली टाँगें — कौन-सा जीव तालाब और किनारे दोनों के लिए लैस है?",
+          mr: "वल्हवायला पडदायुक्त पाय, काठ ओलांडायला ताकदवान मागचे पाय — कोणता जीव तळे आणि काठ दोन्हींसाठी सज्ज आहे?",
+        },
+        statement: {
+          en: "The frog is fitted for two habitats at once — webbed feet row it through water, strong back legs spring it across land.",
+          hi: "मेंढक एक साथ दो आवासों के लिए सजा है — झिल्लीदार पैर उसे पानी में खेते हैं, ताक़तवर पिछली टाँगें ज़मीन पर उछालती हैं।",
+          mr: "बेडूक एकाच वेळी दोन अधिवासांसाठी सजलेला — पडदायुक्त पाय त्याला पाण्यात वल्हवतात, ताकदवान मागचे पाय जमिनीवर उडवतात.",
+        },
+        pair: {
+          left: { en: "The two-world frog", hi: "दो दुनियाओं का मेंढक", mr: "दोन जगांचा बेडूक" },
+          right: {
+            en: "rower and leaper both",
+            hi: "खेवैया भी, फँदैया भी",
+            mr: "वल्हवणाराही, उडी मारणाराही",
+          },
+        },
+      },
+      {
+        id: "stimulus",
+        name: {
+          en: "The touch-me-not's reply",
+          hi: "छुई-मुई का जवाब",
+          mr: "लाजाळूचे उत्तर",
+        },
+        kind: "living-sign",
+        prompt: {
+          en: "Brush a fingertip against which plant, and its leaflets fold shut in seconds — a living thing answering the world?",
+          hi: "किस पौधे को उँगली भर छुइए कि उसकी पत्तियाँ पलों में सिमट जाती हैं — दुनिया का उत्तर देता एक सजीव?",
+          mr: "कोणत्या वनस्पतीला बोट लावताच तिची पाने क्षणांत मिटतात — जगाला उत्तर देणारा एक सजीव?",
+        },
+        statement: {
+          en: "The touch-me-not (mimosa) folds its leaflets at a touch — responding to the world is a mark of the living, and this plant shows it fast enough to watch.",
+          hi: "छुई-मुई छूते ही पत्तियाँ मोड़ लेती है — दुनिया का उत्तर देना सजीवों की निशानी है, और यह पौधा उसे देखते-देखते दिखा देता है।",
+          mr: "लाजाळू स्पर्श होताच पाने मिटवते — जगाला प्रतिसाद देणे ही सजीवांची खूण, आणि ही वनस्पती ते पाहता पाहता दाखवते.",
+        },
+        pair: {
+          left: { en: "The touch-me-not", hi: "छुई-मुई", mr: "लाजाळू" },
+          right: {
+            en: "an answer you can watch",
+            hi: "देखते बनता जवाब",
+            mr: "पाहता येणारे उत्तर",
+          },
+        },
+      },
+      {
+        id: "livingchecklist",
+        name: {
+          en: "The living checklist",
+          hi: "सजीवता की सूची",
+          mr: "सजीवतेची यादी",
+        },
+        kind: "living-sign",
+        prompt: {
+          en: "Grow, breathe, feed, respond, reproduce, excrete — what do we call this set of marks that every living thing shows and no stone ever will?",
+          hi: "बढ़ना, साँस लेना, खाना, उत्तर देना, संतति बनाना, उत्सर्जन — निशानियों के इस समूह को क्या कहें, जो हर सजीव दिखाता है और कोई पत्थर कभी नहीं?",
+          mr: "वाढणे, श्वसणे, खाणे, प्रतिसाद देणे, प्रजनन, उत्सर्जन — खुणांच्या या संचाला काय म्हणावे, जो प्रत्येक सजीव दाखवतो आणि कोणताही दगड कधीच नाही?",
+        },
+        statement: {
+          en: "The living checklist — growth, breathing, feeding, response, reproduction, excretion — is the full set of tests; life must pass them all, not just one.",
+          hi: "सजीवता की सूची — वृद्धि, श्वसन, आहार, अनुक्रिया, प्रजनन, उत्सर्जन — जाँचों का पूरा समूह है; जीवन को सब पास करनी हैं, केवल एक नहीं।",
+          mr: "सजीवतेची यादी — वाढ, श्वसन, आहार, प्रतिसाद, प्रजनन, उत्सर्जन — चाचण्यांचा पूर्ण संच आहे; जीवनाला साऱ्या उत्तीर्ण व्हाव्या लागतात, फक्त एक नव्हे.",
+        },
+        detail: {
+          en: "A cloud grows and a river moves — single marks fool; the whole list does not.",
+          hi: "बादल बढ़ता है और नदी चलती है — अकेली निशानियाँ छलती हैं; पूरी सूची नहीं।",
+          mr: "ढग वाढतो आणि नदी चालते — एकट्या खुणा फसवतात; सारी यादी नाही.",
+        },
+        extra: {
+          en: "Seeds and eggs seem still — until conditions come right and the checklist wakes.",
+          hi: "बीज और अंडे ठहरे लगते हैं — जब तक हालात न सधें और सूची जाग न उठे।",
+          mr: "बिया आणि अंडी स्तब्ध वाटतात — परिस्थिती जुळेपर्यंत, मग यादी जागी होते.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the fitting to its habitat: A-hump of stored fat, B-leaves turned to spines, C-webbed feet. Which trio is right?",
+          hi: "साज को उसके आवास से मिलाइए: अ-जमा चर्बी का कूबड़, ब-काँटे बनीं पत्तियाँ, स-झिल्लीदार पैर। कौन-सी तिकड़ी सही है?",
+          mr: "साज त्याच्या अधिवासाशी जुळवा: अ-साठवलेल्या चरबीचे वशिंड, ब-काटे झालेली पाने, क-पडदायुक्त पाय. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the desert camel · B: the desert cactus · C: the pond frog",
+            hi: "अ: रेगिस्तानी ऊँट · ब: रेगिस्तानी नागफनी · स: तालाब का मेंढक",
+            mr: "अ: वाळवंटी उंट · ब: वाळवंटी निवडुंग · क: तळ्यातला बेडूक",
+          },
+          {
+            en: "A: the pond frog · B: the desert camel · C: the desert cactus",
+            hi: "अ: तालाब का मेंढक · ब: रेगिस्तानी ऊँट · स: नागफनी",
+            mr: "अ: तळ्यातला बेडूक · ब: वाळवंटी उंट · क: निवडुंग",
+          },
+          {
+            en: "A: the desert cactus · B: the pond frog · C: the desert camel",
+            hi: "अ: नागफनी · ब: तालाब का मेंढक · स: रेगिस्तानी ऊँट",
+            mr: "अ: निवडुंग · ब: तळ्यातला बेडूक · क: वाळवंटी उंट",
+          },
+          {
+            en: "A: the desert camel · B: the pond frog · C: the desert cactus",
+            hi: "अ: रेगिस्तानी ऊँट · ब: तालाब का मेंढक · स: नागफनी",
+            mr: "अ: वाळवंटी उंट · ब: तळ्यातला बेडूक · क: निवडुंग",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Fat-store for foodless marches — the camel; spines that spend no water — the cactus; webbing that rows — the frog. Each fitting answers its habitat's hardest question, and reading fittings backwards tells you the habitat: that is the chapter's game.",
+          hi: "बिना भोजन की यात्राओं के लिए चर्बी-भंडार — ऊँट; पानी न ख़र्चते काँटे — नागफनी; खेती झिल्ली — मेंढक। हर साज अपने आवास के सबसे कठिन सवाल का उत्तर है, और साज को उलटा पढ़ने से आवास पता चलता है: यही अध्याय का खेल है।",
+          mr: "अन्नाविना वाटचालींसाठी चरबी-साठा — उंट; पाणी न खर्चणारे काटे — निवडुंग; वल्हवणारा पडदा — बेडूक. प्रत्येक साज त्याच्या अधिवासाच्या सर्वांत कठीण प्रश्नाचे उत्तर, आणि साज उलटा वाचला की अधिवास कळतो: हाच प्रकरणाचा खेळ.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A motor car moves, drinks fuel, breathes out exhaust and grows warm with work. By the chapter's checklist, why is it still NOT alive?",
+          hi: "मोटर-कार चलती है, ईंधन पीती है, धुआँ छोड़ती है और काम से गर्म होती है। अध्याय की सूची से, वह फिर भी सजीव क्यों नहीं?",
+          mr: "मोटार चालते, इंधन पिते, धूर सोडते आणि कामाने तापते. प्रकरणाच्या यादीने, ती तरीही सजीव का नाही?",
+        },
+        choices: [
+          {
+            en: "It fails the rest of the list — it never grows, never reproduces, never responds on its own; life must pass the WHOLE checklist, not a few lines",
+            hi: "वह बाक़ी सूची में फ़ेल है — न बढ़ती है, न संतति बनाती है, न अपने आप उत्तर देती है; जीवन को पूरी सूची पास करनी है, चंद पंक्तियाँ नहीं",
+            mr: "ती उरलेल्या यादीत नापास — ती वाढत नाही, प्रजनन करत नाही, स्वतःहून प्रतिसाद देत नाही; जीवनाला सारी यादी उत्तीर्ण व्हावी लागते, काही ओळी नव्हे",
+          },
+          {
+            en: "Because it is made of metal, and metal cannot be alive",
+            hi: "क्योंकि वह धातु की है, और धातु सजीव नहीं हो सकती",
+            mr: "कारण ती धातूची आहे, आणि धातू सजीव असू शकत नाही",
+          },
+          {
+            en: "Because someone must sit inside it",
+            hi: "क्योंकि उसके भीतर किसी को बैठना पड़ता है",
+            mr: "कारण तिच्या आत कोणाला तरी बसावे लागते",
+          },
+          {
+            en: "Because it is too large to be a creature",
+            hi: "क्योंकि वह जीव होने के लिए बहुत बड़ी है",
+            mr: "कारण ती जीव असण्यास फार मोठी आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The car's tricks mimic single lines of the list — moving, 'feeding', 'exhaling'. But park it for twenty years: it will not have grown a centimetre, raised a single little car, or flinched from anything. The checklist works only taken whole; that is exactly why it exists, because single marks are so easily counterfeited.",
+          hi: "कार की कलाएँ सूची की अकेली पंक्तियों की नक़ल हैं — चलना, 'खाना', 'साँस छोड़ना'। पर उसे बीस साल खड़ी रखिए: न वह सेंटीमीटर भर बढ़ेगी, न एक भी नन्ही कार जनेगी, न किसी चीज़ से चौंकेगी। सूची पूरी लेकर ही काम करती है; वह इसीलिए है, क्योंकि अकेली निशानियाँ आसानी से जाली बनती हैं।",
+          mr: "मोटारीच्या कला यादीच्या एकट्या ओळींची नक्कल — चालणे, 'खाणे', 'उच्छ्वास'. पण ती वीस वर्षे उभी ठेवा: ती सेंटिमीटरभर वाढणार नाही, एकही इवली मोटार जन्माला घालणार नाही, कशानेही दचकणार नाही. यादी अख्खी घेतली तरच चालते; ती त्यासाठीच आहे, कारण एकट्या खुणा सहज बनावट होतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Give a cactus the gift of broad green leaves, like a mango's. In its desert home, why would the 'gift' kill it?",
+          hi: "नागफनी को आम जैसी चौड़ी हरी पत्तियों का उपहार दीजिए। उसके रेगिस्तानी घर में यह 'उपहार' उसे क्यों मार डालेगा?",
+          mr: "निवडुंगाला आंब्यासारख्या रुंद हिरव्या पानांची भेट द्या. त्याच्या वाळवंटी घरात ही 'भेट' त्याला का मारेल?",
+        },
+        choices: [
+          {
+            en: "Broad leaves transpire water all day — in a land that gives almost none back, the plant would breathe itself dry within days",
+            hi: "चौड़ी पत्तियाँ दिन भर पानी उड़ाती हैं — जो धरती लगभग कुछ नहीं लौटाती, वहाँ पौधा दिनों में ख़ुद को सुखा बैठेगा",
+            mr: "रुंद पाने दिवसभर पाणी उडवतात — जवळजवळ काही परत न देणाऱ्या भूमीत वनस्पती काही दिवसांत स्वतःला कोरडी करेल",
+          },
+          {
+            en: "Leaves are too heavy for a desert plant to carry",
+            hi: "पत्तियाँ रेगिस्तानी पौधे के उठाने को बहुत भारी हैं",
+            mr: "पाने वाळवंटी वनस्पतीला पेलण्यास फार जड आहेत",
+          },
+          {
+            en: "Green attracts desert animals from afar",
+            hi: "हरापन दूर से रेगिस्तानी जानवर बुला लेता है",
+            mr: "हिरवेपणा दुरून वाळवंटी प्राणी बोलावतो",
+          },
+          {
+            en: "Nothing — more leaves always mean more food",
+            hi: "कुछ नहीं — ज़्यादा पत्तियाँ यानी हमेशा ज़्यादा भोजन",
+            mr: "काहीच नाही — जास्त पाने म्हणजे नेहमी जास्त अन्न",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Remember the bagged branch: leaves breathe out water all day long. A mango by a monsoon field can afford that rent; a cactus on dunes cannot. Its spines ARE leaves with the water-cost cut to nothing, the cooking moved to the stem. An adaptation is never 'better' in the abstract — it is a bargain struck with one particular habitat, and a gift priced for the wrong land is poison.",
+          hi: "बँधी थैली वाली डाल याद कीजिए: पत्तियाँ दिन भर पानी छोड़ती हैं। मानसूनी खेत के पास आम वह किराया चुका सकता है; टीलों पर नागफनी नहीं। उसके काँटे वही पत्तियाँ हैं जिनका पानी-ख़र्च शून्य कर दिया गया और रसोई तने को सौंप दी गई। अनुकूलन कभी यों ही 'बेहतर' नहीं होता — वह एक ख़ास आवास से किया सौदा है, और ग़लत धरती के दाम पर आया उपहार ज़हर है।",
+          mr: "बांधलेल्या पिशवीची फांदी आठवा: पाने दिवसभर पाणी सोडतात. पावसाळी शेताजवळचा आंबा ते भाडे भरू शकतो; टेकड्यांवरचा निवडुंग नाही. त्याचे काटे म्हणजे पाणी-खर्च शून्य केलेली आणि स्वयंपाक खोडाकडे सोपवलेली पानेच. अनुकूलन कधीच नुसते 'चांगले' नसते — तो एका विशिष्ट अधिवासाशी केलेला सौदा, आणि चुकीच्या भूमीच्या भावाने आलेली भेट म्हणजे विष.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Light, Shadows and Reflections                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-light-shadows-reflections",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 11 — Light, Shadows and Reflections",
+      hi: "अध्याय 11 — प्रकाश, छायाएँ एवं परावर्तन",
+      mr: "प्रकरण 11 — प्रकाश, सावल्या आणि परावर्तन",
+    },
+    name: {
+      en: "Light, Shadows and Reflections",
+      hi: "प्रकाश, छायाएँ एवं परावर्तन",
+      mr: "प्रकाश, सावल्या आणि परावर्तन",
+    },
+    summary: {
+      en: "What shines by itself and what merely passes light on — shadows that ignore colour, the pinhole's upside-down picture, and the mirror that keeps every detail.",
+      hi: "क्या ख़ुद चमकता है और क्या केवल प्रकाश आगे बढ़ाता है — रंग को अनदेखा करती छायाएँ, सूची-छिद्र की उलटी तस्वीर, और हर ब्योरा सहेजता दर्पण।",
+      mr: "काय स्वतः चमकते आणि काय नुसते प्रकाश पुढे देते — रंगाकडे दुर्लक्ष करणाऱ्या सावल्या, सूचिछिद्राचे उलटे चित्र, आणि प्रत्येक तपशील जपणारा आरसा.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "luminous",
+        name: { en: "Luminous objects", hi: "प्रदीप्त वस्तुएँ", mr: "स्वयंप्रकाशित वस्तू" },
+        kind: "light-source",
+        prompt: {
+          en: "The Sun, a burning diya, a firefly's tail — what are objects called that give out light of their OWN?",
+          hi: "सूरज, जलता दीया, जुगनू की पूँछ — अपनी ख़ुद की रोशनी देने वाली वस्तुएँ क्या कहलाती हैं?",
+          mr: "सूर्य, जळणारी पणती, काजव्याचे शेपूट — स्वतःचा प्रकाश देणाऱ्या वस्तूंना काय म्हणतात?",
+        },
+        statement: {
+          en: "Luminous objects make their own light — sun, flames and fireflies shine; the moon and a book merely pass on light that falls on them.",
+          hi: "प्रदीप्त वस्तुएँ अपनी रोशनी बनाती हैं — सूरज, लपटें और जुगनू चमकते हैं; चाँद और किताब बस उन पर पड़ी रोशनी लौटाते हैं।",
+          mr: "स्वयंप्रकाशित वस्तू आपला प्रकाश बनवतात — सूर्य, ज्वाळा आणि काजवे चमकतात; चंद्र आणि पुस्तक फक्त त्यांच्यावर पडलेला प्रकाश परत देतात.",
+        },
+        pair: {
+          left: { en: "Luminous objects", hi: "प्रदीप्त वस्तुएँ", mr: "स्वयंप्रकाशित वस्तू" },
+          right: { en: "light of their own", hi: "अपनी रोशनी", mr: "स्वतःचा प्रकाश" },
+        },
+      },
+      {
+        id: "opaque",
+        name: { en: "Opaque objects", hi: "अपारदर्शी वस्तुएँ", mr: "अपारदर्शक वस्तू" },
+        kind: "light-material",
+        prompt: {
+          en: "A wall, a wooden door, your own body — which kind of object stops light COMPLETELY, so nothing shows through?",
+          hi: "दीवार, लकड़ी का दरवाज़ा, आपका अपना शरीर — किस क़िस्म की वस्तु प्रकाश को पूरा रोक देती है, कि आर-पार कुछ नहीं दिखता?",
+          mr: "भिंत, लाकडी दार, तुमचे स्वतःचे शरीर — कोणत्या प्रकारची वस्तू प्रकाश पूर्ण अडवते, की आरपार काही दिसत नाही?",
+        },
+        statement: {
+          en: "Opaque objects block light entirely — nothing can be seen through them, and only they can cast full, dark shadows.",
+          hi: "अपारदर्शी वस्तुएँ प्रकाश को पूरा रोकती हैं — उनके आर-पार कुछ नहीं दिखता, और पूरी गहरी छाया वही डाल सकती हैं।",
+          mr: "अपारदर्शक वस्तू प्रकाश पूर्ण अडवतात — त्यांच्या आरपार काही दिसत नाही, आणि पूर्ण गडद सावली त्याच टाकू शकतात.",
+        },
+        pair: {
+          left: { en: "Opaque objects", hi: "अपारदर्शी वस्तुएँ", mr: "अपारदर्शक वस्तू" },
+          right: { en: "light's full stop", hi: "प्रकाश का पूर्ण विराम", mr: "प्रकाशाचा पूर्णविराम" },
+        },
+      },
+      {
+        id: "transparent",
+        name: { en: "Transparent objects", hi: "पारदर्शी वस्तुएँ", mr: "पारदर्शक वस्तू" },
+        kind: "light-material",
+        prompt: {
+          en: "Clean window glass, clear water, air itself — which kind of object lets light through so fully that you see straight past it?",
+          hi: "साफ़ खिड़की का शीशा, निर्मल पानी, ख़ुद हवा — किस क़िस्म की वस्तु प्रकाश को इतना पूरा गुज़रने देती है कि आप उसके पार सीधा देख लेते हैं?",
+          mr: "स्वच्छ खिडकीची काच, नितळ पाणी, स्वतः हवा — कोणत्या प्रकारची वस्तू प्रकाशाला इतके पूर्ण जाऊ देते की तुम्ही तिच्या पलीकडे थेट पाहता?",
+        },
+        statement: {
+          en: "Transparent objects pass light almost untouched — glass, clear water and air let the eye see straight through.",
+          hi: "पारदर्शी वस्तुएँ प्रकाश को लगभग अछूता गुज़रने देती हैं — शीशा, साफ़ पानी और हवा आँख को सीधा पार देखने देते हैं।",
+          mr: "पारदर्शक वस्तू प्रकाशाला जवळजवळ जसाच्या तसा जाऊ देतात — काच, नितळ पाणी आणि हवा डोळ्याला थेट पार पाहू देतात.",
+        },
+      },
+      {
+        id: "translucent",
+        name: { en: "Translucent objects", hi: "पारभासी वस्तुएँ", mr: "अर्धपारदर्शक वस्तू" },
+        kind: "light-material",
+        prompt: {
+          en: "Butter paper, frosted bathroom glass, a thin curtain — which kind lets SOME light through, but blurs whatever is behind?",
+          hi: "मक्खनी काग़ज़, ग़ुसलख़ाने का धुँधला शीशा, पतला परदा — कौन-सी क़िस्म कुछ प्रकाश गुज़रने देती है, पर पीछे का सब धुँधला कर देती है?",
+          mr: "बटर पेपर, न्हाणीघराची धुरकट काच, पातळ पडदा — कोणता प्रकार काही प्रकाश जाऊ देतो, पण मागचे सारे धूसर करतो?",
+        },
+        statement: {
+          en: "Translucent objects pass light only partly — shapes behind them show as blurs, half-told.",
+          hi: "पारभासी वस्तुएँ प्रकाश को अधूरा गुज़रने देती हैं — पीछे की आकृतियाँ धुँधली, आधी-कही दिखती हैं।",
+          mr: "अर्धपारदर्शक वस्तू प्रकाश अर्धवट जाऊ देतात — मागचे आकार धूसर, अर्धवट सांगितलेले दिसतात.",
+        },
+        pair: {
+          left: { en: "Translucent objects", hi: "पारभासी वस्तुएँ", mr: "अर्धपारदर्शक वस्तू" },
+          right: {
+            en: "light through, shapes blurred",
+            hi: "रोशनी पार, आकृतियाँ धुँधली",
+            mr: "प्रकाश पार, आकार धूसर",
+          },
+        },
+      },
+      {
+        id: "shadow",
+        name: { en: "The shadow", hi: "छाया", mr: "सावली" },
+        kind: "light-effect",
+        prompt: {
+          en: "Light on one side, a screen on the other, an opaque object between — what dark shape appears on the screen?",
+          hi: "एक ओर प्रकाश, दूसरी ओर परदा, बीच में अपारदर्शी वस्तु — परदे पर कौन-सी अँधेरी आकृति उभरती है?",
+          mr: "एका बाजूला प्रकाश, दुसरीकडे पडदा, मध्ये अपारदर्शक वस्तू — पडद्यावर कोणता काळोखा आकार उमटतो?",
+        },
+        statement: {
+          en: "A shadow needs three things — a light, an opaque object and a screen behind it; it is the patch the object's block leaves dark.",
+          hi: "छाया को तीन चीज़ें चाहिए — प्रकाश, अपारदर्शी वस्तु और उसके पीछे परदा; वह वही टुकड़ा है जिसे वस्तु की रोक अँधेरा छोड़ देती है।",
+          mr: "सावलीला तीन गोष्टी लागतात — प्रकाश, अपारदर्शक वस्तू आणि तिच्यामागे पडदा; वस्तूच्या अडवण्याने काळोखा राहिलेला तोच पट्टा.",
+        },
+        detail: {
+          en: "It is always dark, whatever the object's colour — a red ball and a blue ball cast twin black shadows.",
+          hi: "वह हमेशा अँधेरी है, वस्तु का रंग जो भी हो — लाल गेंद और नीली गेंद जुड़वाँ काली छायाएँ डालती हैं।",
+          mr: "ती नेहमी काळोखी असते, वस्तूचा रंग कोणताही असो — लाल चेंडू आणि निळा चेंडू जुळ्या काळ्या सावल्या टाकतात.",
+        },
+        extra: {
+          en: "It shows only the outline — a shape's edge, with everything inside painted the same dark.",
+          hi: "वह केवल रूपरेखा दिखाती है — आकृति का किनारा, भीतर सब एक ही अँधेरे से पुता।",
+          mr: "ती फक्त बाह्यरेषा दाखवते — आकाराची कड, आतले सारे एकाच काळोखाने रंगवलेले.",
+        },
+        pair: {
+          left: { en: "The shadow", hi: "छाया", mr: "सावली" },
+          right: {
+            en: "the blocked light's dark patch",
+            hi: "रुकी रोशनी का अँधेरा टुकड़ा",
+            mr: "अडलेल्या प्रकाशाचा काळोखा पट्टा",
+          },
+        },
+      },
+      {
+        id: "pinhole",
+        name: { en: "The pinhole camera", hi: "सूचीछिद्र कैमरा", mr: "सूचिछिद्र कॅमेरा" },
+        kind: "light-effect",
+        prompt: {
+          en: "A box, a pin-prick of a hole, a tracing-paper back — and the tree outside appears on the paper UPSIDE DOWN. What is this simple device?",
+          hi: "एक डिब्बा, पिन भर का छेद, पीछे ट्रेसिंग-काग़ज़ — और बाहर का पेड़ काग़ज़ पर उलटा उभर आता है। यह सादा उपकरण क्या है?",
+          mr: "एक खोके, टाचणीएवढे छिद्र, मागे ट्रेसिंग-कागद — आणि बाहेरचे झाड कागदावर उलटे उमटते. हे साधे उपकरण काय?",
+        },
+        statement: {
+          en: "The pinhole camera throws an upside-down picture of the bright world through one tiny hole — no lens, no wires, just light going straight.",
+          hi: "सूचीछिद्र कैमरा एक नन्हे छेद से उजली दुनिया की उलटी तस्वीर डालता है — न लेंस, न तार, बस सीधी चलती रोशनी।",
+          mr: "सूचिछिद्र कॅमेरा एका इवल्या छिद्रातून उजळ जगाचे उलटे चित्र टाकतो — भिंग नाही, तारा नाहीत, फक्त सरळ जाणारा प्रकाश.",
+        },
+        pair: {
+          left: { en: "The pinhole camera", hi: "सूचीछिद्र कैमरा", mr: "सूचिछिद्र कॅमेरा" },
+          right: {
+            en: "the world, upside down",
+            hi: "दुनिया, उलटी",
+            mr: "जग, उलटे",
+          },
+        },
+      },
+      {
+        id: "mirror",
+        name: { en: "The mirror's reflection", hi: "दर्पण का परावर्तन", mr: "आरशाचे परावर्तन" },
+        kind: "light-effect",
+        prompt: {
+          en: "Unlike the all-black shadow, what does a mirror give back — your face with its colours, details and all?",
+          hi: "सर्व-काली छाया के उलट, दर्पण क्या लौटाता है — आपका चेहरा, रंगों और ब्योरों समेत?",
+          mr: "सर्व-काळ्या सावलीच्या उलट, आरसा काय परत देतो — तुमचा चेहरा, रंग आणि तपशिलांसह?",
+        },
+        statement: {
+          en: "A mirror reflects light back in order — the image keeps colours, details and expressions that a shadow throws away.",
+          hi: "दर्पण प्रकाश को तरतीब से लौटाता है — प्रतिबिंब में रंग, ब्योरे और भाव बचे रहते हैं, जिन्हें छाया फेंक देती है।",
+          mr: "आरसा प्रकाश शिस्तीत परत देतो — प्रतिबिंबात रंग, तपशील आणि भाव टिकतात, जे सावली फेकून देते.",
+        },
+        pair: {
+          left: { en: "The mirror", hi: "दर्पण", mr: "आरसा" },
+          right: {
+            en: "light returned in order",
+            hi: "तरतीब से लौटी रोशनी",
+            mr: "शिस्तीत परतलेला प्रकाश",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into TRANSPARENT, TRANSLUCENT and OPAQUE: clean glass, butter paper, a brick. Which trio is right?",
+          hi: "इन्हें पारदर्शी, पारभासी और अपारदर्शी में छाँटिए: साफ़ शीशा, मक्खनी काग़ज़, ईंट। कौन-सी तिकड़ी सही है?",
+          mr: "यांची पारदर्शक, अर्धपारदर्शक आणि अपारदर्शक अशी वर्गवारी करा: स्वच्छ काच, बटर पेपर, वीट. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "glass: transparent · butter paper: translucent · brick: opaque",
+            hi: "शीशा: पारदर्शी · मक्खनी काग़ज़: पारभासी · ईंट: अपारदर्शी",
+            mr: "काच: पारदर्शक · बटर पेपर: अर्धपारदर्शक · वीट: अपारदर्शक",
+          },
+          {
+            en: "glass: translucent · butter paper: opaque · brick: transparent",
+            hi: "शीशा: पारभासी · मक्खनी काग़ज़: अपारदर्शी · ईंट: पारदर्शी",
+            mr: "काच: अर्धपारदर्शक · बटर पेपर: अपारदर्शक · वीट: पारदर्शक",
+          },
+          {
+            en: "glass: opaque · butter paper: transparent · brick: translucent",
+            hi: "शीशा: अपारदर्शी · मक्खनी काग़ज़: पारदर्शी · ईंट: पारभासी",
+            mr: "काच: अपारदर्शक · बटर पेपर: पारदर्शक · वीट: अर्धपारदर्शक",
+          },
+          {
+            en: "glass: transparent · butter paper: opaque · brick: translucent",
+            hi: "शीशा: पारदर्शी · मक्खनी काग़ज़: अपारदर्शी · ईंट: पारभासी",
+            mr: "काच: पारदर्शक · बटर पेपर: अपारदर्शक · वीट: अर्धपारदर्शक",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Hold each to a lamp: through glass you read the lamp's label — transparent; through butter paper you see only a glow — translucent; through brick, nothing at all — opaque. One lamp sorts the whole world into three drawers.",
+          hi: "हर एक को दीये के आगे थामिए: शीशे से दीये का लेबल तक पढ़ लेते हैं — पारदर्शी; मक्खनी काग़ज़ से बस चमक दिखती है — पारभासी; ईंट से कुछ भी नहीं — अपारदर्शी। एक दीया पूरी दुनिया को तीन दराज़ों में छाँट देता है।",
+          mr: "प्रत्येक दिव्यासमोर धरा: काचेतून दिव्याचे लेबलही वाचता येते — पारदर्शक; बटर पेपरातून फक्त उजेड दिसतो — अर्धपारदर्शक; विटेतून काहीच नाही — अपारदर्शक. एक दिवा सगळ्या जगाला तीन खणांत लावतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A bright red ball on a sunny day casts a shadow that is pure black — not a trace of red. What does that tell you about what a shadow IS?",
+          hi: "धूप वाले दिन चटख़ लाल गेंद की छाया बिलकुल काली पड़ती है — लाल का नामो-निशान नहीं। यह छाया के होने के बारे में क्या बताता है?",
+          mr: "उन्हाच्या दिवशी भडक लाल चेंडूची सावली निव्वळ काळी पडते — लालाचा मागमूसही नाही. हे सावली म्हणजे काय याबद्दल काय सांगते?",
+        },
+        choices: [
+          {
+            en: "A shadow is not light FROM the object but the ABSENCE of light behind it — and absence has no colour to show",
+            hi: "छाया वस्तु से आई रोशनी नहीं, उसके पीछे रोशनी की ग़ैर-हाज़िरी है — और ग़ैर-हाज़िरी के पास दिखाने को कोई रंग नहीं",
+            mr: "सावली म्हणजे वस्तूकडून आलेला प्रकाश नव्हे, तिच्यामागची प्रकाशाची अनुपस्थिती — आणि अनुपस्थितीकडे दाखवायला रंगच नाही",
+          },
+          {
+            en: "The sun burns the red out of the shadow",
+            hi: "सूरज छाया में से लाल जला देता है",
+            mr: "सूर्य सावलीतला लाल जाळून टाकतो",
+          },
+          {
+            en: "Shadows are red too, only too faint to see",
+            hi: "छायाएँ लाल ही हैं, बस दिखने में बहुत फीकी",
+            mr: "सावल्या लालच असतात, फक्त दिसायला फार फिकट",
+          },
+          {
+            en: "Only white balls can cast coloured shadows",
+            hi: "रंगीन छाया केवल सफ़ेद गेंदें डाल सकती हैं",
+            mr: "रंगीत सावली फक्त पांढरे चेंडूच टाकू शकतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The ball looks red because it sends red light to your eye. But the shadow-patch is where the ball STOPPED the sun's light from arriving — the ground there receives nothing, and nothing looks black. The mirror keeps colours because it passes light on; the shadow is the one place light never reached. Presence carries colour, absence cannot.",
+          hi: "गेंद लाल इसलिए दिखती है कि वह आँख तक लाल रोशनी भेजती है। पर छाया-टुकड़ा वह है जहाँ गेंद ने सूरज की रोशनी पहुँचने ही नहीं दी — वहाँ की ज़मीन को कुछ नहीं मिलता, और कुछ-नहीं काला दिखता है। दर्पण रंग इसलिए रखता है कि वह रोशनी आगे भेजता है; छाया वह अकेली जगह है जहाँ रोशनी पहुँची ही नहीं। मौजूदगी रंग ढोती है, ग़ैर-हाज़िरी नहीं ढो सकती।",
+          mr: "चेंडू लाल दिसतो कारण तो डोळ्यापर्यंत लाल प्रकाश पाठवतो. पण सावली-पट्टा तो आहे जिथे चेंडूने सूर्याचा प्रकाश पोहोचूच दिला नाही — तिथल्या जमिनीला काही मिळत नाही, आणि काही-नाही काळे दिसते. आरसा रंग ठेवतो कारण तो प्रकाश पुढे देतो; सावली ही प्रकाश कधी न पोहोचलेली एकमेव जागा. हजेरी रंग वाहते, अनुपस्थिती वाहू शकत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In the pinhole camera the tree's top prints at the BOTTOM of the screen. What does the upside-down image prove about how light travels?",
+          hi: "सूचीछिद्र कैमरे में पेड़ की चोटी परदे के नीचे छपती है। उलटी तस्वीर रोशनी के चलने के बारे में क्या साबित करती है?",
+          mr: "सूचिछिद्र कॅमेऱ्यात झाडाचा शेंडा पडद्याच्या खाली उमटतो. उलटे चित्र प्रकाशाच्या जाण्याबद्दल काय सिद्ध करते?",
+        },
+        choices: [
+          {
+            en: "That light travels in straight lines — rays from the top must cross at the hole and land low, as straight lines through one point must",
+            hi: "कि रोशनी सीधी रेखाओं में चलती है — चोटी की किरणें छेद पर काटकर नीचे ही उतरेंगी, जैसा एक बिंदु से गुज़रती सीधी रेखाओं को करना ही है",
+            mr: "की प्रकाश सरळ रेषांत जातो — शेंड्याच्या किरणांना छिद्रावर छेदून खालीच उतरावे लागते, एका बिंदूतून जाणाऱ्या सरळ रेषांना जसे भागच आहे",
+          },
+          {
+            en: "That the hole flips the light like a tiny mirror",
+            hi: "कि छेद नन्हे दर्पण-सा रोशनी पलट देता है",
+            mr: "की छिद्र इवल्या आरशासारखा प्रकाश उलटवते",
+          },
+          {
+            en: "That light prefers to travel downward",
+            hi: "कि रोशनी नीचे की ओर चलना पसंद करती है",
+            mr: "की प्रकाशाला खाली जाणे आवडते",
+          },
+          {
+            en: "That the tracing paper turns pictures over",
+            hi: "कि ट्रेसिंग-काग़ज़ तस्वीरें पलट देता है",
+            mr: "की ट्रेसिंग-कागद चित्रे उलटवतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Draw it: a ray from the treetop, passing straight through the pinhole, can only continue DOWN to the screen's bottom; a ray from the roots crosses up. If light could bend round corners the image would smear or right itself — the crisp upside-down picture is straight-line travel caught in the act. One shoebox proves a law.",
+          hi: "खींचकर देखिए: चोटी से चली किरण छेद से सीधी गुज़रकर परदे के नीचे ही जा सकती है; जड़ों की किरण ऊपर काटती है। रोशनी मोड़ मुड़ सकती तो तस्वीर धुँधली होती या सीधी हो जाती — साफ़ उलटी तस्वीर रँगे-हाथ पकड़ी गई सीधी चाल है। एक जूते का डिब्बा एक नियम साबित कर देता है।",
+          mr: "काढून पाहा: शेंड्याहून निघालेला किरण छिद्रातून सरळ जाऊन पडद्याच्या खालीच जाऊ शकतो; मुळांचा किरण वर छेदतो. प्रकाश वळणे घेऊ शकला असता तर चित्र धूसर झाले असते वा सरळ झाले असते — स्पष्ट उलटे चित्र म्हणजे रंगेहाथ पकडलेली सरळ चाल. एक बुटांचे खोके एक नियम सिद्ध करते.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 15 — Air Around Us (the invisible substance with weight & work) */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-air-around-us",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 15 — Air Around Us",
+      hi: "अध्याय 15 — हमारे चारों ओर वायु",
+      mr: "प्रकरण 15 — आपल्याभोवतीची हवा",
+    },
+    name: { en: "Air Around Us", hi: "हमारे चारों ओर वायु", mr: "आपल्याभोवतीची हवा" },
+    summary: {
+      en: "The invisible stuff that fills 'empty' glasses, feeds every flame its fifth, dissolves for the fishes and turns windmills when it runs.",
+      hi: "वह अदृश्य चीज़ जो 'ख़ाली' गिलास भरती है, हर लौ को उसका पाँचवाँ हिस्सा खिलाती है, मछलियों के लिए घुल जाती है और दौड़ने पर पवनचक्कियाँ घुमाती है।",
+      mr: "'रिकामे' ग्लास भरणारी, प्रत्येक ज्योतीला तिचा पंचमांश खाऊ घालणारी, माशांसाठी विरघळणारी आणि धावली की पवनचक्क्या फिरवणारी अदृश्य वस्तू.",
+    },
+    position: 15,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "airspace",
+        name: {
+          en: "Air occupies space",
+          hi: "वायु जगह घेरती है",
+          mr: "हवा जागा व्यापते",
+        },
+        kind: "air-truth",
+        prompt: {
+          en: "Push an upside-down 'empty' glass straight down into water: the water cannot rise inside and a crumpled paper at its base stays DRY. What kept the water out?",
+          hi: "उलटा 'ख़ाली' गिलास सीधा पानी में दबाइए: पानी भीतर नहीं चढ़ पाता और तली में दबा मुड़ा काग़ज़ सूखा रहता है। पानी को किसने रोका?",
+          mr: "उलटे 'रिकामे' ग्लास सरळ पाण्यात दाबा: पाणी आत चढू शकत नाही आणि तळाशी दाबलेला चुरगळलेला कागद कोरडा राहतो. पाण्याला कोणी अडवले?",
+        },
+        statement: {
+          en: "Air occupies space — the 'empty' glass is full of it, and the trapped air refuses to make room for the water.",
+          hi: "वायु जगह घेरती है — 'ख़ाली' गिलास उसी से भरा है, और फँसी हवा पानी को जगह देने से इनकार कर देती है।",
+          mr: "हवा जागा व्यापते — 'रिकामा' ग्लास तिनेच भरलेला असतो, आणि अडकलेली हवा पाण्याला जागा द्यायला नकार देते.",
+        },
+        detail: {
+          en: "Tilt the glass and the proof bubbles out — the air leaves, gurgling, and water climbs in behind it.",
+          hi: "गिलास तिरछा कीजिए और सबूत बुलबुलों में निकल आता है — हवा गुड़गुड़ाती निकलती है, और उसके पीछे-पीछे पानी चढ़ आता है।",
+          mr: "ग्लास तिरपा करा आणि पुरावा बुडबुड्यांत बाहेर येतो — हवा गुडगुडत निघते, आणि तिच्या मागोमाग पाणी चढते.",
+        },
+        extra: {
+          en: "'Empty' is the everyday word; the scientist's word is 'air-filled'.",
+          hi: "'ख़ाली' रोज़मर्रा का शब्द है; वैज्ञानिक का शब्द है — 'हवा-भरा'।",
+          mr: "'रिकामे' हा रोजचा शब्द; वैज्ञानिकाचा शब्द — 'हवेने भरलेले'.",
+        },
+        pair: {
+          left: { en: "The upside-down glass", hi: "उलटा गिलास", mr: "उलटा ग्लास" },
+          right: {
+            en: "dry paper, air's proof",
+            hi: "सूखा काग़ज़, हवा का सबूत",
+            mr: "कोरडा कागद, हवेचा पुरावा",
+          },
+        },
+      },
+      {
+        id: "oxygen",
+        name: { en: "Oxygen", hi: "ऑक्सीजन", mr: "ऑक्सिजन" },
+        kind: "air-part",
+        prompt: {
+          en: "About a FIFTH of the air is which gas — the one that burning flames and breathing bodies both use up?",
+          hi: "हवा का क़रीब पाँचवाँ हिस्सा कौन-सी गैस है — वही जिसे जलती लपटें और साँस लेते शरीर दोनों ख़र्च करते हैं?",
+          mr: "हवेचा सुमारे पंचमांश कोणता वायू आहे — जळणाऱ्या ज्वाळा आणि श्वसणारी शरीरे दोघेही खर्च करतात तो?",
+        },
+        statement: {
+          en: "Oxygen is about one-fifth of the air — the part that burning and breathing both consume; without it, neither can go on.",
+          hi: "ऑक्सीजन हवा का क़रीब पाँचवाँ हिस्सा है — वही जो जलने और साँस लेने दोनों में खपता है; उसके बिना दोनों नहीं चल सकते।",
+          mr: "ऑक्सिजन हवेचा सुमारे पंचमांश — जळण्यात आणि श्वसण्यात दोन्हींत खपणारा भाग; त्याच्याविना दोन्ही चालू शकत नाहीत.",
+        },
+        pair: {
+          left: { en: "Oxygen", hi: "ऑक्सीजन", mr: "ऑक्सिजन" },
+          right: {
+            en: "the flame's fifth of the air",
+            hi: "लौ का, हवा का पाँचवाँ",
+            mr: "ज्योतीचा, हवेचा पंचमांश",
+          },
+        },
+      },
+      {
+        id: "nitrogen",
+        name: { en: "Nitrogen", hi: "नाइट्रोजन", mr: "नायट्रोजन" },
+        kind: "air-part",
+        prompt: {
+          en: "Nearly four-fifths of every breath you draw is which quiet gas — one that neither burns nor feeds a flame?",
+          hi: "आपकी हर साँस का लगभग चार-पाँचवाँ हिस्सा कौन-सी चुप गैस है — जो न ख़ुद जलती है, न लौ को खिलाती है?",
+          mr: "तुमच्या प्रत्येक श्वासाचा जवळजवळ चार-पंचमांश कोणता शांत वायू आहे — जो स्वतः जळत नाही, ज्योतीलाही पोसत नाही?",
+        },
+        statement: {
+          en: "Nitrogen is the major part of air — nearly four-fifths — a quiet gas that does not burn and does not support burning.",
+          hi: "नाइट्रोजन हवा का सबसे बड़ा हिस्सा है — लगभग चार-पाँचवाँ — एक चुप गैस जो न जलती है, न जलने का साथ देती है।",
+          mr: "नायट्रोजन हवेचा सर्वांत मोठा भाग — जवळजवळ चार-पंचमांश — न जळणारा, जळण्याला साथही न देणारा शांत वायू.",
+        },
+        pair: {
+          left: { en: "Nitrogen", hi: "नाइट्रोजन", mr: "नायट्रोजन" },
+          right: {
+            en: "the air's quiet majority",
+            hi: "हवा का चुप बहुमत",
+            mr: "हवेचे शांत बहुमत",
+          },
+        },
+      },
+      {
+        id: "dissolvedair",
+        name: { en: "Dissolved air", hi: "घुली हुई वायु", mr: "विरघळलेली हवा" },
+        kind: "air-truth",
+        prompt: {
+          en: "Fish never surface to breathe, yet they live — what do their gills sip from the water itself?",
+          hi: "मछलियाँ साँस लेने ऊपर नहीं आतीं, फिर भी जीती हैं — उनके गलफड़े ख़ुद पानी में से क्या पीते हैं?",
+          mr: "मासे श्वासासाठी वर येत नाहीत, तरी जगतात — त्यांची कल्ले स्वतः पाण्यातून काय पितात?",
+        },
+        statement: {
+          en: "Air dissolves in water — fish breathe that dissolved air through their gills, never needing the surface at all.",
+          hi: "वायु पानी में घुलती है — मछलियाँ वही घुली हवा गलफड़ों से लेती हैं, सतह की उन्हें ज़रूरत ही नहीं।",
+          mr: "हवा पाण्यात विरघळते — मासे तीच विरघळलेली हवा कल्ल्यांतून घेतात, पृष्ठभागाची त्यांना गरजच नाही.",
+        },
+        detail: {
+          en: "Warm a pan of water and watch: tiny bubbles line the sides long before boiling — the dissolved air leaving first.",
+          hi: "पानी की पतीली गुनगुनाइए और देखिए: उबाल से बहुत पहले किनारों पर नन्हे बुलबुले सज जाते हैं — घुली हवा पहले विदा होती हुई।",
+          mr: "पाण्याचे पातेले कोमट करा आणि पाहा: उकळीच्या खूप आधी कडांना इवले बुडबुडे लागतात — विरघळलेली हवा आधी निघून जाताना.",
+        },
+        extra: {
+          en: "That is why crowded, dirty ponds choke their fish — foul water holds too little dissolved air.",
+          hi: "इसीलिए भीड़ भरे गंदे तालाब अपनी मछलियों का दम घोंटते हैं — मैले पानी में घुली हवा बहुत कम बचती है।",
+          mr: "म्हणूनच गर्दीची, गढूळ तळी आपल्या माशांचा जीव गुदमरवतात — मलिन पाण्यात विरघळलेली हवा फार थोडी उरते.",
+        },
+        pair: {
+          left: { en: "Dissolved air", hi: "घुली वायु", mr: "विरघळलेली हवा" },
+          right: {
+            en: "the fishes' hidden breath",
+            hi: "मछलियों की छिपी साँस",
+            mr: "माशांचा लपलेला श्वास",
+          },
+        },
+      },
+      {
+        id: "wind",
+        name: { en: "The wind", hi: "पवन", mr: "वारा" },
+        kind: "air-truth",
+        prompt: {
+          en: "Flags stream, sails fill, windmills turn — what do we call air when it MOVES?",
+          hi: "झंडे लहराते हैं, पाल भरते हैं, पवनचक्कियाँ घूमती हैं — चलती हुई हवा को क्या कहते हैं?",
+          mr: "झेंडे फडकतात, शिडे भरतात, पवनचक्क्या फिरतात — हलणाऱ्या हवेला काय म्हणतात?",
+        },
+        statement: {
+          en: "Wind is simply air in motion — strong enough to fill sails, turn windmills and carry kites, though the mover itself stays invisible.",
+          hi: "पवन बस चलती हवा है — पाल भरने, पवनचक्की घुमाने और पतंग उड़ाने जितनी बलवान, जबकि चलाने वाली ख़ुद अदृश्य रहती है।",
+          mr: "वारा म्हणजे नुसती हलणारी हवा — शिडे भरण्या, पवनचक्की फिरवण्या आणि पतंग नेण्याइतकी बलवान, तरी हलवणारी स्वतः अदृश्य राहते.",
+        },
+        pair: {
+          left: { en: "The wind", hi: "पवन", mr: "वारा" },
+          right: {
+            en: "air caught moving",
+            hi: "चलती पकड़ी गई हवा",
+            mr: "हलताना पकडलेली हवा",
+          },
+        },
+      },
+      {
+        id: "dustbeam",
+        name: {
+          en: "The sunbeam's dust",
+          hi: "धूप-किरण की धूल",
+          mr: "उन्हाच्या तिरपीतली धूळ",
+        },
+        kind: "air-part",
+        prompt: {
+          en: "A thin blade of sunlight cuts into a dark room — and suddenly thousands of drifting specks appear inside it. What has the beam revealed about 'clean' air?",
+          hi: "अँधेरे कमरे में धूप की पतली फाँक घुसती है — और उसके भीतर सहसा हज़ारों तैरते कण दिख उठते हैं। किरण ने 'साफ़' हवा के बारे में क्या खोल दिया?",
+          mr: "अंधाऱ्या खोलीत उन्हाची बारीक तिरीप शिरते — आणि तिच्या आत एकदम हजारो तरंगते कण दिसू लागतात. तिरपीने 'स्वच्छ' हवेबद्दल काय उघड केले?",
+        },
+        statement: {
+          en: "Air carries floating dust and smoke — invisible until a sunbeam lights the drifting specks against the dark.",
+          hi: "हवा तैरती धूल और धुआँ ढोती है — अदृश्य, जब तक धूप-किरण अँधेरे के आगे उन तैरते कणों को जला न दे।",
+          mr: "हवा तरंगती धूळ आणि धूर वाहते — अदृश्य, जोवर उन्हाची तिरीप अंधारापुढे ते तरंगते कण उजळत नाही.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the evidence to what it proves: A-the dry paper in the dunked glass, B-the candle dying under a jar, C-bubbles lining a warming pan. Which trio is right?",
+          hi: "सबूत को उसके साबित किए से मिलाइए: अ-डूबे गिलास का सूखा काग़ज़, ब-जार तले बुझती मोमबत्ती, स-गुनगुनाती पतीली के किनारे के बुलबुले। कौन-सी तिकड़ी सही है?",
+          mr: "पुरावा तो काय सिद्ध करतो त्याच्याशी जुळवा: अ-बुडवलेल्या ग्लासातला कोरडा कागद, ब-बरणीखाली विझणारी मेणबत्ती, क-कोमट पातेल्याच्या कडांचे बुडबुडे. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: air occupies space · B: burning uses up oxygen · C: air dissolves in water",
+            hi: "अ: वायु जगह घेरती है · ब: जलना ऑक्सीजन खाता है · स: वायु पानी में घुलती है",
+            mr: "अ: हवा जागा व्यापते · ब: जळणे ऑक्सिजन खाते · क: हवा पाण्यात विरघळते",
+          },
+          {
+            en: "A: air dissolves in water · B: air occupies space · C: burning uses oxygen",
+            hi: "अ: वायु पानी में घुलती है · ब: वायु जगह घेरती है · स: जलना ऑक्सीजन खाता है",
+            mr: "अ: हवा पाण्यात विरघळते · ब: हवा जागा व्यापते · क: जळणे ऑक्सिजन खाते",
+          },
+          {
+            en: "A: burning uses oxygen · B: air dissolves in water · C: air occupies space",
+            hi: "अ: जलना ऑक्सीजन खाता है · ब: वायु पानी में घुलती है · स: वायु जगह घेरती है",
+            mr: "अ: जळणे ऑक्सिजन खाते · ब: हवा पाण्यात विरघळते · क: हवा जागा व्यापते",
+          },
+          {
+            en: "A: air occupies space · B: air dissolves in water · C: burning uses oxygen",
+            hi: "अ: वायु जगह घेरती है · ब: वायु पानी में घुलती है · स: जलना ऑक्सीजन खाता है",
+            mr: "अ: हवा जागा व्यापते · ब: हवा पाण्यात विरघळते · क: जळणे ऑक्सिजन खाते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The dry paper says the glass was already full — of air. The dying candle says something in the jar ran out — its oxygen. The early bubbles say the water had air hidden inside it all along. Three kitchen experiments, three properties of one invisible substance.",
+          hi: "सूखा काग़ज़ कहता है गिलास पहले से भरा था — हवा से। बुझती मोमबत्ती कहती है जार में कुछ चुक गया — उसकी ऑक्सीजन। जल्दी आए बुलबुले कहते हैं पानी में हमेशा से हवा छिपी थी। रसोई के तीन प्रयोग, एक अदृश्य पदार्थ के तीन गुण।",
+          mr: "कोरडा कागद सांगतो ग्लास आधीच भरलेला होता — हवेने. विझणारी मेणबत्ती सांगते बरणीत काही संपले — तिचा ऑक्सिजन. लवकरचे बुडबुडे सांगतात पाण्यात हवा नेहमीच लपलेली होती. स्वयंपाकघरातले तीन प्रयोग, एका अदृश्य पदार्थाचे तीन गुण.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A burning candle covered with a glass jar keeps burning for a few seconds — then dies. Why not instantly, and why at all?",
+          hi: "जलती मोमबत्ती पर शीशे का जार ढकिए तो वह कुछ सेकंड और जलती है — फिर बुझ जाती है। तुरंत क्यों नहीं, और आख़िर क्यों?",
+          mr: "जळत्या मेणबत्तीवर काचेची बरणी झाका, ती काही सेकंद आणखी जळते — मग विझते. लगेच का नाही, आणि मुळात का?",
+        },
+        choices: [
+          {
+            en: "The jar traps a small store of air — the flame burns while its fifth of oxygen lasts, and dies the moment that share is spent",
+            hi: "जार हवा का छोटा भंडार क़ैद करता है — लौ तब तक जलती है जब तक उसका ऑक्सीजन वाला पाँचवाँ हिस्सा बचा है, और वह हिस्सा चुकते ही बुझ जाती है",
+            mr: "बरणी हवेचा छोटा साठा कोंडते — ज्योत तिचा ऑक्सिजनचा पंचमांश टिकेपर्यंत जळते, आणि तो वाटा संपताच विझते",
+          },
+          {
+            en: "The glass slowly squeezes the flame out",
+            hi: "शीशा धीरे-धीरे लौ को निचोड़ देता है",
+            mr: "काच हळूहळू ज्योत पिळून टाकते",
+          },
+          {
+            en: "The candle wax runs out at that moment",
+            hi: "ठीक उसी पल मोम चुक जाता है",
+            mr: "नेमक्या त्याच क्षणी मेण संपते",
+          },
+          {
+            en: "The jar's cold air freezes the flame",
+            hi: "जार की ठंडी हवा लौ को जमा देती है",
+            mr: "बरणीतली गार हवा ज्योत गोठवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The delay IS the measurement: those few seconds are the trapped oxygen being eaten. Wax and wick are still plentiful when the flame dies — what ended was the air's burnable fifth; the nitrogen four-fifths sits there untouched, useless to the fire. A bigger jar buys a longer burn, in exact proportion: the candle is quietly weighing the oxygen for you.",
+          hi: "देर ही नाप है: वे चंद सेकंड क़ैद ऑक्सीजन के खाए जाने के हैं। लौ बुझते समय मोम और बाती भरपूर हैं — ख़त्म हुआ तो हवा का जलने वाला पाँचवाँ हिस्सा; नाइट्रोजन का चार-पाँचवाँ वहीं अनछुआ बैठा है, आग के किसी काम का नहीं। बड़ा जार लंबी जलन दिलाता है, ठीक अनुपात में: मोमबत्ती चुपचाप आपके लिए ऑक्सीजन तौल रही है।",
+          mr: "उशीर हेच माप: ते काही सेकंद म्हणजे कोंडलेला ऑक्सिजन खाल्ला जाणे. ज्योत विझताना मेण आणि वात भरपूर आहेत — संपला तो हवेचा जळणारा पंचमांश; नायट्रोजनचा चार-पंचमांश तिथेच अस्पर्श बसला आहे, आगीच्या काहीच कामाचा नाही. मोठी बरणी लांब जळण देते, नेमक्या प्रमाणात: मेणबत्ती गुपचूप तुमच्यासाठी ऑक्सिजन तोलते आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Divers carry air to the deep, yet fish in the same water carry nothing. What one fact about air explains both arrangements?",
+          hi: "गोताखोर गहराई में हवा साथ ले जाते हैं, जबकि उसी पानी की मछलियाँ कुछ नहीं ले जातीं। हवा का कौन-सा एक तथ्य दोनों इंतज़ामों को समझा देता है?",
+          mr: "पाणबुडे खोलात हवा सोबत नेतात, तर त्याच पाण्यातले मासे काहीच नेत नाहीत. हवेचे कोणते एक तथ्य दोन्ही व्यवस्था समजावते?",
+        },
+        choices: [
+          {
+            en: "Air dissolves in water, but only a little — enough for gills built to sip it, far too little for lungs built for open air",
+            hi: "हवा पानी में घुलती है, पर थोड़ी ही — उसे पीने को बने गलफड़ों के लिए काफ़ी, खुली हवा के लिए बने फेफड़ों के लिए बहुत कम",
+            mr: "हवा पाण्यात विरघळते, पण थोडीच — ती पिण्यास घडलेल्या कल्ल्यांना पुरेशी, खुल्या हवेसाठी घडलेल्या फुप्फुसांना फारच थोडी",
+          },
+          {
+            en: "Fish do not need air at all",
+            hi: "मछलियों को हवा चाहिए ही नहीं",
+            mr: "माशांना हवा लागतच नाही",
+          },
+          {
+            en: "Deep water has more air than the surface",
+            hi: "गहरे पानी में सतह से ज़्यादा हवा है",
+            mr: "खोल पाण्यात पृष्ठभागाहून जास्त हवा असते",
+          },
+          {
+            en: "Divers carry air only out of habit",
+            hi: "गोताखोर बस आदतन हवा ले जाते हैं",
+            mr: "पाणबुडे नुसते सवयीने हवा नेतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One fact, two bodies: water holds dissolved air, but thinly. Gills are fine nets grown to harvest exactly that thin supply; lungs are bellows grown for the rich open sky, and would starve on the water's trace. Neither creature is 'better equipped' — each is equipped for its own shelf of the same invisible substance.",
+          hi: "एक तथ्य, दो शरीर: पानी में घुली हवा है, पर पतली। गलफड़े वही पतली आपूर्ति बीनने को उगे महीन जाल हैं; फेफड़े खुले समृद्ध आसमान के लिए बनी धौंकनियाँ, जो पानी की रत्ती भर हवा पर भूखे मर जाते। कोई जीव 'बेहतर लैस' नहीं — हर एक उसी अदृश्य पदार्थ की अपनी-अपनी ताक़ के लिए लैस है।",
+          mr: "एक तथ्य, दोन शरीरे: पाण्यात विरघळलेली हवा आहे, पण विरळ. कल्ले म्हणजे नेमकी तीच विरळ रसद वेचायला वाढलेली बारीक जाळी; फुप्फुसे खुल्या समृद्ध आकाशासाठी घडलेले भाते, जे पाण्याच्या कणभर हवेवर उपाशी मेले असते. कोणताही जीव 'अधिक सुसज्ज' नाही — प्रत्येक त्याच अदृश्य पदार्थाच्या आपापल्या फडताळासाठी सुसज्ज आहे.",
+        },
+      },
+    ],
+  },
 ];
