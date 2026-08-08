@@ -364,4 +364,320 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 2 — The Plant Fairy (plants around us)                          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-the-plant-fairy",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 2 — The Plant Fairy",
+      hi: "अध्याय 2 — पौधों की परी",
+      mr: "प्रकरण 2 — वनस्पतींची परी",
+    },
+    name: {
+      en: "The Plant Fairy",
+      hi: "पौधों की परी",
+      mr: "वनस्पतींची परी",
+    },
+    summary: {
+      en: "Trees, shrubs, climbers and grass — telling plants apart by their trunks, leaves and the way they stand.",
+      hi: "पेड़, झाड़ियाँ, बेलें और घास — तनों, पत्तों और खड़े होने के ढंग से पौधों को पहचानना।",
+      mr: "झाडे, झुडपे, वेली आणि गवत — खोड, पाने आणि उभे राहण्याच्या पद्धतीवरून वनस्पती ओळखणे.",
+    },
+    position: 2,
+    source: "EduLink original, written against NCERT Looking Around (Class 3)",
+    licence: "CC-BY-SA-4.0",
+    facts: [
+      {
+        id: "tree",
+        name: { en: "A tree", hi: "पेड़", mr: "झाड" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which kind of plant is big and tall, with one thick, hard brown trunk?",
+          hi: "कौन-सा पौधा बड़ा और ऊँचा होता है, जिसका एक मोटा, कठोर भूरा तना होता है?",
+          mr: "कोणती वनस्पती मोठी आणि उंच असते, जिला एक जाड, कठीण तपकिरी खोड असते?",
+        },
+        statement: {
+          en: "A tree stands big and tall on one thick, hard trunk — like the mango and the neem.",
+          hi: "पेड़ एक मोटे, कठोर तने पर बड़ा और ऊँचा खड़ा होता है — जैसे आम और नीम।",
+          mr: "झाड एका जाड, कठीण खोडावर मोठे आणि उंच उभे असते — जसे आंबा आणि कडुनिंब.",
+        },
+        detail: {
+          en: "Its branches spread out high above your head, and birds build nests in them.",
+          hi: "इसकी डालियाँ सिर से बहुत ऊपर फैलती हैं, और उनमें पक्षी घोंसले बनाते हैं।",
+          mr: "याच्या फांद्या डोक्याच्या खूप वर पसरतात, आणि त्यांत पक्षी घरटी बांधतात.",
+        },
+        pair: {
+          left: { en: "A tree", hi: "पेड़", mr: "झाड" },
+          right: { en: "one thick trunk", hi: "एक मोटा तना", mr: "एक जाड खोड" },
+        },
+      },
+      {
+        id: "shrub",
+        name: { en: "A shrub", hi: "झाड़ी", mr: "झुडूप" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which kind of plant is smaller than a tree, with many hard stems branching near the ground?",
+          hi: "कौन-सा पौधा पेड़ से छोटा होता है और ज़मीन के पास से ही उसकी कई कठोर टहनियाँ निकलती हैं?",
+          mr: "कोणती वनस्पती झाडाहून लहान असते आणि जमिनीजवळूनच तिच्या अनेक कठीण फांद्या फुटतात?",
+        },
+        statement: {
+          en: "A shrub is smaller than a tree, with many stems branching out close to the ground — like the rose and the mehndi.",
+          hi: "झाड़ी पेड़ से छोटी होती है, ज़मीन के पास से कई तने फूटते हैं — जैसे गुलाब और मेहँदी।",
+          mr: "झुडूप झाडाहून लहान असते, जमिनीजवळून अनेक फांद्या फुटतात — जसे गुलाब आणि मेंदी.",
+        },
+        pair: {
+          left: { en: "A shrub", hi: "झाड़ी", mr: "झुडूप" },
+          right: { en: "many stems near the ground", hi: "ज़मीन के पास कई तने", mr: "जमिनीजवळ अनेक फांद्या" },
+        },
+      },
+      {
+        id: "climber",
+        name: { en: "A climber", hi: "बेल", mr: "वेल" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which plant has a stem so weak that it must hold a stick, wall or tree to go up?",
+          hi: "किस पौधे का तना इतना कमज़ोर होता है कि ऊपर जाने के लिए उसे छड़ी, दीवार या पेड़ का सहारा लेना पड़ता है?",
+          mr: "कोणत्या वनस्पतीचे खोड इतके कमजोर असते की वर जाण्यासाठी तिला काठी, भिंत वा झाडाचा आधार घ्यावा लागतो?",
+        },
+        statement: {
+          en: "A climber's stem is too weak to stand, so it climbs a support — like the money plant and the grape vine.",
+          hi: "बेल का तना खड़ा नहीं रह पाता, इसलिए वह सहारे पर चढ़ती है — जैसे मनी प्लांट और अंगूर की बेल।",
+          mr: "वेलीचे खोड उभे राहू शकत नाही, म्हणून ती आधारावर चढते — जसे मनी प्लांट आणि द्राक्षवेल.",
+        },
+        detail: {
+          en: "The pumpkin and gourd plants of this kind spread along the ground when no support is near.",
+          hi: "कद्दू और लौकी के ऐसे पौधे सहारा न मिलने पर ज़मीन पर ही फैल जाते हैं।",
+          mr: "भोपळा आणि दुधी अशा वनस्पती आधार नसल्यास जमिनीवरच पसरतात.",
+        },
+        pair: {
+          left: { en: "A climber", hi: "बेल", mr: "वेल" },
+          right: { en: "needs a support", hi: "सहारा चाहिए", mr: "आधार लागतो" },
+        },
+      },
+      {
+        id: "grass",
+        name: { en: "Grass", hi: "घास", mr: "गवत" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which small plant carpets the ground, springs back when stepped on, and is what cows love to graze?",
+          hi: "कौन-सा छोटा पौधा ज़मीन को हरी चादर-सा ढँकता है, पैर पड़ने पर फिर उठ जाता है, और गायें उसे चरना पसंद करती हैं?",
+          mr: "कोणती छोटी वनस्पती जमिनीला हिरव्या गालिच्यासारखी झाकते, पाय पडल्यावर पुन्हा उठते, आणि गायींना ती चरायला आवडते?",
+        },
+        statement: {
+          en: "Grass covers the ground like a green carpet and springs back up after being stepped on.",
+          hi: "घास ज़मीन को हरी चादर-सी ढँकती है और पैर हटते ही फिर उठ खड़ी होती है।",
+          mr: "गवत जमिनीला हिरव्या गालिच्यासारखे झाकते आणि पाय हटताच पुन्हा उभे राहते.",
+        },
+      },
+      {
+        id: "banyan",
+        name: { en: "The banyan", hi: "बरगद", mr: "वड" },
+        kind: "tree",
+        prompt: {
+          en: "Which huge tree drops long hanging roots from its own branches?",
+          hi: "कौन-सा विशाल पेड़ अपनी ही डालियों से लंबी लटकती जड़ें गिराता है?",
+          mr: "कोणते प्रचंड झाड आपल्याच फांद्यांतून लांब लोंबणारी मुळे सोडते?",
+        },
+        statement: {
+          en: "The banyan drops roots from its branches, and old banyans look like a whole grove of trunks.",
+          hi: "बरगद अपनी डालियों से जड़ें गिराता है, और पुराने बरगद तनों के पूरे झुरमुट-से दिखते हैं।",
+          mr: "वड आपल्या फांद्यांतून मुळे सोडतो, आणि जुने वड खोडांच्या अख्ख्या राईसारखे दिसतात.",
+        },
+        decoys: [
+          { en: "The mango tree", hi: "आम का पेड़", mr: "आंब्याचे झाड" },
+          { en: "The coconut palm", hi: "नारियल का पेड़", mr: "नारळाचे झाड" },
+        ],
+        pair: {
+          left: { en: "The banyan", hi: "बरगद", mr: "वड" },
+          right: { en: "hanging roots", hi: "लटकती जड़ें", mr: "लोंबणारी मुळे" },
+        },
+      },
+      {
+        id: "neem",
+        name: { en: "The neem", hi: "नीम", mr: "कडुनिंब" },
+        kind: "tree",
+        prompt: {
+          en: "Which tree's bitter leaves are used to keep insects away from stored grain and clothes?",
+          hi: "किस पेड़ की कड़वी पत्तियाँ रखे अनाज और कपड़ों से कीड़े दूर रखने के काम आती हैं?",
+          mr: "कोणत्या झाडाची कडू पाने साठवलेल्या धान्यातून व कपड्यांतून किडे दूर ठेवायला वापरतात?",
+        },
+        statement: {
+          en: "The neem's leaves taste bitter, and people keep them with grain and woollens to drive insects away.",
+          hi: "नीम की पत्तियाँ कड़वी होती हैं, और लोग उन्हें अनाज व ऊनी कपड़ों के साथ रखते हैं ताकि कीड़े भागें।",
+          mr: "कडुनिंबाची पाने कडू असतात, आणि किडे पळावेत म्हणून लोक ती धान्यात व लोकरी कपड्यांत ठेवतात.",
+        },
+        decoys: [
+          { en: "The peepal", hi: "पीपल", mr: "पिंपळ" },
+          { en: "The gulmohar", hi: "गुलमोहर", mr: "गुलमोहर" },
+        ],
+        pair: {
+          left: { en: "The neem", hi: "नीम", mr: "कडुनिंब" },
+          right: { en: "bitter leaves", hi: "कड़वी पत्तियाँ", mr: "कडू पाने" },
+        },
+      },
+      {
+        id: "cactus",
+        name: { en: "The cactus", hi: "नागफनी (कैक्टस)", mr: "निवडुंग" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which desert plant has thorns instead of flat leaves, and a thick green stem that stores water?",
+          hi: "किस रेगिस्तानी पौधे में चपटी पत्तियों की जगह काँटे होते हैं और मोटा हरा तना पानी जमा रखता है?",
+          mr: "कोणत्या वाळवंटी वनस्पतीला सपाट पानांऐवजी काटे असतात आणि जाड हिरवे खोड पाणी साठवते?",
+        },
+        statement: {
+          en: "The cactus grows thorns instead of flat leaves and stores water in its thick green stem, so it survives where rain is rare.",
+          hi: "नागफनी में चपटी पत्तियों की जगह काँटे होते हैं और मोटा हरा तना पानी जमा रखता है — इसीलिए वह कम बारिश में भी जी लेती है।",
+          mr: "निवडुंगाला सपाट पानांऐवजी काटे असतात आणि जाड हिरवे खोड पाणी साठवते — म्हणूनच तो कमी पावसातही जगतो.",
+        },
+      },
+      {
+        id: "lotus",
+        name: { en: "The lotus", hi: "कमल", mr: "कमळ" },
+        kind: "flower",
+        prompt: {
+          en: "Which flower grows in ponds, its big round leaves floating on the water?",
+          hi: "कौन-सा फूल तालाबों में उगता है, जिसके बड़े गोल पत्ते पानी पर तैरते हैं?",
+          mr: "कोणते फूल तळ्यांत उगवते, ज्याची मोठी गोल पाने पाण्यावर तरंगतात?",
+        },
+        statement: {
+          en: "The lotus grows in ponds, and its big round leaves float flat on the water.",
+          hi: "कमल तालाबों में उगता है, और उसके बड़े गोल पत्ते पानी पर चपटे तैरते हैं।",
+          mr: "कमळ तळ्यांत उगवते, आणि त्याची मोठी गोल पाने पाण्यावर सपाट तरंगतात.",
+        },
+        decoys: [
+          { en: "The rose", hi: "गुलाब", mr: "गुलाब" },
+          { en: "The marigold", hi: "गेंदा", mr: "झेंडू" },
+        ],
+      },
+      {
+        id: "tulsi",
+        name: { en: "The tulsi", hi: "तुलसी", mr: "तुळस" },
+        kind: "plant-type",
+        prompt: {
+          en: "Which small fragrant plant is grown in many courtyards and its leaves put into kadha for coughs and colds?",
+          hi: "कौन-सा छोटा सुगंधित पौधा कई आँगनों में लगाया जाता है और उसकी पत्तियाँ खाँसी-ज़ुकाम के काढ़े में डाली जाती हैं?",
+          mr: "कोणती छोटी सुगंधी वनस्पती अनेक अंगणांत लावतात आणि तिची पाने खोकला-सर्दीच्या काढ्यात घालतात?",
+        },
+        statement: {
+          en: "The tulsi is a small fragrant plant of courtyards, its leaves brewed for coughs and colds.",
+          hi: "तुलसी आँगन का छोटा सुगंधित पौधा है, जिसकी पत्तियाँ खाँसी-ज़ुकाम में काढ़े के काम आती हैं।",
+          mr: "तुळस ही अंगणातली छोटी सुगंधी वनस्पती, तिची पाने खोकला-सर्दीत काढ्यासाठी वापरतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Line these up from SHORTEST to TALLEST as they usually grow: grass, a mango tree, a rose shrub.",
+          hi: "इन्हें उनकी सामान्य ऊँचाई के अनुसार सबसे छोटे से सबसे ऊँचे तक लगाइए: घास, आम का पेड़, गुलाब की झाड़ी।",
+          mr: "यांना त्यांच्या नेहमीच्या उंचीनुसार सर्वांत लहान ते सर्वांत उंच असे लावा: गवत, आंब्याचे झाड, गुलाबाचे झुडूप.",
+        },
+        choices: [
+          {
+            en: "Grass → rose shrub → mango tree",
+            hi: "घास → गुलाब की झाड़ी → आम का पेड़",
+            mr: "गवत → गुलाबाचे झुडूप → आंब्याचे झाड",
+          },
+          {
+            en: "Rose shrub → grass → mango tree",
+            hi: "गुलाब की झाड़ी → घास → आम का पेड़",
+            mr: "गुलाबाचे झुडूप → गवत → आंब्याचे झाड",
+          },
+          {
+            en: "Mango tree → rose shrub → grass",
+            hi: "आम का पेड़ → गुलाब की झाड़ी → घास",
+            mr: "आंब्याचे झाड → गुलाबाचे झुडूप → गवत",
+          },
+          {
+            en: "Grass → mango tree → rose shrub",
+            hi: "घास → आम का पेड़ → गुलाब की झाड़ी",
+            mr: "गवत → आंब्याचे झाड → गुलाबाचे झुडूप",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Grass hugs the ground, a shrub reaches about as high as a child, and a tree rises far above both. Sorting by height is really sorting by plant TYPE — the trunk decides how high a plant can go.",
+          hi: "घास ज़मीन से लगी रहती है, झाड़ी बच्चे की ऊँचाई तक पहुँचती है, और पेड़ दोनों से बहुत ऊपर उठता है। ऊँचाई से छाँटना असल में पौधे के प्रकार से छाँटना है — तना ही तय करता है कि पौधा कितना ऊँचा जाएगा।",
+          mr: "गवत जमिनीला बिलगते, झुडूप मुलाच्या उंचीपर्यंत पोहोचते, आणि झाड दोन्हींहून खूप वर जाते. उंचीने लावणे म्हणजे खरे तर वनस्पतीच्या प्रकाराने लावणे — खोडच ठरवते वनस्पती किती उंच जाईल.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A money plant in a bottle grows two hand-spans in a month, lying limp along the shelf. The same plant, given a stick, climbs upright the same two spans. What did the stick change?",
+          hi: "बोतल में लगा मनी प्लांट महीने भर में दो बालिश्त बढ़ता है, ताक़ पर लस्त-सा लेटा हुआ। वही पौधा छड़ी मिलने पर उतना ही सीधा ऊपर चढ़ता है। छड़ी ने क्या बदला?",
+          mr: "बाटलीतले मनी प्लांट महिन्यात दोन वीत वाढते, फळीवर लोळत. तेच रोप काठी मिळाल्यावर तितकेच सरळ वर चढते. काठीने काय बदलले?",
+        },
+        choices: [
+          {
+            en: "Only its direction — a climber's weak stem grows the same, but can go UP when it has a support",
+            hi: "केवल दिशा — बेल का कमज़ोर तना उतना ही बढ़ता है, पर सहारा मिलने पर ऊपर जा पाता है",
+            mr: "फक्त दिशा — वेलीचे कमजोर खोड तितकेच वाढते, पण आधार मिळाल्यावर वर जाऊ शकते",
+          },
+          {
+            en: "The stick fed the plant and made it stronger",
+            hi: "छड़ी ने पौधे को खुराक दी और मज़बूत बनाया",
+            mr: "काठीने रोपाला खुराक दिली आणि मजबूत केले",
+          },
+          {
+            en: "The plant became a tree once it stood upright",
+            hi: "सीधा खड़ा होते ही पौधा पेड़ बन गया",
+            mr: "सरळ उभे राहताच रोपाचे झाड झाले",
+          },
+          {
+            en: "Climbers only grow at night, and the stick does not matter",
+            hi: "बेलें केवल रात में बढ़ती हैं, छड़ी से कुछ नहीं बदलता",
+            mr: "वेली फक्त रात्री वाढतात, काठीने काही बदलत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The growth was the same two spans either way — the stick supplied no food and changed no type. What a support gives a weak stem is direction: the defining trick of climbers, and the reason farmers stake beans and grapes.",
+          hi: "बढ़त दोनों हाल में वही दो बालिश्त थी — छड़ी ने न खुराक दी, न प्रकार बदला। सहारा कमज़ोर तने को बस दिशा देता है: बेलों की यही पहचान है, और इसीलिए किसान सेम और अंगूर को थूनी देते हैं।",
+          mr: "वाढ दोन्ही स्थितींत तीच दोन वीत — काठीने खुराकही दिली नाही, प्रकारही बदलला नाही. आधार कमजोर खोडाला फक्त दिशा देतो: हीच वेलींची खूण, आणि म्हणूनच शेतकरी घेवडा-द्राक्षांना मांडव घालतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two pots stand in a dry, sunny yard for two weeks without water: one holds a leafy rose, the other a cactus. Which plant does better, and WHY?",
+          hi: "सूखे, धूप वाले आँगन में दो गमले दो हफ़्ते बिना पानी रहे: एक में पत्तेदार गुलाब, दूसरे में नागफनी। कौन-सा पौधा बेहतर टिकेगा, और क्यों?",
+          mr: "कोरड्या, उन्हाच्या अंगणात दोन कुंड्या दोन आठवडे पाण्याविना राहिल्या: एकीत पानेदार गुलाब, दुसरीत निवडुंग. कोणती वनस्पती चांगली टिकेल, आणि का?",
+        },
+        choices: [
+          {
+            en: "The cactus — its thick stem stores water and its thorns lose almost none to the sun",
+            hi: "नागफनी — उसका मोटा तना पानी जमा रखता है और काँटे धूप में लगभग कुछ नहीं गँवाते",
+            mr: "निवडुंग — त्याचे जाड खोड पाणी साठवते आणि काटे उन्हात जवळजवळ काहीच गमावत नाहीत",
+          },
+          {
+            en: "The rose — flowers always mean a healthy plant",
+            hi: "गुलाब — फूल हमेशा सेहतमंद पौधे की निशानी हैं",
+            mr: "गुलाब — फुले म्हणजे नेहमी निरोगी वनस्पती",
+          },
+          {
+            en: "Both the same — plants only need soil, not water",
+            hi: "दोनों बराबर — पौधों को केवल मिट्टी चाहिए, पानी नहीं",
+            mr: "दोन्ही सारखी — वनस्पतींना फक्त माती लागते, पाणी नाही",
+          },
+          {
+            en: "Neither — no plant can live two weeks anywhere",
+            hi: "कोई नहीं — कोई पौधा कहीं भी दो हफ़्ते नहीं जी सकता",
+            mr: "कोणतीही नाही — कोणतीही वनस्पती कुठेही दोन आठवडे जगू शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Broad soft leaves lose water to the sun all day, and the rose has many; the cactus swapped its leaves for thorns and keeps a store in its stem — desert equipment doing exactly its job in a dry yard.",
+          hi: "चौड़ी नरम पत्तियाँ दिन भर धूप में पानी गँवाती हैं, और गुलाब के पास ऐसी बहुत हैं; नागफनी ने पत्तियों के बदले काँटे लिए और तने में भंडार रखा — रेगिस्तान का साज़-ओ-सामान सूखे आँगन में ठीक अपना काम करता हुआ।",
+          mr: "रुंद मऊ पाने दिवसभर उन्हात पाणी गमावतात, आणि गुलाबाकडे ती पुष्कळ; निवडुंगाने पानांच्या बदल्यात काटे घेतले आणि खोडात साठा ठेवला — वाळवंटी सामग्री कोरड्या अंगणात नेमके आपले काम करते आहे.",
+        },
+      },
+    ],
+  },
 ];
