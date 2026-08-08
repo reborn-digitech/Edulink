@@ -27,6 +27,7 @@ import { G6_CIVICS } from "./g6-civics";
 import { G7_MATHS } from "./g7-maths";
 import { G8_MATHS } from "./g8-maths";
 import { G9_MATHS } from "./g9-maths";
+import { G10_MATHS } from "./g10-maths";
 import { G7_SCIENCE } from "./g7-science";
 import { G7_GEOGRAPHY } from "./g7-geography";
 import { G7_HISTORY } from "./g7-history";
@@ -75,6 +76,7 @@ function main() {
     ...G7_MATHS,
     ...G8_MATHS,
     ...G9_MATHS,
+    ...G10_MATHS,
   ];
   let total = 0;
   for (const out of topics) {

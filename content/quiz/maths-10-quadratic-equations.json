@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-quadratic-equations",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 3 — Quadratic Equations",
+  "name": "Quadratic Equations",
+  "summary": "Second-degree equations solved and foretold: factoring, the quadratic formula, and a discriminant that reveals whether the roots are two, one or none — with word problems folded into equations.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "द्विघात समीकरण",
+      "summary": "द्वितीय घात समीकरण हल और पूर्वकथित: गुणनखंडन, द्विघात सूत्र, और एक विविक्तकर जो बताता मूल दो, एक या शून्य — शब्द-समस्याएँ समीकरणों में मोड़ी।"
+    },
+    "mr": {
+      "name": "द्विघात समीकरणे",
+      "summary": "द्वितीय घात समीकरणे सोडवली आणि पूर्वकथित: अवयव, द्विघात सूत्र, आणि एक विविक्तक जो सांगतो मूळे दोन, एक की शून्य — शब्द-समस्या समीकरणांत घडवली."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "One root of x²−9 = 0 is 3. What is the other root?",
+      "choices": [
+        "3",
+        "9",
+        "-9",
+        "-3"
+      ],
+      "answerIndex": 3,
+      "solution": "x²−9 = (x−3)(x+3) = 0, so the roots are 3 and −3. The other is −3.",
+      "checkExpr": "0-3",
+      "translations": {
+        "hi": {
+          "stem": "x²−9 = 0 का एक मूल 3 है। दूसरा मूल क्या है?",
+          "choices": [
+            "3",
+            "9",
+            "-9",
+            "-3"
+          ],
+          "solution": "x²−9 = (x−3)(x+3) = 0, अतः मूल 3 और −3. दूसरा −3."
+        },
+        "mr": {
+          "stem": "x²−9 = 0 चे एक मूळ 3 आहे. दुसरे मूळ काय?",
+          "choices": [
+            "3",
+            "9",
+            "-9",
+            "-3"
+          ],
+          "solution": "x²−9 = (x−3)(x+3) = 0, म्हणून मूळे 3 आणि −3. दुसरे −3."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the degree of the equation x²+2x+1 = 0?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "The highest power of x is 2, so the degree is 2 — the defining mark of a quadratic equation.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण x²+2x+1 = 0 की घात क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "x की उच्चतम घात 2, अतः घात 2 — द्विघात समीकरण की परिभाषक पहचान।"
+        },
+        "mr": {
+          "stem": "समीकरण x²+2x+1 = 0 ची घात काय?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "x ची उच्चतम घात 2, म्हणून घात 2 — द्विघात समीकरणाची व्याख्यादर्शक खूण."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "x²−7x = 0 factors as x(x−7) = 0. What is its non-zero root?",
+      "choices": [
+        "7",
+        "-7",
+        "49",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "x(x−7) = 0 gives x = 0 or x = 7. The non-zero root is 7.",
+      "checkExpr": "0+7",
+      "translations": {
+        "hi": {
+          "stem": "x²−7x = 0, x(x−7) = 0 में गुणनखंडित होता है। इसका शून्येतर मूल क्या है?",
+          "choices": [
+            "7",
+            "-7",
+            "49",
+            "0"
+          ],
+          "solution": "x(x−7) = 0 देता x = 0 या x = 7. शून्येतर मूल 7."
+        },
+        "mr": {
+          "stem": "x²−7x = 0, x(x−7) = 0 असे अवयव होतात. त्याचे शून्येतर मूळ काय?",
+          "choices": [
+            "7",
+            "-7",
+            "49",
+            "0"
+          ],
+          "solution": "x(x−7) = 0 देतो x = 0 किंवा x = 7. शून्येतर मूळ 7."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the discriminant of x²−4x+4?",
+      "choices": [
+        "-16",
+        "8",
+        "0",
+        "32"
+      ],
+      "answerIndex": 2,
+      "solution": "Discriminant = b²−4ac = (−4)² − 4·1·4 = 16 − 16 = 0. A zero discriminant means two equal real roots.",
+      "checkExpr": "16-16",
+      "translations": {
+        "hi": {
+          "stem": "x²−4x+4 का विविक्तकर क्या है?",
+          "choices": [
+            "-16",
+            "8",
+            "0",
+            "32"
+          ],
+          "solution": "विविक्तकर = b²−4ac = (−4)² − 4·1·4 = 16 − 16 = 0. शून्य विविक्तकर का अर्थ दो बराबर वास्तविक मूल।"
+        },
+        "mr": {
+          "stem": "x²−4x+4 चा विविक्तक काय?",
+          "choices": [
+            "-16",
+            "8",
+            "0",
+            "32"
+          ],
+          "solution": "विविक्तक = b²−4ac = (−4)² − 4·1·4 = 16 − 16 = 0. शून्य विविक्तक म्हणजे दोन समान वास्तव मूळे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the discriminant of x²+x+1?",
+      "choices": [
+        "5",
+        "-5",
+        "3",
+        "-3"
+      ],
+      "answerIndex": 3,
+      "solution": "Discriminant = b²−4ac = 1² − 4·1·1 = 1 − 4 = −3. Being negative, the equation has no real roots.",
+      "checkExpr": "1-4",
+      "translations": {
+        "hi": {
+          "stem": "x²+x+1 का विविक्तकर क्या है?",
+          "choices": [
+            "5",
+            "-5",
+            "3",
+            "-3"
+          ],
+          "solution": "विविक्तकर = b²−4ac = 1² − 4·1·1 = 1 − 4 = −3. ऋणात्मक होने से समीकरण के कोई वास्तविक मूल नहीं।"
+        },
+        "mr": {
+          "stem": "x²+x+1 चा विविक्तक काय?",
+          "choices": [
+            "5",
+            "-5",
+            "3",
+            "-3"
+          ],
+          "solution": "विविक्तक = b²−4ac = 1² − 4·1·1 = 1 − 4 = −3. ऋण असल्याने समीकरणाला कोणतीही वास्तव मूळे नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The roots of x²−8x+15 = 0 are 3 and 5. What is their sum?",
+      "choices": [
+        "2",
+        "-8",
+        "8",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "Sum of roots = 3 + 5 = 8, matching −b/a = −(−8)/1. (15 is the product of the roots.)",
+      "checkExpr": "3+5",
+      "translations": {
+        "hi": {
+          "stem": "x²−8x+15 = 0 के मूल 3 और 5 हैं। उनका योग क्या है?",
+          "choices": [
+            "2",
+            "-8",
+            "8",
+            "15"
+          ],
+          "solution": "मूलों का योग = 3 + 5 = 8, जो −b/a = −(−8)/1 से मेल। (15 मूलों का गुणनफल।)"
+        },
+        "mr": {
+          "stem": "x²−8x+15 = 0 चे मूळ 3 आणि 5 आहेत. त्यांची बेरीज काय?",
+          "choices": [
+            "2",
+            "-8",
+            "8",
+            "15"
+          ],
+          "solution": "मूळांची बेरीज = 3 + 5 = 8, जी −b/a = −(−8)/1 शी जुळते. (15 मूळांचा गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve x²−7x+12 = 0 by factoring. What is its larger root?",
+      "choices": [
+        "4",
+        "7",
+        "12",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "x²−7x+12 = (x−3)(x−4) = 0, so the roots are 3 and 4; the larger is 4 = 12/3. (7 is the sum, 12 the product.)",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "x²−7x+12 = 0 को गुणनखंडन से हल कीजिए। इसका बड़ा मूल क्या है?",
+          "choices": [
+            "4",
+            "7",
+            "12",
+            "3"
+          ],
+          "solution": "x²−7x+12 = (x−3)(x−4) = 0, अतः मूल 3 और 4; बड़ा 4 = 12/3. (7 योग, 12 गुणनफल।)"
+        },
+        "mr": {
+          "stem": "x²−7x+12 = 0 अवयव पद्धतीने सोडवा. त्याचे मोठे मूळ काय?",
+          "choices": [
+            "4",
+            "7",
+            "12",
+            "3"
+          ],
+          "solution": "x²−7x+12 = (x−3)(x−4) = 0, म्हणून मूळे 3 आणि 4; मोठे 4 = 12/3. (7 बेरीज, 12 गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For what positive value of k does x²−kx+9 = 0 have two equal roots?",
+      "choices": [
+        "3",
+        "9",
+        "6",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Equal roots need discriminant 0: k² − 4·1·9 = 0, so k² = 36 and (taking the positive value) k = 6.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "k के किस धन मान के लिए x²−kx+9 = 0 के दो बराबर मूल हों?",
+          "choices": [
+            "3",
+            "9",
+            "6",
+            "36"
+          ],
+          "solution": "बराबर मूलों को विविक्तकर 0 चाहिए: k² − 4·1·9 = 0, अतः k² = 36 और (धन मान लेते) k = 6."
+        },
+        "mr": {
+          "stem": "k च्या कोणत्या धन किमतीसाठी x²−kx+9 = 0 ची दोन समान मूळे असतील?",
+          "choices": [
+            "3",
+            "9",
+            "6",
+            "36"
+          ],
+          "solution": "समान मूळांना विविक्तक 0 हवा: k² − 4·1·9 = 0, म्हणून k² = 36 आणि (धन किंमत घेता) k = 6."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Solve 2x²−7x+3 = 0 by the quadratic formula. What is its integer root?",
+      "choices": [
+        "1",
+        "7",
+        "3",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "x = [7 ± √(49−24)]/4 = [7 ± 5]/4, giving 3 or 0.5. The integer root is (7+5)/4 = 3.",
+      "checkExpr": "(7+5)/4",
+      "translations": {
+        "hi": {
+          "stem": "2x²−7x+3 = 0 को द्विघात सूत्र से हल कीजिए। इसका पूर्णांक मूल क्या है?",
+          "choices": [
+            "1",
+            "7",
+            "3",
+            "6"
+          ],
+          "solution": "x = [7 ± √(49−24)]/4 = [7 ± 5]/4, देता 3 या 0.5. पूर्णांक मूल (7+5)/4 = 3."
+        },
+        "mr": {
+          "stem": "2x²−7x+3 = 0 द्विघात सूत्राने सोडवा. त्याचे पूर्णांक मूळ काय?",
+          "choices": [
+            "1",
+            "7",
+            "3",
+            "6"
+          ],
+          "solution": "x = [7 ± √(49−24)]/4 = [7 ± 5]/4, देतो 3 किंवा 0.5. पूर्णांक मूळ (7+5)/4 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of the roots of 3x²−12x+9 = 0?",
+      "choices": [
+        "9",
+        "3",
+        "4",
+        "-4"
+      ],
+      "answerIndex": 2,
+      "solution": "Sum of roots = −b/a = −(−12)/3 = 12/3 = 4. (The roots are 1 and 3, which add to 4.)",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "3x²−12x+9 = 0 के मूलों का योग क्या है?",
+          "choices": [
+            "9",
+            "3",
+            "4",
+            "-4"
+          ],
+          "solution": "मूलों का योग = −b/a = −(−12)/3 = 12/3 = 4. (मूल 1 और 3, जो जुड़कर 4।)"
+        },
+        "mr": {
+          "stem": "3x²−12x+9 = 0 च्या मूळांची बेरीज काय?",
+          "choices": [
+            "9",
+            "3",
+            "4",
+            "-4"
+          ],
+          "solution": "मूळांची बेरीज = −b/a = −(−12)/3 = 12/3 = 4. (मूळे 1 आणि 3, जी मिळून 4.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The product of two consecutive positive integers is 56. What is the larger integer?",
+      "choices": [
+        "8",
+        "7",
+        "9",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the smaller be x: x(x+1) = 56, so x²+x−56 = 0 = (x−7)(x+8), giving x = 7. The integers are 7 and 8; the larger is 8 = 56/7.",
+      "checkExpr": "56/7",
+      "translations": {
+        "hi": {
+          "stem": "दो क्रमागत धन पूर्णांकों का गुणनफल 56 है। बड़ा पूर्णांक क्या है?",
+          "choices": [
+            "8",
+            "7",
+            "9",
+            "28"
+          ],
+          "solution": "छोटा x मानिए: x(x+1) = 56, अतः x²+x−56 = 0 = (x−7)(x+8), देता x = 7. पूर्णांक 7 और 8; बड़ा 8 = 56/7."
+        },
+        "mr": {
+          "stem": "दोन क्रमागत धन पूर्णांकांचा गुणाकार 56 आहे. मोठा पूर्णांक काय?",
+          "choices": [
+            "8",
+            "7",
+            "9",
+            "28"
+          ],
+          "solution": "लहान x माना: x(x+1) = 56, म्हणून x²+x−56 = 0 = (x−7)(x+8), देतो x = 7. पूर्णांक 7 आणि 8; मोठा 8 = 56/7."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rectangular plot of area 528 m² has a length one more than twice its breadth. What is its breadth in metres?",
+      "choices": [
+        "32",
+        "33",
+        "16",
+        "23"
+      ],
+      "answerIndex": 2,
+      "solution": "With breadth x, length 2x+1: x(2x+1) = 528, so 2x²+x−528 = 0. Then x = [−1 + √(1+4224)]/4 = [−1 + 65]/4 = 16 m. (Length 33 m gives 16·33 = 528.)",
+      "checkExpr": "(0-1+65)/4",
+      "translations": {
+        "hi": {
+          "stem": "528 वर्ग मीटर क्षेत्रफल के आयताकार भूखंड की लंबाई उसकी चौड़ाई के दुगुने से एक अधिक है। इसकी चौड़ाई मीटर में क्या है?",
+          "choices": [
+            "32",
+            "33",
+            "16",
+            "23"
+          ],
+          "solution": "चौड़ाई x, लंबाई 2x+1: x(2x+1) = 528, अतः 2x²+x−528 = 0. तब x = [−1 + √(1+4224)]/4 = [−1 + 65]/4 = 16 मी। (लंबाई 33 मी देता 16·33 = 528।)"
+        },
+        "mr": {
+          "stem": "528 चौरस मीटर क्षेत्रफळाच्या आयताकृती भूखंडाची लांबी त्याच्या रुंदीच्या दुपटीहून एक अधिक आहे. त्याची रुंदी मीटरमध्ये काय?",
+          "choices": [
+            "32",
+            "33",
+            "16",
+            "23"
+          ],
+          "solution": "रुंदी x, लांबी 2x+1: x(2x+1) = 528, म्हणून 2x²+x−528 = 0. मग x = [−1 + √(1+4224)]/4 = [−1 + 65]/4 = 16 मी. (लांबी 33 मी देते 16·33 = 528.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For x²−2x−1 = 0, the sum of the roots is 2 and the product is −1. What is (sum + product)?",
+      "choices": [
+        "3",
+        "-2",
+        "0",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "Sum of roots = −b/a = 2, product = c/a = −1. Their total is 2 + (−1) = 1. (The roots themselves are the irrational 1 ± √2, but sum and product stay whole.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "x²−2x−1 = 0 के लिए, मूलों का योग 2 और गुणनफल −1 है। (योग + गुणनफल) क्या है?",
+          "choices": [
+            "3",
+            "-2",
+            "0",
+            "1"
+          ],
+          "solution": "मूलों का योग = −b/a = 2, गुणनफल = c/a = −1. कुल 2 + (−1) = 1. (मूल स्वयं अपरिमेय 1 ± √2, पर योग-गुणनफल पूर्ण।)"
+        },
+        "mr": {
+          "stem": "x²−2x−1 = 0 साठी, मूळांची बेरीज 2 आणि गुणाकार −1 आहे. (बेरीज + गुणाकार) काय?",
+          "choices": [
+            "3",
+            "-2",
+            "0",
+            "1"
+          ],
+          "solution": "मूळांची बेरीज = −b/a = 2, गुणाकार = c/a = −1. एकूण 2 + (−1) = 1. (मूळे स्वतः अपरिमेय 1 ± √2, पण बेरीज-गुणाकार पूर्ण.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A train covers 360 km at a uniform speed. Had it gone 5 km/h faster, it would have taken 1 hour less. What was its speed in km/h?",
+      "choices": [
+        "36",
+        "45",
+        "40",
+        "35"
+      ],
+      "answerIndex": 2,
+      "solution": "With speed x, time is 360/x. The condition 360/x − 360/(x+5) = 1 leads to x²+5x−1800 = 0. Then x = [−5 + √(25+7200)]/2 = [−5 + 85]/2 = 40 km/h. (Check: 360/40 = 9 h and 360/45 = 8 h differ by 1.)",
+      "checkExpr": "(0-5+85)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक रेल 360 किमी एकसमान चाल से तय करती है। यदि वह 5 किमी/घंटा तेज़ जाती, तो 1 घंटा कम लगता। उसकी चाल किमी/घंटा में क्या थी?",
+          "choices": [
+            "36",
+            "45",
+            "40",
+            "35"
+          ],
+          "solution": "चाल x पर समय 360/x. शर्त 360/x − 360/(x+5) = 1 देती x²+5x−1800 = 0. तब x = [−5 + √(25+7200)]/2 = [−5 + 85]/2 = 40 किमी/घंटा। (जाँच: 360/40 = 9 घं और 360/45 = 8 घं में 1 का अंतर।)"
+        },
+        "mr": {
+          "stem": "एक रेल्वे 360 किमी एकसमान चालीने पार करते. ती 5 किमी/तास वेगाने गेली असती, तर 1 तास कमी लागला असता. तिची चाल किमी/तास मध्ये काय होती?",
+          "choices": [
+            "36",
+            "45",
+            "40",
+            "35"
+          ],
+          "solution": "चाल x वर वेळ 360/x. अट 360/x − 360/(x+5) = 1 देते x²+5x−1800 = 0. मग x = [−5 + √(25+7200)]/2 = [−5 + 85]/2 = 40 किमी/तास. (तपासणी: 360/40 = 9 तास आणि 360/45 = 8 तास यांत 1 चा फरक.)"
+        }
+      }
+    }
+  ]
+}

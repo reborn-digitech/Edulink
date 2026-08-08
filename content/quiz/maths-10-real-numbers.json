@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-real-numbers",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 1 — Real Numbers",
+  "name": "Real Numbers",
+  "summary": "Every number cracked open into primes: the fundamental theorem behind HCF and LCM, terminating decimals betrayed by a denominator of only 2s and 5s, and irrationals proved by contradiction.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "वास्तविक संख्याएँ",
+      "summary": "हर संख्या अभाज्यों में खुली: HCF और LCM के पीछे मूल प्रमेय, केवल 2 और 5 के हर से पहचाने सांत दशमलव, और विरोधाभास से सिद्ध अपरिमेय।"
+    },
+    "mr": {
+      "name": "वास्तव संख्या",
+      "summary": "प्रत्येक संख्या अवयवांत उघडलेली: HCF आणि LCM मागील मूलभूत प्रमेय, फक्त 2 आणि 5 च्या छेदाने ओळखले सांत दशांश, आणि विरोधाभासाने सिद्ध अपरिमेय."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the HCF of 12 and 18?",
+      "choices": [
+        "3",
+        "6",
+        "36",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "12 = 2²·3 and 18 = 2·3²; the shared primes are one 2 and one 3, so HCF = 6. Since HCF·LCM = 12·18, HCF = 12·18/36 = 6. (36 is the LCM, not the HCF.)",
+      "checkExpr": "12*18/36",
+      "translations": {
+        "hi": {
+          "stem": "12 और 18 का HCF क्या है?",
+          "choices": [
+            "3",
+            "6",
+            "36",
+            "12"
+          ],
+          "solution": "12 = 2²·3 और 18 = 2·3²; साझा अभाज्य एक 2 और एक 3, अतः HCF = 6. चूँकि HCF·LCM = 12·18, HCF = 12·18/36 = 6. (36 LCM है, HCF नहीं।)"
+        },
+        "mr": {
+          "stem": "12 आणि 18 चा HCF काय?",
+          "choices": [
+            "3",
+            "6",
+            "36",
+            "12"
+          ],
+          "solution": "12 = 2²·3 आणि 18 = 2·3²; सामायिक अवयव एक 2 आणि एक 3, म्हणून HCF = 6. HCF·LCM = 12·18 म्हणून HCF = 12·18/36 = 6. (36 हा LCM, HCF नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the LCM of 4 and 6?",
+      "choices": [
+        "24",
+        "2",
+        "10",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "The HCF of 4 and 6 is 2, and HCF·LCM = product, so LCM = 4·6/2 = 12. (24 is the plain product, which double-counts the shared factor 2.)",
+      "checkExpr": "4*6/2",
+      "translations": {
+        "hi": {
+          "stem": "4 और 6 का LCM क्या है?",
+          "choices": [
+            "24",
+            "2",
+            "10",
+            "12"
+          ],
+          "solution": "4 और 6 का HCF 2 है, और HCF·LCM = गुणनफल, अतः LCM = 4·6/2 = 12. (24 सादा गुणनफल है, जो साझा गुणनखंड 2 दो बार गिनता है।)"
+        },
+        "mr": {
+          "stem": "4 आणि 6 चा LCM काय?",
+          "choices": [
+            "24",
+            "2",
+            "10",
+            "12"
+          ],
+          "solution": "4 आणि 6 चा HCF 2 आहे, आणि HCF·LCM = गुणाकार, म्हणून LCM = 4·6/2 = 12. (24 हा साधा गुणाकार, जो सामायिक अवयव 2 दोनदा मोजतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Written as a product of primes, 140 = 2² × 5 × ▢. What is the missing prime?",
+      "choices": [
+        "35",
+        "2",
+        "5",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "140 = 4 × 5 × 7, so the missing prime is 140/(4·5) = 140/20 = 7. (35 = 5·7 is not itself prime.)",
+      "checkExpr": "140/20",
+      "translations": {
+        "hi": {
+          "stem": "अभाज्यों के गुणनफल रूप में, 140 = 2² × 5 × ▢. लुप्त अभाज्य क्या है?",
+          "choices": [
+            "35",
+            "2",
+            "5",
+            "7"
+          ],
+          "solution": "140 = 4 × 5 × 7, अतः लुप्त अभाज्य 140/(4·5) = 140/20 = 7. (35 = 5·7 स्वयं अभाज्य नहीं।)"
+        },
+        "mr": {
+          "stem": "अवयवांच्या गुणाकार रूपात, 140 = 2² × 5 × ▢. हरवलेला अवयव काय?",
+          "choices": [
+            "35",
+            "2",
+            "5",
+            "7"
+          ],
+          "solution": "140 = 4 × 5 × 7, म्हणून हरवलेला अवयव 140/(4·5) = 140/20 = 7. (35 = 5·7 स्वतः अवयव नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two numbers have HCF 9 and LCM 90. If one number is 18, what is the other?",
+      "choices": [
+        "9",
+        "180",
+        "90",
+        "45"
+      ],
+      "answerIndex": 3,
+      "solution": "For two numbers, HCF·LCM = product of the numbers. So the other = 9·90/18 = 810/18 = 45.",
+      "checkExpr": "9*90/18",
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याओं का HCF 9 और LCM 90. यदि एक संख्या 18 है, दूसरी क्या है?",
+          "choices": [
+            "9",
+            "180",
+            "90",
+            "45"
+          ],
+          "solution": "दो संख्याओं के लिए HCF·LCM = संख्याओं का गुणनफल। अतः दूसरी = 9·90/18 = 810/18 = 45."
+        },
+        "mr": {
+          "stem": "दोन संख्यांचा HCF 9 आणि LCM 90. एक संख्या 18 असेल, दुसरी काय?",
+          "choices": [
+            "9",
+            "180",
+            "90",
+            "45"
+          ],
+          "solution": "दोन संख्यांसाठी HCF·LCM = संख्यांचा गुणाकार. म्हणून दुसरी = 9·90/18 = 810/18 = 45."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The HCF of 15 and 20 is 5. What is their LCM?",
+      "choices": [
+        "10",
+        "60",
+        "300",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "LCM = product / HCF = 15·20/5 = 300/5 = 60. (300 is the raw product, before dividing out the shared 5.)",
+      "checkExpr": "15*20/5",
+      "translations": {
+        "hi": {
+          "stem": "15 और 20 का HCF 5 है। उनका LCM क्या है?",
+          "choices": [
+            "10",
+            "60",
+            "300",
+            "5"
+          ],
+          "solution": "LCM = गुणनफल / HCF = 15·20/5 = 300/5 = 60. (300 कच्चा गुणनफल है, साझा 5 हटाने से पहले।)"
+        },
+        "mr": {
+          "stem": "15 आणि 20 चा HCF 5 आहे. त्यांचा LCM काय?",
+          "choices": [
+            "10",
+            "60",
+            "300",
+            "5"
+          ],
+          "solution": "LCM = गुणाकार / HCF = 15·20/5 = 300/5 = 60. (300 कच्चा गुणाकार, सामायिक 5 काढण्यापूर्वी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Only one of these fractions has a terminating decimal: 3/8, 4/9, 5/12, 2/7. Which one? (Answer the position 1–4.)",
+      "choices": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "A fraction in lowest terms terminates exactly when its denominator has no prime factor other than 2 or 5. Here 8 = 2³ qualifies, so 3/8 = 0.375 terminates; 9 = 3², 12 = 2²·3 and 7 each carry a forbidden prime, so those repeat forever. The answer is position 1.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "इनमें केवल एक भिन्न का दशमलव सांत है: 3/8, 4/9, 5/12, 2/7. कौन-सा? (स्थान 1–4 बताइए।)",
+          "choices": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "solution": "निम्नतम रूप की भिन्न तभी सांत होती जब हर में 2 या 5 के अलावा कोई अभाज्य न हो। यहाँ 8 = 2³ योग्य, अतः 3/8 = 0.375 सांत; 9 = 3², 12 = 2²·3 और 7 प्रत्येक में वर्जित अभाज्य, अतः वे सदा दोहराते। उत्तर स्थान 1."
+        },
+        "mr": {
+          "stem": "यांत फक्त एका अपूर्णांकाचा दशांश सांत आहे: 3/8, 4/9, 5/12, 2/7. कोणता? (स्थान 1–4 सांगा.)",
+          "choices": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "solution": "लघुतम रूपातील अपूर्णांक तेव्हाच सांत जेव्हा छेदात 2 वा 5 खेरीज कोणता अवयव नसेल. इथे 8 = 2³ पात्र, म्हणून 3/8 = 0.375 सांत; 9 = 3², 12 = 2²·3 आणि 7 प्रत्येकात निषिद्ध अवयव, म्हणून ते सदैव पुनरावृत्त. उत्तर स्थान 1."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Find the largest number that divides 70 and 125, leaving remainders 5 and 8 respectively.",
+      "choices": [
+        "8",
+        "5",
+        "13",
+        "26"
+      ],
+      "answerIndex": 2,
+      "solution": "The number divides 70−5 = 65 and 125−8 = 117 exactly, so it is their HCF. 65 = 5·13, 117 = 9·13, so HCF = 13, checked as 65·117/585 = 13 where 585 is the LCM.",
+      "checkExpr": "65*117/585",
+      "translations": {
+        "hi": {
+          "stem": "वह सबसे बड़ी संख्या ज्ञात कीजिए जो 70 और 125 को विभाजित करे, शेष क्रमशः 5 और 8 छोड़ते हुए।",
+          "choices": [
+            "8",
+            "5",
+            "13",
+            "26"
+          ],
+          "solution": "संख्या 70−5 = 65 और 125−8 = 117 को पूरा विभाजित करती, अतः यह उनका HCF है। 65 = 5·13, 117 = 9·13, अतः HCF = 13, जाँच 65·117/585 = 13 जहाँ 585 LCM है।"
+        },
+        "mr": {
+          "stem": "70 आणि 125 ला भागणारी सर्वांत मोठी संख्या शोधा, बाकी अनुक्रमे 5 आणि 8 राहून.",
+          "choices": [
+            "8",
+            "5",
+            "13",
+            "26"
+          ],
+          "solution": "संख्या 70−5 = 65 आणि 125−8 = 117 ला पूर्ण भागते, म्हणून तो त्यांचा HCF. 65 = 5·13, 117 = 9·13, म्हणून HCF = 13, तपासणी 65·117/585 = 13 जिथे 585 हा LCM."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the smallest number that is exactly divisible by 12, 15 and 20?",
+      "choices": [
+        "47",
+        "60",
+        "120",
+        "180"
+      ],
+      "answerIndex": 1,
+      "solution": "The smallest such number is the LCM. 12 = 2²·3, 15 = 3·5, 20 = 2²·5; take the highest power of each prime: 2²·3·5 = 4·3·5 = 60.",
+      "checkExpr": "4*3*5",
+      "translations": {
+        "hi": {
+          "stem": "वह सबसे छोटी संख्या क्या है जो 12, 15 और 20 से पूरी विभाज्य हो?",
+          "choices": [
+            "47",
+            "60",
+            "120",
+            "180"
+          ],
+          "solution": "ऐसी सबसे छोटी संख्या LCM है। 12 = 2²·3, 15 = 3·5, 20 = 2²·5; हर अभाज्य की उच्चतम घात लें: 2²·3·5 = 4·3·5 = 60."
+        },
+        "mr": {
+          "stem": "12, 15 आणि 20 ने पूर्ण भाग जाणारी सर्वांत लहान संख्या कोणती?",
+          "choices": [
+            "47",
+            "60",
+            "120",
+            "180"
+          ],
+          "solution": "अशी सर्वांत लहान संख्या LCM आहे. 12 = 2²·3, 15 = 3·5, 20 = 2²·5; प्रत्येक अवयवाची उच्चतम घात घ्या: 2²·3·5 = 4·3·5 = 60."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Three traffic lights change every 48, 72 and 108 seconds. If they change together now, after how many seconds do they next change together?",
+      "choices": [
+        "864",
+        "144",
+        "432",
+        "216"
+      ],
+      "answerIndex": 2,
+      "solution": "They coincide again after the LCM of the three intervals. 48 = 2⁴·3, 72 = 2³·3², 108 = 2²·3³; the LCM takes 2⁴ and 3³, giving 16·27 = 432 seconds.",
+      "checkExpr": "16*27",
+      "translations": {
+        "hi": {
+          "stem": "तीन ट्रैफ़िक बत्तियाँ हर 48, 72 और 108 सेकंड में बदलती हैं। यदि वे अभी साथ बदलती हैं, कितने सेकंड बाद फिर साथ बदलेंगी?",
+          "choices": [
+            "864",
+            "144",
+            "432",
+            "216"
+          ],
+          "solution": "वे तीनों अंतरालों के LCM बाद फिर मिलती हैं। 48 = 2⁴·3, 72 = 2³·3², 108 = 2²·3³; LCM 2⁴ और 3³ लेता, देता 16·27 = 432 सेकंड।"
+        },
+        "mr": {
+          "stem": "तीन वाहतूक दिवे दर 48, 72 आणि 108 सेकंदांनी बदलतात. आता ते एकत्र बदलले, तर किती सेकंदांनी पुन्हा एकत्र बदलतील?",
+          "choices": [
+            "864",
+            "144",
+            "432",
+            "216"
+          ],
+          "solution": "ती तिन्ही अंतरांच्या LCM नंतर पुन्हा जुळतात. 48 = 2⁴·3, 72 = 2³·3², 108 = 2²·3³; LCM 2⁴ आणि 3³ घेतो, देतो 16·27 = 432 सेकंद."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The proof that √2 is irrational assumes √2 = p/q in lowest terms and reaches a contradiction. What is the smallest positive integer whose square root is irrational?",
+      "choices": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "√1 = 1 is rational, and √4 = 2 is rational (both are perfect squares). The first integer that is not a perfect square is 2, and √2 = 1.41421… never terminates or repeats — irrational. So the smallest is 2.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "√2 के अपरिमेय होने का प्रमाण मानता है √2 = p/q निम्नतम रूप में और विरोधाभास तक पहुँचता है। वह सबसे छोटी धन पूर्णांक क्या है जिसका वर्गमूल अपरिमेय है?",
+          "choices": [
+            "1",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "√1 = 1 परिमेय, और √4 = 2 परिमेय (दोनों पूर्ण वर्ग)। पहला पूर्णांक जो पूर्ण वर्ग नहीं वह 2 है, और √2 = 1.41421… न समाप्त होता न दोहराता — अपरिमेय। अतः सबसे छोटा 2."
+        },
+        "mr": {
+          "stem": "√2 अपरिमेय असल्याचा पुरावा √2 = p/q लघुतम रूपात मानतो आणि विरोधाभासापर्यंत पोहोचतो. ती सर्वांत लहान धन पूर्णांक कोणती जिचे वर्गमूळ अपरिमेय आहे?",
+          "choices": [
+            "1",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "√1 = 1 परिमेय, आणि √4 = 2 परिमेय (दोन्ही पूर्ण वर्ग). पहिला पूर्णांक जो पूर्ण वर्ग नाही तो 2, आणि √2 = 1.41421… ना संपते ना पुनरावृत्त — अपरिमेय. म्हणून सर्वांत लहान 2."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For 306 and 657, the HCF is 9. What is their LCM?",
+      "choices": [
+        "201042",
+        "22338",
+        "9",
+        "657"
+      ],
+      "answerIndex": 1,
+      "solution": "LCM = product / HCF = 306·657/9 = 201042/9 = 22338. (201042 is the raw product before dividing by the HCF.)",
+      "checkExpr": "306*657/9",
+      "translations": {
+        "hi": {
+          "stem": "306 और 657 के लिए HCF 9 है। उनका LCM क्या है?",
+          "choices": [
+            "201042",
+            "22338",
+            "9",
+            "657"
+          ],
+          "solution": "LCM = गुणनफल / HCF = 306·657/9 = 201042/9 = 22338. (201042 HCF से भाग देने से पहले कच्चा गुणनफल।)"
+        },
+        "mr": {
+          "stem": "306 आणि 657 साठी HCF 9 आहे. त्यांचा LCM काय?",
+          "choices": [
+            "201042",
+            "22338",
+            "9",
+            "657"
+          ],
+          "solution": "LCM = गुणाकार / HCF = 306·657/9 = 201042/9 = 22338. (201042 HCF ने भागण्यापूर्वीचा कच्चा गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A courtyard 1872 cm long and 1320 cm broad is paved with identical square tiles of the largest possible size. How many tiles are needed?",
+      "choices": [
+        "132",
+        "4290",
+        "143",
+        "4160"
+      ],
+      "answerIndex": 1,
+      "solution": "The largest tile side is the HCF of 1872 and 1320. 1872 = 2⁴·3²·13, 1320 = 2³·3·5·11, so HCF = 2³·3 = 24 cm. The courtyard is 1872/24 = 78 tiles by 1320/24 = 55 tiles, so 78·55 = 4290 tiles.",
+      "checkExpr": "78*55",
+      "translations": {
+        "hi": {
+          "stem": "1872 सेमी लंबा और 1320 सेमी चौड़ा आँगन सबसे बड़े संभव एक-से वर्गाकार टाइलों से पक्का किया जाता है। कितनी टाइलें चाहिए?",
+          "choices": [
+            "132",
+            "4290",
+            "143",
+            "4160"
+          ],
+          "solution": "सबसे बड़ी टाइल-भुजा 1872 और 1320 का HCF है। 1872 = 2⁴·3²·13, 1320 = 2³·3·5·11, अतः HCF = 2³·3 = 24 सेमी। आँगन 1872/24 = 78 टाइल गुणा 1320/24 = 55 टाइल, अतः 78·55 = 4290 टाइल।"
+        },
+        "mr": {
+          "stem": "1872 सेमी लांब आणि 1320 सेमी रुंद अंगण सर्वांत मोठ्या शक्य एकसारख्या चौरस फरशांनी बांधले जाते. किती फरशा लागतील?",
+          "choices": [
+            "132",
+            "4290",
+            "143",
+            "4160"
+          ],
+          "solution": "सर्वांत मोठी फरशी-बाजू 1872 आणि 1320 चा HCF. 1872 = 2⁴·3²·13, 1320 = 2³·3·5·11, म्हणून HCF = 2³·3 = 24 सेमी. अंगण 1872/24 = 78 फरशा गुणिले 1320/24 = 55 फरशा, म्हणून 78·55 = 4290 फरशा."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The HCF of 65 and 117 is 13, and can be written as 65m + 117n. If one solution has m = 2, what is n?",
+      "choices": [
+        "1",
+        "2",
+        "-2",
+        "-1"
+      ],
+      "answerIndex": 3,
+      "solution": "Substitute m = 2: 65·2 + 117n = 13, so 130 + 117n = 13, giving 117n = −117 and n = (13−130)/117 = −1.",
+      "checkExpr": "(13-130)/117",
+      "translations": {
+        "hi": {
+          "stem": "65 और 117 का HCF 13 है, और इसे 65m + 117n लिखा जा सकता है। यदि एक हल में m = 2 है, n क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "-2",
+            "-1"
+          ],
+          "solution": "m = 2 रखिए: 65·2 + 117n = 13, अतः 130 + 117n = 13, देता 117n = −117 और n = (13−130)/117 = −1."
+        },
+        "mr": {
+          "stem": "65 आणि 117 चा HCF 13 आहे, आणि तो 65m + 117n असा लिहिता येतो. एका उत्तरात m = 2 असेल, तर n काय?",
+          "choices": [
+            "1",
+            "2",
+            "-2",
+            "-1"
+          ],
+          "solution": "m = 2 ठेवा: 65·2 + 117n = 13, म्हणून 130 + 117n = 13, देतो 117n = −117 आणि n = (13−130)/117 = −1."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The decimal expansion of 1/7 = 0.142857142857… repeats. How many digits are in its repeating block?",
+      "choices": [
+        "3",
+        "1",
+        "7",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "The block '142857' repeats, so its length is 6. Because 7 is not made only of 2s and 5s, the decimal never terminates; the block length can be at most 7−1 = 6, and here it hits that maximum.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "1/7 = 0.142857142857… का दशमलव विस्तार दोहराता है। इसके आवर्ती खंड में कितने अंक हैं?",
+          "choices": [
+            "3",
+            "1",
+            "7",
+            "6"
+          ],
+          "solution": "खंड '142857' दोहराता है, अतः लंबाई 6. चूँकि 7 केवल 2 और 5 से नहीं बना, दशमलव कभी सांत नहीं; खंड-लंबाई अधिकतम 7−1 = 6, और यहाँ वही अधिकतम।"
+        },
+        "mr": {
+          "stem": "1/7 = 0.142857142857… चा दशांश विस्तार पुनरावृत्त होतो. त्याच्या आवर्ती गटात किती अंक आहेत?",
+          "choices": [
+            "3",
+            "1",
+            "7",
+            "6"
+          ],
+          "solution": "गट '142857' पुनरावृत्त होतो, म्हणून लांबी 6. 7 फक्त 2 आणि 5 ने बनलेला नसल्याने दशांश कधी सांत नाही; गट-लांबी जास्तीत जास्त 7−1 = 6, आणि इथे तीच कमाल."
+        }
+      }
+    }
+  ]
+}

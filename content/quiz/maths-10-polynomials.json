@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-polynomials",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 2 — Polynomials",
+  "name": "Polynomials",
+  "summary": "Zeroes read straight off the coefficients: sum as −b/a, product as c/a, a quadratic rebuilt from its roots, and the remainder theorem turning long division into one substitution.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "बहुपद",
+      "summary": "शून्यक सीधे गुणांकों से पढ़े: योग −b/a, गुणनफल c/a, शून्यकों से फिर बना द्विघात, और शेषफल प्रमेय जो लंबे भाग को एक प्रतिस्थापन बनाता।"
+    },
+    "mr": {
+      "name": "बहुपदी",
+      "summary": "शून्य थेट सहगुणकांतून वाचले: बेरीज −b/a, गुणाकार c/a, शून्यांतून पुन्हा बांधलेला द्विघात, आणि शेष प्रमेय जो लांब भागाला एक बदल बनवतो."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The polynomial x²−5x+6 has zeroes 2 and 3. What is the sum of its zeroes?",
+      "choices": [
+        "5",
+        "6",
+        "1",
+        "-5"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the zeroes is 2 + 3 = 5, which equals −b/a = −(−5)/1. (6 is the product, not the sum.)",
+      "checkExpr": "2+3",
+      "translations": {
+        "hi": {
+          "stem": "बहुपद x²−5x+6 के शून्यक 2 और 3 हैं। इसके शून्यकों का योग क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "1",
+            "-5"
+          ],
+          "solution": "शून्यकों का योग 2 + 3 = 5, जो −b/a = −(−5)/1 के बराबर। (6 गुणनफल है, योग नहीं।)"
+        },
+        "mr": {
+          "stem": "बहुपदी x²−5x+6 चे शून्य 2 आणि 3 आहेत. त्याच्या शून्यांची बेरीज काय?",
+          "choices": [
+            "5",
+            "6",
+            "1",
+            "-5"
+          ],
+          "solution": "शून्यांची बेरीज 2 + 3 = 5, जी −b/a = −(−5)/1 इतकी. (6 हा गुणाकार, बेरीज नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The polynomial x²−5x+6 has zeroes 2 and 3. What is the product of its zeroes?",
+      "choices": [
+        "1",
+        "5",
+        "-6",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "The product of the zeroes is 2·3 = 6, which equals c/a = 6/1. (5 is the sum, not the product.)",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "बहुपद x²−5x+6 के शून्यक 2 और 3 हैं। इसके शून्यकों का गुणनफल क्या है?",
+          "choices": [
+            "1",
+            "5",
+            "-6",
+            "6"
+          ],
+          "solution": "शून्यकों का गुणनफल 2·3 = 6, जो c/a = 6/1 के बराबर। (5 योग है, गुणनफल नहीं।)"
+        },
+        "mr": {
+          "stem": "बहुपदी x²−5x+6 चे शून्य 2 आणि 3 आहेत. त्याच्या शून्यांचा गुणाकार काय?",
+          "choices": [
+            "1",
+            "5",
+            "-6",
+            "6"
+          ],
+          "solution": "शून्यांचा गुणाकार 2·3 = 6, जो c/a = 6/1 इतका. (5 ही बेरीज, गुणाकार नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "At most how many zeroes can a quadratic polynomial have?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "A polynomial's number of zeroes is at most its degree. A quadratic has degree 2, so it has at most 2 zeroes — the two points where its parabola can cross the x-axis.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक द्विघात बहुपद के अधिकतम कितने शून्यक हो सकते हैं?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "बहुपद के शून्यकों की संख्या अधिकतम उसकी घात। द्विघात की घात 2, अतः अधिकतम 2 शून्यक — दो बिंदु जहाँ उसका परवलय x-अक्ष काट सकता।"
+        },
+        "mr": {
+          "stem": "एका द्विघात बहुपदीचे जास्तीत जास्त किती शून्य असू शकतात?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "बहुपदीच्या शून्यांची संख्या जास्तीत जास्त तिची घात. द्विघाताची घात 2, म्हणून जास्तीत जास्त 2 शून्य — दोन बिंदू जिथे तिचा परावलय x-अक्ष कापू शकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the sum of the zeroes of x²+7x+10?",
+      "choices": [
+        "-10",
+        "10",
+        "7",
+        "-7"
+      ],
+      "answerIndex": 3,
+      "solution": "Sum of zeroes = −b/a = −7/1 = −7. (Its zeroes are −2 and −5, which add to −7; 10 is their product.)",
+      "checkExpr": "0-7",
+      "translations": {
+        "hi": {
+          "stem": "x²+7x+10 के शून्यकों का योग क्या है?",
+          "choices": [
+            "-10",
+            "10",
+            "7",
+            "-7"
+          ],
+          "solution": "शून्यकों का योग = −b/a = −7/1 = −7. (शून्यक −2 और −5, जो जुड़कर −7; 10 उनका गुणनफल।)"
+        },
+        "mr": {
+          "stem": "x²+7x+10 च्या शून्यांची बेरीज काय?",
+          "choices": [
+            "-10",
+            "10",
+            "7",
+            "-7"
+          ],
+          "solution": "शून्यांची बेरीज = −b/a = −7/1 = −7. (शून्य −2 आणि −5, जे मिळून −7; 10 त्यांचा गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the product of the zeroes of 2x²−8?",
+      "choices": [
+        "8",
+        "-8",
+        "-4",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Product of zeroes = c/a = −8/2 = −4. (Its zeroes are 2 and −2, whose product is −4.)",
+      "checkExpr": "0-8/2",
+      "translations": {
+        "hi": {
+          "stem": "2x²−8 के शून्यकों का गुणनफल क्या है?",
+          "choices": [
+            "8",
+            "-8",
+            "-4",
+            "4"
+          ],
+          "solution": "शून्यकों का गुणनफल = c/a = −8/2 = −4. (शून्यक 2 और −2, जिनका गुणनफल −4।)"
+        },
+        "mr": {
+          "stem": "2x²−8 च्या शून्यांचा गुणाकार काय?",
+          "choices": [
+            "8",
+            "-8",
+            "-4",
+            "4"
+          ],
+          "solution": "शून्यांचा गुणाकार = c/a = −8/2 = −4. (शून्य 2 आणि −2, ज्यांचा गुणाकार −4.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "One zero of x²−4 is 2. What is the other zero?",
+      "choices": [
+        "2",
+        "-4",
+        "-2",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "x²−4 = (x−2)(x+2), so the zeroes are 2 and −2. The other is −2. (Their product must be c/a = −4, and 2·(−2) = −4 confirms it.)",
+      "checkExpr": "0-2",
+      "translations": {
+        "hi": {
+          "stem": "x²−4 का एक शून्यक 2 है। दूसरा शून्यक क्या है?",
+          "choices": [
+            "2",
+            "-4",
+            "-2",
+            "4"
+          ],
+          "solution": "x²−4 = (x−2)(x+2), अतः शून्यक 2 और −2. दूसरा −2. (गुणनफल c/a = −4 हो, और 2·(−2) = −4 पुष्टि करता।)"
+        },
+        "mr": {
+          "stem": "x²−4 चा एक शून्य 2 आहे. दुसरा शून्य काय?",
+          "choices": [
+            "2",
+            "-4",
+            "-2",
+            "4"
+          ],
+          "solution": "x²−4 = (x−2)(x+2), म्हणून शून्य 2 आणि −2. दुसरा −2. (गुणाकार c/a = −4 असावा, आणि 2·(−2) = −4 पुष्टी करतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A quadratic has zeroes 3 and −2. Written as x²−(sum)x+(product), what is its constant term?",
+      "choices": [
+        "6",
+        "-6",
+        "-1",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "The constant term is the product of the zeroes, 3·(−2) = −6. (The sum is 3 + (−2) = 1, which is the x-coefficient with a sign flip, not the constant.)",
+      "checkExpr": "3*(0-2)",
+      "translations": {
+        "hi": {
+          "stem": "एक द्विघात के शून्यक 3 और −2 हैं। x²−(योग)x+(गुणनफल) रूप में, इसका अचर पद क्या है?",
+          "choices": [
+            "6",
+            "-6",
+            "-1",
+            "1"
+          ],
+          "solution": "अचर पद शून्यकों का गुणनफल, 3·(−2) = −6. (योग 3 + (−2) = 1, जो चिह्न-बदल के साथ x-गुणांक है, अचर नहीं।)"
+        },
+        "mr": {
+          "stem": "एका द्विघाताचे शून्य 3 आणि −2 आहेत. x²−(बेरीज)x+(गुणाकार) रूपात, त्याचे स्थिर पद काय?",
+          "choices": [
+            "6",
+            "-6",
+            "-1",
+            "1"
+          ],
+          "solution": "स्थिर पद शून्यांचा गुणाकार, 3·(−2) = −6. (बेरीज 3 + (−2) = 1, जी चिन्ह-बदलासह x-सहगुणक, स्थिर नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "One zero of x²−kx+15 is 3. What is the value of k?",
+      "choices": [
+        "15",
+        "8",
+        "3",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The product of zeroes is 15, so the other zero is 15/3 = 5. The sum of zeroes is k, so k = 3 + 5 = 3 + 15/3 = 8.",
+      "checkExpr": "3+15/3",
+      "translations": {
+        "hi": {
+          "stem": "x²−kx+15 का एक शून्यक 3 है। k का मान क्या है?",
+          "choices": [
+            "15",
+            "8",
+            "3",
+            "5"
+          ],
+          "solution": "शून्यकों का गुणनफल 15, अतः दूसरा शून्यक 15/3 = 5. शून्यकों का योग k, अतः k = 3 + 5 = 3 + 15/3 = 8."
+        },
+        "mr": {
+          "stem": "x²−kx+15 चा एक शून्य 3 आहे. k ची किंमत काय?",
+          "choices": [
+            "15",
+            "8",
+            "3",
+            "5"
+          ],
+          "solution": "शून्यांचा गुणाकार 15, म्हणून दुसरा शून्य 15/3 = 5. शून्यांची बेरीज k, म्हणून k = 3 + 5 = 3 + 15/3 = 8."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If α and β are the zeroes of x²−6x+8, what is α²+β²?",
+      "choices": [
+        "28",
+        "52",
+        "20",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "α+β = 6 and αβ = 8. Using α²+β² = (α+β)²−2αβ = 36 − 2·8 = 36 − 16 = 20. (Checking with the actual zeroes 4 and 2: 16 + 4 = 20.)",
+      "checkExpr": "36-16",
+      "translations": {
+        "hi": {
+          "stem": "यदि α और β, x²−6x+8 के शून्यक हैं, तो α²+β² क्या है?",
+          "choices": [
+            "28",
+            "52",
+            "20",
+            "4"
+          ],
+          "solution": "α+β = 6 और αβ = 8. α²+β² = (α+β)²−2αβ = 36 − 2·8 = 36 − 16 = 20. (वास्तविक शून्यक 4 और 2 से जाँच: 16 + 4 = 20।)"
+        },
+        "mr": {
+          "stem": "α आणि β हे x²−6x+8 चे शून्य असतील, तर α²+β² काय?",
+          "choices": [
+            "28",
+            "52",
+            "20",
+            "4"
+          ],
+          "solution": "α+β = 6 आणि αβ = 8. α²+β² = (α+β)²−2αβ = 36 − 2·8 = 36 − 16 = 20. (खऱ्या शून्य 4 आणि 2 ने तपासणी: 16 + 4 = 20.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The zeroes of x²−6x+8 are 4 and 2. What is 1/α + 1/β?",
+      "choices": [
+        "0.25",
+        "1.5",
+        "0.75",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "1/α + 1/β = (α+β)/(αβ) = 6/8 = 0.75. (Directly, 1/4 + 1/2 = 0.25 + 0.5 = 0.75.)",
+      "checkExpr": "6/8",
+      "translations": {
+        "hi": {
+          "stem": "x²−6x+8 के शून्यक 4 और 2 हैं। 1/α + 1/β क्या है?",
+          "choices": [
+            "0.25",
+            "1.5",
+            "0.75",
+            "8"
+          ],
+          "solution": "1/α + 1/β = (α+β)/(αβ) = 6/8 = 0.75. (सीधे, 1/4 + 1/2 = 0.25 + 0.5 = 0.75।)"
+        },
+        "mr": {
+          "stem": "x²−6x+8 चे शून्य 4 आणि 2 आहेत. 1/α + 1/β काय?",
+          "choices": [
+            "0.25",
+            "1.5",
+            "0.75",
+            "8"
+          ],
+          "solution": "1/α + 1/β = (α+β)/(αβ) = 6/8 = 0.75. (थेट, 1/4 + 1/2 = 0.25 + 0.5 = 0.75.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The cubic x³−6x²+11x−6 has zeroes 1, 2 and 3. What is the sum of their products taken two at a time (αβ+βγ+γα)?",
+      "choices": [
+        "11",
+        "6",
+        "36",
+        "18"
+      ],
+      "answerIndex": 0,
+      "solution": "The pairwise products are 1·2 = 2, 2·3 = 6 and 3·1 = 3, summing to 2 + 6 + 3 = 11 — which equals c/a for the cubic. (6 is the sum, and 6 again the product, of the zeroes.)",
+      "checkExpr": "2+6+3",
+      "translations": {
+        "hi": {
+          "stem": "घन x³−6x²+11x−6 के शून्यक 1, 2 और 3 हैं। दो-दो के गुणनफलों का योग (αβ+βγ+γα) क्या है?",
+          "choices": [
+            "11",
+            "6",
+            "36",
+            "18"
+          ],
+          "solution": "जोड़ीदार गुणनफल 1·2 = 2, 2·3 = 6 और 3·1 = 3, योग 2 + 6 + 3 = 11 — जो घन के लिए c/a. (6 शून्यकों का योग, और 6 ही गुणनफल।)"
+        },
+        "mr": {
+          "stem": "घन x³−6x²+11x−6 चे शून्य 1, 2 आणि 3 आहेत. दोन-दोनच्या गुणाकारांची बेरीज (αβ+βγ+γα) काय?",
+          "choices": [
+            "11",
+            "6",
+            "36",
+            "18"
+          ],
+          "solution": "जोडीदार गुणाकार 1·2 = 2, 2·3 = 6 आणि 3·1 = 3, बेरीज 2 + 6 + 3 = 11 — जी घनासाठी c/a. (6 शून्यांची बेरीज, आणि 6 च गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "By the remainder theorem, what is the remainder when p(x) = x³−2x²+x−1 is divided by (x−2)?",
+      "choices": [
+        "3",
+        "-1",
+        "5",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "The remainder on division by (x−2) is p(2) = 2³−2·2²+2−1 = 8 − 8 + 2 − 1 = 1.",
+      "checkExpr": "8-8+2-1",
+      "translations": {
+        "hi": {
+          "stem": "शेषफल प्रमेय से, जब p(x) = x³−2x²+x−1 को (x−2) से विभाजित किया जाए तो शेषफल क्या है?",
+          "choices": [
+            "3",
+            "-1",
+            "5",
+            "1"
+          ],
+          "solution": "(x−2) से भाग पर शेषफल p(2) = 2³−2·2²+2−1 = 8 − 8 + 2 − 1 = 1."
+        },
+        "mr": {
+          "stem": "शेष प्रमेयाने, p(x) = x³−2x²+x−1 ला (x−2) ने भागल्यावर शेष काय?",
+          "choices": [
+            "3",
+            "-1",
+            "5",
+            "1"
+          ],
+          "solution": "(x−2) ने भागल्यावर शेष p(2) = 2³−2·2²+2−1 = 8 − 8 + 2 − 1 = 1."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The zeroes α and β of x²−5x+6 satisfy α+β = 5 and αβ = 6, with α > β. What is α − β?",
+      "choices": [
+        "1",
+        "5",
+        "25",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "(α−β)² = (α+β)² − 4αβ = 25 − 24 = 1, so α − β = √1 = 1. (The zeroes are 3 and 2, and 3 − 2 = 1.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "x²−5x+6 के शून्यक α और β, α+β = 5 और αβ = 6 संतुष्ट करते हैं, α > β के साथ। α − β क्या है?",
+          "choices": [
+            "1",
+            "5",
+            "25",
+            "6"
+          ],
+          "solution": "(α−β)² = (α+β)² − 4αβ = 25 − 24 = 1, अतः α − β = √1 = 1. (शून्यक 3 और 2, और 3 − 2 = 1।)"
+        },
+        "mr": {
+          "stem": "x²−5x+6 चे शून्य α आणि β, α+β = 5 आणि αβ = 6 पूर्ण करतात, α > β सह. α − β काय?",
+          "choices": [
+            "1",
+            "5",
+            "25",
+            "6"
+          ],
+          "solution": "(α−β)² = (α+β)² − 4αβ = 25 − 24 = 1, म्हणून α − β = √1 = 1. (शून्य 3 आणि 2, आणि 3 − 2 = 1.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two of the zeroes of a cubic are 2 and −2, and the sum of all three zeroes is 5. What is the third zero?",
+      "choices": [
+        "0",
+        "1",
+        "-5",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "The three zeroes add to 5, and the first two, 2 and −2, cancel. So the third = 5 − 2 − (−2) = 5 − 2 + 2 = 5.",
+      "checkExpr": "5-2+2",
+      "translations": {
+        "hi": {
+          "stem": "एक घन के दो शून्यक 2 और −2 हैं, और तीनों शून्यकों का योग 5 है। तीसरा शून्यक क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "-5",
+            "5"
+          ],
+          "solution": "तीनों शून्यक जुड़कर 5, और पहले दो, 2 और −2, रद्द। अतः तीसरा = 5 − 2 − (−2) = 5 − 2 + 2 = 5."
+        },
+        "mr": {
+          "stem": "एका घनाचे दोन शून्य 2 आणि −2 आहेत, आणि तिन्ही शून्यांची बेरीज 5 आहे. तिसरा शून्य काय?",
+          "choices": [
+            "0",
+            "1",
+            "-5",
+            "5"
+          ],
+          "solution": "तिन्ही शून्य मिळून 5, आणि पहिले दोन, 2 आणि −2, रद्द. म्हणून तिसरा = 5 − 2 − (−2) = 5 − 2 + 2 = 5."
+        }
+      }
+    }
+  ]
+}
