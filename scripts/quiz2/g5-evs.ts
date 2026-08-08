@@ -1761,4 +1761,1036 @@ export const G5_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 2 — A Snake Charmer's Story (knowledge, myth and a changed law) */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-a-snake-charmers-story",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 2 — A Snake Charmer's Story",
+      hi: "अध्याय 2 — सपेरे की कहानी",
+      mr: "प्रकरण 2 — गारुड्याची गोष्ट",
+    },
+    name: { en: "A Snake Charmer's Story", hi: "सपेरे की कहानी", mr: "गारुड्याची गोष्ट" },
+    summary: {
+      en: "The kalbeliya's deep snake-knowledge, the been at the show, the four truly dangerous snakes — and the law that changed a community's livelihood.",
+      hi: "कालबेलिया का गहरा साँप-ज्ञान, तमाशे की बीन, सचमुच ख़तरनाक चार साँप — और वह क़ानून जिसने एक समुदाय की रोज़ी बदल दी।",
+      mr: "कालबेलियांचे खोल साप-ज्ञान, खेळातली पुंगी, खरोखर घातक असे चार साप — आणि एका समाजाची रोजी बदलणारा कायदा.",
+    },
+    position: 2,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "kalbeliya",
+        name: { en: "The kalbeliya", hi: "कालबेलिया", mr: "कालबेलिया" },
+        kind: "people",
+        prompt: {
+          en: "Which community learnt, over generations, to catch snakes, know their kinds and treat their bites — a whole family school of snake-lore?",
+          hi: "किस समुदाय ने पीढ़ियों में साँप पकड़ना, उनकी क़िस्में पहचानना और उनके डंक का इलाज सीखा — साँप-विद्या की पूरी पारिवारिक पाठशाला?",
+          mr: "कोणत्या समाजाने पिढ्यानपिढ्या साप पकडणे, त्यांच्या जाती ओळखणे आणि दंशावर उपचार करणे शिकले — साप-विद्येची अख्खी कौटुंबिक शाळा?",
+        },
+        statement: {
+          en: "The kalbeliya community carries generations of snake-knowledge — kinds, habits, catching and bite-cures learnt at home, not from books.",
+          hi: "कालबेलिया समुदाय पीढ़ियों का साँप-ज्ञान सँजोए है — क़िस्में, आदतें, पकड़ और डंक के इलाज — घर में सीखे, किताबों से नहीं।",
+          mr: "कालबेलिया समाज पिढ्यांचे साप-ज्ञान बाळगतो — जाती, सवयी, पकड आणि दंशावरचे उपाय — घरात शिकलेले, पुस्तकांतून नव्हे.",
+        },
+        pair: {
+          left: { en: "The kalbeliya", hi: "कालबेलिया", mr: "कालबेलिया" },
+          right: {
+            en: "snake-lore learnt at home",
+            hi: "घर में सीखी साँप-विद्या",
+            mr: "घरात शिकलेली साप-विद्या",
+          },
+        },
+      },
+      {
+        id: "been",
+        name: { en: "The been (pungi)", hi: "बीन (पुंगी)", mr: "पुंगी" },
+        kind: "show",
+        prompt: {
+          en: "Which gourd-pipe instrument sways before the basket at every snake show, the cobra's hood swaying with it?",
+          hi: "कौन-सा तूमड़ी वाला बाजा हर साँप-तमाशे में टोकरी के आगे डोलता है, और नाग का फन उसके साथ डोलता है?",
+          mr: "कोणते भोपळ्याचे वाद्य प्रत्येक साप-खेळात टोपलीसमोर डोलते, आणि नागाचा फणा त्याच्यासोबत डोलतो?",
+        },
+        statement: {
+          en: "The been is the charmer's gourd-pipe — the cobra rises and sways following the been's movement before it.",
+          hi: "बीन सपेरे का तूमड़ी-बाजा है — नाग उठकर अपने आगे डोलती बीन की हरकत के पीछे-पीछे डोलता है।",
+          mr: "पुंगी हे गारुड्याचे भोपळा-वाद्य — नाग उठून समोर डोलणाऱ्या पुंगीच्या हालचालीमागे डोलतो.",
+        },
+        pair: {
+          left: { en: "The been", hi: "बीन", mr: "पुंगी" },
+          right: { en: "the swaying at the show", hi: "तमाशे का डोलना", mr: "खेळातले डोलणे" },
+        },
+      },
+      {
+        id: "fourpoisonous",
+        name: {
+          en: "The four dangerous snakes",
+          hi: "चार ख़तरनाक साँप",
+          mr: "चार घातक साप",
+        },
+        kind: "snake-truth",
+        prompt: {
+          en: "Of India's many, many snakes, how many kinds carry poison that can kill — a number every snake-catcher knows by heart?",
+          hi: "भारत के ढेरों साँपों में से कितनी क़िस्में जानलेवा ज़हर रखती हैं — वह गिनती जो हर साँप-पकड़ को ज़बानी याद है?",
+          mr: "भारताच्या असंख्य सापांपैकी किती जाती जीवघेणे विष बाळगतात — प्रत्येक साप पकडणाऱ्याला तोंडपाठ असलेली संख्या?",
+        },
+        statement: {
+          en: "Only four of India's snakes are deadly poisonous — cobra, common krait, Russell's viper and saw-scaled viper; the rest are harmless to people.",
+          hi: "भारत के केवल चार साँप जानलेवा ज़हरीले हैं — नाग, करैत, रसेल वाइपर और आरीदार वाइपर; बाक़ी इंसान के लिए बेज़रर हैं।",
+          mr: "भारताचे फक्त चार साप जीवघेणे विषारी — नाग, मण्यार, घोणस आणि फुरसे; बाकीचे माणसासाठी निरुपद्रवी.",
+        },
+        detail: {
+          en: "The catchers can tell each of the four by hood, scale and mark — at a glance.",
+          hi: "पकड़ने वाले चारों को फन, शल्क और चिह्न से पहचान लेते हैं — एक नज़र में।",
+          mr: "पकडणारे चौघांना फणा, खवले आणि खुणांनी ओळखतात — एका नजरेत.",
+        },
+        extra: {
+          en: "Fear paints every snake deadly; knowledge counts exactly four.",
+          hi: "डर हर साँप को जानलेवा रँग देता है; ज्ञान ठीक चार गिनता है।",
+          mr: "भीती प्रत्येक सापाला जीवघेणा रंगवते; ज्ञान नेमके चार मोजते.",
+        },
+        pair: {
+          left: { en: "India's deadly snakes", hi: "भारत के जानलेवा साँप", mr: "भारताचे जीवघेणे साप" },
+          right: { en: "exactly four kinds", hi: "ठीक चार क़िस्में", mr: "नेमक्या चार जाती" },
+        },
+      },
+      {
+        id: "fangs",
+        name: { en: "The poison fangs", hi: "ज़हरीले दाँत", mr: "विषारी सुळे" },
+        kind: "snake-truth",
+        prompt: {
+          en: "Where exactly does a poisonous snake keep its poison — in which two hollow, needle-like teeth?",
+          hi: "ज़हरीला साँप अपना ज़हर ठीक कहाँ रखता है — किन दो खोखले, सुई-से दाँतों में?",
+          mr: "विषारी साप आपले विष नेमके कुठे ठेवतो — कोणत्या दोन पोकळ, सुईसारख्या दातांत?",
+        },
+        statement: {
+          en: "The poison flows through two hollow fangs — the rest of the snake, skin to tail, carries none.",
+          hi: "ज़हर दो खोखले दाँतों से बहता है — बाक़ी साँप, खाल से पूँछ तक, ज़हर नहीं रखता।",
+          mr: "विष दोन पोकळ सुळ्यांतून वाहते — बाकीचा साप, कातडीपासून शेपटीपर्यंत, विष बाळगत नाही.",
+        },
+      },
+      {
+        id: "rateaters",
+        name: {
+          en: "The snake in the field",
+          hi: "खेत का साँप",
+          mr: "शेतातला साप",
+        },
+        kind: "snake-truth",
+        prompt: {
+          en: "Why do wise farmers not kill the snake gliding along the bund — what pest does it hunt for them all night?",
+          hi: "समझदार किसान मेड़ पर सरकते साँप को क्यों नहीं मारते — वह रात भर उनके लिए किस बला का शिकार करता है?",
+          mr: "शहाणे शेतकरी बांधावरून सरकणाऱ्या सापाला का मारत नाहीत — तो रात्रभर त्यांच्यासाठी कोणत्या पीडेची शिकार करतो?",
+        },
+        statement: {
+          en: "Snakes hunt the rats that eat the farmer's stored grain — a snake in the field is a night-watchman, not an enemy.",
+          hi: "साँप उन चूहों का शिकार करते हैं जो किसान का रखा अनाज खा जाते हैं — खेत का साँप रात का पहरेदार है, दुश्मन नहीं।",
+          mr: "साप शेतकऱ्याचे साठवलेले धान्य खाणाऱ्या उंदरांची शिकार करतात — शेतातला साप रात्रीचा राखणदार आहे, शत्रू नव्हे.",
+        },
+        pair: {
+          left: { en: "The field snake", hi: "खेत का साँप", mr: "शेतातला साप" },
+          right: {
+            en: "the rat's night hunter",
+            hi: "चूहों का रात-शिकारी",
+            mr: "उंदरांचा रात्र-शिकारी",
+          },
+        },
+      },
+      {
+        id: "wildlifelaw",
+        name: { en: "The wildlife law", hi: "वन्यजीव क़ानून", mr: "वन्यजीव कायदा" },
+        kind: "people",
+        prompt: {
+          en: "What now forbids catching and keeping snakes — the rule that ended the old snake shows?",
+          hi: "अब साँप पकड़ना और पालना क्या मना करता है — वह नियम जिसने पुराने साँप-तमाशे बंद कराए?",
+          mr: "आता साप पकडणे आणि पाळणे काय मना करते — जुने साप-खेळ बंद करणारा नियम?",
+        },
+        statement: {
+          en: "The wildlife law forbids catching or keeping snakes — made to protect the animals, it also ended the charmers' old livelihood.",
+          hi: "वन्यजीव क़ानून साँप पकड़ना-पालना मना करता है — जीवों की रक्षा को बना, पर उसने सपेरों की पुरानी रोज़ी भी समाप्त की।",
+          mr: "वन्यजीव कायदा साप पकडणे-पाळणे मना करतो — प्राण्यांच्या रक्षणासाठी झाला, पण त्याने गारुड्यांची जुनी रोजीही संपवली.",
+        },
+        pair: {
+          left: { en: "The wildlife law", hi: "वन्यजीव क़ानून", mr: "वन्यजीव कायदा" },
+          right: {
+            en: "no snake may be kept",
+            hi: "कोई साँप पाला नहीं जाएगा",
+            mr: "कोणताही साप पाळायचा नाही",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into SNAKE-FACT and SNAKE-MYTH: snakes hunt rats; snakes drink milk gladly; poison sits in two fangs; every snake is deadly. Which sorting is right?",
+          hi: "इन्हें साँप-तथ्य और साँप-मिथक में छाँटिए: साँप चूहों का शिकार करते हैं; साँप ख़ुशी से दूध पीते हैं; ज़हर दो दाँतों में रहता है; हर साँप जानलेवा है। कौन-सी छँटाई सही है?",
+          mr: "यांची साप-तथ्य आणि साप-गैरसमज अशी वर्गवारी करा: साप उंदरांची शिकार करतात; साप आवडीने दूध पितात; विष दोन सुळ्यांत असते; प्रत्येक साप जीवघेणा आहे. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Fact: rat-hunting, poison in two fangs · Myth: milk-drinking, every snake deadly",
+            hi: "तथ्य: चूहों का शिकार, दो दाँतों में ज़हर · मिथक: दूध पीना, हर साँप जानलेवा",
+            mr: "तथ्य: उंदरांची शिकार, दोन सुळ्यांत विष · गैरसमज: दूध पिणे, प्रत्येक साप जीवघेणा",
+          },
+          {
+            en: "Fact: milk-drinking, rat-hunting · Myth: poison in two fangs, every snake deadly",
+            hi: "तथ्य: दूध पीना, चूहों का शिकार · मिथक: दो दाँतों में ज़हर, हर साँप जानलेवा",
+            mr: "तथ्य: दूध पिणे, उंदरांची शिकार · गैरसमज: दोन सुळ्यांत विष, प्रत्येक साप जीवघेणा",
+          },
+          {
+            en: "Fact: every snake deadly, poison in two fangs · Myth: rat-hunting, milk-drinking",
+            hi: "तथ्य: हर साँप जानलेवा, दो दाँतों में ज़हर · मिथक: चूहों का शिकार, दूध पीना",
+            mr: "तथ्य: प्रत्येक साप जीवघेणा, दोन सुळ्यांत विष · गैरसमज: उंदरांची शिकार, दूध पिणे",
+          },
+          {
+            en: "Fact: milk-drinking, every snake deadly · Myth: rat-hunting, poison in two fangs",
+            hi: "तथ्य: दूध पीना, हर साँप जानलेवा · मिथक: चूहों का शिकार, दो दाँतों में ज़हर",
+            mr: "तथ्य: दूध पिणे, प्रत्येक साप जीवघेणा · गैरसमज: उंदरांची शिकार, दोन सुळ्यांत विष",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The catchers themselves say it: snakes hunt rats and hold poison only in two fangs — those are facts their trade depends on. Milk is not snake food, and of India's many snakes only four can kill. The people who know snakes best fear them least — and precisely.",
+          hi: "पकड़ने वाले ख़ुद कहते हैं: साँप चूहों का शिकार करते हैं और ज़हर केवल दो दाँतों में रखते हैं — इन्हीं तथ्यों पर उनका पेशा टिका है। दूध साँप का भोजन नहीं, और भारत के ढेरों साँपों में केवल चार जानलेवा हैं। जो साँपों को सबसे ज़्यादा जानते हैं, वे उनसे सबसे कम — और ठीक-ठीक — डरते हैं।",
+          mr: "पकडणारे स्वतःच सांगतात: साप उंदरांची शिकार करतात आणि विष फक्त दोन सुळ्यांत ठेवतात — याच तथ्यांवर त्यांचा धंदा उभा आहे. दूध हे सापाचे अन्न नव्हे, आणि भारताच्या असंख्य सापांपैकी फक्त चार जीवघेणे. जे सापांना सर्वांत जास्त ओळखतात, ते त्यांना सर्वांत कमी — आणि नेमके — घाबरतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The wildlife law saved countless snakes — and took away the kalbeliya's only trade in the same stroke. What does the chapter want us to see in this?",
+          hi: "वन्यजीव क़ानून ने अनगिनत साँप बचाए — और उसी झटके में कालबेलिया का इकलौता पेशा छीन लिया। अध्याय हमें इसमें क्या देखने को कहता है?",
+          mr: "वन्यजीव कायद्याने असंख्य साप वाचवले — आणि त्याच फटक्यात कालबेलियांचा एकुलता धंदा हिरावला. धडा आपल्याला यात काय पाहायला सांगतो?",
+        },
+        choices: [
+          {
+            en: "A law can be right for animals and still leave people stranded — justice must also find the community a new way to live, using the knowledge it already has",
+            hi: "क़ानून जीवों के लिए सही होकर भी लोगों को बेसहारा छोड़ सकता है — इंसाफ़ को समुदाय के लिए जीने की नई राह भी खोजनी होगी, उसके पास पहले से मौजूद ज्ञान के सहारे",
+            mr: "कायदा प्राण्यांसाठी योग्य असूनही माणसांना निराधार सोडू शकतो — न्यायाने समाजासाठी जगण्याची नवी वाटही शोधली पाहिजे, त्याच्याकडे आधीच असलेल्या ज्ञानाच्या बळावर",
+          },
+          {
+            en: "Laws about animals should never be made",
+            hi: "जीवों के बारे में क़ानून बनने ही नहीं चाहिए",
+            mr: "प्राण्यांविषयी कायदे करूच नयेत",
+          },
+          {
+            en: "The charmers should keep snakes secretly",
+            hi: "सपेरों को चोरी-छिपे साँप रखने चाहिए",
+            mr: "गारुड्यांनी चोरून साप ठेवावेत",
+          },
+          {
+            en: "Snake shows were never worth watching anyway",
+            hi: "साँप-तमाशे वैसे भी देखने लायक़ नहीं थे",
+            mr: "साप-खेळ तसेही पाहण्याजोगे नव्हतेच",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both truths stand: the basket was no life for a cobra, and the law was no meal for a charmer's child. The chapter refuses the easy villain — it asks for a fuller justice, where the kalbeliya's rare knowledge finds new work: rescuing strayed snakes, teaching, guiding forest researchers. Protecting animals and protecting people are one problem, not two.",
+          hi: "दोनों सच खड़े हैं: टोकरी नाग का जीवन नहीं थी, और क़ानून सपेरे के बच्चे की रोटी नहीं था। अध्याय आसान खलनायक नहीं मानता — वह पूरा इंसाफ़ माँगता है, जहाँ कालबेलिया का दुर्लभ ज्ञान नया काम पाए: भटके साँपों का बचाव, पढ़ाना, वन-शोधकों की रहनुमाई। जीवों की रक्षा और लोगों की रक्षा एक ही सवाल है, दो नहीं।",
+          mr: "दोन्ही सत्ये उभी आहेत: टोपली हे नागाचे जगणे नव्हते, आणि कायदा हे गारुड्याच्या मुलाचे जेवण नव्हते. धडा सोपा खलनायक मानत नाही — तो पुरा न्याय मागतो, जिथे कालबेलियांच्या दुर्मीळ ज्ञानाला नवे काम मिळते: भरकटलेल्या सापांची सुटका, शिकवणे, वन-संशोधकांना वाट दाखवणे. प्राण्यांचे रक्षण आणि माणसांचे रक्षण हा एकच प्रश्न आहे, दोन नव्हे.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Up You Go! (a mountaineering camp, rope by rope)            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-up-you-go",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 9 — Up You Go!",
+      hi: "अध्याय 9 — चढ़ो ऊपर!",
+      mr: "प्रकरण 9 — चला वर!",
+    },
+    name: { en: "Up You Go!", hi: "चढ़ो ऊपर!", mr: "चला वर!" },
+    summary: {
+      en: "A mountaineering camp in the high hills — rope teams, rucksacks, rock faces, and girls' teams climbing exactly as high as anyone.",
+      hi: "ऊँचे पहाड़ों का पर्वतारोहण शिविर — रस्सी-दल, पिट्ठू, चट्टानी दीवारें, और लड़कियों की टोलियाँ जो ठीक उतना ही ऊँचा चढ़ती हैं जितना कोई भी।",
+      mr: "उंच डोंगरांतले गिर्यारोहण शिबिर — दोरी-संघ, पाठपिशव्या, कातळ-भिंती, आणि कोणाइतक्याच उंच चढणारे मुलींचे संघ.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ropeteam",
+        name: { en: "The rope team", hi: "रस्सी-दल", mr: "दोरी-संघ" },
+        kind: "climb-way",
+        prompt: {
+          en: "On the steep ice, why do climbers tie themselves to ONE long rope, a body-length apart?",
+          hi: "खड़ी बर्फ़ पर पर्वतारोही ख़ुद को एक ही लंबी रस्सी से, एक-एक क़द की दूरी पर, क्यों बाँधते हैं?",
+          mr: "उभ्या बर्फावर गिर्यारोहक स्वतःला एकाच लांब दोरीला, एकेका उंचीच्या अंतरावर, का बांधतात?",
+        },
+        statement: {
+          en: "A rope team ties every climber to one rope — if one slips, the others' planted feet hold the fall.",
+          hi: "रस्सी-दल हर पर्वतारोही को एक रस्सी से बाँधता है — एक फिसले, तो बाक़ियों के जमे पैर गिरना थाम लेते हैं।",
+          mr: "दोरी-संघ प्रत्येक गिर्यारोहकाला एका दोरीला बांधतो — एक घसरला, तर इतरांची रोवलेली पावले पडणे तोलतात.",
+        },
+        detail: {
+          en: "The same rope that saves you makes you responsible for everyone on it.",
+          hi: "जो रस्सी आपको बचाती है, वही आपको उस पर बँधे हर एक के लिए ज़िम्मेदार बनाती है।",
+          mr: "जी दोरी तुम्हाला वाचवते, तीच तुम्हाला तिच्यावरच्या प्रत्येकासाठी जबाबदार करते.",
+        },
+        extra: {
+          en: "The strongest climber goes last on the downhill, first on the up.",
+          hi: "सबसे मज़बूत पर्वतारोही उतराई में सबसे पीछे, चढ़ाई में सबसे आगे चलता है।",
+          mr: "सर्वांत बळकट गिर्यारोहक उतरणीत सर्वांत मागे, चढणीत सर्वांत पुढे चालतो.",
+        },
+        pair: {
+          left: { en: "The rope team", hi: "रस्सी-दल", mr: "दोरी-संघ" },
+          right: {
+            en: "one rope, shared lives",
+            hi: "एक रस्सी, साझा जान",
+            mr: "एक दोरी, वाटलेले जीव",
+          },
+        },
+      },
+      {
+        id: "rucksack",
+        name: { en: "The rucksack", hi: "पिट्ठू (रकसैक)", mr: "पाठपिशवी (रकसॅक)" },
+        kind: "gear",
+        prompt: {
+          en: "What does every camper carry on their own back — tent-share, food, warm clothes — nobody carrying it for them?",
+          hi: "हर शिविरार्थी अपनी ही पीठ पर क्या ढोता है — तंबू का हिस्सा, खाना, गरम कपड़े — कोई और उसे नहीं उठाता?",
+          mr: "प्रत्येक शिबिरार्थी स्वतःच्याच पाठीवर काय वाहतो — तंबूचा वाटा, अन्न, उबदार कपडे — दुसरे कोणी ते उचलत नाही?",
+        },
+        statement: {
+          en: "The rucksack holds each camper's own load — tent-share, food and warm clothes carried on one's own back up the mountain.",
+          hi: "पिट्ठू में हर शिविरार्थी का अपना बोझ है — तंबू का हिस्सा, खाना और गरम कपड़े, पहाड़ पर अपनी ही पीठ पर।",
+          mr: "पाठपिशवीत प्रत्येक शिबिरार्थ्याचे स्वतःचे ओझे — तंबूचा वाटा, अन्न आणि उबदार कपडे, डोंगरावर स्वतःच्याच पाठीवर.",
+        },
+        pair: {
+          left: { en: "The rucksack", hi: "पिट्ठू", mr: "पाठपिशवी" },
+          right: { en: "your own load, your own back", hi: "अपना बोझ, अपनी पीठ", mr: "आपले ओझे, आपली पाठ" },
+        },
+      },
+      {
+        id: "trek",
+        name: { en: "The long trek", hi: "लंबी पद-यात्रा", mr: "लांब पायपीट" },
+        kind: "climb-way",
+        prompt: {
+          en: "Before any rock or ice, what fills the camp's first days — hours of walking up mountain paths, breath growing shorter with height?",
+          hi: "चट्टान या बर्फ़ से पहले शिविर के शुरुआती दिन किससे भरे होते हैं — पहाड़ी पगडंडियों पर घंटों की चढ़ाई, ऊँचाई के साथ छोटी होती साँस?",
+          mr: "कातळ वा बर्फाआधी शिबिराचे पहिले दिवस कशाने भरलेले असतात — डोंगरवाटांवर तासांची चढण, उंचीसोबत आखडत जाणारा श्वास?",
+        },
+        statement: {
+          en: "The trek is hours of climbing on mountain paths — the body slowly learning thin air and steady steps.",
+          hi: "पद-यात्रा पहाड़ी राहों पर घंटों की चढ़ाई है — शरीर धीरे-धीरे पतली हवा और सधे क़दम सीखता है।",
+          mr: "पायपीट म्हणजे डोंगरवाटांवर तासांची चढण — शरीर हळूहळू विरळ हवा आणि सधलेली पावले शिकते.",
+        },
+        pair: {
+          left: { en: "The trek", hi: "पद-यात्रा", mr: "पायपीट" },
+          right: {
+            en: "thin air, steady steps",
+            hi: "पतली हवा, सधे क़दम",
+            mr: "विरळ हवा, सधलेली पावले",
+          },
+        },
+      },
+      {
+        id: "rockclimb",
+        name: { en: "Rock climbing", hi: "शैलारोहण", mr: "प्रस्तरारोहण" },
+        kind: "climb-way",
+        prompt: {
+          en: "Which skill takes you up a bare rock face — fingers in cracks, toes on ledges, rope from above?",
+          hi: "कौन-सा हुनर आपको नंगी चट्टानी दीवार पर चढ़ाता है — दरारों में उँगलियाँ, कगारों पर पंजे, ऊपर से रस्सी?",
+          mr: "कोणते कौशल्य तुम्हाला उघड्या कातळ-भिंतीवर चढवते — भेगांत बोटे, कपारींवर चवडे, वरून दोरी?",
+        },
+        statement: {
+          en: "Rock climbing goes up the bare face — fingers finding cracks, toes finding ledges, the safety rope held from above.",
+          hi: "शैलारोहण नंगी दीवार पर चढ़ता है — उँगलियाँ दरारें खोजतीं, पंजे कगारें, सुरक्षा-रस्सी ऊपर से थमी।",
+          mr: "प्रस्तरारोहण उघड्या भिंतीवर चढते — बोटे भेगा शोधतात, चवडे कपारी, सुरक्षा-दोरी वरून धरलेली.",
+        },
+        pair: {
+          left: { en: "Rock climbing", hi: "शैलारोहण", mr: "प्रस्तरारोहण" },
+          right: {
+            en: "cracks, ledges and rope",
+            hi: "दरारें, कगारें और रस्सी",
+            mr: "भेगा, कपारी आणि दोरी",
+          },
+        },
+      },
+      {
+        id: "leader",
+        name: { en: "The camp leader", hi: "शिविर-प्रमुख", mr: "शिबिर-प्रमुख" },
+        kind: "people",
+        prompt: {
+          en: "Who decides the day's route, checks every knot and turns the team back when the weather closes in?",
+          hi: "दिन का रास्ता कौन तय करता है, हर गाँठ जाँचता है, और मौसम बिगड़ने पर दल को लौटा लेता है?",
+          mr: "दिवसाचा मार्ग कोण ठरवतो, प्रत्येक गाठ तपासतो, आणि हवामान बिघडले की संघाला परत फिरवतो?",
+        },
+        statement: {
+          en: "The camp leader sets the route, checks the knots and — hardest of all — orders the turn-back when the mountain says no.",
+          hi: "शिविर-प्रमुख रास्ता तय करता है, गाँठें जाँचता है और — सबसे कठिन — पहाड़ के मना करने पर वापसी का आदेश देता है।",
+          mr: "शिबिर-प्रमुख मार्ग ठरवतो, गाठी तपासतो आणि — सर्वांत कठीण — डोंगराने नाही म्हटले की परतीचा आदेश देतो.",
+        },
+      },
+      {
+        id: "girlsteam",
+        name: { en: "The girls' team", hi: "लड़कियों का दल", mr: "मुलींचा संघ" },
+        kind: "people",
+        prompt: {
+          en: "Who climbed the same rock, hauled the same rucksacks and reached the same tops — ending the question of who mountains are 'for'?",
+          hi: "वही चट्टान किसने चढ़ी, वही पिट्ठू किसने ढोए और वही चोटियाँ किसने छुईं — यह सवाल ही ख़त्म करते हुए कि पहाड़ 'किसके लिए' हैं?",
+          mr: "तोच कातळ कोणी चढला, त्याच पाठपिशव्या कोणी वाहिल्या आणि तीच शिखरे कोणी गाठली — डोंगर 'कोणासाठी' हा प्रश्नच संपवत?",
+        },
+        statement: {
+          en: "The girls' teams climbed the same faces and reached the same tops — the mountain never asked who was climbing.",
+          hi: "लड़कियों के दलों ने वही दीवारें चढ़ीं और वही चोटियाँ छुईं — पहाड़ ने कभी नहीं पूछा कि चढ़ने वाला कौन है।",
+          mr: "मुलींच्या संघांनी त्याच भिंती चढल्या आणि तीच शिखरे गाठली — डोंगराने कधी विचारले नाही की चढणारे कोण आहे.",
+        },
+        pair: {
+          left: { en: "The girls' team", hi: "लड़कियों का दल", mr: "मुलींचा संघ" },
+          right: { en: "the same tops reached", hi: "वही छुई चोटियाँ", mr: "तीच गाठलेली शिखरे" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put the camp's skills in the order they are learnt: the icy heights with the rope team; the long trek in; rock climbing on the practice cliffs. Which order is right?",
+          hi: "शिविर के हुनर सीखने के क्रम में रखिए: रस्सी-दल के साथ बर्फ़ीली ऊँचाइयाँ; भीतर तक की लंबी पद-यात्रा; अभ्यास-चट्टानों पर शैलारोहण। कौन-सा क्रम सही है?",
+          mr: "शिबिरातली कौशल्ये शिकण्याच्या क्रमाने लावा: दोरी-संघासोबत बर्फाळ उंची; आतवरची लांब पायपीट; सराव-कातळांवर प्रस्तरारोहण. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "trek in → rock climbing → the roped icy heights",
+            hi: "पद-यात्रा → शैलारोहण → रस्सी वाली बर्फ़ीली ऊँचाइयाँ",
+            mr: "पायपीट → प्रस्तरारोहण → दोरीच्या बर्फाळ उंची",
+          },
+          {
+            en: "the roped icy heights → trek in → rock climbing",
+            hi: "बर्फ़ीली ऊँचाइयाँ → पद-यात्रा → शैलारोहण",
+            mr: "बर्फाळ उंची → पायपीट → प्रस्तरारोहण",
+          },
+          {
+            en: "rock climbing → the roped icy heights → trek in",
+            hi: "शैलारोहण → बर्फ़ीली ऊँचाइयाँ → पद-यात्रा",
+            mr: "प्रस्तरारोहण → बर्फाळ उंची → पायपीट",
+          },
+          {
+            en: "rock climbing → trek in → the roped icy heights",
+            hi: "शैलारोहण → पद-यात्रा → बर्फ़ीली ऊँचाइयाँ",
+            mr: "प्रस्तरारोहण → पायपीट → बर्फाळ उंची",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The camp climbs its own ladder: first the trek builds breath and legs, then the practice cliffs teach hands and rope-trust, and only then are climbers taken high where ice makes every earlier lesson count. Skipping a rung is how mountains hurt people.",
+          hi: "शिविर अपनी ही सीढ़ी चढ़ता है: पहले पद-यात्रा साँस और टाँगें गढ़ती है, फिर अभ्यास-चट्टानें हाथ और रस्सी-भरोसा सिखाती हैं, और तभी पर्वतारोही उस ऊँचाई पर ले जाए जाते हैं जहाँ बर्फ़ हर पिछले पाठ की परीक्षा लेती है। सीढ़ी लाँघना ही वह तरीक़ा है जिससे पहाड़ चोट देते हैं।",
+          mr: "शिबिर स्वतःचीच शिडी चढते: आधी पायपीट श्वास आणि पाय घडवते, मग सराव-कातळ हात आणि दोरी-विश्वास शिकवतात, आणि मगच गिर्यारोहकांना त्या उंचीवर नेतात जिथे बर्फ प्रत्येक आधीच्या धड्याची परीक्षा घेते. पायरी ओलांडणे हाच डोंगर माणसांना जखमी करण्याचा मार्ग.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A rope team moves only as fast as its slowest member — yet no serious climber goes up the ice alone. Why is the slower rope still the wiser choice?",
+          hi: "रस्सी-दल अपनी सबसे धीमी सदस्य जितनी ही रफ़्तार से चलता है — फिर भी कोई गंभीर पर्वतारोही बर्फ़ पर अकेला नहीं चढ़ता। धीमी रस्सी फिर भी समझदार चुनाव क्यों है?",
+          mr: "दोरी-संघ आपल्या सर्वांत हळू सदस्याइतक्याच वेगाने चालतो — तरी कोणी गंभीर गिर्यारोहक बर्फावर एकटा चढत नाही. हळू दोरी तरीही शहाणी निवड का?",
+        },
+        choices: [
+          {
+            en: "Alone, one slip is the end; roped, one slip is a jerk the others hold — the team trades a little speed for every member's life",
+            hi: "अकेले में एक फिसलन अंत है; रस्सी में एक फिसलन बस एक झटका है जिसे बाक़ी थाम लेते हैं — दल थोड़ी रफ़्तार देकर हर सदस्य की जान ख़रीदता है",
+            mr: "एकट्याने एक घसरण म्हणजे शेवट; दोरीत एक घसरण म्हणजे इतरांनी तोललेला एक हिसका — संघ थोडा वेग देऊन प्रत्येक सदस्याचा जीव विकत घेतो",
+          },
+          {
+            en: "Ropes make climbing faster for everyone",
+            hi: "रस्सियाँ सबकी चढ़ाई तेज़ कर देती हैं",
+            mr: "दोऱ्या साऱ्यांची चढण वेगवान करतात",
+          },
+          {
+            en: "Rules simply require ropes, reason or none",
+            hi: "नियम बस रस्सी माँगते हैं, वजह हो या न हो",
+            mr: "नियम नुसते दोरी मागतात, कारण असो वा नसो",
+          },
+          {
+            en: "The rope keeps climbers warm on the ice",
+            hi: "रस्सी बर्फ़ पर पर्वतारोहियों को गरम रखती है",
+            mr: "दोरी बर्फावर गिर्यारोहकांना ऊब देते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The rope is insurance written in nylon: it costs speed every hour and pays in the one second that matters. A lone climber's slip has no second chance; a roped slip is caught by planted boots above and below. Mountains teach the camp's deepest lesson early — going together IS the safety equipment.",
+          hi: "रस्सी नायलॉन में लिखा बीमा है: वह हर घंटे रफ़्तार वसूलती है और उस एक सेकंड में चुकाती है जो मायने रखता है। अकेले की फिसलन को दूसरा मौक़ा नहीं; रस्सी की फिसलन ऊपर-नीचे जमे जूते थाम लेते हैं। पहाड़ शिविर का सबसे गहरा पाठ जल्दी सिखा देते हैं — साथ चलना ही सुरक्षा का साज़-ओ-सामान है।",
+          mr: "दोरी म्हणजे नायलॉनमध्ये लिहिलेला विमा: ती दर तासाला वेग वसूल करते आणि महत्त्वाच्या त्या एका सेकंदात फेड करते. एकट्याच्या घसरणीला दुसरी संधी नाही; दोरीतली घसरण वर-खाली रोवलेले बूट झेलतात. डोंगर शिबिराचा सर्वांत खोल धडा लवकर शिकवतात — सोबत जाणे हेच सुरक्षेचे साहित्य.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The girls' team carried the same loads up the same face to the same summit. What did their climb prove that no speech could?",
+          hi: "लड़कियों के दल ने वही बोझ, वही दीवार, वही चोटी तक ढोए-चढ़े। उनकी चढ़ाई ने वह क्या साबित किया जो कोई भाषण नहीं कर सकता था?",
+          mr: "मुलींच्या संघाने तेच ओझे, त्याच भिंतीवरून, त्याच शिखरापर्यंत वाहिले-चढले. त्यांच्या चढाईने असे काय सिद्ध केले जे कोणतेही भाषण करू शकले नसते?",
+        },
+        choices: [
+          {
+            en: "That capability is shown, not granted — the summit register reads the same for every rope that reaches it, and doubt has no answer to a done thing",
+            hi: "कि क़ाबिलियत दिखाई जाती है, बख़्शी नहीं जाती — चोटी का रजिस्टर वहाँ पहुँची हर रस्सी के लिए एक-सा पढ़ता है, और किए हुए काम के आगे शक के पास कोई जवाब नहीं",
+            mr: "की क्षमता दाखवली जाते, बहाल केली जात नाही — शिखराचे रजिस्टर तिथे पोहोचणाऱ्या प्रत्येक दोरीसाठी सारखेच वाचते, आणि केलेल्या गोष्टीपुढे शंकेकडे उत्तर नसते",
+          },
+          {
+            en: "That girls should climb only with other girls",
+            hi: "कि लड़कियों को केवल लड़कियों के साथ चढ़ना चाहिए",
+            mr: "की मुलींनी फक्त मुलींसोबतच चढावे",
+          },
+          {
+            en: "That mountains are easier than people said",
+            hi: "कि पहाड़ कहे जाने से आसान हैं",
+            mr: "की डोंगर म्हणतात त्याहून सोपे आहेत",
+          },
+          {
+            en: "That lighter climbers always climb better",
+            hi: "कि हलके पर्वतारोही हमेशा बेहतर चढ़ते हैं",
+            mr: "की हलके गिर्यारोहक नेहमी चांगले चढतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The mountain is the fairest examiner there is: it weighs only the load carried and the rock climbed, never the climber's name. When the girls' rope topped out, the argument was not won — it was closed. Like Anita with her bee boxes, the answer to 'can they?' was simply 'they did'.",
+          hi: "पहाड़ सबसे निष्पक्ष परीक्षक है: वह केवल ढोया बोझ और चढ़ी चट्टान तौलता है, चढ़ने वाले का नाम कभी नहीं। जब लड़कियों की रस्सी चोटी पर पहुँची, तो बहस जीती नहीं गई — बंद हो गई। मधु-बक्सों वाली अनीता की तरह, 'क्या वे कर सकती हैं?' का उत्तर बस यह था — 'उन्होंने कर दिखाया'।",
+          mr: "डोंगर हा सर्वांत निष्पक्ष परीक्षक: तो फक्त वाहिलेले ओझे आणि चढलेला कातळ तोलतो, चढणाऱ्याचे नाव कधीच नाही. मुलींची दोरी शिखरावर पोहोचली, तेव्हा वाद जिंकला नाही — मिटला. मध-पेट्यांच्या अनीतासारखेच, 'त्या करू शकतील का?' चे उत्तर होते — 'त्यांनी करून दाखवले'.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — When the Earth Shook! (Jasma's village and after)          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-when-the-earth-shook",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 14 — When the Earth Shook!",
+      hi: "अध्याय 14 — जब धरती काँपी!",
+      mr: "प्रकरण 14 — जेव्हा धरणी हादरली!",
+    },
+    name: { en: "When the Earth Shook!", hi: "जब धरती काँपी!", mr: "जेव्हा धरणी हादरली!" },
+    summary: {
+      en: "The night the ground shook Jasma's Gujarat village — the digging out, the tent camp, the engineers' lighter roofs, and a village rebuilt wiser.",
+      hi: "वह रात जब जसमा के गुजराती गाँव की ज़मीन काँपी — मलबे से निकालना, तंबुओं का शिविर, इंजीनियरों की हलकी छतें, और समझदार होकर फिर बसा गाँव।",
+      mr: "जसमाच्या गुजराती गावाची जमीन हादरली ती रात्र — ढिगाऱ्यातून काढणे, तंबूंचे शिबिर, अभियंत्यांची हलकी छपरे, आणि शहाणे होऊन पुन्हा वसलेले गाव.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "quake",
+        name: { en: "The earthquake", hi: "भूकंप", mr: "भूकंप" },
+        kind: "event",
+        seq: 1,
+        prompt: {
+          en: "What struck Jasma's village before dawn — the ground itself heaving, walls cracking, roofs coming down in seconds?",
+          hi: "पौ फटने से पहले जसमा के गाँव पर क्या टूटा — ख़ुद ज़मीन उठती-गिरती, दीवारें चटखतीं, छतें पलों में गिरतीं?",
+          mr: "पहाटेआधी जसमाच्या गावावर काय कोसळले — जमीनच वरखाली होणारी, भिंती तडकणाऱ्या, छपरे क्षणांत कोसळणारी?",
+        },
+        statement: {
+          en: "The earthquake shook the ground itself — in seconds, walls cracked and heavy roofs came down across the village.",
+          hi: "भूकंप ने ज़मीन को ही हिला दिया — पलों में दीवारें चटखीं और भारी छतें गाँव भर में आ गिरीं।",
+          mr: "भूकंपाने जमीनच हलवली — क्षणांत भिंती तडकल्या आणि जड छपरे गावभर कोसळली.",
+        },
+        pair: {
+          left: { en: "The earthquake", hi: "भूकंप", mr: "भूकंप" },
+          right: {
+            en: "the ground itself moving",
+            hi: "ख़ुद हिलती ज़मीन",
+            mr: "स्वतः हलणारी जमीन",
+          },
+        },
+      },
+      {
+        id: "neighbours",
+        name: { en: "The neighbours' hands", hi: "पड़ोसियों के हाथ", mr: "शेजाऱ्यांचे हात" },
+        kind: "after",
+        seq: 2,
+        prompt: {
+          en: "Long before any official help arrived, who dug people from the rubble with bare hands and shared what food survived?",
+          hi: "किसी सरकारी मदद से बहुत पहले, मलबे से लोगों को नंगे हाथों किसने निकाला और बचा खाना किसने बाँटा?",
+          mr: "कोणतीही सरकारी मदत येण्याच्या खूप आधी, ढिगाऱ्यातून माणसांना उघड्या हातांनी कोणी काढले आणि वाचलेले अन्न कोणी वाटले?",
+        },
+        statement: {
+          en: "The neighbours were the first rescue — digging with bare hands, pulling people free, sharing the food that survived.",
+          hi: "पहला बचाव पड़ोसी थे — नंगे हाथों खोदते, लोगों को निकालते, बचा खाना बाँटते।",
+          mr: "पहिली सुटका शेजारी होते — उघड्या हातांनी खणणारे, माणसांना काढणारे, वाचलेले अन्न वाटणारे.",
+        },
+        pair: {
+          left: { en: "The neighbours", hi: "पड़ोसी", mr: "शेजारी" },
+          right: { en: "the first rescuers", hi: "पहले बचाने वाले", mr: "पहिले वाचवणारे" },
+        },
+      },
+      {
+        id: "reliefcamp",
+        name: { en: "The relief camp", hi: "राहत शिविर", mr: "मदत शिबिर" },
+        kind: "after",
+        seq: 3,
+        prompt: {
+          en: "With homes gone, where did the village live for weeks — rows of tents, cooked food, doctors' tables in the open?",
+          hi: "घर जाते रहे, तो गाँव हफ़्तों कहाँ रहा — तंबुओं की क़तारें, पका खाना, खुले में डॉक्टरों की मेज़ें?",
+          mr: "घरे गेली, मग गाव आठवडे कुठे राहिले — तंबूंच्या रांगा, शिजलेले अन्न, उघड्यावर डॉक्टरांची टेबले?",
+        },
+        statement: {
+          en: "The relief camp housed the village in tents — cooked food, doctors and blankets while the rubble was cleared.",
+          hi: "राहत शिविर ने गाँव को तंबुओं में बसाया — पका खाना, डॉक्टर और कंबल, जब तक मलबा हटता रहा।",
+          mr: "मदत शिबिराने गावाला तंबूंत वसवले — शिजलेले अन्न, डॉक्टर आणि पांघरुणे, ढिगारा हटेपर्यंत.",
+        },
+        pair: {
+          left: { en: "The relief camp", hi: "राहत शिविर", mr: "मदत शिबिर" },
+          right: { en: "tents till the rebuilding", hi: "फिर बसने तक तंबू", mr: "पुन्हा वसेपर्यंत तंबू" },
+        },
+      },
+      {
+        id: "engineers",
+        name: { en: "The engineers' advice", hi: "इंजीनियरों की सलाह", mr: "अभियंत्यांचा सल्ला" },
+        kind: "after",
+        seq: 4,
+        prompt: {
+          en: "Rebuilding began — and who taught the masons to make the NEW houses different: lighter roofs, bound corners, walls that hold together?",
+          hi: "फिर से बसना शुरू हुआ — और राजमिस्त्रियों को किसने सिखाया कि नए घर अलग बनें: हलकी छतें, बँधे कोने, जुड़ी रहने वाली दीवारें?",
+          mr: "पुन्हा बांधणी सुरू झाली — आणि गवंड्यांना कोणी शिकवले की नवी घरे वेगळी बांधावी: हलकी छपरे, बांधलेले कोपरे, एकत्र राहणाऱ्या भिंती?",
+        },
+        statement: {
+          en: "The engineers taught quake-safe building — lighter roofs, corners tied together, walls that shake as one instead of falling apart.",
+          hi: "इंजीनियरों ने भूकंप-सुरक्षित निर्माण सिखाया — हलकी छतें, आपस में बँधे कोने, ऐसी दीवारें जो बिखरने की जगह एक होकर हिलें।",
+          mr: "अभियंत्यांनी भूकंप-सुरक्षित बांधकाम शिकवले — हलकी छपरे, एकमेकांशी बांधलेले कोपरे, विखरण्याऐवजी एक होऊन हलणाऱ्या भिंती.",
+        },
+        detail: {
+          en: "In a quake it is mostly falling houses that hurt people — the shaking itself hurts almost no one.",
+          hi: "भूकंप में लोगों को ज़्यादातर गिरते घर घायल करते हैं — काँपना ख़ुद शायद ही किसी को चोट दे।",
+          mr: "भूकंपात माणसांना बहुधा कोसळणारी घरे जखमी करतात — हादरणे स्वतः क्वचितच कोणाला इजा करते.",
+        },
+        extra: {
+          en: "The same rupees, laid in a wiser wall, buy a house that argues back at the next quake.",
+          hi: "वही रुपये, समझदार दीवार में लगे, ऐसा घर दिलाते हैं जो अगले भूकंप से बहस कर सके।",
+          mr: "तेच रुपये, शहाण्या भिंतीत घातले, की पुढच्या भूकंपाशी हुज्जत घालणारे घर मिळते.",
+        },
+        pair: {
+          left: { en: "The engineers' advice", hi: "इंजीनियरों की सलाह", mr: "अभियंत्यांचा सल्ला" },
+          right: {
+            en: "lighter roofs, tied corners",
+            hi: "हलकी छतें, बँधे कोने",
+            mr: "हलकी छपरे, बांधलेले कोपरे",
+          },
+        },
+      },
+      {
+        id: "drill",
+        name: { en: "The safety drill", hi: "सुरक्षा अभ्यास", mr: "सुरक्षा कवायत" },
+        kind: "after",
+        prompt: {
+          en: "What does Jasma's school now practise — duck under the desk, hold on, then file out to open ground?",
+          hi: "जसमा का स्कूल अब किसका अभ्यास करता है — मेज़ के नीचे दुबकना, थामना, फिर क़तार से खुले मैदान तक निकलना?",
+          mr: "जसमाची शाळा आता कशाची कवायत करते — टेबलाखाली लपणे, धरून राहणे, मग रांगेने मोकळ्या मैदानात जाणे?",
+        },
+        statement: {
+          en: "The safety drill teaches the quake habit — under the desk while it shakes, then out to open ground, away from walls.",
+          hi: "सुरक्षा अभ्यास भूकंप की आदत सिखाता है — काँपते समय मेज़ के नीचे, फिर दीवारों से दूर खुले मैदान में।",
+          mr: "सुरक्षा कवायत भूकंपाची सवय शिकवते — हादरताना टेबलाखाली, मग भिंतींपासून दूर मोकळ्या मैदानात.",
+        },
+        pair: {
+          left: { en: "The safety drill", hi: "सुरक्षा अभ्यास", mr: "सुरक्षा कवायत" },
+          right: {
+            en: "desk first, open ground after",
+            hi: "पहले मेज़, फिर खुला मैदान",
+            mr: "आधी टेबल, मग मोकळे मैदान",
+          },
+        },
+      },
+      {
+        id: "farhelp",
+        name: {
+          en: "Help from far away",
+          hi: "दूर-दूर से आई मदद",
+          mr: "दुरून आलेली मदत",
+        },
+        kind: "after",
+        prompt: {
+          en: "Within days, lorries rolled in from cities the villagers had never seen — carrying what, sent by whom?",
+          hi: "कुछ ही दिनों में उन शहरों से लॉरियाँ आ पहुँचीं जिन्हें गाँव वालों ने कभी देखा न था — क्या लेकर, किनकी भेजी?",
+          mr: "काही दिवसांतच गावकऱ्यांनी कधी न पाहिलेल्या शहरांतून गाड्या आल्या — काय घेऊन, कोणी पाठवलेल्या?",
+        },
+        statement: {
+          en: "Strangers from far cities sent lorries of food, clothes, medicines and blankets — help from people who knew the village only from the news.",
+          hi: "दूर के शहरों के अजनबियों ने खाना, कपड़े, दवाएँ और कंबल भरी लॉरियाँ भेजीं — उन लोगों की मदद जो गाँव को केवल ख़बरों से जानते थे।",
+          mr: "दूरच्या शहरांतल्या अनोळखी माणसांनी अन्न, कपडे, औषधे आणि पांघरुणांच्या गाड्या पाठवल्या — गावाला फक्त बातम्यांतून ओळखणाऱ्यांची मदत.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "The engineers' first rule for the new houses was strange: 'make the ROOF lighter.' Why does a lighter roof save lives in a quake?",
+          hi: "नए घरों के लिए इंजीनियरों का पहला नियम अजीब था: 'छत हलकी बनाओ।' भूकंप में हलकी छत जानें क्यों बचाती है?",
+          mr: "नव्या घरांसाठी अभियंत्यांचा पहिला नियम विचित्र होता: 'छप्पर हलके करा.' भूकंपात हलके छप्पर जीव का वाचवते?",
+        },
+        choices: [
+          {
+            en: "A quake's danger is what falls ON people — a light roof that comes down bruises; a heavy stone one buries",
+            hi: "भूकंप का ख़तरा वह है जो लोगों पर गिरता है — गिरती हलकी छत ख़रोंच देती है; भारी पत्थर की छत दफ़्न कर देती है",
+            mr: "भूकंपाचा धोका माणसांवर जे पडते ते — पडणारे हलके छप्पर खरचटवते; जड दगडी छप्पर गाडते",
+          },
+          {
+            en: "Light roofs stop the ground from shaking under the house",
+            hi: "हलकी छतें घर के नीचे की ज़मीन को काँपने से रोकती हैं",
+            mr: "हलकी छपरे घराखालची जमीन हादरण्यापासून थांबवतात",
+          },
+          {
+            en: "Light roofs are cheaper, and cheap houses survive quakes",
+            hi: "हलकी छतें सस्ती हैं, और सस्ते घर भूकंप झेल जाते हैं",
+            mr: "हलकी छपरे स्वस्त, आणि स्वस्त घरे भूकंप पेलतात",
+          },
+          {
+            en: "Heavy roofs attract earthquakes to a house",
+            hi: "भारी छतें भूकंप को घर की ओर खींचती हैं",
+            mr: "जड छपरे भूकंपाला घराकडे ओढतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The shaking itself hurts almost nobody — the falling does. A quake cannot be stopped, but what it drops on a sleeping family CAN be chosen, and that choice is made on the day the roof is laid. The engineers' rule looks like a builder's detail and is really the whole difference between a bad night and a burial.",
+          hi: "काँपना ख़ुद शायद ही किसी को चोट दे — गिरना देता है। भूकंप रोका नहीं जा सकता, पर वह सोते परिवार पर क्या गिराएगा, यह चुना जा सकता है — और यह चुनाव उसी दिन होता है जिस दिन छत रखी जाती है। इंजीनियरों का नियम राजमिस्त्री की बारीकी दिखता है और असल में बुरी रात और दफ़्न होने के बीच का पूरा फ़र्क़ है।",
+          mr: "हादरणे स्वतः क्वचितच कोणाला इजा करते — पडणे करते. भूकंप थांबवता येत नाही, पण तो झोपलेल्या कुटुंबावर काय पाडेल हे निवडता येते — आणि ही निवड छप्पर घातले जाते त्याच दिवशी होते. अभियंत्यांचा नियम गवंड्याची बारीकशी गोष्ट वाटतो आणि प्रत्यक्षात वाईट रात्र आणि गाडले जाणे यांतला सगळा फरक आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In the drill, children hide UNDER desks while the shaking lasts, and run to open ground only AFTER it stops. Why not run at once?",
+          hi: "अभ्यास में बच्चे काँपने के दौरान मेज़ों के नीचे दुबकते हैं, और थमने के बाद ही खुले मैदान की ओर भागते हैं। तुरंत क्यों नहीं भागते?",
+          mr: "कवायतीत मुले हादरे चालू असताना टेबलांखाली लपतात, आणि थांबल्यावरच मोकळ्या मैदानाकडे धावतात. लगेच का धावत नाहीत?",
+        },
+        choices: [
+          {
+            en: "While walls and fans are falling, a desk is a shield and a doorway is a trap of moving walls — run when things stop falling, not while they fall",
+            hi: "जब दीवारें और पंखे गिर रहे हों, मेज़ ढाल है और रास्ता हिलती दीवारों का फंदा — भागिए तब जब चीज़ें गिरना बंद करें, गिरते समय नहीं",
+            mr: "भिंती आणि पंखे पडत असताना टेबल ही ढाल आणि वाट म्हणजे हलणाऱ्या भिंतींचा सापळा — वस्तू पडणे थांबल्यावर धावा, पडत असताना नव्हे",
+          },
+          {
+            en: "Running during a quake is rude to the teacher",
+            hi: "भूकंप के दौरान भागना शिक्षक का अपमान है",
+            mr: "भूकंपात धावणे शिक्षकांचा अपमान आहे",
+          },
+          {
+            en: "Desks stop the ground from shaking nearby",
+            hi: "मेज़ें पास की ज़मीन का काँपना रोक देती हैं",
+            mr: "टेबले जवळची जमीन हादरण्यापासून थांबवतात",
+          },
+          {
+            en: "Open ground is dangerous at all times",
+            hi: "खुला मैदान हर समय ख़तरनाक है",
+            mr: "मोकळे मैदान सदैव धोक्याचे असते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The shaking lasts seconds; the falling happens in exactly those seconds. A child mid-corridor when the ceiling fan drops has chosen the worst place at the worst time. The drill's two-step wisdom — cover first, move after — puts the desk between you and the falling, then the open sky between you and the walls.",
+          hi: "काँपना सेकंडों का है; गिरना ठीक उन्हीं सेकंडों में होता है। छत का पंखा गिरते समय गलियारे के बीच खड़ा बच्चा सबसे बुरी जगह, सबसे बुरे समय चुन चुका है। अभ्यास की दो-क़दम समझ — पहले ओट, फिर निकास — पहले मेज़ को आपके और गिरने के बीच रखती है, फिर खुले आसमान को आपके और दीवारों के बीच।",
+          mr: "हादरणे सेकंदांचे; पडणे नेमके त्याच सेकंदांत घडते. छताचा पंखा पडताना गल्लीच्या मधोमध असलेल्या मुलाने सर्वांत वाईट जागा, सर्वांत वाईट वेळी निवडली आहे. कवायतीचे दोन-पावली शहाणपण — आधी आडोसा, मग निघणे — आधी टेबल तुमच्या आणि पडण्याच्या मध्ये ठेवते, मग मोकळे आकाश तुमच्या आणि भिंतींच्या मध्ये.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 20 — Whose Forests? (Suryamani and the forest's people)         */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-whose-forests",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 20 — Whose Forests?",
+      hi: "अध्याय 20 — जंगल किसके?",
+      mr: "प्रकरण 20 — जंगले कोणाची?",
+    },
+    name: { en: "Whose Forests?", hi: "जंगल किसके?", mr: "जंगले कोणाची?" },
+    summary: {
+      en: "Suryamani of Jharkhand, who reads books AND leaves — the forest that feeds without a shop, the adivasi life woven into it, and the law that finally said: theirs too.",
+      hi: "झारखंड की सूर्यमणि, जो किताबें भी पढ़ती है और पत्तियाँ भी — बिना दुकान खिलाता जंगल, उसमें बुना आदिवासी जीवन, और वह क़ानून जिसने आख़िर कहा: उनके भी।",
+      mr: "झारखंडची सूर्यमणी, जी पुस्तकेही वाचते आणि पानेही — दुकानाविना पोसणारे जंगल, त्यात विणलेले आदिवासी जगणे, आणि अखेर 'त्यांचेही' म्हणणारा कायदा.",
+    },
+    position: 20,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "suryamani",
+        name: { en: "Suryamani", hi: "सूर्यमणि", mr: "सूर्यमणी" },
+        kind: "person",
+        prompt: {
+          en: "Which Jharkhand woman opened the Torang centre, where children learn school lessons AND their own forest's songs, herbs and crafts?",
+          hi: "झारखंड की किस स्त्री ने 'तोरंग' केंद्र खोला, जहाँ बच्चे स्कूली पाठ भी सीखते हैं और अपने जंगल के गीत, जड़ी-बूटियाँ और हुनर भी?",
+          mr: "झारखंडच्या कोणत्या स्त्रीने 'तोरंग' केंद्र उघडले, जिथे मुले शाळेचे धडेही शिकतात आणि आपल्या जंगलाची गाणी, वनौषधी आणि कलाही?",
+        },
+        statement: {
+          en: "Suryamani runs the Torang centre, where forest children learn their books and their forest together — neither in place of the other.",
+          hi: "सूर्यमणि 'तोरंग' केंद्र चलाती हैं, जहाँ जंगल के बच्चे किताबें और जंगल साथ-साथ सीखते हैं — एक दूसरे की जगह नहीं।",
+          mr: "सूर्यमणी 'तोरंग' केंद्र चालवते, जिथे जंगलाची मुले पुस्तके आणि जंगल एकत्र शिकतात — एक दुसऱ्याच्या जागी नव्हे.",
+        },
+        detail: {
+          en: "She was among the first girls of her village to study far and return — to teach, not to leave.",
+          hi: "वे अपने गाँव की उन पहली लड़कियों में थीं जो दूर पढ़कर लौटीं — छोड़ने नहीं, सिखाने।",
+          mr: "दूर शिकून परतणाऱ्या आपल्या गावच्या पहिल्या मुलींत ती होती — सोडायला नव्हे, शिकवायला.",
+        },
+        extra: {
+          en: "'The forest is our mother,' she tells the children — 'and you do not sell your mother.'",
+          hi: "'जंगल हमारी माँ है,' वे बच्चों से कहती हैं — 'और माँ बेची नहीं जाती।'",
+          mr: "'जंगल आपली आई आहे,' ती मुलांना सांगते — 'आणि आई विकायची नसते.'",
+        },
+        pair: {
+          left: { en: "Suryamani", hi: "सूर्यमणि", mr: "सूर्यमणी" },
+          right: {
+            en: "books and forest together",
+            hi: "किताबें और जंगल साथ",
+            mr: "पुस्तके आणि जंगल एकत्र",
+          },
+        },
+      },
+      {
+        id: "forestprovider",
+        name: {
+          en: "The forest's free shop",
+          hi: "जंगल की बिन-दाम दुकान",
+          mr: "जंगलाचे बिन-पैशांचे दुकान",
+        },
+        kind: "forest-life",
+        prompt: {
+          en: "Fruit and greens, firewood, bamboo, healing herbs — where do forest families get all this without spending a rupee?",
+          hi: "फल और साग, जलावन, बाँस, दवा की जड़ी-बूटियाँ — जंगल के परिवार यह सब बिना एक रुपया ख़र्चे कहाँ से पाते हैं?",
+          mr: "फळे आणि भाजी, सरपण, बांबू, औषधी वनस्पती — जंगलातली कुटुंबे हे सारे एक रुपयाही न खर्चता कुठून मिळवतात?",
+        },
+        statement: {
+          en: "The forest gives its people food, firewood, bamboo and medicine without money — a living storehouse they gather from, season by season.",
+          hi: "जंगल अपने लोगों को खाना, जलावन, बाँस और दवा बिना पैसों के देता है — एक जीता भंडार, जिसमें से वे मौसम-दर-मौसम बीनते हैं।",
+          mr: "जंगल आपल्या माणसांना अन्न, सरपण, बांबू आणि औषध पैशांविना देते — एक जिवंत कोठार, ज्यातून ते ऋतूमागून ऋतू वेचतात.",
+        },
+        pair: {
+          left: { en: "The forest", hi: "जंगल", mr: "जंगल" },
+          right: {
+            en: "a storehouse with no bill",
+            hi: "बिना बिल का भंडार",
+            mr: "बिलाविना कोठार",
+          },
+        },
+      },
+      {
+        id: "adivasi",
+        name: { en: "The adivasi", hi: "आदिवासी", mr: "आदिवासी" },
+        kind: "forest-life",
+        prompt: {
+          en: "Which communities have lived IN the forests for as long as anyone remembers — their songs, gods and seasons woven into the trees?",
+          hi: "कौन-से समुदाय जब से याद है तब से जंगलों में ही रहते आए हैं — उनके गीत, देवता और मौसम पेड़ों में बुने हुए?",
+          mr: "कोणते समाज आठवते तेव्हापासून जंगलांतच राहत आले आहेत — त्यांची गाणी, देव आणि ऋतू झाडांत विणलेले?",
+        },
+        statement: {
+          en: "The adivasi communities have lived in the forests for generations beyond memory — their whole way of life grown together with the trees.",
+          hi: "आदिवासी समुदाय याद से भी पुरानी पीढ़ियों से जंगलों में रहते हैं — उनका पूरा जीवन-ढंग पेड़ों के साथ-साथ उगा है।",
+          mr: "आदिवासी समाज आठवणीहूनही जुन्या पिढ्यांपासून जंगलांत राहतात — त्यांची सारी जीवनरीत झाडांसोबत वाढली आहे.",
+        },
+        pair: {
+          left: { en: "The adivasi", hi: "आदिवासी", mr: "आदिवासी" },
+          right: {
+            en: "life grown with the trees",
+            hi: "पेड़ों संग उगा जीवन",
+            mr: "झाडांसोबत वाढलेले जगणे",
+          },
+        },
+      },
+      {
+        id: "bamboocraft",
+        name: {
+          en: "The bamboo basket work",
+          hi: "बाँस की टोकरी का काम",
+          mr: "बांबूच्या टोपल्यांचे काम",
+        },
+        kind: "forest-life",
+        prompt: {
+          en: "Which craft turns the forest's tall grass-tree into baskets, mats and winnows sold at the haat?",
+          hi: "कौन-सा हुनर जंगल के लंबे घास-पेड़ को टोकरियों, चटाइयों और सूपों में बदलता है, जो हाट में बिकते हैं?",
+          mr: "कोणती कला जंगलाच्या उंच गवत-झाडाला टोपल्या, चटया आणि सुपांत बदलते, जी आठवडी बाजारात विकली जातात?",
+        },
+        statement: {
+          en: "Bamboo work splits and weaves the forest's bamboo into baskets, mats and winnows — craft and cash both, from a plant that regrows.",
+          hi: "बाँस का काम जंगल के बाँस को चीरकर टोकरियों, चटाइयों और सूपों में बुनता है — हुनर भी, कमाई भी, उस पौधे से जो फिर उग आता है।",
+          mr: "बांबूकाम जंगलाचा बांबू चिरून टोपल्या, चटया आणि सुपांत विणते — कला आणि कमाई दोन्ही, पुन्हा उगवणाऱ्या झाडापासून.",
+        },
+        pair: {
+          left: { en: "Bamboo work", hi: "बाँस का काम", mr: "बांबूकाम" },
+          right: {
+            en: "baskets from a regrowing plant",
+            hi: "फिर उगते पौधे से टोकरियाँ",
+            mr: "पुन्हा उगवणाऱ्या झाडाच्या टोपल्या",
+          },
+        },
+      },
+      {
+        id: "contractors",
+        name: {
+          en: "The timber contractors",
+          hi: "लकड़ी के ठेकेदार",
+          mr: "लाकडाचे ठेकेदार",
+        },
+        kind: "forest-threat",
+        prompt: {
+          en: "Who arrives with permits and lorries to fell whole hillsides of trees — taking in weeks what grew for a hundred years?",
+          hi: "परमिट और लॉरियाँ लेकर पूरी पहाड़ियों के पेड़ काटने कौन आता है — जो सौ साल में उगा, उसे हफ़्तों में ले जाता?",
+          mr: "परवाने आणि गाड्या घेऊन अख्ख्या डोंगरउतारांची झाडे तोडायला कोण येतो — शंभर वर्षांत वाढलेले आठवड्यांत नेणारा?",
+        },
+        statement: {
+          en: "The timber contractors fell whole hillsides for wood to sell — outsiders to whom the forest is stock, not home.",
+          hi: "लकड़ी के ठेकेदार बेचने की लकड़ी के लिए पूरी पहाड़ियाँ काट देते हैं — वे बाहरी, जिनके लिए जंगल माल है, घर नहीं।",
+          mr: "लाकडाचे ठेकेदार विकायच्या लाकडासाठी अख्खे डोंगरउतार तोडतात — ज्यांच्यासाठी जंगल माल आहे, घर नव्हे असे बाहेरचे.",
+        },
+      },
+      {
+        id: "forestrights",
+        name: {
+          en: "The forest rights law",
+          hi: "वन-अधिकार क़ानून",
+          mr: "वन-हक्क कायदा",
+        },
+        kind: "forest-life",
+        prompt: {
+          en: "Which law finally wrote down what the adivasi always knew — that the people OF the forest have rights TO the forest?",
+          hi: "किस क़ानून ने आख़िरकार वह लिख दिया जो आदिवासी हमेशा से जानते थे — कि जंगल के लोगों का जंगल पर हक़ है?",
+          mr: "कोणत्या कायद्याने अखेर ते लिहिले जे आदिवासींना नेहमीच ठाऊक होते — की जंगलातल्या माणसांचा जंगलावर हक्क आहे?",
+        },
+        statement: {
+          en: "The forest rights law recognises the forest-dwellers' right to live in, use and protect their forest — on paper at last.",
+          hi: "वन-अधिकार क़ानून जंगलवासियों का अपने जंगल में रहने, उसे बरतने और बचाने का हक़ मानता है — आख़िरकार काग़ज़ पर।",
+          mr: "वन-हक्क कायदा जंगलवासीयांचा आपल्या जंगलात राहण्याचा, ते वापरण्याचा आणि राखण्याचा हक्क मान्य करतो — अखेर कागदावर.",
+        },
+        pair: {
+          left: { en: "The forest rights law", hi: "वन-अधिकार क़ानून", mr: "वन-हक्क कायदा" },
+          right: {
+            en: "the dwellers' right, written down",
+            hi: "बाशिंदों का हक़, लिखा हुआ",
+            mr: "रहिवाशांचा हक्क, लिहिलेला",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort what each side sees in a forest — THE DWELLERS' view and THE CONTRACTOR'S: mother and storehouse; timber by the tonne; herbs, songs and seasons; profit this quarter. Which sorting is right?",
+          hi: "जंगल में हर पक्ष क्या देखता है, छाँटिए — बाशिंदों की नज़र और ठेकेदार की: माँ और भंडार; टनों लकड़ी; जड़ी-बूटियाँ, गीत और मौसम; इस तिमाही का मुनाफ़ा। कौन-सी छँटाई सही है?",
+          mr: "जंगलात प्रत्येक बाजू काय पाहते, वर्गवारी करा — रहिवाशांची नजर आणि ठेकेदाराची: आई आणि कोठार; टनांनी लाकूड; वनौषधी, गाणी आणि ऋतू; या तिमाहीचा नफा. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Dwellers: mother-storehouse, herbs-songs-seasons · Contractor: timber by the tonne, this quarter's profit",
+            hi: "बाशिंदे: माँ-भंडार, जड़ी-गीत-मौसम · ठेकेदार: टनों लकड़ी, तिमाही मुनाफ़ा",
+            mr: "रहिवासी: आई-कोठार, वनौषधी-गाणी-ऋतू · ठेकेदार: टनांनी लाकूड, तिमाहीचा नफा",
+          },
+          {
+            en: "Dwellers: timber by the tonne, herbs-songs-seasons · Contractor: mother-storehouse, this quarter's profit",
+            hi: "बाशिंदे: टनों लकड़ी, जड़ी-गीत-मौसम · ठेकेदार: माँ-भंडार, तिमाही मुनाफ़ा",
+            mr: "रहिवासी: टनांनी लाकूड, वनौषधी-गाणी-ऋतू · ठेकेदार: आई-कोठार, तिमाहीचा नफा",
+          },
+          {
+            en: "Dwellers: this quarter's profit, mother-storehouse · Contractor: herbs-songs-seasons, timber",
+            hi: "बाशिंदे: तिमाही मुनाफ़ा, माँ-भंडार · ठेकेदार: जड़ी-गीत-मौसम, लकड़ी",
+            mr: "रहिवासी: तिमाहीचा नफा, आई-कोठार · ठेकेदार: वनौषधी-गाणी-ऋतू, लाकूड",
+          },
+          {
+            en: "Dwellers: timber by the tonne, this quarter's profit · Contractor: mother-storehouse, herbs-songs-seasons",
+            hi: "बाशिंदे: टनों लकड़ी, तिमाही मुनाफ़ा · ठेकेदार: माँ-भंडार, जड़ी-गीत-मौसम",
+            mr: "रहिवासी: टनांनी लाकूड, तिमाहीचा नफा · ठेकेदार: आई-कोठार, वनौषधी-गाणी-ऋतू",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "To the dwellers the forest is mother, larder, pharmacy and calendar — a whole life. To the contractor it is timber and this quarter's profit — a warehouse to empty. The chapter's title question hides in the sorting: whoever's view wins decides whether the forest is still standing in fifty years.",
+          hi: "बाशिंदों के लिए जंगल माँ है, भंडार, दवाख़ाना और पंचांग — पूरा जीवन। ठेकेदार के लिए लकड़ी और तिमाही मुनाफ़ा — ख़ाली करने का गोदाम। अध्याय के शीर्षक का सवाल इसी छँटाई में छिपा है: जिसकी नज़र जीतेगी, वही तय करेगी कि पचास साल बाद जंगल खड़ा है या नहीं।",
+          mr: "रहिवाशांसाठी जंगल आई आहे, कोठार, दवाखाना आणि पंचांग — अख्खे जगणे. ठेकेदारासाठी लाकूड आणि तिमाहीचा नफा — रिकामे करायचे गोदाम. धड्याच्या शीर्षकाचा प्रश्न याच वर्गवारीत लपला आहे: ज्याची नजर जिंकेल, तीच ठरवेल की पन्नास वर्षांनी जंगल उभे आहे की नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Suryamani's Torang centre teaches school lessons AND forest lore — songs, herbs, bamboo craft. Why both, when the government school next door teaches only the first?",
+          hi: "सूर्यमणि का तोरंग केंद्र स्कूली पाठ भी सिखाता है और जंगल-विद्या भी — गीत, जड़ी-बूटियाँ, बाँस का हुनर। दोनों क्यों, जब बग़ल का सरकारी स्कूल केवल पहला सिखाता है?",
+          mr: "सूर्यमणीचे तोरंग केंद्र शाळेचे धडेही शिकवते आणि जंगल-विद्याही — गाणी, वनौषधी, बांबूकला. दोन्ही का, जेव्हा शेजारची सरकारी शाळा फक्त पहिलेच शिकवते?",
+        },
+        choices: [
+          {
+            en: "Because the forest's knowledge dies in one untaught generation — and a child armed with both can defend the forest in court AND in the field",
+            hi: "क्योंकि जंगल का ज्ञान एक बिन-सिखाई पीढ़ी में मर जाता है — और दोनों से लैस बच्चा जंगल की पैरवी अदालत में भी कर सकता है और मैदान में भी",
+            mr: "कारण जंगलाचे ज्ञान एका न शिकवलेल्या पिढीत मरते — आणि दोन्हींनी सज्ज मूल जंगलाची बाजू न्यायालयातही मांडू शकते आणि रानातही",
+          },
+          {
+            en: "Forest lore is easier to teach than arithmetic",
+            hi: "जंगल-विद्या अंकगणित से आसान है",
+            mr: "जंगल-विद्या अंकगणिताहून सोपी आहे",
+          },
+          {
+            en: "The children dislike ordinary school subjects",
+            hi: "बच्चों को आम स्कूली विषय नापसंद हैं",
+            mr: "मुलांना नेहमीचे शालेय विषय आवडत नाहीत",
+          },
+          {
+            en: "Forest schools are cheaper to run than book schools",
+            hi: "जंगल-पाठशालाएँ किताबी स्कूलों से सस्ती चलती हैं",
+            mr: "जंगल-शाळा पुस्तकी शाळांहून स्वस्त चालतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Songs and herb-knowledge live nowhere but in people; skip one generation and they are gone as surely as a felled tree. But lore alone cannot read a land record or argue a right. Suryamani's wager is that the forest's best guardian is a child fluent in both languages — the leaf's and the law's — and Torang exists so no child has to choose.",
+          hi: "गीत और जड़ी-ज्ञान लोगों के सिवा कहीं नहीं बसते; एक पीढ़ी छूटी तो वे कटे पेड़-से पक्के गए। पर अकेली विद्या न ज़मीन का काग़ज़ पढ़ सकती है, न हक़ की बहस कर सकती है। सूर्यमणि का दाँव यह है कि जंगल का सबसे अच्छा रखवाला वह बच्चा है जो दोनों ज़बानें जानता है — पत्ती की भी, क़ानून की भी — और तोरंग इसीलिए है कि किसी बच्चे को चुनना न पड़े।",
+          mr: "गाणी आणि वनौषधींचे ज्ञान माणसांशिवाय कुठे राहत नाही; एक पिढी सुटली की ते तोडलेल्या झाडाइतके नक्की गेले. पण एकटी विद्या जमिनीचा कागद वाचू शकत नाही, हक्काचा वादही मांडू शकत नाही. सूर्यमणीचा डाव हा की जंगलाचा सर्वोत्तम राखणदार दोन्ही भाषा जाणणारे मूल — पानाची आणि कायद्याची — आणि तोरंग यासाठीच आहे की कोणा मुलाला निवडावे लागू नये.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "'Whose forests?' the chapter asks. The dwellers gather from the forest daily and it still stands; the contractors fell it once and it is gone. What answer does the chapter lead us to?",
+          hi: "'जंगल किसके?' अध्याय पूछता है। बाशिंदे रोज़ जंगल से बीनते हैं और वह फिर भी खड़ा है; ठेकेदार एक बार काटते हैं और वह ख़त्म। अध्याय हमें किस उत्तर तक ले जाता है?",
+          mr: "'जंगले कोणाची?' धडा विचारतो. रहिवासी रोज जंगलातून वेचतात आणि ते तरी उभे आहे; ठेकेदार एकदा तोडतात आणि ते संपते. धडा आपल्याला कोणत्या उत्तराकडे नेतो?",
+        },
+        choices: [
+          {
+            en: "The forest belongs with those who can live from it WITHOUT ending it — use that keeps a thing alive is the strongest claim to it",
+            hi: "जंगल उनके साथ है जो उसे ख़त्म किए बिना उससे जी सकते हैं — जो बरताव चीज़ को जीवित रखे, वही उस पर सबसे मज़बूत दावा है",
+            mr: "जंगल त्यांच्याकडे शोभते जे ते न संपवता त्यावर जगू शकतात — वस्तूला जिवंत ठेवणारा वापर हाच तिच्यावरचा सर्वांत बळकट दावा",
+          },
+          {
+            en: "Forests belong to whoever holds the newest permit",
+            hi: "जंगल उसका है जिसके पास सबसे नया परमिट है",
+            mr: "जंगल सर्वांत नवा परवाना असणाऱ्याचे",
+          },
+          {
+            en: "Forests belong to nobody, so anyone may fell them",
+            hi: "जंगल किसी के नहीं, इसलिए कोई भी काट सकता है",
+            mr: "जंगले कोणाचीच नाहीत, म्हणून कोणीही तोडावी",
+          },
+          {
+            en: "Forests belong only to the animals in them",
+            hi: "जंगल केवल उनमें रहने वाले जानवरों के हैं",
+            mr: "जंगले फक्त त्यांतल्या प्राण्यांची",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The dwellers' test is centuries long and the forest passed it standing: gathering, grazing and bamboo-cutting that regrows left the hills green. The contractor's test lasts one season and ends in stumps. The chapter's answer — and the law's, at last — is that a claim is proved by care: the forest is theirs whose use leaves a forest for the grandchildren.",
+          hi: "बाशिंदों की परीक्षा सदियों लंबी थी और जंगल उसे खड़े-खड़े पास हुआ: बीनना, चराना और फिर उग आने वाला बाँस काटना — पहाड़ियाँ हरी रहीं। ठेकेदार की परीक्षा एक मौसम की है और ठूँठों पर ख़त्म होती है। अध्याय का — और आख़िरकार क़ानून का भी — उत्तर यह है कि दावा देखभाल से साबित होता है: जंगल उनका है जिनके बरतने के बाद पोते-पोतियों के लिए जंगल बचता है।",
+          mr: "रहिवाशांची परीक्षा शतकांची होती आणि जंगल ती उभ्याने उत्तीर्ण झाले: वेचणे, चारणे आणि पुन्हा उगवणारा बांबू तोडणे — डोंगर हिरवे राहिले. ठेकेदाराची परीक्षा एका हंगामाची आणि खुंटांवर संपणारी. धड्याचे — आणि अखेर कायद्याचेही — उत्तर हे की दावा निगेने सिद्ध होतो: जंगल त्यांचे, ज्यांच्या वापरानंतर नातवंडांसाठी जंगल उरते.",
+        },
+      },
+    ],
+  },
 ];

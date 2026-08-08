@@ -2509,11 +2509,13 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 51 chapters
-  / 724 questions — **Class 3 complete** (Maths 14/14, EVS 11), **Class 4
-  complete** (Maths 14/14 in `g4-maths.ts`, EVS 10 in `g4-evs.ts` —
-  Going to School, Nandu, Amrita, the honeybees, Omana's train, the
-  river, Basva's farm, the two waters, Pochampalli, Chuskit), Class 6
+  with it; `quiz:generate` now points at quiz2. Current bank: 75 chapters
+  / 1,034 questions — **Class 3 complete** (Maths 14/14, EVS 11),
+  **Class 4 complete** (Maths 14/14 in `g4-maths.ts`, EVS 10 in
+  `g4-evs.ts`), **Class 5 complete** (Maths 14/14 in `g5-maths.ts`, EVS
+  10 in `g5-evs.ts` — Super Senses, the snake charmer, tasting-to-
+  digesting, every drop, water experiments, the mosquitoes' treat, Up
+  You Go, Sunita in space, the earthquake, whose forests), Class 6
   History at 2 exemplars — growing grade by grade toward Class 12. Suite
   re-pointed and green: 84 files, 1453 tests.
 
