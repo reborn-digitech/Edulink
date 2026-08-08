@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 8 — Carts and Wheels",
+  "name": "Carts and Wheels",
+  "slug": "maths-4-carts-and-wheels",
+  "summary": "Circles everywhere — radius and diameter, wheels writing their rims on the road, and why every rope to the centre is the same.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "गाड़ियाँ और पहिए",
+      "summary": "हर ओर वृत्त — त्रिज्या और व्यास, सड़क पर अपना किनारा लिखते पहिए, और केंद्र तक की हर रस्सी बराबर क्यों।"
+    },
+    "mr": {
+      "name": "गाड्या आणि चाके",
+      "summary": "सगळीकडे वर्तुळे — त्रिज्या आणि व्यास, रस्त्यावर आपली कड लिहिणारी चाके, आणि केंद्रापर्यंतची प्रत्येक दोरी सारखी का."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The line from a wheel's centre to its rim is the radius. A cart wheel's radius is 30 cm. How wide is the wheel through its centre (the diameter)?",
+      "choices": [
+        "60 cm",
+        "15 cm",
+        "30 cm",
+        "90 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The diameter crosses the whole wheel — a radius to the centre and a radius beyond: 30 × 2 = 60 cm. 15 halves instead of doubling.",
+      "checkExpr": "30*2",
+      "translations": {
+        "hi": {
+          "stem": "पहिए के केंद्र से किनारे तक की रेखा त्रिज्या है। बैलगाड़ी के पहिए की त्रिज्या 30 सेमी है। केंद्र से होकर पहिया कितना चौड़ा है (व्यास)?",
+          "choices": [
+            "60 सेमी",
+            "15 सेमी",
+            "30 सेमी",
+            "90 सेमी"
+          ],
+          "solution": "व्यास पूरा पहिया पार करता है — एक त्रिज्या केंद्र तक, एक उसके आगे: 30 × 2 = 60 सेमी। 15 दुगना करने की जगह आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "चाकाच्या केंद्रापासून कडेपर्यंतची रेषा म्हणजे त्रिज्या. गाडीच्या चाकाची त्रिज्या 30 सेमी आहे. केंद्रातून चाक किती रुंद (व्यास)?",
+          "choices": [
+            "60 सेमी",
+            "15 सेमी",
+            "30 सेमी",
+            "90 सेमी"
+          ],
+          "solution": "व्यास सबंध चाक ओलांडतो — एक त्रिज्या केंद्रापर्यंत, एक पुढे: 30 × 2 = 60 सेमी. 15 दुप्पट करण्याऐवजी अर्धे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A bangle measures 6 cm across its middle. What is its radius?",
+      "choices": [
+        "12 cm",
+        "3 cm",
+        "6 cm",
+        "2 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The radius is half the middle-crossing: 6 ÷ 2 = 3 cm. 12 doubles the diameter — that walks out of the bangle altogether.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "एक चूड़ी बीच से 6 सेमी नापती है। उसकी त्रिज्या कितनी है?",
+          "choices": [
+            "12 सेमी",
+            "3 सेमी",
+            "6 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "त्रिज्या बीच वाली नाप की आधी है: 6 ÷ 2 = 3 सेमी। 12 व्यास को दुगना करता है — वह तो चूड़ी से बाहर निकल जाता है।"
+        },
+        "mr": {
+          "stem": "एक बांगडी मधून 6 सेमी भरते. तिची त्रिज्या किती?",
+          "choices": [
+            "12 सेमी",
+            "3 सेमी",
+            "6 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "त्रिज्या ही मधल्या मापाची अर्धी: 6 ÷ 2 = 3 सेमी. 12 व्यास दुप्पट करते — ते बांगडीबाहेरच जाते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A cycle wheel covers 2 metres in one full turn. How far does it roll in 4 turns?",
+      "choices": [
+        "2 m",
+        "16 m",
+        "6 m",
+        "8 m"
+      ],
+      "answerIndex": 3,
+      "solution": "Each turn lays down 2 m: 2 × 4 = 8 m. The wheel writes its own circumference on the road, turn after turn.",
+      "checkExpr": "2*4",
+      "translations": {
+        "hi": {
+          "stem": "साइकिल का पहिया एक पूरे चक्कर में 2 मीटर चलता है। 4 चक्करों में कितना चलेगा?",
+          "choices": [
+            "2 मीटर",
+            "16 मीटर",
+            "6 मीटर",
+            "8 मीटर"
+          ],
+          "solution": "हर चक्कर 2 मीटर बिछाता है: 2 × 4 = 8 मीटर। पहिया अपनी ही परिधि सड़क पर लिखता चलता है, चक्कर-दर-चक्कर।"
+        },
+        "mr": {
+          "stem": "सायकलचे चाक एका पूर्ण फेरीत 2 मीटर जाते. 4 फेऱ्यांत किती जाईल?",
+          "choices": [
+            "2 मीटर",
+            "16 मीटर",
+            "6 मीटर",
+            "8 मीटर"
+          ],
+          "solution": "प्रत्येक फेरी 2 मीटर अंथरते: 2 × 4 = 8 मीटर. चाक आपलाच परीघ रस्त्यावर लिहीत जाते, फेरीमागून फेरी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A round chapati is cut straight through the centre, then cut through the centre again crosswise. How many equal pieces are there?",
+      "choices": [
+        "3",
+        "8",
+        "4",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "The first centre-cut makes 2 halves; the crosswise centre-cut halves each of those: 2 × 2 = 4 quarters. 8 needs two MORE cuts through the centre.",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "गोल रोटी को केंद्र से होकर सीधा काटा गया, फिर केंद्र से ही आड़ा काटा गया। कितने बराबर टुकड़े बने?",
+          "choices": [
+            "3",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "पहला केंद्र-कट 2 आधे बनाता है; आड़ा केंद्र-कट हर आधे को फिर आधा करता है: 2 × 2 = 4 चौथाइयाँ। 8 के लिए केंद्र से दो और कट चाहिए।"
+        },
+        "mr": {
+          "stem": "गोल पोळी केंद्रातून सरळ कापली, मग केंद्रातूनच आडवी कापली. किती सारखे तुकडे झाले?",
+          "choices": [
+            "3",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "पहिला केंद्र-काप 2 अर्धे करतो; आडवा केंद्र-काप प्रत्येक अर्ध्याला पुन्हा अर्धे करतो: 2 × 2 = 4 पाव. 8 साठी केंद्रातून आणखी दोन काप हवेत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A bullock-cart wheel made 100 turns and covered 200 metres. How far did one turn carry the cart?",
+      "choices": [
+        "4 m",
+        "20 m",
+        "2 m",
+        "100 m"
+      ],
+      "answerIndex": 2,
+      "solution": "200 metres shared over 100 turns: 200 ÷ 100 = 2 m each — that 2 m is the wheel's rim unrolled once. 20 loses a zero in the division.",
+      "checkExpr": "200/100",
+      "translations": {
+        "hi": {
+          "stem": "बैलगाड़ी के पहिए ने 100 चक्कर लगाए और 200 मीटर चला। एक चक्कर ने गाड़ी को कितना आगे बढ़ाया?",
+          "choices": [
+            "4 मीटर",
+            "20 मीटर",
+            "2 मीटर",
+            "100 मीटर"
+          ],
+          "solution": "100 चक्करों में बँटे 200 मीटर: 200 ÷ 100 = 2-2 मीटर — यही 2 मीटर पहिए का एक बार खुला किनारा है। 20 भाग में एक शून्य खो देता है।"
+        },
+        "mr": {
+          "stem": "बैलगाडीच्या चाकाने 100 फेऱ्या घेतल्या आणि 200 मीटर गेले. एका फेरीने गाडी किती पुढे नेली?",
+          "choices": [
+            "4 मीटर",
+            "20 मीटर",
+            "2 मीटर",
+            "100 मीटर"
+          ],
+          "solution": "100 फेऱ्यांत वाटलेले 200 मीटर: 200 ÷ 100 = 2-2 मीटर — हेच 2 मीटर म्हणजे चाकाची एकदा उलगडलेली कड. 20 भागाकारात एक शून्य हरवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rangoli has 3 circles sharing one centre, with radii 2 cm, 4 cm and 6 cm. How much longer is the biggest radius than the smallest?",
+      "choices": [
+        "6 cm",
+        "4 cm",
+        "2 cm",
+        "8 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Biggest minus smallest: 6 − 2 = 4 cm — the width of the coloured band between the outer and inner circles. 8 adds them instead.",
+      "checkExpr": "6-2",
+      "translations": {
+        "hi": {
+          "stem": "रंगोली में एक ही केंद्र के 3 वृत्त हैं, त्रिज्याएँ 2, 4 और 6 सेमी। सबसे बड़ी त्रिज्या सबसे छोटी से कितनी लंबी है?",
+          "choices": [
+            "6 सेमी",
+            "4 सेमी",
+            "2 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "सबसे बड़ी घटा सबसे छोटी: 6 − 2 = 4 सेमी — बाहरी और भीतरी वृत्त के बीच की रंगीन पट्टी की चौड़ाई। 8 उन्हें जोड़ बैठता है।"
+        },
+        "mr": {
+          "stem": "रांगोळीत एकाच केंद्राची 3 वर्तुळे आहेत, त्रिज्या 2, 4 आणि 6 सेमी. सर्वांत मोठी त्रिज्या सर्वांत लहानहून किती लांब?",
+          "choices": [
+            "6 सेमी",
+            "4 सेमी",
+            "2 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "मोठी वजा लहान: 6 − 2 = 4 सेमी — बाहेरच्या आणि आतल्या वर्तुळांमधल्या रंगीत पट्ट्याची रुंदी. 8 त्या मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A toy car's wheel spins 60 turns every minute. How many turns in 5 minutes?",
+      "choices": [
+        "350",
+        "240",
+        "300",
+        "65"
+      ],
+      "answerIndex": 2,
+      "solution": "Five minutes of 60 turns each: 60 × 5 = 300 turns. 65 adds the minutes to the speed — a rate multiplies by the time it runs.",
+      "checkExpr": "60*5",
+      "translations": {
+        "hi": {
+          "stem": "खिलौना कार का पहिया हर मिनट 60 चक्कर घूमता है। 5 मिनट में कितने चक्कर?",
+          "choices": [
+            "350",
+            "240",
+            "300",
+            "65"
+          ],
+          "solution": "60-60 चक्करों के पाँच मिनट: 60 × 5 = 300 चक्कर। 65 मिनटों को रफ़्तार में जोड़ देता है — दर उतने समय से गुणा होती है जितना वह चलती है।"
+        },
+        "mr": {
+          "stem": "खेळण्यातल्या गाडीचे चाक दर मिनिटाला 60 फेऱ्या फिरते. 5 मिनिटांत किती फेऱ्या?",
+          "choices": [
+            "350",
+            "240",
+            "300",
+            "65"
+          ],
+          "solution": "60-60 फेऱ्यांची पाच मिनिटे: 60 × 5 = 300 फेऱ्या. 65 मिनिटे वेगात मिळवते — दर तो चालतो त्या वेळाने गुणला जातो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A circular park has a radius of 35 metres, with gates at the two ends of one straight path through the centre. How long is that path, gate to gate?",
+      "choices": [
+        "105 m",
+        "70 m",
+        "140 m",
+        "35 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Gate to gate through the centre is the diameter: 35 × 2 = 70 m. 35 stops at the fountain in the middle; 140 doubles the diameter itself.",
+      "checkExpr": "35*2",
+      "translations": {
+        "hi": {
+          "stem": "गोल पार्क की त्रिज्या 35 मीटर है, और केंद्र से गुज़रते एक सीधे रास्ते के दोनों सिरों पर फाटक हैं। फाटक से फाटक तक वह रास्ता कितना लंबा है?",
+          "choices": [
+            "105 मीटर",
+            "70 मीटर",
+            "140 मीटर",
+            "35 मीटर"
+          ],
+          "solution": "केंद्र से होकर फाटक-से-फाटक व्यास है: 35 × 2 = 70 मीटर। 35 बीच के फ़व्वारे पर रुक जाता है; 140 व्यास को ही दुगना कर देता है।"
+        },
+        "mr": {
+          "stem": "गोल बागेची त्रिज्या 35 मीटर आहे, आणि केंद्रातून जाणाऱ्या एका सरळ वाटेच्या दोन्ही टोकांना फाटके आहेत. फाटकापासून फाटकापर्यंत ती वाट किती लांब?",
+          "choices": [
+            "105 मीटर",
+            "70 मीटर",
+            "140 मीटर",
+            "35 मीटर"
+          ],
+          "solution": "केंद्रातून फाटक ते फाटक म्हणजे व्यास: 35 × 2 = 70 मीटर. 35 मधल्या कारंज्यावर थांबते; 140 व्यासालाच दुप्पट करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a bangle race, Sudha's bangle rolls 10 cm in each turn. The track is 90 cm long. How many full turns does the bangle need to finish?",
+      "choices": [
+        "10",
+        "8",
+        "9",
+        "80"
+      ],
+      "answerIndex": 2,
+      "solution": "90 cm at 10 cm a turn: 90 ÷ 10 = 9 turns. 80 subtracts one turn's length from the track — the bangle repeats its 10 cm, it does not spend the track.",
+      "checkExpr": "90/10",
+      "translations": {
+        "hi": {
+          "stem": "चूड़ी-दौड़ में सुधा की चूड़ी हर चक्कर में 10 सेमी लुढ़कती है। पट्टी 90 सेमी लंबी है। दौड़ पूरी करने में चूड़ी को कितने पूरे चक्कर लगेंगे?",
+          "choices": [
+            "10",
+            "8",
+            "9",
+            "80"
+          ],
+          "solution": "10-10 सेमी के हिसाब से 90 सेमी: 90 ÷ 10 = 9 चक्कर। 80 पट्टी में से एक चक्कर की लंबाई घटाता है — चूड़ी अपने 10 सेमी दोहराती है, पट्टी को ख़र्च नहीं करती।"
+        },
+        "mr": {
+          "stem": "बांगडी-शर्यतीत सुधाची बांगडी प्रत्येक फेरीत 10 सेमी घरंगळते. पट्टी 90 सेमी लांब आहे. शर्यत पुरी करायला बांगडीला किती पूर्ण फेऱ्या लागतील?",
+          "choices": [
+            "10",
+            "8",
+            "9",
+            "80"
+          ],
+          "solution": "10-10 सेमीच्या हिशेबाने 90 सेमी: 90 ÷ 10 = 9 फेऱ्या. 80 पट्टीतून एका फेरीची लांबी वजा करते — बांगडी आपले 10 सेमी पुनःपुन्हा घालते, पट्टी खर्च करत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A potter's wheel must spin 8 rounds to shape one diya. Today the potter shaped 15 diyas. How many rounds did the wheel spin?",
+      "choices": [
+        "128",
+        "120",
+        "23",
+        "105"
+      ],
+      "answerIndex": 1,
+      "solution": "8 rounds fifteen times over: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 rounds. 105 slips on the 8 × 5; 23 adds rounds to diyas.",
+      "checkExpr": "8*15",
+      "translations": {
+        "hi": {
+          "stem": "एक दीया गढ़ने के लिए कुम्हार के चाक को 8 चक्कर घूमना पड़ता है। आज कुम्हार ने 15 दीये गढ़े। चाक कितने चक्कर घूमा?",
+          "choices": [
+            "128",
+            "120",
+            "23",
+            "105"
+          ],
+          "solution": "8 चक्कर, पंद्रह बार: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 चक्कर। 105 में 8 × 5 फिसला; 23 चक्करों को दीयों में जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "एक पणती घडवायला कुंभाराच्या चाकाला 8 फेऱ्या फिराव्या लागतात. आज कुंभाराने 15 पणत्या घडवल्या. चाक किती फेऱ्या फिरले?",
+          "choices": [
+            "128",
+            "120",
+            "23",
+            "105"
+          ],
+          "solution": "8 फेऱ्या, पंधरा वेळा: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 फेऱ्या. 105 मध्ये 8 × 5 घसरले; 23 फेऱ्या पणत्यांत मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Three children stand on the rim of a circular ground, each in a different place, and each holds a rope stretched straight to the centre pole. Every rope is 12 m. How much rope is that in all — and why are the three ropes equal?",
+      "choices": [
+        "12",
+        "24",
+        "36",
+        "48"
+      ],
+      "answerIndex": 2,
+      "solution": "Three ropes of 12 m: 12 × 3 = 36 m. They are equal because each rope is a RADIUS — and every radius of a circle is the same length. That is the circle's whole secret: the rim is exactly the set of points one radius from the centre.",
+      "checkExpr": "12*3",
+      "translations": {
+        "hi": {
+          "stem": "तीन बच्चे गोल मैदान के किनारे पर अलग-अलग जगह खड़े हैं, और हर एक ने केंद्र के खंभे तक सीधी रस्सी तानी है। हर रस्सी 12 मीटर है। कुल कितनी रस्सी हुई — और तीनों रस्सियाँ बराबर क्यों हैं?",
+          "choices": [
+            "12",
+            "24",
+            "36",
+            "48"
+          ],
+          "solution": "12-12 मीटर की तीन रस्सियाँ: 12 × 3 = 36 मीटर। वे बराबर इसलिए हैं कि हर रस्सी एक त्रिज्या है — और वृत्त की हर त्रिज्या एक-सी लंबी होती है। यही वृत्त का पूरा राज़ है: किनारा ठीक उन बिंदुओं का घेरा है जो केंद्र से एक त्रिज्या दूर हैं।"
+        },
+        "mr": {
+          "stem": "तीन मुले गोल मैदानाच्या कडेवर वेगवेगळ्या जागी उभी आहेत, आणि प्रत्येकाने केंद्राच्या खांबापर्यंत सरळ दोरी ताणली आहे. प्रत्येक दोरी 12 मीटर आहे. एकूण किती दोरी झाली — आणि तिन्ही दोऱ्या सारख्या का?",
+          "choices": [
+            "12",
+            "24",
+            "36",
+            "48"
+          ],
+          "solution": "12-12 मीटरच्या तीन दोऱ्या: 12 × 3 = 36 मीटर. त्या सारख्या कारण प्रत्येक दोरी ही त्रिज्या आहे — आणि वर्तुळाची प्रत्येक त्रिज्या सारखीच लांब असते. हेच वर्तुळाचे सगळे गुपित: कड म्हणजे केंद्रापासून एक त्रिज्या दूर असलेल्या बिंदूंचा वेढा."
+        }
+      }
+    }
+  ]
+}

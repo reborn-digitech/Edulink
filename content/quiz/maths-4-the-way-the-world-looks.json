@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 5 — The Way the World Looks",
+  "name": "The Way the World Looks",
+  "slug": "maths-4-the-way-the-world-looks",
+  "summary": "Top views and map scales, quarter turns and the die's secret sevens — how standing somewhere else changes what you count.",
+  "position": 5,
+  "translations": {
+    "hi": {
+      "name": "दुनिया ऐसी दिखती है",
+      "summary": "ऊपर के नज़ारे और नक़्शों के पैमाने, चौथाई घुमाव और पासे का सात वाला राज़ — कहीं और खड़े होने से गिनती कैसे बदलती है।"
+    },
+    "mr": {
+      "name": "जग असे दिसते",
+      "summary": "वरची दृश्ये आणि नकाशांची प्रमाणे, पाव-वळणे आणि फाशाचे सातांचे गुपित — दुसरीकडे उभे राहिल्याने मोजणी कशी बदलते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "On Ruchira's map, 1 cm stands for 10 metres. The gate to the well is 4 cm on the map. How far is it really?",
+      "choices": [
+        "14 m",
+        "4 m",
+        "400 m",
+        "40 m"
+      ],
+      "answerIndex": 3,
+      "solution": "Every map-centimetre hides 10 real metres: 4 × 10 = 40 m. 400 multiplies by 100 — read the map's own scale, not a guessed one.",
+      "checkExpr": "4*10",
+      "translations": {
+        "hi": {
+          "stem": "रुचिरा के नक़्शे पर 1 सेमी = 10 मीटर। फाटक से कुएँ तक नक़्शे पर 4 सेमी है। असल दूरी कितनी है?",
+          "choices": [
+            "14 मीटर",
+            "4 मीटर",
+            "400 मीटर",
+            "40 मीटर"
+          ],
+          "solution": "नक़्शे का हर सेंटीमीटर 10 असली मीटर छिपाए है: 4 × 10 = 40 मीटर। 400 सौ से गुणा है — नक़्शे का अपना पैमाना पढ़िए, अंदाज़े का नहीं।"
+        },
+        "mr": {
+          "stem": "रुचिराच्या नकाशावर 1 सेमी = 10 मीटर. फाटकापासून विहिरीपर्यंत नकाशावर 4 सेमी आहे. खरे अंतर किती?",
+          "choices": [
+            "14 मीटर",
+            "4 मीटर",
+            "400 मीटर",
+            "40 मीटर"
+          ],
+          "solution": "नकाशाचा प्रत्येक सेंटिमीटर 10 खरे मीटर लपवतो: 4 × 10 = 40 मीटर. 400 म्हणजे शंभराने गुणणे — नकाशाचे स्वतःचे प्रमाण वाचा, अंदाजाचे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A full turn is 4 quarter turns. Facing the school gate, Gappu has made 2 quarter turns. How many MORE quarter turns till he faces the gate again?",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The circle closes at 4 quarter turns; he has spent 2, so 4 − 2 = 2 remain — he is exactly facing away right now.",
+      "checkExpr": "4-2",
+      "translations": {
+        "hi": {
+          "stem": "पूरा घुमाव 4 चौथाई-घुमावों का होता है। स्कूल के फाटक की ओर मुँह किए गप्पू 2 चौथाई-घुमाव ले चुका है। फाटक की ओर फिर से मुँह होने में और कितने चौथाई-घुमाव लगेंगे?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "solution": "घेरा 4 चौथाई-घुमावों पर पूरा होता है; 2 हो चुके, तो 4 − 2 = 2 बाक़ी — अभी वह ठीक उलटी ओर देख रहा है।"
+        },
+        "mr": {
+          "stem": "पूर्ण वळण म्हणजे 4 पाव-वळणे. शाळेच्या फाटकाकडे तोंड करून गप्पूने 2 पाव-वळणे घेतली आहेत. पुन्हा फाटकाकडे तोंड व्हायला आणखी किती पाव-वळणे लागतील?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "solution": "वर्तुळ 4 पाव-वळणांवर पूर्ण होते; 2 झाली, म्हणून 4 − 2 = 2 उरली — आत्ता तो नेमका उलट्या दिशेला पाहतो आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "From the aeroplane, nine huts stand in 3 equal rows. How many huts in each row?",
+      "choices": [
+        "9",
+        "3",
+        "12",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "9 huts in 3 equal rows: 9 ÷ 3 = 3 per row — the top view turns the village into a neat times-table.",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "हवाई जहाज़ से नौ झोंपड़ियाँ 3 बराबर पंक्तियों में दिखती हैं। हर पंक्ति में कितनी झोंपड़ियाँ?",
+          "choices": [
+            "9",
+            "3",
+            "12",
+            "6"
+          ],
+          "solution": "3 बराबर पंक्तियों में 9 झोंपड़ियाँ: 9 ÷ 3 = 3 प्रति पंक्ति — ऊपर का नज़ारा गाँव को साफ़-सुथरा पहाड़ा बना देता है।"
+        },
+        "mr": {
+          "stem": "विमानातून नऊ झोपड्या 3 सारख्या रांगांत दिसतात. प्रत्येक रांगेत किती झोपड्या?",
+          "choices": [
+            "9",
+            "3",
+            "12",
+            "6"
+          ],
+          "solution": "3 सारख्या रांगांत 9 झोपड्या: 9 ÷ 3 = 3 प्रत्येक रांगेत — वरून पाहणे गावाचा नीटनेटका पाढा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "On a town map, 1 cm stands for 100 metres. School to post office measures 6 cm. What is the real distance?",
+      "choices": [
+        "600 m",
+        "60 m",
+        "6000 m",
+        "106 m"
+      ],
+      "answerIndex": 0,
+      "solution": "6 map-centimetres at 100 m each: 6 × 100 = 600 m. 60 uses a ten-scale; the map declared a hundred-scale in its corner.",
+      "checkExpr": "6*100",
+      "translations": {
+        "hi": {
+          "stem": "शहर के नक़्शे पर 1 सेमी = 100 मीटर। स्कूल से डाकघर 6 सेमी नापता है। असली दूरी कितनी?",
+          "choices": [
+            "600 मीटर",
+            "60 मीटर",
+            "6000 मीटर",
+            "106 मीटर"
+          ],
+          "solution": "100-100 मीटर के 6 नक़्शा-सेंटीमीटर: 6 × 100 = 600 मीटर। 60 दस का पैमाना लेता है; नक़्शे ने कोने में सौ का पैमाना घोषित किया था।"
+        },
+        "mr": {
+          "stem": "शहराच्या नकाशावर 1 सेमी = 100 मीटर. शाळा ते पोस्ट ऑफिस 6 सेमी भरते. खरे अंतर किती?",
+          "choices": [
+            "600 मीटर",
+            "60 मीटर",
+            "6000 मीटर",
+            "106 मीटर"
+          ],
+          "solution": "100-100 मीटरचे 6 नकाशा-सेंटिमीटर: 6 × 100 = 600 मीटर. 60 दहाचे प्रमाण घेते; नकाशाने कोपऱ्यात शंभराचे प्रमाण जाहीर केले होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "On a die, the numbers on opposite faces add up to 7. The top face shows 2. What is on the face touching the table?",
+      "choices": [
+        "3",
+        "2",
+        "6",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Bottom is the top's opposite: 7 − 2 = 5. 6 is the biggest face, but 'biggest' is not 'opposite' — the die's rule is the sum of seven.",
+      "checkExpr": "7-2",
+      "translations": {
+        "hi": {
+          "stem": "पासे पर आमने-सामने के फलकों के अंक जोड़ने पर 7 आता है। ऊपर 2 दिख रहा है। मेज़ से लगे फलक पर क्या है?",
+          "choices": [
+            "3",
+            "2",
+            "6",
+            "5"
+          ],
+          "solution": "नीचे वाला ऊपर वाले का जोड़ीदार है: 7 − 2 = 5। 6 सबसे बड़ा फलक है, पर 'सबसे बड़ा' 'सामने वाला' नहीं — पासे का नियम सात का जोड़ है।"
+        },
+        "mr": {
+          "stem": "फाशावर समोरासमोरच्या पृष्ठांवरील अंकांची बेरीज 7 येते. वर 2 दिसतो आहे. टेबलाला टेकलेल्या पृष्ठावर काय आहे?",
+          "choices": [
+            "3",
+            "2",
+            "6",
+            "5"
+          ],
+          "solution": "खालचे पृष्ठ वरच्याचे जोडीदार: 7 − 2 = 5. 6 हे सर्वांत मोठे पृष्ठ, पण 'मोठे' म्हणजे 'समोरचे' नव्हे — फाशाचा नियम सातची बेरीज."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Five identical coins are stacked one exactly on another. Looking straight DOWN from above, how many circles do you see?",
+      "choices": [
+        "5",
+        "1",
+        "10",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "From straight above, each coin hides the one below it — the whole stack shows exactly 1 circle. The 5 lives in the SIDE view; the top view keeps that secret.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पाँच एक-जैसे सिक्के ठीक एक के ऊपर एक रखे हैं। ठीक ऊपर से नीचे देखने पर कितने गोले दिखेंगे?",
+          "choices": [
+            "5",
+            "1",
+            "10",
+            "2"
+          ],
+          "solution": "ठीक ऊपर से हर सिक्का नीचे वाले को ढक लेता है — पूरी गड्डी ठीक 1 गोला दिखाती है। 5 बग़ल के नज़ारे में बसता है; ऊपर का नज़ारा वह राज़ छिपा लेता है।"
+        },
+        "mr": {
+          "stem": "पाच सारखी नाणी नेमकी एकावर एक रचली आहेत. अगदी वरून खाली पाहिल्यास किती वर्तुळे दिसतील?",
+          "choices": [
+            "5",
+            "1",
+            "10",
+            "2"
+          ],
+          "solution": "अगदी वरून प्रत्येक नाणे खालच्याला झाकते — सगळी चळत नेमके 1 वर्तुळ दाखवते. 5 हा बाजूच्या दृश्यात राहतो; वरचे दृश्य ते गुपित लपवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A map's scale says 1 cm = 5 km. Two towns are 45 km apart. How many centimetres separate them on the map?",
+      "choices": [
+        "9",
+        "5",
+        "225",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "This time the world shrinks INTO the map: 45 ÷ 5 = 9 cm. 225 multiplies instead — that would stretch the map larger than the towns themselves.",
+      "checkExpr": "45/5",
+      "translations": {
+        "hi": {
+          "stem": "नक़्शे का पैमाना कहता है 1 सेमी = 5 किमी। दो क़स्बे 45 किमी दूर हैं। नक़्शे पर वे कितने सेंटीमीटर दूर होंगे?",
+          "choices": [
+            "9",
+            "5",
+            "225",
+            "40"
+          ],
+          "solution": "इस बार दुनिया नक़्शे में सिकुड़ती है: 45 ÷ 5 = 9 सेमी। 225 गुणा कर बैठता है — तब नक़्शा क़स्बों से भी बड़ा फैल जाता।"
+        },
+        "mr": {
+          "stem": "नकाशाचे प्रमाण सांगते 1 सेमी = 5 किमी. दोन गावे 45 किमी अंतरावर आहेत. नकाशावर ती किती सेंटिमीटर दूर असतील?",
+          "choices": [
+            "9",
+            "5",
+            "225",
+            "40"
+          ],
+          "solution": "या वेळी जग नकाशात आकसते: 45 ÷ 5 = 9 सेमी. 225 गुणाकार करते — मग नकाशा गावांहूनही मोठा पसरला असता."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A photo taken from straight above shows 6 plates in a row, each holding 4 laddoos. How many laddoos are in the photo?",
+      "choices": [
+        "28",
+        "20",
+        "10",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "Six plates of four: 6 × 4 = 24 laddoos — the top view lays the whole count open at once. 10 adds plates and laddoos.",
+      "checkExpr": "6*4",
+      "translations": {
+        "hi": {
+          "stem": "ठीक ऊपर से ली गई तस्वीर में एक क़तार की 6 थालियाँ दिखती हैं, हर एक में 4 लड्डू। तस्वीर में कुल कितने लड्डू हैं?",
+          "choices": [
+            "28",
+            "20",
+            "10",
+            "24"
+          ],
+          "solution": "चार-चार की छह थालियाँ: 6 × 4 = 24 लड्डू — ऊपर का नज़ारा पूरी गिनती एक साथ खोल देता है। 10 थालियाँ और लड्डू जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "अगदी वरून काढलेल्या फोटोत एका रांगेतल्या 6 थाळ्या दिसतात, प्रत्येकीत 4 लाडू. फोटोत एकूण किती लाडू?",
+          "choices": [
+            "28",
+            "20",
+            "10",
+            "24"
+          ],
+          "solution": "चार-चारच्या सहा थाळ्या: 6 × 4 = 24 लाडू — वरचे दृश्य सगळी मोजणी एकदम उघडते. 10 थाळ्या आणि लाडू मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Opposite faces of a die add to 7. Ruchira sees 3 on top. Her brother, lying under the glass table, looks UP at the die. What does he see?",
+      "choices": [
+        "7",
+        "3",
+        "5",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "He sees the bottom face — the top's partner: 7 − 3 = 4. Answering 3 forgets the two children look at OPPOSITE faces of the same die: where you stand decides what the world shows you.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "पासे के आमने-सामने के फलक 7 जोड़ते हैं। रुचिरा को ऊपर 3 दिखता है। उसका भाई शीशे की मेज़ के नीचे लेटा पासे को ऊपर की ओर देखता है। उसे क्या दिखेगा?",
+          "choices": [
+            "7",
+            "3",
+            "5",
+            "4"
+          ],
+          "solution": "उसे निचला फलक दिखता है — ऊपर वाले का जोड़ीदार: 7 − 3 = 4। 3 कहना भूलना है कि दोनों बच्चे एक ही पासे के उलटे फलक देख रहे हैं: आप कहाँ खड़े हैं, यही तय करता है कि दुनिया क्या दिखाएगी।"
+        },
+        "mr": {
+          "stem": "फाशाची समोरासमोरची पृष्ठे 7 जोडतात. रुचिराला वर 3 दिसतो. तिचा भाऊ काचेच्या टेबलाखाली पडून फासा वर पाहतो. त्याला काय दिसेल?",
+          "choices": [
+            "7",
+            "3",
+            "5",
+            "4"
+          ],
+          "solution": "त्याला खालचे पृष्ठ दिसते — वरच्याचे जोडीदार: 7 − 3 = 4. 3 म्हणणे म्हणजे दोघे मुले एकाच फाशाची उलटी पृष्ठे पाहत आहेत हे विसरणे: तुम्ही कुठे उभे आहात, हेच जग काय दाखवेल ते ठरवते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "On a 1 cm = 10 m map, the playground is drawn as a rectangle 12 cm by 8 cm. What is the REAL boundary of the playground?",
+      "choices": [
+        "960 m",
+        "40 m",
+        "200 m",
+        "400 m"
+      ],
+      "answerIndex": 3,
+      "solution": "Real sides first: 12 cm → 120 m and 8 cm → 80 m. Boundary: (120 + 80) × 2 = 400 m. 40 walks the map with a finger instead of the field with feet; 960 multiplies the sides — that is the inside, not the edge.",
+      "checkExpr": "2*(12*10+8*10)",
+      "translations": {
+        "hi": {
+          "stem": "1 सेमी = 10 मीटर वाले नक़्शे पर खेल का मैदान 12 × 8 सेमी का आयत बना है। मैदान की असली सीमा कितनी है?",
+          "choices": [
+            "960 मीटर",
+            "40 मीटर",
+            "200 मीटर",
+            "400 मीटर"
+          ],
+          "solution": "पहले असली भुजाएँ: 12 सेमी → 120 मीटर और 8 सेमी → 80 मीटर। सीमा: (120 + 80) × 2 = 400 मीटर। 40 मैदान को पैरों से नहीं, नक़्शे को उँगली से चलता है; 960 भुजाओं का गुणा है — वह भीतर है, किनारा नहीं।"
+        },
+        "mr": {
+          "stem": "1 सेमी = 10 मीटरच्या नकाशावर खेळाचे मैदान 12 × 8 सेमीचा आयत काढले आहे. मैदानाची खरी हद्द किती?",
+          "choices": [
+            "960 मीटर",
+            "40 मीटर",
+            "200 मीटर",
+            "400 मीटर"
+          ],
+          "solution": "आधी खऱ्या बाजू: 12 सेमी → 120 मीटर आणि 8 सेमी → 80 मीटर. हद्द: (120 + 80) × 2 = 400 मीटर. 40 मैदान पायांनी नव्हे, नकाशा बोटाने चालते; 960 बाजूंचा गुणाकार — ते आतले, कड नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "From the bus-stand roof, Gappu counts the buses parked below: 7 straight rows, 6 buses in each. While he counts, 5 buses drive away. How many buses does his final count show?",
+      "choices": [
+        "30",
+        "42",
+        "47",
+        "37"
+      ],
+      "answerIndex": 3,
+      "solution": "The roof shows the full grid: 7 × 6 = 42 buses. Five left, so 42 − 5 = 37 remain. 42 counts the yard as it WAS — a view from above is a photograph of one moment, and the world moves under it.",
+      "checkExpr": "7*6-5",
+      "translations": {
+        "hi": {
+          "stem": "बस-अड्डे की छत से गप्पू नीचे खड़ी बसें गिनता है: 7 सीधी क़तारें, हर एक में 6 बसें। गिनते-गिनते 5 बसें निकल जाती हैं। उसकी आख़िरी गिनती कितनी बसें बताएगी?",
+          "choices": [
+            "30",
+            "42",
+            "47",
+            "37"
+          ],
+          "solution": "छत पूरा जाल दिखाती है: 7 × 6 = 42 बसें। पाँच गईं, तो 42 − 5 = 37 बचीं। 42 अड्डे को वैसा गिनता है जैसा वह था — ऊपर का नज़ारा एक पल की तस्वीर है, और दुनिया उसके नीचे चलती रहती है।"
+        },
+        "mr": {
+          "stem": "बस-स्थानकाच्या छतावरून गप्पू खाली उभ्या बस मोजतो: 7 सरळ रांगा, प्रत्येकीत 6 बस. मोजता मोजता 5 बस निघून जातात. त्याची शेवटची मोजणी किती बस सांगेल?",
+          "choices": [
+            "30",
+            "42",
+            "47",
+            "37"
+          ],
+          "solution": "छत पूर्ण जाळे दाखवते: 7 × 6 = 42 बस. पाच गेल्या, म्हणून 42 − 5 = 37 उरल्या. 42 स्थानक होते तसे मोजते — वरचे दृश्य म्हणजे एका क्षणाचा फोटो, आणि जग त्याखाली हलत राहते."
+        }
+      }
+    }
+  ]
+}

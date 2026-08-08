@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 10 — Play with Patterns",
+  "name": "Play with Patterns",
+  "slug": "maths-4-play-with-patterns",
+  "summary": "Steps that repeat, gaps that grow, letter codes and magic squares — finding the rule and riding it one step further.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "पैटर्न का खेल",
+      "summary": "दोहराते क़दम, बढ़ते फ़ासले, अक्षर-कूट और जादुई वर्ग — नियम पकड़ना और उस पर एक क़दम आगे चलना।"
+    },
+    "mr": {
+      "name": "आकृतिबंधांचा खेळ",
+      "summary": "पुनरावृत्त पावले, वाढती अंतरे, अक्षर-संकेत आणि जादूचे चौरस — नियम शोधणे आणि त्यावर एक पाऊल पुढे जाणे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The pattern goes 2, 4, 6, 8, … What comes next?",
+      "choices": [
+        "10",
+        "12",
+        "9",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "Each step adds 2: 8 + 2 = 10 — the even numbers marching. 9 belongs to the odd family walking in between.",
+      "checkExpr": "8+2",
+      "translations": {
+        "hi": {
+          "stem": "पैटर्न है 2, 4, 6, 8, … आगे क्या आएगा?",
+          "choices": [
+            "10",
+            "12",
+            "9",
+            "16"
+          ],
+          "solution": "हर क़दम 2 जोड़ता है: 8 + 2 = 10 — सम संख्याओं की क़तार। 9 बीच में चलते विषम परिवार का है।"
+        },
+        "mr": {
+          "stem": "आकृतिबंध आहे 2, 4, 6, 8, … पुढे काय येईल?",
+          "choices": [
+            "10",
+            "12",
+            "9",
+            "16"
+          ],
+          "solution": "प्रत्येक पाऊल 2 वाढवते: 8 + 2 = 10 — सम संख्यांची रांग. 9 मध्ये चालणाऱ्या विषम कुटुंबातला आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The pattern goes 5, 10, 15, 20, … What comes next?",
+      "choices": [
+        "24",
+        "30",
+        "21",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "The step is 5: 20 + 5 = 25 — the five-times table wearing a pattern's clothes. 30 jumps two steps at once.",
+      "checkExpr": "20+5",
+      "translations": {
+        "hi": {
+          "stem": "पैटर्न है 5, 10, 15, 20, … आगे क्या आएगा?",
+          "choices": [
+            "24",
+            "30",
+            "21",
+            "25"
+          ],
+          "solution": "क़दम 5 का है: 20 + 5 = 25 — पैटर्न के कपड़ों में पाँच का पहाड़ा। 30 एक साथ दो क़दम कूद जाता है।"
+        },
+        "mr": {
+          "stem": "आकृतिबंध आहे 5, 10, 15, 20, … पुढे काय येईल?",
+          "choices": [
+            "24",
+            "30",
+            "21",
+            "25"
+          ],
+          "solution": "पाऊल 5 चे आहे: 20 + 5 = 25 — आकृतिबंधाच्या कपड्यांतला पाचाचा पाढा. 30 एकदम दोन पावले उडी मारते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Laddoos are laid out 1, 3, 5, 7, … How many in the next heap?",
+      "choices": [
+        "11",
+        "14",
+        "9",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Odd numbers climb by 2: 7 + 2 = 9. 8 slips onto the even ladder standing next to this one.",
+      "checkExpr": "7+2",
+      "translations": {
+        "hi": {
+          "stem": "लड्डू रखे हैं 1, 3, 5, 7, … अगले ढेर में कितने होंगे?",
+          "choices": [
+            "11",
+            "14",
+            "9",
+            "8"
+          ],
+          "solution": "विषम संख्याएँ 2-2 चढ़ती हैं: 7 + 2 = 9। 8 बग़ल में खड़ी सम सीढ़ी पर फिसल जाता है।"
+        },
+        "mr": {
+          "stem": "लाडू मांडले आहेत 1, 3, 5, 7, … पुढच्या ढिगात किती असतील?",
+          "choices": [
+            "11",
+            "14",
+            "9",
+            "8"
+          ],
+          "solution": "विषम संख्या 2-2 ने चढतात: 7 + 2 = 9. 8 शेजारी उभ्या सम शिडीवर घसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "This pattern DOUBLES: 3, 6, 12, 24, … What comes next?",
+      "choices": [
+        "30",
+        "48",
+        "27",
+        "36"
+      ],
+      "answerIndex": 1,
+      "solution": "Each number is the last one doubled: 24 × 2 = 48. 36 adds 12 — that was the OLD gap; a doubling pattern's gaps grow with it.",
+      "checkExpr": "24*2",
+      "translations": {
+        "hi": {
+          "stem": "यह पैटर्न दुगना होता है: 3, 6, 12, 24, … आगे क्या?",
+          "choices": [
+            "30",
+            "48",
+            "27",
+            "36"
+          ],
+          "solution": "हर संख्या पिछली की दुगनी: 24 × 2 = 48। 36 बारह जोड़ता है — वह पुराना फ़ासला था; दुगने पैटर्न के फ़ासले उसी के साथ बढ़ते हैं।"
+        },
+        "mr": {
+          "stem": "हा आकृतिबंध दुप्पट होतो: 3, 6, 12, 24, … पुढे काय?",
+          "choices": [
+            "30",
+            "48",
+            "27",
+            "36"
+          ],
+          "solution": "प्रत्येक संख्या मागचीच्या दुप्पट: 24 × 2 = 48. 36 बारा मिळवते — ते जुने अंतर होते; दुप्पट होणाऱ्या आकृतिबंधाची अंतरे त्याच्यासोबत वाढतात."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "This pattern walks DOWN: 90, 80, 70, … What comes next?",
+      "choices": [
+        "65",
+        "75",
+        "50",
+        "60"
+      ],
+      "answerIndex": 3,
+      "solution": "Each step takes away 10: 70 − 10 = 60. 50 skips a stair on the way down.",
+      "checkExpr": "70-10",
+      "translations": {
+        "hi": {
+          "stem": "यह पैटर्न नीचे उतरता है: 90, 80, 70, … आगे क्या?",
+          "choices": [
+            "65",
+            "75",
+            "50",
+            "60"
+          ],
+          "solution": "हर क़दम 10 घटाता है: 70 − 10 = 60। 50 उतरते हुए एक सीढ़ी लाँघ जाता है।"
+        },
+        "mr": {
+          "stem": "हा आकृतिबंध खाली उतरतो: 90, 80, 70, … पुढे काय?",
+          "choices": [
+            "65",
+            "75",
+            "50",
+            "60"
+          ],
+          "solution": "प्रत्येक पाऊल 10 वजा करते: 70 − 10 = 60. 50 उतरताना एक पायरी ओलांडते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a secret code, each letter is its place-number: A=1, B=2, C=3 … What number does the word CAB make when you add its letters?",
+      "choices": [
+        "6",
+        "312",
+        "7",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "C=3, A=1, B=2, and 3 + 1 + 2 = 6. 312 writes the letters side by side instead of adding — a code must be worked, not just read.",
+      "checkExpr": "3+1+2",
+      "translations": {
+        "hi": {
+          "stem": "गुप्त कूट में हर अक्षर अपनी जगह की संख्या है: A=1, B=2, C=3 … CAB शब्द के अक्षर जोड़ने पर कौन-सी संख्या बनती है?",
+          "choices": [
+            "6",
+            "312",
+            "7",
+            "5"
+          ],
+          "solution": "C=3, A=1, B=2, और 3 + 1 + 2 = 6। 312 अक्षरों को जोड़ने की जगह अग़ल-बग़ल लिख देता है — कूट हल करना पड़ता है, केवल पढ़ना नहीं।"
+        },
+        "mr": {
+          "stem": "गुप्त सांकेतिक भाषेत प्रत्येक अक्षर त्याच्या जागेचा आकडा: A=1, B=2, C=3 … CAB या शब्दाची अक्षरे मिळवल्यावर कोणती संख्या होते?",
+          "choices": [
+            "6",
+            "312",
+            "7",
+            "5"
+          ],
+          "solution": "C=3, A=1, B=2, आणि 3 + 1 + 2 = 6. 312 अक्षरे मिळवण्याऐवजी शेजारी-शेजारी लिहिते — सांकेतिक भाषा सोडवावी लागते, नुसती वाचून चालत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The square-dot pattern goes 1, 4, 9, 16, … What comes next?",
+      "choices": [
+        "24",
+        "25",
+        "20",
+        "32"
+      ],
+      "answerIndex": 1,
+      "solution": "These are square arrays of dots: 1×1, 2×2, 3×3, 4×4 — next is 5 × 5 = 25. 20 adds 4 again, but this pattern's gaps grow: +3, +5, +7, then +9.",
+      "checkExpr": "5*5",
+      "translations": {
+        "hi": {
+          "stem": "वर्ग-बिंदुओं का पैटर्न है 1, 4, 9, 16, … आगे क्या?",
+          "choices": [
+            "24",
+            "25",
+            "20",
+            "32"
+          ],
+          "solution": "ये बिंदुओं के वर्ग हैं: 1×1, 2×2, 3×3, 4×4 — अगला 5 × 5 = 25। 20 फिर 4 जोड़ता है, पर इस पैटर्न के फ़ासले बढ़ते हैं: +3, +5, +7, फिर +9।"
+        },
+        "mr": {
+          "stem": "चौरस-ठिपक्यांचा आकृतिबंध आहे 1, 4, 9, 16, … पुढे काय?",
+          "choices": [
+            "24",
+            "25",
+            "20",
+            "32"
+          ],
+          "solution": "हे ठिपक्यांचे चौरस आहेत: 1×1, 2×2, 3×3, 4×4 — पुढचा 5 × 5 = 25. 20 पुन्हा 4 मिळवते, पण या आकृतिबंधाची अंतरे वाढतात: +3, +5, +7, मग +9."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a magic square every row adds to 15. One row shows 8, ▢, 4. What hides in the box?",
+      "choices": [
+        "7",
+        "3",
+        "12",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The row must reach 15: 15 − 8 − 4 = 3, and checking, 8 + 3 + 4 = 15. 12 subtracts only the 8 — both neighbours have already claimed their share.",
+      "checkExpr": "15-8-4",
+      "translations": {
+        "hi": {
+          "stem": "जादुई वर्ग में हर पंक्ति का जोड़ 15 है। एक पंक्ति में 8, ▢, 4 है। डिब्बे में क्या छिपा है?",
+          "choices": [
+            "7",
+            "3",
+            "12",
+            "5"
+          ],
+          "solution": "पंक्ति को 15 तक पहुँचना है: 15 − 8 − 4 = 3, और जाँच में 8 + 3 + 4 = 15। 12 केवल 8 घटाता है — दोनों पड़ोसी अपना हिस्सा पहले ही ले चुके हैं।"
+        },
+        "mr": {
+          "stem": "जादूच्या चौरसात प्रत्येक ओळीची बेरीज 15 आहे. एका ओळीत 8, ▢, 4 आहे. चौकटीत काय लपले आहे?",
+          "choices": [
+            "7",
+            "3",
+            "12",
+            "5"
+          ],
+          "solution": "ओळीने 15 गाठायचे आहे: 15 − 8 − 4 = 3, आणि तपासात 8 + 3 + 4 = 15. 12 फक्त 8 वजा करते — दोन्ही शेजाऱ्यांनी आपला वाटा आधीच घेतला आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The staircase pattern totals each stair: 1, then 1+2, then 1+2+3. What is the total on the FOURTH stair?",
+      "choices": [
+        "16",
+        "6",
+        "10",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "The fourth stair stacks 1 + 2 + 3 + 4 = 10 — the triangle numbers 1, 3, 6, 10. 6 is the THIRD stair; 4 is only the newest step, not the whole staircase.",
+      "checkExpr": "1+2+3+4",
+      "translations": {
+        "hi": {
+          "stem": "सीढ़ी-पैटर्न हर सीढ़ी का जोड़ बताता है: 1, फिर 1+2, फिर 1+2+3। चौथी सीढ़ी का जोड़ क्या है?",
+          "choices": [
+            "16",
+            "6",
+            "10",
+            "4"
+          ],
+          "solution": "चौथी सीढ़ी पर जमा 1 + 2 + 3 + 4 = 10 — त्रिभुज संख्याएँ 1, 3, 6, 10। 6 तीसरी सीढ़ी है; 4 केवल सबसे नया क़दम है, पूरी सीढ़ी नहीं।"
+        },
+        "mr": {
+          "stem": "जिना-आकृतिबंध प्रत्येक पायरीची बेरीज सांगतो: 1, मग 1+2, मग 1+2+3. चौथ्या पायरीची बेरीज किती?",
+          "choices": [
+            "16",
+            "6",
+            "10",
+            "4"
+          ],
+          "solution": "चौथ्या पायरीवर 1 + 2 + 3 + 4 = 10 — त्रिकोणी संख्या 1, 3, 6, 10. 6 ही तिसरी पायरी; 4 हे फक्त नवे पाऊल, सगळा जिना नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Add the first five odd numbers: 1 + 3 + 5 + 7 + 9. What do they make?",
+      "choices": [
+        "24",
+        "25",
+        "20",
+        "30"
+      ],
+      "answerIndex": 1,
+      "solution": "Pair them round the middle: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — which is 5 × 5. The first five odd numbers always build the fifth square; that is the dot-picture behind it.",
+      "checkExpr": "1+3+5+7+9",
+      "translations": {
+        "hi": {
+          "stem": "पहली पाँच विषम संख्याएँ जोड़िए: 1 + 3 + 5 + 7 + 9। कुल क्या बनता है?",
+          "choices": [
+            "24",
+            "25",
+            "20",
+            "30"
+          ],
+          "solution": "बीच के इर्द-गिर्द जोड़े बनाइए: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — यानी 5 × 5। पहली पाँच विषम संख्याएँ हमेशा पाँचवाँ वर्ग बनाती हैं; यही इसके पीछे की बिंदु-तस्वीर है।"
+        },
+        "mr": {
+          "stem": "पहिल्या पाच विषम संख्या मिळवा: 1 + 3 + 5 + 7 + 9. एकूण किती होते?",
+          "choices": [
+            "24",
+            "25",
+            "20",
+            "30"
+          ],
+          "solution": "मधोमध जोड्या लावा: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — म्हणजे 5 × 5. पहिल्या पाच विषम संख्या नेहमी पाचवा चौरस बांधतात; हेच त्यामागचे ठिपक्यांचे चित्र."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "On a calendar, four dates make a 2-by-2 square. The smallest of the four is 8. What do all four dates add up to?",
+      "choices": [
+        "40",
+        "48",
+        "32",
+        "46"
+      ],
+      "answerIndex": 1,
+      "solution": "The square holds 8 and 9, and directly below them 15 and 16 (a week later): 8 + 9 + 15 + 16 = 48. The pretty part: both diagonals agree, 8 + 16 = 9 + 15 = 24 — every calendar square hides this balance. 32 forgets the lower row lives a whole week down.",
+      "checkExpr": "8+9+15+16",
+      "translations": {
+        "hi": {
+          "stem": "कैलेंडर पर चार तारीख़ें 2×2 का वर्ग बनाती हैं। चारों में सबसे छोटी 8 है। चारों तारीख़ों का जोड़ क्या होगा?",
+          "choices": [
+            "40",
+            "48",
+            "32",
+            "46"
+          ],
+          "solution": "वर्ग में 8 और 9 हैं, और ठीक नीचे 15 और 16 (एक हफ़्ता बाद): 8 + 9 + 15 + 16 = 48। सुंदर बात: दोनों विकर्ण सहमत हैं, 8 + 16 = 9 + 15 = 24 — हर कैलेंडर-वर्ग में यह संतुलन छिपा है। 32 भूलता है कि निचली पंक्ति पूरे हफ़्ते नीचे रहती है।"
+        },
+        "mr": {
+          "stem": "दिनदर्शिकेवर चार तारखा 2×2 चा चौरस करतात. चौघांत सर्वांत लहान 8 आहे. चारही तारखांची बेरीज किती?",
+          "choices": [
+            "40",
+            "48",
+            "32",
+            "46"
+          ],
+          "solution": "चौरसात 8 आणि 9, आणि बरोबर खाली 15 आणि 16 (आठवड्याने): 8 + 9 + 15 + 16 = 48. सुंदर गोष्ट: दोन्ही कर्ण सहमत, 8 + 16 = 9 + 15 = 24 — प्रत्येक दिनदर्शिका-चौरसात हा तोल लपलेला असतो. 32 विसरते की खालची ओळ अख्ख्या आठवड्याने खाली राहते."
+        }
+      }
+    }
+  ]
+}

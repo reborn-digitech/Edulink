@@ -2405,14 +2405,1329 @@ function fieldsAndFences(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 3 — A Trip to Bhopal (journey arithmetic, all operations mixed)   */
+/* ------------------------------------------------------------------------- */
+function aTripToBhopal(): TopicFileOut {
+  const rand = rng("maths-4-a-trip-to-bhopal");
+  const qs: OutQuestion[] = [];
+
+  const km = (n: number) => ({ en: `${n} km`, hi: `${n} किमी`, mr: `${n} किमी` });
+  const mins = (n: number) => ({ en: `${n} minutes`, hi: `${n} मिनट`, mr: `${n} मिनिटे` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The trip bus has 32 seats and 9 are empty. How many children are seated?",
+          hi: "सैर की बस में 32 सीटें हैं और 9 ख़ाली हैं। कितने बच्चे बैठे हैं?",
+          mr: "सहलीच्या बसमध्ये 32 जागा आहेत आणि 9 रिकाम्या आहेत. किती मुले बसली आहेत?",
+        },
+        answer: 23,
+        wrong: [41, 27, 13],
+        checkExpr: "32-9",
+        solution: {
+          en: "Filled seats are 32 − 9 = 23. 41 adds the empty seats on top of the bus; 27 dodges the borrow from the tens.",
+          hi: "भरी सीटें 32 − 9 = 23। 41 ख़ाली सीटें बस के ऊपर से जोड़ देता है; 27 दहाई का हासिल टाल जाता है।",
+          mr: "भरलेल्या जागा 32 − 9 = 23. 41 रिकाम्या जागा बसवर मिळवते; 27 दशकाचा हातचा चुकवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Each mini-bus carries 35 children. How many children do 2 mini-buses carry?",
+          hi: "हर मिनी-बस में 35 बच्चे जाते हैं। 2 मिनी-बसों में कितने बच्चे जाएँगे?",
+          mr: "प्रत्येक मिनी-बसमध्ये 35 मुले जातात. 2 मिनी-बसमध्ये किती मुले जातील?",
+        },
+        answer: 70,
+        wrong: [37, 60, 75],
+        checkExpr: "35*2",
+        solution: {
+          en: "Two buses of 35: 35 × 2 = 70. 37 adds the 2 buses as if they were children.",
+          hi: "35-35 की दो बसें: 35 × 2 = 70। 37 दोनों बसों को बच्चे मानकर जोड़ देता है।",
+          mr: "35-35 च्या दोन बस: 35 × 2 = 70. 37 दोन बसनाच मुले समजून मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Each child brings ₹10 for the trip. How much do 5 children bring together?",
+          hi: "हर बच्चा सैर के लिए ₹10 लाता है। 5 बच्चे मिलकर कितने लाएँगे?",
+          mr: "प्रत्येक मूल सहलीसाठी ₹10 आणते. 5 मुले मिळून किती आणतील?",
+        },
+        answer: 50,
+        wrong: [15, 40, 105],
+        checkExpr: "10*5",
+        fmt: rupees,
+        solution: {
+          en: "Five tens: 10 × 5 = ₹50. ₹15 adds the five children to the ten rupees — money collected per head multiplies by heads.",
+          hi: "पाँच दहाई: 10 × 5 = ₹50। ₹15 पाँच बच्चों को दस रुपये में जोड़ देता है — प्रति बच्चा पैसा बच्चों से गुणा होता है।",
+          mr: "पाच दशक: 10 × 5 = ₹50. ₹15 पाच मुलांना दहा रुपयांत मिळवते — दरडोई पैसे मुलांनी गुणले जातात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "210 children travel in big buses of 30 each. How many buses are needed?",
+          hi: "210 बच्चे 30-30 की बड़ी बसों में जाते हैं। कितनी बसें चाहिए?",
+          mr: "210 मुले 30-30 च्या मोठ्या बसनी जातात. किती बस लागतील?",
+        },
+        answer: 7,
+        wrong: [6, 8, 180],
+        checkExpr: "210/30",
+        solution: {
+          en: "How many 30s in 210: 210 ÷ 30 = 7 buses. 180 subtracts one busload — the buses repeat until everyone is aboard.",
+          hi: "210 में 30 कितनी बार: 210 ÷ 30 = 7 बसें। 180 एक बस भर घटा देता है — बसें तब तक गिनी जाती हैं जब तक सब सवार न हों।",
+          mr: "210 मध्ये 30 किती वेळा: 210 ÷ 30 = 7 बस. 180 एका बसचा भार वजा करते — सारे चढेपर्यंत बस मोजायच्या.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The bridge over the river is 756 metres long. The bus has crossed 400 metres of it. How much bridge is left?",
+          hi: "नदी का पुल 756 मीटर लंबा है। बस उसका 400 मीटर पार कर चुकी है। कितना पुल बाक़ी है?",
+          mr: "नदीवरचा पूल 756 मीटर लांब आहे. बसने त्यातले 400 मीटर ओलांडले आहे. किती पूल उरला?",
+        },
+        answer: 356,
+        wrong: [456, 256, 1156],
+        checkExpr: "756-400",
+        solution: {
+          en: "Left to cross: 756 − 400 = 356 m. 1156 adds instead of subtracting — the crossed part comes out of the bridge, not onto it.",
+          hi: "पार करना बाक़ी: 756 − 400 = 356 मीटर। 1156 घटाने की जगह जोड़ता है — पार हुआ हिस्सा पुल में से निकलता है, उस पर चढ़ता नहीं।",
+          mr: "ओलांडायचे उरले: 756 − 400 = 356 मीटर. 1156 वजा करण्याऐवजी मिळवते — ओलांडलेला भाग पुलातून वजा होतो, त्यावर चढत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "At the lake, one boat takes 20 children per trip. How many children ride in 4 trips?",
+          hi: "झील पर एक नाव हर फेरे में 20 बच्चे ले जाती है। 4 फेरों में कितने बच्चे घूम आएँगे?",
+          mr: "तळ्यावर एक होडी प्रत्येक फेरीत 20 मुले नेते. 4 फेऱ्यांत किती मुले फिरून येतील?",
+        },
+        answer: 80,
+        wrong: [24, 60, 100],
+        checkExpr: "20*4",
+        solution: {
+          en: "Four trips of twenty: 20 × 4 = 80 children. 24 adds the trips to the boatload; 60 loses one whole trip.",
+          hi: "बीस-बीस के चार फेरे: 20 × 4 = 80 बच्चे। 24 फेरों को सवारी में जोड़ देता है; 60 पूरा एक फेरा खो देता है।",
+          mr: "वीस-वीसच्या चार फेऱ्या: 20 × 4 = 80 मुले. 24 फेऱ्यांना प्रवाशांत मिळवते; 60 अख्खी एक फेरी हरवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Samosas cost ₹4 each. What do 25 samosas for the class cost?",
+          hi: "समोसा ₹4 का एक है। कक्षा के लिए 25 समोसों के कितने लगेंगे?",
+          mr: "समोसा ₹4 ला एक आहे. वर्गासाठी 25 समोशांना किती लागतील?",
+        },
+        answer: 100,
+        wrong: [29, 80, 125],
+        checkExpr: "4*25",
+        solution: {
+          en: "4 × 25 = 100 — four twenty-fives make a hundred, the same trick as four quarters of a rupee. ₹29 adds price and count.",
+          hi: "4 × 25 = 100 — चार पच्चीस मिलकर सौ, वही चार चवन्नियों वाला हिसाब। ₹29 दाम और गिनती जोड़ देता है।",
+          mr: "4 × 25 = 100 — चार पंचवीस मिळून शंभर, चार पावल्यांचाच हिशेब. ₹29 भाव आणि संख्या मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Bhopal is 70 km from the school. The bus goes there in the morning and returns in the evening. How far does it travel that day?",
+          hi: "भोपाल स्कूल से 70 किमी दूर है। बस सुबह जाती है और शाम को लौटती है। उस दिन वह कितना चलती है?",
+          mr: "भोपाळ शाळेपासून 70 किमी आहे. बस सकाळी जाते आणि संध्याकाळी परतते. त्या दिवशी ती किती चालते?",
+        },
+        answer: 140,
+        wrong: [70, 120, 170],
+        checkExpr: "70*2",
+        fmt: km,
+        solution: {
+          en: "There and back: 70 × 2 = 140 km. 70 remembers only the morning — the evening road home is just as long.",
+          hi: "जाना और लौटना: 70 × 2 = 140 किमी। 70 केवल सुबह याद रखता है — शाम की घर-वापसी की सड़क भी उतनी ही लंबी है।",
+          mr: "जाणे आणि परतणे: 70 × 2 = 140 किमी. 70 फक्त सकाळ लक्षात ठेवते — संध्याकाळची घरवाटही तितकीच लांब आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "218 children are to travel and each bus seats 56. After 3 full buses, how many children still wait for the next one?",
+          hi: "218 बच्चों को जाना है और हर बस में 56 बैठते हैं। 3 भरी बसों के बाद कितने बच्चे अगली का इंतज़ार करेंगे?",
+          mr: "218 मुलांना जायचे आहे आणि प्रत्येक बसमध्ये 56 बसतात. 3 भरलेल्या बसनंतर किती मुले पुढच्या बसची वाट पाहतील?",
+        },
+        answer: 50,
+        wrong: [162, 6, 44],
+        checkExpr: "218-56*3",
+        solution: {
+          en: "Three buses seat 56 × 3 = 168, so 218 − 168 = 50 children wait. 162 subtracts one busload; 6 imagines a fourth bus already came.",
+          hi: "तीन बसों में 56 × 3 = 168 बैठे, तो 218 − 168 = 50 इंतज़ार में। 162 एक ही बस घटाता है; 6 चौथी बस को आया हुआ मान लेता है।",
+          mr: "तीन बसमध्ये 56 × 3 = 168 बसले, म्हणून 218 − 168 = 50 वाट पाहतात. 162 एकच बस वजा करते; 6 चौथी बस आलीच असे समजते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The bus left school at 8:30 and reached Bhopal at 10:00. How many minutes did the ride take?",
+          hi: "बस स्कूल से 8:30 बजे चली और 10:00 बजे भोपाल पहुँची। सफ़र कितने मिनट का रहा?",
+          mr: "बस शाळेतून 8:30 ला निघाली आणि 10:00 ला भोपाळला पोहोचली. प्रवास किती मिनिटांचा झाला?",
+        },
+        answer: 90,
+        wrong: [60, 130, 150],
+        checkExpr: "60+30",
+        fmt: mins,
+        solution: {
+          en: "8:30 to 9:30 is one hour (60 minutes), and 9:30 to 10:00 adds 30 more: 60 + 30 = 90 minutes. 130 subtracts clock numbers like plain numbers — clock arithmetic walks in hours and minutes, not in '1000 minus 830'.",
+          hi: "8:30 से 9:30 तक एक घंटा (60 मिनट), और 9:30 से 10:00 तक 30 और: 60 + 30 = 90 मिनट। 130 घड़ी के अंकों को सादे अंक मानकर घटाता है — घड़ी का हिसाब घंटों-मिनटों में चलता है, '1000 घटा 830' में नहीं।",
+          mr: "8:30 ते 9:30 एक तास (60 मिनिटे), आणि 9:30 ते 10:00 आणखी 30: 60 + 30 = 90 मिनिटे. 130 घड्याळाचे आकडे साधे आकडे समजून वजा करते — घड्याळाचा हिशेब तास-मिनिटांत चालतो, '1000 वजा 830' मध्ये नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "For the trip, 40 children paid ₹50 each. The class hired 2 buses at ₹800 each. How much money is left for boat tickets?",
+          hi: "सैर के लिए 40 बच्चों ने ₹50-₹50 दिए। कक्षा ने ₹800-₹800 की 2 बसें कीं। नाव के टिकटों के लिए कितने पैसे बचे?",
+          mr: "सहलीसाठी 40 मुलांनी ₹50-₹50 दिले. वर्गाने ₹800-₹800 च्या 2 बस केल्या. होडीच्या तिकिटांसाठी किती पैसे उरले?",
+        },
+        answer: 400,
+        wrong: [1200, 200, 1600],
+        checkExpr: "50*40-800*2",
+        fmt: rupees,
+        solution: {
+          en: "Collected: 50 × 40 = ₹2000. Buses: 800 × 2 = ₹1600. Left: 2000 − 1600 = ₹400. ₹1200 pays for one bus only; ₹1600 is the bus bill itself, not what survived it.",
+          hi: "जमा हुए: 50 × 40 = ₹2000। बसें: 800 × 2 = ₹1600। बचे: 2000 − 1600 = ₹400। ₹1200 एक ही बस चुकाता है; ₹1600 तो बसों का बिल है, उससे बचा पैसा नहीं।",
+          mr: "जमले: 50 × 40 = ₹2000. बस: 800 × 2 = ₹1600. उरले: 2000 − 1600 = ₹400. ₹1200 एकाच बसचे देते; ₹1600 हे बसचे बिल आहे, त्यातून वाचलेले पैसे नव्हेत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 3 — A Trip to Bhopal",
+      name: "A Trip to Bhopal",
+      slug: "maths-4-a-trip-to-bhopal",
+      summary: "One school trip, every operation — seats and buses, bridge metres, samosa money and the budget that must survive the bus bill.",
+      position: 3,
+      translations: {
+        hi: {
+          name: "भोपाल की सैर",
+          summary: "एक स्कूली सैर, सारी संक्रियाएँ — सीटें और बसें, पुल के मीटर, समोसे के पैसे और वह बजट जिसे बस-बिल से बचना है।",
+        },
+        mr: {
+          name: "भोपाळची सहल",
+          summary: "एक शाळेची सहल, साऱ्या क्रिया — जागा आणि बस, पुलाचे मीटर, समोशांचे पैसे आणि बस-बिलातून वाचायचे बजेट.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 5 — The Way the World Looks (views from above, maps and dice)     */
+/* ------------------------------------------------------------------------- */
+function theWayTheWorldLooks(): TopicFileOut {
+  const rand = rng("maths-4-the-way-the-world-looks");
+  const qs: OutQuestion[] = [];
+
+  const m = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "On Ruchira's map, 1 cm stands for 10 metres. The gate to the well is 4 cm on the map. How far is it really?",
+          hi: "रुचिरा के नक़्शे पर 1 सेमी = 10 मीटर। फाटक से कुएँ तक नक़्शे पर 4 सेमी है। असल दूरी कितनी है?",
+          mr: "रुचिराच्या नकाशावर 1 सेमी = 10 मीटर. फाटकापासून विहिरीपर्यंत नकाशावर 4 सेमी आहे. खरे अंतर किती?",
+        },
+        answer: 40,
+        wrong: [14, 4, 400],
+        checkExpr: "4*10",
+        fmt: m,
+        solution: {
+          en: "Every map-centimetre hides 10 real metres: 4 × 10 = 40 m. 400 multiplies by 100 — read the map's own scale, not a guessed one.",
+          hi: "नक़्शे का हर सेंटीमीटर 10 असली मीटर छिपाए है: 4 × 10 = 40 मीटर। 400 सौ से गुणा है — नक़्शे का अपना पैमाना पढ़िए, अंदाज़े का नहीं।",
+          mr: "नकाशाचा प्रत्येक सेंटिमीटर 10 खरे मीटर लपवतो: 4 × 10 = 40 मीटर. 400 म्हणजे शंभराने गुणणे — नकाशाचे स्वतःचे प्रमाण वाचा, अंदाजाचे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A full turn is 4 quarter turns. Facing the school gate, Gappu has made 2 quarter turns. How many MORE quarter turns till he faces the gate again?",
+          hi: "पूरा घुमाव 4 चौथाई-घुमावों का होता है। स्कूल के फाटक की ओर मुँह किए गप्पू 2 चौथाई-घुमाव ले चुका है। फाटक की ओर फिर से मुँह होने में और कितने चौथाई-घुमाव लगेंगे?",
+          mr: "पूर्ण वळण म्हणजे 4 पाव-वळणे. शाळेच्या फाटकाकडे तोंड करून गप्पूने 2 पाव-वळणे घेतली आहेत. पुन्हा फाटकाकडे तोंड व्हायला आणखी किती पाव-वळणे लागतील?",
+        },
+        answer: 2,
+        wrong: [1, 4, 3],
+        checkExpr: "4-2",
+        solution: {
+          en: "The circle closes at 4 quarter turns; he has spent 2, so 4 − 2 = 2 remain — he is exactly facing away right now.",
+          hi: "घेरा 4 चौथाई-घुमावों पर पूरा होता है; 2 हो चुके, तो 4 − 2 = 2 बाक़ी — अभी वह ठीक उलटी ओर देख रहा है।",
+          mr: "वर्तुळ 4 पाव-वळणांवर पूर्ण होते; 2 झाली, म्हणून 4 − 2 = 2 उरली — आत्ता तो नेमका उलट्या दिशेला पाहतो आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "From the aeroplane, nine huts stand in 3 equal rows. How many huts in each row?",
+          hi: "हवाई जहाज़ से नौ झोंपड़ियाँ 3 बराबर पंक्तियों में दिखती हैं। हर पंक्ति में कितनी झोंपड़ियाँ?",
+          mr: "विमानातून नऊ झोपड्या 3 सारख्या रांगांत दिसतात. प्रत्येक रांगेत किती झोपड्या?",
+        },
+        answer: 3,
+        wrong: [6, 9, 12],
+        checkExpr: "9/3",
+        solution: {
+          en: "9 huts in 3 equal rows: 9 ÷ 3 = 3 per row — the top view turns the village into a neat times-table.",
+          hi: "3 बराबर पंक्तियों में 9 झोंपड़ियाँ: 9 ÷ 3 = 3 प्रति पंक्ति — ऊपर का नज़ारा गाँव को साफ़-सुथरा पहाड़ा बना देता है।",
+          mr: "3 सारख्या रांगांत 9 झोपड्या: 9 ÷ 3 = 3 प्रत्येक रांगेत — वरून पाहणे गावाचा नीटनेटका पाढा करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "On a town map, 1 cm stands for 100 metres. School to post office measures 6 cm. What is the real distance?",
+          hi: "शहर के नक़्शे पर 1 सेमी = 100 मीटर। स्कूल से डाकघर 6 सेमी नापता है। असली दूरी कितनी?",
+          mr: "शहराच्या नकाशावर 1 सेमी = 100 मीटर. शाळा ते पोस्ट ऑफिस 6 सेमी भरते. खरे अंतर किती?",
+        },
+        answer: 600,
+        wrong: [106, 60, 6000],
+        checkExpr: "6*100",
+        fmt: m,
+        solution: {
+          en: "6 map-centimetres at 100 m each: 6 × 100 = 600 m. 60 uses a ten-scale; the map declared a hundred-scale in its corner.",
+          hi: "100-100 मीटर के 6 नक़्शा-सेंटीमीटर: 6 × 100 = 600 मीटर। 60 दस का पैमाना लेता है; नक़्शे ने कोने में सौ का पैमाना घोषित किया था।",
+          mr: "100-100 मीटरचे 6 नकाशा-सेंटिमीटर: 6 × 100 = 600 मीटर. 60 दहाचे प्रमाण घेते; नकाशाने कोपऱ्यात शंभराचे प्रमाण जाहीर केले होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "On a die, the numbers on opposite faces add up to 7. The top face shows 2. What is on the face touching the table?",
+          hi: "पासे पर आमने-सामने के फलकों के अंक जोड़ने पर 7 आता है। ऊपर 2 दिख रहा है। मेज़ से लगे फलक पर क्या है?",
+          mr: "फाशावर समोरासमोरच्या पृष्ठांवरील अंकांची बेरीज 7 येते. वर 2 दिसतो आहे. टेबलाला टेकलेल्या पृष्ठावर काय आहे?",
+        },
+        answer: 5,
+        wrong: [2, 6, 3],
+        checkExpr: "7-2",
+        solution: {
+          en: "Bottom is the top's opposite: 7 − 2 = 5. 6 is the biggest face, but 'biggest' is not 'opposite' — the die's rule is the sum of seven.",
+          hi: "नीचे वाला ऊपर वाले का जोड़ीदार है: 7 − 2 = 5। 6 सबसे बड़ा फलक है, पर 'सबसे बड़ा' 'सामने वाला' नहीं — पासे का नियम सात का जोड़ है।",
+          mr: "खालचे पृष्ठ वरच्याचे जोडीदार: 7 − 2 = 5. 6 हे सर्वांत मोठे पृष्ठ, पण 'मोठे' म्हणजे 'समोरचे' नव्हे — फाशाचा नियम सातची बेरीज.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Five identical coins are stacked one exactly on another. Looking straight DOWN from above, how many circles do you see?",
+          hi: "पाँच एक-जैसे सिक्के ठीक एक के ऊपर एक रखे हैं। ठीक ऊपर से नीचे देखने पर कितने गोले दिखेंगे?",
+          mr: "पाच सारखी नाणी नेमकी एकावर एक रचली आहेत. अगदी वरून खाली पाहिल्यास किती वर्तुळे दिसतील?",
+        },
+        answer: 1,
+        wrong: [5, 10, 2],
+        solution: {
+          en: "From straight above, each coin hides the one below it — the whole stack shows exactly 1 circle. The 5 lives in the SIDE view; the top view keeps that secret.",
+          hi: "ठीक ऊपर से हर सिक्का नीचे वाले को ढक लेता है — पूरी गड्डी ठीक 1 गोला दिखाती है। 5 बग़ल के नज़ारे में बसता है; ऊपर का नज़ारा वह राज़ छिपा लेता है।",
+          mr: "अगदी वरून प्रत्येक नाणे खालच्याला झाकते — सगळी चळत नेमके 1 वर्तुळ दाखवते. 5 हा बाजूच्या दृश्यात राहतो; वरचे दृश्य ते गुपित लपवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A map's scale says 1 cm = 5 km. Two towns are 45 km apart. How many centimetres separate them on the map?",
+          hi: "नक़्शे का पैमाना कहता है 1 सेमी = 5 किमी। दो क़स्बे 45 किमी दूर हैं। नक़्शे पर वे कितने सेंटीमीटर दूर होंगे?",
+          mr: "नकाशाचे प्रमाण सांगते 1 सेमी = 5 किमी. दोन गावे 45 किमी अंतरावर आहेत. नकाशावर ती किती सेंटिमीटर दूर असतील?",
+        },
+        answer: 9,
+        wrong: [40, 225, 5],
+        checkExpr: "45/5",
+        solution: {
+          en: "This time the world shrinks INTO the map: 45 ÷ 5 = 9 cm. 225 multiplies instead — that would stretch the map larger than the towns themselves.",
+          hi: "इस बार दुनिया नक़्शे में सिकुड़ती है: 45 ÷ 5 = 9 सेमी। 225 गुणा कर बैठता है — तब नक़्शा क़स्बों से भी बड़ा फैल जाता।",
+          mr: "या वेळी जग नकाशात आकसते: 45 ÷ 5 = 9 सेमी. 225 गुणाकार करते — मग नकाशा गावांहूनही मोठा पसरला असता.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A photo taken from straight above shows 6 plates in a row, each holding 4 laddoos. How many laddoos are in the photo?",
+          hi: "ठीक ऊपर से ली गई तस्वीर में एक क़तार की 6 थालियाँ दिखती हैं, हर एक में 4 लड्डू। तस्वीर में कुल कितने लड्डू हैं?",
+          mr: "अगदी वरून काढलेल्या फोटोत एका रांगेतल्या 6 थाळ्या दिसतात, प्रत्येकीत 4 लाडू. फोटोत एकूण किती लाडू?",
+        },
+        answer: 24,
+        wrong: [10, 20, 28],
+        checkExpr: "6*4",
+        solution: {
+          en: "Six plates of four: 6 × 4 = 24 laddoos — the top view lays the whole count open at once. 10 adds plates and laddoos.",
+          hi: "चार-चार की छह थालियाँ: 6 × 4 = 24 लड्डू — ऊपर का नज़ारा पूरी गिनती एक साथ खोल देता है। 10 थालियाँ और लड्डू जोड़ देता है।",
+          mr: "चार-चारच्या सहा थाळ्या: 6 × 4 = 24 लाडू — वरचे दृश्य सगळी मोजणी एकदम उघडते. 10 थाळ्या आणि लाडू मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Opposite faces of a die add to 7. Ruchira sees 3 on top. Her brother, lying under the glass table, looks UP at the die. What does he see?",
+          hi: "पासे के आमने-सामने के फलक 7 जोड़ते हैं। रुचिरा को ऊपर 3 दिखता है। उसका भाई शीशे की मेज़ के नीचे लेटा पासे को ऊपर की ओर देखता है। उसे क्या दिखेगा?",
+          mr: "फाशाची समोरासमोरची पृष्ठे 7 जोडतात. रुचिराला वर 3 दिसतो. तिचा भाऊ काचेच्या टेबलाखाली पडून फासा वर पाहतो. त्याला काय दिसेल?",
+        },
+        answer: 4,
+        wrong: [3, 7, 5],
+        checkExpr: "7-3",
+        solution: {
+          en: "He sees the bottom face — the top's partner: 7 − 3 = 4. Answering 3 forgets the two children look at OPPOSITE faces of the same die: where you stand decides what the world shows you.",
+          hi: "उसे निचला फलक दिखता है — ऊपर वाले का जोड़ीदार: 7 − 3 = 4। 3 कहना भूलना है कि दोनों बच्चे एक ही पासे के उलटे फलक देख रहे हैं: आप कहाँ खड़े हैं, यही तय करता है कि दुनिया क्या दिखाएगी।",
+          mr: "त्याला खालचे पृष्ठ दिसते — वरच्याचे जोडीदार: 7 − 3 = 4. 3 म्हणणे म्हणजे दोघे मुले एकाच फाशाची उलटी पृष्ठे पाहत आहेत हे विसरणे: तुम्ही कुठे उभे आहात, हेच जग काय दाखवेल ते ठरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "On a 1 cm = 10 m map, the playground is drawn as a rectangle 12 cm by 8 cm. What is the REAL boundary of the playground?",
+          hi: "1 सेमी = 10 मीटर वाले नक़्शे पर खेल का मैदान 12 × 8 सेमी का आयत बना है। मैदान की असली सीमा कितनी है?",
+          mr: "1 सेमी = 10 मीटरच्या नकाशावर खेळाचे मैदान 12 × 8 सेमीचा आयत काढले आहे. मैदानाची खरी हद्द किती?",
+        },
+        answer: 400,
+        wrong: [40, 200, 960],
+        checkExpr: "2*(12*10+8*10)",
+        fmt: m,
+        solution: {
+          en: "Real sides first: 12 cm → 120 m and 8 cm → 80 m. Boundary: (120 + 80) × 2 = 400 m. 40 walks the map with a finger instead of the field with feet; 960 multiplies the sides — that is the inside, not the edge.",
+          hi: "पहले असली भुजाएँ: 12 सेमी → 120 मीटर और 8 सेमी → 80 मीटर। सीमा: (120 + 80) × 2 = 400 मीटर। 40 मैदान को पैरों से नहीं, नक़्शे को उँगली से चलता है; 960 भुजाओं का गुणा है — वह भीतर है, किनारा नहीं।",
+          mr: "आधी खऱ्या बाजू: 12 सेमी → 120 मीटर आणि 8 सेमी → 80 मीटर. हद्द: (120 + 80) × 2 = 400 मीटर. 40 मैदान पायांनी नव्हे, नकाशा बोटाने चालते; 960 बाजूंचा गुणाकार — ते आतले, कड नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "From the bus-stand roof, Gappu counts the buses parked below: 7 straight rows, 6 buses in each. While he counts, 5 buses drive away. How many buses does his final count show?",
+          hi: "बस-अड्डे की छत से गप्पू नीचे खड़ी बसें गिनता है: 7 सीधी क़तारें, हर एक में 6 बसें। गिनते-गिनते 5 बसें निकल जाती हैं। उसकी आख़िरी गिनती कितनी बसें बताएगी?",
+          mr: "बस-स्थानकाच्या छतावरून गप्पू खाली उभ्या बस मोजतो: 7 सरळ रांगा, प्रत्येकीत 6 बस. मोजता मोजता 5 बस निघून जातात. त्याची शेवटची मोजणी किती बस सांगेल?",
+        },
+        answer: 37,
+        wrong: [42, 47, 30],
+        checkExpr: "7*6-5",
+        solution: {
+          en: "The roof shows the full grid: 7 × 6 = 42 buses. Five left, so 42 − 5 = 37 remain. 42 counts the yard as it WAS — a view from above is a photograph of one moment, and the world moves under it.",
+          hi: "छत पूरा जाल दिखाती है: 7 × 6 = 42 बसें। पाँच गईं, तो 42 − 5 = 37 बचीं। 42 अड्डे को वैसा गिनता है जैसा वह था — ऊपर का नज़ारा एक पल की तस्वीर है, और दुनिया उसके नीचे चलती रहती है।",
+          mr: "छत पूर्ण जाळे दाखवते: 7 × 6 = 42 बस. पाच गेल्या, म्हणून 42 − 5 = 37 उरल्या. 42 स्थानक होते तसे मोजते — वरचे दृश्य म्हणजे एका क्षणाचा फोटो, आणि जग त्याखाली हलत राहते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 5 — The Way the World Looks",
+      name: "The Way the World Looks",
+      slug: "maths-4-the-way-the-world-looks",
+      summary: "Top views and map scales, quarter turns and the die's secret sevens — how standing somewhere else changes what you count.",
+      position: 5,
+      translations: {
+        hi: {
+          name: "दुनिया ऐसी दिखती है",
+          summary: "ऊपर के नज़ारे और नक़्शों के पैमाने, चौथाई घुमाव और पासे का सात वाला राज़ — कहीं और खड़े होने से गिनती कैसे बदलती है।",
+        },
+        mr: {
+          name: "जग असे दिसते",
+          summary: "वरची दृश्ये आणि नकाशांची प्रमाणे, पाव-वळणे आणि फाशाचे सातांचे गुपित — दुसरीकडे उभे राहिल्याने मोजणी कशी बदलते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Carts and Wheels (circles, centre, radius)                    */
+/* ------------------------------------------------------------------------- */
+function cartsAndWheels(): TopicFileOut {
+  const rand = rng("maths-4-carts-and-wheels");
+  const qs: OutQuestion[] = [];
+
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+  const m = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The line from a wheel's centre to its rim is the radius. A cart wheel's radius is 30 cm. How wide is the wheel through its centre (the diameter)?",
+          hi: "पहिए के केंद्र से किनारे तक की रेखा त्रिज्या है। बैलगाड़ी के पहिए की त्रिज्या 30 सेमी है। केंद्र से होकर पहिया कितना चौड़ा है (व्यास)?",
+          mr: "चाकाच्या केंद्रापासून कडेपर्यंतची रेषा म्हणजे त्रिज्या. गाडीच्या चाकाची त्रिज्या 30 सेमी आहे. केंद्रातून चाक किती रुंद (व्यास)?",
+        },
+        answer: 60,
+        wrong: [30, 15, 90],
+        checkExpr: "30*2",
+        fmt: cm,
+        solution: {
+          en: "The diameter crosses the whole wheel — a radius to the centre and a radius beyond: 30 × 2 = 60 cm. 15 halves instead of doubling.",
+          hi: "व्यास पूरा पहिया पार करता है — एक त्रिज्या केंद्र तक, एक उसके आगे: 30 × 2 = 60 सेमी। 15 दुगना करने की जगह आधा कर देता है।",
+          mr: "व्यास सबंध चाक ओलांडतो — एक त्रिज्या केंद्रापर्यंत, एक पुढे: 30 × 2 = 60 सेमी. 15 दुप्पट करण्याऐवजी अर्धे करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A bangle measures 6 cm across its middle. What is its radius?",
+          hi: "एक चूड़ी बीच से 6 सेमी नापती है। उसकी त्रिज्या कितनी है?",
+          mr: "एक बांगडी मधून 6 सेमी भरते. तिची त्रिज्या किती?",
+        },
+        answer: 3,
+        wrong: [6, 12, 2],
+        checkExpr: "6/2",
+        fmt: cm,
+        solution: {
+          en: "The radius is half the middle-crossing: 6 ÷ 2 = 3 cm. 12 doubles the diameter — that walks out of the bangle altogether.",
+          hi: "त्रिज्या बीच वाली नाप की आधी है: 6 ÷ 2 = 3 सेमी। 12 व्यास को दुगना करता है — वह तो चूड़ी से बाहर निकल जाता है।",
+          mr: "त्रिज्या ही मधल्या मापाची अर्धी: 6 ÷ 2 = 3 सेमी. 12 व्यास दुप्पट करते — ते बांगडीबाहेरच जाते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A cycle wheel covers 2 metres in one full turn. How far does it roll in 4 turns?",
+          hi: "साइकिल का पहिया एक पूरे चक्कर में 2 मीटर चलता है। 4 चक्करों में कितना चलेगा?",
+          mr: "सायकलचे चाक एका पूर्ण फेरीत 2 मीटर जाते. 4 फेऱ्यांत किती जाईल?",
+        },
+        answer: 8,
+        wrong: [6, 2, 16],
+        checkExpr: "2*4",
+        fmt: m,
+        solution: {
+          en: "Each turn lays down 2 m: 2 × 4 = 8 m. The wheel writes its own circumference on the road, turn after turn.",
+          hi: "हर चक्कर 2 मीटर बिछाता है: 2 × 4 = 8 मीटर। पहिया अपनी ही परिधि सड़क पर लिखता चलता है, चक्कर-दर-चक्कर।",
+          mr: "प्रत्येक फेरी 2 मीटर अंथरते: 2 × 4 = 8 मीटर. चाक आपलाच परीघ रस्त्यावर लिहीत जाते, फेरीमागून फेरी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A round chapati is cut straight through the centre, then cut through the centre again crosswise. How many equal pieces are there?",
+          hi: "गोल रोटी को केंद्र से होकर सीधा काटा गया, फिर केंद्र से ही आड़ा काटा गया। कितने बराबर टुकड़े बने?",
+          mr: "गोल पोळी केंद्रातून सरळ कापली, मग केंद्रातूनच आडवी कापली. किती सारखे तुकडे झाले?",
+        },
+        answer: 4,
+        wrong: [2, 3, 8],
+        checkExpr: "2*2",
+        solution: {
+          en: "The first centre-cut makes 2 halves; the crosswise centre-cut halves each of those: 2 × 2 = 4 quarters. 8 needs two MORE cuts through the centre.",
+          hi: "पहला केंद्र-कट 2 आधे बनाता है; आड़ा केंद्र-कट हर आधे को फिर आधा करता है: 2 × 2 = 4 चौथाइयाँ। 8 के लिए केंद्र से दो और कट चाहिए।",
+          mr: "पहिला केंद्र-काप 2 अर्धे करतो; आडवा केंद्र-काप प्रत्येक अर्ध्याला पुन्हा अर्धे करतो: 2 × 2 = 4 पाव. 8 साठी केंद्रातून आणखी दोन काप हवेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A bullock-cart wheel made 100 turns and covered 200 metres. How far did one turn carry the cart?",
+          hi: "बैलगाड़ी के पहिए ने 100 चक्कर लगाए और 200 मीटर चला। एक चक्कर ने गाड़ी को कितना आगे बढ़ाया?",
+          mr: "बैलगाडीच्या चाकाने 100 फेऱ्या घेतल्या आणि 200 मीटर गेले. एका फेरीने गाडी किती पुढे नेली?",
+        },
+        answer: 2,
+        wrong: [100, 20, 4],
+        checkExpr: "200/100",
+        fmt: m,
+        solution: {
+          en: "200 metres shared over 100 turns: 200 ÷ 100 = 2 m each — that 2 m is the wheel's rim unrolled once. 20 loses a zero in the division.",
+          hi: "100 चक्करों में बँटे 200 मीटर: 200 ÷ 100 = 2-2 मीटर — यही 2 मीटर पहिए का एक बार खुला किनारा है। 20 भाग में एक शून्य खो देता है।",
+          mr: "100 फेऱ्यांत वाटलेले 200 मीटर: 200 ÷ 100 = 2-2 मीटर — हेच 2 मीटर म्हणजे चाकाची एकदा उलगडलेली कड. 20 भागाकारात एक शून्य हरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A rangoli has 3 circles sharing one centre, with radii 2 cm, 4 cm and 6 cm. How much longer is the biggest radius than the smallest?",
+          hi: "रंगोली में एक ही केंद्र के 3 वृत्त हैं, त्रिज्याएँ 2, 4 और 6 सेमी। सबसे बड़ी त्रिज्या सबसे छोटी से कितनी लंबी है?",
+          mr: "रांगोळीत एकाच केंद्राची 3 वर्तुळे आहेत, त्रिज्या 2, 4 आणि 6 सेमी. सर्वांत मोठी त्रिज्या सर्वांत लहानहून किती लांब?",
+        },
+        answer: 4,
+        wrong: [2, 6, 8],
+        checkExpr: "6-2",
+        fmt: cm,
+        solution: {
+          en: "Biggest minus smallest: 6 − 2 = 4 cm — the width of the coloured band between the outer and inner circles. 8 adds them instead.",
+          hi: "सबसे बड़ी घटा सबसे छोटी: 6 − 2 = 4 सेमी — बाहरी और भीतरी वृत्त के बीच की रंगीन पट्टी की चौड़ाई। 8 उन्हें जोड़ बैठता है।",
+          mr: "मोठी वजा लहान: 6 − 2 = 4 सेमी — बाहेरच्या आणि आतल्या वर्तुळांमधल्या रंगीत पट्ट्याची रुंदी. 8 त्या मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A toy car's wheel spins 60 turns every minute. How many turns in 5 minutes?",
+          hi: "खिलौना कार का पहिया हर मिनट 60 चक्कर घूमता है। 5 मिनट में कितने चक्कर?",
+          mr: "खेळण्यातल्या गाडीचे चाक दर मिनिटाला 60 फेऱ्या फिरते. 5 मिनिटांत किती फेऱ्या?",
+        },
+        answer: 300,
+        wrong: [65, 240, 350],
+        checkExpr: "60*5",
+        solution: {
+          en: "Five minutes of 60 turns each: 60 × 5 = 300 turns. 65 adds the minutes to the speed — a rate multiplies by the time it runs.",
+          hi: "60-60 चक्करों के पाँच मिनट: 60 × 5 = 300 चक्कर। 65 मिनटों को रफ़्तार में जोड़ देता है — दर उतने समय से गुणा होती है जितना वह चलती है।",
+          mr: "60-60 फेऱ्यांची पाच मिनिटे: 60 × 5 = 300 फेऱ्या. 65 मिनिटे वेगात मिळवते — दर तो चालतो त्या वेळाने गुणला जातो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A circular park has a radius of 35 metres, with gates at the two ends of one straight path through the centre. How long is that path, gate to gate?",
+          hi: "गोल पार्क की त्रिज्या 35 मीटर है, और केंद्र से गुज़रते एक सीधे रास्ते के दोनों सिरों पर फाटक हैं। फाटक से फाटक तक वह रास्ता कितना लंबा है?",
+          mr: "गोल बागेची त्रिज्या 35 मीटर आहे, आणि केंद्रातून जाणाऱ्या एका सरळ वाटेच्या दोन्ही टोकांना फाटके आहेत. फाटकापासून फाटकापर्यंत ती वाट किती लांब?",
+        },
+        answer: 70,
+        wrong: [35, 140, 105],
+        checkExpr: "35*2",
+        fmt: m,
+        solution: {
+          en: "Gate to gate through the centre is the diameter: 35 × 2 = 70 m. 35 stops at the fountain in the middle; 140 doubles the diameter itself.",
+          hi: "केंद्र से होकर फाटक-से-फाटक व्यास है: 35 × 2 = 70 मीटर। 35 बीच के फ़व्वारे पर रुक जाता है; 140 व्यास को ही दुगना कर देता है।",
+          mr: "केंद्रातून फाटक ते फाटक म्हणजे व्यास: 35 × 2 = 70 मीटर. 35 मधल्या कारंज्यावर थांबते; 140 व्यासालाच दुप्पट करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In a bangle race, Sudha's bangle rolls 10 cm in each turn. The track is 90 cm long. How many full turns does the bangle need to finish?",
+          hi: "चूड़ी-दौड़ में सुधा की चूड़ी हर चक्कर में 10 सेमी लुढ़कती है। पट्टी 90 सेमी लंबी है। दौड़ पूरी करने में चूड़ी को कितने पूरे चक्कर लगेंगे?",
+          mr: "बांगडी-शर्यतीत सुधाची बांगडी प्रत्येक फेरीत 10 सेमी घरंगळते. पट्टी 90 सेमी लांब आहे. शर्यत पुरी करायला बांगडीला किती पूर्ण फेऱ्या लागतील?",
+        },
+        answer: 9,
+        wrong: [10, 80, 8],
+        checkExpr: "90/10",
+        solution: {
+          en: "90 cm at 10 cm a turn: 90 ÷ 10 = 9 turns. 80 subtracts one turn's length from the track — the bangle repeats its 10 cm, it does not spend the track.",
+          hi: "10-10 सेमी के हिसाब से 90 सेमी: 90 ÷ 10 = 9 चक्कर। 80 पट्टी में से एक चक्कर की लंबाई घटाता है — चूड़ी अपने 10 सेमी दोहराती है, पट्टी को ख़र्च नहीं करती।",
+          mr: "10-10 सेमीच्या हिशेबाने 90 सेमी: 90 ÷ 10 = 9 फेऱ्या. 80 पट्टीतून एका फेरीची लांबी वजा करते — बांगडी आपले 10 सेमी पुनःपुन्हा घालते, पट्टी खर्च करत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A potter's wheel must spin 8 rounds to shape one diya. Today the potter shaped 15 diyas. How many rounds did the wheel spin?",
+          hi: "एक दीया गढ़ने के लिए कुम्हार के चाक को 8 चक्कर घूमना पड़ता है। आज कुम्हार ने 15 दीये गढ़े। चाक कितने चक्कर घूमा?",
+          mr: "एक पणती घडवायला कुंभाराच्या चाकाला 8 फेऱ्या फिराव्या लागतात. आज कुंभाराने 15 पणत्या घडवल्या. चाक किती फेऱ्या फिरले?",
+        },
+        answer: 120,
+        wrong: [23, 105, 128],
+        checkExpr: "8*15",
+        solution: {
+          en: "8 rounds fifteen times over: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 rounds. 105 slips on the 8 × 5; 23 adds rounds to diyas.",
+          hi: "8 चक्कर, पंद्रह बार: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 चक्कर। 105 में 8 × 5 फिसला; 23 चक्करों को दीयों में जोड़ देता है।",
+          mr: "8 फेऱ्या, पंधरा वेळा: 8 × 15 = 8 × 10 + 8 × 5 = 80 + 40 = 120 फेऱ्या. 105 मध्ये 8 × 5 घसरले; 23 फेऱ्या पणत्यांत मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Three children stand on the rim of a circular ground, each in a different place, and each holds a rope stretched straight to the centre pole. Every rope is 12 m. How much rope is that in all — and why are the three ropes equal?",
+          hi: "तीन बच्चे गोल मैदान के किनारे पर अलग-अलग जगह खड़े हैं, और हर एक ने केंद्र के खंभे तक सीधी रस्सी तानी है। हर रस्सी 12 मीटर है। कुल कितनी रस्सी हुई — और तीनों रस्सियाँ बराबर क्यों हैं?",
+          mr: "तीन मुले गोल मैदानाच्या कडेवर वेगवेगळ्या जागी उभी आहेत, आणि प्रत्येकाने केंद्राच्या खांबापर्यंत सरळ दोरी ताणली आहे. प्रत्येक दोरी 12 मीटर आहे. एकूण किती दोरी झाली — आणि तिन्ही दोऱ्या सारख्या का?",
+        },
+        answer: 36,
+        wrong: [24, 12, 48],
+        checkExpr: "12*3",
+        solution: {
+          en: "Three ropes of 12 m: 12 × 3 = 36 m. They are equal because each rope is a RADIUS — and every radius of a circle is the same length. That is the circle's whole secret: the rim is exactly the set of points one radius from the centre.",
+          hi: "12-12 मीटर की तीन रस्सियाँ: 12 × 3 = 36 मीटर। वे बराबर इसलिए हैं कि हर रस्सी एक त्रिज्या है — और वृत्त की हर त्रिज्या एक-सी लंबी होती है। यही वृत्त का पूरा राज़ है: किनारा ठीक उन बिंदुओं का घेरा है जो केंद्र से एक त्रिज्या दूर हैं।",
+          mr: "12-12 मीटरच्या तीन दोऱ्या: 12 × 3 = 36 मीटर. त्या सारख्या कारण प्रत्येक दोरी ही त्रिज्या आहे — आणि वर्तुळाची प्रत्येक त्रिज्या सारखीच लांब असते. हेच वर्तुळाचे सगळे गुपित: कड म्हणजे केंद्रापासून एक त्रिज्या दूर असलेल्या बिंदूंचा वेढा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 8 — Carts and Wheels",
+      name: "Carts and Wheels",
+      slug: "maths-4-carts-and-wheels",
+      summary: "Circles everywhere — radius and diameter, wheels writing their rims on the road, and why every rope to the centre is the same.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "गाड़ियाँ और पहिए",
+          summary: "हर ओर वृत्त — त्रिज्या और व्यास, सड़क पर अपना किनारा लिखते पहिए, और केंद्र तक की हर रस्सी बराबर क्यों।",
+        },
+        mr: {
+          name: "गाड्या आणि चाके",
+          summary: "सगळीकडे वर्तुळे — त्रिज्या आणि व्यास, रस्त्यावर आपली कड लिहिणारी चाके, आणि केंद्रापर्यंतची प्रत्येक दोरी सारखी का.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Play with Patterns (growing, shrinking and coded patterns)   */
+/* ------------------------------------------------------------------------- */
+function playWithPatterns4(): TopicFileOut {
+  const rand = rng("maths-4-play-with-patterns");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The pattern goes 2, 4, 6, 8, … What comes next?",
+          hi: "पैटर्न है 2, 4, 6, 8, … आगे क्या आएगा?",
+          mr: "आकृतिबंध आहे 2, 4, 6, 8, … पुढे काय येईल?",
+        },
+        answer: 10,
+        wrong: [9, 12, 16],
+        checkExpr: "8+2",
+        solution: {
+          en: "Each step adds 2: 8 + 2 = 10 — the even numbers marching. 9 belongs to the odd family walking in between.",
+          hi: "हर क़दम 2 जोड़ता है: 8 + 2 = 10 — सम संख्याओं की क़तार। 9 बीच में चलते विषम परिवार का है।",
+          mr: "प्रत्येक पाऊल 2 वाढवते: 8 + 2 = 10 — सम संख्यांची रांग. 9 मध्ये चालणाऱ्या विषम कुटुंबातला आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The pattern goes 5, 10, 15, 20, … What comes next?",
+          hi: "पैटर्न है 5, 10, 15, 20, … आगे क्या आएगा?",
+          mr: "आकृतिबंध आहे 5, 10, 15, 20, … पुढे काय येईल?",
+        },
+        answer: 25,
+        wrong: [24, 30, 21],
+        checkExpr: "20+5",
+        solution: {
+          en: "The step is 5: 20 + 5 = 25 — the five-times table wearing a pattern's clothes. 30 jumps two steps at once.",
+          hi: "क़दम 5 का है: 20 + 5 = 25 — पैटर्न के कपड़ों में पाँच का पहाड़ा। 30 एक साथ दो क़दम कूद जाता है।",
+          mr: "पाऊल 5 चे आहे: 20 + 5 = 25 — आकृतिबंधाच्या कपड्यांतला पाचाचा पाढा. 30 एकदम दोन पावले उडी मारते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Laddoos are laid out 1, 3, 5, 7, … How many in the next heap?",
+          hi: "लड्डू रखे हैं 1, 3, 5, 7, … अगले ढेर में कितने होंगे?",
+          mr: "लाडू मांडले आहेत 1, 3, 5, 7, … पुढच्या ढिगात किती असतील?",
+        },
+        answer: 9,
+        wrong: [8, 11, 14],
+        checkExpr: "7+2",
+        solution: {
+          en: "Odd numbers climb by 2: 7 + 2 = 9. 8 slips onto the even ladder standing next to this one.",
+          hi: "विषम संख्याएँ 2-2 चढ़ती हैं: 7 + 2 = 9। 8 बग़ल में खड़ी सम सीढ़ी पर फिसल जाता है।",
+          mr: "विषम संख्या 2-2 ने चढतात: 7 + 2 = 9. 8 शेजारी उभ्या सम शिडीवर घसरतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "This pattern DOUBLES: 3, 6, 12, 24, … What comes next?",
+          hi: "यह पैटर्न दुगना होता है: 3, 6, 12, 24, … आगे क्या?",
+          mr: "हा आकृतिबंध दुप्पट होतो: 3, 6, 12, 24, … पुढे काय?",
+        },
+        answer: 48,
+        wrong: [36, 30, 27],
+        checkExpr: "24*2",
+        solution: {
+          en: "Each number is the last one doubled: 24 × 2 = 48. 36 adds 12 — that was the OLD gap; a doubling pattern's gaps grow with it.",
+          hi: "हर संख्या पिछली की दुगनी: 24 × 2 = 48। 36 बारह जोड़ता है — वह पुराना फ़ासला था; दुगने पैटर्न के फ़ासले उसी के साथ बढ़ते हैं।",
+          mr: "प्रत्येक संख्या मागचीच्या दुप्पट: 24 × 2 = 48. 36 बारा मिळवते — ते जुने अंतर होते; दुप्पट होणाऱ्या आकृतिबंधाची अंतरे त्याच्यासोबत वाढतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "This pattern walks DOWN: 90, 80, 70, … What comes next?",
+          hi: "यह पैटर्न नीचे उतरता है: 90, 80, 70, … आगे क्या?",
+          mr: "हा आकृतिबंध खाली उतरतो: 90, 80, 70, … पुढे काय?",
+        },
+        answer: 60,
+        wrong: [65, 50, 75],
+        checkExpr: "70-10",
+        solution: {
+          en: "Each step takes away 10: 70 − 10 = 60. 50 skips a stair on the way down.",
+          hi: "हर क़दम 10 घटाता है: 70 − 10 = 60। 50 उतरते हुए एक सीढ़ी लाँघ जाता है।",
+          mr: "प्रत्येक पाऊल 10 वजा करते: 70 − 10 = 60. 50 उतरताना एक पायरी ओलांडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In a secret code, each letter is its place-number: A=1, B=2, C=3 … What number does the word CAB make when you add its letters?",
+          hi: "गुप्त कूट में हर अक्षर अपनी जगह की संख्या है: A=1, B=2, C=3 … CAB शब्द के अक्षर जोड़ने पर कौन-सी संख्या बनती है?",
+          mr: "गुप्त सांकेतिक भाषेत प्रत्येक अक्षर त्याच्या जागेचा आकडा: A=1, B=2, C=3 … CAB या शब्दाची अक्षरे मिळवल्यावर कोणती संख्या होते?",
+        },
+        answer: 6,
+        wrong: [5, 7, 312],
+        checkExpr: "3+1+2",
+        solution: {
+          en: "C=3, A=1, B=2, and 3 + 1 + 2 = 6. 312 writes the letters side by side instead of adding — a code must be worked, not just read.",
+          hi: "C=3, A=1, B=2, और 3 + 1 + 2 = 6। 312 अक्षरों को जोड़ने की जगह अग़ल-बग़ल लिख देता है — कूट हल करना पड़ता है, केवल पढ़ना नहीं।",
+          mr: "C=3, A=1, B=2, आणि 3 + 1 + 2 = 6. 312 अक्षरे मिळवण्याऐवजी शेजारी-शेजारी लिहिते — सांकेतिक भाषा सोडवावी लागते, नुसती वाचून चालत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The square-dot pattern goes 1, 4, 9, 16, … What comes next?",
+          hi: "वर्ग-बिंदुओं का पैटर्न है 1, 4, 9, 16, … आगे क्या?",
+          mr: "चौरस-ठिपक्यांचा आकृतिबंध आहे 1, 4, 9, 16, … पुढे काय?",
+        },
+        answer: 25,
+        wrong: [20, 24, 32],
+        checkExpr: "5*5",
+        solution: {
+          en: "These are square arrays of dots: 1×1, 2×2, 3×3, 4×4 — next is 5 × 5 = 25. 20 adds 4 again, but this pattern's gaps grow: +3, +5, +7, then +9.",
+          hi: "ये बिंदुओं के वर्ग हैं: 1×1, 2×2, 3×3, 4×4 — अगला 5 × 5 = 25। 20 फिर 4 जोड़ता है, पर इस पैटर्न के फ़ासले बढ़ते हैं: +3, +5, +7, फिर +9।",
+          mr: "हे ठिपक्यांचे चौरस आहेत: 1×1, 2×2, 3×3, 4×4 — पुढचा 5 × 5 = 25. 20 पुन्हा 4 मिळवते, पण या आकृतिबंधाची अंतरे वाढतात: +3, +5, +7, मग +9.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In a magic square every row adds to 15. One row shows 8, ▢, 4. What hides in the box?",
+          hi: "जादुई वर्ग में हर पंक्ति का जोड़ 15 है। एक पंक्ति में 8, ▢, 4 है। डिब्बे में क्या छिपा है?",
+          mr: "जादूच्या चौरसात प्रत्येक ओळीची बेरीज 15 आहे. एका ओळीत 8, ▢, 4 आहे. चौकटीत काय लपले आहे?",
+        },
+        answer: 3,
+        wrong: [12, 7, 5],
+        checkExpr: "15-8-4",
+        solution: {
+          en: "The row must reach 15: 15 − 8 − 4 = 3, and checking, 8 + 3 + 4 = 15. 12 subtracts only the 8 — both neighbours have already claimed their share.",
+          hi: "पंक्ति को 15 तक पहुँचना है: 15 − 8 − 4 = 3, और जाँच में 8 + 3 + 4 = 15। 12 केवल 8 घटाता है — दोनों पड़ोसी अपना हिस्सा पहले ही ले चुके हैं।",
+          mr: "ओळीने 15 गाठायचे आहे: 15 − 8 − 4 = 3, आणि तपासात 8 + 3 + 4 = 15. 12 फक्त 8 वजा करते — दोन्ही शेजाऱ्यांनी आपला वाटा आधीच घेतला आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The staircase pattern totals each stair: 1, then 1+2, then 1+2+3. What is the total on the FOURTH stair?",
+          hi: "सीढ़ी-पैटर्न हर सीढ़ी का जोड़ बताता है: 1, फिर 1+2, फिर 1+2+3। चौथी सीढ़ी का जोड़ क्या है?",
+          mr: "जिना-आकृतिबंध प्रत्येक पायरीची बेरीज सांगतो: 1, मग 1+2, मग 1+2+3. चौथ्या पायरीची बेरीज किती?",
+        },
+        answer: 10,
+        wrong: [6, 4, 16],
+        checkExpr: "1+2+3+4",
+        solution: {
+          en: "The fourth stair stacks 1 + 2 + 3 + 4 = 10 — the triangle numbers 1, 3, 6, 10. 6 is the THIRD stair; 4 is only the newest step, not the whole staircase.",
+          hi: "चौथी सीढ़ी पर जमा 1 + 2 + 3 + 4 = 10 — त्रिभुज संख्याएँ 1, 3, 6, 10। 6 तीसरी सीढ़ी है; 4 केवल सबसे नया क़दम है, पूरी सीढ़ी नहीं।",
+          mr: "चौथ्या पायरीवर 1 + 2 + 3 + 4 = 10 — त्रिकोणी संख्या 1, 3, 6, 10. 6 ही तिसरी पायरी; 4 हे फक्त नवे पाऊल, सगळा जिना नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Add the first five odd numbers: 1 + 3 + 5 + 7 + 9. What do they make?",
+          hi: "पहली पाँच विषम संख्याएँ जोड़िए: 1 + 3 + 5 + 7 + 9। कुल क्या बनता है?",
+          mr: "पहिल्या पाच विषम संख्या मिळवा: 1 + 3 + 5 + 7 + 9. एकूण किती होते?",
+        },
+        answer: 25,
+        wrong: [24, 20, 30],
+        checkExpr: "1+3+5+7+9",
+        solution: {
+          en: "Pair them round the middle: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — which is 5 × 5. The first five odd numbers always build the fifth square; that is the dot-picture behind it.",
+          hi: "बीच के इर्द-गिर्द जोड़े बनाइए: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — यानी 5 × 5। पहली पाँच विषम संख्याएँ हमेशा पाँचवाँ वर्ग बनाती हैं; यही इसके पीछे की बिंदु-तस्वीर है।",
+          mr: "मधोमध जोड्या लावा: (1+9) + (3+7) + 5 = 10 + 10 + 5 = 25 — म्हणजे 5 × 5. पहिल्या पाच विषम संख्या नेहमी पाचवा चौरस बांधतात; हेच त्यामागचे ठिपक्यांचे चित्र.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "On a calendar, four dates make a 2-by-2 square. The smallest of the four is 8. What do all four dates add up to?",
+          hi: "कैलेंडर पर चार तारीख़ें 2×2 का वर्ग बनाती हैं। चारों में सबसे छोटी 8 है। चारों तारीख़ों का जोड़ क्या होगा?",
+          mr: "दिनदर्शिकेवर चार तारखा 2×2 चा चौरस करतात. चौघांत सर्वांत लहान 8 आहे. चारही तारखांची बेरीज किती?",
+        },
+        answer: 48,
+        wrong: [32, 46, 40],
+        checkExpr: "8+9+15+16",
+        solution: {
+          en: "The square holds 8 and 9, and directly below them 15 and 16 (a week later): 8 + 9 + 15 + 16 = 48. The pretty part: both diagonals agree, 8 + 16 = 9 + 15 = 24 — every calendar square hides this balance. 32 forgets the lower row lives a whole week down.",
+          hi: "वर्ग में 8 और 9 हैं, और ठीक नीचे 15 और 16 (एक हफ़्ता बाद): 8 + 9 + 15 + 16 = 48। सुंदर बात: दोनों विकर्ण सहमत हैं, 8 + 16 = 9 + 15 = 24 — हर कैलेंडर-वर्ग में यह संतुलन छिपा है। 32 भूलता है कि निचली पंक्ति पूरे हफ़्ते नीचे रहती है।",
+          mr: "चौरसात 8 आणि 9, आणि बरोबर खाली 15 आणि 16 (आठवड्याने): 8 + 9 + 15 + 16 = 48. सुंदर गोष्ट: दोन्ही कर्ण सहमत, 8 + 16 = 9 + 15 = 24 — प्रत्येक दिनदर्शिका-चौरसात हा तोल लपलेला असतो. 32 विसरते की खालची ओळ अख्ख्या आठवड्याने खाली राहते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 10 — Play with Patterns",
+      name: "Play with Patterns",
+      slug: "maths-4-play-with-patterns",
+      summary: "Steps that repeat, gaps that grow, letter codes and magic squares — finding the rule and riding it one step further.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "पैटर्न का खेल",
+          summary: "दोहराते क़दम, बढ़ते फ़ासले, अक्षर-कूट और जादुई वर्ग — नियम पकड़ना और उस पर एक क़दम आगे चलना।",
+        },
+        mr: {
+          name: "आकृतिबंधांचा खेळ",
+          summary: "पुनरावृत्त पावले, वाढती अंतरे, अक्षर-संकेत आणि जादूचे चौरस — नियम शोधणे आणि त्यावर एक पाऊल पुढे जाणे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Smart Charts (tally marks, pictographs, reading data)        */
+/* ------------------------------------------------------------------------- */
+function smartCharts4(): TopicFileOut {
+  const rand = rng("maths-4-smart-charts");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A tally shows one full bundle of five and two single marks: ¦¦¦¦ ||. What count is that?",
+          hi: "मिलान-चिह्नों में पाँच का एक पूरा बंडल और दो अकेली रेखाएँ हैं: ¦¦¦¦ ||। गिनती कितनी हुई?",
+          mr: "ताळ-खुणांत पाचाचा एक पूर्ण गठ्ठा आणि दोन सुट्या रेघा आहेत: ¦¦¦¦ ||. मोजणी किती झाली?",
+        },
+        answer: 7,
+        wrong: [6, 52, 10],
+        checkExpr: "5+2",
+        solution: {
+          en: "A crossed bundle is worth 5, plus the 2 singles: 5 + 2 = 7. 52 reads 'five and two' as digits — tally bundles add, they do not sit side by side.",
+          hi: "कटा बंडल 5 का है, ऊपर से 2 अकेली: 5 + 2 = 7। 52 'पाँच और दो' को अंक मानकर पढ़ता है — मिलान के बंडल जुड़ते हैं, अग़ल-बग़ल नहीं बैठते।",
+          mr: "आडवी रेघ मारलेला गठ्ठा 5 चा, शिवाय 2 सुट्या: 5 + 2 = 7. 52 'पाच आणि दोन' अंक म्हणून वाचते — ताळाचे गठ्ठे मिळवले जातात, शेजारी बसत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The fruit chart says 12 children like mango and 8 like banana. How many MORE like mango?",
+          hi: "फल-चार्ट कहता है 12 बच्चों को आम पसंद है और 8 को केला। आम वालों की गिनती कितनी ज़्यादा है?",
+          mr: "फळ-तक्ता सांगतो 12 मुलांना आंबा आवडतो आणि 8 जणांना केळे. आंबेवाले किती जास्त?",
+        },
+        answer: 4,
+        wrong: [20, 8, 3],
+        checkExpr: "12-8",
+        solution: {
+          en: "The gap between the bars: 12 − 8 = 4 children. 20 adds the bars — 'how many more' asks for the difference, not the crowd.",
+          hi: "पट्टियों के बीच का फ़ासला: 12 − 8 = 4 बच्चे। 20 पट्टियाँ जोड़ देता है — 'कितने ज़्यादा' अंतर पूछता है, भीड़ नहीं।",
+          mr: "पट्ट्यांमधले अंतर: 12 − 8 = 4 मुले. 20 पट्ट्या मिळवते — 'किती जास्त' फरक विचारते, गर्दी नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In a pictograph, one ball symbol stands for 2 children. Cricket's row shows 5 balls. How many children chose cricket?",
+          hi: "चित्र-चार्ट में गेंद का एक चिह्न 2 बच्चों का है। क्रिकेट की पंक्ति में 5 गेंदें हैं। कितने बच्चों ने क्रिकेट चुना?",
+          mr: "चित्र-तक्त्यात चेंडूचे एक चिन्ह 2 मुलांचे आहे. क्रिकेटच्या ओळीत 5 चेंडू आहेत. किती मुलांनी क्रिकेट निवडले?",
+        },
+        answer: 10,
+        wrong: [5, 7, 25],
+        checkExpr: "2*5",
+        solution: {
+          en: "Five symbols worth 2 each: 2 × 5 = 10 children. 5 counts the pictures, not the children they stand for — a pictograph always names its rate.",
+          hi: "2-2 के पाँच चिह्न: 2 × 5 = 10 बच्चे। 5 तस्वीरें गिनता है, जिन बच्चों की वे जगह लेती हैं उन्हें नहीं — चित्र-चार्ट हमेशा अपना भाव बताता है।",
+          mr: "2-2 ची पाच चिन्हे: 2 × 5 = 10 मुले. 5 चित्रे मोजते, ती ज्यांच्या जागी आहेत ती मुले नव्हे — चित्र-तक्ता नेहमी आपला भाव सांगतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The absent-list says: Monday 3, Tuesday 5, Wednesday 2. How many absences in the three days?",
+          hi: "अनुपस्थिति-सूची कहती है: सोमवार 3, मंगलवार 5, बुधवार 2। तीन दिनों में कुल कितनी अनुपस्थितियाँ?",
+          mr: "गैरहजेरी-यादी सांगते: सोमवार 3, मंगळवार 5, बुधवार 2. तीन दिवसांत एकूण किती गैरहजेऱ्या?",
+        },
+        answer: 10,
+        wrong: [8, 12, 352],
+        checkExpr: "3+5+2",
+        solution: {
+          en: "Add the days: 3 + 5 + 2 = 10. 8 drops Wednesday; 352 lines the digits up instead of adding them.",
+          hi: "दिन जोड़िए: 3 + 5 + 2 = 10। 8 बुधवार गिरा देता है; 352 अंकों को जोड़ने की जगह क़तार में खड़ा कर देता है।",
+          mr: "दिवस मिळवा: 3 + 5 + 2 = 10. 8 बुधवार गाळते; 352 अंक मिळवण्याऐवजी रांगेत उभे करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In the tree survey, one leaf symbol = 10 trees. The neem row shows 4 leaves. How many neem trees were counted?",
+          hi: "पेड़ों की गिनती में पत्ती का एक चिह्न = 10 पेड़। नीम की पंक्ति में 4 पत्तियाँ हैं। कितने नीम गिने गए?",
+          mr: "झाडांच्या मोजणीत पानाचे एक चिन्ह = 10 झाडे. कडुनिंबाच्या ओळीत 4 पाने आहेत. किती कडुनिंब मोजले गेले?",
+        },
+        answer: 40,
+        wrong: [4, 14, 400],
+        checkExpr: "10*4",
+        solution: {
+          en: "Four symbols of 10: 10 × 4 = 40 trees. 14 adds the rate to the symbols; 400 gives each leaf a hundred trees it never promised.",
+          hi: "10-10 के चार चिह्न: 10 × 4 = 40 पेड़। 14 भाव को चिह्नों में जोड़ देता है; 400 हर पत्ती को सौ पेड़ थमा देता है, जिनका वादा उसने कभी नहीं किया।",
+          mr: "10-10 ची चार चिन्हे: 10 × 4 = 40 झाडे. 14 भाव चिन्हांत मिळवते; 400 प्रत्येक पानाला शंभर झाडे देते, जी त्याने कधी कबूल केली नव्हती.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The games vote: kho-kho 14, cricket 12, kabaddi 9. By how many votes did the winner beat the second place?",
+          hi: "खेलों का मतदान: खो-खो 14, क्रिकेट 12, कबड्डी 9। विजेता ने दूसरे स्थान को कितने मतों से हराया?",
+          mr: "खेळांचे मतदान: खो-खो 14, क्रिकेट 12, कबड्डी 9. विजेत्याने दुसऱ्या क्रमांकाला किती मतांनी हरवले?",
+        },
+        answer: 2,
+        wrong: [5, 3, 26],
+        checkExpr: "14-12",
+        solution: {
+          en: "Winner kho-kho (14), second cricket (12): 14 − 12 = 2 votes. 5 compares the winner with LAST place — read the chart's order before subtracting.",
+          hi: "विजेता खो-खो (14), दूसरा क्रिकेट (12): 14 − 12 = 2 मत। 5 विजेता की तुलना आख़िरी स्थान से करता है — घटाने से पहले चार्ट का क्रम पढ़िए।",
+          mr: "विजेता खो-खो (14), दुसरा क्रिकेट (12): 14 − 12 = 2 मते. 5 विजेत्याची तुलना शेवटच्या क्रमांकाशी करते — वजा करण्याआधी तक्त्याचा क्रम वाचा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "60 children were asked how they reach school: 25 walk, 20 cycle, the rest come by bus. How many come by bus?",
+          hi: "60 बच्चों से पूछा गया कि वे स्कूल कैसे आते हैं: 25 पैदल, 20 साइकिल से, बाक़ी बस से। बस से कितने आते हैं?",
+          mr: "60 मुलांना विचारले शाळेत कसे येता: 25 चालत, 20 सायकलने, उरलेले बसने. बसने किती येतात?",
+        },
+        answer: 15,
+        wrong: [45, 35, 20],
+        checkExpr: "60-25-20",
+        solution: {
+          en: "The bus children are what the chart did not name yet: 60 − 25 − 20 = 15. 45 removes only the walkers — the cyclists have also answered.",
+          hi: "बस वाले वे हैं जिन्हें चार्ट ने अभी नाम नहीं दिया: 60 − 25 − 20 = 15। 45 केवल पैदल वालों को हटाता है — साइकिल वाले भी उत्तर दे चुके हैं।",
+          mr: "बसवाली मुले म्हणजे तक्त्याने अजून नाव न दिलेली: 60 − 25 − 20 = 15. 45 फक्त चालणाऱ्यांना काढते — सायकलवाल्यांनीही उत्तर दिले आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In the library pictograph, one book symbol = 4 books. The story-shelf row shows 7 symbols and one HALF symbol. How many books is that?",
+          hi: "पुस्तकालय के चित्र-चार्ट में किताब का एक चिह्न = 4 किताबें। कहानी-रैक की पंक्ति में 7 चिह्न और एक आधा चिह्न है। यह कितनी किताबें हुईं?",
+          mr: "वाचनालयाच्या चित्र-तक्त्यात पुस्तकाचे एक चिन्ह = 4 पुस्तके. गोष्टींच्या मांडणीच्या ओळीत 7 चिन्हे आणि एक अर्धे चिन्ह आहे. ती किती पुस्तके?",
+        },
+        answer: 30,
+        wrong: [28, 32, 15],
+        checkExpr: "4*7+4/2",
+        solution: {
+          en: "Seven full symbols: 4 × 7 = 28, and the half symbol adds half of 4, i.e. 2: 28 + 2 = 30 books. 28 ignores the half; 32 rounds it up to a full symbol it never was.",
+          hi: "सात पूरे चिह्न: 4 × 7 = 28, और आधा चिह्न 4 का आधा यानी 2 जोड़ता है: 28 + 2 = 30 किताबें। 28 आधे को अनदेखा करता है; 32 उसे पूरा चिह्न बना देता है, जो वह कभी था नहीं।",
+          mr: "सात पूर्ण चिन्हे: 4 × 7 = 28, आणि अर्धे चिन्ह 4 चा अर्धा म्हणजे 2 मिळवते: 28 + 2 = 30 पुस्तके. 28 अर्ध्याकडे दुर्लक्ष करते; 32 त्याला कधी नव्हते ते पूर्ण चिन्ह करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The rainfall chart shows July got 90 mm and August got double July's. How much rain fell in August?",
+          hi: "वर्षा-चार्ट दिखाता है जुलाई में 90 मिमी और अगस्त में जुलाई का दुगना। अगस्त में कितनी बारिश हुई?",
+          mr: "पर्जन्य-तक्ता दाखवतो जुलैत 90 मिमी आणि ऑगस्टात जुलैच्या दुप्पट. ऑगस्टात किती पाऊस पडला?",
+        },
+        answer: 180,
+        wrong: [92, 45, 190],
+        checkExpr: "90*2",
+        solution: {
+          en: "Double of July: 90 × 2 = 180 mm. 45 halves it — 'double' climbs, never descends; 92 adds the 2 as millimetres.",
+          hi: "जुलाई का दुगना: 90 × 2 = 180 मिमी। 45 आधा कर देता है — 'दुगना' चढ़ता है, उतरता कभी नहीं; 92 दो को मिलीमीटर बनाकर जोड़ देता है।",
+          mr: "जुलैच्या दुप्पट: 90 × 2 = 180 मिमी. 45 अर्धे करते — 'दुप्पट' चढते, कधी उतरत नाही; 92 दोनाला मिलिमीटर करून मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A class chart counts 35 children in all, and it shows 5 more girls than boys. How many boys are there?",
+          hi: "कक्षा-चार्ट कुल 35 बच्चे गिनता है, और लड़कियाँ लड़कों से 5 ज़्यादा दिखाता है। लड़के कितने हैं?",
+          mr: "वर्ग-तक्ता एकूण 35 मुले मोजतो, आणि मुली मुलग्यांहून 5 जास्त दाखवतो. मुलगे किती?",
+        },
+        answer: 15,
+        wrong: [20, 17, 30],
+        checkExpr: "(35-5)/2",
+        solution: {
+          en: "Set the extra 5 girls aside: 35 − 5 = 30 splits evenly, 15 boys and 15 girls; return the 5 and the girls are 20. So boys = 15 — and 20 is the girls' number, the trap answer sitting one step further.",
+          hi: "ऊपर की 5 लड़कियाँ अलग रखिए: 35 − 5 = 30 बराबर बँटता है, 15 लड़के और 15 लड़कियाँ; 5 लौटाइए तो लड़कियाँ 20। लड़के = 15 — और 20 लड़कियों की गिनती है, एक क़दम आगे बैठा फंदा।",
+          mr: "वरच्या 5 मुली बाजूला ठेवा: 35 − 5 = 30 सारखे वाटले जाते, 15 मुलगे आणि 15 मुली; 5 परत द्या की मुली 20. मुलगे = 15 — आणि 20 ही मुलींची संख्या, एक पाऊल पुढे बसलेला सापळा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "50 votes were cast for the class monitor. The counter's chart records 18 for Asha, 14 for Bina and 12 for Chand — and then he stops. How many votes has his chart lost?",
+          hi: "कक्षा-मॉनिटर के लिए 50 मत पड़े। गिनने वाले के चार्ट में आशा के 18, बीना के 14 और चाँद के 12 दर्ज हैं — और फिर वह रुक जाता है। उसके चार्ट ने कितने मत खो दिए?",
+          mr: "वर्ग-मॉनिटरसाठी 50 मते पडली. मोजणाऱ्याच्या तक्त्यात आशाची 18, बिनाची 14 आणि चांदची 12 नोंदली — आणि मग तो थांबतो. त्याच्या तक्त्याने किती मते गमावली?",
+        },
+        answer: 6,
+        wrong: [44, 4, 16],
+        checkExpr: "50-18-14-12",
+        solution: {
+          en: "Recorded: 18 + 14 + 12 = 44. Cast: 50. Missing: 50 − 44 = 6 votes. A chart is only honest if its parts return the total: checking the sum against the whole is how you catch a chart that quietly dropped somebody's votes.",
+          hi: "दर्ज: 18 + 14 + 12 = 44। पड़े: 50। ग़ायब: 50 − 44 = 6 मत। चार्ट तभी ईमानदार है जब उसके हिस्से कुल लौटा दें — जोड़ को कुल से मिलाना ही वह तरीक़ा है जिससे चुपचाप मत गिराता चार्ट पकड़ा जाता है।",
+          mr: "नोंदले: 18 + 14 + 12 = 44. पडली: 50. गहाळ: 50 − 44 = 6 मते. तक्ता तेव्हाच प्रामाणिक, जेव्हा त्याचे भाग एकूण परत देतात — बेरीज एकुणाशी ताडणे हाच गुपचूप मते गाळणारा तक्ता पकडण्याचा मार्ग.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 14 — Smart Charts",
+      name: "Smart Charts",
+      slug: "maths-4-smart-charts",
+      summary: "Tally bundles, pictograph rates and bars compared — reading what a chart says, and checking whether it kept every vote.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "स्मार्ट चार्ट",
+          summary: "मिलान के बंडल, चित्र-चार्ट के भाव और पट्टियों की तुलना — चार्ट जो कहता है उसे पढ़ना, और परखना कि उसने हर मत सँभाला या नहीं।",
+        },
+        mr: {
+          name: "स्मार्ट तक्ते",
+          summary: "ताळाचे गठ्ठे, चित्र-तक्त्यांचे भाव आणि पट्ट्यांची तुलना — तक्ता काय सांगतो ते वाचणे, आणि त्याने प्रत्येक मत सांभाळले का हे ताडणे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G4_MATHS: TopicFileOut[] = [
   buildingWithBricks(),
   longAndShort4(),
+  aTripToBhopal(),
   tickTickTick(),
+  theWayTheWorldLooks(),
   theJunkSeller(),
   jugsAndMugs4(),
+  cartsAndWheels(),
   halvesAndQuarters(),
+  playWithPatterns4(),
   tablesAndShares4(),
   howHeavyHowLight(),
   fieldsAndFences(),
+  smartCharts4(),
 ];
