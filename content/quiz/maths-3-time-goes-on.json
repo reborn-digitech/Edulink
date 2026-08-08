@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 3,
+  "chapter": "Chapter 7 — Time Goes On",
+  "name": "Time Goes On",
+  "slug": "maths-3-time-goes-on",
+  "summary": "Clocks, calendars and the counting they hide — half past, a week from today, and the night that crosses twelve.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "समय चलता जाए",
+      "summary": "घड़ियाँ, कैलेंडर और उनमें छिपी गिनती — साढ़े, आज से एक सप्ताह, और बारह पार करती रात।"
+    },
+    "mr": {
+      "name": "वेळ पुढे जातो",
+      "summary": "घड्याळे, दिनदर्शिका आणि त्यांत लपलेली मोजणी — साडे, आजपासून आठवडा, आणि बारा ओलांडणारी रात्र."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 3)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many months are there in a year?",
+      "choices": [
+        "52",
+        "24",
+        "12",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "A year holds 12 months, January through December. 52 counts its weeks, and 24 its fortnights — real numbers, wrong question.",
+      "checkExpr": "6*2",
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ष में कितने महीने होते हैं?",
+          "choices": [
+            "52",
+            "24",
+            "12",
+            "10"
+          ],
+          "solution": "वर्ष में 12 महीने होते हैं, जनवरी से दिसंबर तक। 52 उसके सप्ताह गिनता है — सही संख्या, ग़लत सवाल।"
+        },
+        "mr": {
+          "stem": "एका वर्षात किती महिने असतात?",
+          "choices": [
+            "52",
+            "24",
+            "12",
+            "10"
+          ],
+          "solution": "वर्षात 12 महिने असतात, जानेवारी ते डिसेंबर. 52 त्याचे आठवडे मोजते — खरी संख्या, चुकीचा प्रश्न."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The long hand of a clock takes how many minutes to go all the way around once?",
+      "choices": [
+        "24",
+        "12",
+        "60",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "One full circle of the minute hand is one hour — 60 minutes. Thirty is only half the face; 12 counts the numbers it passes, not the minutes.",
+      "checkExpr": "6*10",
+      "translations": {
+        "hi": {
+          "stem": "घड़ी की बड़ी सुई को एक पूरा चक्कर लगाने में कितने मिनट लगते हैं?",
+          "choices": [
+            "24",
+            "12",
+            "60",
+            "30"
+          ],
+          "solution": "मिनट की सुई का एक पूरा चक्कर एक घंटा है — 60 मिनट। तीस आधा चेहरा ही है; 12 उन अंकों की गिनती है जिनसे वह गुज़रती है, मिनटों की नहीं।"
+        },
+        "mr": {
+          "stem": "घड्याळाच्या मोठ्या काट्याला एक पूर्ण फेरी मारायला किती मिनिटे लागतात?",
+          "choices": [
+            "24",
+            "12",
+            "60",
+            "30"
+          ],
+          "solution": "मिनिट काट्याची एक पूर्ण फेरी म्हणजे एक तास — 60 मिनिटे. तीस म्हणजे अर्धेच वर्तुळ; 12 ही तो ओलांडतो त्या आकड्यांची मोजणी, मिनिटांची नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "School starts at 9 o'clock and the first bell rings 40 minutes later. The clock then shows how many minutes past 9?",
+      "choices": [
+        "30",
+        "20",
+        "50",
+        "40"
+      ],
+      "answerIndex": 3,
+      "solution": "Forty minutes after 9:00 the clock reads 9:40 — the minute hand points at the 8, because each clock number is worth 5 minutes and 8 × 5 = 40.",
+      "checkExpr": "9*0+40",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल 9 बजे शुरू होता है और पहली घंटी 40 मिनट बाद बजती है। तब घड़ी 9 बजकर कितने मिनट दिखाती है?",
+          "choices": [
+            "30",
+            "20",
+            "50",
+            "40"
+          ],
+          "solution": "9:00 के चालीस मिनट बाद घड़ी 9:40 दिखाती है — मिनट की सुई 8 पर होती है, क्योंकि घड़ी का हर अंक 5 मिनट का है और 8 × 5 = 40।"
+        },
+        "mr": {
+          "stem": "शाळा 9 वाजता सुरू होते आणि पहिली घंटा 40 मिनिटांनी वाजते. तेव्हा घड्याळ 9 वाजून किती मिनिटे दाखवते?",
+          "choices": [
+            "30",
+            "20",
+            "50",
+            "40"
+          ],
+          "solution": "9:00 नंतर चाळीस मिनिटांनी घड्याळ 9:40 दाखवते — मिनिट काटा 8 वर असतो, कारण घड्याळाचा प्रत्येक आकडा 5 मिनिटांचा आणि 8 × 5 = 40."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Today is the 12th of the month. What date will it be exactly one week from today?",
+      "choices": [
+        "19",
+        "18",
+        "20",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "A week is 7 days: 12 + 7 = 19. Counting the 12th itself as day one lands you a day early on 18 — the classic fence-post slip.",
+      "checkExpr": "12+7",
+      "translations": {
+        "hi": {
+          "stem": "आज महीने की 12 तारीख़ है। ठीक एक सप्ताह बाद कौन-सी तारीख़ होगी?",
+          "choices": [
+            "19",
+            "18",
+            "20",
+            "5"
+          ],
+          "solution": "सप्ताह 7 दिन का है: 12 + 7 = 19। 12 तारीख़ को ही पहला दिन गिनने पर एक दिन पहले, 18 पर, पहुँच जाते हैं — गिनती की जानी-पहचानी चूक।"
+        },
+        "mr": {
+          "stem": "आज महिन्याची 12 तारीख आहे. बरोबर एका आठवड्याने कोणती तारीख असेल?",
+          "choices": [
+            "19",
+            "18",
+            "20",
+            "5"
+          ],
+          "solution": "आठवडा 7 दिवसांचा: 12 + 7 = 19. 12 तारखेलाच पहिला दिवस धरले की एक दिवस आधी, 18 वर, पोहोचता — मोजणीची नेहमीची चूक."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cartoon starts at 5 o'clock and ends at half past 5. How many minutes long is it?",
+      "choices": [
+        "50 minutes",
+        "60 minutes",
+        "30 minutes",
+        "5 minutes"
+      ],
+      "answerIndex": 2,
+      "solution": "Half past 5 is 30 minutes after 5 o'clock — half of the hour's 60. Sixty would run to 6 o'clock; 5 confuses the hour number with the minutes.",
+      "checkExpr": "60/2",
+      "translations": {
+        "hi": {
+          "stem": "एक कार्टून 5 बजे शुरू होकर साढ़े 5 बजे ख़त्म होता है। वह कितने मिनट चला?",
+          "choices": [
+            "50 मिनट",
+            "60 मिनट",
+            "30 मिनट",
+            "5 मिनट"
+          ],
+          "solution": "साढ़े 5 यानी 5 बजे से तीस मिनट बाद — घंटे के 60 का आधा। साठ तो 6 बजे तक चलता; 5 घंटे के अंक को मिनट समझ बैठा।"
+        },
+        "mr": {
+          "stem": "एक कार्टून 5 वाजता सुरू होऊन साडेपाचला संपते. ते किती मिनिटे चालले?",
+          "choices": [
+            "50 मिनिटे",
+            "60 मिनिटे",
+            "30 मिनिटे",
+            "5 मिनिटे"
+          ],
+          "solution": "साडेपाच म्हणजे 5 नंतर तीस मिनिटे — तासाच्या 60 चा अर्धा. साठ म्हणजे 6 पर्यंत चालले असते; 5 ने तासाचा आकडा मिनिटे समजला."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Nani's train left on Monday and reached on Thursday of the same week. For how many nights was she on the train?",
+      "choices": [
+        "2",
+        "5",
+        "4",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Monday night, Tuesday night, Wednesday night — 3 nights, then Thursday's arrival. Counting both end DAYS gives 4, but the question asks nights, the gaps between them.",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "नानी की रेलगाड़ी सोमवार को चली और उसी सप्ताह गुरुवार को पहुँची। वे कितनी रातें रेल में रहीं?",
+          "choices": [
+            "2",
+            "5",
+            "4",
+            "3"
+          ],
+          "solution": "सोमवार की रात, मंगलवार की रात, बुधवार की रात — तीन रातें, फिर गुरुवार की सुबह पहुँचना। दोनों सिरों के दिन गिनने से 4 आता है, पर सवाल रातों का है — दिनों के बीच की दूरियों का।"
+        },
+        "mr": {
+          "stem": "आजीची रेल्वे सोमवारी निघाली आणि त्याच आठवड्यात गुरुवारी पोहोचली. ती किती रात्री गाडीत होती?",
+          "choices": [
+            "2",
+            "5",
+            "4",
+            "3"
+          ],
+          "solution": "सोमवारची रात्र, मंगळवारची रात्र, बुधवारची रात्र — तीन रात्री, मग गुरुवारी पोहोचणे. दोन्ही टोकांचे दिवस मोजले की 4 येते, पण प्रश्न रात्रींचा — दिवसांमधल्या अंतरांचा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Abdul slept at 9 o'clock at night and woke at 6 in the morning. For how many hours did he sleep?",
+      "choices": [
+        "8",
+        "9",
+        "3",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "From 9 at night to midnight is 3 hours; midnight to 6 is 6 more: 3 + 6 = 9 hours. Subtracting 6 from 9 gives 3 — but the night crossed twelve, and plain subtraction cannot follow it there.",
+      "checkExpr": "3+6",
+      "translations": {
+        "hi": {
+          "stem": "अब्दुल रात 9 बजे सोया और सुबह 6 बजे उठा। वह कितने घंटे सोया?",
+          "choices": [
+            "8",
+            "9",
+            "3",
+            "15"
+          ],
+          "solution": "रात 9 से आधी रात तक 3 घंटे; आधी रात से 6 बजे तक 6 और: 3 + 6 = 9 घंटे। 9 में से 6 घटाने पर 3 आता है — पर रात बारह के पार गई, और सीधी घटाई वहाँ पीछा नहीं कर पाती।"
+        },
+        "mr": {
+          "stem": "अब्दुल रात्री 9 वाजता झोपला आणि सकाळी 6 वाजता उठला. तो किती तास झोपला?",
+          "choices": [
+            "8",
+            "9",
+            "3",
+            "15"
+          ],
+          "solution": "रात्री 9 ते मध्यरात्र 3 तास; मध्यरात्र ते 6 आणखी 6: 3 + 6 = 9 तास. 9 मधून 6 वजा केले की 3 येते — पण रात्र बाराच्या पलीकडे गेली, आणि सरळ वजाबाकी तिथे पाठलाग करू शकत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "One episode runs 25 minutes. Bela watched 3 episodes back to back. For how many minutes did she watch?",
+      "choices": [
+        "50 minutes",
+        "75 minutes",
+        "65 minutes",
+        "28 minutes"
+      ],
+      "answerIndex": 1,
+      "solution": "3 × 25 = 75 minutes — an hour and a quarter. The 65 answer multiplied the tens but added the fives; 50 stopped an episode early.",
+      "checkExpr": "25*3",
+      "translations": {
+        "hi": {
+          "stem": "एक कड़ी 25 मिनट की है। बेला ने लगातार 3 कड़ियाँ देखीं। उसने कितने मिनट देखा?",
+          "choices": [
+            "50 मिनट",
+            "75 मिनट",
+            "65 मिनट",
+            "28 मिनट"
+          ],
+          "solution": "3 × 25 = 75 मिनट — सवा घंटा। 65 में दहाई का गुणा हुआ पर पाँचों की जोड़; 50 एक कड़ी पहले रुक गया।"
+        },
+        "mr": {
+          "stem": "एक भाग 25 मिनिटांचा आहे. बेलाने सलग 3 भाग पाहिले. तिने किती मिनिटे पाहिले?",
+          "choices": [
+            "50 मिनिटे",
+            "75 मिनिटे",
+            "65 मिनिटे",
+            "28 मिनिटे"
+          ],
+          "solution": "3 × 25 = 75 मिनिटे — सव्वा तास. 65 मध्ये दशकाचा गुणाकार पण पाचांची बेरीज; 50 एक भाग आधीच थांबले."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The bus to Nani's village leaves every 45 minutes. The first bus goes at 7:00. Ammi and Ruk reach the stop at 8:20. How many minutes must they wait for the next bus?",
+      "choices": [
+        "40 minutes",
+        "45 minutes",
+        "10 minutes",
+        "25 minutes"
+      ],
+      "answerIndex": 2,
+      "solution": "Buses go at 7:00, 7:45, 8:30… They arrive at 8:20, after the 7:45 has gone, so the next is 8:30 — a 10-minute wait. Waiting the full 45 assumes they just missed one; the timetable, not the interval, decides.",
+      "checkExpr": "90+45-80-45",
+      "translations": {
+        "hi": {
+          "stem": "नानी के गाँव की बस हर 45 मिनट पर छूटती है। पहली बस 7:00 बजे जाती है। अम्मी और रुख़ 8:20 पर अड्डे पहुँचती हैं। अगली बस के लिए उन्हें कितने मिनट रुकना होगा?",
+          "choices": [
+            "40 मिनट",
+            "45 मिनट",
+            "10 मिनट",
+            "25 मिनट"
+          ],
+          "solution": "बसें 7:00, 7:45, 8:30… पर जाती हैं। वे 8:20 पर पहुँचीं, 7:45 वाली निकल चुकी, अगली 8:30 की — 10 मिनट की प्रतीक्षा। पूरे 45 मिनट रुकना यह मानना है कि बस अभी-अभी छूटी; फ़ैसला समय-सारणी करती है, अंतराल नहीं।"
+        },
+        "mr": {
+          "stem": "आजीच्या गावाची बस दर 45 मिनिटांनी सुटते. पहिली बस 7:00 ला जाते. अम्मी आणि रुख 8:20 ला थांब्यावर पोहोचतात. पुढच्या बससाठी त्यांना किती मिनिटे थांबावे लागेल?",
+          "choices": [
+            "40 मिनिटे",
+            "45 मिनिटे",
+            "10 मिनिटे",
+            "25 मिनिटे"
+          ],
+          "solution": "बसा 7:00, 7:45, 8:30… ला जातात. त्या 8:20 ला पोहोचल्या, 7:45 ची गेलेली, पुढची 8:30 ची — 10 मिनिटांची वाट. पूर्ण 45 थांबणे म्हणजे बस आत्ताच सुटली असे धरणे; निर्णय वेळापत्रक करते, अंतर नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The 1st of a month falls on a Friday. What DATE is the third Sunday of that month?",
+      "choices": [
+        "15",
+        "21",
+        "10",
+        "17"
+      ],
+      "answerIndex": 3,
+      "solution": "If the 1st is Friday, the first Sunday is the 3rd. Sundays then land every 7 days: 3rd, 10th, 17th — the third one is the 17th. Choosing 21 counts three whole weeks from the 1st, forgetting the first Sunday came early.",
+      "checkExpr": "3+7+7",
+      "translations": {
+        "hi": {
+          "stem": "किसी महीने की 1 तारीख़ शुक्रवार है। उस महीने का तीसरा रविवार किस तारीख़ को होगा?",
+          "choices": [
+            "15",
+            "21",
+            "10",
+            "17"
+          ],
+          "solution": "1 तारीख़ शुक्रवार है तो पहला रविवार 3 को। फिर रविवार हर 7 दिन पर: 3, 10, 17 — तीसरा रविवार 17 को। 21 चुनना 1 तारीख़ से तीन पूरे सप्ताह गिनना है, यह भूलकर कि पहला रविवार जल्दी आ गया था।"
+        },
+        "mr": {
+          "stem": "एका महिन्याची 1 तारीख शुक्रवारी आहे. त्या महिन्याचा तिसरा रविवार कोणत्या तारखेला येईल?",
+          "choices": [
+            "15",
+            "21",
+            "10",
+            "17"
+          ],
+          "solution": "1 तारीख शुक्रवार असेल तर पहिला रविवार 3 ला. मग रविवार दर 7 दिवसांनी: 3, 10, 17 — तिसरा रविवार 17 ला. 21 निवडणे म्हणजे 1 पासून तीन पूर्ण आठवडे मोजणे — पहिला रविवार लवकर आला हे विसरून."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A candle burns down completely in 60 minutes. Dadi lights it at 20 minutes past 7. At what number of minutes past 8 does it go out?",
+      "choices": [
+        "0 minutes",
+        "60 minutes",
+        "40 minutes",
+        "20 minutes"
+      ],
+      "answerIndex": 3,
+      "solution": "An hour after 7:20 is 8:20 — the minutes past the hour stay the same when you add exactly one hour. The pull toward 8:00 comes from rounding the start to 7:00 in your head.",
+      "checkExpr": "20+60-60",
+      "translations": {
+        "hi": {
+          "stem": "एक मोमबत्ती 60 मिनट में पूरी जल जाती है। दादी उसे 7 बजकर 20 मिनट पर जलाती हैं। वह 8 बजकर कितने मिनट पर बुझेगी?",
+          "choices": [
+            "0 मिनट",
+            "60 मिनट",
+            "40 मिनट",
+            "20 मिनट"
+          ],
+          "solution": "7:20 के एक घंटे बाद 8:20 होता है — ठीक एक घंटा जोड़ने पर मिनट जस के तस रहते हैं। 8:00 की ओर खिंचाव मन-ही-मन शुरुआत को 7:00 मान लेने से आता है।"
+        },
+        "mr": {
+          "stem": "एक मेणबत्ती 60 मिनिटांत पूर्ण जळते. आजी ती 7 वाजून 20 मिनिटांनी लावते. ती 8 वाजून किती मिनिटांनी विझेल?",
+          "choices": [
+            "0 मिनिटे",
+            "60 मिनिटे",
+            "40 मिनिटे",
+            "20 मिनिटे"
+          ],
+          "solution": "7:20 नंतर एक तासाने 8:20 — नेमका एक तास मिळवला की मिनिटे जशीच्या तशी राहतात. 8:00 कडचा ओढा मनातल्या मनात सुरुवात 7:00 धरल्याने येतो."
+        }
+      }
+    }
+  ]
+}

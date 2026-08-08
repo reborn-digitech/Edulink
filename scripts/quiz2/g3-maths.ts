@@ -1168,9 +1168,1052 @@ function rupeesAndPaise(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 4 — Long and Short (length: cm and m)                             */
+/* ------------------------------------------------------------------------- */
+function longAndShort(): TopicFileOut {
+  const rand = rng("maths-3-long-and-short");
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+  const m = (n: number) => ({ en: `${n} metres`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many centimetres make one metre?",
+          hi: "एक मीटर में कितने सेंटीमीटर होते हैं?",
+          mr: "एका मीटरमध्ये किती सेंटिमीटर असतात?",
+        },
+        answer: 100,
+        wrong: [10, 1000, 60],
+        checkExpr: "10*10",
+        solution: {
+          en: "One metre is 100 centimetres — ten tens of them. 1000 belongs to metres-in-a-kilometre, and 60 to minutes-in-an-hour; units love to swap in a hurry.",
+          hi: "एक मीटर 100 सेंटीमीटर का होता है — दस दहाइयाँ। 1000 किलोमीटर के मीटरों का है, और 60 घंटे के मिनटों का; जल्दबाज़ी में इकाइयाँ आपस में बदल जाती हैं।",
+          mr: "एक मीटर म्हणजे 100 सेंटिमीटर — दहा दशक. 1000 हे किलोमीटरमधल्या मीटरांचे, आणि 60 तासातल्या मिनिटांचे; घाईत एकके एकमेकांत बदलतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A pencil is about 14 of WHICH unit long — so what number of centimetres is a good guess for a new pencil?",
+          hi: "नई पेंसिल की लंबाई का अच्छा अनुमान कितने सेंटीमीटर है?",
+          mr: "नव्या पेन्सिलच्या लांबीचा चांगला अंदाज किती सेंटिमीटर?",
+        },
+        answer: 14,
+        wrong: [140, 2, 50],
+        fmt: cm,
+        solution: {
+          en: "A new pencil spans about 14 cm — a bit more than your hand. 140 cm is taller than most eight-year-olds, and 2 cm is a fingernail.",
+          hi: "नई पेंसिल लगभग 14 सेमी होती है — हथेली से थोड़ी ज़्यादा। 140 सेमी तो अधिकांश आठ साल के बच्चों से लंबी है, और 2 सेमी नाख़ुन भर।",
+          mr: "नवी पेन्सिल सुमारे 14 सेमी असते — तळहाताहून थोडी जास्त. 140 सेमी बहुतेक आठ वर्षांच्या मुलांहून उंच, आणि 2 सेमी म्हणजे नखभर.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A rope is 3 metres long. How many centimetres is that?",
+          hi: "एक रस्सी 3 मीटर लंबी है। यह कितने सेंटीमीटर हुई?",
+          mr: "एक दोरी 3 मीटर लांब आहे. म्हणजे किती सेंटिमीटर?",
+        },
+        answer: 300,
+        wrong: [30, 103, 3000],
+        checkExpr: "3*100",
+        fmt: cm,
+        solution: {
+          en: "Each metre is 100 cm, so 3 metres are 3 × 100 = 300 cm. Writing 30 multiplies by ten instead of a hundred.",
+          hi: "हर मीटर 100 सेमी है, इसलिए 3 मीटर = 3 × 100 = 300 सेमी। 30 लिखना सौ की जगह दस से गुणा करना है।",
+          mr: "प्रत्येक मीटर 100 सेमी, म्हणून 3 मीटर = 3 × 100 = 300 सेमी. 30 लिहिणे म्हणजे शंभराऐवजी दहाने गुणणे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Meera's ribbon is 85 cm and Zoya's is 1 metre. By how many centimetres is Zoya's longer?",
+          hi: "मीरा का रिबन 85 सेमी और ज़ोया का 1 मीटर है। ज़ोया का रिबन कितने सेंटीमीटर लंबा है?",
+          mr: "मीराची रिबन 85 सेमी आणि झोयाची 1 मीटर आहे. झोयाची रिबन किती सेंटिमीटरने लांब?",
+        },
+        answer: 15,
+        wrong: [84, 25, 5],
+        checkExpr: "100-85",
+        fmt: cm,
+        solution: {
+          en: "Put both in the same unit first: 1 metre = 100 cm. Then 100 − 85 = 15 cm. Comparing 85 with 1 without converting makes the metre look tiny — that is the trap.",
+          hi: "पहले दोनों को एक ही इकाई में लाएँ: 1 मीटर = 100 सेमी। फिर 100 − 85 = 15 सेमी। बिना बदले 85 की तुलना 1 से करने पर मीटर नन्हा दिखता है — यही चूक है।",
+          mr: "आधी दोन्ही एकाच एककात आणा: 1 मीटर = 100 सेमी. मग 100 − 85 = 15 सेमी. न बदलता 85 ची तुलना 1 शी केली की मीटर चिमुकला दिसतो — हीच चूक.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A 90 cm ribbon is cut into three equal pieces. How long is each piece?",
+          hi: "90 सेमी का रिबन तीन बराबर टुकड़ों में काटा गया। हर टुकड़ा कितना लंबा है?",
+          mr: "90 सेमीची रिबन तीन समान तुकड्यांत कापली. प्रत्येक तुकडा किती लांब?",
+        },
+        answer: 30,
+        wrong: [45, 27, 87],
+        checkExpr: "90/3",
+        fmt: cm,
+        solution: {
+          en: "Equal pieces mean sharing: 90 ÷ 3 = 30 cm each. Halving (45) cuts into two, not three; 87 subtracts the 3 as if it were centimetres.",
+          hi: "बराबर टुकड़े यानी बाँटना: 90 ÷ 3 = 30 सेमी प्रति टुकड़ा। आधा करना (45) दो टुकड़े हैं, तीन नहीं; 87 में 3 को सेंटीमीटर समझकर घटा दिया गया।",
+          mr: "समान तुकडे म्हणजे भागाकार: 90 ÷ 3 = 30 सेमी प्रत्येकी. निम्मे (45) म्हणजे दोन तुकडे, तीन नव्हे; 87 मध्ये 3 ला सेंटिमीटर समजून वजा केले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Arjun walks 250 metres to the well and 250 metres back. How far does he walk in all?",
+          hi: "अर्जुन कुएँ तक 250 मीटर जाता है और 250 मीटर लौटता है। वह कुल कितना चलता है?",
+          mr: "अर्जुन विहिरीपर्यंत 250 मीटर जातो आणि 250 मीटर परत येतो. तो एकूण किती चालतो?",
+        },
+        answer: 500,
+        wrong: [250, 450, 2500],
+        checkExpr: "250+250",
+        fmt: m,
+        solution: {
+          en: "There and back doubles the walk: 250 + 250 = 500 metres. Answering 250 counts only one way — the return trip walked itself, apparently.",
+          hi: "आना-जाना रास्ते को दुगना करता है: 250 + 250 = 500 मीटर। 250 कहना केवल एक तरफ़ गिनना है — वापसी शायद अपने आप चल ली।",
+          mr: "जाणे-येणे रस्ता दुप्पट करते: 250 + 250 = 500 मीटर. 250 म्हणणे म्हणजे एकच बाजू मोजणे — परतीचा रस्ता जणू स्वतःच चालला.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A bamboo pole was 2 metres long. After 40 cm was sawn off, how many centimetres remain?",
+          hi: "एक बाँस 2 मीटर लंबा था। 40 सेमी काट देने के बाद कितने सेंटीमीटर बचे?",
+          mr: "एक बांबू 2 मीटर लांब होता. 40 सेमी कापल्यावर किती सेंटिमीटर उरले?",
+        },
+        answer: 160,
+        wrong: [38, 240, 60],
+        checkExpr: "200-40",
+        fmt: cm,
+        solution: {
+          en: "Convert, then cut: 2 m = 200 cm, and 200 − 40 = 160 cm. Getting 38 subtracts 40 from a '2' that was never centimetres; 240 adds the sawn piece back on.",
+          hi: "पहले बदलें, फिर काटें: 2 मी = 200 सेमी, और 200 − 40 = 160 सेमी। 38 उस '2' में से 40 घटाता है जो कभी सेंटीमीटर था ही नहीं; 240 कटा टुकड़ा वापस जोड़ देता है।",
+          mr: "आधी बदला, मग कापा: 2 मी = 200 सेमी, आणि 200 − 40 = 160 सेमी. 38 म्हणजे कधीच सेंटिमीटर नसलेल्या '2' मधून 40 वजा करणे; 240 कापलेला तुकडा परत जोडते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Three sticks measure 45 cm, 60 cm and 55 cm. Laid end to end in a straight line, how far do they reach?",
+          hi: "तीन छड़ियाँ 45 सेमी, 60 सेमी और 55 सेमी की हैं। सीधी रेखा में सिरे-से-सिरा रखने पर वे कितनी दूर पहुँचती हैं?",
+          mr: "तीन काठ्या 45 सेमी, 60 सेमी आणि 55 सेमी आहेत. सरळ रेषेत टोकाला टोक लावल्यास त्या किती दूर पोहोचतात?",
+        },
+        answer: 160,
+        wrong: [150, 170, 100],
+        checkExpr: "45+60+55",
+        fmt: cm,
+        solution: {
+          en: "End to end means add all three: 45 + 60 + 55 = 160 cm. A tidy pairing helps: 45 + 55 = 100, then + 60. Answers of 150 or 170 are one stick mis-added by ten.",
+          hi: "सिरे-से-सिरा यानी तीनों जोड़ें: 45 + 60 + 55 = 160 सेमी। सुघड़ जोड़ी मदद करती है: 45 + 55 = 100, फिर + 60। 150 या 170 में एक छड़ी दस से चूक गई।",
+          mr: "टोकाला टोक म्हणजे तिन्हींची बेरीज: 45 + 60 + 55 = 160 सेमी. सोपी जोडी उपयोगी: 45 + 55 = 100, मग + 60. 150 वा 170 मध्ये एक काठी दहाने चुकली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A snail climbs a 20 cm wall. Each day it climbs 7 cm, but each night it slides down 2 cm. At the end of which day does it first reach the top?",
+          hi: "एक घोंघा 20 सेमी की दीवार चढ़ता है। दिन में 7 सेमी चढ़ता है, रात में 2 सेमी फिसलता है। किस दिन के अंत में वह पहली बार चोटी पर पहुँचता है?",
+          mr: "एक गोगलगाय 20 सेमीची भिंत चढते. दिवसा 7 सेमी चढते, रात्री 2 सेमी घसरते. कोणत्या दिवसाच्या शेवटी ती प्रथम माथ्यावर पोहोचते?",
+        },
+        answer: 4,
+        wrong: [3, 2, 5],
+        solution: {
+          en: "Walk it out: end of day 1 it stands at 7, slides to 5 by dawn. Day 2: up to 12, down to 10. Day 3: up to 17, down to 15. Day 4: 15 + 7 = 22 — past the 20 cm top BEFORE the night can pull it back, so day 4 is the answer. The trap answer 3 treats the last day like every other, letting a night slide happen after the snail has already arrived.",
+          hi: "हर दिन-रात में 7 − 2 = 5 सेमी की बढ़त होती है। दिन 1 के अंत में 7; रात के बाद 5। दिन 2: 12; रात के बाद 10। दिन 3: 17; रात के बाद 15। दिन 4 की चढ़ाई 15 से 22 तक — यानी चोटी दिन 4 की चढ़ाई में, फिसलन से पहले ही, पार हो जाती है। '3' वाला उत्तर हर दिन 5 सेमी मानने की चूक है — गिनती को क़दम-क़दम चलाकर जाँचें।",
+          mr: "प्रत्येक दिवस-रात्रीत 7 − 2 = 5 सेमीची वाढ. दिवस 1 अखेर 7; रात्रीनंतर 5. दिवस 2: 12; रात्रीनंतर 10. दिवस 3: 17; रात्रीनंतर 15. दिवस 4 ची चढाई 15 वरून 22 — म्हणजे माथा दिवस 4 च्या चढाईतच, घसरण्याआधीच, गाठला जातो. '3' हे उत्तर रोज 5 सेमी धरण्याची चूक — मोजणी पावलापावलाने तपासा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A running track is 400 metres around. Dhruv runs 3 full rounds and then 150 metres more. How many metres has he run?",
+          hi: "दौड़ का ट्रैक 400 मीटर का है। ध्रुव 3 पूरे चक्कर और फिर 150 मीटर दौड़ता है। वह कुल कितने मीटर दौड़ा?",
+          mr: "धावण्याचा ट्रॅक 400 मीटरचा आहे. ध्रुव 3 पूर्ण फेऱ्या आणि मग 150 मीटर धावतो. तो एकूण किती मीटर धावला?",
+        },
+        answer: 1350,
+        wrong: [1200, 550, 1250],
+        checkExpr: "400*3+150",
+        fmt: m,
+        solution: {
+          en: "Rounds first: 3 × 400 = 1200 m, then the extra 150: 1350 m. Stopping at 1200 forgets the last stretch; 550 runs one round only.",
+          hi: "पहले चक्कर: 3 × 400 = 1200 मी, फिर ऊपर से 150: 1350 मी। 1200 पर रुकना आख़िरी हिस्सा भूलना है; 550 में एक ही चक्कर लगा।",
+          mr: "आधी फेऱ्या: 3 × 400 = 1200 मी, मग वरचे 150: 1350 मी. 1200 वर थांबणे म्हणजे शेवटचा पल्ला विसरणे; 550 मध्ये एकच फेरी झाली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A carpenter needs pieces of exactly 35 cm. From a 2-metre plank, how many full pieces can she cut?",
+          hi: "एक बढ़ई को ठीक 35 सेमी के टुकड़े चाहिए। 2 मीटर के तख़्ते से वह कितने पूरे टुकड़े काट सकती है?",
+          mr: "एका सुताराला नेमके 35 सेमीचे तुकडे हवेत. 2 मीटरच्या फळीतून ती किती पूर्ण तुकडे कापू शकते?",
+        },
+        answer: 5,
+        wrong: [6, 4, 7],
+        checkExpr: "(200-25)/35",
+        solution: {
+          en: "2 m = 200 cm. Five pieces use 5 × 35 = 175 cm, leaving 25 cm — too short for a sixth. Six pieces would need 210 cm, more than the plank. The leftover is the whole question: division with something remaining.",
+          hi: "2 मी = 200 सेमी। पाँच टुकड़ों में 5 × 35 = 175 सेमी लगते हैं, 25 सेमी बचता है — छठे के लिए बहुत छोटा। छह टुकड़ों को 210 सेमी चाहिए, तख़्ते से ज़्यादा। बचा हुआ ही असली सवाल है — शेष वाली भाग।",
+          mr: "2 मी = 200 सेमी. पाच तुकड्यांना 5 × 35 = 175 सेमी लागतात, 25 सेमी उरते — सहाव्यासाठी फारच कमी. सहा तुकड्यांना 210 सेमी लागले असते, फळीहून जास्त. उरलेलेच खरा प्रश्न — बाकी असलेला भागाकार.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Tara is taller than Iqbal. Iqbal is taller than Sana. Sana is 110 cm and Tara is 126 cm. Which of these CAN be Iqbal's height?",
+          hi: "तारा, इक़बाल से लंबी है। इक़बाल, सना से लंबा है। सना 110 सेमी और तारा 126 सेमी है। इनमें से इक़बाल की लंबाई क्या हो सकती है?",
+          mr: "तारा इक्बालहून उंच आहे. इक्बाल सनाहून उंच आहे. सना 110 सेमी आणि तारा 126 सेमी आहे. यांपैकी इक्बालची उंची किती असू शकते?",
+        },
+        answer: 118,
+        wrong: [108, 130, 110],
+        fmt: cm,
+        solution: {
+          en: "Iqbal stands between them: taller than 110, shorter than 126. Only 118 fits that window. 108 puts him below Sana, 130 above Tara, and 110 makes him exactly Sana — but 'taller than' allows no tie.",
+          hi: "इक़बाल दोनों के बीच है: 110 से लंबा, 126 से छोटा। केवल 118 इस दायरे में आता है। 108 उसे सना से नीचे कर देता है, 130 तारा से ऊपर, और 110 ठीक सना के बराबर — पर 'से लंबा' में बराबरी नहीं चलती।",
+          mr: "इक्बाल दोघांच्या मध्ये: 110 हून उंच, 126 हून ठेंगणा. फक्त 118 या चौकटीत बसते. 108 त्याला सनाखाली नेते, 130 ताराच्या वर, आणि 110 म्हणजे नेमका सनाइतका — पण 'हून उंच' मध्ये बरोबरी चालत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 4 — Long and Short",
+      name: "Long and Short",
+      slug: "maths-3-long-and-short",
+      summary:
+        "Centimetres and metres — measuring, converting, and the puzzles that hide in a length of rope.",
+      position: 4,
+      translations: {
+        hi: {
+          name: "लंबा और छोटा",
+          summary: "सेंटीमीटर और मीटर — नापना, बदलना, और रस्सी की लंबाई में छिपी पहेलियाँ।",
+        },
+        mr: {
+          name: "लांब आणि आखूड",
+          summary: "सेंटिमीटर आणि मीटर — मोजणे, बदलणे, आणि दोरीच्या लांबीत लपलेली कोडी.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Time Goes On (clocks and calendars)                           */
+/* ------------------------------------------------------------------------- */
+function timeGoesOn(): TopicFileOut {
+  const rand = rng("maths-3-time-goes-on");
+  const mins = (n: number) => ({ en: `${n} minutes`, hi: `${n} मिनट`, mr: `${n} मिनिटे` });
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many months are there in a year?",
+          hi: "एक वर्ष में कितने महीने होते हैं?",
+          mr: "एका वर्षात किती महिने असतात?",
+        },
+        answer: 12,
+        wrong: [10, 24, 52],
+        checkExpr: "6*2",
+        solution: {
+          en: "A year holds 12 months, January through December. 52 counts its weeks, and 24 its fortnights — real numbers, wrong question.",
+          hi: "वर्ष में 12 महीने होते हैं, जनवरी से दिसंबर तक। 52 उसके सप्ताह गिनता है — सही संख्या, ग़लत सवाल।",
+          mr: "वर्षात 12 महिने असतात, जानेवारी ते डिसेंबर. 52 त्याचे आठवडे मोजते — खरी संख्या, चुकीचा प्रश्न.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The long hand of a clock takes how many minutes to go all the way around once?",
+          hi: "घड़ी की बड़ी सुई को एक पूरा चक्कर लगाने में कितने मिनट लगते हैं?",
+          mr: "घड्याळाच्या मोठ्या काट्याला एक पूर्ण फेरी मारायला किती मिनिटे लागतात?",
+        },
+        answer: 60,
+        wrong: [12, 30, 24],
+        checkExpr: "6*10",
+        solution: {
+          en: "One full circle of the minute hand is one hour — 60 minutes. Thirty is only half the face; 12 counts the numbers it passes, not the minutes.",
+          hi: "मिनट की सुई का एक पूरा चक्कर एक घंटा है — 60 मिनट। तीस आधा चेहरा ही है; 12 उन अंकों की गिनती है जिनसे वह गुज़रती है, मिनटों की नहीं।",
+          mr: "मिनिट काट्याची एक पूर्ण फेरी म्हणजे एक तास — 60 मिनिटे. तीस म्हणजे अर्धेच वर्तुळ; 12 ही तो ओलांडतो त्या आकड्यांची मोजणी, मिनिटांची नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "School starts at 9 o'clock and the first bell rings 40 minutes later. The clock then shows how many minutes past 9?",
+          hi: "स्कूल 9 बजे शुरू होता है और पहली घंटी 40 मिनट बाद बजती है। तब घड़ी 9 बजकर कितने मिनट दिखाती है?",
+          mr: "शाळा 9 वाजता सुरू होते आणि पहिली घंटा 40 मिनिटांनी वाजते. तेव्हा घड्याळ 9 वाजून किती मिनिटे दाखवते?",
+        },
+        answer: 40,
+        wrong: [20, 50, 30],
+        checkExpr: "9*0+40",
+        solution: {
+          en: "Forty minutes after 9:00 the clock reads 9:40 — the minute hand points at the 8, because each clock number is worth 5 minutes and 8 × 5 = 40.",
+          hi: "9:00 के चालीस मिनट बाद घड़ी 9:40 दिखाती है — मिनट की सुई 8 पर होती है, क्योंकि घड़ी का हर अंक 5 मिनट का है और 8 × 5 = 40।",
+          mr: "9:00 नंतर चाळीस मिनिटांनी घड्याळ 9:40 दाखवते — मिनिट काटा 8 वर असतो, कारण घड्याळाचा प्रत्येक आकडा 5 मिनिटांचा आणि 8 × 5 = 40.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Today is the 12th of the month. What date will it be exactly one week from today?",
+          hi: "आज महीने की 12 तारीख़ है। ठीक एक सप्ताह बाद कौन-सी तारीख़ होगी?",
+          mr: "आज महिन्याची 12 तारीख आहे. बरोबर एका आठवड्याने कोणती तारीख असेल?",
+        },
+        answer: 19,
+        wrong: [18, 20, 5],
+        checkExpr: "12+7",
+        solution: {
+          en: "A week is 7 days: 12 + 7 = 19. Counting the 12th itself as day one lands you a day early on 18 — the classic fence-post slip.",
+          hi: "सप्ताह 7 दिन का है: 12 + 7 = 19। 12 तारीख़ को ही पहला दिन गिनने पर एक दिन पहले, 18 पर, पहुँच जाते हैं — गिनती की जानी-पहचानी चूक।",
+          mr: "आठवडा 7 दिवसांचा: 12 + 7 = 19. 12 तारखेलाच पहिला दिवस धरले की एक दिवस आधी, 18 वर, पोहोचता — मोजणीची नेहमीची चूक.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A cartoon starts at 5 o'clock and ends at half past 5. How many minutes long is it?",
+          hi: "एक कार्टून 5 बजे शुरू होकर साढ़े 5 बजे ख़त्म होता है। वह कितने मिनट चला?",
+          mr: "एक कार्टून 5 वाजता सुरू होऊन साडेपाचला संपते. ते किती मिनिटे चालले?",
+        },
+        answer: 30,
+        wrong: [50, 5, 60],
+        checkExpr: "60/2",
+        fmt: mins,
+        solution: {
+          en: "Half past 5 is 30 minutes after 5 o'clock — half of the hour's 60. Sixty would run to 6 o'clock; 5 confuses the hour number with the minutes.",
+          hi: "साढ़े 5 यानी 5 बजे से तीस मिनट बाद — घंटे के 60 का आधा। साठ तो 6 बजे तक चलता; 5 घंटे के अंक को मिनट समझ बैठा।",
+          mr: "साडेपाच म्हणजे 5 नंतर तीस मिनिटे — तासाच्या 60 चा अर्धा. साठ म्हणजे 6 पर्यंत चालले असते; 5 ने तासाचा आकडा मिनिटे समजला.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Nani's train left on Monday and reached on Thursday of the same week. For how many nights was she on the train?",
+          hi: "नानी की रेलगाड़ी सोमवार को चली और उसी सप्ताह गुरुवार को पहुँची। वे कितनी रातें रेल में रहीं?",
+          mr: "आजीची रेल्वे सोमवारी निघाली आणि त्याच आठवड्यात गुरुवारी पोहोचली. ती किती रात्री गाडीत होती?",
+        },
+        answer: 3,
+        wrong: [4, 2, 5],
+        checkExpr: "4-1",
+        solution: {
+          en: "Monday night, Tuesday night, Wednesday night — 3 nights, then Thursday's arrival. Counting both end DAYS gives 4, but the question asks nights, the gaps between them.",
+          hi: "सोमवार की रात, मंगलवार की रात, बुधवार की रात — तीन रातें, फिर गुरुवार की सुबह पहुँचना। दोनों सिरों के दिन गिनने से 4 आता है, पर सवाल रातों का है — दिनों के बीच की दूरियों का।",
+          mr: "सोमवारची रात्र, मंगळवारची रात्र, बुधवारची रात्र — तीन रात्री, मग गुरुवारी पोहोचणे. दोन्ही टोकांचे दिवस मोजले की 4 येते, पण प्रश्न रात्रींचा — दिवसांमधल्या अंतरांचा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Abdul slept at 9 o'clock at night and woke at 6 in the morning. For how many hours did he sleep?",
+          hi: "अब्दुल रात 9 बजे सोया और सुबह 6 बजे उठा। वह कितने घंटे सोया?",
+          mr: "अब्दुल रात्री 9 वाजता झोपला आणि सकाळी 6 वाजता उठला. तो किती तास झोपला?",
+        },
+        answer: 9,
+        wrong: [3, 15, 8],
+        checkExpr: "3+6",
+        solution: {
+          en: "From 9 at night to midnight is 3 hours; midnight to 6 is 6 more: 3 + 6 = 9 hours. Subtracting 6 from 9 gives 3 — but the night crossed twelve, and plain subtraction cannot follow it there.",
+          hi: "रात 9 से आधी रात तक 3 घंटे; आधी रात से 6 बजे तक 6 और: 3 + 6 = 9 घंटे। 9 में से 6 घटाने पर 3 आता है — पर रात बारह के पार गई, और सीधी घटाई वहाँ पीछा नहीं कर पाती।",
+          mr: "रात्री 9 ते मध्यरात्र 3 तास; मध्यरात्र ते 6 आणखी 6: 3 + 6 = 9 तास. 9 मधून 6 वजा केले की 3 येते — पण रात्र बाराच्या पलीकडे गेली, आणि सरळ वजाबाकी तिथे पाठलाग करू शकत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "One episode runs 25 minutes. Bela watched 3 episodes back to back. For how many minutes did she watch?",
+          hi: "एक कड़ी 25 मिनट की है। बेला ने लगातार 3 कड़ियाँ देखीं। उसने कितने मिनट देखा?",
+          mr: "एक भाग 25 मिनिटांचा आहे. बेलाने सलग 3 भाग पाहिले. तिने किती मिनिटे पाहिले?",
+        },
+        answer: 75,
+        wrong: [28, 65, 50],
+        checkExpr: "25*3",
+        fmt: mins,
+        solution: {
+          en: "3 × 25 = 75 minutes — an hour and a quarter. The 65 answer multiplied the tens but added the fives; 50 stopped an episode early.",
+          hi: "3 × 25 = 75 मिनट — सवा घंटा। 65 में दहाई का गुणा हुआ पर पाँचों की जोड़; 50 एक कड़ी पहले रुक गया।",
+          mr: "3 × 25 = 75 मिनिटे — सव्वा तास. 65 मध्ये दशकाचा गुणाकार पण पाचांची बेरीज; 50 एक भाग आधीच थांबले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The bus to Nani's village leaves every 45 minutes. The first bus goes at 7:00. Ammi and Ruk reach the stop at 8:20. How many minutes must they wait for the next bus?",
+          hi: "नानी के गाँव की बस हर 45 मिनट पर छूटती है। पहली बस 7:00 बजे जाती है। अम्मी और रुख़ 8:20 पर अड्डे पहुँचती हैं। अगली बस के लिए उन्हें कितने मिनट रुकना होगा?",
+          mr: "आजीच्या गावाची बस दर 45 मिनिटांनी सुटते. पहिली बस 7:00 ला जाते. अम्मी आणि रुख 8:20 ला थांब्यावर पोहोचतात. पुढच्या बससाठी त्यांना किती मिनिटे थांबावे लागेल?",
+        },
+        answer: 10,
+        wrong: [25, 45, 40],
+        checkExpr: "90+45-80-45",
+        fmt: mins,
+        solution: {
+          en: "Buses go at 7:00, 7:45, 8:30… They arrive at 8:20, after the 7:45 has gone, so the next is 8:30 — a 10-minute wait. Waiting the full 45 assumes they just missed one; the timetable, not the interval, decides.",
+          hi: "बसें 7:00, 7:45, 8:30… पर जाती हैं। वे 8:20 पर पहुँचीं, 7:45 वाली निकल चुकी, अगली 8:30 की — 10 मिनट की प्रतीक्षा। पूरे 45 मिनट रुकना यह मानना है कि बस अभी-अभी छूटी; फ़ैसला समय-सारणी करती है, अंतराल नहीं।",
+          mr: "बसा 7:00, 7:45, 8:30… ला जातात. त्या 8:20 ला पोहोचल्या, 7:45 ची गेलेली, पुढची 8:30 ची — 10 मिनिटांची वाट. पूर्ण 45 थांबणे म्हणजे बस आत्ताच सुटली असे धरणे; निर्णय वेळापत्रक करते, अंतर नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The 1st of a month falls on a Friday. What DATE is the third Sunday of that month?",
+          hi: "किसी महीने की 1 तारीख़ शुक्रवार है। उस महीने का तीसरा रविवार किस तारीख़ को होगा?",
+          mr: "एका महिन्याची 1 तारीख शुक्रवारी आहे. त्या महिन्याचा तिसरा रविवार कोणत्या तारखेला येईल?",
+        },
+        answer: 17,
+        wrong: [15, 21, 10],
+        checkExpr: "3+7+7",
+        solution: {
+          en: "If the 1st is Friday, the first Sunday is the 3rd. Sundays then land every 7 days: 3rd, 10th, 17th — the third one is the 17th. Choosing 21 counts three whole weeks from the 1st, forgetting the first Sunday came early.",
+          hi: "1 तारीख़ शुक्रवार है तो पहला रविवार 3 को। फिर रविवार हर 7 दिन पर: 3, 10, 17 — तीसरा रविवार 17 को। 21 चुनना 1 तारीख़ से तीन पूरे सप्ताह गिनना है, यह भूलकर कि पहला रविवार जल्दी आ गया था।",
+          mr: "1 तारीख शुक्रवार असेल तर पहिला रविवार 3 ला. मग रविवार दर 7 दिवसांनी: 3, 10, 17 — तिसरा रविवार 17 ला. 21 निवडणे म्हणजे 1 पासून तीन पूर्ण आठवडे मोजणे — पहिला रविवार लवकर आला हे विसरून.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A candle burns down completely in 60 minutes. Dadi lights it at 20 minutes past 7. At what number of minutes past 8 does it go out?",
+          hi: "एक मोमबत्ती 60 मिनट में पूरी जल जाती है। दादी उसे 7 बजकर 20 मिनट पर जलाती हैं। वह 8 बजकर कितने मिनट पर बुझेगी?",
+          mr: "एक मेणबत्ती 60 मिनिटांत पूर्ण जळते. आजी ती 7 वाजून 20 मिनिटांनी लावते. ती 8 वाजून किती मिनिटांनी विझेल?",
+        },
+        answer: 20,
+        wrong: [40, 60, 0],
+        checkExpr: "20+60-60",
+        fmt: mins,
+        solution: {
+          en: "An hour after 7:20 is 8:20 — the minutes past the hour stay the same when you add exactly one hour. The pull toward 8:00 comes from rounding the start to 7:00 in your head.",
+          hi: "7:20 के एक घंटे बाद 8:20 होता है — ठीक एक घंटा जोड़ने पर मिनट जस के तस रहते हैं। 8:00 की ओर खिंचाव मन-ही-मन शुरुआत को 7:00 मान लेने से आता है।",
+          mr: "7:20 नंतर एक तासाने 8:20 — नेमका एक तास मिळवला की मिनिटे जशीच्या तशी राहतात. 8:00 कडचा ओढा मनातल्या मनात सुरुवात 7:00 धरल्याने येतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 7 — Time Goes On",
+      name: "Time Goes On",
+      slug: "maths-3-time-goes-on",
+      summary:
+        "Clocks, calendars and the counting they hide — half past, a week from today, and the night that crosses twelve.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "समय चलता जाए",
+          summary: "घड़ियाँ, कैलेंडर और उनमें छिपी गिनती — साढ़े, आज से एक सप्ताह, और बारह पार करती रात।",
+        },
+        mr: {
+          name: "वेळ पुढे जातो",
+          summary: "घड्याळे, दिनदर्शिका आणि त्यांत लपलेली मोजणी — साडे, आजपासून आठवडा, आणि बारा ओलांडणारी रात्र.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Can We Share? (division as equal sharing)                    */
+/* ------------------------------------------------------------------------- */
+function canWeShare(): TopicFileOut {
+  const rand = rng("maths-3-can-we-share");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "12 laddoos are shared equally among 4 children. How many does each child get?",
+          hi: "12 लड्डू 4 बच्चों में बराबर बाँटे गए। हर बच्चे को कितने मिले?",
+          mr: "12 लाडू 4 मुलांत समान वाटले. प्रत्येक मुलाला किती मिळाले?",
+        },
+        answer: 3,
+        wrong: [4, 8, 16],
+        checkExpr: "12/4",
+        solution: {
+          en: "Sharing equally is division: 12 ÷ 4 = 3 laddoos each. Check by giving them out in rounds — one each, one each, one each — three rounds empty the plate. 8 subtracts, 16 adds; neither shares.",
+          hi: "बराबर बाँटना भाग है: 12 ÷ 4 = 3 लड्डू प्रति बच्चा। बारी-बारी देकर जाँचें — एक-एक, एक-एक, एक-एक — तीन चक्करों में थाली ख़ाली। 8 घटाव है, 16 जोड़; दोनों में बँटवारा नहीं।",
+          mr: "समान वाटणे म्हणजे भागाकार: 12 ÷ 4 = 3 लाडू प्रत्येकी. फेरीफेरीने देऊन तपासा — एकेक, एकेक, एकेक — तीन फेऱ्यांत ताट रिकामे. 8 म्हणजे वजाबाकी, 16 बेरीज; दोन्हींत वाटणी नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many pairs can be made from 10 socks?",
+          hi: "10 मोज़ों से कितनी जोड़ियाँ बन सकती हैं?",
+          mr: "10 मोज्यांच्या किती जोड्या होतील?",
+        },
+        answer: 5,
+        wrong: [10, 2, 8],
+        checkExpr: "10/2",
+        solution: {
+          en: "A pair takes 2, so 10 ÷ 2 = 5 pairs. Ten forgets the pairing; 2 answers 'how many in a pair' instead.",
+          hi: "जोड़ी में 2 लगते हैं, तो 10 ÷ 2 = 5 जोड़ियाँ। दस में जोड़ी बनी ही नहीं; 2 'जोड़ी में कितने' का उत्तर है।",
+          mr: "जोडीला 2 लागतात, म्हणून 10 ÷ 2 = 5 जोड्या. दहामध्ये जोडी झालीच नाही; 2 हे 'जोडीत किती' चे उत्तर.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A gardener plants 24 saplings equally in 6 rows. How many saplings stand in each row?",
+          hi: "माली 24 पौधे 6 क़तारों में बराबर लगाता है। हर क़तार में कितने पौधे लगे?",
+          mr: "माळी 24 रोपे 6 रांगांत समान लावतो. प्रत्येक रांगेत किती रोपे?",
+        },
+        answer: 4,
+        wrong: [6, 18, 30],
+        checkExpr: "24/6",
+        solution: {
+          en: "24 ÷ 6 = 4 in each row — and 6 × 4 = 24 checks it. Answering 6 repeats the number of rows; 18 subtracts them instead of sharing among them.",
+          hi: "24 ÷ 6 = 4 प्रति क़तार — और 6 × 4 = 24 से जाँच हो जाती है। 6 कहना क़तारों की संख्या दोहराना है; 18 में बाँटने की जगह घटाया गया।",
+          mr: "24 ÷ 6 = 4 प्रत्येक रांगेत — आणि 6 × 4 = 24 ने तपासणी. 6 म्हणणे म्हणजे रांगांची संख्या पुन्हा सांगणे; 18 मध्ये वाटण्याऐवजी वजा केले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "13 bananas are shared equally among 4 monkeys. After each gets its fair share, how many bananas are LEFT OVER?",
+          hi: "13 केले 4 बंदरों में बराबर बाँटे गए। सबको बराबर हिस्सा मिलने के बाद कितने केले बचे?",
+          mr: "13 केळी 4 माकडांत समान वाटली. प्रत्येकाला समान वाटा मिळाल्यावर किती केळी उरली?",
+        },
+        answer: 1,
+        wrong: [3, 4, 0],
+        checkExpr: "13-4*3",
+        solution: {
+          en: "Each monkey gets 3 (that uses 4 × 3 = 12), and 13 − 12 = 1 banana remains. The 3 option is the share, not the remainder — the question asks about what is left on the plate.",
+          hi: "हर बंदर को 3 मिले (यानी 4 × 3 = 12 लगे), और 13 − 12 = 1 केला बचा। 3 वाला विकल्प हिस्सा है, शेष नहीं — सवाल थाली में बचे हुए का है।",
+          mr: "प्रत्येक माकडाला 3 (म्हणजे 4 × 3 = 12 गेली), आणि 13 − 12 = 1 केळे उरले. 3 हा पर्याय वाटा आहे, बाकी नव्हे — प्रश्न ताटात उरलेल्याचा आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A story book of 40 pages is read 8 pages a day. In how many days is it finished?",
+          hi: "40 पृष्ठों की कहानी की किताब रोज़ 8 पृष्ठ पढ़ी जाती है। कितने दिनों में ख़त्म होगी?",
+          mr: "40 पानांचे गोष्टीचे पुस्तक रोज 8 पाने वाचले जाते. किती दिवसांत संपेल?",
+        },
+        answer: 5,
+        wrong: [8, 32, 6],
+        checkExpr: "40/8",
+        solution: {
+          en: "40 ÷ 8 = 5 days: the eights run 8, 16, 24, 32, 40. Six days would need 48 pages; 32 is where day four ends, not a number of days at all.",
+          hi: "40 ÷ 8 = 5 दिन: आठ का पहाड़ा 8, 16, 24, 32, 40। छह दिनों को 48 पृष्ठ चाहिए होते; 32 चौथे दिन का पड़ाव है, दिनों की संख्या नहीं।",
+          mr: "40 ÷ 8 = 5 दिवस: आठचा पाढा 8, 16, 24, 32, 40. सहा दिवसांना 48 पाने लागली असती; 32 हा चौथ्या दिवसाचा मुक्काम, दिवसांची संख्या नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Dadi made 35 rotis and packed them equally into 5 tiffin boxes. Each box holds how many rotis?",
+          hi: "दादी ने 35 रोटियाँ बनाईं और 5 डिब्बों में बराबर रखीं। हर डिब्बे में कितनी रोटियाँ हैं?",
+          mr: "आजीने 35 पोळ्या केल्या आणि 5 डब्यांत समान भरल्या. प्रत्येक डब्यात किती पोळ्या?",
+        },
+        answer: 7,
+        wrong: [5, 30, 40],
+        checkExpr: "35/5",
+        solution: {
+          en: "35 ÷ 5 = 7 rotis a box, and 5 × 7 = 35 confirms it. Five echoes the boxes; 30 and 40 are the neighbours of 35 wearing a disguise.",
+          hi: "35 ÷ 5 = 7 रोटियाँ प्रति डिब्बा, और 5 × 7 = 35 से पुष्टि। पाँच डिब्बों की गूँज है; 30 और 40 भेस बदले हुए 35 के पड़ोसी हैं।",
+          mr: "35 ÷ 5 = 7 पोळ्या प्रत्येक डब्यात, आणि 5 × 7 = 35 ने खात्री. पाच ही डब्यांची पुनरुक्ती; 30 आणि 40 हे वेष बदललेले 35 चे शेजारी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What number belongs in the box: ▢ ÷ 6 = 7?",
+          hi: "बॉक्स में कौन-सी संख्या होगी: ▢ ÷ 6 = 7?",
+          mr: "चौकटीत कोणती संख्या हवी: ▢ ÷ 6 = 7?",
+        },
+        answer: 42,
+        wrong: [13, 36, 48],
+        checkExpr: "6*7",
+        solution: {
+          en: "If a hidden number split into 6 parts gives 7 each, the whole was 6 × 7 = 42. Adding (13) mixes the operations; 36 and 48 are the neighbouring rows of the six-times table.",
+          hi: "छिपी संख्या के 6 हिस्सों में 7-7 आए, तो पूरी संख्या 6 × 7 = 42 थी। जोड़ना (13) संक्रियाएँ गड्डमड्ड करता है; 36 और 48 छह के पहाड़े की पड़ोसी पंक्तियाँ हैं।",
+          mr: "लपलेल्या संख्येच्या 6 भागांत 7-7 आले, तर पूर्ण संख्या 6 × 7 = 42 होती. बेरीज (13) क्रिया मिसळते; 36 आणि 48 या सहाच्या पाढ्यातील शेजारच्या ओळी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A packet of 50 stickers is shared equally among 8 friends. How many stickers does each friend get (full stickers only)?",
+          hi: "50 स्टिकरों का पैकेट 8 दोस्तों में बराबर बाँटा गया। हर दोस्त को कितने (पूरे) स्टिकर मिले?",
+          mr: "50 स्टिकरांचे पाकीट 8 मित्रांत समान वाटले. प्रत्येक मित्राला किती (पूर्ण) स्टिकर मिळाले?",
+        },
+        answer: 6,
+        wrong: [7, 8, 2],
+        checkExpr: "(50-2)/8",
+        solution: {
+          en: "Eights: 8, 16, 24, 32, 40, 48 — six each uses 48 stickers, and 2 are left over. Seven each would need 56, more than the packet. The 2 option is the leftover posing as the share.",
+          hi: "आठ का पहाड़ा: 8, 16, 24, 32, 40, 48 — छह-छह में 48 स्टिकर लगते हैं, 2 बचते हैं। सात-सात को 56 चाहिए होते, पैकेट से ज़्यादा। 2 वाला विकल्प हिस्से के भेस में शेष है।",
+          mr: "आठचा पाढा: 8, 16, 24, 32, 40, 48 — सहा-सहामध्ये 48 स्टिकर जातात, 2 उरतात. सात-सातसाठी 56 लागले असते, पाकिटाहून जास्त. 2 हा पर्याय वाट्याच्या वेषातली बाकी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A basket held 60 guavas. First 12 bruised ones were removed, then the rest were shared equally among 6 shops. How many did each shop get?",
+          hi: "टोकरी में 60 अमरूद थे। पहले 12 दबे हुए निकाले गए, फिर बाक़ी 6 दुकानों में बराबर बाँटे गए। हर दुकान को कितने मिले?",
+          mr: "टोपलीत 60 पेरू होते. आधी 12 दबलेले काढले, मग उरलेले 6 दुकानांत समान वाटले. प्रत्येक दुकानाला किती मिळाले?",
+        },
+        answer: 8,
+        wrong: [10, 12, 6],
+        checkExpr: "(60-12)/6",
+        solution: {
+          en: "Remove first: 60 − 12 = 48. Then share: 48 ÷ 6 = 8 each. Dividing before removing gives 10 — the bruised guavas got sold in that version.",
+          hi: "पहले निकालें: 60 − 12 = 48। फिर बाँटें: 48 ÷ 6 = 8 प्रति दुकान। निकालने से पहले भाग देने पर 10 आता है — उस हिसाब में दबे अमरूद भी बिक गए।",
+          mr: "आधी काढा: 60 − 12 = 48. मग वाटा: 48 ÷ 6 = 8 प्रत्येकी. काढण्याआधी भागल्यास 10 येते — त्या हिशेबात दबलेले पेरूही विकले गेले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Three friends shared the cost of a ₹96 cricket bat equally. Later a fourth friend joined and they shared it again equally among all four. How much LESS did each of the first three then pay?",
+          hi: "तीन दोस्तों ने ₹96 के बल्ले का ख़र्च बराबर बाँटा। बाद में चौथा दोस्त जुड़ा और चारों में फिर बराबर बँटवारा हुआ। पहले तीनों में से हर एक को अब कितना कम देना पड़ा?",
+          mr: "तीन मित्रांनी ₹96 च्या बॅटचा खर्च समान वाटला. नंतर चौथा मित्र आला आणि चौघांत पुन्हा समान वाटणी झाली. पहिल्या तिघांपैकी प्रत्येकाला आता किती कमी द्यावे लागले?",
+        },
+        answer: 8,
+        wrong: [32, 24, 4],
+        checkExpr: "96/3-96/4",
+        fmt: rupees,
+        solution: {
+          en: "Three ways: 96 ÷ 3 = ₹32 each. Four ways: 96 ÷ 4 = ₹24 each. The relief is 32 − 24 = ₹8. The options ₹32 and ₹24 are the two shares themselves — the question asks for the gap between them.",
+          hi: "तीन हिस्से: 96 ÷ 3 = ₹32। चार हिस्से: 96 ÷ 4 = ₹24। राहत हुई 32 − 24 = ₹8। ₹32 और ₹24 दोनों हिस्से ही हैं — सवाल उनके बीच के अंतर का है।",
+          mr: "तीन वाटे: 96 ÷ 3 = ₹32. चार वाटे: 96 ÷ 4 = ₹24. सूट झाली 32 − 24 = ₹8. ₹32 आणि ₹24 हे दोन्ही वाटेच — प्रश्न त्यांच्यातील फरकाचा आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "27 children are going boating. Each boat carries at most 4 children. What is the SMALLEST number of boats they need?",
+          hi: "27 बच्चे नौका-विहार पर जा रहे हैं। हर नाव में अधिकतम 4 बच्चे बैठते हैं। उन्हें कम-से-कम कितनी नावें चाहिए?",
+          mr: "27 मुले नौकाविहाराला जात आहेत. प्रत्येक होडीत जास्तीत जास्त 4 मुले बसतात. त्यांना किमान किती होड्या लागतील?",
+        },
+        answer: 7,
+        wrong: [6, 8, 5],
+        checkExpr: "(27+1)/4",
+        solution: {
+          en: "Six boats seat 6 × 4 = 24, leaving 3 children on the bank — so a seventh boat must go, part empty. Division says 27 ÷ 4 = 6 remainder 3, and here the remainder ROUNDS UP: children cannot be left behind.",
+          hi: "छह नावों में 6 × 4 = 24 बैठते हैं, 3 बच्चे किनारे रह जाते हैं — इसलिए सातवीं नाव जानी ही चाहिए, भले अधूरी भरी। भाग कहता है 27 ÷ 4 = 6 शेष 3, और यहाँ शेष ऊपर चढ़ता है: बच्चे छोड़े नहीं जा सकते।",
+          mr: "सहा होड्यांत 6 × 4 = 24 बसतात, 3 मुले काठावर उरतात — म्हणून सातवी होडी जायलाच हवी, अर्धी रिकामी असली तरी. भागाकार सांगतो 27 ÷ 4 = 6 बाकी 3, आणि इथे बाकी वर चढते: मुलांना मागे ठेवता येत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A number shared among 5 children gives 6 each with 2 left over. What is the number?",
+          hi: "एक संख्या 5 बच्चों में बाँटने पर हर एक को 6 मिलते हैं और 2 बचते हैं। वह संख्या क्या है?",
+          mr: "एक संख्या 5 मुलांत वाटल्यावर प्रत्येकाला 6 मिळतात आणि 2 उरतात. ती संख्या कोणती?",
+        },
+        answer: 32,
+        wrong: [30, 28, 13],
+        checkExpr: "5*6+2",
+        solution: {
+          en: "Rebuild it: 5 shares of 6 make 30, plus the 2 left over — 32. Thirty forgets the remainder, and that is precisely what the puzzle is testing.",
+          hi: "फिर से जोड़ें: 6-6 के 5 हिस्से यानी 30, और बचे 2 — कुल 32। तीस में शेष भूल गया, और पहेली ठीक यही परख रही है।",
+          mr: "पुन्हा उभी करा: 6-6 चे 5 वाटे म्हणजे 30, आणि उरलेले 2 — एकूण 32. तीसमध्ये बाकी विसरली, आणि कोडे नेमके तेच तपासते आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 12 — Can We Share?",
+      name: "Can We Share?",
+      slug: "maths-3-can-we-share",
+      summary:
+        "Division as fair sharing — equal parts, stubborn leftovers, and the boat that must sail part empty.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "क्या हम बाँट सकते हैं?",
+          summary: "न्यायपूर्ण बँटवारे के रूप में भाग — बराबर हिस्से, ज़िद्दी शेष, और वह नाव जो अधूरी भरी चलती है।",
+        },
+        mr: {
+          name: "आपण वाटू शकतो का?",
+          summary: "न्याय्य वाटणीच्या रूपातला भागाकार — समान वाटे, हट्टी बाकी, आणि अर्धी रिकामी निघणारी होडी.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Who is Heavier? (weight: kg and g)                            */
+/* ------------------------------------------------------------------------- */
+function whoIsHeavier(): TopicFileOut {
+  const rand = rng("maths-3-who-is-heavier");
+  const g = (n: number) => ({ en: `${n} g`, hi: `${n} ग्राम`, mr: `${n} ग्रॅम` });
+  const kg = (n: number) => ({ en: `${n} kg`, hi: `${n} किग्रा`, mr: `${n} किलो` });
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many grams make one kilogram?",
+          hi: "एक किलोग्राम में कितने ग्राम होते हैं?",
+          mr: "एका किलोग्रॅममध्ये किती ग्रॅम असतात?",
+        },
+        answer: 1000,
+        wrong: [100, 500, 10],
+        checkExpr: "10*100",
+        solution: {
+          en: "One kilogram is 1000 grams — 'kilo' always means a thousand. 100 belongs to the metre-centimetre family, and 500 is only half a kilo.",
+          hi: "एक किलोग्राम 1000 ग्राम का है — 'किलो' का अर्थ सदा हज़ार। 100 मीटर-सेंटीमीटर परिवार का है, और 500 आधा किलो ही है।",
+          mr: "एक किलोग्रॅम म्हणजे 1000 ग्रॅम — 'किलो' म्हणजे नेहमी हजार. 100 हे मीटर-सेंटिमीटर कुटुंबातले, आणि 500 म्हणजे अर्धाच किलो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A brinjal weighs 250 g. Four such brinjals together weigh how many grams?",
+          hi: "एक बैंगन 250 ग्राम का है। ऐसे चार बैंगनों का कुल भार कितने ग्राम होगा?",
+          mr: "एक वांगे 250 ग्रॅमचे आहे. अशा चार वांग्यांचे मिळून वजन किती ग्रॅम?",
+        },
+        answer: 1000,
+        wrong: [254, 750, 500],
+        checkExpr: "250*4",
+        fmt: g,
+        solution: {
+          en: "4 × 250 = 1000 g — exactly one kilogram. The quarters of a kilo add up like the quarters of a rupee once did: four of them make the whole.",
+          hi: "4 × 250 = 1000 ग्राम — ठीक एक किलोग्राम। किलो की चौथाइयाँ वैसे ही जुड़ती हैं जैसे कभी रुपये की चवन्नियाँ — चार से पूरा बनता है।",
+          mr: "4 × 250 = 1000 ग्रॅम — बरोबर एक किलोग्रॅम. किलोचे चतकोर रुपयाच्या पावल्यांसारखे जुळतात — चारांनी पूर्ण होतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "On a balance, a papaya sits on one pan. On the other pan, a 500 g weight and a 200 g weight make it level. What does the papaya weigh?",
+          hi: "तराज़ू के एक पलड़े पर पपीता है। दूसरे पलड़े पर 500 ग्राम और 200 ग्राम के बाट रखने पर तराज़ू बराबर हो जाता है। पपीते का भार कितना है?",
+          mr: "तराजूच्या एका पारड्यात पपई आहे. दुसऱ्या पारड्यात 500 ग्रॅम आणि 200 ग्रॅमची वजने ठेवल्यावर तराजू समतोल होतो. पपईचे वजन किती?",
+        },
+        answer: 700,
+        wrong: [300, 520, 750],
+        checkExpr: "500+200",
+        fmt: g,
+        solution: {
+          en: "Level pans mean equal weight: 500 + 200 = 700 g. Subtracting the weights (300) reads the balance backwards — nothing is being taken away.",
+          hi: "बराबर पलड़े यानी बराबर भार: 500 + 200 = 700 ग्राम। बाटों को घटाना (300) तराज़ू को उल्टा पढ़ना है — यहाँ कुछ घट नहीं रहा।",
+          mr: "समतोल पारडी म्हणजे समान वजन: 500 + 200 = 700 ग्रॅम. वजने वजा करणे (300) म्हणजे तराजू उलटा वाचणे — इथे काही कमी होत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Amma bought 2 kg of rice and 500 g of dal. How many grams did her bag carry in all?",
+          hi: "अम्मा ने 2 किलो चावल और 500 ग्राम दाल ख़रीदी। उनके थैले में कुल कितने ग्राम भार था?",
+          mr: "अम्माने 2 किलो तांदूळ आणि 500 ग्रॅम डाळ घेतली. तिच्या पिशवीत एकूण किती ग्रॅम वजन होते?",
+        },
+        answer: 2500,
+        wrong: [502, 700, 2050],
+        checkExpr: "2000+500",
+        fmt: g,
+        solution: {
+          en: "Same unit first: 2 kg = 2000 g, then 2000 + 500 = 2500 g. Adding 2 and 500 as they stand gives the nonsense 502 — kilograms and grams cannot be added raw.",
+          hi: "पहले एक इकाई: 2 किलो = 2000 ग्राम, फिर 2000 + 500 = 2500 ग्राम। 2 और 500 को जस का तस जोड़ने पर 502 की बेतुकी संख्या — किलो और ग्राम कच्चे नहीं जुड़ते।",
+          mr: "आधी एकच एकक: 2 किलो = 2000 ग्रॅम, मग 2000 + 500 = 2500 ग्रॅम. 2 आणि 500 तसेच मिळवले की 502 ची निरर्थक संख्या — किलो आणि ग्रॅम कच्चे जुळत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A watermelon weighs 3 kg and a pumpkin 5 kg. The pumpkin is heavier by how many grams?",
+          hi: "तरबूज़ 3 किलो का है और कद्दू 5 किलो का। कद्दू कितने ग्राम भारी है?",
+          mr: "कलिंगड 3 किलोचे आणि भोपळा 5 किलोचा आहे. भोपळा किती ग्रॅमने जड आहे?",
+        },
+        answer: 2000,
+        wrong: [2, 8000, 200],
+        checkExpr: "5000-3000",
+        fmt: g,
+        solution: {
+          en: "The gap is 5 − 3 = 2 kg, and the question asks it in grams: 2000 g. Answering '2' stops before converting; 8000 adds the fruits together.",
+          hi: "अंतर 5 − 3 = 2 किलो है, और सवाल ग्राम में पूछा गया: 2000 ग्राम। '2' बदलने से पहले रुक जाता है; 8000 में दोनों फल जुड़ गए।",
+          mr: "फरक 5 − 3 = 2 किलो, आणि प्रश्न ग्रॅममध्ये विचारला: 2000 ग्रॅम. '2' बदलण्याआधीच थांबते; 8000 मध्ये दोन्ही फळे एकत्र झाली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A tin held 1 kg of ghee. After 350 g was used for laddoos, how many grams remain in the tin?",
+          hi: "डिब्बे में 1 किलो घी था। लड्डुओं में 350 ग्राम लगने के बाद डिब्बे में कितने ग्राम बचे?",
+          mr: "डब्यात 1 किलो तूप होते. लाडवांसाठी 350 ग्रॅम वापरल्यावर डब्यात किती ग्रॅम उरले?",
+        },
+        answer: 650,
+        wrong: [750, 350, 550],
+        checkExpr: "1000-350",
+        fmt: g,
+        solution: {
+          en: "1 kg = 1000 g, and 1000 − 350 = 650 g. The borrow across the hundreds trips people to 750; 350 hands back what was used instead of what is left.",
+          hi: "1 किलो = 1000 ग्राम, और 1000 − 350 = 650 ग्राम। सैकड़े के पार का उधार 750 पर गिरा देता है; 350 बचे की जगह लगा हुआ लौटा देता है।",
+          mr: "1 किलो = 1000 ग्रॅम, आणि 1000 − 350 = 650 ग्रॅम. शतकापलीकडची उसनवारी 750 वर पाडते; 350 उरलेल्याऐवजी वापरलेलेच परत देते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "One pan of a balance holds a 2 kg stone. The other holds a packet of sugar and a 500 g weight, and the pans are level. What does the sugar weigh in grams?",
+          hi: "तराज़ू के एक पलड़े पर 2 किलो का पत्थर है। दूसरे पर चीनी का पैकेट और 500 ग्राम का बाट है, और पलड़े बराबर हैं। चीनी का भार कितने ग्राम है?",
+          mr: "तराजूच्या एका पारड्यात 2 किलोचा दगड आहे. दुसऱ्यात साखरेचे पाकीट आणि 500 ग्रॅमचे वजन आहे, आणि पारडी समतोल आहेत. साखरेचे वजन किती ग्रॅम?",
+        },
+        answer: 1500,
+        wrong: [2500, 1000, 500],
+        checkExpr: "2000-500",
+        fmt: g,
+        solution: {
+          en: "The sugar side already carries 500 g of iron, so the sugar itself is 2000 − 500 = 1500 g. Adding instead (2500) weighs the stone and the weight together — but they sit on opposite pans.",
+          hi: "चीनी वाले पलड़े पर 500 ग्राम लोहा पहले से है, इसलिए चीनी 2000 − 500 = 1500 ग्राम है। जोड़ने पर (2500) पत्थर और बाट साथ तुल जाते हैं — पर वे तो आमने-सामने के पलड़ों पर हैं।",
+          mr: "साखरेच्या पारड्यात आधीच 500 ग्रॅम लोखंड आहे, म्हणून साखर 2000 − 500 = 1500 ग्रॅम. बेरीज केल्यास (2500) दगड आणि वजन एकत्र तोलले जातात — पण ती तर समोरासमोरच्या पारड्यांत आहेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A shopkeeper packs 5 kg of sugar into bags of 500 g each. How many bags does he fill?",
+          hi: "दुकानदार 5 किलो चीनी को 500-500 ग्राम की थैलियों में भरता है। वह कितनी थैलियाँ भरेगा?",
+          mr: "दुकानदार 5 किलो साखर 500-500 ग्रॅमच्या पिशव्यांत भरतो. तो किती पिशव्या भरेल?",
+        },
+        answer: 10,
+        wrong: [5, 25, 100],
+        checkExpr: "5000/500",
+        solution: {
+          en: "5 kg = 5000 g, and 5000 ÷ 500 = 10 bags — two half-kilo bags to every kilo. Five counts one bag per kilo, forgetting each kilo splits in two.",
+          hi: "5 किलो = 5000 ग्राम, और 5000 ÷ 500 = 10 थैलियाँ — हर किलो पर आधा-आधा किलो की दो। पाँच में हर किलो की एक ही थैली गिनी गई, यह भूलकर कि हर किलो दो में बँटता है।",
+          mr: "5 किलो = 5000 ग्रॅम, आणि 5000 ÷ 500 = 10 पिशव्या — दर किलोमागे अर्ध्या किलोच्या दोन. पाचमध्ये दर किलोची एकच पिशवी मोजली — प्रत्येक किलो दोनात विभागतो हे विसरून.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Guess first, then check: which is heavier — 3 packets of 400 g biscuits, or a 1 kg jar of pickle? The answer is the heavier one's weight in grams.",
+          hi: "पहले अंदाज़ा, फिर जाँच: भारी क्या है — 400 ग्राम वाले बिस्कुट के 3 पैकेट, या 1 किलो का अचार का मर्तबान? उत्तर भारी वाले का भार ग्राम में है।",
+          mr: "आधी अंदाज, मग तपासणी: जड काय — 400 ग्रॅमच्या बिस्किटांची 3 पाकिटे, की 1 किलोची लोणच्याची बरणी? उत्तर जड असलेल्याचे वजन ग्रॅममध्ये.",
+        },
+        answer: 1200,
+        wrong: [1000, 400, 403],
+        checkExpr: "400*3",
+        fmt: g,
+        solution: {
+          en: "The biscuits: 3 × 400 = 1200 g, beating the jar's 1000 g. Intuition often backs the single big jar against the little packets — which is exactly why the multiplication must be done, not felt.",
+          hi: "बिस्कुट: 3 × 400 = 1200 ग्राम, जो मर्तबान के 1000 ग्राम से भारी। अंतर्ज्ञान अक्सर छोटे पैकेटों के मुक़ाबले अकेले बड़े मर्तबान का पक्ष लेता है — इसीलिए गुणा करना पड़ता है, महसूस नहीं।",
+          mr: "बिस्किटे: 3 × 400 = 1200 ग्रॅम, बरणीच्या 1000 ग्रॅमहून जड. अंतर्मन अनेकदा छोट्या पाकिटांविरुद्ध एकट्या मोठ्या बरणीची बाजू घेते — म्हणूनच गुणाकार करावा लागतो, वाटून चालत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A brick balances exactly against 1 kg plus HALF a brick. What does the whole brick weigh?",
+          hi: "एक ईंट, 1 किलो और आधी ईंट के साथ ठीक बराबर तुलती है। पूरी ईंट का भार कितना है?",
+          mr: "एक वीट, 1 किलो आणि अर्धी वीट यांच्याशी बरोबर तोलली जाते. पूर्ण विटेचे वजन किती?",
+        },
+        answer: 2,
+        wrong: [1, 3, 4],
+        checkExpr: "1*2",
+        fmt: kg,
+        solution: {
+          en: "Take half a brick off both pans: half a brick balances 1 kg alone. So the whole brick is 2 × 1 = 2 kg. The rushed answer 1 kg reads the puzzle as 'a brick weighs 1 kg and a bit' and skips the beautiful cancelling step.",
+          hi: "दोनों पलड़ों से आधी-आधी ईंट हटाएँ: अकेली आधी ईंट 1 किलो के बराबर तुलती है। तो पूरी ईंट 2 × 1 = 2 किलो। हड़बड़ी वाला उत्तर 1 किलो पहेली को 'ईंट किलो भर और कुछ' पढ़कर उस सुंदर काट वाले क़दम को छोड़ देता है।",
+          mr: "दोन्ही पारड्यांतून अर्धी-अर्धी वीट काढा: एकटी अर्धी वीट 1 किलोशी तोलली जाते. म्हणून पूर्ण वीट 2 × 1 = 2 किलो. घाईचे उत्तर 1 किलो कोडे 'वीट किलोभर आणि थोडी' असे वाचून ती सुंदर काटाकाटीची पायरी गाळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Using a balance and only two weights — 1 kg and 3 kg — a grocer can weigh out exactly 2 kg of jaggery. He puts the jaggery with one weight on one pan, the other weight opposite. Which amount below is the jaggery he measured?",
+          hi: "तराज़ू और केवल दो बाट — 1 किलो और 3 किलो — से पंसारी ठीक 2 किलो गुड़ तोल लेता है। वह गुड़ को एक बाट के साथ एक पलड़े पर रखता है, दूसरा बाट सामने। नीचे में से तुला हुआ गुड़ कितना है?",
+          mr: "तराजू आणि फक्त दोन वजने — 1 किलो व 3 किलो — यांनी वाणी बरोबर 2 किलो गूळ तोलतो. तो गूळ एका वजनासह एका पारड्यात ठेवतो, दुसरे वजन समोर. खाली दिलेल्यांपैकी तोललेला गूळ किती?",
+        },
+        answer: 2,
+        wrong: [4, 3, 1],
+        checkExpr: "3-1",
+        fmt: kg,
+        solution: {
+          en: "Jaggery + 1 kg on one side balancing 3 kg on the other means the jaggery is 3 − 1 = 2 kg. Putting a weight on the SAME pan as the goods subtracts it — the balance's oldest trick, and the reason odd weights can measure even amounts.",
+          hi: "एक ओर गुड़ + 1 किलो, दूसरी ओर 3 किलो — यानी गुड़ 3 − 1 = 2 किलो। माल के पलड़े पर बाट रखना उसे घटा देता है — तराज़ू की सबसे पुरानी तरकीब, जिसके दम पर विषम बाट सम मात्राएँ तोल लेते हैं।",
+          mr: "एका बाजूला गूळ + 1 किलो, दुसरीकडे 3 किलो — म्हणजे गूळ 3 − 1 = 2 किलो. मालाच्याच पारड्यात वजन ठेवणे ते वजा करते — तराजूची सर्वांत जुनी युक्ती, जिच्या जोरावर विषम वजने सम मात्रा तोलतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 3,
+      chapter: "Chapter 8 — Who is Heavier?",
+      name: "Who is Heavier?",
+      slug: "maths-3-who-is-heavier",
+      summary:
+        "Kilograms and grams on the two pans of a balance — converting, comparing, and the brick that weighs itself.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "कौन भारी है?",
+          summary: "तराज़ू के दो पलड़ों पर किलो और ग्राम — बदलना, तुलना, और वह ईंट जो ख़ुद को तोलती है।",
+        },
+        mr: {
+          name: "कोण जड आहे?",
+          summary: "तराजूच्या दोन पारड्यांत किलो आणि ग्रॅम — बदलणे, तुलना, आणि स्वतःला तोलणारी वीट.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G3_MATHS: TopicFileOut[] = [
   funWithNumbers(),
   giveAndTake(),
   howManyTimes(),
   rupeesAndPaise(),
+  longAndShort(),
+  timeGoesOn(),
+  canWeShare(),
+  whoIsHeavier(),
 ];
