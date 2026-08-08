@@ -910,4 +910,628 @@ export const G6_GEOGRAPHY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Major Domains of the Earth                                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-6-major-domains",
+    subject: "GEOGRAPHY",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 5 — Major Domains of the Earth",
+      hi: "अध्याय 5 — पृथ्वी के प्रमुख परिमंडल",
+      mr: "प्रकरण 5 — पृथ्वीची प्रमुख आवरणे",
+    },
+    name: {
+      en: "Major Domains of the Earth",
+      hi: "पृथ्वी के प्रमुख परिमंडल",
+      mr: "पृथ्वीची प्रमुख आवरणे",
+    },
+    summary: {
+      en: "Rock, water, air — and the thin meeting-film where all three touch and life happens; the seven continents and the oceans that outsize them all.",
+      hi: "चट्टान, पानी, हवा — और वह पतली मिलन-परत जहाँ तीनों छूते हैं और जीवन घटता है; सात महाद्वीप और उन सबसे बड़े महासागर।",
+      mr: "खडक, पाणी, हवा — आणि तिन्ही स्पर्शतात व जीवन घडते ती पातळ भेट-फिल्म; सात खंड आणि त्या साऱ्यांहून मोठे महासागर.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "lithosphere",
+        name: { en: "The lithosphere", hi: "स्थलमंडल", mr: "शिलावरण" },
+        kind: "domain",
+        prompt: {
+          en: "Mountains, plains, the sea-floor itself — which domain is the Earth's solid rocky shell, wearing a skin of soil?",
+          hi: "पहाड़, मैदान, ख़ुद समुद्र-तल — कौन-सा परिमंडल पृथ्वी का ठोस चट्टानी खोल है, जो मिट्टी की खाल ओढ़े है?",
+          mr: "पर्वत, मैदाने, स्वतः समुद्रतळ — कोणते आवरण पृथ्वीचे घन खडकाळ कवच आहे, मातीची कातडी ल्यालेले?",
+        },
+        statement: {
+          en: "The lithosphere is the solid rock domain — the crust under every continent AND under every ocean, topped with the soil that feeds us.",
+          hi: "स्थलमंडल ठोस चट्टान का परिमंडल है — हर महाद्वीप और हर महासागर के नीचे की पर्पटी, ऊपर वह मिट्टी जो हमें खिलाती है।",
+          mr: "शिलावरण हे घन खडकाचे आवरण — प्रत्येक खंडाखालचे आणि प्रत्येक महासागराखालचेही कवच, वर आपल्याला पोसणारी माती.",
+        },
+        pair: {
+          left: { en: "The lithosphere", hi: "स्थलमंडल", mr: "शिलावरण" },
+          right: { en: "the rock shell", hi: "चट्टानी खोल", mr: "खडकाचे कवच" },
+        },
+      },
+      {
+        id: "hydrosphere",
+        name: { en: "The hydrosphere", hi: "जलमंडल", mr: "जलावरण" },
+        kind: "domain",
+        prompt: {
+          en: "Oceans, rivers, glaciers, the water underground — which domain gathers ALL the planet's water under one name?",
+          hi: "महासागर, नदियाँ, हिमनद, भूमिगत पानी — कौन-सा परिमंडल ग्रह के सारे पानी को एक नाम तले समेटता है?",
+          mr: "महासागर, नद्या, हिमनद्या, भूगर्भातले पाणी — कोणते आवरण ग्रहाचे सारे पाणी एका नावाखाली गोळा करते?",
+        },
+        statement: {
+          en: "The hydrosphere is the water domain — seas, rivers, ice and groundwater together, covering about two-thirds of the Earth's face.",
+          hi: "जलमंडल पानी का परिमंडल है — समुद्र, नदियाँ, बर्फ़ और भूजल मिलकर, पृथ्वी के चेहरे का क़रीब दो-तिहाई ढके हुए।",
+          mr: "जलावरण हे पाण्याचे आवरण — समुद्र, नद्या, बर्फ आणि भूजल मिळून, पृथ्वीच्या चेहऱ्याचा सुमारे दोन-तृतीयांश झाकणारे.",
+        },
+        pair: {
+          left: { en: "The hydrosphere", hi: "जलमंडल", mr: "जलावरण" },
+          right: {
+            en: "all the water, one name",
+            hi: "सारा पानी, एक नाम",
+            mr: "सारे पाणी, एक नाव",
+          },
+        },
+      },
+      {
+        id: "atmosphere",
+        name: { en: "The atmosphere", hi: "वायुमंडल", mr: "वातावरण" },
+        kind: "domain",
+        prompt: {
+          en: "A blanket of air hundreds of kilometres thick, held to the planet by gravity's grip — which domain is this?",
+          hi: "सैकड़ों किलोमीटर मोटा हवा का कंबल, गुरुत्व की पकड़ से ग्रह से बँधा — यह कौन-सा परिमंडल है?",
+          mr: "शेकडो किलोमीटर जाड हवेचे पांघरूण, गुरुत्वाच्या पकडीने ग्रहाला बांधलेले — हे कोणते आवरण?",
+        },
+        statement: {
+          en: "The atmosphere is the air domain — a gravity-held blanket that gives breath, carries weather and shields us from the sun's harshness.",
+          hi: "वायुमंडल हवा का परिमंडल है — गुरुत्व से थमा कंबल जो साँस देता है, मौसम ढोता है और सूर्य की कठोरता से ओट देता है।",
+          mr: "वातावरण हे हवेचे आवरण — गुरुत्वाने धरलेले पांघरूण जे श्वास देते, हवामान वाहते आणि सूर्याच्या कठोरतेपासून आडोसा देते.",
+        },
+        pair: {
+          left: { en: "The atmosphere", hi: "वायुमंडल", mr: "वातावरण" },
+          right: {
+            en: "the gravity-held blanket",
+            hi: "गुरुत्व से थमा कंबल",
+            mr: "गुरुत्वाने धरलेले पांघरूण",
+          },
+        },
+      },
+      {
+        id: "biosphere",
+        name: { en: "The biosphere", hi: "जैवमंडल", mr: "जीवावरण" },
+        kind: "domain",
+        prompt: {
+          en: "Where rock, water and air all touch, a narrow zone holds every living thing there is. What is this meeting-film called?",
+          hi: "जहाँ चट्टान, पानी और हवा तीनों छूते हैं, वहाँ एक सँकरी पट्टी हर जीवित चीज़ को थामे है। इस मिलन-परत को क्या कहते हैं?",
+          mr: "जिथे खडक, पाणी आणि हवा तिन्ही स्पर्शतात, तिथे एक अरुंद पट्टा प्रत्येक जिवंत गोष्ट धरून आहे. या भेट-फिल्मला काय म्हणतात?",
+        },
+        statement: {
+          en: "The biosphere is the narrow zone where land, water and air meet — every plant, animal and person lives inside this one thin film.",
+          hi: "जैवमंडल वह सँकरी पट्टी है जहाँ थल, जल और वायु मिलते हैं — हर पौधा, पशु और इंसान इसी एक पतली परत के भीतर जीता है।",
+          mr: "जीवावरण म्हणजे भूमी, पाणी आणि हवा मिळतात तो अरुंद पट्टा — प्रत्येक वनस्पती, प्राणी आणि माणूस याच एका पातळ फिल्ममध्ये जगतो.",
+        },
+        detail: {
+          en: "Set against the planet's size it is thinner than the peel on an apple.",
+          hi: "ग्रह के नाप के आगे वह सेब के छिलके से भी पतली है।",
+          mr: "ग्रहाच्या मापापुढे ती सफरचंदाच्या सालीहूनही पातळ आहे.",
+        },
+        extra: {
+          en: "Harm to any one domain reaches it first — the film has no spare.",
+          hi: "किसी भी परिमंडल की चोट सबसे पहले उसी तक पहुँचती है — परत के पास कोई अतिरिक्त नहीं।",
+          mr: "कोणत्याही आवरणाची इजा आधी तिच्यापर्यंत पोहोचते — फिल्मकडे जादा काही नाही.",
+        },
+        pair: {
+          left: { en: "The biosphere", hi: "जैवमंडल", mr: "जीवावरण" },
+          right: { en: "life's thin film", hi: "जीवन की पतली परत", mr: "जीवनाची पातळ फिल्म" },
+        },
+      },
+      {
+        id: "asia",
+        name: { en: "Asia", hi: "एशिया", mr: "आशिया" },
+        kind: "continent-ocean",
+        prompt: {
+          en: "Of the seven continents, which is the LARGEST — home to India, China, the Himalayas and more people than all the others together?",
+          hi: "सात महाद्वीपों में सबसे बड़ा कौन-सा है — भारत, चीन, हिमालय का घर, और बाक़ी सबसे मिलाकर ज़्यादा लोगों का?",
+          mr: "सात खंडांत सर्वांत मोठा कोणता — भारत, चीन, हिमालयाचे घर, आणि बाकी साऱ्यांहून मिळून जास्त माणसांचे?",
+        },
+        statement: {
+          en: "Asia is the largest continent — our own — holding the Himalayas and more people than all the other continents combined.",
+          hi: "एशिया सबसे बड़ा महाद्वीप है — हमारा अपना — हिमालय को थामे, और बाक़ी सब महाद्वीपों के जोड़ से ज़्यादा लोगों को।",
+          mr: "आशिया हा सर्वांत मोठा खंड — आपला स्वतःचा — हिमालय धरणारा, आणि बाकी साऱ्या खंडांच्या बेरजेहून जास्त माणसे असणारा.",
+        },
+        pair: {
+          left: { en: "Asia", hi: "एशिया", mr: "आशिया" },
+          right: { en: "the largest continent", hi: "सबसे बड़ा महाद्वीप", mr: "सर्वांत मोठा खंड" },
+        },
+      },
+      {
+        id: "pacific",
+        name: { en: "The Pacific Ocean", hi: "प्रशांत महासागर", mr: "प्रशांत महासागर" },
+        kind: "continent-ocean",
+        prompt: {
+          en: "The largest AND deepest ocean, wide enough to swallow all the continents together, its floor plunging to the Mariana Trench — which ocean is this?",
+          hi: "सबसे बड़ा और सबसे गहरा महासागर, इतना चौड़ा कि सारे महाद्वीप उसमें समा जाएँ, उसका तल मारियाना गर्त तक धँसा — यह कौन-सा महासागर है?",
+          mr: "सर्वांत मोठा आणि सर्वांत खोल महासागर, सारे खंड मावतील इतका रुंद, त्याचा तळ मारियाना गर्तेपर्यंत खचलेला — हा कोणता महासागर?",
+        },
+        statement: {
+          en: "The Pacific is the largest and deepest ocean — all the continents could fit inside it, and its Mariana Trench is the planet's lowest point.",
+          hi: "प्रशांत सबसे बड़ा और गहरा महासागर है — सारे महाद्वीप उसमें समा सकते हैं, और उसका मारियाना गर्त ग्रह का सबसे नीचा बिंदु है।",
+          mr: "प्रशांत हा सर्वांत मोठा आणि खोल महासागर — सारे खंड त्यात मावू शकतात, आणि त्याची मारियाना गर्ता हा ग्रहाचा सर्वांत खालचा बिंदू.",
+        },
+        detail: {
+          en: "The Mariana Trench sinks deeper below the waves than Mount Everest rises above them.",
+          hi: "मारियाना गर्त लहरों के नीचे उतना धँसा है जितना एवरेस्ट उनके ऊपर उठा भी नहीं।",
+          mr: "मारियाना गर्ता लाटांखाली इतकी खचली आहे की एव्हरेस्टही तितका वर चढलेला नाही.",
+        },
+        extra: {
+          en: "Its name means 'peaceful' — given by sailors it happened to treat gently.",
+          hi: "उसका नाम 'शांत' है — उन नाविकों का दिया, जिनसे वह संयोग से नरमी से पेश आया।",
+          mr: "त्याचे नाव 'शांत' — ज्यांच्याशी तो योगायोगाने नरमीने वागला त्या खलाशांनी दिलेले.",
+        },
+        pair: {
+          left: { en: "The Pacific", hi: "प्रशांत", mr: "प्रशांत" },
+          right: {
+            en: "largest, deepest, misnamed calm",
+            hi: "सबसे बड़ा, गहरा, नाम भर का शांत",
+            mr: "सर्वांत मोठा, खोल, नावापुरता शांत",
+          },
+        },
+      },
+      {
+        id: "indianocean",
+        name: { en: "The Indian Ocean", hi: "हिंद महासागर", mr: "हिंदी महासागर" },
+        kind: "continent-ocean",
+        prompt: {
+          en: "Which is the only ocean named after a single country — the one whose head rests against our own peninsula?",
+          hi: "एक अकेले देश के नाम पर कौन-सा इकलौता महासागर है — जिसका सिरहाना हमारे ही प्रायद्वीप से लगा है?",
+          mr: "एकट्या देशाच्या नावावरचा एकमेव महासागर कोणता — ज्याचे उशाशी आपलेच द्वीपकल्प आहे?",
+        },
+        statement: {
+          en: "The Indian Ocean is the only ocean named after one country — India sits at its head, with Africa west and Australia east.",
+          hi: "हिंद महासागर एक देश के नाम वाला इकलौता महासागर है — उसके सिरहाने भारत, पश्चिम में अफ़्रीका, पूर्व में ऑस्ट्रेलिया।",
+          mr: "हिंदी महासागर हा एका देशाच्या नावाचा एकमेव महासागर — त्याच्या उशाशी भारत, पश्चिमेला आफ्रिका, पूर्वेला ऑस्ट्रेलिया.",
+        },
+        pair: {
+          left: { en: "The Indian Ocean", hi: "हिंद महासागर", mr: "हिंदी महासागर" },
+          right: {
+            en: "one country's name on the water",
+            hi: "पानी पर एक देश का नाम",
+            mr: "पाण्यावर एका देशाचे नाव",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "File each under its domain: A-a glacier, B-the Deccan's rock, C-the monsoon wind. Which trio is right?",
+          hi: "हर एक को उसके परिमंडल में रखिए: अ-हिमनद, ब-दक्कन की चट्टान, स-मानसूनी हवा। कौन-सी तिकड़ी सही है?",
+          mr: "प्रत्येकाला त्याच्या आवरणात ठेवा: अ-हिमनदी, ब-दख्खनचा खडक, क-मोसमी वारा. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: hydrosphere · B: lithosphere · C: atmosphere",
+            hi: "अ: जलमंडल · ब: स्थलमंडल · स: वायुमंडल",
+            mr: "अ: जलावरण · ब: शिलावरण · क: वातावरण",
+          },
+          {
+            en: "A: lithosphere · B: atmosphere · C: hydrosphere",
+            hi: "अ: स्थलमंडल · ब: वायुमंडल · स: जलमंडल",
+            mr: "अ: शिलावरण · ब: वातावरण · क: जलावरण",
+          },
+          {
+            en: "A: atmosphere · B: hydrosphere · C: lithosphere",
+            hi: "अ: वायुमंडल · ब: जलमंडल · स: स्थलमंडल",
+            mr: "अ: वातावरण · ब: जलावरण · क: शिलावरण",
+          },
+          {
+            en: "A: hydrosphere · B: atmosphere · C: lithosphere",
+            hi: "अ: जलमंडल · ब: वायुमंडल · स: स्थलमंडल",
+            mr: "अ: जलावरण · ब: वातावरण · क: शिलावरण",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A glacier is water — frozen, but water still, so hydrosphere; the Deccan's rock is lithosphere; the monsoon wind is moving air, atmosphere. The trick entry is the glacier: the domains sort by WHAT a thing is, not what state it is in.",
+          hi: "हिमनद पानी है — जमा हुआ, पर पानी ही, तो जलमंडल; दक्कन की चट्टान स्थलमंडल; मानसूनी हवा चलती हवा, वायुमंडल। फंदा हिमनद है: परिमंडल चीज़ के होने से छाँटते हैं, उसकी अवस्था से नहीं।",
+          mr: "हिमनदी म्हणजे पाणी — गोठलेले, पण पाणीच, म्हणून जलावरण; दख्खनचा खडक शिलावरण; मोसमी वारा हलती हवा, वातावरण. सापळा हिमनदी आहे: आवरणे वस्तू काय आहे यावरून लावतात, अवस्थेवरून नव्हे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Every fish, forest and family on Earth fits inside a film thinner, in proportion, than an apple's peel. What warning does the biosphere's THINNESS carry?",
+          hi: "पृथ्वी की हर मछली, हर वन और हर परिवार अनुपात में सेब के छिलके से पतली परत में समाता है। जैवमंडल का पतलापन कौन-सी चेतावनी ढोता है?",
+          mr: "पृथ्वीवरचा प्रत्येक मासा, प्रत्येक वन आणि प्रत्येक कुटुंब प्रमाणात सफरचंदाच्या सालीहून पातळ फिल्ममध्ये मावते. जीवावरणाचा पातळपणा कोणता इशारा वाहतो?",
+        },
+        choices: [
+          {
+            en: "That life has no spare room — harm the air, water or soil of this one film and there is no second film to move to",
+            hi: "कि जीवन के पास फ़ालतू जगह नहीं — इस एक परत की हवा, पानी या मिट्टी बिगाड़िए तो जाने को दूसरी परत है ही नहीं",
+            mr: "की जीवनाकडे जादा जागा नाही — या एका फिल्मची हवा, पाणी वा माती बिघडवा, जायला दुसरी फिल्म नाहीच",
+          },
+          {
+            en: "That life will soon spread through the whole planet's depth",
+            hi: "कि जीवन जल्दी ही पूरे ग्रह की गहराई में फैल जाएगा",
+            mr: "की जीवन लवकरच साऱ्या ग्रहाच्या खोलीत पसरेल",
+          },
+          {
+            en: "That the deep rock is more important than the surface",
+            hi: "कि गहरी चट्टान सतह से ज़्यादा अहम है",
+            mr: "की खोल खडक पृष्ठभागाहून महत्त्वाचा आहे",
+          },
+          {
+            en: "None — thin films are the strongest shapes",
+            hi: "कोई नहीं — पतली परतें सबसे मज़बूत होती हैं",
+            mr: "काहीच नाही — पातळ फिल्म सर्वांत बळकट असतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The planet is enormous; the liveable part of it is not. Below the film lies rock too hot and airless, above it air too thin and cold — everything alive crowds the boundary where the three domains overlap. Smoke poured into the air, waste into the rivers, poison into the soil all land in the same thin film we ourselves inhabit. Geography's first map is also its first warning.",
+          hi: "ग्रह विशाल है; उसका जीने लायक़ हिस्सा नहीं। परत के नीचे बहुत गर्म, बे-हवा चट्टान है, ऊपर बहुत पतली, ठंडी हवा — हर जीवित चीज़ उसी सीमा पर सिमटी है जहाँ तीनों परिमंडल मिलते हैं। हवा में उड़ेला धुआँ, नदियों में डाला कचरा, मिट्टी में घोला ज़हर — सब उसी पतली परत में उतरते हैं जिसमें हम ख़ुद बसे हैं। भूगोल का पहला नक़्शा उसकी पहली चेतावनी भी है।",
+          mr: "ग्रह प्रचंड आहे; त्याचा जगण्याजोगा भाग नाही. फिल्मखाली फार तापलेला, हवाविहीन खडक, वर फार विरळ, गार हवा — प्रत्येक जिवंत गोष्ट तिन्ही आवरणे मिळतात त्या सीमेवरच दाटलेली आहे. हवेत ओतलेला धूर, नद्यांत टाकलेला कचरा, मातीत कालवलेले विष — सारे आपण स्वतः राहतो त्याच पातळ फिल्ममध्ये उतरतात. भूगोलाचा पहिला नकाशा हाच त्याचा पहिला इशाराही आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Drop Mount Everest, peak first, into the Mariana Trench — its summit would still lie under two kilometres of water. What does this single comparison teach about the ocean floor?",
+          hi: "एवरेस्ट को चोटी के बल मारियाना गर्त में उतार दीजिए — उसका शिखर फिर भी दो किलोमीटर पानी तले रहेगा। यह एक तुलना समुद्र-तल के बारे में क्या सिखाती है?",
+          mr: "एव्हरेस्टला शिखराकडून मारियाना गर्तेत उतरवा — त्याचे शिखर तरीही दोन किलोमीटर पाण्याखाली राहील. ही एक तुलना समुद्रतळाबद्दल काय शिकवते?",
+        },
+        choices: [
+          {
+            en: "That the Earth's relief continues, even grander, under the sea — the ocean floor has trenches and mountains that out-scale the land's",
+            hi: "कि पृथ्वी का उतार-चढ़ाव समुद्र तले भी, और भी विराट होकर, जारी है — समुद्र-तल के गर्त और पहाड़ थल वालों से बड़े पड़ते हैं",
+            mr: "की पृथ्वीचा चढउतार समुद्राखालीही, आणखी भव्य होऊन, चालू आहे — समुद्रतळाच्या गर्ता आणि पर्वत भूमीवरच्यांहून मोठे भरतात",
+          },
+          {
+            en: "That the sea is deepest wherever mountains are tallest",
+            hi: "कि समुद्र वहीं सबसे गहरा है जहाँ पहाड़ सबसे ऊँचे हैं",
+            mr: "की जिथे पर्वत सर्वांत उंच तिथेच समुद्र सर्वांत खोल",
+          },
+          {
+            en: "That Everest is smaller than geographers claim",
+            hi: "कि एवरेस्ट भूगोलवेत्ताओं के दावे से छोटा है",
+            mr: "की एव्हरेस्ट भूगोलतज्ज्ञांच्या दाव्याहून लहान आहे",
+          },
+          {
+            en: "That trenches are made by sinking mountains",
+            hi: "कि गर्त धँसते पहाड़ों से बनते हैं",
+            mr: "की गर्ता बुडणाऱ्या पर्वतांनी होतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The waves hide a landscape wilder than the one we walk: under the Pacific lie chasms past 11 km deep, and mid-ocean mountain chains longer than any on land. The flat blue of the map is a curtain, not a floor. Everest-in-the-trench is geography's way of saying: the lithosphere does not stop at the beach.",
+          hi: "लहरें उस भूदृश्य को छिपाए हैं जो हमारे चलने वाले से भी विकट है: प्रशांत के नीचे 11 किमी से गहरी खाइयाँ हैं, और मध्य-महासागरीय पर्वतमालाएँ थल की किसी भी माला से लंबी। नक़्शे का सपाट नीला परदा है, फ़र्श नहीं। गर्त-में-एवरेस्ट भूगोल का यह कहने का ढंग है: स्थलमंडल समुद्र-तट पर नहीं रुकता।",
+          mr: "लाटा आपण चालतो त्याहून रौद्र भूदृश्य लपवतात: प्रशांताखाली 11 किमीहून खोल दऱ्या आहेत, आणि मध्य-महासागरी पर्वतरांगा भूमीवरच्या कोणत्याही रांगेहून लांब. नकाशाचा सपाट निळा हा पडदा आहे, फरशी नव्हे. गर्तेतला-एव्हरेस्ट हा भूगोलाचा सांगण्याचा ढंग: शिलावरण समुद्रकिनाऱ्यावर थांबत नाही.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Our Country: India                                          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-6-our-country-india",
+    subject: "GEOGRAPHY",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 7 — Our Country: India",
+      hi: "अध्याय 7 — हमारा देश: भारत",
+      mr: "प्रकरण 7 — आपला देश: भारत",
+    },
+    name: { en: "Our Country: India", hi: "हमारा देश: भारत", mr: "आपला देश: भारत" },
+    summary: {
+      en: "One country, every landform — the Himalayan wall, the river-built plains, the Thar's sands, the old southern plateau, and two island chains in two seas.",
+      hi: "एक देश, हर भू-आकृति — हिमालयी दीवार, नदियों के बनाए मैदान, थार की रेत, दक्षिण का पुराना पठार, और दो समुद्रों में दो द्वीप-मालाएँ।",
+      mr: "एक देश, प्रत्येक भूरूप — हिमालयी भिंत, नद्यांनी घडवलेली मैदाने, थरची वाळू, दक्षिणेचे जुने पठार, आणि दोन समुद्रांत दोन द्वीपमाला.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "himalayas",
+        name: { en: "The Himalayas", hi: "हिमालय", mr: "हिमालय" },
+        kind: "landform",
+        prompt: {
+          en: "Along India's whole northern edge stands a wall of the world's highest snow mountains. Which range is this?",
+          hi: "भारत के पूरे उत्तरी छोर पर दुनिया के सबसे ऊँचे बर्फ़ीले पहाड़ों की दीवार खड़ी है। यह कौन-सी शृंखला है?",
+          mr: "भारताच्या साऱ्या उत्तर कडेला जगातल्या सर्वांत उंच बर्फाळ पर्वतांची भिंत उभी आहे. ही कोणती रांग?",
+        },
+        statement: {
+          en: "The Himalayas wall India's north — the world's highest mountains, snow-capped, guarding the plains and feeding their rivers.",
+          hi: "हिमालय भारत के उत्तर की दीवार है — दुनिया के सबसे ऊँचे, बर्फ़ ओढ़े पहाड़, मैदानों की रखवाली करते और उनकी नदियों को पालते।",
+          mr: "हिमालय भारताच्या उत्तरेची भिंत — जगातले सर्वांत उंच, बर्फाच्छादित पर्वत, मैदानांची राखण करणारे आणि त्यांच्या नद्यांना पोसणारे.",
+        },
+        detail: {
+          en: "Their snows melt into rivers that run all year — the plains' unfailing water tower.",
+          hi: "उनकी बर्फ़ पिघलकर साल भर बहती नदियाँ बनती है — मैदानों की अचूक पानी-मीनार।",
+          mr: "त्यांचे बर्फ वितळून वर्षभर वाहणाऱ्या नद्या होतात — मैदानांचा अचूक पाणी-मनोरा.",
+        },
+        extra: {
+          en: "They are young mountains, still rising a little every year.",
+          hi: "वे जवान पहाड़ हैं, आज भी हर साल थोड़ा उठते हुए।",
+          mr: "ते तरुण पर्वत आहेत, आजही दरवर्षी किंचित उंचावणारे.",
+        },
+        pair: {
+          left: { en: "The Himalayas", hi: "हिमालय", mr: "हिमालय" },
+          right: { en: "the northern wall", hi: "उत्तर की दीवार", mr: "उत्तरेची भिंत" },
+        },
+      },
+      {
+        id: "northernplains",
+        name: { en: "The Northern Plains", hi: "उत्तरी मैदान", mr: "उत्तरेची मैदाने" },
+        kind: "landform",
+        prompt: {
+          en: "South of the mountains lies flat, deep, dark soil laid down by the Ganga, Brahmaputra and their sisters. Which land is this?",
+          hi: "पहाड़ों के दक्षिण में गंगा, ब्रह्मपुत्र और उनकी बहनों की बिछाई समतल, गहरी, साँवली मिट्टी है। यह कौन-सी धरती है?",
+          mr: "पर्वतांच्या दक्षिणेला गंगा, ब्रह्मपुत्रा आणि त्यांच्या बहिणींनी अंथरलेली सपाट, खोल, सावळी माती आहे. ही कोणती भूमी?",
+        },
+        statement: {
+          en: "The Northern Plains are river-built — flat, fertile silt laid down over ages by the Ganga, the Brahmaputra and their tributaries.",
+          hi: "उत्तरी मैदान नदियों के बनाए हैं — गंगा, ब्रह्मपुत्र और उनकी सहायक नदियों की युगों में बिछाई समतल, उपजाऊ मिट्टी।",
+          mr: "उत्तरेची मैदाने नद्यांनी घडवलेली — गंगा, ब्रह्मपुत्रा आणि त्यांच्या उपनद्यांनी युगानुयुगे अंथरलेला सपाट, सुपीक गाळ.",
+        },
+        detail: {
+          en: "That gift of soil is why the plains carry India's thickest crowds of farms and towns.",
+          hi: "मिट्टी की वही देन है कि मैदान भारत के सबसे घने खेत और शहर ढोते हैं।",
+          mr: "मातीच्या त्याच देणगीमुळे मैदाने भारताची सर्वांत दाट शेते आणि गावे वाहतात.",
+        },
+        extra: {
+          en: "Flat land also means easy roads, canals and railways — everything travels well on a plain.",
+          hi: "समतल धरती यानी आसान सड़कें, नहरें और रेलें — मैदान पर हर चीज़ अच्छा चलती है।",
+          mr: "सपाट भूमी म्हणजे सोप्या सडका, कालवे आणि रेल्वे — मैदानावर प्रत्येक गोष्ट नीट चालते.",
+        },
+        pair: {
+          left: { en: "The Northern Plains", hi: "उत्तरी मैदान", mr: "उत्तरेची मैदाने" },
+          right: {
+            en: "the rivers' gift of soil",
+            hi: "नदियों की मिट्टी-देन",
+            mr: "नद्यांची माती-देणगी",
+          },
+        },
+      },
+      {
+        id: "thar",
+        name: { en: "The Thar Desert", hi: "थार मरुस्थल", mr: "थरचे वाळवंट" },
+        kind: "landform",
+        prompt: {
+          en: "In India's west, sand dunes roll where rain hardly comes. Which dry land is this?",
+          hi: "भारत के पश्चिम में रेत के टीले लुढ़कते हैं जहाँ बारिश मुश्किल से आती है। यह कौन-सी सूखी धरती है?",
+          mr: "भारताच्या पश्चिमेला वाळूच्या टेकड्या पसरल्या आहेत जिथे पाऊस जेमतेम येतो. ही कोणती कोरडी भूमी?",
+        },
+        statement: {
+          en: "The Thar is India's western desert — rolling dunes, scarce rain, and life built around every drop that falls.",
+          hi: "थार भारत का पश्चिमी मरुस्थल है — लुढ़कते टीले, दुर्लभ बारिश, और हर गिरी बूँद के गिर्द बसा जीवन।",
+          mr: "थर हे भारताचे पश्चिमी वाळवंट — पसरत्या टेकड्या, दुर्मीळ पाऊस, आणि पडणाऱ्या प्रत्येक थेंबाभोवती उभे जीवन.",
+        },
+        pair: {
+          left: { en: "The Thar", hi: "थार", mr: "थर" },
+          right: { en: "the western sands", hi: "पश्चिम की रेत", mr: "पश्चिमेची वाळू" },
+        },
+      },
+      {
+        id: "plateau",
+        name: {
+          en: "The Peninsular Plateau",
+          hi: "प्रायद्वीपीय पठार",
+          mr: "द्वीपकल्पीय पठार",
+        },
+        kind: "landform",
+        prompt: {
+          en: "South of the plains rises a huge triangular tableland of old, hard rock, rich in minerals. Which landform is this?",
+          hi: "मैदानों के दक्षिण में पुरानी, कड़ी चट्टान का विशाल तिकोना अधित्यका-प्रदेश उठता है, खनिजों से भरा। यह कौन-सी भू-आकृति है?",
+          mr: "मैदानांच्या दक्षिणेला जुन्या, कठीण खडकाचे प्रचंड त्रिकोणी पठार उंचावते, खनिजांनी भरलेले. हे कोणते भूरूप?",
+        },
+        statement: {
+          en: "The Peninsular Plateau is a triangular tableland of some of the Earth's oldest rock — high, worn and heavy with minerals.",
+          hi: "प्रायद्वीपीय पठार पृथ्वी की सबसे पुरानी चट्टानों में से बना तिकोना अधित्यका-प्रदेश है — ऊँचा, घिसा, खनिजों से लदा।",
+          mr: "द्वीपकल्पीय पठार हे पृथ्वीच्या सर्वांत जुन्या खडकांपैकी घडलेले त्रिकोणी पठार — उंच, झिजलेले, खनिजांनी लगडलेले.",
+        },
+        detail: {
+          en: "Old rock means treasure below — coal, iron and more hide in its depths.",
+          hi: "पुरानी चट्टान यानी नीचे ख़ज़ाना — कोयला, लोहा और बहुत कुछ उसकी गहराइयों में छिपा है।",
+          mr: "जुना खडक म्हणजे खाली खजिना — कोळसा, लोखंड आणि बरेच काही त्याच्या खोलीत दडले आहे.",
+        },
+        extra: {
+          en: "Its rivers depend on the rains — swelling each monsoon, thinning each summer.",
+          hi: "उसकी नदियाँ बारिश पर टिकी हैं — हर मानसून में उफनतीं, हर गर्मी में दुबलातीं।",
+          mr: "त्याच्या नद्या पावसावर विसंबल्या आहेत — दर पावसाळ्यात फुगणाऱ्या, दर उन्हाळ्यात रोडावणाऱ्या.",
+        },
+        pair: {
+          left: { en: "The Peninsular Plateau", hi: "प्रायद्वीपीय पठार", mr: "द्वीपकल्पीय पठार" },
+          right: {
+            en: "old rock, buried treasure",
+            hi: "पुरानी चट्टान, गड़ा ख़ज़ाना",
+            mr: "जुना खडक, पुरलेला खजिना",
+          },
+        },
+      },
+      {
+        id: "coastalplains",
+        name: { en: "The coastal plains", hi: "तटीय मैदान", mr: "किनारी मैदाने" },
+        kind: "landform",
+        prompt: {
+          en: "Between the plateau and the two seas run narrow flat strips, busy with ports and coconut groves. What are these strips called?",
+          hi: "पठार और दोनों समुद्रों के बीच सँकरी समतल पट्टियाँ चलती हैं, बंदरगाहों और नारियल-कुंजों से गुलज़ार। इन पट्टियों को क्या कहते हैं?",
+          mr: "पठार आणि दोन समुद्रांच्या मध्ये अरुंद सपाट पट्ट्या धावतात, बंदरे आणि नारळी-पोफळींनी गजबजलेल्या. या पट्ट्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The coastal plains are the flat strips between plateau and sea on both flanks — lands of ports, fisheries and coconut groves.",
+          hi: "तटीय मैदान दोनों ओर पठार और समुद्र के बीच की समतल पट्टियाँ हैं — बंदरगाहों, मछली-पालन और नारियल-कुंजों की धरती।",
+          mr: "किनारी मैदाने म्हणजे दोन्ही बाजूंना पठार आणि समुद्र यांमधल्या सपाट पट्ट्या — बंदरे, मासेमारी आणि नारळी-बागांची भूमी.",
+        },
+      },
+      {
+        id: "lakshadweep",
+        name: { en: "Lakshadweep", hi: "लक्षद्वीप", mr: "लक्षद्वीप" },
+        kind: "islands",
+        prompt: {
+          en: "In the Arabian Sea lie tiny islands built by CORAL — living stone raised from the sea itself. Which island group is this?",
+          hi: "अरब सागर में प्रवाल से बने नन्हे द्वीप हैं — ख़ुद समुद्र से उठा जीवित पत्थर। यह कौन-सा द्वीप-समूह है?",
+          mr: "अरबी समुद्रात प्रवाळांनी घडलेली इवली बेटे आहेत — स्वतः समुद्रातून उठलेला जिवंत दगड. हा कोणता द्वीपसमूह?",
+        },
+        statement: {
+          en: "Lakshadweep's islands, in the Arabian Sea, are built of coral — the sea's own tiny builders raised them ring by ring.",
+          hi: "अरब सागर के लक्षद्वीप के द्वीप प्रवाल के बने हैं — समुद्र के अपने नन्हे कारीगरों ने उन्हें छल्ला-दर-छल्ला उठाया।",
+          mr: "अरबी समुद्रातली लक्षद्वीपची बेटे प्रवाळांची — समुद्राच्या स्वतःच्या इवल्या कारागिरांनी ती कडे-कडेने उभारली.",
+        },
+        pair: {
+          left: { en: "Lakshadweep", hi: "लक्षद्वीप", mr: "लक्षद्वीप" },
+          right: {
+            en: "coral in the Arabian Sea",
+            hi: "अरब सागर का प्रवाल",
+            mr: "अरबी समुद्रातले प्रवाळ",
+          },
+        },
+      },
+      {
+        id: "andaman",
+        name: {
+          en: "Andaman and Nicobar",
+          hi: "अंडमान और निकोबार",
+          mr: "अंदमान आणि निकोबार",
+        },
+        kind: "islands",
+        prompt: {
+          en: "Far out in the Bay of Bengal stretches a long chain of forested islands. Which island group is this?",
+          hi: "बंगाल की खाड़ी में दूर वनों से ढके द्वीपों की लंबी माला फैली है। यह कौन-सा द्वीप-समूह है?",
+          mr: "बंगालच्या उपसागरात दूरवर वनाच्छादित बेटांची लांब माळ पसरली आहे. हा कोणता द्वीपसमूह?",
+        },
+        statement: {
+          en: "The Andaman and Nicobar islands run in a long forested chain through the Bay of Bengal — India's far southeastern outposts.",
+          hi: "अंडमान-निकोबार द्वीप बंगाल की खाड़ी में वनों भरी लंबी माला में फैले हैं — भारत की सुदूर दक्षिण-पूर्वी चौकियाँ।",
+          mr: "अंदमान-निकोबार बेटे बंगालच्या उपसागरात वनांनी भरलेल्या लांब माळेत पसरली आहेत — भारताची दूरची आग्नेय ठाणी.",
+        },
+        pair: {
+          left: { en: "Andaman and Nicobar", hi: "अंडमान-निकोबार", mr: "अंदमान-निकोबार" },
+          right: {
+            en: "the Bay of Bengal's chain",
+            hi: "बंगाल की खाड़ी की माला",
+            mr: "बंगालच्या उपसागरातली माळ",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Walk India north to south and name what you cross: A-the snow wall, B-the flat river-soil, C-the old triangular tableland. Which trio is right?",
+          hi: "भारत को उत्तर से दक्षिण चलिए और जो पार हो उसे नाम दीजिए: अ-बर्फ़ की दीवार, ब-समतल नदी-मिट्टी, स-पुराना तिकोना अधित्यका-प्रदेश। कौन-सी तिकड़ी सही है?",
+          mr: "भारत उत्तरेकडून दक्षिणेकडे चाला आणि जे ओलांडाल त्याला नाव द्या: अ-बर्फाची भिंत, ब-सपाट नदी-माती, क-जुने त्रिकोणी पठार. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the Himalayas · B: the Northern Plains · C: the Peninsular Plateau",
+            hi: "अ: हिमालय · ब: उत्तरी मैदान · स: प्रायद्वीपीय पठार",
+            mr: "अ: हिमालय · ब: उत्तरेची मैदाने · क: द्वीपकल्पीय पठार",
+          },
+          {
+            en: "A: the Peninsular Plateau · B: the Himalayas · C: the Northern Plains",
+            hi: "अ: प्रायद्वीपीय पठार · ब: हिमालय · स: उत्तरी मैदान",
+            mr: "अ: द्वीपकल्पीय पठार · ब: हिमालय · क: उत्तरेची मैदाने",
+          },
+          {
+            en: "A: the Northern Plains · B: the Peninsular Plateau · C: the Himalayas",
+            hi: "अ: उत्तरी मैदान · ब: प्रायद्वीपीय पठार · स: हिमालय",
+            mr: "अ: उत्तरेची मैदाने · ब: द्वीपकल्पीय पठार · क: हिमालय",
+          },
+          {
+            en: "A: the Himalayas · B: the Peninsular Plateau · C: the Northern Plains",
+            hi: "अ: हिमालय · ब: प्रायद्वीपीय पठार · स: उत्तरी मैदान",
+            mr: "अ: हिमालय · ब: द्वीपकल्पीय पठार · क: उत्तरेची मैदाने",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The order IS the geography: mountains first at the top, then the plains their rivers built at their feet, then the old plateau filling the peninsula. India's landforms read like a story told downhill — snow to silt to ancient stone, with the coasts and islands as the story's edges.",
+          hi: "क्रम ही भूगोल है: सबसे ऊपर पहले पहाड़, फिर उनके पैरों में उनकी नदियों के बनाए मैदान, फिर प्रायद्वीप भरता पुराना पठार। भारत की भू-आकृतियाँ ढलान पर कही कहानी-सी पढ़ी जाती हैं — बर्फ़ से मिट्टी, मिट्टी से प्राचीन पत्थर, और किनारे-द्वीप कहानी के हाशिये।",
+          mr: "क्रम हाच भूगोल: सर्वांत वर आधी पर्वत, मग त्यांच्या पायाशी त्यांच्याच नद्यांनी घडवलेली मैदाने, मग द्वीपकल्प भरणारे जुने पठार. भारताची भूरूपे उताराने सांगितलेल्या गोष्टीसारखी वाचली जातात — बर्फाकडून गाळ, गाळाकडून प्राचीन दगड, आणि किनारे-बेटे गोष्टीच्या कडा.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The Northern Plains hold some of the thickest crowds of people on Earth, while the beautiful Himalayas just above them hold few. What settles where people gather?",
+          hi: "उत्तरी मैदान धरती की सबसे घनी आबादियों में से एक ढोते हैं, जबकि ठीक ऊपर का सुंदर हिमालय थोड़े ही लोग। लोग कहाँ जुटेंगे, यह क्या तय करता है?",
+          mr: "उत्तरेची मैदाने पृथ्वीवरच्या सर्वांत दाट वस्त्यांपैकी एक वाहतात, तर लगेच वरचा सुंदर हिमालय थोडीच माणसे. माणसे कुठे जमतील हे काय ठरवते?",
+        },
+        choices: [
+          {
+            en: "Livelihood — flat fertile soil, year-round rivers and easy movement feed and connect millions; steep cold rock, however grand, cannot",
+            hi: "रोज़ी — समतल उपजाऊ मिट्टी, बारहमासी नदियाँ और आसान आवाजाही करोड़ों को खिलाती-जोड़ती हैं; खड़ी ठंडी चट्टान, कितनी भी भव्य हो, नहीं कर सकती",
+            mr: "रोजीरोटी — सपाट सुपीक माती, बारमाही नद्या आणि सोपी ये-जा कोट्यवधींना पोसते-जोडते; उभा गार खडक, कितीही भव्य असो, ते करू शकत नाही",
+          },
+          {
+            en: "Beauty — people settle wherever the view is finest",
+            hi: "सौंदर्य — लोग वहीं बसते हैं जहाँ नज़ारा सबसे अच्छा हो",
+            mr: "सौंदर्य — जिथे देखावा उत्तम तिथेच माणसे वसतात",
+          },
+          {
+            en: "Chance — crowds simply happened to start there",
+            hi: "इत्तिफ़ाक़ — भीड़ बस वहीं से शुरू हो गई",
+            mr: "योगायोग — गर्दी नुसती तिथून सुरू झाली",
+          },
+          {
+            en: "Heat — people always choose the warmest place",
+            hi: "गर्मी — लोग हमेशा सबसे गर्म जगह चुनते हैं",
+            mr: "उष्णता — माणसे नेहमी सर्वांत उबदार जागा निवडतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Population maps are livelihood maps. The plains offer what a family needs: soil that yields two crops, rivers that never fail, flatness that lets roads, canals and markets run. The mountains offer grandeur and little else a plough can use. People vote with their feet for food and work — which is why the crowd and the fertile silt occupy the very same patch of map.",
+          hi: "आबादी के नक़्शे रोज़ी के नक़्शे हैं। मैदान वह देते हैं जो परिवार को चाहिए: दो फ़सलें देती मिट्टी, कभी न चूकती नदियाँ, वह समतलपन जिस पर सड़कें, नहरें और बाज़ार दौड़ें। पहाड़ भव्यता देते हैं और हल के काम की चीज़ थोड़ी। लोग पैरों से भोजन और काम को वोट देते हैं — इसीलिए भीड़ और उपजाऊ मिट्टी नक़्शे के एक ही टुकड़े पर बसी हैं।",
+          mr: "लोकसंख्येचे नकाशे म्हणजे रोजीरोटीचे नकाशे. मैदाने कुटुंबाला हवे ते देतात: दोन पिके देणारी माती, कधी न चुकणाऱ्या नद्या, सडका-कालवे-बाजार धावतील असा सपाटपणा. पर्वत भव्यता देतात आणि नांगराच्या कामाचे थोडेच. माणसे अन्न आणि कामाला पावलांनी मत देतात — म्हणूनच गर्दी आणि सुपीक गाळ नकाशाच्या एकाच तुकड्यावर वसले आहेत.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The Ganga flows full even in the driest June, while many plateau rivers thin to a trickle. What different sources stand behind the two kinds of river?",
+          hi: "गंगा सबसे सूखे जून में भी भरी बहती है, जबकि पठार की कई नदियाँ धार भर रह जाती हैं। दोनों क़िस्म की नदियों के पीछे कौन-से अलग स्रोत खड़े हैं?",
+          mr: "गंगा सर्वांत कोरड्या जूनमध्येही भरून वाहते, तर पठारावरच्या अनेक नद्या धारेपुरत्या उरतात. दोन प्रकारच्या नद्यांमागे कोणते वेगळे स्रोत उभे आहेत?",
+        },
+        choices: [
+          {
+            en: "The Ganga is fed by Himalayan snows that melt all summer; plateau rivers live on rain alone, so they swell and shrink with the monsoon",
+            hi: "गंगा को हिमालय की बर्फ़ पालती है जो गर्मी भर पिघलती है; पठारी नदियाँ केवल बारिश पर जीती हैं, तो मानसून के साथ उफनती-सिकुड़ती हैं",
+            mr: "गंगेला हिमालयाचे बर्फ पोसते जे उन्हाळाभर वितळते; पठारी नद्या केवळ पावसावर जगतात, म्हणून मोसमासोबत फुगतात-आकसतात",
+          },
+          {
+            en: "The Ganga is simply older and so runs deeper",
+            hi: "गंगा बस पुरानी है इसलिए गहरी बहती है",
+            mr: "गंगा नुसती जुनी आहे म्हणून खोल वाहते",
+          },
+          {
+            en: "Plateau rivers flow uphill part of the year",
+            hi: "पठारी नदियाँ साल के कुछ समय चढ़ाई पर बहती हैं",
+            mr: "पठारी नद्या वर्षातला काही काळ चढावर वाहतात",
+          },
+          {
+            en: "The plains pull water toward themselves",
+            hi: "मैदान पानी को अपनी ओर खींचते हैं",
+            mr: "मैदाने पाणी आपल्याकडे ओढतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A river is only as steady as its source. Himalayan rivers hold a double account — monsoon rain PLUS a bank of snow that pays out all summer, precisely when rain fails. Plateau rivers bank on the monsoon alone, flooding in July and fasting in May. That difference decides canals, crops and cities — geography's plumbing, drawn by the mountains.",
+          hi: "नदी उतनी ही स्थिर है जितना उसका स्रोत। हिमालयी नदियों का दोहरा खाता है — मानसूनी बारिश और बर्फ़ की वह जमा-पूँजी जो पूरी गर्मी चुकती है, ठीक तब जब बारिश चूकती है। पठारी नदियाँ अकेले मानसून पर टिकी हैं — जुलाई में बाढ़, मई में उपवास। यही फ़र्क़ नहरें, फ़सलें और शहर तय करता है — पहाड़ों की खींची भूगोल की नलसाज़ी।",
+          mr: "नदी तिच्या स्रोताइतकीच स्थिर असते. हिमालयी नद्यांचे दुहेरी खाते — मोसमी पाऊस अधिक बर्फाची ती ठेव जी अख्खा उन्हाळा फेडते, नेमकी पाऊस चुकतो तेव्हा. पठारी नद्या एकट्या मोसमावर विसंबतात — जुलैत पूर, मेमध्ये उपास. हाच फरक कालवे, पिके आणि शहरे ठरवतो — पर्वतांनी आखलेले भूगोलाचे नळकाम.",
+        },
+      },
+    ],
+  },
 ];
