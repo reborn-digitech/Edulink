@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 3 — Data Handling",
+  "name": "Data Handling",
+  "slug": "maths-7-data-handling",
+  "summary": "Add-and-share means, sorted medians, the crowd's mode and chance as a decimal — and one owner's salary showing how a single number can drag an average.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "आँकड़ों का प्रबंधन",
+      "summary": "जोड़कर बाँटा माध्य, क्रम लगाकर पाई माध्यिका, भीड़ का बहुलक और दशमलव में संयोग — और मालिक का वेतन दिखाता है कि एक अकेली संख्या औसत को कैसे घसीट ले जाती है।"
+    },
+    "mr": {
+      "name": "माहितीचे व्यवस्थापन",
+      "summary": "बेरीज करून वाटलेला मध्य, क्रम लावून मिळालेली मध्यगा, गर्दीचा बहुलक आणि दशांशातील शक्यता — आणि मालकाचा पगार दाखवतो की एकटी संख्या सरासरीला कशी ओढून नेते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the mean of 4, 6 and 8?",
+      "choices": [
+        "4.5",
+        "6",
+        "8",
+        "18"
+      ],
+      "answerIndex": 1,
+      "solution": "Add and share: 18 ÷ 3 = 6. 18 stops at the total; 4.5 divides by a fourth number that isn't there.",
+      "checkExpr": "(4+6+8)/3",
+      "translations": {
+        "hi": {
+          "stem": "4, 6 और 8 का माध्य क्या है?",
+          "choices": [
+            "4.5",
+            "6",
+            "8",
+            "18"
+          ],
+          "solution": "जोड़िए और बाँटिए: 18 ÷ 3 = 6। 18 कुल योग पर रुक जाता है; 4.5 उस चौथी संख्या से भाग देता है जो है ही नहीं।"
+        },
+        "mr": {
+          "stem": "4, 6 आणि 8 चा मध्य किती?",
+          "choices": [
+            "4.5",
+            "6",
+            "8",
+            "18"
+          ],
+          "solution": "बेरीज करा आणि वाटा: 18 ÷ 3 = 6. 18 एकूण बेरजेवर थांबतो; 4.5 नसलेल्या चौथ्या संख्येने भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The scores 12, 5, 9, 20, 7 — what is their range?",
+      "choices": [
+        "20",
+        "15",
+        "5",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "The range stretches from smallest to largest: 20 − 5 = 15. 20 is only the top and 5 only the bottom — the range is the DISTANCE between them.",
+      "checkExpr": "20-5",
+      "translations": {
+        "hi": {
+          "stem": "प्राप्तांक 12, 5, 9, 20, 7 — इनका परिसर (रेंज) क्या है?",
+          "choices": [
+            "20",
+            "15",
+            "5",
+            "12"
+          ],
+          "solution": "परिसर सबसे छोटे से सबसे बड़े तक फैला है: 20 − 5 = 15। 20 केवल शिखर है और 5 केवल तल — परिसर उनके बीच की दूरी है।"
+        },
+        "mr": {
+          "stem": "गुण 12, 5, 9, 20, 7 — यांची व्याप्ती (रेंज) किती?",
+          "choices": [
+            "20",
+            "15",
+            "5",
+            "12"
+          ],
+          "solution": "व्याप्ती सर्वांत लहानपासून मोठ्यापर्यंत पसरते: 20 − 5 = 15. 20 फक्त शिखर आणि 5 फक्त तळ — व्याप्ती म्हणजे त्यांच्यातील अंतर."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In the list 2, 3, 3, 4, 3, 5, which number is the mode?",
+      "choices": [
+        "4",
+        "5",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "The mode is the most frequent visitor: 3 appears three times while every other number comes just once.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सूची 2, 3, 3, 4, 3, 5 में बहुलक कौन-सा है?",
+          "choices": [
+            "4",
+            "5",
+            "2",
+            "3"
+          ],
+          "solution": "बहुलक सबसे बार आने वाला मेहमान है: 3 तीन बार आता है, बाक़ी हर संख्या बस एक बार।"
+        },
+        "mr": {
+          "stem": "यादी 2, 3, 3, 4, 3, 5 मध्ये बहुलक कोणता?",
+          "choices": [
+            "4",
+            "5",
+            "2",
+            "3"
+          ],
+          "solution": "बहुलक म्हणजे सर्वाधिक वेळा येणारा पाहुणा: 3 तीनदा येतो, बाकी प्रत्येक संख्या फक्त एकदा."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Find the median of 7, 3, 9, 5, 11.",
+      "choices": [
+        "7",
+        "3",
+        "9",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Arrange first: 3, 5, 7, 9, 11 — and the middle one is 7. 9 picks the middle of the UNSORTED list; the median only works after arranging.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "7, 3, 9, 5, 11 की माध्यिका ज्ञात कीजिए।",
+          "choices": [
+            "7",
+            "3",
+            "9",
+            "5"
+          ],
+          "solution": "पहले क्रम में रखिए: 3, 5, 7, 9, 11 — बीच वाली 7 है। 9 बिना क्रम वाली सूची का बीच उठा लेता है; माध्यिका क्रम लगाने के बाद ही काम करती है।"
+        },
+        "mr": {
+          "stem": "7, 3, 9, 5, 11 ची मध्यगा शोधा.",
+          "choices": [
+            "7",
+            "3",
+            "9",
+            "5"
+          ],
+          "solution": "आधी क्रमाने लावा: 3, 5, 7, 9, 11 — मधली 7 आहे. 9 क्रम न लावलेल्या यादीतील मधली उचलतो; मध्यगा क्रम लावल्यावरच चालते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the mean of the first five whole numbers, 0 to 4?",
+      "choices": [
+        "3",
+        "10",
+        "2.5",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The total is 10 and there are FIVE numbers — the zero counts: 10 ÷ 5 = 2. 2.5 forgets to count the zero and divides by 4.",
+      "checkExpr": "(0+1+2+3+4)/5",
+      "translations": {
+        "hi": {
+          "stem": "पहली पाँच पूर्ण संख्याओं (0 से 4) का माध्य क्या है?",
+          "choices": [
+            "3",
+            "10",
+            "2.5",
+            "2"
+          ],
+          "solution": "योग 10 है और संख्याएँ पाँच हैं — शून्य भी गिना जाता है: 10 ÷ 5 = 2। 2.5 शून्य गिनना भूलकर 4 से भाग देता है।"
+        },
+        "mr": {
+          "stem": "पहिल्या पाच पूर्ण संख्यांचा (0 ते 4) मध्य किती?",
+          "choices": [
+            "3",
+            "10",
+            "2.5",
+            "2"
+          ],
+          "solution": "बेरीज 10 आणि संख्या पाच आहेत — शून्यही मोजले जाते: 10 ÷ 5 = 2. 2.5 शून्य मोजायला विसरून 4 ने भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A batter scores 40, 60 and 50 in three matches. What is the mean score?",
+      "choices": [
+        "50",
+        "150",
+        "60",
+        "45"
+      ],
+      "answerIndex": 0,
+      "solution": "150 ÷ 3 = 50. 150 is the total left unshared; 45 averages only two of the three innings.",
+      "checkExpr": "(40+60+50)/3",
+      "translations": {
+        "hi": {
+          "stem": "एक बल्लेबाज़ तीन मैचों में 40, 60 और 50 रन बनाता है। माध्य कितना?",
+          "choices": [
+            "50",
+            "150",
+            "60",
+            "45"
+          ],
+          "solution": "150 ÷ 3 = 50। 150 बिना बाँटा योग है; 45 तीन में से केवल दो पारियों का औसत लेता है।"
+        },
+        "mr": {
+          "stem": "एक फलंदाज तीन सामन्यांत 40, 60 आणि 50 धावा करतो. मध्य किती?",
+          "choices": [
+            "50",
+            "150",
+            "60",
+            "45"
+          ],
+          "solution": "150 ÷ 3 = 50. 150 म्हणजे न वाटलेली बेरीज; 45 तिन्हींपैकी फक्त दोन डावांची सरासरी घेतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A die is rolled once. What is the probability of getting an even number, as a decimal?",
+      "choices": [
+        "0.5",
+        "0.6",
+        "0.33",
+        "0.17"
+      ],
+      "answerIndex": 0,
+      "solution": "Three faces of six are even (2, 4, 6): 3/6 = 0.5. 0.17 is the chance of ONE particular face; 0.33 counts only two of the evens.",
+      "checkExpr": "3/6",
+      "translations": {
+        "hi": {
+          "stem": "एक पासा एक बार फेंका जाता है। सम संख्या आने की प्रायिकता दशमलव में कितनी?",
+          "choices": [
+            "0.5",
+            "0.6",
+            "0.33",
+            "0.17"
+          ],
+          "solution": "छह में से तीन फलक सम हैं (2, 4, 6): 3/6 = 0.5। 0.17 किसी एक फलक की संभावना है; 0.33 समों में से केवल दो गिनता है।"
+        },
+        "mr": {
+          "stem": "फासा एकदा टाकला. सम संख्या येण्याची संभाव्यता दशांशात किती?",
+          "choices": [
+            "0.5",
+            "0.6",
+            "0.33",
+            "0.17"
+          ],
+          "solution": "सहापैकी तीन पृष्ठे सम आहेत (2, 4, 6): 3/6 = 0.5. 0.17 ही एका ठरावीक पृष्ठाची शक्यता; 0.33 समांपैकी फक्त दोनच मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The mean of five numbers is 12. Four of them are 10, 11, 13 and 14. What is the fifth?",
+      "choices": [
+        "48",
+        "14",
+        "10",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Five numbers with mean 12 must total 60; the four given make 48, leaving 12 for the fifth. 48 stops at the partial sum.",
+      "checkExpr": "12*5-(10+11+13+14)",
+      "translations": {
+        "hi": {
+          "stem": "पाँच संख्याओं का माध्य 12 है। चार हैं 10, 11, 13 और 14। पाँचवीं क्या है?",
+          "choices": [
+            "48",
+            "14",
+            "10",
+            "12"
+          ],
+          "solution": "माध्य 12 वाली पाँच संख्याओं का योग 60 होना चाहिए; दी गई चार का योग 48 है, अतः पाँचवीं 12। 48 अधूरे योग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "पाच संख्यांचा मध्य 12 आहे. चार आहेत 10, 11, 13 आणि 14. पाचवी कोणती?",
+          "choices": [
+            "48",
+            "14",
+            "10",
+            "12"
+          ],
+          "solution": "मध्य 12 असलेल्या पाच संख्यांची बेरीज 60 हवी; दिलेल्या चारांची 48 होते, म्हणून पाचवी 12. 48 अर्धवट बेरजेवर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Find the median of the six numbers 2, 4, 6, 8, 10, 12.",
+      "choices": [
+        "6",
+        "7",
+        "14",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "With an even count there is no single middle: average the two central ones, (6 + 8) ÷ 2 = 7. 6 and 8 each claim the throne alone; 14 adds them and forgets to halve.",
+      "checkExpr": "(6+8)/2",
+      "translations": {
+        "hi": {
+          "stem": "छह संख्याओं 2, 4, 6, 8, 10, 12 की माध्यिका निकालिए।",
+          "choices": [
+            "6",
+            "7",
+            "14",
+            "8"
+          ],
+          "solution": "सम गिनती में अकेला बीच नहीं होता: दोनों बीच वालों का औसत लीजिए, (6 + 8) ÷ 2 = 7। 6 और 8 अकेले-अकेले गद्दी माँगते हैं; 14 जोड़कर आधा करना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "सहा संख्या 2, 4, 6, 8, 10, 12 यांची मध्यगा काढा.",
+          "choices": [
+            "6",
+            "7",
+            "14",
+            "8"
+          ],
+          "solution": "सम संख्येच्या यादीत एकटी मधली नसते: दोन मधल्यांची सरासरी घ्या, (6 + 8) ÷ 2 = 7. 6 आणि 8 एकेकटे गादी मागतात; 14 बेरीज करून निम्मे करायला विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "On a bar graph, 1 cm of height stands for 10 students. How many students does a bar 4.5 cm tall show?",
+      "choices": [
+        "40",
+        "450",
+        "45",
+        "14.5"
+      ],
+      "answerIndex": 2,
+      "solution": "Each centimetre carries 10: 4.5 × 10 = 45. 14.5 ADDS the scale instead of multiplying; 40 rounds the half-centimetre away; 450 multiplies twice.",
+      "checkExpr": "4.5*10",
+      "translations": {
+        "hi": {
+          "stem": "दंड-आलेख में 1 सेमी ऊँचाई = 10 विद्यार्थी। 4.5 सेमी ऊँचा दंड कितने विद्यार्थी दिखाता है?",
+          "choices": [
+            "40",
+            "450",
+            "45",
+            "14.5"
+          ],
+          "solution": "हर सेंटीमीटर 10 ढोता है: 4.5 × 10 = 45। 14.5 गुणा की जगह पैमाना जोड़ देता है; 40 आधा सेंटीमीटर उड़ा देता है; 450 दो बार गुणा करता है।"
+        },
+        "mr": {
+          "stem": "स्तंभालेखात 1 सेमी उंची = 10 विद्यार्थी. 4.5 सेमी उंच स्तंभ किती विद्यार्थी दाखवतो?",
+          "choices": [
+            "40",
+            "450",
+            "45",
+            "14.5"
+          ],
+          "solution": "प्रत्येक सेंटिमीटर 10 वाहतो: 4.5 × 10 = 45. 14.5 गुणण्याऐवजी प्रमाण मिळवतो; 40 अर्धा सेंटिमीटर उडवतो; 450 दोनदा गुणतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The mean of 20, 25, 30 and x is 24. Find x.",
+      "choices": [
+        "24",
+        "21",
+        "25",
+        "19"
+      ],
+      "answerIndex": 1,
+      "solution": "Four numbers with mean 24 total 96; the three given make 75, so x = 21. 24 assumes x simply equals the mean — it almost never does.",
+      "checkExpr": "24*4-(20+25+30)",
+      "translations": {
+        "hi": {
+          "stem": "20, 25, 30 और x का माध्य 24 है। x निकालिए।",
+          "choices": [
+            "24",
+            "21",
+            "25",
+            "19"
+          ],
+          "solution": "माध्य 24 वाली चार संख्याओं का योग 96; दी गई तीन का 75, अतः x = 21। 24 मान लेता है कि x माध्य के ही बराबर होगा — प्रायः ऐसा नहीं होता।"
+        },
+        "mr": {
+          "stem": "20, 25, 30 आणि x चा मध्य 24 आहे. x काढा.",
+          "choices": [
+            "24",
+            "21",
+            "25",
+            "19"
+          ],
+          "solution": "मध्य 24 असलेल्या चार संख्यांची बेरीज 96; दिलेल्या तिघांची 75, म्हणून x = 21. 24 गृहीत धरतो की x मध्याइतकाच असेल — बहुधा तसे नसते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A bag holds 3 red and 7 blue balls. One is drawn without looking. What is the probability it is red, as a decimal?",
+      "choices": [
+        "0.43",
+        "0.7",
+        "3",
+        "0.3"
+      ],
+      "answerIndex": 3,
+      "solution": "3 favourable out of 10 in all: 0.3. 0.7 is blue's chance; 0.43 divides red by blue (3/7) instead of by the whole bag.",
+      "checkExpr": "3/10",
+      "translations": {
+        "hi": {
+          "stem": "थैले में 3 लाल और 7 नीली गेंदें हैं। बिना देखे एक निकाली जाती है। उसके लाल होने की प्रायिकता दशमलव में?",
+          "choices": [
+            "0.43",
+            "0.7",
+            "3",
+            "0.3"
+          ],
+          "solution": "कुल 10 में 3 अनुकूल: 0.3। 0.7 नीली की संभावना है; 0.43 लाल को पूरे थैले की जगह नीली से (3/7) भाग देता है।"
+        },
+        "mr": {
+          "stem": "पिशवीत 3 लाल आणि 7 निळे चेंडू आहेत. न पाहता एक काढला. तो लाल असण्याची संभाव्यता दशांशात किती?",
+          "choices": [
+            "0.43",
+            "0.7",
+            "3",
+            "0.3"
+          ],
+          "solution": "एकूण 10 पैकी 3 अनुकूल: 0.3. 0.7 ही निळ्याची शक्यता; 0.43 लालला संपूर्ण पिशवीऐवजी निळ्याने (3/7) भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A batsman's mean is 40 over five innings. After a sixth innings his mean rises to 45. How many runs did he score in it?",
+      "choices": [
+        "45",
+        "70",
+        "85",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "Totals tell the story: 6 × 45 = 270 now, 5 × 40 = 200 before — the sixth innings added 70. 45 assumes he scored the new mean; to LIFT a mean you must score well above it.",
+      "checkExpr": "45*6-40*5",
+      "translations": {
+        "hi": {
+          "stem": "पाँच पारियों में बल्लेबाज़ का माध्य 40 है। छठी पारी के बाद माध्य 45 हो जाता है। छठी पारी में उसने कितने रन बनाए?",
+          "choices": [
+            "45",
+            "70",
+            "85",
+            "50"
+          ],
+          "solution": "योग कहानी कहते हैं: अब 6 × 45 = 270, पहले 5 × 40 = 200 — छठी पारी ने 70 जोड़े। 45 मानता है कि उसने नया माध्य ही बनाया; माध्य उठाने के लिए उससे कहीं ऊपर खेलना पड़ता है।"
+        },
+        "mr": {
+          "stem": "पाच डावांत फलंदाजाचा मध्य 40 आहे. सहाव्या डावानंतर मध्य 45 होतो. सहाव्या डावात त्याने किती धावा केल्या?",
+          "choices": [
+            "45",
+            "70",
+            "85",
+            "50"
+          ],
+          "solution": "बेरजा कथा सांगतात: आता 6 × 45 = 270, आधी 5 × 40 = 200 — सहाव्या डावाने 70 जोडल्या. 45 गृहीत धरतो की त्याने नवा मध्यच काढला; मध्य उचलण्यासाठी त्याहून खूप वर खेळावे लागते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For the data 1, 2, 2, 2, 8 — by how much does the mean exceed the mode?",
+      "choices": [
+        "3",
+        "0.8",
+        "1",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "The mean is 15 ÷ 5 = 3 and the mode is 2: the gap is 1. The lone 8 drags the mean up while the mode stays home with the crowd. 3 and 2 are the two averages themselves, not their difference.",
+      "checkExpr": "(1+2+2+2+8)/5-2",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़े 1, 2, 2, 2, 8 — माध्य, बहुलक से कितना अधिक है?",
+          "choices": [
+            "3",
+            "0.8",
+            "1",
+            "2"
+          ],
+          "solution": "माध्य 15 ÷ 5 = 3 और बहुलक 2: अंतर 1। अकेला 8 माध्य को ऊपर खींचता है जबकि बहुलक भीड़ के साथ घर रहता है। 3 और 2 स्वयं दोनों औसत हैं, उनका अंतर नहीं।"
+        },
+        "mr": {
+          "stem": "सामग्री 1, 2, 2, 2, 8 — मध्य बहुलकापेक्षा किती जास्त आहे?",
+          "choices": [
+            "3",
+            "0.8",
+            "1",
+            "2"
+          ],
+          "solution": "मध्य 15 ÷ 5 = 3 आणि बहुलक 2: फरक 1. एकटा 8 मध्याला वर ओढतो, तर बहुलक गर्दीसोबत घरी राहतो. 3 आणि 2 हे स्वतः दोन्ही सरासरी आहेत, त्यांचा फरक नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Nine workers in a workshop earn ₹100 a day each; the owner pays himself ₹1000. What is the mean daily earning of all ten people?",
+      "choices": [
+        "₹190",
+        "₹100",
+        "₹1000",
+        "₹550"
+      ],
+      "answerIndex": 0,
+      "solution": "The total is 900 + 1000 = 1900, shared on paper among ten: ₹190. Yet NOBODY actually earns ₹190 — one large value hauls the mean far above what nine of the ten receive. The median, ₹100, is the honest witness here.",
+      "checkExpr": "(9*100+1000)/10",
+      "translations": {
+        "hi": {
+          "stem": "कार्यशाला के नौ मज़दूर ₹100 प्रतिदिन कमाते हैं; मालिक ख़ुद को ₹1000 देता है। दसों व्यक्तियों की माध्य दैनिक कमाई कितनी?",
+          "choices": [
+            "₹190",
+            "₹100",
+            "₹1000",
+            "₹550"
+          ],
+          "solution": "योग 900 + 1000 = 1900, काग़ज़ पर दस में बँटा: ₹190। पर वास्तव में ₹190 कोई नहीं कमाता — एक बड़ा मूल्य माध्य को वहाँ खींच ले जाता है जहाँ दस में से नौ नहीं पहुँचते। यहाँ ईमानदार गवाह माध्यिका है: ₹100।"
+        },
+        "mr": {
+          "stem": "कार्यशाळेतील नऊ कामगार दररोज ₹100 कमावतात; मालक स्वतःला ₹1000 देतो. दहाही जणांची सरासरी रोजची कमाई किती?",
+          "choices": [
+            "₹190",
+            "₹100",
+            "₹1000",
+            "₹550"
+          ],
+          "solution": "बेरीज 900 + 1000 = 1900, कागदावर दहांत वाटलेली: ₹190. पण प्रत्यक्षात ₹190 कोणीच कमावत नाही — एक मोठे मूल्य मध्याला तिथे ओढते जिथे दहांतले नऊ पोहोचत नाहीत. इथला प्रामाणिक साक्षीदार मध्यगा आहे: ₹100."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A fair spinner is split into 8 equal sections numbered 1 to 8. What is the probability of spinning a number GREATER than 6, as a decimal?",
+      "choices": [
+        "0.75",
+        "0.375",
+        "0.25",
+        "0.125"
+      ],
+      "answerIndex": 2,
+      "solution": "Greater than 6 means 7 and 8 only — two sections of eight: 0.25. 0.375 sneaks 6 itself into the count, but 'greater than' never includes the number named.",
+      "checkExpr": "2/8",
+      "translations": {
+        "hi": {
+          "stem": "एक न्यायसंगत चकरी 1 से 8 तक अंकित 8 बराबर खंडों में बँटी है। 6 से बड़ी संख्या आने की प्रायिकता दशमलव में?",
+          "choices": [
+            "0.75",
+            "0.375",
+            "0.25",
+            "0.125"
+          ],
+          "solution": "6 से बड़ी यानी केवल 7 और 8 — आठ में से दो खंड: 0.25। 0.375 चुपके से 6 को भी गिन लेता है, पर 'से बड़ी' में वह संख्या कभी शामिल नहीं होती।"
+        },
+        "mr": {
+          "stem": "1 ते 8 आकडे असलेली चक्री 8 समान भागांत विभागलेली आहे. 6 पेक्षा मोठी संख्या येण्याची संभाव्यता दशांशात किती?",
+          "choices": [
+            "0.75",
+            "0.375",
+            "0.25",
+            "0.125"
+          ],
+          "solution": "6 पेक्षा मोठी म्हणजे फक्त 7 आणि 8 — आठांपैकी दोन भाग: 0.25. 0.375 हळूच 6 लाही मोजतो, पण 'पेक्षा मोठी' मध्ये ती संख्या कधीच येत नाही."
+        }
+      }
+    }
+  ]
+}

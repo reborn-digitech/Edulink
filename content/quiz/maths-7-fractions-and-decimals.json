@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 2 — Fractions and Decimals",
+  "name": "Fractions and Decimals",
+  "slug": "maths-7-fractions-and-decimals",
+  "summary": "Fractions learn to multiply and divide: 'of' becomes ×, dividing by a half doubles, decimal points slide with the tens — and a tank measures itself by what was drawn away.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "भिन्न एवं दशमलव",
+      "summary": "भिन्न गुणा-भाग सीखते हैं: 'का' बनता है ×, आधे से भाग दुगुना करता है, दशमलव बिंदु दहाइयों के साथ सरकता है — और टंकी निकाले गए पानी से स्वयं को नापती है।"
+    },
+    "mr": {
+      "name": "अपूर्णांक आणि दशांश",
+      "summary": "अपूर्णांक गुणाकार-भागाकार शिकतात: 'चा' होतो ×, अर्ध्याने भागल्यास दुप्पट होते, दशांश बिंदू दहाच्या पटीत सरकतो — आणि टाकी काढलेल्या पाण्यावरून स्वतःला मोजते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 3/4 of 20?",
+      "choices": [
+        "5",
+        "15",
+        "12",
+        "60"
+      ],
+      "answerIndex": 1,
+      "solution": "'Of' means multiply: 20 ÷ 4 = 5 in each quarter, and three quarters make 15. 5 stops at one quarter; 60 multiplies by 3 and forgets to divide.",
+      "checkExpr": "3*20/4",
+      "translations": {
+        "hi": {
+          "stem": "20 का 3/4 कितना है?",
+          "choices": [
+            "5",
+            "15",
+            "12",
+            "60"
+          ],
+          "solution": "'का' यानी गुणा: 20 ÷ 4 = 5 प्रति चौथाई, और तीन चौथाई मिलकर 15। 5 एक चौथाई पर रुक जाता है; 60 तीन से गुणा कर भाग देना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "20 चा 3/4 किती?",
+          "choices": [
+            "5",
+            "15",
+            "12",
+            "60"
+          ],
+          "solution": "'चा' म्हणजे गुणाकार: 20 ÷ 4 = 5 प्रत्येक चतुर्थांशात, आणि तीन चतुर्थांश मिळून 15. 5 एका चतुर्थांशावर थांबतो; 60 तिपटीने गुणून भागायचे विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 0.7 × 10?",
+      "choices": [
+        "0.07",
+        "7",
+        "70",
+        "7.1"
+      ],
+      "answerIndex": 1,
+      "solution": "Multiplying by 10 slides the decimal point one step RIGHT: 0.7 becomes 7. 0.07 slides it the wrong way; 70 slides two steps for one ten.",
+      "checkExpr": "70/10",
+      "translations": {
+        "hi": {
+          "stem": "0.7 × 10 कितना है?",
+          "choices": [
+            "0.07",
+            "7",
+            "70",
+            "7.1"
+          ],
+          "solution": "10 से गुणा दशमलव बिंदु को एक क़दम दाएँ खिसकाता है: 0.7 बनता है 7। 0.07 उसे उल्टी दिशा में खिसकाता है; 70 एक दस के लिए दो क़दम चल देता है।"
+        },
+        "mr": {
+          "stem": "0.7 × 10 किती?",
+          "choices": [
+            "0.07",
+            "7",
+            "70",
+            "7.1"
+          ],
+          "solution": "10 ने गुणल्यास दशांश बिंदू एक पाऊल उजवीकडे सरकतो: 0.7 चा होतो 7. 0.07 त्याला उलट दिशेने सरकवतो; 70 एका दहासाठी दोन पावले टाकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many half-metre pieces can be cut from 5 metres of ribbon?",
+      "choices": [
+        "20",
+        "5",
+        "2.5",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "Dividing by a half asks how many halves FIT: each metre holds 2, so 5 metres hold 10. 2.5 multiplies by ½ instead of dividing — dividing by a fraction makes the answer BIGGER.",
+      "checkExpr": "5/0.5",
+      "translations": {
+        "hi": {
+          "stem": "5 मीटर रिबन से आधे-आधे मीटर के कितने टुकड़े काटे जा सकते हैं?",
+          "choices": [
+            "20",
+            "5",
+            "2.5",
+            "10"
+          ],
+          "solution": "आधे से भाग पूछता है कि कितने आधे समाते हैं: हर मीटर में 2, अतः 5 मीटर में 10। 2.5 भाग की जगह ½ से गुणा कर बैठता है — भिन्न से भाग उत्तर को बड़ा करता है।"
+        },
+        "mr": {
+          "stem": "5 मीटर रिबिनीतून अर्ध्या-अर्ध्या मीटराचे किती तुकडे कापता येतील?",
+          "choices": [
+            "20",
+            "5",
+            "2.5",
+            "10"
+          ],
+          "solution": "अर्ध्याने भागणे विचारते की किती अर्धे मावतात: प्रत्येक मीटरात 2, म्हणून 5 मीटरात 10. 2.5 भागाऐवजी ½ ने गुणतो — अपूर्णांकाने भागल्यास उत्तर मोठे होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 2/5 × 15/4? (Answer as a decimal.)",
+      "choices": [
+        "1.2",
+        "6",
+        "1.5",
+        "3.75"
+      ],
+      "answerIndex": 2,
+      "solution": "Tops multiply and bottoms multiply: 30/20 = 3/2 = 1.5. 6 multiplies only the tops; 3.75 is 15/4 left untouched, as if 2/5 changed nothing.",
+      "checkExpr": "2*15/(5*4)",
+      "translations": {
+        "hi": {
+          "stem": "2/5 × 15/4 कितना है? (उत्तर दशमलव में।)",
+          "choices": [
+            "1.2",
+            "6",
+            "1.5",
+            "3.75"
+          ],
+          "solution": "अंश से अंश, हर से हर: 30/20 = 3/2 = 1.5। 6 केवल अंश गुणा करता है; 3.75 अनछुआ 15/4 है, मानो 2/5 ने कुछ बदला ही नहीं।"
+        },
+        "mr": {
+          "stem": "2/5 × 15/4 किती? (उत्तर दशांशात.)",
+          "choices": [
+            "1.2",
+            "6",
+            "1.5",
+            "3.75"
+          ],
+          "solution": "अंशाशी अंश, छेदाशी छेद: 30/20 = 3/2 = 1.5. 6 फक्त अंश गुणतो; 3.75 म्हणजे जसाच्या तसा 15/4, जणू 2/5 ने काहीच बदलले नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 2.3 × 4?",
+      "choices": [
+        "92",
+        "9.2",
+        "9.12",
+        "8.2"
+      ],
+      "answerIndex": 1,
+      "solution": "23 × 4 = 92, and the one decimal place returns: 9.2. 92 forgets the point; 8.2 multiplies only the whole part (2 × 4 = 8) and glues the .2 on unearned.",
+      "checkExpr": "2.3*4",
+      "translations": {
+        "hi": {
+          "stem": "2.3 × 4 कितना है?",
+          "choices": [
+            "92",
+            "9.2",
+            "9.12",
+            "8.2"
+          ],
+          "solution": "23 × 4 = 92, और एक दशमलव स्थान लौट आता है: 9.2। 92 बिंदु भूल जाता है; 8.2 केवल पूर्णांश को गुणा कर .2 वैसे ही चिपका देता है।"
+        },
+        "mr": {
+          "stem": "2.3 × 4 किती?",
+          "choices": [
+            "92",
+            "9.2",
+            "9.12",
+            "8.2"
+          ],
+          "solution": "23 × 4 = 92, आणि एक दशांश स्थान परत येते: 9.2. 92 बिंदू विसरतो; 8.2 फक्त पूर्णांक गुणून .2 तसाच चिकटवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A ribbon 3/4 metre long is cut into 3 equal pieces. How long is each piece, in metres (as a decimal)?",
+      "choices": [
+        "2.25",
+        "1.25",
+        "0.5",
+        "0.25"
+      ],
+      "answerIndex": 3,
+      "solution": "3/4 ÷ 3 = 1/4 = 0.25 m: the three quarters share out one each. 2.25 multiplies by 3 instead of sharing; 0.5 halves instead of taking thirds.",
+      "checkExpr": "3/(4*3)",
+      "translations": {
+        "hi": {
+          "stem": "3/4 मीटर लंबा रिबन 3 बराबर टुकड़ों में काटा जाता है। हर टुकड़ा कितने मीटर का है (दशमलव में)?",
+          "choices": [
+            "2.25",
+            "1.25",
+            "0.5",
+            "0.25"
+          ],
+          "solution": "3/4 ÷ 3 = 1/4 = 0.25 मीटर: तीन चौथाइयाँ एक-एक बँट जाती हैं। 2.25 बाँटने की जगह 3 से गुणा करता है; 0.5 तिहाई की जगह आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "3/4 मीटर लांब रिबीन 3 समान तुकड्यांत कापली. प्रत्येक तुकडा किती मीटर (दशांशात)?",
+          "choices": [
+            "2.25",
+            "1.25",
+            "0.5",
+            "0.25"
+          ],
+          "solution": "3/4 ÷ 3 = 1/4 = 0.25 मीटर: तीन चतुर्थांश एक-एक वाटले जातात. 2.25 वाटण्याऐवजी 3 ने गुणतो; 0.5 तृतीयांशाऐवजी अर्धे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is 5.6 ÷ 0.8?",
+      "choices": [
+        "0.7",
+        "7",
+        "4.8",
+        "70"
+      ],
+      "answerIndex": 1,
+      "solution": "Slide both points one place and the question turns whole: 56 ÷ 8 = 7. 0.7 shifts only the answer; 4.8 subtracts instead of dividing.",
+      "checkExpr": "56/8",
+      "translations": {
+        "hi": {
+          "stem": "5.6 ÷ 0.8 कितना है?",
+          "choices": [
+            "0.7",
+            "7",
+            "4.8",
+            "70"
+          ],
+          "solution": "दोनों बिंदु एक-एक स्थान खिसकाइए और प्रश्न पूर्ण बन जाता है: 56 ÷ 8 = 7। 0.7 केवल उत्तर को खिसकाता है; 4.8 भाग की जगह घटा देता है।"
+        },
+        "mr": {
+          "stem": "5.6 ÷ 0.8 किती?",
+          "choices": [
+            "0.7",
+            "7",
+            "4.8",
+            "70"
+          ],
+          "solution": "दोन्ही बिंदू एक-एक स्थान सरकवा आणि प्रश्न पूर्ण होतो: 56 ÷ 8 = 7. 0.7 फक्त उत्तराला सरकवतो; 4.8 भागाऐवजी वजा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A tabletop measures 2.5 m by 1.5 m. What is its area in square metres?",
+      "choices": [
+        "8",
+        "4",
+        "37.5",
+        "3.75"
+      ],
+      "answerIndex": 3,
+      "solution": "Area multiplies the sides: 2.5 × 1.5 = 3.75 m². 4 ADDS them; 8 walks the whole perimeter; 37.5 lets the decimal point slip a place.",
+      "checkExpr": "2.5*1.5",
+      "translations": {
+        "hi": {
+          "stem": "एक मेज़ की सतह 2.5 मीटर × 1.5 मीटर है। क्षेत्रफल वर्ग मीटर में कितना?",
+          "choices": [
+            "8",
+            "4",
+            "37.5",
+            "3.75"
+          ],
+          "solution": "क्षेत्रफल भुजाओं का गुणा है: 2.5 × 1.5 = 3.75 वर्ग मीटर। 4 उन्हें जोड़ देता है; 8 पूरा परिमाप नाप आता है; 37.5 में दशमलव बिंदु एक स्थान फिसल जाता है।"
+        },
+        "mr": {
+          "stem": "टेबलाचा पृष्ठभाग 2.5 मीटर × 1.5 मीटर आहे. क्षेत्रफळ चौरस मीटरमध्ये किती?",
+          "choices": [
+            "8",
+            "4",
+            "37.5",
+            "3.75"
+          ],
+          "solution": "क्षेत्रफळ म्हणजे बाजूंचा गुणाकार: 2.5 × 1.5 = 3.75 चौ. मीटर. 4 त्यांची बेरीज करतो; 8 सारी परिमिती चालून येतो; 37.5 मध्ये दशांश बिंदू एक घर घसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a class of 36, two-thirds of the children play kho-kho. How many players is that?",
+      "choices": [
+        "27",
+        "54",
+        "24",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "36 ÷ 3 = 12 in each third; two thirds hold 24. 12 stops at one third; 54 multiplies UP instead of taking a part — a part of 36 cannot exceed 36.",
+      "checkExpr": "2*36/3",
+      "translations": {
+        "hi": {
+          "stem": "36 बच्चों की कक्षा में दो-तिहाई बच्चे खो-खो खेलते हैं। कितने खिलाड़ी हुए?",
+          "choices": [
+            "27",
+            "54",
+            "24",
+            "12"
+          ],
+          "solution": "36 ÷ 3 = 12 प्रति तिहाई; दो तिहाई में 24। 12 एक तिहाई पर रुकता है; 54 हिस्सा लेने की जगह बढ़ा देता है — 36 का हिस्सा 36 से बड़ा नहीं हो सकता।"
+        },
+        "mr": {
+          "stem": "36 मुलांच्या वर्गात दोन-तृतीयांश मुले खो-खो खेळतात. किती खेळाडू?",
+          "choices": [
+            "27",
+            "54",
+            "24",
+            "12"
+          ],
+          "solution": "36 ÷ 3 = 12 प्रत्येक तृतीयांशात; दोन तृतीयांशांत 24. 12 एका तृतीयांशावर थांबतो; 54 भाग घेण्याऐवजी वाढवतो — 36 चा भाग 36 हून मोठा असू शकत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is 12.5 ÷ 5 + 0.5?",
+      "choices": [
+        "3",
+        "2.27",
+        "30",
+        "2.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Division goes first: 12.5 ÷ 5 = 2.5, then + 0.5 = 3. 2.5 stops before the addition; 2.27 divides by 5.5, letting the addition jump the queue.",
+      "checkExpr": "12.5/5+0.5",
+      "translations": {
+        "hi": {
+          "stem": "12.5 ÷ 5 + 0.5 कितना है?",
+          "choices": [
+            "3",
+            "2.27",
+            "30",
+            "2.5"
+          ],
+          "solution": "पहले भाग: 12.5 ÷ 5 = 2.5, फिर + 0.5 = 3। 2.5 जोड़ से पहले रुक जाता है; 2.27 में जोड़ पंक्ति तोड़कर 5.5 से भाग करा बैठता है।"
+        },
+        "mr": {
+          "stem": "12.5 ÷ 5 + 0.5 किती?",
+          "choices": [
+            "3",
+            "2.27",
+            "30",
+            "2.5"
+          ],
+          "solution": "आधी भागाकार: 12.5 ÷ 5 = 2.5, मग + 0.5 = 3. 2.5 बेरजेआधी थांबतो; 2.27 मध्ये बेरीज रांग मोडून 5.5 ने भाग होतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A jug holds 2.25 litres of buttermilk; one glass holds 0.25 litre. How many glasses does the jug fill?",
+      "choices": [
+        "9",
+        "8",
+        "10",
+        "90"
+      ],
+      "answerIndex": 0,
+      "solution": "2.25 ÷ 0.25 asks how many quarter-litres sit in 2¼: four per litre gives 8, and the last quarter makes 9. 90 slips the decimal point a place.",
+      "checkExpr": "2.25/0.25",
+      "translations": {
+        "hi": {
+          "stem": "एक जग में 2.25 लीटर छाछ है; एक गिलास 0.25 लीटर का है। जग कितने गिलास भरता है?",
+          "choices": [
+            "9",
+            "8",
+            "10",
+            "90"
+          ],
+          "solution": "2.25 ÷ 0.25 पूछता है कि 2¼ में कितने चौथाई-लीटर हैं: प्रति लीटर चार से 8, और आख़िरी चौथाई से 9। 90 में दशमलव बिंदु एक स्थान फिसल जाता है।"
+        },
+        "mr": {
+          "stem": "एका जगमध्ये 2.25 लिटर ताक आहे; एक ग्लास 0.25 लिटरचा आहे. जग किती ग्लास भरतो?",
+          "choices": [
+            "9",
+            "8",
+            "10",
+            "90"
+          ],
+          "solution": "2.25 ÷ 0.25 विचारते की 2¼ मध्ये किती पाव-लिटर आहेत: प्रति लिटर चारने 8, आणि शेवटच्या पावाने 9. 90 मध्ये दशांश बिंदू एक घर घसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is 7/8 of 64?",
+      "choices": [
+        "72",
+        "48",
+        "8",
+        "56"
+      ],
+      "answerIndex": 3,
+      "solution": "64 ÷ 8 = 8 in each eighth; seven of them make 56. 8 stops at ONE eighth; 72 adds an eighth instead of leaving one out.",
+      "checkExpr": "7*64/8",
+      "translations": {
+        "hi": {
+          "stem": "64 का 7/8 कितना है?",
+          "choices": [
+            "72",
+            "48",
+            "8",
+            "56"
+          ],
+          "solution": "64 ÷ 8 = 8 प्रति आठवाँ; ऐसे सात मिलकर 56। 8 एक आठवें पर रुक जाता है; 72 एक आठवाँ छोड़ने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "64 चा 7/8 किती?",
+          "choices": [
+            "72",
+            "48",
+            "8",
+            "56"
+          ],
+          "solution": "64 ÷ 8 = 8 प्रत्येक अष्टमांशात; असे सात मिळून 56. 8 एका अष्टमांशावर थांबतो; 72 एक अष्टमांश वगळण्याऐवजी मिळवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car goes 43.2 km on 2.4 litres of petrol. How many kilometres does it cover per litre?",
+      "choices": [
+        "16",
+        "180",
+        "18",
+        "1.8"
+      ],
+      "answerIndex": 2,
+      "solution": "Shift both decimals: 432 ÷ 24 = 18 km per litre. 1.8 and 180 are point-slips lying in wait — estimate first: about 40 ÷ 2 ≈ 20, so 18 fits.",
+      "checkExpr": "432/24",
+      "translations": {
+        "hi": {
+          "stem": "एक कार 2.4 लीटर पेट्रोल में 43.2 किमी चलती है। प्रति लीटर कितने किलोमीटर?",
+          "choices": [
+            "16",
+            "180",
+            "18",
+            "1.8"
+          ],
+          "solution": "दोनों दशमलव खिसकाइए: 432 ÷ 24 = 18 किमी प्रति लीटर। 1.8 और 180 घात लगाए बिंदु-चूकें हैं — पहले अनुमान लगाइए: लगभग 40 ÷ 2 ≈ 20, अतः 18 जँचता है।"
+        },
+        "mr": {
+          "stem": "एक कार 2.4 लिटर पेट्रोलमध्ये 43.2 किमी जाते. प्रति लिटर किती किलोमीटर?",
+          "choices": [
+            "16",
+            "180",
+            "18",
+            "1.8"
+          ],
+          "solution": "दोन्ही दशांश सरकवा: 432 ÷ 24 = 18 किमी प्रति लिटर. 1.8 आणि 180 या टपून बसलेल्या बिंदू-चुका — आधी अंदाज घ्या: सुमारे 40 ÷ 2 ≈ 20, म्हणून 18 जुळते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Reeta reads 1/3 of a 150-page book on Monday and 2/5 of it on Tuesday. How many pages are left?",
+      "choices": [
+        "40",
+        "110",
+        "50",
+        "60"
+      ],
+      "answerIndex": 0,
+      "solution": "Monday takes 50 pages and Tuesday 60: 110 read, so 150 − 110 = 40 remain. 110 is what's finished, not what's left; 50 and 60 are the single days.",
+      "checkExpr": "150-(150/3+150*2/5)",
+      "translations": {
+        "hi": {
+          "stem": "रीता 150 पन्नों की किताब का 1/3 सोमवार को और 2/5 मंगलवार को पढ़ती है। कितने पन्ने बचे?",
+          "choices": [
+            "40",
+            "110",
+            "50",
+            "60"
+          ],
+          "solution": "सोमवार 50 पन्ने लेता है और मंगलवार 60: 110 पढ़े गए, अतः 150 − 110 = 40 बचे। 110 पूरा हुआ हिस्सा है, बचा हुआ नहीं; 50 और 60 अकेले दिन हैं।"
+        },
+        "mr": {
+          "stem": "रीता 150 पानांच्या पुस्तकाचा 1/3 सोमवारी आणि 2/5 मंगळवारी वाचते. किती पाने उरली?",
+          "choices": [
+            "40",
+            "110",
+            "50",
+            "60"
+          ],
+          "solution": "सोमवार 50 पाने घेतो आणि मंगळवार 60: 110 वाचली, म्हणून 150 − 110 = 40 उरली. 110 म्हणजे संपलेले, उरलेले नाही; 50 आणि 60 एकेकटे दिवस आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "By how much is 3/4 of 12 greater than 2/3 of 9?",
+      "choices": [
+        "6",
+        "15",
+        "3",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "3/4 of 12 is 9; 2/3 of 9 is 6; the gap is 3. 9 and 6 answer the parts but not the comparison; 15 ADDS when the question asks for the difference.",
+      "checkExpr": "3*12/4-2*9/3",
+      "translations": {
+        "hi": {
+          "stem": "12 का 3/4, 9 के 2/3 से कितना अधिक है?",
+          "choices": [
+            "6",
+            "15",
+            "3",
+            "9"
+          ],
+          "solution": "12 का 3/4 है 9; 9 का 2/3 है 6; अंतर 3। 9 और 6 हिस्सों का उत्तर देते हैं, तुलना का नहीं; 15 अंतर पूछे जाने पर जोड़ कर बैठता है।"
+        },
+        "mr": {
+          "stem": "12 चा 3/4, 9 च्या 2/3 पेक्षा किती जास्त?",
+          "choices": [
+            "6",
+            "15",
+            "3",
+            "9"
+          ],
+          "solution": "12 चा 3/4 म्हणजे 9; 9 चा 2/3 म्हणजे 6; फरक 3. 9 आणि 6 भागांचे उत्तर देतात, तुलनेचे नाही; 15 फरक विचारला असता बेरीज करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A tank is 4/5 full. After 60 litres are drawn out it is exactly 1/2 full. How many litres does the full tank hold?",
+      "choices": [
+        "100",
+        "300",
+        "200",
+        "120"
+      ],
+      "answerIndex": 2,
+      "solution": "The drawn water is 4/5 − 1/2 = 3/10 of the tank. If 3/10 is 60 litres, one tenth is 20 and the whole is 200. 120 treats the 60 litres as a half; 100 treats it as 3/5.",
+      "checkExpr": "60*10/3",
+      "translations": {
+        "hi": {
+          "stem": "एक टंकी 4/5 भरी है। 60 लीटर निकालने पर वह ठीक 1/2 रह जाती है। पूरी टंकी में कितने लीटर आते हैं?",
+          "choices": [
+            "100",
+            "300",
+            "200",
+            "120"
+          ],
+          "solution": "निकाला गया पानी टंकी का 4/5 − 1/2 = 3/10 है। यदि 3/10 = 60 लीटर, तो एक दसवाँ 20 और पूरी टंकी 200। 120 उन 60 लीटर को आधा मान लेता है; 100 उन्हें 3/5 मानता है।"
+        },
+        "mr": {
+          "stem": "टाकी 4/5 भरलेली आहे. 60 लिटर काढल्यावर ती नेमकी 1/2 उरते. पूर्ण टाकीत किती लिटर मावतात?",
+          "choices": [
+            "100",
+            "300",
+            "200",
+            "120"
+          ],
+          "solution": "काढलेले पाणी टाकीचा 4/5 − 1/2 = 3/10 आहे. 3/10 = 60 लिटर असेल, तर एक दशांश 20 आणि पूर्ण टाकी 200. 120 त्या 60 लिटरांना अर्धे मानतो; 100 त्यांना 3/5 मानतो."
+        }
+      }
+    }
+  ]
+}

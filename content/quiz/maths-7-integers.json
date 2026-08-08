@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 1 — Integers",
+  "name": "Integers",
+  "slug": "maths-7-integers",
+  "summary": "Signs join the arithmetic: debts add, minuses multiply and cancel in pairs, submarines and mine lifts count below zero — and a double minus undoes only one of itself.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "पूर्णांक",
+      "summary": "चिह्न अंकगणित में उतरते हैं: उधार जुड़ते हैं, ऋण-चिह्न जोड़ियों में कटते हैं, पनडुब्बियाँ और खदान-लिफ़्टें शून्य के नीचे गिनती हैं — और दोहरा ऋण अपने में से एक ही को काटता है।"
+    },
+    "mr": {
+      "name": "पूर्णांक",
+      "summary": "चिन्हे अंकगणितात उतरतात: उधाऱ्या जुळतात, ऋण-चिन्हे जोडीने रद्द होतात, पाणबुड्या आणि खाण-लिफ्ट शून्याखाली मोजतात — आणि दुहेरी ऋण स्वतःतील एकालाच रद्द करते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "(−7) + (−5) = ?",
+      "choices": [
+        "2",
+        "12",
+        "-12",
+        "-2"
+      ],
+      "answerIndex": 2,
+      "solution": "Two debts join: 7 below zero and 5 more below make 12 below — so −12. −2 subtracts instead of adding the debts; 12 forgets both signs.",
+      "checkExpr": "0-7-5",
+      "translations": {
+        "hi": {
+          "stem": "(−7) + (−5) कितना है?",
+          "choices": [
+            "2",
+            "12",
+            "-12",
+            "-2"
+          ],
+          "solution": "दो उधार जुड़ते हैं: शून्य से 7 नीचे और 5 और नीचे यानी 12 नीचे — अतः −12। −2 उधार जोड़ने की जगह घटाता है; 12 दोनों चिह्न भूल जाता है।"
+        },
+        "mr": {
+          "stem": "(−7) + (−5) किती?",
+          "choices": [
+            "2",
+            "12",
+            "-12",
+            "-2"
+          ],
+          "solution": "दोन उधाऱ्या जुळतात: शून्याखाली 7 आणि आणखी 5 खाली म्हणजे 12 खाली — म्हणून −12. −2 उधाऱ्या जोडण्याऐवजी वजा करते; 12 दोन्ही चिन्हे विसरते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 6 − 10?",
+      "choices": [
+        "4",
+        "-4",
+        "-16",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "Six steps forward, ten back: you cross zero and stop 4 below it — −4. 4 forgets which number was bigger; −16 adds instead of subtracting.",
+      "checkExpr": "6-10",
+      "translations": {
+        "hi": {
+          "stem": "6 − 10 कितना है?",
+          "choices": [
+            "4",
+            "-4",
+            "-16",
+            "16"
+          ],
+          "solution": "छह क़दम आगे, दस पीछे: आप शून्य पार कर उससे 4 नीचे रुकते हैं — −4। 4 भूल जाता है कि बड़ी संख्या कौन थी; −16 घटाने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "6 − 10 किती?",
+          "choices": [
+            "4",
+            "-4",
+            "-16",
+            "16"
+          ],
+          "solution": "सहा पावले पुढे, दहा मागे: शून्य ओलांडून त्याच्या 4 खाली थांबता — −4. 4 विसरतो की मोठी संख्या कोणती होती; −16 वजा करण्याऐवजी बेरीज करते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which integer is the additive opposite of −9 — the number that cancels it to zero?",
+      "choices": [
+        "18",
+        "-9",
+        "0",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "−9 + 9 = 0: the opposite sits 9 steps on the OTHER side of zero. −9 is the number itself; 18 measures the distance between the pair, not the partner.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "−9 का योज्य विलोम कौन-सा पूर्णांक है — वह संख्या जो उसे शून्य कर दे?",
+          "choices": [
+            "18",
+            "-9",
+            "0",
+            "9"
+          ],
+          "solution": "−9 + 9 = 0: विलोम शून्य के दूसरी ओर 9 क़दम पर बैठता है। −9 तो संख्या स्वयं है; 18 जोड़ी के बीच की दूरी नापता है, साथी को नहीं।"
+        },
+        "mr": {
+          "stem": "−9 चा बेरीज-विरुद्धांक कोणता पूर्णांक — त्याला शून्य करणारी संख्या?",
+          "choices": [
+            "18",
+            "-9",
+            "0",
+            "9"
+          ],
+          "solution": "−9 + 9 = 0: विरुद्धांक शून्याच्या दुसऱ्या बाजूला 9 पावलांवर बसतो. −9 ही तर संख्या स्वतःच; 18 जोडीतील अंतर मोजते, जोडीदाराला नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "(−4) × 6 = ?",
+      "choices": [
+        "-24",
+        "-10",
+        "-2",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "Negative times positive is negative: 4 × 6 = 24, and the single minus survives — −24. 24 drops the sign; −10 adds instead of multiplying.",
+      "checkExpr": "(0-4)*6",
+      "translations": {
+        "hi": {
+          "stem": "(−4) × 6 कितना है?",
+          "choices": [
+            "-24",
+            "-10",
+            "-2",
+            "24"
+          ],
+          "solution": "ऋण गुणा धन ऋण होता है: 4 × 6 = 24, और अकेला ऋण-चिह्न बचा रहता है — −24। 24 चिह्न गिरा देता है; −10 गुणा की जगह जोड़ता है।"
+        },
+        "mr": {
+          "stem": "(−4) × 6 किती?",
+          "choices": [
+            "-24",
+            "-10",
+            "-2",
+            "24"
+          ],
+          "solution": "ऋण गुणिले धन ऋणच: 4 × 6 = 24, आणि एकटे ऋण-चिन्ह टिकते — −24. 24 चिन्ह गाळतो; −10 गुणाकाराऐवजी बेरीज करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "(−36) ÷ (−9) = ?",
+      "choices": [
+        "6",
+        "4",
+        "-6",
+        "-4"
+      ],
+      "answerIndex": 1,
+      "solution": "Same signs divide to a positive: 36 ÷ 9 = 4. −4 keeps a minus the two minuses already cancelled; 6 divides by six instead of nine.",
+      "checkExpr": "(0-36)/(0-9)",
+      "translations": {
+        "hi": {
+          "stem": "(−36) ÷ (−9) कितना है?",
+          "choices": [
+            "6",
+            "4",
+            "-6",
+            "-4"
+          ],
+          "solution": "समान चिह्न भाग देकर धन देते हैं: 36 ÷ 9 = 4। −4 वह ऋण रखे बैठा है जिसे दोनों ऋण पहले ही काट चुके; 6 नौ की जगह छह से भाग देता है।"
+        },
+        "mr": {
+          "stem": "(−36) ÷ (−9) किती?",
+          "choices": [
+            "6",
+            "4",
+            "-6",
+            "-4"
+          ],
+          "solution": "सारखी चिन्हे भागून धन देतात: 36 ÷ 9 = 4. −4 ते ऋण धरून बसतो जे दोन ऋणांनी आधीच रद्द केले; 6 नऊऐवजी सहाने भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "At noon Srinagar was at 3 °C; by midnight the temperature had fallen 8 degrees. What did the thermometer show at midnight?",
+      "choices": [
+        "5",
+        "11",
+        "-11",
+        "-5"
+      ],
+      "answerIndex": 3,
+      "solution": "3 − 8 = −5: three degrees of the fall reach zero, five more go below. 5 forgets the minus; −11 makes the noon reading negative too.",
+      "checkExpr": "3-8",
+      "translations": {
+        "hi": {
+          "stem": "दोपहर में श्रीनगर 3 °C पर था; आधी रात तक तापमान 8 डिग्री गिर गया। आधी रात को थर्मामीटर क्या दिखाता है?",
+          "choices": [
+            "5",
+            "11",
+            "-11",
+            "-5"
+          ],
+          "solution": "3 − 8 = −5: गिरावट के तीन डिग्री शून्य तक पहुँचते हैं, पाँच और नीचे जाते हैं। 5 ऋण-चिह्न भूल जाता है; −11 दोपहर के पाठ्यांक को भी ऋण बना देता है।"
+        },
+        "mr": {
+          "stem": "दुपारी श्रीनगर 3 °C होते; मध्यरात्रीपर्यंत तापमान 8 अंशांनी घसरले. मध्यरात्री थर्मामीटर काय दाखवतो?",
+          "choices": [
+            "5",
+            "11",
+            "-11",
+            "-5"
+          ],
+          "solution": "3 − 8 = −5: घसरणीचे तीन अंश शून्यापर्यंत पोहोचतात, आणखी पाच खाली जातात. 5 ऋण-चिन्ह विसरतो; −11 दुपारचे वाचनही ऋण करून टाकते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "(−2) × (−3) × (−4) = ?",
+      "choices": [
+        "24",
+        "-9",
+        "-24",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "An odd count of minus signs leaves a minus: 2 × 3 × 4 = 24, and three negatives make it −24. 24 counts the minuses as if they were even; −9 adds the numbers.",
+      "checkExpr": "(0-2)*(0-3)*(0-4)",
+      "translations": {
+        "hi": {
+          "stem": "(−2) × (−3) × (−4) कितना है?",
+          "choices": [
+            "24",
+            "-9",
+            "-24",
+            "9"
+          ],
+          "solution": "विषम संख्या में ऋण-चिह्न एक ऋण छोड़ते हैं: 2 × 3 × 4 = 24, और तीन ऋण उसे −24 बनाते हैं। 24 ऋणों को सम मानकर गिनता है; −9 संख्याएँ जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "(−2) × (−3) × (−4) किती?",
+          "choices": [
+            "24",
+            "-9",
+            "-24",
+            "9"
+          ],
+          "solution": "विषम संख्येची ऋण-चिन्हे एक ऋण उरवतात: 2 × 3 × 4 = 24, आणि तीन ऋणांनी ते −24 होते. 24 ऋणे समसंख्य असल्यासारखी मोजतो; −9 संख्यांची बेरीज करते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A submarine waits at −250 m, that is 250 m below sea level. It rises 75 m. Where is it now?",
+      "choices": [
+        "-325",
+        "-185",
+        "-175",
+        "175"
+      ],
+      "answerIndex": 2,
+      "solution": "Rising adds: −250 + 75 = −175, still underwater. −325 dives deeper by subtracting the rise; 175 surfaces by dropping the sign.",
+      "checkExpr": "75-250",
+      "translations": {
+        "hi": {
+          "stem": "एक पनडुब्बी −250 मीटर पर है, यानी समुद्र तल से 250 मीटर नीचे। वह 75 मीटर ऊपर उठती है। अब वह कहाँ है?",
+          "choices": [
+            "-325",
+            "-185",
+            "-175",
+            "175"
+          ],
+          "solution": "ऊपर उठना जोड़ है: −250 + 75 = −175, अब भी पानी के नीचे। −325 चढ़ाई घटाकर और गहरे उतर जाता है; 175 चिह्न गिराकर सतह पर आ जाता है।"
+        },
+        "mr": {
+          "stem": "एक पाणबुडी −250 मीटरवर आहे, म्हणजे समुद्रसपाटीपासून 250 मीटर खाली. ती 75 मीटर वर येते. आता ती कुठे आहे?",
+          "choices": [
+            "-325",
+            "-185",
+            "-175",
+            "175"
+          ],
+          "solution": "वर येणे म्हणजे बेरीज: −250 + 75 = −175, अजूनही पाण्याखाली. −325 चढाई वजा करून अधिक खोल जातो; 175 चिन्ह गाळून पृष्ठभागी येतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What must be added to −13 to get 20?",
+      "choices": [
+        "-33",
+        "7",
+        "-7",
+        "33"
+      ],
+      "answerIndex": 3,
+      "solution": "From −13 the journey climbs 13 steps to zero and 20 beyond: 33 in all. 7 measures only 20 − 13, as if the start were ABOVE zero.",
+      "checkExpr": "20+13",
+      "translations": {
+        "hi": {
+          "stem": "−13 में क्या जोड़ें कि 20 मिले?",
+          "choices": [
+            "-33",
+            "7",
+            "-7",
+            "33"
+          ],
+          "solution": "−13 से यात्रा 13 क़दम चढ़कर शून्य तक और 20 उसके आगे जाती है: कुल 33। 7 केवल 20 − 13 नापता है, मानो शुरुआत शून्य के ऊपर से हो।"
+        },
+        "mr": {
+          "stem": "−13 मध्ये काय मिळवले असता 20 मिळेल?",
+          "choices": [
+            "-33",
+            "7",
+            "-7",
+            "33"
+          ],
+          "solution": "−13 पासून प्रवास 13 पावले चढून शून्यापर्यंत आणि पुढे 20 जातो: एकूण 33. 7 फक्त 20 − 13 मोजतो, जणू सुरुवात शून्याच्या वर होती."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A quiz gives +5 for each right answer and −2 for each wrong one. Ridhima answers 7 right and 4 wrong. What is her score?",
+      "choices": [
+        "3",
+        "27",
+        "43",
+        "35"
+      ],
+      "answerIndex": 1,
+      "solution": "7 × 5 = 35 earned, 4 × 2 = 8 lost: 35 − 8 = 27. 35 ignores the penalty; 43 REWARDS the wrong answers instead of charging for them.",
+      "checkExpr": "5*7-2*4",
+      "translations": {
+        "hi": {
+          "stem": "एक क्विज़ में हर सही उत्तर पर +5 और हर ग़लत पर −2 मिलते हैं। रिधिमा 7 सही और 4 ग़लत करती है। उसका स्कोर क्या है?",
+          "choices": [
+            "3",
+            "27",
+            "43",
+            "35"
+          ],
+          "solution": "7 × 5 = 35 कमाए, 4 × 2 = 8 गँवाए: 35 − 8 = 27। 35 दंड को अनदेखा करता है; 43 ग़लत उत्तरों का शुल्क लेने की जगह उन्हें इनाम दे देता है।"
+        },
+        "mr": {
+          "stem": "एका प्रश्नमंजुषेत प्रत्येक बरोबर उत्तराला +5 आणि चुकीला −2 मिळतात. रिधिमा 7 बरोबर आणि 4 चूक करते. तिचे गुण किती?",
+          "choices": [
+            "3",
+            "27",
+            "43",
+            "35"
+          ],
+          "solution": "7 × 5 = 35 कमावले, 4 × 2 = 8 गमावले: 35 − 8 = 27. 35 दंडाकडे दुर्लक्ष करतो; 43 चुकीच्या उत्तरांचे शुल्क घेण्याऐवजी त्यांना बक्षीस देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Multiply −1 by itself 15 times. What comes out?",
+      "choices": [
+        "1",
+        "-15",
+        "15",
+        "-1"
+      ],
+      "answerIndex": 3,
+      "solution": "Each PAIR of minus signs cancels; 15 is odd, so one minus survives: −1. 1 needs an even count of factors; −15 multiplies the count itself.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "−1 को अपने आप से 15 बार गुणा कीजिए। क्या निकलता है?",
+          "choices": [
+            "1",
+            "-15",
+            "15",
+            "-1"
+          ],
+          "solution": "ऋण-चिह्नों की हर जोड़ी कट जाती है; 15 विषम है, अतः एक ऋण बच रहता है: −1। 1 के लिए सम संख्या में गुणनखंड चाहिए; −15 गिनती को ही गुणा कर बैठता है।"
+        },
+        "mr": {
+          "stem": "−1 ला स्वतःशी 15 वेळा गुणा. काय येते?",
+          "choices": [
+            "1",
+            "-15",
+            "15",
+            "-1"
+          ],
+          "solution": "ऋण-चिन्हांची प्रत्येक जोडी रद्द होते; 15 विषम आहे, म्हणून एक ऋण उरते: −1. 1 साठी समसंख्य घटक हवेत; −15 मोजणीलाच गुणून टाकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "(−8) × 25 × (−4) = ?",
+      "choices": [
+        "200",
+        "-800",
+        "800",
+        "-200"
+      ],
+      "answerIndex": 2,
+      "solution": "Pair the friendly two first: 25 × (−4) = −100, then (−8) × (−100) = 800 — the two minuses cancel. −800 miscounts the signs; 200 forgets the ×(−4) entirely.",
+      "checkExpr": "(0-8)*25*(0-4)",
+      "translations": {
+        "hi": {
+          "stem": "(−8) × 25 × (−4) कितना है?",
+          "choices": [
+            "200",
+            "-800",
+            "800",
+            "-200"
+          ],
+          "solution": "पहले सुविधाजनक जोड़ी बनाइए: 25 × (−4) = −100, फिर (−8) × (−100) = 800 — दोनों ऋण कट जाते हैं। −800 चिह्न ग़लत गिनता है; 200 ×(−4) को पूरा ही भूल जाता है।"
+        },
+        "mr": {
+          "stem": "(−8) × 25 × (−4) किती?",
+          "choices": [
+            "200",
+            "-800",
+            "800",
+            "-200"
+          ],
+          "solution": "आधी सोयीची जोडी करा: 25 × (−4) = −100, मग (−8) × (−100) = 800 — दोन्ही ऋणे रद्द होतात. −800 चिन्हे चुकीची मोजतो; 200 ×(−4) पूर्णच विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A mine lift starts 10 m ABOVE the ground and descends 6 m every minute. How many minutes does it take to reach −350 m?",
+      "choices": [
+        "56",
+        "70",
+        "58",
+        "60"
+      ],
+      "answerIndex": 3,
+      "solution": "The drop runs from +10 down to −350: a fall of 360 m. At 6 m a minute, 360 ÷ 6 = 60 minutes. 58 divides 350 alone, forgetting the lift starts above the ground.",
+      "checkExpr": "(10+350)/6",
+      "translations": {
+        "hi": {
+          "stem": "खदान की लिफ़्ट ज़मीन से 10 मीटर ऊपर से चलकर हर मिनट 6 मीटर उतरती है। −350 मीटर तक पहुँचने में कितने मिनट लगेंगे?",
+          "choices": [
+            "56",
+            "70",
+            "58",
+            "60"
+          ],
+          "solution": "उतराई +10 से −350 तक है: कुल 360 मीटर की गिरावट। 6 मीटर प्रति मिनट से 360 ÷ 6 = 60 मिनट। 58 अकेले 350 को भाग देता है, भूलकर कि लिफ़्ट ज़मीन के ऊपर से चली थी।"
+        },
+        "mr": {
+          "stem": "खाणीची लिफ्ट जमिनीच्या 10 मीटर वरून निघून दर मिनिटाला 6 मीटर खाली जाते. −350 मीटरपर्यंत पोहोचायला किती मिनिटे लागतील?",
+          "choices": [
+            "56",
+            "70",
+            "58",
+            "60"
+          ],
+          "solution": "उतार +10 पासून −350 पर्यंत आहे: एकूण 360 मीटरची घसरण. मिनिटाला 6 मीटरने 360 ÷ 6 = 60 मिनिटे. 58 एकट्या 350 ला भागतो, लिफ्ट जमिनीच्या वरून निघाली हे विसरून."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A test has 20 questions: +3 for a right answer, −1 for a wrong one. Gauri attempts all of them and scores 40. How many did she get right?",
+      "choices": [
+        "10",
+        "18",
+        "12",
+        "15"
+      ],
+      "answerIndex": 3,
+      "solution": "With c right answers, 3c − (20 − c) = 40, so 4c = 60 and c = 15. Check: 45 earned, 5 lost, 40 kept ✓. 10 right would score only 30 − 10 = 20.",
+      "checkExpr": "(40+20)/4",
+      "translations": {
+        "hi": {
+          "stem": "परीक्षा में 20 प्रश्न हैं: सही पर +3, ग़लत पर −1। गौरी सभी हल करती है और 40 अंक पाती है। उसके कितने उत्तर सही थे?",
+          "choices": [
+            "10",
+            "18",
+            "12",
+            "15"
+          ],
+          "solution": "c सही उत्तर मानें तो 3c − (20 − c) = 40, अतः 4c = 60 और c = 15। जाँच: 45 कमाए, 5 गँवाए, 40 बचे ✓। 10 सही होते तो केवल 30 − 10 = 20 मिलते।"
+        },
+        "mr": {
+          "stem": "परीक्षेत 20 प्रश्न आहेत: बरोबरला +3, चुकीला −1. गौरी सर्व सोडवते आणि 40 गुण मिळवते. तिची किती उत्तरे बरोबर होती?",
+          "choices": [
+            "10",
+            "18",
+            "12",
+            "15"
+          ],
+          "solution": "c बरोबर उत्तरे मानली तर 3c − (20 − c) = 40, म्हणून 4c = 60 आणि c = 15. पडताळणी: 45 कमावले, 5 गमावले, 40 उरले ✓. 10 बरोबर असती तर फक्त 30 − 10 = 20 मिळाले असते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Take a = −12 and b = −5. What is a − (−b)?",
+      "choices": [
+        "7",
+        "-17",
+        "17",
+        "-7"
+      ],
+      "answerIndex": 1,
+      "solution": "Careful: −(−b) is b itself, and b is −5. So a − (−b) = −12 + (−5) = −17. −7 treats −(−b) as +5 — but the double minus undoes only ONE minus, and b carried its own.",
+      "checkExpr": "0-12-5",
+      "translations": {
+        "hi": {
+          "stem": "मान लीजिए a = −12 और b = −5। a − (−b) कितना है?",
+          "choices": [
+            "7",
+            "-17",
+            "17",
+            "-7"
+          ],
+          "solution": "सावधान: −(−b) स्वयं b है, और b = −5। अतः a − (−b) = −12 + (−5) = −17। −7 इसे +5 मान लेता है — पर दोहरा ऋण केवल एक ऋण काटता है, और b अपना ऋण साथ लाया था।"
+        },
+        "mr": {
+          "stem": "समजा a = −12 आणि b = −5. a − (−b) किती?",
+          "choices": [
+            "7",
+            "-17",
+            "17",
+            "-7"
+          ],
+          "solution": "सावध: −(−b) म्हणजे b स्वतः, आणि b = −5. म्हणून a − (−b) = −12 + (−5) = −17. −7 त्याला +5 मानतो — पण दुहेरी ऋण फक्त एकच ऋण रद्द करते, आणि b चे स्वतःचे ऋण सोबत होते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two integers add to −6 and multiply to −27. What is the LARGER of the two?",
+      "choices": [
+        "3",
+        "9",
+        "-3",
+        "-9"
+      ],
+      "answerIndex": 0,
+      "solution": "A negative product needs one sign of each. Among factor pairs of 27, try 3 and −9: they add to −6 ✓. The larger is 3, for −9 lies far below it. The pair 9 and −3 multiplies right but adds to +6 — the mirror trap.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो पूर्णांकों का योग −6 और गुणनफल −27 है। दोनों में बड़ा कौन-सा है?",
+          "choices": [
+            "3",
+            "9",
+            "-3",
+            "-9"
+          ],
+          "solution": "ऋण गुणनफल के लिए एक-एक चिह्न चाहिए। 27 के गुणनखंड-युग्मों में 3 और −9 आज़माइए: योग −6 ✓। बड़ा 3 है, क्योंकि −9 उससे बहुत नीचे है। 9 और −3 की जोड़ी गुणा तो सही करती है पर योग +6 देती है — दर्पण-जाल।"
+        },
+        "mr": {
+          "stem": "दोन पूर्णांकांची बेरीज −6 आणि गुणाकार −27 आहे. दोघांत मोठा कोणता?",
+          "choices": [
+            "3",
+            "9",
+            "-3",
+            "-9"
+          ],
+          "solution": "ऋण गुणाकारासाठी एक-एक चिन्ह लागते. 27 च्या घटक-जोड्यांत 3 आणि −9 पाहा: बेरीज −6 ✓. मोठा 3 आहे, कारण −9 त्याच्या खूप खाली आहे. 9 आणि −3 ही जोडी गुणाकार बरोबर करते पण बेरीज +6 देते — आरशाचा सापळा."
+        }
+      }
+    }
+  ]
+}

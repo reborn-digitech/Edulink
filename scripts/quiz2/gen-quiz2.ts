@@ -24,6 +24,7 @@ import { G6_MATHS } from "./g6-maths";
 import { G6_SCIENCE } from "./g6-science";
 import { G6_GEOGRAPHY } from "./g6-geography";
 import { G6_CIVICS } from "./g6-civics";
+import { G7_MATHS } from "./g7-maths";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -43,6 +44,7 @@ function main() {
     ...G4_MATHS,
     ...G5_MATHS,
     ...G6_MATHS,
+    ...G7_MATHS,
   ];
   let total = 0;
   for (const out of topics) {
