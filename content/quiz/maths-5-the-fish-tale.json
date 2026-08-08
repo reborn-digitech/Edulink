@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 1 — The Fish Tale",
+  "name": "The Fish Tale",
+  "slug": "maths-5-the-fish-tale",
+  "summary": "Boats, catches and the fisherwomen's bank — speeds and rates, lakh-sized counts, and the arithmetic of throwing small fish back.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "मछली उछली",
+      "summary": "नावें, पकड़ और मछुआरिनों का बैंक — चाल और भाव, लाख तक की गिनती, और नन्ही मछलियाँ लौटाने का गणित।"
+    },
+    "mr": {
+      "name": "माशांची गोष्ट",
+      "summary": "होड्या, पकड आणि कोळिणींची बँक — वेग आणि भाव, लाखापर्यंतची मोजणी, आणि लहान मासे परत सोडण्याचे गणित."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A log-boat (catamaran) brings in 20 kg of fish each trip. How much fish in 2 trips?",
+      "choices": [
+        "30 kg",
+        "22 kg",
+        "40 kg",
+        "60 kg"
+      ],
+      "answerIndex": 2,
+      "solution": "Two trips of 20 kg: 20 × 2 = 40 kg. 22 adds the trips as if they were kilos of fish.",
+      "checkExpr": "20*2",
+      "translations": {
+        "hi": {
+          "stem": "लट्ठों की नाव (कटमरैन) हर फेरे में 20 किलो मछली लाती है। 2 फेरों में कितनी मछली?",
+          "choices": [
+            "30 किग्रा",
+            "22 किग्रा",
+            "40 किग्रा",
+            "60 किग्रा"
+          ],
+          "solution": "20-20 किलो के दो फेरे: 20 × 2 = 40 किलो। 22 फेरों को मछली के किलो मानकर जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "ओंडक्यांची होडी (कॅटामरान) प्रत्येक फेरीत 20 किलो मासे आणते. 2 फेऱ्यांत किती मासे?",
+          "choices": [
+            "30 किलो",
+            "22 किलो",
+            "40 किलो",
+            "60 किलो"
+          ],
+          "solution": "20-20 किलोच्या दोन फेऱ्या: 20 × 2 = 40 किलो. 22 फेऱ्यांनाच माशांचे किलो समजून मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Fresh fish sells at ₹60 per kg. What do 2 kg cost?",
+      "choices": [
+        "₹62",
+        "₹100",
+        "₹120",
+        "₹240"
+      ],
+      "answerIndex": 2,
+      "solution": "Two kilos at ₹60: 60 × 2 = ₹120. ₹62 adds the weight to the rate — a rate multiplies by the kilos bought.",
+      "checkExpr": "60*2",
+      "translations": {
+        "hi": {
+          "stem": "ताज़ी मछली ₹60 प्रति किलो बिकती है। 2 किलो के कितने लगेंगे?",
+          "choices": [
+            "₹62",
+            "₹100",
+            "₹120",
+            "₹240"
+          ],
+          "solution": "₹60 के भाव दो किलो: 60 × 2 = ₹120। ₹62 वज़न को भाव में जोड़ देता है — भाव ख़रीदे किलो से गुणा होता है।"
+        },
+        "mr": {
+          "stem": "ताजे मासे ₹60 प्रति किलोने विकले जातात. 2 किलोला किती लागतील?",
+          "choices": [
+            "₹62",
+            "₹100",
+            "₹120",
+            "₹240"
+          ],
+          "solution": "₹60 च्या भावाने दोन किलो: 60 × 2 = ₹120. ₹62 वजन भावात मिळवते — भाव घेतलेल्या किलोंनी गुणला जातो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The fish market's ledger says 'seven thousand and fifty rupees'. Which number is that?",
+      "choices": [
+        "7050",
+        "750",
+        "7500",
+        "7005"
+      ],
+      "answerIndex": 0,
+      "solution": "Seven thousand is 7000 and fifty is 50: together 7050. Writing 7500 hears 'fifty' as 'five hundred'; 7005 drops the fifty into the ones.",
+      "checkExpr": "7000+50",
+      "translations": {
+        "hi": {
+          "stem": "मछली बाज़ार के बही-खाते में लिखा है 'सात हज़ार पचास रुपये'। यह कौन-सी संख्या है?",
+          "choices": [
+            "7050",
+            "750",
+            "7500",
+            "7005"
+          ],
+          "solution": "सात हज़ार यानी 7000 और पचास यानी 50: मिलाकर 7050। 7500 'पचास' को 'पाँच सौ' सुन लेता है; 7005 पचास को इकाई में गिरा देता है।"
+        },
+        "mr": {
+          "stem": "मासळी बाजाराच्या वहीत लिहिले आहे 'सात हजार पन्नास रुपये'. ती कोणती संख्या?",
+          "choices": [
+            "7050",
+            "750",
+            "7500",
+            "7005"
+          ],
+          "solution": "सात हजार म्हणजे 7000 आणि पन्नास म्हणजे 50: मिळून 7050. 7500 'पन्नास'ला 'पाचशे' ऐकते; 7005 पन्नासला एककांत पाडते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A motor boat sails for 4 hours at 20 km every hour. How far does it go?",
+      "choices": [
+        "80 km",
+        "24 km",
+        "100 km",
+        "60 km"
+      ],
+      "answerIndex": 0,
+      "solution": "Four hours of 20 km each: 20 × 4 = 80 km. 24 adds hours to speed; distance is speed repeated over every hour sailed.",
+      "checkExpr": "20*4",
+      "translations": {
+        "hi": {
+          "stem": "मोटर-नाव 4 घंटे, हर घंटे 20 किमी की चाल से चलती है। वह कितनी दूर जाएगी?",
+          "choices": [
+            "80 किमी",
+            "24 किमी",
+            "100 किमी",
+            "60 किमी"
+          ],
+          "solution": "20-20 किमी के चार घंटे: 20 × 4 = 80 किमी। 24 घंटों को चाल में जोड़ देता है; दूरी हर चले घंटे में दोहराई गई चाल है।"
+        },
+        "mr": {
+          "stem": "मोटर-होडी 4 तास, दर तासाला 20 किमी वेगाने जाते. ती किती दूर जाईल?",
+          "choices": [
+            "80 किमी",
+            "24 किमी",
+            "100 किमी",
+            "60 किमी"
+          ],
+          "solution": "20-20 किमीचे चार तास: 20 × 4 = 80 किमी. 24 तास वेगात मिळवते; अंतर म्हणजे प्रत्येक तासात पुनरावृत्त झालेला वेग."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The fishermen's society counted ONE LAKH rupees. How many thousands is one lakh?",
+      "choices": [
+        "1000",
+        "10",
+        "100",
+        "50"
+      ],
+      "answerIndex": 2,
+      "solution": "One lakh is 1,00,000 — and 100000 ÷ 1000 = 100 thousands. 10 stops at ten thousand, one comma too early.",
+      "checkExpr": "100000/1000",
+      "translations": {
+        "hi": {
+          "stem": "मछुआरा समिति ने एक लाख रुपये गिने। एक लाख में कितने हज़ार होते हैं?",
+          "choices": [
+            "1000",
+            "10",
+            "100",
+            "50"
+          ],
+          "solution": "एक लाख यानी 1,00,000 — और 100000 ÷ 1000 = 100 हज़ार। 10 दस हज़ार पर रुक जाता है, एक अल्पविराम पहले।"
+        },
+        "mr": {
+          "stem": "मच्छीमार संस्थेने एक लाख रुपये मोजले. एका लाखात किती हजार असतात?",
+          "choices": [
+            "1000",
+            "10",
+            "100",
+            "50"
+          ],
+          "solution": "एक लाख म्हणजे 1,00,000 — आणि 100000 ÷ 1000 = 100 हजार. 10 दहा हजारावर थांबते, एक स्वल्पविराम आधी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A new fishing net costs ₹1200. Fazila saves ₹200 every month. In how many months can she buy it?",
+      "choices": [
+        "7",
+        "5",
+        "6",
+        "1000"
+      ],
+      "answerIndex": 2,
+      "solution": "How many 200s make 1200: 1200 ÷ 200 = 6 months. 1000 subtracts one month's saving instead of counting the months.",
+      "checkExpr": "1200/200",
+      "translations": {
+        "hi": {
+          "stem": "नया जाल ₹1200 का है। फ़ज़ीला हर महीने ₹200 बचाती है। कितने महीनों में वह उसे ख़रीद सकेगी?",
+          "choices": [
+            "7",
+            "5",
+            "6",
+            "1000"
+          ],
+          "solution": "1200 में 200 कितनी बार: 1200 ÷ 200 = 6 महीने। 1000 महीनों को गिनने की जगह एक महीने की बचत घटा देता है।"
+        },
+        "mr": {
+          "stem": "नवे जाळे ₹1200 चे आहे. फझिला दर महिन्याला ₹200 साठवते. किती महिन्यांत ती ते घेऊ शकेल?",
+          "choices": [
+            "7",
+            "5",
+            "6",
+            "1000"
+          ],
+          "solution": "1200 मध्ये 200 किती वेळा: 1200 ÷ 200 = 6 महिने. 1000 महिने मोजण्याऐवजी एका महिन्याची बचत वजा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A boat lands 250 kg of fish, all sold at ₹40 per kg. How much money is that?",
+      "choices": [
+        "₹1000",
+        "₹8000",
+        "₹10000",
+        "₹290"
+      ],
+      "answerIndex": 2,
+      "solution": "250 × 40 = 250 × 4 tens = 1000 tens = ₹10,000. ₹1000 drops a zero on the way; ₹290 adds the weight to the rate.",
+      "checkExpr": "250*40",
+      "translations": {
+        "hi": {
+          "stem": "एक नाव 250 किलो मछली उतारती है, सारी ₹40 प्रति किलो बिकती है। कुल कितने पैसे हुए?",
+          "choices": [
+            "₹1000",
+            "₹8000",
+            "₹10000",
+            "₹290"
+          ],
+          "solution": "250 × 40 = 250 × 4 दहाई = 1000 दहाई = ₹10,000। ₹1000 रास्ते में एक शून्य गिरा देता है; ₹290 वज़न को भाव में जोड़ता है।"
+        },
+        "mr": {
+          "stem": "एक होडी 250 किलो मासे उतरवते, सारे ₹40 प्रति किलोने विकले जातात. एकूण किती पैसे झाले?",
+          "choices": [
+            "₹1000",
+            "₹8000",
+            "₹10000",
+            "₹290"
+          ],
+          "solution": "250 × 40 = 250 × 4 दशक = 1000 दशक = ₹10,000. ₹1000 वाटेत एक शून्य पाडते; ₹290 वजन भावात मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the fisherwomen's bank, 25 women each put in ₹100 every month. How much does the bank collect in one month?",
+      "choices": [
+        "₹125",
+        "₹250",
+        "₹2600",
+        "₹2500"
+      ],
+      "answerIndex": 3,
+      "solution": "25 shares of ₹100: 25 × 100 = ₹2500. ₹250 loses a zero; ₹125 adds the women to the rupees. Small monthly hands build a big shared fund — that is the bank's whole idea.",
+      "checkExpr": "25*100",
+      "translations": {
+        "hi": {
+          "stem": "मछुआरिनों के बैंक में 25 महिलाएँ हर महीने ₹100-₹100 जमा करती हैं। एक महीने में बैंक के पास कितना जमा होता है?",
+          "choices": [
+            "₹125",
+            "₹250",
+            "₹2600",
+            "₹2500"
+          ],
+          "solution": "₹100 के 25 हिस्से: 25 × 100 = ₹2500। ₹250 एक शून्य खोता है; ₹125 महिलाओं को रुपयों में जोड़ता है। छोटे-छोटे मासिक हाथ बड़ा साझा कोष बनाते हैं — यही बैंक की पूरी सोच है।"
+        },
+        "mr": {
+          "stem": "कोळिणींच्या बँकेत 25 बाया दर महिन्याला ₹100-₹100 भरतात. एका महिन्यात बँकेकडे किती जमा होतात?",
+          "choices": [
+            "₹125",
+            "₹250",
+            "₹2600",
+            "₹2500"
+          ],
+          "solution": "₹100 चे 25 वाटे: 25 × 100 = ₹2500. ₹250 एक शून्य गमावते; ₹125 बायांना रुपयांत मिळवते. लहान लहान मासिक हात मोठा सामायिक निधी उभारतात — हीच बँकेची सारी कल्पना."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A big trawler catches in ONE trip what 12 log-boats together catch, each log-boat bringing 15 kg. How much does the trawler catch?",
+      "choices": [
+        "27 kg",
+        "120 kg",
+        "180 kg",
+        "165 kg"
+      ],
+      "answerIndex": 2,
+      "solution": "Twelve boats of 15 kg: 12 × 15 = 12 × 10 + 12 × 5 = 120 + 60 = 180 kg. 120 stops at the tens; 27 adds boats to kilos. One machine, twelve livelihoods — the chapter's quiet question.",
+      "checkExpr": "12*15",
+      "translations": {
+        "hi": {
+          "stem": "बड़ा ट्रॉलर एक ही फेरे में उतना पकड़ता है जितना 12 लट्ठा-नावें मिलकर — हर नाव 15 किलो लाती है। ट्रॉलर कितना पकड़ता है?",
+          "choices": [
+            "27 किग्रा",
+            "120 किग्रा",
+            "180 किग्रा",
+            "165 किग्रा"
+          ],
+          "solution": "15-15 किलो की बारह नावें: 12 × 15 = 12 × 10 + 12 × 5 = 120 + 60 = 180 किलो। 120 दहाई पर रुकता है; 27 नावें किलो में जोड़ता है। एक मशीन, बारह रोज़ियाँ — अध्याय का चुपचाप सवाल।"
+        },
+        "mr": {
+          "stem": "मोठा ट्रॉलर एकाच फेरीत तितके पकडतो जितके 12 ओंडका-होड्या मिळून — प्रत्येक होडी 15 किलो आणते. ट्रॉलर किती पकडतो?",
+          "choices": [
+            "27 किलो",
+            "120 किलो",
+            "180 किलो",
+            "165 किलो"
+          ],
+          "solution": "15-15 किलोच्या बारा होड्या: 12 × 15 = 12 × 10 + 12 × 5 = 120 + 60 = 180 किलो. 120 दशकावर थांबते; 27 होड्या किलोंत मिळवते. एक यंत्र, बारा रोजीरोट्या — धड्याचा शांत प्रश्न."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "3500 kg of fish must be packed into ice-crates of 50 kg each. How many crates are needed?",
+      "choices": [
+        "70",
+        "700",
+        "7",
+        "65"
+      ],
+      "answerIndex": 0,
+      "solution": "3500 ÷ 50 = 70 crates — check: 70 × 50 = 3500. Both 7 and 700 are zero-slips, ten times too few and ten times too many.",
+      "checkExpr": "3500/50",
+      "translations": {
+        "hi": {
+          "stem": "3500 किलो मछली 50-50 किलो के बर्फ़-क्रेटों में भरनी है। कितने क्रेट चाहिए?",
+          "choices": [
+            "70",
+            "700",
+            "7",
+            "65"
+          ],
+          "solution": "3500 ÷ 50 = 70 क्रेट — जाँच: 70 × 50 = 3500। 7 और 700 दोनों शून्य की फिसलन हैं — दस गुना कम और दस गुना ज़्यादा।"
+        },
+        "mr": {
+          "stem": "3500 किलो मासे 50-50 किलोच्या बर्फ-खोक्यांत भरायचे आहेत. किती खोकी लागतील?",
+          "choices": [
+            "70",
+            "700",
+            "7",
+            "65"
+          ],
+          "solution": "3500 ÷ 50 = 70 खोकी — तपासणी: 70 × 50 = 3500. 7 आणि 700 दोन्ही शून्याच्या घसरणी — दसपट कमी आणि दसपट जास्त."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A trawler hauls up 700 kg, but one seventh of it is baby fish that must be thrown back to grow. How much catch does it keep?",
+      "choices": [
+        "100 kg",
+        "600 kg",
+        "693 kg",
+        "630 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "One seventh of 700 is 700 ÷ 7 = 100 kg of baby fish; kept is 700 − 100 = 600 kg. 100 answers what was thrown back, not what stayed. Throwing the small ones back is arithmetic for the future too: next year's 700 swims away today.",
+      "checkExpr": "700-700/7",
+      "translations": {
+        "hi": {
+          "stem": "ट्रॉलर 700 किलो खींचता है, पर उसका सातवाँ हिस्सा नन्ही मछलियाँ हैं जिन्हें बढ़ने के लिए वापस डालना है। कितनी पकड़ उसके पास रहती है?",
+          "choices": [
+            "100 किग्रा",
+            "600 किग्रा",
+            "693 किग्रा",
+            "630 किग्रा"
+          ],
+          "solution": "700 का सातवाँ हिस्सा 700 ÷ 7 = 100 किलो नन्ही मछलियाँ; बची पकड़ 700 − 100 = 600 किलो। 100 वह बताता है जो लौटाया गया, न कि जो रहा। नन्हों को लौटाना भविष्य का भी गणित है: अगले साल का 700 आज तैरकर बच निकलता है।"
+        },
+        "mr": {
+          "stem": "ट्रॉलर 700 किलो ओढतो, पण त्याचा सातवा भाग लहान मासे आहेत, ज्यांना वाढण्यासाठी परत सोडायचे आहे. किती पकड त्याच्याकडे राहते?",
+          "choices": [
+            "100 किलो",
+            "600 किलो",
+            "693 किलो",
+            "630 किलो"
+          ],
+          "solution": "700 चा सातवा भाग 700 ÷ 7 = 100 किलो लहान मासे; उरली पकड 700 − 100 = 600 किलो. 100 परत सोडलेले सांगते, राहिलेले नव्हे. लहानग्यांना परत सोडणे हे भविष्याचेही गणित: पुढच्या वर्षीचे 700 आज पोहून निसटते."
+        }
+      }
+    }
+  ]
+}

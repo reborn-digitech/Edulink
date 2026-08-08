@@ -18,6 +18,7 @@ import { G3_MATHS, G3_MATHS_CONCEPT } from "./g3-maths";
 import { G3_EVS } from "./g3-evs";
 import { G4_MATHS } from "./g4-maths";
 import { G4_EVS } from "./g4-evs";
+import { G5_MATHS } from "./g5-maths";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -31,6 +32,7 @@ function main() {
     ...G6_HISTORY.map(generateChapter),
     ...G3_MATHS,
     ...G4_MATHS,
+    ...G5_MATHS,
   ];
   let total = 0;
   for (const out of topics) {

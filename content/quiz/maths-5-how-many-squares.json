@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 3 — How Many Squares?",
+  "name": "How Many Squares?",
+  "slug": "maths-5-how-many-squares",
+  "summary": "Area counted square by square — footprints with half squares, chessboards, stamp sheets, and shapes that share an area but not a boundary.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "कितने ख़ाने?",
+      "summary": "ख़ाना-ख़ाना गिना क्षेत्रफल — आधे ख़ानों वाले पदचिह्न, बिसातें, टिकट-शीटें, और वे आकृतियाँ जिनका क्षेत्रफल साझा है पर सीमा नहीं।"
+    },
+    "mr": {
+      "name": "किती चौकटी?",
+      "summary": "चौकटीचौकटीने मोजलेले क्षेत्रफळ — अर्ध्या चौकटींचे पाऊलठसे, बुद्धिबळपट, तिकीट-शीट, आणि क्षेत्रफळ वाटून घेणारे पण हद्द न वाटणारे आकार."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "On squared paper a rectangle covers 3 rows of 5 squares each. How many squares is its area?",
+      "choices": [
+        "8 squares",
+        "16 squares",
+        "15 squares",
+        "10 squares"
+      ],
+      "answerIndex": 2,
+      "solution": "Three rows of five: 3 × 5 = 15 squares. 8 adds rows to columns — area counts every square, row by row.",
+      "checkExpr": "3*5",
+      "translations": {
+        "hi": {
+          "stem": "ख़ानेदार काग़ज़ पर एक आयत 5-5 ख़ानों की 3 पंक्तियाँ घेरता है। उसका क्षेत्रफल कितने ख़ाने हुआ?",
+          "choices": [
+            "8 ख़ाने",
+            "16 ख़ाने",
+            "15 ख़ाने",
+            "10 ख़ाने"
+          ],
+          "solution": "पाँच-पाँच की तीन पंक्तियाँ: 3 × 5 = 15 ख़ाने। 8 पंक्तियों को स्तंभों में जोड़ता है — क्षेत्रफल हर ख़ाना गिनता है, पंक्ति-दर-पंक्ति।"
+        },
+        "mr": {
+          "stem": "चौकटीच्या कागदावर एक आयत 5-5 चौकटींच्या 3 ओळी व्यापतो. त्याचे क्षेत्रफळ किती चौकटी?",
+          "choices": [
+            "8 चौकटी",
+            "16 चौकटी",
+            "15 चौकटी",
+            "10 चौकटी"
+          ],
+          "solution": "पाच-पाचच्या तीन ओळी: 3 × 5 = 15 चौकटी. 8 ओळी स्तंभांत मिळवते — क्षेत्रफळ प्रत्येक चौकट मोजते, ओळीमागून ओळ."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A square of side 4 is drawn on squared paper. How many small squares does it cover?",
+      "choices": [
+        "12 squares",
+        "20 squares",
+        "16 squares",
+        "8 squares"
+      ],
+      "answerIndex": 2,
+      "solution": "Four rows of four: 4 × 4 = 16 squares. 8 doubles the side instead of squaring it — that counts only two edges, not the filled floor.",
+      "checkExpr": "4*4",
+      "translations": {
+        "hi": {
+          "stem": "ख़ानेदार काग़ज़ पर 4 भुजा वाला वर्ग बना है। वह कितने छोटे ख़ाने घेरता है?",
+          "choices": [
+            "12 ख़ाने",
+            "20 ख़ाने",
+            "16 ख़ाने",
+            "8 ख़ाने"
+          ],
+          "solution": "चार-चार की चार पंक्तियाँ: 4 × 4 = 16 ख़ाने। 8 भुजा को वर्ग करने की जगह दुगना करता है — वह भरा फ़र्श नहीं, बस दो किनारे गिनता है।"
+        },
+        "mr": {
+          "stem": "चौकटीच्या कागदावर 4 बाजूचा चौरस काढला आहे. तो किती लहान चौकटी व्यापतो?",
+          "choices": [
+            "12 चौकटी",
+            "20 चौकटी",
+            "16 चौकटी",
+            "8 चौकटी"
+          ],
+          "solution": "चार-चारच्या चार ओळी: 4 × 4 = 16 चौकटी. 8 बाजूचा वर्ग करण्याऐवजी ती दुप्पट करते — ते भरलेली फरशी नव्हे, फक्त दोन कडा मोजते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One stamp covers 12 squares. How many squares do two such stamps cover side by side?",
+      "choices": [
+        "22 squares",
+        "14 squares",
+        "144 squares",
+        "24 squares"
+      ],
+      "answerIndex": 3,
+      "solution": "Two stamps of 12: 12 × 2 = 24 squares. 144 multiplies the stamp by itself — the second stamp repeats it, not squares it.",
+      "checkExpr": "12*2",
+      "translations": {
+        "hi": {
+          "stem": "एक डाक-टिकट 12 ख़ाने घेरता है। ऐसे दो टिकट अग़ल-बग़ल कितने ख़ाने घेरेंगे?",
+          "choices": [
+            "22 ख़ाने",
+            "14 ख़ाने",
+            "144 ख़ाने",
+            "24 ख़ाने"
+          ],
+          "solution": "12-12 के दो टिकट: 12 × 2 = 24 ख़ाने। 144 टिकट को उसी से गुणा करता है — दूसरा टिकट उसे दोहराता है, वर्ग नहीं करता।"
+        },
+        "mr": {
+          "stem": "एक तिकीट 12 चौकटी व्यापते. अशी दोन तिकिटे शेजारी शेजारी किती चौकटी व्यापतील?",
+          "choices": [
+            "22 चौकटी",
+            "14 चौकटी",
+            "144 चौकटी",
+            "24 चौकटी"
+          ],
+          "solution": "12-12 ची दोन तिकिटे: 12 × 2 = 24 चौकटी. 144 तिकिटाला त्यानेच गुणते — दुसरे तिकीट त्याची पुनरावृत्ती करते, वर्ग नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A footprint traced on squared paper covers 18 full squares and 4 HALF squares. What is its area in squares?",
+      "choices": [
+        "22 squares",
+        "18 squares",
+        "20 squares",
+        "26 squares"
+      ],
+      "answerIndex": 2,
+      "solution": "Four halves make 4 ÷ 2 = 2 whole squares, so 18 + 2 = 20. Counting 22 treats each half as a whole — the classic slip when tracing feet and leaves.",
+      "checkExpr": "18+4/2",
+      "translations": {
+        "hi": {
+          "stem": "ख़ानेदार काग़ज़ पर उतारा पदचिह्न 18 पूरे ख़ाने और 4 आधे ख़ाने घेरता है। उसका क्षेत्रफल कितने ख़ाने?",
+          "choices": [
+            "22 ख़ाने",
+            "18 ख़ाने",
+            "20 ख़ाने",
+            "26 ख़ाने"
+          ],
+          "solution": "चार आधे यानी 4 ÷ 2 = 2 पूरे ख़ाने, तो 18 + 2 = 20। 22 हर आधे को पूरा गिनता है — पैर और पत्ते उतारते समय की जानी-पहचानी चूक।"
+        },
+        "mr": {
+          "stem": "चौकटीच्या कागदावर उतरवलेला पाऊलठसा 18 पूर्ण चौकटी आणि 4 अर्ध्या चौकटी व्यापतो. त्याचे क्षेत्रफळ किती चौकटी?",
+          "choices": [
+            "22 चौकटी",
+            "18 चौकटी",
+            "20 चौकटी",
+            "26 चौकटी"
+          ],
+          "solution": "चार अर्ध्या म्हणजे 4 ÷ 2 = 2 पूर्ण चौकटी, म्हणून 18 + 2 = 20. 22 प्रत्येक अर्ध्याला पूर्ण मोजते — पाय आणि पाने उतरवतानाची ओळखीची चूक."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Each small square of the paper has 1 cm sides. A rectangle covers 7 columns and 3 rows. What is its area?",
+      "choices": [
+        "20 sq cm",
+        "21 sq cm",
+        "10 sq cm",
+        "24 sq cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Each square is 1 sq cm, and 7 × 3 = 21 of them fit — area 21 sq cm. 10 adds the sides; the boundary adds, the area multiplies.",
+      "checkExpr": "7*3",
+      "translations": {
+        "hi": {
+          "stem": "काग़ज़ के हर छोटे ख़ाने की भुजा 1 सेमी है। एक आयत 7 स्तंभ और 3 पंक्तियाँ घेरता है। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "20 वर्ग सेमी",
+            "21 वर्ग सेमी",
+            "10 वर्ग सेमी",
+            "24 वर्ग सेमी"
+          ],
+          "solution": "हर ख़ाना 1 वर्ग सेमी, और 7 × 3 = 21 समाते हैं — क्षेत्रफल 21 वर्ग सेमी। 10 भुजाएँ जोड़ता है; सीमा जुड़ती है, क्षेत्रफल गुणा होता है।"
+        },
+        "mr": {
+          "stem": "कागदाच्या प्रत्येक लहान चौकटीची बाजू 1 सेमी. एक आयत 7 स्तंभ आणि 3 ओळी व्यापतो. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "20 चौ. सेमी",
+            "21 चौ. सेमी",
+            "10 चौ. सेमी",
+            "24 चौ. सेमी"
+          ],
+          "solution": "प्रत्येक चौकट 1 चौ. सेमी, आणि 7 × 3 = 21 मावतात — क्षेत्रफळ 21 चौ. सेमी. 10 बाजू मिळवते; हद्द मिळते, क्षेत्रफळ गुणले जाते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangle covers 24 squares and is 4 squares wide. How many squares long is it?",
+      "choices": [
+        "8",
+        "96",
+        "6",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "Length × 4 = 24, so length = 24 ÷ 4 = 6 squares. 20 subtracts the width from the area — area undoes by division, not subtraction.",
+      "checkExpr": "24/4",
+      "translations": {
+        "hi": {
+          "stem": "एक आयत 24 ख़ाने घेरता है और 4 ख़ाने चौड़ा है। वह कितने ख़ाने लंबा है?",
+          "choices": [
+            "8",
+            "96",
+            "6",
+            "20"
+          ],
+          "solution": "लंबाई × 4 = 24, तो लंबाई = 24 ÷ 4 = 6 ख़ाने। 20 क्षेत्रफल में से चौड़ाई घटाता है — क्षेत्रफल भाग से खुलता है, घटाव से नहीं।"
+        },
+        "mr": {
+          "stem": "एक आयत 24 चौकटी व्यापतो आणि 4 चौकटी रुंद आहे. तो किती चौकटी लांब आहे?",
+          "choices": [
+            "8",
+            "96",
+            "6",
+            "20"
+          ],
+          "solution": "लांबी × 4 = 24, म्हणून लांबी = 24 ÷ 4 = 6 चौकटी. 20 क्षेत्रफळातून रुंदी वजा करते — क्षेत्रफळ भागाकाराने उलगडते, वजाबाकीने नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A chessboard has 8 rows with 8 squares in each. How many small squares is the whole board?",
+      "choices": [
+        "16 squares",
+        "64 squares",
+        "72 squares",
+        "56 squares"
+      ],
+      "answerIndex": 1,
+      "solution": "8 × 8 = 64 squares. 16 adds the eights; 56 and 72 are one row of eight below and above — the eight-times table's neighbours.",
+      "checkExpr": "8*8",
+      "translations": {
+        "hi": {
+          "stem": "शतरंज की बिसात में 8 पंक्तियाँ हैं, हर एक में 8 ख़ाने। पूरी बिसात में कितने छोटे ख़ाने?",
+          "choices": [
+            "16 ख़ाने",
+            "64 ख़ाने",
+            "72 ख़ाने",
+            "56 ख़ाने"
+          ],
+          "solution": "8 × 8 = 64 ख़ाने। 16 आठों को जोड़ता है; 56 और 72 एक-एक पंक्ति नीचे-ऊपर हैं — आठ के पहाड़े के पड़ोसी।"
+        },
+        "mr": {
+          "stem": "बुद्धिबळाच्या पटावर 8 ओळी आहेत, प्रत्येकीत 8 घरे. सबंध पटावर किती लहान घरे?",
+          "choices": [
+            "16 चौकटी",
+            "64 चौकटी",
+            "72 चौकटी",
+            "56 चौकटी"
+          ],
+          "solution": "8 × 8 = 64 घरे. 16 आठ मिळवते; 56 आणि 72 एकेक ओळ खाली-वर — आठाच्या पाढ्याचे शेजारी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two rectangles are drawn: one 6 by 4, another 5 by 5. Which covers more — and by how many squares?",
+      "choices": [
+        "2 squares",
+        "1 squares",
+        "5 squares",
+        "0 squares"
+      ],
+      "answerIndex": 1,
+      "solution": "6 × 4 = 24 and 5 × 5 = 25: the square wins by 25 − 24 = 1 square. Same-looking sizes, different areas — of shapes with equal boundary, the squarest holds the most.",
+      "checkExpr": "5*5-6*4",
+      "translations": {
+        "hi": {
+          "stem": "दो आयत बने हैं: एक 6 × 4, दूसरा 5 × 5। कौन ज़्यादा घेरता है — और कितने ख़ानों से?",
+          "choices": [
+            "2 ख़ाने",
+            "1 ख़ाने",
+            "5 ख़ाने",
+            "0 ख़ाने"
+          ],
+          "solution": "6 × 4 = 24 और 5 × 5 = 25: वर्ग 25 − 24 = 1 ख़ाने से जीतता है। देखने में बराबर नाप, क्षेत्रफल अलग — बराबर सीमा वाली आकृतियों में सबसे वर्ग-सी ही सबसे ज़्यादा समेटती है।"
+        },
+        "mr": {
+          "stem": "दोन आयत काढले आहेत: एक 6 × 4, दुसरा 5 × 5. कोणता जास्त व्यापतो — आणि किती चौकटींनी?",
+          "choices": [
+            "2 चौकटी",
+            "1 चौकटी",
+            "5 चौकटी",
+            "0 चौकटी"
+          ],
+          "solution": "6 × 4 = 24 आणि 5 × 5 = 25: चौरस 25 − 24 = 1 चौकटीने जिंकतो. दिसायला सारखी मापे, क्षेत्रफळ वेगळे — सारख्या हद्दीच्या आकारांत सर्वांत चौरसासारखाच सर्वाधिक सामावतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 6-by-6 sheet of stamps is cut into small 2-by-2 stamps. How many stamps come out?",
+      "choices": [
+        "12",
+        "6",
+        "18",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "The sheet holds 36 squares, each stamp takes 4: 36 ÷ 4 = 9 stamps — three rows of three. 18 divides by 2 only once; the stamp is two squares BOTH ways.",
+      "checkExpr": "6*6/(2*2)",
+      "translations": {
+        "hi": {
+          "stem": "6 × 6 की टिकट-शीट 2 × 2 के छोटे टिकटों में काटी गई। कितने टिकट निकलेंगे?",
+          "choices": [
+            "12",
+            "6",
+            "18",
+            "9"
+          ],
+          "solution": "शीट में 36 ख़ाने, हर टिकट 4 लेता है: 36 ÷ 4 = 9 टिकट — तीन-तीन की तीन पंक्तियाँ। 18 केवल एक बार 2 से भाग देता है; टिकट दोनों दिशाओं में दो-दो ख़ाने का है।"
+        },
+        "mr": {
+          "stem": "6 × 6 ची तिकीट-शीट 2 × 2 च्या लहान तिकिटांत कापली. किती तिकिटे निघतील?",
+          "choices": [
+            "12",
+            "6",
+            "18",
+            "9"
+          ],
+          "solution": "शीटमध्ये 36 चौकटी, प्रत्येक तिकीट 4 घेते: 36 ÷ 4 = 9 तिकिटे — तीन-तीनच्या तीन ओळी. 18 फक्त एकदाच 2 ने भागते; तिकीट दोन्ही दिशांनी दोन-दोन चौकटींचे आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rectangle's area is 36 squares and its length is 9. What is its BOUNDARY, counted in square-edges?",
+      "choices": [
+        "26",
+        "13",
+        "22",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "Width first: 36 ÷ 9 = 4. Then the boundary: (9 + 4) × 2 = 26 edges. 13 walks only half the way round; 36 confuses the border with the floor it encloses.",
+      "checkExpr": "2*(9+36/9)",
+      "translations": {
+        "hi": {
+          "stem": "आयत का क्षेत्रफल 36 ख़ाने है और लंबाई 9। ख़ाना-किनारों में गिनें तो उसकी सीमा कितनी?",
+          "choices": [
+            "26",
+            "13",
+            "22",
+            "36"
+          ],
+          "solution": "पहले चौड़ाई: 36 ÷ 9 = 4। फिर सीमा: (9 + 4) × 2 = 26 किनारे। 13 आधा ही चक्कर लगाता है; 36 बाड़ को उस फ़र्श से मिला देता है जिसे वह घेरती है।"
+        },
+        "mr": {
+          "stem": "आयताचे क्षेत्रफळ 36 चौकटी आणि लांबी 9. चौकट-कडांनी मोजली तर त्याची हद्द किती?",
+          "choices": [
+            "26",
+            "13",
+            "22",
+            "36"
+          ],
+          "solution": "आधी रुंदी: 36 ÷ 9 = 4. मग हद्द: (9 + 4) × 2 = 26 कडा. 13 अर्धीच फेरी मारते; 36 कुंपणाला ते वेढत असलेल्या फरशीशी गल्लत करते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "With 12 squares you must draw a rectangle of the LONGEST possible boundary. One row of 12 gives what boundary?",
+      "choices": [
+        "14",
+        "24",
+        "26",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "The thin 1-by-12 strip has boundary (12 + 1) × 2 = 26 — longer than 2 × 6's 16 or 3 × 4's 14, though all three cover the same 12 squares. Same area, different boundary: the thinner the shape, the more edge it spends. That is why a curled-up cat is warm and a stretched one cools.",
+      "checkExpr": "2*(12+1)",
+      "translations": {
+        "hi": {
+          "stem": "12 ख़ानों से सबसे लंबी सीमा वाला आयत बनाना है। 12 की एक पंक्ति कितनी सीमा देती है?",
+          "choices": [
+            "14",
+            "24",
+            "26",
+            "16"
+          ],
+          "solution": "पतली 1 × 12 पट्टी की सीमा (12 + 1) × 2 = 26 है — 2 × 6 की 16 और 3 × 4 की 14 से लंबी, जबकि तीनों वही 12 ख़ाने घेरते हैं। क्षेत्रफल एक, सीमा अलग: आकृति जितनी पतली, किनारा उतना ज़्यादा ख़र्च। इसीलिए सिमटी बिल्ली गरम रहती है और फैली ठंडी।"
+        },
+        "mr": {
+          "stem": "12 चौकटींतून सर्वांत लांब हद्दीचा आयत काढायचा आहे. 12 ची एक ओळ किती हद्द देते?",
+          "choices": [
+            "14",
+            "24",
+            "26",
+            "16"
+          ],
+          "solution": "बारीक 1 × 12 पट्टीची हद्द (12 + 1) × 2 = 26 — 2 × 6 च्या 16 आणि 3 × 4 च्या 14 हून लांब, वास्तविक तिन्ही त्याच 12 चौकटी व्यापतात. क्षेत्रफळ एक, हद्द वेगळी: आकार जितका बारीक, तितकी कड जास्त खर्च होते. म्हणूनच मुटकुळे केलेले मांजर ऊबदार राहते आणि पसरलेले गारठते."
+        }
+      }
+    }
+  ]
+}
