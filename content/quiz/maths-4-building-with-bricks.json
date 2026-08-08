@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 1 — Building with Bricks",
+  "name": "Building with Bricks",
+  "slug": "maths-4-building-with-bricks",
+  "summary": "Rows and walls, jaali holes and trolley trips — the arithmetic hiding inside brickwork.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "ईंटों से बनी इमारत",
+      "summary": "पंक्तियाँ और दीवारें, जाली के झरोखे और ट्रॉली के फेरे — ईंट-गारे के भीतर छिपा गणित।"
+    },
+    "mr": {
+      "name": "विटांची इमारत",
+      "summary": "रांगा आणि भिंती, जाळीचे झरोके आणि ट्रॉलीच्या फेऱ्या — वीटकामात दडलेले गणित."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A brick is a box shape. How many faces does it have to touch and count?",
+      "choices": [
+        "4",
+        "12",
+        "6",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "The faces come in 3 pairs of opposites — top and bottom, the two long sides, the two ends — so 3 × 2 = 6. Counting 8 counts the corners' directions, not the flat faces.",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "ईंट एक डिब्बे जैसी है। छूकर गिनें तो उसके कितने फलक (सतहें) हैं?",
+          "choices": [
+            "4",
+            "12",
+            "6",
+            "8"
+          ],
+          "solution": "फलक 3 आमने-सामने के जोड़ों में हैं — ऊपर-नीचे, दो लंबे पहलू, दो सिरे — यानी 3 × 2 = 6। 8 गिनना कोनों की दिशाएँ गिनना है, चपटे फलक नहीं।"
+        },
+        "mr": {
+          "stem": "वीट ही खोक्यासारखी असते. हाताने मोजले तर तिला किती पृष्ठे (बाजू) असतात?",
+          "choices": [
+            "4",
+            "12",
+            "6",
+            "8"
+          ],
+          "solution": "पृष्ठे 3 समोरासमोरच्या जोड्यांत असतात — वर-खाली, दोन लांब बाजू, दोन टोके — म्हणजे 3 × 2 = 6. 8 मोजणे म्हणजे कोपऱ्यांच्या दिशा मोजणे, सपाट पृष्ठे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One row of a wall takes 14 bricks. How many bricks do 2 such rows take?",
+      "choices": [
+        "16",
+        "24",
+        "28",
+        "141"
+      ],
+      "answerIndex": 2,
+      "solution": "Two equal rows are 14 + 14 = 14 × 2 = 28. Answering 16 adds the 2 instead of taking 14 twice.",
+      "checkExpr": "14*2",
+      "translations": {
+        "hi": {
+          "stem": "दीवार की एक पंक्ति में 14 ईंटें लगती हैं। ऐसी 2 पंक्तियों में कितनी लगेंगी?",
+          "choices": [
+            "16",
+            "24",
+            "28",
+            "141"
+          ],
+          "solution": "दो बराबर पंक्तियाँ यानी 14 + 14 = 14 × 2 = 28। 16 कहना 14 को दो बार लेने की जगह 2 जोड़ देना है।"
+        },
+        "mr": {
+          "stem": "भिंतीच्या एका रांगेला 14 विटा लागतात. अशा 2 रांगांना किती लागतील?",
+          "choices": [
+            "16",
+            "24",
+            "28",
+            "141"
+          ],
+          "solution": "दोन सारख्या रांगा म्हणजे 14 + 14 = 14 × 2 = 28. 16 म्हणणे म्हणजे 14 दोनदा घेण्याऐवजी 2 मिळवणे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A row needs 12 bricks. The mason has laid 7. How many more finish the row?",
+      "choices": [
+        "19",
+        "4",
+        "6",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "What remains is 12 − 7 = 5. Saying 19 adds the two numbers, but the 7 bricks are already part of the 12, not extra.",
+      "checkExpr": "12-7",
+      "translations": {
+        "hi": {
+          "stem": "एक पंक्ति को 12 ईंटें चाहिए। राजमिस्त्री 7 लगा चुका है। पंक्ति पूरी करने को और कितनी चाहिए?",
+          "choices": [
+            "19",
+            "4",
+            "6",
+            "5"
+          ],
+          "solution": "बाक़ी हैं 12 − 7 = 5। 19 कहना दोनों संख्याएँ जोड़ देना है, जबकि 7 ईंटें उन्हीं 12 का हिस्सा हैं, अलग से नहीं।"
+        },
+        "mr": {
+          "stem": "एका रांगेला 12 विटा हव्यात. गवंड्याने 7 बसवल्या आहेत. रांग पुरी करायला आणखी किती हव्यात?",
+          "choices": [
+            "19",
+            "4",
+            "6",
+            "5"
+          ],
+          "solution": "उरल्या 12 − 7 = 5. 19 म्हणणे म्हणजे दोन्ही संख्या मिळवणे, पण 7 विटा त्या 12 मध्येच आहेत, वेगळ्या नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Each row of a wall has 16 bricks, and the wall is 5 rows tall. How many bricks in the wall?",
+      "choices": [
+        "70",
+        "21",
+        "80",
+        "90"
+      ],
+      "answerIndex": 2,
+      "solution": "Five rows of 16 each make 16 × 5 = 80. Adding 16 + 5 = 21 mixes up 'rows of bricks' with 'bricks plus rows'.",
+      "checkExpr": "16*5",
+      "translations": {
+        "hi": {
+          "stem": "दीवार की हर पंक्ति में 16 ईंटें हैं, और दीवार 5 पंक्ति ऊँची है। दीवार में कुल कितनी ईंटें?",
+          "choices": [
+            "70",
+            "21",
+            "80",
+            "90"
+          ],
+          "solution": "16-16 की पाँच पंक्तियाँ यानी 16 × 5 = 80। 16 + 5 = 21 करना 'ईंटों की पंक्तियाँ' और 'ईंटें जमा पंक्तियाँ' गड्डमड्ड करना है।"
+        },
+        "mr": {
+          "stem": "भिंतीच्या प्रत्येक रांगेत 16 विटा आहेत, आणि भिंत 5 रांगा उंच आहे. भिंतीत एकूण किती विटा?",
+          "choices": [
+            "70",
+            "21",
+            "80",
+            "90"
+          ],
+          "solution": "16-16 च्या पाच रांगा म्हणजे 16 × 5 = 80. 16 + 5 = 21 करणे म्हणजे 'विटांच्या रांगा' आणि 'विटा अधिक रांगा' यांची गल्लत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A lorry brought 500 bricks. The masons have used 320. How many bricks are left?",
+      "choices": [
+        "280",
+        "180",
+        "120",
+        "220"
+      ],
+      "answerIndex": 1,
+      "solution": "Left over is 500 − 320 = 180. Getting 280 forgets to borrow across the tens; 220 subtracts 320 as if it were 280.",
+      "checkExpr": "500-320",
+      "translations": {
+        "hi": {
+          "stem": "एक ट्रक 500 ईंटें लाया। राजमिस्त्रियों ने 320 लगा दीं। कितनी ईंटें बचीं?",
+          "choices": [
+            "280",
+            "180",
+            "120",
+            "220"
+          ],
+          "solution": "बचीं 500 − 320 = 180। 280 आना दहाई का हिसाब चूकना है; 220 ऐसे घटाना है मानो 320 की जगह 280 हो।"
+        },
+        "mr": {
+          "stem": "एका ट्रकने 500 विटा आणल्या. गवंड्यांनी 320 वापरल्या. किती विटा उरल्या?",
+          "choices": [
+            "280",
+            "180",
+            "120",
+            "220"
+          ],
+          "solution": "उरल्या 500 − 320 = 180. 280 येणे म्हणजे दशकाचा हिशेब चुकणे; 220 म्हणजे 320 ऐवजी 280 वजा केल्यासारखे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Bricks are sold by the thousand: 1000 bricks cost ₹1200. What do 2000 bricks cost?",
+      "choices": [
+        "₹3600",
+        "₹2200",
+        "₹2400",
+        "₹1400"
+      ],
+      "answerIndex": 2,
+      "solution": "Two thousands cost two times ₹1200 = ₹2400. ₹1400 adds ₹200 instead of doubling — twice the bricks means twice the whole price.",
+      "checkExpr": "1200*2",
+      "translations": {
+        "hi": {
+          "stem": "ईंटें हज़ार के भाव बिकती हैं: 1000 ईंटों के ₹1200। 2000 ईंटों के कितने लगेंगे?",
+          "choices": [
+            "₹3600",
+            "₹2200",
+            "₹2400",
+            "₹1400"
+          ],
+          "solution": "दो हज़ार के दाम दो गुना ₹1200 = ₹2400। ₹1400 दुगना करने की जगह ₹200 जोड़ देना है — ईंटें दुगनी तो पूरा दाम दुगना।"
+        },
+        "mr": {
+          "stem": "विटा हजाराच्या भावाने विकतात: 1000 विटांना ₹1200. 2000 विटांना किती लागतील?",
+          "choices": [
+            "₹3600",
+            "₹2200",
+            "₹2400",
+            "₹1400"
+          ],
+          "solution": "दोन हजारांची किंमत दुप्पट ₹1200 = ₹2400. ₹1400 म्हणजे दुप्पट करण्याऐवजी ₹200 मिळवणे — विटा दुप्पट तर सगळी किंमत दुप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Muniya needs 3500 bricks. A trolley carries 500 at a time. How many trolley trips?",
+      "choices": [
+        "8",
+        "70",
+        "6",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "Count how many 500s sit inside 3500: 3500 ÷ 500 = 7. Answering 70 divides by 50 — one zero slipped away.",
+      "checkExpr": "3500/500",
+      "translations": {
+        "hi": {
+          "stem": "मुनिया को 3500 ईंटें चाहिए। ट्रॉली एक बार में 500 लाती है। कितने फेरे लगेंगे?",
+          "choices": [
+            "8",
+            "70",
+            "6",
+            "7"
+          ],
+          "solution": "3500 में 500 कितनी बार है: 3500 ÷ 500 = 7। 70 कहना 50 से भाग देना है — एक शून्य फिसल गया।"
+        },
+        "mr": {
+          "stem": "मुनियाला 3500 विटा हव्यात. ट्रॉली एका वेळी 500 आणते. किती फेऱ्या लागतील?",
+          "choices": [
+            "8",
+            "70",
+            "6",
+            "7"
+          ],
+          "solution": "3500 मध्ये 500 किती वेळा: 3500 ÷ 500 = 7. 70 म्हणणे म्हणजे 50 ने भागणे — एक शून्य निसटले."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A jaali (lattice) row leaves out every 4th brick to make holes. A solid row takes 24 bricks — how many bricks does one jaali row actually use?",
+      "choices": [
+        "18",
+        "6",
+        "16",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Every 4th of 24 is 24 ÷ 4 = 6 gaps, so bricks laid are 24 − 6 = 18. Answering 6 gives the holes, not the bricks — read what was asked.",
+      "checkExpr": "24-24/4",
+      "translations": {
+        "hi": {
+          "stem": "जाली की पंक्ति में हर चौथी ईंट छोड़कर झरोखे बनते हैं। ठोस पंक्ति में 24 ईंटें लगतीं — जाली की एक पंक्ति में असल में कितनी लगेंगी?",
+          "choices": [
+            "18",
+            "6",
+            "16",
+            "20"
+          ],
+          "solution": "24 में हर चौथी यानी 24 ÷ 4 = 6 झरोखे, तो लगीं 24 − 6 = 18 ईंटें। 6 कहना झरोखे बताना है, ईंटें नहीं — सवाल फिर पढ़िए।"
+        },
+        "mr": {
+          "stem": "जाळीच्या रांगेत दर चौथी वीट सोडून झरोके करतात. भरीव रांगेला 24 विटा लागतात — जाळीच्या एका रांगेला प्रत्यक्षात किती लागतील?",
+          "choices": [
+            "18",
+            "6",
+            "16",
+            "20"
+          ],
+          "solution": "24 मध्ये दर चौथी म्हणजे 24 ÷ 4 = 6 झरोके, म्हणून बसल्या 24 − 6 = 18 विटा. 6 म्हणणे म्हणजे झरोके सांगणे, विटा नव्हे — प्रश्न पुन्हा वाचा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wall is 18 rows tall: the bottom 10 rows take 20 bricks each, the top 8 rows take 15 each. How many bricks in all?",
+      "choices": [
+        "320",
+        "280",
+        "360",
+        "350"
+      ],
+      "answerIndex": 0,
+      "solution": "Bottom: 10 × 20 = 200. Top: 8 × 15 = 120. Together 200 + 120 = 320. Taking all 18 rows at 20 gives 360 — the top rows are thinner and must be counted at their own rate.",
+      "checkExpr": "10*20+8*15",
+      "translations": {
+        "hi": {
+          "stem": "दीवार 18 पंक्ति ऊँची है: नीचे की 10 पंक्तियों में 20-20 ईंटें, ऊपर की 8 में 15-15। कुल कितनी ईंटें?",
+          "choices": [
+            "320",
+            "280",
+            "360",
+            "350"
+          ],
+          "solution": "नीचे: 10 × 20 = 200। ऊपर: 8 × 15 = 120। मिलाकर 200 + 120 = 320। सभी 18 पंक्तियाँ 20 के भाव लेने से 360 आता है — ऊपर की पंक्तियाँ पतली हैं, उनका हिसाब उनके भाव से होगा।"
+        },
+        "mr": {
+          "stem": "भिंत 18 रांगा उंच आहे: खालच्या 10 रांगांत 20-20 विटा, वरच्या 8 रांगांत 15-15. एकूण किती विटा?",
+          "choices": [
+            "320",
+            "280",
+            "360",
+            "350"
+          ],
+          "solution": "खाली: 10 × 20 = 200. वर: 8 × 15 = 120. मिळून 200 + 120 = 320. साऱ्या 18 रांगा 20 च्या भावाने घेतल्यास 360 येते — वरच्या रांगा लहान आहेत, त्यांचा हिशेब त्यांच्याच भावाने हवा."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A mason lays 60 bricks in an hour and works 8 hours a day. In how many days will he lay 2400 bricks?",
+      "choices": [
+        "40",
+        "5",
+        "4",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "One day's work is 60 × 8 = 480 bricks, so 2400 ÷ 480 = 5 days. Getting 40 divides by 60 only — the question asks days, and a day holds 8 of those hours.",
+      "checkExpr": "2400/(60*8)",
+      "translations": {
+        "hi": {
+          "stem": "राजमिस्त्री घंटे में 60 ईंटें लगाता है और दिन में 8 घंटे काम करता है। 2400 ईंटें कितने दिनों में लगाएगा?",
+          "choices": [
+            "40",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "एक दिन का काम 60 × 8 = 480 ईंटें, तो 2400 ÷ 480 = 5 दिन। 40 आना केवल 60 से भाग देना है — पूछा दिनों में है, और एक दिन में ऐसे 8 घंटे हैं।"
+        },
+        "mr": {
+          "stem": "गवंडी तासाला 60 विटा बसवतो आणि दिवसाला 8 तास काम करतो. 2400 विटा किती दिवसांत बसवेल?",
+          "choices": [
+            "40",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "एका दिवसाचे काम 60 × 8 = 480 विटा, म्हणून 2400 ÷ 480 = 5 दिवस. 40 येणे म्हणजे फक्त 60 ने भागणे — विचारले दिवसांत आहे, आणि एका दिवसात असे 8 तास आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Meera and Ravi each get 100 bricks. Meera builds a wall of 4 equal rows, Ravi of 5 equal rows. How many fewer bricks sit in one of Ravi's rows than in one of Meera's?",
+      "choices": [
+        "25",
+        "1",
+        "20",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Meera's row: 100 ÷ 4 = 25 bricks. Ravi's row: 100 ÷ 5 = 20 bricks. The difference is 25 − 20 = 5. Answering 1 compares the row counts (5 and 4) instead of the rows' bricks — more rows from the same bricks means each row gets thinner.",
+      "checkExpr": "100/4-100/5",
+      "translations": {
+        "hi": {
+          "stem": "मीरा और रवि को 100-100 ईंटें मिलीं। मीरा 4 बराबर पंक्तियों की दीवार बनाती है, रवि 5 बराबर पंक्तियों की। रवि की एक पंक्ति में मीरा की एक पंक्ति से कितनी ईंटें कम हैं?",
+          "choices": [
+            "25",
+            "1",
+            "20",
+            "5"
+          ],
+          "solution": "मीरा की पंक्ति: 100 ÷ 4 = 25 ईंटें। रवि की: 100 ÷ 5 = 20। अंतर 25 − 20 = 5। 1 कहना पंक्तियों की गिनती (5 और 4) का फ़र्क़ लेना है, पंक्ति की ईंटों का नहीं — उतनी ही ईंटों से ज़्यादा पंक्तियाँ बनें तो हर पंक्ति दुबली होगी।"
+        },
+        "mr": {
+          "stem": "मीरा आणि रवीला 100-100 विटा मिळाल्या. मीरा 4 सारख्या रांगांची भिंत बांधते, रवी 5 सारख्या रांगांची. रवीच्या एका रांगेत मीराच्या एका रांगेपेक्षा किती विटा कमी?",
+          "choices": [
+            "25",
+            "1",
+            "20",
+            "5"
+          ],
+          "solution": "मीराची रांग: 100 ÷ 4 = 25 विटा. रवीची: 100 ÷ 5 = 20. फरक 25 − 20 = 5. 1 म्हणणे म्हणजे रांगांच्या संख्येचा (5 आणि 4) फरक घेणे, रांगेतल्या विटांचा नव्हे — तितक्याच विटांतून जास्त रांगा केल्या की प्रत्येक रांग रोडावते."
+        }
+      }
+    }
+  ]
+}

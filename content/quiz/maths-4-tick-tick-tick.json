@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 4 — Tick-Tick-Tick",
+  "name": "Tick-Tick-Tick",
+  "slug": "maths-4-tick-tick-tick",
+  "summary": "Reading the clock, counting minutes and hours across noon and midnight, and the calendar's odd corners like the leap day.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "टिक-टिक-टिक",
+      "summary": "घड़ी पढ़ना, दोपहर और आधी रात के आर-पार मिनट-घंटे गिनना, और अधिदिन जैसे कैलेंडर के अनोखे कोने।"
+    },
+    "mr": {
+      "name": "टिक-टिक-टिक",
+      "summary": "घड्याळ वाचणे, दुपार आणि मध्यरात्रीपलीकडे मिनिटे-तास मोजणे, आणि लीप दिवसासारखे दिनदर्शिकेचे वेगळे कोपरे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many minutes make one hour?",
+      "choices": [
+        "60",
+        "100",
+        "24",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "One hour is 60 minutes — the long hand's full round. 100 borrows from money-counting; clocks count in sixties.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घंटे में कितने मिनट होते हैं?",
+          "choices": [
+            "60",
+            "100",
+            "24",
+            "30"
+          ],
+          "solution": "एक घंटा = 60 मिनट — बड़ी सुई का पूरा चक्कर। 100 पैसों की गिनती से आया है; घड़ी साठ के हिसाब से चलती है।"
+        },
+        "mr": {
+          "stem": "एका तासात किती मिनिटे असतात?",
+          "choices": [
+            "60",
+            "100",
+            "24",
+            "30"
+          ],
+          "solution": "एक तास = 60 मिनिटे — मोठ्या काट्याची पूर्ण फेरी. 100 हे पैशांच्या मोजणीतून आले; घड्याळ साठच्या हिशेबाने चालते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many hours make one full day, from one midnight to the next?",
+      "choices": [
+        "60",
+        "24",
+        "12",
+        "30"
+      ],
+      "answerIndex": 1,
+      "solution": "A full day is 24 hours. The clock face shows only 12, so its hands go round twice in a day — 12 is half the story.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आधी रात से अगली आधी रात तक, पूरे दिन में कितने घंटे होते हैं?",
+          "choices": [
+            "60",
+            "24",
+            "12",
+            "30"
+          ],
+          "solution": "पूरा दिन 24 घंटे का है। घड़ी का चेहरा केवल 12 दिखाता है, इसलिए सुइयाँ दिन में दो चक्कर लगाती हैं — 12 आधी कहानी है।"
+        },
+        "mr": {
+          "stem": "एका मध्यरात्रीपासून पुढच्या मध्यरात्रीपर्यंत, पूर्ण दिवसात किती तास असतात?",
+          "choices": [
+            "60",
+            "24",
+            "12",
+            "30"
+          ],
+          "solution": "पूर्ण दिवस 24 तासांचा. घड्याळाचे तोंड फक्त 12 दाखवते, म्हणून काटे दिवसात दोन फेऱ्या मारतात — 12 ही अर्धी गोष्ट आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The long hand moved from 12 to 6 — half the clock face. How many minutes passed?",
+      "choices": [
+        "15",
+        "6",
+        "30",
+        "45"
+      ],
+      "answerIndex": 2,
+      "solution": "Each number on the face is 5 minutes for the long hand: 6 numbers × 5 = 30 minutes, half an hour. Saying 6 reads the number the hand points at, not the minutes it crossed.",
+      "checkExpr": "6*5",
+      "translations": {
+        "hi": {
+          "stem": "बड़ी सुई 12 से 6 पर आई — घड़ी का आधा चेहरा। कितने मिनट बीते?",
+          "choices": [
+            "15",
+            "6",
+            "30",
+            "45"
+          ],
+          "solution": "चेहरे का हर अंक बड़ी सुई के लिए 5 मिनट है: 6 अंक × 5 = 30 मिनट, आधा घंटा। 6 कहना वह अंक पढ़ना है जिस पर सुई है, बीते मिनट नहीं।"
+        },
+        "mr": {
+          "stem": "मोठा काटा 12 वरून 6 वर आला — घड्याळाचे अर्धे तोंड. किती मिनिटे गेली?",
+          "choices": [
+            "15",
+            "6",
+            "30",
+            "45"
+          ],
+          "solution": "तोंडावरचा प्रत्येक आकडा मोठ्या काट्यासाठी 5 मिनिटे: 6 आकडे × 5 = 30 मिनिटे, अर्धा तास. 6 म्हणणे म्हणजे काटा दाखवतो तो आकडा वाचणे, गेलेली मिनिटे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "School starts at 7:30 in the morning and ends at 12:30. How many hours is the school day?",
+      "choices": [
+        "6 hours",
+        "19 hours",
+        "5 hours",
+        "4 hours"
+      ],
+      "answerIndex": 2,
+      "solution": "The minutes match (both :30), so count whole hours: 7:30 → 8:30 → 9:30 → 10:30 → 11:30 → 12:30 is 5 steps. 19 subtracts 12 − 7 backwards through the clock's noon.",
+      "checkExpr": "12-7",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल सुबह 7:30 बजे लगता है और 12:30 बजे छूटता है। स्कूल का दिन कितने घंटे का है?",
+          "choices": [
+            "6 घंटे",
+            "19 घंटे",
+            "5 घंटे",
+            "4 घंटे"
+          ],
+          "solution": "मिनट बराबर हैं (दोनों :30), तो पूरे घंटे गिनिए: 7:30 → 8:30 → 9:30 → 10:30 → 11:30 → 12:30 — 5 सीढ़ियाँ। 19 आना घड़ी की दोपहर के आर-पार उल्टा घटाना है।"
+        },
+        "mr": {
+          "stem": "शाळा सकाळी 7:30 ला भरते आणि 12:30 ला सुटते. शाळेचा दिवस किती तासांचा?",
+          "choices": [
+            "6 तास",
+            "19 तास",
+            "5 तास",
+            "4 तास"
+          ],
+          "solution": "मिनिटे सारखी आहेत (दोन्ही :30), म्हणून पूर्ण तास मोजा: 7:30 → 8:30 → 9:30 → 10:30 → 11:30 → 12:30 — 5 पायऱ्या. 19 येणे म्हणजे घड्याळाच्या दुपारपलीकडे उलटे वजा करणे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Grandmother says she will rest for half an hour. How many minutes is that?",
+      "choices": [
+        "15 minutes",
+        "60 minutes",
+        "50 minutes",
+        "30 minutes"
+      ],
+      "answerIndex": 3,
+      "solution": "Half of an hour's 60 minutes: 60 ÷ 2 = 30. Saying 50 halves a hundred — the hour never had a hundred minutes to halve.",
+      "checkExpr": "60/2",
+      "translations": {
+        "hi": {
+          "stem": "दादी कहती हैं कि वे आधा घंटा आराम करेंगी। यह कितने मिनट हुए?",
+          "choices": [
+            "15 मिनट",
+            "60 मिनट",
+            "50 मिनट",
+            "30 मिनट"
+          ],
+          "solution": "घंटे के 60 मिनट का आधा: 60 ÷ 2 = 30। 50 कहना सौ का आधा करना है — घंटे में सौ मिनट थे ही नहीं।"
+        },
+        "mr": {
+          "stem": "आजी म्हणते ती अर्धा तास विश्रांती घेईल. ती किती मिनिटे?",
+          "choices": [
+            "15 मिनिटे",
+            "60 मिनिटे",
+            "50 मिनिटे",
+            "30 मिनिटे"
+          ],
+          "solution": "तासाच्या 60 मिनिटांचा अर्धा: 60 ÷ 2 = 30. 50 म्हणणे म्हणजे शंभराचा अर्धा — तासात शंभर मिनिटे नव्हतीच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "It is 4:20. How many minutes until 5 o'clock?",
+      "choices": [
+        "40 minutes",
+        "50 minutes",
+        "20 minutes",
+        "30 minutes"
+      ],
+      "answerIndex": 0,
+      "solution": "The hour completes at 60 minutes: 60 − 20 = 40 minutes to go. Answering 20 reads the minutes already passed, not the ones remaining.",
+      "checkExpr": "60-20",
+      "translations": {
+        "hi": {
+          "stem": "अभी 4:20 बजे हैं। 5 बजने में कितने मिनट बाक़ी हैं?",
+          "choices": [
+            "40 मिनट",
+            "50 मिनट",
+            "20 मिनट",
+            "30 मिनट"
+          ],
+          "solution": "घंटा 60 मिनट पर पूरा होता है: 60 − 20 = 40 मिनट बाक़ी। 20 कहना बीते मिनट पढ़ना है, बचे हुए नहीं।"
+        },
+        "mr": {
+          "stem": "आता 4:20 वाजले आहेत. 5 वाजायला किती मिनिटे उरली?",
+          "choices": [
+            "40 मिनिटे",
+            "50 मिनिटे",
+            "20 मिनिटे",
+            "30 मिनिटे"
+          ],
+          "solution": "तास 60 मिनिटांवर पूर्ण होतो: 60 − 20 = 40 मिनिटे बाकी. 20 म्हणणे म्हणजे गेलेली मिनिटे वाचणे, उरलेली नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A diya burns for a quarter of an hour. For how many minutes does it burn?",
+      "choices": [
+        "25 minutes",
+        "15 minutes",
+        "4 minutes",
+        "45 minutes"
+      ],
+      "answerIndex": 1,
+      "solution": "A quarter of 60 minutes is 60 ÷ 4 = 15. Saying 25 quarters a hundred; 45 is three quarters — the diya got only one.",
+      "checkExpr": "60/4",
+      "translations": {
+        "hi": {
+          "stem": "एक दीया चौथाई घंटा जलता है। वह कितने मिनट जलता है?",
+          "choices": [
+            "25 मिनट",
+            "15 मिनट",
+            "4 मिनट",
+            "45 मिनट"
+          ],
+          "solution": "60 मिनट की चौथाई 60 ÷ 4 = 15। 25 कहना सौ की चौथाई है; 45 तीन चौथाई है — दीये को एक ही मिली थी।"
+        },
+        "mr": {
+          "stem": "एक पणती पाव तास जळते. ती किती मिनिटे जळते?",
+          "choices": [
+            "25 मिनिटे",
+            "15 मिनिटे",
+            "4 मिनिटे",
+            "45 मिनिटे"
+          ],
+          "solution": "60 मिनिटांचा पाव 60 ÷ 4 = 15. 25 म्हणणे म्हणजे शंभराचा पाव; 45 म्हणजे पाऊण — पणतीला एकच पाव मिळाला होता."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Ravi sleeps at 9:30 at night and wakes at 6:30 in the morning. How many hours does he sleep?",
+      "choices": [
+        "9 hours",
+        "10 hours",
+        "8 hours",
+        "3 hours"
+      ],
+      "answerIndex": 0,
+      "solution": "Split the night at 12: from 9:30 to 12:30 is 3 hours, from 12:30 to 6:30 is 6 more — 3 + 6 = 9 hours. Subtracting 9 − 6 = 3 ignores that midnight restarted the clock.",
+      "checkExpr": "12-9+6",
+      "translations": {
+        "hi": {
+          "stem": "रवि रात 9:30 बजे सोता है और सुबह 6:30 बजे उठता है। वह कितने घंटे सोता है?",
+          "choices": [
+            "9 घंटे",
+            "10 घंटे",
+            "8 घंटे",
+            "3 घंटे"
+          ],
+          "solution": "रात को 12 पर बाँटिए: 9:30 से 12:30 तक 3 घंटे, 12:30 से 6:30 तक 6 और — 3 + 6 = 9 घंटे। 9 − 6 = 3 करना यह भूलना है कि आधी रात को घड़ी नए सिरे से चली।"
+        },
+        "mr": {
+          "stem": "रवी रात्री 9:30 ला झोपतो आणि सकाळी 6:30 ला उठतो. तो किती तास झोपतो?",
+          "choices": [
+            "9 तास",
+            "10 तास",
+            "8 तास",
+            "3 तास"
+          ],
+          "solution": "रात्र 12 वर विभागा: 9:30 ते 12:30 म्हणजे 3 तास, 12:30 ते 6:30 म्हणजे आणखी 6 — 3 + 6 = 9 तास. 9 − 6 = 3 करणे म्हणजे मध्यरात्री घड्याळ नव्याने सुरू झाले हे विसरणे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "This year is a leap year. How many days does its February have?",
+      "choices": [
+        "29",
+        "30",
+        "31",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "February usually has 28 days, but a leap year gives it one more: 29. The extra day comes every fourth year to keep the calendar in step with the Earth's journey round the Sun.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "इस साल अधिवर्ष (लीप ईयर) है। इसकी फ़रवरी में कितने दिन होंगे?",
+          "choices": [
+            "29",
+            "30",
+            "31",
+            "28"
+          ],
+          "solution": "फ़रवरी में आम तौर पर 28 दिन होते हैं, पर अधिवर्ष उसे एक और देता है: 29। यह अतिरिक्त दिन हर चौथे साल आता है, ताकि कैलेंडर पृथ्वी की सूर्य-परिक्रमा के साथ क़दम मिलाए रखे।"
+        },
+        "mr": {
+          "stem": "हे वर्ष लीप वर्ष आहे. त्याच्या फेब्रुवारीत किती दिवस असतील?",
+          "choices": [
+            "29",
+            "30",
+            "31",
+            "28"
+          ],
+          "solution": "फेब्रुवारीत एरवी 28 दिवस असतात, पण लीप वर्ष तिला आणखी एक देते: 29. हा जादा दिवस दर चौथ्या वर्षी येतो, म्हणजे दिनदर्शिका पृथ्वीच्या सूर्यप्रदक्षिणेशी पाऊल जुळवून राहते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A doctor sees each patient for 15 minutes, starting at 9:00. How many patients can she see before 12:00?",
+      "choices": [
+        "4",
+        "9",
+        "15",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "From 9 to 12 is 3 hours = 3 × 60 = 180 minutes. Each patient takes 15, so 180 ÷ 15 = 12 patients. Answering 4 counts only one hour's worth — there are three hours, four patients each.",
+      "checkExpr": "(12-9)*60/15",
+      "translations": {
+        "hi": {
+          "stem": "एक डॉक्टर हर मरीज़ को 15 मिनट देखती हैं, शुरुआत 9:00 बजे। 12:00 बजने से पहले वे कितने मरीज़ देख सकती हैं?",
+          "choices": [
+            "4",
+            "9",
+            "15",
+            "12"
+          ],
+          "solution": "9 से 12 तक 3 घंटे = 3 × 60 = 180 मिनट। हर मरीज़ 15 मिनट, तो 180 ÷ 15 = 12 मरीज़। 4 कहना केवल एक घंटे की गिनती है — घंटे तीन हैं, हर घंटे में चार मरीज़।"
+        },
+        "mr": {
+          "stem": "एक डॉक्टर प्रत्येक रुग्णाला 15 मिनिटे तपासते, सुरुवात 9:00 ला. 12:00 च्या आत ती किती रुग्ण तपासू शकते?",
+          "choices": [
+            "4",
+            "9",
+            "15",
+            "12"
+          ],
+          "solution": "9 ते 12 म्हणजे 3 तास = 3 × 60 = 180 मिनिटे. प्रत्येक रुग्ण 15 मिनिटे, म्हणून 180 ÷ 15 = 12 रुग्ण. 4 म्हणणे म्हणजे फक्त एका तासाची मोजणी — तास तीन आहेत, दर तासाला चार रुग्ण."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Dadi's old clock loses 4 minutes every day. It was set right on Monday at 7 am. By Sunday at 7 am — six days later — how many minutes behind is it?",
+      "choices": [
+        "4",
+        "28",
+        "24",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "Monday 7 am to Sunday 7 am is 6 full days, not 7 — count the gaps between days, not the day-names. Losing 4 minutes each day: 4 × 6 = 24 minutes behind. 28 counts seven days because Sunday's name got counted as a day of losing.",
+      "checkExpr": "4*6",
+      "translations": {
+        "hi": {
+          "stem": "दादी की पुरानी घड़ी रोज़ 4 मिनट पिछड़ती है। सोमवार सुबह 7 बजे उसे ठीक मिलाया गया। रविवार सुबह 7 बजे तक — छह दिन बाद — वह कितने मिनट पीछे होगी?",
+          "choices": [
+            "4",
+            "28",
+            "24",
+            "20"
+          ],
+          "solution": "सोमवार 7 बजे से रविवार 7 बजे तक 6 पूरे दिन हैं, 7 नहीं — दिनों के नाम नहीं, उनके बीच के अंतराल गिनिए। रोज़ 4 मिनट: 4 × 6 = 24 मिनट पीछे। 28 सात दिन गिनता है, क्योंकि रविवार का नाम भी पिछड़ने का दिन गिन लिया गया।"
+        },
+        "mr": {
+          "stem": "आजीचे जुने घड्याळ रोज 4 मिनिटे मागे पडते. सोमवारी सकाळी 7 ला ते बरोबर लावले. रविवारी सकाळी 7 पर्यंत — सहा दिवसांनी — ते किती मिनिटे मागे असेल?",
+          "choices": [
+            "4",
+            "28",
+            "24",
+            "20"
+          ],
+          "solution": "सोमवार 7 ते रविवार 7 म्हणजे 6 पूर्ण दिवस, 7 नव्हे — दिवसांची नावे नव्हे, त्यांमधली अंतरे मोजा. रोज 4 मिनिटे: 4 × 6 = 24 मिनिटे मागे. 28 सात दिवस मोजते, कारण रविवारचे नावही मागे पडण्याचा दिवस म्हणून धरले गेले."
+        }
+      }
+    }
+  ]
+}

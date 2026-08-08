@@ -16,6 +16,7 @@ import { generateChapter, type TopicFileOut } from "./engine";
 import { G6_HISTORY } from "./g6-history";
 import { G3_MATHS, G3_MATHS_CONCEPT } from "./g3-maths";
 import { G3_EVS } from "./g3-evs";
+import { G4_MATHS } from "./g4-maths";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -27,6 +28,7 @@ function main() {
     ...G3_MATHS_CONCEPT.map(generateChapter),
     ...G6_HISTORY.map(generateChapter),
     ...G3_MATHS,
+    ...G4_MATHS,
   ];
   let total = 0;
   for (const out of topics) {
