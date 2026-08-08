@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-circles",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 10 — Circles",
+  "name": "Circles",
+  "summary": "Where a line just grazes a circle: the tangent perpendicular to the radius, the two equal tangents from an outside point, and the balance AB + CD = BC + AD that any circumscribing quadrilateral must keep.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "वृत्त",
+      "summary": "जहाँ एक रेखा वृत्त को बस छूती है: त्रिज्या के लंब स्पर्श रेखा, बाहरी बिंदु से दो बराबर स्पर्श रेखाएँ, और संतुलन AB + CD = BC + AD जो किसी परिगत चतुर्भुज को रखना होता।"
+    },
+    "mr": {
+      "name": "वर्तुळ",
+      "summary": "जिथे एक रेषा वर्तुळाला नुसती स्पर्शते: त्रिज्येला लंब स्पर्शिका, बाहेरच्या बिंदूवरून दोन समान स्पर्शिका, आणि समतोल AB + CD = BC + AD जो कोणत्याही परिवेष्टित चौकोनाला राखावा लागतो."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A tangent to a circle makes what angle, in degrees, with the radius drawn to the point of contact?",
+      "choices": [
+        "90",
+        "60",
+        "180",
+        "45"
+      ],
+      "answerIndex": 0,
+      "solution": "A tangent is perpendicular to the radius at the point of contact, so the angle is 90°.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी वृत्त की स्पर्श रेखा स्पर्श बिंदु पर खींची त्रिज्या से कितने डिग्री का कोण बनाती है?",
+          "choices": [
+            "90",
+            "60",
+            "180",
+            "45"
+          ],
+          "solution": "स्पर्श रेखा स्पर्श बिंदु पर त्रिज्या के लंबवत, अतः कोण 90°."
+        },
+        "mr": {
+          "stem": "एका वर्तुळाची स्पर्शिका स्पर्शबिंदूला काढलेल्या त्रिज्येशी किती अंशांचा कोन करते?",
+          "choices": [
+            "90",
+            "60",
+            "180",
+            "45"
+          ],
+          "solution": "स्पर्शिका स्पर्शबिंदूला त्रिज्येला लंब, म्हणून कोन 90°."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two tangents drawn from an external point to a circle have lengths 8 cm and x cm. What is x?",
+      "choices": [
+        "16",
+        "4",
+        "0",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "The two tangents from an external point are equal in length, so x = 8 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी बाह्य बिंदु से वृत्त पर खींची दो स्पर्श रेखाओं की लंबाई 8 सेमी और x सेमी हैं। x क्या है?",
+          "choices": [
+            "16",
+            "4",
+            "0",
+            "8"
+          ],
+          "solution": "किसी बाह्य बिंदु से दो स्पर्श रेखाएँ लंबाई में बराबर, अतः x = 8 सेमी।"
+        },
+        "mr": {
+          "stem": "एका बाह्य बिंदूवरून वर्तुळावर काढलेल्या दोन स्पर्शिकांची लांबी 8 सेमी आणि x सेमी आहे. x काय?",
+          "choices": [
+            "16",
+            "4",
+            "0",
+            "8"
+          ],
+          "solution": "एका बाह्य बिंदूवरून दोन स्पर्शिका लांबीत समान, म्हणून x = 8 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many tangents can be drawn to a circle from a point lying outside it?",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "From an external point exactly 2 tangents can be drawn; from a point on the circle only 1, and from inside none.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी वृत्त के बाहर स्थित बिंदु से उस पर कितनी स्पर्श रेखाएँ खींची जा सकती हैं?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "3"
+          ],
+          "solution": "बाह्य बिंदु से ठीक 2 स्पर्श रेखाएँ; वृत्त पर के बिंदु से केवल 1, और भीतर से कोई नहीं।"
+        },
+        "mr": {
+          "stem": "एका वर्तुळाबाहेरील बिंदूवरून त्यावर किती स्पर्शिका काढता येतात?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "3"
+          ],
+          "solution": "बाह्य बिंदूवरून नेमक्या 2 स्पर्शिका; वर्तुळावरील बिंदूवरून फक्त 1, आणि आतून एकही नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A tangent from point P touches a circle of radius 5 cm at T, and OP = 13 cm (O is the centre). What is the tangent length PT?",
+      "choices": [
+        "8",
+        "144",
+        "18",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "OT ⊥ PT, so PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु P से एक स्पर्श रेखा 5 सेमी त्रिज्या के वृत्त को T पर छूती है, और OP = 13 सेमी (O केंद्र)। स्पर्श रेखा की लंबाई PT क्या है?",
+          "choices": [
+            "8",
+            "144",
+            "18",
+            "12"
+          ],
+          "solution": "OT ⊥ PT, अतः PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 सेमी।"
+        },
+        "mr": {
+          "stem": "बिंदू P वरून एक स्पर्शिका 5 सेमी त्रिज्येच्या वर्तुळाला T ला स्पर्शते, आणि OP = 13 सेमी (O केंद्र). स्पर्शिकेची लांबी PT काय?",
+          "choices": [
+            "8",
+            "144",
+            "18",
+            "12"
+          ],
+          "solution": "OT ⊥ PT, म्हणून PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The length of the tangent from a point 10 cm from the centre of a circle of radius 6 cm is what?",
+      "choices": [
+        "8",
+        "64",
+        "14",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Tangent length = √(distance² − radius²) = √(100 − 36) = √64 = 8 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी त्रिज्या के वृत्त के केंद्र से 10 सेमी दूर बिंदु से स्पर्श रेखा की लंबाई क्या है?",
+          "choices": [
+            "8",
+            "64",
+            "14",
+            "4"
+          ],
+          "solution": "स्पर्श रेखा की लंबाई = √(दूरी² − त्रिज्या²) = √(100 − 36) = √64 = 8 सेमी।"
+        },
+        "mr": {
+          "stem": "6 सेमी त्रिज्येच्या वर्तुळाच्या केंद्रापासून 10 सेमी दूर बिंदूवरून स्पर्शिकेची लांबी काय?",
+          "choices": [
+            "8",
+            "64",
+            "14",
+            "4"
+          ],
+          "solution": "स्पर्शिकेची लांबी = √(अंतर² − त्रिज्या²) = √(100 − 36) = √64 = 8 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two concentric circles have radii 5 cm and 3 cm. A chord of the larger circle touches the smaller one. What is the length of this chord?",
+      "choices": [
+        "8",
+        "16",
+        "4",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "The smaller radius is perpendicular to the chord at its midpoint, so half the chord = √(5² − 3²) = √16 = 4, and the full chord = 2·4 = 8 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो संकेंद्रीय वृत्तों की त्रिज्याएँ 5 सेमी और 3 सेमी हैं। बड़े वृत्त की एक जीवा छोटे को स्पर्श करती है। इस जीवा की लंबाई क्या है?",
+          "choices": [
+            "8",
+            "16",
+            "4",
+            "6"
+          ],
+          "solution": "छोटी त्रिज्या जीवा के मध्यबिंदु पर लंब, अतः जीवा का आधा = √(5² − 3²) = √16 = 4, और पूरी जीवा = 2·4 = 8 सेमी।"
+        },
+        "mr": {
+          "stem": "दोन एककेंद्री वर्तुळांच्या त्रिज्या 5 सेमी आणि 3 सेमी आहेत. मोठ्या वर्तुळाची एक जीवा लहानाला स्पर्शते. या जीवेची लांबी काय?",
+          "choices": [
+            "8",
+            "16",
+            "4",
+            "6"
+          ],
+          "solution": "लहान त्रिज्या जीवेच्या मध्यबिंदूला लंब, म्हणून जीवेचा अर्धा = √(5² − 3²) = √16 = 4, आणि पूर्ण जीवा = 2·4 = 8 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A quadrilateral ABCD circumscribes a circle, so AB + CD = BC + AD. If AB = 6, BC = 7 and CD = 4, what is AD?",
+      "choices": [
+        "10",
+        "3",
+        "5",
+        "17"
+      ],
+      "answerIndex": 1,
+      "solution": "AB + CD = BC + AD gives 6 + 4 = 7 + AD, so AD = 10 − 7 = 3.",
+      "checkExpr": "6+4-7",
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज ABCD वृत्त को परिगत है, अतः AB + CD = BC + AD. यदि AB = 6, BC = 7 और CD = 4, तो AD क्या है?",
+          "choices": [
+            "10",
+            "3",
+            "5",
+            "17"
+          ],
+          "solution": "AB + CD = BC + AD देता 6 + 4 = 7 + AD, अतः AD = 10 − 7 = 3."
+        },
+        "mr": {
+          "stem": "एक चौकोन ABCD वर्तुळाला परिवेष्टित करतो, म्हणून AB + CD = BC + AD. AB = 6, BC = 7 आणि CD = 4 असेल, तर AD काय?",
+          "choices": [
+            "10",
+            "3",
+            "5",
+            "17"
+          ],
+          "solution": "AB + CD = BC + AD देते 6 + 4 = 7 + AD, म्हणून AD = 10 − 7 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two tangents from an external point P touch a circle with centre O at A and B. If ∠APB = 60°, what is ∠AOB in degrees?",
+      "choices": [
+        "60",
+        "30",
+        "120",
+        "90"
+      ],
+      "answerIndex": 2,
+      "solution": "In quadrilateral OAPB the angles at A and B are 90° each, so ∠AOB + ∠APB = 180°, giving ∠AOB = 180 − 60 = 120°.",
+      "checkExpr": "180-60",
+      "translations": {
+        "hi": {
+          "stem": "बाह्य बिंदु P से दो स्पर्श रेखाएँ केंद्र O वाले वृत्त को A और B पर छूती हैं। यदि ∠APB = 60°, तो ∠AOB डिग्री में क्या है?",
+          "choices": [
+            "60",
+            "30",
+            "120",
+            "90"
+          ],
+          "solution": "चतुर्भुज OAPB में A और B पर कोण 90°-90°, अतः ∠AOB + ∠APB = 180°, देता ∠AOB = 180 − 60 = 120°."
+        },
+        "mr": {
+          "stem": "बाह्य बिंदू P वरून दोन स्पर्शिका केंद्र O असलेल्या वर्तुळाला A आणि B ला स्पर्शतात. ∠APB = 60° असेल, तर ∠AOB अंशांत काय?",
+          "choices": [
+            "60",
+            "30",
+            "120",
+            "90"
+          ],
+          "solution": "चौकोन OAPB मध्ये A आणि B ला कोन 90°-90°, म्हणून ∠AOB + ∠APB = 180°, देते ∠AOB = 180 − 60 = 120°."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A circle touches all four sides of a square of side 14 cm. What is the radius of the circle?",
+      "choices": [
+        "14",
+        "7",
+        "28",
+        "3.5"
+      ],
+      "answerIndex": 1,
+      "solution": "The inscribed circle's diameter equals the side of the square, so radius = 14/2 = 7 cm.",
+      "checkExpr": "14/2",
+      "translations": {
+        "hi": {
+          "stem": "एक वृत्त 14 सेमी भुजा के वर्ग की चारों भुजाओं को स्पर्श करता है। वृत्त की त्रिज्या क्या है?",
+          "choices": [
+            "14",
+            "7",
+            "28",
+            "3.5"
+          ],
+          "solution": "अंतर्वृत्त का व्यास वर्ग की भुजा के बराबर, अतः त्रिज्या = 14/2 = 7 सेमी।"
+        },
+        "mr": {
+          "stem": "एक वर्तुळ 14 सेमी बाजूच्या चौरसाच्या चारही बाजूंना स्पर्शते. वर्तुळाची त्रिज्या काय?",
+          "choices": [
+            "14",
+            "7",
+            "28",
+            "3.5"
+          ],
+          "solution": "अंतर्वर्तुळाचा व्यास चौरसाच्या बाजूइतका, म्हणून त्रिज्या = 14/2 = 7 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "PA and PB are tangents from P to a circle of centre O and radius 5, with ∠APB = 90°. What is the length of PA?",
+      "choices": [
+        "10",
+        "7.07",
+        "2.5",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "With both radii ⊥ their tangents and ∠APB = 90°, OAPB is a square, so PA equals the radius, 5 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "PA और PB, केंद्र O और त्रिज्या 5 वाले वृत्त पर P से स्पर्श रेखाएँ हैं, ∠APB = 90°। PA की लंबाई क्या है?",
+          "choices": [
+            "10",
+            "7.07",
+            "2.5",
+            "5"
+          ],
+          "solution": "दोनों त्रिज्याएँ अपनी स्पर्श रेखाओं के लंब और ∠APB = 90° होने से OAPB एक वर्ग, अतः PA त्रिज्या के बराबर, 5 सेमी।"
+        },
+        "mr": {
+          "stem": "PA आणि PB, केंद्र O आणि त्रिज्या 5 असलेल्या वर्तुळावर P वरून स्पर्शिका आहेत, ∠APB = 90°. PA ची लांबी काय?",
+          "choices": [
+            "10",
+            "7.07",
+            "2.5",
+            "5"
+          ],
+          "solution": "दोन्ही त्रिज्या आपल्या स्पर्शिकांना लंब आणि ∠APB = 90° असल्याने OAPB एक चौरस, म्हणून PA त्रिज्येइतके, 5 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A triangle's incircle touches its sides so the tangent lengths from the vertices are 8, 4 and 6 cm. What is the perimeter of the triangle in cm?",
+      "choices": [
+        "18",
+        "48",
+        "36",
+        "24"
+      ],
+      "answerIndex": 2,
+      "solution": "Each tangent length appears on two sides, so the perimeter = 2(8 + 4 + 6) = 2·18 = 36 cm.",
+      "checkExpr": "2*(8+4+6)",
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज का अंतर्वृत्त उसकी भुजाओं को छूता है, अतः शीर्षों से स्पर्श रेखा लंबाइयाँ 8, 4 और 6 सेमी हैं। त्रिभुज का परिमाप सेमी में क्या है?",
+          "choices": [
+            "18",
+            "48",
+            "36",
+            "24"
+          ],
+          "solution": "प्रत्येक स्पर्श लंबाई दो भुजाओं पर आती, अतः परिमाप = 2(8 + 4 + 6) = 2·18 = 36 सेमी।"
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाचे अंतर्वर्तुळ त्याच्या बाजूंना स्पर्शते, म्हणून शिरोबिंदूंवरून स्पर्शिका लांबी 8, 4 आणि 6 सेमी आहेत. त्रिकोणाची परिमिती सेमीमध्ये काय?",
+          "choices": [
+            "18",
+            "48",
+            "36",
+            "24"
+          ],
+          "solution": "प्रत्येक स्पर्श लांबी दोन बाजूंवर येते, म्हणून परिमिती = 2(8 + 4 + 6) = 2·18 = 36 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The tangent from a point P to a circle is 24 cm long, and P is 25 cm from the centre. What is the radius of the circle?",
+      "choices": [
+        "3.5",
+        "49",
+        "1",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "radius = √(OP² − tangent²) = √(25² − 24²) = √(625 − 576) = √49 = 7 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु P से किसी वृत्त की स्पर्श रेखा 24 सेमी लंबी है, और P केंद्र से 25 सेमी दूर है। वृत्त की त्रिज्या क्या है?",
+          "choices": [
+            "3.5",
+            "49",
+            "1",
+            "7"
+          ],
+          "solution": "त्रिज्या = √(OP² − स्पर्श²) = √(25² − 24²) = √(625 − 576) = √49 = 7 सेमी।"
+        },
+        "mr": {
+          "stem": "बिंदू P वरून एका वर्तुळाची स्पर्शिका 24 सेमी लांब आहे, आणि P केंद्रापासून 25 सेमी दूर आहे. वर्तुळाची त्रिज्या काय?",
+          "choices": [
+            "3.5",
+            "49",
+            "1",
+            "7"
+          ],
+          "solution": "त्रिज्या = √(OP² − स्पर्श²) = √(25² − 24²) = √(625 − 576) = √49 = 7 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A quadrilateral ABCD circumscribes a circle with AB = 6 cm, BC = 9 cm and CD = 8 cm. What is AD?",
+      "choices": [
+        "7",
+        "11",
+        "23",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "For a circumscribing quadrilateral, AB + CD = BC + AD, so 6 + 8 = 9 + AD, giving AD = 14 − 9 = 5 cm.",
+      "checkExpr": "6+8-9",
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज ABCD वृत्त को परिगत है, AB = 6 सेमी, BC = 9 सेमी और CD = 8 सेमी। AD क्या है?",
+          "choices": [
+            "7",
+            "11",
+            "23",
+            "5"
+          ],
+          "solution": "परिगत चतुर्भुज के लिए AB + CD = BC + AD, अतः 6 + 8 = 9 + AD, देता AD = 14 − 9 = 5 सेमी।"
+        },
+        "mr": {
+          "stem": "एक चौकोन ABCD वर्तुळाला परिवेष्टित करतो, AB = 6 सेमी, BC = 9 सेमी आणि CD = 8 सेमी. AD काय?",
+          "choices": [
+            "7",
+            "11",
+            "23",
+            "5"
+          ],
+          "solution": "परिवेष्टित चौकोनासाठी AB + CD = BC + AD, म्हणून 6 + 8 = 9 + AD, देते AD = 14 − 9 = 5 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Tangents PA and PB from an external point P touch a circle of centre O and radius 3 cm, with OP = 5 cm. What is the area of quadrilateral OAPB in cm²?",
+      "choices": [
+        "12",
+        "6",
+        "24",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "The tangent length is √(5² − 3²) = 4 cm. The quadrilateral is two right triangles, so its area = 2·(½·3·4) = 3·4 = 12 cm².",
+      "checkExpr": "3*4",
+      "translations": {
+        "hi": {
+          "stem": "बाह्य बिंदु P से स्पर्श रेखाएँ PA और PB, केंद्र O और त्रिज्या 3 सेमी वाले वृत्त को छूती हैं, OP = 5 सेमी। चतुर्भुज OAPB का क्षेत्रफल सेमी² में क्या है?",
+          "choices": [
+            "12",
+            "6",
+            "24",
+            "15"
+          ],
+          "solution": "स्पर्श लंबाई √(5² − 3²) = 4 सेमी। चतुर्भुज दो समकोण त्रिभुज, अतः क्षेत्रफल = 2·(½·3·4) = 3·4 = 12 सेमी²।"
+        },
+        "mr": {
+          "stem": "बाह्य बिंदू P वरून स्पर्शिका PA आणि PB, केंद्र O आणि त्रिज्या 3 सेमी असलेल्या वर्तुळाला स्पर्शतात, OP = 5 सेमी. चौकोन OAPB चे क्षेत्रफळ सेमी² मध्ये काय?",
+          "choices": [
+            "12",
+            "6",
+            "24",
+            "15"
+          ],
+          "solution": "स्पर्श लांबी √(5² − 3²) = 4 सेमी. चौकोन दोन काटकोन त्रिकोण, म्हणून क्षेत्रफळ = 2·(½·3·4) = 3·4 = 12 सेमी²."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-surface-areas-volumes",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 12 — Surface Areas and Volumes",
+  "name": "Surface Areas and Volumes",
+  "summary": "Solids measured and melted: the surface areas and volumes of cube, cylinder, cone, sphere and hemisphere, combined into toys and tanks, the frustum of a sliced cone, and volume conserved when one shape is recast into another.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "पृष्ठीय क्षेत्रफल और आयतन",
+      "summary": "ठोस नापे और पिघलाए: घन, बेलन, शंकु, गोला और अर्धगोले के पृष्ठीय क्षेत्रफल और आयतन, खिलौनों-टंकियों में जुड़े, कटे शंकु का छिन्नक, और एक आकृति को दूसरी में ढालने पर संरक्षित आयतन।"
+    },
+    "mr": {
+      "name": "पृष्ठफळ आणि घनफळ",
+      "summary": "घन मोजलेले आणि वितळवलेले: घन, दंडगोल, शंकू, गोल आणि अर्धगोलाचे पृष्ठफळ आणि घनफळ, खेळणी-टाक्यांत जोडलेले, कापलेल्या शंकूचा छिन्नक, आणि एक आकृती दुसरीत ओतताना संधारित घनफळ."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the volume of a cube of side 5 cm?",
+      "choices": [
+        "75",
+        "15",
+        "25",
+        "125"
+      ],
+      "answerIndex": 3,
+      "solution": "Volume of a cube = side³ = 5·5·5 = 125 cm³. (25 is the area of one face.)",
+      "checkExpr": "5*5*5",
+      "translations": {
+        "hi": {
+          "stem": "5 सेमी भुजा के घन का आयतन क्या है?",
+          "choices": [
+            "75",
+            "15",
+            "25",
+            "125"
+          ],
+          "solution": "घन का आयतन = भुजा³ = 5·5·5 = 125 सेमी³। (25 एक फलक का क्षेत्रफल।)"
+        },
+        "mr": {
+          "stem": "5 सेमी बाजूच्या घनाचे घनफळ काय?",
+          "choices": [
+            "75",
+            "15",
+            "25",
+            "125"
+          ],
+          "solution": "घनाचे घनफळ = बाजू³ = 5·5·5 = 125 सेमी³. (25 एका पृष्ठाचे क्षेत्रफळ.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the surface area of a sphere of radius 7 cm? (Take π = 22/7.)",
+      "choices": [
+        "154",
+        "308",
+        "616",
+        "1232"
+      ],
+      "answerIndex": 2,
+      "solution": "Surface area of a sphere = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 cm².",
+      "checkExpr": "4*22*49/7",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या के गोले का पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "154",
+            "308",
+            "616",
+            "1232"
+          ],
+          "solution": "गोले का पृष्ठीय क्षेत्रफल = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 सेमी²।"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्येच्या गोलाचे पृष्ठफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "154",
+            "308",
+            "616",
+            "1232"
+          ],
+          "solution": "गोलाचे पृष्ठफळ = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 सेमी²."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the volume of a cylinder of radius 7 cm and height 10 cm? (Take π = 22/7.)",
+      "choices": [
+        "154",
+        "15400",
+        "1540",
+        "220"
+      ],
+      "answerIndex": 2,
+      "solution": "Volume of a cylinder = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 cm³.",
+      "checkExpr": "22*49*10/7",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या और 10 सेमी ऊँचाई के बेलन का आयतन क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "154",
+            "15400",
+            "1540",
+            "220"
+          ],
+          "solution": "बेलन का आयतन = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 सेमी³।"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्या आणि 10 सेमी उंचीच्या दंडगोलाचे घनफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "154",
+            "15400",
+            "1540",
+            "220"
+          ],
+          "solution": "दंडगोलाचे घनफळ = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 सेमी³."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the curved surface area of a cylinder of radius 7 cm and height 10 cm? (Take π = 22/7.)",
+      "choices": [
+        "220",
+        "440",
+        "1540",
+        "154"
+      ],
+      "answerIndex": 1,
+      "solution": "Curved surface area = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 cm².",
+      "checkExpr": "2*22*7*10/7",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या और 10 सेमी ऊँचाई के बेलन का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "220",
+            "440",
+            "1540",
+            "154"
+          ],
+          "solution": "वक्र पृष्ठीय क्षेत्रफल = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 सेमी²।"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्या आणि 10 सेमी उंचीच्या दंडगोलाचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "220",
+            "440",
+            "1540",
+            "154"
+          ],
+          "solution": "वक्रपृष्ठफळ = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 सेमी²."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the volume of a cone of radius 7 cm and height 6 cm? (Take π = 22/7.)",
+      "choices": [
+        "308",
+        "924",
+        "616",
+        "154"
+      ],
+      "answerIndex": 0,
+      "solution": "Volume of a cone = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 cm³. (924 forgets the 1/3.)",
+      "checkExpr": "22*49*6/7/3",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या और 6 सेमी ऊँचाई के शंकु का आयतन क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "308",
+            "924",
+            "616",
+            "154"
+          ],
+          "solution": "शंकु का आयतन = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 सेमी³। (924 में 1/3 भूला।)"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्या आणि 6 सेमी उंचीच्या शंकूचे घनफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "308",
+            "924",
+            "616",
+            "154"
+          ],
+          "solution": "शंकूचे घनफळ = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 सेमी³. (924 मध्ये 1/3 विसरले.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the total surface area of a cube of side 4 cm?",
+      "choices": [
+        "24",
+        "16",
+        "64",
+        "96"
+      ],
+      "answerIndex": 3,
+      "solution": "A cube has 6 faces, each of area 4² = 16, so total surface area = 6·16 = 96 cm². (64 is the volume.)",
+      "checkExpr": "6*16",
+      "translations": {
+        "hi": {
+          "stem": "4 सेमी भुजा के घन का कुल पृष्ठीय क्षेत्रफल क्या है?",
+          "choices": [
+            "24",
+            "16",
+            "64",
+            "96"
+          ],
+          "solution": "घन के 6 फलक, प्रत्येक क्षेत्रफल 4² = 16, अतः कुल पृष्ठीय क्षेत्रफल = 6·16 = 96 सेमी²। (64 आयतन।)"
+        },
+        "mr": {
+          "stem": "4 सेमी बाजूच्या घनाचे एकूण पृष्ठफळ काय?",
+          "choices": [
+            "24",
+            "16",
+            "64",
+            "96"
+          ],
+          "solution": "घनाला 6 पृष्ठे, प्रत्येक क्षेत्रफळ 4² = 16, म्हणून एकूण पृष्ठफळ = 6·16 = 96 सेमी². (64 घनफळ.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the curved surface area of a cone of radius 7 cm and slant height 10 cm? (Take π = 22/7.)",
+      "choices": [
+        "154",
+        "70",
+        "440",
+        "220"
+      ],
+      "answerIndex": 3,
+      "solution": "Curved surface area of a cone = πrl = (22/7)·7·10 = 22·7·10/7 = 220 cm².",
+      "checkExpr": "22*7*10/7",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या और 10 सेमी तिर्यक ऊँचाई के शंकु का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "154",
+            "70",
+            "440",
+            "220"
+          ],
+          "solution": "शंकु का वक्र पृष्ठीय क्षेत्रफल = πrl = (22/7)·7·10 = 22·7·10/7 = 220 सेमी²।"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्या आणि 10 सेमी तिरकस उंचीच्या शंकूचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "154",
+            "70",
+            "440",
+            "220"
+          ],
+          "solution": "शंकूचे वक्रपृष्ठफळ = πrl = (22/7)·7·10 = 22·7·10/7 = 220 सेमी²."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the curved surface area of a hemisphere of radius 7 cm? (Take π = 22/7.)",
+      "choices": [
+        "154",
+        "308",
+        "616",
+        "462"
+      ],
+      "answerIndex": 1,
+      "solution": "Curved surface area of a hemisphere = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 cm². (616 is the full sphere.)",
+      "checkExpr": "2*22*49/7",
+      "translations": {
+        "hi": {
+          "stem": "7 सेमी त्रिज्या के अर्धगोले का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "154",
+            "308",
+            "616",
+            "462"
+          ],
+          "solution": "अर्धगोले का वक्र पृष्ठीय क्षेत्रफल = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 सेमी²। (616 पूरा गोला।)"
+        },
+        "mr": {
+          "stem": "7 सेमी त्रिज्येच्या अर्धगोलाचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "154",
+            "308",
+            "616",
+            "462"
+          ],
+          "solution": "अर्धगोलाचे वक्रपृष्ठफळ = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 सेमी². (616 पूर्ण गोल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A toy is a cone mounted on a hemisphere; the cone has radius 7 cm and height 24 cm. What is the slant height of the cone in cm?",
+      "choices": [
+        "17",
+        "31",
+        "25",
+        "625"
+      ],
+      "answerIndex": 2,
+      "solution": "Slant height l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 cm.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक खिलौना अर्धगोले पर रखा शंकु है; शंकु की त्रिज्या 7 सेमी और ऊँचाई 24 सेमी है। शंकु की तिर्यक ऊँचाई सेमी में क्या है?",
+          "choices": [
+            "17",
+            "31",
+            "25",
+            "625"
+          ],
+          "solution": "तिर्यक ऊँचाई l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 सेमी।"
+        },
+        "mr": {
+          "stem": "एक खेळणे अर्धगोलावर बसवलेला शंकू आहे; शंकूची त्रिज्या 7 सेमी आणि उंची 24 सेमी. शंकूची तिरकस उंची सेमीमध्ये काय?",
+          "choices": [
+            "17",
+            "31",
+            "25",
+            "625"
+          ],
+          "solution": "तिरकस उंची l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cylinder and a cone have the same radius and the same height, so the cylinder holds 3 times the cone. If the cone's volume is 308 cm³, what is the cylinder's volume?",
+      "choices": [
+        "308",
+        "102.67",
+        "924",
+        "616"
+      ],
+      "answerIndex": 2,
+      "solution": "A cone is one-third of the cylinder with the same base and height, so the cylinder = 3·308 = 924 cm³.",
+      "checkExpr": "3*308",
+      "translations": {
+        "hi": {
+          "stem": "एक बेलन और एक शंकु की त्रिज्या और ऊँचाई समान हैं, अतः बेलन शंकु का 3 गुना समाता है। यदि शंकु का आयतन 308 सेमी³ है, बेलन का आयतन क्या है?",
+          "choices": [
+            "308",
+            "102.67",
+            "924",
+            "616"
+          ],
+          "solution": "समान आधार-ऊँचाई के बेलन का एक-तिहाई शंकु, अतः बेलन = 3·308 = 924 सेमी³।"
+        },
+        "mr": {
+          "stem": "एक दंडगोल आणि एक शंकू यांची त्रिज्या आणि उंची समान, म्हणून दंडगोल शंकूच्या 3 पट सामावतो. शंकूचे घनफळ 308 सेमी³ असेल, दंडगोलाचे घनफळ काय?",
+          "choices": [
+            "308",
+            "102.67",
+            "924",
+            "616"
+          ],
+          "solution": "समान तळ-उंचीच्या दंडगोलाचा एक-तृतीयांश शंकू, म्हणून दंडगोल = 3·308 = 924 सेमी³."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A metallic sphere of radius 6 cm is melted and recast into a solid cylinder of radius 4 cm. What is the height of the cylinder in cm?",
+      "choices": [
+        "24",
+        "18",
+        "12",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "Volume is conserved: (4/3)π·6³ = π·4²·h, so (4/3)·216 = 16h, giving 288 = 16h and h = 288/16 = 18 cm. (π cancels throughout.)",
+      "checkExpr": "288/16",
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी त्रिज्या का धात्विक गोला पिघलाकर 4 सेमी त्रिज्या के ठोस बेलन में ढाला जाता है। बेलन की ऊँचाई सेमी में क्या है?",
+          "choices": [
+            "24",
+            "18",
+            "12",
+            "9"
+          ],
+          "solution": "आयतन संरक्षित: (4/3)π·6³ = π·4²·h, अतः (4/3)·216 = 16h, देता 288 = 16h और h = 288/16 = 18 सेमी। (π पूरे में कटता।)"
+        },
+        "mr": {
+          "stem": "6 सेमी त्रिज्येचा धातूचा गोल वितळवून 4 सेमी त्रिज्येच्या घन दंडगोलात ओतला जातो. दंडगोलाची उंची सेमीमध्ये काय?",
+          "choices": [
+            "24",
+            "18",
+            "12",
+            "9"
+          ],
+          "solution": "घनफळ संधारित: (4/3)π·6³ = π·4²·h, म्हणून (4/3)·216 = 16h, देते 288 = 16h आणि h = 288/16 = 18 सेमी. (π सर्वत्र रद्द.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two cubes, each of volume 64 cm³, are joined end to end. What is the surface area of the resulting cuboid in cm²?",
+      "choices": [
+        "128",
+        "80",
+        "160",
+        "192"
+      ],
+      "answerIndex": 2,
+      "solution": "Each cube has side ∛64 = 4 cm, so the cuboid is 4×4×8. Surface area = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 cm². (192 is the two cubes' separate surface area.)",
+      "checkExpr": "2*(16+32+32)",
+      "translations": {
+        "hi": {
+          "stem": "64 सेमी³ आयतन के दो घन सिरे से सिरे जोड़े जाते हैं। परिणामी घनाभ का पृष्ठीय क्षेत्रफल सेमी² में क्या है?",
+          "choices": [
+            "128",
+            "80",
+            "160",
+            "192"
+          ],
+          "solution": "प्रत्येक घन की भुजा ∛64 = 4 सेमी, अतः घनाभ 4×4×8. पृष्ठीय क्षेत्रफल = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 सेमी²। (192 दो घनों का अलग क्षेत्रफल।)"
+        },
+        "mr": {
+          "stem": "64 सेमी³ घनफळाचे दोन घन टोकाला टोक जोडले जातात. परिणामी इष्टिकाचितीचे पृष्ठफळ सेमी² मध्ये काय?",
+          "choices": [
+            "128",
+            "80",
+            "160",
+            "192"
+          ],
+          "solution": "प्रत्येक घनाची बाजू ∛64 = 4 सेमी, म्हणून इष्टिकाचिती 4×4×8. पृष्ठफळ = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 सेमी². (192 दोन घनांचे वेगळे पृष्ठफळ.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A frustum of a cone has radii 10 cm and 4 cm and slant height 5 cm. What is its curved surface area in cm²? (Take π = 22/7.)",
+      "choices": [
+        "440",
+        "308",
+        "220",
+        "110"
+      ],
+      "answerIndex": 2,
+      "solution": "Curved surface area of a frustum = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 cm².",
+      "checkExpr": "22*(10+4)*5/7",
+      "translations": {
+        "hi": {
+          "stem": "एक शंकु के छिन्नक की त्रिज्याएँ 10 सेमी और 4 सेमी और तिर्यक ऊँचाई 5 सेमी हैं। इसका वक्र पृष्ठीय क्षेत्रफल सेमी² में क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "440",
+            "308",
+            "220",
+            "110"
+          ],
+          "solution": "छिन्नक का वक्र पृष्ठीय क्षेत्रफल = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 सेमी²।"
+        },
+        "mr": {
+          "stem": "एका शंकूच्या छिन्नकाच्या त्रिज्या 10 सेमी आणि 4 सेमी आणि तिरकस उंची 5 सेमी आहेत. त्याचे वक्रपृष्ठफळ सेमी² मध्ये काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "440",
+            "308",
+            "220",
+            "110"
+          ],
+          "solution": "छिन्नकाचे वक्रपृष्ठफळ = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 सेमी²."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A well of diameter 14 m is dug 15 m deep. What is the volume of earth dug out in m³? (Take π = 22/7.)",
+      "choices": [
+        "2310",
+        "154",
+        "1540",
+        "4620"
+      ],
+      "answerIndex": 0,
+      "solution": "The well is a cylinder of radius 7 m, depth 15 m: volume = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 m³.",
+      "checkExpr": "22*49*15/7",
+      "translations": {
+        "hi": {
+          "stem": "14 मी व्यास का एक कुआँ 15 मी गहरा खोदा जाता है। खोदी गई मिट्टी का आयतन मी³ में क्या है? (π = 22/7 लें।)",
+          "choices": [
+            "2310",
+            "154",
+            "1540",
+            "4620"
+          ],
+          "solution": "कुआँ 7 मी त्रिज्या, 15 मी गहराई का बेलन: आयतन = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 मी³।"
+        },
+        "mr": {
+          "stem": "14 मी व्यासाची एक विहीर 15 मी खोल खोदली जाते. खोदलेल्या मातीचे घनफळ मी³ मध्ये काय? (π = 22/7 घ्या.)",
+          "choices": [
+            "2310",
+            "154",
+            "1540",
+            "4620"
+          ],
+          "solution": "विहीर 7 मी त्रिज्या, 15 मी खोलीचा दंडगोल: घनफळ = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 मी³."
+        }
+      }
+    }
+  ]
+}

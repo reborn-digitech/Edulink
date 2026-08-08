@@ -2865,6 +2865,950 @@ function applicationsTrigonometry(): TopicFileOut {
 }
 
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Circles (tangents and their equal lengths)                   */
+/* ------------------------------------------------------------------------- */
+function circles10(): TopicFileOut {
+  const rand = rng("maths-10-circles");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A tangent to a circle makes what angle, in degrees, with the radius drawn to the point of contact?",
+          hi: "किसी वृत्त की स्पर्श रेखा स्पर्श बिंदु पर खींची त्रिज्या से कितने डिग्री का कोण बनाती है?",
+          mr: "एका वर्तुळाची स्पर्शिका स्पर्शबिंदूला काढलेल्या त्रिज्येशी किती अंशांचा कोन करते?",
+        },
+        answer: 90,
+        wrong: [45, 60, 180],
+        solution: {
+          en: "A tangent is perpendicular to the radius at the point of contact, so the angle is 90°.",
+          hi: "स्पर्श रेखा स्पर्श बिंदु पर त्रिज्या के लंबवत, अतः कोण 90°.",
+          mr: "स्पर्शिका स्पर्शबिंदूला त्रिज्येला लंब, म्हणून कोन 90°.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two tangents drawn from an external point to a circle have lengths 8 cm and x cm. What is x?",
+          hi: "किसी बाह्य बिंदु से वृत्त पर खींची दो स्पर्श रेखाओं की लंबाई 8 सेमी और x सेमी हैं। x क्या है?",
+          mr: "एका बाह्य बिंदूवरून वर्तुळावर काढलेल्या दोन स्पर्शिकांची लांबी 8 सेमी आणि x सेमी आहे. x काय?",
+        },
+        answer: 8,
+        wrong: [4, 16, 0],
+        solution: {
+          en: "The two tangents from an external point are equal in length, so x = 8 cm.",
+          hi: "किसी बाह्य बिंदु से दो स्पर्श रेखाएँ लंबाई में बराबर, अतः x = 8 सेमी।",
+          mr: "एका बाह्य बिंदूवरून दोन स्पर्शिका लांबीत समान, म्हणून x = 8 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many tangents can be drawn to a circle from a point lying outside it?",
+          hi: "किसी वृत्त के बाहर स्थित बिंदु से उस पर कितनी स्पर्श रेखाएँ खींची जा सकती हैं?",
+          mr: "एका वर्तुळाबाहेरील बिंदूवरून त्यावर किती स्पर्शिका काढता येतात?",
+        },
+        answer: 2,
+        wrong: [1, 0, 3],
+        solution: {
+          en: "From an external point exactly 2 tangents can be drawn; from a point on the circle only 1, and from inside none.",
+          hi: "बाह्य बिंदु से ठीक 2 स्पर्श रेखाएँ; वृत्त पर के बिंदु से केवल 1, और भीतर से कोई नहीं।",
+          mr: "बाह्य बिंदूवरून नेमक्या 2 स्पर्शिका; वर्तुळावरील बिंदूवरून फक्त 1, आणि आतून एकही नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A tangent from point P touches a circle of radius 5 cm at T, and OP = 13 cm (O is the centre). What is the tangent length PT?",
+          hi: "बिंदु P से एक स्पर्श रेखा 5 सेमी त्रिज्या के वृत्त को T पर छूती है, और OP = 13 सेमी (O केंद्र)। स्पर्श रेखा की लंबाई PT क्या है?",
+          mr: "बिंदू P वरून एक स्पर्शिका 5 सेमी त्रिज्येच्या वर्तुळाला T ला स्पर्शते, आणि OP = 13 सेमी (O केंद्र). स्पर्शिकेची लांबी PT काय?",
+        },
+        answer: 12,
+        wrong: [8, 18, 144],
+        solution: {
+          en: "OT ⊥ PT, so PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 cm.",
+          hi: "OT ⊥ PT, अतः PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 सेमी।",
+          mr: "OT ⊥ PT, म्हणून PT = √(OP² − OT²) = √(169 − 25) = √144 = 12 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The length of the tangent from a point 10 cm from the centre of a circle of radius 6 cm is what?",
+          hi: "6 सेमी त्रिज्या के वृत्त के केंद्र से 10 सेमी दूर बिंदु से स्पर्श रेखा की लंबाई क्या है?",
+          mr: "6 सेमी त्रिज्येच्या वर्तुळाच्या केंद्रापासून 10 सेमी दूर बिंदूवरून स्पर्शिकेची लांबी काय?",
+        },
+        answer: 8,
+        wrong: [4, 14, 64],
+        solution: {
+          en: "Tangent length = √(distance² − radius²) = √(100 − 36) = √64 = 8 cm.",
+          hi: "स्पर्श रेखा की लंबाई = √(दूरी² − त्रिज्या²) = √(100 − 36) = √64 = 8 सेमी।",
+          mr: "स्पर्शिकेची लांबी = √(अंतर² − त्रिज्या²) = √(100 − 36) = √64 = 8 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two concentric circles have radii 5 cm and 3 cm. A chord of the larger circle touches the smaller one. What is the length of this chord?",
+          hi: "दो संकेंद्रीय वृत्तों की त्रिज्याएँ 5 सेमी और 3 सेमी हैं। बड़े वृत्त की एक जीवा छोटे को स्पर्श करती है। इस जीवा की लंबाई क्या है?",
+          mr: "दोन एककेंद्री वर्तुळांच्या त्रिज्या 5 सेमी आणि 3 सेमी आहेत. मोठ्या वर्तुळाची एक जीवा लहानाला स्पर्शते. या जीवेची लांबी काय?",
+        },
+        answer: 8,
+        wrong: [4, 16, 6],
+        solution: {
+          en: "The smaller radius is perpendicular to the chord at its midpoint, so half the chord = √(5² − 3²) = √16 = 4, and the full chord = 2·4 = 8 cm.",
+          hi: "छोटी त्रिज्या जीवा के मध्यबिंदु पर लंब, अतः जीवा का आधा = √(5² − 3²) = √16 = 4, और पूरी जीवा = 2·4 = 8 सेमी।",
+          mr: "लहान त्रिज्या जीवेच्या मध्यबिंदूला लंब, म्हणून जीवेचा अर्धा = √(5² − 3²) = √16 = 4, आणि पूर्ण जीवा = 2·4 = 8 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A quadrilateral ABCD circumscribes a circle, so AB + CD = BC + AD. If AB = 6, BC = 7 and CD = 4, what is AD?",
+          hi: "एक चतुर्भुज ABCD वृत्त को परिगत है, अतः AB + CD = BC + AD. यदि AB = 6, BC = 7 और CD = 4, तो AD क्या है?",
+          mr: "एक चौकोन ABCD वर्तुळाला परिवेष्टित करतो, म्हणून AB + CD = BC + AD. AB = 6, BC = 7 आणि CD = 4 असेल, तर AD काय?",
+        },
+        answer: 3,
+        wrong: [5, 10, 17],
+        checkExpr: "6+4-7",
+        solution: {
+          en: "AB + CD = BC + AD gives 6 + 4 = 7 + AD, so AD = 10 − 7 = 3.",
+          hi: "AB + CD = BC + AD देता 6 + 4 = 7 + AD, अतः AD = 10 − 7 = 3.",
+          mr: "AB + CD = BC + AD देते 6 + 4 = 7 + AD, म्हणून AD = 10 − 7 = 3.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two tangents from an external point P touch a circle with centre O at A and B. If ∠APB = 60°, what is ∠AOB in degrees?",
+          hi: "बाह्य बिंदु P से दो स्पर्श रेखाएँ केंद्र O वाले वृत्त को A और B पर छूती हैं। यदि ∠APB = 60°, तो ∠AOB डिग्री में क्या है?",
+          mr: "बाह्य बिंदू P वरून दोन स्पर्शिका केंद्र O असलेल्या वर्तुळाला A आणि B ला स्पर्शतात. ∠APB = 60° असेल, तर ∠AOB अंशांत काय?",
+        },
+        answer: 120,
+        wrong: [60, 90, 30],
+        checkExpr: "180-60",
+        solution: {
+          en: "In quadrilateral OAPB the angles at A and B are 90° each, so ∠AOB + ∠APB = 180°, giving ∠AOB = 180 − 60 = 120°.",
+          hi: "चतुर्भुज OAPB में A और B पर कोण 90°-90°, अतः ∠AOB + ∠APB = 180°, देता ∠AOB = 180 − 60 = 120°.",
+          mr: "चौकोन OAPB मध्ये A आणि B ला कोन 90°-90°, म्हणून ∠AOB + ∠APB = 180°, देते ∠AOB = 180 − 60 = 120°.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A circle touches all four sides of a square of side 14 cm. What is the radius of the circle?",
+          hi: "एक वृत्त 14 सेमी भुजा के वर्ग की चारों भुजाओं को स्पर्श करता है। वृत्त की त्रिज्या क्या है?",
+          mr: "एक वर्तुळ 14 सेमी बाजूच्या चौरसाच्या चारही बाजूंना स्पर्शते. वर्तुळाची त्रिज्या काय?",
+        },
+        answer: 7,
+        wrong: [14, 3.5, 28],
+        checkExpr: "14/2",
+        solution: {
+          en: "The inscribed circle's diameter equals the side of the square, so radius = 14/2 = 7 cm.",
+          hi: "अंतर्वृत्त का व्यास वर्ग की भुजा के बराबर, अतः त्रिज्या = 14/2 = 7 सेमी।",
+          mr: "अंतर्वर्तुळाचा व्यास चौरसाच्या बाजूइतका, म्हणून त्रिज्या = 14/2 = 7 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "PA and PB are tangents from P to a circle of centre O and radius 5, with ∠APB = 90°. What is the length of PA?",
+          hi: "PA और PB, केंद्र O और त्रिज्या 5 वाले वृत्त पर P से स्पर्श रेखाएँ हैं, ∠APB = 90°। PA की लंबाई क्या है?",
+          mr: "PA आणि PB, केंद्र O आणि त्रिज्या 5 असलेल्या वर्तुळावर P वरून स्पर्शिका आहेत, ∠APB = 90°. PA ची लांबी काय?",
+        },
+        answer: 5,
+        wrong: [10, 7.07, 2.5],
+        solution: {
+          en: "With both radii ⊥ their tangents and ∠APB = 90°, OAPB is a square, so PA equals the radius, 5 cm.",
+          hi: "दोनों त्रिज्याएँ अपनी स्पर्श रेखाओं के लंब और ∠APB = 90° होने से OAPB एक वर्ग, अतः PA त्रिज्या के बराबर, 5 सेमी।",
+          mr: "दोन्ही त्रिज्या आपल्या स्पर्शिकांना लंब आणि ∠APB = 90° असल्याने OAPB एक चौरस, म्हणून PA त्रिज्येइतके, 5 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A triangle's incircle touches its sides so the tangent lengths from the vertices are 8, 4 and 6 cm. What is the perimeter of the triangle in cm?",
+          hi: "एक त्रिभुज का अंतर्वृत्त उसकी भुजाओं को छूता है, अतः शीर्षों से स्पर्श रेखा लंबाइयाँ 8, 4 और 6 सेमी हैं। त्रिभुज का परिमाप सेमी में क्या है?",
+          mr: "एका त्रिकोणाचे अंतर्वर्तुळ त्याच्या बाजूंना स्पर्शते, म्हणून शिरोबिंदूंवरून स्पर्शिका लांबी 8, 4 आणि 6 सेमी आहेत. त्रिकोणाची परिमिती सेमीमध्ये काय?",
+        },
+        answer: 36,
+        wrong: [18, 24, 48],
+        checkExpr: "2*(8+4+6)",
+        solution: {
+          en: "Each tangent length appears on two sides, so the perimeter = 2(8 + 4 + 6) = 2·18 = 36 cm.",
+          hi: "प्रत्येक स्पर्श लंबाई दो भुजाओं पर आती, अतः परिमाप = 2(8 + 4 + 6) = 2·18 = 36 सेमी।",
+          mr: "प्रत्येक स्पर्श लांबी दोन बाजूंवर येते, म्हणून परिमिती = 2(8 + 4 + 6) = 2·18 = 36 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The tangent from a point P to a circle is 24 cm long, and P is 25 cm from the centre. What is the radius of the circle?",
+          hi: "बिंदु P से किसी वृत्त की स्पर्श रेखा 24 सेमी लंबी है, और P केंद्र से 25 सेमी दूर है। वृत्त की त्रिज्या क्या है?",
+          mr: "बिंदू P वरून एका वर्तुळाची स्पर्शिका 24 सेमी लांब आहे, आणि P केंद्रापासून 25 सेमी दूर आहे. वर्तुळाची त्रिज्या काय?",
+        },
+        answer: 7,
+        wrong: [1, 49, 3.5],
+        solution: {
+          en: "radius = √(OP² − tangent²) = √(25² − 24²) = √(625 − 576) = √49 = 7 cm.",
+          hi: "त्रिज्या = √(OP² − स्पर्श²) = √(25² − 24²) = √(625 − 576) = √49 = 7 सेमी।",
+          mr: "त्रिज्या = √(OP² − स्पर्श²) = √(25² − 24²) = √(625 − 576) = √49 = 7 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A quadrilateral ABCD circumscribes a circle with AB = 6 cm, BC = 9 cm and CD = 8 cm. What is AD?",
+          hi: "एक चतुर्भुज ABCD वृत्त को परिगत है, AB = 6 सेमी, BC = 9 सेमी और CD = 8 सेमी। AD क्या है?",
+          mr: "एक चौकोन ABCD वर्तुळाला परिवेष्टित करतो, AB = 6 सेमी, BC = 9 सेमी आणि CD = 8 सेमी. AD काय?",
+        },
+        answer: 5,
+        wrong: [11, 23, 7],
+        checkExpr: "6+8-9",
+        solution: {
+          en: "For a circumscribing quadrilateral, AB + CD = BC + AD, so 6 + 8 = 9 + AD, giving AD = 14 − 9 = 5 cm.",
+          hi: "परिगत चतुर्भुज के लिए AB + CD = BC + AD, अतः 6 + 8 = 9 + AD, देता AD = 14 − 9 = 5 सेमी।",
+          mr: "परिवेष्टित चौकोनासाठी AB + CD = BC + AD, म्हणून 6 + 8 = 9 + AD, देते AD = 14 − 9 = 5 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Tangents PA and PB from an external point P touch a circle of centre O and radius 3 cm, with OP = 5 cm. What is the area of quadrilateral OAPB in cm²?",
+          hi: "बाह्य बिंदु P से स्पर्श रेखाएँ PA और PB, केंद्र O और त्रिज्या 3 सेमी वाले वृत्त को छूती हैं, OP = 5 सेमी। चतुर्भुज OAPB का क्षेत्रफल सेमी² में क्या है?",
+          mr: "बाह्य बिंदू P वरून स्पर्शिका PA आणि PB, केंद्र O आणि त्रिज्या 3 सेमी असलेल्या वर्तुळाला स्पर्शतात, OP = 5 सेमी. चौकोन OAPB चे क्षेत्रफळ सेमी² मध्ये काय?",
+        },
+        answer: 12,
+        wrong: [6, 24, 15],
+        checkExpr: "3*4",
+        solution: {
+          en: "The tangent length is √(5² − 3²) = 4 cm. The quadrilateral is two right triangles, so its area = 2·(½·3·4) = 3·4 = 12 cm².",
+          hi: "स्पर्श लंबाई √(5² − 3²) = 4 सेमी। चतुर्भुज दो समकोण त्रिभुज, अतः क्षेत्रफल = 2·(½·3·4) = 3·4 = 12 सेमी²।",
+          mr: "स्पर्श लांबी √(5² − 3²) = 4 सेमी. चौकोन दोन काटकोन त्रिकोण, म्हणून क्षेत्रफळ = 2·(½·3·4) = 3·4 = 12 सेमी².",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-circles",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 10 — Circles",
+      name: "Circles",
+      summary:
+        "Where a line just grazes a circle: the tangent perpendicular to the radius, the two equal tangents from an outside point, and the balance AB + CD = BC + AD that any circumscribing quadrilateral must keep.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "वृत्त",
+          summary:
+            "जहाँ एक रेखा वृत्त को बस छूती है: त्रिज्या के लंब स्पर्श रेखा, बाहरी बिंदु से दो बराबर स्पर्श रेखाएँ, और संतुलन AB + CD = BC + AD जो किसी परिगत चतुर्भुज को रखना होता।",
+        },
+        mr: {
+          name: "वर्तुळ",
+          summary:
+            "जिथे एक रेषा वर्तुळाला नुसती स्पर्शते: त्रिज्येला लंब स्पर्शिका, बाहेरच्या बिंदूवरून दोन समान स्पर्शिका, आणि समतोल AB + CD = BC + AD जो कोणत्याही परिवेष्टित चौकोनाला राखावा लागतो.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Areas Related to Circles (sectors, segments, rings)          */
+/* ------------------------------------------------------------------------- */
+function areasRelatedCircles(): TopicFileOut {
+  const rand = rng("maths-10-areas-related-circles");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The area of a circle is 154 cm². What is its radius in cm? (Take π = 22/7.)",
+          hi: "एक वृत्त का क्षेत्रफल 154 सेमी² है। इसकी त्रिज्या सेमी में क्या है? (π = 22/7 लें।)",
+          mr: "एका वर्तुळाचे क्षेत्रफळ 154 सेमी² आहे. त्याची त्रिज्या सेमीमध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 7,
+        wrong: [14, 49, 11],
+        solution: {
+          en: "Area = πr² = 154, so r² = 154·7/22 = 49 and r = √49 = 7 cm. (49 is r², before the square root.)",
+          hi: "क्षेत्रफल = πr² = 154, अतः r² = 154·7/22 = 49 और r = √49 = 7 सेमी। (49 वर्गमूल से पहले r²।)",
+          mr: "क्षेत्रफळ = πr² = 154, म्हणून r² = 154·7/22 = 49 आणि r = √49 = 7 सेमी. (49 वर्गमूळापूर्वी r².)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the circumference of a circle of radius 35 cm? (Take π = 22/7.)",
+          hi: "35 सेमी त्रिज्या के वृत्त की परिधि क्या है? (π = 22/7 लें।)",
+          mr: "35 सेमी त्रिज्येच्या वर्तुळाचा परिघ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 220,
+        wrong: [110, 1225, 70],
+        checkExpr: "2*22*35/7",
+        solution: {
+          en: "Circumference = 2πr = 2·(22/7)·35 = 2·22·35/7 = 220 cm. (1225 is r², used for area.)",
+          hi: "परिधि = 2πr = 2·(22/7)·35 = 2·22·35/7 = 220 सेमी। (1225 r² है, क्षेत्रफल के लिए।)",
+          mr: "परिघ = 2πr = 2·(22/7)·35 = 2·22·35/7 = 220 सेमी. (1225 r², क्षेत्रफळासाठी.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the area of a circle of radius 14 cm? (Take π = 22/7.)",
+          hi: "14 सेमी त्रिज्या के वृत्त का क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "14 सेमी त्रिज्येच्या वर्तुळाचे क्षेत्रफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 616,
+        wrong: [88, 308, 196],
+        checkExpr: "22*196/7",
+        solution: {
+          en: "Area = πr² = (22/7)·14² = 22·196/7 = 616 cm². (88 is the circumference.)",
+          hi: "क्षेत्रफल = πr² = (22/7)·14² = 22·196/7 = 616 सेमी²। (88 परिधि है।)",
+          mr: "क्षेत्रफळ = πr² = (22/7)·14² = 22·196/7 = 616 सेमी². (88 परिघ आहे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A sector has central angle 90° in a circle of radius 14 cm. What is its area? (Take π = 22/7.)",
+          hi: "14 सेमी त्रिज्या के वृत्त में एक त्रिज्यखंड का केंद्रीय कोण 90° है। उसका क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "14 सेमी त्रिज्येच्या वर्तुळात एका त्रिज्याखंडाचा केंद्रीय कोन 90° आहे. त्याचे क्षेत्रफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 154,
+        wrong: [616, 308, 77],
+        checkExpr: "22*196/7/4",
+        solution: {
+          en: "Sector area = (90/360)·πr² = (1/4)·(22/7)·196 = 22·196/7/4 = 616/4 = 154 cm².",
+          hi: "त्रिज्यखंड क्षेत्रफल = (90/360)·πr² = (1/4)·(22/7)·196 = 22·196/7/4 = 616/4 = 154 सेमी²।",
+          mr: "त्रिज्याखंड क्षेत्रफळ = (90/360)·πr² = (1/4)·(22/7)·196 = 22·196/7/4 = 616/4 = 154 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the length of an arc of a sector of angle 60° in a circle of radius 21 cm? (Take π = 22/7.)",
+          hi: "21 सेमी त्रिज्या के वृत्त में 60° कोण के त्रिज्यखंड की चाप की लंबाई क्या है? (π = 22/7 लें।)",
+          mr: "21 सेमी त्रिज्येच्या वर्तुळात 60° कोनाच्या त्रिज्याखंडाच्या कंसाची लांबी काय? (π = 22/7 घ्या.)",
+        },
+        answer: 22,
+        wrong: [132, 44, 11],
+        checkExpr: "2*22*21/7/6",
+        solution: {
+          en: "Arc length = (60/360)·2πr = (1/6)·2·(22/7)·21 = 2·22·21/7/6 = 132/6 = 22 cm.",
+          hi: "चाप लंबाई = (60/360)·2πr = (1/6)·2·(22/7)·21 = 2·22·21/7/6 = 132/6 = 22 सेमी।",
+          mr: "कंस लांबी = (60/360)·2πr = (1/6)·2·(22/7)·21 = 2·22·21/7/6 = 132/6 = 22 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the circumference of a circle of diameter 14 cm? (Take π = 22/7.)",
+          hi: "14 सेमी व्यास के वृत्त की परिधि क्या है? (π = 22/7 लें।)",
+          mr: "14 सेमी व्यासाच्या वर्तुळाचा परिघ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 44,
+        wrong: [154, 22, 88],
+        checkExpr: "22*14/7",
+        solution: {
+          en: "Circumference = πd = (22/7)·14 = 22·14/7 = 44 cm.",
+          hi: "परिधि = πd = (22/7)·14 = 22·14/7 = 44 सेमी।",
+          mr: "परिघ = πd = (22/7)·14 = 22·14/7 = 44 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A sector of angle 120° lies in a circle of radius 21 cm. What is its area? (Take π = 22/7.)",
+          hi: "21 सेमी त्रिज्या के वृत्त में 120° कोण का त्रिज्यखंड है। उसका क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "21 सेमी त्रिज्येच्या वर्तुळात 120° कोनाचा त्रिज्याखंड आहे. त्याचे क्षेत्रफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 462,
+        wrong: [1386, 231, 154],
+        checkExpr: "22*441/7/3",
+        solution: {
+          en: "Sector area = (120/360)·πr² = (1/3)·(22/7)·441 = 22·441/7/3 = 1386/3 = 462 cm².",
+          hi: "त्रिज्यखंड क्षेत्रफल = (120/360)·πr² = (1/3)·(22/7)·441 = 22·441/7/3 = 1386/3 = 462 सेमी²।",
+          mr: "त्रिज्याखंड क्षेत्रफळ = (120/360)·πr² = (1/3)·(22/7)·441 = 22·441/7/3 = 1386/3 = 462 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the perimeter of a semicircle of radius 7 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या के अर्धवृत्त का परिमाप क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्येच्या अर्धवर्तुळाची परिमिती काय? (π = 22/7 घ्या.)",
+        },
+        answer: 36,
+        wrong: [22, 44, 58],
+        checkExpr: "22*7/7+14",
+        solution: {
+          en: "Perimeter = half the circumference + the diameter = πr + 2r = (22/7)·7 + 14 = 22 + 14 = 36 cm.",
+          hi: "परिमाप = आधी परिधि + व्यास = πr + 2r = (22/7)·7 + 14 = 22 + 14 = 36 सेमी।",
+          mr: "परिमिती = अर्धा परिघ + व्यास = πr + 2r = (22/7)·7 + 14 = 22 + 14 = 36 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A circle is inscribed in a square of side 14 cm. What is the area, in cm², left between the square and the circle? (Take π = 22/7.)",
+          hi: "14 सेमी भुजा के वर्ग में एक वृत्त अंतर्निहित है। वर्ग और वृत्त के बीच बचा क्षेत्रफल सेमी² में क्या है? (π = 22/7 लें।)",
+          mr: "14 सेमी बाजूच्या चौरसात एक वर्तुळ अंतर्लिखित आहे. चौरस आणि वर्तुळादरम्यान उरलेले क्षेत्रफळ सेमी² मध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 42,
+        wrong: [154, 196, 63],
+        checkExpr: "196-22*49/7",
+        solution: {
+          en: "The circle's radius is 7 cm. Area left = square − circle = 14² − (22/7)·49 = 196 − 154 = 42 cm².",
+          hi: "वृत्त की त्रिज्या 7 सेमी। बचा क्षेत्रफल = वर्ग − वृत्त = 14² − (22/7)·49 = 196 − 154 = 42 सेमी²।",
+          mr: "वर्तुळाची त्रिज्या 7 सेमी. उरलेले क्षेत्रफळ = चौरस − वर्तुळ = 14² − (22/7)·49 = 196 − 154 = 42 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The minute hand of a clock is 7 cm long. What area, in cm², does it sweep in 15 minutes? (Take π = 22/7.)",
+          hi: "एक घड़ी की मिनट की सुई 7 सेमी लंबी है। यह 15 मिनट में कितना क्षेत्रफल सेमी² में बुहारती है? (π = 22/7 लें।)",
+          mr: "एका घड्याळाची मिनिट-काटा 7 सेमी लांब आहे. तो 15 मिनिटांत किती क्षेत्रफळ सेमी² मध्ये झाडतो? (π = 22/7 घ्या.)",
+        },
+        answer: 38.5,
+        wrong: [154, 77, 19.25],
+        checkExpr: "22*49/7/4",
+        solution: {
+          en: "15 minutes is a quarter turn, so area = (1/4)·πr² = (1/4)·(22/7)·49 = 154/4 = 38.5 cm².",
+          hi: "15 मिनट एक चौथाई घुमाव, अतः क्षेत्रफल = (1/4)·πr² = (1/4)·(22/7)·49 = 154/4 = 38.5 सेमी²।",
+          mr: "15 मिनिटे एक चतुर्थांश फेरा, म्हणून क्षेत्रफळ = (1/4)·πr² = (1/4)·(22/7)·49 = 154/4 = 38.5 सेमी².",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A circular park of radius 21 m is bordered by a path 3.5 m wide running around its outside. What is the area of the path in m²? (Take π = 22/7.)",
+          hi: "21 मी त्रिज्या के वृत्ताकार पार्क के बाहर चारों ओर 3.5 मी चौड़ा रास्ता है। रास्ते का क्षेत्रफल मी² में क्या है? (π = 22/7 लें।)",
+          mr: "21 मी त्रिज्येच्या वर्तुळाकार उद्यानाभोवती बाहेरून 3.5 मी रुंद वाट आहे. वाटेचे क्षेत्रफळ मी² मध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 500.5,
+        wrong: [159.25, 1001, 250.25],
+        checkExpr: "22*(24.5*24.5-21*21)/7",
+        solution: {
+          en: "Outer radius = 21 + 3.5 = 24.5 m. Path area = π(R² − r²) = (22/7)(24.5² − 21²) = (22/7)(600.25 − 441) = (22/7)(159.25) = 500.5 m².",
+          hi: "बाहरी त्रिज्या = 21 + 3.5 = 24.5 मी। रास्ते का क्षेत्रफल = π(R² − r²) = (22/7)(24.5² − 21²) = (22/7)(600.25 − 441) = (22/7)(159.25) = 500.5 मी²।",
+          mr: "बाह्य त्रिज्या = 21 + 3.5 = 24.5 मी. वाटेचे क्षेत्रफळ = π(R² − r²) = (22/7)(24.5² − 21²) = (22/7)(600.25 − 441) = (22/7)(159.25) = 500.5 मी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Two circles have radii 8 cm and 6 cm. A single circle has area equal to the sum of their areas. What is its radius?",
+          hi: "दो वृत्तों की त्रिज्याएँ 8 सेमी और 6 सेमी हैं। एक वृत्त का क्षेत्रफल उनके क्षेत्रफलों के योग के बराबर है। इसकी त्रिज्या क्या है?",
+          mr: "दोन वर्तुळांच्या त्रिज्या 8 सेमी आणि 6 सेमी आहेत. एका वर्तुळाचे क्षेत्रफळ त्यांच्या क्षेत्रफळांच्या बेरजेइतके आहे. त्याची त्रिज्या काय?",
+        },
+        answer: 10,
+        wrong: [14, 7, 100],
+        solution: {
+          en: "π R² = π·8² + π·6², so R² = 64 + 36 = 100 and R = √100 = 10 cm. (14 wrongly adds the radii.)",
+          hi: "π R² = π·8² + π·6², अतः R² = 64 + 36 = 100 और R = √100 = 10 सेमी। (14 त्रिज्याओं को ग़लत जोड़ता।)",
+          mr: "π R² = π·8² + π·6², म्हणून R² = 64 + 36 = 100 आणि R = √100 = 10 सेमी. (14 त्रिज्या चुकीच्या जोडते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A chord of a circle of radius 14 cm subtends a right angle (90°) at the centre. What is the area, in cm², of the corresponding minor segment? (Take π = 22/7.)",
+          hi: "14 सेमी त्रिज्या के वृत्त की एक जीवा केंद्र पर समकोण (90°) अंतरित करती है। संगत लघु वृत्तखंड का क्षेत्रफल सेमी² में क्या है? (π = 22/7 लें।)",
+          mr: "14 सेमी त्रिज्येच्या वर्तुळाची एक जीवा केंद्रावर काटकोन (90°) करते. संगत लघु वर्तुळखंडाचे क्षेत्रफळ सेमी² मध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 56,
+        wrong: [154, 98, 252],
+        checkExpr: "22*196/7/4-14*14/2",
+        solution: {
+          en: "Segment = sector − triangle. Sector (90°) = (1/4)(22/7)(196) = 154; right triangle = (1/2)·14·14 = 98. So segment = 154 − 98 = 56 cm².",
+          hi: "वृत्तखंड = त्रिज्यखंड − त्रिभुज। त्रिज्यखंड (90°) = (1/4)(22/7)(196) = 154; समकोण त्रिभुज = (1/2)·14·14 = 98. अतः वृत्तखंड = 154 − 98 = 56 सेमी²।",
+          mr: "वर्तुळखंड = त्रिज्याखंड − त्रिकोण. त्रिज्याखंड (90°) = (1/4)(22/7)(196) = 154; काटकोन त्रिकोण = (1/2)·14·14 = 98. म्हणून वर्तुळखंड = 154 − 98 = 56 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A horse is tied to a corner of a square field of side 15 m with a rope 7 m long. What area, in m², can it graze? (Take π = 22/7.)",
+          hi: "एक घोड़ा 15 मी भुजा के वर्गाकार खेत के एक कोने से 7 मी लंबी रस्सी से बँधा है। यह कितना क्षेत्रफल मी² में चर सकता है? (π = 22/7 लें।)",
+          mr: "एक घोडा 15 मी बाजूच्या चौरस शेताच्या एका कोपऱ्याला 7 मी लांब दोरीने बांधलेला आहे. तो किती क्षेत्रफळ मी² मध्ये चरू शकतो? (π = 22/7 घ्या.)",
+        },
+        answer: 38.5,
+        wrong: [154, 77, 49],
+        checkExpr: "22*49/7/4",
+        solution: {
+          en: "At a 90° corner the horse grazes a quarter circle of radius 7 m: (1/4)·(22/7)·49 = 154/4 = 38.5 m².",
+          hi: "90° कोने पर घोड़ा 7 मी त्रिज्या का चौथाई वृत्त चरता: (1/4)·(22/7)·49 = 154/4 = 38.5 मी²।",
+          mr: "90° कोपऱ्यावर घोडा 7 मी त्रिज्येचे चतुर्थांश वर्तुळ चरतो: (1/4)·(22/7)·49 = 154/4 = 38.5 मी².",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-areas-related-circles",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 11 — Areas Related to Circles",
+      name: "Areas Related to Circles",
+      summary:
+        "The circle sliced and framed: area and circumference, the sector and arc as a fraction of the whole, the segment as sector minus triangle, and the ring left between two radii or a shape and its inscribed circle.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "वृत्तों से संबंधित क्षेत्रफल",
+          summary:
+            "वृत्त कटा और घिरा: क्षेत्रफल और परिधि, पूरे के अंश बतौर त्रिज्यखंड और चाप, त्रिज्यखंड घटा त्रिभुज बतौर वृत्तखंड, और दो त्रिज्याओं या आकृति और उसके अंतर्वृत्त के बीच बचा वलय।",
+        },
+        mr: {
+          name: "वर्तुळांशी संबंधित क्षेत्रफळे",
+          summary:
+            "वर्तुळ कापलेले आणि वेढलेले: क्षेत्रफळ आणि परिघ, संपूर्णाचा अंश म्हणून त्रिज्याखंड आणि कंस, त्रिज्याखंड वजा त्रिकोण म्हणून वर्तुळखंड, आणि दोन त्रिज्या किंवा आकृती आणि तिच्या अंतर्वर्तुळादरम्यान उरलेले कडे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Surface Areas and Volumes (solids and their combinations)    */
+/* ------------------------------------------------------------------------- */
+function surfaceVolumes10(): TopicFileOut {
+  const rand = rng("maths-10-surface-areas-volumes");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the volume of a cube of side 5 cm?",
+          hi: "5 सेमी भुजा के घन का आयतन क्या है?",
+          mr: "5 सेमी बाजूच्या घनाचे घनफळ काय?",
+        },
+        answer: 125,
+        wrong: [25, 15, 75],
+        checkExpr: "5*5*5",
+        solution: {
+          en: "Volume of a cube = side³ = 5·5·5 = 125 cm³. (25 is the area of one face.)",
+          hi: "घन का आयतन = भुजा³ = 5·5·5 = 125 सेमी³। (25 एक फलक का क्षेत्रफल।)",
+          mr: "घनाचे घनफळ = बाजू³ = 5·5·5 = 125 सेमी³. (25 एका पृष्ठाचे क्षेत्रफळ.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the surface area of a sphere of radius 7 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या के गोले का पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्येच्या गोलाचे पृष्ठफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 616,
+        wrong: [154, 1232, 308],
+        checkExpr: "4*22*49/7",
+        solution: {
+          en: "Surface area of a sphere = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 cm².",
+          hi: "गोले का पृष्ठीय क्षेत्रफल = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 सेमी²।",
+          mr: "गोलाचे पृष्ठफळ = 4πr² = 4·(22/7)·49 = 4·22·49/7 = 616 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the volume of a cylinder of radius 7 cm and height 10 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या और 10 सेमी ऊँचाई के बेलन का आयतन क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्या आणि 10 सेमी उंचीच्या दंडगोलाचे घनफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 1540,
+        wrong: [154, 220, 15400],
+        checkExpr: "22*49*10/7",
+        solution: {
+          en: "Volume of a cylinder = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 cm³.",
+          hi: "बेलन का आयतन = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 सेमी³।",
+          mr: "दंडगोलाचे घनफळ = πr²h = (22/7)·49·10 = 22·49·10/7 = 1540 सेमी³.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the curved surface area of a cylinder of radius 7 cm and height 10 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या और 10 सेमी ऊँचाई के बेलन का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्या आणि 10 सेमी उंचीच्या दंडगोलाचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 440,
+        wrong: [154, 1540, 220],
+        checkExpr: "2*22*7*10/7",
+        solution: {
+          en: "Curved surface area = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 cm².",
+          hi: "वक्र पृष्ठीय क्षेत्रफल = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 सेमी²।",
+          mr: "वक्रपृष्ठफळ = 2πrh = 2·(22/7)·7·10 = 2·22·7·10/7 = 440 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the volume of a cone of radius 7 cm and height 6 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या और 6 सेमी ऊँचाई के शंकु का आयतन क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्या आणि 6 सेमी उंचीच्या शंकूचे घनफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 308,
+        wrong: [924, 154, 616],
+        checkExpr: "22*49*6/7/3",
+        solution: {
+          en: "Volume of a cone = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 cm³. (924 forgets the 1/3.)",
+          hi: "शंकु का आयतन = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 सेमी³। (924 में 1/3 भूला।)",
+          mr: "शंकूचे घनफळ = (1/3)πr²h = (1/3)·(22/7)·49·6 = 22·49·6/7/3 = 924/3 = 308 सेमी³. (924 मध्ये 1/3 विसरले.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the total surface area of a cube of side 4 cm?",
+          hi: "4 सेमी भुजा के घन का कुल पृष्ठीय क्षेत्रफल क्या है?",
+          mr: "4 सेमी बाजूच्या घनाचे एकूण पृष्ठफळ काय?",
+        },
+        answer: 96,
+        wrong: [16, 64, 24],
+        checkExpr: "6*16",
+        solution: {
+          en: "A cube has 6 faces, each of area 4² = 16, so total surface area = 6·16 = 96 cm². (64 is the volume.)",
+          hi: "घन के 6 फलक, प्रत्येक क्षेत्रफल 4² = 16, अतः कुल पृष्ठीय क्षेत्रफल = 6·16 = 96 सेमी²। (64 आयतन।)",
+          mr: "घनाला 6 पृष्ठे, प्रत्येक क्षेत्रफळ 4² = 16, म्हणून एकूण पृष्ठफळ = 6·16 = 96 सेमी². (64 घनफळ.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the curved surface area of a cone of radius 7 cm and slant height 10 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या और 10 सेमी तिर्यक ऊँचाई के शंकु का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्या आणि 10 सेमी तिरकस उंचीच्या शंकूचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 220,
+        wrong: [154, 440, 70],
+        checkExpr: "22*7*10/7",
+        solution: {
+          en: "Curved surface area of a cone = πrl = (22/7)·7·10 = 22·7·10/7 = 220 cm².",
+          hi: "शंकु का वक्र पृष्ठीय क्षेत्रफल = πrl = (22/7)·7·10 = 22·7·10/7 = 220 सेमी²।",
+          mr: "शंकूचे वक्रपृष्ठफळ = πrl = (22/7)·7·10 = 22·7·10/7 = 220 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the curved surface area of a hemisphere of radius 7 cm? (Take π = 22/7.)",
+          hi: "7 सेमी त्रिज्या के अर्धगोले का वक्र पृष्ठीय क्षेत्रफल क्या है? (π = 22/7 लें।)",
+          mr: "7 सेमी त्रिज्येच्या अर्धगोलाचे वक्रपृष्ठफळ काय? (π = 22/7 घ्या.)",
+        },
+        answer: 308,
+        wrong: [154, 616, 462],
+        checkExpr: "2*22*49/7",
+        solution: {
+          en: "Curved surface area of a hemisphere = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 cm². (616 is the full sphere.)",
+          hi: "अर्धगोले का वक्र पृष्ठीय क्षेत्रफल = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 सेमी²। (616 पूरा गोला।)",
+          mr: "अर्धगोलाचे वक्रपृष्ठफळ = 2πr² = 2·(22/7)·49 = 2·22·49/7 = 308 सेमी². (616 पूर्ण गोल.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A toy is a cone mounted on a hemisphere; the cone has radius 7 cm and height 24 cm. What is the slant height of the cone in cm?",
+          hi: "एक खिलौना अर्धगोले पर रखा शंकु है; शंकु की त्रिज्या 7 सेमी और ऊँचाई 24 सेमी है। शंकु की तिर्यक ऊँचाई सेमी में क्या है?",
+          mr: "एक खेळणे अर्धगोलावर बसवलेला शंकू आहे; शंकूची त्रिज्या 7 सेमी आणि उंची 24 सेमी. शंकूची तिरकस उंची सेमीमध्ये काय?",
+        },
+        answer: 25,
+        wrong: [31, 17, 625],
+        solution: {
+          en: "Slant height l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 cm.",
+          hi: "तिर्यक ऊँचाई l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 सेमी।",
+          mr: "तिरकस उंची l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A cylinder and a cone have the same radius and the same height, so the cylinder holds 3 times the cone. If the cone's volume is 308 cm³, what is the cylinder's volume?",
+          hi: "एक बेलन और एक शंकु की त्रिज्या और ऊँचाई समान हैं, अतः बेलन शंकु का 3 गुना समाता है। यदि शंकु का आयतन 308 सेमी³ है, बेलन का आयतन क्या है?",
+          mr: "एक दंडगोल आणि एक शंकू यांची त्रिज्या आणि उंची समान, म्हणून दंडगोल शंकूच्या 3 पट सामावतो. शंकूचे घनफळ 308 सेमी³ असेल, दंडगोलाचे घनफळ काय?",
+        },
+        answer: 924,
+        wrong: [308, 616, 102.67],
+        checkExpr: "3*308",
+        solution: {
+          en: "A cone is one-third of the cylinder with the same base and height, so the cylinder = 3·308 = 924 cm³.",
+          hi: "समान आधार-ऊँचाई के बेलन का एक-तिहाई शंकु, अतः बेलन = 3·308 = 924 सेमी³।",
+          mr: "समान तळ-उंचीच्या दंडगोलाचा एक-तृतीयांश शंकू, म्हणून दंडगोल = 3·308 = 924 सेमी³.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A metallic sphere of radius 6 cm is melted and recast into a solid cylinder of radius 4 cm. What is the height of the cylinder in cm?",
+          hi: "6 सेमी त्रिज्या का धात्विक गोला पिघलाकर 4 सेमी त्रिज्या के ठोस बेलन में ढाला जाता है। बेलन की ऊँचाई सेमी में क्या है?",
+          mr: "6 सेमी त्रिज्येचा धातूचा गोल वितळवून 4 सेमी त्रिज्येच्या घन दंडगोलात ओतला जातो. दंडगोलाची उंची सेमीमध्ये काय?",
+        },
+        answer: 18,
+        wrong: [12, 24, 9],
+        checkExpr: "288/16",
+        solution: {
+          en: "Volume is conserved: (4/3)π·6³ = π·4²·h, so (4/3)·216 = 16h, giving 288 = 16h and h = 288/16 = 18 cm. (π cancels throughout.)",
+          hi: "आयतन संरक्षित: (4/3)π·6³ = π·4²·h, अतः (4/3)·216 = 16h, देता 288 = 16h और h = 288/16 = 18 सेमी। (π पूरे में कटता।)",
+          mr: "घनफळ संधारित: (4/3)π·6³ = π·4²·h, म्हणून (4/3)·216 = 16h, देते 288 = 16h आणि h = 288/16 = 18 सेमी. (π सर्वत्र रद्द.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Two cubes, each of volume 64 cm³, are joined end to end. What is the surface area of the resulting cuboid in cm²?",
+          hi: "64 सेमी³ आयतन के दो घन सिरे से सिरे जोड़े जाते हैं। परिणामी घनाभ का पृष्ठीय क्षेत्रफल सेमी² में क्या है?",
+          mr: "64 सेमी³ घनफळाचे दोन घन टोकाला टोक जोडले जातात. परिणामी इष्टिकाचितीचे पृष्ठफळ सेमी² मध्ये काय?",
+        },
+        answer: 160,
+        wrong: [192, 128, 80],
+        checkExpr: "2*(16+32+32)",
+        solution: {
+          en: "Each cube has side ∛64 = 4 cm, so the cuboid is 4×4×8. Surface area = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 cm². (192 is the two cubes' separate surface area.)",
+          hi: "प्रत्येक घन की भुजा ∛64 = 4 सेमी, अतः घनाभ 4×4×8. पृष्ठीय क्षेत्रफल = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 सेमी²। (192 दो घनों का अलग क्षेत्रफल।)",
+          mr: "प्रत्येक घनाची बाजू ∛64 = 4 सेमी, म्हणून इष्टिकाचिती 4×4×8. पृष्ठफळ = 2(4·4 + 4·8 + 4·8) = 2(16 + 32 + 32) = 2·80 = 160 सेमी². (192 दोन घनांचे वेगळे पृष्ठफळ.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A frustum of a cone has radii 10 cm and 4 cm and slant height 5 cm. What is its curved surface area in cm²? (Take π = 22/7.)",
+          hi: "एक शंकु के छिन्नक की त्रिज्याएँ 10 सेमी और 4 सेमी और तिर्यक ऊँचाई 5 सेमी हैं। इसका वक्र पृष्ठीय क्षेत्रफल सेमी² में क्या है? (π = 22/7 लें।)",
+          mr: "एका शंकूच्या छिन्नकाच्या त्रिज्या 10 सेमी आणि 4 सेमी आणि तिरकस उंची 5 सेमी आहेत. त्याचे वक्रपृष्ठफळ सेमी² मध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 220,
+        wrong: [110, 308, 440],
+        checkExpr: "22*(10+4)*5/7",
+        solution: {
+          en: "Curved surface area of a frustum = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 cm².",
+          hi: "छिन्नक का वक्र पृष्ठीय क्षेत्रफल = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 सेमी²।",
+          mr: "छिन्नकाचे वक्रपृष्ठफळ = π(R + r)l = (22/7)(10 + 4)·5 = (22/7)·14·5 = 22·14·5/7 = 220 सेमी².",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A well of diameter 14 m is dug 15 m deep. What is the volume of earth dug out in m³? (Take π = 22/7.)",
+          hi: "14 मी व्यास का एक कुआँ 15 मी गहरा खोदा जाता है। खोदी गई मिट्टी का आयतन मी³ में क्या है? (π = 22/7 लें।)",
+          mr: "14 मी व्यासाची एक विहीर 15 मी खोल खोदली जाते. खोदलेल्या मातीचे घनफळ मी³ मध्ये काय? (π = 22/7 घ्या.)",
+        },
+        answer: 2310,
+        wrong: [154, 1540, 4620],
+        checkExpr: "22*49*15/7",
+        solution: {
+          en: "The well is a cylinder of radius 7 m, depth 15 m: volume = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 m³.",
+          hi: "कुआँ 7 मी त्रिज्या, 15 मी गहराई का बेलन: आयतन = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 मी³।",
+          mr: "विहीर 7 मी त्रिज्या, 15 मी खोलीचा दंडगोल: घनफळ = πr²h = (22/7)·49·15 = 22·49·15/7 = 2310 मी³.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-surface-areas-volumes",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 12 — Surface Areas and Volumes",
+      name: "Surface Areas and Volumes",
+      summary:
+        "Solids measured and melted: the surface areas and volumes of cube, cylinder, cone, sphere and hemisphere, combined into toys and tanks, the frustum of a sliced cone, and volume conserved when one shape is recast into another.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "पृष्ठीय क्षेत्रफल और आयतन",
+          summary:
+            "ठोस नापे और पिघलाए: घन, बेलन, शंकु, गोला और अर्धगोले के पृष्ठीय क्षेत्रफल और आयतन, खिलौनों-टंकियों में जुड़े, कटे शंकु का छिन्नक, और एक आकृति को दूसरी में ढालने पर संरक्षित आयतन।",
+        },
+        mr: {
+          name: "पृष्ठफळ आणि घनफळ",
+          summary:
+            "घन मोजलेले आणि वितळवलेले: घन, दंडगोल, शंकू, गोल आणि अर्धगोलाचे पृष्ठफळ आणि घनफळ, खेळणी-टाक्यांत जोडलेले, कापलेल्या शंकूचा छिन्नक, आणि एक आकृती दुसरीत ओतताना संधारित घनफळ.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+
 export const G10_MATHS: TopicFileOut[] = [
   realNumbers(),
   polynomials10(),
@@ -2875,4 +3819,7 @@ export const G10_MATHS: TopicFileOut[] = [
   triangles10(),
   introTrigonometry(),
   applicationsTrigonometry(),
+  circles10(),
+  areasRelatedCircles(),
+  surfaceVolumes10(),
 ];
