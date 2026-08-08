@@ -2509,10 +2509,13 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 23 chapters
-  — Class 3 Maths complete (14/14), Class 3 EVS at 7, Class 6 History at
-  2 — growing grade by grade toward Class 12. Suite re-pointed and green:
-  84 files, 1453 tests.
+  with it; `quiz:generate` now points at quiz2. Current bank: 51 chapters
+  / 724 questions — **Class 3 complete** (Maths 14/14, EVS 11), **Class 4
+  complete** (Maths 14/14 in `g4-maths.ts`, EVS 10 in `g4-evs.ts` —
+  Going to School, Nandu, Amrita, the honeybees, Omana's train, the
+  river, Basva's farm, the two waters, Pochampalli, Chuskit), Class 6
+  History at 2 exemplars — growing grade by grade toward Class 12. Suite
+  re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

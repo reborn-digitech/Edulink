@@ -1680,4 +1680,1004 @@ export const G4_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Omana's Journey (two days on a long-distance train)         */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-omanas-journey",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 6 — Omana's Journey",
+      hi: "अध्याय 6 — ओमना का सफ़र",
+      mr: "प्रकरण 6 — ओमनाचा प्रवास",
+    },
+    name: { en: "Omana's Journey", hi: "ओमना का सफ़र", mr: "ओमनाचा प्रवास" },
+    summary: {
+      en: "Two days on a train from Ahmedabad to Kerala — window pictures, platform sellers, the ticket checker, and berths that become beds.",
+      hi: "अहमदाबाद से केरल तक रेल के दो दिन — खिड़की की तस्वीरें, प्लेटफ़ॉर्म के बेचने वाले, टिकट बाबू, और सीटें जो बिस्तर बन जाती हैं।",
+      mr: "अहमदाबादहून केरळपर्यंत रेल्वेचे दोन दिवस — खिडकीची चित्रे, फलाटावरचे विक्रेते, तिकीट तपासनीस, आणि बाकांचे होणारे बिछाने.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "window",
+        name: { en: "The train window", hi: "रेल की खिड़की", mr: "रेल्वेची खिडकी" },
+        kind: "train-life",
+        prompt: {
+          en: "Where does Omana watch fields, rivers and hills slide past like a moving picture?",
+          hi: "ओमना खेतों, नदियों और पहाड़ियों को चलती तस्वीर-सा सरकते कहाँ से देखती है?",
+          mr: "ओमना शेते, नद्या आणि टेकड्या सरकत्या चित्रासारखी सरकताना कुठून पाहते?",
+        },
+        statement: {
+          en: "The train window shows the land sliding past — fields, rivers and hills changing hour by hour.",
+          hi: "रेल की खिड़की सरकती धरती दिखाती है — खेत, नदियाँ, पहाड़ियाँ, घंटे-घंटे बदलती हुईं।",
+          mr: "रेल्वेची खिडकी सरकती जमीन दाखवते — शेते, नद्या, टेकड्या, तासातासाला बदलणाऱ्या.",
+        },
+        pair: {
+          left: { en: "The train window", hi: "रेल की खिड़की", mr: "रेल्वेची खिडकी" },
+          right: { en: "a moving picture", hi: "चलती तस्वीर", mr: "सरकते चित्र" },
+        },
+      },
+      {
+        id: "vendors",
+        name: { en: "The platform sellers", hi: "प्लेटफ़ॉर्म के बेचने वाले", mr: "फलाटावरचे विक्रेते" },
+        kind: "train-people",
+        prompt: {
+          en: "At every station, who calls 'chai-chai!' and passes food up through the windows?",
+          hi: "हर स्टेशन पर 'चाय-चाय!' पुकारते हुए खिड़कियों से खाना कौन थमाता है?",
+          mr: "प्रत्येक स्थानकावर 'चहा-चहा!' पुकारत खिडक्यांतून खाणे कोण देतो?",
+        },
+        statement: {
+          en: "The platform sellers cry their wares at every halt — chai, vadas and fruit passed through the window bars.",
+          hi: "प्लेटफ़ॉर्म के बेचने वाले हर ठहराव पर आवाज़ लगाते हैं — खिड़की की सलाख़ों से चाय, वड़े और फल थमाते।",
+          mr: "फलाटावरचे विक्रेते प्रत्येक थांब्यावर पुकारा करतात — खिडकीच्या गजांतून चहा, वडे आणि फळे देत.",
+        },
+        pair: {
+          left: { en: "The platform sellers", hi: "प्लेटफ़ॉर्म के बेचने वाले", mr: "फलाटावरचे विक्रेते" },
+          right: { en: "chai at the window", hi: "खिड़की पर चाय", mr: "खिडकीशी चहा" },
+        },
+      },
+      {
+        id: "tc",
+        name: { en: "The ticket checker", hi: "टिकट बाबू (टीसी)", mr: "तिकीट तपासनीस (टीसी)" },
+        kind: "train-people",
+        prompt: {
+          en: "Who walks the coaches in a black coat, asking every traveller to show a ticket?",
+          hi: "काले कोट में डिब्बों से गुज़रते हुए हर मुसाफ़िर से टिकट कौन माँगता है?",
+          mr: "काळ्या कोटात डब्यांतून फिरत प्रत्येक प्रवाशाकडे तिकीट कोण मागतो?",
+        },
+        statement: {
+          en: "The ticket checker in his black coat walks coach to coach, checking every traveller's ticket.",
+          hi: "काले कोट वाला टिकट बाबू डिब्बे-डिब्बे घूमकर हर मुसाफ़िर का टिकट जाँचता है।",
+          mr: "काळ्या कोटातला तिकीट तपासनीस डब्याडब्यातून फिरून प्रत्येक प्रवाशाचे तिकीट तपासतो.",
+        },
+        pair: {
+          left: { en: "The ticket checker", hi: "टिकट बाबू", mr: "तिकीट तपासनीस" },
+          right: { en: "tickets, please", hi: "टिकट दिखाइए", mr: "तिकीट दाखवा" },
+        },
+      },
+      {
+        id: "berths",
+        name: { en: "The sleeping berths", hi: "सोने की बर्थें", mr: "झोपायचे बर्थ" },
+        kind: "train-life",
+        prompt: {
+          en: "At night the day's seats fold open into beds, one above another. What are these train-beds called?",
+          hi: "रात में दिन की सीटें एक के ऊपर एक बिस्तरों में खुल जाती हैं। इन रेल-बिस्तरों को क्या कहते हैं?",
+          mr: "रात्री दिवसाची आसने एकावर एक बिछान्यांत उघडतात. या रेल्वे-बिछान्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The berths fold out at night — the same coach that seats the travellers by day sleeps them in tiers by dark.",
+          hi: "रात में बर्थें खुल जाती हैं — जो डिब्बा दिन में बिठाता है, वही अँधेरे में तह-दर-तह सुला देता है।",
+          mr: "रात्री बर्थ उघडतात — जो डबा दिवसा बसवतो, तोच अंधारात थरांथरांनी निजवतो.",
+        },
+        detail: {
+          en: "Folding beds let one coach do two jobs — sitting room by day, sleeping room by night.",
+          hi: "तह होते बिस्तर एक डिब्बे से दो काम लेते हैं — दिन में बैठक, रात में शयन।",
+          mr: "घडीचे बिछाने एका डब्याकडून दोन कामे करवतात — दिवसा बैठक, रात्री शयनगृह.",
+        },
+        extra: {
+          en: "Omana's ticket named her coach and her berth, so her bed travelled booked ahead of her.",
+          hi: "ओमना के टिकट पर उसका डिब्बा और बर्थ लिखी थी — उसका बिस्तर उससे पहले ही बुक होकर चल रहा था।",
+          mr: "ओमनाच्या तिकिटावर तिचा डबा आणि बर्थ लिहिला होता — तिचा बिछाना तिच्याआधीच आरक्षित होऊन धावत होता.",
+        },
+        pair: {
+          left: { en: "The berths", hi: "बर्थें", mr: "बर्थ" },
+          right: { en: "beds by night", hi: "रात के बिस्तर", mr: "रात्रीचे बिछाने" },
+        },
+      },
+      {
+        id: "longtrain",
+        name: {
+          en: "The long-distance train",
+          hi: "लंबी दूरी की रेल",
+          mr: "लांब पल्ल्याची रेल्वे",
+        },
+        kind: "train-life",
+        prompt: {
+          en: "What kind of train carries Omana for two whole days and nights, crossing several states without her changing seats?",
+          hi: "कौन-सी रेल ओमना को पूरे दो दिन-रात ले चलती है, कई राज्य पार करती हुई, बिना सीट बदले?",
+          mr: "कोणती रेल्वे ओमनाला अख्खे दोन दिवस-रात्री नेते, अनेक राज्ये ओलांडत, जागा न बदलता?",
+        },
+        statement: {
+          en: "The long-distance train runs day and night for two days, crossing state after state on one ticket.",
+          hi: "लंबी दूरी की रेल दो दिन-रात चलती है — एक ही टिकट पर राज्य-दर-राज्य पार करती।",
+          mr: "लांब पल्ल्याची रेल्वे दोन दिवस-रात्री धावते — एकाच तिकिटावर राज्यामागून राज्य ओलांडत.",
+        },
+      },
+      {
+        id: "greeningland",
+        name: {
+          en: "The land turning green",
+          hi: "हरी होती धरती",
+          mr: "हिरवी होत जाणारी भूमी",
+        },
+        kind: "train-life",
+        prompt: {
+          en: "As the train runs south toward Kerala, what change does Omana see spreading outside — dry fields giving way to what?",
+          hi: "रेल के दक्षिण में केरल की ओर बढ़ने पर ओमना बाहर क्या बदलता देखती है — सूखे खेत किसे जगह देते हैं?",
+          mr: "रेल्वे दक्षिणेकडे केरळकडे धावताना ओमना बाहेर काय बदलताना पाहते — कोरडी शेते कशाला जागा देतात?",
+        },
+        statement: {
+          en: "As the train runs south the land turns greener — paddy fields, water and coconut palms fill the window near Kerala.",
+          hi: "रेल के दक्षिण बढ़ते-बढ़ते धरती हरी होती जाती है — केरल के पास खिड़की धान, पानी और नारियल के पेड़ों से भर जाती है।",
+          mr: "रेल्वे दक्षिणेकडे धावता धावता भूमी हिरवी होत जाते — केरळजवळ खिडकी भात, पाणी आणि नारळांच्या झाडांनी भरते.",
+        },
+        pair: {
+          left: { en: "Nearing Kerala", hi: "केरल के पास", mr: "केरळजवळ" },
+          right: {
+            en: "coconut palms in the window",
+            hi: "खिड़की में नारियल के पेड़",
+            mr: "खिडकीत नारळाची झाडे",
+          },
+        },
+      },
+      {
+        id: "platform",
+        name: { en: "The railway platform", hi: "रेलवे प्लेटफ़ॉर्म", mr: "रेल्वे फलाट" },
+        kind: "train-life",
+        prompt: {
+          en: "Where do travellers wait with their luggage for the train to draw in beside them?",
+          hi: "मुसाफ़िर सामान लिए कहाँ प्रतीक्षा करते हैं कि रेल उनके बग़ल में आ लगे?",
+          mr: "प्रवासी सामानासह कुठे वाट पाहतात की रेल्वे त्यांच्या शेजारी येऊन लागावी?",
+        },
+        statement: {
+          en: "The platform is where travellers wait — trains draw in beside it so doors open level with the crowd.",
+          hi: "प्लेटफ़ॉर्म प्रतीक्षा की जगह है — रेल उसी के बग़ल में लगती है ताकि दरवाज़े भीड़ की ऊँचाई पर खुलें।",
+          mr: "फलाट ही वाट पाहण्याची जागा — रेल्वे त्याच्याच शेजारी लागते म्हणजे दारे गर्दीच्या उंचीवर उघडतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put Omana's journey in order: the TC checks her ticket aboard; she waits on the platform; the family buys tickets; the train draws in and she boards. Which order is right?",
+          hi: "ओमना का सफ़र क्रम में रखिए: टीसी गाड़ी में टिकट जाँचता है; वह प्लेटफ़ॉर्म पर प्रतीक्षा करती है; परिवार टिकट ख़रीदता है; रेल आ लगती है और वह चढ़ती है। कौन-सा क्रम सही है?",
+          mr: "ओमनाचा प्रवास क्रमाने लावा: टीसी गाडीत तिकीट तपासतो; ती फलाटावर वाट पाहते; कुटुंब तिकिटे घेते; रेल्वे येऊन लागते आणि ती चढते. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "tickets bought → platform wait → train boarded → TC checks",
+            hi: "टिकट ख़रीदे → प्लेटफ़ॉर्म पर प्रतीक्षा → रेल में चढ़े → टीसी की जाँच",
+            mr: "तिकिटे घेतली → फलाटावर वाट → रेल्वेत चढले → टीसीची तपासणी",
+          },
+          {
+            en: "platform wait → TC checks → tickets bought → train boarded",
+            hi: "प्लेटफ़ॉर्म पर प्रतीक्षा → टीसी की जाँच → टिकट ख़रीदे → रेल में चढ़े",
+            mr: "फलाटावर वाट → टीसीची तपासणी → तिकिटे घेतली → रेल्वेत चढले",
+          },
+          {
+            en: "train boarded → tickets bought → platform wait → TC checks",
+            hi: "रेल में चढ़े → टिकट ख़रीदे → प्लेटफ़ॉर्म पर प्रतीक्षा → टीसी की जाँच",
+            mr: "रेल्वेत चढले → तिकिटे घेतली → फलाटावर वाट → टीसीची तपासणी",
+          },
+          {
+            en: "TC checks → train boarded → platform wait → tickets bought",
+            hi: "टीसी की जाँच → रेल में चढ़े → प्लेटफ़ॉर्म पर प्रतीक्षा → टिकट ख़रीदे",
+            mr: "टीसीची तपासणी → रेल्वेत चढले → फलाटावर वाट → तिकिटे घेतली",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each step needs the one before: no platform without a ticket to travel on, no boarding before the train arrives at that platform, and the TC can only check a ticket already bought, aboard a train already boarded. The journey's paper trail runs in one direction.",
+          hi: "हर क़दम को पिछला चाहिए: बिना टिकट के प्लेटफ़ॉर्म कैसा, रेल के आए बिना चढ़ना कैसा, और टीसी वही टिकट जाँच सकता है जो ख़रीदा जा चुका हो — उसी रेल में जो पकड़ी जा चुकी हो। सफ़र की काग़ज़ी डोर एक ही दिशा में चलती है।",
+          mr: "प्रत्येक पावलाला मागचे हवे: तिकिटाशिवाय फलाट कसला, रेल्वे आल्याशिवाय चढणे कसले, आणि टीसी तेच तिकीट तपासू शकतो जे घेतले गेले आहे — त्याच गाडीत जी पकडली गेली आहे. प्रवासाची कागदी दोरी एकाच दिशेने जाते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Omana boarded in dusty Ahmedabad; two days later the same window is full of water, paddy and coconut trees. The train did not change — what did?",
+          hi: "ओमना धूल भरे अहमदाबाद में चढ़ी; दो दिन बाद वही खिड़की पानी, धान और नारियल के पेड़ों से भरी है। रेल तो नहीं बदली — तो क्या बदला?",
+          mr: "ओमना धुळकट अहमदाबादेत चढली; दोन दिवसांनी तीच खिडकी पाणी, भात आणि नारळांच्या झाडांनी भरली आहे. रेल्वे बदलली नाही — मग काय बदलले?",
+        },
+        choices: [
+          {
+            en: "The land itself — India's regions differ in rain and soil, and two days of rails cross from dry country into wet, green country",
+            hi: "धरती ही — भारत के प्रदेश बारिश और मिट्टी में अलग-अलग हैं, और पटरियों के दो दिन सूखे प्रदेश से भीगे, हरे प्रदेश तक ले जाते हैं",
+            mr: "भूमीच — भारताचे प्रदेश पाऊस आणि मातीत वेगवेगळे आहेत, आणि रुळांचे दोन दिवस कोरड्या प्रदेशातून ओल्या, हिरव्या प्रदेशात नेतात",
+          },
+          {
+            en: "The seasons — two days aboard turned summer into the rains",
+            hi: "मौसम — रेल के दो दिनों में गर्मी बरसात बन गई",
+            mr: "ऋतू — गाडीतल्या दोन दिवसांत उन्हाळ्याचा पावसाळा झाला",
+          },
+          {
+            en: "Omana's eyes grew used to the window and saw more",
+            hi: "ओमना की आँखें खिड़की की अभ्यस्त हो गईं और ज़्यादा देखने लगीं",
+            mr: "ओमनाचे डोळे खिडकीला सरावले आणि जास्त पाहू लागले",
+          },
+          {
+            en: "Gardeners plant the trees along the track for travellers",
+            hi: "माली पटरी किनारे मुसाफ़िरों के लिए पेड़ लगाते हैं",
+            mr: "माळी रुळांकाठी प्रवाशांसाठी झाडे लावतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two days is far too short for seasons to turn — but long enough for rails to cross half of India. Gujarat's dry fields and Kerala's wet green ones exist at the same moment; the train simply carried Omana from one to the other. A long journey is a geography lesson read at window-speed.",
+          hi: "मौसम बदलने के लिए दो दिन बहुत कम हैं — पर पटरियों के लिए आधा भारत पार करने को काफ़ी। गुजरात के सूखे खेत और केरल के भीगे हरे खेत एक ही पल में मौजूद हैं; रेल ने बस ओमना को एक से दूसरे तक पहुँचा दिया। लंबा सफ़र खिड़की की रफ़्तार से पढ़ा भूगोल का पाठ है।",
+          mr: "ऋतू बदलायला दोन दिवस फारच थोडे — पण रुळांना अर्धा भारत ओलांडायला पुरेसे. गुजरातची कोरडी शेते आणि केरळची ओली हिरवी शेते एकाच क्षणी अस्तित्वात आहेत; रेल्वेने फक्त ओमनाला एकातून दुसऱ्यात पोहोचवले. लांबचा प्रवास म्हणजे खिडकीच्या वेगाने वाचलेला भूगोलाचा धडा.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — A River's Tale (one river, many hands, one duty)           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-a-rivers-tale",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 13 — A River's Tale",
+      hi: "अध्याय 13 — नदी की कहानी",
+      mr: "प्रकरण 13 — नदीची गोष्ट",
+    },
+    name: { en: "A River's Tale", hi: "नदी की कहानी", mr: "नदीची गोष्ट" },
+    summary: {
+      en: "From a mountain spring to the sea — the fields, ghats, boats and towns a river serves on its way, and what the towns give it back.",
+      hi: "पहाड़ के सोते से समुद्र तक — रास्ते में नदी जिन खेतों, घाटों, नावों और शहरों की सेवा करती है, और शहर उसे बदले में क्या देते हैं।",
+      mr: "डोंगरातल्या झऱ्यापासून समुद्रापर्यंत — वाटेत नदी ज्या शेतांची, घाटांची, होड्यांची आणि शहरांची सेवा करते, आणि शहरे तिला परत काय देतात.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "spring",
+        name: { en: "The mountain spring", hi: "पहाड़ का सोता", mr: "डोंगरातला झरा" },
+        kind: "river-stage",
+        seq: 1,
+        prompt: {
+          en: "Where is a river born — a thin thread of clear water starting high among the rocks?",
+          hi: "नदी जन्म कहाँ लेती है — चट्टानों के बीच ऊँचाई से शुरू होती साफ़ पानी की पतली धार?",
+          mr: "नदी जन्म कुठे घेते — खडकांमध्ये उंचावर सुरू होणारी नितळ पाण्याची बारीक धार?",
+        },
+        statement: {
+          en: "The river begins as a mountain spring — a thin, clear thread trickling out high among the rocks.",
+          hi: "नदी पहाड़ के सोते से शुरू होती है — चट्टानों के बीच ऊँचाई पर रिसती पतली, साफ़ धार।",
+          mr: "नदी डोंगरातल्या झऱ्याने सुरू होते — खडकांमध्ये उंचावर झिरपणारी बारीक, नितळ धार.",
+        },
+        pair: {
+          left: { en: "The spring", hi: "सोता", mr: "झरा" },
+          right: {
+            en: "the river's clear beginning",
+            hi: "नदी की साफ़ शुरुआत",
+            mr: "नदीची नितळ सुरुवात",
+          },
+        },
+      },
+      {
+        id: "canalfields",
+        name: {
+          en: "The canal to the fields",
+          hi: "खेतों की नहर",
+          mr: "शेतांचा कालवा",
+        },
+        kind: "river-stage",
+        seq: 2,
+        prompt: {
+          en: "What carries the river's water sideways into the farmland, so crops can drink far from the bank?",
+          hi: "नदी का पानी खेतों की ओर मोड़कर कौन ले जाता है, ताकि किनारे से दूर की फ़सलें भी पी सकें?",
+          mr: "नदीचे पाणी शेतीकडे वळवून कोण नेतो, म्हणजे काठापासून दूरची पिकेही पिऊ शकतात?",
+        },
+        statement: {
+          en: "Canals lead the river's water into the fields — crops far from the bank drink through these dug channels.",
+          hi: "नहरें नदी का पानी खेतों तक ले जाती हैं — किनारे से दूर की फ़सलें इन्हीं खुदी नालियों से पीती हैं।",
+          mr: "कालवे नदीचे पाणी शेतांपर्यंत नेतात — काठापासून दूरची पिके या खोदलेल्या पाटांतून पितात.",
+        },
+        pair: {
+          left: { en: "The canal", hi: "नहर", mr: "कालवा" },
+          right: {
+            en: "river water for far fields",
+            hi: "दूर के खेतों को नदी-जल",
+            mr: "दूरच्या शेतांना नदीचे पाणी",
+          },
+        },
+      },
+      {
+        id: "ghat",
+        name: { en: "The washing ghat", hi: "धोबी घाट", mr: "धुण्याचा घाट" },
+        kind: "river-people",
+        prompt: {
+          en: "On which riverside steps do clothes get soaped, beaten and rinsed each morning?",
+          hi: "नदी किनारे की किन सीढ़ियों पर रोज़ सुबह कपड़े साबुन लगाकर पटके और खँगाले जाते हैं?",
+          mr: "नदीकाठच्या कोणत्या पायऱ्यांवर रोज सकाळी कपडे साबण लावून आपटले आणि खंगाळले जातात?",
+        },
+        statement: {
+          en: "At the washing ghat the clothes of the town are soaped, beaten on stone and rinsed in the river.",
+          hi: "धोबी घाट पर शहर के कपड़े साबुन लगाकर पत्थर पर पटके और नदी में खँगाले जाते हैं।",
+          mr: "धुण्याच्या घाटावर गावाचे कपडे साबण लावून दगडावर आपटले आणि नदीत खंगाळले जातात.",
+        },
+        pair: {
+          left: { en: "The washing ghat", hi: "धोबी घाट", mr: "धुण्याचा घाट" },
+          right: {
+            en: "clothes beaten on stone",
+            hi: "पत्थर पर पटकते कपड़े",
+            mr: "दगडावर आपटलेले कपडे",
+          },
+        },
+      },
+      {
+        id: "fisherman",
+        name: { en: "The fisherman", hi: "मछुआरा", mr: "कोळी" },
+        kind: "river-people",
+        prompt: {
+          en: "Who casts a net from a narrow boat at dawn, and eats or sells what the river gives?",
+          hi: "पौ फटते सँकरी नाव से जाल कौन फेंकता है, और नदी जो दे उसे खाता या बेचता है?",
+          mr: "पहाटे अरुंद होडीतून जाळे कोण टाकतो, आणि नदी देईल ते खातो वा विकतो?",
+        },
+        statement: {
+          en: "The fisherman casts his net from a narrow boat — the river's fish are his food and his earning.",
+          hi: "मछुआरा सँकरी नाव से जाल डालता है — नदी की मछलियाँ उसका भोजन भी हैं और कमाई भी।",
+          mr: "कोळी अरुंद होडीतून जाळे टाकतो — नदीतले मासे हेच त्याचे अन्न आणि कमाई.",
+        },
+        pair: {
+          left: { en: "The fisherman", hi: "मछुआरा", mr: "कोळी" },
+          right: { en: "a net at dawn", hi: "भोर का जाल", mr: "पहाटेचे जाळे" },
+        },
+      },
+      {
+        id: "towndrains",
+        name: { en: "The town's drains", hi: "शहर की नालियाँ", mr: "शहराची गटारे" },
+        kind: "river-stage",
+        seq: 3,
+        prompt: {
+          en: "As the river passes the big town, what pours into it and turns the clear water grey?",
+          hi: "बड़े शहर से गुज़रते हुए नदी में क्या उँडेला जाता है, जो साफ़ पानी को मटमैला कर देता है?",
+          mr: "मोठ्या शहराजवळून जाताना नदीत काय ओतले जाते, जे नितळ पाणी करडे करते?",
+        },
+        statement: {
+          en: "The town's drains empty into the passing river — soap, waste and rubbish turn the clear water grey.",
+          hi: "शहर की नालियाँ गुज़रती नदी में खुलती हैं — साबुन, कचरा और गंदगी साफ़ पानी को मटमैला कर देते हैं।",
+          mr: "शहराची गटारे जाणाऱ्या नदीत रिकामी होतात — साबण, कचरा आणि घाण नितळ पाणी करडे करतात.",
+        },
+        detail: {
+          en: "What one town pours in, the next town downstream must drink or clean.",
+          hi: "जो एक शहर उँडेलता है, वह नीचे के अगले शहर को पीना या साफ़ करना पड़ता है।",
+          mr: "एक शहर जे ओतते, ते खालच्या पुढच्या शहराला प्यावे किंवा स्वच्छ करावे लागते.",
+        },
+        extra: {
+          en: "The river cannot refuse anything thrown into it — it can only carry it onward.",
+          hi: "नदी उसमें फेंकी कोई चीज़ लौटा नहीं सकती — बस आगे ढो सकती है।",
+          mr: "नदी तिच्यात टाकलेले काही नाकारू शकत नाही — फक्त पुढे वाहून नेऊ शकते.",
+        },
+        pair: {
+          left: { en: "The town's drains", hi: "शहर की नालियाँ", mr: "शहराची गटारे" },
+          right: {
+            en: "grey water downstream",
+            hi: "नीचे की ओर मटमैला पानी",
+            mr: "खाली वाहणारे करडे पाणी",
+          },
+        },
+      },
+      {
+        id: "boatman",
+        name: { en: "The boatman", hi: "नाविक", mr: "नावाडी" },
+        kind: "river-people",
+        prompt: {
+          en: "Where the river is wide and the bridge is far, who rows people from one bank to the other?",
+          hi: "जहाँ नदी चौड़ी है और पुल दूर, वहाँ लोगों को एक किनारे से दूसरे तक कौन खेता है?",
+          mr: "जिथे नदी रुंद आहे आणि पूल दूर, तिथे माणसांना एका काठावरून दुसऱ्या काठावर कोण वल्हवत नेतो?",
+        },
+        statement: {
+          en: "The boatman ferries people and loads across the wide river, trip after trip, where no bridge stands near.",
+          hi: "नाविक चौड़ी नदी के आर-पार लोगों और बोझ को फेरा-दर-फेरा ले जाता है, जहाँ पास कोई पुल नहीं।",
+          mr: "नावाडी रुंद नदीपार माणसे आणि ओझी फेरीमागून फेरी नेतो, जिथे जवळ पूल नाही.",
+        },
+      },
+      {
+        id: "sea",
+        name: { en: "The sea", hi: "समुद्र", mr: "समुद्र" },
+        kind: "river-stage",
+        seq: 4,
+        prompt: {
+          en: "Where does the river's long journey end, its water joining a vastness that no far bank closes?",
+          hi: "नदी का लंबा सफ़र कहाँ ख़त्म होता है — उसका पानी उस विशालता से मिलता है जिसे कोई दूसरा किनारा नहीं बाँधता?",
+          mr: "नदीचा लांब प्रवास कुठे संपतो — तिचे पाणी त्या अफाटतेत मिळते जिला पलीकडचा काठ नाही?",
+        },
+        statement: {
+          en: "The river ends in the sea — all its gathered water, clean and dirty alike, pours into the salt vastness.",
+          hi: "नदी समुद्र में समाप्त होती है — उसका सारा बटोरा पानी, साफ़ हो या गंदा, खारी विशालता में जा मिलता है।",
+          mr: "नदी समुद्रात संपते — तिचे सारे जमवलेले पाणी, स्वच्छ असो वा गढूळ, खाऱ्या अफाटतेत जाऊन मिळते.",
+        },
+        pair: {
+          left: { en: "The sea", hi: "समुद्र", mr: "समुद्र" },
+          right: {
+            en: "the journey's end",
+            hi: "सफ़र का अंत",
+            mr: "प्रवासाचा शेवट",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "The upstream town washes, bathes and empties its drains in the river; the downstream town must drink from the same river. Who holds the downstream town's health in their hands?",
+          hi: "ऊपर का शहर नदी में धोता, नहाता और नालियाँ खोलता है; नीचे के शहर को उसी नदी से पीना है। नीचे के शहर की सेहत किसके हाथों में है?",
+          mr: "वरचे शहर नदीत धुते, न्हाते आणि गटारे सोडते; खालच्या शहराला त्याच नदीतून प्यायचे आहे. खालच्या शहराचे आरोग्य कोणाच्या हातात आहे?",
+        },
+        choices: [
+          {
+            en: "The upstream town's — what it pours in flows straight to its neighbour's drinking pots",
+            hi: "ऊपर वाले शहर के — वह जो उँडेलता है, वही सीधे पड़ोसी के पीने के घड़ों तक बहता है",
+            mr: "वरच्या शहराच्या — ते जे ओतते, तेच थेट शेजाऱ्याच्या पिण्याच्या घागरींपर्यंत वाहते",
+          },
+          {
+            en: "Nobody's — a river cleans itself completely every few metres",
+            hi: "किसी के नहीं — नदी हर कुछ मीटर पर ख़ुद को पूरा साफ़ कर लेती है",
+            mr: "कोणाच्याच नाही — नदी दर काही मीटरांवर स्वतःला पूर्ण स्वच्छ करते",
+          },
+          {
+            en: "Only the downstream town's — each town must simply manage what reaches it",
+            hi: "केवल नीचे वाले शहर के — हर शहर को जो पहुँचे उसे सँभालना ही है",
+            mr: "फक्त खालच्या शहराच्या — प्रत्येक शहराने जे पोहोचेल ते निभावायचेच",
+          },
+          {
+            en: "The sea's — everything is settled where the river ends",
+            hi: "समुद्र के — सब कुछ वहीं तय होता है जहाँ नदी ख़त्म होती है",
+            mr: "समुद्राच्या — सारे तिथेच ठरते जिथे नदी संपते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A river runs one way, so a town never drinks its own waste — it drinks its upstream neighbour's. That is the chapter's quiet lesson in responsibility: keeping the river clean is not a kindness a town does for itself but a duty it owes to every town below it. And since almost every town has another below it, the duty belongs to all.",
+          hi: "नदी एक ही दिशा में बहती है, इसलिए कोई शहर अपनी गंदगी नहीं पीता — वह अपने ऊपर वाले पड़ोसी की पीता है। यही अध्याय का ज़िम्मेदारी वाला चुपचाप सबक़ है: नदी को साफ़ रखना कोई शहर अपने लिए नहीं करता, वह हर नीचे वाले शहर का उस पर बक़ाया फ़र्ज़ है। और चूँकि लगभग हर शहर के नीचे कोई और शहर है, यह फ़र्ज़ सबका है।",
+          mr: "नदी एकाच दिशेने वाहते, म्हणून कोणतेही शहर स्वतःची घाण पीत नाही — ते वरच्या शेजाऱ्याची पिते. हाच धड्याचा जबाबदारीचा शांत पाठ: नदी स्वच्छ ठेवणे हे शहर स्वतःसाठी करत नाही, तर खालच्या प्रत्येक शहराचे त्याच्यावरचे ते देणे आहे. आणि जवळजवळ प्रत्येक शहराखाली दुसरे शहर असल्याने, हे देणे साऱ्यांचे आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The same river waters fields, washes clothes, carries boats, gives fish and takes the drains. If it dried up for one season, who all would feel it?",
+          hi: "एक ही नदी खेत सींचती, कपड़े धुलवाती, नावें चलवाती, मछलियाँ देती और नालियाँ ढोती है। अगर वह एक मौसम सूख जाए, तो किस-किस को महसूस होगा?",
+          mr: "एकच नदी शेते भिजवते, कपडे धुऊ देते, होड्या चालवते, मासे देते आणि गटारे वाहते. ती एक हंगाम आटली, तर कोणाकोणाला जाणवेल?",
+        },
+        choices: [
+          {
+            en: "Everyone in the tale — farmer, washerman, boatman, fisherman and both towns — because all their different works drink from one water",
+            hi: "कहानी के सभी — किसान, धोबी, नाविक, मछुआरा और दोनों शहर — क्योंकि उनके अलग-अलग सारे काम एक ही पानी से चलते हैं",
+            mr: "गोष्टीतले सारे — शेतकरी, परीट, नावाडी, कोळी आणि दोन्ही शहरे — कारण त्यांची निरनिराळी सारी कामे एकाच पाण्यावर चालतात",
+          },
+          {
+            en: "Only the fisherman — the others can use wells",
+            hi: "केवल मछुआरा — बाक़ी कुएँ इस्तेमाल कर सकते हैं",
+            mr: "फक्त कोळी — बाकीचे विहिरी वापरू शकतात",
+          },
+          {
+            en: "Only the farmers — fields need the most water",
+            hi: "केवल किसान — खेतों को सबसे ज़्यादा पानी चाहिए",
+            mr: "फक्त शेतकरी — शेतांना सर्वाधिक पाणी लागते",
+          },
+          {
+            en: "Nobody for long — rivers return in a week or two",
+            hi: "किसी को ज़्यादा दिन नहीं — नदियाँ हफ़्ते-दो हफ़्ते में लौट आती हैं",
+            mr: "कोणालाच फार काळ नाही — नद्या आठ-पंधरा दिवसांत परततात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Walk back through the chapter and count the hands in the river: the canal's crops wither, the ghat's washing stops, the boatman's ferry grounds, the fisherman's net comes up empty, and two towns queue at wells that a whole valley now shares. One river is not one thing — it is everyone's different livelihood flowing in a single channel, which is exactly why its drying is everyone's disaster.",
+          hi: "अध्याय में लौटकर नदी में डूबे हाथ गिनिए: नहर की फ़सलें मुरझाती हैं, घाट की धुलाई रुकती है, नाविक की नाव ज़मीन पकड़ती है, मछुआरे का जाल ख़ाली उठता है, और दो शहर उन कुओं की क़तार में लगते हैं जो अब पूरी घाटी बाँट रही है। एक नदी एक चीज़ नहीं — एक ही धारा में बहती सबकी अलग-अलग रोज़ी है, और ठीक इसीलिए उसका सूखना सबकी आपदा है।",
+          mr: "धड्यात परत जाऊन नदीतले हात मोजा: कालव्याची पिके कोमेजतात, घाटाची धुणी थांबते, नावाड्याची होडी जमीन धरते, कोळ्याचे जाळे रिकामे निघते, आणि दोन शहरे त्या विहिरींच्या रांगेत उभी राहतात ज्या आता अख्खी दरी वाटून घेते. एक नदी म्हणजे एक गोष्ट नव्हे — एकाच प्रवाहात वाहणारी साऱ्यांची निरनिराळी रोजीरोटी, आणि नेमके म्हणूनच तिचे आटणे ही साऱ्यांची आपत्ती.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 23 — Pochampalli (the weaver town and its dyed-first patterns)  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-pochampalli",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 23 — Pochampalli",
+      hi: "अध्याय 23 — पोचमपल्ली",
+      mr: "प्रकरण 23 — पोचमपल्ली",
+    },
+    name: { en: "Pochampalli", hi: "पोचमपल्ली", mr: "पोचमपल्ली" },
+    summary: {
+      en: "A Telangana town where whole families weave — silk threads dyed into patterns BEFORE the loom, and saris that carry the town's own name.",
+      hi: "तेलंगाना का एक क़स्बा जहाँ पूरे परिवार बुनते हैं — रेशमी धागे करघे से पहले ही पैटर्न में रँगे जाते हैं, और साड़ियाँ क़स्बे का अपना नाम ओढ़ती हैं।",
+      mr: "तेलंगणातले एक गाव जिथे अख्खी कुटुंबे विणतात — रेशमी धागे मागाआधीच नक्षीत रंगवले जातात, आणि साड्या गावाचेच नाव लेवून मिरवतात.",
+    },
+    position: 23,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "pochampallitown",
+        name: { en: "Pochampalli", hi: "पोचमपल्ली", mr: "पोचमपल्ली" },
+        kind: "weaving-world",
+        prompt: {
+          en: "Which Telangana town is so famous for its weaving that its saris are called by the town's own name?",
+          hi: "तेलंगाना का कौन-सा क़स्बा बुनाई के लिए इतना मशहूर है कि उसकी साड़ियाँ क़स्बे के ही नाम से पुकारी जाती हैं?",
+          mr: "तेलंगणातले कोणते गाव विणकामासाठी इतके प्रसिद्ध आहे की तिथल्या साड्या गावाच्याच नावाने ओळखल्या जातात?",
+        },
+        statement: {
+          en: "Pochampalli is a weaving town — its silk saris are known across the country by the town's own name.",
+          hi: "पोचमपल्ली बुनकरों का क़स्बा है — उसकी रेशमी साड़ियाँ देश भर में क़स्बे के ही नाम से जानी जाती हैं।",
+          mr: "पोचमपल्ली हे विणकरांचे गाव — तिथल्या रेशमी साड्या देशभर गावाच्याच नावाने ओळखल्या जातात.",
+        },
+        pair: {
+          left: { en: "Pochampalli", hi: "पोचमपल्ली", mr: "पोचमपल्ली" },
+          right: {
+            en: "saris named for a town",
+            hi: "क़स्बे के नाम की साड़ियाँ",
+            mr: "गावाच्या नावाच्या साड्या",
+          },
+        },
+      },
+      {
+        id: "loom",
+        name: { en: "The loom", hi: "करघा", mr: "माग" },
+        kind: "weaving-world",
+        prompt: {
+          en: "Which large wooden frame, filling a whole room of the weaver's house, crosses thread over thread into cloth?",
+          hi: "बुनकर के घर का पूरा कमरा घेरने वाला कौन-सा बड़ा लकड़ी का ढाँचा धागे पर धागा चढ़ाकर कपड़ा बुनता है?",
+          mr: "विणकराच्या घरातली अख्खी खोली व्यापणारा कोणता मोठा लाकडी सांगाडा धाग्यावर धागा चढवून कापड विणतो?",
+        },
+        statement: {
+          en: "The loom stands inside the weaver's own house — a wooden frame where crossing threads slowly become cloth.",
+          hi: "करघा बुनकर के अपने घर में खड़ा है — लकड़ी का ढाँचा, जहाँ आड़े-तिरछे धागे धीरे-धीरे कपड़ा बनते हैं।",
+          mr: "माग विणकराच्या स्वतःच्या घरात उभा असतो — लाकडी सांगाडा, जिथे आडवे-उभे धागे हळूहळू कापड होतात.",
+        },
+        pair: {
+          left: { en: "The loom", hi: "करघा", mr: "माग" },
+          right: {
+            en: "cloth grown thread by thread",
+            hi: "धागे-धागे उगता कपड़ा",
+            mr: "धाग्याधाग्याने वाढणारे कापड",
+          },
+        },
+      },
+      {
+        id: "ikat",
+        name: {
+          en: "Tie-and-dye (ikat)",
+          hi: "बाँधकर रँगाई (इकत)",
+          mr: "बांधून रंगवणे (इकत)",
+        },
+        kind: "weaving-world",
+        prompt: {
+          en: "In Pochampalli's special way, when does the pattern get its colour — on the finished cloth, or on the THREADS before weaving begins?",
+          hi: "पोचमपल्ली के ख़ास ढंग में पैटर्न को रंग कब मिलता है — बुने हुए कपड़े पर, या बुनाई शुरू होने से पहले धागों पर?",
+          mr: "पोचमपल्लीच्या खास पद्धतीत नक्षीला रंग कधी मिळतो — विणलेल्या कापडावर, की विणकाम सुरू होण्याआधी धाग्यांवर?",
+        },
+        statement: {
+          en: "In ikat the threads are tied and dyed BEFORE weaving — the pattern hides in the threads and appears as the cloth grows.",
+          hi: "इकत में धागे बुनाई से पहले बाँधकर रँगे जाते हैं — पैटर्न धागों में छिपा रहता है और कपड़े के बढ़ने के साथ उभरता है।",
+          mr: "इकतमध्ये धागे विणण्याआधी बांधून रंगवले जातात — नक्षी धाग्यांत लपलेली असते आणि कापड वाढेल तशी उमटत जाते.",
+        },
+        detail: {
+          en: "The weaver must see the finished design in the mind's eye while dyeing plain thread.",
+          hi: "बुनकर को सादा धागा रँगते समय पूरा डिज़ाइन मन की आँख से देखना पड़ता है।",
+          mr: "विणकराला साधा धागा रंगवतानाच पूर्ण नक्षी मनाच्या डोळ्याने पाहावी लागते.",
+        },
+        extra: {
+          en: "One badly dyed bundle can spoil a pattern that only shows weeks later on the loom.",
+          hi: "एक ग़लत रँगा गट्ठर वह पैटर्न बिगाड़ सकता है जो हफ़्तों बाद करघे पर दिखेगा।",
+          mr: "एक चुकीचा रंगवलेला जुडगा ती नक्षी बिघडवू शकतो जी आठवड्यांनी मागावर दिसणार असते.",
+        },
+        pair: {
+          left: { en: "Ikat", hi: "इकत", mr: "इकत" },
+          right: {
+            en: "dyed before it is woven",
+            hi: "बुनने से पहले रँगा हुआ",
+            mr: "विणण्याआधी रंगवलेले",
+          },
+        },
+      },
+      {
+        id: "weaverfamily",
+        name: { en: "The weaver family", hi: "बुनकर परिवार", mr: "विणकर कुटुंब" },
+        kind: "weaving-world",
+        prompt: {
+          en: "In Pochampalli, who all work on one sari — winding thread, tying, dyeing, weaving — old and young together?",
+          hi: "पोचमपल्ली में एक साड़ी पर कौन-कौन काम करते हैं — धागा लपेटना, बाँधना, रँगना, बुनना — बड़े-छोटे साथ-साथ?",
+          mr: "पोचमपल्लीत एका साडीवर कोण कोण काम करतात — धागा गुंडाळणे, बांधणे, रंगवणे, विणणे — लहानथोर मिळून?",
+        },
+        statement: {
+          en: "The whole family works on a sari — children wind thread, elders tie and dye, and the loom is shared turn by turn.",
+          hi: "पूरी साड़ी पर पूरा परिवार लगता है — बच्चे धागा लपेटते हैं, बड़े बाँधते-रँगते हैं, और करघा बारी-बारी सबका है।",
+          mr: "अख्ख्या साडीवर अख्खे कुटुंब राबते — मुले धागा गुंडाळतात, मोठे बांधतात-रंगवतात, आणि माग आळीपाळीने साऱ्यांचा.",
+        },
+        pair: {
+          left: { en: "The weaver family", hi: "बुनकर परिवार", mr: "विणकर कुटुंब" },
+          right: {
+            en: "every hand on one sari",
+            hi: "एक साड़ी पर सबके हाथ",
+            mr: "एका साडीवर साऱ्यांचे हात",
+          },
+        },
+      },
+      {
+        id: "silk",
+        name: { en: "Silk thread", hi: "रेशमी धागा", mr: "रेशमी धागा" },
+        kind: "weaving-world",
+        prompt: {
+          en: "Which fine, shining thread gives the Pochampalli sari its soft gleam?",
+          hi: "कौन-सा महीन, चमकीला धागा पोचमपल्ली साड़ी को उसकी मुलायम आभा देता है?",
+          mr: "कोणता बारीक, चमकदार धागा पोचमपल्ली साडीला तिची मऊ झळाळी देतो?",
+        },
+        statement: {
+          en: "Silk is the sari's shining thread — fine, strong and softly gleaming, costlier than cotton.",
+          hi: "रेशम साड़ी का चमकता धागा है — महीन, मज़बूत, मुलायम आभा वाला, सूत से महँगा।",
+          mr: "रेशीम हा साडीचा झळाळता धागा — बारीक, मजबूत, मऊ चमकीचा, सुताहून महाग.",
+        },
+      },
+      {
+        id: "trader",
+        name: { en: "The sari trader", hi: "साड़ियों का व्यापारी", mr: "साड्यांचा व्यापारी" },
+        kind: "weaving-world",
+        prompt: {
+          en: "Who buys the finished saris from the weavers' lanes and carries them to shops in far cities?",
+          hi: "बुनकरों की गलियों से तैयार साड़ियाँ कौन ख़रीदता है और दूर के शहरों की दुकानों तक ले जाता है?",
+          mr: "विणकरांच्या गल्ल्यांतून तयार साड्या कोण विकत घेतो आणि दूरच्या शहरांतल्या दुकानांत नेतो?",
+        },
+        statement: {
+          en: "The trader buys saris from the weavers and sells them in city shops — the price there is far above what the weaver was paid.",
+          hi: "व्यापारी बुनकरों से साड़ियाँ ख़रीदकर शहरों की दुकानों में बेचता है — वहाँ का दाम बुनकर को मिले दाम से कहीं ऊपर होता है।",
+          mr: "व्यापारी विणकरांकडून साड्या घेऊन शहरांतल्या दुकानांत विकतो — तिथला भाव विणकराला मिळालेल्या भावाहून कितीतरी वर असतो.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put a Pochampalli sari's making in order: the loom weaves the cloth; the threads are tied and dyed; the trader carries it to the city; the dyed threads are set on the loom. Which order is right?",
+          hi: "पोचमपल्ली साड़ी का बनना क्रम में रखिए: करघा कपड़ा बुनता है; धागे बाँधकर रँगे जाते हैं; व्यापारी उसे शहर ले जाता है; रँगे धागे करघे पर चढ़ाए जाते हैं। कौन-सा क्रम सही है?",
+          mr: "पोचमपल्ली साडीचे बनणे क्रमाने लावा: माग कापड विणतो; धागे बांधून रंगवले जातात; व्यापारी ती शहरात नेतो; रंगवलेले धागे मागावर चढवले जातात. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "tie and dye → set on the loom → weave → to the city",
+            hi: "बाँधकर रँगाई → करघे पर चढ़ाना → बुनाई → शहर को",
+            mr: "बांधून रंगवणे → मागावर चढवणे → विणणे → शहराकडे",
+          },
+          {
+            en: "weave → tie and dye → set on the loom → to the city",
+            hi: "बुनाई → बाँधकर रँगाई → करघे पर चढ़ाना → शहर को",
+            mr: "विणणे → बांधून रंगवणे → मागावर चढवणे → शहराकडे",
+          },
+          {
+            en: "set on the loom → to the city → tie and dye → weave",
+            hi: "करघे पर चढ़ाना → शहर को → बाँधकर रँगाई → बुनाई",
+            mr: "मागावर चढवणे → शहराकडे → बांधून रंगवणे → विणणे",
+          },
+          {
+            en: "to the city → weave → set on the loom → tie and dye",
+            hi: "शहर को → बुनाई → करघे पर चढ़ाना → बाँधकर रँगाई",
+            mr: "शहराकडे → विणणे → मागावर चढवणे → बांधून रंगवणे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Ikat's whole signature is the first step: colour goes onto THREAD, not cloth. So dyeing must come before the loom is dressed, the loom before any weaving, and only a finished sari can travel to the city. The second option is how ordinary printed cloth works — and exactly what Pochampalli does not do.",
+          hi: "इकत की पूरी पहचान पहला क़दम है: रंग कपड़े पर नहीं, धागे पर चढ़ता है। इसलिए रँगाई करघा सजाने से पहले, करघा बुनाई से पहले, और शहर सिर्फ़ बनी हुई साड़ी जाती है। दूसरा विकल्प छपे हुए आम कपड़े का तरीक़ा है — और ठीक वही जो पोचमपल्ली नहीं करती।",
+          mr: "इकतची सारी ओळख पहिल्या पावलात आहे: रंग कापडावर नव्हे, धाग्यावर चढतो. म्हणून रंगवणे माग सजवण्याआधी, माग विणण्याआधी, आणि शहरात फक्त तयार साडी जाते. दुसरा पर्याय छापील साध्या कापडाची रीत — आणि नेमके तेच पोचमपल्ली करत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A printer sees the design appear as he prints it; the ikat dyer colours plain threads weeks before any pattern can be seen. What must the ikat dyer have that the printer can manage without?",
+          hi: "छापने वाला डिज़ाइन को छपते-छपते उभरता देख लेता है; इकत का रँगरेज़ सादे धागों को हफ़्तों पहले रँगता है, जब कोई पैटर्न दिख ही नहीं सकता। इकत वाले के पास वह क्या होना चाहिए जिसके बिना छापने वाले का काम चल जाता है?",
+          mr: "छापणारा नक्षी छापता छापता उमटताना पाहतो; इकतचा रंगारी साधे धागे आठवडे आधी रंगवतो, जेव्हा कोणतीही नक्षी दिसूच शकत नाही. इकतवाल्याकडे ते काय हवे ज्याशिवाय छापणाऱ्याचे चालते?",
+        },
+        choices: [
+          {
+            en: "The whole finished pattern held in the mind — every tie placed now for a design that appears only weeks later on the loom",
+            hi: "मन में थमा पूरा तैयार पैटर्न — हर गाँठ अभी, उस डिज़ाइन के लिए जो हफ़्तों बाद करघे पर उभरेगा",
+            mr: "मनात धरलेली पूर्ण तयार नक्षी — प्रत्येक गाठ आत्ता, आठवड्यांनी मागावर उमटणाऱ्या नक्षीसाठी",
+          },
+          {
+            en: "Stronger dyes than the printer's",
+            hi: "छापने वाले से ज़्यादा गाढ़े रंग",
+            mr: "छापणाऱ्याहून गडद रंग",
+          },
+          {
+            en: "A bigger loom than other weavers",
+            hi: "बाक़ी बुनकरों से बड़ा करघा",
+            mr: "इतर विणकरांहून मोठा माग",
+          },
+          {
+            en: "Softer silk that takes colour faster",
+            hi: "जल्दी रंग पकड़ने वाला नरम रेशम",
+            mr: "लवकर रंग धरणारे मऊ रेशीम",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The printer works with his eyes; the ikat dyer works with foresight. Every knot tied on plain thread is a bet on where that thread will sit in cloth that does not yet exist — and the bet is settled weeks later, thread by thread, on the loom. That invisible planning is why an ikat pattern is prized, and why the skill takes a childhood in a weaver family to learn.",
+          hi: "छापने वाला आँखों से काम करता है; इकत का रँगरेज़ दूरदृष्टि से। सादे धागे पर बँधी हर गाँठ इस बात की बाज़ी है कि वह धागा उस कपड़े में कहाँ बैठेगा जो अभी है ही नहीं — और बाज़ी हफ़्तों बाद करघे पर धागा-धागा खुलती है। यही अदृश्य योजना इकत के पैटर्न को अनमोल बनाती है, और इसीलिए यह हुनर सीखने में बुनकर परिवार का पूरा बचपन लगता है।",
+          mr: "छापणारा डोळ्यांनी काम करतो; इकतचा रंगारी दूरदृष्टीने. साध्या धाग्यावरची प्रत्येक गाठ ही त्या धाग्याची अजून अस्तित्वातच नसलेल्या कापडातली जागा ओळखण्याची पैज आहे — आणि ती पैज आठवड्यांनी मागावर धाग्याधाग्याने सुटते. हीच अदृश्य आखणी इकतच्या नक्षीला मोल देते, आणि म्हणूनच हे कौशल्य शिकायला विणकर कुटुंबातले अख्खे बालपण लागते.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 27 — Chuskit Goes to School (the path, not the legs)            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-chuskit-goes-to-school",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 27 — Chuskit Goes to School",
+      hi: "अध्याय 27 — चुसकित स्कूल चली",
+      mr: "प्रकरण 27 — चुसकित शाळेला निघाली",
+    },
+    name: {
+      en: "Chuskit Goes to School",
+      hi: "चुसकित स्कूल चली",
+      mr: "चुसकित शाळेला निघाली",
+    },
+    summary: {
+      en: "In Ladakh, Chuskit's legs do not walk — yet she reaches school at last, on wheels, over a smoothed path and a little plank bridge, pushed by friends.",
+      hi: "लद्दाख़ में चुसकित के पैर नहीं चलते — फिर भी वह आख़िरकार स्कूल पहुँचती है, पहियों पर, समतल हुई पगडंडी और तख़्ते के छोटे पुल से, दोस्तों के धकेले।",
+      mr: "लडाखमध्ये चुसकितचे पाय चालत नाहीत — तरी ती अखेर शाळेत पोहोचते, चाकांवर, सपाट केलेल्या वाटेने आणि फळीच्या छोट्या पुलावरून, मित्रांनी ढकललेली.",
+    },
+    position: 27,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "chuskit",
+        name: { en: "Chuskit", hi: "चुसकित", mr: "चुसकित" },
+        kind: "person",
+        seq: 1,
+        prompt: {
+          en: "Which girl of Ladakh, whose legs cannot walk, watched other children pass to school for years, wishing to go too?",
+          hi: "लद्दाख़ की कौन-सी लड़की, जिसके पैर चल नहीं सकते, बरसों दूसरे बच्चों को स्कूल जाते देखती रही — ख़ुद जाने की चाह लिए?",
+          mr: "लडाखची कोणती मुलगी, जिचे पाय चालू शकत नाहीत, वर्षानुवर्षे इतर मुलांना शाळेला जाताना पाहत राहिली — स्वतः जाण्याची आस धरून?",
+        },
+        statement: {
+          en: "Chuskit's legs cannot walk, and for years she watched the school-going children from her window, longing to go.",
+          hi: "चुसकित के पैर चल नहीं सकते, और बरसों वह खिड़की से स्कूल जाते बच्चों को देखती रही — जाने को तरसती हुई।",
+          mr: "चुसकितचे पाय चालू शकत नाहीत, आणि वर्षानुवर्षे ती खिडकीतून शाळेला जाणाऱ्या मुलांना पाहत राहिली — जाण्यासाठी आसुसलेली.",
+        },
+        pair: {
+          left: { en: "Chuskit", hi: "चुसकित", mr: "चुसकित" },
+          right: {
+            en: "a window full of longing",
+            hi: "चाह से भरी खिड़की",
+            mr: "आसेने भरलेली खिडकी",
+          },
+        },
+      },
+      {
+        id: "teacher",
+        name: { en: "The teacher", hi: "गुरुजी", mr: "गुरुजी" },
+        kind: "person",
+        seq: 2,
+        prompt: {
+          en: "Who came to Chuskit's house, heard her wish, and promised that school would be made possible for her?",
+          hi: "चुसकित के घर कौन आए, उसकी चाह सुनी, और वचन दिया कि उसके लिए स्कूल मुमकिन किया जाएगा?",
+          mr: "चुसकितच्या घरी कोण आले, तिची आस ऐकली, आणि वचन दिले की तिच्यासाठी शाळा शक्य केली जाईल?",
+        },
+        statement: {
+          en: "The teacher came home to Chuskit, heard her wish, and set about making school possible for her.",
+          hi: "गुरुजी चुसकित के घर आए, उसकी चाह सुनी, और उसके लिए स्कूल मुमकिन करने में जुट गए।",
+          mr: "गुरुजी चुसकितच्या घरी आले, तिची आस ऐकली, आणि तिच्यासाठी शाळा शक्य करण्याच्या मागे लागले.",
+        },
+        pair: {
+          left: { en: "The teacher", hi: "गुरुजी", mr: "गुरुजी" },
+          right: {
+            en: "a promise made at home",
+            hi: "घर आकर दिया वचन",
+            mr: "घरी येऊन दिलेले वचन",
+          },
+        },
+      },
+      {
+        id: "wheelchair",
+        name: { en: "The wheelchair", hi: "पहियों वाली कुर्सी", mr: "चाकांची खुर्ची" },
+        kind: "the-way",
+        seq: 3,
+        prompt: {
+          en: "What arrived for Chuskit that rolls where legs cannot walk — her own pair of wheels?",
+          hi: "चुसकित के लिए क्या आया जो वहाँ लुढ़कता है जहाँ पैर नहीं चलते — उसके अपने पहिए?",
+          mr: "चुसकितसाठी काय आले जे तिथे धावते जिथे पाय चालत नाहीत — तिची स्वतःची चाके?",
+        },
+        statement: {
+          en: "The wheelchair became Chuskit's rolling legs — pushed along, it carries her wherever a path lets wheels go.",
+          hi: "पहियों वाली कुर्सी चुसकित के लुढ़कते पैर बनी — धकेली हुई, वह उसे वहाँ तक ले जाती है जहाँ तक पगडंडी पहियों को जाने दे।",
+          mr: "चाकांची खुर्ची चुसकितचे धावते पाय झाली — ढकलली की ती तिला तिथवर नेते जिथवर वाट चाकांना जाऊ देते.",
+        },
+        detail: {
+          en: "Wheels ask something of the ground: they need it smooth enough to roll on.",
+          hi: "पहिए ज़मीन से कुछ माँगते हैं: उन्हें लुढ़कने लायक़ समतल राह चाहिए।",
+          mr: "चाके जमिनीकडून काही मागतात: त्यांना घरंगळण्याजोगी सपाट वाट हवी.",
+        },
+        extra: {
+          en: "It was the first of the changes — the path and the bridge had to follow.",
+          hi: "यह बदलावों में पहला था — पगडंडी और पुल को पीछे-पीछे आना ही था।",
+          mr: "हा बदलांतला पहिला होता — वाट आणि पूल यांना मागोमाग यावेच लागले.",
+        },
+        pair: {
+          left: { en: "The wheelchair", hi: "पहियों वाली कुर्सी", mr: "चाकांची खुर्ची" },
+          right: { en: "her rolling legs", hi: "उसके लुढ़कते पैर", mr: "तिचे धावते पाय" },
+        },
+      },
+      {
+        id: "smoothedpath",
+        name: {
+          en: "The smoothed path",
+          hi: "समतल की गई पगडंडी",
+          mr: "सपाट केलेली वाट",
+        },
+        kind: "the-way",
+        seq: 4,
+        prompt: {
+          en: "What did the villagers do to the stony track to school, so that wheels could roll where only feet had managed?",
+          hi: "गाँव वालों ने स्कूल की पथरीली पगडंडी का क्या किया, ताकि जहाँ बस पैर निभा पाते थे वहाँ पहिए लुढ़क सकें?",
+          mr: "गावकऱ्यांनी शाळेच्या खडकाळ वाटेचे काय केले, म्हणजे जिथे फक्त पाय निभावत होते तिथे चाके धावू शकावीत?",
+        },
+        statement: {
+          en: "The villagers cleared and smoothed the stony path — stones moved aside so the wheelchair could roll to school.",
+          hi: "गाँव वालों ने पथरीली पगडंडी साफ़ कर समतल की — पत्थर हटे, ताकि पहियों वाली कुर्सी स्कूल तक लुढ़क सके।",
+          mr: "गावकऱ्यांनी खडकाळ वाट साफ करून सपाट केली — दगड बाजूला झाले, म्हणजे चाकांची खुर्ची शाळेपर्यंत धावू शकेल.",
+        },
+        pair: {
+          left: { en: "The smoothed path", hi: "समतल पगडंडी", mr: "सपाट वाट" },
+          right: {
+            en: "stones moved for wheels",
+            hi: "पहियों के लिए हटे पत्थर",
+            mr: "चाकांसाठी हटलेले दगड",
+          },
+        },
+      },
+      {
+        id: "plankbridge",
+        name: {
+          en: "The little plank bridge",
+          hi: "तख़्ते का छोटा पुल",
+          mr: "फळीचा छोटा पूल",
+        },
+        kind: "the-way",
+        seq: 5,
+        prompt: {
+          en: "A cold stream cut the way to school. What was laid across it so the wheelchair could cross dry?",
+          hi: "स्कूल की राह एक ठंडी धारा काटती थी। उस पर क्या बिछाया गया कि पहियों वाली कुर्सी सूखी पार हो जाए?",
+          mr: "शाळेची वाट एक गार ओहळ कापत होता. त्यावर काय टाकले गेले म्हणजे चाकांची खुर्ची कोरडी पार व्हावी?",
+        },
+        statement: {
+          en: "A little plank bridge was laid over the stream — wide enough for the wheelchair's wheels to cross.",
+          hi: "धारा पर तख़्ते का छोटा पुल बिछा — इतना चौड़ा कि कुर्सी के पहिए पार हो सकें।",
+          mr: "ओहळावर फळीचा छोटा पूल टाकला — खुर्चीची चाके पार होतील इतका रुंद.",
+        },
+        pair: {
+          left: { en: "The plank bridge", hi: "तख़्ते का पुल", mr: "फळीचा पूल" },
+          right: { en: "dry wheels over the stream", hi: "धारा पर सूखे पहिए", mr: "ओहळावर कोरडी चाके" },
+        },
+      },
+      {
+        id: "friends",
+        name: { en: "The school friends", hi: "स्कूल के दोस्त", mr: "शाळेतले मित्र" },
+        kind: "person",
+        seq: 6,
+        prompt: {
+          en: "Once the path was ready, who took turns at the wheelchair's handles every morning and afternoon?",
+          hi: "राह बन जाने पर हर सुबह-शाम कुर्सी के हत्थों पर बारी-बारी कौन लगते?",
+          mr: "वाट तयार झाल्यावर रोज सकाळ-संध्याकाळ खुर्चीच्या दांड्यांना आळीपाळीने कोण लागत?",
+        },
+        statement: {
+          en: "The school friends push Chuskit's wheelchair, taking turns each way — her journey is now part of theirs.",
+          hi: "स्कूल के दोस्त चुसकित की कुर्सी धकेलते हैं, हर फेरे में बारी बदलते — उसका सफ़र अब उनके सफ़र का हिस्सा है।",
+          mr: "शाळेतले मित्र चुसकितची खुर्ची ढकलतात, प्रत्येक फेरीत पाळी बदलत — तिचा प्रवास आता त्यांच्या प्रवासाचा भाग आहे.",
+        },
+        pair: {
+          left: { en: "The friends", hi: "दोस्त", mr: "मित्र" },
+          right: {
+            en: "turns at the handles",
+            hi: "हत्थों पर बारियाँ",
+            mr: "दांड्यांवरच्या पाळ्या",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "For nine years Chuskit stayed home. Then she reached school — yet her legs were exactly as before. What had really stood between Chuskit and school?",
+          hi: "नौ बरस चुसकित घर रही। फिर वह स्कूल पहुँची — जबकि उसके पैर ठीक पहले जैसे ही थे। चुसकित और स्कूल के बीच असल में क्या खड़ा था?",
+          mr: "नऊ वर्षे चुसकित घरी राहिली. मग ती शाळेत पोहोचली — तिचे पाय मात्र अगदी पूर्वीसारखेच होते. चुसकित आणि शाळा यांच्यामध्ये खरे काय उभे होते?",
+        },
+        choices: [
+          {
+            en: "The path, not her legs — when the way was smoothed, bridged and wheeled, school was hers with the same legs as always",
+            hi: "पगडंडी, उसके पैर नहीं — जब राह समतल हुई, पुल बना और पहिए मिले, तो उन्हीं पैरों के साथ स्कूल उसका हो गया",
+            mr: "वाट, तिचे पाय नव्हे — वाट सपाट झाली, पूल आला आणि चाके मिळाली, तेव्हा त्याच पायांसह शाळा तिची झाली",
+          },
+          {
+            en: "Her shyness — she had simply never asked to go",
+            hi: "उसका संकोच — उसने कभी जाने को कहा ही नहीं था",
+            mr: "तिचा संकोच — तिने कधी जायचे म्हटलेच नव्हते",
+          },
+          {
+            en: "The school's rule against wheelchairs",
+            hi: "स्कूल का पहियों वाली कुर्सी के विरुद्ध नियम",
+            mr: "शाळेचा चाकांच्या खुर्चीविरुद्धचा नियम",
+          },
+          {
+            en: "The cold of Ladakh, which keeps children home",
+            hi: "लद्दाख़ की ठंड, जो बच्चों को घर रखती है",
+            mr: "लडाखची थंडी, जी मुलांना घरी ठेवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Nothing about Chuskit changed on the day she first reached school — the stones, the stream and the missing wheels changed. That is the chapter's whole turn of thought: what we call a person's 'inability' is often the path's failure, not theirs. Smooth the way, lay the plank, share the pushing — and the same child rolls to the same school as everyone else.",
+          hi: "जिस दिन चुसकित पहली बार स्कूल पहुँची, उसमें कुछ नहीं बदला था — पत्थर, धारा और ग़ैर-मौजूद पहिए बदले थे। यही अध्याय का पूरा विचार-पलट है: जिसे हम किसी की 'असमर्थता' कहते हैं, वह अक्सर रास्ते की नाकामी है, उसकी नहीं। राह समतल कीजिए, तख़्ता बिछाइए, धक्का बाँट लीजिए — और वही बच्ची उसी स्कूल तक सबकी तरह पहुँचती है।",
+          mr: "चुसकित पहिल्यांदा शाळेत पोहोचली त्या दिवशी तिच्यात काही बदलले नव्हते — दगड, ओहळ आणि नसलेली चाके बदलली होती. हाच धड्याचा सारा विचार-पालट: ज्याला आपण कोणाची 'असमर्थता' म्हणतो, ती बहुधा वाटेची चूक असते, त्या व्यक्तीची नव्हे. वाट सपाट करा, फळी टाका, ढकलणे वाटून घ्या — आणि तीच मुलगी त्याच शाळेत साऱ्यांसारखी पोहोचते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The wheelchair came first, yet Chuskit still could not reach school until the villagers smoothed the path and laid the plank. What does that order of events teach?",
+          hi: "पहियों वाली कुर्सी पहले आई, फिर भी चुसकित तब तक स्कूल नहीं पहुँच सकी जब तक गाँव ने पगडंडी समतल न की और तख़्ता न बिछाया। घटनाओं का यह क्रम क्या सिखाता है?",
+          mr: "चाकांची खुर्ची आधी आली, तरी गावाने वाट सपाट करून फळी टाकेपर्यंत चुसकित शाळेत पोहोचू शकली नाही. घटनांचा हा क्रम काय शिकवतो?",
+        },
+        choices: [
+          {
+            en: "A tool alone is not enough — wheels need a world made ready for wheels, and that readying is everyone's work",
+            hi: "अकेला साधन काफ़ी नहीं — पहियों को पहियों के लिए तैयार दुनिया चाहिए, और वह तैयारी सबका काम है",
+            mr: "एकटे साधन पुरेसे नाही — चाकांना चाकांसाठी तयार केलेले जग हवे, आणि ती तयारी साऱ्यांचे काम आहे",
+          },
+          {
+            en: "The wheelchair was the wrong gift for Ladakh",
+            hi: "लद्दाख़ के लिए पहियों वाली कुर्सी ग़लत उपहार थी",
+            mr: "लडाखसाठी चाकांची खुर्ची चुकीची भेट होती",
+          },
+          {
+            en: "Villages should be built without any streams",
+            hi: "गाँव बिना धाराओं के बसाने चाहिए",
+            mr: "गावे ओहळांशिवाय वसवावीत",
+          },
+          {
+            en: "Chuskit should have waited for stronger wheels",
+            hi: "चुसकित को और मज़बूत पहियों की प्रतीक्षा करनी थी",
+            mr: "चुसकितने अधिक मजबूत चाकांची वाट पाहायला हवी होती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The chair solved Chuskit's half of the problem; the stones and the stream were the village's half. Only when hands came out — clearing, bridging, pushing in turns — did the wheels actually turn. Help that stops at handing over a tool is half-help; the rest is changing the world the tool must roll through.",
+          hi: "कुर्सी ने समस्या का चुसकित वाला आधा हल किया; पत्थर और धारा गाँव वाला आधा थे। जब हाथ आगे आए — साफ़ करते, पुल बाँधते, बारी-बारी धकेलते — तभी पहिए सचमुच घूमे। जो मदद साधन थमाकर रुक जाए, वह आधी मदद है; बाक़ी है उस दुनिया को बदलना जिसमें से साधन को गुज़रना है।",
+          mr: "खुर्चीने प्रश्नाचा चुसकितकडचा अर्धा भाग सोडवला; दगड आणि ओहळ हा गावाकडचा अर्धा होता. हात पुढे आले — साफ करणारे, पूल बांधणारे, आळीपाळीने ढकलणारे — तेव्हाच चाके खरी फिरली. साधन देऊन थांबणारी मदत ही अर्धी मदत; उरलेली म्हणजे साधनाला ज्यातून जायचे आहे ते जग बदलणे.",
+        },
+      },
+    ],
+  },
 ];
