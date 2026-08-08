@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 14 — How Big? How Heavy?",
+  "name": "How Big? How Heavy?",
+  "slug": "maths-5-how-big-how-heavy",
+  "summary": "Volume by rising water and stacked cubes, weight by litres and sacks — and an elephant weighed in grain.",
+  "position": 14,
+  "translations": {
+    "hi": {
+      "name": "कितना बड़ा? कितना भारी?",
+      "summary": "चढ़ते पानी और जमे घनों से आयतन, लीटरों और बोरियों से वज़न — और अनाज में तौला हाथी।"
+    },
+    "mr": {
+      "name": "केवढे मोठे? किती जड?",
+      "summary": "चढत्या पाण्याने आणि रचलेल्या घनांनी आकारमान, लिटरांनी आणि पोत्यांनी वजन — आणि धान्यात तोललेला हत्ती."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A marble dropped into a measuring jar raises the water from 60 mL to 62 mL. What is the marble's volume?",
+      "choices": [
+        "122 mL",
+        "2 mL",
+        "62 mL",
+        "60 mL"
+      ],
+      "answerIndex": 1,
+      "solution": "The marble pushed the water up by 62 − 60 = 2 mL — the water rose by exactly the marble's own size. 62 reads the new level, not the rise.",
+      "checkExpr": "62-60",
+      "translations": {
+        "hi": {
+          "stem": "नापने के जार में कंचा डालने पर पानी 60 मिली से 62 मिली हो जाता है। कंचे का आयतन कितना?",
+          "choices": [
+            "122 मिली",
+            "2 मिली",
+            "62 मिली",
+            "60 मिली"
+          ],
+          "solution": "कंचे ने पानी 62 − 60 = 2 मिली ऊपर धकेला — पानी ठीक कंचे के अपने नाप जितना चढ़ा। 62 नया तल पढ़ता है, चढ़ाव नहीं।"
+        },
+        "mr": {
+          "stem": "मापाच्या भांड्यात गोटी टाकल्यावर पाणी 60 मिलीवरून 62 मिली होते. गोटीचे आकारमान किती?",
+          "choices": [
+            "122 मिली",
+            "2 मिली",
+            "62 मिली",
+            "60 मिली"
+          ],
+          "solution": "गोटीने पाणी 62 − 60 = 2 मिली वर ढकलले — पाणी नेमके गोटीच्या स्वतःच्या मापाइतके चढले. 62 नवी पातळी वाचते, चढ नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A centimetre cube has a volume of 1 cubic cm. What is the volume of a row of 5 such cubes?",
+      "choices": [
+        "1 cubic cm",
+        "10 cubic cm",
+        "5 cubic cm",
+        "25 cubic cm"
+      ],
+      "answerIndex": 2,
+      "solution": "Five cubes of 1 each: 5 × 1 = 5 cubic cm — volume counts the cubes a shape is built of. 25 squares the five; a row grows straight, not sideways.",
+      "checkExpr": "5*1",
+      "translations": {
+        "hi": {
+          "stem": "सेंटीमीटर-घन का आयतन 1 घन सेमी है। ऐसे 5 घनों की क़तार का आयतन कितना?",
+          "choices": [
+            "1 घन सेमी",
+            "10 घन सेमी",
+            "5 घन सेमी",
+            "25 घन सेमी"
+          ],
+          "solution": "1-1 के पाँच घन: 5 × 1 = 5 घन सेमी — आयतन उन घनों को गिनता है जिनसे आकृति बनी है। 25 पाँच का वर्ग है; क़तार सीधी बढ़ती है, आड़ी नहीं।"
+        },
+        "mr": {
+          "stem": "सेंटिमीटर-घनाचे आकारमान 1 घन सेमी. अशा 5 घनांच्या रांगेचे आकारमान किती?",
+          "choices": [
+            "1 घन सेमी",
+            "10 घन सेमी",
+            "5 घन सेमी",
+            "25 घन सेमी"
+          ],
+          "solution": "1-1 चे पाच घन: 5 × 1 = 5 घन सेमी — आकारमान आकार ज्या घनांनी बनला ते मोजते. 25 पाचाचा वर्ग; रांग सरळ वाढते, आडवी नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One brick weighs about 2 kg. What do six bricks weigh?",
+      "choices": [
+        "62 kg",
+        "10 kg",
+        "8 kg",
+        "12 kg"
+      ],
+      "answerIndex": 3,
+      "solution": "Six bricks of 2 kg: 2 × 6 = 12 kg — about what a full school bag should never weigh. 8 adds the six to the two.",
+      "checkExpr": "2*6",
+      "translations": {
+        "hi": {
+          "stem": "एक ईंट क़रीब 2 किलो की है। छह ईंटें कितने की होंगी?",
+          "choices": [
+            "62 किग्रा",
+            "10 किग्रा",
+            "8 किग्रा",
+            "12 किग्रा"
+          ],
+          "solution": "2-2 किलो की छह ईंटें: 2 × 6 = 12 किलो — क़रीब उतना, जितना भरे बस्ते को कभी नहीं होना चाहिए। 8 छह को दो में जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "एक वीट सुमारे 2 किलोची असते. सहा विटा किती होतील?",
+          "choices": [
+            "62 किलो",
+            "10 किलो",
+            "8 किलो",
+            "12 किलो"
+          ],
+          "solution": "2-2 किलोच्या सहा विटा: 2 × 6 = 12 किलो — भरलेल्या दप्तराने कधीही होऊ नये इतके. 8 सहाला दोनांत मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A box floor holds 4 cubes by 3 cubes, one layer high. How many cubes fill it?",
+      "choices": [
+        "43 cubes",
+        "7 cubes",
+        "24 cubes",
+        "12 cubes"
+      ],
+      "answerIndex": 3,
+      "solution": "One layer of 4 × 3: 12 cubes. 24 imagines a second layer the box does not have; 7 adds the sides.",
+      "checkExpr": "4*3*1",
+      "translations": {
+        "hi": {
+          "stem": "डिब्बे के फ़र्श पर 4 × 3 घन आते हैं, एक परत ऊँची। उसे कितने घन भरेंगे?",
+          "choices": [
+            "43 घन",
+            "7 घन",
+            "24 घन",
+            "12 घन"
+          ],
+          "solution": "4 × 3 की एक परत: 12 घन। 24 वह दूसरी परत जोड़ देता है जो डिब्बे में है ही नहीं; 7 भुजाएँ जोड़ता है।"
+        },
+        "mr": {
+          "stem": "खोक्याच्या तळावर 4 × 3 घन मावतात, एक थर उंच. ते किती घनांनी भरेल?",
+          "choices": [
+            "43 घन",
+            "7 घन",
+            "24 घन",
+            "12 घन"
+          ],
+          "solution": "4 × 3 चा एक थर: 12 घन. 24 खोक्यात नसलेला दुसरा थर मानते; 7 बाजू मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A 5 kg bag of rice is shared equally among 4 families. How many GRAMS does each family get?",
+      "choices": [
+        "2500 g",
+        "1250 g",
+        "125 g",
+        "1200 g"
+      ],
+      "answerIndex": 1,
+      "solution": "5 kg = 5000 g, and 5000 ÷ 4 = 1250 g — a kilo and a quarter each. 125 loses a zero; 1200 rounds the quarter kilo away.",
+      "checkExpr": "5000/4",
+      "translations": {
+        "hi": {
+          "stem": "5 किलो चावल की थैली 4 परिवारों में बराबर बँटी। हर परिवार को कितने ग्राम मिले?",
+          "choices": [
+            "2500 ग्राम",
+            "1250 ग्राम",
+            "125 ग्राम",
+            "1200 ग्राम"
+          ],
+          "solution": "5 किलो = 5000 ग्राम, और 5000 ÷ 4 = 1250 ग्राम — सवा किलो हर एक को। 125 शून्य खोता है; 1200 पाव किलो गोल कर जाता है।"
+        },
+        "mr": {
+          "stem": "5 किलो तांदळाची पिशवी 4 कुटुंबांत सारखी वाटली. प्रत्येक कुटुंबाला किती ग्रॅम मिळाले?",
+          "choices": [
+            "2500 ग्रॅम",
+            "1250 ग्रॅम",
+            "125 ग्रॅम",
+            "1200 ग्रॅम"
+          ],
+          "solution": "5 किलो = 5000 ग्रॅम, आणि 5000 ÷ 4 = 1250 ग्रॅम — सव्वा किलो प्रत्येकाला. 125 शून्य गमावते; 1200 पाव किलो गोल करून टाकते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A box is 5 cm long, 4 cm wide and 2 cm high. What is its volume?",
+      "choices": [
+        "40 cubic cm",
+        "11 cubic cm",
+        "22 cubic cm",
+        "20 cubic cm"
+      ],
+      "answerIndex": 0,
+      "solution": "Volume multiplies all three: 5 × 4 × 2 = 40 cubic cm — a floor of 20 cubes, two layers of it. 20 stops after the floor; 11 adds the sides.",
+      "checkExpr": "5*4*2",
+      "translations": {
+        "hi": {
+          "stem": "एक डिब्बा 5 सेमी लंबा, 4 सेमी चौड़ा और 2 सेमी ऊँचा है। उसका आयतन कितना?",
+          "choices": [
+            "40 घन सेमी",
+            "11 घन सेमी",
+            "22 घन सेमी",
+            "20 घन सेमी"
+          ],
+          "solution": "आयतन तीनों को गुणता है: 5 × 4 × 2 = 40 घन सेमी — 20 घनों का फ़र्श, उसकी दो परतें। 20 फ़र्श पर रुक जाता है; 11 भुजाएँ जोड़ता है।"
+        },
+        "mr": {
+          "stem": "एक खोके 5 सेमी लांब, 4 सेमी रुंद आणि 2 सेमी उंच आहे. त्याचे आकारमान किती?",
+          "choices": [
+            "40 घन सेमी",
+            "11 घन सेमी",
+            "22 घन सेमी",
+            "20 घन सेमी"
+          ],
+          "solution": "आकारमान तिन्हींना गुणते: 5 × 4 × 2 = 40 घन सेमी — 20 घनांचा तळ, त्याचे दोन थर. 20 तळावरच थांबते; 11 बाजू मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A water tank holds 500 litres and a bucket carries 10 litres. How many bucketfuls empty the tank?",
+      "choices": [
+        "55",
+        "490",
+        "50",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "500 ÷ 10 = 50 buckets. 5 loses a zero; 490 subtracts one bucket instead of counting how many times the bucket dips.",
+      "checkExpr": "500/10",
+      "translations": {
+        "hi": {
+          "stem": "टंकी में 500 लीटर पानी है और बाल्टी 10 लीटर उठाती है। टंकी ख़ाली करने में कितनी बाल्टियाँ लगेंगी?",
+          "choices": [
+            "55",
+            "490",
+            "50",
+            "5"
+          ],
+          "solution": "500 ÷ 10 = 50 बाल्टियाँ। 5 शून्य खोता है; 490 यह गिनने की जगह कि बाल्टी कितनी बार डूबेगी, एक बाल्टी घटा देता है।"
+        },
+        "mr": {
+          "stem": "टाकीत 500 लिटर पाणी आहे आणि बादली 10 लिटर उचलते. टाकी रिकामी करायला किती बादल्या लागतील?",
+          "choices": [
+            "55",
+            "490",
+            "50",
+            "5"
+          ],
+          "solution": "500 ÷ 10 = 50 बादल्या. 5 शून्य गमावते; 490 बादली किती वेळा बुडेल हे मोजण्याऐवजी एक बादली वजा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "One litre of water weighs one kilogram. Ignoring the can itself, what does the water in a full 15-litre can weigh?",
+      "choices": [
+        "30 kg",
+        "15 kg",
+        "1 kg",
+        "150 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "Litre for kilo: 15 × 1 = 15 kg — water's beautiful one-to-one rule. 150 invents a rate of ten; the rule costs nothing to remember and weighs every bucket you will ever lift.",
+      "checkExpr": "15*1",
+      "translations": {
+        "hi": {
+          "stem": "एक लीटर पानी एक किलो का होता है। कनस्तर का वज़न छोड़ दें, तो भरे 15 लीटर कनस्तर का पानी कितने का है?",
+          "choices": [
+            "30 किग्रा",
+            "15 किग्रा",
+            "1 किग्रा",
+            "150 किग्रा"
+          ],
+          "solution": "लीटर पर किलो: 15 × 1 = 15 किलो — पानी का सुंदर एक-का-एक नियम। 150 दस का भाव गढ़ लेता है; यह नियम याद रखने में मुफ़्त है और आपकी हर उठाई बाल्टी तौल देता है।"
+        },
+        "mr": {
+          "stem": "एक लिटर पाणी एक किलोचे असते. डब्याचे वजन सोडले, तर भरलेल्या 15 लिटर डब्यातले पाणी किती वजनाचे?",
+          "choices": [
+            "30 किलो",
+            "15 किलो",
+            "1 किलो",
+            "150 किलो"
+          ],
+          "solution": "लिटरामागे किलो: 15 × 1 = 15 किलो — पाण्याचा सुंदर एकास-एक नियम. 150 दहाचा भाव रचते; हा नियम लक्षात ठेवायला फुकट आहे आणि तुम्ही उचलाल ती प्रत्येक बादली तोलतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A stone dropped into the jar raises the water from 200 mL to 260 mL. What is the stone's volume?",
+      "choices": [
+        "40 mL",
+        "460 mL",
+        "60 mL",
+        "260 mL"
+      ],
+      "answerIndex": 2,
+      "solution": "The rise tells the volume: 260 − 200 = 60 mL. An odd-shaped stone that no ruler could measure just measured itself in water — that is the jar's magic.",
+      "checkExpr": "260-200",
+      "translations": {
+        "hi": {
+          "stem": "जार में पत्थर डालने पर पानी 200 मिली से 260 मिली हो गया। पत्थर का आयतन कितना?",
+          "choices": [
+            "40 मिली",
+            "460 मिली",
+            "60 मिली",
+            "260 मिली"
+          ],
+          "solution": "चढ़ाव ही आयतन बताता है: 260 − 200 = 60 मिली। जिस टेढ़े-मेढ़े पत्थर को कोई स्केल नहीं नाप सकता था, उसने पानी में ख़ुद को नाप लिया — यही जार का जादू है।"
+        },
+        "mr": {
+          "stem": "भांड्यात दगड टाकल्यावर पाणी 200 मिलीवरून 260 मिली झाले. दगडाचे आकारमान किती?",
+          "choices": [
+            "40 मिली",
+            "460 मिली",
+            "60 मिली",
+            "260 मिली"
+          ],
+          "solution": "चढच आकारमान सांगते: 260 − 200 = 60 मिली. कोणत्याही पट्टीला न मोजता येणाऱ्या वेड्यावाकड्या दगडाने पाण्यात स्वतःला मोजले — हीच भांड्याची जादू."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many 2-cm cubes pack exactly into a box 6 cm long, 4 cm wide and 2 cm high?",
+      "choices": [
+        "6 cubes",
+        "12 cubes",
+        "48 cubes",
+        "8 cubes"
+      ],
+      "answerIndex": 0,
+      "solution": "The box holds 6 × 4 × 2 = 48 cubic cm, and each 2-cm cube takes 2 × 2 × 2 = 8: 48 ÷ 8 = 6 cubes — 3 along, 2 across, 1 layer. 48 forgets the cubes are bigger than a centimetre; 12 halves only one direction.",
+      "checkExpr": "6*4*2/(2*2*2)",
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी लंबे, 4 सेमी चौड़े और 2 सेमी ऊँचे डिब्बे में 2-2 सेमी के कितने घन ठीक-ठीक समाएँगे?",
+          "choices": [
+            "6 घन",
+            "12 घन",
+            "48 घन",
+            "8 घन"
+          ],
+          "solution": "डिब्बे में 6 × 4 × 2 = 48 घन सेमी, और हर 2-सेमी घन 2 × 2 × 2 = 8 लेता है: 48 ÷ 8 = 6 घन — 3 लंबाई में, 2 चौड़ाई में, 1 परत। 48 भूलता है कि घन सेंटीमीटर से बड़े हैं; 12 एक ही दिशा आधी करता है।"
+        },
+        "mr": {
+          "stem": "6 सेमी लांब, 4 सेमी रुंद आणि 2 सेमी उंच खोक्यात 2-2 सेमीचे किती घन नेमके मावतील?",
+          "choices": [
+            "6 घन",
+            "12 घन",
+            "48 घन",
+            "8 घन"
+          ],
+          "solution": "खोक्यात 6 × 4 × 2 = 48 घन सेमी, आणि प्रत्येक 2-सेमी घन 2 × 2 × 2 = 8 घेतो: 48 ÷ 8 = 6 घन — 3 लांबीत, 2 रुंदीत, 1 थर. 48 विसरते की घन सेंटिमीटराहून मोठे आहेत; 12 एकाच दिशेला अर्धे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The circus poster boasts an elephant of 4000 kg. The godown holds 80 sacks of grain, 50 kg each. By how many kilograms does the elephant outweigh the sacks?",
+      "choices": [
+        "100 kg",
+        "400 kg",
+        "0 kg",
+        "50 kg"
+      ],
+      "answerIndex": 2,
+      "solution": "The sacks total 80 × 50 = 4000 kg — exactly the elephant. The difference is 0: an elephant is eighty sacks of grain standing on four legs. Huge numbers stop feeling huge once you weigh them against something you can stack.",
+      "checkExpr": "4000-80*50",
+      "translations": {
+        "hi": {
+          "stem": "सर्कस का पोस्टर 4000 किलो के हाथी की डींग हाँकता है। गोदाम में 50-50 किलो की 80 बोरियाँ हैं। हाथी बोरियों से कितने किलो भारी है?",
+          "choices": [
+            "100 किग्रा",
+            "400 किग्रा",
+            "0 किग्रा",
+            "50 किग्रा"
+          ],
+          "solution": "बोरियाँ कुल 80 × 50 = 4000 किलो — ठीक हाथी जितनी। अंतर 0 है: हाथी चार टाँगों पर खड़ी अस्सी बोरियाँ है। बड़ी संख्याएँ तब बड़ी नहीं लगतीं जब उन्हें किसी जमाने लायक़ चीज़ से तौल लिया जाए।"
+        },
+        "mr": {
+          "stem": "सर्कशीचे पोस्टर 4000 किलोच्या हत्तीची फुशारकी मारते. गोदामात 50-50 किलोची 80 पोती आहेत. हत्ती पोत्यांहून किती किलोंनी जड आहे?",
+          "choices": [
+            "100 किलो",
+            "400 किलो",
+            "0 किलो",
+            "50 किलो"
+          ],
+          "solution": "पोती एकूण 80 × 50 = 4000 किलो — नेमकी हत्तीइतकी. फरक 0: हत्ती म्हणजे चार पायांवर उभी ऐंशी पोती. मोठे आकडे रचता येणाऱ्या वस्तूशी तोलले की मोठे वाटेनासे होतात."
+        }
+      }
+    }
+  ]
+}

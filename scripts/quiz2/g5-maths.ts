@@ -2653,6 +2653,1077 @@ function boxesAndSketches(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Area and its Boundary (the wire that chose its shape)        */
+/* ------------------------------------------------------------------------- */
+function areaAndItsBoundary(): TopicFileOut {
+  const rand = rng("maths-5-area-and-its-boundary");
+  const qs: OutQuestion[] = [];
+
+  const sqcm = (n: number) => ({ en: `${n} sq cm`, hi: `${n} वर्ग सेमी`, mr: `${n} चौ. सेमी` });
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+  const sqm = (n: number) => ({ en: `${n} sq m`, hi: `${n} वर्ग मीटर`, mr: `${n} चौ. मीटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A greeting card is 8 cm long and 5 cm wide. What is its area?",
+          hi: "एक बधाई-कार्ड 8 सेमी लंबा और 5 सेमी चौड़ा है। उसका क्षेत्रफल कितना?",
+          mr: "एक शुभेच्छापत्र 8 सेमी लांब आणि 5 सेमी रुंद आहे. त्याचे क्षेत्रफळ किती?",
+        },
+        answer: 40,
+        wrong: [13, 26, 45],
+        checkExpr: "8*5",
+        fmt: sqcm,
+        solution: {
+          en: "Area is length × width: 8 × 5 = 40 sq cm. 13 adds the sides and 26 walks the boundary — both measure the edge, not the filled face.",
+          hi: "क्षेत्रफल = लंबाई × चौड़ाई: 8 × 5 = 40 वर्ग सेमी। 13 भुजाएँ जोड़ता है और 26 सीमा नापता है — दोनों किनारा नापते हैं, भरा चेहरा नहीं।",
+          mr: "क्षेत्रफळ = लांबी × रुंदी: 8 × 5 = 40 चौ. सेमी. 13 बाजू मिळवते आणि 26 हद्द चालते — दोन्ही कड मोजतात, भरलेले तोंड नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A square handkerchief has 7 cm sides. What is its area?",
+          hi: "वर्गाकार रूमाल की भुजा 7 सेमी है। उसका क्षेत्रफल कितना?",
+          mr: "चौरस हातरुमालाची बाजू 7 सेमी आहे. त्याचे क्षेत्रफळ किती?",
+        },
+        answer: 49,
+        wrong: [14, 28, 21],
+        checkExpr: "7*7",
+        fmt: sqcm,
+        solution: {
+          en: "A square multiplies its side by itself: 7 × 7 = 49 sq cm. 28 is the boundary; 14 just doubles one side.",
+          hi: "वर्ग अपनी भुजा को उसी से गुणा करता है: 7 × 7 = 49 वर्ग सेमी। 28 सीमा है; 14 एक भुजा का दुगना भर।",
+          mr: "चौरस आपली बाजू तिनेच गुणतो: 7 × 7 = 49 चौ. सेमी. 28 ही हद्द; 14 एका बाजूची नुसती दुप्पट.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The same 8 cm by 5 cm card is to be edged with ribbon. How much ribbon runs round its boundary?",
+          hi: "वही 8 × 5 सेमी कार्ड फ़ीते से किनारा जाना है। उसकी सीमा पर कितना फ़ीता लगेगा?",
+          mr: "तेच 8 × 5 सेमी कार्ड फितीने कडा मढवायचे आहे. त्याच्या हद्दीवर किती फीत लागेल?",
+        },
+        answer: 26,
+        wrong: [40, 13, 30],
+        checkExpr: "2*(8+5)",
+        fmt: cm,
+        solution: {
+          en: "The ribbon walks every edge: (8 + 5) × 2 = 26 cm. 40 is the card's area — the inside, which the ribbon never touches.",
+          hi: "फ़ीता हर किनारा चलता है: (8 + 5) × 2 = 26 सेमी। 40 कार्ड का क्षेत्रफल है — भीतर, जिसे फ़ीता छूता ही नहीं।",
+          mr: "फीत प्रत्येक कड चालते: (8 + 5) × 2 = 26 सेमी. 40 हे कार्डाचे क्षेत्रफळ — आतले, जिथे फीत शिवतही नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A postcard measures 14 cm by 9 cm. What is its area?",
+          hi: "पोस्टकार्ड 14 × 9 सेमी का है। उसका क्षेत्रफल कितना?",
+          mr: "पोस्टकार्ड 14 × 9 सेमीचे आहे. त्याचे क्षेत्रफळ किती?",
+        },
+        answer: 126,
+        wrong: [23, 46, 116],
+        checkExpr: "14*9",
+        fmt: sqcm,
+        solution: {
+          en: "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 sq cm. 116 subtracts 24 in the shortcut; 46 is the boundary in disguise.",
+          hi: "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 वर्ग सेमी। 116 शॉर्टकट में 24 घटा बैठता है; 46 भेस बदले सीमा है।",
+          mr: "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 चौ. सेमी. 116 युक्तीत 24 वजा करते; 46 ही वेष बदललेली हद्द.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A square field's boundary measures 40 m. How long is each side?",
+          hi: "वर्गाकार खेत की सीमा 40 मीटर है। हर भुजा कितनी लंबी है?",
+          mr: "चौरस शेताची हद्द 40 मीटर आहे. प्रत्येक बाजू किती लांब?",
+        },
+        answer: 10,
+        wrong: [20, 4, 36],
+        checkExpr: "40/4",
+        solution: {
+          en: "Four equal sides share the 40: 40 ÷ 4 = 10 m each. 20 halves instead — a square insists on four sides, not two.",
+          hi: "40 चार बराबर भुजाओं में बँटता है: 40 ÷ 4 = 10-10 मीटर। 20 आधा कर देता है — वर्ग चार भुजाएँ माँगता है, दो नहीं।",
+          mr: "40 चार सारख्या बाजूंत वाटले जाते: 40 ÷ 4 = 10-10 मीटर. 20 अर्धे करते — चौरस चार बाजू मागतो, दोन नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A tabletop's area is 48 sq cm on the plan, and its length is 8 cm. How wide is it?",
+          hi: "नक़्शे पर मेज़ की सतह का क्षेत्रफल 48 वर्ग सेमी है, और लंबाई 8 सेमी। चौड़ाई कितनी?",
+          mr: "आराखड्यावर टेबलाच्या पृष्ठभागाचे क्षेत्रफळ 48 चौ. सेमी आहे, आणि लांबी 8 सेमी. रुंदी किती?",
+        },
+        answer: 6,
+        wrong: [40, 384, 56],
+        checkExpr: "48/8",
+        fmt: cm,
+        solution: {
+          en: "Length × width = 48, so width = 48 ÷ 8 = 6 cm. 40 subtracts — area unlocks by division; the sides multiplied to make it.",
+          hi: "लंबाई × चौड़ाई = 48, तो चौड़ाई = 48 ÷ 8 = 6 सेमी। 40 घटाता है — क्षेत्रफल भाग से खुलता है; भुजाएँ गुणा होकर उसे बनी थीं।",
+          mr: "लांबी × रुंदी = 48, म्हणून रुंदी = 48 ÷ 8 = 6 सेमी. 40 वजा करते — क्षेत्रफळ भागाकाराने उघडते; बाजू गुणूनच ते झाले होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two square vegetable beds, each of side 6 m, are joined into one long rectangular bed. What is the new bed's area?",
+          hi: "6-6 मीटर भुजा की दो वर्गाकार क्यारियाँ जोड़कर एक लंबी आयताकार क्यारी बनाई गई। नई क्यारी का क्षेत्रफल कितना?",
+          mr: "6-6 मीटर बाजूच्या दोन चौरस वाफ्या जोडून एक लांब आयताकृती वाफा केला. नव्या वाफ्याचे क्षेत्रफळ किती?",
+        },
+        answer: 72,
+        wrong: [36, 48, 24],
+        checkExpr: "2*6*6",
+        fmt: sqm,
+        solution: {
+          en: "Each square holds 6 × 6 = 36 sq m, and two of them 36 × 2 = 72 sq m — joining moves no soil. 48 confuses the joined boundary with the joined area.",
+          hi: "हर वर्ग में 6 × 6 = 36 वर्ग मीटर, दो में 36 × 2 = 72 वर्ग मीटर — जोड़ने से मिट्टी घटती नहीं। 48 जुड़ी सीमा को जुड़े क्षेत्रफल से मिला देता है।",
+          mr: "प्रत्येक चौरसात 6 × 6 = 36 चौ. मीटर, दोघांत 36 × 2 = 72 चौ. मीटर — जोडण्याने माती घटत नाही. 48 जोडलेल्या हद्दीची जोडलेल्या क्षेत्रफळाशी गल्लत करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A 10 m by 6 m lawn has a 2 m by 2 m pit dug in it for a sapling. How much grassy area remains?",
+          hi: "10 × 6 मीटर के लॉन में पौधे के लिए 2 × 2 मीटर का गड्ढा खोदा गया। कितनी घास वाली ज़मीन बची?",
+          mr: "10 × 6 मीटरच्या हिरवळीत रोपासाठी 2 × 2 मीटरचा खड्डा खणला. किती गवताची जमीन उरली?",
+        },
+        answer: 56,
+        wrong: [60, 58, 52],
+        checkExpr: "10*6-2*2",
+        fmt: sqm,
+        solution: {
+          en: "Lawn 10 × 6 = 60, pit 2 × 2 = 4: grass left is 60 − 4 = 56 sq m. 58 subtracts the pit's side instead of its area — a hole takes away area, not length.",
+          hi: "लॉन 10 × 6 = 60, गड्ढा 2 × 2 = 4: घास बची 60 − 4 = 56 वर्ग मीटर। 58 गड्ढे का क्षेत्रफल नहीं, भुजा घटाता है — गड्ढा क्षेत्रफल ले जाता है, लंबाई नहीं।",
+          mr: "हिरवळ 10 × 6 = 60, खड्डा 2 × 2 = 4: गवत उरले 60 − 4 = 56 चौ. मीटर. 58 खड्ड्याचे क्षेत्रफळ नव्हे, बाजू वजा करते — खड्डा क्षेत्रफळ नेतो, लांबी नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A 100 cm wire is bent into a square. What AREA does the square enclose?",
+          hi: "100 सेमी का तार वर्ग में मोड़ा गया। वह वर्ग कितना क्षेत्रफल घेरता है?",
+          mr: "100 सेमीची तार चौरसात वाकवली. तो चौरस किती क्षेत्रफळ वेढतो?",
+        },
+        answer: 625,
+        wrong: [100, 400, 2500],
+        checkExpr: "25*25",
+        fmt: sqcm,
+        solution: {
+          en: "Each side gets 100 ÷ 4 = 25 cm, and the area is 25 × 25 = 625 sq cm. 100 repeats the wire's own length; 2500 squares 50, as if the wire made only two sides.",
+          hi: "हर भुजा को 100 ÷ 4 = 25 सेमी मिले, और क्षेत्रफल 25 × 25 = 625 वर्ग सेमी। 100 तार की अपनी लंबाई दोहराता है; 2500 पचास का वर्ग है — मानो तार से दो ही भुजाएँ बनीं।",
+          mr: "प्रत्येक बाजूला 100 ÷ 4 = 25 सेमी मिळाले, आणि क्षेत्रफळ 25 × 25 = 625 चौ. सेमी. 100 तारेचीच लांबी पुन्हा सांगते; 2500 पन्नासाचा वर्ग — जणू तारेतून दोनच बाजू झाल्या.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The same 100 cm wire is straightened and bent again — this time into a rectangle 30 cm long. What area does the rectangle enclose?",
+          hi: "वही 100 सेमी तार सीधा करके फिर मोड़ा गया — इस बार 30 सेमी लंबे आयत में। आयत कितना क्षेत्रफल घेरता है?",
+          mr: "तीच 100 सेमी तार सरळ करून पुन्हा वाकवली — या वेळी 30 सेमी लांब आयतात. आयत किती क्षेत्रफळ वेढतो?",
+        },
+        answer: 600,
+        wrong: [625, 3000, 70],
+        checkExpr: "30*(100-2*30)/2",
+        fmt: sqcm,
+        solution: {
+          en: "Two lengths take 60 cm, leaving 40 for two widths: width 20 cm. Area: 30 × 20 = 600 sq cm. 3000 multiplies length by the whole leftover 100; the wire pays for FOUR sides before any area exists.",
+          hi: "दो लंबाइयों में 60 सेमी गए, दो चौड़ाइयों के लिए 40 बचे: चौड़ाई 20 सेमी। क्षेत्रफल: 30 × 20 = 600 वर्ग सेमी। 3000 लंबाई को पूरे बचे 100 से गुणा कर देता है; क्षेत्रफल बनने से पहले तार चारों भुजाएँ चुकाता है।",
+          mr: "दोन लांब्यांत 60 सेमी गेले, दोन रुंद्यांसाठी 40 उरले: रुंदी 20 सेमी. क्षेत्रफळ: 30 × 20 = 600 चौ. सेमी. 3000 लांबीला अख्ख्या उरलेल्या 100 ने गुणते; क्षेत्रफळ होण्याआधी तार चारही बाजू भरते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "One 100 cm wire, two shapes: as a square it enclosed 625 sq cm, as a 30-by-20 rectangle it enclosed 600. How much MORE does the square hold — and it always will, for any rectangle from this wire?",
+          hi: "एक 100 सेमी तार, दो आकार: वर्ग बनकर उसने 625 वर्ग सेमी घेरा, 30 × 20 आयत बनकर 600। वर्ग कितना ज़्यादा समेटता है — और इस तार के हर आयत से ज़्यादा ही समेटेगा?",
+          mr: "एक 100 सेमी तार, दोन आकार: चौरस होऊन तिने 625 चौ. सेमी वेढले, 30 × 20 आयत होऊन 600. चौरस किती जास्त सामावतो — आणि या तारेच्या प्रत्येक आयताहून जास्तच सामावेल?",
+        },
+        answer: 25,
+        wrong: [625, 5, 100],
+        checkExpr: "25*25-600",
+        fmt: sqcm,
+        solution: {
+          en: "625 − 600 = 25 sq cm in the square's favour — and the rule is general: of all rectangles with the same boundary, the square encloses the most. Stretch the rectangle thinner and its area only falls (40 × 10 gives 400; 45 × 5 just 225). The wire never changes; how you bend it decides what it can hold.",
+          hi: "625 − 600 = 25 वर्ग सेमी वर्ग के पक्ष में — और नियम आम है: एक-सी सीमा वाले सब आयतों में वर्ग सबसे ज़्यादा घेरता है। आयत को और पतला खींचिए तो क्षेत्रफल गिरता ही है (40 × 10 से 400; 45 × 5 से बस 225)। तार वही रहता है; उसे कैसे मोड़ा, यही तय करता है कि वह कितना समेटेगा।",
+          mr: "625 − 600 = 25 चौ. सेमी चौरसाच्या बाजूने — आणि नियम सार्वत्रिक: सारख्या हद्दीच्या साऱ्या आयतांत चौरस सर्वाधिक वेढतो. आयत आणखी बारीक ओढा तर क्षेत्रफळ घसरतेच (40 × 10 ने 400; 45 × 5 ने फक्त 225). तार तीच राहते; ती कशी वाकवली हेच ती किती सामावेल ते ठरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 11 — Area and its Boundary",
+      name: "Area and its Boundary",
+      slug: "maths-5-area-and-its-boundary",
+      summary: "Area and boundary pulled apart — cards and ribbons, lawns with pits, and one wire that holds more as a square than as any rectangle.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "क्षेत्रफल और उसकी सीमा",
+          summary: "अलग-अलग परखे क्षेत्रफल और सीमा — कार्ड और फ़ीते, गड्ढों वाले लॉन, और वह एक तार जो वर्ग बनकर हर आयत से ज़्यादा समेटता है।",
+        },
+        mr: {
+          name: "क्षेत्रफळ आणि त्याची हद्द",
+          summary: "वेगवेगळे पारखलेले क्षेत्रफळ आणि हद्द — कार्डे आणि फिती, खड्ड्यांच्या हिरवळी, आणि चौरस होऊन प्रत्येक आयताहून जास्त सामावणारी एक तार.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Smart Charts (reading data with a doubting eye)              */
+/* ------------------------------------------------------------------------- */
+function smartCharts5(): TopicFileOut {
+  const rand = rng("maths-5-smart-charts");
+  const qs: OutQuestion[] = [];
+
+  const kmF = (n: number) => ({ en: `${n} km`, hi: `${n} किमी`, mr: `${n} किमी` });
+  const litres = (n: number) => ({ en: `${n} litres`, hi: `${n} लीटर`, mr: `${n} लिटर` });
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "On the games bar-chart, cricket's bar reaches 40 and kho-kho's reaches 25. By how many votes does cricket lead?",
+          hi: "खेलों के दंड-चार्ट में क्रिकेट की पट्टी 40 तक और खो-खो की 25 तक पहुँचती है। क्रिकेट कितने मतों से आगे है?",
+          mr: "खेळांच्या स्तंभ-तक्त्यात क्रिकेटचा स्तंभ 40 पर्यंत आणि खो-खोचा 25 पर्यंत पोहोचतो. क्रिकेट किती मतांनी पुढे?",
+        },
+        answer: 15,
+        wrong: [65, 25, 10],
+        checkExpr: "40-25",
+        solution: {
+          en: "The lead is the gap between bars: 40 − 25 = 15 votes. 65 adds the bars — 'how far ahead' asks for a difference.",
+          hi: "बढ़त पट्टियों का फ़ासला है: 40 − 25 = 15 मत। 65 पट्टियाँ जोड़ देता है — 'कितना आगे' अंतर पूछता है।",
+          mr: "आघाडी म्हणजे स्तंभांमधले अंतर: 40 − 25 = 15 मते. 65 स्तंभ मिळवते — 'किती पुढे' फरक विचारते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In the forest pictograph one tree-symbol stands for 100 trees. The sal row shows 6 symbols. How many sal trees?",
+          hi: "वन के चित्र-चार्ट में पेड़ का एक चिह्न 100 पेड़ों का है। साल की पंक्ति में 6 चिह्न हैं। साल के कितने पेड़?",
+          mr: "वनाच्या चित्र-तक्त्यात झाडाचे एक चिन्ह 100 झाडांचे आहे. सालच्या ओळीत 6 चिन्हे आहेत. सालची किती झाडे?",
+        },
+        answer: 600,
+        wrong: [6, 106, 60],
+        checkExpr: "100*6",
+        solution: {
+          en: "Six symbols of 100: 100 × 6 = 600 trees. 6 counts pictures, 60 drops a zero — the key at the chart's corner sets the worth of every symbol.",
+          hi: "100-100 के छह चिह्न: 100 × 6 = 600 पेड़। 6 तस्वीरें गिनता है, 60 शून्य गिराता है — चार्ट के कोने की कुंजी हर चिह्न का मोल तय करती है।",
+          mr: "100-100 ची सहा चिन्हे: 100 × 6 = 600 झाडे. 6 चित्रे मोजते, 60 शून्य पाडते — तक्त्याच्या कोपऱ्यातली किल्ली प्रत्येक चिन्हाचे मोल ठरवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The kitchen chart counts chapatis over three days: 20, then 15, then 25. How many in all?",
+          hi: "रसोई-चार्ट तीन दिनों की रोटियाँ गिनता है: 20, फिर 15, फिर 25। कुल कितनी?",
+          mr: "स्वयंपाकघराचा तक्ता तीन दिवसांच्या पोळ्या मोजतो: 20, मग 15, मग 25. एकूण किती?",
+        },
+        answer: 60,
+        wrong: [55, 50, 65],
+        checkExpr: "20+15+25",
+        solution: {
+          en: "20 + 15 + 25 = 60 chapatis — group the friendly pair first: 15 + 25 = 40, then + 20. 55 loses a five along the way.",
+          hi: "20 + 15 + 25 = 60 रोटियाँ — पहले सुविधाजनक जोड़ा: 15 + 25 = 40, फिर + 20। 55 राह में एक पाँच खो देता है।",
+          mr: "20 + 15 + 25 = 60 पोळ्या — आधी सोयीची जोडी: 15 + 25 = 40, मग + 20. 55 वाटेत एक पाच हरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In a pictograph where one symbol = 20 children, what does a HALF symbol stand for?",
+          hi: "जिस चित्र-चार्ट में एक चिह्न = 20 बच्चे, वहाँ आधा चिह्न किसके बराबर है?",
+          mr: "ज्या चित्र-तक्त्यात एक चिन्ह = 20 मुले, तिथे अर्धे चिन्ह कशाच्या बरोबरीचे?",
+        },
+        answer: 10,
+        wrong: [20, 5, 2],
+        checkExpr: "20/2",
+        solution: {
+          en: "Half the symbol, half the count: 20 ÷ 2 = 10 children. 2 halves the wrong thing — the picture, cut in half, still speaks in the chart's key.",
+          hi: "आधा चिह्न, आधी गिनती: 20 ÷ 2 = 10 बच्चे। 2 ग़लत चीज़ आधी करता है — कटी तस्वीर भी चार्ट की कुंजी में ही बोलती है।",
+          mr: "अर्धे चिन्ह, अर्धी मोजणी: 20 ÷ 2 = 10 मुले. 2 चुकीची गोष्ट अर्धी करते — कापलेले चित्रही तक्त्याच्या किल्लीतच बोलते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The growth chart shows Munna's money-plant at 12 cm last month and 30 cm now. How much did it grow?",
+          hi: "वृद्धि-चार्ट में मुन्ना की मनी-प्लांट पिछले महीने 12 सेमी और अब 30 सेमी है। वह कितनी बढ़ी?",
+          mr: "वाढीच्या तक्त्यात मुन्नाची मनी-प्लांट गेल्या महिन्यात 12 सेमी आणि आता 30 सेमी आहे. ती किती वाढली?",
+        },
+        answer: 18,
+        wrong: [42, 12, 22],
+        checkExpr: "30-12",
+        fmt: cm,
+        solution: {
+          en: "Growth is now minus then: 30 − 12 = 18 cm. 42 adds the two readings — a chart's change always lives in the difference.",
+          hi: "वृद्धि = अब घटा तब: 30 − 12 = 18 सेमी। 42 दोनों नाप जोड़ देता है — चार्ट का बदलाव हमेशा अंतर में बसता है।",
+          mr: "वाढ = आता वजा तेव्हा: 30 − 12 = 18 सेमी. 42 दोन्ही मापे मिळवते — तक्त्यातला बदल नेहमी फरकात राहतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "90 children were asked how they come to school: 35 walk and 40 cycle. The rest ride the bus — how many is that?",
+          hi: "90 बच्चों से पूछा गया कि वे स्कूल कैसे आते हैं: 35 पैदल और 40 साइकिल से। बाक़ी बस से — वे कितने हैं?",
+          mr: "90 मुलांना विचारले शाळेत कसे येता: 35 चालत आणि 40 सायकलने. उरलेले बसने — ते किती?",
+        },
+        answer: 15,
+        wrong: [55, 50, 25],
+        checkExpr: "90-35-40",
+        solution: {
+          en: "The bus children are the unnamed rest: 90 − 35 − 40 = 15. 55 removes only the walkers; both named groups must leave the total first.",
+          hi: "बस वाले बिना नाम के बचे हुए हैं: 90 − 35 − 40 = 15। 55 केवल पैदल वालों को हटाता है; पहले दोनों नामी समूह कुल से निकलें।",
+          mr: "बसवाली मुले म्हणजे नाव न घेतलेले उरलेले: 90 − 35 − 40 = 15. 55 फक्त चालणाऱ्यांना काढते; आधी दोन्ही नावाचे गट एकुणातून निघायला हवेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The bus-yard chart uses one square = 5 buses. A route's bar is 7 squares tall. How many buses run that route?",
+          hi: "बस-अड्डे के चार्ट में एक ख़ाना = 5 बसें। एक रूट की पट्टी 7 ख़ाने ऊँची है। उस रूट पर कितनी बसें चलती हैं?",
+          mr: "बस-आगाराच्या तक्त्यात एक चौकट = 5 बस. एका मार्गाचा स्तंभ 7 चौकटी उंच आहे. त्या मार्गावर किती बस धावतात?",
+        },
+        answer: 35,
+        wrong: [12, 7, 57],
+        checkExpr: "5*7",
+        solution: {
+          en: "Seven squares of 5: 5 × 7 = 35 buses. 7 reads the squares raw; 12 adds the scale to them — the scale multiplies every square it touches.",
+          hi: "5-5 के सात ख़ाने: 5 × 7 = 35 बसें। 7 ख़ाने यों ही पढ़ता है; 12 उनमें पैमाना जोड़ देता है — पैमाना हर छुए ख़ाने से गुणा होता है।",
+          mr: "5-5 च्या सात चौकटी: 5 × 7 = 35 बस. 7 चौकटी नुसत्या वाचते; 12 त्यांत प्रमाण मिळवते — प्रमाण शिवलेल्या प्रत्येक चौकटीने गुणले जाते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The milk chart says the family takes 2 litres every day. What will the chart's total show for one week?",
+          hi: "दूध-चार्ट कहता है परिवार रोज़ 2 लीटर लेता है। एक हफ़्ते का कुल चार्ट में कितना दिखेगा?",
+          mr: "दूध-तक्ता सांगतो कुटुंब रोज 2 लिटर घेते. एका आठवड्याची बेरीज तक्त्यात किती दिसेल?",
+        },
+        answer: 14,
+        wrong: [9, 12, 10],
+        checkExpr: "2*7",
+        fmt: litres,
+        solution: {
+          en: "Seven days of 2 litres: 2 × 7 = 14 litres. 12 counts six days — the chart's week keeps Sunday too.",
+          hi: "2-2 लीटर के सात दिन: 2 × 7 = 14 लीटर। 12 छह दिन गिनता है — चार्ट का हफ़्ता इतवार भी रखता है।",
+          mr: "2-2 लिटरचे सात दिवस: 2 × 7 = 14 लिटर. 12 सहा दिवस मोजते — तक्त्याचा आठवडा रविवारही ठेवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The rain gauge chart: June collected 120 mm and July collected half as much again as June. What did July collect?",
+          hi: "वर्षा-मापी चार्ट: जून में 120 मिमी और जुलाई में जून से आधा और ज़्यादा। जुलाई में कितना?",
+          mr: "पर्जन्यमापी तक्ता: जूनमध्ये 120 मिमी आणि जुलैत जूनहून आणखी निम्मे जास्त. जुलैत किती?",
+        },
+        answer: 180,
+        wrong: [60, 240, 120],
+        checkExpr: "120+120/2",
+        solution: {
+          en: "'Half as much again' means the whole PLUS its half: 120 + 60 = 180 mm. 60 keeps only the half; 240 doubles — reading quantity-words exactly is chart-work too.",
+          hi: "'आधा और ज़्यादा' यानी पूरा और उसका आधा: 120 + 60 = 180 मिमी। 60 केवल आधा रखता है; 240 दुगना कर देता है — मात्रा के शब्द ठीक-ठीक पढ़ना भी चार्ट का ही काम है।",
+          mr: "'आणखी निम्मे जास्त' म्हणजे पूर्ण अधिक त्याचा अर्धा: 120 + 60 = 180 मिमी. 60 फक्त अर्धा ठेवते; 240 दुप्पट करते — परिमाणाचे शब्द नेमके वाचणे हेही तक्त्याचेच काम.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The journey chart: the bus covered 45 km in each of the first 3 hours, then 30 km in the slow last hour. How far in all?",
+          hi: "यात्रा-चार्ट: बस ने पहले 3 घंटों में 45-45 किमी, फिर धीमे आख़िरी घंटे में 30 किमी तय किए। कुल कितनी दूरी?",
+          mr: "प्रवास-तक्ता: बसने पहिल्या 3 तासांत 45-45 किमी, मग हळू शेवटच्या तासात 30 किमी कापले. एकूण किती अंतर?",
+        },
+        answer: 165,
+        wrong: [135, 75, 180],
+        checkExpr: "45*3+30",
+        fmt: kmF,
+        solution: {
+          en: "Fast hours: 45 × 3 = 135 km; the slow hour adds 30: 135 + 30 = 165 km. 135 forgets the last hour; 180 pretends it kept the old speed.",
+          hi: "तेज़ घंटे: 45 × 3 = 135 किमी; धीमा घंटा 30 जोड़ता है: 135 + 30 = 165 किमी। 135 आख़िरी घंटा भूलता है; 180 मान बैठता है कि रफ़्तार वही रही।",
+          mr: "वेगवान तास: 45 × 3 = 135 किमी; हळू तास 30 मिळवतो: 135 + 30 = 165 किमी. 135 शेवटचा तास विसरते; 180 वेग तोच राहिल्याचे मानते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A poster claims 'HALF our class of 40 loves cricket!' but the chart's cricket bar reads 22. By how many children does the claim miss the chart?",
+          hi: "पोस्टर दावा करता है '40 की हमारी कक्षा के आधे बच्चे क्रिकेट के दीवाने हैं!' पर चार्ट की क्रिकेट-पट्टी 22 कहती है। दावा चार्ट से कितने बच्चों से चूकता है?",
+          mr: "पोस्टर दावा करते '40 च्या आमच्या वर्गातली निम्मी मुले क्रिकेटवेडी!' पण तक्त्याचा क्रिकेट-स्तंभ 22 सांगतो. दावा तक्त्याहून किती मुलांनी चुकतो?",
+        },
+        answer: 2,
+        wrong: [20, 18, 0],
+        checkExpr: "22-40/2",
+        solution: {
+          en: "Half of 40 is 20; the chart says 22 — the claim is off by 22 − 20 = 2 children (and in cricket's favour, so 'half' UNDERSELLS it). Checking a claim against its own chart is the chapter's real skill: words round off, bars do not.",
+          hi: "40 का आधा 20; चार्ट कहता है 22 — दावा 22 − 20 = 2 बच्चों से चूकता है (और क्रिकेट के पक्ष में, यानी 'आधे' कहना कम बताना है)। दावे को उसी के चार्ट से जाँचना ही अध्याय का असली हुनर है: शब्द गोल कर देते हैं, पट्टियाँ नहीं।",
+          mr: "40 चा अर्धा 20; तक्ता सांगतो 22 — दावा 22 − 20 = 2 मुलांनी चुकतो (आणि क्रिकेटच्या बाजूने, म्हणजे 'निम्मे' म्हणणे कमी सांगणे). दावा त्याच्याच तक्त्याशी ताडणे हेच धड्याचे खरे कौशल्य: शब्द गोल करतात, स्तंभ नाहीत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 12 — Smart Charts",
+      name: "Smart Charts",
+      slug: "maths-5-smart-charts",
+      summary: "Bars, keys and growth lines read with a doubting eye — scaled symbols, unnamed remainders, and claims checked against their own charts.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "स्मार्ट चार्ट",
+          summary: "शक की नज़र से पढ़ी पट्टियाँ, कुंजियाँ और वृद्धि-रेखाएँ — पैमाने वाले चिह्न, बिना नाम के बचे हुए, और अपने ही चार्ट से जँचे दावे।",
+        },
+        mr: {
+          name: "स्मार्ट तक्ते",
+          summary: "शंकेच्या नजरेने वाचलेले स्तंभ, किल्ल्या आणि वाढ-रेषा — प्रमाणातली चिन्हे, नाव न घेतलेले उरलेले, आणि स्वतःच्याच तक्त्याशी ताडलेले दावे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Ways to Multiply and Divide (bigger numbers, cleverer moves) */
+/* ------------------------------------------------------------------------- */
+function waysToMultiplyAndDivide(): TopicFileOut {
+  const rand = rng("maths-5-ways-to-multiply-and-divide");
+  const qs: OutQuestion[] = [];
+
+  const litres = (n: number) => ({ en: `${n} litres`, hi: `${n} लीटर`, mr: `${n} लिटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 43 × 2?",
+          hi: "43 × 2 कितना है?",
+          mr: "43 × 2 किती?",
+        },
+        answer: 86,
+        wrong: [45, 68, 96],
+        checkExpr: "43*2",
+        solution: {
+          en: "Double the tens, double the ones: 80 + 6 = 86. 68 swaps the digits; 45 adds the 2 instead of doubling.",
+          hi: "दहाई दुगनी, इकाई दुगनी: 80 + 6 = 86। 68 अंक पलट देता है; 45 दुगना करने की जगह 2 जोड़ता है।",
+          mr: "दशक दुप्पट, एकक दुप्पट: 80 + 6 = 86. 68 अंक उलटते; 45 दुप्पट करण्याऐवजी 2 मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 84 ÷ 4?",
+          hi: "84 ÷ 4 कितना है?",
+          mr: "84 ÷ 4 किती?",
+        },
+        answer: 21,
+        wrong: [22, 12, 80],
+        checkExpr: "84/4",
+        solution: {
+          en: "Split 84 into 80 + 4: 80 ÷ 4 = 20 and 4 ÷ 4 = 1, so 21. 12 divides 84 by 7 by mistake; 80 subtracts the 4 instead of dividing by it.",
+          hi: "84 को 80 + 4 में तोड़िए: 80 ÷ 4 = 20 और 4 ÷ 4 = 1, तो 21। 12 भूल से 7 से भाग देता है; 80 चार से भाग की जगह चार घटा देता है।",
+          mr: "84 ला 80 + 4 मध्ये फोडा: 80 ÷ 4 = 20 आणि 4 ÷ 4 = 1, म्हणून 21. 12 चुकून 7 ने भागते; 80 चाराने भागण्याऐवजी चार वजा करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 35 × 10?",
+          hi: "35 × 10 कितना है?",
+          mr: "35 × 10 किती?",
+        },
+        answer: 350,
+        wrong: [35, 3500, 45],
+        checkExpr: "35*10",
+        solution: {
+          en: "Multiplying by ten hangs one zero on the end: 350. 3500 hangs two — that is ×100's job; 45 adds the ten.",
+          hi: "दस से गुणा अंत में एक शून्य टाँगता है: 350। 3500 दो टाँग देता है — वह ×100 का काम है; 45 दस जोड़ देता है।",
+          mr: "दहाने गुणणे शेवटी एक शून्य टांगते: 350. 3500 दोन टांगते — ते ×100 चे काम; 45 दहा मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 127 × 3?",
+          hi: "127 × 3 कितना है?",
+          mr: "127 × 3 किती?",
+        },
+        answer: 381,
+        wrong: [361, 321, 371],
+        checkExpr: "127*3",
+        solution: {
+          en: "Piece by piece: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — total 381. 361 and 371 lose parts of the 21's carry into the tens.",
+          hi: "टुकड़ों में: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — कुल 381। 361 और 371 में 21 का दहाई वाला हासिल कहीं छूट जाता है।",
+          mr: "तुकड्यांनी: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — एकूण 381. 361 आणि 371 मध्ये 21 चा दशकातला हातचा कुठे तरी सुटतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 96 ÷ 8?",
+          hi: "96 ÷ 8 कितना है?",
+          mr: "96 ÷ 8 किती?",
+        },
+        answer: 12,
+        wrong: [11, 13, 88],
+        checkExpr: "96/8",
+        solution: {
+          en: "96 = 80 + 16, and 80 ÷ 8 = 10, 16 ÷ 8 = 2: together 12. Check forward: 8 × 12 = 96. 88 subtracts the 8 — division shares, it does not remove one share.",
+          hi: "96 = 80 + 16, और 80 ÷ 8 = 10, 16 ÷ 8 = 2: मिलाकर 12। उल्टी जाँच: 8 × 12 = 96। 88 आठ घटा देता है — भाग बाँटता है, एक हिस्सा हटाता नहीं।",
+          mr: "96 = 80 + 16, आणि 80 ÷ 8 = 10, 16 ÷ 8 = 2: मिळून 12. उलट तपासणी: 8 × 12 = 96. 88 आठ वजा करते — भागाकार वाटतो, एक वाटा काढत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A carton holds 144 pencils. How many pencils in 6 cartons?",
+          hi: "एक कार्टन में 144 पेंसिलें हैं। 6 कार्टनों में कितनी पेंसिलें?",
+          mr: "एका खोक्यात 144 पेन्सिली आहेत. 6 खोक्यांत किती पेन्सिली?",
+        },
+        answer: 864,
+        wrong: [764, 150, 884],
+        checkExpr: "144*6",
+        solution: {
+          en: "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864. 764 drops a hundred in the middle step; 150 adds the cartons.",
+          hi: "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864। 764 बीच के क़दम में एक सैकड़ा गिराता है; 150 कार्टन जोड़ देता है।",
+          mr: "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864. 764 मधल्या पायरीत एक शतक पाडते; 150 खोकी मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "525 chairs are shared equally among 5 halls. How many chairs per hall?",
+          hi: "525 कुर्सियाँ 5 हॉलों में बराबर बाँटी गईं। हर हॉल में कितनी कुर्सियाँ?",
+          mr: "525 खुर्च्या 5 सभागृहांत सारख्या वाटल्या. प्रत्येक सभागृहात किती खुर्च्या?",
+        },
+        answer: 105,
+        wrong: [15, 101, 125],
+        checkExpr: "525/5",
+        solution: {
+          en: "500 ÷ 5 = 100 and 25 ÷ 5 = 5: each hall gets 105. 15 forgets the hundreds entirely; 101 mislays the 25's share.",
+          hi: "500 ÷ 5 = 100 और 25 ÷ 5 = 5: हर हॉल को 105। 15 सैकड़े पूरे भूल जाता है; 101 पच्चीस का हिस्सा गुमा देता है।",
+          mr: "500 ÷ 5 = 100 आणि 25 ÷ 5 = 5: प्रत्येक सभागृहाला 105. 15 शतके पूर्ण विसरते; 101 पंचविसाचा वाटा हरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "438 children must be seated 6 to a bench. How many benches fill completely?",
+          hi: "438 बच्चों को 6-6 की बेंचों पर बिठाना है। कितनी बेंचें पूरी भरेंगी?",
+          mr: "438 मुलांना 6-6 च्या बाकांवर बसवायचे आहे. किती बाके पूर्ण भरतील?",
+        },
+        answer: 73,
+        wrong: [72, 74, 63],
+        checkExpr: "438/6",
+        solution: {
+          en: "438 ÷ 6: 420 ÷ 6 = 70 and 18 ÷ 6 = 3, so 73 benches exactly — no remainder, every bench full. 63 divides 378; a quick 6 × 73 = 438 check settles it.",
+          hi: "438 ÷ 6: 420 ÷ 6 = 70 और 18 ÷ 6 = 3, तो ठीक 73 बेंचें — शेष शून्य, हर बेंच भरी। 63 तो 378 का भागफल है; झटपट 6 × 73 = 438 की जाँच बात पक्की कर देती है।",
+          mr: "438 ÷ 6: 420 ÷ 6 = 70 आणि 18 ÷ 6 = 3, म्हणून नेमकी 73 बाके — बाकी शून्य, प्रत्येक बाक भरलेला. 63 हा 378 चा भागाकार; झटपट 6 × 73 = 438 तपासणी गोष्ट पक्की करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Solve 23 × 19 the clever way: take 23 twenties and give one 23 back. What is the answer?",
+          hi: "23 × 19 चतुराई से कीजिए: 23 के बीस गुने लीजिए और एक 23 लौटा दीजिए। उत्तर क्या है?",
+          mr: "23 × 19 हुशारीने करा: 23 चे वीसपट घ्या आणि एक 23 परत द्या. उत्तर किती?",
+        },
+        answer: 437,
+        wrong: [460, 414, 447],
+        checkExpr: "23*20-23",
+        solution: {
+          en: "23 × 20 = 460, minus the one extra 23: 460 − 23 = 437. 460 forgets to give the 23 back; 414 gives back two. Nineteen anythings are twenty of them minus one.",
+          hi: "23 × 20 = 460, एक फ़ालतू 23 घटाइए: 460 − 23 = 437। 460 लौटाना भूल जाता है; 414 दो लौटा देता है। उन्नीस गुना यानी बीस गुना घटा एक।",
+          mr: "23 × 20 = 460, एक जादा 23 वजा करा: 460 − 23 = 437. 460 परत देणे विसरते; 414 दोन परत देते. एकोणीसपट म्हणजे विसपट वजा एक.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The dairy sends 8 litres of milk every day. How much milk in February of an ordinary year — 28 days?",
+          hi: "डेयरी रोज़ 8 लीटर दूध भेजती है। आम साल की फ़रवरी — 28 दिनों — में कुल कितना दूध?",
+          mr: "डेअरी रोज 8 लिटर दूध पाठवते. साध्या वर्षाच्या फेब्रुवारीत — 28 दिवसांत — एकूण किती दूध?",
+        },
+        answer: 224,
+        wrong: [216, 232, 168],
+        checkExpr: "8*28",
+        solution: {
+          en: "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 litres. 168 uses a 21-day February; 216 and 232 are one day of milk below and above.",
+          hi: "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 लीटर। 168 इक्कीस दिन की फ़रवरी लेता है; 216 और 232 एक-एक दिन का दूध नीचे-ऊपर हैं।",
+          mr: "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 लिटर. 168 एकवीस दिवसांची फेब्रुवारी घेते; 216 आणि 232 एकेका दिवसाचे दूध खाली-वर.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A number divided by 7 gives quotient 13 and remainder 4. What is the number?",
+          hi: "किसी संख्या को 7 से भाग देने पर भागफल 13 और शेष 4 आता है। वह संख्या क्या है?",
+          mr: "एका संख्येला 7 ने भागल्यावर भागाकार 13 आणि बाकी 4 येते. ती संख्या कोणती?",
+        },
+        answer: 95,
+        wrong: [91, 87, 24],
+        checkExpr: "7*13+4",
+        solution: {
+          en: "Rebuild it: 7 × 13 = 91, plus the 4 left over: 91 + 4 = 95 — and 95 ÷ 7 does give 13 remainder 4. 91 forgets the remainder; 24 just adds the visible numbers. Division's undo is multiply-then-add-the-remainder.",
+          hi: "फिर से जोड़िए: 7 × 13 = 91, ऊपर से बचा 4: 91 + 4 = 95 — और 95 ÷ 7 सचमुच 13 शेष 4 देता है। 91 शेष भूलता है; 24 दिखती संख्याएँ भर जोड़ता है। भाग का उलटा है — गुणा करो, फिर शेष जोड़ो।",
+          mr: "पुन्हा उभारा: 7 × 13 = 91, शिवाय उरलेले 4: 91 + 4 = 95 — आणि 95 ÷ 7 खरेच 13 बाकी 4 देते. 91 बाकी विसरते; 24 नुसत्या दिसणाऱ्या संख्या मिळवते. भागाकाराचा उलटा म्हणजे — गुणा, मग बाकी मिळवा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 13 — Ways to Multiply and Divide",
+      name: "Ways to Multiply and Divide",
+      slug: "maths-5-ways-to-multiply-and-divide",
+      summary: "Bigger multiplications and divisions taken apart cleverly — splitting by place, the twenty-minus-one trick, and rebuilding a number from its remainder.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "गुणा-भाग के तरीक़े",
+          summary: "बड़े गुणा-भाग चतुराई से खोले हुए — स्थान से तोड़ना, बीस-घटा-एक की तरकीब, और शेष से संख्या को फिर जोड़ना।",
+        },
+        mr: {
+          name: "गुणाकार-भागाकाराच्या रीती",
+          summary: "मोठे गुणाकार-भागाकार हुशारीने उलगडलेले — स्थानाने फोडणे, वीस-वजा-एकची युक्ती, आणि बाकीतून संख्या पुन्हा उभारणे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — How Big? How Heavy? (volume and weight, measured and felt)   */
+/* ------------------------------------------------------------------------- */
+function howBigHowHeavy(): TopicFileOut {
+  const rand = rng("maths-5-how-big-how-heavy");
+  const qs: OutQuestion[] = [];
+
+  const mlF = (n: number) => ({ en: `${n} mL`, hi: `${n} मिली`, mr: `${n} मिली` });
+  const kg = (n: number) => ({ en: `${n} kg`, hi: `${n} किग्रा`, mr: `${n} किलो` });
+  const g = (n: number) => ({ en: `${n} g`, hi: `${n} ग्राम`, mr: `${n} ग्रॅम` });
+  const cubes = (n: number) => ({ en: `${n} cubes`, hi: `${n} घन`, mr: `${n} घन` });
+  const cucm = (n: number) => ({ en: `${n} cubic cm`, hi: `${n} घन सेमी`, mr: `${n} घन सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A marble dropped into a measuring jar raises the water from 60 mL to 62 mL. What is the marble's volume?",
+          hi: "नापने के जार में कंचा डालने पर पानी 60 मिली से 62 मिली हो जाता है। कंचे का आयतन कितना?",
+          mr: "मापाच्या भांड्यात गोटी टाकल्यावर पाणी 60 मिलीवरून 62 मिली होते. गोटीचे आकारमान किती?",
+        },
+        answer: 2,
+        wrong: [62, 122, 60],
+        checkExpr: "62-60",
+        fmt: mlF,
+        solution: {
+          en: "The marble pushed the water up by 62 − 60 = 2 mL — the water rose by exactly the marble's own size. 62 reads the new level, not the rise.",
+          hi: "कंचे ने पानी 62 − 60 = 2 मिली ऊपर धकेला — पानी ठीक कंचे के अपने नाप जितना चढ़ा। 62 नया तल पढ़ता है, चढ़ाव नहीं।",
+          mr: "गोटीने पाणी 62 − 60 = 2 मिली वर ढकलले — पाणी नेमके गोटीच्या स्वतःच्या मापाइतके चढले. 62 नवी पातळी वाचते, चढ नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A centimetre cube has a volume of 1 cubic cm. What is the volume of a row of 5 such cubes?",
+          hi: "सेंटीमीटर-घन का आयतन 1 घन सेमी है। ऐसे 5 घनों की क़तार का आयतन कितना?",
+          mr: "सेंटिमीटर-घनाचे आकारमान 1 घन सेमी. अशा 5 घनांच्या रांगेचे आकारमान किती?",
+        },
+        answer: 5,
+        wrong: [1, 25, 10],
+        checkExpr: "5*1",
+        fmt: cucm,
+        solution: {
+          en: "Five cubes of 1 each: 5 × 1 = 5 cubic cm — volume counts the cubes a shape is built of. 25 squares the five; a row grows straight, not sideways.",
+          hi: "1-1 के पाँच घन: 5 × 1 = 5 घन सेमी — आयतन उन घनों को गिनता है जिनसे आकृति बनी है। 25 पाँच का वर्ग है; क़तार सीधी बढ़ती है, आड़ी नहीं।",
+          mr: "1-1 चे पाच घन: 5 × 1 = 5 घन सेमी — आकारमान आकार ज्या घनांनी बनला ते मोजते. 25 पाचाचा वर्ग; रांग सरळ वाढते, आडवी नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "One brick weighs about 2 kg. What do six bricks weigh?",
+          hi: "एक ईंट क़रीब 2 किलो की है। छह ईंटें कितने की होंगी?",
+          mr: "एक वीट सुमारे 2 किलोची असते. सहा विटा किती होतील?",
+        },
+        answer: 12,
+        wrong: [8, 62, 10],
+        checkExpr: "2*6",
+        fmt: kg,
+        solution: {
+          en: "Six bricks of 2 kg: 2 × 6 = 12 kg — about what a full school bag should never weigh. 8 adds the six to the two.",
+          hi: "2-2 किलो की छह ईंटें: 2 × 6 = 12 किलो — क़रीब उतना, जितना भरे बस्ते को कभी नहीं होना चाहिए। 8 छह को दो में जोड़ देता है।",
+          mr: "2-2 किलोच्या सहा विटा: 2 × 6 = 12 किलो — भरलेल्या दप्तराने कधीही होऊ नये इतके. 8 सहाला दोनांत मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A box floor holds 4 cubes by 3 cubes, one layer high. How many cubes fill it?",
+          hi: "डिब्बे के फ़र्श पर 4 × 3 घन आते हैं, एक परत ऊँची। उसे कितने घन भरेंगे?",
+          mr: "खोक्याच्या तळावर 4 × 3 घन मावतात, एक थर उंच. ते किती घनांनी भरेल?",
+        },
+        answer: 12,
+        wrong: [7, 24, 43],
+        checkExpr: "4*3*1",
+        fmt: cubes,
+        solution: {
+          en: "One layer of 4 × 3: 12 cubes. 24 imagines a second layer the box does not have; 7 adds the sides.",
+          hi: "4 × 3 की एक परत: 12 घन। 24 वह दूसरी परत जोड़ देता है जो डिब्बे में है ही नहीं; 7 भुजाएँ जोड़ता है।",
+          mr: "4 × 3 चा एक थर: 12 घन. 24 खोक्यात नसलेला दुसरा थर मानते; 7 बाजू मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A 5 kg bag of rice is shared equally among 4 families. How many GRAMS does each family get?",
+          hi: "5 किलो चावल की थैली 4 परिवारों में बराबर बँटी। हर परिवार को कितने ग्राम मिले?",
+          mr: "5 किलो तांदळाची पिशवी 4 कुटुंबांत सारखी वाटली. प्रत्येक कुटुंबाला किती ग्रॅम मिळाले?",
+        },
+        answer: 1250,
+        wrong: [1200, 125, 2500],
+        checkExpr: "5000/4",
+        fmt: g,
+        solution: {
+          en: "5 kg = 5000 g, and 5000 ÷ 4 = 1250 g — a kilo and a quarter each. 125 loses a zero; 1200 rounds the quarter kilo away.",
+          hi: "5 किलो = 5000 ग्राम, और 5000 ÷ 4 = 1250 ग्राम — सवा किलो हर एक को। 125 शून्य खोता है; 1200 पाव किलो गोल कर जाता है।",
+          mr: "5 किलो = 5000 ग्रॅम, आणि 5000 ÷ 4 = 1250 ग्रॅम — सव्वा किलो प्रत्येकाला. 125 शून्य गमावते; 1200 पाव किलो गोल करून टाकते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A box is 5 cm long, 4 cm wide and 2 cm high. What is its volume?",
+          hi: "एक डिब्बा 5 सेमी लंबा, 4 सेमी चौड़ा और 2 सेमी ऊँचा है। उसका आयतन कितना?",
+          mr: "एक खोके 5 सेमी लांब, 4 सेमी रुंद आणि 2 सेमी उंच आहे. त्याचे आकारमान किती?",
+        },
+        answer: 40,
+        wrong: [11, 20, 22],
+        checkExpr: "5*4*2",
+        fmt: cucm,
+        solution: {
+          en: "Volume multiplies all three: 5 × 4 × 2 = 40 cubic cm — a floor of 20 cubes, two layers of it. 20 stops after the floor; 11 adds the sides.",
+          hi: "आयतन तीनों को गुणता है: 5 × 4 × 2 = 40 घन सेमी — 20 घनों का फ़र्श, उसकी दो परतें। 20 फ़र्श पर रुक जाता है; 11 भुजाएँ जोड़ता है।",
+          mr: "आकारमान तिन्हींना गुणते: 5 × 4 × 2 = 40 घन सेमी — 20 घनांचा तळ, त्याचे दोन थर. 20 तळावरच थांबते; 11 बाजू मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A water tank holds 500 litres and a bucket carries 10 litres. How many bucketfuls empty the tank?",
+          hi: "टंकी में 500 लीटर पानी है और बाल्टी 10 लीटर उठाती है। टंकी ख़ाली करने में कितनी बाल्टियाँ लगेंगी?",
+          mr: "टाकीत 500 लिटर पाणी आहे आणि बादली 10 लिटर उचलते. टाकी रिकामी करायला किती बादल्या लागतील?",
+        },
+        answer: 50,
+        wrong: [5, 490, 55],
+        checkExpr: "500/10",
+        solution: {
+          en: "500 ÷ 10 = 50 buckets. 5 loses a zero; 490 subtracts one bucket instead of counting how many times the bucket dips.",
+          hi: "500 ÷ 10 = 50 बाल्टियाँ। 5 शून्य खोता है; 490 यह गिनने की जगह कि बाल्टी कितनी बार डूबेगी, एक बाल्टी घटा देता है।",
+          mr: "500 ÷ 10 = 50 बादल्या. 5 शून्य गमावते; 490 बादली किती वेळा बुडेल हे मोजण्याऐवजी एक बादली वजा करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "One litre of water weighs one kilogram. Ignoring the can itself, what does the water in a full 15-litre can weigh?",
+          hi: "एक लीटर पानी एक किलो का होता है। कनस्तर का वज़न छोड़ दें, तो भरे 15 लीटर कनस्तर का पानी कितने का है?",
+          mr: "एक लिटर पाणी एक किलोचे असते. डब्याचे वजन सोडले, तर भरलेल्या 15 लिटर डब्यातले पाणी किती वजनाचे?",
+        },
+        answer: 15,
+        wrong: [30, 1, 150],
+        checkExpr: "15*1",
+        fmt: kg,
+        solution: {
+          en: "Litre for kilo: 15 × 1 = 15 kg — water's beautiful one-to-one rule. 150 invents a rate of ten; the rule costs nothing to remember and weighs every bucket you will ever lift.",
+          hi: "लीटर पर किलो: 15 × 1 = 15 किलो — पानी का सुंदर एक-का-एक नियम। 150 दस का भाव गढ़ लेता है; यह नियम याद रखने में मुफ़्त है और आपकी हर उठाई बाल्टी तौल देता है।",
+          mr: "लिटरामागे किलो: 15 × 1 = 15 किलो — पाण्याचा सुंदर एकास-एक नियम. 150 दहाचा भाव रचते; हा नियम लक्षात ठेवायला फुकट आहे आणि तुम्ही उचलाल ती प्रत्येक बादली तोलतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A stone dropped into the jar raises the water from 200 mL to 260 mL. What is the stone's volume?",
+          hi: "जार में पत्थर डालने पर पानी 200 मिली से 260 मिली हो गया। पत्थर का आयतन कितना?",
+          mr: "भांड्यात दगड टाकल्यावर पाणी 200 मिलीवरून 260 मिली झाले. दगडाचे आकारमान किती?",
+        },
+        answer: 60,
+        wrong: [260, 460, 40],
+        checkExpr: "260-200",
+        fmt: mlF,
+        solution: {
+          en: "The rise tells the volume: 260 − 200 = 60 mL. An odd-shaped stone that no ruler could measure just measured itself in water — that is the jar's magic.",
+          hi: "चढ़ाव ही आयतन बताता है: 260 − 200 = 60 मिली। जिस टेढ़े-मेढ़े पत्थर को कोई स्केल नहीं नाप सकता था, उसने पानी में ख़ुद को नाप लिया — यही जार का जादू है।",
+          mr: "चढच आकारमान सांगते: 260 − 200 = 60 मिली. कोणत्याही पट्टीला न मोजता येणाऱ्या वेड्यावाकड्या दगडाने पाण्यात स्वतःला मोजले — हीच भांड्याची जादू.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "How many 2-cm cubes pack exactly into a box 6 cm long, 4 cm wide and 2 cm high?",
+          hi: "6 सेमी लंबे, 4 सेमी चौड़े और 2 सेमी ऊँचे डिब्बे में 2-2 सेमी के कितने घन ठीक-ठीक समाएँगे?",
+          mr: "6 सेमी लांब, 4 सेमी रुंद आणि 2 सेमी उंच खोक्यात 2-2 सेमीचे किती घन नेमके मावतील?",
+        },
+        answer: 6,
+        wrong: [48, 12, 8],
+        checkExpr: "6*4*2/(2*2*2)",
+        fmt: cubes,
+        solution: {
+          en: "The box holds 6 × 4 × 2 = 48 cubic cm, and each 2-cm cube takes 2 × 2 × 2 = 8: 48 ÷ 8 = 6 cubes — 3 along, 2 across, 1 layer. 48 forgets the cubes are bigger than a centimetre; 12 halves only one direction.",
+          hi: "डिब्बे में 6 × 4 × 2 = 48 घन सेमी, और हर 2-सेमी घन 2 × 2 × 2 = 8 लेता है: 48 ÷ 8 = 6 घन — 3 लंबाई में, 2 चौड़ाई में, 1 परत। 48 भूलता है कि घन सेंटीमीटर से बड़े हैं; 12 एक ही दिशा आधी करता है।",
+          mr: "खोक्यात 6 × 4 × 2 = 48 घन सेमी, आणि प्रत्येक 2-सेमी घन 2 × 2 × 2 = 8 घेतो: 48 ÷ 8 = 6 घन — 3 लांबीत, 2 रुंदीत, 1 थर. 48 विसरते की घन सेंटिमीटराहून मोठे आहेत; 12 एकाच दिशेला अर्धे करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The circus poster boasts an elephant of 4000 kg. The godown holds 80 sacks of grain, 50 kg each. By how many kilograms does the elephant outweigh the sacks?",
+          hi: "सर्कस का पोस्टर 4000 किलो के हाथी की डींग हाँकता है। गोदाम में 50-50 किलो की 80 बोरियाँ हैं। हाथी बोरियों से कितने किलो भारी है?",
+          mr: "सर्कशीचे पोस्टर 4000 किलोच्या हत्तीची फुशारकी मारते. गोदामात 50-50 किलोची 80 पोती आहेत. हत्ती पोत्यांहून किती किलोंनी जड आहे?",
+        },
+        answer: 0,
+        wrong: [400, 50, 100],
+        checkExpr: "4000-80*50",
+        fmt: kg,
+        solution: {
+          en: "The sacks total 80 × 50 = 4000 kg — exactly the elephant. The difference is 0: an elephant is eighty sacks of grain standing on four legs. Huge numbers stop feeling huge once you weigh them against something you can stack.",
+          hi: "बोरियाँ कुल 80 × 50 = 4000 किलो — ठीक हाथी जितनी। अंतर 0 है: हाथी चार टाँगों पर खड़ी अस्सी बोरियाँ है। बड़ी संख्याएँ तब बड़ी नहीं लगतीं जब उन्हें किसी जमाने लायक़ चीज़ से तौल लिया जाए।",
+          mr: "पोती एकूण 80 × 50 = 4000 किलो — नेमकी हत्तीइतकी. फरक 0: हत्ती म्हणजे चार पायांवर उभी ऐंशी पोती. मोठे आकडे रचता येणाऱ्या वस्तूशी तोलले की मोठे वाटेनासे होतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 14 — How Big? How Heavy?",
+      name: "How Big? How Heavy?",
+      slug: "maths-5-how-big-how-heavy",
+      summary: "Volume by rising water and stacked cubes, weight by litres and sacks — and an elephant weighed in grain.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "कितना बड़ा? कितना भारी?",
+          summary: "चढ़ते पानी और जमे घनों से आयतन, लीटरों और बोरियों से वज़न — और अनाज में तौला हाथी।",
+        },
+        mr: {
+          name: "केवढे मोठे? किती जड?",
+          summary: "चढत्या पाण्याने आणि रचलेल्या घनांनी आकारमान, लिटरांनी आणि पोत्यांनी वजन — आणि धान्यात तोललेला हत्ती.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G5_MATHS: TopicFileOut[] = [
   theFishTale(),
   shapesAndAngles(),
@@ -2664,4 +3735,8 @@ export const G5_MATHS: TopicFileOut[] = [
   mappingYourWay(),
   boxesAndSketches(),
   tenthsAndHundredths(),
+  areaAndItsBoundary(),
+  smartCharts5(),
+  waysToMultiplyAndDivide(),
+  howBigHowHeavy(),
 ];

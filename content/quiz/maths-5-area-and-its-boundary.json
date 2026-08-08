@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 11 — Area and its Boundary",
+  "name": "Area and its Boundary",
+  "slug": "maths-5-area-and-its-boundary",
+  "summary": "Area and boundary pulled apart — cards and ribbons, lawns with pits, and one wire that holds more as a square than as any rectangle.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "क्षेत्रफल और उसकी सीमा",
+      "summary": "अलग-अलग परखे क्षेत्रफल और सीमा — कार्ड और फ़ीते, गड्ढों वाले लॉन, और वह एक तार जो वर्ग बनकर हर आयत से ज़्यादा समेटता है।"
+    },
+    "mr": {
+      "name": "क्षेत्रफळ आणि त्याची हद्द",
+      "summary": "वेगवेगळे पारखलेले क्षेत्रफळ आणि हद्द — कार्डे आणि फिती, खड्ड्यांच्या हिरवळी, आणि चौरस होऊन प्रत्येक आयताहून जास्त सामावणारी एक तार."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A greeting card is 8 cm long and 5 cm wide. What is its area?",
+      "choices": [
+        "45 sq cm",
+        "26 sq cm",
+        "13 sq cm",
+        "40 sq cm"
+      ],
+      "answerIndex": 3,
+      "solution": "Area is length × width: 8 × 5 = 40 sq cm. 13 adds the sides and 26 walks the boundary — both measure the edge, not the filled face.",
+      "checkExpr": "8*5",
+      "translations": {
+        "hi": {
+          "stem": "एक बधाई-कार्ड 8 सेमी लंबा और 5 सेमी चौड़ा है। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "45 वर्ग सेमी",
+            "26 वर्ग सेमी",
+            "13 वर्ग सेमी",
+            "40 वर्ग सेमी"
+          ],
+          "solution": "क्षेत्रफल = लंबाई × चौड़ाई: 8 × 5 = 40 वर्ग सेमी। 13 भुजाएँ जोड़ता है और 26 सीमा नापता है — दोनों किनारा नापते हैं, भरा चेहरा नहीं।"
+        },
+        "mr": {
+          "stem": "एक शुभेच्छापत्र 8 सेमी लांब आणि 5 सेमी रुंद आहे. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "45 चौ. सेमी",
+            "26 चौ. सेमी",
+            "13 चौ. सेमी",
+            "40 चौ. सेमी"
+          ],
+          "solution": "क्षेत्रफळ = लांबी × रुंदी: 8 × 5 = 40 चौ. सेमी. 13 बाजू मिळवते आणि 26 हद्द चालते — दोन्ही कड मोजतात, भरलेले तोंड नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A square handkerchief has 7 cm sides. What is its area?",
+      "choices": [
+        "49 sq cm",
+        "21 sq cm",
+        "14 sq cm",
+        "28 sq cm"
+      ],
+      "answerIndex": 0,
+      "solution": "A square multiplies its side by itself: 7 × 7 = 49 sq cm. 28 is the boundary; 14 just doubles one side.",
+      "checkExpr": "7*7",
+      "translations": {
+        "hi": {
+          "stem": "वर्गाकार रूमाल की भुजा 7 सेमी है। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "49 वर्ग सेमी",
+            "21 वर्ग सेमी",
+            "14 वर्ग सेमी",
+            "28 वर्ग सेमी"
+          ],
+          "solution": "वर्ग अपनी भुजा को उसी से गुणा करता है: 7 × 7 = 49 वर्ग सेमी। 28 सीमा है; 14 एक भुजा का दुगना भर।"
+        },
+        "mr": {
+          "stem": "चौरस हातरुमालाची बाजू 7 सेमी आहे. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "49 चौ. सेमी",
+            "21 चौ. सेमी",
+            "14 चौ. सेमी",
+            "28 चौ. सेमी"
+          ],
+          "solution": "चौरस आपली बाजू तिनेच गुणतो: 7 × 7 = 49 चौ. सेमी. 28 ही हद्द; 14 एका बाजूची नुसती दुप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The same 8 cm by 5 cm card is to be edged with ribbon. How much ribbon runs round its boundary?",
+      "choices": [
+        "40 cm",
+        "26 cm",
+        "13 cm",
+        "30 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The ribbon walks every edge: (8 + 5) × 2 = 26 cm. 40 is the card's area — the inside, which the ribbon never touches.",
+      "checkExpr": "2*(8+5)",
+      "translations": {
+        "hi": {
+          "stem": "वही 8 × 5 सेमी कार्ड फ़ीते से किनारा जाना है। उसकी सीमा पर कितना फ़ीता लगेगा?",
+          "choices": [
+            "40 सेमी",
+            "26 सेमी",
+            "13 सेमी",
+            "30 सेमी"
+          ],
+          "solution": "फ़ीता हर किनारा चलता है: (8 + 5) × 2 = 26 सेमी। 40 कार्ड का क्षेत्रफल है — भीतर, जिसे फ़ीता छूता ही नहीं।"
+        },
+        "mr": {
+          "stem": "तेच 8 × 5 सेमी कार्ड फितीने कडा मढवायचे आहे. त्याच्या हद्दीवर किती फीत लागेल?",
+          "choices": [
+            "40 सेमी",
+            "26 सेमी",
+            "13 सेमी",
+            "30 सेमी"
+          ],
+          "solution": "फीत प्रत्येक कड चालते: (8 + 5) × 2 = 26 सेमी. 40 हे कार्डाचे क्षेत्रफळ — आतले, जिथे फीत शिवतही नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A postcard measures 14 cm by 9 cm. What is its area?",
+      "choices": [
+        "116 sq cm",
+        "46 sq cm",
+        "126 sq cm",
+        "23 sq cm"
+      ],
+      "answerIndex": 2,
+      "solution": "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 sq cm. 116 subtracts 24 in the shortcut; 46 is the boundary in disguise.",
+      "checkExpr": "14*9",
+      "translations": {
+        "hi": {
+          "stem": "पोस्टकार्ड 14 × 9 सेमी का है। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "116 वर्ग सेमी",
+            "46 वर्ग सेमी",
+            "126 वर्ग सेमी",
+            "23 वर्ग सेमी"
+          ],
+          "solution": "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 वर्ग सेमी। 116 शॉर्टकट में 24 घटा बैठता है; 46 भेस बदले सीमा है।"
+        },
+        "mr": {
+          "stem": "पोस्टकार्ड 14 × 9 सेमीचे आहे. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "116 चौ. सेमी",
+            "46 चौ. सेमी",
+            "126 चौ. सेमी",
+            "23 चौ. सेमी"
+          ],
+          "solution": "14 × 9 = 14 × 10 − 14 = 140 − 14 = 126 चौ. सेमी. 116 युक्तीत 24 वजा करते; 46 ही वेष बदललेली हद्द."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A square field's boundary measures 40 m. How long is each side?",
+      "choices": [
+        "4",
+        "20",
+        "10",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Four equal sides share the 40: 40 ÷ 4 = 10 m each. 20 halves instead — a square insists on four sides, not two.",
+      "checkExpr": "40/4",
+      "translations": {
+        "hi": {
+          "stem": "वर्गाकार खेत की सीमा 40 मीटर है। हर भुजा कितनी लंबी है?",
+          "choices": [
+            "4",
+            "20",
+            "10",
+            "36"
+          ],
+          "solution": "40 चार बराबर भुजाओं में बँटता है: 40 ÷ 4 = 10-10 मीटर। 20 आधा कर देता है — वर्ग चार भुजाएँ माँगता है, दो नहीं।"
+        },
+        "mr": {
+          "stem": "चौरस शेताची हद्द 40 मीटर आहे. प्रत्येक बाजू किती लांब?",
+          "choices": [
+            "4",
+            "20",
+            "10",
+            "36"
+          ],
+          "solution": "40 चार सारख्या बाजूंत वाटले जाते: 40 ÷ 4 = 10-10 मीटर. 20 अर्धे करते — चौरस चार बाजू मागतो, दोन नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A tabletop's area is 48 sq cm on the plan, and its length is 8 cm. How wide is it?",
+      "choices": [
+        "40 cm",
+        "6 cm",
+        "56 cm",
+        "384 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Length × width = 48, so width = 48 ÷ 8 = 6 cm. 40 subtracts — area unlocks by division; the sides multiplied to make it.",
+      "checkExpr": "48/8",
+      "translations": {
+        "hi": {
+          "stem": "नक़्शे पर मेज़ की सतह का क्षेत्रफल 48 वर्ग सेमी है, और लंबाई 8 सेमी। चौड़ाई कितनी?",
+          "choices": [
+            "40 सेमी",
+            "6 सेमी",
+            "56 सेमी",
+            "384 सेमी"
+          ],
+          "solution": "लंबाई × चौड़ाई = 48, तो चौड़ाई = 48 ÷ 8 = 6 सेमी। 40 घटाता है — क्षेत्रफल भाग से खुलता है; भुजाएँ गुणा होकर उसे बनी थीं।"
+        },
+        "mr": {
+          "stem": "आराखड्यावर टेबलाच्या पृष्ठभागाचे क्षेत्रफळ 48 चौ. सेमी आहे, आणि लांबी 8 सेमी. रुंदी किती?",
+          "choices": [
+            "40 सेमी",
+            "6 सेमी",
+            "56 सेमी",
+            "384 सेमी"
+          ],
+          "solution": "लांबी × रुंदी = 48, म्हणून रुंदी = 48 ÷ 8 = 6 सेमी. 40 वजा करते — क्षेत्रफळ भागाकाराने उघडते; बाजू गुणूनच ते झाले होते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two square vegetable beds, each of side 6 m, are joined into one long rectangular bed. What is the new bed's area?",
+      "choices": [
+        "72 sq m",
+        "36 sq m",
+        "48 sq m",
+        "24 sq m"
+      ],
+      "answerIndex": 0,
+      "solution": "Each square holds 6 × 6 = 36 sq m, and two of them 36 × 2 = 72 sq m — joining moves no soil. 48 confuses the joined boundary with the joined area.",
+      "checkExpr": "2*6*6",
+      "translations": {
+        "hi": {
+          "stem": "6-6 मीटर भुजा की दो वर्गाकार क्यारियाँ जोड़कर एक लंबी आयताकार क्यारी बनाई गई। नई क्यारी का क्षेत्रफल कितना?",
+          "choices": [
+            "72 वर्ग मीटर",
+            "36 वर्ग मीटर",
+            "48 वर्ग मीटर",
+            "24 वर्ग मीटर"
+          ],
+          "solution": "हर वर्ग में 6 × 6 = 36 वर्ग मीटर, दो में 36 × 2 = 72 वर्ग मीटर — जोड़ने से मिट्टी घटती नहीं। 48 जुड़ी सीमा को जुड़े क्षेत्रफल से मिला देता है।"
+        },
+        "mr": {
+          "stem": "6-6 मीटर बाजूच्या दोन चौरस वाफ्या जोडून एक लांब आयताकृती वाफा केला. नव्या वाफ्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "72 चौ. मीटर",
+            "36 चौ. मीटर",
+            "48 चौ. मीटर",
+            "24 चौ. मीटर"
+          ],
+          "solution": "प्रत्येक चौरसात 6 × 6 = 36 चौ. मीटर, दोघांत 36 × 2 = 72 चौ. मीटर — जोडण्याने माती घटत नाही. 48 जोडलेल्या हद्दीची जोडलेल्या क्षेत्रफळाशी गल्लत करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 10 m by 6 m lawn has a 2 m by 2 m pit dug in it for a sapling. How much grassy area remains?",
+      "choices": [
+        "60 sq m",
+        "52 sq m",
+        "56 sq m",
+        "58 sq m"
+      ],
+      "answerIndex": 2,
+      "solution": "Lawn 10 × 6 = 60, pit 2 × 2 = 4: grass left is 60 − 4 = 56 sq m. 58 subtracts the pit's side instead of its area — a hole takes away area, not length.",
+      "checkExpr": "10*6-2*2",
+      "translations": {
+        "hi": {
+          "stem": "10 × 6 मीटर के लॉन में पौधे के लिए 2 × 2 मीटर का गड्ढा खोदा गया। कितनी घास वाली ज़मीन बची?",
+          "choices": [
+            "60 वर्ग मीटर",
+            "52 वर्ग मीटर",
+            "56 वर्ग मीटर",
+            "58 वर्ग मीटर"
+          ],
+          "solution": "लॉन 10 × 6 = 60, गड्ढा 2 × 2 = 4: घास बची 60 − 4 = 56 वर्ग मीटर। 58 गड्ढे का क्षेत्रफल नहीं, भुजा घटाता है — गड्ढा क्षेत्रफल ले जाता है, लंबाई नहीं।"
+        },
+        "mr": {
+          "stem": "10 × 6 मीटरच्या हिरवळीत रोपासाठी 2 × 2 मीटरचा खड्डा खणला. किती गवताची जमीन उरली?",
+          "choices": [
+            "60 चौ. मीटर",
+            "52 चौ. मीटर",
+            "56 चौ. मीटर",
+            "58 चौ. मीटर"
+          ],
+          "solution": "हिरवळ 10 × 6 = 60, खड्डा 2 × 2 = 4: गवत उरले 60 − 4 = 56 चौ. मीटर. 58 खड्ड्याचे क्षेत्रफळ नव्हे, बाजू वजा करते — खड्डा क्षेत्रफळ नेतो, लांबी नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 100 cm wire is bent into a square. What AREA does the square enclose?",
+      "choices": [
+        "400 sq cm",
+        "100 sq cm",
+        "625 sq cm",
+        "2500 sq cm"
+      ],
+      "answerIndex": 2,
+      "solution": "Each side gets 100 ÷ 4 = 25 cm, and the area is 25 × 25 = 625 sq cm. 100 repeats the wire's own length; 2500 squares 50, as if the wire made only two sides.",
+      "checkExpr": "25*25",
+      "translations": {
+        "hi": {
+          "stem": "100 सेमी का तार वर्ग में मोड़ा गया। वह वर्ग कितना क्षेत्रफल घेरता है?",
+          "choices": [
+            "400 वर्ग सेमी",
+            "100 वर्ग सेमी",
+            "625 वर्ग सेमी",
+            "2500 वर्ग सेमी"
+          ],
+          "solution": "हर भुजा को 100 ÷ 4 = 25 सेमी मिले, और क्षेत्रफल 25 × 25 = 625 वर्ग सेमी। 100 तार की अपनी लंबाई दोहराता है; 2500 पचास का वर्ग है — मानो तार से दो ही भुजाएँ बनीं।"
+        },
+        "mr": {
+          "stem": "100 सेमीची तार चौरसात वाकवली. तो चौरस किती क्षेत्रफळ वेढतो?",
+          "choices": [
+            "400 चौ. सेमी",
+            "100 चौ. सेमी",
+            "625 चौ. सेमी",
+            "2500 चौ. सेमी"
+          ],
+          "solution": "प्रत्येक बाजूला 100 ÷ 4 = 25 सेमी मिळाले, आणि क्षेत्रफळ 25 × 25 = 625 चौ. सेमी. 100 तारेचीच लांबी पुन्हा सांगते; 2500 पन्नासाचा वर्ग — जणू तारेतून दोनच बाजू झाल्या."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The same 100 cm wire is straightened and bent again — this time into a rectangle 30 cm long. What area does the rectangle enclose?",
+      "choices": [
+        "3000 sq cm",
+        "600 sq cm",
+        "625 sq cm",
+        "70 sq cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Two lengths take 60 cm, leaving 40 for two widths: width 20 cm. Area: 30 × 20 = 600 sq cm. 3000 multiplies length by the whole leftover 100; the wire pays for FOUR sides before any area exists.",
+      "checkExpr": "30*(100-2*30)/2",
+      "translations": {
+        "hi": {
+          "stem": "वही 100 सेमी तार सीधा करके फिर मोड़ा गया — इस बार 30 सेमी लंबे आयत में। आयत कितना क्षेत्रफल घेरता है?",
+          "choices": [
+            "3000 वर्ग सेमी",
+            "600 वर्ग सेमी",
+            "625 वर्ग सेमी",
+            "70 वर्ग सेमी"
+          ],
+          "solution": "दो लंबाइयों में 60 सेमी गए, दो चौड़ाइयों के लिए 40 बचे: चौड़ाई 20 सेमी। क्षेत्रफल: 30 × 20 = 600 वर्ग सेमी। 3000 लंबाई को पूरे बचे 100 से गुणा कर देता है; क्षेत्रफल बनने से पहले तार चारों भुजाएँ चुकाता है।"
+        },
+        "mr": {
+          "stem": "तीच 100 सेमी तार सरळ करून पुन्हा वाकवली — या वेळी 30 सेमी लांब आयतात. आयत किती क्षेत्रफळ वेढतो?",
+          "choices": [
+            "3000 चौ. सेमी",
+            "600 चौ. सेमी",
+            "625 चौ. सेमी",
+            "70 चौ. सेमी"
+          ],
+          "solution": "दोन लांब्यांत 60 सेमी गेले, दोन रुंद्यांसाठी 40 उरले: रुंदी 20 सेमी. क्षेत्रफळ: 30 × 20 = 600 चौ. सेमी. 3000 लांबीला अख्ख्या उरलेल्या 100 ने गुणते; क्षेत्रफळ होण्याआधी तार चारही बाजू भरते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "One 100 cm wire, two shapes: as a square it enclosed 625 sq cm, as a 30-by-20 rectangle it enclosed 600. How much MORE does the square hold — and it always will, for any rectangle from this wire?",
+      "choices": [
+        "100 sq cm",
+        "25 sq cm",
+        "625 sq cm",
+        "5 sq cm"
+      ],
+      "answerIndex": 1,
+      "solution": "625 − 600 = 25 sq cm in the square's favour — and the rule is general: of all rectangles with the same boundary, the square encloses the most. Stretch the rectangle thinner and its area only falls (40 × 10 gives 400; 45 × 5 just 225). The wire never changes; how you bend it decides what it can hold.",
+      "checkExpr": "25*25-600",
+      "translations": {
+        "hi": {
+          "stem": "एक 100 सेमी तार, दो आकार: वर्ग बनकर उसने 625 वर्ग सेमी घेरा, 30 × 20 आयत बनकर 600। वर्ग कितना ज़्यादा समेटता है — और इस तार के हर आयत से ज़्यादा ही समेटेगा?",
+          "choices": [
+            "100 वर्ग सेमी",
+            "25 वर्ग सेमी",
+            "625 वर्ग सेमी",
+            "5 वर्ग सेमी"
+          ],
+          "solution": "625 − 600 = 25 वर्ग सेमी वर्ग के पक्ष में — और नियम आम है: एक-सी सीमा वाले सब आयतों में वर्ग सबसे ज़्यादा घेरता है। आयत को और पतला खींचिए तो क्षेत्रफल गिरता ही है (40 × 10 से 400; 45 × 5 से बस 225)। तार वही रहता है; उसे कैसे मोड़ा, यही तय करता है कि वह कितना समेटेगा।"
+        },
+        "mr": {
+          "stem": "एक 100 सेमी तार, दोन आकार: चौरस होऊन तिने 625 चौ. सेमी वेढले, 30 × 20 आयत होऊन 600. चौरस किती जास्त सामावतो — आणि या तारेच्या प्रत्येक आयताहून जास्तच सामावेल?",
+          "choices": [
+            "100 चौ. सेमी",
+            "25 चौ. सेमी",
+            "625 चौ. सेमी",
+            "5 चौ. सेमी"
+          ],
+          "solution": "625 − 600 = 25 चौ. सेमी चौरसाच्या बाजूने — आणि नियम सार्वत्रिक: सारख्या हद्दीच्या साऱ्या आयतांत चौरस सर्वाधिक वेढतो. आयत आणखी बारीक ओढा तर क्षेत्रफळ घसरतेच (40 × 10 ने 400; 45 × 5 ने फक्त 225). तार तीच राहते; ती कशी वाकवली हेच ती किती सामावेल ते ठरवते."
+        }
+      }
+    }
+  ]
+}

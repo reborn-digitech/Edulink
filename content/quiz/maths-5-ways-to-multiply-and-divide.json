@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 13 — Ways to Multiply and Divide",
+  "name": "Ways to Multiply and Divide",
+  "slug": "maths-5-ways-to-multiply-and-divide",
+  "summary": "Bigger multiplications and divisions taken apart cleverly — splitting by place, the twenty-minus-one trick, and rebuilding a number from its remainder.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "गुणा-भाग के तरीक़े",
+      "summary": "बड़े गुणा-भाग चतुराई से खोले हुए — स्थान से तोड़ना, बीस-घटा-एक की तरकीब, और शेष से संख्या को फिर जोड़ना।"
+    },
+    "mr": {
+      "name": "गुणाकार-भागाकाराच्या रीती",
+      "summary": "मोठे गुणाकार-भागाकार हुशारीने उलगडलेले — स्थानाने फोडणे, वीस-वजा-एकची युक्ती, आणि बाकीतून संख्या पुन्हा उभारणे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 43 × 2?",
+      "choices": [
+        "96",
+        "68",
+        "45",
+        "86"
+      ],
+      "answerIndex": 3,
+      "solution": "Double the tens, double the ones: 80 + 6 = 86. 68 swaps the digits; 45 adds the 2 instead of doubling.",
+      "checkExpr": "43*2",
+      "translations": {
+        "hi": {
+          "stem": "43 × 2 कितना है?",
+          "choices": [
+            "96",
+            "68",
+            "45",
+            "86"
+          ],
+          "solution": "दहाई दुगनी, इकाई दुगनी: 80 + 6 = 86। 68 अंक पलट देता है; 45 दुगना करने की जगह 2 जोड़ता है।"
+        },
+        "mr": {
+          "stem": "43 × 2 किती?",
+          "choices": [
+            "96",
+            "68",
+            "45",
+            "86"
+          ],
+          "solution": "दशक दुप्पट, एकक दुप्पट: 80 + 6 = 86. 68 अंक उलटते; 45 दुप्पट करण्याऐवजी 2 मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 84 ÷ 4?",
+      "choices": [
+        "22",
+        "80",
+        "21",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "Split 84 into 80 + 4: 80 ÷ 4 = 20 and 4 ÷ 4 = 1, so 21. 12 divides 84 by 7 by mistake; 80 subtracts the 4 instead of dividing by it.",
+      "checkExpr": "84/4",
+      "translations": {
+        "hi": {
+          "stem": "84 ÷ 4 कितना है?",
+          "choices": [
+            "22",
+            "80",
+            "21",
+            "12"
+          ],
+          "solution": "84 को 80 + 4 में तोड़िए: 80 ÷ 4 = 20 और 4 ÷ 4 = 1, तो 21। 12 भूल से 7 से भाग देता है; 80 चार से भाग की जगह चार घटा देता है।"
+        },
+        "mr": {
+          "stem": "84 ÷ 4 किती?",
+          "choices": [
+            "22",
+            "80",
+            "21",
+            "12"
+          ],
+          "solution": "84 ला 80 + 4 मध्ये फोडा: 80 ÷ 4 = 20 आणि 4 ÷ 4 = 1, म्हणून 21. 12 चुकून 7 ने भागते; 80 चाराने भागण्याऐवजी चार वजा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 35 × 10?",
+      "choices": [
+        "3500",
+        "45",
+        "35",
+        "350"
+      ],
+      "answerIndex": 3,
+      "solution": "Multiplying by ten hangs one zero on the end: 350. 3500 hangs two — that is ×100's job; 45 adds the ten.",
+      "checkExpr": "35*10",
+      "translations": {
+        "hi": {
+          "stem": "35 × 10 कितना है?",
+          "choices": [
+            "3500",
+            "45",
+            "35",
+            "350"
+          ],
+          "solution": "दस से गुणा अंत में एक शून्य टाँगता है: 350। 3500 दो टाँग देता है — वह ×100 का काम है; 45 दस जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "35 × 10 किती?",
+          "choices": [
+            "3500",
+            "45",
+            "35",
+            "350"
+          ],
+          "solution": "दहाने गुणणे शेवटी एक शून्य टांगते: 350. 3500 दोन टांगते — ते ×100 चे काम; 45 दहा मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 127 × 3?",
+      "choices": [
+        "381",
+        "321",
+        "361",
+        "371"
+      ],
+      "answerIndex": 0,
+      "solution": "Piece by piece: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — total 381. 361 and 371 lose parts of the 21's carry into the tens.",
+      "checkExpr": "127*3",
+      "translations": {
+        "hi": {
+          "stem": "127 × 3 कितना है?",
+          "choices": [
+            "381",
+            "321",
+            "361",
+            "371"
+          ],
+          "solution": "टुकड़ों में: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — कुल 381। 361 और 371 में 21 का दहाई वाला हासिल कहीं छूट जाता है।"
+        },
+        "mr": {
+          "stem": "127 × 3 किती?",
+          "choices": [
+            "381",
+            "321",
+            "361",
+            "371"
+          ],
+          "solution": "तुकड्यांनी: 100 × 3 = 300, 20 × 3 = 60, 7 × 3 = 21 — एकूण 381. 361 आणि 371 मध्ये 21 चा दशकातला हातचा कुठे तरी सुटतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 96 ÷ 8?",
+      "choices": [
+        "12",
+        "11",
+        "13",
+        "88"
+      ],
+      "answerIndex": 0,
+      "solution": "96 = 80 + 16, and 80 ÷ 8 = 10, 16 ÷ 8 = 2: together 12. Check forward: 8 × 12 = 96. 88 subtracts the 8 — division shares, it does not remove one share.",
+      "checkExpr": "96/8",
+      "translations": {
+        "hi": {
+          "stem": "96 ÷ 8 कितना है?",
+          "choices": [
+            "12",
+            "11",
+            "13",
+            "88"
+          ],
+          "solution": "96 = 80 + 16, और 80 ÷ 8 = 10, 16 ÷ 8 = 2: मिलाकर 12। उल्टी जाँच: 8 × 12 = 96। 88 आठ घटा देता है — भाग बाँटता है, एक हिस्सा हटाता नहीं।"
+        },
+        "mr": {
+          "stem": "96 ÷ 8 किती?",
+          "choices": [
+            "12",
+            "11",
+            "13",
+            "88"
+          ],
+          "solution": "96 = 80 + 16, आणि 80 ÷ 8 = 10, 16 ÷ 8 = 2: मिळून 12. उलट तपासणी: 8 × 12 = 96. 88 आठ वजा करते — भागाकार वाटतो, एक वाटा काढत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A carton holds 144 pencils. How many pencils in 6 cartons?",
+      "choices": [
+        "864",
+        "150",
+        "884",
+        "764"
+      ],
+      "answerIndex": 0,
+      "solution": "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864. 764 drops a hundred in the middle step; 150 adds the cartons.",
+      "checkExpr": "144*6",
+      "translations": {
+        "hi": {
+          "stem": "एक कार्टन में 144 पेंसिलें हैं। 6 कार्टनों में कितनी पेंसिलें?",
+          "choices": [
+            "864",
+            "150",
+            "884",
+            "764"
+          ],
+          "solution": "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864। 764 बीच के क़दम में एक सैकड़ा गिराता है; 150 कार्टन जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "एका खोक्यात 144 पेन्सिली आहेत. 6 खोक्यांत किती पेन्सिली?",
+          "choices": [
+            "864",
+            "150",
+            "884",
+            "764"
+          ],
+          "solution": "144 × 6 = 100×6 + 40×6 + 4×6 = 600 + 240 + 24 = 864. 764 मधल्या पायरीत एक शतक पाडते; 150 खोकी मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "525 chairs are shared equally among 5 halls. How many chairs per hall?",
+      "choices": [
+        "15",
+        "105",
+        "125",
+        "101"
+      ],
+      "answerIndex": 1,
+      "solution": "500 ÷ 5 = 100 and 25 ÷ 5 = 5: each hall gets 105. 15 forgets the hundreds entirely; 101 mislays the 25's share.",
+      "checkExpr": "525/5",
+      "translations": {
+        "hi": {
+          "stem": "525 कुर्सियाँ 5 हॉलों में बराबर बाँटी गईं। हर हॉल में कितनी कुर्सियाँ?",
+          "choices": [
+            "15",
+            "105",
+            "125",
+            "101"
+          ],
+          "solution": "500 ÷ 5 = 100 और 25 ÷ 5 = 5: हर हॉल को 105। 15 सैकड़े पूरे भूल जाता है; 101 पच्चीस का हिस्सा गुमा देता है।"
+        },
+        "mr": {
+          "stem": "525 खुर्च्या 5 सभागृहांत सारख्या वाटल्या. प्रत्येक सभागृहात किती खुर्च्या?",
+          "choices": [
+            "15",
+            "105",
+            "125",
+            "101"
+          ],
+          "solution": "500 ÷ 5 = 100 आणि 25 ÷ 5 = 5: प्रत्येक सभागृहाला 105. 15 शतके पूर्ण विसरते; 101 पंचविसाचा वाटा हरवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "438 children must be seated 6 to a bench. How many benches fill completely?",
+      "choices": [
+        "73",
+        "63",
+        "72",
+        "74"
+      ],
+      "answerIndex": 0,
+      "solution": "438 ÷ 6: 420 ÷ 6 = 70 and 18 ÷ 6 = 3, so 73 benches exactly — no remainder, every bench full. 63 divides 378; a quick 6 × 73 = 438 check settles it.",
+      "checkExpr": "438/6",
+      "translations": {
+        "hi": {
+          "stem": "438 बच्चों को 6-6 की बेंचों पर बिठाना है। कितनी बेंचें पूरी भरेंगी?",
+          "choices": [
+            "73",
+            "63",
+            "72",
+            "74"
+          ],
+          "solution": "438 ÷ 6: 420 ÷ 6 = 70 और 18 ÷ 6 = 3, तो ठीक 73 बेंचें — शेष शून्य, हर बेंच भरी। 63 तो 378 का भागफल है; झटपट 6 × 73 = 438 की जाँच बात पक्की कर देती है।"
+        },
+        "mr": {
+          "stem": "438 मुलांना 6-6 च्या बाकांवर बसवायचे आहे. किती बाके पूर्ण भरतील?",
+          "choices": [
+            "73",
+            "63",
+            "72",
+            "74"
+          ],
+          "solution": "438 ÷ 6: 420 ÷ 6 = 70 आणि 18 ÷ 6 = 3, म्हणून नेमकी 73 बाके — बाकी शून्य, प्रत्येक बाक भरलेला. 63 हा 378 चा भागाकार; झटपट 6 × 73 = 438 तपासणी गोष्ट पक्की करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Solve 23 × 19 the clever way: take 23 twenties and give one 23 back. What is the answer?",
+      "choices": [
+        "437",
+        "447",
+        "414",
+        "460"
+      ],
+      "answerIndex": 0,
+      "solution": "23 × 20 = 460, minus the one extra 23: 460 − 23 = 437. 460 forgets to give the 23 back; 414 gives back two. Nineteen anythings are twenty of them minus one.",
+      "checkExpr": "23*20-23",
+      "translations": {
+        "hi": {
+          "stem": "23 × 19 चतुराई से कीजिए: 23 के बीस गुने लीजिए और एक 23 लौटा दीजिए। उत्तर क्या है?",
+          "choices": [
+            "437",
+            "447",
+            "414",
+            "460"
+          ],
+          "solution": "23 × 20 = 460, एक फ़ालतू 23 घटाइए: 460 − 23 = 437। 460 लौटाना भूल जाता है; 414 दो लौटा देता है। उन्नीस गुना यानी बीस गुना घटा एक।"
+        },
+        "mr": {
+          "stem": "23 × 19 हुशारीने करा: 23 चे वीसपट घ्या आणि एक 23 परत द्या. उत्तर किती?",
+          "choices": [
+            "437",
+            "447",
+            "414",
+            "460"
+          ],
+          "solution": "23 × 20 = 460, एक जादा 23 वजा करा: 460 − 23 = 437. 460 परत देणे विसरते; 414 दोन परत देते. एकोणीसपट म्हणजे विसपट वजा एक."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The dairy sends 8 litres of milk every day. How much milk in February of an ordinary year — 28 days?",
+      "choices": [
+        "168",
+        "216",
+        "232",
+        "224"
+      ],
+      "answerIndex": 3,
+      "solution": "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 litres. 168 uses a 21-day February; 216 and 232 are one day of milk below and above.",
+      "checkExpr": "8*28",
+      "translations": {
+        "hi": {
+          "stem": "डेयरी रोज़ 8 लीटर दूध भेजती है। आम साल की फ़रवरी — 28 दिनों — में कुल कितना दूध?",
+          "choices": [
+            "168",
+            "216",
+            "232",
+            "224"
+          ],
+          "solution": "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 लीटर। 168 इक्कीस दिन की फ़रवरी लेता है; 216 और 232 एक-एक दिन का दूध नीचे-ऊपर हैं।"
+        },
+        "mr": {
+          "stem": "डेअरी रोज 8 लिटर दूध पाठवते. साध्या वर्षाच्या फेब्रुवारीत — 28 दिवसांत — एकूण किती दूध?",
+          "choices": [
+            "168",
+            "216",
+            "232",
+            "224"
+          ],
+          "solution": "8 × 28 = 8 × 30 − 8 × 2 = 240 − 16 = 224 लिटर. 168 एकवीस दिवसांची फेब्रुवारी घेते; 216 आणि 232 एकेका दिवसाचे दूध खाली-वर."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A number divided by 7 gives quotient 13 and remainder 4. What is the number?",
+      "choices": [
+        "24",
+        "91",
+        "95",
+        "87"
+      ],
+      "answerIndex": 2,
+      "solution": "Rebuild it: 7 × 13 = 91, plus the 4 left over: 91 + 4 = 95 — and 95 ÷ 7 does give 13 remainder 4. 91 forgets the remainder; 24 just adds the visible numbers. Division's undo is multiply-then-add-the-remainder.",
+      "checkExpr": "7*13+4",
+      "translations": {
+        "hi": {
+          "stem": "किसी संख्या को 7 से भाग देने पर भागफल 13 और शेष 4 आता है। वह संख्या क्या है?",
+          "choices": [
+            "24",
+            "91",
+            "95",
+            "87"
+          ],
+          "solution": "फिर से जोड़िए: 7 × 13 = 91, ऊपर से बचा 4: 91 + 4 = 95 — और 95 ÷ 7 सचमुच 13 शेष 4 देता है। 91 शेष भूलता है; 24 दिखती संख्याएँ भर जोड़ता है। भाग का उलटा है — गुणा करो, फिर शेष जोड़ो।"
+        },
+        "mr": {
+          "stem": "एका संख्येला 7 ने भागल्यावर भागाकार 13 आणि बाकी 4 येते. ती संख्या कोणती?",
+          "choices": [
+            "24",
+            "91",
+            "95",
+            "87"
+          ],
+          "solution": "पुन्हा उभारा: 7 × 13 = 91, शिवाय उरलेले 4: 91 + 4 = 95 — आणि 95 ÷ 7 खरेच 13 बाकी 4 देते. 91 बाकी विसरते; 24 नुसत्या दिसणाऱ्या संख्या मिळवते. भागाकाराचा उलटा म्हणजे — गुणा, मग बाकी मिळवा."
+        }
+      }
+    }
+  ]
+}
