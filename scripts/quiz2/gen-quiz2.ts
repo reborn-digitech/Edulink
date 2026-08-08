@@ -38,6 +38,7 @@ import { G8_CIVICS } from "./g8-civics";
 import { G9_SCIENCE } from "./g9-science";
 import { G9_HISTORY } from "./g9-history";
 import { G9_GEOGRAPHY } from "./g9-geography";
+import { G9_CIVICS } from "./g9-civics";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -64,6 +65,7 @@ function main() {
     ...G9_SCIENCE.map(generateChapter),
     ...G9_HISTORY.map(generateChapter),
     ...G9_GEOGRAPHY.map(generateChapter),
+    ...G9_CIVICS.map(generateChapter),
     ...G3_MATHS,
     ...G4_MATHS,
     ...G5_MATHS,
