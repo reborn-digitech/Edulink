@@ -2429,4 +2429,1347 @@ export const G9_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Force and Laws of Motion (Newton's three laws)             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-9-force-laws-motion",
+    subject: "SCIENCE",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 9 — Force and Laws of Motion",
+      hi: "अध्याय 9 — बल तथा गति के नियम",
+      mr: "प्रकरण 9 — बल आणि गतीचे नियम",
+    },
+    name: {
+      en: "Force and Laws of Motion",
+      hi: "बल तथा गति के नियम",
+      mr: "बल आणि गतीचे नियम",
+    },
+    summary: {
+      en: "Newton's three laws read together: a body left alone keeps doing what it was doing, a force changes its momentum in proportion, and every push answers with an equal push back on another body — so in a closed system the total momentum is never spent.",
+      hi: "न्यूटन के तीन नियम एक साथ: छोड़ा गया पिंड जो कर रहा था वही करता रहता, बल उसके संवेग को अनुपात में बदलता, और हर धक्का दूसरे पिंड पर बराबर धक्के से उत्तर देता — अतः बंद तंत्र में कुल संवेग कभी नहीं चुकता।",
+      mr: "न्यूटनचे तीन नियम एकत्र: एकटा सोडलेला पिंड जे करत होता तेच करत राहतो, बल त्याचा संवेग प्रमाणात बदलते, आणि प्रत्येक धक्का दुसऱ्या पिंडावर समान धक्क्याने उत्तरतो — म्हणून बंद यंत्रणेत एकूण संवेग कधी संपत नाही.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "first-law",
+        name: {
+          en: "The first law and inertia",
+          hi: "पहला नियम और जड़त्व",
+          mr: "पहिला नियम आणि जडत्व",
+        },
+        kind: "law",
+        prompt: {
+          en: "A ball on a smooth floor rolls on and on, and a resting book never stirs by itself. Which law says a body keeps its state of rest or motion until a force changes it?",
+          hi: "चिकने फ़र्श पर गेंद लुढ़कती ही जाती, और विश्रामी किताब स्वयं कभी नहीं हिलती। कौन-सा नियम कहता कि पिंड विराम या गति की अवस्था बनाए रखता जब तक बल न बदले?",
+          mr: "गुळगुळीत जमिनीवर चेंडू लोटतच राहतो, आणि विश्रांत पुस्तक स्वतः कधी हलत नाही. कोणता नियम सांगतो की पिंड विश्रांती वा गतीची अवस्था राखतो जोवर बल बदलत नाही?",
+        },
+        statement: {
+          en: "Newton's first law says a body stays at rest or in uniform straight-line motion unless a net external force acts — this reluctance to change is called inertia.",
+          hi: "न्यूटन का पहला नियम कहता पिंड विराम या एकसमान सरल-रेखीय गति में रहता जब तक बाहरी नेट बल न लगे — बदलने की यही अनिच्छा जड़त्व कहलाती।",
+          mr: "न्यूटनचा पहिला नियम सांगतो पिंड विश्रांती वा एकसमान सरळ-रेषीय गतीत राहतो जोवर बाह्य निव्वळ बल लागत नाही — बदलण्याची हीच अनिच्छा जडत्व म्हणतात.",
+        },
+        detail: {
+          en: "It overturned the old belief that a force is needed to keep moving — on a frictionless floor, no force is needed at all, only to start or stop.",
+          hi: "इसने पुरानी मान्यता उलटी कि चलते रहने को बल चाहिए — घर्षणहीन फ़र्श पर कोई बल नहीं चाहिए, केवल शुरू या रोकने को।",
+          mr: "याने जुनी समजूत उलटवली की चालत राहायला बल हवे — घर्षणहीन जमिनीवर कोणतेही बल नको, फक्त सुरू वा थांबवायला.",
+        },
+        extra: {
+          en: "Friction is exactly the hidden force that stops a real ball — remove it and the ball would roll forever, as the law promises.",
+          hi: "घर्षण ठीक वह छिपा बल है जो असली गेंद को रोकता — हटाओ तो गेंद सदा लुढ़कती, जैसा नियम वादा करता।",
+          mr: "घर्षण नेमके ते दडलेले बल जे खऱ्या चेंडूला थांबवते — काढा तर चेंडू सदैव लोटेल, जसे नियम वचन देतो.",
+        },
+        pair: {
+          left: {
+            en: "Keeps its state till a force acts",
+            hi: "बल लगने तक अवस्था रखता",
+            mr: "बल लागेपर्यंत अवस्था राखतो",
+          },
+          right: {
+            en: "the first law (inertia)",
+            hi: "पहला नियम (जड़त्व)",
+            mr: "पहिला नियम (जडत्व)",
+          },
+        },
+      },
+      {
+        id: "inertia-mass",
+        name: {
+          en: "Inertia and mass",
+          hi: "जड़त्व और द्रव्यमान",
+          mr: "जडत्व आणि वस्तुमान",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A loaded truck is far harder to start or stop than a bicycle. What single property of a body measures how strongly it resists any change in its motion?",
+          hi: "लदा ट्रक साइकिल से कहीं कठिन शुरू या रोकने में। किसी पिंड का कौन-सा एक गुण नापता कि वह अपनी गति में किसी परिवर्तन का कितना प्रबल विरोध करता?",
+          mr: "भरलेला ट्रक सायकलीहून कितीतरी कठीण सुरू वा थांबवायला. एखाद्या पिंडाचा कोणता एक गुण मोजतो की तो आपल्या गतीतील कोणत्याही बदलाचा किती प्रबळ विरोध करतो?",
+        },
+        statement: {
+          en: "The mass of a body is the measure of its inertia — the more mass, the harder it is to start, stop or turn, needing a greater force for the same change.",
+          hi: "पिंड का द्रव्यमान उसके जड़त्व का माप है — जितना अधिक द्रव्यमान, उतना कठिन शुरू, रोकना या मोड़ना, उसी परिवर्तन को अधिक बल चाहिए।",
+          mr: "पिंडाचे वस्तुमान त्याच्या जडत्वाचे माप आहे — जितके अधिक वस्तुमान, तितके कठीण सुरू, थांबवणे वा वळवणे, त्याच बदलाला अधिक बल हवे.",
+        },
+        detail: {
+          en: "This is why a cricket ball, not a football, is chosen for a game of strength — its greater mass carries more inertia for the same size.",
+          hi: "इसी से बल के खेल को क्रिकेट गेंद चुनी जाती, फुटबॉल नहीं — उसका अधिक द्रव्यमान उसी आकार में अधिक जड़त्व रखता।",
+          mr: "म्हणूनच बळाच्या खेळाला क्रिकेट चेंडू निवडतात, फुटबॉल नाही — त्याचे अधिक वस्तुमान त्याच आकारात अधिक जडत्व राखते.",
+        },
+        extra: {
+          en: "Mass here is not size: a small lead ball has more inertia than a big beach ball, because inertia rides on matter, not on volume.",
+          hi: "यहाँ द्रव्यमान आकार नहीं: छोटी सीसे की गेंद बड़ी समुद्री गेंद से अधिक जड़त्व रखती, क्योंकि जड़त्व पदार्थ पर सवार, आयतन पर नहीं।",
+          mr: "इथे वस्तुमान आकार नव्हे: लहान शिशाचा चेंडू मोठ्या समुद्री चेंडूहून अधिक जडत्व राखतो, कारण जडत्व पदार्थावर स्वार, घनफळावर नाही.",
+        },
+        pair: {
+          left: {
+            en: "Measures resistance to change of motion",
+            hi: "गति-परिवर्तन का विरोध नापता",
+            mr: "गती-बदलाचा विरोध मोजतो",
+          },
+          right: {
+            en: "mass",
+            hi: "द्रव्यमान",
+            mr: "वस्तुमान",
+          },
+        },
+      },
+      {
+        id: "momentum",
+        name: { en: "Momentum", hi: "संवेग", mr: "संवेग" },
+        kind: "idea",
+        prompt: {
+          en: "A slow lorry and a fast bullet can each flatten what they hit. Which quantity, made of mass times velocity, captures this 'quantity of motion' a body carries?",
+          hi: "धीमी लॉरी और तेज़ गोली दोनों टकराए को कुचल सकतीं। कौन-सी राशि, द्रव्यमान गुणा वेग से बनी, पिंड की इस 'गति-मात्रा' को पकड़ती?",
+          mr: "मंद लॉरी आणि वेगवान गोळी दोन्ही आदळलेल्याला चिरडू शकतात. कोणती राशी, वस्तुमान गुणिले वेग, पिंडाची ही 'गती-मात्रा' पकडते?",
+        },
+        statement: {
+          en: "Momentum is mass times velocity — the 'quantity of motion' a body carries; it grows with either a heavier mass or a faster speed, and points along the velocity.",
+          hi: "संवेग द्रव्यमान गुणा वेग है — पिंड की 'गति-मात्रा'; यह भारी द्रव्यमान या तेज़ चाल किसी से बढ़ता, और वेग की दिशा में होता।",
+          mr: "संवेग वस्तुमान गुणिले वेग आहे — पिंडाची 'गती-मात्रा'; तो जड वस्तुमान वा वेगवान चाल कोणत्याही एकाने वाढतो, आणि वेगाच्या दिशेत असतो.",
+        },
+        detail: {
+          en: "It explains why a light bullet is deadly and a drifting ship is unstoppable — one buys momentum with speed, the other with mass.",
+          hi: "यह समझाता क्यों हल्की गोली घातक और बहता जहाज़ अजेय — एक चाल से संवेग खरीदता, दूसरा द्रव्यमान से।",
+          mr: "हे समजावते का हलकी गोळी घातक आणि वाहते जहाज अजिंक्य — एक चालीने संवेग विकत घेतो, दुसरा वस्तुमानाने.",
+        },
+        extra: {
+          en: "A karate blow works by changing momentum fast — the quicker the strike, the greater the force delivered.",
+          hi: "कराटे का वार संवेग तेज़ी से बदलकर काम करता — जितना तेज़ प्रहार, उतना अधिक बल।",
+          mr: "कराटेचा प्रहार संवेग वेगाने बदलून काम करतो — जितका जलद प्रहार, तितके अधिक बल.",
+        },
+        pair: {
+          left: {
+            en: "Mass times velocity",
+            hi: "द्रव्यमान गुणा वेग",
+            mr: "वस्तुमान गुणिले वेग",
+          },
+          right: {
+            en: "momentum",
+            hi: "संवेग",
+            mr: "संवेग",
+          },
+        },
+      },
+      {
+        id: "second-law",
+        name: {
+          en: "The second law",
+          hi: "दूसरा नियम",
+          mr: "दुसरा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Which law ties force to motion by saying the force on a body equals its mass times the acceleration it produces — the famous F = ma?",
+          hi: "कौन-सा नियम बल को गति से जोड़ता यह कहकर कि पिंड पर बल उसके द्रव्यमान गुणा उत्पन्न त्वरण के बराबर — प्रसिद्ध F = ma?",
+          mr: "कोणता नियम बलाला गतीशी जोडतो हे सांगून की पिंडावरचे बल त्याच्या वस्तुमान गुणिले घडवलेल्या त्वरणाइतके — प्रसिद्ध F = ma?",
+        },
+        statement: {
+          en: "Newton's second law says the rate of change of momentum is proportional to the applied force, giving F = ma — a given force makes a lighter body accelerate more.",
+          hi: "न्यूटन का दूसरा नियम कहता संवेग परिवर्तन की दर लगे बल के समानुपाती, देता F = ma — दिया बल हल्के पिंड को अधिक त्वरित करता।",
+          mr: "न्यूटनचा दुसरा नियम सांगतो संवेग बदलाचा दर लावलेल्या बलाच्या समप्रमाणात, देतो F = ma — दिलेले बल हलक्या पिंडाला अधिक त्वरित करते.",
+        },
+        detail: {
+          en: "It hides the first law inside it: put F = 0 and a = 0, so with no force there is no acceleration — the body's motion never changes.",
+          hi: "यह पहला नियम अपने भीतर छिपाता: F = 0 रखो तो a = 0, अतः बल बिना कोई त्वरण नहीं — पिंड की गति कभी नहीं बदलती।",
+          mr: "हे पहिला नियम आत लपवते: F = 0 ठेवा तर a = 0, म्हणून बलाविना कोणतेही त्वरण नाही — पिंडाची गती कधी बदलत नाही.",
+        },
+        extra: {
+          en: "A cricketer draws his hands back while catching to stretch the time of stopping — same momentum change, longer time, so a gentler force on his palms.",
+          hi: "क्रिकेटर कैच लेते हाथ पीछे खींचता ताकि रुकने का समय बढ़े — वही संवेग परिवर्तन, अधिक समय, अतः हथेली पर हल्का बल।",
+          mr: "क्रिकेटपटू झेल घेताना हात मागे खेचतो जेणेकरून थांबण्याचा वेळ वाढतो — तोच संवेग बदल, अधिक वेळ, म्हणून तळहातावर सौम्य बल.",
+        },
+        pair: {
+          left: {
+            en: "Force equals mass times acceleration",
+            hi: "बल = द्रव्यमान गुणा त्वरण",
+            mr: "बल = वस्तुमान गुणिले त्वरण",
+          },
+          right: {
+            en: "the second law",
+            hi: "दूसरा नियम",
+            mr: "दुसरा नियम",
+          },
+        },
+      },
+      {
+        id: "third-law",
+        name: {
+          en: "The third law",
+          hi: "तीसरा नियम",
+          mr: "तिसरा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Push a wall and it pushes back; a swimmer shoves water back and is thrust forward. Which law says every action has an equal and opposite reaction?",
+          hi: "दीवार धकेलो तो वह वापस धकेलती; तैराक पानी पीछे ढकेलता और आगे बढ़ता। कौन-सा नियम कहता हर क्रिया की बराबर और विपरीत प्रतिक्रिया?",
+          mr: "भिंत ढकला तर ती परत ढकलते; पोहणारा पाणी मागे ढकलतो आणि पुढे सरकतो. कोणता नियम सांगतो प्रत्येक क्रियेला समान आणि विरुद्ध प्रतिक्रिया?",
+        },
+        statement: {
+          en: "Newton's third law says every action has an equal and opposite reaction — but the two forces act on different bodies, so they never cancel each other.",
+          hi: "न्यूटन का तीसरा नियम कहता हर क्रिया की बराबर और विपरीत प्रतिक्रिया — पर दोनों बल भिन्न पिंडों पर लगते, अतः वे कभी एक-दूसरे को रद्द नहीं करते।",
+          mr: "न्यूटनचा तिसरा नियम सांगतो प्रत्येक क्रियेला समान आणि विरुद्ध प्रतिक्रिया — पण दोन्ही बले वेगळ्या पिंडांवर लागतात, म्हणून ती कधी एकमेकांना रद्द करत नाहीत.",
+        },
+        detail: {
+          en: "It is why a gun kicks back, a boat slides away as you step off it, and a rocket climbs by throwing gas the other way.",
+          hi: "इसी से बंदूक पीछे लात मारती, नाव तुम्हारे उतरते खिसकती, और रॉकेट गैस दूसरी ओर फेंककर चढ़ता।",
+          mr: "म्हणूनच बंदूक मागे लाथ मारते, बोट तू उतरताना सरकते, आणि रॉकेट वायू दुसरीकडे फेकून चढते.",
+        },
+        extra: {
+          en: "The forces are equal in size but the effects need not be — the same push barely moves the Earth yet flings you back off it.",
+          hi: "बल आकार में बराबर पर प्रभाव बराबर हो ज़रूरी नहीं — वही धक्का पृथ्वी को मुश्किल से हिलाता पर तुम्हें उससे पीछे उछालता।",
+          mr: "बले आकारात समान पण परिणाम समान असणे आवश्यक नाही — तोच धक्का पृथ्वीला कसाबसा हलवतो पण तुला तिच्यापासून मागे उडवतो.",
+        },
+        pair: {
+          left: {
+            en: "Equal, opposite, on two bodies",
+            hi: "बराबर, विपरीत, दो पिंडों पर",
+            mr: "समान, विरुद्ध, दोन पिंडांवर",
+          },
+          right: {
+            en: "the third law",
+            hi: "तीसरा नियम",
+            mr: "तिसरा नियम",
+          },
+        },
+      },
+      {
+        id: "conservation-momentum",
+        name: {
+          en: "Conservation of momentum",
+          hi: "संवेग संरक्षण",
+          mr: "संवेग संधारण",
+        },
+        kind: "law",
+        prompt: {
+          en: "When two skaters push apart, or a gun fires a bullet, the total 'quantity of motion' before and after stays the same. Which principle guarantees this?",
+          hi: "जब दो स्केटर एक-दूसरे को धकेलते, या बंदूक गोली दागती, पहले और बाद की कुल 'गति-मात्रा' वही रहती। कौन-सा सिद्धांत इसकी गारंटी देता?",
+          mr: "जेव्हा दोन स्केटर एकमेकांना ढकलतात, किंवा बंदूक गोळी झाडते, आधीची आणि नंतरची एकूण 'गती-मात्रा' तीच राहते. कोणते तत्त्व याची हमी देते?",
+        },
+        statement: {
+          en: "The law of conservation of momentum says that with no outside force, the total momentum of a system is unchanged — what one part gains, another loses in equal measure.",
+          hi: "संवेग संरक्षण का नियम कहता बाहरी बल बिना तंत्र का कुल संवेग अपरिवर्तित — एक भाग जो पाता, दूसरा बराबर खोता।",
+          mr: "संवेग संधारणाचा नियम सांगतो बाह्य बलाविना यंत्रणेचा एकूण संवेग अपरिवर्तित — एक भाग जे मिळवतो, दुसरा समान गमावतो.",
+        },
+        detail: {
+          en: "It follows straight from the third law: the equal-and-opposite forces give the two bodies equal-and-opposite momentum changes that cancel in the total.",
+          hi: "यह सीधे तीसरे नियम से निकलता: बराबर-विपरीत बल दोनों पिंडों को बराबर-विपरीत संवेग परिवर्तन देते जो कुल में रद्द होते।",
+          mr: "हे थेट तिसऱ्या नियमातून निघते: समान-विरुद्ध बले दोन्ही पिंडांना समान-विरुद्ध संवेग बदल देतात जे एकूणात रद्द होतात.",
+        },
+        extra: {
+          en: "A firing gun stays a still system: the bullet's forward momentum is matched exactly by the gun's backward recoil, so the two sum to the zero they started at.",
+          hi: "दागती बंदूक स्थिर तंत्र रहती: गोली का अगला संवेग ठीक बंदूक के पिछले प्रतिक्षेप से मेल खाता, अतः दोनों उसी शून्य में जुड़ते जहाँ शुरू किया।",
+          mr: "झाडणारी बंदूक स्थिर यंत्रणा राहते: गोळीचा पुढचा संवेग नेमका बंदुकीच्या मागच्या प्रतिक्षेपाशी जुळतो, म्हणून दोन्ही त्याच शून्यात मिळतात जिथे सुरू केले.",
+        },
+        pair: {
+          left: {
+            en: "Total motion unchanged without outside force",
+            hi: "बाहरी बल बिना कुल गति अपरिवर्तित",
+            mr: "बाह्य बलाविना एकूण गती अपरिवर्तित",
+          },
+          right: {
+            en: "conservation of momentum",
+            hi: "संवेग संरक्षण",
+            mr: "संवेग संधारण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Standing in a moving bus, passengers lurch forward the instant the driver brakes hard, and are thrown backward the instant it accelerates from a stop. Which idea explains both jerks at once?",
+          hi: "चलती बस में खड़े यात्री, ड्राइवर के ज़ोर से ब्रेक लगाते ही आगे झुक जाते, और रुकी बस के चल पड़ते ही पीछे फेंके जाते। कौन-सा विचार दोनों झटके एक साथ समझाता?",
+          mr: "चालत्या बसमध्ये उभे प्रवासी, चालकाने जोरात ब्रेक लावताच पुढे झुकतात, आणि थांबलेली बस निघताच मागे फेकले जातात. कोणती कल्पना दोन्ही झटके एकाच वेळी समजावते?",
+        },
+        choices: [
+          {
+            en: "Inertia: the passenger's body keeps doing what it was doing. When the bus brakes, the body keeps moving forward; when the bus starts, the body tries to stay at rest, so it is left behind",
+            hi: "जड़त्व: यात्री का शरीर जो कर रहा था वही करता रहता। बस ब्रेक करती तो शरीर आगे बढ़ता रहता; बस चलती तो शरीर विराम में रहना चाहता, अतः पीछे छूट जाता",
+            mr: "जडत्व: प्रवाशाचे शरीर जे करत होते तेच करत राहते. बस ब्रेक करते तेव्हा शरीर पुढे सरकत राहते; बस निघते तेव्हा शरीर विश्रांतीत राहू पाहते, म्हणून मागे राहते",
+          },
+          {
+            en: "The bus floor pushes the passengers deliberately in each case",
+            hi: "बस का फ़र्श हर बार यात्रियों को जान-बूझकर धकेलता",
+            mr: "बसची जमीन प्रत्येक वेळी प्रवाशांना मुद्दाम ढकलते",
+          },
+          {
+            en: "Gravity suddenly changes direction when the bus speeds up or slows",
+            hi: "बस तेज़ या धीमी होने पर गुरुत्व अचानक दिशा बदलता",
+            mr: "बस वेगवान वा मंद होताना गुरुत्व अचानक दिशा बदलते",
+          },
+          {
+            en: "The passengers weigh more while the bus is braking",
+            hi: "ब्रेक लगते यात्रियों का वज़न बढ़ जाता",
+            mr: "ब्रेक लागताना प्रवाशांचे वजन वाढते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both jerks are inertia — the body's stubborn tendency to keep its own state of motion, quite separate from the bus's. While the bus rolls, you and the bus share the same forward velocity. When the driver brakes, a force acts on the BUS through its wheels and slows it, but no such backward force acts on your upper body; by the first law it keeps moving forward at the old speed, and so you pitch forward relative to the slowing bus. The start is the mirror image: the stationary bus suddenly accelerates, a force drives the bus forward, but your body, obeying its inertia of rest, tries to stay put — so the bus moves out from under you and you are thrown backward. In both cases nothing actively pushes you; you are simply the part of the system that no force reached in time, left doing what you were already doing. It is the very reason buses ask you to hold the rail — the rail supplies the missing force to bring your body along with the vehicle.",
+          hi: "दोनों झटके जड़त्व हैं — शरीर की अपनी गति-अवस्था बनाए रखने की ज़िद, बस से बिलकुल अलग। बस चलते तुम और बस वही अगला वेग साझा करते। ड्राइवर ब्रेक करता तो बल पहियों से बस पर लगता और उसे धीमा करता, पर तुम्हारे ऊपरी शरीर पर ऐसा पिछला बल नहीं; पहले नियम से वह पुरानी चाल से आगे बढ़ता रहता, अतः तुम धीमी होती बस के सापेक्ष आगे झुकते। शुरुआत दर्पण-छवि: रुकी बस अचानक त्वरित होती, बल बस को आगे ले जाता, पर तुम्हारा शरीर, विराम-जड़त्व मानते, टिका रहना चाहता — अतः बस तुम्हारे नीचे से निकल जाती और तुम पीछे फेंके जाते। दोनों में कुछ तुम्हें सक्रिय नहीं धकेलता; तुम बस वह भाग हो जिस तक कोई बल समय पर नहीं पहुँचा, जो पहले कर रहे थे वही करते। यही कारण बसें रेलिंग पकड़ने को कहतीं — रेलिंग गुम बल देती कि तुम्हारा शरीर वाहन के संग आए।",
+          mr: "दोन्ही झटके जडत्व आहेत — शरीराची स्वतःची गती-अवस्था राखण्याची हट्टीपणा, बसपासून अगदी वेगळी. बस चालताना तू आणि बस तोच पुढचा वेग वाटतात. चालक ब्रेक करतो तेव्हा बल चाकांतून बसवर लागते आणि तिला मंदावते, पण तुझ्या वरच्या शरीरावर असे मागचे बल नाही; पहिल्या नियमाने ते जुन्या चालीने पुढे सरकत राहते, म्हणून तू मंदावणाऱ्या बसच्या सापेक्ष पुढे झुकतोस. सुरुवात आरशातली प्रतिमा: थांबलेली बस अचानक त्वरित होते, बल बसला पुढे नेते, पण तुझे शरीर, विश्रांती-जडत्व मानत, टिकून राहू पाहते — म्हणून बस तुझ्या खालून निघते आणि तू मागे फेकला जातोस. दोन्हींत काही तुला सक्रियपणे ढकलत नाही; तू फक्त तो भाग आहेस ज्यापर्यंत कोणतेही बल वेळेत पोहोचले नाही, जे आधी करत होतास तेच करत. हेच कारण बसा रेलिंग धरायला सांगतात — रेलिंग हरवलेले बल देते जेणेकरून तुझे शरीर वाहनासोबत येते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A rifle of mass 4 kg fires a 20 g bullet, and the rifle kicks back into the shooter's shoulder. A student asks: 'If the action and reaction forces are equal, why does the tiny bullet fly out fast while the heavy rifle barely moves?'",
+          hi: "4 किग्रा की राइफ़ल 20 ग्राम की गोली दागती, और राइफ़ल निशानेबाज़ के कंधे में पीछे लात मारती। एक छात्र पूछता: 'यदि क्रिया-प्रतिक्रिया बल बराबर हैं, तो नन्ही गोली तेज़ उड़ती जबकि भारी राइफ़ल मुश्किल से हिलती क्यों?'",
+          mr: "4 किलोची रायफल 20 ग्रॅमची गोळी झाडते, आणि रायफल नेमबाजाच्या खांद्यात मागे लाथ मारते. एक विद्यार्थी विचारतो: 'क्रिया-प्रतिक्रिया बले समान असतील, तर इवली गोळी वेगाने उडते तर जड रायफल कशीबशी हलते का?'",
+        },
+        choices: [
+          {
+            en: "By conservation of momentum the two gain equal and opposite momentum, but momentum is mass × velocity: the light bullet needs a huge velocity to carry the same momentum the heavy rifle carries at a small recoil velocity",
+            hi: "संवेग संरक्षण से दोनों बराबर-विपरीत संवेग पाते, पर संवेग द्रव्यमान × वेग है: हल्की गोली को उतना ही संवेग ढोने को विशाल वेग चाहिए जो भारी राइफ़ल छोटे प्रतिक्षेप-वेग पर ढोती",
+            mr: "संवेग संधारणाने दोन्ही समान-विरुद्ध संवेग मिळवतात, पण संवेग वस्तुमान × वेग आहे: हलक्या गोळीला तेवढाच संवेग वाहायला प्रचंड वेग हवा जो जड रायफल लहान प्रतिक्षेप-वेगावर वाहते",
+          },
+          {
+            en: "The reaction force on the rifle is actually much smaller than the action on the bullet",
+            hi: "राइफ़ल पर प्रतिक्रिया बल गोली पर क्रिया से वास्तव में बहुत छोटा",
+            mr: "रायफलवरचे प्रतिक्रिया बल गोळीवरच्या क्रियेहून खरे तर खूप लहान",
+          },
+          {
+            en: "The bullet is faster only because gunpowder pushes it and nothing pushes the rifle",
+            hi: "गोली तेज़ केवल इसलिए कि बारूद उसे धकेलता और राइफ़ल को कुछ नहीं",
+            mr: "गोळी वेगवान फक्त म्हणून की दारू तिला ढकलते आणि रायफलला काही नाही",
+          },
+          {
+            en: "Momentum is not conserved when a gun is fired",
+            hi: "बंदूक दागते संवेग संरक्षित नहीं रहता",
+            mr: "बंदूक झाडताना संवेग संधारित राहत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The forces really are equal and opposite — that part of the third law holds exactly — but 'equal force' does not mean 'equal effect', and the difference is all about mass. Before firing, the gun-and-bullet system is at rest, so its total momentum is zero. The explosion drives them apart with equal and opposite forces for the same brief instant, so each gains the same size of momentum, one forward and one backward, and the two still sum to zero. But momentum is mass × velocity. The bullet's mass is a mere 0.02 kg against the rifle's 4 kg — two hundred times lighter. To carry the same momentum on a two-hundred-times-smaller mass, the bullet must move two hundred times faster: if the rifle recoils at, say, 2 m/s, the bullet leaves at about 400 m/s. So the shared momentum is split fairly, but the shared velocity is not — the light body races off while the heavy body barely stirs. The same logic launches a rocket (hot gas thrown down at speed, rocket eased up) and slides a boat back as you leap forward off it: equal momentum, wildly unequal speeds, because inertia hoards the motion in whatever has the greater mass.",
+          hi: "बल सचमुच बराबर-विपरीत हैं — तीसरे नियम का वह अंश ठीक टिकता — पर 'बराबर बल' का अर्थ 'बराबर प्रभाव' नहीं, और अंतर पूरा द्रव्यमान का। दागने से पहले बंदूक-गोली तंत्र विराम में, अतः कुल संवेग शून्य। विस्फोट उन्हें बराबर-विपरीत बलों से उसी क्षण अलग करता, अतः हर एक बराबर आकार का संवेग पाता, एक आगे एक पीछे, और दोनों फिर शून्य में जुड़ते। पर संवेग द्रव्यमान × वेग है। गोली का द्रव्यमान मात्र 0.02 किग्रा राइफ़ल के 4 किग्रा के आगे — दो सौ गुना हल्का। दो सौ गुना छोटे द्रव्यमान पर उतना संवेग ढोने को गोली को दो सौ गुना तेज़ चलना होगा: राइफ़ल यदि 2 मी/से पीछे हटे, गोली लगभग 400 मी/से निकलती। अतः साझा संवेग न्यायपूर्ण बँटता, पर साझा वेग नहीं — हल्का पिंड दौड़ता जबकि भारी मुश्किल से हिलता। यही तर्क रॉकेट छोड़ता (गरम गैस तेज़ी से नीचे फेंकी, रॉकेट ऊपर) और नाव को पीछे खिसकाता जैसे तुम आगे कूदते: बराबर संवेग, बेहद असमान चाल, क्योंकि जड़त्व गति को उसमें जमा करता जिसका द्रव्यमान अधिक।",
+          mr: "बले खरोखर समान-विरुद्ध आहेत — तिसऱ्या नियमाचा तो भाग नेमका टिकतो — पण 'समान बल' म्हणजे 'समान परिणाम' नव्हे, आणि फरक सारा वस्तुमानाचा. झाडण्यापूर्वी बंदूक-गोळी यंत्रणा विश्रांतीत, म्हणून एकूण संवेग शून्य. स्फोट त्यांना समान-विरुद्ध बलांनी त्याच क्षणी वेगळे करतो, म्हणून प्रत्येक समान आकाराचा संवेग मिळवतो, एक पुढे एक मागे, आणि दोन्ही पुन्हा शून्यात मिळतात. पण संवेग वस्तुमान × वेग आहे. गोळीचे वस्तुमान नुसते 0.02 किलो रायफलच्या 4 किलोपुढे — दोनशे पट हलके. दोनशे पट लहान वस्तुमानावर तेवढा संवेग वाहायला गोळीला दोनशे पट वेगाने चालावे लागेल: रायफल जर 2 मी/से मागे हटली, गोळी सुमारे 400 मी/से निघते. म्हणून वाटलेला संवेग न्याय्यपणे विभागतो, पण वाटलेला वेग नाही — हलका पिंड धावतो तर जड कसाबसा हलतो. हेच तर्कशास्त्र रॉकेट सोडते (गरम वायू वेगाने खाली फेकला, रॉकेट वर) आणि बोट मागे सरकवते जसे तू पुढे उडी मारतोस: समान संवेग, प्रचंड असमान वेग, कारण जडत्व गती त्यात साठवते ज्याचे वस्तुमान अधिक.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Gravitation (the universal pull, and floating)            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-9-gravitation",
+    subject: "SCIENCE",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 10 — Gravitation",
+      hi: "अध्याय 10 — गुरुत्वाकर्षण",
+      mr: "प्रकरण 10 — गुरुत्वाकर्षण",
+    },
+    name: {
+      en: "Gravitation",
+      hi: "गुरुत्वाकर्षण",
+      mr: "गुरुत्वाकर्षण",
+    },
+    summary: {
+      en: "One law reaches from the falling apple to the orbiting Moon: every mass pulls every other. It gives all objects the same fall, splits the steady mass from the place-dependent weight, and — through Archimedes' upthrust — lets a steel ship float where a nail sinks.",
+      hi: "एक नियम गिरते सेब से परिक्रमा करते चंद्रमा तक पहुँचता: हर द्रव्यमान हर दूसरे को खींचता। यह सब वस्तुओं को एक-सा गिराता, स्थिर द्रव्यमान को स्थान-निर्भर भार से अलगाता, और — आर्किमिडीज़ के उत्प्लावन से — इस्पात-जहाज़ को वहाँ तैराता जहाँ कील डूबती।",
+      mr: "एक नियम पडणाऱ्या सफरचंदापासून परिभ्रमण करणाऱ्या चंद्रापर्यंत पोहोचतो: प्रत्येक वस्तुमान प्रत्येक दुसऱ्याला ओढते. तो सर्व वस्तूंना सारखे पाडतो, स्थिर वस्तुमानाला स्थान-अवलंबी भारापासून वेगळे करतो, आणि — आर्किमिडीजच्या उत्प्रणोदाने — पोलादी जहाजाला तिथे तरंगवतो जिथे खिळा बुडतो.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "universal-gravitation",
+        name: {
+          en: "Universal gravitation",
+          hi: "सार्वत्रिक गुरुत्वाकर्षण",
+          mr: "वैश्विक गुरुत्वाकर्षण",
+        },
+        kind: "law",
+        prompt: {
+          en: "What one law says that every object in the universe pulls every other, with a force that grows with their masses and fades with the square of their distance?",
+          hi: "कौन-सा एक नियम कहता कि ब्रह्मांड की हर वस्तु हर दूसरी को खींचती, ऐसे बल से जो उनके द्रव्यमानों से बढ़ता और दूरी के वर्ग से घटता?",
+          mr: "कोणता एक नियम सांगतो की विश्वातील प्रत्येक वस्तू प्रत्येक दुसरीला ओढते, अशा बलाने जे त्यांच्या वस्तुमानांनी वाढते आणि अंतराच्या वर्गाने घटते?",
+        },
+        statement: {
+          en: "Newton's law of universal gravitation says every mass attracts every other with a force proportional to the product of their masses and inversely to the square of the distance between them.",
+          hi: "न्यूटन का सार्वत्रिक गुरुत्वाकर्षण नियम कहता हर द्रव्यमान हर दूसरे को खींचता ऐसे बल से जो उनके द्रव्यमानों के गुणनफल के समानुपाती और उनके बीच दूरी के वर्ग के व्युत्क्रमानुपाती।",
+          mr: "न्यूटनचा वैश्विक गुरुत्वाकर्षण नियम सांगतो प्रत्येक वस्तुमान प्रत्येक दुसऱ्याला ओढते अशा बलाने जे त्यांच्या वस्तुमानांच्या गुणाकाराशी समप्रमाणात आणि त्यांच्यातील अंतराच्या वर्गाशी व्यस्तप्रमाणात.",
+        },
+        detail: {
+          en: "The same pull that drops an apple holds the Moon in its orbit — Newton's leap was to see the two as one force reaching across space.",
+          hi: "वही खिंचाव जो सेब गिराता चंद्रमा को कक्षा में थामता — न्यूटन की छलाँग दोनों को अंतरिक्ष में पहुँचता एक बल देखना थी।",
+          mr: "तीच ओढ जी सफरचंद पाडते चंद्राला कक्षेत धरते — न्यूटनची झेप दोन्हींना अवकाशात पोहोचणारे एक बल पाहणे होती.",
+        },
+        extra: {
+          en: "Being inverse-square, doubling the distance does not halve the pull but quarters it — the reach weakens fast.",
+          hi: "व्युत्क्रम-वर्ग होने से दूरी दुगुनी करने पर खिंचाव आधा नहीं चौथाई होता — पहुँच तेज़ी से कमज़ोर।",
+          mr: "व्यस्त-वर्ग असल्याने अंतर दुप्पट केल्यास ओढ अर्धी नव्हे चतुर्थांश होते — पोहोच वेगाने कमजोर.",
+        },
+        pair: {
+          left: {
+            en: "Every mass pulls every other, inverse-square",
+            hi: "हर द्रव्यमान हर को खींचे, व्युत्क्रम-वर्ग",
+            mr: "प्रत्येक वस्तुमान प्रत्येकाला ओढे, व्यस्त-वर्ग",
+          },
+          right: {
+            en: "universal gravitation",
+            hi: "सार्वत्रिक गुरुत्वाकर्षण",
+            mr: "वैश्विक गुरुत्वाकर्षण",
+          },
+        },
+      },
+      {
+        id: "free-fall-g",
+        name: {
+          en: "Free fall and g",
+          hi: "मुक्त पतन और g",
+          mr: "मुक्त पतन आणि g",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Drop a coin and a feather together in a tube emptied of air, and they hit the bottom at the very same instant. What fact about gravity's acceleration does this reveal?",
+          hi: "हवा निकाली नली में सिक्का और पंख साथ गिराओ, वे ठीक उसी क्षण तल छूते। यह गुरुत्व-त्वरण के बारे में कौन-सा तथ्य उजागर करता?",
+          mr: "हवा काढलेल्या नळीत नाणे आणि पीस एकत्र टाका, ते नेमके त्याच क्षणी तळ स्पर्शतात. हे गुरुत्व-त्वरणाबद्दल कोणते तथ्य उघड करते?",
+        },
+        statement: {
+          en: "Under gravity alone, all bodies fall with the same acceleration g (about 9.8 m/s²) regardless of their mass — heavy and light drop together when air is removed.",
+          hi: "केवल गुरुत्व में सब पिंड एक-से त्वरण g (लगभग 9.8 मी/से²) से गिरते चाहे द्रव्यमान कुछ भी — हवा हटाने पर भारी-हल्के साथ गिरते।",
+          mr: "फक्त गुरुत्वात सर्व पिंड सारख्या त्वरण g (सुमारे 9.8 मी/से²) ने पडतात वस्तुमान कितीही असो — हवा काढल्यावर जड-हलके एकत्र पडतात.",
+        },
+        detail: {
+          en: "In everyday air a feather drifts only because air resistance holds it back — the pull of gravity itself never plays favourites by weight.",
+          hi: "रोज़ की हवा में पंख केवल इसलिए तैरता कि वायु-प्रतिरोध उसे रोकता — गुरुत्व का खिंचाव स्वयं भार से पक्षपात नहीं करता।",
+          mr: "रोजच्या हवेत पीस फक्त म्हणून तरंगते की हवा-रोध त्याला अडवतो — गुरुत्वाची ओढ स्वतः भाराने पक्षपात करत नाही.",
+        },
+        extra: {
+          en: "Astronauts proved it on the airless Moon, dropping a hammer and a feather side by side — they landed together.",
+          hi: "अंतरिक्षयात्रियों ने हवाहीन चंद्रमा पर सिद्ध किया, हथौड़ा और पंख साथ गिराकर — वे साथ उतरे।",
+          mr: "अंतराळवीरांनी हवाहीन चंद्रावर सिद्ध केले, हातोडा आणि पीस शेजारी टाकून — ते एकत्र उतरले.",
+        },
+        pair: {
+          left: {
+            en: "Same acceleration for every mass",
+            hi: "हर द्रव्यमान को एक-सा त्वरण",
+            mr: "प्रत्येक वस्तुमानाला सारखे त्वरण",
+          },
+          right: {
+            en: "free fall (g)",
+            hi: "मुक्त पतन (g)",
+            mr: "मुक्त पतन (g)",
+          },
+        },
+      },
+      {
+        id: "mass-weight",
+        name: {
+          en: "Mass versus weight",
+          hi: "द्रव्यमान बनाम भार",
+          mr: "वस्तुमान विरुद्ध भार",
+        },
+        kind: "idea",
+        prompt: {
+          en: "An astronaut's 60 kg of matter is unchanged on the Moon, yet there she feels only a sixth as heavy. Which quantity stays fixed everywhere, and which shrinks with weaker gravity?",
+          hi: "अंतरिक्षयात्री का 60 किग्रा पदार्थ चंद्रमा पर अपरिवर्तित, फिर भी वहाँ वह छठाई ही भारी लगती। कौन-सी राशि हर जगह नियत रहती, और कौन-सी कमज़ोर गुरुत्व से घटती?",
+          mr: "अंतराळवीराचे 60 किलो पदार्थ चंद्रावर अपरिवर्तित, तरी तिथे ती फक्त षष्टांश जड वाटते. कोणती राशी सर्वत्र स्थिर राहते, आणि कोणती कमजोर गुरुत्वाने घटते?",
+        },
+        statement: {
+          en: "Mass is the fixed amount of matter in a body, the same everywhere; weight is the pull of gravity on it, weight = mass × g, and it changes wherever g changes.",
+          hi: "द्रव्यमान पिंड में पदार्थ की नियत मात्रा, हर जगह वही; भार उस पर गुरुत्व का खिंचाव, भार = द्रव्यमान × g, और जहाँ g बदले वहाँ बदलता।",
+          mr: "वस्तुमान पिंडातील पदार्थाची स्थिर मात्रा, सर्वत्र तीच; भार त्यावरची गुरुत्वाची ओढ, भार = वस्तुमान × g, आणि जिथे g बदलतो तिथे बदलतो.",
+        },
+        detail: {
+          en: "On the Moon g is about one-sixth of Earth's, so the same person weighs a sixth as much yet carries exactly the same mass of matter.",
+          hi: "चंद्रमा पर g पृथ्वी के लगभग छठे भाग, अतः वही व्यक्ति छठाई भार रखती फिर भी ठीक वही द्रव्यमान।",
+          mr: "चंद्रावर g पृथ्वीच्या सुमारे षष्टांश, म्हणून तीच व्यक्ती षष्टांश भार राखते तरी नेमके तेच वस्तुमान.",
+        },
+        extra: {
+          en: "This is why a balance that compares masses reads the same on the Moon, but a spring scale that measures pull would read only a sixth.",
+          hi: "इसी से द्रव्यमान तुलती तराज़ू चंद्रमा पर वही पढ़ती, पर खिंचाव नापता कमानी-काँटा केवल छठाई पढ़ता।",
+          mr: "म्हणूनच वस्तुमान तुलणारा तराजू चंद्रावर तेच वाचतो, पण ओढ मोजणारा स्प्रिंग-काटा फक्त षष्टांश वाचतो.",
+        },
+        pair: {
+          left: {
+            en: "Changes with g from place to place",
+            hi: "स्थान-दर-स्थान g से बदलता",
+            mr: "स्थानोस्थान g ने बदलतो",
+          },
+          right: {
+            en: "weight",
+            hi: "भार",
+            mr: "भार",
+          },
+        },
+      },
+      {
+        id: "thrust-pressure",
+        name: {
+          en: "Thrust and pressure",
+          hi: "प्रणोद और दाब",
+          mr: "प्रणोद आणि दाब",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A sharp nail pierces wood at a tap, but its blunt head does not, though the same force pushes both. Which quantity, force spread over area, explains the difference?",
+          hi: "तेज़ कील एक ठोक में लकड़ी बेधती, पर उसका कुंद सिरा नहीं, यद्यपि वही बल दोनों को धकेलता। कौन-सी राशि, क्षेत्रफल पर फैला बल, अंतर समझाती?",
+          mr: "टोकदार खिळा एका ठोक्यात लाकूड भेदतो, पण त्याचे बोथट टोक नाही, जरी तेच बल दोन्हींना ढकलते. कोणती राशी, क्षेत्रफळावर पसरलेले बल, फरक समजावते?",
+        },
+        statement: {
+          en: "Pressure is the force acting on each unit of area — the same thrust concentrated on a smaller area gives a greater pressure, which is why a sharp point cuts.",
+          hi: "दाब प्रति एकांक क्षेत्रफल पर लगता बल है — वही प्रणोद छोटे क्षेत्रफल पर केंद्रित अधिक दाब देता, इसी से तेज़ नोक काटती।",
+          mr: "दाब प्रति एकक क्षेत्रफळावर लागणारे बल आहे — तोच प्रणोद लहान क्षेत्रफळावर केंद्रित अधिक दाब देतो, म्हणूनच टोकदार टोक कापते.",
+        },
+        detail: {
+          en: "It is why a camel's broad foot does not sink in sand while a stiletto heel would — the same weight, spread wide or squeezed narrow.",
+          hi: "इसी से ऊँट का चौड़ा पैर रेत में नहीं धँसता जबकि पतली एड़ी धँसती — वही भार, चौड़ा फैला या सँकरा दबा।",
+          mr: "म्हणूनच उंटाचा रुंद पाय वाळूत रुतत नाही तर बारीक टाच रुतते — तेच भार, रुंद पसरलेले वा अरुंद दाबलेले.",
+        },
+        extra: {
+          en: "A fluid presses too, and its pressure grows with depth — which is why a dam is built thick at its base where the water pushes hardest.",
+          hi: "तरल भी दबाता, और उसका दाब गहराई से बढ़ता — इसी से बाँध तल पर मोटा बनाया जाता जहाँ पानी सबसे ज़ोर दबाता।",
+          mr: "द्रवही दाबतो, आणि त्याचा दाब खोलीने वाढतो — म्हणूनच धरण तळाशी जाड बांधतात जिथे पाणी सर्वांत जोरात दाबते.",
+        },
+        pair: {
+          left: {
+            en: "Force per unit area",
+            hi: "प्रति एकांक क्षेत्रफल बल",
+            mr: "प्रति एकक क्षेत्रफळ बल",
+          },
+          right: {
+            en: "pressure",
+            hi: "दाब",
+            mr: "दाब",
+          },
+        },
+      },
+      {
+        id: "buoyancy",
+        name: {
+          en: "Buoyancy and Archimedes",
+          hi: "उत्प्लावन और आर्किमिडीज़",
+          mr: "उत्प्रणोद आणि आर्किमिडीज",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A bucket of water feels lighter to lift while it is still under the pond's surface. Which upward push from a fluid, equal to the weight of fluid pushed aside, causes this?",
+          hi: "पानी की बाल्टी तालाब की सतह के नीचे रहते उठाने में हल्की लगती। तरल का कौन-सा ऊपरी धक्का, हटाए तरल के भार के बराबर, यह करता?",
+          mr: "पाण्याची बादली तळ्याच्या पृष्ठाखाली असताना उचलायला हलकी वाटते. द्रवाचा कोणता वरचा धक्का, बाजूला केलेल्या द्रवाच्या भाराइतका, हे घडवतो?",
+        },
+        statement: {
+          en: "Buoyancy is the upward push a fluid gives any object dipped in it; by Archimedes' principle that upthrust equals the weight of the fluid the object displaces.",
+          hi: "उत्प्लावन तरल में डुबोई किसी वस्तु को तरल का ऊपरी धक्का है; आर्किमिडीज़ के सिद्धांत से वह उत्प्लावन वस्तु द्वारा हटाए तरल के भार के बराबर।",
+          mr: "उत्प्रणोद द्रवात बुडवलेल्या कोणत्याही वस्तूला द्रवाचा वरचा धक्का आहे; आर्किमिडीजच्या तत्त्वाने तो उत्प्रणोद वस्तूने बाजूला केलेल्या द्रवाच्या भाराइतका.",
+        },
+        detail: {
+          en: "It is why you feel lighter in a swimming pool and why a stone, heavy in air, is easy to lift while under water.",
+          hi: "इसी से तुम तरणताल में हल्के लगते और हवा में भारी पत्थर पानी के नीचे उठाना आसान।",
+          mr: "म्हणूनच तू पोहण्याच्या तलावात हलका वाटतोस आणि हवेत जड दगड पाण्याखाली उचलणे सोपे.",
+        },
+        extra: {
+          en: "Archimedes is said to have found it in his bath, watching the water rise, and run out crying 'Eureka!' — 'I have found it.'",
+          hi: "कहते आर्किमिडीज़ ने इसे अपने स्नान में पाया, पानी चढ़ता देखकर, और 'यूरेका!' — 'मैंने पा लिया' — चिल्लाता दौड़ा।",
+          mr: "म्हणतात आर्किमिडीजने हे आपल्या आंघोळीत शोधले, पाणी चढताना पाहून, आणि 'युरेका!' — 'मला सापडले' — ओरडत धावला.",
+        },
+        pair: {
+          left: {
+            en: "Upthrust equals weight of fluid displaced",
+            hi: "उत्प्लावन = हटाए तरल का भार",
+            mr: "उत्प्रणोद = बाजूला केलेल्या द्रवाचे भार",
+          },
+          right: {
+            en: "Archimedes' principle",
+            hi: "आर्किमिडीज़ का सिद्धांत",
+            mr: "आर्किमिडीजचे तत्त्व",
+          },
+        },
+      },
+      {
+        id: "density-floating",
+        name: {
+          en: "Density and floating",
+          hi: "घनत्व और तैरना",
+          mr: "घनता आणि तरंगणे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A solid iron nail sinks in water, yet iron ships weighing thousands of tonnes float. Which single property, comparing an object's packing to water's, decides whether it floats or sinks?",
+          hi: "ठोस लोहे की कील पानी में डूबती, फिर भी हज़ारों टन के लोहे-जहाज़ तैरते। कौन-सा एक गुण, वस्तु की सघनता की पानी से तुलना, तय करता तैरे या डूबे?",
+          mr: "घन लोखंडी खिळा पाण्यात बुडतो, तरी हजारो टनांची लोखंडी जहाजे तरंगतात. कोणता एक गुण, वस्तूच्या घट्टपणाची पाण्याशी तुलना, ठरवतो तरंगेल की बुडेल?",
+        },
+        statement: {
+          en: "Density is mass packed into each unit of volume; an object floats if its average density is less than the fluid's, and sinks if it is more.",
+          hi: "घनत्व प्रति एकांक आयतन में भरा द्रव्यमान है; वस्तु तैरती यदि उसका औसत घनत्व तरल से कम, डूबती यदि अधिक।",
+          mr: "घनता प्रति एकक घनफळात भरलेले वस्तुमान आहे; वस्तू तरंगते जर तिची सरासरी घनता द्रवाहून कमी, बुडते जर अधिक.",
+        },
+        detail: {
+          en: "A ship floats because its hull is mostly hollow air, dropping its average density below water's even though iron itself is far denser.",
+          hi: "जहाज़ तैरता क्योंकि उसका पतवारा अधिकतर खोखली हवा, उसका औसत घनत्व पानी से नीचे गिराता यद्यपि लोहा स्वयं कहीं सघन।",
+          mr: "जहाज तरंगते कारण त्याचा तळ बहुतांश पोकळ हवा, त्याची सरासरी घनता पाण्याखाली आणते जरी लोखंड स्वतः कितीतरी घन.",
+        },
+        extra: {
+          en: "The same trick floats you more easily in the salty Dead Sea — dissolved salt makes the water denser than your body.",
+          hi: "वही चाल तुम्हें खारे मृत सागर में आसान तैराती — घुला नमक पानी को तुम्हारे शरीर से सघन बनाता।",
+          mr: "तीच युक्ती तुला खाऱ्या मृत समुद्रात सहज तरंगवते — विरघळलेले मीठ पाण्याला तुझ्या शरीराहून घन बनवते.",
+        },
+        pair: {
+          left: {
+            en: "Floats when lighter than its own volume of water",
+            hi: "अपने आयतन के पानी से हल्का हो तो तैरे",
+            mr: "स्वतःच्या घनफळाच्या पाण्याहून हलके तर तरंगे",
+          },
+          right: {
+            en: "lower density",
+            hi: "कम घनत्व",
+            mr: "कमी घनता",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "On Earth a hammer thumps down long before a feather flutters to the floor, yet on the airless Moon an astronaut drops both together and they land at the very same moment. What does the Moon experiment prove about gravity?",
+          hi: "पृथ्वी पर हथौड़ा पंख के फ़र्श तक फड़फड़ाने से बहुत पहले धम्म गिरता, फिर भी हवाहीन चंद्रमा पर अंतरिक्षयात्री दोनों साथ गिराता और वे ठीक उसी क्षण उतरते। चंद्र-प्रयोग गुरुत्व के बारे में क्या सिद्ध करता?",
+          mr: "पृथ्वीवर हातोडा पिसाच्या जमिनीपर्यंत फडफडण्याआधी खूप आधी धाडकन पडतो, तरी हवाहीन चंद्रावर अंतराळवीर दोन्ही एकत्र टाकतो आणि ते नेमके त्याच क्षणी उतरतात. चंद्र-प्रयोग गुरुत्वाबद्दल काय सिद्ध करतो?",
+        },
+        choices: [
+          {
+            en: "Gravity gives every object the same acceleration regardless of mass; on Earth only air resistance holds the feather back, and with no air on the Moon that difference vanishes",
+            hi: "गुरुत्व हर वस्तु को द्रव्यमान चाहे जो एक-सा त्वरण देता; पृथ्वी पर केवल वायु-प्रतिरोध पंख को रोकता, और चंद्रमा पर हवा न होने से वह अंतर मिट जाता",
+            mr: "गुरुत्व प्रत्येक वस्तूला वस्तुमान कितीही असो सारखे त्वरण देते; पृथ्वीवर फक्त हवा-रोध पिसाला अडवतो, आणि चंद्रावर हवा नसल्याने तो फरक नाहीसा होतो",
+          },
+          {
+            en: "The Moon has no gravity, so the two objects simply drift down equally",
+            hi: "चंद्रमा पर गुरुत्व नहीं, अतः दोनों वस्तुएँ बस बराबर तैरती उतरतीं",
+            mr: "चंद्रावर गुरुत्व नाही, म्हणून दोन्ही वस्तू फक्त समान तरंगत उतरतात",
+          },
+          {
+            en: "Heavier things always fall faster, and the hammer just happened to match the feather",
+            hi: "भारी चीज़ें सदा तेज़ गिरतीं, और हथौड़ा बस संयोग से पंख से मेल खा गया",
+            mr: "जड वस्तू नेहमी वेगाने पडतात, आणि हातोडा फक्त योगायोगाने पिसाशी जुळला",
+          },
+          {
+            en: "The feather became heavier on the Moon and so could keep up",
+            hi: "पंख चंद्रमा पर भारी हो गया अतः साथ रह सका",
+            mr: "पीस चंद्रावर जड झाले म्हणून सोबत राहू शकले",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The demonstration proves that gravity's acceleration does not depend on an object's mass — a claim that looks false on Earth only because of a hidden second force. When a feather drifts down slowly here, gravity is pulling it exactly as eagerly as it pulls the hammer; what slows the feather is air resistance, which bites hard on its broad, light form and barely touches the dense hammer. Strip the air away, as on the Moon (which does have gravity, about a sixth of Earth's), and nothing is left to hold the feather back. Now both objects feel only gravity, both accelerate at the very same rate, and both reach the ground together despite their wildly different masses. This is why g is written as a single number for a place, not one number per object: the more massive hammer is pulled with a greater force, but it also has more inertia to overcome, and the two effects cancel perfectly, leaving the same acceleration for all. It is exactly the point of the coin-and-feather tube in the lab, played out on a grander stage.",
+          hi: "प्रदर्शन सिद्ध करता कि गुरुत्व का त्वरण वस्तु के द्रव्यमान पर निर्भर नहीं — दावा जो पृथ्वी पर केवल एक छिपे दूसरे बल के कारण झूठा दिखता। जब पंख यहाँ धीरे उतरता, गुरुत्व उसे ठीक उतनी ही उत्सुकता से खींचता जितना हथौड़े को; पंख को धीमा करता वायु-प्रतिरोध, जो उसके चौड़े, हल्के रूप पर ज़ोर काटता और सघन हथौड़े को मुश्किल से छूता। हवा हटाओ, जैसे चंद्रमा पर (जिसमें गुरुत्व है, पृथ्वी का लगभग छठा), और पंख को रोकने को कुछ नहीं बचता। अब दोनों वस्तुएँ केवल गुरुत्व महसूस करतीं, दोनों ठीक उसी दर से त्वरित, और दोनों अपने बेहद भिन्न द्रव्यमानों के बावजूद साथ ज़मीन पहुँचतीं। इसी से g किसी स्थान के लिए एक संख्या लिखी जाती, प्रति वस्तु एक नहीं: अधिक द्रव्यमान का हथौड़ा अधिक बल से खिंचता, पर उसमें पार करने को अधिक जड़त्व भी, और दोनों प्रभाव पूरी तरह रद्द, सबके लिए वही त्वरण छोड़ते। यह ठीक प्रयोगशाला की सिक्का-पंख नली का मर्म, बड़े मंच पर खेला।",
+          mr: "प्रात्यक्षिक सिद्ध करते की गुरुत्वाचे त्वरण वस्तूच्या वस्तुमानावर अवलंबून नाही — दावा जो पृथ्वीवर फक्त एका दडलेल्या दुसऱ्या बलामुळे खोटा दिसतो. जेव्हा पीस इथे हळू उतरते, गुरुत्व त्याला नेमके तितक्याच उत्सुकतेने ओढते जितके हातोड्याला; पिसाला मंदावते हवा-रोध, जो त्याच्या रुंद, हलक्या रूपावर जोरात चावतो आणि घन हातोड्याला कसाबसा स्पर्शतो. हवा काढा, जसे चंद्रावर (ज्यात गुरुत्व आहे, पृथ्वीच्या सुमारे षष्टांश), आणि पिसाला अडवायला काही उरत नाही. आता दोन्ही वस्तू फक्त गुरुत्व अनुभवतात, दोन्ही नेमके त्याच दराने त्वरित, आणि दोन्ही आपल्या प्रचंड वेगळ्या वस्तुमानांनंतरही एकत्र जमिनीवर पोहोचतात. म्हणूनच g एका स्थानासाठी एक संख्या लिहितात, प्रति वस्तू एक नाही: अधिक वस्तुमानाचा हातोडा अधिक बलाने ओढला जातो, पण त्यात पार करायला अधिक जडत्वही, आणि दोन्ही परिणाम पूर्णपणे रद्द, सर्वांसाठी तेच त्वरण सोडत. हे नेमके प्रयोगशाळेतील नाणे-पीस नळीचे मर्म, मोठ्या रंगमंचावर खेळलेले.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A solid iron nail dropped in water sinks straight to the bottom, yet a ship built of thousands of tonnes of the same iron floats. How can identical metal do both?",
+          hi: "पानी में गिराई ठोस लोहे की कील सीधे तल तक डूबती, फिर भी उसी लोहे के हज़ारों टन से बना जहाज़ तैरता। एक-सा धातु दोनों कैसे कर सकता?",
+          mr: "पाण्यात टाकलेला घन लोखंडी खिळा सरळ तळाला बुडतो, तरी त्याच लोखंडाच्या हजारो टनांनी बनलेले जहाज तरंगते. एकच धातू दोन्ही कसे करू शकतो?",
+        },
+        choices: [
+          {
+            en: "Floating depends on average density, not on the material alone. The nail is solid iron, denser than water, so it sinks; the ship is a hollow shell enclosing air, whose average density (iron plus the trapped air-filled space) is less than water, so it floats",
+            hi: "तैरना औसत घनत्व पर निर्भर, केवल पदार्थ पर नहीं। कील ठोस लोहा, पानी से सघन, अतः डूबती; जहाज़ हवा घेरता खोखला खोल, जिसका औसत घनत्व (लोहा जमा फँसी हवा-भरी जगह) पानी से कम, अतः तैरता",
+            mr: "तरंगणे सरासरी घनतेवर अवलंबून, फक्त पदार्थावर नाही. खिळा घन लोखंड, पाण्याहून घन, म्हणून बुडतो; जहाज हवा वेढणारे पोकळ कवच, ज्याची सरासरी घनता (लोखंड अधिक अडकलेली हवा-भरली जागा) पाण्याहून कमी, म्हणून तरंगते",
+          },
+          {
+            en: "The ship is painted with a special material that repels water",
+            hi: "जहाज़ पर पानी को दूर करता विशेष पदार्थ पुता होता",
+            mr: "जहाजावर पाणी दूर करणारा विशेष पदार्थ लावलेला असतो",
+          },
+          {
+            en: "Large objects always float and small objects always sink",
+            hi: "बड़ी वस्तुएँ सदा तैरतीं और छोटी सदा डूबतीं",
+            mr: "मोठ्या वस्तू नेहमी तरंगतात आणि लहान नेहमी बुडतात",
+          },
+          {
+            en: "The ship's engines constantly push it upward against gravity",
+            hi: "जहाज़ के इंजन उसे गुरुत्व के विरुद्ध लगातार ऊपर धकेलते",
+            mr: "जहाजाची इंजिने त्याला गुरुत्वाविरुद्ध सतत वर ढकलतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The secret is that 'will it float?' is never a question about the material by itself — it is a question about average density, mass divided by the whole volume the object occupies. A nail is a lump of solid iron through and through, and iron is nearly eight times denser than water; a nail-sized volume of iron weighs far more than the same volume of water, so the water it pushes aside cannot supply enough upthrust to hold it, and it sinks. A ship is made of the same iron, but it is not solid: it is a thin hull wrapped around an enormous hollow filled with air. Its total mass, spread over that huge enclosed volume, gives an AVERAGE density well below water's. Now Archimedes settles it: as the ship sits lower, it pushes aside more and more water, and it keeps sinking only until the weight of water displaced equals the ship's own weight — at that draught the upthrust balances gravity and it floats. Overload the ship, or breach the hull so water floods the hollow, and its average density climbs past water's — and then the very same steel goes down like the nail. Shape, not substance, decides it.",
+          hi: "रहस्य यह कि 'तैरेगा?' कभी अकेले पदार्थ का सवाल नहीं — यह औसत घनत्व का सवाल है, द्रव्यमान बटा वस्तु के घेरे पूरे आयतन। कील आर-पार ठोस लोहे का ढेला, और लोहा पानी से लगभग आठ गुना सघन; कील-भर आयतन का लोहा उसी आयतन के पानी से कहीं भारी, अतः हटाया पानी उसे थामने भर उत्प्लावन नहीं दे पाता, और वह डूबती। जहाज़ उसी लोहे का, पर ठोस नहीं: हवा भरे विशाल खोखले को लपेटता पतला पतवारा। उसका कुल द्रव्यमान, उस विशाल घेरे आयतन पर फैला, पानी से कहीं नीचे औसत घनत्व देता। अब आर्किमिडीज़ निपटाते: जहाज़ जितना नीचे बैठता, उतना अधिक पानी हटाता, और तभी तक डूबता जब तक हटाए पानी का भार जहाज़ के अपने भार के बराबर न हो — उस डूबाव पर उत्प्लावन गुरुत्व संतुलित करता और वह तैरता। जहाज़ अतिभारित करो, या पतवारा फोड़ो कि पानी खोखले में भरे, उसका औसत घनत्व पानी से ऊपर चढ़ता — और तब वही इस्पात कील-सा डूबता। आकार, पदार्थ नहीं, तय करता।",
+          mr: "रहस्य हे की 'तरंगेल?' कधीच एकट्या पदार्थाचा प्रश्न नाही — तो सरासरी घनतेचा प्रश्न आहे, वस्तुमान भागिले वस्तूने व्यापलेले संपूर्ण घनफळ. खिळा आरपार घन लोखंडाचा गोळा, आणि लोखंड पाण्याहून जवळपास आठ पट घन; खिळ्याएवढ्या घनफळाचे लोखंड त्याच घनफळाच्या पाण्याहून कितीतरी जड, म्हणून बाजूला केलेले पाणी त्याला धरण्याइतका उत्प्रणोद देऊ शकत नाही, आणि तो बुडतो. जहाज त्याच लोखंडाचे, पण घन नाही: हवा भरलेल्या अवाढव्य पोकळीला वेढणारे पातळ कवच. त्याचे एकूण वस्तुमान, त्या प्रचंड वेढलेल्या घनफळावर पसरलेले, पाण्याहून कितीतरी खाली सरासरी घनता देते. आता आर्किमिडीज निकाल लावतात: जहाज जितके खाली बसते, तितके अधिक पाणी बाजूला करते, आणि तोवरच बुडते जोवर बाजूला केलेल्या पाण्याचे भार जहाजाच्या स्वतःच्या भाराइतके होत नाही — त्या बुडावावर उत्प्रणोद गुरुत्व संतुलित करतो आणि ते तरंगते. जहाज अतिभारित करा, किंवा कवच फोडा जेणेकरून पाणी पोकळीत भरते, त्याची सरासरी घनता पाण्याहून वर चढते — आणि मग तेच पोलाद खिळ्यासारखे बुडते. आकार, पदार्थ नव्हे, ठरवतो.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Work and Energy (the currency of change)                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-9-work-energy",
+    subject: "SCIENCE",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 11 — Work and Energy",
+      hi: "अध्याय 11 — कार्य तथा ऊर्जा",
+      mr: "प्रकरण 11 — कार्य आणि ऊर्जा",
+    },
+    name: {
+      en: "Work and Energy",
+      hi: "कार्य तथा ऊर्जा",
+      mr: "कार्य आणि ऊर्जा",
+    },
+    summary: {
+      en: "Work in physics is force times the distance moved along it — no motion, no work, however tired you feel. Energy is the capacity to do that work, carried as motion or as height, spent as power over time, and — through every trade — never created nor destroyed, only changed in form.",
+      hi: "भौतिकी में कार्य बल गुणा उसकी दिशा में चली दूरी है — गति नहीं तो कार्य नहीं, चाहे तुम कितने थके। ऊर्जा वह कार्य करने की क्षमता, गति या ऊँचाई के रूप में ढोई, समय पर शक्ति बतौर खर्ची, और — हर सौदे में — न बनती न नष्ट होती, केवल रूप बदलती।",
+      mr: "भौतिकशास्त्रात कार्य बल गुणिले त्याच्या दिशेत चाललेले अंतर आहे — गती नाही तर कार्य नाही, तू कितीही थकलास तरी. ऊर्जा ते कार्य करण्याची क्षमता, गती वा उंचीच्या रूपात वाहिलेली, वेळेवर शक्ती म्हणून खर्चलेली, आणि — प्रत्येक देवाणघेवाणीत — न बनते न नष्ट होते, फक्त रूप बदलते.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "work-definition",
+        name: {
+          en: "Work done by a force",
+          hi: "बल द्वारा किया कार्य",
+          mr: "बलाने केलेले कार्य",
+        },
+        kind: "idea",
+        prompt: {
+          en: "You push a stalled car and it rolls forward; you shove a wall and it does not budge. In which case does physics say work was done, and how is that work measured?",
+          hi: "तुम रुकी कार धकेलते और वह आगे लुढ़कती; दीवार धकेलते और वह टस से मस नहीं। किसमें भौतिकी कहती कार्य हुआ, और वह कार्य कैसे नापा?",
+          mr: "तू थांबलेली गाडी ढकलतोस आणि ती पुढे लोटते; भिंत ढकलतोस आणि ती हलत नाही. कशात भौतिकशास्त्र म्हणते कार्य झाले, आणि ते कार्य कसे मोजले?",
+        },
+        statement: {
+          en: "Work is done only when a force moves its point of application; it equals force times the distance moved along the force's direction, so no displacement means no work at all.",
+          hi: "कार्य तभी होता जब बल अपने लगने के बिंदु को हिलाए; यह बल गुणा बल की दिशा में चली दूरी के बराबर, अतः विस्थापन नहीं तो कार्य बिलकुल नहीं।",
+          mr: "कार्य तेव्हाच होते जेव्हा बल आपल्या लागण्याच्या बिंदूला हलवते; ते बल गुणिले बलाच्या दिशेत चाललेल्या अंतराइतके, म्हणून विस्थापन नाही तर कार्य मुळीच नाही.",
+        },
+        detail: {
+          en: "Pushing a wall that never moves does zero work in physics, no matter how it exhausts you — effort is not the same as work.",
+          hi: "कभी न हिलती दीवार धकेलना भौतिकी में शून्य कार्य, चाहे तुम कितने थको — मेहनत कार्य के बराबर नहीं।",
+          mr: "कधीही न हलणारी भिंत ढकलणे भौतिकशास्त्रात शून्य कार्य, तू कितीही थकलास तरी — कष्ट कार्याइतके नाही.",
+        },
+        extra: {
+          en: "If the force is at right angles to the motion — like gravity on a bag carried level — it does no work either, for nothing moves along its line.",
+          hi: "यदि बल गति के समकोण पर हो — जैसे समतल ढोए थैले पर गुरुत्व — तो वह भी कोई कार्य नहीं करता, क्योंकि उसकी रेखा में कुछ नहीं चलता।",
+          mr: "जर बल गतीच्या काटकोनात असेल — जसे सपाट वाहिलेल्या पिशवीवर गुरुत्व — तर तेही कोणतेही कार्य करत नाही, कारण त्याच्या रेषेत काही हलत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Force times distance moved along it",
+            hi: "बल गुणा उसकी दिशा में चली दूरी",
+            mr: "बल गुणिले त्याच्या दिशेत चाललेले अंतर",
+          },
+          right: {
+            en: "work",
+            hi: "कार्य",
+            mr: "कार्य",
+          },
+        },
+      },
+      {
+        id: "kinetic-energy",
+        name: {
+          en: "Kinetic energy",
+          hi: "गतिज ऊर्जा",
+          mr: "गतिज ऊर्जा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A rolling cricket ball can knock over a stump; a rushing river can turn a wheel. Which form of energy does a body carry purely by virtue of its motion?",
+          hi: "लुढ़कती क्रिकेट गेंद स्टंप गिरा सकती; बहती नदी पहिया घुमा सकती। कौन-सी ऊर्जा पिंड केवल अपनी गति के कारण ढोता?",
+          mr: "लोटणारा क्रिकेट चेंडू स्टंप पाडू शकतो; वाहणारी नदी चाक फिरवू शकते. कोणती ऊर्जा पिंड फक्त आपल्या गतीमुळे वाहतो?",
+        },
+        statement: {
+          en: "Kinetic energy is the energy a body has because of its motion; it equals ½mv², so it grows with mass and, far faster, with the square of the speed.",
+          hi: "गतिज ऊर्जा वह ऊर्जा जो पिंड अपनी गति के कारण रखता; यह ½mv² के बराबर, अतः द्रव्यमान से और, कहीं तेज़, चाल के वर्ग से बढ़ती।",
+          mr: "गतिज ऊर्जा ती ऊर्जा जी पिंड आपल्या गतीमुळे राखतो; ती ½mv² इतकी, म्हणून वस्तुमानाने आणि, कितीतरी वेगाने, चालीच्या वर्गाने वाढते.",
+        },
+        detail: {
+          en: "Because it goes as speed squared, doubling a car's speed quadruples its kinetic energy — and roughly its stopping distance.",
+          hi: "चाल-वर्ग के अनुसार होने से कार की चाल दुगुनी करने पर गतिज ऊर्जा चौगुनी — और लगभग उसकी रुकने की दूरी।",
+          mr: "चाल-वर्गानुसार असल्याने गाडीची चाल दुप्पट केल्यास गतिज ऊर्जा चौपट — आणि साधारण तिचे थांबण्याचे अंतर.",
+        },
+        extra: {
+          en: "The work done to speed a body up from rest is stored exactly as this kinetic energy — work in, motion-energy out.",
+          hi: "पिंड को विराम से तेज़ करने में किया कार्य ठीक इसी गतिज ऊर्जा में जमा — कार्य भीतर, गति-ऊर्जा बाहर।",
+          mr: "पिंडाला विश्रांतीतून वेगवान करण्यात केलेले कार्य नेमके याच गतिज ऊर्जेत साठते — कार्य आत, गती-ऊर्जा बाहेर.",
+        },
+        pair: {
+          left: {
+            en: "Energy of motion, ½mv²",
+            hi: "गति की ऊर्जा, ½mv²",
+            mr: "गतीची ऊर्जा, ½mv²",
+          },
+          right: {
+            en: "kinetic energy",
+            hi: "गतिज ऊर्जा",
+            mr: "गतिज ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "potential-energy",
+        name: {
+          en: "Potential energy",
+          hi: "स्थितिज ऊर्जा",
+          mr: "स्थितिज ऊर्जा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A brick held high on a shelf, or a stretched bowstring, threatens to do work the moment it is released. Which stored energy comes from a body's position or shape rather than its motion?",
+          hi: "ऊँची ताक पर रखी ईंट, या खिंची धनुष-डोरी, छूटते ही कार्य करने को तत्पर। कौन-सी संचित ऊर्जा पिंड की स्थिति या आकार से आती, गति से नहीं?",
+          mr: "उंच फळीवर ठेवलेली वीट, किंवा ताणलेली धनुष्य-दोरी, सुटताच कार्य करायला तत्पर. कोणती साठलेली ऊर्जा पिंडाच्या स्थितीतून किंवा आकारातून येते, गतीतून नाही?",
+        },
+        statement: {
+          en: "Potential energy is stored energy a body holds by virtue of its position or shape — a raised weight stores gravitational PE equal to mgh, ready to be released.",
+          hi: "स्थितिज ऊर्जा वह संचित ऊर्जा जो पिंड अपनी स्थिति या आकार के कारण रखता — उठाया भार mgh के बराबर गुरुत्वीय स्थितिज ऊर्जा जमा करता, छूटने को तैयार।",
+          mr: "स्थितिज ऊर्जा ती साठलेली ऊर्जा जी पिंड आपल्या स्थितीमुळे किंवा आकारामुळे राखतो — उचललेले भार mgh इतकी गुरुत्वीय स्थितिज ऊर्जा साठवते, सुटायला तयार.",
+        },
+        detail: {
+          en: "Lift a body slowly through a height h and the work you spend, mgh, is banked as its gravitational potential energy — nothing is lost.",
+          hi: "पिंड को ऊँचाई h तक धीरे उठाओ और तुम्हारा खर्चा कार्य, mgh, उसकी गुरुत्वीय स्थितिज ऊर्जा में जमा — कुछ नहीं खोता।",
+          mr: "पिंडाला उंची h पर्यंत हळू उचला आणि तुझे खर्चलेले कार्य, mgh, त्याच्या गुरुत्वीय स्थितिज ऊर्जेत जमा — काही हरवत नाही.",
+        },
+        extra: {
+          en: "A wound spring, a drawn bow and a raised hammer all hold this waiting energy — released, it turns straight into motion.",
+          hi: "लपेटी कमानी, खिंचा धनुष और उठाया हथौड़ा सब यह प्रतीक्षारत ऊर्जा रखते — छूटने पर सीधे गति में बदलती।",
+          mr: "गुंडाळलेली स्प्रिंग, ताणलेले धनुष्य आणि उचललेला हातोडा सर्व ही प्रतीक्षारत ऊर्जा राखतात — सुटल्यावर थेट गतीत बदलते.",
+        },
+        pair: {
+          left: {
+            en: "Stored by height or shape, mgh",
+            hi: "ऊँचाई या आकार से जमा, mgh",
+            mr: "उंची वा आकाराने साठलेली, mgh",
+          },
+          right: {
+            en: "potential energy",
+            hi: "स्थितिज ऊर्जा",
+            mr: "स्थितिज ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "conservation-energy",
+        name: {
+          en: "Conservation of energy",
+          hi: "ऊर्जा संरक्षण",
+          mr: "ऊर्जा संधारण",
+        },
+        kind: "law",
+        prompt: {
+          en: "As a ball falls, it loses height but gains speed; a swinging pendulum trades slowness at the top for rush at the bottom. Which law says energy only changes form, never vanishing?",
+          hi: "गिरती गेंद ऊँचाई खोती पर चाल पाती; झूलता लोलक शिखर की सुस्ती को तल की तेज़ी से बदलता। कौन-सा नियम कहता ऊर्जा केवल रूप बदलती, कभी लुप्त नहीं होती?",
+          mr: "पडणारा चेंडू उंची गमावतो पण चाल मिळवतो; झुलणारा लंबक शिखराची मंदता तळाच्या वेगाने बदलतो. कोणता नियम सांगतो ऊर्जा फक्त रूप बदलते, कधी नाहीशी होत नाही?",
+        },
+        statement: {
+          en: "The law of conservation of energy says energy can neither be created nor destroyed, only changed from one form to another — the total in a closed system stays constant.",
+          hi: "ऊर्जा संरक्षण का नियम कहता ऊर्जा न बनाई न नष्ट की जा सकती, केवल एक रूप से दूसरे में बदली — बंद तंत्र में कुल नियत रहता।",
+          mr: "ऊर्जा संधारणाचा नियम सांगतो ऊर्जा न निर्माण न नष्ट करता येते, फक्त एका रूपातून दुसऱ्यात बदलते — बंद यंत्रणेत एकूण स्थिर राहते.",
+        },
+        detail: {
+          en: "In a falling body the potential energy lost is gained exactly as kinetic energy, so their sum holds steady all the way down.",
+          hi: "गिरते पिंड में खोई स्थितिज ऊर्जा ठीक गतिज ऊर्जा बनकर मिलती, अतः उनका योग पूरे रास्ते नियत रहता।",
+          mr: "पडणाऱ्या पिंडात गमावलेली स्थितिज ऊर्जा नेमकी गतिज ऊर्जा बनून मिळते, म्हणून त्यांची बेरीज संपूर्ण खाली स्थिर राहते.",
+        },
+        extra: {
+          en: "Where energy seems to disappear — a bouncing ball slowly stopping — it has only slipped away as heat and sound, still counted in the total.",
+          hi: "जहाँ ऊर्जा लुप्त लगती — उछलती गेंद धीरे रुकती — वह केवल ऊष्मा और ध्वनि बनकर खिसकी, कुल में अब भी गिनी।",
+          mr: "जिथे ऊर्जा नाहीशी वाटते — उसळणारा चेंडू हळू थांबतो — ती फक्त उष्णता आणि ध्वनी बनून निसटली, एकूणात अजूनही मोजलेली.",
+        },
+        pair: {
+          left: {
+            en: "Never created or destroyed, only transformed",
+            hi: "कभी न बने न नष्ट, केवल रूपांतरित",
+            mr: "कधी न बने न नष्ट, फक्त रूपांतरित",
+          },
+          right: {
+            en: "conservation of energy",
+            hi: "ऊर्जा संरक्षण",
+            mr: "ऊर्जा संधारण",
+          },
+        },
+      },
+      {
+        id: "power",
+        name: { en: "Power", hi: "शक्ति", mr: "शक्ती" },
+        kind: "idea",
+        prompt: {
+          en: "Two porters carry the same load up the same stairs, but one races up in half the time. They do equal work — so which quantity tells them apart?",
+          hi: "दो कुली वही बोझ उन्हीं सीढ़ियों पर ले जाते, पर एक आधे समय में दौड़कर चढ़ता। वे बराबर कार्य करते — तो कौन-सी राशि उन्हें अलग बताती?",
+          mr: "दोन हमाल तेच ओझे त्याच पायऱ्यांवर नेतात, पण एक अर्ध्या वेळात धावत चढतो. ते समान कार्य करतात — तर कोणती राशी त्यांना वेगळे सांगते?",
+        },
+        statement: {
+          en: "Power is the rate of doing work — work done divided by the time taken; the faster the same work is finished, the greater the power, measured in watts.",
+          hi: "शक्ति कार्य करने की दर है — किया कार्य बटा लगा समय; वही कार्य जितना तेज़ पूरा, उतनी अधिक शक्ति, वॉट में नापी।",
+          mr: "शक्ती कार्य करण्याचा दर आहे — केलेले कार्य भागिले लागलेला वेळ; तेच कार्य जितके जलद पूर्ण, तितकी अधिक शक्ती, वॅटमध्ये मोजली.",
+        },
+        detail: {
+          en: "One watt is one joule of work each second; a bright room light burns tens of watts, a running motorbike tens of thousands.",
+          hi: "एक वॉट प्रति सेकंड एक जूल कार्य; तेज़ कमरे की बत्ती दसियों वॉट जलाती, दौड़ती मोटरसाइकिल दसियों हज़ार।",
+          mr: "एक वॅट प्रति सेकंद एक ज्यूल कार्य; तेजस्वी खोलीची बत्ती दहा-वीस वॅट जाळते, धावती मोटरसायकल दहा-वीस हजार.",
+        },
+        extra: {
+          en: "Because power and time together give energy, the electricity board bills you not in watts but in kilowatt-hours — power multiplied by hours run.",
+          hi: "शक्ति और समय मिलकर ऊर्जा देते, अतः बिजली-बोर्ड तुम्हें वॉट में नहीं किलोवॉट-घंटा में बिल करता — शक्ति गुणा चले घंटे।",
+          mr: "शक्ती आणि वेळ मिळून ऊर्जा देतात, म्हणून वीज-मंडळ तुला वॅटमध्ये नव्हे किलोवॅट-तासात बिल देते — शक्ती गुणिले चाललेले तास.",
+        },
+        pair: {
+          left: {
+            en: "Work done per unit time",
+            hi: "प्रति समय किया कार्य",
+            mr: "प्रति वेळ केलेले कार्य",
+          },
+          right: {
+            en: "power",
+            hi: "शक्ति",
+            mr: "शक्ती",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A porter lifts a heavy trunk onto his head, then walks a long, level platform at a steady pace to the far end, and sets it down. He is drenched in sweat and insists he did enormous work. On which part of this journey did he do NO work on the trunk against gravity, and why?",
+          hi: "एक कुली भारी पेटी सिर पर उठाता, फिर लंबे समतल प्लेटफ़ॉर्म पर स्थिर चाल से दूर छोर तक चलता, और उतार देता। वह पसीने में तर और अड़ता कि उसने भारी कार्य किया। इस यात्रा के किस भाग में उसने पेटी पर गुरुत्व के विरुद्ध कोई कार्य नहीं किया, और क्यों?",
+          mr: "एक हमाल जड ट्रंक डोक्यावर उचलतो, मग लांब सपाट फलाटावर स्थिर चालीने दूरच्या टोकापर्यंत चालतो, आणि खाली ठेवतो. तो घामाने निथळतो आणि अडतो की त्याने प्रचंड कार्य केले. या प्रवासाच्या कोणत्या भागात त्याने ट्रंकवर गुरुत्वाविरुद्ध कोणतेही कार्य केले नाही, आणि का?",
+        },
+        choices: [
+          {
+            en: "While walking level: his supporting force on the trunk points up, but the trunk moves horizontally, so the force is at right angles to the motion and does zero work against gravity — only the initial lift did that work",
+            hi: "समतल चलते: पेटी पर उसका सहारा-बल ऊपर, पर पेटी क्षैतिज चलती, अतः बल गति के समकोण पर और गुरुत्व के विरुद्ध शून्य कार्य — वह कार्य केवल आरंभिक उठान ने किया",
+            mr: "सपाट चालताना: ट्रंकवरचे त्याचे आधार-बल वर, पण ट्रंक आडवी हलते, म्हणून बल गतीच्या काटकोनात आणि गुरुत्वाविरुद्ध शून्य कार्य — ते कार्य फक्त सुरुवातीच्या उचलण्याने केले",
+          },
+          {
+            en: "While lifting the trunk onto his head, because lifting is effortless",
+            hi: "पेटी सिर पर उठाते, क्योंकि उठाना अनायास",
+            mr: "ट्रंक डोक्यावर उचलताना, कारण उचलणे सहज",
+          },
+          {
+            en: "He does equal work at every stage of the journey",
+            hi: "वह यात्रा के हर चरण में बराबर कार्य करता",
+            mr: "तो प्रवासाच्या प्रत्येक टप्प्यात समान कार्य करतो",
+          },
+          {
+            en: "He does no work at all anywhere, since the trunk returns to the ground",
+            hi: "वह कहीं कोई कार्य नहीं करता, क्योंकि पेटी ज़मीन पर लौटती",
+            mr: "तो कुठेही कोणतेही कार्य करत नाही, कारण ट्रंक जमिनीवर परतते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Physics measures work as force times the distance moved ALONG that force's direction — and that is what separates the lift from the walk. When the porter first hoists the trunk to his head, his force points upward and the trunk actually rises through that height: force and motion are in the same direction, so real work is done against gravity, stored as the trunk's gained potential energy. But once the trunk is riding level on his head, the force he supplies to hold it up still points straight up (balancing its weight), while the trunk now moves horizontally along the platform. Force up, motion sideways — the two are at right angles, and a force perpendicular to the motion does no work. So across the entire level walk, however long and exhausting, he does zero work on the trunk against gravity; its height, and hence its potential energy, never changes. His sweat is real, but it goes into the biological cost of keeping his muscles tensed, not into physics-work on the load. (Only if he stumbled and the trunk rose or fell would gravity-work reappear.) It is the same reason the Moon, forever pulled sideways-to-its-motion by Earth, needs no energy fed in to keep circling.",
+          hi: "भौतिकी कार्य नापती बल गुणा उस बल की दिशा में चली दूरी — और यही उठान को चाल से अलग करता। जब कुली पहले पेटी सिर तक उठाता, उसका बल ऊपर और पेटी सचमुच उस ऊँचाई चढ़ती: बल और गति एक दिशा में, अतः गुरुत्व के विरुद्ध असली कार्य, पेटी की पाई स्थितिज ऊर्जा में जमा। पर जब पेटी सिर पर समतल सवार, उसे थामने का बल अब भी सीधे ऊपर (भार संतुलित), जबकि पेटी अब प्लेटफ़ॉर्म पर क्षैतिज चलती। बल ऊपर, गति बग़ल — दोनों समकोण पर, और गति के लंब बल कोई कार्य नहीं करता। अतः पूरे समतल चलने में, चाहे कितना लंबा-थकाऊ, वह पेटी पर गुरुत्व के विरुद्ध शून्य कार्य करता; उसकी ऊँचाई, और इसलिए स्थितिज ऊर्जा, कभी नहीं बदलती। उसका पसीना असली, पर वह माँसपेशियों को तने रखने की जैविक लागत में जाता, भार पर भौतिकी-कार्य में नहीं। (केवल यदि वह लड़खड़ाए और पेटी चढ़े या गिरे तो गुरुत्व-कार्य लौटता।) यही कारण चंद्रमा, पृथ्वी से सदा अपनी-गति-के-बग़ल खिंचा, परिक्रमा जारी रखने को भीतर कोई ऊर्जा नहीं माँगता।",
+          mr: "भौतिकशास्त्र कार्य मोजते बल गुणिले त्या बलाच्या दिशेत चाललेले अंतर — आणि हेच उचलण्याला चालण्यापासून वेगळे करते. जेव्हा हमाल आधी ट्रंक डोक्यापर्यंत उचलतो, त्याचे बल वर आणि ट्रंक खरोखर त्या उंचीवर चढते: बल आणि गती एका दिशेत, म्हणून गुरुत्वाविरुद्ध खरे कार्य, ट्रंकच्या मिळवलेल्या स्थितिज ऊर्जेत साठलेले. पण एकदा ट्रंक डोक्यावर सपाट स्वार, तिला धरण्याचे बल अजूनही सरळ वर (भार संतुलित), तर ट्रंक आता फलाटावर आडवी हलते. बल वर, गती बाजूला — दोन्ही काटकोनात, आणि गतीला लंब बल कोणतेही कार्य करत नाही. म्हणून संपूर्ण सपाट चालण्यात, कितीही लांब-थकवणारे असो, तो ट्रंकवर गुरुत्वाविरुद्ध शून्य कार्य करतो; तिची उंची, आणि म्हणून स्थितिज ऊर्जा, कधी बदलत नाही. त्याचा घाम खरा, पण तो स्नायू ताणलेले ठेवण्याच्या जैविक खर्चात जातो, भारावर भौतिकी-कार्यात नाही. (फक्त जर तो अडखळला आणि ट्रंक चढली वा पडली तर गुरुत्व-कार्य परतते.) हेच कारण चंद्र, पृथ्वीने सदैव आपल्या-गतीला-आडवा ओढलेला, परिभ्रमण चालू ठेवायला आत कोणतीही ऊर्जा मागत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A stone is dropped from a height. Halfway down, careful measurement shows it has lost exactly half its starting potential energy but gained exactly that much kinetic energy, and at the ground all the potential energy has become kinetic. What principle is on display, and what would it look like for a swinging pendulum?",
+          hi: "एक पत्थर ऊँचाई से गिराया जाता। आधे नीचे, सावधान मापन दिखाता उसने अपनी आरंभिक स्थितिज ऊर्जा ठीक आधी खोई पर उतनी ही गतिज पाई, और ज़मीन पर सारी स्थितिज गतिज बन गई। कौन-सा सिद्धांत प्रदर्शित, और झूलते लोलक के लिए यह कैसा दिखेगा?",
+          mr: "एक दगड उंचीवरून टाकला जातो. अर्ध्या खाली, काळजीपूर्वक मापन दाखवते त्याने आपली सुरुवातीची स्थितिज ऊर्जा नेमकी अर्धी गमावली पण तितकीच गतिज मिळवली, आणि जमिनीवर सारी स्थितिज गतिज बनली. कोणते तत्त्व प्रदर्शित, आणि झुलणाऱ्या लंबकासाठी हे कसे दिसेल?",
+        },
+        choices: [
+          {
+            en: "Conservation of mechanical energy: PE is not lost but converted into KE, their sum staying constant throughout the fall. A pendulum shows the same trade — all PE at the ends where it pauses, all KE at the bottom where it moves fastest, swapping back and forth",
+            hi: "यांत्रिक ऊर्जा संरक्षण: स्थितिज खोई नहीं बल्कि गतिज में बदली, उनका योग पूरे पतन में नियत। लोलक वही सौदा दिखाता — सिरों पर जहाँ ठहरता सारी स्थितिज, तल पर जहाँ सबसे तेज़ सारी गतिज, आगे-पीछे बदलते",
+            mr: "यांत्रिक ऊर्जा संधारण: स्थितिज हरवली नाही तर गतिजात बदलली, त्यांची बेरीज संपूर्ण पतनात स्थिर. लंबक तोच व्यवहार दाखवतो — टोकांना जिथे थांबतो सारी स्थितिज, तळाशी जिथे सर्वांत जलद सारी गतिज, पुढे-मागे बदलत",
+          },
+          {
+            en: "The stone is creating new energy as it falls, which is why it speeds up",
+            hi: "पत्थर गिरते नई ऊर्जा बनाता, इसी से तेज़ होता",
+            mr: "दगड पडताना नवी ऊर्जा बनवतो, म्हणून वेगवान होतो",
+          },
+          {
+            en: "Potential energy is simply destroyed and the stone's speed is unrelated",
+            hi: "स्थितिज ऊर्जा बस नष्ट होती और पत्थर की चाल असंबंधित",
+            mr: "स्थितिज ऊर्जा फक्त नष्ट होते आणि दगडाची चाल असंबंधित",
+          },
+          {
+            en: "A pendulum has kinetic energy at the top and potential energy at the bottom",
+            hi: "लोलक में शिखर पर गतिज और तल पर स्थितिज ऊर्जा",
+            mr: "लंबकात शिखरावर गतिज आणि तळाशी स्थितिज ऊर्जा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "What the measurements display is the conservation of mechanical energy: as the stone falls, the gravitational potential energy it gives up (mgh, shrinking as its height h drops) is not lost but converted, joule for joule, into kinetic energy (½mv², growing as it speeds up). At the halfway point half the PE has become KE; at the ground, where h is zero, every last joule of the original PE has turned into kinetic energy, and the stone is moving at its fastest — the sum PE + KE holding constant the whole way down. A swinging pendulum is the same bargain made to repeat: at the two ends of its swing it stops for an instant at its highest point, so there its energy is entirely potential and its speed is zero; as it sweeps down to the lowest point it trades that height for speed, arriving with zero PE and maximum KE, moving fastest exactly at the bottom; then it climbs the far side, spending kinetic back into potential, and pauses again. Energy sloshes endlessly between the two forms while their total stays fixed. In the real world a little leaks away each swing as heat from air drag and friction at the pivot — which is why a real pendulum slowly dies down — but that lost energy has not vanished; counted as heat and sound, the grand total is still conserved.",
+          hi: "मापन जो दिखाते वह यांत्रिक ऊर्जा का संरक्षण: पत्थर गिरते, जो गुरुत्वीय स्थितिज ऊर्जा वह छोड़ता (mgh, ऊँचाई h गिरते सिकुड़ती) खोई नहीं बल्कि जूल-दर-जूल गतिज ऊर्जा (½mv², तेज़ होते बढ़ती) में बदली। आधे बिंदु पर आधी स्थितिज गतिज बनी; ज़मीन पर, जहाँ h शून्य, मूल स्थितिज का हर अंतिम जूल गतिज बना, और पत्थर सबसे तेज़ चलता — योग स्थितिज + गतिज पूरे रास्ते नियत। झूलता लोलक वही सौदा दोहराता: झूले के दोनों सिरों पर वह क्षण-भर अपने उच्चतम बिंदु पर रुकता, अतः वहाँ उसकी ऊर्जा पूरी स्थितिज और चाल शून्य; निम्नतम बिंदु तक झूलते वह ऊँचाई को चाल से बदलता, शून्य स्थितिज और अधिकतम गतिज के साथ पहुँचता, ठीक तल पर सबसे तेज़; फिर दूर की ओर चढ़ता, गतिज को स्थितिज में लौटाता, और फिर ठहरता। ऊर्जा दोनों रूपों के बीच अनवरत छलकती जबकि उनका कुल नियत। असल दुनिया में हर झूले में थोड़ी वायु-घर्षण और धुरी की रगड़ से ऊष्मा बनकर रिसती — इसी से असली लोलक धीरे थमता — पर वह खोई ऊर्जा लुप्त नहीं; ऊष्मा-ध्वनि गिनें तो महायोग अब भी संरक्षित।",
+          mr: "मापन जे दाखवतात ते यांत्रिक ऊर्जेचे संधारण: दगड पडताना, जी गुरुत्वीय स्थितिज ऊर्जा तो सोडतो (mgh, उंची h घटताना आकुंचणारी) हरवली नाही तर ज्यूल-दर-ज्यूल गतिज ऊर्जेत (½mv², वेगवान होताना वाढणारी) बदलली. अर्ध्या बिंदूवर अर्धी स्थितिज गतिज बनली; जमिनीवर, जिथे h शून्य, मूळ स्थितिजचा प्रत्येक शेवटचा ज्यूल गतिज बनला, आणि दगड सर्वांत जलद चालतो — बेरीज स्थितिज + गतिज संपूर्ण खाली स्थिर. झुलणारा लंबक तोच व्यवहार पुन्हा करतो: झुल्याच्या दोन टोकांना तो क्षणभर आपल्या सर्वोच्च बिंदूवर थांबतो, म्हणून तिथे त्याची ऊर्जा पूर्ण स्थितिज आणि चाल शून्य; सर्वांत खालच्या बिंदूपर्यंत झुलताना तो उंची चालीने बदलतो, शून्य स्थितिज आणि कमाल गतिजासह पोहोचतो, नेमके तळाशी सर्वांत जलद; मग दूरची बाजू चढतो, गतिज स्थितिजात परत खर्चतो, आणि पुन्हा थांबतो. ऊर्जा दोन्ही रूपांत अखंड हिंदकळते तर त्यांची बेरीज स्थिर राहते. खऱ्या जगात प्रत्येक झुल्यात थोडी हवा-रोध आणि आसाच्या घर्षणातून उष्णता बनून झिरपते — म्हणूनच खरा लंबक हळू थांबतो — पण ती हरवलेली ऊर्जा नाहीशी झाली नाही; उष्णता-ध्वनी मोजली तर महाबेरीज अजूनही संधारित.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Sound (a travelling squeeze of the air)                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-9-sound",
+    subject: "SCIENCE",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 12 — Sound",
+      hi: "अध्याय 12 — ध्वनि",
+      mr: "प्रकरण 12 — ध्वनी",
+    },
+    name: {
+      en: "Sound",
+      hi: "ध्वनि",
+      mr: "ध्वनी",
+    },
+    summary: {
+      en: "Sound is a vibration handed particle to particle: a travelling train of squeezes and stretches that needs matter to carry it and falls silent in a vacuum. Its frequency sets the pitch, its amplitude the loudness, and its echoes measure the sea by the time they take to return.",
+      hi: "ध्वनि कण-दर-कण सौंपा कंपन है: दबाव और खिंचाव की चलती रेलगाड़ी जिसे ढोने को पदार्थ चाहिए और निर्वात में मौन। इसकी आवृत्ति तारत्व तय करती, आयाम प्रबलता, और इसकी प्रतिध्वनियाँ लौटने में लगे समय से समुद्र नापतीं।",
+      mr: "ध्वनी कण-दर-कण सुपूर्द केलेले कंपन आहे: दाब आणि ताणाची चालती आगगाडी जिला वाहायला पदार्थ हवा आणि निर्वातात मौन. तिची वारंवारता स्वरमान ठरवते, परमप्रसर मोठेपणा, आणि तिचे प्रतिध्वनी परतायला लागलेल्या वेळेने समुद्र मोजतात.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "sound-vibration",
+        name: {
+          en: "Sound from vibration",
+          hi: "कंपन से ध्वनि",
+          mr: "कंपनातून ध्वनी",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Pluck a taut string, strike a bell, or touch a ringing tuning fork to water and it sprays — every sound traces back to what kind of motion in its source?",
+          hi: "तनी डोरी छेड़ो, घंटी बजाओ, या बजते स्वरित्र को पानी छुआओ और वह छींटे उड़ाता — हर ध्वनि अपने स्रोत में किस प्रकार की गति तक जाती?",
+          mr: "ताणलेली दोरी छेडा, घंटा वाजवा, किंवा वाजणारा स्वरित्र पाण्याला स्पर्शा आणि ते तुषार उडवते — प्रत्येक ध्वनी आपल्या स्रोतातील कोणत्या प्रकारच्या गतीपर्यंत जाते?",
+        },
+        statement: {
+          en: "Sound is produced by a vibrating body — a rapid to-and-fro shaking; stop the vibration and the sound dies at once, no matter the instrument.",
+          hi: "ध्वनि कंपित पिंड से उत्पन्न — तेज़ आगे-पीछे हिलना; कंपन रोको तो ध्वनि तुरंत मरती, वाद्य कोई भी हो।",
+          mr: "ध्वनी कंपित पिंडातून निर्माण — जलद पुढे-मागे हलणे; कंपन थांबवा तर ध्वनी लगेच मरते, वाद्य कोणतेही असो.",
+        },
+        detail: {
+          en: "Rest a finger on a struck bell and both the ringing and the trembling stop together — proof the two are one.",
+          hi: "बजी घंटी पर उँगली रखो और गूँज तथा कँपन दोनों साथ रुकते — प्रमाण कि दोनों एक।",
+          mr: "वाजलेल्या घंटेवर बोट ठेवा आणि निनाद तसेच थरथर दोन्ही एकत्र थांबतात — पुरावा की दोन्ही एक.",
+        },
+        extra: {
+          en: "Your own voice is your vocal cords vibrating; feel your throat as you hum and the buzz is right there under your fingers.",
+          hi: "तुम्हारी अपनी आवाज़ तुम्हारे स्वर-तंतुओं का कंपन; गुनगुनाते गला छुओ और भनभनाहट ठीक उँगलियों के नीचे।",
+          mr: "तुझा स्वतःचा आवाज तुझ्या स्वरतंतूंचे कंपन; गुणगुणताना गळा स्पर्शा आणि गुणगुण नेमकी बोटांखाली.",
+        },
+        pair: {
+          left: {
+            en: "Source shakes to and fro",
+            hi: "स्रोत आगे-पीछे हिलता",
+            mr: "स्रोत पुढे-मागे हलतो",
+          },
+          right: {
+            en: "vibration makes sound",
+            hi: "कंपन ध्वनि बनाता",
+            mr: "कंपन ध्वनी बनवते",
+          },
+        },
+      },
+      {
+        id: "medium-needed",
+        name: {
+          en: "Sound needs a medium",
+          hi: "ध्वनि को माध्यम चाहिए",
+          mr: "ध्वनीला माध्यम हवे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "An electric bell ringing inside a jar grows fainter and fades to total silence as the air is pumped out, though you still see it striking. What does this prove sound must have to travel?",
+          hi: "जार के भीतर बजती बिजली की घंटी हवा निकाले जाने पर मंद होती और पूर्ण मौन में लुप्त, यद्यपि तुम उसे बजते देखते। यह सिद्ध करता ध्वनि को चलने के लिए क्या चाहिए?",
+          mr: "बरणीत वाजणारी विद्युत घंटी हवा काढल्यावर क्षीण होते आणि पूर्ण मौनात लुप्त, जरी तू तिला वाजताना पाहतोस. हे सिद्ध करते ध्वनीला चालायला काय हवे?",
+        },
+        statement: {
+          en: "Sound needs a material medium — solid, liquid or gas — to carry it; across a vacuum, with no particles to pass the vibration along, it cannot travel at all.",
+          hi: "ध्वनि को ढोने के लिए भौतिक माध्यम चाहिए — ठोस, द्रव या गैस; निर्वात में, कंपन आगे बढ़ाने को कण न होने से, वह बिलकुल नहीं चल सकती।",
+          mr: "ध्वनीला वाहायला भौतिक माध्यम हवे — घन, द्रव वा वायू; निर्वातात, कंपन पुढे नेण्याला कण नसल्याने, ती मुळीच चालू शकत नाही.",
+        },
+        detail: {
+          en: "This is why space is utterly silent — no explosion, however vast, can be heard across the airless void between the stars.",
+          hi: "इसी से अंतरिक्ष पूर्णतः मौन — कोई विस्फोट, चाहे कितना विशाल, तारों के बीच हवाहीन शून्य के पार नहीं सुना जा सकता।",
+          mr: "म्हणूनच अवकाश पूर्णपणे मौन — कोणताही स्फोट, कितीही अवाढव्य, ताऱ्यांमधल्या हवाहीन पोकळीपलीकडे ऐकू येत नाही.",
+        },
+        extra: {
+          en: "Light needs no medium and crosses the vacuum freely, which is why you see the distant lightning yet, across empty space, would hear no thunder.",
+          hi: "प्रकाश को माध्यम नहीं चाहिए और निर्वात मुक्त पार करता, इसी से तुम दूर की बिजली देखते फिर भी, खाली अंतरिक्ष के पार, कोई गर्जन नहीं सुनते।",
+          mr: "प्रकाशाला माध्यम नको आणि निर्वात मुक्त ओलांडतो, म्हणूनच तू दूरची वीज पाहतोस तरी, रिकाम्या अवकाशापलीकडे, कोणतीही गर्जना ऐकत नाहीस.",
+        },
+        pair: {
+          left: {
+            en: "Falls silent in a vacuum",
+            hi: "निर्वात में मौन हो जाती",
+            mr: "निर्वातात मौन होते",
+          },
+          right: {
+            en: "needs a material medium",
+            hi: "भौतिक माध्यम चाहिए",
+            mr: "भौतिक माध्यम हवे",
+          },
+        },
+      },
+      {
+        id: "longitudinal-wave",
+        name: {
+          en: "A longitudinal wave",
+          hi: "अनुदैर्घ्य तरंग",
+          mr: "अनुतरंग",
+        },
+        kind: "idea",
+        prompt: {
+          en: "As sound moves through air, the particles shuffle back and forth along the very direction the sound travels, bunching and thinning. What is such a wave called?",
+          hi: "जैसे ध्वनि हवा में चलती, कण ठीक उसी दिशा में जिधर ध्वनि जाती आगे-पीछे सरकते, गुँथते और छँटते। ऐसी तरंग क्या कहलाती?",
+          mr: "जसे ध्वनी हवेत चालते, कण नेमक्या त्याच दिशेत जिकडे ध्वनी जाते पुढे-मागे सरकतात, दाटतात आणि विरळतात. अशी तरंग काय म्हणतात?",
+        },
+        statement: {
+          en: "Sound is a longitudinal wave — the medium's particles vibrate back and forth along the same line the wave travels, creating compressions and rarefactions.",
+          hi: "ध्वनि अनुदैर्घ्य तरंग है — माध्यम के कण उसी रेखा के अनुदिश आगे-पीछे कंपते जिधर तरंग चलती, संपीडन और विरलन बनाते।",
+          mr: "ध्वनी अनुतरंग आहे — माध्यमाचे कण त्याच रेषेच्या दिशेने पुढे-मागे कंपतात जिकडे तरंग चालते, संपीडन आणि विरलन बनवतात.",
+        },
+        detail: {
+          en: "A compression is where particles crowd close and pressure rises; a rarefaction is where they thin out and pressure drops — the two chase each other along.",
+          hi: "संपीडन जहाँ कण पास भिड़ते और दाब चढ़ता; विरलन जहाँ वे छँटते और दाब गिरता — दोनों एक-दूसरे का पीछा करते चलते।",
+          mr: "संपीडन जिथे कण जवळ दाटतात आणि दाब चढतो; विरलन जिथे ते विरळतात आणि दाब घटतो — दोन्ही एकमेकांचा पाठलाग करत चालतात.",
+        },
+        extra: {
+          en: "You can watch the same pattern run down a stretched slinky pushed end-on — bands of coils squeezing tight then springing apart.",
+          hi: "वही नमूना तुम छोर से धकेले खिंचे स्लिंकी में दौड़ता देख सकते — कुंडलियों की पट्टियाँ कसकर भिड़तीं फिर छिटकतीं।",
+          mr: "तोच नमुना तू टोकाकडून ढकललेल्या ताणलेल्या स्लिंकीत धावताना पाहू शकतोस — वेटोळ्यांच्या पट्ट्या घट्ट दाटतात मग विलग होतात.",
+        },
+        pair: {
+          left: {
+            en: "Particles vibrate along the travel direction",
+            hi: "कण चलने की दिशा में कंपते",
+            mr: "कण चालण्याच्या दिशेत कंपतात",
+          },
+          right: {
+            en: "a longitudinal wave",
+            hi: "अनुदैर्घ्य तरंग",
+            mr: "अनुतरंग",
+          },
+        },
+      },
+      {
+        id: "pitch-loudness",
+        name: {
+          en: "Pitch and loudness",
+          hi: "तारत्व और प्रबलता",
+          mr: "स्वरमान आणि मोठेपणा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A whistle is shrill and a drum is deep; a whisper is soft and a shout is loud. Which property of the wave sets a note's highness, and which sets how loud it is?",
+          hi: "सीटी तीखी और ढोल गहरा; फुसफुसाहट धीमी और चीख तेज़। तरंग का कौन-सा गुण स्वर की ऊँचाई तय करता, और कौन-सा वह कितनी तेज़?",
+          mr: "शिट्टी तीक्ष्ण आणि ढोल खोल; कुजबुज मंद आणि किंकाळी मोठी. तरंगेचा कोणता गुण सुराची उंची ठरवतो, आणि कोणता ती किती मोठी?",
+        },
+        statement: {
+          en: "The frequency of a sound wave sets its pitch — more vibrations per second means a higher note — while its amplitude sets the loudness, a bigger swing meaning a louder sound.",
+          hi: "ध्वनि-तरंग की आवृत्ति उसका तारत्व तय करती — प्रति सेकंड अधिक कंपन यानी ऊँचा स्वर — जबकि उसका आयाम प्रबलता तय करता, बड़ा झूला यानी तेज़ ध्वनि।",
+          mr: "ध्वनी-तरंगेची वारंवारता तिचे स्वरमान ठरवते — प्रति सेकंद अधिक कंपन म्हणजे उंच सूर — तर तिचा परमप्रसर मोठेपणा ठरवतो, मोठा झोका म्हणजे मोठा आवाज.",
+        },
+        detail: {
+          en: "Frequency is counted in hertz, one hertz being one vibration each second; a child's voice runs at a higher frequency than an adult's.",
+          hi: "आवृत्ति हर्ट्ज़ में गिनी, एक हर्ट्ज़ प्रति सेकंड एक कंपन; बच्चे की आवाज़ वयस्क से अधिक आवृत्ति पर चलती।",
+          mr: "वारंवारता हर्ट्झमध्ये मोजली, एक हर्ट्झ म्हणजे प्रति सेकंद एक कंपन; मुलाचा आवाज प्रौढाहून अधिक वारंवारतेवर चालतो.",
+        },
+        extra: {
+          en: "Pitch and loudness are independent: you can sing the same high note softly or at full volume, changing amplitude while frequency holds.",
+          hi: "तारत्व और प्रबलता स्वतंत्र: तुम वही ऊँचा स्वर धीरे या पूरी आवाज़ में गा सकते, आयाम बदलते जबकि आवृत्ति टिकी।",
+          mr: "स्वरमान आणि मोठेपणा स्वतंत्र: तू तोच उंच सूर हळू किंवा पूर्ण आवाजात गाऊ शकतोस, परमप्रसर बदलत तर वारंवारता टिकून.",
+        },
+        pair: {
+          left: {
+            en: "Vibrations per second sets the note's highness",
+            hi: "प्रति सेकंड कंपन स्वर की ऊँचाई तय करे",
+            mr: "प्रति सेकंद कंपन सुराची उंची ठरवते",
+          },
+          right: {
+            en: "frequency (pitch)",
+            hi: "आवृत्ति (तारत्व)",
+            mr: "वारंवारता (स्वरमान)",
+          },
+        },
+      },
+      {
+        id: "speed-in-media",
+        name: {
+          en: "Speed of sound in media",
+          hi: "माध्यमों में ध्वनि की चाल",
+          mr: "माध्यमांत ध्वनीची चाल",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Put your ear to a steel rail and a distant tap arrives before the same tap heard through the air. In which kind of medium does sound race fastest — solid, liquid or gas?",
+          hi: "इस्पात की पटरी पर कान लगाओ और दूर की ठोक हवा से सुनी उसी ठोक से पहले पहुँचती। ध्वनि किस प्रकार के माध्यम में सबसे तेज़ दौड़ती — ठोस, द्रव या गैस?",
+          mr: "पोलादी रुळावर कान लावा आणि दूरचा ठोका हवेतून ऐकलेल्या त्याच ठोक्याआधी पोहोचतो. ध्वनी कोणत्या प्रकारच्या माध्यमात सर्वांत जलद धावते — घन, द्रव वा वायू?",
+        },
+        statement: {
+          en: "Sound travels fastest through solids, slower through liquids and slowest through gases — the more tightly the particles are linked, the quicker they pass the vibration on.",
+          hi: "ध्वनि ठोसों में सबसे तेज़, द्रवों में धीमी और गैसों में सबसे धीमी चलती — कण जितने कसकर जुड़े, उतनी तेज़ी से कंपन आगे बढ़ाते।",
+          mr: "ध्वनी घनांत सर्वांत जलद, द्रवांत मंद आणि वायूंत सर्वांत मंद चालते — कण जितके घट्ट जोडलेले, तितक्या जलद कंपन पुढे नेतात.",
+        },
+        detail: {
+          en: "In air sound crawls at about 340 metres a second, but in steel it flies nearly fifteen times faster — the rail delivers the tap first.",
+          hi: "हवा में ध्वनि लगभग 340 मीटर प्रति सेकंड रेंगती, पर इस्पात में लगभग पंद्रह गुना तेज़ उड़ती — पटरी ठोक पहले पहुँचाती।",
+          mr: "हवेत ध्वनी सुमारे 340 मीटर प्रति सेकंद रांगते, पण पोलादात जवळपास पंधरा पट जलद उडते — रूळ ठोका आधी पोहोचवतो.",
+        },
+        extra: {
+          en: "This is the opposite of light, which is fastest in empty space and slows down inside matter — sound loves company, light does not.",
+          hi: "यह प्रकाश के उल्टा, जो खाली अंतरिक्ष में सबसे तेज़ और पदार्थ में धीमा — ध्वनि संगत चाहती, प्रकाश नहीं।",
+          mr: "हे प्रकाशाच्या उलट, जो रिकाम्या अवकाशात सर्वांत जलद आणि पदार्थात मंदावतो — ध्वनी सोबत चाहते, प्रकाश नाही.",
+        },
+        pair: {
+          left: {
+            en: "Fastest where particles are tightly linked",
+            hi: "जहाँ कण कसकर जुड़े वहाँ सबसे तेज़",
+            mr: "जिथे कण घट्ट जोडलेले तिथे सर्वांत जलद",
+          },
+          right: {
+            en: "quickest in solids",
+            hi: "ठोसों में सबसे तेज़",
+            mr: "घनांत सर्वांत जलद",
+          },
+        },
+      },
+      {
+        id: "echo-sonar",
+        name: {
+          en: "Echo and reflection",
+          hi: "प्रतिध्वनि और परावर्तन",
+          mr: "प्रतिध्वनी आणि परावर्तन",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Shout across a valley and your words return a moment later; a ship pings the seabed and times the reply to read the depth. Which behaviour of sound — bouncing off a surface — lies behind both?",
+          hi: "घाटी के पार चिल्लाओ और तुम्हारे शब्द क्षण-भर बाद लौटते; जहाज़ समुद्र-तल पर ध्वनि भेजता और उत्तर का समय लेकर गहराई पढ़ता। ध्वनि का कौन-सा व्यवहार — सतह से टकराना — दोनों के पीछे?",
+          mr: "दरीपलीकडे ओरडा आणि तुझे शब्द क्षणभराने परततात; जहाज समुद्रतळावर ध्वनी पाठवते आणि उत्तराचा वेळ घेऊन खोली वाचते. ध्वनीचे कोणते वर्तन — पृष्ठावर आदळणे — दोन्हीमागे?",
+        },
+        statement: {
+          en: "Sound reflects off hard surfaces, and a reflection heard as a separate repeat is an echo; timing such a reflected pulse lets sonar measure how far away the surface is.",
+          hi: "ध्वनि कठोर सतहों से परावर्तित होती, और अलग दोहराव बनकर सुना परावर्तन प्रतिध्वनि है; ऐसी परावर्तित स्पंद का समय लेकर सोनार नापता सतह कितनी दूर।",
+          mr: "ध्वनी कठीण पृष्ठांवरून परावर्तित होते, आणि वेगळा पुनरुच्चार बनून ऐकलेले परावर्तन प्रतिध्वनी आहे; अशा परावर्तित स्पंदाचा वेळ घेऊन सोनार मोजते पृष्ठ किती दूर.",
+        },
+        detail: {
+          en: "Because the pulse travels to the surface and back, the distance is speed times time divided by two — the trip is counted twice over.",
+          hi: "स्पंद सतह तक और वापस चलता, अतः दूरी चाल गुणा समय बटा दो — यात्रा दो बार गिनी जाती।",
+          mr: "स्पंद पृष्ठापर्यंत आणि परत चालतो, म्हणून अंतर चाल गुणिले वेळ भागिले दोन — प्रवास दोनदा मोजला जातो.",
+        },
+        extra: {
+          en: "Bats and dolphins do this by ear, sending out squeaks and reading the echoes to hunt in the dark — nature's own sonar.",
+          hi: "चमगादड़ और डॉल्फ़िन यह कान से करते, चीख भेजकर और प्रतिध्वनि पढ़कर अँधेरे में शिकार — प्रकृति का अपना सोनार।",
+          mr: "वटवाघळे आणि डॉल्फिन हे कानाने करतात, किंकाळ्या पाठवून आणि प्रतिध्वनी वाचून अंधारात शिकार — निसर्गाचे स्वतःचे सोनार.",
+        },
+        pair: {
+          left: {
+            en: "A reflection timed to measure distance",
+            hi: "दूरी नापने को समयबद्ध परावर्तन",
+            mr: "अंतर मोजायला वेळबद्ध परावर्तन",
+          },
+          right: {
+            en: "echo and sonar",
+            hi: "प्रतिध्वनि और सोनार",
+            mr: "प्रतिध्वनी आणि सोनार",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "During a thunderstorm you almost always SEE the flash of lightning several seconds before you HEAR the thunder, even though both are born at the same instant in the same cloud. What explains the gap — and how could you use it to guess how far the storm is?",
+          hi: "आँधी में तुम प्रायः बिजली की चमक गर्जन सुनने से कई सेकंड पहले देखते, यद्यपि दोनों उसी क्षण उसी बादल में जन्मते। अंतर क्या समझाता — और तुम इससे कैसे अंदाज़ लगा सकते तूफ़ान कितना दूर?",
+          mr: "वादळात तू बहुधा विजेची चमक गर्जना ऐकण्याआधी काही सेकंद पाहतोस, जरी दोन्ही त्याच क्षणी त्याच ढगात जन्मतात. फरक काय समजावतो — आणि तू यातून कसा अंदाज लावू शकतोस वादळ किती दूर?",
+        },
+        choices: [
+          {
+            en: "Light travels almost a million times faster than sound, so the flash reaches you almost instantly while the thunder crawls at about 340 m/s. Counting the seconds and multiplying by 340 m gives the storm's rough distance",
+            hi: "प्रकाश ध्वनि से लगभग दस लाख गुना तेज़ चलता, अतः चमक लगभग तुरंत पहुँचती जबकि गर्जन लगभग 340 मी/से रेंगता। सेकंड गिनकर 340 मी से गुणा करने पर तूफ़ान की मोटी दूरी",
+            mr: "प्रकाश ध्वनीहून जवळपास दहा लाख पट जलद चालतो, म्हणून चमक जवळपास लगेच पोहोचते तर गर्जना सुमारे 340 मी/से रांगते. सेकंद मोजून 340 मी ने गुणल्यास वादळाचे ढोबळ अंतर",
+          },
+          {
+            en: "Thunder is simply created a few seconds after the lightning",
+            hi: "गर्जन बस बिजली के कुछ सेकंड बाद बनता",
+            mr: "गर्जना फक्त विजेच्या काही सेकंदांनी बनते",
+          },
+          {
+            en: "Your eyes react faster than your ears, so the sound arrives on time but is noticed late",
+            hi: "तुम्हारी आँखें कानों से तेज़ प्रतिक्रिया करतीं, अतः ध्वनि समय पर पहुँचती पर देर से जानी जाती",
+            mr: "तुझे डोळे कानांहून जलद प्रतिक्रिया देतात, म्हणून ध्वनी वेळेवर पोहोचते पण उशिरा जाणवते",
+          },
+          {
+            en: "Sound cannot travel through storm clouds and must find a way around",
+            hi: "ध्वनि आँधी के बादलों से नहीं चल सकती और चक्कर काटकर आती",
+            mr: "ध्वनी वादळी ढगांतून चालू शकत नाही आणि वळसा घालून येते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Lightning and thunder are one event — the flash and the crash begin together — so the delay is entirely a race between two messengers of very different speed. Light travels at about 300,000 kilometres every second, so from a storm a few kilometres away the flash reaches your eyes in a tiny fraction of a millisecond, effectively at once. Sound, though, crawls through air at only about 340 metres per second — nearly a million times slower — so the thunder needs several seconds to cover the same few kilometres. That mismatch is the gap you notice. It also hands you a simple ruler: start counting the moment you see the flash and stop when the thunder arrives; each second of delay means the sound covered roughly 340 metres, so about three seconds means the storm is roughly a kilometre off. If the flash and bang land together, the strike is almost on top of you. The same speed gap is why a distant cricket shot is seen struck before the crack is heard, and why fireworks bloom silently a beat before their boom.",
+          hi: "बिजली और गर्जन एक घटना — चमक और कड़क साथ शुरू होते — अतः देरी पूरी तरह दो बहुत भिन्न-चाल दूतों की दौड़। प्रकाश लगभग 3,00,000 किलोमीटर प्रति सेकंड चलता, अतः कुछ किलोमीटर दूर तूफ़ान से चमक तुम्हारी आँखों तक मिलीसेकंड के नन्हे अंश में पहुँचती, प्रभावतः तुरंत। ध्वनि, पर, हवा में केवल लगभग 340 मीटर प्रति सेकंड रेंगती — लगभग दस लाख गुना धीमी — अतः गर्जन को उन्हीं कुछ किलोमीटर को पार करने में कई सेकंड। वही बेमेल तुम्हारा देखा अंतर। यह तुम्हें सरल फुट्टा भी देता: चमक देखते ही गिनना शुरू करो और गर्जन आते रोको; देरी का हर सेकंड यानी ध्वनि ने लगभग 340 मीटर तय किया, अतः लगभग तीन सेकंड यानी तूफ़ान लगभग एक किलोमीटर दूर। यदि चमक और धमाका साथ पड़ें, प्रहार लगभग तुम्हारे ऊपर। वही चाल-अंतर कारण कि दूर का क्रिकेट शॉट कड़क सुनने से पहले लगा दिखता, और आतिशबाज़ी अपने धमाके से एक धड़कन पहले मौन खिलती।",
+          mr: "वीज आणि गर्जना एक घटना — चमक आणि कडकडाट एकत्र सुरू होतात — म्हणून विलंब पूर्णपणे दोन अतिशय वेगळ्या-चालीच्या दूतांची शर्यत. प्रकाश सुमारे 3,00,000 किलोमीटर प्रति सेकंद चालतो, म्हणून काही किलोमीटर दूरच्या वादळातून चमक तुझ्या डोळ्यांपर्यंत मिलिसेकंदाच्या इवल्या अंशात पोहोचते, प्रत्यक्षात लगेच. ध्वनी मात्र हवेत फक्त सुमारे 340 मीटर प्रति सेकंद रांगते — जवळपास दहा लाख पट मंद — म्हणून गर्जनेला त्याच काही किलोमीटर ओलांडायला अनेक सेकंद. तीच विसंगती तुला जाणवणारा फरक. ती तुला एक सोपे मोजपट्टीही देते: चमक दिसताच मोजायला सुरू करा आणि गर्जना येताच थांबा; विलंबाचा प्रत्येक सेकंद म्हणजे ध्वनीने सुमारे 340 मीटर ओलांडले, म्हणून सुमारे तीन सेकंद म्हणजे वादळ सुमारे एक किलोमीटर दूर. जर चमक आणि धमाका एकत्र पडले, प्रहार जवळपास तुझ्या डोक्यावर. तीच चाल-दरी कारण की दूरचा क्रिकेट फटका कडकडाट ऐकण्याआधी मारलेला दिसतो, आणि फटाके आपल्या धमाक्याआधी एक ठोका मौन फुलतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A ship's sonar sends a sound pulse straight down and hears its echo return from the seabed 3 seconds later. Taking the speed of sound in sea water as 1500 m/s, how deep is the sea — and why must you not simply multiply 1500 by 3?",
+          hi: "एक जहाज़ का सोनार ध्वनि-स्पंद सीधे नीचे भेजता और समुद्र-तल से उसकी प्रतिध्वनि 3 सेकंड बाद सुनता। समुद्री पानी में ध्वनि की चाल 1500 मी/से लेकर, समुद्र कितना गहरा — और तुम्हें सीधे 1500 को 3 से गुणा क्यों नहीं करना?",
+          mr: "एका जहाजाचा सोनार ध्वनी-स्पंद सरळ खाली पाठवतो आणि समुद्रतळावरून त्याची प्रतिध्वनी 3 सेकंदांनी ऐकतो. समुद्री पाण्यात ध्वनीची चाल 1500 मी/से घेऊन, समुद्र किती खोल — आणि तू सरळ 1500 ला 3 ने का गुणू नये?",
+        },
+        choices: [
+          {
+            en: "The pulse travels down AND back, so 3 seconds covers twice the depth. Total path = 1500 × 3 = 4500 m, and the depth is half of that, 2250 m",
+            hi: "स्पंद नीचे और वापस चलता, अतः 3 सेकंड दुगुनी गहराई तय करते। कुल रास्ता = 1500 × 3 = 4500 मी, और गहराई उसकी आधी, 2250 मी",
+            mr: "स्पंद खाली आणि परत चालतो, म्हणून 3 सेकंद दुप्पट खोली ओलांडतात. एकूण मार्ग = 1500 × 3 = 4500 मी, आणि खोली त्याची अर्धी, 2250 मी",
+          },
+          {
+            en: "The depth is 1500 × 3 = 4500 m, counting the trip once",
+            hi: "गहराई 1500 × 3 = 4500 मी, यात्रा एक बार गिनकर",
+            mr: "खोली 1500 × 3 = 4500 मी, प्रवास एकदा मोजून",
+          },
+          {
+            en: "The depth is 1500 ÷ 3 = 500 m",
+            hi: "गहराई 1500 ÷ 3 = 500 मी",
+            mr: "खोली 1500 ÷ 3 = 500 मी",
+          },
+          {
+            en: "The depth cannot be found without knowing the water's temperature",
+            hi: "पानी का तापमान जाने बिना गहराई नहीं मिल सकती",
+            mr: "पाण्याचे तापमान जाणल्याविना खोली सापडू शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The trap is that the 3 seconds is a ROUND trip, not a one-way journey. When the sonar fires its pulse, that sound must travel all the way down to the seabed, bounce off it, and travel all the way back up to the ship's receiver before the echo is heard — so in those 3 seconds the sound has covered the depth twice over, once going and once returning. First find the whole path length: distance = speed × time = 1500 m/s × 3 s = 4500 m. That 4500 m is down-and-up together, so the actual depth is half of it: 4500 ÷ 2 = 2250 m. Multiplying 1500 by 3 directly would give the total there-and-back path and so double the true depth — the classic sonar mistake. This 'halve it' step is built into every echo measurement, whether a bat judging a wall, a doctor's ultrasound scan, or a ship sounding the ocean: the pulse always pays for a return ticket, so you divide the round-trip distance by two to get the one-way distance you actually want.",
+          hi: "जाल यह कि 3 सेकंड एक चक्कर की यात्रा, एकतरफ़ा नहीं। जब सोनार स्पंद दागता, वह ध्वनि सारा नीचे समुद्र-तल तक चले, उससे टकराए, और सारा वापस जहाज़ के ग्राही तक ऊपर चले तभी प्रतिध्वनि सुनी जाती — अतः उन 3 सेकंड में ध्वनि ने गहराई दो बार तय की, एक बार जाते एक बार लौटते। पहले पूरा रास्ता निकालो: दूरी = चाल × समय = 1500 मी/से × 3 से = 4500 मी। वह 4500 मी नीचे-और-ऊपर साथ, अतः असली गहराई उसकी आधी: 4500 ÷ 2 = 2250 मी। सीधे 1500 को 3 से गुणा करने पर कुल आने-जाने का रास्ता मिलता और असली गहराई दुगुनी — क्लासिक सोनार भूल। यह 'आधा करो' क़दम हर प्रतिध्वनि मापन में गुँथा, चाहे चमगादड़ दीवार आँकता, डॉक्टर का अल्ट्रासाउंड, या जहाज़ समुद्र थाहता: स्पंद सदा वापसी टिकट चुकाता, अतः चक्कर-दूरी को दो से बाँटकर असली एकतरफ़ा दूरी पाओ जो तुम्हें चाहिए।",
+          mr: "सापळा हा की 3 सेकंद एक फेरीचा प्रवास, एकमार्गी नाही. जेव्हा सोनार स्पंद झाडतो, ती ध्वनी सगळी खाली समुद्रतळापर्यंत चालावी, त्यावर आदळावी, आणि सगळी परत जहाजाच्या ग्राहकापर्यंत वर चालावी तेव्हाच प्रतिध्वनी ऐकली जाते — म्हणून त्या 3 सेकंदांत ध्वनीने खोली दोनदा ओलांडली, एकदा जाताना एकदा परतताना. आधी संपूर्ण मार्ग काढा: अंतर = चाल × वेळ = 1500 मी/से × 3 से = 4500 मी. ते 4500 मी खाली-आणि-वर एकत्र, म्हणून खरी खोली त्याची अर्धी: 4500 ÷ 2 = 2250 मी. सरळ 1500 ला 3 ने गुणल्यास एकूण जाण्या-येण्याचा मार्ग मिळतो आणि खरी खोली दुप्पट — क्लासिक सोनार चूक. हे 'अर्धे करा' पाऊल प्रत्येक प्रतिध्वनी मापनात गुंफलेले, वटवाघूळ भिंत मोजो, डॉक्टरचे अल्ट्रासाऊंड, वा जहाज समुद्र थाहो: स्पंद सदैव परतीचे तिकीट भरतो, म्हणून फेरी-अंतराला दोनने भागून खरे एकमार्गी अंतर मिळवा जे तुला हवे.",
+        },
+      },
+    ],
+  },
 ];
