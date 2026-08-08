@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-pair-linear-equations",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 4 — Pair of Linear Equations in Two Variables",
+  "name": "Pair of Linear Equations in Two Variables",
+  "summary": "Two lines, one crossing: solved by substitution and elimination, their ratios foretelling one solution, none or infinitely many, and everyday puzzles of ages, coins and speeds folded into a pair of equations.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "दो चर वाले रैखिक समीकरण युग्म",
+      "summary": "दो रेखाएँ, एक कटान: प्रतिस्थापन और विलोपन से हल, उनके अनुपात बताते एक हल, शून्य या अनंत, और आयु-सिक्के-चाल की रोज़मर्रा पहेलियाँ समीकरण-युग्म में मोड़ी।"
+    },
+    "mr": {
+      "name": "दोन चलांची रेषीय समीकरण जोडी",
+      "summary": "दोन रेषा, एक छेद: बदल आणि निर्मूलनाने सोडवली, त्यांचे गुणोत्तर सांगतात एक उत्तर, शून्य की अनंत, आणि वय-नाणी-चालीची रोजची कोडी समीकरण-जोडीत घडवली."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Adding the equations x + y = 10 and x − y = 4 gives 2x = 14. What is x?",
+      "choices": [
+        "5",
+        "7",
+        "14",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "The y terms cancel on adding, leaving 2x = 14, so x = 14/2 = 7.",
+      "checkExpr": "14/2",
+      "translations": {
+        "hi": {
+          "stem": "समीकरण x + y = 10 और x − y = 4 जोड़ने पर 2x = 14 मिलता है। x क्या है?",
+          "choices": [
+            "5",
+            "7",
+            "14",
+            "3"
+          ],
+          "solution": "जोड़ने पर y पद रद्द, बचता 2x = 14, अतः x = 14/2 = 7."
+        },
+        "mr": {
+          "stem": "समीकरणे x + y = 10 आणि x − y = 4 जोडल्यावर 2x = 14 मिळते. x काय?",
+          "choices": [
+            "5",
+            "7",
+            "14",
+            "3"
+          ],
+          "solution": "जोडल्यावर y पदे रद्द, उरते 2x = 14, म्हणून x = 14/2 = 7."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In x + y = 10, if x = 7, what is y?",
+      "choices": [
+        "7",
+        "17",
+        "3",
+        "-3"
+      ],
+      "answerIndex": 2,
+      "solution": "Substitute x = 7: 7 + y = 10, so y = 10 − 7 = 3.",
+      "checkExpr": "10-7",
+      "translations": {
+        "hi": {
+          "stem": "x + y = 10 में, यदि x = 7 है, तो y क्या है?",
+          "choices": [
+            "7",
+            "17",
+            "3",
+            "-3"
+          ],
+          "solution": "x = 7 रखिए: 7 + y = 10, अतः y = 10 − 7 = 3."
+        },
+        "mr": {
+          "stem": "x + y = 10 मध्ये, x = 7 असेल, तर y काय?",
+          "choices": [
+            "7",
+            "17",
+            "3",
+            "-3"
+          ],
+          "solution": "x = 7 ठेवा: 7 + y = 10, म्हणून y = 10 − 7 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many variables does the equation 2x + 3y = 12 contain?",
+      "choices": [
+        "2",
+        "1",
+        "12",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "The unknowns are x and y — two variables. That is what makes it a linear equation in two variables.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 2x + 3y = 12 में कितने चर हैं?",
+          "choices": [
+            "2",
+            "1",
+            "12",
+            "3"
+          ],
+          "solution": "अज्ञात x और y — दो चर। यही इसे दो चर वाला रैखिक समीकरण बनाता।"
+        },
+        "mr": {
+          "stem": "समीकरण 2x + 3y = 12 मध्ये किती चल आहेत?",
+          "choices": [
+            "2",
+            "1",
+            "12",
+            "3"
+          ],
+          "solution": "अज्ञात x आणि y — दोन चल. हेच त्याला दोन चलांचे रेषीय समीकरण बनवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve x + y = 5 and 2x + y = 8. Subtracting gives x = 3. What is y?",
+      "choices": [
+        "-2",
+        "8",
+        "2",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "With x = 3, the first equation gives 3 + y = 5, so y = 5 − 3 = 2.",
+      "checkExpr": "5-3",
+      "translations": {
+        "hi": {
+          "stem": "x + y = 5 और 2x + y = 8 हल कीजिए। घटाने पर x = 3 मिलता है। y क्या है?",
+          "choices": [
+            "-2",
+            "8",
+            "2",
+            "3"
+          ],
+          "solution": "x = 3 से पहला समीकरण देता 3 + y = 5, अतः y = 5 − 3 = 2."
+        },
+        "mr": {
+          "stem": "x + y = 5 आणि 2x + y = 8 सोडवा. वजा केल्यावर x = 3 मिळते. y काय?",
+          "choices": [
+            "-2",
+            "8",
+            "2",
+            "3"
+          ],
+          "solution": "x = 3 ने पहिले समीकरण देते 3 + y = 5, म्हणून y = 5 − 3 = 2."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "If two lines have a1/a2 = b1/b2 but a1/a2 ≠ c1/c2, they are parallel. How many solutions does the system have?",
+      "choices": [
+        "-1",
+        "1",
+        "2",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "Parallel lines never meet, so there is no common point — zero solutions. The system is inconsistent.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो रेखाओं का a1/a2 = b1/b2 पर a1/a2 ≠ c1/c2, वे समांतर हैं। तंत्र के कितने हल हैं?",
+          "choices": [
+            "-1",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "समांतर रेखाएँ कभी नहीं मिलतीं, अतः कोई उभयनिष्ठ बिंदु नहीं — शून्य हल। तंत्र असंगत।"
+        },
+        "mr": {
+          "stem": "दोन रेषांचे a1/a2 = b1/b2 पण a1/a2 ≠ c1/c2 असेल, तर त्या समांतर. यंत्रणेला किती उत्तरे?",
+          "choices": [
+            "-1",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "समांतर रेषा कधी भेटत नाहीत, म्हणून कोणताही समान बिंदू नाही — शून्य उत्तरे. यंत्रणा विसंगत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "If 2x = 3y and x = 6, what is y?",
+      "choices": [
+        "9",
+        "6",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Substitute x = 6: 2·6 = 3y, so 12 = 3y and y = 12/3 = 4.",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "यदि 2x = 3y और x = 6, तो y क्या है?",
+          "choices": [
+            "9",
+            "6",
+            "2",
+            "4"
+          ],
+          "solution": "x = 6 रखिए: 2·6 = 3y, अतः 12 = 3y और y = 12/3 = 4."
+        },
+        "mr": {
+          "stem": "2x = 3y आणि x = 6 असेल, तर y काय?",
+          "choices": [
+            "9",
+            "6",
+            "2",
+            "4"
+          ],
+          "solution": "x = 6 ठेवा: 2·6 = 3y, म्हणून 12 = 3y आणि y = 12/3 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The sum of two numbers is 20 and their difference is 6. What is the larger number?",
+      "choices": [
+        "13",
+        "10",
+        "7",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "With x + y = 20 and x − y = 6, adding gives 2x = 26, so the larger is x = 26/2 = 13. (The smaller is 7.)",
+      "checkExpr": "26/2",
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याओं का योग 20 और उनका अंतर 6 है। बड़ी संख्या क्या है?",
+          "choices": [
+            "13",
+            "10",
+            "7",
+            "14"
+          ],
+          "solution": "x + y = 20 और x − y = 6 से, जोड़ने पर 2x = 26, अतः बड़ी x = 26/2 = 13. (छोटी 7।)"
+        },
+        "mr": {
+          "stem": "दोन संख्यांची बेरीज 20 आणि त्यांचा फरक 6 आहे. मोठी संख्या काय?",
+          "choices": [
+            "13",
+            "10",
+            "7",
+            "14"
+          ],
+          "solution": "x + y = 20 आणि x − y = 6 ने, जोडल्यावर 2x = 26, म्हणून मोठी x = 26/2 = 13. (लहान 7.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For what value of k do 2x + 3y = 7 and 4x + 6y = k have infinitely many solutions?",
+      "choices": [
+        "7",
+        "14",
+        "28",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Infinitely many solutions need a1/a2 = b1/b2 = c1/c2: here 2/4 = 3/6 = 7/k, so 1/2 = 7/k gives k = 7·2 = 14.",
+      "checkExpr": "7*2",
+      "translations": {
+        "hi": {
+          "stem": "k के किस मान के लिए 2x + 3y = 7 और 4x + 6y = k के अनंत हल हों?",
+          "choices": [
+            "7",
+            "14",
+            "28",
+            "2"
+          ],
+          "solution": "अनंत हल को a1/a2 = b1/b2 = c1/c2 चाहिए: यहाँ 2/4 = 3/6 = 7/k, अतः 1/2 = 7/k देता k = 7·2 = 14."
+        },
+        "mr": {
+          "stem": "k च्या कोणत्या किमतीसाठी 2x + 3y = 7 आणि 4x + 6y = k ला अनंत उत्तरे असतील?",
+          "choices": [
+            "7",
+            "14",
+            "28",
+            "2"
+          ],
+          "solution": "अनंत उत्तरांना a1/a2 = b1/b2 = c1/c2 हवे: इथे 2/4 = 3/6 = 7/k, म्हणून 1/2 = 7/k देते k = 7·2 = 14."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A two-digit number has digit sum 9, and is 27 more than the number formed by reversing its digits. What is the number?",
+      "choices": [
+        "63",
+        "72",
+        "45",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "Let tens t, units u: t + u = 9 and (10t+u) − (10u+t) = 27, i.e. 9(t−u) = 27, so t − u = 3. Then t = 6, u = 3, and the number is 10·6 + 3 = 63.",
+      "checkExpr": "10*6+3",
+      "translations": {
+        "hi": {
+          "stem": "एक दो-अंकीय संख्या के अंकों का योग 9 है, और यह अपने अंक उलटने से बनी संख्या से 27 अधिक है। संख्या क्या है?",
+          "choices": [
+            "63",
+            "72",
+            "45",
+            "36"
+          ],
+          "solution": "दहाई t, इकाई u: t + u = 9 और (10t+u) − (10u+t) = 27, अर्थात् 9(t−u) = 27, अतः t − u = 3. तब t = 6, u = 3, और संख्या 10·6 + 3 = 63."
+        },
+        "mr": {
+          "stem": "एका दोन-अंकी संख्येच्या अंकांची बेरीज 9 आहे, आणि ती तिचे अंक उलटवून बनलेल्या संख्येहून 27 अधिक आहे. संख्या काय?",
+          "choices": [
+            "63",
+            "72",
+            "45",
+            "36"
+          ],
+          "solution": "दशक t, एकक u: t + u = 9 आणि (10t+u) − (10u+t) = 27, म्हणजे 9(t−u) = 27, म्हणून t − u = 3. मग t = 6, u = 3, आणि संख्या 10·6 + 3 = 63."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "5 pencils and 3 pens cost ₹80, while 2 pencils and 1 pen cost ₹30. What is the cost of one pen in rupees?",
+      "choices": [
+        "15",
+        "5",
+        "10",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "With pencil p and pen q: 5p + 3q = 80 and 2p + q = 30. From the second, q = 30 − 2p; substituting gives p = 10, so q = 30 − 2·10 = 10.",
+      "checkExpr": "30-2*10",
+      "translations": {
+        "hi": {
+          "stem": "5 पेंसिल और 3 पेन की क़ीमत ₹80, जबकि 2 पेंसिल और 1 पेन की ₹30 है। एक पेन की क़ीमत रुपये में क्या है?",
+          "choices": [
+            "15",
+            "5",
+            "10",
+            "20"
+          ],
+          "solution": "पेंसिल p और पेन q: 5p + 3q = 80 और 2p + q = 30. दूसरे से q = 30 − 2p; प्रतिस्थापित करने पर p = 10, अतः q = 30 − 2·10 = 10."
+        },
+        "mr": {
+          "stem": "5 पेन्सिली आणि 3 पेनांची किंमत ₹80, तर 2 पेन्सिली आणि 1 पेनाची ₹30 आहे. एका पेनाची किंमत रुपयांत काय?",
+          "choices": [
+            "15",
+            "5",
+            "10",
+            "20"
+          ],
+          "solution": "पेन्सिल p आणि पेन q: 5p + 3q = 80 आणि 2p + q = 30. दुसऱ्यातून q = 30 − 2p; बदलल्यावर p = 10, म्हणून q = 30 − 2·10 = 10."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A father is three times as old as his son. Five years ago he was four times as old. What is the father's present age in years?",
+      "choices": [
+        "15",
+        "40",
+        "45",
+        "60"
+      ],
+      "answerIndex": 2,
+      "solution": "Let son s, father 3s. Five years ago: 3s − 5 = 4(s − 5) = 4s − 20, so s = 15. The father is 3·15 = 45.",
+      "checkExpr": "3*15",
+      "translations": {
+        "hi": {
+          "stem": "एक पिता अपने पुत्र से तीन गुना उम्र का है। पाँच वर्ष पहले वह चार गुना उम्र का था। पिता की वर्तमान आयु वर्षों में क्या है?",
+          "choices": [
+            "15",
+            "40",
+            "45",
+            "60"
+          ],
+          "solution": "पुत्र s, पिता 3s। पाँच वर्ष पहले: 3s − 5 = 4(s − 5) = 4s − 20, अतः s = 15. पिता 3·15 = 45."
+        },
+        "mr": {
+          "stem": "एक वडील आपल्या मुलाच्या तिप्पट वयाचे आहेत. पाच वर्षांपूर्वी ते चौपट वयाचे होते. वडिलांचे सध्याचे वय वर्षांत काय?",
+          "choices": [
+            "15",
+            "40",
+            "45",
+            "60"
+          ],
+          "solution": "मुलगा s, वडील 3s. पाच वर्षांपूर्वी: 3s − 5 = 4(s − 5) = 4s − 20, म्हणून s = 15. वडील 3·15 = 45."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "7 audio cassettes and 3 video cassettes cost ₹1110, while 5 audio and 4 video cost ₹1350. What is the cost of one video cassette in rupees?",
+      "choices": [
+        "300",
+        "270",
+        "30",
+        "150"
+      ],
+      "answerIndex": 0,
+      "solution": "With audio a, video v: 7a + 3v = 1110 and 5a + 4v = 1350. Eliminating v (×4 and ×3) gives 13a = 390, so a = 30; then 7·30 + 3v = 1110 gives 3v = 900 and v = 300.",
+      "checkExpr": "900/3",
+      "translations": {
+        "hi": {
+          "stem": "7 ऑडियो और 3 वीडियो कैसेट की क़ीमत ₹1110, जबकि 5 ऑडियो और 4 वीडियो की ₹1350 है। एक वीडियो कैसेट की क़ीमत रुपये में क्या है?",
+          "choices": [
+            "300",
+            "270",
+            "30",
+            "150"
+          ],
+          "solution": "ऑडियो a, वीडियो v: 7a + 3v = 1110 और 5a + 4v = 1350. v हटाने (×4 और ×3) पर 13a = 390, अतः a = 30; तब 7·30 + 3v = 1110 देता 3v = 900 और v = 300."
+        },
+        "mr": {
+          "stem": "7 ऑडिओ आणि 3 व्हिडिओ कॅसेटची किंमत ₹1110, तर 5 ऑडिओ आणि 4 व्हिडिओची ₹1350 आहे. एका व्हिडिओ कॅसेटची किंमत रुपयांत काय?",
+          "choices": [
+            "300",
+            "270",
+            "30",
+            "150"
+          ],
+          "solution": "ऑडिओ a, व्हिडिओ v: 7a + 3v = 1110 आणि 5a + 4v = 1350. v काढल्यावर (×4 आणि ×3) 13a = 390, म्हणून a = 30; मग 7·30 + 3v = 1110 देते 3v = 900 आणि v = 300."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Solve 2/x + 3/y = 13 and 5/x − 4/y = −2, with x, y ≠ 0. What is the value of 1/x?",
+      "choices": [
+        "5",
+        "4",
+        "2",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Let a = 1/x, b = 1/y: 2a + 3b = 13 and 5a − 4b = −2. Multiplying by 4 and 3 and adding eliminates b: 23a = 46, so a = 1/x = 46/23 = 2.",
+      "checkExpr": "46/23",
+      "translations": {
+        "hi": {
+          "stem": "2/x + 3/y = 13 और 5/x − 4/y = −2 हल कीजिए, x, y ≠ 0. 1/x का मान क्या है?",
+          "choices": [
+            "5",
+            "4",
+            "2",
+            "3"
+          ],
+          "solution": "a = 1/x, b = 1/y मानिए: 2a + 3b = 13 और 5a − 4b = −2. 4 और 3 से गुणा कर जोड़ने पर b हटता: 23a = 46, अतः a = 1/x = 46/23 = 2."
+        },
+        "mr": {
+          "stem": "2/x + 3/y = 13 आणि 5/x − 4/y = −2 सोडवा, x, y ≠ 0. 1/x ची किंमत काय?",
+          "choices": [
+            "5",
+            "4",
+            "2",
+            "3"
+          ],
+          "solution": "a = 1/x, b = 1/y माना: 2a + 3b = 13 आणि 5a − 4b = −2. 4 आणि 3 ने गुणून जोडल्यावर b निघतो: 23a = 46, म्हणून a = 1/x = 46/23 = 2."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two cars start from points 100 km apart. Going the same way they meet in 5 hours; coming towards each other, in 1 hour. What is the faster car's speed in km/h?",
+      "choices": [
+        "60",
+        "20",
+        "80",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "Let speeds u > v. Same direction: 5(u − v) = 100, so u − v = 20. Opposite: (u + v)·1 = 100, so u + v = 100. Adding, 2u = 120, giving u = (100 + 20)/2 = 60 km/h.",
+      "checkExpr": "(100+20)/2",
+      "translations": {
+        "hi": {
+          "stem": "दो कारें 100 किमी दूर बिंदुओं से चलती हैं। एक ही दिशा में जाने पर वे 5 घंटे में मिलती हैं; एक-दूसरे की ओर आने पर 1 घंटे में। तेज़ कार की चाल किमी/घंटा में क्या है?",
+          "choices": [
+            "60",
+            "20",
+            "80",
+            "40"
+          ],
+          "solution": "चालें u > v मानिए। एक दिशा: 5(u − v) = 100, अतः u − v = 20. विपरीत: (u + v)·1 = 100, अतः u + v = 100. जोड़ने पर 2u = 120, देता u = (100 + 20)/2 = 60 किमी/घंटा।"
+        },
+        "mr": {
+          "stem": "दोन गाड्या 100 किमी दूरच्या बिंदूंपासून निघतात. एकाच दिशेने जाताना त्या 5 तासांत भेटतात; एकमेकांकडे येताना 1 तासात. वेगवान गाडीची चाल किमी/तास मध्ये काय?",
+          "choices": [
+            "60",
+            "20",
+            "80",
+            "40"
+          ],
+          "solution": "चाली u > v माना. एक दिशा: 5(u − v) = 100, म्हणून u − v = 20. विरुद्ध: (u + v)·1 = 100, म्हणून u + v = 100. जोडल्यावर 2u = 120, देतो u = (100 + 20)/2 = 60 किमी/तास."
+        }
+      }
+    }
+  ]
+}

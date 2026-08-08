@@ -969,4 +969,959 @@ function quadraticEquations(): TopicFileOut {
   );
 }
 
-export const G10_MATHS: TopicFileOut[] = [realNumbers(), polynomials10(), quadraticEquations()];
+/* ------------------------------------------------------------------------- */
+/* Chapter 4 — Pair of Linear Equations in Two Variables                     */
+/* ------------------------------------------------------------------------- */
+function pairLinear10(): TopicFileOut {
+  const rand = rng("maths-10-pair-linear-equations");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Adding the equations x + y = 10 and x − y = 4 gives 2x = 14. What is x?",
+          hi: "समीकरण x + y = 10 और x − y = 4 जोड़ने पर 2x = 14 मिलता है। x क्या है?",
+          mr: "समीकरणे x + y = 10 आणि x − y = 4 जोडल्यावर 2x = 14 मिळते. x काय?",
+        },
+        answer: 7,
+        wrong: [3, 14, 5],
+        checkExpr: "14/2",
+        solution: {
+          en: "The y terms cancel on adding, leaving 2x = 14, so x = 14/2 = 7.",
+          hi: "जोड़ने पर y पद रद्द, बचता 2x = 14, अतः x = 14/2 = 7.",
+          mr: "जोडल्यावर y पदे रद्द, उरते 2x = 14, म्हणून x = 14/2 = 7.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In x + y = 10, if x = 7, what is y?",
+          hi: "x + y = 10 में, यदि x = 7 है, तो y क्या है?",
+          mr: "x + y = 10 मध्ये, x = 7 असेल, तर y काय?",
+        },
+        answer: 3,
+        wrong: [7, 17, -3],
+        checkExpr: "10-7",
+        solution: {
+          en: "Substitute x = 7: 7 + y = 10, so y = 10 − 7 = 3.",
+          hi: "x = 7 रखिए: 7 + y = 10, अतः y = 10 − 7 = 3.",
+          mr: "x = 7 ठेवा: 7 + y = 10, म्हणून y = 10 − 7 = 3.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many variables does the equation 2x + 3y = 12 contain?",
+          hi: "समीकरण 2x + 3y = 12 में कितने चर हैं?",
+          mr: "समीकरण 2x + 3y = 12 मध्ये किती चल आहेत?",
+        },
+        answer: 2,
+        wrong: [1, 3, 12],
+        solution: {
+          en: "The unknowns are x and y — two variables. That is what makes it a linear equation in two variables.",
+          hi: "अज्ञात x और y — दो चर। यही इसे दो चर वाला रैखिक समीकरण बनाता।",
+          mr: "अज्ञात x आणि y — दोन चल. हेच त्याला दोन चलांचे रेषीय समीकरण बनवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Solve x + y = 5 and 2x + y = 8. Subtracting gives x = 3. What is y?",
+          hi: "x + y = 5 और 2x + y = 8 हल कीजिए। घटाने पर x = 3 मिलता है। y क्या है?",
+          mr: "x + y = 5 आणि 2x + y = 8 सोडवा. वजा केल्यावर x = 3 मिळते. y काय?",
+        },
+        answer: 2,
+        wrong: [3, 8, -2],
+        checkExpr: "5-3",
+        solution: {
+          en: "With x = 3, the first equation gives 3 + y = 5, so y = 5 − 3 = 2.",
+          hi: "x = 3 से पहला समीकरण देता 3 + y = 5, अतः y = 5 − 3 = 2.",
+          mr: "x = 3 ने पहिले समीकरण देते 3 + y = 5, म्हणून y = 5 − 3 = 2.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "If two lines have a1/a2 = b1/b2 but a1/a2 ≠ c1/c2, they are parallel. How many solutions does the system have?",
+          hi: "यदि दो रेखाओं का a1/a2 = b1/b2 पर a1/a2 ≠ c1/c2, वे समांतर हैं। तंत्र के कितने हल हैं?",
+          mr: "दोन रेषांचे a1/a2 = b1/b2 पण a1/a2 ≠ c1/c2 असेल, तर त्या समांतर. यंत्रणेला किती उत्तरे?",
+        },
+        answer: 0,
+        wrong: [1, 2, -1],
+        solution: {
+          en: "Parallel lines never meet, so there is no common point — zero solutions. The system is inconsistent.",
+          hi: "समांतर रेखाएँ कभी नहीं मिलतीं, अतः कोई उभयनिष्ठ बिंदु नहीं — शून्य हल। तंत्र असंगत।",
+          mr: "समांतर रेषा कधी भेटत नाहीत, म्हणून कोणताही समान बिंदू नाही — शून्य उत्तरे. यंत्रणा विसंगत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "If 2x = 3y and x = 6, what is y?",
+          hi: "यदि 2x = 3y और x = 6, तो y क्या है?",
+          mr: "2x = 3y आणि x = 6 असेल, तर y काय?",
+        },
+        answer: 4,
+        wrong: [6, 9, 2],
+        checkExpr: "12/3",
+        solution: {
+          en: "Substitute x = 6: 2·6 = 3y, so 12 = 3y and y = 12/3 = 4.",
+          hi: "x = 6 रखिए: 2·6 = 3y, अतः 12 = 3y और y = 12/3 = 4.",
+          mr: "x = 6 ठेवा: 2·6 = 3y, म्हणून 12 = 3y आणि y = 12/3 = 4.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The sum of two numbers is 20 and their difference is 6. What is the larger number?",
+          hi: "दो संख्याओं का योग 20 और उनका अंतर 6 है। बड़ी संख्या क्या है?",
+          mr: "दोन संख्यांची बेरीज 20 आणि त्यांचा फरक 6 आहे. मोठी संख्या काय?",
+        },
+        answer: 13,
+        wrong: [7, 10, 14],
+        checkExpr: "26/2",
+        solution: {
+          en: "With x + y = 20 and x − y = 6, adding gives 2x = 26, so the larger is x = 26/2 = 13. (The smaller is 7.)",
+          hi: "x + y = 20 और x − y = 6 से, जोड़ने पर 2x = 26, अतः बड़ी x = 26/2 = 13. (छोटी 7।)",
+          mr: "x + y = 20 आणि x − y = 6 ने, जोडल्यावर 2x = 26, म्हणून मोठी x = 26/2 = 13. (लहान 7.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "For what value of k do 2x + 3y = 7 and 4x + 6y = k have infinitely many solutions?",
+          hi: "k के किस मान के लिए 2x + 3y = 7 और 4x + 6y = k के अनंत हल हों?",
+          mr: "k च्या कोणत्या किमतीसाठी 2x + 3y = 7 आणि 4x + 6y = k ला अनंत उत्तरे असतील?",
+        },
+        answer: 14,
+        wrong: [7, 2, 28],
+        checkExpr: "7*2",
+        solution: {
+          en: "Infinitely many solutions need a1/a2 = b1/b2 = c1/c2: here 2/4 = 3/6 = 7/k, so 1/2 = 7/k gives k = 7·2 = 14.",
+          hi: "अनंत हल को a1/a2 = b1/b2 = c1/c2 चाहिए: यहाँ 2/4 = 3/6 = 7/k, अतः 1/2 = 7/k देता k = 7·2 = 14.",
+          mr: "अनंत उत्तरांना a1/a2 = b1/b2 = c1/c2 हवे: इथे 2/4 = 3/6 = 7/k, म्हणून 1/2 = 7/k देते k = 7·2 = 14.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A two-digit number has digit sum 9, and is 27 more than the number formed by reversing its digits. What is the number?",
+          hi: "एक दो-अंकीय संख्या के अंकों का योग 9 है, और यह अपने अंक उलटने से बनी संख्या से 27 अधिक है। संख्या क्या है?",
+          mr: "एका दोन-अंकी संख्येच्या अंकांची बेरीज 9 आहे, आणि ती तिचे अंक उलटवून बनलेल्या संख्येहून 27 अधिक आहे. संख्या काय?",
+        },
+        answer: 63,
+        wrong: [36, 45, 72],
+        checkExpr: "10*6+3",
+        solution: {
+          en: "Let tens t, units u: t + u = 9 and (10t+u) − (10u+t) = 27, i.e. 9(t−u) = 27, so t − u = 3. Then t = 6, u = 3, and the number is 10·6 + 3 = 63.",
+          hi: "दहाई t, इकाई u: t + u = 9 और (10t+u) − (10u+t) = 27, अर्थात् 9(t−u) = 27, अतः t − u = 3. तब t = 6, u = 3, और संख्या 10·6 + 3 = 63.",
+          mr: "दशक t, एकक u: t + u = 9 आणि (10t+u) − (10u+t) = 27, म्हणजे 9(t−u) = 27, म्हणून t − u = 3. मग t = 6, u = 3, आणि संख्या 10·6 + 3 = 63.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "5 pencils and 3 pens cost ₹80, while 2 pencils and 1 pen cost ₹30. What is the cost of one pen in rupees?",
+          hi: "5 पेंसिल और 3 पेन की क़ीमत ₹80, जबकि 2 पेंसिल और 1 पेन की ₹30 है। एक पेन की क़ीमत रुपये में क्या है?",
+          mr: "5 पेन्सिली आणि 3 पेनांची किंमत ₹80, तर 2 पेन्सिली आणि 1 पेनाची ₹30 आहे. एका पेनाची किंमत रुपयांत काय?",
+        },
+        answer: 10,
+        wrong: [5, 20, 15],
+        checkExpr: "30-2*10",
+        solution: {
+          en: "With pencil p and pen q: 5p + 3q = 80 and 2p + q = 30. From the second, q = 30 − 2p; substituting gives p = 10, so q = 30 − 2·10 = 10.",
+          hi: "पेंसिल p और पेन q: 5p + 3q = 80 और 2p + q = 30. दूसरे से q = 30 − 2p; प्रतिस्थापित करने पर p = 10, अतः q = 30 − 2·10 = 10.",
+          mr: "पेन्सिल p आणि पेन q: 5p + 3q = 80 आणि 2p + q = 30. दुसऱ्यातून q = 30 − 2p; बदलल्यावर p = 10, म्हणून q = 30 − 2·10 = 10.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A father is three times as old as his son. Five years ago he was four times as old. What is the father's present age in years?",
+          hi: "एक पिता अपने पुत्र से तीन गुना उम्र का है। पाँच वर्ष पहले वह चार गुना उम्र का था। पिता की वर्तमान आयु वर्षों में क्या है?",
+          mr: "एक वडील आपल्या मुलाच्या तिप्पट वयाचे आहेत. पाच वर्षांपूर्वी ते चौपट वयाचे होते. वडिलांचे सध्याचे वय वर्षांत काय?",
+        },
+        answer: 45,
+        wrong: [15, 40, 60],
+        checkExpr: "3*15",
+        solution: {
+          en: "Let son s, father 3s. Five years ago: 3s − 5 = 4(s − 5) = 4s − 20, so s = 15. The father is 3·15 = 45.",
+          hi: "पुत्र s, पिता 3s। पाँच वर्ष पहले: 3s − 5 = 4(s − 5) = 4s − 20, अतः s = 15. पिता 3·15 = 45.",
+          mr: "मुलगा s, वडील 3s. पाच वर्षांपूर्वी: 3s − 5 = 4(s − 5) = 4s − 20, म्हणून s = 15. वडील 3·15 = 45.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "7 audio cassettes and 3 video cassettes cost ₹1110, while 5 audio and 4 video cost ₹1350. What is the cost of one video cassette in rupees?",
+          hi: "7 ऑडियो और 3 वीडियो कैसेट की क़ीमत ₹1110, जबकि 5 ऑडियो और 4 वीडियो की ₹1350 है। एक वीडियो कैसेट की क़ीमत रुपये में क्या है?",
+          mr: "7 ऑडिओ आणि 3 व्हिडिओ कॅसेटची किंमत ₹1110, तर 5 ऑडिओ आणि 4 व्हिडिओची ₹1350 आहे. एका व्हिडिओ कॅसेटची किंमत रुपयांत काय?",
+        },
+        answer: 300,
+        wrong: [30, 150, 270],
+        checkExpr: "900/3",
+        solution: {
+          en: "With audio a, video v: 7a + 3v = 1110 and 5a + 4v = 1350. Eliminating v (×4 and ×3) gives 13a = 390, so a = 30; then 7·30 + 3v = 1110 gives 3v = 900 and v = 300.",
+          hi: "ऑडियो a, वीडियो v: 7a + 3v = 1110 और 5a + 4v = 1350. v हटाने (×4 और ×3) पर 13a = 390, अतः a = 30; तब 7·30 + 3v = 1110 देता 3v = 900 और v = 300.",
+          mr: "ऑडिओ a, व्हिडिओ v: 7a + 3v = 1110 आणि 5a + 4v = 1350. v काढल्यावर (×4 आणि ×3) 13a = 390, म्हणून a = 30; मग 7·30 + 3v = 1110 देते 3v = 900 आणि v = 300.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Solve 2/x + 3/y = 13 and 5/x − 4/y = −2, with x, y ≠ 0. What is the value of 1/x?",
+          hi: "2/x + 3/y = 13 और 5/x − 4/y = −2 हल कीजिए, x, y ≠ 0. 1/x का मान क्या है?",
+          mr: "2/x + 3/y = 13 आणि 5/x − 4/y = −2 सोडवा, x, y ≠ 0. 1/x ची किंमत काय?",
+        },
+        answer: 2,
+        wrong: [3, 4, 5],
+        checkExpr: "46/23",
+        solution: {
+          en: "Let a = 1/x, b = 1/y: 2a + 3b = 13 and 5a − 4b = −2. Multiplying by 4 and 3 and adding eliminates b: 23a = 46, so a = 1/x = 46/23 = 2.",
+          hi: "a = 1/x, b = 1/y मानिए: 2a + 3b = 13 और 5a − 4b = −2. 4 और 3 से गुणा कर जोड़ने पर b हटता: 23a = 46, अतः a = 1/x = 46/23 = 2.",
+          mr: "a = 1/x, b = 1/y माना: 2a + 3b = 13 आणि 5a − 4b = −2. 4 आणि 3 ने गुणून जोडल्यावर b निघतो: 23a = 46, म्हणून a = 1/x = 46/23 = 2.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two cars start from points 100 km apart. Going the same way they meet in 5 hours; coming towards each other, in 1 hour. What is the faster car's speed in km/h?",
+          hi: "दो कारें 100 किमी दूर बिंदुओं से चलती हैं। एक ही दिशा में जाने पर वे 5 घंटे में मिलती हैं; एक-दूसरे की ओर आने पर 1 घंटे में। तेज़ कार की चाल किमी/घंटा में क्या है?",
+          mr: "दोन गाड्या 100 किमी दूरच्या बिंदूंपासून निघतात. एकाच दिशेने जाताना त्या 5 तासांत भेटतात; एकमेकांकडे येताना 1 तासात. वेगवान गाडीची चाल किमी/तास मध्ये काय?",
+        },
+        answer: 60,
+        wrong: [40, 20, 80],
+        checkExpr: "(100+20)/2",
+        solution: {
+          en: "Let speeds u > v. Same direction: 5(u − v) = 100, so u − v = 20. Opposite: (u + v)·1 = 100, so u + v = 100. Adding, 2u = 120, giving u = (100 + 20)/2 = 60 km/h.",
+          hi: "चालें u > v मानिए। एक दिशा: 5(u − v) = 100, अतः u − v = 20. विपरीत: (u + v)·1 = 100, अतः u + v = 100. जोड़ने पर 2u = 120, देता u = (100 + 20)/2 = 60 किमी/घंटा।",
+          mr: "चाली u > v माना. एक दिशा: 5(u − v) = 100, म्हणून u − v = 20. विरुद्ध: (u + v)·1 = 100, म्हणून u + v = 100. जोडल्यावर 2u = 120, देतो u = (100 + 20)/2 = 60 किमी/तास.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-pair-linear-equations",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 4 — Pair of Linear Equations in Two Variables",
+      name: "Pair of Linear Equations in Two Variables",
+      summary:
+        "Two lines, one crossing: solved by substitution and elimination, their ratios foretelling one solution, none or infinitely many, and everyday puzzles of ages, coins and speeds folded into a pair of equations.",
+      position: 4,
+      translations: {
+        hi: {
+          name: "दो चर वाले रैखिक समीकरण युग्म",
+          summary:
+            "दो रेखाएँ, एक कटान: प्रतिस्थापन और विलोपन से हल, उनके अनुपात बताते एक हल, शून्य या अनंत, और आयु-सिक्के-चाल की रोज़मर्रा पहेलियाँ समीकरण-युग्म में मोड़ी।",
+        },
+        mr: {
+          name: "दोन चलांची रेषीय समीकरण जोडी",
+          summary:
+            "दोन रेषा, एक छेद: बदल आणि निर्मूलनाने सोडवली, त्यांचे गुणोत्तर सांगतात एक उत्तर, शून्य की अनंत, आणि वय-नाणी-चालीची रोजची कोडी समीकरण-जोडीत घडवली.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 5 — Arithmetic Progressions                                       */
+/* ------------------------------------------------------------------------- */
+function arithmeticProgressions10(): TopicFileOut {
+  const rand = rng("maths-10-arithmetic-progressions");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In the sequence 2, 5, 8, 11, …, what is the common difference?",
+          hi: "अनुक्रम 2, 5, 8, 11, … में सार्व अंतर क्या है?",
+          mr: "क्रम 2, 5, 8, 11, … मध्ये सामाईक फरक काय?",
+        },
+        answer: 3,
+        wrong: [2, 5, 7],
+        checkExpr: "5-2",
+        solution: {
+          en: "The common difference is any term minus the one before it: 5 − 2 = 3 (and 8 − 5 = 3), so d = 3.",
+          hi: "सार्व अंतर कोई पद घटा उससे पिछला: 5 − 2 = 3 (और 8 − 5 = 3), अतः d = 3.",
+          mr: "सामाईक फरक कोणतेही पद वजा आधीचे: 5 − 2 = 3 (आणि 8 − 5 = 3), म्हणून d = 3.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A sequence has first term 5 and common difference 4. What is its second term?",
+          hi: "एक अनुक्रम का पहला पद 5 और सार्व अंतर 4 है। इसका दूसरा पद क्या है?",
+          mr: "एका क्रमाचे पहिले पद 5 आणि सामाईक फरक 4 आहे. त्याचे दुसरे पद काय?",
+        },
+        answer: 9,
+        wrong: [5, 4, 13],
+        checkExpr: "5+4",
+        solution: {
+          en: "The second term is the first plus the common difference: 5 + 4 = 9.",
+          hi: "दूसरा पद पहला जमा सार्व अंतर: 5 + 4 = 9.",
+          mr: "दुसरे पद पहिले अधिक सामाईक फरक: 5 + 4 = 9.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Is the sequence 2, 4, 8, 16 an arithmetic progression? (Answer 1 for yes, 0 for no.)",
+          hi: "क्या अनुक्रम 2, 4, 8, 16 एक समांतर श्रेढ़ी है? (हाँ के लिए 1, नहीं के लिए 0।)",
+          mr: "क्रम 2, 4, 8, 16 ही अंकगणिती श्रेढी आहे का? (हो साठी 1, नाही साठी 0.)",
+        },
+        answer: 0,
+        wrong: [1, 2, 4],
+        solution: {
+          en: "The differences are 2, 4, 8 — not constant. An AP needs a fixed common difference, so this is not an AP (it doubles each time, a geometric pattern). Answer 0.",
+          hi: "अंतर 2, 4, 8 — नियत नहीं। AP को नियत सार्व अंतर चाहिए, अतः यह AP नहीं (हर बार दुगुना, ज्यामितीय नमूना)। उत्तर 0.",
+          mr: "फरक 2, 4, 8 — स्थिर नाही. APला स्थिर सामाईक फरक हवा, म्हणून ही AP नाही (प्रत्येक वेळी दुप्पट, भूमितीय नमुना). उत्तर 0.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Find the 10th term of the AP 3, 7, 11, … using a + (n−1)d.",
+          hi: "a + (n−1)d से AP 3, 7, 11, … का 10वाँ पद ज्ञात कीजिए।",
+          mr: "a + (n−1)d वापरून AP 3, 7, 11, … चे 10वे पद शोधा.",
+        },
+        answer: 39,
+        wrong: [43, 40, 36],
+        checkExpr: "3+9*4",
+        solution: {
+          en: "Here a = 3, d = 4, n = 10. The nth term = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39.",
+          hi: "यहाँ a = 3, d = 4, n = 10. nवाँ पद = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39.",
+          mr: "इथे a = 3, d = 4, n = 10. nवे पद = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The 5th term of an AP is 17 and its first term is 5. What is the common difference?",
+          hi: "एक AP का 5वाँ पद 17 और पहला पद 5 है। सार्व अंतर क्या है?",
+          mr: "एका APचे 5वे पद 17 आणि पहिले पद 5 आहे. सामाईक फरक काय?",
+        },
+        answer: 3,
+        wrong: [12, 4, 17],
+        checkExpr: "(17-5)/4",
+        solution: {
+          en: "a₅ = a + 4d = 17, so 5 + 4d = 17, giving 4d = 12 and d = (17 − 5)/4 = 3.",
+          hi: "a₅ = a + 4d = 17, अतः 5 + 4d = 17, देता 4d = 12 और d = (17 − 5)/4 = 3.",
+          mr: "a₅ = a + 4d = 17, म्हणून 5 + 4d = 17, देते 4d = 12 आणि d = (17 − 5)/4 = 3.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many terms are there in the AP 6, 9, 12, …, 30?",
+          hi: "AP 6, 9, 12, …, 30 में कितने पद हैं?",
+          mr: "AP 6, 9, 12, …, 30 मध्ये किती पदे आहेत?",
+        },
+        answer: 9,
+        wrong: [8, 10, 24],
+        checkExpr: "(30-6)/3+1",
+        solution: {
+          en: "With a = 6, d = 3, last term 30: n = (last − first)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9.",
+          hi: "a = 6, d = 3, अंतिम पद 30: n = (अंतिम − पहला)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9.",
+          mr: "a = 6, d = 3, शेवटचे पद 30: n = (शेवटचे − पहिले)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Find the sum of the first 10 terms of the AP 2, 4, 6, … using S = (n/2)(2a + (n−1)d).",
+          hi: "S = (n/2)(2a + (n−1)d) से AP 2, 4, 6, … के पहले 10 पदों का योग ज्ञात कीजिए।",
+          mr: "S = (n/2)(2a + (n−1)d) वापरून AP 2, 4, 6, … च्या पहिल्या 10 पदांची बेरीज शोधा.",
+        },
+        answer: 110,
+        wrong: [100, 120, 55],
+        checkExpr: "5*(4+18)",
+        solution: {
+          en: "With a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110.",
+          hi: "a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110.",
+          mr: "a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Which term of the AP 5, 8, 11, … equals 50?",
+          hi: "AP 5, 8, 11, … का कौन-सा पद 50 के बराबर है?",
+          mr: "AP 5, 8, 11, … चे कोणते पद 50 इतके आहे?",
+        },
+        answer: 16,
+        wrong: [15, 17, 45],
+        checkExpr: "(50-5)/3+1",
+        solution: {
+          en: "a = 5, d = 3. Set a + (n−1)d = 50: 5 + (n−1)3 = 50, so (n−1) = 15 and n = (50 − 5)/3 + 1 = 16.",
+          hi: "a = 5, d = 3. a + (n−1)d = 50 रखिए: 5 + (n−1)3 = 50, अतः (n−1) = 15 और n = (50 − 5)/3 + 1 = 16.",
+          mr: "a = 5, d = 3. a + (n−1)d = 50 ठेवा: 5 + (n−1)3 = 50, म्हणून (n−1) = 15 आणि n = (50 − 5)/3 + 1 = 16.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The sum of the first n natural numbers, 1 + 2 + … + n, is 210. What is n?",
+          hi: "पहली n प्राकृत संख्याओं का योग, 1 + 2 + … + n, 210 है। n क्या है?",
+          mr: "पहिल्या n नैसर्गिक संख्यांची बेरीज, 1 + 2 + … + n, 210 आहे. n काय?",
+        },
+        answer: 20,
+        wrong: [21, 15, 42],
+        checkExpr: "(0-1+41)/2",
+        solution: {
+          en: "n(n+1)/2 = 210, so n² + n − 420 = 0. Then n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20.",
+          hi: "n(n+1)/2 = 210, अतः n² + n − 420 = 0. तब n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20.",
+          mr: "n(n+1)/2 = 210, म्हणून n² + n − 420 = 0. मग n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Find the sum of the first 20 terms of the AP whose first term is 1 and common difference is 4.",
+          hi: "उस AP के पहले 20 पदों का योग ज्ञात कीजिए जिसका पहला पद 1 और सार्व अंतर 4 है।",
+          mr: "ज्या APचे पहिले पद 1 आणि सामाईक फरक 4 आहे त्याच्या पहिल्या 20 पदांची बेरीज शोधा.",
+        },
+        answer: 780,
+        wrong: [770, 800, 390],
+        checkExpr: "10*(2+76)",
+        solution: {
+          en: "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780.",
+          hi: "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780.",
+          mr: "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The 7th term of an AP is 34 and the 13th term is 64. What is its common difference?",
+          hi: "एक AP का 7वाँ पद 34 और 13वाँ पद 64 है। इसका सार्व अंतर क्या है?",
+          mr: "एका APचे 7वे पद 34 आणि 13वे पद 64 आहे. त्याचा सामाईक फरक काय?",
+        },
+        answer: 5,
+        wrong: [30, 6, 10],
+        checkExpr: "(64-34)/6",
+        solution: {
+          en: "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, so d = 30/6 = 5.",
+          hi: "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, अतः d = 30/6 = 5.",
+          mr: "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, म्हणून d = 30/6 = 5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "How many two-digit numbers are divisible by 3?",
+          hi: "कितनी दो-अंकीय संख्याएँ 3 से विभाज्य हैं?",
+          mr: "किती दोन-अंकी संख्या 3 ने भाग जातात?",
+        },
+        answer: 30,
+        wrong: [29, 33, 31],
+        checkExpr: "(99-12)/3+1",
+        solution: {
+          en: "They form the AP 12, 15, …, 99 with d = 3. Count = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30.",
+          hi: "वे AP 12, 15, …, 99 बनातीं, d = 3. गिनती = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30.",
+          mr: "त्या AP 12, 15, …, 99 बनवतात, d = 3. मोजणी = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The sum of the first 15 terms of an AP is 465, and its first term is 3. What is its 15th (last) term?",
+          hi: "एक AP के पहले 15 पदों का योग 465, और पहला पद 3 है। इसका 15वाँ (अंतिम) पद क्या है?",
+          mr: "एका APच्या पहिल्या 15 पदांची बेरीज 465, आणि पहिले पद 3 आहे. त्याचे 15वे (शेवटचे) पद काय?",
+        },
+        answer: 59,
+        wrong: [62, 31, 60],
+        checkExpr: "465*2/15-3",
+        solution: {
+          en: "Using S = (n/2)(a + l): 465 = (15/2)(3 + l), so 3 + l = 465·2/15 = 62, giving l = 62 − 3 = 59.",
+          hi: "S = (n/2)(a + l) से: 465 = (15/2)(3 + l), अतः 3 + l = 465·2/15 = 62, देता l = 62 − 3 = 59.",
+          mr: "S = (n/2)(a + l) ने: 465 = (15/2)(3 + l), म्हणून 3 + l = 465·2/15 = 62, देते l = 62 − 3 = 59.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "For an AP, the sum of the first n terms is n². What is its 5th term?",
+          hi: "एक AP के लिए, पहले n पदों का योग n² है। इसका 5वाँ पद क्या है?",
+          mr: "एका APसाठी, पहिल्या n पदांची बेरीज n² आहे. त्याचे 5वे पद काय?",
+        },
+        answer: 9,
+        wrong: [25, 10, 16],
+        checkExpr: "2*5-1",
+        solution: {
+          en: "The nth term is Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. For n = 5, that is 2·5 − 1 = 9. (25 is S₅, the sum, not the 5th term.)",
+          hi: "nवाँ पद Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. n = 5 पर 2·5 − 1 = 9. (25 S₅ योग है, 5वाँ पद नहीं।)",
+          mr: "nवे पद Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. n = 5 वर 2·5 − 1 = 9. (25 हा S₅ बेरीज, 5वे पद नाही.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-arithmetic-progressions",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 5 — Arithmetic Progressions",
+      name: "Arithmetic Progressions",
+      summary:
+        "Sequences that step by a fixed amount: the nth term as a + (n−1)d, the sum as (n/2)(2a + (n−1)d), and a term recovered as the difference of two running totals.",
+      position: 5,
+      translations: {
+        hi: {
+          name: "समांतर श्रेढ़ी",
+          summary:
+            "नियत मात्रा से क़दम बढ़ाते अनुक्रम: nवाँ पद a + (n−1)d, योग (n/2)(2a + (n−1)d), और एक पद दो चालू योगों के अंतर से निकाला।",
+        },
+        mr: {
+          name: "अंकगणिती श्रेढी",
+          summary:
+            "स्थिर रकमेने पाऊल टाकणारे क्रम: nवे पद a + (n−1)d, बेरीज (n/2)(2a + (n−1)d), आणि एक पद दोन चालू बेरजांच्या फरकाने काढले.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — Coordinate Geometry (distances and division of a segment)     */
+/* ------------------------------------------------------------------------- */
+function coordinateGeometry10(): TopicFileOut {
+  const rand = rng("maths-10-coordinate-geometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the distance between the points (0, 0) and (3, 4)?",
+          hi: "बिंदुओं (0, 0) और (3, 4) के बीच की दूरी क्या है?",
+          mr: "बिंदू (0, 0) आणि (3, 4) यांच्यातील अंतर काय?",
+        },
+        answer: 5,
+        wrong: [7, 25, 12],
+        solution: {
+          en: "Distance = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 is the value before taking the square root.)",
+          hi: "दूरी = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 वर्गमूल लेने से पहले का मान।)",
+          mr: "अंतर = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 वर्गमूळ घेण्यापूर्वीचे मूल्य.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The midpoint of the segment joining (2, 4) and (6, 8) has what x-coordinate?",
+          hi: "(2, 4) और (6, 8) को जोड़ते खंड के मध्यबिंदु का x-निर्देशांक क्या है?",
+          mr: "(2, 4) आणि (6, 8) जोडणाऱ्या रेषाखंडाच्या मध्यबिंदूचा x-निर्देशांक काय?",
+        },
+        answer: 4,
+        wrong: [2, 8, 6],
+        checkExpr: "(2+6)/2",
+        solution: {
+          en: "The midpoint's x-coordinate is the average of the two x-values: (2 + 6)/2 = 4.",
+          hi: "मध्यबिंदु का x-निर्देशांक दो x-मानों का औसत: (2 + 6)/2 = 4.",
+          mr: "मध्यबिंदूचा x-निर्देशांक दोन x-मूल्यांची सरासरी: (2 + 6)/2 = 4.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "On which axis does the point (5, 0) lie? (x-axis code 1, y-axis code 2.)",
+          hi: "बिंदु (5, 0) किस अक्ष पर है? (x-अक्ष कोड 1, y-अक्ष कोड 2।)",
+          mr: "बिंदू (5, 0) कोणत्या अक्षावर आहे? (x-अक्ष कोड 1, y-अक्ष कोड 2.)",
+        },
+        answer: 1,
+        wrong: [2, 5, 0],
+        solution: {
+          en: "A point with y = 0 lies on the x-axis (code 1). Points on the y-axis instead have x = 0.",
+          hi: "y = 0 वाला बिंदु x-अक्ष पर (कोड 1)। y-अक्ष के बिंदुओं का x = 0 होता।",
+          mr: "y = 0 असलेला बिंदू x-अक्षावर (कोड 1). y-अक्षावरील बिंदूंचा x = 0 असतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the distance between the points (0, 0) and (6, 8)?",
+          hi: "बिंदुओं (0, 0) और (6, 8) के बीच की दूरी क्या है?",
+          mr: "बिंदू (0, 0) आणि (6, 8) यांच्यातील अंतर काय?",
+        },
+        answer: 10,
+        wrong: [14, 100, 48],
+        solution: {
+          en: "Distance = √(6² + 8²) = √(36 + 64) = √100 = 10.",
+          hi: "दूरी = √(6² + 8²) = √(36 + 64) = √100 = 10.",
+          mr: "अंतर = √(6² + 8²) = √(36 + 64) = √100 = 10.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The midpoint of (−2, 3) and (4, −1) is (x, y). What is y?",
+          hi: "(−2, 3) और (4, −1) का मध्यबिंदु (x, y) है। y क्या है?",
+          mr: "(−2, 3) आणि (4, −1) चा मध्यबिंदू (x, y) आहे. y काय?",
+        },
+        answer: 1,
+        wrong: [2, -1, 3],
+        checkExpr: "(3-1)/2",
+        solution: {
+          en: "The y-coordinate of the midpoint is (3 + (−1))/2 = (3 − 1)/2 = 1.",
+          hi: "मध्यबिंदु का y-निर्देशांक (3 + (−1))/2 = (3 − 1)/2 = 1.",
+          mr: "मध्यबिंदूचा y-निर्देशांक (3 + (−1))/2 = (3 − 1)/2 = 1.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Point P divides the segment from (0, 0) to (10, 0) in the ratio 2:3. What is its x-coordinate?",
+          hi: "बिंदु P, (0, 0) से (10, 0) तक के खंड को 2:3 अनुपात में विभाजित करता है। इसका x-निर्देशांक क्या है?",
+          mr: "बिंदू P, (0, 0) पासून (10, 0) पर्यंतच्या खंडाला 2:3 प्रमाणात विभागतो. त्याचा x-निर्देशांक काय?",
+        },
+        answer: 4,
+        wrong: [6, 5, 10],
+        checkExpr: "2*10/5",
+        solution: {
+          en: "By the section formula, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4.",
+          hi: "विभाजन सूत्र से, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4.",
+          mr: "विभाजन सूत्राने, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the distance of the point (5, 12) from the origin?",
+          hi: "बिंदु (5, 12) की मूल बिंदु से दूरी क्या है?",
+          mr: "बिंदू (5, 12) चे मूळबिंदूपासून अंतर काय?",
+        },
+        answer: 13,
+        wrong: [17, 7, 169],
+        solution: {
+          en: "Distance from the origin = √(5² + 12²) = √(25 + 144) = √169 = 13.",
+          hi: "मूल बिंदु से दूरी = √(5² + 12²) = √(25 + 144) = √169 = 13.",
+          mr: "मूळबिंदूपासून अंतर = √(5² + 12²) = √(25 + 144) = √169 = 13.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The point dividing the join of (1, 2) and (7, 8) in the ratio 1:2 has what x-coordinate?",
+          hi: "(1, 2) और (7, 8) के योग को 1:2 अनुपात में विभाजित करते बिंदु का x-निर्देशांक क्या है?",
+          mr: "(1, 2) आणि (7, 8) च्या जोडणीला 1:2 प्रमाणात विभागणाऱ्या बिंदूचा x-निर्देशांक काय?",
+        },
+        answer: 3,
+        wrong: [4, 9, 5],
+        checkExpr: "(7+2)/3",
+        solution: {
+          en: "By the section formula, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3.",
+          hi: "विभाजन सूत्र से, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3.",
+          mr: "विभाजन सूत्राने, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The midpoint of A(x, 4) and B(6, 8) is (5, 6). What is x?",
+          hi: "A(x, 4) और B(6, 8) का मध्यबिंदु (5, 6) है। x क्या है?",
+          mr: "A(x, 4) आणि B(6, 8) चा मध्यबिंदू (5, 6) आहे. x काय?",
+        },
+        answer: 4,
+        wrong: [10, 5, 7],
+        checkExpr: "5*2-6",
+        solution: {
+          en: "The midpoint's x is (x + 6)/2 = 5, so x + 6 = 10 and x = 5·2 − 6 = 4.",
+          hi: "मध्यबिंदु का x (x + 6)/2 = 5, अतः x + 6 = 10 और x = 5·2 − 6 = 4.",
+          mr: "मध्यबिंदूचा x (x + 6)/2 = 5, म्हणून x + 6 = 10 आणि x = 5·2 − 6 = 4.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the length of the vertical segment joining A(2, 3) and B(2, 9)?",
+          hi: "A(2, 3) और B(2, 9) को जोड़ते ऊर्ध्वाधर खंड की लंबाई क्या है?",
+          mr: "A(2, 3) आणि B(2, 9) जोडणाऱ्या उभ्या खंडाची लांबी काय?",
+        },
+        answer: 6,
+        wrong: [8, 12, 3],
+        checkExpr: "9-3",
+        solution: {
+          en: "The x-coordinates match, so the segment is vertical and its length is the difference of the y-values: 9 − 3 = 6.",
+          hi: "x-निर्देशांक समान, अतः खंड ऊर्ध्वाधर और लंबाई y-मानों का अंतर: 9 − 3 = 6.",
+          mr: "x-निर्देशांक समान, म्हणून खंड उभा आणि लांबी y-मूल्यांचा फरक: 9 − 3 = 6.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Find the x-coordinate of the point on the x-axis that is equidistant from (2, −5) and (−2, 9).",
+          hi: "x-अक्ष पर उस बिंदु का x-निर्देशांक ज्ञात कीजिए जो (2, −5) और (−2, 9) से समान दूरी पर है।",
+          mr: "x-अक्षावरील त्या बिंदूचा x-निर्देशांक शोधा जो (2, −5) आणि (−2, 9) पासून समान अंतरावर आहे.",
+        },
+        answer: -7,
+        wrong: [7, -3, 3],
+        checkExpr: "56/(0-8)",
+        solution: {
+          en: "For a point (x, 0): (x−2)² + 25 = (x+2)² + 81. Expanding, −4x + 25 = 4x + 81, so −8x = 56 and x = 56/(−8) = −7.",
+          hi: "बिंदु (x, 0) के लिए: (x−2)² + 25 = (x+2)² + 81. विस्तार पर −4x + 25 = 4x + 81, अतः −8x = 56 और x = 56/(−8) = −7.",
+          mr: "बिंदू (x, 0) साठी: (x−2)² + 25 = (x+2)² + 81. विस्तारल्यावर −4x + 25 = 4x + 81, म्हणून −8x = 56 आणि x = 56/(−8) = −7.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The point of trisection nearer to A on the segment A(2, −2), B(−7, 4) divides it 1:2. What is its x-coordinate?",
+          hi: "खंड A(2, −2), B(−7, 4) पर A के निकट त्रिविभाजन बिंदु इसे 1:2 में विभाजित करता है। इसका x-निर्देशांक क्या है?",
+          mr: "खंड A(2, −2), B(−7, 4) वर A जवळचा त्रिभाजन बिंदू त्याला 1:2 मध्ये विभागतो. त्याचा x-निर्देशांक काय?",
+        },
+        answer: -1,
+        wrong: [1, -3, 2],
+        checkExpr: "(0-7+4)/3",
+        solution: {
+          en: "By the section formula with ratio 1:2, x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1.",
+          hi: "1:2 अनुपात से विभाजन सूत्र: x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1.",
+          mr: "1:2 प्रमाणाने विभाजन सूत्र: x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The distance between P(2, −3) and Q(10, y) is 10. What is the positive value of y?",
+          hi: "P(2, −3) और Q(10, y) के बीच की दूरी 10 है। y का धन मान क्या है?",
+          mr: "P(2, −3) आणि Q(10, y) यांच्यातील अंतर 10 आहे. y ची धन किंमत काय?",
+        },
+        answer: 3,
+        wrong: [9, -9, 6],
+        checkExpr: "6-3",
+        solution: {
+          en: "(10−2)² + (y+3)² = 10², so 64 + (y+3)² = 100, giving (y+3)² = 36 and y + 3 = ±6. The positive value is y = 6 − 3 = 3.",
+          hi: "(10−2)² + (y+3)² = 10², अतः 64 + (y+3)² = 100, देता (y+3)² = 36 और y + 3 = ±6. धन मान y = 6 − 3 = 3.",
+          mr: "(10−2)² + (y+3)² = 10², म्हणून 64 + (y+3)² = 100, देते (y+3)² = 36 आणि y + 3 = ±6. धन किंमत y = 6 − 3 = 3.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A circle's diameter has endpoints (−2, 4) and (6, 2). What is the x-coordinate of its centre?",
+          hi: "एक वृत्त के व्यास के सिरे (−2, 4) और (6, 2) हैं। इसके केंद्र का x-निर्देशांक क्या है?",
+          mr: "एका वर्तुळाच्या व्यासाची टोके (−2, 4) आणि (6, 2) आहेत. त्याच्या केंद्राचा x-निर्देशांक काय?",
+        },
+        answer: 2,
+        wrong: [4, 3, 1],
+        checkExpr: "(0-2+6)/2",
+        solution: {
+          en: "The centre is the midpoint of the diameter, so its x-coordinate is (−2 + 6)/2 = 4/2 = 2.",
+          hi: "केंद्र व्यास का मध्यबिंदु, अतः इसका x-निर्देशांक (−2 + 6)/2 = 4/2 = 2.",
+          mr: "केंद्र व्यासाचा मध्यबिंदू, म्हणून त्याचा x-निर्देशांक (−2 + 6)/2 = 4/2 = 2.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-coordinate-geometry",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 6 — Coordinate Geometry",
+      name: "Coordinate Geometry",
+      summary:
+        "Geometry done by arithmetic on coordinates: the distance formula from Pythagoras, the midpoint as an average, and the section formula slicing a segment in any ratio.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "निर्देशांक ज्यामिति",
+          summary:
+            "निर्देशांकों पर अंकगणित से की ज्यामिति: पाइथागोरस से दूरी सूत्र, औसत बतौर मध्यबिंदु, और किसी भी अनुपात में खंड काटता विभाजन सूत्र।",
+        },
+        mr: {
+          name: "निर्देशांक भूमिती",
+          summary:
+            "निर्देशांकांवर अंकगणिताने केलेली भूमिती: पायथागोरसमधून अंतर सूत्र, सरासरी म्हणून मध्यबिंदू, आणि कोणत्याही प्रमाणात खंड कापणारे विभाजन सूत्र.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+
+export const G10_MATHS: TopicFileOut[] = [
+  realNumbers(),
+  polynomials10(),
+  quadraticEquations(),
+  pairLinear10(),
+  arithmeticProgressions10(),
+  coordinateGeometry10(),
+];

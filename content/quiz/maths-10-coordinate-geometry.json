@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-coordinate-geometry",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 6 — Coordinate Geometry",
+  "name": "Coordinate Geometry",
+  "summary": "Geometry done by arithmetic on coordinates: the distance formula from Pythagoras, the midpoint as an average, and the section formula slicing a segment in any ratio.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "निर्देशांक ज्यामिति",
+      "summary": "निर्देशांकों पर अंकगणित से की ज्यामिति: पाइथागोरस से दूरी सूत्र, औसत बतौर मध्यबिंदु, और किसी भी अनुपात में खंड काटता विभाजन सूत्र।"
+    },
+    "mr": {
+      "name": "निर्देशांक भूमिती",
+      "summary": "निर्देशांकांवर अंकगणिताने केलेली भूमिती: पायथागोरसमधून अंतर सूत्र, सरासरी म्हणून मध्यबिंदू, आणि कोणत्याही प्रमाणात खंड कापणारे विभाजन सूत्र."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the distance between the points (0, 0) and (3, 4)?",
+      "choices": [
+        "7",
+        "25",
+        "12",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Distance = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 is the value before taking the square root.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (0, 0) और (3, 4) के बीच की दूरी क्या है?",
+          "choices": [
+            "7",
+            "25",
+            "12",
+            "5"
+          ],
+          "solution": "दूरी = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 वर्गमूल लेने से पहले का मान।)"
+        },
+        "mr": {
+          "stem": "बिंदू (0, 0) आणि (3, 4) यांच्यातील अंतर काय?",
+          "choices": [
+            "7",
+            "25",
+            "12",
+            "5"
+          ],
+          "solution": "अंतर = √((3−0)² + (4−0)²) = √(9 + 16) = √25 = 5. (25 वर्गमूळ घेण्यापूर्वीचे मूल्य.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The midpoint of the segment joining (2, 4) and (6, 8) has what x-coordinate?",
+      "choices": [
+        "4",
+        "8",
+        "2",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "The midpoint's x-coordinate is the average of the two x-values: (2 + 6)/2 = 4.",
+      "checkExpr": "(2+6)/2",
+      "translations": {
+        "hi": {
+          "stem": "(2, 4) और (6, 8) को जोड़ते खंड के मध्यबिंदु का x-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "8",
+            "2",
+            "6"
+          ],
+          "solution": "मध्यबिंदु का x-निर्देशांक दो x-मानों का औसत: (2 + 6)/2 = 4."
+        },
+        "mr": {
+          "stem": "(2, 4) आणि (6, 8) जोडणाऱ्या रेषाखंडाच्या मध्यबिंदूचा x-निर्देशांक काय?",
+          "choices": [
+            "4",
+            "8",
+            "2",
+            "6"
+          ],
+          "solution": "मध्यबिंदूचा x-निर्देशांक दोन x-मूल्यांची सरासरी: (2 + 6)/2 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "On which axis does the point (5, 0) lie? (x-axis code 1, y-axis code 2.)",
+      "choices": [
+        "2",
+        "5",
+        "0",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "A point with y = 0 lies on the x-axis (code 1). Points on the y-axis instead have x = 0.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (5, 0) किस अक्ष पर है? (x-अक्ष कोड 1, y-अक्ष कोड 2।)",
+          "choices": [
+            "2",
+            "5",
+            "0",
+            "1"
+          ],
+          "solution": "y = 0 वाला बिंदु x-अक्ष पर (कोड 1)। y-अक्ष के बिंदुओं का x = 0 होता।"
+        },
+        "mr": {
+          "stem": "बिंदू (5, 0) कोणत्या अक्षावर आहे? (x-अक्ष कोड 1, y-अक्ष कोड 2.)",
+          "choices": [
+            "2",
+            "5",
+            "0",
+            "1"
+          ],
+          "solution": "y = 0 असलेला बिंदू x-अक्षावर (कोड 1). y-अक्षावरील बिंदूंचा x = 0 असतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the distance between the points (0, 0) and (6, 8)?",
+      "choices": [
+        "100",
+        "10",
+        "48",
+        "14"
+      ],
+      "answerIndex": 1,
+      "solution": "Distance = √(6² + 8²) = √(36 + 64) = √100 = 10.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (0, 0) और (6, 8) के बीच की दूरी क्या है?",
+          "choices": [
+            "100",
+            "10",
+            "48",
+            "14"
+          ],
+          "solution": "दूरी = √(6² + 8²) = √(36 + 64) = √100 = 10."
+        },
+        "mr": {
+          "stem": "बिंदू (0, 0) आणि (6, 8) यांच्यातील अंतर काय?",
+          "choices": [
+            "100",
+            "10",
+            "48",
+            "14"
+          ],
+          "solution": "अंतर = √(6² + 8²) = √(36 + 64) = √100 = 10."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The midpoint of (−2, 3) and (4, −1) is (x, y). What is y?",
+      "choices": [
+        "3",
+        "2",
+        "-1",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "The y-coordinate of the midpoint is (3 + (−1))/2 = (3 − 1)/2 = 1.",
+      "checkExpr": "(3-1)/2",
+      "translations": {
+        "hi": {
+          "stem": "(−2, 3) और (4, −1) का मध्यबिंदु (x, y) है। y क्या है?",
+          "choices": [
+            "3",
+            "2",
+            "-1",
+            "1"
+          ],
+          "solution": "मध्यबिंदु का y-निर्देशांक (3 + (−1))/2 = (3 − 1)/2 = 1."
+        },
+        "mr": {
+          "stem": "(−2, 3) आणि (4, −1) चा मध्यबिंदू (x, y) आहे. y काय?",
+          "choices": [
+            "3",
+            "2",
+            "-1",
+            "1"
+          ],
+          "solution": "मध्यबिंदूचा y-निर्देशांक (3 + (−1))/2 = (3 − 1)/2 = 1."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Point P divides the segment from (0, 0) to (10, 0) in the ratio 2:3. What is its x-coordinate?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "By the section formula, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4.",
+      "checkExpr": "2*10/5",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु P, (0, 0) से (10, 0) तक के खंड को 2:3 अनुपात में विभाजित करता है। इसका x-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "विभाजन सूत्र से, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4."
+        },
+        "mr": {
+          "stem": "बिंदू P, (0, 0) पासून (10, 0) पर्यंतच्या खंडाला 2:3 प्रमाणात विभागतो. त्याचा x-निर्देशांक काय?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "विभाजन सूत्राने, x = (2·10 + 3·0)/(2 + 3) = 20/5 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the distance of the point (5, 12) from the origin?",
+      "choices": [
+        "7",
+        "13",
+        "17",
+        "169"
+      ],
+      "answerIndex": 1,
+      "solution": "Distance from the origin = √(5² + 12²) = √(25 + 144) = √169 = 13.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (5, 12) की मूल बिंदु से दूरी क्या है?",
+          "choices": [
+            "7",
+            "13",
+            "17",
+            "169"
+          ],
+          "solution": "मूल बिंदु से दूरी = √(5² + 12²) = √(25 + 144) = √169 = 13."
+        },
+        "mr": {
+          "stem": "बिंदू (5, 12) चे मूळबिंदूपासून अंतर काय?",
+          "choices": [
+            "7",
+            "13",
+            "17",
+            "169"
+          ],
+          "solution": "मूळबिंदूपासून अंतर = √(5² + 12²) = √(25 + 144) = √169 = 13."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The point dividing the join of (1, 2) and (7, 8) in the ratio 1:2 has what x-coordinate?",
+      "choices": [
+        "4",
+        "3",
+        "9",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "By the section formula, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3.",
+      "checkExpr": "(7+2)/3",
+      "translations": {
+        "hi": {
+          "stem": "(1, 2) और (7, 8) के योग को 1:2 अनुपात में विभाजित करते बिंदु का x-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "9",
+            "5"
+          ],
+          "solution": "विभाजन सूत्र से, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3."
+        },
+        "mr": {
+          "stem": "(1, 2) आणि (7, 8) च्या जोडणीला 1:2 प्रमाणात विभागणाऱ्या बिंदूचा x-निर्देशांक काय?",
+          "choices": [
+            "4",
+            "3",
+            "9",
+            "5"
+          ],
+          "solution": "विभाजन सूत्राने, x = (1·7 + 2·1)/(1 + 2) = (7 + 2)/3 = 9/3 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The midpoint of A(x, 4) and B(6, 8) is (5, 6). What is x?",
+      "choices": [
+        "5",
+        "10",
+        "7",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "The midpoint's x is (x + 6)/2 = 5, so x + 6 = 10 and x = 5·2 − 6 = 4.",
+      "checkExpr": "5*2-6",
+      "translations": {
+        "hi": {
+          "stem": "A(x, 4) और B(6, 8) का मध्यबिंदु (5, 6) है। x क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "7",
+            "4"
+          ],
+          "solution": "मध्यबिंदु का x (x + 6)/2 = 5, अतः x + 6 = 10 और x = 5·2 − 6 = 4."
+        },
+        "mr": {
+          "stem": "A(x, 4) आणि B(6, 8) चा मध्यबिंदू (5, 6) आहे. x काय?",
+          "choices": [
+            "5",
+            "10",
+            "7",
+            "4"
+          ],
+          "solution": "मध्यबिंदूचा x (x + 6)/2 = 5, म्हणून x + 6 = 10 आणि x = 5·2 − 6 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the length of the vertical segment joining A(2, 3) and B(2, 9)?",
+      "choices": [
+        "8",
+        "6",
+        "3",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "The x-coordinates match, so the segment is vertical and its length is the difference of the y-values: 9 − 3 = 6.",
+      "checkExpr": "9-3",
+      "translations": {
+        "hi": {
+          "stem": "A(2, 3) और B(2, 9) को जोड़ते ऊर्ध्वाधर खंड की लंबाई क्या है?",
+          "choices": [
+            "8",
+            "6",
+            "3",
+            "12"
+          ],
+          "solution": "x-निर्देशांक समान, अतः खंड ऊर्ध्वाधर और लंबाई y-मानों का अंतर: 9 − 3 = 6."
+        },
+        "mr": {
+          "stem": "A(2, 3) आणि B(2, 9) जोडणाऱ्या उभ्या खंडाची लांबी काय?",
+          "choices": [
+            "8",
+            "6",
+            "3",
+            "12"
+          ],
+          "solution": "x-निर्देशांक समान, म्हणून खंड उभा आणि लांबी y-मूल्यांचा फरक: 9 − 3 = 6."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Find the x-coordinate of the point on the x-axis that is equidistant from (2, −5) and (−2, 9).",
+      "choices": [
+        "-3",
+        "7",
+        "-7",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "For a point (x, 0): (x−2)² + 25 = (x+2)² + 81. Expanding, −4x + 25 = 4x + 81, so −8x = 56 and x = 56/(−8) = −7.",
+      "checkExpr": "56/(0-8)",
+      "translations": {
+        "hi": {
+          "stem": "x-अक्ष पर उस बिंदु का x-निर्देशांक ज्ञात कीजिए जो (2, −5) और (−2, 9) से समान दूरी पर है।",
+          "choices": [
+            "-3",
+            "7",
+            "-7",
+            "3"
+          ],
+          "solution": "बिंदु (x, 0) के लिए: (x−2)² + 25 = (x+2)² + 81. विस्तार पर −4x + 25 = 4x + 81, अतः −8x = 56 और x = 56/(−8) = −7."
+        },
+        "mr": {
+          "stem": "x-अक्षावरील त्या बिंदूचा x-निर्देशांक शोधा जो (2, −5) आणि (−2, 9) पासून समान अंतरावर आहे.",
+          "choices": [
+            "-3",
+            "7",
+            "-7",
+            "3"
+          ],
+          "solution": "बिंदू (x, 0) साठी: (x−2)² + 25 = (x+2)² + 81. विस्तारल्यावर −4x + 25 = 4x + 81, म्हणून −8x = 56 आणि x = 56/(−8) = −7."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The point of trisection nearer to A on the segment A(2, −2), B(−7, 4) divides it 1:2. What is its x-coordinate?",
+      "choices": [
+        "-3",
+        "-1",
+        "2",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "By the section formula with ratio 1:2, x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1.",
+      "checkExpr": "(0-7+4)/3",
+      "translations": {
+        "hi": {
+          "stem": "खंड A(2, −2), B(−7, 4) पर A के निकट त्रिविभाजन बिंदु इसे 1:2 में विभाजित करता है। इसका x-निर्देशांक क्या है?",
+          "choices": [
+            "-3",
+            "-1",
+            "2",
+            "1"
+          ],
+          "solution": "1:2 अनुपात से विभाजन सूत्र: x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1."
+        },
+        "mr": {
+          "stem": "खंड A(2, −2), B(−7, 4) वर A जवळचा त्रिभाजन बिंदू त्याला 1:2 मध्ये विभागतो. त्याचा x-निर्देशांक काय?",
+          "choices": [
+            "-3",
+            "-1",
+            "2",
+            "1"
+          ],
+          "solution": "1:2 प्रमाणाने विभाजन सूत्र: x = (1·(−7) + 2·2)/(1 + 2) = (−7 + 4)/3 = −3/3 = −1."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The distance between P(2, −3) and Q(10, y) is 10. What is the positive value of y?",
+      "choices": [
+        "6",
+        "3",
+        "9",
+        "-9"
+      ],
+      "answerIndex": 1,
+      "solution": "(10−2)² + (y+3)² = 10², so 64 + (y+3)² = 100, giving (y+3)² = 36 and y + 3 = ±6. The positive value is y = 6 − 3 = 3.",
+      "checkExpr": "6-3",
+      "translations": {
+        "hi": {
+          "stem": "P(2, −3) और Q(10, y) के बीच की दूरी 10 है। y का धन मान क्या है?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "-9"
+          ],
+          "solution": "(10−2)² + (y+3)² = 10², अतः 64 + (y+3)² = 100, देता (y+3)² = 36 और y + 3 = ±6. धन मान y = 6 − 3 = 3."
+        },
+        "mr": {
+          "stem": "P(2, −3) आणि Q(10, y) यांच्यातील अंतर 10 आहे. y ची धन किंमत काय?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "-9"
+          ],
+          "solution": "(10−2)² + (y+3)² = 10², म्हणून 64 + (y+3)² = 100, देते (y+3)² = 36 आणि y + 3 = ±6. धन किंमत y = 6 − 3 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A circle's diameter has endpoints (−2, 4) and (6, 2). What is the x-coordinate of its centre?",
+      "choices": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The centre is the midpoint of the diameter, so its x-coordinate is (−2 + 6)/2 = 4/2 = 2.",
+      "checkExpr": "(0-2+6)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक वृत्त के व्यास के सिरे (−2, 4) और (6, 2) हैं। इसके केंद्र का x-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "केंद्र व्यास का मध्यबिंदु, अतः इसका x-निर्देशांक (−2 + 6)/2 = 4/2 = 2."
+        },
+        "mr": {
+          "stem": "एका वर्तुळाच्या व्यासाची टोके (−2, 4) आणि (6, 2) आहेत. त्याच्या केंद्राचा x-निर्देशांक काय?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "केंद्र व्यासाचा मध्यबिंदू, म्हणून त्याचा x-निर्देशांक (−2 + 6)/2 = 4/2 = 2."
+        }
+      }
+    }
+  ]
+}

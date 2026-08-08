@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-arithmetic-progressions",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 5 — Arithmetic Progressions",
+  "name": "Arithmetic Progressions",
+  "summary": "Sequences that step by a fixed amount: the nth term as a + (n−1)d, the sum as (n/2)(2a + (n−1)d), and a term recovered as the difference of two running totals.",
+  "position": 5,
+  "translations": {
+    "hi": {
+      "name": "समांतर श्रेढ़ी",
+      "summary": "नियत मात्रा से क़दम बढ़ाते अनुक्रम: nवाँ पद a + (n−1)d, योग (n/2)(2a + (n−1)d), और एक पद दो चालू योगों के अंतर से निकाला।"
+    },
+    "mr": {
+      "name": "अंकगणिती श्रेढी",
+      "summary": "स्थिर रकमेने पाऊल टाकणारे क्रम: nवे पद a + (n−1)d, बेरीज (n/2)(2a + (n−1)d), आणि एक पद दोन चालू बेरजांच्या फरकाने काढले."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "In the sequence 2, 5, 8, 11, …, what is the common difference?",
+      "choices": [
+        "3",
+        "5",
+        "2",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The common difference is any term minus the one before it: 5 − 2 = 3 (and 8 − 5 = 3), so d = 3.",
+      "checkExpr": "5-2",
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम 2, 5, 8, 11, … में सार्व अंतर क्या है?",
+          "choices": [
+            "3",
+            "5",
+            "2",
+            "7"
+          ],
+          "solution": "सार्व अंतर कोई पद घटा उससे पिछला: 5 − 2 = 3 (और 8 − 5 = 3), अतः d = 3."
+        },
+        "mr": {
+          "stem": "क्रम 2, 5, 8, 11, … मध्ये सामाईक फरक काय?",
+          "choices": [
+            "3",
+            "5",
+            "2",
+            "7"
+          ],
+          "solution": "सामाईक फरक कोणतेही पद वजा आधीचे: 5 − 2 = 3 (आणि 8 − 5 = 3), म्हणून d = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A sequence has first term 5 and common difference 4. What is its second term?",
+      "choices": [
+        "5",
+        "9",
+        "13",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The second term is the first plus the common difference: 5 + 4 = 9.",
+      "checkExpr": "5+4",
+      "translations": {
+        "hi": {
+          "stem": "एक अनुक्रम का पहला पद 5 और सार्व अंतर 4 है। इसका दूसरा पद क्या है?",
+          "choices": [
+            "5",
+            "9",
+            "13",
+            "4"
+          ],
+          "solution": "दूसरा पद पहला जमा सार्व अंतर: 5 + 4 = 9."
+        },
+        "mr": {
+          "stem": "एका क्रमाचे पहिले पद 5 आणि सामाईक फरक 4 आहे. त्याचे दुसरे पद काय?",
+          "choices": [
+            "5",
+            "9",
+            "13",
+            "4"
+          ],
+          "solution": "दुसरे पद पहिले अधिक सामाईक फरक: 5 + 4 = 9."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Is the sequence 2, 4, 8, 16 an arithmetic progression? (Answer 1 for yes, 0 for no.)",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "The differences are 2, 4, 8 — not constant. An AP needs a fixed common difference, so this is not an AP (it doubles each time, a geometric pattern). Answer 0.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या अनुक्रम 2, 4, 8, 16 एक समांतर श्रेढ़ी है? (हाँ के लिए 1, नहीं के लिए 0।)",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "अंतर 2, 4, 8 — नियत नहीं। AP को नियत सार्व अंतर चाहिए, अतः यह AP नहीं (हर बार दुगुना, ज्यामितीय नमूना)। उत्तर 0."
+        },
+        "mr": {
+          "stem": "क्रम 2, 4, 8, 16 ही अंकगणिती श्रेढी आहे का? (हो साठी 1, नाही साठी 0.)",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "फरक 2, 4, 8 — स्थिर नाही. APला स्थिर सामाईक फरक हवा, म्हणून ही AP नाही (प्रत्येक वेळी दुप्पट, भूमितीय नमुना). उत्तर 0."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Find the 10th term of the AP 3, 7, 11, … using a + (n−1)d.",
+      "choices": [
+        "36",
+        "39",
+        "43",
+        "40"
+      ],
+      "answerIndex": 1,
+      "solution": "Here a = 3, d = 4, n = 10. The nth term = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39.",
+      "checkExpr": "3+9*4",
+      "translations": {
+        "hi": {
+          "stem": "a + (n−1)d से AP 3, 7, 11, … का 10वाँ पद ज्ञात कीजिए।",
+          "choices": [
+            "36",
+            "39",
+            "43",
+            "40"
+          ],
+          "solution": "यहाँ a = 3, d = 4, n = 10. nवाँ पद = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39."
+        },
+        "mr": {
+          "stem": "a + (n−1)d वापरून AP 3, 7, 11, … चे 10वे पद शोधा.",
+          "choices": [
+            "36",
+            "39",
+            "43",
+            "40"
+          ],
+          "solution": "इथे a = 3, d = 4, n = 10. nवे पद = a + (n−1)d = 3 + 9·4 = 3 + 36 = 39."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The 5th term of an AP is 17 and its first term is 5. What is the common difference?",
+      "choices": [
+        "12",
+        "17",
+        "3",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "a₅ = a + 4d = 17, so 5 + 4d = 17, giving 4d = 12 and d = (17 − 5)/4 = 3.",
+      "checkExpr": "(17-5)/4",
+      "translations": {
+        "hi": {
+          "stem": "एक AP का 5वाँ पद 17 और पहला पद 5 है। सार्व अंतर क्या है?",
+          "choices": [
+            "12",
+            "17",
+            "3",
+            "4"
+          ],
+          "solution": "a₅ = a + 4d = 17, अतः 5 + 4d = 17, देता 4d = 12 और d = (17 − 5)/4 = 3."
+        },
+        "mr": {
+          "stem": "एका APचे 5वे पद 17 आणि पहिले पद 5 आहे. सामाईक फरक काय?",
+          "choices": [
+            "12",
+            "17",
+            "3",
+            "4"
+          ],
+          "solution": "a₅ = a + 4d = 17, म्हणून 5 + 4d = 17, देते 4d = 12 आणि d = (17 − 5)/4 = 3."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many terms are there in the AP 6, 9, 12, …, 30?",
+      "choices": [
+        "24",
+        "8",
+        "10",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "With a = 6, d = 3, last term 30: n = (last − first)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9.",
+      "checkExpr": "(30-6)/3+1",
+      "translations": {
+        "hi": {
+          "stem": "AP 6, 9, 12, …, 30 में कितने पद हैं?",
+          "choices": [
+            "24",
+            "8",
+            "10",
+            "9"
+          ],
+          "solution": "a = 6, d = 3, अंतिम पद 30: n = (अंतिम − पहला)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9."
+        },
+        "mr": {
+          "stem": "AP 6, 9, 12, …, 30 मध्ये किती पदे आहेत?",
+          "choices": [
+            "24",
+            "8",
+            "10",
+            "9"
+          ],
+          "solution": "a = 6, d = 3, शेवटचे पद 30: n = (शेवटचे − पहिले)/d + 1 = (30 − 6)/3 + 1 = 8 + 1 = 9."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Find the sum of the first 10 terms of the AP 2, 4, 6, … using S = (n/2)(2a + (n−1)d).",
+      "choices": [
+        "120",
+        "55",
+        "100",
+        "110"
+      ],
+      "answerIndex": 3,
+      "solution": "With a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110.",
+      "checkExpr": "5*(4+18)",
+      "translations": {
+        "hi": {
+          "stem": "S = (n/2)(2a + (n−1)d) से AP 2, 4, 6, … के पहले 10 पदों का योग ज्ञात कीजिए।",
+          "choices": [
+            "120",
+            "55",
+            "100",
+            "110"
+          ],
+          "solution": "a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110."
+        },
+        "mr": {
+          "stem": "S = (n/2)(2a + (n−1)d) वापरून AP 2, 4, 6, … च्या पहिल्या 10 पदांची बेरीज शोधा.",
+          "choices": [
+            "120",
+            "55",
+            "100",
+            "110"
+          ],
+          "solution": "a = 2, d = 2, n = 10: S = (10/2)(2·2 + 9·2) = 5·(4 + 18) = 5·22 = 110."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which term of the AP 5, 8, 11, … equals 50?",
+      "choices": [
+        "16",
+        "17",
+        "15",
+        "45"
+      ],
+      "answerIndex": 0,
+      "solution": "a = 5, d = 3. Set a + (n−1)d = 50: 5 + (n−1)3 = 50, so (n−1) = 15 and n = (50 − 5)/3 + 1 = 16.",
+      "checkExpr": "(50-5)/3+1",
+      "translations": {
+        "hi": {
+          "stem": "AP 5, 8, 11, … का कौन-सा पद 50 के बराबर है?",
+          "choices": [
+            "16",
+            "17",
+            "15",
+            "45"
+          ],
+          "solution": "a = 5, d = 3. a + (n−1)d = 50 रखिए: 5 + (n−1)3 = 50, अतः (n−1) = 15 और n = (50 − 5)/3 + 1 = 16."
+        },
+        "mr": {
+          "stem": "AP 5, 8, 11, … चे कोणते पद 50 इतके आहे?",
+          "choices": [
+            "16",
+            "17",
+            "15",
+            "45"
+          ],
+          "solution": "a = 5, d = 3. a + (n−1)d = 50 ठेवा: 5 + (n−1)3 = 50, म्हणून (n−1) = 15 आणि n = (50 − 5)/3 + 1 = 16."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The sum of the first n natural numbers, 1 + 2 + … + n, is 210. What is n?",
+      "choices": [
+        "42",
+        "15",
+        "21",
+        "20"
+      ],
+      "answerIndex": 3,
+      "solution": "n(n+1)/2 = 210, so n² + n − 420 = 0. Then n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20.",
+      "checkExpr": "(0-1+41)/2",
+      "translations": {
+        "hi": {
+          "stem": "पहली n प्राकृत संख्याओं का योग, 1 + 2 + … + n, 210 है। n क्या है?",
+          "choices": [
+            "42",
+            "15",
+            "21",
+            "20"
+          ],
+          "solution": "n(n+1)/2 = 210, अतः n² + n − 420 = 0. तब n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20."
+        },
+        "mr": {
+          "stem": "पहिल्या n नैसर्गिक संख्यांची बेरीज, 1 + 2 + … + n, 210 आहे. n काय?",
+          "choices": [
+            "42",
+            "15",
+            "21",
+            "20"
+          ],
+          "solution": "n(n+1)/2 = 210, म्हणून n² + n − 420 = 0. मग n = [−1 + √(1 + 1680)]/2 = [−1 + 41]/2 = 20."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Find the sum of the first 20 terms of the AP whose first term is 1 and common difference is 4.",
+      "choices": [
+        "390",
+        "780",
+        "770",
+        "800"
+      ],
+      "answerIndex": 1,
+      "solution": "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780.",
+      "checkExpr": "10*(2+76)",
+      "translations": {
+        "hi": {
+          "stem": "उस AP के पहले 20 पदों का योग ज्ञात कीजिए जिसका पहला पद 1 और सार्व अंतर 4 है।",
+          "choices": [
+            "390",
+            "780",
+            "770",
+            "800"
+          ],
+          "solution": "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780."
+        },
+        "mr": {
+          "stem": "ज्या APचे पहिले पद 1 आणि सामाईक फरक 4 आहे त्याच्या पहिल्या 20 पदांची बेरीज शोधा.",
+          "choices": [
+            "390",
+            "780",
+            "770",
+            "800"
+          ],
+          "solution": "S = (n/2)(2a + (n−1)d) = (20/2)(2·1 + 19·4) = 10·(2 + 76) = 10·78 = 780."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The 7th term of an AP is 34 and the 13th term is 64. What is its common difference?",
+      "choices": [
+        "6",
+        "5",
+        "10",
+        "30"
+      ],
+      "answerIndex": 1,
+      "solution": "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, so d = 30/6 = 5.",
+      "checkExpr": "(64-34)/6",
+      "translations": {
+        "hi": {
+          "stem": "एक AP का 7वाँ पद 34 और 13वाँ पद 64 है। इसका सार्व अंतर क्या है?",
+          "choices": [
+            "6",
+            "5",
+            "10",
+            "30"
+          ],
+          "solution": "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, अतः d = 30/6 = 5."
+        },
+        "mr": {
+          "stem": "एका APचे 7वे पद 34 आणि 13वे पद 64 आहे. त्याचा सामाईक फरक काय?",
+          "choices": [
+            "6",
+            "5",
+            "10",
+            "30"
+          ],
+          "solution": "a₁₃ − a₇ = (13 − 7)d = 6d = 64 − 34 = 30, म्हणून d = 30/6 = 5."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many two-digit numbers are divisible by 3?",
+      "choices": [
+        "30",
+        "29",
+        "31",
+        "33"
+      ],
+      "answerIndex": 0,
+      "solution": "They form the AP 12, 15, …, 99 with d = 3. Count = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30.",
+      "checkExpr": "(99-12)/3+1",
+      "translations": {
+        "hi": {
+          "stem": "कितनी दो-अंकीय संख्याएँ 3 से विभाज्य हैं?",
+          "choices": [
+            "30",
+            "29",
+            "31",
+            "33"
+          ],
+          "solution": "वे AP 12, 15, …, 99 बनातीं, d = 3. गिनती = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30."
+        },
+        "mr": {
+          "stem": "किती दोन-अंकी संख्या 3 ने भाग जातात?",
+          "choices": [
+            "30",
+            "29",
+            "31",
+            "33"
+          ],
+          "solution": "त्या AP 12, 15, …, 99 बनवतात, d = 3. मोजणी = (99 − 12)/3 + 1 = 87/3 + 1 = 29 + 1 = 30."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The sum of the first 15 terms of an AP is 465, and its first term is 3. What is its 15th (last) term?",
+      "choices": [
+        "60",
+        "59",
+        "31",
+        "62"
+      ],
+      "answerIndex": 1,
+      "solution": "Using S = (n/2)(a + l): 465 = (15/2)(3 + l), so 3 + l = 465·2/15 = 62, giving l = 62 − 3 = 59.",
+      "checkExpr": "465*2/15-3",
+      "translations": {
+        "hi": {
+          "stem": "एक AP के पहले 15 पदों का योग 465, और पहला पद 3 है। इसका 15वाँ (अंतिम) पद क्या है?",
+          "choices": [
+            "60",
+            "59",
+            "31",
+            "62"
+          ],
+          "solution": "S = (n/2)(a + l) से: 465 = (15/2)(3 + l), अतः 3 + l = 465·2/15 = 62, देता l = 62 − 3 = 59."
+        },
+        "mr": {
+          "stem": "एका APच्या पहिल्या 15 पदांची बेरीज 465, आणि पहिले पद 3 आहे. त्याचे 15वे (शेवटचे) पद काय?",
+          "choices": [
+            "60",
+            "59",
+            "31",
+            "62"
+          ],
+          "solution": "S = (n/2)(a + l) ने: 465 = (15/2)(3 + l), म्हणून 3 + l = 465·2/15 = 62, देते l = 62 − 3 = 59."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For an AP, the sum of the first n terms is n². What is its 5th term?",
+      "choices": [
+        "16",
+        "25",
+        "10",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "The nth term is Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. For n = 5, that is 2·5 − 1 = 9. (25 is S₅, the sum, not the 5th term.)",
+      "checkExpr": "2*5-1",
+      "translations": {
+        "hi": {
+          "stem": "एक AP के लिए, पहले n पदों का योग n² है। इसका 5वाँ पद क्या है?",
+          "choices": [
+            "16",
+            "25",
+            "10",
+            "9"
+          ],
+          "solution": "nवाँ पद Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. n = 5 पर 2·5 − 1 = 9. (25 S₅ योग है, 5वाँ पद नहीं।)"
+        },
+        "mr": {
+          "stem": "एका APसाठी, पहिल्या n पदांची बेरीज n² आहे. त्याचे 5वे पद काय?",
+          "choices": [
+            "16",
+            "25",
+            "10",
+            "9"
+          ],
+          "solution": "nवे पद Sₙ − Sₙ₋₁ = n² − (n−1)² = 2n − 1. n = 5 वर 2·5 − 1 = 9. (25 हा S₅ बेरीज, 5वे पद नाही.)"
+        }
+      }
+    }
+  ]
+}
