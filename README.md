@@ -2523,8 +2523,15 @@ navigation" means the actual list rather than one somebody maintained by hand.
   Geography 6 — *Contemporary India I* — in `g9-geography.ts`;
   Political Science 5 — *Democratic Politics I* — in `g9-civics.ts`;
   and the new-at-this-grade subject **Economics** 4 — *Understanding
-  Economic Development I* — in `g9-economics.ts`) — growing grade by
-  grade toward Class 12. Suite re-pointed and green: 84 files, 1453 tests.
+  Economic Development I* — in `g9-economics.ts`), and **Class 10 Maths
+  complete** (all 14 chapters in `g10-maths.ts`: Real Numbers,
+  Polynomials, Pair of Linear Equations, Quadratic Equations, Arithmetic
+  Progressions, Coordinate Geometry, Triangles, Introduction to
+  Trigonometry, Some Applications of Trigonometry, Circles, Areas Related
+  to Circles, Surface Areas and Volumes, Statistics, Probability — every
+  computable answer proven by checkExpr) with its five other subjects
+  still to come — growing grade by grade toward Class 12. Suite
+  re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

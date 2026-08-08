@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-statistics",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 13 — Statistics",
+  "name": "Statistics",
+  "summary": "The three averages of grouped data: the mean by direct and step-deviation methods, the mode from the busiest class, the median from cumulative frequency, and the empirical link mode = 3 median − 2 mean.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "सांख्यिकी",
+      "summary": "वर्गीकृत आँकड़ों के तीन औसत: प्रत्यक्ष और पग-विचलन विधि से माध्य, सबसे व्यस्त वर्ग से बहुलक, संचयी बारंबारता से माध्यिका, और आनुभविक संबंध बहुलक = 3 माध्यिका − 2 माध्य।"
+    },
+    "mr": {
+      "name": "सांख्यिकी",
+      "summary": "वर्गीकृत माहितीचे तीन सरासरी: प्रत्यक्ष आणि पद-विचलन पद्धतीने मध्य, सर्वांत व्यग्र वर्गातून बहुलक, संचयी वारंवारतेतून मध्यक, आणि अनुभवसिद्ध संबंध बहुलक = 3 मध्यक − 2 मध्य."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the mean of 4, 6, 8, 10 and 12?",
+      "choices": [
+        "10",
+        "6",
+        "40",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Mean = sum/count = (4+6+8+10+12)/5 = 40/5 = 8.",
+      "checkExpr": "40/5",
+      "translations": {
+        "hi": {
+          "stem": "4, 6, 8, 10 और 12 का माध्य क्या है?",
+          "choices": [
+            "10",
+            "6",
+            "40",
+            "8"
+          ],
+          "solution": "माध्य = योग/गिनती = (4+6+8+10+12)/5 = 40/5 = 8."
+        },
+        "mr": {
+          "stem": "4, 6, 8, 10 आणि 12 चा मध्य काय?",
+          "choices": [
+            "10",
+            "6",
+            "40",
+            "8"
+          ],
+          "solution": "मध्य = बेरीज/संख्या = (4+6+8+10+12)/5 = 40/5 = 8."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the mode of the data 3, 5, 5, 7, 9?",
+      "choices": [
+        "7",
+        "9",
+        "3",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "The mode is the value occurring most often. Here 5 appears twice, more than any other, so the mode is 5.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आँकड़ों 3, 5, 5, 7, 9 का बहुलक क्या है?",
+          "choices": [
+            "7",
+            "9",
+            "3",
+            "5"
+          ],
+          "solution": "बहुलक सबसे अधिक बार आता मान। यहाँ 5 दो बार, किसी अन्य से अधिक, अतः बहुलक 5."
+        },
+        "mr": {
+          "stem": "3, 5, 5, 7, 9 या माहितीचा बहुलक काय?",
+          "choices": [
+            "7",
+            "9",
+            "3",
+            "5"
+          ],
+          "solution": "बहुलक सर्वांत जास्त वेळा येणारे मूल्य. इथे 5 दोनदा, इतर कोणत्याहून अधिक, म्हणून बहुलक 5."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the median of 5, 8, 11, 14, 17?",
+      "choices": [
+        "8",
+        "14",
+        "11",
+        "55"
+      ],
+      "answerIndex": 2,
+      "solution": "For 5 values in order, the median is the 3rd (middle) one, which is 11.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "5, 8, 11, 14, 17 की माध्यिका क्या है?",
+          "choices": [
+            "8",
+            "14",
+            "11",
+            "55"
+          ],
+          "solution": "क्रम में 5 मानों के लिए माध्यिका तीसरा (मध्य) है, जो 11."
+        },
+        "mr": {
+          "stem": "5, 8, 11, 14, 17 चा मध्यक काय?",
+          "choices": [
+            "8",
+            "14",
+            "11",
+            "55"
+          ],
+          "solution": "क्रमात 5 मूल्यांसाठी मध्यक तिसरा (मधला), जो 11."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the mean of 10, 20, 30 and 40?",
+      "choices": [
+        "30",
+        "100",
+        "20",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "Mean = (10+20+30+40)/4 = 100/4 = 25.",
+      "checkExpr": "100/4",
+      "translations": {
+        "hi": {
+          "stem": "10, 20, 30 और 40 का माध्य क्या है?",
+          "choices": [
+            "30",
+            "100",
+            "20",
+            "25"
+          ],
+          "solution": "माध्य = (10+20+30+40)/4 = 100/4 = 25."
+        },
+        "mr": {
+          "stem": "10, 20, 30 आणि 40 चा मध्य काय?",
+          "choices": [
+            "30",
+            "100",
+            "20",
+            "25"
+          ],
+          "solution": "मध्य = (10+20+30+40)/4 = 100/4 = 25."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For a distribution the median is 20 and the mean is 22. Using Mode = 3 Median − 2 Mean, what is the mode?",
+      "choices": [
+        "18",
+        "16",
+        "24",
+        "20"
+      ],
+      "answerIndex": 1,
+      "solution": "By the empirical relation, Mode = 3·20 − 2·22 = 60 − 44 = 16.",
+      "checkExpr": "3*20-2*22",
+      "translations": {
+        "hi": {
+          "stem": "एक बंटन की माध्यिका 20 और माध्य 22 है। बहुलक = 3 माध्यिका − 2 माध्य से, बहुलक क्या है?",
+          "choices": [
+            "18",
+            "16",
+            "24",
+            "20"
+          ],
+          "solution": "आनुभविक संबंध से, बहुलक = 3·20 − 2·22 = 60 − 44 = 16."
+        },
+        "mr": {
+          "stem": "एका वितरणाचा मध्यक 20 आणि मध्य 22 आहे. बहुलक = 3 मध्यक − 2 मध्य वापरून, बहुलक काय?",
+          "choices": [
+            "18",
+            "16",
+            "24",
+            "20"
+          ],
+          "solution": "अनुभवसिद्ध संबंधाने, बहुलक = 3·20 − 2·22 = 60 − 44 = 16."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the median of the four values 3, 5, 7, 9?",
+      "choices": [
+        "6",
+        "7",
+        "12",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "With an even count, the median is the average of the two middle values: (5+7)/2 = 6.",
+      "checkExpr": "(5+7)/2",
+      "translations": {
+        "hi": {
+          "stem": "चार मानों 3, 5, 7, 9 की माध्यिका क्या है?",
+          "choices": [
+            "6",
+            "7",
+            "12",
+            "5"
+          ],
+          "solution": "सम गिनती में माध्यिका दो मध्य मानों का औसत: (5+7)/2 = 6."
+        },
+        "mr": {
+          "stem": "चार मूल्यांचा 3, 5, 7, 9 मध्यक काय?",
+          "choices": [
+            "6",
+            "7",
+            "12",
+            "5"
+          ],
+          "solution": "सम संख्येत मध्यक दोन मधल्या मूल्यांची सरासरी: (5+7)/2 = 6."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For grouped data the mean is Σ(fᵢxᵢ)/Σfᵢ. If Σ(fᵢxᵢ) = 620 and Σfᵢ = 20, what is the mean?",
+      "choices": [
+        "620",
+        "20",
+        "15.5",
+        "31"
+      ],
+      "answerIndex": 3,
+      "solution": "Mean = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31.",
+      "checkExpr": "620/20",
+      "translations": {
+        "hi": {
+          "stem": "वर्गीकृत आँकड़ों का माध्य Σ(fᵢxᵢ)/Σfᵢ। यदि Σ(fᵢxᵢ) = 620 और Σfᵢ = 20, माध्य क्या है?",
+          "choices": [
+            "620",
+            "20",
+            "15.5",
+            "31"
+          ],
+          "solution": "माध्य = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31."
+        },
+        "mr": {
+          "stem": "वर्गीकृत माहितीचा मध्य Σ(fᵢxᵢ)/Σfᵢ. Σ(fᵢxᵢ) = 620 आणि Σfᵢ = 20 असेल, मध्य काय?",
+          "choices": [
+            "620",
+            "20",
+            "15.5",
+            "31"
+          ],
+          "solution": "मध्य = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The modal class has l = 10, f₁ = 20, f₀ = 12, f₂ = 8 and h = 5. Using Mode = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h, what is the mode?",
+      "choices": [
+        "10",
+        "12",
+        "14",
+        "18"
+      ],
+      "answerIndex": 1,
+      "solution": "Mode = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12.",
+      "checkExpr": "10+(20-12)/(2*20-12-8)*5",
+      "translations": {
+        "hi": {
+          "stem": "बहुलक वर्ग में l = 10, f₁ = 20, f₀ = 12, f₂ = 8 और h = 5. बहुलक = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h से, बहुलक क्या है?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "18"
+          ],
+          "solution": "बहुलक = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12."
+        },
+        "mr": {
+          "stem": "बहुलक वर्गात l = 10, f₁ = 20, f₀ = 12, f₂ = 8 आणि h = 5. बहुलक = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h वापरून, बहुलक काय?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "18"
+          ],
+          "solution": "बहुलक = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The median class has l = 20, n = 50, cf = 20, f = 10 and h = 10. Using Median = l + [(n/2 − cf)/f]·h, what is the median?",
+      "choices": [
+        "25",
+        "20",
+        "30",
+        "45"
+      ],
+      "answerIndex": 0,
+      "solution": "Median = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25.",
+      "checkExpr": "20+(50/2-20)/10*10",
+      "translations": {
+        "hi": {
+          "stem": "माध्यिका वर्ग में l = 20, n = 50, cf = 20, f = 10 और h = 10. माध्यिका = l + [(n/2 − cf)/f]·h से, माध्यिका क्या है?",
+          "choices": [
+            "25",
+            "20",
+            "30",
+            "45"
+          ],
+          "solution": "माध्यिका = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25."
+        },
+        "mr": {
+          "stem": "मध्यक वर्गात l = 20, n = 50, cf = 20, f = 10 आणि h = 10. मध्यक = l + [(n/2 − cf)/f]·h वापरून, मध्यक काय?",
+          "choices": [
+            "25",
+            "20",
+            "30",
+            "45"
+          ],
+          "solution": "मध्यक = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "By the step-deviation method, Mean = a + h·(Σfu/Σf). If a = 25, h = 10, Σfu = −6 and Σf = 30, what is the mean?",
+      "choices": [
+        "25",
+        "23",
+        "27",
+        "21"
+      ],
+      "answerIndex": 1,
+      "solution": "Mean = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23.",
+      "checkExpr": "25+10*(0-6)/30",
+      "translations": {
+        "hi": {
+          "stem": "पग-विचलन विधि से, माध्य = a + h·(Σfu/Σf)। यदि a = 25, h = 10, Σfu = −6 और Σf = 30, माध्य क्या है?",
+          "choices": [
+            "25",
+            "23",
+            "27",
+            "21"
+          ],
+          "solution": "माध्य = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23."
+        },
+        "mr": {
+          "stem": "पद-विचलन पद्धतीने, मध्य = a + h·(Σfu/Σf). a = 25, h = 10, Σfu = −6 आणि Σf = 30 असेल, मध्य काय?",
+          "choices": [
+            "25",
+            "23",
+            "27",
+            "21"
+          ],
+          "solution": "मध्य = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the mean of the first 10 natural numbers?",
+      "choices": [
+        "50",
+        "5",
+        "5.5",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "1+2+…+10 = 55, and there are 10 numbers, so the mean = 55/10 = 5.5.",
+      "checkExpr": "55/10",
+      "translations": {
+        "hi": {
+          "stem": "पहली 10 प्राकृत संख्याओं का माध्य क्या है?",
+          "choices": [
+            "50",
+            "5",
+            "5.5",
+            "10"
+          ],
+          "solution": "1+2+…+10 = 55, और 10 संख्याएँ, अतः माध्य = 55/10 = 5.5."
+        },
+        "mr": {
+          "stem": "पहिल्या 10 नैसर्गिक संख्यांचा मध्य काय?",
+          "choices": [
+            "50",
+            "5",
+            "5.5",
+            "10"
+          ],
+          "solution": "1+2+…+10 = 55, आणि 10 संख्या, म्हणून मध्य = 55/10 = 5.5."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For a distribution the mean is 8 and the median is 10. Using Mode = 3 Median − 2 Mean, what is the mode?",
+      "choices": [
+        "26",
+        "18",
+        "30",
+        "14"
+      ],
+      "answerIndex": 3,
+      "solution": "Mode = 3·10 − 2·8 = 30 − 16 = 14.",
+      "checkExpr": "3*10-2*8",
+      "translations": {
+        "hi": {
+          "stem": "एक बंटन का माध्य 8 और माध्यिका 10 है। बहुलक = 3 माध्यिका − 2 माध्य से, बहुलक क्या है?",
+          "choices": [
+            "26",
+            "18",
+            "30",
+            "14"
+          ],
+          "solution": "बहुलक = 3·10 − 2·8 = 30 − 16 = 14."
+        },
+        "mr": {
+          "stem": "एका वितरणाचा मध्य 8 आणि मध्यक 10 आहे. बहुलक = 3 मध्यक − 2 मध्य वापरून, बहुलक काय?",
+          "choices": [
+            "26",
+            "18",
+            "30",
+            "14"
+          ],
+          "solution": "बहुलक = 3·10 − 2·8 = 30 − 16 = 14."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The mean of 20 numbers is 18. If every number is increased by 3, what is the new mean?",
+      "choices": [
+        "24",
+        "15",
+        "18",
+        "21"
+      ],
+      "answerIndex": 3,
+      "solution": "Adding the same amount to every value shifts the mean by that amount: 18 + 3 = 21.",
+      "checkExpr": "18+3",
+      "translations": {
+        "hi": {
+          "stem": "20 संख्याओं का माध्य 18 है। यदि प्रत्येक संख्या 3 बढ़ा दी जाए, नया माध्य क्या है?",
+          "choices": [
+            "24",
+            "15",
+            "18",
+            "21"
+          ],
+          "solution": "हर मान में समान मात्रा जोड़ने से माध्य उतना खिसकता: 18 + 3 = 21."
+        },
+        "mr": {
+          "stem": "20 संख्यांचा मध्य 18 आहे. प्रत्येक संख्या 3 ने वाढवली, तर नवा मध्य काय?",
+          "choices": [
+            "24",
+            "15",
+            "18",
+            "21"
+          ],
+          "solution": "प्रत्येक मूल्यात समान रक्कम जोडल्याने मध्य तितका सरकतो: 18 + 3 = 21."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The mean of 5 numbers is 30. If one number, 40, is removed, what is the mean of the remaining 4?",
+      "choices": [
+        "22",
+        "30",
+        "27.5",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "Total = 30·5 = 150. Removing 40 leaves 110 over 4 numbers, so the new mean = (150−40)/4 = 110/4 = 27.5.",
+      "checkExpr": "(30*5-40)/4",
+      "translations": {
+        "hi": {
+          "stem": "5 संख्याओं का माध्य 30 है। यदि एक संख्या 40 हटा दी जाए, शेष 4 का माध्य क्या है?",
+          "choices": [
+            "22",
+            "30",
+            "27.5",
+            "25"
+          ],
+          "solution": "कुल = 30·5 = 150. 40 हटाने पर 4 संख्याओं पर 110, अतः नया माध्य = (150−40)/4 = 110/4 = 27.5."
+        },
+        "mr": {
+          "stem": "5 संख्यांचा मध्य 30 आहे. एक संख्या 40 काढली, तर उरलेल्या 4 चा मध्य काय?",
+          "choices": [
+            "22",
+            "30",
+            "27.5",
+            "25"
+          ],
+          "solution": "एकूण = 30·5 = 150. 40 काढल्यावर 4 संख्यांवर 110, म्हणून नवा मध्य = (150−40)/4 = 110/4 = 27.5."
+        }
+      }
+    }
+  ]
+}

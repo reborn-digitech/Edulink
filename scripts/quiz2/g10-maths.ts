@@ -3809,6 +3809,639 @@ function surfaceVolumes10(): TopicFileOut {
 }
 
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Statistics (mean, median and mode of grouped data)           */
+/* ------------------------------------------------------------------------- */
+function statistics10(): TopicFileOut {
+  const rand = rng("maths-10-statistics");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the mean of 4, 6, 8, 10 and 12?",
+          hi: "4, 6, 8, 10 और 12 का माध्य क्या है?",
+          mr: "4, 6, 8, 10 आणि 12 चा मध्य काय?",
+        },
+        answer: 8,
+        wrong: [10, 6, 40],
+        checkExpr: "40/5",
+        solution: {
+          en: "Mean = sum/count = (4+6+8+10+12)/5 = 40/5 = 8.",
+          hi: "माध्य = योग/गिनती = (4+6+8+10+12)/5 = 40/5 = 8.",
+          mr: "मध्य = बेरीज/संख्या = (4+6+8+10+12)/5 = 40/5 = 8.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the mode of the data 3, 5, 5, 7, 9?",
+          hi: "आँकड़ों 3, 5, 5, 7, 9 का बहुलक क्या है?",
+          mr: "3, 5, 5, 7, 9 या माहितीचा बहुलक काय?",
+        },
+        answer: 5,
+        wrong: [3, 7, 9],
+        solution: {
+          en: "The mode is the value occurring most often. Here 5 appears twice, more than any other, so the mode is 5.",
+          hi: "बहुलक सबसे अधिक बार आता मान। यहाँ 5 दो बार, किसी अन्य से अधिक, अतः बहुलक 5.",
+          mr: "बहुलक सर्वांत जास्त वेळा येणारे मूल्य. इथे 5 दोनदा, इतर कोणत्याहून अधिक, म्हणून बहुलक 5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the median of 5, 8, 11, 14, 17?",
+          hi: "5, 8, 11, 14, 17 की माध्यिका क्या है?",
+          mr: "5, 8, 11, 14, 17 चा मध्यक काय?",
+        },
+        answer: 11,
+        wrong: [8, 14, 55],
+        solution: {
+          en: "For 5 values in order, the median is the 3rd (middle) one, which is 11.",
+          hi: "क्रम में 5 मानों के लिए माध्यिका तीसरा (मध्य) है, जो 11.",
+          mr: "क्रमात 5 मूल्यांसाठी मध्यक तिसरा (मधला), जो 11.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the mean of 10, 20, 30 and 40?",
+          hi: "10, 20, 30 और 40 का माध्य क्या है?",
+          mr: "10, 20, 30 आणि 40 चा मध्य काय?",
+        },
+        answer: 25,
+        wrong: [30, 20, 100],
+        checkExpr: "100/4",
+        solution: {
+          en: "Mean = (10+20+30+40)/4 = 100/4 = 25.",
+          hi: "माध्य = (10+20+30+40)/4 = 100/4 = 25.",
+          mr: "मध्य = (10+20+30+40)/4 = 100/4 = 25.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "For a distribution the median is 20 and the mean is 22. Using Mode = 3 Median − 2 Mean, what is the mode?",
+          hi: "एक बंटन की माध्यिका 20 और माध्य 22 है। बहुलक = 3 माध्यिका − 2 माध्य से, बहुलक क्या है?",
+          mr: "एका वितरणाचा मध्यक 20 आणि मध्य 22 आहे. बहुलक = 3 मध्यक − 2 मध्य वापरून, बहुलक काय?",
+        },
+        answer: 16,
+        wrong: [24, 18, 20],
+        checkExpr: "3*20-2*22",
+        solution: {
+          en: "By the empirical relation, Mode = 3·20 − 2·22 = 60 − 44 = 16.",
+          hi: "आनुभविक संबंध से, बहुलक = 3·20 − 2·22 = 60 − 44 = 16.",
+          mr: "अनुभवसिद्ध संबंधाने, बहुलक = 3·20 − 2·22 = 60 − 44 = 16.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the median of the four values 3, 5, 7, 9?",
+          hi: "चार मानों 3, 5, 7, 9 की माध्यिका क्या है?",
+          mr: "चार मूल्यांचा 3, 5, 7, 9 मध्यक काय?",
+        },
+        answer: 6,
+        wrong: [5, 7, 12],
+        checkExpr: "(5+7)/2",
+        solution: {
+          en: "With an even count, the median is the average of the two middle values: (5+7)/2 = 6.",
+          hi: "सम गिनती में माध्यिका दो मध्य मानों का औसत: (5+7)/2 = 6.",
+          mr: "सम संख्येत मध्यक दोन मधल्या मूल्यांची सरासरी: (5+7)/2 = 6.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "For grouped data the mean is Σ(fᵢxᵢ)/Σfᵢ. If Σ(fᵢxᵢ) = 620 and Σfᵢ = 20, what is the mean?",
+          hi: "वर्गीकृत आँकड़ों का माध्य Σ(fᵢxᵢ)/Σfᵢ। यदि Σ(fᵢxᵢ) = 620 और Σfᵢ = 20, माध्य क्या है?",
+          mr: "वर्गीकृत माहितीचा मध्य Σ(fᵢxᵢ)/Σfᵢ. Σ(fᵢxᵢ) = 620 आणि Σfᵢ = 20 असेल, मध्य काय?",
+        },
+        answer: 31,
+        wrong: [20, 620, 15.5],
+        checkExpr: "620/20",
+        solution: {
+          en: "Mean = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31.",
+          hi: "माध्य = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31.",
+          mr: "मध्य = Σ(fᵢxᵢ)/Σfᵢ = 620/20 = 31.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The modal class has l = 10, f₁ = 20, f₀ = 12, f₂ = 8 and h = 5. Using Mode = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h, what is the mode?",
+          hi: "बहुलक वर्ग में l = 10, f₁ = 20, f₀ = 12, f₂ = 8 और h = 5. बहुलक = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h से, बहुलक क्या है?",
+          mr: "बहुलक वर्गात l = 10, f₁ = 20, f₀ = 12, f₂ = 8 आणि h = 5. बहुलक = l + [(f₁−f₀)/(2f₁−f₀−f₂)]·h वापरून, बहुलक काय?",
+        },
+        answer: 12,
+        wrong: [14, 18, 10],
+        checkExpr: "10+(20-12)/(2*20-12-8)*5",
+        solution: {
+          en: "Mode = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12.",
+          hi: "बहुलक = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12.",
+          mr: "बहुलक = 10 + [(20−12)/(40−12−8)]·5 = 10 + (8/20)·5 = 10 + 2 = 12.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The median class has l = 20, n = 50, cf = 20, f = 10 and h = 10. Using Median = l + [(n/2 − cf)/f]·h, what is the median?",
+          hi: "माध्यिका वर्ग में l = 20, n = 50, cf = 20, f = 10 और h = 10. माध्यिका = l + [(n/2 − cf)/f]·h से, माध्यिका क्या है?",
+          mr: "मध्यक वर्गात l = 20, n = 50, cf = 20, f = 10 आणि h = 10. मध्यक = l + [(n/2 − cf)/f]·h वापरून, मध्यक काय?",
+        },
+        answer: 25,
+        wrong: [30, 45, 20],
+        checkExpr: "20+(50/2-20)/10*10",
+        solution: {
+          en: "Median = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25.",
+          hi: "माध्यिका = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25.",
+          mr: "मध्यक = 20 + [(25 − 20)/10]·10 = 20 + (5/10)·10 = 20 + 5 = 25.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "By the step-deviation method, Mean = a + h·(Σfu/Σf). If a = 25, h = 10, Σfu = −6 and Σf = 30, what is the mean?",
+          hi: "पग-विचलन विधि से, माध्य = a + h·(Σfu/Σf)। यदि a = 25, h = 10, Σfu = −6 और Σf = 30, माध्य क्या है?",
+          mr: "पद-विचलन पद्धतीने, मध्य = a + h·(Σfu/Σf). a = 25, h = 10, Σfu = −6 आणि Σf = 30 असेल, मध्य काय?",
+        },
+        answer: 23,
+        wrong: [27, 25, 21],
+        checkExpr: "25+10*(0-6)/30",
+        solution: {
+          en: "Mean = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23.",
+          hi: "माध्य = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23.",
+          mr: "मध्य = 25 + 10·(−6/30) = 25 + 10·(−0.2) = 25 − 2 = 23.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is the mean of the first 10 natural numbers?",
+          hi: "पहली 10 प्राकृत संख्याओं का माध्य क्या है?",
+          mr: "पहिल्या 10 नैसर्गिक संख्यांचा मध्य काय?",
+        },
+        answer: 5.5,
+        wrong: [5, 10, 50],
+        checkExpr: "55/10",
+        solution: {
+          en: "1+2+…+10 = 55, and there are 10 numbers, so the mean = 55/10 = 5.5.",
+          hi: "1+2+…+10 = 55, और 10 संख्याएँ, अतः माध्य = 55/10 = 5.5.",
+          mr: "1+2+…+10 = 55, आणि 10 संख्या, म्हणून मध्य = 55/10 = 5.5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For a distribution the mean is 8 and the median is 10. Using Mode = 3 Median − 2 Mean, what is the mode?",
+          hi: "एक बंटन का माध्य 8 और माध्यिका 10 है। बहुलक = 3 माध्यिका − 2 माध्य से, बहुलक क्या है?",
+          mr: "एका वितरणाचा मध्य 8 आणि मध्यक 10 आहे. बहुलक = 3 मध्यक − 2 मध्य वापरून, बहुलक काय?",
+        },
+        answer: 14,
+        wrong: [26, 18, 30],
+        checkExpr: "3*10-2*8",
+        solution: {
+          en: "Mode = 3·10 − 2·8 = 30 − 16 = 14.",
+          hi: "बहुलक = 3·10 − 2·8 = 30 − 16 = 14.",
+          mr: "बहुलक = 3·10 − 2·8 = 30 − 16 = 14.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The mean of 20 numbers is 18. If every number is increased by 3, what is the new mean?",
+          hi: "20 संख्याओं का माध्य 18 है। यदि प्रत्येक संख्या 3 बढ़ा दी जाए, नया माध्य क्या है?",
+          mr: "20 संख्यांचा मध्य 18 आहे. प्रत्येक संख्या 3 ने वाढवली, तर नवा मध्य काय?",
+        },
+        answer: 21,
+        wrong: [18, 15, 24],
+        checkExpr: "18+3",
+        solution: {
+          en: "Adding the same amount to every value shifts the mean by that amount: 18 + 3 = 21.",
+          hi: "हर मान में समान मात्रा जोड़ने से माध्य उतना खिसकता: 18 + 3 = 21.",
+          mr: "प्रत्येक मूल्यात समान रक्कम जोडल्याने मध्य तितका सरकतो: 18 + 3 = 21.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The mean of 5 numbers is 30. If one number, 40, is removed, what is the mean of the remaining 4?",
+          hi: "5 संख्याओं का माध्य 30 है। यदि एक संख्या 40 हटा दी जाए, शेष 4 का माध्य क्या है?",
+          mr: "5 संख्यांचा मध्य 30 आहे. एक संख्या 40 काढली, तर उरलेल्या 4 चा मध्य काय?",
+        },
+        answer: 27.5,
+        wrong: [30, 25, 22],
+        checkExpr: "(30*5-40)/4",
+        solution: {
+          en: "Total = 30·5 = 150. Removing 40 leaves 110 over 4 numbers, so the new mean = (150−40)/4 = 110/4 = 27.5.",
+          hi: "कुल = 30·5 = 150. 40 हटाने पर 4 संख्याओं पर 110, अतः नया माध्य = (150−40)/4 = 110/4 = 27.5.",
+          mr: "एकूण = 30·5 = 150. 40 काढल्यावर 4 संख्यांवर 110, म्हणून नवा मध्य = (150−40)/4 = 110/4 = 27.5.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-statistics",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 13 — Statistics",
+      name: "Statistics",
+      summary:
+        "The three averages of grouped data: the mean by direct and step-deviation methods, the mode from the busiest class, the median from cumulative frequency, and the empirical link mode = 3 median − 2 mean.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "सांख्यिकी",
+          summary:
+            "वर्गीकृत आँकड़ों के तीन औसत: प्रत्यक्ष और पग-विचलन विधि से माध्य, सबसे व्यस्त वर्ग से बहुलक, संचयी बारंबारता से माध्यिका, और आनुभविक संबंध बहुलक = 3 माध्यिका − 2 माध्य।",
+        },
+        mr: {
+          name: "सांख्यिकी",
+          summary:
+            "वर्गीकृत माहितीचे तीन सरासरी: प्रत्यक्ष आणि पद-विचलन पद्धतीने मध्य, सर्वांत व्यग्र वर्गातून बहुलक, संचयी वारंवारतेतून मध्यक, आणि अनुभवसिद्ध संबंध बहुलक = 3 मध्यक − 2 मध्य.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Probability (the theoretical measure of chance)              */
+/* ------------------------------------------------------------------------- */
+function probability10(): TopicFileOut {
+  const rand = rng("maths-10-probability");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A fair coin is tossed once. What is the probability of getting a head, as a decimal?",
+          hi: "एक न्याय्य सिक्का एक बार उछाला जाता है। चित आने की प्रायिकता दशमलव में क्या है?",
+          mr: "एक न्याय्य नाणे एकदा उडवले जाते. छापा येण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.5,
+        wrong: [1, 0.25, 2],
+        checkExpr: "1/2",
+        solution: {
+          en: "There is 1 favourable outcome (head) out of 2 equally likely outcomes, so P = 1/2 = 0.5.",
+          hi: "2 समसंभावी परिणामों में 1 अनुकूल (चित), अतः P = 1/2 = 0.5.",
+          mr: "2 समसंभाव्य परिणामांत 1 अनुकूल (छापा), म्हणून P = 1/2 = 0.5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A fair die is rolled once. What is the probability of getting an even number, as a decimal?",
+          hi: "एक न्याय्य पासा एक बार फेंका जाता है। सम संख्या आने की प्रायिकता दशमलव में क्या है?",
+          mr: "एक न्याय्य फासा एकदा टाकला जातो. सम संख्या येण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.5,
+        wrong: [0.333, 0.167, 1],
+        checkExpr: "3/6",
+        solution: {
+          en: "Even numbers 2, 4, 6 are 3 favourable outcomes out of 6, so P = 3/6 = 0.5.",
+          hi: "सम संख्याएँ 2, 4, 6 यानी 6 में 3 अनुकूल, अतः P = 3/6 = 0.5.",
+          mr: "सम संख्या 2, 4, 6 म्हणजे 6 पैकी 3 अनुकूल, म्हणून P = 3/6 = 0.5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the probability of a certain event (one that is sure to happen)?",
+          hi: "एक निश्चित घटना (जो अवश्य घटेगी) की प्रायिकता क्या है?",
+          mr: "एका निश्चित घटनेची (जी नक्की घडेल) संभाव्यता काय?",
+        },
+        answer: 1,
+        wrong: [0, 0.5, -1],
+        solution: {
+          en: "A sure event has probability 1 — every probability lies between 0 (impossible) and 1 (certain).",
+          hi: "निश्चित घटना की प्रायिकता 1 — हर प्रायिकता 0 (असंभव) और 1 (निश्चित) के बीच।",
+          mr: "निश्चित घटनेची संभाव्यता 1 — प्रत्येक संभाव्यता 0 (अशक्य) आणि 1 (निश्चित) दरम्यान.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two fair coins are tossed together. What is the probability of getting two heads, as a decimal?",
+          hi: "दो न्याय्य सिक्के एक साथ उछाले जाते हैं। दो चित आने की प्रायिकता दशमलव में क्या है?",
+          mr: "दोन न्याय्य नाणी एकत्र उडवली जातात. दोन छापे येण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.25,
+        wrong: [0.5, 0.75, 0.125],
+        checkExpr: "1/4",
+        solution: {
+          en: "The 4 equally likely outcomes are HH, HT, TH, TT; only HH gives two heads, so P = 1/4 = 0.25.",
+          hi: "4 समसंभावी परिणाम HH, HT, TH, TT; केवल HH में दो चित, अतः P = 1/4 = 0.25.",
+          mr: "4 समसंभाव्य परिणाम HH, HT, TH, TT; फक्त HH मध्ये दोन छापे, म्हणून P = 1/4 = 0.25.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A card is drawn at random from a standard pack of 52. What is the probability that it is a spade, as a decimal?",
+          hi: "52 पत्तों की मानक गड्डी से यादृच्छिक एक पत्ता निकाला जाता है। उसके हुकुम होने की प्रायिकता दशमलव में क्या है?",
+          mr: "52 पत्त्यांच्या प्रमाण संचातून यादृच्छिक एक पत्ता काढला जातो. तो इस्पिक असण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.25,
+        wrong: [0.5, 0.077, 0.019],
+        checkExpr: "13/52",
+        solution: {
+          en: "There are 13 spades out of 52 cards, so P = 13/52 = 1/4 = 0.25.",
+          hi: "52 पत्तों में 13 हुकुम, अतः P = 13/52 = 1/4 = 0.25.",
+          mr: "52 पत्त्यांत 13 इस्पिक, म्हणून P = 13/52 = 1/4 = 0.25.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the probability of an impossible event?",
+          hi: "एक असंभव घटना की प्रायिकता क्या है?",
+          mr: "एका अशक्य घटनेची संभाव्यता काय?",
+        },
+        answer: 0,
+        wrong: [1, 0.5, -1],
+        solution: {
+          en: "An impossible event has no favourable outcomes, so its probability is 0.",
+          hi: "असंभव घटना का कोई अनुकूल परिणाम नहीं, अतः इसकी प्रायिकता 0.",
+          mr: "अशक्य घटनेला कोणताही अनुकूल परिणाम नाही, म्हणून तिची संभाव्यता 0.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A bag contains 3 red and 2 blue balls. What is the probability of drawing a red ball, as a decimal?",
+          hi: "एक थैले में 3 लाल और 2 नीली गेंदें हैं। एक लाल गेंद निकालने की प्रायिकता दशमलव में क्या है?",
+          mr: "एका पिशवीत 3 लाल आणि 2 निळे चेंडू आहेत. एक लाल चेंडू काढण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.6,
+        wrong: [0.4, 0.2, 1],
+        checkExpr: "3/5",
+        solution: {
+          en: "There are 3 red balls out of 5 in all, so P(red) = 3/5 = 0.6. (0.4 is P(blue).)",
+          hi: "कुल 5 में 3 लाल, अतः P(लाल) = 3/5 = 0.6. (0.4 P(नीली)।)",
+          mr: "एकूण 5 पैकी 3 लाल, म्हणून P(लाल) = 3/5 = 0.6. (0.4 P(निळा).)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A card is drawn from a pack of 52. What is the probability that it is a red card, as a decimal?",
+          hi: "52 पत्तों की गड्डी से एक पत्ता निकाला जाता है। उसके लाल पत्ता होने की प्रायिकता दशमलव में क्या है?",
+          mr: "52 पत्त्यांच्या संचातून एक पत्ता काढला जातो. तो लाल पत्ता असण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.5,
+        wrong: [0.25, 0.077, 1],
+        checkExpr: "26/52",
+        solution: {
+          en: "Half the pack is red (hearts and diamonds), 26 of 52, so P = 26/52 = 0.5.",
+          hi: "गड्डी का आधा लाल (पान और ईंट), 52 में 26, अतः P = 26/52 = 0.5.",
+          mr: "संचाचा अर्धा लाल (बदाम आणि चौकट), 52 पैकी 26, म्हणून P = 26/52 = 0.5.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A number is chosen at random from 1 to 20. What is the probability that it is a multiple of 5, as a decimal?",
+          hi: "1 से 20 में से यादृच्छिक एक संख्या चुनी जाती है। उसके 5 का गुणज होने की प्रायिकता दशमलव में क्या है?",
+          mr: "1 ते 20 मधून यादृच्छिक एक संख्या निवडली जाते. ती 5 चा पट असण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.2,
+        wrong: [0.25, 0.05, 0.5],
+        checkExpr: "4/20",
+        solution: {
+          en: "The multiples of 5 are 5, 10, 15, 20 — 4 of them out of 20, so P = 4/20 = 0.2.",
+          hi: "5 के गुणज 5, 10, 15, 20 — 20 में 4, अतः P = 4/20 = 0.2.",
+          mr: "5 चे पट 5, 10, 15, 20 — 20 पैकी 4, म्हणून P = 4/20 = 0.2.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A bag has 5 red, 3 green and 2 blue balls. What is the probability of drawing a green ball, as a decimal?",
+          hi: "एक थैले में 5 लाल, 3 हरी और 2 नीली गेंदें हैं। एक हरी गेंद निकालने की प्रायिकता दशमलव में क्या है?",
+          mr: "एका पिशवीत 5 लाल, 3 हिरवे आणि 2 निळे चेंडू आहेत. एक हिरवा चेंडू काढण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.3,
+        wrong: [0.5, 0.2, 0.7],
+        checkExpr: "3/10",
+        solution: {
+          en: "There are 3 green balls out of 10 in total, so P(green) = 3/10 = 0.3.",
+          hi: "कुल 10 में 3 हरी, अतः P(हरी) = 3/10 = 0.3.",
+          mr: "एकूण 10 पैकी 3 हिरवे, म्हणून P(हिरवा) = 3/10 = 0.3.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Cards numbered 1 to 25 are placed in a box and one is drawn at random. What is the probability that its number is divisible by 5, as a decimal?",
+          hi: "1 से 25 तक अंकित कार्ड एक डिब्बे में रखे और एक यादृच्छिक निकाला जाता है। उसकी संख्या 5 से विभाज्य होने की प्रायिकता दशमलव में क्या है?",
+          mr: "1 ते 25 अंकित कार्डे एका पेटीत ठेवली आणि एक यादृच्छिक काढले जाते. त्याची संख्या 5 ने भाग जाण्याची संभाव्यता दशांशात काय?",
+        },
+        answer: 0.2,
+        wrong: [0.25, 0.04, 0.5],
+        checkExpr: "5/25",
+        solution: {
+          en: "Numbers divisible by 5 are 5, 10, 15, 20, 25 — 5 of them out of 25, so P = 5/25 = 0.2.",
+          hi: "5 से विभाज्य संख्याएँ 5, 10, 15, 20, 25 — 25 में 5, अतः P = 5/25 = 0.2.",
+          mr: "5 ने भाग जाणाऱ्या संख्या 5, 10, 15, 20, 25 — 25 पैकी 5, म्हणून P = 5/25 = 0.2.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A bag has 12 balls, some red and the rest black. If the probability of drawing a red ball is 0.25, how many red balls are there?",
+          hi: "एक थैले में 12 गेंदें हैं, कुछ लाल और बाक़ी काली। यदि एक लाल गेंद निकालने की प्रायिकता 0.25 है, कितनी लाल गेंदें हैं?",
+          mr: "एका पिशवीत 12 चेंडू आहेत, काही लाल आणि उरलेले काळे. एक लाल चेंडू काढण्याची संभाव्यता 0.25 असेल, किती लाल चेंडू आहेत?",
+        },
+        answer: 3,
+        wrong: [4, 6, 9],
+        checkExpr: "0.25*12",
+        solution: {
+          en: "Number of red = P(red)·total = 0.25·12 = 3.",
+          hi: "लाल की संख्या = P(लाल)·कुल = 0.25·12 = 3.",
+          mr: "लाल संख्या = P(लाल)·एकूण = 0.25·12 = 3.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The probability that an event happens is 0.35. What is the probability that it does NOT happen?",
+          hi: "किसी घटना के घटने की प्रायिकता 0.35 है। उसके न घटने की प्रायिकता क्या है?",
+          mr: "एका घटनेच्या घडण्याची संभाव्यता 0.35 आहे. ती न घडण्याची संभाव्यता काय?",
+        },
+        answer: 0.65,
+        wrong: [0.35, 0.7, 0.5],
+        checkExpr: "(100-35)/100",
+        solution: {
+          en: "P(not) = 1 − P(happens) = 1 − 0.35 = 0.65.",
+          hi: "P(नहीं) = 1 − P(घटना) = 1 − 0.35 = 0.65.",
+          mr: "P(नाही) = 1 − P(घटना) = 1 − 0.35 = 0.65.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A jar holds 24 marbles, some blue and some green. If the probability of drawing a blue marble is 2/3, how many green marbles are there?",
+          hi: "एक मर्तबान में 24 कंचे हैं, कुछ नीले और कुछ हरे। यदि एक नीला कंचा निकालने की प्रायिकता 2/3 है, कितने हरे कंचे हैं?",
+          mr: "एका बरणीत 24 गोट्या आहेत, काही निळ्या आणि काही हिरव्या. एक निळी गोटी काढण्याची संभाव्यता 2/3 असेल, किती हिरव्या गोट्या आहेत?",
+        },
+        answer: 8,
+        wrong: [16, 6, 12],
+        checkExpr: "24/3",
+        solution: {
+          en: "P(green) = 1 − 2/3 = 1/3, so green = 24·(1/3) = 24/3 = 8. (16 is the number of blue marbles.)",
+          hi: "P(हरा) = 1 − 2/3 = 1/3, अतः हरे = 24·(1/3) = 24/3 = 8. (16 नीले कंचों की संख्या।)",
+          mr: "P(हिरवा) = 1 − 2/3 = 1/3, म्हणून हिरव्या = 24·(1/3) = 24/3 = 8. (16 निळ्या गोट्यांची संख्या.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-probability",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 14 — Probability",
+      name: "Probability",
+      summary:
+        "Chance made a number: theoretical probability as favourable over total equally likely outcomes, always between 0 and 1, with a coin, a die, a pack of cards and a bag of balls — and the complement 1 − P for the opposite.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "प्रायिकता",
+          summary:
+            "संयोग एक संख्या बना: सैद्धांतिक प्रायिकता बतौर अनुकूल बटा कुल समसंभावी परिणाम, सदा 0 और 1 के बीच, सिक्के, पासे, ताश और गेंदों के थैले से — और विपरीत के लिए पूरक 1 − P।",
+        },
+        mr: {
+          name: "संभाव्यता",
+          summary:
+            "योग एक संख्या झाला: सैद्धांतिक संभाव्यता म्हणून अनुकूल भागिले एकूण समसंभाव्य परिणाम, सदैव 0 आणि 1 दरम्यान, नाणे, फासा, पत्ते आणि चेंडूंच्या पिशवीने — आणि विरुद्धासाठी पूरक 1 − P.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+
 export const G10_MATHS: TopicFileOut[] = [
   realNumbers(),
   polynomials10(),
@@ -3822,4 +4455,6 @@ export const G10_MATHS: TopicFileOut[] = [
   circles10(),
   areasRelatedCircles(),
   surfaceVolumes10(),
+  statistics10(),
+  probability10(),
 ];
