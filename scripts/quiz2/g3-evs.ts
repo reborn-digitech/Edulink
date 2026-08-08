@@ -2085,4 +2085,1109 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Our First School (the family teaches first)                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-our-first-school",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 4 — Our First School",
+      hi: "अध्याय 4 — हमारी पहली पाठशाला",
+      mr: "प्रकरण 4 — आपली पहिली शाळा",
+    },
+    name: { en: "Our First School", hi: "हमारी पहली पाठशाला", mr: "आपली पहिली शाळा" },
+    summary: {
+      en: "Long before the school bell, home has been teaching — words, manners, skills and the ways of the family.",
+      hi: "स्कूल की घंटी से बहुत पहले से घर सिखाता आया है — बोली, आदतें, हुनर और परिवार के तौर-तरीक़े।",
+      mr: "शाळेच्या घंटेच्या खूप आधीपासून घर शिकवत आले आहे — बोली, रीती, कौशल्ये आणि कुटुंबाच्या तऱ्हा.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "family",
+        name: { en: "The family", hi: "परिवार", mr: "कुटुंब" },
+        kind: "idea",
+        prompt: {
+          en: "We learn our first words, first steps and first habits before any school begins — who teaches all this, and is called our first school?",
+          hi: "पहली बोली, पहले क़दम और पहली आदतें हम किसी भी स्कूल से पहले सीख लेते हैं — यह सब कौन सिखाता है, जिसे हमारी पहली पाठशाला कहते हैं?",
+          mr: "पहिले शब्द, पहिली पावले आणि पहिल्या सवयी आपण कोणत्याही शाळेआधी शिकतो — हे सारे कोण शिकवते, ज्याला आपली पहिली शाळा म्हणतात?",
+        },
+        statement: {
+          en: "The family is our first school — walking, speaking and behaving are all learnt at home first.",
+          hi: "परिवार हमारी पहली पाठशाला है — चलना, बोलना और बरतना, सब पहले घर में ही सीखा जाता है।",
+          mr: "कुटुंब ही आपली पहिली शाळा — चालणे, बोलणे आणि वागणे, सारे आधी घरातच शिकले जाते.",
+        },
+        detail: {
+          en: "In this school there is no bell, no blackboard and no examination, yet lessons happen every day.",
+          hi: "इस पाठशाला में न घंटी है, न श्यामपट्ट, न परीक्षा — फिर भी पाठ रोज़ चलते हैं।",
+          mr: "या शाळेत घंटा नाही, फळा नाही, परीक्षा नाही — तरी धडे रोज चालतात.",
+        },
+        extra: {
+          en: "What it teaches — language, manners, little skills — stays with us for the whole of life.",
+          hi: "यह जो सिखाता है — बोली, आदतें, छोटे-छोटे हुनर — वह जीवन भर साथ रहता है।",
+          mr: "ते जे शिकवते — बोली, रीती, छोटी छोटी कौशल्ये — ते आयुष्यभर सोबत राहते.",
+        },
+        pair: {
+          left: { en: "Our first school", hi: "हमारी पहली पाठशाला", mr: "आपली पहिली शाळा" },
+          right: { en: "the family", hi: "परिवार", mr: "कुटुंब" },
+        },
+      },
+      {
+        id: "mothertongue",
+        name: { en: "The mother tongue", hi: "मातृभाषा", mr: "मातृभाषा" },
+        kind: "home-lesson",
+        prompt: {
+          en: "Which language does a child pick up at home only by hearing it — no book, no teacher, no test?",
+          hi: "कौन-सी भाषा बच्चा घर में सिर्फ़ सुन-सुनकर सीख लेता है — न किताब, न शिक्षक, न परीक्षा?",
+          mr: "कोणती भाषा मूल घरात नुसती ऐकून शिकते — पुस्तक नाही, शिक्षक नाही, परीक्षा नाही?",
+        },
+        statement: {
+          en: "The mother tongue is learnt at home just by listening and speaking — no one sits down to teach it.",
+          hi: "मातृभाषा घर में सुनते-बोलते ही आ जाती है — उसे बैठाकर कोई नहीं पढ़ाता।",
+          mr: "मातृभाषा घरात ऐकता-बोलता आपोआप येते — ती बसवून कोणी शिकवत नाही.",
+        },
+        pair: {
+          left: { en: "The mother tongue", hi: "मातृभाषा", mr: "मातृभाषा" },
+          right: { en: "learnt just by listening", hi: "बस सुनकर सीखी जाती है", mr: "नुसती ऐकून येते" },
+        },
+      },
+      {
+        id: "watching",
+        name: { en: "Learning by watching", hi: "देखकर सीखना", mr: "पाहून शिकणे" },
+        kind: "home-lesson",
+        prompt: {
+          en: "A child rolls a roti round because she has seen her mother do it a hundred times. What is this way of learning called?",
+          hi: "बच्ची रोटी गोल बेल लेती है क्योंकि उसने माँ को सौ बार करते देखा है। सीखने के इस ढंग को क्या कहते हैं?",
+          mr: "आईला शंभरदा करताना पाहिले म्हणून मुलगी पोळी गोल लाटते. शिकण्याच्या या रीतीला काय म्हणतात?",
+        },
+        statement: {
+          en: "At home much is learnt by watching elders do a thing and then trying it with one's own hands.",
+          hi: "घर में बहुत कुछ बड़ों को करते देखकर और फिर अपने हाथों आज़माकर सीखा जाता है।",
+          mr: "घरात बरेच काही मोठ्यांना करताना पाहून आणि मग स्वतःच्या हाताने करून पाहून शिकले जाते.",
+        },
+      },
+      {
+        id: "grandparents",
+        name: { en: "Grandparents", hi: "दादा-दादी, नाना-नानी", mr: "आजी-आजोबा" },
+        kind: "teacher-at-home",
+        prompt: {
+          en: "Who in the family tells stories of long ago and knows a home remedy for every little illness?",
+          hi: "परिवार में कौन बीते ज़माने के क़िस्से सुनाते हैं और हर छोटी बीमारी का घरेलू नुस्ख़ा जानते हैं?",
+          mr: "कुटुंबात जुन्या काळाच्या गोष्टी कोण सांगतात, आणि प्रत्येक छोट्या दुखण्यावर घरगुती उपाय कोणाला ठाऊक असतो?",
+        },
+        statement: {
+          en: "Grandparents tell stories of the old days and teach many things that no book carries.",
+          hi: "दादा-दादी बीते दिनों के क़िस्से सुनाते हैं और वह बहुत कुछ सिखाते हैं जो किसी किताब में नहीं मिलता।",
+          mr: "आजी-आजोबा जुन्या दिवसांच्या गोष्टी सांगतात आणि पुस्तकात न सापडणारे बरेच काही शिकवतात.",
+        },
+        pair: {
+          left: { en: "Grandparents", hi: "दादा-दादी, नाना-नानी", mr: "आजी-आजोबा" },
+          right: { en: "stories of long ago", hi: "बीते ज़माने के क़िस्से", mr: "जुन्या काळाच्या गोष्टी" },
+        },
+        decoys: [
+          { en: "The school teacher", hi: "स्कूल के शिक्षक", mr: "शाळेतले शिक्षक" },
+          { en: "The neighbours", hi: "पड़ोसी", mr: "शेजारी" },
+        ],
+      },
+      {
+        id: "manners",
+        name: { en: "Good manners", hi: "अच्छे संस्कार", mr: "चांगले संस्कार" },
+        kind: "home-lesson",
+        prompt: {
+          en: "Greeting elders, sharing what you have, speaking gently — what are these first lessons of home together called?",
+          hi: "बड़ों का अभिवादन, अपनी चीज़ बाँटना, नरमी से बोलना — घर के इन पहले पाठों को एक साथ क्या कहते हैं?",
+          mr: "मोठ्यांना नमस्कार, आपली वस्तू वाटून घेणे, हळुवार बोलणे — घरच्या या पहिल्या धड्यांना मिळून काय म्हणतात?",
+        },
+        statement: {
+          en: "Manners — greeting elders, sharing, speaking gently — are copied from the family long before anyone explains them.",
+          hi: "संस्कार — बड़ों का अभिवादन, बाँटना, नरमी से बोलना — समझाए जाने से बहुत पहले परिवार से देख-देखकर आ जाते हैं।",
+          mr: "संस्कार — मोठ्यांना नमस्कार, वाटून घेणे, हळुवार बोलणे — कोणी समजावण्याआधीच कुटुंबाकडून उचलले जातात.",
+        },
+        pair: {
+          left: { en: "Good manners", hi: "अच्छे संस्कार", mr: "चांगले संस्कार" },
+          right: { en: "copied from the family", hi: "परिवार से देखकर आते हैं", mr: "कुटुंबाकडून उचलले जातात" },
+        },
+      },
+      {
+        id: "resemblance",
+        name: { en: "Family likeness", hi: "परिवार से मिलती शक्ल", mr: "कुटुंबाशी मिळतेजुळते रूप" },
+        kind: "family-trait",
+        prompt: {
+          en: "\"Your nose is just like your father's, and you laugh like your grandmother!\" — what is this called, that runs in families?",
+          hi: "\"तुम्हारी नाक बिलकुल पिताजी जैसी है, और हँसी दादी जैसी!\" — परिवारों में चली आती इस समानता को क्या कहते हैं?",
+          mr: "\"तुझे नाक अगदी बाबांसारखे, आणि हसणे आजीसारखे!\" — कुटुंबात चालत आलेल्या या साम्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Children often look or sound like their family — a nose, a walk, a laugh travels down a family.",
+          hi: "बच्चे अक्सर अपने परिवार जैसे दिखते या बोलते हैं — नाक, चाल, हँसी परिवार में उतरती चली आती है।",
+          mr: "मुले अनेकदा आपल्या कुटुंबासारखी दिसतात वा बोलतात — नाक, चाल, हसणे कुटुंबात उतरत येते.",
+        },
+        detail: {
+          en: "The likeness may be in looks — eyes, nose, height — or in ways — voice, walk, laugh.",
+          hi: "यह मेल शक्ल में हो सकता है — आँखें, नाक, क़द — या ढंग में — आवाज़, चाल, हँसी।",
+          mr: "हे साम्य रूपात असू शकते — डोळे, नाक, उंची — किंवा तऱ्हेत — आवाज, चाल, हसणे.",
+        },
+        extra: {
+          en: "A child may take after grandparents or an aunt, not only mother and father.",
+          hi: "बच्चा दादा-दादी या बुआ-मौसी पर भी जा सकता है, केवल माता-पिता पर नहीं।",
+          mr: "मूल आजी-आजोबांवर वा आत्या-मावशीवरही जाऊ शकते, केवळ आई-वडिलांवर नाही.",
+        },
+      },
+      {
+        id: "familywork",
+        name: {
+          en: "By helping elders at the family's work",
+          hi: "बड़ों के काम में हाथ बँटाकर",
+          mr: "मोठ्यांच्या कामात हातभार लावून",
+        },
+        kind: "home-lesson",
+        prompt: {
+          en: "A potter's daughter can shape a little diya, a farmer's son can tell seeds apart — how did they learn it?",
+          hi: "कुम्हार की बेटी नन्हा दीया गढ़ लेती है, किसान का बेटा बीज पहचान लेता है — उन्होंने यह कैसे सीखा?",
+          mr: "कुंभाराची मुलगी इवली पणती घडवते, शेतकऱ्याचा मुलगा बियाणे ओळखतो — ते हे कसे शिकले?",
+        },
+        statement: {
+          en: "The family's work — sowing, weaving, shaping clay — is learnt by helping elders at it, little by little.",
+          hi: "परिवार का काम — बोना, बुनना, मिट्टी गढ़ना — बड़ों के साथ हाथ बँटाते-बँटाते थोड़ा-थोड़ा सीखा जाता है।",
+          mr: "कुटुंबाचे काम — पेरणे, विणणे, माती घडवणे — मोठ्यांसोबत हातभार लावता लावता थोडे थोडे शिकले जाते.",
+        },
+        pair: {
+          left: { en: "The family's own work", hi: "परिवार का अपना काम", mr: "कुटुंबाचे स्वतःचे काम" },
+          right: {
+            en: "learnt by helping at it",
+            hi: "हाथ बँटाकर सीखा जाता है",
+            mr: "हातभार लावून शिकले जाते",
+          },
+        },
+      },
+      {
+        id: "habits",
+        name: { en: "Healthy habits", hi: "सेहत की आदतें", mr: "आरोग्याच्या सवयी" },
+        kind: "home-lesson",
+        prompt: {
+          en: "Washing hands before food, brushing teeth, sleeping on time — what are these everyday lessons of the body called?",
+          hi: "खाने से पहले हाथ धोना, दाँत माँजना, समय पर सोना — शरीर के इन रोज़ के पाठों को क्या कहते हैं?",
+          mr: "जेवणाआधी हात धुणे, दात घासणे, वेळेवर झोपणे — शरीराच्या या रोजच्या धड्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Healthy habits — washing hands before food, brushing teeth — are set at home in early childhood.",
+          hi: "सेहत की आदतें — खाने से पहले हाथ धोना, दाँत माँजना — बचपन में घर पर ही पड़ जाती हैं।",
+          mr: "आरोग्याच्या सवयी — जेवणाआधी हात धुणे, दात घासणे — लहानपणी घरातच लागतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into LEARNT AT HOME FIRST and LEARNT AT SCHOOL: speaking the mother tongue, writing on a slate, greeting elders, sitting for an examination. Which sorting is right?",
+          hi: "इन्हें पहले घर में सीखा और स्कूल में सीखा में छाँटिए: मातृभाषा बोलना, स्लेट पर लिखना, बड़ों का अभिवादन, परीक्षा देना। कौन-सी छँटाई सही है?",
+          mr: "यांची आधी घरात शिकले आणि शाळेत शिकले अशी वर्गवारी करा: मातृभाषा बोलणे, पाटीवर लिहिणे, मोठ्यांना नमस्कार, परीक्षा देणे. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Home: mother tongue, greeting elders · School: writing on a slate, examinations",
+            hi: "घर: मातृभाषा, बड़ों का अभिवादन · स्कूल: स्लेट पर लिखना, परीक्षा",
+            mr: "घर: मातृभाषा, मोठ्यांना नमस्कार · शाळा: पाटीवर लिहिणे, परीक्षा",
+          },
+          {
+            en: "Home: writing on a slate, examinations · School: mother tongue, greeting elders",
+            hi: "घर: स्लेट पर लिखना, परीक्षा · स्कूल: मातृभाषा, बड़ों का अभिवादन",
+            mr: "घर: पाटीवर लिहिणे, परीक्षा · शाळा: मातृभाषा, मोठ्यांना नमस्कार",
+          },
+          {
+            en: "Home: mother tongue, examinations · School: greeting elders, writing on a slate",
+            hi: "घर: मातृभाषा, परीक्षा · स्कूल: बड़ों का अभिवादन, स्लेट पर लिखना",
+            mr: "घर: मातृभाषा, परीक्षा · शाळा: मोठ्यांना नमस्कार, पाटीवर लिहिणे",
+          },
+          {
+            en: "Home: greeting elders, writing on a slate · School: mother tongue, examinations",
+            hi: "घर: बड़ों का अभिवादन, स्लेट पर लिखना · स्कूल: मातृभाषा, परीक्षा",
+            mr: "घर: मोठ्यांना नमस्कार, पाटीवर लिहिणे · शाळा: मातृभाषा, परीक्षा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The test is: did anyone sit you down with a book for it? Speech and manners soak in at home years before school; slates and examinations begin only in a classroom.",
+          hi: "कसौटी यह है: क्या इसके लिए किसी ने आपको किताब लेकर बैठाया था? बोली और संस्कार स्कूल से बरसों पहले घर में रच-बस जाते हैं; स्लेट और परीक्षा कक्षा में ही शुरू होती हैं।",
+          mr: "कसोटी अशी: यासाठी कोणी तुम्हाला पुस्तक घेऊन बसवले होते का? बोली आणि संस्कार शाळेच्या कितीतरी वर्षे आधी घरात मुरतात; पाटी आणि परीक्षा वर्गातच सुरू होतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Munna's grandmother never went to school, yet she knows a hundred stories, a cure for a cough, and how to weave a mat. What does this show?",
+          hi: "मुन्ना की दादी कभी स्कूल नहीं गईं, फिर भी उन्हें सौ क़िस्से, खाँसी का इलाज और चटाई बुनना आता है। इससे क्या पता चलता है?",
+          mr: "मुन्नाची आजी कधी शाळेत गेली नाही, तरी तिला शंभर गोष्टी, खोकल्यावरचा उपाय आणि चटई विणणे येते. यावरून काय कळते?",
+        },
+        choices: [
+          {
+            en: "A person can know a great deal without schooling — family and life also teach",
+            hi: "बिना स्कूल गए भी इंसान बहुत कुछ जान सकता है — परिवार और जीवन भी सिखाते हैं",
+            mr: "शाळेत न जाताही माणसाला खूप काही येऊ शकते — कुटुंब आणि जीवनही शिकवतात",
+          },
+          {
+            en: "Stories and mat-weaving do not count as real knowledge",
+            hi: "क़िस्से और चटाई बुनना असली ज्ञान नहीं कहलाते",
+            mr: "गोष्टी आणि चटई विणणे खरे ज्ञान म्हणता येत नाही",
+          },
+          {
+            en: "Whatever is worth knowing can only be taught in a school",
+            hi: "जो भी जानने लायक़ है, वह केवल स्कूल में ही सिखाया जा सकता है",
+            mr: "जे काही शिकण्याजोगे आहे, ते फक्त शाळेतच शिकवले जाऊ शकते",
+          },
+          {
+            en: "Grandmother must have secretly attended a school",
+            hi: "दादी ज़रूर चुपके से किसी स्कूल गई होंगी",
+            mr: "आजी नक्कीच गुपचूप कुठल्या तरी शाळेत गेली असणार",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Everything she knows was learnt the first-school way — from her own elders, by listening, watching and doing. School is one place of learning, not the only one; that is exactly why the family is called our first school.",
+          hi: "उनका सारा ज्ञान पहली पाठशाला के ढंग से आया — अपने बड़ों से, सुनकर, देखकर, करके। स्कूल सीखने की एक जगह है, इकलौती नहीं; इसीलिए तो परिवार को हमारी पहली पाठशाला कहते हैं।",
+          mr: "तिचे सारे ज्ञान पहिल्या शाळेच्या रीतीने आले — आपल्या मोठ्यांकडून, ऐकून, पाहून, करून. शाळा ही शिकण्याची एक जागा आहे, एकमेव नाही; म्हणूनच कुटुंबाला आपली पहिली शाळा म्हणतात.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — It's Raining (where rain comes from and what it wakes)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-its-raining",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 9 — It's Raining",
+      hi: "अध्याय 9 — बरसात आई",
+      mr: "प्रकरण 9 — पाऊस आला",
+    },
+    name: { en: "It's Raining", hi: "बरसात आई", mr: "पाऊस आला" },
+    summary: {
+      en: "Where rain comes from and where it goes — the Sun, the vapour, the clouds, the falling drops, and everything that wakes up wet and happy.",
+      hi: "बारिश कहाँ से आती है और कहाँ जाती है — सूरज, भाप, बादल, गिरती बूँदें, और वह सब जो भीगकर ख़ुश हो उठता है।",
+      mr: "पाऊस कुठून येतो आणि कुठे जातो — सूर्य, वाफ, ढग, पडणारे थेंब, आणि भिजून आनंदणारे सारे काही.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "sun",
+        name: { en: "The Sun", hi: "सूरज", mr: "सूर्य" },
+        kind: "cycle-step",
+        seq: 1,
+        prompt: {
+          en: "Who heats the water of ponds, rivers and seas until some of it climbs invisibly into the air?",
+          hi: "कौन तालाबों, नदियों और समुद्रों के पानी को तपाता है, जिससे उसका कुछ हिस्सा अनदेखे ही हवा में चढ़ जाता है?",
+          mr: "तळी, नद्या आणि समुद्रांचे पाणी कोण तापवतो, ज्याने त्याचा काही भाग न दिसता हवेत चढतो?",
+        },
+        statement: {
+          en: "The Sun's heat turns the water of ponds and seas into vapour and sends it up into the air.",
+          hi: "सूरज की गरमी तालाबों-समुद्रों के पानी को भाप बनाकर हवा में ऊपर भेज देती है।",
+          mr: "सूर्याची उष्णता तळ्या-समुद्रांच्या पाण्याची वाफ करून ती हवेत वर पाठवते.",
+        },
+        pair: {
+          left: { en: "The Sun", hi: "सूरज", mr: "सूर्य" },
+          right: { en: "turns water into vapour", hi: "पानी को भाप बनाता है", mr: "पाण्याची वाफ करतो" },
+        },
+      },
+      {
+        id: "vapour",
+        name: { en: "Water vapour", hi: "भाप", mr: "वाफ" },
+        kind: "cycle-step",
+        seq: 2,
+        prompt: {
+          en: "What is water called when it floats in the air as a gas too fine to see?",
+          hi: "पानी को क्या कहते हैं जब वह इतना महीन होकर हवा में तैरता है कि दिखता ही नहीं?",
+          mr: "पाणी इतके सूक्ष्म होऊन हवेत तरंगते की दिसतच नाही, तेव्हा त्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Water vapour is water floating in the air, too fine for the eye to see.",
+          hi: "भाप हवा में तैरता पानी है — इतना महीन कि आँख से दिखे नहीं।",
+          mr: "वाफ म्हणजे हवेत तरंगणारे पाणी — डोळ्यांना न दिसण्याइतके सूक्ष्म.",
+        },
+      },
+      {
+        id: "clouds",
+        name: { en: "Clouds", hi: "बादल", mr: "ढग" },
+        kind: "cycle-step",
+        seq: 3,
+        prompt: {
+          en: "High in the sky the vapour cools into countless tiny drops that gather in floating heaps — what are these heaps called?",
+          hi: "आसमान में ऊँचे जाकर भाप ठंडी होकर अनगिनत नन्ही बूँदें बन जाती है, जो तैरते ढेरों में जमा होती हैं — इन ढेरों को क्या कहते हैं?",
+          mr: "आकाशात उंच गेल्यावर वाफ थंड होऊन असंख्य इवले थेंब बनते, जे तरंगत्या पुंजक्यांत जमतात — या पुंजक्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Clouds are crowds of tiny water drops floating high in the sky.",
+          hi: "बादल आसमान में ऊँचे तैरती नन्ही बूँदों की भीड़ हैं।",
+          mr: "ढग म्हणजे आकाशात उंच तरंगणाऱ्या इवल्या थेंबांची गर्दी.",
+        },
+        detail: {
+          en: "They are made of the very vapour the Sun sent up, cooled in the high air.",
+          hi: "ये उसी भाप से बने हैं जो सूरज ने ऊपर भेजी थी — ऊँची हवा में ठंडी होकर।",
+          mr: "सूर्याने वर पाठवलेल्या त्याच वाफेपासून हे बनतात — उंच हवेत थंड होऊन.",
+        },
+        pair: {
+          left: { en: "Clouds", hi: "बादल", mr: "ढग" },
+          right: { en: "crowds of tiny drops", hi: "नन्ही बूँदों की भीड़", mr: "इवल्या थेंबांची गर्दी" },
+        },
+      },
+      {
+        id: "rain",
+        name: { en: "Rain", hi: "बारिश", mr: "पाऊस" },
+        kind: "cycle-step",
+        seq: 4,
+        prompt: {
+          en: "When the drops inside a cloud grow too big and heavy to float, what do they come down as?",
+          hi: "जब बादल के भीतर की बूँदें इतनी बड़ी और भारी हो जाएँ कि तैर न सकें, तो वे किस रूप में नीचे आती हैं?",
+          mr: "ढगातले थेंब इतके मोठे आणि जड होतात की तरंगू शकत नाहीत, तेव्हा ते कोणत्या रूपात खाली येतात?",
+        },
+        statement: {
+          en: "Rain falls when a cloud's drops grow too heavy to stay floating.",
+          hi: "बारिश तब गिरती है जब बादल की बूँदें तैरते रहने के लिए बहुत भारी हो जाती हैं।",
+          mr: "ढगातले थेंब तरंगत राहण्यास फार जड झाले की पाऊस पडतो.",
+        },
+        detail: {
+          en: "It fills ponds, rivers and wells again, and soaks deep into the fields.",
+          hi: "यह तालाब, नदियाँ और कुएँ फिर से भर देती है, और खेतों में गहरे उतर जाती है।",
+          mr: "तो तळी, नद्या आणि विहिरी पुन्हा भरतो, आणि शेतांत खोल मुरतो.",
+        },
+        extra: {
+          en: "Its first drops on hot dry earth raise the lovely smell every child knows.",
+          hi: "तपी सूखी मिट्टी पर इसकी पहली बूँदें वह प्यारी सौंधी ख़ुशबू उठाती हैं जिसे हर बच्चा पहचानता है।",
+          mr: "तापल्या कोरड्या मातीवर त्याचे पहिले थेंब तो ओळखीचा मृद्गंध उठवतात, जो प्रत्येक मुलाला ठाऊक असतो.",
+        },
+        pair: {
+          left: { en: "The falling rain", hi: "गिरती बारिश", mr: "पडणारा पाऊस" },
+          right: {
+            en: "drops too heavy to float",
+            hi: "तैर न सकने जितनी भारी बूँदें",
+            mr: "तरंगू न शकणारे जड थेंब",
+          },
+        },
+      },
+      {
+        id: "rainbow",
+        name: { en: "The rainbow", hi: "इंद्रधनुष", mr: "इंद्रधनुष्य" },
+        kind: "rain-sight",
+        prompt: {
+          en: "Sunshine on one side, falling rain on the other — which seven-coloured bow then bends across the sky?",
+          hi: "एक ओर धूप, दूसरी ओर गिरती बारिश — तब कौन-सा सतरंगा धनुष आसमान में तन जाता है?",
+          mr: "एका बाजूला ऊन, दुसरीकडे पडणारा पाऊस — तेव्हा कोणते सप्तरंगी धनुष्य आकाशात वाकते?",
+        },
+        statement: {
+          en: "A rainbow appears only when sunshine and rain are in the sky together.",
+          hi: "इंद्रधनुष तभी दिखता है जब धूप और बारिश आसमान में साथ-साथ हों।",
+          mr: "ऊन आणि पाऊस आकाशात एकत्र असतील तेव्हाच इंद्रधनुष्य दिसते.",
+        },
+      },
+      {
+        id: "earthworms",
+        name: { en: "Earthworms", hi: "केंचुए", mr: "गांडुळे" },
+        kind: "rain-friend",
+        prompt: {
+          en: "Which soft crawlers come up out of the soil when rain fills their burrows?",
+          hi: "कौन-से नरम रेंगने वाले जीव मिट्टी से बाहर निकल आते हैं जब बारिश उनके बिलों में भर जाती है?",
+          mr: "पाऊस बिळांत भरला की कोणते मऊ सरपटणारे जीव मातीतून वर येतात?",
+        },
+        statement: {
+          en: "Earthworms climb out of the wet ground when rain fills their burrows with water.",
+          hi: "बारिश जब बिलों में पानी भर देती है तो केंचुए गीली मिट्टी से बाहर निकल आते हैं।",
+          mr: "पावसाने बिळांत पाणी भरले की गांडुळे ओल्या मातीतून बाहेर येतात.",
+        },
+      },
+      {
+        id: "frogs",
+        name: { en: "Frogs", hi: "मेंढक", mr: "बेडूक" },
+        kind: "rain-friend",
+        prompt: {
+          en: "Whose croaking chorus fills the ponds as soon as the rains arrive?",
+          hi: "बारिश आते ही तालाबों में किसकी टर्र-टर्र गूँज उठती है?",
+          mr: "पाऊस येताच तळ्यांत कोणाचे डराँव-डराँव घुमू लागते?",
+        },
+        statement: {
+          en: "Frogs croak loudest in the rainy season, when every pond and puddle fills up.",
+          hi: "मेंढक बरसात में सबसे ज़ोर से टर्राते हैं, जब हर तालाब और डबरा भर जाता है।",
+          mr: "पावसाळ्यात बेडूक सर्वांत मोठ्याने ओरडतात, जेव्हा प्रत्येक तळे आणि डबके भरते.",
+        },
+      },
+      {
+        id: "paperboats",
+        name: { en: "Paper boats", hi: "काग़ज़ की नावें", mr: "कागदी होड्या" },
+        kind: "rain-sight",
+        prompt: {
+          en: "What do children fold out of old pages and float on the little streams that rain makes?",
+          hi: "बच्चे पुराने पन्नों को मोड़कर क्या बनाते हैं और बारिश की बनाई नन्ही धाराओं पर तैराते हैं?",
+          mr: "मुले जुन्या पानांची घडी घालून काय बनवतात आणि पावसाने केलेल्या इवल्या ओहळांवर सोडतात?",
+        },
+        statement: {
+          en: "Paper boats are folded from old pages and sailed on the run-off streams of rain.",
+          hi: "काग़ज़ की नावें पुराने पन्नों से मोड़कर बनती हैं और बारिश के बहते पानी पर तैराई जाती हैं।",
+          mr: "कागदी होड्या जुन्या पानांची घडी घालून बनतात आणि पावसाच्या वाहत्या पाण्यावर सोडल्या जातात.",
+        },
+        pair: {
+          left: { en: "Paper boats", hi: "काग़ज़ की नावें", mr: "कागदी होड्या" },
+          right: { en: "rain's little streams", hi: "बारिश की नन्ही धाराएँ", mr: "पावसाचे इवले ओहळ" },
+        },
+      },
+      {
+        id: "flood",
+        name: { en: "A flood", hi: "बाढ़", mr: "पूर" },
+        kind: "rain-trouble",
+        prompt: {
+          en: "When far too much rain falls and water climbs into streets and homes, what do we call it?",
+          hi: "जब हद से ज़्यादा बारिश हो और पानी गलियों और घरों में चढ़ आए, तो उसे क्या कहते हैं?",
+          mr: "अति पाऊस पडून पाणी रस्त्यांत आणि घरांत चढते, तेव्हा त्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "A flood comes when too much rain falls at once and water spreads over streets and fields.",
+          hi: "बाढ़ तब आती है जब एक साथ बहुत ज़्यादा बारिश हो और पानी गलियों-खेतों पर फैल जाए।",
+          mr: "एकदम फार पाऊस पडून पाणी रस्त्यां-शेतांवर पसरते तेव्हा पूर येतो.",
+        },
+      },
+      {
+        id: "drought",
+        name: { en: "A drought", hi: "सूखा", mr: "दुष्काळ" },
+        kind: "rain-trouble",
+        prompt: {
+          en: "When the rains fail and ponds dry, fields crack and wells sink low — what is that hard time called?",
+          hi: "जब बारिश न हो, तालाब सूख जाएँ, खेत चटख जाएँ और कुएँ उतर जाएँ — उस कठिन समय को क्या कहते हैं?",
+          mr: "पाऊसच पडला नाही, तळी आटली, शेते भेगाळली आणि विहिरी खोल गेल्या — त्या कठीण काळाला काय म्हणतात?",
+        },
+        statement: {
+          en: "A drought comes when the rains fail — ponds dry up, fields crack and water runs short.",
+          hi: "सूखा तब पड़ता है जब बारिश ही न हो — तालाब सूखते हैं, खेत चटखते हैं और पानी घट जाता है।",
+          mr: "पाऊसच न पडल्याने दुष्काळ येतो — तळी आटतात, शेते भेगाळतात आणि पाणी कमी पडते.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "After the rain a big puddle shone in the school yard. Two sunny days later it was gone, though nobody swept the water away. Where did most of it go?",
+          hi: "बारिश के बाद स्कूल के आँगन में बड़ा-सा डबरा चमक रहा था। दो धूप भरे दिनों बाद वह ग़ायब था, जबकि पानी किसी ने हटाया नहीं। उसका ज़्यादातर हिस्सा कहाँ गया?",
+          mr: "पावसानंतर शाळेच्या अंगणात मोठे डबके चमकत होते. दोन उन्हाच्या दिवसांनंतर ते नाहीसे झाले, पण पाणी कोणीही काढले नव्हते. त्यातले बहुतेक पाणी कुठे गेले?",
+        },
+        choices: [
+          {
+            en: "The Sun turned it into vapour, and it rose into the air",
+            hi: "सूरज ने उसे भाप बनाया, और वह हवा में चढ़ गया",
+            mr: "सूर्याने त्याची वाफ केली, आणि ते हवेत चढले",
+          },
+          {
+            en: "It only soaked into the ground — the sunshine had nothing to do with it",
+            hi: "वह सिर्फ़ ज़मीन में समाया — धूप का इसमें कोई हाथ नहीं",
+            mr: "ते फक्त जमिनीत मुरले — उन्हाचा याच्याशी काही संबंध नाही",
+          },
+          {
+            en: "That water is finished for ever and will never return",
+            hi: "वह पानी हमेशा के लिए ख़त्म हो गया, अब कभी नहीं लौटेगा",
+            mr: "ते पाणी कायमचे संपले, आता कधीही परतणार नाही",
+          },
+          {
+            en: "Someone must have carried it away in buckets at night",
+            hi: "रात में कोई उसे बाल्टियों में भरकर ले गया होगा",
+            mr: "रात्री कोणीतरी ते बादल्यांत भरून नेले असणार",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A little soaks in, yes — but a puddle shining on hard-trodden ground dries from the top, and two days of sunshine is the clue: the Sun sipped it up as vapour, the same first step that one day brings it back as rain. The water is not finished; it is travelling.",
+          hi: "थोड़ा ज़मीन में ज़रूर समाता है — पर कड़ी रौंदी ज़मीन पर चमकता डबरा ऊपर से सूखता है, और दो दिन की धूप ही सुराग़ है: सूरज ने उसे भाप बनाकर पी लिया — वही पहला क़दम जो किसी दिन उसे बारिश बनाकर लौटा देगा। पानी ख़त्म नहीं हुआ; वह सफ़र पर है।",
+          mr: "थोडे जमिनीत मुरते खरे — पण तुडवलेल्या कडक जमिनीवर चमकणारे डबके वरून सुकते, आणि दोन दिवसांचे ऊन हाच धागा आहे: सूर्याने त्याची वाफ करून ते पिऊन घेतले — तेच पहिले पाऊल, जे एखाद्या दिवशी त्याला पाऊस बनवून परत आणते. पाणी संपले नाही; ते प्रवासाला निघाले आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Rain has fallen for thousands and thousands of years — yet the world's water never gets finished. Why not?",
+          hi: "हज़ारों-हज़ार बरसों से बारिश गिर रही है — फिर भी दुनिया का पानी कभी ख़त्म नहीं होता। क्यों?",
+          mr: "हजारो-हजार वर्षांपासून पाऊस पडतो आहे — तरी जगातले पाणी कधी संपत नाही. का?",
+        },
+        choices: [
+          {
+            en: "Because the same water goes round and round — sea to sky, sky to earth, earth to sea again",
+            hi: "क्योंकि वही पानी घूमता रहता है — समुद्र से आसमान, आसमान से धरती, धरती से फिर समुद्र",
+            mr: "कारण तेच पाणी फिरत राहते — समुद्रातून आकाशात, आकाशातून जमिनीवर, जमिनीवरून पुन्हा समुद्रात",
+          },
+          {
+            en: "Because clouds make new water out of nothing",
+            hi: "क्योंकि बादल शून्य से नया पानी बना लेते हैं",
+            mr: "कारण ढग शून्यातून नवे पाणी बनवतात",
+          },
+          {
+            en: "Because rivers manufacture water from mud as they flow",
+            hi: "क्योंकि नदियाँ बहते-बहते कीचड़ से पानी बना लेती हैं",
+            mr: "कारण नद्या वाहता वाहता चिखलातून पाणी तयार करतात",
+          },
+          {
+            en: "Because the sea never gives any of its water to the sky",
+            hi: "क्योंकि समुद्र अपना पानी आसमान को कभी नहीं देता",
+            mr: "कारण समुद्र आपले पाणी आकाशाला कधीच देत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Nothing new is made and nothing is lost — the Sun lifts water as vapour, clouds carry it, rain returns it, rivers walk it back to the sea, and the round begins again. Rain is not new water; it is old water coming home.",
+          hi: "न कुछ नया बनता है, न कुछ खोता है — सूरज पानी को भाप बनाकर उठाता है, बादल उसे ढोते हैं, बारिश लौटाती है, नदियाँ उसे समुद्र तक पहुँचाती हैं, और फेरा फिर शुरू। बारिश नया पानी नहीं — पुराने पानी की घर-वापसी है।",
+          mr: "नवे काही बनत नाही, काही हरवत नाही — सूर्य पाण्याची वाफ करून ते उचलतो, ढग ते वाहतात, पाऊस ते परत करतो, नद्या ते समुद्रापर्यंत नेतात, आणि फेरा पुन्हा सुरू. पाऊस म्हणजे नवे पाणी नव्हे — जुन्या पाण्याची घरवापसी.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — From Here to There (how people and goods travel)           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-from-here-to-there",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 11 — From Here to There",
+      hi: "अध्याय 11 — यहाँ से वहाँ",
+      mr: "प्रकरण 11 — इथून तिथे",
+    },
+    name: { en: "From Here to There", hi: "यहाँ से वहाँ", mr: "इथून तिथे" },
+    summary: {
+      en: "Trains that sing over rails, carts and cycles, boats and planes — the many ways people and goods travel from here to there.",
+      hi: "पटरियों पर गाती रेल, गाड़ियाँ और साइकिलें, नावें और हवाई जहाज़ — लोगों और सामान के यहाँ से वहाँ पहुँचने के कितने ही रास्ते।",
+      mr: "रुळांवर गाणारी रेल्वे, गाड्या आणि सायकली, होड्या आणि विमाने — माणसे आणि सामान इथून तिथे पोहोचण्याच्या कितीतरी वाटा.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "train",
+        name: { en: "The train", hi: "रेलगाड़ी", mr: "रेल्वेगाडी" },
+        kind: "land",
+        prompt: {
+          en: "Which long traveller runs only on iron rails — one engine singing chhuk-chhuk, pulling coach after coach?",
+          hi: "कौन-सा लंबा मुसाफ़िर सिर्फ़ लोहे की पटरियों पर चलता है — एक इंजन छुक-छुक गाता, पीछे डिब्बे ही डिब्बे खींचता?",
+          mr: "कोणता लांबलचक प्रवासी फक्त लोखंडी रुळांवर धावतो — एक इंजिन झुक-झुक करत, मागे डबेच डबे ओढत?",
+        },
+        statement: {
+          en: "A train runs on iron rails, one engine pulling a long line of coaches.",
+          hi: "रेलगाड़ी लोहे की पटरियों पर चलती है — एक इंजन डिब्बों की लंबी क़तार खींचता है।",
+          mr: "रेल्वेगाडी लोखंडी रुळांवर धावते — एक इंजिन डब्यांची लांब रांग ओढते.",
+        },
+        detail: {
+          en: "It can carry hundreds of people together across whole states — far more than any bus.",
+          hi: "यह सैकड़ों लोगों को एक साथ कई राज्यों के पार ले जा सकती है — किसी भी बस से कहीं ज़्यादा।",
+          mr: "ती शेकडो माणसांना एकत्र अनेक राज्यांपार नेऊ शकते — कोणत्याही बसपेक्षा कितीतरी जास्त.",
+        },
+        extra: {
+          en: "At every station it halts a little — some travellers climb down, new ones climb in.",
+          hi: "हर स्टेशन पर यह थोड़ा ठहरती है — कुछ मुसाफ़िर उतरते हैं, नए चढ़ते हैं।",
+          mr: "प्रत्येक स्थानकावर ती थोडी थांबते — काही प्रवासी उतरतात, नवे चढतात.",
+        },
+        pair: {
+          left: { en: "The train", hi: "रेलगाड़ी", mr: "रेल्वेगाडी" },
+          right: { en: "iron rails", hi: "लोहे की पटरियाँ", mr: "लोखंडी रूळ" },
+        },
+      },
+      {
+        id: "bullockcart",
+        name: { en: "The bullock cart", hi: "बैलगाड़ी", mr: "बैलगाडी" },
+        kind: "land",
+        prompt: {
+          en: "Which village cart rolls slowly on big wooden wheels, pulled by two strong animals?",
+          hi: "कौन-सी गाँव की गाड़ी बड़े लकड़ी के पहियों पर धीरे-धीरे चलती है, जिसे दो बलवान पशु खींचते हैं?",
+          mr: "कोणती गावाकडची गाडी मोठ्या लाकडी चाकांवर सावकाश चालते, जिला दोन धष्टपुष्ट जनावरे ओढतात?",
+        },
+        statement: {
+          en: "A bullock cart is pulled by two bullocks and rolls slowly on big wooden wheels.",
+          hi: "बैलगाड़ी को दो बैल खींचते हैं और वह बड़े लकड़ी के पहियों पर धीरे-धीरे चलती है।",
+          mr: "बैलगाडी दोन बैल ओढतात आणि ती मोठ्या लाकडी चाकांवर सावकाश चालते.",
+        },
+        pair: {
+          left: { en: "The bullock cart", hi: "बैलगाड़ी", mr: "बैलगाडी" },
+          right: { en: "two bullocks", hi: "दो बैल", mr: "दोन बैल" },
+        },
+      },
+      {
+        id: "bicycle",
+        name: { en: "The bicycle", hi: "साइकिल", mr: "सायकल" },
+        kind: "land",
+        prompt: {
+          en: "Which two-wheeler needs no petrol and no ticket — only your own legs pedalling?",
+          hi: "किस दो-पहिए को न पेट्रोल चाहिए, न टिकट — बस आपकी अपनी टाँगों की पैडल-मार?",
+          mr: "कोणत्या दुचाकीला पेट्रोल नको, तिकीटही नको — फक्त तुमच्या पायांचे पॅडल मारणे?",
+        },
+        statement: {
+          en: "A bicycle moves by pedalling alone — it burns no fuel and makes no smoke.",
+          hi: "साइकिल केवल पैडल से चलती है — न ईंधन फूँकती है, न धुआँ छोड़ती है।",
+          mr: "सायकल केवळ पॅडलने चालते — इंधन जाळत नाही, धूरही सोडत नाही.",
+        },
+        pair: {
+          left: { en: "The bicycle", hi: "साइकिल", mr: "सायकल" },
+          right: { en: "your own pedalling", hi: "आपकी अपनी पैडल-मार", mr: "तुमचे स्वतःचे पॅडल" },
+        },
+      },
+      {
+        id: "bus",
+        name: { en: "The bus", hi: "बस", mr: "बस" },
+        kind: "land",
+        prompt: {
+          en: "Which road carrier halts at fixed stops, where a conductor gives you a ticket for your ride?",
+          hi: "सड़क की कौन-सी सवारी तय पड़ावों पर रुकती है, जहाँ कंडक्टर आपको सफ़र का टिकट देता है?",
+          mr: "रस्त्यावरचे कोणते वाहन ठरलेल्या थांब्यांवर थांबते, जिथे कंडक्टर तुम्हाला प्रवासाचे तिकीट देतो?",
+        },
+        statement: {
+          en: "A bus carries many passengers by road, halting at bus stops where a conductor gives tickets.",
+          hi: "बस सड़क से बहुत-से मुसाफ़िर ले जाती है — बस-पड़ावों पर रुकती है, जहाँ कंडक्टर टिकट देता है।",
+          mr: "बस रस्त्याने पुष्कळ प्रवासी नेते — थांब्यांवर थांबते, जिथे कंडक्टर तिकीट देतो.",
+        },
+      },
+      {
+        id: "boat",
+        name: { en: "The boat", hi: "नाव", mr: "होडी" },
+        kind: "water",
+        prompt: {
+          en: "Where there is no road and no bridge, only water — which carrier takes people across?",
+          hi: "जहाँ न सड़क हो, न पुल — सिर्फ़ पानी — वहाँ लोगों को पार कौन ले जाता है?",
+          mr: "जिथे रस्ता नाही, पूलही नाही — फक्त पाणी — तिथे माणसांना पलीकडे कोण नेते?",
+        },
+        statement: {
+          en: "A boat carries people across rivers and lakes, where no road can go.",
+          hi: "नाव लोगों को नदियों और झीलों के पार ले जाती है, जहाँ कोई सड़क नहीं पहुँचती।",
+          mr: "होडी माणसांना नद्या आणि तळ्यांच्या पलीकडे नेते, जिथे कोणताही रस्ता पोहोचत नाही.",
+        },
+        pair: {
+          left: { en: "The boat", hi: "नाव", mr: "होडी" },
+          right: {
+            en: "water, where roads end",
+            hi: "पानी, जहाँ सड़कें ख़त्म होती हैं",
+            mr: "पाणी, जिथे रस्ते संपतात",
+          },
+        },
+      },
+      {
+        id: "aeroplane",
+        name: { en: "The aeroplane", hi: "हवाई जहाज़", mr: "विमान" },
+        kind: "air",
+        prompt: {
+          en: "Which is the fastest traveller of all, carrying people high above the clouds?",
+          hi: "सबसे तेज़ मुसाफ़िर कौन है, जो लोगों को लेकर बादलों से भी ऊपर उड़ता है?",
+          mr: "सर्वांत वेगवान प्रवासी कोण, जो माणसांना घेऊन ढगांच्याही वर उडतो?",
+        },
+        statement: {
+          en: "An aeroplane flies above the clouds and is the fastest way to travel far.",
+          hi: "हवाई जहाज़ बादलों के ऊपर उड़ता है और दूर जाने का सबसे तेज़ तरीक़ा है।",
+          mr: "विमान ढगांच्या वर उडते आणि दूर जाण्याचा सर्वांत वेगवान मार्ग आहे.",
+        },
+        pair: {
+          left: { en: "The aeroplane", hi: "हवाई जहाज़", mr: "विमान" },
+          right: { en: "high above the clouds", hi: "बादलों के ऊपर", mr: "ढगांच्या वर" },
+        },
+      },
+      {
+        id: "camel",
+        name: { en: "The camel", hi: "ऊँट", mr: "उंट" },
+        kind: "land",
+        prompt: {
+          en: "In the desert, where wheels sink into the sand, which tall animal carries people and loads?",
+          hi: "रेगिस्तान में, जहाँ पहिए रेत में धँस जाते हैं, कौन-सा ऊँचा पशु लोगों और बोझ को ढोता है?",
+          mr: "वाळवंटात, जिथे चाके वाळूत रुततात, कोणता उंच प्राणी माणसे आणि ओझी वाहतो?",
+        },
+        statement: {
+          en: "In the desert camels carry people and loads across sand where wheels sink.",
+          hi: "रेगिस्तान में ऊँट लोगों और बोझ को उस रेत के पार ले जाते हैं जहाँ पहिए धँस जाते हैं।",
+          mr: "वाळवंटात उंट माणसे आणि ओझी त्या वाळूपार नेतात जिथे चाके रुततात.",
+        },
+      },
+      {
+        id: "wheel",
+        name: { en: "The wheel", hi: "पहिया", mr: "चाक" },
+        kind: "idea",
+        prompt: {
+          en: "Round and rolling under carts, cycles, buses and trains alike — which one old invention moves them all?",
+          hi: "गाड़ी, साइकिल, बस और रेल — सबके नीचे गोल-गोल घूमता — कौन-सा एक पुराना आविष्कार इन सबको चलाता है?",
+          mr: "गाडी, सायकल, बस आणि रेल्वे — साऱ्यांच्या खाली गोल गोल फिरणारा — कोणता एक जुना शोध या साऱ्यांना चालवतो?",
+        },
+        statement: {
+          en: "The wheel is the one round helper turning under almost every land carrier.",
+          hi: "पहिया वह एक गोल सहायक है जो ज़मीन की लगभग हर सवारी के नीचे घूमता है।",
+          mr: "चाक हा एक गोल मदतनीस आहे, जो जमिनीवरच्या जवळजवळ प्रत्येक वाहनाखाली फिरतो.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Arrange from SLOWEST to FASTEST: aeroplane, bullock cart, train, bicycle. Which order is right?",
+          hi: "सबसे धीमे से सबसे तेज़ के क्रम में लगाइए: हवाई जहाज़, बैलगाड़ी, रेलगाड़ी, साइकिल। कौन-सा क्रम सही है?",
+          mr: "सर्वांत हळू ते सर्वांत वेगवान क्रमाने लावा: विमान, बैलगाडी, रेल्वेगाडी, सायकल. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "bullock cart → bicycle → train → aeroplane",
+            hi: "बैलगाड़ी → साइकिल → रेलगाड़ी → हवाई जहाज़",
+            mr: "बैलगाडी → सायकल → रेल्वेगाडी → विमान",
+          },
+          {
+            en: "bicycle → bullock cart → aeroplane → train",
+            hi: "साइकिल → बैलगाड़ी → हवाई जहाज़ → रेलगाड़ी",
+            mr: "सायकल → बैलगाडी → विमान → रेल्वेगाडी",
+          },
+          {
+            en: "bullock cart → train → bicycle → aeroplane",
+            hi: "बैलगाड़ी → रेलगाड़ी → साइकिल → हवाई जहाज़",
+            mr: "बैलगाडी → रेल्वेगाडी → सायकल → विमान",
+          },
+          {
+            en: "bicycle → train → bullock cart → aeroplane",
+            hi: "साइकिल → रेलगाड़ी → बैलगाड़ी → हवाई जहाज़",
+            mr: "सायकल → रेल्वेगाडी → बैलगाडी → विमान",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Walking bullocks are slower than pedalling legs; an engine on rails beats both; and wings beat everything on the ground. Slowest to fastest: cart, cycle, train, plane.",
+          hi: "चलते बैल पैडल मारती टाँगों से धीमे हैं; पटरियों पर इंजन दोनों से आगे; और पंख ज़मीन की हर चीज़ से आगे। धीमे से तेज़: गाड़ी, साइकिल, रेल, जहाज़।",
+          mr: "चालणारे बैल पॅडल मारणाऱ्या पायांहून हळू; रुळांवरचे इंजिन दोघांच्या पुढे; आणि पंख जमिनीवरच्या साऱ्यांच्या पुढे. हळू ते वेगवान: गाडी, सायकल, रेल्वे, विमान.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Three errands in one day: cross a river that has no bridge, reach another state by night, and fetch milk from the next lane. Which set of carriers fits all three, in order?",
+          hi: "एक दिन के तीन काम: बिना पुल की नदी पार करनी है, रात तक दूसरे राज्य पहुँचना है, और पड़ोस की गली से दूध लाना है। कौन-सा सवारी-समूह तीनों पर, क्रम से, ठीक बैठता है?",
+          mr: "एका दिवसातली तीन कामे: पूल नसलेली नदी ओलांडायची, रात्रीपर्यंत दुसऱ्या राज्यात पोहोचायचे, आणि शेजारच्या गल्लीतून दूध आणायचे. कोणता वाहन-संच तिन्हींना, क्रमाने, नीट बसतो?",
+        },
+        choices: [
+          {
+            en: "boat · train · bicycle",
+            hi: "नाव · रेलगाड़ी · साइकिल",
+            mr: "होडी · रेल्वेगाडी · सायकल",
+          },
+          {
+            en: "train · boat · aeroplane",
+            hi: "रेलगाड़ी · नाव · हवाई जहाज़",
+            mr: "रेल्वेगाडी · होडी · विमान",
+          },
+          {
+            en: "bicycle · boat · train",
+            hi: "साइकिल · नाव · रेलगाड़ी",
+            mr: "सायकल · होडी · रेल्वेगाडी",
+          },
+          {
+            en: "aeroplane · bicycle · boat",
+            hi: "हवाई जहाज़ · साइकिल · नाव",
+            mr: "विमान · सायकल · होडी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Match the carrier to the ground and the distance: water with no bridge asks for a boat; a state away by night asks for a train; the next lane asks for nothing grander than a bicycle. Any other order sends a train onto a river or a boat down a lane.",
+          hi: "सवारी को ज़मीन और दूरी से मिलाइए: बिना पुल का पानी नाव माँगता है; रात तक दूसरा राज्य रेल माँगता है; पड़ोस की गली को साइकिल से बड़ा कुछ नहीं चाहिए। कोई और क्रम रेल को नदी पर और नाव को गली में उतार देता है।",
+          mr: "वाहन जमिनीशी आणि अंतराशी जुळवा: पूल नसलेले पाणी होडी मागते; रात्रीपर्यंत दुसरे राज्य रेल्वे मागते; शेजारच्या गल्लीला सायकलहून मोठे काही नको. दुसरा कोणताही क्रम रेल्वेला नदीवर आणि होडीला गल्लीत उतरवतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A cart cannot move without wheels, yet a boat has none at all and still glides along. Why does a boat need no wheels?",
+          hi: "बिना पहियों के गाड़ी हिल नहीं सकती, पर नाव के पास एक भी पहिया नहीं — फिर भी वह सरकती चलती है। नाव को पहिए क्यों नहीं चाहिए?",
+          mr: "चाकांशिवाय गाडी हलू शकत नाही, पण होडीला एकही चाक नाही — तरी ती सरकत जाते. होडीला चाके का लागत नाहीत?",
+        },
+        choices: [
+          {
+            en: "Water holds the boat up and lets it glide — a cart sits on hard ground, which grips, so it must roll",
+            hi: "पानी नाव को थामे रखता है और सरकने देता है — गाड़ी कड़ी ज़मीन पर टिकी है, जो जकड़ती है, इसलिए उसे लुढ़कना पड़ता है",
+            mr: "पाणी होडीला तोलून धरते आणि सरकू देते — गाडी कडक जमिनीवर टेकलेली असते, जी घट्ट धरते, म्हणून तिला घरंगळावे लागते",
+          },
+          {
+            en: "Boats are lighter than carts, and light things need no wheels",
+            hi: "नावें गाड़ियों से हलकी होती हैं, और हलकी चीज़ों को पहिए नहीं चाहिए",
+            mr: "होड्या गाड्यांपेक्षा हलक्या असतात, आणि हलक्या वस्तूंना चाके लागत नाहीत",
+          },
+          {
+            en: "Boats do have wheels — they are hidden under the water",
+            hi: "नावों के पहिए होते हैं — बस पानी के नीचे छिपे रहते हैं",
+            mr: "होड्यांना चाके असतात — फक्त ती पाण्याखाली लपलेली असतात",
+          },
+          {
+            en: "A cart could float too, if only it were pushed hard enough",
+            hi: "गाड़ी भी तैर सकती थी, बस उसे ज़ोर से धकेलना पड़ता",
+            mr: "गाडीही तरंगू शकली असती, फक्त तिला जोरात ढकलावे लागले असते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Wheels exist to beat the ground's grip: land holds a cart up but rubs against it, so the cart must roll. Water does the holding differently — it lifts the whole boat and slips past its sides, so the boat glides with no wheels at all. Weight is not the reason: a huge loaded boat still floats, a feather-light cart still needs wheels.",
+          hi: "पहिए ज़मीन की जकड़ से पार पाने के लिए हैं: ज़मीन गाड़ी को थामती तो है पर रगड़ती भी है, इसलिए गाड़ी को लुढ़कना पड़ता है। पानी थामने का काम अलग ढंग से करता है — वह पूरी नाव को उठा लेता है और उसके किनारों से फिसलता जाता है, इसलिए नाव बिना पहियों के सरकती है। वज़न वजह नहीं: लदी-फँदी बड़ी नाव भी तैरती है, और पंख-सी हलकी गाड़ी को भी पहिए चाहिए।",
+          mr: "चाके जमिनीच्या पकडीवर मात करण्यासाठी असतात: जमीन गाडीला तोलते खरी, पण घासतेही, म्हणून गाडीला घरंगळावे लागते. पाणी तोलण्याचे काम वेगळ्या रीतीने करते — ते सबंध होडीला उचलते आणि तिच्या कडांवरून निसटत जाते, म्हणून होडी चाकांशिवाय सरकते. वजन हे कारण नव्हे: भरलेली मोठी होडीही तरंगते, आणि पिसासारख्या हलक्या गाडीलाही चाके लागतातच.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Work We Do (who does what, and why every work counts)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-work-we-do",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 12 — Work We Do",
+      hi: "अध्याय 12 — हमारे काम",
+      mr: "प्रकरण 12 — आपली कामे",
+    },
+    name: { en: "Work We Do", hi: "हमारे काम", mr: "आपली कामे" },
+    summary: {
+      en: "Farmers and potters, postmen and tailors, and the never-ending work inside the home — who does what, and why every kind of work counts.",
+      hi: "किसान और कुम्हार, डाकिया और दर्ज़ी, और घर के भीतर का कभी न चुकने वाला काम — कौन क्या करता है, और हर काम क्यों मायने रखता है।",
+      mr: "शेतकरी आणि कुंभार, पोस्टमन आणि शिंपी, आणि घरातले कधी न संपणारे काम — कोण काय करते, आणि प्रत्येक काम का मोलाचे.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "farmer",
+        name: { en: "The farmer", hi: "किसान", mr: "शेतकरी" },
+        kind: "worker",
+        prompt: {
+          en: "Who ploughs the field, sows the seed and raises the grain that reaches every plate?",
+          hi: "कौन खेत जोतता है, बीज बोता है और वह अनाज उगाता है जो हर थाली तक पहुँचता है?",
+          mr: "कोण शेत नांगरतो, बी पेरतो आणि प्रत्येक ताटापर्यंत पोहोचणारे धान्य पिकवतो?",
+        },
+        statement: {
+          en: "The farmer ploughs, sows and harvests — the grain on every plate begins in a farmer's field.",
+          hi: "किसान जोतता, बोता और काटता है — हर थाली का अनाज किसी किसान के खेत से ही चलता है।",
+          mr: "शेतकरी नांगरतो, पेरतो आणि कापणी करतो — प्रत्येक ताटातले धान्य कोणा शेतकऱ्याच्या शेतातूनच निघते.",
+        },
+        pair: {
+          left: { en: "The farmer", hi: "किसान", mr: "शेतकरी" },
+          right: { en: "field and seed", hi: "खेत और बीज", mr: "शेत आणि बियाणे" },
+        },
+      },
+      {
+        id: "potter",
+        name: { en: "The potter", hi: "कुम्हार", mr: "कुंभार" },
+        kind: "worker",
+        prompt: {
+          en: "Whose spinning wheel turns soft wet clay into pots, pitchers and diyas?",
+          hi: "किसका घूमता चाक गीली नरम मिट्टी को घड़ों, सुराहियों और दीयों में बदल देता है?",
+          mr: "कोणाचे फिरते चाक ओल्या मऊ मातीला मडकी, घागरी आणि पणत्यांत बदलते?",
+        },
+        statement: {
+          en: "The potter shapes wet clay on a spinning wheel and bakes it hard in a kiln.",
+          hi: "कुम्हार गीली मिट्टी को घूमते चाक पर गढ़ता है और आवे में पकाकर कड़ा करता है।",
+          mr: "कुंभार ओली माती फिरत्या चाकावर घडवतो आणि भट्टीत भाजून कडक करतो.",
+        },
+        pair: {
+          left: { en: "The potter", hi: "कुम्हार", mr: "कुंभार" },
+          right: {
+            en: "the spinning wheel and clay",
+            hi: "घूमता चाक और मिट्टी",
+            mr: "फिरते चाक आणि माती",
+          },
+        },
+      },
+      {
+        id: "postman",
+        name: { en: "The postman", hi: "डाकिया", mr: "पोस्टमन" },
+        kind: "worker",
+        prompt: {
+          en: "Who walks door to door with a full bag, bringing letters and parcels in every weather?",
+          hi: "कौन भरे थैले के साथ घर-घर जाता है, हर मौसम में चिट्ठियाँ और पार्सल पहुँचाता?",
+          mr: "कोण भरलेली थैली घेऊन दारोदार फिरतो, प्रत्येक ऋतूत पत्रे आणि पार्सले पोहोचवत?",
+        },
+        statement: {
+          en: "The postman carries letters and parcels door to door, in sun and in rain alike.",
+          hi: "डाकिया धूप हो या बारिश, चिट्ठियाँ और पार्सल घर-घर पहुँचाता है।",
+          mr: "ऊन असो वा पाऊस, पोस्टमन पत्रे आणि पार्सले घरोघर पोहोचवतो.",
+        },
+        pair: {
+          left: { en: "The postman", hi: "डाकिया", mr: "पोस्टमन" },
+          right: { en: "letters and parcels", hi: "चिट्ठियाँ और पार्सल", mr: "पत्रे आणि पार्सले" },
+        },
+      },
+      {
+        id: "carpenter",
+        name: { en: "The carpenter", hi: "बढ़ई", mr: "सुतार" },
+        kind: "worker",
+        prompt: {
+          en: "Who saws, planes and joins wood into doors, beds and school benches?",
+          hi: "कौन लकड़ी को चीरता, रंदा करता और जोड़कर दरवाज़े, पलंग और स्कूल की बेंचें बनाता है?",
+          mr: "कोण लाकूड कापतो, रंधा मारतो आणि जोडून दारे, पलंग आणि शाळेची बाके बनवतो?",
+        },
+        statement: {
+          en: "The carpenter works in wood — sawing, planing and joining it into doors, beds and benches.",
+          hi: "बढ़ई लकड़ी का काम करता है — चीरकर, रंदा कर, जोड़कर दरवाज़े, पलंग और बेंचें बनाता है।",
+          mr: "सुतार लाकडाचे काम करतो — कापून, रंधा मारून, जोडून दारे, पलंग आणि बाके बनवतो.",
+        },
+        pair: {
+          left: { en: "The carpenter", hi: "बढ़ई", mr: "सुतार" },
+          right: { en: "saw and wood", hi: "आरी और लकड़ी", mr: "करवत आणि लाकूड" },
+        },
+      },
+      {
+        id: "tailor",
+        name: { en: "The tailor", hi: "दर्ज़ी", mr: "शिंपी" },
+        kind: "worker",
+        prompt: {
+          en: "Who measures you with a tape, cuts the cloth and stitches it into a shirt that fits?",
+          hi: "कौन फ़ीते से नाप लेता है, कपड़ा काटता है और सिलकर ठीक बैठने वाली क़मीज़ बनाता है?",
+          mr: "कोण टेपने माप घेतो, कापड कापतो आणि शिवून अंगाला बसणारा सदरा बनवतो?",
+        },
+        statement: {
+          en: "The tailor measures, cuts and stitches cloth into clothes that fit the wearer.",
+          hi: "दर्ज़ी नापता, काटता और सिलता है — कपड़े को पहनने वाले पर ठीक बैठते लिबास में बदलता है।",
+          mr: "शिंपी मापतो, कापतो आणि शिवतो — कापडाचे घालणाऱ्याला नीट बसणारे कपडे करतो.",
+        },
+        pair: {
+          left: { en: "The tailor", hi: "दर्ज़ी", mr: "शिंपी" },
+          right: {
+            en: "needle, thread and cloth",
+            hi: "सुई, धागा और कपड़ा",
+            mr: "सुई, दोरा आणि कापड",
+          },
+        },
+      },
+      {
+        id: "housework",
+        name: {
+          en: "The work inside the home",
+          hi: "घर के भीतर का काम",
+          mr: "घरातले काम",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Cooking, sweeping, washing, fetching water — day after day, with no salary and no holiday. What is all this together?",
+          hi: "खाना पकाना, झाड़ू-बुहारू, धुलाई, पानी भरना — दिन-पर-दिन, बिना वेतन, बिना छुट्टी। यह सब मिलाकर क्या है?",
+          mr: "स्वयंपाक, झाडलोट, धुणी, पाणी भरणे — दिवसामागून दिवस, पगाराविना, सुट्टीविना. हे सारे मिळून काय?",
+        },
+        statement: {
+          en: "Housework — cooking, cleaning, washing — is real work, though it earns no salary.",
+          hi: "घर का काम — पकाना, सफ़ाई, धुलाई — सचमुच का काम है, भले उसका कोई वेतन नहीं मिलता।",
+          mr: "घरकाम — स्वयंपाक, स्वच्छता, धुणी — हे खरेखुरे काम आहे, जरी त्याला पगार मिळत नाही.",
+        },
+        detail: {
+          en: "In many homes most of it is done by the mothers and grandmothers.",
+          hi: "बहुत-से घरों में इसका ज़्यादातर हिस्सा माँ और दादी-नानी ही करती हैं।",
+          mr: "पुष्कळ घरांत त्यातले बहुतेक आई आणि आजीच करतात.",
+        },
+        extra: {
+          en: "It takes no holiday — food must be cooked and dishes washed every single day.",
+          hi: "इसे छुट्टी नहीं मिलती — खाना हर दिन पकाना है, बर्तन हर दिन धोने हैं।",
+          mr: "त्याला सुट्टी नसते — जेवण रोज रांधावे लागते, भांडी रोज घासावी लागतात.",
+        },
+      },
+      {
+        id: "childrenshelp",
+        name: { en: "Children's help", hi: "बच्चों का हाथ बँटाना", mr: "मुलांची मदत" },
+        kind: "idea",
+        prompt: {
+          en: "Watering the plants, carrying grain to the shop, minding the little one — whose small daily work is this, done alongside school?",
+          hi: "पौधों को पानी देना, दुकान तक अनाज ले जाना, छोटे को सँभालना — स्कूल के साथ-साथ चलता यह छोटा रोज़ का काम किसका है?",
+          mr: "झाडांना पाणी घालणे, दुकानापर्यंत धान्य नेणे, धाकट्याला सांभाळणे — शाळेबरोबर चालणारे हे छोटे रोजचे काम कोणाचे?",
+        },
+        statement: {
+          en: "Children too do real work — watering, fetching, minding younger ones — alongside their school.",
+          hi: "बच्चे भी सचमुच का काम करते हैं — पानी देना, लाना-ले जाना, छोटों को सँभालना — अपने स्कूल के साथ-साथ।",
+          mr: "मुलेही खरेखुरे काम करतात — पाणी घालणे, आणणे-नेणे, धाकट्यांना सांभाळणे — शाळेसोबतच.",
+        },
+      },
+      {
+        id: "dignity",
+        name: { en: "No work is small", hi: "कोई काम छोटा नहीं", mr: "कोणतेही काम छोटे नाही" },
+        kind: "idea",
+        prompt: {
+          en: "The town needs its sweepers as much as its doctors — which lesson about work is this?",
+          hi: "शहर को अपने सफ़ाई करने वालों की उतनी ही ज़रूरत है जितनी डॉक्टरों की — यह काम के बारे में कौन-सा पाठ है?",
+          mr: "गावाला डॉक्टरांइतकीच सफाई करणाऱ्यांचीही गरज असते — हा कामाविषयीचा कोणता धडा?",
+        },
+        statement: {
+          en: "No work is small — if sweepers or farmers stopped for a week, the whole town would feel it at once.",
+          hi: "कोई काम छोटा नहीं — सफ़ाई करने वाले या किसान हफ़्ते भर रुक जाएँ, तो पूरा शहर तुरंत महसूस करेगा।",
+          mr: "कोणतेही काम छोटे नाही — सफाई करणारे वा शेतकरी आठवडाभर थांबले, तर साऱ्या गावाला लगेच जाणवेल.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A shirt's journey, first to last: the tailor stitches the cloth, the farmer grows the cotton, the weaver turns thread into cloth, the spinner twists cotton into thread. Which order is right?",
+          hi: "क़मीज़ का सफ़र, पहले से आख़िर तक: दर्ज़ी कपड़ा सिलता है, किसान कपास उगाता है, बुनकर धागे से कपड़ा बुनता है, कतवारा कपास से धागा कातता है। कौन-सा क्रम सही है?",
+          mr: "सदऱ्याचा प्रवास, पहिल्यापासून शेवटपर्यंत: शिंपी कापड शिवतो, शेतकरी कापूस पिकवतो, विणकर धाग्याचे कापड विणतो, कातणारा कापसाचा धागा कातो. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "farmer → spinner → weaver → tailor",
+            hi: "किसान → कतवारा → बुनकर → दर्ज़ी",
+            mr: "शेतकरी → कातणारा → विणकर → शिंपी",
+          },
+          {
+            en: "farmer → weaver → spinner → tailor",
+            hi: "किसान → बुनकर → कतवारा → दर्ज़ी",
+            mr: "शेतकरी → विणकर → कातणारा → शिंपी",
+          },
+          {
+            en: "tailor → weaver → spinner → farmer",
+            hi: "दर्ज़ी → बुनकर → कतवारा → किसान",
+            mr: "शिंपी → विणकर → कातणारा → शेतकरी",
+          },
+          {
+            en: "spinner → farmer → tailor → weaver",
+            hi: "कतवारा → किसान → दर्ज़ी → बुनकर",
+            mr: "कातणारा → शेतकरी → शिंपी → विणकर",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each worker needs the one before: cotton must grow before it can be spun into thread, thread must exist before cloth can be woven, and only woven cloth can be stitched. Field, then thread, then cloth, then shirt.",
+          hi: "हर कारीगर को पिछले वाले की ज़रूरत है: कपास उगे तभी धागा कते, धागा हो तभी कपड़ा बुने, और बुना कपड़ा ही सिला जा सकता है। पहले खेत, फिर धागा, फिर कपड़ा, फिर क़मीज़।",
+          mr: "प्रत्येक कारागिराला आधीच्याची गरज: कापूस पिकला तरच धागा कातता येतो, धागा असला तरच कापड विणता येते, आणि विणलेले कापडच शिवता येते. आधी शेत, मग धागा, मग कापड, मग सदरा.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The potter is paid for a pot and the tailor for a shirt — but nobody pays mother for the day's cooking. Does that mean cooking is not work?",
+          hi: "कुम्हार को घड़े के पैसे मिलते हैं और दर्ज़ी को क़मीज़ के — पर माँ को दिन भर के खाने के पैसे कोई नहीं देता। तो क्या खाना पकाना काम नहीं है?",
+          mr: "कुंभाराला मडक्याचे पैसे मिळतात आणि शिंप्याला सदऱ्याचे — पण आईला दिवसभराच्या स्वयंपाकाचे पैसे कोणी देत नाही. म्हणजे स्वयंपाक हे काम नाही का?",
+        },
+        choices: [
+          {
+            en: "It is work all the same — effort and need make work real, not the salary",
+            hi: "यह फिर भी काम है — काम को सच्चा मेहनत और ज़रूरत बनाती है, वेतन नहीं",
+            mr: "हे कामच आहे — कामाला खरे ठरवतात मेहनत आणि गरज, पगार नव्हे",
+          },
+          {
+            en: "It is not work, because real work always brings money",
+            hi: "यह काम नहीं है, क्योंकि असली काम से हमेशा पैसे मिलते हैं",
+            mr: "हे काम नाही, कारण खऱ्या कामातून नेहमी पैसे मिळतात",
+          },
+          {
+            en: "Cooking at home is only play, since no customer ordered it",
+            hi: "घर का खाना पकाना खेल भर है, क्योंकि किसी ग्राहक ने उसे कहा नहीं",
+            mr: "घरचा स्वयंपाक हा खेळच, कारण कोणा गिऱ्हाइकाने तो सांगितलेला नाही",
+          },
+          {
+            en: "It would become work only if it were done in a hotel",
+            hi: "वह काम तभी बनेगा जब होटल में किया जाए",
+            mr: "ते होटेलात केले तरच काम ठरेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The same hands doing the same cooking in a hotel would earn a wage — the cooking did not change, only the payment did. Housework feeds, clothes and cleans the whole family every day; the chapter's point is that unpaid work is still work, and hands at home deserve helping and thanking.",
+          hi: "वही हाथ वही खाना होटल में पकाएँ तो मज़दूरी मिलेगी — पकाना नहीं बदला, सिर्फ़ भुगतान बदला। घर का काम रोज़ पूरे परिवार को खिलाता, पहनाता और सँवारता है; पाठ का मर्म यही है कि बिना वेतन का काम भी काम है, और घर के हाथों का साथ और शुक्रिया दोनों बनते हैं।",
+          mr: "तेच हात तोच स्वयंपाक होटेलात करतील तर मजुरी मिळेल — स्वयंपाक बदलला नाही, फक्त मोबदला बदलला. घरकाम रोज साऱ्या कुटुंबाला जेवू घालते, नेसवते आणि सांभाळते; धड्याचा गाभा हाच — पगाराविनाचे कामही कामच, आणि घरच्या हातांना हातभार आणि आभार दोन्ही द्यायला हवेत.",
+        },
+      },
+    ],
+  },
 ];
