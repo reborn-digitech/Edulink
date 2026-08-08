@@ -19,6 +19,7 @@ import { G3_EVS } from "./g3-evs";
 import { G4_MATHS } from "./g4-maths";
 import { G4_EVS } from "./g4-evs";
 import { G5_MATHS } from "./g5-maths";
+import { G5_EVS } from "./g5-evs";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -28,6 +29,7 @@ function main() {
   const topics: TopicFileOut[] = [
     ...G3_EVS.map(generateChapter),
     ...G4_EVS.map(generateChapter),
+    ...G5_EVS.map(generateChapter),
     ...G3_MATHS_CONCEPT.map(generateChapter),
     ...G6_HISTORY.map(generateChapter),
     ...G3_MATHS,
