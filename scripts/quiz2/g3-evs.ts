@@ -1226,4 +1226,281 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 18 — A House Like This (houses shaped by place and weather)     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-a-house-like-this",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 18 — A House Like This",
+      hi: "अध्याय 18 — ऐसा भी एक घर",
+      mr: "प्रकरण 18 — असेही एक घर",
+    },
+    name: { en: "A House Like This", hi: "ऐसा भी एक घर", mr: "असेही एक घर" },
+    summary: {
+      en: "Stilts over water, sloping roofs under rain, thick mud walls against heat — every house answers its own weather.",
+      hi: "पानी पर खंभों वाले, बारिश में ढलवाँ छतों वाले, गर्मी के विरुद्ध मोटी मिट्टी की दीवारों वाले — हर घर अपने मौसम का उत्तर है।",
+      mr: "पाण्यावर खांबांवरची, पावसात उतरत्या छपरांची, उष्णतेविरुद्ध जाड मातीच्या भिंतींची — प्रत्येक घर आपल्या हवामानाचे उत्तर आहे.",
+    },
+    position: 18,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "stilthouse",
+        name: { en: "A house on stilts", hi: "खंभों पर घर", mr: "खांबांवरचे घर" },
+        kind: "house",
+        prompt: {
+          en: "In Assam, where it rains heavily and water collects, houses are built raised up on what?",
+          hi: "असम में, जहाँ ख़ूब बारिश होती है और पानी भर जाता है, घर किन पर उठाकर बनाए जाते हैं?",
+          mr: "आसाममध्ये, जिथे खूप पाऊस पडतो आणि पाणी साचते, घरे कशावर उंच बांधतात?",
+        },
+        statement: {
+          en: "In rainy Assam, houses stand on strong bamboo stilts so flood water passes below the floor.",
+          hi: "बरसाती असम में घर मज़बूत बाँस के खंभों पर खड़े होते हैं, ताकि बाढ़ का पानी फ़र्श के नीचे से निकल जाए।",
+          mr: "पावसाळी आसामात घरे मजबूत बांबूच्या खांबांवर उभी असतात, म्हणजे पुराचे पाणी जमिनीखालून वाहून जाते.",
+        },
+        detail: {
+          en: "A ladder or wooden steps climb up to the door of such a house.",
+          hi: "ऐसे घर के दरवाज़े तक सीढ़ी या लकड़ी के पायदान चढ़ते हैं।",
+          mr: "अशा घराच्या दारापर्यंत शिडी वा लाकडी पायऱ्या चढतात.",
+        },
+        pair: {
+          left: { en: "A house on stilts", hi: "खंभों पर घर", mr: "खांबांवरचे घर" },
+          right: { en: "flood water passes below", hi: "बाढ़ का पानी नीचे से निकलता", mr: "पुराचे पाणी खालून जाते" },
+        },
+      },
+      {
+        id: "slopingroof",
+        name: { en: "A sloping roof", hi: "ढलवाँ छत", mr: "उतरते छप्पर" },
+        kind: "house-part",
+        prompt: {
+          en: "In places of heavy rain or snowfall, what shape of roof lets it all slide off?",
+          hi: "ख़ूब बारिश या बर्फ़ वाली जगहों पर किस आकार की छत सब कुछ नीचे सरका देती है?",
+          mr: "खूप पाऊस वा बर्फ पडणाऱ्या ठिकाणी कोणत्या आकाराचे छप्पर सारे खाली घसरवते?",
+        },
+        statement: {
+          en: "A sloping roof lets rain and snow slide off instead of piling up and leaking through.",
+          hi: "ढलवाँ छत बारिश और बर्फ़ को जमने-टपकने देने के बजाय नीचे सरका देती है।",
+          mr: "उतरते छप्पर पाऊस आणि बर्फ साचून गळण्याऐवजी खाली घसरवते.",
+        },
+        pair: {
+          left: { en: "A sloping roof", hi: "ढलवाँ छत", mr: "उतरते छप्पर" },
+          right: { en: "rain slides off", hi: "बारिश सरक जाती", mr: "पाऊस घसरून जातो" },
+        },
+      },
+      {
+        id: "mudhouse",
+        name: { en: "A mud house", hi: "मिट्टी का घर", mr: "मातीचे घर" },
+        kind: "house",
+        prompt: {
+          en: "In hot desert villages of Rajasthan, houses with THICK walls of which material stay cool inside?",
+          hi: "राजस्थान के गर्म रेगिस्तानी गाँवों में किस चीज़ की मोटी दीवारों वाले घर भीतर से ठंडे रहते हैं?",
+          mr: "राजस्थानच्या उष्ण वाळवंटी खेड्यांत कशाच्या जाड भिंतींची घरे आतून थंड राहतात?",
+        },
+        statement: {
+          en: "Thick mud walls keep desert houses cool inside when the sun blazes outside.",
+          hi: "मोटी मिट्टी की दीवारें रेगिस्तानी घरों को बाहर धूप दहकने पर भी भीतर से ठंडा रखती हैं।",
+          mr: "जाड मातीच्या भिंती बाहेर ऊन तापत असतानाही वाळवंटी घरे आतून थंड ठेवतात.",
+        },
+        detail: {
+          en: "Their roofs are often thatched with dry grass, and walls painted with lovely patterns.",
+          hi: "इनकी छतें प्रायः सूखी घास से छाई होती हैं, और दीवारों पर सुंदर चित्रकारी होती है।",
+          mr: "यांची छपरे बहुधा वाळक्या गवताने शाकारलेली असतात, आणि भिंतींवर सुरेख नक्षी असते.",
+        },
+        pair: {
+          left: { en: "Thick mud walls", hi: "मोटी मिट्टी की दीवारें", mr: "जाड मातीच्या भिंती" },
+          right: { en: "cool in the heat", hi: "गर्मी में ठंडक", mr: "उष्णतेत गारवा" },
+        },
+      },
+      {
+        id: "houseboat",
+        name: { en: "A houseboat", hi: "हाउसबोट (नाव-घर)", mr: "हाउसबोट (नाव-घर)" },
+        kind: "house",
+        prompt: {
+          en: "On the lakes of Kashmir, some families live in carved wooden houses that FLOAT. What are these called?",
+          hi: "कश्मीर की झीलों पर कुछ परिवार नक़्क़ाशीदार लकड़ी के तैरते घरों में रहते हैं। इन्हें क्या कहते हैं?",
+          mr: "काश्मीरच्या सरोवरांवर काही कुटुंबे कोरीव लाकडी तरंगत्या घरांत राहतात. यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "A houseboat floats on a lake — a whole carved wooden home resting on the water.",
+          hi: "हाउसबोट झील पर तैरता है — पानी पर टिका पूरा नक़्क़ाशीदार लकड़ी का घर।",
+          mr: "हाउसबोट सरोवरावर तरंगते — पाण्यावर विसावलेले अख्खे कोरीव लाकडी घर.",
+        },
+        decoys: [
+          { en: "A tent", hi: "तंबू", mr: "तंबू" },
+          { en: "A flat-roofed house", hi: "सपाट छत वाला घर", mr: "सपाट छपराचे घर" },
+        ],
+        pair: {
+          left: { en: "A houseboat", hi: "हाउसबोट", mr: "हाउसबोट" },
+          right: { en: "floats on a lake", hi: "झील पर तैरता", mr: "सरोवरावर तरंगते" },
+        },
+      },
+      {
+        id: "tent",
+        name: { en: "A tent", hi: "तंबू", mr: "तंबू" },
+        kind: "house",
+        prompt: {
+          en: "Which cloth home can be folded up and carried when a family must keep moving from place to place?",
+          hi: "कौन-सा कपड़े का घर तह करके साथ ले जाया जा सकता है, जब परिवार को जगह-जगह घूमते रहना हो?",
+          mr: "कोणते कापडाचे घर घडी करून नेता येते, जेव्हा कुटुंबाला ठिकठिकाणी फिरत राहावे लागते?",
+        },
+        statement: {
+          en: "A tent folds up and travels with the family — the home of people who keep moving, and of mountain climbers.",
+          hi: "तंबू तह होकर परिवार के साथ चलता है — घूमते रहने वालों और पर्वतारोहियों का घर।",
+          mr: "तंबू घडी होऊन कुटुंबाबरोबर प्रवास करतो — फिरस्त्यांचे आणि गिर्यारोहकांचे घर.",
+        },
+      },
+      {
+        id: "flatroof",
+        name: {
+          en: "A flat concrete roof",
+          hi: "सपाट पक्की छत",
+          mr: "सपाट पक्के छप्पर",
+        },
+        kind: "house-part",
+        prompt: {
+          en: "In dry city houses, which kind of roof can the family sleep and dry papads ON?",
+          hi: "सूखी जगहों के शहरी घरों में किस तरह की छत पर परिवार सो सकता है और पापड़ सुखा सकता है?",
+          mr: "कोरड्या ठिकाणच्या शहरी घरांत कोणत्या छपरावर कुटुंब झोपू शकते आणि पापड वाळवू शकते?",
+        },
+        statement: {
+          en: "A flat concrete roof becomes a room without walls — for sleeping on hot nights, drying papads and flying kites.",
+          hi: "सपाट पक्की छत बिना दीवारों का कमरा बन जाती है — गर्म रातों में सोने, पापड़ सुखाने और पतंग उड़ाने के लिए।",
+          mr: "सपाट पक्के छप्पर भिंती नसलेली खोली होते — गरम रात्री झोपायला, पापड वाळवायला आणि पतंग उडवायला.",
+        },
+        pair: {
+          left: { en: "A flat roof", hi: "सपाट छत", mr: "सपाट छप्पर" },
+          right: { en: "works only where rain is little", hi: "कम बारिश में ही चलती", mr: "कमी पावसातच चालते" },
+        },
+      },
+      {
+        id: "igloo",
+        name: { en: "An igloo", hi: "इग्लू", mr: "इग्लू" },
+        kind: "house",
+        prompt: {
+          en: "In lands of ice, which round house is built from blocks of SNOW itself?",
+          hi: "बर्फ़ के देशों में कौन-सा गोल घर ख़ुद बर्फ़ की सिल्लियों से बनता है?",
+          mr: "बर्फाच्या प्रदेशांत कोणते गोल घर खुद्द बर्फाच्या ठोकळ्यांनी बांधतात?",
+        },
+        statement: {
+          en: "An igloo is built from blocks of packed snow, and its round shape keeps the cold wind out and the warmth in.",
+          hi: "इग्लू जमी बर्फ़ की सिल्लियों से बनता है, और उसका गोल आकार ठंडी हवा बाहर और गर्माहट भीतर रखता है।",
+          mr: "इग्लू घट्ट बर्फाच्या ठोकळ्यांनी बांधतात, आणि त्याचा गोल आकार गार वारा बाहेर व ऊब आत ठेवतो.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the traveller to the house: Meenu is going to flooded Assam, Raza to a Kashmir lake, and Bala to a Rajasthan desert village. Which matching is right?",
+          hi: "यात्री को घर से मिलाइए: मीनू बाढ़ वाले असम जा रही है, रज़ा कश्मीर की झील पर, और बाला राजस्थान के रेगिस्तानी गाँव। कौन-सा मेल सही है?",
+          mr: "प्रवाशाला घराशी जुळवा: मीनू पुराच्या आसामला जाते आहे, रझा काश्मीरच्या सरोवरावर, आणि बाला राजस्थानच्या वाळवंटी खेड्यात. कोणती जुळणी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Meenu: stilts · Raza: houseboat · Bala: thick mud walls",
+            hi: "मीनू: खंभों वाला · रज़ा: हाउसबोट · बाला: मोटी मिट्टी की दीवारें",
+            mr: "मीनू: खांबांवरचे · रझा: हाउसबोट · बाला: जाड मातीच्या भिंती",
+          },
+          {
+            en: "Meenu: houseboat · Raza: mud walls · Bala: stilts",
+            hi: "मीनू: हाउसबोट · रज़ा: मिट्टी की दीवारें · बाला: खंभे",
+            mr: "मीनू: हाउसबोट · रझा: मातीच्या भिंती · बाला: खांब",
+          },
+          {
+            en: "Meenu: igloo · Raza: stilts · Bala: houseboat",
+            hi: "मीनू: इग्लू · रज़ा: खंभे · बाला: हाउसबोट",
+            mr: "मीनू: इग्लू · रझा: खांब · बाला: हाउसबोट",
+          },
+          {
+            en: "Meenu: mud walls · Raza: tent · Bala: houseboat",
+            hi: "मीनू: मिट्टी की दीवारें · रज़ा: तंबू · बाला: हाउसबोट",
+            mr: "मीनू: मातीच्या भिंती · रझा: तंबू · बाला: हाउसबोट",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each house answers its place: stilts lift floors above Assam's floods, a houseboat rests on the very lake Raza visits, and thick mud walls beat Bala's desert heat. Swap any pair and the house stops making sense — that is the whole lesson of the chapter.",
+          hi: "हर घर अपनी जगह का उत्तर है: खंभे असम की बाढ़ से फ़र्श ऊपर उठाते हैं, हाउसबोट उसी झील पर टिका है जहाँ रज़ा जा रहा है, और मोटी मिट्टी की दीवारें बाला की रेगिस्तानी गर्मी झेलती हैं। कोई भी जोड़ा बदल दें तो घर बेमानी हो जाता है — अध्याय का सारा पाठ यही है।",
+          mr: "प्रत्येक घर आपल्या जागेचे उत्तर: खांब आसामच्या पुरावर जमीन उचलतात, हाउसबोट रझा जातो त्याच सरोवरावर विसावते, आणि जाड मातीच्या भिंती बालाच्या वाळवंटी उष्णतेला पुरून उरतात. कोणतीही जोडी उलटा — घर निरर्थक होते. प्रकरणाचा सारा धडा हाच.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A builder copies a Rajasthan flat-roofed mud house, brick for brick, in a Kerala town where it rains for months. What goes wrong FIRST?",
+          hi: "एक मिस्त्री राजस्थान का सपाट छत वाला मिट्टी का घर, जस का तस, केरल के उस नगर में बनाता है जहाँ महीनों बारिश होती है। सबसे पहले क्या बिगड़ेगा?",
+          mr: "एक बांधकाम्या राजस्थानचे सपाट छपराचे मातीचे घर, जसेच्या तसे, महिनोन्महिने पाऊस पडणाऱ्या केरळच्या गावात बांधतो. सर्वांत आधी काय बिघडेल?",
+        },
+        choices: [
+          {
+            en: "Rain stands on the flat roof and soaks the mud walls — the house is answering the wrong weather",
+            hi: "बारिश सपाट छत पर ठहरकर मिट्टी की दीवारें भिगो देगी — घर ग़लत मौसम का उत्तर दे रहा है",
+            mr: "पाऊस सपाट छपरावर साचून मातीच्या भिंती भिजवेल — घर चुकीच्या हवामानाचे उत्तर देते आहे",
+          },
+          {
+            en: "The house will be too cold inside",
+            hi: "घर भीतर से बहुत ठंडा रहेगा",
+            mr: "घर आतून फार थंड राहील",
+          },
+          {
+            en: "Nothing — a good house suits every place",
+            hi: "कुछ नहीं — अच्छा घर हर जगह चलता है",
+            mr: "काही नाही — चांगले घर सगळीकडे चालते",
+          },
+          {
+            en: "The paint will fade faster in Kerala",
+            hi: "केरल में रंग जल्दी फीका होगा",
+            mr: "केरळात रंग लवकर फिका होईल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The desert design assumes rain is rare: a flat roof stores water it never expected, and wet mud softens. Kerala's own houses answer their sky with sloping tiled roofs. A house is not good or bad in itself — it is right or wrong FOR ITS WEATHER, which is why the chapter shows so many kinds.",
+          hi: "रेगिस्तानी बनावट मानकर चलती है कि बारिश दुर्लभ है: सपाट छत वह पानी रोक लेती है जिसकी उसे उम्मीद ही नहीं थी, और गीली मिट्टी नरम पड़ जाती है। केरल के अपने घर ढलवाँ खपरैल छतों से अपने आसमान का उत्तर देते हैं। घर अपने आप में अच्छा-बुरा नहीं होता — वह अपने मौसम के लिए सही या ग़लत होता है; इसीलिए अध्याय इतने तरह के घर दिखाता है।",
+          mr: "वाळवंटी रचना पाऊस दुर्मीळ धरून चालते: सपाट छप्पर अनपेक्षित पाणी साठवते, आणि ओली माती मऊ पडते. केरळची स्वतःची घरे उतरत्या कौलारू छपरांनी आपल्या आभाळाला उत्तर देतात. घर स्वतःत चांगले-वाईट नसते — ते आपल्या हवामानासाठी बरोबर वा चूक असते; म्हणूनच प्रकरण इतकी घरे दाखवते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Why is an igloo — a house of SNOW — warm inside, when snow itself is freezing cold?",
+          hi: "इग्लू — बर्फ़ का घर — भीतर से गर्म क्यों रहता है, जबकि बर्फ़ ख़ुद बर्फ़ीली ठंडी है?",
+          mr: "इग्लू — बर्फाचे घर — आतून उबदार का असते, जेव्हा बर्फ स्वतः गोठवणारा गार आहे?",
+        },
+        choices: [
+          {
+            en: "Packed snow blocks the freezing WIND, and the small round space holds in the people's own warmth",
+            hi: "जमी बर्फ़ बर्फ़ीली हवा को रोकती है, और छोटा गोल स्थान लोगों की अपनी गर्माहट सँजो लेता है",
+            mr: "घट्ट बर्फ गोठवणारा वारा अडवतो, आणि लहान गोल जागा माणसांची स्वतःची ऊब धरून ठेवते",
+          },
+          {
+            en: "The snow blocks are secretly heated before building",
+            hi: "बर्फ़ की सिल्लियाँ बनाने से पहले चुपके से गर्म की जाती हैं",
+            mr: "बर्फाचे ठोकळे बांधण्याआधी गुपचूप गरम करतात",
+          },
+          {
+            en: "Igloos are actually cold inside too",
+            hi: "इग्लू भीतर से भी ठंडे ही होते हैं",
+            mr: "इग्लू आतूनही गारच असतात",
+          },
+          {
+            en: "The sun melts the top open to let heat in",
+            hi: "धूप ऊपर से पिघलाकर गर्मी अंदर आने देती है",
+            mr: "ऊन वरून वितळवून उष्णता आत येऊ देते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Outside, the killing cold is mostly the WIND; snow walls stop it dead. Inside, a small closed dome keeps the warmth of bodies and a little lamp from escaping. The igloo does not make heat — it refuses to lose it, which in the coldest places is the same victory.",
+          hi: "बाहर जानलेवा ठंड ज़्यादातर हवा है; बर्फ़ की दीवारें उसे वहीं रोक देती हैं। भीतर, छोटा बंद गुंबद शरीरों और नन्हे दीये की गर्माहट को निकलने नहीं देता। इग्लू गर्मी बनाता नहीं — उसे खोने से इनकार करता है, और सबसे ठंडी जगहों में यही जीत है।",
+          mr: "बाहेर जीवघेणी थंडी मुख्यतः वारा असते; बर्फाच्या भिंती त्याला तिथेच थोपवतात. आत, लहान बंद घुमट शरीरांची आणि छोट्या दिव्याची ऊब निसटू देत नाही. इग्लू उष्णता निर्माण करत नाही — ती गमावण्यास नकार देतो, आणि सर्वांत थंड ठिकाणी हाच विजय.",
+        },
+      },
+    ],
+  },
 ];
