@@ -857,4 +857,827 @@ export const G4_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Anita and the Honeybees (a girl, her bees, her school)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-anita-and-the-honeybees",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 5 — Anita and the Honeybees",
+      hi: "अध्याय 5 — अनीता और मधुमक्खियाँ",
+      mr: "प्रकरण 5 — अनीता आणि मधमाश्या",
+    },
+    name: { en: "Anita and the Honeybees", hi: "अनीता और मधुमक्खियाँ", mr: "अनीता आणि मधमाश्या" },
+    summary: {
+      en: "Anita of Bihar paid for school with honey — queen bees and workers, wooden bee boxes, litchi blossom, and a hive's whole order.",
+      hi: "बिहार की अनीता ने शहद से स्कूल की फ़ीस चुकाई — रानी मक्खी और श्रमिक, लकड़ी के मधु-बक्से, लीची के फूल, और छत्ते की पूरी व्यवस्था।",
+      mr: "बिहारच्या अनीताने मधातून शाळेची फी भरली — राणी माशी आणि कामकरी, लाकडी मध-पेट्या, लिचीचा मोहर, आणि पोळ्याची सारी व्यवस्था.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "anita",
+        name: { en: "Anita", hi: "अनीता", mr: "अनीता" },
+        kind: "person",
+        prompt: {
+          en: "Which girl from a Bihar village kept bee boxes and paid for her own schooling with the honey they gave?",
+          hi: "बिहार के गाँव की कौन-सी लड़की ने मधु-बक्से पाले और उनके शहद से अपनी पढ़ाई का ख़र्च ख़ुद उठाया?",
+          mr: "बिहारच्या खेड्यातल्या कोणत्या मुलीने मध-पेट्या पाळल्या आणि त्यांच्या मधातून आपल्या शिक्षणाचा खर्च स्वतः केला?",
+        },
+        statement: {
+          en: "Anita kept bee boxes in her village and sold the honey to pay for her books and school.",
+          hi: "अनीता ने अपने गाँव में मधु-बक्से रखे और शहद बेचकर किताबों और स्कूल का ख़र्च जुटाया।",
+          mr: "अनीताने आपल्या गावात मध-पेट्या ठेवल्या आणि मध विकून पुस्तकांचा आणि शाळेचा खर्च उभा केला.",
+        },
+        detail: {
+          en: "People stared at first — a girl doing bee-keeping was a new sight in her village.",
+          hi: "पहले-पहल लोग ताकते रहे — लड़की का मधुमक्खी-पालन उसके गाँव में नई बात थी।",
+          mr: "सुरुवातीला लोक बघत राहिले — मुलीने मधमाशीपालन करणे तिच्या गावात नवी गोष्ट होती.",
+        },
+        extra: {
+          en: "She learnt the work by asking, watching and starting small, with a single box.",
+          hi: "उसने यह काम पूछ-पूछकर, देख-देखकर और एक अकेले बक्से से छोटी शुरुआत करके सीखा।",
+          mr: "तिने हे काम विचारून, पाहून आणि एका पेटीपासून छोटी सुरुवात करून शिकले.",
+        },
+        pair: {
+          left: { en: "Anita", hi: "अनीता", mr: "अनीता" },
+          right: {
+            en: "school fees from honey",
+            hi: "शहद से स्कूल की फ़ीस",
+            mr: "मधातून शाळेची फी",
+          },
+        },
+      },
+      {
+        id: "queen",
+        name: { en: "The queen bee", hi: "रानी मक्खी", mr: "राणी माशी" },
+        kind: "bee",
+        prompt: {
+          en: "Every hive has exactly one of her, and every egg in the hive is hers. Who is she?",
+          hi: "हर छत्ते में वह ठीक एक होती है, और छत्ते का हर अंडा उसी का होता है। वह कौन है?",
+          mr: "प्रत्येक पोळ्यात ती नेमकी एक असते, आणि पोळ्यातले प्रत्येक अंडे तिचेच असते. ती कोण?",
+        },
+        statement: {
+          en: "The queen bee is one to a hive, and she alone lays all the eggs.",
+          hi: "रानी मक्खी छत्ते में एक ही होती है, और सारे अंडे वही अकेली देती है।",
+          mr: "राणी माशी पोळ्यात एकच असते, आणि सारी अंडी तीच एकटी घालते.",
+        },
+        pair: {
+          left: { en: "The queen bee", hi: "रानी मक्खी", mr: "राणी माशी" },
+          right: { en: "lays all the eggs", hi: "सारे अंडे देती है", mr: "सारी अंडी घालते" },
+        },
+      },
+      {
+        id: "workers",
+        name: { en: "The worker bees", hi: "श्रमिक मक्खियाँ", mr: "कामकरी माश्या" },
+        kind: "bee",
+        prompt: {
+          en: "Who flies from flower to flower all day, carrying sweet nectar home to become honey?",
+          hi: "दिन भर फूल-फूल कौन उड़ती हैं, मीठा रस घर लाती हुईं, जो शहद बनेगा?",
+          mr: "दिवसभर फुलाफुलांवर कोण उडतात, गोड रस घरी आणत, ज्याचा मध होईल?",
+        },
+        statement: {
+          en: "The worker bees gather nectar from flowers and turn it into honey in the hive — they are the hive's thousands.",
+          hi: "श्रमिक मक्खियाँ फूलों से रस बटोरती हैं और छत्ते में उसे शहद बनाती हैं — छत्ते की हज़ारों की गिनती वही हैं।",
+          mr: "कामकरी माश्या फुलांतून रस गोळा करतात आणि पोळ्यात त्याचा मध करतात — पोळ्यातली हजारोंची संख्या त्यांचीच.",
+        },
+        pair: {
+          left: { en: "The worker bees", hi: "श्रमिक मक्खियाँ", mr: "कामकरी माश्या" },
+          right: {
+            en: "nectar, flower to flower",
+            hi: "फूल-फूल से रस",
+            mr: "फुलाफुलांतून रस",
+          },
+        },
+      },
+      {
+        id: "males",
+        name: { en: "The male bees", hi: "नर मक्खियाँ", mr: "नर माश्या" },
+        kind: "bee",
+        prompt: {
+          en: "Which bees of the hive neither gather nectar nor lay eggs?",
+          hi: "छत्ते की कौन-सी मक्खियाँ न रस बटोरती हैं, न अंडे देती हैं?",
+          mr: "पोळ्यातल्या कोणत्या माश्या रसही गोळा करत नाहीत, अंडीही घालत नाहीत?",
+        },
+        statement: {
+          en: "The male bees do not gather nectar and cannot lay eggs — the hive's work rests on the queen and the workers.",
+          hi: "नर मक्खियाँ रस नहीं बटोरतीं और अंडे नहीं दे सकतीं — छत्ते का काम रानी और श्रमिकों पर टिका है।",
+          mr: "नर माश्या रस गोळा करत नाहीत आणि अंडी घालू शकत नाहीत — पोळ्याचे काम राणी आणि कामकऱ्यांवर चालते.",
+        },
+      },
+      {
+        id: "beebox",
+        name: { en: "The bee box", hi: "मधु-बक्सा", mr: "मध-पेटी" },
+        kind: "bee-keeping",
+        prompt: {
+          en: "In what does a bee-keeper give the bees a home — a wooden case with frames inside for the comb?",
+          hi: "मधुमक्खी-पालक मक्खियों को घर किसमें देता है — भीतर छत्ते के लिए ढाँचों वाला लकड़ी का सन्दूक़?",
+          mr: "मधमाशीपालक माश्यांना घर कशात देतो — आत पोळ्यासाठी चौकटी असलेली लाकडी पेटी?",
+        },
+        statement: {
+          en: "The bee box is a wooden case with frames where the bees build comb — a hive a keeper can open and tend.",
+          hi: "मधु-बक्सा ढाँचों वाला लकड़ी का सन्दूक़ है जिसमें मक्खियाँ छत्ता बनाती हैं — ऐसा छत्ता जिसे पालक खोल और सँभाल सकता है।",
+          mr: "मध-पेटी म्हणजे चौकटींची लाकडी पेटी, जिच्यात माश्या पोळे बांधतात — पालकाला उघडून निगा राखता येणारे पोळे.",
+        },
+        pair: {
+          left: { en: "The bee box", hi: "मधु-बक्सा", mr: "मध-पेटी" },
+          right: {
+            en: "a hive you can keep",
+            hi: "पाला जा सकने वाला छत्ता",
+            mr: "पाळता येणारे पोळे",
+          },
+        },
+      },
+      {
+        id: "nectar",
+        name: { en: "Nectar", hi: "फूलों का रस (मकरंद)", mr: "फुलांचा रस (मकरंद)" },
+        kind: "bee-keeping",
+        prompt: {
+          en: "What sweet liquid do flowers hold deep inside, which bees carry off to make honey?",
+          hi: "फूल अपने भीतर कौन-सा मीठा द्रव छिपाए रहते हैं, जिसे मक्खियाँ शहद बनाने ले जाती हैं?",
+          mr: "फुले आपल्या आत कोणता गोड द्रव ठेवतात, जो माश्या मध करण्यासाठी नेतात?",
+        },
+        statement: {
+          en: "Nectar is the flowers' sweet juice — the raw stuff of honey, sipped and carried by the workers.",
+          hi: "मकरंद फूलों का मीठा रस है — शहद का कच्चा माल, जिसे श्रमिक मक्खियाँ पी-पीकर ढोती हैं।",
+          mr: "मकरंद हा फुलांचा गोड रस — मधाचा कच्चा माल, जो कामकरी माश्या पिऊन वाहून नेतात.",
+        },
+      },
+      {
+        id: "litchi",
+        name: { en: "The litchi blossom", hi: "लीची का मौसमी फूल", mr: "लिचीचा मोहर" },
+        kind: "bee-keeping",
+        prompt: {
+          en: "In Anita's Bihar, which tree's flowering season fills the bee boxes fastest with fragrant honey?",
+          hi: "अनीता के बिहार में किस पेड़ के फूलों का मौसम मधु-बक्सों को ख़ुशबूदार शहद से सबसे तेज़ भरता है?",
+          mr: "अनीताच्या बिहारमध्ये कोणत्या झाडाच्या मोहराचा हंगाम मध-पेट्या घमघमीत मधाने सर्वांत वेगाने भरतो?",
+        },
+        statement: {
+          en: "When the litchi trees flower, the bees make their best and most honey — the boxes are moved near the orchards then.",
+          hi: "जब लीची के पेड़ फूलते हैं, मक्खियाँ सबसे अच्छा और सबसे ज़्यादा शहद बनाती हैं — तब बक्से बग़ीचों के पास ले जाए जाते हैं।",
+          mr: "लिचीची झाडे फुलली की माश्या सर्वोत्तम आणि सर्वाधिक मध करतात — तेव्हा पेट्या बागांजवळ नेल्या जातात.",
+        },
+        pair: {
+          left: { en: "The litchi blossom", hi: "लीची के फूल", mr: "लिचीचा मोहर" },
+          right: { en: "the honey season", hi: "शहद का मौसम", mr: "मधाचा हंगाम" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the hive's jobs: A-lays every egg, B-gathers the nectar, C-does neither. Which trio is right?",
+          hi: "छत्ते के काम मिलाइए: अ-हर अंडा देती है, ब-रस बटोरती हैं, स-दोनों में से कुछ नहीं। कौन-सी तिकड़ी सही है?",
+          mr: "पोळ्याची कामे जुळवा: अ-प्रत्येक अंडे घालते, ब-रस गोळा करतात, क-दोन्हींपैकी काहीच नाही. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the queen · B: the workers · C: the males",
+            hi: "अ: रानी · ब: श्रमिक · स: नर",
+            mr: "अ: राणी · ब: कामकरी · क: नर",
+          },
+          {
+            en: "A: the workers · B: the males · C: the queen",
+            hi: "अ: श्रमिक · ब: नर · स: रानी",
+            mr: "अ: कामकरी · ब: नर · क: राणी",
+          },
+          {
+            en: "A: the males · B: the queen · C: the workers",
+            hi: "अ: नर · ब: रानी · स: श्रमिक",
+            mr: "अ: नर · ब: राणी · क: कामकरी",
+          },
+          {
+            en: "A: the queen · B: the males · C: the workers",
+            hi: "अ: रानी · ब: नर · स: श्रमिक",
+            mr: "अ: राणी · ब: नर · क: कामकरी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One queen lays; thousands of workers gather; the males do neither. Every wrong option gives some bee a job it never does — the hive runs precisely because each kind keeps its own.",
+          hi: "एक रानी अंडे देती है; हज़ारों श्रमिक बटोरती हैं; नर दोनों नहीं करते। हर ग़लत विकल्प किसी मक्खी को वह काम थमा देता है जो वह कभी नहीं करती — छत्ता ठीक इसीलिए चलता है कि हर तरह की मक्खी अपना ही काम रखती है।",
+          mr: "एक राणी अंडी घालते; हजारो कामकरी गोळा करतात; नर दोन्ही करत नाहीत. प्रत्येक चुकीचा पर्याय कोणा माशीला ती कधीच न करणारे काम देतो — पोळे नेमके यामुळेच चालते की प्रत्येक जात आपलेच काम करते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In litchi season Anita carts her boxes right up to the orchards, though the bees can fly far. Why move the boxes at all?",
+          hi: "लीची के मौसम में अनीता अपने बक्से बग़ीचों तक ढोकर ले जाती है, जबकि मक्खियाँ दूर तक उड़ सकती हैं। बक्से ले जाने की ज़रूरत ही क्यों?",
+          mr: "लिचीच्या हंगामात अनीता आपल्या पेट्या बागांपर्यंत वाहून नेते, वास्तविक माश्या दूरवर उडू शकतात. पेट्या न्यायची गरजच का?",
+        },
+        choices: [
+          {
+            en: "Short trips mean more trips — bees beside the blossom bring home far more nectar each day than bees flying from afar",
+            hi: "छोटी उड़ान यानी ज़्यादा फेरे — फूलों के पास बैठी मक्खियाँ दूर से उड़कर आने वालियों से हर दिन कहीं ज़्यादा रस लाती हैं",
+            mr: "छोटी उड्डाणे म्हणजे जास्त फेऱ्या — मोहराशेजारच्या माश्या दुरून उडणाऱ्यांहून रोज कितीतरी जास्त रस आणतात",
+          },
+          {
+            en: "Bees refuse to fly more than a few steps from their box",
+            hi: "मक्खियाँ बक्से से चंद क़दम से ज़्यादा उड़ने से मना कर देती हैं",
+            mr: "माश्या पेटीपासून काही पावलांहून जास्त उडायला नकार देतात",
+          },
+          {
+            en: "The boxes must taste the litchi air to flavour the honey",
+            hi: "शहद में स्वाद के लिए बक्सों को लीची की हवा चखनी पड़ती है",
+            mr: "मधाला चव यावी म्हणून पेट्यांना लिचीची हवा चाखावी लागते",
+          },
+          {
+            en: "Orchard owners pay Anita to display her boxes",
+            hi: "बाग़ मालिक अनीता को बक्से सजाने के पैसे देते हैं",
+            mr: "बागमालक अनीताला पेट्या मांडण्याचे पैसे देतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A worker bee's day is a fixed number of flying hours; spend them crossing fields and little is left for carrying. Put the box beside the blossom and every hour becomes a loaded trip — same bees, many times the honey. A keeper's real skill is arranging the bees' geography.",
+          hi: "श्रमिक मक्खी का दिन उड़ान के गिने-चुने घंटे हैं; वे खेत पार करने में ख़र्च हों तो ढोने के लिए थोड़ा ही बचता है। बक्सा फूलों के पास रखिए तो हर घंटा भरा हुआ फेरा बन जाता है — वही मक्खियाँ, कई गुना शहद। पालक का असली हुनर मक्खियों का भूगोल सजाना है।",
+          mr: "कामकरी माशीचा दिवस म्हणजे उड्डाणाचे मोजके तास; ते शेते ओलांडण्यात गेले तर वाहून आणण्यासाठी थोडेच उरतात. पेटी मोहराशेजारी ठेवली की प्रत्येक तास भरलेली फेरी होते — त्याच माश्या, कैक पट मध. पालकाचे खरे कौशल्य म्हणजे माश्यांचा भूगोल मांडणे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Anita's neighbours said bee-keeping was not a girl's work; today the village asks HER how it is done. What changed their minds?",
+          hi: "अनीता के पड़ोसियों ने कहा था कि मधुमक्खी-पालन लड़की का काम नहीं; आज गाँव उसी से पूछता है कि यह कैसे होता है। उनकी सोच किसने बदली?",
+          mr: "अनीताच्या शेजाऱ्यांनी म्हटले होते की मधमाशीपालन मुलीचे काम नव्हे; आज गाव तिलाच विचारते की ते कसे करायचे. त्यांचे मत कशाने बदलले?",
+        },
+        choices: [
+          {
+            en: "Her work itself — the full boxes, the school fees paid, the skill nobody could argue with",
+            hi: "उसका काम ही — भरे बक्से, चुकी हुई फ़ीस, वह हुनर जिससे कोई बहस नहीं कर सकता था",
+            mr: "तिचे कामच — भरलेल्या पेट्या, भरलेली फी, ज्याच्याशी कोणी वाद घालू शकले नाही ते कौशल्य",
+          },
+          {
+            en: "A new rule ordered the village to respect her",
+            hi: "एक नए नियम ने गाँव को उसका सम्मान करने का आदेश दिया",
+            mr: "नव्या नियमाने गावाला तिचा मान ठेवायची आज्ञा दिली",
+          },
+          {
+            en: "She gave up bee-keeping to win their approval",
+            hi: "उसने उनकी हाँ पाने के लिए मधुमक्खी-पालन छोड़ दिया",
+            mr: "त्यांची पसंती मिळवायला तिने मधमाशीपालन सोडले",
+          },
+          {
+            en: "The bees only obey girls, so no one else could try",
+            hi: "मक्खियाँ केवल लड़कियों की मानती हैं, इसलिए और कोई आज़मा ही नहीं सकता था",
+            mr: "माश्या फक्त मुलींचे ऐकतात, म्हणून दुसरे कोणी करूच शकत नव्हते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "No rule and no giving-up — just honey that kept filling boxes and fees that kept getting paid. Doubt argues with words but not with results: when the 'not for girls' work was visibly done well by a girl, the village's question had to change from 'why is she doing it' to 'how is it done'.",
+          hi: "न नियम, न हार मानना — बस शहद जो बक्से भरता गया और फ़ीस जो चुकती गई। शक शब्दों से बहस करता है, नतीजों से नहीं: जब 'लड़कियों का नहीं' वाला काम एक लड़की ने सबके सामने बख़ूबी कर दिखाया, तो गाँव का सवाल 'यह क्यों कर रही है' से बदलकर 'यह होता कैसे है' होना ही था।",
+          mr: "नियम नाही, माघारही नाही — फक्त पेट्या भरत गेलेला मध आणि भरली जात गेलेली फी. शंका शब्दांशी वाद घालते, निकालांशी नाही: 'मुलींचे नव्हे' म्हटलेले काम एका मुलीने साऱ्यांदेखत उत्तम करून दाखवले, तेव्हा गावाचा प्रश्न 'ही का करते' वरून 'हे कसे करतात' असा बदलणे भागच होते.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — Basva's Farm (the farming year, tool by tool)              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-basvas-farm",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 14 — Basva's Farm",
+      hi: "अध्याय 14 — बसवा का खेत",
+      mr: "प्रकरण 14 — बसवाचे शेत",
+    },
+    name: { en: "Basva's Farm", hi: "बसवा का खेत", mr: "बसवाचे शेत" },
+    summary: {
+      en: "A farm's year in order — ploughing, sowing, weeding, harvest — and the tools and bullocks that carry each season's work.",
+      hi: "खेत का साल सिलसिलेवार — जुताई, बुआई, निराई, कटाई — और हर मौसम का काम उठाते औज़ार और बैल।",
+      mr: "शेताचे वर्ष क्रमाने — नांगरणी, पेरणी, खुरपणी, कापणी — आणि प्रत्येक हंगामाचे काम पेलणारी अवजारे आणि बैल.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "plough",
+        name: { en: "Ploughing", hi: "जुताई", mr: "नांगरणी" },
+        kind: "farm-step",
+        seq: 1,
+        prompt: {
+          en: "Which first task of the farming year turns and loosens the hard soil, the plough biting in behind the bullocks?",
+          hi: "खेती के साल का कौन-सा पहला काम कड़ी मिट्टी को पलटता और भुरभुरा करता है — बैलों के पीछे धँसता हल?",
+          mr: "शेतीच्या वर्षातले कोणते पहिले काम कडक माती उलटून भुसभुशीत करते — बैलांच्या मागे रुतणारा नांगर?",
+        },
+        statement: {
+          en: "Ploughing comes first — the plough turns the hard soil soft so seeds can breathe and roots can run.",
+          hi: "सबसे पहले जुताई — हल कड़ी मिट्टी को नरम पलट देता है, ताकि बीज साँस लें और जड़ें दौड़ें।",
+          mr: "सर्वांत आधी नांगरणी — नांगर कडक माती मऊ उलटतो, म्हणजे बी श्वास घेते आणि मुळे धावतात.",
+        },
+        pair: {
+          left: { en: "The plough", hi: "हल", mr: "नांगर" },
+          right: { en: "turning the soil", hi: "मिट्टी पलटना", mr: "माती उलटणे" },
+        },
+      },
+      {
+        id: "sowing",
+        name: { en: "Sowing", hi: "बुआई", mr: "पेरणी" },
+        kind: "farm-step",
+        seq: 2,
+        prompt: {
+          en: "Into the fresh loosened earth, which task tucks the seeds, row upon row?",
+          hi: "ताज़ा भुरभुरी मिट्टी में कौन-सा काम बीजों को क़तार-दर-क़तार बिठाता है?",
+          mr: "ताज्या भुसभुशीत मातीत कोणते काम बियांना रांगेमागून रांग पेरत जाते?",
+        },
+        statement: {
+          en: "Sowing follows the plough — seeds go into the loosened earth in rows, before the rains arrive to wake them.",
+          hi: "जुताई के बाद बुआई — बीज क़तारों में भुरभुरी मिट्टी में जाते हैं, इससे पहले कि बारिश उन्हें जगाने आए।",
+          mr: "नांगरणीनंतर पेरणी — बी रांगांनी भुसभुशीत मातीत जाते, पाऊस त्यांना जागवायला येण्याआधी.",
+        },
+        pair: {
+          left: { en: "Sowing", hi: "बुआई", mr: "पेरणी" },
+          right: {
+            en: "seeds in the loosened earth",
+            hi: "भुरभुरी मिट्टी में बीज",
+            mr: "भुसभुशीत मातीत बी",
+          },
+        },
+      },
+      {
+        id: "weeding",
+        name: { en: "Weeding", hi: "निराई", mr: "खुरपणी" },
+        kind: "farm-step",
+        seq: 3,
+        prompt: {
+          en: "While the crop grows, which bent-back task pulls out the unwanted plants, khurpi in hand?",
+          hi: "फ़सल के बढ़ते-बढ़ते कौन-सा कमर-झुका काम बिन-बुलाए पौधों को उखाड़ता चलता है — हाथ में खुरपी?",
+          mr: "पीक वाढत असताना कोणते वाकून करायचे काम नको ती रोपे उपटत जाते — हातात खुरपे?",
+        },
+        statement: {
+          en: "Weeding pulls out the unwanted plants with a khurpi, so they stop stealing the crop's water and food.",
+          hi: "निराई खुरपी से बिन-बुलाए पौधे उखाड़ती है, ताकि वे फ़सल का पानी और खाना चुराना बंद करें।",
+          mr: "खुरपणी खुरप्याने नको ती रोपे उपटते, म्हणजे ती पिकाचे पाणी आणि अन्न चोरणे थांबवतात.",
+        },
+        pair: {
+          left: { en: "The khurpi", hi: "खुरपी", mr: "खुरपे" },
+          right: {
+            en: "digging out the weeds",
+            hi: "खर-पतवार उखाड़ना",
+            mr: "तण उपटणे",
+          },
+        },
+      },
+      {
+        id: "harvest",
+        name: { en: "The harvest", hi: "कटाई", mr: "कापणी" },
+        kind: "farm-step",
+        seq: 4,
+        prompt: {
+          en: "When the crop stands ripe and golden, which last task cuts it, sickle in hand?",
+          hi: "जब फ़सल पकी और सुनहरी खड़ी हो, कौन-सा आख़िरी काम उसे काटता है — हाथ में हँसिया?",
+          mr: "पीक पिकून सोनेरी उभे राहिले की कोणते शेवटचे काम ते कापते — हातात विळा?",
+        },
+        statement: {
+          en: "The harvest ends the farm's year — the ripe crop is cut with the sickle and gathered in.",
+          hi: "कटाई खेत का साल पूरा करती है — पकी फ़सल हँसिए से काटकर समेटी जाती है।",
+          mr: "कापणी शेताचे वर्ष पूर्ण करते — पिकलेले पीक विळ्याने कापून गोळा केले जाते.",
+        },
+        detail: {
+          en: "Cut too early the grain is milky and light; cut too late it shatters and spills in the field.",
+          hi: "जल्दी काटो तो दाना दूधिया और हलका; देर से काटो तो झड़कर खेत में बिखर जाता है।",
+          mr: "लवकर कापले तर दाणा दुधाळ आणि हलका; उशिरा कापले तर झडून शेतात सांडतो.",
+        },
+        extra: {
+          en: "After it, the field rests, and the family counts the sacks.",
+          hi: "उसके बाद खेत सुस्ताता है, और परिवार बोरियाँ गिनता है।",
+          mr: "त्यानंतर शेत विसावते, आणि कुटुंब पोती मोजते.",
+        },
+        pair: {
+          left: { en: "The sickle", hi: "हँसिया", mr: "विळा" },
+          right: { en: "cutting the ripe crop", hi: "पकी फ़सल काटना", mr: "पिकलेले पीक कापणे" },
+        },
+      },
+      {
+        id: "bullocks",
+        name: { en: "The bullocks", hi: "बैल", mr: "बैल" },
+        kind: "farm-helper",
+        prompt: {
+          en: "Who pulls Basva's plough through the field and his loaded cart to the market?",
+          hi: "बसवा का हल खेत में और लदी गाड़ी बाज़ार तक कौन खींचता है?",
+          mr: "बसवाचा नांगर शेतात आणि भरलेली गाडी बाजारात कोण ओढतो?",
+        },
+        statement: {
+          en: "The bullocks pull the plough through the soil and the loaded cart to market — the farm's patient engines.",
+          hi: "बैल हल को मिट्टी में और लदी गाड़ी को बाज़ार तक खींचते हैं — खेत के धीरजवान इंजन।",
+          mr: "बैल नांगर मातीतून आणि भरलेली गाडी बाजारापर्यंत ओढतात — शेताची सोशीक इंजिने.",
+        },
+      },
+      {
+        id: "rains",
+        name: { en: "The rains", hi: "बारिश का मौसम", mr: "पावसाळा" },
+        kind: "farm-helper",
+        prompt: {
+          en: "Basva watches the sky and times his sowing to arrive just before what?",
+          hi: "बसवा आसमान ताकता है और बुआई ठीक किसके आने से पहले रखता है?",
+          mr: "बसवा आकाशाकडे पाहतो आणि पेरणी नेमकी कशाच्या आधी ठेवतो?",
+        },
+        statement: {
+          en: "The rains are the farm's appointment — sowing is timed so the first showers fall on freshly seeded earth.",
+          hi: "बारिश खेत की तयशुदा मुलाक़ात है — बुआई ऐसे रखी जाती है कि पहली फुहारें ताज़ा बोई मिट्टी पर गिरें।",
+          mr: "पाऊस ही शेताची ठरलेली भेट — पेरणी अशी साधतात की पहिल्या सरी नुकत्याच पेरलेल्या मातीवर पडाव्यात.",
+        },
+      },
+      {
+        id: "manure",
+        name: { en: "Cattle manure", hi: "गोबर की खाद", mr: "शेणखत" },
+        kind: "farm-helper",
+        prompt: {
+          en: "What does Basva spread on the field from his own cattle shed, to feed the soil without buying anything?",
+          hi: "बसवा अपने ही बाड़े से निकालकर खेत में क्या बिखेरता है, जो बिना कुछ ख़रीदे मिट्टी को खिलाती है?",
+          mr: "बसवा आपल्याच गोठ्यातून काढून शेतात काय पसरतो, जे काहीही विकत न घेता मातीला खाऊ घालते?",
+        },
+        statement: {
+          en: "Cattle manure from the shed feeds the soil — the farm's own animals return strength to the farm's own earth.",
+          hi: "बाड़े की गोबर-खाद मिट्टी को खिलाती है — खेत के अपने पशु खेत की अपनी धरती को ताक़त लौटाते हैं।",
+          mr: "गोठ्यातले शेणखत मातीला खाऊ घालते — शेताचीच जनावरे शेताच्याच मातीला ताकद परत देतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "Basva sows DAYS before the rains, not after them, though rain would make the digging easier. Why sow into dry earth?",
+          hi: "बसवा बारिश से कुछ दिन पहले बोता है, बाद में नहीं — जबकि बारिश के बाद खोदना आसान होता। सूखी मिट्टी में बोना क्यों?",
+          mr: "बसवा पावसाच्या काही दिवस आधी पेरतो, नंतर नाही — वास्तविक पावसानंतर खणणे सोपे झाले असते. कोरड्या मातीत पेरायचे का?",
+        },
+        choices: [
+          {
+            en: "So the first showers fall on seeds already waiting — they wake all together and the whole field rises evenly",
+            hi: "ताकि पहली फुहारें पहले से बिछे बीजों पर गिरें — सब एक साथ जागें और पूरा खेत एक-सा उठे",
+            mr: "म्हणजे पहिल्या सरी आधीच वाट पाहणाऱ्या बियांवर पडतात — सारी एकदम जागतात आणि सगळे शेत सारखे उठते",
+          },
+          {
+            en: "Wet earth is too heavy for the bullocks to plough at all",
+            hi: "गीली मिट्टी बैलों से जुत ही नहीं सकती, इतनी भारी होती है",
+            mr: "ओली माती बैलांना नांगरताच येत नाही, इतकी जड असते",
+          },
+          {
+            en: "Seeds dissolve if sown into wet ground",
+            hi: "गीली ज़मीन में बोए बीज घुल जाते हैं",
+            mr: "ओल्या जमिनीत पेरलेले बी विरघळते",
+          },
+          {
+            en: "The rains are impossible to predict, so timing does not matter",
+            hi: "बारिश का अनुमान हो ही नहीं सकता, इसलिए समय का महत्व नहीं",
+            mr: "पावसाचा अंदाजच करता येत नाही, म्हणून वेळेला महत्त्व नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A seed in dry earth simply waits; the first rain is its alarm bell, and every seed hears it at the same moment. Sow AFTER the rain and the field is mud, the sowing is slow, and the season's precious first water falls on empty ground. Basva's calendar looks lazy and is actually exact.",
+          hi: "सूखी मिट्टी का बीज बस प्रतीक्षा करता है; पहली बारिश उसकी घंटी है, और हर बीज उसे एक ही पल सुनता है। बारिश के बाद बोइए तो खेत कीचड़, बुआई धीमी, और मौसम का अनमोल पहला पानी ख़ाली ज़मीन पर गिरता है। बसवा का कैलेंडर आलसी दिखता है और असल में सधा हुआ है।",
+          mr: "कोरड्या मातीतले बी नुसते थांबते; पहिला पाऊस ही त्याची घंटा, आणि प्रत्येक बी ती एकाच क्षणी ऐकते. पावसानंतर पेरा तर शेत चिखल, पेरणी सावकाश, आणि हंगामाचे मोलाचे पहिले पाणी रिकाम्या जमिनीवर पडते. बसवाचे वेळापत्रक आळशी दिसते आणि प्रत्यक्षात नेमके आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A weed is only a plant — it asks for nothing but water, light and soil. Then why does Basva bend all day to pull weeds out?",
+          hi: "खर-पतवार भी तो बस एक पौधा है — पानी, धूप और मिट्टी के सिवा कुछ नहीं माँगता। फिर बसवा दिन भर झुककर उसे क्यों उखाड़ता है?",
+          mr: "तण म्हणजेही एक रोपच — पाणी, ऊन आणि मातीशिवाय काही मागत नाही. मग बसवा दिवसभर वाकून ते का उपटतो?",
+        },
+        choices: [
+          {
+            en: "Because water, light and soil are exactly what his crop needs — every weed is fed at the crop's expense",
+            hi: "क्योंकि पानी, धूप और मिट्टी ही तो उसकी फ़सल की ज़रूरत हैं — हर खर-पतवार फ़सल की क़ीमत पर पलता है",
+            mr: "कारण पाणी, ऊन आणि माती हीच तर त्याच्या पिकाची गरज — प्रत्येक तण पिकाच्या जिवावर पोसले जाते",
+          },
+          {
+            en: "Weeds sting the farmer's feet at harvest time",
+            hi: "कटाई के समय खर-पतवार किसान के पैरों में चुभता है",
+            mr: "कापणीच्या वेळी तण शेतकऱ्याच्या पायाला टोचते",
+          },
+          {
+            en: "Weeds look untidy, and tidy fields fetch better prices",
+            hi: "खर-पतवार भद्दा दिखता है, और सजे खेत का दाम अच्छा मिलता है",
+            mr: "तण गबाळे दिसते, आणि नीटनेटक्या शेताला भाव चांगला मिळतो",
+          },
+          {
+            en: "Pulling weeds is a custom with no real reason left",
+            hi: "निराई एक रिवाज है जिसकी असल वजह अब बची नहीं",
+            mr: "खुरपणी ही आता खरे कारण न उरलेली रीत आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The weed's innocence is the problem: it wants nothing special — only the very water, light and soil-food the crop was planted to use. A field is a fixed plate; whatever the weed eats, the grain does not. Weeding looks like tidying and is actually the crop's share being defended, plant by plant.",
+          hi: "खर-पतवार का भोलापन ही समस्या है: वह कुछ ख़ास नहीं चाहता — वही पानी, धूप और मिट्टी की ख़ुराक, जिनके लिए फ़सल बोई गई थी। खेत एक तय थाली है; जो खर-पतवार खा गया, वह दाने को नहीं मिला। निराई सफ़ाई दिखती है और असल में पौधे-दर-पौधे फ़सल के हिस्से की पहरेदारी है।",
+          mr: "तणाचा भोळेपणा हीच अडचण: त्याला काही खास नको — तेच पाणी, ऊन आणि मातीतले अन्न, ज्यांसाठी पीक पेरले होते. शेत ही ठरलेली थाळी; तण जे खाते, ते दाण्याला मिळत नाही. खुरपणी आवराआवर दिसते आणि प्रत्यक्षात रोपारोपाने पिकाच्या वाट्याची राखण असते.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 18 — Too Much Water, Too Little Water                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-4-too-much-water-too-little-water",
+    subject: "EVS",
+    classLevel: 4,
+    chapter: {
+      en: "Chapter 18 — Too Much Water, Too Little Water",
+      hi: "अध्याय 18 — कहीं ज़्यादा पानी, कहीं कम",
+      mr: "प्रकरण 18 — कुठे अति पाणी, कुठे कमी",
+    },
+    name: {
+      en: "Too Much Water, Too Little Water",
+      hi: "कहीं ज़्यादा पानी, कहीं कम",
+      mr: "कुठे अति पाणी, कुठे कमी",
+    },
+    summary: {
+      en: "Flooded lanes with nothing fit to drink, dry villages walking miles for a pot — and the habits that keep water safe in both.",
+      hi: "डूबी गलियाँ जहाँ पीने लायक़ कुछ नहीं, सूखे गाँव जो एक घड़े के लिए मीलों चलते हैं — और वे आदतें जो दोनों जगह पानी को सुरक्षित रखती हैं।",
+      mr: "बुडालेल्या गल्ल्या जिथे पिण्याजोगे काही नाही, कोरडी गावे जी एका घागरीसाठी मैलोन्मैल चालतात — आणि दोन्हीकडे पाणी सुरक्षित ठेवणाऱ्या सवयी.",
+    },
+    position: 18,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "floodedvillage",
+        name: { en: "A flooded village", hi: "बाढ़ में घिरा गाँव", mr: "पुरात बुडालेले गाव" },
+        kind: "water-trouble",
+        prompt: {
+          en: "Streets underwater, wells and handpumps drowned in muddy flood — which village has water everywhere and none fit to drink?",
+          hi: "गलियाँ पानी में, कुएँ और नल गंदी बाढ़ में डूबे — किस गाँव में पानी ही पानी है, पर पीने लायक़ बूँद नहीं?",
+          mr: "गल्ल्या पाण्याखाली, विहिरी आणि हातपंप गढूळ पुरात बुडालेले — कोणत्या गावात पाणीच पाणी आहे, पण पिण्याजोगा थेंब नाही?",
+        },
+        statement: {
+          en: "In a flooded village the wells and handpumps drown in dirty water — water is everywhere, and none of it is safe to drink.",
+          hi: "बाढ़ में घिरे गाँव के कुएँ और नल गंदे पानी में डूब जाते हैं — पानी हर ओर है, और पीने लायक़ कहीं नहीं।",
+          mr: "पुरात बुडालेल्या गावाच्या विहिरी आणि हातपंप गढूळ पाण्यात बुडतात — पाणी सगळीकडे आहे, आणि पिण्याजोगे कुठेच नाही.",
+        },
+        detail: {
+          en: "Food, dry clothes and clean water must come to it by boat until the flood goes down.",
+          hi: "बाढ़ उतरने तक खाना, सूखे कपड़े और साफ़ पानी उस तक नाव से पहुँचाना पड़ता है।",
+          mr: "पूर ओसरेपर्यंत अन्न, कोरडे कपडे आणि स्वच्छ पाणी होडीने पोहोचवावे लागते.",
+        },
+        extra: {
+          en: "When the water finally drains, the wells must be cleaned before anyone drinks from them.",
+          hi: "पानी उतर जाए तो भी पहले कुएँ साफ़ होते हैं, तब कोई उनसे पीता है।",
+          mr: "पाणी ओसरले तरी आधी विहिरी स्वच्छ होतात, मगच कोणी त्यांतले पिते.",
+        },
+        pair: {
+          left: { en: "A flooded village", hi: "बाढ़ में घिरा गाँव", mr: "पुरात बुडालेले गाव" },
+          right: {
+            en: "water everywhere, none to drink",
+            hi: "पानी सब ओर, पीने को नहीं",
+            mr: "पाणी सगळीकडे, प्यायला नाही",
+          },
+        },
+      },
+      {
+        id: "dryvillage",
+        name: { en: "A dry village", hi: "पानी को तरसता गाँव", mr: "पाण्यासाठी आसुसलेले गाव" },
+        kind: "water-trouble",
+        prompt: {
+          en: "Wells sunk low, one tanker a week, women walking miles balancing pots — which village is this?",
+          hi: "कुएँ तलहटी छूते, हफ़्ते में एक टैंकर, सिर पर घड़े साधे मीलों चलती स्त्रियाँ — यह कौन-सा गाँव है?",
+          mr: "विहिरी तळ गाठलेल्या, आठवड्याला एक टँकर, डोक्यावर घागरी तोलत मैलोन्मैल चालणाऱ्या बाया — हे कोणते गाव?",
+        },
+        statement: {
+          en: "In a dry village the wells sink low and women and children walk far, carrying home every pot of water.",
+          hi: "पानी को तरसते गाँव में कुएँ उतर जाते हैं और स्त्रियाँ-बच्चे दूर-दूर से हर घड़ा ढोकर लाते हैं।",
+          mr: "पाण्यासाठी आसुसलेल्या गावात विहिरी खोल जातात आणि बाया-मुले दुरून प्रत्येक घागर वाहून आणतात.",
+        },
+        pair: {
+          left: { en: "A dry village", hi: "पानी को तरसता गाँव", mr: "पाण्यासाठी आसुसलेले गाव" },
+          right: {
+            en: "miles walked for one pot",
+            hi: "एक घड़े के लिए मीलों पैदल",
+            mr: "एका घागरीसाठी मैलोन्मैल",
+          },
+        },
+      },
+      {
+        id: "dirtywater",
+        name: { en: "Dirty water", hi: "गंदा पानी", mr: "गढूळ अशुद्ध पाणी" },
+        kind: "water-safety",
+        prompt: {
+          en: "What looks like ordinary water in the glass, yet carries the germs of stomach illness and fevers?",
+          hi: "गिलास में आम पानी-सा क्या दिखता है, पर पेट की बीमारियों और बुख़ारों के कीटाणु ढोता है?",
+          mr: "ग्लासात साध्या पाण्यासारखे काय दिसते, पण पोटाच्या आजारांचे आणि तापांचे जंतू वाहते?",
+        },
+        statement: {
+          en: "Dirty water can look clean in a glass and still carry the germs of stomach diseases.",
+          hi: "गंदा पानी गिलास में साफ़ दिख सकता है और फिर भी पेट की बीमारियों के कीटाणु लिए हो सकता है।",
+          mr: "अशुद्ध पाणी ग्लासात स्वच्छ दिसू शकते आणि तरी पोटाच्या आजारांचे जंतू बाळगू शकते.",
+        },
+        pair: {
+          left: { en: "Dirty water", hi: "गंदा पानी", mr: "अशुद्ध पाणी" },
+          right: {
+            en: "stomach illness in a glass",
+            hi: "गिलास में पेट की बीमारी",
+            mr: "ग्लासातला पोटाचा आजार",
+          },
+        },
+      },
+      {
+        id: "boiling",
+        name: { en: "Boiling the water", hi: "पानी उबालना", mr: "पाणी उकळणे" },
+        kind: "water-safety",
+        prompt: {
+          en: "When the water's cleanness is in doubt, what does Amma do to it on the stove before anyone drinks?",
+          hi: "जब पानी की सफ़ाई पर शक हो, तो पीने से पहले अम्मा चूल्हे पर उसका क्या करती हैं?",
+          mr: "पाण्याच्या शुद्धतेची शंका असली की पिण्याआधी आई चुलीवर त्याचे काय करते?",
+        },
+        statement: {
+          en: "Boiling kills the germs in doubtful water — boiled and covered, it becomes safe to drink.",
+          hi: "उबालना शक वाले पानी के कीटाणु मार देता है — उबला और ढका पानी पीने लायक़ हो जाता है।",
+          mr: "उकळणे शंकास्पद पाण्यातले जंतू मारते — उकळलेले आणि झाकलेले पाणी पिण्याजोगे होते.",
+        },
+        pair: {
+          left: {
+            en: "Boiling doubtful water",
+            hi: "शक वाला पानी उबालना",
+            mr: "शंकास्पद पाणी उकळणे",
+          },
+          right: { en: "germs killed by heat", hi: "आँच से मरे कीटाणु", mr: "उष्णतेने मेलेले जंतू" },
+        },
+      },
+      {
+        id: "handpump",
+        name: { en: "The handpump", hi: "हैंडपंप", mr: "हातपंप" },
+        kind: "water-source",
+        prompt: {
+          en: "Which iron helper, worked up and down by hand, pulls clean water up from deep underground?",
+          hi: "कौन-सा लोहे का मददगार, हाथ से ऊपर-नीचे चलाया हुआ, गहरे भूमिगत से साफ़ पानी खींच लाता है?",
+          mr: "कोणता लोखंडी मदतनीस, हाताने वरखाली चालवला की, खोल जमिनीखालून स्वच्छ पाणी वर आणतो?",
+        },
+        statement: {
+          en: "The handpump pulls water up from deep underground, where it lies filtered and clean.",
+          hi: "हैंडपंप गहरे भूमिगत से पानी खींचता है, जहाँ वह छना हुआ और साफ़ रहता है।",
+          mr: "हातपंप खोल जमिनीखालून पाणी वर खेचतो, जिथे ते गाळलेले आणि स्वच्छ असते.",
+        },
+      },
+      {
+        id: "tanka",
+        name: {
+          en: "The tanka (rain tank)",
+          hi: "टाँका (वर्षा-कुंड)",
+          mr: "टाका (पावसाचे टाके)",
+        },
+        kind: "water-source",
+        prompt: {
+          en: "In dry Rajasthan homes, which covered underground tank saves the roof's rainwater for the whole year?",
+          hi: "सूखे राजस्थान के घरों में कौन-सा ढका भूमिगत कुंड छत की बरसात को साल भर के लिए सहेजता है?",
+          mr: "कोरड्या राजस्थानच्या घरांत कोणते झाकलेले जमिनीखालचे टाके छपराचा पाऊस वर्षभरासाठी साठवते?",
+        },
+        statement: {
+          en: "The tanka is a covered underground tank that stores the roof's rainwater — one good rain can water a family for months.",
+          hi: "टाँका ढका भूमिगत कुंड है जो छत का बरसाती पानी जमा करता है — एक अच्छी बारिश परिवार को महीनों पिला सकती है।",
+          mr: "टाका हे झाकलेले जमिनीखालचे टाके छपराचे पावसाचे पाणी साठवते — एक चांगला पाऊस कुटुंबाला महिनोंमहिने पुरतो.",
+        },
+        pair: {
+          left: { en: "The tanka", hi: "टाँका", mr: "टाका" },
+          right: {
+            en: "the roof's rain, saved",
+            hi: "छत की बारिश, सहेजी हुई",
+            mr: "छपराचा पाऊस, साठवलेला",
+          },
+        },
+      },
+      {
+        id: "coveredpot",
+        name: {
+          en: "The covered water pot",
+          hi: "ढका हुआ घड़ा",
+          mr: "झाकलेली घागर",
+        },
+        kind: "water-safety",
+        prompt: {
+          en: "A lid on top, a long-handled ladle to take water out, no hands dipped in — which good habit is this pot showing?",
+          hi: "ऊपर ढक्कन, निकालने को लंबी डंडी की कलछी, भीतर कोई हाथ नहीं — यह घड़ा कौन-सी अच्छी आदत दिखा रहा है?",
+          mr: "वर झाकण, पाणी काढायला लांब दांड्याचे ओगराळे, आत हात नाही — ही घागर कोणती चांगली सवय दाखवते?",
+        },
+        statement: {
+          en: "The stored water stays covered, and a long ladle takes it out — dipped hands and open pots let the germs in.",
+          hi: "रखा पानी ढका रहता है, और लंबी कलछी से निकलता है — डूबे हाथ और खुले घड़े कीटाणुओं को न्योता देते हैं।",
+          mr: "साठवलेले पाणी झाकलेले राहते, आणि लांब ओगराळ्याने निघते — बुडवलेले हात आणि उघड्या घागरी जंतूंना आमंत्रण देतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these troubles into a FLOOD's and a DROUGHT's: wells drowned in mud, miles walked for a pot, boats bringing food, one tanker a week. Which sorting is right?",
+          hi: "इन मुसीबतों को बाढ़ की और सूखे की में छाँटिए: कीचड़ में डूबे कुएँ, घड़े के लिए मीलों पैदल, नाव से आता खाना, हफ़्ते में एक टैंकर। कौन-सी छँटाई सही है?",
+          mr: "या अडचणींची पुराच्या आणि दुष्काळाच्या अशी वर्गवारी करा: चिखलात बुडालेल्या विहिरी, घागरीसाठी मैलोन्मैल चालणे, होडीने येणारे अन्न, आठवड्याला एक टँकर. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Flood: drowned wells, boats with food · Drought: miles for a pot, one tanker a week",
+            hi: "बाढ़: डूबे कुएँ, नाव से खाना · सूखा: मीलों पैदल, हफ़्ते में एक टैंकर",
+            mr: "पूर: बुडालेल्या विहिरी, होडीने अन्न · दुष्काळ: मैलोन्मैल चालणे, आठवड्याला एक टँकर",
+          },
+          {
+            en: "Flood: miles for a pot, one tanker · Drought: drowned wells, boats with food",
+            hi: "बाढ़: मीलों पैदल, टैंकर · सूखा: डूबे कुएँ, नाव से खाना",
+            mr: "पूर: मैलोन्मैल चालणे, टँकर · दुष्काळ: बुडालेल्या विहिरी, होडीने अन्न",
+          },
+          {
+            en: "Flood: drowned wells, one tanker · Drought: boats with food, miles for a pot",
+            hi: "बाढ़: डूबे कुएँ, टैंकर · सूखा: नाव से खाना, मीलों पैदल",
+            mr: "पूर: बुडालेल्या विहिरी, टँकर · दुष्काळ: होडीने अन्न, मैलोन्मैल चालणे",
+          },
+          {
+            en: "Flood: boats with food, miles for a pot · Drought: drowned wells, one tanker",
+            hi: "बाढ़: नाव से खाना, मीलों पैदल · सूखा: डूबे कुएँ, टैंकर",
+            mr: "पूर: होडीने अन्न, मैलोन्मैल चालणे · दुष्काळ: बुडालेल्या विहिरी, टँकर",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Ask of each trouble: is there too much water here, or too little? Drowned wells and food arriving by boat can only happen where water has swallowed the roads. Walking miles and waiting for tankers happen only where the ground has none left to give. Two opposite disasters — and the same thirst in both.",
+          hi: "हर मुसीबत से पूछिए: यहाँ पानी ज़्यादा है या कम? कुएँ डूबना और खाना नाव से आना वहीं हो सकता है जहाँ पानी सड़कें निगल चुका है। मीलों चलना और टैंकर की बाट जोहना वहीं होता है जहाँ ज़मीन के पास देने को कुछ नहीं बचा। दो उलट आपदाएँ — और दोनों में एक ही प्यास।",
+          mr: "प्रत्येक अडचणीला विचारा: इथे पाणी जास्त आहे की कमी? विहिरी बुडणे आणि अन्न होडीने येणे तिथेच घडते जिथे पाण्याने रस्ते गिळले आहेत. मैलोन्मैल चालणे आणि टँकरची वाट पाहणे तिथेच घडते जिथे जमिनीजवळ द्यायला काही उरले नाही. दोन उलट आपत्ती — आणि दोन्हींत एकच तहान.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In the flooded village there is water in every lane — yet the radio warns, 'do not drink it'. Why is a flood a THIRSTY time?",
+          hi: "बाढ़ वाले गाँव की हर गली में पानी है — फिर भी रेडियो चेताता है, 'इसे मत पीना'। बाढ़ प्यास का समय क्यों है?",
+          mr: "पूर आलेल्या गावाच्या प्रत्येक गल्लीत पाणी आहे — तरी रेडिओ बजावतो, 'हे पिऊ नका'. पूर हा तहानेचा काळ का?",
+        },
+        choices: [
+          {
+            en: "Flood water has swept through drains, fields and waste — it is one vast dirty water, and it has drowned the clean sources too",
+            hi: "बाढ़ का पानी नालियों, खेतों और कूड़े से होकर बहा है — वह एक विशाल गंदा पानी है, और उसने साफ़ स्रोतों को भी डुबो दिया है",
+            mr: "पुराचे पाणी गटारे, शेते आणि कचऱ्यातून वाहत आले आहे — ते एक अवाढव्य गढूळ पाणी आहे, आणि त्याने स्वच्छ स्रोतही बुडवले आहेत",
+          },
+          {
+            en: "Flood water is too salty to drink, like the sea",
+            hi: "बाढ़ का पानी समुद्र-सा खारा होता है",
+            mr: "पुराचे पाणी समुद्रासारखे खारट असते",
+          },
+          {
+            en: "Drinking is forbidden in floods so water lasts for cooking",
+            hi: "बाढ़ में पीना मना है ताकि पानी पकाने के लिए बचे",
+            mr: "पुरात पिणे मना असते म्हणजे पाणी स्वयंपाकासाठी उरते",
+          },
+          {
+            en: "Cold flood water chills the stomach, that is all",
+            hi: "बाढ़ का ठंडा पानी बस पेट ठंडा कर देता है, और कुछ नहीं",
+            mr: "पुराचे गार पाणी नुसते पोट गार करते, इतकेच",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The flood is every drain, gutter, field and rubbish heap stirred into one water — and that water now sits INSIDE the wells and over the handpumps. The village's problem is not finding water but finding water that was not touched by the flood: boiled, brought in, or drawn after the wells are cleaned. Plenty and safety are different things, and a flood proves it in every lane.",
+          hi: "बाढ़ हर नाली, गटर, खेत और कूड़े के ढेर को घोलकर बना एक पानी है — और वही पानी अब कुओं के भीतर और नलों के ऊपर बैठा है। गाँव की समस्या पानी पाना नहीं, वह पानी पाना है जिसे बाढ़ ने छुआ न हो: उबला हुआ, बाहर से आया, या कुएँ साफ़ होने के बाद निकाला। बहुतायत और सुरक्षा अलग चीज़ें हैं — बाढ़ इसे हर गली में साबित करती है।",
+          mr: "पूर म्हणजे प्रत्येक गटार, नाली, शेत आणि कचऱ्याचा ढीग कालवून झालेले एक पाणी — आणि तेच पाणी आता विहिरींच्या आत आणि हातपंपांवर बसले आहे. गावाचा प्रश्न पाणी मिळवणे नाही, तर पुराने न शिवलेले पाणी मिळवणे: उकळलेले, बाहेरून आणलेले, किंवा विहिरी स्वच्छ झाल्यावर काढलेले. विपुलता आणि सुरक्षितता या वेगळ्या गोष्टी — पूर हे प्रत्येक गल्लीत सिद्ध करतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "One good monsoon falls on two Rajasthani houses. One roof drains into a covered tanka; the other lets the rain run off into the sand. Eight dry months later, what is the difference between the two houses?",
+          hi: "एक अच्छा मानसून दो राजस्थानी घरों पर बरसता है। एक की छत ढके टाँके में उतरती है; दूसरे की बारिश रेत में बह जाती है। आठ सूखे महीनों बाद दोनों घरों में क्या फ़र्क़ है?",
+          mr: "एक चांगला पावसाळा दोन राजस्थानी घरांवर पडतो. एकाचे छप्पर झाकलेल्या टाक्यात उतरते; दुसऱ्याचा पाऊस वाळूत वाहून जातो. आठ कोरड्या महिन्यांनंतर दोन घरांत काय फरक?",
+        },
+        choices: [
+          {
+            en: "The tanka house drinks its own saved rain at home; the other walks and pays for every pot — same rain, different foresight",
+            hi: "टाँके वाला घर अपनी सहेजी बारिश घर बैठे पीता है; दूसरा हर घड़े के लिए चलता और चुकाता है — बारिश एक, दूरदर्शिता अलग",
+            mr: "टाक्याचे घर आपला साठवलेला पाऊस घरबसल्या पिते; दुसरे प्रत्येक घागरीसाठी चालते आणि मोजते — पाऊस एक, दूरदृष्टी वेगळी",
+          },
+          {
+            en: "No difference — rain always returns to a house that lost it",
+            hi: "कोई फ़र्क़ नहीं — बारिश खोने वाले घर के पास लौट आती है",
+            mr: "फरक नाही — पाऊस गमावणाऱ्या घराकडे परत येतो",
+          },
+          {
+            en: "The tanka house has stale water, so the other is better off",
+            hi: "टाँके का पानी बासी है, इसलिए दूसरा घर बेहतर रहा",
+            mr: "टाक्याचे पाणी शिळे असते, म्हणून दुसरे घर बरे",
+          },
+          {
+            en: "The sand stores the second house's rain just as well",
+            hi: "रेत दूसरे घर की बारिश उतनी ही अच्छी तरह सँभाल लेती है",
+            mr: "वाळू दुसऱ्या घराचा पाऊस तितकाच चांगला सांभाळते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The desert's rule is simple: rain falls the same on all, but only the roof that leads to a tanka keeps any of it. Eight months later one family dips a ladle at home while the other queues at the tanker — not because the sky favoured them, but because their grandparents built a tank. Saved water is the desert's only faithful well.",
+          hi: "रेगिस्तान का नियम सीधा है: बारिश सब पर एक-सी गिरती है, पर बचाता वही घर है जिसकी छत टाँके तक जाती है। आठ महीने बाद एक परिवार घर बैठे कलछी डुबोता है और दूसरा टैंकर की क़तार में खड़ा है — इसलिए नहीं कि आसमान ने पक्ष लिया, बल्कि इसलिए कि उनके दादा-परदादा ने कुंड बनाया था। सहेजा पानी रेगिस्तान का इकलौता वफ़ादार कुआँ है।",
+          mr: "वाळवंटाचा नियम सोपा: पाऊस साऱ्यांवर सारखाच पडतो, पण साठवते तेच घर ज्याचे छप्पर टाक्यापर्यंत जाते. आठ महिन्यांनी एक कुटुंब घरबसल्या ओगराळे बुडवते आणि दुसरे टँकरच्या रांगेत उभे — आकाशाने पक्षपात केला म्हणून नव्हे, तर त्यांच्या आजोबा-पणजोबांनी टाके बांधले म्हणून. साठवलेले पाणी हीच वाळवंटाची एकुलती इमानी विहीर.",
+        },
+      },
+    ],
+  },
 ];
