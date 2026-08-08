@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 11 — Surface Areas and Volumes",
+  "name": "Surface Areas and Volumes",
+  "slug": "maths-9-surface-areas-volumes",
+  "summary": "Round solids measured: cones one-third their cylinder, volume conserved through melting, radius doubled multiplying volume eightfold — and Archimedes' sphere two-thirds of its cylinder.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "पृष्ठीय क्षेत्रफल और आयतन",
+      "summary": "गोल ठोस नपे: शंकु अपने बेलन का एक-तिहाई, पिघलाने पर संरक्षित आयतन, त्रिज्या दुगुनी से आयतन आठ गुना — और आर्किमिडीज़ का गोला अपने बेलन का दो-तिहाई।"
+    },
+    "mr": {
+      "name": "पृष्ठफळ आणि घनफळ",
+      "summary": "गोल घन मोजले: शंकू आपल्या दंडगोलाचा एक-तृतीयांश, वितळवल्यावर अक्षय घनफळ, त्रिज्या दुप्पट म्हणजे घनफळ आठपट — आणि आर्किमिडीजचा गोल आपल्या दंडगोलाचा दोन-तृतीयांश."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A sphere has radius 3 cm. Its volume is (4/3)πr³. Using π = 22/7, what is (4/3)·(22/7)·27? Give the whole-number approximation.",
+      "choices": [
+        "113",
+        "108",
+        "36",
+        "88"
+      ],
+      "answerIndex": 0,
+      "solution": "(4/3)·(22/7)·27 = (4·22·27)/(3·7) = 2376/21 ≈ 113 cm³. The cube of the radius drives the volume upward fast.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गोले की त्रिज्या 3 सेमी है। आयतन (4/3)πr³। π = 22/7 से (4/3)·(22/7)·27 क्या है? पूर्ण-संख्या अनुमान दीजिए।",
+          "choices": [
+            "113",
+            "108",
+            "36",
+            "88"
+          ],
+          "solution": "(4/3)·(22/7)·27 = (4·22·27)/(3·7) = 2376/21 ≈ 113 घन सेमी। त्रिज्या का घन आयतन को तेज़ी से ऊपर ले जाता है।"
+        },
+        "mr": {
+          "stem": "एका गोलाची त्रिज्या 3 सेमी. घनफळ (4/3)πr³. π = 22/7 ने (4/3)·(22/7)·27 काय? पूर्ण-संख्या अंदाज द्या.",
+          "choices": [
+            "113",
+            "108",
+            "36",
+            "88"
+          ],
+          "solution": "(4/3)·(22/7)·27 = (4·22·27)/(3·7) = 2376/21 ≈ 113 घन सेमी. त्रिज्येचा घन घनफळ वेगाने वर नेतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The curved surface area of a cylinder is 2πrh. For r = 7, h = 10, π = 22/7, compute it.",
+      "choices": [
+        "1540",
+        "154",
+        "220",
+        "440"
+      ],
+      "answerIndex": 3,
+      "solution": "2·(22/7)·7·10 = 2·22·10 = 440 cm² — the 7 cancels the 7. 1540 is the volume by mistake.",
+      "checkExpr": "2*22*10",
+      "translations": {
+        "hi": {
+          "stem": "बेलन का वक्र पृष्ठीय क्षेत्रफल 2πrh है। r = 7, h = 10, π = 22/7 के लिए निकालिए।",
+          "choices": [
+            "1540",
+            "154",
+            "220",
+            "440"
+          ],
+          "solution": "2·(22/7)·7·10 = 2·22·10 = 440 वर्ग सेमी — 7, 7 को काट देता है। 1540 ग़लती से आयतन है।"
+        },
+        "mr": {
+          "stem": "दंडगोलाचे वक्र पृष्ठफळ 2πrh. r = 7, h = 10, π = 22/7 साठी काढा.",
+          "choices": [
+            "1540",
+            "154",
+            "220",
+            "440"
+          ],
+          "solution": "2·(22/7)·7·10 = 2·22·10 = 440 चौ. सेमी — 7, 7 ला रद्द करतो. 1540 चुकून घनफळ."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A cone has base radius 3 and height 4. Its slant height is √(3² + 4²). What is it?",
+      "choices": [
+        "12",
+        "7",
+        "5",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "Slant height l = √(9 + 16) = √25 = 5 — radius, height and slant form a right triangle. 7 adds instead of using squares.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शंकु का आधार-त्रिज्या 3 और ऊँचाई 4 है। उसकी तिर्यक ऊँचाई √(3² + 4²) है। वह क्या है?",
+          "choices": [
+            "12",
+            "7",
+            "5",
+            "25"
+          ],
+          "solution": "तिर्यक ऊँचाई l = √(9 + 16) = √25 = 5 — त्रिज्या, ऊँचाई और तिर्यक समकोण त्रिभुज बनाते हैं। 7 वर्ग की जगह जोड़ता है।"
+        },
+        "mr": {
+          "stem": "एका शंकूची पाया-त्रिज्या 3 आणि उंची 4. त्याची तिरकस उंची √(3² + 4²). ती काय?",
+          "choices": [
+            "12",
+            "7",
+            "5",
+            "25"
+          ],
+          "solution": "तिरकस उंची l = √(9 + 16) = √25 = 5 — त्रिज्या, उंची आणि तिरकस काटकोन त्रिकोण बनवतात. 7 वर्गाऐवजी जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The volume of a cylinder is πr²h. For r = 7, h = 5, π = 22/7, compute it.",
+      "choices": [
+        "385",
+        "770",
+        "154",
+        "220"
+      ],
+      "answerIndex": 1,
+      "solution": "(22/7)·49·5 = 22·7·5 = 770 cm³ — one 7 cancels, the other stays. 220 forgets to square the radius fully.",
+      "checkExpr": "22*7*5",
+      "translations": {
+        "hi": {
+          "stem": "बेलन का आयतन πr²h है। r = 7, h = 5, π = 22/7 के लिए निकालिए।",
+          "choices": [
+            "385",
+            "770",
+            "154",
+            "220"
+          ],
+          "solution": "(22/7)·49·5 = 22·7·5 = 770 घन सेमी — एक 7 कटता है, दूसरा बचता है। 220 त्रिज्या का पूरा वर्ग करना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "दंडगोलाचे घनफळ πr²h. r = 7, h = 5, π = 22/7 साठी काढा.",
+          "choices": [
+            "385",
+            "770",
+            "154",
+            "220"
+          ],
+          "solution": "(22/7)·49·5 = 22·7·5 = 770 घन सेमी — एक 7 रद्द, दुसरा उरतो. 220 त्रिज्येचा पूर्ण वर्ग करायला विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The total surface area of a sphere is 4πr². For r = 7, π = 22/7, compute it.",
+      "choices": [
+        "616",
+        "308",
+        "1232",
+        "154"
+      ],
+      "answerIndex": 0,
+      "solution": "4·(22/7)·49 = 4·22·7 = 616 cm². A sphere's surface is exactly four times the area of its own great circle.",
+      "checkExpr": "4*22*7",
+      "translations": {
+        "hi": {
+          "stem": "गोले का कुल पृष्ठीय क्षेत्रफल 4πr² है। r = 7, π = 22/7 के लिए निकालिए।",
+          "choices": [
+            "616",
+            "308",
+            "1232",
+            "154"
+          ],
+          "solution": "4·(22/7)·49 = 4·22·7 = 616 वर्ग सेमी। गोले का पृष्ठ उसके अपने बड़े वृत्त के क्षेत्रफल का ठीक चार गुना है।"
+        },
+        "mr": {
+          "stem": "गोलाचे एकूण पृष्ठफळ 4πr². r = 7, π = 22/7 साठी काढा.",
+          "choices": [
+            "616",
+            "308",
+            "1232",
+            "154"
+          ],
+          "solution": "4·(22/7)·49 = 4·22·7 = 616 चौ. सेमी. गोलाचे पृष्ठ त्याच्या स्वतःच्या मोठ्या वर्तुळाच्या क्षेत्रफळाच्या नेमके चौपट."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The volume of a cone is (1/3)πr²h. It is what fraction of the cylinder with the same base and height?",
+      "choices": [
+        "2",
+        "3",
+        "6",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "A cone is one-third of its enclosing cylinder — so the denominator is 3. Three cones fill one cylinder exactly.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "शंकु का आयतन (1/3)πr²h है। वह समान आधार और ऊँचाई वाले बेलन का कौन-सा भाग है?",
+          "choices": [
+            "2",
+            "3",
+            "6",
+            "1"
+          ],
+          "solution": "शंकु अपने घेरने वाले बेलन का एक-तिहाई है — अतः हर 3। तीन शंकु एक बेलन को ठीक भर देते हैं।"
+        },
+        "mr": {
+          "stem": "शंकूचे घनफळ (1/3)πr²h. ते समान पाया आणि उंचीच्या दंडगोलाचा कोणता भाग?",
+          "choices": [
+            "2",
+            "3",
+            "6",
+            "1"
+          ],
+          "solution": "शंकू आपल्या वेढणाऱ्या दंडगोलाचा एक-तृतीयांश — म्हणून छेद 3. तीन शंकू एक दंडगोल नेमके भरतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A hemispherical bowl has radius 7. Its curved surface area is 2πr². Compute it (π = 22/7).",
+      "choices": [
+        "616",
+        "154",
+        "308",
+        "462"
+      ],
+      "answerIndex": 2,
+      "solution": "2·(22/7)·49 = 2·22·7 = 308 cm² — half a full sphere's 4πr². The bowl is literally half the ball's skin.",
+      "checkExpr": "2*22*7",
+      "translations": {
+        "hi": {
+          "stem": "अर्धगोलाकार कटोरे की त्रिज्या 7 है। वक्र पृष्ठीय क्षेत्रफल 2πr²। निकालिए (π = 22/7)।",
+          "choices": [
+            "616",
+            "154",
+            "308",
+            "462"
+          ],
+          "solution": "2·(22/7)·49 = 2·22·7 = 308 वर्ग सेमी — पूरे गोले के 4πr² का आधा। कटोरा सचमुच गेंद की खाल का आधा है।"
+        },
+        "mr": {
+          "stem": "अर्धगोलाकार वाडग्याची त्रिज्या 7. वक्र पृष्ठफळ 2πr². काढा (π = 22/7).",
+          "choices": [
+            "616",
+            "154",
+            "308",
+            "462"
+          ],
+          "solution": "2·(22/7)·49 = 2·22·7 = 308 चौ. सेमी — पूर्ण गोलाच्या 4πr² चा अर्धा. वाडगा खरोखर चेंडूच्या सालीचा अर्धा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cube of side 6 cm is melted and recast; its volume stays 216 cm³. What is 6³?",
+      "choices": [
+        "216",
+        "18",
+        "1296",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "6³ = 216 cm³ — and melting changes shape, never volume, so the recast solid holds the same 216. Matter is conserved.",
+      "checkExpr": "6*6*6",
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी भुजा का घन पिघलाकर फिर ढाला जाता है; उसका आयतन 216 घन सेमी रहता है। 6³ क्या है?",
+          "choices": [
+            "216",
+            "18",
+            "1296",
+            "36"
+          ],
+          "solution": "6³ = 216 घन सेमी — और पिघलाना आकार बदलता है, आयतन नहीं, अतः ढला हुआ ठोस वही 216 रखता है। पदार्थ संरक्षित है।"
+        },
+        "mr": {
+          "stem": "6 सेमी बाजूचा घन वितळवून पुन्हा घडवला; त्याचे घनफळ 216 घन सेमी राहते. 6³ काय?",
+          "choices": [
+            "216",
+            "18",
+            "1296",
+            "36"
+          ],
+          "solution": "6³ = 216 घन सेमी — आणि वितळवणे आकार बदलते, घनफळ नाही, म्हणून घडवलेला घन तेच 216 ठेवतो. पदार्थ अक्षय."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cone has radius 3, slant height 5. Its curved surface area is πrl. Compute with π = 22/7 and round to a whole number.",
+      "choices": [
+        "33",
+        "15",
+        "47",
+        "94"
+      ],
+      "answerIndex": 2,
+      "solution": "πrl = (22/7)·3·5 = 330/7 ≈ 47 cm². The curved surface uses the slant height, never the vertical one.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शंकु की त्रिज्या 3, तिर्यक ऊँचाई 5 है। वक्र पृष्ठीय क्षेत्रफल πrl। π = 22/7 से निकालकर पूर्ण संख्या में गोल कीजिए।",
+          "choices": [
+            "33",
+            "15",
+            "47",
+            "94"
+          ],
+          "solution": "πrl = (22/7)·3·5 = 330/7 ≈ 47 वर्ग सेमी। वक्र पृष्ठ तिर्यक ऊँचाई लेता है, खड़ी वाली नहीं।"
+        },
+        "mr": {
+          "stem": "एका शंकूची त्रिज्या 3, तिरकस उंची 5. वक्र पृष्ठफळ πrl. π = 22/7 ने काढून पूर्ण संख्येत गोल करा.",
+          "choices": [
+            "33",
+            "15",
+            "47",
+            "94"
+          ],
+          "solution": "πrl = (22/7)·3·5 = 330/7 ≈ 47 चौ. सेमी. वक्र पृष्ठ तिरकस उंची घेतो, उभी नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cylinder of radius 7 and height 3 is melted into a sphere. The volumes match: πr²h = π·49·3 = 147π. What is 49 × 3?",
+      "choices": [
+        "52",
+        "21",
+        "441",
+        "147"
+      ],
+      "answerIndex": 3,
+      "solution": "49 × 3 = 147, so the volume is 147π — conserved when melted. Recasting keeps volume; only surface area changes.",
+      "checkExpr": "49*3",
+      "translations": {
+        "hi": {
+          "stem": "7 त्रिज्या और 3 ऊँचाई का बेलन गोले में पिघलाया जाता है। आयतन बराबर: πr²h = π·49·3 = 147π। 49 × 3 क्या है?",
+          "choices": [
+            "52",
+            "21",
+            "441",
+            "147"
+          ],
+          "solution": "49 × 3 = 147, अतः आयतन 147π — पिघलाने पर संरक्षित। फिर से ढालना आयतन रखता है; केवल पृष्ठ बदलता है।"
+        },
+        "mr": {
+          "stem": "7 त्रिज्या आणि 3 उंचीचा दंडगोल गोलात वितळवला. घनफळ समान: πr²h = π·49·3 = 147π. 49 × 3 काय?",
+          "choices": [
+            "52",
+            "21",
+            "441",
+            "147"
+          ],
+          "solution": "49 × 3 = 147, म्हणून घनफळ 147π — वितळवल्यावर अक्षय. पुन्हा घडवणे घनफळ ठेवते; फक्त पृष्ठ बदलते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many lead shots of radius 1 can be made from a sphere of radius 3? (Volume ratio = 3³.)",
+      "choices": [
+        "81",
+        "27",
+        "3",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "Volume scales with the cube of radius: (3/1)³ = 27 shots. Radius tripled means volume × 27 — the cube law again.",
+      "checkExpr": "3*3*3",
+      "translations": {
+        "hi": {
+          "stem": "3 त्रिज्या के गोले से 1 त्रिज्या की कितनी छर्रियाँ बनाई जा सकती हैं? (आयतन अनुपात = 3³।)",
+          "choices": [
+            "81",
+            "27",
+            "3",
+            "9"
+          ],
+          "solution": "आयतन त्रिज्या के घन से बढ़ता है: (3/1)³ = 27 छर्रियाँ। त्रिज्या तिगुनी यानी आयतन × 27 — फिर वही घन नियम।"
+        },
+        "mr": {
+          "stem": "3 त्रिज्येच्या गोलातून 1 त्रिज्येच्या किती गोळ्या बनवता येतील? (घनफळ गुणोत्तर = 3³.)",
+          "choices": [
+            "81",
+            "27",
+            "3",
+            "9"
+          ],
+          "solution": "घनफळ त्रिज्येच्या घनाने वाढते: (3/1)³ = 27 गोळ्या. त्रिज्या तिप्पट म्हणजे घनफळ × 27 — पुन्हा तोच घन नियम."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cylindrical tank of radius 7 m and height 10 m holds how many kilolitres? (Volume in m³ = πr²h with π = 22/7; 1 m³ = 1 kL.)",
+      "choices": [
+        "154",
+        "15400",
+        "1540",
+        "440"
+      ],
+      "answerIndex": 2,
+      "solution": "V = (22/7)·49·10 = 22·7·10 = 1540 m³ = 1540 kL. The tank's cubic metres are its kilolitres, one for one.",
+      "checkExpr": "22*7*10",
+      "translations": {
+        "hi": {
+          "stem": "7 मी त्रिज्या और 10 मी ऊँचाई की बेलनाकार टंकी कितने किलोलीटर रखती है? (आयतन घन मीटर में = πr²h, π = 22/7; 1 घन मीटर = 1 किलोलीटर।)",
+          "choices": [
+            "154",
+            "15400",
+            "1540",
+            "440"
+          ],
+          "solution": "आयतन = (22/7)·49·10 = 22·7·10 = 1540 घन मीटर = 1540 किलोलीटर। टंकी के घन मीटर ही उसके किलोलीटर हैं, एक-के-बदले-एक।"
+        },
+        "mr": {
+          "stem": "7 मी त्रिज्या आणि 10 मी उंचीची दंडगोल टाकी किती किलोलिटर धरते? (घनफळ घन मीटरमध्ये = πr²h, π = 22/7; 1 घन मीटर = 1 किलोलिटर.)",
+          "choices": [
+            "154",
+            "15400",
+            "1540",
+            "440"
+          ],
+          "solution": "घनफळ = (22/7)·49·10 = 22·7·10 = 1540 घन मीटर = 1540 किलोलिटर. टाकीचे घन मीटर हेच किलोलिटर, एकास-एक."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A solid is a cylinder (r=7, h=10) topped by a hemisphere (r=7). What is the total HEIGHT of the solid?",
+      "choices": [
+        "17",
+        "10",
+        "14",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "The hemisphere adds its radius as height: 10 + 7 = 17. A hemisphere is r tall, not 2r — it is only half a ball.",
+      "checkExpr": "10+7",
+      "translations": {
+        "hi": {
+          "stem": "एक ठोस बेलन (r=7, h=10) के ऊपर अर्धगोला (r=7) है। ठोस की कुल ऊँचाई कितनी?",
+          "choices": [
+            "17",
+            "10",
+            "14",
+            "24"
+          ],
+          "solution": "अर्धगोला अपनी त्रिज्या ऊँचाई में जोड़ता है: 10 + 7 = 17। अर्धगोला r ऊँचा है, 2r नहीं — वह गेंद का आधा है।"
+        },
+        "mr": {
+          "stem": "एक घन दंडगोल (r=7, h=10) वर अर्धगोल (r=7). घनाची एकूण उंची किती?",
+          "choices": [
+            "17",
+            "10",
+            "14",
+            "24"
+          ],
+          "solution": "अर्धगोल आपली त्रिज्या उंचीत जोडतो: 10 + 7 = 17. अर्धगोल r उंच, 2r नाही — तो चेंडूचा अर्धा."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a sphere's radius doubles, its VOLUME grows by what factor?",
+      "choices": [
+        "6",
+        "8",
+        "2",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Volume rides on r³: doubling r gives 2³ = 8 times. 4 is the surface-area factor (r²) — each measure scales by its own power.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "यदि गोले की त्रिज्या दुगुनी हो, आयतन कितने गुना बढ़ता है?",
+          "choices": [
+            "6",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "आयतन r³ पर सवार: r दुगुनी से 2³ = 8 गुना। 4 पृष्ठ का गुणक (r²) — हर माप अपनी घात से बढ़ता है।"
+        },
+        "mr": {
+          "stem": "गोलाची त्रिज्या दुप्पट झाल्यास घनफळ किती पट वाढते?",
+          "choices": [
+            "6",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "घनफळ r³ वर स्वार: r दुप्पट म्हणजे 2³ = 8 पट. 4 हा पृष्ठाचा गुणक (r²) — प्रत्येक माप आपल्या घाताने वाढते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A sphere and a cylinder have the same radius r and the cylinder's height is 2r (it just contains the sphere). The sphere's volume is (4/3)πr³, the cylinder's 2πr³. The sphere is what fraction of the cylinder — give the denominator when the fraction is 2/▢.",
+      "choices": [
+        "4",
+        "3",
+        "6",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "(4/3)πr³ ÷ 2πr³ = 4/6 = 2/3, so the box holds 3. Archimedes' famous result: the sphere is exactly two-thirds of its circumscribing cylinder — he had it carved on his tomb.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गोले और बेलन की त्रिज्या समान r है और बेलन की ऊँचाई 2r है (वह ठीक गोले को समाता है)। गोले का आयतन (4/3)πr³, बेलन का 2πr³। गोला बेलन का कौन-सा भाग है — भिन्न 2/▢ में हर बताइए।",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "2"
+          ],
+          "solution": "(4/3)πr³ ÷ 2πr³ = 4/6 = 2/3, अतः रिक्त में 3। आर्किमिडीज़ का मशहूर परिणाम: गोला अपने परिगत बेलन का ठीक दो-तिहाई है — उन्होंने इसे अपनी क़ब्र पर खुदवाया।"
+        },
+        "mr": {
+          "stem": "एका गोलाची आणि दंडगोलाची त्रिज्या समान r आणि दंडगोलाची उंची 2r (तो नेमका गोल सामावतो). गोलाचे घनफळ (4/3)πr³, दंडगोलाचे 2πr³. गोल दंडगोलाचा कोणता भाग — अपूर्णांक 2/▢ मध्ये छेद द्या.",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "2"
+          ],
+          "solution": "(4/3)πr³ ÷ 2πr³ = 4/6 = 2/3, म्हणून रिकाम्यात 3. आर्किमिडीजचा प्रसिद्ध निकाल: गोल आपल्या परिवेष्टित दंडगोलाचा नेमका दोन-तृतीयांश — त्याने तो आपल्या थडग्यावर कोरवला."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Painting a hollow hemispherical dome of radius 7 m costs ₹5 per m². Its curved surface is 2πr² = 308 m². What is the cost?",
+      "choices": [
+        "308",
+        "1540",
+        "770",
+        "616"
+      ],
+      "answerIndex": 1,
+      "solution": "308 × 5 = ₹1540 — surface area first, cost second. Geometry ends where the estimate begins.",
+      "checkExpr": "308*5",
+      "translations": {
+        "hi": {
+          "stem": "7 मी त्रिज्या के खोखले अर्धगोलाकार गुंबद को रँगने का ख़र्च ₹5 प्रति वर्ग मीटर है। उसका वक्र पृष्ठ 2πr² = 308 वर्ग मीटर। ख़र्च कितना?",
+          "choices": [
+            "308",
+            "1540",
+            "770",
+            "616"
+          ],
+          "solution": "308 × 5 = ₹1540 — पहले पृष्ठ, फिर ख़र्च। ज्यामिति वहीं ख़त्म जहाँ आकलन शुरू।"
+        },
+        "mr": {
+          "stem": "7 मी त्रिज्येच्या पोकळ अर्धगोलाकार घुमटाला रंगवण्याचा खर्च ₹5 प्रति चौ. मीटर. त्याचे वक्र पृष्ठ 2πr² = 308 चौ. मीटर. खर्च किती?",
+          "choices": [
+            "308",
+            "1540",
+            "770",
+            "616"
+          ],
+          "solution": "308 × 5 = ₹1540 — आधी पृष्ठ, मग खर्च. भूमिती तिथे संपते जिथे अंदाज सुरू."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 7 — Triangles",
+  "name": "Triangles",
+  "slug": "maths-9-triangles",
+  "summary": "Congruence proved, not assumed: SSS/SAS/ASA/RHS pinning shape and size, the isosceles perpendicular bisecting its base — and AAA exposed as fixing shape but never size.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "त्रिभुज",
+      "summary": "सर्वांगसमता सिद्ध, मानी नहीं: SSS/SAS/ASA/RHS आकार-नाप जड़ते, समद्विबाहु का लंब आधार समद्विभाजित करता — और AAA, जो आकार तय करता है नाप कभी नहीं।"
+    },
+    "mr": {
+      "name": "त्रिकोण",
+      "summary": "एकरूपता सिद्ध, गृहीत नाही: SSS/SAS/ASA/RHS आकार-माप ठरवतात, समद्विभुजाचा लंब पाया दुभागतो — आणि AAA, जे आकार ठरवते माप कधीच नाही."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "To prove two triangles congruent by SSS, how many pairs of equal sides are needed?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Side-Side-Side needs all 3 pairs — three matching sides pin the triangle rigid.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SSS से दो त्रिभुज सर्वांगसम सिद्ध करने के लिए बराबर भुजाओं के कितने जोड़े चाहिए?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "भुजा-भुजा-भुजा को तीनों 3 जोड़े चाहिए — तीन मिलती भुजाएँ त्रिभुज को जड़ बना देती हैं।"
+        },
+        "mr": {
+          "stem": "SSS ने दोन त्रिकोण एकरूप सिद्ध करण्यासाठी समान बाजूंच्या किती जोड्या लागतात?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "बाजू-बाजू-बाजूला तिन्ही 3 जोड्या हव्यात — तीन जुळणाऱ्या बाजू त्रिकोण घट्ट करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In an equilateral triangle, each angle measures?",
+      "choices": [
+        "120°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "answerIndex": 2,
+      "solution": "Three equal angles share 180°: 60° each. Equal sides force equal angles.",
+      "checkExpr": "180/3",
+      "translations": {
+        "hi": {
+          "stem": "समबाहु त्रिभुज में हर कोण कितने का होता है?",
+          "choices": [
+            "120°",
+            "45°",
+            "60°",
+            "90°"
+          ],
+          "solution": "तीन बराबर कोण 180° बाँटते हैं: 60° प्रत्येक। बराबर भुजाएँ बराबर कोण जड़ती हैं।"
+        },
+        "mr": {
+          "stem": "समभुज त्रिकोणात प्रत्येक कोन किती अंशांचा असतो?",
+          "choices": [
+            "120°",
+            "45°",
+            "60°",
+            "90°"
+          ],
+          "solution": "तीन समान कोन 180° वाटतात: प्रत्येकी 60°. समान बाजू समान कोन ठरवतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "ΔABC ≅ ΔPQR with AB = 6. What is PQ?",
+      "choices": [
+        "9",
+        "3",
+        "12",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "The letters map A↔P, B↔Q, so AB matches PQ: 6. Corresponding parts of congruent triangles are equal.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔPQR, AB = 6। PQ क्या है?",
+          "choices": [
+            "9",
+            "3",
+            "12",
+            "6"
+          ],
+          "solution": "अक्षर A↔P, B↔Q जोड़ते हैं, अतः AB, PQ से मिलता है: 6। सर्वांगसम त्रिभुजों के संगत भाग बराबर।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔPQR, AB = 6. PQ काय?",
+          "choices": [
+            "9",
+            "3",
+            "12",
+            "6"
+          ],
+          "solution": "अक्षरे A↔P, B↔Q जुळवतात, म्हणून AB, PQ शी: 6. एकरूप त्रिकोणांचे संगत भाग समान."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Angles opposite the two equal sides of an isosceles triangle are equal. If one is 55°, the other is?",
+      "choices": [
+        "35°",
+        "70°",
+        "125°",
+        "55°"
+      ],
+      "answerIndex": 3,
+      "solution": "The two base angles are equal by the isosceles theorem: both 55°. This is a proved theorem, not just observed.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज की दो बराबर भुजाओं के सम्मुख कोण बराबर होते हैं। यदि एक 55° हो, दूसरा कितना?",
+          "choices": [
+            "35°",
+            "70°",
+            "125°",
+            "55°"
+          ],
+          "solution": "समद्विबाहु प्रमेय से दोनों आधार कोण बराबर: दोनों 55°। यह सिद्ध प्रमेय है, केवल देखा गया नहीं।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाच्या दोन समान बाजूंसमोरचे कोन समान असतात. एक 55° असल्यास, दुसरा किती?",
+          "choices": [
+            "35°",
+            "70°",
+            "125°",
+            "55°"
+          ],
+          "solution": "समद्विभुज प्रमेयाने दोन्ही पायाकोन समान: दोन्ही 55°. हे सिद्ध प्रमेय, नुसते पाहिलेले नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In the ASA congruence rule, besides two angles you must match how many sides — and it must be the one BETWEEN them?",
+      "choices": [
+        "3",
+        "2",
+        "0",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "Angle-Side-Angle: 1 side, and it must lie between the two angles. Zero sides leaves the size free.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ASA सर्वांगसमता नियम में दो कोणों के अलावा कितनी भुजाएँ मिलानी होती हैं — और वह उनके बीच वाली हो?",
+          "choices": [
+            "3",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "कोण-भुजा-कोण: 1 भुजा, और वह दोनों कोणों के बीच हो। शून्य भुजा नाप को खुला छोड़ देती है।"
+        },
+        "mr": {
+          "stem": "ASA एकरूपता नियमात दोन कोनांशिवाय किती बाजू जुळवाव्या लागतात — आणि ती त्यांच्यामधली हवी?",
+          "choices": [
+            "3",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "कोन-बाजू-कोन: 1 बाजू, आणि ती दोन कोनांच्या मध्ये. शून्य बाजू माप मोकळे ठेवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two sides of a triangle are 7 and 10. The third side must be LESS than?",
+      "choices": [
+        "70",
+        "17",
+        "10",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "The third side is less than the sum of the other two: 7 + 10 = 17. It must also exceed the difference, 3 — the triangle inequality.",
+      "checkExpr": "7+10",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की दो भुजाएँ 7 और 10 हैं। तीसरी भुजा किससे कम होनी चाहिए?",
+          "choices": [
+            "70",
+            "17",
+            "10",
+            "3"
+          ],
+          "solution": "तीसरी भुजा बाक़ी दो के योग से कम: 7 + 10 = 17। वह अंतर 3 से बड़ी भी हो — त्रिभुज असमिका।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या दोन बाजू 7 आणि 10 आहेत. तिसरी बाजू कशाहून कमी हवी?",
+          "choices": [
+            "70",
+            "17",
+            "10",
+            "3"
+          ],
+          "solution": "तिसरी बाजू बाकी दोघांच्या बेरजेहून कमी: 7 + 10 = 17. ती फरक 3 हून मोठीही हवी — त्रिकोण असमानता."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In ΔABC, AB = AC and angle B = 50°. What is angle A?",
+      "choices": [
+        "80°",
+        "130°",
+        "100°",
+        "50°"
+      ],
+      "answerIndex": 0,
+      "solution": "AB = AC makes angle C = angle B = 50°, so angle A = 180 − 100 = 80°. The equal sides gift a second known angle.",
+      "checkExpr": "180-50-50",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC में AB = AC और कोण B = 50°। कोण A कितना?",
+          "choices": [
+            "80°",
+            "130°",
+            "100°",
+            "50°"
+          ],
+          "solution": "AB = AC से कोण C = कोण B = 50°, अतः कोण A = 180 − 100 = 80°। बराबर भुजाएँ दूसरा ज्ञात कोण दे देती हैं।"
+        },
+        "mr": {
+          "stem": "ΔABC मध्ये AB = AC आणि कोन B = 50°. कोन A किती?",
+          "choices": [
+            "80°",
+            "130°",
+            "100°",
+            "50°"
+          ],
+          "solution": "AB = AC मुळे कोन C = कोन B = 50°, म्हणून कोन A = 180 − 100 = 80°. समान बाजू दुसरा ज्ञात कोन देतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a right triangle, the two legs are 6 and 8. What is the hypotenuse?",
+      "choices": [
+        "10",
+        "100",
+        "14",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "√(6² + 8²) = √100 = 10 — the 6-8-10 triple. 14 adds the legs; 100 stops at the square.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज में दो भुजाएँ 6 और 8 हैं। कर्ण कितना?",
+          "choices": [
+            "10",
+            "100",
+            "14",
+            "48"
+          ],
+          "solution": "√(6² + 8²) = √100 = 10 — 6-8-10 त्रिक। 14 भुजाएँ जोड़ता है; 100 वर्ग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणात दोन बाजू 6 आणि 8 आहेत. कर्ण किती?",
+          "choices": [
+            "10",
+            "100",
+            "14",
+            "48"
+          ],
+          "solution": "√(6² + 8²) = √100 = 10 — 6-8-10 त्रिकूट. 14 बाजू जोडतो; 100 वर्गावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "RHS congruence uses hypotenuse 13 and one leg 5. The other leg is?",
+      "choices": [
+        "144",
+        "18",
+        "8",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "13² − 5² = 169 − 25 = 144 = 12². The right angle plus Pythagoras pins the third side — that is why RHS works.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "RHS सर्वांगसमता में कर्ण 13 और एक भुजा 5 है। दूसरी भुजा कितनी?",
+          "choices": [
+            "144",
+            "18",
+            "8",
+            "12"
+          ],
+          "solution": "13² − 5² = 169 − 25 = 144 = 12²। समकोण और पाइथागोरस तीसरी भुजा जड़ देते हैं — इसीलिए RHS चलता है।"
+        },
+        "mr": {
+          "stem": "RHS एकरूपतेत कर्ण 13 आणि एक बाजू 5. दुसरी बाजू किती?",
+          "choices": [
+            "144",
+            "18",
+            "8",
+            "12"
+          ],
+          "solution": "13² − 5² = 169 − 25 = 144 = 12². काटकोन आणि पायथागोरस तिसरी बाजू ठरवतात — म्हणून RHS चालते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In ΔABC, the angles are 40° and 60°, and AB is opposite the 60°. Which side is the LONGEST — give the opposite angle in degrees.",
+      "choices": [
+        "40°",
+        "80°",
+        "60°",
+        "100°"
+      ],
+      "answerIndex": 1,
+      "solution": "The third angle is 180 − 100 = 80°, the largest — so the side opposite it is longest. The biggest angle faces the biggest side.",
+      "checkExpr": "180-40-60",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC में कोण 40° और 60° हैं, और AB 60° के सम्मुख है। सबसे लंबी भुजा कौन-सी — उसका सम्मुख कोण डिग्री में बताइए।",
+          "choices": [
+            "40°",
+            "80°",
+            "60°",
+            "100°"
+          ],
+          "solution": "तीसरा कोण 180 − 100 = 80°, सबसे बड़ा — अतः उसके सम्मुख भुजा सबसे लंबी। सबसे बड़ा कोण सबसे बड़ी भुजा के सामने।"
+        },
+        "mr": {
+          "stem": "ΔABC मध्ये कोन 40° आणि 60°, आणि AB 60° समोर. सर्वांत लांब बाजू कोणती — तिचा समोरचा कोन अंशांत द्या.",
+          "choices": [
+            "40°",
+            "80°",
+            "60°",
+            "100°"
+          ],
+          "solution": "तिसरा कोन 180 − 100 = 80°, सर्वांत मोठा — म्हणून त्याच्या समोरची बाजू सर्वांत लांब. सर्वांत मोठा कोन सर्वांत मोठ्या बाजूसमोर."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An isosceles right triangle has its two equal legs at 5 cm each. The hypotenuse is 5√2. What is its SQUARE?",
+      "choices": [
+        "10",
+        "100",
+        "50",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "Hypotenuse² = 5² + 5² = 50, so hypotenuse = √50 = 5√2. The square is the clean number the roots hide.",
+      "checkExpr": "5*5+5*5",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु समकोण त्रिभुज की दोनों बराबर भुजाएँ 5 सेमी हैं। कर्ण 5√2 है। उसका वर्ग क्या है?",
+          "choices": [
+            "10",
+            "100",
+            "50",
+            "25"
+          ],
+          "solution": "कर्ण² = 5² + 5² = 50, अतः कर्ण = √50 = 5√2। वर्ग वह साफ़ संख्या है जिसे मूल छिपाते हैं।"
+        },
+        "mr": {
+          "stem": "समद्विभुज काटकोन त्रिकोणाच्या दोन्ही समान बाजू 5 सेमी. कर्ण 5√2. त्याचा वर्ग काय?",
+          "choices": [
+            "10",
+            "100",
+            "50",
+            "25"
+          ],
+          "solution": "कर्ण² = 5² + 5² = 50, म्हणून कर्ण = √50 = 5√2. वर्ग ही ती नीटस संख्या जी मूळे लपवतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In ΔABC ≅ ΔDEF, angle A = 70° and angle B = 60°. What is angle F (= angle C)?",
+      "choices": [
+        "70°",
+        "50°",
+        "130°",
+        "60°"
+      ],
+      "answerIndex": 1,
+      "solution": "F corresponds to C = 180 − 70 − 60 = 50°. Congruence copies angles, but you must compute the third one first.",
+      "checkExpr": "180-70-60",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔDEF में कोण A = 70° और कोण B = 60°। कोण F (= कोण C) कितना?",
+          "choices": [
+            "70°",
+            "50°",
+            "130°",
+            "60°"
+          ],
+          "solution": "F की संगति C से = 180 − 70 − 60 = 50°। सर्वांगसमता कोण नक़ल करती है, पर तीसरा पहले निकालना पड़ता है।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔDEF मध्ये कोन A = 70° आणि कोन B = 60°. कोन F (= कोन C) किती?",
+          "choices": [
+            "70°",
+            "50°",
+            "130°",
+            "60°"
+          ],
+          "solution": "F ची संगती C शी = 180 − 70 − 60 = 50°. एकरूपता कोन नक्कल करते, पण तिसरा आधी काढावा लागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In ΔABC, AB = AC, and the perpendicular from A meets BC at D. If BC = 16, what is BD?",
+      "choices": [
+        "8",
+        "16",
+        "12",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "In an isosceles triangle the perpendicular from the apex bisects the base: BD = 16 ÷ 2 = 8. Proved by the congruent halves ABD and ACD.",
+      "checkExpr": "16/2",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC में AB = AC, और A से लंब BC को D पर मिलता है। यदि BC = 16, तो BD क्या है?",
+          "choices": [
+            "8",
+            "16",
+            "12",
+            "4"
+          ],
+          "solution": "समद्विबाहु त्रिभुज में शीर्ष से लंब आधार को समद्विभाजित करता है: BD = 16 ÷ 2 = 8। सर्वांगसम आधों ABD और ACD से सिद्ध।"
+        },
+        "mr": {
+          "stem": "ΔABC मध्ये AB = AC, आणि A पासूनचा लंब BC ला D वर मिळतो. BC = 16 असल्यास BD काय?",
+          "choices": [
+            "8",
+            "16",
+            "12",
+            "4"
+          ],
+          "solution": "समद्विभुज त्रिकोणात शिरोबिंदूपासूनचा लंब पाया दुभागतो: BD = 16 ÷ 2 = 8. एकरूप अर्ध्या ABD आणि ACD ने सिद्ध."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two triangles have sides 3, 4, 5 and 6, 8, 10. Their angles are equal (similar), but how many pairs of EQUAL sides do they share?",
+      "choices": [
+        "0",
+        "2",
+        "3",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Every side of the second is double the first — no pair is equal, so 0. Same shape, different size: similar but NOT congruent.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो त्रिभुजों की भुजाएँ 3, 4, 5 और 6, 8, 10 हैं। उनके कोण बराबर (समरूप) हैं, पर बराबर भुजाओं के कितने जोड़े साझा हैं?",
+          "choices": [
+            "0",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "दूसरे की हर भुजा पहले की दुगुनी — कोई जोड़ी बराबर नहीं, अतः 0। आकार वही, नाप अलग: समरूप पर सर्वांगसम नहीं।"
+        },
+        "mr": {
+          "stem": "दोन त्रिकोणांच्या बाजू 3, 4, 5 आणि 6, 8, 10 आहेत. त्यांचे कोन समान (समरूप), पण समान बाजूंच्या किती जोड्या सामाईक?",
+          "choices": [
+            "0",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "दुसऱ्याची प्रत्येक बाजू पहिल्याच्या दुप्पट — एकही जोडी समान नाही, म्हणून 0. आकार तोच, माप वेगळे: समरूप पण एकरूप नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "AAA (all three angles equal) is NOT a congruence test. Two equilateral triangles have sides 4 and 7 — all angles 60°. How many of their side-pairs are equal?",
+      "choices": [
+        "3",
+        "2",
+        "0",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "All six angles are 60°, yet every side-pair is 4 against 7: 0 equal. AAA fixes shape but not size — that is exactly why it is missing from the congruence tests.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "AAA (तीनों कोण बराबर) सर्वांगसमता जाँच नहीं है। दो समबाहु त्रिभुजों की भुजाएँ 4 और 7 हैं — सारे कोण 60°। उनकी कितनी भुजा-जोड़ियाँ बराबर हैं?",
+          "choices": [
+            "3",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "छहों कोण 60°, फिर भी हर भुजा-जोड़ी 4 बनाम 7: 0 बराबर। AAA आकार तय करता है, नाप नहीं — इसीलिए वह सर्वांगसमता-जाँचों से ग़ायब है।"
+        },
+        "mr": {
+          "stem": "AAA (तिन्ही कोन समान) ही एकरूपता चाचणी नाही. दोन समभुज त्रिकोणांच्या बाजू 4 आणि 7 — सारे कोन 60°. त्यांच्या किती बाजू-जोड्या समान?",
+          "choices": [
+            "3",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "सहाही कोन 60°, तरी प्रत्येक बाजू-जोडी 4 विरुद्ध 7: 0 समान. AAA आकार ठरवते, माप नाही — म्हणूनच ते एकरूपता-चाचण्यांतून गायब."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The perpendicular from the right angle of a right triangle to the hypotenuse creates two smaller triangles, each similar to the whole. A 3-4-5 triangle's altitude to the hypotenuse is (3×4)/5. Compute it as a decimal.",
+      "choices": [
+        "1.2",
+        "3.5",
+        "5",
+        "2.4"
+      ],
+      "answerIndex": 3,
+      "solution": "Altitude = product of legs ÷ hypotenuse = 12 ÷ 5 = 2.4. It equals both legs' contribution because area = ½·3·4 = ½·5·h forces h = 2.4.",
+      "checkExpr": "3*4/5",
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज के समकोण से कर्ण पर लंब दो छोटे त्रिभुज बनाता है, हर एक पूरे के समरूप। 3-4-5 त्रिभुज की कर्ण पर ऊँचाई (3×4)/5 है। दशमलव में निकालिए।",
+          "choices": [
+            "1.2",
+            "3.5",
+            "5",
+            "2.4"
+          ],
+          "solution": "ऊँचाई = भुजाओं का गुणनफल ÷ कर्ण = 12 ÷ 5 = 2.4। क्षेत्रफल = ½·3·4 = ½·5·h से h = 2.4।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणाच्या काटकोनातून कर्णावर लंब दोन लहान त्रिकोण बनवतो, प्रत्येक अख्ख्याशी समरूप. 3-4-5 त्रिकोणाची कर्णावरची उंची (3×4)/5. दशांशात काढा.",
+          "choices": [
+            "1.2",
+            "3.5",
+            "5",
+            "2.4"
+          ],
+          "solution": "उंची = बाजूंचा गुणाकार ÷ कर्ण = 12 ÷ 5 = 2.4. क्षेत्रफळ = ½·3·4 = ½·5·h मुळे h = 2.4."
+        }
+      }
+    }
+  ]
+}

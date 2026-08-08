@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 6 — Lines and Angles",
+  "name": "Lines and Angles",
+  "slug": "maths-9-lines-and-angles",
+  "summary": "Parallels copy their crossings and the triangle's three angles hold at 180 — exterior angles read off two interiors, and one bad sum refuting a triangle that cannot be.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "रेखाएँ और कोण",
+      "summary": "समांतर अपने चौराहों की नक़ल करते और त्रिभुज के तीन कोण 180 पर टिकते हैं — बाह्य कोण दो अंतःकोणों से पढ़े, और एक बुरा योग एक असंभव त्रिभुज को ख़ारिज करता।"
+    },
+    "mr": {
+      "name": "रेषा आणि कोन",
+      "summary": "समांतर आपल्या छेदांची नक्कल करतात आणि त्रिकोणाचे तीन कोन 180 वर टिकतात — बाह्यकोन दोन आंतरकोनांवरून वाचलेले, आणि एक चुकीची बेरीज अशक्य त्रिकोणाला बाद करते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Two angles on a straight line are 130° and x. What is x?",
+      "choices": [
+        "60°",
+        "50°",
+        "230°",
+        "55°"
+      ],
+      "answerIndex": 1,
+      "solution": "A linear pair sums to 180°: x = 180 − 130 = 50°. The straight line is a 180° angle split in two.",
+      "checkExpr": "180-130",
+      "translations": {
+        "hi": {
+          "stem": "एक सीधी रेखा पर दो कोण 130° और x हैं। x क्या है?",
+          "choices": [
+            "60°",
+            "50°",
+            "230°",
+            "55°"
+          ],
+          "solution": "रैखिक युग्म का योग 180°: x = 180 − 130 = 50°। सीधी रेखा दो में बँटा 180° कोण है।"
+        },
+        "mr": {
+          "stem": "सरळ रेषेवर दोन कोन 130° आणि x आहेत. x किती?",
+          "choices": [
+            "60°",
+            "50°",
+            "230°",
+            "55°"
+          ],
+          "solution": "रेषीय जोडीची बेरीज 180°: x = 180 − 130 = 50°. सरळ रेषा म्हणजे दोनत विभागलेला 180° कोन."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Angles around a point add to how many degrees?",
+      "choices": [
+        "90°",
+        "720°",
+        "180°",
+        "360°"
+      ],
+      "answerIndex": 3,
+      "solution": "A full turn about a point is 360°. All the angles meeting there share that whole circle.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु के चारों ओर के कोण कितने डिग्री जोड़ते हैं?",
+          "choices": [
+            "90°",
+            "720°",
+            "180°",
+            "360°"
+          ],
+          "solution": "किसी बिंदु के गिर्द पूरा चक्कर 360° है। वहाँ मिलते सभी कोण उस पूरे घेरे को बाँटते हैं।"
+        },
+        "mr": {
+          "stem": "एका बिंदूभोवतीचे कोन किती अंश होतात?",
+          "choices": [
+            "90°",
+            "720°",
+            "180°",
+            "360°"
+          ],
+          "solution": "एका बिंदूभोवती पूर्ण फेरी 360°. तिथे मिळणारे सारे कोन ते पूर्ण वर्तुळ वाटतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two parallel lines are cut by a transversal. A corresponding angle to 65° measures?",
+      "choices": [
+        "25°",
+        "65°",
+        "115°",
+        "130°"
+      ],
+      "answerIndex": 1,
+      "solution": "Corresponding angles are equal across parallels: 65°. 115 is the co-interior partner, which sums to 180 instead.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो समांतर रेखाओं को तिर्यक रेखा काटती है। 65° का संगत कोण कितना?",
+          "choices": [
+            "25°",
+            "65°",
+            "115°",
+            "130°"
+          ],
+          "solution": "समांतरों के आर-पार संगत कोण बराबर: 65°। 115 एक-ओर का अंतःकोण-साथी है, जो 180 तक जोड़ता है।"
+        },
+        "mr": {
+          "stem": "दोन समांतर रेषांना छेदिका छेदते. 65° चा संगत कोन किती?",
+          "choices": [
+            "25°",
+            "65°",
+            "115°",
+            "130°"
+          ],
+          "solution": "समांतरांपार संगत कोन समान: 65°. 115 हा एका बाजूचा आंतरकोन-जोडीदार, जो 180 पर्यंत जुळतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The three angles of a triangle are 50°, 60° and x. Find x.",
+      "choices": [
+        "80°",
+        "70°",
+        "110°",
+        "60°"
+      ],
+      "answerIndex": 1,
+      "solution": "The angles total 180°: x = 180 − 110 = 70°. 110 stops at the sum of the two given.",
+      "checkExpr": "180-50-60",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के तीन कोण 50°, 60° और x हैं। x निकालिए।",
+          "choices": [
+            "80°",
+            "70°",
+            "110°",
+            "60°"
+          ],
+          "solution": "कोणों का योग 180°: x = 180 − 110 = 70°। 110 दो दिए कोणों के योग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे तीन कोन 50°, 60° आणि x आहेत. x काढा.",
+          "choices": [
+            "80°",
+            "70°",
+            "110°",
+            "60°"
+          ],
+          "solution": "कोनांची बेरीज 180°: x = 180 − 110 = 70°. 110 दिलेल्या दोन कोनांच्या बेरजेवर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An exterior angle of a triangle is 120°. One remote interior angle is 45°. What is the other remote interior angle?",
+      "choices": [
+        "55°",
+        "75°",
+        "60°",
+        "165°"
+      ],
+      "answerIndex": 1,
+      "solution": "The exterior angle equals the sum of the two remote interiors: 120 − 45 = 75°. No need for the third angle at all.",
+      "checkExpr": "120-45",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज का बाह्य कोण 120° है। एक दूरस्थ अंतःकोण 45° है। दूसरा दूरस्थ अंतःकोण कितना?",
+          "choices": [
+            "55°",
+            "75°",
+            "60°",
+            "165°"
+          ],
+          "solution": "बाह्य कोण दोनों दूरस्थ अंतःकोणों के योग के बराबर: 120 − 45 = 75°। तीसरे कोण की ज़रूरत ही नहीं।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचा बाह्यकोन 120° आहे. एक दूरस्थ आंतरकोन 45° आहे. दुसरा दूरस्थ आंतरकोन किती?",
+          "choices": [
+            "55°",
+            "75°",
+            "60°",
+            "165°"
+          ],
+          "solution": "बाह्यकोन दोन दूरस्थ आंतरकोनांच्या बेरजेइतका: 120 − 45 = 75°. तिसऱ्या कोनाची गरजच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Between parallels, a co-interior angle is 108°. Its partner on the same side is?",
+      "choices": [
+        "252°",
+        "82°",
+        "108°",
+        "72°"
+      ],
+      "answerIndex": 3,
+      "solution": "Co-interior angles sum to 180°: 180 − 108 = 72°. Copying (108) is for alternate and corresponding, not same-side.",
+      "checkExpr": "180-108",
+      "translations": {
+        "hi": {
+          "stem": "समांतरों के बीच एक-ओर का अंतःकोण 108° है। उसी ओर का साथी कितना?",
+          "choices": [
+            "252°",
+            "82°",
+            "108°",
+            "72°"
+          ],
+          "solution": "एक-ओर के अंतःकोण 180° तक जुड़ते हैं: 180 − 108 = 72°। नक़ल (108) एकांतर और संगत की है, एक-ओर की नहीं।"
+        },
+        "mr": {
+          "stem": "समांतरांमध्ये एका बाजूचा आंतरकोन 108° आहे. त्याच बाजूचा जोडीदार किती?",
+          "choices": [
+            "252°",
+            "82°",
+            "108°",
+            "72°"
+          ],
+          "solution": "एका बाजूचे आंतरकोन 180° पर्यंत जुळतात: 180 − 108 = 72°. नक्कल (108) व्युत्क्रम आणि संगतासाठी, एका बाजूसाठी नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The angles of a triangle are in the ratio 2 : 3 : 4. What is the largest?",
+      "choices": [
+        "60°",
+        "40°",
+        "80°",
+        "90°"
+      ],
+      "answerIndex": 2,
+      "solution": "Nine parts share 180°, one part 20°; the largest takes 4 × 20 = 80°. 40 stops at two parts.",
+      "checkExpr": "180*4/9",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के कोण 2 : 3 : 4 के अनुपात में हैं। सबसे बड़ा कितना?",
+          "choices": [
+            "60°",
+            "40°",
+            "80°",
+            "90°"
+          ],
+          "solution": "नौ भाग 180° बाँटते हैं, एक भाग 20°; सबसे बड़ा 4 × 20 = 80°। 40 दो भागों पर रुकता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे कोन 2 : 3 : 4 गुणोत्तरात आहेत. सर्वांत मोठा किती?",
+          "choices": [
+            "60°",
+            "40°",
+            "80°",
+            "90°"
+          ],
+          "solution": "नऊ भाग 180° वाटतात, एक भाग 20°; सर्वांत मोठा 4 × 20 = 80°. 40 दोन भागांवर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a right triangle, one acute angle is 32°. What is the other acute angle?",
+      "choices": [
+        "48°",
+        "68°",
+        "148°",
+        "58°"
+      ],
+      "answerIndex": 3,
+      "solution": "The right angle takes 90, so the two acute angles share the other 90: 90 − 32 = 58°. 148 forgets the right angle spent its share.",
+      "checkExpr": "90-32",
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज में एक न्यून कोण 32° है। दूसरा न्यून कोण कितना?",
+          "choices": [
+            "48°",
+            "68°",
+            "148°",
+            "58°"
+          ],
+          "solution": "समकोण 90 लेता है, अतः दोनों न्यून कोण बाक़ी 90 बाँटते हैं: 90 − 32 = 58°। 148 भूल जाता है कि समकोण अपना हिस्सा ले चुका।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणात एक लघुकोन 32° आहे. दुसरा लघुकोन किती?",
+          "choices": [
+            "48°",
+            "68°",
+            "148°",
+            "58°"
+          ],
+          "solution": "काटकोन 90 घेतो, म्हणून दोन लघुकोन उरलेले 90 वाटतात: 90 − 32 = 58°. 148 विसरतो की काटकोनाने आपला वाटा घेतला."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "An isosceles triangle has a vertex angle of 40°. Each base angle is?",
+      "choices": [
+        "70°",
+        "100°",
+        "140°",
+        "40°"
+      ],
+      "answerIndex": 0,
+      "solution": "The remaining 140° splits equally: 70° each. Base angles of an isosceles triangle are equal.",
+      "checkExpr": "(180-40)/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज का शीर्ष कोण 40° है। हर आधार कोण कितना?",
+          "choices": [
+            "70°",
+            "100°",
+            "140°",
+            "40°"
+          ],
+          "solution": "बची 140° बराबर बँटती है: 70°-70°। समद्विबाहु के आधार कोण बराबर होते हैं।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाचा शिरोकोन 40° आहे. प्रत्येक पायाकोन किती?",
+          "choices": [
+            "70°",
+            "100°",
+            "140°",
+            "40°"
+          ],
+          "solution": "उरलेले 140° सारखे वाटतात: प्रत्येकी 70°. समद्विभुजाचे पायाकोन समान असतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two parallel lines are cut by a transversal; the two co-interior angles are (2x) and (x + 30). Find x.",
+      "choices": [
+        "60°",
+        "50°",
+        "30°",
+        "75°"
+      ],
+      "answerIndex": 1,
+      "solution": "Co-interior angles sum to 180: 2x + x + 30 = 180, so 3x = 150 and x = 50. Check: 100 + 80 = 180 ✓.",
+      "checkExpr": "(180-30)/3",
+      "translations": {
+        "hi": {
+          "stem": "दो समांतर रेखाओं को तिर्यक रेखा काटती है; दोनों एक-ओर के अंतःकोण (2x) और (x + 30) हैं। x निकालिए।",
+          "choices": [
+            "60°",
+            "50°",
+            "30°",
+            "75°"
+          ],
+          "solution": "एक-ओर के अंतःकोण 180 तक: 2x + x + 30 = 180, अतः 3x = 150 और x = 50। जाँच: 100 + 80 = 180 ✓।"
+        },
+        "mr": {
+          "stem": "दोन समांतर रेषांना छेदिका छेदते; दोन्ही एका बाजूचे आंतरकोन (2x) आणि (x + 30) आहेत. x काढा.",
+          "choices": [
+            "60°",
+            "50°",
+            "30°",
+            "75°"
+          ],
+          "solution": "एका बाजूचे आंतरकोन 180 पर्यंत: 2x + x + 30 = 180, म्हणून 3x = 150 आणि x = 50. पडताळणी: 100 + 80 = 180 ✓."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The three angles of a triangle are x, x + 10 and x + 20. What is the largest?",
+      "choices": [
+        "60°",
+        "50°",
+        "80°",
+        "70°"
+      ],
+      "answerIndex": 3,
+      "solution": "3x + 30 = 180 gives x = 50, so the angles are 50, 60, 70 — the largest is 70°. 50 answers x itself.",
+      "checkExpr": "(180-30)/3+20",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के तीन कोण x, x + 10 और x + 20 हैं। सबसे बड़ा कितना?",
+          "choices": [
+            "60°",
+            "50°",
+            "80°",
+            "70°"
+          ],
+          "solution": "3x + 30 = 180 से x = 50, अतः कोण 50, 60, 70 — सबसे बड़ा 70°। 50 स्वयं x का उत्तर है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे तीन कोन x, x + 10 आणि x + 20 आहेत. सर्वांत मोठा किती?",
+          "choices": [
+            "60°",
+            "50°",
+            "80°",
+            "70°"
+          ],
+          "solution": "3x + 30 = 180 मधून x = 50, म्हणून कोन 50, 60, 70 — सर्वांत मोठा 70°. 50 हे स्वतः x चे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In triangle ABC, angle A = 2·angle B and angle C = 90°. What is angle B?",
+      "choices": [
+        "30°",
+        "45°",
+        "90°",
+        "60°"
+      ],
+      "answerIndex": 0,
+      "solution": "A + B = 90 (since C = 90), and A = 2B, so 3B = 90, B = 30°. Then A = 60°. The right angle fixes A + B.",
+      "checkExpr": "90/3",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज ABC में कोण A = 2·कोण B और कोण C = 90°। कोण B कितना?",
+          "choices": [
+            "30°",
+            "45°",
+            "90°",
+            "60°"
+          ],
+          "solution": "A + B = 90 (क्योंकि C = 90), और A = 2B, अतः 3B = 90, B = 30°। फिर A = 60°। समकोण A + B तय करता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोण ABC मध्ये कोन A = 2·कोन B आणि कोन C = 90°. कोन B किती?",
+          "choices": [
+            "30°",
+            "45°",
+            "90°",
+            "60°"
+          ],
+          "solution": "A + B = 90 (कारण C = 90), आणि A = 2B, म्हणून 3B = 90, B = 30°. मग A = 60°. काटकोन A + B ठरवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two lines are parallel. A transversal makes an angle of (3x − 5)° with one and its corresponding angle (2x + 20)° with the other. Find x.",
+      "choices": [
+        "25",
+        "5",
+        "15",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "Corresponding angles are equal: 3x − 5 = 2x + 20, so x = 25. Both angles then equal 70° ✓.",
+      "checkExpr": "20+5",
+      "translations": {
+        "hi": {
+          "stem": "दो रेखाएँ समांतर हैं। तिर्यक रेखा एक से (3x − 5)° और दूसरी से संगत कोण (2x + 20)° बनाती है। x निकालिए।",
+          "choices": [
+            "25",
+            "5",
+            "15",
+            "30"
+          ],
+          "solution": "संगत कोण बराबर: 3x − 5 = 2x + 20, अतः x = 25। दोनों कोण फिर 70° ✓।"
+        },
+        "mr": {
+          "stem": "दोन रेषा समांतर आहेत. छेदिका एकाशी (3x − 5)° आणि दुसऱ्याशी संगत कोन (2x + 20)° करते. x काढा.",
+          "choices": [
+            "25",
+            "5",
+            "15",
+            "30"
+          ],
+          "solution": "संगत कोन समान: 3x − 5 = 2x + 20, म्हणून x = 25. दोन्ही कोन मग 70° ✓."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The bisectors of the two base angles of a triangle meet at a point. If the vertex angle is 80°, the angle between the bisectors is 90° + half the vertex. Compute it.",
+      "choices": [
+        "130°",
+        "170°",
+        "100°",
+        "90°"
+      ],
+      "answerIndex": 0,
+      "solution": "90 + 80/2 = 90 + 40 = 130°. The bisectors' meeting angle is always 90° plus half the vertex — a tidy standard result.",
+      "checkExpr": "90+80/2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के दोनों आधार कोणों के समद्विभाजक एक बिंदु पर मिलते हैं। यदि शीर्ष कोण 80° हो, समद्विभाजकों के बीच का कोण 90° + आधा शीर्ष है। निकालिए।",
+          "choices": [
+            "130°",
+            "170°",
+            "100°",
+            "90°"
+          ],
+          "solution": "90 + 80/2 = 90 + 40 = 130°। समद्विभाजकों का मिलन-कोण सदा 90° और आधा शीर्ष होता है — एक साफ़ मानक परिणाम।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या दोन पायाकोनांचे दुभाजक एका बिंदूवर मिळतात. शिरोकोन 80° असल्यास, दुभाजकांमधला कोन 90° + अर्धा शिरोकोन. काढा.",
+          "choices": [
+            "130°",
+            "170°",
+            "100°",
+            "90°"
+          ],
+          "solution": "90 + 80/2 = 90 + 40 = 130°. दुभाजकांचा भेट-कोन नेहमी 90° आणि अर्धा शिरोकोन — एक नीटस प्रमाण निकाल."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student claims a triangle can have angles 90°, 60° and 40°. Add them: what total do you get, and does a triangle allow it?",
+      "choices": [
+        "180°",
+        "170°",
+        "200°",
+        "190°"
+      ],
+      "answerIndex": 3,
+      "solution": "90 + 60 + 40 = 190° — but a triangle's angles must total exactly 180°. The extra 10° convicts the claim: no such triangle exists. One sum refutes it.",
+      "checkExpr": "90+60+40",
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी का दावा है कि त्रिभुज के कोण 90°, 60° और 40° हो सकते हैं। जोड़िए: कुल कितना मिलता है, और क्या त्रिभुज इसकी अनुमति देता है?",
+          "choices": [
+            "180°",
+            "170°",
+            "200°",
+            "190°"
+          ],
+          "solution": "90 + 60 + 40 = 190° — पर त्रिभुज के कोणों का योग ठीक 180° होना चाहिए। अतिरिक्त 10° दावे को दोषी ठहराता है: ऐसा त्रिभुज है ही नहीं। एक योग उसे ख़ारिज कर देता है।"
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याचा दावा की त्रिकोणाचे कोन 90°, 60° आणि 40° असू शकतात. जोडा: एकूण किती मिळते, आणि त्रिकोण याला परवानगी देतो का?",
+          "choices": [
+            "180°",
+            "170°",
+            "200°",
+            "190°"
+          ],
+          "solution": "90 + 60 + 40 = 190° — पण त्रिकोणाच्या कोनांची बेरीज नेमकी 180° हवी. जादा 10° दाव्याला दोषी ठरवते: असा त्रिकोण नाहीच. एक बेरीज त्याला बाद करते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A ray of light hits a mirror and reflects; the incident and reflected rays make equal angles with the mirror. If they make 40° between the incident ray and mirror, the total turn of the light (twice the complement's... ) — simply, the angle between incident and reflected rays is 180 − 2×40. Compute it.",
+      "choices": [
+        "100°",
+        "140°",
+        "80°",
+        "40°"
+      ],
+      "answerIndex": 0,
+      "solution": "Both rays sit 40° from the mirror on the straight surface, so between them: 180 − 40 − 40 = 100°. Geometry of angles is the geometry of light.",
+      "checkExpr": "180-2*40",
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश की किरण दर्पण से टकराकर परावर्तित होती है; आपतित और परावर्तित किरणें दर्पण से बराबर कोण बनाती हैं। यदि आपतित किरण और दर्पण के बीच 40° हो, आपतित और परावर्तित किरणों के बीच का कोण 180 − 2×40 है। निकालिए।",
+          "choices": [
+            "100°",
+            "140°",
+            "80°",
+            "40°"
+          ],
+          "solution": "दोनों किरणें सीधी सतह पर दर्पण से 40° हैं, अतः उनके बीच: 180 − 40 − 40 = 100°। कोणों की ज्यामिति ही प्रकाश की ज्यामिति है।"
+        },
+        "mr": {
+          "stem": "प्रकाशकिरण आरशावर आदळून परावर्तित होते; आपाती आणि परावर्तित किरणे आरशाशी समान कोन करतात. आपाती किरण आणि आरशात 40° असल्यास, आपाती आणि परावर्तित किरणांतला कोन 180 − 2×40 आहे. काढा.",
+          "choices": [
+            "100°",
+            "140°",
+            "80°",
+            "40°"
+          ],
+          "solution": "दोन्ही किरणे सरळ पृष्ठावर आरशापासून 40°, म्हणून त्यांच्यामध्ये: 180 − 40 − 40 = 100°. कोनांची भूमिती हीच प्रकाशाची भूमिती."
+        }
+      }
+    }
+  ]
+}

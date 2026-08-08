@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 10 — Heron's Formula",
+  "name": "Heron's Formula",
+  "slug": "maths-9-herons-formula",
+  "summary": "Area from three sides alone: the semi-perimeter feeding a square root, 13-14-15 yielding a whole number 84 — and Heron flagging an impossible triangle with a negative under the root.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "हेरॉन का सूत्र",
+      "summary": "केवल तीन भुजाओं से क्षेत्रफल: अर्ध-परिमाप वर्गमूल को खिलाता, 13-14-15 पूर्ण संख्या 84 देता — और हेरॉन मूल के नीचे ऋण से असंभव त्रिभुज बता देता।"
+    },
+    "mr": {
+      "name": "हेरॉनचे सूत्र",
+      "summary": "फक्त तीन बाजूंतून क्षेत्रफळ: अर्ध-परिमिती वर्गमूळाला पुरवते, 13-14-15 पूर्ण संख्या 84 देते — आणि हेरॉन मूळाखालच्या ऋणाने अशक्य त्रिकोण दाखवते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A triangle has sides 3, 4, 5. What is its semi-perimeter s = (a+b+c)/2?",
+      "choices": [
+        "3",
+        "6",
+        "60",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "s = (3 + 4 + 5)/2 = 12/2 = 6. The semi-perimeter is half the way round — Heron's starting point.",
+      "checkExpr": "(3+4+5)/2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की भुजाएँ 3, 4, 5 हैं। उसका अर्ध-परिमाप s = (a+b+c)/2 क्या है?",
+          "choices": [
+            "3",
+            "6",
+            "60",
+            "12"
+          ],
+          "solution": "s = (3 + 4 + 5)/2 = 12/2 = 6। अर्ध-परिमाप आधी परिक्रमा है — हेरॉन का आरंभ-बिंदु।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या बाजू 3, 4, 5 आहेत. त्याची अर्ध-परिमिती s = (a+b+c)/2 काय?",
+          "choices": [
+            "3",
+            "6",
+            "60",
+            "12"
+          ],
+          "solution": "s = (3 + 4 + 5)/2 = 12/2 = 6. अर्ध-परिमिती म्हणजे अर्धी फेरी — हेरॉनचा आरंभबिंदू."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A right triangle has legs 6 and 8. What is its area?",
+      "choices": [
+        "24",
+        "14",
+        "10",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "For a right triangle, area = ½ × legs = ½ × 6 × 8 = 24. No Heron needed when the right angle is handed to you.",
+      "checkExpr": "6*8/2",
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज की भुजाएँ 6 और 8 हैं। क्षेत्रफल कितना?",
+          "choices": [
+            "24",
+            "14",
+            "10",
+            "48"
+          ],
+          "solution": "समकोण त्रिभुज में क्षेत्रफल = ½ × भुजाएँ = ½ × 6 × 8 = 24। समकोण मिले तो हेरॉन की ज़रूरत नहीं।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणाच्या बाजू 6 आणि 8. क्षेत्रफळ किती?",
+          "choices": [
+            "24",
+            "14",
+            "10",
+            "48"
+          ],
+          "solution": "काटकोन त्रिकोणात क्षेत्रफळ = ½ × बाजू = ½ × 6 × 8 = 24. काटकोन मिळाला तर हेरॉनची गरज नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For an equilateral triangle of side 6, the semi-perimeter is?",
+      "choices": [
+        "9",
+        "6",
+        "3",
+        "18"
+      ],
+      "answerIndex": 0,
+      "solution": "Perimeter 18, so s = 18/2 = 9. All three sides equal simplifies the sum to 3 × side.",
+      "checkExpr": "6*3/2",
+      "translations": {
+        "hi": {
+          "stem": "6 भुजा वाले समबाहु त्रिभुज का अर्ध-परिमाप कितना?",
+          "choices": [
+            "9",
+            "6",
+            "3",
+            "18"
+          ],
+          "solution": "परिमाप 18, अतः s = 18/2 = 9। तीनों भुजाएँ बराबर होने से योग 3 × भुजा।"
+        },
+        "mr": {
+          "stem": "6 बाजूच्या समभुज त्रिकोणाची अर्ध-परिमिती किती?",
+          "choices": [
+            "9",
+            "6",
+            "3",
+            "18"
+          ],
+          "solution": "परिमिती 18, म्हणून s = 18/2 = 9. तिन्ही बाजू समान असल्याने बेरीज 3 × बाजू."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For sides 3, 4, 5, s = 6. Heron's area is √(s(s−a)(s−b)(s−c)) = √(6·3·2·1). What is that area?",
+      "choices": [
+        "12",
+        "8",
+        "36",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "√(6·3·2·1) = √36 = 6 — matching ½·3·4 = 6, since 3-4-5 is right-angled. Heron agrees with the simple formula.",
+      "checkExpr": "3*4/2",
+      "translations": {
+        "hi": {
+          "stem": "भुजाओं 3, 4, 5 के लिए s = 6। हेरॉन क्षेत्रफल √(s(s−a)(s−b)(s−c)) = √(6·3·2·1)। वह क्षेत्रफल क्या है?",
+          "choices": [
+            "12",
+            "8",
+            "36",
+            "6"
+          ],
+          "solution": "√(6·3·2·1) = √36 = 6 — ½·3·4 = 6 से मेल, क्योंकि 3-4-5 समकोण है। हेरॉन सरल सूत्र से सहमत।"
+        },
+        "mr": {
+          "stem": "बाजू 3, 4, 5 साठी s = 6. हेरॉन क्षेत्रफळ √(s(s−a)(s−b)(s−c)) = √(6·3·2·1). ते क्षेत्रफळ काय?",
+          "choices": [
+            "12",
+            "8",
+            "36",
+            "6"
+          ],
+          "solution": "√(6·3·2·1) = √36 = 6 — ½·3·4 = 6 शी जुळते, कारण 3-4-5 काटकोन. हेरॉन साध्या सूत्राशी सहमत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A triangle has sides 13, 14, 15. What is its semi-perimeter?",
+      "choices": [
+        "42",
+        "20",
+        "21",
+        "22"
+      ],
+      "answerIndex": 2,
+      "solution": "s = (13 + 14 + 15)/2 = 42/2 = 21. This famous triangle has a whole-number area of 84.",
+      "checkExpr": "(13+14+15)/2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की भुजाएँ 13, 14, 15 हैं। अर्ध-परिमाप कितना?",
+          "choices": [
+            "42",
+            "20",
+            "21",
+            "22"
+          ],
+          "solution": "s = (13 + 14 + 15)/2 = 42/2 = 21। इस मशहूर त्रिभुज का क्षेत्रफल पूर्ण संख्या 84 है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या बाजू 13, 14, 15. अर्ध-परिमिती किती?",
+          "choices": [
+            "42",
+            "20",
+            "21",
+            "22"
+          ],
+          "solution": "s = (13 + 14 + 15)/2 = 42/2 = 21. या प्रसिद्ध त्रिकोणाचे क्षेत्रफळ पूर्ण संख्या 84."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An isosceles triangle has equal sides 5, 5 and base 6. What is its semi-perimeter?",
+      "choices": [
+        "6",
+        "16",
+        "4",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "s = (5 + 5 + 6)/2 = 16/2 = 8. Its area by Heron is √(8·3·3·2) = 12.",
+      "checkExpr": "(5+5+6)/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज की बराबर भुजाएँ 5, 5 और आधार 6 है। अर्ध-परिमाप कितना?",
+          "choices": [
+            "6",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "s = (5 + 5 + 6)/2 = 16/2 = 8। हेरॉन से क्षेत्रफल √(8·3·3·2) = 12।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाच्या समान बाजू 5, 5 आणि पाया 6. अर्ध-परिमिती किती?",
+          "choices": [
+            "6",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "s = (5 + 5 + 6)/2 = 16/2 = 8. हेरॉनने क्षेत्रफळ √(8·3·3·2) = 12."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For the 13-14-15 triangle, s = 21. Heron gives √(21·8·7·6) = √7056. What is the area?",
+      "choices": [
+        "84",
+        "42",
+        "7056",
+        "168"
+      ],
+      "answerIndex": 0,
+      "solution": "√7056 = 84. Heron delivers a whole-number area from three whole-number sides — a small miracle of the formula.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "13-14-15 त्रिभुज के लिए s = 21। हेरॉन देता है √(21·8·7·6) = √7056। क्षेत्रफल क्या है?",
+          "choices": [
+            "84",
+            "42",
+            "7056",
+            "168"
+          ],
+          "solution": "√7056 = 84। हेरॉन तीन पूर्ण-संख्या भुजाओं से पूर्ण-संख्या क्षेत्रफल देता है — सूत्र का छोटा-सा चमत्कार।"
+        },
+        "mr": {
+          "stem": "13-14-15 त्रिकोणासाठी s = 21. हेरॉन देते √(21·8·7·6) = √7056. क्षेत्रफळ काय?",
+          "choices": [
+            "84",
+            "42",
+            "7056",
+            "168"
+          ],
+          "solution": "√7056 = 84. हेरॉन तीन पूर्ण-संख्या बाजूंतून पूर्ण-संख्या क्षेत्रफळ देते — सूत्राचा छोटा चमत्कार."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The isosceles triangle 5, 5, 6 has area √(8·3·3·2). What is that area?",
+      "choices": [
+        "144",
+        "12",
+        "24",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "√(8·3·3·2) = √144 = 12 — and indeed the height to the base of 6 is 4, giving ½·6·4 = 12. Both roads agree.",
+      "checkExpr": "6*4/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज 5, 5, 6 का क्षेत्रफल √(8·3·3·2) है। वह क्या है?",
+          "choices": [
+            "144",
+            "12",
+            "24",
+            "15"
+          ],
+          "solution": "√(8·3·3·2) = √144 = 12 — और 6 आधार पर ऊँचाई 4 है, ½·6·4 = 12। दोनों राहें मिलती हैं।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोण 5, 5, 6 चे क्षेत्रफळ √(8·3·3·2) आहे. ते काय?",
+          "choices": [
+            "144",
+            "12",
+            "24",
+            "15"
+          ],
+          "solution": "√(8·3·3·2) = √144 = 12 — आणि 6 पायावर उंची 4, ½·6·4 = 12. दोन्ही वाटा जुळतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "An equilateral triangle of side 4 has area (√3/4)·4². What is the coefficient — that is, 4²/4?",
+      "choices": [
+        "12",
+        "8",
+        "16",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Area = (√3/4)·16 = 4√3, coefficient 4. The equilateral shortcut skips Heron: (√3/4)·side².",
+      "checkExpr": "16/4",
+      "translations": {
+        "hi": {
+          "stem": "4 भुजा वाले समबाहु त्रिभुज का क्षेत्रफल (√3/4)·4² है। गुणांक क्या है — यानी 4²/4?",
+          "choices": [
+            "12",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "क्षेत्रफल = (√3/4)·16 = 4√3, गुणांक 4। समबाहु शॉर्टकट हेरॉन लाँघता है: (√3/4)·भुजा²।"
+        },
+        "mr": {
+          "stem": "4 बाजूच्या समभुज त्रिकोणाचे क्षेत्रफळ (√3/4)·4² आहे. सहगुणक काय — म्हणजे 4²/4?",
+          "choices": [
+            "12",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "क्षेत्रफळ = (√3/4)·16 = 4√3, सहगुणक 4. समभुज शॉर्टकट हेरॉन ओलांडतो: (√3/4)·बाजू²."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A triangular park has sides 40 m, 24 m and 32 m. Is it right-angled? Compute 24² + 32² and compare with 40².",
+      "choices": [
+        "1024",
+        "576",
+        "1600",
+        "3200"
+      ],
+      "answerIndex": 2,
+      "solution": "24² + 32² = 576 + 1024 = 1600 = 40². Yes — it is right-angled, so area = ½·24·32 = 384 m², no Heron required.",
+      "checkExpr": "24*24+32*32",
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुजाकार पार्क की भुजाएँ 40 मी, 24 मी और 32 मी हैं। क्या यह समकोण है? 24² + 32² निकालकर 40² से तुलना कीजिए।",
+          "choices": [
+            "1024",
+            "576",
+            "1600",
+            "3200"
+          ],
+          "solution": "24² + 32² = 576 + 1024 = 1600 = 40²। हाँ — यह समकोण है, अतः क्षेत्रफल = ½·24·32 = 384 वर्ग मीटर, हेरॉन की ज़रूरत नहीं।"
+        },
+        "mr": {
+          "stem": "त्रिकोणी उद्यानाच्या बाजू 40 मी, 24 मी आणि 32 मी. ते काटकोन आहे का? 24² + 32² काढून 40² शी तुलना करा.",
+          "choices": [
+            "1024",
+            "576",
+            "1600",
+            "3200"
+          ],
+          "solution": "24² + 32² = 576 + 1024 = 1600 = 40². हो — ते काटकोन, म्हणून क्षेत्रफळ = ½·24·32 = 384 चौ. मीटर, हेरॉनची गरज नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A triangle has sides 6, 8, 10. Compute Heron's area √(12·6·4·2).",
+      "choices": [
+        "24",
+        "576",
+        "48",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "s = 12, √(12·6·4·2) = √576 = 24 — matching ½·6·8 since 6-8-10 is right. Heron and the leg-formula shake hands.",
+      "checkExpr": "6*8/2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की भुजाएँ 6, 8, 10 हैं। हेरॉन क्षेत्रफल √(12·6·4·2) निकालिए।",
+          "choices": [
+            "24",
+            "576",
+            "48",
+            "20"
+          ],
+          "solution": "s = 12, √(12·6·4·2) = √576 = 24 — ½·6·8 से मेल, क्योंकि 6-8-10 समकोण है। हेरॉन और भुजा-सूत्र हाथ मिलाते हैं।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या बाजू 6, 8, 10. हेरॉन क्षेत्रफळ √(12·6·4·2) काढा.",
+          "choices": [
+            "24",
+            "576",
+            "48",
+            "20"
+          ],
+          "solution": "s = 12, √(12·6·4·2) = √576 = 24 — ½·6·8 शी जुळते, कारण 6-8-10 काटकोन. हेरॉन आणि बाजू-सूत्र हस्तांदोलन करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A quadrilateral field is split by a diagonal into two triangles of areas 30 and 42 m². What is the field's area?",
+      "choices": [
+        "1260",
+        "72",
+        "36",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "A diagonal splits a quadrilateral into two triangles; add their areas: 30 + 42 = 72 m². Heron is applied to each half, then summed.",
+      "checkExpr": "30+42",
+      "translations": {
+        "hi": {
+          "stem": "एक चतुर्भुज खेत एक विकर्ण से 30 और 42 वर्ग मीटर के दो त्रिभुजों में बँटा है। खेत का क्षेत्रफल कितना?",
+          "choices": [
+            "1260",
+            "72",
+            "36",
+            "12"
+          ],
+          "solution": "विकर्ण चतुर्भुज को दो त्रिभुजों में बाँटता है; क्षेत्रफल जोड़िए: 30 + 42 = 72 वर्ग मीटर। हेरॉन हर आधे पर लगाकर जोड़ा जाता है।"
+        },
+        "mr": {
+          "stem": "एक चौकोन शेत एका कर्णाने 30 आणि 42 चौ. मीटरच्या दोन त्रिकोणांत विभागले. शेताचे क्षेत्रफळ किती?",
+          "choices": [
+            "1260",
+            "72",
+            "36",
+            "12"
+          ],
+          "solution": "कर्ण चौकोनाला दोन त्रिकोणांत विभागतो; क्षेत्रफळे जोडा: 30 + 42 = 72 चौ. मीटर. हेरॉन प्रत्येक अर्ध्यावर लावून बेरीज."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A triangle with sides 9, 12, 15: is it right-angled? Compute 9² + 12².",
+      "choices": [
+        "441",
+        "144",
+        "81",
+        "225"
+      ],
+      "answerIndex": 3,
+      "solution": "9² + 12² = 81 + 144 = 225 = 15². Right-angled — area = ½·9·12 = 54 m². The 3-4-5 triple, tripled.",
+      "checkExpr": "9*9+12*12",
+      "translations": {
+        "hi": {
+          "stem": "9, 12, 15 भुजाओं वाला त्रिभुज: क्या समकोण है? 9² + 12² निकालिए।",
+          "choices": [
+            "441",
+            "144",
+            "81",
+            "225"
+          ],
+          "solution": "9² + 12² = 81 + 144 = 225 = 15²। समकोण — क्षेत्रफल = ½·9·12 = 54 वर्ग मीटर। 3-4-5 त्रिक, तिगुना।"
+        },
+        "mr": {
+          "stem": "9, 12, 15 बाजूंचा त्रिकोण: काटकोन आहे का? 9² + 12² काढा.",
+          "choices": [
+            "441",
+            "144",
+            "81",
+            "225"
+          ],
+          "solution": "9² + 12² = 81 + 144 = 225 = 15². काटकोन — क्षेत्रफळ = ½·9·12 = 54 चौ. मीटर. 3-4-5 त्रिकूट, तिप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A signboard is an equilateral triangle of side 10 cm. Its area is 25√3. What is 25√3 rounded to the nearest whole number? (√3 ≈ 1.73)",
+      "choices": [
+        "50",
+        "25",
+        "75",
+        "43"
+      ],
+      "answerIndex": 3,
+      "solution": "25 × 1.73 = 43.25 ≈ 43 cm². Area = (√3/4)·10² = 25√3 — the equilateral formula, then a numeric estimate.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक साइनबोर्ड 10 सेमी भुजा का समबाहु त्रिभुज है। उसका क्षेत्रफल 25√3 है। 25√3 को निकटतम पूर्ण संख्या में गोल कीजिए। (√3 ≈ 1.73)",
+          "choices": [
+            "50",
+            "25",
+            "75",
+            "43"
+          ],
+          "solution": "25 × 1.73 = 43.25 ≈ 43 वर्ग सेमी। क्षेत्रफल = (√3/4)·10² = 25√3 — समबाहु सूत्र, फिर संख्यात्मक अनुमान।"
+        },
+        "mr": {
+          "stem": "एक साइनबोर्ड 10 सेमी बाजूचा समभुज त्रिकोण आहे. त्याचे क्षेत्रफळ 25√3. 25√3 जवळच्या पूर्ण संख्येत गोल करा. (√3 ≈ 1.73)",
+          "choices": [
+            "50",
+            "25",
+            "75",
+            "43"
+          ],
+          "solution": "25 × 1.73 = 43.25 ≈ 43 चौ. सेमी. क्षेत्रफळ = (√3/4)·10² = 25√3 — समभुज सूत्र, मग संख्यात्मक अंदाज."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Among all triangles with perimeter 12, the equilateral (sides 4,4,4) has the largest area. Its s is 6; area √(6·2·2·2) = √48. What whole number does √48 round to? (√48 ≈ 6.93)",
+      "choices": [
+        "7",
+        "6",
+        "12",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "√48 ≈ 6.93 ≈ 7 sq units. Of every triangle sharing a perimeter, the equilateral encloses the most area — symmetry pays.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परिमाप 12 वाले सभी त्रिभुजों में समबाहु (भुजाएँ 4,4,4) का क्षेत्रफल सबसे बड़ा है। उसका s = 6; क्षेत्रफल √(6·2·2·2) = √48। √48 किस पूर्ण संख्या के पास है? (√48 ≈ 6.93)",
+          "choices": [
+            "7",
+            "6",
+            "12",
+            "48"
+          ],
+          "solution": "√48 ≈ 6.93 ≈ 7 वर्ग इकाई। समान परिमाप वाले हर त्रिभुज में समबाहु सबसे ज़्यादा क्षेत्रफल घेरता है — समरूपता का लाभ।"
+        },
+        "mr": {
+          "stem": "परिमिती 12 च्या सर्व त्रिकोणांत समभुज (बाजू 4,4,4) चे क्षेत्रफळ सर्वांत मोठे. त्याचा s = 6; क्षेत्रफळ √(6·2·2·2) = √48. √48 कोणत्या पूर्ण संख्येजवळ? (√48 ≈ 6.93)",
+          "choices": [
+            "7",
+            "6",
+            "12",
+            "48"
+          ],
+          "solution": "√48 ≈ 6.93 ≈ 7 चौरस एकके. समान परिमिती असलेल्या प्रत्येक त्रिकोणात समभुज सर्वाधिक क्षेत्रफळ वेढतो — सममितीचा फायदा."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Heron's formula fails (gives an imaginary root) if the sides cannot form a triangle. For sides 2, 3, 6: s = 5.5, and (s−c) = 5.5 − 6 is negative. What is 5.5 − 6?",
+      "choices": [
+        "0.5",
+        "-0.5",
+        "11.5",
+        "-1"
+      ],
+      "answerIndex": 1,
+      "solution": "5.5 − 6 = −0.5, a negative factor — so the product under the root is negative and the 'area' is imaginary. Heron itself flags an impossible triangle: 2 + 3 < 6, the inequality is broken.",
+      "checkExpr": "5.5-6",
+      "translations": {
+        "hi": {
+          "stem": "यदि भुजाएँ त्रिभुज न बना सकें तो हेरॉन सूत्र विफल हो जाता है (काल्पनिक मूल देता है)। भुजाओं 2, 3, 6 के लिए: s = 5.5, और (s−c) = 5.5 − 6 ऋण है। 5.5 − 6 क्या है?",
+          "choices": [
+            "0.5",
+            "-0.5",
+            "11.5",
+            "-1"
+          ],
+          "solution": "5.5 − 6 = −0.5, एक ऋण गुणनखंड — अतः मूल के नीचे गुणनफल ऋण और 'क्षेत्रफल' काल्पनिक। हेरॉन स्वयं असंभव त्रिभुज बता देता है: 2 + 3 < 6, असमिका टूटी।"
+        },
+        "mr": {
+          "stem": "बाजू त्रिकोण बनवू शकत नसतील तर हेरॉन सूत्र फसते (काल्पनिक मूळ देते). बाजू 2, 3, 6 साठी: s = 5.5, आणि (s−c) = 5.5 − 6 ऋण. 5.5 − 6 काय?",
+          "choices": [
+            "0.5",
+            "-0.5",
+            "11.5",
+            "-1"
+          ],
+          "solution": "5.5 − 6 = −0.5, एक ऋण घटक — म्हणून मूळाखालचा गुणाकार ऋण आणि 'क्षेत्रफळ' काल्पनिक. हेरॉन स्वतः अशक्य त्रिकोण दाखवते: 2 + 3 < 6, असमानता तुटली."
+        }
+      }
+    }
+  ]
+}

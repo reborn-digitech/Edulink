@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 12 — Statistics",
+  "name": "Statistics",
+  "slug": "maths-9-statistics",
+  "summary": "Data averaged and doubted: mean, median and mode told apart, a combined mean weighted not averaged — and one owner's salary showing why an average alone hides the spread.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "सांख्यिकी",
+      "summary": "आँकड़े औसते और परखे: माध्य, माध्यिका और बहुलक अलग-अलग, संयुक्त माध्य भारित न कि सादा — और मालिक का वेतन दिखाता कि अकेला औसत फैलाव कैसे छिपाता है।"
+    },
+    "mr": {
+      "name": "सांख्यिकी",
+      "summary": "सामग्री सरासरी आणि संशयित: मध्य, मध्यगा आणि बहुलक वेगळे, एकत्रित मध्य भारित न की साधा — आणि मालकाचा पगार दाखवतो की एकटी सरासरी पसरण कशी लपवते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the mean of 4, 8, 6, 10, 2?",
+      "choices": [
+        "8",
+        "30",
+        "6",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "Add and divide by 5: 30 ÷ 5 = 6. 30 stops at the total, forgetting to share it out.",
+      "checkExpr": "(4+8+6+10+2)/5",
+      "translations": {
+        "hi": {
+          "stem": "4, 8, 6, 10, 2 का माध्य क्या है?",
+          "choices": [
+            "8",
+            "30",
+            "6",
+            "5"
+          ],
+          "solution": "जोड़कर 5 से भाग: 30 ÷ 5 = 6। 30 कुल पर रुक जाता है, बाँटना भूलकर।"
+        },
+        "mr": {
+          "stem": "4, 8, 6, 10, 2 चा मध्य किती?",
+          "choices": [
+            "8",
+            "30",
+            "6",
+            "5"
+          ],
+          "solution": "जोडून 5 ने भागा: 30 ÷ 5 = 6. 30 एकूण बेरजेवर थांबतो, वाटायला विसरून."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the mode of 3, 5, 5, 7, 5, 9?",
+      "choices": [
+        "5",
+        "7",
+        "3",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "The mode is the most frequent value: 5 appears three times, the others once. Frequency crowns the mode.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "3, 5, 5, 7, 5, 9 का बहुलक क्या है?",
+          "choices": [
+            "5",
+            "7",
+            "3",
+            "9"
+          ],
+          "solution": "बहुलक सबसे बार आने वाला मान है: 5 तीन बार, बाक़ी एक-एक। बारंबारता बहुलक का ताज है।"
+        },
+        "mr": {
+          "stem": "3, 5, 5, 7, 5, 9 चा बहुलक किती?",
+          "choices": [
+            "5",
+            "7",
+            "3",
+            "9"
+          ],
+          "solution": "बहुलक म्हणजे सर्वाधिक वेळा येणारे मूल्य: 5 तीनदा, बाकी एकेकदा. वारंवारता बहुलकाचा मुकुट."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the median of 2, 4, 6, 8, 10?",
+      "choices": [
+        "30",
+        "6",
+        "8",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Sorted already, the middle of five values is the third: 6. The median is the central number once ordered.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "2, 4, 6, 8, 10 की माध्यिका क्या है?",
+          "choices": [
+            "30",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "पहले से क्रमित, पाँच में बीच वाला तीसरा: 6। माध्यिका क्रम लगाने पर बीच की संख्या है।"
+        },
+        "mr": {
+          "stem": "2, 4, 6, 8, 10 ची मध्यगा किती?",
+          "choices": [
+            "30",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "आधीच क्रमित, पाचांतला मधला तिसरा: 6. मध्यगा म्हणजे क्रम लावल्यावर मधली संख्या."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the median of 3, 1, 4, 1, 5, 9? (Six values — average the middle two.)",
+      "choices": [
+        "1",
+        "4",
+        "3",
+        "3.5"
+      ],
+      "answerIndex": 3,
+      "solution": "Sorted: 1,1,3,4,5,9. The middle two are 3 and 4, averaging to 3.5. An even count has no single middle.",
+      "checkExpr": "(3+4)/2",
+      "translations": {
+        "hi": {
+          "stem": "3, 1, 4, 1, 5, 9 की माध्यिका क्या है? (छह मान — बीच के दो का औसत।)",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "3.5"
+          ],
+          "solution": "क्रमित: 1,1,3,4,5,9। बीच के दो 3 और 4, औसत 3.5। सम गिनती में अकेला बीच नहीं होता।"
+        },
+        "mr": {
+          "stem": "3, 1, 4, 1, 5, 9 ची मध्यगा किती? (सहा मूल्ये — मधल्या दोघांची सरासरी.)",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "3.5"
+          ],
+          "solution": "क्रमित: 1,1,3,4,5,9. मधले दोन 3 आणि 4, सरासरी 3.5. सम संख्येत एकटी मधली नसते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The mean of 5 numbers is 12. What is their total?",
+      "choices": [
+        "5",
+        "60",
+        "17",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "Total = mean × count = 12 × 5 = 60. The mean is the total shared out, so the total is the mean gathered back.",
+      "checkExpr": "12*5",
+      "translations": {
+        "hi": {
+          "stem": "5 संख्याओं का माध्य 12 है। उनका योग कितना?",
+          "choices": [
+            "5",
+            "60",
+            "17",
+            "12"
+          ],
+          "solution": "योग = माध्य × गिनती = 12 × 5 = 60। माध्य बँटा योग है, अतः योग फिर जुटाया माध्य है।"
+        },
+        "mr": {
+          "stem": "5 संख्यांचा मध्य 12 आहे. त्यांची बेरीज किती?",
+          "choices": [
+            "5",
+            "60",
+            "17",
+            "12"
+          ],
+          "solution": "बेरीज = मध्य × संख्या = 12 × 5 = 60. मध्य म्हणजे वाटलेली बेरीज, म्हणून बेरीज म्हणजे पुन्हा जमवलेला मध्य."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a bar graph, each bar's height shows the frequency. If the tallest bar has height 15, that class has how many items?",
+      "choices": [
+        "7.5",
+        "15",
+        "30",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Height IS the frequency here: 15. A bar graph reads directly — no conversion. 30 doubles for no reason.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दंड-आलेख में हर दंड की ऊँचाई बारंबारता दिखाती है। यदि सबसे ऊँचे दंड की ऊँचाई 15 है, उस वर्ग में कितने पद?",
+          "choices": [
+            "7.5",
+            "15",
+            "30",
+            "1"
+          ],
+          "solution": "यहाँ ऊँचाई ही बारंबारता है: 15। दंड-आलेख सीधे पढ़ा जाता है — कोई बदल नहीं। 30 अकारण दुगुना।"
+        },
+        "mr": {
+          "stem": "स्तंभालेखात प्रत्येक स्तंभाची उंची वारंवारता दाखवते. सर्वांत उंच स्तंभाची उंची 15 असल्यास, त्या वर्गात किती पदे?",
+          "choices": [
+            "7.5",
+            "15",
+            "30",
+            "1"
+          ],
+          "solution": "इथे उंचीच वारंवारता: 15. स्तंभालेख थेट वाचला जातो — बदल नाही. 30 विनाकारण दुप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The class interval 10–20 has how wide a class size?",
+      "choices": [
+        "30",
+        "10",
+        "20",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "Class size = upper − lower = 20 − 10 = 10. 30 adds the limits; 15 gives the midpoint, not the width.",
+      "checkExpr": "20-10",
+      "translations": {
+        "hi": {
+          "stem": "वर्ग-अंतराल 10–20 का वर्ग-आकार कितना चौड़ा है?",
+          "choices": [
+            "30",
+            "10",
+            "20",
+            "15"
+          ],
+          "solution": "वर्ग-आकार = ऊपरी − निचला = 20 − 10 = 10। 30 सीमाएँ जोड़ता है; 15 मध्य-बिंदु देता है, चौड़ाई नहीं।"
+        },
+        "mr": {
+          "stem": "वर्ग-अंतर 10–20 चा वर्ग-आकार किती रुंद?",
+          "choices": [
+            "30",
+            "10",
+            "20",
+            "15"
+          ],
+          "solution": "वर्ग-आकार = वरची − खालची = 20 − 10 = 10. 30 मर्यादा जोडतो; 15 मध्यबिंदू देतो, रुंदी नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The mean of 10 numbers is 20. If one number, 15, is removed, what is the new total of the remaining 9?",
+      "choices": [
+        "165",
+        "185",
+        "200",
+        "205"
+      ],
+      "answerIndex": 1,
+      "solution": "Original total 20 × 10 = 200; remove 15 → 185. Take the whole apart, subtract the piece, keep the rest.",
+      "checkExpr": "20*10-15",
+      "translations": {
+        "hi": {
+          "stem": "10 संख्याओं का माध्य 20 है। यदि एक संख्या 15 हटा दी जाए, बचे 9 का नया योग कितना?",
+          "choices": [
+            "165",
+            "185",
+            "200",
+            "205"
+          ],
+          "solution": "मूल योग 20 × 10 = 200; 15 हटाइए → 185। पूरे को खोलिए, टुकड़ा घटाइए, बाक़ी रखिए।"
+        },
+        "mr": {
+          "stem": "10 संख्यांचा मध्य 20 आहे. एक संख्या 15 काढल्यास, उरलेल्या 9 ची नवी बेरीज किती?",
+          "choices": [
+            "165",
+            "185",
+            "200",
+            "205"
+          ],
+          "solution": "मूळ बेरीज 20 × 10 = 200; 15 काढा → 185. पूर्ण सोडवा, तुकडा वजा करा, बाकी ठेवा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The midpoint (class mark) of the interval 30–40 is?",
+      "choices": [
+        "70",
+        "10",
+        "30",
+        "35"
+      ],
+      "answerIndex": 3,
+      "solution": "Class mark = (lower + upper)/2 = (30 + 40)/2 = 35. The midpoint stands in for the whole interval in mean calculations.",
+      "checkExpr": "(30+40)/2",
+      "translations": {
+        "hi": {
+          "stem": "अंतराल 30–40 का मध्य-मान (वर्ग-चिह्न) कितना है?",
+          "choices": [
+            "70",
+            "10",
+            "30",
+            "35"
+          ],
+          "solution": "वर्ग-चिह्न = (निचला + ऊपरी)/2 = (30 + 40)/2 = 35। माध्य-गणना में मध्य-बिंदु पूरे अंतराल का प्रतिनिधि है।"
+        },
+        "mr": {
+          "stem": "अंतर 30–40 चे मध्य-मूल्य (वर्ग-चिन्ह) किती?",
+          "choices": [
+            "70",
+            "10",
+            "30",
+            "35"
+          ],
+          "solution": "वर्ग-चिन्ह = (खालची + वरची)/2 = (30 + 40)/2 = 35. मध्य-गणनेत मध्यबिंदू अख्ख्या अंतराचा प्रतिनिधी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The mean of 8 numbers is 15. Adding one more number changes the mean to 16. What is the new number?",
+      "choices": [
+        "15",
+        "24",
+        "9",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "New total 16 × 9 = 144, old total 15 × 8 = 120; the new number is 144 − 120 = 24. To LIFT a mean, add well above it.",
+      "checkExpr": "16*9-15*8",
+      "translations": {
+        "hi": {
+          "stem": "8 संख्याओं का माध्य 15 है। एक और संख्या जोड़ने पर माध्य 16 हो जाता है। नई संख्या क्या है?",
+          "choices": [
+            "15",
+            "24",
+            "9",
+            "16"
+          ],
+          "solution": "नया योग 16 × 9 = 144, पुराना 15 × 8 = 120; नई संख्या 144 − 120 = 24। माध्य उठाने को उससे कहीं ऊपर जोड़िए।"
+        },
+        "mr": {
+          "stem": "8 संख्यांचा मध्य 15 आहे. आणखी एक संख्या जोडल्यावर मध्य 16 होतो. नवी संख्या काय?",
+          "choices": [
+            "15",
+            "24",
+            "9",
+            "16"
+          ],
+          "solution": "नवी बेरीज 16 × 9 = 144, जुनी 15 × 8 = 120; नवी संख्या 144 − 120 = 24. मध्य उचलायला त्याहून खूप वर जोडा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A histogram has classes 0–10, 10–20, 20–30 with frequencies 5, 8, 7. How many observations fall BELOW 20?",
+      "choices": [
+        "5",
+        "20",
+        "8",
+        "13"
+      ],
+      "answerIndex": 3,
+      "solution": "Below 20 gathers the first two classes: 5 + 8 = 13. 20 wrongly includes the 20–30 class as well.",
+      "checkExpr": "5+8",
+      "translations": {
+        "hi": {
+          "stem": "एक आयतचित्र में वर्ग 0–10, 10–20, 20–30 हैं, बारंबारताएँ 5, 8, 7। 20 से नीचे कितने प्रेक्षण हैं?",
+          "choices": [
+            "5",
+            "20",
+            "8",
+            "13"
+          ],
+          "solution": "20 से नीचे पहले दो वर्ग: 5 + 8 = 13। 20 ग़लती से 20–30 वर्ग भी जोड़ लेता है।"
+        },
+        "mr": {
+          "stem": "एका स्तंभालेखात वर्ग 0–10, 10–20, 20–30, वारंवारता 5, 8, 7. 20 च्या खाली किती निरीक्षणे?",
+          "choices": [
+            "5",
+            "20",
+            "8",
+            "13"
+          ],
+          "solution": "20 च्या खाली पहिले दोन वर्ग: 5 + 8 = 13. 20 चुकून 20–30 वर्गही जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The mean of the first 5 natural numbers 1,2,3,4,5 is?",
+      "choices": [
+        "15",
+        "2.5",
+        "3",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "(1+2+3+4+5)/5 = 15/5 = 3 — which is also the median, since the data is symmetric. Symmetry aligns mean and median.",
+      "checkExpr": "15/5",
+      "translations": {
+        "hi": {
+          "stem": "पहली 5 प्राकृत संख्याओं 1,2,3,4,5 का माध्य कितना?",
+          "choices": [
+            "15",
+            "2.5",
+            "3",
+            "5"
+          ],
+          "solution": "(1+2+3+4+5)/5 = 15/5 = 3 — जो माध्यिका भी है, क्योंकि आँकड़े सममित हैं। समरूपता माध्य और माध्यिका को मिला देती है।"
+        },
+        "mr": {
+          "stem": "पहिल्या 5 नैसर्गिक संख्या 1,2,3,4,5 चा मध्य किती?",
+          "choices": [
+            "15",
+            "2.5",
+            "3",
+            "5"
+          ],
+          "solution": "(1+2+3+4+5)/5 = 15/5 = 3 — जी मध्यगाही आहे, कारण सामग्री सममित. सममिती मध्य आणि मध्यगा जुळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Nine workers earn ₹200 each and the owner ₹2000. What is the MEAN daily earning of all ten?",
+      "choices": [
+        "2000",
+        "380",
+        "1100",
+        "200"
+      ],
+      "answerIndex": 1,
+      "solution": "Total = 1800 + 2000 = 3800, mean = 380. Yet NOBODY earns ₹380 — one large value drags the mean above nine of the ten. Here the median, ₹200, is the honest witness.",
+      "checkExpr": "(9*200+2000)/10",
+      "translations": {
+        "hi": {
+          "stem": "नौ मज़दूर ₹200 प्रत्येक और मालिक ₹2000 कमाते हैं। दसों की माध्य दैनिक कमाई कितनी?",
+          "choices": [
+            "2000",
+            "380",
+            "1100",
+            "200"
+          ],
+          "solution": "योग = 1800 + 2000 = 3800, माध्य = 380। पर ₹380 कोई नहीं कमाता — एक बड़ा मूल्य माध्य को दस में से नौ के ऊपर खींच ले जाता है। यहाँ ईमानदार गवाह माध्यिका है: ₹200।"
+        },
+        "mr": {
+          "stem": "नऊ कामगार प्रत्येकी ₹200 आणि मालक ₹2000 कमावतात. दहाही जणांची सरासरी रोजची कमाई किती?",
+          "choices": [
+            "2000",
+            "380",
+            "1100",
+            "200"
+          ],
+          "solution": "बेरीज = 1800 + 2000 = 3800, मध्य = 380. पण ₹380 कोणीच कमावत नाही — एक मोठे मूल्य मध्याला दहांतल्या नऊंच्या वर ओढते. इथला प्रामाणिक साक्षीदार मध्यगा: ₹200."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Data: 4, 6, 6, 8, 10. By how much does the mean exceed the mode?",
+      "choices": [
+        "6",
+        "0",
+        "0.8",
+        "6.8"
+      ],
+      "answerIndex": 2,
+      "solution": "Mean = 34/5 = 6.8, mode = 6, difference 0.8. Mean and mode need not coincide — the tail pulls the mean up.",
+      "checkExpr": "(4+6+6+8+10)/5-6",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़े: 4, 6, 6, 8, 10। माध्य बहुलक से कितना अधिक है?",
+          "choices": [
+            "6",
+            "0",
+            "0.8",
+            "6.8"
+          ],
+          "solution": "माध्य = 34/5 = 6.8, बहुलक = 6, अंतर 0.8। माध्य और बहुलक मिलें ज़रूरी नहीं — पुच्छ माध्य को ऊपर खींचता है।"
+        },
+        "mr": {
+          "stem": "सामग्री: 4, 6, 6, 8, 10. मध्य बहुलकापेक्षा किती जास्त?",
+          "choices": [
+            "6",
+            "0",
+            "0.8",
+            "6.8"
+          ],
+          "solution": "मध्य = 34/5 = 6.8, बहुलक = 6, फरक 0.8. मध्य आणि बहुलक जुळायलाच हवे असे नाही — शेपूट मध्याला वर ओढते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A class of 20 scores a mean of 60. A second class of 30 scores a mean of 70. What is the COMBINED mean of all 50?",
+      "choices": [
+        "65",
+        "63",
+        "130",
+        "66"
+      ],
+      "answerIndex": 3,
+      "solution": "Combined = (20·60 + 30·70)/50 = (1200 + 2100)/50 = 66. NOT the simple 65 — the bigger class pulls the mean toward its own. Weighted, not averaged.",
+      "checkExpr": "(20*60+30*70)/50",
+      "translations": {
+        "hi": {
+          "stem": "20 का एक वर्ग 60 माध्य पाता है। 30 का दूसरा वर्ग 70 माध्य पाता है। सभी 50 का संयुक्त माध्य कितना?",
+          "choices": [
+            "65",
+            "63",
+            "130",
+            "66"
+          ],
+          "solution": "संयुक्त = (20·60 + 30·70)/50 = (1200 + 2100)/50 = 66। सरल 65 नहीं — बड़ा वर्ग माध्य को अपनी ओर खींचता है। भारित, न कि सादा औसत।"
+        },
+        "mr": {
+          "stem": "20 चा एक वर्ग 60 मध्य मिळवतो. 30 चा दुसरा वर्ग 70 मध्य मिळवतो. सर्व 50 चा एकत्रित मध्य किती?",
+          "choices": [
+            "65",
+            "63",
+            "130",
+            "66"
+          ],
+          "solution": "एकत्रित = (20·60 + 30·70)/50 = (1200 + 2100)/50 = 66. साधे 65 नाही — मोठा वर्ग मध्याला आपल्याकडे ओढतो. भारित, साधी सरासरी नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two datasets have the same mean 50 but data A is {50,50,50} and data B is {10,50,90}. Which is more spread out — give B's range.",
+      "choices": [
+        "50",
+        "100",
+        "80",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "B's range = 90 − 10 = 80, while A's is 0. Same mean, wildly different spread — which is exactly why an average alone never tells the whole story. You must also ask how scattered the data is.",
+      "checkExpr": "90-10",
+      "translations": {
+        "hi": {
+          "stem": "दो आँकड़ा-समूहों का माध्य समान 50 है पर A = {50,50,50} और B = {10,50,90}। किसमें ज़्यादा फैलाव — B का परिसर बताइए।",
+          "choices": [
+            "50",
+            "100",
+            "80",
+            "0"
+          ],
+          "solution": "B का परिसर = 90 − 10 = 80, जबकि A का 0। समान माध्य, बेहद अलग फैलाव — इसीलिए अकेला औसत पूरी कहानी नहीं कहता। यह भी पूछना होगा कि आँकड़े कितने बिखरे हैं।"
+        },
+        "mr": {
+          "stem": "दोन सामग्री-संचांचा मध्य समान 50 पण A = {50,50,50} आणि B = {10,50,90}. कशात जास्त पसरण — B ची व्याप्ती द्या.",
+          "choices": [
+            "50",
+            "100",
+            "80",
+            "0"
+          ],
+          "solution": "B ची व्याप्ती = 90 − 10 = 80, तर A ची 0. समान मध्य, अत्यंत वेगळी पसरण — म्हणूनच एकटी सरासरी अख्खी कथा सांगत नाही. सामग्री किती विखुरली हेही विचारावे."
+        }
+      }
+    }
+  ]
+}
