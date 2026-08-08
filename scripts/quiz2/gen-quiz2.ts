@@ -27,6 +27,7 @@ import { G6_CIVICS } from "./g6-civics";
 import { G7_MATHS } from "./g7-maths";
 import { G7_SCIENCE } from "./g7-science";
 import { G7_GEOGRAPHY } from "./g7-geography";
+import { G7_HISTORY } from "./g7-history";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -44,6 +45,7 @@ function main() {
     ...G6_CIVICS.map(generateChapter),
     ...G7_SCIENCE.map(generateChapter),
     ...G7_GEOGRAPHY.map(generateChapter),
+    ...G7_HISTORY.map(generateChapter),
     ...G3_MATHS,
     ...G4_MATHS,
     ...G5_MATHS,
