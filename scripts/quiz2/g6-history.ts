@@ -43,11 +43,6 @@ export const G6_HISTORY: Chapter[] = [
     position: 1,
     source: SOURCE,
     licence: LICENCE,
-    tag: {
-      en: "the story of how we study the past",
-      hi: "अतीत को जानने की कहानी",
-      mr: "भूतकाळ अभ्यासण्याची कहाणी",
-    },
     facts: [
       {
         id: "manuscripts",
@@ -510,11 +505,6 @@ export const G6_HISTORY: Chapter[] = [
     position: 7,
     source: SOURCE,
     licence: LICENCE,
-    tag: {
-      en: "the story of the Mauryas",
-      hi: "मौर्यों की कहानी",
-      mr: "मौर्यांची कहाणी",
-    },
     facts: [
       {
         id: "chandragupta",

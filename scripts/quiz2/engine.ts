@@ -50,6 +50,12 @@ export type Fact = {
   pair?: { left: L; right: L };
   /** Position in the chapter's ordering, where ordering is meaningful. */
   seq?: number;
+  /**
+   * Extra plausible wrong names for thin kinds — a chapter with only two
+   * people still needs four convincing options, and "a rock, a river and the
+   * right answer" is not a question. Decoys never become correct answers.
+   */
+  decoys?: L[];
 };
 
 export type HardQuestion = {
@@ -72,9 +78,6 @@ export type Chapter = {
   position: number;
   source: string;
   licence: string;
-  /** Short chapter tag woven into generic stems so no two chapters collide. */
-  tag: L;
-  /** What the ordering means, e.g. "in this chapter's story" — L5 phrasing. */
   facts: Fact[];
   hard: HardQuestion[];
 };
@@ -106,7 +109,6 @@ export type TopicFileOut = {
   questions: OutQuestion[];
 };
 
-const MIN_QUESTIONS = 50;
 const LANGS = ["en", "hi", "mr"] as const;
 
 /**
@@ -146,6 +148,19 @@ function distractors(all: Fact[], self: Fact, n: number, rand: () => number): Fa
   return pool.slice(0, n);
 }
 
+/**
+ * Wrong NAMES for a name-answer question: same-kind siblings first, then the
+ * fact's own decoys, then anything left — so the options a child weighs are
+ * the ones genuinely confusable with the answer.
+ */
+function wrongNames(all: Fact[], self: Fact, n: number, rand: () => number): L[] {
+  const sameKind = all.filter((f) => f.id !== self.id && f.kind === self.kind).map((f) => f.name);
+  const decoys = self.decoys ?? [];
+  const rest = all.filter((f) => f.id !== self.id && f.kind !== self.kind).map((f) => f.name);
+  const pool = [...shuffled(sameKind, rand), ...shuffled(decoys, rand), ...shuffled(rest, rand)];
+  return pool.slice(0, n);
+}
+
 /** Compose one output question from L10n parts, options shuffled once for all languages. */
 function compose(
   level: number,
@@ -181,68 +196,66 @@ export function generateChapter(chapter: Chapter): TopicFileOut {
   const { facts } = chapter;
   const questions: OutQuestion[] = [];
 
-  /* L1 — every fact's own recall prompt. */
-  for (const fact of facts) {
-    const wrong = distractors(facts, fact, 3, rand);
-    questions.push(
-      compose(
-        1,
-        fact.prompt,
-        [
-          { text: fact.name, correct: true },
-          ...wrong.map((w) => ({ text: w.name, correct: false })),
-        ],
-        because(fact),
-        rand,
-      ),
-    );
-  }
-
-  /* L2 — which statement about X is correct? Truth from the row, lies from siblings. */
-  for (const fact of facts) {
-    const wrong = distractors(facts, fact, 3, rand);
-    const stem: L = {
-      en: `Which of these statements about ${fact.name.en} is correct?`,
-      hi: `${fact.name.hi} के बारे में इनमें से कौन-सा कथन सही है?`,
-      mr: `${fact.name.mr} विषयी यांपैकी कोणते विधान बरोबर आहे?`,
-    };
-    questions.push(
-      compose(
-        2,
-        stem,
-        [
-          { text: fact.statement, correct: true },
-          ...wrong.map((w) => ({ text: w.statement, correct: false })),
-        ],
-        because(fact),
-        rand,
-      ),
-    );
-  }
-
-  /* L3 — description → name. Uses `detail` when present so the sentence a child
-     saw as an L2 option is not simply re-asked. */
-  for (const fact of facts) {
-    const description = fact.detail ?? fact.statement;
-    const wrong = distractors(facts, fact, 3, rand);
-    const stem: L = {
-      en: `"${description.en}" — which of these is this about?`,
-      hi: `"${description.hi}" — यह इनमें से किसके बारे में है?`,
-      mr: `"${description.mr}" — हे यांपैकी कोणाविषयी आहे?`,
-    };
-    questions.push(
-      compose(
-        3,
-        stem,
-        [
-          { text: fact.name, correct: true },
-          ...wrong.map((w) => ({ text: w.name, correct: false })),
-        ],
-        because(fact),
-        rand,
-      ),
-    );
-  }
+  /* L1/L2/L3 — EACH FACT IS ASKED EXACTLY ONE WAY. Generating all three forms
+     from every fact made a chapter re-ask itself in different clothes; the
+     rotation below sends each fact to one of recall (its own prompt),
+     understanding (spot the true statement) or application (description to
+     name), so no piece of knowledge appears twice at the lower rungs. */
+  facts.forEach((fact, index) => {
+    const form = index % 3;
+    if (form === 0) {
+      questions.push(
+        compose(
+          1,
+          fact.prompt,
+          [
+            { text: fact.name, correct: true },
+            ...wrongNames(facts, fact, 3, rand).map((w) => ({ text: w, correct: false })),
+          ],
+          because(fact),
+          rand,
+        ),
+      );
+    } else if (form === 1) {
+      const wrong = distractors(facts, fact, 3, rand);
+      const stem: L = {
+        en: `Which of these statements about ${fact.name.en} is correct?`,
+        hi: `${fact.name.hi} के बारे में इनमें से कौन-सा कथन सही है?`,
+        mr: `${fact.name.mr} विषयी यांपैकी कोणते विधान बरोबर आहे?`,
+      };
+      questions.push(
+        compose(
+          2,
+          stem,
+          [
+            { text: fact.statement, correct: true },
+            ...wrong.map((w) => ({ text: w.statement, correct: false })),
+          ],
+          because(fact),
+          rand,
+        ),
+      );
+    } else {
+      const description = fact.detail ?? fact.statement;
+      const stem: L = {
+        en: `"${description.en}" — which of these is this about?`,
+        hi: `"${description.hi}" — यह इनमें से किसके बारे में है?`,
+        mr: `"${description.mr}" — हे यांपैकी कोणाविषयी आहे?`,
+      };
+      questions.push(
+        compose(
+          3,
+          stem,
+          [
+            { text: fact.name, correct: true },
+            ...wrongNames(facts, fact, 3, rand).map((w) => ({ text: w, correct: false })),
+          ],
+          because(fact),
+          rand,
+        ),
+      );
+    }
+  });
 
   /* L4 — the association test: the stem names the entity, the options offer
      four right-hand sides from the chapter's own pairs, one of which belongs.
@@ -254,9 +267,9 @@ export function generateChapter(chapter: Chapter): TopicFileOut {
     const others = shuffled(paired.filter((f) => f.id !== fact.id), rand).slice(0, 3);
     if (others.length < 3) break;
     const stem: L = {
-      en: `In ${chapter.tag.en}, "${fact.pair!.left.en}" goes correctly with which of these?`,
-      hi: `${chapter.tag.hi} में, "${fact.pair!.left.hi}" का सही मेल इनमें से किससे है?`,
-      mr: `${chapter.tag.mr} मध्ये, "${fact.pair!.left.mr}" ची योग्य जोडी यांपैकी कोणाशी आहे?`,
+      en: `"${fact.pair!.left.en}" goes correctly with which of these?`,
+      hi: `"${fact.pair!.left.hi}" का सही मेल इनमें से किससे है?`,
+      mr: `"${fact.pair!.left.mr}" ची योग्य जोडी यांपैकी कोणाशी आहे?`,
     };
     questions.push(
       compose(
@@ -272,39 +285,46 @@ export function generateChapter(chapter: Chapter): TopicFileOut {
     );
   }
 
-  /* L5 — the chapter's own ordering: which came earliest? Several distinct
-     4-subsets, each asked once. */
+  /* L5 — the chapter's own ordering, asked at most twice and never as the
+     same question: once "which came earliest" over the opening four, once
+     "which came last" over the closing four. Sliding a window one step at a
+     time produced near-identical siblings; two ends of the story do not. */
   const ordered = facts.filter((f) => f.seq !== undefined).sort((a, b) => a.seq! - b.seq!);
   if (ordered.length >= 4) {
-    const rounds = Math.min(ordered.length - 3, 8);
-    for (let r = 0; r < rounds; r++) {
-      const window = ordered.slice(r, r + 4);
-      const earliest = window[0]!;
-      const stem: L = {
-        en: `In ${chapter.tag.en}, which of these came earliest: ${window
-          .map((w) => w.name.en)
-          .join(", ")}?`,
-        hi: `${chapter.tag.hi} में, इनमें से सबसे पहले कौन आया: ${window
-          .map((w) => w.name.hi)
-          .join(", ")}?`,
-        mr: `${chapter.tag.mr} मध्ये, यांपैकी सर्वांत आधी कोणते आले: ${window
-          .map((w) => w.name.mr)
-          .join(", ")}?`,
-      };
-      questions.push(
-        compose(
-          5,
-          stem,
-          window.map((w) => ({ text: w.name, correct: w === earliest })),
-          because(earliest),
-          rand,
-        ),
-      );
-    }
+    const first = ordered.slice(0, 4);
+    questions.push(
+      compose(
+        5,
+        {
+          en: `Which of these came earliest: ${first.map((w) => w.name.en).join(", ")}?`,
+          hi: `इनमें से सबसे पहले कौन आया: ${first.map((w) => w.name.hi).join(", ")}?`,
+          mr: `यांपैकी सर्वांत आधी कोणते आले: ${first.map((w) => w.name.mr).join(", ")}?`,
+        },
+        first.map((w) => ({ text: w.name, correct: w === first[0] })),
+        because(first[0]!),
+        rand,
+      ),
+    );
+    const last = ordered.slice(-4);
+    const latest = last[last.length - 1]!;
+    questions.push(
+      compose(
+        5,
+        {
+          en: `Which of these came last: ${last.map((w) => w.name.en).join(", ")}?`,
+          hi: `इनमें से सबसे बाद में कौन आया: ${last.map((w) => w.name.hi).join(", ")}?`,
+          mr: `यांपैकी सर्वांत शेवटी कोणते आले: ${last.map((w) => w.name.mr).join(", ")}?`,
+        },
+        last.map((w) => ({ text: w.name, correct: w === latest })),
+        because(latest),
+        rand,
+      ),
+    );
   }
 
-  /* L6 — generated EXCEPT for fully-attributed facts… */
-  for (const fact of facts.filter((f) => f.detail && f.extra)) {
+  /* L6 — generated EXCEPT for fully-attributed facts, at most four per
+     chapter so the form stays a surprise rather than a routine… */
+  for (const fact of facts.filter((f) => f.detail && f.extra).slice(0, 4)) {
     const foreign = distractors(facts, fact, 1, rand)[0];
     if (!foreign) continue;
     const stem: L = {
@@ -357,19 +377,16 @@ export function generateChapter(chapter: Chapter): TopicFileOut {
     });
   }
 
-  /* The floor, enforced at the door of generation so an authoring gap names its
-     chapter here rather than failing verify later. */
+  /* The bar is COVERAGE, not a count: every level present, enforced at the
+     door of generation so an authoring gap names its chapter here rather than
+     failing verify later. How many questions a chapter carries follows from
+     how much the chapter actually holds. */
   const byLevel = new Map<number, number>();
   for (const q of questions) byLevel.set(q.difficulty, (byLevel.get(q.difficulty) ?? 0) + 1);
   for (let l = 1; l <= 6; l++) {
     if (!byLevel.get(l)) {
       throw new Error(`${chapter.slug}: generated nothing at level ${l} — add facts or hard questions`);
     }
-  }
-  if (questions.length < MIN_QUESTIONS) {
-    throw new Error(
-      `${chapter.slug}: generated ${questions.length} questions — the floor is ${MIN_QUESTIONS}. Add facts (each adds 3+ questions) or hard questions.`,
-    );
   }
 
   for (const lang of LANGS) void lang; // (languages are woven in above; nothing to do per-language here)

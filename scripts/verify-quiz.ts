@@ -77,13 +77,13 @@ type TopicFile = {
 const LANGUAGES = new Set(["hi", "mr"]);
 
 /**
- * Every chapter owes at least this many questions, at every one of the six
- * levels. The nine files below predate the rule — the 2025 hand-authored G8
- * set, 11–12 questions each — and are grandfathered ONLY until the
- * refurbishment reaches Grade 8, when each is superseded by a full chapter
- * file and leaves this list. A new file can never join it.
+ * Every refurbished chapter must climb the whole six-level ladder — the COUNT
+ * of questions is deliberately not policed (a chapter carries what the
+ * chapter holds; padding to a quota is how repetitive questions happen). The
+ * nine files below predate the ladder rule — the 2025 hand-authored G8 set —
+ * and are grandfathered ONLY until the refurbishment reaches Grade 8. A new
+ * file can never join this list.
  */
-const MIN_QUESTIONS = 50;
 const LEGACY_SMALL = new Set([
   "civics-8-indian-constitution.json",
   "geography-8-resources.json",
@@ -324,13 +324,9 @@ function verifyTopic(file: string, topic: TopicFile) {
     }
   }
 
-  // The refurbishment's floor: a chapter card with a handful of questions is a
-  // card a child exhausts in one sitting, and a chapter missing a level is a
-  // ladder nobody can climb to the top of. Hard failures, legacy files aside.
+  // The refurbishment's bar: a chapter missing a level is a ladder nobody can
+  // climb to the top of. Hard failure, legacy files aside.
   if (!LEGACY_SMALL.has(file)) {
-    if (topic.questions.length < MIN_QUESTIONS) {
-      fail(where, `has ${topic.questions.length} questions — every chapter owes at least ${MIN_QUESTIONS}`);
-    }
     for (let l = 1; l <= MAX_LEVEL; l++) {
       if (!levelsPresent.has(l)) {
         fail(where, `has nothing at level ${l} — every chapter climbs the whole L1–L${MAX_LEVEL} ladder`);
