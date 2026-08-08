@@ -680,4 +680,279 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 3 — Water O' Water! (where water comes from, keeping it safe)   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-water-o-water",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 3 — Water O' Water!",
+      hi: "अध्याय 3 — पानी रे पानी!",
+      mr: "प्रकरण 3 — पाणी रे पाणी!",
+    },
+    name: {
+      en: "Water O' Water!",
+      hi: "पानी रे पानी!",
+      mr: "पाणी रे पाणी!",
+    },
+    summary: {
+      en: "Where our water comes from — rain, wells, pumps and rivers — and what makes it safe to drink.",
+      hi: "हमारा पानी कहाँ से आता है — बारिश, कुएँ, नल-पंप और नदियाँ — और उसे पीने लायक़ क्या बनाता है।",
+      mr: "आपले पाणी कुठून येते — पाऊस, विहिरी, पंप आणि नद्या — आणि ते पिण्यायोग्य कशाने होते.",
+    },
+    position: 3,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "rain",
+        name: { en: "Rain", hi: "बारिश", mr: "पाऊस" },
+        kind: "water-source",
+        seq: 1,
+        prompt: {
+          en: "Which water falls from the clouds and fills the ponds and rivers?",
+          hi: "कौन-सा पानी बादलों से गिरता है और तालाबों-नदियों को भर देता है?",
+          mr: "कोणते पाणी ढगांतून पडते आणि तळी-नद्या भरते?",
+        },
+        statement: {
+          en: "Rain falls from the clouds, and it is where the water in ponds, wells and rivers first comes from.",
+          hi: "बारिश बादलों से गिरती है, और तालाबों, कुओं और नदियों का पानी पहले-पहल वहीं से आता है।",
+          mr: "पाऊस ढगांतून पडतो, आणि तळी, विहिरी व नद्यांतले पाणी मुळात तिथूनच येते.",
+        },
+        detail: {
+          en: "Farmers wait for this water for their fields, and its first drops smell of wet earth.",
+          hi: "किसान अपने खेतों के लिए इसी पानी की राह देखते हैं, और इसकी पहली बूँदों से गीली मिट्टी की सोंधी महक उठती है।",
+          mr: "शेतकरी आपल्या शेतांसाठी याच पाण्याची वाट पाहतात, आणि याच्या पहिल्या थेंबांनी ओल्या मातीचा सुगंध दरवळतो.",
+        },
+        pair: {
+          left: { en: "Rain", hi: "बारिश", mr: "पाऊस" },
+          right: { en: "falls from clouds", hi: "बादलों से गिरती", mr: "ढगांतून पडतो" },
+        },
+      },
+      {
+        id: "well",
+        name: { en: "The well", hi: "कुआँ", mr: "विहीर" },
+        kind: "water-source",
+        prompt: {
+          en: "From which round, deep place do people pull up water with a rope and bucket?",
+          hi: "किस गोल, गहरी जगह से लोग रस्सी और बाल्टी से पानी खींचते हैं?",
+          mr: "कोणत्या गोल, खोल जागेतून लोक दोरी आणि बादलीने पाणी ओढतात?",
+        },
+        statement: {
+          en: "A well is a deep round hole reaching water under the ground, drawn up with a rope and bucket.",
+          hi: "कुआँ ज़मीन के नीचे के पानी तक पहुँचता गहरा गोल गड्ढा है, जिससे रस्सी-बाल्टी से पानी खींचा जाता है।",
+          mr: "विहीर म्हणजे जमिनीखालच्या पाण्यापर्यंत पोहोचणारा खोल गोल खड्डा; दोरी-बादलीने पाणी काढतात.",
+        },
+        detail: {
+          en: "Its low round wall keeps children safe and dirt out.",
+          hi: "इसकी नीची गोल मुँडेर बच्चों को गिरने से और गंदगी को अंदर जाने से रोकती है।",
+          mr: "तिचा ठेंगणा गोल कठडा मुलांना पडण्यापासून आणि घाणीला आत जाण्यापासून रोखतो.",
+        },
+        pair: {
+          left: { en: "The well", hi: "कुआँ", mr: "विहीर" },
+          right: { en: "rope and bucket", hi: "रस्सी और बाल्टी", mr: "दोरी आणि बादली" },
+        },
+      },
+      {
+        id: "handpump",
+        name: { en: "The hand pump", hi: "हैंडपंप", mr: "हातपंप" },
+        kind: "water-source",
+        prompt: {
+          en: "Which machine brings up underground water when you push its long handle up and down?",
+          hi: "कौन-सी मशीन लंबा हत्था ऊपर-नीचे चलाने पर ज़मीन के नीचे का पानी ऊपर लाती है?",
+          mr: "कोणते यंत्र लांब दांडा वर-खाली केल्यावर जमिनीखालचे पाणी वर आणते?",
+        },
+        statement: {
+          en: "The hand pump lifts underground water when its handle is worked up and down — no rope, no bucket.",
+          hi: "हैंडपंप हत्था ऊपर-नीचे चलाने पर भूजल ऊपर उठाता है — न रस्सी, न बाल्टी।",
+          mr: "हातपंप दांडा वर-खाली केल्यावर भूजल वर उचलतो — दोरी नाही, बादली नाही.",
+        },
+        pair: {
+          left: { en: "The hand pump", hi: "हैंडपंप", mr: "हातपंप" },
+          right: { en: "handle worked up and down", hi: "ऊपर-नीचे चलता हत्था", mr: "वर-खाली होणारा दांडा" },
+        },
+      },
+      {
+        id: "river",
+        name: { en: "The river", hi: "नदी", mr: "नदी" },
+        kind: "water-source",
+        seq: 2,
+        prompt: {
+          en: "Which water flows day and night from the mountains toward the sea?",
+          hi: "कौन-सा पानी पहाड़ों से समुद्र की ओर दिन-रात बहता रहता है?",
+          mr: "कोणते पाणी डोंगरांतून समुद्राकडे रात्रंदिवस वाहत असते?",
+        },
+        statement: {
+          en: "A river flows on and on from the hills toward the sea, and towns draw water from it on the way.",
+          hi: "नदी पहाड़ों से समुद्र की ओर बहती चली जाती है, और रास्ते के नगर उससे पानी लेते हैं।",
+          mr: "नदी डोंगरांतून समुद्राकडे वाहत राहते, आणि वाटेवरची गावे तिच्यातून पाणी घेतात.",
+        },
+        pair: {
+          left: { en: "The river", hi: "नदी", mr: "नदी" },
+          right: { en: "flows to the sea", hi: "समुद्र की ओर बहती", mr: "समुद्राकडे वाहते" },
+        },
+      },
+      {
+        id: "sea",
+        name: { en: "The sea", hi: "समुद्र", mr: "समुद्र" },
+        kind: "water-body",
+        seq: 3,
+        prompt: {
+          en: "Which huge water is so salty that nobody can drink it?",
+          hi: "कौन-सा विशाल पानी इतना खारा है कि कोई उसे पी नहीं सकता?",
+          mr: "कोणते अफाट पाणी इतके खारट आहे की कोणी ते पिऊ शकत नाही?",
+        },
+        statement: {
+          en: "The sea holds the most water of all, but it is salty — good for ships and fish, not for drinking.",
+          hi: "समुद्र में सबसे ज़्यादा पानी है, पर वह खारा है — जहाज़ों और मछलियों के लिए ठीक, पीने के लिए नहीं।",
+          mr: "समुद्रात सर्वांत जास्त पाणी आहे, पण ते खारट — जहाजे आणि माशांसाठी ठीक, पिण्यासाठी नाही.",
+        },
+      },
+      {
+        id: "pond",
+        name: { en: "The pond", hi: "तालाब", mr: "तळे" },
+        kind: "water-body",
+        prompt: {
+          en: "In which still water do buffaloes love to sit, and washermen wash clothes at the edge?",
+          hi: "किस ठहरे पानी में भैंसें बैठना पसंद करती हैं, और किनारे धोबी कपड़े धोते हैं?",
+          mr: "कोणत्या स्थिर पाण्यात म्हशींना बसायला आवडते, आणि काठावर परीट कपडे धुतात?",
+        },
+        statement: {
+          en: "A pond is still water where buffaloes cool off and clothes get washed — which is exactly why its water must not be drunk unboiled.",
+          hi: "तालाब ठहरा पानी है जहाँ भैंसें ठंडक पाती हैं और कपड़े धुलते हैं — ठीक इसीलिए उसका पानी बिना उबाले नहीं पीना चाहिए।",
+          mr: "तळे म्हणजे स्थिर पाणी — तिथे म्हशी गारवा घेतात आणि कपडे धुतले जातात — नेमके म्हणूनच त्याचे पाणी न उकळता पिऊ नये.",
+        },
+      },
+      {
+        id: "boiling",
+        name: { en: "Boiling", hi: "उबालना", mr: "उकळणे" },
+        kind: "making-safe",
+        prompt: {
+          en: "What do we do to water on the stove to kill its unseen germs before drinking?",
+          hi: "पीने से पहले पानी के अनदेखे कीटाणु मारने के लिए हम चूल्हे पर उसका क्या करते हैं?",
+          mr: "पिण्याआधी पाण्यातले न दिसणारे जंतू मारण्यासाठी आपण चुलीवर त्याचे काय करतो?",
+        },
+        statement: {
+          en: "Boiling water kills the germs we cannot see, making doubtful water safe to drink.",
+          hi: "पानी उबालने से वे कीटाणु मर जाते हैं जो दिखते नहीं — और संदेह वाला पानी पीने लायक़ बन जाता है।",
+          mr: "पाणी उकळल्याने न दिसणारे जंतू मरतात — आणि संशयास्पद पाणी पिण्यायोग्य होते.",
+        },
+        pair: {
+          left: { en: "Boiling", hi: "उबालना", mr: "उकळणे" },
+          right: { en: "kills germs", hi: "कीटाणु मारता है", mr: "जंतू मारते" },
+        },
+      },
+      {
+        id: "covering",
+        name: { en: "Covering the pot", hi: "बर्तन ढँकना", mr: "भांडे झाकणे" },
+        kind: "making-safe",
+        prompt: {
+          en: "What simple habit keeps dust and flies out of stored drinking water?",
+          hi: "कौन-सी सीधी-सी आदत रखे हुए पीने के पानी को धूल और मक्खियों से बचाती है?",
+          mr: "कोणती साधी सवय साठवलेल्या पिण्याच्या पाण्याला धूळ आणि माश्यांपासून वाचवते?",
+        },
+        statement: {
+          en: "Keeping the water pot covered, and lifting water only with a long-handled ladle, keeps dust, flies and unwashed hands out.",
+          hi: "पानी का बर्तन ढँककर रखना, और पानी केवल लंबी डंडी की कलछी से निकालना — धूल, मक्खियाँ और बिना धुले हाथ बाहर रहते हैं।",
+          mr: "पाण्याचे भांडे झाकून ठेवणे, आणि पाणी फक्त लांब दांड्याच्या ओगराळ्याने काढणे — धूळ, माश्या आणि न धुतलेले हात बाहेर राहतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put water's journey in order: (1) the river carries it, (2) rain falls on the hills, (3) it reaches the salty sea.",
+          hi: "पानी की यात्रा क्रम में रखें: (1) नदी उसे ले चलती है, (2) पहाड़ों पर बारिश गिरती है, (3) वह खारे समुद्र में पहुँचता है।",
+          mr: "पाण्याचा प्रवास क्रमाने लावा: (1) नदी ते वाहून नेते, (2) डोंगरांवर पाऊस पडतो, (3) ते खाऱ्या समुद्रात पोहोचते.",
+        },
+        choices: [
+          { en: "2 → 1 → 3", hi: "2 → 1 → 3", mr: "2 → 1 → 3" },
+          { en: "1 → 2 → 3", hi: "1 → 2 → 3", mr: "1 → 2 → 3" },
+          { en: "3 → 1 → 2", hi: "3 → 1 → 2", mr: "3 → 1 → 2" },
+          { en: "2 → 3 → 1", hi: "2 → 3 → 1", mr: "2 → 3 → 1" },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Rain falls on the hills first, rivers gather it and carry it down, and the sea is where the carrying ends. Every glass of river water is rain partway through this journey.",
+          hi: "पहले पहाड़ों पर बारिश गिरती है, नदियाँ उसे बटोरकर नीचे ले चलती हैं, और समुद्र पर ढुलाई ख़त्म होती है। नदी का हर गिलास पानी इसी यात्रा के बीच की बारिश है।",
+          mr: "आधी डोंगरांवर पाऊस पडतो, नद्या ते गोळा करून खाली नेतात, आणि समुद्रापाशी वाहून नेणे संपते. नदीच्या पाण्याचा प्रत्येक ग्लास म्हणजे या प्रवासाच्या मधली पावसाचीच धार.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "After the floods, the radio says: 'Drink only boiled water.' The hand-pump water LOOKS clear. Why does the warning still apply to it?",
+          hi: "बाढ़ के बाद रेडियो कहता है: 'केवल उबला पानी पिएँ।' हैंडपंप का पानी देखने में साफ़ है। चेतावनी फिर भी उस पर क्यों लागू होती है?",
+          mr: "पुरानंतर रेडिओ सांगतो: 'फक्त उकळलेले पाणी प्या.' हातपंपाचे पाणी दिसायला स्वच्छ आहे. तरीही इशारा त्याला का लागू होतो?",
+        },
+        choices: [
+          {
+            en: "Germs are too small to see — clear water can still carry them, and floods mix dirty water into the ground",
+            hi: "कीटाणु इतने छोटे हैं कि दिखते नहीं — साफ़ दिखता पानी भी उन्हें लिए हो सकता है, और बाढ़ गंदा पानी ज़मीन में मिला देती है",
+            mr: "जंतू इतके लहान की दिसत नाहीत — स्वच्छ दिसणारे पाणीही ते वाहून आणू शकते, आणि पूर घाण पाणी जमिनीत मिसळतो",
+          },
+          {
+            en: "Boiling makes water taste sweeter after floods",
+            hi: "उबालने से बाढ़ के बाद पानी मीठा लगता है",
+            mr: "उकळल्याने पुरानंतर पाणी गोड लागते",
+          },
+          {
+            en: "Hand pumps stop working during floods",
+            hi: "बाढ़ में हैंडपंप चलना बंद कर देते हैं",
+            mr: "पुरात हातपंप चालणे बंद होतात",
+          },
+          {
+            en: "The radio warning is only for river water",
+            hi: "रेडियो की चेतावनी केवल नदी के पानी के लिए है",
+            mr: "रेडिओचा इशारा फक्त नदीच्या पाण्यासाठी आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Clean-LOOKING is not clean: germs are invisible, and flood water seeps underground where pumps drink from. Boiling is the one kitchen tool that kills what the eye cannot check — which is why the warning names no colour and no smell, only the fire.",
+          hi: "साफ़ दिखना साफ़ होना नहीं है: कीटाणु अदृश्य हैं, और बाढ़ का पानी ज़मीन में रिसकर वहीं पहुँचता है जहाँ से पंप पीते हैं। उबालना रसोई का वही एक औज़ार है जो आँख से न जँचने वाले को मारता है — इसीलिए चेतावनी रंग या गंध का नहीं, केवल आग का नाम लेती है।",
+          mr: "स्वच्छ दिसणे म्हणजे स्वच्छ असणे नव्हे: जंतू अदृश्य असतात, आणि पुराचे पाणी जमिनीत झिरपून पंप जिथून पितात तिथे पोहोचते. उकळणे हेच स्वयंपाकघरातले एकमेव हत्यार जे डोळ्यांना न तपासता येणाऱ्याला मारते — म्हणूनच इशारा रंगाचे वा वासाचे नाही, फक्त विस्तवाचे नाव घेतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two pots of drinking water stand in a kitchen: one covered with a plate and served with a long ladle, one open and dipped into with hands. A week later the family with the open pot falls ill. What best explains it?",
+          hi: "रसोई में पीने के पानी के दो बर्तन हैं: एक थाली से ढँका, लंबी कलछी से; दूसरा खुला, हाथ डुबोकर। हफ़्ते भर बाद खुले बर्तन वाला परिवार बीमार पड़ता है। इसकी सबसे अच्छी व्याख्या क्या है?",
+          mr: "स्वयंपाकघरात पिण्याच्या पाण्याची दोन भांडी: एक ताटाने झाकलेले, लांब ओगराळ्याने; दुसरे उघडे, हात बुडवून. आठवड्याने उघड्या भांड्याचे कुटुंब आजारी पडते. याचे सर्वांत चांगले स्पष्टीकरण काय?",
+        },
+        choices: [
+          {
+            en: "Hands and open air carried germs into the uncovered water day after day",
+            hi: "हाथ और खुली हवा दिन-प्रतिदिन खुले पानी में कीटाणु पहुँचाते रहे",
+            mr: "हात आणि उघडी हवा रोजच्या रोज उघड्या पाण्यात जंतू नेत राहिले",
+          },
+          {
+            en: "Covered water becomes medicine over a week",
+            hi: "ढँका पानी हफ़्ते भर में दवा बन जाता है",
+            mr: "झाकलेले पाणी आठवड्यात औषध होते",
+          },
+          {
+            en: "The plate on the first pot made its water cold",
+            hi: "पहले बर्तन की थाली ने उसका पानी ठंडा कर दिया",
+            mr: "पहिल्या भांड्यावरील ताटाने त्याचे पाणी थंड केले",
+          },
+          {
+            en: "Illness had nothing to do with the water",
+            hi: "बीमारी का पानी से कोई संबंध ही नहीं था",
+            mr: "आजाराचा पाण्याशी संबंधच नव्हता",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two pots differ in exactly one habit, and the sickness followed the open one — the fair conclusion is that dipping hands and open air seeded germs all week. One changed thing, one changed result: that is how a fair test reads, even in a kitchen.",
+          hi: "दोनों बर्तनों में फ़र्क़ ठीक एक आदत का था, और बीमारी खुले वाले के पीछे आई — उचित निष्कर्ष यही कि डूबते हाथ और खुली हवा हफ़्ते भर कीटाणु बोते रहे। एक चीज़ बदली, एक नतीजा बदला: निष्पक्ष परख ऐसे ही पढ़ी जाती है, रसोई में भी।",
+          mr: "दोन भांड्यांत फरक नेमक्या एका सवयीचा, आणि आजार उघड्यामागे आला — रास्त निष्कर्ष हाच की बुडणारे हात आणि उघडी हवा आठवडाभर जंतू पेरत राहिली. एक गोष्ट बदलली, एक निकाल बदलला: नि:पक्ष चाचणी अशीच वाचतात, स्वयंपाकघरातही.",
+        },
+      },
+    ],
+  },
 ];
