@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 8 — Mapping Your Way",
+  "name": "Mapping Your Way",
+  "slug": "maths-5-mapping-your-way",
+  "summary": "Scales read both ways — maps into metres and metres into maps, routes compared leg by leg, and two maps that disagree about one street.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "नक़्शे से राह",
+      "summary": "दोनों दिशाओं में पढ़े पैमाने — नक़्शे से मीटर और मीटर से नक़्शा, हिस्से-हिस्से मिलाए रास्ते, और एक सड़क पर असहमत दो नक़्शे।"
+    },
+    "mr": {
+      "name": "नकाशाने वाट",
+      "summary": "दोन्ही दिशांनी वाचलेली प्रमाणे — नकाशातून मीटर आणि मीटरांतून नकाशा, टप्प्याटप्प्याने ताडलेल्या वाटा, आणि एका रस्त्यावर असहमत दोन नकाशे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A city map's scale says 1 cm = 200 m. A road measures 3 cm on the map. How long is the real road?",
+      "choices": [
+        "203 m",
+        "600 m",
+        "6000 m",
+        "60 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Each map-centimetre hides 200 real metres: 3 × 200 = 600 m. 203 adds the scale to the measurement; scales multiply.",
+      "checkExpr": "3*200",
+      "translations": {
+        "hi": {
+          "stem": "शहर के नक़्शे का पैमाना है 1 सेमी = 200 मीटर। एक सड़क नक़्शे पर 3 सेमी है। असली सड़क कितनी लंबी है?",
+          "choices": [
+            "203 मीटर",
+            "600 मीटर",
+            "6000 मीटर",
+            "60 मीटर"
+          ],
+          "solution": "नक़्शे का हर सेंटीमीटर 200 असली मीटर छिपाए है: 3 × 200 = 600 मीटर। 203 पैमाने को नाप में जोड़ देता है; पैमाने गुणा करते हैं।"
+        },
+        "mr": {
+          "stem": "शहराच्या नकाशाचे प्रमाण 1 सेमी = 200 मीटर. एक रस्ता नकाशावर 3 सेमी भरतो. खरा रस्ता किती लांब?",
+          "choices": [
+            "203 मीटर",
+            "600 मीटर",
+            "6000 मीटर",
+            "60 मीटर"
+          ],
+          "solution": "नकाशाचा प्रत्येक सेंटिमीटर 200 खरे मीटर लपवतो: 3 × 200 = 600 मीटर. 203 प्रमाण मापात मिळवते; प्रमाणे गुणतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "On the school-fair map, 1 cm stands for 50 m. The gate to the food stall is 5 cm. How far is the walk really?",
+      "choices": [
+        "250 m",
+        "55 m",
+        "500 m",
+        "25 m"
+      ],
+      "answerIndex": 0,
+      "solution": "5 map-centimetres of 50 m each: 5 × 50 = 250 m. 500 doubles the scale on the way; 55 adds instead of multiplying.",
+      "checkExpr": "5*50",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल-मेले के नक़्शे पर 1 सेमी = 50 मीटर। फाटक से खाने के स्टॉल तक 5 सेमी है। असल में कितना चलना होगा?",
+          "choices": [
+            "250 मीटर",
+            "55 मीटर",
+            "500 मीटर",
+            "25 मीटर"
+          ],
+          "solution": "50-50 मीटर के 5 नक़्शा-सेंटीमीटर: 5 × 50 = 250 मीटर। 500 रास्ते में पैमाना दुगना कर देता है; 55 गुणा की जगह जोड़ता है।"
+        },
+        "mr": {
+          "stem": "शाळा-जत्रेच्या नकाशावर 1 सेमी = 50 मीटर. फाटकापासून खाऊच्या स्टॉलपर्यंत 5 सेमी आहे. खरे किती चालावे लागेल?",
+          "choices": [
+            "250 मीटर",
+            "55 मीटर",
+            "500 मीटर",
+            "25 मीटर"
+          ],
+          "solution": "50-50 मीटरचे 5 नकाशा-सेंटिमीटर: 5 × 50 = 250 मीटर. 500 वाटेत प्रमाण दुप्पट करते; 55 गुणण्याऐवजी मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The map's grid squares are each 100 m across. The park stretches over 3 whole squares. How wide is the park?",
+      "choices": [
+        "103 m",
+        "300 m",
+        "3 m",
+        "30 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Three squares of 100 m: 100 × 3 = 300 m. 3 reads the squares and forgets they carry metres.",
+      "checkExpr": "100*3",
+      "translations": {
+        "hi": {
+          "stem": "नक़्शे के जाल का हर ख़ाना 100 मीटर का है। पार्क 3 पूरे ख़ानों में फैला है। पार्क कितना चौड़ा है?",
+          "choices": [
+            "103 मीटर",
+            "300 मीटर",
+            "3 मीटर",
+            "30 मीटर"
+          ],
+          "solution": "100-100 मीटर के तीन ख़ाने: 100 × 3 = 300 मीटर। 3 ख़ाने पढ़ता है और भूल जाता है कि वे मीटर ढोते हैं।"
+        },
+        "mr": {
+          "stem": "नकाशाच्या जाळीची प्रत्येक चौकट 100 मीटरची आहे. बाग 3 पूर्ण चौकटींत पसरली आहे. बाग किती रुंद?",
+          "choices": [
+            "103 मीटर",
+            "300 मीटर",
+            "3 मीटर",
+            "30 मीटर"
+          ],
+          "solution": "100-100 मीटरच्या तीन चौकटी: 100 × 3 = 300 मीटर. 3 चौकटी वाचते आणि त्या मीटर वाहतात हे विसरते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The temple is really 800 m from the well. At a scale of 1 cm = 200 m, how far apart do they sit on the map?",
+      "choices": [
+        "8 cm",
+        "4 cm",
+        "400 cm",
+        "2 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "This time the world shrinks INTO the map: 800 ÷ 200 = 4 cm. 400 multiplies the wrong way and draws a map bigger than the town.",
+      "checkExpr": "800/200",
+      "translations": {
+        "hi": {
+          "stem": "मंदिर कुएँ से असल में 800 मीटर दूर है। 1 सेमी = 200 मीटर के पैमाने पर नक़्शे में वे कितनी दूर होंगे?",
+          "choices": [
+            "8 सेमी",
+            "4 सेमी",
+            "400 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "इस बार दुनिया नक़्शे में सिकुड़ती है: 800 ÷ 200 = 4 सेमी। 400 उलटी दिशा में गुणा करके शहर से बड़ा नक़्शा खींच देता है।"
+        },
+        "mr": {
+          "stem": "देऊळ विहिरीपासून खरे 800 मीटर दूर आहे. 1 सेमी = 200 मीटर प्रमाणावर नकाशात ती किती दूर असतील?",
+          "choices": [
+            "8 सेमी",
+            "4 सेमी",
+            "400 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "या वेळी जग नकाशात आकसते: 800 ÷ 200 = 4 सेमी. 400 उलट्या दिशेने गुणून गावाहून मोठा नकाशा काढते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A wall map is 25 cm wide, drawn at 1 cm = 2 km. How many kilometres of country does it span?",
+      "choices": [
+        "50 km",
+        "125 km",
+        "27 km",
+        "12 km"
+      ],
+      "answerIndex": 0,
+      "solution": "25 map-centimetres of 2 km each: 25 × 2 = 50 km on one sheet of paper. 27 adds the scale; 12 halves instead of doubling.",
+      "checkExpr": "25*2",
+      "translations": {
+        "hi": {
+          "stem": "दीवार का नक़्शा 25 सेमी चौड़ा है, पैमाना 1 सेमी = 2 किमी। वह कितने किलोमीटर का इलाक़ा समेटता है?",
+          "choices": [
+            "50 किमी",
+            "125 किमी",
+            "27 किमी",
+            "12 किमी"
+          ],
+          "solution": "2-2 किमी के 25 नक़्शा-सेंटीमीटर: 25 × 2 = 50 किमी, एक ही काग़ज़ पर। 27 पैमाना जोड़ता है; 12 दुगने की जगह आधा करता है।"
+        },
+        "mr": {
+          "stem": "भिंतीवरचा नकाशा 25 सेमी रुंद आहे, प्रमाण 1 सेमी = 2 किमी. तो किती किलोमीटरचा मुलूख सामावतो?",
+          "choices": [
+            "50 किमी",
+            "125 किमी",
+            "27 किमी",
+            "12 किमी"
+          ],
+          "solution": "2-2 किमीचे 25 नकाशा-सेंटिमीटर: 25 × 2 = 50 किमी, एकाच कागदावर. 27 प्रमाण मिळवते; 12 दुप्पट करण्याऐवजी अर्धे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "To the market you may take the straight road of 900 m, or the lanes — four turnings of 300 m each. How much LONGER are the lanes?",
+      "choices": [
+        "1200 m",
+        "300 m",
+        "900 m",
+        "600 m"
+      ],
+      "answerIndex": 1,
+      "solution": "The lanes total 4 × 300 = 1200 m, and 1200 − 900 = 300 m longer. 1200 is the lanes' own length, not the extra the question asked for.",
+      "checkExpr": "4*300-900",
+      "translations": {
+        "hi": {
+          "stem": "बाज़ार तक 900 मीटर की सीधी सड़क है, या गलियाँ — 300-300 मीटर के चार मोड़। गलियाँ कितनी लंबी ज़्यादा हैं?",
+          "choices": [
+            "1200 मीटर",
+            "300 मीटर",
+            "900 मीटर",
+            "600 मीटर"
+          ],
+          "solution": "गलियाँ कुल 4 × 300 = 1200 मीटर, और 1200 − 900 = 300 मीटर ज़्यादा। 1200 गलियों की अपनी लंबाई है, वह अतिरिक्त नहीं जो पूछा गया।"
+        },
+        "mr": {
+          "stem": "बाजारापर्यंत 900 मीटरचा सरळ रस्ता आहे, किंवा गल्ल्या — 300-300 मीटरची चार वळणे. गल्ल्या किती जास्त लांब?",
+          "choices": [
+            "1200 मीटर",
+            "300 मीटर",
+            "900 मीटर",
+            "600 मीटर"
+          ],
+          "solution": "गल्ल्या एकूण 4 × 300 = 1200 मीटर, आणि 1200 − 900 = 300 मीटर जास्त. 1200 ही गल्ल्यांची स्वतःची लांबी, विचारलेले जास्तीचे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A classroom 8 m long is drawn on a plan at 1 cm = 2 m. How long is the classroom in the drawing?",
+      "choices": [
+        "16 cm",
+        "6 cm",
+        "4 cm",
+        "2 cm"
+      ],
+      "answerIndex": 2,
+      "solution": "Every 2 real metres folds into 1 drawn centimetre: 8 ÷ 2 = 4 cm. 16 multiplies outward — that direction is for reading maps, not making them.",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "8 मीटर लंबी कक्षा 1 सेमी = 2 मीटर के पैमाने पर नक़्शे में बनाई गई। चित्र में कक्षा कितनी लंबी होगी?",
+          "choices": [
+            "16 सेमी",
+            "6 सेमी",
+            "4 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "हर 2 असली मीटर 1 चित्र-सेंटीमीटर में सिमटते हैं: 8 ÷ 2 = 4 सेमी। 16 बाहर की ओर गुणा करता है — वह दिशा नक़्शा पढ़ने की है, बनाने की नहीं।"
+        },
+        "mr": {
+          "stem": "8 मीटर लांब वर्ग 1 सेमी = 2 मीटर प्रमाणावर आराखड्यात काढला. चित्रात वर्ग किती लांब असेल?",
+          "choices": [
+            "16 सेमी",
+            "6 सेमी",
+            "4 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "प्रत्येक 2 खरे मीटर 1 चित्र-सेंटिमीटरमध्ये मावतात: 8 ÷ 2 = 4 सेमी. 16 बाहेरच्या दिशेने गुणते — ती दिशा नकाशा वाचण्याची, बनवण्याची नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "From home Neha walks 400 m north to the post office, then 300 m east to the library. How far has she WALKED in all?",
+      "choices": [
+        "500 m",
+        "700 m",
+        "1200 m",
+        "100 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Feet count every metre stepped: 400 + 300 = 700 m. 500 is the bird's straight-line distance home-to-library — a fine answer to a different question; 100 subtracts the legs.",
+      "checkExpr": "400+300",
+      "translations": {
+        "hi": {
+          "stem": "घर से नेहा 400 मीटर उत्तर डाकघर तक चलती है, फिर 300 मीटर पूर्व पुस्तकालय तक। उसने कुल कितना चला?",
+          "choices": [
+            "500 मीटर",
+            "700 मीटर",
+            "1200 मीटर",
+            "100 मीटर"
+          ],
+          "solution": "पैर हर चला मीटर गिनते हैं: 400 + 300 = 700 मीटर। 500 घर-से-पुस्तकालय की चिड़िया वाली सीधी दूरी है — दूसरे सवाल का बढ़िया उत्तर; 100 दोनों हिस्सों को घटा देता है।"
+        },
+        "mr": {
+          "stem": "घरून नेहा 400 मीटर उत्तरेस पोस्ट ऑफिसपर्यंत चालते, मग 300 मीटर पूर्वेस वाचनालयापर्यंत. ती एकूण किती चालली?",
+          "choices": [
+            "500 मीटर",
+            "700 मीटर",
+            "1200 मीटर",
+            "100 मीटर"
+          ],
+          "solution": "पाय चाललेला प्रत्येक मीटर मोजतात: 400 + 300 = 700 मीटर. 500 हे घर-ते-वाचनालय पक्ष्याचे सरळ अंतर — वेगळ्या प्रश्नाचे छान उत्तर; 100 दोन्ही भाग वजा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A treasure map says: 20 paces east, 20 paces east again, then 10 paces back west. How many paces from the start does the treasure lie?",
+      "choices": [
+        "10",
+        "30",
+        "50",
+        "40"
+      ],
+      "answerIndex": 1,
+      "solution": "East gathers 20 + 20 = 40 paces; the westward 10 walks part of it back: 40 − 10 = 30 paces out. 50 adds all three as if every step went the same way — direction decides the sign.",
+      "checkExpr": "20+20-10",
+      "translations": {
+        "hi": {
+          "stem": "ख़ज़ाने का नक़्शा कहता है: 20 क़दम पूर्व, फिर 20 क़दम पूर्व, फिर 10 क़दम पश्चिम लौटिए। ख़ज़ाना शुरुआत से कितने क़दम दूर है?",
+          "choices": [
+            "10",
+            "30",
+            "50",
+            "40"
+          ],
+          "solution": "पूर्व में जमा हुए 20 + 20 = 40 क़दम; पश्चिम के 10 उनमें से लौटा देते हैं: 40 − 10 = 30 क़दम दूर। 50 तीनों को एक ही दिशा मानकर जोड़ता है — दिशा ही जोड़-घटाव तय करती है।"
+        },
+        "mr": {
+          "stem": "खजिन्याचा नकाशा सांगतो: 20 पावले पूर्वेस, पुन्हा 20 पावले पूर्वेस, मग 10 पावले पश्चिमेस परत. खजिना सुरुवातीपासून किती पावलांवर आहे?",
+          "choices": [
+            "10",
+            "30",
+            "50",
+            "40"
+          ],
+          "solution": "पूर्वेस जमली 20 + 20 = 40 पावले; पश्चिमेची 10 त्यांतली परत आणतात: 40 − 10 = 30 पावले दूर. 50 तिन्ही एकाच दिशेची समजून मिळवते — दिशाच बेरीज-वजाबाकी ठरवते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The morning round: school to market 600 m, market to temple 900 m, temple back to school 500 m. How long is the whole round?",
+      "choices": [
+        "1000 m",
+        "2000 m",
+        "1500 m",
+        "2100 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Add the three legs: 600 + 900 + 500 = 2000 m — a full 2 km before breakfast. 1500 forgets the walk home closes the loop.",
+      "checkExpr": "600+900+500",
+      "translations": {
+        "hi": {
+          "stem": "सुबह का चक्कर: स्कूल से बाज़ार 600 मीटर, बाज़ार से मंदिर 900 मीटर, मंदिर से स्कूल 500 मीटर। पूरा चक्कर कितना लंबा है?",
+          "choices": [
+            "1000 मीटर",
+            "2000 मीटर",
+            "1500 मीटर",
+            "2100 मीटर"
+          ],
+          "solution": "तीनों हिस्से जोड़िए: 600 + 900 + 500 = 2000 मीटर — नाश्ते से पहले पूरे 2 किमी। 1500 भूल जाता है कि घर-वापसी ही चक्कर पूरा करती है।"
+        },
+        "mr": {
+          "stem": "सकाळची फेरी: शाळा ते बाजार 600 मीटर, बाजार ते देऊळ 900 मीटर, देऊळ ते शाळा 500 मीटर. सगळी फेरी किती लांब?",
+          "choices": [
+            "1000 मीटर",
+            "2000 मीटर",
+            "1500 मीटर",
+            "2100 मीटर"
+          ],
+          "solution": "तिन्ही टप्पे मिळवा: 600 + 900 + 500 = 2000 मीटर — न्याहारीआधी पूर्ण 2 किमी. 1500 विसरते की परतीची वाटच फेरी पूर्ण करते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two maps show the same town. Map A's scale is 1 cm = 100 m; Map B's is 1 cm = 200 m. A street runs 8 cm on Map A. How many centimetres does the SAME street run on Map B?",
+      "choices": [
+        "16 cm",
+        "2 cm",
+        "4 cm",
+        "8 cm"
+      ],
+      "answerIndex": 2,
+      "solution": "First leave the paper: 8 cm × 100 = 800 real metres. Then enter Map B: 800 ÷ 200 = 4 cm. The street shrank on paper because each of B's centimetres swallows MORE ground — a bigger number in the scale means a smaller drawing, which is the trap 16 falls into.",
+      "checkExpr": "8*100/200",
+      "translations": {
+        "hi": {
+          "stem": "दो नक़्शे एक ही शहर दिखाते हैं। नक़्शा A का पैमाना 1 सेमी = 100 मीटर; नक़्शा B का 1 सेमी = 200 मीटर। एक सड़क नक़्शा A पर 8 सेमी है। वही सड़क नक़्शा B पर कितने सेंटीमीटर होगी?",
+          "choices": [
+            "16 सेमी",
+            "2 सेमी",
+            "4 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "पहले काग़ज़ से बाहर आइए: 8 सेमी × 100 = 800 असली मीटर। फिर नक़्शा B में जाइए: 800 ÷ 200 = 4 सेमी। सड़क काग़ज़ पर इसलिए सिकुड़ी कि B का हर सेंटीमीटर ज़्यादा ज़मीन निगलता है — पैमाने की बड़ी संख्या यानी छोटा चित्र; 16 इसी फंदे में गिरता है।"
+        },
+        "mr": {
+          "stem": "दोन नकाशे एकच गाव दाखवतात. नकाशा A चे प्रमाण 1 सेमी = 100 मीटर; नकाशा B चे 1 सेमी = 200 मीटर. एक रस्ता नकाशा A वर 8 सेमी आहे. तोच रस्ता नकाशा B वर किती सेंटिमीटर असेल?",
+          "choices": [
+            "16 सेमी",
+            "2 सेमी",
+            "4 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "आधी कागदाबाहेर या: 8 सेमी × 100 = 800 खरे मीटर. मग नकाशा B मध्ये जा: 800 ÷ 200 = 4 सेमी. रस्ता कागदावर आकसला कारण B चा प्रत्येक सेंटिमीटर जास्त जमीन गिळतो — प्रमाणातली मोठी संख्या म्हणजे लहान चित्र; 16 याच सापळ्यात पडते."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 9 — Boxes and Sketches",
+  "name": "Boxes and Sketches",
+  "slug": "maths-5-boxes-and-sketches",
+  "summary": "Cubes taken apart and put together — edges, corners and nets, dice pairs that make seven, and the painted cube's hidden heart.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "डिब्बे और रेखाचित्र",
+      "summary": "खुलते-जुड़ते घन — किनारे, कोने और जाल, सात बनाते पासे के जोड़े, और रँगे घन का छिपा हृदय।"
+    },
+    "mr": {
+      "name": "खोकी आणि रेखाटने",
+      "summary": "उलगडणारे-जुळणारे घन — कडा, कोपरे आणि जाळी, सात करणाऱ्या फाशाच्या जोड्या, आणि रंगवलेल्या घनाचे लपलेले हृदय."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Run a finger along every straight edge of a cube. How many edges do you count?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "A cube has 12 edges — 4 around the top, 4 around the bottom, 4 standing upright between them. 6 counts the faces and 8 the corners; edges are the third family.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "घन के हर सीधे किनारे पर उँगली फेरिए। कितने किनारे गिनेंगे?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "solution": "घन के 12 किनारे हैं — 4 ऊपर घेरे में, 4 नीचे, 4 बीच में खड़े। 6 फलक गिनता है और 8 कोने; किनारे तीसरा परिवार हैं।"
+        },
+        "mr": {
+          "stem": "घनाच्या प्रत्येक सरळ कडेवरून बोट फिरवा. किती कडा मोजाल?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "solution": "घनाला 12 कडा — 4 वर वेढ्यात, 4 खाली, 4 मध्ये उभ्या. 6 पृष्ठे मोजते आणि 8 कोपरे; कडा हे तिसरे कुटुंब."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many corners (vertices) does a cube have?",
+      "choices": [
+        "12",
+        "4",
+        "6",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Four corners on the top square, four on the bottom: 4 × 2 = 8. Hold a dice and touch them — thumbs find what counting forgets.",
+      "checkExpr": "4*2",
+      "translations": {
+        "hi": {
+          "stem": "घन के कितने कोने (शीर्ष) होते हैं?",
+          "choices": [
+            "12",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "ऊपर के वर्ग के चार कोने, नीचे के चार: 4 × 2 = 8। पासा थामकर छूइए — जो गिनती भूलती है, अँगूठे पा लेते हैं।"
+        },
+        "mr": {
+          "stem": "घनाला किती कोपरे (शिरोबिंदू) असतात?",
+          "choices": [
+            "12",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "वरच्या चौरसाचे चार कोपरे, खालचे चार: 4 × 2 = 8. फासा धरून शिवून पाहा — मोजणी विसरते ते अंगठे शोधतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A flat net that folds up into a closed cube must have how many squares?",
+      "choices": [
+        "6",
+        "8",
+        "4",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "One square per face, and a cube has 6 faces — so 6 squares, arranged so no two land on the same face when folded. 5 leaves a face open to the rain.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बंद घन में मुड़ने वाले चपटे जाल (नेट) में कितने वर्ग होने चाहिए?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "5"
+          ],
+          "solution": "हर फलक का एक वर्ग, और घन के 6 फलक — तो 6 वर्ग, ऐसे सजे कि मुड़ने पर दो एक ही फलक पर न गिरें। 5 एक फलक बारिश के लिए खुला छोड़ देता है।"
+        },
+        "mr": {
+          "stem": "बंद घनात दुमडणाऱ्या सपाट जाळ्यात (नेट) किती चौरस हवेत?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "5"
+          ],
+          "solution": "दर पृष्ठाला एक चौरस, आणि घनाला 6 पृष्ठे — म्हणून 6 चौरस, असे मांडलेले की दुमडल्यावर दोन एकाच पृष्ठावर पडू नयेत. 5 एक पृष्ठ पावसासाठी उघडे ठेवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An OPEN box — no lid — is to be folded from a net. How many squares does its net need?",
+      "choices": [
+        "8",
+        "5",
+        "4",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "A closed cube takes 6; leave off the lid and 6 − 1 = 5 squares remain — a floor and four walls. 4 forgets the floor and builds a tube.",
+      "checkExpr": "6-1",
+      "translations": {
+        "hi": {
+          "stem": "बिना ढक्कन का खुला डिब्बा जाल से मोड़ना है। उसके जाल में कितने वर्ग चाहिए?",
+          "choices": [
+            "8",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "बंद घन को 6 चाहिए; ढक्कन हटाइए तो 6 − 1 = 5 वर्ग — एक फ़र्श और चार दीवारें। 4 फ़र्श भूलकर नली बना देता है।"
+        },
+        "mr": {
+          "stem": "झाकण नसलेले उघडे खोके जाळ्यातून दुमडायचे आहे. त्याच्या जाळ्यात किती चौरस हवेत?",
+          "choices": [
+            "8",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "बंद घनाला 6 लागतात; झाकण वगळा की 6 − 1 = 5 चौरस — एक तळ आणि चार भिंती. 4 तळ विसरून नळी बांधते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Each face of a cube is to be painted a different colour, no colour repeated. How many colours are needed?",
+      "choices": [
+        "6",
+        "8",
+        "4",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "One colour per face and the faces come in 3 opposite pairs: 3 × 2 = 6 colours. 8 paints the corners, 12 the edges — the brush works on faces.",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "घन के हर फलक को अलग रंग से रँगना है, कोई रंग दोहराया नहीं जाएगा। कितने रंग चाहिए?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "12"
+          ],
+          "solution": "हर फलक एक रंग, और फलक 3 आमने-सामने जोड़ों में हैं: 3 × 2 = 6 रंग। 8 कोनों को रँगता है, 12 किनारों को — ब्रश फलकों पर चलता है।"
+        },
+        "mr": {
+          "stem": "घनाचे प्रत्येक पृष्ठ वेगळ्या रंगाने रंगवायचे आहे, कोणताही रंग पुन्हा नाही. किती रंग हवेत?",
+          "choices": [
+            "6",
+            "8",
+            "4",
+            "12"
+          ],
+          "solution": "दर पृष्ठाला एक रंग, आणि पृष्ठे 3 समोरासमोर जोड्यांत: 3 × 2 = 6 रंग. 8 कोपरे रंगवते, 12 कडा — ब्रश पृष्ठांवर चालतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cube's every edge is 5 cm. If you laid all its edges end to end, how long a line would they make?",
+      "choices": [
+        "30 cm",
+        "20 cm",
+        "60 cm",
+        "25 cm"
+      ],
+      "answerIndex": 2,
+      "solution": "Twelve edges of 5 cm: 12 × 5 = 60 cm. 20 takes only the four edges of one square face — a cube carries three such squares' worth of edges.",
+      "checkExpr": "12*5",
+      "translations": {
+        "hi": {
+          "stem": "घन का हर किनारा 5 सेमी का है। सारे किनारे सिरे-से-सिरा बिछा दें तो कितनी लंबी रेखा बनेगी?",
+          "choices": [
+            "30 सेमी",
+            "20 सेमी",
+            "60 सेमी",
+            "25 सेमी"
+          ],
+          "solution": "5-5 सेमी के बारह किनारे: 12 × 5 = 60 सेमी। 20 केवल एक वर्ग-फलक के चार किनारे लेता है — घन ऐसे तीन वर्गों जितने किनारे ढोता है।"
+        },
+        "mr": {
+          "stem": "घनाची प्रत्येक कड 5 सेमीची आहे. साऱ्या कडा टोकाला टोक जोडून मांडल्या तर किती लांब रेषा होईल?",
+          "choices": [
+            "30 सेमी",
+            "20 सेमी",
+            "60 सेमी",
+            "25 सेमी"
+          ],
+          "solution": "5-5 सेमीच्या बारा कडा: 12 × 5 = 60 सेमी. 20 फक्त एका चौरस-पृष्ठाच्या चार कडा घेते — घन अशा तीन चौरसांइतक्या कडा वाहतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "From one sheet of card Vandana cuts 2 nets, and each net folds into 1 box. How many boxes will 5 sheets give her?",
+      "choices": [
+        "5",
+        "25",
+        "10",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "Two boxes per sheet, five sheets: 2 × 5 = 10 boxes. 7 adds sheets to boxes; 25 squares the sheets.",
+      "checkExpr": "2*5",
+      "translations": {
+        "hi": {
+          "stem": "एक गत्ते से वंदना 2 जाल काटती है, और हर जाल 1 डिब्बा बनता है। 5 गत्तों से कितने डिब्बे मिलेंगे?",
+          "choices": [
+            "5",
+            "25",
+            "10",
+            "7"
+          ],
+          "solution": "हर गत्ते से दो डिब्बे, पाँच गत्ते: 2 × 5 = 10 डिब्बे। 7 गत्तों को डिब्बों में जोड़ता है; 25 गत्तों का वर्ग कर देता है।"
+        },
+        "mr": {
+          "stem": "एका पुठ्ठ्यातून वंदना 2 जाळी कापते, आणि प्रत्येक जाळे 1 खोके होते. 5 पुठ्ठ्यांतून किती खोकी मिळतील?",
+          "choices": [
+            "5",
+            "25",
+            "10",
+            "7"
+          ],
+          "solution": "दर पुठ्ठ्यामागे दोन खोकी, पाच पुठ्ठे: 2 × 5 = 10 खोकी. 7 पुठ्ठे खोक्यांत मिळवते; 25 पुठ्ठ्यांचा वर्ग करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Sugar cubes are stacked into a block: a floor of 3 by 3 cubes, built 2 layers high. How many cubes are in the block?",
+      "choices": [
+        "27",
+        "18",
+        "12",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "One layer holds 3 × 3 = 9 cubes, and 2 layers hold 9 × 2 = 18. 9 sees only the top layer the eye looks down on; 27 builds a third layer that is not there.",
+      "checkExpr": "3*3*2",
+      "translations": {
+        "hi": {
+          "stem": "चीनी के घन ब्लॉक में जमे हैं: 3 × 3 घनों का फ़र्श, 2 परत ऊँचा। ब्लॉक में कितने घन हैं?",
+          "choices": [
+            "27",
+            "18",
+            "12",
+            "9"
+          ],
+          "solution": "एक परत में 3 × 3 = 9 घन, और 2 परतों में 9 × 2 = 18। 9 केवल वह ऊपरी परत देखता है जिस पर नज़र पड़ती है; 27 वह तीसरी परत जोड़ देता है जो है ही नहीं।"
+        },
+        "mr": {
+          "stem": "साखरेचे घन ठोकळ्यात रचले आहेत: 3 × 3 घनांचा तळ, 2 थर उंच. ठोकळ्यात किती घन आहेत?",
+          "choices": [
+            "27",
+            "18",
+            "12",
+            "9"
+          ],
+          "solution": "एका थरात 3 × 3 = 9 घन, आणि 2 थरांत 9 × 2 = 18. 9 फक्त नजरेस पडणारा वरचा थर पाहते; 27 नसलेला तिसरा थर बांधते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "On a dice, opposite faces add to 7. The faces pair as 1-and-6, 2-and-5, and 3-and-which?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "7 − 3 = 4 — the last pair is 3-and-4. The three pairs 1·6, 2·5, 3·4 use each number once and each pair totals 7: a full dice checked in one breath.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "पासे पर आमने-सामने के फलक 7 जोड़ते हैं। जोड़े हैं 1-और-6, 2-और-5, और 3-और-कौन?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "7 − 3 = 4 — आख़िरी जोड़ा 3-और-4। तीनों जोड़े 1·6, 2·5, 3·4 हर अंक एक बार लेते हैं और हर जोड़ा 7 बनाता है: एक साँस में जाँचा पूरा पासा।"
+        },
+        "mr": {
+          "stem": "फाशावर समोरासमोरची पृष्ठे 7 जोडतात. जोड्या आहेत 1-आणि-6, 2-आणि-5, आणि 3-आणि-कोण?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "7 − 3 = 4 — शेवटची जोडी 3-आणि-4. तिन्ही जोड्या 1·6, 2·5, 3·4 प्रत्येक अंक एकदाच घेतात आणि प्रत्येक जोडी 7 करते: एका दमात तपासलेला अख्खा फासा."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "12 cubes are glued into one solid block, 2 cubes high and 2 cubes wide. How many cubes LONG is it?",
+      "choices": [
+        "6",
+        "4",
+        "3",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Height × width × length = 12, so length = 12 ÷ (2 × 2) = 3 cubes. 6 divides by 2 only once — the block is 2 both up AND across.",
+      "checkExpr": "12/(2*2)",
+      "translations": {
+        "hi": {
+          "stem": "12 घन एक ठोस ब्लॉक में जुड़े हैं — 2 घन ऊँचा, 2 घन चौड़ा। वह कितने घन लंबा है?",
+          "choices": [
+            "6",
+            "4",
+            "3",
+            "8"
+          ],
+          "solution": "ऊँचाई × चौड़ाई × लंबाई = 12, तो लंबाई = 12 ÷ (2 × 2) = 3 घन। 6 केवल एक बार 2 से भाग देता है — ब्लॉक ऊपर और आर-पार दोनों में 2 है।"
+        },
+        "mr": {
+          "stem": "12 घन एका भरीव ठोकळ्यात जोडले आहेत — 2 घन उंच, 2 घन रुंद. तो किती घन लांब आहे?",
+          "choices": [
+            "6",
+            "4",
+            "3",
+            "8"
+          ],
+          "solution": "उंची × रुंदी × लांबी = 12, म्हणून लांबी = 12 ÷ (2 × 2) = 3 घन. 6 फक्त एकदाच 2 ने भागते — ठोकळा वर आणि आडवा दोन्हींत 2 आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 3×3×3 cube is painted red all over, then cut into its 27 small cubes. How many small cubes have NO red on them at all?",
+      "choices": [
+        "0",
+        "6",
+        "8",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "Paint touches only the outside — and exactly one small cube never saw the outside: the one hidden at the very centre, a 1×1×1 core. The 8 corners got three faces each, the 6 face-middles got one; only the heart of the cube stayed bare.",
+      "checkExpr": "1*1*1",
+      "translations": {
+        "hi": {
+          "stem": "3×3×3 का घन चारों ओर से लाल रँगा गया, फिर उसके 27 छोटे घनों में काटा गया। कितने छोटे घनों पर बिलकुल भी लाल नहीं होगा?",
+          "choices": [
+            "0",
+            "6",
+            "8",
+            "1"
+          ],
+          "solution": "रंग केवल बाहर छूता है — और ठीक एक छोटे घन ने बाहर कभी देखा ही नहीं: बीचोबीच छिपा 1×1×1 का मर्म। 8 कोनों को तीन-तीन फलक मिले, 6 फलक-मध्यों को एक-एक; बिना रंग रहा तो केवल घन का हृदय।"
+        },
+        "mr": {
+          "stem": "3×3×3 चा घन सर्व बाजूंनी लाल रंगवला, मग त्याच्या 27 लहान घनांत कापला. किती लहान घनांवर अजिबात लाल नसेल?",
+          "choices": [
+            "0",
+            "6",
+            "8",
+            "1"
+          ],
+          "solution": "रंग फक्त बाहेरून लागतो — आणि नेमक्या एका लहान घनाने बाहेर कधी पाहिलेच नाही: अगदी मध्यभागी लपलेला 1×1×1 चा गाभा. 8 कोपऱ्यांना तीन-तीन पृष्ठे मिळाली, 6 पृष्ठ-मध्यांना एक-एक; रंगाविना राहिले ते फक्त घनाचे हृदय."
+        }
+      }
+    }
+  ]
+}

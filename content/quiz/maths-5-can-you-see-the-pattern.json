@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 7 — Can You See the Pattern?",
+  "name": "Can You See the Pattern?",
+  "slug": "maths-5-can-you-see-the-pattern",
+  "summary": "Patterns with reasons — growing gaps, magic squares, the nines' signature, palindromes, and the calendar square that averages to its centre.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "क्या आपको पैटर्न दिखता है?",
+      "summary": "कारण वाले पैटर्न — बढ़ते फ़ासले, जादुई वर्ग, नौ का हस्ताक्षर, पैलिंड्रोम, और वह कैलेंडर-वर्ग जिसका औसत उसका केंद्र है।"
+    },
+    "mr": {
+      "name": "तुम्हाला आकृतिबंध दिसतो का?",
+      "summary": "कारणांसह आकृतिबंध — वाढती अंतरे, जादूचे चौरस, नऊची सही, पॅलिंड्रोम, आणि केंद्रच सरासरी असलेला दिनदर्शिका-चौरस."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The doubling pattern goes 1, 2, 4, 8, … What comes next?",
+      "choices": [
+        "16",
+        "10",
+        "12",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "Each number doubles the last: 8 × 2 = 16. 12 adds 4 — the OLD gap; a doubling pattern's gaps double along with it.",
+      "checkExpr": "8*2",
+      "translations": {
+        "hi": {
+          "stem": "दुगना होता पैटर्न है 1, 2, 4, 8, … आगे क्या आएगा?",
+          "choices": [
+            "16",
+            "10",
+            "12",
+            "24"
+          ],
+          "solution": "हर संख्या पिछली की दुगनी: 8 × 2 = 16। 12 चार जोड़ता है — पुराना फ़ासला; दुगने पैटर्न के फ़ासले उसी के साथ दुगने होते हैं।"
+        },
+        "mr": {
+          "stem": "दुप्पट होणारा आकृतिबंध आहे 1, 2, 4, 8, … पुढे काय येईल?",
+          "choices": [
+            "16",
+            "10",
+            "12",
+            "24"
+          ],
+          "solution": "प्रत्येक संख्या मागचीच्या दुप्पट: 8 × 2 = 16. 12 चार मिळवते — जुने अंतर; दुप्पट आकृतिबंधाची अंतरे त्याच्यासोबत दुप्पट होतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The pattern climbs 25, 50, 75, … What comes next?",
+      "choices": [
+        "100",
+        "90",
+        "85",
+        "125"
+      ],
+      "answerIndex": 0,
+      "solution": "The step is 25: 75 + 25 = 100 — the pattern of quarter-rupees closing into a whole. 125 skips ahead one step.",
+      "checkExpr": "75+25",
+      "translations": {
+        "hi": {
+          "stem": "पैटर्न चढ़ता है 25, 50, 75, … आगे क्या?",
+          "choices": [
+            "100",
+            "90",
+            "85",
+            "125"
+          ],
+          "solution": "क़दम 25 का है: 75 + 25 = 100 — चवन्नियों का पूरा रुपया बनता पैटर्न। 125 एक क़दम आगे कूद जाता है।"
+        },
+        "mr": {
+          "stem": "आकृतिबंध चढतो 25, 50, 75, … पुढे काय?",
+          "choices": [
+            "100",
+            "90",
+            "85",
+            "125"
+          ],
+          "solution": "पाऊल 25 चे: 75 + 25 = 100 — पावल्यांचा पूर्ण रुपया होणारा आकृतिबंध. 125 एक पाऊल पुढे उडी मारते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The pattern goes 11, 22, 33, … What comes next?",
+      "choices": [
+        "44",
+        "55",
+        "34",
+        "43"
+      ],
+      "answerIndex": 0,
+      "solution": "Each step adds 11, twinning the digits: 33 + 11 = 44. 43 breaks the twins; 55 leaps a step.",
+      "checkExpr": "33+11",
+      "translations": {
+        "hi": {
+          "stem": "पैटर्न है 11, 22, 33, … आगे क्या?",
+          "choices": [
+            "44",
+            "55",
+            "34",
+            "43"
+          ],
+          "solution": "हर क़दम 11 जोड़ता है, अंकों के जुड़वाँ बनते हैं: 33 + 11 = 44। 43 जुड़वाँ तोड़ देता है; 55 एक क़दम लाँघता है।"
+        },
+        "mr": {
+          "stem": "आकृतिबंध आहे 11, 22, 33, … पुढे काय?",
+          "choices": [
+            "44",
+            "55",
+            "34",
+            "43"
+          ],
+          "solution": "प्रत्येक पाऊल 11 वाढवते, अंकांचे जुळे होतात: 33 + 11 = 44. 43 जुळे मोडते; 55 एक पाऊल ओलांडते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a magic square every row adds to 15. One row shows 2, 7, ▢. What hides in the box?",
+      "choices": [
+        "13",
+        "6",
+        "8",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The row must reach 15: 15 − 2 − 7 = 6, and indeed 2 + 7 + 6 = 15. 13 subtracts only the 2 — both known numbers have already taken their share.",
+      "checkExpr": "15-2-7",
+      "translations": {
+        "hi": {
+          "stem": "जादुई वर्ग में हर पंक्ति का योग 15 है। एक पंक्ति में 2, 7, ▢ है। डिब्बे में क्या छिपा है?",
+          "choices": [
+            "13",
+            "6",
+            "8",
+            "5"
+          ],
+          "solution": "पंक्ति को 15 चाहिए: 15 − 2 − 7 = 6, और सचमुच 2 + 7 + 6 = 15। 13 केवल 2 घटाता है — दोनों ज्ञात संख्याएँ अपना हिस्सा ले चुकी हैं।"
+        },
+        "mr": {
+          "stem": "जादूच्या चौरसात प्रत्येक ओळीची बेरीज 15. एका ओळीत 2, 7, ▢ आहे. चौकटीत काय लपले आहे?",
+          "choices": [
+            "13",
+            "6",
+            "8",
+            "5"
+          ],
+          "solution": "ओळीला 15 हवेत: 15 − 2 − 7 = 6, आणि खरेच 2 + 7 + 6 = 15. 13 फक्त 2 वजा करते — दोन्ही ठाऊक संख्यांनी आपला वाटा घेतला आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The triangle numbers grow 1, 3, 6, 10, … What comes next?",
+      "choices": [
+        "15",
+        "12",
+        "20",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "The gaps grow by one each time: +2, +3, +4, so next is +5: 10 + 5 = 15 — each number a triangle of dots one row taller. 14 adds 4 again, reusing the old gap.",
+      "checkExpr": "10+5",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज संख्याएँ बढ़ती हैं 1, 3, 6, 10, … आगे क्या?",
+          "choices": [
+            "15",
+            "12",
+            "20",
+            "14"
+          ],
+          "solution": "फ़ासले हर बार एक बढ़ते हैं: +2, +3, +4, तो अगला +5: 10 + 5 = 15 — हर संख्या एक पंक्ति ऊँचा बिंदुओं का त्रिभुज। 14 फिर 4 जोड़कर पुराना फ़ासला दोहराता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणी संख्या वाढतात 1, 3, 6, 10, … पुढे काय?",
+          "choices": [
+            "15",
+            "12",
+            "20",
+            "14"
+          ],
+          "solution": "अंतरे दर वेळी एकाने वाढतात: +2, +3, +4, म्हणून पुढचे +5: 10 + 5 = 15 — प्रत्येक संख्या एका ओळीने उंच ठिपक्यांचा त्रिकोण. 14 पुन्हा 4 मिळवून जुने अंतर वापरते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The elevens make pretty products. What is 11 × 11?",
+      "choices": [
+        "122",
+        "1111",
+        "121",
+        "111"
+      ],
+      "answerIndex": 2,
+      "solution": "11 × 11 = 121 — it reads the same forwards and backwards. The pattern continues: 111 × 111 = 12321, climbing up and down like a staircase.",
+      "checkExpr": "11*11",
+      "translations": {
+        "hi": {
+          "stem": "ग्यारह के गुणनफल सुंदर बनते हैं। 11 × 11 कितना है?",
+          "choices": [
+            "122",
+            "1111",
+            "121",
+            "111"
+          ],
+          "solution": "11 × 11 = 121 — सीधा-उलटा एक-सा पढ़ा जाता है। पैटर्न आगे चलता है: 111 × 111 = 12321 — सीढ़ी-सा चढ़ता-उतरता।"
+        },
+        "mr": {
+          "stem": "अकराचे गुणाकार सुंदर होतात. 11 × 11 किती?",
+          "choices": [
+            "122",
+            "1111",
+            "121",
+            "111"
+          ],
+          "solution": "11 × 11 = 121 — सरळ-उलटे सारखेच वाचले जाते. आकृतिबंध पुढे चालतो: 111 × 111 = 12321 — जिन्यासारखा चढत-उतरत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Every answer in the nine-times table has digits adding to 9. What is 9 × 6?",
+      "choices": [
+        "56",
+        "63",
+        "54",
+        "45"
+      ],
+      "answerIndex": 2,
+      "solution": "9 × 6 = 54, and 5 + 4 = 9 — the table's secret signature. 45 is 9 × 5, its digit-swapped neighbour; 56 fails the signature test (5 + 6 = 11), which is how you catch it.",
+      "checkExpr": "9*6",
+      "translations": {
+        "hi": {
+          "stem": "नौ के पहाड़े के हर उत्तर के अंकों का योग 9 होता है। 9 × 6 कितना है?",
+          "choices": [
+            "56",
+            "63",
+            "54",
+            "45"
+          ],
+          "solution": "9 × 6 = 54, और 5 + 4 = 9 — पहाड़े का गुप्त हस्ताक्षर। 45 यानी 9 × 5, उसका अंक-बदला पड़ोसी; 56 हस्ताक्षर-जाँच में फ़ेल है (5 + 6 = 11) — ऐसे ही वह पकड़ा जाता है।"
+        },
+        "mr": {
+          "stem": "नऊच्या पाढ्यातल्या प्रत्येक उत्तराच्या अंकांची बेरीज 9 येते. 9 × 6 किती?",
+          "choices": [
+            "56",
+            "63",
+            "54",
+            "45"
+          ],
+          "solution": "9 × 6 = 54, आणि 5 + 4 = 9 — पाढ्याची गुप्त सही. 45 म्हणजे 9 × 5, त्याचा अंक-बदललेला शेजारी; 56 सही-तपासणीत नापास (5 + 6 = 11) — असाच तो पकडला जातो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A palindrome number reads the same both ways. Which of these is a palindrome?",
+      "choices": [
+        "121",
+        "211",
+        "112",
+        "123"
+      ],
+      "answerIndex": 0,
+      "solution": "121 backwards is still 121. 112 backwards is 211 — those two are each other's reflections, and neither is its own.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पैलिंड्रोम संख्या दोनों ओर से एक-सी पढ़ी जाती है। इनमें से पैलिंड्रोम कौन-सी है?",
+          "choices": [
+            "121",
+            "211",
+            "112",
+            "123"
+          ],
+          "solution": "121 उलटा भी 121 है। 112 उलटा 211 है — वे दोनों एक-दूसरे के प्रतिबिंब हैं, अपना-अपना कोई नहीं।"
+        },
+        "mr": {
+          "stem": "पॅलिंड्रोम संख्या दोन्हीकडून सारखीच वाचली जाते. यांपैकी पॅलिंड्रोम कोणती?",
+          "choices": [
+            "121",
+            "211",
+            "112",
+            "123"
+          ],
+          "solution": "121 उलटेही 121 च. 112 उलटे 211 — ते दोघे एकमेकांची प्रतिबिंबे, स्वतःचे कोणीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Add all the numbers from 1 to 9. What do they make?",
+      "choices": [
+        "44",
+        "45",
+        "50",
+        "36"
+      ],
+      "answerIndex": 1,
+      "solution": "Pair the ends: 1+9, 2+8, 3+7, 4+6 — four tens — and 5 alone in the middle: 40 + 5 = 45. The pairing trick beats adding one by one, and never drops a number on the way.",
+      "checkExpr": "9*10/2",
+      "translations": {
+        "hi": {
+          "stem": "1 से 9 तक की सारी संख्याएँ जोड़िए। योग क्या बनता है?",
+          "choices": [
+            "44",
+            "45",
+            "50",
+            "36"
+          ],
+          "solution": "सिरों के जोड़े बनाइए: 1+9, 2+8, 3+7, 4+6 — चार दहाइयाँ — और बीच में अकेला 5: 40 + 5 = 45। जोड़ों की तरकीब एक-एक जोड़ने से जीतती है, और रास्ते में कोई संख्या नहीं गिराती।"
+        },
+        "mr": {
+          "stem": "1 ते 9 पर्यंतच्या साऱ्या संख्या मिळवा. बेरीज किती होते?",
+          "choices": [
+            "44",
+            "45",
+            "50",
+            "36"
+          ],
+          "solution": "टोकांच्या जोड्या लावा: 1+9, 2+8, 3+7, 4+6 — चार दशक — आणि मध्ये एकटा 5: 40 + 5 = 45. जोड्यांची युक्ती एकेक मिळवण्यावर मात करते, आणि वाटेत एकही संख्या पाडत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The staircase pattern: 1 × 1 = 1, 11 × 11 = 121. What is 111 × 111?",
+      "choices": [
+        "111111",
+        "12321",
+        "12345",
+        "11121"
+      ],
+      "answerIndex": 1,
+      "solution": "111 × 111 = 12321 — the digits climb 1-2-3 and come back down, a staircase with 3 at the top because three ones were multiplied. The pattern holds up to 111111111², whose peak is 9.",
+      "checkExpr": "111*111",
+      "translations": {
+        "hi": {
+          "stem": "सीढ़ी-पैटर्न: 1 × 1 = 1, 11 × 11 = 121। 111 × 111 कितना है?",
+          "choices": [
+            "111111",
+            "12321",
+            "12345",
+            "11121"
+          ],
+          "solution": "111 × 111 = 12321 — अंक 1-2-3 चढ़ते हैं और उतर आते हैं, चोटी पर 3 — क्योंकि तीन इकाइयाँ गुणी गईं। पैटर्न 111111111² तक निभता है, जिसकी चोटी 9 है।"
+        },
+        "mr": {
+          "stem": "जिना-आकृतिबंध: 1 × 1 = 1, 11 × 11 = 121. 111 × 111 किती?",
+          "choices": [
+            "111111",
+            "12321",
+            "12345",
+            "11121"
+          ],
+          "solution": "111 × 111 = 12321 — अंक 1-2-3 चढतात आणि उतरतात, शिखरावर 3 — कारण तीन एकके गुणली गेली. आकृतिबंध 111111111² पर्यंत टिकतो, ज्याचे शिखर 9 आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "On a calendar, nine dates make a 3-by-3 square, and the middle date is 16. Without adding one by one — what do all nine dates sum to?",
+      "choices": [
+        "96",
+        "154",
+        "144",
+        "128"
+      ],
+      "answerIndex": 2,
+      "solution": "Every date pairs with its opposite across the centre — 9 with 23, 15 with 17 — and each pair averages exactly the middle 16. Nine dates at an average of 16: 16 × 9 = 144. The centre of any calendar square is the whole square's average; that is the pattern worth keeping.",
+      "checkExpr": "16*9",
+      "translations": {
+        "hi": {
+          "stem": "कैलेंडर पर नौ तारीख़ें 3×3 का वर्ग बनाती हैं, और बीच की तारीख़ 16 है। एक-एक जोड़े बिना — नौों तारीख़ों का योग क्या है?",
+          "choices": [
+            "96",
+            "154",
+            "144",
+            "128"
+          ],
+          "solution": "हर तारीख़ केंद्र के आर-पार अपनी जोड़ीदार से मिलती है — 9 के साथ 23, 15 के साथ 17 — और हर जोड़ी का औसत ठीक बीच वाला 16 है। 16 के औसत पर नौ तारीख़ें: 16 × 9 = 144। किसी भी कैलेंडर-वर्ग का केंद्र पूरे वर्ग का औसत है — यही सँभालने लायक़ पैटर्न है।"
+        },
+        "mr": {
+          "stem": "दिनदर्शिकेवर नऊ तारखा 3×3 चा चौरस करतात, आणि मधली तारीख 16 आहे. एकेक न मिळवता — नऊही तारखांची बेरीज किती?",
+          "choices": [
+            "96",
+            "154",
+            "144",
+            "128"
+          ],
+          "solution": "प्रत्येक तारीख केंद्रापलीकडच्या जोडीदाराशी जुळते — 9 सोबत 23, 15 सोबत 17 — आणि प्रत्येक जोडीची सरासरी नेमकी मधली 16. 16 च्या सरासरीने नऊ तारखा: 16 × 9 = 144. कोणत्याही दिनदर्शिका-चौरसाचे केंद्र म्हणजे सबंध चौरसाची सरासरी — हाच जपण्याजोगा आकृतिबंध."
+        }
+      }
+    }
+  ]
+}

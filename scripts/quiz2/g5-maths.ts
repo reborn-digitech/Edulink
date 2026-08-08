@@ -1610,11 +1610,1058 @@ function tenthsAndHundredths(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 5 — Does it Look the Same? (mirror lines and turns)               */
+/* ------------------------------------------------------------------------- */
+function doesItLookTheSame(): TopicFileOut {
+  const rand = rng("maths-5-does-it-look-the-same");
+  const qs: OutQuestion[] = [];
+
+  const deg = (n: number) => ({ en: `${n}°`, hi: `${n}°`, mr: `${n}°` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many mirror (symmetry) lines does a square have?",
+          hi: "वर्ग की कितनी दर्पण-रेखाएँ (सममिति रेखाएँ) होती हैं?",
+          mr: "चौरसाला किती आरसा-रेषा (सममिती रेषा) असतात?",
+        },
+        answer: 4,
+        wrong: [2, 1, 8],
+        solution: {
+          en: "A square folds onto itself 4 ways — two through the middles of opposite sides, two corner to corner. 2 counts only the middle folds and forgets the diagonals.",
+          hi: "वर्ग 4 तरह से अपने ऊपर तह होता है — दो आमने-सामने की भुजाओं के बीच से, दो कोने-से-कोने। 2 केवल बीच वाली तहें गिनता है और विकर्ण भूल जाता है।",
+          mr: "चौरस 4 प्रकारे स्वतःवर दुमडतो — दोन समोरासमोरच्या बाजूंच्या मधून, दोन कोपऱ्यातून कोपऱ्यात. 2 फक्त मधल्या घड्या मोजते आणि कर्ण विसरते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A butterfly's two wings match each other across how many mirror lines?",
+          hi: "तितली के दोनों पंख कितनी दर्पण-रेखाओं के आर-पार एक-दूसरे से मिलते हैं?",
+          mr: "फुलपाखराचे दोन पंख किती आरसा-रेषांच्या दोन्ही बाजूंनी एकमेकांशी जुळतात?",
+        },
+        answer: 1,
+        wrong: [2, 4, 0],
+        solution: {
+          en: "Exactly 1 — the line down the butterfly's body. Left wing mirrors right, but top does not mirror bottom, so no second line exists.",
+          hi: "ठीक 1 — तितली के शरीर से होकर जाती रेखा। बायाँ पंख दाएँ का दर्पण है, पर ऊपर नीचे का नहीं — इसलिए दूसरी रेखा है ही नहीं।",
+          mr: "नेमकी 1 — फुलपाखराच्या शरीरातून जाणारी रेषा. डावा पंख उजव्याचा आरसा, पण वर खालचा नाही — म्हणून दुसरी रेषा नाहीच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many mirror lines does a rectangle (not a square) have?",
+          hi: "आयत (जो वर्ग नहीं है) की कितनी दर्पण-रेखाएँ होती हैं?",
+          mr: "आयताला (जो चौरस नाही) किती आरसा-रेषा असतात?",
+        },
+        answer: 2,
+        wrong: [4, 1, 0],
+        solution: {
+          en: "Two — through the middles of its sides. Folding corner to corner does NOT work: the diagonal fold leaves the corners sticking out, which is what separates a rectangle from a square.",
+          hi: "दो — भुजाओं के बीच से। कोने-से-कोने की तह नहीं चलती: विकर्ण पर मोड़ने से कोने बाहर झाँकते रह जाते हैं — यही आयत को वर्ग से अलग करता है।",
+          mr: "दोन — बाजूंच्या मधून. कोपऱ्यातून कोपऱ्यात दुमडणे चालत नाही: कर्णावर दुमडल्यास कोपरे बाहेर डोकावत राहतात — हेच आयताला चौरसाहून वेगळे करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many mirror lines does the letter H have?",
+          hi: "अक्षर H की कितनी दर्पण-रेखाएँ हैं?",
+          mr: "H या अक्षराला किती आरसा-रेषा आहेत?",
+        },
+        answer: 2,
+        wrong: [1, 0, 4],
+        solution: {
+          en: "H folds left-onto-right AND top-onto-bottom — 2 lines. Most letters manage one at best; H's two straight legs and level bar earn it both.",
+          hi: "H बाएँ-से-दाएँ और ऊपर-से-नीचे दोनों तह होता है — 2 रेखाएँ। ज़्यादातर अक्षर बमुश्किल एक पाते हैं; H की दो सीधी टाँगें और बीच की पट्टी उसे दोनों दिला देती हैं।",
+          mr: "H डावे-उजवे आणि वर-खाली दोन्ही दुमडतो — 2 रेषा. बहुतेक अक्षरांना जेमतेम एक मिळते; H चे दोन सरळ पाय आणि मधली आडवी दांडी त्याला दोन्ही मिळवून देतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A half turn spins a shape through how many degrees?",
+          hi: "आधा घुमाव आकृति को कितने अंश घुमाता है?",
+          mr: "अर्धे वळण आकाराला किती अंश फिरवते?",
+        },
+        answer: 180,
+        wrong: [90, 360, 45],
+        checkExpr: "360/2",
+        fmt: deg,
+        solution: {
+          en: "Half of the full 360° turn: 360 ÷ 2 = 180° — upside down. 90 is the quarter turn; 360 brings the shape all the way home.",
+          hi: "पूरे 360° घुमाव का आधा: 360 ÷ 2 = 180° — उलटा। 90 चौथाई घुमाव है; 360 आकृति को घुमाकर वहीं ले आता है।",
+          mr: "पूर्ण 360° वळणाचा अर्धा: 360 ÷ 2 = 180° — उलटे. 90 हे पाव वळण; 360 आकाराला फिरवून जागेवर आणते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "An equilateral triangle has all three sides equal. How many mirror lines does it have?",
+          hi: "समबाहु त्रिभुज की तीनों भुजाएँ बराबर होती हैं। उसकी कितनी दर्पण-रेखाएँ हैं?",
+          mr: "समभुज त्रिकोणाच्या तिन्ही बाजू सारख्या असतात. त्याला किती आरसा-रेषा आहेत?",
+        },
+        answer: 3,
+        wrong: [1, 2, 6],
+        solution: {
+          en: "One line through each corner to the middle of the opposite side — 3 in all, one per corner, because every corner is the same as every other.",
+          hi: "हर कोने से सामने वाली भुजा के बीच तक एक रेखा — कुल 3, हर कोने की एक, क्योंकि हर कोना बाक़ी जैसा ही है।",
+          mr: "प्रत्येक कोपऱ्यातून समोरच्या बाजूच्या मध्यापर्यंत एक रेषा — एकूण 3, दर कोपऱ्याला एक, कारण प्रत्येक कोपरा इतरांसारखाच आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Turn the letter S through a half turn. It looks the same! Through how many degrees was it turned?",
+          hi: "अक्षर S को आधा घुमाइए। वह वैसा ही दिखता है! उसे कितने अंश घुमाया गया?",
+          mr: "S हे अक्षर अर्धे फिरवा. ते तसेच दिसते! ते किती अंश फिरवले गेले?",
+        },
+        answer: 180,
+        wrong: [90, 270, 60],
+        checkExpr: "90*2",
+        fmt: deg,
+        solution: {
+          en: "The half turn is 180° — S has TURNING symmetry though it has no mirror line at all. Turn it 90° and it lies on its side, plainly changed.",
+          hi: "आधा घुमाव 180° है — S में घुमाव की सममिति है, जबकि दर्पण-रेखा एक भी नहीं। 90° घुमाइए तो वह करवट लिए, साफ़ बदला दिखता है।",
+          mr: "अर्धे वळण म्हणजे 180° — S ला वळणाची सममिती आहे, आरसा-रेषा मात्र एकही नाही. 90° फिरवा तर ते आडवे पडलेले, स्पष्ट बदललेले दिसते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A windmill pattern with 4 equal sails looks exactly the same after each quarter turn. How many times does it look the same during one full turn?",
+          hi: "4 बराबर पंखों वाला पवनचक्की-पैटर्न हर चौथाई घुमाव पर बिलकुल वैसा ही दिखता है। पूरे एक घुमाव में वह कितनी बार वैसा दिखेगा?",
+          mr: "4 सारख्या पात्यांचा पवनचक्की-नमुना प्रत्येक पाव वळणावर अगदी तसाच दिसतो. पूर्ण एका वळणात तो किती वेळा तसा दिसेल?",
+        },
+        answer: 4,
+        wrong: [2, 8, 1],
+        checkExpr: "360/90",
+        solution: {
+          en: "Every 90° each sail lands exactly where its neighbour stood: 360 ÷ 90 = 4 matching positions per full turn — one for each sail.",
+          hi: "हर 90° पर हर पंख ठीक वहीं पहुँचता है जहाँ उसका पड़ोसी था: 360 ÷ 90 = 4 मेल खाती स्थितियाँ प्रति पूरा घुमाव — हर पंख की एक।",
+          mr: "दर 90° ला प्रत्येक पाते नेमके शेजाऱ्याच्या जागी पोहोचते: 360 ÷ 90 = 4 जुळणाऱ्या स्थिती प्रति पूर्ण वळण — दर पात्याला एक.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A rangoli looks the same after every 120° of turning. How many such matching positions fit in a full 360°?",
+          hi: "एक रंगोली हर 120° के घुमाव पर वैसी ही दिखती है। पूरे 360° में ऐसी कितनी मेल खाती स्थितियाँ समाएँगी?",
+          mr: "एक रांगोळी दर 120° च्या वळणावर तशीच दिसते. पूर्ण 360° मध्ये अशा किती जुळणाऱ्या स्थिती मावतील?",
+        },
+        answer: 3,
+        wrong: [4, 6, 2],
+        checkExpr: "360/120",
+        solution: {
+          en: "360 ÷ 120 = 3 positions — the mark of a three-armed design. The turning angle always divides the full circle into the count of matches.",
+          hi: "360 ÷ 120 = 3 स्थितियाँ — तीन भुजाओं वाले डिज़ाइन की निशानी। घुमाव का कोण पूरे वृत्त को हमेशा मेलों की गिनती में बाँटता है।",
+          mr: "360 ÷ 120 = 3 स्थिती — तीन भुजांच्या नक्षीची खूण. वळणाचा कोन पूर्ण वर्तुळाला नेहमी जुळण्यांच्या संख्येत विभागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Write the digit 6 on paper and give the paper a half turn. Which digit do you see now?",
+          hi: "काग़ज़ पर अंक 6 लिखिए और काग़ज़ को आधा घुमाइए। अब कौन-सा अंक दिखता है?",
+          mr: "कागदावर 6 हा अंक लिहा आणि कागद अर्धा फिरवा. आता कोणता अंक दिसतो?",
+        },
+        answer: 9,
+        wrong: [6, 8, 0],
+        solution: {
+          en: "Upside down, 6 becomes 9 — its half-turn twin. 8 and 0 are shapes that stay THEMSELVES after a half turn; 6 changes into another digit, which is rarer and more fun.",
+          hi: "उलटा होकर 6 बन जाता है 9 — उसका आधे-घुमाव का जुड़वाँ। 8 और 0 आधे घुमाव पर ख़ुद ही रहते हैं; 6 दूसरे अंक में बदलता है — जो दुर्लभ भी है और मज़ेदार भी।",
+          mr: "उलटे झाल्यावर 6 चा होतो 9 — त्याचा अर्ध-वळणाचा जुळा. 8 आणि 0 अर्ध्या वळणावर स्वतःच राहतात; 6 दुसऱ्या अंकात बदलतो — जे दुर्मीळही आणि गमतीचेही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Fold a square paper in half, then in half again. Snip off the one corner where ALL the folds meet, and unfold. How many holes are in the paper?",
+          hi: "वर्गाकार काग़ज़ को आधा मोड़िए, फिर से आधा। जिस एक कोने पर सारी तहें मिलती हैं उसे कतरिए, और खोलिए। काग़ज़ में कितने छेद होंगे?",
+          mr: "चौरस कागद अर्धा दुमडा, मग पुन्हा अर्धा. जिथे साऱ्या घड्या मिळतात तो एक कोपरा कातरा, आणि उलगडा. कागदात किती भोके असतील?",
+        },
+        answer: 1,
+        wrong: [4, 2, 8],
+        solution: {
+          en: "The corner where the folds meet IS the paper's centre, folded up small. One snip there opens into exactly 1 hole in the middle — with 4 matching quarter-edges, because the two folds mirrored the cut twice. Snipping any OTHER corner gives 4 separate holes; only the folds' meeting corner hides the centre.",
+          hi: "जहाँ तहें मिलती हैं वह कोना काग़ज़ का केंद्र ही है, छोटा मुड़ा हुआ। वहाँ एक कतरन बीच में ठीक 1 छेद खोलती है — चार मेल खाते चौथाई-किनारों वाला, क्योंकि दो तहों ने कट को दो बार दर्पण किया। कोई और कोना कतरने पर 4 अलग छेद बनते हैं; केंद्र केवल तहों के मिलन वाले कोने में छिपा है।",
+          mr: "घड्या मिळतात तो कोपरा म्हणजे कागदाचे केंद्रच, लहान दुमडलेले. तिथली एक कातर मध्यभागी नेमके 1 भोक उघडते — चार जुळणाऱ्या पाव-कडांचे, कारण दोन घड्यांनी कापाला दोनदा आरशात दाखवले. दुसरा कोणताही कोपरा कातरल्यास 4 वेगळी भोके होतात; केंद्र फक्त घड्यांच्या भेटीच्या कोपऱ्यात लपले आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 5 — Does it Look the Same?",
+      name: "Does it Look the Same?",
+      slug: "maths-5-does-it-look-the-same",
+      summary: "Mirror lines and turning symmetry — folds that match, letters and digits under half turns, and the snipped corner that was secretly the centre.",
+      position: 5,
+      translations: {
+        hi: {
+          name: "क्या यह वैसा ही दिखता है?",
+          summary: "दर्पण-रेखाएँ और घुमाव की सममिति — मिलती तहें, आधे घुमाव में अक्षर और अंक, और वह कतरा कोना जो चुपके से केंद्र था।",
+        },
+        mr: {
+          name: "हे तसेच दिसते का?",
+          summary: "आरसा-रेषा आणि वळणाची सममिती — जुळणाऱ्या घड्या, अर्ध्या वळणातली अक्षरे आणि अंक, आणि गुपचूप केंद्र असलेला कातरलेला कोपरा.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Can You See the Pattern? (number patterns with reasons)       */
+/* ------------------------------------------------------------------------- */
+function canYouSeeThePattern(): TopicFileOut {
+  const rand = rng("maths-5-can-you-see-the-pattern");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The doubling pattern goes 1, 2, 4, 8, … What comes next?",
+          hi: "दुगना होता पैटर्न है 1, 2, 4, 8, … आगे क्या आएगा?",
+          mr: "दुप्पट होणारा आकृतिबंध आहे 1, 2, 4, 8, … पुढे काय येईल?",
+        },
+        answer: 16,
+        wrong: [12, 10, 24],
+        checkExpr: "8*2",
+        solution: {
+          en: "Each number doubles the last: 8 × 2 = 16. 12 adds 4 — the OLD gap; a doubling pattern's gaps double along with it.",
+          hi: "हर संख्या पिछली की दुगनी: 8 × 2 = 16। 12 चार जोड़ता है — पुराना फ़ासला; दुगने पैटर्न के फ़ासले उसी के साथ दुगने होते हैं।",
+          mr: "प्रत्येक संख्या मागचीच्या दुप्पट: 8 × 2 = 16. 12 चार मिळवते — जुने अंतर; दुप्पट आकृतिबंधाची अंतरे त्याच्यासोबत दुप्पट होतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The pattern climbs 25, 50, 75, … What comes next?",
+          hi: "पैटर्न चढ़ता है 25, 50, 75, … आगे क्या?",
+          mr: "आकृतिबंध चढतो 25, 50, 75, … पुढे काय?",
+        },
+        answer: 100,
+        wrong: [85, 125, 90],
+        checkExpr: "75+25",
+        solution: {
+          en: "The step is 25: 75 + 25 = 100 — the pattern of quarter-rupees closing into a whole. 125 skips ahead one step.",
+          hi: "क़दम 25 का है: 75 + 25 = 100 — चवन्नियों का पूरा रुपया बनता पैटर्न। 125 एक क़दम आगे कूद जाता है।",
+          mr: "पाऊल 25 चे: 75 + 25 = 100 — पावल्यांचा पूर्ण रुपया होणारा आकृतिबंध. 125 एक पाऊल पुढे उडी मारते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The pattern goes 11, 22, 33, … What comes next?",
+          hi: "पैटर्न है 11, 22, 33, … आगे क्या?",
+          mr: "आकृतिबंध आहे 11, 22, 33, … पुढे काय?",
+        },
+        answer: 44,
+        wrong: [34, 43, 55],
+        checkExpr: "33+11",
+        solution: {
+          en: "Each step adds 11, twinning the digits: 33 + 11 = 44. 43 breaks the twins; 55 leaps a step.",
+          hi: "हर क़दम 11 जोड़ता है, अंकों के जुड़वाँ बनते हैं: 33 + 11 = 44। 43 जुड़वाँ तोड़ देता है; 55 एक क़दम लाँघता है।",
+          mr: "प्रत्येक पाऊल 11 वाढवते, अंकांचे जुळे होतात: 33 + 11 = 44. 43 जुळे मोडते; 55 एक पाऊल ओलांडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In a magic square every row adds to 15. One row shows 2, 7, ▢. What hides in the box?",
+          hi: "जादुई वर्ग में हर पंक्ति का योग 15 है। एक पंक्ति में 2, 7, ▢ है। डिब्बे में क्या छिपा है?",
+          mr: "जादूच्या चौरसात प्रत्येक ओळीची बेरीज 15. एका ओळीत 2, 7, ▢ आहे. चौकटीत काय लपले आहे?",
+        },
+        answer: 6,
+        wrong: [8, 5, 13],
+        checkExpr: "15-2-7",
+        solution: {
+          en: "The row must reach 15: 15 − 2 − 7 = 6, and indeed 2 + 7 + 6 = 15. 13 subtracts only the 2 — both known numbers have already taken their share.",
+          hi: "पंक्ति को 15 चाहिए: 15 − 2 − 7 = 6, और सचमुच 2 + 7 + 6 = 15। 13 केवल 2 घटाता है — दोनों ज्ञात संख्याएँ अपना हिस्सा ले चुकी हैं।",
+          mr: "ओळीला 15 हवेत: 15 − 2 − 7 = 6, आणि खरेच 2 + 7 + 6 = 15. 13 फक्त 2 वजा करते — दोन्ही ठाऊक संख्यांनी आपला वाटा घेतला आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The triangle numbers grow 1, 3, 6, 10, … What comes next?",
+          hi: "त्रिभुज संख्याएँ बढ़ती हैं 1, 3, 6, 10, … आगे क्या?",
+          mr: "त्रिकोणी संख्या वाढतात 1, 3, 6, 10, … पुढे काय?",
+        },
+        answer: 15,
+        wrong: [12, 14, 20],
+        checkExpr: "10+5",
+        solution: {
+          en: "The gaps grow by one each time: +2, +3, +4, so next is +5: 10 + 5 = 15 — each number a triangle of dots one row taller. 14 adds 4 again, reusing the old gap.",
+          hi: "फ़ासले हर बार एक बढ़ते हैं: +2, +3, +4, तो अगला +5: 10 + 5 = 15 — हर संख्या एक पंक्ति ऊँचा बिंदुओं का त्रिभुज। 14 फिर 4 जोड़कर पुराना फ़ासला दोहराता है।",
+          mr: "अंतरे दर वेळी एकाने वाढतात: +2, +3, +4, म्हणून पुढचे +5: 10 + 5 = 15 — प्रत्येक संख्या एका ओळीने उंच ठिपक्यांचा त्रिकोण. 14 पुन्हा 4 मिळवून जुने अंतर वापरते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The elevens make pretty products. What is 11 × 11?",
+          hi: "ग्यारह के गुणनफल सुंदर बनते हैं। 11 × 11 कितना है?",
+          mr: "अकराचे गुणाकार सुंदर होतात. 11 × 11 किती?",
+        },
+        answer: 121,
+        wrong: [111, 122, 1111],
+        checkExpr: "11*11",
+        solution: {
+          en: "11 × 11 = 121 — it reads the same forwards and backwards. The pattern continues: 111 × 111 = 12321, climbing up and down like a staircase.",
+          hi: "11 × 11 = 121 — सीधा-उलटा एक-सा पढ़ा जाता है। पैटर्न आगे चलता है: 111 × 111 = 12321 — सीढ़ी-सा चढ़ता-उतरता।",
+          mr: "11 × 11 = 121 — सरळ-उलटे सारखेच वाचले जाते. आकृतिबंध पुढे चालतो: 111 × 111 = 12321 — जिन्यासारखा चढत-उतरत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Every answer in the nine-times table has digits adding to 9. What is 9 × 6?",
+          hi: "नौ के पहाड़े के हर उत्तर के अंकों का योग 9 होता है। 9 × 6 कितना है?",
+          mr: "नऊच्या पाढ्यातल्या प्रत्येक उत्तराच्या अंकांची बेरीज 9 येते. 9 × 6 किती?",
+        },
+        answer: 54,
+        wrong: [56, 45, 63],
+        checkExpr: "9*6",
+        solution: {
+          en: "9 × 6 = 54, and 5 + 4 = 9 — the table's secret signature. 45 is 9 × 5, its digit-swapped neighbour; 56 fails the signature test (5 + 6 = 11), which is how you catch it.",
+          hi: "9 × 6 = 54, और 5 + 4 = 9 — पहाड़े का गुप्त हस्ताक्षर। 45 यानी 9 × 5, उसका अंक-बदला पड़ोसी; 56 हस्ताक्षर-जाँच में फ़ेल है (5 + 6 = 11) — ऐसे ही वह पकड़ा जाता है।",
+          mr: "9 × 6 = 54, आणि 5 + 4 = 9 — पाढ्याची गुप्त सही. 45 म्हणजे 9 × 5, त्याचा अंक-बदललेला शेजारी; 56 सही-तपासणीत नापास (5 + 6 = 11) — असाच तो पकडला जातो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A palindrome number reads the same both ways. Which of these is a palindrome?",
+          hi: "पैलिंड्रोम संख्या दोनों ओर से एक-सी पढ़ी जाती है। इनमें से पैलिंड्रोम कौन-सी है?",
+          mr: "पॅलिंड्रोम संख्या दोन्हीकडून सारखीच वाचली जाते. यांपैकी पॅलिंड्रोम कोणती?",
+        },
+        answer: 121,
+        wrong: [123, 112, 211],
+        solution: {
+          en: "121 backwards is still 121. 112 backwards is 211 — those two are each other's reflections, and neither is its own.",
+          hi: "121 उलटा भी 121 है। 112 उलटा 211 है — वे दोनों एक-दूसरे के प्रतिबिंब हैं, अपना-अपना कोई नहीं।",
+          mr: "121 उलटेही 121 च. 112 उलटे 211 — ते दोघे एकमेकांची प्रतिबिंबे, स्वतःचे कोणीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Add all the numbers from 1 to 9. What do they make?",
+          hi: "1 से 9 तक की सारी संख्याएँ जोड़िए। योग क्या बनता है?",
+          mr: "1 ते 9 पर्यंतच्या साऱ्या संख्या मिळवा. बेरीज किती होते?",
+        },
+        answer: 45,
+        wrong: [44, 50, 36],
+        checkExpr: "9*10/2",
+        solution: {
+          en: "Pair the ends: 1+9, 2+8, 3+7, 4+6 — four tens — and 5 alone in the middle: 40 + 5 = 45. The pairing trick beats adding one by one, and never drops a number on the way.",
+          hi: "सिरों के जोड़े बनाइए: 1+9, 2+8, 3+7, 4+6 — चार दहाइयाँ — और बीच में अकेला 5: 40 + 5 = 45। जोड़ों की तरकीब एक-एक जोड़ने से जीतती है, और रास्ते में कोई संख्या नहीं गिराती।",
+          mr: "टोकांच्या जोड्या लावा: 1+9, 2+8, 3+7, 4+6 — चार दशक — आणि मध्ये एकटा 5: 40 + 5 = 45. जोड्यांची युक्ती एकेक मिळवण्यावर मात करते, आणि वाटेत एकही संख्या पाडत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The staircase pattern: 1 × 1 = 1, 11 × 11 = 121. What is 111 × 111?",
+          hi: "सीढ़ी-पैटर्न: 1 × 1 = 1, 11 × 11 = 121। 111 × 111 कितना है?",
+          mr: "जिना-आकृतिबंध: 1 × 1 = 1, 11 × 11 = 121. 111 × 111 किती?",
+        },
+        answer: 12321,
+        wrong: [12345, 11121, 111111],
+        checkExpr: "111*111",
+        solution: {
+          en: "111 × 111 = 12321 — the digits climb 1-2-3 and come back down, a staircase with 3 at the top because three ones were multiplied. The pattern holds up to 111111111², whose peak is 9.",
+          hi: "111 × 111 = 12321 — अंक 1-2-3 चढ़ते हैं और उतर आते हैं, चोटी पर 3 — क्योंकि तीन इकाइयाँ गुणी गईं। पैटर्न 111111111² तक निभता है, जिसकी चोटी 9 है।",
+          mr: "111 × 111 = 12321 — अंक 1-2-3 चढतात आणि उतरतात, शिखरावर 3 — कारण तीन एकके गुणली गेली. आकृतिबंध 111111111² पर्यंत टिकतो, ज्याचे शिखर 9 आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "On a calendar, nine dates make a 3-by-3 square, and the middle date is 16. Without adding one by one — what do all nine dates sum to?",
+          hi: "कैलेंडर पर नौ तारीख़ें 3×3 का वर्ग बनाती हैं, और बीच की तारीख़ 16 है। एक-एक जोड़े बिना — नौों तारीख़ों का योग क्या है?",
+          mr: "दिनदर्शिकेवर नऊ तारखा 3×3 चा चौरस करतात, आणि मधली तारीख 16 आहे. एकेक न मिळवता — नऊही तारखांची बेरीज किती?",
+        },
+        answer: 144,
+        wrong: [128, 154, 96],
+        checkExpr: "16*9",
+        solution: {
+          en: "Every date pairs with its opposite across the centre — 9 with 23, 15 with 17 — and each pair averages exactly the middle 16. Nine dates at an average of 16: 16 × 9 = 144. The centre of any calendar square is the whole square's average; that is the pattern worth keeping.",
+          hi: "हर तारीख़ केंद्र के आर-पार अपनी जोड़ीदार से मिलती है — 9 के साथ 23, 15 के साथ 17 — और हर जोड़ी का औसत ठीक बीच वाला 16 है। 16 के औसत पर नौ तारीख़ें: 16 × 9 = 144। किसी भी कैलेंडर-वर्ग का केंद्र पूरे वर्ग का औसत है — यही सँभालने लायक़ पैटर्न है।",
+          mr: "प्रत्येक तारीख केंद्रापलीकडच्या जोडीदाराशी जुळते — 9 सोबत 23, 15 सोबत 17 — आणि प्रत्येक जोडीची सरासरी नेमकी मधली 16. 16 च्या सरासरीने नऊ तारखा: 16 × 9 = 144. कोणत्याही दिनदर्शिका-चौरसाचे केंद्र म्हणजे सबंध चौरसाची सरासरी — हाच जपण्याजोगा आकृतिबंध.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 7 — Can You See the Pattern?",
+      name: "Can You See the Pattern?",
+      slug: "maths-5-can-you-see-the-pattern",
+      summary: "Patterns with reasons — growing gaps, magic squares, the nines' signature, palindromes, and the calendar square that averages to its centre.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "क्या आपको पैटर्न दिखता है?",
+          summary: "कारण वाले पैटर्न — बढ़ते फ़ासले, जादुई वर्ग, नौ का हस्ताक्षर, पैलिंड्रोम, और वह कैलेंडर-वर्ग जिसका औसत उसका केंद्र है।",
+        },
+        mr: {
+          name: "तुम्हाला आकृतिबंध दिसतो का?",
+          summary: "कारणांसह आकृतिबंध — वाढती अंतरे, जादूचे चौरस, नऊची सही, पॅलिंड्रोम, आणि केंद्रच सरासरी असलेला दिनदर्शिका-चौरस.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Mapping Your Way (scales, routes and distances)               */
+/* ------------------------------------------------------------------------- */
+function mappingYourWay(): TopicFileOut {
+  const rand = rng("maths-5-mapping-your-way");
+  const qs: OutQuestion[] = [];
+
+  const m = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+  const km = (n: number) => ({ en: `${n} km`, hi: `${n} किमी`, mr: `${n} किमी` });
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A city map's scale says 1 cm = 200 m. A road measures 3 cm on the map. How long is the real road?",
+          hi: "शहर के नक़्शे का पैमाना है 1 सेमी = 200 मीटर। एक सड़क नक़्शे पर 3 सेमी है। असली सड़क कितनी लंबी है?",
+          mr: "शहराच्या नकाशाचे प्रमाण 1 सेमी = 200 मीटर. एक रस्ता नकाशावर 3 सेमी भरतो. खरा रस्ता किती लांब?",
+        },
+        answer: 600,
+        wrong: [203, 60, 6000],
+        checkExpr: "3*200",
+        fmt: m,
+        solution: {
+          en: "Each map-centimetre hides 200 real metres: 3 × 200 = 600 m. 203 adds the scale to the measurement; scales multiply.",
+          hi: "नक़्शे का हर सेंटीमीटर 200 असली मीटर छिपाए है: 3 × 200 = 600 मीटर। 203 पैमाने को नाप में जोड़ देता है; पैमाने गुणा करते हैं।",
+          mr: "नकाशाचा प्रत्येक सेंटिमीटर 200 खरे मीटर लपवतो: 3 × 200 = 600 मीटर. 203 प्रमाण मापात मिळवते; प्रमाणे गुणतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "On the school-fair map, 1 cm stands for 50 m. The gate to the food stall is 5 cm. How far is the walk really?",
+          hi: "स्कूल-मेले के नक़्शे पर 1 सेमी = 50 मीटर। फाटक से खाने के स्टॉल तक 5 सेमी है। असल में कितना चलना होगा?",
+          mr: "शाळा-जत्रेच्या नकाशावर 1 सेमी = 50 मीटर. फाटकापासून खाऊच्या स्टॉलपर्यंत 5 सेमी आहे. खरे किती चालावे लागेल?",
+        },
+        answer: 250,
+        wrong: [55, 500, 25],
+        checkExpr: "5*50",
+        fmt: m,
+        solution: {
+          en: "5 map-centimetres of 50 m each: 5 × 50 = 250 m. 500 doubles the scale on the way; 55 adds instead of multiplying.",
+          hi: "50-50 मीटर के 5 नक़्शा-सेंटीमीटर: 5 × 50 = 250 मीटर। 500 रास्ते में पैमाना दुगना कर देता है; 55 गुणा की जगह जोड़ता है।",
+          mr: "50-50 मीटरचे 5 नकाशा-सेंटिमीटर: 5 × 50 = 250 मीटर. 500 वाटेत प्रमाण दुप्पट करते; 55 गुणण्याऐवजी मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The map's grid squares are each 100 m across. The park stretches over 3 whole squares. How wide is the park?",
+          hi: "नक़्शे के जाल का हर ख़ाना 100 मीटर का है। पार्क 3 पूरे ख़ानों में फैला है। पार्क कितना चौड़ा है?",
+          mr: "नकाशाच्या जाळीची प्रत्येक चौकट 100 मीटरची आहे. बाग 3 पूर्ण चौकटींत पसरली आहे. बाग किती रुंद?",
+        },
+        answer: 300,
+        wrong: [103, 30, 3],
+        checkExpr: "100*3",
+        fmt: m,
+        solution: {
+          en: "Three squares of 100 m: 100 × 3 = 300 m. 3 reads the squares and forgets they carry metres.",
+          hi: "100-100 मीटर के तीन ख़ाने: 100 × 3 = 300 मीटर। 3 ख़ाने पढ़ता है और भूल जाता है कि वे मीटर ढोते हैं।",
+          mr: "100-100 मीटरच्या तीन चौकटी: 100 × 3 = 300 मीटर. 3 चौकटी वाचते आणि त्या मीटर वाहतात हे विसरते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The temple is really 800 m from the well. At a scale of 1 cm = 200 m, how far apart do they sit on the map?",
+          hi: "मंदिर कुएँ से असल में 800 मीटर दूर है। 1 सेमी = 200 मीटर के पैमाने पर नक़्शे में वे कितनी दूर होंगे?",
+          mr: "देऊळ विहिरीपासून खरे 800 मीटर दूर आहे. 1 सेमी = 200 मीटर प्रमाणावर नकाशात ती किती दूर असतील?",
+        },
+        answer: 4,
+        wrong: [8, 2, 400],
+        checkExpr: "800/200",
+        fmt: cm,
+        solution: {
+          en: "This time the world shrinks INTO the map: 800 ÷ 200 = 4 cm. 400 multiplies the wrong way and draws a map bigger than the town.",
+          hi: "इस बार दुनिया नक़्शे में सिकुड़ती है: 800 ÷ 200 = 4 सेमी। 400 उलटी दिशा में गुणा करके शहर से बड़ा नक़्शा खींच देता है।",
+          mr: "या वेळी जग नकाशात आकसते: 800 ÷ 200 = 4 सेमी. 400 उलट्या दिशेने गुणून गावाहून मोठा नकाशा काढते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A wall map is 25 cm wide, drawn at 1 cm = 2 km. How many kilometres of country does it span?",
+          hi: "दीवार का नक़्शा 25 सेमी चौड़ा है, पैमाना 1 सेमी = 2 किमी। वह कितने किलोमीटर का इलाक़ा समेटता है?",
+          mr: "भिंतीवरचा नकाशा 25 सेमी रुंद आहे, प्रमाण 1 सेमी = 2 किमी. तो किती किलोमीटरचा मुलूख सामावतो?",
+        },
+        answer: 50,
+        wrong: [27, 12, 125],
+        checkExpr: "25*2",
+        fmt: km,
+        solution: {
+          en: "25 map-centimetres of 2 km each: 25 × 2 = 50 km on one sheet of paper. 27 adds the scale; 12 halves instead of doubling.",
+          hi: "2-2 किमी के 25 नक़्शा-सेंटीमीटर: 25 × 2 = 50 किमी, एक ही काग़ज़ पर। 27 पैमाना जोड़ता है; 12 दुगने की जगह आधा करता है।",
+          mr: "2-2 किमीचे 25 नकाशा-सेंटिमीटर: 25 × 2 = 50 किमी, एकाच कागदावर. 27 प्रमाण मिळवते; 12 दुप्पट करण्याऐवजी अर्धे करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "To the market you may take the straight road of 900 m, or the lanes — four turnings of 300 m each. How much LONGER are the lanes?",
+          hi: "बाज़ार तक 900 मीटर की सीधी सड़क है, या गलियाँ — 300-300 मीटर के चार मोड़। गलियाँ कितनी लंबी ज़्यादा हैं?",
+          mr: "बाजारापर्यंत 900 मीटरचा सरळ रस्ता आहे, किंवा गल्ल्या — 300-300 मीटरची चार वळणे. गल्ल्या किती जास्त लांब?",
+        },
+        answer: 300,
+        wrong: [1200, 600, 900],
+        checkExpr: "4*300-900",
+        fmt: m,
+        solution: {
+          en: "The lanes total 4 × 300 = 1200 m, and 1200 − 900 = 300 m longer. 1200 is the lanes' own length, not the extra the question asked for.",
+          hi: "गलियाँ कुल 4 × 300 = 1200 मीटर, और 1200 − 900 = 300 मीटर ज़्यादा। 1200 गलियों की अपनी लंबाई है, वह अतिरिक्त नहीं जो पूछा गया।",
+          mr: "गल्ल्या एकूण 4 × 300 = 1200 मीटर, आणि 1200 − 900 = 300 मीटर जास्त. 1200 ही गल्ल्यांची स्वतःची लांबी, विचारलेले जास्तीचे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A classroom 8 m long is drawn on a plan at 1 cm = 2 m. How long is the classroom in the drawing?",
+          hi: "8 मीटर लंबी कक्षा 1 सेमी = 2 मीटर के पैमाने पर नक़्शे में बनाई गई। चित्र में कक्षा कितनी लंबी होगी?",
+          mr: "8 मीटर लांब वर्ग 1 सेमी = 2 मीटर प्रमाणावर आराखड्यात काढला. चित्रात वर्ग किती लांब असेल?",
+        },
+        answer: 4,
+        wrong: [16, 2, 6],
+        checkExpr: "8/2",
+        fmt: cm,
+        solution: {
+          en: "Every 2 real metres folds into 1 drawn centimetre: 8 ÷ 2 = 4 cm. 16 multiplies outward — that direction is for reading maps, not making them.",
+          hi: "हर 2 असली मीटर 1 चित्र-सेंटीमीटर में सिमटते हैं: 8 ÷ 2 = 4 सेमी। 16 बाहर की ओर गुणा करता है — वह दिशा नक़्शा पढ़ने की है, बनाने की नहीं।",
+          mr: "प्रत्येक 2 खरे मीटर 1 चित्र-सेंटिमीटरमध्ये मावतात: 8 ÷ 2 = 4 सेमी. 16 बाहेरच्या दिशेने गुणते — ती दिशा नकाशा वाचण्याची, बनवण्याची नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "From home Neha walks 400 m north to the post office, then 300 m east to the library. How far has she WALKED in all?",
+          hi: "घर से नेहा 400 मीटर उत्तर डाकघर तक चलती है, फिर 300 मीटर पूर्व पुस्तकालय तक। उसने कुल कितना चला?",
+          mr: "घरून नेहा 400 मीटर उत्तरेस पोस्ट ऑफिसपर्यंत चालते, मग 300 मीटर पूर्वेस वाचनालयापर्यंत. ती एकूण किती चालली?",
+        },
+        answer: 700,
+        wrong: [100, 500, 1200],
+        checkExpr: "400+300",
+        fmt: m,
+        solution: {
+          en: "Feet count every metre stepped: 400 + 300 = 700 m. 500 is the bird's straight-line distance home-to-library — a fine answer to a different question; 100 subtracts the legs.",
+          hi: "पैर हर चला मीटर गिनते हैं: 400 + 300 = 700 मीटर। 500 घर-से-पुस्तकालय की चिड़िया वाली सीधी दूरी है — दूसरे सवाल का बढ़िया उत्तर; 100 दोनों हिस्सों को घटा देता है।",
+          mr: "पाय चाललेला प्रत्येक मीटर मोजतात: 400 + 300 = 700 मीटर. 500 हे घर-ते-वाचनालय पक्ष्याचे सरळ अंतर — वेगळ्या प्रश्नाचे छान उत्तर; 100 दोन्ही भाग वजा करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A treasure map says: 20 paces east, 20 paces east again, then 10 paces back west. How many paces from the start does the treasure lie?",
+          hi: "ख़ज़ाने का नक़्शा कहता है: 20 क़दम पूर्व, फिर 20 क़दम पूर्व, फिर 10 क़दम पश्चिम लौटिए। ख़ज़ाना शुरुआत से कितने क़दम दूर है?",
+          mr: "खजिन्याचा नकाशा सांगतो: 20 पावले पूर्वेस, पुन्हा 20 पावले पूर्वेस, मग 10 पावले पश्चिमेस परत. खजिना सुरुवातीपासून किती पावलांवर आहे?",
+        },
+        answer: 30,
+        wrong: [50, 10, 40],
+        checkExpr: "20+20-10",
+        solution: {
+          en: "East gathers 20 + 20 = 40 paces; the westward 10 walks part of it back: 40 − 10 = 30 paces out. 50 adds all three as if every step went the same way — direction decides the sign.",
+          hi: "पूर्व में जमा हुए 20 + 20 = 40 क़दम; पश्चिम के 10 उनमें से लौटा देते हैं: 40 − 10 = 30 क़दम दूर। 50 तीनों को एक ही दिशा मानकर जोड़ता है — दिशा ही जोड़-घटाव तय करती है।",
+          mr: "पूर्वेस जमली 20 + 20 = 40 पावले; पश्चिमेची 10 त्यांतली परत आणतात: 40 − 10 = 30 पावले दूर. 50 तिन्ही एकाच दिशेची समजून मिळवते — दिशाच बेरीज-वजाबाकी ठरवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The morning round: school to market 600 m, market to temple 900 m, temple back to school 500 m. How long is the whole round?",
+          hi: "सुबह का चक्कर: स्कूल से बाज़ार 600 मीटर, बाज़ार से मंदिर 900 मीटर, मंदिर से स्कूल 500 मीटर। पूरा चक्कर कितना लंबा है?",
+          mr: "सकाळची फेरी: शाळा ते बाजार 600 मीटर, बाजार ते देऊळ 900 मीटर, देऊळ ते शाळा 500 मीटर. सगळी फेरी किती लांब?",
+        },
+        answer: 2000,
+        wrong: [1500, 2100, 1000],
+        checkExpr: "600+900+500",
+        fmt: m,
+        solution: {
+          en: "Add the three legs: 600 + 900 + 500 = 2000 m — a full 2 km before breakfast. 1500 forgets the walk home closes the loop.",
+          hi: "तीनों हिस्से जोड़िए: 600 + 900 + 500 = 2000 मीटर — नाश्ते से पहले पूरे 2 किमी। 1500 भूल जाता है कि घर-वापसी ही चक्कर पूरा करती है।",
+          mr: "तिन्ही टप्पे मिळवा: 600 + 900 + 500 = 2000 मीटर — न्याहारीआधी पूर्ण 2 किमी. 1500 विसरते की परतीची वाटच फेरी पूर्ण करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two maps show the same town. Map A's scale is 1 cm = 100 m; Map B's is 1 cm = 200 m. A street runs 8 cm on Map A. How many centimetres does the SAME street run on Map B?",
+          hi: "दो नक़्शे एक ही शहर दिखाते हैं। नक़्शा A का पैमाना 1 सेमी = 100 मीटर; नक़्शा B का 1 सेमी = 200 मीटर। एक सड़क नक़्शा A पर 8 सेमी है। वही सड़क नक़्शा B पर कितने सेंटीमीटर होगी?",
+          mr: "दोन नकाशे एकच गाव दाखवतात. नकाशा A चे प्रमाण 1 सेमी = 100 मीटर; नकाशा B चे 1 सेमी = 200 मीटर. एक रस्ता नकाशा A वर 8 सेमी आहे. तोच रस्ता नकाशा B वर किती सेंटिमीटर असेल?",
+        },
+        answer: 4,
+        wrong: [16, 8, 2],
+        checkExpr: "8*100/200",
+        fmt: cm,
+        solution: {
+          en: "First leave the paper: 8 cm × 100 = 800 real metres. Then enter Map B: 800 ÷ 200 = 4 cm. The street shrank on paper because each of B's centimetres swallows MORE ground — a bigger number in the scale means a smaller drawing, which is the trap 16 falls into.",
+          hi: "पहले काग़ज़ से बाहर आइए: 8 सेमी × 100 = 800 असली मीटर। फिर नक़्शा B में जाइए: 800 ÷ 200 = 4 सेमी। सड़क काग़ज़ पर इसलिए सिकुड़ी कि B का हर सेंटीमीटर ज़्यादा ज़मीन निगलता है — पैमाने की बड़ी संख्या यानी छोटा चित्र; 16 इसी फंदे में गिरता है।",
+          mr: "आधी कागदाबाहेर या: 8 सेमी × 100 = 800 खरे मीटर. मग नकाशा B मध्ये जा: 800 ÷ 200 = 4 सेमी. रस्ता कागदावर आकसला कारण B चा प्रत्येक सेंटिमीटर जास्त जमीन गिळतो — प्रमाणातली मोठी संख्या म्हणजे लहान चित्र; 16 याच सापळ्यात पडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 8 — Mapping Your Way",
+      name: "Mapping Your Way",
+      slug: "maths-5-mapping-your-way",
+      summary: "Scales read both ways — maps into metres and metres into maps, routes compared leg by leg, and two maps that disagree about one street.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "नक़्शे से राह",
+          summary: "दोनों दिशाओं में पढ़े पैमाने — नक़्शे से मीटर और मीटर से नक़्शा, हिस्से-हिस्से मिलाए रास्ते, और एक सड़क पर असहमत दो नक़्शे।",
+        },
+        mr: {
+          name: "नकाशाने वाट",
+          summary: "दोन्ही दिशांनी वाचलेली प्रमाणे — नकाशातून मीटर आणि मीटरांतून नकाशा, टप्प्याटप्प्याने ताडलेल्या वाटा, आणि एका रस्त्यावर असहमत दोन नकाशे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Boxes and Sketches (cubes, nets and stacked solids)           */
+/* ------------------------------------------------------------------------- */
+function boxesAndSketches(): TopicFileOut {
+  const rand = rng("maths-5-boxes-and-sketches");
+  const qs: OutQuestion[] = [];
+
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Run a finger along every straight edge of a cube. How many edges do you count?",
+          hi: "घन के हर सीधे किनारे पर उँगली फेरिए। कितने किनारे गिनेंगे?",
+          mr: "घनाच्या प्रत्येक सरळ कडेवरून बोट फिरवा. किती कडा मोजाल?",
+        },
+        answer: 12,
+        wrong: [6, 8, 4],
+        solution: {
+          en: "A cube has 12 edges — 4 around the top, 4 around the bottom, 4 standing upright between them. 6 counts the faces and 8 the corners; edges are the third family.",
+          hi: "घन के 12 किनारे हैं — 4 ऊपर घेरे में, 4 नीचे, 4 बीच में खड़े। 6 फलक गिनता है और 8 कोने; किनारे तीसरा परिवार हैं।",
+          mr: "घनाला 12 कडा — 4 वर वेढ्यात, 4 खाली, 4 मध्ये उभ्या. 6 पृष्ठे मोजते आणि 8 कोपरे; कडा हे तिसरे कुटुंब.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many corners (vertices) does a cube have?",
+          hi: "घन के कितने कोने (शीर्ष) होते हैं?",
+          mr: "घनाला किती कोपरे (शिरोबिंदू) असतात?",
+        },
+        answer: 8,
+        wrong: [6, 12, 4],
+        checkExpr: "4*2",
+        solution: {
+          en: "Four corners on the top square, four on the bottom: 4 × 2 = 8. Hold a dice and touch them — thumbs find what counting forgets.",
+          hi: "ऊपर के वर्ग के चार कोने, नीचे के चार: 4 × 2 = 8। पासा थामकर छूइए — जो गिनती भूलती है, अँगूठे पा लेते हैं।",
+          mr: "वरच्या चौरसाचे चार कोपरे, खालचे चार: 4 × 2 = 8. फासा धरून शिवून पाहा — मोजणी विसरते ते अंगठे शोधतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A flat net that folds up into a closed cube must have how many squares?",
+          hi: "बंद घन में मुड़ने वाले चपटे जाल (नेट) में कितने वर्ग होने चाहिए?",
+          mr: "बंद घनात दुमडणाऱ्या सपाट जाळ्यात (नेट) किती चौरस हवेत?",
+        },
+        answer: 6,
+        wrong: [4, 5, 8],
+        solution: {
+          en: "One square per face, and a cube has 6 faces — so 6 squares, arranged so no two land on the same face when folded. 5 leaves a face open to the rain.",
+          hi: "हर फलक का एक वर्ग, और घन के 6 फलक — तो 6 वर्ग, ऐसे सजे कि मुड़ने पर दो एक ही फलक पर न गिरें। 5 एक फलक बारिश के लिए खुला छोड़ देता है।",
+          mr: "दर पृष्ठाला एक चौरस, आणि घनाला 6 पृष्ठे — म्हणून 6 चौरस, असे मांडलेले की दुमडल्यावर दोन एकाच पृष्ठावर पडू नयेत. 5 एक पृष्ठ पावसासाठी उघडे ठेवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An OPEN box — no lid — is to be folded from a net. How many squares does its net need?",
+          hi: "बिना ढक्कन का खुला डिब्बा जाल से मोड़ना है। उसके जाल में कितने वर्ग चाहिए?",
+          mr: "झाकण नसलेले उघडे खोके जाळ्यातून दुमडायचे आहे. त्याच्या जाळ्यात किती चौरस हवेत?",
+        },
+        answer: 5,
+        wrong: [6, 4, 8],
+        checkExpr: "6-1",
+        solution: {
+          en: "A closed cube takes 6; leave off the lid and 6 − 1 = 5 squares remain — a floor and four walls. 4 forgets the floor and builds a tube.",
+          hi: "बंद घन को 6 चाहिए; ढक्कन हटाइए तो 6 − 1 = 5 वर्ग — एक फ़र्श और चार दीवारें। 4 फ़र्श भूलकर नली बना देता है।",
+          mr: "बंद घनाला 6 लागतात; झाकण वगळा की 6 − 1 = 5 चौरस — एक तळ आणि चार भिंती. 4 तळ विसरून नळी बांधते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Each face of a cube is to be painted a different colour, no colour repeated. How many colours are needed?",
+          hi: "घन के हर फलक को अलग रंग से रँगना है, कोई रंग दोहराया नहीं जाएगा। कितने रंग चाहिए?",
+          mr: "घनाचे प्रत्येक पृष्ठ वेगळ्या रंगाने रंगवायचे आहे, कोणताही रंग पुन्हा नाही. किती रंग हवेत?",
+        },
+        answer: 6,
+        wrong: [4, 8, 12],
+        checkExpr: "3*2",
+        solution: {
+          en: "One colour per face and the faces come in 3 opposite pairs: 3 × 2 = 6 colours. 8 paints the corners, 12 the edges — the brush works on faces.",
+          hi: "हर फलक एक रंग, और फलक 3 आमने-सामने जोड़ों में हैं: 3 × 2 = 6 रंग। 8 कोनों को रँगता है, 12 किनारों को — ब्रश फलकों पर चलता है।",
+          mr: "दर पृष्ठाला एक रंग, आणि पृष्ठे 3 समोरासमोर जोड्यांत: 3 × 2 = 6 रंग. 8 कोपरे रंगवते, 12 कडा — ब्रश पृष्ठांवर चालतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A cube's every edge is 5 cm. If you laid all its edges end to end, how long a line would they make?",
+          hi: "घन का हर किनारा 5 सेमी का है। सारे किनारे सिरे-से-सिरा बिछा दें तो कितनी लंबी रेखा बनेगी?",
+          mr: "घनाची प्रत्येक कड 5 सेमीची आहे. साऱ्या कडा टोकाला टोक जोडून मांडल्या तर किती लांब रेषा होईल?",
+        },
+        answer: 60,
+        wrong: [30, 20, 25],
+        checkExpr: "12*5",
+        fmt: cm,
+        solution: {
+          en: "Twelve edges of 5 cm: 12 × 5 = 60 cm. 20 takes only the four edges of one square face — a cube carries three such squares' worth of edges.",
+          hi: "5-5 सेमी के बारह किनारे: 12 × 5 = 60 सेमी। 20 केवल एक वर्ग-फलक के चार किनारे लेता है — घन ऐसे तीन वर्गों जितने किनारे ढोता है।",
+          mr: "5-5 सेमीच्या बारा कडा: 12 × 5 = 60 सेमी. 20 फक्त एका चौरस-पृष्ठाच्या चार कडा घेते — घन अशा तीन चौरसांइतक्या कडा वाहतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "From one sheet of card Vandana cuts 2 nets, and each net folds into 1 box. How many boxes will 5 sheets give her?",
+          hi: "एक गत्ते से वंदना 2 जाल काटती है, और हर जाल 1 डिब्बा बनता है। 5 गत्तों से कितने डिब्बे मिलेंगे?",
+          mr: "एका पुठ्ठ्यातून वंदना 2 जाळी कापते, आणि प्रत्येक जाळे 1 खोके होते. 5 पुठ्ठ्यांतून किती खोकी मिळतील?",
+        },
+        answer: 10,
+        wrong: [7, 5, 25],
+        checkExpr: "2*5",
+        solution: {
+          en: "Two boxes per sheet, five sheets: 2 × 5 = 10 boxes. 7 adds sheets to boxes; 25 squares the sheets.",
+          hi: "हर गत्ते से दो डिब्बे, पाँच गत्ते: 2 × 5 = 10 डिब्बे। 7 गत्तों को डिब्बों में जोड़ता है; 25 गत्तों का वर्ग कर देता है।",
+          mr: "दर पुठ्ठ्यामागे दोन खोकी, पाच पुठ्ठे: 2 × 5 = 10 खोकी. 7 पुठ्ठे खोक्यांत मिळवते; 25 पुठ्ठ्यांचा वर्ग करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Sugar cubes are stacked into a block: a floor of 3 by 3 cubes, built 2 layers high. How many cubes are in the block?",
+          hi: "चीनी के घन ब्लॉक में जमे हैं: 3 × 3 घनों का फ़र्श, 2 परत ऊँचा। ब्लॉक में कितने घन हैं?",
+          mr: "साखरेचे घन ठोकळ्यात रचले आहेत: 3 × 3 घनांचा तळ, 2 थर उंच. ठोकळ्यात किती घन आहेत?",
+        },
+        answer: 18,
+        wrong: [9, 12, 27],
+        checkExpr: "3*3*2",
+        solution: {
+          en: "One layer holds 3 × 3 = 9 cubes, and 2 layers hold 9 × 2 = 18. 9 sees only the top layer the eye looks down on; 27 builds a third layer that is not there.",
+          hi: "एक परत में 3 × 3 = 9 घन, और 2 परतों में 9 × 2 = 18। 9 केवल वह ऊपरी परत देखता है जिस पर नज़र पड़ती है; 27 वह तीसरी परत जोड़ देता है जो है ही नहीं।",
+          mr: "एका थरात 3 × 3 = 9 घन, आणि 2 थरांत 9 × 2 = 18. 9 फक्त नजरेस पडणारा वरचा थर पाहते; 27 नसलेला तिसरा थर बांधते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "On a dice, opposite faces add to 7. The faces pair as 1-and-6, 2-and-5, and 3-and-which?",
+          hi: "पासे पर आमने-सामने के फलक 7 जोड़ते हैं। जोड़े हैं 1-और-6, 2-और-5, और 3-और-कौन?",
+          mr: "फाशावर समोरासमोरची पृष्ठे 7 जोडतात. जोड्या आहेत 1-आणि-6, 2-आणि-5, आणि 3-आणि-कोण?",
+        },
+        answer: 4,
+        wrong: [3, 5, 6],
+        checkExpr: "7-3",
+        solution: {
+          en: "7 − 3 = 4 — the last pair is 3-and-4. The three pairs 1·6, 2·5, 3·4 use each number once and each pair totals 7: a full dice checked in one breath.",
+          hi: "7 − 3 = 4 — आख़िरी जोड़ा 3-और-4। तीनों जोड़े 1·6, 2·5, 3·4 हर अंक एक बार लेते हैं और हर जोड़ा 7 बनाता है: एक साँस में जाँचा पूरा पासा।",
+          mr: "7 − 3 = 4 — शेवटची जोडी 3-आणि-4. तिन्ही जोड्या 1·6, 2·5, 3·4 प्रत्येक अंक एकदाच घेतात आणि प्रत्येक जोडी 7 करते: एका दमात तपासलेला अख्खा फासा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "12 cubes are glued into one solid block, 2 cubes high and 2 cubes wide. How many cubes LONG is it?",
+          hi: "12 घन एक ठोस ब्लॉक में जुड़े हैं — 2 घन ऊँचा, 2 घन चौड़ा। वह कितने घन लंबा है?",
+          mr: "12 घन एका भरीव ठोकळ्यात जोडले आहेत — 2 घन उंच, 2 घन रुंद. तो किती घन लांब आहे?",
+        },
+        answer: 3,
+        wrong: [6, 4, 8],
+        checkExpr: "12/(2*2)",
+        solution: {
+          en: "Height × width × length = 12, so length = 12 ÷ (2 × 2) = 3 cubes. 6 divides by 2 only once — the block is 2 both up AND across.",
+          hi: "ऊँचाई × चौड़ाई × लंबाई = 12, तो लंबाई = 12 ÷ (2 × 2) = 3 घन। 6 केवल एक बार 2 से भाग देता है — ब्लॉक ऊपर और आर-पार दोनों में 2 है।",
+          mr: "उंची × रुंदी × लांबी = 12, म्हणून लांबी = 12 ÷ (2 × 2) = 3 घन. 6 फक्त एकदाच 2 ने भागते — ठोकळा वर आणि आडवा दोन्हींत 2 आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A 3×3×3 cube is painted red all over, then cut into its 27 small cubes. How many small cubes have NO red on them at all?",
+          hi: "3×3×3 का घन चारों ओर से लाल रँगा गया, फिर उसके 27 छोटे घनों में काटा गया। कितने छोटे घनों पर बिलकुल भी लाल नहीं होगा?",
+          mr: "3×3×3 चा घन सर्व बाजूंनी लाल रंगवला, मग त्याच्या 27 लहान घनांत कापला. किती लहान घनांवर अजिबात लाल नसेल?",
+        },
+        answer: 1,
+        wrong: [8, 6, 0],
+        checkExpr: "1*1*1",
+        solution: {
+          en: "Paint touches only the outside — and exactly one small cube never saw the outside: the one hidden at the very centre, a 1×1×1 core. The 8 corners got three faces each, the 6 face-middles got one; only the heart of the cube stayed bare.",
+          hi: "रंग केवल बाहर छूता है — और ठीक एक छोटे घन ने बाहर कभी देखा ही नहीं: बीचोबीच छिपा 1×1×1 का मर्म। 8 कोनों को तीन-तीन फलक मिले, 6 फलक-मध्यों को एक-एक; बिना रंग रहा तो केवल घन का हृदय।",
+          mr: "रंग फक्त बाहेरून लागतो — आणि नेमक्या एका लहान घनाने बाहेर कधी पाहिलेच नाही: अगदी मध्यभागी लपलेला 1×1×1 चा गाभा. 8 कोपऱ्यांना तीन-तीन पृष्ठे मिळाली, 6 पृष्ठ-मध्यांना एक-एक; रंगाविना राहिले ते फक्त घनाचे हृदय.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 9 — Boxes and Sketches",
+      name: "Boxes and Sketches",
+      slug: "maths-5-boxes-and-sketches",
+      summary: "Cubes taken apart and put together — edges, corners and nets, dice pairs that make seven, and the painted cube's hidden heart.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "डिब्बे और रेखाचित्र",
+          summary: "खुलते-जुड़ते घन — किनारे, कोने और जाल, सात बनाते पासे के जोड़े, और रँगे घन का छिपा हृदय।",
+        },
+        mr: {
+          name: "खोकी आणि रेखाटने",
+          summary: "उलगडणारे-जुळणारे घन — कडा, कोपरे आणि जाळी, सात करणाऱ्या फाशाच्या जोड्या, आणि रंगवलेल्या घनाचे लपलेले हृदय.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G5_MATHS: TopicFileOut[] = [
   theFishTale(),
   shapesAndAngles(),
   howManySquares(),
   partsAndWholes(),
+  doesItLookTheSame(),
   multiplesAndFactors(),
+  canYouSeeThePattern(),
+  mappingYourWay(),
+  boxesAndSketches(),
   tenthsAndHundredths(),
 ];
