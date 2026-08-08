@@ -965,4 +965,963 @@ export const G6_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Getting to Know Plants (stems, leaves, roots, flowers)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-getting-to-know-plants",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 7 — Getting to Know Plants",
+      hi: "अध्याय 7 — पौधों को जानिए",
+      mr: "प्रकरण 7 — वनस्पतींची ओळख",
+    },
+    name: {
+      en: "Getting to Know Plants",
+      hi: "पौधों को जानिए",
+      mr: "वनस्पतींची ओळख",
+    },
+    summary: {
+      en: "Herbs, shrubs and trees, the stem's water pipeline, leaves that cook in sunlight, roots that mirror the veins — a plant read part by part.",
+      hi: "शाक, झाड़ी और पेड़, तने की पानी-पाइपलाइन, धूप में खाना पकाती पत्तियाँ, शिराओं से मेल खाती जड़ें — अंग-अंग पढ़ा हुआ पौधा।",
+      mr: "रोपटी, झुडपे आणि वृक्ष, खोडाची पाणी-वाहिनी, उन्हात अन्न शिजवणारी पाने, शिरांशी जुळणारी मुळे — अवयवावयवाने वाचलेली वनस्पती.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "herb",
+        name: { en: "The herb", hi: "शाक (हर्ब)", mr: "रोपटे (हर्ब)" },
+        kind: "plant-type",
+        prompt: {
+          en: "Mint, tomato, coriander — which kind of plant is small, with a soft green stem you can bend between two fingers?",
+          hi: "पुदीना, टमाटर, धनिया — कौन-सी क़िस्म का पौधा छोटा होता है, जिसका नरम हरा तना दो उँगलियों में मुड़ जाए?",
+          mr: "पुदिना, टोमॅटो, कोथिंबीर — कोणत्या प्रकारची वनस्पती लहान असते, जिचे मऊ हिरवे खोड दोन बोटांत वाकते?",
+        },
+        statement: {
+          en: "A herb is a small plant with a soft, green, bendable stem — mint and coriander live and die within a season or two.",
+          hi: "शाक छोटा पौधा है जिसका तना नरम, हरा और लचीला होता है — पुदीना और धनिया एक-दो मौसमों में जी-मर लेते हैं।",
+          mr: "रोपटे म्हणजे मऊ, हिरवे, वाकणारे खोड असलेली लहान वनस्पती — पुदिना आणि कोथिंबीर एक-दोन हंगामांत जगून जातात.",
+        },
+        pair: {
+          left: { en: "The herb", hi: "शाक", mr: "रोपटे" },
+          right: {
+            en: "a soft stem you can bend",
+            hi: "मुड़ जाने वाला नरम तना",
+            mr: "वाकणारे मऊ खोड",
+          },
+        },
+      },
+      {
+        id: "shrub",
+        name: { en: "The shrub", hi: "झाड़ी", mr: "झुडूप" },
+        kind: "plant-type",
+        prompt: {
+          en: "Rose, lemon, mehndi — which kind of plant has a hard stem that BRANCHES right from near the ground?",
+          hi: "गुलाब, नींबू, मेहँदी — कौन-सी क़िस्म के पौधे का कड़ा तना ज़मीन के पास से ही शाखाएँ छोड़ता है?",
+          mr: "गुलाब, लिंबू, मेंदी — कोणत्या प्रकारच्या वनस्पतीचे कडक खोड जमिनीजवळूनच फांद्या फुटते?",
+        },
+        statement: {
+          en: "A shrub has a hard stem branching from near the base — bushy and waist-high to head-high, like rose and mehndi.",
+          hi: "झाड़ी का कड़ा तना जड़ के पास से शाखाएँ छोड़ता है — झाड़दार, कमर से सिर तक ऊँची, जैसे गुलाब और मेहँदी।",
+          mr: "झुडपाचे कडक खोड बुंध्याजवळून फांद्या फोडते — झुबकेदार, कमरे ते डोक्याइतके उंच, गुलाब आणि मेंदीसारखे.",
+        },
+        pair: {
+          left: { en: "The shrub", hi: "झाड़ी", mr: "झुडूप" },
+          right: {
+            en: "branches from near the ground",
+            hi: "ज़मीन के पास से शाखाएँ",
+            mr: "जमिनीजवळून फांद्या",
+          },
+        },
+      },
+      {
+        id: "tree",
+        name: { en: "The tree", hi: "पेड़ (वृक्ष)", mr: "वृक्ष" },
+        kind: "plant-type",
+        prompt: {
+          en: "Mango, neem, banyan — which kind of plant stands tall on one thick, hard, woody trunk, its branches high above your head?",
+          hi: "आम, नीम, बरगद — कौन-सी क़िस्म का पौधा एक मोटे, कड़े, काठ वाले तने पर ऊँचा खड़ा होता है, शाखाएँ सिर से बहुत ऊपर?",
+          mr: "आंबा, कडुनिंब, वड — कोणत्या प्रकारची वनस्पती एका जाड, कडक, लाकडी खोडावर उंच उभी असते, फांद्या डोक्याच्या खूप वर?",
+        },
+        statement: {
+          en: "A tree rises on a single thick woody trunk, branching high above the ground — mango and neem outlive the hands that plant them.",
+          hi: "पेड़ एक मोटे काठ के तने पर उठता है, शाखाएँ ज़मीन से ऊँचे — आम और नीम उन्हें रोपने वाले हाथों से ज़्यादा जीते हैं।",
+          mr: "वृक्ष एका जाड लाकडी खोडावर उंचावतो, फांद्या जमिनीपासून उंचावर — आंबा आणि कडुनिंब त्यांना लावणाऱ्या हातांहून जास्त जगतात.",
+        },
+      },
+      {
+        id: "stem",
+        name: { en: "The stem", hi: "तना", mr: "खोड" },
+        kind: "plant-part",
+        prompt: {
+          en: "Stand a white-flowered stalk in red-tinted water, and by evening the petals' veins run red. Which part just proved it lifts water?",
+          hi: "सफ़ेद फूल वाली डंडी लाल रँगे पानी में खड़ी कीजिए, शाम तक पंखुड़ियों की शिराएँ लाल दौड़ने लगती हैं। किस अंग ने अभी साबित किया कि वह पानी चढ़ाता है?",
+          mr: "पांढऱ्या फुलाची दांडी लाल रंगवलेल्या पाण्यात उभी करा, संध्याकाळपर्यंत पाकळ्यांच्या शिरा लाल धावू लागतात. कोणत्या अवयवाने आत्ताच सिद्ध केले की तो पाणी चढवतो?",
+        },
+        statement: {
+          en: "The stem is the plant's pipeline — it lifts water from root to leaf, as the red-water experiment shows in one afternoon.",
+          hi: "तना पौधे की पाइपलाइन है — वह जड़ से पत्ती तक पानी चढ़ाता है, जैसा लाल-पानी का प्रयोग एक दोपहर में दिखा देता है।",
+          mr: "खोड ही वनस्पतीची जलवाहिनी — ते मुळापासून पानापर्यंत पाणी चढवते, लाल-पाण्याचा प्रयोग एका दुपारीत दाखवतो तसे.",
+        },
+        detail: {
+          en: "Cut the dyed stem across and the red shows as tiny dots — the pipes themselves, caught in cross-section.",
+          hi: "रँगे तने को आड़ा काटिए तो लाल नन्हे बिंदुओं में दिखता है — ख़ुद नलियाँ, आड़े कट में पकड़ी हुईं।",
+          mr: "रंगलेले खोड आडवे कापा, लाल इवल्या ठिपक्यांत दिसते — स्वतः नळ्या, आडव्या छेदात पकडलेल्या.",
+        },
+        extra: {
+          en: "It carries the leaves' cooked food DOWN as well — a two-way road with different lanes.",
+          hi: "वह पत्तियों का पका खाना नीचे भी ले जाता है — अलग-अलग लेन वाली दो-तरफ़ा सड़क।",
+          mr: "ते पानांचे शिजलेले अन्न खालीही नेते — वेगळ्या मार्गिकांची दुतर्फा सडक.",
+        },
+        pair: {
+          left: { en: "The stem", hi: "तना", mr: "खोड" },
+          right: {
+            en: "the water's lift-pipe",
+            hi: "पानी की चढ़ान-नली",
+            mr: "पाण्याची चढण-नळी",
+          },
+        },
+      },
+      {
+        id: "leaf",
+        name: { en: "The leaf", hi: "पत्ती", mr: "पान" },
+        kind: "plant-part",
+        prompt: {
+          en: "Which flat green part is the plant's kitchen — cooking food from sunlight, air and water, a work no animal can do?",
+          hi: "कौन-सा चपटा हरा अंग पौधे की रसोई है — धूप, हवा और पानी से खाना पकाता, ऐसा काम जो कोई जानवर नहीं कर सकता?",
+          mr: "कोणता सपाट हिरवा अवयव वनस्पतीचे स्वयंपाकघर आहे — ऊन, हवा आणि पाण्यातून अन्न शिजवणारा, कोणताही प्राणी करू शकत नाही असे काम?",
+        },
+        statement: {
+          en: "The leaf is the plant's food factory — its green traps sunlight and cooks food from air and water, feeding the whole plant.",
+          hi: "पत्ती पौधे का भोजन-कारख़ाना है — उसकी हरियाली धूप पकड़कर हवा और पानी से खाना पकाती है, पूरा पौधा उसी से पलता है।",
+          mr: "पान म्हणजे वनस्पतीचा अन्न-कारखाना — त्याचा हिरवेपणा ऊन पकडून हवा आणि पाण्यातून अन्न शिजवतो, सारी वनस्पती त्यावरच पोसते.",
+        },
+        pair: {
+          left: { en: "The leaf", hi: "पत्ती", mr: "पान" },
+          right: {
+            en: "the kitchen of sunlight",
+            hi: "धूप की रसोई",
+            mr: "उन्हाचे स्वयंपाकघर",
+          },
+        },
+      },
+      {
+        id: "transpiration",
+        name: { en: "Transpiration", hi: "वाष्पोत्सर्जन", mr: "बाष्पोत्सर्जन" },
+        kind: "plant-part",
+        prompt: {
+          en: "Tie a polythene bag over a leafy branch on a sunny day — by afternoon, droplets mist its inside. What leaf-work put them there?",
+          hi: "धूप वाले दिन पत्तेदार डाल पर पॉलीथीन बाँधिए — दोपहर तक उसके भीतर बूँदें धुँधला जाती हैं। पत्ती के किस काम ने उन्हें वहाँ रखा?",
+          mr: "उन्हाच्या दिवशी पानेदार फांदीवर पॉलिथीन बांधा — दुपारपर्यंत त्याच्या आत थेंब धुके धरतात. पानाच्या कोणत्या कामाने ते तिथे ठेवले?",
+        },
+        statement: {
+          en: "Transpiration is the leaves breathing out water as vapour — the bagged branch catches it as droplets, water the roots drank that morning.",
+          hi: "वाष्पोत्सर्जन में पत्तियाँ पानी को भाप बनाकर छोड़ती हैं — बँधी थैली उसे बूँदों में पकड़ लेती है; वही पानी जो जड़ों ने सुबह पिया था।",
+          mr: "बाष्पोत्सर्जनात पाने पाणी वाफ करून सोडतात — बांधलेली पिशवी ते थेंबांत पकडते; तेच पाणी जे मुळांनी सकाळी प्यायले होते.",
+        },
+        pair: {
+          left: { en: "Transpiration", hi: "वाष्पोत्सर्जन", mr: "बाष्पोत्सर्जन" },
+          right: {
+            en: "leaves breathing out water",
+            hi: "पानी छोड़ती साँस लेती पत्तियाँ",
+            mr: "पाणी सोडणारी पाने",
+          },
+        },
+      },
+      {
+        id: "taproot",
+        name: { en: "The taproot", hi: "मूसला जड़", mr: "सोटमूळ" },
+        kind: "root-type",
+        prompt: {
+          en: "Pull up a mustard plant: one main root drives straight down, side-roots branching off it. What is this root plan called?",
+          hi: "सरसों का पौधा उखाड़िए: एक मुख्य जड़ सीधी नीचे उतरती है, बग़ल की जड़ें उससे फूटती हैं। इस जड़-योजना को क्या कहते हैं?",
+          mr: "मोहरीचे रोप उपटा: एक मुख्य मूळ सरळ खाली जाते, बाजूची मुळे त्यातून फुटतात. या मूळ-रचनेला काय म्हणतात?",
+        },
+        statement: {
+          en: "A taproot is one main root going straight down with smaller side-roots — mustard, neem and mango grow this way.",
+          hi: "मूसला जड़ में एक मुख्य जड़ सीधी नीचे जाती है और छोटी बग़ली जड़ें उससे — सरसों, नीम और आम इसी ढंग से उगते हैं।",
+          mr: "सोटमुळात एक मुख्य मूळ सरळ खाली जाते आणि लहान बाजूची मुळे त्यातून — मोहरी, कडुनिंब आणि आंबा असेच वाढतात.",
+        },
+        pair: {
+          left: { en: "The taproot", hi: "मूसला जड़", mr: "सोटमूळ" },
+          right: {
+            en: "one main root, then branches",
+            hi: "एक मुख्य जड़, फिर शाखाएँ",
+            mr: "एक मुख्य मूळ, मग फाटे",
+          },
+        },
+      },
+      {
+        id: "fibrousroot",
+        name: { en: "The fibrous roots", hi: "झकड़ा जड़ें", mr: "तंतुमय मुळे" },
+        kind: "root-type",
+        prompt: {
+          en: "Pull up a tuft of grass or a wheat plant: no main root at all, only a bunch of thin, similar roots. What is this plan called?",
+          hi: "घास का गुच्छा या गेहूँ का पौधा उखाड़िए: कोई मुख्य जड़ नहीं, बस पतली, एक-सी जड़ों का झुंड। इस योजना को क्या कहते हैं?",
+          mr: "गवताचा पुंजका वा गव्हाचे रोप उपटा: मुख्य मूळ नाहीच, फक्त बारीक, सारख्या मुळांचा झुबका. या रचनेला काय म्हणतात?",
+        },
+        statement: {
+          en: "Fibrous roots are a bunch of similar thin roots with no main one — the way of grass, wheat and maize.",
+          hi: "झकड़ा जड़ें पतली, एक-सी जड़ों का झुंड हैं, कोई मुख्य नहीं — घास, गेहूँ और मक्का की रीत।",
+          mr: "तंतुमय मुळे म्हणजे मुख्य नसलेला बारीक, सारख्या मुळांचा झुबका — गवत, गहू आणि मक्याची रीत.",
+        },
+        detail: {
+          en: "Its leaves show PARALLEL veins — root plan and leaf veins go together, in both plant families.",
+          hi: "उसकी पत्तियों में समांतर शिराएँ दिखती हैं — जड़-योजना और पत्ती-शिराएँ साथ चलती हैं, दोनों पौध-परिवारों में।",
+          mr: "त्याच्या पानांत समांतर शिरा दिसतात — मूळ-रचना आणि पान-शिरा एकत्र जातात, दोन्ही वनस्पति-कुटुंबांत.",
+        },
+        extra: {
+          en: "The tuft grips topsoil wide and shallow — why grass binds a slope better than a deep lone root would.",
+          hi: "झुंड ऊपरी मिट्टी को चौड़ा-उथला जकड़ता है — इसीलिए ढलान को घास एक गहरी अकेली जड़ से बेहतर बाँधती है।",
+          mr: "झुबका वरची माती रुंद-उथळ धरतो — म्हणूनच उतार गवत एका खोल एकट्या मुळाहून चांगला बांधते.",
+        },
+        pair: {
+          left: { en: "Fibrous roots", hi: "झकड़ा जड़ें", mr: "तंतुमय मुळे" },
+          right: {
+            en: "a tuft with no leader",
+            hi: "बिना मुखिया का झुंड",
+            mr: "पुढारी नसलेला झुबका",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these plants by kind: A-mint, B-rose, C-neem. Which trio is right?",
+          hi: "इन पौधों को क़िस्म से छाँटिए: अ-पुदीना, ब-गुलाब, स-नीम। कौन-सी तिकड़ी सही है?",
+          mr: "या वनस्पती प्रकाराने लावा: अ-पुदिना, ब-गुलाब, क-कडुनिंब. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: herb · B: shrub · C: tree",
+            hi: "अ: शाक · ब: झाड़ी · स: पेड़",
+            mr: "अ: रोपटे · ब: झुडूप · क: वृक्ष",
+          },
+          {
+            en: "A: shrub · B: tree · C: herb",
+            hi: "अ: झाड़ी · ब: पेड़ · स: शाक",
+            mr: "अ: झुडूप · ब: वृक्ष · क: रोपटे",
+          },
+          {
+            en: "A: tree · B: herb · C: shrub",
+            hi: "अ: पेड़ · ब: शाक · स: झाड़ी",
+            mr: "अ: वृक्ष · ब: रोपटे · क: झुडूप",
+          },
+          {
+            en: "A: herb · B: tree · C: shrub",
+            hi: "अ: शाक · ब: पेड़ · स: झाड़ी",
+            mr: "अ: रोपटे · ब: वृक्ष · क: झुडूप",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Read the stem: mint's bends soft and green — herb; rose's is hard and branches at the base — shrub; neem climbs one woody trunk — tree. The stem is the sorting key the chapter hands you; height alone can mislead, the stem does not.",
+          hi: "तना पढ़िए: पुदीने का नरम-हरा मुड़ता है — शाक; गुलाब का कड़ा है और जड़ से शाखाएँ — झाड़ी; नीम एक काठ के तने पर चढ़ता है — पेड़। छाँटने की कुंजी तना है, जो अध्याय थमाता है; अकेली ऊँचाई भटका सकती है, तना नहीं।",
+          mr: "खोड वाचा: पुदिन्याचे मऊ-हिरवे वाकते — रोपटे; गुलाबाचे कडक आणि बुंध्यापासून फांद्या — झुडूप; कडुनिंब एका लाकडी खोडावर चढतो — वृक्ष. लावणीची किल्ली खोड आहे, जी प्रकरण देते; एकटी उंची भरकटवू शकते, खोड नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A leaf in your hand shows a net of criss-cross (reticulate) veins. Without digging at all, what can you say about the plant's ROOTS — and how dare you say it?",
+          hi: "हाथ की पत्ती में जालीदार (जालिका) शिराएँ दिखती हैं। बिना ज़रा भी खोदे, पौधे की जड़ों के बारे में क्या कह सकते हैं — और कहने की हिम्मत कैसे?",
+          mr: "हातातल्या पानात जाळीदार (जालिका) शिरा दिसतात. अजिबात न खणता, वनस्पतीच्या मुळांबद्दल काय सांगू शकाल — आणि सांगण्याचे धाडस कसे?",
+        },
+        choices: [
+          {
+            en: "It has a taproot — reticulate veins and taproots travel together in one plant family, so the leaf testifies about the hidden root",
+            hi: "उसकी मूसला जड़ है — जालिका शिराएँ और मूसला जड़ें एक ही पौध-परिवार में साथ चलती हैं, तो पत्ती छिपी जड़ की गवाही देती है",
+            mr: "तिला सोटमूळ आहे — जालिका शिरा आणि सोटमुळे एकाच वनस्पति-कुटुंबात एकत्र जातात, म्हणून पान लपलेल्या मुळाची साक्ष देते",
+          },
+          {
+            en: "Nothing — leaves and roots have no connection",
+            hi: "कुछ नहीं — पत्तियों और जड़ों में कोई नाता नहीं",
+            mr: "काहीच नाही — पाने आणि मुळांत नाते नाही",
+          },
+          {
+            en: "It has fibrous roots, since nets look like tufts",
+            hi: "झकड़ा जड़ें हैं, क्योंकि जाल झुंड-सा दिखता है",
+            mr: "तंतुमय मुळे आहेत, कारण जाळे झुबक्यासारखे दिसते",
+          },
+          {
+            en: "It has no roots at all",
+            hi: "उसकी जड़ें हैं ही नहीं",
+            mr: "तिला मुळेच नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Plants keep a pattern: net-veined leaves ride above taproots; parallel-veined blades (grass, wheat) ride above fibrous tufts. So one leaf in the hand reports on a root underground — a prediction you could dig up and check. That is science's favourite move: a visible thing vouching for an invisible one, testably.",
+          hi: "पौधे एक क़ायदा निभाते हैं: जालीदार पत्तियाँ मूसला जड़ों के ऊपर सवार हैं; समांतर शिराओं वाली पत्तियाँ (घास, गेहूँ) झकड़ा झुंड के ऊपर। तो हाथ की एक पत्ती ज़मीन के नीचे की जड़ की ख़बर देती है — ऐसी भविष्यवाणी जिसे खोदकर जाँचा जा सकता है। विज्ञान की प्रिय चाल यही है: दिखती चीज़ अनदेखी की ज़मानत दे, जाँचने लायक़ ढंग से।",
+          mr: "वनस्पती एक कायदा पाळतात: जाळीदार पाने सोटमुळांवर स्वार; समांतर शिरांची पाती (गवत, गहू) तंतुमय झुबक्यांवर. म्हणून हातातले एक पान जमिनीखालच्या मुळाची खबर देते — खणून तपासता येईल असे भाकीत. विज्ञानाची आवडती चाल हीच: दिसणारी गोष्ट न दिसणाऱ्याची हमी देते, तपासण्याजोग्या रीतीने.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two potted plants sit in the sun. One's leaves are bagged in polythene; by evening its bag is misted while the plant looks the same. What has the experiment made VISIBLE?",
+          hi: "धूप में दो गमले हैं। एक की पत्तियों पर पॉलीथीन बँधी है; शाम तक उसकी थैली धुँधली है जबकि पौधा वैसा ही दिखता है। प्रयोग ने क्या दिखने लायक़ बना दिया?",
+          mr: "उन्हात दोन कुंड्या आहेत. एकीच्या पानांवर पॉलिथीन बांधले आहे; संध्याकाळपर्यंत तिची पिशवी धुरकट होते तर वनस्पती तशीच दिसते. प्रयोगाने काय दिसण्याजोगे केले?",
+        },
+        choices: [
+          {
+            en: "The invisible water the leaves breathe out all day — the bag only trapped what always escapes unseen into the air",
+            hi: "वह अदृश्य पानी जो पत्तियाँ दिन भर छोड़ती हैं — थैली ने बस वही पकड़ा जो हमेशा अनदेखा हवा में निकल जाता है",
+            mr: "पाने दिवसभर सोडतात ते अदृश्य पाणी — पिशवीने फक्त तेच पकडले जे नेहमी न दिसता हवेत निसटते",
+          },
+          {
+            en: "The plant sweating because the bag made it hot",
+            hi: "थैली की गर्मी से पौधे का पसीना",
+            mr: "पिशवीच्या उकाड्याने वनस्पतीचा घाम",
+          },
+          {
+            en: "Rain that leaked into the bag",
+            hi: "थैली में रिसी बारिश",
+            mr: "पिशवीत झिरपलेला पाऊस",
+          },
+          {
+            en: "The polythene itself turning into water",
+            hi: "ख़ुद पॉलीथीन का पानी बन जाना",
+            mr: "स्वतः पॉलिथीनचे पाणी होणे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The droplets were leaving the leaves every sunny day — as vapour, invisible, joining the air. The bag changes nothing about the plant; it only closes the door so the escaping water must condense where eyes can find it. Good experiments often work exactly this way: not making something happen, but making the already-happening show itself.",
+          hi: "बूँदें हर धूप वाले दिन पत्तियों से निकल रही थीं — भाप बनकर, अदृश्य, हवा में मिलती हुईं। थैली पौधे में कुछ नहीं बदलती; वह बस दरवाज़ा बंद करती है ताकि निकलता पानी वहीं ओस बने जहाँ आँखें उसे पा लें। अच्छे प्रयोग अक्सर ठीक ऐसे ही चलते हैं: कुछ घटित नहीं कराते, जो पहले से घट रहा है उसे दिखा देते हैं।",
+          mr: "थेंब प्रत्येक उन्हाच्या दिवशी पानांतून निघत होते — वाफ होऊन, अदृश्य, हवेत मिळत. पिशवी वनस्पतीत काही बदलत नाही; ती फक्त दार बंद करते म्हणजे निसटणारे पाणी डोळ्यांना सापडेल तिथे थेंब व्हावे. चांगले प्रयोग अनेकदा असेच चालतात: काही घडवत नाहीत, आधीच घडणारे दाखवतात.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Body Movements (joints, bones and boneless movers)          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-body-movements",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 8 — Body Movements",
+      hi: "अध्याय 8 — शरीर में गति",
+      mr: "प्रकरण 8 — शरीरातील हालचाली",
+    },
+    name: { en: "Body Movements", hi: "शरीर में गति", mr: "शरीरातील हालचाली" },
+    summary: {
+      en: "Ball-and-socket, hinge and pivot joints, the rib cage's bone box, muscles that only pull — and the earthworm that travels with no bones at all.",
+      hi: "कंदुक-खल्लिका, कब्ज़ा और धुराग्र जोड़, पसलियों का हड्डी-पिंजरा, केवल खींचने वाली पेशियाँ — और वह केंचुआ जो बिना एक भी हड्डी के सफ़र करता है।",
+      mr: "उखळी, बिजागरी आणि कीलक सांधे, बरगड्यांचा हाडांचा पिंजरा, फक्त ओढणारे स्नायू — आणि एकही हाड नसताना प्रवास करणारे गांडूळ.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ballsocket",
+        name: {
+          en: "The ball-and-socket joint",
+          hi: "कंदुक-खल्लिका जोड़",
+          mr: "उखळीचा सांधा",
+        },
+        kind: "joint",
+        prompt: {
+          en: "Swing your arm in a full circle at the shoulder — which kind of joint allows that all-round freedom?",
+          hi: "कंधे से बाँह को पूरा गोल घुमाइए — किस क़िस्म का जोड़ यह चौतरफ़ा आज़ादी देता है?",
+          mr: "खांद्यातून हात पूर्ण गोल फिरवा — कोणत्या प्रकारचा सांधा ही चौफेर मोकळीक देतो?",
+        },
+        statement: {
+          en: "In a ball-and-socket joint a round bone-head turns inside a cup — the shoulder and hip swing in every direction because of it.",
+          hi: "कंदुक-खल्लिका जोड़ में गोल हड्डी-सिरा कटोरी में घूमता है — कंधा और कूल्हा इसी से हर दिशा में झूलते हैं।",
+          mr: "उखळीच्या सांध्यात गोल हाड-डोके वाटीत फिरते — खांदा आणि खुबा त्यामुळेच प्रत्येक दिशेला झुलतात.",
+        },
+        pair: {
+          left: { en: "Ball-and-socket", hi: "कंदुक-खल्लिका", mr: "उखळीचा सांधा" },
+          right: {
+            en: "a swing in every direction",
+            hi: "हर दिशा में झूला",
+            mr: "प्रत्येक दिशेला झोका",
+          },
+        },
+      },
+      {
+        id: "hinge",
+        name: { en: "The hinge joint", hi: "कब्ज़ा जोड़", mr: "बिजागरीचा सांधा" },
+        kind: "joint",
+        prompt: {
+          en: "The knee and elbow fold one way and refuse every other — like which fitting on a door?",
+          hi: "घुटना और कोहनी एक ही ओर मुड़ते हैं और बाक़ी हर ओर से इनकार — दरवाज़े की किस चीज़ की तरह?",
+          mr: "गुडघा आणि कोपर एकाच बाजूला वाकतात आणि बाकी साऱ्यांना नकार — दाराच्या कशासारखे?",
+        },
+        statement: {
+          en: "A hinge joint bends in one plane only — knee and elbow open and close like a door, never sideways.",
+          hi: "कब्ज़ा जोड़ एक ही तल में मुड़ता है — घुटना और कोहनी दरवाज़े-से खुलते-बंद होते हैं, कभी बग़ल में नहीं।",
+          mr: "बिजागरीचा सांधा एकाच प्रतलात वाकतो — गुडघा आणि कोपर दारासारखे उघड-बंद होतात, कधीही बाजूला नाही.",
+        },
+        detail: {
+          en: "That one-way limit is strength: a knee that swung every way would buckle under the body's weight.",
+          hi: "वही एक-तरफ़ा सीमा ताक़त है: हर ओर झूलता घुटना शरीर के वज़न तले धँस जाता।",
+          mr: "तीच एकतर्फी मर्यादा म्हणजे बळ: प्रत्येक दिशेला झुलणारा गुडघा शरीराच्या वजनाखाली मोडला असता.",
+        },
+        extra: {
+          en: "Machines copied it long ago — every door and laptop lid folds on the knee's plan.",
+          hi: "मशीनों ने इसे कब का नक़ल कर लिया — हर दरवाज़ा और लैपटॉप का ढक्कन घुटने की योजना पर मुड़ता है।",
+          mr: "यंत्रांनी हे केव्हाच उचलले — प्रत्येक दार आणि लॅपटॉपचे झाकण गुडघ्याच्या आराखड्यावर वाकते.",
+        },
+        pair: {
+          left: { en: "The hinge joint", hi: "कब्ज़ा जोड़", mr: "बिजागरीचा सांधा" },
+          right: {
+            en: "one way, like a door",
+            hi: "एक ही ओर, दरवाज़े-सा",
+            mr: "एकाच बाजूला, दारासारखे",
+          },
+        },
+      },
+      {
+        id: "pivot",
+        name: { en: "The pivot joint", hi: "धुराग्र जोड़", mr: "कीलकाचा सांधा" },
+        kind: "joint",
+        prompt: {
+          en: "Shake your head 'no' — which joint, where skull meets spine, lets the head turn side to side on its post?",
+          hi: "सिर से 'ना' कहिए — खोपड़ी और रीढ़ की मिलन-जगह का कौन-सा जोड़ सिर को उसकी खूँटी पर इधर-उधर घुमाता है?",
+          mr: "मानेने 'नाही' म्हणा — कवटी आणि मणका मिळतो तिथला कोणता सांधा डोक्याला त्याच्या खुंटीवर इकडेतिकडे फिरवतो?",
+        },
+        statement: {
+          en: "The pivot joint at the top of the spine lets the head turn on a bony post — the 'no' shake is its signature.",
+          hi: "रीढ़ के शीर्ष का धुराग्र जोड़ सिर को हड्डी की खूँटी पर घुमाता है — 'ना' की झलक उसी का हस्ताक्षर है।",
+          mr: "मणक्याच्या माथ्यावरचा कीलक सांधा डोक्याला हाडाच्या खुंटीवर फिरवतो — 'नाही'ची मान हीच त्याची सही.",
+        },
+      },
+      {
+        id: "ribcage",
+        name: { en: "The rib cage", hi: "पसली-पिंजर", mr: "बरगड्यांचा पिंजरा" },
+        kind: "bone",
+        prompt: {
+          en: "Which curved bones join breastbone to backbone, building a box round the heart and lungs?",
+          hi: "कौन-सी मुड़ी हड्डियाँ छाती की हड्डी को रीढ़ से जोड़कर दिल और फेफड़ों के गिर्द डिब्बा बनाती हैं?",
+          mr: "कोणती वाकडी हाडे छातीचे हाड मणक्याशी जोडून हृदय आणि फुप्फुसांभोवती पेटी बांधतात?",
+        },
+        statement: {
+          en: "The rib cage is a bone box round the heart and lungs — ribs curving from backbone to breastbone, armour that still moves for breath.",
+          hi: "पसली-पिंजर दिल-फेफड़ों के गिर्द हड्डी का डिब्बा है — रीढ़ से छाती की हड्डी तक मुड़ी पसलियाँ; ऐसा कवच जो साँस के लिए हिलता भी है।",
+          mr: "बरगड्यांचा पिंजरा हृदय-फुप्फुसांभोवतीची हाडांची पेटी — मणक्यापासून छातीच्या हाडापर्यंत वाकलेल्या बरगड्या; श्वासासाठी हलणारे चिलखत.",
+        },
+        pair: {
+          left: { en: "The rib cage", hi: "पसली-पिंजर", mr: "बरगड्यांचा पिंजरा" },
+          right: {
+            en: "armour round heart and lungs",
+            hi: "दिल-फेफड़ों का कवच",
+            mr: "हृदय-फुप्फुसांचे चिलखत",
+          },
+        },
+      },
+      {
+        id: "backbone",
+        name: { en: "The backbone", hi: "रीढ़ की हड्डी", mr: "पाठीचा कणा" },
+        kind: "bone",
+        prompt: {
+          en: "Run a thumb down a friend's back: not one long bone but a chain of many small ones. What is this chain called?",
+          hi: "दोस्त की पीठ पर अँगूठा फेरिए: एक लंबी हड्डी नहीं, कई छोटी हड्डियों की माला। इस माला को क्या कहते हैं?",
+          mr: "मित्राच्या पाठीवरून अंगठा फिरवा: एक लांब हाड नव्हे, अनेक लहान हाडांची माळ. या माळेला काय म्हणतात?",
+        },
+        statement: {
+          en: "The backbone is a chain of many small bones stacked on one another — many joints in a row are what let the back bend and twist.",
+          hi: "रीढ़ एक-पर-एक चढ़ी कई छोटी हड्डियों की माला है — क़तार के ढेरों जोड़ ही पीठ को झुकने-मुड़ने देते हैं।",
+          mr: "कणा म्हणजे एकावर एक रचलेल्या अनेक लहान हाडांची माळ — रांगेतले पुष्कळ सांधेच पाठीला वाकू-वळू देतात.",
+        },
+        pair: {
+          left: { en: "The backbone", hi: "रीढ़", mr: "कणा" },
+          right: {
+            en: "a chain of small bones",
+            hi: "छोटी हड्डियों की माला",
+            mr: "लहान हाडांची माळ",
+          },
+        },
+      },
+      {
+        id: "musclepairs",
+        name: { en: "Muscle pairs", hi: "पेशियों की जोड़ियाँ", mr: "स्नायूंच्या जोड्या" },
+        kind: "mover",
+        prompt: {
+          en: "Bend your elbow and one muscle bulges; straighten it and its PARTNER takes over. Why do muscles work two to a bone?",
+          hi: "कोहनी मोड़िए तो एक पेशी उभरती है; सीधी कीजिए तो उसकी जोड़ीदार काम सँभालती है। पेशियाँ हड्डी पर दो-दो होकर क्यों काम करती हैं?",
+          mr: "कोपर वाकवा तर एक स्नायू फुगतो; सरळ करा तर त्याचा जोडीदार काम घेतो. स्नायू हाडावर दोघे-दोघे का काम करतात?",
+        },
+        statement: {
+          en: "Muscles can only PULL, never push — so every bone needs a pair: one muscle bends it, the partner pulls it straight again.",
+          hi: "पेशियाँ केवल खींच सकती हैं, धकेल नहीं सकतीं — इसलिए हर हड्डी को जोड़ी चाहिए: एक पेशी मोड़ती है, जोड़ीदार वापस सीधा खींचती है।",
+          mr: "स्नायू फक्त ओढू शकतात, ढकलू शकत नाहीत — म्हणून प्रत्येक हाडाला जोडी हवी: एक स्नायू वाकवतो, जोडीदार परत सरळ ओढतो.",
+        },
+        detail: {
+          en: "When one of the pair pulls, the other must relax and lengthen — they take strict turns.",
+          hi: "जोड़ी में एक खींचे तो दूसरी को ढीला होकर लंबा होना पड़ता है — वे कड़ी बारियाँ निभाती हैं।",
+          mr: "जोडीतला एक ओढतो तेव्हा दुसऱ्याला सैल होऊन लांबावे लागते — ते काटेकोर आळीपाळी पाळतात.",
+        },
+        extra: {
+          en: "Feel it: the bulge swaps sides of your arm as the elbow bends and straightens.",
+          hi: "महसूस कीजिए: कोहनी के मुड़ने-सीधे होने पर उभार बाँह की करवट बदल लेता है।",
+          mr: "जाणवून पाहा: कोपर वाकता-सरळ होता फुगवटा हाताची बाजू बदलतो.",
+        },
+        pair: {
+          left: { en: "Muscle pairs", hi: "पेशियों की जोड़ियाँ", mr: "स्नायूंच्या जोड्या" },
+          right: {
+            en: "pull and pull-back",
+            hi: "खिंचाव और वापसी-खिंचाव",
+            mr: "ओढ आणि परत-ओढ",
+          },
+        },
+      },
+      {
+        id: "earthworm2",
+        name: { en: "The earthworm's travel", hi: "केंचुए का सफ़र", mr: "गांडुळाचा प्रवास" },
+        kind: "mover",
+        prompt: {
+          en: "No bones, no legs — yet it crosses the garden bed by lengthening, gripping with tiny bristles, and pulling itself up. Who moves like this?",
+          hi: "न हड्डी, न टाँग — फिर भी लंबा होकर, नन्हे शूकों से जकड़कर, ख़ुद को समेटता हुआ क्यारी पार कर जाता है। ऐसे कौन चलता है?",
+          mr: "हाड नाही, पाय नाही — तरी लांबत, इवल्या शूकांनी धरत, स्वतःला आवळत वाफा ओलांडते. असे कोण चालते?",
+        },
+        statement: {
+          en: "The earthworm travels bonelessly — its body lengthens forward, tiny bristles grip the ground, and the rear is pulled up: squeeze, grip, repeat.",
+          hi: "केंचुआ बिना हड्डी सफ़र करता है — शरीर आगे लंबा होता है, नन्हे शूक ज़मीन जकड़ते हैं, और पिछला हिस्सा खिंच आता है: सिकुड़ो, जकड़ो, दोहराओ।",
+          mr: "गांडूळ हाडांविना प्रवास करते — शरीर पुढे लांबते, इवले शूक जमीन धरतात, आणि मागचा भाग ओढला जातो: आवळा, धरा, पुन्हा.",
+        },
+      },
+      {
+        id: "fish2",
+        name: { en: "The fish's swimming", hi: "मछली की तैराकी", mr: "माशाचे पोहणे" },
+        kind: "mover",
+        prompt: {
+          en: "Which swimmer's whole body is shaped like a boat's hull, curving side to side while the tail flicks it forward?",
+          hi: "किस तैराक का पूरा शरीर नाव के पेंदे-सा गढ़ा है — इधर-उधर लहराता, जबकि पूँछ उसे आगे झटकती है?",
+          mr: "कोणत्या पोहणाऱ्याचे सबंध शरीर होडीच्या तळासारखे घडले आहे — इकडेतिकडे लवत, तर शेपटी त्याला पुढे झटकते?",
+        },
+        statement: {
+          en: "The fish swims with a streamlined body — curving side to side in waves while the tail pushes against the water.",
+          hi: "मछली धारा-रेखीय शरीर से तैरती है — लहरों में इधर-उधर मुड़ती, जबकि पूँछ पानी पर ज़ोर देती है।",
+          mr: "मासा प्रवाहरेखित शरीराने पोहतो — लाटांत इकडेतिकडे वळत, तर शेपटी पाण्यावर जोर देते.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the joint to its home: A-swings all directions, B-folds one way only, C-turns the head on a post. Which trio is right?",
+          hi: "जोड़ को उसके घर से मिलाइए: अ-हर दिशा में झूलता है, ब-एक ही ओर मुड़ता है, स-सिर को खूँटी पर घुमाता है। कौन-सी तिकड़ी सही है?",
+          mr: "सांधा त्याच्या घराशी जुळवा: अ-प्रत्येक दिशेला झुलतो, ब-एकाच बाजूला वाकतो, क-डोके खुंटीवर फिरवतो. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: shoulder · B: knee · C: neck",
+            hi: "अ: कंधा · ब: घुटना · स: गर्दन",
+            mr: "अ: खांदा · ब: गुडघा · क: मान",
+          },
+          {
+            en: "A: knee · B: neck · C: shoulder",
+            hi: "अ: घुटना · ब: गर्दन · स: कंधा",
+            mr: "अ: गुडघा · ब: मान · क: खांदा",
+          },
+          {
+            en: "A: neck · B: shoulder · C: knee",
+            hi: "अ: गर्दन · ब: कंधा · स: घुटना",
+            mr: "अ: मान · ब: खांदा · क: गुडघा",
+          },
+          {
+            en: "A: shoulder · B: neck · C: knee",
+            hi: "अ: कंधा · ब: गर्दन · स: घुटना",
+            mr: "अ: खांदा · ब: मान · क: गुडघा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The shoulder's ball rolls in its socket — all directions; the knee's hinge folds one way like a door; the neck's pivot turns the head on its post. Try each movement as you answer — your own body is the chapter's laboratory.",
+          hi: "कंधे का गोला अपनी कटोरी में लुढ़कता है — हर दिशा; घुटने का कब्ज़ा दरवाज़े-सा एक ओर मुड़ता है; गर्दन का धुराग्र सिर को खूँटी पर घुमाता है। उत्तर देते-देते हर चाल आज़माइए — आपका अपना शरीर ही अध्याय की प्रयोगशाला है।",
+          mr: "खांद्याचा गोळा वाटीत घरंगळतो — प्रत्येक दिशा; गुडघ्याची बिजागरी दारासारखी एका बाजूला वाकते; मानेचा कीलक डोके खुंटीवर फिरवतो. उत्तर देताना प्रत्येक हालचाल करून पाहा — तुमचे स्वतःचे शरीर हीच प्रकरणाची प्रयोगशाळा.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Muscles can only pull. Knowing just that one fact, why must every bone that moves have TWO muscles attached, not one?",
+          hi: "पेशियाँ केवल खींच सकती हैं। बस यही एक तथ्य जानकर बताइए — हिलने वाली हर हड्डी पर दो पेशियाँ क्यों जुड़ी होनी चाहिए, एक क्यों नहीं?",
+          mr: "स्नायू फक्त ओढू शकतात. एवढेच एक तथ्य जाणून सांगा — हलणाऱ्या प्रत्येक हाडाला दोन स्नायू का जोडलेले हवेत, एक का नाही?",
+        },
+        choices: [
+          {
+            en: "One muscle can bend the bone but cannot push it back — only a partner pulling from the other side can return it",
+            hi: "एक पेशी हड्डी मोड़ सकती है पर धकेलकर लौटा नहीं सकती — दूसरी ओर से खींचती जोड़ीदार ही उसे वापस ला सकती है",
+            mr: "एक स्नायू हाड वाकवू शकतो पण ढकलून परत आणू शकत नाही — दुसऱ्या बाजूने ओढणारा जोडीदारच ते परत आणू शकतो",
+          },
+          {
+            en: "Two muscles simply make the arm look stronger",
+            hi: "दो पेशियाँ बस बाँह को बलवान दिखाती हैं",
+            mr: "दोन स्नायू नुसते हाताला बलवान दाखवतात",
+          },
+          {
+            en: "One muscle would tire too fast working alone",
+            hi: "अकेली पेशी जल्दी थक जाती",
+            mr: "एकटा स्नायू लवकर दमला असता",
+          },
+          {
+            en: "Bones need two muscles to stay warm",
+            hi: "हड्डियों को गर्म रहने के लिए दो पेशियाँ चाहिए",
+            mr: "हाडांना ऊब राहायला दोन स्नायू लागतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Follow the one fact to its end: a puller can bend the elbow, but no pull from the SAME side can straighten it — pulling a rope never pushes the bucket back down the well. So nature fits an opponent across the joint, and the two take turns. Every movement you make is a polite argument between two muscles that can each only say 'come here'.",
+          hi: "उस एक तथ्य को अंत तक ले जाइए: खींचने वाली कोहनी मोड़ सकती है, पर उसी ओर का कोई खिंचाव उसे सीधा नहीं कर सकता — रस्सी खींचने से बाल्टी कुएँ में वापस नहीं धँसती। इसलिए प्रकृति जोड़ के आर-पार एक प्रतिद्वंद्वी बिठाती है, और दोनों बारी-बारी चलते हैं। आपकी हर चाल दो पेशियों की विनम्र बहस है, जिनमें से हर एक केवल 'इधर आओ' कह सकती है।",
+          mr: "ते एक तथ्य शेवटपर्यंत न्या: ओढणारा कोपर वाकवू शकतो, पण त्याच बाजूची कोणतीही ओढ ते सरळ करू शकत नाही — दोरी ओढल्याने बादली विहिरीत परत जात नाही. म्हणून निसर्ग सांध्यापलीकडे प्रतिस्पर्धी बसवतो, आणि दोघे आळीपाळीने चालतात. तुमची प्रत्येक हालचाल म्हणजे फक्त 'इकडे ये' म्हणू शकणाऱ्या दोन स्नायूंचा सभ्य वाद.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The backbone could have been one strong rod — instead it is thirty-odd small bones stacked in a chain. What does the chain buy that the rod could not?",
+          hi: "रीढ़ एक मज़बूत छड़ हो सकती थी — पर वह माला में चढ़ी तीस-एक छोटी हड्डियाँ है। माला वह क्या दिलाती है जो छड़ नहीं दे पाती?",
+          mr: "कणा एक बळकट दांडा असू शकला असता — पण तो माळेत रचलेली तीस-एक लहान हाडे आहे. माळ ते काय मिळवून देते जे दांडा देऊ शकला नसता?",
+        },
+        choices: [
+          {
+            en: "Bending — each small joint turns a little, and thirty littles add up to a bow, a twist, a somersault; a rod is strong but frozen",
+            hi: "झुकाव — हर छोटा जोड़ थोड़ा मुड़ता है, और तीस थोड़े मिलकर झुकना, मुड़ना, कलाबाज़ी बन जाते हैं; छड़ मज़बूत है पर जड़",
+            mr: "वाकणे — प्रत्येक लहान सांधा थोडा वळतो, आणि तीस थोडे मिळून वाकणे, वळणे, कोलांटी होते; दांडा बळकट पण गोठलेला",
+          },
+          {
+            en: "Lightness — many bones weigh less than one",
+            hi: "हलकापन — कई हड्डियाँ एक से हलकी होती हैं",
+            mr: "हलकेपणा — अनेक हाडे एकाहून हलकी असतात",
+          },
+          {
+            en: "Spares — if one breaks, the others replace it",
+            hi: "अतिरिक्त — एक टूटे तो बाक़ी उसकी जगह लें",
+            mr: "जादा — एक मोडले तर बाकी त्याची जागा घेतात",
+          },
+          {
+            en: "Nothing — the chain is just easier to grow",
+            hi: "कुछ नहीं — माला बस उगाने में आसान है",
+            mr: "काहीच नाही — माळ नुसती वाढवायला सोपी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Touch your toes and count what happened: no single joint bent far, yet the whole back curved like a bow — thirty small turns summed. A rod matching the chain's strength would hold you bolt upright forever. Engineering by many-small-joints is nature's favourite trade: each link gives up a little motion so the whole gains a lot.",
+          hi: "पैर के अँगूठे छूकर गिनिए क्या हुआ: कोई एक जोड़ ज़्यादा नहीं मुड़ा, फिर भी पूरी पीठ धनुष-सी झुकी — तीस छोटे मोड़ों का योग। माला जितनी मज़बूत छड़ आपको हमेशा तना खड़ा रखती। ढेर-छोटे-जोड़ों वाली इंजीनियरी प्रकृति का प्रिय सौदा है: हर कड़ी थोड़ी गति देती है ताकि पूरे को बहुत मिले।",
+          mr: "पायाचे अंगठे शिवून मोजा काय झाले: कोणताही एक सांधा फार वाकला नाही, तरी सारी पाठ धनुष्यासारखी वाकली — तीस लहान वळणांची बेरीज. माळेइतका बळकट दांडा तुम्हाला कायम ताठ उभे ठेवता. अनेक-लहान-सांध्यांची अभियांत्रिकी हा निसर्गाचा आवडता सौदा: प्रत्येक कडी थोडी हालचाल देते म्हणजे साऱ्याला खूप मिळते.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Fun with Magnets (poles, compasses and the sure test)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-6-fun-with-magnets",
+    subject: "SCIENCE",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 13 — Fun with Magnets",
+      hi: "अध्याय 13 — चुंबकों द्वारा मनोरंजन",
+      mr: "प्रकरण 13 — चुंबकांची गंमत",
+    },
+    name: { en: "Fun with Magnets", hi: "चुंबकों द्वारा मनोरंजन", mr: "चुंबकांची गंमत" },
+    summary: {
+      en: "What sticks and what will not, poles where the pull is strongest, the needle that finds north — and repulsion, the only test a magnet cannot fake.",
+      hi: "क्या चिपकता है और क्या नहीं, ध्रुव जहाँ खिंचाव सबसे तेज़, उत्तर खोजती सुई — और प्रतिकर्षण, वह इकलौती जाँच जिसमें चुंबक धोखा नहीं दे सकता।",
+      mr: "काय चिकटते आणि काय नाही, ओढ सर्वांत तीव्र असते ते ध्रुव, उत्तर शोधणारी सुई — आणि प्रतिकर्षण, चुंबकाला बनवाबनवी करता येत नाही अशी एकमेव चाचणी.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "magneticmaterials",
+        name: {
+          en: "Magnetic materials",
+          hi: "चुंबकीय पदार्थ",
+          mr: "चुंबकीय पदार्थ",
+        },
+        kind: "material",
+        prompt: {
+          en: "Run a magnet through a drawer of odds and ends — the iron nails and steel pins leap to it, the plastic and wood lie still. What are the leapers called?",
+          hi: "फुटकर चीज़ों की दराज़ में चुंबक फेरिए — लोहे की कीलें और स्टील की पिनें उछलकर चिपकती हैं, प्लास्टिक और लकड़ी पड़े रहते हैं। उछलने वालों को क्या कहते हैं?",
+          mr: "किरकोळ वस्तूंच्या खणात चुंबक फिरवा — लोखंडी खिळे आणि स्टीलच्या पिना उडून चिकटतात, प्लास्टिक आणि लाकूड पडून राहतात. उडणाऱ्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Magnetic materials — iron above all — are the ones a magnet attracts; plastic, wood, glass and paper never answer its pull.",
+          hi: "चुंबकीय पदार्थ — सबसे बढ़कर लोहा — वही हैं जिन्हें चुंबक खींचता है; प्लास्टिक, लकड़ी, शीशा और काग़ज़ उसकी पुकार का कभी उत्तर नहीं देते।",
+          mr: "चुंबकीय पदार्थ — सर्वांत आधी लोखंड — तेच जे चुंबक ओढतो; प्लास्टिक, लाकूड, काच आणि कागद त्याच्या हाकेला कधीच उत्तर देत नाहीत.",
+        },
+        pair: {
+          left: { en: "Iron things", hi: "लोहे की चीज़ें", mr: "लोखंडी वस्तू" },
+          right: {
+            en: "they answer the magnet",
+            hi: "चुंबक की पुकार सुनते हैं",
+            mr: "चुंबकाच्या हाकेला ओ देतात",
+          },
+        },
+      },
+      {
+        id: "poles",
+        name: { en: "The poles", hi: "ध्रुव", mr: "ध्रुव" },
+        kind: "magnet-part",
+        prompt: {
+          en: "Roll a bar magnet in iron filings: they crowd thick at the two ENDS and thin out in the middle. What are those crowded ends called?",
+          hi: "छड़ चुंबक को लोहे के बुरादे में लुढ़काइए: बुरादा दोनों सिरों पर घना जमता है और बीच में छँट जाता है। उन घने सिरों को क्या कहते हैं?",
+          mr: "पट्टी चुंबक लोखंडाच्या किसात घोळवा: कीस दोन्ही टोकांवर दाट जमतो आणि मध्यभागी विरळतो. त्या दाट टोकांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The poles are the magnet's two ends where its pull is strongest — iron filings map them by crowding there.",
+          hi: "ध्रुव चुंबक के वे दो सिरे हैं जहाँ खिंचाव सबसे तेज़ है — लोहे का बुरादा वहीं जमकर उनका नक़्शा बना देता है।",
+          mr: "ध्रुव म्हणजे चुंबकाची ती दोन टोके जिथे ओढ सर्वांत तीव्र — लोखंडाचा कीस तिथेच जमून त्यांचा नकाशा काढतो.",
+        },
+        detail: {
+          en: "Cut the magnet in half and each half grows BOTH poles again — a single pole cannot be had alone.",
+          hi: "चुंबक आधा काटिए तो हर आधे में फिर दोनों ध्रुव उग आते हैं — अकेला एक ध्रुव मिल ही नहीं सकता।",
+          mr: "चुंबक अर्धा कापा तर प्रत्येक अर्ध्यात पुन्हा दोन्ही ध्रुव उगवतात — एकटा एक ध्रुव मिळूच शकत नाही.",
+        },
+        extra: {
+          en: "They are named north and south for the directions they seek when free.",
+          hi: "आज़ाद होने पर वे जिन दिशाओं को खोजते हैं, उन्हीं पर उनके नाम हैं — उत्तर और दक्षिण।",
+          mr: "मोकळे असताना ते ज्या दिशा शोधतात त्यांवरूनच त्यांची नावे — उत्तर आणि दक्षिण.",
+        },
+        pair: {
+          left: { en: "The poles", hi: "ध्रुव", mr: "ध्रुव" },
+          right: {
+            en: "where the filings crowd",
+            hi: "जहाँ बुरादा जमता है",
+            mr: "जिथे कीस जमतो",
+          },
+        },
+      },
+      {
+        id: "compass",
+        name: { en: "The compass needle", hi: "कुतुबनुमा की सुई", mr: "होकायंत्राची सुई" },
+        kind: "magnet-part",
+        prompt: {
+          en: "Hang any bar magnet by a thread and wait: it swings, settles, and points the SAME way every time. Which instrument is built on this habit?",
+          hi: "कोई भी छड़ चुंबक धागे से लटकाकर ठहरिए: वह झूलता है, थमता है, और हर बार एक ही दिशा दिखाता है। इसी आदत पर कौन-सा यंत्र बना है?",
+          mr: "कोणताही पट्टी चुंबक दोऱ्याने टांगून थांबा: तो झुलतो, स्थिरावतो, आणि प्रत्येक वेळी त्याच दिशेला रोखतो. याच सवयीवर कोणते यंत्र बांधले आहे?",
+        },
+        statement: {
+          en: "A freely hung magnet always rests pointing north-south — the compass is just this habit in a small box, guiding travellers for centuries.",
+          hi: "आज़ाद लटका चुंबक हमेशा उत्तर-दक्षिण थमता है — कुतुबनुमा इसी आदत का छोटा डिब्बा है, सदियों से मुसाफ़िरों की रहनुमाई करता।",
+          mr: "मोकळा टांगलेला चुंबक नेहमी उत्तर-दक्षिण स्थिरावतो — होकायंत्र म्हणजे हीच सवय लहान डबीत, शतकानुशतके प्रवाशांना वाट दाखवणारी.",
+        },
+        detail: {
+          en: "It points because the Earth itself behaves as a giant magnet, and small magnets answer big ones.",
+          hi: "वह इसलिए दिशा दिखाता है कि पृथ्वी स्वयं विशाल चुंबक-सी बरतती है, और छोटे चुंबक बड़ों का उत्तर देते हैं।",
+          mr: "तो दिशा दाखवतो कारण पृथ्वी स्वतः महाकाय चुंबकासारखी वागते, आणि लहान चुंबक मोठ्यांना उत्तर देतात.",
+        },
+        extra: {
+          en: "Sailors trusted it under starless skies, deserts and seas alike.",
+          hi: "बिना तारों के आसमान तले, रेगिस्तान हों या समुद्र, नाविक उसी पर भरोसा करते थे।",
+          mr: "ताऱ्यांविना आकाशाखाली, वाळवंटे असोत वा समुद्र, खलाशी त्यावरच विसंबत.",
+        },
+        pair: {
+          left: { en: "The compass", hi: "कुतुबनुमा", mr: "होकायंत्र" },
+          right: {
+            en: "north-south, every time",
+            hi: "हर बार उत्तर-दक्षिण",
+            mr: "प्रत्येक वेळी उत्तर-दक्षिण",
+          },
+        },
+      },
+      {
+        id: "likepoles",
+        name: { en: "Like poles", hi: "समान ध्रुव", mr: "समान ध्रुव" },
+        kind: "pole-rule",
+        prompt: {
+          en: "Bring north end toward north end: the free magnet swerves AWAY before they even touch. What is this push between same-named ends called?",
+          hi: "उत्तर सिरे को उत्तर सिरे की ओर लाइए: आज़ाद चुंबक छूने से पहले ही कतरा जाता है। एक नाम वाले सिरों की इस धकेल को क्या कहते हैं?",
+          mr: "उत्तर टोक उत्तर टोकाकडे आणा: मोकळा चुंबक स्पर्शाआधीच बाजूला सरकतो. एकाच नावाच्या टोकांतल्या या ढकलीला काय म्हणतात?",
+        },
+        statement: {
+          en: "Like poles repel — north pushes north away, south pushes south, a force felt across the gap before any touch.",
+          hi: "समान ध्रुव प्रतिकर्षित करते हैं — उत्तर उत्तर को धकेलता है, दक्षिण दक्षिण को; छूने से पहले ही फ़ासले के पार महसूस होता बल।",
+          mr: "समान ध्रुव प्रतिकर्षण करतात — उत्तर उत्तराला ढकलतो, दक्षिण दक्षिणेला; स्पर्शाआधीच अंतरापार जाणवणारे बळ.",
+        },
+        pair: {
+          left: { en: "Like poles", hi: "समान ध्रुव", mr: "समान ध्रुव" },
+          right: { en: "a push apart", hi: "दूर धकेल", mr: "दूर ढकल" },
+        },
+      },
+      {
+        id: "unlikepoles",
+        name: { en: "Unlike poles", hi: "असमान ध्रुव", mr: "विरुद्ध ध्रुव" },
+        kind: "pole-rule",
+        prompt: {
+          en: "Turn one magnet round so north faces SOUTH — the two now snap together eagerly. What is this rule of opposite ends called?",
+          hi: "एक चुंबक घुमाइए कि उत्तर के सामने दक्षिण आए — दोनों अब लपककर जुड़ जाते हैं। उलटे सिरों के इस नियम को क्या कहते हैं?",
+          mr: "एक चुंबक फिरवा की उत्तरासमोर दक्षिण येईल — दोघे आता झेपावून जुळतात. उलट्या टोकांच्या या नियमाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Unlike poles attract — north seizes south across the gap, the same eagerness with which like poles refuse.",
+          hi: "असमान ध्रुव आकर्षित करते हैं — उत्तर फ़ासले के पार दक्षिण को थाम लेता है, उसी तत्परता से जिससे समान ध्रुव इनकार करते हैं।",
+          mr: "विरुद्ध ध्रुव आकर्षण करतात — उत्तर अंतरापार दक्षिणेला पकडतो, ज्या तत्परतेने समान ध्रुव नकार देतात त्याच तत्परतेने.",
+        },
+      },
+      {
+        id: "losingmagnetism",
+        name: {
+          en: "A magnet's ruin",
+          hi: "चुंबक की बरबादी",
+          mr: "चुंबकाचा नाश",
+        },
+        kind: "magnet-part",
+        prompt: {
+          en: "Heat it in a flame, hammer it hard, drop it again and again — what happens to a magnet treated this way?",
+          hi: "आँच में तपाइए, ज़ोर से हथौड़ा मारिए, बार-बार गिराइए — ऐसा बरताव पाए चुंबक का क्या होता है?",
+          mr: "ज्योतीत तापवा, जोरात हातोडा मारा, पुनःपुन्हा पाडा — अशी वागणूक मिळालेल्या चुंबकाचे काय होते?",
+        },
+        statement: {
+          en: "Heating, hammering and dropping ruin a magnet — the rough treatment scrambles its inner order and the pull fades away.",
+          hi: "तपाना, ठोकना और गिराना चुंबक को बरबाद करते हैं — रूखा बरताव उसकी भीतरी तरतीब बिखेर देता है और खिंचाव बुझ जाता है।",
+          mr: "तापवणे, ठोकणे आणि पाडणे चुंबकाला नासवतात — राकट वागणूक त्याची आतली शिस्त विस्कटते आणि ओढ विझते.",
+        },
+      },
+      {
+        id: "magnetrescue",
+        name: {
+          en: "The magnet in the sand",
+          hi: "रेत में चुंबक",
+          mr: "वाळूतला चुंबक",
+        },
+        kind: "material",
+        prompt: {
+          en: "Iron filings have spilled into dry sand — sieving fails, both are grains. Which one sweep sorts them in seconds?",
+          hi: "लोहे का बुरादा सूखी रेत में गिर गया — छानना बेकार, दोनों कण हैं। कौन-सी एक फेरी पलों में उन्हें छाँट देती है?",
+          mr: "लोखंडाचा कीस कोरड्या वाळूत सांडला — चाळणे व्यर्थ, दोन्ही कणच. कोणती एक फेरी क्षणांत त्यांना निवडते?",
+        },
+        statement: {
+          en: "A magnet swept through the mixture lifts the iron filings out and leaves the sand — separation by a property no sieve can see.",
+          hi: "मिश्रण में फेरा चुंबक लोहे का बुरादा उठा लेता है और रेत छोड़ देता है — उस गुण से पृथक्करण जिसे कोई छलनी देख नहीं सकती।",
+          mr: "मिश्रणातून फिरवलेला चुंबक लोखंडाचा कीस उचलतो आणि वाळू सोडतो — कोणत्याही चाळणीला न दिसणाऱ्या गुणाने पृथक्करण.",
+        },
+        pair: {
+          left: { en: "The magnet sweep", hi: "चुंबक की फेरी", mr: "चुंबकाची फेरी" },
+          right: {
+            en: "iron out, sand left",
+            hi: "लोहा बाहर, रेत बाक़ी",
+            mr: "लोखंड बाहेर, वाळू शिल्लक",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into WILL STICK to a magnet and WILL NOT: an iron nail, a plastic comb, a steel safety pin, a wooden pencil. Which sorting is right?",
+          hi: "इन्हें चुंबक से चिपकेगा और नहीं चिपकेगा में छाँटिए: लोहे की कील, प्लास्टिक की कंघी, स्टील की सेफ़्टी-पिन, लकड़ी की पेंसिल। कौन-सी छँटाई सही है?",
+          mr: "यांची चुंबकाला चिकटेल आणि चिकटणार नाही अशी वर्गवारी करा: लोखंडी खिळा, प्लास्टिकची फणी, स्टीलची सेफ्टी-पिन, लाकडी पेन्सिल. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Sticks: iron nail, steel pin · Does not: plastic comb, wooden pencil",
+            hi: "चिपकेंगे: कील, स्टील-पिन · नहीं: कंघी, पेंसिल",
+            mr: "चिकटतील: खिळा, स्टील-पिन · नाही: फणी, पेन्सिल",
+          },
+          {
+            en: "Sticks: plastic comb, iron nail · Does not: steel pin, wooden pencil",
+            hi: "चिपकेंगे: कंघी, कील · नहीं: स्टील-पिन, पेंसिल",
+            mr: "चिकटतील: फणी, खिळा · नाही: स्टील-पिन, पेन्सिल",
+          },
+          {
+            en: "Sticks: wooden pencil, steel pin · Does not: iron nail, plastic comb",
+            hi: "चिपकेंगे: पेंसिल, स्टील-पिन · नहीं: कील, कंघी",
+            mr: "चिकटतील: पेन्सिल, स्टील-पिन · नाही: खिळा, फणी",
+          },
+          {
+            en: "Sticks: plastic comb, wooden pencil · Does not: iron nail, steel pin",
+            hi: "चिपकेंगे: कंघी, पेंसिल · नहीं: कील, स्टील-पिन",
+            mr: "चिकटतील: फणी, पेन्सिल · नाही: खिळा, स्टील-पिन",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Iron and steel (which is mostly iron) answer the magnet; plastic and wood never do. Note the difference from the conductor sort: there the metals ALL passed current, but magnetism is choosier still — even copper and aluminium, fine conductors, ignore a magnet completely.",
+          hi: "लोहा और स्टील (जो अधिकतर लोहा है) चुंबक का उत्तर देते हैं; प्लास्टिक और लकड़ी कभी नहीं। चालक वाली छँटाई से फ़र्क़ देखिए: वहाँ सब धातुएँ धारा ले जाती थीं, पर चुंबकत्व और भी चुनिंदा है — ताँबा और एल्यूमिनियम, बढ़िया चालक होकर भी, चुंबक को पूरी तरह अनदेखा करते हैं।",
+          mr: "लोखंड आणि स्टील (जे बहुतांश लोखंडच) चुंबकाला उत्तर देतात; प्लास्टिक आणि लाकूड कधीच नाही. वाहकांच्या वर्गवारीतला फरक पाहा: तिथे सारे धातू वीज नेत, पण चुंबकत्व आणखीनच चोखंदळ — तांबे आणि अ‍ॅल्युमिनियम, उत्तम वाहक असूनही, चुंबकाकडे पूर्ण दुर्लक्ष करतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two identical-looking iron bars: one is a magnet, one is plain iron. Bringing them near, they ATTRACT — both ways round. Why does attraction prove nothing, and what single result would settle it?",
+          hi: "देखने में एक-सी दो लोहे की छड़ें: एक चुंबक है, एक सादा लोहा। पास लाने पर वे खिंचती हैं — दोनों तरह से। खिंचाव कुछ साबित क्यों नहीं करता, और कौन-सा एक नतीजा फ़ैसला कर देगा?",
+          mr: "दिसायला सारख्या दोन लोखंडी पट्ट्या: एक चुंबक, एक साधे लोखंड. जवळ आणल्यावर त्या ओढल्या जातात — दोन्ही प्रकारे. ओढ काही का सिद्ध करत नाही, आणि कोणता एक निकाल फैसला करेल?",
+        },
+        choices: [
+          {
+            en: "A magnet attracts plain iron AND another magnet alike — only REPULSION, seen when like poles meet, is something plain iron can never do",
+            hi: "चुंबक सादे लोहे को भी और दूसरे चुंबक को भी एक-सा खींचता है — केवल प्रतिकर्षण, जो समान ध्रुवों के मिलने पर दिखता है, सादा लोहा कभी नहीं कर सकता",
+            mr: "चुंबक साध्या लोखंडाला आणि दुसऱ्या चुंबकालाही सारखेच ओढतो — फक्त प्रतिकर्षण, समान ध्रुव भेटल्यावर दिसणारे, साधे लोखंड कधीच करू शकत नाही",
+          },
+          {
+            en: "The heavier bar is always the magnet",
+            hi: "भारी छड़ हमेशा चुंबक होती है",
+            mr: "जड पट्टी नेहमी चुंबक असते",
+          },
+          {
+            en: "The shinier bar is always the magnet",
+            hi: "चमकीली छड़ हमेशा चुंबक होती है",
+            mr: "चकचकीत पट्टी नेहमी चुंबक असते",
+          },
+          {
+            en: "It cannot be settled without a third magnet",
+            hi: "तीसरे चुंबक के बिना फ़ैसला हो ही नहीं सकता",
+            mr: "तिसऱ्या चुंबकाशिवाय फैसला होऊच शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Attraction is ambiguous: iron loves magnets from either side of the friendship. But repulsion needs two like POLES — and plain iron has none to offer. So turn the bars end for end, testing every pairing: the moment ANY pairing pushes apart, the pusher in your hand is proven a magnet. In magnet-land, only 'no' is a signature; 'yes' can always be forged.",
+          hi: "खिंचाव दुविधा भरा है: लोहा दोस्ती की दोनों ओर से चुंबकों को चाहता है। पर प्रतिकर्षण को दो समान ध्रुव चाहिए — और सादे लोहे के पास देने को कोई ध्रुव नहीं। तो छड़ों को सिरे-दर-सिरा पलटकर हर जोड़ी आज़माइए: जिस पल कोई जोड़ी दूर धकेले, धकेलने वाली छड़ चुंबक साबित हुई। चुंबक-जगत में केवल 'नहीं' हस्ताक्षर है; 'हाँ' हमेशा जाली हो सकती है।",
+          mr: "ओढ संदिग्ध आहे: लोखंड मैत्रीच्या दोन्ही बाजूंनी चुंबकांना चाहते. पण प्रतिकर्षणाला दोन समान ध्रुव हवेत — आणि साध्या लोखंडाकडे द्यायला ध्रुवच नाहीत. म्हणून पट्ट्या टोकाटोकाने उलटवत प्रत्येक जोडी आजमावा: कोणतीही जोडी दूर ढकलेल त्या क्षणी ढकलणारी पट्टी चुंबक ठरली. चुंबक-जगात फक्त 'नाही' हीच सही; 'हो' नेहमी बनावट असू शकते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A ship's navigator on a starless, landless night trusts a needle smaller than a finger. What exactly is the compass needle answering to, out on the open sea?",
+          hi: "बिना तारों, बिना किनारे की रात में जहाज़ का दिशा-नायक उँगली से छोटी सुई पर भरोसा करता है। खुले समुद्र में कुतुबनुमा की सुई ठीक-ठीक किसका उत्तर दे रही है?",
+          mr: "ताऱ्यांविना, किनाऱ्याविना रात्री जहाजाचा दिशादर्शक बोटाहून लहान सुईवर विसंबतो. खुल्या समुद्रावर होकायंत्राची सुई नेमके कशाला उत्तर देते आहे?",
+        },
+        choices: [
+          {
+            en: "The Earth itself, behaving as one vast magnet — the needle is a small magnet answering the planet's pull, everywhere and always",
+            hi: "स्वयं पृथ्वी को, जो एक विशाल चुंबक-सी बरतती है — सुई छोटा चुंबक है जो ग्रह के खिंचाव का उत्तर देती है, हर जगह, हर समय",
+            mr: "स्वतः पृथ्वीला, जी एका महाकाय चुंबकासारखी वागते — सुई हा ग्रहाच्या ओढीला उत्तर देणारा लहान चुंबक, सर्वत्र आणि सदैव",
+          },
+          {
+            en: "The pull of the far-off pole star",
+            hi: "दूर के ध्रुवतारे का खिंचाव",
+            mr: "दूरच्या ध्रुवताऱ्याची ओढ",
+          },
+          {
+            en: "The iron in the ship's own hull",
+            hi: "जहाज़ के अपने ढाँचे का लोहा",
+            mr: "जहाजाच्या स्वतःच्या सांगाड्यातले लोखंड",
+          },
+          {
+            en: "The wind, which always blows northward",
+            hi: "हवा, जो हमेशा उत्तर की ओर बहती है",
+            mr: "वारा, जो नेहमी उत्तरेकडे वाहतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The needle is a magnet, and magnets answer magnets: the Earth's vast magnetism reaches every deck, desert and classroom alike, turning every free needle north-south. A star can hide behind cloud; the planet under your feet cannot. (The ship's own iron CAN disturb the needle — which is why compasses are mounted with care, away from the hull's influence.)",
+          hi: "सुई चुंबक है, और चुंबक चुंबकों का उत्तर देते हैं: पृथ्वी का विशाल चुंबकत्व हर डेक, रेगिस्तान और कक्षा तक एक-सा पहुँचता है, हर आज़ाद सुई को उत्तर-दक्षिण घुमाता। तारा बादल के पीछे छिप सकता है; पैरों तले का ग्रह नहीं। (जहाज़ का अपना लोहा सुई को छेड़ सकता है — इसीलिए कुतुबनुमा ढाँचे के असर से दूर, सँभालकर बिठाया जाता है।)",
+          mr: "सुई चुंबक आहे, आणि चुंबक चुंबकांना उत्तर देतात: पृथ्वीचे अफाट चुंबकत्व प्रत्येक डेक, वाळवंट आणि वर्गापर्यंत सारखेच पोहोचते, प्रत्येक मोकळ्या सुईला उत्तर-दक्षिण वळवते. तारा ढगाआड लपू शकतो; पायाखालचा ग्रह नाही. (जहाजाचे स्वतःचे लोखंड सुईला छेडू शकते — म्हणूनच होकायंत्र सांगाड्याच्या प्रभावापासून दूर, जपून बसवले जाते.)",
+        },
+      },
+    ],
+  },
 ];
