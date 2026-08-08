@@ -1917,6 +1917,954 @@ function coordinateGeometry10(): TopicFileOut {
 }
 
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Triangles (similarity, the BPT, and areas)                    */
+/* ------------------------------------------------------------------------- */
+function triangles10(): TopicFileOut {
+  const rand = rng("maths-10-triangles");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two angles of a triangle are 50° and 60°. What is the third angle in degrees?",
+          hi: "एक त्रिभुज के दो कोण 50° और 60° हैं। तीसरा कोण डिग्री में क्या है?",
+          mr: "एका त्रिकोणाचे दोन कोन 50° आणि 60° आहेत. तिसरा कोन अंशांत काय?",
+        },
+        answer: 70,
+        wrong: [60, 80, 110],
+        checkExpr: "180-50-60",
+        solution: {
+          en: "The angles of a triangle sum to 180°, so the third is 180 − 50 − 60 = 70°.",
+          hi: "त्रिभुज के कोणों का योग 180°, अतः तीसरा 180 − 50 − 60 = 70°.",
+          mr: "त्रिकोणाच्या कोनांची बेरीज 180°, म्हणून तिसरा 180 − 50 − 60 = 70°.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two triangles are similar, their corresponding sides in the ratio 2:3. A side of the first is 4 cm. What is the matching side of the second?",
+          hi: "दो त्रिभुज समरूप हैं, उनकी संगत भुजाएँ 2:3 अनुपात में। पहले की एक भुजा 4 सेमी है। दूसरे की संगत भुजा क्या है?",
+          mr: "दोन त्रिकोण समरूप, त्यांच्या संगत बाजू 2:3 प्रमाणात. पहिल्याची एक बाजू 4 सेमी. दुसऱ्याची संगत बाजू काय?",
+        },
+        answer: 6,
+        wrong: [8, 2, 12],
+        checkExpr: "4*3/2",
+        solution: {
+          en: "Corresponding sides of similar triangles keep the ratio 2:3, so the matching side = 4·(3/2) = 6 cm.",
+          hi: "समरूप त्रिभुजों की संगत भुजाएँ 2:3 अनुपात रखतीं, अतः संगत भुजा = 4·(3/2) = 6 सेमी।",
+          mr: "समरूप त्रिकोणांच्या संगत बाजू 2:3 प्रमाण राखतात, म्हणून संगत बाजू = 4·(3/2) = 6 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many pairs of equal angles are needed to prove two triangles similar by the AA criterion?",
+          hi: "AA कसौटी से दो त्रिभुज समरूप सिद्ध करने के लिए कितने बराबर कोणों के युग्म चाहिए?",
+          mr: "AA निकषाने दोन त्रिकोण समरूप सिद्ध करायला किती समान कोनांच्या जोड्या हव्यात?",
+        },
+        answer: 2,
+        wrong: [1, 3, 0],
+        solution: {
+          en: "The AA criterion needs 2 pairs of equal angles; since the angles of a triangle sum to 180°, the third pair is then automatically equal.",
+          hi: "AA कसौटी को 2 बराबर कोण-युग्म चाहिए; चूँकि त्रिभुज के कोणों का योग 180°, तीसरा युग्म स्वतः बराबर।",
+          mr: "AA निकषाला 2 समान कोन-जोड्या हव्यात; त्रिकोणाच्या कोनांची बेरीज 180° असल्याने तिसरी जोडी आपोआप समान.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In triangle ABC, DE ∥ BC with D on AB and E on AC. If AD = 1.5, DB = 3 and AE = 2, what is EC?",
+          hi: "त्रिभुज ABC में, DE ∥ BC, D, AB पर और E, AC पर। यदि AD = 1.5, DB = 3 और AE = 2, तो EC क्या है?",
+          mr: "त्रिकोण ABC मध्ये, DE ∥ BC, D, AB वर आणि E, AC वर. AD = 1.5, DB = 3 आणि AE = 2 असेल, तर EC काय?",
+        },
+        answer: 4,
+        wrong: [3, 6, 1],
+        checkExpr: "2*3/1.5",
+        solution: {
+          en: "By the Basic Proportionality Theorem, AD/DB = AE/EC, so 1.5/3 = 2/EC, giving EC = 2·3/1.5 = 4.",
+          hi: "आधारभूत समानुपात प्रमेय से, AD/DB = AE/EC, अतः 1.5/3 = 2/EC, देता EC = 2·3/1.5 = 4.",
+          mr: "आधारभूत प्रमाण प्रमेयाने, AD/DB = AE/EC, म्हणून 1.5/3 = 2/EC, देते EC = 2·3/1.5 = 4.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The areas of two similar triangles are in the ratio of the squares of their corresponding sides. If the sides are in ratio 2:3, the areas are in ratio 4:▢. What is the missing number?",
+          hi: "दो समरूप त्रिभुजों के क्षेत्रफल संगत भुजाओं के वर्गों के अनुपात में हैं। यदि भुजाएँ 2:3 अनुपात में, क्षेत्रफल 4:▢ में। लुप्त संख्या क्या है?",
+          mr: "दोन समरूप त्रिकोणांची क्षेत्रफळे संगत बाजूंच्या वर्गांच्या प्रमाणात आहेत. बाजू 2:3 प्रमाणात असतील, क्षेत्रफळे 4:▢ मध्ये. हरवलेली संख्या काय?",
+        },
+        answer: 9,
+        wrong: [6, 4, 3],
+        checkExpr: "3*3",
+        solution: {
+          en: "The area ratio is the square of the side ratio: 2²:3² = 4:9. The missing number is 3² = 9.",
+          hi: "क्षेत्रफल अनुपात भुजा अनुपात का वर्ग: 2²:3² = 4:9. लुप्त संख्या 3² = 9.",
+          mr: "क्षेत्रफळ प्रमाण बाजू प्रमाणाचा वर्ग: 2²:3² = 4:9. हरवलेली संख्या 3² = 9.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In a right triangle the two legs are 6 and 8. What is the length of the hypotenuse?",
+          hi: "एक समकोण त्रिभुज की दो भुजाएँ 6 और 8 हैं। कर्ण की लंबाई क्या है?",
+          mr: "एका काटकोन त्रिकोणाच्या दोन बाजू 6 आणि 8 आहेत. कर्णाची लांबी काय?",
+        },
+        answer: 10,
+        wrong: [14, 48, 100],
+        solution: {
+          en: "By Pythagoras, hypotenuse = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 is the value before the square root.)",
+          hi: "पाइथागोरस से, कर्ण = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 वर्गमूल से पहले का मान।)",
+          mr: "पायथागोरसने, कर्ण = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 वर्गमूळापूर्वीचे मूल्य.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two similar triangles have areas 36 cm² and 100 cm². A side of the smaller is 9 cm. What is the matching side of the larger?",
+          hi: "दो समरूप त्रिभुजों के क्षेत्रफल 36 सेमी² और 100 सेमी² हैं। छोटे की एक भुजा 9 सेमी है। बड़े की संगत भुजा क्या है?",
+          mr: "दोन समरूप त्रिकोणांची क्षेत्रफळे 36 सेमी² आणि 100 सेमी² आहेत. लहानाची एक बाजू 9 सेमी. मोठ्याची संगत बाजू काय?",
+        },
+        answer: 15,
+        wrong: [25, 18, 12],
+        checkExpr: "9*10/6",
+        solution: {
+          en: "The ratio of sides is √(100/36) = 10/6. So the larger side = 9·(10/6) = 15 cm.",
+          hi: "भुजाओं का अनुपात √(100/36) = 10/6. अतः बड़ी भुजा = 9·(10/6) = 15 सेमी।",
+          mr: "बाजूंचे प्रमाण √(100/36) = 10/6. म्हणून मोठी बाजू = 9·(10/6) = 15 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In triangle ABC, DE ∥ BC with AD = 4, AB = 12 and DE = 5. What is BC?",
+          hi: "त्रिभुज ABC में, DE ∥ BC, AD = 4, AB = 12 और DE = 5. BC क्या है?",
+          mr: "त्रिकोण ABC मध्ये, DE ∥ BC, AD = 4, AB = 12 आणि DE = 5. BC काय?",
+        },
+        answer: 15,
+        wrong: [5, 10, 20],
+        checkExpr: "5*12/4",
+        solution: {
+          en: "Triangle ADE ~ ABC with ratio AD/AB = 4/12 = 1/3, so DE/BC = 1/3 and BC = 5·(12/4) = 15.",
+          hi: "त्रिभुज ADE ~ ABC, अनुपात AD/AB = 4/12 = 1/3, अतः DE/BC = 1/3 और BC = 5·(12/4) = 15.",
+          mr: "त्रिकोण ADE ~ ABC, प्रमाण AD/AB = 4/12 = 1/3, म्हणून DE/BC = 1/3 आणि BC = 5·(12/4) = 15.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The perimeters of two similar triangles are 30 cm and 20 cm. If one side of the first is 12 cm, what is the corresponding side of the second?",
+          hi: "दो समरूप त्रिभुजों के परिमाप 30 सेमी और 20 सेमी हैं। यदि पहले की एक भुजा 12 सेमी है, दूसरे की संगत भुजा क्या है?",
+          mr: "दोन समरूप त्रिकोणांची परिमिती 30 सेमी आणि 20 सेमी आहे. पहिल्याची एक बाजू 12 सेमी असेल, दुसऱ्याची संगत बाजू काय?",
+        },
+        answer: 8,
+        wrong: [18, 6, 10],
+        checkExpr: "12*20/30",
+        solution: {
+          en: "The ratio of perimeters equals the ratio of corresponding sides, 20:30 = 2:3. So the side = 12·(20/30) = 8 cm.",
+          hi: "परिमापों का अनुपात संगत भुजाओं के अनुपात के बराबर, 20:30 = 2:3. अतः भुजा = 12·(20/30) = 8 सेमी।",
+          mr: "परिमितींचे प्रमाण संगत बाजूंच्या प्रमाणाइतके, 20:30 = 2:3. म्हणून बाजू = 12·(20/30) = 8 सेमी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A vertical pole 6 m tall casts a shadow 4 m long. At the same time, a tower casts a shadow 28 m long. What is the tower's height in metres?",
+          hi: "एक 6 मी ऊँचा ऊर्ध्वाधर खंभा 4 मी लंबी छाया डालता है। उसी समय एक मीनार 28 मी लंबी छाया डालती है। मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "एक 6 मी उंच उभा खांब 4 मी लांब सावली टाकतो. त्याच वेळी एक मनोरा 28 मी लांब सावली टाकतो. मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 42,
+        wrong: [18, 21, 56],
+        checkExpr: "6*28/4",
+        solution: {
+          en: "The pole and tower with their shadows form similar triangles, so height/shadow is the same: 6/4 = h/28, giving h = 6·28/4 = 42 m.",
+          hi: "खंभा और मीनार अपनी छायाओं सहित समरूप त्रिभुज बनाते, अतः ऊँचाई/छाया समान: 6/4 = h/28, देता h = 6·28/4 = 42 मी।",
+          mr: "खांब आणि मनोरा त्यांच्या सावल्यांसह समरूप त्रिकोण बनवतात, म्हणून उंची/सावली समान: 6/4 = h/28, देते h = 6·28/4 = 42 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In a right triangle, the altitude to the hypotenuse divides it into segments of length 4 and 9. What is the length of the altitude?",
+          hi: "एक समकोण त्रिभुज में, कर्ण पर लंब उसे 4 और 9 लंबाई के खंडों में बाँटता है। लंब की लंबाई क्या है?",
+          mr: "एका काटकोन त्रिकोणात, कर्णावरील लंब त्याला 4 आणि 9 लांबीच्या खंडांत विभागतो. लंबाची लांबी काय?",
+        },
+        answer: 6,
+        wrong: [13, 36, 5],
+        solution: {
+          en: "The altitude to the hypotenuse is the geometric mean of the two segments: √(4·9) = √36 = 6. (13 is the hypotenuse 4+9, and 36 is the value before the root.)",
+          hi: "कर्ण पर लंब दोनों खंडों का गुणोत्तर माध्य: √(4·9) = √36 = 6. (13 कर्ण 4+9, और 36 मूल से पहले।)",
+          mr: "कर्णावरील लंब दोन्ही खंडांचा भूमितीय मध्य: √(4·9) = √36 = 6. (13 कर्ण 4+9, आणि 36 मूळापूर्वी.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The areas of two similar triangles are in the ratio 9:16. Their perimeters are in ratio 3:▢. What is the missing number?",
+          hi: "दो समरूप त्रिभुजों के क्षेत्रफल 9:16 अनुपात में हैं। उनके परिमाप 3:▢ में हैं। लुप्त संख्या क्या है?",
+          mr: "दोन समरूप त्रिकोणांची क्षेत्रफळे 9:16 प्रमाणात आहेत. त्यांची परिमिती 3:▢ मध्ये. हरवलेली संख्या काय?",
+        },
+        answer: 4,
+        wrong: [16, 9, 12],
+        checkExpr: "16/4",
+        solution: {
+          en: "The ratio of perimeters is the square root of the area ratio: √(9:16) = 3:4. The missing number is √16 = 4.",
+          hi: "परिमापों का अनुपात क्षेत्रफल अनुपात का वर्गमूल: √(9:16) = 3:4. लुप्त संख्या √16 = 4.",
+          mr: "परिमितींचे प्रमाण क्षेत्रफळ प्रमाणाचे वर्गमूळ: √(9:16) = 3:4. हरवलेली संख्या √16 = 4.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Triangle ABC is right-angled at B with AB = 9 and BC = 12, so AC = 15. An altitude BD is drawn from B to the hypotenuse AC. What is the length of BD?",
+          hi: "त्रिभुज ABC, B पर समकोण, AB = 9 और BC = 12, अतः AC = 15. B से कर्ण AC पर लंब BD खींचा जाता है। BD की लंबाई क्या है?",
+          mr: "त्रिकोण ABC, B ला काटकोन, AB = 9 आणि BC = 12, म्हणून AC = 15. B पासून कर्ण AC वर लंब BD काढला. BD ची लांबी काय?",
+        },
+        answer: 7.2,
+        wrong: [6, 10.8, 7.5],
+        checkExpr: "9*12/15",
+        solution: {
+          en: "The area equals ½·AB·BC and also ½·AC·BD, so ½·9·12 = ½·15·BD, giving BD = 9·12/15 = 108/15 = 7.2.",
+          hi: "क्षेत्रफल ½·AB·BC और ½·AC·BD भी, अतः ½·9·12 = ½·15·BD, देता BD = 9·12/15 = 108/15 = 7.2.",
+          mr: "क्षेत्रफळ ½·AB·BC आणि ½·AC·BD ही, म्हणून ½·9·12 = ½·15·BD, देते BD = 9·12/15 = 108/15 = 7.2.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two poles of heights 6 m and 11 m stand on level ground 12 m apart. What is the distance between their tops in metres?",
+          hi: "6 मी और 11 मी ऊँचाई के दो खंभे समतल भूमि पर 12 मी दूर खड़े हैं। उनके शीर्षों के बीच की दूरी मीटर में क्या है?",
+          mr: "6 मी आणि 11 मी उंचीचे दोन खांब सपाट जमिनीवर 12 मी अंतरावर उभे. त्यांच्या टोकांतील अंतर मीटरमध्ये काय?",
+        },
+        answer: 13,
+        wrong: [17, 5, 12],
+        solution: {
+          en: "The tops differ in height by 11 − 6 = 5 m and are 12 m apart horizontally. The line joining them is the hypotenuse: √(12² + 5²) = √(144 + 25) = √169 = 13 m.",
+          hi: "शीर्ष ऊँचाई में 11 − 6 = 5 मी भिन्न और क्षैतिज 12 मी दूर। उन्हें जोड़ती रेखा कर्ण: √(12² + 5²) = √(144 + 25) = √169 = 13 मी।",
+          mr: "टोके उंचीत 11 − 6 = 5 मी वेगळी आणि आडवी 12 मी दूर. त्यांना जोडणारी रेषा कर्ण: √(12² + 5²) = √(144 + 25) = √169 = 13 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-triangles",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 7 — Triangles",
+      name: "Triangles",
+      summary:
+        "Same shape, different size: the AA criterion, the Basic Proportionality Theorem slicing sides in proportion, areas scaling as the square of sides, and Pythagoras with its altitude-on-hypotenuse corollaries.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "त्रिभुज",
+          summary:
+            "एक ही आकार, भिन्न माप: AA कसौटी, भुजाओं को समानुपात में काटता आधारभूत समानुपात प्रमेय, भुजाओं के वर्ग-सा बढ़ता क्षेत्रफल, और पाइथागोरस अपने कर्ण-लंब उपप्रमेयों सहित।",
+        },
+        mr: {
+          name: "त्रिकोण",
+          summary:
+            "एकच आकार, वेगळे माप: AA निकष, बाजूंना प्रमाणात कापणारे आधारभूत प्रमाण प्रमेय, बाजूंच्या वर्गासारखे वाढणारे क्षेत्रफळ, आणि पायथागोरस त्याच्या कर्ण-लंब उपप्रमेयांसह.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Introduction to Trigonometry                                  */
+/* ------------------------------------------------------------------------- */
+function introTrigonometry(): TopicFileOut {
+  const rand = rng("maths-10-introduction-trigonometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In a right triangle, sin θ = opposite/hypotenuse. If the opposite side is 3 and the hypotenuse is 5, what is sin θ as a decimal?",
+          hi: "एक समकोण त्रिभुज में, sin θ = सम्मुख/कर्ण। यदि सम्मुख भुजा 3 और कर्ण 5 है, sin θ दशमलव में क्या है?",
+          mr: "एका काटकोन त्रिकोणात, sin θ = समोरची/कर्ण. समोरची बाजू 3 आणि कर्ण 5 असेल, sin θ दशांशात काय?",
+        },
+        answer: 0.6,
+        wrong: [0.8, 1.6, 0.75],
+        checkExpr: "3/5",
+        solution: {
+          en: "sin θ = opposite/hypotenuse = 3/5 = 0.6. (0.8 would be the cosine, using the adjacent side 4.)",
+          hi: "sin θ = सम्मुख/कर्ण = 3/5 = 0.6. (0.8 कोसाइन होता, संलग्न भुजा 4 से।)",
+          mr: "sin θ = समोरची/कर्ण = 3/5 = 0.6. (0.8 कोसाइन असते, संलग्न बाजू 4 ने.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "cos θ = adjacent/hypotenuse. If the adjacent side is 4 and the hypotenuse is 5, what is cos θ as a decimal?",
+          hi: "cos θ = संलग्न/कर्ण। यदि संलग्न भुजा 4 और कर्ण 5 है, cos θ दशमलव में क्या है?",
+          mr: "cos θ = संलग्न/कर्ण. संलग्न बाजू 4 आणि कर्ण 5 असेल, cos θ दशांशात काय?",
+        },
+        answer: 0.8,
+        wrong: [0.6, 1.25, 0.75],
+        checkExpr: "4/5",
+        solution: {
+          en: "cos θ = adjacent/hypotenuse = 4/5 = 0.8. (0.6 would be the sine, using the opposite side 3.)",
+          hi: "cos θ = संलग्न/कर्ण = 4/5 = 0.8. (0.6 साइन होता, सम्मुख भुजा 3 से।)",
+          mr: "cos θ = संलग्न/कर्ण = 4/5 = 0.8. (0.6 साइन असते, समोरची बाजू 3 ने.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "tan θ = opposite/adjacent. If the opposite side is 3 and the adjacent side is 4, what is tan θ as a decimal?",
+          hi: "tan θ = सम्मुख/संलग्न। यदि सम्मुख भुजा 3 और संलग्न भुजा 4 है, tan θ दशमलव में क्या है?",
+          mr: "tan θ = समोरची/संलग्न. समोरची बाजू 3 आणि संलग्न बाजू 4 असेल, tan θ दशांशात काय?",
+        },
+        answer: 0.75,
+        wrong: [1.333, 0.6, 0.8],
+        checkExpr: "3/4",
+        solution: {
+          en: "tan θ = opposite/adjacent = 3/4 = 0.75. (1.333 would be adjacent/opposite, i.e. cot θ.)",
+          hi: "tan θ = सम्मुख/संलग्न = 3/4 = 0.75. (1.333 संलग्न/सम्मुख यानी cot θ होता।)",
+          mr: "tan θ = समोरची/संलग्न = 3/4 = 0.75. (1.333 संलग्न/समोरची म्हणजे cot θ असते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Evaluate 2 sin 30°. (Recall sin 30° = 1/2.)",
+          hi: "2 sin 30° का मान ज्ञात कीजिए। (याद रखें sin 30° = 1/2।)",
+          mr: "2 sin 30° चे मूल्य काढा. (लक्षात ठेवा sin 30° = 1/2.)",
+        },
+        answer: 1,
+        wrong: [0.5, 2, 0.25],
+        checkExpr: "2*(1/2)",
+        solution: {
+          en: "2 sin 30° = 2·(1/2) = 1.",
+          hi: "2 sin 30° = 2·(1/2) = 1.",
+          mr: "2 sin 30° = 2·(1/2) = 1.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Evaluate sin 30° × cos 60°. (Both equal 1/2.)",
+          hi: "sin 30° × cos 60° का मान ज्ञात कीजिए। (दोनों 1/2 के बराबर।)",
+          mr: "sin 30° × cos 60° चे मूल्य काढा. (दोन्ही 1/2 इतके.)",
+        },
+        answer: 0.25,
+        wrong: [1, 0.5, 0.75],
+        checkExpr: "(1/2)*(1/2)",
+        solution: {
+          en: "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25.",
+          hi: "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25.",
+          mr: "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the value of cos 0°?",
+          hi: "cos 0° का मान क्या है?",
+          mr: "cos 0° चे मूल्य काय?",
+        },
+        answer: 1,
+        wrong: [0, 0.5, -1],
+        solution: {
+          en: "cos 0° = 1 — at zero angle the adjacent side coincides with the hypotenuse. (sin 0° = 0, by contrast.)",
+          hi: "cos 0° = 1 — शून्य कोण पर संलग्न भुजा कर्ण से मिल जाती। (इसके विपरीत sin 0° = 0।)",
+          mr: "cos 0° = 1 — शून्य कोनावर संलग्न बाजू कर्णाशी मिळते. (याउलट sin 0° = 0.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In a right triangle tan θ = 3/4 (a 3-4-5 triangle). What is cos θ as a decimal?",
+          hi: "एक समकोण त्रिभुज में tan θ = 3/4 (एक 3-4-5 त्रिभुज)। cos θ दशमलव में क्या है?",
+          mr: "एका काटकोन त्रिकोणात tan θ = 3/4 (एक 3-4-5 त्रिकोण). cos θ दशांशात काय?",
+        },
+        answer: 0.8,
+        wrong: [0.6, 0.75, 0.64],
+        checkExpr: "4/5",
+        solution: {
+          en: "tan θ = 3/4 means opposite 3, adjacent 4, so hypotenuse √(9+16) = 5. Then cos θ = adjacent/hypotenuse = 4/5 = 0.8.",
+          hi: "tan θ = 3/4 यानी सम्मुख 3, संलग्न 4, अतः कर्ण √(9+16) = 5. तब cos θ = संलग्न/कर्ण = 4/5 = 0.8.",
+          mr: "tan θ = 3/4 म्हणजे समोरची 3, संलग्न 4, म्हणून कर्ण √(9+16) = 5. मग cos θ = संलग्न/कर्ण = 4/5 = 0.8.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Evaluate 4 sin² 30°. (Recall sin 30° = 1/2.)",
+          hi: "4 sin² 30° का मान ज्ञात कीजिए। (याद रखें sin 30° = 1/2।)",
+          mr: "4 sin² 30° चे मूल्य काढा. (लक्षात ठेवा sin 30° = 1/2.)",
+        },
+        answer: 1,
+        wrong: [0.25, 2, 0.5],
+        checkExpr: "4*(1/4)",
+        solution: {
+          en: "sin 30° = 1/2, so sin² 30° = 1/4, and 4·(1/4) = 1.",
+          hi: "sin 30° = 1/2, अतः sin² 30° = 1/4, और 4·(1/4) = 1.",
+          mr: "sin 30° = 1/2, म्हणून sin² 30° = 1/4, आणि 4·(1/4) = 1.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "If 5 tan θ = 4, what is tan θ as a decimal?",
+          hi: "यदि 5 tan θ = 4, tan θ दशमलव में क्या है?",
+          mr: "5 tan θ = 4 असेल, tan θ दशांशात काय?",
+        },
+        answer: 0.8,
+        wrong: [1.25, 0.2, 0.64],
+        checkExpr: "4/5",
+        solution: {
+          en: "Dividing both sides by 5, tan θ = 4/5 = 0.8. (1.25 would be its reciprocal, cot θ.)",
+          hi: "दोनों ओर 5 से भाग देने पर tan θ = 4/5 = 0.8. (1.25 इसका व्युत्क्रम cot θ होता।)",
+          mr: "दोन्ही बाजूंना 5 ने भागल्यावर tan θ = 4/5 = 0.8. (1.25 त्याचा व्यस्त cot θ असते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Evaluate (1 − tan² 45°)/(1 + tan² 45°). (Recall tan 45° = 1.)",
+          hi: "(1 − tan² 45°)/(1 + tan² 45°) का मान ज्ञात कीजिए। (याद रखें tan 45° = 1।)",
+          mr: "(1 − tan² 45°)/(1 + tan² 45°) चे मूल्य काढा. (लक्षात ठेवा tan 45° = 1.)",
+        },
+        answer: 0,
+        wrong: [1, 0.5, -1],
+        checkExpr: "(1-1)/(1+1)",
+        solution: {
+          en: "With tan 45° = 1: (1 − 1)/(1 + 1) = 0/2 = 0. (This expression in fact equals cos 90°, which is 0.)",
+          hi: "tan 45° = 1 से: (1 − 1)/(1 + 1) = 0/2 = 0. (यह व्यंजक वास्तव में cos 90° के बराबर, जो 0।)",
+          mr: "tan 45° = 1 ने: (1 − 1)/(1 + 1) = 0/2 = 0. (हे व्यंजक खरे तर cos 90° इतके, जे 0.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In a 3-4-5 right triangle, for the angle opposite the side of length 3, what is sin θ + cos θ as a decimal?",
+          hi: "एक 3-4-5 समकोण त्रिभुज में, लंबाई 3 वाली भुजा के सम्मुख कोण के लिए, sin θ + cos θ दशमलव में क्या है?",
+          mr: "एका 3-4-5 काटकोन त्रिकोणात, लांबी 3 च्या बाजूसमोरच्या कोनासाठी, sin θ + cos θ दशांशात काय?",
+        },
+        answer: 1.4,
+        wrong: [1, 0.6, 0.8],
+        checkExpr: "3/5+4/5",
+        solution: {
+          en: "For that angle, sin θ = 3/5 and cos θ = 4/5, so sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4.",
+          hi: "उस कोण के लिए sin θ = 3/5 और cos θ = 4/5, अतः sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4.",
+          mr: "त्या कोनासाठी sin θ = 3/5 आणि cos θ = 4/5, म्हणून sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "If sin θ = 0.6 (from a 3-4-5 triangle), what is tan θ as a decimal?",
+          hi: "यदि sin θ = 0.6 (एक 3-4-5 त्रिभुज से), tan θ दशमलव में क्या है?",
+          mr: "sin θ = 0.6 असेल (एका 3-4-5 त्रिकोणातून), tan θ दशांशात काय?",
+        },
+        answer: 0.75,
+        wrong: [0.6, 0.8, 1.333],
+        checkExpr: "3/4",
+        solution: {
+          en: "sin θ = 0.6 = 3/5, so opposite 3, hypotenuse 5, adjacent 4. Then tan θ = opposite/adjacent = 3/4 = 0.75.",
+          hi: "sin θ = 0.6 = 3/5, अतः सम्मुख 3, कर्ण 5, संलग्न 4. तब tan θ = सम्मुख/संलग्न = 3/4 = 0.75.",
+          mr: "sin θ = 0.6 = 3/5, म्हणून समोरची 3, कर्ण 5, संलग्न 4. मग tan θ = समोरची/संलग्न = 3/4 = 0.75.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Evaluate 2 tan² 45° + cos² 30° − sin² 30°. (Use tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4.)",
+          hi: "2 tan² 45° + cos² 30° − sin² 30° का मान ज्ञात कीजिए। (tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4।)",
+          mr: "2 tan² 45° + cos² 30° − sin² 30° चे मूल्य काढा. (tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4.)",
+        },
+        answer: 2.5,
+        wrong: [2, 3, 1.5],
+        checkExpr: "2+3/4-1/4",
+        solution: {
+          en: "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. So 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5.",
+          hi: "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. अतः 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5.",
+          mr: "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. म्हणून 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "If tan θ + cot θ = 2, what is tan θ?",
+          hi: "यदि tan θ + cot θ = 2, tan θ क्या है?",
+          mr: "tan θ + cot θ = 2 असेल, tan θ काय?",
+        },
+        answer: 1,
+        wrong: [2, 0.5, 0],
+        solution: {
+          en: "Writing cot θ = 1/tan θ: tan θ + 1/tan θ = 2 becomes tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², so tan θ = 1 (i.e. θ = 45°).",
+          hi: "cot θ = 1/tan θ लिखने पर: tan θ + 1/tan θ = 2 बनता tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², अतः tan θ = 1 (यानी θ = 45°)।",
+          mr: "cot θ = 1/tan θ लिहिल्यावर: tan θ + 1/tan θ = 2 होते tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², म्हणून tan θ = 1 (म्हणजे θ = 45°).",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-introduction-trigonometry",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 8 — Introduction to Trigonometry",
+      name: "Introduction to Trigonometry",
+      summary:
+        "A right triangle's sides read as ratios: sine, cosine and tangent, the exact values at 0°, 30°, 45°, 60° and 90°, and the identity sin²θ + cos²θ = 1 tying them together.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "त्रिकोणमिति का परिचय",
+          summary:
+            "समकोण त्रिभुज की भुजाएँ अनुपातों में पढ़ी: साइन, कोसाइन और टैंजेंट, 0°, 30°, 45°, 60° और 90° के सटीक मान, और उन्हें बाँधता सर्वसमिका sin²θ + cos²θ = 1।",
+        },
+        mr: {
+          name: "त्रिकोणमितीचा परिचय",
+          summary:
+            "काटकोन त्रिकोणाच्या बाजू गुणोत्तरांत वाचल्या: साइन, कोसाइन आणि टॅंजंट, 0°, 30°, 45°, 60° आणि 90° ची अचूक मूल्ये, आणि त्यांना बांधणारी नित्यसमीकरण sin²θ + cos²θ = 1.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Some Applications of Trigonometry (heights and distances)     */
+/* ------------------------------------------------------------------------- */
+function applicationsTrigonometry(): TopicFileOut {
+  const rand = rng("maths-10-applications-trigonometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The angle of elevation of the top of a tower from a point 20 m from its base is 45°. What is the height of the tower in metres?",
+          hi: "एक मीनार के आधार से 20 मी दूर बिंदु से उसके शीर्ष का उन्नयन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "एका मनोऱ्याच्या पायथ्यापासून 20 मी दूर बिंदूवरून त्याच्या टोकाचा उन्नयन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 20,
+        wrong: [40, 10, 28],
+        checkExpr: "20*1",
+        solution: {
+          en: "height = distance × tan 45° = 20 × 1 = 20 m (since tan 45° = 1).",
+          hi: "ऊँचाई = दूरी × tan 45° = 20 × 1 = 20 मी (क्योंकि tan 45° = 1)।",
+          mr: "उंची = अंतर × tan 45° = 20 × 1 = 20 मी (कारण tan 45° = 1).",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "From the top of a 50 m tower, the angle of depression of a car on the ground is 45°. How far is the car from the base in metres?",
+          hi: "एक 50 मी मीनार के शीर्ष से ज़मीन पर खड़ी कार का अवनमन कोण 45° है। कार आधार से कितनी दूर मीटर में है?",
+          mr: "एका 50 मी मनोऱ्याच्या टोकावरून जमिनीवरील मोटारीचा अवनमन कोन 45° आहे. मोटार पायथ्यापासून किती दूर मीटरमध्ये?",
+        },
+        answer: 50,
+        wrong: [100, 25, 71],
+        checkExpr: "50/1",
+        solution: {
+          en: "distance = height / tan 45° = 50 / 1 = 50 m (the angle of depression equals the angle of elevation from the car).",
+          hi: "दूरी = ऊँचाई / tan 45° = 50 / 1 = 50 मी (अवनमन कोण कार से उन्नयन कोण के बराबर)।",
+          mr: "अंतर = उंची / tan 45° = 50 / 1 = 50 मी (अवनमन कोन मोटारीवरून उन्नयन कोनाइतका).",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A ladder makes a 60° angle with the ground, and its foot is 3 m from the wall. What is the length of the ladder in metres?",
+          hi: "एक सीढ़ी ज़मीन से 60° कोण बनाती है, और उसका पाद दीवार से 3 मी दूर है। सीढ़ी की लंबाई मीटर में क्या है?",
+          mr: "एक शिडी जमिनीशी 60° कोन करते, आणि तिचा पाय भिंतीपासून 3 मी दूर आहे. शिडीची लांबी मीटरमध्ये काय?",
+        },
+        answer: 6,
+        wrong: [1.5, 3, 12],
+        checkExpr: "3/0.5",
+        solution: {
+          en: "The foot distance is the adjacent side, so cos 60° = 3/ladder, giving ladder = 3 / cos 60° = 3 / 0.5 = 6 m.",
+          hi: "पाद-दूरी संलग्न भुजा, अतः cos 60° = 3/सीढ़ी, देता सीढ़ी = 3 / cos 60° = 3 / 0.5 = 6 मी।",
+          mr: "पाय-अंतर संलग्न बाजू, म्हणून cos 60° = 3/शिडी, देते शिडी = 3 / cos 60° = 3 / 0.5 = 6 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A tree casts a shadow 10 m long when the sun's angle of elevation is 45°. What is the height of the tree in metres?",
+          hi: "जब सूर्य का उन्नयन कोण 45° हो, एक पेड़ 10 मी लंबी छाया डालता है। पेड़ की ऊँचाई मीटर में क्या है?",
+          mr: "सूर्याचा उन्नयन कोन 45° असताना एक झाड 10 मी लांब सावली टाकते. झाडाची उंची मीटरमध्ये काय?",
+        },
+        answer: 10,
+        wrong: [20, 5, 14],
+        checkExpr: "10*1",
+        solution: {
+          en: "height = shadow × tan 45° = 10 × 1 = 10 m.",
+          hi: "ऊँचाई = छाया × tan 45° = 10 × 1 = 10 मी।",
+          mr: "उंची = सावली × tan 45° = 10 × 1 = 10 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A kite is flying on a straight string 100 m long, at an angle of elevation of 30°. What is the kite's height above the ground in metres?",
+          hi: "एक पतंग 100 मी लंबी सीधी डोर पर 30° उन्नयन कोण पर उड़ रही है। पतंग की ज़मीन से ऊँचाई मीटर में क्या है?",
+          mr: "एक पतंग 100 मी लांब सरळ दोरीवर 30° उन्नयन कोनावर उडत आहे. पतंगाची जमिनीपासून उंची मीटरमध्ये काय?",
+        },
+        answer: 50,
+        wrong: [100, 86.6, 25],
+        checkExpr: "100*(1/2)",
+        solution: {
+          en: "The string is the hypotenuse, so height = string × sin 30° = 100 × (1/2) = 50 m.",
+          hi: "डोर कर्ण, अतः ऊँचाई = डोर × sin 30° = 100 × (1/2) = 50 मी।",
+          mr: "दोरी कर्ण, म्हणून उंची = दोरी × sin 30° = 100 × (1/2) = 50 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The angle of elevation of the top of a 15 m pole from a point on the ground is 45°. How far is the point from the base in metres?",
+          hi: "ज़मीन पर एक बिंदु से 15 मी खंभे के शीर्ष का उन्नयन कोण 45° है। बिंदु आधार से कितनी दूर मीटर में है?",
+          mr: "जमिनीवरील एका बिंदूवरून 15 मी खांबाच्या टोकाचा उन्नयन कोन 45° आहे. बिंदू पायथ्यापासून किती दूर मीटरमध्ये?",
+        },
+        answer: 15,
+        wrong: [30, 7.5, 21],
+        checkExpr: "15/1",
+        solution: {
+          en: "distance = height / tan 45° = 15 / 1 = 15 m.",
+          hi: "दूरी = ऊँचाई / tan 45° = 15 / 1 = 15 मी।",
+          mr: "अंतर = उंची / tan 45° = 15 / 1 = 15 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A ladder 10 m long leans against a wall, making a 30° angle with the ground. How high up the wall does it reach in metres?",
+          hi: "एक 10 मी लंबी सीढ़ी दीवार से टिकी है, ज़मीन से 30° कोण बनाते हुए। यह दीवार पर कितना ऊँचा मीटर में पहुँचती है?",
+          mr: "एक 10 मी लांब शिडी भिंतीला टेकली आहे, जमिनीशी 30° कोन करत. ती भिंतीवर किती उंच मीटरमध्ये पोहोचते?",
+        },
+        answer: 5,
+        wrong: [8.66, 10, 2.5],
+        checkExpr: "10*(1/2)",
+        solution: {
+          en: "height reached = ladder × sin 30° = 10 × (1/2) = 5 m.",
+          hi: "पहुँची ऊँचाई = सीढ़ी × sin 30° = 10 × (1/2) = 5 मी।",
+          mr: "पोहोचलेली उंची = शिडी × sin 30° = 10 × (1/2) = 5 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A 1.5 m tall observer stands 28.5 m from a tower. The angle of elevation of the top is 45°. What is the tower's height in metres?",
+          hi: "एक 1.5 मी लंबा प्रेक्षक एक मीनार से 28.5 मी दूर खड़ा है। शीर्ष का उन्नयन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "एक 1.5 मी उंच निरीक्षक एका मनोऱ्यापासून 28.5 मी दूर उभा आहे. टोकाचा उन्नयन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 30,
+        wrong: [28.5, 31.5, 42.75],
+        checkExpr: "1.5+28.5*1",
+        solution: {
+          en: "Above eye level the tower rises 28.5 × tan 45° = 28.5 m; adding the observer's 1.5 m gives 1.5 + 28.5 = 30 m.",
+          hi: "आँख के स्तर से ऊपर मीनार 28.5 × tan 45° = 28.5 मी उठती; प्रेक्षक के 1.5 मी जोड़ने पर 1.5 + 28.5 = 30 मी।",
+          mr: "डोळ्याच्या पातळीवर मनोरा 28.5 × tan 45° = 28.5 मी उठतो; निरीक्षकाचे 1.5 मी जोडल्यावर 1.5 + 28.5 = 30 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Two towers of equal height stand on either side of an 80 m wide road. From the midpoint of the road, the angle of elevation of each top is 45°. What is the height of each tower in metres?",
+          hi: "समान ऊँचाई की दो मीनारें 80 मी चौड़ी सड़क के दोनों ओर खड़ी हैं। सड़क के मध्यबिंदु से प्रत्येक शीर्ष का उन्नयन कोण 45° है। प्रत्येक मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "समान उंचीचे दोन मनोरे 80 मी रुंद रस्त्याच्या दोन्ही बाजूंना उभे. रस्त्याच्या मध्यबिंदूवरून प्रत्येक टोकाचा उन्नयन कोन 45° आहे. प्रत्येक मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 40,
+        wrong: [80, 20, 56.6],
+        checkExpr: "40*1",
+        solution: {
+          en: "The midpoint is 80/2 = 40 m from each base, so each height = 40 × tan 45° = 40 × 1 = 40 m.",
+          hi: "मध्यबिंदु प्रत्येक आधार से 80/2 = 40 मी, अतः प्रत्येक ऊँचाई = 40 × tan 45° = 40 × 1 = 40 मी।",
+          mr: "मध्यबिंदू प्रत्येक पायथ्यापासून 80/2 = 40 मी, म्हणून प्रत्येक उंची = 40 × tan 45° = 40 × 1 = 40 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "From a boy's eyes 1.5 m above the ground, a balloon's angle of elevation is 30° and its horizontal distance is 30√3 m. What is the balloon's height above the ground in metres?",
+          hi: "एक लड़के की ज़मीन से 1.5 मी ऊपर आँखों से, एक ग़ुब्बारे का उन्नयन कोण 30° और क्षैतिज दूरी 30√3 मी है। ग़ुब्बारे की ज़मीन से ऊँचाई मीटर में क्या है?",
+          mr: "एका मुलाच्या जमिनीपासून 1.5 मी वरच्या डोळ्यांवरून, एका फुग्याचा उन्नयन कोन 30° आणि आडवे अंतर 30√3 मी आहे. फुग्याची जमिनीपासून उंची मीटरमध्ये काय?",
+        },
+        answer: 31.5,
+        wrong: [30, 33, 28.5],
+        checkExpr: "30+1.5",
+        solution: {
+          en: "Above eye level the balloon is 30√3 × tan 30° = 30√3 × (1/√3) = 30 m; adding the 1.5 m eye height gives 30 + 1.5 = 31.5 m.",
+          hi: "आँख के स्तर से ऊपर ग़ुब्बारा 30√3 × tan 30° = 30√3 × (1/√3) = 30 मी; 1.5 मी आँख-ऊँचाई जोड़ने पर 30 + 1.5 = 31.5 मी।",
+          mr: "डोळ्याच्या पातळीवर फुगा 30√3 × tan 30° = 30√3 × (1/√3) = 30 मी; 1.5 मी डोळा-उंची जोडल्यावर 30 + 1.5 = 31.5 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "From two points at distances 4 m and 9 m from the base of a tower, on the same side, the angles of elevation of the top are complementary. What is the height of the tower in metres?",
+          hi: "एक मीनार के आधार से एक ही ओर 4 मी और 9 मी दूरी के दो बिंदुओं से, शीर्ष के उन्नयन कोण पूरक हैं। मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "एका मनोऱ्याच्या पायथ्यापासून एकाच बाजूला 4 मी आणि 9 मी अंतराच्या दोन बिंदूंवरून, टोकाचे उन्नयन कोन पूरक आहेत. मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 6,
+        wrong: [13, 36, 6.5],
+        solution: {
+          en: "For complementary angles the height is the geometric mean of the two distances: √(4·9) = √36 = 6 m.",
+          hi: "पूरक कोणों के लिए ऊँचाई दोनों दूरियों का गुणोत्तर माध्य: √(4·9) = √36 = 6 मी।",
+          mr: "पूरक कोनांसाठी उंची दोन्ही अंतरांचा भूमितीय मध्य: √(4·9) = √36 = 6 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "From a window 10 m above the ground, the angle of elevation of the top of a tower opposite is 45° and the angle of depression of its foot is 45°. What is the tower's height in metres?",
+          hi: "ज़मीन से 10 मी ऊपर एक खिड़की से, सामने की मीनार के शीर्ष का उन्नयन कोण 45° और उसके पाद का अवनमन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          mr: "जमिनीपासून 10 मी वरच्या एका खिडकीवरून, समोरच्या मनोऱ्याच्या टोकाचा उन्नयन कोन 45° आणि त्याच्या पायाचा अवनमन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+        },
+        answer: 20,
+        wrong: [10, 30, 14.1],
+        checkExpr: "10+10",
+        solution: {
+          en: "The depression of the foot (45°) gives horizontal distance = 10 m. The elevation of the top (45°) then raises it 10 × tan 45° = 10 m above the window. Total height = 10 + 10 = 20 m.",
+          hi: "पाद का अवनमन (45°) क्षैतिज दूरी = 10 मी देता। शीर्ष का उन्नयन (45°) खिड़की से 10 × tan 45° = 10 मी ऊपर उठाता। कुल ऊँचाई = 10 + 10 = 20 मी।",
+          mr: "पायाचा अवनमन (45°) आडवे अंतर = 10 मी देतो. टोकाचा उन्नयन (45°) खिडकीपासून 10 × tan 45° = 10 मी वर उचलतो. एकूण उंची = 10 + 10 = 20 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two ships are on opposite sides of a lighthouse 100 m tall, in a straight line with its base. The angle of depression to each is 45°. What is the distance between the two ships in metres?",
+          hi: "दो जहाज़ एक 100 मी ऊँचे प्रकाश-स्तंभ के दोनों ओर, उसके आधार के साथ एक सीधी रेखा में हैं। प्रत्येक का अवनमन कोण 45° है। दोनों जहाज़ों के बीच की दूरी मीटर में क्या है?",
+          mr: "दोन जहाजे एका 100 मी उंच दीपगृहाच्या दोन्ही बाजूंना, त्याच्या पायथ्याशी सरळ रेषेत आहेत. प्रत्येकाचा अवनमन कोन 45° आहे. दोन जहाजांतील अंतर मीटरमध्ये काय?",
+        },
+        answer: 200,
+        wrong: [100, 141, 150],
+        checkExpr: "100+100",
+        solution: {
+          en: "Each ship is at distance 100 / tan 45° = 100 m from the base, on opposite sides, so the distance between them is 100 + 100 = 200 m.",
+          hi: "प्रत्येक जहाज़ आधार से 100 / tan 45° = 100 मी, विपरीत ओर, अतः उनके बीच की दूरी 100 + 100 = 200 मी।",
+          mr: "प्रत्येक जहाज पायथ्यापासून 100 / tan 45° = 100 मी, विरुद्ध बाजूंना, म्हणून त्यांतील अंतर 100 + 100 = 200 मी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The angle of elevation of the top of a tower from a point on the ground is 30°. On walking 20 m towards the tower, the elevation becomes 60°. What is the distance of the first point from the base in metres?",
+          hi: "ज़मीन पर एक बिंदु से एक मीनार के शीर्ष का उन्नयन कोण 30° है। मीनार की ओर 20 मी चलने पर उन्नयन 60° हो जाता है। पहले बिंदु की आधार से दूरी मीटर में क्या है?",
+          mr: "जमिनीवरील एका बिंदूवरून एका मनोऱ्याच्या टोकाचा उन्नयन कोन 30° आहे. मनोऱ्याकडे 20 मी चालल्यावर उन्नयन 60° होतो. पहिल्या बिंदूचे पायथ्यापासून अंतर मीटरमध्ये काय?",
+        },
+        answer: 30,
+        wrong: [20, 10, 40],
+        checkExpr: "60/2",
+        solution: {
+          en: "Let the far distance be x. Height h = x tan 30° = x/√3 and also h = (x−20) tan 60° = (x−20)√3. Equating, x/√3 = (x−20)√3 gives x = 3(x−20), so 2x = 60 and x = 30 m.",
+          hi: "दूर की दूरी x मानिए। ऊँचाई h = x tan 30° = x/√3 और h = (x−20) tan 60° = (x−20)√3 भी। बराबर करने पर x/√3 = (x−20)√3 देता x = 3(x−20), अतः 2x = 60 और x = 30 मी।",
+          mr: "दूरचे अंतर x माना. उंची h = x tan 30° = x/√3 आणि h = (x−20) tan 60° = (x−20)√3 ही. समान केल्यावर x/√3 = (x−20)√3 देते x = 3(x−20), म्हणून 2x = 60 आणि x = 30 मी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-10-applications-trigonometry",
+      subject: "MATHS",
+      classLevel: 10,
+      chapter: "Chapter 9 — Some Applications of Trigonometry",
+      name: "Some Applications of Trigonometry",
+      summary:
+        "Heights and distances measured without a tape: angles of elevation and depression turning a tower, a ladder, a kite or a ship into a right triangle solved by a single trigonometric ratio.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "त्रिकोणमिति के कुछ अनुप्रयोग",
+          summary:
+            "बिना फ़ीते नापी ऊँचाइयाँ और दूरियाँ: उन्नयन और अवनमन कोण जो मीनार, सीढ़ी, पतंग या जहाज़ को एक त्रिकोणमितीय अनुपात से हल होते समकोण त्रिभुज में बदलते।",
+        },
+        mr: {
+          name: "त्रिकोणमितीचे काही उपयोग",
+          summary:
+            "फितीविना मोजलेल्या उंची आणि अंतरे: उन्नयन आणि अवनमन कोन जे मनोरा, शिडी, पतंग किंवा जहाजाला एका त्रिकोणमितीय गुणोत्तराने सुटणाऱ्या काटकोन त्रिकोणात बदलतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+
 export const G10_MATHS: TopicFileOut[] = [
   realNumbers(),
   polynomials10(),
@@ -1924,4 +2872,7 @@ export const G10_MATHS: TopicFileOut[] = [
   pairLinear10(),
   arithmeticProgressions10(),
   coordinateGeometry10(),
+  triangles10(),
+  introTrigonometry(),
+  applicationsTrigonometry(),
 ];

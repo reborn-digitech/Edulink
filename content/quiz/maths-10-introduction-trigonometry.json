@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-introduction-trigonometry",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 8 — Introduction to Trigonometry",
+  "name": "Introduction to Trigonometry",
+  "summary": "A right triangle's sides read as ratios: sine, cosine and tangent, the exact values at 0°, 30°, 45°, 60° and 90°, and the identity sin²θ + cos²θ = 1 tying them together.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "त्रिकोणमिति का परिचय",
+      "summary": "समकोण त्रिभुज की भुजाएँ अनुपातों में पढ़ी: साइन, कोसाइन और टैंजेंट, 0°, 30°, 45°, 60° और 90° के सटीक मान, और उन्हें बाँधता सर्वसमिका sin²θ + cos²θ = 1।"
+    },
+    "mr": {
+      "name": "त्रिकोणमितीचा परिचय",
+      "summary": "काटकोन त्रिकोणाच्या बाजू गुणोत्तरांत वाचल्या: साइन, कोसाइन आणि टॅंजंट, 0°, 30°, 45°, 60° आणि 90° ची अचूक मूल्ये, आणि त्यांना बांधणारी नित्यसमीकरण sin²θ + cos²θ = 1."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "In a right triangle, sin θ = opposite/hypotenuse. If the opposite side is 3 and the hypotenuse is 5, what is sin θ as a decimal?",
+      "choices": [
+        "1.6",
+        "0.8",
+        "0.6",
+        "0.75"
+      ],
+      "answerIndex": 2,
+      "solution": "sin θ = opposite/hypotenuse = 3/5 = 0.6. (0.8 would be the cosine, using the adjacent side 4.)",
+      "checkExpr": "3/5",
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज में, sin θ = सम्मुख/कर्ण। यदि सम्मुख भुजा 3 और कर्ण 5 है, sin θ दशमलव में क्या है?",
+          "choices": [
+            "1.6",
+            "0.8",
+            "0.6",
+            "0.75"
+          ],
+          "solution": "sin θ = सम्मुख/कर्ण = 3/5 = 0.6. (0.8 कोसाइन होता, संलग्न भुजा 4 से।)"
+        },
+        "mr": {
+          "stem": "एका काटकोन त्रिकोणात, sin θ = समोरची/कर्ण. समोरची बाजू 3 आणि कर्ण 5 असेल, sin θ दशांशात काय?",
+          "choices": [
+            "1.6",
+            "0.8",
+            "0.6",
+            "0.75"
+          ],
+          "solution": "sin θ = समोरची/कर्ण = 3/5 = 0.6. (0.8 कोसाइन असते, संलग्न बाजू 4 ने.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "cos θ = adjacent/hypotenuse. If the adjacent side is 4 and the hypotenuse is 5, what is cos θ as a decimal?",
+      "choices": [
+        "1.25",
+        "0.8",
+        "0.75",
+        "0.6"
+      ],
+      "answerIndex": 1,
+      "solution": "cos θ = adjacent/hypotenuse = 4/5 = 0.8. (0.6 would be the sine, using the opposite side 3.)",
+      "checkExpr": "4/5",
+      "translations": {
+        "hi": {
+          "stem": "cos θ = संलग्न/कर्ण। यदि संलग्न भुजा 4 और कर्ण 5 है, cos θ दशमलव में क्या है?",
+          "choices": [
+            "1.25",
+            "0.8",
+            "0.75",
+            "0.6"
+          ],
+          "solution": "cos θ = संलग्न/कर्ण = 4/5 = 0.8. (0.6 साइन होता, सम्मुख भुजा 3 से।)"
+        },
+        "mr": {
+          "stem": "cos θ = संलग्न/कर्ण. संलग्न बाजू 4 आणि कर्ण 5 असेल, cos θ दशांशात काय?",
+          "choices": [
+            "1.25",
+            "0.8",
+            "0.75",
+            "0.6"
+          ],
+          "solution": "cos θ = संलग्न/कर्ण = 4/5 = 0.8. (0.6 साइन असते, समोरची बाजू 3 ने.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "tan θ = opposite/adjacent. If the opposite side is 3 and the adjacent side is 4, what is tan θ as a decimal?",
+      "choices": [
+        "0.6",
+        "0.75",
+        "0.8",
+        "1.333"
+      ],
+      "answerIndex": 1,
+      "solution": "tan θ = opposite/adjacent = 3/4 = 0.75. (1.333 would be adjacent/opposite, i.e. cot θ.)",
+      "checkExpr": "3/4",
+      "translations": {
+        "hi": {
+          "stem": "tan θ = सम्मुख/संलग्न। यदि सम्मुख भुजा 3 और संलग्न भुजा 4 है, tan θ दशमलव में क्या है?",
+          "choices": [
+            "0.6",
+            "0.75",
+            "0.8",
+            "1.333"
+          ],
+          "solution": "tan θ = सम्मुख/संलग्न = 3/4 = 0.75. (1.333 संलग्न/सम्मुख यानी cot θ होता।)"
+        },
+        "mr": {
+          "stem": "tan θ = समोरची/संलग्न. समोरची बाजू 3 आणि संलग्न बाजू 4 असेल, tan θ दशांशात काय?",
+          "choices": [
+            "0.6",
+            "0.75",
+            "0.8",
+            "1.333"
+          ],
+          "solution": "tan θ = समोरची/संलग्न = 3/4 = 0.75. (1.333 संलग्न/समोरची म्हणजे cot θ असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Evaluate 2 sin 30°. (Recall sin 30° = 1/2.)",
+      "choices": [
+        "0.25",
+        "1",
+        "2",
+        "0.5"
+      ],
+      "answerIndex": 1,
+      "solution": "2 sin 30° = 2·(1/2) = 1.",
+      "checkExpr": "2*(1/2)",
+      "translations": {
+        "hi": {
+          "stem": "2 sin 30° का मान ज्ञात कीजिए। (याद रखें sin 30° = 1/2।)",
+          "choices": [
+            "0.25",
+            "1",
+            "2",
+            "0.5"
+          ],
+          "solution": "2 sin 30° = 2·(1/2) = 1."
+        },
+        "mr": {
+          "stem": "2 sin 30° चे मूल्य काढा. (लक्षात ठेवा sin 30° = 1/2.)",
+          "choices": [
+            "0.25",
+            "1",
+            "2",
+            "0.5"
+          ],
+          "solution": "2 sin 30° = 2·(1/2) = 1."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Evaluate sin 30° × cos 60°. (Both equal 1/2.)",
+      "choices": [
+        "0.75",
+        "1",
+        "0.5",
+        "0.25"
+      ],
+      "answerIndex": 3,
+      "solution": "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25.",
+      "checkExpr": "(1/2)*(1/2)",
+      "translations": {
+        "hi": {
+          "stem": "sin 30° × cos 60° का मान ज्ञात कीजिए। (दोनों 1/2 के बराबर।)",
+          "choices": [
+            "0.75",
+            "1",
+            "0.5",
+            "0.25"
+          ],
+          "solution": "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25."
+        },
+        "mr": {
+          "stem": "sin 30° × cos 60° चे मूल्य काढा. (दोन्ही 1/2 इतके.)",
+          "choices": [
+            "0.75",
+            "1",
+            "0.5",
+            "0.25"
+          ],
+          "solution": "sin 30° × cos 60° = (1/2)·(1/2) = 1/4 = 0.25."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of cos 0°?",
+      "choices": [
+        "-1",
+        "1",
+        "0",
+        "0.5"
+      ],
+      "answerIndex": 1,
+      "solution": "cos 0° = 1 — at zero angle the adjacent side coincides with the hypotenuse. (sin 0° = 0, by contrast.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "cos 0° का मान क्या है?",
+          "choices": [
+            "-1",
+            "1",
+            "0",
+            "0.5"
+          ],
+          "solution": "cos 0° = 1 — शून्य कोण पर संलग्न भुजा कर्ण से मिल जाती। (इसके विपरीत sin 0° = 0।)"
+        },
+        "mr": {
+          "stem": "cos 0° चे मूल्य काय?",
+          "choices": [
+            "-1",
+            "1",
+            "0",
+            "0.5"
+          ],
+          "solution": "cos 0° = 1 — शून्य कोनावर संलग्न बाजू कर्णाशी मिळते. (याउलट sin 0° = 0.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a right triangle tan θ = 3/4 (a 3-4-5 triangle). What is cos θ as a decimal?",
+      "choices": [
+        "0.75",
+        "0.6",
+        "0.8",
+        "0.64"
+      ],
+      "answerIndex": 2,
+      "solution": "tan θ = 3/4 means opposite 3, adjacent 4, so hypotenuse √(9+16) = 5. Then cos θ = adjacent/hypotenuse = 4/5 = 0.8.",
+      "checkExpr": "4/5",
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज में tan θ = 3/4 (एक 3-4-5 त्रिभुज)। cos θ दशमलव में क्या है?",
+          "choices": [
+            "0.75",
+            "0.6",
+            "0.8",
+            "0.64"
+          ],
+          "solution": "tan θ = 3/4 यानी सम्मुख 3, संलग्न 4, अतः कर्ण √(9+16) = 5. तब cos θ = संलग्न/कर्ण = 4/5 = 0.8."
+        },
+        "mr": {
+          "stem": "एका काटकोन त्रिकोणात tan θ = 3/4 (एक 3-4-5 त्रिकोण). cos θ दशांशात काय?",
+          "choices": [
+            "0.75",
+            "0.6",
+            "0.8",
+            "0.64"
+          ],
+          "solution": "tan θ = 3/4 म्हणजे समोरची 3, संलग्न 4, म्हणून कर्ण √(9+16) = 5. मग cos θ = संलग्न/कर्ण = 4/5 = 0.8."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Evaluate 4 sin² 30°. (Recall sin 30° = 1/2.)",
+      "choices": [
+        "2",
+        "1",
+        "0.25",
+        "0.5"
+      ],
+      "answerIndex": 1,
+      "solution": "sin 30° = 1/2, so sin² 30° = 1/4, and 4·(1/4) = 1.",
+      "checkExpr": "4*(1/4)",
+      "translations": {
+        "hi": {
+          "stem": "4 sin² 30° का मान ज्ञात कीजिए। (याद रखें sin 30° = 1/2।)",
+          "choices": [
+            "2",
+            "1",
+            "0.25",
+            "0.5"
+          ],
+          "solution": "sin 30° = 1/2, अतः sin² 30° = 1/4, और 4·(1/4) = 1."
+        },
+        "mr": {
+          "stem": "4 sin² 30° चे मूल्य काढा. (लक्षात ठेवा sin 30° = 1/2.)",
+          "choices": [
+            "2",
+            "1",
+            "0.25",
+            "0.5"
+          ],
+          "solution": "sin 30° = 1/2, म्हणून sin² 30° = 1/4, आणि 4·(1/4) = 1."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If 5 tan θ = 4, what is tan θ as a decimal?",
+      "choices": [
+        "1.25",
+        "0.8",
+        "0.2",
+        "0.64"
+      ],
+      "answerIndex": 1,
+      "solution": "Dividing both sides by 5, tan θ = 4/5 = 0.8. (1.25 would be its reciprocal, cot θ.)",
+      "checkExpr": "4/5",
+      "translations": {
+        "hi": {
+          "stem": "यदि 5 tan θ = 4, tan θ दशमलव में क्या है?",
+          "choices": [
+            "1.25",
+            "0.8",
+            "0.2",
+            "0.64"
+          ],
+          "solution": "दोनों ओर 5 से भाग देने पर tan θ = 4/5 = 0.8. (1.25 इसका व्युत्क्रम cot θ होता।)"
+        },
+        "mr": {
+          "stem": "5 tan θ = 4 असेल, tan θ दशांशात काय?",
+          "choices": [
+            "1.25",
+            "0.8",
+            "0.2",
+            "0.64"
+          ],
+          "solution": "दोन्ही बाजूंना 5 ने भागल्यावर tan θ = 4/5 = 0.8. (1.25 त्याचा व्यस्त cot θ असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Evaluate (1 − tan² 45°)/(1 + tan² 45°). (Recall tan 45° = 1.)",
+      "choices": [
+        "1",
+        "-1",
+        "0.5",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "With tan 45° = 1: (1 − 1)/(1 + 1) = 0/2 = 0. (This expression in fact equals cos 90°, which is 0.)",
+      "checkExpr": "(1-1)/(1+1)",
+      "translations": {
+        "hi": {
+          "stem": "(1 − tan² 45°)/(1 + tan² 45°) का मान ज्ञात कीजिए। (याद रखें tan 45° = 1।)",
+          "choices": [
+            "1",
+            "-1",
+            "0.5",
+            "0"
+          ],
+          "solution": "tan 45° = 1 से: (1 − 1)/(1 + 1) = 0/2 = 0. (यह व्यंजक वास्तव में cos 90° के बराबर, जो 0।)"
+        },
+        "mr": {
+          "stem": "(1 − tan² 45°)/(1 + tan² 45°) चे मूल्य काढा. (लक्षात ठेवा tan 45° = 1.)",
+          "choices": [
+            "1",
+            "-1",
+            "0.5",
+            "0"
+          ],
+          "solution": "tan 45° = 1 ने: (1 − 1)/(1 + 1) = 0/2 = 0. (हे व्यंजक खरे तर cos 90° इतके, जे 0.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a 3-4-5 right triangle, for the angle opposite the side of length 3, what is sin θ + cos θ as a decimal?",
+      "choices": [
+        "1",
+        "0.8",
+        "0.6",
+        "1.4"
+      ],
+      "answerIndex": 3,
+      "solution": "For that angle, sin θ = 3/5 and cos θ = 4/5, so sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4.",
+      "checkExpr": "3/5+4/5",
+      "translations": {
+        "hi": {
+          "stem": "एक 3-4-5 समकोण त्रिभुज में, लंबाई 3 वाली भुजा के सम्मुख कोण के लिए, sin θ + cos θ दशमलव में क्या है?",
+          "choices": [
+            "1",
+            "0.8",
+            "0.6",
+            "1.4"
+          ],
+          "solution": "उस कोण के लिए sin θ = 3/5 और cos θ = 4/5, अतः sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4."
+        },
+        "mr": {
+          "stem": "एका 3-4-5 काटकोन त्रिकोणात, लांबी 3 च्या बाजूसमोरच्या कोनासाठी, sin θ + cos θ दशांशात काय?",
+          "choices": [
+            "1",
+            "0.8",
+            "0.6",
+            "1.4"
+          ],
+          "solution": "त्या कोनासाठी sin θ = 3/5 आणि cos θ = 4/5, म्हणून sin θ + cos θ = 3/5 + 4/5 = 7/5 = 1.4."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "If sin θ = 0.6 (from a 3-4-5 triangle), what is tan θ as a decimal?",
+      "choices": [
+        "1.333",
+        "0.8",
+        "0.75",
+        "0.6"
+      ],
+      "answerIndex": 2,
+      "solution": "sin θ = 0.6 = 3/5, so opposite 3, hypotenuse 5, adjacent 4. Then tan θ = opposite/adjacent = 3/4 = 0.75.",
+      "checkExpr": "3/4",
+      "translations": {
+        "hi": {
+          "stem": "यदि sin θ = 0.6 (एक 3-4-5 त्रिभुज से), tan θ दशमलव में क्या है?",
+          "choices": [
+            "1.333",
+            "0.8",
+            "0.75",
+            "0.6"
+          ],
+          "solution": "sin θ = 0.6 = 3/5, अतः सम्मुख 3, कर्ण 5, संलग्न 4. तब tan θ = सम्मुख/संलग्न = 3/4 = 0.75."
+        },
+        "mr": {
+          "stem": "sin θ = 0.6 असेल (एका 3-4-5 त्रिकोणातून), tan θ दशांशात काय?",
+          "choices": [
+            "1.333",
+            "0.8",
+            "0.75",
+            "0.6"
+          ],
+          "solution": "sin θ = 0.6 = 3/5, म्हणून समोरची 3, कर्ण 5, संलग्न 4. मग tan θ = समोरची/संलग्न = 3/4 = 0.75."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Evaluate 2 tan² 45° + cos² 30° − sin² 30°. (Use tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4.)",
+      "choices": [
+        "2.5",
+        "1.5",
+        "3",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. So 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5.",
+      "checkExpr": "2+3/4-1/4",
+      "translations": {
+        "hi": {
+          "stem": "2 tan² 45° + cos² 30° − sin² 30° का मान ज्ञात कीजिए। (tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4।)",
+          "choices": [
+            "2.5",
+            "1.5",
+            "3",
+            "2"
+          ],
+          "solution": "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. अतः 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5."
+        },
+        "mr": {
+          "stem": "2 tan² 45° + cos² 30° − sin² 30° चे मूल्य काढा. (tan 45° = 1, cos² 30° = 3/4, sin² 30° = 1/4.)",
+          "choices": [
+            "2.5",
+            "1.5",
+            "3",
+            "2"
+          ],
+          "solution": "2 tan² 45° = 2·1 = 2; cos² 30° = 3/4; sin² 30° = 1/4. म्हणून 2 + 3/4 − 1/4 = 2 + 1/2 = 2.5."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "If tan θ + cot θ = 2, what is tan θ?",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "0.5"
+      ],
+      "answerIndex": 1,
+      "solution": "Writing cot θ = 1/tan θ: tan θ + 1/tan θ = 2 becomes tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², so tan θ = 1 (i.e. θ = 45°).",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि tan θ + cot θ = 2, tan θ क्या है?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "0.5"
+          ],
+          "solution": "cot θ = 1/tan θ लिखने पर: tan θ + 1/tan θ = 2 बनता tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², अतः tan θ = 1 (यानी θ = 45°)।"
+        },
+        "mr": {
+          "stem": "tan θ + cot θ = 2 असेल, tan θ काय?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "0.5"
+          ],
+          "solution": "cot θ = 1/tan θ लिहिल्यावर: tan θ + 1/tan θ = 2 होते tan²θ − 2 tan θ + 1 = 0 = (tan θ − 1)², म्हणून tan θ = 1 (म्हणजे θ = 45°)."
+        }
+      }
+    }
+  ]
+}

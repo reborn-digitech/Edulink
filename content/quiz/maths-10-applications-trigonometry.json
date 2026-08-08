@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-applications-trigonometry",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 9 — Some Applications of Trigonometry",
+  "name": "Some Applications of Trigonometry",
+  "summary": "Heights and distances measured without a tape: angles of elevation and depression turning a tower, a ladder, a kite or a ship into a right triangle solved by a single trigonometric ratio.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "त्रिकोणमिति के कुछ अनुप्रयोग",
+      "summary": "बिना फ़ीते नापी ऊँचाइयाँ और दूरियाँ: उन्नयन और अवनमन कोण जो मीनार, सीढ़ी, पतंग या जहाज़ को एक त्रिकोणमितीय अनुपात से हल होते समकोण त्रिभुज में बदलते।"
+    },
+    "mr": {
+      "name": "त्रिकोणमितीचे काही उपयोग",
+      "summary": "फितीविना मोजलेल्या उंची आणि अंतरे: उन्नयन आणि अवनमन कोन जे मनोरा, शिडी, पतंग किंवा जहाजाला एका त्रिकोणमितीय गुणोत्तराने सुटणाऱ्या काटकोन त्रिकोणात बदलतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The angle of elevation of the top of a tower from a point 20 m from its base is 45°. What is the height of the tower in metres?",
+      "choices": [
+        "20",
+        "28",
+        "40",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "height = distance × tan 45° = 20 × 1 = 20 m (since tan 45° = 1).",
+      "checkExpr": "20*1",
+      "translations": {
+        "hi": {
+          "stem": "एक मीनार के आधार से 20 मी दूर बिंदु से उसके शीर्ष का उन्नयन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "20",
+            "28",
+            "40",
+            "10"
+          ],
+          "solution": "ऊँचाई = दूरी × tan 45° = 20 × 1 = 20 मी (क्योंकि tan 45° = 1)।"
+        },
+        "mr": {
+          "stem": "एका मनोऱ्याच्या पायथ्यापासून 20 मी दूर बिंदूवरून त्याच्या टोकाचा उन्नयन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "20",
+            "28",
+            "40",
+            "10"
+          ],
+          "solution": "उंची = अंतर × tan 45° = 20 × 1 = 20 मी (कारण tan 45° = 1)."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "From the top of a 50 m tower, the angle of depression of a car on the ground is 45°. How far is the car from the base in metres?",
+      "choices": [
+        "25",
+        "100",
+        "50",
+        "71"
+      ],
+      "answerIndex": 2,
+      "solution": "distance = height / tan 45° = 50 / 1 = 50 m (the angle of depression equals the angle of elevation from the car).",
+      "checkExpr": "50/1",
+      "translations": {
+        "hi": {
+          "stem": "एक 50 मी मीनार के शीर्ष से ज़मीन पर खड़ी कार का अवनमन कोण 45° है। कार आधार से कितनी दूर मीटर में है?",
+          "choices": [
+            "25",
+            "100",
+            "50",
+            "71"
+          ],
+          "solution": "दूरी = ऊँचाई / tan 45° = 50 / 1 = 50 मी (अवनमन कोण कार से उन्नयन कोण के बराबर)।"
+        },
+        "mr": {
+          "stem": "एका 50 मी मनोऱ्याच्या टोकावरून जमिनीवरील मोटारीचा अवनमन कोन 45° आहे. मोटार पायथ्यापासून किती दूर मीटरमध्ये?",
+          "choices": [
+            "25",
+            "100",
+            "50",
+            "71"
+          ],
+          "solution": "अंतर = उंची / tan 45° = 50 / 1 = 50 मी (अवनमन कोन मोटारीवरून उन्नयन कोनाइतका)."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A ladder makes a 60° angle with the ground, and its foot is 3 m from the wall. What is the length of the ladder in metres?",
+      "choices": [
+        "1.5",
+        "12",
+        "3",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "The foot distance is the adjacent side, so cos 60° = 3/ladder, giving ladder = 3 / cos 60° = 3 / 0.5 = 6 m.",
+      "checkExpr": "3/0.5",
+      "translations": {
+        "hi": {
+          "stem": "एक सीढ़ी ज़मीन से 60° कोण बनाती है, और उसका पाद दीवार से 3 मी दूर है। सीढ़ी की लंबाई मीटर में क्या है?",
+          "choices": [
+            "1.5",
+            "12",
+            "3",
+            "6"
+          ],
+          "solution": "पाद-दूरी संलग्न भुजा, अतः cos 60° = 3/सीढ़ी, देता सीढ़ी = 3 / cos 60° = 3 / 0.5 = 6 मी।"
+        },
+        "mr": {
+          "stem": "एक शिडी जमिनीशी 60° कोन करते, आणि तिचा पाय भिंतीपासून 3 मी दूर आहे. शिडीची लांबी मीटरमध्ये काय?",
+          "choices": [
+            "1.5",
+            "12",
+            "3",
+            "6"
+          ],
+          "solution": "पाय-अंतर संलग्न बाजू, म्हणून cos 60° = 3/शिडी, देते शिडी = 3 / cos 60° = 3 / 0.5 = 6 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A tree casts a shadow 10 m long when the sun's angle of elevation is 45°. What is the height of the tree in metres?",
+      "choices": [
+        "20",
+        "10",
+        "5",
+        "14"
+      ],
+      "answerIndex": 1,
+      "solution": "height = shadow × tan 45° = 10 × 1 = 10 m.",
+      "checkExpr": "10*1",
+      "translations": {
+        "hi": {
+          "stem": "जब सूर्य का उन्नयन कोण 45° हो, एक पेड़ 10 मी लंबी छाया डालता है। पेड़ की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "20",
+            "10",
+            "5",
+            "14"
+          ],
+          "solution": "ऊँचाई = छाया × tan 45° = 10 × 1 = 10 मी।"
+        },
+        "mr": {
+          "stem": "सूर्याचा उन्नयन कोन 45° असताना एक झाड 10 मी लांब सावली टाकते. झाडाची उंची मीटरमध्ये काय?",
+          "choices": [
+            "20",
+            "10",
+            "5",
+            "14"
+          ],
+          "solution": "उंची = सावली × tan 45° = 10 × 1 = 10 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A kite is flying on a straight string 100 m long, at an angle of elevation of 30°. What is the kite's height above the ground in metres?",
+      "choices": [
+        "100",
+        "25",
+        "50",
+        "86.6"
+      ],
+      "answerIndex": 2,
+      "solution": "The string is the hypotenuse, so height = string × sin 30° = 100 × (1/2) = 50 m.",
+      "checkExpr": "100*(1/2)",
+      "translations": {
+        "hi": {
+          "stem": "एक पतंग 100 मी लंबी सीधी डोर पर 30° उन्नयन कोण पर उड़ रही है। पतंग की ज़मीन से ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "100",
+            "25",
+            "50",
+            "86.6"
+          ],
+          "solution": "डोर कर्ण, अतः ऊँचाई = डोर × sin 30° = 100 × (1/2) = 50 मी।"
+        },
+        "mr": {
+          "stem": "एक पतंग 100 मी लांब सरळ दोरीवर 30° उन्नयन कोनावर उडत आहे. पतंगाची जमिनीपासून उंची मीटरमध्ये काय?",
+          "choices": [
+            "100",
+            "25",
+            "50",
+            "86.6"
+          ],
+          "solution": "दोरी कर्ण, म्हणून उंची = दोरी × sin 30° = 100 × (1/2) = 50 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The angle of elevation of the top of a 15 m pole from a point on the ground is 45°. How far is the point from the base in metres?",
+      "choices": [
+        "7.5",
+        "30",
+        "21",
+        "15"
+      ],
+      "answerIndex": 3,
+      "solution": "distance = height / tan 45° = 15 / 1 = 15 m.",
+      "checkExpr": "15/1",
+      "translations": {
+        "hi": {
+          "stem": "ज़मीन पर एक बिंदु से 15 मी खंभे के शीर्ष का उन्नयन कोण 45° है। बिंदु आधार से कितनी दूर मीटर में है?",
+          "choices": [
+            "7.5",
+            "30",
+            "21",
+            "15"
+          ],
+          "solution": "दूरी = ऊँचाई / tan 45° = 15 / 1 = 15 मी।"
+        },
+        "mr": {
+          "stem": "जमिनीवरील एका बिंदूवरून 15 मी खांबाच्या टोकाचा उन्नयन कोन 45° आहे. बिंदू पायथ्यापासून किती दूर मीटरमध्ये?",
+          "choices": [
+            "7.5",
+            "30",
+            "21",
+            "15"
+          ],
+          "solution": "अंतर = उंची / tan 45° = 15 / 1 = 15 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A ladder 10 m long leans against a wall, making a 30° angle with the ground. How high up the wall does it reach in metres?",
+      "choices": [
+        "10",
+        "2.5",
+        "5",
+        "8.66"
+      ],
+      "answerIndex": 2,
+      "solution": "height reached = ladder × sin 30° = 10 × (1/2) = 5 m.",
+      "checkExpr": "10*(1/2)",
+      "translations": {
+        "hi": {
+          "stem": "एक 10 मी लंबी सीढ़ी दीवार से टिकी है, ज़मीन से 30° कोण बनाते हुए। यह दीवार पर कितना ऊँचा मीटर में पहुँचती है?",
+          "choices": [
+            "10",
+            "2.5",
+            "5",
+            "8.66"
+          ],
+          "solution": "पहुँची ऊँचाई = सीढ़ी × sin 30° = 10 × (1/2) = 5 मी।"
+        },
+        "mr": {
+          "stem": "एक 10 मी लांब शिडी भिंतीला टेकली आहे, जमिनीशी 30° कोन करत. ती भिंतीवर किती उंच मीटरमध्ये पोहोचते?",
+          "choices": [
+            "10",
+            "2.5",
+            "5",
+            "8.66"
+          ],
+          "solution": "पोहोचलेली उंची = शिडी × sin 30° = 10 × (1/2) = 5 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A 1.5 m tall observer stands 28.5 m from a tower. The angle of elevation of the top is 45°. What is the tower's height in metres?",
+      "choices": [
+        "30",
+        "42.75",
+        "31.5",
+        "28.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Above eye level the tower rises 28.5 × tan 45° = 28.5 m; adding the observer's 1.5 m gives 1.5 + 28.5 = 30 m.",
+      "checkExpr": "1.5+28.5*1",
+      "translations": {
+        "hi": {
+          "stem": "एक 1.5 मी लंबा प्रेक्षक एक मीनार से 28.5 मी दूर खड़ा है। शीर्ष का उन्नयन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "30",
+            "42.75",
+            "31.5",
+            "28.5"
+          ],
+          "solution": "आँख के स्तर से ऊपर मीनार 28.5 × tan 45° = 28.5 मी उठती; प्रेक्षक के 1.5 मी जोड़ने पर 1.5 + 28.5 = 30 मी।"
+        },
+        "mr": {
+          "stem": "एक 1.5 मी उंच निरीक्षक एका मनोऱ्यापासून 28.5 मी दूर उभा आहे. टोकाचा उन्नयन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "30",
+            "42.75",
+            "31.5",
+            "28.5"
+          ],
+          "solution": "डोळ्याच्या पातळीवर मनोरा 28.5 × tan 45° = 28.5 मी उठतो; निरीक्षकाचे 1.5 मी जोडल्यावर 1.5 + 28.5 = 30 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two towers of equal height stand on either side of an 80 m wide road. From the midpoint of the road, the angle of elevation of each top is 45°. What is the height of each tower in metres?",
+      "choices": [
+        "40",
+        "20",
+        "56.6",
+        "80"
+      ],
+      "answerIndex": 0,
+      "solution": "The midpoint is 80/2 = 40 m from each base, so each height = 40 × tan 45° = 40 × 1 = 40 m.",
+      "checkExpr": "40*1",
+      "translations": {
+        "hi": {
+          "stem": "समान ऊँचाई की दो मीनारें 80 मी चौड़ी सड़क के दोनों ओर खड़ी हैं। सड़क के मध्यबिंदु से प्रत्येक शीर्ष का उन्नयन कोण 45° है। प्रत्येक मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "40",
+            "20",
+            "56.6",
+            "80"
+          ],
+          "solution": "मध्यबिंदु प्रत्येक आधार से 80/2 = 40 मी, अतः प्रत्येक ऊँचाई = 40 × tan 45° = 40 × 1 = 40 मी।"
+        },
+        "mr": {
+          "stem": "समान उंचीचे दोन मनोरे 80 मी रुंद रस्त्याच्या दोन्ही बाजूंना उभे. रस्त्याच्या मध्यबिंदूवरून प्रत्येक टोकाचा उन्नयन कोन 45° आहे. प्रत्येक मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "40",
+            "20",
+            "56.6",
+            "80"
+          ],
+          "solution": "मध्यबिंदू प्रत्येक पायथ्यापासून 80/2 = 40 मी, म्हणून प्रत्येक उंची = 40 × tan 45° = 40 × 1 = 40 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "From a boy's eyes 1.5 m above the ground, a balloon's angle of elevation is 30° and its horizontal distance is 30√3 m. What is the balloon's height above the ground in metres?",
+      "choices": [
+        "28.5",
+        "30",
+        "31.5",
+        "33"
+      ],
+      "answerIndex": 2,
+      "solution": "Above eye level the balloon is 30√3 × tan 30° = 30√3 × (1/√3) = 30 m; adding the 1.5 m eye height gives 30 + 1.5 = 31.5 m.",
+      "checkExpr": "30+1.5",
+      "translations": {
+        "hi": {
+          "stem": "एक लड़के की ज़मीन से 1.5 मी ऊपर आँखों से, एक ग़ुब्बारे का उन्नयन कोण 30° और क्षैतिज दूरी 30√3 मी है। ग़ुब्बारे की ज़मीन से ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "28.5",
+            "30",
+            "31.5",
+            "33"
+          ],
+          "solution": "आँख के स्तर से ऊपर ग़ुब्बारा 30√3 × tan 30° = 30√3 × (1/√3) = 30 मी; 1.5 मी आँख-ऊँचाई जोड़ने पर 30 + 1.5 = 31.5 मी।"
+        },
+        "mr": {
+          "stem": "एका मुलाच्या जमिनीपासून 1.5 मी वरच्या डोळ्यांवरून, एका फुग्याचा उन्नयन कोन 30° आणि आडवे अंतर 30√3 मी आहे. फुग्याची जमिनीपासून उंची मीटरमध्ये काय?",
+          "choices": [
+            "28.5",
+            "30",
+            "31.5",
+            "33"
+          ],
+          "solution": "डोळ्याच्या पातळीवर फुगा 30√3 × tan 30° = 30√3 × (1/√3) = 30 मी; 1.5 मी डोळा-उंची जोडल्यावर 30 + 1.5 = 31.5 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "From two points at distances 4 m and 9 m from the base of a tower, on the same side, the angles of elevation of the top are complementary. What is the height of the tower in metres?",
+      "choices": [
+        "36",
+        "6",
+        "6.5",
+        "13"
+      ],
+      "answerIndex": 1,
+      "solution": "For complementary angles the height is the geometric mean of the two distances: √(4·9) = √36 = 6 m.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मीनार के आधार से एक ही ओर 4 मी और 9 मी दूरी के दो बिंदुओं से, शीर्ष के उन्नयन कोण पूरक हैं। मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "36",
+            "6",
+            "6.5",
+            "13"
+          ],
+          "solution": "पूरक कोणों के लिए ऊँचाई दोनों दूरियों का गुणोत्तर माध्य: √(4·9) = √36 = 6 मी।"
+        },
+        "mr": {
+          "stem": "एका मनोऱ्याच्या पायथ्यापासून एकाच बाजूला 4 मी आणि 9 मी अंतराच्या दोन बिंदूंवरून, टोकाचे उन्नयन कोन पूरक आहेत. मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "36",
+            "6",
+            "6.5",
+            "13"
+          ],
+          "solution": "पूरक कोनांसाठी उंची दोन्ही अंतरांचा भूमितीय मध्य: √(4·9) = √36 = 6 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "From a window 10 m above the ground, the angle of elevation of the top of a tower opposite is 45° and the angle of depression of its foot is 45°. What is the tower's height in metres?",
+      "choices": [
+        "20",
+        "30",
+        "14.1",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "The depression of the foot (45°) gives horizontal distance = 10 m. The elevation of the top (45°) then raises it 10 × tan 45° = 10 m above the window. Total height = 10 + 10 = 20 m.",
+      "checkExpr": "10+10",
+      "translations": {
+        "hi": {
+          "stem": "ज़मीन से 10 मी ऊपर एक खिड़की से, सामने की मीनार के शीर्ष का उन्नयन कोण 45° और उसके पाद का अवनमन कोण 45° है। मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "20",
+            "30",
+            "14.1",
+            "10"
+          ],
+          "solution": "पाद का अवनमन (45°) क्षैतिज दूरी = 10 मी देता। शीर्ष का उन्नयन (45°) खिड़की से 10 × tan 45° = 10 मी ऊपर उठाता। कुल ऊँचाई = 10 + 10 = 20 मी।"
+        },
+        "mr": {
+          "stem": "जमिनीपासून 10 मी वरच्या एका खिडकीवरून, समोरच्या मनोऱ्याच्या टोकाचा उन्नयन कोन 45° आणि त्याच्या पायाचा अवनमन कोन 45° आहे. मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "20",
+            "30",
+            "14.1",
+            "10"
+          ],
+          "solution": "पायाचा अवनमन (45°) आडवे अंतर = 10 मी देतो. टोकाचा उन्नयन (45°) खिडकीपासून 10 × tan 45° = 10 मी वर उचलतो. एकूण उंची = 10 + 10 = 20 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two ships are on opposite sides of a lighthouse 100 m tall, in a straight line with its base. The angle of depression to each is 45°. What is the distance between the two ships in metres?",
+      "choices": [
+        "100",
+        "200",
+        "141",
+        "150"
+      ],
+      "answerIndex": 1,
+      "solution": "Each ship is at distance 100 / tan 45° = 100 m from the base, on opposite sides, so the distance between them is 100 + 100 = 200 m.",
+      "checkExpr": "100+100",
+      "translations": {
+        "hi": {
+          "stem": "दो जहाज़ एक 100 मी ऊँचे प्रकाश-स्तंभ के दोनों ओर, उसके आधार के साथ एक सीधी रेखा में हैं। प्रत्येक का अवनमन कोण 45° है। दोनों जहाज़ों के बीच की दूरी मीटर में क्या है?",
+          "choices": [
+            "100",
+            "200",
+            "141",
+            "150"
+          ],
+          "solution": "प्रत्येक जहाज़ आधार से 100 / tan 45° = 100 मी, विपरीत ओर, अतः उनके बीच की दूरी 100 + 100 = 200 मी।"
+        },
+        "mr": {
+          "stem": "दोन जहाजे एका 100 मी उंच दीपगृहाच्या दोन्ही बाजूंना, त्याच्या पायथ्याशी सरळ रेषेत आहेत. प्रत्येकाचा अवनमन कोन 45° आहे. दोन जहाजांतील अंतर मीटरमध्ये काय?",
+          "choices": [
+            "100",
+            "200",
+            "141",
+            "150"
+          ],
+          "solution": "प्रत्येक जहाज पायथ्यापासून 100 / tan 45° = 100 मी, विरुद्ध बाजूंना, म्हणून त्यांतील अंतर 100 + 100 = 200 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The angle of elevation of the top of a tower from a point on the ground is 30°. On walking 20 m towards the tower, the elevation becomes 60°. What is the distance of the first point from the base in metres?",
+      "choices": [
+        "30",
+        "10",
+        "40",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the far distance be x. Height h = x tan 30° = x/√3 and also h = (x−20) tan 60° = (x−20)√3. Equating, x/√3 = (x−20)√3 gives x = 3(x−20), so 2x = 60 and x = 30 m.",
+      "checkExpr": "60/2",
+      "translations": {
+        "hi": {
+          "stem": "ज़मीन पर एक बिंदु से एक मीनार के शीर्ष का उन्नयन कोण 30° है। मीनार की ओर 20 मी चलने पर उन्नयन 60° हो जाता है। पहले बिंदु की आधार से दूरी मीटर में क्या है?",
+          "choices": [
+            "30",
+            "10",
+            "40",
+            "20"
+          ],
+          "solution": "दूर की दूरी x मानिए। ऊँचाई h = x tan 30° = x/√3 और h = (x−20) tan 60° = (x−20)√3 भी। बराबर करने पर x/√3 = (x−20)√3 देता x = 3(x−20), अतः 2x = 60 और x = 30 मी।"
+        },
+        "mr": {
+          "stem": "जमिनीवरील एका बिंदूवरून एका मनोऱ्याच्या टोकाचा उन्नयन कोन 30° आहे. मनोऱ्याकडे 20 मी चालल्यावर उन्नयन 60° होतो. पहिल्या बिंदूचे पायथ्यापासून अंतर मीटरमध्ये काय?",
+          "choices": [
+            "30",
+            "10",
+            "40",
+            "20"
+          ],
+          "solution": "दूरचे अंतर x माना. उंची h = x tan 30° = x/√3 आणि h = (x−20) tan 60° = (x−20)√3 ही. समान केल्यावर x/√3 = (x−20)√3 देते x = 3(x−20), म्हणून 2x = 60 आणि x = 30 मी."
+        }
+      }
+    }
+  ]
+}

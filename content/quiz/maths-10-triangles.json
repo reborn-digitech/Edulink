@@ -1,0 +1,513 @@
+{
+  "slug": "maths-10-triangles",
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 7 — Triangles",
+  "name": "Triangles",
+  "summary": "Same shape, different size: the AA criterion, the Basic Proportionality Theorem slicing sides in proportion, areas scaling as the square of sides, and Pythagoras with its altitude-on-hypotenuse corollaries.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "त्रिभुज",
+      "summary": "एक ही आकार, भिन्न माप: AA कसौटी, भुजाओं को समानुपात में काटता आधारभूत समानुपात प्रमेय, भुजाओं के वर्ग-सा बढ़ता क्षेत्रफल, और पाइथागोरस अपने कर्ण-लंब उपप्रमेयों सहित।"
+    },
+    "mr": {
+      "name": "त्रिकोण",
+      "summary": "एकच आकार, वेगळे माप: AA निकष, बाजूंना प्रमाणात कापणारे आधारभूत प्रमाण प्रमेय, बाजूंच्या वर्गासारखे वाढणारे क्षेत्रफळ, आणि पायथागोरस त्याच्या कर्ण-लंब उपप्रमेयांसह."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Two angles of a triangle are 50° and 60°. What is the third angle in degrees?",
+      "choices": [
+        "60",
+        "70",
+        "110",
+        "80"
+      ],
+      "answerIndex": 1,
+      "solution": "The angles of a triangle sum to 180°, so the third is 180 − 50 − 60 = 70°.",
+      "checkExpr": "180-50-60",
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज के दो कोण 50° और 60° हैं। तीसरा कोण डिग्री में क्या है?",
+          "choices": [
+            "60",
+            "70",
+            "110",
+            "80"
+          ],
+          "solution": "त्रिभुज के कोणों का योग 180°, अतः तीसरा 180 − 50 − 60 = 70°."
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाचे दोन कोन 50° आणि 60° आहेत. तिसरा कोन अंशांत काय?",
+          "choices": [
+            "60",
+            "70",
+            "110",
+            "80"
+          ],
+          "solution": "त्रिकोणाच्या कोनांची बेरीज 180°, म्हणून तिसरा 180 − 50 − 60 = 70°."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two triangles are similar, their corresponding sides in the ratio 2:3. A side of the first is 4 cm. What is the matching side of the second?",
+      "choices": [
+        "12",
+        "6",
+        "8",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Corresponding sides of similar triangles keep the ratio 2:3, so the matching side = 4·(3/2) = 6 cm.",
+      "checkExpr": "4*3/2",
+      "translations": {
+        "hi": {
+          "stem": "दो त्रिभुज समरूप हैं, उनकी संगत भुजाएँ 2:3 अनुपात में। पहले की एक भुजा 4 सेमी है। दूसरे की संगत भुजा क्या है?",
+          "choices": [
+            "12",
+            "6",
+            "8",
+            "2"
+          ],
+          "solution": "समरूप त्रिभुजों की संगत भुजाएँ 2:3 अनुपात रखतीं, अतः संगत भुजा = 4·(3/2) = 6 सेमी।"
+        },
+        "mr": {
+          "stem": "दोन त्रिकोण समरूप, त्यांच्या संगत बाजू 2:3 प्रमाणात. पहिल्याची एक बाजू 4 सेमी. दुसऱ्याची संगत बाजू काय?",
+          "choices": [
+            "12",
+            "6",
+            "8",
+            "2"
+          ],
+          "solution": "समरूप त्रिकोणांच्या संगत बाजू 2:3 प्रमाण राखतात, म्हणून संगत बाजू = 4·(3/2) = 6 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many pairs of equal angles are needed to prove two triangles similar by the AA criterion?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The AA criterion needs 2 pairs of equal angles; since the angles of a triangle sum to 180°, the third pair is then automatically equal.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "AA कसौटी से दो त्रिभुज समरूप सिद्ध करने के लिए कितने बराबर कोणों के युग्म चाहिए?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "AA कसौटी को 2 बराबर कोण-युग्म चाहिए; चूँकि त्रिभुज के कोणों का योग 180°, तीसरा युग्म स्वतः बराबर।"
+        },
+        "mr": {
+          "stem": "AA निकषाने दोन त्रिकोण समरूप सिद्ध करायला किती समान कोनांच्या जोड्या हव्यात?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "AA निकषाला 2 समान कोन-जोड्या हव्यात; त्रिकोणाच्या कोनांची बेरीज 180° असल्याने तिसरी जोडी आपोआप समान."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In triangle ABC, DE ∥ BC with D on AB and E on AC. If AD = 1.5, DB = 3 and AE = 2, what is EC?",
+      "choices": [
+        "1",
+        "4",
+        "6",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "By the Basic Proportionality Theorem, AD/DB = AE/EC, so 1.5/3 = 2/EC, giving EC = 2·3/1.5 = 4.",
+      "checkExpr": "2*3/1.5",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज ABC में, DE ∥ BC, D, AB पर और E, AC पर। यदि AD = 1.5, DB = 3 और AE = 2, तो EC क्या है?",
+          "choices": [
+            "1",
+            "4",
+            "6",
+            "3"
+          ],
+          "solution": "आधारभूत समानुपात प्रमेय से, AD/DB = AE/EC, अतः 1.5/3 = 2/EC, देता EC = 2·3/1.5 = 4."
+        },
+        "mr": {
+          "stem": "त्रिकोण ABC मध्ये, DE ∥ BC, D, AB वर आणि E, AC वर. AD = 1.5, DB = 3 आणि AE = 2 असेल, तर EC काय?",
+          "choices": [
+            "1",
+            "4",
+            "6",
+            "3"
+          ],
+          "solution": "आधारभूत प्रमाण प्रमेयाने, AD/DB = AE/EC, म्हणून 1.5/3 = 2/EC, देते EC = 2·3/1.5 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The areas of two similar triangles are in the ratio of the squares of their corresponding sides. If the sides are in ratio 2:3, the areas are in ratio 4:▢. What is the missing number?",
+      "choices": [
+        "6",
+        "3",
+        "9",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "The area ratio is the square of the side ratio: 2²:3² = 4:9. The missing number is 3² = 9.",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "दो समरूप त्रिभुजों के क्षेत्रफल संगत भुजाओं के वर्गों के अनुपात में हैं। यदि भुजाएँ 2:3 अनुपात में, क्षेत्रफल 4:▢ में। लुप्त संख्या क्या है?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "4"
+          ],
+          "solution": "क्षेत्रफल अनुपात भुजा अनुपात का वर्ग: 2²:3² = 4:9. लुप्त संख्या 3² = 9."
+        },
+        "mr": {
+          "stem": "दोन समरूप त्रिकोणांची क्षेत्रफळे संगत बाजूंच्या वर्गांच्या प्रमाणात आहेत. बाजू 2:3 प्रमाणात असतील, क्षेत्रफळे 4:▢ मध्ये. हरवलेली संख्या काय?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "4"
+          ],
+          "solution": "क्षेत्रफळ प्रमाण बाजू प्रमाणाचा वर्ग: 2²:3² = 4:9. हरवलेली संख्या 3² = 9."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a right triangle the two legs are 6 and 8. What is the length of the hypotenuse?",
+      "choices": [
+        "10",
+        "14",
+        "48",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "By Pythagoras, hypotenuse = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 is the value before the square root.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज की दो भुजाएँ 6 और 8 हैं। कर्ण की लंबाई क्या है?",
+          "choices": [
+            "10",
+            "14",
+            "48",
+            "100"
+          ],
+          "solution": "पाइथागोरस से, कर्ण = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 वर्गमूल से पहले का मान।)"
+        },
+        "mr": {
+          "stem": "एका काटकोन त्रिकोणाच्या दोन बाजू 6 आणि 8 आहेत. कर्णाची लांबी काय?",
+          "choices": [
+            "10",
+            "14",
+            "48",
+            "100"
+          ],
+          "solution": "पायथागोरसने, कर्ण = √(6² + 8²) = √(36 + 64) = √100 = 10. (100 वर्गमूळापूर्वीचे मूल्य.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two similar triangles have areas 36 cm² and 100 cm². A side of the smaller is 9 cm. What is the matching side of the larger?",
+      "choices": [
+        "12",
+        "18",
+        "25",
+        "15"
+      ],
+      "answerIndex": 3,
+      "solution": "The ratio of sides is √(100/36) = 10/6. So the larger side = 9·(10/6) = 15 cm.",
+      "checkExpr": "9*10/6",
+      "translations": {
+        "hi": {
+          "stem": "दो समरूप त्रिभुजों के क्षेत्रफल 36 सेमी² और 100 सेमी² हैं। छोटे की एक भुजा 9 सेमी है। बड़े की संगत भुजा क्या है?",
+          "choices": [
+            "12",
+            "18",
+            "25",
+            "15"
+          ],
+          "solution": "भुजाओं का अनुपात √(100/36) = 10/6. अतः बड़ी भुजा = 9·(10/6) = 15 सेमी।"
+        },
+        "mr": {
+          "stem": "दोन समरूप त्रिकोणांची क्षेत्रफळे 36 सेमी² आणि 100 सेमी² आहेत. लहानाची एक बाजू 9 सेमी. मोठ्याची संगत बाजू काय?",
+          "choices": [
+            "12",
+            "18",
+            "25",
+            "15"
+          ],
+          "solution": "बाजूंचे प्रमाण √(100/36) = 10/6. म्हणून मोठी बाजू = 9·(10/6) = 15 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In triangle ABC, DE ∥ BC with AD = 4, AB = 12 and DE = 5. What is BC?",
+      "choices": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "Triangle ADE ~ ABC with ratio AD/AB = 4/12 = 1/3, so DE/BC = 1/3 and BC = 5·(12/4) = 15.",
+      "checkExpr": "5*12/4",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज ABC में, DE ∥ BC, AD = 4, AB = 12 और DE = 5. BC क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "त्रिभुज ADE ~ ABC, अनुपात AD/AB = 4/12 = 1/3, अतः DE/BC = 1/3 और BC = 5·(12/4) = 15."
+        },
+        "mr": {
+          "stem": "त्रिकोण ABC मध्ये, DE ∥ BC, AD = 4, AB = 12 आणि DE = 5. BC काय?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "त्रिकोण ADE ~ ABC, प्रमाण AD/AB = 4/12 = 1/3, म्हणून DE/BC = 1/3 आणि BC = 5·(12/4) = 15."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The perimeters of two similar triangles are 30 cm and 20 cm. If one side of the first is 12 cm, what is the corresponding side of the second?",
+      "choices": [
+        "18",
+        "10",
+        "6",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "The ratio of perimeters equals the ratio of corresponding sides, 20:30 = 2:3. So the side = 12·(20/30) = 8 cm.",
+      "checkExpr": "12*20/30",
+      "translations": {
+        "hi": {
+          "stem": "दो समरूप त्रिभुजों के परिमाप 30 सेमी और 20 सेमी हैं। यदि पहले की एक भुजा 12 सेमी है, दूसरे की संगत भुजा क्या है?",
+          "choices": [
+            "18",
+            "10",
+            "6",
+            "8"
+          ],
+          "solution": "परिमापों का अनुपात संगत भुजाओं के अनुपात के बराबर, 20:30 = 2:3. अतः भुजा = 12·(20/30) = 8 सेमी।"
+        },
+        "mr": {
+          "stem": "दोन समरूप त्रिकोणांची परिमिती 30 सेमी आणि 20 सेमी आहे. पहिल्याची एक बाजू 12 सेमी असेल, दुसऱ्याची संगत बाजू काय?",
+          "choices": [
+            "18",
+            "10",
+            "6",
+            "8"
+          ],
+          "solution": "परिमितींचे प्रमाण संगत बाजूंच्या प्रमाणाइतके, 20:30 = 2:3. म्हणून बाजू = 12·(20/30) = 8 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A vertical pole 6 m tall casts a shadow 4 m long. At the same time, a tower casts a shadow 28 m long. What is the tower's height in metres?",
+      "choices": [
+        "18",
+        "42",
+        "56",
+        "21"
+      ],
+      "answerIndex": 1,
+      "solution": "The pole and tower with their shadows form similar triangles, so height/shadow is the same: 6/4 = h/28, giving h = 6·28/4 = 42 m.",
+      "checkExpr": "6*28/4",
+      "translations": {
+        "hi": {
+          "stem": "एक 6 मी ऊँचा ऊर्ध्वाधर खंभा 4 मी लंबी छाया डालता है। उसी समय एक मीनार 28 मी लंबी छाया डालती है। मीनार की ऊँचाई मीटर में क्या है?",
+          "choices": [
+            "18",
+            "42",
+            "56",
+            "21"
+          ],
+          "solution": "खंभा और मीनार अपनी छायाओं सहित समरूप त्रिभुज बनाते, अतः ऊँचाई/छाया समान: 6/4 = h/28, देता h = 6·28/4 = 42 मी।"
+        },
+        "mr": {
+          "stem": "एक 6 मी उंच उभा खांब 4 मी लांब सावली टाकतो. त्याच वेळी एक मनोरा 28 मी लांब सावली टाकतो. मनोऱ्याची उंची मीटरमध्ये काय?",
+          "choices": [
+            "18",
+            "42",
+            "56",
+            "21"
+          ],
+          "solution": "खांब आणि मनोरा त्यांच्या सावल्यांसह समरूप त्रिकोण बनवतात, म्हणून उंची/सावली समान: 6/4 = h/28, देते h = 6·28/4 = 42 मी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a right triangle, the altitude to the hypotenuse divides it into segments of length 4 and 9. What is the length of the altitude?",
+      "choices": [
+        "5",
+        "6",
+        "13",
+        "36"
+      ],
+      "answerIndex": 1,
+      "solution": "The altitude to the hypotenuse is the geometric mean of the two segments: √(4·9) = √36 = 6. (13 is the hypotenuse 4+9, and 36 is the value before the root.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज में, कर्ण पर लंब उसे 4 और 9 लंबाई के खंडों में बाँटता है। लंब की लंबाई क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "13",
+            "36"
+          ],
+          "solution": "कर्ण पर लंब दोनों खंडों का गुणोत्तर माध्य: √(4·9) = √36 = 6. (13 कर्ण 4+9, और 36 मूल से पहले।)"
+        },
+        "mr": {
+          "stem": "एका काटकोन त्रिकोणात, कर्णावरील लंब त्याला 4 आणि 9 लांबीच्या खंडांत विभागतो. लंबाची लांबी काय?",
+          "choices": [
+            "5",
+            "6",
+            "13",
+            "36"
+          ],
+          "solution": "कर्णावरील लंब दोन्ही खंडांचा भूमितीय मध्य: √(4·9) = √36 = 6. (13 कर्ण 4+9, आणि 36 मूळापूर्वी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The areas of two similar triangles are in the ratio 9:16. Their perimeters are in ratio 3:▢. What is the missing number?",
+      "choices": [
+        "4",
+        "9",
+        "16",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The ratio of perimeters is the square root of the area ratio: √(9:16) = 3:4. The missing number is √16 = 4.",
+      "checkExpr": "16/4",
+      "translations": {
+        "hi": {
+          "stem": "दो समरूप त्रिभुजों के क्षेत्रफल 9:16 अनुपात में हैं। उनके परिमाप 3:▢ में हैं। लुप्त संख्या क्या है?",
+          "choices": [
+            "4",
+            "9",
+            "16",
+            "12"
+          ],
+          "solution": "परिमापों का अनुपात क्षेत्रफल अनुपात का वर्गमूल: √(9:16) = 3:4. लुप्त संख्या √16 = 4."
+        },
+        "mr": {
+          "stem": "दोन समरूप त्रिकोणांची क्षेत्रफळे 9:16 प्रमाणात आहेत. त्यांची परिमिती 3:▢ मध्ये. हरवलेली संख्या काय?",
+          "choices": [
+            "4",
+            "9",
+            "16",
+            "12"
+          ],
+          "solution": "परिमितींचे प्रमाण क्षेत्रफळ प्रमाणाचे वर्गमूळ: √(9:16) = 3:4. हरवलेली संख्या √16 = 4."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Triangle ABC is right-angled at B with AB = 9 and BC = 12, so AC = 15. An altitude BD is drawn from B to the hypotenuse AC. What is the length of BD?",
+      "choices": [
+        "6",
+        "7.5",
+        "7.2",
+        "10.8"
+      ],
+      "answerIndex": 2,
+      "solution": "The area equals ½·AB·BC and also ½·AC·BD, so ½·9·12 = ½·15·BD, giving BD = 9·12/15 = 108/15 = 7.2.",
+      "checkExpr": "9*12/15",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज ABC, B पर समकोण, AB = 9 और BC = 12, अतः AC = 15. B से कर्ण AC पर लंब BD खींचा जाता है। BD की लंबाई क्या है?",
+          "choices": [
+            "6",
+            "7.5",
+            "7.2",
+            "10.8"
+          ],
+          "solution": "क्षेत्रफल ½·AB·BC और ½·AC·BD भी, अतः ½·9·12 = ½·15·BD, देता BD = 9·12/15 = 108/15 = 7.2."
+        },
+        "mr": {
+          "stem": "त्रिकोण ABC, B ला काटकोन, AB = 9 आणि BC = 12, म्हणून AC = 15. B पासून कर्ण AC वर लंब BD काढला. BD ची लांबी काय?",
+          "choices": [
+            "6",
+            "7.5",
+            "7.2",
+            "10.8"
+          ],
+          "solution": "क्षेत्रफळ ½·AB·BC आणि ½·AC·BD ही, म्हणून ½·9·12 = ½·15·BD, देते BD = 9·12/15 = 108/15 = 7.2."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two poles of heights 6 m and 11 m stand on level ground 12 m apart. What is the distance between their tops in metres?",
+      "choices": [
+        "12",
+        "17",
+        "5",
+        "13"
+      ],
+      "answerIndex": 3,
+      "solution": "The tops differ in height by 11 − 6 = 5 m and are 12 m apart horizontally. The line joining them is the hypotenuse: √(12² + 5²) = √(144 + 25) = √169 = 13 m.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "6 मी और 11 मी ऊँचाई के दो खंभे समतल भूमि पर 12 मी दूर खड़े हैं। उनके शीर्षों के बीच की दूरी मीटर में क्या है?",
+          "choices": [
+            "12",
+            "17",
+            "5",
+            "13"
+          ],
+          "solution": "शीर्ष ऊँचाई में 11 − 6 = 5 मी भिन्न और क्षैतिज 12 मी दूर। उन्हें जोड़ती रेखा कर्ण: √(12² + 5²) = √(144 + 25) = √169 = 13 मी।"
+        },
+        "mr": {
+          "stem": "6 मी आणि 11 मी उंचीचे दोन खांब सपाट जमिनीवर 12 मी अंतरावर उभे. त्यांच्या टोकांतील अंतर मीटरमध्ये काय?",
+          "choices": [
+            "12",
+            "17",
+            "5",
+            "13"
+          ],
+          "solution": "टोके उंचीत 11 − 6 = 5 मी वेगळी आणि आडवी 12 मी दूर. त्यांना जोडणारी रेषा कर्ण: √(12² + 5²) = √(144 + 25) = √169 = 13 मी."
+        }
+      }
+    }
+  ]
+}
