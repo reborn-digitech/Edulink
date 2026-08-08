@@ -871,4 +871,627 @@ export const G7_GEOGRAPHY: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Air (layers, moods and the gas blanket)                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-7-air",
+    subject: "GEOGRAPHY",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 4 — Air",
+      hi: "अध्याय 4 — वायु",
+      mr: "प्रकरण 4 — हवा",
+    },
+    name: { en: "Air", hi: "वायु", mr: "हवा" },
+    summary: {
+      en: "The atmosphere in storeys — weather's floor and the calm above it — plus the difference between the sky's mood and its temperament, air's own weight, and the gas blanket we are thickening.",
+      hi: "मंज़िलों में वायुमंडल — मौसम का फ़र्श और उसके ऊपर की शांति — साथ में आसमान के मिज़ाज और स्वभाव का फ़र्क़, हवा का अपना वज़न, और वह गैस-कंबल जिसे हम मोटा कर रहे हैं।",
+      mr: "मजल्यांमधले वातावरण — हवामानाचा तळमजला आणि त्यावरची शांतता — सोबत आकाशाच्या मूडचा आणि स्वभावाचा फरक, हवेचे स्वतःचे वजन, आणि आपण जाड करत असलेले वायू-पांघरूण.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "troposphere",
+        name: { en: "The troposphere", hi: "क्षोभमंडल", mr: "तपांबर" },
+        kind: "layer",
+        prompt: {
+          en: "In which lowest storey of the atmosphere does all our weather — clouds, rain, storms — actually happen?",
+          hi: "वायुमंडल की किस सबसे निचली मंज़िल में हमारा सारा मौसम — बादल, बारिश, आँधियाँ — सचमुच घटता है?",
+          mr: "वातावरणाच्या कोणत्या सर्वांत खालच्या मजल्यावर आपले सारे हवामान — ढग, पाऊस, वादळे — खरोखर घडते?",
+        },
+        statement: {
+          en: "The troposphere is the lowest layer — the air we breathe, and the floor on which every cloud and storm performs.",
+          hi: "क्षोभमंडल सबसे निचली परत है — वही हवा जो हम साँस लेते हैं, और वह फ़र्श जिस पर हर बादल और आँधी अपना खेल दिखाती है।",
+          mr: "तपांबर हा सर्वांत खालचा थर — आपण श्वास घेतो ती हवा, आणि ज्यावर प्रत्येक ढग आणि वादळ आपला खेळ करते तो तळमजला.",
+        },
+        detail: {
+          en: "Only about 13 km thick — a short bus ride stood on end — yet it holds every monsoon and every kite.",
+          hi: "केवल लगभग 13 किमी मोटी — खड़ी की गई एक छोटी बस-यात्रा — फिर भी हर मानसून और हर पतंग इसी में समाई है।",
+          mr: "फक्त सुमारे 13 किमी जाड — उभा केलेला एक छोटा बस-प्रवास — तरी प्रत्येक मान्सून आणि प्रत्येक पतंग यातच मावतो.",
+        },
+        extra: {
+          en: "Cross its ceiling and the weather simply stops — pilots climb into permanent calm.",
+          hi: "इसकी छत पार कीजिए और मौसम बस थम जाता है — पायलट स्थायी शांति में चढ़ जाते हैं।",
+          mr: "याचे छत ओलांडा आणि हवामान नुसते थांबते — वैमानिक कायमच्या शांततेत चढतात.",
+        },
+        pair: {
+          left: { en: "The weather's floor", hi: "मौसम का फ़र्श", mr: "हवामानाचा तळमजला" },
+          right: {
+            en: "clouds, rain and storms",
+            hi: "बादल, बारिश और आँधियाँ",
+            mr: "ढग, पाऊस आणि वादळे",
+          },
+        },
+      },
+      {
+        id: "stratosphere",
+        name: { en: "The stratosphere", hi: "समतापमंडल", mr: "स्थितांबर" },
+        kind: "layer",
+        prompt: {
+          en: "Above the weather lies which calm storey — home of the ozone shield and of cruising jet planes?",
+          hi: "मौसम के ऊपर कौन-सी शांत मंज़िल है — ओज़ोन-ढाल और मँडराते जेट विमानों का घर?",
+          mr: "हवामानाच्या वर कोणता शांत मजला आहे — ओझोन-ढाल आणि विहरणाऱ्या जेट विमानांचे घर?",
+        },
+        statement: {
+          en: "The stratosphere sits above the weather — calm thin air where jets cruise and ozone absorbs the Sun's ultraviolet.",
+          hi: "समतापमंडल मौसम के ऊपर बैठा है — शांत पतली हवा, जहाँ जेट मँडराते हैं और ओज़ोन सूर्य की पराबैंगनी सोख लेती है।",
+          mr: "स्थितांबर हवामानाच्या वर बसले आहे — शांत विरळ हवा, जिथे जेट विहरतात आणि ओझोन सूर्याची अतिनील शोषते.",
+        },
+        pair: {
+          left: {
+            en: "The calm second storey",
+            hi: "शांत दूसरी मंज़िल",
+            mr: "शांत दुसरा मजला",
+          },
+          right: {
+            en: "ozone and cruising jets",
+            hi: "ओज़ोन और मँडराते जेट",
+            mr: "ओझोन आणि विहरणारे जेट",
+          },
+        },
+      },
+      {
+        id: "weather7",
+        name: { en: "Weather", hi: "मौसम", mr: "हवामान" },
+        kind: "state",
+        prompt: {
+          en: "The hour-by-hour state of the air — hot, wet, windy — that can change before evening. What is it called?",
+          hi: "हवा की घंटे-दर-घंटे की दशा — गर्म, गीली, तेज़ — जो शाम से पहले बदल सकती है। उसका नाम क्या है?",
+          mr: "हवेची तासागणिक अवस्था — गरम, ओली, वादळी — जी संध्याकाळच्या आत बदलू शकते. तिचे नाव काय?",
+        },
+        statement: {
+          en: "Weather is the atmosphere's mood of the moment — it can flip completely between morning and evening.",
+          hi: "मौसम वायुमंडल का पल भर का मिज़ाज है — वह सुबह और शाम के बीच पूरा पलट सकता है।",
+          mr: "हवामान म्हणजे वातावरणाचा क्षणाचा मूड — तो सकाळ आणि संध्याकाळच्या दरम्यान पूर्ण पालटू शकतो.",
+        },
+        pair: {
+          left: { en: "The sky's mood today", hi: "आज का आसमानी मिज़ाज", mr: "आजचा आकाशाचा मूड" },
+          right: { en: "changed by evening", hi: "शाम तक बदला हुआ", mr: "संध्याकाळपर्यंत बदललेला" },
+        },
+      },
+      {
+        id: "climate7",
+        name: { en: "Climate", hi: "जलवायु", mr: "जलवायुमान" },
+        kind: "state",
+        prompt: {
+          en: "The average pattern of weather a place keeps over many, many years — what is this long record called?",
+          hi: "किसी जगह का कई-कई वर्षों में सधा मौसम का औसत ढर्रा — इस लंबे अभिलेख का नाम क्या है?",
+          mr: "एखाद्या जागेचा अनेकानेक वर्षांत बसलेला हवामानाचा सरासरी साचा — या दीर्घ नोंदीचे नाव काय?",
+        },
+        statement: {
+          en: "Climate is weather's long average — twenty-five years of records speaking as one sentence about a place.",
+          hi: "जलवायु मौसम का लंबा औसत है — पच्चीस वर्षों के अभिलेख किसी जगह के बारे में एक वाक्य बनकर बोलते हुए।",
+          mr: "जलवायुमान म्हणजे हवामानाची दीर्घ सरासरी — पंचवीस वर्षांच्या नोंदी एखाद्या जागेबद्दल एक वाक्य होऊन बोलणाऱ्या.",
+        },
+        detail: {
+          en: "'Hot wet summers, cool dry winters' — a climate sentence that no single day's weather can contradict.",
+          hi: "'गर्म गीली गर्मियाँ, ठंडी सूखी सर्दियाँ' — जलवायु का ऐसा वाक्य जिसे किसी एक दिन का मौसम झुठला नहीं सकता।",
+          mr: "'उष्ण दमट उन्हाळे, थंड कोरडे हिवाळे' — जलवायुमानाचे असे वाक्य ज्याला एका दिवसाचे हवामान खोटे ठरवू शकत नाही.",
+        },
+        extra: {
+          en: "Weather is mood; climate is temperament — a pair the newspapers mix up daily.",
+          hi: "मौसम मिज़ाज है; जलवायु स्वभाव — वह जोड़ी जिसे अख़बार रोज़ गड्डमड्ड करते हैं।",
+          mr: "हवामान म्हणजे मूड; जलवायुमान म्हणजे स्वभाव — वृत्तपत्रे रोज गल्लत करतात ती जोडी.",
+        },
+        pair: {
+          left: { en: "The long average", hi: "लंबा औसत", mr: "दीर्घ सरासरी" },
+          right: {
+            en: "many years in one sentence",
+            hi: "एक वाक्य में कई वर्ष",
+            mr: "एका वाक्यात अनेक वर्षे",
+          },
+        },
+      },
+      {
+        id: "pressure",
+        name: { en: "Air pressure", hi: "वायुदाब", mr: "हवेचा दाब" },
+        kind: "measure",
+        prompt: {
+          en: "The weight of the whole column of air pressing down on every point of the Earth — what is this push called?",
+          hi: "पृथ्वी के हर बिंदु पर दबता हवा के पूरे स्तंभ का वज़न — इस दबाव का नाम क्या है?",
+          mr: "पृथ्वीच्या प्रत्येक बिंदूवर दाबणारे हवेच्या सबंध स्तंभाचे वजन — या दाबाचे नाव काय?",
+        },
+        statement: {
+          en: "Air pressure is the atmosphere's own weight — highest at sea level and thinning steadily as you climb.",
+          hi: "वायुदाब वायुमंडल का अपना वज़न है — समुद्र-तल पर सबसे ज़्यादा, और चढ़ते जाइए तो लगातार पतला।",
+          mr: "हवेचा दाब हे वातावरणाचे स्वतःचे वजन — समुद्रसपाटीवर सर्वाधिक, आणि चढत जाल तसे सतत विरळ.",
+        },
+        detail: {
+          en: "Mountaineers gasp on high peaks because each breath simply holds fewer molecules — the air itself has grown thin.",
+          hi: "पर्वतारोही ऊँची चोटियों पर इसलिए हाँफते हैं कि हर साँस में अणु ही कम समाते हैं — हवा स्वयं पतली हो चुकी है।",
+          mr: "गिर्यारोहक उंच शिखरांवर म्हणून धापावतात की प्रत्येक श्वासात रेणूच कमी मावतात — हवा स्वतःच विरळ झाली आहे.",
+        },
+        extra: {
+          en: "Weather maps are really pressure maps — air forever runs from high pressure to low.",
+          hi: "मौसम के नक़्शे असल में दाब के नक़्शे हैं — हवा सदा ऊँचे दाब से नीचे की ओर दौड़ती है।",
+          mr: "हवामानाचे नकाशे खरे तर दाबाचे नकाशे — हवा नेहमी उच्च दाबाकडून कमीकडे धावते.",
+        },
+        pair: {
+          left: { en: "The air's own weight", hi: "हवा का अपना वज़न", mr: "हवेचे स्वतःचे वजन" },
+          right: {
+            en: "strongest at sea level",
+            hi: "समुद्र-तल पर सबसे प्रबल",
+            mr: "समुद्रसपाटीवर सर्वांत जोरदार",
+          },
+        },
+      },
+      {
+        id: "wind7",
+        name: { en: "Wind", hi: "पवन", mr: "वारा" },
+        kind: "motion",
+        prompt: {
+          en: "Air pouring from a region of high pressure toward a region of low pressure — what do we call it once it starts to flow?",
+          hi: "ऊँचे दाब के इलाक़े से नीचे दाब के इलाक़े की ओर बहती हवा — बहने लगे तो हम उसे क्या कहते हैं?",
+          mr: "उच्च दाबाच्या प्रदेशाकडून कमी दाबाच्या प्रदेशाकडे ओतणारी हवा — वाहू लागली की आपण तिला काय म्हणतो?",
+        },
+        statement: {
+          en: "Wind is air on the move — always running from high pressure toward low, gentle or fierce as the gap dictates.",
+          hi: "पवन चलती हुई हवा है — सदा ऊँचे दाब से नीचे की ओर दौड़ती, फ़ासले के हिसाब से कोमल या प्रचंड।",
+          mr: "वारा म्हणजे चालती हवा — नेहमी उच्च दाबाकडून कमीकडे धावणारी, फरकाच्या मानाने सौम्य वा प्रचंड.",
+        },
+        pair: {
+          left: { en: "Air on the run", hi: "दौड़ती हवा", mr: "धावणारी हवा" },
+          right: {
+            en: "high pressure to low",
+            hi: "ऊँचे दाब से नीचे को",
+            mr: "उच्च दाबाकडून कमीकडे",
+          },
+        },
+      },
+      {
+        id: "humidity",
+        name: { en: "Humidity", hi: "आर्द्रता", mr: "आर्द्रता" },
+        kind: "measure",
+        prompt: {
+          en: "The amount of water vapour the air happens to be carrying — which measure makes a sticky day sticky?",
+          hi: "हवा में उस समय मौजूद जलवाष्प की मात्रा — कौन-सी माप चिपचिपे दिन को चिपचिपा बनाती है?",
+          mr: "हवेत त्या वेळी असलेल्या बाष्पाचे प्रमाण — कोणते माप चिकट दिवसाला चिकट करते?",
+        },
+        statement: {
+          en: "Humidity is the air's cargo of water vapour — heavy on sticky coastal days, feather-light in desert air.",
+          hi: "आर्द्रता हवा का जलवाष्प-लदान है — चिपचिपे तटीय दिनों में भारी, रेगिस्तानी हवा में पर-सी हल्की।",
+          mr: "आर्द्रता म्हणजे हवेचे बाष्प-ओझे — चिकट किनारी दिवसांत जड, वाळवंटी हवेत पिसासारखे हलके.",
+        },
+        pair: {
+          left: { en: "The air's water cargo", hi: "हवा का जल-लदान", mr: "हवेचे पाणी-ओझे" },
+          right: {
+            en: "the sticky-day measure",
+            hi: "चिपचिपे दिन की माप",
+            mr: "चिकट दिवसाचे माप",
+          },
+        },
+      },
+      {
+        id: "greenhouse",
+        name: { en: "The greenhouse effect", hi: "पौधाघर प्रभाव", mr: "हरितगृह परिणाम" },
+        kind: "effect",
+        prompt: {
+          en: "Carbon dioxide and its fellow gases hold the Sun's warmth close to the Earth, like glass over a plant nursery. What is this trapping called?",
+          hi: "कार्बन डाइऑक्साइड और उसकी साथी गैसें सूर्य की गर्मी को पृथ्वी के पास रोके रखती हैं, जैसे पौधशाला पर शीशा। इस रोक का नाम क्या है?",
+          mr: "कार्बन डायऑक्साइड आणि तिच्या सोबती वायू सूर्याची ऊब पृथ्वीजवळ धरून ठेवतात, रोपवाटिकेवरच्या काचेसारखे. या धरून ठेवण्याचे नाव काय?",
+        },
+        statement: {
+          en: "The greenhouse effect is heat held in by atmospheric gases — a natural blanket that human smoke keeps thickening.",
+          hi: "पौधाघर प्रभाव वायुमंडलीय गैसों में रुकी गर्मी है — वह प्राकृतिक कंबल जिसे मानवी धुआँ मोटा करता जा रहा है।",
+          mr: "हरितगृह परिणाम म्हणजे वातावरणीय वायूंनी धरलेली उष्णता — मानवी धूर जाड करत असलेले नैसर्गिक पांघरूण.",
+        },
+        detail: {
+          en: "Without it the Earth would freeze; with too much, glaciers melt and seas rise — the dose makes the blanket.",
+          hi: "इसके बिना पृथ्वी जम जाती; इसके अधिक होने पर हिमनद पिघलते और समुद्र चढ़ते हैं — मात्रा ही कंबल तय करती है।",
+          mr: "याच्याविना पृथ्वी गोठली असती; हे जास्त झाले की हिमनद्या वितळतात आणि समुद्र चढतात — मात्राच पांघरूण ठरवते.",
+        },
+        extra: {
+          en: "Its lead gas is carbon dioxide — the very gas plants drink for their food.",
+          hi: "इसकी प्रमुख गैस कार्बन डाइऑक्साइड है — वही गैस जिसे पौधे भोजन के लिए पीते हैं।",
+          mr: "याचा प्रमुख वायू कार्बन डायऑक्साइड — तोच वायू जो वनस्पती अन्नासाठी पितात.",
+        },
+        pair: {
+          left: { en: "The gas blanket", hi: "गैसों का कंबल", mr: "वायूंचे पांघरूण" },
+          right: { en: "warmth held close", hi: "पास रोकी गर्मी", mr: "जवळ धरलेली ऊब" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Which of these sentences is about CLIMATE, not weather?",
+          hi: "इनमें से कौन-सा वाक्य मौसम का नहीं, जलवायु का है?",
+          mr: "यांतले कोणते वाक्य हवामानाचे नव्हे, जलवायुमानाचे आहे?",
+        },
+        choices: [
+          {
+            en: "Mumbai has hot, humid summers and mild winters, year after year",
+            hi: "मुंबई में साल-दर-साल गर्म, उमस भरी गर्मियाँ और नरम सर्दियाँ होती हैं",
+            mr: "मुंबईत वर्षानुवर्षे उष्ण, दमट उन्हाळे आणि सौम्य हिवाळे असतात",
+          },
+          {
+            en: "It rained heavily this morning near the school",
+            hi: "आज सुबह स्कूल के पास ज़ोरदार बारिश हुई",
+            mr: "आज सकाळी शाळेजवळ जोरदार पाऊस पडला",
+          },
+          {
+            en: "A dust storm struck the town at four o'clock",
+            hi: "चार बजे क़स्बे पर धूल भरी आँधी टूटी",
+            mr: "चार वाजता गावावर धुळीचे वादळ आदळले",
+          },
+          {
+            en: "Today is noticeably cooler than yesterday",
+            hi: "आज कल से साफ़ ठंडा है",
+            mr: "आज कालपेक्षा स्पष्ट थंड आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three of the sentences carry a clock — this morning, four o'clock, today — and anything datable to a day is weather. Only the Mumbai sentence speaks in 'year after year': a pattern held across decades, which is climate. The test is the timestamp: mood has a time, temperament does not.",
+          hi: "तीन वाक्यों में घड़ी लगी है — आज सुबह, चार बजे, आज — और जो एक दिन पर टाँका जा सके वह मौसम है। केवल मुंबई वाला वाक्य 'साल-दर-साल' बोलता है: दशकों में सधा ढर्रा, यानी जलवायु। कसौटी है समय-मुहर: मिज़ाज का वक़्त होता है, स्वभाव का नहीं।",
+          mr: "तीन वाक्यांत घड्याळ आहे — आज सकाळी, चार वाजता, आज — आणि जे एका दिवसावर टाचता येते ते हवामान. फक्त मुंबईचे वाक्य 'वर्षानुवर्षे' बोलते: दशकांत बसलेला साचा, म्हणजे जलवायुमान. कसोटी आहे वेळ-शिक्का: मूडला वेळ असते, स्वभावाला नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "After one unusually cold, rainy week, someone announces: 'So much for global warming!' Why does one cold week prove nothing about a warming climate?",
+          hi: "एक असामान्य ठंडे, बरसाती हफ़्ते के बाद कोई घोषणा करता है: 'हो गई ग्लोबल वार्मिंग की पोल खुली!' एक ठंडा हफ़्ता गर्म होती जलवायु के बारे में कुछ क्यों नहीं सिद्ध करता?",
+          mr: "एका असामान्य थंड, पावसाळी आठवड्यानंतर कोणी जाहीर करते: 'झाली ग्लोबल वॉर्मिंगची पोलखोल!' एक थंड आठवडा तापणाऱ्या जलवायुमानाबद्दल काही का सिद्ध करत नाही?",
+        },
+        choices: [
+          {
+            en: "A week is weather, warming is climate — one cold mood cannot contradict a temperament measured across decades of averages",
+            hi: "हफ़्ता मौसम है, तपन जलवायु — एक ठंडा मिज़ाज दशकों के औसतों में नपे स्वभाव को नहीं झुठला सकता",
+            mr: "आठवडा म्हणजे हवामान, तापणे म्हणजे जलवायुमान — एक थंड मूड दशकांच्या सरासरींत मोजलेल्या स्वभावाला खोटे ठरवू शकत नाही",
+          },
+          {
+            en: "Cold weeks are impossible now, so the report must be wrong",
+            hi: "अब ठंडे हफ़्ते असंभव हैं, अतः ख़बर ही ग़लत होगी",
+            mr: "आता थंड आठवडे अशक्य, म्हणून बातमीच चुकीची असेल",
+          },
+          {
+            en: "The announcement is right — one week is a fair sample",
+            hi: "घोषणा सही है — एक हफ़्ता वाजिब नमूना है",
+            mr: "घोषणा बरोबर — एक आठवडा रास्त नमुना आहे",
+          },
+          {
+            en: "Warming applies only to summer months",
+            hi: "तपन केवल गर्मी के महीनों पर लागू होती है",
+            mr: "तापणे फक्त उन्हाळी महिन्यांना लागू होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Climate claims are averages over decades; weather is one roll of the dice. A warming world still throws cold weeks, just as a good batter still plays bad innings — the average moves while single days scatter widely around it. To test the warming claim you must look where it lives: in thirty-year records, glacier lines and sea levels, not out of this week's window.",
+          hi: "जलवायु के दावे दशकों के औसत हैं; मौसम पासे की एक फेंक। गर्म होती दुनिया में भी ठंडे हफ़्ते आते हैं, जैसे अच्छा बल्लेबाज़ भी बुरी पारियाँ खेलता है — औसत खिसकता है जबकि अकेले दिन उसके गिर्द दूर-दूर बिखरते हैं। तपन के दावे को परखना हो तो वहीं देखिए जहाँ वह बसता है: तीस वर्षों के अभिलेख, हिमनद-रेखाएँ और समुद्र-तल — इस हफ़्ते की खिड़की से नहीं।",
+          mr: "जलवायुमानाचे दावे दशकांच्या सरासरी; हवामान म्हणजे फाशाची एक फेक. तापणाऱ्या जगातही थंड आठवडे येतात, जसा चांगला फलंदाजही वाईट डाव खेळतो — सरासरी सरकते तर एकेकटे दिवस तिच्याभोवती दूरवर विखुरतात. तापण्याचा दावा तपासायचा तर तो जिथे राहतो तिथे पाहा: तीस वर्षांच्या नोंदी, हिमनदी-रेषा आणि समुद्रपातळी — या आठवड्याच्या खिडकीतून नाही.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Water (one stock of water, restlessly shared)               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-7-water",
+    subject: "GEOGRAPHY",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 5 — Water",
+      hi: "अध्याय 5 — जल",
+      mr: "प्रकरण 5 — पाणी",
+    },
+    name: { en: "Water", hi: "जल", mr: "पाणी" },
+    summary: {
+      en: "One ancient stock of water going round forever — waves that race while water bobs, tides on the Moon's timetable, rivers inside the sea, and the salt that only ever accumulates.",
+      hi: "पानी का एक प्राचीन भंडार सदा घूमता हुआ — लहरें जो दौड़ती हैं जबकि पानी वहीं डोलता है, चाँद की समय-सारिणी पर ज्वार, समुद्र के भीतर नदियाँ, और वह नमक जो केवल जमा ही होता जाता है।",
+      mr: "पाण्याचा एक प्राचीन साठा कायम फिरणारा — पाणी जागीच डुलत असताना धावणाऱ्या लाटा, चंद्राच्या वेळापत्रकावरची भरती-ओहोटी, समुद्राच्या आतल्या नद्या, आणि फक्त साचतच जाणारे मीठ.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "water-cycle7",
+        name: { en: "The water cycle", hi: "जल चक्र", mr: "जलचक्र" },
+        kind: "cycle",
+        prompt: {
+          en: "Evaporation lifts the sea, clouds carry it inland, rain returns it, rivers run it home again. Which endless loop is this?",
+          hi: "वाष्पन समुद्र को उठाता है, बादल उसे भीतर ले जाते हैं, बारिश लौटाती है, नदियाँ फिर घर पहुँचा देती हैं। यह कौन-सा अंतहीन चक्कर है?",
+          mr: "बाष्पीभवन समुद्राला उचलते, ढग त्याला आत नेतात, पाऊस परत करतो, नद्या पुन्हा घरी पोहोचवतात. हे कोणते अखंड चक्र?",
+        },
+        statement: {
+          en: "The water cycle moves the same water forever — sea to sky to land and back, with nothing new ever added to the stock.",
+          hi: "जल चक्र वही पानी सदा घुमाता है — समुद्र से आसमान, आसमान से ज़मीन, फिर वापस; भंडार में कभी कुछ नया नहीं जुड़ता।",
+          mr: "जलचक्र तेच पाणी कायम फिरवते — समुद्रातून आकाश, आकाशातून जमीन, पुन्हा परत; साठ्यात कधी नवे काही जुडत नाही.",
+        },
+        detail: {
+          en: "The water you drank today may once have rained on dinosaurs — the stock is ancient and fixed.",
+          hi: "जो पानी आपने आज पिया, वह कभी डायनासोरों पर बरसा हो सकता है — भंडार प्राचीन और नियत है।",
+          mr: "तुम्ही आज प्यायलेले पाणी कधी डायनोसॉरांवर बरसले असेल — साठा प्राचीन आणि ठरलेला आहे.",
+        },
+        extra: {
+          en: "The Sun powers the whole machine — the sky's pump has no other engine.",
+          hi: "पूरी मशीन सूर्य चलाता है — आसमान के पंप का और कोई इंजन नहीं।",
+          mr: "सारे यंत्र सूर्य चालवतो — आकाशाच्या पंपाला दुसरे इंजिन नाही.",
+        },
+        pair: {
+          left: { en: "Sea to sky to sea", hi: "समुद्र से आसमान, फिर समुद्र", mr: "समुद्रातून आकाश, पुन्हा समुद्र" },
+          right: {
+            en: "the same water, forever",
+            hi: "वही पानी, सदा",
+            mr: "तेच पाणी, कायम",
+          },
+        },
+      },
+      {
+        id: "waves7",
+        name: { en: "Waves", hi: "तरंगें (लहरें)", mr: "लाटा" },
+        kind: "motion",
+        prompt: {
+          en: "The wind rubs the sea's surface into which endless rise and fall that finally crashes on the shore?",
+          hi: "हवा समुद्र की सतह को किस अंतहीन उठा-गिरी में मल देती है, जो अंततः किनारे पर टूटती है?",
+          mr: "वारा समुद्राच्या पृष्ठाला कोणत्या अखंड चढ-उतारात घासतो, जो अखेर किनाऱ्यावर फुटतो?",
+        },
+        statement: {
+          en: "Waves are wind's ripples grown tall — the water itself bobs in place while only the SHAPE races ashore.",
+          hi: "लहरें हवा की बड़ी हुई सिलवटें हैं — पानी स्वयं वहीं डोलता रहता है, किनारे की ओर केवल आकृति दौड़ती है।",
+          mr: "लाटा म्हणजे वाऱ्याच्या उंचावलेल्या सुरकुत्या — पाणी स्वतः जागीच डुलते, किनाऱ्याकडे फक्त आकार धावतो.",
+        },
+        pair: {
+          left: {
+            en: "The sea's rise and fall",
+            hi: "समुद्र की उठा-गिरी",
+            mr: "समुद्राचा चढ-उतार",
+          },
+          right: { en: "shapes racing ashore", hi: "किनारे दौड़ती आकृतियाँ", mr: "किनाऱ्याकडे धावणारे आकार" },
+        },
+      },
+      {
+        id: "tides",
+        name: { en: "Tides", hi: "ज्वार-भाटा", mr: "भरती-ओहोटी" },
+        kind: "motion",
+        prompt: {
+          en: "Twice a day the sea climbs high up the beach and twice it slides back. What are these regular risings and fallings called?",
+          hi: "दिन में दो बार समुद्र तट पर ऊँचा चढ़ता है और दो बार लौट जाता है। इन नियमित चढ़ावों-उतारों का नाम क्या है?",
+          mr: "दिवसातून दोनदा समुद्र किनाऱ्यावर उंच चढतो आणि दोनदा मागे सरकतो. या नियमित चढ-उतारांचे नाव काय?",
+        },
+        statement: {
+          en: "Tides are the sea's twice-daily breathing — raised chiefly by the Moon's pull on the ocean's water.",
+          hi: "ज्वार-भाटा समुद्र की दिन में दो बार की साँस है — मुख्यतः सागर-जल पर चाँद के खिंचाव से उठी।",
+          mr: "भरती-ओहोटी म्हणजे समुद्राचा दिवसातून दोनदाचा श्वास — मुख्यतः सागरजलावरील चंद्राच्या ओढीने उठलेला.",
+        },
+        detail: {
+          en: "Full-moon and new-moon days bring the highest spring tides — Sun and Moon hauling in one line.",
+          hi: "पूर्णिमा और अमावस्या के दिन सबसे ऊँचे ज्वार आते हैं — सूर्य और चाँद एक ही रेखा में खींचते हुए।",
+          mr: "पौर्णिमा आणि अमावास्येला सर्वांत उंच उधाणे येतात — सूर्य आणि चंद्र एकाच रेषेत ओढणारे.",
+        },
+        extra: {
+          en: "Fisherfolk, ports and mudflat birds all keep the Moon's timetable, not the clock's.",
+          hi: "मछुआरे, बंदरगाह और कीचड़-मैदानों के पंछी सब घड़ी की नहीं, चाँद की समय-सारिणी मानते हैं।",
+          mr: "कोळी, बंदरे आणि चिखलाणातले पक्षी सारे घड्याळाचे नव्हे, चंद्राचे वेळापत्रक पाळतात.",
+        },
+        pair: {
+          left: {
+            en: "The sea's twice-daily climb",
+            hi: "समुद्र की दो बार की चढ़ाई",
+            mr: "समुद्राची दोनदाची चढाई",
+          },
+          right: {
+            en: "the Moon's pull at work",
+            hi: "काम पर चाँद का खिंचाव",
+            mr: "कामाला लागलेली चंद्राची ओढ",
+          },
+        },
+      },
+      {
+        id: "currents",
+        name: { en: "Ocean currents", hi: "महासागरीय धाराएँ", mr: "सागरी प्रवाह" },
+        kind: "motion",
+        prompt: {
+          en: "Which steady rivers WITHIN the sea carry warm or cold water across whole oceans on fixed paths?",
+          hi: "समुद्र के भीतर की कौन-सी सधी नदियाँ गर्म या ठंडा पानी बँधे रास्तों पर पूरे महासागर पार ले जाती हैं?",
+          mr: "समुद्राच्या आतल्या कोणत्या स्थिर नद्या गरम वा थंड पाणी ठरलेल्या वाटांनी अख्खे महासागर पार नेतात?",
+        },
+        statement: {
+          en: "Ocean currents are rivers inside the sea — warm ones and cold ones, steering climates and fish alike.",
+          hi: "महासागरीय धाराएँ समुद्र के भीतर की नदियाँ हैं — गर्म और ठंडी, जलवायु और मछलियाँ दोनों को हाँकती हुईं।",
+          mr: "सागरी प्रवाह म्हणजे समुद्राच्या आतल्या नद्या — गरम आणि थंड, जलवायुमान आणि मासे दोघांना वळवणाऱ्या.",
+        },
+        detail: {
+          en: "Where a warm current meets a cold one, fog thickens and fish gather — the world's great fishing grounds sit at these meetings.",
+          hi: "जहाँ गर्म धारा ठंडी से मिलती है, कोहरा गहराता है और मछलियाँ जुटती हैं — दुनिया के बड़े मत्स्य-क्षेत्र इन्हीं मिलनों पर बसे हैं।",
+          mr: "जिथे गरम प्रवाह थंडाला भेटतो, तिथे धुके दाटते आणि मासे जमतात — जगातली मोठी मासेमारी-क्षेत्रे याच भेटींवर वसली आहेत.",
+        },
+        extra: {
+          en: "Europe's mild winters ride on one warm current's back — climate delivered by sea.",
+          hi: "यूरोप की नरम सर्दियाँ एक गर्म धारा की पीठ पर सवार हैं — समुद्र से पहुँचाई गई जलवायु।",
+          mr: "युरोपचे सौम्य हिवाळे एका गरम प्रवाहाच्या पाठीवर स्वार आहेत — समुद्राने पोहोचवलेले जलवायुमान.",
+        },
+        pair: {
+          left: { en: "Rivers within the sea", hi: "समुद्र के भीतर नदियाँ", mr: "समुद्राच्या आतल्या नद्या" },
+          right: {
+            en: "warm and cold conveyor belts",
+            hi: "गर्म-ठंडी वाहक पट्टियाँ",
+            mr: "गरम-थंड वाहक पट्टे",
+          },
+        },
+      },
+      {
+        id: "salinity",
+        name: { en: "Salinity", hi: "लवणता", mr: "क्षारता" },
+        kind: "measure",
+        prompt: {
+          en: "Which measure counts the grams of dissolved salt in every thousand grams of seawater?",
+          hi: "कौन-सी माप समुद्र-जल के हर हज़ार ग्राम में घुले नमक के ग्राम गिनती है?",
+          mr: "कोणते माप समुद्रजलाच्या दर हजार ग्रॅममधले विरघळलेल्या मिठाचे ग्रॅम मोजते?",
+        },
+        statement: {
+          en: "Salinity measures the sea's salt — about 35 grams in every thousand of ordinary ocean water.",
+          hi: "लवणता समुद्र का नमक नापती है — साधारण सागर-जल के हर हज़ार ग्राम में लगभग 35 ग्राम।",
+          mr: "क्षारता समुद्राचे मीठ मोजते — साध्या सागरजलाच्या दर हजारात सुमारे 35 ग्रॅम.",
+        },
+        detail: {
+          en: "The Dead Sea is so saline that a swimmer floats reading a newspaper — salt is buoyancy.",
+          hi: "मृत सागर इतना खारा है कि तैराक अख़बार पढ़ते हुए तैरता रहता है — नमक ही उछाल है।",
+          mr: "मृत समुद्र इतका क्षारयुक्त की पोहणारा वर्तमानपत्र वाचत तरंगतो — मीठ म्हणजेच तरंगणे.",
+        },
+        extra: {
+          en: "Rivers deliver the salt grain by grain, and evaporation leaves it behind — so the sea can only grow saltier.",
+          hi: "नदियाँ नमक कण-कण पहुँचाती हैं, और वाष्पन उसे पीछे छोड़ जाता है — अतः समुद्र केवल और खारा ही हो सकता है।",
+          mr: "नद्या मीठ कणाकणाने पोहोचवतात, आणि बाष्पीभवन ते मागे ठेवते — म्हणून समुद्र फक्त अधिकच खारट होऊ शकतो.",
+        },
+        pair: {
+          left: { en: "The sea's saltiness", hi: "समुद्र का खारापन", mr: "समुद्राचा खारटपणा" },
+          right: {
+            en: "35 parts per thousand",
+            hi: "हज़ार में 35 हिस्से",
+            mr: "हजारात 35 भाग",
+          },
+        },
+      },
+      {
+        id: "fresh-water",
+        name: { en: "Fresh water", hi: "मीठा (अलवण) जल", mr: "गोडे पाणी" },
+        kind: "resource",
+        prompt: {
+          en: "Of all the Earth's water, which tiny usable share fills our rivers, wells and taps?",
+          hi: "पृथ्वी के सारे पानी में से कौन-सा नन्हा उपयोगी हिस्सा हमारी नदियों, कुओं और नलों को भरता है?",
+          mr: "पृथ्वीच्या साऱ्या पाण्यातला कोणता इवला वापरण्याजोगा वाटा आपल्या नद्या, विहिरी आणि नळ भरतो?",
+        },
+        statement: {
+          en: "Fresh water is the rare fraction — most of Earth's water is salt sea, and much of the fresh is locked away in ice.",
+          hi: "मीठा जल दुर्लभ अंश है — पृथ्वी का अधिकांश पानी खारा समुद्र है, और मीठे का बड़ा हिस्सा बर्फ़ में बंद।",
+          mr: "गोडे पाणी हा दुर्मीळ अंश — पृथ्वीचे बहुतेक पाणी खारा समुद्र, आणि गोड्यातला मोठा वाटा बर्फात बंद.",
+        },
+        pair: {
+          left: { en: "The drinkable fraction", hi: "पीने लायक़ अंश", mr: "पिण्याजोगा अंश" },
+          right: {
+            en: "rare and mostly frozen",
+            hi: "दुर्लभ और प्रायः जमा हुआ",
+            mr: "दुर्मीळ आणि बहुतांश गोठलेला",
+          },
+        },
+      },
+      {
+        id: "tsunami",
+        name: { en: "The tsunami", hi: "सुनामी", mr: "त्सुनामी" },
+        kind: "motion",
+        prompt: {
+          en: "An undersea earthquake can hurl the ocean into which giant wave — barely a ripple in deep water, a wall at the shore?",
+          hi: "समुद्र-तल का भूकंप सागर को किस विराट लहर में उछाल सकता है — गहरे पानी में मामूली सिलवट, किनारे पर दीवार?",
+          mr: "समुद्रतळाचा भूकंप सागराला कोणत्या महाकाय लाटेत उधळू शकतो — खोल पाण्यात जेमतेम सुरकुती, किनाऱ्यावर भिंत?",
+        },
+        statement: {
+          en: "A tsunami is an earthquake's wave — it crosses deep ocean almost unnoticed and rears into a wall of water at the coast.",
+          hi: "सुनामी भूकंप की लहर है — गहरे सागर को लगभग अनदेखी पार करती है और तट पर पानी की दीवार बनकर उठती है।",
+          mr: "त्सुनामी ही भूकंपाची लाट — खोल सागर जवळजवळ नकळत पार करते आणि किनाऱ्यावर पाण्याची भिंत होऊन उभी राहते.",
+        },
+        pair: {
+          left: { en: "The earthquake's wave", hi: "भूकंप की लहर", mr: "भूकंपाची लाट" },
+          right: {
+            en: "a ripple grown into a wall",
+            hi: "सिलवट से बनी दीवार",
+            mr: "सुरकुतीची झालेली भिंत",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the sea's three movements: A-the twice-daily rise and fall at the beach, B-the wind-made rise and fall of the surface, C-the steady river of water inside the ocean. Which trio is right?",
+          hi: "समुद्र की तीन हलचलें मिलाइए: अ-तट पर दिन में दो बार की चढ़ा-उतरी, ब-हवा की बनाई सतह की उठा-गिरी, स-सागर के भीतर पानी की सधी नदी। कौन-सी तिकड़ी सही है?",
+          mr: "समुद्राच्या तीन हालचाली जुळवा: अ-किनाऱ्यावरची दिवसातून दोनदाची चढ-उतर, ब-वाऱ्याने केलेला पृष्ठाचा चढ-उतार, क-सागराच्या आतली पाण्याची स्थिर नदी. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: tides · B: waves · C: ocean currents",
+            hi: "अ: ज्वार-भाटा · ब: लहरें · स: महासागरीय धाराएँ",
+            mr: "अ: भरती-ओहोटी · ब: लाटा · क: सागरी प्रवाह",
+          },
+          {
+            en: "A: waves · B: ocean currents · C: tides",
+            hi: "अ: लहरें · ब: महासागरीय धाराएँ · स: ज्वार-भाटा",
+            mr: "अ: लाटा · ब: सागरी प्रवाह · क: भरती-ओहोटी",
+          },
+          {
+            en: "A: ocean currents · B: tides · C: waves",
+            hi: "अ: महासागरीय धाराएँ · ब: ज्वार-भाटा · स: लहरें",
+            mr: "अ: सागरी प्रवाह · ब: भरती-ओहोटी · क: लाटा",
+          },
+          {
+            en: "A: tides · B: ocean currents · C: waves",
+            hi: "अ: ज्वार-भाटा · ब: महासागरीय धाराएँ · स: लहरें",
+            mr: "अ: भरती-ओहोटी · ब: सागरी प्रवाह · क: लाटा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Sort them by their engines. The Moon's pull works on a timetable — tides. The wind rubs the surface — waves. Density and steady winds drive the deep conveyor — currents. Three movements, three engines, and no two share a cause.",
+          hi: "इन्हें इनके इंजनों से छाँटिए। चाँद का खिंचाव समय-सारिणी पर चलता है — ज्वार-भाटा। हवा सतह को मलती है — लहरें। घनत्व और सधी हवाएँ गहरी पट्टी चलाती हैं — धाराएँ। तीन हलचलें, तीन इंजन, और कोई दो एक कारण नहीं बाँटतीं।",
+          mr: "यांना त्यांच्या इंजिनांनी निवडा. चंद्राची ओढ वेळापत्रकावर चालते — भरती-ओहोटी. वारा पृष्ठ घासतो — लाटा. घनता आणि स्थिर वारे खोल पट्टा चालवतात — प्रवाह. तीन हालचाली, तीन इंजिने, आणि कोणत्याही दोघांचे कारण एक नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The world's richest fishing grounds sit exactly where warm and cold ocean currents meet — which is also where ships most fear fog. Why does one meeting produce both gifts and danger?",
+          hi: "दुनिया के सबसे समृद्ध मत्स्य-क्षेत्र ठीक वहीं हैं जहाँ गर्म और ठंडी धाराएँ मिलती हैं — और वहीं जहाज़ कोहरे से सबसे ज़्यादा डरते हैं। एक मिलन से वरदान और ख़तरा दोनों क्यों?",
+          mr: "जगातली सर्वांत समृद्ध मासेमारी-क्षेत्रे नेमकी तिथे आहेत जिथे गरम आणि थंड प्रवाह भेटतात — आणि तिथेच जहाजे धुक्याला सर्वाधिक भितात. एका भेटीतून देणगी आणि धोका दोन्ही का?",
+        },
+        choices: [
+          {
+            en: "The meeting stirs nutrients up from the deep, so plankton bloom and fish crowd in — while warm damp air over cold water condenses into thick fog: one mixing, two consequences",
+            hi: "मिलन गहराई से पोषक ऊपर मथ देता है, तो प्लवक खिलते हैं और मछलियाँ जुटती हैं — जबकि ठंडे पानी पर गर्म नम हवा गाढ़े कोहरे में जम जाती है: एक मिश्रण, दो नतीजे",
+            mr: "भेट खोलीतून पोषके वर ढवळते, म्हणून प्लवंग फुलतात आणि मासे गर्दी करतात — तर थंड पाण्यावरची गरम दमट हवा दाट धुक्यात साकळते: एक मिसळण, दोन परिणाम",
+          },
+          {
+            en: "Fish enjoy fog and gather to hide in it",
+            hi: "मछलियों को कोहरा भाता है और वे उसमें छिपने जुटती हैं",
+            mr: "माशांना धुके आवडते आणि ते त्यात लपायला जमतात",
+          },
+          {
+            en: "It is coincidence — fog and fish have separate causes entirely",
+            hi: "यह संयोग है — कोहरे और मछलियों के कारण बिलकुल अलग हैं",
+            mr: "हा योगायोग — धुके आणि माशांची कारणे पूर्ण वेगळी",
+          },
+          {
+            en: "Warm currents alone create both fish and fog",
+            hi: "गर्म धाराएँ अकेले ही मछली और कोहरा दोनों बनाती हैं",
+            mr: "गरम प्रवाह एकटेच मासे आणि धुके दोन्ही घडवतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One physical meeting, read twice. Below the surface, colliding waters churn — nutrients climb from the deep, plankton feast, small fish follow the plankton and big fish the small: a food chain switched on by turbulence. Above the surface, air that crossed the warm current arrives moist and meets the chill — its vapour condenses into fog banks. The fisherman's fortune and the sailor's dread are two altitudes of the same event.",
+          hi: "एक भौतिक मिलन, दो बार पढ़ा हुआ। सतह के नीचे टकराते पानी मथते हैं — गहराई से पोषक चढ़ते हैं, प्लवक की दावत होती है, छोटी मछलियाँ प्लवक के पीछे और बड़ी छोटी के पीछे: हलचल से चालू हुई भोजन-शृंखला। सतह के ऊपर, गर्म धारा पार कर आई हवा नम पहुँचती है और ठंडक से मिलती है — उसकी भाप कोहरे की चादरों में जम जाती है। मछुआरे की क़िस्मत और नाविक का डर एक ही घटना की दो ऊँचाइयाँ हैं।",
+          mr: "एक भौतिक भेट, दोनदा वाचलेली. पृष्ठाखाली आदळणारी पाणी घुसळतात — खोलीतून पोषके चढतात, प्लवंगांची मेजवानी होते, लहान मासे प्लवंगांमागे आणि मोठे लहानांमागे: खळबळीने सुरू झालेली अन्नसाखळी. पृष्ठावर, गरम प्रवाह ओलांडून आलेली हवा दमट पोहोचते आणि गारव्याला भेटते — तिची वाफ धुक्याच्या चादरींत साकळते. कोळ्याचे नशीब आणि खलाशाची धास्ती या एकाच घटनेच्या दोन उंची आहेत.",
+        },
+      },
+    ],
+  },
 ];
