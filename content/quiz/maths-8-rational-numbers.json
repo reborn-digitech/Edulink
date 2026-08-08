@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 1 — Rational Numbers",
+  "name": "Rational Numbers",
+  "slug": "maths-8-rational-numbers",
+  "summary": "The properties get names: identities that preserve, inverses that cancel, distributivity that saves work — and one counter-example convicting division of never commuting.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "परिमेय संख्याएँ",
+      "summary": "गुणों को नाम मिलते हैं: बचाने वाले तत्समक, काटने वाले प्रतिलोम, मेहनत बचाता वितरण गुण — और एक प्रति-उदाहरण जो भाग को क्रमविनिमय का सदा के लिए दोषी ठहराता है।"
+    },
+    "mr": {
+      "name": "परिमेय संख्या",
+      "summary": "गुणधर्मांना नावे मिळतात: राखणारे अविकारक, रद्द करणारे व्यस्त, श्रम वाचवणारे वितरण — आणि भागाकाराला क्रमविनिमयाचा कायमचा दोषी ठरवणारे एक प्रति-उदाहरण."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which rational number is the ADDITIVE identity — leaving every number unchanged when added to it?",
+      "choices": [
+        "-1",
+        "0",
+        "10",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "a + 0 = a for every a: the identity is 0. 1 leaves numbers unchanged under MULTIPLICATION — a different throne.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सी परिमेय संख्या योज्य तत्समक है — जिसे जोड़ने पर हर संख्या अपरिवर्तित रहती है?",
+          "choices": [
+            "-1",
+            "0",
+            "10",
+            "1"
+          ],
+          "solution": "हर a के लिए a + 0 = a: तत्समक 0 है। 1 गुणा में संख्याएँ अपरिवर्तित रखता है — वह दूसरी गद्दी है।"
+        },
+        "mr": {
+          "stem": "कोणती परिमेय संख्या बेरजेची अविकारक आहे — जी मिळवल्यावर प्रत्येक संख्या जशीच्या तशी राहते?",
+          "choices": [
+            "-1",
+            "0",
+            "10",
+            "1"
+          ],
+          "solution": "प्रत्येक a साठी a + 0 = a: अविकारक 0 आहे. 1 गुणाकारात संख्या जशाच्या तशा ठेवतो — ती वेगळी गादी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which rational number is the MULTIPLICATIVE identity?",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "-1"
+      ],
+      "answerIndex": 0,
+      "solution": "a × 1 = a for every a: the identity is 1. 0 doesn't preserve — it swallows every product whole.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सी परिमेय संख्या गुणन तत्समक है?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "-1"
+          ],
+          "solution": "हर a के लिए a × 1 = a: तत्समक 1 है। 0 बचाता नहीं — वह हर गुणनफल को पूरा निगल जाता है।"
+        },
+        "mr": {
+          "stem": "कोणती परिमेय संख्या गुणाकाराची अविकारक आहे?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "-1"
+          ],
+          "solution": "प्रत्येक a साठी a × 1 = a: अविकारक 1 आहे. 0 राखत नाही — तो प्रत्येक गुणाकार अख्खा गिळतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The additive inverse of 3/7 is ▢/7. What is the numerator in the box?",
+      "choices": [
+        "7",
+        "-3",
+        "3",
+        "-7"
+      ],
+      "answerIndex": 1,
+      "solution": "3/7 + (−3/7) = 0, so the numerator is −3. −7 flips the wrong part — the denominator never changes sign duty.",
+      "checkExpr": "0-3",
+      "translations": {
+        "hi": {
+          "stem": "3/7 का योज्य प्रतिलोम ▢/7 है। रिक्त में अंश क्या आएगा?",
+          "choices": [
+            "7",
+            "-3",
+            "3",
+            "-7"
+          ],
+          "solution": "3/7 + (−3/7) = 0, अतः अंश −3। −7 ग़लत हिस्सा पलटता है — हर कभी चिह्न की ड्यूटी नहीं बदलता।"
+        },
+        "mr": {
+          "stem": "3/7 चा बेरीज-व्यस्त ▢/7 आहे. रिकाम्यात अंश काय येईल?",
+          "choices": [
+            "7",
+            "-3",
+            "3",
+            "-7"
+          ],
+          "solution": "3/7 + (−3/7) = 0, म्हणून अंश −3. −7 चुकीचा भाग उलटवतो — छेद कधी चिन्हाची जबाबदारी घेत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 1/4 + 1/2, as a decimal?",
+      "choices": [
+        "1.5",
+        "0.25",
+        "0.75",
+        "0.33"
+      ],
+      "answerIndex": 2,
+      "solution": "Match the denominators: 1/4 + 2/4 = 3/4 = 0.75. 0.33 adds tops AND bottoms (2/6) — fractions never add that way.",
+      "checkExpr": "1/4+1/2",
+      "translations": {
+        "hi": {
+          "stem": "1/4 + 1/2 कितना है, दशमलव में?",
+          "choices": [
+            "1.5",
+            "0.25",
+            "0.75",
+            "0.33"
+          ],
+          "solution": "हर मिलाइए: 1/4 + 2/4 = 3/4 = 0.75। 0.33 अंश और हर दोनों जोड़ देता है (2/6) — भिन्न कभी ऐसे नहीं जुड़तीं।"
+        },
+        "mr": {
+          "stem": "1/4 + 1/2 किती, दशांशात?",
+          "choices": [
+            "1.5",
+            "0.25",
+            "0.75",
+            "0.33"
+          ],
+          "solution": "छेद जुळवा: 1/4 + 2/4 = 3/4 = 0.75. 0.33 अंश आणि छेद दोन्ही जोडतो (2/6) — अपूर्णांक कधी असे जुळत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the multiplicative inverse (reciprocal) of −5/8, as a decimal?",
+      "choices": [
+        "-0.625",
+        "0.625",
+        "1.6",
+        "-1.6"
+      ],
+      "answerIndex": 3,
+      "solution": "Flip the fraction, keep the sign: −8/5 = −1.6, and (−5/8) × (−1.6) = 1 ✓. 1.6 drops the sign — but only negative × negative reaches +1.",
+      "checkExpr": "(0-8)/5",
+      "translations": {
+        "hi": {
+          "stem": "−5/8 का गुणन प्रतिलोम (व्युत्क्रम) दशमलव में कितना है?",
+          "choices": [
+            "-0.625",
+            "0.625",
+            "1.6",
+            "-1.6"
+          ],
+          "solution": "भिन्न पलटिए, चिह्न रखिए: −8/5 = −1.6, और (−5/8) × (−1.6) = 1 ✓। 1.6 चिह्न गिरा देता है — पर +1 तक केवल ऋण × ऋण ही पहुँचता है।"
+        },
+        "mr": {
+          "stem": "−5/8 चा गुणाकार-व्यस्त दशांशात किती?",
+          "choices": [
+            "-0.625",
+            "0.625",
+            "1.6",
+            "-1.6"
+          ],
+          "solution": "अपूर्णांक उलटवा, चिन्ह ठेवा: −8/5 = −1.6, आणि (−5/8) × (−1.6) = 1 ✓. 1.6 चिन्ह गाळतो — पण +1 पर्यंत फक्त ऋण × ऋणच पोहोचतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 3/4 × 8/3?",
+      "choices": [
+        "2",
+        "0.5",
+        "24",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Cancel before you multiply: the 3s cancel and 8/4 = 2. 24 multiplies only the tops; 6 halves it wrongly.",
+      "checkExpr": "3*8/(4*3)",
+      "translations": {
+        "hi": {
+          "stem": "3/4 × 8/3 कितना है?",
+          "choices": [
+            "2",
+            "0.5",
+            "24",
+            "6"
+          ],
+          "solution": "गुणा से पहले काटिए: तीन-तीन कट जाते हैं और 8/4 = 2। 24 केवल अंश गुणा करता है; 6 ग़लत आधा है।"
+        },
+        "mr": {
+          "stem": "3/4 × 8/3 किती?",
+          "choices": [
+            "2",
+            "0.5",
+            "24",
+            "6"
+          ],
+          "solution": "गुणण्याआधी छेद कापा: तीन-तीन रद्द होतात आणि 8/4 = 2. 24 फक्त अंश गुणतो; 6 चुकीचे अर्धे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Use distributivity to compute 2/5 × (10 + 15).",
+      "choices": [
+        "6",
+        "50",
+        "10",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Distribute: 2/5 × 10 + 2/5 × 15 = 4 + 6 = 10 — or just 2/5 × 25. 4 and 6 are the two halves that forgot to meet.",
+      "checkExpr": "2*25/5",
+      "translations": {
+        "hi": {
+          "stem": "वितरण गुण से 2/5 × (10 + 15) निकालिए।",
+          "choices": [
+            "6",
+            "50",
+            "10",
+            "4"
+          ],
+          "solution": "बाँटिए: 2/5 × 10 + 2/5 × 15 = 4 + 6 = 10 — या सीधे 2/5 × 25। 4 और 6 वे दो हिस्से हैं जो मिलना भूल गए।"
+        },
+        "mr": {
+          "stem": "वितरण गुणधर्माने 2/5 × (10 + 15) काढा.",
+          "choices": [
+            "6",
+            "50",
+            "10",
+            "4"
+          ],
+          "solution": "वाटा: 2/5 × 10 + 2/5 × 15 = 4 + 6 = 10 — किंवा थेट 2/5 × 25. 4 आणि 6 हे भेटायला विसरलेले दोन भाग."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Find the rational number exactly midway between 1/2 and 3/4, as a decimal.",
+      "choices": [
+        "0.625",
+        "1.25",
+        "0.6",
+        "0.65"
+      ],
+      "answerIndex": 0,
+      "solution": "Average the pair: (0.5 + 0.75) ÷ 2 = 0.625 = 5/8. 1.25 stops at the sum and forgets the halving.",
+      "checkExpr": "(0.5+0.75)/2",
+      "translations": {
+        "hi": {
+          "stem": "1/2 और 3/4 के ठीक बीच की परिमेय संख्या दशमलव में निकालिए।",
+          "choices": [
+            "0.625",
+            "1.25",
+            "0.6",
+            "0.65"
+          ],
+          "solution": "जोड़ी का औसत लीजिए: (0.5 + 0.75) ÷ 2 = 0.625 = 5/8। 1.25 योग पर रुककर आधा करना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "1/2 आणि 3/4 च्या नेमकी मधली परिमेय संख्या दशांशात काढा.",
+          "choices": [
+            "0.625",
+            "1.25",
+            "0.6",
+            "0.65"
+          ],
+          "solution": "जोडीची सरासरी घ्या: (0.5 + 0.75) ÷ 2 = 0.625 = 5/8. 1.25 बेरजेवर थांबून निम्मे करायला विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What must 2.5 be multiplied by to give 1?",
+      "choices": [
+        "0.4",
+        "2.5",
+        "0.25",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The reciprocal: 1 ÷ 2.5 = 2/5 = 0.4, and 2.5 × 0.4 = 1 ✓. 0.25 is the reciprocal of 4, a neighbour's answer.",
+      "checkExpr": "1/2.5",
+      "translations": {
+        "hi": {
+          "stem": "2.5 को किससे गुणा करें कि 1 मिले?",
+          "choices": [
+            "0.4",
+            "2.5",
+            "0.25",
+            "4"
+          ],
+          "solution": "व्युत्क्रम: 1 ÷ 2.5 = 2/5 = 0.4, और 2.5 × 0.4 = 1 ✓। 0.25 चार का व्युत्क्रम है, पड़ोसी का उत्तर।"
+        },
+        "mr": {
+          "stem": "2.5 ला कशाने गुणले असता 1 मिळेल?",
+          "choices": [
+            "0.4",
+            "2.5",
+            "0.25",
+            "4"
+          ],
+          "solution": "व्यस्त: 1 ÷ 2.5 = 2/5 = 0.4, आणि 2.5 × 0.4 = 1 ✓. 0.25 हा चाराचा व्यस्त, शेजाऱ्याचे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Compute cleverly: (2/9 × 3/4) + (2/9 × 6/4). (Answer as a decimal.)",
+      "choices": [
+        "0.75",
+        "0.25",
+        "0.5",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Pull out the common 2/9: it multiplies (3/4 + 6/4) = 9/4, and 2/9 × 9/4 = 1/2 = 0.5 — distributivity run in reverse.",
+      "checkExpr": "2*9/(9*4)",
+      "translations": {
+        "hi": {
+          "stem": "चतुराई से निकालिए: (2/9 × 3/4) + (2/9 × 6/4)। (उत्तर दशमलव में।)",
+          "choices": [
+            "0.75",
+            "0.25",
+            "0.5",
+            "1"
+          ],
+          "solution": "साझा 2/9 बाहर खींचिए: वह (3/4 + 6/4) = 9/4 से गुणा होता है, और 2/9 × 9/4 = 1/2 = 0.5 — उल्टा चलाया वितरण गुण।"
+        },
+        "mr": {
+          "stem": "चतुराईने काढा: (2/9 × 3/4) + (2/9 × 6/4). (उत्तर दशांशात.)",
+          "choices": [
+            "0.75",
+            "0.25",
+            "0.5",
+            "1"
+          ],
+          "solution": "सामाईक 2/9 बाहेर काढा: तो (3/4 + 6/4) = 9/4 शी गुणला जातो, आणि 2/9 × 9/4 = 1/2 = 0.5 — उलटे चालवलेले वितरण."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A rope 7.5 m long is cut into pieces of 0.75 m each. How many full pieces come out?",
+      "choices": [
+        "5",
+        "9",
+        "10",
+        "11"
+      ],
+      "answerIndex": 2,
+      "solution": "7.5 ÷ 0.75 = 750 ÷ 75 = 10 pieces. Shift both decimals together and the division turns whole.",
+      "checkExpr": "7.5/0.75",
+      "translations": {
+        "hi": {
+          "stem": "7.5 मीटर की रस्सी 0.75-0.75 मीटर के टुकड़ों में कटती है। कितने पूरे टुकड़े निकलेंगे?",
+          "choices": [
+            "5",
+            "9",
+            "10",
+            "11"
+          ],
+          "solution": "7.5 ÷ 0.75 = 750 ÷ 75 = 10 टुकड़े। दोनों दशमलव साथ खिसकाइए और भाग पूर्ण बन जाता है।"
+        },
+        "mr": {
+          "stem": "7.5 मीटरची दोरी प्रत्येकी 0.75 मीटरच्या तुकड्यांत कापली. किती पूर्ण तुकडे निघतील?",
+          "choices": [
+            "5",
+            "9",
+            "10",
+            "11"
+          ],
+          "solution": "7.5 ÷ 0.75 = 750 ÷ 75 = 10 तुकडे. दोन्ही दशांश एकत्र सरकवा आणि भागाकार पूर्ण होतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Compute: 5/6 × 12 − 5/6 × 6.",
+      "choices": [
+        "10",
+        "5",
+        "15",
+        "2.5"
+      ],
+      "answerIndex": 1,
+      "solution": "Factor the 5/6 out: 5/6 × (12 − 6) = 5/6 × 6 = 5. 10 is the first term alone (5/6 × 12), the subtraction forgotten.",
+      "checkExpr": "5*6/6",
+      "translations": {
+        "hi": {
+          "stem": "निकालिए: 5/6 × 12 − 5/6 × 6।",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "2.5"
+          ],
+          "solution": "5/6 बाहर निकालिए: 5/6 × (12 − 6) = 5/6 × 6 = 5। 10 अकेला पहला पद है (5/6 × 12), घटाव भुलाया हुआ।"
+        },
+        "mr": {
+          "stem": "काढा: 5/6 × 12 − 5/6 × 6.",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "2.5"
+          ],
+          "solution": "5/6 बाहेर काढा: 5/6 × (12 − 6) = 5/6 × 6 = 5. 10 म्हणजे एकटे पहिले पद (5/6 × 12), वजाबाकी विसरलेली."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The sum of two rational numbers is 1/2. One of them is −3/4. What is the other, as a decimal?",
+      "choices": [
+        "0.25",
+        "1.25",
+        "-1.25",
+        "-0.25"
+      ],
+      "answerIndex": 1,
+      "solution": "Other = 1/2 − (−3/4) = 1/2 + 3/4 = 5/4 = 1.25. Check: 1.25 + (−0.75) = 0.5 ✓. −0.25 subtracts without flipping the minus.",
+      "checkExpr": "0.5+0.75",
+      "translations": {
+        "hi": {
+          "stem": "दो परिमेय संख्याओं का योग 1/2 है। एक है −3/4। दूसरी दशमलव में कितनी?",
+          "choices": [
+            "0.25",
+            "1.25",
+            "-1.25",
+            "-0.25"
+          ],
+          "solution": "दूसरी = 1/2 − (−3/4) = 1/2 + 3/4 = 5/4 = 1.25। जाँच: 1.25 + (−0.75) = 0.5 ✓। −0.25 ऋण पलटे बिना घटा देता है।"
+        },
+        "mr": {
+          "stem": "दोन परिमेय संख्यांची बेरीज 1/2 आहे. एक आहे −3/4. दुसरी दशांशात किती?",
+          "choices": [
+            "0.25",
+            "1.25",
+            "-1.25",
+            "-0.25"
+          ],
+          "solution": "दुसरी = 1/2 − (−3/4) = 1/2 + 3/4 = 5/4 = 1.25. पडताळणी: 1.25 + (−0.75) = 0.5 ✓. −0.25 ऋण न उलटवता वजा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The product of two rational numbers is −8/5. One of them is 4/15. Find the other.",
+      "choices": [
+        "-24",
+        "-6",
+        "-0.42",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "Divide: (−8/5) ÷ (4/15) = (−8/5) × (15/4) = −6. Check: 4/15 × (−6) = −24/15 = −8/5 ✓. −0.42 multiplies instead of dividing.",
+      "checkExpr": "(0-8)*15/(5*4)",
+      "translations": {
+        "hi": {
+          "stem": "दो परिमेय संख्याओं का गुणनफल −8/5 है। एक है 4/15। दूसरी निकालिए।",
+          "choices": [
+            "-24",
+            "-6",
+            "-0.42",
+            "6"
+          ],
+          "solution": "भाग दीजिए: (−8/5) ÷ (4/15) = (−8/5) × (15/4) = −6। जाँच: 4/15 × (−6) = −24/15 = −8/5 ✓। −0.42 भाग की जगह गुणा कर बैठता है।"
+        },
+        "mr": {
+          "stem": "दोन परिमेय संख्यांचा गुणाकार −8/5 आहे. एक आहे 4/15. दुसरी काढा.",
+          "choices": [
+            "-24",
+            "-6",
+            "-0.42",
+            "6"
+          ],
+          "solution": "भागा: (−8/5) ÷ (4/15) = (−8/5) × (15/4) = −6. पडताळणी: 4/15 × (−6) = −24/15 = −8/5 ✓. −0.42 भागाऐवजी गुणतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A number x satisfies x + x/2 + x/4 = 7/2. Find x.",
+      "choices": [
+        "0.5",
+        "4",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Collect: x(1 + 1/2 + 1/4) = 7x/4 = 7/2, so x = 2. Check: 2 + 1 + 0.5 = 3.5 = 7/2 ✓. 1 solves only half the left side.",
+      "checkExpr": "3.5*4/7",
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या x के लिए x + x/2 + x/4 = 7/2 है। x निकालिए।",
+          "choices": [
+            "0.5",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "समेटिए: x(1 + 1/2 + 1/4) = 7x/4 = 7/2, अतः x = 2। जाँच: 2 + 1 + 0.5 = 3.5 = 7/2 ✓। 1 बाएँ पक्ष का आधा ही हल करता है।"
+        },
+        "mr": {
+          "stem": "एका संख्येसाठी x + x/2 + x/4 = 7/2 आहे. x काढा.",
+          "choices": [
+            "0.5",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "एकत्र करा: x(1 + 1/2 + 1/4) = 7x/4 = 7/2, म्हणून x = 2. पडताळणी: 2 + 1 + 0.5 = 3.5 = 7/2 ✓. 1 डाव्या बाजूचे अर्धेच सोडवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Is division commutative? Compute (1/2 ÷ 1/4) − (1/4 ÷ 1/2) and let the gap answer.",
+      "choices": [
+        "0.5",
+        "1.5",
+        "0",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "1/2 ÷ 1/4 = 2, but 1/4 ÷ 1/2 = 0.5: the gap is 1.5, not zero — so division refuses commutativity. A single counter-example convicts a property for ever.",
+      "checkExpr": "0.5/0.25-0.25/0.5",
+      "translations": {
+        "hi": {
+          "stem": "क्या भाग क्रमविनिमेय है? (1/2 ÷ 1/4) − (1/4 ÷ 1/2) निकालिए और अंतर को ही जवाब देने दीजिए।",
+          "choices": [
+            "0.5",
+            "1.5",
+            "0",
+            "2"
+          ],
+          "solution": "1/2 ÷ 1/4 = 2, पर 1/4 ÷ 1/2 = 0.5: अंतर 1.5 है, शून्य नहीं — अतः भाग क्रमविनिमय ठुकराता है। एक अकेला प्रति-उदाहरण किसी गुण को सदा के लिए दोषी ठहरा देता है।"
+        },
+        "mr": {
+          "stem": "भागाकार क्रमविनिमेय आहे का? (1/2 ÷ 1/4) − (1/4 ÷ 1/2) काढा आणि फरकालाच उत्तर देऊ द्या.",
+          "choices": [
+            "0.5",
+            "1.5",
+            "0",
+            "2"
+          ],
+          "solution": "1/2 ÷ 1/4 = 2, पण 1/4 ÷ 1/2 = 0.5: फरक 1.5 आहे, शून्य नाही — म्हणून भागाकार क्रमविनिमय नाकारतो. एकच प्रति-उदाहरण गुणधर्माला कायमचे दोषी ठरवते."
+        }
+      }
+    }
+  ]
+}

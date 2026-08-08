@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 2 — Linear Equations in One Variable",
+  "name": "Linear Equations in One Variable",
+  "slug": "maths-8-linear-equations",
+  "summary": "x appears on both sides and in fractions: brackets opened honestly, digits reversed, notes counted in a purse — and every answer walked back into its equation.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "एक चर वाले रैखिक समीकरण",
+      "summary": "x दोनों पक्षों और भिन्नों में आता है: ईमानदारी से खुले कोष्ठक, पलटे अंक, बटुए में गिने नोट — और हर उत्तर अपने समीकरण में वापस चलाकर परखा हुआ।"
+    },
+    "mr": {
+      "name": "एका चलातील रेषीय समीकरणे",
+      "summary": "x दोन्ही बाजूंना आणि अपूर्णांकांत येतो: प्रामाणिकपणे उघडलेले कंस, उलटवलेले अंक, पाकिटात मोजलेल्या नोटा — आणि प्रत्येक उत्तर आपल्या समीकरणात परत चालवून तपासलेले."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Solve: 2x − 3 = 7.",
+      "choices": [
+        "2",
+        "10",
+        "5",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Add 3, then halve: 2x = 10, x = 5. 2 subtracts the 3 instead of restoring it; 10 forgets the final division.",
+      "checkExpr": "(7+3)/2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 2x − 3 = 7।",
+          "choices": [
+            "2",
+            "10",
+            "5",
+            "4"
+          ],
+          "solution": "3 जोड़िए, फिर आधा: 2x = 10, x = 5। 2 तीन को लौटाने की जगह घटा देता है; 10 अंतिम भाग भूल जाता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 2x − 3 = 7.",
+          "choices": [
+            "2",
+            "10",
+            "5",
+            "4"
+          ],
+          "solution": "3 मिळवा, मग निम्मे: 2x = 10, x = 5. 2 तिघाला परत करण्याऐवजी वजा करतो; 10 शेवटचा भाग विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Solve: x/3 + 1 = 4.",
+      "choices": [
+        "15",
+        "5",
+        "9",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Subtract 1, then triple: x/3 = 3, x = 9. 15 triples before removing the 1 — undoing runs in reverse order.",
+      "checkExpr": "(4-1)*3",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: x/3 + 1 = 4।",
+          "choices": [
+            "15",
+            "5",
+            "9",
+            "1"
+          ],
+          "solution": "1 घटाइए, फिर तिगुना: x/3 = 3, x = 9। 15 एक हटाने से पहले तिगुना कर देता है — उलटना उल्टे क्रम में चलता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: x/3 + 1 = 4.",
+          "choices": [
+            "15",
+            "5",
+            "9",
+            "1"
+          ],
+          "solution": "1 वजा करा, मग तिप्पट: x/3 = 3, x = 9. 15 एक काढण्याआधी तिप्पट करतो — उलटणे उलट्या क्रमाने चालते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Solve: 5x = 3x + 8.",
+      "choices": [
+        "4",
+        "8",
+        "2",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Bring the x's together: 5x − 3x = 8, so 2x = 8 and x = 4. 8 stops at 2x; 1 divides 8 by all of 5 + 3.",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 5x = 3x + 8।",
+          "choices": [
+            "4",
+            "8",
+            "2",
+            "1"
+          ],
+          "solution": "x एक ओर लाइए: 5x − 3x = 8, अतः 2x = 8 और x = 4। 8 2x पर रुक जाता है; 1 आठ को 5 + 3 से भाग देता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 5x = 3x + 8.",
+          "choices": [
+            "4",
+            "8",
+            "2",
+            "1"
+          ],
+          "solution": "x एका बाजूला आणा: 5x − 3x = 8, म्हणून 2x = 8 आणि x = 4. 8 2x वर थांबतो; 1 आठाला 5 + 3 ने भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve: 3x + 2 = 2x + 9.",
+      "choices": [
+        "11",
+        "5",
+        "7",
+        "1.4"
+      ],
+      "answerIndex": 2,
+      "solution": "x's left, numbers right: 3x − 2x = 9 − 2, so x = 7. 11 adds the 2 instead of moving it across with a sign change.",
+      "checkExpr": "9-2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 3x + 2 = 2x + 9।",
+          "choices": [
+            "11",
+            "5",
+            "7",
+            "1.4"
+          ],
+          "solution": "x बाएँ, संख्याएँ दाएँ: 3x − 2x = 9 − 2, अतः x = 7। 11 दो को चिह्न बदलकर पार ले जाने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 3x + 2 = 2x + 9.",
+          "choices": [
+            "11",
+            "5",
+            "7",
+            "1.4"
+          ],
+          "solution": "x डावीकडे, संख्या उजवीकडे: 3x − 2x = 9 − 2, म्हणून x = 7. 11 दोघाला चिन्ह बदलून पलीकडे नेण्याऐवजी मिळवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve: x/2 − x/3 = 2.",
+      "choices": [
+        "2",
+        "10",
+        "12",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "Common denominator 6: 3x/6 − 2x/6 = x/6 = 2, so x = 12. Check: 6 − 4 = 2 ✓. 6 mistakes x/6 = 2 for x = 6.",
+      "checkExpr": "2*6",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: x/2 − x/3 = 2।",
+          "choices": [
+            "2",
+            "10",
+            "12",
+            "6"
+          ],
+          "solution": "समान हर 6: 3x/6 − 2x/6 = x/6 = 2, अतः x = 12। जाँच: 6 − 4 = 2 ✓। 6 x/6 = 2 को x = 6 समझ बैठता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: x/2 − x/3 = 2.",
+          "choices": [
+            "2",
+            "10",
+            "12",
+            "6"
+          ],
+          "solution": "समान छेद 6: 3x/6 − 2x/6 = x/6 = 2, म्हणून x = 12. पडताळणी: 6 − 4 = 2 ✓. 6 x/6 = 2 ला x = 6 समजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two-fifths of a number is 8. What is the number?",
+      "choices": [
+        "16",
+        "40",
+        "20",
+        "3.2"
+      ],
+      "answerIndex": 2,
+      "solution": "If 2/5 of it is 8, one fifth is 4 and the whole is 20. 3.2 takes 2/5 OF 8 — the question runs the other way.",
+      "checkExpr": "8*5/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी संख्या का दो-पाँचवाँ 8 है। संख्या क्या है?",
+          "choices": [
+            "16",
+            "40",
+            "20",
+            "3.2"
+          ],
+          "solution": "यदि उसका 2/5 है 8, तो पाँचवाँ 4 और पूरी संख्या 20। 3.2 उलटे 8 का 2/5 निकाल लेता है — सवाल दूसरी दिशा में चलता है।"
+        },
+        "mr": {
+          "stem": "एका संख्येचा दोन-पंचमांश 8 आहे. संख्या कोणती?",
+          "choices": [
+            "16",
+            "40",
+            "20",
+            "3.2"
+          ],
+          "solution": "त्याचा 2/5 म्हणजे 8, तर पंचमांश 4 आणि पूर्ण संख्या 20. 3.2 उलटे 8 चा 2/5 काढतो — प्रश्न दुसऱ्या दिशेने चालतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: 2(x − 1) + 3 = x + 6.",
+      "choices": [
+        "3",
+        "5",
+        "7",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Open the bracket: 2x − 2 + 3 = 2x + 1, so 2x + 1 = x + 6 gives x = 5. 7 turns −2 into +2 when opening.",
+      "checkExpr": "6-1",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 2(x − 1) + 3 = x + 6।",
+          "choices": [
+            "3",
+            "5",
+            "7",
+            "4"
+          ],
+          "solution": "कोष्ठक खोलिए: 2x − 2 + 3 = 2x + 1, अतः 2x + 1 = x + 6 से x = 5। 7 खोलते समय −2 को +2 बना देता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 2(x − 1) + 3 = x + 6.",
+          "choices": [
+            "3",
+            "5",
+            "7",
+            "4"
+          ],
+          "solution": "कंस उघडा: 2x − 2 + 3 = 2x + 1, म्हणून 2x + 1 = x + 6 मधून x = 5. 7 उघडताना −2 चे +2 करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Three consecutive EVEN numbers add up to 54. What is the largest of them?",
+      "choices": [
+        "20",
+        "16",
+        "22",
+        "18"
+      ],
+      "answerIndex": 0,
+      "solution": "The middle one is 54 ÷ 3 = 18, so the three are 16, 18, 20 — largest 20. Even neighbours stand 2 apart, not 1.",
+      "checkExpr": "54/3+2",
+      "translations": {
+        "hi": {
+          "stem": "तीन क्रमागत सम संख्याओं का योग 54 है। उनमें सबसे बड़ी कौन-सी?",
+          "choices": [
+            "20",
+            "16",
+            "22",
+            "18"
+          ],
+          "solution": "बीच वाली 54 ÷ 3 = 18, अतः तीनों 16, 18, 20 — सबसे बड़ी 20। सम पड़ोसी 2 की दूरी पर खड़े होते हैं, 1 की नहीं।"
+        },
+        "mr": {
+          "stem": "तीन क्रमागत सम संख्यांची बेरीज 54 आहे. त्यांतील सर्वांत मोठी कोणती?",
+          "choices": [
+            "20",
+            "16",
+            "22",
+            "18"
+          ],
+          "solution": "मधली 54 ÷ 3 = 18, म्हणून तिन्ही 16, 18, 20 — सर्वांत मोठी 20. सम शेजारी 2 च्या अंतरावर उभे असतात, 1 च्या नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: (2x + 1)/3 = 5.",
+      "choices": [
+        "7",
+        "15",
+        "8",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Triple first: 2x + 1 = 15, then 2x = 14 and x = 7. 15 stops at the tripling; 8 adds the 1 instead of removing it.",
+      "checkExpr": "(5*3-1)/2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: (2x + 1)/3 = 5।",
+          "choices": [
+            "7",
+            "15",
+            "8",
+            "4"
+          ],
+          "solution": "पहले तिगुना: 2x + 1 = 15, फिर 2x = 14 और x = 7। 15 तिगुने पर रुक जाता है; 8 एक हटाने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: (2x + 1)/3 = 5.",
+          "choices": [
+            "7",
+            "15",
+            "8",
+            "4"
+          ],
+          "solution": "आधी तिप्पट: 2x + 1 = 15, मग 2x = 14 आणि x = 7. 15 तिपटीवर थांबतो; 8 एक काढण्याऐवजी मिळवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Ravi's father is 26 years older than Ravi. In 3 years the father will be three times Ravi's age. How old is Ravi NOW?",
+      "choices": [
+        "8",
+        "5",
+        "13",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "In 3 years: (x + 26 + 3) = 3(x + 3), so x + 29 = 3x + 9 and 2x = 20 — Ravi is 10. Check: 39 = 3 × 13 ✓. 13 answers his age in three years.",
+      "checkExpr": "20/2",
+      "translations": {
+        "hi": {
+          "stem": "रवि के पिता रवि से 26 वर्ष बड़े हैं। 3 वर्ष बाद पिता रवि की उम्र के तीन गुने होंगे। रवि अभी कितने का है?",
+          "choices": [
+            "8",
+            "5",
+            "13",
+            "10"
+          ],
+          "solution": "3 वर्ष बाद: (x + 26 + 3) = 3(x + 3), अतः x + 29 = 3x + 9 और 2x = 20 — रवि 10 का। जाँच: 39 = 3 × 13 ✓। 13 तीन वर्ष बाद की उम्र बताता है।"
+        },
+        "mr": {
+          "stem": "रवीचे वडील रवीहून 26 वर्षांनी मोठे आहेत. 3 वर्षांनी वडील रवीच्या वयाच्या तिप्पट असतील. रवी आता किती वर्षांचा?",
+          "choices": [
+            "8",
+            "5",
+            "13",
+            "10"
+          ],
+          "solution": "3 वर्षांनी: (x + 26 + 3) = 3(x + 3), म्हणून x + 29 = 3x + 9 आणि 2x = 20 — रवी 10 चा. पडताळणी: 39 = 3 × 13 ✓. 13 तीन वर्षांनंतरचे वय सांगतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A two-digit number's digits add to 9, and reversing the digits DECREASES the number by 27. What is the number?",
+      "choices": [
+        "54",
+        "36",
+        "63",
+        "72"
+      ],
+      "answerIndex": 2,
+      "solution": "With digits a + b = 9 and (10a + b) − (10b + a) = 27, we get 9(a − b) = 27, so a − b = 3: digits 6 and 3, number 63. 36 is its own reverse — the DECREASED one.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो अंकों की संख्या के अंकों का योग 9 है, और अंक पलटने पर संख्या 27 घट जाती है। संख्या क्या है?",
+          "choices": [
+            "54",
+            "36",
+            "63",
+            "72"
+          ],
+          "solution": "अंक a + b = 9 और (10a + b) − (10b + a) = 27 से 9(a − b) = 27, अतः a − b = 3: अंक 6 और 3, संख्या 63। 36 उसका ही पलटा रूप है — घटा हुआ वाला।"
+        },
+        "mr": {
+          "stem": "दोन अंकी संख्येच्या अंकांची बेरीज 9 आहे, आणि अंक उलटवल्यास संख्या 27 ने घटते. संख्या कोणती?",
+          "choices": [
+            "54",
+            "36",
+            "63",
+            "72"
+          ],
+          "solution": "अंक a + b = 9 आणि (10a + b) − (10b + a) = 27 मधून 9(a − b) = 27, म्हणून a − b = 3: अंक 6 आणि 3, संख्या 63. 36 हे त्याचेच उलटे रूप — घटलेले."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A rectangle's length exceeds its breadth by 7 cm, and its perimeter is 46 cm. Find the LENGTH.",
+      "choices": [
+        "15",
+        "16",
+        "11.5",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Half the perimeter is length + breadth = 23; with a gap of 7, the length is (23 + 7)/2 = 15 and breadth 8. 8 answers the breadth; 11.5 splits 23 equally.",
+      "checkExpr": "(46/2+7)/2",
+      "translations": {
+        "hi": {
+          "stem": "आयत की लंबाई चौड़ाई से 7 सेमी अधिक है, और परिमाप 46 सेमी। लंबाई निकालिए।",
+          "choices": [
+            "15",
+            "16",
+            "11.5",
+            "8"
+          ],
+          "solution": "आधा परिमाप = लंबाई + चौड़ाई = 23; अंतर 7 के साथ लंबाई (23 + 7)/2 = 15 और चौड़ाई 8। 8 चौड़ाई का उत्तर है; 11.5 तेईस को बराबर बाँट देता है।"
+        },
+        "mr": {
+          "stem": "आयताची लांबी रुंदीहून 7 सेमी जास्त आहे, आणि परिमिती 46 सेमी. लांबी काढा.",
+          "choices": [
+            "15",
+            "16",
+            "11.5",
+            "8"
+          ],
+          "solution": "अर्धी परिमिती = लांबी + रुंदी = 23; 7 च्या फरकाने लांबी (23 + 7)/2 = 15 आणि रुंदी 8. 8 रुंदीचे उत्तर; 11.5 तेविसाला सारखे वाटतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Solve: (3x − 2)/(2x + 3) = 1.",
+      "choices": [
+        "1",
+        "0.2",
+        "-5",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "A fraction equals 1 only when top equals bottom: 3x − 2 = 2x + 3, so x = 5. Check: 13/13 = 1 ✓.",
+      "checkExpr": "3+2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: (3x − 2)/(2x + 3) = 1।",
+          "choices": [
+            "1",
+            "0.2",
+            "-5",
+            "5"
+          ],
+          "solution": "भिन्न 1 तभी होती है जब अंश हर के बराबर हो: 3x − 2 = 2x + 3, अतः x = 5। जाँच: 13/13 = 1 ✓।"
+        },
+        "mr": {
+          "stem": "सोडवा: (3x − 2)/(2x + 3) = 1.",
+          "choices": [
+            "1",
+            "0.2",
+            "-5",
+            "5"
+          ],
+          "solution": "अपूर्णांक 1 तेव्हाच होतो जेव्हा अंश छेदाइतका: 3x − 2 = 2x + 3, म्हणून x = 5. पडताळणी: 13/13 = 1 ✓."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A purse holds ₹5 and ₹10 notes — 20 notes in all, worth ₹125. How many ₹10 notes are there?",
+      "choices": [
+        "5",
+        "12.5",
+        "10",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "If all 20 were ₹5 notes they'd make ₹100; the extra ₹25 comes from swapping ₹5s for ₹10s at ₹5 a swap: 25 ÷ 5 = 5 tens. Check: 5×10 + 15×5 = 125 ✓.",
+      "checkExpr": "(125-100)/5",
+      "translations": {
+        "hi": {
+          "stem": "बटुए में ₹5 और ₹10 के नोट हैं — कुल 20 नोट, ₹125 के। ₹10 के कितने नोट हैं?",
+          "choices": [
+            "5",
+            "12.5",
+            "10",
+            "15"
+          ],
+          "solution": "बीसों ₹5 के होते तो ₹100 बनते; ऊपर के ₹25 हर अदला-बदली पर ₹5 जोड़ने से आए: 25 ÷ 5 = 5 दहाई नोट। जाँच: 5×10 + 15×5 = 125 ✓।"
+        },
+        "mr": {
+          "stem": "पाकिटात ₹5 आणि ₹10 च्या नोटा आहेत — एकूण 20 नोटा, ₹125 च्या. ₹10 च्या किती नोटा?",
+          "choices": [
+            "5",
+            "12.5",
+            "10",
+            "15"
+          ],
+          "solution": "विसाही ₹5 च्या असत्या तर ₹100 झाले असते; वरचे ₹25 प्रत्येक अदलाबदलीत ₹5 जोडून आले: 25 ÷ 5 = 5 दहाच्या नोटा. पडताळणी: 5×10 + 15×5 = 125 ✓."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A fraction's denominator is 2 more than its numerator. Add 3 to both, and the fraction becomes 3/4. What was the original NUMERATOR?",
+      "choices": [
+        "6",
+        "3",
+        "5",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "(n + 3)/(n + 5) = 3/4 cross-multiplies to 4n + 12 = 3n + 15, so n = 3: the fraction 3/5 becomes 6/8 = 3/4 ✓. 5 answers the denominator.",
+      "checkExpr": "15-12",
+      "translations": {
+        "hi": {
+          "stem": "भिन्न का हर उसके अंश से 2 अधिक है। दोनों में 3 जोड़ने पर भिन्न 3/4 बन जाती है। मूल अंश क्या था?",
+          "choices": [
+            "6",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "(n + 3)/(n + 5) = 3/4 का तिर्यक् गुणन: 4n + 12 = 3n + 15, अतः n = 3: भिन्न 3/5 बनती है 6/8 = 3/4 ✓। 5 हर का उत्तर है।"
+        },
+        "mr": {
+          "stem": "अपूर्णांकाचा छेद अंशाहून 2 ने मोठा आहे. दोन्हींत 3 मिळवल्यास अपूर्णांक 3/4 होतो. मूळ अंश काय होता?",
+          "choices": [
+            "6",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "(n + 3)/(n + 5) = 3/4 चा तिर्यक गुणाकार: 4n + 12 = 3n + 15, म्हणून n = 3: अपूर्णांक 3/5 होतो 6/8 = 3/4 ✓. 5 छेदाचे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Multiplying a number by 4 and adding 12 gives the same result as multiplying it by 6 and subtracting 2. Find the number.",
+      "choices": [
+        "14",
+        "5",
+        "3.5",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "4x + 12 = 6x − 2 gives 14 = 2x, so x = 7. Check both machines: 4×7+12 = 40 and 6×7−2 = 40 ✓ — one number, two recipes, same dish.",
+      "checkExpr": "14/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी संख्या को 4 से गुणा कर 12 जोड़ने पर वही मिलता है जो 6 से गुणा कर 2 घटाने पर। संख्या निकालिए।",
+          "choices": [
+            "14",
+            "5",
+            "3.5",
+            "7"
+          ],
+          "solution": "4x + 12 = 6x − 2 से 14 = 2x, अतः x = 7। दोनों मशीनें जाँचिए: 4×7+12 = 40 और 6×7−2 = 40 ✓ — एक संख्या, दो विधियाँ, एक ही पकवान।"
+        },
+        "mr": {
+          "stem": "एका संख्येला 4 ने गुणून 12 मिळवल्यास तेच येते जे 6 ने गुणून 2 वजा केल्यावर. संख्या काढा.",
+          "choices": [
+            "14",
+            "5",
+            "3.5",
+            "7"
+          ],
+          "solution": "4x + 12 = 6x − 2 मधून 14 = 2x, म्हणून x = 7. दोन्ही यंत्रे तपासा: 4×7+12 = 40 आणि 6×7−2 = 40 ✓ — एक संख्या, दोन कृती, एकच पदार्थ."
+        }
+      }
+    }
+  ]
+}

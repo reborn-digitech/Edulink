@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 6 — Squares and Square Roots",
+  "name": "Squares and Square Roots",
+  "slug": "maths-8-squares-square-roots",
+  "summary": "Primes paired into roots, odd numbers stacking into squares, a garden measured backwards — and 2026 convicted by its neighbourhood without a single factor taken.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "वर्ग और वर्गमूल",
+      "summary": "जोड़ों में बँधे अभाज्य, वर्गों में चढ़ती विषम संख्याएँ, उल्टा नपा बग़ीचा — और 2026, जिसे उसके पड़ोस ने बिना एक गुणनखंड लिए दोषी ठहरा दिया।"
+    },
+    "mr": {
+      "name": "वर्ग आणि वर्गमूळ",
+      "summary": "जोड्यांत बांधलेल्या मूळ संख्या, वर्गांत चढणाऱ्या विषम संख्या, उलटी मोजलेली बाग — आणि 2026, ज्याला त्याच्या शेजाराने एकही अवयव न घेता दोषी ठरवले."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 15²?",
+      "choices": [
+        "30",
+        "125",
+        "255",
+        "225"
+      ],
+      "answerIndex": 3,
+      "solution": "15 × 15 = 225. 30 doubles instead of squaring — the classic first slip of the chapter.",
+      "checkExpr": "15*15",
+      "translations": {
+        "hi": {
+          "stem": "15² कितना है?",
+          "choices": [
+            "30",
+            "125",
+            "255",
+            "225"
+          ],
+          "solution": "15 × 15 = 225। 30 वर्ग की जगह दुगुना करता है — अध्याय की पहली मशहूर चूक।"
+        },
+        "mr": {
+          "stem": "15² किती?",
+          "choices": [
+            "30",
+            "125",
+            "255",
+            "225"
+          ],
+          "solution": "15 × 15 = 225. 30 वर्गाऐवजी दुप्पट करतो — प्रकरणातली पहिली प्रसिद्ध चूक."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is √81?",
+      "choices": [
+        "40.5",
+        "8",
+        "18",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "9 × 9 = 81, so the root is 9. 40.5 halves the number — a square root undoes squaring, not doubling.",
+      "checkExpr": "81/9",
+      "translations": {
+        "hi": {
+          "stem": "√81 कितना है?",
+          "choices": [
+            "40.5",
+            "8",
+            "18",
+            "9"
+          ],
+          "solution": "9 × 9 = 81, अतः मूल 9। 40.5 संख्या को आधा करता है — वर्गमूल वर्ग को उलटता है, दुगुने को नहीं।"
+        },
+        "mr": {
+          "stem": "√81 किती?",
+          "choices": [
+            "40.5",
+            "8",
+            "18",
+            "9"
+          ],
+          "solution": "9 × 9 = 81, म्हणून मूळ 9. 40.5 संख्या निम्मी करतो — वर्गमूळ वर्ग उलटवते, दुपटीला नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the UNIT digit of 34²?",
+      "choices": [
+        "6",
+        "4",
+        "8",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Only the unit digit matters: 4² = 16, so the answer ends in 6. Squares can end only in 0, 1, 4, 5, 6 or 9.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "34² का इकाई अंक क्या है?",
+          "choices": [
+            "6",
+            "4",
+            "8",
+            "2"
+          ],
+          "solution": "केवल इकाई अंक मायने रखता है: 4² = 16, अतः उत्तर 6 पर ख़त्म। वर्ग केवल 0, 1, 4, 5, 6 या 9 पर ही ख़त्म हो सकते हैं।"
+        },
+        "mr": {
+          "stem": "34² चा एकक अंक काय?",
+          "choices": [
+            "6",
+            "4",
+            "8",
+            "2"
+          ],
+          "solution": "फक्त एकक अंक महत्त्वाचा: 4² = 16, म्हणून उत्तर 6 वर संपते. वर्ग फक्त 0, 1, 4, 5, 6 वा 9 वरच संपू शकतात."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "√(49/64) = ▢/8. What is the numerator in the box?",
+      "choices": [
+        "6",
+        "8",
+        "49",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "Root the top and bottom separately: √49 = 7 over √64 = 8. 49 forgets to take the root of the numerator at all.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "√(49/64) = ▢/8। रिक्त में अंश क्या आएगा?",
+          "choices": [
+            "6",
+            "8",
+            "49",
+            "7"
+          ],
+          "solution": "ऊपर-नीचे अलग-अलग मूल लीजिए: √49 = 7 बटा √64 = 8। 49 अंश का मूल लेना ही भूल जाता है।"
+        },
+        "mr": {
+          "stem": "√(49/64) = ▢/8. रिकाम्यात अंश काय येईल?",
+          "choices": [
+            "6",
+            "8",
+            "49",
+            "7"
+          ],
+          "solution": "वर-खाली वेगवेगळे मूळ घ्या: √49 = 7 भागिले √64 = 8. 49 अंशाचे मूळ घ्यायलाच विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many non-square numbers lie strictly between 25² and 26²?",
+      "choices": [
+        "51",
+        "50",
+        "49",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "Between n² and (n+1)² lie exactly 2n numbers, none of them squares: 2 × 25 = 50. 51 counts one endpoint by mistake.",
+      "checkExpr": "2*25",
+      "translations": {
+        "hi": {
+          "stem": "25² और 26² के बीच (दोनों छोड़कर) कितनी अवर्ग संख्याएँ हैं?",
+          "choices": [
+            "51",
+            "50",
+            "49",
+            "25"
+          ],
+          "solution": "n² और (n+1)² के बीच ठीक 2n संख्याएँ होती हैं, कोई वर्ग नहीं: 2 × 25 = 50। 51 ग़लती से एक सिरा गिन लेता है।"
+        },
+        "mr": {
+          "stem": "25² आणि 26² च्या मध्ये (दोन्ही वगळून) किती अवर्ग संख्या आहेत?",
+          "choices": [
+            "51",
+            "50",
+            "49",
+            "25"
+          ],
+          "solution": "n² आणि (n+1)² च्या मध्ये नेमक्या 2n संख्या असतात, एकही वर्ग नाही: 2 × 25 = 50. 51 चुकून एक टोक मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 12² − 11²?",
+      "choices": [
+        "1",
+        "23",
+        "24",
+        "22"
+      ],
+      "answerIndex": 1,
+      "solution": "Consecutive squares differ by their SUM: 12 + 11 = 23. Check: 144 − 121 = 23 ✓. 1 subtracts the bases instead.",
+      "checkExpr": "12*12-11*11",
+      "translations": {
+        "hi": {
+          "stem": "12² − 11² कितना है?",
+          "choices": [
+            "1",
+            "23",
+            "24",
+            "22"
+          ],
+          "solution": "क्रमागत वर्गों का अंतर उनका योग होता है: 12 + 11 = 23। जाँच: 144 − 121 = 23 ✓। 1 उलटे आधार घटा देता है।"
+        },
+        "mr": {
+          "stem": "12² − 11² किती?",
+          "choices": [
+            "1",
+            "23",
+            "24",
+            "22"
+          ],
+          "solution": "क्रमागत वर्गांचा फरक त्यांची बेरीज असतो: 12 + 11 = 23. पडताळणी: 144 − 121 = 23 ✓. 1 उलट पाये वजा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "1296 = 2⁴ × 3⁴. Use the prime factors to find √1296.",
+      "choices": [
+        "46",
+        "34",
+        "24",
+        "36"
+      ],
+      "answerIndex": 3,
+      "solution": "Halve each exponent: √1296 = 2² × 3² = 4 × 9 = 36. Check: 36² = 1296 ✓ — pairing primes IS taking the root.",
+      "checkExpr": "4*9",
+      "translations": {
+        "hi": {
+          "stem": "1296 = 2⁴ × 3⁴। अभाज्य गुणनखंडों से √1296 निकालिए।",
+          "choices": [
+            "46",
+            "34",
+            "24",
+            "36"
+          ],
+          "solution": "हर घात आधी कीजिए: √1296 = 2² × 3² = 4 × 9 = 36। जाँच: 36² = 1296 ✓ — अभाज्यों की जोड़ी बनाना ही मूल लेना है।"
+        },
+        "mr": {
+          "stem": "1296 = 2⁴ × 3⁴. मूळ अवयवांनी √1296 काढा.",
+          "choices": [
+            "46",
+            "34",
+            "24",
+            "36"
+          ],
+          "solution": "प्रत्येक घात निम्मी करा: √1296 = 2² × 3² = 4 × 9 = 36. पडताळणी: 36² = 1296 ✓ — मूळांच्या जोड्या करणे हेच मूळ काढणे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The triplet recipe 2m, m² − 1, m² + 1 with m = 4 builds a Pythagorean triplet. What is its LARGEST member?",
+      "choices": [
+        "15",
+        "17",
+        "9",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "m = 4 gives 8, 15, 17 — and 8² + 15² = 64 + 225 = 289 = 17² ✓. The largest, m² + 1, is always the hypotenuse.",
+      "checkExpr": "4*4+1",
+      "translations": {
+        "hi": {
+          "stem": "त्रिक-विधि 2m, m² − 1, m² + 1 में m = 4 रखने पर पाइथागोरसी त्रिक बनता है। उसका सबसे बड़ा सदस्य कौन-सा?",
+          "choices": [
+            "15",
+            "17",
+            "9",
+            "16"
+          ],
+          "solution": "m = 4 से 8, 15, 17 — और 8² + 15² = 64 + 225 = 289 = 17² ✓। सबसे बड़ा, m² + 1, हमेशा कर्ण होता है।"
+        },
+        "mr": {
+          "stem": "त्रिकूट-कृती 2m, m² − 1, m² + 1 मध्ये m = 4 ठेवल्यास पायथागोरसी त्रिकूट बनते. त्याचा सर्वांत मोठा सदस्य कोणता?",
+          "choices": [
+            "15",
+            "17",
+            "9",
+            "16"
+          ],
+          "solution": "m = 4 ने 8, 15, 17 — आणि 8² + 15² = 64 + 225 = 289 = 17² ✓. सर्वांत मोठा, m² + 1, नेहमी कर्ण असतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "72 = 2³ × 3². By what SMALLEST number must 72 be multiplied to become a perfect square?",
+      "choices": [
+        "8",
+        "3",
+        "2",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "The 3² is already paired; the 2³ has one 2 unpartnered — supply it: 72 × 2 = 144 = 12². Squares demand every prime in pairs.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "72 = 2³ × 3²। 72 को किस छोटी-से-छोटी संख्या से गुणा करें कि वह पूर्ण वर्ग बन जाए?",
+          "choices": [
+            "8",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "3² की जोड़ी बनी है; 2³ में एक 2 अकेला है — उसे साथी दीजिए: 72 × 2 = 144 = 12²। वर्ग हर अभाज्य को जोड़े में माँगते हैं।"
+        },
+        "mr": {
+          "stem": "72 = 2³ × 3². 72 ला कोणत्या लहानात लहान संख्येने गुणले असता तो पूर्ण वर्ग होईल?",
+          "choices": [
+            "8",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "3² ची जोडी झाली आहे; 2³ मध्ये एक 2 एकटा — त्याला जोडीदार द्या: 72 × 2 = 144 = 12². वर्ग प्रत्येक मूळ संख्या जोडीत मागतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is √6400?",
+      "choices": [
+        "800",
+        "80",
+        "320",
+        "40"
+      ],
+      "answerIndex": 1,
+      "solution": "6400 = 64 × 100, so its root is 8 × 10 = 80. 800 keeps one zero too many — each PAIR of zeros yields one zero.",
+      "checkExpr": "6400/80",
+      "translations": {
+        "hi": {
+          "stem": "√6400 कितना है?",
+          "choices": [
+            "800",
+            "80",
+            "320",
+            "40"
+          ],
+          "solution": "6400 = 64 × 100, अतः मूल 8 × 10 = 80। 800 एक शून्य ज़्यादा रखता है — शून्यों की हर जोड़ी एक शून्य देती है।"
+        },
+        "mr": {
+          "stem": "√6400 किती?",
+          "choices": [
+            "800",
+            "80",
+            "320",
+            "40"
+          ],
+          "solution": "6400 = 64 × 100, म्हणून मूळ 8 × 10 = 80. 800 एक शून्य जास्त ठेवतो — शून्यांची प्रत्येक जोडी एक शून्य देते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A square garden has area 2025 m². How long is its side?",
+      "choices": [
+        "55",
+        "45",
+        "35",
+        "405"
+      ],
+      "answerIndex": 1,
+      "solution": "Side = √2025 = 45, since 45² = 2025. Estimate first: 40² = 1600 and 50² = 2500 bracket it, and the 5-ending seals 45.",
+      "checkExpr": "2025/45",
+      "translations": {
+        "hi": {
+          "stem": "एक वर्गाकार बग़ीचे का क्षेत्रफल 2025 वर्ग मीटर है। उसकी भुजा कितनी लंबी है?",
+          "choices": [
+            "55",
+            "45",
+            "35",
+            "405"
+          ],
+          "solution": "भुजा = √2025 = 45, क्योंकि 45² = 2025। पहले अनुमान: 40² = 1600 और 50² = 2500 उसे घेरते हैं, और 5 का अंत 45 पक्का करता है।"
+        },
+        "mr": {
+          "stem": "एका चौरस बागेचे क्षेत्रफळ 2025 चौ. मीटर आहे. तिची बाजू किती लांब?",
+          "choices": [
+            "55",
+            "45",
+            "35",
+            "405"
+          ],
+          "solution": "बाजू = √2025 = 45, कारण 45² = 2025. आधी अंदाज: 40² = 1600 आणि 50² = 2500 त्याला वेढतात, आणि 5 चा शेवट 45 पक्का करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Add the first ten odd numbers: 1 + 3 + 5 + … + 19.",
+      "choices": [
+        "55",
+        "110",
+        "100",
+        "90"
+      ],
+      "answerIndex": 2,
+      "solution": "The first n odd numbers always total n²: here 10² = 100. 55 sums 1 to 10 instead — the even numbers sneaked in.",
+      "checkExpr": "10*10",
+      "translations": {
+        "hi": {
+          "stem": "पहली दस विषम संख्याएँ जोड़िए: 1 + 3 + 5 + … + 19।",
+          "choices": [
+            "55",
+            "110",
+            "100",
+            "90"
+          ],
+          "solution": "पहली n विषम संख्याओं का योग सदा n²: यहाँ 10² = 100। 55 उलटे 1 से 10 जोड़ देता है — सम संख्याएँ चुपके से घुस गईं।"
+        },
+        "mr": {
+          "stem": "पहिल्या दहा विषम संख्या जोडा: 1 + 3 + 5 + … + 19.",
+          "choices": [
+            "55",
+            "110",
+            "100",
+            "90"
+          ],
+          "solution": "पहिल्या n विषम संख्यांची बेरीज नेहमी n²: इथे 10² = 100. 55 उलट 1 ते 10 जोडतो — सम संख्या हळूच शिरल्या."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A general arranges 500 soldiers into the largest possible solid square. How many soldiers are LEFT OVER?",
+      "choices": [
+        "25",
+        "6",
+        "16",
+        "22"
+      ],
+      "answerIndex": 2,
+      "solution": "22² = 484 fits inside 500 but 23² = 529 does not: the square takes 484 and leaves 500 − 484 = 16. 22 answers the row length, not the remainder.",
+      "checkExpr": "500-22*22",
+      "translations": {
+        "hi": {
+          "stem": "एक सेनापति 500 सैनिकों को यथासंभव बड़े ठोस वर्ग में सजाता है। कितने सैनिक बच जाते हैं?",
+          "choices": [
+            "25",
+            "6",
+            "16",
+            "22"
+          ],
+          "solution": "22² = 484 500 में समाता है पर 23² = 529 नहीं: वर्ग 484 लेता है और 500 − 484 = 16 छोड़ता है। 22 पंक्ति की लंबाई बताता है, शेष नहीं।"
+        },
+        "mr": {
+          "stem": "एक सेनापती 500 सैनिकांना शक्य तितक्या मोठ्या भरीव चौरसात मांडतो. किती सैनिक उरतात?",
+          "choices": [
+            "25",
+            "6",
+            "16",
+            "22"
+          ],
+          "solution": "22² = 484 500 मध्ये मावतो पण 23² = 529 नाही: चौरस 484 घेतो आणि 500 − 484 = 16 उरवतो. 22 रांगेची लांबी सांगतो, बाकी नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is √0.0081?",
+      "choices": [
+        "0.9",
+        "0.81",
+        "0.09",
+        "0.003"
+      ],
+      "answerIndex": 2,
+      "solution": "0.0081 = 81/10000, so the root is 9/100 = 0.09. Check: 0.09 × 0.09 = 0.0081 ✓. 0.9 forgets that four decimal places root to two.",
+      "checkExpr": "9/100",
+      "translations": {
+        "hi": {
+          "stem": "√0.0081 कितना है?",
+          "choices": [
+            "0.9",
+            "0.81",
+            "0.09",
+            "0.003"
+          ],
+          "solution": "0.0081 = 81/10000, अतः मूल 9/100 = 0.09। जाँच: 0.09 × 0.09 = 0.0081 ✓। 0.9 भूल जाता है कि चार दशमलव स्थान मूल में दो बनते हैं।"
+        },
+        "mr": {
+          "stem": "√0.0081 किती?",
+          "choices": [
+            "0.9",
+            "0.81",
+            "0.09",
+            "0.003"
+          ],
+          "solution": "0.0081 = 81/10000, म्हणून मूळ 9/100 = 0.09. पडताळणी: 0.09 × 0.09 = 0.0081 ✓. 0.9 विसरतो की चार दशांश स्थाने मुळात दोन होतात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Could 2026 be a perfect square? Compute 45² and let the neighbourhood decide.",
+      "choices": [
+        "1925",
+        "2026",
+        "2025",
+        "2020"
+      ],
+      "answerIndex": 2,
+      "solution": "45² = 2025 and 46² = 2116: 2026 falls strictly between consecutive squares, so it cannot be one. A number's neighbourhood convicts it without any factoring.",
+      "checkExpr": "45*45",
+      "translations": {
+        "hi": {
+          "stem": "क्या 2026 पूर्ण वर्ग हो सकता है? 45² निकालिए और पड़ोस को ही फ़ैसला करने दीजिए।",
+          "choices": [
+            "1925",
+            "2026",
+            "2025",
+            "2020"
+          ],
+          "solution": "45² = 2025 और 46² = 2116: 2026 क्रमागत वर्गों के ठीक बीच पड़ता है, अतः वर्ग हो ही नहीं सकता। संख्या का पड़ोस बिना गुणनखंड के ही उसे दोषी ठहरा देता है।"
+        },
+        "mr": {
+          "stem": "2026 पूर्ण वर्ग असू शकेल का? 45² काढा आणि शेजारालाच निर्णय करू द्या.",
+          "choices": [
+            "1925",
+            "2026",
+            "2025",
+            "2020"
+          ],
+          "solution": "45² = 2025 आणि 46² = 2116: 2026 क्रमागत वर्गांच्या नेमके मध्ये पडतो, म्हणून वर्ग असूच शकत नाही. संख्येचा शेजार अवयवांशिवायच तिला दोषी ठरवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the LEAST number to subtract from 4000 so that a perfect square remains?",
+      "choices": [
+        "69",
+        "39",
+        "31",
+        "21"
+      ],
+      "answerIndex": 2,
+      "solution": "The largest square below 4000 is 63² = 3969 (64² = 4096 overshoots): subtract 4000 − 3969 = 31. Find the floor of the root first; the remainder is the answer.",
+      "checkExpr": "4000-63*63",
+      "translations": {
+        "hi": {
+          "stem": "4000 में से कम-से-कम कितना घटाएँ कि पूर्ण वर्ग बच जाए?",
+          "choices": [
+            "69",
+            "39",
+            "31",
+            "21"
+          ],
+          "solution": "4000 से नीचे का सबसे बड़ा वर्ग 63² = 3969 (64² = 4096 पार निकल जाता है): घटाइए 4000 − 3969 = 31। पहले मूल का फ़र्श खोजिए; शेष ही उत्तर है।"
+        },
+        "mr": {
+          "stem": "4000 मधून किमान किती वजा केले असता पूर्ण वर्ग उरेल?",
+          "choices": [
+            "69",
+            "39",
+            "31",
+            "21"
+          ],
+          "solution": "4000 खालचा सर्वांत मोठा वर्ग 63² = 3969 (64² = 4096 ओलांडतो): वजा करा 4000 − 3969 = 31. आधी मुळाचा तळ शोधा; बाकी हेच उत्तर."
+        }
+      }
+    }
+  ]
+}

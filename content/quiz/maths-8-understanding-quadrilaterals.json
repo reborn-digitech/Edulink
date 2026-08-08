@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 3 — Understanding Quadrilaterals",
+  "name": "Understanding Quadrilaterals",
+  "slug": "maths-8-understanding-quadrilaterals",
+  "summary": "Angle sums by triangle-cutting, the ever-360 exterior walk, parallelogram families and their diagonals — and the fraction 7.2 refuting a polygon into nonexistence.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "चतुर्भुजों की समझ",
+      "summary": "त्रिभुज काटकर मिले कोण-योग, सदा-360 की बाहरी परिक्रमा, समांतर चतुर्भुज परिवार और उनके विकर्ण — और 7.2 की भिन्न जो एक बहुभुज को अस्तित्व से ही ख़ारिज कर देती है।"
+    },
+    "mr": {
+      "name": "चौकोनांची समज",
+      "summary": "त्रिकोण कापून मिळालेल्या कोन-बेरजा, नेहमी-360 ची बाह्य फेरी, समांतरभुज कुटुंबे आणि त्यांचे कर्ण — आणि एका बहुभुजाला अस्तित्वातूनच बाद करणारा 7.2 चा अपूर्णांक."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the sum of the interior angles of ANY quadrilateral?",
+      "choices": [
+        "360°",
+        "720°",
+        "540°",
+        "180°"
+      ],
+      "answerIndex": 0,
+      "solution": "A diagonal splits it into two triangles of 180° each: 2 × 180 = 360°. 180 counts only one of the triangles.",
+      "checkExpr": "(4-2)*180",
+      "translations": {
+        "hi": {
+          "stem": "किसी भी चतुर्भुज के अंतःकोणों का योग कितना होता है?",
+          "choices": [
+            "360°",
+            "720°",
+            "540°",
+            "180°"
+          ],
+          "solution": "एक विकर्ण उसे 180°-180° के दो त्रिभुजों में बाँटता है: 2 × 180 = 360°। 180 केवल एक त्रिभुज गिनता है।"
+        },
+        "mr": {
+          "stem": "कोणत्याही चौकोनाच्या आंतरकोनांची बेरीज किती असते?",
+          "choices": [
+            "360°",
+            "720°",
+            "540°",
+            "180°"
+          ],
+          "solution": "एक कर्ण त्याला 180°-180° च्या दोन त्रिकोणांत वाटतो: 2 × 180 = 360°. 180 फक्त एक त्रिकोण मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Join a quadrilateral's vertices in every possible way. How many of the joins are DIAGONALS rather than sides?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Each vertex reaches the ONE vertex not beside it: two such crossings in all. 4 counts the sides instead.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चतुर्भुज के शीर्षों को हर संभव तरीक़े से जोड़िए। कितने जोड़ भुजाएँ नहीं, विकर्ण हैं?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "हर शीर्ष अपने बग़ल में न बैठे इकलौते शीर्ष तक पहुँचता है: कुल ऐसे दो मिलन। 4 उलटे भुजाएँ गिन लेता है।"
+        },
+        "mr": {
+          "stem": "चौकोनाचे शिरोबिंदू प्रत्येक शक्य रीतीने जोडा. किती जोड बाजू नव्हे, कर्ण आहेत?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "प्रत्येक शिरोबिंदू शेजारी नसलेल्या एकाच शिरोबिंदूपर्यंत पोहोचतो: एकूण असे दोन. 4 उलट बाजू मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The exterior angles of any polygon, one at each vertex, always total how many degrees?",
+      "choices": [
+        "720°",
+        "90°",
+        "360°",
+        "180°"
+      ],
+      "answerIndex": 2,
+      "solution": "Walk once round the boundary and you turn through one full circle: 360°, whatever the number of sides.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी भी बहुभुज के बाह्य कोण, हर शीर्ष पर एक, हमेशा कितने डिग्री जोड़ते हैं?",
+          "choices": [
+            "720°",
+            "90°",
+            "360°",
+            "180°"
+          ],
+          "solution": "सीमा का एक चक्कर लगाइए और आप पूरा एक घेरा घूम जाते हैं: 360°, भुजाएँ चाहे जितनी हों।"
+        },
+        "mr": {
+          "stem": "कोणत्याही बहुभुजाचे बाह्यकोन, प्रत्येक शिरोबिंदूवर एक, नेहमी किती अंश होतात?",
+          "choices": [
+            "720°",
+            "90°",
+            "360°",
+            "180°"
+          ],
+          "solution": "सीमेला एक फेरी मारा आणि तुम्ही पूर्ण एक वर्तुळ वळता: 360°, बाजू कितीही असोत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the interior angle sum of a pentagon?",
+      "choices": [
+        "360°",
+        "540°",
+        "900°",
+        "720°"
+      ],
+      "answerIndex": 1,
+      "solution": "(n − 2) × 180 with n = 5: three triangles' worth, 540°. 360 stops at the quadrilateral's sum.",
+      "checkExpr": "(5-2)*180",
+      "translations": {
+        "hi": {
+          "stem": "पंचभुज के अंतःकोणों का योग कितना होता है?",
+          "choices": [
+            "360°",
+            "540°",
+            "900°",
+            "720°"
+          ],
+          "solution": "(n − 2) × 180 में n = 5: तीन त्रिभुजों जितना, 540°। 360 चतुर्भुज के योग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "पंचकोनाच्या आंतरकोनांची बेरीज किती असते?",
+          "choices": [
+            "360°",
+            "540°",
+            "900°",
+            "720°"
+          ],
+          "solution": "(n − 2) × 180 मध्ये n = 5: तीन त्रिकोणांइतके, 540°. 360 चौकोनाच्या बेरजेवर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a parallelogram one angle measures 70°. What does the angle OPPOSITE it measure?",
+      "choices": [
+        "20°",
+        "70°",
+        "110°",
+        "140°"
+      ],
+      "answerIndex": 1,
+      "solution": "Opposite angles of a parallelogram are equal: 70°. 110 is the NEIGHBOUR's measure — adjacent, not opposite.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समांतर चतुर्भुज का एक कोण 70° है। उसके सम्मुख कोण की माप कितनी?",
+          "choices": [
+            "20°",
+            "70°",
+            "110°",
+            "140°"
+          ],
+          "solution": "समांतर चतुर्भुज के सम्मुख कोण बराबर होते हैं: 70°। 110 पड़ोसी की माप है — आसन्न, सम्मुख नहीं।"
+        },
+        "mr": {
+          "stem": "समांतरभुज चौकोनाचा एक कोन 70° आहे. त्याच्या समोरच्या कोनाचे माप किती?",
+          "choices": [
+            "20°",
+            "70°",
+            "110°",
+            "140°"
+          ],
+          "solution": "समांतरभुजाचे समोरचे कोन समान असतात: 70°. 110 हे शेजाऱ्याचे माप — लगतचा, समोरचा नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Adjacent angles of a parallelogram always sum to how many degrees?",
+      "choices": [
+        "180°",
+        "120°",
+        "360°",
+        "90°"
+      ],
+      "answerIndex": 0,
+      "solution": "The two sit between parallel sides, co-interior along the transversal: they total 180°. 360 is all four angles together.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समांतर चतुर्भुज के आसन्न कोणों का योग सदा कितने डिग्री होता है?",
+          "choices": [
+            "180°",
+            "120°",
+            "360°",
+            "90°"
+          ],
+          "solution": "दोनों समांतर भुजाओं के बीच, तिर्यक रेखा के एक ओर के अंतःकोण हैं: योग 180°। 360 चारों कोणों का कुल है।"
+        },
+        "mr": {
+          "stem": "समांतरभुज चौकोनाच्या लगतच्या कोनांची बेरीज नेहमी किती अंश असते?",
+          "choices": [
+            "180°",
+            "120°",
+            "360°",
+            "90°"
+          ],
+          "solution": "दोघे समांतर बाजूंच्या मध्ये, छेदिकेच्या एका बाजूचे आंतरकोन: बेरीज 180°. 360 म्हणजे चारही कोन मिळून."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Three angles of a quadrilateral are 80°, 95° and 100°. Find the fourth.",
+      "choices": [
+        "85°",
+        "75°",
+        "105°",
+        "95°"
+      ],
+      "answerIndex": 0,
+      "solution": "The four must total 360: the fourth is 360 − 275 = 85°. 105 subtracts from 380 — an arithmetic slip, not a geometry one.",
+      "checkExpr": "360-80-95-100",
+      "translations": {
+        "hi": {
+          "stem": "चतुर्भुज के तीन कोण 80°, 95° और 100° हैं। चौथा निकालिए।",
+          "choices": [
+            "85°",
+            "75°",
+            "105°",
+            "95°"
+          ],
+          "solution": "चारों का योग 360 होना है: चौथा 360 − 275 = 85°। 105 380 में से घटाता है — चूक अंकगणित की है, ज्यामिति की नहीं।"
+        },
+        "mr": {
+          "stem": "चौकोनाचे तीन कोन 80°, 95° आणि 100° आहेत. चौथा काढा.",
+          "choices": [
+            "85°",
+            "75°",
+            "105°",
+            "95°"
+          ],
+          "solution": "चौघांची बेरीज 360 हवी: चौथा 360 − 275 = 85°. 105 380 मधून वजा करतो — चूक अंकगणिताची, भूमितीची नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What does each interior angle of a REGULAR hexagon measure?",
+      "choices": [
+        "120°",
+        "108°",
+        "60°",
+        "135°"
+      ],
+      "answerIndex": 0,
+      "solution": "Sum (6 − 2) × 180 = 720 shared by 6 equal angles: 120° each. 108 belongs to the regular pentagon next door.",
+      "checkExpr": "(6-2)*180/6",
+      "translations": {
+        "hi": {
+          "stem": "सम षट्भुज का हर अंतःकोण कितने का होता है?",
+          "choices": [
+            "120°",
+            "108°",
+            "60°",
+            "135°"
+          ],
+          "solution": "योग (6 − 2) × 180 = 720, छह बराबर कोणों में बँटा: 120° प्रत्येक। 108 बग़ल के सम पंचभुज का है।"
+        },
+        "mr": {
+          "stem": "नियमित षट्कोनाचा प्रत्येक आंतरकोन किती अंशांचा असतो?",
+          "choices": [
+            "120°",
+            "108°",
+            "60°",
+            "135°"
+          ],
+          "solution": "बेरीज (6 − 2) × 180 = 720, सहा समान कोनांत वाटलेली: प्रत्येकी 120°. 108 शेजारच्या नियमित पंचकोनाचा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The diagonals of a rhombus always cross each other at which angle?",
+      "choices": [
+        "60°",
+        "90°",
+        "180°",
+        "45°"
+      ],
+      "answerIndex": 1,
+      "solution": "A rhombus's diagonals bisect each other at right angles: 90°, whatever its tilt. The rectangle's diagonals bisect but do NOT stay perpendicular.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समचतुर्भुज के विकर्ण सदा किस कोण पर एक-दूसरे को काटते हैं?",
+          "choices": [
+            "60°",
+            "90°",
+            "180°",
+            "45°"
+          ],
+          "solution": "समचतुर्भुज के विकर्ण एक-दूसरे को समकोण पर समद्विभाजित करते हैं: 90°, झुकाव जो भी हो। आयत के विकर्ण बाँटते तो हैं पर लंब नहीं रहते।"
+        },
+        "mr": {
+          "stem": "समभुज चौकोनाचे कर्ण नेहमी कोणत्या कोनात एकमेकांना छेदतात?",
+          "choices": [
+            "60°",
+            "90°",
+            "180°",
+            "45°"
+          ],
+          "solution": "समभुज चौकोनाचे कर्ण एकमेकांना काटकोनात दुभागतात: 90°, कल कोणताही असो. आयताचे कर्ण दुभागतात पण लंब राहत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The angles of a quadrilateral are in the ratio 1 : 2 : 3 : 4. What is the LARGEST angle?",
+      "choices": [
+        "120°",
+        "36°",
+        "108°",
+        "144°"
+      ],
+      "answerIndex": 3,
+      "solution": "Ten ratio-parts share 360°, so one part is 36 and the largest takes 4 × 36 = 144°. 36 stops at a single part.",
+      "checkExpr": "360*4/10",
+      "translations": {
+        "hi": {
+          "stem": "चतुर्भुज के कोण 1 : 2 : 3 : 4 के अनुपात में हैं। सबसे बड़ा कोण कितना?",
+          "choices": [
+            "120°",
+            "36°",
+            "108°",
+            "144°"
+          ],
+          "solution": "दस अनुपात-भाग 360° बाँटते हैं, एक भाग 36 और सबसे बड़ा 4 × 36 = 144°। 36 एक ही भाग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "चौकोनाचे कोन 1 : 2 : 3 : 4 या गुणोत्तरात आहेत. सर्वांत मोठा कोन किती?",
+          "choices": [
+            "120°",
+            "36°",
+            "108°",
+            "144°"
+          ],
+          "solution": "दहा गुणोत्तर-भाग 360° वाटतात, एक भाग 36 आणि सर्वांत मोठा 4 × 36 = 144°. 36 एकाच भागावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A regular polygon has each exterior angle equal to 45°. How many sides does it have?",
+      "choices": [
+        "45",
+        "6",
+        "8",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "The exterior angles always total 360, so sides = 360 ÷ 45 = 8: an octagon. The formula needs no interior-angle detour.",
+      "checkExpr": "360/45",
+      "translations": {
+        "hi": {
+          "stem": "एक सम बहुभुज का हर बाह्य कोण 45° है। उसकी कितनी भुजाएँ हैं?",
+          "choices": [
+            "45",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "बाह्य कोणों का योग सदा 360, अतः भुजाएँ = 360 ÷ 45 = 8: अष्टभुज। सूत्र को अंतःकोण के चक्कर की ज़रूरत नहीं।"
+        },
+        "mr": {
+          "stem": "एका नियमित बहुभुजाचा प्रत्येक बाह्यकोन 45° आहे. त्याला किती बाजू आहेत?",
+          "choices": [
+            "45",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "बाह्यकोनांची बेरीज नेहमी 360, म्हणून बाजू = 360 ÷ 45 = 8: अष्टकोन. सूत्राला आंतरकोनाच्या वळशाची गरज नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a parallelogram, one angle is 30° MORE than its neighbour. What is the larger angle?",
+      "choices": [
+        "75°",
+        "150°",
+        "105°",
+        "120°"
+      ],
+      "answerIndex": 2,
+      "solution": "Neighbours total 180: x + (x + 30) = 180 gives 75 and 105 — the larger is 105°. 75 answers the smaller partner.",
+      "checkExpr": "(180+30)/2",
+      "translations": {
+        "hi": {
+          "stem": "समांतर चतुर्भुज में एक कोण अपने पड़ोसी से 30° अधिक है। बड़ा कोण कितना?",
+          "choices": [
+            "75°",
+            "150°",
+            "105°",
+            "120°"
+          ],
+          "solution": "पड़ोसियों का योग 180: x + (x + 30) = 180 से 75 और 105 — बड़ा 105°। 75 छोटे साथी का उत्तर है।"
+        },
+        "mr": {
+          "stem": "समांतरभुज चौकोनात एक कोन शेजाऱ्याहून 30° ने मोठा आहे. मोठा कोन किती?",
+          "choices": [
+            "75°",
+            "150°",
+            "105°",
+            "120°"
+          ],
+          "solution": "शेजाऱ्यांची बेरीज 180: x + (x + 30) = 180 मधून 75 आणि 105 — मोठा 105°. 75 लहान जोडीदाराचे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A parallelogram's diagonals measure 12 cm and 16 cm, and they bisect each other. How far from the crossing point is each END of the longer diagonal?",
+      "choices": [
+        "8",
+        "12",
+        "4",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Bisection halves each diagonal at the crossing: the 16 cm one splits into 8 + 8. 6 halves the WRONG diagonal.",
+      "checkExpr": "16/2",
+      "translations": {
+        "hi": {
+          "stem": "समांतर चतुर्भुज के विकर्ण 12 सेमी और 16 सेमी हैं, और वे एक-दूसरे को समद्विभाजित करते हैं। कटान-बिंदु से बड़े विकर्ण का हर सिरा कितनी दूर है?",
+          "choices": [
+            "8",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "समद्विभाजन कटान पर हर विकर्ण को आधा करता है: 16 सेमी वाला 8 + 8 में बँटता है। 6 ग़लत विकर्ण आधा करता है।"
+        },
+        "mr": {
+          "stem": "समांतरभुजाचे कर्ण 12 सेमी आणि 16 सेमी आहेत, आणि ते एकमेकांना दुभागतात. छेदबिंदूपासून मोठ्या कर्णाचे प्रत्येक टोक किती दूर?",
+          "choices": [
+            "8",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "दुभाजन छेदावर प्रत्येक कर्ण अर्धा करते: 16 सेमीचा 8 + 8 मध्ये वाटला जातो. 6 चुकीचा कर्ण अर्धा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Each interior angle of a regular polygon measures 150°. How many sides has it?",
+      "choices": [
+        "10",
+        "8",
+        "15",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Each exterior angle is 180 − 150 = 30°, and 360 ÷ 30 = 12 sides. The exterior-angle route beats wrestling the interior formula.",
+      "checkExpr": "360/(180-150)",
+      "translations": {
+        "hi": {
+          "stem": "एक सम बहुभुज का हर अंतःकोण 150° है। उसकी कितनी भुजाएँ हैं?",
+          "choices": [
+            "10",
+            "8",
+            "15",
+            "12"
+          ],
+          "solution": "हर बाह्य कोण 180 − 150 = 30°, और 360 ÷ 30 = 12 भुजाएँ। बाह्य कोण की राह अंतःकोण के सूत्र से कुश्ती लड़ने से बेहतर है।"
+        },
+        "mr": {
+          "stem": "एका नियमित बहुभुजाचा प्रत्येक आंतरकोन 150° आहे. त्याला किती बाजू?",
+          "choices": [
+            "10",
+            "8",
+            "15",
+            "12"
+          ],
+          "solution": "प्रत्येक बाह्यकोन 180 − 150 = 30°, आणि 360 ÷ 30 = 12 बाजू. बाह्यकोनाची वाट आंतरकोनाच्या सूत्राशी झुंजण्याहून बरी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student claims a regular polygon can have each exterior angle equal to 50°. Compute 360 ÷ 50 and let the answer judge the claim.",
+      "choices": [
+        "8",
+        "6",
+        "7",
+        "7.2"
+      ],
+      "answerIndex": 3,
+      "solution": "360 ÷ 50 = 7.2 — and a polygon cannot have 7.2 sides. The exterior angle must divide 360 exactly; 50 does not, so no such polygon exists. The fraction IS the refutation.",
+      "checkExpr": "360/50",
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी का दावा है कि सम बहुभुज का हर बाह्य कोण 50° हो सकता है। 360 ÷ 50 निकालिए और उत्तर को ही दावे का न्याय करने दीजिए।",
+          "choices": [
+            "8",
+            "6",
+            "7",
+            "7.2"
+          ],
+          "solution": "360 ÷ 50 = 7.2 — और बहुभुज की 7.2 भुजाएँ नहीं हो सकतीं। बाह्य कोण को 360 को पूरा-पूरा बाँटना चाहिए; 50 नहीं बाँटता, अतः ऐसा बहुभुज है ही नहीं। वह भिन्न ही खंडन है।"
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याचा दावा आहे की नियमित बहुभुजाचा प्रत्येक बाह्यकोन 50° असू शकतो. 360 ÷ 50 काढा आणि उत्तरालाच दाव्याचा न्याय करू द्या.",
+          "choices": [
+            "8",
+            "6",
+            "7",
+            "7.2"
+          ],
+          "solution": "360 ÷ 50 = 7.2 — आणि बहुभुजाला 7.2 बाजू असू शकत नाहीत. बाह्यकोनाने 360 ला नेमके भागले पाहिजे; 50 भागत नाही, म्हणून असा बहुभुज नाहीच. तो अपूर्णांकच खंडन आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Of the four names — square, rectangle, rhombus, parallelogram — how many correctly describe a SQUARE?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "All 4: a square has the rectangle's right angles, the rhombus's equal sides, and both parallel pairs of the parallelogram. Special cases INHERIT every name up their family tree.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चार नामों — वर्ग, आयत, समचतुर्भुज, समांतर चतुर्भुज — में से कितने एक वर्ग का सही वर्णन करते हैं?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "चारों 4: वर्ग में आयत के समकोण हैं, समचतुर्भुज की बराबर भुजाएँ, और समांतर चतुर्भुज के दोनों समांतर युग्म। विशेष रूप अपने वंश-वृक्ष के हर नाम का वारिस होता है।"
+        },
+        "mr": {
+          "stem": "चार नावांपैकी — चौरस, आयत, समभुज चौकोन, समांतरभुज — किती एका चौरसाचे बरोबर वर्णन करतात?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "चारही 4: चौरसात आयताचे काटकोन, समभुज चौकोनाच्या समान बाजू, आणि समांतरभुजाच्या दोन्ही समांतर जोड्या आहेत. विशेष रूप आपल्या वंशवृक्षावरील प्रत्येक नावाचा वारस असते."
+        }
+      }
+    }
+  ]
+}
