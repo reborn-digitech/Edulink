@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 9 — Halves and Quarters",
+  "name": "Halves and Quarters",
+  "slug": "maths-4-halves-and-quarters",
+  "summary": "Halves, quarters and three-quarters — of rotis and rupees, litres and kilos, and the ribbon puzzle that walks backwards.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "आधा और चौथाई",
+      "summary": "आधा, चौथाई और तीन-चौथाई — रोटियों और रुपयों के, लीटर और किलो के, और वह फ़ीते की पहेली जो उल्टी चलती है।"
+    },
+    "mr": {
+      "name": "अर्धा आणि पाव",
+      "summary": "अर्धा, पाव आणि पाऊण — पोळ्यांचे आणि रुपयांचे, लिटर आणि किलोचे, आणि उलटी चालणारी फितीची कोडी."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A roti is cut into 4 equal quarters and Rani eats one. How many quarters are left?",
+      "choices": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Four quarters minus the eaten one: 4 − 1 = 3 quarters — that is three-fourths of the roti still on the plate.",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "एक रोटी 4 बराबर चौथाइयों में कटी और रानी ने एक खा ली। कितनी चौथाइयाँ बचीं?",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "चार चौथाई में से एक खाई: 4 − 1 = 3 चौथाइयाँ — यानी रोटी का तीन-चौथाई अब भी थाली में है।"
+        },
+        "mr": {
+          "stem": "एक पोळी 4 सारख्या पावांत कापली आणि राणीने एक खाल्ला. किती पाव उरले?",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "चार पावांतून एक खाल्ला: 4 − 1 = 3 पाव — म्हणजे पोळीचा पाऊण भाग अजून ताटात आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is half of 8 laddoos?",
+      "choices": [
+        "4",
+        "2",
+        "6",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "Half shares into two equal heaps: 8 ÷ 2 = 4 laddoos each. 16 doubles instead of halving — half makes smaller, never bigger.",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "8 लड्डुओं का आधा कितना है?",
+          "choices": [
+            "4",
+            "2",
+            "6",
+            "16"
+          ],
+          "solution": "आधा यानी दो बराबर ढेर: 8 ÷ 2 = 4 लड्डू। 16 आधे की जगह दुगना है — आधा छोटा करता है, बड़ा कभी नहीं।"
+        },
+        "mr": {
+          "stem": "8 लाडवांचा अर्धा किती?",
+          "choices": [
+            "4",
+            "2",
+            "6",
+            "16"
+          ],
+          "solution": "अर्धा म्हणजे दोन सारखे ढीग: 8 ÷ 2 = 4 लाडू. 16 म्हणजे अर्ध्याऐवजी दुप्पट — अर्धा लहान करतो, मोठा कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is a quarter of 20 marbles?",
+      "choices": [
+        "5",
+        "15",
+        "10",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "A quarter shares into four equal heaps: 20 ÷ 4 = 5 marbles. 10 is the half; the quarter halves that half again.",
+      "checkExpr": "20/4",
+      "translations": {
+        "hi": {
+          "stem": "20 कंचों की चौथाई कितनी है?",
+          "choices": [
+            "5",
+            "15",
+            "10",
+            "4"
+          ],
+          "solution": "चौथाई यानी चार बराबर ढेर: 20 ÷ 4 = 5 कंचे। 10 आधा है; चौथाई उस आधे का भी आधा है।"
+        },
+        "mr": {
+          "stem": "20 गोट्यांचा पाव किती?",
+          "choices": [
+            "5",
+            "15",
+            "10",
+            "4"
+          ],
+          "solution": "पाव म्हणजे चार सारखे ढीग: 20 ÷ 4 = 5 गोट्या. 10 हा अर्धा; पाव त्या अर्ध्याचाही अर्धा."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Amma gives half of a ₹50 note's worth to each of two children equally. How much does each child get?",
+      "choices": [
+        "₹25",
+        "₹20",
+        "₹30",
+        "₹100"
+      ],
+      "answerIndex": 0,
+      "solution": "Equal shares of ₹50 between two: 50 ÷ 2 = ₹25 each. ₹20 rounds the half down to a friendlier number the money never agreed to.",
+      "checkExpr": "50/2",
+      "translations": {
+        "hi": {
+          "stem": "अम्मा ₹50 दो बच्चों में बराबर-बराबर बाँटती हैं। हर बच्चे को कितना मिलेगा?",
+          "choices": [
+            "₹25",
+            "₹20",
+            "₹30",
+            "₹100"
+          ],
+          "solution": "₹50 के दो बराबर हिस्से: 50 ÷ 2 = ₹25-₹25। ₹20 आधे को एक 'सुविधाजनक' संख्या पर उतार देता है, जिस पर पैसे कभी राज़ी न थे।"
+        },
+        "mr": {
+          "stem": "आई ₹50 दोन मुलांत सारखे वाटते. प्रत्येक मुलाला किती मिळतील?",
+          "choices": [
+            "₹25",
+            "₹20",
+            "₹30",
+            "₹100"
+          ],
+          "solution": "₹50 चे दोन सारखे वाटे: 50 ÷ 2 = ₹25-₹25. ₹20 अर्ध्याला 'सोयीच्या' आकड्यावर आणते, ज्याला पैसे कधी तयार नव्हते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many quarters together make one whole?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Quarter means a fourth part, so 4 quarters rebuild the whole — like four quarter-rotis making one roti. 2 halves make a whole; quarters need twice as many.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कितनी चौथाइयाँ मिलकर एक पूरा बनाती हैं?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "8"
+          ],
+          "solution": "चौथाई यानी चौथा हिस्सा, तो 4 चौथाइयाँ पूरा बना देती हैं — जैसे चार चौथाई-रोटियाँ एक रोटी। 2 से आधे पूरा बनाते हैं; चौथाइयों को दुगनी चाहिए।"
+        },
+        "mr": {
+          "stem": "किती पाव मिळून एक पूर्ण होते?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "8"
+          ],
+          "solution": "पाव म्हणजे चौथा भाग, म्हणून 4 पाव मिळून पूर्ण होते — जसे चार पाव-पोळ्या मिळून एक पोळी. 2 अर्धे पूर्ण करतात; पावांना दुप्पट लागतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Half a litre of milk is how many millilitres?",
+      "choices": [
+        "250 mL",
+        "5 mL",
+        "50 mL",
+        "500 mL"
+      ],
+      "answerIndex": 3,
+      "solution": "A litre is 1000 mL, so half is 1000 ÷ 2 = 500 mL. 250 is the quarter litre — the half is twice that.",
+      "checkExpr": "1000/2",
+      "translations": {
+        "hi": {
+          "stem": "आधा लीटर दूध कितने मिलीलीटर होता है?",
+          "choices": [
+            "250 मिली",
+            "5 मिली",
+            "50 मिली",
+            "500 मिली"
+          ],
+          "solution": "लीटर यानी 1000 मिली, तो आधा 1000 ÷ 2 = 500 मिली। 250 चौथाई लीटर है — आधा उसका दुगना।"
+        },
+        "mr": {
+          "stem": "अर्धा लिटर दूध म्हणजे किती मिलिलिटर?",
+          "choices": [
+            "250 मिली",
+            "5 मिली",
+            "50 मिली",
+            "500 मिली"
+          ],
+          "solution": "लिटर म्हणजे 1000 मिली, म्हणून अर्धा 1000 ÷ 2 = 500 मिली. 250 म्हणजे पाव लिटर — अर्धा त्याच्या दुप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The sabziwala weighs a quarter kilo of chillies. How many grams is that?",
+      "choices": [
+        "25 g",
+        "400 g",
+        "250 g",
+        "750 g"
+      ],
+      "answerIndex": 2,
+      "solution": "A kilo is 1000 g, and a quarter of it is 1000 ÷ 4 = 250 g — that is why the small weight on his scale says 250. 750 is three quarters, the part he did NOT weigh.",
+      "checkExpr": "1000/4",
+      "translations": {
+        "hi": {
+          "stem": "सब्ज़ीवाला पाव किलो मिर्च तौलता है। यह कितने ग्राम है?",
+          "choices": [
+            "25 ग्राम",
+            "400 ग्राम",
+            "250 ग्राम",
+            "750 ग्राम"
+          ],
+          "solution": "किलो यानी 1000 ग्राम, उसकी चौथाई 1000 ÷ 4 = 250 ग्राम — इसीलिए तराज़ू का छोटा बाट 250 कहता है। 750 तीन चौथाई है, वह हिस्सा जो तौला नहीं गया।"
+        },
+        "mr": {
+          "stem": "भाजीवाला पाव किलो मिरच्या तोलतो. ते किती ग्रॅम?",
+          "choices": [
+            "25 ग्रॅम",
+            "400 ग्रॅम",
+            "250 ग्रॅम",
+            "750 ग्रॅम"
+          ],
+          "solution": "किलो म्हणजे 1000 ग्रॅम, त्याचा पाव 1000 ÷ 4 = 250 ग्रॅम — म्हणूनच काट्यावरचे लहान वजन 250 सांगते. 750 म्हणजे पाऊण, जो भाग तोललाच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A chocolate bar has 12 pieces. Meera eats half of it and her brother eats a quarter of it. How many pieces are left?",
+      "choices": [
+        "6",
+        "4",
+        "9",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Half of 12 is 6, a quarter is 3; eaten together 6 + 3 = 9, leaving 12 − 9 = 3 pieces. Answering 6 stops after Meera; 9 counts what was eaten, not what remains.",
+      "checkExpr": "12-12/2-12/4",
+      "translations": {
+        "hi": {
+          "stem": "चॉकलेट में 12 टुकड़े हैं। मीरा ने उसका आधा खाया और भाई ने चौथाई। कितने टुकड़े बचे?",
+          "choices": [
+            "6",
+            "4",
+            "9",
+            "3"
+          ],
+          "solution": "12 का आधा 6, चौथाई 3; खाए कुल 6 + 3 = 9, बचे 12 − 9 = 3 टुकड़े। 6 मीरा पर रुक जाता है; 9 खाया हुआ गिनता है, बचा हुआ नहीं।"
+        },
+        "mr": {
+          "stem": "चॉकलेटमध्ये 12 तुकडे आहेत. मीराने त्यातले अर्धे खाल्ले आणि भावाने पाव. किती तुकडे उरले?",
+          "choices": [
+            "6",
+            "4",
+            "9",
+            "3"
+          ],
+          "solution": "12 चा अर्धा 6, पाव 3; खाल्ले मिळून 6 + 3 = 9, उरले 12 − 9 = 3 तुकडे. 6 मीरावरच थांबते; 9 खाल्लेले मोजते, उरलेले नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is three quarters of 40 pages?",
+      "choices": [
+        "10",
+        "35",
+        "20",
+        "30"
+      ],
+      "answerIndex": 3,
+      "solution": "One quarter of 40 is 10, so three quarters are 10 × 3 = 30 pages. 10 stops at a single quarter — the question asked for three of them.",
+      "checkExpr": "40*3/4",
+      "translations": {
+        "hi": {
+          "stem": "40 पन्नों का तीन-चौथाई कितना है?",
+          "choices": [
+            "10",
+            "35",
+            "20",
+            "30"
+          ],
+          "solution": "40 की एक चौथाई 10, तो तीन चौथाई 10 × 3 = 30 पन्ने। 10 एक ही चौथाई पर रुक जाता है — पूछा तीन का था।"
+        },
+        "mr": {
+          "stem": "40 पानांचा पाऊण (तीन-चतुर्थांश) किती?",
+          "choices": [
+            "10",
+            "35",
+            "20",
+            "30"
+          ],
+          "solution": "40 चा एक पाव 10, म्हणून तीन पाव 10 × 3 = 30 पाने. 10 एकाच पावावर थांबते — विचारले तिघांचे होते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is half of a half of 100?",
+      "choices": [
+        "25",
+        "12",
+        "75",
+        "50"
+      ],
+      "answerIndex": 0,
+      "solution": "Half of 100 is 50, and half of that is 25 — which is exactly a quarter of 100: halving twice IS quartering. 50 stops at the first half.",
+      "checkExpr": "100/2/2",
+      "translations": {
+        "hi": {
+          "stem": "100 के आधे का आधा कितना है?",
+          "choices": [
+            "25",
+            "12",
+            "75",
+            "50"
+          ],
+          "solution": "100 का आधा 50, और उसका आधा 25 — जो ठीक 100 की चौथाई है: दो बार आधा करना ही चौथाई करना है। 50 पहले आधे पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "100 च्या अर्ध्याचा अर्धा किती?",
+          "choices": [
+            "25",
+            "12",
+            "75",
+            "50"
+          ],
+          "solution": "100 चा अर्धा 50, आणि त्याचा अर्धा 25 — जो नेमका 100 चा पाव आहे: दोनदा अर्धे करणे म्हणजेच पाव करणे. 50 पहिल्या अर्ध्यावर थांबते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Half of a ribbon went into a gift. Half of what REMAINED went into a braid. Now 30 cm is left. How long was the ribbon at first?",
+      "choices": [
+        "60 cm",
+        "240 cm",
+        "90 cm",
+        "120 cm"
+      ],
+      "answerIndex": 3,
+      "solution": "Walk it backwards: the 30 cm left is half of what remained after the gift, so before the braid there were 60 cm; and 60 is half the original, so the ribbon began at 60 × 2 = 120 cm. Half of a half leaves a quarter — 30 × 4 = 120. Answering 60 undoes only one of the two halvings.",
+      "checkExpr": "30*4",
+      "translations": {
+        "hi": {
+          "stem": "फ़ीते का आधा उपहार में गया। जो बचा उसका आधा चोटी में गया। अब 30 सेमी बचा है। शुरू में फ़ीता कितना लंबा था?",
+          "choices": [
+            "60 सेमी",
+            "240 सेमी",
+            "90 सेमी",
+            "120 सेमी"
+          ],
+          "solution": "उल्टा चलिए: बचा 30 सेमी चोटी से पहले वाले हिस्से का आधा है, तो चोटी से पहले 60 सेमी थे; और 60 मूल का आधा है, तो फ़ीता 60 × 2 = 120 सेमी से शुरू हुआ। आधे का आधा चौथाई छोड़ता है — 30 × 4 = 120। 60 कहना दो में से एक ही आधा खोलना है।"
+        },
+        "mr": {
+          "stem": "फितीचा अर्धा भाग भेटीत गेला. जे उरले त्याचा अर्धा वेणीत गेला. आता 30 सेमी उरली आहे. सुरुवातीला फीत किती लांब होती?",
+          "choices": [
+            "60 सेमी",
+            "240 सेमी",
+            "90 सेमी",
+            "120 सेमी"
+          ],
+          "solution": "उलटे चला: उरलेले 30 सेमी हे वेणीआधीच्या भागाचा अर्धा, म्हणजे वेणीआधी 60 सेमी होती; आणि 60 ही मूळची अर्धी, म्हणून फीत 60 × 2 = 120 सेमीपासून सुरू झाली. अर्ध्याचा अर्धा पाव उरवतो — 30 × 4 = 120. 60 म्हणणे म्हणजे दोनपैकी एकच अर्धे उलगडणे."
+        }
+      }
+    }
+  ]
+}

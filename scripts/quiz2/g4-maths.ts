@@ -808,4 +808,812 @@ function tickTickTick(): TopicFileOut {
   );
 }
 
-export const G4_MATHS: TopicFileOut[] = [buildingWithBricks(), longAndShort4(), tickTickTick()];
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — The Junk Seller (buying, selling, profit and loans)           */
+/* ------------------------------------------------------------------------- */
+function theJunkSeller(): TopicFileOut {
+  const rand = rng("maths-4-the-junk-seller");
+  const qs: OutQuestion[] = [];
+
+  const kg = (n: number) => ({ en: `${n} kg`, hi: `${n} किग्रा`, mr: `${n} किलो` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Kiran sells old newspapers at ₹6 per kg. How much do 4 kg fetch?",
+          hi: "किरन पुराने अख़बार ₹6 प्रति किलो बेचती है। 4 किलो के कितने मिलेंगे?",
+          mr: "किरण जुनी वर्तमानपत्रे ₹6 प्रति किलोने विकते. 4 किलोचे किती मिळतील?",
+        },
+        answer: 24,
+        wrong: [10, 20, 64],
+        checkExpr: "6*4",
+        fmt: rupees,
+        solution: {
+          en: "Four kilos at ₹6 each: 6 × 4 = ₹24. ₹10 adds the rate and the weight — a rate multiplies, it does not add.",
+          hi: "₹6 के भाव चार किलो: 6 × 4 = ₹24। ₹10 भाव और वज़न को जोड़ देता है — भाव गुणा करता है, जोड़ता नहीं।",
+          mr: "₹6 च्या भावाने चार किलो: 6 × 4 = ₹24. ₹10 भाव आणि वजन मिळवते — भाव गुणतो, मिळवत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A customer's junk is worth ₹35. He hands Kiran a ₹50 note. How much change does she return?",
+          hi: "एक ग्राहक का कबाड़ ₹35 का है। वह किरन को ₹50 का नोट देता है। वह कितने पैसे लौटाएगी?",
+          mr: "एका गिऱ्हाइकाची रद्दी ₹35 ची आहे. तो किरणला ₹50 ची नोट देतो. ती किती पैसे परत करेल?",
+        },
+        answer: 15,
+        wrong: [25, 85, 5],
+        checkExpr: "50-35",
+        fmt: rupees,
+        solution: {
+          en: "Change is 50 − 35 = ₹15. Getting 25 subtracts 35 as if it were 25; 85 adds the note to the bill instead of paying it.",
+          hi: "बाक़ी 50 − 35 = ₹15। 25 आना 35 को 25 मानकर घटाना है; 85 नोट को बिल में जोड़ देना है, चुकाना नहीं।",
+          mr: "उरले 50 − 35 = ₹15. 25 येणे म्हणजे 35 ला 25 समजून वजा करणे; 85 म्हणजे नोट बिलात मिळवणे, चुकवणे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Kiran weighed 25 kg of iron and 15 kg of paper. What weight of junk is that altogether?",
+          hi: "किरन ने 25 किलो लोहा और 15 किलो काग़ज़ तौला। कुल कितना कबाड़ हुआ?",
+          mr: "किरणने 25 किलो लोखंड आणि 15 किलो कागद तोलले. एकूण किती रद्दी झाली?",
+        },
+        answer: 40,
+        wrong: [10, 30, 50],
+        checkExpr: "25+15",
+        fmt: kg,
+        solution: {
+          en: "Together they weigh 25 + 15 = 40 kg. Answering 10 finds the difference — the question piles both heaps on one scale.",
+          hi: "दोनों मिलाकर 25 + 15 = 40 किलो। 10 कहना अंतर निकालना है — सवाल दोनों ढेर एक ही तराज़ू पर रखता है।",
+          mr: "दोन्ही मिळून 25 + 15 = 40 किलो. 10 म्हणणे म्हणजे फरक काढणे — प्रश्न दोन्ही ढीग एकाच काट्यावर ठेवतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Kiran buys old books at ₹8 per kg and sells them at ₹11 per kg. What does she earn on each kg?",
+          hi: "किरन पुरानी किताबें ₹8 प्रति किलो ख़रीदती है और ₹11 प्रति किलो बेचती है। हर किलो पर वह कितना कमाती है?",
+          mr: "किरण जुनी पुस्तके ₹8 प्रति किलोने घेते आणि ₹11 प्रति किलोने विकते. दर किलोमागे ती किती कमावते?",
+        },
+        answer: 3,
+        wrong: [19, 8, 11],
+        checkExpr: "11-8",
+        fmt: rupees,
+        solution: {
+          en: "Earning per kg is selling minus buying: 11 − 8 = ₹3. ₹19 adds the two prices — money spent cannot join money received.",
+          hi: "प्रति किलो कमाई = बेचने का दाम − ख़रीद का दाम: 11 − 8 = ₹3। ₹19 दोनों दाम जोड़ देता है — ख़र्च हुआ पैसा मिले पैसे में नहीं जुड़ता।",
+          mr: "दर किलो कमाई = विक्रीचा भाव − खरेदीचा भाव: 11 − 8 = ₹3. ₹19 दोन्ही भाव मिळवते — खर्च झालेला पैसा मिळालेल्या पैशात मिसळत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Kiran needs ₹600 for a new weighing scale and has saved ₹340. How much more must she save?",
+          hi: "किरन को नई तराज़ू के लिए ₹600 चाहिए और उसने ₹340 बचाए हैं। उसे और कितने बचाने होंगे?",
+          mr: "किरणला नव्या काट्यासाठी ₹600 हवेत आणि तिने ₹340 साठवले आहेत. तिला आणखी किती साठवावे लागतील?",
+        },
+        answer: 260,
+        wrong: [340, 940, 360],
+        checkExpr: "600-340",
+        fmt: rupees,
+        solution: {
+          en: "Still needed: 600 − 340 = ₹260. Getting 360 slips on the borrow in the tens; 940 adds her savings to the price she is saving toward.",
+          hi: "अभी चाहिए: 600 − 340 = ₹260। 360 आना दहाई के हासिल में फिसलना है; 940 बचत को उसी दाम में जोड़ देता है जिसके लिए बचत हो रही है।",
+          mr: "अजून हवेत: 600 − 340 = ₹260. 360 येणे म्हणजे दशकाच्या हातच्यात घसरणे; 940 म्हणजे बचत त्याच किमतीत मिळवणे जिच्यासाठी बचत चालू आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Old iron sells at ₹12 per kg. What do 9 kg of iron fetch?",
+          hi: "पुराना लोहा ₹12 प्रति किलो बिकता है। 9 किलो लोहे के कितने मिलेंगे?",
+          mr: "जुने लोखंड ₹12 प्रति किलोने विकले जाते. 9 किलो लोखंडाचे किती मिळतील?",
+        },
+        answer: 108,
+        wrong: [98, 118, 21],
+        checkExpr: "12*9",
+        fmt: rupees,
+        solution: {
+          en: "12 × 9 = 108: nine tens are 90 and nine twos are 18, together ₹108. 98 loses one ten in the carry; 21 adds the rate and the weight.",
+          hi: "12 × 9 = 108: नौ दहाई 90 और नौ दूनी 18, मिलाकर ₹108। 98 हासिल में एक दहाई खो देता है; 21 भाव और वज़न जोड़ देता है।",
+          mr: "12 × 9 = 108: नऊ दशक 90 आणि नऊ दुणे 18, मिळून ₹108. 98 हातच्यात एक दशक हरवते; 21 भाव आणि वजन मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In a week Kiran collected the same 14 kg of junk on each of 6 working days. How many kg in the week?",
+          hi: "एक हफ़्ते में किरन ने 6 कामकाजी दिनों में रोज़ 14 किलो कबाड़ जमा किया। हफ़्ते में कुल कितने किलो?",
+          mr: "एका आठवड्यात किरणने 6 कामाच्या दिवसांत रोज 14 किलो रद्दी जमवली. आठवड्यात एकूण किती किलो?",
+        },
+        answer: 84,
+        wrong: [74, 98, 20],
+        checkExpr: "14*6",
+        fmt: kg,
+        solution: {
+          en: "Six days of 14 kg: 14 × 6 = 84 kg. 74 drops the carry from 4 × 6; 98 multiplies by 7 — she worked six days, not the whole week.",
+          hi: "14-14 किलो के छह दिन: 14 × 6 = 84 किलो। 74 में 4 × 6 का हासिल छूटा; 98 सात से गुणा है — उसने छह दिन काम किया, पूरा हफ़्ता नहीं।",
+          mr: "14-14 किलोचे सहा दिवस: 14 × 6 = 84 किलो. 74 मध्ये 4 × 6 चा हातचा सुटला; 98 म्हणजे सातने गुणणे — तिने सहा दिवस काम केले, सबंध आठवडा नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Kiran bought 20 kg of paper at ₹6 per kg and sold all of it at ₹9 per kg. What was her total profit?",
+          hi: "किरन ने ₹6 प्रति किलो पर 20 किलो काग़ज़ ख़रीदा और सारा ₹9 प्रति किलो पर बेच दिया। कुल मुनाफ़ा कितना हुआ?",
+          mr: "किरणने ₹6 प्रति किलोने 20 किलो कागद घेतला आणि सारा ₹9 प्रति किलोने विकला. एकूण नफा किती झाला?",
+        },
+        answer: 60,
+        wrong: [180, 120, 3],
+        checkExpr: "(9-6)*20",
+        fmt: rupees,
+        solution: {
+          en: "Each kg earns 9 − 6 = ₹3, and 20 kg earn 3 × 20 = ₹60. ₹180 is what she received, not what she gained; ₹3 forgets she sold twenty kilos, not one.",
+          hi: "हर किलो पर 9 − 6 = ₹3, और 20 किलो पर 3 × 20 = ₹60। ₹180 वह है जो मिला, न कि जो बचा; ₹3 भूलता है कि बीस किलो बिके थे, एक नहीं।",
+          mr: "दर किलोमागे 9 − 6 = ₹3, आणि 20 किलोंवर 3 × 20 = ₹60. ₹180 म्हणजे तिला मिळालेले, कमावलेले नव्हे; ₹3 विसरते की वीस किलो विकले, एक नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Kiran took a loan of ₹400 and repays ₹50 every week. After 4 weeks of paying, how much is still left to repay?",
+          hi: "किरन ने ₹400 का क़र्ज़ लिया और हर हफ़्ते ₹50 चुकाती है। 4 हफ़्ते चुकाने के बाद कितना बाक़ी रहेगा?",
+          mr: "किरणने ₹400 चे कर्ज घेतले आणि दर आठवड्याला ₹50 फेडते. 4 आठवडे फेडल्यावर किती बाकी राहील?",
+        },
+        answer: 200,
+        wrong: [350, 150, 250],
+        checkExpr: "400-50*4",
+        fmt: rupees,
+        solution: {
+          en: "Four weeks repay 50 × 4 = ₹200, leaving 400 − 200 = ₹200. ₹350 subtracts only one week — the ₹50 goes out every week, four times over.",
+          hi: "चार हफ़्तों में चुके 50 × 4 = ₹200, बचा 400 − 200 = ₹200। ₹350 केवल एक हफ़्ता घटाता है — ₹50 हर हफ़्ते जाता है, चार बार।",
+          mr: "चार आठवड्यांत फिटले 50 × 4 = ₹200, उरले 400 − 200 = ₹200. ₹350 फक्त एक आठवडा वजा करते — ₹50 दर आठवड्याला जातात, चार वेळा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "One morning Kiran bought 12 kg of iron at ₹12 per kg and 8 kg of paper at ₹6 per kg. How much did she pay in all?",
+          hi: "एक सुबह किरन ने ₹12 प्रति किलो पर 12 किलो लोहा और ₹6 प्रति किलो पर 8 किलो काग़ज़ ख़रीदा। कुल कितना चुकाया?",
+          mr: "एका सकाळी किरणने ₹12 प्रति किलोने 12 किलो लोखंड आणि ₹6 प्रति किलोने 8 किलो कागद घेतला. एकूण किती दिले?",
+        },
+        answer: 192,
+        wrong: [144, 240, 168],
+        checkExpr: "12*12+8*6",
+        fmt: rupees,
+        solution: {
+          en: "Iron: 12 × 12 = ₹144. Paper: 8 × 6 = ₹48. Together 144 + 48 = ₹192. ₹144 stops after the iron; ₹240 prices the paper at iron's rate — each junk keeps its own rate.",
+          hi: "लोहा: 12 × 12 = ₹144। काग़ज़: 8 × 6 = ₹48। मिलाकर 144 + 48 = ₹192। ₹144 लोहे पर ही रुक जाता है; ₹240 काग़ज़ को लोहे के भाव तौलता है — हर कबाड़ का अपना भाव है।",
+          mr: "लोखंड: 12 × 12 = ₹144. कागद: 8 × 6 = ₹48. मिळून 144 + 48 = ₹192. ₹144 लोखंडावरच थांबते; ₹240 कागदाला लोखंडाच्या भावाने तोलते — प्रत्येक रद्दीचा भाव वेगळा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A cart costs ₹300 to buy, or ₹10 a week to hire. After how many weeks of hiring would the hire money equal the cart's full price?",
+          hi: "एक ठेला ₹300 में मिलता है, या ₹10 प्रति हफ़्ता किराए पर। कितने हफ़्तों के किराए में ठेले की पूरी क़ीमत जितने पैसे चले जाएँगे?",
+          mr: "एक हातगाडी ₹300 ला मिळते, किंवा ₹10 प्रति आठवडा भाड्याने. किती आठवड्यांच्या भाड्यात गाडीच्या पूर्ण किमतीइतके पैसे जातील?",
+        },
+        answer: 30,
+        wrong: [3, 20, 40],
+        checkExpr: "300/10",
+        solution: {
+          en: "₹10 a week reaches ₹300 in 300 ÷ 10 = 30 weeks — about seven months, and after that every hired week is money the cart would have saved. Answering 3 divides by 100: one lost zero turns seven months into three weeks.",
+          hi: "₹10 प्रति हफ़्ता ₹300 तक 300 ÷ 10 = 30 हफ़्तों में पहुँचता है — क़रीब सात महीने, और उसके बाद किराए का हर हफ़्ता वह पैसा है जो ठेला बचा लेता। 3 कहना 100 से भाग देना है: एक छूटा शून्य सात महीनों को तीन हफ़्ते बना देता है।",
+          mr: "₹10 प्रति आठवडा ₹300 पर्यंत 300 ÷ 10 = 30 आठवड्यांत पोहोचतात — सुमारे सात महिने, आणि त्यानंतरचा भाड्याचा प्रत्येक आठवडा म्हणजे गाडीने वाचवला असता तो पैसा. 3 म्हणणे म्हणजे 100 ने भागणे: एक सुटलेले शून्य सात महिन्यांचे तीन आठवडे करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 6 — The Junk Seller",
+      name: "The Junk Seller",
+      slug: "maths-4-the-junk-seller",
+      summary: "Kiran's junk business — rates per kilo, change and savings, profit on a deal and a loan paid down week by week.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "कबाड़ीवाली",
+          summary: "किरन का कबाड़ का धंधा — किलो के भाव, बाक़ी और बचत, सौदे का मुनाफ़ा और हफ़्ता-हफ़्ता उतरता क़र्ज़।",
+        },
+        mr: {
+          name: "भंगारवाली",
+          summary: "किरणचा भंगाराचा धंदा — किलोचे भाव, उरलेले पैसे आणि बचत, सौद्याचा नफा आणि आठवड्या-आठवड्याने फिटणारे कर्ज.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Jugs and Mugs (millilitres and litres)                        */
+/* ------------------------------------------------------------------------- */
+function jugsAndMugs4(): TopicFileOut {
+  const rand = rng("maths-4-jugs-and-mugs");
+  const qs: OutQuestion[] = [];
+
+  const mlF = (n: number) => ({ en: `${n} mL`, hi: `${n} मिली`, mr: `${n} मिली` });
+  const litres = (n: number) => ({ en: `${n} litres`, hi: `${n} लीटर`, mr: `${n} लिटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A one-litre milk packet is marked in millilitres. What number does it show?",
+          hi: "एक लीटर के दूध के पैकेट पर मिलीलीटर लिखा है। उस पर कौन-सी संख्या होगी?",
+          mr: "एक लिटरच्या दुधाच्या पिशवीवर मिलिलिटर लिहिलेले असते. तिच्यावर कोणता आकडा असेल?",
+        },
+        answer: 1000,
+        wrong: [100, 500, 10],
+        solution: {
+          en: "One litre is 1000 millilitres — 'milli' marks the thousandth part, in millilitres and millimetres alike. 100 belongs to the metre-centimetre staircase, not this one.",
+          hi: "एक लीटर = 1000 मिलीलीटर — 'मिली' हज़ारवें हिस्से का निशान है, मिलीलीटर में भी, मिलीमीटर में भी। 100 मीटर-सेंटीमीटर की सीढ़ी का है, इसकी नहीं।",
+          mr: "एक लिटर = 1000 मिलिलिटर — 'मिली' हा हजाराव्या भागाचा शिक्का, मिलिलिटरमध्येही, मिलिमीटरमध्येही. 100 हे मीटर-सेंटिमीटरच्या पायरीचे, या पायरीचे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A bottle holds 500 mL. How much do two such bottles hold together?",
+          hi: "एक बोतल में 500 मिली आता है। ऐसी दो बोतलों में कुल कितना आएगा?",
+          mr: "एका बाटलीत 500 मिली मावते. अशा दोन बाटल्यांत मिळून किती मावेल?",
+        },
+        answer: 1000,
+        wrong: [502, 750, 2500],
+        checkExpr: "500*2",
+        fmt: mlF,
+        solution: {
+          en: "Two bottles of 500 mL: 500 × 2 = 1000 mL — exactly one litre. 502 adds the 2 instead of taking 500 twice.",
+          hi: "500-500 मिली की दो बोतलें: 500 × 2 = 1000 मिली — ठीक एक लीटर। 502 में 500 को दो बार लेने की जगह 2 जोड़ दिया गया।",
+          mr: "500-500 मिलीच्या दोन बाटल्या: 500 × 2 = 1000 मिली — बरोबर एक लिटर. 502 मध्ये 500 दोनदा घेण्याऐवजी 2 मिळवले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The doctor's spoon holds 5 mL of tonic. How much tonic is two spoonfuls?",
+          hi: "डॉक्टर के चम्मच में 5 मिली दवा आती है। दो चम्मच दवा कितनी हुई?",
+          mr: "डॉक्टरांच्या चमच्यात 5 मिली औषध मावते. दोन चमचे औषध किती झाले?",
+        },
+        answer: 10,
+        wrong: [7, 25, 52],
+        checkExpr: "5*2",
+        fmt: mlF,
+        solution: {
+          en: "Two spoons of 5 mL each: 5 × 2 = 10 mL. 25 squares the five — the second spoon repeats it, it does not multiply it by itself.",
+          hi: "5-5 मिली के दो चम्मच: 5 × 2 = 10 मिली। 25 पाँच का वर्ग है — दूसरा चम्मच उसे दोहराता है, अपने से गुणा नहीं करता।",
+          mr: "5-5 मिलीचे दोन चमचे: 5 × 2 = 10 मिली. 25 म्हणजे पाचाचा वर्ग — दुसरा चमचा त्याची पुनरावृत्ती करतो, त्याला त्यानेच गुणत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A bucket holds 18 litres and a jug holds 3 litres. How many full jugs fill the bucket?",
+          hi: "बाल्टी में 18 लीटर और जग में 3 लीटर आता है। बाल्टी भरने में कितने भरे जग लगेंगे?",
+          mr: "बादलीत 18 लिटर आणि जगमध्ये 3 लिटर मावते. बादली भरायला किती भरलेले जग लागतील?",
+        },
+        answer: 6,
+        wrong: [5, 7, 15],
+        checkExpr: "18/3",
+        solution: {
+          en: "How many 3s in 18: 18 ÷ 3 = 6 jugs. 15 subtracts one jug instead of asking how many times the jug repeats.",
+          hi: "18 में 3 कितनी बार: 18 ÷ 3 = 6 जग। 15 एक जग घटा देता है, यह नहीं पूछता कि जग कितनी बार दोहराया जाएगा।",
+          mr: "18 मध्ये 3 किती वेळा: 18 ÷ 3 = 6 जग. 15 एक जग वजा करते, जग किती वेळा भरावा लागेल हे विचारत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Amma bought 2 litres of milk and used 750 mL for kheer. How much milk is left, in mL?",
+          hi: "अम्मा 2 लीटर दूध लाईं और खीर में 750 मिली लगा। कितना दूध बचा, मिली में?",
+          mr: "आईने 2 लिटर दूध आणले आणि खिरीसाठी 750 मिली वापरले. किती दूध उरले, मिलीमध्ये?",
+        },
+        answer: 1250,
+        wrong: [1350, 250, 1750],
+        checkExpr: "2000-750",
+        fmt: mlF,
+        solution: {
+          en: "First 2 L = 2000 mL, then 2000 − 750 = 1250 mL left. Getting 250 subtracts from one litre only — the second litre was standing right there.",
+          hi: "पहले 2 लीटर = 2000 मिली, फिर 2000 − 750 = 1250 मिली बचा। 250 आना केवल एक लीटर में से घटाना है — दूसरा लीटर वहीं रखा था।",
+          mr: "आधी 2 लिटर = 2000 मिली, मग 2000 − 750 = 1250 मिली उरले. 250 येणे म्हणजे फक्त एका लिटरातून वजा करणे — दुसरे लिटर तिथेच होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A glass holds 250 mL. How many such glasses does one litre of lassi fill?",
+          hi: "एक गिलास में 250 मिली आता है। एक लीटर लस्सी से ऐसे कितने गिलास भरेंगे?",
+          mr: "एका ग्लासात 250 मिली मावते. एक लिटर लस्सीने असे किती ग्लास भरतील?",
+        },
+        answer: 4,
+        wrong: [3, 5, 40],
+        checkExpr: "1000/250",
+        solution: {
+          en: "A litre is 1000 mL, and 1000 ÷ 250 = 4 glasses. 40 divides by 25 — the glass holds a quarter litre, not a fortieth.",
+          hi: "लीटर यानी 1000 मिली, और 1000 ÷ 250 = 4 गिलास। 40 पच्चीस से भाग देना है — गिलास चौथाई लीटर का है, चालीसवें हिस्से का नहीं।",
+          mr: "लिटर म्हणजे 1000 मिली, आणि 1000 ÷ 250 = 4 ग्लास. 40 म्हणजे पंचविसाने भागणे — ग्लास पाव लिटरचा आहे, चाळिसाव्या भागाचा नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A water drum of 20 litres is filled with a 4-litre bucket. How many bucket trips fill it?",
+          hi: "20 लीटर का ड्रम 4 लीटर की बाल्टी से भरा जाता है। कितने फेरों में भरेगा?",
+          mr: "20 लिटरचा ड्रम 4 लिटरच्या बादलीने भरतात. किती फेऱ्यांत भरेल?",
+        },
+        answer: 5,
+        wrong: [4, 6, 16],
+        checkExpr: "20/4",
+        solution: {
+          en: "20 ÷ 4 = 5 trips. 16 subtracts one bucket; the bucket empties into the drum again and again until the 20 is reached.",
+          hi: "20 ÷ 4 = 5 फेरे। 16 एक बाल्टी घटाता है; बाल्टी बार-बार ड्रम में उँडेली जाती है, जब तक 20 पूरे न हों।",
+          mr: "20 ÷ 4 = 5 फेऱ्या. 16 एक बादली वजा करते; बादली पुन्हा पुन्हा ड्रममध्ये ओतली जाते, 20 पूर्ण होईपर्यंत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A cough-syrup bottle holds 120 mL. The dose is 5 mL, twice a day. For how many days does the bottle last?",
+          hi: "खाँसी की दवा की बोतल 120 मिली की है। ख़ुराक 5 मिली, दिन में दो बार। बोतल कितने दिन चलेगी?",
+          mr: "खोकल्याच्या औषधाची बाटली 120 मिलीची आहे. मात्रा 5 मिली, दिवसातून दोनदा. बाटली किती दिवस पुरेल?",
+        },
+        answer: 12,
+        wrong: [24, 6, 10],
+        checkExpr: "120/(5*2)",
+        solution: {
+          en: "A day uses 5 × 2 = 10 mL, so the bottle lasts 120 ÷ 10 = 12 days. 24 forgets the second daily dose and halves the medicine's honesty.",
+          hi: "एक दिन में 5 × 2 = 10 मिली लगती है, तो बोतल 120 ÷ 10 = 12 दिन चलेगी। 24 दूसरी ख़ुराक भूल जाता है — दवा दिन में दो बार जाती है।",
+          mr: "एका दिवसात 5 × 2 = 10 मिली लागते, म्हणून बाटली 120 ÷ 10 = 12 दिवस पुरेल. 24 दुसरी मात्रा विसरते — औषध दिवसातून दोनदा जाते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A matka holds 12 litres. In the morning 4 litres are drawn, in the evening 3 more. How much water remains?",
+          hi: "मटके में 12 लीटर पानी है। सुबह 4 लीटर निकाला गया, शाम को 3 और। कितना पानी बचा?",
+          mr: "माठात 12 लिटर पाणी आहे. सकाळी 4 लिटर काढले, संध्याकाळी आणखी 3. किती पाणी उरले?",
+        },
+        answer: 5,
+        wrong: [8, 9, 7],
+        checkExpr: "12-4-3",
+        fmt: litres,
+        solution: {
+          en: "Two drawings leave 12 − 4 − 3 = 5 litres. 8 stops after the morning; 9 subtracts only the evening — both hands dipped into the same matka.",
+          hi: "दो बार निकालने पर बचा 12 − 4 − 3 = 5 लीटर। 8 सुबह पर रुक जाता है; 9 केवल शाम घटाता है — दोनों बार उसी मटके से निकला।",
+          mr: "दोनदा काढल्यावर उरले 12 − 4 − 3 = 5 लिटर. 8 सकाळवरच थांबते; 9 फक्त संध्याकाळ वजा करते — दोन्ही वेळा त्याच माठातून निघाले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A kettle holds 1 litre 250 mL of chai, and another 750 mL is made fresh. How much chai is that altogether, in mL?",
+          hi: "केतली में 1 लीटर 250 मिली चाय है, और 750 मिली ताज़ी बनी। कुल चाय कितनी हुई, मिली में?",
+          mr: "किटलीत 1 लिटर 250 मिली चहा आहे, आणि आणखी 750 मिली ताजा केला. एकूण चहा किती झाला, मिलीमध्ये?",
+        },
+        answer: 2000,
+        wrong: [1000, 1900, 825],
+        checkExpr: "1250+750",
+        fmt: mlF,
+        solution: {
+          en: "1 L 250 mL = 1250 mL, and 1250 + 750 = 2000 mL — two full litres. 1000 adds 250 + 750 and drops the litre that was already in the kettle.",
+          hi: "1 लीटर 250 मिली = 1250 मिली, और 1250 + 750 = 2000 मिली — पूरे दो लीटर। 1000 केवल 250 + 750 जोड़ता है और केतली में पहले से रखा लीटर गिरा देता है।",
+          mr: "1 लिटर 250 मिली = 1250 मिली, आणि 1250 + 750 = 2000 मिली — पूर्ण दोन लिटर. 1000 फक्त 250 + 750 मिळवते आणि किटलीत आधीच असलेले लिटर गाळते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A tap leaks 250 mL every hour. Nobody fixes it for a full day of 24 hours. How many LITRES of water are lost?",
+          hi: "एक नल से हर घंटे 250 मिली पानी टपकता है। पूरे 24 घंटे कोई उसे ठीक नहीं करता। कितने लीटर पानी बह गया?",
+          mr: "एका नळातून दर तासाला 250 मिली पाणी गळते. पूर्ण 24 तास कोणी ते दुरुस्त करत नाही. किती लिटर पाणी वाया गेले?",
+        },
+        answer: 6,
+        wrong: [24, 4, 60],
+        checkExpr: "250*24/1000",
+        fmt: litres,
+        solution: {
+          en: "The day leaks 250 × 24 = 6000 mL, and 6000 ÷ 1000 = 6 litres — six full bottles from one 'small' drip. Answering 24 stops at the hours; 4 remembers only that 250s make a litre in fours and forgets the day is 24 hours long.",
+          hi: "दिन भर में टपका 250 × 24 = 6000 मिली, और 6000 ÷ 1000 = 6 लीटर — एक 'ज़रा-से' टपके से छह भरी बोतलें। 24 घंटों पर ही रुक जाता है; 4 को बस इतना याद है कि चार 250 से लीटर बनता है, और भूल जाता है कि दिन 24 घंटे का है।",
+          mr: "दिवसभरात गळाले 250 × 24 = 6000 मिली, आणि 6000 ÷ 1000 = 6 लिटर — एका 'जरा' गळक्यातून सहा भरलेल्या बाटल्या. 24 तासांवरच थांबते; 4 ला फक्त चार 250 नी लिटर होते एवढेच आठवते, दिवस 24 तासांचा आहे हे विसरते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 7 — Jugs and Mugs",
+      name: "Jugs and Mugs",
+      slug: "maths-4-jugs-and-mugs",
+      summary: "Millilitres and litres — spoons and glasses, buckets and drums, and what a leaking tap really costs in bottles.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "जग और मग",
+          summary: "मिलीलीटर और लीटर — चम्मच और गिलास, बाल्टी और ड्रम, और टपकता नल सचमुच कितनी बोतलें बहा देता है।",
+        },
+        mr: {
+          name: "जग आणि मग",
+          summary: "मिलिलिटर आणि लिटर — चमचे आणि ग्लास, बादल्या आणि ड्रम, आणि गळका नळ खरोखर किती बाटल्या वाहवतो.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Halves and Quarters (fractions of things, money and measures) */
+/* ------------------------------------------------------------------------- */
+function halvesAndQuarters(): TopicFileOut {
+  const rand = rng("maths-4-halves-and-quarters");
+  const qs: OutQuestion[] = [];
+
+  const g = (n: number) => ({ en: `${n} g`, hi: `${n} ग्राम`, mr: `${n} ग्रॅम` });
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+  const mlF = (n: number) => ({ en: `${n} mL`, hi: `${n} मिली`, mr: `${n} मिली` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A roti is cut into 4 equal quarters and Rani eats one. How many quarters are left?",
+          hi: "एक रोटी 4 बराबर चौथाइयों में कटी और रानी ने एक खा ली। कितनी चौथाइयाँ बचीं?",
+          mr: "एक पोळी 4 सारख्या पावांत कापली आणि राणीने एक खाल्ला. किती पाव उरले?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        checkExpr: "4-1",
+        solution: {
+          en: "Four quarters minus the eaten one: 4 − 1 = 3 quarters — that is three-fourths of the roti still on the plate.",
+          hi: "चार चौथाई में से एक खाई: 4 − 1 = 3 चौथाइयाँ — यानी रोटी का तीन-चौथाई अब भी थाली में है।",
+          mr: "चार पावांतून एक खाल्ला: 4 − 1 = 3 पाव — म्हणजे पोळीचा पाऊण भाग अजून ताटात आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is half of 8 laddoos?",
+          hi: "8 लड्डुओं का आधा कितना है?",
+          mr: "8 लाडवांचा अर्धा किती?",
+        },
+        answer: 4,
+        wrong: [2, 6, 16],
+        checkExpr: "8/2",
+        solution: {
+          en: "Half shares into two equal heaps: 8 ÷ 2 = 4 laddoos each. 16 doubles instead of halving — half makes smaller, never bigger.",
+          hi: "आधा यानी दो बराबर ढेर: 8 ÷ 2 = 4 लड्डू। 16 आधे की जगह दुगना है — आधा छोटा करता है, बड़ा कभी नहीं।",
+          mr: "अर्धा म्हणजे दोन सारखे ढीग: 8 ÷ 2 = 4 लाडू. 16 म्हणजे अर्ध्याऐवजी दुप्पट — अर्धा लहान करतो, मोठा कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is a quarter of 20 marbles?",
+          hi: "20 कंचों की चौथाई कितनी है?",
+          mr: "20 गोट्यांचा पाव किती?",
+        },
+        answer: 5,
+        wrong: [4, 10, 15],
+        checkExpr: "20/4",
+        solution: {
+          en: "A quarter shares into four equal heaps: 20 ÷ 4 = 5 marbles. 10 is the half; the quarter halves that half again.",
+          hi: "चौथाई यानी चार बराबर ढेर: 20 ÷ 4 = 5 कंचे। 10 आधा है; चौथाई उस आधे का भी आधा है।",
+          mr: "पाव म्हणजे चार सारखे ढीग: 20 ÷ 4 = 5 गोट्या. 10 हा अर्धा; पाव त्या अर्ध्याचाही अर्धा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Amma gives half of a ₹50 note's worth to each of two children equally. How much does each child get?",
+          hi: "अम्मा ₹50 दो बच्चों में बराबर-बराबर बाँटती हैं। हर बच्चे को कितना मिलेगा?",
+          mr: "आई ₹50 दोन मुलांत सारखे वाटते. प्रत्येक मुलाला किती मिळतील?",
+        },
+        answer: 25,
+        wrong: [20, 30, 100],
+        checkExpr: "50/2",
+        fmt: rupees,
+        solution: {
+          en: "Equal shares of ₹50 between two: 50 ÷ 2 = ₹25 each. ₹20 rounds the half down to a friendlier number the money never agreed to.",
+          hi: "₹50 के दो बराबर हिस्से: 50 ÷ 2 = ₹25-₹25। ₹20 आधे को एक 'सुविधाजनक' संख्या पर उतार देता है, जिस पर पैसे कभी राज़ी न थे।",
+          mr: "₹50 चे दोन सारखे वाटे: 50 ÷ 2 = ₹25-₹25. ₹20 अर्ध्याला 'सोयीच्या' आकड्यावर आणते, ज्याला पैसे कधी तयार नव्हते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many quarters together make one whole?",
+          hi: "कितनी चौथाइयाँ मिलकर एक पूरा बनाती हैं?",
+          mr: "किती पाव मिळून एक पूर्ण होते?",
+        },
+        answer: 4,
+        wrong: [2, 3, 8],
+        solution: {
+          en: "Quarter means a fourth part, so 4 quarters rebuild the whole — like four quarter-rotis making one roti. 2 halves make a whole; quarters need twice as many.",
+          hi: "चौथाई यानी चौथा हिस्सा, तो 4 चौथाइयाँ पूरा बना देती हैं — जैसे चार चौथाई-रोटियाँ एक रोटी। 2 से आधे पूरा बनाते हैं; चौथाइयों को दुगनी चाहिए।",
+          mr: "पाव म्हणजे चौथा भाग, म्हणून 4 पाव मिळून पूर्ण होते — जसे चार पाव-पोळ्या मिळून एक पोळी. 2 अर्धे पूर्ण करतात; पावांना दुप्पट लागतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Half a litre of milk is how many millilitres?",
+          hi: "आधा लीटर दूध कितने मिलीलीटर होता है?",
+          mr: "अर्धा लिटर दूध म्हणजे किती मिलिलिटर?",
+        },
+        answer: 500,
+        wrong: [50, 250, 5],
+        checkExpr: "1000/2",
+        fmt: mlF,
+        solution: {
+          en: "A litre is 1000 mL, so half is 1000 ÷ 2 = 500 mL. 250 is the quarter litre — the half is twice that.",
+          hi: "लीटर यानी 1000 मिली, तो आधा 1000 ÷ 2 = 500 मिली। 250 चौथाई लीटर है — आधा उसका दुगना।",
+          mr: "लिटर म्हणजे 1000 मिली, म्हणून अर्धा 1000 ÷ 2 = 500 मिली. 250 म्हणजे पाव लिटर — अर्धा त्याच्या दुप्पट.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The sabziwala weighs a quarter kilo of chillies. How many grams is that?",
+          hi: "सब्ज़ीवाला पाव किलो मिर्च तौलता है। यह कितने ग्राम है?",
+          mr: "भाजीवाला पाव किलो मिरच्या तोलतो. ते किती ग्रॅम?",
+        },
+        answer: 250,
+        wrong: [25, 400, 750],
+        checkExpr: "1000/4",
+        fmt: g,
+        solution: {
+          en: "A kilo is 1000 g, and a quarter of it is 1000 ÷ 4 = 250 g — that is why the small weight on his scale says 250. 750 is three quarters, the part he did NOT weigh.",
+          hi: "किलो यानी 1000 ग्राम, उसकी चौथाई 1000 ÷ 4 = 250 ग्राम — इसीलिए तराज़ू का छोटा बाट 250 कहता है। 750 तीन चौथाई है, वह हिस्सा जो तौला नहीं गया।",
+          mr: "किलो म्हणजे 1000 ग्रॅम, त्याचा पाव 1000 ÷ 4 = 250 ग्रॅम — म्हणूनच काट्यावरचे लहान वजन 250 सांगते. 750 म्हणजे पाऊण, जो भाग तोललाच नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A chocolate bar has 12 pieces. Meera eats half of it and her brother eats a quarter of it. How many pieces are left?",
+          hi: "चॉकलेट में 12 टुकड़े हैं। मीरा ने उसका आधा खाया और भाई ने चौथाई। कितने टुकड़े बचे?",
+          mr: "चॉकलेटमध्ये 12 तुकडे आहेत. मीराने त्यातले अर्धे खाल्ले आणि भावाने पाव. किती तुकडे उरले?",
+        },
+        answer: 3,
+        wrong: [6, 9, 4],
+        checkExpr: "12-12/2-12/4",
+        solution: {
+          en: "Half of 12 is 6, a quarter is 3; eaten together 6 + 3 = 9, leaving 12 − 9 = 3 pieces. Answering 6 stops after Meera; 9 counts what was eaten, not what remains.",
+          hi: "12 का आधा 6, चौथाई 3; खाए कुल 6 + 3 = 9, बचे 12 − 9 = 3 टुकड़े। 6 मीरा पर रुक जाता है; 9 खाया हुआ गिनता है, बचा हुआ नहीं।",
+          mr: "12 चा अर्धा 6, पाव 3; खाल्ले मिळून 6 + 3 = 9, उरले 12 − 9 = 3 तुकडे. 6 मीरावरच थांबते; 9 खाल्लेले मोजते, उरलेले नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is three quarters of 40 pages?",
+          hi: "40 पन्नों का तीन-चौथाई कितना है?",
+          mr: "40 पानांचा पाऊण (तीन-चतुर्थांश) किती?",
+        },
+        answer: 30,
+        wrong: [10, 20, 35],
+        checkExpr: "40*3/4",
+        solution: {
+          en: "One quarter of 40 is 10, so three quarters are 10 × 3 = 30 pages. 10 stops at a single quarter — the question asked for three of them.",
+          hi: "40 की एक चौथाई 10, तो तीन चौथाई 10 × 3 = 30 पन्ने। 10 एक ही चौथाई पर रुक जाता है — पूछा तीन का था।",
+          mr: "40 चा एक पाव 10, म्हणून तीन पाव 10 × 3 = 30 पाने. 10 एकाच पावावर थांबते — विचारले तिघांचे होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is half of a half of 100?",
+          hi: "100 के आधे का आधा कितना है?",
+          mr: "100 च्या अर्ध्याचा अर्धा किती?",
+        },
+        answer: 25,
+        wrong: [50, 75, 12],
+        checkExpr: "100/2/2",
+        solution: {
+          en: "Half of 100 is 50, and half of that is 25 — which is exactly a quarter of 100: halving twice IS quartering. 50 stops at the first half.",
+          hi: "100 का आधा 50, और उसका आधा 25 — जो ठीक 100 की चौथाई है: दो बार आधा करना ही चौथाई करना है। 50 पहले आधे पर रुक जाता है।",
+          mr: "100 चा अर्धा 50, आणि त्याचा अर्धा 25 — जो नेमका 100 चा पाव आहे: दोनदा अर्धे करणे म्हणजेच पाव करणे. 50 पहिल्या अर्ध्यावर थांबते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Half of a ribbon went into a gift. Half of what REMAINED went into a braid. Now 30 cm is left. How long was the ribbon at first?",
+          hi: "फ़ीते का आधा उपहार में गया। जो बचा उसका आधा चोटी में गया। अब 30 सेमी बचा है। शुरू में फ़ीता कितना लंबा था?",
+          mr: "फितीचा अर्धा भाग भेटीत गेला. जे उरले त्याचा अर्धा वेणीत गेला. आता 30 सेमी उरली आहे. सुरुवातीला फीत किती लांब होती?",
+        },
+        answer: 120,
+        wrong: [60, 90, 240],
+        checkExpr: "30*4",
+        fmt: cm,
+        solution: {
+          en: "Walk it backwards: the 30 cm left is half of what remained after the gift, so before the braid there were 60 cm; and 60 is half the original, so the ribbon began at 60 × 2 = 120 cm. Half of a half leaves a quarter — 30 × 4 = 120. Answering 60 undoes only one of the two halvings.",
+          hi: "उल्टा चलिए: बचा 30 सेमी चोटी से पहले वाले हिस्से का आधा है, तो चोटी से पहले 60 सेमी थे; और 60 मूल का आधा है, तो फ़ीता 60 × 2 = 120 सेमी से शुरू हुआ। आधे का आधा चौथाई छोड़ता है — 30 × 4 = 120। 60 कहना दो में से एक ही आधा खोलना है।",
+          mr: "उलटे चला: उरलेले 30 सेमी हे वेणीआधीच्या भागाचा अर्धा, म्हणजे वेणीआधी 60 सेमी होती; आणि 60 ही मूळची अर्धी, म्हणून फीत 60 × 2 = 120 सेमीपासून सुरू झाली. अर्ध्याचा अर्धा पाव उरवतो — 30 × 4 = 120. 60 म्हणणे म्हणजे दोनपैकी एकच अर्धे उलगडणे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 9 — Halves and Quarters",
+      name: "Halves and Quarters",
+      slug: "maths-4-halves-and-quarters",
+      summary: "Halves, quarters and three-quarters — of rotis and rupees, litres and kilos, and the ribbon puzzle that walks backwards.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "आधा और चौथाई",
+          summary: "आधा, चौथाई और तीन-चौथाई — रोटियों और रुपयों के, लीटर और किलो के, और वह फ़ीते की पहेली जो उल्टी चलती है।",
+        },
+        mr: {
+          name: "अर्धा आणि पाव",
+          summary: "अर्धा, पाव आणि पाऊण — पोळ्यांचे आणि रुपयांचे, लिटर आणि किलोचे, आणि उलटी चालणारी फितीची कोडी.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+export const G4_MATHS: TopicFileOut[] = [
+  buildingWithBricks(),
+  longAndShort4(),
+  tickTickTick(),
+  theJunkSeller(),
+  jugsAndMugs4(),
+  halvesAndQuarters(),
+];

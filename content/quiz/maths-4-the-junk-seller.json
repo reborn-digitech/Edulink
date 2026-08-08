@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 6 — The Junk Seller",
+  "name": "The Junk Seller",
+  "slug": "maths-4-the-junk-seller",
+  "summary": "Kiran's junk business — rates per kilo, change and savings, profit on a deal and a loan paid down week by week.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "कबाड़ीवाली",
+      "summary": "किरन का कबाड़ का धंधा — किलो के भाव, बाक़ी और बचत, सौदे का मुनाफ़ा और हफ़्ता-हफ़्ता उतरता क़र्ज़।"
+    },
+    "mr": {
+      "name": "भंगारवाली",
+      "summary": "किरणचा भंगाराचा धंदा — किलोचे भाव, उरलेले पैसे आणि बचत, सौद्याचा नफा आणि आठवड्या-आठवड्याने फिटणारे कर्ज."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Kiran sells old newspapers at ₹6 per kg. How much do 4 kg fetch?",
+      "choices": [
+        "₹10",
+        "₹20",
+        "₹64",
+        "₹24"
+      ],
+      "answerIndex": 3,
+      "solution": "Four kilos at ₹6 each: 6 × 4 = ₹24. ₹10 adds the rate and the weight — a rate multiplies, it does not add.",
+      "checkExpr": "6*4",
+      "translations": {
+        "hi": {
+          "stem": "किरन पुराने अख़बार ₹6 प्रति किलो बेचती है। 4 किलो के कितने मिलेंगे?",
+          "choices": [
+            "₹10",
+            "₹20",
+            "₹64",
+            "₹24"
+          ],
+          "solution": "₹6 के भाव चार किलो: 6 × 4 = ₹24। ₹10 भाव और वज़न को जोड़ देता है — भाव गुणा करता है, जोड़ता नहीं।"
+        },
+        "mr": {
+          "stem": "किरण जुनी वर्तमानपत्रे ₹6 प्रति किलोने विकते. 4 किलोचे किती मिळतील?",
+          "choices": [
+            "₹10",
+            "₹20",
+            "₹64",
+            "₹24"
+          ],
+          "solution": "₹6 च्या भावाने चार किलो: 6 × 4 = ₹24. ₹10 भाव आणि वजन मिळवते — भाव गुणतो, मिळवत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A customer's junk is worth ₹35. He hands Kiran a ₹50 note. How much change does she return?",
+      "choices": [
+        "₹85",
+        "₹15",
+        "₹5",
+        "₹25"
+      ],
+      "answerIndex": 1,
+      "solution": "Change is 50 − 35 = ₹15. Getting 25 subtracts 35 as if it were 25; 85 adds the note to the bill instead of paying it.",
+      "checkExpr": "50-35",
+      "translations": {
+        "hi": {
+          "stem": "एक ग्राहक का कबाड़ ₹35 का है। वह किरन को ₹50 का नोट देता है। वह कितने पैसे लौटाएगी?",
+          "choices": [
+            "₹85",
+            "₹15",
+            "₹5",
+            "₹25"
+          ],
+          "solution": "बाक़ी 50 − 35 = ₹15। 25 आना 35 को 25 मानकर घटाना है; 85 नोट को बिल में जोड़ देना है, चुकाना नहीं।"
+        },
+        "mr": {
+          "stem": "एका गिऱ्हाइकाची रद्दी ₹35 ची आहे. तो किरणला ₹50 ची नोट देतो. ती किती पैसे परत करेल?",
+          "choices": [
+            "₹85",
+            "₹15",
+            "₹5",
+            "₹25"
+          ],
+          "solution": "उरले 50 − 35 = ₹15. 25 येणे म्हणजे 35 ला 25 समजून वजा करणे; 85 म्हणजे नोट बिलात मिळवणे, चुकवणे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Kiran weighed 25 kg of iron and 15 kg of paper. What weight of junk is that altogether?",
+      "choices": [
+        "10 kg",
+        "50 kg",
+        "30 kg",
+        "40 kg"
+      ],
+      "answerIndex": 3,
+      "solution": "Together they weigh 25 + 15 = 40 kg. Answering 10 finds the difference — the question piles both heaps on one scale.",
+      "checkExpr": "25+15",
+      "translations": {
+        "hi": {
+          "stem": "किरन ने 25 किलो लोहा और 15 किलो काग़ज़ तौला। कुल कितना कबाड़ हुआ?",
+          "choices": [
+            "10 किग्रा",
+            "50 किग्रा",
+            "30 किग्रा",
+            "40 किग्रा"
+          ],
+          "solution": "दोनों मिलाकर 25 + 15 = 40 किलो। 10 कहना अंतर निकालना है — सवाल दोनों ढेर एक ही तराज़ू पर रखता है।"
+        },
+        "mr": {
+          "stem": "किरणने 25 किलो लोखंड आणि 15 किलो कागद तोलले. एकूण किती रद्दी झाली?",
+          "choices": [
+            "10 किलो",
+            "50 किलो",
+            "30 किलो",
+            "40 किलो"
+          ],
+          "solution": "दोन्ही मिळून 25 + 15 = 40 किलो. 10 म्हणणे म्हणजे फरक काढणे — प्रश्न दोन्ही ढीग एकाच काट्यावर ठेवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Kiran buys old books at ₹8 per kg and sells them at ₹11 per kg. What does she earn on each kg?",
+      "choices": [
+        "₹11",
+        "₹3",
+        "₹19",
+        "₹8"
+      ],
+      "answerIndex": 1,
+      "solution": "Earning per kg is selling minus buying: 11 − 8 = ₹3. ₹19 adds the two prices — money spent cannot join money received.",
+      "checkExpr": "11-8",
+      "translations": {
+        "hi": {
+          "stem": "किरन पुरानी किताबें ₹8 प्रति किलो ख़रीदती है और ₹11 प्रति किलो बेचती है। हर किलो पर वह कितना कमाती है?",
+          "choices": [
+            "₹11",
+            "₹3",
+            "₹19",
+            "₹8"
+          ],
+          "solution": "प्रति किलो कमाई = बेचने का दाम − ख़रीद का दाम: 11 − 8 = ₹3। ₹19 दोनों दाम जोड़ देता है — ख़र्च हुआ पैसा मिले पैसे में नहीं जुड़ता।"
+        },
+        "mr": {
+          "stem": "किरण जुनी पुस्तके ₹8 प्रति किलोने घेते आणि ₹11 प्रति किलोने विकते. दर किलोमागे ती किती कमावते?",
+          "choices": [
+            "₹11",
+            "₹3",
+            "₹19",
+            "₹8"
+          ],
+          "solution": "दर किलो कमाई = विक्रीचा भाव − खरेदीचा भाव: 11 − 8 = ₹3. ₹19 दोन्ही भाव मिळवते — खर्च झालेला पैसा मिळालेल्या पैशात मिसळत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Kiran needs ₹600 for a new weighing scale and has saved ₹340. How much more must she save?",
+      "choices": [
+        "₹260",
+        "₹940",
+        "₹340",
+        "₹360"
+      ],
+      "answerIndex": 0,
+      "solution": "Still needed: 600 − 340 = ₹260. Getting 360 slips on the borrow in the tens; 940 adds her savings to the price she is saving toward.",
+      "checkExpr": "600-340",
+      "translations": {
+        "hi": {
+          "stem": "किरन को नई तराज़ू के लिए ₹600 चाहिए और उसने ₹340 बचाए हैं। उसे और कितने बचाने होंगे?",
+          "choices": [
+            "₹260",
+            "₹940",
+            "₹340",
+            "₹360"
+          ],
+          "solution": "अभी चाहिए: 600 − 340 = ₹260। 360 आना दहाई के हासिल में फिसलना है; 940 बचत को उसी दाम में जोड़ देता है जिसके लिए बचत हो रही है।"
+        },
+        "mr": {
+          "stem": "किरणला नव्या काट्यासाठी ₹600 हवेत आणि तिने ₹340 साठवले आहेत. तिला आणखी किती साठवावे लागतील?",
+          "choices": [
+            "₹260",
+            "₹940",
+            "₹340",
+            "₹360"
+          ],
+          "solution": "अजून हवेत: 600 − 340 = ₹260. 360 येणे म्हणजे दशकाच्या हातच्यात घसरणे; 940 म्हणजे बचत त्याच किमतीत मिळवणे जिच्यासाठी बचत चालू आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Old iron sells at ₹12 per kg. What do 9 kg of iron fetch?",
+      "choices": [
+        "₹98",
+        "₹108",
+        "₹118",
+        "₹21"
+      ],
+      "answerIndex": 1,
+      "solution": "12 × 9 = 108: nine tens are 90 and nine twos are 18, together ₹108. 98 loses one ten in the carry; 21 adds the rate and the weight.",
+      "checkExpr": "12*9",
+      "translations": {
+        "hi": {
+          "stem": "पुराना लोहा ₹12 प्रति किलो बिकता है। 9 किलो लोहे के कितने मिलेंगे?",
+          "choices": [
+            "₹98",
+            "₹108",
+            "₹118",
+            "₹21"
+          ],
+          "solution": "12 × 9 = 108: नौ दहाई 90 और नौ दूनी 18, मिलाकर ₹108। 98 हासिल में एक दहाई खो देता है; 21 भाव और वज़न जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "जुने लोखंड ₹12 प्रति किलोने विकले जाते. 9 किलो लोखंडाचे किती मिळतील?",
+          "choices": [
+            "₹98",
+            "₹108",
+            "₹118",
+            "₹21"
+          ],
+          "solution": "12 × 9 = 108: नऊ दशक 90 आणि नऊ दुणे 18, मिळून ₹108. 98 हातच्यात एक दशक हरवते; 21 भाव आणि वजन मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a week Kiran collected the same 14 kg of junk on each of 6 working days. How many kg in the week?",
+      "choices": [
+        "20 kg",
+        "84 kg",
+        "74 kg",
+        "98 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "Six days of 14 kg: 14 × 6 = 84 kg. 74 drops the carry from 4 × 6; 98 multiplies by 7 — she worked six days, not the whole week.",
+      "checkExpr": "14*6",
+      "translations": {
+        "hi": {
+          "stem": "एक हफ़्ते में किरन ने 6 कामकाजी दिनों में रोज़ 14 किलो कबाड़ जमा किया। हफ़्ते में कुल कितने किलो?",
+          "choices": [
+            "20 किग्रा",
+            "84 किग्रा",
+            "74 किग्रा",
+            "98 किग्रा"
+          ],
+          "solution": "14-14 किलो के छह दिन: 14 × 6 = 84 किलो। 74 में 4 × 6 का हासिल छूटा; 98 सात से गुणा है — उसने छह दिन काम किया, पूरा हफ़्ता नहीं।"
+        },
+        "mr": {
+          "stem": "एका आठवड्यात किरणने 6 कामाच्या दिवसांत रोज 14 किलो रद्दी जमवली. आठवड्यात एकूण किती किलो?",
+          "choices": [
+            "20 किलो",
+            "84 किलो",
+            "74 किलो",
+            "98 किलो"
+          ],
+          "solution": "14-14 किलोचे सहा दिवस: 14 × 6 = 84 किलो. 74 मध्ये 4 × 6 चा हातचा सुटला; 98 म्हणजे सातने गुणणे — तिने सहा दिवस काम केले, सबंध आठवडा नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Kiran bought 20 kg of paper at ₹6 per kg and sold all of it at ₹9 per kg. What was her total profit?",
+      "choices": [
+        "₹60",
+        "₹3",
+        "₹180",
+        "₹120"
+      ],
+      "answerIndex": 0,
+      "solution": "Each kg earns 9 − 6 = ₹3, and 20 kg earn 3 × 20 = ₹60. ₹180 is what she received, not what she gained; ₹3 forgets she sold twenty kilos, not one.",
+      "checkExpr": "(9-6)*20",
+      "translations": {
+        "hi": {
+          "stem": "किरन ने ₹6 प्रति किलो पर 20 किलो काग़ज़ ख़रीदा और सारा ₹9 प्रति किलो पर बेच दिया। कुल मुनाफ़ा कितना हुआ?",
+          "choices": [
+            "₹60",
+            "₹3",
+            "₹180",
+            "₹120"
+          ],
+          "solution": "हर किलो पर 9 − 6 = ₹3, और 20 किलो पर 3 × 20 = ₹60। ₹180 वह है जो मिला, न कि जो बचा; ₹3 भूलता है कि बीस किलो बिके थे, एक नहीं।"
+        },
+        "mr": {
+          "stem": "किरणने ₹6 प्रति किलोने 20 किलो कागद घेतला आणि सारा ₹9 प्रति किलोने विकला. एकूण नफा किती झाला?",
+          "choices": [
+            "₹60",
+            "₹3",
+            "₹180",
+            "₹120"
+          ],
+          "solution": "दर किलोमागे 9 − 6 = ₹3, आणि 20 किलोंवर 3 × 20 = ₹60. ₹180 म्हणजे तिला मिळालेले, कमावलेले नव्हे; ₹3 विसरते की वीस किलो विकले, एक नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Kiran took a loan of ₹400 and repays ₹50 every week. After 4 weeks of paying, how much is still left to repay?",
+      "choices": [
+        "₹350",
+        "₹150",
+        "₹250",
+        "₹200"
+      ],
+      "answerIndex": 3,
+      "solution": "Four weeks repay 50 × 4 = ₹200, leaving 400 − 200 = ₹200. ₹350 subtracts only one week — the ₹50 goes out every week, four times over.",
+      "checkExpr": "400-50*4",
+      "translations": {
+        "hi": {
+          "stem": "किरन ने ₹400 का क़र्ज़ लिया और हर हफ़्ते ₹50 चुकाती है। 4 हफ़्ते चुकाने के बाद कितना बाक़ी रहेगा?",
+          "choices": [
+            "₹350",
+            "₹150",
+            "₹250",
+            "₹200"
+          ],
+          "solution": "चार हफ़्तों में चुके 50 × 4 = ₹200, बचा 400 − 200 = ₹200। ₹350 केवल एक हफ़्ता घटाता है — ₹50 हर हफ़्ते जाता है, चार बार।"
+        },
+        "mr": {
+          "stem": "किरणने ₹400 चे कर्ज घेतले आणि दर आठवड्याला ₹50 फेडते. 4 आठवडे फेडल्यावर किती बाकी राहील?",
+          "choices": [
+            "₹350",
+            "₹150",
+            "₹250",
+            "₹200"
+          ],
+          "solution": "चार आठवड्यांत फिटले 50 × 4 = ₹200, उरले 400 − 200 = ₹200. ₹350 फक्त एक आठवडा वजा करते — ₹50 दर आठवड्याला जातात, चार वेळा."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "One morning Kiran bought 12 kg of iron at ₹12 per kg and 8 kg of paper at ₹6 per kg. How much did she pay in all?",
+      "choices": [
+        "₹144",
+        "₹168",
+        "₹192",
+        "₹240"
+      ],
+      "answerIndex": 2,
+      "solution": "Iron: 12 × 12 = ₹144. Paper: 8 × 6 = ₹48. Together 144 + 48 = ₹192. ₹144 stops after the iron; ₹240 prices the paper at iron's rate — each junk keeps its own rate.",
+      "checkExpr": "12*12+8*6",
+      "translations": {
+        "hi": {
+          "stem": "एक सुबह किरन ने ₹12 प्रति किलो पर 12 किलो लोहा और ₹6 प्रति किलो पर 8 किलो काग़ज़ ख़रीदा। कुल कितना चुकाया?",
+          "choices": [
+            "₹144",
+            "₹168",
+            "₹192",
+            "₹240"
+          ],
+          "solution": "लोहा: 12 × 12 = ₹144। काग़ज़: 8 × 6 = ₹48। मिलाकर 144 + 48 = ₹192। ₹144 लोहे पर ही रुक जाता है; ₹240 काग़ज़ को लोहे के भाव तौलता है — हर कबाड़ का अपना भाव है।"
+        },
+        "mr": {
+          "stem": "एका सकाळी किरणने ₹12 प्रति किलोने 12 किलो लोखंड आणि ₹6 प्रति किलोने 8 किलो कागद घेतला. एकूण किती दिले?",
+          "choices": [
+            "₹144",
+            "₹168",
+            "₹192",
+            "₹240"
+          ],
+          "solution": "लोखंड: 12 × 12 = ₹144. कागद: 8 × 6 = ₹48. मिळून 144 + 48 = ₹192. ₹144 लोखंडावरच थांबते; ₹240 कागदाला लोखंडाच्या भावाने तोलते — प्रत्येक रद्दीचा भाव वेगळा."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cart costs ₹300 to buy, or ₹10 a week to hire. After how many weeks of hiring would the hire money equal the cart's full price?",
+      "choices": [
+        "3",
+        "20",
+        "40",
+        "30"
+      ],
+      "answerIndex": 3,
+      "solution": "₹10 a week reaches ₹300 in 300 ÷ 10 = 30 weeks — about seven months, and after that every hired week is money the cart would have saved. Answering 3 divides by 100: one lost zero turns seven months into three weeks.",
+      "checkExpr": "300/10",
+      "translations": {
+        "hi": {
+          "stem": "एक ठेला ₹300 में मिलता है, या ₹10 प्रति हफ़्ता किराए पर। कितने हफ़्तों के किराए में ठेले की पूरी क़ीमत जितने पैसे चले जाएँगे?",
+          "choices": [
+            "3",
+            "20",
+            "40",
+            "30"
+          ],
+          "solution": "₹10 प्रति हफ़्ता ₹300 तक 300 ÷ 10 = 30 हफ़्तों में पहुँचता है — क़रीब सात महीने, और उसके बाद किराए का हर हफ़्ता वह पैसा है जो ठेला बचा लेता। 3 कहना 100 से भाग देना है: एक छूटा शून्य सात महीनों को तीन हफ़्ते बना देता है।"
+        },
+        "mr": {
+          "stem": "एक हातगाडी ₹300 ला मिळते, किंवा ₹10 प्रति आठवडा भाड्याने. किती आठवड्यांच्या भाड्यात गाडीच्या पूर्ण किमतीइतके पैसे जातील?",
+          "choices": [
+            "3",
+            "20",
+            "40",
+            "30"
+          ],
+          "solution": "₹10 प्रति आठवडा ₹300 पर्यंत 300 ÷ 10 = 30 आठवड्यांत पोहोचतात — सुमारे सात महिने, आणि त्यानंतरचा भाड्याचा प्रत्येक आठवडा म्हणजे गाडीने वाचवला असता तो पैसा. 3 म्हणणे म्हणजे 100 ने भागणे: एक सुटलेले शून्य सात महिन्यांचे तीन आठवडे करते."
+        }
+      }
+    }
+  ]
+}
