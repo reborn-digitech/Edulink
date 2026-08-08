@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 3 — Playing with Numbers",
+  "name": "Playing with Numbers",
+  "slug": "maths-6-playing-with-numbers",
+  "summary": "Primes and perfect numbers, digit-sum tests, HCF and LCM — and the three ropes that only their highest common factor can cut fairly.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "संख्याओं के साथ खेलना",
+      "summary": "अभाज्य और पूर्ण संख्याएँ, अंक-योग की जाँचें, म.स. और ल.स. — और वे तीन रस्सियाँ जिन्हें केवल उनका महत्तम समापवर्तक ही न्याय से काट सकता है।"
+    },
+    "mr": {
+      "name": "संख्यांशी खेळ",
+      "summary": "मूळ आणि परिपूर्ण संख्या, अंक-बेरजेच्या चाचण्या, म.सा.वि. आणि ल.सा.वि. — आणि ज्यांना फक्त त्यांचा महत्तम सामाईक विभाजकच न्यायाने कापू शकतो त्या तीन दोऱ्या."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of these numbers is prime?",
+      "choices": [
+        "9",
+        "7",
+        "21",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "7 divides only by 1 and itself. The others all hide a 3: 9 = 3×3, 15 = 3×5, 21 = 3×7 — odd-looking numbers that are quietly composite.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "इनमें से कौन-सी संख्या अभाज्य है?",
+          "choices": [
+            "9",
+            "7",
+            "21",
+            "15"
+          ],
+          "solution": "7 केवल 1 और स्वयं से बँटता है। बाक़ी सबमें 3 छिपा है: 9 = 3×3, 15 = 3×5, 21 = 3×7 — देखने में विषम, चुपचाप भाज्य।"
+        },
+        "mr": {
+          "stem": "यांपैकी कोणती संख्या मूळ आहे?",
+          "choices": [
+            "9",
+            "7",
+            "21",
+            "15"
+          ],
+          "solution": "7 फक्त 1 आणि स्वतःनेच भागला जातो. बाकी साऱ्यांत 3 लपला आहे: 9 = 3×3, 15 = 3×5, 21 = 3×7 — दिसायला विषम, गुपचूप संयुक्त."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many factors does 12 have in all?",
+      "choices": [
+        "5",
+        "6",
+        "12",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The factors are 1, 2, 3, 4, 6, 12 — six of them, in the pairs 1×12, 2×6, 3×4. Counts fall short when 1 and the number itself are forgotten.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "12 के कुल कितने गुणनखंड हैं?",
+          "choices": [
+            "5",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "गुणनखंड हैं 1, 2, 3, 4, 6, 12 — छह, जोड़ों 1×12, 2×6, 3×4 में। 1 और स्वयं संख्या भूलने पर गिनती घट जाती है।"
+        },
+        "mr": {
+          "stem": "12 चे एकूण किती अवयव आहेत?",
+          "choices": [
+            "5",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "अवयव आहेत 1, 2, 3, 4, 6, 12 — सहा, 1×12, 2×6, 3×4 या जोड्यांत. 1 आणि स्वतः संख्या विसरल्यास मोजणी कमी भरते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the smallest prime number?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "2 is the smallest prime — and the only even one. 1 is not prime at all: a prime needs exactly two different factors, and 1 has only itself.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सबसे छोटी अभाज्य संख्या कौन-सी है?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "2 सबसे छोटी अभाज्य है — और इकलौती सम भी। 1 अभाज्य है ही नहीं: अभाज्य को ठीक दो अलग गुणनखंड चाहिए, और 1 के पास केवल वह स्वयं है।"
+        },
+        "mr": {
+          "stem": "सर्वांत लहान मूळ संख्या कोणती?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "2 ही सर्वांत लहान मूळ संख्या — आणि एकमेव समही. 1 मूळ नाहीच: मूळ संख्येला नेमके दोन वेगळे अवयव हवेत, आणि 1 कडे फक्त ती स्वतःच आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these numbers is divisible by 5?",
+      "choices": [
+        "85",
+        "92",
+        "73",
+        "66"
+      ],
+      "answerIndex": 0,
+      "solution": "A multiple of 5 must end in 0 or 5 — only 85 does: 85 = 5 × 17. The last digit alone settles divisibility by 5, no dividing needed.",
+      "checkExpr": "5*17",
+      "translations": {
+        "hi": {
+          "stem": "इनमें से कौन-सी संख्या 5 से विभाज्य है?",
+          "choices": [
+            "85",
+            "92",
+            "73",
+            "66"
+          ],
+          "solution": "5 का गुणज 0 या 5 पर ख़त्म होना चाहिए — केवल 85 होता है: 85 = 5 × 17। 5 की विभाज्यता अकेला आख़िरी अंक तय कर देता है, भाग देने की ज़रूरत नहीं।"
+        },
+        "mr": {
+          "stem": "यांपैकी कोणती संख्या 5 ने विभाज्य आहे?",
+          "choices": [
+            "85",
+            "92",
+            "73",
+            "66"
+          ],
+          "solution": "5 चा पट 0 वा 5 वर संपायला हवा — फक्त 85 संपतो: 85 = 5 × 17. 5 ची विभाज्यता एकटा शेवटचा अंक ठरवतो, भागण्याची गरज नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "6 is called a PERFECT number: add its factors 1, 2 and 3 (all except itself). What do they make?",
+      "choices": [
+        "12",
+        "6",
+        "7",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "1 + 2 + 3 = 6 — the number rebuilt exactly from its own parts, which is what 'perfect' means here. The next such number is 28 = 1+2+4+7+14.",
+      "checkExpr": "1+2+3",
+      "translations": {
+        "hi": {
+          "stem": "6 को पूर्ण संख्या कहते हैं: उसके गुणनखंड 1, 2 और 3 (स्वयं को छोड़) जोड़िए। योग क्या बनता है?",
+          "choices": [
+            "12",
+            "6",
+            "7",
+            "5"
+          ],
+          "solution": "1 + 2 + 3 = 6 — संख्या अपने ही हिस्सों से ठीक-ठीक फिर बनी; यही यहाँ 'पूर्ण' का अर्थ है। अगली ऐसी संख्या 28 = 1+2+4+7+14 है।"
+        },
+        "mr": {
+          "stem": "6 ला परिपूर्ण संख्या म्हणतात: तिचे अवयव 1, 2 आणि 3 (स्वतःखेरीज) मिळवा. बेरीज किती होते?",
+          "choices": [
+            "12",
+            "6",
+            "7",
+            "5"
+          ],
+          "solution": "1 + 2 + 3 = 6 — संख्या स्वतःच्याच भागांतून नेमकी पुन्हा उभी; इथे 'परिपूर्ण'चा अर्थ हाच. पुढची अशी संख्या 28 = 1+2+4+7+14."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the HCF (highest common factor) of 18 and 24?",
+      "choices": [
+        "6",
+        "72",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "18 = 6 × 3 and 24 = 6 × 4 — 6 divides both and nothing larger does. 2 and 3 are common factors too, but not the highest; 72 is their LCM, the other end of the friendship.",
+      "checkExpr": "18/3",
+      "translations": {
+        "hi": {
+          "stem": "18 और 24 का म.स. (महत्तम समापवर्तक) क्या है?",
+          "choices": [
+            "6",
+            "72",
+            "2",
+            "3"
+          ],
+          "solution": "18 = 6 × 3 और 24 = 6 × 4 — 6 दोनों को बाँटता है और उससे बड़ा कोई नहीं। 2 और 3 भी समापवर्तक हैं, पर महत्तम नहीं; 72 उनका ल.स. है — दोस्ती का दूसरा सिरा।"
+        },
+        "mr": {
+          "stem": "18 आणि 24 चा म.सा.वि. (महत्तम सामाईक विभाजक) किती?",
+          "choices": [
+            "6",
+            "72",
+            "2",
+            "3"
+          ],
+          "solution": "18 = 6 × 3 आणि 24 = 6 × 4 — 6 दोघांना भागतो आणि त्याहून मोठा कोणी नाही. 2 आणि 3 हेही सामाईक विभाजक, पण महत्तम नव्हे; 72 हा त्यांचा ल.सा.वि. — मैत्रीचे दुसरे टोक."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the LCM (lowest common multiple) of 6 and 9?",
+      "choices": [
+        "54",
+        "3",
+        "18",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Sixes: 6, 12, 18…; nines: 9, 18… — they first meet at 18. 54 = 6 × 9 is a common multiple but a wasteful one; 3 is their HCF, the opposite question.",
+      "checkExpr": "6*3",
+      "translations": {
+        "hi": {
+          "stem": "6 और 9 का ल.स. (लघुत्तम समापवर्त्य) क्या है?",
+          "choices": [
+            "54",
+            "3",
+            "18",
+            "36"
+          ],
+          "solution": "छह: 6, 12, 18…; नौ: 9, 18… — पहली मुलाक़ात 18 पर। 54 = 6 × 9 भी समापवर्त्य है पर फ़िज़ूल बड़ा; 3 उनका म.स. है — उलटा सवाल।"
+        },
+        "mr": {
+          "stem": "6 आणि 9 चा ल.सा.वि. (लघुतम सामाईक पट) किती?",
+          "choices": [
+            "54",
+            "3",
+            "18",
+            "36"
+          ],
+          "solution": "सहा: 6, 12, 18…; नऊ: 9, 18… — पहिली भेट 18 वर. 54 = 6 × 9 हाही सामाईक पट पण उधळा; 3 हा त्यांचा म.सा.वि. — उलटा प्रश्न."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "To test whether 234 is divisible by 3, add its digits. What is the digit sum?",
+      "choices": [
+        "9",
+        "234",
+        "6",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "2 + 3 + 4 = 9, and 9 divides by 3 — so 234 does too (234 = 3 × 78). The digit-sum test even shows 234 is divisible by 9 itself.",
+      "checkExpr": "2+3+4",
+      "translations": {
+        "hi": {
+          "stem": "234 की 3 से विभाज्यता जाँचने के लिए उसके अंक जोड़िए। अंक-योग क्या है?",
+          "choices": [
+            "9",
+            "234",
+            "6",
+            "12"
+          ],
+          "solution": "2 + 3 + 4 = 9, और 9 तीन से बँटता है — तो 234 भी (234 = 3 × 78)। अंक-योग की जाँच यह भी दिखा देती है कि 234 तो 9 से भी विभाज्य है।"
+        },
+        "mr": {
+          "stem": "234 ची 3 ने विभाज्यता तपासायला तिचे अंक मिळवा. अंक-बेरीज किती?",
+          "choices": [
+            "9",
+            "234",
+            "6",
+            "12"
+          ],
+          "solution": "2 + 3 + 4 = 9, आणि 9 तीनने भागला जातो — म्हणून 234 ही (234 = 3 × 78). अंक-बेरजेची चाचणी हेही दाखवते की 234 तर 9 नेही विभाज्य आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "8 and 15 are called CO-PRIME. What is their HCF?",
+      "choices": [
+        "3",
+        "2",
+        "5",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "8 = 2×2×2 and 15 = 3×5 share no prime at all, so their only common factor is 1 — that is what co-prime means. Neither needs to BE prime: 8 and 15 are both composite, yet strangers.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "8 और 15 को सह-अभाज्य कहते हैं। उनका म.स. क्या है?",
+          "choices": [
+            "3",
+            "2",
+            "5",
+            "1"
+          ],
+          "solution": "8 = 2×2×2 और 15 = 3×5 में कोई साझा अभाज्य नहीं, तो इकलौता समापवर्तक 1 है — सह-अभाज्य का यही अर्थ है। दोनों का अभाज्य होना ज़रूरी नहीं: 8 और 15 दोनों भाज्य हैं, फिर भी अजनबी।"
+        },
+        "mr": {
+          "stem": "8 आणि 15 ला सह-मूळ म्हणतात. त्यांचा म.सा.वि. किती?",
+          "choices": [
+            "3",
+            "2",
+            "5",
+            "1"
+          ],
+          "solution": "8 = 2×2×2 आणि 15 = 3×5 यांत कोणताही सामाईक मूळ अवयव नाही, म्हणून एकुलता सामाईक विभाजक 1 — सह-मूळचा अर्थ हाच. दोघांनी मूळ असण्याची गरज नाही: 8 आणि 15 दोन्ही संयुक्त, तरी अनोळखी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the smallest number divisible by both 12 and 15?",
+      "choices": [
+        "30",
+        "180",
+        "60",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Twelves: 12, 24, 36, 48, 60…; fifteens: 15, 30, 45, 60 — first meeting at 60. 180 = 12 × 15 overshoots because 12 and 15 share a 3; 30 takes 15's double but 12 does not divide it.",
+      "checkExpr": "12*5",
+      "translations": {
+        "hi": {
+          "stem": "12 और 15 दोनों से विभाज्य सबसे छोटी संख्या कौन-सी है?",
+          "choices": [
+            "30",
+            "180",
+            "60",
+            "3"
+          ],
+          "solution": "बारह: 12, 24, 36, 48, 60…; पंद्रह: 15, 30, 45, 60 — पहली मुलाक़ात 60 पर। 180 = 12 × 15 इसलिए आगे निकल जाता है कि 12 और 15 में 3 साझा है; 30 पंद्रह का दुगना है पर 12 उसे नहीं बाँटता।"
+        },
+        "mr": {
+          "stem": "12 आणि 15 दोघांनी विभाज्य असणारी सर्वांत लहान संख्या कोणती?",
+          "choices": [
+            "30",
+            "180",
+            "60",
+            "3"
+          ],
+          "solution": "बारा: 12, 24, 36, 48, 60…; पंधरा: 15, 30, 45, 60 — पहिली भेट 60 वर. 180 = 12 × 15 पुढे जाते कारण 12 आणि 15 मध्ये 3 सामाईक आहे; 30 पंधराची दुप्पट पण 12 तिला भागत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Three ropes measure 24 m, 36 m and 60 m. They must be cut into pieces all of the SAME length, as long as possible, with nothing left over. How long is each piece?",
+      "choices": [
+        "6 m",
+        "4 m",
+        "24 m",
+        "12 m"
+      ],
+      "answerIndex": 3,
+      "solution": "The piece must divide all three lengths — the longest such is their HCF. 24 = 12×2, 36 = 12×3, 60 = 12×5: pieces of 12 m, giving 2 + 3 + 5 = 10 pieces with nothing wasted. 6 m works too but the question asked for the longest; 24 fails on the 36 m rope.",
+      "checkExpr": "60/5",
+      "translations": {
+        "hi": {
+          "stem": "तीन रस्सियाँ 24, 36 और 60 मीटर की हैं। उन्हें एक-सी, अधिकतम लंबाई के टुकड़ों में काटना है, कुछ बचे नहीं। हर टुकड़ा कितना लंबा होगा?",
+          "choices": [
+            "6 मीटर",
+            "4 मीटर",
+            "24 मीटर",
+            "12 मीटर"
+          ],
+          "solution": "टुकड़े को तीनों लंबाइयाँ बाँटनी होंगी — ऐसा सबसे लंबा उनका म.स. है। 24 = 12×2, 36 = 12×3, 60 = 12×5: 12-12 मीटर के टुकड़े, कुल 2 + 3 + 5 = 10 टुकड़े, कुछ बर्बाद नहीं। 6 मीटर भी चलता है पर पूछा सबसे लंबा था; 24 छत्तीस मीटर वाली रस्सी पर अटक जाता है।"
+        },
+        "mr": {
+          "stem": "तीन दोऱ्या 24, 36 आणि 60 मीटरच्या आहेत. त्यांचे सारख्या, जास्तीत जास्त लांबीच्या तुकड्यांत, काही न उरता तुकडे करायचे आहेत. प्रत्येक तुकडा किती लांब?",
+          "choices": [
+            "6 मीटर",
+            "4 मीटर",
+            "24 मीटर",
+            "12 मीटर"
+          ],
+          "solution": "तुकड्याने तिन्ही लांब्या भागल्या पाहिजेत — असा सर्वांत लांब म्हणजे त्यांचा म.सा.वि. 24 = 12×2, 36 = 12×3, 60 = 12×5: 12-12 मीटरचे तुकडे, एकूण 2 + 3 + 5 = 10 तुकडे, काही वाया नाही. 6 मीटरही चालते पण विचारले सर्वांत लांब होते; 24 छत्तीस मीटरच्या दोरीवर अडते."
+        }
+      }
+    }
+  ]
+}

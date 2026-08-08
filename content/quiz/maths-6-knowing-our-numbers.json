@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 1 — Knowing Our Numbers",
+  "name": "Knowing Our Numbers",
+  "slug": "maths-6-knowing-our-numbers",
+  "summary": "Lakhs and crores, successors and Roman numerals, digit-built extremes and estimates — numbers grown big and still obedient.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "अपनी संख्याओं को जानना",
+      "summary": "लाख और करोड़, परवर्ती और रोमन अंक, अंकों से गढ़ी चरम संख्याएँ और अनुमान — बड़ी होकर भी आज्ञाकारी संख्याएँ।"
+    },
+    "mr": {
+      "name": "आपल्या संख्या जाणून घेणे",
+      "summary": "लाख आणि कोटी, पुढील संख्या आणि रोमन अंक, अंकांतून घडवलेली टोके आणि अंदाज — मोठ्या होऊनही आज्ञाधारक संख्या."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Write 'one lakh twenty thousand' in figures.",
+      "choices": [
+        "12000",
+        "102000",
+        "120000",
+        "1020000"
+      ],
+      "answerIndex": 2,
+      "solution": "One lakh is 1,00,000 and twenty thousand is 20,000: together 1,20,000. 1,02,000 puts the twenty in the thousands' ones; 12,000 loses the lakh entirely.",
+      "checkExpr": "100000+20000",
+      "translations": {
+        "hi": {
+          "stem": "'एक लाख बीस हज़ार' को अंकों में लिखिए।",
+          "choices": [
+            "12000",
+            "102000",
+            "120000",
+            "1020000"
+          ],
+          "solution": "एक लाख यानी 1,00,000 और बीस हज़ार यानी 20,000: मिलाकर 1,20,000। 1,02,000 बीस को हज़ार की इकाई में रख देता है; 12,000 लाख ही खो बैठता है।"
+        },
+        "mr": {
+          "stem": "'एक लाख वीस हजार' अंकांत लिहा.",
+          "choices": [
+            "12000",
+            "102000",
+            "120000",
+            "1020000"
+          ],
+          "solution": "एक लाख म्हणजे 1,00,000 आणि वीस हजार म्हणजे 20,000: मिळून 1,20,000. 1,02,000 विसाला हजाराच्या एककात ठेवते; 12,000 लाखच गमावते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the greatest 4-digit number?",
+      "choices": [
+        "9990",
+        "9999",
+        "10000",
+        "1000"
+      ],
+      "answerIndex": 1,
+      "solution": "Fill every place with the biggest digit: 9999. 10000 has five digits — it is the very next number, standing just across the border.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सबसे बड़ी 4-अंकीय संख्या कौन-सी है?",
+          "choices": [
+            "9990",
+            "9999",
+            "10000",
+            "1000"
+          ],
+          "solution": "हर स्थान पर सबसे बड़ा अंक भरिए: 9999। 10000 में पाँच अंक हैं — वह अगली ही संख्या है, सीमा के ठीक उस पार खड़ी।"
+        },
+        "mr": {
+          "stem": "सर्वांत मोठी 4-अंकी संख्या कोणती?",
+          "choices": [
+            "9990",
+            "9999",
+            "10000",
+            "1000"
+          ],
+          "solution": "प्रत्येक स्थानावर सर्वांत मोठा अंक भरा: 9999. 10000 मध्ये पाच अंक — ती लगेच पुढची संख्या, सीमेच्या नेमकी पलीकडे उभी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One crore equals how many lakhs?",
+      "choices": [
+        "10",
+        "50",
+        "1000",
+        "100"
+      ],
+      "answerIndex": 3,
+      "solution": "A crore is 1,00,00,000 and a lakh is 1,00,000: the crore holds 100 of them. 10 stops at ten lakhs — that is only a 'million', halfway up the Indian ladder.",
+      "checkExpr": "10000000/100000",
+      "translations": {
+        "hi": {
+          "stem": "एक करोड़ में कितने लाख होते हैं?",
+          "choices": [
+            "10",
+            "50",
+            "1000",
+            "100"
+          ],
+          "solution": "करोड़ यानी 1,00,00,000 और लाख यानी 1,00,000: करोड़ में ऐसे 100 समाते हैं। 10 दस लाख पर रुक जाता है — वह भारतीय सीढ़ी का आधा ही है।"
+        },
+        "mr": {
+          "stem": "एका कोटीत किती लाख असतात?",
+          "choices": [
+            "10",
+            "50",
+            "1000",
+            "100"
+          ],
+          "solution": "कोटी म्हणजे 1,00,00,000 आणि लाख म्हणजे 1,00,000: कोटीत असे 100 मावतात. 10 दहा लाखांवर थांबते — ती भारतीय शिडीची अर्धीच वाट."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the successor of 99,999?",
+      "choices": [
+        "999990",
+        "100000",
+        "99998",
+        "100001"
+      ],
+      "answerIndex": 1,
+      "solution": "Add one: 99,999 + 1 = 1,00,000 — every 9 rolls over and a lakh is born. 99,998 walks backwards to the predecessor.",
+      "checkExpr": "99999+1",
+      "translations": {
+        "hi": {
+          "stem": "99,999 की परवर्ती (अगली) संख्या क्या है?",
+          "choices": [
+            "999990",
+            "100000",
+            "99998",
+            "100001"
+          ],
+          "solution": "एक जोड़िए: 99,999 + 1 = 1,00,000 — हर 9 पलटता है और लाख जन्म लेता है। 99,998 पीछे चलकर पूर्ववर्ती पर पहुँचता है।"
+        },
+        "mr": {
+          "stem": "99,999 ची पुढील संख्या कोणती?",
+          "choices": [
+            "999990",
+            "100000",
+            "99998",
+            "100001"
+          ],
+          "solution": "एक मिळवा: 99,999 + 1 = 1,00,000 — प्रत्येक 9 उलटतो आणि लाख जन्मतो. 99,998 मागे जाऊन आधीच्या संख्येवर पोहोचते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The Roman numeral XL stands for which number?",
+      "choices": [
+        "60",
+        "15",
+        "90",
+        "40"
+      ],
+      "answerIndex": 3,
+      "solution": "X before L means ten LESS than fifty: 40. Written LX it would be ten more — 60; the smaller symbol's side decides whether it adds or subtracts.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रोमन अंक XL किस संख्या के लिए है?",
+          "choices": [
+            "60",
+            "15",
+            "90",
+            "40"
+          ],
+          "solution": "L से पहले X यानी पचास से दस कम: 40। LX लिखते तो दस ज़्यादा — 60; छोटे चिह्न की दिशा तय करती है कि वह जुड़ेगा या घटेगा।"
+        },
+        "mr": {
+          "stem": "XL हा रोमन अंक कोणत्या संख्येसाठी आहे?",
+          "choices": [
+            "60",
+            "15",
+            "90",
+            "40"
+          ],
+          "solution": "L च्या आधी X म्हणजे पन्नासाहून दहा कमी: 40. LX लिहिले तर दहा जास्त — 60; लहान चिन्हाची बाजू ठरवते की ते मिळणार की वजा होणार."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Estimate 486 + 219 by rounding each to the nearest hundred first.",
+      "choices": [
+        "600",
+        "800",
+        "705",
+        "700"
+      ],
+      "answerIndex": 3,
+      "solution": "486 rounds to 500 and 219 to 200: estimate 700 — close to the true 705, found in a breath. 705 is the exact sum; estimation trades that last precision for speed.",
+      "checkExpr": "500+200",
+      "translations": {
+        "hi": {
+          "stem": "486 + 219 का अनुमान लगाइए — पहले हर एक को निकटतम सौ तक पूर्णांकित करके।",
+          "choices": [
+            "600",
+            "800",
+            "705",
+            "700"
+          ],
+          "solution": "486 पूर्णांकित होकर 500 और 219 होकर 200: अनुमान 700 — सच्चे 705 के पास, एक साँस में मिला। 705 सटीक योग है; अनुमान वही आख़िरी बारीकी रफ़्तार से बदल लेता है।"
+        },
+        "mr": {
+          "stem": "486 + 219 चा अंदाज करा — आधी प्रत्येकाला जवळच्या शतकात पूर्णांकित करून.",
+          "choices": [
+            "600",
+            "800",
+            "705",
+            "700"
+          ],
+          "solution": "486 पूर्णांकित होऊन 500 आणि 219 होऊन 200: अंदाज 700 — खऱ्या 705 च्या जवळ, एका दमात मिळालेला. 705 ही नेमकी बेरीज; अंदाज तीच शेवटची सूक्ष्मता वेगाच्या बदल्यात देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A town's census counted 68,724 people. Rounded to the nearest thousand, what is the population?",
+      "choices": [
+        "70000",
+        "69000",
+        "68700",
+        "68000"
+      ],
+      "answerIndex": 1,
+      "solution": "The hundreds digit is 7, so 68,724 rounds UP to 69,000. 68,000 rounds down against the rule; 68,700 rounds to the nearest hundred — a finer sieve than asked.",
+      "checkExpr": "69*1000",
+      "translations": {
+        "hi": {
+          "stem": "जनगणना में एक क़स्बे के 68,724 लोग गिने गए। निकटतम हज़ार तक पूर्णांकित जनसंख्या कितनी?",
+          "choices": [
+            "70000",
+            "69000",
+            "68700",
+            "68000"
+          ],
+          "solution": "सैकड़े का अंक 7 है, तो 68,724 ऊपर 69,000 पर पूर्णांकित होता है। 68,000 नियम के विरुद्ध नीचे जाता है; 68,700 निकटतम सौ पर है — माँगे से महीन छलनी।"
+        },
+        "mr": {
+          "stem": "जनगणनेत एका गावाची 68,724 माणसे मोजली. जवळच्या हजारात पूर्णांकित लोकसंख्या किती?",
+          "choices": [
+            "70000",
+            "69000",
+            "68700",
+            "68000"
+          ],
+          "solution": "शतकाचा अंक 7 आहे, म्हणून 68,724 वर 69,000 वर पूर्णांकित होते. 68,000 नियमाविरुद्ध खाली जाते; 68,700 जवळच्या शतकावर — मागितल्याहून बारीक चाळणी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Using each of the digits 5, 0, 2, 8 exactly once, what is the difference between the greatest and the smallest 4-digit numbers you can make?",
+      "choices": [
+        "6372",
+        "6462",
+        "8520",
+        "6520"
+      ],
+      "answerIndex": 1,
+      "solution": "Greatest: digits descending — 8520. Smallest: ascending, but 0 cannot lead, so 2058. Difference: 8520 − 2058 = 6462. Writing 0258 as the smallest breaks the 4-digit rule — a number does not begin with nothing.",
+      "checkExpr": "8520-2058",
+      "translations": {
+        "hi": {
+          "stem": "अंक 5, 0, 2, 8 हर एक ठीक एक बार लेकर, बनने वाली सबसे बड़ी और सबसे छोटी 4-अंकीय संख्याओं का अंतर क्या है?",
+          "choices": [
+            "6372",
+            "6462",
+            "8520",
+            "6520"
+          ],
+          "solution": "सबसे बड़ी: अंक उतरते क्रम में — 8520। सबसे छोटी: चढ़ते क्रम में, पर 0 आगे नहीं रह सकता, तो 2058। अंतर: 8520 − 2058 = 6462। 0258 को सबसे छोटी लिखना 4-अंक का नियम तोड़ता है — संख्या शून्य से शुरू नहीं होती।"
+        },
+        "mr": {
+          "stem": "5, 0, 2, 8 हे अंक प्रत्येकी नेमके एकदा घेऊन, होणाऱ्या सर्वांत मोठ्या आणि सर्वांत लहान 4-अंकी संख्यांचा फरक किती?",
+          "choices": [
+            "6372",
+            "6462",
+            "8520",
+            "6520"
+          ],
+          "solution": "सर्वांत मोठी: अंक उतरत्या क्रमाने — 8520. सर्वांत लहान: चढत्या क्रमाने, पण 0 पुढे राहू शकत नाही, म्हणून 2058. फरक: 8520 − 2058 = 6462. 0258 ला सर्वांत लहान लिहिणे 4-अंकी नियम मोडते — संख्या शून्याने सुरू होत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A factory turns out 2,825 screws every day. How many screws in 4 days?",
+      "choices": [
+        "11300",
+        "2829",
+        "11200",
+        "8475"
+      ],
+      "answerIndex": 0,
+      "solution": "2825 × 4 = 2800 × 4 + 25 × 4 = 11,200 + 100 = 11,300. 11,200 drops the hundred from the 25s; 8475 multiplies by 3.",
+      "checkExpr": "2825*4",
+      "translations": {
+        "hi": {
+          "stem": "एक कारख़ाना रोज़ 2,825 पेंच बनाता है। 4 दिनों में कितने पेंच?",
+          "choices": [
+            "11300",
+            "2829",
+            "11200",
+            "8475"
+          ],
+          "solution": "2825 × 4 = 2800 × 4 + 25 × 4 = 11,200 + 100 = 11,300। 11,200 पच्चीसों का सैकड़ा गिरा देता है; 8475 तीन से गुणा है।"
+        },
+        "mr": {
+          "stem": "एक कारखाना रोज 2,825 स्क्रू बनवतो. 4 दिवसांत किती स्क्रू?",
+          "choices": [
+            "11300",
+            "2829",
+            "11200",
+            "8475"
+          ],
+          "solution": "2825 × 4 = 2800 × 4 + 25 × 4 = 11,200 + 100 = 11,300. 11,200 पंचविसांचे शतक पाडते; 8475 म्हणजे तीनने गुणणे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A long-route bus covers 285 km every day. How far does it run in a 30-day month?",
+      "choices": [
+        "855",
+        "8850",
+        "315",
+        "8550"
+      ],
+      "answerIndex": 3,
+      "solution": "285 × 30 = 285 × 3 tens = 855 tens = 8,550 km. 855 forgets the ten; 315 adds the days to the distance.",
+      "checkExpr": "285*30",
+      "translations": {
+        "hi": {
+          "stem": "लंबे रूट की बस रोज़ 285 किमी चलती है। 30 दिन के महीने में वह कितना चलती है?",
+          "choices": [
+            "855",
+            "8850",
+            "315",
+            "8550"
+          ],
+          "solution": "285 × 30 = 285 × 3 दहाई = 855 दहाई = 8,550 किमी। 855 दहाई भूल जाता है; 315 दिनों को दूरी में जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "लांब मार्गाची बस रोज 285 किमी धावते. 30 दिवसांच्या महिन्यात ती किती धावते?",
+          "choices": [
+            "855",
+            "8850",
+            "315",
+            "8550"
+          ],
+          "solution": "285 × 30 = 285 × 3 दशक = 855 दशक = 8,550 किमी. 855 दशक विसरते; 315 दिवस अंतरात मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A press prints 11,980 copies of a 12-page newspaper daily. How many PAGES does it print each day — and is that more or less than a lakh?",
+      "choices": [
+        "14376",
+        "11992",
+        "131780",
+        "143760"
+      ],
+      "answerIndex": 3,
+      "solution": "12 × 11,980 = 12 × 12,000 − 12 × 20 = 1,44,000 − 240 = 1,43,760 pages — well past a lakh, every single day. 14,376 loses a zero; 11,992 adds the pages to the copies. Big numbers stop being scary once you build them from round ones.",
+      "checkExpr": "12*11980",
+      "translations": {
+        "hi": {
+          "stem": "एक प्रेस रोज़ 12 पन्नों के अख़बार की 11,980 प्रतियाँ छापती है। वह रोज़ कितने पन्ने छापती है — और यह लाख से ज़्यादा है या कम?",
+          "choices": [
+            "14376",
+            "11992",
+            "131780",
+            "143760"
+          ],
+          "solution": "12 × 11,980 = 12 × 12,000 − 12 × 20 = 1,44,000 − 240 = 1,43,760 पन्ने — लाख के ख़ूब पार, हर रोज़। 14,376 एक शून्य खोता है; 11,992 पन्नों को प्रतियों में जोड़ देता है। बड़ी संख्याएँ डरावनी नहीं रहतीं जब उन्हें गोल संख्याओं से गढ़ा जाए।"
+        },
+        "mr": {
+          "stem": "एक छापखाना रोज 12 पानी वर्तमानपत्राच्या 11,980 प्रती छापतो. तो रोज किती पाने छापतो — आणि ते लाखाहून जास्त की कमी?",
+          "choices": [
+            "14376",
+            "11992",
+            "131780",
+            "143760"
+          ],
+          "solution": "12 × 11,980 = 12 × 12,000 − 12 × 20 = 1,44,000 − 240 = 1,43,760 पाने — लाखाच्या खूप पलीकडे, दररोज. 14,376 एक शून्य गमावते; 11,992 पाने प्रतींत मिळवते. मोठ्या संख्या गोल संख्यांतून उभारल्या की भीतिदायक राहत नाहीत."
+        }
+      }
+    }
+  ]
+}
