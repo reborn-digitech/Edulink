@@ -889,4 +889,876 @@ export const G5_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Every Drop Counts (old water wisdom, new water fairness)    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-every-drop-counts",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 6 — Every Drop Counts",
+      hi: "अध्याय 6 — बूँद-बूँद क़ीमती",
+      mr: "प्रकरण 6 — थेंब थेंब मोलाचा",
+    },
+    name: { en: "Every Drop Counts", hi: "बूँद-बूँद क़ीमती", mr: "थेंब थेंब मोलाचा" },
+    summary: {
+      en: "Stepwells and village johads that caught the rain for centuries, taps that reach some lanes and not others — water's old wisdom and new fairness.",
+      hi: "सदियों बारिश सहेजती बावड़ियाँ और गाँव के जोहड़, कुछ गलियों तक पहुँचते और कुछ तक नहीं पहुँचते नल — पानी की पुरानी सूझ और नया इंसाफ़।",
+      mr: "शतकानुशतके पाऊस साठवणाऱ्या बारवा आणि गावतळी, काही गल्ल्यांत पोहोचणारे आणि काहींत न पोहोचणारे नळ — पाण्याचे जुने शहाणपण आणि नवा न्याय.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "stepwell",
+        name: { en: "The stepwell (bawdi)", hi: "बावड़ी", mr: "बारव" },
+        kind: "old-water-way",
+        prompt: {
+          en: "Which old desert building leads you DOWN wide stone steps to the water — cool and shaded even in June?",
+          hi: "रेगिस्तान की कौन-सी पुरानी इमारत चौड़ी पत्थर की सीढ़ियों से आपको नीचे पानी तक ले जाती है — जून में भी ठंडी और छायादार?",
+          mr: "वाळवंटातली कोणती जुनी वास्तू रुंद दगडी पायऱ्यांनी तुम्हाला खाली पाण्यापर्यंत नेते — जूनमध्येही थंड आणि सावलीची?",
+        },
+        statement: {
+          en: "The stepwell is a well with wide steps leading down to its water — built centuries ago, cool and shaded deep inside.",
+          hi: "बावड़ी वह कुआँ है जिसके पानी तक चौड़ी सीढ़ियाँ उतरती हैं — सदियों पहले बनी, भीतर गहरे में ठंडी और छायादार।",
+          mr: "बारव म्हणजे जिच्या पाण्यापर्यंत रुंद पायऱ्या उतरतात अशी विहीर — शतकांपूर्वी बांधलेली, आत खोलवर थंड आणि सावलीची.",
+        },
+        detail: {
+          en: "Travellers of old rested on its steps, and whole caravans watered there.",
+          hi: "पुराने ज़माने के मुसाफ़िर उसकी सीढ़ियों पर सुस्ताते थे, और पूरे कारवाँ वहाँ पानी पीते थे।",
+          mr: "जुन्या काळचे प्रवासी तिच्या पायऱ्यांवर विसावत, आणि अख्खे तांडे तिथे पाणी पीत.",
+        },
+        extra: {
+          en: "Many stand dry today — not because the rain stopped, but because the caring did.",
+          hi: "आज कई सूखी खड़ी हैं — इसलिए नहीं कि बारिश रुक गई, बल्कि इसलिए कि देखभाल रुक गई।",
+          mr: "आज कित्येक कोरड्या उभ्या आहेत — पाऊस थांबला म्हणून नव्हे, तर निगा थांबली म्हणून.",
+        },
+        pair: {
+          left: { en: "The stepwell", hi: "बावड़ी", mr: "बारव" },
+          right: { en: "steps down to water", hi: "पानी तक उतरती सीढ़ियाँ", mr: "पाण्यापर्यंत उतरणाऱ्या पायऱ्या" },
+        },
+      },
+      {
+        id: "johad",
+        name: { en: "The village johad", hi: "गाँव का जोहड़", mr: "गावतळे (जोहड)" },
+        kind: "old-water-way",
+        prompt: {
+          en: "Which village-made pond catches the whole monsoon behind a low earthen bank, and quietly refills the wells around it all year?",
+          hi: "गाँव का बनाया कौन-सा तालाब मिट्टी की नीची पाल के पीछे पूरा मानसून समेट लेता है, और साल भर आसपास के कुओं को चुपचाप भरता रहता है?",
+          mr: "गावाने बांधलेले कोणते तळे मातीच्या सखल बांधामागे अख्खा पावसाळा साठवते, आणि वर्षभर भोवतालच्या विहिरी गुपचूप भरत राहते?",
+        },
+        statement: {
+          en: "The johad is a village pond behind an earthen bank — it holds the monsoon's rain and seeps it slowly into the wells around.",
+          hi: "जोहड़ मिट्टी की पाल के पीछे बना गाँव का तालाब है — वह मानसून की बारिश थामता है और धीरे-धीरे आसपास के कुओं में रिसाता है।",
+          mr: "जोहड म्हणजे मातीच्या बांधामागचे गावतळे — ते पावसाळ्याचा पाऊस धरून ठेवते आणि हळूहळू भोवतालच्या विहिरींत झिरपवते.",
+        },
+        pair: {
+          left: { en: "The johad", hi: "जोहड़", mr: "जोहड" },
+          right: {
+            en: "the monsoon, banked for the year",
+            hi: "साल भर के लिए सहेजा मानसून",
+            mr: "वर्षभरासाठी साठवलेला पावसाळा",
+          },
+        },
+      },
+      {
+        id: "pipedtap",
+        name: { en: "The piped tap", hi: "नल का पानी", mr: "नळाचे पाणी" },
+        kind: "new-water-way",
+        prompt: {
+          en: "In the newer city lanes, what brings water straight into the kitchen at the turn of a wrist?",
+          hi: "शहर की नई गलियों में कलाई घुमाते ही रसोई तक पानी क्या पहुँचा देता है?",
+          mr: "शहराच्या नव्या गल्ल्यांत मनगट फिरवताच स्वयंपाकघरात पाणी काय पोहोचवते?",
+        },
+        statement: {
+          en: "The piped tap brings water into the house itself — those who have one hardly think of where the water came from.",
+          hi: "नल पानी घर के भीतर ही ले आता है — जिनके पास है, वे शायद ही सोचते हैं कि पानी आया कहाँ से।",
+          mr: "नळ पाणी थेट घरातच आणतो — ज्यांच्याकडे आहे, ते पाणी कुठून आले याचा क्वचितच विचार करतात.",
+        },
+      },
+      {
+        id: "tankerqueue",
+        name: { en: "The tanker queue", hi: "टैंकर की क़तार", mr: "टँकरची रांग" },
+        kind: "new-water-way",
+        prompt: {
+          en: "In the same city's poorer lanes, where do pots line up from dawn, waiting for a lorry of water?",
+          hi: "उसी शहर की ग़रीब गलियों में घड़े भोर से कहाँ क़तार लगाते हैं, पानी की लॉरी की बाट जोहते?",
+          mr: "त्याच शहराच्या गरीब गल्ल्यांत घागरी पहाटेपासून कुठे रांग लावतात, पाण्याच्या गाडीची वाट पाहत?",
+        },
+        statement: {
+          en: "At the tanker queue, pots wait from dawn — the same city that pipes water to some lanes sends others a lorry twice a week.",
+          hi: "टैंकर की क़तार में घड़े भोर से खड़े रहते हैं — जो शहर कुछ गलियों में नल पहुँचाता है, वही दूसरों को हफ़्ते में दो बार लॉरी भेजता है।",
+          mr: "टँकरच्या रांगेत घागरी पहाटेपासून उभ्या असतात — जे शहर काही गल्ल्यांत नळ पोहोचवते, तेच इतरांना आठवड्यातून दोनदा गाडी पाठवते.",
+        },
+        pair: {
+          left: { en: "The tanker queue", hi: "टैंकर की क़तार", mr: "टँकरची रांग" },
+          right: {
+            en: "pots waiting since dawn",
+            hi: "भोर से खड़े घड़े",
+            mr: "पहाटेपासून उभ्या घागरी",
+          },
+        },
+      },
+      {
+        id: "waterkeepers",
+        name: {
+          en: "The old lake-keepers",
+          hi: "पुराने तालाब-रखवाले",
+          mr: "जुने तळे-राखणदार",
+        },
+        kind: "old-water-way",
+        prompt: {
+          en: "Before pipes came, who cleaned the lakes, mended the banks and shared out the water — the whole village doing it together?",
+          hi: "नलों से पहले तालाब कौन साफ़ करता था, पालें कौन सुधारता था और पानी कौन बाँटता था — पूरा गाँव मिलकर?",
+          mr: "नळ येण्याआधी तळी कोण साफ करत असे, बांध कोण दुरुस्त करत असे आणि पाणी कोण वाटत असे — अख्खे गाव मिळून?",
+        },
+        statement: {
+          en: "The village itself kept its lakes — cleaning, mending banks and sharing water were everyone's yearly duty.",
+          hi: "गाँव अपने तालाब ख़ुद सँभालता था — सफ़ाई, पाल की मरम्मत और पानी का बँटवारा सबका सालाना फ़र्ज़ था।",
+          mr: "गाव आपली तळी स्वतः राखत असे — सफाई, बांधाची डागडुजी आणि पाण्याची वाटणी हे साऱ्यांचे वार्षिक कर्तव्य होते.",
+        },
+        pair: {
+          left: { en: "The lake-keepers", hi: "तालाब-रखवाले", mr: "तळे-राखणदार" },
+          right: {
+            en: "everyone's yearly duty",
+            hi: "सबका सालाना फ़र्ज़",
+            mr: "साऱ्यांचे वार्षिक कर्तव्य",
+          },
+        },
+      },
+      {
+        id: "bucketbath",
+        name: { en: "The bucket bath", hi: "बाल्टी का स्नान", mr: "बादलीची आंघोळ" },
+        kind: "saving-habit",
+        prompt: {
+          en: "Which way of bathing uses a counted amount of water — two or three bucketfuls — while a running shower never counts at all?",
+          hi: "नहाने का कौन-सा ढंग गिना हुआ पानी लेता है — दो-तीन बाल्टियाँ — जबकि बहता फ़व्वारा कभी गिनता ही नहीं?",
+          mr: "आंघोळीची कोणती रीत मोजके पाणी घेते — दोन-तीन बादल्या — तर वाहणारा शॉवर कधी मोजतच नाही?",
+        },
+        statement: {
+          en: "A bucket bath spends a counted two or three bucketfuls — a running shower pours away far more without anyone counting.",
+          hi: "बाल्टी का स्नान गिनी हुई दो-तीन बाल्टियाँ ख़र्चता है — बहता फ़व्वारा बिना किसी गिनती के कहीं ज़्यादा बहा देता है।",
+          mr: "बादलीची आंघोळ मोजक्या दोन-तीन बादल्या खर्चते — वाहणारा शॉवर कोणीही न मोजता कितीतरी जास्त वाहवतो.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into the OLD water ways and the NEW: the stepwell, the tanker lorry, the johad, the piped tap. Which sorting is right?",
+          hi: "इन्हें पानी के पुराने तरीक़ों और नए में छाँटिए: बावड़ी, टैंकर-लॉरी, जोहड़, नल। कौन-सी छँटाई सही है?",
+          mr: "यांची पाण्याच्या जुन्या रीती आणि नव्या अशी वर्गवारी करा: बारव, टँकर-गाडी, जोहड, नळ. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Old: stepwell, johad · New: piped tap, tanker lorry",
+            hi: "पुराने: बावड़ी, जोहड़ · नए: नल, टैंकर-लॉरी",
+            mr: "जुने: बारव, जोहड · नवे: नळ, टँकर-गाडी",
+          },
+          {
+            en: "Old: piped tap, johad · New: stepwell, tanker lorry",
+            hi: "पुराने: नल, जोहड़ · नए: बावड़ी, टैंकर-लॉरी",
+            mr: "जुने: नळ, जोहड · नवे: बारव, टँकर-गाडी",
+          },
+          {
+            en: "Old: stepwell, tanker lorry · New: johad, piped tap",
+            hi: "पुराने: बावड़ी, टैंकर-लॉरी · नए: जोहड़, नल",
+            mr: "जुने: बारव, टँकर-गाडी · नवे: जोहड, नळ",
+          },
+          {
+            en: "Old: tanker lorry, piped tap · New: stepwell, johad",
+            hi: "पुराने: टैंकर-लॉरी, नल · नए: बावड़ी, जोहड़",
+            mr: "जुने: टँकर-गाडी, नळ · नवे: बारव, जोहड",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The stepwell and the johad caught and kept LOCAL rain, built and tended by the people who drank from them. The tap and the tanker bring water from far away, run by someone else. The deep difference is not age but ownership: the old ways made every village its own waterworks.",
+          hi: "बावड़ी और जोहड़ स्थानीय बारिश समेटते-सहेजते थे — उन्हीं के बनाए और सँवारे हुए जो उनसे पीते थे। नल और टैंकर दूर से पानी लाते हैं, किसी और के चलाए हुए। गहरा फ़र्क़ उम्र का नहीं, अपनेपन का है: पुराने तरीक़ों ने हर गाँव को उसका अपना जलकल बना दिया था।",
+          mr: "बारव आणि जोहड स्थानिक पाऊस साठवत-जपत — त्यांतून पिणाऱ्यांनीच बांधलेले आणि राखलेले. नळ आणि टँकर दुरून पाणी आणतात, दुसऱ्या कोणी चालवलेले. खोल फरक वयाचा नव्हे, मालकीचा आहे: जुन्या रीतींनी प्रत्येक गावाला त्याचे स्वतःचे पाणीखाते केले होते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The old bawdis and lakes served for centuries — and dried up in the very decades when piped water arrived. What most likely dried them?",
+          hi: "पुरानी बावड़ियाँ और तालाब सदियों काम आए — और ठीक उन्हीं दशकों में सूख गए जब नल का पानी आया। उन्हें किसने सुखाया होगा?",
+          mr: "जुन्या बारवा आणि तळी शतकानुशतके उपयोगी पडली — आणि नेमक्या नळाचे पाणी आले त्याच दशकांत आटली. ती बहुधा कशाने आटली?",
+        },
+        choices: [
+          {
+            en: "Neglect — once taps flowed, people stopped cleaning and mending the old works, and unfed, untended, they silted and died",
+            hi: "उपेक्षा — नल बहने लगे तो लोगों ने पुराने जल-ठिकानों की सफ़ाई-मरम्मत छोड़ दी, और बिन देखभाल वे गाद से भरकर मर गए",
+            mr: "दुर्लक्ष — नळ वाहू लागले तसे लोकांनी जुन्या जलवास्तूंची सफाई-डागडुजी सोडली, आणि निगेविना त्या गाळाने भरून मेल्या",
+          },
+          {
+            en: "The rain itself stopped falling on the old lakes",
+            hi: "पुराने तालाबों पर बारिश ही गिरनी बंद हो गई",
+            mr: "जुन्या तळ्यांवर पाऊसच पडेनासा झाला",
+          },
+          {
+            en: "Pipes secretly drain the old wells",
+            hi: "नल चुपके से पुराने कुओं को खींच लेते हैं",
+            mr: "नळ गुपचूप जुन्या विहिरी ओढून घेतात",
+          },
+          {
+            en: "Old stone simply wears out in a few centuries",
+            hi: "पुराना पत्थर कुछ सदियों में यों ही घिस जाता है",
+            mr: "जुना दगड काही शतकांत असाच झिजतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The rain kept falling; the hands stopped coming. A johad lives on yearly desilting, a bawdi on cleaning — work the village did while it drank from them. The tap broke that bond: water now 'came from somewhere', so the old works fed no one and no one fed them. The chapter's warning is quiet but sharp — when the pipes fail in a dry year, the forgotten lakes are no longer there to catch you.",
+          hi: "बारिश गिरती रही; हाथ आने बंद हो गए। जोहड़ सालाना गाद-सफ़ाई पर जीता है, बावड़ी झाड़-पोंछ पर — वह काम जो गाँव तब करता था जब उन्हीं से पीता था। नल ने वह रिश्ता तोड़ दिया: पानी अब 'कहीं से आ जाता है', तो पुराने ठिकाने किसी को पिलाते नहीं और उन्हें कोई सँवारता नहीं। अध्याय की चेतावनी धीमी पर पैनी है — सूखे साल में नल दग़ा दें, तो भुलाए तालाब आपको थामने के लिए वहाँ नहीं होते।",
+          mr: "पाऊस पडत राहिला; हात येईनासे झाले. जोहड वार्षिक गाळ-उपशावर जगते, बारव झाडलोटीवर — गाव त्यांतून पीत असे तेव्हा करत असलेले काम. नळाने ते नाते तोडले: पाणी आता 'कुठून तरी येते', म्हणून जुन्या वास्तू कोणाला पाजत नाहीत आणि त्यांना कोणी जपत नाही. धड्याचा इशारा हळू पण धारदार — कोरड्या वर्षी नळ दगा देतील, तेव्हा विसरलेली तळी तुम्हाला झेलायला तिथे नसतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In one city, one lane gets water all day from taps while another waits for a twice-a-week tanker. The chapter asks us to see this as a question of what?",
+          hi: "एक ही शहर में एक गली को नलों से दिन भर पानी मिलता है जबकि दूसरी हफ़्ते में दो बार के टैंकर की बाट जोहती है। अध्याय इसे किस चीज़ का सवाल मानने को कहता है?",
+          mr: "एकाच शहरात एका गल्लीला नळांतून दिवसभर पाणी मिळते तर दुसरी आठवड्यातून दोनदाच्या टँकरची वाट पाहते. धडा याकडे कशाचा प्रश्न म्हणून पाहायला सांगतो?",
+        },
+        choices: [
+          {
+            en: "Fairness — water is everyone's need, and a city that gives some lanes plenty and others queues has divided it unjustly",
+            hi: "इंसाफ़ — पानी सबकी ज़रूरत है, और जो शहर कुछ गलियों को भरपूर और बाक़ियों को क़तारें देता है, उसने उसे बेइंसाफ़ी से बाँटा है",
+            mr: "न्याय — पाणी ही साऱ्यांची गरज आहे, आणि जे शहर काही गल्ल्यांना भरपूर आणि इतरांना रांगा देते, त्याने ते अन्यायाने वाटले आहे",
+          },
+          {
+            en: "Luck — some lanes are simply born fortunate",
+            hi: "क़िस्मत — कुछ गलियाँ बस ख़ुशनसीब पैदा होती हैं",
+            mr: "नशीब — काही गल्ल्या नुसत्या भाग्यवान जन्मतात",
+          },
+          {
+            en: "Taste — tanker water and tap water taste the same anyway",
+            hi: "स्वाद — टैंकर और नल के पानी का स्वाद तो एक ही है",
+            mr: "चव — टँकर आणि नळाच्या पाण्याची चव सारखीच असते",
+          },
+          {
+            en: "Geography — pipes cannot physically reach every lane",
+            hi: "भूगोल — नल हर गली तक पहुँच ही नहीं सकते",
+            mr: "भूगोल — नळ प्रत्येक गल्लीपर्यंत पोहोचूच शकत नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The pipes reach the rich lane and stop — not because iron cannot turn corners, but because the city chose where to lay it. When a need as basic as water is plentiful on one side of a road and rationed on the other, the chapter wants the reader to name that plainly: not luck, not geography — fairness, owed and not yet paid.",
+          hi: "नल अमीर गली तक पहुँचकर रुक जाते हैं — इसलिए नहीं कि लोहा मोड़ नहीं मुड़ सकता, बल्कि इसलिए कि शहर ने चुना कि उसे कहाँ बिछाना है। जब पानी जैसी बुनियादी ज़रूरत सड़क के एक ओर भरपूर और दूसरी ओर राशन पर हो, तो अध्याय चाहता है कि पढ़ने वाला उसे साफ़ नाम दे: न क़िस्मत, न भूगोल — इंसाफ़, जो बक़ाया है और अभी चुकाया नहीं गया।",
+          mr: "नळ श्रीमंत गल्लीपर्यंत पोहोचून थांबतात — लोखंड वळणे घेऊ शकत नाही म्हणून नव्हे, तर शहराने ते कुठे टाकायचे हे निवडले म्हणून. पाण्यासारखी मूलभूत गरज रस्त्याच्या एका बाजूला भरपूर आणि दुसऱ्या बाजूला मोजून मिळते, तेव्हा धड्याला हवे आहे की वाचणाऱ्याने त्याला स्पष्ट नाव द्यावे: नशीब नव्हे, भूगोल नव्हे — न्याय, जो देणे आहे आणि अजून दिलेला नाही.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — A Treat for Mosquitoes (malaria and the fight against it)   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-a-treat-for-mosquitoes",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 8 — A Treat for Mosquitoes",
+      hi: "अध्याय 8 — मच्छरों की दावत",
+      mr: "प्रकरण 8 — डासांची मेजवानी",
+    },
+    name: { en: "A Treat for Mosquitoes", hi: "मच्छरों की दावत", mr: "डासांची मेजवानी" },
+    summary: {
+      en: "Malaria's shivering fever, the still water where mosquitoes breed, the blood test that names the illness — and the foods that rebuild weak blood.",
+      hi: "मलेरिया का कँपकँपाता बुख़ार, ठहरा पानी जहाँ मच्छर पलते हैं, बीमारी का नाम बताती ख़ून की जाँच — और कमज़ोर ख़ून को फिर गढ़ते भोजन।",
+      mr: "मलेरियाचा हुडहुडी भरणारा ताप, डास पैदा होतात ते साचलेले पाणी, आजाराचे नाव सांगणारी रक्त-तपासणी — आणि अशक्त रक्त पुन्हा घडवणारे अन्न.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "malaria",
+        name: { en: "Malaria", hi: "मलेरिया", mr: "मलेरिया" },
+        kind: "illness",
+        prompt: {
+          en: "Which illness arrives with shivering cold, then burning fever — carried from person to person by a mosquito's bite?",
+          hi: "कौन-सी बीमारी पहले कँपकँपाती ठंड, फिर तपते बुख़ार के साथ आती है — मच्छर के डंक से एक इंसान से दूसरे तक पहुँचती?",
+          mr: "कोणता आजार आधी हुडहुडी भरणारी थंडी, मग तापणारा ताप घेऊन येतो — डासाच्या दंशाने एका माणसाकडून दुसऱ्याकडे पोहोचणारा?",
+        },
+        statement: {
+          en: "Malaria brings shivering followed by high fever, and it spreads through the bite of a mosquito.",
+          hi: "मलेरिया कँपकँपी और फिर तेज़ बुख़ार लाता है, और मच्छर के काटने से फैलता है।",
+          mr: "मलेरिया हुडहुडी आणि मग चढा ताप आणतो, आणि डास चावल्याने पसरतो.",
+        },
+        detail: {
+          en: "Anophela mosquitoes pick up the malaria germ from one person's blood and leave it in the next.",
+          hi: "एनोफ़िलीज़ मच्छर मलेरिया का कीटाणु एक के ख़ून से उठाते हैं और अगले के ख़ून में छोड़ जाते हैं।",
+          mr: "अ‍ॅनॉफिलीस डास मलेरियाचा जंतू एकाच्या रक्तातून उचलतात आणि पुढच्याच्या रक्तात सोडतात.",
+        },
+        extra: {
+          en: "In the old days whole army camps and villages were laid low by it.",
+          hi: "पुराने ज़माने में पूरे फ़ौजी पड़ाव और गाँव इससे बिछ जाते थे।",
+          mr: "जुन्या काळी अख्खे लष्करी तळ आणि गावे यामुळे आडवी होत.",
+        },
+        pair: {
+          left: { en: "Malaria", hi: "मलेरिया", mr: "मलेरिया" },
+          right: {
+            en: "shivering, then burning",
+            hi: "पहले कँपकँपी, फिर तपन",
+            mr: "आधी हुडहुडी, मग ताप",
+          },
+        },
+      },
+      {
+        id: "stillwater",
+        name: { en: "Standing water", hi: "ठहरा पानी", mr: "साचलेले पाणी" },
+        kind: "breeding",
+        prompt: {
+          en: "Coolers, open drums, puddles, choked drains — what do all these offer a mosquito looking for a nursery?",
+          hi: "कूलर, खुले ड्रम, डबरे, रुकी नालियाँ — ये सब पालना खोजते मच्छर को क्या दे देते हैं?",
+          mr: "कूलर, उघडे ड्रम, डबकी, तुंबलेली गटारे — हे सारे पाळणाघर शोधणाऱ्या डासाला काय देतात?",
+        },
+        statement: {
+          en: "Mosquitoes lay their eggs in standing water — any still pool, from a cooler tray to a puddle, becomes their nursery.",
+          hi: "मच्छर ठहरे पानी में अंडे देते हैं — कूलर की ट्रे से डबरे तक, हर रुका पानी उनका पालना बन जाता है।",
+          mr: "डास साचलेल्या पाण्यात अंडी घालतात — कूलरच्या ट्रेपासून डबक्यापर्यंत, प्रत्येक थांबलेले पाणी त्यांचे पाळणाघर होते.",
+        },
+        pair: {
+          left: { en: "Standing water", hi: "ठहरा पानी", mr: "साचलेले पाणी" },
+          right: { en: "the mosquito's nursery", hi: "मच्छर का पालना", mr: "डासाचे पाळणाघर" },
+        },
+      },
+      {
+        id: "larvae",
+        name: { en: "The wriggling larvae", hi: "कुलबुलाते लारवा", mr: "वळवळणाऱ्या अळ्या" },
+        kind: "breeding",
+        prompt: {
+          en: "Look closely at still water in a drain — what are the tiny wrigglers that will grow wings within days?",
+          hi: "नाली के ठहरे पानी को ग़ौर से देखिए — वे नन्हे कुलबुलाते जीव क्या हैं जो कुछ ही दिनों में पंख पा लेंगे?",
+          mr: "गटारातल्या साचलेल्या पाण्यात निरखून पाहा — काही दिवसांतच पंख मिळवणारे ते इवले वळवळे जीव काय आहेत?",
+        },
+        statement: {
+          en: "The wrigglers in still water are mosquito larvae — hatched from eggs, days away from flying and biting.",
+          hi: "ठहरे पानी के कुलबुले मच्छर के लारवा हैं — अंडों से निकले, उड़ने और काटने से बस कुछ दिन दूर।",
+          mr: "साचलेल्या पाण्यातले वळवळे म्हणजे डासांच्या अळ्या — अंड्यांतून निघालेल्या, उडण्या-चावण्यापासून काहीच दिवस दूर.",
+        },
+      },
+      {
+        id: "bloodtest",
+        name: { en: "The blood test", hi: "ख़ून की जाँच", mr: "रक्त-तपासणी" },
+        kind: "defence",
+        prompt: {
+          en: "Fever can have many causes. What does the doctor order — one drop examined under a lens — to know if malaria's germ is truly there?",
+          hi: "बुख़ार के कई कारण हो सकते हैं। डॉक्टर क्या करवाते हैं — शीशे तले परखी एक बूँद — यह जानने को कि मलेरिया का कीटाणु सचमुच है या नहीं?",
+          mr: "तापाची अनेक कारणे असू शकतात. डॉक्टर काय करायला सांगतात — भिंगाखाली तपासलेला एक थेंब — मलेरियाचा जंतू खरेच आहे का हे कळण्यासाठी?",
+        },
+        statement: {
+          en: "The blood test shows whether malaria's germ is in the blood — one drop under the microscope names the illness for certain.",
+          hi: "ख़ून की जाँच बताती है कि मलेरिया का कीटाणु ख़ून में है या नहीं — सूक्ष्मदर्शी तले एक बूँद बीमारी का नाम पक्का कर देती है।",
+          mr: "रक्त-तपासणी सांगते की मलेरियाचा जंतू रक्तात आहे का — सूक्ष्मदर्शकाखालचा एक थेंब आजाराचे नाव पक्के करतो.",
+        },
+        pair: {
+          left: { en: "The blood test", hi: "ख़ून की जाँच", mr: "रक्त-तपासणी" },
+          right: {
+            en: "the illness named for certain",
+            hi: "पक्का हुआ बीमारी का नाम",
+            mr: "पक्के झालेले आजाराचे नाव",
+          },
+        },
+      },
+      {
+        id: "net",
+        name: { en: "The mosquito net", hi: "मच्छरदानी", mr: "मच्छरदाणी" },
+        kind: "defence",
+        prompt: {
+          en: "What guards a sleeper all night without smoke, spray or electricity — just mesh hung over the bed?",
+          hi: "बिना धुएँ, दवा या बिजली के रात भर सोने वाले की रखवाली क्या करती है — बिस्तर पर तनी बस एक जाली?",
+          mr: "धूर, फवारा वा वीज न लागता रात्रभर झोपणाऱ्याची राखण काय करते — पलंगावर ताणलेली नुसती जाळी?",
+        },
+        statement: {
+          en: "The mosquito net is a mesh the mosquito cannot pass — the sleeper inside is safe all night, cost-free and smoke-free.",
+          hi: "मच्छरदानी वह जाली है जिसे मच्छर पार नहीं कर सकता — भीतर सोने वाला रात भर सुरक्षित, बिना ख़र्च, बिना धुएँ।",
+          mr: "मच्छरदाणी ही डासाला पार करता न येणारी जाळी — आत झोपणारा रात्रभर सुरक्षित, खर्चाविना, धुराविना.",
+        },
+        pair: {
+          left: { en: "The mosquito net", hi: "मच्छरदानी", mr: "मच्छरदाणी" },
+          right: { en: "a mesh wall for the night", hi: "रात की जाली-दीवार", mr: "रात्रीची जाळी-भिंत" },
+        },
+      },
+      {
+        id: "anaemia",
+        name: { en: "Anaemia (weak blood)", hi: "अनीमिया (ख़ून की कमी)", mr: "अ‍ॅनिमिया (रक्ताची कमतरता)" },
+        kind: "illness",
+        prompt: {
+          en: "Always tired, pale, breathless on the stairs — which condition of TOO-LITTLE-IRON blood is this, common where meals lack green vegetables?",
+          hi: "हरदम थकान, पीलापन, सीढ़ियों पर फूलती साँस — लोहे की कमी वाले ख़ून की यह कौन-सी दशा है, जो हरी सब्ज़ियों से ख़ाली थालियों में आम है?",
+          mr: "सदा थकवा, फिकटपणा, जिन्यावर लागणारी धाप — लोहाच्या कमतरतेच्या रक्ताची ही कोणती अवस्था, हिरव्या भाज्या नसलेल्या ताटांत सर्रास?",
+        },
+        statement: {
+          en: "Anaemia is blood too poor in iron — it makes a person tired, pale and breathless, and shows in a haemoglobin test.",
+          hi: "अनीमिया लोहे की कमी वाला ख़ून है — इंसान थका, पीला और हाँफता रहता है, और हीमोग्लोबिन की जाँच में यह पकड़ में आता है।",
+          mr: "अ‍ॅनिमिया म्हणजे लोह कमी पडलेले रक्त — माणूस थकलेला, फिकट आणि धापणारा राहतो, आणि हिमोग्लोबिनच्या तपासणीत ते सापडते.",
+        },
+        detail: {
+          en: "Green leafy vegetables and jaggery are iron's cheap, everyday sources.",
+          hi: "हरी पत्तेदार सब्ज़ियाँ और गुड़ लोहे के सस्ते, रोज़मर्रा के स्रोत हैं।",
+          mr: "हिरव्या पालेभाज्या आणि गूळ हे लोहाचे स्वस्त, रोजचे स्रोत आहेत.",
+        },
+        extra: {
+          en: "Malaria too can leave the blood weakened — the two illnesses often walk together.",
+          hi: "मलेरिया भी ख़ून को कमज़ोर छोड़ जाता है — दोनों बीमारियाँ अक्सर साथ-साथ चलती हैं।",
+          mr: "मलेरियाही रक्त अशक्त करून जातो — दोन्ही आजार अनेकदा हातात हात घालून चालतात.",
+        },
+        pair: {
+          left: { en: "Anaemia", hi: "अनीमिया", mr: "अ‍ॅनिमिया" },
+          right: {
+            en: "iron-poor, tired blood",
+            hi: "लोहे से ख़ाली, थका ख़ून",
+            mr: "लोह कमी, थकलेले रक्त",
+          },
+        },
+      },
+      {
+        id: "ironfoods",
+        name: {
+          en: "Jaggery and green leaves",
+          hi: "गुड़ और हरी पत्तियाँ",
+          mr: "गूळ आणि हिरवा पाला",
+        },
+        kind: "defence",
+        prompt: {
+          en: "Which two humble foods from the village shop and the field put iron back into weak blood?",
+          hi: "गाँव की दुकान और खेत की कौन-सी दो सीधी-सादी चीज़ें कमज़ोर ख़ून में लोहा लौटाती हैं?",
+          mr: "गावच्या दुकानातल्या आणि शेतातल्या कोणत्या दोन साध्या गोष्टी अशक्त रक्तात लोह परत आणतात?",
+        },
+        statement: {
+          en: "Jaggery and green leafy vegetables are everyday iron-givers — cheap food that rebuilds weak blood meal by meal.",
+          hi: "गुड़ और हरी पत्तेदार सब्ज़ियाँ रोज़ के लोहा-दाता हैं — सस्ता भोजन जो थाली-दर-थाली कमज़ोर ख़ून गढ़ता है।",
+          mr: "गूळ आणि हिरव्या पालेभाज्या हे रोजचे लोह-दाते — जेवणामागून जेवण अशक्त रक्त घडवणारे स्वस्त अन्न.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 6,
+        stem: {
+          en: "The health worker's first order in a malaria-hit lane is strange: 'Empty every cooler, drum and tyre of its water.' Why attack WATER to fight a FEVER?",
+          hi: "मलेरिया-ग्रस्त गली में स्वास्थ्य-कर्मी का पहला आदेश अजीब है: 'हर कूलर, ड्रम और टायर का पानी उलट दो।' बुख़ार से लड़ने को पानी पर वार क्यों?",
+          mr: "मलेरिया झालेल्या गल्लीत आरोग्य-सेवकाचा पहिला आदेश विचित्र वाटतो: 'प्रत्येक कूलर, ड्रम आणि टायरातले पाणी ओता.' तापाशी लढायला पाण्यावर हल्ला का?",
+        },
+        choices: [
+          {
+            en: "Because the fever's carrier is born in that water — empty the still pools and the next generation of mosquitoes never takes wing",
+            hi: "क्योंकि बुख़ार का वाहक उसी पानी में जन्मता है — ठहरे पानी उलट दो, तो मच्छरों की अगली पीढ़ी पंख ही नहीं पाती",
+            mr: "कारण तापाचा वाहक त्याच पाण्यात जन्मतो — साचलेले पाणी ओता, म्हणजे डासांच्या पुढच्या पिढीला पंखच फुटत नाहीत",
+          },
+          {
+            en: "Because drinking cooler water causes malaria",
+            hi: "क्योंकि कूलर का पानी पीने से मलेरिया होता है",
+            mr: "कारण कूलरचे पाणी प्यायल्याने मलेरिया होतो",
+          },
+          {
+            en: "Because wet lanes give people chills and fever",
+            hi: "क्योंकि गीली गलियाँ लोगों को ठंड और बुख़ार देती हैं",
+            mr: "कारण ओल्या गल्ल्या माणसांना थंडी-ताप देतात",
+          },
+          {
+            en: "Because water attracts the fever germ from the air",
+            hi: "क्योंकि पानी हवा से बुख़ार का कीटाणु खींचता है",
+            mr: "कारण पाणी हवेतला तापाचा जंतू ओढते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Malaria travels person → mosquito → person, and every mosquito begins as a wriggler in still water. Medicines cure one patient; an emptied drum stops a hundred future biters at once. Fighting the breeding place instead of the bite is the cheapest medicine ever poured out of a cooler tray.",
+          hi: "मलेरिया इंसान → मच्छर → इंसान चलता है, और हर मच्छर ठहरे पानी के कुलबुले से शुरू होता है। दवा एक मरीज़ को ठीक करती है; एक उलटा ड्रम आने वाले सौ काटने वालों को एक साथ रोक देता है। डंक की जगह पालने पर वार — कूलर की ट्रे से उलटी गई अब तक की सबसे सस्ती दवा है।",
+          mr: "मलेरिया माणूस → डास → माणूस असा चालतो, आणि प्रत्येक डास साचलेल्या पाण्यातल्या वळवळ्यापासून सुरू होतो. औषध एका रुग्णाला बरे करते; ओतलेला एक ड्रम येणाऱ्या शंभर चावणाऱ्यांना एकदम थांबवतो. दंशाऐवजी पाळणाघरावर हल्ला — कूलरच्या ट्रेतून ओतलेले आजवरचे सर्वांत स्वस्त औषध.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two children have fever. The doctor treats one for malaria only AFTER a blood test, though the fever looks the same in both. Why insist on the test?",
+          hi: "दो बच्चों को बुख़ार है। डॉक्टर एक का मलेरिया-इलाज ख़ून की जाँच के बाद ही शुरू करते हैं, जबकि दोनों का बुख़ार एक-सा दिखता है। जाँच की ज़िद क्यों?",
+          mr: "दोन मुलांना ताप आहे. डॉक्टर एकाचा मलेरिया-उपचार रक्त-तपासणीनंतरच सुरू करतात, वास्तविक दोघांचा ताप सारखाच दिसतो. तपासणीचा आग्रह का?",
+        },
+        choices: [
+          {
+            en: "Fevers look alike but come from different causes — the test shows WHICH germ it is, so the right medicine goes to the right illness",
+            hi: "बुख़ार एक-से दिखते हैं पर कारण अलग-अलग होते हैं — जाँच बताती है कीटाणु कौन-सा है, ताकि सही दवा सही बीमारी तक जाए",
+            mr: "ताप सारखे दिसतात पण कारणे वेगळी असतात — तपासणी सांगते जंतू कोणता, म्हणजे योग्य औषध योग्य आजाराकडे जाते",
+          },
+          {
+            en: "Tests earn the clinic money",
+            hi: "जाँचों से क्लिनिक की कमाई होती है",
+            mr: "तपासण्यांतून दवाखान्याची कमाई होते",
+          },
+          {
+            en: "Malaria medicine works better after a needle prick",
+            hi: "सुई लगने के बाद मलेरिया की दवा बेहतर काम करती है",
+            mr: "सुई टोचल्यावर मलेरियाचे औषध अधिक चांगले चालते",
+          },
+          {
+            en: "The test itself cures mild malaria",
+            hi: "जाँच ख़ुद हलका मलेरिया ठीक कर देती है",
+            mr: "तपासणी स्वतःच सौम्य मलेरिया बरा करते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A fever is a signal, not a name: typhoid, flu and malaria all light the same lamp. Malaria medicine does nothing for a virus, and wrong medicine wastes days while the real illness grows. One drop of blood under a lens replaces guessing with knowing — which is the whole difference between treating and hoping.",
+          hi: "बुख़ार संकेत है, नाम नहीं: मियादी बुख़ार, फ़्लू और मलेरिया सब वही बत्ती जलाते हैं। मलेरिया की दवा वायरस पर कुछ नहीं करती, और ग़लत दवा वे दिन गँवा देती है जिनमें असली बीमारी बढ़ती है। शीशे तले ख़ून की एक बूँद अंदाज़े की जगह जानकारी रख देती है — इलाज और उम्मीद के बीच का पूरा फ़र्क़ यही है।",
+          mr: "ताप हा इशारा आहे, नाव नव्हे: विषमज्वर, फ्लू आणि मलेरिया सारे तोच दिवा लावतात. मलेरियाचे औषध विषाणूवर काही करत नाही, आणि चुकीचे औषध खरा आजार वाढतो ते दिवस वाया घालवते. भिंगाखालचा रक्ताचा एक थेंब अंदाजाच्या जागी ज्ञान ठेवतो — उपचार आणि आशा यांतला सगळा फरक हाच.",
+        },
+      },
+      {
+        level: 5,
+        stem: {
+          en: "Match the defence to what it defeats: A-the net over the bed, B-the emptied drum, C-jaggery and green leaves. Which trio is right?",
+          hi: "बचाव को उससे मिलाइए जिसे वह हराता है: अ-बिस्तर की मच्छरदानी, ब-उलटा ड्रम, स-गुड़ और हरी पत्तियाँ। कौन-सी तिकड़ी सही है?",
+          mr: "बचाव तो कशाला हरवतो त्याच्याशी जुळवा: अ-पलंगावरची मच्छरदाणी, ब-ओतलेला ड्रम, क-गूळ आणि हिरवा पाला. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the night's bites · B: the breeding water · C: weak, iron-poor blood",
+            hi: "अ: रात के डंक · ब: पलने का पानी · स: कमज़ोर, लोहा-हीन ख़ून",
+            mr: "अ: रात्रीचे दंश · ब: पैदाशीचे पाणी · क: अशक्त, लोह-हीन रक्त",
+          },
+          {
+            en: "A: weak blood · B: the night's bites · C: the breeding water",
+            hi: "अ: कमज़ोर ख़ून · ब: रात के डंक · स: पलने का पानी",
+            mr: "अ: अशक्त रक्त · ब: रात्रीचे दंश · क: पैदाशीचे पाणी",
+          },
+          {
+            en: "A: the breeding water · B: weak blood · C: the night's bites",
+            hi: "अ: पलने का पानी · ब: कमज़ोर ख़ून · स: रात के डंक",
+            mr: "अ: पैदाशीचे पाणी · ब: अशक्त रक्त · क: रात्रीचे दंश",
+          },
+          {
+            en: "A: the night's bites · B: weak blood · C: the breeding water",
+            hi: "अ: रात के डंक · ब: कमज़ोर ख़ून · स: पलने का पानी",
+            mr: "अ: रात्रीचे दंश · ब: अशक्त रक्त · क: पैदाशीचे पाणी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each defence has its own front: the net blocks tonight's bite, the emptied drum cancels next week's mosquitoes, and iron-rich food rebuilds the blood the illness drained. Fighting malaria well means fighting on all three at once.",
+          hi: "हर बचाव का अपना मोर्चा है: मच्छरदानी आज रात का डंक रोकती है, उलटा ड्रम अगले हफ़्ते के मच्छर रद्द करता है, और लोहे वाला भोजन वह ख़ून फिर गढ़ता है जो बीमारी ने निचोड़ा। मलेरिया से ठीक से लड़ना यानी तीनों मोर्चों पर एक साथ लड़ना।",
+          mr: "प्रत्येक बचावाची स्वतःची आघाडी: मच्छरदाणी आजची रात्र वाचवते, ओतलेला ड्रम पुढच्या आठवड्याचे डास रद्द करतो, आणि लोहयुक्त अन्न आजाराने शोषलेले रक्त पुन्हा घडवते. मलेरियाशी नीट लढणे म्हणजे तिन्ही आघाड्यांवर एकदम लढणे.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Sunita in Space (weightless days, a borderless Earth)      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-5-sunita-in-space",
+    subject: "EVS",
+    classLevel: 5,
+    chapter: {
+      en: "Chapter 11 — Sunita in Space",
+      hi: "अध्याय 11 — अंतरिक्ष में सुनीता",
+      mr: "प्रकरण 11 — अवकाशात सुनीता",
+    },
+    name: { en: "Sunita in Space", hi: "अंतरिक्ष में सुनीता", mr: "अवकाशात सुनीता" },
+    summary: {
+      en: "Sunita Williams' months without weight — floating meals, strapped-down sleep, hair that stands on end, and an Earth with no lines drawn on it.",
+      hi: "सुनीता विलियम्स के भारहीन महीने — तैरता खाना, बाँधकर सोना, खड़े हो जाते बाल, और वह पृथ्वी जिस पर कोई रेखाएँ खिंची नहीं हैं।",
+      mr: "सुनीता विल्यम्सचे वजनाविनाचे महिने — तरंगते जेवण, बांधून झोपणे, उभे राहणारे केस, आणि जिच्यावर कोणत्याही रेषा आखलेल्या नाहीत अशी पृथ्वी.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "sunita",
+        name: { en: "Sunita Williams", hi: "सुनीता विलियम्स", mr: "सुनीता विल्यम्स" },
+        kind: "person",
+        prompt: {
+          en: "Which astronaut of Indian origin lived months aboard the space station, and answered schoolchildren's letters about life without weight?",
+          hi: "भारतीय मूल की कौन-सी अंतरिक्ष-यात्री महीनों अंतरिक्ष स्टेशन पर रहीं, और भारहीन जीवन पर स्कूली बच्चों की चिट्ठियों के जवाब दिए?",
+          mr: "भारतीय वंशाची कोणती अंतराळवीर महिनोंमहिने अवकाश स्थानकावर राहिली, आणि वजनाविनाच्या जगण्याबद्दल शाळकरी मुलांच्या पत्रांना उत्तरे दिली?",
+        },
+        statement: {
+          en: "Sunita Williams, an astronaut of Indian origin, spent months on the space station and told schoolchildren what weightless life is like.",
+          hi: "भारतीय मूल की अंतरिक्ष-यात्री सुनीता विलियम्स महीनों अंतरिक्ष स्टेशन पर रहीं और स्कूली बच्चों को बताया कि भारहीन जीवन कैसा होता है।",
+          mr: "भारतीय वंशाची अंतराळवीर सुनीता विल्यम्स महिनोंमहिने अवकाश स्थानकावर राहिली आणि तिने शाळकरी मुलांना वजनाविनाचे जगणे कसे असते ते सांगितले.",
+        },
+        pair: {
+          left: { en: "Sunita Williams", hi: "सुनीता विलियम्स", mr: "सुनीता विल्यम्स" },
+          right: {
+            en: "months without weight",
+            hi: "भारहीनता के महीने",
+            mr: "वजनाविनाचे महिने",
+          },
+        },
+      },
+      {
+        id: "floating",
+        name: {
+          en: "Floating in the station",
+          hi: "स्टेशन में तैरना",
+          mr: "स्थानकात तरंगणे",
+        },
+        kind: "space-life",
+        prompt: {
+          en: "In the space station nobody walks — how does everyone move from room to room?",
+          hi: "अंतरिक्ष स्टेशन में कोई चलता नहीं — सब कमरे-से-कमरे कैसे जाते हैं?",
+          mr: "अवकाश स्थानकात कोणी चालत नाही — सारे खोलीतून खोलीत कसे जातात?",
+        },
+        statement: {
+          en: "In the station everything and everyone floats — astronauts push gently off a wall and drift where they want to go.",
+          hi: "स्टेशन में सब कुछ और सब लोग तैरते हैं — यात्री दीवार को हलके से धकेलते हैं और जहाँ जाना हो, बहते चले जाते हैं।",
+          mr: "स्थानकात सगळे काही आणि सगळे जण तरंगतात — प्रवासी भिंतीला हलकेच ढकलतात आणि हवे तिथे तरंगत जातात.",
+        },
+        detail: {
+          en: "A dropped pencil does not fall — it hangs where you let it go, or drifts away on the air.",
+          hi: "छूटी पेंसिल गिरती नहीं — जहाँ छोड़ी वहीं टँगी रहती है, या हवा के साथ बह जाती है।",
+          mr: "सुटलेली पेन्सिल पडत नाही — सोडली तिथेच टांगलेली राहते, किंवा हवेबरोबर वाहत जाते.",
+        },
+        extra: {
+          en: "To stay at a desk, astronauts hook their feet under a rail.",
+          hi: "मेज़ पर टिके रहने को यात्री पैर रेलिंग में फँसा लेते हैं।",
+          mr: "टेबलाशी टिकून राहायला प्रवासी पाय कठड्यात अडकवतात.",
+        },
+        pair: {
+          left: { en: "Moving in the station", hi: "स्टेशन में चलना-फिरना", mr: "स्थानकातली ये-जा" },
+          right: {
+            en: "a push, then a drift",
+            hi: "एक धक्का, फिर बहाव",
+            mr: "एक ढकल, मग तरंगणे",
+          },
+        },
+      },
+      {
+        id: "drinking",
+        name: {
+          en: "Drinking water in space",
+          hi: "अंतरिक्ष में पानी पीना",
+          mr: "अवकाशात पाणी पिणे",
+        },
+        kind: "space-life",
+        prompt: {
+          en: "Why does no astronaut pour water into a glass — what does spilled water do up there?",
+          hi: "कोई यात्री गिलास में पानी क्यों नहीं उँडेलता — वहाँ छलका पानी क्या करता है?",
+          mr: "कोणी प्रवासी ग्लासात पाणी का ओतत नाही — तिथे सांडलेले पाणी काय करते?",
+        },
+        statement: {
+          en: "Poured water will not stay in a glass up there — it gathers into floating blobs, so astronauts sip through straws from closed packets.",
+          hi: "वहाँ उँडेला पानी गिलास में नहीं ठहरता — तैरती बूँद-गोलियों में सिमट जाता है, इसलिए यात्री बंद थैलियों से नली लगाकर पीते हैं।",
+          mr: "तिथे ओतलेले पाणी ग्लासात राहत नाही — तरंगत्या थेंब-गोळ्यांत जमते, म्हणून प्रवासी बंद पिशव्यांतून नळीने पितात.",
+        },
+        pair: {
+          left: { en: "Water in space", hi: "अंतरिक्ष का पानी", mr: "अवकाशातले पाणी" },
+          right: { en: "floating round blobs", hi: "तैरती गोल बूँदें", mr: "तरंगते गोल थेंब" },
+        },
+      },
+      {
+        id: "sleeping",
+        name: {
+          en: "Sleeping strapped in",
+          hi: "बाँधकर सोना",
+          mr: "बांधून झोपणे",
+        },
+        kind: "space-life",
+        prompt: {
+          en: "Why do astronauts zip into sleeping bags fixed to the wall before closing their eyes?",
+          hi: "आँखें मूँदने से पहले यात्री दीवार से बँधे सोने के थैलों में क्यों घुस जाते हैं?",
+          mr: "डोळे मिटण्याआधी प्रवासी भिंतीला बांधलेल्या झोपण्याच्या पिशव्यांत का शिरतात?",
+        },
+        statement: {
+          en: "Asleep and unstrapped, a floating astronaut would drift and bump around the cabin — so beds are bags tied to the wall.",
+          hi: "बिना बाँधे सोया यात्री तैरता-टकराता केबिन भर भटकता — इसलिए बिस्तर दीवार से बँधे थैले हैं।",
+          mr: "न बांधता झोपलेला प्रवासी तरंगत-आदळत केबिनभर भटकला असता — म्हणून बिछाने म्हणजे भिंतीला बांधलेल्या पिशव्या.",
+        },
+      },
+      {
+        id: "hair",
+        name: {
+          en: "Hair that stands on end",
+          hi: "खड़े हो जाते बाल",
+          mr: "उभे राहणारे केस",
+        },
+        kind: "space-life",
+        prompt: {
+          en: "In Sunita's space photos, what does her hair do that no comb on Earth allows?",
+          hi: "सुनीता की अंतरिक्ष-तस्वीरों में उनके बाल वह क्या करते हैं जो धरती की कोई कंघी नहीं होने देती?",
+          mr: "सुनीताच्या अवकाश-फोटोंत तिचे केस असे काय करतात जे पृथ्वीवरची कोणतीही फणी होऊ देत नाही?",
+        },
+        statement: {
+          en: "With no weight to pull it down, hair floats out around the head — Sunita's photos show it standing free in every direction.",
+          hi: "नीचे खींचने वाला भार नहीं, तो बाल सिर के चारों ओर तैरते हैं — सुनीता की तस्वीरों में वे हर दिशा में आज़ाद खड़े दिखते हैं।",
+          mr: "खाली ओढणारे वजनच नाही, म्हणून केस डोक्याभोवती तरंगतात — सुनीताच्या फोटोंत ते प्रत्येक दिशेला मोकळे उभे दिसतात.",
+        },
+      },
+      {
+        id: "earthview",
+        name: {
+          en: "The Earth from space",
+          hi: "अंतरिक्ष से पृथ्वी",
+          mr: "अवकाशातून पृथ्वी",
+        },
+        kind: "space-sight",
+        prompt: {
+          en: "Looking down from the station, what does Sunita see where the maps at school draw their thick borders?",
+          hi: "स्टेशन से नीचे देखते हुए, जहाँ स्कूल के नक़्शे मोटी सीमाएँ खींचते हैं, वहाँ सुनीता को क्या दिखता है?",
+          mr: "स्थानकातून खाली पाहताना, शाळेचे नकाशे जिथे जाड सीमा आखतात, तिथे सुनीताला काय दिसते?",
+        },
+        statement: {
+          en: "From space the Earth is one blue, cloud-wrapped whole — the borders so dark on maps are simply not there.",
+          hi: "अंतरिक्ष से पृथ्वी एक नीला, बादलों में लिपटा पूरा है — नक़्शों पर गहरी दिखतीं सीमाएँ वहाँ हैं ही नहीं।",
+          mr: "अवकाशातून पृथ्वी म्हणजे एक निळे, ढगांत गुंडाळलेले अखंड — नकाशांवर गडद दिसणाऱ्या सीमा तिथे नाहीतच.",
+        },
+        detail: {
+          en: "Rivers, mountains and the sea show clearly; the lines between countries do not.",
+          hi: "नदियाँ, पहाड़ और समुद्र साफ़ दिखते हैं; देशों के बीच की रेखाएँ नहीं।",
+          mr: "नद्या, पर्वत आणि समुद्र स्पष्ट दिसतात; देशांमधल्या रेषा नाहीत.",
+        },
+        extra: {
+          en: "Day and night chase each other round it sixteen times in the station's single day.",
+          hi: "स्टेशन के एक दिन में दिन और रात उसके गिर्द सोलह बार एक-दूसरे का पीछा करते हैं।",
+          mr: "स्थानकाच्या एका दिवसात दिवस आणि रात्र तिच्याभोवती सोळा वेळा एकमेकांचा पाठलाग करतात.",
+        },
+        pair: {
+          left: { en: "The Earth from space", hi: "अंतरिक्ष से पृथ्वी", mr: "अवकाशातून पृथ्वी" },
+          right: {
+            en: "blue, whole, unlined",
+            hi: "नीली, पूरी, बे-रेखा",
+            mr: "निळी, अखंड, बिनरेषांची",
+          },
+        },
+      },
+      {
+        id: "return",
+        name: {
+          en: "Coming back to Earth",
+          hi: "धरती पर वापसी",
+          mr: "पृथ्वीवर परतणे",
+        },
+        kind: "space-life",
+        prompt: {
+          en: "After months of floating, what suddenly feels heavy on landing — even a spoon, even one's own arms?",
+          hi: "महीनों तैरने के बाद उतरते ही अचानक क्या भारी लगता है — चम्मच तक, अपनी बाँहें तक?",
+          mr: "महिनोंमहिने तरंगल्यावर उतरताच अचानक काय जड वाटते — चमचासुद्धा, स्वतःचे हातसुद्धा?",
+        },
+        statement: {
+          en: "Back on Earth after months without weight, everything feels heavy at first — arms, spoons, one's own head — until the body relearns its old load.",
+          hi: "भारहीन महीनों के बाद धरती पर पहले-पहल सब भारी लगता है — बाँहें, चम्मच, अपना ही सिर — जब तक शरीर अपना पुराना बोझ फिर न सीख ले।",
+          mr: "वजनाविनाच्या महिन्यांनंतर पृथ्वीवर सुरुवातीला सारे जड वाटते — हात, चमचे, स्वतःचेच डोके — शरीर आपले जुने ओझे पुन्हा शिकेपर्यंत.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into HAPPENS IN THE STATION and HAPPENS ONLY ON EARTH: hair floating out around the head, tea pouring neatly into a glass, sleeping zipped to the wall, a dropped spoon falling to the floor. Which sorting is right?",
+          hi: "इन्हें स्टेशन में होता है और केवल धरती पर होता है में छाँटिए: सिर के गिर्द तैरते बाल, गिलास में सफ़ाई से उँडेलती चाय, दीवार से बँधकर सोना, गिरा चम्मच फ़र्श पर पहुँचना। कौन-सी छँटाई सही है?",
+          mr: "यांची स्थानकात घडते आणि फक्त पृथ्वीवर घडते अशी वर्गवारी करा: डोक्याभोवती तरंगणारे केस, ग्लासात नीट ओतला जाणारा चहा, भिंतीला बांधून झोपणे, पडलेला चमचा फरशीवर पोहोचणे. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Station: floating hair, wall-strapped sleep · Earth only: pouring tea, the falling spoon",
+            hi: "स्टेशन: तैरते बाल, दीवार से बँधी नींद · केवल धरती: उँडेलती चाय, गिरता चम्मच",
+            mr: "स्थानक: तरंगते केस, भिंतीला बांधलेली झोप · फक्त पृथ्वी: ओतला जाणारा चहा, पडणारा चमचा",
+          },
+          {
+            en: "Station: pouring tea, floating hair · Earth only: wall-strapped sleep, the falling spoon",
+            hi: "स्टेशन: उँडेलती चाय, तैरते बाल · केवल धरती: बँधी नींद, गिरता चम्मच",
+            mr: "स्थानक: ओतला जाणारा चहा, तरंगते केस · फक्त पृथ्वी: बांधलेली झोप, पडणारा चमचा",
+          },
+          {
+            en: "Station: the falling spoon, wall-strapped sleep · Earth only: floating hair, pouring tea",
+            hi: "स्टेशन: गिरता चम्मच, बँधी नींद · केवल धरती: तैरते बाल, उँडेलती चाय",
+            mr: "स्थानक: पडणारा चमचा, बांधलेली झोप · फक्त पृथ्वी: तरंगते केस, ओतला जाणारा चहा",
+          },
+          {
+            en: "Station: pouring tea, the falling spoon · Earth only: floating hair, wall-strapped sleep",
+            hi: "स्टेशन: उँडेलती चाय, गिरता चम्मच · केवल धरती: तैरते बाल, बँधी नींद",
+            mr: "स्थानक: ओतला जाणारा चहा, पडणारा चमचा · फक्त पृथ्वी: तरंगते केस, बांधलेली झोप",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Pouring and falling both need a 'down' for things to head toward — they are Earth's specialities. Floating hair and strapped sleep are what life looks like when that 'down' is missing. Sort by one question: does this happening need something to pull it downward?",
+          hi: "उँडेलना और गिरना दोनों को एक 'नीचे' चाहिए जिसकी ओर चीज़ें जाएँ — ये धरती की ख़ासियतें हैं। तैरते बाल और बँधी नींद वह जीवन है जब यह 'नीचे' ग़ायब हो। एक ही सवाल से छाँटिए: क्या इस घटना को कोई नीचे खींचने वाला चाहिए?",
+          mr: "ओतणे आणि पडणे दोन्हींना वस्तूंनी जावे असे एक 'खाली' लागते — या पृथ्वीच्या खासियती. तरंगते केस आणि बांधलेली झोप म्हणजे ते 'खाली' नसतानाचे जगणे. एकाच प्रश्नाने वर्गवारी करा: या घडण्याला खाली ओढणारे काही लागते का?",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "On Earth, tea pours; in the station, it balls up and floats. What single missing thing explains the floating hair, the strapped sleep AND the undrinkable glass?",
+          hi: "धरती पर चाय उँडेलती है; स्टेशन में वह गोली बनकर तैरती है। कौन-सी एक ग़ैर-हाज़िर चीज़ तैरते बाल, बँधी नींद और बेकार गिलास — तीनों को समझा देती है?",
+          mr: "पृथ्वीवर चहा ओतला जातो; स्थानकात तो गोळा होऊन तरंगतो. कोणती एक गैरहजर गोष्ट तरंगते केस, बांधलेली झोप आणि निरुपयोगी ग्लास — तिन्ही समजावते?",
+        },
+        choices: [
+          {
+            en: "The pull toward the Earth that everything down here feels — with nothing pulling 'down', there is no falling, no pouring, no staying put",
+            hi: "पृथ्वी की ओर का वह खिंचाव जो यहाँ नीचे हर चीज़ महसूस करती है — जब कुछ 'नीचे' न खींचे, तो न गिरना है, न उँडेलना, न टिके रहना",
+            mr: "पृथ्वीकडचा तो ओढा जो इथे खाली प्रत्येक गोष्ट अनुभवते — काहीच 'खाली' ओढत नसेल, तर पडणे नाही, ओतणे नाही, जागी राहणेही नाही",
+          },
+          {
+            en: "Air — space stations have none inside",
+            hi: "हवा — स्टेशनों के भीतर होती ही नहीं",
+            mr: "हवा — स्थानकांच्या आत नसतेच",
+          },
+          {
+            en: "Heat — everything freezes light in the cold",
+            hi: "गर्मी — ठंड में सब चीज़ें हलकी जम जाती हैं",
+            mr: "उष्णता — थंडीत साऱ्या गोष्टी हलक्या गोठतात",
+          },
+          {
+            en: "Electricity — floating starts when the lights dim",
+            hi: "बिजली — बत्तियाँ धीमी होते ही तैरना शुरू होता है",
+            mr: "वीज — दिवे मंदावताच तरंगणे सुरू होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Every odd thing in Sunita's letters is one fact wearing costumes: nothing pulls toward a 'down'. Hair is not held flat, so it stands; a sleeper is not held to a bed, so she is strapped; tea is not led into the glass's bottom, so it balls up on its own. The station has air, warmth and light — what it lacks is the quiet pull we never notice until it is gone.",
+          hi: "सुनीता की चिट्ठियों की हर अनोखी बात एक ही तथ्य के अलग-अलग वेश हैं: कुछ भी किसी 'नीचे' की ओर नहीं खींचता। बालों को कोई बिठाता नहीं, तो वे खड़े हैं; सोने वाली को बिस्तर से कोई थामता नहीं, तो वह बँधी है; चाय को गिलास की तली तक कोई ले नहीं जाता, तो वह अपने आप गोली बन जाती है। स्टेशन में हवा है, गर्मी है, रोशनी है — नहीं है तो वह चुपचाप खिंचाव, जिसे हम तब तक नहीं देखते जब तक वह चला न जाए।",
+          mr: "सुनीताच्या पत्रांतली प्रत्येक अजब गोष्ट म्हणजे एकाच तथ्याची निरनिराळी सोंगे: काहीही कोणत्या 'खाली'कडे ओढत नाही. केसांना कोणी बसवत नाही, म्हणून ते उभे; झोपणारीला बिछान्याशी कोणी धरत नाही, म्हणून ती बांधलेली; चहाला ग्लासाच्या तळाकडे कोणी नेत नाही, म्हणून तो आपोआप गोळा होतो. स्थानकात हवा, ऊब, उजेड आहे — नाही तो शांत ओढा, जो गेल्याशिवाय आपल्याला दिसतच नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Sunita said the hardest thing to explain was this: from up there, the Earth has no lines on it. What thought was she handing the schoolchildren?",
+          hi: "सुनीता ने कहा कि सबसे कठिन बात यह समझाना थी: वहाँ ऊपर से पृथ्वी पर कोई रेखाएँ नहीं हैं। वे बच्चों को कौन-सा विचार थमा रही थीं?",
+          mr: "सुनीता म्हणाली की सर्वांत अवघड हे समजावणे होते: तिथून वरून पृथ्वीवर कोणत्याही रेषा नाहीत. ती मुलांना कोणता विचार देत होती?",
+        },
+        choices: [
+          {
+            en: "Borders are human drawings, not features of the Earth — seen whole, the planet is one shared home",
+            hi: "सीमाएँ इंसान की खींची लकीरें हैं, पृथ्वी की बनावट नहीं — पूरा देखने पर ग्रह एक साझा घर है",
+            mr: "सीमा या माणसांनी काढलेल्या रेघा आहेत, पृथ्वीची घडण नव्हे — अख्खी पाहिली की हा ग्रह एक सामायिक घर आहे",
+          },
+          {
+            en: "Maps at school are printed wrongly",
+            hi: "स्कूल के नक़्शे ग़लत छपे हैं",
+            mr: "शाळेचे नकाशे चुकीचे छापले आहेत",
+          },
+          {
+            en: "The station flies too high to see anything true",
+            hi: "स्टेशन इतना ऊँचा है कि सच कुछ दिखता ही नहीं",
+            mr: "स्थानक इतके उंच आहे की खरे काही दिसतच नाही",
+          },
+          {
+            en: "Clouds hide the borders that are really there",
+            hi: "बादल असल में मौजूद सीमाओं को ढक लेते हैं",
+            mr: "ढग खरोखर असलेल्या सीमा झाकतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Rivers, mountains, monsoon clouds — the Earth's real features show clearly from orbit. What never shows is what was never there: the lines are ink on our maps and fences in our minds. Sunita's sentence turns the geography lesson gently inside out — the divisions we treat as facts of the world are choices of ours, and from far enough away, the world is visibly one.",
+          hi: "नदियाँ, पहाड़, मानसून के बादल — पृथ्वी की असली बनावट कक्षा से साफ़ दिखती है। नहीं दिखता वह, जो था ही नहीं: रेखाएँ हमारे नक़्शों की स्याही और हमारे मनों की बाड़ें हैं। सुनीता का वाक्य भूगोल के पाठ को धीरे-से उलट देता है — जिन बँटवारों को हम दुनिया के तथ्य मानते हैं, वे हमारे चुनाव हैं, और काफ़ी दूर से दुनिया साफ़-साफ़ एक है।",
+          mr: "नद्या, पर्वत, पावसाळी ढग — पृथ्वीची खरी घडण कक्षेतून स्पष्ट दिसते. दिसत नाही ते, जे नव्हतेच: रेषा ही आपल्या नकाशांची शाई आणि आपल्या मनांतली कुंपणे आहेत. सुनीताचे वाक्य भूगोलाचा धडा हळुवार उलटा करते — ज्या वाटण्यांना आपण जगाची तथ्ये मानतो, त्या आपल्या निवडी आहेत, आणि पुरेशा दुरून जग स्पष्टपणे एक आहे.",
+        },
+      },
+    ],
+  },
 ];
