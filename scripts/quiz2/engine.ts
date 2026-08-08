@@ -82,13 +82,13 @@ export type Chapter = {
   hard: HardQuestion[];
 };
 
-type OutQuestion = {
+export type OutQuestion = {
   difficulty: number;
   stem: string;
   choices: string[];
   answerIndex: number;
   solution: string;
-  checkExpr: null;
+  checkExpr: string | null;
   translations: {
     hi: { stem: string; choices: string[]; solution: string };
     mr: { stem: string; choices: string[]; solution: string };
@@ -115,7 +115,7 @@ const LANGS = ["en", "hi", "mr"] as const;
  * Deterministic tiny PRNG (mulberry32 over a string seed) — the same chapter
  * always generates the same bank, so re-imports are no-ops and diffs are real.
  */
-function rng(seed: string): () => number {
+export function rng(seed: string): () => number {
   let h = 1779033703 ^ seed.length;
   for (let i = 0; i < seed.length; i++) {
     h = Math.imul(h ^ seed.charCodeAt(i), 3432918353);
@@ -131,7 +131,7 @@ function rng(seed: string): () => number {
   };
 }
 
-function shuffled<T>(items: T[], rand: () => number): T[] {
+export function shuffled<T>(items: T[], rand: () => number): T[] {
   const a = [...items];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
