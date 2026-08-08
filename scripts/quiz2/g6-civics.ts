@@ -914,4 +914,614 @@ export const G6_CIVICS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Rural Livelihoods                                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-6-rural-livelihoods",
+    subject: "CIVICS",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 8 — Rural Livelihoods",
+      hi: "अध्याय 8 — ग्रामीण आजीविकाएँ",
+      mr: "प्रकरण 8 — ग्रामीण उपजीविका",
+    },
+    name: { en: "Rural Livelihoods", hi: "ग्रामीण आजीविकाएँ", mr: "ग्रामीण उपजीविका" },
+    summary: {
+      en: "One village, many earnings — the labourer paid by the day, the small farmer sowing on borrowed money, the large farmer who lends it, the fishing family reading the sea.",
+      hi: "एक गाँव, कई कमाइयाँ — दिहाड़ी पाता मज़दूर, उधार पर बोता छोटा किसान, उधार देता बड़ा किसान, समुद्र पढ़ता मछुआरा परिवार।",
+      mr: "एक गाव, अनेक कमाया — रोजंदारीवरचा मजूर, उसन्या पैशावर पेरणारा छोटा शेतकरी, उसने देणारा मोठा शेतकरी, समुद्र वाचणारे कोळी कुटुंब.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "landlesslabourer",
+        name: {
+          en: "The landless labourer",
+          hi: "भूमिहीन मज़दूर",
+          mr: "भूमिहीन मजूर",
+        },
+        kind: "villager",
+        prompt: {
+          en: "No field of her own — she weeds, transplants and harvests OTHERS' fields for a daily wage, and in the empty months finds what work she can. Who is she?",
+          hi: "अपना कोई खेत नहीं — वह दिहाड़ी पर दूसरों के खेत निराती, रोपती, काटती है, और ख़ाली महीनों में जो मिले वह काम खोजती है। वह कौन है?",
+          mr: "स्वतःचे शेत नाही — ती रोजंदारीवर दुसऱ्यांची शेते खुरपते, लावते, कापते, आणि रिकाम्या महिन्यांत मिळेल ते काम शोधते. ती कोण?",
+        },
+        statement: {
+          en: "The landless labourer earns a daily wage in others' fields — work comes with the seasons and vanishes between them, and no land of her own stands behind her.",
+          hi: "भूमिहीन मज़दूर दूसरों के खेतों में दिहाड़ी कमाती है — काम मौसमों संग आता और उनके बीच ग़ायब हो जाता है, और पीछे अपनी कोई ज़मीन नहीं खड़ी।",
+          mr: "भूमिहीन मजूर दुसऱ्यांच्या शेतांत रोजंदारी कमावते — काम ऋतूंसोबत येते आणि त्यांच्या मध्ये नाहीसे होते, आणि पाठीशी स्वतःची जमीन उभी नाही.",
+        },
+        detail: {
+          en: "In Tamil Nadu's villages, families like Thulasi's live this calendar — sowing-season wages, lean-season searching.",
+          hi: "तमिलनाडु के गाँवों में थुलसी जैसे परिवार यही पंचांग जीते हैं — बुआई के मौसम की मज़दूरी, दुबले मौसम की तलाश।",
+          mr: "तमिळनाडूच्या गावांत थुलसीसारखी कुटुंबे हेच पंचांग जगतात — पेरणी-हंगामाची मजुरी, तुटीच्या हंगामाचा शोध.",
+        },
+        extra: {
+          en: "Nearly two of every five rural families in India earn mainly this way.",
+          hi: "भारत के हर पाँच ग्रामीण परिवारों में क़रीब दो की मुख्य कमाई यही है।",
+          mr: "भारताच्या दर पाच ग्रामीण कुटुंबांत सुमारे दोघांची मुख्य कमाई हीच आहे.",
+        },
+        pair: {
+          left: { en: "The landless labourer", hi: "भूमिहीन मज़दूर", mr: "भूमिहीन मजूर" },
+          right: {
+            en: "wages that follow the seasons",
+            hi: "मौसमों के पीछे चलती दिहाड़ी",
+            mr: "ऋतूंमागे चालणारी रोजंदारी",
+          },
+        },
+      },
+      {
+        id: "smallfarmer",
+        name: { en: "The small farmer", hi: "छोटा किसान", mr: "छोटा शेतकरी" },
+        kind: "villager",
+        prompt: {
+          en: "Two acres of his own, seed and fertiliser bought on LOAN, the whole year's hope standing in one crop — which villager is this?",
+          hi: "अपनी दो एकड़, उधार पर ख़रीदे बीज-खाद, साल भर की आस एक फ़सल में खड़ी — यह कौन-सा गाँववाला है?",
+          mr: "स्वतःचे दोन एकर, कर्जावर घेतलेले बियाणे-खत, वर्षभराची आशा एका पिकात उभी — हा कोणता गावकरी?",
+        },
+        statement: {
+          en: "The small farmer works his own few acres but borrows for seed and fertiliser — one good crop repays the loan, one failed crop deepens it.",
+          hi: "छोटा किसान अपनी थोड़ी ज़मीन जोतता है पर बीज-खाद के लिए उधार लेता है — एक अच्छी फ़सल क़र्ज़ चुका देती है, एक चूकी फ़सल उसे गहरा कर देती है।",
+          mr: "छोटा शेतकरी स्वतःची थोडी जमीन कसतो पण बियाणे-खतासाठी कर्ज घेतो — एक चांगले पीक कर्ज फेडते, एक बुडालेले पीक ते खोल करते.",
+        },
+        detail: {
+          en: "The loan often comes from a moneylender at heavy interest — the bank's door being far or slow.",
+          hi: "उधार अक्सर भारी ब्याज पर साहूकार से आता है — बैंक का दरवाज़ा दूर या धीमा होने से।",
+          mr: "कर्ज बहुधा जबर व्याजाने सावकाराकडून येते — बँकेचे दार दूर वा संथ असल्याने.",
+        },
+        extra: {
+          en: "Most of India's farmers farm plots this small — his story is the countryside's commonest one.",
+          hi: "भारत के ज़्यादातर किसान इतने ही छोटे टुकड़े जोतते हैं — उसकी कहानी देहात की सबसे आम कहानी है।",
+          mr: "भारताचे बहुतेक शेतकरी इतकेच लहान तुकडे कसतात — त्याची गोष्ट ही खेड्याची सर्वांत सामान्य गोष्ट.",
+        },
+        pair: {
+          left: { en: "The small farmer", hi: "छोटा किसान", mr: "छोटा शेतकरी" },
+          right: {
+            en: "own land, borrowed seed",
+            hi: "अपनी ज़मीन, उधार का बीज",
+            mr: "स्वतःची जमीन, उसने बियाणे",
+          },
+        },
+      },
+      {
+        id: "largefarmer",
+        name: { en: "The large farmer", hi: "बड़ा किसान", mr: "मोठा शेतकरी" },
+        kind: "villager",
+        prompt: {
+          en: "Fields enough to hire labourers, harvests big enough to SELL, and money spare to lend at interest — which villager stands here?",
+          hi: "मज़दूर रखने लायक़ खेत, बेचने लायक़ बड़ी फ़सलें, और ब्याज पर देने लायक़ फ़ालतू पैसा — यहाँ कौन-सा गाँववाला खड़ा है?",
+          mr: "मजूर ठेवण्याइतकी शेते, विकण्याइतकी मोठी पिके, आणि व्याजाने देण्याइतका जादा पैसा — इथे कोणता गावकरी उभा?",
+        },
+        statement: {
+          en: "The large farmer hires labour, sells his surplus in the market, and often lends money — the village's employer, seller and creditor in one house.",
+          hi: "बड़ा किसान मज़दूर रखता है, अधिशेष बाज़ार में बेचता है, और अक्सर उधार देता है — गाँव का नियोक्ता, विक्रेता और महाजन एक ही घर में।",
+          mr: "मोठा शेतकरी मजूर ठेवतो, वाढावा बाजारात विकतो, आणि अनेकदा उसने देतो — गावाचा मालक, विक्रेता आणि सावकार एकाच घरात.",
+        },
+        pair: {
+          left: { en: "The large farmer", hi: "बड़ा किसान", mr: "मोठा शेतकरी" },
+          right: {
+            en: "surplus to sell, money to lend",
+            hi: "बेचने को अधिशेष, देने को पैसा",
+            mr: "विकायला वाढावा, द्यायला पैसा",
+          },
+        },
+      },
+      {
+        id: "debttrap",
+        name: { en: "The debt spiral", hi: "क़र्ज़ का चक्कर", mr: "कर्जाचा फेरा" },
+        kind: "risk",
+        prompt: {
+          en: "Loan taken for seed, rains fail, crop dies — and next season needs a NEW loan before the old one is paid. What is this tightening circle called?",
+          hi: "बीज को लिया उधार, बारिश चूकी, फ़सल मरी — और अगला मौसम पुराना चुकने से पहले नया उधार माँगता है। इस कसते घेरे को क्या कहते हैं?",
+          mr: "बियाण्यासाठी घेतलेले कर्ज, पाऊस चुकला, पीक मेले — आणि पुढचा हंगाम जुने फिटण्याआधी नवे कर्ज मागतो. या आवळणाऱ्या फेऱ्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The debt spiral turns when a failed crop leaves the loan unpaid and the next sowing needs fresh borrowing — each round tightening, the farmer's deepest fear.",
+          hi: "क़र्ज़ का चक्कर तब घूमता है जब चूकी फ़सल उधार अनचुका छोड़ती है और अगली बुआई नया उधार माँगती है — हर फेरा कसता हुआ, किसान का सबसे गहरा डर।",
+          mr: "कर्जाचा फेरा तेव्हा फिरतो जेव्हा बुडालेले पीक कर्ज न फेडलेले ठेवते आणि पुढची पेरणी नवे कर्ज मागते — प्रत्येक फेरी आवळणारी, शेतकऱ्याची सर्वांत खोल भीती.",
+        },
+        detail: {
+          en: "The rain is the spiral's trigger — one dry monsoon can start what takes years to escape.",
+          hi: "बारिश ही चक्कर का ट्रिगर है — एक सूखा मानसून वह शुरू कर सकता है जिससे निकलने में बरस लगते हैं।",
+          mr: "पाऊस हाच फेऱ्याची ठिणगी — एक कोरडा पावसाळा असे सुरू करू शकतो ज्यातून निघायला वर्षे लागतात.",
+        },
+        extra: {
+          en: "This is why crop failure means far more in a village than a bad month means in a salaried home.",
+          hi: "इसीलिए फ़सल का चूकना गाँव में उससे कहीं ज़्यादा है जो वेतन वाले घर में एक बुरा महीना है।",
+          mr: "म्हणूनच पीक बुडणे हे गावात पगारी घरातल्या एका वाईट महिन्याहून कितीतरी जास्त असते.",
+        },
+        pair: {
+          left: { en: "The debt spiral", hi: "क़र्ज़ का चक्कर", mr: "कर्जाचा फेरा" },
+          right: {
+            en: "old loan chasing new",
+            hi: "नए के पीछे पुराना उधार",
+            mr: "नव्यामागे जुने कर्ज",
+          },
+        },
+      },
+      {
+        id: "nonfarmwork",
+        name: {
+          en: "The village's other work",
+          hi: "गाँव के दूसरे काम",
+          mr: "गावाची इतर कामे",
+        },
+        kind: "villager",
+        prompt: {
+          en: "Not everyone farms — the dairy pail, the smithy, the kirana shop, the basket loom also feed village families. What is this work called as a group?",
+          hi: "सब खेती नहीं करते — दूध की बाल्टी, लोहार की भट्ठी, किराना दुकान, टोकरी का करघा भी गाँव के परिवार पालते हैं। इस काम-समूह को क्या कहते हैं?",
+          mr: "सारे शेती करत नाहीत — दुधाची घागर, लोहाराची भट्टी, किराणा दुकान, टोपलीचा माग हेही गावची कुटुंबे पोसतात. या काम-समूहाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Non-farm work — dairying, smithing, shopkeeping, weaving — feeds many village families, and steadies homes when the fields have nothing to give.",
+          hi: "ग़ैर-कृषि काम — दूध, लोहारी, दुकानदारी, बुनाई — गाँव के कई परिवार पालता है, और जब खेतों के पास देने को कुछ नहीं होता तब घर सँभालता है।",
+          mr: "बिगर-शेती काम — दूध, लोहारकाम, दुकानदारी, विणकाम — गावची अनेक कुटुंबे पोसते, आणि शेतांकडे द्यायला काही नसते तेव्हा घरे सावरते.",
+        },
+        pair: {
+          left: { en: "Non-farm work", hi: "ग़ैर-कृषि काम", mr: "बिगर-शेती काम" },
+          right: {
+            en: "earnings beside the fields",
+            hi: "खेतों के बग़ल की कमाई",
+            mr: "शेतांशेजारची कमाई",
+          },
+        },
+      },
+      {
+        id: "fishingfamily",
+        name: { en: "The fishing family", hi: "मछुआरा परिवार", mr: "कोळी कुटुंब" },
+        kind: "villager",
+        prompt: {
+          en: "Out before dawn on a catamaran, income decided by the day's catch, and four monsoon months when the sea itself is closed — whose living is this?",
+          hi: "पौ फटने से पहले कटमरैन पर, आमदनी दिन की पकड़ से तय, और चार मानसूनी महीने जब ख़ुद समुद्र बंद है — यह किसकी रोज़ी है?",
+          mr: "पहाटेआधी कॅटामरानवर, कमाई दिवसाच्या पकडीवर ठरणारी, आणि चार पावसाळी महिने जेव्हा स्वतः समुद्रच बंद — ही कोणाची रोजी?",
+        },
+        statement: {
+          en: "The fishing family lives by the day's catch — out before dawn, paid by what the net brings, and lean through the monsoon months when boats stay beached.",
+          hi: "मछुआरा परिवार दिन की पकड़ पर जीता है — भोर से पहले निकलता, जाल की देन पर पलता, और मानसूनी महीनों में दुबलाता जब नावें किनारे पड़ी रहती हैं।",
+          mr: "कोळी कुटुंब दिवसाच्या पकडीवर जगते — पहाटेआधी निघते, जाळे देईल त्यावर पोसते, आणि होड्या किनाऱ्यावर पडून राहतात त्या पावसाळी महिन्यांत आवळते.",
+        },
+        pair: {
+          left: { en: "The fishing family", hi: "मछुआरा परिवार", mr: "कोळी कुटुंब" },
+          right: {
+            en: "paid by the day's net",
+            hi: "दिन के जाल की कमाई",
+            mr: "दिवसाच्या जाळ्याची कमाई",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the villager to what stands behind them: A-only their two hands, B-a small plot and a loan, C-surplus grain and money lent out. Which trio is right?",
+          hi: "गाँववाले को उसके पीछे खड़ी चीज़ से मिलाइए: अ-केवल अपने दो हाथ, ब-छोटा टुकड़ा और उधार, स-अधिशेष अनाज और दिया हुआ पैसा। कौन-सी तिकड़ी सही है?",
+          mr: "गावकऱ्याला त्याच्या पाठीशी उभ्या असलेल्याशी जुळवा: अ-फक्त आपले दोन हात, ब-छोटा तुकडा आणि कर्ज, क-वाढावा धान्य आणि दिलेला पैसा. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the landless labourer · B: the small farmer · C: the large farmer",
+            hi: "अ: भूमिहीन मज़दूर · ब: छोटा किसान · स: बड़ा किसान",
+            mr: "अ: भूमिहीन मजूर · ब: छोटा शेतकरी · क: मोठा शेतकरी",
+          },
+          {
+            en: "A: the large farmer · B: the landless labourer · C: the small farmer",
+            hi: "अ: बड़ा किसान · ब: भूमिहीन मज़दूर · स: छोटा किसान",
+            mr: "अ: मोठा शेतकरी · ब: भूमिहीन मजूर · क: छोटा शेतकरी",
+          },
+          {
+            en: "A: the small farmer · B: the large farmer · C: the landless labourer",
+            hi: "अ: छोटा किसान · ब: बड़ा किसान · स: भूमिहीन मज़दूर",
+            mr: "अ: छोटा शेतकरी · ब: मोठा शेतकरी · क: भूमिहीन मजूर",
+          },
+          {
+            en: "A: the landless labourer · B: the large farmer · C: the small farmer",
+            hi: "अ: भूमिहीन मज़दूर · ब: बड़ा किसान · स: छोटा किसान",
+            mr: "अ: भूमिहीन मजूर · ब: मोठा शेतकरी · क: छोटा शेतकरी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three rungs of one ladder, set by what each owns: hands alone, a plot plus a debt, fields plus a surplus. The same harvest reaches them differently — wages for the first, survival for the second, profit for the third. Reading a village means reading this ladder first.",
+          hi: "एक सीढ़ी की तीन पैड़ियाँ, हर एक की मिल्कियत से तय: अकेले हाथ, टुकड़ा और क़र्ज़, खेत और अधिशेष। वही फ़सल तीनों तक अलग-अलग पहुँचती है — पहले को दिहाड़ी, दूसरे को गुज़ारा, तीसरे को मुनाफ़ा। गाँव पढ़ना यानी पहले यह सीढ़ी पढ़ना।",
+          mr: "एका शिडीच्या तीन पायऱ्या, प्रत्येकाच्या मालकीने ठरलेल्या: एकटे हात, तुकडा आणि कर्ज, शेते आणि वाढावा. तीच कापणी तिघांपर्यंत वेगवेगळी पोहोचते — पहिल्याला रोजंदारी, दुसऱ्याला गुजराण, तिसऱ्याला नफा. गाव वाचणे म्हणजे आधी ही शिडी वाचणे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The same failed monsoon strikes the whole village — yet the large farmer weathers it, the small farmer sinks toward debt, the labourer simply finds no work. Why does ONE rain fail three different ways?",
+          hi: "वही चूका मानसून पूरे गाँव पर पड़ता है — फिर भी बड़ा किसान झेल जाता है, छोटा किसान क़र्ज़ की ओर धँसता है, मज़दूर को बस काम नहीं मिलता। एक बारिश तीन तरह से क्यों चूकती है?",
+          mr: "तोच चुकलेला पावसाळा साऱ्या गावावर पडतो — तरी मोठा शेतकरी निभावतो, छोटा शेतकरी कर्जाकडे खचतो, मजुराला नुसते काम मिळत नाही. एक पाऊस तीन प्रकारे का चुकतो?",
+        },
+        choices: [
+          {
+            en: "Because each holds a different cushion — stored surplus absorbs the blow, a standing loan doubles it, and no land means the blow arrives as vanished wages",
+            hi: "क्योंकि हर एक के पास अलग गद्दी है — जमा अधिशेष चोट सोख लेता है, खड़ा क़र्ज़ उसे दुगना करता है, और बे-ज़मीनी में चोट ग़ायब दिहाड़ी बनकर आती है",
+            mr: "कारण प्रत्येकाकडे वेगळी उशी आहे — साठलेला वाढावा घाव सोसतो, उभे कर्ज तो दुप्पट करते, आणि जमीन नसणे म्हणजे घाव नाहीशा रोजंदारीच्या रूपात येतो",
+          },
+          {
+            en: "Because the rain truly falls only on small plots",
+            hi: "क्योंकि बारिश सचमुच छोटे टुकड़ों पर ही नहीं गिरती",
+            mr: "कारण पाऊस खरेच फक्त छोट्या तुकड्यांवर पडत नाही",
+          },
+          {
+            en: "Because large farmers know better weather prayers",
+            hi: "क्योंकि बड़े किसान बेहतर मौसम-प्रार्थनाएँ जानते हैं",
+            mr: "कारण मोठ्या शेतकऱ्यांना चांगल्या हवामान-प्रार्थना येतात",
+          },
+          {
+            en: "It does not — all three suffer identically",
+            hi: "ऐसा नहीं — तीनों एक-सा भुगतते हैं",
+            mr: "असे नाही — तिघे सारखेच भोगतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The sky is impartial; the ground beneath each family is not. The large farmer eats last year's surplus and waits. The small farmer owes for the seed now rotting in dry soil — his loss is doubled by interest. The labourer loses the very work the sowing would have made. One drought, three arithmetics — which is why 'the village' can never be helped by one policy fitted to one rung.",
+          hi: "आसमान निष्पक्ष है; हर परिवार तले की ज़मीन नहीं। बड़ा किसान पिछले साल का अधिशेष खाकर प्रतीक्षा करता है। छोटे किसान पर उस बीज का उधार है जो अब सूखी मिट्टी में सड़ रहा है — ब्याज उसका घाटा दुगना करता है। मज़दूर वही काम खो देता है जो बुआई से बनता। एक सूखा, तीन गणित — इसीलिए 'गाँव' की मदद एक पैड़ी पर सिली एक नीति से कभी नहीं होती।",
+          mr: "आकाश निःपक्ष आहे; प्रत्येक कुटुंबाखालची जमीन नाही. मोठा शेतकरी गेल्या वर्षीचा वाढावा खाऊन वाट पाहतो. छोट्या शेतकऱ्यावर आता कोरड्या मातीत कुजणाऱ्या बियाण्याचे कर्ज आहे — व्याज त्याचा तोटा दुप्पट करते. मजूर पेरणीने झाले असते तेच काम गमावतो. एक दुष्काळ, तीन गणिते — म्हणूनच 'गावाला' एका पायरीवर बेतलेल्या एका धोरणाने कधीही मदत होत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "For seed money the small farmer goes to the village moneylender at heavy interest, though a bank's loan would cost half. What usually decides this against the bank?",
+          hi: "बीज के पैसों को छोटा किसान भारी ब्याज पर गाँव के साहूकार के पास जाता है, जबकि बैंक का उधार आधा पड़ता। बैंक के विरुद्ध यह फ़ैसला अक्सर क्या तय करता है?",
+          mr: "बियाण्याच्या पैशासाठी छोटा शेतकरी जबर व्याजाने गावच्या सावकाराकडे जातो, वास्तविक बँकेचे कर्ज निम्म्यात पडले असते. बँकेविरुद्ध हा निर्णय बहुधा काय ठरवते?",
+        },
+        choices: [
+          {
+            en: "Reach and speed — the lender is nearby, asks no papers or guarantees and pays today; the bank wants documents, security and time the sowing season will not wait for",
+            hi: "पहुँच और रफ़्तार — साहूकार पास है, न काग़ज़ माँगता है न ज़मानत, और आज ही देता है; बैंक दस्तावेज़, गारंटी और वह समय माँगता है जिसकी बुआई का मौसम प्रतीक्षा नहीं करता",
+            mr: "पोहोच आणि वेग — सावकार जवळ आहे, कागद वा हमी मागत नाही, आणि आजच देतो; बँक कागदपत्रे, तारण आणि पेरणीचा हंगाम थांबणार नाही तो वेळ मागते",
+          },
+          {
+            en: "Farmers simply prefer paying more interest",
+            hi: "किसानों को बस ज़्यादा ब्याज देना पसंद है",
+            mr: "शेतकऱ्यांना नुसते जास्त व्याज द्यायला आवडते",
+          },
+          {
+            en: "Banks refuse to lend for farming at all",
+            hi: "बैंक खेती को उधार देते ही नहीं",
+            mr: "बँका शेतीला कर्ज देतच नाहीत",
+          },
+          {
+            en: "Moneylenders' loans are secretly cheaper",
+            hi: "साहूकारों के उधार चुपके से सस्ते होते हैं",
+            mr: "सावकारांची कर्जे गुपचूप स्वस्त असतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The sowing window is days, not months. The moneylender's counter is his verandah, his paperwork is memory, his collateral is knowing where you live — cash changes hands before dusk. The bank's cheaper loan hides costs the poor pay worst: bus fares, lost work-days, papers a labourer may not have. The heavy interest is the price of speed and reach — which is why making CHEAP credit also ARRIVE easily is one of rural India's oldest policy problems.",
+          hi: "बुआई की खिड़की दिनों की है, महीनों की नहीं। साहूकार का काउंटर उसका बरामदा है, उसकी काग़ज़ी कार्रवाई याददाश्त, उसकी ज़मानत यह जानना कि आप कहाँ रहते हैं — नक़द शाम से पहले हाथ बदल लेता है। बैंक के सस्ते उधार में वे लागतें छिपी हैं जो ग़रीब सबसे महँगी चुकाता है: बस भाड़े, गँवाए काम-दिन, वे काग़ज़ जो मज़दूर के पास शायद न हों। भारी ब्याज रफ़्तार और पहुँच का दाम है — इसीलिए सस्ते उधार को आसानी से पहुँचाना भी ग्रामीण भारत की सबसे पुरानी नीति-समस्याओं में है।",
+          mr: "पेरणीची खिडकी दिवसांची आहे, महिन्यांची नाही. सावकाराचा काउंटर त्याची ओसरी, त्याची कागदपत्रे म्हणजे स्मरण, त्याचे तारण म्हणजे तुम्ही कुठे राहता हे ठाऊक असणे — रोकड संध्याकाळआधी हात बदलते. बँकेच्या स्वस्त कर्जात गरीब सर्वांत महाग मोजतो त्या किमती लपल्या आहेत: बसभाडी, बुडालेले कामाचे दिवस, मजुराकडे नसतील असे कागद. जबर व्याज ही वेग आणि पोहोचीची किंमत — म्हणूनच स्वस्त कर्ज सहज पोहोचवणे हीही ग्रामीण भारताच्या सर्वांत जुन्या धोरण-समस्यांपैकी एक.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Urban Livelihoods                                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-6-urban-livelihoods",
+    subject: "CIVICS",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 9 — Urban Livelihoods",
+      hi: "अध्याय 9 — शहरी आजीविकाएँ",
+      mr: "प्रकरण 9 — शहरी उपजीविका",
+    },
+    name: { en: "Urban Livelihoods", hi: "शहरी आजीविकाएँ", mr: "शहरी उपजीविका" },
+    summary: {
+      en: "The city's ladder of earnings — the vendor who can be moved off his corner, the labourer hired by the day, the factory hand kept temporary, and the salaried few whose pay comes with security.",
+      hi: "शहर की कमाई की सीढ़ी — कोने से हटाया जा सकता फेरीवाला, दिन भर को रखा मज़दूर, अस्थायी रखा कारख़ाना-कामगार, और वेतन के साथ सुरक्षा पाते थोड़े-से लोग।",
+      mr: "शहराच्या कमाईची शिडी — कोपऱ्यावरून हटवला जाऊ शकणारा फेरीवाला, दिवसापुरता ठेवलेला मजूर, तात्पुरता ठेवलेला कारखाना-कामगार, आणि पगारासोबत सुरक्षा मिळणारे थोडे जण.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "streetvendor",
+        name: { en: "The street vendor", hi: "फेरीवाला", mr: "फेरीवाला" },
+        kind: "worker",
+        prompt: {
+          en: "His shop is a barrow or a basket, his own boss with no licence to his corner — one municipal order can sweep his living off the pavement. Who is he?",
+          hi: "उसकी दुकान ठेला या टोकरी है, अपना मालिक पर कोने का कोई परवाना नहीं — नगरपालिका का एक हुक्म उसकी रोज़ी फुटपाथ से बुहार सकता है। वह कौन है?",
+          mr: "त्याचे दुकान म्हणजे हातगाडी वा टोपली, स्वतःचा मालक पण कोपऱ्याचा परवाना नाही — पालिकेचा एक हुकूम त्याची रोजी फुटपाथवरून झाडून टाकू शकतो. तो कोण?",
+        },
+        statement: {
+          en: "The street vendor runs his own tiny business on wheels or cloth — no shop, no licence to his spot, earning daily and removable by one order.",
+          hi: "फेरीवाला पहियों या कपड़े पर अपना नन्हा धंधा चलाता है — न दुकान, न जगह का परवाना, रोज़ कमाता और एक हुक्म से हटाया जा सकता।",
+          mr: "फेरीवाला चाकांवर वा कापडावर आपला इवला धंदा चालवतो — दुकान नाही, जागेचा परवाना नाही, रोज कमावणारा आणि एका हुकुमाने हटवला जाणारा.",
+        },
+        detail: {
+          en: "He is his own boss — but a boss with no address the law protects.",
+          hi: "वह अपना मालिक है — पर ऐसा मालिक जिसके पते की क़ानून रक्षा नहीं करता।",
+          mr: "तो स्वतःचा मालक — पण कायदा ज्याच्या पत्त्याचे रक्षण करत नाही असा मालक.",
+        },
+        extra: {
+          en: "Vendors feed the city cheaply — the sweeper's lunch and the clerk's chai both come from a barrow.",
+          hi: "फेरीवाले शहर को सस्ता खिलाते हैं — सफ़ाईकर्मी का खाना और बाबू की चाय दोनों ठेले से आते हैं।",
+          mr: "फेरीवाले शहराला स्वस्त जेवू घालतात — सफाई कामगाराचे जेवण आणि कारकुनाचा चहा दोन्ही हातगाडीवरून येतात.",
+        },
+        pair: {
+          left: { en: "The street vendor", hi: "फेरीवाला", mr: "फेरीवाला" },
+          right: {
+            en: "his own boss, no address",
+            hi: "अपना मालिक, बिना पते का",
+            mr: "स्वतःचा मालक, पत्त्याविना",
+          },
+        },
+      },
+      {
+        id: "casuallabourer",
+        name: { en: "The casual labourer", hi: "दिहाड़ी मज़दूर", mr: "नैमित्तिक मजूर" },
+        kind: "worker",
+        prompt: {
+          en: "He waits at the labour chowk each dawn with his tools; a contractor picks some men, the rest walk home unpaid. Whose day is this?",
+          hi: "वह हर भोर औज़ार लिए लेबर चौक पर खड़ा रहता है; ठेकेदार कुछ आदमी चुनता है, बाक़ी बिना कमाए घर लौटते हैं। यह किसका दिन है?",
+          mr: "तो रोज पहाटे हत्यारे घेऊन लेबर चौकात उभा राहतो; ठेकेदार काही माणसे निवडतो, बाकी न कमावता घरी परततात. हा कोणाचा दिवस?",
+        },
+        statement: {
+          en: "The casual labourer is hired by the day at the labour chowk — chosen, he earns; passed over, the day earns nothing, and no work means no pay ever.",
+          hi: "दिहाड़ी मज़दूर लेबर चौक पर दिन भर को रखा जाता है — चुना गया तो कमाया; छूट गया तो दिन ख़ाली, और काम नहीं तो पगार कभी नहीं।",
+          mr: "नैमित्तिक मजूर लेबर चौकात दिवसापुरता ठेवला जातो — निवडला तर कमावले; वगळला तर दिवस रिकामा, आणि काम नाही तर पगार कधीच नाही.",
+        },
+        pair: {
+          left: { en: "The casual labourer", hi: "दिहाड़ी मज़दूर", mr: "नैमित्तिक मजूर" },
+          right: {
+            en: "hired fresh each dawn",
+            hi: "हर भोर नए सिरे से रखा",
+            mr: "रोज पहाटे नव्याने ठेवलेला",
+          },
+        },
+      },
+      {
+        id: "garmentworker",
+        name: {
+          en: "The garment factory worker",
+          hi: "कपड़ा-कारख़ाने की कामगार",
+          mr: "कपडे-कारखान्याची कामगार",
+        },
+        kind: "worker",
+        prompt: {
+          en: "She has a workplace and a wage — but the contract is temporary, the hours stretch in season, and when orders stop the job can too. Whose position is this?",
+          hi: "उसके पास काम की जगह और मज़दूरी है — पर अनुबंध अस्थायी, मौसम में घंटे खिंचते हैं, और ऑर्डर थमें तो नौकरी भी थम सकती है। यह किसकी स्थिति है?",
+          mr: "तिच्याकडे कामाची जागा आणि मजुरी आहे — पण करार तात्पुरता, हंगामात तास ताणले जातात, आणि ऑर्डरी थांबल्या तर नोकरीही थांबू शकते. ही कोणाची स्थिती?",
+        },
+        statement: {
+          en: "The garment worker is employed but kept temporary — long hours in season, laid off out of it, employed without the shelter of permanence.",
+          hi: "कपड़ा-कामगार नौकरी में है पर अस्थायी रखी गई है — मौसम में लंबे घंटे, उसके बाहर छुट्टी, स्थायित्व की ओट के बिना रोज़गार।",
+          mr: "कपडे-कामगार नोकरीत आहे पण तात्पुरती ठेवलेली — हंगामात लांब तास, हंगामाबाहेर कमी, कायमपणाच्या आडोशाविना रोजगार.",
+        },
+        pair: {
+          left: { en: "The garment worker", hi: "कपड़ा-कामगार", mr: "कपडे-कामगार" },
+          right: {
+            en: "employed, yet kept temporary",
+            hi: "नौकरी में, फिर भी अस्थायी",
+            mr: "नोकरीत, तरी तात्पुरती",
+          },
+        },
+      },
+      {
+        id: "salariedworker",
+        name: {
+          en: "The regular salaried worker",
+          hi: "नियमित वेतनभोगी",
+          mr: "नियमित पगारदार",
+        },
+        kind: "worker",
+        prompt: {
+          en: "Fixed pay on a fixed date, paid leave when ill, provident fund for old age, and a job that continues next month — which kind of worker holds all this?",
+          hi: "तय तारीख़ को तय वेतन, बीमारी में सवेतन छुट्टी, बुढ़ापे को भविष्य-निधि, और अगले महीने भी चलती नौकरी — यह सब किस क़िस्म के कामगार के पास है?",
+          mr: "ठरल्या तारखेला ठरलेला पगार, आजारपणात पगारी रजा, म्हातारपणासाठी भविष्य-निर्वाह निधी, आणि पुढच्या महिन्यातही चालणारी नोकरी — हे सारे कोणत्या प्रकारच्या कामगाराकडे?",
+        },
+        statement: {
+          en: "The regular salaried worker earns security with the pay — fixed salary, paid leave, provident fund and a job that outlasts the month.",
+          hi: "नियमित वेतनभोगी वेतन के साथ सुरक्षा कमाता है — तय वेतन, सवेतन छुट्टी, भविष्य-निधि और महीने से आगे चलती नौकरी।",
+          mr: "नियमित पगारदार पगारासोबत सुरक्षा कमावतो — ठरलेला पगार, पगारी रजा, भविष्य-निर्वाह निधी आणि महिन्यापलीकडे चालणारी नोकरी.",
+        },
+        detail: {
+          en: "In Indian cities such workers are the minority — most urban work carries no such shelter.",
+          hi: "भारतीय शहरों में ऐसे कामगार अल्पसंख्यक हैं — ज़्यादातर शहरी काम ऐसी ओट नहीं रखता।",
+          mr: "भारतीय शहरांत असे कामगार अल्पसंख्य आहेत — बहुतेक शहरी कामाला असा आडोसा नसतो.",
+        },
+        extra: {
+          en: "The difference shows most on a bad day — illness with paid leave is rest; without it, lost bread.",
+          hi: "फ़र्क़ बुरे दिन सबसे ज़्यादा दिखता है — सवेतन छुट्टी वाली बीमारी आराम है; बिना उसके, गई रोटी।",
+          mr: "फरक वाईट दिवशी सर्वांत जास्त दिसतो — पगारी रजेतले आजारपण म्हणजे विश्रांती; तिच्याविना, गेलेली भाकरी.",
+        },
+        pair: {
+          left: { en: "The salaried worker", hi: "वेतनभोगी", mr: "पगारदार" },
+          right: {
+            en: "pay that comes with shelter",
+            hi: "ओट के साथ आता वेतन",
+            mr: "आडोशासह येणारा पगार",
+          },
+        },
+      },
+      {
+        id: "marketshop",
+        name: {
+          en: "The market shopkeeper",
+          hi: "बाज़ार का दुकानदार",
+          mr: "बाजारातला दुकानदार",
+        },
+        kind: "worker",
+        prompt: {
+          en: "A fixed shop with a licence, a signboard and a shutter to lock at night — which trader's standing is this, a rung above the barrow?",
+          hi: "परवाने वाली पक्की दुकान, नामपट्ट और रात में उतरता शटर — यह किस व्यापारी की हैसियत है, ठेले से एक पैड़ी ऊपर?",
+          mr: "परवान्याची पक्की जागा, पाटी आणि रात्री लावायचे शटर — ही कोणत्या व्यापाऱ्याची स्थिती, हातगाडीहून एक पायरी वर?",
+        },
+        statement: {
+          en: "The market shopkeeper trades from a fixed, licensed shop — his spot is his by right, lockable at night and defensible in law.",
+          hi: "बाज़ार का दुकानदार पक्की, परवाने वाली दुकान से व्यापार करता है — जगह हक़ से उसकी, रात में बंद होती और क़ानून में बचाव योग्य।",
+          mr: "बाजारातला दुकानदार पक्क्या, परवान्याच्या दुकानातून व्यापार करतो — जागा हक्काने त्याची, रात्री बंद होणारी आणि कायद्यात बचाव करता येणारी.",
+        },
+      },
+      {
+        id: "cityweb",
+        name: {
+          en: "The city's web of work",
+          hi: "शहर के कामों का जाल",
+          mr: "शहराच्या कामांचे जाळे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "The vendor feeds the labourer who builds the showroom where the salesgirl sells to the clerk — what does this endless chain show about a city?",
+          hi: "फेरीवाला उस मज़दूर को खिलाता है जो वह शोरूम बनाता है जहाँ सेल्सगर्ल बाबू को बेचती है — यह अंतहीन कड़ी शहर के बारे में क्या दिखाती है?",
+          mr: "फेरीवाला त्या मजुराला जेवू घालतो जो ते शोरूम बांधतो जिथे सेल्सगर्ल कारकुनाला विकते — ही अखंड साखळी शहराबद्दल काय दाखवते?",
+        },
+        statement: {
+          en: "The city's livelihoods interlock — each worker is another's customer, and no trade, grand or small, stands without the rest.",
+          hi: "शहर की आजीविकाएँ एक-दूसरे में गुँथी हैं — हर कामगार किसी और का ग्राहक है, और कोई धंधा, बड़ा या छोटा, बाक़ियों के बिना नहीं खड़ा।",
+          mr: "शहराच्या उपजीविका एकमेकांत गुंफल्या आहेत — प्रत्येक कामगार दुसऱ्याचा ग्राहक आहे, आणि कोणताही धंदा, मोठा वा छोटा, इतरांविना उभा नाही.",
+        },
+        pair: {
+          left: { en: "The city's web", hi: "शहर का जाल", mr: "शहराचे जाळे" },
+          right: {
+            en: "each worker, another's customer",
+            hi: "हर कामगार, किसी का ग्राहक",
+            mr: "प्रत्येक कामगार, कोणाचा ग्राहक",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Rank these three by SECURITY of earning, least to most: the casual labourer at the chowk, the garment factory worker, the regular salaried worker. Which order is right?",
+          hi: "इन तीनों को कमाई की सुरक्षा से, सबसे कम से सबसे ज़्यादा, क्रम दीजिए: चौक का दिहाड़ी मज़दूर, कपड़ा-कारख़ाने की कामगार, नियमित वेतनभोगी। कौन-सा क्रम सही है?",
+          mr: "या तिघांना कमाईच्या सुरक्षेने, सर्वांत कमीपासून सर्वांत जास्त, क्रम द्या: चौकातला नैमित्तिक मजूर, कपडे-कारखान्याची कामगार, नियमित पगारदार. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "casual labourer → garment worker → salaried worker",
+            hi: "दिहाड़ी मज़दूर → कपड़ा-कामगार → वेतनभोगी",
+            mr: "नैमित्तिक मजूर → कपडे-कामगार → पगारदार",
+          },
+          {
+            en: "salaried worker → garment worker → casual labourer",
+            hi: "वेतनभोगी → कपड़ा-कामगार → दिहाड़ी मज़दूर",
+            mr: "पगारदार → कपडे-कामगार → नैमित्तिक मजूर",
+          },
+          {
+            en: "garment worker → casual labourer → salaried worker",
+            hi: "कपड़ा-कामगार → दिहाड़ी मज़दूर → वेतनभोगी",
+            mr: "कपडे-कामगार → नैमित्तिक मजूर → पगारदार",
+          },
+          {
+            en: "casual labourer → salaried worker → garment worker",
+            hi: "दिहाड़ी मज़दूर → वेतनभोगी → कपड़ा-कामगार",
+            mr: "नैमित्तिक मजूर → पगारदार → कपडे-कामगार",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Security climbs with the length of the promise: the chowk promises one day at most, the factory a season, the salaried post next month and beyond with leave and fund besides. The city's real ladder is not of wages but of how far ahead a family can plan.",
+          hi: "सुरक्षा वादे की लंबाई से चढ़ती है: चौक बमुश्किल एक दिन का वादा करता है, कारख़ाना एक मौसम का, वेतन-पद अगले महीने और आगे का — छुट्टी और निधि समेत। शहर की असली सीढ़ी मज़दूरी की नहीं, इस बात की है कि परिवार कितनी दूर तक की योजना बना सकता है।",
+          mr: "सुरक्षा वचनाच्या लांबीने चढते: चौक जेमतेम एका दिवसाचे वचन देतो, कारखाना एका हंगामाचे, पगारी पद पुढच्या महिन्याचे आणि पुढचे — रजा आणि निधीसह. शहराची खरी शिडी मजुरीची नव्हे, कुटुंब किती पुढचे नियोजन करू शकते याची आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The vendor works dawn to dusk; the salaried clerk may work fewer hours for steadier pay. If effort does not explain the difference, what does?",
+          hi: "फेरीवाला भोर से साँझ खटता है; वेतनभोगी बाबू कम घंटे काम करके ज़्यादा स्थिर वेतन पा सकता है। अगर मेहनत यह फ़र्क़ नहीं समझाती, तो क्या समझाता है?",
+          mr: "फेरीवाला पहाटेपासून सांजेपर्यंत राबतो; पगारदार कारकून कमी तास काम करून अधिक स्थिर पगार मिळवू शकतो. मेहनत हा फरक समजावत नसेल, तर काय समजावते?",
+        },
+        choices: [
+          {
+            en: "The kind of position, not the effort in it — security attaches to protected jobs and owned places, and most city work offers neither, however hard it is done",
+            hi: "पद की क़िस्म, उसमें लगी मेहनत नहीं — सुरक्षा संरक्षित नौकरियों और अपनी जगहों से जुड़ी है, और ज़्यादातर शहरी काम दोनों नहीं देता, चाहे कितना भी कठिन किया जाए",
+            mr: "पदाचा प्रकार, त्यातली मेहनत नव्हे — सुरक्षा संरक्षित नोकऱ्या आणि मालकीच्या जागांना चिकटलेली आहे, आणि बहुतेक शहरी काम दोन्ही देत नाही, कितीही कष्टाने केले तरी",
+          },
+          {
+            en: "The vendor must simply be working wrongly",
+            hi: "फेरीवाला ज़रूर ग़लत ढंग से काम कर रहा होगा",
+            mr: "फेरीवाला नक्कीच चुकीच्या पद्धतीने काम करत असणार",
+          },
+          {
+            en: "Salaried workers always work far harder",
+            hi: "वेतनभोगी हमेशा कहीं ज़्यादा मेहनत करते हैं",
+            mr: "पगारदार नेहमी कितीतरी जास्त कष्ट करतात",
+          },
+          {
+            en: "Luck alone separates the two",
+            hi: "दोनों को केवल क़िस्मत अलग करती है",
+            mr: "दोघांना फक्त नशीब वेगळे करते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The chapter's uncomfortable lesson: in the city, reward tracks the SLOT more than the sweat. The clerk's security was built into his post by law and contract before he arrived; the vendor's corner has no such armour, so equal or greater effort buys less certainty. Seeing this clearly is the point — it turns 'the poor should work harder' into the truer question, 'why does so much hard work come with so little shelter?'",
+          hi: "अध्याय का असुविधाजनक सबक़: शहर में इनाम पसीने से ज़्यादा पद के ख़ाने का पीछा करता है। बाबू की सुरक्षा उसके आने से पहले क़ानून और अनुबंध ने पद में जड़ दी थी; फेरीवाले के कोने के पास ऐसा कवच नहीं, तो बराबर या ज़्यादा मेहनत कम निश्चितता ख़रीदती है। इसे साफ़ देखना ही मक़सद है — यह 'ग़रीब ज़्यादा मेहनत करें' को सच्चे सवाल में बदल देता है: 'इतनी मेहनत के साथ इतनी कम ओट क्यों?'",
+          mr: "प्रकरणाचा अस्वस्थ करणारा धडा: शहरात बक्षीस घामाहून जागेच्या खणाचा माग काढते. कारकुनाची सुरक्षा तो येण्याआधीच कायद्याने आणि कराराने पदात बसवली होती; फेरीवाल्याच्या कोपऱ्याला असे चिलखत नाही, म्हणून सारखी वा जास्त मेहनत कमी खात्री विकत घेते. हे स्पष्ट पाहणे हाच हेतू — ते 'गरिबांनी जास्त कष्ट करावेत'ला खऱ्या प्रश्नात बदलते: 'इतक्या कष्टांसोबत इतका कमी आडोसा का?'",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Remove the street vendors from a city for one week. Who feels it, and what does the answer prove?",
+          hi: "एक हफ़्ते के लिए शहर से फेरीवाले हटा दीजिए। किसे महसूस होता है, और उत्तर क्या साबित करता है?",
+          mr: "आठवडाभर शहरातून फेरीवाले काढून टाका. कोणाला जाणवते, आणि उत्तर काय सिद्ध करते?",
+        },
+        choices: [
+          {
+            en: "Half the city — cheap lunches, chai, vegetables and repairs vanish for labourers and clerks alike, proving the 'informal' trades are load-bearing walls, not clutter",
+            hi: "आधा शहर — मज़दूरों और बाबुओं दोनों के सस्ते खाने, चाय, सब्ज़ियाँ और मरम्मतें ग़ायब — साबित करते हुए कि 'अनौपचारिक' धंधे भार उठाती दीवारें हैं, कबाड़ नहीं",
+            mr: "अर्धे शहर — मजूर आणि कारकून दोघांचे स्वस्त जेवण, चहा, भाज्या आणि दुरुस्त्या नाहीशा — सिद्ध करत की 'अनौपचारिक' धंदे भार पेलणाऱ्या भिंती आहेत, अडगळ नव्हे",
+          },
+          {
+            en: "No one — vendors serve only each other",
+            hi: "किसी को नहीं — फेरीवाले बस एक-दूसरे के काम आते हैं",
+            mr: "कोणालाच नाही — फेरीवाले फक्त एकमेकांच्या कामी येतात",
+          },
+          {
+            en: "Only the vendors themselves",
+            hi: "केवल फेरीवाले स्वयं",
+            mr: "फक्त फेरीवाले स्वतः",
+          },
+          {
+            en: "The city improves, having lost its clutter",
+            hi: "कबाड़ हटने से शहर सुधर जाता है",
+            mr: "अडगळ गेल्याने शहर सुधारते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Run the week: the construction worker's five-rupee lunch is gone, so his wage buys less; the office-goer's chai and quick chappal-repair vanish; vegetable prices jump because the barrows undercut the shops. The pavement trade the city calls an obstruction turns out to be part of its plumbing. That is why the vendor question is a policy question — cities must find them a lawful place, not merely a clearance drive.",
+          hi: "हफ़्ता चलाकर देखिए: निर्माण-मज़दूर का पाँच रुपये का खाना गया, तो उसकी दिहाड़ी कम पड़ने लगी; दफ़्तर वाले की चाय और झटपट चप्पल-मरम्मत ग़ायब; सब्ज़ी के दाम उछले क्योंकि ठेले दुकानों से सस्ते बेचते थे। जिस फुटपाथी धंधे को शहर रुकावट कहता है, वह उसकी नलसाज़ी का हिस्सा निकलता है। इसीलिए फेरीवाले का सवाल नीति का सवाल है — शहरों को उनके लिए क़ानूनी जगह खोजनी होगी, सिर्फ़ हटाओ-मुहिम नहीं।",
+          mr: "आठवडा चालवून पाहा: बांधकाम-मजुराचे पाच रुपयांचे जेवण गेले, म्हणून त्याची मजुरी कमी पडू लागली; कचेरीवाल्याचा चहा आणि झटपट चप्पल-दुरुस्ती नाहीशी; भाज्यांचे भाव उसळले कारण हातगाड्या दुकानांहून स्वस्त विकत. शहर ज्या फुटपाथी धंद्याला अडथळा म्हणते, तो त्याच्या नळकामाचा भाग निघतो. म्हणूनच फेरीवाल्याचा प्रश्न धोरणाचा प्रश्न — शहरांनी त्यांना कायदेशीर जागा शोधली पाहिजे, नुसती हटाव-मोहीम नव्हे.",
+        },
+      },
+    ],
+  },
 ];
