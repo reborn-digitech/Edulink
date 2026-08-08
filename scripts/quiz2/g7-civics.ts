@@ -811,4 +811,526 @@ export const G7_CIVICS: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Understanding Media (who speaks, who pays, who is silent)   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-7-understanding-media",
+    subject: "CIVICS",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 6 — Understanding Media",
+      hi: "अध्याय 6 — संचार माध्यमों को समझना",
+      mr: "प्रकरण 6 — प्रसारमाध्यमे समजून घेणे",
+    },
+    name: {
+      en: "Understanding Media",
+      hi: "संचार माध्यमों को समझना",
+      mr: "प्रसारमाध्यमे समजून घेणे",
+    },
+    summary: {
+      en: "One message, a million ears — and behind it the advertiser's bill, the chosen and the dropped story, the balanced report, the censor's silence, and the local paper that covers the broken handpump.",
+      hi: "एक संदेश, लाख कान — और उसके पीछे विज्ञापनदाता का बिल, चुनी और गिराई गई ख़बर, संतुलित रिपोर्ट, सेंसर की चुप्पी, और टूटे हैंडपंप की ख़बर लेता स्थानीय अख़बार।",
+      mr: "एक संदेश, लाख कान — आणि त्यामागे जाहिरातदाराचे बिल, निवडलेली आणि गाळलेली बातमी, संतुलित वार्तांकन, सेन्सॉरची शांतता, आणि मोडक्या हातपंपाची बातमी घेणारे स्थानिक वृत्तपत्र.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "mass-media",
+        name: { en: "Mass media", hi: "जनसंचार माध्यम", mr: "जनमाध्यमे" },
+        kind: "channel",
+        prompt: {
+          en: "TV, radio and newspapers reach lakhs of people at once. What is this many-at-once communication called?",
+          hi: "टीवी, रेडियो और अख़बार एक साथ लाखों तक पहुँचते हैं। इस एक-साथ-अनेक संचार का नाम क्या है?",
+          mr: "टीव्ही, रेडिओ आणि वृत्तपत्रे एकाच वेळी लाखोंपर्यंत पोहोचतात. या एकाच-वेळी-अनेक संवादाचे नाव काय?",
+        },
+        statement: {
+          en: "Mass media speaks to lakhs at once — one message, a million ears, and the power that comes with the ratio.",
+          hi: "जनसंचार माध्यम लाखों से एक साथ बोलते हैं — एक संदेश, लाख कान, और उस अनुपात के साथ आती ताक़त।",
+          mr: "जनमाध्यमे लाखोंशी एकदम बोलतात — एक संदेश, लाख कान, आणि त्या प्रमाणासोबत येणारी ताकद.",
+        },
+        pair: {
+          left: { en: "One message, lakh ears", hi: "एक संदेश, लाख कान", mr: "एक संदेश, लाख कान" },
+          right: { en: "TV, print and radio", hi: "टीवी, अख़बार और रेडियो", mr: "टीव्ही, छापील आणि रेडिओ" },
+        },
+      },
+      {
+        id: "ad-revenue",
+        name: { en: "Advertising revenue", hi: "विज्ञापन से आय", mr: "जाहिरातींचे उत्पन्न" },
+        kind: "money",
+        prompt: {
+          en: "Which income pays for most 'free' news — and quietly ties channels to the sellers who buy their time?",
+          hi: "कौन-सी आय अधिकांश 'मुफ़्त' ख़बरों का ख़र्च उठाती है — और चैनलों को चुपचाप उन विक्रेताओं से बाँधती है जो उनका समय ख़रीदते हैं?",
+          mr: "कोणते उत्पन्न बहुतेक 'मोफत' बातम्यांचा खर्च उचलते — आणि वाहिन्यांना गुपचूप त्यांचा वेळ विकत घेणाऱ्या विक्रेत्यांशी बांधते?",
+        },
+        statement: {
+          en: "Advertising pays the media's bills — and an outlet careful of its advertisers grows careful with certain truths.",
+          hi: "विज्ञापन माध्यमों के बिल चुकाता है — और जो माध्यम अपने विज्ञापनदाताओं का ख़याल रखता है, वह कुछ सच्चाइयों का भी 'ख़याल' रखने लगता है।",
+          mr: "जाहिराती माध्यमांची बिले भरतात — आणि आपल्या जाहिरातदारांची काळजी घेणारे माध्यम काही सत्यांचीही 'काळजी' घेऊ लागते.",
+        },
+        detail: {
+          en: "A newspaper that costs more to print than its cover price is being paid for by someone — usually the advertisements inside it.",
+          hi: "जिस अख़बार की छपाई उसके दाम से महँगी है, उसका ख़र्च कोई और उठा रहा है — प्रायः उसके भीतर के विज्ञापन।",
+          mr: "ज्या वृत्तपत्राची छपाई त्याच्या किमतीहून महाग आहे, त्याचा खर्च कोणी दुसरे उचलते आहे — बहुधा त्याच्या आतल्या जाहिराती.",
+        },
+        extra: {
+          en: "A useful habit: notice what a channel will NOT say about its biggest advertiser.",
+          hi: "काम की आदत: ग़ौर कीजिए कि चैनल अपने सबसे बड़े विज्ञापनदाता के बारे में क्या नहीं कहता।",
+          mr: "उपयोगी सवय: वाहिनी आपल्या सर्वांत मोठ्या जाहिरातदाराबद्दल काय बोलत नाही हे पाहा.",
+        },
+        pair: {
+          left: { en: "The ads that pay", hi: "ख़र्च उठाते विज्ञापन", mr: "खर्च उचलणाऱ्या जाहिराती" },
+          right: {
+            en: "bills settled, strings attached",
+            hi: "बिल चुकता, डोर बँधी",
+            mr: "बिले फिटली, दोर बांधले",
+          },
+        },
+      },
+      {
+        id: "agenda",
+        name: { en: "The media's agenda", hi: "माध्यमों का एजेंडा", mr: "माध्यमांचा अजेंडा" },
+        kind: "power",
+        prompt: {
+          en: "By choosing which stories lead and which vanish, the media exercises which quiet power over public attention?",
+          hi: "कौन-सी ख़बर आगे और कौन-सी ग़ायब — यह चुनकर माध्यम जन-ध्यान पर कौन-सी ख़ामोश ताक़त बरतते हैं?",
+          mr: "कोणती बातमी पुढे आणि कोणती गायब — हे निवडून माध्यमे लोकांच्या लक्षावर कोणती मूक ताकद वापरतात?",
+        },
+        statement: {
+          en: "The media sets the agenda — it decides what the country talks about by deciding what the country sees.",
+          hi: "माध्यम एजेंडा तय करते हैं — देश क्या देखे यह तय करके वे तय करते हैं कि देश किस पर बात करे।",
+          mr: "माध्यमे अजेंडा ठरवतात — देशाने काय पाहावे हे ठरवून ती ठरवतात की देशाने कशावर बोलावे.",
+        },
+        pair: {
+          left: {
+            en: "Stories chosen and dropped",
+            hi: "चुनी और गिराई ख़बरें",
+            mr: "निवडलेल्या आणि गाळलेल्या बातम्या",
+          },
+          right: {
+            en: "the nation's topics picked",
+            hi: "देश के विषय छाँटे हुए",
+            mr: "देशाचे विषय निवडलेले",
+          },
+        },
+      },
+      {
+        id: "balanced-report",
+        name: { en: "The balanced report", hi: "संतुलित रिपोर्ट", mr: "संतुलित वार्तांकन" },
+        kind: "standard",
+        prompt: {
+          en: "Which kind of story presents all sides of an event, lets the facts speak and keeps the reporter's own view apart?",
+          hi: "किस प्रकार की ख़बर घटना के सब पक्ष रखती है, तथ्यों को बोलने देती है और रिपोर्टर की अपनी राय अलग रखती है?",
+          mr: "कोणत्या प्रकारची बातमी घटनेच्या साऱ्या बाजू मांडते, तथ्यांना बोलू देते आणि वार्ताहराचे स्वतःचे मत वेगळे ठेवते?",
+        },
+        statement: {
+          en: "A balanced report airs every side and separates fact from opinion — the reader is left free, and equipped, to judge.",
+          hi: "संतुलित रिपोर्ट हर पक्ष सुनाती है और तथ्य को राय से अलग रखती है — पाठक फ़ैसले के लिए आज़ाद भी रहता है, लैस भी।",
+          mr: "संतुलित वार्तांकन प्रत्येक बाजू ऐकवते आणि तथ्य मतापासून वेगळे ठेवते — वाचक निर्णयासाठी मोकळाही राहतो, सज्जही.",
+        },
+        pair: {
+          left: { en: "All sides aired", hi: "सब पक्ष सुनाए गए", mr: "साऱ्या बाजू ऐकवलेल्या" },
+          right: {
+            en: "the reader left to judge",
+            hi: "फ़ैसला पाठक के हाथ",
+            mr: "निर्णय वाचकाच्या हाती",
+          },
+        },
+      },
+      {
+        id: "censorship",
+        name: { en: "Censorship", hi: "सेंसरशिप", mr: "सेन्सॉरशिप" },
+        kind: "power",
+        prompt: {
+          en: "When a government blocks stories, or an outlet quietly buries them, what is this silencing called?",
+          hi: "जब सरकार ख़बरें रोक दे, या कोई माध्यम उन्हें चुपचाप दबा दे, तो इस चुप कराने का नाम क्या है?",
+          mr: "सरकार बातम्या अडवते, किंवा एखादे माध्यम त्या गुपचूप दडपते, तेव्हा या गप्प करण्याचे नाव काय?",
+        },
+        statement: {
+          en: "Censorship is silencing — by state order, or by an outlet's own careful omissions; the missing story is its fingerprint.",
+          hi: "सेंसरशिप चुप्पी है — सरकारी हुक्म से, या माध्यम की अपनी सधी हुई चूक से; ग़ायब ख़बर ही उसकी उँगलियों का निशान है।",
+          mr: "सेन्सॉरशिप म्हणजे गप्प करणे — सरकारी हुकुमाने, वा माध्यमाच्या स्वतःच्या जपून केलेल्या गाळण्याने; गायब बातमी हाच तिचा ठसा.",
+        },
+        detail: {
+          en: "During the Emergency of 1975–77, newspapers needed approval before printing — some left blank columns in protest.",
+          hi: "1975–77 के आपातकाल में अख़बारों को छापने से पहले मंज़ूरी चाहिए थी — कुछ ने विरोध में कोरे कॉलम छोड़े।",
+          mr: "1975–77 च्या आणीबाणीत वृत्तपत्रांना छापण्याआधी मंजुरी लागे — काहींनी निषेधार्थ कोरे रकाने सोडले.",
+        },
+        extra: {
+          en: "The censor's success is invisible by design — you cannot miss a story you never knew existed.",
+          hi: "सेंसर की कामयाबी बनावट से ही अदृश्य है — जिस ख़बर का पता ही न हो, उसकी कमी कैसे खले।",
+          mr: "सेन्सॉरचे यश रचनेनेच अदृश्य — जिचे अस्तित्वच ठाऊक नाही ती बातमी चुकल्याचे कसे जाणवेल.",
+        },
+        pair: {
+          left: { en: "The blocked story", hi: "रोकी गई ख़बर", mr: "अडवलेली बातमी" },
+          right: {
+            en: "silence by order or choice",
+            hi: "हुक्म या चुनाव की चुप्पी",
+            mr: "हुकुमाची वा निवडीची शांतता",
+          },
+        },
+      },
+      {
+        id: "local-media",
+        name: {
+          en: "Independent local media",
+          hi: "स्वतंत्र स्थानीय माध्यम",
+          mr: "स्वतंत्र स्थानिक माध्यमे",
+        },
+        kind: "channel",
+        prompt: {
+          en: "Which small newspapers and radios, run close to their readers, cover the water queue and the panchayat meeting the big channels skip?",
+          hi: "पाठकों के पास ही चलते कौन-से छोटे अख़बार और रेडियो पानी की क़तार और पंचायत की वह बैठक कवर करते हैं जिन्हें बड़े चैनल छोड़ जाते हैं?",
+          mr: "वाचकांच्या जवळच चालणारी कोणती छोटी वृत्तपत्रे आणि रेडिओ पाण्याची रांग आणि मोठ्या वाहिन्या गाळतात ती पंचायत-बैठक कव्हर करतात?",
+        },
+        statement: {
+          en: "Independent local media report the near-at-hand — the broken handpump matters more here than any celebrity wedding.",
+          hi: "स्वतंत्र स्थानीय माध्यम पास की ख़बर लेते हैं — यहाँ टूटा हैंडपंप किसी भी सेलिब्रिटी शादी से बड़ी ख़बर है।",
+          mr: "स्वतंत्र स्थानिक माध्यमे जवळचे वार्तांकन करतात — इथे मोडका हातपंप कोणत्याही सेलिब्रिटी लग्नाहून मोठी बातमी.",
+        },
+        pair: {
+          left: { en: "News from the next lane", hi: "बग़ल की गली की ख़बर", mr: "शेजारच्या गल्लीची बातमी" },
+          right: {
+            en: "the handpump over the celebrity",
+            hi: "सेलिब्रिटी पर भारी हैंडपंप",
+            mr: "सेलिब्रिटीवर भारी हातपंप",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Which of these is a FACT a balanced report could print, rather than an opinion?",
+          hi: "इनमें से कौन-सा वह तथ्य है जिसे संतुलित रिपोर्ट छाप सकती है — राय नहीं?",
+          mr: "यांतले कोणते ते तथ्य आहे जे संतुलित वार्तांकन छापू शकते — मत नव्हे?",
+        },
+        choices: [
+          {
+            en: "'The tanker delivered water to the colony on only 4 of the last 30 days, per the supply register'",
+            hi: "'आपूर्ति-पंजी के अनुसार टैंकर पिछले 30 में से केवल 4 दिन कॉलोनी में पानी लाया'",
+            mr: "'पुरवठा-नोंदवहीनुसार टँकर गेल्या 30 पैकी फक्त 4 दिवस वसाहतीत पाणी घेऊन आला'",
+          },
+          {
+            en: "'The water board is clearly the laziest department in the city'",
+            hi: "'जल बोर्ड साफ़ तौर पर शहर का सबसे निकम्मा विभाग है'",
+            mr: "'पाणी मंडळ स्पष्टपणे शहरातले सर्वांत आळशी खाते आहे'",
+          },
+          {
+            en: "'Everyone knows officials never care about poor colonies'",
+            hi: "'सब जानते हैं अफ़सरों को ग़रीब बस्तियों की परवाह नहीं होती'",
+            mr: "'साऱ्यांना ठाऊक आहे अधिकाऱ्यांना गरीब वस्त्यांची पर्वा नसते'",
+          },
+          {
+            en: "'Any sensible reader will demand the minister resign'",
+            hi: "'कोई भी समझदार पाठक मंत्री का इस्तीफ़ा माँगेगा'",
+            mr: "'कोणताही समजूतदार वाचक मंत्र्याचा राजीनामा मागेल'",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A fact is checkable: the supply register exists, the days can be counted, and a rival reporter could verify every number. The other three sentences perform judgments — 'laziest', 'everyone knows', 'any sensible reader' — words that cannot be checked, only believed. Balanced reporting is built from the checkable kind; the reader may then form the judgments personally.",
+          hi: "तथ्य जाँचा जा सकता है: आपूर्ति-पंजी मौजूद है, दिन गिने जा सकते हैं, और प्रतिद्वंद्वी रिपोर्टर हर संख्या परख सकता है। बाक़ी तीन वाक्य फ़ैसले सुनाते हैं — 'सबसे निकम्मा', 'सब जानते हैं', 'कोई भी समझदार' — शब्द जो जाँचे नहीं, केवल माने जा सकते हैं। संतुलित पत्रकारिता जाँचने योग्य से बनती है; फ़ैसले फिर पाठक ख़ुद बना सकता है।",
+          mr: "तथ्य तपासता येते: पुरवठा-नोंदवही आहे, दिवस मोजता येतात, आणि प्रतिस्पर्धी वार्ताहर प्रत्येक आकडा पडताळू शकतो. बाकी तीन वाक्ये निकाल देतात — 'सर्वांत आळशी', 'साऱ्यांना ठाऊक', 'कोणताही समजूतदार' — शब्द जे तपासता येत नाहीत, फक्त मानता येतात. संतुलित पत्रकारिता तपासण्याजोग्यांतून बनते; निकाल मग वाचक स्वतः काढू शकतो.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two channels cover the same factory protest: one leads with workers' unpaid wages, the other with traffic jams the march caused — and the second channel's biggest advertiser owns the factory. Why must a viewer know WHO PAYS for each channel before weighing the two stories?",
+          hi: "दो चैनल एक ही फ़ैक्टरी-प्रदर्शन दिखाते हैं: एक मज़दूरों की रुकी मज़दूरी से शुरू करता है, दूसरा जुलूस से लगे जाम से — और दूसरे चैनल का सबसे बड़ा विज्ञापनदाता वही फ़ैक्टरी-मालिक है। दोनों ख़बरें तौलने से पहले दर्शक को यह क्यों पता होना चाहिए कि हर चैनल का ख़र्च कौन उठाता है?",
+          mr: "दोन वाहिन्या एकच कारखाना-आंदोलन दाखवतात: एक कामगारांच्या थकलेल्या मजुरीने सुरुवात करते, दुसरी मोर्च्याने झालेल्या वाहतूक-कोंडीने — आणि दुसऱ्या वाहिनीचा सर्वांत मोठा जाहिरातदार तोच कारखानदार आहे. दोन्ही बातम्या तोलण्याआधी प्रेक्षकाला प्रत्येक वाहिनीचा खर्च कोण उचलतो हे का ठाऊक हवे?",
+        },
+        choices: [
+          {
+            en: "Because framing follows funding: the paymaster's channel can bury the wage story under the traffic story without printing one false word — knowing the money lets the viewer correct for the tilt",
+            hi: "क्योंकि ख़र्च ही ख़बर का कोण तय करता है: मालिक के पैसे वाला चैनल एक भी झूठा शब्द छापे बिना मज़दूरी की ख़बर को जाम की ख़बर तले दबा सकता है — पैसे का पता दर्शक को झुकाव सुधारने देता है",
+            mr: "कारण खर्चच बातमीचा कोन ठरवतो: मालकाच्या पैशाची वाहिनी एकही खोटा शब्द न छापता मजुरीची बातमी कोंडीच्या बातमीखाली गाडू शकते — पैशाची माहिती प्रेक्षकाला कल दुरुस्त करू देते",
+          },
+          {
+            en: "Because the better-funded channel is always the truthful one",
+            hi: "क्योंकि ज़्यादा पैसे वाला चैनल हमेशा सच्चा होता है",
+            mr: "कारण जास्त पैशाची वाहिनी नेहमी खरी असते",
+          },
+          {
+            en: "There is no need — cameras cannot lie about events",
+            hi: "ज़रूरत नहीं — कैमरे घटनाओं के बारे में झूठ नहीं बोल सकते",
+            mr: "गरज नाही — कॅमेरे घटनांबद्दल खोटे बोलू शकत नाहीत",
+          },
+          {
+            en: "Viewers should simply watch neither channel",
+            hi: "दर्शकों को बस दोनों चैनल नहीं देखने चाहिए",
+            mr: "प्रेक्षकांनी नुसत्या दोन्ही वाहिन्या पाहू नयेत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The subtlest bias never lies; it selects. Both broadcasts may be entirely factual — wages ARE unpaid, traffic WAS jammed — yet the choice of lead, footage and airtime writes opposite morals onto the same event. Since selection is invisible inside any single broadcast, the viewer's only lever is external: know who funds the teller, watch more than one telling, and treat the overlap as the sturdiest part of the story. Media literacy is less about detecting lies than about mapping interests.",
+          hi: "सबसे महीन पक्षपात कभी झूठ नहीं बोलता; वह छाँटता है। दोनों प्रसारण पूरी तरह तथ्यपरक हो सकते हैं — मज़दूरी सचमुच रुकी है, जाम सचमुच लगा — फिर भी शुरुआती ख़बर, फ़ुटेज और समय का चुनाव एक ही घटना पर उल्टी सीखें लिख देता है। चूँकि छँटाई किसी एक प्रसारण के भीतर से दिखती नहीं, दर्शक का इकलौता औज़ार बाहर है: बताने वाले का ख़र्च उठाने वाला जानिए, एक से ज़्यादा बयान देखिए, और जो हिस्सा सबमें मिलता हो उसे ख़बर का सबसे पक्का हिस्सा मानिए। मीडिया-साक्षरता झूठ पकड़ने से ज़्यादा हितों का नक़्शा बनाना है।",
+          mr: "सर्वांत बारीक पक्षपात कधी खोटे बोलत नाही; तो निवडतो. दोन्ही प्रक्षेपणे पूर्ण तथ्यनिष्ठ असू शकतात — मजुरी खरेच थकली आहे, कोंडी खरीच झाली — तरी पहिली बातमी, चित्रण आणि वेळेची निवड एकाच घटनेवर उलटे बोध लिहिते. निवड कोणत्याही एका प्रक्षेपणाच्या आतून दिसत नाही, म्हणून प्रेक्षकाचे एकमेव हत्यार बाहेर आहे: सांगणाऱ्याचा खर्च कोण उचलतो ते जाणा, एकाहून अधिक कथने पाहा, आणि साऱ्यांत जुळणारा भाग बातमीचा सर्वांत भक्कम भाग माना. माध्यम-साक्षरता म्हणजे खोटे पकडण्याहून हितसंबंधांचा नकाशा काढणे.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Markets Around Us (from cart to mall, link by link)         */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-7-markets-around-us",
+    subject: "CIVICS",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 7 — Markets Around Us",
+      hi: "अध्याय 7 — हमारे आस-पास के बाज़ार",
+      mr: "प्रकरण 7 — आपल्या भोवतालचे बाजार",
+    },
+    name: {
+      en: "Markets Around Us",
+      hi: "हमारे आस-पास के बाज़ार",
+      mr: "आपल्या भोवतालचे बाजार",
+    },
+    summary: {
+      en: "The market in all its costumes — the weekly square, the marble mall, the wholesale yard, the hawker's cart — the chain that links farm to kitchen, and the udhaar khata binding buyer to shop.",
+      hi: "हर वेश में बाज़ार — साप्ताहिक चौक, संगमरमरी मॉल, थोक मंडी, फेरीवाले का ठेला — खेत को रसोई से जोड़ती कड़ी, और ख़रीदार को दुकान से बाँधता उधार-खाता।",
+      mr: "प्रत्येक वेशातला बाजार — आठवडी चौक, संगमरवरी मॉल, घाऊक बाजार, फेरीवाल्याची गाडी — शेताला स्वयंपाकघराशी जोडणारी साखळी, आणि गिऱ्हाईकाला दुकानाशी बांधणारे उधार-खाते.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "weekly-market",
+        name: { en: "The weekly market", hi: "साप्ताहिक बाज़ार (हाट)", mr: "आठवडी बाजार" },
+        kind: "market",
+        prompt: {
+          en: "Which market assembles on one fixed day, sells cheap on its low overheads, and moves on to the next town?",
+          hi: "कौन-सा बाज़ार एक तय दिन जुटता है, कम ख़र्च के बूते सस्ता बेचता है, और अगले क़स्बे को बढ़ जाता है?",
+          mr: "कोणता बाजार एका ठरलेल्या दिवशी भरतो, कमी खर्चाच्या बळावर स्वस्त विकतो, आणि पुढच्या गावी सरकतो?",
+        },
+        statement: {
+          en: "The weekly market owns no shop — no rent, no watchman, no bills, so its prices undercut the permanent stores.",
+          hi: "साप्ताहिक बाज़ार की कोई दुकान नहीं — न किराया, न चौकीदार, न बिल; इसीलिए उसके दाम पक्की दुकानों से नीचे रहते हैं।",
+          mr: "आठवडी बाजाराचे स्वतःचे दुकान नाही — भाडे नाही, राखणदार नाही, बिले नाहीत; म्हणून त्याचे भाव पक्क्या दुकानांहून खाली राहतात.",
+        },
+        detail: {
+          en: "One trader may walk seven haats in seven days — the market itself is the traveller.",
+          hi: "एक व्यापारी सात दिनों में सात हाट घूम सकता है — यहाँ बाज़ार स्वयं यात्री है।",
+          mr: "एक व्यापारी सात दिवसांत सात बाजार फिरू शकतो — इथे बाजार स्वतःच प्रवासी आहे.",
+        },
+        extra: {
+          en: "Everything from bangles to buffaloes shares the same square for a day.",
+          hi: "चूड़ियों से भैंसों तक सब कुछ एक दिन के लिए एक ही चौक बाँटता है।",
+          mr: "बांगड्यांपासून म्हशींपर्यंत सारे एका दिवसासाठी एकच चौक वाटून घेते.",
+        },
+        pair: {
+          left: { en: "The market that visits", hi: "आता-जाता बाज़ार", mr: "येऊन जाणारा बाजार" },
+          right: {
+            en: "cheap by low overheads",
+            hi: "कम ख़र्च से सस्ता",
+            mr: "कमी खर्चाने स्वस्त",
+          },
+        },
+      },
+      {
+        id: "mall",
+        name: { en: "The shopping mall", hi: "शॉपिंग मॉल", mr: "शॉपिंग मॉल" },
+        kind: "market",
+        prompt: {
+          en: "Which enclosed market of branded showrooms sells to those who can pay for the air-conditioning along with the goods?",
+          hi: "ब्रांडेड शोरूमों का कौन-सा बंद बाज़ार उन्हें बेचता है जो माल के साथ एयर-कंडीशनिंग का दाम भी दे सकें?",
+          mr: "ब्रँडेड शोरूमांचा कोणता बंदिस्त बाजार त्यांना विकतो जे मालासोबत वातानुकूलनाचीही किंमत देऊ शकतात?",
+        },
+        statement: {
+          en: "The mall sells brands under one cooled roof — quality promised, and prices carrying the marble's rent.",
+          hi: "मॉल एक ठंडी छत तले ब्रांड बेचता है — गुणवत्ता का वादा, और दामों पर संगमरमर का किराया लदा हुआ।",
+          mr: "मॉल एका थंड छताखाली ब्रँड विकतो — दर्जाचे वचन, आणि किमतींवर संगमरवराचे भाडे लादलेले.",
+        },
+        pair: {
+          left: { en: "Brands under one roof", hi: "एक छत तले ब्रांड", mr: "एका छताखालचे ब्रँड" },
+          right: {
+            en: "prices carrying the rent",
+            hi: "किराया ढोते दाम",
+            mr: "भाडे वाहणाऱ्या किमती",
+          },
+        },
+      },
+      {
+        id: "wholesale",
+        name: { en: "The wholesale trader", hi: "थोक व्यापारी", mr: "घाऊक व्यापारी" },
+        kind: "market",
+        prompt: {
+          en: "Which trader buys in huge lots from producers and sells on to shopkeepers — never to the final eater?",
+          hi: "कौन-सा व्यापारी उत्पादकों से भारी खेप ख़रीदकर दुकानदारों को बेचता है — अंतिम खाने वाले को कभी नहीं?",
+          mr: "कोणता व्यापारी उत्पादकांकडून प्रचंड माल घेऊन दुकानदारांना विकतो — शेवटच्या खाणाऱ्याला कधीच नाही?",
+        },
+        statement: {
+          en: "The wholesaler moves goods by the sack and crate — the chain's middle link, invisible to the final buyer.",
+          hi: "थोक व्यापारी बोरी और पेटी के हिसाब से माल चलाता है — कड़ी की बीच की गाँठ, अंतिम ख़रीदार से ओझल।",
+          mr: "घाऊक व्यापारी पोते आणि खोक्याच्या हिशेबाने माल हलवतो — साखळीतला मधला दुवा, शेवटच्या गिऱ्हाईकाला अदृश्य.",
+        },
+        pair: {
+          left: { en: "Sacks, not packets", hi: "पैकेट नहीं, बोरियाँ", mr: "पाकिटे नव्हे, पोती" },
+          right: { en: "the chain's middle link", hi: "कड़ी की बीच की गाँठ", mr: "साखळीतला मधला दुवा" },
+        },
+      },
+      {
+        id: "chain",
+        name: { en: "The chain of markets", hi: "बाज़ारों की कड़ी", mr: "बाजारांची साखळी" },
+        kind: "system",
+        prompt: {
+          en: "From farm to wholesale yard to retail shop to kitchen — what is this relay of buying and selling called?",
+          hi: "खेत से थोक मंडी, मंडी से दुकान, दुकान से रसोई — ख़रीद-बिक्री की इस रिले-दौड़ का नाम क्या है?",
+          mr: "शेतातून घाऊक बाजार, तिथून दुकान, दुकानातून स्वयंपाकघर — खरेदी-विक्रीच्या या रिले-शर्यतीचे नाव काय?",
+        },
+        statement: {
+          en: "The chain of markets relays goods hand to hand — and each link adds its cost and keeps its margin.",
+          hi: "बाज़ारों की कड़ी माल को हाथ-दर-हाथ पहुँचाती है — और हर गाँठ अपना ख़र्च जोड़ती, अपना मुनाफ़ा रखती है।",
+          mr: "बाजारांची साखळी माल हातोहात पोहोचवते — आणि प्रत्येक दुवा आपला खर्च जोडतो, आपला नफा ठेवतो.",
+        },
+        detail: {
+          en: "The farmer's price and the kitchen's price differ by the whole chain's keep — count the hands between them.",
+          hi: "किसान का दाम और रसोई का दाम पूरी कड़ी की कमाई जितना अलग है — बीच के हाथ गिनिए।",
+          mr: "शेतकऱ्याचा भाव आणि स्वयंपाकघराचा भाव सबंध साखळीच्या कमाईइतका वेगळा — मधले हात मोजा.",
+        },
+        extra: {
+          en: "Shorten the chain — co-operatives, farmers' markets — and the two ends meet closer.",
+          hi: "कड़ी छोटी कीजिए — सहकारी समितियाँ, किसान-बाज़ार — और दोनों सिरे पास आ मिलते हैं।",
+          mr: "साखळी आखूड करा — सहकारी संस्था, शेतकरी-बाजार — आणि दोन्ही टोके जवळ येतात.",
+        },
+        pair: {
+          left: { en: "Farm to kitchen relay", hi: "खेत से रसोई की रिले", mr: "शेत ते स्वयंपाकघर रिले" },
+          right: {
+            en: "each link keeps a margin",
+            hi: "हर गाँठ का अपना मुनाफ़ा",
+            mr: "प्रत्येक दुव्याचा आपला नफा",
+          },
+        },
+      },
+      {
+        id: "hawker",
+        name: { en: "The street hawker", hi: "फेरीवाला", mr: "फेरीवाला" },
+        kind: "market",
+        prompt: {
+          en: "Which seller carries the market on a cart or head-load — capital small, place uncertain, customers passing by?",
+          hi: "कौन-सा विक्रेता बाज़ार को ठेले या सिर के बोझ पर ढोता है — पूँजी छोटी, ठिकाना अनिश्चित, ग्राहक राह चलते?",
+          mr: "कोणता विक्रेता बाजार गाडीवर वा डोक्यावरच्या ओझ्यावर वाहतो — भांडवल लहान, जागा अनिश्चित, गिऱ्हाईक वाटसरू?",
+        },
+        statement: {
+          en: "The hawker is a market of one — tiny capital, no shelter over the stock, and the first to be told to move along.",
+          hi: "फेरीवाला एक आदमी का बाज़ार है — नन्ही पूँजी, माल पर कोई छत नहीं, और 'आगे बढ़ो' सबसे पहले उसी से कहा जाता है।",
+          mr: "फेरीवाला म्हणजे एका माणसाचा बाजार — इवले भांडवल, मालावर छप्पर नाही, आणि 'पुढे हो' सर्वांत आधी त्यालाच सांगितले जाते.",
+        },
+        pair: {
+          left: { en: "The market on a cart", hi: "ठेले पर बाज़ार", mr: "गाडीवरचा बाजार" },
+          right: {
+            en: "smallest capital, least shelter",
+            hi: "सबसे छोटी पूँजी, सबसे कम छत",
+            mr: "सर्वांत लहान भांडवल, सर्वांत कमी छप्पर",
+          },
+        },
+      },
+      {
+        id: "credit",
+        name: { en: "Buying on credit", hi: "उधार पर ख़रीद", mr: "उधारीवर खरेदी" },
+        kind: "system",
+        prompt: {
+          en: "The poor often buy from the corner shop on udhaar despite its higher prices. Which arrangement explains the loyalty?",
+          hi: "ग़रीब प्रायः ऊँचे दामों के बावजूद नुक्कड़ की दुकान से उधार पर ख़रीदते हैं। कौन-सी व्यवस्था इस वफ़ादारी की व्याख्या करती है?",
+          mr: "गरीब बहुधा जास्त भाव असूनही कोपऱ्यावरच्या दुकानातून उधारीवर घेतात. कोणती व्यवस्था या निष्ठेचे स्पष्टीकरण देते?",
+        },
+        statement: {
+          en: "Credit binds buyer to shopkeeper — the udhaar khata forgives an empty pocket today at tomorrow's price.",
+          hi: "उधार ख़रीदार को दुकानदार से बाँधता है — उधार-खाता आज की ख़ाली जेब को कल के दाम पर माफ़ करता है।",
+          mr: "उधारी गिऱ्हाईकाला दुकानदाराशी बांधते — उधार-खाते आजच्या रिकाम्या खिशाला उद्याच्या किमतीवर माफ करते.",
+        },
+        pair: {
+          left: { en: "The udhaar khata", hi: "उधार-खाता", mr: "उधार-खाते" },
+          right: {
+            en: "today's need, tomorrow's price",
+            hi: "आज की ज़रूरत, कल का दाम",
+            mr: "आजची गरज, उद्याची किंमत",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Send a sack of onions from field to plate. Which order of hands is the usual one?",
+          hi: "प्याज़ की बोरी को खेत से थाली तक भेजिए। हाथों का सामान्य क्रम कौन-सा है?",
+          mr: "कांद्याचे पोते शेतातून ताटापर्यंत पाठवा. हातांचा नेहमीचा क्रम कोणता?",
+        },
+        choices: [
+          {
+            en: "Farmer → wholesale trader → retail shopkeeper → household buyer",
+            hi: "किसान → थोक व्यापारी → खुदरा दुकानदार → घरेलू ख़रीदार",
+            mr: "शेतकरी → घाऊक व्यापारी → किरकोळ दुकानदार → घरगुती गिऱ्हाईक",
+          },
+          {
+            en: "Farmer → retail shopkeeper → wholesale trader → household buyer",
+            hi: "किसान → खुदरा दुकानदार → थोक व्यापारी → घरेलू ख़रीदार",
+            mr: "शेतकरी → किरकोळ दुकानदार → घाऊक व्यापारी → घरगुती गिऱ्हाईक",
+          },
+          {
+            en: "Wholesale trader → farmer → household buyer → retail shopkeeper",
+            hi: "थोक व्यापारी → किसान → घरेलू ख़रीदार → खुदरा दुकानदार",
+            mr: "घाऊक व्यापारी → शेतकरी → घरगुती गिऱ्हाईक → किरकोळ दुकानदार",
+          },
+          {
+            en: "Household buyer → wholesale trader → retail shopkeeper → farmer",
+            hi: "घरेलू ख़रीदार → थोक व्यापारी → खुदरा दुकानदार → किसान",
+            mr: "घरगुती गिऱ्हाईक → घाऊक व्यापारी → किरकोळ दुकानदार → शेतकरी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Scale shrinks along the chain: the farmer sells by the quintal to the wholesaler, the wholesaler by the sack to shopkeepers, the shopkeeper by the kilo to households. Each hand matches a quantity to a buyer who wants exactly that much — and each takes its margin for the matching. Reverse any two links and the quantities stop fitting.",
+          hi: "कड़ी के साथ-साथ पैमाना सिकुड़ता है: किसान क्विंटल के भाव थोक व्यापारी को बेचता है, थोक वाला बोरी के हिसाब दुकानदारों को, दुकानदार किलो के हिसाब घरों को। हर हाथ मात्रा को उस ख़रीदार से मिलाता है जिसे ठीक उतनी चाहिए — और मिलान का अपना मुनाफ़ा लेता है। कोई दो गाँठें उलटिए और मात्राएँ बैठनी बंद हो जाती हैं।",
+          mr: "साखळीसोबत माप आकसते: शेतकरी क्विंटलने घाऊक व्यापाऱ्याला विकतो, घाऊकवाला पोत्याने दुकानदारांना, दुकानदार किलोने घरांना. प्रत्येक हात मात्रेला नेमकी तितकीच हवी असलेल्या गिऱ्हाईकाशी जुळवतो — आणि जुळणीचा आपला नफा घेतो. कोणतेही दोन दुवे उलटवा आणि मात्रा जुळणे थांबते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A shirt of the same cloth sells for ₹200 in the weekly market and ₹700 in the mall. If the cloth is equal, what is the mall buyer actually paying ₹500 more FOR?",
+          hi: "एक ही कपड़े की क़मीज़ साप्ताहिक बाज़ार में ₹200 और मॉल में ₹700 की बिकती है। कपड़ा बराबर है, तो मॉल का ख़रीदार ₹500 ज़्यादा असल में किस चीज़ के दे रहा है?",
+          mr: "त्याच कापडाचा सदरा आठवडी बाजारात ₹200 ला आणि मॉलमध्ये ₹700 ला विकला जातो. कापड सारखे आहे, तर मॉलचे गिऱ्हाईक ₹500 जास्त खरे कशासाठी देते आहे?",
+        },
+        choices: [
+          {
+            en: "For everything around the cloth: the brand's name, the showroom's rent and cooling, the staff, the bill and exchange promise — the mall sells assurance and experience, the haat sells cloth",
+            hi: "कपड़े के इर्द-गिर्द की हर चीज़ के: ब्रांड का नाम, शोरूम का किराया और ठंडक, कर्मचारी, बिल और बदलने का वादा — मॉल भरोसा और अनुभव बेचता है, हाट कपड़ा बेचती है",
+            mr: "कापडाभोवतीच्या प्रत्येक गोष्टीसाठी: ब्रँडचे नाव, शोरूमचे भाडे आणि गारवा, कर्मचारी, बिल आणि बदलून देण्याचे वचन — मॉल खात्री आणि अनुभव विकतो, बाजार कापड विकतो",
+          },
+          {
+            en: "For nothing — the mall price is simple cheating",
+            hi: "किसी चीज़ के नहीं — मॉल का दाम सीधी ठगी है",
+            mr: "कशासाठीच नाही — मॉलची किंमत सरळ फसवणूक",
+          },
+          {
+            en: "Mall shirts are always of far better cloth",
+            hi: "मॉल की क़मीज़ें हमेशा कहीं बेहतर कपड़े की होती हैं",
+            mr: "मॉलचे सदरे नेहमी कितीतरी चांगल्या कापडाचे असतात",
+          },
+          {
+            en: "Weekly-market sellers make enormous profits instead",
+            hi: "उलटे साप्ताहिक बाज़ार के विक्रेता भारी मुनाफ़ा कमाते हैं",
+            mr: "उलट आठवडी बाजारातले विक्रेते प्रचंड नफा कमावतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Every price is a bundle. The haat's ₹200 buys cloth plus almost nothing — no rent in it, no brand, no receipt if the seams give. The mall's ₹700 buys the same cloth wrapped in guarantees: a name that stakes its reputation, a bill that empowers a return, a cool room and salaried help — all real costs, all loaded into the tag. Neither buyer is cheated; they are buying different bundles with the same shirt inside. The civics lesson: markets sort customers by purse, and knowing WHAT each price contains is what makes a buyer hard to fool.",
+          hi: "हर दाम एक गठरी है। हाट के ₹200 में कपड़ा और लगभग कुछ नहीं — उसमें न किराया है, न ब्रांड, न सिलाई खुल जाए तो रसीद। मॉल के ₹700 में वही कपड़ा गारंटियों में लिपटा है: साख दाँव पर लगाता नाम, वापसी का हक़ देता बिल, ठंडा कमरा और वेतनभोगी मदद — सब असली ख़र्च, सब टैग में लदे। कोई ख़रीदार ठगा नहीं गया; दोनों एक ही क़मीज़ वाली अलग-अलग गठरियाँ ख़रीद रहे हैं। नागरिकशास्त्र का पाठ: बाज़ार ग्राहकों को जेब से छाँटते हैं, और हर दाम में क्या-क्या बँधा है यह जानना ही ख़रीदार को ठगों से बचाता है।",
+          mr: "प्रत्येक किंमत ही एक गाठोडी. बाजाराच्या ₹200 मध्ये कापड आणि जवळजवळ काहीच नाही — त्यात भाडे नाही, ब्रँड नाही, शिवण उसवली तर पावती नाही. मॉलच्या ₹700 मध्ये तेच कापड हमींमध्ये गुंडाळलेले: लौकिक पणाला लावणारे नाव, परतीचा हक्क देणारे बिल, थंड खोली आणि पगारी मदत — सारे खरे खर्च, सारे टॅगवर चढलेले. कोणतेही गिऱ्हाईक फसलेले नाही; दोघे एकाच सदऱ्याच्या वेगवेगळ्या गाठोड्या घेत आहेत. नागरिकशास्त्राचा धडा: बाजार गिऱ्हाईकांना खिशाने निवडतात, आणि प्रत्येक किमतीत काय-काय बांधले आहे हे जाणणेच गिऱ्हाईकाला फसवायला कठीण करते.",
+        },
+      },
+    ],
+  },
 ];

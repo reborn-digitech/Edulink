@@ -2509,13 +2509,14 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 114
-  chapters / 1,629 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 153
+  chapters / 2,328 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
-  (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14/14 in
-  `g6-maths.ts`; Science 9 in `g6-science.ts`; History 8 in
-  `g6-history.ts`; Geography 5 in `g6-geography.ts`; Civics 5 in
-  `g6-civics.ts`) — growing grade by grade toward Class 12. Suite
+  (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
+  History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14/14
+  in `g7-maths.ts`; Science 9 in `g7-science.ts`; Geography 5 in
+  `g7-geography.ts`; History 6 in `g7-history.ts`; Civics 5 in
+  `g7-civics.ts`) — growing grade by grade toward Class 12. Suite
   re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
