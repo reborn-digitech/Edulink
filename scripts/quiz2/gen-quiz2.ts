@@ -17,6 +17,7 @@ import { G6_HISTORY } from "./g6-history";
 import { G3_MATHS, G3_MATHS_CONCEPT } from "./g3-maths";
 import { G3_EVS } from "./g3-evs";
 import { G4_MATHS } from "./g4-maths";
+import { G4_EVS } from "./g4-evs";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -25,6 +26,7 @@ function main() {
   // Conceptual chapters run through the engine; numeric chapters arrive built.
   const topics: TopicFileOut[] = [
     ...G3_EVS.map(generateChapter),
+    ...G4_EVS.map(generateChapter),
     ...G3_MATHS_CONCEPT.map(generateChapter),
     ...G6_HISTORY.map(generateChapter),
     ...G3_MATHS,
