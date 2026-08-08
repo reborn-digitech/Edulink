@@ -1503,4 +1503,295 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 19 — Our Friends — Animals (caring for animals)                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-our-friends-animals",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 19 — Our Friends — Animals",
+      hi: "अध्याय 19 — हमारे साथी — जानवर",
+      mr: "प्रकरण 19 — आपले मित्र — प्राणी",
+    },
+    name: {
+      en: "Our Friends — Animals",
+      hi: "हमारे साथी — जानवर",
+      mr: "आपले मित्र — प्राणी",
+    },
+    summary: {
+      en: "The animals who live and work beside us — what each gives, what each needs, and how a child can be kind to them.",
+      hi: "हमारे साथ रहने-काम करने वाले जानवर — कौन क्या देता है, किसे क्या चाहिए, और बच्चा उनके लिए दयालु कैसे बने।",
+      mr: "आपल्यासोबत राहणारे-काम करणारे प्राणी — कोण काय देतो, कोणाला काय लागते, आणि मूल त्यांच्याशी दयाळू कसे वागू शकते.",
+    },
+    position: 19,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "bullock",
+        name: { en: "The bullock", hi: "बैल", mr: "बैल" },
+        kind: "working-animal",
+        prompt: {
+          en: "Which strong animal pulls the farmer's plough and cart in villages?",
+          hi: "कौन-सा बलवान जानवर गाँवों में किसान का हल और गाड़ी खींचता है?",
+          mr: "कोणता बलवान प्राणी खेड्यांत शेतकऱ्याचा नांगर आणि गाडी ओढतो?",
+        },
+        statement: {
+          en: "The bullock pulls the plough through the field and the loaded cart along the road.",
+          hi: "बैल खेत में हल और सड़क पर लदी गाड़ी खींचता है।",
+          mr: "बैल शेतात नांगर आणि रस्त्यावर भरलेली गाडी ओढतो.",
+        },
+        pair: {
+          left: { en: "The bullock", hi: "बैल", mr: "बैल" },
+          right: { en: "plough and cart", hi: "हल और गाड़ी", mr: "नांगर आणि गाडी" },
+        },
+      },
+      {
+        id: "camel",
+        name: { en: "The camel", hi: "ऊँट", mr: "उंट" },
+        kind: "working-animal",
+        prompt: {
+          en: "Which tall animal, called the ship of the desert, carries loads across hot sand for days?",
+          hi: "रेगिस्तान का जहाज़ कहलाने वाला कौन-सा ऊँचा जानवर दिनों तक गर्म रेत पर बोझ ढोता है?",
+          mr: "वाळवंटातील जहाज म्हणवला जाणारा कोणता उंच प्राणी दिवसेंदिवस तापल्या वाळूवर ओझी वाहतो?",
+        },
+        statement: {
+          en: "The camel crosses hot sand for days without water, its wide feet not sinking in — the ship of the desert.",
+          hi: "ऊँट बिना पानी दिनों तक गर्म रेत पार करता है, चौड़े पैर धँसते नहीं — रेगिस्तान का जहाज़।",
+          mr: "उंट पाण्याविना दिवसेंदिवस तापली वाळू पार करतो, रुंद पाय रुतत नाहीत — वाळवंटातील जहाज.",
+        },
+        detail: {
+          en: "The hump on its back stores fat that feeds it through long journeys.",
+          hi: "इसकी पीठ का कूबड़ चर्बी जमा रखता है, जो लंबे सफ़र में इसे खुराक देती है।",
+          mr: "याच्या पाठीवरचे वशिंड चरबी साठवते, जी लांब प्रवासात त्याला खुराक देते.",
+        },
+        pair: {
+          left: { en: "The camel", hi: "ऊँट", mr: "उंट" },
+          right: { en: "ship of the desert", hi: "रेगिस्तान का जहाज़", mr: "वाळवंटातील जहाज" },
+        },
+      },
+      {
+        id: "hen",
+        name: { en: "The hen", hi: "मुर्ग़ी", mr: "कोंबडी" },
+        kind: "farm-animal",
+        prompt: {
+          en: "Which bird of the courtyard gives us eggs and clucks over her chicks?",
+          hi: "आँगन की कौन-सी चिड़िया हमें अंडे देती है और चूज़ों पर कुड़कुड़ाती रहती है?",
+          mr: "अंगणातली कोणती पक्षीण आपल्याला अंडी देते आणि पिलांवर कुडकुडत असते?",
+        },
+        statement: {
+          en: "The hen lays the eggs we eat and gathers her chicks under her wings at dusk.",
+          hi: "मुर्ग़ी वे अंडे देती है जो हम खाते हैं, और साँझ को चूज़ों को परों तले समेट लेती है।",
+          mr: "कोंबडी आपण खातो ती अंडी घालते, आणि संध्याकाळी पिलांना पंखांखाली गोळा करते.",
+        },
+        pair: {
+          left: { en: "The hen", hi: "मुर्ग़ी", mr: "कोंबडी" },
+          right: { en: "eggs", hi: "अंडे", mr: "अंडी" },
+        },
+      },
+      {
+        id: "sheep",
+        name: { en: "The sheep", hi: "भेड़", mr: "मेंढी" },
+        kind: "farm-animal",
+        prompt: {
+          en: "From which animal's thick coat is wool cut to knit our winter sweaters?",
+          hi: "किस जानवर के घने बालों से ऊन कतरकर हमारे सर्दियों के स्वेटर बुनते हैं?",
+          mr: "कोणत्या प्राण्याच्या दाट केसांतून लोकर कातरून आपले हिवाळी स्वेटर विणतात?",
+        },
+        statement: {
+          en: "The sheep grows a thick woolly coat, sheared each year to make sweaters and blankets.",
+          hi: "भेड़ पर घना ऊनी कोट उगता है, जो हर साल कतरकर स्वेटर-कंबल बनते हैं।",
+          mr: "मेंढीवर दाट लोकरीचा कोट वाढतो; तो दरवर्षी कातरून स्वेटर-घोंगड्या होतात.",
+        },
+        pair: {
+          left: { en: "The sheep", hi: "भेड़", mr: "मेंढी" },
+          right: { en: "wool", hi: "ऊन", mr: "लोकर" },
+        },
+      },
+      {
+        id: "donkey",
+        name: { en: "The donkey", hi: "गधा", mr: "गाढव" },
+        kind: "working-animal",
+        prompt: {
+          en: "Which patient animal carries the washerman's heavy bundles of clothes on its back?",
+          hi: "कौन-सा धैर्यवान जानवर धोबी के कपड़ों की भारी गठरियाँ पीठ पर ढोता है?",
+          mr: "कोणता सोशीक प्राणी परटाची कपड्यांची जड गाठोडी पाठीवर वाहतो?",
+        },
+        statement: {
+          en: "The donkey carries heavy bundles up and down the lanes, working quietly all day.",
+          hi: "गधा गलियों में भारी गठरियाँ ढोता है, दिन भर चुपचाप काम करता हुआ।",
+          mr: "गाढव गल्ल्यांतून जड गाठोडी वाहते, दिवसभर मुकाट्याने काम करत.",
+        },
+      },
+      {
+        id: "strayfeeding",
+        name: {
+          en: "Keeping water out for animals",
+          hi: "जानवरों के लिए पानी रखना",
+          mr: "प्राण्यांसाठी पाणी ठेवणे",
+        },
+        kind: "kindness",
+        prompt: {
+          en: "In the hottest weeks of summer, what simple kindness can a child do daily for birds and street animals?",
+          hi: "गर्मी के सबसे तपते हफ़्तों में बच्चा पक्षियों और गली के जानवरों के लिए रोज़ कौन-सी सीधी-सी दया कर सकता है?",
+          mr: "उन्हाळ्याच्या सर्वांत तापल्या आठवड्यांत मूल पक्ष्यांसाठी आणि गल्लीतल्या प्राण्यांसाठी रोज कोणती साधी दया करू शकते?",
+        },
+        statement: {
+          en: "Keeping a bowl of clean water on the ledge or doorstep saves birds and street animals through the summer heat.",
+          hi: "मुँडेर या दहलीज़ पर साफ़ पानी का कटोरा रखना पक्षियों और गली के जानवरों को गर्मी से बचा लेता है।",
+          mr: "कठड्यावर वा उंबरठ्यावर स्वच्छ पाण्याची वाटी ठेवणे पक्ष्यांना आणि गल्लीतल्या प्राण्यांना उन्हाळ्यातून वाचवते.",
+        },
+      },
+      {
+        id: "notteasing",
+        name: {
+          en: "Never teasing or stoning",
+          hi: "न चिढ़ाना, न पत्थर मारना",
+          mr: "न चिडवणे, न दगड मारणे",
+        },
+        kind: "kindness",
+        prompt: {
+          en: "What must a child NEVER do to a street dog or a tied bullock, however bored the afternoon?",
+          hi: "दोपहर चाहे कितनी भी सूनी हो, बच्चे को गली के कुत्ते या बँधे बैल के साथ क्या कभी नहीं करना चाहिए?",
+          mr: "दुपार कितीही कंटाळवाणी असो, मुलाने गल्लीतल्या कुत्र्याशी वा बांधलेल्या बैलाशी काय कधीही करू नये?",
+        },
+        statement: {
+          en: "Teasing or throwing stones frightens and hurts animals — and a frightened animal may bite or kick to save itself.",
+          hi: "चिढ़ाना या पत्थर फेंकना जानवरों को डराता और चोट देता है — और डरा हुआ जानवर ख़ुद को बचाने के लिए काट या दुलत्ती मार सकता है।",
+          mr: "चिडवणे वा दगड फेकणे प्राण्यांना घाबरवते आणि दुखवते — आणि घाबरलेला प्राणी स्वतःला वाचवायला चावू वा लाथ मारू शकतो.",
+        },
+      },
+      {
+        id: "birdsgrain",
+        name: {
+          en: "Scattering grain",
+          hi: "दाना बिखेरना",
+          mr: "दाणे टाकणे",
+        },
+        kind: "kindness",
+        prompt: {
+          en: "What do many families scatter on the roof or courtyard each morning for sparrows and pigeons?",
+          hi: "कई परिवार रोज़ सुबह छत या आँगन में गौरैयों और कबूतरों के लिए क्या बिखेरते हैं?",
+          mr: "अनेक कुटुंबे रोज सकाळी गच्चीवर वा अंगणात चिमण्या-कबुतरांसाठी काय टाकतात?",
+        },
+        statement: {
+          en: "A handful of grain scattered each morning brings the sparrows and pigeons back day after day.",
+          hi: "रोज़ सुबह बिखेरी मुट्ठी भर दाना गौरैयों-कबूतरों को दिन-प्रतिदिन लौटा लाती है।",
+          mr: "रोज सकाळी टाकलेली मूठभर दाणे चिमण्या-कबुतरांना दिवसेंदिवस परत आणतात.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the animal to what it gives or does: bullock, hen, sheep, camel — plough-pulling, eggs, wool, desert journeys. Which line is entirely right?",
+          hi: "जानवर को उसके काम या देन से मिलाइए: बैल, मुर्ग़ी, भेड़, ऊँट — हल खींचना, अंडे, ऊन, रेगिस्तानी सफ़र। कौन-सी पंक्ति पूरी सही है?",
+          mr: "प्राण्याला त्याच्या कामाशी वा देणगीशी जुळवा: बैल, कोंबडी, मेंढी, उंट — नांगर ओढणे, अंडी, लोकर, वाळवंटी प्रवास. कोणती ओळ पूर्ण बरोबर?",
+        },
+        choices: [
+          {
+            en: "Bullock: plough · hen: eggs · sheep: wool · camel: desert",
+            hi: "बैल: हल · मुर्ग़ी: अंडे · भेड़: ऊन · ऊँट: रेगिस्तान",
+            mr: "बैल: नांगर · कोंबडी: अंडी · मेंढी: लोकर · उंट: वाळवंट",
+          },
+          {
+            en: "Bullock: eggs · hen: wool · sheep: desert · camel: plough",
+            hi: "बैल: अंडे · मुर्ग़ी: ऊन · भेड़: रेगिस्तान · ऊँट: हल",
+            mr: "बैल: अंडी · कोंबडी: लोकर · मेंढी: वाळवंट · उंट: नांगर",
+          },
+          {
+            en: "Bullock: wool · hen: eggs · sheep: plough · camel: desert",
+            hi: "बैल: ऊन · मुर्ग़ी: अंडे · भेड़: हल · ऊँट: रेगिस्तान",
+            mr: "बैल: लोकर · कोंबडी: अंडी · मेंढी: नांगर · उंट: वाळवंट",
+          },
+          {
+            en: "Bullock: plough · hen: wool · sheep: eggs · camel: desert",
+            hi: "बैल: हल · मुर्ग़ी: ऊन · भेड़: अंडे · ऊँट: रेगिस्तान",
+            mr: "बैल: नांगर · कोंबडी: लोकर · मेंढी: अंडी · उंट: वाळवंट",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Strength pulls the plough (bullock), the courtyard bird lays eggs (hen), the woolly coat gives wool (sheep), and the wide-footed humped walker owns the desert (camel). Every wrong line has at least one animal doing another's work.",
+          hi: "ताक़त हल खींचती है (बैल), आँगन की चिड़िया अंडे देती है (मुर्ग़ी), ऊनी कोट ऊन देता है (भेड़), और चौड़े पैर व कूबड़ वाला रेगिस्तान का स्वामी है (ऊँट)। हर ग़लत पंक्ति में कोई जानवर दूसरे का काम कर रहा है।",
+          mr: "ताकद नांगर ओढते (बैल), अंगणातली पक्षीण अंडी देते (कोंबडी), लोकरीचा कोट लोकर देतो (मेंढी), आणि रुंद पायांचा वशिंडवाला वाळवंटाचा धनी (उंट). प्रत्येक चुकीच्या ओळीत कोणीतरी दुसऱ्याचे काम करतो आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A street dog usually lets children pass quietly, but today it growls, ears flat, backed into a corner with a wounded leg. What is the WISE and kind thing to do?",
+          hi: "गली का कुत्ता प्रायः बच्चों को चुपचाप जाने देता है, पर आज घायल टाँग लिए कोने में सिमटा, कान चिपकाए ग़ुर्रा रहा है। समझदारी और दया की बात क्या होगी?",
+          mr: "गल्लीतला कुत्रा एरवी मुलांना शांतपणे जाऊ देतो, पण आज जखमी पायाने कोपऱ्यात दबून, कान चिकटवून गुरगुरतो आहे. शहाणपणाची आणि दयेची गोष्ट कोणती?",
+        },
+        choices: [
+          {
+            en: "Keep your distance and tell an adult or an animal helpline — a hurt, cornered animal may bite even a friend",
+            hi: "दूरी रखें और किसी बड़े या पशु-सहायता को बताएँ — घायल, घिरा जानवर दोस्त को भी काट सकता है",
+            mr: "अंतर ठेवा आणि मोठ्यांना वा प्राणी-मदतकेंद्राला सांगा — जखमी, कोंडलेला प्राणी मित्रालाही चावू शकतो",
+          },
+          {
+            en: "Hug it to show it is loved",
+            hi: "गले लगाकर दिखाएँ कि उसे प्यार मिलता है",
+            mr: "मिठी मारून प्रेम दाखवा",
+          },
+          {
+            en: "Throw a small stone so it moves out of the corner",
+            hi: "छोटा पत्थर फेंकें ताकि वह कोने से हट जाए",
+            mr: "छोटा दगड फेका म्हणजे तो कोपऱ्यातून हलेल",
+          },
+          {
+            en: "Growl back so it learns who is stronger",
+            hi: "पलटकर ग़ुर्राएँ ताकि उसे पता चले कौन ताक़तवर है",
+            mr: "उलट गुरगुरा म्हणजे कोण बलवान ते त्याला कळेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The growl, flat ears and corner all say the same thing: 'I am scared and hurt.' Kindness to a frightened animal is space plus grown-up help, not hands. The fact from this chapter doing the work: a frightened animal defends itself — even against a friend.",
+          hi: "ग़ुर्राहट, चिपके कान और कोना — तीनों एक ही बात कहते हैं: 'मैं डरा और घायल हूँ।' डरे जानवर के लिए दया है दूरी और बड़ों की मदद, हाथ नहीं। अध्याय का यही तथ्य काम कर रहा है: डरा जानवर अपनी रक्षा करता है — दोस्त से भी।",
+          mr: "गुरगुर, चिकटलेले कान आणि कोपरा — तिन्ही एकच सांगतात: 'मी घाबरलो आणि जखमी आहे.' घाबरलेल्या प्राण्यासाठी दया म्हणजे अंतर आणि मोठ्यांची मदत, हात नव्हे. प्रकरणातले हेच तथ्य काम करते: घाबरलेला प्राणी स्वतःचे रक्षण करतो — मित्रापासूनही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Grandmother says: 'In my village nobody fed the sparrows, yet there were many. In this city people scatter grain daily, yet sparrows are few.' What best explains the puzzle?",
+          hi: "दादी कहती हैं: 'मेरे गाँव में कोई गौरैयों को दाना नहीं देता था, फिर भी वे बहुत थीं। इस शहर में लोग रोज़ दाना डालते हैं, फिर भी गौरैया कम हैं।' पहेली की सबसे अच्छी व्याख्या क्या है?",
+          mr: "आजी म्हणते: 'माझ्या गावात कोणी चिमण्यांना दाणे देत नसे, तरी त्या पुष्कळ होत्या. या शहरात लोक रोज दाणे टाकतात, तरी चिमण्या थोड्या.' कोड्याचे सर्वांत चांगले स्पष्टीकरण कोणते?",
+        },
+        choices: [
+          {
+            en: "Food is only one need — the village gave bushes, insects and nesting nooks that city buildings and noise take away",
+            hi: "दाना एक ही ज़रूरत है — गाँव झाड़ियाँ, कीड़े और घोंसले की जगहें देता था, जो शहर की इमारतें और शोर छीन लेते हैं",
+            mr: "दाणे ही एकच गरज — गाव झुडपे, किडे आणि घरट्यांच्या जागा देत असे, ज्या शहरातील इमारती आणि गोंगाट हिरावतात",
+          },
+          {
+            en: "City sparrows dislike free grain",
+            hi: "शहरी गौरैयों को मुफ़्त दाना पसंद नहीं",
+            mr: "शहरी चिमण्यांना फुकट दाणे आवडत नाहीत",
+          },
+          {
+            en: "Grandmother is remembering wrongly",
+            hi: "दादी को ग़लत याद है",
+            mr: "आजीला चुकीचे आठवते आहे",
+          },
+          {
+            en: "Village grain was tastier than city grain",
+            hi: "गाँव का दाना शहर के दाने से स्वादिष्ट था",
+            mr: "गावचे दाणे शहरच्या दाण्यांहून चविष्ट होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "An animal needs food AND shelter AND a place to raise its young. The village supplied all three without anyone trying; the city hands out only the first. When kindness gives one need and takes two, the count still falls — which is why real care means bushes and nest-boxes, not grain alone.",
+          hi: "जानवर को खाना भी चाहिए, ठिकाना भी, और बच्चे पालने की जगह भी। गाँव बिना किसी कोशिश के तीनों देता था; शहर केवल पहली चीज़ बाँटता है। जब दया एक ज़रूरत देकर दो छीन ले, तो गिनती फिर भी गिरती है — असली देखभाल इसीलिए दाने के साथ झाड़ियाँ और घोंसला-घर भी है।",
+          mr: "प्राण्याला अन्नही हवे, निवाराही, आणि पिले वाढवण्याची जागाही. गाव न प्रयत्न करता तिन्ही देत असे; शहर फक्त पहिली गोष्ट वाटते. दया एक गरज देऊन दोन हिरावते, तेव्हा संख्या तरीही घटते — खरी काळजी म्हणूनच दाण्यांसोबत झुडपे आणि घरटी-पेट्याही.",
+        },
+      },
+    ],
+  },
 ];
