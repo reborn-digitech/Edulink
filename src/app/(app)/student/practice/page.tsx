@@ -13,7 +13,7 @@ import {
   listTopics,
   normaliseLanguage,
   QUIZ_LEVELS,
-  SUBJECT_LABEL,
+  SUBJECT_KEY,
   type QuizSubject,
 } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
@@ -51,6 +51,10 @@ export default async function PracticePage({
   const ctx = await requireRole("STUDENT");
   const { subject, grade } = await searchParams;
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
 
   const language = normaliseLanguage(ctx.user.prefs.locale);
   // BOTH filters are applied AFTER the query, on purpose: each chip row must
@@ -240,7 +244,7 @@ export default async function PracticePage({
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
                 >
-                  {SUBJECT_LABEL[s as QuizSubject] ?? s}
+                  {subjectName(s)}
                 </Link>
               ))}
             </nav>
@@ -278,7 +282,7 @@ export default async function PracticePage({
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                          {SUBJECT_LABEL[topic.subject as QuizSubject] ?? topic.subject} ·{" "}
+                          {subjectName(topic.subject)} ·{" "}
                           {t("practice.classN", { n: topic.classLevel })}
                         </p>
                         <p className="mt-0.5 font-semibold text-fg">{topic.name}</p>

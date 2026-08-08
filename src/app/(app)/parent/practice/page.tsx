@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BrainIcon, MedalIcon, CheckCircleIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
-import { normaliseLanguage, QUIZ_LEVELS, SUBJECT_LABEL, type QuizSubject } from "@/lib/quiz";
+import { normaliseLanguage, QUIZ_LEVELS, SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { childPracticeProgress } from "@/lib/practice-insights";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +31,10 @@ export default async function ParentPracticePage({
 }) {
   const session = await requireParent();
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
   const { child: requested } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -86,7 +90,7 @@ export default async function ParentPracticePage({
               <Card key={subjectKey}>
                 <CardHeader
                   icon={<BrainIcon weight="duotone" className="size-5" />}
-                  title={SUBJECT_LABEL[subjectKey as QuizSubject] ?? subjectKey}
+                  title={subjectName(subjectKey)}
                 />
                 <CardBody className="overflow-x-auto p-0">
                   <table className="w-full text-sm">

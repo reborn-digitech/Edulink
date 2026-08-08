@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, AccessError } from "@/lib/tenancy";
 import { buildWorksheet } from "@/lib/worksheets";
-import { SUBJECT_LABEL } from "@/lib/quiz";
+import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 import { PrintButton } from "./print-button";
 import { ReshuffleButton } from "../fresh-seed";
@@ -28,6 +28,10 @@ export default async function WorksheetPrintPage({
 }) {
   const ctx = await requireRole("TEACHER");
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
   const params = await searchParams;
 
   let sheet;
@@ -70,9 +74,7 @@ export default async function WorksheetPrintPage({
           <h1 className="text-xl font-bold tracking-tight text-fg print:text-black">{heading}</h1>
           <p className="mt-1 text-sm text-fg-muted print:text-black/70">
             {t("practice.classN", { n: sheet.classLevel })} ·{" "}
-            {/* The English half of the bilingual label — "Ganit · Maths" read
-                as two subjects on a printed header. */}
-            {(SUBJECT_LABEL[sheet.subject] ?? sheet.subject).split(" · ").pop()} ·{" "}
+            {subjectName(sheet.subject)} ·{" "}
             {t("worksheets.paperMeta", { count: sheet.questions.length, seed: sheet.seed })}
           </p>
           <p className="mt-3 text-sm text-fg-muted print:text-black/70">

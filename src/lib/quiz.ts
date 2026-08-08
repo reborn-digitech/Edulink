@@ -114,13 +114,18 @@ export const QUIZ_SUBJECTS = [
 ] as const;
 export type QuizSubject = (typeof QUIZ_SUBJECTS)[number];
 
-export const SUBJECT_LABEL: Record<QuizSubject, string> = {
-  MATHS: "Ganit · Maths",
-  SCIENCE: "Vigyan · Science",
-  HISTORY: "Itihaas · History",
-  GEOGRAPHY: "Bhugol · Geography",
-  CIVICS: "Nagrik Shastra · Civics",
-  ECONOMICS: "Arthashastra · Economics",
+/**
+ * Subject names are dictionary keys, not strings: "History" in English,
+ * "इतिहास" under either Indic toggle. The old bilingual "Itihaas · History"
+ * constants predated i18n and had pages splitting on " · " to un-mix them.
+ */
+export const SUBJECT_KEY: Record<QuizSubject, TranslationKey> = {
+  MATHS: "subject.MATHS",
+  SCIENCE: "subject.SCIENCE",
+  HISTORY: "subject.HISTORY",
+  GEOGRAPHY: "subject.GEOGRAPHY",
+  CIVICS: "subject.CIVICS",
+  ECONOMICS: "subject.ECONOMICS",
 };
 
 /**

@@ -831,6 +831,15 @@ export const mr: Dictionary = {
     notifSettings: "सूचना सेटिंग",
   },
 
+  subject: {
+    MATHS: "गणित",
+    SCIENCE: "विज्ञान",
+    HISTORY: "इतिहास",
+    GEOGRAPHY: "भूगोल",
+    CIVICS: "नागरिकशास्त्र",
+    ECONOMICS: "अर्थशास्त्र",
+  },
+
   practice: {
     allClasses: "सर्व इयत्ता",
     classN: "इयत्ता {n}",

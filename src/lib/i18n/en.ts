@@ -955,6 +955,16 @@ export const en = {
   /* ---------------------------------------------------------------------- */
   /* Practice — the question player                                          */
   /* ---------------------------------------------------------------------- */
+  // Keys match QuizSubject codes on purpose — SUBJECT_KEY in quiz.ts maps them.
+  subject: {
+    MATHS: "Maths",
+    SCIENCE: "Science",
+    HISTORY: "History",
+    GEOGRAPHY: "Geography",
+    CIVICS: "Civics",
+    ECONOMICS: "Economics",
+  },
+
   practice: {
     intro: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off.",
     allSubjects: "All",

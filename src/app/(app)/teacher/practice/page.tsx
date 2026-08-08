@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BrainIcon, FlagIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { normaliseLanguage, SUBJECT_LABEL, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
+import { normaliseLanguage, SUBJECT_KEY, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
 import {
   classPracticeHeatmap,
   assignmentsForClass,
@@ -35,6 +35,10 @@ export default async function TeacherPracticePage({
 }) {
   const ctx = await requireRole("TEACHER");
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
   const { classId: requested, error } = await searchParams;
 
   const classes = await db.class.findMany({
@@ -144,7 +148,7 @@ export default async function TeacherPracticePage({
                 <span className="font-medium text-fg">
                   {gap.name}
                   <span className="ml-2 text-xs text-fg-muted">
-                    {SUBJECT_LABEL[gap.subject as QuizSubject] ?? gap.subject}
+                    {subjectName(gap.subject)}
                   </span>
                 </span>
                 <span className="text-fg-muted">
@@ -184,7 +188,7 @@ export default async function TeacherPracticePage({
                     <td className="px-4 py-2.5">
                       <span className="font-medium text-fg">{row.name}</span>
                       <span className="ml-2 text-xs text-fg-muted">
-                        {SUBJECT_LABEL[row.subject as QuizSubject] ?? row.subject}
+                        {subjectName(row.subject)}
                       </span>
                     </td>
                     {row.atLevel.map((n, i) => (
@@ -228,7 +232,7 @@ export default async function TeacherPracticePage({
                 {topicOptions.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
                     {Number.isInteger(grade) ? "" : `${t("practice.classN", { n: topic.classLevel })} · `}
-                    {SUBJECT_LABEL[topic.subject as QuizSubject]?.split(" · ")[1] ?? topic.subject} ·{" "}
+                    {subjectName(topic.subject)} ·{" "}
                     {topic.name}
                   </option>
                 ))}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PrinterIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { worksheetTopics } from "@/lib/worksheets";
-import { SUBJECT_LABEL, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
+import { SUBJECT_KEY, TIER_NAMES, MAX_LEVEL, type QuizSubject } from "@/lib/quiz";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
@@ -20,6 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function WorksheetsPage() {
   const ctx = await requireRole("TEACHER");
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
   const topics = await worksheetTopics(ctx);
 
   return (
@@ -49,7 +53,7 @@ export default async function WorksheetsPage() {
                 {topics.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
                     {t("practice.classN", { n: topic.classLevel })} ·{" "}
-                    {SUBJECT_LABEL[topic.subject as QuizSubject]?.split(" · ")[1] ?? topic.subject} ·{" "}
+                    {subjectName(topic.subject)} ·{" "}
                     {topic.name}
                   </option>
                 ))}

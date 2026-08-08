@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
-import { SUBJECT_LABEL, type QuizSubject } from "@/lib/quiz";
+import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
@@ -40,6 +40,10 @@ export default async function ReportCardPage({
   params: Promise<{ cardId: string }>;
 }) {
   const t = await getT();
+  const subjectName = (code: string) => {
+    const key = SUBJECT_KEY[code as QuizSubject];
+    return key ? t(key) : code;
+  };
   const session = await requireUser();
   const { cardId } = await params;
 
@@ -191,7 +195,7 @@ export default async function ReportCardPage({
                     <td className="py-2 pr-3 text-fg print:text-black">
                       {row.name}
                       <span className="block text-xs text-fg-muted print:text-black/60">
-                        {SUBJECT_LABEL[row.subject as QuizSubject] ?? row.subject}
+                        {subjectName(row.subject)}
                       </span>
                     </td>
                     <td className="py-2 text-right tabular-nums text-fg print:text-black">
