@@ -955,4 +955,275 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Foods We Eat                                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-foods-we-eat",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 6 — Foods We Eat",
+      hi: "अध्याय 6 — हमारा भोजन",
+      mr: "प्रकरण 6 — आपले अन्न",
+    },
+    name: { en: "Foods We Eat", hi: "हमारा भोजन", mr: "आपले अन्न" },
+    summary: {
+      en: "What different people eat at different ages and places — and where the food on the plate began.",
+      hi: "अलग-अलग उम्र और जगहों के लोग क्या खाते हैं — और थाली का खाना कहाँ से शुरू हुआ।",
+      mr: "वेगवेगळ्या वयांचे आणि ठिकाणचे लोक काय खातात — आणि ताटातले अन्न कुठे सुरू झाले.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "milkfood",
+        name: { en: "Milk", hi: "दूध", mr: "दूध" },
+        kind: "food",
+        prompt: {
+          en: "Which is the ONLY food a newborn baby has for its first months?",
+          hi: "नवजात शिशु पहले महीनों में केवल कौन-सा आहार लेता है?",
+          mr: "नवजात बाळ पहिल्या महिन्यांत फक्त कोणता आहार घेते?",
+        },
+        statement: {
+          en: "A newborn baby lives on milk alone for its first months — no rotis, no rice, only milk.",
+          hi: "नवजात शिशु पहले महीनों में केवल दूध पर रहता है — न रोटी, न चावल, केवल दूध।",
+          mr: "नवजात बाळ पहिल्या महिन्यांत फक्त दुधावर असते — पोळी नाही, भात नाही, फक्त दूध.",
+        },
+        detail: {
+          en: "Curd, butter, ghee and paneer are all made from this one food.",
+          hi: "दही, मक्खन, घी और पनीर — सब इसी एक आहार से बनते हैं।",
+          mr: "दही, लोणी, तूप आणि पनीर — सारे याच एका अन्नापासून होतात.",
+        },
+        pair: {
+          left: { en: "A newborn baby", hi: "नवजात शिशु", mr: "नवजात बाळ" },
+          right: { en: "only milk", hi: "केवल दूध", mr: "फक्त दूध" },
+        },
+      },
+      {
+        id: "roti",
+        name: { en: "Roti", hi: "रोटी", mr: "पोळी" },
+        kind: "food",
+        prompt: {
+          en: "Which food is made by rolling wheat dough flat and cooking it on a hot tawa?",
+          hi: "कौन-सा भोजन गेहूँ का आटा बेलकर गर्म तवे पर सेंकने से बनता है?",
+          mr: "कोणते अन्न गव्हाची कणीक लाटून गरम तव्यावर भाजून होते?",
+        },
+        statement: {
+          en: "Roti is rolled from wheat dough and cooked on a tawa, and it begins as grain in a farmer's field.",
+          hi: "रोटी गेहूँ के आटे से बेली और तवे पर सेंकी जाती है — और उसकी शुरुआत किसान के खेत के दाने से होती है।",
+          mr: "पोळी गव्हाच्या कणकेतून लाटून तव्यावर भाजतात — आणि तिची सुरुवात शेतकऱ्याच्या शेतातील दाण्यापासून होते.",
+        },
+        pair: {
+          left: { en: "Roti", hi: "रोटी", mr: "पोळी" },
+          right: { en: "wheat", hi: "गेहूँ", mr: "गहू" },
+        },
+      },
+      {
+        id: "ricefood",
+        name: { en: "Rice", hi: "चावल", mr: "भात" },
+        kind: "food",
+        prompt: {
+          en: "Which grain, boiled soft, is the main food in places where paddy grows in flooded fields?",
+          hi: "कौन-सा अनाज, उबालकर, उन जगहों का मुख्य भोजन है जहाँ पानी भरे खेतों में धान उगता है?",
+          mr: "कोणते धान्य, शिजवून, पाणथळ शेतांत भात पिकणाऱ्या ठिकाणचे मुख्य अन्न आहे?",
+        },
+        statement: {
+          en: "Rice comes from paddy grown in water-filled fields, and in many homes it is eaten at every meal.",
+          hi: "चावल पानी भरे खेतों के धान से आता है, और कई घरों में हर भोजन में खाया जाता है।",
+          mr: "भात पाणथळ शेतांतील साळीपासून येतो, आणि अनेक घरांत प्रत्येक जेवणात खाल्ला जातो.",
+        },
+        pair: {
+          left: { en: "Rice", hi: "चावल", mr: "भात" },
+          right: { en: "paddy in flooded fields", hi: "पानी भरे खेतों का धान", mr: "पाणथळ शेतांतील साळ" },
+        },
+      },
+      {
+        id: "dal",
+        name: { en: "Dal", hi: "दाल", mr: "डाळ" },
+        kind: "food",
+        prompt: {
+          en: "Which everyday food is cooked from pulses like moong, tur and chana?",
+          hi: "कौन-सा रोज़ का भोजन मूँग, तूर और चने जैसी दालों से पकता है?",
+          mr: "कोणते रोजचे अन्न मूग, तूर आणि हरभऱ्यासारख्या कडधान्यांतून शिजते?",
+        },
+        statement: {
+          en: "Dal is cooked from pulses — moong, tur, chana — and gives the body strength to grow.",
+          hi: "दाल दालों से पकती है — मूँग, तूर, चना — और शरीर को बढ़ने की ताक़त देती है।",
+          mr: "डाळ कडधान्यांतून शिजते — मूग, तूर, हरभरा — आणि शरीराला वाढण्याची ताकद देते.",
+        },
+        pair: {
+          left: { en: "Dal", hi: "दाल", mr: "डाळ" },
+          right: { en: "pulses", hi: "दालें (मूँग-तूर-चना)", mr: "कडधान्ये" },
+        },
+      },
+      {
+        id: "vegetables",
+        name: { en: "Vegetables", hi: "सब्ज़ियाँ", mr: "भाज्या" },
+        kind: "food",
+        prompt: {
+          en: "Which foods — bhindi, palak, gobhi — come fresh from the sabzi mandi and must be washed before cooking?",
+          hi: "कौन-से भोजन — भिंडी, पालक, गोभी — सब्ज़ी मंडी से ताज़े आते हैं और पकाने से पहले धोने पड़ते हैं?",
+          mr: "कोणते अन्न — भेंडी, पालक, फ्लॉवर — भाजी मंडईतून ताजे येते आणि शिजवण्याआधी धुवावे लागते?",
+        },
+        statement: {
+          en: "Vegetables come fresh from the market and are washed before cooking, because they grew in open fields.",
+          hi: "सब्ज़ियाँ मंडी से ताज़ी आती हैं और पकाने से पहले धोई जाती हैं, क्योंकि वे खुले खेतों में उगी हैं।",
+          mr: "भाज्या मंडईतून ताज्या येतात आणि शिजवण्याआधी धुतात, कारण त्या उघड्या शेतांत वाढल्या.",
+        },
+      },
+      {
+        id: "eldertoothless",
+        name: {
+          en: "Soft, mashed food",
+          hi: "नरम, मसला भोजन",
+          mr: "मऊ, कुस्करलेले अन्न",
+        },
+        kind: "who-eats-what",
+        prompt: {
+          en: "What kind of food do very old people with few teeth — like Chhutki's grandmother — need?",
+          hi: "बहुत बूढ़े, कम दाँतों वाले लोगों — जैसे छुटकी की दादी — को किस तरह का भोजन चाहिए?",
+          mr: "फार वयस्कर, कमी दात असलेल्या माणसांना — जसे चुटकीची आजी — कोणत्या प्रकारचे अन्न लागते?",
+        },
+        statement: {
+          en: "People with few teeth need food that is soft or mashed — khichdi, daliya, well-cooked rice — chewing does the choosing.",
+          hi: "कम दाँतों वालों को नरम या मसला भोजन चाहिए — खिचड़ी, दलिया, गला हुआ चावल — चबाना ही चुनाव करा देता है।",
+          mr: "कमी दात असलेल्यांना मऊ वा कुस्करलेले अन्न लागते — खिचडी, दलिया, मऊ भात — चावणेच निवड ठरवते.",
+        },
+      },
+      {
+        id: "sprouts",
+        name: { en: "Sprouted chana", hi: "अंकुरित चना", mr: "मोड आलेले हरभरे" },
+        kind: "food",
+        prompt: {
+          en: "Which food is made by soaking gram overnight and letting tiny white tails grow from the seeds?",
+          hi: "कौन-सा भोजन चने को रात भर भिगोकर, दानों से नन्ही सफ़ेद पूँछें निकलने देकर बनता है?",
+          mr: "कोणते अन्न हरभरे रात्रभर भिजवून, दाण्यांतून चिमुकल्या पांढऱ्या शेपट्या फुटू देऊन होते?",
+        },
+        statement: {
+          en: "Sprouted chana is gram soaked overnight until little white shoots appear — the seed beginning to become a plant.",
+          hi: "अंकुरित चना रात भर भीगा चना है जिसमें नन्हे सफ़ेद अंकुर निकल आते हैं — बीज का पौधा बनना शुरू।",
+          mr: "मोड आलेले हरभरे म्हणजे रात्रभर भिजवलेले हरभरे, ज्यांतून चिमुकले पांढरे मोड फुटतात — बी रोप होऊ लागले.",
+        },
+      },
+      {
+        id: "midday",
+        name: {
+          en: "The mid-day meal",
+          hi: "मध्याह्न भोजन",
+          mr: "माध्यान्ह भोजन",
+        },
+        kind: "who-eats-what",
+        prompt: {
+          en: "What do we call the hot lunch cooked and served to children AT SCHOOL itself?",
+          hi: "स्कूल में ही पकाकर बच्चों को परोसे जाने वाले गर्म दोपहर के खाने को क्या कहते हैं?",
+          mr: "शाळेतच शिजवून मुलांना वाढल्या जाणाऱ्या गरम दुपारच्या जेवणाला काय म्हणतात?",
+        },
+        statement: {
+          en: "The mid-day meal is cooked at school and eaten together by the whole class, so no child studies hungry.",
+          hi: "मध्याह्न भोजन स्कूल में पकता है और पूरी कक्षा साथ खाती है — ताकि कोई बच्चा भूखा न पढ़े।",
+          mr: "माध्यान्ह भोजन शाळेत शिजते आणि अख्खा वर्ग एकत्र जेवतो — म्हणजे कोणतेही मूल उपाशी शिकत नाही.",
+        },
+        pair: {
+          left: { en: "The mid-day meal", hi: "मध्याह्न भोजन", mr: "माध्यान्ह भोजन" },
+          right: { en: "cooked at school", hi: "स्कूल में पका", mr: "शाळेत शिजलेले" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Line up what one person eats as they grow: (1) dal-roti-sabzi like everyone, (2) only milk, (3) soft khichdi with few teeth.",
+          hi: "एक ही व्यक्ति के बड़े होते खाने को क्रम दें: (1) सबकी तरह दाल-रोटी-सब्ज़ी, (2) केवल दूध, (3) कम दाँतों में नरम खिचड़ी।",
+          mr: "एकाच माणसाचे वाढत्या वयातले खाणे क्रमाने लावा: (1) सर्वांसारखे डाळ-पोळी-भाजी, (2) फक्त दूध, (3) कमी दातांत मऊ खिचडी.",
+        },
+        choices: [
+          { en: "2 → 1 → 3", hi: "2 → 1 → 3", mr: "2 → 1 → 3" },
+          { en: "1 → 2 → 3", hi: "1 → 2 → 3", mr: "1 → 2 → 3" },
+          { en: "3 → 2 → 1", hi: "3 → 2 → 1", mr: "3 → 2 → 1" },
+          { en: "2 → 3 → 1", hi: "2 → 3 → 1", mr: "2 → 3 → 1" },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A baby starts on milk alone (2), grows into the family's dal-roti-sabzi (1), and in great old age returns to soft food (3). Food follows teeth, and teeth follow age — the plate tells you how old its owner is.",
+          hi: "शिशु केवल दूध से शुरू करता है (2), बड़ा होकर घर की दाल-रोटी-सब्ज़ी तक आता है (1), और बुढ़ापे में नरम भोजन पर लौटता है (3)। भोजन दाँतों के पीछे चलता है, और दाँत उम्र के — थाली बता देती है कि खाने वाला कितने बरस का है।",
+          mr: "बाळ फक्त दुधापासून सुरुवात करते (2), मोठे होऊन घरच्या डाळ-पोळी-भाजीपर्यंत येते (1), आणि म्हातारपणी मऊ अन्नाकडे परतते (3). अन्न दातांमागे चालते, आणि दात वयामागे — ताट सांगते खाणारा किती वर्षांचा आहे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Trace a roti BACKWARD from the plate. Which chain is right?",
+          hi: "थाली से रोटी को उल्टा पीछे ले जाइए। कौन-सी कड़ी सही है?",
+          mr: "ताटातून पोळी उलटी मागे न्या. कोणती साखळी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Roti ← dough ← flour ← wheat grain ← farmer's field",
+            hi: "रोटी ← आटा गूँथा ← आटा ← गेहूँ का दाना ← किसान का खेत",
+            mr: "पोळी ← कणीक ← पीठ ← गव्हाचा दाणा ← शेतकऱ्याचे शेत",
+          },
+          {
+            en: "Roti ← flour ← dough ← field ← grain",
+            hi: "रोटी ← आटा ← गूँथा आटा ← खेत ← दाना",
+            mr: "पोळी ← पीठ ← कणीक ← शेत ← दाणा",
+          },
+          {
+            en: "Roti ← wheat grain ← flour ← dough",
+            hi: "रोटी ← गेहूँ का दाना ← आटा ← गूँथा आटा",
+            mr: "पोळी ← गव्हाचा दाणा ← पीठ ← कणीक",
+          },
+          {
+            en: "Roti ← shop ← tawa ← field",
+            hi: "रोटी ← दुकान ← तवा ← खेत",
+            mr: "पोळी ← दुकान ← तवा ← शेत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Walk it forward to check: field grows grain, grain is ground to flour, flour is kneaded to dough, dough is rolled and cooked into roti. Reversed, that is exactly chain one. Every cooked food has such a chain, and most of them start in a field.",
+          hi: "आगे की ओर चलकर जाँचें: खेत दाना उगाता है, दाना पिसकर आटा, आटा गुँधकर लोई, लोई बेलकर-सिंककर रोटी। उल्टा करने पर ठीक पहली कड़ी। हर पके भोजन की ऐसी कड़ी होती है, और अधिकांश की शुरुआत खेत से होती है।",
+          mr: "पुढच्या दिशेने चालून तपासा: शेत दाणा पिकवते, दाणा दळून पीठ, पीठ मळून कणीक, कणीक लाटून-भाजून पोळी. उलट केल्यावर नेमकी पहिली साखळी. प्रत्येक शिजलेल्या अन्नाची अशी साखळी असते, आणि बहुतेकांची सुरुवात शेतातून होते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Ravi says: 'Everyone in India eats the same food every day.' Which single fact best shows he is wrong?",
+          hi: "रवि कहता है: 'भारत में सब लोग रोज़ एक ही जैसा खाना खाते हैं।' कौन-सा एक तथ्य उसे सबसे अच्छी तरह ग़लत साबित करता है?",
+          mr: "रवी म्हणतो: 'भारतात सर्व लोक रोज सारखेच अन्न खातात.' कोणते एक तथ्य त्याला सर्वांत चांगले खोटे ठरवते?",
+        },
+        choices: [
+          {
+            en: "In rice-growing places the plate holds rice at every meal, while in wheat-growing places it holds roti",
+            hi: "धान वाले इलाक़ों की थाली में हर भोजन में चावल होता है, जबकि गेहूँ वाले इलाक़ों में रोटी",
+            mr: "भाताच्या प्रदेशांत ताटात प्रत्येक जेवणात भात असतो, तर गव्हाच्या प्रदेशांत पोळी",
+          },
+          {
+            en: "Everyone drinks water with their food",
+            hi: "सब लोग खाने के साथ पानी पीते हैं",
+            mr: "सर्व लोक जेवणाबरोबर पाणी पितात",
+          },
+          {
+            en: "All food is cooked in some kitchen",
+            hi: "सारा खाना किसी न किसी रसोई में पकता है",
+            mr: "सारे अन्न कोणत्या ना कोणत्या स्वयंपाकघरात शिजते",
+          },
+          {
+            en: "Most people eat at midday",
+            hi: "अधिकतर लोग दोपहर में खाते हैं",
+            mr: "बहुतेक लोक दुपारी जेवतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "To break an 'everyone, always' claim you need one clear difference — and the rice-lands versus wheat-lands plate is exactly that: what grows nearby shapes what is eaten daily. The other options are things people share, which SUPPORT sameness instead of disproving it.",
+          hi: "'सब, हमेशा' वाले दावे को तोड़ने के लिए एक साफ़ अंतर चाहिए — और धान-प्रदेश बनाम गेहूँ-प्रदेश की थाली ठीक वही है: पास जो उगता है, वही रोज़ की थाली गढ़ता है। बाक़ी विकल्प सबकी साझी बातें हैं, जो समानता को काटने की जगह सहारा देती हैं।",
+          mr: "'सर्व, नेहमी' हा दावा मोडायला एक स्पष्ट फरक लागतो — आणि भात-प्रदेश विरुद्ध गहू-प्रदेशाचे ताट नेमके तेच: जवळ जे पिकते तेच रोजचे ताट घडवते. इतर पर्याय सर्वांच्या समान गोष्टी — त्या साम्य खोडण्याऐवजी त्याला आधार देतात.",
+        },
+      },
+    ],
+  },
 ];
