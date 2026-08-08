@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 12 — Ratio and Proportion",
+  "name": "Ratio and Proportion",
+  "slug": "maths-6-ratio-and-proportion",
+  "summary": "Fair shares by parts, the unitary method, cross-checks of proportion — and a flagpole's shadow that measures a tower.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "अनुपात और समानुपात",
+      "summary": "हिस्सों से न्यायपूर्ण बँटवारे, ऐकिक विधि, समानुपात की तिर्यक् जाँच — और खंभे की वह छाया जो मीनार नाप लेती है।"
+    },
+    "mr": {
+      "name": "गुणोत्तर आणि प्रमाण",
+      "summary": "भागांनी न्याय्य वाटण्या, एकमान पद्धत, प्रमाणाची तिर्यक् तपासणी — आणि मनोरा मोजणारी खांबाची सावली."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "₹40 is divided between two children in the ratio 3 : 1. How much is the BIGGER share?",
+      "choices": [
+        "₹20",
+        "₹30",
+        "₹10",
+        "₹13"
+      ],
+      "answerIndex": 1,
+      "solution": "3 : 1 makes 4 equal parts; each part is 40 ÷ 4 = ₹10, and the bigger share takes 3 of them: ₹30. 20 splits evenly, ignoring the ratio the question set.",
+      "checkExpr": "40*3/4",
+      "translations": {
+        "hi": {
+          "stem": "₹40 दो बच्चों में 3 : 1 के अनुपात में बाँटे गए। बड़ा हिस्सा कितना है?",
+          "choices": [
+            "₹20",
+            "₹30",
+            "₹10",
+            "₹13"
+          ],
+          "solution": "3 : 1 यानी 4 बराबर हिस्से; हर हिस्सा 40 ÷ 4 = ₹10, और बड़ा भाग 3 हिस्से लेता है: ₹30। 20 बराबर बाँट देता है — सवाल का रखा अनुपात अनदेखा।"
+        },
+        "mr": {
+          "stem": "₹40 दोन मुलांत 3 : 1 प्रमाणात वाटले. मोठा वाटा किती?",
+          "choices": [
+            "₹20",
+            "₹30",
+            "₹10",
+            "₹13"
+          ],
+          "solution": "3 : 1 म्हणजे 4 सारखे भाग; प्रत्येक भाग 40 ÷ 4 = ₹10, आणि मोठा वाटा 3 भाग घेतो: ₹30. 20 सारखे वाटते — प्रश्नाने दिलेले प्रमाण दुर्लक्षून."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Write the ratio 6 : 8 in its simplest form. What is the FIRST term?",
+      "choices": [
+        "4",
+        "3",
+        "6",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Divide both terms by their HCF 2: 6 : 8 = 3 : 4. A ratio simplifies exactly like a fraction — same relationship, smallest words.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "अनुपात 6 : 8 को सरलतम रूप में लिखिए। पहला पद क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "2"
+          ],
+          "solution": "दोनों पदों को उनके म.स. 2 से बाँटिए: 6 : 8 = 3 : 4। अनुपात ठीक भिन्न की तरह सरल होता है — वही रिश्ता, सबसे छोटे शब्दों में।"
+        },
+        "mr": {
+          "stem": "6 : 8 हे गुणोत्तर सोप्या रूपात लिहा. पहिले पद किती?",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "2"
+          ],
+          "solution": "दोन्ही पदांना त्यांच्या म.सा.वि. 2 ने भागा: 6 : 8 = 3 : 4. गुणोत्तर नेमके अपूर्णांकासारखे सोपे होते — तेच नाते, सर्वांत लहान शब्दांत."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A khichdi recipe takes 2 cups of rice for every 1 cup of dal. For 6 cups of rice, how much dal?",
+      "choices": [
+        "6",
+        "4",
+        "12",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Rice : dal = 2 : 1, so dal is always half the rice: 6 ÷ 2 = 3 cups. 12 doubles instead — that khichdi would be mostly dal.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "खिचड़ी में हर 1 कप दाल पर 2 कप चावल लगते हैं। 6 कप चावल के लिए कितनी दाल?",
+          "choices": [
+            "6",
+            "4",
+            "12",
+            "3"
+          ],
+          "solution": "चावल : दाल = 2 : 1, तो दाल हमेशा चावल की आधी: 6 ÷ 2 = 3 कप। 12 दुगना कर देता है — वह खिचड़ी दाल ही दाल होती।"
+        },
+        "mr": {
+          "stem": "खिचडीत दर 1 कप डाळीला 2 कप तांदूळ लागतात. 6 कप तांदळासाठी किती डाळ?",
+          "choices": [
+            "6",
+            "4",
+            "12",
+            "3"
+          ],
+          "solution": "तांदूळ : डाळ = 2 : 1, म्हणून डाळ नेहमी तांदळाच्या निम्मी: 6 ÷ 2 = 3 कप. 12 दुप्पट करते — ती खिचडी डाळच डाळ झाली असती."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "15 identical pens cost ₹45. What does ONE pen cost?",
+      "choices": [
+        "₹45",
+        "₹3",
+        "₹30",
+        "₹15"
+      ],
+      "answerIndex": 1,
+      "solution": "45 ÷ 15 = ₹3 each — the unitary method's first step: find the price of ONE. From there any number of pens is one multiplication away.",
+      "checkExpr": "45/15",
+      "translations": {
+        "hi": {
+          "stem": "15 एक-जैसे पेन ₹45 के हैं। एक पेन कितने का है?",
+          "choices": [
+            "₹45",
+            "₹3",
+            "₹30",
+            "₹15"
+          ],
+          "solution": "45 ÷ 15 = ₹3 प्रति पेन — ऐकिक विधि का पहला क़दम: एक का दाम निकालिए। वहाँ से किसी भी गिनती का दाम एक गुणा दूर है।"
+        },
+        "mr": {
+          "stem": "15 सारखी पेने ₹45 ला आहेत. एक पेन किती रुपयांना?",
+          "choices": [
+            "₹45",
+            "₹3",
+            "₹30",
+            "₹15"
+          ],
+          "solution": "45 ÷ 15 = ₹3 प्रत्येकी — एकमान पद्धतीचे पहिले पाऊल: एकाची किंमत काढा. तिथून कितीही पेनांची किंमत एका गुणाकारावर आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the ratio of 45 minutes to 1 hour, in simplest form 3 : ▢?",
+      "choices": [
+        "1",
+        "4",
+        "15",
+        "60"
+      ],
+      "answerIndex": 1,
+      "solution": "Same units first: 1 hour = 60 minutes, so the ratio is 45 : 60 = 3 : 4 (both ÷ 15). A ratio of minutes to hours unconverted is not a ratio at all.",
+      "checkExpr": "60/15",
+      "translations": {
+        "hi": {
+          "stem": "45 मिनट का 1 घंटे से अनुपात, सरलतम रूप 3 : ▢ में, क्या है?",
+          "choices": [
+            "1",
+            "4",
+            "15",
+            "60"
+          ],
+          "solution": "पहले इकाइयाँ एक कीजिए: 1 घंटा = 60 मिनट, तो अनुपात 45 : 60 = 3 : 4 (दोनों ÷ 15)। बिना बदले मिनट-से-घंटे का अनुपात अनुपात है ही नहीं।"
+        },
+        "mr": {
+          "stem": "45 मिनिटांचे 1 तासाशी गुणोत्तर, सोप्या रूपात 3 : ▢, किती?",
+          "choices": [
+            "1",
+            "4",
+            "15",
+            "60"
+          ],
+          "solution": "आधी एकके सारखी करा: 1 तास = 60 मिनिटे, म्हणून गुणोत्तर 45 : 60 = 3 : 4 (दोन्ही ÷ 15). न बदललेले मिनिट-ते-तास गुणोत्तर हे गुणोत्तरच नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "4 kg of sugar costs ₹96. What do 7 kg cost at the same rate?",
+      "choices": [
+        "₹144",
+        "₹168",
+        "₹672",
+        "₹99"
+      ],
+      "answerIndex": 1,
+      "solution": "One kg first: 96 ÷ 4 = ₹24; then 7 kg: 24 × 7 = ₹168. 672 multiplies 96 by 7 as if 96 were the price of ONE kg — the unitary step exists to prevent exactly that.",
+      "checkExpr": "96/4*7",
+      "translations": {
+        "hi": {
+          "stem": "4 किलो चीनी ₹96 की है। उसी भाव पर 7 किलो के कितने लगेंगे?",
+          "choices": [
+            "₹144",
+            "₹168",
+            "₹672",
+            "₹99"
+          ],
+          "solution": "पहले एक किलो: 96 ÷ 4 = ₹24; फिर 7 किलो: 24 × 7 = ₹168। 672 छियानवे को 7 से गुणा करता है मानो 96 एक किलो का दाम हो — ऐकिक क़दम ठीक इसी से बचाता है।"
+        },
+        "mr": {
+          "stem": "4 किलो साखर ₹96 ला आहे. त्याच भावाने 7 किलोला किती लागतील?",
+          "choices": [
+            "₹144",
+            "₹168",
+            "₹672",
+            "₹99"
+          ],
+          "solution": "आधी एक किलो: 96 ÷ 4 = ₹24; मग 7 किलो: 24 × 7 = ₹168. 672 शहाण्णवला 7 ने गुणते जणू 96 ही एका किलोची किंमत — एकमान पाऊल नेमके यापासून वाचवते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "On a plan drawn at the ratio 1 : 100, a wall is 5 cm long. How long is the real wall, in centimetres?",
+      "choices": [
+        "50",
+        "105",
+        "5000",
+        "500"
+      ],
+      "answerIndex": 3,
+      "solution": "1 : 100 means every drawn centimetre is 100 real ones: 5 × 100 = 500 cm — a 5 m wall. 105 adds the ratio; ratios scale, they never add.",
+      "checkExpr": "5*100",
+      "translations": {
+        "hi": {
+          "stem": "1 : 100 के अनुपात पर बने नक़्शे में दीवार 5 सेमी है। असली दीवार कितने सेंटीमीटर लंबी है?",
+          "choices": [
+            "50",
+            "105",
+            "5000",
+            "500"
+          ],
+          "solution": "1 : 100 यानी हर खिंचा सेंटीमीटर 100 असली के बराबर: 5 × 100 = 500 सेमी — 5 मीटर की दीवार। 105 अनुपात जोड़ देता है; अनुपात मापते हैं, जुड़ते कभी नहीं।"
+        },
+        "mr": {
+          "stem": "1 : 100 प्रमाणात काढलेल्या आराखड्यात भिंत 5 सेमी आहे. खरी भिंत किती सेंटिमीटर लांब?",
+          "choices": [
+            "50",
+            "105",
+            "5000",
+            "500"
+          ],
+          "solution": "1 : 100 म्हणजे प्रत्येक काढलेला सेंटिमीटर 100 खऱ्यांच्या बरोबरीचा: 5 × 100 = 500 सेमी — 5 मीटरची भिंत. 105 गुणोत्तर मिळवते; गुणोत्तरे मोजतात, कधीच मिळत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "35 sweets are shared between a brother and sister in the ratio 4 : 3. How many does the sister (the SMALLER share) get?",
+      "choices": [
+        "12",
+        "20",
+        "15",
+        "17"
+      ],
+      "answerIndex": 2,
+      "solution": "4 + 3 = 7 parts; each part is 35 ÷ 7 = 5 sweets; the sister's 3 parts are 15 (the brother's 4 are 20 — and 15 + 20 = 35, the check). 17 tries to split near-evenly, which no ratio of 4 : 3 allows.",
+      "checkExpr": "35*3/7",
+      "translations": {
+        "hi": {
+          "stem": "35 मिठाइयाँ भाई-बहन में 4 : 3 के अनुपात में बँटीं। बहन (छोटा हिस्सा) को कितनी मिलीं?",
+          "choices": [
+            "12",
+            "20",
+            "15",
+            "17"
+          ],
+          "solution": "4 + 3 = 7 हिस्से; हर हिस्सा 35 ÷ 7 = 5 मिठाइयाँ; बहन के 3 हिस्से यानी 15 (भाई के 4 यानी 20 — और 15 + 20 = 35, जाँच पूरी)। 17 लगभग बराबर बाँटने चलता है, जो 4 : 3 का अनुपात होने ही नहीं देता।"
+        },
+        "mr": {
+          "stem": "35 मिठाया भाऊ-बहिणीत 4 : 3 प्रमाणात वाटल्या. बहिणीला (लहान वाटा) किती मिळाल्या?",
+          "choices": [
+            "12",
+            "20",
+            "15",
+            "17"
+          ],
+          "solution": "4 + 3 = 7 भाग; प्रत्येक भाग 35 ÷ 7 = 5 मिठाया; बहिणीचे 3 भाग म्हणजे 15 (भावाचे 4 म्हणजे 20 — आणि 15 + 20 = 35, तपासणी पूर्ण). 17 जवळजवळ सारखे वाटू पाहते, जे 4 : 3 चे प्रमाण होऊच देत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "To check whether 2 : 3 and 8 : 12 are in proportion, cross-multiply. What is 2 × 12?",
+      "choices": [
+        "36",
+        "16",
+        "6",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "2 × 12 = 24 — and the other cross, 3 × 8, is also 24. Equal crosses mean the ratios truly match: 8 : 12 is just 2 : 3 grown four times. One unequal cross would have ended the friendship.",
+      "checkExpr": "2*12",
+      "translations": {
+        "hi": {
+          "stem": "2 : 3 और 8 : 12 समानुपात में हैं या नहीं, जाँचने को तिर्यक् गुणा कीजिए। 2 × 12 क्या है?",
+          "choices": [
+            "36",
+            "16",
+            "6",
+            "24"
+          ],
+          "solution": "2 × 12 = 24 — और दूसरा तिर्यक्, 3 × 8, भी 24। बराबर तिर्यक् यानी अनुपात सचमुच मिलते हैं: 8 : 12 बस 2 : 3 का चौगुना है। एक भी असमान तिर्यक् दोस्ती तोड़ देता।"
+        },
+        "mr": {
+          "stem": "2 : 3 आणि 8 : 12 प्रमाणात आहेत का तपासायला तिर्यक् गुणाकार करा. 2 × 12 किती?",
+          "choices": [
+            "36",
+            "16",
+            "6",
+            "24"
+          ],
+          "solution": "2 × 12 = 24 — आणि दुसरा तिर्यक्, 3 × 8, सुद्धा 24. सारखे तिर्यक् म्हणजे गुणोत्तरे खरोखर जुळतात: 8 : 12 म्हणजे 2 : 3 चेच चौपट. एकही असमान तिर्यक् मैत्री मोडला असता."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car covers 240 km on 15 litres of petrol. How many kilometres per litre is that?",
+      "choices": [
+        "12",
+        "24",
+        "225",
+        "16"
+      ],
+      "answerIndex": 3,
+      "solution": "240 ÷ 15 = 16 km per litre — the unitary rate that lets you cost ANY journey. 225 subtracts the litres from the kilometres, mixing two different kinds of thing.",
+      "checkExpr": "240/15",
+      "translations": {
+        "hi": {
+          "stem": "एक कार 15 लीटर पेट्रोल में 240 किमी चलती है। यह कितने किलोमीटर प्रति लीटर हुआ?",
+          "choices": [
+            "12",
+            "24",
+            "225",
+            "16"
+          ],
+          "solution": "240 ÷ 15 = 16 किमी प्रति लीटर — वह ऐकिक दर जिससे किसी भी सफ़र का हिसाब लगे। 225 किलोमीटर में से लीटर घटा देता है — दो अलग क़िस्म की चीज़ें गड्डमड्ड।"
+        },
+        "mr": {
+          "stem": "एक गाडी 15 लिटर पेट्रोलमध्ये 240 किमी जाते. ते किती किलोमीटर प्रति लिटर?",
+          "choices": [
+            "12",
+            "24",
+            "225",
+            "16"
+          ],
+          "solution": "240 ÷ 15 = 16 किमी प्रति लिटर — ज्याने कोणत्याही प्रवासाचा हिशेब लागतो तो एकमान दर. 225 किलोमीटरमधून लिटर वजा करते — दोन वेगळ्या जातींच्या गोष्टींची गल्लत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "At four o'clock a 6 m flagpole casts a 4 m shadow. At the same moment, the water-tank tower's shadow measures 20 m. How tall is the tower?",
+      "choices": [
+        "22 m",
+        "13 m",
+        "120 m",
+        "30 m"
+      ],
+      "answerIndex": 3,
+      "solution": "At one moment the sun gives everything the same height-to-shadow ratio: 6 : 4 = 3 : 2. The tower keeps it: height = 20 × 3/2 = 30 m. 22 adds the pole's extra to the shadow — but shadows scale, they do not add. One stick and one sum measure what no ladder could.",
+      "checkExpr": "6*20/4",
+      "translations": {
+        "hi": {
+          "stem": "चार बजे 6 मीटर का ध्वज-स्तंभ 4 मीटर की छाया डालता है। उसी क्षण पानी की टंकी की मीनार की छाया 20 मीटर है। मीनार कितनी ऊँची है?",
+          "choices": [
+            "22 मीटर",
+            "13 मीटर",
+            "120 मीटर",
+            "30 मीटर"
+          ],
+          "solution": "एक ही क्षण में सूरज सबको एक-सा ऊँचाई-छाया अनुपात देता है: 6 : 4 = 3 : 2। मीनार उसे निभाती है: ऊँचाई = 20 × 3/2 = 30 मीटर। 22 खंभे का फ़र्क़ छाया में जोड़ देता है — पर छायाएँ मापती हैं, जुड़ती नहीं। एक डंडा और एक हिसाब वह नाप लेते हैं जो कोई सीढ़ी न नाप पाती।"
+        },
+        "mr": {
+          "stem": "चार वाजता 6 मीटरचा ध्वजस्तंभ 4 मीटरची सावली टाकतो. त्याच क्षणी पाण्याच्या टाकीच्या मनोऱ्याची सावली 20 मीटर भरते. मनोरा किती उंच?",
+          "choices": [
+            "22 मीटर",
+            "13 मीटर",
+            "120 मीटर",
+            "30 मीटर"
+          ],
+          "solution": "एकाच क्षणी सूर्य साऱ्यांना सारखेच उंची-सावली प्रमाण देतो: 6 : 4 = 3 : 2. मनोरा ते पाळतो: उंची = 20 × 3/2 = 30 मीटर. 22 खांबाचा फरक सावलीत मिळवते — पण सावल्या मोजतात, मिळत नाहीत. एक काठी आणि एक हिशेब ते मोजतात जे कोणतीही शिडी मोजू शकली नसती."
+        }
+      }
+    }
+  ]
+}

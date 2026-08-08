@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 7 — Fractions",
+  "name": "Fractions",
+  "slug": "maths-6-fractions",
+  "summary": "Equivalent slicings, like and unlike additions, mixed numbers — and the book whose thirds and quarters must cut the same whole.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "भिन्न",
+      "summary": "तुल्य कटाइयाँ, समान-असमान जोड़, मिश्र संख्याएँ — और वह किताब जिसकी तिहाई और चौथाई एक ही पूरे से कटनी चाहिए।"
+    },
+    "mr": {
+      "name": "अपूर्णांक",
+      "summary": "समतुल्य कापण्या, समान-असमान बेरजा, मिश्र संख्या — आणि जिचे तृतीयांश व पाव एकाच पूर्णातून कापले पाहिजेत ते पुस्तक."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is one half of 18?",
+      "choices": [
+        "36",
+        "6",
+        "8",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "18 ÷ 2 = 9. 36 doubles instead of halving — one half always makes a number smaller.",
+      "checkExpr": "18/2",
+      "translations": {
+        "hi": {
+          "stem": "18 का आधा कितना है?",
+          "choices": [
+            "36",
+            "6",
+            "8",
+            "9"
+          ],
+          "solution": "18 ÷ 2 = 9। 36 आधा करने की जगह दुगना करता है — आधा संख्या को हमेशा छोटा करता है।"
+        },
+        "mr": {
+          "stem": "18 चा अर्धा किती?",
+          "choices": [
+            "36",
+            "6",
+            "8",
+            "9"
+          ],
+          "solution": "18 ÷ 2 = 9. 36 अर्धे करण्याऐवजी दुप्पट करते — अर्धा संख्येला नेहमी लहान करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Fill the blank so the fractions are EQUIVALENT: 1/2 = ▢/6. What goes in the box?",
+      "choices": [
+        "3",
+        "6",
+        "4",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "The bottom grew from 2 to 6 — three times — so the top must grow three times too: 1 × 3 = 3, giving 3/6. Half of six parts is three parts; the pizza has not changed, only its slicing.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "रिक्त भरिए ताकि भिन्न तुल्य हों: 1/2 = ▢/6। डिब्बे में क्या आएगा?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "हर 2 से 6 हुआ — तीन गुना — तो अंश भी तीन गुना होगा: 1 × 3 = 3, यानी 3/6। छह हिस्सों का आधा तीन हिस्से हैं; पिज़्ज़ा नहीं बदला, बस उसकी कटाई बदली।"
+        },
+        "mr": {
+          "stem": "रिकामी जागा भरा म्हणजे अपूर्णांक समतुल्य होतील: 1/2 = ▢/6. चौकटीत काय येईल?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "छेद 2 वरून 6 झाला — तिप्पट — म्हणून अंशही तिप्पट होईल: 1 × 3 = 3, म्हणजे 3/6. सहा भागांचा अर्धा म्हणजे तीन भाग; पिझ्झा बदलला नाही, फक्त त्याची कापणी बदलली."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many quarter-pieces make 2 whole rotis?",
+      "choices": [
+        "8",
+        "4",
+        "2",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Each whole holds 4 quarters, so 2 wholes hold 2 × 4 = 8 — the fraction 8/4 equals 2. 4 builds only one roti.",
+      "checkExpr": "2*4",
+      "translations": {
+        "hi": {
+          "stem": "2 पूरी रोटियाँ बनाने में चौथाई-टुकड़े कितने लगेंगे?",
+          "choices": [
+            "8",
+            "4",
+            "2",
+            "6"
+          ],
+          "solution": "हर पूरे में 4 चौथाइयाँ, तो 2 पूरों में 2 × 4 = 8 — भिन्न 8/4 यानी 2। 4 से एक ही रोटी बनती है।"
+        },
+        "mr": {
+          "stem": "2 पूर्ण पोळ्या व्हायला पाव-तुकडे किती लागतील?",
+          "choices": [
+            "8",
+            "4",
+            "2",
+            "6"
+          ],
+          "solution": "प्रत्येक पूर्णात 4 पाव, म्हणून 2 पूर्णांत 2 × 4 = 8 — अपूर्णांक 8/4 म्हणजे 2. 4 ने एकच पोळी होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Add the LIKE fractions 2/5 + 1/5. What is the numerator of the answer (in fifths)?",
+      "choices": [
+        "3",
+        "2",
+        "1",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "Like fractions share a denominator, so only the tops add: 2 + 1 = 3, giving 3/5. Adding the bottoms too (getting /10) breaks the pieces' size mid-sum.",
+      "checkExpr": "2+1",
+      "translations": {
+        "hi": {
+          "stem": "समान भिन्न 2/5 + 1/5 जोड़िए। उत्तर (पाँचवें हिस्सों में) का अंश क्या है?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "10"
+          ],
+          "solution": "समान भिन्नों का हर एक ही है, तो केवल अंश जुड़ते हैं: 2 + 1 = 3, यानी 3/5। हर भी जोड़ना (/10 बनाना) जोड़ के बीच टुकड़ों का नाप ही बदल देता है।"
+        },
+        "mr": {
+          "stem": "समान अपूर्णांक 2/5 + 1/5 मिळवा. उत्तराचा (पंचमांशांत) अंश किती?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "10"
+          ],
+          "solution": "समान अपूर्णांकांचा छेद एकच, म्हणून फक्त अंश जुळतात: 2 + 1 = 3, म्हणजे 3/5. छेदही मिळवणे (/10 करणे) बेरजेच्या मधेच तुकड्यांचे माप बदलते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Reduce 6/8 to its simplest form. What is the numerator now?",
+      "choices": [
+        "3",
+        "2",
+        "6",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Divide top and bottom by their HCF 2: 6/8 = 3/4. The fraction's value is untouched — three of four bigger pieces equals six of eight smaller ones.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "6/8 को सरलतम रूप में लाइए। अब अंश क्या है?",
+          "choices": [
+            "3",
+            "2",
+            "6",
+            "4"
+          ],
+          "solution": "अंश-हर दोनों को उनके म.स. 2 से बाँटिए: 6/8 = 3/4। भिन्न का मान अछूता है — चार बड़े टुकड़ों में से तीन, आठ छोटे में से छह के बराबर।"
+        },
+        "mr": {
+          "stem": "6/8 सोप्या रूपात आणा. आता अंश किती?",
+          "choices": [
+            "3",
+            "2",
+            "6",
+            "4"
+          ],
+          "solution": "अंश-छेद दोघांना त्यांच्या म.सा.वि. 2 ने भागा: 6/8 = 3/4. अपूर्णांकाचे मूल्य जसेच्या तसे — चार मोठ्या तुकड्यांतले तीन म्हणजे आठ लहानांतले सहा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is 3/4 of 36 mangoes?",
+      "choices": [
+        "24",
+        "27",
+        "9",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "One quarter of 36 is 9, so three quarters are 9 × 3 = 27. 9 stops at a single quarter; 12 finds a third instead.",
+      "checkExpr": "36*3/4",
+      "translations": {
+        "hi": {
+          "stem": "36 आमों का 3/4 कितना है?",
+          "choices": [
+            "24",
+            "27",
+            "9",
+            "12"
+          ],
+          "solution": "36 की एक चौथाई 9, तो तीन चौथाई 9 × 3 = 27। 9 एक चौथाई पर रुकता है; 12 तिहाई निकाल बैठता है।"
+        },
+        "mr": {
+          "stem": "36 आंब्यांचा 3/4 किती?",
+          "choices": [
+            "24",
+            "27",
+            "9",
+            "12"
+          ],
+          "solution": "36 चा एक पाव 9, म्हणून तीन पाव 9 × 3 = 27. 9 एका पावावर थांबते; 12 तृतीयांश काढते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Subtract: 7/10 − 3/10. What is the numerator of the answer (in tenths)?",
+      "choices": [
+        "4",
+        "3",
+        "21",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "Same-size pieces subtract by their counts: 7 − 3 = 4 tenths, i.e. 4/10 (which simplifies to 2/5). 21 multiplies the tops — a different operation entirely.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "घटाइए: 7/10 − 3/10। उत्तर (दसवें हिस्सों में) का अंश क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "21",
+            "10"
+          ],
+          "solution": "एक नाप के टुकड़े गिनती से घटते हैं: 7 − 3 = 4 दसवें, यानी 4/10 (सरल होकर 2/5)। 21 अंशों का गुणा है — बिलकुल दूसरी संक्रिया।"
+        },
+        "mr": {
+          "stem": "वजा करा: 7/10 − 3/10. उत्तराचा (दशांशांत) अंश किती?",
+          "choices": [
+            "4",
+            "3",
+            "21",
+            "10"
+          ],
+          "solution": "एका मापाचे तुकडे संख्येने वजा होतात: 7 − 3 = 4 दशांश, म्हणजे 4/10 (सोपे करून 2/5). 21 म्हणजे अंशांचा गुणाकार — अगदी वेगळी क्रिया."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Add the UNLIKE fractions 1/2 + 1/4 by turning halves into quarters first. What is the answer's numerator, in quarters?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "1/2 = 2/4, and 2/4 + 1/4 = 3/4. Unlike fractions must first agree on a piece-size — that agreement is the whole work; the adding afterwards is easy.",
+      "checkExpr": "2+1",
+      "translations": {
+        "hi": {
+          "stem": "असमान भिन्न 1/2 + 1/4 जोड़िए — पहले आधों को चौथाइयों में बदलकर। उत्तर का अंश, चौथाइयों में, क्या है?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "4"
+          ],
+          "solution": "1/2 = 2/4, और 2/4 + 1/4 = 3/4। असमान भिन्नों को पहले टुकड़े के नाप पर सहमत होना पड़ता है — वही सहमति पूरा काम है; बाद का जोड़ आसान है।"
+        },
+        "mr": {
+          "stem": "असमान अपूर्णांक 1/2 + 1/4 मिळवा — आधी अर्ध्यांचे पाव करून. उत्तराचा अंश, पावांत, किती?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "4"
+          ],
+          "solution": "1/2 = 2/4, आणि 2/4 + 1/4 = 3/4. असमान अपूर्णांकांना आधी तुकड्याच्या मापावर सहमत व्हावे लागते — तीच सहमती म्हणजे सारे काम; नंतरची बेरीज सोपी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "To compare 3/4 and 2/3, write both in twelfths. What is 3/4 as twelfths — its numerator?",
+      "choices": [
+        "3",
+        "6",
+        "9",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "3/4 = 9/12 (top and bottom × 3), while 2/3 = 8/12 — so 3/4 is the larger by one twelfth. 8 is 2/3's numerator; putting both on twelfths is exactly what makes them comparable.",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "3/4 और 2/3 की तुलना के लिए दोनों को बारहवें हिस्सों में लिखिए। 3/4 बारहवों में क्या है — उसका अंश?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "8"
+          ],
+          "solution": "3/4 = 9/12 (अंश-हर × 3), जबकि 2/3 = 8/12 — तो 3/4 एक बारहवें से बड़ा। 8 तो 2/3 का अंश है; दोनों को बारहवों पर लाना ही उन्हें तुलनीय बनाता है।"
+        },
+        "mr": {
+          "stem": "3/4 आणि 2/3 ची तुलना करायला दोन्ही बाराव्या भागांत लिहा. 3/4 बारावांत किती — त्याचा अंश?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "8"
+          ],
+          "solution": "3/4 = 9/12 (अंश-छेद × 3), तर 2/3 = 8/12 — म्हणून 3/4 एका बाराव्याने मोठा. 8 हा 2/3 चा अंश; दोघांना बारावांवर आणणे हेच त्यांना तुलनीय करते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Write the mixed number 2½ as an improper fraction in halves. What is its numerator?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Two wholes are 4 halves, plus the loose half: 4 + 1 = 5, so 2½ = 5/2. 3 adds the 2 and the 1 without converting the wholes to halves first.",
+      "checkExpr": "2*2+1",
+      "translations": {
+        "hi": {
+          "stem": "मिश्र संख्या 2½ को आधों में विषम भिन्न लिखिए। उसका अंश क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "दो पूरे यानी 4 आधे, ऊपर से खुला आधा: 4 + 1 = 5, तो 2½ = 5/2। 3 पूरों को आधों में बदले बिना 2 और 1 जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "मिश्र संख्या 2½ अर्ध्यांत विषम अपूर्णांक म्हणून लिहा. तिचा अंश किती?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "दोन पूर्ण म्हणजे 4 अर्धे, शिवाय सुटा अर्धा: 4 + 1 = 5, म्हणून 2½ = 5/2. 3 पूर्णांचे अर्धे न करता 2 आणि 1 मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Ravi read one third of a 120-page book on Monday and one quarter of it on Tuesday. How many pages are left?",
+      "choices": [
+        "40",
+        "70",
+        "50",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "Monday: 120 ÷ 3 = 40 pages; Tuesday: 120 ÷ 4 = 30. Read in all: 70, leaving 120 − 70 = 50 pages. Both fractions cut the SAME whole book — 70 is the trap of stopping at what was read instead of what remains.",
+      "checkExpr": "120-120/3-120/4",
+      "translations": {
+        "hi": {
+          "stem": "रवि ने 120 पन्नों की किताब का एक-तिहाई सोमवार को और एक-चौथाई मंगलवार को पढ़ा। कितने पन्ने बाक़ी हैं?",
+          "choices": [
+            "40",
+            "70",
+            "50",
+            "30"
+          ],
+          "solution": "सोमवार: 120 ÷ 3 = 40 पन्ने; मंगलवार: 120 ÷ 4 = 30। कुल पढ़े 70, बचे 120 − 70 = 50 पन्ने। दोनों भिन्न उसी पूरी किताब से कटते हैं — 70 वह फंदा है जो बचे की जगह पढ़े पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "रवीने 120 पानी पुस्तकाचा एक-तृतीयांश सोमवारी आणि एक-चतुर्थांश मंगळवारी वाचला. किती पाने उरली?",
+          "choices": [
+            "40",
+            "70",
+            "50",
+            "30"
+          ],
+          "solution": "सोमवार: 120 ÷ 3 = 40 पाने; मंगळवार: 120 ÷ 4 = 30. एकूण वाचली 70, उरली 120 − 70 = 50 पाने. दोन्ही अपूर्णांक त्याच पूर्ण पुस्तकातून कापले जातात — 70 हा उरलेल्याऐवजी वाचलेल्यावर थांबण्याचा सापळा."
+        }
+      }
+    }
+  ]
+}

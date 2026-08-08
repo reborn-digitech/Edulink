@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 8 — Decimals",
+  "name": "Decimals",
+  "slug": "maths-6-decimals",
+  "summary": "Tenths and hundredths with a firmer grip — points lined up, borrows across the point, and 12.7 versus 12.07 told apart.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "दशमलव",
+      "summary": "दसवें और सौवें, अब मज़बूत पकड़ से — सीध में बिंदियाँ, बिंदी के आर-पार हासिल, और 12.7 बनाम 12.07 का फ़र्क़।"
+    },
+    "mr": {
+      "name": "दशांश",
+      "summary": "दशांश आणि शतांश, आता पक्क्या पकडीने — सरळ रेषेतली टिंबे, टिंबापारचे हातचे, आणि 12.7 विरुद्ध 12.07 चा ओळखलेला फरक."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The decimal 0.7 stands for how many tenths?",
+      "choices": [
+        "70",
+        "7",
+        "10",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "The first place after the point counts tenths: 0.7 is 7 tenths, or 7/10. 70 reads the digit into the wrong column.",
+      "checkExpr": "70/10",
+      "translations": {
+        "hi": {
+          "stem": "दशमलव 0.7 कितने दसवें हिस्सों के लिए है?",
+          "choices": [
+            "70",
+            "7",
+            "10",
+            "1"
+          ],
+          "solution": "बिंदी के बाद पहला स्थान दसवें गिनता है: 0.7 यानी 7 दसवें, या 7/10। 70 अंक को ग़लत ख़ाने में पढ़ता है।"
+        },
+        "mr": {
+          "stem": "0.7 हा दशांश किती दशांश भागांसाठी आहे?",
+          "choices": [
+            "70",
+            "7",
+            "10",
+            "1"
+          ],
+          "solution": "टिंबानंतरचे पहिले स्थान दशांश मोजते: 0.7 म्हणजे 7 दशांश, वा 7/10. 70 अंक चुकीच्या रकान्यात वाचते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Write the fraction 7/10 as a decimal.",
+      "choices": [
+        "0.7",
+        "7",
+        "70",
+        "0.07"
+      ],
+      "answerIndex": 0,
+      "solution": "Tenths take one place after the point: 7/10 = 0.7. 0.07 pushes the 7 to the hundredths; 7 forgets the point altogether.",
+      "checkExpr": "7/10",
+      "translations": {
+        "hi": {
+          "stem": "भिन्न 7/10 को दशमलव में लिखिए।",
+          "choices": [
+            "0.7",
+            "7",
+            "70",
+            "0.07"
+          ],
+          "solution": "दसवें बिंदी के बाद एक स्थान लेते हैं: 7/10 = 0.7। 0.07 सात को सौवों में धकेल देता है; 7 बिंदी ही भूल जाता है।"
+        },
+        "mr": {
+          "stem": "7/10 हा अपूर्णांक दशांशात लिहा.",
+          "choices": [
+            "0.7",
+            "7",
+            "70",
+            "0.07"
+          ],
+          "solution": "दशांश टिंबानंतर एक स्थान घेतात: 7/10 = 0.7. 0.07 सातला शतांशांत ढकलते; 7 टिंबच विसरते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 3.5 + 1.5?",
+      "choices": [
+        "4.55",
+        "5",
+        "4.1",
+        "5.5"
+      ],
+      "answerIndex": 1,
+      "solution": "The halves join into a whole: 3.5 + 1.5 = 5 exactly. In tenths, 35 + 15 = 50 tenths = 5. 4.1 adds the whole parts and misreads .5 + .5 as .1.",
+      "checkExpr": "(35+15)/10",
+      "translations": {
+        "hi": {
+          "stem": "3.5 + 1.5 कितना है?",
+          "choices": [
+            "4.55",
+            "5",
+            "4.1",
+            "5.5"
+          ],
+          "solution": "आधे मिलकर पूरा बनते हैं: 3.5 + 1.5 = ठीक 5। दसवों में, 35 + 15 = 50 दसवें = 5। 4.1 पूर्ण भाग जोड़कर .5 + .5 को .1 पढ़ लेता है।"
+        },
+        "mr": {
+          "stem": "3.5 + 1.5 किती?",
+          "choices": [
+            "4.55",
+            "5",
+            "4.1",
+            "5.5"
+          ],
+          "solution": "अर्धे मिळून पूर्ण होतात: 3.5 + 1.5 = नेमके 5. दशांशांत, 35 + 15 = 50 दशांश = 5. 4.1 पूर्ण भाग मिळवून .5 + .5 ला .1 वाचते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In 2.35, the 2 is wholes and the 3 is tenths. How many HUNDREDTHS does the 5 stand for?",
+      "choices": [
+        "5",
+        "50",
+        "3",
+        "35"
+      ],
+      "answerIndex": 0,
+      "solution": "The second place after the point counts hundredths: the 5 is 5 hundredths, so 2.35 = 2 + 3/10 + 5/100. Each place is worth a tenth of the one before it.",
+      "checkExpr": "500/100",
+      "translations": {
+        "hi": {
+          "stem": "2.35 में 2 पूर्ण है और 3 दसवें। 5 कितने सौवें हिस्सों के लिए है?",
+          "choices": [
+            "5",
+            "50",
+            "3",
+            "35"
+          ],
+          "solution": "बिंदी के बाद दूसरा स्थान सौवें गिनता है: 5 यानी 5 सौवें, तो 2.35 = 2 + 3/10 + 5/100। हर स्थान पिछले का दसवाँ हिस्सा है।"
+        },
+        "mr": {
+          "stem": "2.35 मध्ये 2 पूर्ण आणि 3 दशांश. 5 किती शतांशांसाठी आहे?",
+          "choices": [
+            "5",
+            "50",
+            "3",
+            "35"
+          ],
+          "solution": "टिंबानंतरचे दुसरे स्थान शतांश मोजते: 5 म्हणजे 5 शतांश, म्हणून 2.35 = 2 + 3/10 + 5/100. प्रत्येक स्थान आधीच्याचा दशांश असते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 0.5 + 0.25?",
+      "choices": [
+        "0.3",
+        "0.75",
+        "0.55",
+        "0.7"
+      ],
+      "answerIndex": 1,
+      "solution": "A half plus a quarter is three quarters: 0.50 + 0.25 = 0.75. 0.3 adds 5 + 25 as if both sat in the same column — line up the points and the columns line up too.",
+      "checkExpr": "1/2+1/4",
+      "translations": {
+        "hi": {
+          "stem": "0.5 + 0.25 कितना है?",
+          "choices": [
+            "0.3",
+            "0.75",
+            "0.55",
+            "0.7"
+          ],
+          "solution": "आधा और चौथाई मिलकर तीन चौथाई: 0.50 + 0.25 = 0.75। 0.3 पाँच और पच्चीस को एक ही ख़ाने का मानकर जोड़ता है — बिंदियाँ सीध में रखिए तो ख़ाने भी सीध में आ जाते हैं।"
+        },
+        "mr": {
+          "stem": "0.5 + 0.25 किती?",
+          "choices": [
+            "0.3",
+            "0.75",
+            "0.55",
+            "0.7"
+          ],
+          "solution": "अर्धा अधिक पाव म्हणजे पाऊण: 0.50 + 0.25 = 0.75. 0.3 पाच आणि पंचवीसला एकाच रकान्यातले समजून मिळवते — टिंबे सरळ रेषेत ठेवा की रकानेही सरळ येतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is 6.4 − 2.9?",
+      "choices": [
+        "3.5",
+        "4.5",
+        "3.6",
+        "4.3"
+      ],
+      "answerIndex": 0,
+      "solution": "In tenths: 64 − 29 = 35 tenths = 3.5. 4.5 dodges the borrow — 4 tenths cannot give up 9 without opening a whole.",
+      "checkExpr": "64/10-29/10",
+      "translations": {
+        "hi": {
+          "stem": "6.4 − 2.9 कितना है?",
+          "choices": [
+            "3.5",
+            "4.5",
+            "3.6",
+            "4.3"
+          ],
+          "solution": "दसवों में: 64 − 29 = 35 दसवें = 3.5। 4.5 हासिल से बचता है — 4 दसवें बिना एक पूर्ण खोले 9 नहीं दे सकते।"
+        },
+        "mr": {
+          "stem": "6.4 − 2.9 किती?",
+          "choices": [
+            "3.5",
+            "4.5",
+            "3.6",
+            "4.3"
+          ],
+          "solution": "दशांशांत: 64 − 29 = 35 दशांश = 3.5. 4.5 हातचा चुकवते — 4 दशांश एक पूर्ण मोडल्याशिवाय 9 देऊ शकत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A shopkeeper's board says ₹5.75. How many paise is that in all?",
+      "choices": [
+        "5075 paise",
+        "575 paise",
+        "507 paise",
+        "75 paise"
+      ],
+      "answerIndex": 1,
+      "solution": "Five rupees are 500 paise, plus the 75: 575 paise. 507 drops the 75's tens; 5075 gives the rupees an extra zero.",
+      "checkExpr": "5*100+75",
+      "translations": {
+        "hi": {
+          "stem": "दुकानदार की तख़्ती पर ₹5.75 लिखा है। यह कुल कितने पैसे हुए?",
+          "choices": [
+            "5075 पैसे",
+            "575 पैसे",
+            "507 पैसे",
+            "75 पैसे"
+          ],
+          "solution": "पाँच रुपये यानी 500 पैसे, ऊपर से 75: 575 पैसे। 507 में 75 की दहाई गिरती है; 5075 रुपयों को फ़ालतू शून्य दे देता है।"
+        },
+        "mr": {
+          "stem": "दुकानदाराच्या फळ्यावर ₹5.75 लिहिले आहे. ते एकूण किती पैसे?",
+          "choices": [
+            "5075 पैसे",
+            "575 पैसे",
+            "507 पैसे",
+            "75 पैसे"
+          ],
+          "solution": "पाच रुपये म्हणजे 500 पैसे, शिवाय 75: 575 पैसे. 507 मध्ये 75 चा दशक पडतो; 5075 रुपयांना जादा शून्य देते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is 3 × 0.6?",
+      "choices": [
+        "3.6",
+        "18",
+        "0.18",
+        "1.8"
+      ],
+      "answerIndex": 3,
+      "solution": "Three lots of 6 tenths are 18 tenths = 1.8. 18 forgets the tenths entirely; 0.18 pays the point twice. Multiply the digits, then place the point by counting decimal places.",
+      "checkExpr": "18/10",
+      "translations": {
+        "hi": {
+          "stem": "3 × 0.6 कितना है?",
+          "choices": [
+            "3.6",
+            "18",
+            "0.18",
+            "1.8"
+          ],
+          "solution": "6 दसवों के तीन गुट यानी 18 दसवें = 1.8। 18 दसवें भूल ही जाता है; 0.18 बिंदी दो बार चुका देता है। अंक गुणिए, फिर दशमलव-स्थान गिनकर बिंदी रखिए।"
+        },
+        "mr": {
+          "stem": "3 × 0.6 किती?",
+          "choices": [
+            "3.6",
+            "18",
+            "0.18",
+            "1.8"
+          ],
+          "solution": "6 दशांशांचे तीन गट म्हणजे 18 दशांश = 1.8. 18 दशांशच विसरते; 0.18 टिंब दोनदा भरते. अंक गुणा, मग दशांश-स्थाने मोजून टिंब ठेवा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A beetle measures 12.5 cm of path in a minute. How many millimetres is 12.5 cm?",
+      "choices": [
+        "1200 mm",
+        "12.5 mm",
+        "1250 mm",
+        "125 mm"
+      ],
+      "answerIndex": 3,
+      "solution": "Each centimetre is 10 mm, so 12.5 cm = 12.5 × 10 = 125 mm — the point slides one place right. 1250 slides it two places, which is the ×100 of metres, not centimetres.",
+      "checkExpr": "250/2",
+      "translations": {
+        "hi": {
+          "stem": "एक भृंग मिनट में 12.5 सेमी राह नापता है। 12.5 सेमी कितने मिलीमीटर हैं?",
+          "choices": [
+            "1200 मिमी",
+            "12.5 मिमी",
+            "1250 मिमी",
+            "125 मिमी"
+          ],
+          "solution": "हर सेंटीमीटर 10 मिमी, तो 12.5 सेमी = 12.5 × 10 = 125 मिमी — बिंदी एक घर दाएँ सरकती है। 1250 दो घर सरका देता है — वह मीटर वाला ×100 है, सेंटीमीटर का नहीं।"
+        },
+        "mr": {
+          "stem": "एक भुंगा मिनिटात 12.5 सेमी वाट कापतो. 12.5 सेमी म्हणजे किती मिलिमीटर?",
+          "choices": [
+            "1200 मिमी",
+            "12.5 मिमी",
+            "1250 मिमी",
+            "125 मिमी"
+          ],
+          "solution": "प्रत्येक सेंटिमीटर 10 मिमी, म्हणून 12.5 सेमी = 12.5 × 10 = 125 मिमी — टिंब एक घर उजवीकडे सरकते. 1250 दोन घरे सरकवते — ते मीटरचे ×100, सेंटिमीटरचे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "To compare 0.5 and 0.45, write both in hundredths. How many hundredths is 0.5?",
+      "choices": [
+        "5",
+        "50",
+        "500",
+        "45"
+      ],
+      "answerIndex": 1,
+      "solution": "0.5 = 0.50 = 50 hundredths, while 0.45 is 45 — so 0.5 is the LARGER, though 45 has more digits. Padding with a zero costs nothing and makes the comparison honest; more digits never means bigger.",
+      "checkExpr": "100/2",
+      "translations": {
+        "hi": {
+          "stem": "0.5 और 0.45 की तुलना के लिए दोनों को सौवें हिस्सों में लिखिए। 0.5 कितने सौवें हैं?",
+          "choices": [
+            "5",
+            "50",
+            "500",
+            "45"
+          ],
+          "solution": "0.5 = 0.50 = 50 सौवें, जबकि 0.45 यानी 45 — तो 0.5 बड़ा है, भले 45 में अंक ज़्यादा दिखें। शून्य जोड़ने में कुछ नहीं लगता और तुलना ईमानदार हो जाती है; ज़्यादा अंक कभी बड़े होने की निशानी नहीं।"
+        },
+        "mr": {
+          "stem": "0.5 आणि 0.45 ची तुलना करायला दोन्ही शतांशांत लिहा. 0.5 म्हणजे किती शतांश?",
+          "choices": [
+            "5",
+            "50",
+            "500",
+            "45"
+          ],
+          "solution": "0.5 = 0.50 = 50 शतांश, तर 0.45 म्हणजे 45 — म्हणून 0.5 मोठा, जरी 45 मध्ये अंक जास्त दिसले तरी. शून्य जोडायला काही लागत नाही आणि तुलना प्रामाणिक होते; जास्त अंक म्हणजे मोठे, असे कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two sprinters run 100 m: Asha in 12.7 seconds, Bina in 12.07 seconds. Bina is faster by how many HUNDREDTHS of a second?",
+      "choices": [
+        "630",
+        "7",
+        "3",
+        "63"
+      ],
+      "answerIndex": 3,
+      "solution": "In hundredths: 12.7 s = 1270 and 12.07 s = 1207, so the gap is 1270 − 1207 = 63 hundredths (0.63 s). The trap is thinking 12.7 and 12.07 are nearly equal — the lone 7 after the point is TENTHS, ten times the size of the 07.",
+      "checkExpr": "1270-1207",
+      "translations": {
+        "hi": {
+          "stem": "दो धावक 100 मीटर दौड़ती हैं: आशा 12.7 सेकंड में, बीना 12.07 सेकंड में। बीना कितने सौवें सेकंड से तेज़ है?",
+          "choices": [
+            "630",
+            "7",
+            "3",
+            "63"
+          ],
+          "solution": "सौवों में: 12.7 से = 1270 और 12.07 से = 1207, अंतर 1270 − 1207 = 63 सौवें (0.63 से)। फंदा यह सोचना है कि 12.7 और 12.07 लगभग बराबर हैं — बिंदी के बाद अकेला 7 दसवें हैं, 07 से दस गुना बड़ा।"
+        },
+        "mr": {
+          "stem": "दोन धावपटू 100 मीटर धावतात: आशा 12.7 सेकंदांत, बिना 12.07 सेकंदांत. बिना किती शतांश सेकंदांनी वेगवान?",
+          "choices": [
+            "630",
+            "7",
+            "3",
+            "63"
+          ],
+          "solution": "शतांशांत: 12.7 से = 1270 आणि 12.07 से = 1207, फरक 1270 − 1207 = 63 शतांश (0.63 से). सापळा हा की 12.7 आणि 12.07 जवळजवळ सारखे वाटतात — टिंबानंतरचा एकटा 7 दशांश आहे, 07 च्या दसपट मोठा."
+        }
+      }
+    }
+  ]
+}

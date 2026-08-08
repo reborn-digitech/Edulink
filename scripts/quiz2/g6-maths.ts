@@ -796,4 +796,797 @@ function integers(): TopicFileOut {
   );
 }
 
-export const G6_MATHS: TopicFileOut[] = [knowingOurNumbers(), playingWithNumbers(), integers()];
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Fractions (equivalence, addition and the parts of wholes)     */
+/* ------------------------------------------------------------------------- */
+function fractions6(): TopicFileOut {
+  const rand = rng("maths-6-fractions");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is one half of 18?",
+          hi: "18 का आधा कितना है?",
+          mr: "18 चा अर्धा किती?",
+        },
+        answer: 9,
+        wrong: [8, 36, 6],
+        checkExpr: "18/2",
+        solution: {
+          en: "18 ÷ 2 = 9. 36 doubles instead of halving — one half always makes a number smaller.",
+          hi: "18 ÷ 2 = 9। 36 आधा करने की जगह दुगना करता है — आधा संख्या को हमेशा छोटा करता है।",
+          mr: "18 ÷ 2 = 9. 36 अर्धे करण्याऐवजी दुप्पट करते — अर्धा संख्येला नेहमी लहान करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Fill the blank so the fractions are EQUIVALENT: 1/2 = ▢/6. What goes in the box?",
+          hi: "रिक्त भरिए ताकि भिन्न तुल्य हों: 1/2 = ▢/6। डिब्बे में क्या आएगा?",
+          mr: "रिकामी जागा भरा म्हणजे अपूर्णांक समतुल्य होतील: 1/2 = ▢/6. चौकटीत काय येईल?",
+        },
+        answer: 3,
+        wrong: [2, 6, 4],
+        checkExpr: "6/2",
+        solution: {
+          en: "The bottom grew from 2 to 6 — three times — so the top must grow three times too: 1 × 3 = 3, giving 3/6. Half of six parts is three parts; the pizza has not changed, only its slicing.",
+          hi: "हर 2 से 6 हुआ — तीन गुना — तो अंश भी तीन गुना होगा: 1 × 3 = 3, यानी 3/6। छह हिस्सों का आधा तीन हिस्से हैं; पिज़्ज़ा नहीं बदला, बस उसकी कटाई बदली।",
+          mr: "छेद 2 वरून 6 झाला — तिप्पट — म्हणून अंशही तिप्पट होईल: 1 × 3 = 3, म्हणजे 3/6. सहा भागांचा अर्धा म्हणजे तीन भाग; पिझ्झा बदलला नाही, फक्त त्याची कापणी बदलली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many quarter-pieces make 2 whole rotis?",
+          hi: "2 पूरी रोटियाँ बनाने में चौथाई-टुकड़े कितने लगेंगे?",
+          mr: "2 पूर्ण पोळ्या व्हायला पाव-तुकडे किती लागतील?",
+        },
+        answer: 8,
+        wrong: [4, 6, 2],
+        checkExpr: "2*4",
+        solution: {
+          en: "Each whole holds 4 quarters, so 2 wholes hold 2 × 4 = 8 — the fraction 8/4 equals 2. 4 builds only one roti.",
+          hi: "हर पूरे में 4 चौथाइयाँ, तो 2 पूरों में 2 × 4 = 8 — भिन्न 8/4 यानी 2। 4 से एक ही रोटी बनती है।",
+          mr: "प्रत्येक पूर्णात 4 पाव, म्हणून 2 पूर्णांत 2 × 4 = 8 — अपूर्णांक 8/4 म्हणजे 2. 4 ने एकच पोळी होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Add the LIKE fractions 2/5 + 1/5. What is the numerator of the answer (in fifths)?",
+          hi: "समान भिन्न 2/5 + 1/5 जोड़िए। उत्तर (पाँचवें हिस्सों में) का अंश क्या है?",
+          mr: "समान अपूर्णांक 2/5 + 1/5 मिळवा. उत्तराचा (पंचमांशांत) अंश किती?",
+        },
+        answer: 3,
+        wrong: [2, 10, 1],
+        checkExpr: "2+1",
+        solution: {
+          en: "Like fractions share a denominator, so only the tops add: 2 + 1 = 3, giving 3/5. Adding the bottoms too (getting /10) breaks the pieces' size mid-sum.",
+          hi: "समान भिन्नों का हर एक ही है, तो केवल अंश जुड़ते हैं: 2 + 1 = 3, यानी 3/5। हर भी जोड़ना (/10 बनाना) जोड़ के बीच टुकड़ों का नाप ही बदल देता है।",
+          mr: "समान अपूर्णांकांचा छेद एकच, म्हणून फक्त अंश जुळतात: 2 + 1 = 3, म्हणजे 3/5. छेदही मिळवणे (/10 करणे) बेरजेच्या मधेच तुकड्यांचे माप बदलते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Reduce 6/8 to its simplest form. What is the numerator now?",
+          hi: "6/8 को सरलतम रूप में लाइए। अब अंश क्या है?",
+          mr: "6/8 सोप्या रूपात आणा. आता अंश किती?",
+        },
+        answer: 3,
+        wrong: [6, 2, 4],
+        checkExpr: "6/2",
+        solution: {
+          en: "Divide top and bottom by their HCF 2: 6/8 = 3/4. The fraction's value is untouched — three of four bigger pieces equals six of eight smaller ones.",
+          hi: "अंश-हर दोनों को उनके म.स. 2 से बाँटिए: 6/8 = 3/4। भिन्न का मान अछूता है — चार बड़े टुकड़ों में से तीन, आठ छोटे में से छह के बराबर।",
+          mr: "अंश-छेद दोघांना त्यांच्या म.सा.वि. 2 ने भागा: 6/8 = 3/4. अपूर्णांकाचे मूल्य जसेच्या तसे — चार मोठ्या तुकड्यांतले तीन म्हणजे आठ लहानांतले सहा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is 3/4 of 36 mangoes?",
+          hi: "36 आमों का 3/4 कितना है?",
+          mr: "36 आंब्यांचा 3/4 किती?",
+        },
+        answer: 27,
+        wrong: [9, 24, 12],
+        checkExpr: "36*3/4",
+        solution: {
+          en: "One quarter of 36 is 9, so three quarters are 9 × 3 = 27. 9 stops at a single quarter; 12 finds a third instead.",
+          hi: "36 की एक चौथाई 9, तो तीन चौथाई 9 × 3 = 27। 9 एक चौथाई पर रुकता है; 12 तिहाई निकाल बैठता है।",
+          mr: "36 चा एक पाव 9, म्हणून तीन पाव 9 × 3 = 27. 9 एका पावावर थांबते; 12 तृतीयांश काढते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Subtract: 7/10 − 3/10. What is the numerator of the answer (in tenths)?",
+          hi: "घटाइए: 7/10 − 3/10। उत्तर (दसवें हिस्सों में) का अंश क्या है?",
+          mr: "वजा करा: 7/10 − 3/10. उत्तराचा (दशांशांत) अंश किती?",
+        },
+        answer: 4,
+        wrong: [10, 3, 21],
+        checkExpr: "7-3",
+        solution: {
+          en: "Same-size pieces subtract by their counts: 7 − 3 = 4 tenths, i.e. 4/10 (which simplifies to 2/5). 21 multiplies the tops — a different operation entirely.",
+          hi: "एक नाप के टुकड़े गिनती से घटते हैं: 7 − 3 = 4 दसवें, यानी 4/10 (सरल होकर 2/5)। 21 अंशों का गुणा है — बिलकुल दूसरी संक्रिया।",
+          mr: "एका मापाचे तुकडे संख्येने वजा होतात: 7 − 3 = 4 दशांश, म्हणजे 4/10 (सोपे करून 2/5). 21 म्हणजे अंशांचा गुणाकार — अगदी वेगळी क्रिया.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Add the UNLIKE fractions 1/2 + 1/4 by turning halves into quarters first. What is the answer's numerator, in quarters?",
+          hi: "असमान भिन्न 1/2 + 1/4 जोड़िए — पहले आधों को चौथाइयों में बदलकर। उत्तर का अंश, चौथाइयों में, क्या है?",
+          mr: "असमान अपूर्णांक 1/2 + 1/4 मिळवा — आधी अर्ध्यांचे पाव करून. उत्तराचा अंश, पावांत, किती?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        checkExpr: "2+1",
+        solution: {
+          en: "1/2 = 2/4, and 2/4 + 1/4 = 3/4. Unlike fractions must first agree on a piece-size — that agreement is the whole work; the adding afterwards is easy.",
+          hi: "1/2 = 2/4, और 2/4 + 1/4 = 3/4। असमान भिन्नों को पहले टुकड़े के नाप पर सहमत होना पड़ता है — वही सहमति पूरा काम है; बाद का जोड़ आसान है।",
+          mr: "1/2 = 2/4, आणि 2/4 + 1/4 = 3/4. असमान अपूर्णांकांना आधी तुकड्याच्या मापावर सहमत व्हावे लागते — तीच सहमती म्हणजे सारे काम; नंतरची बेरीज सोपी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "To compare 3/4 and 2/3, write both in twelfths. What is 3/4 as twelfths — its numerator?",
+          hi: "3/4 और 2/3 की तुलना के लिए दोनों को बारहवें हिस्सों में लिखिए। 3/4 बारहवों में क्या है — उसका अंश?",
+          mr: "3/4 आणि 2/3 ची तुलना करायला दोन्ही बाराव्या भागांत लिहा. 3/4 बारावांत किती — त्याचा अंश?",
+        },
+        answer: 9,
+        wrong: [8, 6, 3],
+        checkExpr: "3*3",
+        solution: {
+          en: "3/4 = 9/12 (top and bottom × 3), while 2/3 = 8/12 — so 3/4 is the larger by one twelfth. 8 is 2/3's numerator; putting both on twelfths is exactly what makes them comparable.",
+          hi: "3/4 = 9/12 (अंश-हर × 3), जबकि 2/3 = 8/12 — तो 3/4 एक बारहवें से बड़ा। 8 तो 2/3 का अंश है; दोनों को बारहवों पर लाना ही उन्हें तुलनीय बनाता है।",
+          mr: "3/4 = 9/12 (अंश-छेद × 3), तर 2/3 = 8/12 — म्हणून 3/4 एका बाराव्याने मोठा. 8 हा 2/3 चा अंश; दोघांना बारावांवर आणणे हेच त्यांना तुलनीय करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Write the mixed number 2½ as an improper fraction in halves. What is its numerator?",
+          hi: "मिश्र संख्या 2½ को आधों में विषम भिन्न लिखिए। उसका अंश क्या है?",
+          mr: "मिश्र संख्या 2½ अर्ध्यांत विषम अपूर्णांक म्हणून लिहा. तिचा अंश किती?",
+        },
+        answer: 5,
+        wrong: [3, 4, 2],
+        checkExpr: "2*2+1",
+        solution: {
+          en: "Two wholes are 4 halves, plus the loose half: 4 + 1 = 5, so 2½ = 5/2. 3 adds the 2 and the 1 without converting the wholes to halves first.",
+          hi: "दो पूरे यानी 4 आधे, ऊपर से खुला आधा: 4 + 1 = 5, तो 2½ = 5/2। 3 पूरों को आधों में बदले बिना 2 और 1 जोड़ देता है।",
+          mr: "दोन पूर्ण म्हणजे 4 अर्धे, शिवाय सुटा अर्धा: 4 + 1 = 5, म्हणून 2½ = 5/2. 3 पूर्णांचे अर्धे न करता 2 आणि 1 मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Ravi read one third of a 120-page book on Monday and one quarter of it on Tuesday. How many pages are left?",
+          hi: "रवि ने 120 पन्नों की किताब का एक-तिहाई सोमवार को और एक-चौथाई मंगलवार को पढ़ा। कितने पन्ने बाक़ी हैं?",
+          mr: "रवीने 120 पानी पुस्तकाचा एक-तृतीयांश सोमवारी आणि एक-चतुर्थांश मंगळवारी वाचला. किती पाने उरली?",
+        },
+        answer: 50,
+        wrong: [70, 40, 30],
+        checkExpr: "120-120/3-120/4",
+        solution: {
+          en: "Monday: 120 ÷ 3 = 40 pages; Tuesday: 120 ÷ 4 = 30. Read in all: 70, leaving 120 − 70 = 50 pages. Both fractions cut the SAME whole book — 70 is the trap of stopping at what was read instead of what remains.",
+          hi: "सोमवार: 120 ÷ 3 = 40 पन्ने; मंगलवार: 120 ÷ 4 = 30। कुल पढ़े 70, बचे 120 − 70 = 50 पन्ने। दोनों भिन्न उसी पूरी किताब से कटते हैं — 70 वह फंदा है जो बचे की जगह पढ़े पर रुक जाता है।",
+          mr: "सोमवार: 120 ÷ 3 = 40 पाने; मंगळवार: 120 ÷ 4 = 30. एकूण वाचली 70, उरली 120 − 70 = 50 पाने. दोन्ही अपूर्णांक त्याच पूर्ण पुस्तकातून कापले जातात — 70 हा उरलेल्याऐवजी वाचलेल्यावर थांबण्याचा सापळा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 7 — Fractions",
+      name: "Fractions",
+      slug: "maths-6-fractions",
+      summary: "Equivalent slicings, like and unlike additions, mixed numbers — and the book whose thirds and quarters must cut the same whole.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "भिन्न",
+          summary: "तुल्य कटाइयाँ, समान-असमान जोड़, मिश्र संख्याएँ — और वह किताब जिसकी तिहाई और चौथाई एक ही पूरे से कटनी चाहिए।",
+        },
+        mr: {
+          name: "अपूर्णांक",
+          summary: "समतुल्य कापण्या, समान-असमान बेरजा, मिश्र संख्या — आणि जिचे तृतीयांश व पाव एकाच पूर्णातून कापले पाहिजेत ते पुस्तक.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Decimals (tenths and hundredths with a firmer grip)           */
+/* ------------------------------------------------------------------------- */
+function decimals6(): TopicFileOut {
+  const rand = rng("maths-6-decimals");
+  const qs: OutQuestion[] = [];
+
+  const paise = (n: number) => ({ en: `${n} paise`, hi: `${n} पैसे`, mr: `${n} पैसे` });
+  const mm = (n: number) => ({ en: `${n} mm`, hi: `${n} मिमी`, mr: `${n} मिमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The decimal 0.7 stands for how many tenths?",
+          hi: "दशमलव 0.7 कितने दसवें हिस्सों के लिए है?",
+          mr: "0.7 हा दशांश किती दशांश भागांसाठी आहे?",
+        },
+        answer: 7,
+        wrong: [70, 1, 10],
+        checkExpr: "70/10",
+        solution: {
+          en: "The first place after the point counts tenths: 0.7 is 7 tenths, or 7/10. 70 reads the digit into the wrong column.",
+          hi: "बिंदी के बाद पहला स्थान दसवें गिनता है: 0.7 यानी 7 दसवें, या 7/10। 70 अंक को ग़लत ख़ाने में पढ़ता है।",
+          mr: "टिंबानंतरचे पहिले स्थान दशांश मोजते: 0.7 म्हणजे 7 दशांश, वा 7/10. 70 अंक चुकीच्या रकान्यात वाचते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Write the fraction 7/10 as a decimal.",
+          hi: "भिन्न 7/10 को दशमलव में लिखिए।",
+          mr: "7/10 हा अपूर्णांक दशांशात लिहा.",
+        },
+        answer: 0.7,
+        wrong: [7, 0.07, 70],
+        checkExpr: "7/10",
+        solution: {
+          en: "Tenths take one place after the point: 7/10 = 0.7. 0.07 pushes the 7 to the hundredths; 7 forgets the point altogether.",
+          hi: "दसवें बिंदी के बाद एक स्थान लेते हैं: 7/10 = 0.7। 0.07 सात को सौवों में धकेल देता है; 7 बिंदी ही भूल जाता है।",
+          mr: "दशांश टिंबानंतर एक स्थान घेतात: 7/10 = 0.7. 0.07 सातला शतांशांत ढकलते; 7 टिंबच विसरते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 3.5 + 1.5?",
+          hi: "3.5 + 1.5 कितना है?",
+          mr: "3.5 + 1.5 किती?",
+        },
+        answer: 5,
+        wrong: [4.1, 5.5, 4.55],
+        checkExpr: "(35+15)/10",
+        solution: {
+          en: "The halves join into a whole: 3.5 + 1.5 = 5 exactly. In tenths, 35 + 15 = 50 tenths = 5. 4.1 adds the whole parts and misreads .5 + .5 as .1.",
+          hi: "आधे मिलकर पूरा बनते हैं: 3.5 + 1.5 = ठीक 5। दसवों में, 35 + 15 = 50 दसवें = 5। 4.1 पूर्ण भाग जोड़कर .5 + .5 को .1 पढ़ लेता है।",
+          mr: "अर्धे मिळून पूर्ण होतात: 3.5 + 1.5 = नेमके 5. दशांशांत, 35 + 15 = 50 दशांश = 5. 4.1 पूर्ण भाग मिळवून .5 + .5 ला .1 वाचते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In 2.35, the 2 is wholes and the 3 is tenths. How many HUNDREDTHS does the 5 stand for?",
+          hi: "2.35 में 2 पूर्ण है और 3 दसवें। 5 कितने सौवें हिस्सों के लिए है?",
+          mr: "2.35 मध्ये 2 पूर्ण आणि 3 दशांश. 5 किती शतांशांसाठी आहे?",
+        },
+        answer: 5,
+        wrong: [50, 35, 3],
+        checkExpr: "500/100",
+        solution: {
+          en: "The second place after the point counts hundredths: the 5 is 5 hundredths, so 2.35 = 2 + 3/10 + 5/100. Each place is worth a tenth of the one before it.",
+          hi: "बिंदी के बाद दूसरा स्थान सौवें गिनता है: 5 यानी 5 सौवें, तो 2.35 = 2 + 3/10 + 5/100। हर स्थान पिछले का दसवाँ हिस्सा है।",
+          mr: "टिंबानंतरचे दुसरे स्थान शतांश मोजते: 5 म्हणजे 5 शतांश, म्हणून 2.35 = 2 + 3/10 + 5/100. प्रत्येक स्थान आधीच्याचा दशांश असते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 0.5 + 0.25?",
+          hi: "0.5 + 0.25 कितना है?",
+          mr: "0.5 + 0.25 किती?",
+        },
+        answer: 0.75,
+        wrong: [0.3, 0.55, 0.7],
+        checkExpr: "1/2+1/4",
+        solution: {
+          en: "A half plus a quarter is three quarters: 0.50 + 0.25 = 0.75. 0.3 adds 5 + 25 as if both sat in the same column — line up the points and the columns line up too.",
+          hi: "आधा और चौथाई मिलकर तीन चौथाई: 0.50 + 0.25 = 0.75। 0.3 पाँच और पच्चीस को एक ही ख़ाने का मानकर जोड़ता है — बिंदियाँ सीध में रखिए तो ख़ाने भी सीध में आ जाते हैं।",
+          mr: "अर्धा अधिक पाव म्हणजे पाऊण: 0.50 + 0.25 = 0.75. 0.3 पाच आणि पंचवीसला एकाच रकान्यातले समजून मिळवते — टिंबे सरळ रेषेत ठेवा की रकानेही सरळ येतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is 6.4 − 2.9?",
+          hi: "6.4 − 2.9 कितना है?",
+          mr: "6.4 − 2.9 किती?",
+        },
+        answer: 3.5,
+        wrong: [4.5, 3.6, 4.3],
+        checkExpr: "64/10-29/10",
+        solution: {
+          en: "In tenths: 64 − 29 = 35 tenths = 3.5. 4.5 dodges the borrow — 4 tenths cannot give up 9 without opening a whole.",
+          hi: "दसवों में: 64 − 29 = 35 दसवें = 3.5। 4.5 हासिल से बचता है — 4 दसवें बिना एक पूर्ण खोले 9 नहीं दे सकते।",
+          mr: "दशांशांत: 64 − 29 = 35 दशांश = 3.5. 4.5 हातचा चुकवते — 4 दशांश एक पूर्ण मोडल्याशिवाय 9 देऊ शकत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A shopkeeper's board says ₹5.75. How many paise is that in all?",
+          hi: "दुकानदार की तख़्ती पर ₹5.75 लिखा है। यह कुल कितने पैसे हुए?",
+          mr: "दुकानदाराच्या फळ्यावर ₹5.75 लिहिले आहे. ते एकूण किती पैसे?",
+        },
+        answer: 575,
+        wrong: [75, 507, 5075],
+        checkExpr: "5*100+75",
+        solution: {
+          en: "Five rupees are 500 paise, plus the 75: 575 paise. 507 drops the 75's tens; 5075 gives the rupees an extra zero.",
+          hi: "पाँच रुपये यानी 500 पैसे, ऊपर से 75: 575 पैसे। 507 में 75 की दहाई गिरती है; 5075 रुपयों को फ़ालतू शून्य दे देता है।",
+          mr: "पाच रुपये म्हणजे 500 पैसे, शिवाय 75: 575 पैसे. 507 मध्ये 75 चा दशक पडतो; 5075 रुपयांना जादा शून्य देते.",
+        },
+        fmt: paise,
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is 3 × 0.6?",
+          hi: "3 × 0.6 कितना है?",
+          mr: "3 × 0.6 किती?",
+        },
+        answer: 1.8,
+        wrong: [0.18, 18, 3.6],
+        checkExpr: "18/10",
+        solution: {
+          en: "Three lots of 6 tenths are 18 tenths = 1.8. 18 forgets the tenths entirely; 0.18 pays the point twice. Multiply the digits, then place the point by counting decimal places.",
+          hi: "6 दसवों के तीन गुट यानी 18 दसवें = 1.8। 18 दसवें भूल ही जाता है; 0.18 बिंदी दो बार चुका देता है। अंक गुणिए, फिर दशमलव-स्थान गिनकर बिंदी रखिए।",
+          mr: "6 दशांशांचे तीन गट म्हणजे 18 दशांश = 1.8. 18 दशांशच विसरते; 0.18 टिंब दोनदा भरते. अंक गुणा, मग दशांश-स्थाने मोजून टिंब ठेवा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A beetle measures 12.5 cm of path in a minute. How many millimetres is 12.5 cm?",
+          hi: "एक भृंग मिनट में 12.5 सेमी राह नापता है। 12.5 सेमी कितने मिलीमीटर हैं?",
+          mr: "एक भुंगा मिनिटात 12.5 सेमी वाट कापतो. 12.5 सेमी म्हणजे किती मिलिमीटर?",
+        },
+        answer: 125,
+        wrong: [1250, 12.5, 1200],
+        checkExpr: "250/2",
+        solution: {
+          en: "Each centimetre is 10 mm, so 12.5 cm = 12.5 × 10 = 125 mm — the point slides one place right. 1250 slides it two places, which is the ×100 of metres, not centimetres.",
+          hi: "हर सेंटीमीटर 10 मिमी, तो 12.5 सेमी = 12.5 × 10 = 125 मिमी — बिंदी एक घर दाएँ सरकती है। 1250 दो घर सरका देता है — वह मीटर वाला ×100 है, सेंटीमीटर का नहीं।",
+          mr: "प्रत्येक सेंटिमीटर 10 मिमी, म्हणून 12.5 सेमी = 12.5 × 10 = 125 मिमी — टिंब एक घर उजवीकडे सरकते. 1250 दोन घरे सरकवते — ते मीटरचे ×100, सेंटिमीटरचे नव्हे.",
+        },
+        fmt: mm,
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "To compare 0.5 and 0.45, write both in hundredths. How many hundredths is 0.5?",
+          hi: "0.5 और 0.45 की तुलना के लिए दोनों को सौवें हिस्सों में लिखिए। 0.5 कितने सौवें हैं?",
+          mr: "0.5 आणि 0.45 ची तुलना करायला दोन्ही शतांशांत लिहा. 0.5 म्हणजे किती शतांश?",
+        },
+        answer: 50,
+        wrong: [5, 45, 500],
+        checkExpr: "100/2",
+        solution: {
+          en: "0.5 = 0.50 = 50 hundredths, while 0.45 is 45 — so 0.5 is the LARGER, though 45 has more digits. Padding with a zero costs nothing and makes the comparison honest; more digits never means bigger.",
+          hi: "0.5 = 0.50 = 50 सौवें, जबकि 0.45 यानी 45 — तो 0.5 बड़ा है, भले 45 में अंक ज़्यादा दिखें। शून्य जोड़ने में कुछ नहीं लगता और तुलना ईमानदार हो जाती है; ज़्यादा अंक कभी बड़े होने की निशानी नहीं।",
+          mr: "0.5 = 0.50 = 50 शतांश, तर 0.45 म्हणजे 45 — म्हणून 0.5 मोठा, जरी 45 मध्ये अंक जास्त दिसले तरी. शून्य जोडायला काही लागत नाही आणि तुलना प्रामाणिक होते; जास्त अंक म्हणजे मोठे, असे कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two sprinters run 100 m: Asha in 12.7 seconds, Bina in 12.07 seconds. Bina is faster by how many HUNDREDTHS of a second?",
+          hi: "दो धावक 100 मीटर दौड़ती हैं: आशा 12.7 सेकंड में, बीना 12.07 सेकंड में। बीना कितने सौवें सेकंड से तेज़ है?",
+          mr: "दोन धावपटू 100 मीटर धावतात: आशा 12.7 सेकंदांत, बिना 12.07 सेकंदांत. बिना किती शतांश सेकंदांनी वेगवान?",
+        },
+        answer: 63,
+        wrong: [7, 63 * 10, 3],
+        checkExpr: "1270-1207",
+        solution: {
+          en: "In hundredths: 12.7 s = 1270 and 12.07 s = 1207, so the gap is 1270 − 1207 = 63 hundredths (0.63 s). The trap is thinking 12.7 and 12.07 are nearly equal — the lone 7 after the point is TENTHS, ten times the size of the 07.",
+          hi: "सौवों में: 12.7 से = 1270 और 12.07 से = 1207, अंतर 1270 − 1207 = 63 सौवें (0.63 से)। फंदा यह सोचना है कि 12.7 और 12.07 लगभग बराबर हैं — बिंदी के बाद अकेला 7 दसवें हैं, 07 से दस गुना बड़ा।",
+          mr: "शतांशांत: 12.7 से = 1270 आणि 12.07 से = 1207, फरक 1270 − 1207 = 63 शतांश (0.63 से). सापळा हा की 12.7 आणि 12.07 जवळजवळ सारखे वाटतात — टिंबानंतरचा एकटा 7 दशांश आहे, 07 च्या दसपट मोठा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 8 — Decimals",
+      name: "Decimals",
+      slug: "maths-6-decimals",
+      summary: "Tenths and hundredths with a firmer grip — points lined up, borrows across the point, and 12.7 versus 12.07 told apart.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "दशमलव",
+          summary: "दसवें और सौवें, अब मज़बूत पकड़ से — सीध में बिंदियाँ, बिंदी के आर-पार हासिल, और 12.7 बनाम 12.07 का फ़र्क़।",
+        },
+        mr: {
+          name: "दशांश",
+          summary: "दशांश आणि शतांश, आता पक्क्या पकडीने — सरळ रेषेतली टिंबे, टिंबापारचे हातचे, आणि 12.7 विरुद्ध 12.07 चा ओळखलेला फरक.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Ratio and Proportion (fair shares and the unitary method)    */
+/* ------------------------------------------------------------------------- */
+function ratioAndProportion(): TopicFileOut {
+  const rand = rng("maths-6-ratio-and-proportion");
+  const qs: OutQuestion[] = [];
+
+  const mF = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+  const rupeesF = (n: number) => ({ en: `₹${n}`, hi: `₹${n}`, mr: `₹${n}` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "₹40 is divided between two children in the ratio 3 : 1. How much is the BIGGER share?",
+          hi: "₹40 दो बच्चों में 3 : 1 के अनुपात में बाँटे गए। बड़ा हिस्सा कितना है?",
+          mr: "₹40 दोन मुलांत 3 : 1 प्रमाणात वाटले. मोठा वाटा किती?",
+        },
+        answer: 30,
+        wrong: [10, 20, 13],
+        checkExpr: "40*3/4",
+        solution: {
+          en: "3 : 1 makes 4 equal parts; each part is 40 ÷ 4 = ₹10, and the bigger share takes 3 of them: ₹30. 20 splits evenly, ignoring the ratio the question set.",
+          hi: "3 : 1 यानी 4 बराबर हिस्से; हर हिस्सा 40 ÷ 4 = ₹10, और बड़ा भाग 3 हिस्से लेता है: ₹30। 20 बराबर बाँट देता है — सवाल का रखा अनुपात अनदेखा।",
+          mr: "3 : 1 म्हणजे 4 सारखे भाग; प्रत्येक भाग 40 ÷ 4 = ₹10, आणि मोठा वाटा 3 भाग घेतो: ₹30. 20 सारखे वाटते — प्रश्नाने दिलेले प्रमाण दुर्लक्षून.",
+        },
+        fmt: rupeesF,
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Write the ratio 6 : 8 in its simplest form. What is the FIRST term?",
+          hi: "अनुपात 6 : 8 को सरलतम रूप में लिखिए। पहला पद क्या है?",
+          mr: "6 : 8 हे गुणोत्तर सोप्या रूपात लिहा. पहिले पद किती?",
+        },
+        answer: 3,
+        wrong: [6, 2, 4],
+        checkExpr: "6/2",
+        solution: {
+          en: "Divide both terms by their HCF 2: 6 : 8 = 3 : 4. A ratio simplifies exactly like a fraction — same relationship, smallest words.",
+          hi: "दोनों पदों को उनके म.स. 2 से बाँटिए: 6 : 8 = 3 : 4। अनुपात ठीक भिन्न की तरह सरल होता है — वही रिश्ता, सबसे छोटे शब्दों में।",
+          mr: "दोन्ही पदांना त्यांच्या म.सा.वि. 2 ने भागा: 6 : 8 = 3 : 4. गुणोत्तर नेमके अपूर्णांकासारखे सोपे होते — तेच नाते, सर्वांत लहान शब्दांत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A khichdi recipe takes 2 cups of rice for every 1 cup of dal. For 6 cups of rice, how much dal?",
+          hi: "खिचड़ी में हर 1 कप दाल पर 2 कप चावल लगते हैं। 6 कप चावल के लिए कितनी दाल?",
+          mr: "खिचडीत दर 1 कप डाळीला 2 कप तांदूळ लागतात. 6 कप तांदळासाठी किती डाळ?",
+        },
+        answer: 3,
+        wrong: [12, 6, 4],
+        checkExpr: "6/2",
+        solution: {
+          en: "Rice : dal = 2 : 1, so dal is always half the rice: 6 ÷ 2 = 3 cups. 12 doubles instead — that khichdi would be mostly dal.",
+          hi: "चावल : दाल = 2 : 1, तो दाल हमेशा चावल की आधी: 6 ÷ 2 = 3 कप। 12 दुगना कर देता है — वह खिचड़ी दाल ही दाल होती।",
+          mr: "तांदूळ : डाळ = 2 : 1, म्हणून डाळ नेहमी तांदळाच्या निम्मी: 6 ÷ 2 = 3 कप. 12 दुप्पट करते — ती खिचडी डाळच डाळ झाली असती.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "15 identical pens cost ₹45. What does ONE pen cost?",
+          hi: "15 एक-जैसे पेन ₹45 के हैं। एक पेन कितने का है?",
+          mr: "15 सारखी पेने ₹45 ला आहेत. एक पेन किती रुपयांना?",
+        },
+        answer: 3,
+        wrong: [30, 45, 15],
+        checkExpr: "45/15",
+        solution: {
+          en: "45 ÷ 15 = ₹3 each — the unitary method's first step: find the price of ONE. From there any number of pens is one multiplication away.",
+          hi: "45 ÷ 15 = ₹3 प्रति पेन — ऐकिक विधि का पहला क़दम: एक का दाम निकालिए। वहाँ से किसी भी गिनती का दाम एक गुणा दूर है।",
+          mr: "45 ÷ 15 = ₹3 प्रत्येकी — एकमान पद्धतीचे पहिले पाऊल: एकाची किंमत काढा. तिथून कितीही पेनांची किंमत एका गुणाकारावर आहे.",
+        },
+        fmt: rupeesF,
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the ratio of 45 minutes to 1 hour, in simplest form 3 : ▢?",
+          hi: "45 मिनट का 1 घंटे से अनुपात, सरलतम रूप 3 : ▢ में, क्या है?",
+          mr: "45 मिनिटांचे 1 तासाशी गुणोत्तर, सोप्या रूपात 3 : ▢, किती?",
+        },
+        answer: 4,
+        wrong: [60, 1, 15],
+        checkExpr: "60/15",
+        solution: {
+          en: "Same units first: 1 hour = 60 minutes, so the ratio is 45 : 60 = 3 : 4 (both ÷ 15). A ratio of minutes to hours unconverted is not a ratio at all.",
+          hi: "पहले इकाइयाँ एक कीजिए: 1 घंटा = 60 मिनट, तो अनुपात 45 : 60 = 3 : 4 (दोनों ÷ 15)। बिना बदले मिनट-से-घंटे का अनुपात अनुपात है ही नहीं।",
+          mr: "आधी एकके सारखी करा: 1 तास = 60 मिनिटे, म्हणून गुणोत्तर 45 : 60 = 3 : 4 (दोन्ही ÷ 15). न बदललेले मिनिट-ते-तास गुणोत्तर हे गुणोत्तरच नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "4 kg of sugar costs ₹96. What do 7 kg cost at the same rate?",
+          hi: "4 किलो चीनी ₹96 की है। उसी भाव पर 7 किलो के कितने लगेंगे?",
+          mr: "4 किलो साखर ₹96 ला आहे. त्याच भावाने 7 किलोला किती लागतील?",
+        },
+        answer: 168,
+        wrong: [672, 99, 144],
+        checkExpr: "96/4*7",
+        solution: {
+          en: "One kg first: 96 ÷ 4 = ₹24; then 7 kg: 24 × 7 = ₹168. 672 multiplies 96 by 7 as if 96 were the price of ONE kg — the unitary step exists to prevent exactly that.",
+          hi: "पहले एक किलो: 96 ÷ 4 = ₹24; फिर 7 किलो: 24 × 7 = ₹168। 672 छियानवे को 7 से गुणा करता है मानो 96 एक किलो का दाम हो — ऐकिक क़दम ठीक इसी से बचाता है।",
+          mr: "आधी एक किलो: 96 ÷ 4 = ₹24; मग 7 किलो: 24 × 7 = ₹168. 672 शहाण्णवला 7 ने गुणते जणू 96 ही एका किलोची किंमत — एकमान पाऊल नेमके यापासून वाचवते.",
+        },
+        fmt: rupeesF,
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "On a plan drawn at the ratio 1 : 100, a wall is 5 cm long. How long is the real wall, in centimetres?",
+          hi: "1 : 100 के अनुपात पर बने नक़्शे में दीवार 5 सेमी है। असली दीवार कितने सेंटीमीटर लंबी है?",
+          mr: "1 : 100 प्रमाणात काढलेल्या आराखड्यात भिंत 5 सेमी आहे. खरी भिंत किती सेंटिमीटर लांब?",
+        },
+        answer: 500,
+        wrong: [105, 50, 5000],
+        checkExpr: "5*100",
+        solution: {
+          en: "1 : 100 means every drawn centimetre is 100 real ones: 5 × 100 = 500 cm — a 5 m wall. 105 adds the ratio; ratios scale, they never add.",
+          hi: "1 : 100 यानी हर खिंचा सेंटीमीटर 100 असली के बराबर: 5 × 100 = 500 सेमी — 5 मीटर की दीवार। 105 अनुपात जोड़ देता है; अनुपात मापते हैं, जुड़ते कभी नहीं।",
+          mr: "1 : 100 म्हणजे प्रत्येक काढलेला सेंटिमीटर 100 खऱ्यांच्या बरोबरीचा: 5 × 100 = 500 सेमी — 5 मीटरची भिंत. 105 गुणोत्तर मिळवते; गुणोत्तरे मोजतात, कधीच मिळत नाहीत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "35 sweets are shared between a brother and sister in the ratio 4 : 3. How many does the sister (the SMALLER share) get?",
+          hi: "35 मिठाइयाँ भाई-बहन में 4 : 3 के अनुपात में बँटीं। बहन (छोटा हिस्सा) को कितनी मिलीं?",
+          mr: "35 मिठाया भाऊ-बहिणीत 4 : 3 प्रमाणात वाटल्या. बहिणीला (लहान वाटा) किती मिळाल्या?",
+        },
+        answer: 15,
+        wrong: [20, 12, 17],
+        checkExpr: "35*3/7",
+        solution: {
+          en: "4 + 3 = 7 parts; each part is 35 ÷ 7 = 5 sweets; the sister's 3 parts are 15 (the brother's 4 are 20 — and 15 + 20 = 35, the check). 17 tries to split near-evenly, which no ratio of 4 : 3 allows.",
+          hi: "4 + 3 = 7 हिस्से; हर हिस्सा 35 ÷ 7 = 5 मिठाइयाँ; बहन के 3 हिस्से यानी 15 (भाई के 4 यानी 20 — और 15 + 20 = 35, जाँच पूरी)। 17 लगभग बराबर बाँटने चलता है, जो 4 : 3 का अनुपात होने ही नहीं देता।",
+          mr: "4 + 3 = 7 भाग; प्रत्येक भाग 35 ÷ 7 = 5 मिठाया; बहिणीचे 3 भाग म्हणजे 15 (भावाचे 4 म्हणजे 20 — आणि 15 + 20 = 35, तपासणी पूर्ण). 17 जवळजवळ सारखे वाटू पाहते, जे 4 : 3 चे प्रमाण होऊच देत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "To check whether 2 : 3 and 8 : 12 are in proportion, cross-multiply. What is 2 × 12?",
+          hi: "2 : 3 और 8 : 12 समानुपात में हैं या नहीं, जाँचने को तिर्यक् गुणा कीजिए। 2 × 12 क्या है?",
+          mr: "2 : 3 आणि 8 : 12 प्रमाणात आहेत का तपासायला तिर्यक् गुणाकार करा. 2 × 12 किती?",
+        },
+        answer: 24,
+        wrong: [36, 16, 6],
+        checkExpr: "2*12",
+        solution: {
+          en: "2 × 12 = 24 — and the other cross, 3 × 8, is also 24. Equal crosses mean the ratios truly match: 8 : 12 is just 2 : 3 grown four times. One unequal cross would have ended the friendship.",
+          hi: "2 × 12 = 24 — और दूसरा तिर्यक्, 3 × 8, भी 24। बराबर तिर्यक् यानी अनुपात सचमुच मिलते हैं: 8 : 12 बस 2 : 3 का चौगुना है। एक भी असमान तिर्यक् दोस्ती तोड़ देता।",
+          mr: "2 × 12 = 24 — आणि दुसरा तिर्यक्, 3 × 8, सुद्धा 24. सारखे तिर्यक् म्हणजे गुणोत्तरे खरोखर जुळतात: 8 : 12 म्हणजे 2 : 3 चेच चौपट. एकही असमान तिर्यक् मैत्री मोडला असता.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A car covers 240 km on 15 litres of petrol. How many kilometres per litre is that?",
+          hi: "एक कार 15 लीटर पेट्रोल में 240 किमी चलती है। यह कितने किलोमीटर प्रति लीटर हुआ?",
+          mr: "एक गाडी 15 लिटर पेट्रोलमध्ये 240 किमी जाते. ते किती किलोमीटर प्रति लिटर?",
+        },
+        answer: 16,
+        wrong: [225, 12, 24],
+        checkExpr: "240/15",
+        solution: {
+          en: "240 ÷ 15 = 16 km per litre — the unitary rate that lets you cost ANY journey. 225 subtracts the litres from the kilometres, mixing two different kinds of thing.",
+          hi: "240 ÷ 15 = 16 किमी प्रति लीटर — वह ऐकिक दर जिससे किसी भी सफ़र का हिसाब लगे। 225 किलोमीटर में से लीटर घटा देता है — दो अलग क़िस्म की चीज़ें गड्डमड्ड।",
+          mr: "240 ÷ 15 = 16 किमी प्रति लिटर — ज्याने कोणत्याही प्रवासाचा हिशेब लागतो तो एकमान दर. 225 किलोमीटरमधून लिटर वजा करते — दोन वेगळ्या जातींच्या गोष्टींची गल्लत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "At four o'clock a 6 m flagpole casts a 4 m shadow. At the same moment, the water-tank tower's shadow measures 20 m. How tall is the tower?",
+          hi: "चार बजे 6 मीटर का ध्वज-स्तंभ 4 मीटर की छाया डालता है। उसी क्षण पानी की टंकी की मीनार की छाया 20 मीटर है। मीनार कितनी ऊँची है?",
+          mr: "चार वाजता 6 मीटरचा ध्वजस्तंभ 4 मीटरची सावली टाकतो. त्याच क्षणी पाण्याच्या टाकीच्या मनोऱ्याची सावली 20 मीटर भरते. मनोरा किती उंच?",
+        },
+        answer: 30,
+        wrong: [22, 120, 13],
+        checkExpr: "6*20/4",
+        solution: {
+          en: "At one moment the sun gives everything the same height-to-shadow ratio: 6 : 4 = 3 : 2. The tower keeps it: height = 20 × 3/2 = 30 m. 22 adds the pole's extra to the shadow — but shadows scale, they do not add. One stick and one sum measure what no ladder could.",
+          hi: "एक ही क्षण में सूरज सबको एक-सा ऊँचाई-छाया अनुपात देता है: 6 : 4 = 3 : 2। मीनार उसे निभाती है: ऊँचाई = 20 × 3/2 = 30 मीटर। 22 खंभे का फ़र्क़ छाया में जोड़ देता है — पर छायाएँ मापती हैं, जुड़ती नहीं। एक डंडा और एक हिसाब वह नाप लेते हैं जो कोई सीढ़ी न नाप पाती।",
+          mr: "एकाच क्षणी सूर्य साऱ्यांना सारखेच उंची-सावली प्रमाण देतो: 6 : 4 = 3 : 2. मनोरा ते पाळतो: उंची = 20 × 3/2 = 30 मीटर. 22 खांबाचा फरक सावलीत मिळवते — पण सावल्या मोजतात, मिळत नाहीत. एक काठी आणि एक हिशेब ते मोजतात जे कोणतीही शिडी मोजू शकली नसती.",
+        },
+        fmt: mF,
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 12 — Ratio and Proportion",
+      name: "Ratio and Proportion",
+      slug: "maths-6-ratio-and-proportion",
+      summary: "Fair shares by parts, the unitary method, cross-checks of proportion — and a flagpole's shadow that measures a tower.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "अनुपात और समानुपात",
+          summary: "हिस्सों से न्यायपूर्ण बँटवारे, ऐकिक विधि, समानुपात की तिर्यक् जाँच — और खंभे की वह छाया जो मीनार नाप लेती है।",
+        },
+        mr: {
+          name: "गुणोत्तर आणि प्रमाण",
+          summary: "भागांनी न्याय्य वाटण्या, एकमान पद्धत, प्रमाणाची तिर्यक् तपासणी — आणि मनोरा मोजणारी खांबाची सावली.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+export const G6_MATHS: TopicFileOut[] = [
+  knowingOurNumbers(),
+  playingWithNumbers(),
+  integers(),
+  fractions6(),
+  decimals6(),
+  ratioAndProportion(),
+];
