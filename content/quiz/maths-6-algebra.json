@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 11 — Algebra",
+  "name": "Algebra",
+  "slug": "maths-6-algebra",
+  "summary": "Letters standing for numbers — matchstick rules, equations unwrapped in reverse, and the think-of-a-number trick unmasked as x.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "बीजगणित",
+      "summary": "संख्याओं की जगह खड़े अक्षर — माचिस के नियम, उलटे क्रम में खुलते समीकरण, और x के रूप में बेनक़ाब संख्या-सोचो तरकीब।"
+    },
+    "mr": {
+      "name": "बीजगणित",
+      "summary": "संख्यांच्या जागी उभी अक्षरे — काडेपेटीचे नियम, उलट्या क्रमाने उलगडणारी समीकरणे, आणि x म्हणून उघडी पडलेली संख्या-धरा युक्ती."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Each letter L in a matchstick pattern takes 2 sticks, so n letters take 2n sticks. How many sticks for n = 7?",
+      "choices": [
+        "14",
+        "7",
+        "9",
+        "27"
+      ],
+      "answerIndex": 0,
+      "solution": "2n means 2 × n: 2 × 7 = 14 sticks. 27 glues the digits together — the letter beside a number always means multiply, never sit-beside.",
+      "checkExpr": "2*7",
+      "translations": {
+        "hi": {
+          "stem": "माचिस-पैटर्न में हर अक्षर L में 2 तीलियाँ लगती हैं, तो n अक्षरों में 2n तीलियाँ। n = 7 के लिए कितनी तीलियाँ?",
+          "choices": [
+            "14",
+            "7",
+            "9",
+            "27"
+          ],
+          "solution": "2n यानी 2 × n: 2 × 7 = 14 तीलियाँ। 27 अंकों को चिपका देता है — संख्या के बग़ल का अक्षर हमेशा गुणा कहता है, अग़ल-बग़ल बैठना नहीं।"
+        },
+        "mr": {
+          "stem": "काडेपेटी-नमुन्यात प्रत्येक L अक्षराला 2 काड्या लागतात, म्हणून n अक्षरांना 2n काड्या. n = 7 साठी किती काड्या?",
+          "choices": [
+            "14",
+            "7",
+            "9",
+            "27"
+          ],
+          "solution": "2n म्हणजे 2 × n: 2 × 7 = 14 काड्या. 27 अंक चिकटवते — संख्येशेजारचे अक्षर नेहमी गुणाकार सांगते, शेजारी बसणे नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "If x = 5, what is x + 3?",
+      "choices": [
+        "15",
+        "8",
+        "2",
+        "53"
+      ],
+      "answerIndex": 1,
+      "solution": "Put 5 in x's place: 5 + 3 = 8. The letter is a box holding a number — open the box and calculate as always. 53 writes the two side by side.",
+      "checkExpr": "5+3",
+      "translations": {
+        "hi": {
+          "stem": "यदि x = 5, तो x + 3 कितना है?",
+          "choices": [
+            "15",
+            "8",
+            "2",
+            "53"
+          ],
+          "solution": "x की जगह 5 रखिए: 5 + 3 = 8। अक्षर संख्या थामे एक डिब्बा है — डिब्बा खोलिए और हमेशा की तरह हिसाब कीजिए। 53 दोनों को अग़ल-बग़ल लिख देता है।"
+        },
+        "mr": {
+          "stem": "x = 5 असेल, तर x + 3 किती?",
+          "choices": [
+            "15",
+            "8",
+            "2",
+            "53"
+          ],
+          "solution": "x च्या जागी 5 ठेवा: 5 + 3 = 8. अक्षर म्हणजे संख्या धरलेली पेटी — पेटी उघडा आणि नेहमीसारखा हिशेब करा. 53 दोघांना शेजारी लिहिते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A square of side a has perimeter 4a. What is the perimeter when a = 6?",
+      "choices": [
+        "24",
+        "10",
+        "36",
+        "46"
+      ],
+      "answerIndex": 0,
+      "solution": "4a = 4 × 6 = 24 — the formula walks all four sides at once, whatever a turns out to be. 36 squares the side, which is area's business.",
+      "checkExpr": "4*6",
+      "translations": {
+        "hi": {
+          "stem": "a भुजा वाले वर्ग की परिमिति 4a है। a = 6 पर परिमिति कितनी?",
+          "choices": [
+            "24",
+            "10",
+            "36",
+            "46"
+          ],
+          "solution": "4a = 4 × 6 = 24 — सूत्र चारों भुजाएँ एक साथ चल लेता है, a जो भी निकले। 36 भुजा का वर्ग है — वह क्षेत्रफल का काम है।"
+        },
+        "mr": {
+          "stem": "a बाजूच्या चौरसाची परिमिती 4a. a = 6 असता परिमिती किती?",
+          "choices": [
+            "24",
+            "10",
+            "36",
+            "46"
+          ],
+          "solution": "4a = 4 × 6 = 24 — सूत्र चारही बाजू एकदम चालते, a काहीही निघो. 36 बाजूचा वर्ग — ते क्षेत्रफळाचे काम."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "If y = 4, what is 3y?",
+      "choices": [
+        "7",
+        "12",
+        "34",
+        "43"
+      ],
+      "answerIndex": 1,
+      "solution": "3y is 3 × y = 3 × 4 = 12. 7 adds; 34 and 43 paste digits. The invisible multiplication sign is algebra's first habit to learn.",
+      "checkExpr": "3*4",
+      "translations": {
+        "hi": {
+          "stem": "यदि y = 4, तो 3y कितना है?",
+          "choices": [
+            "7",
+            "12",
+            "34",
+            "43"
+          ],
+          "solution": "3y यानी 3 × y = 3 × 4 = 12। 7 जोड़ देता है; 34 और 43 अंक चिपकाते हैं। अदृश्य गुणा-चिह्न बीजगणित की पहली सीखने लायक़ आदत है।"
+        },
+        "mr": {
+          "stem": "y = 4 असेल, तर 3y किती?",
+          "choices": [
+            "7",
+            "12",
+            "34",
+            "43"
+          ],
+          "solution": "3y म्हणजे 3 × y = 3 × 4 = 12. 7 मिळवते; 34 आणि 43 अंक चिकटवतात. अदृश्य गुणाकार-चिन्ह ही बीजगणिताची पहिली शिकण्याजोगी सवय."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A parade has 5 rows of cadets with r cadets in each row — 5r in all. How many cadets when r = 9?",
+      "choices": [
+        "45",
+        "59",
+        "95",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "5r = 5 × 9 = 45 cadets. The rule 5r was written before anyone knew r — that is algebra's power: one formula, every possible parade.",
+      "checkExpr": "5*9",
+      "translations": {
+        "hi": {
+          "stem": "परेड में कैडेटों की 5 पंक्तियाँ हैं, हर पंक्ति में r कैडेट — कुल 5r। r = 9 पर कितने कैडेट?",
+          "choices": [
+            "45",
+            "59",
+            "95",
+            "14"
+          ],
+          "solution": "5r = 5 × 9 = 45 कैडेट। नियम 5r तब लिखा गया जब r कोई नहीं जानता था — यही बीजगणित की ताक़त है: एक सूत्र, हर मुमकिन परेड।"
+        },
+        "mr": {
+          "stem": "संचलनात कॅडेटांच्या 5 रांगा आहेत, प्रत्येक रांगेत r कॅडेट — एकूण 5r. r = 9 असता किती कॅडेट?",
+          "choices": [
+            "45",
+            "59",
+            "95",
+            "14"
+          ],
+          "solution": "5r = 5 × 9 = 45 कॅडेट. नियम 5r तेव्हा लिहिला गेला जेव्हा r कोणालाच ठाऊक नव्हता — हीच बीजगणिताची ताकद: एक सूत्र, प्रत्येक शक्य संचलन."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: x + 7 = 12. What is x?",
+      "choices": [
+        "84",
+        "7",
+        "5",
+        "19"
+      ],
+      "answerIndex": 2,
+      "solution": "Undo the +7 by subtracting: x = 12 − 7 = 5, and checking, 5 + 7 = 12. 19 adds the 7 again — to unwrap an equation, do the OPPOSITE of what was done to x.",
+      "checkExpr": "12-7",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: x + 7 = 12। x क्या है?",
+          "choices": [
+            "84",
+            "7",
+            "5",
+            "19"
+          ],
+          "solution": "+7 को घटाकर खोलिए: x = 12 − 7 = 5, और जाँच में 5 + 7 = 12। 19 सात दोबारा जोड़ देता है — समीकरण खोलने को वही उलटा कीजिए जो x के साथ हुआ था।"
+        },
+        "mr": {
+          "stem": "सोडवा: x + 7 = 12. x किती?",
+          "choices": [
+            "84",
+            "7",
+            "5",
+            "19"
+          ],
+          "solution": "+7 वजा करून उलगडा: x = 12 − 7 = 5, आणि तपासणीत 5 + 7 = 12. 19 सात पुन्हा मिळवते — समीकरण उलगडायला x शी जे झाले त्याच्या उलटे करा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve: 4m = 28. What is m?",
+      "choices": [
+        "32",
+        "24",
+        "112",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "Undo the ×4 by dividing: m = 28 ÷ 4 = 7; check 4 × 7 = 28. 24 subtracts the 4 — but m was multiplied, so only division sets it free.",
+      "checkExpr": "28/4",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 4m = 28। m क्या है?",
+          "choices": [
+            "32",
+            "24",
+            "112",
+            "7"
+          ],
+          "solution": "×4 को भाग से खोलिए: m = 28 ÷ 4 = 7; जाँच 4 × 7 = 28। 24 चार घटाता है — पर m गुणा हुआ था, तो उसे केवल भाग ही आज़ाद करता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 4m = 28. m किती?",
+          "choices": [
+            "32",
+            "24",
+            "112",
+            "7"
+          ],
+          "solution": "×4 भागाकाराने उलगडा: m = 28 ÷ 4 = 7; तपासणी 4 × 7 = 28. 24 चार वजा करते — पण m गुणला गेला होता, म्हणून त्याला फक्त भागाकारच मोकळे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Solve: n − 6 = 10. What is n?",
+      "choices": [
+        "4",
+        "10",
+        "16",
+        "60"
+      ],
+      "answerIndex": 2,
+      "solution": "Six was taken FROM n, so give it back: n = 10 + 6 = 16; check 16 − 6 = 10. 4 subtracts again, moving the wrong way twice.",
+      "checkExpr": "10+6",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: n − 6 = 10। n क्या है?",
+          "choices": [
+            "4",
+            "10",
+            "16",
+            "60"
+          ],
+          "solution": "n में से छह लिया गया था, तो लौटाइए: n = 10 + 6 = 16; जाँच 16 − 6 = 10। 4 फिर घटाता है — ग़लत दिशा में दो बार।"
+        },
+        "mr": {
+          "stem": "सोडवा: n − 6 = 10. n किती?",
+          "choices": [
+            "4",
+            "10",
+            "16",
+            "60"
+          ],
+          "solution": "n मधून सहा घेतले होते, म्हणून परत द्या: n = 10 + 6 = 16; तपासणी 16 − 6 = 10. 4 पुन्हा वजा करते — चुकीच्या दिशेने दोनदा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Sarita has x marbles and her brother has x + 10. If x = 14, how many does the brother have?",
+      "choices": [
+        "24",
+        "10",
+        "140",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "x + 10 = 14 + 10 = 24 marbles. The expression 'x + 10' said the RELATIONSHIP — ten more than Sarita, whatever she has — before either count was known.",
+      "checkExpr": "14+10",
+      "translations": {
+        "hi": {
+          "stem": "सरिता के पास x कंचे हैं और भाई के पास x + 10। यदि x = 14, भाई के पास कितने?",
+          "choices": [
+            "24",
+            "10",
+            "140",
+            "14"
+          ],
+          "solution": "x + 10 = 14 + 10 = 24 कंचे। व्यंजक 'x + 10' ने रिश्ता कहा था — सरिता से दस ज़्यादा, उसके पास जो भी हो — किसी की भी गिनती जानने से पहले।"
+        },
+        "mr": {
+          "stem": "सरिताकडे x गोट्या आहेत आणि भावाकडे x + 10. x = 14 असेल, तर भावाकडे किती?",
+          "choices": [
+            "24",
+            "10",
+            "140",
+            "14"
+          ],
+          "solution": "x + 10 = 14 + 10 = 24 गोट्या. 'x + 10' या पदावलीने नाते सांगितले होते — सरिताहून दहा जास्त, तिच्याकडे काहीही असो — कोणाचीही संख्या ठाऊक होण्याआधी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Solve: 2x + 3 = 13. What is x?",
+      "choices": [
+        "5",
+        "6",
+        "10",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Unwrap in reverse order: first take away the +3 (2x = 10), then undo the ×2 (x = 5); check 2 × 5 + 3 = 13. 8 divides before subtracting — the last thing done to x is the first to undo.",
+      "checkExpr": "(13-3)/2",
+      "translations": {
+        "hi": {
+          "stem": "हल कीजिए: 2x + 3 = 13। x क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "10",
+            "8"
+          ],
+          "solution": "उलटे क्रम में खोलिए: पहले +3 हटाइए (2x = 10), फिर ×2 खोलिए (x = 5); जाँच 2 × 5 + 3 = 13। 8 घटाने से पहले भाग देता है — x के साथ जो आख़िर में हुआ, वही पहले खुलता है।"
+        },
+        "mr": {
+          "stem": "सोडवा: 2x + 3 = 13. x किती?",
+          "choices": [
+            "5",
+            "6",
+            "10",
+            "8"
+          ],
+          "solution": "उलट्या क्रमाने उलगडा: आधी +3 काढा (2x = 10), मग ×2 उलगडा (x = 5); तपासणी 2 × 5 + 3 = 13. 8 वजा करण्याआधी भागते — x शी शेवटी जे झाले, तेच आधी उलगडायचे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A trick: think of ANY number, double it, add 8, halve the result, then subtract your original number. What is left — always?",
+      "choices": [
+        "0",
+        "2",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Let the thought number be x: doubling gives 2x, adding 8 gives 2x + 8, halving gives x + 4, and subtracting x leaves… 4, for every x alive. The 'magic' is algebra in costume: the x enters, rides along, and cancels itself out — only half the 8 survives the trip.",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "एक तरकीब: कोई भी संख्या सोचिए, दुगनी कीजिए, 8 जोड़िए, आधा कीजिए, फिर अपनी मूल संख्या घटाइए। हमेशा क्या बचता है?",
+          "choices": [
+            "0",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "सोची संख्या x मानिए: दुगना 2x, आठ जोड़कर 2x + 8, आधा करके x + 4, और x घटाने पर बचता है… 4 — हर x के लिए। 'जादू' वेश बदला बीजगणित है: x आता है, साथ चलता है, और ख़ुद को काट देता है — सफ़र से बस 8 का आधा बचकर निकलता है।"
+        },
+        "mr": {
+          "stem": "एक युक्ती: कोणतीही संख्या मनात धरा, दुप्पट करा, 8 मिळवा, अर्धे करा, मग आपली मूळ संख्या वजा करा. नेहमी काय उरते?",
+          "choices": [
+            "0",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "मनातली संख्या x माना: दुप्पट 2x, आठ मिळवून 2x + 8, अर्धे करून x + 4, आणि x वजा केल्यावर उरते… 4 — प्रत्येक x साठी. 'जादू' म्हणजे वेष बदललेले बीजगणित: x येतो, सोबत चालतो, आणि स्वतःला कापून घेतो — प्रवासातून फक्त 8 चा अर्धा वाचून निघतो."
+        }
+      }
+    }
+  ]
+}

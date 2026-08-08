@@ -1582,11 +1582,1039 @@ function ratioAndProportion(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 2 — Whole Numbers (zero joins, and the laws that speed sums)      */
+/* ------------------------------------------------------------------------- */
+function wholeNumbers(): TopicFileOut {
+  const rand = rng("maths-6-whole-numbers");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the smallest whole number?",
+          hi: "सबसे छोटी पूर्ण संख्या कौन-सी है?",
+          mr: "सर्वांत लहान पूर्ण संख्या कोणती?",
+        },
+        answer: 0,
+        wrong: [1, -1, 2],
+        solution: {
+          en: "Whole numbers begin at 0 — the naturals' 1, 2, 3… with zero welcomed in. −1 belongs to the integers, one chapter later.",
+          hi: "पूर्ण संख्याएँ 0 से शुरू होती हैं — प्राकृत 1, 2, 3… में शून्य का स्वागत। −1 पूर्णांकों का है, एक अध्याय बाद।",
+          mr: "पूर्ण संख्या 0 पासून सुरू होतात — नैसर्गिक 1, 2, 3… मध्ये शून्याचे स्वागत. −1 पूर्णांकांचा, एक प्रकरण नंतर.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the predecessor of 1000?",
+          hi: "1000 की पूर्ववर्ती (पिछली) संख्या क्या है?",
+          mr: "1000 ची मागील संख्या कोणती?",
+        },
+        answer: 999,
+        wrong: [1001, 990, 100],
+        checkExpr: "1000-1",
+        solution: {
+          en: "One step back: 1000 − 1 = 999 — the thousand unrolls into three nines. 1001 walks forward to the successor instead.",
+          hi: "एक क़दम पीछे: 1000 − 1 = 999 — हज़ार खुलकर तीन नौ बन जाता है। 1001 आगे बढ़कर परवर्ती पर पहुँच जाता है।",
+          mr: "एक पाऊल मागे: 1000 − 1 = 999 — हजार उलगडून तीन नऊ होतो. 1001 पुढे जाऊन पुढील संख्येवर पोहोचते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 17 + 0?",
+          hi: "17 + 0 कितना है?",
+          mr: "17 + 0 किती?",
+        },
+        answer: 17,
+        wrong: [0, 170, 18],
+        checkExpr: "17+0",
+        solution: {
+          en: "Adding zero changes nothing: 17 + 0 = 17 — zero is addition's identity, the guest who eats nothing. 170 multiplies by ten instead.",
+          hi: "शून्य जोड़ने से कुछ नहीं बदलता: 17 + 0 = 17 — शून्य जोड़ का तत्समक है, वह मेहमान जो कुछ नहीं खाता। 170 दस से गुणा कर बैठता है।",
+          mr: "शून्य मिळवल्याने काही बदलत नाही: 17 + 0 = 17 — शून्य बेरजेचा अविकारक, काहीही न खाणारा पाहुणा. 170 दहाने गुणते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 25 × 1?",
+          hi: "25 × 1 कितना है?",
+          mr: "25 × 1 किती?",
+        },
+        answer: 25,
+        wrong: [1, 26, 251],
+        checkExpr: "25*1",
+        solution: {
+          en: "Multiplying by one changes nothing: 25 × 1 = 25 — one is multiplication's identity, as zero is addition's. 26 adds the one instead.",
+          hi: "एक से गुणा करने पर कुछ नहीं बदलता: 25 × 1 = 25 — एक गुणा का तत्समक है, जैसे शून्य जोड़ का। 26 एक को जोड़ देता है।",
+          mr: "एकने गुणल्याने काही बदलत नाही: 25 × 1 = 25 — एक हा गुणाकाराचा अविकारक, जसा शून्य बेरजेचा. 26 एक मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "To find 4 × 1768 × 25 quickly, pair the easy two first. What is 4 × 25?",
+          hi: "4 × 1768 × 25 झटपट निकालने के लिए पहले आसान जोड़ी बनाइए। 4 × 25 क्या है?",
+          mr: "4 × 1768 × 25 झटपट काढायला आधी सोपी जोडी करा. 4 × 25 किती?",
+        },
+        answer: 100,
+        wrong: [29, 425, 1768],
+        checkExpr: "4*25",
+        solution: {
+          en: "4 × 25 = 100, and then 100 × 1768 = 1,76,800 in one breath. The commutative law lets factors change partners — always marry the pair that makes a hundred.",
+          hi: "4 × 25 = 100, और फिर 100 × 1768 = 1,76,800 एक साँस में। क्रम-विनिमेय नियम गुणनखंडों को जोड़ीदार बदलने देता है — हमेशा वही जोड़ी बनाइए जो सौ बनाए।",
+          mr: "4 × 25 = 100, आणि मग 100 × 1768 = 1,76,800 एका दमात. क्रमनिरपेक्ष नियम अवयवांना जोडीदार बदलू देतो — नेहमी शंभर करणारी जोडी जुळवा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Use distributivity to find 6 × 105 as 6 × 100 + 6 × 5.",
+          hi: "वितरण नियम से 6 × 105 को 6 × 100 + 6 × 5 की तरह निकालिए।",
+          mr: "वितरण नियमाने 6 × 105 हे 6 × 100 + 6 × 5 असे काढा.",
+        },
+        answer: 630,
+        wrong: [605, 660, 530],
+        checkExpr: "6*105",
+        solution: {
+          en: "6 × 100 = 600 and 6 × 5 = 30: together 630. Distributivity splits an awkward number into friendly parts, multiplies each, and re-joins — 605 forgets to multiply the 5's part.",
+          hi: "6 × 100 = 600 और 6 × 5 = 30: मिलाकर 630। वितरण नियम अटपटी संख्या को सुविधाजनक हिस्सों में तोड़ता है, हर एक को गुणता है, फिर जोड़ता है — 605 पाँच वाले हिस्से का गुणा भूल जाता है।",
+          mr: "6 × 100 = 600 आणि 6 × 5 = 30: मिळून 630. वितरण नियम अवघड संख्या सोयीच्या भागांत फोडतो, प्रत्येकाला गुणतो, पुन्हा जोडतो — 605 पाचाच्या भागाचा गुणाकार विसरते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Add 1962 + 453 + 38 the clever way — group 1962 with 38 first.",
+          hi: "1962 + 453 + 38 चतुराई से जोड़िए — पहले 1962 को 38 के साथ मिलाइए।",
+          mr: "1962 + 453 + 38 हुशारीने मिळवा — आधी 1962 ला 38 शी जोडा.",
+        },
+        answer: 2453,
+        wrong: [2353, 2443, 2463],
+        checkExpr: "1962+453+38",
+        solution: {
+          en: "1962 + 38 = 2000, a round friend, and 2000 + 453 = 2453. Associativity lets addends regroup — spot the pair that completes a round number and the sum does itself.",
+          hi: "1962 + 38 = 2000, एक गोल दोस्त, और 2000 + 453 = 2453। साहचर्य नियम जोड़ के पदों को फिर से गुटबद्ध होने देता है — गोल संख्या पूरी करने वाली जोड़ी पकड़िए, योग ख़ुद हो जाता है।",
+          mr: "1962 + 38 = 2000, एक गोल मित्र, आणि 2000 + 453 = 2453. साहचर्य नियम बेरजेच्या पदांना पुन्हा गट करू देतो — गोल संख्या पूर्ण करणारी जोडी हेरा, बेरीज आपोआप होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "On the number line, start at 3 and make two jumps of +4 each. Where do you land?",
+          hi: "संख्या-रेखा पर 3 से चलकर +4 की दो छलाँगें लगाइए। कहाँ उतरेंगे?",
+          mr: "संख्यारेषेवर 3 पासून +4 च्या दोन उड्या मारा. कुठे उतराल?",
+        },
+        answer: 11,
+        wrong: [7, 12, 10],
+        checkExpr: "3+4+4",
+        solution: {
+          en: "3 → 7 → 11: each jump of 4 is one addition made visible. 7 stops after a single jump — the number line keeps honest count of both.",
+          hi: "3 → 7 → 11: 4 की हर छलाँग एक दिखता हुआ जोड़ है। 7 एक ही छलाँग पर रुक जाता है — संख्या-रेखा दोनों का ईमानदार हिसाब रखती है।",
+          mr: "3 → 7 → 11: 4 ची प्रत्येक उडी म्हणजे एक दिसणारी बेरीज. 7 एकाच उडीवर थांबते — संख्यारेषा दोन्हींचा प्रामाणिक हिशेब ठेवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Find 97 × 8 by treating 97 as (100 − 3).",
+          hi: "97 को (100 − 3) मानकर 97 × 8 निकालिए।",
+          mr: "97 ला (100 − 3) मानून 97 × 8 काढा.",
+        },
+        answer: 776,
+        wrong: [800, 824, 766],
+        checkExpr: "97*8",
+        solution: {
+          en: "(100 − 3) × 8 = 800 − 24 = 776. 800 forgets to give back the 3 eights; 824 adds them instead of subtracting. Numbers near a hundred multiply best by that hundred, minus the small correction.",
+          hi: "(100 − 3) × 8 = 800 − 24 = 776। 800 तीन आठों को लौटाना भूल जाता है; 824 घटाने की जगह जोड़ देता है। सौ के पास की संख्याएँ उसी सौ से, छोटे सुधार समेत, सबसे अच्छा गुणा होती हैं।",
+          mr: "(100 − 3) × 8 = 800 − 24 = 776. 800 तीन आठ परत द्यायला विसरते; 824 वजा करण्याऐवजी मिळवते. शंभराजवळच्या संख्या त्याच शंभराने, लहान दुरुस्तीसह, सर्वोत्तम गुणल्या जातात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Add the first five whole numbers: 0 + 1 + 2 + 3 + 4.",
+          hi: "पहली पाँच पूर्ण संख्याएँ जोड़िए: 0 + 1 + 2 + 3 + 4।",
+          mr: "पहिल्या पाच पूर्ण संख्या मिळवा: 0 + 1 + 2 + 3 + 4.",
+        },
+        answer: 10,
+        wrong: [15, 9, 5],
+        checkExpr: "0+1+2+3+4",
+        solution: {
+          en: "Pair the ends: 0 + 4 and 1 + 3 make two fours, plus the lone 2: 4 + 4 + 2 = 10. 15 sums 1 to 5, forgetting that whole numbers begin at zero.",
+          hi: "सिरों के जोड़े: 0 + 4 और 1 + 3 दो चौके, ऊपर से अकेला 2: 4 + 4 + 2 = 10। 15 एक से पाँच तक जोड़ता है — भूलकर कि पूर्ण संख्याएँ शून्य से शुरू होती हैं।",
+          mr: "टोकांच्या जोड्या: 0 + 4 आणि 1 + 3 म्हणजे दोन चार, शिवाय एकटा 2: 4 + 4 + 2 = 10. 15 एक ते पाच मिळवते — पूर्ण संख्या शून्यापासून सुरू होतात हे विसरून.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A milk vendor sells 32 litres in the morning and 68 litres in the evening, all at ₹45 a litre. Use distributivity — 45 × (32 + 68) — to find the day's earning.",
+          hi: "दूधवाला सुबह 32 लीटर और शाम 68 लीटर बेचता है, सब ₹45 प्रति लीटर। वितरण नियम — 45 × (32 + 68) — से दिन की कमाई निकालिए।",
+          mr: "दूधवाला सकाळी 32 लिटर आणि संध्याकाळी 68 लिटर विकतो, सारे ₹45 प्रति लिटर. वितरण नियमाने — 45 × (32 + 68) — दिवसाची कमाई काढा.",
+        },
+        answer: 4500,
+        wrong: [1440, 3060, 4400],
+        checkExpr: "45*(32+68)",
+        solution: {
+          en: "32 + 68 = 100 litres, and 45 × 100 = ₹4500 — one clean multiplication instead of two messy ones. 1440 stops at the morning; 3060 at the evening. Distributivity read BACKWARDS is the trick: gather first, multiply once.",
+          hi: "32 + 68 = 100 लीटर, और 45 × 100 = ₹4500 — दो उलझे गुणों की जगह एक साफ़ गुणा। 1440 सुबह पर रुकता है; 3060 शाम पर। उलटा पढ़ा वितरण नियम ही तरकीब है: पहले बटोरिए, एक बार गुणिए।",
+          mr: "32 + 68 = 100 लिटर, आणि 45 × 100 = ₹4500 — दोन किचकट गुणाकारांऐवजी एक स्वच्छ. 1440 सकाळवर थांबते; 3060 संध्याकाळवर. उलटे वाचलेला वितरण नियम हीच युक्ती: आधी गोळा करा, एकदाच गुणा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 2 — Whole Numbers",
+      name: "Whole Numbers",
+      slug: "maths-6-whole-numbers",
+      summary: "Zero joins the numbers, and the laws — commutative, associative, distributive — turn long sums into short ones.",
+      position: 2,
+      translations: {
+        hi: {
+          name: "पूर्ण संख्याएँ",
+          summary: "शून्य संख्याओं में शामिल होता है, और नियम — क्रम-विनिमेय, साहचर्य, वितरण — लंबे हिसाबों को छोटा कर देते हैं।",
+        },
+        mr: {
+          name: "पूर्ण संख्या",
+          summary: "शून्य संख्यांत सामील होतो, आणि नियम — क्रमनिरपेक्ष, साहचर्य, वितरण — लांब हिशेब आखूड करतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 4 — Basic Geometrical Ideas (points, lines and what they make)    */
+/* ------------------------------------------------------------------------- */
+function basicGeometricalIdeas(): TopicFileOut {
+  const rand = rng("maths-6-basic-geometrical-ideas");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many end-points does a line SEGMENT have?",
+          hi: "रेखाखंड के कितने अंत्य-बिंदु होते हैं?",
+          mr: "रेषाखंडाला किती अंत्यबिंदू असतात?",
+        },
+        answer: 2,
+        wrong: [0, 1, 3],
+        solution: {
+          en: "A segment is the piece of a line between two fixed ends — 2 end-points. A full line has none (it runs on both ways) and a ray has exactly one.",
+          hi: "रेखाखंड दो जड़े सिरों के बीच की रेखा का टुकड़ा है — 2 अंत्य-बिंदु। पूरी रेखा का कोई नहीं (वह दोनों ओर चलती है) और किरण का ठीक एक।",
+          mr: "रेषाखंड म्हणजे दोन ठरलेल्या टोकांमधला रेषेचा तुकडा — 2 अंत्यबिंदू. पूर्ण रेषेला एकही नाही (ती दोन्हीकडे धावते) आणि किरणाला नेमका एक.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many end-points does a RAY have?",
+          hi: "किरण के कितने अंत्य-बिंदु होते हैं?",
+          mr: "किरणाला किती अंत्यबिंदू असतात?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        solution: {
+          en: "A ray starts at one point and runs forever the other way — exactly 1 end-point, like a torch beam from the torch. 2 describes a segment; 0 a full line.",
+          hi: "किरण एक बिंदु से शुरू होकर दूसरी ओर अनंत तक चलती है — ठीक 1 अंत्य-बिंदु, जैसे टॉर्च से निकलती रोशनी। 2 रेखाखंड की बात है; 0 पूरी रेखा की।",
+          mr: "किरण एका बिंदूपासून सुरू होऊन दुसरीकडे अनंतापर्यंत धावतो — नेमका 1 अंत्यबिंदू, टॉर्चमधून निघणाऱ्या झोतासारखा. 2 रेषाखंडाचे; 0 पूर्ण रेषेचे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Through two distinct points, how many straight lines can be drawn?",
+          hi: "दो भिन्न बिंदुओं से होकर कितनी सीधी रेखाएँ खींची जा सकती हैं?",
+          mr: "दोन वेगळ्या बिंदूंतून किती सरळ रेषा काढता येतात?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        solution: {
+          en: "Exactly one — two points pin a line down completely. Through a SINGLE point, though, lines pass beyond counting; the second point is what ends the freedom.",
+          hi: "ठीक एक — दो बिंदु रेखा को पूरी तरह जकड़ देते हैं। हाँ, एक अकेले बिंदु से अनगिनत रेखाएँ गुज़रती हैं; आज़ादी दूसरा बिंदु ही ख़त्म करता है।",
+          mr: "नेमकी एक — दोन बिंदू रेषेला पूर्ण जखडतात. एकट्या बिंदूतून मात्र अगणित रेषा जातात; स्वातंत्र्य दुसरा बिंदूच संपवतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many vertices does a triangle have?",
+          hi: "त्रिभुज के कितने शीर्ष होते हैं?",
+          mr: "त्रिकोणाला किती शिरोबिंदू असतात?",
+        },
+        answer: 3,
+        wrong: [2, 4, 6],
+        solution: {
+          en: "Three sides meet pairwise at 3 corners — vertices. 6 counts sides AND vertices together; they always match in count but are different things.",
+          hi: "तीन भुजाएँ जोड़ी-जोड़ी 3 कोनों पर मिलती हैं — यही शीर्ष हैं। 6 भुजाएँ और शीर्ष साथ गिन लेता है; गिनती में वे हमेशा बराबर हैं, पर चीज़ें अलग।",
+          mr: "तीन बाजू जोडीजोडीने 3 कोपऱ्यांवर मिळतात — हेच शिरोबिंदू. 6 बाजू आणि शिरोबिंदू एकत्र मोजते; संख्येने ते नेहमी सारखे, पण गोष्टी वेगळ्या.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many diagonals does a quadrilateral have?",
+          hi: "चतुर्भुज के कितने विकर्ण होते हैं?",
+          mr: "चौकोनाला किती कर्ण असतात?",
+        },
+        answer: 2,
+        wrong: [4, 1, 3],
+        solution: {
+          en: "A diagonal joins two vertices that are NOT neighbours — a quadrilateral's two such pairs give 2 diagonals, crossing inside. 4 counts the sides, which join neighbours.",
+          hi: "विकर्ण उन दो शीर्षों को जोड़ता है जो पड़ोसी नहीं — चतुर्भुज की ऐसी दो जोड़ियाँ 2 विकर्ण देती हैं, भीतर कटते हुए। 4 भुजाएँ गिनता है, जो पड़ोसियों को जोड़ती हैं।",
+          mr: "कर्ण शेजारी नसलेल्या दोन शिरोबिंदूंना जोडतो — चौकोनाच्या अशा दोन जोड्या 2 कर्ण देतात, आत छेदणारे. 4 बाजू मोजते, ज्या शेजाऱ्यांना जोडतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two parallel lines run side by side forever. How many points do they share?",
+          hi: "दो समांतर रेखाएँ सदा साथ-साथ चलती हैं। वे कितने बिंदु साझा करती हैं?",
+          mr: "दोन समांतर रेषा सदैव शेजारी शेजारी धावतात. त्या किती बिंदू वाटून घेतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 100],
+        solution: {
+          en: "Parallel means never meeting: 0 common points, like rails that hold their gap to the horizon. 1 shared point is what INTERSECTING lines have.",
+          hi: "समांतर यानी कभी न मिलना: 0 साझा बिंदु, उन पटरियों-सा जो क्षितिज तक अपना फ़ासला निभाती हैं। 1 साझा बिंदु तो प्रतिच्छेदी रेखाओं का है।",
+          mr: "समांतर म्हणजे कधीही न मिळणे: 0 सामाईक बिंदू, क्षितिजापर्यंत आपले अंतर पाळणाऱ्या रुळांसारखे. 1 सामाईक बिंदू छेदणाऱ्या रेषांचा असतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A circle's LONGEST chord passes through the centre. If the radius is 9 cm, how long is that chord?",
+          hi: "वृत्त की सबसे लंबी जीवा केंद्र से गुज़रती है। त्रिज्या 9 सेमी हो तो वह जीवा कितनी लंबी है?",
+          mr: "वर्तुळाची सर्वांत लांब जीवा केंद्रातून जाते. त्रिज्या 9 सेमी असेल तर ती जीवा किती लांब?",
+        },
+        answer: 18,
+        wrong: [9, 27, 81],
+        checkExpr: "9*2",
+        solution: {
+          en: "The centre-chord is the diameter: 9 × 2 = 18 cm. Every other chord misses the centre and comes out shorter — the diameter is the chord family's champion.",
+          hi: "केंद्र वाली जीवा व्यास है: 9 × 2 = 18 सेमी। बाक़ी हर जीवा केंद्र से चूककर छोटी रह जाती है — व्यास जीवाओं के परिवार का सरताज है।",
+          mr: "केंद्रातली जीवा म्हणजे व्यास: 9 × 2 = 18 सेमी. बाकी प्रत्येक जीवा केंद्र चुकवून लहान राहते — व्यास हा जीवांच्या कुटुंबाचा शिरोमणी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Count a quadrilateral's vertices AND sides together. What total do you get?",
+          hi: "चतुर्भुज के शीर्ष और भुजाएँ साथ गिनिए। कुल कितने मिले?",
+          mr: "चौकोनाचे शिरोबिंदू आणि बाजू एकत्र मोजा. एकूण किती आले?",
+        },
+        answer: 8,
+        wrong: [4, 6, 10],
+        checkExpr: "4+4",
+        solution: {
+          en: "4 vertices + 4 sides = 8. In every polygon the two counts are equal — each side 'uses up' exactly one new vertex as you walk the boundary round.",
+          hi: "4 शीर्ष + 4 भुजाएँ = 8। हर बहुभुज में दोनों गिनतियाँ बराबर होती हैं — सीमा पर चलते हुए हर भुजा ठीक एक नया शीर्ष 'ख़र्च' करती है।",
+          mr: "4 शिरोबिंदू + 4 बाजू = 8. प्रत्येक बहुभुजात दोन्ही संख्या सारख्या — हद्दीवरून चालताना प्रत्येक बाजू नेमका एक नवा शिरोबिंदू 'खर्च' करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A triangle drawn on paper divides the sheet into its interior, its boundary and its exterior. How many parts is that in all?",
+          hi: "काग़ज़ पर खिंचा त्रिभुज पन्ने को अपने अभ्यंतर, सीमा और बहिर्भाग में बाँटता है। कुल कितने भाग हुए?",
+          mr: "कागदावर काढलेला त्रिकोण पानाला त्याचा अंतर्भाग, सीमा आणि बाह्यभाग यांत विभागतो. एकूण किती भाग झाले?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        solution: {
+          en: "Three: the inside, the boundary line itself, and the outside. A point is always in exactly one of them — the boundary is a place of its own, not part of the inside.",
+          hi: "तीन: भीतर, स्वयं सीमा-रेखा, और बाहर। कोई भी बिंदु ठीक इनमें से एक में होता है — सीमा अपनी अलग जगह है, भीतर का हिस्सा नहीं।",
+          mr: "तीन: आतले, स्वतः सीमारेषा, आणि बाहेरचे. कोणताही बिंदू नेमका यांतल्या एकात असतो — सीमा ही स्वतःची वेगळी जागा, आतल्याचा भाग नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Four points are marked, no three in a line. How many line segments join them pair by pair?",
+          hi: "चार बिंदु अंकित हैं, कोई तीन एक रेखा में नहीं। जोड़ी-जोड़ी उन्हें कितने रेखाखंड जोड़ेंगे?",
+          mr: "चार बिंदू काढले आहेत, कोणतेही तीन एका रेषेत नाहीत. जोडीजोडीने त्यांना किती रेषाखंड जोडतील?",
+        },
+        answer: 6,
+        wrong: [4, 8, 12],
+        checkExpr: "4*3/2",
+        solution: {
+          en: "Each of the 4 points pairs with 3 others — 4 × 3 = 12 — but that counts every segment from both its ends, so halve it: 6 segments (a quadrilateral's 4 sides plus its 2 diagonals). 12 forgets that AB and BA are one segment.",
+          hi: "चारों में से हर बिंदु 3 और से जोड़ी बनाता है — 4 × 3 = 12 — पर यह हर खंड को दोनों सिरों से गिनता है, तो आधा कीजिए: 6 खंड (चतुर्भुज की 4 भुजाएँ और 2 विकर्ण)। 12 भूल जाता है कि AB और BA एक ही खंड हैं।",
+          mr: "चारांतला प्रत्येक बिंदू 3 इतरांशी जोडी करतो — 4 × 3 = 12 — पण हे प्रत्येक खंड दोन्ही टोकांनी मोजते, म्हणून अर्धे करा: 6 खंड (चौकोनाच्या 4 बाजू अधिक 2 कर्ण). 12 विसरते की AB आणि BA एकच खंड.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Five friends stand so that no three are in a line, and every pair stretches one string between them. How many strings are needed?",
+          hi: "पाँच दोस्त ऐसे खड़े हैं कि कोई तीन एक रेखा में नहीं, और हर जोड़ी अपने बीच एक डोरी तानती है। कितनी डोरियाँ चाहिए?",
+          mr: "पाच मित्र असे उभे आहेत की कोणतेही तीन एका रेषेत नाहीत, आणि प्रत्येक जोडी आपल्यामध्ये एक दोरी ताणते. किती दोऱ्या लागतील?",
+        },
+        answer: 10,
+        wrong: [5, 20, 15],
+        checkExpr: "5*4/2",
+        solution: {
+          en: "Each of 5 friends holds strings to 4 others: 5 × 4 = 20 string-ends, and every string has two ends — 20 ÷ 2 = 10 strings. The same count answers handshakes at a party and matches in a league: pairs of n things are always n(n−1) ÷ 2.",
+          hi: "पाँचों में से हर दोस्त 4 और तक डोरियाँ थामता है: 5 × 4 = 20 डोरी-सिरे, और हर डोरी के दो सिरे — 20 ÷ 2 = 10 डोरियाँ। यही गिनती दावत के हाथ-मिलान और लीग के मैच गिनती है: n चीज़ों की जोड़ियाँ हमेशा n(n−1) ÷ 2 होती हैं।",
+          mr: "पाचांतला प्रत्येक मित्र 4 इतरांपर्यंत दोऱ्या धरतो: 5 × 4 = 20 दोरी-टोके, आणि प्रत्येक दोरीला दोन टोके — 20 ÷ 2 = 10 दोऱ्या. हीच मोजणी मेजवानीतले हस्तांदोलन आणि लीगमधले सामने मोजते: n गोष्टींच्या जोड्या नेहमी n(n−1) ÷ 2.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 4 — Basic Geometrical Ideas",
+      name: "Basic Geometrical Ideas",
+      slug: "maths-6-basic-geometrical-ideas",
+      summary: "Points, segments, rays and what they build — parallel rails, champion chords, and the string-count that also counts handshakes.",
+      position: 4,
+      translations: {
+        hi: {
+          name: "आधारभूत ज्यामितीय अवधारणाएँ",
+          summary: "बिंदु, रेखाखंड, किरणें और उनसे बनता संसार — समांतर पटरियाँ, सरताज जीवाएँ, और वह डोरी-गिनती जो हाथ-मिलान भी गिनती है।",
+        },
+        mr: {
+          name: "मूलभूत भौमितिक संकल्पना",
+          summary: "बिंदू, रेषाखंड, किरण आणि त्यांतून उभे जग — समांतर रूळ, शिरोमणी जीवा, आणि हस्तांदोलनेही मोजणारी दोरी-मोजणी.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 5 — Understanding Elementary Shapes (angles, triangles, solids)   */
+/* ------------------------------------------------------------------------- */
+function elementaryShapes(): TopicFileOut {
+  const rand = rng("maths-6-elementary-shapes");
+  const qs: OutQuestion[] = [];
+
+  const deg = (n: number) => ({ en: `${n}°`, hi: `${n}°`, mr: `${n}°` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "At 9 o'clock, what angle do the clock's hands make?",
+          hi: "9 बजे घड़ी की सुइयाँ कौन-सा कोण बनाती हैं?",
+          mr: "9 वाजता घड्याळाचे काटे कोणता कोन करतात?",
+        },
+        answer: 90,
+        wrong: [180, 45, 270],
+        checkExpr: "30*3",
+        fmt: deg,
+        solution: {
+          en: "From 12 back to 9 is three hour-steps of 30° each: a right angle of 90°. The clock shows right angles twice on the hour — at 3 and at 9.",
+          hi: "12 से 9 तक 30°-30° के तीन घंटा-क़दम: 90° का समकोण। घड़ी पूरे घंटों पर दो बार समकोण दिखाती है — 3 और 9 बजे।",
+          mr: "12 पासून 9 पर्यंत 30°-30° ची तीन तास-पावले: 90° चा काटकोन. घड्याळ पूर्ण तासांना दोनदा काटकोन दाखवते — 3 आणि 9 वाजता.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many right angles fit in one straight angle?",
+          hi: "एक ऋजु (सीधे) कोण में कितने समकोण समाते हैं?",
+          mr: "एका सरळ कोनात किती काटकोन मावतात?",
+        },
+        answer: 2,
+        wrong: [1, 4, 3],
+        checkExpr: "180/90",
+        solution: {
+          en: "A straight angle is 180° and a right angle 90°: exactly 2 fit — the corner of a book laid twice makes a flat line. 4 fills the whole turn, not the straight one.",
+          hi: "ऋजु कोण 180° और समकोण 90°: ठीक 2 समाते हैं — किताब का कोना दो बार रखने पर सीधी रेखा बनती है। 4 पूरे चक्कर को भरता है, ऋजु को नहीं।",
+          mr: "सरळ कोन 180° आणि काटकोन 90°: नेमके 2 मावतात — पुस्तकाचा कोपरा दोनदा ठेवला की सरळ रेषा होते. 4 पूर्ण फेरी भरते, सरळ कोन नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A scalene triangle has how many EQUAL sides?",
+          hi: "विषमबाहु त्रिभुज की कितनी बराबर भुजाएँ होती हैं?",
+          mr: "विषमभुज त्रिकोणाच्या किती बाजू सारख्या असतात?",
+        },
+        answer: 0,
+        wrong: [2, 3, 1],
+        solution: {
+          en: "Scalene means all three sides differ — 0 equal pairs. Two equal sides make it isosceles; three make it equilateral: the triangle family sorted by equality.",
+          hi: "विषमबाहु यानी तीनों भुजाएँ अलग — 0 बराबर। दो बराबर हों तो समद्विबाहु; तीनों बराबर तो समबाहु: बराबरी से छँटा त्रिभुज-परिवार।",
+          mr: "विषमभुज म्हणजे तिन्ही बाजू वेगळ्या — 0 सारख्या. दोन सारख्या तर समद्विभुज; तिन्ही सारख्या तर समभुज: समानतेने लावलेले त्रिकोण-कुटुंब.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Which of these could be the measure of an ACUTE angle?",
+          hi: "इनमें से कौन-सा माप न्यून कोण का हो सकता है?",
+          mr: "यांपैकी कोणते माप लघुकोनाचे असू शकते?",
+        },
+        answer: 35,
+        wrong: [90, 120, 180],
+        fmt: deg,
+        solution: {
+          en: "Acute lives strictly below 90°: 35° qualifies. 90° is right, 120° obtuse, 180° straight — each band of degrees has its own name.",
+          hi: "न्यून कोण 90° से नीचे ही बसता है: 35° ठीक है। 90° समकोण, 120° अधिक, 180° ऋजु — अंशों की हर पट्टी का अपना नाम है।",
+          mr: "लघुकोन 90° च्या खालीच राहतो: 35° बरोबर. 90° काटकोन, 120° विशाल, 180° सरळ — अंशांच्या प्रत्येक पट्ट्याला स्वतःचे नाव.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many FLAT faces does a cylinder have?",
+          hi: "बेलन के कितने चपटे फलक होते हैं?",
+          mr: "दंडगोलाला किती सपाट पृष्ठे असतात?",
+        },
+        answer: 2,
+        wrong: [1, 3, 0],
+        solution: {
+          en: "The two circular ends are flat; the side is one curved wrap. A tin of ghee shows it: two lids' worth of flat, one label's worth of curve.",
+          hi: "दोनों गोल सिरे चपटे हैं; बग़ल एक घुमावदार लपेट है। घी का डिब्बा यही दिखाता है: दो ढक्कनों जितना चपटा, एक लेबल जितना घुमाव।",
+          mr: "दोन्ही गोल टोके सपाट; बाजू एक वक्र गुंडाळी. तुपाचा डबा हेच दाखवतो: दोन झाकणांइतके सपाट, एका लेबलाइतका वक्र.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A REFLEX angle opens past the straight line. Which of these is reflex?",
+          hi: "प्रतिवर्ती कोण सीधी रेखा के पार खुलता है। इनमें से प्रतिवर्ती कौन-सा है?",
+          mr: "प्रविशाल कोन सरळ रेषेच्या पलीकडे उघडतो. यांपैकी प्रविशाल कोणता?",
+        },
+        answer: 200,
+        wrong: [90, 45, 180],
+        fmt: deg,
+        solution: {
+          en: "Reflex means between 180° and 360°: 200° qualifies — the angle you turn through when you look 'the long way round'. 180° itself is exactly straight, on the border but not past it.",
+          hi: "प्रतिवर्ती यानी 180° और 360° के बीच: 200° ठीक है — वह कोण जो 'लंबे रास्ते से' मुड़ने पर बनता है। 180° ठीक ऋजु है — सीमा पर, पार नहीं।",
+          mr: "प्रविशाल म्हणजे 180° आणि 360° च्या मध्ये: 200° बरोबर — 'लांबच्या वाटेने' वळताना होणारा कोन. 180° नेमका सरळ — सीमेवर, पलीकडे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "How many vertices (pointed corners) does a cone have?",
+          hi: "शंकु के कितने शीर्ष (नुकीले कोने) होते हैं?",
+          mr: "शंकूला किती शिरोबिंदू (टोकदार कोपरे) असतात?",
+        },
+        answer: 1,
+        wrong: [0, 2, 3],
+        solution: {
+          en: "One — the tip where the ice-cream cone comes to its point. Its other end is a circular edge, not a corner; a cylinder, by contrast, has no vertex at all.",
+          hi: "एक — वह नोक जहाँ आइसक्रीम का कोन सिमटता है। दूसरा सिरा गोल किनारा है, कोना नहीं; बेलन के पास तो कोई शीर्ष है ही नहीं।",
+          mr: "एक — आइस्क्रीमचा कोन जिथे निमुळता होतो ते टोक. दुसरे टोक गोल कड आहे, कोपरा नव्हे; दंडगोलाला तर शिरोबिंदूच नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A set-square's three angles are 90°, 60° and one more. Given that a triangle's angles total 180°, what is the third?",
+          hi: "सेट-स्क्वायर के तीन कोण 90°, 60° और एक और हैं। त्रिभुज के कोणों का योग 180° होता है — तीसरा कितना?",
+          mr: "सेट-स्क्वेअरचे तीन कोन 90°, 60° आणि आणखी एक. त्रिकोणाच्या कोनांची बेरीज 180° असते — तिसरा किती?",
+        },
+        answer: 30,
+        wrong: [45, 60, 90],
+        checkExpr: "180-90-60",
+        solution: {
+          en: "180 − 90 − 60 = 30°. The other set-square in the box is the 45-45-90 — two tools that together draw most of the angles a draughtsman needs.",
+          hi: "180 − 90 − 60 = 30°। डिब्बे का दूसरा सेट-स्क्वायर 45-45-90 वाला है — दो औज़ार जो मिलकर नक़्शानवीस के काम के लगभग सारे कोण खींच देते हैं।",
+          mr: "180 − 90 − 60 = 30°. पेटीतला दुसरा सेट-स्क्वेअर 45-45-90 चा — दोन हत्यारे मिळून आरेखकाला लागणारे बहुतेक कोन काढतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "How many FLAT faces does a sphere have?",
+          hi: "गोले के कितने चपटे फलक होते हैं?",
+          mr: "गोलाला किती सपाट पृष्ठे असतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 6],
+        solution: {
+          en: "None — a sphere is one unbroken curved surface, no flat patch, no edge, no vertex. That is why a ball rolls every way equally and a dice must be tumbled.",
+          hi: "एक भी नहीं — गोला एक अटूट घुमावदार सतह है: न चपटा टुकड़ा, न किनारा, न शीर्ष। इसीलिए गेंद हर दिशा में एक-सी लुढ़कती है और पासे को पलटना पड़ता है।",
+          mr: "एकही नाही — गोल म्हणजे एक अखंड वक्र पृष्ठभाग: सपाट तुकडा नाही, कड नाही, शिरोबिंदू नाही. म्हणूनच चेंडू प्रत्येक दिशेला सारखा घरंगळतो आणि फासा उलथावा लागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "From 12:00 to 12:30 the MINUTE hand sweeps half the face. Through how many degrees does the HOUR hand move in that half hour?",
+          hi: "12:00 से 12:30 तक मिनट की सुई आधा चेहरा घूमती है। उसी आधे घंटे में घंटे की सुई कितने अंश चलती है?",
+          mr: "12:00 ते 12:30 मिनिट-काटा अर्धे तोंड फिरतो. त्याच अर्ध्या तासात तास-काटा किती अंश फिरतो?",
+        },
+        answer: 15,
+        wrong: [30, 180, 6],
+        checkExpr: "30/2",
+        fmt: deg,
+        solution: {
+          en: "The hour hand covers one number — 30° — in a full hour, so half an hour moves it 15°: that is why at 12:30 it points midway between 12 and 1. 180 is the minute hand's sweep; the two hands live at different speeds.",
+          hi: "घंटे की सुई पूरे घंटे में एक अंक — 30° — चलती है, तो आधे घंटे में 15°: इसीलिए 12:30 पर वह 12 और 1 के बीचोबीच होती है। 180 मिनट की सुई की दौड़ है; दोनों सुइयाँ अलग-अलग रफ़्तार जीती हैं।",
+          mr: "तास-काटा पूर्ण तासात एक आकडा — 30° — फिरतो, म्हणून अर्ध्या तासात 15°: म्हणूनच 12:30 ला तो 12 आणि 1 च्या मधोमध असतो. 180 ही मिनिट-काट्याची दौड; दोन्ही काटे वेगवेगळ्या वेगांनी जगतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A hexagon has 6 vertices. From all of them together, how many DIAGONALS can be drawn (segments joining non-neighbours)?",
+          hi: "षट्भुज के 6 शीर्ष हैं। उन सबसे मिलाकर कितने विकर्ण खिंच सकते हैं (ग़ैर-पड़ोसियों को जोड़ते खंड)?",
+          mr: "षट्कोनाला 6 शिरोबिंदू आहेत. त्या साऱ्यांतून मिळून किती कर्ण काढता येतील (शेजारी नसलेल्यांना जोडणारे खंड)?",
+        },
+        answer: 9,
+        wrong: [6, 15, 12],
+        checkExpr: "6*3/2",
+        solution: {
+          en: "Each vertex reaches 3 non-neighbours (all 5 others minus its 2 neighbours): 6 × 3 = 18 ends, halved for double counting — 9 diagonals. 15 counts ALL segments including the 6 sides; a diagonal must skip past a neighbour.",
+          hi: "हर शीर्ष 3 ग़ैर-पड़ोसियों तक पहुँचता है (बाक़ी 5 में से 2 पड़ोसी घटाकर): 6 × 3 = 18 सिरे, दोहरी गिनती के लिए आधे — 9 विकर्ण। 15 भुजाओं समेत सारे खंड गिन लेता है; विकर्ण को पड़ोसी लाँघना ही होता है।",
+          mr: "प्रत्येक शिरोबिंदू 3 गैर-शेजाऱ्यांपर्यंत पोहोचतो (उरलेल्या 5 मधून 2 शेजारी वजा): 6 × 3 = 18 टोके, दुहेरी मोजणीसाठी अर्धी — 9 कर्ण. 15 बाजूंसह सारे खंड मोजते; कर्णाला शेजारी ओलांडावाच लागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 5 — Understanding Elementary Shapes",
+      name: "Understanding Elementary Shapes",
+      slug: "maths-6-elementary-shapes",
+      summary: "Angles named band by band, triangles sorted by equality, solids felt face by face — and the slow hour hand caught moving.",
+      position: 5,
+      translations: {
+        hi: {
+          name: "प्रारंभिक आकारों को समझना",
+          summary: "पट्टी-दर-पट्टी नामी कोण, बराबरी से छँटे त्रिभुज, फलक-दर-फलक परखे ठोस — और चलती पकड़ी गई धीमी घंटा-सुई।",
+        },
+        mr: {
+          name: "प्राथमिक आकार समजून घेणे",
+          summary: "पट्ट्यापट्ट्याने नावे दिलेले कोन, समानतेने लावलेले त्रिकोण, पृष्ठापृष्ठाने चाचपलेले घन — आणि फिरताना पकडलेला संथ तास-काटा.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Algebra (letters that stand for numbers)                     */
+/* ------------------------------------------------------------------------- */
+function algebra6(): TopicFileOut {
+  const rand = rng("maths-6-algebra");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Each letter L in a matchstick pattern takes 2 sticks, so n letters take 2n sticks. How many sticks for n = 7?",
+          hi: "माचिस-पैटर्न में हर अक्षर L में 2 तीलियाँ लगती हैं, तो n अक्षरों में 2n तीलियाँ। n = 7 के लिए कितनी तीलियाँ?",
+          mr: "काडेपेटी-नमुन्यात प्रत्येक L अक्षराला 2 काड्या लागतात, म्हणून n अक्षरांना 2n काड्या. n = 7 साठी किती काड्या?",
+        },
+        answer: 14,
+        wrong: [9, 27, 7],
+        checkExpr: "2*7",
+        solution: {
+          en: "2n means 2 × n: 2 × 7 = 14 sticks. 27 glues the digits together — the letter beside a number always means multiply, never sit-beside.",
+          hi: "2n यानी 2 × n: 2 × 7 = 14 तीलियाँ। 27 अंकों को चिपका देता है — संख्या के बग़ल का अक्षर हमेशा गुणा कहता है, अग़ल-बग़ल बैठना नहीं।",
+          mr: "2n म्हणजे 2 × n: 2 × 7 = 14 काड्या. 27 अंक चिकटवते — संख्येशेजारचे अक्षर नेहमी गुणाकार सांगते, शेजारी बसणे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "If x = 5, what is x + 3?",
+          hi: "यदि x = 5, तो x + 3 कितना है?",
+          mr: "x = 5 असेल, तर x + 3 किती?",
+        },
+        answer: 8,
+        wrong: [53, 2, 15],
+        checkExpr: "5+3",
+        solution: {
+          en: "Put 5 in x's place: 5 + 3 = 8. The letter is a box holding a number — open the box and calculate as always. 53 writes the two side by side.",
+          hi: "x की जगह 5 रखिए: 5 + 3 = 8। अक्षर संख्या थामे एक डिब्बा है — डिब्बा खोलिए और हमेशा की तरह हिसाब कीजिए। 53 दोनों को अग़ल-बग़ल लिख देता है।",
+          mr: "x च्या जागी 5 ठेवा: 5 + 3 = 8. अक्षर म्हणजे संख्या धरलेली पेटी — पेटी उघडा आणि नेहमीसारखा हिशेब करा. 53 दोघांना शेजारी लिहिते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A square of side a has perimeter 4a. What is the perimeter when a = 6?",
+          hi: "a भुजा वाले वर्ग की परिमिति 4a है। a = 6 पर परिमिति कितनी?",
+          mr: "a बाजूच्या चौरसाची परिमिती 4a. a = 6 असता परिमिती किती?",
+        },
+        answer: 24,
+        wrong: [10, 46, 36],
+        checkExpr: "4*6",
+        solution: {
+          en: "4a = 4 × 6 = 24 — the formula walks all four sides at once, whatever a turns out to be. 36 squares the side, which is area's business.",
+          hi: "4a = 4 × 6 = 24 — सूत्र चारों भुजाएँ एक साथ चल लेता है, a जो भी निकले। 36 भुजा का वर्ग है — वह क्षेत्रफल का काम है।",
+          mr: "4a = 4 × 6 = 24 — सूत्र चारही बाजू एकदम चालते, a काहीही निघो. 36 बाजूचा वर्ग — ते क्षेत्रफळाचे काम.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "If y = 4, what is 3y?",
+          hi: "यदि y = 4, तो 3y कितना है?",
+          mr: "y = 4 असेल, तर 3y किती?",
+        },
+        answer: 12,
+        wrong: [34, 7, 43],
+        checkExpr: "3*4",
+        solution: {
+          en: "3y is 3 × y = 3 × 4 = 12. 7 adds; 34 and 43 paste digits. The invisible multiplication sign is algebra's first habit to learn.",
+          hi: "3y यानी 3 × y = 3 × 4 = 12। 7 जोड़ देता है; 34 और 43 अंक चिपकाते हैं। अदृश्य गुणा-चिह्न बीजगणित की पहली सीखने लायक़ आदत है।",
+          mr: "3y म्हणजे 3 × y = 3 × 4 = 12. 7 मिळवते; 34 आणि 43 अंक चिकटवतात. अदृश्य गुणाकार-चिन्ह ही बीजगणिताची पहिली शिकण्याजोगी सवय.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A parade has 5 rows of cadets with r cadets in each row — 5r in all. How many cadets when r = 9?",
+          hi: "परेड में कैडेटों की 5 पंक्तियाँ हैं, हर पंक्ति में r कैडेट — कुल 5r। r = 9 पर कितने कैडेट?",
+          mr: "संचलनात कॅडेटांच्या 5 रांगा आहेत, प्रत्येक रांगेत r कॅडेट — एकूण 5r. r = 9 असता किती कॅडेट?",
+        },
+        answer: 45,
+        wrong: [14, 59, 95],
+        checkExpr: "5*9",
+        solution: {
+          en: "5r = 5 × 9 = 45 cadets. The rule 5r was written before anyone knew r — that is algebra's power: one formula, every possible parade.",
+          hi: "5r = 5 × 9 = 45 कैडेट। नियम 5r तब लिखा गया जब r कोई नहीं जानता था — यही बीजगणित की ताक़त है: एक सूत्र, हर मुमकिन परेड।",
+          mr: "5r = 5 × 9 = 45 कॅडेट. नियम 5r तेव्हा लिहिला गेला जेव्हा r कोणालाच ठाऊक नव्हता — हीच बीजगणिताची ताकद: एक सूत्र, प्रत्येक शक्य संचलन.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Solve: x + 7 = 12. What is x?",
+          hi: "हल कीजिए: x + 7 = 12। x क्या है?",
+          mr: "सोडवा: x + 7 = 12. x किती?",
+        },
+        answer: 5,
+        wrong: [19, 7, 84],
+        checkExpr: "12-7",
+        solution: {
+          en: "Undo the +7 by subtracting: x = 12 − 7 = 5, and checking, 5 + 7 = 12. 19 adds the 7 again — to unwrap an equation, do the OPPOSITE of what was done to x.",
+          hi: "+7 को घटाकर खोलिए: x = 12 − 7 = 5, और जाँच में 5 + 7 = 12। 19 सात दोबारा जोड़ देता है — समीकरण खोलने को वही उलटा कीजिए जो x के साथ हुआ था।",
+          mr: "+7 वजा करून उलगडा: x = 12 − 7 = 5, आणि तपासणीत 5 + 7 = 12. 19 सात पुन्हा मिळवते — समीकरण उलगडायला x शी जे झाले त्याच्या उलटे करा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Solve: 4m = 28. What is m?",
+          hi: "हल कीजिए: 4m = 28। m क्या है?",
+          mr: "सोडवा: 4m = 28. m किती?",
+        },
+        answer: 7,
+        wrong: [24, 32, 112],
+        checkExpr: "28/4",
+        solution: {
+          en: "Undo the ×4 by dividing: m = 28 ÷ 4 = 7; check 4 × 7 = 28. 24 subtracts the 4 — but m was multiplied, so only division sets it free.",
+          hi: "×4 को भाग से खोलिए: m = 28 ÷ 4 = 7; जाँच 4 × 7 = 28। 24 चार घटाता है — पर m गुणा हुआ था, तो उसे केवल भाग ही आज़ाद करता है।",
+          mr: "×4 भागाकाराने उलगडा: m = 28 ÷ 4 = 7; तपासणी 4 × 7 = 28. 24 चार वजा करते — पण m गुणला गेला होता, म्हणून त्याला फक्त भागाकारच मोकळे करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Solve: n − 6 = 10. What is n?",
+          hi: "हल कीजिए: n − 6 = 10। n क्या है?",
+          mr: "सोडवा: n − 6 = 10. n किती?",
+        },
+        answer: 16,
+        wrong: [4, 60, 10],
+        checkExpr: "10+6",
+        solution: {
+          en: "Six was taken FROM n, so give it back: n = 10 + 6 = 16; check 16 − 6 = 10. 4 subtracts again, moving the wrong way twice.",
+          hi: "n में से छह लिया गया था, तो लौटाइए: n = 10 + 6 = 16; जाँच 16 − 6 = 10। 4 फिर घटाता है — ग़लत दिशा में दो बार।",
+          mr: "n मधून सहा घेतले होते, म्हणून परत द्या: n = 10 + 6 = 16; तपासणी 16 − 6 = 10. 4 पुन्हा वजा करते — चुकीच्या दिशेने दोनदा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Sarita has x marbles and her brother has x + 10. If x = 14, how many does the brother have?",
+          hi: "सरिता के पास x कंचे हैं और भाई के पास x + 10। यदि x = 14, भाई के पास कितने?",
+          mr: "सरिताकडे x गोट्या आहेत आणि भावाकडे x + 10. x = 14 असेल, तर भावाकडे किती?",
+        },
+        answer: 24,
+        wrong: [14, 10, 140],
+        checkExpr: "14+10",
+        solution: {
+          en: "x + 10 = 14 + 10 = 24 marbles. The expression 'x + 10' said the RELATIONSHIP — ten more than Sarita, whatever she has — before either count was known.",
+          hi: "x + 10 = 14 + 10 = 24 कंचे। व्यंजक 'x + 10' ने रिश्ता कहा था — सरिता से दस ज़्यादा, उसके पास जो भी हो — किसी की भी गिनती जानने से पहले।",
+          mr: "x + 10 = 14 + 10 = 24 गोट्या. 'x + 10' या पदावलीने नाते सांगितले होते — सरिताहून दहा जास्त, तिच्याकडे काहीही असो — कोणाचीही संख्या ठाऊक होण्याआधी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Solve: 2x + 3 = 13. What is x?",
+          hi: "हल कीजिए: 2x + 3 = 13। x क्या है?",
+          mr: "सोडवा: 2x + 3 = 13. x किती?",
+        },
+        answer: 5,
+        wrong: [8, 10, 6],
+        checkExpr: "(13-3)/2",
+        solution: {
+          en: "Unwrap in reverse order: first take away the +3 (2x = 10), then undo the ×2 (x = 5); check 2 × 5 + 3 = 13. 8 divides before subtracting — the last thing done to x is the first to undo.",
+          hi: "उलटे क्रम में खोलिए: पहले +3 हटाइए (2x = 10), फिर ×2 खोलिए (x = 5); जाँच 2 × 5 + 3 = 13। 8 घटाने से पहले भाग देता है — x के साथ जो आख़िर में हुआ, वही पहले खुलता है।",
+          mr: "उलट्या क्रमाने उलगडा: आधी +3 काढा (2x = 10), मग ×2 उलगडा (x = 5); तपासणी 2 × 5 + 3 = 13. 8 वजा करण्याआधी भागते — x शी शेवटी जे झाले, तेच आधी उलगडायचे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A trick: think of ANY number, double it, add 8, halve the result, then subtract your original number. What is left — always?",
+          hi: "एक तरकीब: कोई भी संख्या सोचिए, दुगनी कीजिए, 8 जोड़िए, आधा कीजिए, फिर अपनी मूल संख्या घटाइए। हमेशा क्या बचता है?",
+          mr: "एक युक्ती: कोणतीही संख्या मनात धरा, दुप्पट करा, 8 मिळवा, अर्धे करा, मग आपली मूळ संख्या वजा करा. नेहमी काय उरते?",
+        },
+        answer: 4,
+        wrong: [8, 0, 2],
+        checkExpr: "8/2",
+        solution: {
+          en: "Let the thought number be x: doubling gives 2x, adding 8 gives 2x + 8, halving gives x + 4, and subtracting x leaves… 4, for every x alive. The 'magic' is algebra in costume: the x enters, rides along, and cancels itself out — only half the 8 survives the trip.",
+          hi: "सोची संख्या x मानिए: दुगना 2x, आठ जोड़कर 2x + 8, आधा करके x + 4, और x घटाने पर बचता है… 4 — हर x के लिए। 'जादू' वेश बदला बीजगणित है: x आता है, साथ चलता है, और ख़ुद को काट देता है — सफ़र से बस 8 का आधा बचकर निकलता है।",
+          mr: "मनातली संख्या x माना: दुप्पट 2x, आठ मिळवून 2x + 8, अर्धे करून x + 4, आणि x वजा केल्यावर उरते… 4 — प्रत्येक x साठी. 'जादू' म्हणजे वेष बदललेले बीजगणित: x येतो, सोबत चालतो, आणि स्वतःला कापून घेतो — प्रवासातून फक्त 8 चा अर्धा वाचून निघतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 11 — Algebra",
+      name: "Algebra",
+      slug: "maths-6-algebra",
+      summary: "Letters standing for numbers — matchstick rules, equations unwrapped in reverse, and the think-of-a-number trick unmasked as x.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "बीजगणित",
+          summary: "संख्याओं की जगह खड़े अक्षर — माचिस के नियम, उलटे क्रम में खुलते समीकरण, और x के रूप में बेनक़ाब संख्या-सोचो तरकीब।",
+        },
+        mr: {
+          name: "बीजगणित",
+          summary: "संख्यांच्या जागी उभी अक्षरे — काडेपेटीचे नियम, उलट्या क्रमाने उलगडणारी समीकरणे, आणि x म्हणून उघडी पडलेली संख्या-धरा युक्ती.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G6_MATHS: TopicFileOut[] = [
   knowingOurNumbers(),
+  wholeNumbers(),
   playingWithNumbers(),
+  basicGeometricalIdeas(),
+  elementaryShapes(),
   integers(),
   fractions6(),
   decimals6(),
+  algebra6(),
   ratioAndProportion(),
 ];

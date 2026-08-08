@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 2 — Whole Numbers",
+  "name": "Whole Numbers",
+  "slug": "maths-6-whole-numbers",
+  "summary": "Zero joins the numbers, and the laws — commutative, associative, distributive — turn long sums into short ones.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "पूर्ण संख्याएँ",
+      "summary": "शून्य संख्याओं में शामिल होता है, और नियम — क्रम-विनिमेय, साहचर्य, वितरण — लंबे हिसाबों को छोटा कर देते हैं।"
+    },
+    "mr": {
+      "name": "पूर्ण संख्या",
+      "summary": "शून्य संख्यांत सामील होतो, आणि नियम — क्रमनिरपेक्ष, साहचर्य, वितरण — लांब हिशेब आखूड करतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the smallest whole number?",
+      "choices": [
+        "0",
+        "-1",
+        "1",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Whole numbers begin at 0 — the naturals' 1, 2, 3… with zero welcomed in. −1 belongs to the integers, one chapter later.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सबसे छोटी पूर्ण संख्या कौन-सी है?",
+          "choices": [
+            "0",
+            "-1",
+            "1",
+            "2"
+          ],
+          "solution": "पूर्ण संख्याएँ 0 से शुरू होती हैं — प्राकृत 1, 2, 3… में शून्य का स्वागत। −1 पूर्णांकों का है, एक अध्याय बाद।"
+        },
+        "mr": {
+          "stem": "सर्वांत लहान पूर्ण संख्या कोणती?",
+          "choices": [
+            "0",
+            "-1",
+            "1",
+            "2"
+          ],
+          "solution": "पूर्ण संख्या 0 पासून सुरू होतात — नैसर्गिक 1, 2, 3… मध्ये शून्याचे स्वागत. −1 पूर्णांकांचा, एक प्रकरण नंतर."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the predecessor of 1000?",
+      "choices": [
+        "1001",
+        "100",
+        "999",
+        "990"
+      ],
+      "answerIndex": 2,
+      "solution": "One step back: 1000 − 1 = 999 — the thousand unrolls into three nines. 1001 walks forward to the successor instead.",
+      "checkExpr": "1000-1",
+      "translations": {
+        "hi": {
+          "stem": "1000 की पूर्ववर्ती (पिछली) संख्या क्या है?",
+          "choices": [
+            "1001",
+            "100",
+            "999",
+            "990"
+          ],
+          "solution": "एक क़दम पीछे: 1000 − 1 = 999 — हज़ार खुलकर तीन नौ बन जाता है। 1001 आगे बढ़कर परवर्ती पर पहुँच जाता है।"
+        },
+        "mr": {
+          "stem": "1000 ची मागील संख्या कोणती?",
+          "choices": [
+            "1001",
+            "100",
+            "999",
+            "990"
+          ],
+          "solution": "एक पाऊल मागे: 1000 − 1 = 999 — हजार उलगडून तीन नऊ होतो. 1001 पुढे जाऊन पुढील संख्येवर पोहोचते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 17 + 0?",
+      "choices": [
+        "18",
+        "17",
+        "0",
+        "170"
+      ],
+      "answerIndex": 1,
+      "solution": "Adding zero changes nothing: 17 + 0 = 17 — zero is addition's identity, the guest who eats nothing. 170 multiplies by ten instead.",
+      "checkExpr": "17+0",
+      "translations": {
+        "hi": {
+          "stem": "17 + 0 कितना है?",
+          "choices": [
+            "18",
+            "17",
+            "0",
+            "170"
+          ],
+          "solution": "शून्य जोड़ने से कुछ नहीं बदलता: 17 + 0 = 17 — शून्य जोड़ का तत्समक है, वह मेहमान जो कुछ नहीं खाता। 170 दस से गुणा कर बैठता है।"
+        },
+        "mr": {
+          "stem": "17 + 0 किती?",
+          "choices": [
+            "18",
+            "17",
+            "0",
+            "170"
+          ],
+          "solution": "शून्य मिळवल्याने काही बदलत नाही: 17 + 0 = 17 — शून्य बेरजेचा अविकारक, काहीही न खाणारा पाहुणा. 170 दहाने गुणते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 25 × 1?",
+      "choices": [
+        "26",
+        "1",
+        "25",
+        "251"
+      ],
+      "answerIndex": 2,
+      "solution": "Multiplying by one changes nothing: 25 × 1 = 25 — one is multiplication's identity, as zero is addition's. 26 adds the one instead.",
+      "checkExpr": "25*1",
+      "translations": {
+        "hi": {
+          "stem": "25 × 1 कितना है?",
+          "choices": [
+            "26",
+            "1",
+            "25",
+            "251"
+          ],
+          "solution": "एक से गुणा करने पर कुछ नहीं बदलता: 25 × 1 = 25 — एक गुणा का तत्समक है, जैसे शून्य जोड़ का। 26 एक को जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "25 × 1 किती?",
+          "choices": [
+            "26",
+            "1",
+            "25",
+            "251"
+          ],
+          "solution": "एकने गुणल्याने काही बदलत नाही: 25 × 1 = 25 — एक हा गुणाकाराचा अविकारक, जसा शून्य बेरजेचा. 26 एक मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "To find 4 × 1768 × 25 quickly, pair the easy two first. What is 4 × 25?",
+      "choices": [
+        "29",
+        "100",
+        "1768",
+        "425"
+      ],
+      "answerIndex": 1,
+      "solution": "4 × 25 = 100, and then 100 × 1768 = 1,76,800 in one breath. The commutative law lets factors change partners — always marry the pair that makes a hundred.",
+      "checkExpr": "4*25",
+      "translations": {
+        "hi": {
+          "stem": "4 × 1768 × 25 झटपट निकालने के लिए पहले आसान जोड़ी बनाइए। 4 × 25 क्या है?",
+          "choices": [
+            "29",
+            "100",
+            "1768",
+            "425"
+          ],
+          "solution": "4 × 25 = 100, और फिर 100 × 1768 = 1,76,800 एक साँस में। क्रम-विनिमेय नियम गुणनखंडों को जोड़ीदार बदलने देता है — हमेशा वही जोड़ी बनाइए जो सौ बनाए।"
+        },
+        "mr": {
+          "stem": "4 × 1768 × 25 झटपट काढायला आधी सोपी जोडी करा. 4 × 25 किती?",
+          "choices": [
+            "29",
+            "100",
+            "1768",
+            "425"
+          ],
+          "solution": "4 × 25 = 100, आणि मग 100 × 1768 = 1,76,800 एका दमात. क्रमनिरपेक्ष नियम अवयवांना जोडीदार बदलू देतो — नेहमी शंभर करणारी जोडी जुळवा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Use distributivity to find 6 × 105 as 6 × 100 + 6 × 5.",
+      "choices": [
+        "660",
+        "605",
+        "530",
+        "630"
+      ],
+      "answerIndex": 3,
+      "solution": "6 × 100 = 600 and 6 × 5 = 30: together 630. Distributivity splits an awkward number into friendly parts, multiplies each, and re-joins — 605 forgets to multiply the 5's part.",
+      "checkExpr": "6*105",
+      "translations": {
+        "hi": {
+          "stem": "वितरण नियम से 6 × 105 को 6 × 100 + 6 × 5 की तरह निकालिए।",
+          "choices": [
+            "660",
+            "605",
+            "530",
+            "630"
+          ],
+          "solution": "6 × 100 = 600 और 6 × 5 = 30: मिलाकर 630। वितरण नियम अटपटी संख्या को सुविधाजनक हिस्सों में तोड़ता है, हर एक को गुणता है, फिर जोड़ता है — 605 पाँच वाले हिस्से का गुणा भूल जाता है।"
+        },
+        "mr": {
+          "stem": "वितरण नियमाने 6 × 105 हे 6 × 100 + 6 × 5 असे काढा.",
+          "choices": [
+            "660",
+            "605",
+            "530",
+            "630"
+          ],
+          "solution": "6 × 100 = 600 आणि 6 × 5 = 30: मिळून 630. वितरण नियम अवघड संख्या सोयीच्या भागांत फोडतो, प्रत्येकाला गुणतो, पुन्हा जोडतो — 605 पाचाच्या भागाचा गुणाकार विसरते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Add 1962 + 453 + 38 the clever way — group 1962 with 38 first.",
+      "choices": [
+        "2463",
+        "2353",
+        "2443",
+        "2453"
+      ],
+      "answerIndex": 3,
+      "solution": "1962 + 38 = 2000, a round friend, and 2000 + 453 = 2453. Associativity lets addends regroup — spot the pair that completes a round number and the sum does itself.",
+      "checkExpr": "1962+453+38",
+      "translations": {
+        "hi": {
+          "stem": "1962 + 453 + 38 चतुराई से जोड़िए — पहले 1962 को 38 के साथ मिलाइए।",
+          "choices": [
+            "2463",
+            "2353",
+            "2443",
+            "2453"
+          ],
+          "solution": "1962 + 38 = 2000, एक गोल दोस्त, और 2000 + 453 = 2453। साहचर्य नियम जोड़ के पदों को फिर से गुटबद्ध होने देता है — गोल संख्या पूरी करने वाली जोड़ी पकड़िए, योग ख़ुद हो जाता है।"
+        },
+        "mr": {
+          "stem": "1962 + 453 + 38 हुशारीने मिळवा — आधी 1962 ला 38 शी जोडा.",
+          "choices": [
+            "2463",
+            "2353",
+            "2443",
+            "2453"
+          ],
+          "solution": "1962 + 38 = 2000, एक गोल मित्र, आणि 2000 + 453 = 2453. साहचर्य नियम बेरजेच्या पदांना पुन्हा गट करू देतो — गोल संख्या पूर्ण करणारी जोडी हेरा, बेरीज आपोआप होते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "On the number line, start at 3 and make two jumps of +4 each. Where do you land?",
+      "choices": [
+        "7",
+        "11",
+        "10",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "3 → 7 → 11: each jump of 4 is one addition made visible. 7 stops after a single jump — the number line keeps honest count of both.",
+      "checkExpr": "3+4+4",
+      "translations": {
+        "hi": {
+          "stem": "संख्या-रेखा पर 3 से चलकर +4 की दो छलाँगें लगाइए। कहाँ उतरेंगे?",
+          "choices": [
+            "7",
+            "11",
+            "10",
+            "12"
+          ],
+          "solution": "3 → 7 → 11: 4 की हर छलाँग एक दिखता हुआ जोड़ है। 7 एक ही छलाँग पर रुक जाता है — संख्या-रेखा दोनों का ईमानदार हिसाब रखती है।"
+        },
+        "mr": {
+          "stem": "संख्यारेषेवर 3 पासून +4 च्या दोन उड्या मारा. कुठे उतराल?",
+          "choices": [
+            "7",
+            "11",
+            "10",
+            "12"
+          ],
+          "solution": "3 → 7 → 11: 4 ची प्रत्येक उडी म्हणजे एक दिसणारी बेरीज. 7 एकाच उडीवर थांबते — संख्यारेषा दोन्हींचा प्रामाणिक हिशेब ठेवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Find 97 × 8 by treating 97 as (100 − 3).",
+      "choices": [
+        "776",
+        "766",
+        "800",
+        "824"
+      ],
+      "answerIndex": 0,
+      "solution": "(100 − 3) × 8 = 800 − 24 = 776. 800 forgets to give back the 3 eights; 824 adds them instead of subtracting. Numbers near a hundred multiply best by that hundred, minus the small correction.",
+      "checkExpr": "97*8",
+      "translations": {
+        "hi": {
+          "stem": "97 को (100 − 3) मानकर 97 × 8 निकालिए।",
+          "choices": [
+            "776",
+            "766",
+            "800",
+            "824"
+          ],
+          "solution": "(100 − 3) × 8 = 800 − 24 = 776। 800 तीन आठों को लौटाना भूल जाता है; 824 घटाने की जगह जोड़ देता है। सौ के पास की संख्याएँ उसी सौ से, छोटे सुधार समेत, सबसे अच्छा गुणा होती हैं।"
+        },
+        "mr": {
+          "stem": "97 ला (100 − 3) मानून 97 × 8 काढा.",
+          "choices": [
+            "776",
+            "766",
+            "800",
+            "824"
+          ],
+          "solution": "(100 − 3) × 8 = 800 − 24 = 776. 800 तीन आठ परत द्यायला विसरते; 824 वजा करण्याऐवजी मिळवते. शंभराजवळच्या संख्या त्याच शंभराने, लहान दुरुस्तीसह, सर्वोत्तम गुणल्या जातात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Add the first five whole numbers: 0 + 1 + 2 + 3 + 4.",
+      "choices": [
+        "10",
+        "5",
+        "15",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "Pair the ends: 0 + 4 and 1 + 3 make two fours, plus the lone 2: 4 + 4 + 2 = 10. 15 sums 1 to 5, forgetting that whole numbers begin at zero.",
+      "checkExpr": "0+1+2+3+4",
+      "translations": {
+        "hi": {
+          "stem": "पहली पाँच पूर्ण संख्याएँ जोड़िए: 0 + 1 + 2 + 3 + 4।",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "9"
+          ],
+          "solution": "सिरों के जोड़े: 0 + 4 और 1 + 3 दो चौके, ऊपर से अकेला 2: 4 + 4 + 2 = 10। 15 एक से पाँच तक जोड़ता है — भूलकर कि पूर्ण संख्याएँ शून्य से शुरू होती हैं।"
+        },
+        "mr": {
+          "stem": "पहिल्या पाच पूर्ण संख्या मिळवा: 0 + 1 + 2 + 3 + 4.",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "9"
+          ],
+          "solution": "टोकांच्या जोड्या: 0 + 4 आणि 1 + 3 म्हणजे दोन चार, शिवाय एकटा 2: 4 + 4 + 2 = 10. 15 एक ते पाच मिळवते — पूर्ण संख्या शून्यापासून सुरू होतात हे विसरून."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A milk vendor sells 32 litres in the morning and 68 litres in the evening, all at ₹45 a litre. Use distributivity — 45 × (32 + 68) — to find the day's earning.",
+      "choices": [
+        "4400",
+        "3060",
+        "1440",
+        "4500"
+      ],
+      "answerIndex": 3,
+      "solution": "32 + 68 = 100 litres, and 45 × 100 = ₹4500 — one clean multiplication instead of two messy ones. 1440 stops at the morning; 3060 at the evening. Distributivity read BACKWARDS is the trick: gather first, multiply once.",
+      "checkExpr": "45*(32+68)",
+      "translations": {
+        "hi": {
+          "stem": "दूधवाला सुबह 32 लीटर और शाम 68 लीटर बेचता है, सब ₹45 प्रति लीटर। वितरण नियम — 45 × (32 + 68) — से दिन की कमाई निकालिए।",
+          "choices": [
+            "4400",
+            "3060",
+            "1440",
+            "4500"
+          ],
+          "solution": "32 + 68 = 100 लीटर, और 45 × 100 = ₹4500 — दो उलझे गुणों की जगह एक साफ़ गुणा। 1440 सुबह पर रुकता है; 3060 शाम पर। उलटा पढ़ा वितरण नियम ही तरकीब है: पहले बटोरिए, एक बार गुणिए।"
+        },
+        "mr": {
+          "stem": "दूधवाला सकाळी 32 लिटर आणि संध्याकाळी 68 लिटर विकतो, सारे ₹45 प्रति लिटर. वितरण नियमाने — 45 × (32 + 68) — दिवसाची कमाई काढा.",
+          "choices": [
+            "4400",
+            "3060",
+            "1440",
+            "4500"
+          ],
+          "solution": "32 + 68 = 100 लिटर, आणि 45 × 100 = ₹4500 — दोन किचकट गुणाकारांऐवजी एक स्वच्छ. 1440 सकाळवर थांबते; 3060 संध्याकाळवर. उलटे वाचलेला वितरण नियम हीच युक्ती: आधी गोळा करा, एकदाच गुणा."
+        }
+      }
+    }
+  ]
+}

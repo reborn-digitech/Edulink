@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 4 — Basic Geometrical Ideas",
+  "name": "Basic Geometrical Ideas",
+  "slug": "maths-6-basic-geometrical-ideas",
+  "summary": "Points, segments, rays and what they build — parallel rails, champion chords, and the string-count that also counts handshakes.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "आधारभूत ज्यामितीय अवधारणाएँ",
+      "summary": "बिंदु, रेखाखंड, किरणें और उनसे बनता संसार — समांतर पटरियाँ, सरताज जीवाएँ, और वह डोरी-गिनती जो हाथ-मिलान भी गिनती है।"
+    },
+    "mr": {
+      "name": "मूलभूत भौमितिक संकल्पना",
+      "summary": "बिंदू, रेषाखंड, किरण आणि त्यांतून उभे जग — समांतर रूळ, शिरोमणी जीवा, आणि हस्तांदोलनेही मोजणारी दोरी-मोजणी."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many end-points does a line SEGMENT have?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "A segment is the piece of a line between two fixed ends — 2 end-points. A full line has none (it runs on both ways) and a ray has exactly one.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रेखाखंड के कितने अंत्य-बिंदु होते हैं?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "रेखाखंड दो जड़े सिरों के बीच की रेखा का टुकड़ा है — 2 अंत्य-बिंदु। पूरी रेखा का कोई नहीं (वह दोनों ओर चलती है) और किरण का ठीक एक।"
+        },
+        "mr": {
+          "stem": "रेषाखंडाला किती अंत्यबिंदू असतात?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "रेषाखंड म्हणजे दोन ठरलेल्या टोकांमधला रेषेचा तुकडा — 2 अंत्यबिंदू. पूर्ण रेषेला एकही नाही (ती दोन्हीकडे धावते) आणि किरणाला नेमका एक."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many end-points does a RAY have?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "A ray starts at one point and runs forever the other way — exactly 1 end-point, like a torch beam from the torch. 2 describes a segment; 0 a full line.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किरण के कितने अंत्य-बिंदु होते हैं?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "किरण एक बिंदु से शुरू होकर दूसरी ओर अनंत तक चलती है — ठीक 1 अंत्य-बिंदु, जैसे टॉर्च से निकलती रोशनी। 2 रेखाखंड की बात है; 0 पूरी रेखा की।"
+        },
+        "mr": {
+          "stem": "किरणाला किती अंत्यबिंदू असतात?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "किरण एका बिंदूपासून सुरू होऊन दुसरीकडे अनंतापर्यंत धावतो — नेमका 1 अंत्यबिंदू, टॉर्चमधून निघणाऱ्या झोतासारखा. 2 रेषाखंडाचे; 0 पूर्ण रेषेचे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Through two distinct points, how many straight lines can be drawn?",
+      "choices": [
+        "3",
+        "1",
+        "0",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Exactly one — two points pin a line down completely. Through a SINGLE point, though, lines pass beyond counting; the second point is what ends the freedom.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो भिन्न बिंदुओं से होकर कितनी सीधी रेखाएँ खींची जा सकती हैं?",
+          "choices": [
+            "3",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "ठीक एक — दो बिंदु रेखा को पूरी तरह जकड़ देते हैं। हाँ, एक अकेले बिंदु से अनगिनत रेखाएँ गुज़रती हैं; आज़ादी दूसरा बिंदु ही ख़त्म करता है।"
+        },
+        "mr": {
+          "stem": "दोन वेगळ्या बिंदूंतून किती सरळ रेषा काढता येतात?",
+          "choices": [
+            "3",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "नेमकी एक — दोन बिंदू रेषेला पूर्ण जखडतात. एकट्या बिंदूतून मात्र अगणित रेषा जातात; स्वातंत्र्य दुसरा बिंदूच संपवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many vertices does a triangle have?",
+      "choices": [
+        "2",
+        "6",
+        "3",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Three sides meet pairwise at 3 corners — vertices. 6 counts sides AND vertices together; they always match in count but are different things.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के कितने शीर्ष होते हैं?",
+          "choices": [
+            "2",
+            "6",
+            "3",
+            "4"
+          ],
+          "solution": "तीन भुजाएँ जोड़ी-जोड़ी 3 कोनों पर मिलती हैं — यही शीर्ष हैं। 6 भुजाएँ और शीर्ष साथ गिन लेता है; गिनती में वे हमेशा बराबर हैं, पर चीज़ें अलग।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाला किती शिरोबिंदू असतात?",
+          "choices": [
+            "2",
+            "6",
+            "3",
+            "4"
+          ],
+          "solution": "तीन बाजू जोडीजोडीने 3 कोपऱ्यांवर मिळतात — हेच शिरोबिंदू. 6 बाजू आणि शिरोबिंदू एकत्र मोजते; संख्येने ते नेहमी सारखे, पण गोष्टी वेगळ्या."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many diagonals does a quadrilateral have?",
+      "choices": [
+        "1",
+        "4",
+        "3",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "A diagonal joins two vertices that are NOT neighbours — a quadrilateral's two such pairs give 2 diagonals, crossing inside. 4 counts the sides, which join neighbours.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चतुर्भुज के कितने विकर्ण होते हैं?",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "solution": "विकर्ण उन दो शीर्षों को जोड़ता है जो पड़ोसी नहीं — चतुर्भुज की ऐसी दो जोड़ियाँ 2 विकर्ण देती हैं, भीतर कटते हुए। 4 भुजाएँ गिनता है, जो पड़ोसियों को जोड़ती हैं।"
+        },
+        "mr": {
+          "stem": "चौकोनाला किती कर्ण असतात?",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "solution": "कर्ण शेजारी नसलेल्या दोन शिरोबिंदूंना जोडतो — चौकोनाच्या अशा दोन जोड्या 2 कर्ण देतात, आत छेदणारे. 4 बाजू मोजते, ज्या शेजाऱ्यांना जोडतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two parallel lines run side by side forever. How many points do they share?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "Parallel means never meeting: 0 common points, like rails that hold their gap to the horizon. 1 shared point is what INTERSECTING lines have.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो समांतर रेखाएँ सदा साथ-साथ चलती हैं। वे कितने बिंदु साझा करती हैं?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "100"
+          ],
+          "solution": "समांतर यानी कभी न मिलना: 0 साझा बिंदु, उन पटरियों-सा जो क्षितिज तक अपना फ़ासला निभाती हैं। 1 साझा बिंदु तो प्रतिच्छेदी रेखाओं का है।"
+        },
+        "mr": {
+          "stem": "दोन समांतर रेषा सदैव शेजारी शेजारी धावतात. त्या किती बिंदू वाटून घेतात?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "100"
+          ],
+          "solution": "समांतर म्हणजे कधीही न मिळणे: 0 सामाईक बिंदू, क्षितिजापर्यंत आपले अंतर पाळणाऱ्या रुळांसारखे. 1 सामाईक बिंदू छेदणाऱ्या रेषांचा असतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A circle's LONGEST chord passes through the centre. If the radius is 9 cm, how long is that chord?",
+      "choices": [
+        "9",
+        "18",
+        "81",
+        "27"
+      ],
+      "answerIndex": 1,
+      "solution": "The centre-chord is the diameter: 9 × 2 = 18 cm. Every other chord misses the centre and comes out shorter — the diameter is the chord family's champion.",
+      "checkExpr": "9*2",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त की सबसे लंबी जीवा केंद्र से गुज़रती है। त्रिज्या 9 सेमी हो तो वह जीवा कितनी लंबी है?",
+          "choices": [
+            "9",
+            "18",
+            "81",
+            "27"
+          ],
+          "solution": "केंद्र वाली जीवा व्यास है: 9 × 2 = 18 सेमी। बाक़ी हर जीवा केंद्र से चूककर छोटी रह जाती है — व्यास जीवाओं के परिवार का सरताज है।"
+        },
+        "mr": {
+          "stem": "वर्तुळाची सर्वांत लांब जीवा केंद्रातून जाते. त्रिज्या 9 सेमी असेल तर ती जीवा किती लांब?",
+          "choices": [
+            "9",
+            "18",
+            "81",
+            "27"
+          ],
+          "solution": "केंद्रातली जीवा म्हणजे व्यास: 9 × 2 = 18 सेमी. बाकी प्रत्येक जीवा केंद्र चुकवून लहान राहते — व्यास हा जीवांच्या कुटुंबाचा शिरोमणी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Count a quadrilateral's vertices AND sides together. What total do you get?",
+      "choices": [
+        "4",
+        "6",
+        "10",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "4 vertices + 4 sides = 8. In every polygon the two counts are equal — each side 'uses up' exactly one new vertex as you walk the boundary round.",
+      "checkExpr": "4+4",
+      "translations": {
+        "hi": {
+          "stem": "चतुर्भुज के शीर्ष और भुजाएँ साथ गिनिए। कुल कितने मिले?",
+          "choices": [
+            "4",
+            "6",
+            "10",
+            "8"
+          ],
+          "solution": "4 शीर्ष + 4 भुजाएँ = 8। हर बहुभुज में दोनों गिनतियाँ बराबर होती हैं — सीमा पर चलते हुए हर भुजा ठीक एक नया शीर्ष 'ख़र्च' करती है।"
+        },
+        "mr": {
+          "stem": "चौकोनाचे शिरोबिंदू आणि बाजू एकत्र मोजा. एकूण किती आले?",
+          "choices": [
+            "4",
+            "6",
+            "10",
+            "8"
+          ],
+          "solution": "4 शिरोबिंदू + 4 बाजू = 8. प्रत्येक बहुभुजात दोन्ही संख्या सारख्या — हद्दीवरून चालताना प्रत्येक बाजू नेमका एक नवा शिरोबिंदू 'खर्च' करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A triangle drawn on paper divides the sheet into its interior, its boundary and its exterior. How many parts is that in all?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Three: the inside, the boundary line itself, and the outside. A point is always in exactly one of them — the boundary is a place of its own, not part of the inside.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "काग़ज़ पर खिंचा त्रिभुज पन्ने को अपने अभ्यंतर, सीमा और बहिर्भाग में बाँटता है। कुल कितने भाग हुए?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "तीन: भीतर, स्वयं सीमा-रेखा, और बाहर। कोई भी बिंदु ठीक इनमें से एक में होता है — सीमा अपनी अलग जगह है, भीतर का हिस्सा नहीं।"
+        },
+        "mr": {
+          "stem": "कागदावर काढलेला त्रिकोण पानाला त्याचा अंतर्भाग, सीमा आणि बाह्यभाग यांत विभागतो. एकूण किती भाग झाले?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "तीन: आतले, स्वतः सीमारेषा, आणि बाहेरचे. कोणताही बिंदू नेमका यांतल्या एकात असतो — सीमा ही स्वतःची वेगळी जागा, आतल्याचा भाग नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Four points are marked, no three in a line. How many line segments join them pair by pair?",
+      "choices": [
+        "12",
+        "8",
+        "4",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Each of the 4 points pairs with 3 others — 4 × 3 = 12 — but that counts every segment from both its ends, so halve it: 6 segments (a quadrilateral's 4 sides plus its 2 diagonals). 12 forgets that AB and BA are one segment.",
+      "checkExpr": "4*3/2",
+      "translations": {
+        "hi": {
+          "stem": "चार बिंदु अंकित हैं, कोई तीन एक रेखा में नहीं। जोड़ी-जोड़ी उन्हें कितने रेखाखंड जोड़ेंगे?",
+          "choices": [
+            "12",
+            "8",
+            "4",
+            "6"
+          ],
+          "solution": "चारों में से हर बिंदु 3 और से जोड़ी बनाता है — 4 × 3 = 12 — पर यह हर खंड को दोनों सिरों से गिनता है, तो आधा कीजिए: 6 खंड (चतुर्भुज की 4 भुजाएँ और 2 विकर्ण)। 12 भूल जाता है कि AB और BA एक ही खंड हैं।"
+        },
+        "mr": {
+          "stem": "चार बिंदू काढले आहेत, कोणतेही तीन एका रेषेत नाहीत. जोडीजोडीने त्यांना किती रेषाखंड जोडतील?",
+          "choices": [
+            "12",
+            "8",
+            "4",
+            "6"
+          ],
+          "solution": "चारांतला प्रत्येक बिंदू 3 इतरांशी जोडी करतो — 4 × 3 = 12 — पण हे प्रत्येक खंड दोन्ही टोकांनी मोजते, म्हणून अर्धे करा: 6 खंड (चौकोनाच्या 4 बाजू अधिक 2 कर्ण). 12 विसरते की AB आणि BA एकच खंड."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Five friends stand so that no three are in a line, and every pair stretches one string between them. How many strings are needed?",
+      "choices": [
+        "15",
+        "10",
+        "5",
+        "20"
+      ],
+      "answerIndex": 1,
+      "solution": "Each of 5 friends holds strings to 4 others: 5 × 4 = 20 string-ends, and every string has two ends — 20 ÷ 2 = 10 strings. The same count answers handshakes at a party and matches in a league: pairs of n things are always n(n−1) ÷ 2.",
+      "checkExpr": "5*4/2",
+      "translations": {
+        "hi": {
+          "stem": "पाँच दोस्त ऐसे खड़े हैं कि कोई तीन एक रेखा में नहीं, और हर जोड़ी अपने बीच एक डोरी तानती है। कितनी डोरियाँ चाहिए?",
+          "choices": [
+            "15",
+            "10",
+            "5",
+            "20"
+          ],
+          "solution": "पाँचों में से हर दोस्त 4 और तक डोरियाँ थामता है: 5 × 4 = 20 डोरी-सिरे, और हर डोरी के दो सिरे — 20 ÷ 2 = 10 डोरियाँ। यही गिनती दावत के हाथ-मिलान और लीग के मैच गिनती है: n चीज़ों की जोड़ियाँ हमेशा n(n−1) ÷ 2 होती हैं।"
+        },
+        "mr": {
+          "stem": "पाच मित्र असे उभे आहेत की कोणतेही तीन एका रेषेत नाहीत, आणि प्रत्येक जोडी आपल्यामध्ये एक दोरी ताणते. किती दोऱ्या लागतील?",
+          "choices": [
+            "15",
+            "10",
+            "5",
+            "20"
+          ],
+          "solution": "पाचांतला प्रत्येक मित्र 4 इतरांपर्यंत दोऱ्या धरतो: 5 × 4 = 20 दोरी-टोके, आणि प्रत्येक दोरीला दोन टोके — 20 ÷ 2 = 10 दोऱ्या. हीच मोजणी मेजवानीतले हस्तांदोलन आणि लीगमधले सामने मोजते: n गोष्टींच्या जोड्या नेहमी n(n−1) ÷ 2."
+        }
+      }
+    }
+  ]
+}
