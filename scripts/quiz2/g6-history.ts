@@ -1745,4 +1745,913 @@ export const G6_HISTORY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Kingdoms, Kings and an Early Republic                       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-6-kingdoms-kings-republic",
+    subject: "HISTORY",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 6 — Kingdoms, Kings and an Early Republic",
+      hi: "अध्याय 6 — राज्य, राजा और एक प्राचीन गणराज्य",
+      mr: "प्रकरण 6 — राज्ये, राजे आणि एक प्राचीन गणराज्य",
+    },
+    name: {
+      en: "Kingdoms, Kings and an Early Republic",
+      hi: "राज्य, राजा और एक प्राचीन गणराज्य",
+      mr: "राज्ये, राजे आणि एक प्राचीन गणराज्य",
+    },
+    summary: {
+      en: "How rajas grew great — the horse that claimed kingdoms, forts and the one-sixth share that paid for them, mighty Magadha, and Vaishali where many ruled by assembly instead of one.",
+      hi: "राजा बड़े कैसे हुए — राज्य जताता घोड़ा, क़िले और उन्हें पालता छठा हिस्सा, बलशाली मगध, और वैशाली जहाँ एक की जगह सभा में बैठे अनेक शासन करते थे।",
+      mr: "राजे मोठे कसे झाले — राज्ये सांगणारा घोडा, किल्ले आणि त्यांना पोसणारा सहावा वाटा, बलाढ्य मगध, आणि वैशाली जिथे एकाऐवजी सभेत बसलेले अनेक राज्य करत.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ashvamedha",
+        name: { en: "The ashvamedha horse", hi: "अश्वमेध का घोड़ा", mr: "अश्वमेधाचा घोडा" },
+        kind: "kingship",
+        prompt: {
+          en: "A raja set a horse loose to wander for a year — every land it crossed unchallenged accepted his power. Which ritual was this?",
+          hi: "राजा साल भर घूमने को घोड़ा छोड़ता — जिस धरती से वह बे-रोक गुज़रे, वह उसकी सत्ता मान लेती। यह कौन-सा अनुष्ठान था?",
+          mr: "राजा वर्षभर फिरायला घोडा सोडे — तो बिनविरोध ओलांडे ती भूमी त्याची सत्ता मान्य करी. हा कोणता विधी होता?",
+        },
+        statement: {
+          en: "In the ashvamedha, a raja's horse roamed for a year — lands that let it pass accepted his rule, and any who stopped it had to fight.",
+          hi: "अश्वमेध में राजा का घोड़ा साल भर घूमता — जो धरती उसे जाने देती वह उसका शासन मानती, और जो रोकता उसे लड़ना पड़ता।",
+          mr: "अश्वमेधात राजाचा घोडा वर्षभर फिरे — जी भूमी त्याला जाऊ देई ती त्याचे राज्य मान्य करी, आणि जो अडवे त्याला लढावे लागे.",
+        },
+        detail: {
+          en: "The sacrifice at its return gathered other rajas as guests — witnesses to the new greatness.",
+          hi: "उसकी वापसी पर यज्ञ में दूसरे राजा अतिथि बनकर जुटते — नई महत्ता के गवाह।",
+          mr: "त्याच्या परतीनंतरच्या यज्ञात इतर राजे पाहुणे म्हणून जमत — नव्या मोठेपणाचे साक्षीदार.",
+        },
+        extra: {
+          en: "Power here was claimed by ritual and challenge — not yet by elections or law.",
+          hi: "यहाँ सत्ता अनुष्ठान और चुनौती से जताई जाती थी — अभी चुनाव या क़ानून से नहीं।",
+          mr: "इथे सत्ता विधी आणि आव्हानाने सांगितली जाई — अजून निवडणूक वा कायद्याने नव्हे.",
+        },
+        pair: {
+          left: { en: "The ashvamedha", hi: "अश्वमेध", mr: "अश्वमेध" },
+          right: {
+            en: "kingship claimed by a horse",
+            hi: "घोड़े से जताया राजत्व",
+            mr: "घोड्याने सांगितलेले राजेपण",
+          },
+        },
+      },
+      {
+        id: "mahajanapadas",
+        name: { en: "The mahajanapadas", hi: "महाजनपद", mr: "महाजनपदे" },
+        kind: "kingship",
+        prompt: {
+          en: "About 2,500 years ago, some janapadas grew into big territories with fortified capital cities. What were these greater realms called?",
+          hi: "क़रीब 2,500 साल पहले कुछ जनपद क़िलेबंद राजधानियों वाले बड़े प्रदेश बन गए। इन बड़े राज्यों को क्या कहते थे?",
+          mr: "सुमारे 2,500 वर्षांपूर्वी काही जनपदे तटबंदी राजधान्यांची मोठी राज्ये झाली. या मोठ्या राज्यांना काय म्हणत?",
+        },
+        statement: {
+          en: "The mahajanapadas were the great realms of about 2,500 years ago — larger than the old janapadas, each with a fortified capital and an army to keep.",
+          hi: "महाजनपद क़रीब 2,500 साल पहले के बड़े राज्य थे — पुराने जनपदों से बड़े, हर एक की क़िलेबंद राजधानी और पालने को सेना।",
+          mr: "महाजनपदे ही सुमारे 2,500 वर्षांपूर्वीची मोठी राज्ये — जुन्या जनपदांहून मोठी, प्रत्येकाची तटबंदी राजधानी आणि पोसायला सैन्य.",
+        },
+        pair: {
+          left: { en: "The mahajanapadas", hi: "महाजनपद", mr: "महाजनपदे" },
+          right: {
+            en: "great realms with walled capitals",
+            hi: "क़िलेबंद राजधानियों वाले बड़े राज्य",
+            mr: "तटबंदी राजधान्यांची मोठी राज्ये",
+          },
+        },
+      },
+      {
+        id: "forts",
+        name: { en: "The fort walls", hi: "क़िले की दीवारें", mr: "किल्ल्याच्या भिंती" },
+        kind: "kingship",
+        prompt: {
+          en: "Massive walls of wood, brick and stone rose round the new capitals. What double purpose did these serve?",
+          hi: "नई राजधानियों के गिर्द लकड़ी, ईंट और पत्थर की विशाल दीवारें उठीं। इनके दो मक़सद क्या थे?",
+          mr: "नव्या राजधान्यांभोवती लाकूड, वीट आणि दगडाच्या प्रचंड भिंती उठल्या. यांचे दुहेरी हेतू काय होते?",
+        },
+        statement: {
+          en: "The fort walls guarded the capital from attack AND announced the raja's wealth — only a rich, organised power could build and man them.",
+          hi: "क़िले की दीवारें राजधानी को हमले से बचाती थीं और राजा की संपदा का एलान भी करती थीं — उन्हें बनाना-सँभालना केवल धनी, संगठित सत्ता के बस का था।",
+          mr: "किल्ल्याच्या भिंती राजधानीचे हल्ल्यापासून रक्षण करत आणि राजाच्या संपत्तीची द्वाहीही देत — त्या बांधणे-राखणे फक्त धनवान, संघटित सत्तेलाच जमे.",
+        },
+        pair: {
+          left: { en: "The fort walls", hi: "क़िले की दीवारें", mr: "किल्ल्याच्या भिंती" },
+          right: {
+            en: "shield and boast in one",
+            hi: "ढाल भी, डींग भी",
+            mr: "ढालही, डौलही",
+          },
+        },
+      },
+      {
+        id: "taxes",
+        name: { en: "The one-sixth share", hi: "छठा हिस्सा (भाग)", mr: "सहावा वाटा (भाग)" },
+        kind: "kingship",
+        prompt: {
+          en: "Forts and armies cost grain and gold — so rajas began collecting a regular cut of the harvest, fixed at one part in six. What was this called?",
+          hi: "क़िलों और सेनाओं को अनाज-सोना चाहिए — तो राजा फ़सल का नियमित हिस्सा वसूलने लगे, छह में एक तय। इसे क्या कहते थे?",
+          mr: "किल्ले आणि सैन्यांना धान्य-सोने लागे — म्हणून राजे पिकाचा नियमित वाटा वसूल करू लागले, सहांत एक ठरलेला. याला काय म्हणत?",
+        },
+        statement: {
+          en: "The bhaga was the crop-tax — one-sixth of the harvest, collected by officials — the steady revenue that turned chiefs into kings with armies.",
+          hi: "भाग फ़सल-कर था — उपज का छठा हिस्सा, कर्मचारियों से वसूला — वह नियमित आमदनी जिसने मुखियों को सेनाओं वाले राजा बनाया।",
+          mr: "भाग हा पीक-कर होता — कापणीचा सहावा वाटा, कर्मचाऱ्यांकडून वसूल केलेला — मुखियांना सैन्यांचे राजे करणारे नियमित उत्पन्न.",
+        },
+        detail: {
+          en: "Craftspeople paid too — sometimes with a month's free labour — and herders with animals.",
+          hi: "कारीगर भी चुकाते — कभी महीने भर की बेगार से — और चरवाहे पशुओं से।",
+          mr: "कारागीरही भरत — कधी महिनाभराच्या फुकट श्रमाने — आणि गुराखी जनावरांनी.",
+        },
+        extra: {
+          en: "Regular tax needed regular records — kingdoms and clerks grew up together.",
+          hi: "नियमित कर को नियमित लेखे चाहिए — राज्य और मुंशी साथ-साथ बड़े हुए।",
+          mr: "नियमित कराला नियमित नोंदी हव्यात — राज्ये आणि कारकून एकत्र वाढले.",
+        },
+        pair: {
+          left: { en: "The bhaga", hi: "भाग", mr: "भाग" },
+          right: {
+            en: "one sixth, kept for the king",
+            hi: "छठा हिस्सा, राजा के लिए",
+            mr: "सहावा वाटा, राजासाठी",
+          },
+        },
+      },
+      {
+        id: "magadha",
+        name: { en: "Magadha", hi: "मगध", mr: "मगध" },
+        kind: "realm",
+        prompt: {
+          en: "Iron mines for tools and weapons, forest elephants for the army, great rivers for transport — which mahajanapada grew mightiest on these gifts?",
+          hi: "औज़ारों-हथियारों के लिए लोहे की खदानें, सेना के लिए वन के हाथी, आवागमन के लिए बड़ी नदियाँ — इन देनों पर कौन-सा महाजनपद सबसे बलशाली हुआ?",
+          mr: "हत्यारे-अवजारांसाठी लोखंडाच्या खाणी, सैन्यासाठी वनातले हत्ती, वाहतुकीसाठी मोठ्या नद्या — या देणग्यांवर कोणते महाजनपद सर्वांत बलाढ्य झाले?",
+        },
+        statement: {
+          en: "Magadha became the mightiest mahajanapada — iron for weapons, elephants from its forests, and rivers that carried its armies and trade.",
+          hi: "मगध सबसे बलशाली महाजनपद बना — हथियारों को लोहा, उसके वनों के हाथी, और उसकी सेनाएँ-व्यापार ढोतीं नदियाँ।",
+          mr: "मगध सर्वांत बलाढ्य महाजनपद झाले — हत्यारांना लोखंड, त्याच्या वनांतले हत्ती, आणि त्याची सैन्ये-व्यापार वाहणाऱ्या नद्या.",
+        },
+        detail: {
+          en: "Its rulers, like Bimbisara and Ajatasattu, turned those resources into conquest after conquest.",
+          hi: "बिंबिसार और अजातशत्रु जैसे उसके शासकों ने उन संसाधनों को विजय-दर-विजय में बदला।",
+          mr: "बिंबिसार आणि अजातशत्रूसारख्या त्याच्या शासकांनी ती साधने विजयामागून विजयांत बदलली.",
+        },
+        extra: {
+          en: "Its capitals — Rajagriha in the hills, later Pataliputra by the rivers — moved as its power grew.",
+          hi: "उसकी राजधानियाँ — पहाड़ियों में राजगृह, बाद में नदियों किनारे पाटलिपुत्र — सत्ता के साथ सरकती गईं।",
+          mr: "त्याच्या राजधान्या — डोंगरांतले राजगृह, नंतर नद्यांकाठचे पाटलिपुत्र — सत्तेसोबत सरकत गेल्या.",
+        },
+        pair: {
+          left: { en: "Magadha", hi: "मगध", mr: "मगध" },
+          right: {
+            en: "iron, elephants and rivers",
+            hi: "लोहा, हाथी और नदियाँ",
+            mr: "लोखंड, हत्ती आणि नद्या",
+          },
+        },
+      },
+      {
+        id: "vajji",
+        name: { en: "The Vajji sangha", hi: "वज्जि संघ", mr: "वज्जी संघ" },
+        kind: "realm",
+        prompt: {
+          en: "In Vaishali, no single raja ruled — many rulers met in assembly, debated and decided together. What was this different arrangement called?",
+          hi: "वैशाली में कोई एक राजा नहीं था — अनेक शासक सभा में मिलते, बहस करते, साथ तय करते। इस अलग व्यवस्था को क्या कहते थे?",
+          mr: "वैशालीत कोणी एक राजा नव्हता — अनेक शासक सभेत भेटत, चर्चा करत, एकत्र ठरवत. या वेगळ्या व्यवस्थेला काय म्हणत?",
+        },
+        statement: {
+          en: "The Vajji sangha at Vaishali was ruled by many together — its rulers met in assemblies, debated, and decided by discussion instead of one raja's word.",
+          hi: "वैशाली का वज्जि संघ अनेकों के साझे शासन में था — उसके शासक सभाओं में मिलते, बहस करते, और एक राजा के वचन की जगह चर्चा से तय करते।",
+          mr: "वैशालीचा वज्जी संघ अनेकांच्या सामायिक शासनात होता — त्याचे शासक सभांत भेटत, चर्चा करत, आणि एका राजाच्या शब्दाऐवजी विचारविनिमयाने ठरवत.",
+        },
+        detail: {
+          en: "The Buddha praised their habit of meeting often and deciding together — unity, he said, was their strength.",
+          hi: "बुद्ध ने उनकी बार-बार मिलने और साथ तय करने की रीत सराही — एकता, उन्होंने कहा, उनकी शक्ति थी।",
+          mr: "बुद्धांनी त्यांची वारंवार भेटण्याची आणि एकत्र ठरवण्याची रीत वाखाणली — एकी, ते म्हणाले, हीच त्यांची शक्ती.",
+        },
+        extra: {
+          en: "Such sanghas lasted centuries — until stronger kingdoms swallowed them.",
+          hi: "ऐसे संघ सदियों चले — जब तक बलवान राज्यों ने उन्हें निगल नहीं लिया।",
+          mr: "असे संघ शतके टिकले — बलवान राज्यांनी त्यांना गिळेपर्यंत.",
+        },
+        pair: {
+          left: { en: "The Vajji sangha", hi: "वज्जि संघ", mr: "वज्जी संघ" },
+          right: {
+            en: "rule by assembly, not one",
+            hi: "एक नहीं, सभा का शासन",
+            mr: "एकाचे नव्हे, सभेचे शासन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the arrangement to its realm: A-power claimed by a wandering horse, B-strength built on iron, elephants and rivers, C-decisions taken in assembly. Which trio is right?",
+          hi: "व्यवस्था को उसके राज्य से मिलाइए: अ-घूमते घोड़े से जताई सत्ता, ब-लोहे, हाथियों और नदियों पर खड़ी शक्ति, स-सभा में लिए फ़ैसले। कौन-सी तिकड़ी सही है?",
+          mr: "व्यवस्था तिच्या राज्याशी जुळवा: अ-फिरत्या घोड्याने सांगितलेली सत्ता, ब-लोखंड, हत्ती आणि नद्यांवर उभी शक्ती, क-सभेत घेतलेले निर्णय. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the ashvamedha rajas · B: Magadha · C: the Vajji sangha",
+            hi: "अ: अश्वमेध के राजा · ब: मगध · स: वज्जि संघ",
+            mr: "अ: अश्वमेधाचे राजे · ब: मगध · क: वज्जी संघ",
+          },
+          {
+            en: "A: Magadha · B: the Vajji sangha · C: the ashvamedha rajas",
+            hi: "अ: मगध · ब: वज्जि संघ · स: अश्वमेध के राजा",
+            mr: "अ: मगध · ब: वज्जी संघ · क: अश्वमेधाचे राजे",
+          },
+          {
+            en: "A: the Vajji sangha · B: the ashvamedha rajas · C: Magadha",
+            hi: "अ: वज्जि संघ · ब: अश्वमेध के राजा · स: मगध",
+            mr: "अ: वज्जी संघ · ब: अश्वमेधाचे राजे · क: मगध",
+          },
+          {
+            en: "A: the ashvamedha rajas · B: the Vajji sangha · C: Magadha",
+            hi: "अ: अश्वमेध के राजा · ब: वज्जि संघ · स: मगध",
+            mr: "अ: अश्वमेधाचे राजे · ब: वज्जी संघ · क: मगध",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three roads to power in one age: ritual and challenge for the horse-sacrifice rajas, resources and conquest for Magadha, and shared debate for the Vajji. The chapter's quiet point is that they coexisted — kingship was never the only idea on the table.",
+          hi: "एक ही युग में सत्ता की तीन राहें: अश्वमेधी राजाओं के लिए अनुष्ठान और चुनौती, मगध के लिए संसाधन और विजय, और वज्जियों के लिए साझी बहस। अध्याय की धीमी बात यह है कि तीनों साथ-साथ थीं — राजत्व कभी मेज़ पर रखा इकलौता विचार नहीं था।",
+          mr: "एकाच युगात सत्तेच्या तीन वाटा: अश्वमेधी राजांसाठी विधी आणि आव्हान, मगधासाठी साधने आणि विजय, आणि वज्जींसाठी सामायिक चर्चा. प्रकरणाचा शांत मुद्दा हा की तिन्ही एकत्र नांदल्या — राजेपण हा कधीच टेबलावरचा एकमेव विचार नव्हता.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The moment rajas built forts and kept standing armies, regular taxes became UNAVOIDABLE. Why does the one follow from the other?",
+          hi: "जिस पल राजाओं ने क़िले बनाए और स्थायी सेनाएँ रखीं, नियमित कर अनिवार्य हो गए। एक से दूसरा क्यों निकलता है?",
+          mr: "ज्या क्षणी राजांनी किल्ले बांधले आणि कायम सैन्ये ठेवली, नियमित कर अटळ झाले. एकातून दुसरे का निघते?",
+        },
+        choices: [
+          {
+            en: "Walls and soldiers eat every single day — occasional gifts cannot feed a permanent cost, so a fixed share of every harvest had to replace them",
+            hi: "दीवारें और सिपाही हर दिन खाते हैं — कभी-कभार के उपहार स्थायी ख़र्च नहीं पाल सकते, तो हर फ़सल का तय हिस्सा उनकी जगह लेना ही था",
+            mr: "भिंती आणि शिपाई रोजच्या रोज खातात — अधूनमधूनच्या भेटी कायमचा खर्च पोसू शकत नाहीत, म्हणून प्रत्येक पिकाच्या ठरल्या वाट्याने त्यांची जागा घेणे भागच होते",
+          },
+          {
+            en: "Taxes were an old custom with no connection to armies",
+            hi: "कर पुराना रिवाज था, सेनाओं से कोई नाता नहीं",
+            mr: "कर जुनी रीत होती, सैन्यांशी संबंध नाही",
+          },
+          {
+            en: "The gods demanded a sixth of every crop",
+            hi: "देवता हर फ़सल का छठा हिस्सा माँगते थे",
+            mr: "देव प्रत्येक पिकाचा सहावा वाटा मागत",
+          },
+          {
+            en: "Farmers offered the share gladly, unasked",
+            hi: "किसान बिन माँगे ख़ुशी से हिस्सा देते थे",
+            mr: "शेतकरी न मागता आनंदाने वाटा देत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Follow the grain: a chief who fought occasional raids could live on occasional tribute. But a wall must be manned in peacetime too, and a standing soldier eats in months with no war. Permanent costs demand permanent income — hence the fixed sixth, the collectors, the records. Tax is the price of the fort; and once the machinery existed, kingdoms could grow as fast as their revenue. States, then and now, run on this same arithmetic.",
+          hi: "अनाज का पीछा कीजिए: कभी-कभार की लड़ाई लड़ता मुखिया कभी-कभार की भेंट पर जी सकता था। पर दीवार पर शांति में भी पहरा चाहिए, और स्थायी सिपाही बिना युद्ध के महीनों में भी खाता है। स्थायी ख़र्च स्थायी आमदनी माँगता है — इसीलिए तय छठा, वसूली करने वाले, बहियाँ। कर क़िले की क़ीमत है; और तंत्र बन जाने पर राज्य उतनी तेज़ी से बढ़ सकते थे जितनी उनकी आमदनी। राज्य, तब और अब, इसी गणित पर चलते हैं।",
+          mr: "धान्याचा माग काढा: अधूनमधूनच्या चढाया लढणारा मुखिया अधूनमधूनच्या भेटींवर जगू शके. पण भिंतीवर शांततेतही पहारा हवा, आणि कायम शिपाई युद्ध नसलेल्या महिन्यांतही खातो. कायम खर्च कायम उत्पन्न मागतो — म्हणून ठरलेला सहावा, वसूल करणारे, वह्या. कर ही किल्ल्याची किंमत; आणि यंत्रणा झाल्यावर राज्ये त्यांच्या उत्पन्नाइतकी वेगाने वाढू शकत. राज्ये, तेव्हा आणि आता, याच गणितावर चालतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Twenty-five centuries before modern democracy, the Vajji met in assemblies and decided by discussion. What makes this old sangha worth a modern citizen's attention?",
+          hi: "आधुनिक लोकतंत्र से पच्चीस सदियाँ पहले वज्जि सभाओं में मिलते और चर्चा से तय करते थे। यह पुराना संघ आधुनिक नागरिक के ध्यान लायक़ क्यों है?",
+          mr: "आधुनिक लोकशाहीच्या पंचवीस शतके आधी वज्जी सभांत भेटत आणि चर्चेने ठरवत. हा जुना संघ आधुनिक नागरिकाच्या लक्षाला पात्र का?",
+        },
+        choices: [
+          {
+            en: "It shows shared rule is not a foreign import but an old current in this land's own past — assembly, debate and decision together have deep local roots",
+            hi: "वह दिखाता है कि साझा शासन विदेशी आयात नहीं, इसी धरती के अतीत की पुरानी धारा है — सभा, बहस और साथ फ़ैसला यहाँ की गहरी जड़ें रखते हैं",
+            mr: "तो दाखवतो की सामायिक शासन ही परदेशी आयात नव्हे, या भूमीच्याच भूतकाळातली जुनी धारा आहे — सभा, चर्चा आणि एकत्र निर्णय यांची इथे खोल मुळे आहेत",
+          },
+          {
+            en: "It proves old ways were always better than kings",
+            hi: "वह साबित करता है कि पुराने ढंग राजाओं से हमेशा बेहतर थे",
+            mr: "तो सिद्ध करतो की जुन्या रीती राजांहून नेहमी चांगल्या होत्या",
+          },
+          {
+            en: "It matters only to residents of Vaishali",
+            hi: "वह केवल वैशाली के निवासियों के मतलब का है",
+            mr: "तो फक्त वैशालीच्या रहिवाशांच्या कामाचा",
+          },
+          {
+            en: "It shows assemblies always defeat armies",
+            hi: "वह दिखाता है कि सभाएँ सेनाओं को हमेशा हराती हैं",
+            mr: "तो दाखवतो की सभा सैन्यांना नेहमी हरवतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The sangha is an ancestor, not a blueprint: it had no universal vote, and Magadha eventually swallowed it. But it proves that meeting, debating and deciding together is an idea with local roots as old as kingship itself — the Buddha himself pointed to its strength. When a Gram Sabha meets today, it stands in a line that runs back to Vaishali; history hands the present that pedigree.",
+          hi: "संघ पुरखा है, नक़्शा नहीं: उसमें सार्वभौमिक वोट नहीं था, और अंततः मगध ने उसे निगल लिया। पर वह साबित करता है कि मिलना, बहसना और साथ तय करना उतनी ही पुरानी देसी जड़ों वाला विचार है जितना राजत्व — स्वयं बुद्ध ने उसकी शक्ति दिखाई। आज जब ग्राम सभा जुटती है, वह उस पंक्ति में खड़ी है जो वैशाली तक जाती है; इतिहास वर्तमान को यही वंशावली थमाता है।",
+          mr: "संघ हा पूर्वज आहे, आराखडा नव्हे: त्यात सार्वत्रिक मत नव्हते, आणि अखेर मगधाने त्याला गिळले. पण तो सिद्ध करतो की भेटणे, चर्चा करणे आणि एकत्र ठरवणे हा राजेपणाइतक्याच जुन्या देशी मुळांचा विचार आहे — स्वतः बुद्धांनी त्याची शक्ती दाखवली. आज ग्रामसभा जमते तेव्हा ती वैशालीपर्यंत जाणाऱ्या रांगेत उभी असते; इतिहास वर्तमानाला हीच वंशावळ देतो.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Vital Villages, Thriving Towns                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-6-villages-and-towns",
+    subject: "HISTORY",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 9 — Vital Villages, Thriving Towns",
+      hi: "अध्याय 9 — जीवंत गाँव, समृद्ध शहर",
+      mr: "प्रकरण 9 — जिवंत गावे, भरभराटीची शहरे",
+    },
+    name: {
+      en: "Vital Villages, Thriving Towns",
+      hi: "जीवंत गाँव, समृद्ध शहर",
+      mr: "जिवंत गावे, भरभराटीची शहरे",
+    },
+    summary: {
+      en: "Iron ploughs and dug canals, the village's headman and its landless — craft guilds banking savings, the first stamped coins, and Roman jars dug up at a Tamil port.",
+      hi: "लोहे के हल और खुदी नहरें, गाँव का मुखिया और उसके भूमिहीन — बचत सँभालती शिल्पी-श्रेणियाँ, पहले ठप्पेदार सिक्के, और तमिल बंदरगाह से खुदे रोमन घड़े।",
+      mr: "लोखंडी नांगर आणि खणलेले कालवे, गावाचा मुखिया आणि त्याचे भूमिहीन — बचत सांभाळणाऱ्या कारागीर-श्रेणी, पहिली ठसेदार नाणी, आणि तमिळ बंदरात उकरलेल्या रोमन घागरी.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ironplough",
+        name: { en: "The iron ploughshare", hi: "लोहे का फाल", mr: "लोखंडी फाळ" },
+        kind: "farm-change",
+        prompt: {
+          en: "Wooden tips scratched the heavy river-plain soil; which new metal tip bit deep and turned it over, multiplying the grain?",
+          hi: "लकड़ी की नोकें नदी-मैदान की भारी मिट्टी खुरचती भर थीं; किस नई धातु की नोक ने गहरा धँसकर उसे पलटा और अनाज कई गुना किया?",
+          mr: "लाकडी टोके नदी-मैदानाची जड माती खरवडत; कोणत्या नव्या धातूच्या टोकाने खोल रुतून ती उलटली आणि धान्य कैकपट केले?",
+        },
+        statement: {
+          en: "The iron ploughshare bit deep into heavy soil that wooden tips only scratched — turned earth grew far more grain, and villages grew on the surplus.",
+          hi: "लोहे का फाल उस भारी मिट्टी में गहरा धँसा जिसे लकड़ी की नोकें खुरचती भर थीं — पलटी धरती ने कहीं ज़्यादा अनाज दिया, और गाँव उसी अधिशेष पर बढ़े।",
+          mr: "लोखंडी फाळ लाकडी टोके फक्त खरवडत त्या जड मातीत खोल रुतला — उलटलेल्या मातीने कितीतरी जास्त धान्य दिले, आणि गावे त्याच वाढाव्यावर वाढली.",
+        },
+        pair: {
+          left: { en: "The iron ploughshare", hi: "लोहे का फाल", mr: "लोखंडी फाळ" },
+          right: {
+            en: "deep-turned soil, more grain",
+            hi: "गहरी पलटी मिट्टी, ज़्यादा अनाज",
+            mr: "खोल उलटलेली माती, जास्त धान्य",
+          },
+        },
+      },
+      {
+        id: "irrigation",
+        name: { en: "The dug irrigation", hi: "खुदी सिंचाई", mr: "खणलेले पाटबंधारे" },
+        kind: "farm-change",
+        prompt: {
+          en: "Canals, wells and tanks were dug so fields need not wait on the rain. Who ordered such works — and what did they expect back?",
+          hi: "नहरें, कुएँ और तालाब खोदे गए ताकि खेत बारिश की बाट न जोहें। ऐसे काम किसने करवाए — और बदले में क्या चाहा?",
+          mr: "कालवे, विहिरी आणि तळी खणली गेली म्हणजे शेतांनी पावसाची वाट पाहू नये. अशी कामे कोणी करवली — आणि बदल्यात काय अपेक्षिले?",
+        },
+        statement: {
+          en: "Kings ordered canals and tanks dug — watered fields cropped more, more crop meant more tax, and the tax paid for more digging: a loop that fed both throne and village.",
+          hi: "राजाओं ने नहरें-तालाब खुदवाए — सिंचे खेतों ने ज़्यादा उपजाया, ज़्यादा उपज यानी ज़्यादा कर, और कर से और खुदाई — ऐसा चक्र जो सिंहासन और गाँव दोनों को पालता था।",
+          mr: "राजांनी कालवे-तळी खणवली — भिजलेल्या शेतांनी जास्त पिकवले, जास्त पीक म्हणजे जास्त कर, आणि करातून आणखी खणणे — सिंहासन आणि गाव दोघांना पोसणारे चक्र.",
+        },
+        pair: {
+          left: { en: "The irrigation works", hi: "सिंचाई के काम", mr: "पाटबंधाऱ्याची कामे" },
+          right: {
+            en: "water, crop, tax, repeat",
+            hi: "पानी, फ़सल, कर, फिर वही",
+            mr: "पाणी, पीक, कर, पुन्हा तेच",
+          },
+        },
+      },
+      {
+        id: "gramabhojaka",
+        name: { en: "The grama bhojaka", hi: "ग्राम भोजक", mr: "ग्राम भोजक" },
+        kind: "village-person",
+        prompt: {
+          en: "The village's largest landowner was also its hereditary headman — collecting taxes, judging quarrels, keeping order. What was he called?",
+          hi: "गाँव का सबसे बड़ा भू-स्वामी उसका पुश्तैनी मुखिया भी था — कर वसूलता, झगड़े निपटाता, व्यवस्था रखता। उसे क्या कहते थे?",
+          mr: "गावाचा सर्वांत मोठा जमीनदार त्याचा वंशपरंपरागत मुखियाही होता — कर वसूल करणारा, भांडणे निवाडणारा, व्यवस्था राखणारा. त्याला काय म्हणत?",
+        },
+        statement: {
+          en: "The grama bhojaka was the village headman — largest landowner, hereditary in post, the king's tax-collector and the village's judge and policeman in one.",
+          hi: "ग्राम भोजक गाँव का मुखिया था — सबसे बड़ा भू-स्वामी, पुश्तैनी पद, राजा का कर-वसूलक और गाँव का न्यायी-सिपाही एक साथ।",
+          mr: "ग्राम भोजक हा गावाचा मुखिया — सर्वांत मोठा जमीनदार, वंशपरंपरागत पद, राजाचा कर-वसूलदार आणि गावाचा न्यायाधीश-शिपाई एकत्र.",
+        },
+        pair: {
+          left: { en: "The grama bhojaka", hi: "ग्राम भोजक", mr: "ग्राम भोजक" },
+          right: {
+            en: "landlord, taxman, judge in one",
+            hi: "ज़मींदार, करिया, न्यायी एक में",
+            mr: "जमीनदार, करवाला, न्यायी एकात",
+          },
+        },
+      },
+      {
+        id: "dasakarmakara",
+        name: { en: "The dasa-karmakaras", hi: "दास-कर्मकार", mr: "दास-कर्मकार" },
+        kind: "village-person",
+        prompt: {
+          en: "At the village's other end lived those with NO land of their own — earning their food by working the fields of others. Who were they?",
+          hi: "गाँव के दूसरे छोर पर वे रहते थे जिनकी अपनी कोई ज़मीन नहीं — दूसरों के खेतों में काम करके भोजन कमाते। वे कौन थे?",
+          mr: "गावाच्या दुसऱ्या टोकाला ते राहत ज्यांची स्वतःची जमीनच नव्हती — दुसऱ्यांच्या शेतांत राबून अन्न मिळवणारे. ते कोण होते?",
+        },
+        statement: {
+          en: "The dasa-karmakaras owned no land — they lived by labouring on others' fields, the village's poorest and most dependent hands.",
+          hi: "दास-कर्मकारों के पास ज़मीन नहीं थी — वे दूसरों के खेतों की मज़दूरी पर जीते थे, गाँव के सबसे ग़रीब और सबसे आश्रित हाथ।",
+          mr: "दास-कर्मकारांकडे जमीन नव्हती — ते दुसऱ्यांच्या शेतांतल्या मजुरीवर जगत, गावाचे सर्वांत गरीब आणि सर्वांत परावलंबी हात.",
+        },
+        pair: {
+          left: { en: "The dasa-karmakaras", hi: "दास-कर्मकार", mr: "दास-कर्मकार" },
+          right: {
+            en: "hands without land",
+            hi: "बिना ज़मीन के हाथ",
+            mr: "जमिनीविना हात",
+          },
+        },
+      },
+      {
+        id: "shreni",
+        name: { en: "The shrenis", hi: "श्रेणियाँ", mr: "श्रेणी" },
+        kind: "town-thing",
+        prompt: {
+          en: "In the towns, weavers, potters and goldsmiths organised into associations that trained apprentices, bought raw material, sold the wares — and even banked money. What were these?",
+          hi: "शहरों में बुनकर, कुम्हार और सुनार ऐसे संगठनों में जुटे जो शागिर्द सिखाते, कच्चा माल ख़रीदते, माल बेचते — और पैसा भी सँभालते। ये क्या थे?",
+          mr: "शहरांत विणकर, कुंभार आणि सोनार अशा संघटनांत जमले ज्या उमेदवार शिकवत, कच्चा माल घेत, माल विकत — आणि पैसाही सांभाळत. या काय होत्या?",
+        },
+        statement: {
+          en: "The shrenis were craft guilds — training apprentices, buying material, selling finished wares, and holding deposits so safely that even the wealthy banked with them.",
+          hi: "श्रेणियाँ शिल्पी-संघ थीं — शागिर्द सिखातीं, माल ख़रीदतीं, बना माल बेचतीं, और जमा इतनी सुरक्षित रखतीं कि धनी भी उन्हीं के पास पैसा रखते।",
+          mr: "श्रेणी या कारागीर-संघटना — उमेदवार शिकवणाऱ्या, माल घेणाऱ्या, तयार माल विकणाऱ्या, आणि ठेवी इतक्या सुरक्षित ठेवणाऱ्या की धनिकही त्यांच्याकडेच पैसा ठेवत.",
+        },
+        pair: {
+          left: { en: "The shrenis", hi: "श्रेणियाँ", mr: "श्रेणी" },
+          right: {
+            en: "guild, school and bank",
+            hi: "संघ, पाठशाला और बैंक",
+            mr: "संघ, शाळा आणि बँक",
+          },
+        },
+      },
+      {
+        id: "coins",
+        name: {
+          en: "The punch-marked coins",
+          hi: "आहत (ठप्पेदार) सिक्के",
+          mr: "आहत (ठसेदार) नाणी",
+        },
+        kind: "town-thing",
+        prompt: {
+          en: "Small pieces of silver, stamped with symbols — the earliest money this land used in its markets. What are these called?",
+          hi: "प्रतीकों से ठप्पित चाँदी के छोटे टुकड़े — इस धरती के बाज़ारों की सबसे पुरानी मुद्रा। इन्हें क्या कहते हैं?",
+          mr: "चिन्हांनी ठसवलेले चांदीचे छोटे तुकडे — या भूमीच्या बाजारांतले सर्वांत जुने चलन. यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Punch-marked coins were the earliest money here — bits of silver stamped with symbols, passing hand to hand where barter once ruled.",
+          hi: "आहत सिक्के यहाँ की सबसे पुरानी मुद्रा थे — प्रतीकों से ठप्पित चाँदी के टुकड़े, हाथ-दर-हाथ चलते, जहाँ कभी वस्तु-विनिमय राज करता था।",
+          mr: "आहत नाणी हे इथले सर्वांत जुने चलन — चिन्हांनी ठसवलेले चांदीचे तुकडे, कधी वस्तुविनिमय राज्य करी तिथे हातोहात चालणारे.",
+        },
+        pair: {
+          left: { en: "The punch-marked coins", hi: "आहत सिक्के", mr: "आहत नाणी" },
+          right: {
+            en: "silver stamped into money",
+            hi: "ठप्पे से मुद्रा बनी चाँदी",
+            mr: "ठशाने चलन झालेली चांदी",
+          },
+        },
+      },
+      {
+        id: "arikamedu",
+        name: { en: "Arikamedu", hi: "अरिकमेडु", mr: "अरिकमेडू" },
+        kind: "town-thing",
+        prompt: {
+          en: "At a dig on the Tamil coast, archaeologists found Mediterranean wine-jars, Roman lamps and stamped Roman pottery. Which ancient port is this?",
+          hi: "तमिल तट की खुदाई में पुरातत्त्वविदों को भूमध्यसागरी शराब-घड़े, रोमन दीये और ठप्पेदार रोमन बर्तन मिले। यह कौन-सा प्राचीन बंदरगाह है?",
+          mr: "तमिळ किनाऱ्यावरच्या उत्खननात पुरातत्त्वज्ञांना भूमध्यसागरी मद्य-घागरी, रोमन दिवे आणि ठसेदार रोमन भांडी मिळाली. हे कोणते प्राचीन बंदर?",
+        },
+        statement: {
+          en: "Arikamedu was a port on the Tamil coast — Roman jars, lamps and stamped pottery dug there prove ships once linked it to the Mediterranean world.",
+          hi: "अरिकमेडु तमिल तट का बंदरगाह था — वहाँ खुदे रोमन घड़े, दीये और ठप्पेदार बर्तन साबित करते हैं कि जहाज़ उसे कभी भूमध्यसागरी दुनिया से जोड़ते थे।",
+          mr: "अरिकमेडू हे तमिळ किनाऱ्यावरचे बंदर — तिथे उकरलेल्या रोमन घागरी, दिवे आणि ठसेदार भांडी सिद्ध करतात की जहाजे त्याला कधी भूमध्यसागरी जगाशी जोडत.",
+        },
+        pair: {
+          left: { en: "Arikamedu", hi: "अरिकमेडु", mr: "अरिकमेडू" },
+          right: {
+            en: "Roman jars on a Tamil shore",
+            hi: "तमिल तट पर रोमन घड़े",
+            mr: "तमिळ किनाऱ्यावर रोमन घागरी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the person to their place in the old village: A-largest landowner and hereditary headman, B-landless labourer, C-craftsman banking with his association. Which trio is right?",
+          hi: "व्यक्ति को पुराने गाँव में उसकी जगह से मिलाइए: अ-सबसे बड़ा भू-स्वामी और पुश्तैनी मुखिया, ब-भूमिहीन मज़दूर, स-अपने संघ में पैसा रखता कारीगर। कौन-सी तिकड़ी सही है?",
+          mr: "व्यक्ती जुन्या गावातल्या तिच्या जागेशी जुळवा: अ-सर्वांत मोठा जमीनदार आणि वंशपरंपरागत मुखिया, ब-भूमिहीन मजूर, क-आपल्या संघटनेत पैसा ठेवणारा कारागीर. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: the grama bhojaka · B: the dasa-karmakara · C: the shreni member",
+            hi: "अ: ग्राम भोजक · ब: दास-कर्मकार · स: श्रेणी का सदस्य",
+            mr: "अ: ग्राम भोजक · ब: दास-कर्मकार · क: श्रेणीचा सदस्य",
+          },
+          {
+            en: "A: the dasa-karmakara · B: the shreni member · C: the grama bhojaka",
+            hi: "अ: दास-कर्मकार · ब: श्रेणी-सदस्य · स: ग्राम भोजक",
+            mr: "अ: दास-कर्मकार · ब: श्रेणी-सदस्य · क: ग्राम भोजक",
+          },
+          {
+            en: "A: the shreni member · B: the grama bhojaka · C: the dasa-karmakara",
+            hi: "अ: श्रेणी-सदस्य · ब: ग्राम भोजक · स: दास-कर्मकार",
+            mr: "अ: श्रेणी-सदस्य · ब: ग्राम भोजक · क: दास-कर्मकार",
+          },
+          {
+            en: "A: the grama bhojaka · B: the shreni member · C: the dasa-karmakara",
+            hi: "अ: ग्राम भोजक · ब: श्रेणी-सदस्य · स: दास-कर्मकार",
+            mr: "अ: ग्राम भोजक · ब: श्रेणी-सदस्य · क: दास-कर्मकार",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Land drew the village's map of power: the bhojaka at the top held the most of it plus the king's favour; the dasa-karmakara at the bottom held none. The shreni craftsman stood on different ground — skill, not soil — which is why his fortunes rose with the towns. Reading who owns what is reading who decides what.",
+          hi: "ज़मीन ने गाँव की सत्ता का नक़्शा खींचा: शीर्ष पर भोजक के पास सबसे ज़्यादा ज़मीन और राजा की कृपा; तल पर दास-कर्मकार के पास कुछ नहीं। श्रेणी का कारीगर अलग ज़मीन पर खड़ा था — हुनर पर, मिट्टी पर नहीं — इसीलिए उसकी क़िस्मत शहरों के साथ चढ़ी। कौन क्या रखता है पढ़ना, कौन क्या तय करता है पढ़ना है।",
+          mr: "जमिनीने गावाच्या सत्तेचा नकाशा काढला: शिखरावरच्या भोजकाकडे सर्वाधिक जमीन अधिक राजाची मर्जी; तळाच्या दास-कर्मकाराकडे काहीच नाही. श्रेणीचा कारागीर वेगळ्या जमिनीवर उभा — कौशल्यावर, मातीवर नव्हे — म्हणूनच त्याचे भाग्य शहरांसोबत चढले. कोणाकडे काय आहे हे वाचणे म्हणजे कोण काय ठरवतो हे वाचणे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Kings spent treasure digging canals and tanks for OTHER people's fields. What made irrigation the shrewdest money a throne could spend?",
+          hi: "राजाओं ने दूसरों के खेतों के लिए नहरें-तालाब खोदने में ख़ज़ाना लगाया। सिंचाई सिंहासन का सबसे चतुर ख़र्च क्यों थी?",
+          mr: "राजांनी दुसऱ्यांच्या शेतांसाठी कालवे-तळी खणण्यात खजिना घातला. पाटबंधारे हा सिंहासनाचा सर्वांत चतुर खर्च का होता?",
+        },
+        choices: [
+          {
+            en: "Watered fields crop more, and the king took his sixth of MORE — the canal repaid its cost in taxes, then kept paying, harvest after harvest",
+            hi: "सिंचे खेत ज़्यादा उपजाते हैं, और राजा उस ज़्यादा का छठा लेता था — नहर ने अपनी लागत करों में लौटाई, फिर फ़सल-दर-फ़सल देती ही रही",
+            mr: "भिजलेली शेते जास्त पिकतात, आणि राजा त्या जास्तीचा सहावा घेई — कालव्याने आपली किंमत करांत परत केली, मग कापणीमागून कापणी देतच राहिला",
+          },
+          {
+            en: "Canals were cheap and needed no upkeep",
+            hi: "नहरें सस्ती थीं और रख-रखाव नहीं माँगती थीं",
+            mr: "कालवे स्वस्त होते आणि देखभाल मागत नसत",
+          },
+          {
+            en: "Kings dug them purely out of kindness",
+            hi: "राजा उन्हें केवल दया से खुदवाते थे",
+            mr: "राजे ती केवळ दयेने खणवत",
+          },
+          {
+            en: "Wet fields were easier to march armies across",
+            hi: "गीले खेतों से सेनाएँ आसानी से गुज़रती थीं",
+            mr: "ओल्या शेतांतून सैन्ये सहज जात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Trace the loop: royal treasure digs a canal; the canal waters fields; watered fields double their grain; the king's fixed sixth doubles with them; the enlarged revenue digs more canals — and pays the army besides. Farmer and throne BOTH profit, which is why the loop ran for centuries. States that invest in their farmers' productivity are feeding their own treasury: an insight as current as this year's budget.",
+          hi: "चक्र का पीछा कीजिए: शाही ख़ज़ाना नहर खोदता है; नहर खेत सींचती है; सिंचे खेत अनाज दुगना करते हैं; राजा का तय छठा उनके साथ दुगना होता है; बढ़ी आमदनी और नहरें खोदती है — और ऊपर से सेना पालती है। किसान और सिंहासन दोनों फलते हैं, इसीलिए चक्र सदियों चला। जो राज्य अपने किसानों की उपज में लगाते हैं, वे अपना ही ख़ज़ाना भरते हैं — इस साल के बजट जितनी ताज़ा सूझ।",
+          mr: "चक्राचा माग काढा: राजाचा खजिना कालवा खणतो; कालवा शेते भिजवतो; भिजलेली शेते धान्य दुप्पट करतात; राजाचा ठरलेला सहावा त्यांच्यासोबत दुप्पट होतो; वाढलेले उत्पन्न आणखी कालवे खणते — आणि वर सैन्य पोसते. शेतकरी आणि सिंहासन दोघे फळतात, म्हणूनच चक्र शतके चालले. जे राज्य आपल्या शेतकऱ्यांच्या उत्पादकतेत गुंतवते ते स्वतःचाच खजिना भरते — या वर्षीच्या अर्थसंकल्पाइतकी ताजी जाण.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Not one written contract survives between Rome and the Tamil ports — yet historians are CERTAIN they traded. What convinced them?",
+          hi: "रोम और तमिल बंदरगाहों के बीच एक भी लिखा अनुबंध नहीं बचा — फिर भी इतिहासकार निश्चित हैं कि व्यापार होता था। उन्हें किसने क़ायल किया?",
+          mr: "रोम आणि तमिळ बंदरांमध्ये एकही लिहिलेला करार उरला नाही — तरी इतिहासकार निश्चित आहेत की व्यापार होई. त्यांना कशाने पटवले?",
+        },
+        choices: [
+          {
+            en: "The objects — Roman jars and lamps IN Tamil soil, Roman coin-hoards across the south — things that could only have arrived by ships trading",
+            hi: "चीज़ें — तमिल मिट्टी में रोमन घड़े और दीये, दक्षिण भर में रोमन सिक्कों के ढेर — जो केवल व्यापारी जहाज़ों से ही आ सकते थे",
+            mr: "वस्तू — तमिळ मातीतल्या रोमन घागरी आणि दिवे, दक्षिणभर रोमन नाण्यांचे साठे — जे फक्त व्यापारी जहाजांनीच येऊ शकत होते",
+          },
+          {
+            en: "Ancient Tamil films depicting Roman merchants",
+            hi: "रोमन व्यापारी दिखातीं प्राचीन तमिल फ़िल्में",
+            mr: "रोमन व्यापारी दाखवणारे प्राचीन तमिळ चित्रपट",
+          },
+          {
+            en: "A guess that neighbours always trade",
+            hi: "अटकल कि पड़ोसी हमेशा व्यापार करते हैं",
+            mr: "शेजारी नेहमी व्यापार करतात हा तर्क",
+          },
+          {
+            en: "Rome's newspapers of the time",
+            hi: "उस समय के रोम के अख़बार",
+            mr: "त्या काळची रोमची वर्तमानपत्रे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A wine-jar cannot swim. Every Mediterranean pot in Arikamedu's soil crossed an ocean in somebody's hold, and the hoards of Roman gold coins inland are the payments left behind — Roman writers even grumbled about the gold draining east for pepper. Objects out of place are history's strongest witnesses: each one is a journey that must be explained, and trade is the only explanation that fits them all.",
+          hi: "शराब का घड़ा तैर नहीं सकता। अरिकमेडु की मिट्टी का हर भूमध्यसागरी बर्तन किसी जहाज़ के गर्भ में समुद्र पार आया, और भीतरी इलाक़ों के रोमन सोने के ढेर पीछे छूटे भुगतान हैं — रोमन लेखक तो काली मिर्च के लिए पूरब बहते सोने पर कुड़कुड़ाते भी थे। बेजगह मिली चीज़ें इतिहास की सबसे मज़बूत गवाह हैं: हर एक ऐसा सफ़र है जिसकी सफ़ाई देनी होगी, और व्यापार ही इकलौती सफ़ाई है जो सब पर बैठती है।",
+          mr: "मद्याची घागर पोहू शकत नाही. अरिकमेडूच्या मातीतले प्रत्येक भूमध्यसागरी भांडे कोणाच्या तरी जहाजाच्या पोटात समुद्र ओलांडून आले, आणि आतल्या भागांतले रोमन सोन्याच्या नाण्यांचे साठे म्हणजे मागे राहिलेली देणी — रोमन लेखक तर मिरीसाठी पूर्वेकडे वाहणाऱ्या सोन्यावर कुरकुरतही. जागा चुकलेल्या वस्तू या इतिहासाच्या सर्वांत बळकट साक्षीदार: प्रत्येक म्हणजे स्पष्टीकरण मागणारा प्रवास, आणि व्यापार हेच साऱ्यांना बसणारे एकमेव स्पष्टीकरण.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Traders, Kings and Pilgrims                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-6-traders-kings-pilgrims",
+    subject: "HISTORY",
+    classLevel: 6,
+    chapter: {
+      en: "Chapter 10 — Traders, Kings and Pilgrims",
+      hi: "अध्याय 10 — व्यापारी, राजा और तीर्थयात्री",
+      mr: "प्रकरण 10 — व्यापारी, राजे आणि यात्रेकरू",
+    },
+    name: {
+      en: "Traders, Kings and Pilgrims",
+      hi: "व्यापारी, राजा और तीर्थयात्री",
+      mr: "व्यापारी, राजे आणि यात्रेकरू",
+    },
+    summary: {
+      en: "Silk carried west and pepper paid in gold, kings who taxed the passing roads, monsoon winds that timed the ships — and pilgrims walking years for books.",
+      hi: "पश्चिम ले जाया रेशम और सोने में चुकाई काली मिर्च, गुज़रती सड़कों पर कर लेते राजा, जहाज़ों का समय साधतीं मानसूनी हवाएँ — और किताबों के लिए बरसों पैदल तीर्थयात्री।",
+      mr: "पश्चिमेकडे नेलेले रेशीम आणि सोन्यात चुकवलेली मिरी, जाणाऱ्या वाटांवर कर घेणारे राजे, जहाजांची वेळ साधणारे मोसमी वारे — आणि पुस्तकांसाठी वर्षानुवर्षे चालणारे यात्रेकरू.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "silkroute",
+        name: { en: "The Silk Route", hi: "रेशम मार्ग", mr: "रेशीम मार्ग" },
+        kind: "route",
+        prompt: {
+          en: "From China's looms, caravans carried a shining cloth across mountains and deserts to lands as far as Rome. What was this braid of roads called?",
+          hi: "चीन के करघों से कारवाँ एक चमकता कपड़ा पहाड़ों-रेगिस्तानों के पार रोम तक की धरतीयों तक ले जाते थे। सड़कों की इस वेणी को क्या कहते थे?",
+          mr: "चीनच्या मागांवरून तांडे एक चमकते कापड पर्वत-वाळवंटांपार रोमपर्यंतच्या भूमींत नेत. वाटांच्या या वेणीला काय म्हणत?",
+        },
+        statement: {
+          en: "The Silk Route was the braid of roads carrying China's silk westward — caravans crossing mountains and deserts, wealth flowing both ways along the thread.",
+          hi: "रेशम मार्ग चीन का रेशम पश्चिम ले जाती सड़कों की वेणी था — पहाड़-रेगिस्तान पार करते कारवाँ, धागे के साथ दोनों ओर बहती संपदा।",
+          mr: "रेशीम मार्ग ही चीनचे रेशीम पश्चिमेकडे नेणाऱ्या वाटांची वेणी — पर्वत-वाळवंटे ओलांडणारे तांडे, धाग्यासोबत दोन्हीकडे वाहणारी संपत्ती.",
+        },
+        pair: {
+          left: { en: "The Silk Route", hi: "रेशम मार्ग", mr: "रेशीम मार्ग" },
+          right: {
+            en: "China's thread to the west",
+            hi: "पश्चिम तक चीन का धागा",
+            mr: "पश्चिमेपर्यंत चीनचा धागा",
+          },
+        },
+      },
+      {
+        id: "kushanas",
+        name: { en: "The Kushanas", hi: "कुषाण", mr: "कुशाण" },
+        kind: "route",
+        prompt: {
+          en: "Which dynasty sat astride the Silk Route's branches, grew rich taxing its caravans — and whose great king Kanishka patronised Buddhism?",
+          hi: "कौन-सा राजवंश रेशम मार्ग की शाखाओं पर बैठा, उसके कारवाँओं पर कर से धनी हुआ — और जिसके महान राजा कनिष्क ने बौद्ध धर्म को संरक्षण दिया?",
+          mr: "कोणता राजवंश रेशीम मार्गाच्या फाट्यांवर बसला, त्याच्या तांड्यांवरच्या करांनी धनवान झाला — आणि ज्याच्या महान राजा कनिष्काने बौद्ध धर्माला आश्रय दिला?",
+        },
+        statement: {
+          en: "The Kushanas controlled branches of the Silk Route — taxing its caravans made them rich, and their king Kanishka became a great patron of Buddhism.",
+          hi: "कुषाणों ने रेशम मार्ग की शाखाएँ सँभालीं — कारवाँओं के कर ने उन्हें धनी किया, और उनका राजा कनिष्क बौद्ध धर्म का बड़ा संरक्षक बना।",
+          mr: "कुशाणांनी रेशीम मार्गाचे फाटे ताब्यात ठेवले — तांड्यांच्या करांनी ते धनवान झाले, आणि त्यांचा राजा कनिष्क बौद्ध धर्माचा मोठा आश्रयदाता झाला.",
+        },
+        pair: {
+          left: { en: "The Kushanas", hi: "कुषाण", mr: "कुशाण" },
+          right: {
+            en: "rich on the road's taxes",
+            hi: "मार्ग के करों से धनी",
+            mr: "वाटेच्या करांनी धनवान",
+          },
+        },
+      },
+      {
+        id: "pepper",
+        name: { en: "Pepper, the black gold", hi: "काली मिर्च — काला सोना", mr: "मिरी — काळे सोने" },
+        kind: "trade-good",
+        prompt: {
+          en: "Roman kitchens paid actual gold for which small dark berry of the Malabar hills — so prized it earned a metal's nickname?",
+          hi: "रोम की रसोइयों ने मालाबार की पहाड़ियों के किस छोटे काले दाने के लिए सचमुच सोना चुकाया — इतना क़ीमती कि उसे धातु का उपनाम मिला?",
+          mr: "रोमच्या स्वयंपाकघरांनी मलबारच्या डोंगरांतल्या कोणत्या छोट्या काळ्या दाण्यासाठी खरेखुरे सोने मोजले — इतका मोलाचा की त्याला धातूचे टोपणनाव मिळाले?",
+        },
+        statement: {
+          en: "Pepper from the Malabar hills was Rome's 'black gold' — ships carried it west and returned with gold coins, hoards of which still surface in south India.",
+          hi: "मालाबार की काली मिर्च रोम का 'काला सोना' थी — जहाज़ उसे पश्चिम ले जाते और सोने के सिक्के लौटाते, जिनके ढेर आज भी दक्षिण भारत में निकलते हैं।",
+          mr: "मलबारची मिरी हे रोमचे 'काळे सोने' — जहाजे ती पश्चिमेकडे नेत आणि सोन्याची नाणी परत आणत, ज्यांचे साठे आजही दक्षिण भारतात सापडतात.",
+        },
+        pair: {
+          left: { en: "Malabar pepper", hi: "मालाबार की मिर्च", mr: "मलबारची मिरी" },
+          right: {
+            en: "berries bought with gold",
+            hi: "सोने से ख़रीदे दाने",
+            mr: "सोन्याने घेतलेले दाणे",
+          },
+        },
+      },
+      {
+        id: "monsoonwinds",
+        name: { en: "The monsoon winds", hi: "मानसूनी हवाएँ", mr: "मोसमी वारे" },
+        kind: "route",
+        prompt: {
+          en: "Sailors on the pepper run did not row the whole sea — they waited for the season, spread sail, and let WHAT carry them across and, months later, home?",
+          hi: "मिर्च के फेरों के नाविक पूरा समुद्र नहीं खेते थे — वे मौसम की बाट जोहते, पाल खोलते, और क्या उन्हें उस पार और महीनों बाद घर पहुँचाता था?",
+          mr: "मिरीच्या फेऱ्यांचे खलाशी अख्खा समुद्र वल्हवत नसत — ते हंगामाची वाट पाहत, शीड उभारत, आणि काय त्यांना पलीकडे आणि महिन्यांनी घरी पोहोचवे?",
+        },
+        statement: {
+          en: "The monsoon winds carried the trading ships — blowing steadily one way for months, then reversing, they timed the whole sea-trade's calendar.",
+          hi: "मानसूनी हवाएँ व्यापारी जहाज़ों को ढोती थीं — महीनों एक ओर स्थिर बहतीं, फिर पलटतीं, उन्होंने पूरे समुद्री व्यापार का पंचांग साधा।",
+          mr: "मोसमी वारे व्यापारी जहाजांना वाहत — महिनोंमहिने एका दिशेने स्थिर वाहणारे, मग उलटणारे, त्यांनी साऱ्या सागरी व्यापाराचे पंचांग साधले.",
+        },
+        pair: {
+          left: { en: "The monsoon winds", hi: "मानसूनी हवाएँ", mr: "मोसमी वारे" },
+          right: {
+            en: "the sea-trade's timetable",
+            hi: "समुद्री व्यापार की समय-सारिणी",
+            mr: "सागरी व्यापाराचे वेळापत्रक",
+          },
+        },
+      },
+      {
+        id: "pilgrims",
+        name: { en: "The pilgrim-scholars", hi: "तीर्थयात्री-विद्वान", mr: "यात्रेकरू-विद्वान" },
+        kind: "traveller",
+        prompt: {
+          en: "Fa Xian and Xuan Zang walked and sailed YEARS from China — not for goods, but to study at Buddhist centres and carry books home. What were such travellers?",
+          hi: "फ़ा-श्येन और श्वैन त्सांग चीन से बरसों चले और तैरे — माल के लिए नहीं, बौद्ध केंद्रों में पढ़ने और किताबें घर ले जाने। ऐसे यात्री क्या थे?",
+          mr: "फा-शियान आणि श्वेन त्सांग चीनहून वर्षानुवर्षे चालले आणि शिडांनी आले — मालासाठी नव्हे, बौद्ध केंद्रांत शिकण्या आणि पुस्तके घरी नेण्यासाठी. असे प्रवासी काय होते?",
+        },
+        statement: {
+          en: "The pilgrim-scholars — Fa Xian, Xuan Zang — journeyed years from China to study at Buddhist centres like Nalanda and carried manuscripts home.",
+          hi: "तीर्थयात्री-विद्वान — फ़ा-श्येन, श्वैन त्सांग — चीन से बरसों की यात्रा कर नालंदा जैसे बौद्ध केंद्रों में पढ़े और पांडुलिपियाँ घर ले गए।",
+          mr: "यात्रेकरू-विद्वान — फा-शियान, श्वेन त्सांग — चीनहून वर्षांचा प्रवास करून नालंदासारख्या बौद्ध केंद्रांत शिकले आणि हस्तलिखिते घरी नेली.",
+        },
+        detail: {
+          en: "Their travel diaries survive — describing kingdoms, monasteries and roads that stones alone could never tell us of.",
+          hi: "उनकी यात्रा-डायरियाँ बची हैं — उन राज्यों, विहारों और सड़कों का बयान करतीं जिन्हें अकेले पत्थर कभी नहीं बता पाते।",
+          mr: "त्यांच्या प्रवास-डायऱ्या टिकल्या आहेत — एकटे दगड कधीही सांगू शकले नसते ती राज्ये, विहार आणि वाटा वर्णन करणाऱ्या.",
+        },
+        extra: {
+          en: "Xuan Zang crossed deserts where he nearly died — for books, not treasure.",
+          hi: "श्वैन त्सांग उन रेगिस्तानों से गुज़रा जहाँ वह मरते-मरते बचा — ख़ज़ाने के लिए नहीं, किताबों के लिए।",
+          mr: "श्वेन त्सांग जिथे तो मरता मरता वाचला त्या वाळवंटांतून गेला — खजिन्यासाठी नव्हे, पुस्तकांसाठी.",
+        },
+        pair: {
+          left: { en: "The pilgrim-scholars", hi: "तीर्थयात्री-विद्वान", mr: "यात्रेकरू-विद्वान" },
+          right: {
+            en: "years walked for books",
+            hi: "किताबों के लिए चले बरस",
+            mr: "पुस्तकांसाठी चाललेली वर्षे",
+          },
+        },
+      },
+      {
+        id: "buddhismtravels",
+        name: {
+          en: "Buddhism on the roads",
+          hi: "मार्गों पर बौद्ध धर्म",
+          mr: "वाटांवरचा बौद्ध धर्म",
+        },
+        kind: "traveller",
+        prompt: {
+          en: "Along the very routes the silk caravans walked, monasteries rose stage by stage into Central Asia and China. What was travelling WITH the goods?",
+          hi: "जिन राहों पर रेशम के कारवाँ चलते, उन्हीं पर पड़ाव-दर-पड़ाव विहार मध्य एशिया और चीन तक उठे। माल के साथ-साथ क्या यात्रा कर रहा था?",
+          mr: "रेशमाचे तांडे चालत त्याच वाटांवर टप्प्याटप्प्याने विहार मध्य आशिया आणि चीनपर्यंत उठले. मालासोबत काय प्रवास करत होते?",
+        },
+        statement: {
+          en: "Buddhism travelled the trade roads — monks moved with the caravans, monasteries rose at the halting-places, and the faith reached Central Asia and China along the silk's own path.",
+          hi: "बौद्ध धर्म व्यापार-मार्गों पर चला — भिक्षु कारवाँओं संग बढ़े, पड़ावों पर विहार उठे, और धर्म रेशम की ही राह से मध्य एशिया और चीन पहुँचा।",
+          mr: "बौद्ध धर्म व्यापार-वाटांनी गेला — भिक्षू तांड्यांसोबत निघाले, मुक्कामांच्या जागी विहार उठले, आणि धर्म रेशमाच्याच वाटेने मध्य आशिया आणि चीनला पोहोचला.",
+        },
+        pair: {
+          left: { en: "Buddhism's travel", hi: "बौद्ध धर्म की यात्रा", mr: "बौद्ध धर्माचा प्रवास" },
+          right: {
+            en: "faith riding the trade roads",
+            hi: "व्यापार-राहों पर सवार धर्म",
+            mr: "व्यापार-वाटांवर स्वार धर्म",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the traveller to what they carried: A-caravans on the Silk Route, B-ships on the monsoon winds, C-pilgrims walking from China. Which trio is right?",
+          hi: "यात्री को उसके ले जाए से मिलाइए: अ-रेशम मार्ग के कारवाँ, ब-मानसूनी हवाओं पर जहाज़, स-चीन से पैदल तीर्थयात्री। कौन-सी तिकड़ी सही है?",
+          mr: "प्रवासी त्याने नेलेल्याशी जुळवा: अ-रेशीम मार्गावरचे तांडे, ब-मोसमी वाऱ्यांवरची जहाजे, क-चीनहून चालणारे यात्रेकरू. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: silk going west · B: pepper out, gold home · C: books and learning",
+            hi: "अ: पश्चिम जाता रेशम · ब: मिर्च बाहर, सोना घर · स: किताबें और विद्या",
+            mr: "अ: पश्चिमेकडे जाणारे रेशीम · ब: मिरी बाहेर, सोने घरी · क: पुस्तके आणि विद्या",
+          },
+          {
+            en: "A: books and learning · B: silk going west · C: pepper and gold",
+            hi: "अ: किताबें और विद्या · ब: पश्चिम जाता रेशम · स: मिर्च और सोना",
+            mr: "अ: पुस्तके आणि विद्या · ब: पश्चिमेकडे जाणारे रेशीम · क: मिरी आणि सोने",
+          },
+          {
+            en: "A: pepper and gold · B: books and learning · C: silk going west",
+            hi: "अ: मिर्च और सोना · ब: किताबें और विद्या · स: पश्चिम जाता रेशम",
+            mr: "अ: मिरी आणि सोने · ब: पुस्तके आणि विद्या · क: पश्चिमेकडे जाणारे रेशीम",
+          },
+          {
+            en: "A: silk going west · B: books and learning · C: pepper and gold",
+            hi: "अ: पश्चिम जाता रेशम · ब: किताबें और विद्या · स: मिर्च और सोना",
+            mr: "अ: पश्चिमेकडे जाणारे रेशीम · ब: पुस्तके आणि विद्या · क: मिरी आणि सोने",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Land road, sea road, learning road: caravans hauled silk across the deserts, monsoon ships swapped pepper for Roman gold, and the pilgrims' packs held the strangest cargo — manuscripts. The chapter's three travellers show a connected world moving three currencies at once: cloth, coin and ideas.",
+          hi: "थल-मार्ग, जल-मार्ग, विद्या-मार्ग: कारवाँओं ने रेगिस्तानों पार रेशम ढोया, मानसूनी जहाज़ों ने मिर्च के बदले रोमन सोना लिया, और तीर्थयात्रियों की गठरियों में सबसे अनोखा माल था — पांडुलिपियाँ। अध्याय के तीन यात्री दिखाते हैं कि जुड़ी दुनिया एक साथ तीन मुद्राएँ चलाती थी: कपड़ा, सिक्का और विचार।",
+          mr: "खुष्कीची वाट, समुद्राची वाट, विद्येची वाट: तांड्यांनी वाळवंटांपार रेशीम वाहिले, मोसमी जहाजांनी मिरीच्या बदल्यात रोमन सोने घेतले, आणि यात्रेकरूंच्या गाठोड्यांत सर्वांत अजब माल होता — हस्तलिखिते. प्रकरणाचे तीन प्रवासी दाखवतात की जोडलेले जग एकाच वेळी तीन चलने चालवत होते: कापड, नाणे आणि विचार.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Buddhism reached China not by armies or decrees but along the trade routes. Why do faiths so often travel WITH commerce?",
+          hi: "बौद्ध धर्म चीन तक सेनाओं या फ़रमानों से नहीं, व्यापार-मार्गों से पहुँचा। धर्म इतनी बार व्यापार के साथ ही यात्रा क्यों करते हैं?",
+          mr: "बौद्ध धर्म चीनपर्यंत सैन्यांनी वा फर्मानांनी नव्हे, व्यापार-वाटांनी पोहोचला. धर्म इतक्यांदा व्यापारासोबतच प्रवास का करतात?",
+        },
+        choices: [
+          {
+            en: "Roads built for goods carry people, and people carry beliefs — every caravan halt where traders rested became a place where monks taught, stage by stage to China",
+            hi: "माल के लिए बनी सड़कें लोगों को ढोती हैं, और लोग आस्थाएँ — जहाँ-जहाँ व्यापारी सुस्ताए, वही पड़ाव भिक्षुओं के पढ़ाने की जगह बने, पड़ाव-दर-पड़ाव चीन तक",
+            mr: "मालासाठी बांधलेल्या वाटा माणसे वाहतात, आणि माणसे श्रद्धा — जिथे जिथे व्यापारी विसावले, तीच मुक्कामे भिक्षूंच्या शिकवण्याच्या जागा झाल्या, टप्प्याटप्प्याने चीनपर्यंत",
+          },
+          {
+            en: "Traders were paid to spread religions",
+            hi: "व्यापारियों को धर्म फैलाने के पैसे मिलते थे",
+            mr: "व्यापाऱ्यांना धर्म पसरवण्याचे पैसे मिळत",
+          },
+          {
+            en: "Faiths can only move where silk moves",
+            hi: "धर्म वहीं चल सकते हैं जहाँ रेशम चले",
+            mr: "धर्म फक्त रेशीम जाईल तिथेच जाऊ शकतात",
+          },
+          {
+            en: "It was coincidence, nothing more",
+            hi: "यह महज़ इत्तिफ़ाक़ था, और कुछ नहीं",
+            mr: "हा निव्वळ योगायोग होता, आणखी काही नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A road does not check what walks on it. The Silk Route's inns, oases and guard-posts — built so goods could move safely — served monks exactly as well as merchants; traders themselves turned believers and endowed monasteries at the halts. Ideas need carriers, and commerce supplies the world's most regular ones. Map where goods flowed in any age — this one included — and you have drawn where ideas flowed too.",
+          hi: "सड़क यह नहीं जाँचती कि उस पर क्या चलता है। रेशम मार्ग की सरायें, नख़लिस्तान और चौकियाँ — माल की सुरक्षित आवाजाही को बनीं — भिक्षुओं के भी उतने ही काम आईं जितने व्यापारियों के; ख़ुद व्यापारी श्रद्धालु बने और पड़ावों पर विहार दान किए। विचारों को वाहक चाहिए, और व्यापार दुनिया के सबसे नियमित वाहक देता है। किसी भी युग में — इस युग समेत — माल की धाराएँ आँकिए, और आपने विचारों की धाराएँ भी आँक लीं।",
+          mr: "वाट तिच्यावरून काय चालते ते तपासत नाही. रेशीम मार्गाच्या धर्मशाळा, मरूद्याने आणि चौक्या — माल सुरक्षित जावा म्हणून बांधलेल्या — भिक्षूंच्या तितक्याच कामी आल्या जितक्या व्यापाऱ्यांच्या; स्वतः व्यापारी श्रद्धाळू झाले आणि मुक्कामांवर विहार दान केले. विचारांना वाहक हवेत, आणि व्यापार जगातले सर्वांत नियमित वाहक पुरवतो. कोणत्याही युगात — या युगासह — मालाचे प्रवाह आखा, आणि तुम्ही विचारांचे प्रवाहही आखलेत.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Xuan Zang's diary describes Nalanda's halls, Harsha's court and the roads between — details no excavation could recover. What special kind of source is a traveller's account, and what is its catch?",
+          hi: "श्वैन त्सांग की डायरी नालंदा के भवन, हर्ष का दरबार और बीच की सड़कें बयान करती है — वे ब्योरे जो कोई खुदाई नहीं लौटा सकती। यात्री का वृत्तांत किस ख़ास क़िस्म का स्रोत है, और उसका पेच क्या है?",
+          mr: "श्वेन त्सांगची डायरी नालंदाची सभागृहे, हर्षाचा दरबार आणि मधल्या वाटा वर्णते — कोणतेही उत्खनन परत आणू शकणार नाही असे तपशील. प्रवाशाचे वृत्त हा कोणत्या खास प्रकारचा स्रोत, आणि त्याची मेख काय?",
+        },
+        choices: [
+          {
+            en: "An eyewitness who wrote — priceless for what stones cannot say, yet one man's eyes and views, to be checked against other evidence where it can be",
+            hi: "लिखने वाला चश्मदीद — पत्थर जो नहीं कह सकते उसके लिए अनमोल, फिर भी एक आदमी की आँखें और राय, जहाँ हो सके वहाँ दूसरे सबूतों से जाँचने योग्य",
+            mr: "लिहिणारा प्रत्यक्षदर्शी — दगड सांगू शकत नाहीत त्यासाठी अमोल, तरी एका माणसाचे डोळे आणि मते, जिथे जमेल तिथे इतर पुराव्यांशी ताडून पाहण्याजोगे",
+          },
+          {
+            en: "A perfect record to be trusted word for word",
+            hi: "शब्दशः भरोसे लायक़ पूर्ण अभिलेख",
+            mr: "शब्दशः विश्वासार्ह परिपूर्ण नोंद",
+          },
+          {
+            en: "Mere stories, useless beside objects",
+            hi: "महज़ क़िस्से, चीज़ों के आगे बेकार",
+            mr: "नुसत्या गोष्टी, वस्तूंपुढे निरुपयोगी",
+          },
+          {
+            en: "A source only Chinese historians may use",
+            hi: "ऐसा स्रोत जो केवल चीनी इतिहासकार बरत सकते हैं",
+            mr: "फक्त चिनी इतिहासकारच वापरू शकतील असा स्रोत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Objects show what existed; a traveller tells what it was LIKE — the crowd in a lecture hall, a king's manner, the danger of a road. But Xuan Zang saw what his route showed him, admired what a devout Buddhist would admire, and wrote for readers at home. So the historian prizes the diary AND cross-examines it — against ruins, coins, other writers. Every source is a witness; none is the whole court.",
+          hi: "चीज़ें बताती हैं क्या था; यात्री बताता है वह कैसा था — व्याख्यान-कक्ष की भीड़, राजा का सलीक़ा, सड़क का ख़तरा। पर श्वैन त्सांग ने वही देखा जो उसकी राह ने दिखाया, वही सराहा जो श्रद्धालु बौद्ध सराहता, और घर के पाठकों के लिए लिखा। तो इतिहासकार डायरी को सराहता भी है और जिरह भी करता है — खंडहरों, सिक्कों, दूसरे लेखकों से मिलाकर। हर स्रोत गवाह है; कोई पूरी अदालत नहीं।",
+          mr: "वस्तू सांगतात काय होते; प्रवासी सांगतो ते कसे होते — व्याख्यान-सभागृहातली गर्दी, राजाची रीत, वाटेचा धोका. पण श्वेन त्सांगने त्याच्या वाटेने दाखवले तेच पाहिले, श्रद्धाळू बौद्धाला भावेल तेच वाखाणले, आणि घरच्या वाचकांसाठी लिहिले. म्हणून इतिहासकार डायरीचे मोल जाणतो आणि उलटतपासणीही करतो — भग्नावशेष, नाणी, इतर लेखकांशी ताडून. प्रत्येक स्रोत साक्षीदार आहे; कोणीही अख्खे न्यायालय नाही.",
+        },
+      },
+    ],
+  },
 ];
