@@ -16,7 +16,7 @@ import type { ActiveContext } from "./session";
  * the date sheet (per-grade, published to families) and the marks grid.
  */
 
-const EXAM_CATEGORY = "Exam";
+export const EXAM_CATEGORY = "Exam";
 
 /** Marks arrive as plain numbers ("out of 80") and are stored as thousandths. */
 function toMilli(marks: number): number {

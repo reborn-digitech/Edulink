@@ -2,10 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowCounterClockwiseIcon, SignOutIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { recordLeaving, undoLeaving } from "./actions";
+import { recordLeaving } from "./actions";
 import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
@@ -18,80 +17,37 @@ const REASONS = [
 ] as const satisfies readonly { value: string; labelKey: TranslationKey }[];
 
 /**
- * Recording that a pupil has left, from the directory.
+ * The leaving form, opened from the row's action menu (directory-menu.tsx).
  *
- * A SEPARATE BUTTON FROM PAUSE, AND A DIFFERENT COLOUR, because they are
- * different facts and the recovery from confusing them is different. Pausing is
- * "not for now" and is undone in one click by anybody. Leaving issues a document
- * with the school's name on it, and while it is also undoable, a certificate
- * that briefly existed is a thing that may already have been shown to somebody.
+ * A SEPARATE MENU ENTRY FROM PAUSE because they are different facts and the
+ * recovery from confusing them is different. Pausing is "not for now" and is
+ * undone in one click by anybody. Leaving issues a document with the school's
+ * name on it, and while it is also undoable, a certificate that briefly
+ * existed is a thing that may already have been shown to somebody.
  *
  * THE FORM SAYS WHAT THE FAMILY WILL GET, in the box, before the button is
  * pressed. Everything typed here ends up on a document a family hands to their
  * child's next school — and an admin who does not know that writes an internal
  * note in the note field.
  */
-export function LeavingActions({
+export function LeavingPanel({
   membershipId,
   name,
-  hasLeft,
+  onClose,
 }: {
   membershipId: string;
   name: string;
-  hasLeft: boolean;
+  onClose: () => void;
 }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [open, setOpen] = useState(false);
   const [reason, setReason] = useState<string>("TRANSFERRED");
   const [destination, setDestination] = useState("");
   const [note, setNote] = useState("");
   const [leftOn, setLeftOn] = useState("");
   const [error, setError] = useState<string | null>(null);
-
-  if (hasLeft) {
-    return (
-      <Button
-        size="sm"
-        variant="secondary"
-        loading={pending}
-        icon={<ArrowCounterClockwiseIcon weight="bold" />}
-        onClick={() =>
-          startTransition(async () => {
-            const result = await undoLeaving(membershipId);
-            if (!result.ok) {
-              toast({ tone: "danger", title: t("people.notUndone"), description: actionError(t, result) });
-              return;
-            }
-            toast({
-              tone: "ok",
-              title: t("people.backOnRoll", { name }),
-              description: t("people.backOnRollBody"),
-            });
-            router.refresh();
-          })
-        }
-      >
-        {t("people.undoLeaving")}
-      </Button>
-    );
-  }
-
-  if (!open) {
-    return (
-      <Button
-        size="sm"
-        variant="ghost"
-        icon={<SignOutIcon weight="bold" />}
-        onClick={() => setOpen(true)}
-      >
-        <span className="sr-only">{t("people.recordLeftFor", { name })}</span>
-        <span aria-hidden="true">{t("people.left")}</span>
-      </Button>
-    );
-  }
 
   return (
     <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
@@ -130,7 +86,7 @@ export function LeavingActions({
         </label>
         <div className="min-w-[11rem]">
           <DateField
-label={t("people.lastDay")}
+            label={t("people.lastDay")}
             value={leftOn}
             onChange={(event) => setLeftOn(event.target.value)}
           />
@@ -174,26 +130,19 @@ label={t("people.lastDay")}
                 setError(actionError(t, result, "people.didNotWork"));
                 return;
               }
-              setOpen(false);
               toast({
                 tone: "ok",
                 title: t("people.recordedAsLeft", { name }),
                 description: t("people.recordedAsLeftBody"),
               });
+              onClose();
               router.refresh();
             });
           }}
         >
           {t("people.recordIt")}
         </Button>
-        <Button
-          size="sm"
-          variant="ghost"
-          onClick={() => {
-            setOpen(false);
-            setError(null);
-          }}
-        >
+        <Button size="sm" variant="ghost" onClick={onClose}>
           {t("common.cancel")}
         </Button>
       </div>

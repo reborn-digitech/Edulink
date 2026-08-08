@@ -540,6 +540,13 @@ Break these and something quietly goes wrong for a child or a parent.
   A single compound selector silently leaves pale fills on a dark page.
 - Realtime fan-out is **in-process only**. More than one instance needs Redis or
   Ably behind the `publish`/`subscribe` surface in `realtime.ts`.
+- **`Assignment_examSlotId_classId_key` was created by hand on the dev
+  database** (`CREATE UNIQUE INDEX` via `prisma db execute` on the admin
+  connection), because adding a unique to the populated table made `db push`
+  demand `--accept-data-loss` it did not need. The name matches Prisma's own, so
+  `db push` reports in-sync and a fresh database gets the index from the schema
+  normally — the note in `schema.prisma` next to the `@@unique` is the
+  authority if the two ever seem to disagree.
 
 ### Next steps, in priority order
 
@@ -2491,6 +2498,34 @@ navigation" means the actual list rather than one somebody maintained by hand.
   suite** — sequential-but-reordered runs impersonate parallel contention.
   The battery after all of it, cold: typecheck clean, **1456/1456 across
   85 files**, eslint 0/29, i18n 46/210, RLS all checks passed, build
+  clean, **sweep 326/326**, zero fixture residue.
+
+  **Then the attention list got worked through — four fixes in one pass.**
+  (1) The directory's three always-visible verbs (pause, left, remove)
+  moved behind **one kebab per row**, the same idiom the class list
+  already used: restorative verbs (restore, undo leaving) run straight
+  from the menu, the destructive-feeling three still open their
+  full-width persuading panels — walked in the browser, menu → panel →
+  cancel. (2) The **258 practice chapters that all said "Generated
+  practice drills for class N"** now each carry an honest one-liner in
+  three languages — authored per chapter family with per-grade overrides
+  in `scripts/chapter-summaries.ts`, applied additively (and provably
+  idempotently: second run wrote 0) by `apply-chapter-summaries.ts`, and
+  baked into the generator so a regeneration reproduces them; 267 topics
+  now hold 152 distinct summaries and the boilerplate count is zero.
+  Walked as a pupil in English and Hindi, and the language preference the
+  walk toggled was put back. (3) The **invisible text-join between exam
+  sittings and weighted overalls is now said out loud**: the teacher's
+  marks page warns — only when the class weights its categories and none
+  is named "Exam" — that these marks won't move the weighted overall,
+  with a link to the class's weights. Verified live with a disposable
+  ZZ class/series (grade string "ZZ Grade" so it leaked to nobody),
+  removed with residue zero. (4) The hand-created
+  `Assignment_examSlotId_classId_key` index is **documented at both
+  sites** that would otherwise be surprised: schema.prisma next to the
+  `@@unique`, and the Gotchas. Battery after the batch: typecheck clean,
+  **1456/1456 across 85 files**, eslint 0/29, i18n steady at 46/210
+  (the new strings all went through keys), RLS all checks passed, build
   clean, **sweep 326/326**, zero fixture residue.
 - ~~Experts~~ and ~~Mentoring~~ (formerly Prerna and Margdarshak) **both built.** Expert marketplace, slots,
   booking, an admin/teacher↔expert conversation, account creation from an invite

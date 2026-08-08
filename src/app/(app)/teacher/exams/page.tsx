@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ExamIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { examClassesFor, marksGrid } from "@/lib/exams";
+import { EXAM_CATEGORY, examClassesFor, marksGrid } from "@/lib/exams";
+import { listGradeCategories, weightsAreUsable } from "@/lib/grading";
 import { formatDateKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -53,6 +54,16 @@ export default async function TeacherExamsPage({
   const selectedSlot = slots.find((s) => s.id === requestedSlot) ?? slots[0] ?? null;
 
   const grid = selectedSlot ? await marksGrid(ctx, selectedSlot.id, selectedClass.id) : null;
+
+  // A sitting's marks join the weighted overall only through a weighted
+  // category named "Exam" — a text join nothing else surfaces. Warn exactly
+  // when it bites: the class weights its work, and no Exam weight exists. A
+  // points-based class needs no warning; there the marks already count.
+  const weights = grid ? await listGradeCategories(ctx, selectedClass.id) : [];
+  const examUnweighted =
+    grid !== null &&
+    weightsAreUsable(weights) &&
+    !weights.some((w) => w.name === EXAM_CATEGORY && w.weightBps > 0);
 
   return (
     <div className="space-y-6">
@@ -114,6 +125,21 @@ export default async function TeacherExamsPage({
             </Link>
           ))}
         </nav>
+      )}
+
+      {examUnweighted && (
+        <Card>
+          <CardBody className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-fg-muted">
+            <WarningIcon weight="fill" className="size-4 shrink-0 text-warn" />
+            <span className="min-w-0 flex-1">{t("exams.unweightedNote")}</span>
+            <Link
+              href={`/teacher/classes/${selectedClass.id}`}
+              className="font-medium text-accent underline-offset-2 hover:underline"
+            >
+              {t("exams.unweightedLink")}
+            </Link>
+          </CardBody>
+        </Card>
       )}
 
       {grid && selectedSlot && (

@@ -10,9 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
-import { RowActions } from "./row-actions";
-import { LeavingActions } from "./leaving-actions";
-import { RemoveActions } from "./remove-actions";
+import { DirectoryMenu } from "./directory-menu";
 import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
@@ -282,31 +280,19 @@ export default async function DirectoryPage({
                         {t(ROLE_META[role].labelKey)}
                       </Badge>
 
-                      {!isSelf && !member.leftAt && (
-                        <RowActions
+                      {/* Every verb for the row lives behind one kebab. Pupils
+                          get the leaving verbs; staff who leave get a
+                          reference, not a leaving certificate — see
+                          school-record.ts. A staff row that has left offers
+                          nothing, and the menu owns that arithmetic. */}
+                      {!isSelf && (role === "STUDENT" || !member.leftAt) && (
+                        <DirectoryMenu
                           membershipId={member.id}
                           name={displayName}
+                          isStudent={role === "STUDENT"}
                           suspended={member.status === "SUSPENDED"}
-                        />
-                      )}
-                      {/* Pupils only. Staff who leave get a reference, not a
-                          leaving certificate — see school-record.ts. */}
-                      {!isSelf && role === "STUDENT" && (
-                        <LeavingActions
-                          membershipId={member.id}
-                          name={displayName}
                           hasLeft={member.leftAt !== null}
                         />
-                      )}
-                      {/*
-                        The third verb, offered only where it can apply.
-                        Somebody already recorded as having left has a document
-                        with this school's name on it, so removing them is
-                        refused server-side anyway — showing the button there
-                        would be offering an action that always fails.
-                      */}
-                      {!isSelf && role === "STUDENT" && !member.leftAt && (
-                        <RemoveActions membershipId={member.id} name={displayName} />
                       )}
                     </div>
                   </Card>

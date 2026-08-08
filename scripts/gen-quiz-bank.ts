@@ -39,6 +39,7 @@ import { createHash } from "node:crypto";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { evaluate, numberIn } from "./quiz-arith";
+import { chapterSummary } from "./chapter-summaries";
 
 config();
 
@@ -4549,15 +4550,20 @@ function mkTopic(
   templates: Template[],
   subject: Subject = "MATHS",
 ): TopicSpec {
+  // One authored line per chapter (scripts/chapter-summaries.ts), shared with
+  // apply-chapter-summaries.ts so a regeneration and the live rows agree. The
+  // generic fallback survives only for a topic the table does not know, and
+  // the apply script exits non-zero on exactly that case.
+  const line = chapterSummary(`drill-g${grade}-${key}`);
   return {
     slug: `drill-g${grade}-${key}`,
     subject,
     classLevel: grade,
     chapter: `Class ${grade} drills`,
     name: nameEn,
-    summary: `Generated practice drills for class ${grade}. Every answer is machine-checked.`,
-    hi: { name: nameHi, summary: `कक्षा ${grade} के लिए अभ्यास प्रश्न। हर उत्तर मशीन से जाँचा गया है।` },
-    mr: { name: nameMr, summary: `इयत्ता ${grade} साठी सरावाचे प्रश्न. प्रत्येक उत्तर मशीनने तपासले आहे.` },
+    summary: line?.en ?? `Generated practice drills for class ${grade}. Every answer is machine-checked.`,
+    hi: { name: nameHi, summary: line?.hi ?? `कक्षा ${grade} के लिए अभ्यास प्रश्न। हर उत्तर मशीन से जाँचा गया है।` },
+    mr: { name: nameMr, summary: line?.mr ?? `इयत्ता ${grade} साठी सरावाचे प्रश्न. प्रत्येक उत्तर मशीनने तपासले आहे.` },
     position,
     templates,
   };

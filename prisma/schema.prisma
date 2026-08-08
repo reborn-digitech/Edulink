@@ -855,6 +855,14 @@ model Assignment {
   grades          Grade[]
   reportCardItems ReportCardItem[]
 
+  // ⚠ PROVENANCE: on the original dev database this unique index was created
+  // BY HAND — `CREATE UNIQUE INDEX "Assignment_examSlotId_classId_key" …` via
+  // `prisma db execute` on the admin connection — because adding a unique to a
+  // populated table made `db push` demand --accept-data-loss it did not need.
+  // The name matches what Prisma generates, so `db push` has reported in-sync
+  // ever since. A from-scratch database gets it from this line the normal way;
+  // nothing to do. If `db push` ever claims this index is missing on a database
+  // that visibly has it, check the name before believing either of them.
   @@unique([examSlotId, classId])
   @@index([schoolId, dueAt])
   @@index([classId, publishedAt])

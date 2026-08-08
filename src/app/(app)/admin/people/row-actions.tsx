@@ -2,15 +2,14 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { PauseCircleIcon, ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { suspend, reinstate } from "./actions";
+import { suspend } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
 /**
- * Pause and restore, per person, from the directory.
+ * The pause form, opened from the row's action menu (directory-menu.tsx).
  *
  * PAUSING ASKS FOR A REASON AND WILL NOT PROCEED WITHOUT ONE. This is the only
  * destructive-feeling action in the directory, it is the one somebody will be
@@ -22,20 +21,19 @@ import { useT } from "@/lib/i18n";
  * nothing is deleted and it is reversible in one click — and it does not read
  * as a punishment handed down, which matters when the subject is a child.
  */
-export function RowActions({
+export function PausePanel({
   membershipId,
   name,
-  suspended,
+  onClose,
 }: {
   membershipId: string;
   name: string;
-  suspended: boolean;
+  onClose: () => void;
 }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [open, setOpen] = useState(false);
   const [reason, setReason] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -47,51 +45,10 @@ export function RowActions({
         setError(actionError(t, result, "people.didNotWork"));
         return;
       }
-      setOpen(false);
-      setReason("");
       toast({ tone: "ok", title: t("people.paused", { name }) });
+      onClose();
       router.refresh();
     });
-  }
-
-  function doReinstate() {
-    startTransition(async () => {
-      const result = await reinstate(membershipId);
-      if (!result.ok) {
-        toast({ tone: "danger", title: t("people.notRestored"), description: actionError(t, result) });
-        return;
-      }
-      toast({ tone: "ok", title: t("people.canSignInAgain", { name }) });
-      router.refresh();
-    });
-  }
-
-  if (suspended) {
-    return (
-      <Button
-        size="sm"
-        variant="secondary"
-        loading={pending}
-        icon={<ArrowCounterClockwiseIcon weight="bold" />}
-        onClick={doReinstate}
-      >
-        {t("people.restore")}
-      </Button>
-    );
-  }
-
-  if (!open) {
-    return (
-      <Button
-        size="sm"
-        variant="ghost"
-        icon={<PauseCircleIcon weight="bold" />}
-        onClick={() => setOpen(true)}
-      >
-        <span className="sr-only">{t("people.pauseAccessFor", { name })}</span>
-        <span aria-hidden="true">{t("people.pause")}</span>
-      </Button>
-    );
   }
 
   return (
@@ -121,14 +78,7 @@ export function RowActions({
         <Button size="sm" variant="danger" loading={pending} onClick={doSuspend}>
           {t("people.pauseAction")}
         </Button>
-        <Button
-          size="sm"
-          variant="ghost"
-          onClick={() => {
-            setOpen(false);
-            setError(null);
-          }}
-        >
+        <Button size="sm" variant="ghost" onClick={onClose}>
           {t("common.cancel")}
         </Button>
       </div>

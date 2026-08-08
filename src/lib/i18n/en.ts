@@ -3517,6 +3517,9 @@ export const en = {
     blankMeansAbsent:
       "Leave a box empty for a child who did not sit the paper — an absence is not a zero.",
     saveMarks: "Save marks",
+    unweightedNote:
+      "This class combines marks using category weights, and no category named “Exam” carries a weight yet. These marks still appear on grades pages and report cards, but they will not move the weighted overall until the class's weights include one.",
+    unweightedLink: "Set category weights",
   },
 
   audit: {
@@ -3676,6 +3679,11 @@ export const en = {
     previous: "Previous",
     next: "Next",
     pageOf: "Page {page} of {pages}",
+
+    /* Row menu */
+    actionsFor: "Actions for {name}",
+    closeMenu: "Close menu",
+    recordAsLeft: "Record as left",
 
     /* Pause */
     restore: "Restore",

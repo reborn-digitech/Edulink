@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { TrashIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { removePerson } from "./actions";
@@ -11,9 +10,9 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
 /**
- * Removing a pupil who was added by mistake.
+ * The removal form, opened from the row's action menu (directory-menu.tsx).
  *
- * THE THIRD BUTTON, and the copy is most of the work — because the failure this
+ * THE THIRD VERB, and the copy is most of the work — because the failure this
  * design has to prevent is not a bug, it is an admin reaching for the wrong
  * verb. Three things a school might mean, and only one of them is this:
  *
@@ -32,34 +31,21 @@ import { useT } from "@/lib/i18n";
  * this renders it — "cannot remove" with no reason is a dead end, and §7 says
  * there are none.
  */
-export function RemoveActions({
+export function RemovePanel({
   membershipId,
   name,
+  onClose,
 }: {
   membershipId: string;
   name: string;
+  onClose: () => void;
 }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [blockers, setBlockers] = useState<RemovalBlocker | null>(null);
-
-  if (!open) {
-    return (
-      <Button
-        size="sm"
-        variant="ghost"
-        icon={<TrashIcon weight="bold" />}
-        onClick={() => setOpen(true)}
-      >
-        <span className="sr-only">{t("people.removeFrom", { name })}</span>
-        <span aria-hidden="true">{t("people.remove")}</span>
-      </Button>
-    );
-  }
 
   return (
     <div className="w-full rounded-[--radius-md] border border-danger/30 bg-danger-soft p-3">
@@ -128,12 +114,12 @@ export function RemoveActions({
                 setBlockers(result.blockers ?? null);
                 return;
               }
-              setOpen(false);
               toast({
                 tone: "ok",
                 title: t("people.removed", { name }),
                 description: t("people.removedBody"),
               });
+              onClose();
               router.refresh();
             });
           }}
@@ -144,9 +130,9 @@ export function RemoveActions({
           size="sm"
           variant="ghost"
           onClick={() => {
-            setOpen(false);
             setError(null);
             setBlockers(null);
+            onClose();
           }}
         >
           {t("common.cancel")}

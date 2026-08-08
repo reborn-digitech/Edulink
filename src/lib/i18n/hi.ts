@@ -3143,6 +3143,9 @@ export const hi: Dictionary = {
     blankMeansAbsent:
       "जो बच्चा परीक्षा में नहीं बैठा, उसका खाना खाली छोड़ें — अनुपस्थिति शून्य नहीं है।",
     saveMarks: "अंक सहेजें",
+    unweightedNote:
+      "यह कक्षा अंकों को श्रेणी-भार से जोड़ती है, और अभी “Exam” नाम की किसी श्रेणी पर भार नहीं है। ये अंक ग्रेड पृष्ठों और रिपोर्ट कार्ड पर तो दिखेंगे, पर जब तक कक्षा के भार में Exam श्रेणी नहीं जुड़ती, भारित कुल पर असर नहीं डालेंगे।",
+    unweightedLink: "श्रेणी-भार सेट करें",
   },
 
   audit: {
@@ -3299,6 +3302,10 @@ export const hi: Dictionary = {
     previous: "पिछला",
     next: "अगला",
     pageOf: "पृष्ठ {page}, कुल {pages}",
+
+    actionsFor: "{name} के लिए विकल्प",
+    closeMenu: "मेन्यू बंद करें",
+    recordAsLeft: "स्कूल छोड़ना दर्ज करें",
 
     restore: "बहाल करें",
     pauseAccessFor: "{name} की पहुँच रोकें",
