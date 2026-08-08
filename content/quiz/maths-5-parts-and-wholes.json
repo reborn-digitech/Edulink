@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 5,
+  "chapter": "Chapter 4 — Parts and Wholes",
+  "name": "Parts and Wholes",
+  "slug": "maths-5-parts-and-wholes",
+  "summary": "Halves, thirds, quarters and fifths of real things — shares that must cut the same whole, and wholes rebuilt from their halves.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "हिस्से और पूरा",
+      "summary": "असली चीज़ों के आधे, तिहाई, चौथाई और पाँचवें हिस्से — हिस्से जो एक ही पूरे से कटें, और आधों से फिर जुड़ते पूरे।"
+    },
+    "mr": {
+      "name": "हिस्से आणि पूर्ण",
+      "summary": "खऱ्या वस्तूंचे अर्धे, तृतीयांश, पाव आणि पंचमांश — एकाच पूर्णातून कापले जाणारे वाटे, आणि अर्ध्यांतून पुन्हा जुळणारे पूर्ण."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 5)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A chocolate bar has 10 pieces. Meena gets half the bar. How many pieces is that?",
+      "choices": [
+        "2",
+        "4",
+        "10",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Half of 10 pieces: 10 ÷ 2 = 5. Answering 2 reads the '2' of half as the answer — the 2 says how many shares, not how big.",
+      "checkExpr": "10/2",
+      "translations": {
+        "hi": {
+          "stem": "चॉकलेट में 10 टुकड़े हैं। मीना को आधी चॉकलेट मिलती है। यह कितने टुकड़े हुए?",
+          "choices": [
+            "2",
+            "4",
+            "10",
+            "5"
+          ],
+          "solution": "10 टुकड़ों का आधा: 10 ÷ 2 = 5। 2 कहना 'आधे' के 2 को उत्तर पढ़ लेना है — वह 2 हिस्सों की गिनती बताता है, हिस्से का आकार नहीं।"
+        },
+        "mr": {
+          "stem": "चॉकलेटमध्ये 10 तुकडे आहेत. मीनाला अर्धी चॉकलेट मिळते. ते किती तुकडे?",
+          "choices": [
+            "2",
+            "4",
+            "10",
+            "5"
+          ],
+          "solution": "10 तुकड्यांचा अर्धा: 10 ÷ 2 = 5. 2 म्हणणे म्हणजे 'अर्ध्या'तला 2 उत्तर म्हणून वाचणे — तो 2 वाटे किती ते सांगतो, वाटा केवढा ते नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is one third of 12 laddoos?",
+      "choices": [
+        "9",
+        "4",
+        "3",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "Three equal shares of 12: 12 ÷ 3 = 4 each. 6 is the half; 9 is what remains after taking a third, not the third itself.",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "12 लड्डुओं का एक-तिहाई कितना है?",
+          "choices": [
+            "9",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "12 के तीन बराबर हिस्से: 12 ÷ 3 = 4-4। 6 आधा है; 9 तिहाई निकालने के बाद बचा हुआ है, ख़ुद तिहाई नहीं।"
+        },
+        "mr": {
+          "stem": "12 लाडवांचा एक-तृतीयांश किती?",
+          "choices": [
+            "9",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "12 चे तीन सारखे वाटे: 12 ÷ 3 = 4-4. 6 हा अर्धा; 9 म्हणजे तृतीयांश काढल्यावर उरलेले, स्वतः तृतीयांश नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Half of a dozen bananas is how many?",
+      "choices": [
+        "8",
+        "6",
+        "12",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "A dozen is 12, and half of it is 12 ÷ 2 = 6. 3 quarters the dozen — the word asked was half.",
+      "checkExpr": "12/2",
+      "translations": {
+        "hi": {
+          "stem": "दर्जन भर केलों का आधा कितना होता है?",
+          "choices": [
+            "8",
+            "6",
+            "12",
+            "3"
+          ],
+          "solution": "दर्जन यानी 12, उसका आधा 12 ÷ 2 = 6। 3 दर्जन की चौथाई है — पूछा आधा था।"
+        },
+        "mr": {
+          "stem": "डझनभर केळ्यांचा अर्धा किती?",
+          "choices": [
+            "8",
+            "6",
+            "12",
+            "3"
+          ],
+          "solution": "डझन म्हणजे 12, त्याचा अर्धा 12 ÷ 2 = 6. 3 हा डझनाचा पाव — विचारले अर्धा होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is three quarters of 20 pencils?",
+      "choices": [
+        "10",
+        "5",
+        "15",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "A quarter of 20 is 5, so three quarters are 5 × 3 = 15. 5 stops at one quarter — the question asked for three of them.",
+      "checkExpr": "20*3/4",
+      "translations": {
+        "hi": {
+          "stem": "20 पेंसिलों का तीन-चौथाई कितना है?",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "16"
+          ],
+          "solution": "20 की चौथाई 5, तो तीन चौथाई 5 × 3 = 15। 5 एक चौथाई पर रुक जाता है — पूछा तीन का था।"
+        },
+        "mr": {
+          "stem": "20 पेन्सिलींचा तीन-चतुर्थांश किती?",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "16"
+          ],
+          "solution": "20 चा पाव 5, म्हणून तीन पाव 5 × 3 = 15. 5 एका पावावर थांबते — विचारले तिघांचे होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "One fifth of ₹100 goes to the class fund. How much is that?",
+      "choices": [
+        "₹25",
+        "₹5",
+        "₹50",
+        "₹20"
+      ],
+      "answerIndex": 3,
+      "solution": "Five equal shares of ₹100: 100 ÷ 5 = ₹20. ₹25 cuts quarters; a fifth is the smaller slice of a wider split.",
+      "checkExpr": "100/5",
+      "translations": {
+        "hi": {
+          "stem": "₹100 का पाँचवाँ हिस्सा कक्षा-कोष में जाता है। वह कितना है?",
+          "choices": [
+            "₹25",
+            "₹5",
+            "₹50",
+            "₹20"
+          ],
+          "solution": "₹100 के पाँच बराबर हिस्से: 100 ÷ 5 = ₹20। ₹25 चौथाई काटता है; पाँचवाँ हिस्सा ज़्यादा टुकड़ों वाले बँटवारे की छोटी फाँक है।"
+        },
+        "mr": {
+          "stem": "₹100 चा पाचवा हिस्सा वर्ग-निधीत जातो. तो किती?",
+          "choices": [
+            "₹25",
+            "₹5",
+            "₹50",
+            "₹20"
+          ],
+          "solution": "₹100 चे पाच सारखे वाटे: 100 ÷ 5 = ₹20. ₹25 पाव कापते; पाचवा हिस्सा ही जास्त वाट्यांच्या वाटणीतली लहान फोड."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is two fifths of 25 marbles?",
+      "choices": [
+        "5",
+        "15",
+        "20",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "One fifth of 25 is 5, and two fifths are 5 × 2 = 10. 15 takes three fifths; count the fifths the question actually asked for.",
+      "checkExpr": "25*2/5",
+      "translations": {
+        "hi": {
+          "stem": "25 कंचों का दो-पाँचवाँ हिस्सा कितना है?",
+          "choices": [
+            "5",
+            "15",
+            "20",
+            "10"
+          ],
+          "solution": "25 का पाँचवाँ हिस्सा 5, और दो-पाँचवाँ 5 × 2 = 10। 15 तीन हिस्से ले लेता है; उतने ही हिस्से गिनिए जितने सवाल ने माँगे।"
+        },
+        "mr": {
+          "stem": "25 गोट्यांचे दोन-पंचमांश किती?",
+          "choices": [
+            "5",
+            "15",
+            "20",
+            "10"
+          ],
+          "solution": "25 चा पंचमांश 5, आणि दोन-पंचमांश 5 × 2 = 10. 15 तीन हिस्से घेते; प्रश्नाने मागितले तितकेच हिस्से मोजा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "From a 16 cm paper strip, Sana cuts off one quarter. How long is the piece she cut?",
+      "choices": [
+        "4 cm",
+        "12 cm",
+        "8 cm",
+        "2 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "A quarter of 16: 16 ÷ 4 = 4 cm. 12 is the strip LEFT BEHIND — the scissors' question and the leftover's question are different.",
+      "checkExpr": "16/4",
+      "translations": {
+        "hi": {
+          "stem": "16 सेमी की काग़ज़-पट्टी से सना चौथाई काटती है। कटा टुकड़ा कितना लंबा है?",
+          "choices": [
+            "4 सेमी",
+            "12 सेमी",
+            "8 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "16 की चौथाई: 16 ÷ 4 = 4 सेमी। 12 पीछे बची पट्टी है — क़ैंची का सवाल और बचत का सवाल अलग-अलग हैं।"
+        },
+        "mr": {
+          "stem": "16 सेमीच्या कागद-पट्टीतून सना पाव कापते. कापलेला तुकडा किती लांब?",
+          "choices": [
+            "4 सेमी",
+            "12 सेमी",
+            "8 सेमी",
+            "2 सेमी"
+          ],
+          "solution": "16 चा पाव: 16 ÷ 4 = 4 सेमी. 12 ही मागे उरलेली पट्टी — कात्रीचा प्रश्न आणि उरल्याचा प्रश्न वेगवेगळे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Half of a secret number is 9. What is the number?",
+      "choices": [
+        "4",
+        "9",
+        "27",
+        "18"
+      ],
+      "answerIndex": 3,
+      "solution": "If half is 9, the whole is 9 × 2 = 18. Halving 9 to get 4½ walks the wrong way — the question gives the half and asks for the whole.",
+      "checkExpr": "9*2",
+      "translations": {
+        "hi": {
+          "stem": "एक गुप्त संख्या का आधा 9 है। वह संख्या क्या है?",
+          "choices": [
+            "4",
+            "9",
+            "27",
+            "18"
+          ],
+          "solution": "आधा 9 है तो पूरा 9 × 2 = 18। 9 को आधा करना उलटी दिशा है — सवाल आधा देकर पूरा पूछता है।"
+        },
+        "mr": {
+          "stem": "एका गुप्त संख्येचा अर्धा 9 आहे. ती संख्या कोणती?",
+          "choices": [
+            "4",
+            "9",
+            "27",
+            "18"
+          ],
+          "solution": "अर्धा 9 तर पूर्ण 9 × 2 = 18. 9 ला अर्धे करणे उलटी वाट — प्रश्न अर्धा देऊन पूर्ण विचारतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A class has 30 children and one third are girls. How many BOYS are there?",
+      "choices": [
+        "27",
+        "15",
+        "10",
+        "20"
+      ],
+      "answerIndex": 3,
+      "solution": "Girls: 30 ÷ 3 = 10, so boys are 30 − 10 = 20. Answering 10 counts the girls and stops — read which group the question wants.",
+      "checkExpr": "30-30/3",
+      "translations": {
+        "hi": {
+          "stem": "कक्षा में 30 बच्चे हैं और एक-तिहाई लड़कियाँ हैं। लड़के कितने हैं?",
+          "choices": [
+            "27",
+            "15",
+            "10",
+            "20"
+          ],
+          "solution": "लड़कियाँ: 30 ÷ 3 = 10, तो लड़के 30 − 10 = 20। 10 लड़कियाँ गिनकर रुक जाता है — पढ़िए कि सवाल किस समूह को माँगता है।"
+        },
+        "mr": {
+          "stem": "वर्गात 30 मुले आहेत आणि एक-तृतीयांश मुली आहेत. मुलगे किती?",
+          "choices": [
+            "27",
+            "15",
+            "10",
+            "20"
+          ],
+          "solution": "मुली: 30 ÷ 3 = 10, म्हणून मुलगे 30 − 10 = 20. 10 मुली मोजून थांबते — प्रश्न कोणता गट मागतो ते वाचा."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is half of a half of 80?",
+      "choices": [
+        "60",
+        "40",
+        "20",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "Half of 80 is 40; half again is 20 — a quarter of the start, because halving twice quarters. 40 stops after one halving; 10 halves a third time.",
+      "checkExpr": "80/2/2",
+      "translations": {
+        "hi": {
+          "stem": "80 के आधे का आधा कितना है?",
+          "choices": [
+            "60",
+            "40",
+            "20",
+            "10"
+          ],
+          "solution": "80 का आधा 40; फिर आधा 20 — शुरुआत की चौथाई, क्योंकि दो बार आधा करना चौथाई करना है। 40 एक आधे पर रुकता है; 10 तीसरी बार आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "80 च्या अर्ध्याचा अर्धा किती?",
+          "choices": [
+            "60",
+            "40",
+            "20",
+            "10"
+          ],
+          "solution": "80 चा अर्धा 40; पुन्हा अर्धा 20 — सुरुवातीचा पाव, कारण दोनदा अर्धे करणे म्हणजे पाव करणे. 40 एका अर्ध्यावर थांबते; 10 तिसऱ्यांदा अर्धे करते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Grandmother divides her 24 gold coins: half to mother, a third to uncle, and the rest to the temple. How many coins reach the temple?",
+      "choices": [
+        "6",
+        "12",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Mother: 24 ÷ 2 = 12. Uncle: 24 ÷ 3 = 8. Together 20, so the temple gets 24 − 20 = 4 coins. Both fractions cut the SAME whole of 24 — taking the third from what remained after mother is a different will altogether.",
+      "checkExpr": "24-24/2-24/3",
+      "translations": {
+        "hi": {
+          "stem": "दादी अपने 24 सोने के सिक्के बाँटती हैं: आधे माँ को, तिहाई चाचा को, बाक़ी मंदिर को। मंदिर तक कितने सिक्के पहुँचते हैं?",
+          "choices": [
+            "6",
+            "12",
+            "4",
+            "8"
+          ],
+          "solution": "माँ: 24 ÷ 2 = 12। चाचा: 24 ÷ 3 = 8। मिलाकर 20, तो मंदिर को 24 − 20 = 4 सिक्के। दोनों भिन्न उसी पूरे 24 में से कटते हैं — माँ के बाद बचे में से तिहाई निकालना बिलकुल दूसरी वसीयत होती।"
+        },
+        "mr": {
+          "stem": "आजी आपली 24 सोन्याची नाणी वाटते: अर्धी आईला, तृतीयांश काकांना, उरलेली देवळाला. देवळात किती नाणी पोहोचतात?",
+          "choices": [
+            "6",
+            "12",
+            "4",
+            "8"
+          ],
+          "solution": "आई: 24 ÷ 2 = 12. काका: 24 ÷ 3 = 8. मिळून 20, म्हणून देवळाला 24 − 20 = 4 नाणी. दोन्ही अपूर्णांक त्याच पूर्ण 24 मधून कापले जातात — आईनंतर उरलेल्यातून तृतीयांश काढणे हे अगदी वेगळे मृत्युपत्र ठरले असते."
+        }
+      }
+    }
+  ]
+}

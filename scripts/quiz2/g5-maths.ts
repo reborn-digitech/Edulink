@@ -824,4 +824,797 @@ function howManySquares(): TopicFileOut {
   );
 }
 
-export const G5_MATHS: TopicFileOut[] = [theFishTale(), shapesAndAngles(), howManySquares()];
+/* ------------------------------------------------------------------------- */
+/* Chapter 4 — Parts and Wholes (fractions of things that matter)            */
+/* ------------------------------------------------------------------------- */
+function partsAndWholes(): TopicFileOut {
+  const rand = rng("maths-5-parts-and-wholes");
+  const qs: OutQuestion[] = [];
+
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A chocolate bar has 10 pieces. Meena gets half the bar. How many pieces is that?",
+          hi: "चॉकलेट में 10 टुकड़े हैं। मीना को आधी चॉकलेट मिलती है। यह कितने टुकड़े हुए?",
+          mr: "चॉकलेटमध्ये 10 तुकडे आहेत. मीनाला अर्धी चॉकलेट मिळते. ते किती तुकडे?",
+        },
+        answer: 5,
+        wrong: [2, 10, 4],
+        checkExpr: "10/2",
+        solution: {
+          en: "Half of 10 pieces: 10 ÷ 2 = 5. Answering 2 reads the '2' of half as the answer — the 2 says how many shares, not how big.",
+          hi: "10 टुकड़ों का आधा: 10 ÷ 2 = 5। 2 कहना 'आधे' के 2 को उत्तर पढ़ लेना है — वह 2 हिस्सों की गिनती बताता है, हिस्से का आकार नहीं।",
+          mr: "10 तुकड्यांचा अर्धा: 10 ÷ 2 = 5. 2 म्हणणे म्हणजे 'अर्ध्या'तला 2 उत्तर म्हणून वाचणे — तो 2 वाटे किती ते सांगतो, वाटा केवढा ते नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is one third of 12 laddoos?",
+          hi: "12 लड्डुओं का एक-तिहाई कितना है?",
+          mr: "12 लाडवांचा एक-तृतीयांश किती?",
+        },
+        answer: 4,
+        wrong: [3, 6, 9],
+        checkExpr: "12/3",
+        solution: {
+          en: "Three equal shares of 12: 12 ÷ 3 = 4 each. 6 is the half; 9 is what remains after taking a third, not the third itself.",
+          hi: "12 के तीन बराबर हिस्से: 12 ÷ 3 = 4-4। 6 आधा है; 9 तिहाई निकालने के बाद बचा हुआ है, ख़ुद तिहाई नहीं।",
+          mr: "12 चे तीन सारखे वाटे: 12 ÷ 3 = 4-4. 6 हा अर्धा; 9 म्हणजे तृतीयांश काढल्यावर उरलेले, स्वतः तृतीयांश नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Half of a dozen bananas is how many?",
+          hi: "दर्जन भर केलों का आधा कितना होता है?",
+          mr: "डझनभर केळ्यांचा अर्धा किती?",
+        },
+        answer: 6,
+        wrong: [12, 3, 8],
+        checkExpr: "12/2",
+        solution: {
+          en: "A dozen is 12, and half of it is 12 ÷ 2 = 6. 3 quarters the dozen — the word asked was half.",
+          hi: "दर्जन यानी 12, उसका आधा 12 ÷ 2 = 6। 3 दर्जन की चौथाई है — पूछा आधा था।",
+          mr: "डझन म्हणजे 12, त्याचा अर्धा 12 ÷ 2 = 6. 3 हा डझनाचा पाव — विचारले अर्धा होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is three quarters of 20 pencils?",
+          hi: "20 पेंसिलों का तीन-चौथाई कितना है?",
+          mr: "20 पेन्सिलींचा तीन-चतुर्थांश किती?",
+        },
+        answer: 15,
+        wrong: [5, 10, 16],
+        checkExpr: "20*3/4",
+        solution: {
+          en: "A quarter of 20 is 5, so three quarters are 5 × 3 = 15. 5 stops at one quarter — the question asked for three of them.",
+          hi: "20 की चौथाई 5, तो तीन चौथाई 5 × 3 = 15। 5 एक चौथाई पर रुक जाता है — पूछा तीन का था।",
+          mr: "20 चा पाव 5, म्हणून तीन पाव 5 × 3 = 15. 5 एका पावावर थांबते — विचारले तिघांचे होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "One fifth of ₹100 goes to the class fund. How much is that?",
+          hi: "₹100 का पाँचवाँ हिस्सा कक्षा-कोष में जाता है। वह कितना है?",
+          mr: "₹100 चा पाचवा हिस्सा वर्ग-निधीत जातो. तो किती?",
+        },
+        answer: 20,
+        wrong: [5, 25, 50],
+        checkExpr: "100/5",
+        fmt: rupees,
+        solution: {
+          en: "Five equal shares of ₹100: 100 ÷ 5 = ₹20. ₹25 cuts quarters; a fifth is the smaller slice of a wider split.",
+          hi: "₹100 के पाँच बराबर हिस्से: 100 ÷ 5 = ₹20। ₹25 चौथाई काटता है; पाँचवाँ हिस्सा ज़्यादा टुकड़ों वाले बँटवारे की छोटी फाँक है।",
+          mr: "₹100 चे पाच सारखे वाटे: 100 ÷ 5 = ₹20. ₹25 पाव कापते; पाचवा हिस्सा ही जास्त वाट्यांच्या वाटणीतली लहान फोड.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is two fifths of 25 marbles?",
+          hi: "25 कंचों का दो-पाँचवाँ हिस्सा कितना है?",
+          mr: "25 गोट्यांचे दोन-पंचमांश किती?",
+        },
+        answer: 10,
+        wrong: [5, 15, 20],
+        checkExpr: "25*2/5",
+        solution: {
+          en: "One fifth of 25 is 5, and two fifths are 5 × 2 = 10. 15 takes three fifths; count the fifths the question actually asked for.",
+          hi: "25 का पाँचवाँ हिस्सा 5, और दो-पाँचवाँ 5 × 2 = 10। 15 तीन हिस्से ले लेता है; उतने ही हिस्से गिनिए जितने सवाल ने माँगे।",
+          mr: "25 चा पंचमांश 5, आणि दोन-पंचमांश 5 × 2 = 10. 15 तीन हिस्से घेते; प्रश्नाने मागितले तितकेच हिस्से मोजा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "From a 16 cm paper strip, Sana cuts off one quarter. How long is the piece she cut?",
+          hi: "16 सेमी की काग़ज़-पट्टी से सना चौथाई काटती है। कटा टुकड़ा कितना लंबा है?",
+          mr: "16 सेमीच्या कागद-पट्टीतून सना पाव कापते. कापलेला तुकडा किती लांब?",
+        },
+        answer: 4,
+        wrong: [12, 8, 2],
+        checkExpr: "16/4",
+        fmt: cm,
+        solution: {
+          en: "A quarter of 16: 16 ÷ 4 = 4 cm. 12 is the strip LEFT BEHIND — the scissors' question and the leftover's question are different.",
+          hi: "16 की चौथाई: 16 ÷ 4 = 4 सेमी। 12 पीछे बची पट्टी है — क़ैंची का सवाल और बचत का सवाल अलग-अलग हैं।",
+          mr: "16 चा पाव: 16 ÷ 4 = 4 सेमी. 12 ही मागे उरलेली पट्टी — कात्रीचा प्रश्न आणि उरल्याचा प्रश्न वेगवेगळे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Half of a secret number is 9. What is the number?",
+          hi: "एक गुप्त संख्या का आधा 9 है। वह संख्या क्या है?",
+          mr: "एका गुप्त संख्येचा अर्धा 9 आहे. ती संख्या कोणती?",
+        },
+        answer: 18,
+        wrong: [4, 9, 27],
+        checkExpr: "9*2",
+        solution: {
+          en: "If half is 9, the whole is 9 × 2 = 18. Halving 9 to get 4½ walks the wrong way — the question gives the half and asks for the whole.",
+          hi: "आधा 9 है तो पूरा 9 × 2 = 18। 9 को आधा करना उलटी दिशा है — सवाल आधा देकर पूरा पूछता है।",
+          mr: "अर्धा 9 तर पूर्ण 9 × 2 = 18. 9 ला अर्धे करणे उलटी वाट — प्रश्न अर्धा देऊन पूर्ण विचारतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A class has 30 children and one third are girls. How many BOYS are there?",
+          hi: "कक्षा में 30 बच्चे हैं और एक-तिहाई लड़कियाँ हैं। लड़के कितने हैं?",
+          mr: "वर्गात 30 मुले आहेत आणि एक-तृतीयांश मुली आहेत. मुलगे किती?",
+        },
+        answer: 20,
+        wrong: [10, 15, 27],
+        checkExpr: "30-30/3",
+        solution: {
+          en: "Girls: 30 ÷ 3 = 10, so boys are 30 − 10 = 20. Answering 10 counts the girls and stops — read which group the question wants.",
+          hi: "लड़कियाँ: 30 ÷ 3 = 10, तो लड़के 30 − 10 = 20। 10 लड़कियाँ गिनकर रुक जाता है — पढ़िए कि सवाल किस समूह को माँगता है।",
+          mr: "मुली: 30 ÷ 3 = 10, म्हणून मुलगे 30 − 10 = 20. 10 मुली मोजून थांबते — प्रश्न कोणता गट मागतो ते वाचा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is half of a half of 80?",
+          hi: "80 के आधे का आधा कितना है?",
+          mr: "80 च्या अर्ध्याचा अर्धा किती?",
+        },
+        answer: 20,
+        wrong: [40, 10, 60],
+        checkExpr: "80/2/2",
+        solution: {
+          en: "Half of 80 is 40; half again is 20 — a quarter of the start, because halving twice quarters. 40 stops after one halving; 10 halves a third time.",
+          hi: "80 का आधा 40; फिर आधा 20 — शुरुआत की चौथाई, क्योंकि दो बार आधा करना चौथाई करना है। 40 एक आधे पर रुकता है; 10 तीसरी बार आधा कर देता है।",
+          mr: "80 चा अर्धा 40; पुन्हा अर्धा 20 — सुरुवातीचा पाव, कारण दोनदा अर्धे करणे म्हणजे पाव करणे. 40 एका अर्ध्यावर थांबते; 10 तिसऱ्यांदा अर्धे करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Grandmother divides her 24 gold coins: half to mother, a third to uncle, and the rest to the temple. How many coins reach the temple?",
+          hi: "दादी अपने 24 सोने के सिक्के बाँटती हैं: आधे माँ को, तिहाई चाचा को, बाक़ी मंदिर को। मंदिर तक कितने सिक्के पहुँचते हैं?",
+          mr: "आजी आपली 24 सोन्याची नाणी वाटते: अर्धी आईला, तृतीयांश काकांना, उरलेली देवळाला. देवळात किती नाणी पोहोचतात?",
+        },
+        answer: 4,
+        wrong: [8, 12, 6],
+        checkExpr: "24-24/2-24/3",
+        solution: {
+          en: "Mother: 24 ÷ 2 = 12. Uncle: 24 ÷ 3 = 8. Together 20, so the temple gets 24 − 20 = 4 coins. Both fractions cut the SAME whole of 24 — taking the third from what remained after mother is a different will altogether.",
+          hi: "माँ: 24 ÷ 2 = 12। चाचा: 24 ÷ 3 = 8। मिलाकर 20, तो मंदिर को 24 − 20 = 4 सिक्के। दोनों भिन्न उसी पूरे 24 में से कटते हैं — माँ के बाद बचे में से तिहाई निकालना बिलकुल दूसरी वसीयत होती।",
+          mr: "आई: 24 ÷ 2 = 12. काका: 24 ÷ 3 = 8. मिळून 20, म्हणून देवळाला 24 − 20 = 4 नाणी. दोन्ही अपूर्णांक त्याच पूर्ण 24 मधून कापले जातात — आईनंतर उरलेल्यातून तृतीयांश काढणे हे अगदी वेगळे मृत्युपत्र ठरले असते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 4 — Parts and Wholes",
+      name: "Parts and Wholes",
+      slug: "maths-5-parts-and-wholes",
+      summary: "Halves, thirds, quarters and fifths of real things — shares that must cut the same whole, and wholes rebuilt from their halves.",
+      position: 4,
+      translations: {
+        hi: {
+          name: "हिस्से और पूरा",
+          summary: "असली चीज़ों के आधे, तिहाई, चौथाई और पाँचवें हिस्से — हिस्से जो एक ही पूरे से कटें, और आधों से फिर जुड़ते पूरे।",
+        },
+        mr: {
+          name: "हिस्से आणि पूर्ण",
+          summary: "खऱ्या वस्तूंचे अर्धे, तृतीयांश, पाव आणि पंचमांश — एकाच पूर्णातून कापले जाणारे वाटे, आणि अर्ध्यांतून पुन्हा जुळणारे पूर्ण.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — Be My Multiple, I'll Be Your Factor                           */
+/* ------------------------------------------------------------------------- */
+function multiplesAndFactors(): TopicFileOut {
+  const rand = rng("maths-5-be-my-multiple");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Which of these numbers is a multiple of 7?",
+          hi: "इनमें से कौन-सी संख्या 7 का गुणज (मल्टीपल) है?",
+          mr: "यांपैकी कोणती संख्या 7 चा पट (गुणज) आहे?",
+        },
+        answer: 21,
+        wrong: [27, 17, 37],
+        checkExpr: "7*3",
+        solution: {
+          en: "21 = 7 × 3, so 21 sits in the seven-times table. 27, 17 and 37 all END in seven — but wearing a 7 is not the same as being built of sevens.",
+          hi: "21 = 7 × 3, तो 21 सात के पहाड़े में बैठता है। 27, 17 और 37 सब सात पर ख़त्म होते हैं — पर 7 ओढ़ना और सातों से बना होना एक बात नहीं।",
+          mr: "21 = 7 × 3, म्हणून 21 साताच्या पाढ्यात बसतो. 27, 17 आणि 37 सारे सातावर संपतात — पण 7 पांघरणे आणि सातांनी बनणे एक नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the 4th multiple of 5?",
+          hi: "5 का चौथा गुणज कौन-सा है?",
+          mr: "5 चा चौथा पट कोणता?",
+        },
+        answer: 20,
+        wrong: [15, 25, 9],
+        checkExpr: "5*4",
+        solution: {
+          en: "Count the table: 5, 10, 15, 20 — the 4th is 5 × 4 = 20. 15 stops a step early; 9 adds instead of multiplying.",
+          hi: "पहाड़ा गिनिए: 5, 10, 15, 20 — चौथा है 5 × 4 = 20। 15 एक सीढ़ी पहले रुकता है; 9 गुणा की जगह जोड़ देता है।",
+          mr: "पाढा मोजा: 5, 10, 15, 20 — चौथा म्हणजे 5 × 4 = 20. 15 एक पायरी आधी थांबते; 9 गुणण्याऐवजी मिळवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Every number's FIRST multiple is the number itself. What is the first multiple of 9?",
+          hi: "हर संख्या का पहला गुणज वह स्वयं होती है। 9 का पहला गुणज क्या है?",
+          mr: "प्रत्येक संख्येचा पहिला पट ती स्वतःच असते. 9 चा पहिला पट काय?",
+        },
+        answer: 9,
+        wrong: [18, 1, 90],
+        checkExpr: "9*1",
+        solution: {
+          en: "9 × 1 = 9 — the table begins at the number itself. 18 is the second step; 1 is a factor of 9, standing on the other side of the friendship.",
+          hi: "9 × 1 = 9 — पहाड़ा संख्या से ही शुरू होता है। 18 दूसरी सीढ़ी है; 1 तो 9 का गुणनखंड है, दोस्ती के दूसरे छोर पर खड़ा।",
+          mr: "9 × 1 = 9 — पाढा संख्येपासूनच सुरू होतो. 18 ही दुसरी पायरी; 1 हा 9 चा अवयव, मैत्रीच्या दुसऱ्या टोकाला उभा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many factors does 6 have in all?",
+          hi: "6 के कुल कितने गुणनखंड हैं?",
+          mr: "6 चे एकूण किती अवयव आहेत?",
+        },
+        answer: 4,
+        wrong: [2, 3, 6],
+        solution: {
+          en: "The factors of 6 are 1, 2, 3 and 6 — four of them, in the pairs 1 × 6 and 2 × 3. Forgetting 1 and the number itself is how factor-counts come up short.",
+          hi: "6 के गुणनखंड हैं 1, 2, 3 और 6 — चार, जोड़ों 1 × 6 और 2 × 3 में। 1 और स्वयं संख्या को भूलना ही गिनती घटा देता है।",
+          mr: "6 चे अवयव 1, 2, 3 आणि 6 — चार, 1 × 6 आणि 2 × 3 या जोड्यांत. 1 आणि स्वतः संख्या विसरणे यानेच मोजणी कमी भरते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "From 0, a frog hops in 2s and a squirrel in 3s. On which FIRST number do both land together?",
+          hi: "0 से मेंढक 2-2 की और गिलहरी 3-3 की छलाँग भरती है। दोनों पहली बार किस संख्या पर साथ उतरते हैं?",
+          mr: "0 पासून बेडूक 2-2 च्या आणि खार 3-3 च्या उड्या मारते. दोघे पहिल्यांदा कोणत्या संख्येवर एकत्र उतरतात?",
+        },
+        answer: 6,
+        wrong: [5, 12, 3],
+        checkExpr: "2*3",
+        solution: {
+          en: "The frog lands on 2, 4, 6…; the squirrel on 3, 6… — the first shared landing is 6, the first common multiple of 2 and 3. 12 is a meeting too, but their SECOND.",
+          hi: "मेंढक 2, 4, 6… पर उतरता है; गिलहरी 3, 6… पर — पहली साझी ज़मीन 6 है, 2 और 3 का पहला समापवर्त्य। 12 भी मुलाक़ात है, पर दूसरी।",
+          mr: "बेडूक 2, 4, 6… वर उतरतो; खार 3, 6… वर — पहिली सामायिक जागा 6, 2 आणि 3 चा पहिला सामाईक पट. 12 हीही भेट आहे, पण दुसरी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the SMALLEST number that is a multiple of both 4 and 6?",
+          hi: "वह सबसे छोटी संख्या कौन-सी है जो 4 और 6 दोनों का गुणज हो?",
+          mr: "4 आणि 6 दोघांचा पट असणारी सर्वांत लहान संख्या कोणती?",
+        },
+        answer: 12,
+        wrong: [24, 2, 10],
+        checkExpr: "4*3",
+        solution: {
+          en: "Fours: 4, 8, 12…; sixes: 6, 12… — they first agree at 12. 24 is a common multiple too, but not the smallest; 2 is a common FACTOR, the other end of the story.",
+          hi: "चार: 4, 8, 12…; छह: 6, 12… — पहली सहमति 12 पर। 24 भी समापवर्त्य है, पर सबसे छोटा नहीं; 2 समापवर्तक है — कहानी का दूसरा सिरा।",
+          mr: "चार: 4, 8, 12…; सहा: 6, 12… — पहिली सहमती 12 वर. 24 हाही सामाईक पट, पण सर्वांत लहान नव्हे; 2 हा सामाईक अवयव — गोष्टीचे दुसरे टोक.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "To test whether 51 is a multiple of 3, add its digits. What do the digits of 51 add to?",
+          hi: "51 के 3 का गुणज होने की जाँच के लिए उसके अंक जोड़िए। 51 के अंकों का योग क्या है?",
+          mr: "51 हा 3 चा पट आहे का हे तपासायला त्याचे अंक मिळवा. 51 च्या अंकांची बेरीज किती?",
+        },
+        answer: 6,
+        wrong: [51, 4, 15],
+        checkExpr: "5+1",
+        solution: {
+          en: "5 + 1 = 6, and 6 IS a multiple of 3 — so 51 = 3 × 17 is too, though it looks so prime. The digit-sum test catches what the eye misses.",
+          hi: "5 + 1 = 6, और 6 तीन का गुणज है — तो 51 = 3 × 17 भी है, भले देखने में कैसा भी अभाज्य लगे। अंक-योग की जाँच वह पकड़ती है जो आँख से छूट जाता है।",
+          mr: "5 + 1 = 6, आणि 6 हा तीनचा पट आहे — म्हणून 51 = 3 × 17 हाही आहे, दिसायला कितीही मूळ वाटला तरी. अंक-बेरजेची चाचणी डोळ्याला सुटते ते पकडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the BIGGEST number that divides both 36 and 24 exactly?",
+          hi: "वह सबसे बड़ी संख्या कौन-सी है जो 36 और 24 दोनों को पूरा-पूरा बाँट दे?",
+          mr: "36 आणि 24 दोघांना नि:शेष भाग जाणारी सर्वांत मोठी संख्या कोणती?",
+        },
+        answer: 12,
+        wrong: [6, 24, 4],
+        checkExpr: "36/3",
+        solution: {
+          en: "36 = 12 × 3 and 24 = 12 × 2 — 12 divides both, and nothing bigger does. 6 divides both too, but the question asked for the biggest such friend.",
+          hi: "36 = 12 × 3 और 24 = 12 × 2 — 12 दोनों को बाँटता है, और उससे बड़ा कोई नहीं। 6 भी दोनों को बाँटता है, पर पूछा सबसे बड़ा साथी था।",
+          mr: "36 = 12 × 3 आणि 24 = 12 × 2 — 12 दोघांना भागतो, आणि त्याहून मोठा कोणी नाही. 6 ही दोघांना भागतो, पण विचारले सर्वांत मोठा मित्र होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Bangles come in boxes of 12 and also in boxes of 18. What is the smallest number of bangles that fills EITHER kind of box exactly, with none left over?",
+          hi: "चूड़ियाँ 12-12 के और 18-18 के डिब्बों में आती हैं। वह सबसे छोटी गिनती कौन-सी है जो दोनों में से किसी भी तरह के डिब्बे ठीक-ठीक भर दे, कुछ बचे नहीं?",
+          mr: "बांगड्या 12-12 च्या आणि 18-18 च्याही खोक्यांत येतात. दोन्हींपैकी कोणत्याही प्रकारची खोकी नेमकी भरणारी, काही न उरणारी सर्वांत लहान संख्या कोणती?",
+        },
+        answer: 36,
+        wrong: [30, 216, 6],
+        checkExpr: "12*3",
+        solution: {
+          en: "Twelves: 12, 24, 36…; eighteens: 18, 36… — 36 is their first meeting: 3 boxes of 12 or 2 boxes of 18. 216 multiplies 12 × 18, a common multiple but a wasteful one; 6 is their common factor, the opposite question.",
+          hi: "बारह: 12, 24, 36…; अठारह: 18, 36… — पहली मुलाक़ात 36 पर: 12 के 3 डिब्बे या 18 के 2। 216 यानी 12 × 18 भी समापवर्त्य है, पर फ़िज़ूल बड़ा; 6 समापवर्तक है — उलटा सवाल।",
+          mr: "बारा: 12, 24, 36…; अठरा: 18, 36… — पहिली भेट 36 वर: 12 ची 3 खोकी वा 18 ची 2. 216 म्हणजे 12 × 18 हाही सामाईक पट, पण उधळ्या; 6 हा सामाईक अवयव — उलटा प्रश्न.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Three temple bells ring every 6, 8 and 12 minutes. They have just rung together. After how many minutes will all three ring together again?",
+          hi: "मंदिर की तीन घंटियाँ हर 6, 8 और 12 मिनट पर बजती हैं। अभी-अभी तीनों साथ बजी हैं। कितने मिनट बाद तीनों फिर साथ बजेंगी?",
+          mr: "देवळाच्या तीन घंटा दर 6, 8 आणि 12 मिनिटांनी वाजतात. आत्ताच तिन्ही एकत्र वाजल्या. किती मिनिटांनी तिन्ही पुन्हा एकत्र वाजतील?",
+        },
+        answer: 24,
+        wrong: [12, 48, 26],
+        checkExpr: "8*3",
+        solution: {
+          en: "Sixes: 6, 12, 18, 24…; eights: 8, 16, 24…; twelves: 12, 24… — the first minute in all three lists is 24. 12 satisfies the 6-bell and 12-bell but leaves the 8-bell silent mid-count.",
+          hi: "छह: 6, 12, 18, 24…; आठ: 8, 16, 24…; बारह: 12, 24… — तीनों सूचियों का पहला साझा मिनट 24 है। 12 पर 6 और 12 वाली मान जाती हैं, पर 8 वाली गिनती के बीच चुप खड़ी है।",
+          mr: "सहा: 6, 12, 18, 24…; आठ: 8, 16, 24…; बारा: 12, 24… — तिन्ही याद्यांतले पहिले सामाईक मिनिट 24. 12 वर 6 आणि 12 वाल्या तयार, पण 8 वाली मोजणीच्या मध्येच गप्प उभी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A basket of mangoes, counted 2 at a time, leaves 1 over; counted 3 at a time, it also leaves 1 over. What is the SMALLEST such number of mangoes (more than 1)?",
+          hi: "आमों की टोकरी 2-2 करके गिनने पर 1 बचता है; 3-3 करके गिनने पर भी 1 बचता है। ऐसे आमों की सबसे छोटी गिनती (1 से ज़्यादा) क्या है?",
+          mr: "आंब्यांची टोपली 2-2 ने मोजली की 1 उरतो; 3-3 ने मोजली तरी 1 उरतो. अशा आंब्यांची सर्वांत लहान संख्या (1 हून जास्त) किती?",
+        },
+        answer: 7,
+        wrong: [5, 6, 13],
+        checkExpr: "2*3+1",
+        solution: {
+          en: "One less than the answer must divide by BOTH 2 and 3 — the smallest such is 6, so the basket holds 6 + 1 = 7: three 2s and one over, two 3s and one over. 5 works for the 2-count but not the 3-count; 13 works for both but is the second answer, not the smallest.",
+          hi: "उत्तर से एक कम को 2 और 3 दोनों से बँटना होगा — ऐसा सबसे छोटा 6 है, तो टोकरी में 6 + 1 = 7: तीन जोड़े और एक ऊपर, दो तिकड़ी और एक ऊपर। 5 दो की गिनती में खरा है, तीन की में नहीं; 13 दोनों में खरा है, पर दूसरा उत्तर है, सबसे छोटा नहीं।",
+          mr: "उत्तराहून एक कमी संख्येला 2 आणि 3 दोन्हींनी भागले पाहिजे — अशी सर्वांत लहान 6, म्हणून टोपलीत 6 + 1 = 7: तीन जोड्या आणि एक वर, दोन त्रिकुटे आणि एक वर. 5 दोनच्या मोजणीत खरा, तीनच्या मध्ये नाही; 13 दोन्हींत खरा, पण तो दुसरा — सर्वांत लहान नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 6 — Be My Multiple, I'll Be Your Factor",
+      name: "Be My Multiple, I'll Be Your Factor",
+      slug: "maths-5-be-my-multiple",
+      summary: "Multiples, factors and their meeting points — hopping frogs, agreeing bells, bangles that fill two boxes, and the mango basket's remainder riddle.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "मेरा गुणज बनो, मैं तुम्हारा गुणनखंड",
+          summary: "गुणज, गुणनखंड और उनके मिलन-बिंदु — कूदते मेंढक, सहमत घंटियाँ, दो डिब्बे भरतीं चूड़ियाँ, और आम की टोकरी की शेष-पहेली।",
+        },
+        mr: {
+          name: "माझा पट हो, मी तुझा अवयव",
+          summary: "पट, अवयव आणि त्यांचे भेटीचे बिंदू — उड्या मारणारे बेडूक, सहमत घंटा, दोन खोकी भरणाऱ्या बांगड्या, आणि आंब्याच्या टोपलीचे बाकीचे कोडे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Tenths and Hundredths (decimals in money and measure)        */
+/* ------------------------------------------------------------------------- */
+function tenthsAndHundredths(): TopicFileOut {
+  const rand = rng("maths-5-tenths-and-hundredths");
+  const qs: OutQuestion[] = [];
+
+  const paise = (n: number) => ({ en: `${n} paise`, hi: `${n} पैसे`, mr: `${n} पैसे` });
+  const mm = (n: number) => ({ en: `${n} mm`, hi: `${n} मिमी`, mr: `${n} मिमी` });
+  const mlF = (n: number) => ({ en: `${n} mL`, hi: `${n} मिली`, mr: `${n} मिली` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Half a rupee, written ₹0.50 — how many paise is that?",
+          hi: "आधा रुपया, यानी ₹0.50 — यह कितने पैसे हुए?",
+          mr: "अर्धा रुपया, म्हणजे ₹0.50 — ते किती पैसे?",
+        },
+        answer: 50,
+        wrong: [5, 100, 25],
+        checkExpr: "100/2",
+        fmt: paise,
+        solution: {
+          en: "A rupee is 100 paise, so half is 100 ÷ 2 = 50 paise — the .50 after the point says exactly that. 5 reads the '5' and drops its place.",
+          hi: "रुपया यानी 100 पैसे, तो आधा 100 ÷ 2 = 50 पैसे — बिंदी के बाद का .50 यही कहता है। 5 केवल '5' पढ़कर उसका स्थान गिरा देता है।",
+          mr: "रुपया म्हणजे 100 पैसे, म्हणून अर्धा 100 ÷ 2 = 50 पैसे — टिंबानंतरचे .50 नेमके हेच सांगते. 5 फक्त '5' वाचून त्याची जागा पाडते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is one tenth of 100?",
+          hi: "100 का दसवाँ हिस्सा कितना है?",
+          mr: "100 चा दशांश किती?",
+        },
+        answer: 10,
+        wrong: [1, 90, 1000],
+        checkExpr: "100/10",
+        solution: {
+          en: "Ten equal shares of 100: 100 ÷ 10 = 10. 1 is a hundredth; a tenth is ten times that. 1000 multiplies instead of sharing.",
+          hi: "100 के दस बराबर हिस्से: 100 ÷ 10 = 10। 1 सौवाँ हिस्सा है; दसवाँ उसका दस गुना। 1000 बाँटने की जगह गुणा कर देता है।",
+          mr: "100 चे दहा सारखे वाटे: 100 ÷ 10 = 10. 1 हा शतांश; दशांश त्याच्या दसपट. 1000 वाटण्याऐवजी गुणते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A pencil measures 2.5 cm more than Rehan's finger. In millimetres, how much more is that?",
+          hi: "पेंसिल रेहान की उँगली से 2.5 सेमी ज़्यादा लंबी है। मिलीमीटर में यह कितना ज़्यादा है?",
+          mr: "पेन्सिल रेहानच्या बोटाहून 2.5 सेमी जास्त लांब आहे. मिलिमीटरमध्ये ते किती जास्त?",
+        },
+        answer: 25,
+        wrong: [250, 2, 5],
+        checkExpr: "50/2",
+        fmt: mm,
+        solution: {
+          en: "Each cm is 10 mm, so 2.5 cm is 2 × 10 + 5 = 25 mm — the .5 is five tenths of a centimetre, which is 5 whole millimetres. 250 slides the point one place too far.",
+          hi: "हर सेमी 10 मिमी, तो 2.5 सेमी = 2 × 10 + 5 = 25 मिमी — .5 यानी सेंटीमीटर के पाँच दसवें हिस्से, जो पूरे 5 मिलीमीटर हैं। 250 बिंदी को एक घर आगे सरका देता है।",
+          mr: "प्रत्येक सेमी 10 मिमी, म्हणून 2.5 सेमी = 2 × 10 + 5 = 25 मिमी — .5 म्हणजे सेंटिमीटरचे पाच दशांश, जे पूर्ण 5 मिलिमीटर. 250 टिंब एक घर पुढे सरकवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A ticket costs ₹0.75 — three quarters of a rupee. How many paise is that?",
+          hi: "टिकट ₹0.75 का है — रुपये का तीन-चौथाई। यह कितने पैसे हुए?",
+          mr: "तिकीट ₹0.75 चे — रुपयाचा पाऊण भाग. ते किती पैसे?",
+        },
+        answer: 75,
+        wrong: [25, 705, 7],
+        checkExpr: "3*25",
+        fmt: paise,
+        solution: {
+          en: "Three quarters of 100 paise: 25 × 3 = 75 paise. 25 gives one quarter; 705 misreads the decimal's two places as rupees-and-a-place.",
+          hi: "100 पैसों का तीन-चौथाई: 25 × 3 = 75 पैसे। 25 एक चौथाई है; 705 दशमलव के दो स्थानों को ग़लत पढ़ता है।",
+          mr: "100 पैशांचा पाऊण: 25 × 3 = 75 पैसे. 25 म्हणजे एक पाव; 705 दशांशाची दोन स्थाने चुकीची वाचते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is one hundredth of 500?",
+          hi: "500 का सौवाँ हिस्सा कितना है?",
+          mr: "500 चा शतांश किती?",
+        },
+        answer: 5,
+        wrong: [50, 100, 5000],
+        checkExpr: "500/100",
+        solution: {
+          en: "A hundred equal shares: 500 ÷ 100 = 5. 50 finds the tenth — the hundredth is one staircase further down.",
+          hi: "सौ बराबर हिस्से: 500 ÷ 100 = 5। 50 दसवाँ हिस्सा है — सौवाँ उससे एक सीढ़ी और नीचे।",
+          mr: "शंभर सारखे वाटे: 500 ÷ 100 = 5. 50 हा दशांश — शतांश त्याहून एक पायरी खाली.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "How many paise make ₹2.37?",
+          hi: "₹2.37 में कितने पैसे होते हैं?",
+          mr: "₹2.37 मध्ये किती पैसे असतात?",
+        },
+        answer: 237,
+        wrong: [239, 2037, 37],
+        checkExpr: "2*100+37",
+        fmt: paise,
+        solution: {
+          en: "Two rupees are 200 paise, plus the 37 after the point: 200 + 37 = 237 paise. 37 forgets the rupees; 2037 pushes the 37 two places too far out.",
+          hi: "दो रुपये यानी 200 पैसे, ऊपर से बिंदी के बाद के 37: 200 + 37 = 237 पैसे। 37 रुपये भूल जाता है; 2037 सैंतीस को दो घर बाहर धकेल देता है।",
+          mr: "दोन रुपये म्हणजे 200 पैसे, शिवाय टिंबानंतरचे 37: 200 + 37 = 237 पैसे. 37 रुपये विसरते; 2037 सदतीसला दोन घरे बाहेर ढकलते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A 1.5 litre bottle of water holds how many millilitres?",
+          hi: "1.5 लीटर की पानी की बोतल में कितने मिलीलीटर आते हैं?",
+          mr: "1.5 लिटरच्या पाण्याच्या बाटलीत किती मिलिलिटर मावतात?",
+        },
+        answer: 1500,
+        wrong: [150, 105, 15000],
+        checkExpr: "3*500",
+        fmt: mlF,
+        solution: {
+          en: "1.5 L is a litre and a half: 1000 + 500 = 1500 mL — three half-litres. 150 slides the point one place; 105 reads .5 as 5 mL.",
+          hi: "1.5 लीटर यानी डेढ़ लीटर: 1000 + 500 = 1500 मिली — तीन आधे लीटर। 150 बिंदी एक घर सरकाता है; 105 में .5 को 5 मिली पढ़ लिया गया।",
+          mr: "1.5 लिटर म्हणजे दीड लिटर: 1000 + 500 = 1500 मिली — तीन अर्धे लिटर. 150 टिंब एक घर सरकवते; 105 मध्ये .5 ला 5 मिली वाचले गेले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A fever chart reads 36.5° in the morning and 38.5° at night. By how many degrees did the temperature rise?",
+          hi: "बुख़ार-पत्र पर सुबह 36.5° और रात 38.5° लिखा है। तापमान कितने डिग्री चढ़ा?",
+          mr: "ताप-पत्रकावर सकाळी 36.5° आणि रात्री 38.5° लिहिले आहे. तापमान किती अंशांनी चढले?",
+        },
+        answer: 2,
+        wrong: [1, 3, 20],
+        checkExpr: "38-36",
+        solution: {
+          en: "The .5s match and cancel, leaving 38 − 36 = 2 degrees of rise. 20 subtracts as if the decimals were whole numbers 385 and 365 — the point holds each digit to its place.",
+          hi: "दोनों .5 बराबर हैं और कट जाते हैं, बचा 38 − 36 = 2 डिग्री का चढ़ाव। 20 ऐसे घटाता है मानो 385 और 365 हों — बिंदी हर अंक को उसकी जगह थामे रखती है।",
+          mr: "दोन्ही .5 सारखे असून कापले जातात, उरली 38 − 36 = 2 अंशांची चढण. 20 जणू 385 आणि 365 असल्यासारखे वजा करते — टिंब प्रत्येक अंकाला त्याच्या जागी धरून ठेवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Ten tenths are gathered together. How many WHOLES do they make?",
+          hi: "दस दसवें हिस्से इकट्ठे किए गए। वे कितने पूरे बनाते हैं?",
+          mr: "दहा दशांश एकत्र केले. ते किती पूर्ण होतात?",
+        },
+        answer: 1,
+        wrong: [10, 100, 2],
+        checkExpr: "10/10",
+        solution: {
+          en: "Ten tenths rebuild exactly one whole: 10 ÷ 10 = 1 — the way ten 10-paise coins make one rupee. 10 counts the pieces, not the wholes they form.",
+          hi: "दस दसवें हिस्से ठीक एक पूरा बनाते हैं: 10 ÷ 10 = 1 — जैसे दस दस-पैसे के सिक्के एक रुपया। 10 टुकड़े गिनता है, उनसे बना पूरा नहीं।",
+          mr: "दहा दशांश नेमके एक पूर्ण करतात: 10 ÷ 10 = 1 — जशी दहा दहा-पैशांची नाणी एक रुपया. 10 तुकडे मोजते, त्यांतून झालेले पूर्ण नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Add 0.9 and 0.1 — but answer in TENTHS: how many tenths do they make together?",
+          hi: "0.9 और 0.1 जोड़िए — पर उत्तर दसवें हिस्सों में दीजिए: दोनों मिलकर कितने दसवें हिस्से बनते हैं?",
+          mr: "0.9 आणि 0.1 मिळवा — पण उत्तर दशांशांत द्या: दोघे मिळून किती दशांश होतात?",
+        },
+        answer: 10,
+        wrong: [1, 91, 9],
+        checkExpr: "9+1",
+        solution: {
+          en: "0.9 is 9 tenths and 0.1 is 1 tenth: 9 + 1 = 10 tenths — which is exactly one whole. Both 10-tenths and 1-whole are right; the question asked in tenths. 91 glues the digits instead of adding the tenths.",
+          hi: "0.9 यानी 9 दसवें और 0.1 यानी 1 दसवाँ: 9 + 1 = 10 दसवें — जो ठीक एक पूरा है। 10 दसवें और 1 पूरा दोनों सही हैं; सवाल दसवें हिस्सों में पूछा था। 91 दसवें जोड़ने की जगह अंक चिपका देता है।",
+          mr: "0.9 म्हणजे 9 दशांश आणि 0.1 म्हणजे 1 दशांश: 9 + 1 = 10 दशांश — जे नेमके एक पूर्ण. 10 दशांश आणि 1 पूर्ण दोन्ही बरोबर; प्रश्न दशांशांत विचारला होता. 91 दशांश मिळवण्याऐवजी अंक चिकटवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A sprinter ran the race in 12.4 seconds last year and 11.9 seconds this year. By how many TENTHS of a second did she improve?",
+          hi: "धाविका ने पिछले साल दौड़ 12.4 सेकंड में पूरी की और इस साल 11.9 सेकंड में। वह सेकंड के कितने दसवें हिस्सों से सुधरी?",
+          mr: "धावपटूने गेल्या वर्षी शर्यत 12.4 सेकंदांत पूर्ण केली आणि यंदा 11.9 सेकंदांत. ती सेकंदाच्या किती दशांशांनी सुधारली?",
+        },
+        answer: 5,
+        wrong: [15, 4, 50],
+        checkExpr: "124-119",
+        solution: {
+          en: "Turn both into tenths: 12.4 s = 124 tenths, 11.9 s = 119 tenths, and 124 − 119 = 5 tenths — half a second. 15 subtracts 12.4 − 11.9 as '12 minus 11, 4 minus 9 borrowed wrongly'; whole-and-decimal subtraction is safest marched through one unit.",
+          hi: "दोनों को दसवें हिस्सों में बदलिए: 12.4 से = 124 दसवें, 11.9 से = 119 दसवें, और 124 − 119 = 5 दसवें — आधा सेकंड। 15 में घटाव का हासिल उलटा चला; पूर्ण-और-दशमलव का घटाव एक ही इकाई में उतारकर सबसे सुरक्षित रहता है।",
+          mr: "दोन्ही दशांशांत बदला: 12.4 से = 124 दशांश, 11.9 से = 119 दशांश, आणि 124 − 119 = 5 दशांश — अर्धा सेकंद. 15 मध्ये वजाबाकीचा हातचा उलटा गेला; पूर्ण-आणि-दशांशाची वजाबाकी एकाच एककात उतरवून सर्वांत सुरक्षित.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 5,
+      chapter: "Chapter 10 — Tenths and Hundredths",
+      name: "Tenths and Hundredths",
+      slug: "maths-5-tenths-and-hundredths",
+      summary: "The decimal point in money, lengths and stopwatch times — tenths that rebuild wholes, and points that must not slide.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "दसवाँ और सौवाँ",
+          summary: "पैसों, लंबाइयों और स्टॉपवॉच के समय में दशमलव बिंदी — पूरे बनाते दसवें हिस्से, और बिंदियाँ जो सरकनी नहीं चाहिए।",
+        },
+        mr: {
+          name: "दशांश आणि शतांश",
+          summary: "पैसे, लांबी आणि स्टॉपवॉचच्या वेळांतले दशांश टिंब — पूर्ण उभारणारे दशांश, आणि न सरकू द्यायची टिंबे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+export const G5_MATHS: TopicFileOut[] = [
+  theFishTale(),
+  shapesAndAngles(),
+  howManySquares(),
+  partsAndWholes(),
+  multiplesAndFactors(),
+  tenthsAndHundredths(),
+];
