@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 10 — Mensuration",
+  "name": "Mensuration",
+  "slug": "maths-6-mensuration",
+  "summary": "Perimeter and area with formulas at last — triple fences, tiled floors, joined squares that swallow a wall, and the path found by subtraction.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "क्षेत्रमिति",
+      "summary": "आख़िरकार सूत्रों के साथ परिमिति और क्षेत्रफल — तिहरी बाड़ें, टाइल वाले फ़र्श, दीवार निगलते जुड़े वर्ग, और घटाव से मिली पगडंडी।"
+    },
+    "mr": {
+      "name": "क्षेत्रमापन",
+      "summary": "अखेर सूत्रांसह परिमिती आणि क्षेत्रफळ — तिहेरी कुंपणे, लाद्यांच्या फरश्या, भिंत गिळणारे जोडलेले चौरस, आणि वजाबाकीने सापडलेली वाट."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A rectangle is 12 m long and 8 m wide. What is its perimeter?",
+      "choices": [
+        "96 m",
+        "40 m",
+        "32 m",
+        "20 m"
+      ],
+      "answerIndex": 1,
+      "solution": "2 × (12 + 8) = 40 m — both lengths and both widths walked once. 96 multiplies into area; 20 walks only half the way round.",
+      "checkExpr": "2*(12+8)",
+      "translations": {
+        "hi": {
+          "stem": "आयत 12 मीटर लंबा और 8 मीटर चौड़ा है। उसकी परिमिति कितनी?",
+          "choices": [
+            "96 मीटर",
+            "40 मीटर",
+            "32 मीटर",
+            "20 मीटर"
+          ],
+          "solution": "2 × (12 + 8) = 40 मीटर — दोनों लंबाइयाँ, दोनों चौड़ाइयाँ, एक-एक बार। 96 गुणा होकर क्षेत्रफल बन जाता है; 20 आधा ही चक्कर लगाता है।"
+        },
+        "mr": {
+          "stem": "आयत 12 मीटर लांब आणि 8 मीटर रुंद आहे. त्याची परिमिती किती?",
+          "choices": [
+            "96 मीटर",
+            "40 मीटर",
+            "32 मीटर",
+            "20 मीटर"
+          ],
+          "solution": "2 × (12 + 8) = 40 मीटर — दोन्ही लांब्या, दोन्ही रुंद्या, एकेकदा. 96 गुणून क्षेत्रफळ होते; 20 अर्धीच फेरी मारते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the perimeter of a square of side 9 cm?",
+      "choices": [
+        "27",
+        "18",
+        "36",
+        "81"
+      ],
+      "answerIndex": 2,
+      "solution": "Four equal sides: 9 × 4 = 36 cm. 81 squares the side into area; 18 doubles it, walking only two sides.",
+      "checkExpr": "9*4",
+      "translations": {
+        "hi": {
+          "stem": "9 सेमी भुजा वाले वर्ग की परिमिति कितनी है?",
+          "choices": [
+            "27",
+            "18",
+            "36",
+            "81"
+          ],
+          "solution": "चार बराबर भुजाएँ: 9 × 4 = 36 सेमी। 81 भुजा का वर्ग कर क्षेत्रफल बना देता है; 18 दुगना कर दो ही भुजाएँ चलता है।"
+        },
+        "mr": {
+          "stem": "9 सेमी बाजूच्या चौरसाची परिमिती किती?",
+          "choices": [
+            "27",
+            "18",
+            "36",
+            "81"
+          ],
+          "solution": "चार सारख्या बाजू: 9 × 4 = 36 सेमी. 81 बाजूचा वर्ग करून क्षेत्रफळ करते; 18 दुप्पट करून दोनच बाजू चालते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "That same 12 m by 8 m rectangle — what is its AREA?",
+      "choices": [
+        "104 sq m",
+        "96 sq m",
+        "40 sq m",
+        "20 sq m"
+      ],
+      "answerIndex": 1,
+      "solution": "Area = length × breadth = 12 × 8 = 96 sq m. 40 is the perimeter from the last question — the boundary and the floor are different measures of the same field.",
+      "checkExpr": "12*8",
+      "translations": {
+        "hi": {
+          "stem": "वही 12 × 8 मीटर का आयत — उसका क्षेत्रफल कितना?",
+          "choices": [
+            "104 वर्ग मीटर",
+            "96 वर्ग मीटर",
+            "40 वर्ग मीटर",
+            "20 वर्ग मीटर"
+          ],
+          "solution": "क्षेत्रफल = लंबाई × चौड़ाई = 12 × 8 = 96 वर्ग मीटर। 40 पिछले सवाल की परिमिति है — बाड़ और फ़र्श एक ही खेत के अलग-अलग नाप हैं।"
+        },
+        "mr": {
+          "stem": "तोच 12 × 8 मीटरचा आयत — त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "104 चौ. मीटर",
+            "96 चौ. मीटर",
+            "40 चौ. मीटर",
+            "20 चौ. मीटर"
+          ],
+          "solution": "क्षेत्रफळ = लांबी × रुंदी = 12 × 8 = 96 चौ. मीटर. 40 ही मागच्या प्रश्नाची परिमिती — कुंपण आणि फरशी ही एकाच शेताची वेगळी मापे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the area of a square of side 9 cm?",
+      "choices": [
+        "36 sq cm",
+        "81 sq cm",
+        "90 sq cm",
+        "18 sq cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Side × side: 9 × 9 = 81 sq cm. 36 is the perimeter — the two formulas of the square, 4a and a², answer different questions about the same shape.",
+      "checkExpr": "9*9",
+      "translations": {
+        "hi": {
+          "stem": "9 सेमी भुजा वाले वर्ग का क्षेत्रफल कितना है?",
+          "choices": [
+            "36 वर्ग सेमी",
+            "81 वर्ग सेमी",
+            "90 वर्ग सेमी",
+            "18 वर्ग सेमी"
+          ],
+          "solution": "भुजा × भुजा: 9 × 9 = 81 वर्ग सेमी। 36 परिमिति है — वर्ग के दो सूत्र, 4a और a², एक ही आकृति के अलग-अलग सवालों के उत्तर हैं।"
+        },
+        "mr": {
+          "stem": "9 सेमी बाजूच्या चौरसाचे क्षेत्रफळ किती?",
+          "choices": [
+            "36 चौ. सेमी",
+            "81 चौ. सेमी",
+            "90 चौ. सेमी",
+            "18 चौ. सेमी"
+          ],
+          "solution": "बाजू × बाजू: 9 × 9 = 81 चौ. सेमी. 36 ही परिमिती — चौरसाची दोन सूत्रे, 4a आणि a², एकाच आकाराच्या वेगळ्या प्रश्नांची उत्तरे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An equilateral-triangle rangoli has sides of 7 cm. What is its perimeter?",
+      "choices": [
+        "21",
+        "49",
+        "14",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "Three equal sides: 7 × 3 = 21 cm. 28 borrows the square's four sides; a perimeter always counts exactly the sides the shape has.",
+      "checkExpr": "7*3",
+      "translations": {
+        "hi": {
+          "stem": "समबाहु त्रिभुज वाली रंगोली की भुजाएँ 7-7 सेमी हैं। उसकी परिमिति कितनी?",
+          "choices": [
+            "21",
+            "49",
+            "14",
+            "28"
+          ],
+          "solution": "तीन बराबर भुजाएँ: 7 × 3 = 21 सेमी। 28 वर्ग की चार भुजाएँ उधार ले लेता है; परिमिति ठीक उतनी ही भुजाएँ गिनती है जितनी आकृति के पास हैं।"
+        },
+        "mr": {
+          "stem": "समभुज त्रिकोणी रांगोळीच्या बाजू 7-7 सेमी आहेत. तिची परिमिती किती?",
+          "choices": [
+            "21",
+            "49",
+            "14",
+            "28"
+          ],
+          "solution": "तीन सारख्या बाजू: 7 × 3 = 21 सेमी. 28 चौरसाच्या चार बाजू उसन्या घेते; परिमिती आकाराकडे आहेत तितक्याच बाजू मोजते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A field is 100 m by 60 m, and the fence must go round it 3 times. How much wire is needed?",
+      "choices": [
+        "320 m",
+        "480 m",
+        "640 m",
+        "960 m"
+      ],
+      "answerIndex": 3,
+      "solution": "One round is 2 × (100 + 60) = 320 m; three rounds are 320 × 3 = 960 m. 320 fences a single round — the multiplier waits at the end of the working, easily dropped.",
+      "checkExpr": "3*2*(100+60)",
+      "translations": {
+        "hi": {
+          "stem": "खेत 100 × 60 मीटर का है, और बाड़ उसके 3 चक्कर लगाएगी। कितना तार चाहिए?",
+          "choices": [
+            "320 मीटर",
+            "480 मीटर",
+            "640 मीटर",
+            "960 मीटर"
+          ],
+          "solution": "एक चक्कर 2 × (100 + 60) = 320 मीटर; तीन चक्कर 320 × 3 = 960 मीटर। 320 एक ही चक्कर घेरता है — गुणक हल के अंत में खड़ा रहता है, आसानी से छूट जाता है।"
+        },
+        "mr": {
+          "stem": "शेत 100 × 60 मीटरचे आहे, आणि कुंपण त्याला 3 वेढे घालेल. किती तार लागेल?",
+          "choices": [
+            "320 मीटर",
+            "480 मीटर",
+            "640 मीटर",
+            "960 मीटर"
+          ],
+          "solution": "एक वेढा 2 × (100 + 60) = 320 मीटर; तीन वेढे 320 × 3 = 960 मीटर. 320 एकच वेढा घालते — गुणक रीतीच्या शेवटी उभा असतो, सहज सुटतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A ribbon strip is 15 cm long and 4 cm wide. What area does it cover?",
+      "choices": [
+        "38 sq cm",
+        "60 sq cm",
+        "19 sq cm",
+        "45 sq cm"
+      ],
+      "answerIndex": 1,
+      "solution": "15 × 4 = 60 sq cm. 38 walks the boundary; 19 adds the sides — the strip's covering power is length times width, however thin it looks.",
+      "checkExpr": "15*4",
+      "translations": {
+        "hi": {
+          "stem": "फ़ीते की पट्टी 15 सेमी लंबी और 4 सेमी चौड़ी है। वह कितना क्षेत्रफल घेरती है?",
+          "choices": [
+            "38 वर्ग सेमी",
+            "60 वर्ग सेमी",
+            "19 वर्ग सेमी",
+            "45 वर्ग सेमी"
+          ],
+          "solution": "15 × 4 = 60 वर्ग सेमी। 38 सीमा चलता है; 19 भुजाएँ जोड़ता है — पट्टी की ढकने की ताक़त लंबाई गुणा चौड़ाई है, दिखे वह कितनी भी पतली।"
+        },
+        "mr": {
+          "stem": "फितीची पट्टी 15 सेमी लांब आणि 4 सेमी रुंद आहे. ती किती क्षेत्रफळ व्यापते?",
+          "choices": [
+            "38 चौ. सेमी",
+            "60 चौ. सेमी",
+            "19 चौ. सेमी",
+            "45 चौ. सेमी"
+          ],
+          "solution": "15 × 4 = 60 चौ. सेमी. 38 हद्द चालते; 19 बाजू मिळवते — पट्टीची झाकण्याची ताकद लांबी गुणिले रुंदी, ती कितीही बारीक दिसो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two 5 cm squares are joined edge to edge into a 10 by 5 rectangle. What is the NEW shape's perimeter?",
+      "choices": [
+        "30",
+        "40",
+        "50",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "2 × (10 + 5) = 30 cm. Each square alone had 20, so two 'should' give 40 — but the joined edge vanishes INSIDE, taking 5 + 5 = 10 cm of boundary with it. Joining shapes always swallows the shared wall.",
+      "checkExpr": "2*(10+5)",
+      "translations": {
+        "hi": {
+          "stem": "5-5 सेमी के दो वर्ग किनारे-से-किनारा जोड़कर 10 × 5 का आयत बना। नई आकृति की परिमिति कितनी?",
+          "choices": [
+            "30",
+            "40",
+            "50",
+            "20"
+          ],
+          "solution": "2 × (10 + 5) = 30 सेमी। अकेले हर वर्ग की 20 थी, तो दो की 'होनी चाहिए' 40 — पर जुड़ा किनारा भीतर ग़ायब होकर 5 + 5 = 10 सेमी सीमा साथ ले जाता है। आकृतियाँ जोड़ना साझा दीवार को हमेशा निगल जाता है।"
+        },
+        "mr": {
+          "stem": "5-5 सेमीचे दोन चौरस कडेला कड जोडून 10 × 5 चा आयत झाला. नव्या आकाराची परिमिती किती?",
+          "choices": [
+            "30",
+            "40",
+            "50",
+            "20"
+          ],
+          "solution": "2 × (10 + 5) = 30 सेमी. एकट्या प्रत्येक चौरसाची 20 होती, म्हणून दोघांची 'व्हायला हवी' 40 — पण जोडलेली कड आत नाहीशी होऊन 5 + 5 = 10 सेमी हद्द सोबत नेते. आकार जोडणे सामाईक भिंत नेहमी गिळते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A floor 8 m by 4 m is to be laid with tiles each 2 m by 1 m. How many tiles are needed?",
+      "choices": [
+        "8",
+        "32",
+        "12",
+        "16"
+      ],
+      "answerIndex": 3,
+      "solution": "Floor area 8 × 4 = 32 sq m; each tile covers 2 × 1 = 2: 32 ÷ 2 = 16 tiles. 32 pretends each tile covers one square metre — divide by the TILE's area, not by 1.",
+      "checkExpr": "8*4/(2*1)",
+      "translations": {
+        "hi": {
+          "stem": "8 × 4 मीटर का फ़र्श 2 × 1 मीटर की टाइलों से बिछाना है। कितनी टाइलें चाहिए?",
+          "choices": [
+            "8",
+            "32",
+            "12",
+            "16"
+          ],
+          "solution": "फ़र्श का क्षेत्रफल 8 × 4 = 32 वर्ग मीटर; हर टाइल 2 × 1 = 2 घेरती है: 32 ÷ 2 = 16 टाइलें। 32 मान लेता है कि हर टाइल एक वर्ग मीटर की है — भाग टाइल के क्षेत्रफल से दीजिए, 1 से नहीं।"
+        },
+        "mr": {
+          "stem": "8 × 4 मीटरची फरशी 2 × 1 मीटरच्या लाद्यांनी घालायची आहे. किती लाद्या लागतील?",
+          "choices": [
+            "8",
+            "32",
+            "12",
+            "16"
+          ],
+          "solution": "फरशीचे क्षेत्रफळ 8 × 4 = 32 चौ. मीटर; प्रत्येक लादी 2 × 1 = 2 व्यापते: 32 ÷ 2 = 16 लाद्या. 32 समजते की प्रत्येक लादी एक चौरस मीटरची — भाग लादीच्या क्षेत्रफळाने द्या, 1 ने नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rectangle's perimeter is 20 cm and its length is 6 cm. What is its AREA?",
+      "choices": [
+        "14",
+        "24",
+        "120",
+        "48"
+      ],
+      "answerIndex": 1,
+      "solution": "Two lengths take 12, leaving 8 for two breadths: breadth 4. Area = 6 × 4 = 24 sq cm. 120 multiplies length by the whole perimeter — the perimeter must first pay out all four sides.",
+      "checkExpr": "6*(20-2*6)/2",
+      "translations": {
+        "hi": {
+          "stem": "आयत की परिमिति 20 सेमी और लंबाई 6 सेमी है। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "14",
+            "24",
+            "120",
+            "48"
+          ],
+          "solution": "दो लंबाइयों में 12 गए, दो चौड़ाइयों के लिए 8 बचे: चौड़ाई 4। क्षेत्रफल = 6 × 4 = 24 वर्ग सेमी। 120 लंबाई को पूरी परिमिति से गुणा कर देता है — परिमिति को पहले चारों भुजाएँ चुकानी होती हैं।"
+        },
+        "mr": {
+          "stem": "आयताची परिमिती 20 सेमी आणि लांबी 6 सेमी आहे. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "14",
+            "24",
+            "120",
+            "48"
+          ],
+          "solution": "दोन लांब्यांत 12 गेले, दोन रुंद्यांसाठी 8 उरले: रुंदी 4. क्षेत्रफळ = 6 × 4 = 24 चौ. सेमी. 120 लांबीला अख्ख्या परिमितीने गुणते — परिमितीला आधी चारही बाजू द्याव्या लागतात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A park is 90 m by 60 m. A 2 m wide path runs all round it, just INSIDE the boundary. What is the AREA of the path?",
+      "choices": [
+        "600 sq m",
+        "300 sq m",
+        "4816 sq m",
+        "584 sq m"
+      ],
+      "answerIndex": 3,
+      "solution": "The path is the park minus the inner lawn. The lawn loses 2 m on EVERY side: 90 − 4 = 86 by 60 − 4 = 56, area 4816. Path = 5400 − 4816 = 584 sq m. 600 walks the boundary (300 m) times the width but double-counts nothing at the corners only by luck — the subtraction method never argues about corners.",
+      "checkExpr": "90*60-86*56",
+      "translations": {
+        "hi": {
+          "stem": "पार्क 90 × 60 मीटर का है। 2 मीटर चौड़ी पगडंडी सीमा के ठीक भीतर, चारों ओर चलती है। पगडंडी का क्षेत्रफल कितना?",
+          "choices": [
+            "600 वर्ग मीटर",
+            "300 वर्ग मीटर",
+            "4816 वर्ग मीटर",
+            "584 वर्ग मीटर"
+          ],
+          "solution": "पगडंडी = पार्क घटा भीतरी लॉन। लॉन हर ओर से 2 मीटर खोता है: 90 − 4 = 86 और 60 − 4 = 56, क्षेत्रफल 4816। पगडंडी = 5400 − 4816 = 584 वर्ग मीटर। 600 सीमा (300 मीटर) को चौड़ाई से गुणा करता है और कोनों पर उलझता है — घटाव वाला तरीक़ा कोनों पर कभी नहीं उलझता।"
+        },
+        "mr": {
+          "stem": "बाग 90 × 60 मीटरची आहे. 2 मीटर रुंद वाट हद्दीच्या अगदी आत, सभोवती जाते. वाटेचे क्षेत्रफळ किती?",
+          "choices": [
+            "600 चौ. मीटर",
+            "300 चौ. मीटर",
+            "4816 चौ. मीटर",
+            "584 चौ. मीटर"
+          ],
+          "solution": "वाट = बाग वजा आतली हिरवळ. हिरवळ प्रत्येक बाजूने 2 मीटर गमावते: 90 − 4 = 86 आणि 60 − 4 = 56, क्षेत्रफळ 4816. वाट = 5400 − 4816 = 584 चौ. मीटर. 600 हद्दीला (300 मीटर) रुंदीने गुणते आणि कोपऱ्यांवर घोटाळते — वजाबाकीची रीत कोपऱ्यांवर कधीच घोटाळत नाही."
+        }
+      }
+    }
+  ]
+}

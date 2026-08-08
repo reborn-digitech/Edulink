@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 13 — Symmetry",
+  "name": "Symmetry",
+  "slug": "maths-6-symmetry",
+  "summary": "Mirror lines counted letter by letter and polygon by polygon — kaleidoscope angles, symmetry's even-count bookkeeping, and the parallelogram with none at all.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "सममिति",
+      "summary": "अक्षर-दर-अक्षर, बहुभुज-दर-बहुभुज गिनी दर्पण-रेखाएँ — बहुरूपदर्शक के कोण, सममिति का सम-गिनती बही-खाता, और वह समांतर चतुर्भुज जिसके पास एक भी नहीं।"
+    },
+    "mr": {
+      "name": "सममिती",
+      "summary": "अक्षराअक्षराने, बहुभुजाबहुभुजाने मोजलेल्या आरसा-रेषा — कॅलिडोस्कोपचे कोन, सममितीचा सम-संख्येचा हिशेब, आणि एकही नसलेला समांतरभुज चौकोन."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many lines of symmetry does the letter A have?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "One — the vertical line down its middle: A's left and right halves mirror each other, but no horizontal fold works. B has one too, but lying on its side.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षर A की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "0"
+          ],
+          "solution": "एक — बीच से जाती खड़ी रेखा: A के बाएँ-दाएँ आधे एक-दूसरे के दर्पण हैं, पर कोई आड़ी तह नहीं चलती। B की भी एक है, पर लेटी हुई।"
+        },
+        "mr": {
+          "stem": "A अक्षराला किती सममिती रेषा आहेत?",
+          "choices": [
+            "2",
+            "3",
+            "1",
+            "0"
+          ],
+          "solution": "एक — मधून जाणारी उभी रेषा: A चे डावे-उजवे अर्धे एकमेकांचे आरसे, पण कोणतीही आडवी घडी चालत नाही. B लाही एक आहे, पण आडवी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An isosceles triangle (two sides equal) has how many lines of symmetry?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "One — from the apex between the equal sides down to the base's midpoint. Three lines need all three sides equal; the equilateral earns that upgrade.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज (दो भुजाएँ बराबर) की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "एक — बराबर भुजाओं के बीच के शीर्ष से आधार के मध्य तक। तीन रेखाओं के लिए तीनों भुजाएँ बराबर चाहिए; वह तरक़्क़ी समबाहु को मिलती है।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाला (दोन बाजू सारख्या) किती सममिती रेषा आहेत?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "एक — सारख्या बाजूंमधल्या शिखरापासून पायाच्या मध्यापर्यंत. तीन रेषांसाठी तिन्ही बाजू सारख्या हव्यात; ती बढती समभुजाला मिळते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A REGULAR pentagon — five equal sides, five equal angles — has how many lines of symmetry?",
+      "choices": [
+        "5",
+        "10",
+        "4",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Five — one through each vertex to the opposite side's middle. A regular polygon always has as many mirror lines as sides; regularity is symmetry's pay.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सम पंचभुज — पाँच बराबर भुजाएँ, पाँच बराबर कोण — की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "5",
+            "10",
+            "4",
+            "2"
+          ],
+          "solution": "पाँच — हर शीर्ष से सामने की भुजा के मध्य तक एक। सम बहुभुज की दर्पण-रेखाएँ हमेशा भुजाओं जितनी होती हैं; समता ही सममिति का वेतन है।"
+        },
+        "mr": {
+          "stem": "नियमित पंचकोन — पाच सारख्या बाजू, पाच सारखे कोन — त्याला किती सममिती रेषा आहेत?",
+          "choices": [
+            "5",
+            "10",
+            "4",
+            "2"
+          ],
+          "solution": "पाच — प्रत्येक शिरोबिंदूतून समोरच्या बाजूच्या मध्यापर्यंत एक. नियमित बहुभुजाला नेहमी बाजूंइतक्या आरसा-रेषा असतात; नियमितता हाच सममितीचा पगार."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A regular hexagon has how many lines of symmetry?",
+      "choices": [
+        "3",
+        "12",
+        "4",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Six — three joining opposite vertices, three joining opposite sides' middles. The rule 'as many as the sides' holds again; 12 counts each line from both ends.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सम षट्भुज की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "3",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "छह — तीन आमने-सामने के शीर्ष जोड़तीं, तीन आमने-सामने की भुजाओं के मध्य। 'भुजाओं जितनी' का नियम फिर निभा; 12 हर रेखा दोनों सिरों से गिन लेता है।"
+        },
+        "mr": {
+          "stem": "नियमित षट्कोनाला किती सममिती रेषा आहेत?",
+          "choices": [
+            "3",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "सहा — तीन समोरासमोरचे शिरोबिंदू जोडणाऱ्या, तीन समोरासमोरच्या बाजूंचे मध्य. 'बाजूंइतक्या' हा नियम पुन्हा पाळला गेला; 12 प्रत्येक रेषा दोन्ही टोकांनी मोजते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many lines of symmetry does the letter E have?",
+      "choices": [
+        "3",
+        "1",
+        "0",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "One — horizontal, through the middle arm: E's top and bottom mirror each other. No vertical line works; the letter opens only one way.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षर E की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "3",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "एक — आड़ी, बीच वाली भुजा से होकर: E के ऊपर-नीचे एक-दूसरे के दर्पण हैं। कोई खड़ी रेखा नहीं चलती; अक्षर एक ही ओर खुलता है।"
+        },
+        "mr": {
+          "stem": "E अक्षराला किती सममिती रेषा आहेत?",
+          "choices": [
+            "3",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "एक — आडवी, मधल्या दांडीतून: E चे वर-खाली एकमेकांचे आरसे. कोणतीही उभी रेषा चालत नाही; अक्षर एकाच बाजूला उघडते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rangoli design has 3 dots on the LEFT of its mirror line. When completed symmetrically, how many dots in the whole design?",
+      "choices": [
+        "9",
+        "4",
+        "3",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Every left dot earns a mirror-twin on the right: 3 × 2 = 6 (dots ON the line, had there been any, would count once only). Completing a half-design is symmetry used as a drawing tool.",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "रंगोली में दर्पण-रेखा के बाईं ओर 3 बिंदु हैं। सममित रूप से पूरा करने पर पूरे डिज़ाइन में कितने बिंदु?",
+          "choices": [
+            "9",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "बाएँ का हर बिंदु दाईं ओर दर्पण-जुड़वाँ पाता है: 3 × 2 = 6 (रेखा पर बैठे बिंदु, होते तो, एक ही बार गिनते)। आधा डिज़ाइन पूरा करना — सममिति का बतौर औज़ार इस्तेमाल यही है।"
+        },
+        "mr": {
+          "stem": "रांगोळीत आरसा-रेषेच्या डावीकडे 3 ठिपके आहेत. सममितपणे पूर्ण केल्यावर सबंध नक्षीत किती ठिपके?",
+          "choices": [
+            "9",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "डावीकडचा प्रत्येक ठिपका उजवीकडे आरसा-जुळा मिळवतो: 3 × 2 = 6 (रेषेवरचे ठिपके, असते तर, एकदाच मोजले असते). अर्धी नक्षी पूर्ण करणे — सममितीचा हत्यार म्हणून वापर हाच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A kaleidoscope's mirrors sit at 60° to each other, so the pattern repeats every 60°. How many copies fill the full circle?",
+      "choices": [
+        "3",
+        "6",
+        "12",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "360 ÷ 60 = 6 copies round the circle — which is why kaleidoscope flowers so often have six petals. Narrow the mirror angle and the flower gains petals.",
+      "checkExpr": "360/60",
+      "translations": {
+        "hi": {
+          "stem": "बहुरूपदर्शक के दर्पण आपस में 60° पर हैं, तो पैटर्न हर 60° पर दोहराता है। पूरा वृत्त कितनी प्रतियों से भरता है?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "360 ÷ 60 = 6 प्रतियाँ वृत्त भर — इसीलिए बहुरूपदर्शक के फूलों में अक्सर छह पंखुड़ियाँ होती हैं। दर्पण-कोण घटाइए तो फूल की पंखुड़ियाँ बढ़ जाती हैं।"
+        },
+        "mr": {
+          "stem": "कॅलिडोस्कोपचे आरसे परस्परांशी 60° वर आहेत, म्हणून नक्षी दर 60° ला पुनरावृत्त होते. पूर्ण वर्तुळ किती प्रतींनी भरते?",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "360 ÷ 60 = 6 प्रती वर्तुळभर — म्हणूनच कॅलिडोस्कोपच्या फुलांना अनेकदा सहा पाकळ्या असतात. आरसा-कोन कमी करा की फुलाच्या पाकळ्या वाढतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A five-sailed windmill design looks the same after each turn of how many degrees?",
+      "choices": [
+        "90°",
+        "72°",
+        "60°",
+        "45°"
+      ],
+      "answerIndex": 1,
+      "solution": "Five equal sails share the circle: 360 ÷ 5 = 72° per step. 90 belongs to four sails, 60 to six — the sail-count sets the turning angle.",
+      "checkExpr": "360/5",
+      "translations": {
+        "hi": {
+          "stem": "पाँच पंखों वाला पवनचक्की-डिज़ाइन हर कितने अंश के घुमाव पर वैसा ही दिखता है?",
+          "choices": [
+            "90°",
+            "72°",
+            "60°",
+            "45°"
+          ],
+          "solution": "पाँच बराबर पंख वृत्त बाँटते हैं: 360 ÷ 5 = 72° प्रति क़दम। 90 चार पंखों का है, 60 छह का — पंखों की गिनती ही घुमाव का कोण तय करती है।"
+        },
+        "mr": {
+          "stem": "पाच पात्यांची पवनचक्की-नक्षी दर किती अंशांच्या वळणाला तशीच दिसते?",
+          "choices": [
+            "90°",
+            "72°",
+            "60°",
+            "45°"
+          ],
+          "solution": "पाच सारखी पाती वर्तुळ वाटतात: 360 ÷ 5 = 72° प्रति पाऊल. 90 चार पात्यांचे, 60 सहांचे — पात्यांची संख्याच वळणाचा कोन ठरवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A regular octagon — 8 equal sides — has how many lines of symmetry?",
+      "choices": [
+        "8",
+        "4",
+        "16",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Eight — four through opposite corners, four through opposite sides' middles. The regular family's rule holds from the triangle up: sides and mirror lines always match.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सम अष्टभुज — 8 बराबर भुजाएँ — की कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "8",
+            "4",
+            "16",
+            "6"
+          ],
+          "solution": "आठ — चार आमने-सामने के कोनों से, चार आमने-सामने की भुजाओं के मध्य से। सम परिवार का नियम त्रिभुज से ऊपर तक निभता है: भुजाएँ और दर्पण-रेखाएँ हमेशा बराबर।"
+        },
+        "mr": {
+          "stem": "नियमित अष्टकोन — 8 सारख्या बाजू — त्याला किती सममिती रेषा आहेत?",
+          "choices": [
+            "8",
+            "4",
+            "16",
+            "6"
+          ],
+          "solution": "आठ — चार समोरासमोरच्या कोपऱ्यांतून, चार समोरासमोरच्या बाजूंच्या मध्यांतून. नियमित कुटुंबाचा नियम त्रिकोणापासून वर पाळला जातो: बाजू आणि आरसा-रेषा नेहमी सारख्या."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Fold a paper along a shape's mirror line: the two halves cover each other exactly. If a shape's 14 corner-points pair up perfectly across the line (none ON it), how many sit on EACH side?",
+      "choices": [
+        "28",
+        "6",
+        "7",
+        "14"
+      ],
+      "answerIndex": 2,
+      "solution": "Perfect pairing splits the 14 evenly: 7 a side. Symmetry is bookkeeping too — every off-line feature must appear an EVEN number of times, or the mirror line is a fraud.",
+      "checkExpr": "14/2",
+      "translations": {
+        "hi": {
+          "stem": "आकृति की दर्पण-रेखा पर काग़ज़ मोड़िए: दोनों आधे ठीक-ठीक एक-दूसरे को ढकते हैं। यदि आकृति के 14 कोने-बिंदु रेखा के आर-पार पूरी जोड़ियाँ बनाते हैं (कोई रेखा पर नहीं), तो हर ओर कितने हैं?",
+          "choices": [
+            "28",
+            "6",
+            "7",
+            "14"
+          ],
+          "solution": "पूरी जोड़ियाँ 14 को बराबर बाँटती हैं: 7-7 हर ओर। सममिति बही-खाता भी है — रेखा से हटी हर चीज़ सम गिनती में होनी चाहिए, वरना दर्पण-रेखा धोखा है।"
+        },
+        "mr": {
+          "stem": "आकाराच्या आरसा-रेषेवर कागद दुमडा: दोन्ही अर्धे नेमके एकमेकांना झाकतात. आकाराचे 14 कोपरा-बिंदू रेषेपार पूर्ण जोड्या करत असतील (एकही रेषेवर नाही), तर प्रत्येक बाजूला किती?",
+          "choices": [
+            "28",
+            "6",
+            "7",
+            "14"
+          ],
+          "solution": "पूर्ण जोड्या 14 ला सारखे वाटतात: 7-7 प्रत्येक बाजूला. सममिती हा हिशेबही आहे — रेषेबाहेरची प्रत्येक गोष्ट सम संख्येने हवी, नाही तर आरसा-रेषा फसवी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A parallelogram that is neither a rectangle nor a rhombus — how many lines of symmetry does it have?",
+      "choices": [
+        "1",
+        "4",
+        "2",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "None — the surprise of the chapter. Fold along either diagonal or either mid-line and the slanted halves refuse to match. Yet it DOES have half-turn symmetry: spun 180° about its centre it looks the same. Mirror symmetry and turning symmetry are different gifts, and the parallelogram holds only the second.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐसा समांतर चतुर्भुज जो न आयत है न समचतुर्भुज — उसकी कितनी सममिति रेखाएँ हैं?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "एक भी नहीं — अध्याय का अचरज। किसी विकर्ण या मध्य-रेखा पर मोड़िए, तिरछे आधे मिलने से इनकार कर देते हैं। हाँ, आधे घुमाव की सममिति उसके पास है: केंद्र पर 180° घुमाने पर वही दिखता है। दर्पण-सममिति और घुमाव-सममिति अलग-अलग वरदान हैं, और समांतर चतुर्भुज केवल दूसरा थामे है।"
+        },
+        "mr": {
+          "stem": "आयतही नाही आणि समभुज चौकोनही नाही असा समांतरभुज चौकोन — त्याला किती सममिती रेषा आहेत?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "एकही नाही — प्रकरणाचे आश्चर्य. कोणत्याही कर्णावर वा मध्यरेषेवर दुमडा, तिरपे अर्धे जुळायला नकार देतात. मात्र अर्ध-वळणाची सममिती त्याच्याकडे आहे: केंद्राभोवती 180° फिरवला की तोच दिसतो. आरसा-सममिती आणि वळण-सममिती ही वेगळी देणी, आणि समांतरभुज फक्त दुसरे धरून आहे."
+        }
+      }
+    }
+  ]
+}

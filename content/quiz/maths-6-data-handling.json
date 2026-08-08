@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 9 — Data Handling",
+  "name": "Data Handling",
+  "slug": "maths-6-data-handling",
+  "summary": "Tallies, frequencies, scaled bars — and the chopped axis that makes a difference of five look like double.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "आँकड़ों का प्रबंधन",
+      "summary": "मिलान, बारंबारता, पैमाने वाली पट्टियाँ — और वह कटी धुरी जो पाँच के अंतर को दुगना दिखा देती है।"
+    },
+    "mr": {
+      "name": "आकडेवारी हाताळणी",
+      "summary": "ताळ, वारंवारता, प्रमाणातले स्तंभ — आणि पाचाचा फरक दुप्पट भासवणारी कापलेली अक्षरेषा."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A tally shows two full bundles of five and two singles: ¦¦¦¦ ¦¦¦¦ ||. What count is that?",
+      "choices": [
+        "22",
+        "7",
+        "12",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "Two bundles of 5 and 2 singles: 5 + 5 + 2 = 12. 22 reads 'two bundles, two singles' as digits; bundles add their fives, they never sit as tens.",
+      "checkExpr": "5+5+2",
+      "translations": {
+        "hi": {
+          "stem": "मिलान-चिह्नों में पाँच के दो पूरे बंडल और दो अकेली रेखाएँ हैं: ¦¦¦¦ ¦¦¦¦ ||। गिनती कितनी?",
+          "choices": [
+            "22",
+            "7",
+            "12",
+            "10"
+          ],
+          "solution": "5-5 के दो बंडल और 2 अकेली: 5 + 5 + 2 = 12। 22 'दो बंडल, दो अकेली' को अंक पढ़ लेता है; बंडल अपने पाँच जोड़ते हैं, दहाई बनकर नहीं बैठते।"
+        },
+        "mr": {
+          "stem": "ताळ-खुणांत पाचाचे दोन पूर्ण गठ्ठे आणि दोन सुट्या रेघा: ¦¦¦¦ ¦¦¦¦ ||. मोजणी किती?",
+          "choices": [
+            "22",
+            "7",
+            "12",
+            "10"
+          ],
+          "solution": "5-5 चे दोन गठ्ठे आणि 2 सुट्या: 5 + 5 + 2 = 12. 22 'दोन गठ्ठे, दोन सुट्या' अंक म्हणून वाचते; गठ्ठे आपले पाच मिळवतात, दशक होऊन बसत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In a pictograph one figure stands for 10 students. The music row shows 5 figures. How many students chose music?",
+      "choices": [
+        "5",
+        "105",
+        "15",
+        "50"
+      ],
+      "answerIndex": 3,
+      "solution": "Five figures of 10: 10 × 5 = 50 students. 5 counts the drawings, not the students they stand for — the key in the corner rules every row.",
+      "checkExpr": "10*5",
+      "translations": {
+        "hi": {
+          "stem": "चित्र-चार्ट में एक आकृति 10 विद्यार्थियों की है। संगीत की पंक्ति में 5 आकृतियाँ हैं। कितनों ने संगीत चुना?",
+          "choices": [
+            "5",
+            "105",
+            "15",
+            "50"
+          ],
+          "solution": "10-10 की पाँच आकृतियाँ: 10 × 5 = 50 विद्यार्थी। 5 चित्र गिनता है, जिनकी वे जगह लेते हैं वे विद्यार्थी नहीं — कोने की कुंजी हर पंक्ति पर राज करती है।"
+        },
+        "mr": {
+          "stem": "चित्र-तक्त्यात एक आकृती 10 विद्यार्थ्यांची आहे. संगीताच्या ओळीत 5 आकृती आहेत. किती जणांनी संगीत निवडले?",
+          "choices": [
+            "5",
+            "105",
+            "15",
+            "50"
+          ],
+          "solution": "10-10 च्या पाच आकृती: 10 × 5 = 50 विद्यार्थी. 5 चित्रे मोजते, ती ज्यांच्या जागी आहेत ते विद्यार्थी नव्हे — कोपऱ्यातली किल्ली प्रत्येक ओळीवर राज्य करते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "On a bar graph the tallest bar reaches 35 and the shortest reaches 15. What is the gap between them?",
+      "choices": [
+        "15",
+        "20",
+        "25",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "35 − 15 = 20. 50 adds the bars — a gap is always a difference, read straight off the count-line.",
+      "checkExpr": "35-15",
+      "translations": {
+        "hi": {
+          "stem": "दंड-आलेख में सबसे ऊँची पट्टी 35 तक और सबसे छोटी 15 तक है। दोनों का अंतर कितना?",
+          "choices": [
+            "15",
+            "20",
+            "25",
+            "50"
+          ],
+          "solution": "35 − 15 = 20। 50 पट्टियाँ जोड़ देता है — अंतर हमेशा घटाव है, गिनती-रेखा से सीधे पढ़ा हुआ।"
+        },
+        "mr": {
+          "stem": "स्तंभालेखात सर्वांत उंच स्तंभ 35 पर्यंत आणि सर्वांत लहान 15 पर्यंत आहे. दोघांतले अंतर किती?",
+          "choices": [
+            "15",
+            "20",
+            "25",
+            "50"
+          ],
+          "solution": "35 − 15 = 20. 50 स्तंभ मिळवते — अंतर नेहमी वजाबाकी, मोजपट्टीवरून थेट वाचलेली."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Marks scored by five friends: 6, 8, 6, 7, 6. What is the FREQUENCY of the mark 6?",
+      "choices": [
+        "6",
+        "3",
+        "18",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "The mark 6 appears 3 times — frequency counts appearances, not the value itself. 18 multiplies the two, mixing 'what' with 'how often'.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पाँच दोस्तों के अंक: 6, 8, 6, 7, 6। अंक 6 की बारंबारता क्या है?",
+          "choices": [
+            "6",
+            "3",
+            "18",
+            "2"
+          ],
+          "solution": "अंक 6 तीन बार आया है — बारंबारता आने की गिनती है, स्वयं मान नहीं। 18 दोनों को गुणा कर 'क्या' और 'कितनी बार' गड्डमड्ड कर देता है।"
+        },
+        "mr": {
+          "stem": "पाच मित्रांचे गुण: 6, 8, 6, 7, 6. 6 या गुणाची वारंवारता किती?",
+          "choices": [
+            "6",
+            "3",
+            "18",
+            "2"
+          ],
+          "solution": "6 हा गुण 3 वेळा आला — वारंवारता येण्याची मोजणी, स्वतः मूल्य नव्हे. 18 दोघांना गुणून 'काय' आणि 'किती वेळा' यांची गल्लत करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A bar graph's scale says 1 unit = 5 books. A bar 6 units tall means how many books?",
+      "choices": [
+        "11",
+        "6",
+        "30",
+        "65"
+      ],
+      "answerIndex": 2,
+      "solution": "Six units of 5 books: 5 × 6 = 30. 11 adds the scale to the height; a scale multiplies every unit it touches.",
+      "checkExpr": "5*6",
+      "translations": {
+        "hi": {
+          "stem": "दंड-आलेख का पैमाना कहता है 1 इकाई = 5 किताबें। 6 इकाई ऊँची पट्टी यानी कितनी किताबें?",
+          "choices": [
+            "11",
+            "6",
+            "30",
+            "65"
+          ],
+          "solution": "5-5 किताबों की छह इकाइयाँ: 5 × 6 = 30। 11 पैमाने को ऊँचाई में जोड़ देता है; पैमाना छुई हर इकाई से गुणा होता है।"
+        },
+        "mr": {
+          "stem": "स्तंभालेखाचे प्रमाण सांगते 1 एकक = 5 पुस्तके. 6 एकक उंच स्तंभ म्हणजे किती पुस्तके?",
+          "choices": [
+            "11",
+            "6",
+            "30",
+            "65"
+          ],
+          "solution": "5-5 पुस्तकांची सहा एकके: 5 × 6 = 30. 11 प्रमाण उंचीत मिळवते; प्रमाण शिवलेल्या प्रत्येक एककाने गुणले जाते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A survey lists shoe sizes: 12, 15, 11, 15, 18, 15. How many students wear size 15?",
+      "choices": [
+        "15",
+        "2",
+        "3",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Scan and tally: 15 appears 3 times. Raw data must be counted before it speaks — that first tally is data handling's whole first step.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सर्वे में जूतों के नाप हैं: 12, 15, 11, 15, 18, 15। नाप 15 कितने विद्यार्थी पहनते हैं?",
+          "choices": [
+            "15",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "देखिए और मिलान कीजिए: 15 तीन बार है। कच्चे आँकड़े बोलने से पहले गिने जाते हैं — वही पहला मिलान आँकड़ा-प्रबंधन का पूरा पहला क़दम है।"
+        },
+        "mr": {
+          "stem": "पाहणीत बुटांची मापे आहेत: 12, 15, 11, 15, 18, 15. माप 15 किती विद्यार्थी घालतात?",
+          "choices": [
+            "15",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "पाहा आणि ताळ करा: 15 तीनदा आहे. कच्ची आकडेवारी बोलण्याआधी मोजावी लागते — तोच पहिला ताळ म्हणजे आकडे-हाताळणीचे सारे पहिले पाऊल."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A chart's four bars read 25, 30, 20 and 25. What is the total of all four?",
+      "choices": [
+        "95",
+        "110",
+        "100",
+        "90"
+      ],
+      "answerIndex": 2,
+      "solution": "Group the friendly pairs: 25 + 25 = 50 and 30 + 20 = 50 — total 100. Chart totals are worth checking; they catch a misread bar at once.",
+      "checkExpr": "25+30+20+25",
+      "translations": {
+        "hi": {
+          "stem": "चार्ट की चार पट्टियाँ 25, 30, 20 और 25 पढ़ती हैं। चारों का योग क्या है?",
+          "choices": [
+            "95",
+            "110",
+            "100",
+            "90"
+          ],
+          "solution": "सुविधाजनक जोड़े बनाइए: 25 + 25 = 50 और 30 + 20 = 50 — कुल 100। चार्ट का योग जाँचने लायक़ है; वह ग़लत पढ़ी पट्टी तुरंत पकड़ लेता है।"
+        },
+        "mr": {
+          "stem": "तक्त्याचे चार स्तंभ 25, 30, 20 आणि 25 वाचतात. चौघांची बेरीज किती?",
+          "choices": [
+            "95",
+            "110",
+            "100",
+            "90"
+          ],
+          "solution": "सोयीच्या जोड्या करा: 25 + 25 = 50 आणि 30 + 20 = 50 — एकूण 100. तक्त्याची बेरीज तपासण्याजोगी; ती चुकीचा वाचलेला स्तंभ लगेच पकडते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a pictograph where one sack-symbol = 50 quintals, what does a HALF symbol stand for?",
+      "choices": [
+        "5",
+        "25",
+        "50",
+        "100"
+      ],
+      "answerIndex": 1,
+      "solution": "Half the symbol, half the amount: 50 ÷ 2 = 25 quintals. The half-symbol exists exactly so pictographs can say numbers between full symbols.",
+      "checkExpr": "50/2",
+      "translations": {
+        "hi": {
+          "stem": "जिस चित्र-चार्ट में बोरी का एक चिह्न = 50 क्विंटल, वहाँ आधा चिह्न किसके बराबर है?",
+          "choices": [
+            "5",
+            "25",
+            "50",
+            "100"
+          ],
+          "solution": "आधा चिह्न, आधी मात्रा: 50 ÷ 2 = 25 क्विंटल। आधा चिह्न ठीक इसीलिए है कि चित्र-चार्ट पूरे चिह्नों के बीच की संख्याएँ कह सके।"
+        },
+        "mr": {
+          "stem": "ज्या चित्र-तक्त्यात पोत्याचे एक चिन्ह = 50 क्विंटल, तिथे अर्धे चिन्ह कशाच्या बरोबरीचे?",
+          "choices": [
+            "5",
+            "25",
+            "50",
+            "100"
+          ],
+          "solution": "अर्धे चिन्ह, अर्धे परिमाण: 50 ÷ 2 = 25 क्विंटल. अर्धे चिन्ह नेमके यासाठीच आहे की चित्र-तक्ता पूर्ण चिन्हांमधल्या संख्या सांगू शकावा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A bar graph shows runs in four overs: 40, 55, 35, 60. What is the innings total so far?",
+      "choices": [
+        "180",
+        "190",
+        "200",
+        "170"
+      ],
+      "answerIndex": 1,
+      "solution": "Pair for speed: 40 + 60 = 100 and 55 + 35 = 90 — total 190. Reading bars one by one and pairing them for the sum is the chart-reader's two-step.",
+      "checkExpr": "40+55+35+60",
+      "translations": {
+        "hi": {
+          "stem": "दंड-आलेख चार ओवरों के रन दिखाता है: 40, 55, 35, 60। अब तक का कुल स्कोर क्या है?",
+          "choices": [
+            "180",
+            "190",
+            "200",
+            "170"
+          ],
+          "solution": "रफ़्तार के लिए जोड़े: 40 + 60 = 100 और 55 + 35 = 90 — कुल 190। पट्टियाँ एक-एक पढ़ना और योग के लिए जोड़े बनाना — चार्ट पढ़ने वाले की दो-चाल यही है।"
+        },
+        "mr": {
+          "stem": "स्तंभालेख चार षटकांतल्या धावा दाखवतो: 40, 55, 35, 60. आतापर्यंतची एकूण धावसंख्या किती?",
+          "choices": [
+            "180",
+            "190",
+            "200",
+            "170"
+          ],
+          "solution": "वेगासाठी जोड्या: 40 + 60 = 100 आणि 55 + 35 = 90 — एकूण 190. स्तंभ एकेक वाचणे आणि बेरजेसाठी जोड्या लावणे — तक्ता वाचणाऱ्याची दुहेरी चाल हीच."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The school census chart shows 240 boys and 260 girls. By how many do the girls outnumber the boys?",
+      "choices": [
+        "20",
+        "500",
+        "40",
+        "260"
+      ],
+      "answerIndex": 0,
+      "solution": "260 − 240 = 20 more girls. 500 answers a different question — the school's total. A chart holds many answers; the subtraction picks the one asked.",
+      "checkExpr": "260-240",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल-गणना चार्ट 240 लड़के और 260 लड़कियाँ दिखाता है। लड़कियाँ लड़कों से कितनी ज़्यादा हैं?",
+          "choices": [
+            "20",
+            "500",
+            "40",
+            "260"
+          ],
+          "solution": "260 − 240 = 20 लड़कियाँ ज़्यादा। 500 दूसरे सवाल का उत्तर है — स्कूल का कुल। चार्ट में कई उत्तर बसते हैं; घटाव वही चुनता है जो पूछा गया।"
+        },
+        "mr": {
+          "stem": "शाळा-गणना तक्ता 240 मुलगे आणि 260 मुली दाखवतो. मुली मुलग्यांहून किती जास्त?",
+          "choices": [
+            "20",
+            "500",
+            "40",
+            "260"
+          ],
+          "solution": "260 − 240 = 20 मुली जास्त. 500 वेगळ्या प्रश्नाचे उत्तर — शाळेची एकूण संख्या. तक्त्यात अनेक उत्तरे असतात; वजाबाकी विचारलेलेच निवडते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A poster's bar graph starts its count-line at 40 instead of 0, so the bar for 50 towers over the bar for 45 — looking double its size. What is the TRUE difference?",
+      "choices": [
+        "5",
+        "25",
+        "45",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "The values are 50 and 45 — a difference of just 5, about a tenth. The chopped axis shows only the parts ABOVE 40 (10 units against 5), and the eye compares those. First look of any bar graph: where does the count-line begin? A chart that hides its zero is arguing, not reporting.",
+      "checkExpr": "50-45",
+      "translations": {
+        "hi": {
+          "stem": "पोस्टर का दंड-आलेख गिनती-रेखा 0 की जगह 40 से शुरू करता है, तो 50 की पट्टी 45 की पट्टी पर दुगनी-सी झूमती है। सच्चा अंतर कितना है?",
+          "choices": [
+            "5",
+            "25",
+            "45",
+            "10"
+          ],
+          "solution": "मान हैं 50 और 45 — अंतर केवल 5, क़रीब दसवाँ हिस्सा। कटी हुई धुरी सिर्फ़ 40 के ऊपर के हिस्से दिखाती है (5 के मुक़ाबले 10 इकाइयाँ), और आँख उन्हीं की तुलना करती है। किसी भी दंड-आलेख की पहली नज़र: गिनती-रेखा शुरू कहाँ से होती है? अपना शून्य छिपाता चार्ट रिपोर्ट नहीं, वकालत कर रहा होता है।"
+        },
+        "mr": {
+          "stem": "पोस्टरचा स्तंभालेख मोजपट्टी 0 ऐवजी 40 पासून सुरू करतो, म्हणून 50 चा स्तंभ 45 च्या स्तंभावर दुप्पट भासतो. खरा फरक किती?",
+          "choices": [
+            "5",
+            "25",
+            "45",
+            "10"
+          ],
+          "solution": "मूल्ये आहेत 50 आणि 45 — फरक फक्त 5, सुमारे दशांश. कापलेली अक्षरेषा फक्त 40 च्या वरचे भाग दाखवते (5 विरुद्ध 10 एकके), आणि डोळा त्यांचीच तुलना करतो. कोणत्याही स्तंभालेखाची पहिली नजर: मोजपट्टी कुठून सुरू होते? आपले शून्य लपवणारा तक्ता अहवाल देत नाही, वकिली करत असतो."
+        }
+      }
+    }
+  ]
+}

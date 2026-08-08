@@ -2606,6 +2606,1049 @@ function algebra6(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Data Handling (tallies, bars and honest axes)                 */
+/* ------------------------------------------------------------------------- */
+function dataHandling6(): TopicFileOut {
+  const rand = rng("maths-6-data-handling");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A tally shows two full bundles of five and two singles: ¦¦¦¦ ¦¦¦¦ ||. What count is that?",
+          hi: "मिलान-चिह्नों में पाँच के दो पूरे बंडल और दो अकेली रेखाएँ हैं: ¦¦¦¦ ¦¦¦¦ ||। गिनती कितनी?",
+          mr: "ताळ-खुणांत पाचाचे दोन पूर्ण गठ्ठे आणि दोन सुट्या रेघा: ¦¦¦¦ ¦¦¦¦ ||. मोजणी किती?",
+        },
+        answer: 12,
+        wrong: [10, 22, 7],
+        checkExpr: "5+5+2",
+        solution: {
+          en: "Two bundles of 5 and 2 singles: 5 + 5 + 2 = 12. 22 reads 'two bundles, two singles' as digits; bundles add their fives, they never sit as tens.",
+          hi: "5-5 के दो बंडल और 2 अकेली: 5 + 5 + 2 = 12। 22 'दो बंडल, दो अकेली' को अंक पढ़ लेता है; बंडल अपने पाँच जोड़ते हैं, दहाई बनकर नहीं बैठते।",
+          mr: "5-5 चे दोन गठ्ठे आणि 2 सुट्या: 5 + 5 + 2 = 12. 22 'दोन गठ्ठे, दोन सुट्या' अंक म्हणून वाचते; गठ्ठे आपले पाच मिळवतात, दशक होऊन बसत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In a pictograph one figure stands for 10 students. The music row shows 5 figures. How many students chose music?",
+          hi: "चित्र-चार्ट में एक आकृति 10 विद्यार्थियों की है। संगीत की पंक्ति में 5 आकृतियाँ हैं। कितनों ने संगीत चुना?",
+          mr: "चित्र-तक्त्यात एक आकृती 10 विद्यार्थ्यांची आहे. संगीताच्या ओळीत 5 आकृती आहेत. किती जणांनी संगीत निवडले?",
+        },
+        answer: 50,
+        wrong: [5, 15, 105],
+        checkExpr: "10*5",
+        solution: {
+          en: "Five figures of 10: 10 × 5 = 50 students. 5 counts the drawings, not the students they stand for — the key in the corner rules every row.",
+          hi: "10-10 की पाँच आकृतियाँ: 10 × 5 = 50 विद्यार्थी। 5 चित्र गिनता है, जिनकी वे जगह लेते हैं वे विद्यार्थी नहीं — कोने की कुंजी हर पंक्ति पर राज करती है।",
+          mr: "10-10 च्या पाच आकृती: 10 × 5 = 50 विद्यार्थी. 5 चित्रे मोजते, ती ज्यांच्या जागी आहेत ते विद्यार्थी नव्हे — कोपऱ्यातली किल्ली प्रत्येक ओळीवर राज्य करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "On a bar graph the tallest bar reaches 35 and the shortest reaches 15. What is the gap between them?",
+          hi: "दंड-आलेख में सबसे ऊँची पट्टी 35 तक और सबसे छोटी 15 तक है। दोनों का अंतर कितना?",
+          mr: "स्तंभालेखात सर्वांत उंच स्तंभ 35 पर्यंत आणि सर्वांत लहान 15 पर्यंत आहे. दोघांतले अंतर किती?",
+        },
+        answer: 20,
+        wrong: [50, 15, 25],
+        checkExpr: "35-15",
+        solution: {
+          en: "35 − 15 = 20. 50 adds the bars — a gap is always a difference, read straight off the count-line.",
+          hi: "35 − 15 = 20। 50 पट्टियाँ जोड़ देता है — अंतर हमेशा घटाव है, गिनती-रेखा से सीधे पढ़ा हुआ।",
+          mr: "35 − 15 = 20. 50 स्तंभ मिळवते — अंतर नेहमी वजाबाकी, मोजपट्टीवरून थेट वाचलेली.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Marks scored by five friends: 6, 8, 6, 7, 6. What is the FREQUENCY of the mark 6?",
+          hi: "पाँच दोस्तों के अंक: 6, 8, 6, 7, 6। अंक 6 की बारंबारता क्या है?",
+          mr: "पाच मित्रांचे गुण: 6, 8, 6, 7, 6. 6 या गुणाची वारंवारता किती?",
+        },
+        answer: 3,
+        wrong: [6, 2, 18],
+        solution: {
+          en: "The mark 6 appears 3 times — frequency counts appearances, not the value itself. 18 multiplies the two, mixing 'what' with 'how often'.",
+          hi: "अंक 6 तीन बार आया है — बारंबारता आने की गिनती है, स्वयं मान नहीं। 18 दोनों को गुणा कर 'क्या' और 'कितनी बार' गड्डमड्ड कर देता है।",
+          mr: "6 हा गुण 3 वेळा आला — वारंवारता येण्याची मोजणी, स्वतः मूल्य नव्हे. 18 दोघांना गुणून 'काय' आणि 'किती वेळा' यांची गल्लत करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A bar graph's scale says 1 unit = 5 books. A bar 6 units tall means how many books?",
+          hi: "दंड-आलेख का पैमाना कहता है 1 इकाई = 5 किताबें। 6 इकाई ऊँची पट्टी यानी कितनी किताबें?",
+          mr: "स्तंभालेखाचे प्रमाण सांगते 1 एकक = 5 पुस्तके. 6 एकक उंच स्तंभ म्हणजे किती पुस्तके?",
+        },
+        answer: 30,
+        wrong: [6, 11, 65],
+        checkExpr: "5*6",
+        solution: {
+          en: "Six units of 5 books: 5 × 6 = 30. 11 adds the scale to the height; a scale multiplies every unit it touches.",
+          hi: "5-5 किताबों की छह इकाइयाँ: 5 × 6 = 30। 11 पैमाने को ऊँचाई में जोड़ देता है; पैमाना छुई हर इकाई से गुणा होता है।",
+          mr: "5-5 पुस्तकांची सहा एकके: 5 × 6 = 30. 11 प्रमाण उंचीत मिळवते; प्रमाण शिवलेल्या प्रत्येक एककाने गुणले जाते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A survey lists shoe sizes: 12, 15, 11, 15, 18, 15. How many students wear size 15?",
+          hi: "सर्वे में जूतों के नाप हैं: 12, 15, 11, 15, 18, 15। नाप 15 कितने विद्यार्थी पहनते हैं?",
+          mr: "पाहणीत बुटांची मापे आहेत: 12, 15, 11, 15, 18, 15. माप 15 किती विद्यार्थी घालतात?",
+        },
+        answer: 3,
+        wrong: [15, 2, 4],
+        solution: {
+          en: "Scan and tally: 15 appears 3 times. Raw data must be counted before it speaks — that first tally is data handling's whole first step.",
+          hi: "देखिए और मिलान कीजिए: 15 तीन बार है। कच्चे आँकड़े बोलने से पहले गिने जाते हैं — वही पहला मिलान आँकड़ा-प्रबंधन का पूरा पहला क़दम है।",
+          mr: "पाहा आणि ताळ करा: 15 तीनदा आहे. कच्ची आकडेवारी बोलण्याआधी मोजावी लागते — तोच पहिला ताळ म्हणजे आकडे-हाताळणीचे सारे पहिले पाऊल.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A chart's four bars read 25, 30, 20 and 25. What is the total of all four?",
+          hi: "चार्ट की चार पट्टियाँ 25, 30, 20 और 25 पढ़ती हैं। चारों का योग क्या है?",
+          mr: "तक्त्याचे चार स्तंभ 25, 30, 20 आणि 25 वाचतात. चौघांची बेरीज किती?",
+        },
+        answer: 100,
+        wrong: [95, 110, 90],
+        checkExpr: "25+30+20+25",
+        solution: {
+          en: "Group the friendly pairs: 25 + 25 = 50 and 30 + 20 = 50 — total 100. Chart totals are worth checking; they catch a misread bar at once.",
+          hi: "सुविधाजनक जोड़े बनाइए: 25 + 25 = 50 और 30 + 20 = 50 — कुल 100। चार्ट का योग जाँचने लायक़ है; वह ग़लत पढ़ी पट्टी तुरंत पकड़ लेता है।",
+          mr: "सोयीच्या जोड्या करा: 25 + 25 = 50 आणि 30 + 20 = 50 — एकूण 100. तक्त्याची बेरीज तपासण्याजोगी; ती चुकीचा वाचलेला स्तंभ लगेच पकडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In a pictograph where one sack-symbol = 50 quintals, what does a HALF symbol stand for?",
+          hi: "जिस चित्र-चार्ट में बोरी का एक चिह्न = 50 क्विंटल, वहाँ आधा चिह्न किसके बराबर है?",
+          mr: "ज्या चित्र-तक्त्यात पोत्याचे एक चिन्ह = 50 क्विंटल, तिथे अर्धे चिन्ह कशाच्या बरोबरीचे?",
+        },
+        answer: 25,
+        wrong: [50, 5, 100],
+        checkExpr: "50/2",
+        solution: {
+          en: "Half the symbol, half the amount: 50 ÷ 2 = 25 quintals. The half-symbol exists exactly so pictographs can say numbers between full symbols.",
+          hi: "आधा चिह्न, आधी मात्रा: 50 ÷ 2 = 25 क्विंटल। आधा चिह्न ठीक इसीलिए है कि चित्र-चार्ट पूरे चिह्नों के बीच की संख्याएँ कह सके।",
+          mr: "अर्धे चिन्ह, अर्धे परिमाण: 50 ÷ 2 = 25 क्विंटल. अर्धे चिन्ह नेमके यासाठीच आहे की चित्र-तक्ता पूर्ण चिन्हांमधल्या संख्या सांगू शकावा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A bar graph shows runs in four overs: 40, 55, 35, 60. What is the innings total so far?",
+          hi: "दंड-आलेख चार ओवरों के रन दिखाता है: 40, 55, 35, 60। अब तक का कुल स्कोर क्या है?",
+          mr: "स्तंभालेख चार षटकांतल्या धावा दाखवतो: 40, 55, 35, 60. आतापर्यंतची एकूण धावसंख्या किती?",
+        },
+        answer: 190,
+        wrong: [180, 200, 170],
+        checkExpr: "40+55+35+60",
+        solution: {
+          en: "Pair for speed: 40 + 60 = 100 and 55 + 35 = 90 — total 190. Reading bars one by one and pairing them for the sum is the chart-reader's two-step.",
+          hi: "रफ़्तार के लिए जोड़े: 40 + 60 = 100 और 55 + 35 = 90 — कुल 190। पट्टियाँ एक-एक पढ़ना और योग के लिए जोड़े बनाना — चार्ट पढ़ने वाले की दो-चाल यही है।",
+          mr: "वेगासाठी जोड्या: 40 + 60 = 100 आणि 55 + 35 = 90 — एकूण 190. स्तंभ एकेक वाचणे आणि बेरजेसाठी जोड्या लावणे — तक्ता वाचणाऱ्याची दुहेरी चाल हीच.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The school census chart shows 240 boys and 260 girls. By how many do the girls outnumber the boys?",
+          hi: "स्कूल-गणना चार्ट 240 लड़के और 260 लड़कियाँ दिखाता है। लड़कियाँ लड़कों से कितनी ज़्यादा हैं?",
+          mr: "शाळा-गणना तक्ता 240 मुलगे आणि 260 मुली दाखवतो. मुली मुलग्यांहून किती जास्त?",
+        },
+        answer: 20,
+        wrong: [500, 40, 260],
+        checkExpr: "260-240",
+        solution: {
+          en: "260 − 240 = 20 more girls. 500 answers a different question — the school's total. A chart holds many answers; the subtraction picks the one asked.",
+          hi: "260 − 240 = 20 लड़कियाँ ज़्यादा। 500 दूसरे सवाल का उत्तर है — स्कूल का कुल। चार्ट में कई उत्तर बसते हैं; घटाव वही चुनता है जो पूछा गया।",
+          mr: "260 − 240 = 20 मुली जास्त. 500 वेगळ्या प्रश्नाचे उत्तर — शाळेची एकूण संख्या. तक्त्यात अनेक उत्तरे असतात; वजाबाकी विचारलेलेच निवडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A poster's bar graph starts its count-line at 40 instead of 0, so the bar for 50 towers over the bar for 45 — looking double its size. What is the TRUE difference?",
+          hi: "पोस्टर का दंड-आलेख गिनती-रेखा 0 की जगह 40 से शुरू करता है, तो 50 की पट्टी 45 की पट्टी पर दुगनी-सी झूमती है। सच्चा अंतर कितना है?",
+          mr: "पोस्टरचा स्तंभालेख मोजपट्टी 0 ऐवजी 40 पासून सुरू करतो, म्हणून 50 चा स्तंभ 45 च्या स्तंभावर दुप्पट भासतो. खरा फरक किती?",
+        },
+        answer: 5,
+        wrong: [10, 25, 45],
+        checkExpr: "50-45",
+        solution: {
+          en: "The values are 50 and 45 — a difference of just 5, about a tenth. The chopped axis shows only the parts ABOVE 40 (10 units against 5), and the eye compares those. First look of any bar graph: where does the count-line begin? A chart that hides its zero is arguing, not reporting.",
+          hi: "मान हैं 50 और 45 — अंतर केवल 5, क़रीब दसवाँ हिस्सा। कटी हुई धुरी सिर्फ़ 40 के ऊपर के हिस्से दिखाती है (5 के मुक़ाबले 10 इकाइयाँ), और आँख उन्हीं की तुलना करती है। किसी भी दंड-आलेख की पहली नज़र: गिनती-रेखा शुरू कहाँ से होती है? अपना शून्य छिपाता चार्ट रिपोर्ट नहीं, वकालत कर रहा होता है।",
+          mr: "मूल्ये आहेत 50 आणि 45 — फरक फक्त 5, सुमारे दशांश. कापलेली अक्षरेषा फक्त 40 च्या वरचे भाग दाखवते (5 विरुद्ध 10 एकके), आणि डोळा त्यांचीच तुलना करतो. कोणत्याही स्तंभालेखाची पहिली नजर: मोजपट्टी कुठून सुरू होते? आपले शून्य लपवणारा तक्ता अहवाल देत नाही, वकिली करत असतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 9 — Data Handling",
+      name: "Data Handling",
+      slug: "maths-6-data-handling",
+      summary: "Tallies, frequencies, scaled bars — and the chopped axis that makes a difference of five look like double.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "आँकड़ों का प्रबंधन",
+          summary: "मिलान, बारंबारता, पैमाने वाली पट्टियाँ — और वह कटी धुरी जो पाँच के अंतर को दुगना दिखा देती है।",
+        },
+        mr: {
+          name: "आकडेवारी हाताळणी",
+          summary: "ताळ, वारंवारता, प्रमाणातले स्तंभ — आणि पाचाचा फरक दुप्पट भासवणारी कापलेली अक्षरेषा.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Mensuration (perimeter and area, now with formulas)          */
+/* ------------------------------------------------------------------------- */
+function mensuration6(): TopicFileOut {
+  const rand = rng("maths-6-mensuration");
+  const qs: OutQuestion[] = [];
+
+  const mF = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+  const sqm = (n: number) => ({ en: `${n} sq m`, hi: `${n} वर्ग मीटर`, mr: `${n} चौ. मीटर` });
+  const sqcm = (n: number) => ({ en: `${n} sq cm`, hi: `${n} वर्ग सेमी`, mr: `${n} चौ. सेमी` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A rectangle is 12 m long and 8 m wide. What is its perimeter?",
+          hi: "आयत 12 मीटर लंबा और 8 मीटर चौड़ा है। उसकी परिमिति कितनी?",
+          mr: "आयत 12 मीटर लांब आणि 8 मीटर रुंद आहे. त्याची परिमिती किती?",
+        },
+        answer: 40,
+        wrong: [20, 96, 32],
+        checkExpr: "2*(12+8)",
+        fmt: mF,
+        solution: {
+          en: "2 × (12 + 8) = 40 m — both lengths and both widths walked once. 96 multiplies into area; 20 walks only half the way round.",
+          hi: "2 × (12 + 8) = 40 मीटर — दोनों लंबाइयाँ, दोनों चौड़ाइयाँ, एक-एक बार। 96 गुणा होकर क्षेत्रफल बन जाता है; 20 आधा ही चक्कर लगाता है।",
+          mr: "2 × (12 + 8) = 40 मीटर — दोन्ही लांब्या, दोन्ही रुंद्या, एकेकदा. 96 गुणून क्षेत्रफळ होते; 20 अर्धीच फेरी मारते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the perimeter of a square of side 9 cm?",
+          hi: "9 सेमी भुजा वाले वर्ग की परिमिति कितनी है?",
+          mr: "9 सेमी बाजूच्या चौरसाची परिमिती किती?",
+        },
+        answer: 36,
+        wrong: [81, 18, 27],
+        checkExpr: "9*4",
+        solution: {
+          en: "Four equal sides: 9 × 4 = 36 cm. 81 squares the side into area; 18 doubles it, walking only two sides.",
+          hi: "चार बराबर भुजाएँ: 9 × 4 = 36 सेमी। 81 भुजा का वर्ग कर क्षेत्रफल बना देता है; 18 दुगना कर दो ही भुजाएँ चलता है।",
+          mr: "चार सारख्या बाजू: 9 × 4 = 36 सेमी. 81 बाजूचा वर्ग करून क्षेत्रफळ करते; 18 दुप्पट करून दोनच बाजू चालते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "That same 12 m by 8 m rectangle — what is its AREA?",
+          hi: "वही 12 × 8 मीटर का आयत — उसका क्षेत्रफल कितना?",
+          mr: "तोच 12 × 8 मीटरचा आयत — त्याचे क्षेत्रफळ किती?",
+        },
+        answer: 96,
+        wrong: [40, 20, 104],
+        checkExpr: "12*8",
+        fmt: sqm,
+        solution: {
+          en: "Area = length × breadth = 12 × 8 = 96 sq m. 40 is the perimeter from the last question — the boundary and the floor are different measures of the same field.",
+          hi: "क्षेत्रफल = लंबाई × चौड़ाई = 12 × 8 = 96 वर्ग मीटर। 40 पिछले सवाल की परिमिति है — बाड़ और फ़र्श एक ही खेत के अलग-अलग नाप हैं।",
+          mr: "क्षेत्रफळ = लांबी × रुंदी = 12 × 8 = 96 चौ. मीटर. 40 ही मागच्या प्रश्नाची परिमिती — कुंपण आणि फरशी ही एकाच शेताची वेगळी मापे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the area of a square of side 9 cm?",
+          hi: "9 सेमी भुजा वाले वर्ग का क्षेत्रफल कितना है?",
+          mr: "9 सेमी बाजूच्या चौरसाचे क्षेत्रफळ किती?",
+        },
+        answer: 81,
+        wrong: [36, 18, 90],
+        checkExpr: "9*9",
+        fmt: sqcm,
+        solution: {
+          en: "Side × side: 9 × 9 = 81 sq cm. 36 is the perimeter — the two formulas of the square, 4a and a², answer different questions about the same shape.",
+          hi: "भुजा × भुजा: 9 × 9 = 81 वर्ग सेमी। 36 परिमिति है — वर्ग के दो सूत्र, 4a और a², एक ही आकृति के अलग-अलग सवालों के उत्तर हैं।",
+          mr: "बाजू × बाजू: 9 × 9 = 81 चौ. सेमी. 36 ही परिमिती — चौरसाची दोन सूत्रे, 4a आणि a², एकाच आकाराच्या वेगळ्या प्रश्नांची उत्तरे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An equilateral-triangle rangoli has sides of 7 cm. What is its perimeter?",
+          hi: "समबाहु त्रिभुज वाली रंगोली की भुजाएँ 7-7 सेमी हैं। उसकी परिमिति कितनी?",
+          mr: "समभुज त्रिकोणी रांगोळीच्या बाजू 7-7 सेमी आहेत. तिची परिमिती किती?",
+        },
+        answer: 21,
+        wrong: [14, 49, 28],
+        checkExpr: "7*3",
+        solution: {
+          en: "Three equal sides: 7 × 3 = 21 cm. 28 borrows the square's four sides; a perimeter always counts exactly the sides the shape has.",
+          hi: "तीन बराबर भुजाएँ: 7 × 3 = 21 सेमी। 28 वर्ग की चार भुजाएँ उधार ले लेता है; परिमिति ठीक उतनी ही भुजाएँ गिनती है जितनी आकृति के पास हैं।",
+          mr: "तीन सारख्या बाजू: 7 × 3 = 21 सेमी. 28 चौरसाच्या चार बाजू उसन्या घेते; परिमिती आकाराकडे आहेत तितक्याच बाजू मोजते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A field is 100 m by 60 m, and the fence must go round it 3 times. How much wire is needed?",
+          hi: "खेत 100 × 60 मीटर का है, और बाड़ उसके 3 चक्कर लगाएगी। कितना तार चाहिए?",
+          mr: "शेत 100 × 60 मीटरचे आहे, आणि कुंपण त्याला 3 वेढे घालेल. किती तार लागेल?",
+        },
+        answer: 960,
+        wrong: [320, 640, 480],
+        checkExpr: "3*2*(100+60)",
+        fmt: mF,
+        solution: {
+          en: "One round is 2 × (100 + 60) = 320 m; three rounds are 320 × 3 = 960 m. 320 fences a single round — the multiplier waits at the end of the working, easily dropped.",
+          hi: "एक चक्कर 2 × (100 + 60) = 320 मीटर; तीन चक्कर 320 × 3 = 960 मीटर। 320 एक ही चक्कर घेरता है — गुणक हल के अंत में खड़ा रहता है, आसानी से छूट जाता है।",
+          mr: "एक वेढा 2 × (100 + 60) = 320 मीटर; तीन वेढे 320 × 3 = 960 मीटर. 320 एकच वेढा घालते — गुणक रीतीच्या शेवटी उभा असतो, सहज सुटतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A ribbon strip is 15 cm long and 4 cm wide. What area does it cover?",
+          hi: "फ़ीते की पट्टी 15 सेमी लंबी और 4 सेमी चौड़ी है। वह कितना क्षेत्रफल घेरती है?",
+          mr: "फितीची पट्टी 15 सेमी लांब आणि 4 सेमी रुंद आहे. ती किती क्षेत्रफळ व्यापते?",
+        },
+        answer: 60,
+        wrong: [19, 38, 45],
+        checkExpr: "15*4",
+        fmt: sqcm,
+        solution: {
+          en: "15 × 4 = 60 sq cm. 38 walks the boundary; 19 adds the sides — the strip's covering power is length times width, however thin it looks.",
+          hi: "15 × 4 = 60 वर्ग सेमी। 38 सीमा चलता है; 19 भुजाएँ जोड़ता है — पट्टी की ढकने की ताक़त लंबाई गुणा चौड़ाई है, दिखे वह कितनी भी पतली।",
+          mr: "15 × 4 = 60 चौ. सेमी. 38 हद्द चालते; 19 बाजू मिळवते — पट्टीची झाकण्याची ताकद लांबी गुणिले रुंदी, ती कितीही बारीक दिसो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Two 5 cm squares are joined edge to edge into a 10 by 5 rectangle. What is the NEW shape's perimeter?",
+          hi: "5-5 सेमी के दो वर्ग किनारे-से-किनारा जोड़कर 10 × 5 का आयत बना। नई आकृति की परिमिति कितनी?",
+          mr: "5-5 सेमीचे दोन चौरस कडेला कड जोडून 10 × 5 चा आयत झाला. नव्या आकाराची परिमिती किती?",
+        },
+        answer: 30,
+        wrong: [40, 20, 50],
+        checkExpr: "2*(10+5)",
+        solution: {
+          en: "2 × (10 + 5) = 30 cm. Each square alone had 20, so two 'should' give 40 — but the joined edge vanishes INSIDE, taking 5 + 5 = 10 cm of boundary with it. Joining shapes always swallows the shared wall.",
+          hi: "2 × (10 + 5) = 30 सेमी। अकेले हर वर्ग की 20 थी, तो दो की 'होनी चाहिए' 40 — पर जुड़ा किनारा भीतर ग़ायब होकर 5 + 5 = 10 सेमी सीमा साथ ले जाता है। आकृतियाँ जोड़ना साझा दीवार को हमेशा निगल जाता है।",
+          mr: "2 × (10 + 5) = 30 सेमी. एकट्या प्रत्येक चौरसाची 20 होती, म्हणून दोघांची 'व्हायला हवी' 40 — पण जोडलेली कड आत नाहीशी होऊन 5 + 5 = 10 सेमी हद्द सोबत नेते. आकार जोडणे सामाईक भिंत नेहमी गिळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A floor 8 m by 4 m is to be laid with tiles each 2 m by 1 m. How many tiles are needed?",
+          hi: "8 × 4 मीटर का फ़र्श 2 × 1 मीटर की टाइलों से बिछाना है। कितनी टाइलें चाहिए?",
+          mr: "8 × 4 मीटरची फरशी 2 × 1 मीटरच्या लाद्यांनी घालायची आहे. किती लाद्या लागतील?",
+        },
+        answer: 16,
+        wrong: [32, 8, 12],
+        checkExpr: "8*4/(2*1)",
+        solution: {
+          en: "Floor area 8 × 4 = 32 sq m; each tile covers 2 × 1 = 2: 32 ÷ 2 = 16 tiles. 32 pretends each tile covers one square metre — divide by the TILE's area, not by 1.",
+          hi: "फ़र्श का क्षेत्रफल 8 × 4 = 32 वर्ग मीटर; हर टाइल 2 × 1 = 2 घेरती है: 32 ÷ 2 = 16 टाइलें। 32 मान लेता है कि हर टाइल एक वर्ग मीटर की है — भाग टाइल के क्षेत्रफल से दीजिए, 1 से नहीं।",
+          mr: "फरशीचे क्षेत्रफळ 8 × 4 = 32 चौ. मीटर; प्रत्येक लादी 2 × 1 = 2 व्यापते: 32 ÷ 2 = 16 लाद्या. 32 समजते की प्रत्येक लादी एक चौरस मीटरची — भाग लादीच्या क्षेत्रफळाने द्या, 1 ने नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A rectangle's perimeter is 20 cm and its length is 6 cm. What is its AREA?",
+          hi: "आयत की परिमिति 20 सेमी और लंबाई 6 सेमी है। उसका क्षेत्रफल कितना?",
+          mr: "आयताची परिमिती 20 सेमी आणि लांबी 6 सेमी आहे. त्याचे क्षेत्रफळ किती?",
+        },
+        answer: 24,
+        wrong: [120, 14, 48],
+        checkExpr: "6*(20-2*6)/2",
+        solution: {
+          en: "Two lengths take 12, leaving 8 for two breadths: breadth 4. Area = 6 × 4 = 24 sq cm. 120 multiplies length by the whole perimeter — the perimeter must first pay out all four sides.",
+          hi: "दो लंबाइयों में 12 गए, दो चौड़ाइयों के लिए 8 बचे: चौड़ाई 4। क्षेत्रफल = 6 × 4 = 24 वर्ग सेमी। 120 लंबाई को पूरी परिमिति से गुणा कर देता है — परिमिति को पहले चारों भुजाएँ चुकानी होती हैं।",
+          mr: "दोन लांब्यांत 12 गेले, दोन रुंद्यांसाठी 8 उरले: रुंदी 4. क्षेत्रफळ = 6 × 4 = 24 चौ. सेमी. 120 लांबीला अख्ख्या परिमितीने गुणते — परिमितीला आधी चारही बाजू द्याव्या लागतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A park is 90 m by 60 m. A 2 m wide path runs all round it, just INSIDE the boundary. What is the AREA of the path?",
+          hi: "पार्क 90 × 60 मीटर का है। 2 मीटर चौड़ी पगडंडी सीमा के ठीक भीतर, चारों ओर चलती है। पगडंडी का क्षेत्रफल कितना?",
+          mr: "बाग 90 × 60 मीटरची आहे. 2 मीटर रुंद वाट हद्दीच्या अगदी आत, सभोवती जाते. वाटेचे क्षेत्रफळ किती?",
+        },
+        answer: 584,
+        wrong: [600, 300, 4816],
+        checkExpr: "90*60-86*56",
+        fmt: sqm,
+        solution: {
+          en: "The path is the park minus the inner lawn. The lawn loses 2 m on EVERY side: 90 − 4 = 86 by 60 − 4 = 56, area 4816. Path = 5400 − 4816 = 584 sq m. 600 walks the boundary (300 m) times the width but double-counts nothing at the corners only by luck — the subtraction method never argues about corners.",
+          hi: "पगडंडी = पार्क घटा भीतरी लॉन। लॉन हर ओर से 2 मीटर खोता है: 90 − 4 = 86 और 60 − 4 = 56, क्षेत्रफल 4816। पगडंडी = 5400 − 4816 = 584 वर्ग मीटर। 600 सीमा (300 मीटर) को चौड़ाई से गुणा करता है और कोनों पर उलझता है — घटाव वाला तरीक़ा कोनों पर कभी नहीं उलझता।",
+          mr: "वाट = बाग वजा आतली हिरवळ. हिरवळ प्रत्येक बाजूने 2 मीटर गमावते: 90 − 4 = 86 आणि 60 − 4 = 56, क्षेत्रफळ 4816. वाट = 5400 − 4816 = 584 चौ. मीटर. 600 हद्दीला (300 मीटर) रुंदीने गुणते आणि कोपऱ्यांवर घोटाळते — वजाबाकीची रीत कोपऱ्यांवर कधीच घोटाळत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 10 — Mensuration",
+      name: "Mensuration",
+      slug: "maths-6-mensuration",
+      summary: "Perimeter and area with formulas at last — triple fences, tiled floors, joined squares that swallow a wall, and the path found by subtraction.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "क्षेत्रमिति",
+          summary: "आख़िरकार सूत्रों के साथ परिमिति और क्षेत्रफल — तिहरी बाड़ें, टाइल वाले फ़र्श, दीवार निगलते जुड़े वर्ग, और घटाव से मिली पगडंडी।",
+        },
+        mr: {
+          name: "क्षेत्रमापन",
+          summary: "अखेर सूत्रांसह परिमिती आणि क्षेत्रफळ — तिहेरी कुंपणे, लाद्यांच्या फरश्या, भिंत गिळणारे जोडलेले चौरस, आणि वजाबाकीने सापडलेली वाट.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Symmetry (mirror lines, counted and missing)                 */
+/* ------------------------------------------------------------------------- */
+function symmetry6(): TopicFileOut {
+  const rand = rng("maths-6-symmetry");
+  const qs: OutQuestion[] = [];
+
+  const deg = (n: number) => ({ en: `${n}°`, hi: `${n}°`, mr: `${n}°` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many lines of symmetry does the letter A have?",
+          hi: "अक्षर A की कितनी सममिति रेखाएँ हैं?",
+          mr: "A अक्षराला किती सममिती रेषा आहेत?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        solution: {
+          en: "One — the vertical line down its middle: A's left and right halves mirror each other, but no horizontal fold works. B has one too, but lying on its side.",
+          hi: "एक — बीच से जाती खड़ी रेखा: A के बाएँ-दाएँ आधे एक-दूसरे के दर्पण हैं, पर कोई आड़ी तह नहीं चलती। B की भी एक है, पर लेटी हुई।",
+          mr: "एक — मधून जाणारी उभी रेषा: A चे डावे-उजवे अर्धे एकमेकांचे आरसे, पण कोणतीही आडवी घडी चालत नाही. B लाही एक आहे, पण आडवी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "An isosceles triangle (two sides equal) has how many lines of symmetry?",
+          hi: "समद्विबाहु त्रिभुज (दो भुजाएँ बराबर) की कितनी सममिति रेखाएँ हैं?",
+          mr: "समद्विभुज त्रिकोणाला (दोन बाजू सारख्या) किती सममिती रेषा आहेत?",
+        },
+        answer: 1,
+        wrong: [2, 3, 0],
+        solution: {
+          en: "One — from the apex between the equal sides down to the base's midpoint. Three lines need all three sides equal; the equilateral earns that upgrade.",
+          hi: "एक — बराबर भुजाओं के बीच के शीर्ष से आधार के मध्य तक। तीन रेखाओं के लिए तीनों भुजाएँ बराबर चाहिए; वह तरक़्क़ी समबाहु को मिलती है।",
+          mr: "एक — सारख्या बाजूंमधल्या शिखरापासून पायाच्या मध्यापर्यंत. तीन रेषांसाठी तिन्ही बाजू सारख्या हव्यात; ती बढती समभुजाला मिळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A REGULAR pentagon — five equal sides, five equal angles — has how many lines of symmetry?",
+          hi: "सम पंचभुज — पाँच बराबर भुजाएँ, पाँच बराबर कोण — की कितनी सममिति रेखाएँ हैं?",
+          mr: "नियमित पंचकोन — पाच सारख्या बाजू, पाच सारखे कोन — त्याला किती सममिती रेषा आहेत?",
+        },
+        answer: 5,
+        wrong: [2, 10, 4],
+        solution: {
+          en: "Five — one through each vertex to the opposite side's middle. A regular polygon always has as many mirror lines as sides; regularity is symmetry's pay.",
+          hi: "पाँच — हर शीर्ष से सामने की भुजा के मध्य तक एक। सम बहुभुज की दर्पण-रेखाएँ हमेशा भुजाओं जितनी होती हैं; समता ही सममिति का वेतन है।",
+          mr: "पाच — प्रत्येक शिरोबिंदूतून समोरच्या बाजूच्या मध्यापर्यंत एक. नियमित बहुभुजाला नेहमी बाजूंइतक्या आरसा-रेषा असतात; नियमितता हाच सममितीचा पगार.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A regular hexagon has how many lines of symmetry?",
+          hi: "सम षट्भुज की कितनी सममिति रेखाएँ हैं?",
+          mr: "नियमित षट्कोनाला किती सममिती रेषा आहेत?",
+        },
+        answer: 6,
+        wrong: [3, 12, 4],
+        solution: {
+          en: "Six — three joining opposite vertices, three joining opposite sides' middles. The rule 'as many as the sides' holds again; 12 counts each line from both ends.",
+          hi: "छह — तीन आमने-सामने के शीर्ष जोड़तीं, तीन आमने-सामने की भुजाओं के मध्य। 'भुजाओं जितनी' का नियम फिर निभा; 12 हर रेखा दोनों सिरों से गिन लेता है।",
+          mr: "सहा — तीन समोरासमोरचे शिरोबिंदू जोडणाऱ्या, तीन समोरासमोरच्या बाजूंचे मध्य. 'बाजूंइतक्या' हा नियम पुन्हा पाळला गेला; 12 प्रत्येक रेषा दोन्ही टोकांनी मोजते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many lines of symmetry does the letter E have?",
+          hi: "अक्षर E की कितनी सममिति रेखाएँ हैं?",
+          mr: "E अक्षराला किती सममिती रेषा आहेत?",
+        },
+        answer: 1,
+        wrong: [0, 2, 3],
+        solution: {
+          en: "One — horizontal, through the middle arm: E's top and bottom mirror each other. No vertical line works; the letter opens only one way.",
+          hi: "एक — आड़ी, बीच वाली भुजा से होकर: E के ऊपर-नीचे एक-दूसरे के दर्पण हैं। कोई खड़ी रेखा नहीं चलती; अक्षर एक ही ओर खुलता है।",
+          mr: "एक — आडवी, मधल्या दांडीतून: E चे वर-खाली एकमेकांचे आरसे. कोणतीही उभी रेषा चालत नाही; अक्षर एकाच बाजूला उघडते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A rangoli design has 3 dots on the LEFT of its mirror line. When completed symmetrically, how many dots in the whole design?",
+          hi: "रंगोली में दर्पण-रेखा के बाईं ओर 3 बिंदु हैं। सममित रूप से पूरा करने पर पूरे डिज़ाइन में कितने बिंदु?",
+          mr: "रांगोळीत आरसा-रेषेच्या डावीकडे 3 ठिपके आहेत. सममितपणे पूर्ण केल्यावर सबंध नक्षीत किती ठिपके?",
+        },
+        answer: 6,
+        wrong: [3, 9, 4],
+        checkExpr: "3*2",
+        solution: {
+          en: "Every left dot earns a mirror-twin on the right: 3 × 2 = 6 (dots ON the line, had there been any, would count once only). Completing a half-design is symmetry used as a drawing tool.",
+          hi: "बाएँ का हर बिंदु दाईं ओर दर्पण-जुड़वाँ पाता है: 3 × 2 = 6 (रेखा पर बैठे बिंदु, होते तो, एक ही बार गिनते)। आधा डिज़ाइन पूरा करना — सममिति का बतौर औज़ार इस्तेमाल यही है।",
+          mr: "डावीकडचा प्रत्येक ठिपका उजवीकडे आरसा-जुळा मिळवतो: 3 × 2 = 6 (रेषेवरचे ठिपके, असते तर, एकदाच मोजले असते). अर्धी नक्षी पूर्ण करणे — सममितीचा हत्यार म्हणून वापर हाच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A kaleidoscope's mirrors sit at 60° to each other, so the pattern repeats every 60°. How many copies fill the full circle?",
+          hi: "बहुरूपदर्शक के दर्पण आपस में 60° पर हैं, तो पैटर्न हर 60° पर दोहराता है। पूरा वृत्त कितनी प्रतियों से भरता है?",
+          mr: "कॅलिडोस्कोपचे आरसे परस्परांशी 60° वर आहेत, म्हणून नक्षी दर 60° ला पुनरावृत्त होते. पूर्ण वर्तुळ किती प्रतींनी भरते?",
+        },
+        answer: 6,
+        wrong: [4, 12, 3],
+        checkExpr: "360/60",
+        solution: {
+          en: "360 ÷ 60 = 6 copies round the circle — which is why kaleidoscope flowers so often have six petals. Narrow the mirror angle and the flower gains petals.",
+          hi: "360 ÷ 60 = 6 प्रतियाँ वृत्त भर — इसीलिए बहुरूपदर्शक के फूलों में अक्सर छह पंखुड़ियाँ होती हैं। दर्पण-कोण घटाइए तो फूल की पंखुड़ियाँ बढ़ जाती हैं।",
+          mr: "360 ÷ 60 = 6 प्रती वर्तुळभर — म्हणूनच कॅलिडोस्कोपच्या फुलांना अनेकदा सहा पाकळ्या असतात. आरसा-कोन कमी करा की फुलाच्या पाकळ्या वाढतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A five-sailed windmill design looks the same after each turn of how many degrees?",
+          hi: "पाँच पंखों वाला पवनचक्की-डिज़ाइन हर कितने अंश के घुमाव पर वैसा ही दिखता है?",
+          mr: "पाच पात्यांची पवनचक्की-नक्षी दर किती अंशांच्या वळणाला तशीच दिसते?",
+        },
+        answer: 72,
+        wrong: [90, 60, 45],
+        checkExpr: "360/5",
+        fmt: deg,
+        solution: {
+          en: "Five equal sails share the circle: 360 ÷ 5 = 72° per step. 90 belongs to four sails, 60 to six — the sail-count sets the turning angle.",
+          hi: "पाँच बराबर पंख वृत्त बाँटते हैं: 360 ÷ 5 = 72° प्रति क़दम। 90 चार पंखों का है, 60 छह का — पंखों की गिनती ही घुमाव का कोण तय करती है।",
+          mr: "पाच सारखी पाती वर्तुळ वाटतात: 360 ÷ 5 = 72° प्रति पाऊल. 90 चार पात्यांचे, 60 सहांचे — पात्यांची संख्याच वळणाचा कोन ठरवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A regular octagon — 8 equal sides — has how many lines of symmetry?",
+          hi: "सम अष्टभुज — 8 बराबर भुजाएँ — की कितनी सममिति रेखाएँ हैं?",
+          mr: "नियमित अष्टकोन — 8 सारख्या बाजू — त्याला किती सममिती रेषा आहेत?",
+        },
+        answer: 8,
+        wrong: [4, 16, 6],
+        solution: {
+          en: "Eight — four through opposite corners, four through opposite sides' middles. The regular family's rule holds from the triangle up: sides and mirror lines always match.",
+          hi: "आठ — चार आमने-सामने के कोनों से, चार आमने-सामने की भुजाओं के मध्य से। सम परिवार का नियम त्रिभुज से ऊपर तक निभता है: भुजाएँ और दर्पण-रेखाएँ हमेशा बराबर।",
+          mr: "आठ — चार समोरासमोरच्या कोपऱ्यांतून, चार समोरासमोरच्या बाजूंच्या मध्यांतून. नियमित कुटुंबाचा नियम त्रिकोणापासून वर पाळला जातो: बाजू आणि आरसा-रेषा नेहमी सारख्या.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Fold a paper along a shape's mirror line: the two halves cover each other exactly. If a shape's 14 corner-points pair up perfectly across the line (none ON it), how many sit on EACH side?",
+          hi: "आकृति की दर्पण-रेखा पर काग़ज़ मोड़िए: दोनों आधे ठीक-ठीक एक-दूसरे को ढकते हैं। यदि आकृति के 14 कोने-बिंदु रेखा के आर-पार पूरी जोड़ियाँ बनाते हैं (कोई रेखा पर नहीं), तो हर ओर कितने हैं?",
+          mr: "आकाराच्या आरसा-रेषेवर कागद दुमडा: दोन्ही अर्धे नेमके एकमेकांना झाकतात. आकाराचे 14 कोपरा-बिंदू रेषेपार पूर्ण जोड्या करत असतील (एकही रेषेवर नाही), तर प्रत्येक बाजूला किती?",
+        },
+        answer: 7,
+        wrong: [14, 28, 6],
+        checkExpr: "14/2",
+        solution: {
+          en: "Perfect pairing splits the 14 evenly: 7 a side. Symmetry is bookkeeping too — every off-line feature must appear an EVEN number of times, or the mirror line is a fraud.",
+          hi: "पूरी जोड़ियाँ 14 को बराबर बाँटती हैं: 7-7 हर ओर। सममिति बही-खाता भी है — रेखा से हटी हर चीज़ सम गिनती में होनी चाहिए, वरना दर्पण-रेखा धोखा है।",
+          mr: "पूर्ण जोड्या 14 ला सारखे वाटतात: 7-7 प्रत्येक बाजूला. सममिती हा हिशेबही आहे — रेषेबाहेरची प्रत्येक गोष्ट सम संख्येने हवी, नाही तर आरसा-रेषा फसवी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A parallelogram that is neither a rectangle nor a rhombus — how many lines of symmetry does it have?",
+          hi: "ऐसा समांतर चतुर्भुज जो न आयत है न समचतुर्भुज — उसकी कितनी सममिति रेखाएँ हैं?",
+          mr: "आयतही नाही आणि समभुज चौकोनही नाही असा समांतरभुज चौकोन — त्याला किती सममिती रेषा आहेत?",
+        },
+        answer: 0,
+        wrong: [2, 4, 1],
+        solution: {
+          en: "None — the surprise of the chapter. Fold along either diagonal or either mid-line and the slanted halves refuse to match. Yet it DOES have half-turn symmetry: spun 180° about its centre it looks the same. Mirror symmetry and turning symmetry are different gifts, and the parallelogram holds only the second.",
+          hi: "एक भी नहीं — अध्याय का अचरज। किसी विकर्ण या मध्य-रेखा पर मोड़िए, तिरछे आधे मिलने से इनकार कर देते हैं। हाँ, आधे घुमाव की सममिति उसके पास है: केंद्र पर 180° घुमाने पर वही दिखता है। दर्पण-सममिति और घुमाव-सममिति अलग-अलग वरदान हैं, और समांतर चतुर्भुज केवल दूसरा थामे है।",
+          mr: "एकही नाही — प्रकरणाचे आश्चर्य. कोणत्याही कर्णावर वा मध्यरेषेवर दुमडा, तिरपे अर्धे जुळायला नकार देतात. मात्र अर्ध-वळणाची सममिती त्याच्याकडे आहे: केंद्राभोवती 180° फिरवला की तोच दिसतो. आरसा-सममिती आणि वळण-सममिती ही वेगळी देणी, आणि समांतरभुज फक्त दुसरे धरून आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 13 — Symmetry",
+      name: "Symmetry",
+      slug: "maths-6-symmetry",
+      summary: "Mirror lines counted letter by letter and polygon by polygon — kaleidoscope angles, symmetry's even-count bookkeeping, and the parallelogram with none at all.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "सममिति",
+          summary: "अक्षर-दर-अक्षर, बहुभुज-दर-बहुभुज गिनी दर्पण-रेखाएँ — बहुरूपदर्शक के कोण, सममिति का सम-गिनती बही-खाता, और वह समांतर चतुर्भुज जिसके पास एक भी नहीं।",
+        },
+        mr: {
+          name: "सममिती",
+          summary: "अक्षराअक्षराने, बहुभुजाबहुभुजाने मोजलेल्या आरसा-रेषा — कॅलिडोस्कोपचे कोन, सममितीचा सम-संख्येचा हिशेब, आणि एकही नसलेला समांतरभुज चौकोन.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Practical Geometry (compasses, bisectors, buildable angles)  */
+/* ------------------------------------------------------------------------- */
+function practicalGeometry(): TopicFileOut {
+  const rand = rng("maths-6-practical-geometry");
+  const qs: OutQuestion[] = [];
+
+  const cm = (n: number) => ({ en: `${n} cm`, hi: `${n} सेमी`, mr: `${n} सेमी` });
+  const deg = (n: number) => ({ en: `${n}°`, hi: `${n}°`, mr: `${n}°` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "To draw a circle of radius 5 cm, how wide must the compasses be opened?",
+          hi: "5 सेमी त्रिज्या का वृत्त खींचने के लिए परकार कितना खोलना होगा?",
+          mr: "5 सेमी त्रिज्येचे वर्तुळ काढायला कंपास किती उघडावा लागेल?",
+        },
+        answer: 5,
+        wrong: [10, 2.5, 15],
+        fmt: cm,
+        solution: {
+          en: "The compass opening IS the radius: 5 cm from needle to pencil. 10 opens to the diameter — a circle twice too big.",
+          hi: "परकार का खुलाव ही त्रिज्या है: सुई से पेंसिल तक 5 सेमी। 10 व्यास तक खुलता है — दुगना बड़ा वृत्त।",
+          mr: "कंपासचे उघडणे हीच त्रिज्या: सुईपासून पेन्सिलपर्यंत 5 सेमी. 10 व्यासाइतके उघडते — दुप्पट मोठे वर्तुळ.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A 12 cm segment is bisected. How far from either end is the midpoint?",
+          hi: "12 सेमी का रेखाखंड समद्विभाजित किया गया। मध्य-बिंदु हर सिरे से कितनी दूर है?",
+          mr: "12 सेमीचा रेषाखंड दुभागला. मध्यबिंदू प्रत्येक टोकापासून किती दूर?",
+        },
+        answer: 6,
+        wrong: [12, 3, 4],
+        checkExpr: "12/2",
+        fmt: cm,
+        solution: {
+          en: "Bisect means cut into two equal halves: 12 ÷ 2 = 6 cm from each end. The compass-and-arcs construction finds this point without a single measurement.",
+          hi: "समद्विभाजन यानी दो बराबर आधों में काटना: हर सिरे से 12 ÷ 2 = 6 सेमी। परकार-चाप की रचना यह बिंदु बिना एक भी नाप लिए खोज देती है।",
+          mr: "दुभागणे म्हणजे दोन सारख्या अर्ध्यांत कापणे: प्रत्येक टोकापासून 12 ÷ 2 = 6 सेमी. कंपास-कंसांची रचना हा बिंदू एकही माप न घेता शोधते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A PERPENDICULAR from a point to a line meets the line at what angle?",
+          hi: "बिंदु से रेखा पर डाला गया लंब रेखा से किस कोण पर मिलता है?",
+          mr: "बिंदूतून रेषेवर टाकलेला लंब रेषेला कोणत्या कोनात मिळतो?",
+        },
+        answer: 90,
+        wrong: [180, 45, 60],
+        fmt: deg,
+        solution: {
+          en: "Perpendicular means at a right angle — 90°, the shortest road from the point to the line. Any other angle makes a longer, slanting path.",
+          hi: "लंब यानी समकोण पर — 90°, बिंदु से रेखा तक की सबसे छोटी राह। कोई और कोण लंबा, तिरछा रास्ता बनाता है।",
+          mr: "लंब म्हणजे काटकोनात — 90°, बिंदूपासून रेषेपर्यंतची सर्वांत जवळची वाट. दुसरा कोणताही कोन लांब, तिरपी वाट करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An angle of 60° is bisected with compasses. What does each half measure?",
+          hi: "60° का कोण परकार से समद्विभाजित किया गया। हर आधा कितने का है?",
+          mr: "60° चा कोन कंपासने दुभागला. प्रत्येक अर्धा किती?",
+        },
+        answer: 30,
+        wrong: [120, 15, 45],
+        checkExpr: "60/2",
+        fmt: deg,
+        solution: {
+          en: "60 ÷ 2 = 30° each — and 30° is otherwise unbuildable directly; bisection is how the compass reaches it. 15 halves twice.",
+          hi: "60 ÷ 2 = 30° प्रति आधा — और 30° सीधे बन ही नहीं सकता; परकार उस तक समद्विभाजन से ही पहुँचता है। 15 दो बार आधा करता है।",
+          mr: "60 ÷ 2 = 30° प्रत्येकी — आणि 30° थेट बांधताच येत नाही; कंपास तिथे दुभाजनानेच पोहोचतो. 15 दोनदा अर्धे करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "To build an equilateral triangle of side 7 cm, the compasses stay open at what width for every arc?",
+          hi: "7 सेमी भुजा का समबाहु त्रिभुज बनाने में परकार हर चाप के लिए कितने पर खुला रहता है?",
+          mr: "7 सेमी बाजूचा समभुज त्रिकोण बांधताना कंपास प्रत्येक कंसासाठी किती उघडा राहतो?",
+        },
+        answer: 7,
+        wrong: [14, 3.5, 21],
+        fmt: cm,
+        solution: {
+          en: "Every side is 7, so every arc is drawn at 7 cm — the compass never changes its opening. That constancy is the construction: three equal radii force three equal sides.",
+          hi: "हर भुजा 7 है, तो हर चाप 7 सेमी पर खिंचता है — परकार अपना खुलाव कभी नहीं बदलता। यही स्थिरता रचना है: तीन बराबर त्रिज्याएँ तीन बराबर भुजाएँ बनवा देती हैं।",
+          mr: "प्रत्येक बाजू 7, म्हणून प्रत्येक कंस 7 सेमीवर काढला जातो — कंपास आपले उघडणे कधीच बदलत नाही. हीच स्थिरता म्हणजे रचना: तीन सारख्या त्रिज्या तीन सारख्या बाजू घडवतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Bisect a right angle, then bisect one half again. What is the final angle?",
+          hi: "समकोण को समद्विभाजित कीजिए, फिर एक आधे को दोबारा। अंतिम कोण कितना?",
+          mr: "काटकोन दुभागा, मग एक अर्धा पुन्हा दुभागा. अंतिम कोन किती?",
+        },
+        answer: 22.5,
+        wrong: [45, 30, 11.25],
+        checkExpr: "90/4",
+        fmt: deg,
+        solution: {
+          en: "90 → 45 → 22.5: each bisection halves. 90 ÷ 4 = 22.5° — the compass happily builds angles the protractor's whole-degree marks cannot even show.",
+          hi: "90 → 45 → 22.5: हर समद्विभाजन आधा करता है। 90 ÷ 4 = 22.5° — परकार वे कोण मज़े से बना देता है जो चाँदे के पूरे-अंश निशान दिखा भी नहीं सकते।",
+          mr: "90 → 45 → 22.5: प्रत्येक दुभाजन अर्धे करते. 90 ÷ 4 = 22.5° — कंपास ते कोन सहज बांधतो जे कोनमापकाच्या पूर्ण-अंश खुणा दाखवूही शकत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "An angle of 75° is COPIED with compasses onto a fresh line. What does the copy measure?",
+          hi: "75° का कोण परकार से नई रेखा पर उतारा गया। प्रतिलिपि कितने की है?",
+          mr: "75° चा कोन कंपासने नव्या रेषेवर उतरवला. प्रत किती मापाची?",
+        },
+        answer: 75,
+        wrong: [150, 37.5, 105],
+        fmt: deg,
+        solution: {
+          en: "Copying preserves the angle exactly: 75°. The arcs carry the opening across without ever reading its number — construction copies the THING, not the measurement.",
+          hi: "प्रतिलिपि कोण को ज्यों-का-त्यों रखती है: 75°। चाप खुलाव को बिना उसका अंक पढ़े उस पार ले जाते हैं — रचना चीज़ उतारती है, नाप नहीं।",
+          mr: "प्रत कोनाला जसाच्या तसा ठेवते: 75°. कंस उघडणे त्याचा आकडा न वाचताच पलीकडे नेतात — रचना वस्तू उतरवते, माप नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "To construct 120° with compasses, the 60° step is marked off along the arc how many times?",
+          hi: "परकार से 120° बनाने के लिए चाप पर 60° का क़दम कितनी बार अंकित होता है?",
+          mr: "कंपासने 120° बांधायला कंसावर 60° चे पाऊल किती वेळा आखले जाते?",
+        },
+        answer: 2,
+        wrong: [1, 3, 4],
+        checkExpr: "120/60",
+        solution: {
+          en: "Twice: the compass's natural 60° step (the radius laid along its own arc), stepped two times, opens 120°. Three steps reach 180° — the straight line.",
+          hi: "दो बार: परकार का सहज 60° क़दम (त्रिज्या उसी के चाप पर रखी हुई) दो बार चलकर 120° खोलता है। तीन क़दम 180° — सीधी रेखा — तक पहुँचते हैं।",
+          mr: "दोनदा: कंपासचे सहज 60° पाऊल (त्रिज्या तिच्याच कंसावर ठेवलेली) दोनदा टाकले की 120° उघडते. तीन पावले 180° — सरळ रेषेपर्यंत पोहोचतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The perpendicular bisector of a 16 cm segment cuts it into two parts of what length each?",
+          hi: "16 सेमी रेखाखंड का लंब समद्विभाजक उसे कितनी-कितनी लंबाई के दो भागों में काटता है?",
+          mr: "16 सेमी रेषाखंडाचा लंबदुभाजक त्याला किती-किती लांबीच्या दोन भागांत कापतो?",
+        },
+        answer: 8,
+        wrong: [16, 4, 32],
+        checkExpr: "16/2",
+        fmt: cm,
+        solution: {
+          en: "Bisector halves: 8 cm each — and 'perpendicular' adds that the cut stands at 90°. Every point on that bisector is equally far from both ends: the line is a whole road of fair points.",
+          hi: "समद्विभाजक आधा करता है: 8-8 सेमी — और 'लंब' जोड़ता है कि कटाव 90° पर खड़ा है। उस समद्विभाजक का हर बिंदु दोनों सिरों से बराबर दूर है: वह रेखा न्यायी बिंदुओं की पूरी सड़क है।",
+          mr: "दुभाजक अर्धे करतो: 8-8 सेमी — आणि 'लंब' सांगते की काप 90° वर उभा आहे. त्या दुभाजकावरचा प्रत्येक बिंदू दोन्ही टोकांपासून सारखाच दूर: ती रेषा न्याय्य बिंदूंची अख्खी सडक आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "With compasses alone you can build 60° and bisect anything. Which of these angles CANNOT be reached that way?",
+          hi: "अकेले परकार से 60° बनता है और कुछ भी समद्विभाजित होता है। इनमें से कौन-सा कोण इस तरह नहीं मिल सकता?",
+          mr: "एकट्या कंपासने 60° बांधता येतो आणि काहीही दुभागता येते. यांपैकी कोणता कोन त्या मार्गाने मिळू शकत नाही?",
+        },
+        answer: 70,
+        wrong: [45, 15, 90],
+        fmt: deg,
+        solution: {
+          en: "From 60 come 30 and 15 by halving; two 60-steps and halving give 90 and 45. But 70 sits in none of these halving-ladders — no combination of 60s and halves lands there. The compass has a repertoire, and 70° is outside it.",
+          hi: "60 से आधा-आधा करके 30 और 15; दो 60-क़दमों और आधे से 90 और 45। पर 70 इन आधा-सीढ़ियों में कहीं नहीं बसता — 60 और आधों का कोई मेल वहाँ नहीं उतरता। परकार का अपना भंडार है, और 70° उससे बाहर है।",
+          mr: "60 पासून अर्धे-अर्धे करत 30 आणि 15; दोन 60-पावले आणि अर्ध्याने 90 आणि 45. पण 70 या अर्ध-शिड्यांत कुठेच बसत नाही — 60 आणि अर्ध्यांचा कोणताही मेळ तिथे उतरत नाही. कंपासचा स्वतःचा साठा आहे, आणि 70° त्याबाहेर आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Placing the 45° set-square against the 30° set-square, edge to edge, lets you draw their SUM as one angle. What angle is that?",
+          hi: "45° वाले सेट-स्क्वायर को 30° वाले से किनारे-से-किनारा सटाकर दोनों का योग एक कोण के रूप में खिंचता है। वह कोण कितना?",
+          mr: "45° चा सेट-स्क्वेअर 30° च्या सेट-स्क्वेअरला कडेला कड लावून दोघांची बेरीज एक कोन म्हणून काढता येते. तो कोन किती?",
+        },
+        answer: 75,
+        wrong: [15, 60, 105],
+        checkExpr: "45+30",
+        solution: {
+          en: "45 + 30 = 75° — an angle neither tool shows alone. Set against each other the OTHER way, they draw the difference, 15°. Two fixed triangles, added and subtracted, cover a draughtsman's whole day: 15, 30, 45, 60, 75, 90, 105, 120…",
+          hi: "45 + 30 = 75° — ऐसा कोण जो अकेला कोई औज़ार नहीं दिखाता। दूसरी ओर से सटाइए तो अंतर — 15° — खिंचता है। दो जड़े त्रिकोण, जोड़ और घटाव में, नक़्शानवीस का पूरा दिन सँभाल लेते हैं: 15, 30, 45, 60, 75, 90, 105, 120…",
+          mr: "45 + 30 = 75° — असा कोन जो एकटे कोणतेही हत्यार दाखवत नाही. दुसऱ्या बाजूने लावले की फरक — 15° — निघतो. दोन ठरलेले त्रिकोण, बेरीज-वजाबाकीत, आरेखकाचा अख्खा दिवस सांभाळतात: 15, 30, 45, 60, 75, 90, 105, 120…",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 6,
+      chapter: "Chapter 14 — Practical Geometry",
+      name: "Practical Geometry",
+      slug: "maths-6-practical-geometry",
+      summary: "Compasses and set-squares at work — bisectors that need no ruler, angles copied without reading them, and the repertoire 70° sits outside of.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "प्रायोगिक ज्यामिति",
+          summary: "काम पर परकार और सेट-स्क्वायर — बिना स्केल के समद्विभाजक, बिना पढ़े उतारे कोण, और वह भंडार जिससे 70° बाहर बैठा है।",
+        },
+        mr: {
+          name: "प्रात्यक्षिक भूमिती",
+          summary: "कामाला लागलेले कंपास आणि सेट-स्क्वेअर — पट्टीविना दुभाजक, न वाचता उतरवलेले कोन, आणि 70° ज्याबाहेर बसला आहे तो साठा.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G6_MATHS: TopicFileOut[] = [
   knowingOurNumbers(),
   wholeNumbers(),
@@ -2615,6 +3658,10 @@ export const G6_MATHS: TopicFileOut[] = [
   integers(),
   fractions6(),
   decimals6(),
+  dataHandling6(),
+  mensuration6(),
   algebra6(),
   ratioAndProportion(),
+  symmetry6(),
+  practicalGeometry(),
 ];
