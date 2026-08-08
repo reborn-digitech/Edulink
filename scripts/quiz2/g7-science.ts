@@ -1978,4 +1978,933 @@ export const G7_SCIENCE: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Motion and Time (speed, and the pendulum's promise)        */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-motion-and-time",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 13 — Motion and Time",
+      hi: "अध्याय 13 — गति एवं समय",
+      mr: "प्रकरण 13 — गती व काळ",
+    },
+    name: { en: "Motion and Time", hi: "गति एवं समय", mr: "गती व काळ" },
+    summary: {
+      en: "Speed as distance over time, the pendulum that taught clocks to tick, two dashboard meters with different jobs — and the graph where slope itself is speed.",
+      hi: "समय पर दूरी के रूप में चाल, घड़ियों को टिकटिक सिखाने वाला लोलक, अलग-अलग काम वाले दो डैशबोर्ड मीटर — और वह ग्राफ़ जहाँ ढलान ही चाल है।",
+      mr: "काळावरील अंतर म्हणून वेग, घड्याळांना टिकटिक शिकवणारा लंबक, वेगवेगळी कामे करणारे दोन डॅशबोर्ड मीटर — आणि जिथे उतारच वेग आहे तो आलेख.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "speed",
+        name: { en: "Speed", hi: "चाल", mr: "वेग" },
+        kind: "measure",
+        prompt: {
+          en: "Distance covered divided by the time taken — which measure tells in one number how fast a runner or a train moves?",
+          hi: "तय दूरी बटा लगा समय — कौन-सी माप एक ही संख्या में बता देती है कि धावक या रेल कितनी तेज़ है?",
+          mr: "कापलेले अंतर भागिले लागलेला वेळ — कोणते माप एकाच आकड्यात सांगते की धावपटू वा रेल्वे किती जलद आहे?",
+        },
+        statement: {
+          en: "Speed is distance divided by time — the faster mover covers more metres in the same second.",
+          hi: "चाल है दूरी बटा समय — तेज़ चलने वाला उसी सेकंड में ज़्यादा मीटर नाप देता है।",
+          mr: "वेग म्हणजे अंतर भागिले वेळ — जलद जाणारा त्याच सेकंदात जास्त मीटर कापतो.",
+        },
+        detail: {
+          en: "Roads speak in km/h; the laboratory's own coin is the metre per second.",
+          hi: "सड़कें किमी/घंटा बोलती हैं; प्रयोगशाला का अपना सिक्का मीटर प्रति सेकंड है।",
+          mr: "रस्ते किमी/तास बोलतात; प्रयोगशाळेचे स्वतःचे नाणे मीटर प्रति सेकंद.",
+        },
+        extra: {
+          en: "A cheetah's sprint and a snail's glide sit on the same scale, ten-thousand-fold apart.",
+          hi: "चीते की दौड़ और घोंघे की सरक एक ही पैमाने पर हैं, दस हज़ार गुना दूर।",
+          mr: "चित्त्याची धाव आणि गोगलगायीची सरपट एकाच मापावर आहेत, दहा हजार पट अंतरावर.",
+        },
+        pair: {
+          left: { en: "Distance over time", hi: "समय पर दूरी", mr: "काळावरचे अंतर" },
+          right: {
+            en: "how fast, in one number",
+            hi: "एक संख्या में रफ़्तार",
+            mr: "एका आकड्यात जलदपणा",
+          },
+        },
+      },
+      {
+        id: "uniform",
+        name: { en: "Uniform motion", hi: "एकसमान गति", mr: "एकसमान गती" },
+        kind: "motion",
+        prompt: {
+          en: "A train covers equal distances in equal ticks of the clock, never hurrying, never slowing. In which kind of motion is it?",
+          hi: "एक रेल घड़ी की बराबर टिक-टिक में बराबर दूरियाँ तय करती है, न जल्दी न देर। वह किस प्रकार की गति में है?",
+          mr: "एक रेल्वे घड्याळाच्या समान टिकटिकीत समान अंतरे कापते, ना घाई ना उशीर. ती कोणत्या प्रकारच्या गतीत आहे?",
+        },
+        statement: {
+          en: "Uniform motion covers equal distances in equal intervals of time — its speed never changes along the way.",
+          hi: "एकसमान गति बराबर समय-अंतरालों में बराबर दूरियाँ तय करती है — राह भर उसकी चाल नहीं बदलती।",
+          mr: "एकसमान गती समान वेळ-अंतरांत समान अंतरे कापते — वाटेत तिचा वेग बदलत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Equal distances, equal ticks",
+            hi: "बराबर दूरियाँ, बराबर टिक",
+            mr: "समान अंतरे, समान टिक",
+          },
+          right: {
+            en: "speed that never changes",
+            hi: "कभी न बदलती चाल",
+            mr: "कधी न बदलणारा वेग",
+          },
+        },
+      },
+      {
+        id: "pendulum",
+        name: { en: "The simple pendulum", hi: "सरल लोलक", mr: "साधा लंबक" },
+        kind: "device",
+        prompt: {
+          en: "A bob on a string swings to and fro so faithfully that whole clocks were built on its beat. What is this device called?",
+          hi: "धागे से बँधा गोलक इतनी वफ़ादारी से आगे-पीछे झूलता है कि उसकी ताल पर पूरी घड़ियाँ बनीं। इस युक्ति का नाम क्या है?",
+          mr: "दोऱ्याला बांधलेला गोळा इतक्या इमानाने पुढे-मागे झुलतो की त्याच्या तालावर अख्खी घड्याळे बांधली गेली. या साधनाचे नाव काय?",
+        },
+        statement: {
+          en: "The simple pendulum swings with a fixed rhythm — its faithfulness gave the world its first accurate clocks.",
+          hi: "सरल लोलक बँधी लय में झूलता है — उसकी वफ़ादारी ने दुनिया को पहली सटीक घड़ियाँ दीं।",
+          mr: "साधा लंबक बांधलेल्या लयीत झुलतो — त्याच्या इमानाने जगाला पहिली अचूक घड्याळे दिली.",
+        },
+        detail: {
+          en: "Galileo timed a swinging cathedral lamp against his own pulse — and found the beat steady.",
+          hi: "गैलीलियो ने गिरजे के झूलते दीये को अपनी नब्ज़ से नापा — और ताल स्थिर पाई।",
+          mr: "गॅलिलिओने चर्चमधल्या झुलत्या दिव्याला आपल्या नाडीवर मोजले — आणि ताल स्थिर आढळला.",
+        },
+        extra: {
+          en: "Small swing or wide, the time of a swing barely changes — that indifference is the whole secret.",
+          hi: "झूला छोटा हो या चौड़ा, एक झूले का समय मुश्किल से बदलता है — यही बेपरवाही पूरा राज़ है।",
+          mr: "झोका लहान असो वा रुंद, एका झोक्याचा वेळ जेमतेम बदलतो — हीच बेफिकिरी सारे गुपित.",
+        },
+        pair: {
+          left: { en: "The swinging bob", hi: "झूलता गोलक", mr: "झुलणारा गोळा" },
+          right: {
+            en: "time kept on a string",
+            hi: "धागे पर सधा समय",
+            mr: "दोऱ्यावर राखलेला काळ",
+          },
+        },
+      },
+      {
+        id: "time-period",
+        name: { en: "The time period", hi: "आवर्तकाल", mr: "आवर्तकाळ" },
+        kind: "measure",
+        prompt: {
+          en: "One complete to-and-fro swing always takes the same fixed stretch of time. What is that stretch called?",
+          hi: "एक पूरा आगे-पीछे का झूला हमेशा उतना ही बँधा समय लेता है। उस अवधि का नाम क्या है?",
+          mr: "एक पूर्ण पुढे-मागे झोका नेहमी तेवढाच ठरलेला वेळ घेतो. त्या अवधीचे नाव काय?",
+        },
+        statement: {
+          en: "The time period is the time of one complete oscillation — the pendulum's signature, set by the length of its string.",
+          hi: "आवर्तकाल एक पूर्ण दोलन का समय है — लोलक के धागे की लंबाई से तय उसका हस्ताक्षर।",
+          mr: "आवर्तकाळ म्हणजे एका पूर्ण आंदोलनाचा वेळ — लंबकाच्या दोऱ्याच्या लांबीने ठरलेली त्याची सही.",
+        },
+        pair: {
+          left: { en: "One full to-and-fro", hi: "एक पूरा आगे-पीछे", mr: "एक पूर्ण पुढे-मागे" },
+          right: {
+            en: "its own fixed time",
+            hi: "उसका अपना बँधा समय",
+            mr: "त्याचा स्वतःचा ठरलेला वेळ",
+          },
+        },
+      },
+      {
+        id: "speedometer",
+        name: { en: "The speedometer", hi: "चालमापी (स्पीडोमीटर)", mr: "वेगमापक (स्पीडोमीटर)" },
+        kind: "instrument",
+        prompt: {
+          en: "Which dashboard dial reports, at every instant, how fast the vehicle is moving in km/h?",
+          hi: "डैशबोर्ड की कौन-सी सुई हर पल बताती है कि वाहन किमी/घंटा में कितना तेज़ चल रहा है?",
+          mr: "डॅशबोर्डवरचा कोणता काटा प्रत्येक क्षणी सांगतो की वाहन किमी/तासात किती जलद चालले आहे?",
+        },
+        statement: {
+          en: "The speedometer shows the speed of this very moment — brake, and its needle drops with you.",
+          hi: "स्पीडोमीटर इसी पल की चाल दिखाता है — ब्रेक लगाइए और उसकी सुई आपके साथ उतर आती है।",
+          mr: "स्पीडोमीटर याच क्षणाचा वेग दाखवतो — ब्रेक दाबा आणि त्याचा काटा तुमच्यासोबत उतरतो.",
+        },
+        pair: {
+          left: { en: "The dashboard needle", hi: "डैशबोर्ड की सुई", mr: "डॅशबोर्डचा काटा" },
+          right: {
+            en: "speed at this instant",
+            hi: "इसी क्षण की चाल",
+            mr: "याच क्षणाचा वेग",
+          },
+        },
+      },
+      {
+        id: "odometer",
+        name: { en: "The odometer", hi: "पथमापी (ओडोमीटर)", mr: "पथमापक (ओडोमीटर)" },
+        kind: "instrument",
+        prompt: {
+          en: "Which meter counts the total kilometres a vehicle has rolled in its whole life?",
+          hi: "कौन-सा मीटर गिनता है कि वाहन ने अपनी पूरी उम्र में कुल कितने किलोमीटर नापे?",
+          mr: "कोणता मीटर मोजतो की वाहनाने आपल्या साऱ्या आयुष्यात एकूण किती किलोमीटर कापले?",
+        },
+        statement: {
+          en: "The odometer adds up distance travelled — kilometres piled on kilometres since the vehicle was new.",
+          hi: "ओडोमीटर तय दूरी जोड़ता जाता है — वाहन के नए होने से अब तक किलोमीटर पर किलोमीटर।",
+          mr: "ओडोमीटर कापलेले अंतर जोडत जातो — वाहन नवे असल्यापासून किलोमीटरवर किलोमीटर.",
+        },
+        pair: {
+          left: { en: "The distance counter", hi: "दूरी का गिनतीकार", mr: "अंतराचा हिशेबनीस" },
+          right: {
+            en: "kilometres piled up",
+            hi: "जुड़ते गए किलोमीटर",
+            mr: "साचत गेलेले किलोमीटर",
+          },
+        },
+      },
+      {
+        id: "dt-graph",
+        name: {
+          en: "The distance-time graph",
+          hi: "दूरी-समय ग्राफ़",
+          mr: "अंतर-काळ आलेख",
+        },
+        kind: "tool",
+        prompt: {
+          en: "Which picture plots distance up the side and time along the bottom, turning a whole journey into one line?",
+          hi: "कौन-सा चित्र दूरी को खड़ी ओर और समय को पड़ी ओर रखकर पूरी यात्रा को एक रेखा बना देता है?",
+          mr: "कोणते चित्र अंतर उभ्या बाजूला आणि काळ आडव्या बाजूला ठेवून सारा प्रवास एका रेषेत आणते?",
+        },
+        statement: {
+          en: "A distance-time graph draws motion as a line — straight and climbing for steady speed, flat wherever the traveller rests.",
+          hi: "दूरी-समय ग्राफ़ गति को रेखा बनाता है — सधी चाल पर सीधी चढ़ती, और जहाँ यात्री रुके वहाँ सपाट।",
+          mr: "अंतर-काळ आलेख गतीची रेषा काढतो — स्थिर वेगाला सरळ चढणारी, आणि प्रवासी थांबेल तिथे सपाट.",
+        },
+        detail: {
+          en: "The steeper the line, the faster the journey — slope IS speed, read straight off the paper.",
+          hi: "रेखा जितनी खड़ी, यात्रा उतनी तेज़ — ढलान ही चाल है, काग़ज़ से सीधी पढ़ी हुई।",
+          mr: "रेषा जितकी उभी, प्रवास तितका जलद — उतारच वेग आहे, कागदावरून थेट वाचलेला.",
+        },
+        extra: {
+          en: "A flat stretch is a rest written down: time passes, distance refuses to.",
+          hi: "सपाट हिस्सा लिखा हुआ विश्राम है: समय बीतता है, दूरी बढ़ने से इनकार करती है।",
+          mr: "सपाट भाग म्हणजे लिहून ठेवलेली विश्रांती: काळ जातो, अंतर वाढायला नकार देते.",
+        },
+        pair: {
+          left: { en: "The climbing line", hi: "चढ़ती रेखा", mr: "चढणारी रेषा" },
+          right: { en: "a journey drawn", hi: "खिंची हुई यात्रा", mr: "रेखाटलेला प्रवास" },
+        },
+      },
+      {
+        id: "second",
+        name: { en: "The second", hi: "सेकंड", mr: "सेकंद" },
+        kind: "unit",
+        prompt: {
+          en: "Which basic unit of time do clocks tick — sixty of them making a minute?",
+          hi: "घड़ियाँ समय की कौन-सी मूल इकाई टिकटिकाती हैं — जिसकी साठ से एक मिनट बनता है?",
+          mr: "घड्याळे काळाचे कोणते मूळ एकक टिकटिकवतात — ज्याच्या साठाने एक मिनिट होते?",
+        },
+        statement: {
+          en: "The second is time's basic unit — sixty to the minute, three thousand six hundred to the hour.",
+          hi: "सेकंड समय की मूल इकाई है — मिनट में साठ, घंटे में तीन हज़ार छह सौ।",
+          mr: "सेकंद हे काळाचे मूळ एकक — मिनिटात साठ, तासात तीन हजार सहाशे.",
+        },
+        pair: {
+          left: {
+            en: "Time's smallest everyday coin",
+            hi: "समय का सबसे छोटा रोज़मर्रा सिक्का",
+            mr: "काळाचे सर्वांत लहान रोजचे नाणे",
+          },
+          right: { en: "sixty to the minute", hi: "मिनट में साठ", mr: "मिनिटाला साठ" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the question to the instrument that answers it: A-'how fast NOW?', B-'how far in all?', C-'what time is it?'. Which trio is right?",
+          hi: "सवाल को उसका जवाब देने वाले यंत्र से मिलाइए: अ-'अभी कितनी तेज़?', ब-'कुल कितनी दूर?', स-'समय क्या हुआ?'। कौन-सी तिकड़ी सही है?",
+          mr: "प्रश्नाला उत्तर देणाऱ्या यंत्राशी जुळवा: अ-'आत्ता किती जलद?', ब-'एकूण किती दूर?', क-'किती वाजले?'. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: speedometer · B: odometer · C: pendulum clock",
+            hi: "अ: स्पीडोमीटर · ब: ओडोमीटर · स: लोलक घड़ी",
+            mr: "अ: स्पीडोमीटर · ब: ओडोमीटर · क: लंबक घड्याळ",
+          },
+          {
+            en: "A: odometer · B: pendulum clock · C: speedometer",
+            hi: "अ: ओडोमीटर · ब: लोलक घड़ी · स: स्पीडोमीटर",
+            mr: "अ: ओडोमीटर · ब: लंबक घड्याळ · क: स्पीडोमीटर",
+          },
+          {
+            en: "A: pendulum clock · B: speedometer · C: odometer",
+            hi: "अ: लोलक घड़ी · ब: स्पीडोमीटर · स: ओडोमीटर",
+            mr: "अ: लंबक घड्याळ · ब: स्पीडोमीटर · क: ओडोमीटर",
+          },
+          {
+            en: "A: speedometer · B: pendulum clock · C: odometer",
+            hi: "अ: स्पीडोमीटर · ब: लोलक घड़ी · स: ओडोमीटर",
+            mr: "अ: स्पीडोमीटर · ब: लंबक घड्याळ · क: ओडोमीटर",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each instrument owns one question. The speedometer lives in the present — speed at this instant. The odometer is the accountant of the past — kilometres accumulated. The pendulum clock parcels time itself into equal swings. Mix them up and you'd ask the clock how fast you drove.",
+          hi: "हर यंत्र का अपना एक सवाल है। स्पीडोमीटर वर्तमान में रहता है — इसी क्षण की चाल। ओडोमीटर अतीत का मुनीम है — जुड़ते किलोमीटर। लोलक घड़ी स्वयं समय को बराबर झूलों में बाँटती है। इन्हें उलझा दीजिए तो घड़ी से पूछ बैठेंगे कि गाड़ी कितनी तेज़ चली।",
+          mr: "प्रत्येक यंत्राचा स्वतःचा एक प्रश्न. स्पीडोमीटर वर्तमानात राहतो — याच क्षणाचा वेग. ओडोमीटर भूतकाळाचा हिशेबनीस — साचलेले किलोमीटर. लंबक घड्याळ स्वतः काळाला समान झोक्यांत वाटते. यांची गल्लत केली तर घड्याळालाच विचाराल की गाडी किती जलद चालली.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Asha and Ravi leave the school gate together, and their distance-time graphs are drawn on one sheet: Asha's line is steeper than Ravi's throughout. What does the paper prove without a single speed being written on it?",
+          hi: "आशा और रवि साथ-साथ स्कूल के फाटक से निकलते हैं, और उनके दूरी-समय ग्राफ़ एक ही पन्ने पर हैं: आशा की रेखा शुरू से अंत तक रवि से खड़ी है। बिना एक भी चाल लिखे वह काग़ज़ क्या सिद्ध करता है?",
+          mr: "आशा आणि रवी एकत्र शाळेच्या फाटकातून निघतात, आणि त्यांचे अंतर-काळ आलेख एकाच पानावर आहेत: आशाची रेषा सुरुवातीपासून शेवटपर्यंत रवीहून उभी आहे. एकही वेग न लिहिता तो कागद काय सिद्ध करतो?",
+        },
+        choices: [
+          {
+            en: "Asha moves faster: a steeper line packs more distance into every tick of time, so at any shared moment she is farther from the gate",
+            hi: "आशा तेज़ चलती है: खड़ी रेखा हर समय-टिक में ज़्यादा दूरी भरती है, अतः किसी भी साझा पल पर वह फाटक से ज़्यादा दूर है",
+            mr: "आशा जलद चालते: उभी रेषा प्रत्येक वेळ-टिकेत जास्त अंतर भरते, म्हणून कोणत्याही सामाईक क्षणी ती फाटकापासून जास्त दूर आहे",
+          },
+          {
+            en: "Ravi is faster, since flatter lines mean less effort wasted",
+            hi: "रवि तेज़ है, क्योंकि सपाट रेखा का मतलब कम मेहनत बर्बाद",
+            mr: "रवी जलद, कारण सपाट रेषा म्हणजे कमी श्रम वाया",
+          },
+          {
+            en: "Nothing — graphs can compare only one traveller at a time",
+            hi: "कुछ नहीं — ग्राफ़ एक बार में एक ही यात्री परख सकता है",
+            mr: "काहीच नाही — आलेख एका वेळी एकाच प्रवाशाला तपासू शकतो",
+          },
+          {
+            en: "Asha started earlier, which tilts her line",
+            hi: "आशा पहले चली थी, इसी से उसकी रेखा झुकी है",
+            mr: "आशा आधी निघाली होती, त्यानेच तिची रेषा कलली आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Slope is speed wearing geometry's clothes. Same start, same sheet — so at every shared time-tick, Asha's line has climbed higher: more distance for the same time, which IS being faster. No numbers are needed; the comparison lives in the tilt. That is the graph's whole gift: a race summarised in two lines.",
+          hi: "ढलान, ज्यामिति के कपड़ों में चाल है। शुरुआत एक, पन्ना एक — तो हर साझा समय-टिक पर आशा की रेखा ऊँची चढ़ चुकी है: उसी समय में ज़्यादा दूरी, और यही तेज़ होना है। संख्याओं की ज़रूरत नहीं; तुलना झुकाव में बसी है। ग्राफ़ की यही सौग़ात है: दो रेखाओं में समेटी दौड़।",
+          mr: "उतार म्हणजे भूमितीच्या कपड्यांतला वेग. सुरुवात एक, पान एक — म्हणून प्रत्येक सामाईक वेळ-टिकेला आशाची रेषा जास्त चढलेली आहे: त्याच वेळात जास्त अंतर, आणि हेच जलद असणे. आकड्यांची गरज नाही; तुलना कलात वसते. आलेखाची हीच देणगी: दोन रेषांत आवरलेली शर्यत.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — Electric Current and its Effects (heat, magnet, machine)   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-electric-current-effects",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 14 — Electric Current and its Effects",
+      hi: "अध्याय 14 — विद्युत धारा और उसके प्रभाव",
+      mr: "प्रकरण 14 — विद्युत धारा आणि तिचे परिणाम",
+    },
+    name: {
+      en: "Electric Current and its Effects",
+      hi: "विद्युत धारा और उसके प्रभाव",
+      mr: "विद्युत धारा आणि तिचे परिणाम",
+    },
+    summary: {
+      en: "Current's two powers — heat in a stubborn wire, magnetism around every live one — and the machines built on them: the fuse that dies on duty, the electromagnet with an off-switch, the bell that interrupts itself.",
+      hi: "धारा की दो शक्तियाँ — ज़िद्दी तार में गर्मी, हर चालू तार के गिर्द चुंबकत्व — और उन पर खड़ी मशीनें: ड्यूटी पर जान देता फ़्यूज़, ऑफ़-स्विच वाला विद्युत-चुंबक, ख़ुद को टोकती घंटी।",
+      mr: "धारेच्या दोन शक्ती — हट्टी तारेत उष्णता, प्रत्येक चालू तारेभोवती चुंबकत्व — आणि त्यांवर उभी यंत्रे: कामावर जीव देणारा फ्यूज, बंद-कळ असलेला विद्युतचुंबक, स्वतःलाच अडवणारी घंटा.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "symbols",
+        name: { en: "Circuit symbols", hi: "परिपथ प्रतीक", mr: "परिपथ चिन्हे" },
+        kind: "tool",
+        prompt: {
+          en: "Instead of drawing real cells, bulbs and switches, electricians sketch which agreed standard signs?",
+          hi: "असली सेल, बल्ब और स्विच बनाने की जगह बिजलीवाले कौन-से तयशुदा मानक चिह्न खींचते हैं?",
+          mr: "खरे सेल, दिवे आणि कळा काढण्याऐवजी विजेचे कारागीर कोणती ठरलेली प्रमाण चिन्हे रेखाटतात?",
+        },
+        statement: {
+          en: "Circuit symbols are electricity's shorthand — one agreed sign per component, and a diagram any country can read.",
+          hi: "परिपथ प्रतीक बिजली का शॉर्टहैंड हैं — हर पुर्ज़े का एक तयशुदा चिह्न, और ऐसा आरेख जिसे हर देश पढ़ ले।",
+          mr: "परिपथ चिन्हे ही विजेची लघुलिपी — प्रत्येक भागाचे एक ठरलेले चिन्ह, आणि कोणताही देश वाचू शकेल असा आराखडा.",
+        },
+        pair: {
+          left: {
+            en: "The electrician's shorthand",
+            hi: "बिजलीवाले का शॉर्टहैंड",
+            mr: "विजेच्या कारागिराची लघुलिपी",
+          },
+          right: { en: "one sign per part", hi: "हर पुर्ज़े का एक चिह्न", mr: "प्रत्येक भागाचे एक चिन्ह" },
+        },
+      },
+      {
+        id: "heating-effect",
+        name: { en: "The heating effect", hi: "ऊष्मीय प्रभाव", mr: "औष्णिक परिणाम" },
+        kind: "effect",
+        prompt: {
+          en: "A wire grows hot the moment current flows through it — toasters, irons and room heaters all live off this. What is the effect called?",
+          hi: "धारा बहते ही तार गर्म हो उठता है — टोस्टर, इस्तरी और हीटर सब इसी पर जीते हैं। इस प्रभाव का नाम क्या है?",
+          mr: "धारा वाहताच तार गरम होते — टोस्टर, इस्त्री आणि हीटर सारे यावरच जगतात. या परिणामाचे नाव काय?",
+        },
+        statement: {
+          en: "The heating effect turns current into warmth inside a resisting wire — the heater's element glows by it on demand.",
+          hi: "ऊष्मीय प्रभाव धारा को अड़ियल तार के भीतर गर्मी बना देता है — हीटर का तत्व इसी से माँगते ही दहकता है।",
+          mr: "औष्णिक परिणाम धारेला अडेल तारेच्या आत उबेत बदलतो — हीटरची तार यानेच मागताक्षणी फुलते.",
+        },
+        detail: {
+          en: "Heater elements are nichrome — a wire hired precisely for its stubbornness against current.",
+          hi: "हीटर के तत्व नाइक्रोम के हैं — वह तार जो धारा के आगे अड़ने के लिए ही रखा गया है।",
+          mr: "हीटरच्या तारा नायक्रोमच्या — धारेपुढे अडून राहण्यासाठीच नेमलेली तार.",
+        },
+        extra: {
+          en: "The same effect quietly wastes power in wires that only meant to carry it — warmth nobody ordered.",
+          hi: "यही प्रभाव उन तारों में चुपचाप बिजली गँवाता है जिन्हें केवल ढोना था — बिन माँगी गर्मी।",
+          mr: "हाच परिणाम फक्त वाहून नेणाऱ्या तारांत गुपचूप वीज गमावतो — कोणी न मागितलेली ऊब.",
+        },
+        pair: {
+          left: {
+            en: "Current through a stubborn wire",
+            hi: "अड़ियल तार से गुज़रती धारा",
+            mr: "हट्टी तारेतून जाणारी धारा",
+          },
+          right: { en: "warmth on demand", hi: "माँगते ही गर्मी", mr: "मागताक्षणी ऊब" },
+        },
+      },
+      {
+        id: "fuse",
+        name: { en: "The electric fuse", hi: "विद्युत फ़्यूज़", mr: "विद्युत फ्यूज" },
+        kind: "safeguard",
+        prompt: {
+          en: "Which safety wire melts on purpose when too much current flows, breaking the circuit before the wiring burns?",
+          hi: "कौन-सा सुरक्षा-तार ज़्यादा धारा बहते ही जान-बूझकर पिघल जाता है, वायरिंग जलने से पहले परिपथ तोड़ता हुआ?",
+          mr: "कोणती सुरक्षा-तार जास्त धारा वाहताच मुद्दाम वितळते, वायरिंग जळण्याआधी परिपथ तोडत?",
+        },
+        statement: {
+          en: "The fuse is a sacrifice built into the circuit — its low-melting wire dies first and takes the danger with it.",
+          hi: "फ़्यूज़ परिपथ में जड़ा बलिदान है — उसका जल्दी पिघलने वाला तार पहले मरता है और ख़तरे को साथ ले जाता है।",
+          mr: "फ्यूज म्हणजे परिपथात बसवलेला त्याग — त्याची लवकर वितळणारी तार आधी मरते आणि धोक्याला सोबत नेते.",
+        },
+        detail: {
+          en: "MCBs now stand the same watch with a switch that trips instead of a wire that melts — reset, not replaced.",
+          hi: "अब MCB वही पहरा देते हैं — पिघलते तार की जगह छिटकता स्विच: बदलना नहीं, बस फिर चढ़ाना।",
+          mr: "आता MCB तोच पहारा देतात — वितळणाऱ्या तारेऐवजी उडणारी कळ: बदलणे नाही, फक्त पुन्हा चढवणे.",
+        },
+        extra: {
+          en: "A fuse swapped for thick copper wire is a lock replaced by a welcome sign.",
+          hi: "मोटे ताँबे के तार से बदला फ़्यूज़ वह ताला है जिसकी जगह स्वागत-पट्ट टँगा दिया गया।",
+          mr: "जाड तांब्याच्या तारेने बदललेला फ्यूज म्हणजे कुलपाच्या जागी टांगलेली स्वागत-पाटी.",
+        },
+        pair: {
+          left: { en: "The melting guardian", hi: "पिघलता पहरेदार", mr: "वितळणारा पहारेकरी" },
+          right: {
+            en: "a circuit broken in time",
+            hi: "वक़्त रहते टूटा परिपथ",
+            mr: "वेळीच तुटलेला परिपथ",
+          },
+        },
+      },
+      {
+        id: "magnetic-effect",
+        name: {
+          en: "The magnetic effect of current",
+          hi: "धारा का चुंबकीय प्रभाव",
+          mr: "धारेचा चुंबकीय परिणाम",
+        },
+        kind: "effect",
+        prompt: {
+          en: "Set a compass beside a wire and switch the current on: the needle jumps aside. Which effect of current moved it?",
+          hi: "तार के पास कुतुबनुमा रखकर धारा चालू कीजिए: सुई झटके से घूम जाती है। धारा के किस प्रभाव ने उसे हिलाया?",
+          mr: "तारेजवळ होकायंत्र ठेवून धारा चालू करा: सुई झटक्याने वळते. धारेच्या कोणत्या परिणामाने ती हलवली?",
+        },
+        statement: {
+          en: "Current builds a magnetic field around its wire — a compass needle nearby swings the moment the switch closes.",
+          hi: "धारा अपने तार के गिर्द चुंबकीय क्षेत्र रचती है — स्विच बंद होते ही पास की कुतुबनुमा सुई घूम जाती है।",
+          mr: "धारा आपल्या तारेभोवती चुंबकीय क्षेत्र उभारते — कळ मिटताच जवळची होकायंत्राची सुई फिरते.",
+        },
+        detail: {
+          en: "Oersted caught the twitch during an 1820 lecture — an accident, watched carefully enough to become a science.",
+          hi: "ओर्स्टेड ने 1820 के एक व्याख्यान में वह झटका पकड़ा — एक इत्तिफ़ाक़, जिसे इतने ग़ौर से देखा गया कि विज्ञान बन गया।",
+          mr: "ओर्स्टेडने 1820 च्या एका व्याख्यानात तो झटका पकडला — एक योगायोग, जो इतक्या बारकाईने पाहिला गेला की विज्ञान झाला.",
+        },
+        extra: {
+          en: "Switch off and the needle strolls home — this magnetism lives only while current flows.",
+          hi: "स्विच खोलिए और सुई टहलती हुई घर लौट जाती है — यह चुंबकत्व केवल धारा के जीते-जी जीता है।",
+          mr: "कळ उघडा आणि सुई फिरत घरी परतते — हे चुंबकत्व फक्त धारा वाहेपर्यंतच जगते.",
+        },
+        pair: {
+          left: { en: "The compass by the wire", hi: "तार के पास कुतुबनुमा", mr: "तारेजवळचे होकायंत्र" },
+          right: {
+            en: "a twitch at switch-on",
+            hi: "स्विच दबते ही झटका",
+            mr: "कळ दाबताच झटका",
+          },
+        },
+      },
+      {
+        id: "electromagnet",
+        name: { en: "The electromagnet", hi: "विद्युत-चुंबक", mr: "विद्युतचुंबक" },
+        kind: "device",
+        prompt: {
+          en: "Wind wire around an iron nail, pass current, and the nail grabs pins — until you switch off. What have you built?",
+          hi: "लोहे की कील पर तार लपेटकर धारा बहाइए, कील पिनें पकड़ने लगती है — स्विच बंद करते ही छोड़ देती है। आपने क्या बनाया?",
+          mr: "लोखंडी खिळ्यावर तार गुंडाळून धारा सोडा, खिळा टाचण्या पकडू लागतो — कळ बंद करताच सोडतो. तुम्ही काय बांधले?",
+        },
+        statement: {
+          en: "An electromagnet is a coil around an iron core — a magnet with an on-off switch, obedient to the circuit.",
+          hi: "विद्युत-चुंबक लोहे के क्रोड पर लिपटी कुंडली है — ऑन-ऑफ़ स्विच वाला चुंबक, परिपथ का आज्ञाकारी।",
+          mr: "विद्युतचुंबक म्हणजे लोखंडी गाभ्यावरची गुंडाळी — चालू-बंद कळ असलेला चुंबक, परिपथाचा आज्ञाधारक.",
+        },
+        detail: {
+          en: "Scrapyard cranes lift whole cars with giant ones — and drop them by doing nothing more than switching off.",
+          hi: "कबाड़ की क्रेनें विराट विद्युत-चुंबकों से पूरी कारें उठाती हैं — और केवल स्विच बंद कर उन्हें गिरा देती हैं।",
+          mr: "भंगाराच्या क्रेन अवाढव्य विद्युतचुंबकांनी अख्ख्या गाड्या उचलतात — आणि नुसती कळ बंद करून त्या टाकतात.",
+        },
+        extra: {
+          en: "More turns of wire, stronger grip — strength you can wind on with your own hands.",
+          hi: "तार के जितने ज़्यादा फेरे, पकड़ उतनी कड़ी — वह ताक़त जो अपने हाथों लपेटी जा सकती है।",
+          mr: "तारेचे जितके जास्त वेढे, पकड तितकी घट्ट — स्वतःच्या हातांनी गुंडाळता येणारे बळ.",
+        },
+        pair: {
+          left: { en: "The coil-wrapped nail", hi: "कुंडली में लिपटी कील", mr: "गुंडाळीतला खिळा" },
+          right: {
+            en: "a magnet you can switch off",
+            hi: "बंद हो सकने वाला चुंबक",
+            mr: "बंद करता येणारा चुंबक",
+          },
+        },
+      },
+      {
+        id: "electric-bell",
+        name: { en: "The electric bell", hi: "विद्युत घंटी", mr: "विजेची घंटा" },
+        kind: "device",
+        prompt: {
+          en: "Which doorway machine uses an electromagnet that breaks its own circuit, over and over, to keep a hammer trembling against a gong?",
+          hi: "दरवाज़े की कौन-सी मशीन ऐसे विद्युत-चुंबक से चलती है जो बार-बार अपना ही परिपथ तोड़कर हथौड़ी को घंट पर काँपती रखता है?",
+          mr: "दाराचे कोणते यंत्र पुनःपुन्हा स्वतःचाच परिपथ तोडणाऱ्या विद्युतचुंबकाने हातोडीला घंटेवर थरथरत ठेवते?",
+        },
+        statement: {
+          en: "The electric bell is an electromagnet interrupting itself — each pull of the hammer breaks the circuit, a spring restores it, and the cycle rings on.",
+          hi: "विद्युत घंटी ख़ुद को टोकता विद्युत-चुंबक है — हथौड़ी का हर खिंचाव परिपथ तोड़ता है, कमानी उसे जोड़ती है, और चक्र बजता रहता है।",
+          mr: "विजेची घंटा म्हणजे स्वतःला अडवणारा विद्युतचुंबक — हातोडीची प्रत्येक ओढ परिपथ तोडते, स्प्रिंग तो जोडते, आणि चक्र वाजत राहते.",
+        },
+        pair: {
+          left: { en: "The trembling hammer", hi: "काँपती हथौड़ी", mr: "थरथरणारी हातोडी" },
+          right: {
+            en: "a circuit breaking itself",
+            hi: "ख़ुद को तोड़ता परिपथ",
+            mr: "स्वतःला तोडणारा परिपथ",
+          },
+        },
+      },
+      {
+        id: "battery7",
+        name: { en: "The battery", hi: "बैटरी", mr: "बॅटरी" },
+        kind: "source",
+        prompt: {
+          en: "Two or more cells joined in a row, plus terminal to minus terminal, make up what?",
+          hi: "क़तार में जुड़े दो या अधिक सेल, धन सिरा ऋण सिरे से, मिलकर क्या बनाते हैं?",
+          mr: "रांगेत जोडलेले दोन वा अधिक सेल, धन टोक ऋण टोकाला, मिळून काय बनवतात?",
+        },
+        statement: {
+          en: "A battery is cells in a queue, plus joined to minus — their pushes add, and the torch shines brighter for it.",
+          hi: "बैटरी क़तार में लगे सेल हैं, धन से ऋण जुड़ा — उनके धक्के जुड़ते हैं, और टॉर्च उसी से ज़्यादा चमकती है।",
+          mr: "बॅटरी म्हणजे रांगेतले सेल, धन ऋणाला जोडलेले — त्यांचे रेटे जुळतात, आणि टॉर्च त्यानेच जास्त उजळते.",
+        },
+        pair: {
+          left: { en: "Cells in a queue", hi: "क़तार में सेल", mr: "रांगेतले सेल" },
+          right: { en: "pushes added up", hi: "जुड़े हुए धक्के", mr: "जुळलेले रेटे" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put the electric bell's cycle in order, starting from the switch being pressed. Which sequence is right?",
+          hi: "स्विच दबने से शुरू कर विद्युत घंटी का चक्र क्रम में रखिए। कौन-सा क्रम सही है?",
+          mr: "कळ दाबल्यापासून सुरुवात करून विजेच्या घंटेचे चक्र क्रमाने लावा. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "Current flows → electromagnet pulls hammer → contact breaks → magnetism dies → spring returns hammer → contact remade",
+            hi: "धारा बहती है → विद्युत-चुंबक हथौड़ी खींचता है → संपर्क टूटता है → चुंबकत्व मरता है → कमानी हथौड़ी लौटाती है → संपर्क फिर जुड़ता है",
+            mr: "धारा वाहते → विद्युतचुंबक हातोडी ओढतो → संपर्क तुटतो → चुंबकत्व मरते → स्प्रिंग हातोडी परत आणते → संपर्क पुन्हा जुळतो",
+          },
+          {
+            en: "Contact breaks → current flows → hammer strikes → spring breaks → magnetism returns → gong rings",
+            hi: "संपर्क टूटता है → धारा बहती है → हथौड़ी बजाती है → कमानी टूटती है → चुंबकत्व लौटता है → घंट बजता है",
+            mr: "संपर्क तुटतो → धारा वाहते → हातोडी वाजवते → स्प्रिंग तुटते → चुंबकत्व परतते → घंटा वाजते",
+          },
+          {
+            en: "Electromagnet pulls → current begins → contact remade → magnetism dies → hammer rests → bell stops",
+            hi: "विद्युत-चुंबक खींचता है → धारा शुरू होती है → संपर्क जुड़ता है → चुंबकत्व मरता है → हथौड़ी ठहरती है → घंटी रुकती है",
+            mr: "विद्युतचुंबक ओढतो → धारा सुरू होते → संपर्क जुळतो → चुंबकत्व मरते → हातोडी थांबते → घंटा थांबते",
+          },
+          {
+            en: "Spring pulls hammer → contact breaks → current flows → electromagnet lets go → gong rings → circuit rests",
+            hi: "कमानी हथौड़ी खींचती है → संपर्क टूटता है → धारा बहती है → विद्युत-चुंबक छोड़ देता है → घंट बजता है → परिपथ ठहरता है",
+            mr: "स्प्रिंग हातोडी ओढते → संपर्क तुटतो → धारा वाहते → विद्युतचुंबक सोडतो → घंटा वाजते → परिपथ थांबतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The bell's genius is that pulling the hammer BREAKS the very circuit that pulled it: current makes the magnet, the magnet moves the hammer, the moving hammer opens the contact, the magnet dies, the spring closes the contact — and the loop begins again, dozens of times a second. The ring is the sound of a machine contradicting itself rhythmically.",
+          hi: "घंटी की प्रतिभा यह है कि हथौड़ी का खिंचना उसी परिपथ को तोड़ देता है जिसने उसे खींचा: धारा चुंबक बनाती है, चुंबक हथौड़ी चलाता है, चलती हथौड़ी संपर्क खोलती है, चुंबक मरता है, कमानी संपर्क जोड़ती है — और चक्र सेकंड में दर्जनों बार फिर शुरू। घंटी की आवाज़ ख़ुद से लयबद्ध विरोधाभास करती मशीन का स्वर है।",
+          mr: "घंटेची प्रतिभा ही की हातोडीचे ओढले जाणे तिला ओढणाराच परिपथ तोडते: धारा चुंबक बनवते, चुंबक हातोडी हलवतो, हलणारी हातोडी संपर्क उघडते, चुंबक मरतो, स्प्रिंग संपर्क जोडते — आणि चक्र सेकंदाला डझनभर वेळा पुन्हा सुरू. घंटेचा नाद म्हणजे स्वतःशीच लयबद्ध विरोध करणाऱ्या यंत्राचा स्वर.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A blown fuse is replaced with a thick copper wire 'so it won't blow again' — and indeed it never does. Why is the house now in MORE danger, not less?",
+          hi: "उड़ा फ़्यूज़ मोटे ताँबे के तार से बदल दिया गया 'ताकि फिर न उड़े' — और सचमुच वह कभी नहीं उड़ता। घर अब कम नहीं, ज़्यादा ख़तरे में क्यों है?",
+          mr: "उडालेला फ्यूज जाड तांब्याच्या तारेने बदलला 'म्हणजे पुन्हा उडणार नाही' — आणि खरेच तो कधी उडत नाही. घर आता कमी नव्हे, जास्त धोक्यात का आहे?",
+        },
+        choices: [
+          {
+            en: "The fuse's job WAS to blow: the thick wire carries any overload happily, so the fault current now cooks the wiring instead of dying at the fuse",
+            hi: "फ़्यूज़ का काम ही उड़ना था: मोटा तार हर अतिभार ख़ुशी-ख़ुशी ढोता है, अतः दोष-धारा अब फ़्यूज़ पर मरने की जगह वायरिंग को पकाती है",
+            mr: "फ्यूजचे कामच उडणे होते: जाड तार कोणताही अतिभार आनंदाने वाहते, म्हणून दोष-धारा आता फ्यूजवर मरण्याऐवजी वायरिंग शिजवते",
+          },
+          {
+            en: "Copper attracts lightning into the house",
+            hi: "ताँबा बिजली को घर में खींच लाता है",
+            mr: "तांबे वीज घरात ओढून आणते",
+          },
+          {
+            en: "Thick wires slow the current down too much",
+            hi: "मोटे तार धारा को बहुत धीमा कर देते हैं",
+            mr: "जाड तारा धारेला फारच मंद करतात",
+          },
+          {
+            en: "There is no extra danger; fuses are only for saving electricity",
+            hi: "कोई अतिरिक्त ख़तरा नहीं; फ़्यूज़ केवल बिजली बचाने के लिए हैं",
+            mr: "जास्तीचा धोका नाही; फ्यूज फक्त वीज वाचवण्यासाठी असतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A fuse that never blows is a guard that never shouts. The thin, low-melting wire was chosen to be the circuit's WEAKEST point, so that overload kills it first, cheaply and safely. Thick copper removes the weak point — and the next short circuit finds its weakest point somewhere in the walls, where the heating effect works on insulation instead of on a two-rupee replaceable wire.",
+          hi: "जो फ़्यूज़ कभी नहीं उड़ता वह पहरेदार है जो कभी नहीं चीख़ता। पतला, जल्दी पिघलता तार जान-बूझकर परिपथ की सबसे कमज़ोर कड़ी बनाया गया था, ताकि अतिभार उसे ही पहले मारे — सस्ते में, सुरक्षित। मोटा ताँबा वह कमज़ोर कड़ी हटा देता है — और अगला शॉर्ट सर्किट अपनी सबसे कमज़ोर कड़ी दीवारों के भीतर ढूँढ़ लेता है, जहाँ ऊष्मीय प्रभाव दो रुपये के बदले जाने वाले तार पर नहीं, इंसुलेशन पर काम करता है।",
+          mr: "कधीच न उडणारा फ्यूज म्हणजे कधीच न ओरडणारा पहारेकरी. बारीक, लवकर वितळणारी तार मुद्दामच परिपथाची सर्वांत कमजोर कडी केली होती, म्हणजे अतिभार तिलाच आधी मारेल — स्वस्तात, सुरक्षित. जाड तांबे ती कमजोर कडी काढून टाकते — आणि पुढचा शॉर्ट सर्किट आपली सर्वांत कमजोर कडी भिंतींच्या आत शोधतो, जिथे औष्णिक परिणाम दोन रुपयांच्या बदलता येणाऱ्या तारेवर नव्हे, इन्सुलेशनवर काम करतो.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 15 — Light (mirrors curved and flat, lenses, seven colours)     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-7-light",
+    subject: "SCIENCE",
+    classLevel: 7,
+    chapter: {
+      en: "Chapter 15 — Light",
+      hi: "अध्याय 15 — प्रकाश",
+      mr: "प्रकरण 15 — प्रकाश",
+    },
+    name: { en: "Light", hi: "प्रकाश", mr: "प्रकाश" },
+    summary: {
+      en: "Mirrors flat and curved, lenses thick and thin — images real and virtual, a street folded into a driver's mirror, and sunlight unpacked into its seven colours.",
+      hi: "समतल और वक्र दर्पण, मोटे और पतले लेंस — वास्तविक और आभासी प्रतिबिंब, चालक के शीशे में सिमटी सड़क, और सात रंगों में खुलती धूप।",
+      mr: "सपाट आणि वक्र आरसे, जाड आणि पातळ भिंगे — खऱ्या आणि आभासी प्रतिमा, चालकाच्या आरशात घडी झालेला रस्ता, आणि सात रंगांत उलगडलेले ऊन.",
+    },
+    position: 15,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "plane-image",
+        name: {
+          en: "The plane mirror's image",
+          hi: "समतल दर्पण का प्रतिबिंब",
+          mr: "सपाट आरशातील प्रतिमा",
+        },
+        kind: "image",
+        prompt: {
+          en: "Which image stands as far behind the glass as you stand before it — erect, same-sized, and swapped left for right?",
+          hi: "कौन-सा प्रतिबिंब शीशे के पीछे उतनी ही दूर खड़ा होता है जितनी दूर आप आगे — सीधा, बराबर नाप का, और बायाँ-दायाँ बदला हुआ?",
+          mr: "कोणती प्रतिमा काचेच्या मागे तितक्याच दूर उभी असते जितके तुम्ही पुढे — सरळ, समान मापाची, आणि डावे-उजवे बदललेली?",
+        },
+        statement: {
+          en: "A plane mirror's image is erect and same-sized, as far behind the mirror as the object is in front — with left and right exchanged.",
+          hi: "समतल दर्पण का प्रतिबिंब सीधा और बराबर नाप का होता है, दर्पण के पीछे उतना ही दूर जितना वस्तु आगे — बाएँ-दाएँ की अदला-बदली के साथ।",
+          mr: "सपाट आरशातील प्रतिमा सरळ आणि समान मापाची, आरशामागे तितकीच दूर जितकी वस्तू पुढे — डाव्या-उजव्याच्या अदलाबदलीसह.",
+        },
+        detail: {
+          en: "Ambulances paint their name mirror-writ, so the driver ahead reads it the right way round in the rear-view glass.",
+          hi: "एम्बुलेंस अपना नाम उल्टा लिखवाती हैं, ताकि आगे वाला चालक अपने पीछे-देखू शीशे में उसे सीधा पढ़ ले।",
+          mr: "रुग्णवाहिका आपले नाव उलटे रंगवतात, म्हणजे पुढच्या चालकाला त्याच्या मागील-दृश्य आरशात ते सरळ वाचता येते.",
+        },
+        extra: {
+          en: "It cannot be caught on any screen — a virtual image lives only in the looking.",
+          hi: "उसे किसी परदे पर नहीं उतारा जा सकता — आभासी प्रतिबिंब केवल देखने में बसता है।",
+          mr: "ती कोणत्याही पडद्यावर पकडता येत नाही — आभासी प्रतिमा फक्त पाहण्यातच वसते.",
+        },
+        pair: {
+          left: {
+            en: "AMBULANCE written backwards",
+            hi: "उल्टा लिखा AMBULANCE",
+            mr: "उलटे लिहिलेले AMBULANCE",
+          },
+          right: {
+            en: "read right in a mirror",
+            hi: "शीशे में सीधा पढ़ा गया",
+            mr: "आरशात सरळ वाचलेले",
+          },
+        },
+      },
+      {
+        id: "concave-mirror",
+        name: { en: "The concave mirror", hi: "अवतल दर्पण", mr: "अंतर्गोल आरसा" },
+        kind: "mirror",
+        prompt: {
+          en: "Which curved-in mirror throws a real, upside-down picture of the window onto a wall — yet magnifies your face when you lean close?",
+          hi: "कौन-सा भीतर को मुड़ा दर्पण खिड़की की वास्तविक, उल्टी तस्वीर दीवार पर फेंकता है — पर पास झुकते ही आपका चेहरा बड़ा कर देता है?",
+          mr: "कोणता आत वळलेला आरसा खिडकीचे खरे, उलटे चित्र भिंतीवर टाकतो — पण जवळ झुकताच तुमचा चेहरा मोठा करतो?",
+        },
+        statement: {
+          en: "The concave mirror curves inward — distant things it images real and inverted, while a close face it magnifies upright.",
+          hi: "अवतल दर्पण भीतर को मुड़ा है — दूर की चीज़ों का वास्तविक, उल्टा प्रतिबिंब बनाता है, और पास का चेहरा सीधा बड़ा कर देता है।",
+          mr: "अंतर्गोल आरसा आत वळलेला — दूरच्या गोष्टींची खरी, उलटी प्रतिमा करतो, आणि जवळचा चेहरा सरळ मोठा करतो.",
+        },
+        detail: {
+          en: "Dentists, torch reflectors and shaving mirrors all borrow its gathering curve.",
+          hi: "दंत-चिकित्सक, टॉर्च के परावर्तक और हजामत के शीशे सब उसका बटोरने वाला मोड़ उधार लेते हैं।",
+          mr: "दंतवैद्य, टॉर्चचे परावर्तक आणि दाढीचे आरसे सारे त्याचा गोळा करणारा वाक उसना घेतात.",
+        },
+        extra: {
+          en: "Held to the sun it squeezes the rays to one hot bright point — the focus, made visible on paper.",
+          hi: "धूप में थामिए तो वह किरणें एक तप्त उजले बिंदु में निचोड़ देता है — फ़ोकस, काग़ज़ पर दिखता हुआ।",
+          mr: "उन्हात धरला तर तो किरणे एका तप्त तेजस्वी बिंदूत पिळतो — केंद्रबिंदू, कागदावर दिसणारा.",
+        },
+        pair: {
+          left: { en: "The curving-in mirror", hi: "भीतर मुड़ा दर्पण", mr: "आत वळलेला आरसा" },
+          right: {
+            en: "sunlight squeezed to a point",
+            hi: "बिंदु में निचुड़ी धूप",
+            mr: "बिंदूत पिळलेले ऊन",
+          },
+        },
+      },
+      {
+        id: "convex-mirror",
+        name: { en: "The convex mirror", hi: "उत्तल दर्पण", mr: "बहिर्गोल आरसा" },
+        kind: "mirror",
+        prompt: {
+          en: "Which bulging-out mirror shrinks the world into a wide little picture, guarding drivers' shoulders and blind corners?",
+          hi: "कौन-सा बाहर को उभरा दर्पण दुनिया को चौड़ी नन्ही तस्वीर में समेट देता है, चालकों के कंधे और अंधे मोड़ सँभालता हुआ?",
+          mr: "कोणता बाहेर फुगलेला आरसा जगाला रुंद इवल्या चित्रात आवरतो, चालकांचे खांदे आणि आंधळी वळणे राखत?",
+        },
+        statement: {
+          en: "The convex mirror bulges outward — everything upright, everything smaller, and a field of view as wide as a street.",
+          hi: "उत्तल दर्पण बाहर को उभरा है — सब कुछ सीधा, सब कुछ छोटा, और सड़क जितना चौड़ा दृश्य-क्षेत्र।",
+          mr: "बहिर्गोल आरसा बाहेर फुगलेला — सारे सरळ, सारे लहान, आणि रस्त्याइतके रुंद दृश्यक्षेत्र.",
+        },
+        pair: {
+          left: { en: "The bulging mirror", hi: "उभरा हुआ दर्पण", mr: "फुगलेला आरसा" },
+          right: {
+            en: "a whole street in a palm",
+            hi: "हथेली में पूरी सड़क",
+            mr: "तळहातात अख्खा रस्ता",
+          },
+        },
+      },
+      {
+        id: "convex-lens",
+        name: { en: "The convex lens", hi: "उत्तल लेंस", mr: "बहिर्गोल भिंग" },
+        kind: "lens",
+        prompt: {
+          en: "Which thick-middled glass bends rays together — magnifying small print, and burning a bright point from sunlight?",
+          hi: "बीच से मोटा कौन-सा शीशा किरणों को समेट लेता है — महीन छपाई बड़ी करता और धूप से उजला बिंदु दहकाता हुआ?",
+          mr: "मधून जाड असलेले कोणते काच किरणांना एकत्र वाकवते — बारीक छपाई मोठी करत आणि उन्हातून तेजस्वी बिंदू फुलवत?",
+        },
+        statement: {
+          en: "The convex lens converges light — the magnifying glass, the camera and your own eye's lens are all its family.",
+          hi: "उत्तल लेंस प्रकाश को समेटता है — आतशी शीशा, कैमरा और आपकी आँख का लेंस सब उसका परिवार हैं।",
+          mr: "बहिर्गोल भिंग प्रकाश एकवटते — भिंग, कॅमेरा आणि तुमच्या डोळ्यातले भिंग सारे त्याचेच कुटुंब.",
+        },
+        detail: {
+          en: "Never point it from the sun into an eye — the same gathering that magnifies can burn.",
+          hi: "उसे धूप से आँख की ओर कभी मत मोड़िए — जो बटोरना बड़ा करता है, वही जला भी सकता है।",
+          mr: "ते उन्हातून डोळ्याकडे कधी वळवू नका — जे एकवटणे मोठे करते, तेच जाळूही शकते.",
+        },
+        extra: {
+          en: "Far scenes it can throw upside-down on paper — a real image from a converging glass.",
+          hi: "दूर के दृश्य वह काग़ज़ पर उल्टे उतार सकता है — समेटने वाले शीशे से बना वास्तविक प्रतिबिंब।",
+          mr: "दूरची दृश्ये ते कागदावर उलटी उतरवू शकते — एकवटणाऱ्या काचेतून खरी प्रतिमा.",
+        },
+        pair: {
+          left: { en: "The thick-middled glass", hi: "बीच से मोटा शीशा", mr: "मधून जाड काच" },
+          right: { en: "rays bent together", hi: "समेटी गई किरणें", mr: "एकत्र वाकवलेली किरणे" },
+        },
+      },
+      {
+        id: "concave-lens",
+        name: { en: "The concave lens", hi: "अवतल लेंस", mr: "अंतर्गोल भिंग" },
+        kind: "lens",
+        prompt: {
+          en: "Which thin-middled glass spreads rays apart, always showing a smaller, upright picture whatever you hold before it?",
+          hi: "बीच से पतला कौन-सा शीशा किरणें बिखेर देता है, जो भी सामने रखिए हमेशा छोटी, सीधी तस्वीर दिखाता हुआ?",
+          mr: "मधून पातळ असलेले कोणते काच किरणे विखुरते, समोर काहीही धरा नेहमी लहान, सरळ चित्र दाखवत?",
+        },
+        statement: {
+          en: "The concave lens diverges light — its images are always virtual, upright and diminished, with no exceptions to memorise.",
+          hi: "अवतल लेंस प्रकाश बिखेरता है — उसके प्रतिबिंब सदा आभासी, सीधे और छोटे होते हैं, रटने को कोई अपवाद नहीं।",
+          mr: "अंतर्गोल भिंग प्रकाश विखुरते — त्याच्या प्रतिमा नेहमी आभासी, सरळ आणि लहान, पाठ करायला अपवाद नाहीत.",
+        },
+        pair: {
+          left: { en: "The thin-middled glass", hi: "बीच से पतला शीशा", mr: "मधून पातळ काच" },
+          right: { en: "rays spread apart", hi: "बिखेरी गई किरणें", mr: "विखुरलेली किरणे" },
+        },
+      },
+      {
+        id: "spectrum",
+        name: {
+          en: "The spectrum of white light",
+          hi: "श्वेत प्रकाश का वर्णक्रम",
+          mr: "पांढऱ्या प्रकाशाचा वर्णपट",
+        },
+        kind: "phenomenon",
+        prompt: {
+          en: "A prism — or a soap film, or a compact disc — splits sunlight into which band of seven colours?",
+          hi: "प्रिज़्म — या साबुन की झिल्ली, या सीडी — धूप को किन सात रंगों की पट्टी में बाँट देता है?",
+          mr: "लोलक — वा साबणाचा तवंग, वा सीडी — उन्हाला कोणत्या सात रंगांच्या पट्ट्यात वाटतो?",
+        },
+        statement: {
+          en: "White light is seven colours travelling together — a prism unpacks them into the spectrum, rainbow-wise.",
+          hi: "श्वेत प्रकाश साथ चलते सात रंग हैं — प्रिज़्म उन्हें वर्णक्रम में खोल देता है, इंद्रधनुष की तरह।",
+          mr: "पांढरा प्रकाश म्हणजे सोबत चालणारे सात रंग — लोलक त्यांना वर्णपटात उलगडतो, इंद्रधनुष्यासारखे.",
+        },
+        detail: {
+          en: "After a shower the raindrops play prism — the rainbow is the sky running the experiment for free.",
+          hi: "बौछार के बाद बूँदें प्रिज़्म बन जाती हैं — इंद्रधनुष आसमान का मुफ़्त चलाया प्रयोग है।",
+          mr: "सरीनंतर थेंब लोलक होतात — इंद्रधनुष्य म्हणजे आकाशाने फुकट चालवलेला प्रयोग.",
+        },
+        extra: {
+          en: "Spin a seven-colour disc fast and the colours remarry into whitish grey — Newton's disc runs the proof backwards.",
+          hi: "सात रंगों की चकरी तेज़ घुमाइए और रंग फिर सफ़ेदी में घुल जाते हैं — न्यूटन की चकरी प्रमाण को उल्टा चलाती है।",
+          mr: "सात रंगांची चकती जोरात फिरवा आणि रंग पुन्हा पांढुरकेपणात मिसळतात — न्यूटनची चकती पुरावा उलटा चालवते.",
+        },
+        pair: {
+          left: {
+            en: "Sunlight through a prism",
+            hi: "प्रिज़्म से गुज़रती धूप",
+            mr: "लोलकातून जाणारे ऊन",
+          },
+          right: {
+            en: "seven colours unpacked",
+            hi: "खुले हुए सात रंग",
+            mr: "उलगडलेले सात रंग",
+          },
+        },
+      },
+      {
+        id: "real-image",
+        name: { en: "The real image", hi: "वास्तविक प्रतिबिंब", mr: "खरी प्रतिमा" },
+        kind: "image",
+        prompt: {
+          en: "Which kind of image forms where rays actually meet — and so can be caught on a screen or a sheet of paper?",
+          hi: "किस प्रकार का प्रतिबिंब वहाँ बनता है जहाँ किरणें सचमुच मिलती हैं — और इसीलिए परदे या काग़ज़ पर उतारा जा सकता है?",
+          mr: "कोणत्या प्रकारची प्रतिमा तिथे बनते जिथे किरणे खरोखर मिळतात — आणि म्हणून पडद्यावर वा कागदावर पकडता येते?",
+        },
+        statement: {
+          en: "A real image forms where rays truly meet — it can be caught on paper, and mirrors and lenses deliver it upside-down.",
+          hi: "वास्तविक प्रतिबिंब वहीं बनता है जहाँ किरणें सचमुच मिलती हैं — वह काग़ज़ पर उतरता है, और दर्पण-लेंस उसे उल्टा सौंपते हैं।",
+          mr: "खरी प्रतिमा तिथेच बनते जिथे किरणे खरोखर मिळतात — ती कागदावर उतरते, आणि आरसे-भिंगे तिला उलटी सोपवतात.",
+        },
+        pair: {
+          left: { en: "Rays truly meeting", hi: "सचमुच मिलती किरणें", mr: "खरोखर मिळणारी किरणे" },
+          right: {
+            en: "a picture caught on paper",
+            hi: "काग़ज़ पर पकड़ी तस्वीर",
+            mr: "कागदावर पकडलेले चित्र",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the job to its glass: A-a driver's side mirror, B-a dentist peering at one tooth, C-a stamp collector reading fine print. Which trio is right?",
+          hi: "काम को उसके शीशे से मिलाइए: अ-चालक का बग़ली शीशा, ब-एक दाँत निहारता दंत-चिकित्सक, स-महीन छपाई पढ़ता डाक-टिकट संग्रही। कौन-सी तिकड़ी सही है?",
+          mr: "कामाला त्याच्या काचेशी जुळवा: अ-चालकाचा बाजूचा आरसा, ब-एक दात न्याहाळणारा दंतवैद्य, क-बारीक छपाई वाचणारा तिकीट-संग्राहक. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: convex mirror · B: concave mirror · C: convex lens",
+            hi: "अ: उत्तल दर्पण · ब: अवतल दर्पण · स: उत्तल लेंस",
+            mr: "अ: बहिर्गोल आरसा · ब: अंतर्गोल आरसा · क: बहिर्गोल भिंग",
+          },
+          {
+            en: "A: concave mirror · B: convex lens · C: convex mirror",
+            hi: "अ: अवतल दर्पण · ब: उत्तल लेंस · स: उत्तल दर्पण",
+            mr: "अ: अंतर्गोल आरसा · ब: बहिर्गोल भिंग · क: बहिर्गोल आरसा",
+          },
+          {
+            en: "A: convex lens · B: convex mirror · C: concave mirror",
+            hi: "अ: उत्तल लेंस · ब: उत्तल दर्पण · स: अवतल दर्पण",
+            mr: "अ: बहिर्गोल भिंग · ब: बहिर्गोल आरसा · क: अंतर्गोल आरसा",
+          },
+          {
+            en: "A: convex mirror · B: convex lens · C: concave mirror",
+            hi: "अ: उत्तल दर्पण · ब: उत्तल लेंस · स: अवतल दर्पण",
+            mr: "अ: बहिर्गोल आरसा · ब: बहिर्गोल भिंग · क: अंतर्गोल आरसा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each job names its need. The driver needs WIDTH — the convex mirror folds a whole street into view. The dentist needs one tooth LARGE and lit — the concave mirror magnifies what sits close. The collector needs print swollen in passing light — the convex lens, a magnifier in the hand. Need first, glass second.",
+          hi: "हर काम अपनी ज़रूरत का नाम लेता है। चालक को चौड़ाई चाहिए — उत्तल दर्पण पूरी सड़क समेट दिखाता है। दंत-चिकित्सक को एक दाँत बड़ा और उजला चाहिए — अवतल दर्पण पास की चीज़ बड़ी करता है। संग्रही को छपाई फूली चाहिए — हाथ का आतशी शीशा, उत्तल लेंस। पहले ज़रूरत, फिर शीशा।",
+          mr: "प्रत्येक काम आपल्या गरजेचे नाव घेते. चालकाला रुंदी हवी — बहिर्गोल आरसा अख्खा रस्ता आवरून दाखवतो. दंतवैद्याला एक दात मोठा आणि उजळ हवा — अंतर्गोल आरसा जवळचे मोठे करतो. संग्राहकाला छपाई फुगलेली हवी — हातातले भिंग, बहिर्गोल. आधी गरज, मग काच.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Scooter side mirrors carry the warning: 'objects in the mirror are closer than they appear'. What honest confession about the convex mirror is written in that line?",
+          hi: "स्कूटर के बग़ली शीशों पर चेतावनी है: 'शीशे में दिखती चीज़ें जितनी लगती हैं उससे पास हैं'। उस पंक्ति में उत्तल दर्पण का कौन-सा ईमानदार इक़बाल दर्ज है?",
+          mr: "स्कूटरच्या बाजूच्या आरशांवर इशारा असतो: 'आरशातल्या वस्तू दिसतात त्याहून जवळ आहेत'. त्या ओळीत बहिर्गोल आरशाची कोणती प्रामाणिक कबुली लिहिली आहे?",
+        },
+        choices: [
+          {
+            en: "The wide view is bought by shrinking every image — and small reads as far, so the mirror's gift of width comes with a built-in lie about distance",
+            hi: "चौड़ा दृश्य हर प्रतिबिंब को छोटा करके ख़रीदा गया है — और छोटा 'दूर' पढ़ा जाता है; शीशे की चौड़ाई की सौग़ात के साथ दूरी का जड़ा हुआ झूठ मुफ़्त आता है",
+            mr: "रुंद दृश्य प्रत्येक प्रतिमा लहान करून विकत घेतले आहे — आणि लहान 'दूर' वाचले जाते; आरशाच्या रुंदीच्या देणगीसोबत अंतराचे बसवलेले खोटे फुकट येते",
+          },
+          {
+            en: "The mirror is faulty and should be replaced with flat glass",
+            hi: "शीशा ख़राब है और उसे समतल काँच से बदलना चाहिए",
+            mr: "आरसा सदोष आहे आणि तो सपाट काचेने बदलावा",
+          },
+          {
+            en: "Convex mirrors slow light down, delaying what you see",
+            hi: "उत्तल दर्पण प्रकाश धीमा कर देते हैं, दिखने में देर कराते हुए",
+            mr: "बहिर्गोल आरसे प्रकाश मंदावतात, दिसण्यात उशीर करत",
+          },
+          {
+            en: "The warning is only legal decoration with no physics in it",
+            hi: "चेतावनी केवल क़ानूनी सजावट है, उसमें कोई भौतिकी नहीं",
+            mr: "इशारा केवळ कायदेशीर सजावट, त्यात भौतिकशास्त्र नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Optics makes trades, never gifts. The convex mirror diverges rays to fold a wide field into a small glass — the price is that every image shrinks. But your brain judges distance partly by size: small car, far car. So the very feature that shows you more of the road misreports how close it is — and the sticker is the manufacturer settling physics' bill with a sentence.",
+          hi: "प्रकाशिकी सौदे करती है, तोहफ़े नहीं। उत्तल दर्पण किरणें बिखेरकर चौड़ा मैदान छोटे शीशे में मोड़ता है — दाम यह कि हर प्रतिबिंब सिकुड़ता है। पर दिमाग़ दूरी कुछ हद तक नाप से आँकता है: छोटी कार, दूर की कार। तो जो ख़ूबी सड़क ज़्यादा दिखाती है, वही उसकी नज़दीकी ग़लत बताती है — और वह स्टिकर निर्माता का भौतिकी का बिल एक वाक्य में चुकाना है।",
+          mr: "प्रकाशशास्त्र सौदे करते, भेटी नाही. बहिर्गोल आरसा किरणे विखरून रुंद मैदान छोट्या काचेत घडी करतो — किंमत ही की प्रत्येक प्रतिमा आकसते. पण मेंदू अंतर काहीसे आकारावरून जोखतो: लहान गाडी, दूरची गाडी. म्हणून जी खुबी रस्ता जास्त दाखवते, तीच त्याची जवळीक चुकीची सांगते — आणि तो स्टिकर म्हणजे उत्पादकाने भौतिकशास्त्राचे बिल एका वाक्यात फेडणे.",
+        },
+      },
+    ],
+  },
 ];
