@@ -951,4 +951,933 @@ export const G8_HISTORY: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — When People Rebel: 1857 and After                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-8-1857-rebellion",
+    subject: "HISTORY",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 5 — When People Rebel: 1857 and After",
+      hi: "अध्याय 5 — जब जनता बग़ावत करती है: 1857 और उसके बाद",
+      mr: "प्रकरण 5 — जेव्हा जनता बंड करते: 1857 आणि नंतर",
+    },
+    name: {
+      en: "When People Rebel: 1857 and After",
+      hi: "जब जनता बग़ावत करती है: 1857",
+      mr: "जेव्हा जनता बंड करते: 1857",
+    },
+    summary: {
+      en: "The great revolt read whole: a greased cartridge lighting long-laid grievance, an old emperor made a symbol, queens and peasants joining sepoys — the crushing that followed, and a company replaced by a crown.",
+      hi: "समूचा पढ़ा गया महाविद्रोह: चर्बी वाला कारतूस जो पुरानी शिकायत को जला गया, प्रतीक बनाया गया एक बूढ़ा बादशाह, सिपाहियों से जुड़ती रानियाँ और किसान — उसके बाद का दमन, और कंपनी की जगह ताज।",
+      mr: "अख्खे वाचलेले महाबंड: चरबीचे काडतूस ज्याने जुनी तक्रार पेटवली, प्रतीक बनवलेला एक म्हातारा बादशहा, शिपायांशी जुळणाऱ्या राण्या आणि शेतकरी — नंतरचे दडपण, आणि कंपनीच्या जागी राजमुकुट.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "cartridge",
+        name: {
+          en: "The greased cartridge",
+          hi: "चर्बी वाला कारतूस",
+          mr: "चरबीचे काडतूस",
+        },
+        kind: "trigger",
+        prompt: {
+          en: "Which rumour — that new cartridges were greased with cow and pig fat, to be bitten open — was the SPARK that lit the revolt of 1857?",
+          hi: "कौन-सी अफ़वाह — कि नए कारतूस गाय और सूअर की चर्बी से चुपड़े हैं, जिन्हें दाँत से खोलना है — 1857 के विद्रोह की चिंगारी बनी?",
+          mr: "कोणती अफवा — नवी काडतुसे गाय आणि डुकराच्या चरबीने माखली आहेत, दाताने उघडायची — 1857 च्या बंडाची ठिणगी ठरली?",
+        },
+        statement: {
+          en: "The greased cartridge was the spark, not the cause — biting fat offensive to Hindu and Muslim alike lit a fire long piled with dry grievance.",
+          hi: "चर्बी वाला कारतूस चिंगारी था, कारण नहीं — हिंदू और मुसलमान दोनों को अपवित्र लगती चर्बी काटना उस आग को लगा गया जो सूखी शिकायत से बहुत पहले चुनी थी।",
+          mr: "चरबीचे काडतूस ही ठिणगी होती, कारण नव्हे — हिंदू आणि मुस्लीम दोघांनाही अपवित्र वाटणारी चरबी चावणे त्या आगीला लागले जी कोरड्या तक्रारीने आधीच रचली होती.",
+        },
+        detail: {
+          en: "Mangal Pandey's defiance at Barrackpore in March 1857 was the first flame — one soldier, one refusal.",
+          hi: "मार्च 1857 में बैरकपुर में मंगल पांडे की अवज्ञा पहली लौ थी — एक सिपाही, एक इनकार।",
+          mr: "मार्च 1857 मध्ये बॅरकपूरला मंगल पांडेची अवज्ञा ही पहिली ज्योत — एक शिपाई, एक नकार.",
+        },
+        extra: {
+          en: "A spark needs a fuel pile — pay, annexation, humiliation had been stacked for years.",
+          hi: "चिंगारी को ईंधन का ढेर चाहिए — वेतन, हड़प, अपमान बरसों से जमे थे।",
+          mr: "ठिणगीला इंधनाचा ढीग लागतो — पगार, गिळंकृती, अपमान वर्षानुवर्षे साचले होते.",
+        },
+        pair: {
+          left: {
+            en: "The bitten cartridge",
+            hi: "दाँत से खुला कारतूस",
+            mr: "दाताने उघडलेले काडतूस",
+          },
+          right: {
+            en: "a spark on old grievance",
+            hi: "पुरानी शिकायत पर चिंगारी",
+            mr: "जुन्या तक्रारीवरची ठिणगी",
+          },
+        },
+      },
+      {
+        id: "bahadur-shah",
+        name: {
+          en: "Bahadur Shah Zafar",
+          hi: "बहादुर शाह ज़फ़र",
+          mr: "बहादूरशाह जफर",
+        },
+        kind: "symbol",
+        prompt: {
+          en: "Which aged Mughal emperor did the rebel sepoys of Delhi proclaim their leader, giving a scattered revolt one name to rally to?",
+          hi: "किस बूढ़े मुग़ल बादशाह को दिल्ली के विद्रोही सिपाहियों ने अपना नेता घोषित किया, बिखरे विद्रोह को जुटने के लिए एक नाम देते हुए?",
+          mr: "कोणत्या म्हाताऱ्या मुघल बादशहाला दिल्लीच्या बंडखोर शिपायांनी आपला नेता घोषित केले, विखुरलेल्या बंडाला एकत्र येण्यासाठी एक नाव देत?",
+        },
+        statement: {
+          en: "Bahadur Shah Zafar became the revolt's symbol — a powerless old poet-king turned into a banner many could gather beneath.",
+          hi: "बहादुर शाह ज़फ़र विद्रोह का प्रतीक बने — एक शक्तिहीन बूढ़ा कवि-बादशाह, जिसे ध्वज बनाकर बहुत-से लोग नीचे जुट सके।",
+          mr: "बहादूरशाह जफर बंडाचे प्रतीक झाले — एक शक्तिहीन म्हातारा कवी-बादशहा, ज्याला झेंडा करून अनेक जण खाली जमू शकले.",
+        },
+        detail: {
+          en: "That a Mughal name still commanded loyalty across faiths shows what unity the rebels reached for.",
+          hi: "कि मुग़ल नाम आज भी धर्मों के आर-पार वफ़ादारी जगाता था, दिखाता है कि विद्रोहियों ने किस एकता की ओर हाथ बढ़ाया।",
+          mr: "मुघल नाव आजही धर्मांपार निष्ठा जागवत होते, हे दाखवते की बंडखोरांनी कोणत्या एकतेकडे हात पुढे केला.",
+        },
+        extra: {
+          en: "After the defeat he was exiled to Rangoon — the last Mughal buried far from Delhi.",
+          hi: "हार के बाद उन्हें रंगून निर्वासित किया गया — आख़िरी मुग़ल दिल्ली से दूर दफ़न हुए।",
+          mr: "पराभवानंतर त्यांना रंगूनला हद्दपार केले — शेवटचा मुघल दिल्लीपासून दूर पुरला गेला.",
+        },
+        pair: {
+          left: {
+            en: "The powerless symbol-king",
+            hi: "शक्तिहीन प्रतीक-बादशाह",
+            mr: "शक्तिहीन प्रतीक-बादशहा",
+          },
+          right: {
+            en: "one banner to rally to",
+            hi: "जुटने का एक ध्वज",
+            mr: "जमण्यासाठी एक झेंडा",
+          },
+        },
+      },
+      {
+        id: "rani-lakshmibai",
+        name: {
+          en: "Rani Lakshmibai",
+          hi: "रानी लक्ष्मीबाई",
+          mr: "राणी लक्ष्मीबाई",
+        },
+        kind: "leader",
+        prompt: {
+          en: "Which queen of Jhansi, her kingdom seized under the Doctrine of Lapse, led her forces in arms and died fighting in 1858?",
+          hi: "व्यपगत के सिद्धांत से जिनका राज्य छिना, झाँसी की कौन-सी रानी हथियार लेकर अपनी सेना का नेतृत्व करते हुए 1858 में लड़ते हुए वीरगति को प्राप्त हुईं?",
+          mr: "खालसा धोरणाने जिचे राज्य हिरावले, झाशीची कोणती राणी शस्त्र घेऊन आपल्या फौजेचे नेतृत्व करत 1858 मध्ये लढताना धारातीर्थी पडली?",
+        },
+        statement: {
+          en: "Rani Lakshmibai fought for the Jhansi the Company had annexed — her revolt was a queen reclaiming a throne taken by the Doctrine of Lapse.",
+          hi: "रानी लक्ष्मीबाई उस झाँसी के लिए लड़ीं जिसे कंपनी ने हड़पा था — उनका विद्रोह व्यपगत से छिने तख़्त को फिर पाने की रानी की लड़ाई थी।",
+          mr: "राणी लक्ष्मीबाई त्या झाशीसाठी लढल्या जी कंपनीने गिळंकृत केली होती — त्यांचे बंड म्हणजे खालसा धोरणाने हिरावलेले तख्त पुन्हा मिळवण्याची राणीची लढाई.",
+        },
+        detail: {
+          en: "Nana Sahib at Kanpur and Begum Hazrat Mahal at Lucknow led likewise — the dispossessed became the rebellion's captains.",
+          hi: "कानपुर में नाना साहेब और लखनऊ में बेगम हज़रत महल ने भी वैसे ही नेतृत्व किया — बेदख़ल किए गए विद्रोह के सेनापति बने।",
+          mr: "कानपूरला नानासाहेब आणि लखनौला बेगम हजरत महल यांनीही तसेच नेतृत्व केले — बेदखल केलेले बंडाचे सेनापती झाले.",
+        },
+        extra: {
+          en: "The revolt's leaders were often those the annexations had robbed — grievance turned to generalship.",
+          hi: "विद्रोह के नेता प्रायः वही थे जिन्हें हड़प ने लूटा था — शिकायत सेनापतित्व में बदल गई।",
+          mr: "बंडाचे नेते बहुधा तेच होते ज्यांना गिळंकृतीने लुटले होते — तक्रार सेनापतित्वात बदलली.",
+        },
+        pair: {
+          left: {
+            en: "The queen who took up arms",
+            hi: "हथियार उठाती रानी",
+            mr: "शस्त्र उचलणारी राणी",
+          },
+          right: {
+            en: "a throne reclaimed",
+            hi: "फिर पाया तख़्त",
+            mr: "पुन्हा मिळवलेले तख्त",
+          },
+        },
+      },
+      {
+        id: "spread",
+        name: {
+          en: "The spread of the revolt",
+          hi: "विद्रोह का फैलाव",
+          mr: "बंडाचा प्रसार",
+        },
+        kind: "fact",
+        prompt: {
+          en: "Beyond the sepoys, which groups — peasants, artisans, dispossessed rulers, ordinary townsfolk — joined the 1857 rising across the north?",
+          hi: "सिपाहियों से आगे, कौन-से समूह — किसान, दस्तकार, बेदख़ल शासक, आम शहरी — 1857 के उत्तरी उभार में शामिल हुए?",
+          mr: "शिपायांच्या पलीकडे, कोणते गट — शेतकरी, कारागीर, बेदखल शासक, सामान्य शहरी — 1857 च्या उत्तरेकडील उठावात सामील झाले?",
+        },
+        statement: {
+          en: "The revolt spread beyond the army — peasants crushed by revenue, artisans ruined by imports, rulers stripped of thrones all joined the sepoys.",
+          hi: "विद्रोह सेना से आगे फैला — राजस्व से कुचले किसान, आयात से उजड़े दस्तकार, तख़्त से वंचित शासक, सब सिपाहियों से जुड़े।",
+          mr: "बंड फौजेच्या पलीकडे पसरले — महसुलाने चिरडलेले शेतकरी, आयातीने उद्ध्वस्त झालेले कारागीर, तख्तापासून वंचित शासक, सारे शिपायांशी जुळले.",
+        },
+        detail: {
+          en: "That so many joined at once shows the rising was no mere 'mutiny' — grievance was general, not merely military.",
+          hi: "कि इतने लोग एक साथ जुड़े, दिखाता है कि उभार महज़ 'ग़दर' नहीं था — शिकायत आम थी, केवल सैन्य नहीं।",
+          mr: "इतके जण एकदम जुळले, हे दाखवते की उठाव नुसते 'बंड' नव्हते — तक्रार सर्वसामान्य होती, केवळ लष्करी नाही.",
+        },
+        extra: {
+          en: "It was strongest across the Ganga plain — Delhi, Kanpur, Lucknow, Jhansi its burning centres.",
+          hi: "वह गंगा-मैदान भर सबसे प्रबल था — दिल्ली, कानपुर, लखनऊ, झाँसी उसके जलते केंद्र।",
+          mr: "तो गंगा-मैदानभर सर्वांत जोरदार होता — दिल्ली, कानपूर, लखनौ, झाशी त्याची जळती केंद्रे.",
+        },
+        pair: {
+          left: {
+            en: "Not soldiers alone",
+            hi: "केवल सिपाही नहीं",
+            mr: "केवळ शिपाई नव्हे",
+          },
+          right: {
+            en: "grievance general, not military",
+            hi: "आम शिकायत, केवल सैन्य नहीं",
+            mr: "सर्वसामान्य तक्रार, केवळ लष्करी नाही",
+          },
+        },
+      },
+      {
+        id: "crown-rule",
+        name: {
+          en: "The Crown takes over",
+          hi: "ताज का शासन",
+          mr: "राजमुकुटाचे राज्य",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "After the revolt was crushed, in 1858 the East India Company was abolished and India passed to whose direct rule?",
+          hi: "विद्रोह कुचलने के बाद, 1858 में ईस्ट इंडिया कंपनी समाप्त कर दी गई और भारत किसके सीधे शासन में चला गया?",
+          mr: "बंड चिरडल्यानंतर, 1858 मध्ये ईस्ट इंडिया कंपनी बरखास्त झाली आणि भारत कोणाच्या थेट राज्यात गेला?",
+        },
+        statement: {
+          en: "In 1858 the Company was dissolved and India came under the British Crown — a firm's rule replaced by a monarch's, promising order and non-interference.",
+          hi: "1858 में कंपनी भंग की गई और भारत ब्रिटिश ताज के अधीन आया — फ़र्म का शासन राजशाही से बदला, व्यवस्था और अहस्तक्षेप का वादा करता हुआ।",
+          mr: "1858 मध्ये कंपनी बरखास्त झाली आणि भारत ब्रिटिश राजमुकुटाखाली आला — पेढीचे राज्य राजेशाहीने बदलले, सुव्यवस्था आणि अहस्तक्षेपाचे वचन देत.",
+        },
+        detail: {
+          en: "The Queen's Proclamation promised to respect princes and religions — reforms that had frightened people were slowed.",
+          hi: "रानी की घोषणा ने राजाओं और धर्मों का आदर करने का वादा किया — जिन सुधारों ने लोगों को डराया था, वे धीमे किए गए।",
+          mr: "राणीच्या जाहीरनाम्याने राजे आणि धर्मांचा आदर करण्याचे वचन दिले — ज्या सुधारणांनी लोकांना घाबरवले होते, त्या मंदावल्या.",
+        },
+        extra: {
+          en: "The revolt failed as a war but succeeded as a warning — the empire ruled more carefully ever after.",
+          hi: "विद्रोह युद्ध के रूप में विफल हुआ पर चेतावनी के रूप में सफल — साम्राज्य उसके बाद और सावधानी से शासित रहा।",
+          mr: "बंड युद्ध म्हणून अपयशी पण इशारा म्हणून यशस्वी — साम्राज्य नंतर अधिक जपून राज्य करत राहिले.",
+        },
+        pair: {
+          left: {
+            en: "Company dissolved, 1858",
+            hi: "कंपनी भंग, 1858",
+            mr: "कंपनी बरखास्त, 1858",
+          },
+          right: {
+            en: "a firm replaced by a crown",
+            hi: "फ़र्म की जगह ताज",
+            mr: "पेढीच्या जागी राजमुकुट",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The British long called 1857 a 'sepoy mutiny'; Indian historians call it a rebellion or first war of independence. What does each name argue?",
+          hi: "अंग्रेज़ों ने 1857 को लंबे समय तक 'सिपाही ग़दर' कहा; भारतीय इतिहासकार उसे विद्रोह या पहला स्वतंत्रता-संग्राम कहते हैं। हर नाम क्या तर्क देता है?",
+          mr: "इंग्रजांनी 1857 ला दीर्घकाळ 'शिपाई बंड' म्हटले; भारतीय इतिहासकार त्याला बंड वा पहिले स्वातंत्र्ययुद्ध म्हणतात. प्रत्येक नाव काय युक्तिवाद करते?",
+        },
+        choices: [
+          {
+            en: "'Mutiny' shrinks it to disgruntled soldiers, a limited military affair; 'rebellion / first war of independence' argues that peasants, artisans and rulers joined too, making it a broad popular rising against foreign rule",
+            hi: "'ग़दर' उसे असंतुष्ट सिपाहियों तक, एक सीमित सैन्य मामले तक सिकोड़ता है; 'विद्रोह / पहला स्वतंत्रता-संग्राम' तर्क देता है कि किसान, दस्तकार और शासक भी जुड़े, जिससे वह विदेशी शासन के विरुद्ध व्यापक जन-उभार बना",
+            mr: "'बंड' त्याला असंतुष्ट शिपायांपुरते, मर्यादित लष्करी प्रकरणापुरते आकसते; 'बंड / पहिले स्वातंत्र्ययुद्ध' युक्तिवाद करते की शेतकरी, कारागीर आणि शासकही जुळले, ज्याने ते परकीय राज्याविरुद्ध व्यापक जन-उठाव झाले",
+          },
+          {
+            en: "Both names mean exactly the same thing",
+            hi: "दोनों नामों का अर्थ बिलकुल एक है",
+            mr: "दोन्ही नावांचा अर्थ अगदी एकच",
+          },
+          {
+            en: "'Mutiny' praises the rebels while 'rebellion' condemns them",
+            hi: "'ग़दर' विद्रोहियों की प्रशंसा करता है और 'विद्रोह' उनकी निंदा",
+            mr: "'बंड' बंडखोरांची स्तुती करते आणि 'विद्रोह' त्यांची निंदा",
+          },
+          {
+            en: "The names differ only in language, not in meaning",
+            hi: "नाम केवल भाषा में भिन्न हैं, अर्थ में नहीं",
+            mr: "नावे फक्त भाषेत भिन्न, अर्थात नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A name is a claim about scale and cause. 'Mutiny' locates the trouble in the barracks — a discipline problem, easily contained and easily dismissed. 'Rebellion' or 'first war of independence' widens the lens to the fields and palaces that rose alongside the sepoys, and reframes the whole as a people resisting a foreign power. The evidence — peasants, artisans, dispossessed rulers all in revolt — supports the broader name, which is why the labelling itself became a battleground of history.",
+          hi: "नाम पैमाने और कारण का दावा है। 'ग़दर' मुसीबत को बैरकों में रखता है — अनुशासन की समस्या, आसानी से क़ाबू और आसानी से ख़ारिज। 'विद्रोह' या 'पहला स्वतंत्रता-संग्राम' नज़र को उन खेतों और महलों तक चौड़ा करता है जो सिपाहियों संग उठे, और पूरे को एक जनता के विदेशी सत्ता से प्रतिरोध के रूप में गढ़ता है। सबूत — किसान, दस्तकार, बेदख़ल शासक सब विद्रोह में — व्यापक नाम का समर्थन करते हैं, इसीलिए नामकरण स्वयं इतिहास का रणक्षेत्र बन गया।",
+          mr: "नाव हे प्रमाण आणि कारणाबद्दलचा दावा. 'बंड' अडचणीला बराकींत ठेवते — शिस्तीची समस्या, सहज आवरता आणि सहज झटकता येणारी. 'बंड / पहिले स्वातंत्र्ययुद्ध' नजर त्या शेतां आणि राजवाड्यांपर्यंत रुंदावते जे शिपायांसोबत उठले, आणि अख्ख्याला परकीय सत्तेला विरोध करणारी जनता म्हणून मांडते. पुरावा — शेतकरी, कारागीर, बेदखल शासक सारे बंडात — व्यापक नावाला आधार देतो, म्हणूनच नामकरणच इतिहासाचे रणक्षेत्र झाले.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "1857 failed militarily — the rebels were crushed within a year — yet historians call it a turning point. How can a defeated revolt reshape an empire?",
+          hi: "1857 सैन्य रूप से विफल हुआ — विद्रोही साल भर में कुचल दिए गए — फिर भी इतिहासकार उसे मोड़ कहते हैं। एक हारा हुआ विद्रोह साम्राज्य को कैसे बदल सकता है?",
+          mr: "1857 लष्करीदृष्ट्या अपयशी झाले — बंडखोर वर्षभरात चिरडले गेले — तरी इतिहासकार त्याला वळण म्हणतात. एक हरलेले बंड साम्राज्याला कसे बदलू शकते?",
+        },
+        choices: [
+          {
+            en: "Its consequences outlived its defeat: the Company was abolished and Crown rule began, reforms were slowed to avoid provoking Indians, and a memory of united resistance was planted that later movements drew upon — a lost battle that rewrote how, and how warily, India was ruled",
+            hi: "उसके परिणाम उसकी हार से आगे जिए: कंपनी समाप्त हुई और ताज का शासन शुरू, भारतीयों को भड़काने से बचने को सुधार धीमे किए गए, और एकजुट प्रतिरोध की एक स्मृति रोपी गई जिससे आगे के आंदोलनों ने बल लिया — एक हारी लड़ाई जिसने फिर से लिखा कि भारत कैसे, और कितनी सावधानी से, शासित हो",
+            mr: "त्याचे परिणाम त्याच्या पराभवाहून अधिक जगले: कंपनी बरखास्त झाली आणि राजमुकुटाचे राज्य सुरू, भारतीयांना चिथावण्याचे टाळायला सुधारणा मंदावल्या, आणि एकसंध प्रतिकाराची एक स्मृती रुजली जिच्यातून पुढच्या चळवळींनी बळ घेतले — एक हरलेली लढाई जिने भारत कसा, आणि किती जपून, राज्य केला जावा हे पुन्हा लिहिले",
+          },
+          {
+            en: "It did not really reshape anything; historians exaggerate",
+            hi: "उसने सच में कुछ नहीं बदला; इतिहासकार बढ़ा-चढ़ाकर कहते हैं",
+            mr: "त्याने खरे तर काहीच बदलले नाही; इतिहासकार अतिशयोक्ती करतात",
+          },
+          {
+            en: "The rebels actually won and drove the British out",
+            hi: "विद्रोहियों ने असल में जीता और अंग्रेज़ों को खदेड़ दिया",
+            mr: "बंडखोरांनी खरे तर जिंकले आणि इंग्रजांना हाकलले",
+          },
+          {
+            en: "The empire ignored the revolt entirely and changed nothing",
+            hi: "साम्राज्य ने विद्रोह की पूरी अनदेखी की और कुछ नहीं बदला",
+            mr: "साम्राज्याने बंडाकडे पूर्ण दुर्लक्ष केले आणि काही बदलले नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A revolt can lose the war and still win the argument about what comes next. Militarily 1857 was crushed; politically it forced a reckoning. London concluded that a trading company could no longer be trusted to hold India, abolished it, and set the Crown to rule directly and more cautiously — respecting princes, slowing the reforms that had alarmed people, reorganising the army so sepoys could never again coordinate so widely. And beyond policy it left a memory: proof that Indians of many faiths and classes had once risen together against foreign rule, a story the freedom movement would tell and retell. Turning points are measured not by who won the battle but by how differently the world runs afterward — and after 1857, the empire ran differently and knew it could fall.",
+          hi: "विद्रोह युद्ध हार सकता है और फिर भी 'आगे क्या' का तर्क जीत सकता है। सैन्य रूप से 1857 कुचला गया; राजनीतिक रूप से उसने हिसाब चुकवाया। लंदन ने माना कि व्यापारिक कंपनी पर अब भारत थामने का भरोसा नहीं, उसे समाप्त किया, और ताज को सीधे व अधिक सावधानी से शासन पर बिठाया — राजाओं का आदर, लोगों को डराने वाले सुधार धीमे, सेना का पुनर्गठन ताकि सिपाही फिर कभी इतने व्यापक तालमेल न कर सकें। और नीति से आगे उसने एक स्मृति छोड़ी: प्रमाण कि कई धर्मों-वर्गों के भारतीय कभी साथ मिलकर विदेशी शासन से उठे थे, एक कहानी जिसे स्वतंत्रता आंदोलन बार-बार सुनाता। मोड़ इससे नहीं नपते कि लड़ाई किसने जीती, बल्कि इससे कि उसके बाद दुनिया कितनी अलग चलती है — और 1857 के बाद साम्राज्य अलग चला, और जानता था कि वह गिर सकता है।",
+          mr: "बंड युद्ध हरू शकते आणि तरी 'पुढे काय' चा युक्तिवाद जिंकू शकते. लष्करीदृष्ट्या 1857 चिरडले गेले; राजकीयदृष्ट्या त्याने हिशेब मांडायला भाग पाडले. लंडनने ठरवले की व्यापारी कंपनीवर आता भारत धरून ठेवण्याचा विश्वास नाही, ती बरखास्त केली, आणि राजमुकुटाला थेट व अधिक जपून राज्यावर बसवले — राजांचा आदर, लोकांना घाबरवणाऱ्या सुधारणा मंद, फौजेची पुनर्रचना म्हणजे शिपाई पुन्हा इतका व्यापक ताळमेळ करू शकणार नाहीत. आणि धोरणापलीकडे त्याने एक स्मृती सोडली: पुरावा की अनेक धर्म-वर्गांचे भारतीय कधी एकत्र येऊन परकीय राज्याविरुद्ध उठले होते, एक कथा जी स्वातंत्र्य चळवळ पुन्हापुन्हा सांगेल. वळणे यावरून मोजली जात नाहीत की लढाई कोण जिंकले, तर यावरून की नंतर जग किती वेगळे चालते — आणि 1857 नंतर साम्राज्य वेगळे चालले, आणि आपण पडू शकतो हे त्याला ठाऊक झाले.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Tribals, Dikus and the Vision of a Golden Age               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-8-tribals-dikus",
+    subject: "HISTORY",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 4 — Tribals, Dikus and the Vision of a Golden Age",
+      hi: "अध्याय 4 — आदिवासी, दिकू और एक स्वर्ण युग की कल्पना",
+      mr: "प्रकरण 4 — आदिवासी, दिकू आणि सुवर्णयुगाचे स्वप्न",
+    },
+    name: {
+      en: "Tribals, Dikus and a Golden Age",
+      hi: "आदिवासी, दिकू और स्वर्ण युग",
+      mr: "आदिवासी, दिकू आणि सुवर्णयुग",
+    },
+    summary: {
+      en: "Forest lives fenced by outsiders: shifting fields banned, a shared forest turned into someone's property, moneylenders and traders as 'dikus' — and Birsa Munda's dream of a land returned to its people.",
+      hi: "बाहरी लोगों से घिरी वन-ज़िंदगियाँ: चलती खेती पर रोक, साझा जंगल बना किसी की संपत्ति, साहूकार-व्यापारी बतौर 'दिकू' — और बिरसा मुंडा का सपना, ज़मीन अपने लोगों को लौटी हुई।",
+      mr: "बाहेरच्यांनी कुंपणलेली वन-जीवने: फिरती शेती बंदी, सामाईक जंगल कोणाची मालमत्ता झालेले, सावकार-व्यापारी 'दिकू' म्हणून — आणि बिरसा मुंडाचे स्वप्न, जमीन आपल्या लोकांना परतलेली.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "tribal-life",
+        name: {
+          en: "Tribal forest life",
+          hi: "आदिवासी वन-जीवन",
+          mr: "आदिवासी वन-जीवन",
+        },
+        kind: "way",
+        prompt: {
+          en: "Shifting cultivation, hunting, gathering, herding — which many-sided way of living did India's tribal communities practise on and around the forest?",
+          hi: "चलती खेती, शिकार, संग्रहण, पशुचारण — भारत के आदिवासी समुदाय जंगल पर और उसके इर्द-गिर्द कौन-सा बहुआयामी जीवन-ढंग जीते थे?",
+          mr: "फिरती शेती, शिकार, गोळा करणे, पशुपालन — भारतातील आदिवासी समुदाय जंगलावर आणि त्याभोवती कोणती बहुआयामी जीवनरीत जगत?",
+        },
+        statement: {
+          en: "Tribal life leaned on the forest many ways at once — cultivating, hunting, gathering and herding, none of it owned as private plots.",
+          hi: "आदिवासी जीवन जंगल पर एक साथ कई तरह टिका था — खेती, शिकार, संग्रहण और पशुचारण, कुछ भी निजी खेत के रूप में स्वामित्व में नहीं।",
+          mr: "आदिवासी जीवन जंगलावर एकाच वेळी अनेक प्रकारे अवलंबून — शेती, शिकार, गोळा करणे आणि पशुपालन, काहीही खासगी वावर म्हणून मालकीत नाही.",
+        },
+        detail: {
+          en: "The forest was a commons — used by all, owned by none, its bounty shared by custom.",
+          hi: "जंगल साझी संपत्ति था — सबका इस्तेमाल, किसी का स्वामित्व नहीं, उसकी देन रिवाज से बँटी।",
+          mr: "जंगल ही सामाईक मालमत्ता — साऱ्यांचा वापर, कोणाची मालकी नाही, तिची देणगी रिवाजाने वाटलेली.",
+        },
+        extra: {
+          en: "This very flexibility baffled a state that wanted fixed fields, fixed owners and fixed taxes.",
+          hi: "यही लचीलापन उस राज्य को उलझा देता था जो नियत खेत, नियत मालिक और नियत कर चाहता था।",
+          mr: "हाच लवचीकपणा त्या राज्याला गोंधळात टाकी जे ठरलेली शेते, ठरलेले मालक आणि ठरलेले कर मागे.",
+        },
+        pair: {
+          left: {
+            en: "The many-sided forest life",
+            hi: "बहुआयामी वन-जीवन",
+            mr: "बहुआयामी वन-जीवन",
+          },
+          right: {
+            en: "a commons, owned by none",
+            hi: "साझा, किसी का नहीं",
+            mr: "सामाईक, कोणाचे नाही",
+          },
+        },
+      },
+      {
+        id: "forest-laws",
+        name: {
+          en: "The colonial forest laws",
+          hi: "औपनिवेशिक वन-क़ानून",
+          mr: "वसाहती वन-कायदे",
+        },
+        kind: "policy",
+        prompt: {
+          en: "Which laws declared forests state property, banned shifting cultivation, and turned free forest-users into trespassers?",
+          hi: "किन क़ानूनों ने जंगलों को राजकीय संपत्ति घोषित किया, चलती खेती पर रोक लगाई, और मुक्त वन-उपयोक्ताओं को अतिक्रमी बना दिया?",
+          mr: "कोणत्या कायद्यांनी जंगले राज्याची मालमत्ता घोषित केली, फिरती शेती बंद केली, आणि मुक्त वन-वापरकर्त्यांना अतिक्रमक केले?",
+        },
+        statement: {
+          en: "Colonial forest laws made the state the forest's owner — reserving timber for the empire and outlawing the tribes' own use of it.",
+          hi: "औपनिवेशिक वन-क़ानूनों ने राज्य को जंगल का स्वामी बना दिया — इमारती लकड़ी साम्राज्य के लिए आरक्षित की और आदिवासियों के अपने उपयोग को ग़ैरक़ानूनी ठहराया।",
+          mr: "वसाहती वन-कायद्यांनी राज्याला जंगलाचा मालक केले — इमारती लाकूड साम्राज्यासाठी राखीव ठेवले आणि आदिवासींचा स्वतःचा वापर बेकायदा ठरवला.",
+        },
+        detail: {
+          en: "Railway sleepers and warships needed timber — the forest was reclassified from home to warehouse.",
+          hi: "रेल के स्लीपर और युद्धपोतों को लकड़ी चाहिए थी — जंगल घर से बदलकर गोदाम में वर्गीकृत हुआ।",
+          mr: "रेल्वेचे स्लीपर आणि युद्धनौकांना लाकूड लागे — जंगल घरातून बदलून गोदामात वर्गीकृत झाले.",
+        },
+        extra: {
+          en: "Shifting cultivators, told to settle on one plot, lost the very rotation that kept their soil alive.",
+          hi: "चलती खेती करने वालों को एक खेत पर बसने को कहा गया, वे वही चक्र खो बैठे जो उनकी मिट्टी ज़िंदा रखता था।",
+          mr: "फिरती शेती करणाऱ्यांना एका वावरावर स्थिरावायला सांगितले, ते तेच चक्र गमावले जे त्यांची माती जिवंत ठेवी.",
+        },
+        pair: {
+          left: {
+            en: "Forest declared state property",
+            hi: "राजकीय संपत्ति घोषित जंगल",
+            mr: "राज्याची मालमत्ता घोषित जंगल",
+          },
+          right: {
+            en: "users turned trespassers",
+            hi: "अतिक्रमी बने उपयोक्ता",
+            mr: "अतिक्रमक झालेले वापरकर्ते",
+          },
+        },
+      },
+      {
+        id: "dikus",
+        name: { en: "The dikus", hi: "दिकू", mr: "दिकू" },
+        kind: "outsiders",
+        prompt: {
+          en: "Which word did tribal communities use for the outsiders — moneylenders, traders and officials — who arrived to profit from their land and labour?",
+          hi: "अपनी भूमि और श्रम से मुनाफ़ा कमाने आए बाहरी लोगों — साहूकारों, व्यापारियों और अफ़सरों — के लिए आदिवासी समुदाय कौन-सा शब्द इस्तेमाल करते थे?",
+          mr: "आपल्या जमीन आणि श्रमातून नफा कमवायला आलेल्या बाहेरच्यांसाठी — सावकार, व्यापारी आणि अधिकारी — आदिवासी समुदाय कोणता शब्द वापरत?",
+        },
+        statement: {
+          en: "Dikus were the outsiders — moneylenders, traders and officials who drained the tribes' land, forest and labour of their worth.",
+          hi: "दिकू बाहरी लोग थे — साहूकार, व्यापारी और अफ़सर, जो आदिवासियों की भूमि, जंगल और श्रम का मोल निचोड़ ले जाते थे।",
+          mr: "दिकू म्हणजे बाहेरचे — सावकार, व्यापारी आणि अधिकारी, जे आदिवासींच्या जमीन, जंगल आणि श्रमाचे मोल पिळून नेत.",
+        },
+        detail: {
+          en: "The moneylender's loan at ruinous interest was the commonest trap — debt bonded whole families for generations.",
+          hi: "तबाह करने वाले ब्याज पर साहूकार का क़र्ज़ सबसे आम फंदा था — क़र्ज़ पूरे परिवारों को पीढ़ियों बाँध देता।",
+          mr: "उद्ध्वस्त करणाऱ्या व्याजावरचे सावकाराचे कर्ज हा सर्वांत सामान्य सापळा — कर्ज अख्ख्या कुटुंबांना पिढ्यानपिढ्या बांधे.",
+        },
+        extra: {
+          en: "'Diku' names a relationship, not a race — anyone who came to extract, not to belong.",
+          hi: "'दिकू' किसी नस्ल का नहीं, एक संबंध का नाम है — जो भी निचोड़ने आया, बसने नहीं।",
+          mr: "'दिकू' कोणत्या वंशाचे नव्हे, एका नात्याचे नाव — जो कोणी पिळायला आला, राहायला नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "The extracting outsider",
+            hi: "निचोड़ता बाहरी",
+            mr: "पिळणारा बाहेरचा",
+          },
+          right: {
+            en: "come to profit, not to belong",
+            hi: "मुनाफ़े को आया, बसने नहीं",
+            mr: "नफ्याला आलेला, राहायला नव्हे",
+          },
+        },
+      },
+      {
+        id: "birsa-munda",
+        name: { en: "Birsa Munda", hi: "बिरसा मुंडा", mr: "बिरसा मुंडा" },
+        kind: "leader",
+        prompt: {
+          en: "Which young leader of the Munda tribe raised a movement in the 1890s for a just world where the land returned to its people, free of dikus?",
+          hi: "मुंडा जनजाति के किस युवा नेता ने 1890 के दशक में एक न्यायी संसार के लिए आंदोलन उठाया, जहाँ ज़मीन दिकुओं से मुक्त होकर अपने लोगों को लौट जाए?",
+          mr: "मुंडा जमातीच्या कोणत्या तरुण नेत्याने 1890 च्या दशकात न्याय्य जगासाठी चळवळ उभारली, जिथे जमीन दिकूंपासून मुक्त होऊन आपल्या लोकांना परतेल?",
+        },
+        statement: {
+          en: "Birsa Munda dreamed of a golden age restored — land back with the Mundas, dikus gone, and the community's old dignity renewed.",
+          hi: "बिरसा मुंडा ने लौटे स्वर्ण युग का सपना देखा — ज़मीन मुंडाओं के पास वापस, दिकू गए, और समुदाय का पुराना सम्मान फिर बहाल।",
+          mr: "बिरसा मुंडांनी परतलेल्या सुवर्णयुगाचे स्वप्न पाहिले — जमीन मुंडांकडे परत, दिकू गेलेले, आणि समुदायाचा जुना सन्मान पुन्हा प्रस्थापित.",
+        },
+        detail: {
+          en: "His movement mixed the political and the spiritual — reform of conduct alongside the reclaiming of land.",
+          hi: "उनके आंदोलन ने राजनीतिक और आध्यात्मिक मिलाया — भूमि की वापसी संग आचरण का सुधार।",
+          mr: "त्यांच्या चळवळीने राजकीय आणि आध्यात्मिक मिसळले — जमिनीच्या परतीसोबत आचरणाची सुधारणा.",
+        },
+        extra: {
+          en: "He died in jail in 1900, young — but the memory of Birsa outlived the empire that caged him.",
+          hi: "वे 1900 में जेल में युवावस्था में चल बसे — पर बिरसा की स्मृति उस साम्राज्य से आगे जी जिसने उन्हें क़ैद किया।",
+          mr: "ते 1900 मध्ये तुरुंगात तरुणपणी गेले — पण बिरसाची स्मृती त्यांना कैद करणाऱ्या साम्राज्याहून अधिक जगली.",
+        },
+        pair: {
+          left: {
+            en: "The golden age dreamed",
+            hi: "देखा गया स्वर्ण युग",
+            mr: "पाहिलेले सुवर्णयुग",
+          },
+          right: {
+            en: "land returned to its people",
+            hi: "अपने लोगों को लौटी ज़मीन",
+            mr: "आपल्या लोकांना परतलेली जमीन",
+          },
+        },
+      },
+      {
+        id: "loss-of-land",
+        name: {
+          en: "The loss of land",
+          hi: "ज़मीन का छिन जाना",
+          mr: "जमीन गमावणे",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "Barred from the forest and trapped by debt, many tribals ended up as low-paid labourers on tea gardens and in mines. What was the root of this fall?",
+          hi: "जंगल से रोके गए और क़र्ज़ में फँसे, कई आदिवासी चाय-बाग़ानों और खदानों में कम मज़दूरी वाले श्रमिक बन गए। इस पतन की जड़ क्या थी?",
+          mr: "जंगलातून रोखलेले आणि कर्जात अडकलेले, अनेक आदिवासी चहा-मळे आणि खाणींत कमी पगारी मजूर झाले. या पतनाचे मूळ काय?",
+        },
+        statement: {
+          en: "Losing the land was the root fall — cut off from the forest that fed them, tribals were pushed into distant, ill-paid wage labour.",
+          hi: "ज़मीन खोना मूल पतन था — जिस जंगल ने उन्हें पाला उससे कटकर, आदिवासी दूर की, कम-वेतन वाली मज़दूरी में धकेल दिए गए।",
+          mr: "जमीन गमावणे हे मूळ पतन — ज्या जंगलाने त्यांना पोसले त्यापासून तुटून, आदिवासी दूरच्या, कमी-पगारी मजुरीत ढकलले गेले.",
+        },
+        pair: {
+          left: {
+            en: "Cut off from the forest",
+            hi: "जंगल से कटे हुए",
+            mr: "जंगलापासून तुटलेले",
+          },
+          right: {
+            en: "pushed into wage labour",
+            hi: "मज़दूरी में धकेले गए",
+            mr: "मजुरीत ढकलले गेले",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The colonial state found shifting cultivators hard to govern. Which explanation fits best?",
+          hi: "औपनिवेशिक राज्य को चलती खेती करने वालों पर शासन कठिन लगता था। कौन-सी व्याख्या सबसे उपयुक्त है?",
+          mr: "वसाहती राज्याला फिरती शेती करणाऱ्यांवर राज्य करणे कठीण वाटे. कोणते स्पष्टीकरण सर्वांत योग्य?",
+        },
+        choices: [
+          {
+            en: "A state that taxes land needs fixed fields and fixed owners to count; people who move their fields each cycle fit no register, so the state banned the moving rather than change its own method",
+            hi: "जो राज्य भूमि पर कर लगाता है उसे गिनने को नियत खेत और नियत मालिक चाहिए; जो लोग हर चक्र खेत बदलते हैं वे किसी पंजी में नहीं बैठते, अतः राज्य ने अपनी विधि बदलने की जगह चलना ही रोक दिया",
+            mr: "जे राज्य जमिनीवर कर लावते त्याला मोजायला ठरलेली शेते आणि ठरलेले मालक लागतात; जे लोक प्रत्येक चक्रात शेत बदलतात ते कोणत्या नोंदवहीत बसत नाहीत, म्हणून राज्याने आपली रीत बदलण्याऐवजी फिरणेच बंद केले",
+          },
+          {
+            en: "Shifting cultivation produces no food at all",
+            hi: "चलती खेती कोई अन्न ही नहीं उपजाती",
+            mr: "फिरती शेती काहीच अन्न पिकवत नाही",
+          },
+          {
+            en: "The tribals themselves asked to be settled",
+            hi: "आदिवासियों ने ख़ुद बसाए जाने को कहा",
+            mr: "आदिवासींनी स्वतः स्थिरावायला सांगितले",
+          },
+          {
+            en: "The state simply never noticed shifting cultivators",
+            hi: "राज्य ने चलती खेती करने वालों को देखा ही नहीं",
+            mr: "राज्याने फिरत्या शेतकऱ्यांना पाहिलेच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A tax on land is a promise to count land — and counting requires the counted to hold still. A fixed field has an owner, an area, a yield and therefore a bill; a field that moves through the forest each cycle has none of these on any fixed date. Rather than invent a way to tax a moving farm, the colonial state outlawed the movement, ordering cultivators onto permanent plots. The convenience of the register, not the welfare of the cultivator, drew the rule — a recurring pattern wherever state power meets a way of life it cannot easily measure.",
+          hi: "भूमि पर कर गिनने का वादा है — और गिनने के लिए गिने जाने वाले का ठहरना ज़रूरी है। नियत खेत का मालिक, क्षेत्र, उपज और इसलिए बिल होता है; जो खेत हर चक्र जंगल में घूमता है उसका किसी नियत तारीख़ पर इनमें से कुछ नहीं होता। चलते खेत पर कर लगाने का तरीक़ा गढ़ने की जगह, औपनिवेशिक राज्य ने चलना ही ग़ैरक़ानूनी कर दिया, काश्तकारों को स्थायी खेतों पर बिठाने का आदेश दिया। नियम को काश्तकार का हित नहीं, पंजी की सुविधा खींचती थी — एक बार-बार दोहराता ढर्रा, जहाँ भी राज्य-सत्ता ऐसे जीवन-ढंग से टकराती है जिसे वह आसानी से नाप नहीं सकती।",
+          mr: "जमिनीवरचा कर म्हणजे जमीन मोजण्याचे वचन — आणि मोजायला मोजल्या जाणाऱ्याने स्थिर राहणे आवश्यक. ठरलेल्या शेताला मालक, क्षेत्र, उत्पादन आणि म्हणून बिल असते; जे शेत प्रत्येक चक्रात जंगलात फिरते त्याला कोणत्याही ठरलेल्या तारखेला यांतले काही नसते. फिरत्या शेतावर कर लावण्याची रीत शोधण्याऐवजी, वसाहती राज्याने फिरणेच बेकायदा केले, शेतकऱ्यांना कायम वावरांवर बसण्याचा हुकूम दिला. नियमाला शेतकऱ्याचे हित नव्हे, नोंदवहीची सोय ओढी — एक पुन्हापुन्हा दिसणारा साचा, जिथे जिथे राज्य-सत्ता सहज मोजता न येणाऱ्या जीवनरीतीला भिडते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "For centuries a forest sustained a tribe without anyone 'owning' it. Colonial law made it property — and the tribe grew poor on the same land. How does turning a shared forest into property impoverish those already living in it?",
+          hi: "सदियों एक जंगल ने किसी के 'स्वामित्व' बिना एक जनजाति को पाला। औपनिवेशिक क़ानून ने उसे संपत्ति बना दिया — और वही जनजाति उसी ज़मीन पर ग़रीब हो गई। साझा जंगल को संपत्ति बनाना उसमें पहले से जी रहे लोगों को कैसे कंगाल कर देता है?",
+          mr: "शतके एका जंगलाने कोणाच्या 'मालकी'शिवाय एका जमातीला पोसले. वसाहती कायद्याने ते मालमत्ता केले — आणि तीच जमात त्याच जमिनीवर गरीब झाली. सामाईक जंगल मालमत्ता करणे त्यात आधीच राहणाऱ्यांना कसे कंगाल करते?",
+        },
+        choices: [
+          {
+            en: "A commons gives everyone use-rights but no one exclusive ownership; making it property assigns it to an owner — the state or a buyer — and everyone who lived by using it becomes a trespasser overnight, their customary rights erased by a document they never signed",
+            hi: "साझी संपत्ति सबको उपयोग का अधिकार देती है पर किसी को अनन्य स्वामित्व नहीं; उसे संपत्ति बनाना उसे एक मालिक — राज्य या ख़रीदार — को सौंप देता है, और जो सब उसे इस्तेमाल कर जीते थे वे रातों-रात अतिक्रमी बन जाते हैं, उनके रिवाजी अधिकार एक ऐसे दस्तावेज़ से मिटे जिस पर उन्होंने कभी दस्तख़त नहीं किए",
+            mr: "सामाईक मालमत्ता साऱ्यांना वापराचा हक्क देते पण कोणाला एकमेव मालकी नाही; ती मालमत्ता करणे तिला एका मालकाला — राज्य वा खरेदीदार — सोपवते, आणि जे सारे तिचा वापर करून जगत ते रातोरात अतिक्रमक होतात, त्यांचे रूढ हक्क त्यांनी कधी सही न केलेल्या कागदाने पुसले जातात",
+          },
+          {
+            en: "Property makes forests grow smaller physically",
+            hi: "संपत्ति जंगलों को भौतिक रूप से छोटा कर देती है",
+            mr: "मालमत्ता जंगले भौतिकदृष्ट्या लहान करते",
+          },
+          {
+            en: "The tribes always secretly wanted to sell the forest",
+            hi: "जनजातियाँ हमेशा चुपके से जंगल बेचना चाहती थीं",
+            mr: "जमातींना नेहमी गुपचूप जंगल विकायचे होते",
+          },
+          {
+            en: "Nothing changes; ownership is only paperwork",
+            hi: "कुछ नहीं बदलता; स्वामित्व केवल काग़ज़ी कार्रवाई है",
+            mr: "काहीच बदलत नाही; मालकी फक्त कागदपत्र",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The forest did not shrink; the RULES over it did. A commons is a web of shared, customary use-rights — this family gathers here, that one grazes there, all by unwritten agreement stretching back generations. Converting it to property collapses that web into a single line on a deed: one owner, and everyone else an intruder. The tribe's rights were real but unwritten, so a legal system that recognised only documents simply did not see them — and what the law cannot see, it does not protect. Overnight, people who had used the forest for centuries could be charged for cutting its wood or grazing its clearings. The land was unchanged; the question of who was allowed to live from it had been silently rewritten in the ruler's favour.",
+          hi: "जंगल सिकुड़ा नहीं; उस पर के नियम बदले। साझी संपत्ति साझे, रिवाजी उपयोग-अधिकारों का जाल है — यह परिवार यहाँ बीनता है, वह वहाँ चराता है, सब पीढ़ियों पुराने अलिखित समझौते से। उसे संपत्ति बनाना उस जाल को दस्तावेज़ की एक पंक्ति में समेट देता है: एक मालिक, और बाक़ी सब घुसपैठिए। जनजाति के अधिकार असली पर अलिखित थे, अतः केवल दस्तावेज़ मानने वाली क़ानूनी व्यवस्था ने उन्हें देखा ही नहीं — और जो क़ानून न देखे उसे वह बचाता नहीं। रातों-रात, जो लोग सदियों जंगल इस्तेमाल करते थे उसकी लकड़ी काटने या मैदान में चराने के लिए दंडित हो सकते थे। ज़मीन वही रही; उससे कौन जी सकता है यह सवाल चुपचाप शासक के पक्ष में फिर से लिख दिया गया।",
+          mr: "जंगल आकसले नाही; त्यावरचे नियम बदलले. सामाईक मालमत्ता ही सामाईक, रूढ वापर-हक्कांचे जाळे — हे कुटुंब इथे गोळा करते, ते तिथे चरवते, सारे पिढ्यांजुन्या अलिखित कराराने. ती मालमत्ता करणे ते जाळे दस्तऐवजाच्या एका ओळीत आवळते: एक मालक, आणि बाकी सारे घुसखोर. जमातीचे हक्क खरे पण अलिखित होते, म्हणून फक्त कागद मानणाऱ्या कायदेशीर व्यवस्थेने ते पाहिलेच नाहीत — आणि जे कायद्याला दिसत नाही ते तो राखत नाही. रातोरात, जे लोक शतके जंगल वापरत ते त्याचे लाकूड कापण्यासाठी वा मोकळवनात चरवण्यासाठी दंडित होऊ शकत. जमीन तीच राहिली; तिच्यातून कोण जगू शकतो हा प्रश्न गुपचूप शासकाच्या बाजूने पुन्हा लिहिला गेला.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — The Making of the National Movement (1870s–1947)            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-8-national-movement",
+    subject: "HISTORY",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 9 — The Making of the National Movement",
+      hi: "अध्याय 9 — राष्ट्रीय आंदोलन का निर्माण",
+      mr: "प्रकरण 9 — राष्ट्रीय चळवळीची जडणघडण",
+    },
+    name: {
+      en: "The Making of the National Movement",
+      hi: "राष्ट्रीय आंदोलन का निर्माण",
+      mr: "राष्ट्रीय चळवळीची जडणघडण",
+    },
+    summary: {
+      en: "A freedom movement assembled: a congress of the educated turning into a mass tide, non-cooperation and salt and Quit India, and independence in 1947 shadowed by Partition — a nation learning that unity was its one irreplaceable weapon.",
+      hi: "जुड़ता एक स्वतंत्रता आंदोलन: शिक्षितों की सभा जो जन-ज्वार बनी, असहयोग और नमक और भारत छोड़ो, और 1947 की आज़ादी विभाजन की छाया में — एक राष्ट्र सीखता हुआ कि एकता ही उसका इकलौता अपूरणीय हथियार था।",
+      mr: "जुळणारी एक स्वातंत्र्य चळवळ: शिक्षितांची सभा जी जनसागर झाली, असहकार आणि मीठ आणि चले जाव, आणि 1947 चे स्वातंत्र्य फाळणीच्या छायेत — एक राष्ट्र शिकत होते की एकता हेच त्याचे एकमेव न भरून येणारे शस्त्र.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "congress",
+        name: {
+          en: "The Indian National Congress",
+          hi: "भारतीय राष्ट्रीय कांग्रेस",
+          mr: "भारतीय राष्ट्रीय काँग्रेस",
+        },
+        kind: "organisation",
+        prompt: {
+          en: "Which body, founded in 1885, began as a forum of the educated few and grew into the spearhead of the freedom struggle?",
+          hi: "1885 में स्थापित कौन-सा संगठन शिक्षित थोड़े लोगों के मंच के रूप में शुरू हुआ और स्वतंत्रता-संग्राम का अगुआ बना?",
+          mr: "1885 मध्ये स्थापन झालेली कोणती संस्था शिक्षित थोड्यांच्या व्यासपीठ म्हणून सुरू झाली आणि स्वातंत्र्य-लढ्याची अग्रणी झाली?",
+        },
+        statement: {
+          en: "The Congress began in 1885 as an elite forum and became a mass organisation — the long spine of the national movement.",
+          hi: "कांग्रेस 1885 में अभिजात मंच के रूप में शुरू हुई और जन-संगठन बनी — राष्ट्रीय आंदोलन की लंबी रीढ़।",
+          mr: "काँग्रेस 1885 मध्ये उच्चभ्रू व्यासपीठ म्हणून सुरू झाली आणि जन-संघटना झाली — राष्ट्रीय चळवळीचा लांब कणा.",
+        },
+        detail: {
+          en: "Early leaders petitioned politely; later ones marched millions — the same body, two tempos.",
+          hi: "आरंभिक नेता विनम्र याचिकाएँ देते; बाद वाले करोड़ों को कूच कराते — वही संगठन, दो लय।",
+          mr: "सुरुवातीचे नेते नम्र अर्ज देत; नंतरचे कोट्यवधींना कूच करवत — तीच संस्था, दोन लय.",
+        },
+        extra: {
+          en: "The turn from petition to mass action is the movement's central story.",
+          hi: "याचिका से जन-कार्रवाई की ओर मुड़ना ही आंदोलन की केंद्रीय कहानी है।",
+          mr: "अर्जापासून जन-कृतीकडे वळणे हीच चळवळीची मध्यवर्ती कथा.",
+        },
+        pair: {
+          left: {
+            en: "The educated forum",
+            hi: "शिक्षितों का मंच",
+            mr: "शिक्षितांचे व्यासपीठ",
+          },
+          right: {
+            en: "grown into a mass tide",
+            hi: "जन-ज्वार बना",
+            mr: "जनसागर झालेले",
+          },
+        },
+      },
+      {
+        id: "gandhi",
+        name: { en: "Mahatma Gandhi", hi: "महात्मा गांधी", mr: "महात्मा गांधी" },
+        kind: "leader",
+        prompt: {
+          en: "Which leader, returning from South Africa in 1915, turned the freedom struggle into a mass movement built on non-violence and truth?",
+          hi: "1915 में दक्षिण अफ़्रीका से लौटे किस नेता ने स्वतंत्रता-संग्राम को अहिंसा और सत्य पर खड़े जन-आंदोलन में बदल दिया?",
+          mr: "1915 मध्ये दक्षिण आफ्रिकेतून परतलेल्या कोणत्या नेत्याने स्वातंत्र्य-लढ्याला अहिंसा आणि सत्यावर उभ्या जन-चळवळीत बदलले?",
+        },
+        statement: {
+          en: "Gandhi made the struggle a people's movement — satyagraha, non-violent resistance, that ordinary men and women could join.",
+          hi: "गांधी ने संघर्ष को जनता का आंदोलन बनाया — सत्याग्रह, अहिंसक प्रतिरोध, जिसमें आम स्त्री-पुरुष शामिल हो सकते थे।",
+          mr: "गांधींनी लढ्याला जनतेची चळवळ केली — सत्याग्रह, अहिंसक प्रतिकार, ज्यात सामान्य स्त्री-पुरुष सामील होऊ शकत.",
+        },
+        detail: {
+          en: "His genius was inclusion — a weapon needing no rifle, so peasant and lawyer could wield it alike.",
+          hi: "उनकी प्रतिभा समावेश थी — ऐसा हथियार जिसे राइफ़ल नहीं चाहिए, ताकि किसान और वकील दोनों उसे उठा सकें।",
+          mr: "त्यांची प्रतिभा समावेश — बंदूक न लागणारे शस्त्र, म्हणून शेतकरी आणि वकील दोघे ते उचलू शकत.",
+        },
+        extra: {
+          en: "Champaran, Kheda and Ahmedabad were his first Indian campaigns — local wrongs, national method.",
+          hi: "चंपारण, खेड़ा और अहमदाबाद उनके पहले भारतीय अभियान थे — स्थानीय अन्याय, राष्ट्रीय विधि।",
+          mr: "चंपारण, खेडा आणि अहमदाबाद ही त्यांची पहिली भारतीय आंदोलने — स्थानिक अन्याय, राष्ट्रीय रीत.",
+        },
+        pair: {
+          left: {
+            en: "Truth-force for everyone",
+            hi: "सबके लिए सत्य-बल",
+            mr: "साऱ्यांसाठी सत्य-बल",
+          },
+          right: {
+            en: "a weapon needing no rifle",
+            hi: "बिना राइफ़ल का हथियार",
+            mr: "बंदूक न लागणारे शस्त्र",
+          },
+        },
+      },
+      {
+        id: "non-cooperation",
+        name: {
+          en: "Non-Cooperation",
+          hi: "असहयोग आंदोलन",
+          mr: "असहकार चळवळ",
+        },
+        kind: "movement",
+        prompt: {
+          en: "Which 1920–22 movement asked Indians to withdraw from British schools, courts, titles and goods — starving the Raj of the cooperation it ran on?",
+          hi: "1920–22 के किस आंदोलन ने भारतीयों से ब्रिटिश स्कूल, अदालतें, उपाधियाँ और माल छोड़ने को कहा — राज को उस सहयोग से भूखा करते हुए जिस पर वह चलता था?",
+          mr: "1920–22 च्या कोणत्या चळवळीने भारतीयांना ब्रिटिश शाळा, न्यायालये, पदव्या आणि माल सोडायला सांगितले — राजला त्या सहकार्यापासून उपाशी करत ज्यावर तो चाले?",
+        },
+        statement: {
+          en: "Non-Cooperation withheld the cooperation the empire depended on — boycotting its schools, courts, cloth and honours all at once.",
+          hi: "असहयोग ने वह सहयोग रोक लिया जिस पर साम्राज्य टिका था — उसके स्कूल, अदालतें, कपड़ा और सम्मान एक साथ बहिष्कृत।",
+          mr: "असहकाराने ते सहकार्य रोखले ज्यावर साम्राज्य अवलंबून होते — त्याच्या शाळा, न्यायालये, कापड आणि सन्मान एकदम बहिष्कृत.",
+        },
+        detail: {
+          en: "It rested on one insight: a foreign rule of the few over the many survives only if the many keep helping it.",
+          hi: "वह एक अंतर्दृष्टि पर टिका था: थोड़ों का बहुतों पर विदेशी शासन तभी जीता है जब बहुत उसकी मदद करते रहें।",
+          mr: "तो एका अंतर्दृष्टीवर उभा: थोड्यांचे बहुतांवरचे परकीय राज्य तेव्हाच जगते जेव्हा बहुजन त्याला मदत करत राहतात.",
+        },
+        extra: {
+          en: "Gandhi suspended it after the violence at Chauri Chaura — non-violence was a condition, not a tactic.",
+          hi: "चौरी चौरा की हिंसा के बाद गांधी ने उसे स्थगित किया — अहिंसा शर्त थी, चाल नहीं।",
+          mr: "चौरी चौराच्या हिंसेनंतर गांधींनी तो स्थगित केला — अहिंसा ही अट होती, डाव नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "Cooperation withdrawn",
+            hi: "वापस लिया सहयोग",
+            mr: "मागे घेतलेले सहकार्य",
+          },
+          right: {
+            en: "the Raj starved of its help",
+            hi: "मदद से भूखा राज",
+            mr: "मदतीविना उपाशी राज",
+          },
+        },
+      },
+      {
+        id: "salt-march",
+        name: { en: "The Salt March", hi: "नमक मार्च (दांडी)", mr: "मीठ यात्रा (दांडी)" },
+        kind: "movement",
+        prompt: {
+          en: "In 1930 which 240-mile march to make salt from the sea defied the British salt tax — turning a kitchen necessity into a symbol of freedom?",
+          hi: "1930 में समुद्र से नमक बनाने का कौन-सा 240 मील का मार्च ब्रिटिश नमक-कर की अवज्ञा था — रसोई की एक ज़रूरत को स्वतंत्रता का प्रतीक बनाते हुए?",
+          mr: "1930 मध्ये समुद्रातून मीठ बनवण्याची कोणती 240 मैलांची यात्रा ब्रिटिश मीठ-कराची अवज्ञा होती — स्वयंपाकघरातल्या गरजेला स्वातंत्र्याचे प्रतीक करत?",
+        },
+        statement: {
+          en: "The Salt March broke an unjust law by making salt freely from the sea — a simple, universal act of defiance the whole nation could copy.",
+          hi: "नमक मार्च ने समुद्र से मुफ़्त नमक बनाकर एक अन्यायी क़ानून तोड़ा — अवज्ञा का सरल, सर्वजनीन कार्य जिसे पूरा राष्ट्र दोहरा सकता था।",
+          mr: "मीठ यात्रेने समुद्रातून फुकट मीठ बनवून एक अन्याय्य कायदा मोडला — अवज्ञेचे साधे, सर्वसामान्य कृत्य जे अख्खे राष्ट्र दोहरू शके.",
+        },
+        detail: {
+          en: "Everyone ate salt; taxing it was felt everywhere — so defying it could be joined everywhere.",
+          hi: "नमक सब खाते थे; उस पर कर हर जगह महसूस होता था — अतः उसकी अवज्ञा हर जगह जुड़ सकती थी।",
+          mr: "मीठ सारे खात; त्यावरचा कर सर्वत्र जाणवे — म्हणून त्याची अवज्ञा सर्वत्र जुळू शके.",
+        },
+        extra: {
+          en: "Choosing salt was strategy — the humblest, most shared grievance made the widest resistance.",
+          hi: "नमक चुनना रणनीति थी — सबसे मामूली, सबसे साझी शिकायत ने सबसे व्यापक प्रतिरोध बनाया।",
+          mr: "मीठ निवडणे ही रणनीती — सर्वांत साधी, सर्वांत सामाईक तक्रार सर्वांत व्यापक प्रतिकार घडवी.",
+        },
+        pair: {
+          left: {
+            en: "Salt made from the sea",
+            hi: "समुद्र से बना नमक",
+            mr: "समुद्रातून बनवलेले मीठ",
+          },
+          right: {
+            en: "a law broken by everyone",
+            hi: "सबका तोड़ा क़ानून",
+            mr: "साऱ्यांनी मोडलेला कायदा",
+          },
+        },
+      },
+      {
+        id: "quit-india",
+        name: {
+          en: "Quit India, 1942",
+          hi: "भारत छोड़ो, 1942",
+          mr: "चले जाव, 1942",
+        },
+        kind: "movement",
+        prompt: {
+          en: "Which 1942 movement, with the cry 'Do or Die', demanded the British leave India at once, in the midst of the Second World War?",
+          hi: "'करो या मरो' के नारे वाला 1942 का कौन-सा आंदोलन, दूसरे विश्वयुद्ध के बीच, माँग करता था कि अंग्रेज़ भारत तुरंत छोड़ें?",
+          mr: "'करा किंवा मरा' च्या घोषणेसह 1942 ची कोणती चळवळ, दुसऱ्या महायुद्धाच्या मध्ये, इंग्रजांनी भारत ताबडतोब सोडावा अशी मागणी करी?",
+        },
+        statement: {
+          en: "Quit India demanded an immediate end to British rule — 'Do or Die' — and though its leaders were jailed, it showed the empire's days were counted.",
+          hi: "भारत छोड़ो ने ब्रिटिश शासन का तुरंत अंत माँगा — 'करो या मरो' — और नेता जेल गए फिर भी उसने दिखा दिया कि साम्राज्य के दिन गिने-चुने हैं।",
+          mr: "चले जावने ब्रिटिश राज्याचा तात्काळ अंत मागितला — 'करा किंवा मरा' — आणि नेते तुरुंगात गेले तरी त्याने दाखवले की साम्राज्याचे दिवस मोजके आहेत.",
+        },
+        pair: {
+          left: {
+            en: "'Do or Die'",
+            hi: "'करो या मरो'",
+            mr: "'करा किंवा मरा'",
+          },
+          right: {
+            en: "leave India at once",
+            hi: "भारत तुरंत छोड़ो",
+            mr: "भारत ताबडतोब सोडा",
+          },
+        },
+      },
+      {
+        id: "partition",
+        name: {
+          en: "Independence and Partition",
+          hi: "स्वतंत्रता और विभाजन",
+          mr: "स्वातंत्र्य आणि फाळणी",
+        },
+        kind: "event",
+        prompt: {
+          en: "In 1947 freedom finally came — but shadowed by which simultaneous event that split the land into two states and uprooted millions?",
+          hi: "1947 में आज़ादी आख़िर आई — पर किस साथ घटी घटना की छाया में, जिसने भूमि को दो राज्यों में बाँटा और करोड़ों को उजाड़ा?",
+          mr: "1947 मध्ये स्वातंत्र्य अखेर आले — पण कोणत्या सोबत घडलेल्या घटनेच्या छायेत, जिने भूमी दोन राज्यांत विभागली आणि कोट्यवधींना उखडले?",
+        },
+        statement: {
+          en: "Independence in 1947 came with Partition — the land split into India and Pakistan amid vast migration and terrible violence.",
+          hi: "1947 की स्वतंत्रता विभाजन संग आई — भूमि भारत और पाकिस्तान में बँटी, विशाल पलायन और भयानक हिंसा के बीच।",
+          mr: "1947 चे स्वातंत्र्य फाळणीसह आले — भूमी भारत आणि पाकिस्तानात विभागली, प्रचंड स्थलांतर आणि भयंकर हिंसेच्या मध्ये.",
+        },
+        detail: {
+          en: "The joy of freedom and the grief of partition arrived together — one dawn, two faces.",
+          hi: "आज़ादी का हर्ष और विभाजन का शोक साथ आए — एक भोर, दो चेहरे।",
+          mr: "स्वातंत्र्याचा आनंद आणि फाळणीचे दुःख एकत्र आले — एक पहाट, दोन चेहरे.",
+        },
+        extra: {
+          en: "Division cost dearly — the movement's long lesson, that unity was its irreplaceable strength, was written again in blood.",
+          hi: "बँटवारे का दाम भारी था — आंदोलन का लंबा सबक़, कि एकता उसकी अपूरणीय शक्ति थी, फिर ख़ून से लिखा गया।",
+          mr: "विभाजनाची किंमत जबर — चळवळीचा दीर्घ धडा, की एकता हे तिचे न भरून येणारे बळ, पुन्हा रक्ताने लिहिला गेला.",
+        },
+        pair: {
+          left: {
+            en: "Freedom's shadowed dawn",
+            hi: "छायाग्रस्त आज़ादी की भोर",
+            mr: "छायेतली स्वातंत्र्याची पहाट",
+          },
+          right: {
+            en: "one land split in two",
+            hi: "दो में बँटी एक भूमि",
+            mr: "दोहोंत विभागलेली एक भूमी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Put these milestones of the national movement in order. Which sequence is right?",
+          hi: "राष्ट्रीय आंदोलन के इन मील के पत्थरों को क्रम में रखिए। कौन-सा क्रम सही है?",
+          mr: "राष्ट्रीय चळवळीचे हे मैलाचे दगड क्रमाने लावा. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "Congress founded (1885) → Non-Cooperation (1920–22) → Salt March (1930) → Quit India (1942) → Independence and Partition (1947)",
+            hi: "कांग्रेस की स्थापना (1885) → असहयोग (1920–22) → नमक मार्च (1930) → भारत छोड़ो (1942) → स्वतंत्रता और विभाजन (1947)",
+            mr: "काँग्रेसची स्थापना (1885) → असहकार (1920–22) → मीठ यात्रा (1930) → चले जाव (1942) → स्वातंत्र्य आणि फाळणी (1947)",
+          },
+          {
+            en: "Salt March (1930) → Congress founded (1885) → Quit India (1942) → Non-Cooperation → Independence",
+            hi: "नमक मार्च (1930) → कांग्रेस की स्थापना (1885) → भारत छोड़ो (1942) → असहयोग → स्वतंत्रता",
+            mr: "मीठ यात्रा (1930) → काँग्रेसची स्थापना (1885) → चले जाव (1942) → असहकार → स्वातंत्र्य",
+          },
+          {
+            en: "Independence (1947) → Salt March (1930) → Congress (1885) → Quit India → Non-Cooperation",
+            hi: "स्वतंत्रता (1947) → नमक मार्च (1930) → कांग्रेस (1885) → भारत छोड़ो → असहयोग",
+            mr: "स्वातंत्र्य (1947) → मीठ यात्रा (1930) → काँग्रेस (1885) → चले जाव → असहकार",
+          },
+          {
+            en: "Non-Cooperation (1920) → Congress founded (1885) → Independence → Salt March → Quit India",
+            hi: "असहयोग (1920) → कांग्रेस की स्थापना (1885) → स्वतंत्रता → नमक मार्च → भारत छोड़ो",
+            mr: "असहकार (1920) → काँग्रेसची स्थापना (1885) → स्वातंत्र्य → मीठ यात्रा → चले जाव",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The movement escalates step by step: a debating society in 1885 becomes a mass boycott in the 1920s, a mass boycott becomes open law-breaking in 1930, law-breaking becomes an all-out demand to leave in 1942, and the demand is finally met — at the price of Partition — in 1947. Each stage borrows the crowds and the confidence built by the one before; the order is not a list to memorise but a rising pressure to feel.",
+          hi: "आंदोलन क़दम-दर-क़दम चढ़ता है: 1885 की एक बहस-सभा 1920 के दशक में जन-बहिष्कार बनती है, जन-बहिष्कार 1930 में खुला क़ानून-भंग, क़ानून-भंग 1942 में छोड़ने की पूरी माँग, और माँग अंततः पूरी होती है — विभाजन के दाम पर — 1947 में। हर चरण पिछले से बनी भीड़ और आत्मविश्वास उधार लेता है; क्रम रटने की सूची नहीं, महसूस करने का बढ़ता दबाव है।",
+          mr: "चळवळ पावला-पावलाने चढते: 1885 ची चर्चा-सभा 1920 च्या दशकात जन-बहिष्कार होते, जन-बहिष्कार 1930 मध्ये उघड कायदा-भंग, कायदा-भंग 1942 मध्ये सोडण्याची संपूर्ण मागणी, आणि मागणी अखेर पूर्ण होते — फाळणीच्या किमतीवर — 1947 मध्ये. प्रत्येक टप्पा आधीच्याने घडवलेली गर्दी आणि आत्मविश्वास उसना घेतो; क्रम ही पाठ करण्याची यादी नव्हे, जाणवण्याचा चढता दबाव.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Gandhi chose SALT — not gold, land or the vote — as the target of his most famous campaign. Why was a pinch of salt a shrewder weapon than a grander grievance?",
+          hi: "गांधी ने अपने सबसे मशहूर अभियान का निशाना नमक चुना — सोना, ज़मीन या मताधिकार नहीं। चुटकी भर नमक किसी बड़ी शिकायत से चतुर हथियार क्यों था?",
+          mr: "गांधींनी आपल्या सर्वांत प्रसिद्ध आंदोलनाचे लक्ष्य मीठ निवडले — सोने, जमीन वा मताधिकार नव्हे. चिमूटभर मीठ एखाद्या मोठ्या तक्रारीहून चतुर शस्त्र का होते?",
+        },
+        choices: [
+          {
+            en: "Because everyone — rich and poor, of every religion and region — uses salt, the tax touched all alike; so defying it was an act any Indian could perform and feel, making the widest possible unity around the humblest possible thing",
+            hi: "क्योंकि नमक सब — अमीर-ग़रीब, हर धर्म-क्षेत्र के — इस्तेमाल करते हैं, कर सबको एक-सा छूता था; अतः उसकी अवज्ञा ऐसा कार्य था जिसे कोई भी भारतीय कर और महसूस कर सकता था, सबसे मामूली चीज़ के गिर्द सबसे व्यापक एकता बनाते हुए",
+            mr: "कारण मीठ सारे — श्रीमंत-गरीब, प्रत्येक धर्म-प्रदेशाचे — वापरतात, कर साऱ्यांना सारखाच स्पर्शे; म्हणून त्याची अवज्ञा असे कृत्य होते जे कोणताही भारतीय करू आणि जाणवू शके, सर्वांत साध्या गोष्टीभोवती सर्वांत व्यापक एकता घडवत",
+          },
+          {
+            en: "Salt was the single most valuable thing the British owned",
+            hi: "नमक अंग्रेज़ों के पास सबसे मूल्यवान अकेली चीज़ थी",
+            mr: "मीठ ही इंग्रजांकडची सर्वांत मौल्यवान एकमेव गोष्ट होती",
+          },
+          {
+            en: "The salt tax was the only tax the British ever levied",
+            hi: "नमक-कर अंग्रेज़ों का लगाया इकलौता कर था",
+            mr: "मीठ-कर हा इंग्रजांनी लावलेला एकमेव कर होता",
+          },
+          {
+            en: "Gandhi simply liked salt more than gold",
+            hi: "गांधी को सोने से नमक बस अधिक पसंद था",
+            mr: "गांधींना सोन्यापेक्षा मीठ नुसते अधिक आवडे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A protest is only as strong as the number who can join it and feel it their own. Gold or the vote touched the few; salt touched everyone, every day, in every kitchen from palace to hut. By taxing a universal necessity the empire had, without meaning to, handed the movement a grievance shared across every division of wealth, faith and region — and by breaking that one small law, a fisherman in Gujarat and a lawyer in Bengal performed the same act of freedom. Gandhi's insight was that the widest unity gathers not around the grandest cause but around the humblest thing everyone holds in common. Choosing salt turned a tax into a nation.",
+          hi: "विरोध उतना ही मज़बूत है जितने लोग उसमें जुड़ें और उसे अपना महसूस करें। सोना या मताधिकार थोड़ों को छूता; नमक सबको, हर दिन, महल से झोपड़ी तक हर रसोई में। एक सर्वजनीन ज़रूरत पर कर लगाकर साम्राज्य ने, बिना चाहे, आंदोलन को ऐसी शिकायत थमा दी जो धन, धर्म और क्षेत्र के हर बँटवारे के आर-पार साझी थी — और उस एक छोटे क़ानून को तोड़कर, गुजरात का मछुआरा और बंगाल का वकील स्वतंत्रता का एक ही कार्य करते थे। गांधी की अंतर्दृष्टि यह थी कि सबसे व्यापक एकता सबसे बड़े कारण के गिर्द नहीं, बल्कि उस सबसे मामूली चीज़ के गिर्द जुटती है जो सबमें साझी है। नमक चुनना एक कर को एक राष्ट्र में बदल गया।",
+          mr: "निषेध तितकाच बळकट जितके लोक त्यात जुळू आणि तो आपला मानू शकतात. सोने वा मताधिकार थोड्यांना स्पर्शे; मीठ साऱ्यांना, रोज, राजवाड्यापासून झोपडीपर्यंत प्रत्येक स्वयंपाकघरात. एका सर्वसामान्य गरजेवर कर लावून साम्राज्याने, नकळत, चळवळीला अशी तक्रार दिली जी संपत्ती, धर्म आणि प्रदेशाच्या प्रत्येक विभाजनापार सामाईक होती — आणि तो एक छोटा कायदा मोडून, गुजरातचा कोळी आणि बंगालचा वकील स्वातंत्र्याचे एकच कृत्य करत. गांधींची अंतर्दृष्टी ही की सर्वांत व्यापक एकता सर्वांत मोठ्या कारणाभोवती नव्हे, तर साऱ्यांत सामाईक असलेल्या सर्वांत साध्या गोष्टीभोवती जमते. मीठ निवडणे एका कराचे राष्ट्रात रूपांतर करून गेले.",
+        },
+      },
+    ],
+  },
 ];
