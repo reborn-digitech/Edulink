@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 4 — Linear Equations in Two Variables",
+  "name": "Linear Equations in Two Variables",
+  "slug": "maths-9-linear-two-variables",
+  "summary": "One equation, a whole line of solutions: intercepts read by zeroing a coordinate, real-world fares as lines off the origin, and parallel lines sharing not a single point.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "दो चर वाले रैखिक समीकरण",
+      "summary": "एक समीकरण, हलों की पूरी रेखा: निर्देशांक शून्य कर पढ़े अंतःखंड, मूल से हटी रेखाओं जैसे असली किराए, और एक भी बिंदु न बाँटती समांतर रेखाएँ।"
+    },
+    "mr": {
+      "name": "दोन चलांतील रेषीय समीकरणे",
+      "summary": "एक समीकरण, उत्तरांची अख्खी रेषा: सहनिर्देशक शून्य करून वाचलेले छेदबिंदू, आरंभबिंदूपासून हटलेल्या रेषांसारखी खरी भाडी, आणि एकही बिंदू न वाटणाऱ्या समांतर रेषा."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "In x + y = 7, if x = 3, what is y?",
+      "choices": [
+        "3",
+        "4",
+        "21",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "y = 7 − 3 = 4, giving the solution (3, 4). Fix one variable and the equation hands you the other.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "x + y = 7 में यदि x = 3, तो y क्या है?",
+          "choices": [
+            "3",
+            "4",
+            "21",
+            "10"
+          ],
+          "solution": "y = 7 − 3 = 4, हल (3, 4)। एक चर तय कीजिए और समीकरण दूसरा थमा देता है।"
+        },
+        "mr": {
+          "stem": "x + y = 7 मध्ये जर x = 3, तर y काय?",
+          "choices": [
+            "3",
+            "4",
+            "21",
+            "10"
+          ],
+          "solution": "y = 7 − 3 = 4, उत्तर (3, 4). एक चल ठरवा आणि समीकरण दुसरा देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many solutions does the single equation x + y = 5 have?",
+      "choices": [
+        "0",
+        "infinitely many",
+        "5",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "One linear equation in two variables has infinitely many solutions — every point on its line. The answer 'infinitely many' is coded −1.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अकेले समीकरण x + y = 5 के कितने हल हैं?",
+          "choices": [
+            "0",
+            "अनंत",
+            "5",
+            "1"
+          ],
+          "solution": "दो चरों वाले एक रैखिक समीकरण के अनंत हल हैं — उसकी रेखा का हर बिंदु। उत्तर 'अनंत' को −1 से कोडित किया है।"
+        },
+        "mr": {
+          "stem": "एकट्या समीकरण x + y = 5 चे किती उत्तरे आहेत?",
+          "choices": [
+            "0",
+            "अनंत",
+            "5",
+            "1"
+          ],
+          "solution": "दोन चलांच्या एका रेषीय समीकरणाची अनंत उत्तरे — त्याच्या रेषेवरचा प्रत्येक बिंदू. उत्तर 'अनंत' −1 ने कोड केले."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Does the point (2, 1) satisfy 3x − 2y = 4? Compute 3(2) − 2(1).",
+      "choices": [
+        "4",
+        "8",
+        "5",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "3(2) − 2(1) = 6 − 2 = 4 ✓ — the point lies on the line. Substitution is how you test membership.",
+      "checkExpr": "6-2",
+      "translations": {
+        "hi": {
+          "stem": "क्या बिंदु (2, 1) 3x − 2y = 4 को संतुष्ट करता है? 3(2) − 2(1) निकालिए।",
+          "choices": [
+            "4",
+            "8",
+            "5",
+            "2"
+          ],
+          "solution": "3(2) − 2(1) = 6 − 2 = 4 ✓ — बिंदु रेखा पर है। मान रखना ही सदस्यता की जाँच है।"
+        },
+        "mr": {
+          "stem": "बिंदू (2, 1) 3x − 2y = 4 समाधान करतो का? 3(2) − 2(1) काढा.",
+          "choices": [
+            "4",
+            "8",
+            "5",
+            "2"
+          ],
+          "solution": "3(2) − 2(1) = 6 − 2 = 4 ✓ — बिंदू रेषेवर आहे. किंमत ठेवणे हीच सदस्यत्वाची चाचणी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Where does the line 2x + 3y = 12 cross the x-axis? (Set y = 0 and find x.)",
+      "choices": [
+        "3",
+        "6",
+        "12",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "On the x-axis y = 0, so 2x = 12 and x = 6. The x-intercept is (6, 0). Every crossing sets the other coordinate to zero.",
+      "checkExpr": "12/2",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 2x + 3y = 12 x-अक्ष को कहाँ काटती है? (y = 0 रखकर x निकालिए।)",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "x-अक्ष पर y = 0, अतः 2x = 12 और x = 6। x-अंतःखंड (6, 0)। हर कटान दूसरे निर्देशांक को शून्य करता है।"
+        },
+        "mr": {
+          "stem": "रेषा 2x + 3y = 12 x-अक्ष कुठे छेदते? (y = 0 ठेवून x काढा.)",
+          "choices": [
+            "3",
+            "6",
+            "12",
+            "4"
+          ],
+          "solution": "x-अक्षावर y = 0, म्हणून 2x = 12 आणि x = 6. x-छेदबिंदू (6, 0). प्रत्येक छेद दुसरा सहनिर्देशक शून्य करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The line y = 2x + 1 passes through (3, ▢). What is the y-coordinate?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "y = 2(3) + 1 = 7, so (3, 7) is on the line. Feed x in, read y out — the equation is a machine.",
+      "checkExpr": "2*3+1",
+      "translations": {
+        "hi": {
+          "stem": "रेखा y = 2x + 1 (3, ▢) से गुज़रती है। y-निर्देशांक क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "4",
+            "7"
+          ],
+          "solution": "y = 2(3) + 1 = 7, अतः (3, 7) रेखा पर है। x डालिए, y पढ़िए — समीकरण एक मशीन है।"
+        },
+        "mr": {
+          "stem": "रेषा y = 2x + 1 (3, ▢) मधून जाते. y-सहनिर्देशक काय?",
+          "choices": [
+            "5",
+            "6",
+            "4",
+            "7"
+          ],
+          "solution": "y = 2(3) + 1 = 7, म्हणून (3, 7) रेषेवर. x घाला, y वाचा — समीकरण एक यंत्र."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Write the equation of the y-axis: it is x = ▢. What number fills the box?",
+      "choices": [
+        "0",
+        "1",
+        "90",
+        "-1"
+      ],
+      "answerIndex": 0,
+      "solution": "Every point on the y-axis has x = 0, whatever its y — so the line is x = 0. The axis is the set of zero-x points.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "y-अक्ष का समीकरण लिखिए: वह x = ▢ है। रिक्त में कौन-सी संख्या?",
+          "choices": [
+            "0",
+            "1",
+            "90",
+            "-1"
+          ],
+          "solution": "y-अक्ष के हर बिंदु का x = 0, y चाहे जो हो — अतः रेखा x = 0। अक्ष शून्य-x बिंदुओं का समुच्चय है।"
+        },
+        "mr": {
+          "stem": "y-अक्षाचे समीकरण लिहा: ते x = ▢ आहे. रिकाम्यात कोणती संख्या?",
+          "choices": [
+            "0",
+            "1",
+            "90",
+            "-1"
+          ],
+          "solution": "y-अक्षावरच्या प्रत्येक बिंदूचा x = 0, y कोणताही असो — म्हणून रेषा x = 0. अक्ष म्हणजे शून्य-x बिंदूंचा संच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Where does 3x − y = 6 cross the y-axis? Give the y-coordinate.",
+      "choices": [
+        "-6",
+        "2",
+        "-2",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "On the y-axis x = 0, so −y = 6 and y = −6. The y-intercept is (0, −6). Sign matters: the line dips below the origin.",
+      "checkExpr": "0-6",
+      "translations": {
+        "hi": {
+          "stem": "3x − y = 6 y-अक्ष को कहाँ काटती है? y-निर्देशांक बताइए।",
+          "choices": [
+            "-6",
+            "2",
+            "-2",
+            "6"
+          ],
+          "solution": "y-अक्ष पर x = 0, अतः −y = 6 और y = −6। y-अंतःखंड (0, −6)। चिह्न मायने रखता है: रेखा मूल के नीचे झुकती है।"
+        },
+        "mr": {
+          "stem": "3x − y = 6 y-अक्ष कुठे छेदते? y-सहनिर्देशक द्या.",
+          "choices": [
+            "-6",
+            "2",
+            "-2",
+            "6"
+          ],
+          "solution": "y-अक्षावर x = 0, म्हणून −y = 6 आणि y = −6. y-छेदबिंदू (0, −6). चिन्ह महत्त्वाचे: रेषा आरंभबिंदूखाली झुकते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A line has slope 2 and passes through the origin. What is y when x = 5?",
+      "choices": [
+        "7",
+        "2.5",
+        "10",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "Through the origin with slope 2: y = 2x, so y(5) = 10. Slope is how much y climbs per unit of x.",
+      "checkExpr": "2*5",
+      "translations": {
+        "hi": {
+          "stem": "एक रेखा की प्रवणता 2 है और वह मूल से गुज़रती है। x = 5 पर y क्या है?",
+          "choices": [
+            "7",
+            "2.5",
+            "10",
+            "12"
+          ],
+          "solution": "मूल से गुज़रती, प्रवणता 2: y = 2x, अतः y(5) = 10। प्रवणता बताती है x की हर इकाई पर y कितना चढ़ता है।"
+        },
+        "mr": {
+          "stem": "एका रेषेची प्रवणता 2 आहे आणि ती आरंभबिंदूतून जाते. x = 5 वर y काय?",
+          "choices": [
+            "7",
+            "2.5",
+            "10",
+            "12"
+          ],
+          "solution": "आरंभबिंदूतून, प्रवणता 2: y = 2x, म्हणून y(5) = 10. प्रवणता म्हणजे x च्या प्रत्येक एककाला y किती चढतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The cost of x kg of rice at ₹40/kg is y. Write y = 40x — what is y for 3 kg?",
+      "choices": [
+        "43",
+        "40",
+        "12",
+        "120"
+      ],
+      "answerIndex": 3,
+      "solution": "y = 40 × 3 = ₹120 — a real-world line through the origin. 43 adds 3 to 40 instead of scaling.",
+      "checkExpr": "40*3",
+      "translations": {
+        "hi": {
+          "stem": "₹40/किग्रा पर x किग्रा चावल का दाम y है। y = 40x लिखिए — 3 किग्रा के लिए y क्या?",
+          "choices": [
+            "43",
+            "40",
+            "12",
+            "120"
+          ],
+          "solution": "y = 40 × 3 = ₹120 — मूल से गुज़रती वास्तविक रेखा। 43 अनुपात की जगह 40 में 3 जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "₹40/किलो दराने x किलो तांदळाची किंमत y आहे. y = 40x लिहा — 3 किलोसाठी y काय?",
+          "choices": [
+            "43",
+            "40",
+            "12",
+            "120"
+          ],
+          "solution": "y = 40 × 3 = ₹120 — आरंभबिंदूतून जाणारी खरी रेषा. 43 प्रमाणाऐवजी 40 मध्ये 3 मिळवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two numbers add to 20 and differ by 4. What is the LARGER number? (x + y = 20, x − y = 4.)",
+      "choices": [
+        "8",
+        "12",
+        "10",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "Add the equations: 2x = 24, so x = 12 and y = 8. Adding two-variable equations can cancel a variable outright.",
+      "checkExpr": "(20+4)/2",
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याओं का योग 20 और अंतर 4 है। बड़ी संख्या कौन-सी? (x + y = 20, x − y = 4।)",
+          "choices": [
+            "8",
+            "12",
+            "10",
+            "16"
+          ],
+          "solution": "समीकरण जोड़िए: 2x = 24, अतः x = 12 और y = 8। दो-चर समीकरण जोड़ने से एक चर सीधे कट सकता है।"
+        },
+        "mr": {
+          "stem": "दोन संख्यांची बेरीज 20 आणि फरक 4. मोठी संख्या कोणती? (x + y = 20, x − y = 4.)",
+          "choices": [
+            "8",
+            "12",
+            "10",
+            "16"
+          ],
+          "solution": "समीकरणे जोडा: 2x = 24, म्हणून x = 12 आणि y = 8. दोन-चल समीकरणे जोडल्यास एक चल थेट रद्द होऊ शकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The line 4x + 3y = 24 has x-intercept a and y-intercept b. What is a + b?",
+      "choices": [
+        "8",
+        "6",
+        "24",
+        "14"
+      ],
+      "answerIndex": 3,
+      "solution": "x-intercept: y=0 gives x=6. y-intercept: x=0 gives y=8. a + b = 6 + 8 = 14. Two crossings, one sum.",
+      "checkExpr": "6+8",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 4x + 3y = 24 का x-अंतःखंड a और y-अंतःखंड b है। a + b क्या है?",
+          "choices": [
+            "8",
+            "6",
+            "24",
+            "14"
+          ],
+          "solution": "x-अंतःखंड: y=0 से x=6। y-अंतःखंड: x=0 से y=8। a + b = 6 + 8 = 14। दो कटान, एक योग।"
+        },
+        "mr": {
+          "stem": "रेषा 4x + 3y = 24 चा x-छेदबिंदू a आणि y-छेदबिंदू b आहे. a + b काय?",
+          "choices": [
+            "8",
+            "6",
+            "24",
+            "14"
+          ],
+          "solution": "x-छेदबिंदू: y=0 ने x=6. y-छेदबिंदू: x=0 ने y=8. a + b = 6 + 8 = 14. दोन छेद, एक बेरीज."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A taxi charges ₹50 fixed plus ₹15 per km. For a 6 km ride, what is the fare? (y = 50 + 15x.)",
+      "choices": [
+        "65",
+        "390",
+        "140",
+        "90"
+      ],
+      "answerIndex": 2,
+      "solution": "y = 50 + 15(6) = 50 + 90 = ₹140 — a line NOT through the origin, thanks to the fixed ₹50. 90 forgets the base fare.",
+      "checkExpr": "50+15*6",
+      "translations": {
+        "hi": {
+          "stem": "एक टैक्सी ₹50 नियत और ₹15 प्रति किमी लेती है। 6 किमी की सवारी का किराया? (y = 50 + 15x।)",
+          "choices": [
+            "65",
+            "390",
+            "140",
+            "90"
+          ],
+          "solution": "y = 50 + 15(6) = 50 + 90 = ₹140 — नियत ₹50 के कारण मूल से न गुज़रती रेखा। 90 आधार-किराया भूल जाता है।"
+        },
+        "mr": {
+          "stem": "एक टॅक्सी ₹50 ठरलेले आणि ₹15 प्रति किमी घेते. 6 किमी प्रवासाचे भाडे? (y = 50 + 15x.)",
+          "choices": [
+            "65",
+            "390",
+            "140",
+            "90"
+          ],
+          "solution": "y = 50 + 15(6) = 50 + 90 = ₹140 — ठरलेल्या ₹50 मुळे आरंभबिंदूतून न जाणारी रेषा. 90 मूळ-भाडे विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The lines x + y = 6 and x − y = 2 meet at one point. What is its x-coordinate?",
+      "choices": [
+        "3",
+        "6",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Add: 2x = 8, so x = 4 (and y = 2). Two lines meet where both equations hold — the crossing is the shared solution.",
+      "checkExpr": "(6+2)/2",
+      "translations": {
+        "hi": {
+          "stem": "रेखाएँ x + y = 6 और x − y = 2 एक बिंदु पर मिलती हैं। उसका x-निर्देशांक क्या है?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "4"
+          ],
+          "solution": "जोड़िए: 2x = 8, अतः x = 4 (और y = 2)। दो रेखाएँ वहाँ मिलती हैं जहाँ दोनों समीकरण सही हों — कटान साझा हल है।"
+        },
+        "mr": {
+          "stem": "रेषा x + y = 6 आणि x − y = 2 एका बिंदूवर मिळतात. त्याचा x-सहनिर्देशक काय?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "4"
+          ],
+          "solution": "जोडा: 2x = 8, म्हणून x = 4 (आणि y = 2). दोन रेषा तिथे मिळतात जिथे दोन्ही समीकरणे खरी — छेद हेच सामाईक उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A number is such that twice it plus thrice another is 18, and the second number is 2. What is the first number? (2x + 3(2) = 18.)",
+      "choices": [
+        "9",
+        "12",
+        "4",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "2x + 6 = 18 gives 2x = 12, x = 6. Once the second value is known, the two-variable equation collapses to one.",
+      "checkExpr": "(18-6)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या ऐसी है कि उसका दुगुना और दूसरी का तिगुना 18 है, और दूसरी संख्या 2 है। पहली संख्या क्या है? (2x + 3(2) = 18।)",
+          "choices": [
+            "9",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "2x + 6 = 18 से 2x = 12, x = 6। दूसरा मान ज्ञात होते ही दो-चर समीकरण एक में सिमट जाता है।"
+        },
+        "mr": {
+          "stem": "एक संख्या अशी की तिचा दुप्पट आणि दुसरीचा तिप्पट 18, आणि दुसरी संख्या 2. पहिली संख्या काय? (2x + 3(2) = 18.)",
+          "choices": [
+            "9",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "2x + 6 = 18 मधून 2x = 12, x = 6. दुसरी किंमत कळताच दोन-चल समीकरण एकात आवळते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The lines y = 2x + 1 and y = 2x + 5 are parallel. How many points do they share?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "-1"
+      ],
+      "answerIndex": 0,
+      "solution": "Same slope 2, different intercepts — they never meet, so 0 shared points. Parallel lines are a system with no solution.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रेखाएँ y = 2x + 1 और y = 2x + 5 समांतर हैं। वे कितने बिंदु साझा करती हैं?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "-1"
+          ],
+          "solution": "समान प्रवणता 2, अलग अंतःखंड — वे कभी नहीं मिलतीं, अतः 0 साझा बिंदु। समांतर रेखाएँ बिना हल का निकाय हैं।"
+        },
+        "mr": {
+          "stem": "रेषा y = 2x + 1 आणि y = 2x + 5 समांतर आहेत. त्या किती बिंदू सामाईक करतात?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "-1"
+          ],
+          "solution": "समान प्रवणता 2, वेगळे छेदबिंदू — त्या कधीच मिळत नाहीत, म्हणून 0 सामाईक बिंदू. समांतर रेषा म्हणजे उत्तराविनाची प्रणाली."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A boat goes 4 km/h faster downstream than up. If downstream speed is 12 km/h, upstream is 12 − 2c where c is the current. Find c given upstream speed is 8.",
+      "choices": [
+        "2",
+        "4",
+        "1",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "12 − 2c = 8 gives 2c = 4, c = 2 km/h. The 4 km/h gap between speeds is exactly twice the current — a two-equation story told in one line.",
+      "checkExpr": "(12-8)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक नाव धारा के साथ धारा के विरुद्ध से 4 किमी/घंटा तेज़ चलती है। यदि धारा के साथ चाल 12 किमी/घंटा है, विरुद्ध 12 − 2c है जहाँ c धारा है। यदि विरुद्ध चाल 8 है तो c निकालिए।",
+          "choices": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "solution": "12 − 2c = 8 से 2c = 4, c = 2 किमी/घंटा। दोनों चालों का 4 किमी/घंटा अंतर ठीक धारा का दुगुना है — एक पंक्ति में कही दो-समीकरण कहानी।"
+        },
+        "mr": {
+          "stem": "एक नाव प्रवाहासोबत प्रवाहाविरुद्धहून 4 किमी/तास जलद जाते. प्रवाहासोबत वेग 12 किमी/तास असेल, विरुद्ध 12 − 2c जिथे c प्रवाह. विरुद्ध वेग 8 असल्यास c काढा.",
+          "choices": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "solution": "12 − 2c = 8 मधून 2c = 4, c = 2 किमी/तास. दोन वेगांतला 4 किमी/तास फरक नेमका प्रवाहाच्या दुप्पट — एका ओळीत सांगितलेली दोन-समीकरण कथा."
+        }
+      }
+    }
+  ]
+}

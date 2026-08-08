@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 3 — Coordinate Geometry",
+  "name": "Coordinate Geometry",
+  "slug": "maths-9-coordinate-geometry",
+  "summary": "Points earn addresses on a grid: quadrants numbered anticlockwise, distances via Pythagoras, and three points convicted of collinearity by a zero-area triangle.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "निर्देशांक ज्यामिति",
+      "summary": "बिंदु ग्रिड पर पते पाते हैं: वामावर्त गिने चतुर्थांश, पाइथागोरस से दूरियाँ, और शून्य-क्षेत्रफल त्रिभुज से संरेखता के दोषी तीन बिंदु।"
+    },
+    "mr": {
+      "name": "सहनिर्देशक भूमिती",
+      "summary": "बिंदू ग्रिडवर पत्ते मिळवतात: घड्याळाच्या उलट मोजलेली चरणे, पायथागोरसने अंतरे, आणि शून्य-क्षेत्रफळ त्रिकोणाने एकरेषीयतेचे दोषी तीन बिंदू."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "In the point (−4, 7), what is the abscissa (the x-coordinate)?",
+      "choices": [
+        "7",
+        "-4",
+        "4",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "The abscissa is the first coordinate: −4. The second, 7, is the ordinate. Order names the address.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (−4, 7) में भुज (x-निर्देशांक) क्या है?",
+          "choices": [
+            "7",
+            "-4",
+            "4",
+            "3"
+          ],
+          "solution": "भुज पहला निर्देशांक है: −4। दूसरा, 7, कोटि है। क्रम ही पता बताता है।"
+        },
+        "mr": {
+          "stem": "बिंदू (−4, 7) मध्ये भुज (x-सहनिर्देशक) काय?",
+          "choices": [
+            "7",
+            "-4",
+            "4",
+            "3"
+          ],
+          "solution": "भुज म्हणजे पहिला सहनिर्देशक: −4. दुसरा, 7, कोटी. क्रमच पत्ता सांगतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In which quadrant does the point (3, −5) lie?",
+      "choices": [
+        "3",
+        "2",
+        "1",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "x positive, y negative: right and down — the fourth quadrant. Quadrants number anticlockwise from the (+, +) first.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (3, −5) किस चतुर्थांश में है?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "x धन, y ऋण: दाएँ और नीचे — चौथा चतुर्थांश। चतुर्थांश (+, +) वाले पहले से वामावर्त गिने जाते हैं।"
+        },
+        "mr": {
+          "stem": "बिंदू (3, −5) कोणत्या चरणात आहे?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "x धन, y ऋण: उजवीकडे आणि खाली — चौथे चरण. चरणे (+, +) पहिल्यापासून घड्याळाच्या उलट मोजतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "On which axis does the point (0, 6) lie? (x-axis = 1, y-axis = 2)",
+      "choices": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "x = 0 means no horizontal step, so the point sits on the vertical y-axis (coded 2). A zero x pins a point to the y-axis.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (0, 6) किस अक्ष पर है? (x-अक्ष = 1, y-अक्ष = 2)",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "x = 0 यानी कोई क्षैतिज क़दम नहीं, अतः बिंदु खड़ी y-अक्ष पर (कोड 2)। शून्य x बिंदु को y-अक्ष पर जड़ देता है।"
+        },
+        "mr": {
+          "stem": "बिंदू (0, 6) कोणत्या अक्षावर आहे? (x-अक्ष = 1, y-अक्ष = 2)",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "x = 0 म्हणजे आडवे पाऊल नाही, म्हणून बिंदू उभ्या y-अक्षावर (कोड 2). शून्य x बिंदूला y-अक्षावर ठरवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How far apart are (2, 3) and (2, 8)?",
+      "choices": [
+        "10",
+        "6",
+        "11",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Same x, so the gap is purely vertical: 8 − 3 = 5. When one coordinate matches, distance is a simple subtraction.",
+      "checkExpr": "8-3",
+      "translations": {
+        "hi": {
+          "stem": "(2, 3) और (2, 8) कितनी दूर हैं?",
+          "choices": [
+            "10",
+            "6",
+            "11",
+            "5"
+          ],
+          "solution": "x समान, अतः फ़ासला केवल खड़ा है: 8 − 3 = 5। जब एक निर्देशांक मिले, दूरी सीधी घटाव है।"
+        },
+        "mr": {
+          "stem": "(2, 3) आणि (2, 8) किती दूर आहेत?",
+          "choices": [
+            "10",
+            "6",
+            "11",
+            "5"
+          ],
+          "solution": "x समान, म्हणून अंतर फक्त उभे: 8 − 3 = 5. एक सहनिर्देशक जुळला की अंतर साधी वजाबाकी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the distance from the origin to the point (6, 8)?",
+      "choices": [
+        "48",
+        "14",
+        "7",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "√(6² + 8²) = √(36 + 64) = √100 = 10 — Pythagoras on the grid. 14 adds the legs instead of using their squares.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मूल-बिंदु से बिंदु (6, 8) तक की दूरी कितनी है?",
+          "choices": [
+            "48",
+            "14",
+            "7",
+            "10"
+          ],
+          "solution": "√(6² + 8²) = √(36 + 64) = √100 = 10 — ग्रिड पर पाइथागोरस। 14 भुजाएँ जोड़ता है, उनके वर्ग नहीं।"
+        },
+        "mr": {
+          "stem": "आरंभबिंदूपासून बिंदू (6, 8) पर्यंतचे अंतर किती?",
+          "choices": [
+            "48",
+            "14",
+            "7",
+            "10"
+          ],
+          "solution": "√(6² + 8²) = √(36 + 64) = √100 = 10 — ग्रिडवरचा पायथागोरस. 14 बाजू जोडतो, त्यांचे वर्ग नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The point (−2, 0) lies on the x-axis. How far is it from the origin?",
+      "choices": [
+        "2",
+        "0",
+        "4",
+        "-2"
+      ],
+      "answerIndex": 0,
+      "solution": "Distance is never negative — the point is 2 units left of the origin, so 2 away. −2 confuses position with distance.",
+      "checkExpr": "0+2",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (−2, 0) x-अक्ष पर है। मूल-बिंदु से कितनी दूर?",
+          "choices": [
+            "2",
+            "0",
+            "4",
+            "-2"
+          ],
+          "solution": "दूरी कभी ऋण नहीं — बिंदु मूल से 2 इकाई बाएँ है, अतः 2 दूर। −2 स्थिति को दूरी से मिला बैठता है।"
+        },
+        "mr": {
+          "stem": "बिंदू (−2, 0) x-अक्षावर आहे. आरंभबिंदूपासून किती दूर?",
+          "choices": [
+            "2",
+            "0",
+            "4",
+            "-2"
+          ],
+          "solution": "अंतर कधी ऋण नाही — बिंदू आरंभबिंदूच्या 2 एकके डावीकडे, म्हणून 2 दूर. −2 स्थान अंतराशी गल्लत करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Three corners of a rectangle are (1, 1), (6, 1) and (6, 4). What is the x-coordinate of the fourth corner?",
+      "choices": [
+        "4",
+        "6",
+        "0",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "The fourth corner is (1, 4): x borrowed from the corner below it, y from the corner across. A rectangle's corners copy coordinates in pairs.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आयत के तीन कोने (1, 1), (6, 1) और (6, 4) हैं। चौथे कोने का x-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "6",
+            "0",
+            "1"
+          ],
+          "solution": "चौथा कोना (1, 4): x नीचे वाले कोने से, y सामने वाले से उधार। आयत के कोने निर्देशांक जोड़ों में नक़ल करते हैं।"
+        },
+        "mr": {
+          "stem": "आयताचे तीन कोपरे (1, 1), (6, 1) आणि (6, 4) आहेत. चौथ्या कोपऱ्याचा x-सहनिर्देशक काय?",
+          "choices": [
+            "4",
+            "6",
+            "0",
+            "1"
+          ],
+          "solution": "चौथा कोपरा (1, 4): x खालच्या कोपऱ्याकडून, y समोरच्याकडून. आयताचे कोपरे सहनिर्देशक जोड्यांत नक्कल करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The midpoint of (2, 3) and (8, 7) is (5, ▢). What is the y-coordinate?",
+      "choices": [
+        "10",
+        "4",
+        "2",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Average the y's: (3 + 7)/2 = 5. The midpoint is the average of the endpoints, coordinate by coordinate.",
+      "checkExpr": "(3+7)/2",
+      "translations": {
+        "hi": {
+          "stem": "(2, 3) और (8, 7) का मध्य-बिंदु (5, ▢) है। y-निर्देशांक क्या है?",
+          "choices": [
+            "10",
+            "4",
+            "2",
+            "5"
+          ],
+          "solution": "y का औसत: (3 + 7)/2 = 5। मध्य-बिंदु सिरों का औसत है, निर्देशांक-दर-निर्देशांक।"
+        },
+        "mr": {
+          "stem": "(2, 3) आणि (8, 7) चा मध्यबिंदू (5, ▢) आहे. y-सहनिर्देशक काय?",
+          "choices": [
+            "10",
+            "4",
+            "2",
+            "5"
+          ],
+          "solution": "y ची सरासरी: (3 + 7)/2 = 5. मध्यबिंदू म्हणजे टोकांची सरासरी, सहनिर्देशकागणिक."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A point lies on the y-axis, 4 units below the origin. What is its y-coordinate?",
+      "choices": [
+        "-4",
+        "-1",
+        "4",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "Below the origin means negative y: (0, −4). The x is 0 because it is on the axis; the sign records the direction.",
+      "checkExpr": "0-4",
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु y-अक्ष पर, मूल से 4 इकाई नीचे है। उसका y-निर्देशांक क्या है?",
+          "choices": [
+            "-4",
+            "-1",
+            "4",
+            "0"
+          ],
+          "solution": "मूल से नीचे यानी ऋण y: (0, −4)। x शून्य क्योंकि वह अक्ष पर है; चिह्न दिशा दर्ज करता है।"
+        },
+        "mr": {
+          "stem": "एक बिंदू y-अक्षावर, आरंभबिंदूच्या 4 एकके खाली आहे. त्याचा y-सहनिर्देशक काय?",
+          "choices": [
+            "-4",
+            "-1",
+            "4",
+            "0"
+          ],
+          "solution": "आरंभबिंदूच्या खाली म्हणजे ऋण y: (0, −4). x शून्य कारण तो अक्षावर; चिन्ह दिशा नोंदवते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Vertices (0,0), (4,0), (4,3) and (0,3) enclose a rectangle. What is its area?",
+      "choices": [
+        "14",
+        "7",
+        "12",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "Width 4, height 3, area 4 × 3 = 12. 14 walks the perimeter instead of filling the rectangle.",
+      "checkExpr": "4*3",
+      "translations": {
+        "hi": {
+          "stem": "शीर्ष (0,0), (4,0), (4,3) और (0,3) एक आयत घेरते हैं। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "14",
+            "7",
+            "12",
+            "25"
+          ],
+          "solution": "चौड़ाई 4, ऊँचाई 3, क्षेत्रफल 4 × 3 = 12। 14 आयत भरने की जगह परिमाप नाप आता है।"
+        },
+        "mr": {
+          "stem": "शिरोबिंदू (0,0), (4,0), (4,3) आणि (0,3) एक आयत वेढतात. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "14",
+            "7",
+            "12",
+            "25"
+          ],
+          "solution": "रुंदी 4, उंची 3, क्षेत्रफळ 4 × 3 = 12. 14 आयत भरण्याऐवजी परिमिती मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Points (1,2), (5,2) and (5,5) are three corners of a right triangle. What is its area?",
+      "choices": [
+        "6",
+        "10",
+        "7",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The legs are 4 (along y=2) and 3 (along x=5): area = ½·4·3 = 6. A triangle is half its bounding rectangle.",
+      "checkExpr": "4*3/2",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (1,2), (5,2) और (5,5) एक समकोण त्रिभुज के तीन कोने हैं। उसका क्षेत्रफल कितना?",
+          "choices": [
+            "6",
+            "10",
+            "7",
+            "12"
+          ],
+          "solution": "भुजाएँ 4 (y=2 पर) और 3 (x=5 पर): क्षेत्रफल = ½·4·3 = 6। त्रिभुज अपने घेरने वाले आयत का आधा है।"
+        },
+        "mr": {
+          "stem": "बिंदू (1,2), (5,2) आणि (5,5) एका काटकोन त्रिकोणाचे तीन कोपरे आहेत. त्याचे क्षेत्रफळ किती?",
+          "choices": [
+            "6",
+            "10",
+            "7",
+            "12"
+          ],
+          "solution": "बाजू 4 (y=2 वर) आणि 3 (x=5 वर): क्षेत्रफळ = ½·4·3 = 6. त्रिकोण म्हणजे त्याच्या वेढणाऱ्या आयताचा अर्धा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The distance between (0,0) and (5,12) is —",
+      "choices": [
+        "169",
+        "13",
+        "17",
+        "7"
+      ],
+      "answerIndex": 1,
+      "solution": "√(5² + 12²) = √(25 + 144) = √169 = 13 — the 5-12-13 triple on the grid. 169 stops at the square of the answer.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "(0,0) और (5,12) के बीच की दूरी है —",
+          "choices": [
+            "169",
+            "13",
+            "17",
+            "7"
+          ],
+          "solution": "√(5² + 12²) = √(25 + 144) = √169 = 13 — ग्रिड पर 5-12-13 त्रिक। 169 उत्तर के वर्ग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "(0,0) आणि (5,12) मधले अंतर आहे —",
+          "choices": [
+            "169",
+            "13",
+            "17",
+            "7"
+          ],
+          "solution": "√(5² + 12²) = √(25 + 144) = √169 = 13 — ग्रिडवरचे 5-12-13 त्रिकूट. 169 उत्तराच्या वर्गावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A point is equidistant from (0,0) and (6,0) and lies on the x-axis. What is its x-coordinate?",
+      "choices": [
+        "6",
+        "3",
+        "1.5",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "Equidistant from two points on a line means the midpoint: (0 + 6)/2 = 3. Balance sits exactly halfway.",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु (0,0) और (6,0) से समान दूरी पर है और x-अक्ष पर है। उसका x-निर्देशांक क्या है?",
+          "choices": [
+            "6",
+            "3",
+            "1.5",
+            "0"
+          ],
+          "solution": "एक रेखा के दो बिंदुओं से समान दूरी यानी मध्य-बिंदु: (0 + 6)/2 = 3। संतुलन ठीक बीच में बैठता है।"
+        },
+        "mr": {
+          "stem": "एक बिंदू (0,0) आणि (6,0) पासून समान अंतरावर आहे आणि x-अक्षावर आहे. त्याचा x-सहनिर्देशक काय?",
+          "choices": [
+            "6",
+            "3",
+            "1.5",
+            "0"
+          ],
+          "solution": "एका रेषेवरच्या दोन बिंदूंपासून समान अंतर म्हणजे मध्यबिंदू: (0 + 6)/2 = 3. समतोल नेमका मध्यभागी."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Reflect the point (3, 5) across the x-axis. What is its new y-coordinate?",
+      "choices": [
+        "5",
+        "-5",
+        "-3",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Reflecting across the x-axis flips the sign of y: 5 becomes −5, x unchanged. The mirror is the axis itself.",
+      "checkExpr": "0-5",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (3, 5) को x-अक्ष के परितः परावर्तित कीजिए। उसका नया y-निर्देशांक क्या है?",
+          "choices": [
+            "5",
+            "-5",
+            "-3",
+            "3"
+          ],
+          "solution": "x-अक्ष के परितः परावर्तन y का चिह्न पलटता है: 5 बनता है −5, x वही। दर्पण स्वयं अक्ष है।"
+        },
+        "mr": {
+          "stem": "बिंदू (3, 5) ला x-अक्षाभोवती परावर्तित करा. त्याचा नवा y-सहनिर्देशक काय?",
+          "choices": [
+            "5",
+            "-5",
+            "-3",
+            "3"
+          ],
+          "solution": "x-अक्षाभोवती परावर्तन y चे चिन्ह उलटवते: 5 चा होतो −5, x तसाच. आरसा म्हणजे अक्षच."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Points (1,1), (2,2) and (3,3) — are they collinear? Test the area of the triangle they form: ½|x₁(y₂−y₃)+x₂(y₃−y₁)+x₃(y₁−y₂)|. What is that area?",
+      "choices": [
+        "0",
+        "3",
+        "6",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "½|1(2−3)+2(3−1)+3(1−2)| = ½|−1+4−3| = 0. Zero area means no triangle — the three points are collinear, all on the line y = x.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (1,1), (2,2) और (3,3) — क्या संरेख हैं? उनके बनाए त्रिभुज का क्षेत्रफल ½|x₁(y₂−y₃)+x₂(y₃−y₁)+x₃(y₁−y₂)| जाँचिए। वह क्षेत्रफल क्या है?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "1"
+          ],
+          "solution": "½|1(2−3)+2(3−1)+3(1−2)| = ½|−1+4−3| = 0। शून्य क्षेत्रफल यानी कोई त्रिभुज नहीं — तीनों बिंदु संरेख हैं, सब y = x रेखा पर।"
+        },
+        "mr": {
+          "stem": "बिंदू (1,1), (2,2) आणि (3,3) — एकरेषीय आहेत का? त्यांनी केलेल्या त्रिकोणाचे क्षेत्रफळ ½|x₁(y₂−y₃)+x₂(y₃−y₁)+x₃(y₁−y₂)| तपासा. ते क्षेत्रफळ काय?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "1"
+          ],
+          "solution": "½|1(2−3)+2(3−1)+3(1−2)| = ½|−1+4−3| = 0. शून्य क्षेत्रफळ म्हणजे त्रिकोणच नाही — तिन्ही बिंदू एकरेषीय, सारे y = x रेषेवर."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A point P divides the segment from (0,0) to (10,0) so that its distance from (0,0) is FOUR times its distance from (10,0). What is P's x-coordinate?",
+      "choices": [
+        "5",
+        "8",
+        "10",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Distance from 0 is 4× distance from 10, so P splits the 10 units in ratio 4:1 — that is 4/5 of the way, giving x = 8. Closer to the far end, as the larger distance demands.",
+      "checkExpr": "10*4/5",
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु P, (0,0) से (10,0) तक के खंड को यों बाँटता है कि (0,0) से उसकी दूरी (10,0) से उसकी दूरी की चार गुनी हो। P का x-निर्देशांक क्या है?",
+          "choices": [
+            "5",
+            "8",
+            "10",
+            "2"
+          ],
+          "solution": "0 से दूरी 10 से दूरी की 4 गुनी है, अतः P दस इकाइयों को 4:1 अनुपात में बाँटता है — यानी 4/5 दूरी, जिससे x = 8। दूर वाले सिरे के पास, जैसा बड़ी दूरी माँगती है।"
+        },
+        "mr": {
+          "stem": "एक बिंदू P, (0,0) पासून (10,0) पर्यंतचा खंड असा विभागतो की (0,0) पासून त्याचे अंतर (10,0) पासूनच्या अंतराच्या चौपट. P चा x-सहनिर्देशक काय?",
+          "choices": [
+            "5",
+            "8",
+            "10",
+            "2"
+          ],
+          "solution": "0 पासूनचे अंतर 10 पासूनच्या 4 पट, म्हणून P दहा एकके 4:1 गुणोत्तरात विभागतो — म्हणजे 4/5 अंतर, ज्याने x = 8. दूरच्या टोकाजवळ, मोठे अंतर मागते तसे."
+        }
+      }
+    }
+  ]
+}

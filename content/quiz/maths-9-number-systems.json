@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 1 — Number Systems",
+  "name": "Number Systems",
+  "slug": "maths-9-number-systems",
+  "summary": "The line fills with irrationals: repeating decimals unmasked as fractions, roots swept from denominators by conjugates, and 0.999… proved to be exactly 1.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "संख्या पद्धति",
+      "summary": "रेखा अपरिमेयों से भरती है: आवर्ती दशमलव भिन्नों के रूप में उघड़े, संयुग्मियों से हर से बुहारे मूल, और 0.999… ठीक 1 सिद्ध।"
+    },
+    "mr": {
+      "name": "संख्या पद्धती",
+      "summary": "रेषा अपरिमेयांनी भरते: आवर्ती दशांश अपूर्णांक म्हणून उघड, संयुग्मांनी छेदातून झाडलेली मूळे, आणि 0.999… नेमके 1 सिद्ध."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Is 0 a rational number? Write it as a fraction ▢/1 — what is the numerator?",
+      "choices": [
+        "1",
+        "0",
+        "10",
+        "-1"
+      ],
+      "answerIndex": 1,
+      "solution": "0 = 0/1, a ratio of two integers with non-zero denominator — so yes, rational. Every integer is rational, hiding a denominator of 1.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या 0 परिमेय संख्या है? उसे भिन्न ▢/1 लिखिए — अंश क्या है?",
+          "choices": [
+            "1",
+            "0",
+            "10",
+            "-1"
+          ],
+          "solution": "0 = 0/1, दो पूर्णांकों का अनुपात जिसका हर शून्येतर है — अतः हाँ, परिमेय। हर पूर्णांक परिमेय है, 1 का हर छिपाए हुए।"
+        },
+        "mr": {
+          "stem": "0 ही परिमेय संख्या आहे का? तिला अपूर्णांक ▢/1 लिहा — अंश काय?",
+          "choices": [
+            "1",
+            "0",
+            "10",
+            "-1"
+          ],
+          "solution": "0 = 0/1, शून्येतर छेद असलेल्या दोन पूर्णांकांचे गुणोत्तर — म्हणून हो, परिमेय. प्रत्येक पूर्णांक परिमेय, 1 चा छेद लपवून."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many rational numbers lie between 1 and 2?",
+      "choices": [
+        "10",
+        "infinitely many",
+        "1",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "Between any two rationals sit infinitely many more — average them for one, then average again, without end. The answer 'infinitely many' is coded here as −1.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "1 और 2 के बीच कितनी परिमेय संख्याएँ हैं?",
+          "choices": [
+            "10",
+            "अनंत",
+            "1",
+            "0"
+          ],
+          "solution": "किन्हीं दो परिमेयों के बीच अनंत और बैठती हैं — एक के लिए औसत लीजिए, फिर फिर औसत, बिना अंत। यहाँ उत्तर 'अनंत' को −1 से कोडित किया है।"
+        },
+        "mr": {
+          "stem": "1 आणि 2 च्या दरम्यान किती परिमेय संख्या आहेत?",
+          "choices": [
+            "10",
+            "अनंत",
+            "1",
+            "0"
+          ],
+          "solution": "कोणत्याही दोन परिमेयांमध्ये अनंत आणखी बसतात — एकासाठी सरासरी घ्या, मग पुन्हा सरासरी, न संपता. इथे उत्तर 'अनंत' −1 ने कोड केले आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "√25 is a rational number. What is its value?",
+      "choices": [
+        "625",
+        "5",
+        "50",
+        "12.5"
+      ],
+      "answerIndex": 1,
+      "solution": "√25 = 5, an integer — a square root is rational exactly when the number is a perfect square. 12.5 halves instead of rooting.",
+      "checkExpr": "25/5",
+      "translations": {
+        "hi": {
+          "stem": "√25 एक परिमेय संख्या है। उसका मान क्या है?",
+          "choices": [
+            "625",
+            "5",
+            "50",
+            "12.5"
+          ],
+          "solution": "√25 = 5, एक पूर्णांक — वर्गमूल तभी परिमेय है जब संख्या पूर्ण वर्ग हो। 12.5 मूल की जगह आधा करता है।"
+        },
+        "mr": {
+          "stem": "√25 ही परिमेय संख्या आहे. तिची किंमत काय?",
+          "choices": [
+            "625",
+            "5",
+            "50",
+            "12.5"
+          ],
+          "solution": "√25 = 5, एक पूर्णांक — वर्गमूळ तेव्हाच परिमेय जेव्हा संख्या पूर्ण वर्ग असेल. 12.5 मूळाऐवजी अर्धे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these is IRRATIONAL: 0.75, √2, 4/3, or 0.333…? Answer the coded index (√2 is 2).",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "√2 = 1.41421356… never terminates and never repeats — the mark of an irrational. The other three are neat fractions in disguise.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "इनमें अपरिमेय कौन: 0.75, √2, 4/3, या 0.333…? कोडित सूचकांक बताइए (√2 का 2)।",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "√2 = 1.41421356… न समाप्त होता है न दोहराता है — अपरिमेय की पहचान। बाक़ी तीन भेस बदले साफ़ भिन्न हैं।"
+        },
+        "mr": {
+          "stem": "यांत अपरिमेय कोण: 0.75, √2, 4/3, की 0.333…? कोड केलेला निर्देशांक द्या (√2 चा 2).",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "√2 = 1.41421356… ना संपते ना पुनरावृत्त — अपरिमेयाची खूण. बाकी तीन वेष बदललेले नीटस अपूर्णांक."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The decimal 0.666… as a fraction is 2/▢. What is the denominator?",
+      "choices": [
+        "3",
+        "6",
+        "9",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "A single repeating digit d gives d/9: 6/9 = 2/3, so denominator 3. Repeating decimals are always rational — the 9-trick converts them.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दशमलव 0.666… भिन्न में 2/▢ है। हर क्या है?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "10"
+          ],
+          "solution": "एक दोहराता अंक d देता है d/9: 6/9 = 2/3, अतः हर 3। आवर्ती दशमलव सदा परिमेय हैं — 9 की तरकीब उन्हें बदल देती है।"
+        },
+        "mr": {
+          "stem": "दशांश 0.666… अपूर्णांकात 2/▢ आहे. छेद काय?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "10"
+          ],
+          "solution": "एक पुनरावृत्त अंक d देतो d/9: 6/9 = 2/3, म्हणून छेद 3. आवर्ती दशांश नेहमी परिमेय — 9 ची युक्ती त्यांना बदलते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is √3 × √3?",
+      "choices": [
+        "9",
+        "3",
+        "1.73",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "√3 × √3 = 3 — a root times itself undoes the root. 9 squares the 3 inside; 1.73 is √3 itself, left un-multiplied.",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "√3 × √3 कितना है?",
+          "choices": [
+            "9",
+            "3",
+            "1.73",
+            "6"
+          ],
+          "solution": "√3 × √3 = 3 — मूल अपने से गुणा मूल को उलट देता है। 9 भीतर के 3 का वर्ग करता है; 1.73 स्वयं √3 है, बिना गुणा।"
+        },
+        "mr": {
+          "stem": "√3 × √3 किती?",
+          "choices": [
+            "9",
+            "3",
+            "1.73",
+            "6"
+          ],
+          "solution": "√3 × √3 = 3 — मूळ स्वतःशी गुणले मूळ उलटवते. 9 आतल्या 3 चा वर्ग करतो; 1.73 म्हणजे स्वतः √3, न गुणलेले."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Rationalise 1/√5: it becomes √5/▢. What is the denominator?",
+      "choices": [
+        "1",
+        "10",
+        "5",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "Multiply top and bottom by √5: (1×√5)/(√5×√5) = √5/5. Rationalising sweeps the root out of the denominator.",
+      "checkExpr": "25/5",
+      "translations": {
+        "hi": {
+          "stem": "1/√5 को परिमेय कीजिए: वह √5/▢ बनता है। हर क्या है?",
+          "choices": [
+            "1",
+            "10",
+            "5",
+            "25"
+          ],
+          "solution": "ऊपर-नीचे √5 से गुणा कीजिए: (1×√5)/(√5×√5) = √5/5। परिमेयकरण हर से मूल बुहार देता है।"
+        },
+        "mr": {
+          "stem": "1/√5 परिमेय करा: ते √5/▢ होते. छेद काय?",
+          "choices": [
+            "1",
+            "10",
+            "5",
+            "25"
+          ],
+          "solution": "वर-खाली √5 ने गुणा: (1×√5)/(√5×√5) = √5/5. परिमेयीकरण छेदातून मूळ झाडून टाकते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Compute 8^(2/3).",
+      "choices": [
+        "5.33",
+        "16",
+        "4",
+        "512"
+      ],
+      "answerIndex": 2,
+      "solution": "8^(2/3) = (∛8)² = 2² = 4 — the denominator roots, the numerator powers. 16 forgets the cube root; 5.33 multiplies 8 × 2/3.",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "8^(2/3) निकालिए।",
+          "choices": [
+            "5.33",
+            "16",
+            "4",
+            "512"
+          ],
+          "solution": "8^(2/3) = (∛8)² = 2² = 4 — हर मूल लेता है, अंश घात। 16 घनमूल भूल जाता है; 5.33 8 × 2/3 गुणा कर बैठता है।"
+        },
+        "mr": {
+          "stem": "8^(2/3) काढा.",
+          "choices": [
+            "5.33",
+            "16",
+            "4",
+            "512"
+          ],
+          "solution": "8^(2/3) = (∛8)² = 2² = 4 — छेद मूळ घेतो, अंश घात. 16 घनमूळ विसरतो; 5.33 8 × 2/3 गुणतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Simplify √50 to a√2. What is a?",
+      "choices": [
+        "25",
+        "2",
+        "10",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "√50 = √(25×2) = 5√2, pulling the perfect square out. 25 forgets to take the square root of the 25.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "√50 को a√2 में सरल कीजिए। a क्या है?",
+          "choices": [
+            "25",
+            "2",
+            "10",
+            "5"
+          ],
+          "solution": "√50 = √(25×2) = 5√2, पूर्ण वर्ग बाहर खींचकर। 25 पच्चीस का वर्गमूल लेना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "√50 ला a√2 मध्ये सोपे करा. a काय?",
+          "choices": [
+            "25",
+            "2",
+            "10",
+            "5"
+          ],
+          "solution": "√50 = √(25×2) = 5√2, पूर्ण वर्ग बाहेर काढून. 25 पंचविसाचे वर्गमूळ घ्यायला विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "(√7 + √3)(√7 − √3) = ?",
+      "choices": [
+        "4",
+        "10",
+        "2",
+        "21"
+      ],
+      "answerIndex": 0,
+      "solution": "Difference of squares: (√7)² − (√3)² = 7 − 3 = 4 — the roots vanish. 10 adds instead of subtracting the squares.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "(√7 + √3)(√7 − √3) कितना है?",
+          "choices": [
+            "4",
+            "10",
+            "2",
+            "21"
+          ],
+          "solution": "वर्गों का अंतर: (√7)² − (√3)² = 7 − 3 = 4 — मूल ग़ायब हो जाते हैं। 10 वर्ग घटाने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "(√7 + √3)(√7 − √3) किती?",
+          "choices": [
+            "4",
+            "10",
+            "2",
+            "21"
+          ],
+          "solution": "वर्गांचा फरक: (√7)² − (√3)² = 7 − 3 = 4 — मूळे नाहीशी होतात. 10 वर्ग वजा करण्याऐवजी जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Between √4 and √9 — that is 2 and 3 — how many INTEGERS lie strictly between?",
+      "choices": [
+        "0",
+        "5",
+        "2",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "2 and 3 are consecutive integers, so none sit strictly between. But infinitely many IRRATIONALS do — the number line is far denser than the integers suggest.",
+      "checkExpr": "3-2-1",
+      "translations": {
+        "hi": {
+          "stem": "√4 और √9 — यानी 2 और 3 — के बीच (दोनों छोड़कर) कितने पूर्णांक हैं?",
+          "choices": [
+            "0",
+            "5",
+            "2",
+            "1"
+          ],
+          "solution": "2 और 3 क्रमागत पूर्णांक हैं, अतः बीच में कोई नहीं। पर अनंत अपरिमेय बैठते हैं — संख्या-रेखा पूर्णांकों के सुझाव से कहीं सघन है।"
+        },
+        "mr": {
+          "stem": "√4 आणि √9 — म्हणजे 2 आणि 3 — च्या दरम्यान (दोन्ही वगळून) किती पूर्णांक आहेत?",
+          "choices": [
+            "0",
+            "5",
+            "2",
+            "1"
+          ],
+          "solution": "2 आणि 3 क्रमागत पूर्णांक, म्हणून मध्ये एकही नाही. पण अनंत अपरिमेय बसतात — संख्यारेषा पूर्णांक सुचवतात त्याहून कितीतरी दाट."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Rationalise 1/(√3 − 1): it becomes (√3 + 1)/▢. What is the denominator?",
+      "choices": [
+        "3",
+        "1",
+        "4",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Multiply by the conjugate (√3 + 1): the denominator becomes (√3)² − 1² = 3 − 1 = 2. The conjugate is the rationaliser's key.",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "1/(√3 − 1) को परिमेय कीजिए: वह (√3 + 1)/▢ बनता है। हर क्या है?",
+          "choices": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "solution": "संयुग्मी (√3 + 1) से गुणा कीजिए: हर बनता है (√3)² − 1² = 3 − 1 = 2। संयुग्मी परिमेयकरण की चाबी है।"
+        },
+        "mr": {
+          "stem": "1/(√3 − 1) परिमेय करा: ते (√3 + 1)/▢ होते. छेद काय?",
+          "choices": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "solution": "संयुग्म (√3 + 1) ने गुणा: छेद होतो (√3)² − 1² = 3 − 1 = 2. संयुग्म ही परिमेयीकरणाची किल्ली."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The product √2 × √8 turns out rational. What is it?",
+      "choices": [
+        "4",
+        "10",
+        "16",
+        "2.83"
+      ],
+      "answerIndex": 0,
+      "solution": "√2 × √8 = √16 = 4 — two irrationals whose product is rational, because 2 × 8 = 16 is a perfect square. Irrationality is not contagious.",
+      "checkExpr": "16/4",
+      "translations": {
+        "hi": {
+          "stem": "गुणनफल √2 × √8 परिमेय निकलता है। वह क्या है?",
+          "choices": [
+            "4",
+            "10",
+            "16",
+            "2.83"
+          ],
+          "solution": "√2 × √8 = √16 = 4 — दो अपरिमेय जिनका गुणनफल परिमेय है, क्योंकि 2 × 8 = 16 पूर्ण वर्ग है। अपरिमेयता संक्रामक नहीं।"
+        },
+        "mr": {
+          "stem": "गुणाकार √2 × √8 परिमेय निघतो. तो काय?",
+          "choices": [
+            "4",
+            "10",
+            "16",
+            "2.83"
+          ],
+          "solution": "√2 × √8 = √16 = 4 — दोन अपरिमेय ज्यांचा गुणाकार परिमेय, कारण 2 × 8 = 16 पूर्ण वर्ग. अपरिमेयता सांसर्गिक नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Simplify (3 + √5) + (3 − √5).",
+      "choices": [
+        "0",
+        "6",
+        "10",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The √5 terms cancel, leaving 3 + 3 = 6 — rational again. A number and its conjugate always add to a rational.",
+      "checkExpr": "3+3",
+      "translations": {
+        "hi": {
+          "stem": "(3 + √5) + (3 − √5) सरल कीजिए।",
+          "choices": [
+            "0",
+            "6",
+            "10",
+            "4"
+          ],
+          "solution": "√5 वाले पद कट जाते हैं, बचता है 3 + 3 = 6 — फिर परिमेय। संख्या और उसका संयुग्मी सदा परिमेय में जुड़ते हैं।"
+        },
+        "mr": {
+          "stem": "(3 + √5) + (3 − √5) सोपे करा.",
+          "choices": [
+            "0",
+            "6",
+            "10",
+            "4"
+          ],
+          "solution": "√5 चे पद रद्द होतात, उरते 3 + 3 = 6 — पुन्हा परिमेय. संख्या आणि तिचे संयुग्म नेहमी परिमेयात जुळतात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Is √2 + √3 rational or irrational? Square it: (√2+√3)² = 5 + 2√6. The 2√6 term is irrational — so what is (√2+√3)² MINUS 5?",
+      "choices": [
+        "0",
+        "5",
+        "6",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "(√2+√3)² − 5 = 2√6, coefficient 2. Since the square minus a rational is irrational, the original √2+√3 could not have been rational — a proof by consequence.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "√2 + √3 परिमेय है या अपरिमेय? वर्ग कीजिए: (√2+√3)² = 5 + 2√6। 2√6 पद अपरिमेय है — तो (√2+√3)² में से 5 घटाने पर क्या बचता है (गुणांक बताइए)?",
+          "choices": [
+            "0",
+            "5",
+            "6",
+            "2"
+          ],
+          "solution": "(√2+√3)² − 5 = 2√6, गुणांक 2। चूँकि वर्ग में से परिमेय घटाने पर अपरिमेय बचा, मूल √2+√3 परिमेय हो ही नहीं सकता था — परिणाम से प्रमाण।"
+        },
+        "mr": {
+          "stem": "√2 + √3 परिमेय की अपरिमेय? वर्ग करा: (√2+√3)² = 5 + 2√6. 2√6 पद अपरिमेय — तर (√2+√3)² मधून 5 वजा केल्यास काय उरते (सहगुणक द्या)?",
+          "choices": [
+            "0",
+            "5",
+            "6",
+            "2"
+          ],
+          "solution": "(√2+√3)² − 5 = 2√6, सहगुणक 2. वर्गातून परिमेय वजा केल्यावर अपरिमेय उरले, म्हणून मूळ √2+√3 परिमेय असूच शकत नव्हते — परिणामातून सिद्धता."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "0.999… equals which integer exactly? (Let x = 0.999…, then 10x − x = 9.)",
+      "choices": [
+        "9",
+        "1",
+        "0",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "10x − x = 9x = 9, so x = 1 — the endlessly repeating 0.999… IS exactly 1, no gap between them. The algebra is airtight, however strange it feels.",
+      "checkExpr": "9/9",
+      "translations": {
+        "hi": {
+          "stem": "0.999… ठीक किस पूर्णांक के बराबर है? (मान लीजिए x = 0.999…, तो 10x − x = 9।)",
+          "choices": [
+            "9",
+            "1",
+            "0",
+            "10"
+          ],
+          "solution": "10x − x = 9x = 9, अतः x = 1 — अनंत दोहराता 0.999… ठीक 1 है, बीच कोई अंतर नहीं। बीजगणित पक्का है, चाहे कितना अजीब लगे।"
+        },
+        "mr": {
+          "stem": "0.999… नेमके कोणत्या पूर्णांकाइतके? (समजा x = 0.999…, तर 10x − x = 9.)",
+          "choices": [
+            "9",
+            "1",
+            "0",
+            "10"
+          ],
+          "solution": "10x − x = 9x = 9, म्हणून x = 1 — अखंड पुनरावृत्त 0.999… नेमके 1, मध्ये अंतर नाही. बीजगणित पक्के, कितीही विचित्र वाटो."
+        }
+      }
+    }
+  ]
+}

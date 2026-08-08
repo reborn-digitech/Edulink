@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 2 — Polynomials",
+  "name": "Polynomials",
+  "slug": "maths-9-polynomials",
+  "summary": "Algebra learns to read itself: the Remainder Theorem plucking a remainder off a root, the Factor Theorem turning factoring into one equation, and cubes summing to nothing when their bases do.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "बहुपद",
+      "summary": "बीजगणित ख़ुद को पढ़ना सीखता है: शेषफल प्रमेय मूल से शेष उठाता, गुणनखंड प्रमेय गुणनखंडन को एक समीकरण बनाता, और घन जिनके आधार शून्य में जुड़ें वे शून्य के गिर्द घूमते।"
+    },
+    "mr": {
+      "name": "बहुपदी",
+      "summary": "बीजगणित स्वतःला वाचायला शिकते: शेष प्रमेय मूळावरून शेष उचलतो, अवयव प्रमेय अवयव पाडणे एका समीकरणात बदलतो, आणि पायांची बेरीज शून्य होताच घनांची बेरीजही तशीच वागते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 9)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the degree of the polynomial 3x⁴ − 2x² + 7?",
+      "choices": [
+        "7",
+        "3",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "The degree is the highest power of x present: 4. 7 is the constant term; 3 is a coefficient, not a power.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बहुपद 3x⁴ − 2x² + 7 की घात क्या है?",
+          "choices": [
+            "7",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "घात x की सबसे बड़ी मौजूद घात है: 4। 7 अचर पद है; 3 गुणांक है, घात नहीं।"
+        },
+        "mr": {
+          "stem": "बहुपदी 3x⁴ − 2x² + 7 ची कोटी किती?",
+          "choices": [
+            "7",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "कोटी म्हणजे x ची सर्वांत मोठी असलेली घात: 4. 7 स्थिरपद; 3 सहगुणक, घात नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For p(x) = x² − 3x + 2, what is p(1)?",
+      "choices": [
+        "2",
+        "-4",
+        "6",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "p(1) = 1 − 3 + 2 = 0 — so x = 1 is a zero of the polynomial. A value that makes p(x) vanish is a root.",
+      "checkExpr": "1-3+2",
+      "translations": {
+        "hi": {
+          "stem": "p(x) = x² − 3x + 2 के लिए p(1) क्या है?",
+          "choices": [
+            "2",
+            "-4",
+            "6",
+            "0"
+          ],
+          "solution": "p(1) = 1 − 3 + 2 = 0 — अतः x = 1 बहुपद का शून्यक है। जो मान p(x) को शून्य करे वह मूल है।"
+        },
+        "mr": {
+          "stem": "p(x) = x² − 3x + 2 साठी p(1) काय?",
+          "choices": [
+            "2",
+            "-4",
+            "6",
+            "0"
+          ],
+          "solution": "p(1) = 1 − 3 + 2 = 0 — म्हणून x = 1 बहुपदीचे शून्य. जी किंमत p(x) शून्य करते ती मूळ."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many terms does the binomial 5x − 7 have?",
+      "choices": [
+        "5",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "A binomial has 2 terms — here 5x and −7. 'Bi' names the count, just as 'tri' would name three.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "द्विपद 5x − 7 में कितने पद हैं?",
+          "choices": [
+            "5",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "द्विपद में 2 पद होते हैं — यहाँ 5x और −7। 'द्वि' गिनती बताता है, जैसे 'त्रि' तीन बताता।"
+        },
+        "mr": {
+          "stem": "द्विपदी 5x − 7 मध्ये किती पदे आहेत?",
+          "choices": [
+            "5",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "द्विपदीत 2 पदे — इथे 5x आणि −7. 'द्वि' मोजणी सांगतो, जसे 'त्रि' तीन सांगेल."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "By the Remainder Theorem, the remainder when x² + 3x + 5 is divided by (x − 1) is p(1). Compute it.",
+      "choices": [
+        "3",
+        "9",
+        "0",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The remainder equals p(1) = 1 + 3 + 5 = 9 — no long division needed. The theorem reads the remainder straight off the divisor's root.",
+      "checkExpr": "1+3+5",
+      "translations": {
+        "hi": {
+          "stem": "शेषफल प्रमेय से, x² + 3x + 5 को (x − 1) से भाग देने पर शेष p(1) है। निकालिए।",
+          "choices": [
+            "3",
+            "9",
+            "0",
+            "5"
+          ],
+          "solution": "शेष = p(1) = 1 + 3 + 5 = 9 — लंबी भाग की ज़रूरत नहीं। प्रमेय शेष को भाजक के मूल से सीधे पढ़ लेता है।"
+        },
+        "mr": {
+          "stem": "शेष प्रमेयानुसार, x² + 3x + 5 ला (x − 1) ने भागल्यास शेष p(1) आहे. काढा.",
+          "choices": [
+            "3",
+            "9",
+            "0",
+            "5"
+          ],
+          "solution": "शेष = p(1) = 1 + 3 + 5 = 9 — लांब भागाकाराची गरज नाही. प्रमेय शेष भाजकाच्या मूळावरून थेट वाचतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Expand (x + 3)² and read the coefficient of x.",
+      "choices": [
+        "5",
+        "9",
+        "3",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "(x + 3)² = x² + 6x + 9, so the middle coefficient is 2×3 = 6. 9 is the constant, not the x-coefficient.",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "(x + 3)² फैलाइए और x का गुणांक बताइए।",
+          "choices": [
+            "5",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "(x + 3)² = x² + 6x + 9, अतः बीच का गुणांक 2×3 = 6। 9 अचर है, x का गुणांक नहीं।"
+        },
+        "mr": {
+          "stem": "(x + 3)² विस्तारा आणि x चा सहगुणक सांगा.",
+          "choices": [
+            "5",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "(x + 3)² = x² + 6x + 9, म्हणून मधला सहगुणक 2×3 = 6. 9 स्थिरांक, x चा सहगुणक नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "By the Factor Theorem, (x − 2) is a factor of p(x) if p(2) = 0. For p(x) = x² − 5x + 6, compute p(2).",
+      "choices": [
+        "4",
+        "6",
+        "0",
+        "-4"
+      ],
+      "answerIndex": 2,
+      "solution": "p(2) = 4 − 10 + 6 = 0 — so (x − 2) IS a factor. The Factor Theorem is the Remainder Theorem when the remainder is zero.",
+      "checkExpr": "4-10+6",
+      "translations": {
+        "hi": {
+          "stem": "गुणनखंड प्रमेय से, (x − 2) p(x) का गुणनखंड है यदि p(2) = 0। p(x) = x² − 5x + 6 के लिए p(2) निकालिए।",
+          "choices": [
+            "4",
+            "6",
+            "0",
+            "-4"
+          ],
+          "solution": "p(2) = 4 − 10 + 6 = 0 — अतः (x − 2) गुणनखंड है। गुणनखंड प्रमेय वही शेषफल प्रमेय है जब शेष शून्य हो।"
+        },
+        "mr": {
+          "stem": "अवयव प्रमेयानुसार, (x − 2) हा p(x) चा अवयव जर p(2) = 0. p(x) = x² − 5x + 6 साठी p(2) काढा.",
+          "choices": [
+            "4",
+            "6",
+            "0",
+            "-4"
+          ],
+          "solution": "p(2) = 4 − 10 + 6 = 0 — म्हणून (x − 2) अवयव आहे. अवयव प्रमेय म्हणजे शेष शून्य असतानाचा शेष प्रमेयच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Use the identity to compute 103² via (100 + 3)².",
+      "choices": [
+        "10609",
+        "10309",
+        "10069",
+        "10906"
+      ],
+      "answerIndex": 0,
+      "solution": "100² + 2·100·3 + 3² = 10000 + 600 + 9 = 10609. The identity turns a hard square into three easy pieces.",
+      "checkExpr": "100*100+2*100*3+9",
+      "translations": {
+        "hi": {
+          "stem": "सर्वसमिका से (100 + 3)² द्वारा 103² निकालिए।",
+          "choices": [
+            "10609",
+            "10309",
+            "10069",
+            "10906"
+          ],
+          "solution": "100² + 2·100·3 + 3² = 10000 + 600 + 9 = 10609। सर्वसमिका कठिन वर्ग को तीन आसान टुकड़ों में बदल देती है।"
+        },
+        "mr": {
+          "stem": "नित्यसमीकरणाने (100 + 3)² ने 103² काढा.",
+          "choices": [
+            "10609",
+            "10309",
+            "10069",
+            "10906"
+          ],
+          "solution": "100² + 2·100·3 + 3² = 10000 + 600 + 9 = 10609. नित्यसमीकरण कठीण वर्ग तीन सोप्या तुकड्यांत बदलते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "If x + y = 5 and xy = 6, find x² + y² using (x+y)² − 2xy.",
+      "choices": [
+        "25",
+        "13",
+        "11",
+        "37"
+      ],
+      "answerIndex": 1,
+      "solution": "x² + y² = (x+y)² − 2xy = 25 − 12 = 13. The identity finds x² + y² without ever finding x and y separately.",
+      "checkExpr": "25-12",
+      "translations": {
+        "hi": {
+          "stem": "यदि x + y = 5 और xy = 6, तो (x+y)² − 2xy से x² + y² निकालिए।",
+          "choices": [
+            "25",
+            "13",
+            "11",
+            "37"
+          ],
+          "solution": "x² + y² = (x+y)² − 2xy = 25 − 12 = 13। सर्वसमिका x और y अलग-अलग खोजे बिना x² + y² निकाल देती है।"
+        },
+        "mr": {
+          "stem": "जर x + y = 5 आणि xy = 6, तर (x+y)² − 2xy ने x² + y² काढा.",
+          "choices": [
+            "25",
+            "13",
+            "11",
+            "37"
+          ],
+          "solution": "x² + y² = (x+y)² − 2xy = 25 − 12 = 13. नित्यसमीकरण x आणि y वेगळे न शोधता x² + y² काढते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Factorise x² + 7x + 12 as (x + 3)(x + ▢). What fills the box?",
+      "choices": [
+        "4",
+        "12",
+        "7",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "Two numbers multiplying to 12 and adding to 7: 3 and 4. The partner of 3 is 12 ÷ 3 = 4, and 3 + 4 = 7 ✓.",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "x² + 7x + 12 को (x + 3)(x + ▢) में गुणनखंडित कीजिए। रिक्त में क्या आएगा?",
+          "choices": [
+            "4",
+            "12",
+            "7",
+            "9"
+          ],
+          "solution": "12 गुणा और 7 योग देने वाली दो संख्याएँ: 3 और 4। 3 का साथी 12 ÷ 3 = 4, और 3 + 4 = 7 ✓।"
+        },
+        "mr": {
+          "stem": "x² + 7x + 12 ला (x + 3)(x + ▢) मध्ये अवयवित करा. रिकाम्यात काय?",
+          "choices": [
+            "4",
+            "12",
+            "7",
+            "9"
+          ],
+          "solution": "12 गुणाकार आणि 7 बेरीज देणाऱ्या दोन संख्या: 3 आणि 4. 3 चा जोडीदार 12 ÷ 3 = 4, आणि 3 + 4 = 7 ✓."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Find k so that (x − 1) is a factor of x³ − 3x² + kx − 1. (Set p(1) = 0.)",
+      "choices": [
+        "5",
+        "3",
+        "1",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "p(1) = 1 − 3 + k − 1 = 0 gives k − 3 = 0, so k = 3. The factor theorem turns 'is a factor' into one easy equation.",
+      "checkExpr": "1+3-1+0",
+      "translations": {
+        "hi": {
+          "stem": "k निकालिए ताकि (x − 1) x³ − 3x² + kx − 1 का गुणनखंड हो। (p(1) = 0 रखिए।)",
+          "choices": [
+            "5",
+            "3",
+            "1",
+            "0"
+          ],
+          "solution": "p(1) = 1 − 3 + k − 1 = 0 से k − 3 = 0, अतः k = 3। गुणनखंड प्रमेय 'गुणनखंड है' को एक आसान समीकरण बना देता है।"
+        },
+        "mr": {
+          "stem": "k काढा जेणेकरून (x − 1) हा x³ − 3x² + kx − 1 चा अवयव होईल. (p(1) = 0 ठेवा.)",
+          "choices": [
+            "5",
+            "3",
+            "1",
+            "0"
+          ],
+          "solution": "p(1) = 1 − 3 + k − 1 = 0 मधून k − 3 = 0, म्हणून k = 3. अवयव प्रमेय 'अवयव आहे' ला एका सोप्या समीकरणात बदलते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "When a+b+c = 0, the identity gives a³ + b³ + c³ = 3abc. For a = 1, b = 2, c = −3, evaluate 3abc.",
+      "choices": [
+        "18",
+        "0",
+        "-6",
+        "-18"
+      ],
+      "answerIndex": 3,
+      "solution": "Since 1 + 2 − 3 = 0, the sum of cubes equals 3abc = 3·1·2·(−3) = −18. Check: 1 + 8 − 27 = −18 ✓ — the identity turns three cubes into one product.",
+      "checkExpr": "3*1*2*(0-3)",
+      "translations": {
+        "hi": {
+          "stem": "जब a+b+c = 0, सर्वसमिका देती है a³ + b³ + c³ = 3abc। a = 1, b = 2, c = −3 के लिए 3abc निकालिए।",
+          "choices": [
+            "18",
+            "0",
+            "-6",
+            "-18"
+          ],
+          "solution": "चूँकि 1 + 2 − 3 = 0, घनों का योग 3abc = 3·1·2·(−3) = −18। जाँच: 1 + 8 − 27 = −18 ✓ — सर्वसमिका तीन घनों को एक गुणनफल बना देती है।"
+        },
+        "mr": {
+          "stem": "जेव्हा a+b+c = 0, नित्यसमीकरण देते a³ + b³ + c³ = 3abc. a = 1, b = 2, c = −3 साठी 3abc काढा.",
+          "choices": [
+            "18",
+            "0",
+            "-6",
+            "-18"
+          ],
+          "solution": "1 + 2 − 3 = 0 असल्याने, घनांची बेरीज 3abc = 3·1·2·(−3) = −18. पडताळणी: 1 + 8 − 27 = −18 ✓ — नित्यसमीकरण तीन घनांना एक गुणाकार करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Factorise x³ − x. How many linear factors does it split into?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "x³ − x = x(x² − 1) = x(x − 1)(x + 1): three linear factors, roots 0, 1, −1. A cubic can have up to three.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "x³ − x गुणनखंडित कीजिए। वह कितने रैखिक गुणनखंडों में बँटता है?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "x³ − x = x(x² − 1) = x(x − 1)(x + 1): तीन रैखिक गुणनखंड, मूल 0, 1, −1। घन बहुपद में अधिकतम तीन हो सकते हैं।"
+        },
+        "mr": {
+          "stem": "x³ − x अवयवित करा. तो किती रेषीय अवयवांत विभागतो?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "x³ − x = x(x² − 1) = x(x − 1)(x + 1): तीन रेषीय अवयव, मूळे 0, 1, −1. घन बहुपदीत जास्तीत जास्त तीन असू शकतात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "If x + 1/x = 3, find x³ + 1/x³ using the identity a³ + b³ = (a+b)³ − 3ab(a+b).",
+      "choices": [
+        "27",
+        "9",
+        "21",
+        "18"
+      ],
+      "answerIndex": 3,
+      "solution": "x³ + 1/x³ = 3³ − 3·1·3 = 27 − 9 = 18, since x·(1/x) = 1. The cube of the sum minus three times the sum does it.",
+      "checkExpr": "27-9",
+      "translations": {
+        "hi": {
+          "stem": "यदि x + 1/x = 3, तो a³ + b³ = (a+b)³ − 3ab(a+b) से x³ + 1/x³ निकालिए।",
+          "choices": [
+            "27",
+            "9",
+            "21",
+            "18"
+          ],
+          "solution": "x³ + 1/x³ = 3³ − 3·1·3 = 27 − 9 = 18, क्योंकि x·(1/x) = 1। योग का घन घटा तीन गुना योग काम कर देता है।"
+        },
+        "mr": {
+          "stem": "जर x + 1/x = 3, तर a³ + b³ = (a+b)³ − 3ab(a+b) ने x³ + 1/x³ काढा.",
+          "choices": [
+            "27",
+            "9",
+            "21",
+            "18"
+          ],
+          "solution": "x³ + 1/x³ = 3³ − 3·1·3 = 27 − 9 = 18, कारण x·(1/x) = 1. बेरजेचा घन वजा तिप्पट बेरीज काम करते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A polynomial p(x) leaves remainder 5 on division by (x − 2) and remainder 7 by (x − 4). What is p(2)?",
+      "choices": [
+        "5",
+        "7",
+        "2",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "By the Remainder Theorem the remainder on division by (x − 2) IS p(2), so p(2) = 5 directly. The (x − 4) fact is a distractor here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बहुपद p(x) को (x − 2) से भाग देने पर शेष 5 और (x − 4) से 7 बचता है। p(2) क्या है?",
+          "choices": [
+            "5",
+            "7",
+            "2",
+            "12"
+          ],
+          "solution": "शेषफल प्रमेय से (x − 2) से भाग का शेष ही p(2) है, अतः p(2) = 5 सीधे। (x − 4) वाली बात यहाँ भटकाव है।"
+        },
+        "mr": {
+          "stem": "बहुपदी p(x) ला (x − 2) ने भागल्यास शेष 5 आणि (x − 4) ने 7 उरतो. p(2) काय?",
+          "choices": [
+            "5",
+            "7",
+            "2",
+            "12"
+          ],
+          "solution": "शेष प्रमेयानुसार (x − 2) ने भागाचा शेष म्हणजेच p(2), म्हणून p(2) = 5 थेट. (x − 4) ची गोष्ट इथे भटकावणारी."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The identity 25³ + (−15)³ + (−10)³ = 3·25·(−15)·(−10) holds because the bases sum to zero. What is that product?",
+      "choices": [
+        "5000",
+        "3750",
+        "11250",
+        "-11250"
+      ],
+      "answerIndex": 2,
+      "solution": "25 − 15 − 10 = 0, so the cubes sum to 3abc = 3·25·(−15)·(−10) = 11250 — the two minuses make it positive. A monstrous sum of cubes read off in one multiplication.",
+      "checkExpr": "3*25*15*10",
+      "translations": {
+        "hi": {
+          "stem": "सर्वसमिका 25³ + (−15)³ + (−10)³ = 3·25·(−15)·(−10) इसलिए सही है कि आधारों का योग शून्य है। वह गुणनफल क्या है?",
+          "choices": [
+            "5000",
+            "3750",
+            "11250",
+            "-11250"
+          ],
+          "solution": "25 − 15 − 10 = 0, अतः घनों का योग 3abc = 3·25·(−15)·(−10) = 11250 — दोनों ऋण इसे धन बनाते हैं। घनों का राक्षसी योग एक गुणे में पढ़ा हुआ।"
+        },
+        "mr": {
+          "stem": "नित्यसमीकरण 25³ + (−15)³ + (−10)³ = 3·25·(−15)·(−10) म्हणून खरे की पायांची बेरीज शून्य. तो गुणाकार काय?",
+          "choices": [
+            "5000",
+            "3750",
+            "11250",
+            "-11250"
+          ],
+          "solution": "25 − 15 − 10 = 0, म्हणून घनांची बेरीज 3abc = 3·25·(−15)·(−10) = 11250 — दोन ऋणे ते धन करतात. घनांची राक्षसी बेरीज एका गुणाकारात वाचलेली."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "p(x) = x⁴ − 1. How many REAL zeros does it have?",
+      "choices": [
+        "4",
+        "0",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "x⁴ − 1 = (x² − 1)(x² + 1) = (x − 1)(x + 1)(x² + 1). Only x = 1 and x = −1 are real; x² + 1 = 0 has no real root — degree 4 promises at most 4, not exactly 4.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "p(x) = x⁴ − 1। इसके कितने वास्तविक शून्यक हैं?",
+          "choices": [
+            "4",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "x⁴ − 1 = (x² − 1)(x² + 1) = (x − 1)(x + 1)(x² + 1)। केवल x = 1 और x = −1 वास्तविक; x² + 1 = 0 का कोई वास्तविक मूल नहीं — घात 4 अधिकतम 4 का वादा करती है, ठीक 4 का नहीं।"
+        },
+        "mr": {
+          "stem": "p(x) = x⁴ − 1. याचे किती वास्तव शून्य आहेत?",
+          "choices": [
+            "4",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "x⁴ − 1 = (x² − 1)(x² + 1) = (x − 1)(x + 1)(x² + 1). फक्त x = 1 आणि x = −1 वास्तव; x² + 1 = 0 ला वास्तव मूळ नाही — कोटी 4 जास्तीत जास्त 4 चे वचन देते, नेमके 4 चे नाही."
+        }
+      }
+    }
+  ]
+}
