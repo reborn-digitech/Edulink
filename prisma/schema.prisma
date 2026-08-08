@@ -1759,6 +1759,13 @@ model QuizTopic {
   /// Display order within (subject, classLevel).
   position   Int    @default(0)
 
+  /// RETIRED, NOT DELETED. Set when a chapter-true topic supersedes this one
+  /// (the 2026 bank refurbishment). A retired topic stops listing on every
+  /// practice surface but its mastery, attempts and badges keep their rows —
+  /// deleting a topic would orphan a child's earned history, and this bank
+  /// never pays for tidiness with somebody's streak.
+  retiredAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

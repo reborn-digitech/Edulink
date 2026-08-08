@@ -837,6 +837,10 @@ export const hi: Dictionary = {
   subject: {
     MATHS: "गणित",
     SCIENCE: "विज्ञान",
+    PHYSICS: "भौतिक विज्ञान",
+    CHEMISTRY: "रसायन विज्ञान",
+    BIOLOGY: "जीव विज्ञान",
+    EVS: "पर्यावरण अध्ययन",
     HISTORY: "इतिहास",
     GEOGRAPHY: "भूगोल",
     CIVICS: "नागरिक शास्त्र",

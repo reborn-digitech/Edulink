@@ -72,6 +72,8 @@ export default async function PracticePage({
   ]);
   const subjects = [...new Set(topics.map((t) => t.subject))];
   const grades = [...new Set(topics.map((t) => t.classLevel))].sort((a, b) => a - b);
+  const subjectsIn = (grade: number) =>
+    [...new Set(topics.filter((t) => t.classLevel === grade).map((t) => t.subject))];
   // No explicit choice defaults to the child's OWN grade — a Grade 5 pupil
   // should land on Grade 5 chapters, not on Class 3 civics. "all" is the
   // explicit way out, so the All chip still works once the default exists.
@@ -87,6 +89,9 @@ export default async function PracticePage({
     (topic) =>
       (!subject || topic.subject === subject) && (!gradeNum || topic.classLevel === gradeNum),
   );
+  // The subject row lists the SELECTED class's own lineup — Class 11 shows
+  // Biology, Class 4 does not — from unfiltered rows (see the comment above).
+  const subjectsShown = gradeNum ? subjectsIn(gradeNum) : subjects;
 
   return (
     <div className="space-y-6">
@@ -226,30 +231,9 @@ export default async function PracticePage({
             </Card>
           )}
 
-          {subjects.length > 1 && (
-            <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
-              <Link
-                href={`/student/practice?grade=${gradeNum ?? "all"}`}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                  !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-                }`}
-              >
-                {t("practice.allSubjects")}
-              </Link>
-              {subjects.map((s) => (
-                <Link
-                  key={s}
-                  href={`/student/practice?subject=${s}&grade=${gradeNum ?? "all"}`}
-                  className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                    subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-                  }`}
-                >
-                  {subjectName(s)}
-                </Link>
-              ))}
-            </nav>
-          )}
-
+          {/* Class first, then subject — you pick where you are before what
+              you study, and the subject row below lists that class's own
+              NCERT lineup. */}
           {grades.length > 1 && (
             <nav aria-label={t("practice.allClasses")} className="flex flex-wrap gap-2">
               <Link
@@ -269,6 +253,30 @@ export default async function PracticePage({
                   }`}
                 >
                   {t("practice.classN", { n: g })}
+                </Link>
+              ))}
+            </nav>
+          )}
+
+          {subjectsShown.length > 1 && (
+            <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
+              <Link
+                href={`/student/practice?grade=${gradeNum ?? "all"}`}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                  !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
+                }`}
+              >
+                {t("practice.allSubjects")}
+              </Link>
+              {subjectsShown.map((s) => (
+                <Link
+                  key={s}
+                  href={`/student/practice?subject=${s}&grade=${gradeNum ?? "all"}`}
+                  className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                    subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
+                  }`}
+                >
+                  {subjectName(s)}
                 </Link>
               ))}
             </nav>

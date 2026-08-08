@@ -104,9 +104,22 @@ export {
   type Locale as QuizLanguage,
 } from "./i18n/locales";
 
+/**
+ * The subject SET is grade-dependent and NCERT-true — the codes here are the
+ * union. G3–5 carry Maths and EVS; G6–8 add History, Geography and Civics and
+ * trade EVS for Science; G9–10 add Economics; G11–12 split Science into
+ * Physics, Chemistry and Biology (Civics reads as Political Science there).
+ * Which subjects a child actually sees comes from the topics that exist at
+ * their grade, never from this list — language subjects are deliberately
+ * absent (grammar drills are a different product than a fact ladder).
+ */
 export const QUIZ_SUBJECTS = [
   "MATHS",
   "SCIENCE",
+  "PHYSICS",
+  "CHEMISTRY",
+  "BIOLOGY",
+  "EVS",
   "HISTORY",
   "GEOGRAPHY",
   "CIVICS",
@@ -122,6 +135,10 @@ export type QuizSubject = (typeof QUIZ_SUBJECTS)[number];
 export const SUBJECT_KEY: Record<QuizSubject, TranslationKey> = {
   MATHS: "subject.MATHS",
   SCIENCE: "subject.SCIENCE",
+  PHYSICS: "subject.PHYSICS",
+  CHEMISTRY: "subject.CHEMISTRY",
+  BIOLOGY: "subject.BIOLOGY",
+  EVS: "subject.EVS",
   HISTORY: "subject.HISTORY",
   GEOGRAPHY: "subject.GEOGRAPHY",
   CIVICS: "subject.CIVICS",
@@ -296,6 +313,9 @@ export async function listTopics(
 
   const topics = await db.quizTopic.findMany({
     where: {
+      // Retired topics stop listing everywhere at once; their mastery rows and
+      // badges stay put. See the schema note on QuizTopic.retiredAt.
+      retiredAt: null,
       ...(opts.subject ? { subject: opts.subject } : {}),
       ...(opts.classLevel ? { classLevel: opts.classLevel } : {}),
     },

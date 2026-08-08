@@ -959,6 +959,10 @@ export const en = {
   subject: {
     MATHS: "Maths",
     SCIENCE: "Science",
+    PHYSICS: "Physics",
+    CHEMISTRY: "Chemistry",
+    BIOLOGY: "Biology",
+    EVS: "EVS",
     HISTORY: "History",
     GEOGRAPHY: "Geography",
     CIVICS: "Civics",

@@ -30,7 +30,18 @@ import { join } from "node:path";
 import { evaluate, numberIn } from "./quiz-arith";
 
 const DIR = join(process.cwd(), "content", "quiz");
-const SUBJECTS = ["MATHS", "SCIENCE", "HISTORY", "GEOGRAPHY", "CIVICS", "ECONOMICS"];
+const SUBJECTS = [
+  "MATHS",
+  "SCIENCE",
+  "PHYSICS",
+  "CHEMISTRY",
+  "BIOLOGY",
+  "EVS",
+  "HISTORY",
+  "GEOGRAPHY",
+  "CIVICS",
+  "ECONOMICS",
+];
 const MAX_LEVEL = 6;
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -64,6 +75,26 @@ type TopicFile = {
 
 /** The languages a translation block may name. Anything else is a typo. */
 const LANGUAGES = new Set(["hi", "mr"]);
+
+/**
+ * Every chapter owes at least this many questions, at every one of the six
+ * levels. The nine files below predate the rule — the 2025 hand-authored G8
+ * set, 11–12 questions each — and are grandfathered ONLY until the
+ * refurbishment reaches Grade 8, when each is superseded by a full chapter
+ * file and leaves this list. A new file can never join it.
+ */
+const MIN_QUESTIONS = 50;
+const LEGACY_SMALL = new Set([
+  "civics-8-indian-constitution.json",
+  "geography-8-resources.json",
+  "history-8-freedom-movement.json",
+  "maths-8-linear-equations.json",
+  "maths-8-mensuration.json",
+  "maths-8-squares-and-square-roots.json",
+  "science-8-chemical-effects-of-current.json",
+  "science-8-force-and-pressure.json",
+  "science-8-light.json",
+]);
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -289,6 +320,20 @@ function verifyTopic(file: string, topic: TopicFile) {
     for (let l = levels[0]!; l < levels[levels.length - 1]!; l++) {
       if (!levelsPresent.has(l)) {
         warnings.push(`${file}: ladder has a hole at level ${l} (has ${levels.join(", ")})`);
+      }
+    }
+  }
+
+  // The refurbishment's floor: a chapter card with a handful of questions is a
+  // card a child exhausts in one sitting, and a chapter missing a level is a
+  // ladder nobody can climb to the top of. Hard failures, legacy files aside.
+  if (!LEGACY_SMALL.has(file)) {
+    if (topic.questions.length < MIN_QUESTIONS) {
+      fail(where, `has ${topic.questions.length} questions — every chapter owes at least ${MIN_QUESTIONS}`);
+    }
+    for (let l = 1; l <= MAX_LEVEL; l++) {
+      if (!levelsPresent.has(l)) {
+        fail(where, `has nothing at level ${l} — every chapter climbs the whole L1–L${MAX_LEVEL} ladder`);
       }
     }
   }

@@ -834,6 +834,10 @@ export const mr: Dictionary = {
   subject: {
     MATHS: "गणित",
     SCIENCE: "विज्ञान",
+    PHYSICS: "भौतिकशास्त्र",
+    CHEMISTRY: "रसायनशास्त्र",
+    BIOLOGY: "जीवशास्त्र",
+    EVS: "परिसर अभ्यास",
     HISTORY: "इतिहास",
     GEOGRAPHY: "भूगोल",
     CIVICS: "नागरिकशास्त्र",
