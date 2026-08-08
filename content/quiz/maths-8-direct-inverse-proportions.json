@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 13 — Direct and Inverse Proportions",
+  "name": "Direct and Inverse Proportions",
+  "slug": "maths-8-direct-inverse-proportions",
+  "summary": "Two kinds of together: ratios that hold and products that hold, hostels and pipes on the see-saw — and a tower measured by its shadow with no ladder at all.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "सीधा और प्रतिलोम समानुपात",
+      "summary": "साथ चलने के दो ढंग: टिके अनुपात और टिके गुणनफल, झूले पर छात्रावास और पाइप — और बिना किसी सीढ़ी के छाया से नपी मीनार।"
+    },
+    "mr": {
+      "name": "समानुपात आणि व्यस्तानुपात",
+      "summary": "सोबत चालण्याच्या दोन रीती: टिकणारी गुणोत्तरे आणि टिकणारे गुणाकार, झोक्यावरची वसतिगृहे आणि पाइप — आणि कोणत्याही शिडीशिवाय सावलीने मोजलेला मनोरा."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "5 pens cost ₹40. What do 8 such pens cost?",
+      "choices": [
+        "₹45",
+        "₹64",
+        "₹320",
+        "₹72"
+      ],
+      "answerIndex": 1,
+      "solution": "One pen costs ₹8, so eight cost ₹64 — direct proportion: more pens, proportionally more money. 45 adds 5 instead of scaling.",
+      "checkExpr": "40*8/5",
+      "translations": {
+        "hi": {
+          "stem": "5 क़लमों के ₹40 लगते हैं। 8 क़लमों के कितने लगेंगे?",
+          "choices": [
+            "₹45",
+            "₹64",
+            "₹320",
+            "₹72"
+          ],
+          "solution": "एक क़लम ₹8 की, अतः आठ की ₹64 — अनुक्रमानुपात: ज़्यादा क़लम, उसी अनुपात में ज़्यादा पैसा। 45 अनुपात की जगह 5 जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "5 पेनांना ₹40 लागतात. 8 पेनांना किती लागतील?",
+          "choices": [
+            "₹45",
+            "₹64",
+            "₹320",
+            "₹72"
+          ],
+          "solution": "एक पेन ₹8 चे, म्हणून आठांचे ₹64 — समानुपात: जास्त पेने, त्याच प्रमाणात जास्त पैसे. 45 प्रमाणाऐवजी 5 मिळवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A car covers 60 km in one hour. At the same speed, how far in 3 hours?",
+      "choices": [
+        "20",
+        "63",
+        "120",
+        "180"
+      ],
+      "answerIndex": 3,
+      "solution": "Triple the time, triple the distance: 60 × 3 = 180 km. Distance and time run in DIRECT proportion when speed holds still.",
+      "checkExpr": "60*3",
+      "translations": {
+        "hi": {
+          "stem": "एक कार एक घंटे में 60 किमी चलती है। उसी चाल से 3 घंटे में कितनी दूर?",
+          "choices": [
+            "20",
+            "63",
+            "120",
+            "180"
+          ],
+          "solution": "समय तिगुना तो दूरी तिगुनी: 60 × 3 = 180 किमी। चाल स्थिर हो तो दूरी और समय अनुक्रमानुपात में दौड़ते हैं।"
+        },
+        "mr": {
+          "stem": "एक कार एका तासात 60 किमी जाते. त्याच वेगाने 3 तासांत किती दूर?",
+          "choices": [
+            "20",
+            "63",
+            "120",
+            "180"
+          ],
+          "solution": "वेळ तिप्पट तर अंतर तिप्पट: 60 × 3 = 180 किमी. वेग स्थिर असला की अंतर आणि वेळ समानुपातात धावतात."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "x and y are in DIRECT proportion. If x doubles, y becomes how many times its old value?",
+      "choices": [
+        "0.5",
+        "1",
+        "2",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Direct proportion keeps y/x constant, so y doubles too: 2 times. 0.5 describes INVERSE proportion — the see-saw, not the escalator.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "x और y अनुक्रमानुपात में हैं। x दुगुना हो तो y अपने पुराने मान का कितने गुना होगा?",
+          "choices": [
+            "0.5",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "अनुक्रमानुपात y/x स्थिर रखता है, अतः y भी दुगुना: 2 गुना। 0.5 व्युत्क्रमानुपात का हाल है — झूला, एस्केलेटर नहीं।"
+        },
+        "mr": {
+          "stem": "x आणि y समानुपातात आहेत. x दुप्पट झाला तर y आपल्या जुन्या किमतीच्या किती पट होईल?",
+          "choices": [
+            "0.5",
+            "1",
+            "2",
+            "4"
+          ],
+          "solution": "समानुपात y/x स्थिर ठेवतो, म्हणून y ही दुप्पट: 2 पट. 0.5 व्यस्तानुपाताचे वर्णन — झोका, सरकता जिना नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "6 workers finish a wall in 10 days. At the same pace, how many days would 12 workers take?",
+      "choices": [
+        "20",
+        "60",
+        "5",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Twice the workers, half the days: 6 × 10 ÷ 12 = 5 — inverse proportion, the product 60 worker-days staying fixed. 20 doubles the days instead.",
+      "checkExpr": "6*10/12",
+      "translations": {
+        "hi": {
+          "stem": "6 मज़दूर एक दीवार 10 दिन में पूरी करते हैं। उसी रफ़्तार से 12 मज़दूर कितने दिन लेंगे?",
+          "choices": [
+            "20",
+            "60",
+            "5",
+            "8"
+          ],
+          "solution": "दुगुने मज़दूर, आधे दिन: 6 × 10 ÷ 12 = 5 — व्युत्क्रमानुपात, 60 मज़दूर-दिनों का गुणनफल स्थिर। 20 उल्टे दिन दुगुने कर देता है।"
+        },
+        "mr": {
+          "stem": "6 मजूर एक भिंत 10 दिवसांत पूर्ण करतात. त्याच गतीने 12 मजूर किती दिवस घेतील?",
+          "choices": [
+            "20",
+            "60",
+            "5",
+            "8"
+          ],
+          "solution": "दुप्पट मजूर, निम्मे दिवस: 6 × 10 ÷ 12 = 5 — व्यस्तानुपात, 60 मजूर-दिवसांचा गुणाकार स्थिर. 20 उलट दिवस दुप्पट करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "x and y are in inverse proportion, with x = 4 when y = 15. What is y when x = 6?",
+      "choices": [
+        "22.5",
+        "90",
+        "17",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "The product stays put: xy = 60, so y = 60 ÷ 6 = 10. 22.5 scales y UP with x — that is direct proportion's move.",
+      "checkExpr": "4*15/6",
+      "translations": {
+        "hi": {
+          "stem": "x और y व्युत्क्रमानुपात में हैं; x = 4 पर y = 15। x = 6 पर y कितना?",
+          "choices": [
+            "22.5",
+            "90",
+            "17",
+            "10"
+          ],
+          "solution": "गुणनफल टिका रहता है: xy = 60, अतः y = 60 ÷ 6 = 10। 22.5 y को x के साथ बढ़ा देता है — वह अनुक्रमानुपात की चाल है।"
+        },
+        "mr": {
+          "stem": "x आणि y व्यस्तानुपातात आहेत; x = 4 असताना y = 15. x = 6 असताना y किती?",
+          "choices": [
+            "22.5",
+            "90",
+            "17",
+            "10"
+          ],
+          "solution": "गुणाकार स्थिर राहतो: xy = 60, म्हणून y = 60 ÷ 6 = 10. 22.5 y ला x सोबत वाढवतो — ती समानुपाताची चाल."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A map's scale is 1 cm = 50 km. Two towns sit 4.5 cm apart on it. How many km apart are they really?",
+      "choices": [
+        "225",
+        "500",
+        "54.5",
+        "45"
+      ],
+      "answerIndex": 0,
+      "solution": "Each centimetre carries 50 km: 4.5 × 50 = 225 km. 54.5 adds the scale to the measurement — scales multiply, never add.",
+      "checkExpr": "4.5*50",
+      "translations": {
+        "hi": {
+          "stem": "नक़्शे का पैमाना 1 सेमी = 50 किमी है। दो क़स्बे उस पर 4.5 सेमी दूर हैं। असल में कितने किमी दूर?",
+          "choices": [
+            "225",
+            "500",
+            "54.5",
+            "45"
+          ],
+          "solution": "हर सेंटीमीटर 50 किमी ढोता है: 4.5 × 50 = 225 किमी। 54.5 माप में पैमाना जोड़ देता है — पैमाने गुणा होते हैं, जुड़ते कभी नहीं।"
+        },
+        "mr": {
+          "stem": "नकाशाचे प्रमाण 1 सेमी = 50 किमी. दोन गावे त्यावर 4.5 सेमी दूर आहेत. खरे किती किमी दूर?",
+          "choices": [
+            "225",
+            "500",
+            "54.5",
+            "45"
+          ],
+          "solution": "प्रत्येक सेंटिमीटर 50 किमी वाहतो: 4.5 × 50 = 225 किमी. 54.5 मापात प्रमाण मिळवतो — प्रमाणे गुणली जातात, कधी जुळत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A photo 4 cm wide and 6 cm tall is enlarged until its height is 15 cm. What is the new WIDTH?",
+      "choices": [
+        "9",
+        "10",
+        "25",
+        "13"
+      ],
+      "answerIndex": 1,
+      "solution": "Enlargement scales both sides by 15/6 = 2.5: width 4 × 2.5 = 10 cm. 13 ADDS the 9 cm the height grew — photos scale, they don't stretch by addition.",
+      "checkExpr": "4*15/6",
+      "translations": {
+        "hi": {
+          "stem": "4 सेमी चौड़ी, 6 सेमी ऊँची तस्वीर बड़ी की जाती है, जब तक ऊँचाई 15 सेमी न हो जाए। नई चौड़ाई कितनी?",
+          "choices": [
+            "9",
+            "10",
+            "25",
+            "13"
+          ],
+          "solution": "बड़ा करना दोनों भुजाओं को 15/6 = 2.5 से गुणता है: चौड़ाई 4 × 2.5 = 10 सेमी। 13 ऊँचाई की बढ़त के 9 सेमी जोड़ देता है — तस्वीरें अनुपात में बढ़ती हैं, जोड़ से नहीं खिंचतीं।"
+        },
+        "mr": {
+          "stem": "4 सेमी रुंद, 6 सेमी उंच छायाचित्र उंची 15 सेमी होईपर्यंत मोठे केले जाते. नवी रुंदी किती?",
+          "choices": [
+            "9",
+            "10",
+            "25",
+            "13"
+          ],
+          "solution": "मोठे करणे दोन्ही बाजूंना 15/6 = 2.5 ने गुणते: रुंदी 4 × 2.5 = 10 सेमी. 13 उंचीच्या वाढीचे 9 सेमी मिळवतो — छायाचित्रे प्रमाणात वाढतात, बेरजेने ताणली जात नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "15 identical books stack 60 cm tall. How tall is a stack of 8 of them?",
+      "choices": [
+        "120",
+        "53",
+        "32",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "Each book is 4 cm thick: 8 × 4 = 32 cm. 53 subtracts 7 from 60 — book counts don't convert to centimetres one-for-one.",
+      "checkExpr": "60*8/15",
+      "translations": {
+        "hi": {
+          "stem": "15 एक जैसी किताबों की गड्डी 60 सेमी ऊँची है। 8 किताबों की गड्डी कितनी ऊँची?",
+          "choices": [
+            "120",
+            "53",
+            "32",
+            "30"
+          ],
+          "solution": "हर किताब 4 सेमी मोटी: 8 × 4 = 32 सेमी। 53 60 में से 7 घटा देता है — किताबों की गिनती एक-के-बदले-एक सेंटीमीटर नहीं बनती।"
+        },
+        "mr": {
+          "stem": "15 सारख्या पुस्तकांची थप्पी 60 सेमी उंच आहे. 8 पुस्तकांची थप्पी किती उंच?",
+          "choices": [
+            "120",
+            "53",
+            "32",
+            "30"
+          ],
+          "solution": "प्रत्येक पुस्तक 4 सेमी जाड: 8 × 4 = 32 सेमी. 53 60 मधून 7 वजा करतो — पुस्तकांची मोजणी एकास-एक सेंटिमीटर होत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two equal pipes fill a tank in 12 hours. How long would THREE such pipes take?",
+      "choices": [
+        "8",
+        "6",
+        "18",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Pipe-hours stay fixed: 2 × 12 = 24, so three pipes need 24 ÷ 3 = 8 hours. 18 moves the time the WRONG way — more pipes can only shorten the wait.",
+      "checkExpr": "12*2/3",
+      "translations": {
+        "hi": {
+          "stem": "दो बराबर पाइप टंकी 12 घंटे में भरते हैं। तीन ऐसे पाइप कितना समय लेंगे?",
+          "choices": [
+            "8",
+            "6",
+            "18",
+            "4"
+          ],
+          "solution": "पाइप-घंटे स्थिर रहते हैं: 2 × 12 = 24, अतः तीन पाइपों को 24 ÷ 3 = 8 घंटे। 18 समय को उल्टी दिशा ले जाता है — ज़्यादा पाइप इंतज़ार घटा ही सकते हैं।"
+        },
+        "mr": {
+          "stem": "दोन सारखे पाइप टाकी 12 तासांत भरतात. तीन असे पाइप किती वेळ घेतील?",
+          "choices": [
+            "8",
+            "6",
+            "18",
+            "4"
+          ],
+          "solution": "पाइप-तास स्थिर राहतात: 2 × 12 = 24, म्हणून तीन पाइपांना 24 ÷ 3 = 8 तास. 18 वेळ उलट्या दिशेने नेतो — जास्त पाइप वाटच कमी करू शकतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A hostel's food stock feeds 30 students for 40 days. If 20 more students arrive, how many days will it last?",
+      "choices": [
+        "24",
+        "20",
+        "60",
+        "27"
+      ],
+      "answerIndex": 0,
+      "solution": "Student-days are fixed: 30 × 40 = 1200, and 1200 ÷ 50 = 24 days. 60 feeds the EXTRA mouths with extra days — inverse proportion runs the other way.",
+      "checkExpr": "30*40/50",
+      "translations": {
+        "hi": {
+          "stem": "छात्रावास का राशन 30 विद्यार्थियों को 40 दिन खिलाता है। 20 और आ जाएँ तो कितने दिन चलेगा?",
+          "choices": [
+            "24",
+            "20",
+            "60",
+            "27"
+          ],
+          "solution": "विद्यार्थी-दिन स्थिर हैं: 30 × 40 = 1200, और 1200 ÷ 50 = 24 दिन। 60 ज़्यादा मुँहों को ज़्यादा दिन खिला देता है — व्युत्क्रमानुपात उल्टा चलता है।"
+        },
+        "mr": {
+          "stem": "वसतिगृहाचा शिधा 30 विद्यार्थ्यांना 40 दिवस पुरतो. आणखी 20 आले तर किती दिवस पुरेल?",
+          "choices": [
+            "24",
+            "20",
+            "60",
+            "27"
+          ],
+          "solution": "विद्यार्थी-दिवस स्थिर: 30 × 40 = 1200, आणि 1200 ÷ 50 = 24 दिवस. 60 जास्त तोंडांना जास्त दिवस देतो — व्यस्तानुपात उलटा चालतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wheel makes 45 revolutions to cover 90 m. How many revolutions for 240 m?",
+      "choices": [
+        "480",
+        "60",
+        "110",
+        "120"
+      ],
+      "answerIndex": 3,
+      "solution": "Each revolution rolls 2 m, so 240 needs 120 turns — direct proportion. 110 adds 150 to 45 by hunch, not ratio.",
+      "checkExpr": "45*240/90",
+      "translations": {
+        "hi": {
+          "stem": "एक पहिया 90 मीटर के लिए 45 चक्कर लेता है। 240 मीटर के लिए कितने चक्कर?",
+          "choices": [
+            "480",
+            "60",
+            "110",
+            "120"
+          ],
+          "solution": "हर चक्कर 2 मीटर लुढ़काता है, अतः 240 को 120 चक्कर — अनुक्रमानुपात। 110 अंदाज़े से 45 में 150 जोड़ता है, अनुपात से नहीं।"
+        },
+        "mr": {
+          "stem": "एक चाक 90 मीटरसाठी 45 फेऱ्या घेते. 240 मीटरसाठी किती फेऱ्या?",
+          "choices": [
+            "480",
+            "60",
+            "110",
+            "120"
+          ],
+          "solution": "प्रत्येक फेरी 2 मीटर ढकलते, म्हणून 240 ला 120 फेऱ्या — समानुपात. 110 अंदाजाने 45 मध्ये 150 मिळवतो, गुणोत्तराने नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "5 machines produce 120 boxes in an hour. How many boxes do 8 machines make in an hour?",
+      "choices": [
+        "300",
+        "192",
+        "160",
+        "125"
+      ],
+      "answerIndex": 1,
+      "solution": "Each machine makes 24 an hour: 8 × 24 = 192 boxes — direct proportion in machines. 125 adds 5 boxes for 3 machines, a unit muddle.",
+      "checkExpr": "120*8/5",
+      "translations": {
+        "hi": {
+          "stem": "5 मशीनें घंटे में 120 डिब्बे बनाती हैं। 8 मशीनें घंटे में कितने डिब्बे बनाएँगी?",
+          "choices": [
+            "300",
+            "192",
+            "160",
+            "125"
+          ],
+          "solution": "हर मशीन घंटे में 24 बनाती है: 8 × 24 = 192 डिब्बे — मशीनों में अनुक्रमानुपात। 125 तीन मशीनों के बदले 5 डिब्बे जोड़ता है, इकाई का घालमेल।"
+        },
+        "mr": {
+          "stem": "5 यंत्रे तासात 120 खोकी बनवतात. 8 यंत्रे तासात किती खोकी बनवतील?",
+          "choices": [
+            "300",
+            "192",
+            "160",
+            "125"
+          ],
+          "solution": "प्रत्येक यंत्र तासात 24 बनवते: 8 × 24 = 192 खोकी — यंत्रांत समानुपात. 125 तीन यंत्रांबद्दल 5 खोकी मिळवतो, एककांचा गोंधळ."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A job needs 6 workers for 8 hours. After 2 hours of work, 2 workers leave. How many MORE hours do the remaining 4 need?",
+      "choices": [
+        "6",
+        "9",
+        "8",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "The job is 48 worker-hours; 12 are done, 36 remain, and 4 workers clear 36 in 9 hours. 6 forgets that the leavers took their hands with them.",
+      "checkExpr": "(6*8-6*2)/4",
+      "translations": {
+        "hi": {
+          "stem": "एक काम को 6 मज़दूर 8 घंटे में करते हैं। 2 घंटे काम के बाद 2 मज़दूर चले जाते हैं। बचे 4 को और कितने घंटे लगेंगे?",
+          "choices": [
+            "6",
+            "9",
+            "8",
+            "12"
+          ],
+          "solution": "काम 48 मज़दूर-घंटे का है; 12 हो चुके, 36 बाक़ी, और 4 मज़दूर 36 को 9 घंटे में निपटाते हैं। 6 भूल जाता है कि जाने वाले अपने हाथ साथ ले गए।"
+        },
+        "mr": {
+          "stem": "एका कामाला 6 मजूर 8 तास लागतात. 2 तास कामानंतर 2 मजूर निघून जातात. उरलेल्या 4 जणांना आणखी किती तास लागतील?",
+          "choices": [
+            "6",
+            "9",
+            "8",
+            "12"
+          ],
+          "solution": "काम 48 मजूर-तासांचे; 12 झाले, 36 उरले, आणि 4 मजूर 36 ला 9 तासांत संपवतात. 6 विसरतो की गेलेले आपले हात सोबत घेऊन गेले."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cyclist at 15 km/h takes 40 minutes for a route. What speed covers the same route in 30 minutes?",
+      "choices": [
+        "25",
+        "11.25",
+        "20",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "Speed × time is the fixed distance: 15 × 40 = new speed × 30, so 20 km/h. 11.25 slows down to finish FASTER — the see-saw tipped backwards.",
+      "checkExpr": "15*40/30",
+      "translations": {
+        "hi": {
+          "stem": "15 किमी/घंटा की साइकिल-चाल से एक रास्ता 40 मिनट लेता है। वही रास्ता 30 मिनट में किस चाल से कटेगा?",
+          "choices": [
+            "25",
+            "11.25",
+            "20",
+            "10"
+          ],
+          "solution": "चाल × समय ही स्थिर दूरी है: 15 × 40 = नई चाल × 30, अतः 20 किमी/घंटा। 11.25 जल्दी पहुँचने को धीमा हो जाता है — झूला उल्टा झुका।"
+        },
+        "mr": {
+          "stem": "15 किमी/तास वेगाने एक वाट 40 मिनिटे घेते. तीच वाट 30 मिनिटांत कोणत्या वेगाने कापली जाईल?",
+          "choices": [
+            "25",
+            "11.25",
+            "20",
+            "10"
+          ],
+          "solution": "वेग × वेळ हेच स्थिर अंतर: 15 × 40 = नवा वेग × 30, म्हणून 20 किमी/तास. 11.25 लवकर पोहोचायला हळू होतो — झोका उलटा कलला."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For a FIXED distance, speed and time see-saw. A trip at 40 km/h takes 3 hours; how long at 60 km/h?",
+      "choices": [
+        "1.5",
+        "4.5",
+        "2.5",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The distance is 120 km either way: 120 ÷ 60 = 2 hours. 4.5 scales time UP with speed — the direct-proportion reflex applied to an inverse pair. Ask first: does the product stay fixed, or the ratio?",
+      "checkExpr": "40*3/60",
+      "translations": {
+        "hi": {
+          "stem": "स्थिर दूरी पर चाल और समय झूले पर हैं। 40 किमी/घंटा से यात्रा 3 घंटे लेती है; 60 किमी/घंटा से कितनी देर?",
+          "choices": [
+            "1.5",
+            "4.5",
+            "2.5",
+            "2"
+          ],
+          "solution": "दूरी दोनों तरह 120 किमी है: 120 ÷ 60 = 2 घंटे। 4.5 समय को चाल के साथ बढ़ा देता है — व्युत्क्रम जोड़ी पर अनुक्रम की आदत। पहले पूछिए: स्थिर गुणनफल रहता है या अनुपात?"
+        },
+        "mr": {
+          "stem": "स्थिर अंतरासाठी वेग आणि वेळ झोक्यावर असतात. 40 किमी/तासाने प्रवास 3 तास घेतो; 60 किमी/तासाने किती वेळ?",
+          "choices": [
+            "1.5",
+            "4.5",
+            "2.5",
+            "2"
+          ],
+          "solution": "अंतर दोन्हीकडे 120 किमी: 120 ÷ 60 = 2 तास. 4.5 वेळ वेगासोबत वाढवतो — व्यस्त जोडीवर समानुपाताची सवय. आधी विचारा: गुणाकार स्थिर राहतो की गुणोत्तर?"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 6-ft pole casts a 4-ft shadow. At the same hour a tower's shadow is 60 ft. How tall is the tower?",
+      "choices": [
+        "40",
+        "240",
+        "100",
+        "90"
+      ],
+      "answerIndex": 3,
+      "solution": "The sun grants everything the same ratio: height/shadow = 6/4 = 1.5, so the tower is 60 × 1.5 = 90 ft. One pole and one hour measure a tower no ladder reaches — proportion as a surveying tool.",
+      "checkExpr": "6*60/4",
+      "translations": {
+        "hi": {
+          "stem": "6 फ़ुट का खंभा 4 फ़ुट की छाया डालता है। उसी घड़ी मीनार की छाया 60 फ़ुट है। मीनार कितनी ऊँची?",
+          "choices": [
+            "40",
+            "240",
+            "100",
+            "90"
+          ],
+          "solution": "सूरज सबको एक ही अनुपात देता है: ऊँचाई/छाया = 6/4 = 1.5, अतः मीनार 60 × 1.5 = 90 फ़ुट। एक खंभा और एक घड़ी उस मीनार को नाप देते हैं जहाँ कोई सीढ़ी नहीं पहुँचती — अनुपात बतौर सर्वेक्षण-औज़ार।"
+        },
+        "mr": {
+          "stem": "6 फूट खांब 4 फूट सावली टाकतो. त्याच वेळी मनोऱ्याची सावली 60 फूट आहे. मनोरा किती उंच?",
+          "choices": [
+            "40",
+            "240",
+            "100",
+            "90"
+          ],
+          "solution": "सूर्य साऱ्यांना एकच गुणोत्तर देतो: उंची/सावली = 6/4 = 1.5, म्हणून मनोरा 60 × 1.5 = 90 फूट. एक खांब आणि एक घटका ती मनोरा मोजतात जिथे कोणतीही शिडी पोहोचत नाही — मोजणी-हत्यार म्हणून प्रमाण."
+        }
+      }
+    }
+  ]
+}

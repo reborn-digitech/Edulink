@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 16 — Playing with Numbers",
+  "name": "Playing with Numbers",
+  "slug": "maths-8-playing-with-numbers",
+  "summary": "Digits put under algebra's oath: reversal sums and differences obeying 11 and 9, letter puzzles as divisibility in disguise — and the magician's 1001 unmasked as 7 × 11 × 13.",
+  "position": 16,
+  "translations": {
+    "hi": {
+      "name": "संख्याओं के साथ खेल",
+      "summary": "बीजगणित के हलफ़ पर बँधे अंक: 11 और 9 को मानते पलट-योग और अंतर, भेस बदले विभाज्यता जैसी अक्षर-पहेलियाँ — और जादूगर का 1001, जो 7 × 11 × 13 निकला।"
+    },
+    "mr": {
+      "name": "संख्यांशी खेळ",
+      "summary": "बीजगणिताच्या शपथेवरचे अंक: 11 आणि 9 ला मानणाऱ्या उलट-बेरजा आणि फरक, वेष बदललेल्या भाज्यतेसारखी अक्षर-कोडी — आणि जादूगाराचा 1001, जो 7 × 11 × 13 निघाला."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Write 47 in the general form 10a + b. What is a?",
+      "choices": [
+        "47",
+        "4",
+        "7",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "47 = 10 × 4 + 7: the tens digit a is 4, the units digit b is 7. The general form is how algebra gets its hands on digits.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "47 को सामान्य रूप 10a + b में लिखिए। a क्या है?",
+          "choices": [
+            "47",
+            "4",
+            "7",
+            "10"
+          ],
+          "solution": "47 = 10 × 4 + 7: दहाई a है 4, इकाई b है 7। सामान्य रूप ही वह राह है जिससे बीजगणित अंकों तक हाथ पहुँचाता है।"
+        },
+        "mr": {
+          "stem": "47 ला सामान्य रूप 10a + b मध्ये लिहा. a काय?",
+          "choices": [
+            "47",
+            "4",
+            "7",
+            "10"
+          ],
+          "solution": "47 = 10 × 4 + 7: दशक a म्हणजे 4, एकक b म्हणजे 7. सामान्य रूप हीच ती वाट जिने बीजगणित अंकांपर्यंत हात पोहोचवते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the digit-sum of 729?",
+      "choices": [
+        "18",
+        "9",
+        "19",
+        "17"
+      ],
+      "answerIndex": 0,
+      "solution": "7 + 2 + 9 = 18, itself divisible by 9 — so 729 is too (it is 27²). The digit-sum is divisibility's fastest witness.",
+      "checkExpr": "7+2+9",
+      "translations": {
+        "hi": {
+          "stem": "729 का अंक-योग क्या है?",
+          "choices": [
+            "18",
+            "9",
+            "19",
+            "17"
+          ],
+          "solution": "7 + 2 + 9 = 18, जो स्वयं 9 से विभाज्य है — अतः 729 भी (वह 27² है)। अंक-योग विभाज्यता का सबसे तेज़ गवाह है।"
+        },
+        "mr": {
+          "stem": "729 ची अंक-बेरीज किती?",
+          "choices": [
+            "18",
+            "9",
+            "19",
+            "17"
+          ],
+          "solution": "7 + 2 + 9 = 18, जे स्वतः 9 ने भाग जाते — म्हणून 729 ही (ते 27² आहे). अंक-बेरीज ही भाज्यतेची सर्वांत जलद साक्षीदार."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A two-digit number plus its reverse is always 11 × (digit sum). Compute 35 + 53.",
+      "choices": [
+        "98",
+        "88",
+        "78",
+        "80"
+      ],
+      "answerIndex": 1,
+      "solution": "35 + 53 = 88 = 11 × 8, and 8 is 3 + 5 ✓ — the general form (10a + b) + (10b + a) = 11(a + b) promised it.",
+      "checkExpr": "35+53",
+      "translations": {
+        "hi": {
+          "stem": "दो अंकों की संख्या और उसका पलटा रूप जोड़ने पर सदा 11 × (अंक-योग) मिलता है। 35 + 53 निकालिए।",
+          "choices": [
+            "98",
+            "88",
+            "78",
+            "80"
+          ],
+          "solution": "35 + 53 = 88 = 11 × 8, और 8 है 3 + 5 ✓ — सामान्य रूप (10a + b) + (10b + a) = 11(a + b) ने यही वादा किया था।"
+        },
+        "mr": {
+          "stem": "दोन अंकी संख्या आणि तिचे उलटे रूप जोडल्यास नेहमी 11 × (अंक-बेरीज) मिळते. 35 + 53 काढा.",
+          "choices": [
+            "98",
+            "88",
+            "78",
+            "80"
+          ],
+          "solution": "35 + 53 = 88 = 11 × 8, आणि 8 म्हणजे 3 + 5 ✓ — सामान्य रूप (10a + b) + (10b + a) = 11(a + b) ने हेच वचन दिले होते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For digits a = 6, b = 2: (10a + b) − (10b + a) = 9 × (a − b). What is the value?",
+      "choices": [
+        "36",
+        "4",
+        "44",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "62 − 26 = 36 = 9 × 4 ✓. Reversal differences are ALWAYS multiples of 9 — the identity guarantees what no amount of checking could.",
+      "checkExpr": "9*4",
+      "translations": {
+        "hi": {
+          "stem": "अंक a = 6, b = 2 के लिए: (10a + b) − (10b + a) = 9 × (a − b)। मान कितना?",
+          "choices": [
+            "36",
+            "4",
+            "44",
+            "40"
+          ],
+          "solution": "62 − 26 = 36 = 9 × 4 ✓। पलट-अंतर सदा 9 के गुणज होते हैं — सर्वसमिका वह पक्का करती है जो कोई भी जाँच नहीं कर पाती।"
+        },
+        "mr": {
+          "stem": "अंक a = 6, b = 2 साठी: (10a + b) − (10b + a) = 9 × (a − b). किंमत किती?",
+          "choices": [
+            "36",
+            "4",
+            "44",
+            "40"
+          ],
+          "solution": "62 − 26 = 36 = 9 × 4 ✓. उलट-फरक नेहमी 9 चे पट असतात — नित्यसमीकरण ते पक्के करते जे कितीही तपासण्या करू शकत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the SMALLEST digit ▢ that makes 31▢5 divisible by 9?",
+      "choices": [
+        "0",
+        "1",
+        "9",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "3 + 1 + 5 = 9 already, so ▢ = 0 works (and 9 would too — the question asked for the smallest). Digit-sum arithmetic does all the dividing.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा छोटे-से-छोटा अंक ▢ 31▢5 को 9 से विभाज्य बनाता है?",
+          "choices": [
+            "0",
+            "1",
+            "9",
+            "3"
+          ],
+          "solution": "3 + 1 + 5 = 9 पहले से, अतः ▢ = 0 चलता है (9 भी चलता — पर सबसे छोटा पूछा था)। भाग का सारा काम अंक-योग कर देता है।"
+        },
+        "mr": {
+          "stem": "कोणता लहानात लहान अंक ▢ 31▢5 ला 9 ने भाग जाईल असे करतो?",
+          "choices": [
+            "0",
+            "1",
+            "9",
+            "3"
+          ],
+          "solution": "3 + 1 + 5 = 9 आधीच, म्हणून ▢ = 0 चालतो (9 ही चालला असता — पण लहानात लहान विचारला होता). भागाचे सारे काम अंक-बेरीज करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The test for 11 uses the alternating sum. For 308, compute 3 − 0 + 8.",
+      "choices": [
+        "0",
+        "1",
+        "11",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "3 − 0 + 8 = 11, itself a multiple of 11 — so 308 divides by 11 (it is 28 × 11). The alternating sum is 11's private detector.",
+      "checkExpr": "3-0+8",
+      "translations": {
+        "hi": {
+          "stem": "11 की जाँच एकांतर योग से होती है। 308 के लिए 3 − 0 + 8 निकालिए।",
+          "choices": [
+            "0",
+            "1",
+            "11",
+            "5"
+          ],
+          "solution": "3 − 0 + 8 = 11, स्वयं 11 का गुणज — अतः 308 11 से विभाजित होता है (वह 28 × 11 है)। एकांतर योग 11 का निजी संसूचक है।"
+        },
+        "mr": {
+          "stem": "11 ची चाचणी एकांतर बेरजेने होते. 308 साठी 3 − 0 + 8 काढा.",
+          "choices": [
+            "0",
+            "1",
+            "11",
+            "5"
+          ],
+          "solution": "3 − 0 + 8 = 11, स्वतः 11 चा पट — म्हणून 308 ला 11 ने भाग जातो (ते 28 × 11 आहे). एकांतर बेरीज हा 11 चा खासगी शोधक."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Letter puzzle: A + A + A ends in A itself (a nonzero digit), because 3 × A ends in A. What is A?",
+      "choices": [
+        "5",
+        "0",
+        "3",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "3 × 5 = 15, ending in 5 ✓ — no other nonzero digit survives the test. Puzzles like this are divisibility running in disguise.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षर-पहेली: A + A + A का अंत स्वयं A पर होता है (शून्येतर अंक), क्योंकि 3 × A का अंत A है। A क्या है?",
+          "choices": [
+            "5",
+            "0",
+            "3",
+            "2"
+          ],
+          "solution": "3 × 5 = 15, अंत 5 पर ✓ — कोई और शून्येतर अंक इस जाँच से नहीं बचता। ऐसी पहेलियाँ भेस बदले विभाज्यता ही हैं।"
+        },
+        "mr": {
+          "stem": "अक्षर-कोडे: A + A + A चा शेवट स्वतः A वर होतो (शून्येतर अंक), कारण 3 × A चा शेवट A आहे. A काय?",
+          "choices": [
+            "5",
+            "0",
+            "3",
+            "2"
+          ],
+          "solution": "3 × 5 = 15, शेवट 5 वर ✓ — दुसरा कोणताही शून्येतर अंक या चाचणीतून वाचत नाही. अशी कोडी म्हणजे वेष बदललेली भाज्यताच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 21a5 is divisible by 3 and a is the LARGEST such digit, what is a?",
+      "choices": [
+        "1",
+        "7",
+        "9",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "2 + 1 + 5 = 8, so 8 + a must be a multiple of 3: a ∈ {1, 4, 7}, largest 7. 9 pushes the sum to 17 — not a multiple of 3.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 21a5 3 से विभाज्य है और a ऐसा सबसे बड़ा अंक है, तो a क्या है?",
+          "choices": [
+            "1",
+            "7",
+            "9",
+            "4"
+          ],
+          "solution": "2 + 1 + 5 = 8, अतः 8 + a 3 का गुणज हो: a ∈ {1, 4, 7}, सबसे बड़ा 7। 9 योग को 17 पहुँचा देता है — 3 का गुणज नहीं।"
+        },
+        "mr": {
+          "stem": "जर 21a5 ला 3 ने भाग जातो आणि a असा सर्वांत मोठा अंक असेल, तर a काय?",
+          "choices": [
+            "1",
+            "7",
+            "9",
+            "4"
+          ],
+          "solution": "2 + 1 + 5 = 8, म्हणून 8 + a 3 चा पट हवा: a ∈ {1, 4, 7}, सर्वांत मोठा 7. 9 बेरीज 17 वर नेतो — 3 चा पट नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For digits 4 and 9, compute 49 + 94.",
+      "choices": [
+        "133",
+        "121",
+        "143",
+        "153"
+      ],
+      "answerIndex": 2,
+      "solution": "49 + 94 = 143 = 11 × 13, and 13 = 4 + 9 ✓ — the 11 × (digit-sum) rule holding even when the sum carries past 9.",
+      "checkExpr": "49+94",
+      "translations": {
+        "hi": {
+          "stem": "अंक 4 और 9 के लिए 49 + 94 निकालिए।",
+          "choices": [
+            "133",
+            "121",
+            "143",
+            "153"
+          ],
+          "solution": "49 + 94 = 143 = 11 × 13, और 13 = 4 + 9 ✓ — 11 × (अंक-योग) का नियम तब भी टिका जब योग 9 के पार गया।"
+        },
+        "mr": {
+          "stem": "अंक 4 आणि 9 साठी 49 + 94 काढा.",
+          "choices": [
+            "133",
+            "121",
+            "143",
+            "153"
+          ],
+          "solution": "49 + 94 = 143 = 11 × 13, आणि 13 = 4 + 9 ✓ — 11 × (अंक-बेरीज) चा नियम बेरीज 9 पलीकडे गेली तरी टिकलेला."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Three-digit reversal: abc − cba = 99 × (a − c). Compute 852 − 258.",
+      "choices": [
+        "594",
+        "606",
+        "494",
+        "604"
+      ],
+      "answerIndex": 0,
+      "solution": "852 − 258 = 594 = 99 × 6, and 6 = 8 − 2 ✓. The middle digit vanishes from the formula entirely — it never mattered.",
+      "checkExpr": "852-258",
+      "translations": {
+        "hi": {
+          "stem": "तीन अंकों का पलटा: abc − cba = 99 × (a − c)। 852 − 258 निकालिए।",
+          "choices": [
+            "594",
+            "606",
+            "494",
+            "604"
+          ],
+          "solution": "852 − 258 = 594 = 99 × 6, और 6 = 8 − 2 ✓। बीच का अंक सूत्र से पूरी तरह ग़ायब है — उसका कभी महत्व था ही नहीं।"
+        },
+        "mr": {
+          "stem": "तीन अंकांचे उलटे: abc − cba = 99 × (a − c). 852 − 258 काढा.",
+          "choices": [
+            "594",
+            "606",
+            "494",
+            "604"
+          ],
+          "solution": "852 − 258 = 594 = 99 × 6, आणि 6 = 8 − 2 ✓. मधला अंक सूत्रातून पूर्ण गायब — त्याला कधी महत्त्वच नव्हते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "1331 passes the 11-test (1 − 3 + 3 − 1 = 0). What is 1331 ÷ 11?",
+      "choices": [
+        "111",
+        "121",
+        "131",
+        "101"
+      ],
+      "answerIndex": 1,
+      "solution": "1331 ÷ 11 = 121 — and the tower goes on: 121 = 11², so 1331 = 11³. The test found the factor; division found the family.",
+      "checkExpr": "1331/11",
+      "translations": {
+        "hi": {
+          "stem": "1331 11-जाँच पास करता है (1 − 3 + 3 − 1 = 0)। 1331 ÷ 11 कितना?",
+          "choices": [
+            "111",
+            "121",
+            "131",
+            "101"
+          ],
+          "solution": "1331 ÷ 11 = 121 — और मीनार आगे बढ़ती है: 121 = 11², अतः 1331 = 11³। जाँच ने गुणनखंड खोजा; भाग ने ख़ानदान।"
+        },
+        "mr": {
+          "stem": "1331 11-चाचणी उत्तीर्ण होतो (1 − 3 + 3 − 1 = 0). 1331 ÷ 11 किती?",
+          "choices": [
+            "111",
+            "121",
+            "131",
+            "101"
+          ],
+          "solution": "1331 ÷ 11 = 121 — आणि मनोरा पुढे जातो: 121 = 11², म्हणून 1331 = 11³. चाचणीने अवयव शोधला; भागाने घराणे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A number leaves remainder 3 when divided by 9. What remainder does its DIGIT-SUM leave when divided by 9?",
+      "choices": [
+        "9",
+        "6",
+        "0",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "A number and its digit-sum always share the same remainder mod 9 — because 10, 100, 1000 each leave remainder 1. That secret powers every digit-sum test.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या 9 से भाग देने पर शेष 3 छोड़ती है। उसका अंक-योग 9 से भाग देने पर क्या शेष छोड़ेगा?",
+          "choices": [
+            "9",
+            "6",
+            "0",
+            "3"
+          ],
+          "solution": "संख्या और उसका अंक-योग 9 के भाग में सदा एक ही शेष बाँटते हैं — क्योंकि 10, 100, 1000 हर एक शेष 1 छोड़ते हैं। यही राज़ हर अंक-योग जाँच को चलाता है।"
+        },
+        "mr": {
+          "stem": "एक संख्या 9 ने भागल्यास बाकी 3 उरते. तिची अंक-बेरीज 9 ने भागल्यास काय बाकी उरेल?",
+          "choices": [
+            "9",
+            "6",
+            "0",
+            "3"
+          ],
+          "solution": "संख्या आणि तिची अंक-बेरीज 9 च्या भागात नेहमी एकच बाकी वाटतात — कारण 10, 100, 1000 प्रत्येक बाकी 1 ठेवतात. हेच गुपित प्रत्येक अंक-बेरीज चाचणी चालवते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Take 62, reverse to 26, subtract: 36. The digits of ANY such difference sum to —",
+      "choices": [
+        "6",
+        "9",
+        "18",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "The difference is always 9(a − b), a multiple of 9 — and every 2-digit multiple of 9 has digit-sum 9. Try any pair; the trick never misses, because the algebra never does.",
+      "checkExpr": "3+6",
+      "translations": {
+        "hi": {
+          "stem": "62 लीजिए, पलटकर 26, घटाइए: 36। ऐसे किसी भी अंतर के अंकों का योग होता है —",
+          "choices": [
+            "6",
+            "9",
+            "18",
+            "12"
+          ],
+          "solution": "अंतर सदा 9(a − b) है, 9 का गुणज — और 9 के हर दो-अंकीय गुणज का अंक-योग 9 है। कोई भी जोड़ी आज़माइए; तरकीब कभी नहीं चूकती, क्योंकि बीजगणित कभी नहीं चूकता।"
+        },
+        "mr": {
+          "stem": "62 घ्या, उलटवून 26, वजा करा: 36. अशा कोणत्याही फरकाच्या अंकांची बेरीज असते —",
+          "choices": [
+            "6",
+            "9",
+            "18",
+            "12"
+          ],
+          "solution": "फरक नेहमी 9(a − b), 9 चा पट — आणि 9 च्या प्रत्येक दोन-अंकी पटाची अंक-बेरीज 9. कोणतीही जोडी वापरा; युक्ती कधी चुकत नाही, कारण बीजगणित कधी चुकत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "AB + BA = 121, so A + B = 11. If A = 7, what is B?",
+      "choices": [
+        "3",
+        "5",
+        "4",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "11(A + B) = 121 forces A + B = 11, so B = 4. Check: 74 + 47 = 121 ✓ — the letters were digits under oath all along.",
+      "checkExpr": "11-7",
+      "translations": {
+        "hi": {
+          "stem": "AB + BA = 121, अतः A + B = 11। यदि A = 7, तो B क्या?",
+          "choices": [
+            "3",
+            "5",
+            "4",
+            "7"
+          ],
+          "solution": "11(A + B) = 121 से A + B = 11, अतः B = 4। जाँच: 74 + 47 = 121 ✓ — अक्षर शुरू से हलफ़ पर बँधे अंक थे।"
+        },
+        "mr": {
+          "stem": "AB + BA = 121, म्हणून A + B = 11. जर A = 7, तर B काय?",
+          "choices": [
+            "3",
+            "5",
+            "4",
+            "7"
+          ],
+          "solution": "11(A + B) = 121 मुळे A + B = 11, म्हणून B = 4. पडताळणी: 74 + 47 = 121 ✓ — अक्षरे सुरुवातीपासून शपथेवरचे अंक होती."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The trick 'write any 3-digit number twice, like 583583 — it always divides by 7, 11 AND 13' works because abcabc = abc × ▢. What is the multiplier?",
+      "choices": [
+        "10001",
+        "101",
+        "111",
+        "1001"
+      ],
+      "answerIndex": 3,
+      "solution": "Writing abc twice multiplies it by 1001, and 1001 = 7 × 11 × 13 — all three divisors ride in automatically. The magician's secret is a factorisation.",
+      "checkExpr": "7*11*13",
+      "translations": {
+        "hi": {
+          "stem": "तरकीब 'कोई तीन अंकों की संख्या दो बार लिखिए, जैसे 583583 — वह सदा 7, 11 और 13 से विभाजित होती है' इसलिए चलती है कि abcabc = abc × ▢। गुणक क्या है?",
+          "choices": [
+            "10001",
+            "101",
+            "111",
+            "1001"
+          ],
+          "solution": "abc को दो बार लिखना उसे 1001 से गुणा करना है, और 1001 = 7 × 11 × 13 — तीनों भाजक अपने आप सवार हो जाते हैं। जादूगर का राज़ एक गुणनखंडन है।"
+        },
+        "mr": {
+          "stem": "युक्ती 'कोणतीही तीन अंकी संख्या दोनदा लिहा, जसे 583583 — तिला नेहमी 7, 11 आणि 13 ने भाग जातो' म्हणून चालते की abcabc = abc × ▢. गुणक काय?",
+          "choices": [
+            "10001",
+            "101",
+            "111",
+            "1001"
+          ],
+          "solution": "abc दोनदा लिहिणे म्हणजे त्याला 1001 ने गुणणे, आणि 1001 = 7 × 11 × 13 — तिन्ही भाजक आपोआप स्वार होतात. जादूगाराचे गुपित म्हणजे एक अवयव-रचना."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Casting out nines checks 1234 × 56 = 69104: reduce 69104's digit-sum (6+9+1+0+4 = 20) mod 9. What does it reduce to?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "20 reduces to 2 — and the factors reduce to 1 and 2, whose product is 2 ✓: the multiplication PASSES the nines-check. A mismatch would have proved an error; a match only says 'possibly right' — the old accountants' one-way test.",
+      "checkExpr": "(6+9+1+0+4)-18",
+      "translations": {
+        "hi": {
+          "stem": "नौ निकालकर जाँच: 1234 × 56 = 69104 के लिए 69104 का अंक-योग (6+9+1+0+4 = 20) 9 के भाग में घटाइए। क्या बचता है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "9"
+          ],
+          "solution": "20 घटकर 2 — और गुणनखंड घटकर 1 और 2, जिनका गुणनफल 2 ✓: गुणा नौ-जाँच पास करता है। बेमेल ग़लती सिद्ध कर देता; मेल केवल कहता है 'शायद सही' — पुराने मुनीमों की एकतरफ़ा जाँच।"
+        },
+        "mr": {
+          "stem": "नऊ काढून तपासणी: 1234 × 56 = 69104 साठी 69104 ची अंक-बेरीज (6+9+1+0+4 = 20) 9 च्या भागात घटवा. काय उरते?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "9"
+          ],
+          "solution": "20 घटून 2 — आणि घटक घटून 1 आणि 2, ज्यांचा गुणाकार 2 ✓: गुणाकार नऊ-तपासणी उत्तीर्ण. विसंगतीने चूक सिद्ध केली असती; जुळणी फक्त म्हणते 'बहुधा बरोबर' — जुन्या मुनीमांची एकतर्फी चाचणी."
+        }
+      }
+    }
+  ]
+}

@@ -3573,6 +3573,1415 @@ function exponentsAndPowers8(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Direct and Inverse Proportions (together up, or see-saw)     */
+/* ------------------------------------------------------------------------- */
+function proportions8(): TopicFileOut {
+  const rand = rng("maths-8-direct-inverse-proportions");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "5 pens cost ₹40. What do 8 such pens cost?",
+          hi: "5 क़लमों के ₹40 लगते हैं। 8 क़लमों के कितने लगेंगे?",
+          mr: "5 पेनांना ₹40 लागतात. 8 पेनांना किती लागतील?",
+        },
+        answer: 64,
+        wrong: [45, 320, 72],
+        checkExpr: "40*8/5",
+        fmt: rupees,
+        solution: {
+          en: "One pen costs ₹8, so eight cost ₹64 — direct proportion: more pens, proportionally more money. 45 adds 5 instead of scaling.",
+          hi: "एक क़लम ₹8 की, अतः आठ की ₹64 — अनुक्रमानुपात: ज़्यादा क़लम, उसी अनुपात में ज़्यादा पैसा। 45 अनुपात की जगह 5 जोड़ देता है।",
+          mr: "एक पेन ₹8 चे, म्हणून आठांचे ₹64 — समानुपात: जास्त पेने, त्याच प्रमाणात जास्त पैसे. 45 प्रमाणाऐवजी 5 मिळवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A car covers 60 km in one hour. At the same speed, how far in 3 hours?",
+          hi: "एक कार एक घंटे में 60 किमी चलती है। उसी चाल से 3 घंटे में कितनी दूर?",
+          mr: "एक कार एका तासात 60 किमी जाते. त्याच वेगाने 3 तासांत किती दूर?",
+        },
+        answer: 180,
+        wrong: [63, 20, 120],
+        checkExpr: "60*3",
+        solution: {
+          en: "Triple the time, triple the distance: 60 × 3 = 180 km. Distance and time run in DIRECT proportion when speed holds still.",
+          hi: "समय तिगुना तो दूरी तिगुनी: 60 × 3 = 180 किमी। चाल स्थिर हो तो दूरी और समय अनुक्रमानुपात में दौड़ते हैं।",
+          mr: "वेळ तिप्पट तर अंतर तिप्पट: 60 × 3 = 180 किमी. वेग स्थिर असला की अंतर आणि वेळ समानुपातात धावतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "x and y are in DIRECT proportion. If x doubles, y becomes how many times its old value?",
+          hi: "x और y अनुक्रमानुपात में हैं। x दुगुना हो तो y अपने पुराने मान का कितने गुना होगा?",
+          mr: "x आणि y समानुपातात आहेत. x दुप्पट झाला तर y आपल्या जुन्या किमतीच्या किती पट होईल?",
+        },
+        answer: 2,
+        wrong: [0.5, 4, 1],
+        solution: {
+          en: "Direct proportion keeps y/x constant, so y doubles too: 2 times. 0.5 describes INVERSE proportion — the see-saw, not the escalator.",
+          hi: "अनुक्रमानुपात y/x स्थिर रखता है, अतः y भी दुगुना: 2 गुना। 0.5 व्युत्क्रमानुपात का हाल है — झूला, एस्केलेटर नहीं।",
+          mr: "समानुपात y/x स्थिर ठेवतो, म्हणून y ही दुप्पट: 2 पट. 0.5 व्यस्तानुपाताचे वर्णन — झोका, सरकता जिना नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "6 workers finish a wall in 10 days. At the same pace, how many days would 12 workers take?",
+          hi: "6 मज़दूर एक दीवार 10 दिन में पूरी करते हैं। उसी रफ़्तार से 12 मज़दूर कितने दिन लेंगे?",
+          mr: "6 मजूर एक भिंत 10 दिवसांत पूर्ण करतात. त्याच गतीने 12 मजूर किती दिवस घेतील?",
+        },
+        answer: 5,
+        wrong: [20, 8, 60],
+        checkExpr: "6*10/12",
+        solution: {
+          en: "Twice the workers, half the days: 6 × 10 ÷ 12 = 5 — inverse proportion, the product 60 worker-days staying fixed. 20 doubles the days instead.",
+          hi: "दुगुने मज़दूर, आधे दिन: 6 × 10 ÷ 12 = 5 — व्युत्क्रमानुपात, 60 मज़दूर-दिनों का गुणनफल स्थिर। 20 उल्टे दिन दुगुने कर देता है।",
+          mr: "दुप्पट मजूर, निम्मे दिवस: 6 × 10 ÷ 12 = 5 — व्यस्तानुपात, 60 मजूर-दिवसांचा गुणाकार स्थिर. 20 उलट दिवस दुप्पट करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "x and y are in inverse proportion, with x = 4 when y = 15. What is y when x = 6?",
+          hi: "x और y व्युत्क्रमानुपात में हैं; x = 4 पर y = 15। x = 6 पर y कितना?",
+          mr: "x आणि y व्यस्तानुपातात आहेत; x = 4 असताना y = 15. x = 6 असताना y किती?",
+        },
+        answer: 10,
+        wrong: [22.5, 17, 90],
+        checkExpr: "4*15/6",
+        solution: {
+          en: "The product stays put: xy = 60, so y = 60 ÷ 6 = 10. 22.5 scales y UP with x — that is direct proportion's move.",
+          hi: "गुणनफल टिका रहता है: xy = 60, अतः y = 60 ÷ 6 = 10। 22.5 y को x के साथ बढ़ा देता है — वह अनुक्रमानुपात की चाल है।",
+          mr: "गुणाकार स्थिर राहतो: xy = 60, म्हणून y = 60 ÷ 6 = 10. 22.5 y ला x सोबत वाढवतो — ती समानुपाताची चाल.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A map's scale is 1 cm = 50 km. Two towns sit 4.5 cm apart on it. How many km apart are they really?",
+          hi: "नक़्शे का पैमाना 1 सेमी = 50 किमी है। दो क़स्बे उस पर 4.5 सेमी दूर हैं। असल में कितने किमी दूर?",
+          mr: "नकाशाचे प्रमाण 1 सेमी = 50 किमी. दोन गावे त्यावर 4.5 सेमी दूर आहेत. खरे किती किमी दूर?",
+        },
+        answer: 225,
+        wrong: [54.5, 45, 500],
+        checkExpr: "4.5*50",
+        solution: {
+          en: "Each centimetre carries 50 km: 4.5 × 50 = 225 km. 54.5 adds the scale to the measurement — scales multiply, never add.",
+          hi: "हर सेंटीमीटर 50 किमी ढोता है: 4.5 × 50 = 225 किमी। 54.5 माप में पैमाना जोड़ देता है — पैमाने गुणा होते हैं, जुड़ते कभी नहीं।",
+          mr: "प्रत्येक सेंटिमीटर 50 किमी वाहतो: 4.5 × 50 = 225 किमी. 54.5 मापात प्रमाण मिळवतो — प्रमाणे गुणली जातात, कधी जुळत नाहीत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A photo 4 cm wide and 6 cm tall is enlarged until its height is 15 cm. What is the new WIDTH?",
+          hi: "4 सेमी चौड़ी, 6 सेमी ऊँची तस्वीर बड़ी की जाती है, जब तक ऊँचाई 15 सेमी न हो जाए। नई चौड़ाई कितनी?",
+          mr: "4 सेमी रुंद, 6 सेमी उंच छायाचित्र उंची 15 सेमी होईपर्यंत मोठे केले जाते. नवी रुंदी किती?",
+        },
+        answer: 10,
+        wrong: [13, 9, 25],
+        checkExpr: "4*15/6",
+        solution: {
+          en: "Enlargement scales both sides by 15/6 = 2.5: width 4 × 2.5 = 10 cm. 13 ADDS the 9 cm the height grew — photos scale, they don't stretch by addition.",
+          hi: "बड़ा करना दोनों भुजाओं को 15/6 = 2.5 से गुणता है: चौड़ाई 4 × 2.5 = 10 सेमी। 13 ऊँचाई की बढ़त के 9 सेमी जोड़ देता है — तस्वीरें अनुपात में बढ़ती हैं, जोड़ से नहीं खिंचतीं।",
+          mr: "मोठे करणे दोन्ही बाजूंना 15/6 = 2.5 ने गुणते: रुंदी 4 × 2.5 = 10 सेमी. 13 उंचीच्या वाढीचे 9 सेमी मिळवतो — छायाचित्रे प्रमाणात वाढतात, बेरजेने ताणली जात नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "15 identical books stack 60 cm tall. How tall is a stack of 8 of them?",
+          hi: "15 एक जैसी किताबों की गड्डी 60 सेमी ऊँची है। 8 किताबों की गड्डी कितनी ऊँची?",
+          mr: "15 सारख्या पुस्तकांची थप्पी 60 सेमी उंच आहे. 8 पुस्तकांची थप्पी किती उंच?",
+        },
+        answer: 32,
+        wrong: [53, 30, 120],
+        checkExpr: "60*8/15",
+        solution: {
+          en: "Each book is 4 cm thick: 8 × 4 = 32 cm. 53 subtracts 7 from 60 — book counts don't convert to centimetres one-for-one.",
+          hi: "हर किताब 4 सेमी मोटी: 8 × 4 = 32 सेमी। 53 60 में से 7 घटा देता है — किताबों की गिनती एक-के-बदले-एक सेंटीमीटर नहीं बनती।",
+          mr: "प्रत्येक पुस्तक 4 सेमी जाड: 8 × 4 = 32 सेमी. 53 60 मधून 7 वजा करतो — पुस्तकांची मोजणी एकास-एक सेंटिमीटर होत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two equal pipes fill a tank in 12 hours. How long would THREE such pipes take?",
+          hi: "दो बराबर पाइप टंकी 12 घंटे में भरते हैं। तीन ऐसे पाइप कितना समय लेंगे?",
+          mr: "दोन सारखे पाइप टाकी 12 तासांत भरतात. तीन असे पाइप किती वेळ घेतील?",
+        },
+        answer: 8,
+        wrong: [18, 6, 4],
+        checkExpr: "12*2/3",
+        solution: {
+          en: "Pipe-hours stay fixed: 2 × 12 = 24, so three pipes need 24 ÷ 3 = 8 hours. 18 moves the time the WRONG way — more pipes can only shorten the wait.",
+          hi: "पाइप-घंटे स्थिर रहते हैं: 2 × 12 = 24, अतः तीन पाइपों को 24 ÷ 3 = 8 घंटे। 18 समय को उल्टी दिशा ले जाता है — ज़्यादा पाइप इंतज़ार घटा ही सकते हैं।",
+          mr: "पाइप-तास स्थिर राहतात: 2 × 12 = 24, म्हणून तीन पाइपांना 24 ÷ 3 = 8 तास. 18 वेळ उलट्या दिशेने नेतो — जास्त पाइप वाटच कमी करू शकतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A hostel's food stock feeds 30 students for 40 days. If 20 more students arrive, how many days will it last?",
+          hi: "छात्रावास का राशन 30 विद्यार्थियों को 40 दिन खिलाता है। 20 और आ जाएँ तो कितने दिन चलेगा?",
+          mr: "वसतिगृहाचा शिधा 30 विद्यार्थ्यांना 40 दिवस पुरतो. आणखी 20 आले तर किती दिवस पुरेल?",
+        },
+        answer: 24,
+        wrong: [60, 27, 20],
+        checkExpr: "30*40/50",
+        solution: {
+          en: "Student-days are fixed: 30 × 40 = 1200, and 1200 ÷ 50 = 24 days. 60 feeds the EXTRA mouths with extra days — inverse proportion runs the other way.",
+          hi: "विद्यार्थी-दिन स्थिर हैं: 30 × 40 = 1200, और 1200 ÷ 50 = 24 दिन। 60 ज़्यादा मुँहों को ज़्यादा दिन खिला देता है — व्युत्क्रमानुपात उल्टा चलता है।",
+          mr: "विद्यार्थी-दिवस स्थिर: 30 × 40 = 1200, आणि 1200 ÷ 50 = 24 दिवस. 60 जास्त तोंडांना जास्त दिवस देतो — व्यस्तानुपात उलटा चालतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A wheel makes 45 revolutions to cover 90 m. How many revolutions for 240 m?",
+          hi: "एक पहिया 90 मीटर के लिए 45 चक्कर लेता है। 240 मीटर के लिए कितने चक्कर?",
+          mr: "एक चाक 90 मीटरसाठी 45 फेऱ्या घेते. 240 मीटरसाठी किती फेऱ्या?",
+        },
+        answer: 120,
+        wrong: [480, 110, 60],
+        checkExpr: "45*240/90",
+        solution: {
+          en: "Each revolution rolls 2 m, so 240 needs 120 turns — direct proportion. 110 adds 150 to 45 by hunch, not ratio.",
+          hi: "हर चक्कर 2 मीटर लुढ़काता है, अतः 240 को 120 चक्कर — अनुक्रमानुपात। 110 अंदाज़े से 45 में 150 जोड़ता है, अनुपात से नहीं।",
+          mr: "प्रत्येक फेरी 2 मीटर ढकलते, म्हणून 240 ला 120 फेऱ्या — समानुपात. 110 अंदाजाने 45 मध्ये 150 मिळवतो, गुणोत्तराने नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "5 machines produce 120 boxes in an hour. How many boxes do 8 machines make in an hour?",
+          hi: "5 मशीनें घंटे में 120 डिब्बे बनाती हैं। 8 मशीनें घंटे में कितने डिब्बे बनाएँगी?",
+          mr: "5 यंत्रे तासात 120 खोकी बनवतात. 8 यंत्रे तासात किती खोकी बनवतील?",
+        },
+        answer: 192,
+        wrong: [125, 300, 160],
+        checkExpr: "120*8/5",
+        solution: {
+          en: "Each machine makes 24 an hour: 8 × 24 = 192 boxes — direct proportion in machines. 125 adds 5 boxes for 3 machines, a unit muddle.",
+          hi: "हर मशीन घंटे में 24 बनाती है: 8 × 24 = 192 डिब्बे — मशीनों में अनुक्रमानुपात। 125 तीन मशीनों के बदले 5 डिब्बे जोड़ता है, इकाई का घालमेल।",
+          mr: "प्रत्येक यंत्र तासात 24 बनवते: 8 × 24 = 192 खोकी — यंत्रांत समानुपात. 125 तीन यंत्रांबद्दल 5 खोकी मिळवतो, एककांचा गोंधळ.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A job needs 6 workers for 8 hours. After 2 hours of work, 2 workers leave. How many MORE hours do the remaining 4 need?",
+          hi: "एक काम को 6 मज़दूर 8 घंटे में करते हैं। 2 घंटे काम के बाद 2 मज़दूर चले जाते हैं। बचे 4 को और कितने घंटे लगेंगे?",
+          mr: "एका कामाला 6 मजूर 8 तास लागतात. 2 तास कामानंतर 2 मजूर निघून जातात. उरलेल्या 4 जणांना आणखी किती तास लागतील?",
+        },
+        answer: 9,
+        wrong: [6, 12, 8],
+        checkExpr: "(6*8-6*2)/4",
+        solution: {
+          en: "The job is 48 worker-hours; 12 are done, 36 remain, and 4 workers clear 36 in 9 hours. 6 forgets that the leavers took their hands with them.",
+          hi: "काम 48 मज़दूर-घंटे का है; 12 हो चुके, 36 बाक़ी, और 4 मज़दूर 36 को 9 घंटे में निपटाते हैं। 6 भूल जाता है कि जाने वाले अपने हाथ साथ ले गए।",
+          mr: "काम 48 मजूर-तासांचे; 12 झाले, 36 उरले, आणि 4 मजूर 36 ला 9 तासांत संपवतात. 6 विसरतो की गेलेले आपले हात सोबत घेऊन गेले.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A cyclist at 15 km/h takes 40 minutes for a route. What speed covers the same route in 30 minutes?",
+          hi: "15 किमी/घंटा की साइकिल-चाल से एक रास्ता 40 मिनट लेता है। वही रास्ता 30 मिनट में किस चाल से कटेगा?",
+          mr: "15 किमी/तास वेगाने एक वाट 40 मिनिटे घेते. तीच वाट 30 मिनिटांत कोणत्या वेगाने कापली जाईल?",
+        },
+        answer: 20,
+        wrong: [11.25, 25, 10],
+        checkExpr: "15*40/30",
+        solution: {
+          en: "Speed × time is the fixed distance: 15 × 40 = new speed × 30, so 20 km/h. 11.25 slows down to finish FASTER — the see-saw tipped backwards.",
+          hi: "चाल × समय ही स्थिर दूरी है: 15 × 40 = नई चाल × 30, अतः 20 किमी/घंटा। 11.25 जल्दी पहुँचने को धीमा हो जाता है — झूला उल्टा झुका।",
+          mr: "वेग × वेळ हेच स्थिर अंतर: 15 × 40 = नवा वेग × 30, म्हणून 20 किमी/तास. 11.25 लवकर पोहोचायला हळू होतो — झोका उलटा कलला.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "For a FIXED distance, speed and time see-saw. A trip at 40 km/h takes 3 hours; how long at 60 km/h?",
+          hi: "स्थिर दूरी पर चाल और समय झूले पर हैं। 40 किमी/घंटा से यात्रा 3 घंटे लेती है; 60 किमी/घंटा से कितनी देर?",
+          mr: "स्थिर अंतरासाठी वेग आणि वेळ झोक्यावर असतात. 40 किमी/तासाने प्रवास 3 तास घेतो; 60 किमी/तासाने किती वेळ?",
+        },
+        answer: 2,
+        wrong: [4.5, 2.5, 1.5],
+        checkExpr: "40*3/60",
+        solution: {
+          en: "The distance is 120 km either way: 120 ÷ 60 = 2 hours. 4.5 scales time UP with speed — the direct-proportion reflex applied to an inverse pair. Ask first: does the product stay fixed, or the ratio?",
+          hi: "दूरी दोनों तरह 120 किमी है: 120 ÷ 60 = 2 घंटे। 4.5 समय को चाल के साथ बढ़ा देता है — व्युत्क्रम जोड़ी पर अनुक्रम की आदत। पहले पूछिए: स्थिर गुणनफल रहता है या अनुपात?",
+          mr: "अंतर दोन्हीकडे 120 किमी: 120 ÷ 60 = 2 तास. 4.5 वेळ वेगासोबत वाढवतो — व्यस्त जोडीवर समानुपाताची सवय. आधी विचारा: गुणाकार स्थिर राहतो की गुणोत्तर?",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A 6-ft pole casts a 4-ft shadow. At the same hour a tower's shadow is 60 ft. How tall is the tower?",
+          hi: "6 फ़ुट का खंभा 4 फ़ुट की छाया डालता है। उसी घड़ी मीनार की छाया 60 फ़ुट है। मीनार कितनी ऊँची?",
+          mr: "6 फूट खांब 4 फूट सावली टाकतो. त्याच वेळी मनोऱ्याची सावली 60 फूट आहे. मनोरा किती उंच?",
+        },
+        answer: 90,
+        wrong: [40, 100, 240],
+        checkExpr: "6*60/4",
+        solution: {
+          en: "The sun grants everything the same ratio: height/shadow = 6/4 = 1.5, so the tower is 60 × 1.5 = 90 ft. One pole and one hour measure a tower no ladder reaches — proportion as a surveying tool.",
+          hi: "सूरज सबको एक ही अनुपात देता है: ऊँचाई/छाया = 6/4 = 1.5, अतः मीनार 60 × 1.5 = 90 फ़ुट। एक खंभा और एक घड़ी उस मीनार को नाप देते हैं जहाँ कोई सीढ़ी नहीं पहुँचती — अनुपात बतौर सर्वेक्षण-औज़ार।",
+          mr: "सूर्य साऱ्यांना एकच गुणोत्तर देतो: उंची/सावली = 6/4 = 1.5, म्हणून मनोरा 60 × 1.5 = 90 फूट. एक खांब आणि एक घटका ती मनोरा मोजतात जिथे कोणतीही शिडी पोहोचत नाही — मोजणी-हत्यार म्हणून प्रमाण.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 13 — Direct and Inverse Proportions",
+      name: "Direct and Inverse Proportions",
+      slug: "maths-8-direct-inverse-proportions",
+      summary:
+        "Two kinds of together: ratios that hold and products that hold, hostels and pipes on the see-saw — and a tower measured by its shadow with no ladder at all.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "सीधा और प्रतिलोम समानुपात",
+          summary:
+            "साथ चलने के दो ढंग: टिके अनुपात और टिके गुणनफल, झूले पर छात्रावास और पाइप — और बिना किसी सीढ़ी के छाया से नपी मीनार।",
+        },
+        mr: {
+          name: "समानुपात आणि व्यस्तानुपात",
+          summary:
+            "सोबत चालण्याच्या दोन रीती: टिकणारी गुणोत्तरे आणि टिकणारे गुणाकार, झोक्यावरची वसतिगृहे आणि पाइप — आणि कोणत्याही शिडीशिवाय सावलीने मोजलेला मनोरा.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Factorisation (multiplication run backwards)                 */
+/* ------------------------------------------------------------------------- */
+function factorisation8(): TopicFileOut {
+  const rand = rng("maths-8-factorisation");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the greatest common factor of 12x and 18y?",
+          hi: "12x और 18y का महत्तम समापवर्तक क्या है?",
+          mr: "12x आणि 18y चा महत्तम सामाईक अवयव काय?",
+        },
+        answer: 6,
+        wrong: [3, 12, 36],
+        solution: {
+          en: "The numbers share 6; the letters share nothing: GCF = 6. 36 is the LCM wearing the wrong hat.",
+          hi: "संख्याएँ 6 बाँटती हैं; अक्षरों में कुछ साझा नहीं: म.स. = 6। 36 ग़लत टोपी पहने ल.स. है।",
+          mr: "संख्या 6 वाटतात; अक्षरांत काही सामाईक नाही: म.सा.वि. = 6. 36 हा चुकीची टोपी घातलेला ल.सा.वि.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "5x + 20 = 5(x + ▢). What fills the box?",
+          hi: "5x + 20 = 5(x + ▢)। रिक्त में क्या आएगा?",
+          mr: "5x + 20 = 5(x + ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 4,
+        wrong: [15, 5, 25],
+        checkExpr: "20/5",
+        solution: {
+          en: "Pull the 5 out of both terms: 20 ÷ 5 = 4. 15 subtracts the 5 instead of dividing by it.",
+          hi: "दोनों पदों से 5 बाहर खींचिए: 20 ÷ 5 = 4। 15 पाँच से भाग देने की जगह उसे घटा देता है।",
+          mr: "दोन्ही पदांतून 5 बाहेर काढा: 20 ÷ 5 = 4. 15 पाचाने भागण्याऐवजी तो वजा करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "x² + 5x = x(x + ▢). What fills the box?",
+          hi: "x² + 5x = x(x + ▢)। रिक्त में क्या आएगा?",
+          mr: "x² + 5x = x(x + ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 5,
+        wrong: [1, 6, 4],
+        solution: {
+          en: "Each term surrenders one x: x² gives x, 5x gives 5. Multiply back — x² + 5x ✓ — factoring is checked by undoing it.",
+          hi: "हर पद एक x सौंपता है: x² देता है x, 5x देता है 5। वापस गुणिए — x² + 5x ✓ — गुणनखंडन उसे उलटकर ही जाँचा जाता है।",
+          mr: "प्रत्येक पद एक x देते: x² देतो x, 5x देतो 5. परत गुणा — x² + 5x ✓ — अवयव पाडणे ते उलटूनच तपासले जाते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "x² − 9 = (x + 3)(x − ▢). What fills the box?",
+          hi: "x² − 9 = (x + 3)(x − ▢)। रिक्त में क्या आएगा?",
+          mr: "x² − 9 = (x + 3)(x − ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 3,
+        wrong: [9, 6, 1],
+        solution: {
+          en: "Difference of squares: a² − b² = (a + b)(a − b) with b = √9 = 3. 9 forgets that the identity wants the ROOT.",
+          hi: "वर्गों का अंतर: a² − b² = (a + b)(a − b), जहाँ b = √9 = 3। 9 भूल जाता है कि सर्वसमिका मूल माँगती है।",
+          mr: "वर्गांचा फरक: a² − b² = (a + b)(a − b), जिथे b = √9 = 3. 9 विसरतो की नित्यसमीकरण मूळ मागते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "x² + 7x + 10 = (x + 2)(x + ▢). What fills the box?",
+          hi: "x² + 7x + 10 = (x + 2)(x + ▢)। रिक्त में क्या आएगा?",
+          mr: "x² + 7x + 10 = (x + 2)(x + ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 5,
+        wrong: [7, 10, 3],
+        checkExpr: "10/2",
+        solution: {
+          en: "The pair must multiply to 10 and add to 7: 2 and 5. The partner of 2 is 10 ÷ 2 = 5, and 2 + 5 = 7 ✓.",
+          hi: "जोड़ी का गुणनफल 10 और योग 7 चाहिए: 2 और 5। 2 का साथी 10 ÷ 2 = 5, और 2 + 5 = 7 ✓।",
+          mr: "जोडीचा गुणाकार 10 आणि बेरीज 7 हवी: 2 आणि 5. 2 चा जोडीदार 10 ÷ 2 = 5, आणि 2 + 5 = 7 ✓.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "12a²b ÷ 4ab = ▢a. What is the coefficient in the box?",
+          hi: "12a²b ÷ 4ab = ▢a। रिक्त में गुणांक क्या आएगा?",
+          mr: "12a²b ÷ 4ab = ▢a. रिकाम्यात सहगुणक काय येईल?",
+        },
+        answer: 3,
+        wrong: [8, 4, 16],
+        checkExpr: "12/4",
+        solution: {
+          en: "Numbers divide (12 ÷ 4 = 3), one a survives, the b's cancel: 3a. 8 subtracts the coefficients instead of dividing.",
+          hi: "संख्याएँ भाग होती हैं (12 ÷ 4 = 3), एक a बचता है, b कट जाते हैं: 3a। 8 गुणांकों को भाग की जगह घटा देता है।",
+          mr: "संख्या भागल्या जातात (12 ÷ 4 = 3), एक a उरतो, b रद्द होतात: 3a. 8 सहगुणकांना भागाऐवजी वजा करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "x² + 6x + 9 = (x + ▢)². What fills the box?",
+          hi: "x² + 6x + 9 = (x + ▢)²। रिक्त में क्या आएगा?",
+          mr: "x² + 6x + 9 = (x + ▢)². रिकाम्यात काय येईल?",
+        },
+        answer: 3,
+        wrong: [9, 6, 4.5],
+        checkExpr: "9/3",
+        solution: {
+          en: "A perfect square: the constant is 3² and the middle term 2 × 3 × x checks out. 6 reads the middle coefficient without halving it.",
+          hi: "पूर्ण वर्ग: अचर 3² है और बीच का पद 2 × 3 × x मेल खाता है। 6 बीच का गुणांक बिना आधा किए पढ़ लेता है।",
+          mr: "पूर्ण वर्ग: स्थिरांक 3² आहे आणि मधले पद 2 × 3 × x जुळते. 6 मधला सहगुणक निम्मा न करता वाचतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "x² − x − 12 = (x − 4)(x + ▢). What fills the box?",
+          hi: "x² − x − 12 = (x − 4)(x + ▢)। रिक्त में क्या आएगा?",
+          mr: "x² − x − 12 = (x − 4)(x + ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 3,
+        wrong: [4, 12, 6],
+        checkExpr: "4-1",
+        solution: {
+          en: "Need product −12 and sum −1: the pair is −4 and +3. Check the middle: −4x + 3x = −x ✓.",
+          hi: "गुणनफल −12 और योग −1 चाहिए: जोड़ी −4 और +3। बीच जाँचिए: −4x + 3x = −x ✓।",
+          mr: "गुणाकार −12 आणि बेरीज −1 हवी: जोडी −4 आणि +3. मध्य तपासा: −4x + 3x = −x ✓.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "(7x² + 14x) ÷ 7x = x + ▢. What fills the box?",
+          hi: "(7x² + 14x) ÷ 7x = x + ▢। रिक्त में क्या आएगा?",
+          mr: "(7x² + 14x) ÷ 7x = x + ▢. रिकाम्यात काय येईल?",
+        },
+        answer: 2,
+        wrong: [7, 14, 1],
+        checkExpr: "14/7",
+        solution: {
+          en: "Factor first: 7x(x + 2) ÷ 7x = x + 2. Division by a monomial must serve EVERY term — 14x ÷ 7x = 2 pays its share.",
+          hi: "पहले गुणनखंड: 7x(x + 2) ÷ 7x = x + 2। एकपदी से भाग हर पद तक पहुँचना चाहिए — 14x ÷ 7x = 2 अपना हिस्सा चुकाता है।",
+          mr: "आधी अवयव: 7x(x + 2) ÷ 7x = x + 2. एकपदीने भाग प्रत्येक पदापर्यंत पोहोचला पाहिजे — 14x ÷ 7x = 2 आपला वाटा देतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A student 'simplifies' (x + 2)(x + 3) to x² + 6, dropping the middle term. At x = 10 the CORRECT value is?",
+          hi: "एक विद्यार्थी (x + 2)(x + 3) को बीच का पद गिराकर x² + 6 'सरल' कर देता है। x = 10 पर सही मान कितना?",
+          mr: "एक विद्यार्थी (x + 2)(x + 3) ला मधले पद गाळून x² + 6 'सोपे' करतो. x = 10 वर बरोबर किंमत किती?",
+        },
+        answer: 156,
+        wrong: [106, 60, 136],
+        checkExpr: "12*13",
+        solution: {
+          en: "(10 + 2)(10 + 3) = 12 × 13 = 156. The dropped 5x was worth 50 — exactly the gap to the wrong 106. Numbers audit algebra.",
+          hi: "(10 + 2)(10 + 3) = 12 × 13 = 156। गिराया गया 5x 50 का था — ठीक ग़लत 106 तक का फ़ासला। संख्याएँ बीजगणित की लेखा-जाँच करती हैं।",
+          mr: "(10 + 2)(10 + 3) = 12 × 13 = 156. गाळलेले 5x 50 चे होते — नेमके चुकीच्या 106 पर्यंतचे अंतर. संख्या बीजगणिताची तपासणी करतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Recognise the pattern and evaluate: 5² − 2×5×3 + 3².",
+          hi: "पैटर्न पहचानकर मान निकालिए: 5² − 2×5×3 + 3²।",
+          mr: "नमुना ओळखून किंमत काढा: 5² − 2×5×3 + 3².",
+        },
+        answer: 4,
+        wrong: [64, 16, 2],
+        checkExpr: "2*2",
+        solution: {
+          en: "It is (5 − 3)² = 2² = 4 — the identity read in reverse. 64 computes (5 + 3)², missing the minus in the middle.",
+          hi: "यह (5 − 3)² = 2² = 4 है — उल्टी पढ़ी सर्वसमिका। 64 (5 + 3)² निकालता है, बीच का ऋण चूककर।",
+          mr: "हे (5 − 3)² = 2² = 4 — उलटे वाचलेले नित्यसमीकरण. 64 (5 + 3)² काढतो, मधले ऋण चुकवून.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "z² − 4z − 12 = (z − 6)(z + ▢). What fills the box?",
+          hi: "z² − 4z − 12 = (z − 6)(z + ▢)। रिक्त में क्या आएगा?",
+          mr: "z² − 4z − 12 = (z − 6)(z + ▢). रिकाम्यात काय येईल?",
+        },
+        answer: 2,
+        wrong: [6, 12, 4],
+        checkExpr: "6-4",
+        solution: {
+          en: "Product −12, sum −4: the pair is −6 and +2. The middle confirms: −6z + 2z = −4z ✓.",
+          hi: "गुणनफल −12, योग −4: जोड़ी −6 और +2। बीच पुष्टि करता है: −6z + 2z = −4z ✓।",
+          mr: "गुणाकार −12, बेरीज −4: जोडी −6 आणि +2. मध्य पुष्टी करतो: −6z + 2z = −4z ✓.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "By grouping, ab + bc + ad + cd = (a + c)(b + d). Verify at a=1, b=2, c=3, d=4: what value do BOTH sides give?",
+          hi: "समूहन से ab + bc + ad + cd = (a + c)(b + d)। a=1, b=2, c=3, d=4 पर जाँचिए: दोनों पक्ष क्या मान देते हैं?",
+          mr: "गटांनी ab + bc + ad + cd = (a + c)(b + d). a=1, b=2, c=3, d=4 वर तपासा: दोन्ही बाजू काय किंमत देतात?",
+        },
+        answer: 24,
+        wrong: [10, 14, 30],
+        checkExpr: "4*6",
+        solution: {
+          en: "Left: 2 + 6 + 4 + 12 = 24; right: 4 × 6 = 24 ✓. Grouping is rearrangement, so the value must survive — a mismatch would convict the factoring.",
+          hi: "बायाँ: 2 + 6 + 4 + 12 = 24; दायाँ: 4 × 6 = 24 ✓। समूहन पुनर्व्यवस्था है, अतः मान बचना ही चाहिए — बेमेल गुणनखंडन को दोषी ठहरा देता।",
+          mr: "डावी: 2 + 6 + 4 + 12 = 24; उजवी: 4 × 6 = 24 ✓. गट करणे म्हणजे पुनर्रचना, म्हणून किंमत टिकलीच पाहिजे — विसंगती अवयवांना दोषी ठरवली असती.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "(x² − 25) ÷ (x + 5) = x − ▢. What fills the box?",
+          hi: "(x² − 25) ÷ (x + 5) = x − ▢। रिक्त में क्या आएगा?",
+          mr: "(x² − 25) ÷ (x + 5) = x − ▢. रिकाम्यात काय येईल?",
+        },
+        answer: 5,
+        wrong: [25, 10, 1],
+        solution: {
+          en: "Factor the top: (x + 5)(x − 5), and the (x + 5) cancels: quotient x − 5. Division of polynomials is factorisation wearing its work clothes.",
+          hi: "अंश का गुणनखंड: (x + 5)(x − 5), और (x + 5) कट जाता है: भागफल x − 5। बहुपदों का भाग काम के कपड़े पहने गुणनखंडन ही है।",
+          mr: "अंशाचे अवयव: (x + 5)(x − 5), आणि (x + 5) रद्द होतो: भागफल x − 5. बहुपदींचा भाग म्हणजे कामाचे कपडे घातलेले अवयव पाडणे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Why can 3x + 5 NOT be factorised over whole numbers? The only common factor its terms share is —",
+          hi: "3x + 5 का पूर्ण संख्याओं में गुणनखंडन क्यों नहीं हो सकता? उसके पदों का इकलौता समापवर्तक है —",
+          mr: "3x + 5 चे पूर्ण संख्यांत अवयव का पाडता येत नाहीत? त्याच्या पदांचा एकमेव सामाईक अवयव आहे —",
+        },
+        answer: 1,
+        wrong: [3, 5, 15],
+        solution: {
+          en: "3 and 5 share only 1, and no identity-pattern fits: 3x + 5 is irreducible. Factorisation needs something SHARED to pull out — with only 1 on offer, the expression is already in lowest form.",
+          hi: "3 और 5 केवल 1 बाँटते हैं, और कोई सर्वसमिका-पैटर्न नहीं बैठता: 3x + 5 अखंडनीय है। गुणनखंडन को खींचने के लिए कुछ साझा चाहिए — केवल 1 मिले तो व्यंजक पहले से ही निम्नतम रूप में है।",
+          mr: "3 आणि 5 फक्त 1 वाटतात, आणि कोणताही नित्यसमीकरण-नमुना बसत नाही: 3x + 5 अविभाज्य आहे. अवयव पाडायला काहीतरी सामाईक हवे — फक्त 1 मिळाला तर पदावली आधीच किमान रूपात आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "n² + n is ALWAYS divisible by which number, whatever whole number n is?",
+          hi: "n² + n हमेशा किस संख्या से विभाज्य है, n चाहे कोई भी पूर्ण संख्या हो?",
+          mr: "n² + n नेहमी कोणत्या संख्येने भाग जाते, n कोणतीही पूर्ण संख्या असो?",
+        },
+        answer: 2,
+        wrong: [3, 4, 6],
+        solution: {
+          en: "Factor: n² + n = n(n + 1) — a product of CONSECUTIVE numbers, one of which must be even. Factorisation turns an infinite claim into one visible reason.",
+          hi: "गुणनखंड: n² + n = n(n + 1) — क्रमागत संख्याओं का गुणनफल, जिनमें एक सम होगी ही। गुणनखंडन अनंत दावे को एक दिखते कारण में बदल देता है।",
+          mr: "अवयव: n² + n = n(n + 1) — क्रमागत संख्यांचा गुणाकार, ज्यांतली एक सम असणारच. अवयव पाडणे अनंत दाव्याला एका दिसणाऱ्या कारणात बदलते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 14 — Factorisation",
+      name: "Factorisation",
+      slug: "maths-8-factorisation",
+      summary:
+        "Multiplication run backwards: common factors pulled out, pairs that multiply and add to order, division as cancelling — and n(n+1) proving an infinite claim in one line.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "गुणनखंडन",
+          summary:
+            "उल्टा चलाया गुणा: बाहर खिंचे समापवर्तक, फ़रमाइश पर गुणा-जोड़ करती जोड़ियाँ, कटौती के रूप में भाग — और n(n+1), जो अनंत दावा एक पंक्ति में सिद्ध करता है।",
+        },
+        mr: {
+          name: "अवयव पाडणे",
+          summary:
+            "उलटा चालवलेला गुणाकार: बाहेर काढलेले सामाईक अवयव, हुकुमावर गुणणाऱ्या-जोडणाऱ्या जोड्या, रद्द करणे म्हणून भागाकार — आणि अनंत दावा एका ओळीत सिद्ध करणारा n(n+1).",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 15 — Introduction to Graphs (pictures with coordinates)           */
+/* ------------------------------------------------------------------------- */
+function graphs8(): TopicFileOut {
+  const rand = rng("maths-8-graphs");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the x-coordinate of the origin?",
+          hi: "मूल-बिंदु का x-निर्देशांक क्या है?",
+          mr: "आरंभबिंदूचा x-सहनिर्देशक काय?",
+        },
+        answer: 0,
+        wrong: [1, -1, 10],
+        solution: {
+          en: "The origin is (0, 0) — the corner where both axes meet and all measuring begins.",
+          hi: "मूल-बिंदु (0, 0) है — वह कोना जहाँ दोनों अक्ष मिलते हैं और सारी नाप शुरू होती है।",
+          mr: "आरंभबिंदू (0, 0) आहे — जिथे दोन्ही अक्ष मिळतात आणि सारी मोजणी सुरू होते तो कोपरा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In the point (3, 5), which number is the x-coordinate?",
+          hi: "बिंदु (3, 5) में x-निर्देशांक कौन-सी संख्या है?",
+          mr: "बिंदू (3, 5) मध्ये x-सहनिर्देशक कोणती संख्या?",
+        },
+        answer: 3,
+        wrong: [5, 8, 15],
+        solution: {
+          en: "The first number walks along x, the second climbs y: x = 3. Order is the whole grammar of coordinates — (3, 5) and (5, 3) are different addresses.",
+          hi: "पहली संख्या x पर चलती है, दूसरी y पर चढ़ती है: x = 3। क्रम ही निर्देशांकों का पूरा व्याकरण है — (3, 5) और (5, 3) अलग-अलग पते हैं।",
+          mr: "पहिली संख्या x वर चालते, दुसरी y वर चढते: x = 3. क्रम हेच सहनिर्देशकांचे सारे व्याकरण — (3, 5) आणि (5, 3) वेगळे पत्ते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The point (0, 4) sits on the y-axis. How far is it from the origin?",
+          hi: "बिंदु (0, 4) y-अक्ष पर बैठा है। मूल-बिंदु से कितनी दूर?",
+          mr: "बिंदू (0, 4) y-अक्षावर बसला आहे. आरंभबिंदूपासून किती दूर?",
+        },
+        answer: 4,
+        wrong: [0, 3, 5],
+        checkExpr: "0+4",
+        solution: {
+          en: "On the axis, distance is just the coordinate: 4 units up. 0 reads the x instead of the y.",
+          hi: "अक्ष पर दूरी निर्देशांक ही है: 4 इकाई ऊपर। 0 y की जगह x पढ़ लेता है।",
+          mr: "अक्षावर अंतर म्हणजे सहनिर्देशकच: 4 एकके वर. 0 y ऐवजी x वाचतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How far apart are the points (2, 3) and (2, 7)?",
+          hi: "बिंदु (2, 3) और (2, 7) एक-दूसरे से कितनी दूर हैं?",
+          mr: "बिंदू (2, 3) आणि (2, 7) एकमेकांपासून किती दूर आहेत?",
+        },
+        answer: 4,
+        wrong: [5, 9, 2],
+        checkExpr: "7-3",
+        solution: {
+          en: "Same x, so the gap is vertical: 7 − 3 = 4 units. The pair rides one vertical line — only the y's differ.",
+          hi: "x समान, अतः फ़ासला खड़ा है: 7 − 3 = 4 इकाई। जोड़ी एक खड़ी रेखा पर सवार है — केवल y अलग हैं।",
+          mr: "x समान, म्हणून अंतर उभे: 7 − 3 = 4 एकके. जोडी एका उभ्या रेषेवर स्वार — फक्त y वेगळे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A fare graph charges ₹5 per km. What fare does it show for 7 km?",
+          hi: "किराया-ग्राफ़ ₹5 प्रति किमी दिखाता है। 7 किमी का किराया कितना दिखेगा?",
+          mr: "भाडे-आलेख ₹5 प्रति किमी दाखवतो. 7 किमीचे भाडे किती दिसेल?",
+        },
+        answer: 35,
+        wrong: [12, 57, 75],
+        checkExpr: "5*7",
+        fmt: rupees,
+        solution: {
+          en: "The line rises ₹5 for every km: 5 × 7 = ₹35. Reading a straight-through-origin graph IS multiplication.",
+          hi: "रेखा हर किमी पर ₹5 चढ़ती है: 5 × 7 = ₹35। मूल-बिंदु से गुज़रती सीधी रेखा को पढ़ना गुणा ही है।",
+          mr: "रेषा दर किमीला ₹5 चढते: 5 × 7 = ₹35. आरंभबिंदूतून जाणारी सरळ रेषा वाचणे म्हणजे गुणाकारच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The point (4, 0) lies on the x-axis. How far is it from the origin?",
+          hi: "बिंदु (4, 0) x-अक्ष पर है। मूल-बिंदु से कितनी दूर?",
+          mr: "बिंदू (4, 0) x-अक्षावर आहे. आरंभबिंदूपासून किती दूर?",
+        },
+        answer: 4,
+        wrong: [0, 8, 2],
+        solution: {
+          en: "Zero height, four along: distance 4. Any point with y = 0 lives ON the x-axis — the zero names the axis.",
+          hi: "ऊँचाई शून्य, चार आगे: दूरी 4। जिस बिंदु का y = 0 हो वह x-अक्ष पर ही बसता है — शून्य ही अक्ष का नाम बताता है।",
+          mr: "उंची शून्य, चार पुढे: अंतर 4. ज्याचा y = 0 तो बिंदू x-अक्षावरच राहतो — शून्यच अक्षाचे नाव सांगते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A simple-interest graph for a ₹100 deposit passes through (1 year, ₹110). Reading the same line, what is the value at 3 years?",
+          hi: "₹100 जमा का साधारण-ब्याज ग्राफ़ (1 वर्ष, ₹110) से गुज़रता है। उसी रेखा को पढ़कर 3 वर्ष पर मान कितना?",
+          mr: "₹100 ठेवीचा सरळ-व्याज आलेख (1 वर्ष, ₹110) मधून जातो. तीच रेषा वाचून 3 वर्षांवर किंमत किती?",
+        },
+        answer: 130,
+        wrong: [110, 120, 133],
+        checkExpr: "100+10*3",
+        fmt: rupees,
+        solution: {
+          en: "The line climbs ₹10 a year from 100: at 3 years, 100 + 30 = ₹130. 133 sneaks in compound interest — that curve bends, this line doesn't.",
+          hi: "रेखा 100 से हर वर्ष ₹10 चढ़ती है: 3 वर्ष पर 100 + 30 = ₹130। 133 चुपके से चक्रवृद्धि घुसा देता है — वह वक्र मुड़ता है, यह रेखा नहीं।",
+          mr: "रेषा 100 पासून दरवर्षी ₹10 चढते: 3 वर्षांवर 100 + 30 = ₹130. 133 हळूच चक्रवाढ घुसवतो — तो वक्र वाकतो, ही रेषा नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A distance-time line runs through (0, 0) and (2 h, 60 km). What speed does it show, in km/h?",
+          hi: "दूरी-समय रेखा (0, 0) और (2 घंटे, 60 किमी) से गुज़रती है। वह कितनी चाल दिखाती है, किमी/घंटा में?",
+          mr: "अंतर-काळ रेषा (0, 0) आणि (2 तास, 60 किमी) मधून जाते. ती किती वेग दाखवते, किमी/तासात?",
+        },
+        answer: 30,
+        wrong: [60, 120, 15],
+        checkExpr: "60/2",
+        solution: {
+          en: "Speed is the slope: 60 km in 2 h = 30 km/h. 60 reads the endpoint's height as if time were one hour.",
+          hi: "चाल ढलान है: 2 घंटे में 60 किमी = 30 किमी/घंटा। 60 सिरे की ऊँचाई को यों पढ़ता है मानो समय एक घंटा हो।",
+          mr: "वेग म्हणजे उतार: 2 तासांत 60 किमी = 30 किमी/तास. 60 टोकाची उंची अशी वाचतो जणू वेळ एक तास असावा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In which quadrant (1, 2, 3 or 4) does the point (−3, 5) lie?",
+          hi: "बिंदु (−3, 5) किस चतुर्थांश (1, 2, 3 या 4) में है?",
+          mr: "बिंदू (−3, 5) कोणत्या चरणात (1, 2, 3 वा 4) आहे?",
+        },
+        answer: 2,
+        wrong: [1, 3, 4],
+        solution: {
+          en: "x negative, y positive: left and up — the second quadrant. The quadrants number anticlockwise from the positive-positive first.",
+          hi: "x ऋण, y धन: बाएँ और ऊपर — दूसरा चतुर्थांश। चतुर्थांश धन-धन वाले पहले से वामावर्त गिने जाते हैं।",
+          mr: "x ऋण, y धन: डावीकडे आणि वर — दुसरे चरण. चरणे धन-धन पहिल्यापासून घड्याळाच्या उलट मोजली जातात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Three corners of a rectangle sit at (1,1), (5,1) and (5,4). What is the x-coordinate of the fourth corner?",
+          hi: "आयत के तीन कोने (1,1), (5,1) और (5,4) पर हैं। चौथे कोने का x-निर्देशांक क्या है?",
+          mr: "आयताचे तीन कोपरे (1,1), (5,1) आणि (5,4) वर आहेत. चौथ्या कोपऱ्याचा x-सहनिर्देशक काय?",
+        },
+        answer: 1,
+        wrong: [5, 4, 0],
+        solution: {
+          en: "The fourth corner is (1, 4): it borrows x from the corner below it and y from the corner across. Rectangles copy coordinates in pairs.",
+          hi: "चौथा कोना (1, 4) है: x नीचे वाले कोने से, y सामने वाले से उधार लेता है। आयत निर्देशांक जोड़ों में नक़ल करते हैं।",
+          mr: "चौथा कोपरा (1, 4): x खालच्या कोपऱ्याकडून, y समोरच्याकडून उसना घेतो. आयत सहनिर्देशक जोड्यांत नक्कल करतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A line passes through (0,2), (1,5) and (2,8). Following the pattern, what is y when x = 4?",
+          hi: "एक रेखा (0,2), (1,5) और (2,8) से गुज़रती है। पैटर्न के अनुसार x = 4 पर y कितना?",
+          mr: "एक रेषा (0,2), (1,5) आणि (2,8) मधून जाते. नमुन्यानुसार x = 4 वर y किती?",
+        },
+        answer: 14,
+        wrong: [11, 16, 12],
+        checkExpr: "3*4+2",
+        solution: {
+          en: "Each step right climbs 3: the rule is y = 3x + 2, so y(4) = 14. 11 stops a step early at x = 3.",
+          hi: "हर दायाँ क़दम 3 चढ़ता है: नियम y = 3x + 2, अतः y(4) = 14। 11 x = 3 पर एक क़दम पहले रुक जाता है।",
+          mr: "प्रत्येक उजवे पाऊल 3 चढते: नियम y = 3x + 2, म्हणून y(4) = 14. 11 x = 3 वर एक पाऊल आधी थांबतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Walk from (0,0) to (3,0), then up to (3,4). What is the STRAIGHT-LINE distance back to the origin?",
+          hi: "(0,0) से (3,0), फिर ऊपर (3,4) तक चलिए। मूल-बिंदु तक सीधी दूरी कितनी?",
+          mr: "(0,0) पासून (3,0), मग वर (3,4) पर्यंत चला. आरंभबिंदूपर्यंत सरळ अंतर किती?",
+        },
+        answer: 5,
+        wrong: [7, 12, 4],
+        solution: {
+          en: "The walk drew two legs of a right triangle, 3 and 4: the straight way home is the hypotenuse, 5 — Pythagoras visiting the graph paper.",
+          hi: "चाल ने समकोण त्रिभुज की दो भुजाएँ खींचीं, 3 और 4: घर की सीधी राह कर्ण है, 5 — ग्राफ़-काग़ज़ पर पाइथागोरस पधारे।",
+          mr: "चालीने काटकोन त्रिकोणाच्या दोन बाजू काढल्या, 3 आणि 4: घरची सरळ वाट कर्ण, 5 — आलेख-कागदावर पायथागोरस आले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A conversion graph uses 5 miles = 8 km. Reading it at 40 km, how many miles?",
+          hi: "परिवर्तन-ग्राफ़ 5 मील = 8 किमी मानता है। 40 किमी पर पढ़ें तो कितने मील?",
+          mr: "रूपांतर-आलेख 5 मैल = 8 किमी मानतो. 40 किमीवर वाचल्यास किती मैल?",
+        },
+        answer: 25,
+        wrong: [64, 32, 20],
+        checkExpr: "5*40/8",
+        solution: {
+          en: "40 km is five lots of 8 km, each worth 5 miles: 25 miles. 64 converts the wrong way, multiplying where the graph divides.",
+          hi: "40 किमी यानी 8-8 किमी के पाँच हिस्से, हर एक 5 मील का: 25 मील। 64 उल्टी दिशा में बदलता है, जहाँ ग्राफ़ भाग देता है वहाँ गुणा करके।",
+          mr: "40 किमी म्हणजे 8-8 किमीचे पाच वाटे, प्रत्येक 5 मैलांचा: 25 मैल. 64 उलट्या दिशेने बदलतो, आलेख जिथे भागतो तिथे गुणून.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A temperature graph rises steadily 2° per hour from 24° at 6 am. How many HOURS after 6 am does it reach 32°?",
+          hi: "तापमान-ग्राफ़ सुबह 6 बजे के 24° से हर घंटे 2° चढ़ता है। 32° तक पहुँचने में 6 बजे से कितने घंटे लगेंगे?",
+          mr: "तापमान-आलेख सकाळी 6 च्या 24° पासून दर तासाला 2° चढतो. 32° गाठायला 6 पासून किती तास लागतील?",
+        },
+        answer: 4,
+        wrong: [8, 2, 6],
+        checkExpr: "(32-24)/2",
+        solution: {
+          en: "The climb needed is 8°, at 2° per hour: 4 hours, so 10 am. 8 answers the degrees, not the hours — read the axis you were asked for.",
+          hi: "चढ़ाई 8° की चाहिए, 2° प्रति घंटा से: 4 घंटे, यानी 10 बजे। 8 डिग्रियाँ बताता है, घंटे नहीं — वही अक्ष पढ़िए जो पूछा गया।",
+          mr: "चढण 8° ची हवी, दर तासाला 2° ने: 4 तास, म्हणजे सकाळी 10. 8 अंश सांगतो, तास नाही — विचारलेलाच अक्ष वाचा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The steeper a distance-time line, the faster the motion. A sprinter covers 10 m in 0.1 s near the finish — what near-vertical speed is that, in m/s?",
+          hi: "दूरी-समय रेखा जितनी खड़ी, गति उतनी तेज़। फ़िनिश के पास धावक 0.1 सेकंड में 10 मीटर नापता है — वह लगभग-खड़ी चाल कितनी है, मी/से में?",
+          mr: "अंतर-काळ रेषा जितकी उभी, गती तितकी जलद. फिनिशजवळ धावपटू 0.1 सेकंदात 10 मीटर कापतो — तो जवळजवळ-उभा वेग किती, मी/से मध्ये?",
+        },
+        answer: 100,
+        wrong: [1, 10, 1000],
+        checkExpr: "10/0.1",
+        solution: {
+          en: "10 ÷ 0.1 = 100 m/s — absurdly fast, which is the lesson: as a line nears vertical its speed runs away toward infinity, and a truly vertical line would claim distance covered in NO time. Graphs forbid it by geometry.",
+          hi: "10 ÷ 0.1 = 100 मी/से — बेतुकी तेज़, और यही सबक़ है: रेखा खड़ी होने को हो तो चाल अनंत की ओर भागती है, और सचमुच खड़ी रेखा शून्य समय में दूरी का दावा करती। ग्राफ़ उसे ज्यामिति से ही वर्जित करते हैं।",
+          mr: "10 ÷ 0.1 = 100 मी/से — हास्यास्पद जलद, आणि हाच धडा: रेषा उभी होत जाता वेग अनंताकडे पळतो, आणि खरोखर उभी रेषा शून्य वेळात अंतराचा दावा करती. आलेख तिला भूमितीनेच निषिद्ध करतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A straight line joins (2, 10) and (6, 30). Reading BETWEEN the plotted points, what is y at x = 4?",
+          hi: "सीधी रेखा (2, 10) और (6, 30) को जोड़ती है। अंकित बिंदुओं के बीच पढ़ें तो x = 4 पर y कितना?",
+          mr: "सरळ रेषा (2, 10) आणि (6, 30) ला जोडते. आखलेल्या बिंदूंच्या मध्ये वाचल्यास x = 4 वर y किती?",
+        },
+        answer: 20,
+        wrong: [15, 25, 40],
+        checkExpr: "(10+30)/2",
+        solution: {
+          en: "x = 4 is midway between 2 and 6, and on a straight line midway-in means midway-up: (10 + 30)/2 = 20. Interpolation is the graph's quiet gift — values you never measured, read off the ruler.",
+          hi: "x = 4 2 और 6 के बीचोबीच है, और सीधी रेखा पर बीच का x यानी बीच का y: (10 + 30)/2 = 20। अंतर्वेशन ग्राफ़ की ख़ामोश सौग़ात है — जो मान कभी नापे नहीं, पैमाने से पढ़ लिए।",
+          mr: "x = 4 2 आणि 6 च्या मध्यभागी, आणि सरळ रेषेवर मधला x म्हणजे मधला y: (10 + 30)/2 = 20. अंतर्वेशन ही आलेखाची मूक देणगी — कधी न मोजलेल्या किमती, पट्टीवरून वाचलेल्या.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 15 — Introduction to Graphs",
+      name: "Introduction to Graphs",
+      slug: "maths-8-graphs",
+      summary:
+        "Coordinates as addresses, slopes as speeds and rates, rectangles copying corners — and interpolation reading values nobody ever measured.",
+      position: 15,
+      translations: {
+        hi: {
+          name: "आलेखों से परिचय",
+          summary:
+            "पतों के रूप में निर्देशांक, चाल और दर के रूप में ढलानें, कोने नक़ल करते आयत — और अंतर्वेशन, जो कभी न नापे गए मान पढ़ लेता है।",
+        },
+        mr: {
+          name: "आलेखांची ओळख",
+          summary:
+            "पत्ते म्हणून सहनिर्देशक, वेग आणि दर म्हणून उतार, कोपरे नक्कल करणारे आयत — आणि कोणी कधी न मोजलेल्या किमती वाचणारे अंतर्वेशन.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 16 — Playing with Numbers (digits under oath)                     */
+/* ------------------------------------------------------------------------- */
+function playingWithNumbers8(): TopicFileOut {
+  const rand = rng("maths-8-playing-with-numbers");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Write 47 in the general form 10a + b. What is a?",
+          hi: "47 को सामान्य रूप 10a + b में लिखिए। a क्या है?",
+          mr: "47 ला सामान्य रूप 10a + b मध्ये लिहा. a काय?",
+        },
+        answer: 4,
+        wrong: [7, 47, 10],
+        solution: {
+          en: "47 = 10 × 4 + 7: the tens digit a is 4, the units digit b is 7. The general form is how algebra gets its hands on digits.",
+          hi: "47 = 10 × 4 + 7: दहाई a है 4, इकाई b है 7। सामान्य रूप ही वह राह है जिससे बीजगणित अंकों तक हाथ पहुँचाता है।",
+          mr: "47 = 10 × 4 + 7: दशक a म्हणजे 4, एकक b म्हणजे 7. सामान्य रूप हीच ती वाट जिने बीजगणित अंकांपर्यंत हात पोहोचवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the digit-sum of 729?",
+          hi: "729 का अंक-योग क्या है?",
+          mr: "729 ची अंक-बेरीज किती?",
+        },
+        answer: 18,
+        wrong: [17, 9, 19],
+        checkExpr: "7+2+9",
+        solution: {
+          en: "7 + 2 + 9 = 18, itself divisible by 9 — so 729 is too (it is 27²). The digit-sum is divisibility's fastest witness.",
+          hi: "7 + 2 + 9 = 18, जो स्वयं 9 से विभाज्य है — अतः 729 भी (वह 27² है)। अंक-योग विभाज्यता का सबसे तेज़ गवाह है।",
+          mr: "7 + 2 + 9 = 18, जे स्वतः 9 ने भाग जाते — म्हणून 729 ही (ते 27² आहे). अंक-बेरीज ही भाज्यतेची सर्वांत जलद साक्षीदार.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A two-digit number plus its reverse is always 11 × (digit sum). Compute 35 + 53.",
+          hi: "दो अंकों की संख्या और उसका पलटा रूप जोड़ने पर सदा 11 × (अंक-योग) मिलता है। 35 + 53 निकालिए।",
+          mr: "दोन अंकी संख्या आणि तिचे उलटे रूप जोडल्यास नेहमी 11 × (अंक-बेरीज) मिळते. 35 + 53 काढा.",
+        },
+        answer: 88,
+        wrong: [98, 78, 80],
+        checkExpr: "35+53",
+        solution: {
+          en: "35 + 53 = 88 = 11 × 8, and 8 is 3 + 5 ✓ — the general form (10a + b) + (10b + a) = 11(a + b) promised it.",
+          hi: "35 + 53 = 88 = 11 × 8, और 8 है 3 + 5 ✓ — सामान्य रूप (10a + b) + (10b + a) = 11(a + b) ने यही वादा किया था।",
+          mr: "35 + 53 = 88 = 11 × 8, आणि 8 म्हणजे 3 + 5 ✓ — सामान्य रूप (10a + b) + (10b + a) = 11(a + b) ने हेच वचन दिले होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "For digits a = 6, b = 2: (10a + b) − (10b + a) = 9 × (a − b). What is the value?",
+          hi: "अंक a = 6, b = 2 के लिए: (10a + b) − (10b + a) = 9 × (a − b)। मान कितना?",
+          mr: "अंक a = 6, b = 2 साठी: (10a + b) − (10b + a) = 9 × (a − b). किंमत किती?",
+        },
+        answer: 36,
+        wrong: [44, 40, 4],
+        checkExpr: "9*4",
+        solution: {
+          en: "62 − 26 = 36 = 9 × 4 ✓. Reversal differences are ALWAYS multiples of 9 — the identity guarantees what no amount of checking could.",
+          hi: "62 − 26 = 36 = 9 × 4 ✓। पलट-अंतर सदा 9 के गुणज होते हैं — सर्वसमिका वह पक्का करती है जो कोई भी जाँच नहीं कर पाती।",
+          mr: "62 − 26 = 36 = 9 × 4 ✓. उलट-फरक नेहमी 9 चे पट असतात — नित्यसमीकरण ते पक्के करते जे कितीही तपासण्या करू शकत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the SMALLEST digit ▢ that makes 31▢5 divisible by 9?",
+          hi: "कौन-सा छोटे-से-छोटा अंक ▢ 31▢5 को 9 से विभाज्य बनाता है?",
+          mr: "कोणता लहानात लहान अंक ▢ 31▢5 ला 9 ने भाग जाईल असे करतो?",
+        },
+        answer: 0,
+        wrong: [9, 1, 3],
+        solution: {
+          en: "3 + 1 + 5 = 9 already, so ▢ = 0 works (and 9 would too — the question asked for the smallest). Digit-sum arithmetic does all the dividing.",
+          hi: "3 + 1 + 5 = 9 पहले से, अतः ▢ = 0 चलता है (9 भी चलता — पर सबसे छोटा पूछा था)। भाग का सारा काम अंक-योग कर देता है।",
+          mr: "3 + 1 + 5 = 9 आधीच, म्हणून ▢ = 0 चालतो (9 ही चालला असता — पण लहानात लहान विचारला होता). भागाचे सारे काम अंक-बेरीज करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The test for 11 uses the alternating sum. For 308, compute 3 − 0 + 8.",
+          hi: "11 की जाँच एकांतर योग से होती है। 308 के लिए 3 − 0 + 8 निकालिए।",
+          mr: "11 ची चाचणी एकांतर बेरजेने होते. 308 साठी 3 − 0 + 8 काढा.",
+        },
+        answer: 11,
+        wrong: [0, 5, 1],
+        checkExpr: "3-0+8",
+        solution: {
+          en: "3 − 0 + 8 = 11, itself a multiple of 11 — so 308 divides by 11 (it is 28 × 11). The alternating sum is 11's private detector.",
+          hi: "3 − 0 + 8 = 11, स्वयं 11 का गुणज — अतः 308 11 से विभाजित होता है (वह 28 × 11 है)। एकांतर योग 11 का निजी संसूचक है।",
+          mr: "3 − 0 + 8 = 11, स्वतः 11 चा पट — म्हणून 308 ला 11 ने भाग जातो (ते 28 × 11 आहे). एकांतर बेरीज हा 11 चा खासगी शोधक.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Letter puzzle: A + A + A ends in A itself (a nonzero digit), because 3 × A ends in A. What is A?",
+          hi: "अक्षर-पहेली: A + A + A का अंत स्वयं A पर होता है (शून्येतर अंक), क्योंकि 3 × A का अंत A है। A क्या है?",
+          mr: "अक्षर-कोडे: A + A + A चा शेवट स्वतः A वर होतो (शून्येतर अंक), कारण 3 × A चा शेवट A आहे. A काय?",
+        },
+        answer: 5,
+        wrong: [0, 2, 3],
+        solution: {
+          en: "3 × 5 = 15, ending in 5 ✓ — no other nonzero digit survives the test. Puzzles like this are divisibility running in disguise.",
+          hi: "3 × 5 = 15, अंत 5 पर ✓ — कोई और शून्येतर अंक इस जाँच से नहीं बचता। ऐसी पहेलियाँ भेस बदले विभाज्यता ही हैं।",
+          mr: "3 × 5 = 15, शेवट 5 वर ✓ — दुसरा कोणताही शून्येतर अंक या चाचणीतून वाचत नाही. अशी कोडी म्हणजे वेष बदललेली भाज्यताच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "If 21a5 is divisible by 3 and a is the LARGEST such digit, what is a?",
+          hi: "यदि 21a5 3 से विभाज्य है और a ऐसा सबसे बड़ा अंक है, तो a क्या है?",
+          mr: "जर 21a5 ला 3 ने भाग जातो आणि a असा सर्वांत मोठा अंक असेल, तर a काय?",
+        },
+        answer: 7,
+        wrong: [4, 1, 9],
+        solution: {
+          en: "2 + 1 + 5 = 8, so 8 + a must be a multiple of 3: a ∈ {1, 4, 7}, largest 7. 9 pushes the sum to 17 — not a multiple of 3.",
+          hi: "2 + 1 + 5 = 8, अतः 8 + a 3 का गुणज हो: a ∈ {1, 4, 7}, सबसे बड़ा 7। 9 योग को 17 पहुँचा देता है — 3 का गुणज नहीं।",
+          mr: "2 + 1 + 5 = 8, म्हणून 8 + a 3 चा पट हवा: a ∈ {1, 4, 7}, सर्वांत मोठा 7. 9 बेरीज 17 वर नेतो — 3 चा पट नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "For digits 4 and 9, compute 49 + 94.",
+          hi: "अंक 4 और 9 के लिए 49 + 94 निकालिए।",
+          mr: "अंक 4 आणि 9 साठी 49 + 94 काढा.",
+        },
+        answer: 143,
+        wrong: [133, 153, 121],
+        checkExpr: "49+94",
+        solution: {
+          en: "49 + 94 = 143 = 11 × 13, and 13 = 4 + 9 ✓ — the 11 × (digit-sum) rule holding even when the sum carries past 9.",
+          hi: "49 + 94 = 143 = 11 × 13, और 13 = 4 + 9 ✓ — 11 × (अंक-योग) का नियम तब भी टिका जब योग 9 के पार गया।",
+          mr: "49 + 94 = 143 = 11 × 13, आणि 13 = 4 + 9 ✓ — 11 × (अंक-बेरीज) चा नियम बेरीज 9 पलीकडे गेली तरी टिकलेला.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Three-digit reversal: abc − cba = 99 × (a − c). Compute 852 − 258.",
+          hi: "तीन अंकों का पलटा: abc − cba = 99 × (a − c)। 852 − 258 निकालिए।",
+          mr: "तीन अंकांचे उलटे: abc − cba = 99 × (a − c). 852 − 258 काढा.",
+        },
+        answer: 594,
+        wrong: [604, 494, 606],
+        checkExpr: "852-258",
+        solution: {
+          en: "852 − 258 = 594 = 99 × 6, and 6 = 8 − 2 ✓. The middle digit vanishes from the formula entirely — it never mattered.",
+          hi: "852 − 258 = 594 = 99 × 6, और 6 = 8 − 2 ✓। बीच का अंक सूत्र से पूरी तरह ग़ायब है — उसका कभी महत्व था ही नहीं।",
+          mr: "852 − 258 = 594 = 99 × 6, आणि 6 = 8 − 2 ✓. मधला अंक सूत्रातून पूर्ण गायब — त्याला कधी महत्त्वच नव्हते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "1331 passes the 11-test (1 − 3 + 3 − 1 = 0). What is 1331 ÷ 11?",
+          hi: "1331 11-जाँच पास करता है (1 − 3 + 3 − 1 = 0)। 1331 ÷ 11 कितना?",
+          mr: "1331 11-चाचणी उत्तीर्ण होतो (1 − 3 + 3 − 1 = 0). 1331 ÷ 11 किती?",
+        },
+        answer: 121,
+        wrong: [111, 131, 101],
+        checkExpr: "1331/11",
+        solution: {
+          en: "1331 ÷ 11 = 121 — and the tower goes on: 121 = 11², so 1331 = 11³. The test found the factor; division found the family.",
+          hi: "1331 ÷ 11 = 121 — और मीनार आगे बढ़ती है: 121 = 11², अतः 1331 = 11³। जाँच ने गुणनखंड खोजा; भाग ने ख़ानदान।",
+          mr: "1331 ÷ 11 = 121 — आणि मनोरा पुढे जातो: 121 = 11², म्हणून 1331 = 11³. चाचणीने अवयव शोधला; भागाने घराणे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A number leaves remainder 3 when divided by 9. What remainder does its DIGIT-SUM leave when divided by 9?",
+          hi: "एक संख्या 9 से भाग देने पर शेष 3 छोड़ती है। उसका अंक-योग 9 से भाग देने पर क्या शेष छोड़ेगा?",
+          mr: "एक संख्या 9 ने भागल्यास बाकी 3 उरते. तिची अंक-बेरीज 9 ने भागल्यास काय बाकी उरेल?",
+        },
+        answer: 3,
+        wrong: [0, 6, 9],
+        solution: {
+          en: "A number and its digit-sum always share the same remainder mod 9 — because 10, 100, 1000 each leave remainder 1. That secret powers every digit-sum test.",
+          hi: "संख्या और उसका अंक-योग 9 के भाग में सदा एक ही शेष बाँटते हैं — क्योंकि 10, 100, 1000 हर एक शेष 1 छोड़ते हैं। यही राज़ हर अंक-योग जाँच को चलाता है।",
+          mr: "संख्या आणि तिची अंक-बेरीज 9 च्या भागात नेहमी एकच बाकी वाटतात — कारण 10, 100, 1000 प्रत्येक बाकी 1 ठेवतात. हेच गुपित प्रत्येक अंक-बेरीज चाचणी चालवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Take 62, reverse to 26, subtract: 36. The digits of ANY such difference sum to —",
+          hi: "62 लीजिए, पलटकर 26, घटाइए: 36। ऐसे किसी भी अंतर के अंकों का योग होता है —",
+          mr: "62 घ्या, उलटवून 26, वजा करा: 36. अशा कोणत्याही फरकाच्या अंकांची बेरीज असते —",
+        },
+        answer: 9,
+        wrong: [6, 18, 12],
+        checkExpr: "3+6",
+        solution: {
+          en: "The difference is always 9(a − b), a multiple of 9 — and every 2-digit multiple of 9 has digit-sum 9. Try any pair; the trick never misses, because the algebra never does.",
+          hi: "अंतर सदा 9(a − b) है, 9 का गुणज — और 9 के हर दो-अंकीय गुणज का अंक-योग 9 है। कोई भी जोड़ी आज़माइए; तरकीब कभी नहीं चूकती, क्योंकि बीजगणित कभी नहीं चूकता।",
+          mr: "फरक नेहमी 9(a − b), 9 चा पट — आणि 9 च्या प्रत्येक दोन-अंकी पटाची अंक-बेरीज 9. कोणतीही जोडी वापरा; युक्ती कधी चुकत नाही, कारण बीजगणित कधी चुकत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "AB + BA = 121, so A + B = 11. If A = 7, what is B?",
+          hi: "AB + BA = 121, अतः A + B = 11। यदि A = 7, तो B क्या?",
+          mr: "AB + BA = 121, म्हणून A + B = 11. जर A = 7, तर B काय?",
+        },
+        answer: 4,
+        wrong: [3, 5, 7],
+        checkExpr: "11-7",
+        solution: {
+          en: "11(A + B) = 121 forces A + B = 11, so B = 4. Check: 74 + 47 = 121 ✓ — the letters were digits under oath all along.",
+          hi: "11(A + B) = 121 से A + B = 11, अतः B = 4। जाँच: 74 + 47 = 121 ✓ — अक्षर शुरू से हलफ़ पर बँधे अंक थे।",
+          mr: "11(A + B) = 121 मुळे A + B = 11, म्हणून B = 4. पडताळणी: 74 + 47 = 121 ✓ — अक्षरे सुरुवातीपासून शपथेवरचे अंक होती.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The trick 'write any 3-digit number twice, like 583583 — it always divides by 7, 11 AND 13' works because abcabc = abc × ▢. What is the multiplier?",
+          hi: "तरकीब 'कोई तीन अंकों की संख्या दो बार लिखिए, जैसे 583583 — वह सदा 7, 11 और 13 से विभाजित होती है' इसलिए चलती है कि abcabc = abc × ▢। गुणक क्या है?",
+          mr: "युक्ती 'कोणतीही तीन अंकी संख्या दोनदा लिहा, जसे 583583 — तिला नेहमी 7, 11 आणि 13 ने भाग जातो' म्हणून चालते की abcabc = abc × ▢. गुणक काय?",
+        },
+        answer: 1001,
+        wrong: [111, 101, 10001],
+        checkExpr: "7*11*13",
+        solution: {
+          en: "Writing abc twice multiplies it by 1001, and 1001 = 7 × 11 × 13 — all three divisors ride in automatically. The magician's secret is a factorisation.",
+          hi: "abc को दो बार लिखना उसे 1001 से गुणा करना है, और 1001 = 7 × 11 × 13 — तीनों भाजक अपने आप सवार हो जाते हैं। जादूगर का राज़ एक गुणनखंडन है।",
+          mr: "abc दोनदा लिहिणे म्हणजे त्याला 1001 ने गुणणे, आणि 1001 = 7 × 11 × 13 — तिन्ही भाजक आपोआप स्वार होतात. जादूगाराचे गुपित म्हणजे एक अवयव-रचना.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Casting out nines checks 1234 × 56 = 69104: reduce 69104's digit-sum (6+9+1+0+4 = 20) mod 9. What does it reduce to?",
+          hi: "नौ निकालकर जाँच: 1234 × 56 = 69104 के लिए 69104 का अंक-योग (6+9+1+0+4 = 20) 9 के भाग में घटाइए। क्या बचता है?",
+          mr: "नऊ काढून तपासणी: 1234 × 56 = 69104 साठी 69104 ची अंक-बेरीज (6+9+1+0+4 = 20) 9 च्या भागात घटवा. काय उरते?",
+        },
+        answer: 2,
+        wrong: [0, 9, 1],
+        checkExpr: "(6+9+1+0+4)-18",
+        solution: {
+          en: "20 reduces to 2 — and the factors reduce to 1 and 2, whose product is 2 ✓: the multiplication PASSES the nines-check. A mismatch would have proved an error; a match only says 'possibly right' — the old accountants' one-way test.",
+          hi: "20 घटकर 2 — और गुणनखंड घटकर 1 और 2, जिनका गुणनफल 2 ✓: गुणा नौ-जाँच पास करता है। बेमेल ग़लती सिद्ध कर देता; मेल केवल कहता है 'शायद सही' — पुराने मुनीमों की एकतरफ़ा जाँच।",
+          mr: "20 घटून 2 — आणि घटक घटून 1 आणि 2, ज्यांचा गुणाकार 2 ✓: गुणाकार नऊ-तपासणी उत्तीर्ण. विसंगतीने चूक सिद्ध केली असती; जुळणी फक्त म्हणते 'बहुधा बरोबर' — जुन्या मुनीमांची एकतर्फी चाचणी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 16 — Playing with Numbers",
+      name: "Playing with Numbers",
+      slug: "maths-8-playing-with-numbers",
+      summary:
+        "Digits put under algebra's oath: reversal sums and differences obeying 11 and 9, letter puzzles as divisibility in disguise — and the magician's 1001 unmasked as 7 × 11 × 13.",
+      position: 16,
+      translations: {
+        hi: {
+          name: "संख्याओं के साथ खेल",
+          summary:
+            "बीजगणित के हलफ़ पर बँधे अंक: 11 और 9 को मानते पलट-योग और अंतर, भेस बदले विभाज्यता जैसी अक्षर-पहेलियाँ — और जादूगर का 1001, जो 7 × 11 × 13 निकला।",
+        },
+        mr: {
+          name: "संख्यांशी खेळ",
+          summary:
+            "बीजगणिताच्या शपथेवरचे अंक: 11 आणि 9 ला मानणाऱ्या उलट-बेरजा आणि फरक, वेष बदललेल्या भाज्यतेसारखी अक्षर-कोडी — आणि जादूगाराचा 1001, जो 7 × 11 × 13 निघाला.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G8_MATHS: TopicFileOut[] = [
   rationalNumbers8(),
   linearEquations8(),
@@ -3584,4 +4993,8 @@ export const G8_MATHS: TopicFileOut[] = [
   algebraicIdentities(),
   mensuration8(),
   exponentsAndPowers8(),
+  proportions8(),
+  factorisation8(),
+  graphs8(),
+  playingWithNumbers8(),
 ];

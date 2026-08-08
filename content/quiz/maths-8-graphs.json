@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 15 — Introduction to Graphs",
+  "name": "Introduction to Graphs",
+  "slug": "maths-8-graphs",
+  "summary": "Coordinates as addresses, slopes as speeds and rates, rectangles copying corners — and interpolation reading values nobody ever measured.",
+  "position": 15,
+  "translations": {
+    "hi": {
+      "name": "आलेखों से परिचय",
+      "summary": "पतों के रूप में निर्देशांक, चाल और दर के रूप में ढलानें, कोने नक़ल करते आयत — और अंतर्वेशन, जो कभी न नापे गए मान पढ़ लेता है।"
+    },
+    "mr": {
+      "name": "आलेखांची ओळख",
+      "summary": "पत्ते म्हणून सहनिर्देशक, वेग आणि दर म्हणून उतार, कोपरे नक्कल करणारे आयत — आणि कोणी कधी न मोजलेल्या किमती वाचणारे अंतर्वेशन."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the x-coordinate of the origin?",
+      "choices": [
+        "1",
+        "0",
+        "-1",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "The origin is (0, 0) — the corner where both axes meet and all measuring begins.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मूल-बिंदु का x-निर्देशांक क्या है?",
+          "choices": [
+            "1",
+            "0",
+            "-1",
+            "10"
+          ],
+          "solution": "मूल-बिंदु (0, 0) है — वह कोना जहाँ दोनों अक्ष मिलते हैं और सारी नाप शुरू होती है।"
+        },
+        "mr": {
+          "stem": "आरंभबिंदूचा x-सहनिर्देशक काय?",
+          "choices": [
+            "1",
+            "0",
+            "-1",
+            "10"
+          ],
+          "solution": "आरंभबिंदू (0, 0) आहे — जिथे दोन्ही अक्ष मिळतात आणि सारी मोजणी सुरू होते तो कोपरा."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In the point (3, 5), which number is the x-coordinate?",
+      "choices": [
+        "5",
+        "3",
+        "15",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The first number walks along x, the second climbs y: x = 3. Order is the whole grammar of coordinates — (3, 5) and (5, 3) are different addresses.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (3, 5) में x-निर्देशांक कौन-सी संख्या है?",
+          "choices": [
+            "5",
+            "3",
+            "15",
+            "8"
+          ],
+          "solution": "पहली संख्या x पर चलती है, दूसरी y पर चढ़ती है: x = 3। क्रम ही निर्देशांकों का पूरा व्याकरण है — (3, 5) और (5, 3) अलग-अलग पते हैं।"
+        },
+        "mr": {
+          "stem": "बिंदू (3, 5) मध्ये x-सहनिर्देशक कोणती संख्या?",
+          "choices": [
+            "5",
+            "3",
+            "15",
+            "8"
+          ],
+          "solution": "पहिली संख्या x वर चालते, दुसरी y वर चढते: x = 3. क्रम हेच सहनिर्देशकांचे सारे व्याकरण — (3, 5) आणि (5, 3) वेगळे पत्ते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The point (0, 4) sits on the y-axis. How far is it from the origin?",
+      "choices": [
+        "5",
+        "3",
+        "4",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "On the axis, distance is just the coordinate: 4 units up. 0 reads the x instead of the y.",
+      "checkExpr": "0+4",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (0, 4) y-अक्ष पर बैठा है। मूल-बिंदु से कितनी दूर?",
+          "choices": [
+            "5",
+            "3",
+            "4",
+            "0"
+          ],
+          "solution": "अक्ष पर दूरी निर्देशांक ही है: 4 इकाई ऊपर। 0 y की जगह x पढ़ लेता है।"
+        },
+        "mr": {
+          "stem": "बिंदू (0, 4) y-अक्षावर बसला आहे. आरंभबिंदूपासून किती दूर?",
+          "choices": [
+            "5",
+            "3",
+            "4",
+            "0"
+          ],
+          "solution": "अक्षावर अंतर म्हणजे सहनिर्देशकच: 4 एकके वर. 0 y ऐवजी x वाचतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How far apart are the points (2, 3) and (2, 7)?",
+      "choices": [
+        "4",
+        "5",
+        "9",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Same x, so the gap is vertical: 7 − 3 = 4 units. The pair rides one vertical line — only the y's differ.",
+      "checkExpr": "7-3",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (2, 3) और (2, 7) एक-दूसरे से कितनी दूर हैं?",
+          "choices": [
+            "4",
+            "5",
+            "9",
+            "2"
+          ],
+          "solution": "x समान, अतः फ़ासला खड़ा है: 7 − 3 = 4 इकाई। जोड़ी एक खड़ी रेखा पर सवार है — केवल y अलग हैं।"
+        },
+        "mr": {
+          "stem": "बिंदू (2, 3) आणि (2, 7) एकमेकांपासून किती दूर आहेत?",
+          "choices": [
+            "4",
+            "5",
+            "9",
+            "2"
+          ],
+          "solution": "x समान, म्हणून अंतर उभे: 7 − 3 = 4 एकके. जोडी एका उभ्या रेषेवर स्वार — फक्त y वेगळे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A fare graph charges ₹5 per km. What fare does it show for 7 km?",
+      "choices": [
+        "₹12",
+        "₹75",
+        "₹57",
+        "₹35"
+      ],
+      "answerIndex": 3,
+      "solution": "The line rises ₹5 for every km: 5 × 7 = ₹35. Reading a straight-through-origin graph IS multiplication.",
+      "checkExpr": "5*7",
+      "translations": {
+        "hi": {
+          "stem": "किराया-ग्राफ़ ₹5 प्रति किमी दिखाता है। 7 किमी का किराया कितना दिखेगा?",
+          "choices": [
+            "₹12",
+            "₹75",
+            "₹57",
+            "₹35"
+          ],
+          "solution": "रेखा हर किमी पर ₹5 चढ़ती है: 5 × 7 = ₹35। मूल-बिंदु से गुज़रती सीधी रेखा को पढ़ना गुणा ही है।"
+        },
+        "mr": {
+          "stem": "भाडे-आलेख ₹5 प्रति किमी दाखवतो. 7 किमीचे भाडे किती दिसेल?",
+          "choices": [
+            "₹12",
+            "₹75",
+            "₹57",
+            "₹35"
+          ],
+          "solution": "रेषा दर किमीला ₹5 चढते: 5 × 7 = ₹35. आरंभबिंदूतून जाणारी सरळ रेषा वाचणे म्हणजे गुणाकारच."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The point (4, 0) lies on the x-axis. How far is it from the origin?",
+      "choices": [
+        "2",
+        "4",
+        "0",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Zero height, four along: distance 4. Any point with y = 0 lives ON the x-axis — the zero names the axis.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (4, 0) x-अक्ष पर है। मूल-बिंदु से कितनी दूर?",
+          "choices": [
+            "2",
+            "4",
+            "0",
+            "8"
+          ],
+          "solution": "ऊँचाई शून्य, चार आगे: दूरी 4। जिस बिंदु का y = 0 हो वह x-अक्ष पर ही बसता है — शून्य ही अक्ष का नाम बताता है।"
+        },
+        "mr": {
+          "stem": "बिंदू (4, 0) x-अक्षावर आहे. आरंभबिंदूपासून किती दूर?",
+          "choices": [
+            "2",
+            "4",
+            "0",
+            "8"
+          ],
+          "solution": "उंची शून्य, चार पुढे: अंतर 4. ज्याचा y = 0 तो बिंदू x-अक्षावरच राहतो — शून्यच अक्षाचे नाव सांगते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A simple-interest graph for a ₹100 deposit passes through (1 year, ₹110). Reading the same line, what is the value at 3 years?",
+      "choices": [
+        "₹130",
+        "₹133",
+        "₹110",
+        "₹120"
+      ],
+      "answerIndex": 0,
+      "solution": "The line climbs ₹10 a year from 100: at 3 years, 100 + 30 = ₹130. 133 sneaks in compound interest — that curve bends, this line doesn't.",
+      "checkExpr": "100+10*3",
+      "translations": {
+        "hi": {
+          "stem": "₹100 जमा का साधारण-ब्याज ग्राफ़ (1 वर्ष, ₹110) से गुज़रता है। उसी रेखा को पढ़कर 3 वर्ष पर मान कितना?",
+          "choices": [
+            "₹130",
+            "₹133",
+            "₹110",
+            "₹120"
+          ],
+          "solution": "रेखा 100 से हर वर्ष ₹10 चढ़ती है: 3 वर्ष पर 100 + 30 = ₹130। 133 चुपके से चक्रवृद्धि घुसा देता है — वह वक्र मुड़ता है, यह रेखा नहीं।"
+        },
+        "mr": {
+          "stem": "₹100 ठेवीचा सरळ-व्याज आलेख (1 वर्ष, ₹110) मधून जातो. तीच रेषा वाचून 3 वर्षांवर किंमत किती?",
+          "choices": [
+            "₹130",
+            "₹133",
+            "₹110",
+            "₹120"
+          ],
+          "solution": "रेषा 100 पासून दरवर्षी ₹10 चढते: 3 वर्षांवर 100 + 30 = ₹130. 133 हळूच चक्रवाढ घुसवतो — तो वक्र वाकतो, ही रेषा नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A distance-time line runs through (0, 0) and (2 h, 60 km). What speed does it show, in km/h?",
+      "choices": [
+        "120",
+        "60",
+        "30",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "Speed is the slope: 60 km in 2 h = 30 km/h. 60 reads the endpoint's height as if time were one hour.",
+      "checkExpr": "60/2",
+      "translations": {
+        "hi": {
+          "stem": "दूरी-समय रेखा (0, 0) और (2 घंटे, 60 किमी) से गुज़रती है। वह कितनी चाल दिखाती है, किमी/घंटा में?",
+          "choices": [
+            "120",
+            "60",
+            "30",
+            "15"
+          ],
+          "solution": "चाल ढलान है: 2 घंटे में 60 किमी = 30 किमी/घंटा। 60 सिरे की ऊँचाई को यों पढ़ता है मानो समय एक घंटा हो।"
+        },
+        "mr": {
+          "stem": "अंतर-काळ रेषा (0, 0) आणि (2 तास, 60 किमी) मधून जाते. ती किती वेग दाखवते, किमी/तासात?",
+          "choices": [
+            "120",
+            "60",
+            "30",
+            "15"
+          ],
+          "solution": "वेग म्हणजे उतार: 2 तासांत 60 किमी = 30 किमी/तास. 60 टोकाची उंची अशी वाचतो जणू वेळ एक तास असावा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In which quadrant (1, 2, 3 or 4) does the point (−3, 5) lie?",
+      "choices": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "x negative, y positive: left and up — the second quadrant. The quadrants number anticlockwise from the positive-positive first.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (−3, 5) किस चतुर्थांश (1, 2, 3 या 4) में है?",
+          "choices": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "x ऋण, y धन: बाएँ और ऊपर — दूसरा चतुर्थांश। चतुर्थांश धन-धन वाले पहले से वामावर्त गिने जाते हैं।"
+        },
+        "mr": {
+          "stem": "बिंदू (−3, 5) कोणत्या चरणात (1, 2, 3 वा 4) आहे?",
+          "choices": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "x ऋण, y धन: डावीकडे आणि वर — दुसरे चरण. चरणे धन-धन पहिल्यापासून घड्याळाच्या उलट मोजली जातात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Three corners of a rectangle sit at (1,1), (5,1) and (5,4). What is the x-coordinate of the fourth corner?",
+      "choices": [
+        "5",
+        "4",
+        "0",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "The fourth corner is (1, 4): it borrows x from the corner below it and y from the corner across. Rectangles copy coordinates in pairs.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आयत के तीन कोने (1,1), (5,1) और (5,4) पर हैं। चौथे कोने का x-निर्देशांक क्या है?",
+          "choices": [
+            "5",
+            "4",
+            "0",
+            "1"
+          ],
+          "solution": "चौथा कोना (1, 4) है: x नीचे वाले कोने से, y सामने वाले से उधार लेता है। आयत निर्देशांक जोड़ों में नक़ल करते हैं।"
+        },
+        "mr": {
+          "stem": "आयताचे तीन कोपरे (1,1), (5,1) आणि (5,4) वर आहेत. चौथ्या कोपऱ्याचा x-सहनिर्देशक काय?",
+          "choices": [
+            "5",
+            "4",
+            "0",
+            "1"
+          ],
+          "solution": "चौथा कोपरा (1, 4): x खालच्या कोपऱ्याकडून, y समोरच्याकडून उसना घेतो. आयत सहनिर्देशक जोड्यांत नक्कल करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A line passes through (0,2), (1,5) and (2,8). Following the pattern, what is y when x = 4?",
+      "choices": [
+        "14",
+        "16",
+        "11",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "Each step right climbs 3: the rule is y = 3x + 2, so y(4) = 14. 11 stops a step early at x = 3.",
+      "checkExpr": "3*4+2",
+      "translations": {
+        "hi": {
+          "stem": "एक रेखा (0,2), (1,5) और (2,8) से गुज़रती है। पैटर्न के अनुसार x = 4 पर y कितना?",
+          "choices": [
+            "14",
+            "16",
+            "11",
+            "12"
+          ],
+          "solution": "हर दायाँ क़दम 3 चढ़ता है: नियम y = 3x + 2, अतः y(4) = 14। 11 x = 3 पर एक क़दम पहले रुक जाता है।"
+        },
+        "mr": {
+          "stem": "एक रेषा (0,2), (1,5) आणि (2,8) मधून जाते. नमुन्यानुसार x = 4 वर y किती?",
+          "choices": [
+            "14",
+            "16",
+            "11",
+            "12"
+          ],
+          "solution": "प्रत्येक उजवे पाऊल 3 चढते: नियम y = 3x + 2, म्हणून y(4) = 14. 11 x = 3 वर एक पाऊल आधी थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Walk from (0,0) to (3,0), then up to (3,4). What is the STRAIGHT-LINE distance back to the origin?",
+      "choices": [
+        "5",
+        "12",
+        "7",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The walk drew two legs of a right triangle, 3 and 4: the straight way home is the hypotenuse, 5 — Pythagoras visiting the graph paper.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "(0,0) से (3,0), फिर ऊपर (3,4) तक चलिए। मूल-बिंदु तक सीधी दूरी कितनी?",
+          "choices": [
+            "5",
+            "12",
+            "7",
+            "4"
+          ],
+          "solution": "चाल ने समकोण त्रिभुज की दो भुजाएँ खींचीं, 3 और 4: घर की सीधी राह कर्ण है, 5 — ग्राफ़-काग़ज़ पर पाइथागोरस पधारे।"
+        },
+        "mr": {
+          "stem": "(0,0) पासून (3,0), मग वर (3,4) पर्यंत चला. आरंभबिंदूपर्यंत सरळ अंतर किती?",
+          "choices": [
+            "5",
+            "12",
+            "7",
+            "4"
+          ],
+          "solution": "चालीने काटकोन त्रिकोणाच्या दोन बाजू काढल्या, 3 आणि 4: घरची सरळ वाट कर्ण, 5 — आलेख-कागदावर पायथागोरस आले."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A conversion graph uses 5 miles = 8 km. Reading it at 40 km, how many miles?",
+      "choices": [
+        "64",
+        "32",
+        "25",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "40 km is five lots of 8 km, each worth 5 miles: 25 miles. 64 converts the wrong way, multiplying where the graph divides.",
+      "checkExpr": "5*40/8",
+      "translations": {
+        "hi": {
+          "stem": "परिवर्तन-ग्राफ़ 5 मील = 8 किमी मानता है। 40 किमी पर पढ़ें तो कितने मील?",
+          "choices": [
+            "64",
+            "32",
+            "25",
+            "20"
+          ],
+          "solution": "40 किमी यानी 8-8 किमी के पाँच हिस्से, हर एक 5 मील का: 25 मील। 64 उल्टी दिशा में बदलता है, जहाँ ग्राफ़ भाग देता है वहाँ गुणा करके।"
+        },
+        "mr": {
+          "stem": "रूपांतर-आलेख 5 मैल = 8 किमी मानतो. 40 किमीवर वाचल्यास किती मैल?",
+          "choices": [
+            "64",
+            "32",
+            "25",
+            "20"
+          ],
+          "solution": "40 किमी म्हणजे 8-8 किमीचे पाच वाटे, प्रत्येक 5 मैलांचा: 25 मैल. 64 उलट्या दिशेने बदलतो, आलेख जिथे भागतो तिथे गुणून."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A temperature graph rises steadily 2° per hour from 24° at 6 am. How many HOURS after 6 am does it reach 32°?",
+      "choices": [
+        "2",
+        "6",
+        "8",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "The climb needed is 8°, at 2° per hour: 4 hours, so 10 am. 8 answers the degrees, not the hours — read the axis you were asked for.",
+      "checkExpr": "(32-24)/2",
+      "translations": {
+        "hi": {
+          "stem": "तापमान-ग्राफ़ सुबह 6 बजे के 24° से हर घंटे 2° चढ़ता है। 32° तक पहुँचने में 6 बजे से कितने घंटे लगेंगे?",
+          "choices": [
+            "2",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "चढ़ाई 8° की चाहिए, 2° प्रति घंटा से: 4 घंटे, यानी 10 बजे। 8 डिग्रियाँ बताता है, घंटे नहीं — वही अक्ष पढ़िए जो पूछा गया।"
+        },
+        "mr": {
+          "stem": "तापमान-आलेख सकाळी 6 च्या 24° पासून दर तासाला 2° चढतो. 32° गाठायला 6 पासून किती तास लागतील?",
+          "choices": [
+            "2",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "चढण 8° ची हवी, दर तासाला 2° ने: 4 तास, म्हणजे सकाळी 10. 8 अंश सांगतो, तास नाही — विचारलेलाच अक्ष वाचा."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The steeper a distance-time line, the faster the motion. A sprinter covers 10 m in 0.1 s near the finish — what near-vertical speed is that, in m/s?",
+      "choices": [
+        "100",
+        "1000",
+        "1",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "10 ÷ 0.1 = 100 m/s — absurdly fast, which is the lesson: as a line nears vertical its speed runs away toward infinity, and a truly vertical line would claim distance covered in NO time. Graphs forbid it by geometry.",
+      "checkExpr": "10/0.1",
+      "translations": {
+        "hi": {
+          "stem": "दूरी-समय रेखा जितनी खड़ी, गति उतनी तेज़। फ़िनिश के पास धावक 0.1 सेकंड में 10 मीटर नापता है — वह लगभग-खड़ी चाल कितनी है, मी/से में?",
+          "choices": [
+            "100",
+            "1000",
+            "1",
+            "10"
+          ],
+          "solution": "10 ÷ 0.1 = 100 मी/से — बेतुकी तेज़, और यही सबक़ है: रेखा खड़ी होने को हो तो चाल अनंत की ओर भागती है, और सचमुच खड़ी रेखा शून्य समय में दूरी का दावा करती। ग्राफ़ उसे ज्यामिति से ही वर्जित करते हैं।"
+        },
+        "mr": {
+          "stem": "अंतर-काळ रेषा जितकी उभी, गती तितकी जलद. फिनिशजवळ धावपटू 0.1 सेकंदात 10 मीटर कापतो — तो जवळजवळ-उभा वेग किती, मी/से मध्ये?",
+          "choices": [
+            "100",
+            "1000",
+            "1",
+            "10"
+          ],
+          "solution": "10 ÷ 0.1 = 100 मी/से — हास्यास्पद जलद, आणि हाच धडा: रेषा उभी होत जाता वेग अनंताकडे पळतो, आणि खरोखर उभी रेषा शून्य वेळात अंतराचा दावा करती. आलेख तिला भूमितीनेच निषिद्ध करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A straight line joins (2, 10) and (6, 30). Reading BETWEEN the plotted points, what is y at x = 4?",
+      "choices": [
+        "20",
+        "25",
+        "15",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "x = 4 is midway between 2 and 6, and on a straight line midway-in means midway-up: (10 + 30)/2 = 20. Interpolation is the graph's quiet gift — values you never measured, read off the ruler.",
+      "checkExpr": "(10+30)/2",
+      "translations": {
+        "hi": {
+          "stem": "सीधी रेखा (2, 10) और (6, 30) को जोड़ती है। अंकित बिंदुओं के बीच पढ़ें तो x = 4 पर y कितना?",
+          "choices": [
+            "20",
+            "25",
+            "15",
+            "40"
+          ],
+          "solution": "x = 4 2 और 6 के बीचोबीच है, और सीधी रेखा पर बीच का x यानी बीच का y: (10 + 30)/2 = 20। अंतर्वेशन ग्राफ़ की ख़ामोश सौग़ात है — जो मान कभी नापे नहीं, पैमाने से पढ़ लिए।"
+        },
+        "mr": {
+          "stem": "सरळ रेषा (2, 10) आणि (6, 30) ला जोडते. आखलेल्या बिंदूंच्या मध्ये वाचल्यास x = 4 वर y किती?",
+          "choices": [
+            "20",
+            "25",
+            "15",
+            "40"
+          ],
+          "solution": "x = 4 2 आणि 6 च्या मध्यभागी, आणि सरळ रेषेवर मधला x म्हणजे मधला y: (10 + 30)/2 = 20. अंतर्वेशन ही आलेखाची मूक देणगी — कधी न मोजलेल्या किमती, पट्टीवरून वाचलेल्या."
+        }
+      }
+    }
+  ]
+}
