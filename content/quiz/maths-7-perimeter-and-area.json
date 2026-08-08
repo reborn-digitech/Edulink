@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 11 — Perimeter and Area",
+  "name": "Perimeter and Area",
+  "slug": "maths-7-perimeter-and-area",
+  "summary": "Parallelograms as pushed-over rectangles, triangles as their halves, circles measured by 22/7 — and a goat on a corner rope showing how shapes share space.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "परिमाप और क्षेत्रफल",
+      "summary": "झुके आयत जैसे समांतर चतुर्भुज, उनके आधे त्रिभुज, 22/7 से नपे वृत्त — और कोने की रस्सी से बँधी बकरी दिखाती है कि आकृतियाँ जगह कैसे बाँटती हैं।"
+    },
+    "mr": {
+      "name": "परिमिती आणि क्षेत्रफळ",
+      "summary": "कललेल्या आयतांसारखे समांतरभुज, त्यांचे अर्धे त्रिकोण, 22/7 ने मोजलेली वर्तुळे — आणि कोपऱ्याच्या दोरीची शेळी दाखवते की आकृती जागा कशी वाटतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A rectangular park is 25 m long and 15 m wide. What is its area, in square metres?",
+      "choices": [
+        "3750",
+        "40",
+        "80",
+        "375"
+      ],
+      "answerIndex": 3,
+      "solution": "Area = length × breadth = 25 × 15 = 375 m². 80 walks the perimeter instead; 40 merely adds the two sides once.",
+      "checkExpr": "25*15",
+      "translations": {
+        "hi": {
+          "stem": "एक आयताकार पार्क 25 मीटर लंबा और 15 मीटर चौड़ा है। क्षेत्रफल वर्ग मीटर में कितना?",
+          "choices": [
+            "3750",
+            "40",
+            "80",
+            "375"
+          ],
+          "solution": "क्षेत्रफल = लंबाई × चौड़ाई = 25 × 15 = 375 वर्ग मीटर। 80 उलटे परिमाप नाप आता है; 40 दोनों भुजाएँ एक बार जोड़ भर देता है।"
+        },
+        "mr": {
+          "stem": "एक आयताकृती उद्यान 25 मीटर लांब आणि 15 मीटर रुंद आहे. क्षेत्रफळ चौरस मीटरमध्ये किती?",
+          "choices": [
+            "3750",
+            "40",
+            "80",
+            "375"
+          ],
+          "solution": "क्षेत्रफळ = लांबी × रुंदी = 25 × 15 = 375 चौ. मीटर. 80 उलट परिमिती मोजून येतो; 40 दोन्ही बाजू एकदाच जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A square kitchen garden has side 12 m. How much fencing wire goes once round it, in metres?",
+      "choices": [
+        "36",
+        "48",
+        "144",
+        "24"
+      ],
+      "answerIndex": 1,
+      "solution": "Four equal sides: 12 × 4 = 48 m. 144 computes the AREA; 24 fences only two sides and leaves the gate open on the rest.",
+      "checkExpr": "12*4",
+      "translations": {
+        "hi": {
+          "stem": "एक वर्गाकार किचन-बग़ीचे की भुजा 12 मीटर है। एक बार घेरने में कितने मीटर तार लगेगा?",
+          "choices": [
+            "36",
+            "48",
+            "144",
+            "24"
+          ],
+          "solution": "चार बराबर भुजाएँ: 12 × 4 = 48 मीटर। 144 क्षेत्रफल निकाल बैठता है; 24 केवल दो भुजाएँ घेरकर बाक़ी खुला छोड़ देता है।"
+        },
+        "mr": {
+          "stem": "एका चौरस परसबागेची बाजू 12 मीटर आहे. एकदा कुंपण घालायला किती मीटर तार लागेल?",
+          "choices": [
+            "36",
+            "48",
+            "144",
+            "24"
+          ],
+          "solution": "चार समान बाजू: 12 × 4 = 48 मीटर. 144 क्षेत्रफळ काढतो; 24 फक्त दोन बाजूंना कुंपण घालून बाकी उघडे ठेवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the area of a triangle with base 10 cm and height 6 cm, in square cm?",
+      "choices": [
+        "16",
+        "30",
+        "300",
+        "60"
+      ],
+      "answerIndex": 1,
+      "solution": "A triangle is half its bounding rectangle: (10 × 6) ÷ 2 = 30 cm². 60 forgets the half; 16 adds base and height.",
+      "checkExpr": "10*6/2",
+      "translations": {
+        "hi": {
+          "stem": "आधार 10 सेमी और ऊँचाई 6 सेमी वाले त्रिभुज का क्षेत्रफल वर्ग सेमी में कितना?",
+          "choices": [
+            "16",
+            "30",
+            "300",
+            "60"
+          ],
+          "solution": "त्रिभुज अपने घेरने वाले आयत का आधा है: (10 × 6) ÷ 2 = 30 वर्ग सेमी। 60 आधा भूल जाता है; 16 आधार-ऊँचाई जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "पाया 10 सेमी आणि उंची 6 सेमी असलेल्या त्रिकोणाचे क्षेत्रफळ चौरस सेमीमध्ये किती?",
+          "choices": [
+            "16",
+            "30",
+            "300",
+            "60"
+          ],
+          "solution": "त्रिकोण म्हणजे त्याला वेढणाऱ्या आयताचा अर्धा: (10 × 6) ÷ 2 = 30 चौ. सेमी. 60 अर्धे विसरतो; 16 पाया-उंची जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A parallelogram has base 8 cm and height 5 cm. What is its area, in square cm?",
+      "choices": [
+        "13",
+        "26",
+        "20",
+        "40"
+      ],
+      "answerIndex": 3,
+      "solution": "Base × height = 8 × 5 = 40 cm² — a parallelogram is a pushed-over rectangle, so NO halving. 20 halves it as if it were a triangle.",
+      "checkExpr": "8*5",
+      "translations": {
+        "hi": {
+          "stem": "समांतर चतुर्भुज का आधार 8 सेमी और ऊँचाई 5 सेमी है। क्षेत्रफल वर्ग सेमी में?",
+          "choices": [
+            "13",
+            "26",
+            "20",
+            "40"
+          ],
+          "solution": "आधार × ऊँचाई = 8 × 5 = 40 वर्ग सेमी — समांतर चतुर्भुज झुका हुआ आयत है, अतः आधा नहीं होता। 20 उसे त्रिभुज मानकर आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "समांतरभुज चौकोनाचा पाया 8 सेमी आणि उंची 5 सेमी आहे. क्षेत्रफळ चौरस सेमीमध्ये किती?",
+          "choices": [
+            "13",
+            "26",
+            "20",
+            "40"
+          ],
+          "solution": "पाया × उंची = 8 × 5 = 40 चौ. सेमी — समांतरभुज म्हणजे कललेला आयत, म्हणून अर्धे नाही. 20 त्याला त्रिकोण मानून निम्मे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the circumference of a circle of radius 7 cm? (Take π = 22/7.)",
+      "choices": [
+        "14",
+        "44",
+        "154",
+        "22"
+      ],
+      "answerIndex": 1,
+      "solution": "C = 2πr = 2 × 22/7 × 7 = 44 cm. 22 forgets the 2 and walks only half the rim; 154 is the AREA wearing the wrong units.",
+      "checkExpr": "2*22*7/7",
+      "translations": {
+        "hi": {
+          "stem": "त्रिज्या 7 सेमी वाले वृत्त की परिधि कितनी? (π = 22/7 लीजिए।)",
+          "choices": [
+            "14",
+            "44",
+            "154",
+            "22"
+          ],
+          "solution": "परिधि = 2πr = 2 × 22/7 × 7 = 44 सेमी। 22 दो भूलकर आधा ही किनारा चलता है; 154 ग़लत इकाई पहने क्षेत्रफल है।"
+        },
+        "mr": {
+          "stem": "त्रिज्या 7 सेमी असलेल्या वर्तुळाचा परीघ किती? (π = 22/7 घ्या.)",
+          "choices": [
+            "14",
+            "44",
+            "154",
+            "22"
+          ],
+          "solution": "परीघ = 2πr = 2 × 22/7 × 7 = 44 सेमी. 22 दोन विसरून अर्धीच कड चालतो; 154 म्हणजे चुकीचे एकक घातलेले क्षेत्रफळ."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the area of a circle of radius 7 cm? (Take π = 22/7.)",
+      "choices": [
+        "308",
+        "49",
+        "44",
+        "154"
+      ],
+      "answerIndex": 3,
+      "solution": "A = πr² = 22/7 × 7 × 7 = 154 cm². 44 is the circumference; 49 is r² with π left out; 308 doubles for no reason.",
+      "checkExpr": "22*7*7/7",
+      "translations": {
+        "hi": {
+          "stem": "त्रिज्या 7 सेमी वाले वृत्त का क्षेत्रफल कितना? (π = 22/7 लीजिए।)",
+          "choices": [
+            "308",
+            "49",
+            "44",
+            "154"
+          ],
+          "solution": "क्षेत्रफल = πr² = 22/7 × 7 × 7 = 154 वर्ग सेमी। 44 परिधि है; 49 बिना π का r² है; 308 अकारण दुगुना।"
+        },
+        "mr": {
+          "stem": "त्रिज्या 7 सेमी असलेल्या वर्तुळाचे क्षेत्रफळ किती? (π = 22/7 घ्या.)",
+          "choices": [
+            "308",
+            "49",
+            "44",
+            "154"
+          ],
+          "solution": "क्षेत्रफळ = πr² = 22/7 × 7 × 7 = 154 चौ. सेमी. 44 हा परीघ; 49 म्हणजे π शिवायचा r²; 308 विनाकारण दुप्पट."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A triangle's area is 36 square cm and its base is 9 cm. What is its height, in cm?",
+      "choices": [
+        "4",
+        "8",
+        "324",
+        "27"
+      ],
+      "answerIndex": 1,
+      "solution": "Run the formula backwards: height = 2 × area ÷ base = 72 ÷ 9 = 8 cm. 4 forgets to double first; 27 subtracts the base from the area.",
+      "checkExpr": "36*2/9",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज का क्षेत्रफल 36 वर्ग सेमी और आधार 9 सेमी है। ऊँचाई कितने सेमी?",
+          "choices": [
+            "4",
+            "8",
+            "324",
+            "27"
+          ],
+          "solution": "सूत्र उल्टा चलाइए: ऊँचाई = 2 × क्षेत्रफल ÷ आधार = 72 ÷ 9 = 8 सेमी। 4 पहले दुगुना करना भूलता है; 27 क्षेत्रफल में से आधार घटा देता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे क्षेत्रफळ 36 चौरस सेमी आणि पाया 9 सेमी आहे. उंची किती सेमी?",
+          "choices": [
+            "4",
+            "8",
+            "324",
+            "27"
+          ],
+          "solution": "सूत्र उलटे चालवा: उंची = 2 × क्षेत्रफळ ÷ पाया = 72 ÷ 9 = 8 सेमी. 4 आधी दुप्पट करायला विसरतो; 27 क्षेत्रफळातून पाया वजा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wire bent into a square of side 11 cm is straightened and rebent into a rectangle 13 cm long. What is the rectangle's breadth, in cm?",
+      "choices": [
+        "13",
+        "9",
+        "31",
+        "11"
+      ],
+      "answerIndex": 1,
+      "solution": "The wire's length never changes: perimeter 44 cm. So 2(13 + b) = 44, giving b = 9 cm. 31 subtracts 13 only once — a rectangle has TWO of each side.",
+      "checkExpr": "(4*11-2*13)/2",
+      "translations": {
+        "hi": {
+          "stem": "11 सेमी भुजा के वर्ग में मुड़ा तार सीधा करके 13 सेमी लंबे आयत में मोड़ा जाता है। आयत की चौड़ाई कितने सेमी?",
+          "choices": [
+            "13",
+            "9",
+            "31",
+            "11"
+          ],
+          "solution": "तार की लंबाई कभी नहीं बदलती: परिमाप 44 सेमी। अतः 2(13 + b) = 44, यानी b = 9 सेमी। 31 तेरह को एक ही बार घटाता है — आयत में हर भुजा दो-दो हैं।"
+        },
+        "mr": {
+          "stem": "11 सेमी बाजूच्या चौरसात वाकवलेली तार सरळ करून 13 सेमी लांब आयतात वाकवली जाते. आयताची रुंदी किती सेमी?",
+          "choices": [
+            "13",
+            "9",
+            "31",
+            "11"
+          ],
+          "solution": "तारेची लांबी कधी बदलत नाही: परिमिती 44 सेमी. म्हणून 2(13 + b) = 44, म्हणजे b = 9 सेमी. 31 तेराला एकदाच वजा करतो — आयतात प्रत्येक बाजू दोन-दोन असतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A circle's circumference is 88 cm. What is its radius, in cm? (Take π = 22/7.)",
+      "choices": [
+        "44",
+        "7",
+        "28",
+        "14"
+      ],
+      "answerIndex": 3,
+      "solution": "r = C ÷ 2π = 88 × 7 ÷ 44 = 14 cm. 28 stops at the diameter; 7 halves once too often.",
+      "checkExpr": "88*7/(2*22)",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त की परिधि 88 सेमी है। त्रिज्या कितने सेमी? (π = 22/7 लीजिए।)",
+          "choices": [
+            "44",
+            "7",
+            "28",
+            "14"
+          ],
+          "solution": "त्रिज्या = परिधि ÷ 2π = 88 × 7 ÷ 44 = 14 सेमी। 28 व्यास पर रुक जाता है; 7 एक बार ज़्यादा आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "वर्तुळाचा परीघ 88 सेमी आहे. त्रिज्या किती सेमी? (π = 22/7 घ्या.)",
+          "choices": [
+            "44",
+            "7",
+            "28",
+            "14"
+          ],
+          "solution": "त्रिज्या = परीघ ÷ 2π = 88 × 7 ÷ 44 = 14 सेमी. 28 व्यासावर थांबतो; 7 एकदा जास्त निम्मे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two roads, each 3 m wide, cross at right angles through the middle of a 60 m × 40 m park, one parallel to each side. What area do the roads cover, in square metres?",
+      "choices": [
+        "291",
+        "120",
+        "300",
+        "180"
+      ],
+      "answerIndex": 0,
+      "solution": "One road covers 60 × 3 = 180, the other 40 × 3 = 120 — but their crossing square 3 × 3 = 9 got counted twice: 180 + 120 − 9 = 291 m². 300 pays for the crossing both times.",
+      "checkExpr": "60*3+40*3-3*3",
+      "translations": {
+        "hi": {
+          "stem": "3-3 मीटर चौड़ी दो सड़कें 60 मीटर × 40 मीटर पार्क के बीच से समकोण पर गुज़रती हैं, हर भुजा के समांतर एक। सड़कें कुल कितने वर्ग मीटर घेरती हैं?",
+          "choices": [
+            "291",
+            "120",
+            "300",
+            "180"
+          ],
+          "solution": "एक सड़क 60 × 3 = 180 घेरती है, दूसरी 40 × 3 = 120 — पर चौराहे का 3 × 3 = 9 दो बार गिना गया: 180 + 120 − 9 = 291 वर्ग मीटर। 300 चौराहे का दाम दोनों बार चुका देता है।"
+        },
+        "mr": {
+          "stem": "प्रत्येकी 3 मीटर रुंद दोन रस्ते 60 मीटर × 40 मीटर उद्यानाच्या मधून काटकोनात जातात, प्रत्येक बाजूला समांतर एक. रस्ते एकूण किती चौरस मीटर व्यापतात?",
+          "choices": [
+            "291",
+            "120",
+            "300",
+            "180"
+          ],
+          "solution": "एक रस्ता 60 × 3 = 180 व्यापतो, दुसरा 40 × 3 = 120 — पण चौकाचा 3 × 3 = 9 दोनदा मोजला गेला: 180 + 120 − 9 = 291 चौ. मीटर. 300 चौकाची किंमत दोन्ही वेळा देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Grass costs ₹5 per square metre. What does it cost to grass a triangular plot with base 20 m and height 12 m?",
+      "choices": [
+        "₹600",
+        "₹120",
+        "₹1200",
+        "₹160"
+      ],
+      "answerIndex": 0,
+      "solution": "Area first: (20 × 12) ÷ 2 = 120 m², then 120 × 5 = ₹600. 1200 skips the halving; 120 stops at the area and forgets the bill.",
+      "checkExpr": "20*12/2*5",
+      "translations": {
+        "hi": {
+          "stem": "घास ₹5 प्रति वर्ग मीटर पड़ती है। आधार 20 मीटर और ऊँचाई 12 मीटर वाले त्रिभुजाकार भूखंड पर घास लगवाने का ख़र्च कितना?",
+          "choices": [
+            "₹600",
+            "₹120",
+            "₹1200",
+            "₹160"
+          ],
+          "solution": "पहले क्षेत्रफल: (20 × 12) ÷ 2 = 120 वर्ग मीटर, फिर 120 × 5 = ₹600। 1200 आधा करना छोड़ देता है; 120 क्षेत्रफल पर रुककर बिल भूल जाता है।"
+        },
+        "mr": {
+          "stem": "गवताला दर चौरस मीटरमागे ₹5 पडतात. पाया 20 मीटर आणि उंची 12 मीटर असलेल्या त्रिकोणी भूखंडावर गवत लावायचा खर्च किती?",
+          "choices": [
+            "₹600",
+            "₹120",
+            "₹1200",
+            "₹160"
+          ],
+          "solution": "आधी क्षेत्रफळ: (20 × 12) ÷ 2 = 120 चौ. मीटर, मग 120 × 5 = ₹600. 1200 निम्मे करणे गाळतो; 120 क्षेत्रफळावर थांबून बिल विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A square has the same area as a rectangle measuring 16 cm by 4 cm. What is the square's side, in cm?",
+      "choices": [
+        "10",
+        "20",
+        "8",
+        "64"
+      ],
+      "answerIndex": 2,
+      "solution": "The shared area is 16 × 4 = 64 cm², and 64 = 8² — side 8 cm. 10 averages the rectangle's sides; averaging matches perimeters, never areas.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग का क्षेत्रफल 16 सेमी × 4 सेमी के आयत के बराबर है। वर्ग की भुजा कितने सेमी?",
+          "choices": [
+            "10",
+            "20",
+            "8",
+            "64"
+          ],
+          "solution": "साझा क्षेत्रफल 16 × 4 = 64 वर्ग सेमी, और 64 = 8² — भुजा 8 सेमी। 10 आयत की भुजाओं का औसत लेता है; औसत परिमाप मिलाता है, क्षेत्रफल कभी नहीं।"
+        },
+        "mr": {
+          "stem": "एका चौरसाचे क्षेत्रफळ 16 सेमी × 4 सेमी च्या आयताइतके आहे. चौरसाची बाजू किती सेमी?",
+          "choices": [
+            "10",
+            "20",
+            "8",
+            "64"
+          ],
+          "solution": "सामाईक क्षेत्रफळ 16 × 4 = 64 चौ. सेमी, आणि 64 = 8² — बाजू 8 सेमी. 10 आयताच्या बाजूंची सरासरी घेतो; सरासरी परिमिती जुळवते, क्षेत्रफळ कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A washer has outer radius 14 cm and a hole of radius 7 cm. What is the area of the ring, in square cm? (Take π = 22/7.)",
+      "choices": [
+        "462",
+        "616",
+        "154",
+        "308"
+      ],
+      "answerIndex": 0,
+      "solution": "Big circle minus hole: 22/7 × (196 − 49) = 22 × 21 = 462 cm². 616 keeps the hole filled; 154 is only the hole itself.",
+      "checkExpr": "22*(14*14-7*7)/7",
+      "translations": {
+        "hi": {
+          "stem": "एक वॉशर की बाहरी त्रिज्या 14 सेमी और छेद की त्रिज्या 7 सेमी है। छल्ले का क्षेत्रफल वर्ग सेमी में? (π = 22/7)",
+          "choices": [
+            "462",
+            "616",
+            "154",
+            "308"
+          ],
+          "solution": "बड़ा वृत्त घटा छेद: 22/7 × (196 − 49) = 22 × 21 = 462 वर्ग सेमी। 616 छेद भरा रहने देता है; 154 अकेला छेद है।"
+        },
+        "mr": {
+          "stem": "एका वॉशरची बाह्य त्रिज्या 14 सेमी आणि छिद्राची त्रिज्या 7 सेमी आहे. कड्याचे क्षेत्रफळ चौरस सेमीमध्ये? (π = 22/7)",
+          "choices": [
+            "462",
+            "616",
+            "154",
+            "308"
+          ],
+          "solution": "मोठे वर्तुळ वजा छिद्र: 22/7 × (196 − 49) = 22 × 21 = 462 चौ. सेमी. 616 छिद्र भरलेलेच ठेवतो; 154 म्हणजे एकटे छिद्र."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A 36 cm loop of string makes a 10 × 8 rectangle, then a 9 × 9 square. How much MORE area does the square enclose, in square cm?",
+      "choices": [
+        "1",
+        "4",
+        "0",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "Same perimeter, different areas: 81 − 80 = 1 cm² more. 0 assumes equal perimeter means equal area — the square always wins that contest, if only just.",
+      "checkExpr": "9*9-10*8",
+      "translations": {
+        "hi": {
+          "stem": "36 सेमी के धागे के फंदे से पहले 10 × 8 का आयत, फिर 9 × 9 का वर्ग बनता है। वर्ग कितने वर्ग सेमी अधिक घेरता है?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "9"
+          ],
+          "solution": "परिमाप वही, क्षेत्रफल अलग: 81 − 80 = 1 वर्ग सेमी अधिक। 0 मान बैठता है कि बराबर परिमाप यानी बराबर क्षेत्रफल — यह होड़ वर्ग सदा जीतता है, भले ज़रा-सा।"
+        },
+        "mr": {
+          "stem": "36 सेमी दोऱ्याच्या वेढ्यातून आधी 10 × 8 चा आयत, मग 9 × 9 चा चौरस होतो. चौरस किती चौरस सेमी जास्त व्यापतो?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "9"
+          ],
+          "solution": "परिमिती तीच, क्षेत्रफळे वेगळी: 81 − 80 = 1 चौ. सेमी जास्त. 0 गृहीत धरतो की समान परिमिती म्हणजे समान क्षेत्रफळ — ही शर्यत चौरस नेहमी जिंकतो, अगदी थोडक्याने का होईना."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A goat is tied by a 7 m rope to the OUTSIDE corner of a big rectangular shed. Around that corner it can sweep three-quarters of a circle. What area can it graze, in square metres? (π = 22/7)",
+      "choices": [
+        "115.5",
+        "77",
+        "38.5",
+        "154"
+      ],
+      "answerIndex": 0,
+      "solution": "A full circle of radius 7 covers 154 m², but the shed blocks one quarter: 154 × 3/4 = 115.5 m². 154 lets the goat walk through walls; 38.5 leaves it only the blocked quarter.",
+      "checkExpr": "3*22*7*7/(7*4)",
+      "translations": {
+        "hi": {
+          "stem": "एक बकरी 7 मीटर की रस्सी से बड़े आयताकार छप्पर के बाहरी कोने से बँधी है। उस कोने के चारों ओर वह वृत्त का तीन-चौथाई घूम सकती है। वह कितने वर्ग मीटर चर सकती है? (π = 22/7)",
+          "choices": [
+            "115.5",
+            "77",
+            "38.5",
+            "154"
+          ],
+          "solution": "7 त्रिज्या का पूरा वृत्त 154 वर्ग मीटर घेरता है, पर छप्पर एक चौथाई रोक लेता है: 154 × 3/4 = 115.5 वर्ग मीटर। 154 बकरी को दीवारों के पार चलने देता है; 38.5 उसे केवल रुका हुआ चौथाई थमा देता है।"
+        },
+        "mr": {
+          "stem": "एक शेळी 7 मीटर दोरीने मोठ्या आयताकृती गोठ्याच्या बाहेरच्या कोपऱ्याला बांधली आहे. त्या कोपऱ्याभोवती ती वर्तुळाचा तीन-चतुर्थांश फिरू शकते. ती किती चौरस मीटर चरू शकते? (π = 22/7)",
+          "choices": [
+            "115.5",
+            "77",
+            "38.5",
+            "154"
+          ],
+          "solution": "7 त्रिज्येचे पूर्ण वर्तुळ 154 चौ. मीटर व्यापते, पण गोठा एक चतुर्थांश अडवतो: 154 × 3/4 = 115.5 चौ. मीटर. 154 शेळीला भिंतीतून चालू देतो; 38.5 तिला फक्त अडवलेला चतुर्थांशच देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a circle's radius is doubled, its area becomes how many TIMES the original?",
+      "choices": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Area rides on r², so doubling r multiplies the area by 2² = 4. 2 doubles only once — that is the CIRCUMFERENCE's behaviour; areas grow by the square.",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "यदि वृत्त की त्रिज्या दुगुनी कर दी जाए, तो क्षेत्रफल मूल का कितने गुना हो जाता है?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "क्षेत्रफल r² पर सवार है, अतः r दुगुनी होते ही क्षेत्रफल 2² = 4 गुना। 2 एक ही बार दुगुना करता है — वह परिधि का स्वभाव है; क्षेत्रफल वर्ग से बढ़ते हैं।"
+        },
+        "mr": {
+          "stem": "वर्तुळाची त्रिज्या दुप्पट केली, तर क्षेत्रफळ मूळच्या किती पट होते?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "क्षेत्रफळ r² वर स्वार, म्हणून r दुप्पट होताच क्षेत्रफळ 2² = 4 पट. 2 एकदाच दुप्पट करतो — तो परीघाचा स्वभाव; क्षेत्रफळे वर्गाने वाढतात."
+        }
+      }
+    }
+  ]
+}

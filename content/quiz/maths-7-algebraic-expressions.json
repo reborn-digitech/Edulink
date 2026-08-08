@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 12 — Algebraic Expressions",
+  "name": "Algebraic Expressions",
+  "slug": "maths-7-algebraic-expressions",
+  "summary": "Terms, coefficients and like-term sorting; minus signs that must reach every corner of a bracket — and algebra as the X-ray that exposes a number trick.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "बीजीय व्यंजक",
+      "summary": "पद, गुणांक और समान पदों की छँटाई; ऋण-चिह्न जिन्हें कोष्ठक के हर कोने तक पहुँचना है — और बीजगणित वह एक्स-रे जो संख्या-जादू का भेद खोल देता है।"
+    },
+    "mr": {
+      "name": "बैजिक पदावली",
+      "summary": "पदे, सहगुणक आणि समान पदांची निवड; कंसाच्या प्रत्येक कोपऱ्यापर्यंत पोहोचावी लागणारी ऋण-चिन्हे — आणि संख्या-जादूचे रहस्य उघडणारा बीजगणिताचा एक्स-रे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the value of 3x + 2 when x = 4?",
+      "choices": [
+        "9",
+        "14",
+        "24",
+        "18"
+      ],
+      "answerIndex": 1,
+      "solution": "Substitute and follow the order: 3 × 4 = 12, then + 2 = 14. 18 adds the 2 to x before multiplying; 24 multiplies everything in sight.",
+      "checkExpr": "3*4+2",
+      "translations": {
+        "hi": {
+          "stem": "x = 4 पर 3x + 2 का मान कितना?",
+          "choices": [
+            "9",
+            "14",
+            "24",
+            "18"
+          ],
+          "solution": "मान रखिए और क्रम निभाइए: 3 × 4 = 12, फिर + 2 = 14। 18 गुणा से पहले 2 को x में जोड़ देता है; 24 जो दिखे उसे गुणा कर देता है।"
+        },
+        "mr": {
+          "stem": "x = 4 असताना 3x + 2 ची किंमत किती?",
+          "choices": [
+            "9",
+            "14",
+            "24",
+            "18"
+          ],
+          "solution": "किंमत ठेवा आणि क्रम पाळा: 3 × 4 = 12, मग + 2 = 14. 18 गुणाकाराआधी 2 x मध्ये मिळवतो; 24 दिसेल त्याचा गुणाकार करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many terms does the expression 4x² + 3x − 5 have?",
+      "choices": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Terms are the chunks joined by + and −: 4x², 3x and −5 — that is 3. The constant −5 is a full term even without a letter.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "व्यंजक 4x² + 3x − 5 में कितने पद हैं?",
+          "choices": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "solution": "पद वे टुकड़े हैं जो + और − से जुड़े हैं: 4x², 3x और −5 — यानी 3। अचर −5 बिना अक्षर के भी पूरा पद है।"
+        },
+        "mr": {
+          "stem": "पदावली 4x² + 3x − 5 मध्ये किती पदे आहेत?",
+          "choices": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "solution": "पदे म्हणजे + आणि − ने जोडलेले तुकडे: 4x², 3x आणि −5 — म्हणजे 3. स्थिरांक −5 अक्षराशिवायही पूर्ण पद आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the coefficient of y in 7y + 12?",
+      "choices": [
+        "7",
+        "19",
+        "1",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The coefficient is the number RIDING the letter: 7. 12 stands alone as the constant; it never touches y.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "7y + 12 में y का गुणांक क्या है?",
+          "choices": [
+            "7",
+            "19",
+            "1",
+            "12"
+          ],
+          "solution": "गुणांक अक्षर पर सवार संख्या है: 7। 12 अचर बनकर अकेला खड़ा है; वह y को छूता तक नहीं।"
+        },
+        "mr": {
+          "stem": "7y + 12 मध्ये y चा सहगुणक काय?",
+          "choices": [
+            "7",
+            "19",
+            "1",
+            "12"
+          ],
+          "solution": "सहगुणक म्हणजे अक्षरावर स्वार संख्या: 7. 12 स्थिरांक म्हणून एकटा उभा; तो y ला स्पर्शही करत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Add (2x + 3) and (5x − 1). What is the coefficient of x in the sum?",
+      "choices": [
+        "2",
+        "7",
+        "10",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Like terms join: 2x + 5x = 7x, so the coefficient is 7. 10 multiplies 2 × 5; addition of terms adds their coefficients, nothing more.",
+      "checkExpr": "2+5",
+      "translations": {
+        "hi": {
+          "stem": "(2x + 3) और (5x − 1) जोड़िए। योग में x का गुणांक कितना?",
+          "choices": [
+            "2",
+            "7",
+            "10",
+            "3"
+          ],
+          "solution": "समान पद जुड़ते हैं: 2x + 5x = 7x, अतः गुणांक 7। 10 में 2 × 5 गुणा हो गया; पदों का योग केवल गुणांक जोड़ता है, और कुछ नहीं।"
+        },
+        "mr": {
+          "stem": "(2x + 3) आणि (5x − 1) जोडा. बेरजेत x चा सहगुणक किती?",
+          "choices": [
+            "2",
+            "7",
+            "10",
+            "3"
+          ],
+          "solution": "समान पदे जुळतात: 2x + 5x = 7x, म्हणून सहगुणक 7. 10 मध्ये 2 × 5 गुणले गेले; पदांची बेरीज फक्त सहगुणक जोडते, आणखी काही नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of x² when x = −3?",
+      "choices": [
+        "9",
+        "-6",
+        "-9",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "(−3) × (−3) = 9: squaring wipes the minus, for the two negatives cancel. −9 squares the digit and pastes the sign back on afterwards.",
+      "checkExpr": "(0-3)*(0-3)",
+      "translations": {
+        "hi": {
+          "stem": "x = −3 पर x² का मान कितना?",
+          "choices": [
+            "9",
+            "-6",
+            "-9",
+            "6"
+          ],
+          "solution": "(−3) × (−3) = 9: वर्ग ऋण मिटा देता है, दोनों ऋण कट जाते हैं। −9 अंक का वर्ग कर चिह्न बाद में चिपका देता है।"
+        },
+        "mr": {
+          "stem": "x = −3 असताना x² ची किंमत किती?",
+          "choices": [
+            "9",
+            "-6",
+            "-9",
+            "6"
+          ],
+          "solution": "(−3) × (−3) = 9: वर्ग ऋण पुसतो, दोन ऋणे रद्द होतात. −9 आकड्याचा वर्ग करून चिन्ह मागून चिकटवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "5ab + 3ab = ▢ab. What is the coefficient in the box?",
+      "choices": [
+        "53",
+        "2",
+        "8",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "Like terms — same letters, same powers — add their coefficients: 5 + 3 = 8. 15 multiplies them; 53 just sits the digits side by side.",
+      "checkExpr": "5+3",
+      "translations": {
+        "hi": {
+          "stem": "5ab + 3ab = ▢ab। रिक्त में गुणांक क्या आएगा?",
+          "choices": [
+            "53",
+            "2",
+            "8",
+            "15"
+          ],
+          "solution": "समान पद — वही अक्षर, वही घात — गुणांक जोड़ते हैं: 5 + 3 = 8। 15 गुणा कर देता है; 53 अंकों को बग़ल-बग़ल बैठा देता है।"
+        },
+        "mr": {
+          "stem": "5ab + 3ab = ▢ab. रिकाम्यात सहगुणक काय येईल?",
+          "choices": [
+            "53",
+            "2",
+            "8",
+            "15"
+          ],
+          "solution": "समान पदे — तीच अक्षरे, त्याच घाती — सहगुणक जोडतात: 5 + 3 = 8. 15 गुणतो; 53 आकडे शेजारी-शेजारी बसवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Subtract: (7m − 2) − (4m + 3). What is the CONSTANT term of the result?",
+      "choices": [
+        "5",
+        "1",
+        "-1",
+        "-5"
+      ],
+      "answerIndex": 3,
+      "solution": "The minus reaches EVERY term of the bracket: 7m − 2 − 4m − 3 = 3m − 5, constant −5. 1 flips only the 4m and lets the +3 slip through unsigned.",
+      "checkExpr": "0-2-3",
+      "translations": {
+        "hi": {
+          "stem": "घटाइए: (7m − 2) − (4m + 3)। परिणाम का अचर पद क्या है?",
+          "choices": [
+            "5",
+            "1",
+            "-1",
+            "-5"
+          ],
+          "solution": "ऋण कोष्ठक के हर पद तक पहुँचता है: 7m − 2 − 4m − 3 = 3m − 5, अचर −5। 1 केवल 4m पलटता है और +3 को बिना चिह्न बदले निकल जाने देता है।"
+        },
+        "mr": {
+          "stem": "वजा करा: (7m − 2) − (4m + 3). निकालाचे स्थिरपद काय?",
+          "choices": [
+            "5",
+            "1",
+            "-1",
+            "-5"
+          ],
+          "solution": "ऋण कंसातील प्रत्येक पदापर्यंत पोहोचते: 7m − 2 − 4m − 3 = 3m − 5, स्थिरपद −5. 1 फक्त 4m उलटवतो आणि +3 ला चिन्ह न बदलता निसटू देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of 2a² + 3b when a = 2 and b = 5?",
+      "choices": [
+        "19",
+        "31",
+        "46",
+        "23"
+      ],
+      "answerIndex": 3,
+      "solution": "2 × 2² = 8 and 3 × 5 = 15: together 23. 31 squares (2a) as a whole, getting 16 — the exponent belongs to a alone, not to its coefficient.",
+      "checkExpr": "2*2*2+3*5",
+      "translations": {
+        "hi": {
+          "stem": "a = 2 और b = 5 पर 2a² + 3b का मान कितना?",
+          "choices": [
+            "19",
+            "31",
+            "46",
+            "23"
+          ],
+          "solution": "2 × 2² = 8 और 3 × 5 = 15: मिलाकर 23। 31 पूरे (2a) का वर्ग कर 16 पाता है — घात अकेले a की है, उसके गुणांक की नहीं।"
+        },
+        "mr": {
+          "stem": "a = 2 आणि b = 5 असताना 2a² + 3b ची किंमत किती?",
+          "choices": [
+            "19",
+            "31",
+            "46",
+            "23"
+          ],
+          "solution": "2 × 2² = 8 आणि 3 × 5 = 15: मिळून 23. 31 अख्ख्या (2a) चा वर्ग करून 16 मिळवतो — घात एकट्या a ची, त्याच्या सहगुणकाची नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Simplify 3x + 2y − x + 4y. What is the coefficient of y?",
+      "choices": [
+        "2",
+        "8",
+        "4",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Sort the letters: x's give 3 − 1 = 2x, y's give 2 + 4 = 6y — the y-coefficient is 6. 8 lets an x sneak into the y pile.",
+      "checkExpr": "2+4",
+      "translations": {
+        "hi": {
+          "stem": "3x + 2y − x + 4y सरल कीजिए। y का गुणांक कितना?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "6"
+          ],
+          "solution": "अक्षर छाँटिए: x से 3 − 1 = 2x, y से 2 + 4 = 6y — y का गुणांक 6। 8 में एक x चुपके से y की ढेरी में घुस गया।"
+        },
+        "mr": {
+          "stem": "3x + 2y − x + 4y सोपे करा. y चा सहगुणक किती?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "6"
+          ],
+          "solution": "अक्षरे निवडा: x चे 3 − 1 = 2x, y चे 2 + 4 = 6y — y चा सहगुणक 6. 8 मध्ये एक x हळूच y च्या ढिगात शिरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "From the sum of 3x + 4 and 2x − 5, subtract x + 1. What is the coefficient of x in the answer?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "The sum is 5x − 1; removing x + 1 leaves 4x − 2 — coefficient 4. 6 ADDS the last x instead of taking it away; 5 forgets the subtraction entirely.",
+      "checkExpr": "3+2-1",
+      "translations": {
+        "hi": {
+          "stem": "3x + 4 और 2x − 5 के योग में से x + 1 घटाइए। उत्तर में x का गुणांक कितना?",
+          "choices": [
+            "5",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "योग 5x − 1; x + 1 हटाने पर 4x − 2 — गुणांक 4। 6 आख़िरी x को हटाने की जगह जोड़ देता है; 5 घटाना ही भूल जाता है।"
+        },
+        "mr": {
+          "stem": "3x + 4 आणि 2x − 5 च्या बेरजेतून x + 1 वजा करा. उत्तरात x चा सहगुणक किती?",
+          "choices": [
+            "5",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "बेरीज 5x − 1; x + 1 काढल्यावर 4x − 2 — सहगुणक 4. 6 शेवटचा x काढण्याऐवजी मिळवतो; 5 वजाबाकीच विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A triangle's sides are x, x + 3 and 2x − 1. What is its perimeter when x = 5?",
+      "choices": [
+        "25",
+        "17",
+        "20",
+        "22"
+      ],
+      "answerIndex": 3,
+      "solution": "First simplify: x + (x + 3) + (2x − 1) = 4x + 2, then 4 × 5 + 2 = 22. Or plug in: 5 + 8 + 9 = 22 — both roads agree. 17 loses the 2x term's double.",
+      "checkExpr": "5+5+3+2*5-1",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की भुजाएँ x, x + 3 और 2x − 1 हैं। x = 5 पर परिमाप कितना?",
+          "choices": [
+            "25",
+            "17",
+            "20",
+            "22"
+          ],
+          "solution": "पहले सरल कीजिए: x + (x + 3) + (2x − 1) = 4x + 2, फिर 4 × 5 + 2 = 22। या सीधे रखिए: 5 + 8 + 9 = 22 — दोनों राहें मिलती हैं। 17 में 2x का दुगुनापन खो गया।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या बाजू x, x + 3 आणि 2x − 1 आहेत. x = 5 असताना परिमिती किती?",
+          "choices": [
+            "25",
+            "17",
+            "20",
+            "22"
+          ],
+          "solution": "आधी सोपे करा: x + (x + 3) + (2x − 1) = 4x + 2, मग 4 × 5 + 2 = 22. किंवा थेट ठेवा: 5 + 8 + 9 = 22 — दोन्ही वाटा जुळतात. 17 मध्ये 2x चा दुप्पटपणा हरवला."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the value of a² − b² when a = 5 and b = 3?",
+      "choices": [
+        "2",
+        "16",
+        "4",
+        "34"
+      ],
+      "answerIndex": 1,
+      "solution": "25 − 9 = 16. 4 computes (a − b)² = 2² instead — squaring the difference is NOT the difference of squares; 34 adds where it should subtract.",
+      "checkExpr": "5*5-3*3",
+      "translations": {
+        "hi": {
+          "stem": "a = 5 और b = 3 पर a² − b² का मान कितना?",
+          "choices": [
+            "2",
+            "16",
+            "4",
+            "34"
+          ],
+          "solution": "25 − 9 = 16। 4 उलटे (a − b)² = 2² निकालता है — अंतर का वर्ग, वर्गों का अंतर नहीं होता; 34 घटाने की जगह जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "a = 5 आणि b = 3 असताना a² − b² ची किंमत किती?",
+          "choices": [
+            "2",
+            "16",
+            "4",
+            "34"
+          ],
+          "solution": "25 − 9 = 16. 4 उलटे (a − b)² = 2² काढतो — फरकाचा वर्ग म्हणजे वर्गांचा फरक नव्हे; 34 वजा करण्याऐवजी जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Matchstick squares in a row need 3n + 1 sticks for n squares. How many sticks build 15 squares?",
+      "choices": [
+        "31",
+        "46",
+        "45",
+        "60"
+      ],
+      "answerIndex": 1,
+      "solution": "3 × 15 + 1 = 46: each new square borrows a side from its neighbour, and the lone +1 is the very first stick. 45 forgets that opening stick; 60 gives every square all four sides.",
+      "checkExpr": "3*15+1",
+      "translations": {
+        "hi": {
+          "stem": "क़तार में माचिस-तीलियों के n वर्गों के लिए 3n + 1 तीलियाँ लगती हैं। 15 वर्गों के लिए कितनी?",
+          "choices": [
+            "31",
+            "46",
+            "45",
+            "60"
+          ],
+          "solution": "3 × 15 + 1 = 46: हर नया वर्ग पड़ोसी से एक भुजा उधार लेता है, और अकेला +1 सबसे पहली तीली है। 45 वह पहली तीली भूल जाता है; 60 हर वर्ग को चारों भुजाएँ थमा देता है।"
+        },
+        "mr": {
+          "stem": "रांगेत काडेपेटीच्या n चौरसांसाठी 3n + 1 काड्या लागतात. 15 चौरसांसाठी किती?",
+          "choices": [
+            "31",
+            "46",
+            "45",
+            "60"
+          ],
+          "solution": "3 × 15 + 1 = 46: प्रत्येक नवा चौरस शेजाऱ्याकडून एक बाजू उसनी घेतो, आणि एकटा +1 म्हणजे अगदी पहिली काडी. 45 ती पहिली काडी विसरतो; 60 प्रत्येक चौरसाला चारही बाजू देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Simplify 5(2x − 3) − 4(x + 2) and find its value when x = 4.",
+      "choices": [
+        "17",
+        "47",
+        "-1",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "Open both brackets: 10x − 15 − 4x − 8 = 6x − 23, and 6 × 4 − 23 = 1. 17 turns −4 × 2 into +8 — the minus must multiply into EVERY term of its bracket.",
+      "checkExpr": "6*4-23",
+      "translations": {
+        "hi": {
+          "stem": "5(2x − 3) − 4(x + 2) सरल कर x = 4 पर मान निकालिए।",
+          "choices": [
+            "17",
+            "47",
+            "-1",
+            "1"
+          ],
+          "solution": "दोनों कोष्ठक खोलिए: 10x − 15 − 4x − 8 = 6x − 23, और 6 × 4 − 23 = 1। 17 में −4 × 2 बन गया +8 — ऋण को अपने कोष्ठक के हर पद में गुणा होना चाहिए।"
+        },
+        "mr": {
+          "stem": "5(2x − 3) − 4(x + 2) सोपे करून x = 4 असताना किंमत काढा.",
+          "choices": [
+            "17",
+            "47",
+            "-1",
+            "1"
+          ],
+          "solution": "दोन्ही कंस उघडा: 10x − 15 − 4x − 8 = 6x − 23, आणि 6 × 4 − 23 = 1. 17 मध्ये −4 × 2 चे +8 झाले — ऋणाने आपल्या कंसातील प्रत्येक पदात गुणले पाहिजे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The expression n² − n + 41 produces prime numbers for many small n. What is its value when n = 5?",
+      "choices": [
+        "61",
+        "41",
+        "66",
+        "51"
+      ],
+      "answerIndex": 0,
+      "solution": "25 − 5 + 41 = 61, prime indeed. But beware the pattern's promise: at n = 41 the formula gives 41 × 41, no prime at all. Checking many cases is evidence — never proof.",
+      "checkExpr": "5*5-5+41",
+      "translations": {
+        "hi": {
+          "stem": "व्यंजक n² − n + 41 कई छोटे n के लिए अभाज्य संख्याएँ देता है। n = 5 पर उसका मान कितना?",
+          "choices": [
+            "61",
+            "41",
+            "66",
+            "51"
+          ],
+          "solution": "25 − 5 + 41 = 61, सचमुच अभाज्य। पर पैटर्न के वादे से सावधान: n = 41 पर सूत्र 41 × 41 देता है, अभाज्य बिलकुल नहीं। ढेरों उदाहरण जाँचना गवाही है — प्रमाण कभी नहीं।"
+        },
+        "mr": {
+          "stem": "पदावली n² − n + 41 अनेक लहान n साठी मूळ संख्या देते. n = 5 असताना तिची किंमत किती?",
+          "choices": [
+            "61",
+            "41",
+            "66",
+            "51"
+          ],
+          "solution": "25 − 5 + 41 = 61, खरोखर मूळ. पण नमुन्याच्या वचनापासून सावध: n = 41 वर सूत्र 41 × 41 देते, मूळ मुळीच नाही. अनेक उदाहरणे तपासणे म्हणजे पुरावा — सिद्धता कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A magic trick: take a number, add 5, double the result, subtract 10, then halve it. Algebra says everything cancels but the number itself. If you start with 17, what comes out?",
+      "choices": [
+        "17",
+        "22",
+        "34",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: the trick returns 17 untouched. Algebra is the trick's X-ray — the +5 and the −10÷2 were always destined to cancel.",
+      "checkExpr": "(2*(17+5)-10)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक जादुई चाल: संख्या लीजिए, 5 जोड़िए, परिणाम दुगुना कीजिए, 10 घटाइए, फिर आधा कीजिए। बीजगणित कहता है — संख्या के सिवा सब कट जाता है। 17 से शुरू करें तो क्या निकलेगा?",
+          "choices": [
+            "17",
+            "22",
+            "34",
+            "12"
+          ],
+          "solution": "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: चाल 17 को अनछुआ लौटा देती है। बीजगणित चाल का एक्स-रे है — +5 और −10÷2 का कटना पहले से तय था।"
+        },
+        "mr": {
+          "stem": "एक जादूची युक्ती: संख्या घ्या, 5 मिळवा, निकाल दुप्पट करा, 10 वजा करा, मग निम्मे करा. बीजगणित सांगते — संख्येशिवाय सारे रद्द होते. 17 पासून सुरू केल्यास काय निघेल?",
+          "choices": [
+            "17",
+            "22",
+            "34",
+            "12"
+          ],
+          "solution": "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: युक्ती 17 ला स्पर्श न करता परत देते. बीजगणित म्हणजे युक्तीचा एक्स-रे — +5 आणि −10÷2 यांचे रद्द होणे आधीच ठरलेले होते."
+        }
+      }
+    }
+  ]
+}

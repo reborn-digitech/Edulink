@@ -3605,6 +3605,1416 @@ function practicalGeometry(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Perimeter and Area (parallelograms, triangles, circles)      */
+/* ------------------------------------------------------------------------- */
+function perimeterAndArea(): TopicFileOut {
+  const rand = rng("maths-7-perimeter-and-area");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A rectangular park is 25 m long and 15 m wide. What is its area, in square metres?",
+          hi: "एक आयताकार पार्क 25 मीटर लंबा और 15 मीटर चौड़ा है। क्षेत्रफल वर्ग मीटर में कितना?",
+          mr: "एक आयताकृती उद्यान 25 मीटर लांब आणि 15 मीटर रुंद आहे. क्षेत्रफळ चौरस मीटरमध्ये किती?",
+        },
+        answer: 375,
+        wrong: [80, 40, 3750],
+        checkExpr: "25*15",
+        solution: {
+          en: "Area = length × breadth = 25 × 15 = 375 m². 80 walks the perimeter instead; 40 merely adds the two sides once.",
+          hi: "क्षेत्रफल = लंबाई × चौड़ाई = 25 × 15 = 375 वर्ग मीटर। 80 उलटे परिमाप नाप आता है; 40 दोनों भुजाएँ एक बार जोड़ भर देता है।",
+          mr: "क्षेत्रफळ = लांबी × रुंदी = 25 × 15 = 375 चौ. मीटर. 80 उलट परिमिती मोजून येतो; 40 दोन्ही बाजू एकदाच जोडतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A square kitchen garden has side 12 m. How much fencing wire goes once round it, in metres?",
+          hi: "एक वर्गाकार किचन-बग़ीचे की भुजा 12 मीटर है। एक बार घेरने में कितने मीटर तार लगेगा?",
+          mr: "एका चौरस परसबागेची बाजू 12 मीटर आहे. एकदा कुंपण घालायला किती मीटर तार लागेल?",
+        },
+        answer: 48,
+        wrong: [144, 24, 36],
+        checkExpr: "12*4",
+        solution: {
+          en: "Four equal sides: 12 × 4 = 48 m. 144 computes the AREA; 24 fences only two sides and leaves the gate open on the rest.",
+          hi: "चार बराबर भुजाएँ: 12 × 4 = 48 मीटर। 144 क्षेत्रफल निकाल बैठता है; 24 केवल दो भुजाएँ घेरकर बाक़ी खुला छोड़ देता है।",
+          mr: "चार समान बाजू: 12 × 4 = 48 मीटर. 144 क्षेत्रफळ काढतो; 24 फक्त दोन बाजूंना कुंपण घालून बाकी उघडे ठेवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the area of a triangle with base 10 cm and height 6 cm, in square cm?",
+          hi: "आधार 10 सेमी और ऊँचाई 6 सेमी वाले त्रिभुज का क्षेत्रफल वर्ग सेमी में कितना?",
+          mr: "पाया 10 सेमी आणि उंची 6 सेमी असलेल्या त्रिकोणाचे क्षेत्रफळ चौरस सेमीमध्ये किती?",
+        },
+        answer: 30,
+        wrong: [60, 16, 300],
+        checkExpr: "10*6/2",
+        solution: {
+          en: "A triangle is half its bounding rectangle: (10 × 6) ÷ 2 = 30 cm². 60 forgets the half; 16 adds base and height.",
+          hi: "त्रिभुज अपने घेरने वाले आयत का आधा है: (10 × 6) ÷ 2 = 30 वर्ग सेमी। 60 आधा भूल जाता है; 16 आधार-ऊँचाई जोड़ देता है।",
+          mr: "त्रिकोण म्हणजे त्याला वेढणाऱ्या आयताचा अर्धा: (10 × 6) ÷ 2 = 30 चौ. सेमी. 60 अर्धे विसरतो; 16 पाया-उंची जोडतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A parallelogram has base 8 cm and height 5 cm. What is its area, in square cm?",
+          hi: "समांतर चतुर्भुज का आधार 8 सेमी और ऊँचाई 5 सेमी है। क्षेत्रफल वर्ग सेमी में?",
+          mr: "समांतरभुज चौकोनाचा पाया 8 सेमी आणि उंची 5 सेमी आहे. क्षेत्रफळ चौरस सेमीमध्ये किती?",
+        },
+        answer: 40,
+        wrong: [20, 13, 26],
+        checkExpr: "8*5",
+        solution: {
+          en: "Base × height = 8 × 5 = 40 cm² — a parallelogram is a pushed-over rectangle, so NO halving. 20 halves it as if it were a triangle.",
+          hi: "आधार × ऊँचाई = 8 × 5 = 40 वर्ग सेमी — समांतर चतुर्भुज झुका हुआ आयत है, अतः आधा नहीं होता। 20 उसे त्रिभुज मानकर आधा कर देता है।",
+          mr: "पाया × उंची = 8 × 5 = 40 चौ. सेमी — समांतरभुज म्हणजे कललेला आयत, म्हणून अर्धे नाही. 20 त्याला त्रिकोण मानून निम्मे करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the circumference of a circle of radius 7 cm? (Take π = 22/7.)",
+          hi: "त्रिज्या 7 सेमी वाले वृत्त की परिधि कितनी? (π = 22/7 लीजिए।)",
+          mr: "त्रिज्या 7 सेमी असलेल्या वर्तुळाचा परीघ किती? (π = 22/7 घ्या.)",
+        },
+        answer: 44,
+        wrong: [22, 154, 14],
+        checkExpr: "2*22*7/7",
+        solution: {
+          en: "C = 2πr = 2 × 22/7 × 7 = 44 cm. 22 forgets the 2 and walks only half the rim; 154 is the AREA wearing the wrong units.",
+          hi: "परिधि = 2πr = 2 × 22/7 × 7 = 44 सेमी। 22 दो भूलकर आधा ही किनारा चलता है; 154 ग़लत इकाई पहने क्षेत्रफल है।",
+          mr: "परीघ = 2πr = 2 × 22/7 × 7 = 44 सेमी. 22 दोन विसरून अर्धीच कड चालतो; 154 म्हणजे चुकीचे एकक घातलेले क्षेत्रफळ.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the area of a circle of radius 7 cm? (Take π = 22/7.)",
+          hi: "त्रिज्या 7 सेमी वाले वृत्त का क्षेत्रफल कितना? (π = 22/7 लीजिए।)",
+          mr: "त्रिज्या 7 सेमी असलेल्या वर्तुळाचे क्षेत्रफळ किती? (π = 22/7 घ्या.)",
+        },
+        answer: 154,
+        wrong: [44, 49, 308],
+        checkExpr: "22*7*7/7",
+        solution: {
+          en: "A = πr² = 22/7 × 7 × 7 = 154 cm². 44 is the circumference; 49 is r² with π left out; 308 doubles for no reason.",
+          hi: "क्षेत्रफल = πr² = 22/7 × 7 × 7 = 154 वर्ग सेमी। 44 परिधि है; 49 बिना π का r² है; 308 अकारण दुगुना।",
+          mr: "क्षेत्रफळ = πr² = 22/7 × 7 × 7 = 154 चौ. सेमी. 44 हा परीघ; 49 म्हणजे π शिवायचा r²; 308 विनाकारण दुप्पट.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A triangle's area is 36 square cm and its base is 9 cm. What is its height, in cm?",
+          hi: "त्रिभुज का क्षेत्रफल 36 वर्ग सेमी और आधार 9 सेमी है। ऊँचाई कितने सेमी?",
+          mr: "त्रिकोणाचे क्षेत्रफळ 36 चौरस सेमी आणि पाया 9 सेमी आहे. उंची किती सेमी?",
+        },
+        answer: 8,
+        wrong: [4, 27, 324],
+        checkExpr: "36*2/9",
+        solution: {
+          en: "Run the formula backwards: height = 2 × area ÷ base = 72 ÷ 9 = 8 cm. 4 forgets to double first; 27 subtracts the base from the area.",
+          hi: "सूत्र उल्टा चलाइए: ऊँचाई = 2 × क्षेत्रफल ÷ आधार = 72 ÷ 9 = 8 सेमी। 4 पहले दुगुना करना भूलता है; 27 क्षेत्रफल में से आधार घटा देता है।",
+          mr: "सूत्र उलटे चालवा: उंची = 2 × क्षेत्रफळ ÷ पाया = 72 ÷ 9 = 8 सेमी. 4 आधी दुप्पट करायला विसरतो; 27 क्षेत्रफळातून पाया वजा करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A wire bent into a square of side 11 cm is straightened and rebent into a rectangle 13 cm long. What is the rectangle's breadth, in cm?",
+          hi: "11 सेमी भुजा के वर्ग में मुड़ा तार सीधा करके 13 सेमी लंबे आयत में मोड़ा जाता है। आयत की चौड़ाई कितने सेमी?",
+          mr: "11 सेमी बाजूच्या चौरसात वाकवलेली तार सरळ करून 13 सेमी लांब आयतात वाकवली जाते. आयताची रुंदी किती सेमी?",
+        },
+        answer: 9,
+        wrong: [31, 13, 11],
+        checkExpr: "(4*11-2*13)/2",
+        solution: {
+          en: "The wire's length never changes: perimeter 44 cm. So 2(13 + b) = 44, giving b = 9 cm. 31 subtracts 13 only once — a rectangle has TWO of each side.",
+          hi: "तार की लंबाई कभी नहीं बदलती: परिमाप 44 सेमी। अतः 2(13 + b) = 44, यानी b = 9 सेमी। 31 तेरह को एक ही बार घटाता है — आयत में हर भुजा दो-दो हैं।",
+          mr: "तारेची लांबी कधी बदलत नाही: परिमिती 44 सेमी. म्हणून 2(13 + b) = 44, म्हणजे b = 9 सेमी. 31 तेराला एकदाच वजा करतो — आयतात प्रत्येक बाजू दोन-दोन असतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A circle's circumference is 88 cm. What is its radius, in cm? (Take π = 22/7.)",
+          hi: "वृत्त की परिधि 88 सेमी है। त्रिज्या कितने सेमी? (π = 22/7 लीजिए।)",
+          mr: "वर्तुळाचा परीघ 88 सेमी आहे. त्रिज्या किती सेमी? (π = 22/7 घ्या.)",
+        },
+        answer: 14,
+        wrong: [28, 7, 44],
+        checkExpr: "88*7/(2*22)",
+        solution: {
+          en: "r = C ÷ 2π = 88 × 7 ÷ 44 = 14 cm. 28 stops at the diameter; 7 halves once too often.",
+          hi: "त्रिज्या = परिधि ÷ 2π = 88 × 7 ÷ 44 = 14 सेमी। 28 व्यास पर रुक जाता है; 7 एक बार ज़्यादा आधा कर देता है।",
+          mr: "त्रिज्या = परीघ ÷ 2π = 88 × 7 ÷ 44 = 14 सेमी. 28 व्यासावर थांबतो; 7 एकदा जास्त निम्मे करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Two roads, each 3 m wide, cross at right angles through the middle of a 60 m × 40 m park, one parallel to each side. What area do the roads cover, in square metres?",
+          hi: "3-3 मीटर चौड़ी दो सड़कें 60 मीटर × 40 मीटर पार्क के बीच से समकोण पर गुज़रती हैं, हर भुजा के समांतर एक। सड़कें कुल कितने वर्ग मीटर घेरती हैं?",
+          mr: "प्रत्येकी 3 मीटर रुंद दोन रस्ते 60 मीटर × 40 मीटर उद्यानाच्या मधून काटकोनात जातात, प्रत्येक बाजूला समांतर एक. रस्ते एकूण किती चौरस मीटर व्यापतात?",
+        },
+        answer: 291,
+        wrong: [300, 180, 120],
+        checkExpr: "60*3+40*3-3*3",
+        solution: {
+          en: "One road covers 60 × 3 = 180, the other 40 × 3 = 120 — but their crossing square 3 × 3 = 9 got counted twice: 180 + 120 − 9 = 291 m². 300 pays for the crossing both times.",
+          hi: "एक सड़क 60 × 3 = 180 घेरती है, दूसरी 40 × 3 = 120 — पर चौराहे का 3 × 3 = 9 दो बार गिना गया: 180 + 120 − 9 = 291 वर्ग मीटर। 300 चौराहे का दाम दोनों बार चुका देता है।",
+          mr: "एक रस्ता 60 × 3 = 180 व्यापतो, दुसरा 40 × 3 = 120 — पण चौकाचा 3 × 3 = 9 दोनदा मोजला गेला: 180 + 120 − 9 = 291 चौ. मीटर. 300 चौकाची किंमत दोन्ही वेळा देतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Grass costs ₹5 per square metre. What does it cost to grass a triangular plot with base 20 m and height 12 m?",
+          hi: "घास ₹5 प्रति वर्ग मीटर पड़ती है। आधार 20 मीटर और ऊँचाई 12 मीटर वाले त्रिभुजाकार भूखंड पर घास लगवाने का ख़र्च कितना?",
+          mr: "गवताला दर चौरस मीटरमागे ₹5 पडतात. पाया 20 मीटर आणि उंची 12 मीटर असलेल्या त्रिकोणी भूखंडावर गवत लावायचा खर्च किती?",
+        },
+        answer: 600,
+        wrong: [1200, 120, 160],
+        checkExpr: "20*12/2*5",
+        fmt: rupees,
+        solution: {
+          en: "Area first: (20 × 12) ÷ 2 = 120 m², then 120 × 5 = ₹600. 1200 skips the halving; 120 stops at the area and forgets the bill.",
+          hi: "पहले क्षेत्रफल: (20 × 12) ÷ 2 = 120 वर्ग मीटर, फिर 120 × 5 = ₹600। 1200 आधा करना छोड़ देता है; 120 क्षेत्रफल पर रुककर बिल भूल जाता है।",
+          mr: "आधी क्षेत्रफळ: (20 × 12) ÷ 2 = 120 चौ. मीटर, मग 120 × 5 = ₹600. 1200 निम्मे करणे गाळतो; 120 क्षेत्रफळावर थांबून बिल विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A square has the same area as a rectangle measuring 16 cm by 4 cm. What is the square's side, in cm?",
+          hi: "एक वर्ग का क्षेत्रफल 16 सेमी × 4 सेमी के आयत के बराबर है। वर्ग की भुजा कितने सेमी?",
+          mr: "एका चौरसाचे क्षेत्रफळ 16 सेमी × 4 सेमी च्या आयताइतके आहे. चौरसाची बाजू किती सेमी?",
+        },
+        answer: 8,
+        wrong: [10, 64, 20],
+        solution: {
+          en: "The shared area is 16 × 4 = 64 cm², and 64 = 8² — side 8 cm. 10 averages the rectangle's sides; averaging matches perimeters, never areas.",
+          hi: "साझा क्षेत्रफल 16 × 4 = 64 वर्ग सेमी, और 64 = 8² — भुजा 8 सेमी। 10 आयत की भुजाओं का औसत लेता है; औसत परिमाप मिलाता है, क्षेत्रफल कभी नहीं।",
+          mr: "सामाईक क्षेत्रफळ 16 × 4 = 64 चौ. सेमी, आणि 64 = 8² — बाजू 8 सेमी. 10 आयताच्या बाजूंची सरासरी घेतो; सरासरी परिमिती जुळवते, क्षेत्रफळ कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A washer has outer radius 14 cm and a hole of radius 7 cm. What is the area of the ring, in square cm? (Take π = 22/7.)",
+          hi: "एक वॉशर की बाहरी त्रिज्या 14 सेमी और छेद की त्रिज्या 7 सेमी है। छल्ले का क्षेत्रफल वर्ग सेमी में? (π = 22/7)",
+          mr: "एका वॉशरची बाह्य त्रिज्या 14 सेमी आणि छिद्राची त्रिज्या 7 सेमी आहे. कड्याचे क्षेत्रफळ चौरस सेमीमध्ये? (π = 22/7)",
+        },
+        answer: 462,
+        wrong: [154, 616, 308],
+        checkExpr: "22*(14*14-7*7)/7",
+        solution: {
+          en: "Big circle minus hole: 22/7 × (196 − 49) = 22 × 21 = 462 cm². 616 keeps the hole filled; 154 is only the hole itself.",
+          hi: "बड़ा वृत्त घटा छेद: 22/7 × (196 − 49) = 22 × 21 = 462 वर्ग सेमी। 616 छेद भरा रहने देता है; 154 अकेला छेद है।",
+          mr: "मोठे वर्तुळ वजा छिद्र: 22/7 × (196 − 49) = 22 × 21 = 462 चौ. सेमी. 616 छिद्र भरलेलेच ठेवतो; 154 म्हणजे एकटे छिद्र.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A 36 cm loop of string makes a 10 × 8 rectangle, then a 9 × 9 square. How much MORE area does the square enclose, in square cm?",
+          hi: "36 सेमी के धागे के फंदे से पहले 10 × 8 का आयत, फिर 9 × 9 का वर्ग बनता है। वर्ग कितने वर्ग सेमी अधिक घेरता है?",
+          mr: "36 सेमी दोऱ्याच्या वेढ्यातून आधी 10 × 8 चा आयत, मग 9 × 9 चा चौरस होतो. चौरस किती चौरस सेमी जास्त व्यापतो?",
+        },
+        answer: 1,
+        wrong: [9, 4, 0],
+        checkExpr: "9*9-10*8",
+        solution: {
+          en: "Same perimeter, different areas: 81 − 80 = 1 cm² more. 0 assumes equal perimeter means equal area — the square always wins that contest, if only just.",
+          hi: "परिमाप वही, क्षेत्रफल अलग: 81 − 80 = 1 वर्ग सेमी अधिक। 0 मान बैठता है कि बराबर परिमाप यानी बराबर क्षेत्रफल — यह होड़ वर्ग सदा जीतता है, भले ज़रा-सा।",
+          mr: "परिमिती तीच, क्षेत्रफळे वेगळी: 81 − 80 = 1 चौ. सेमी जास्त. 0 गृहीत धरतो की समान परिमिती म्हणजे समान क्षेत्रफळ — ही शर्यत चौरस नेहमी जिंकतो, अगदी थोडक्याने का होईना.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A goat is tied by a 7 m rope to the OUTSIDE corner of a big rectangular shed. Around that corner it can sweep three-quarters of a circle. What area can it graze, in square metres? (π = 22/7)",
+          hi: "एक बकरी 7 मीटर की रस्सी से बड़े आयताकार छप्पर के बाहरी कोने से बँधी है। उस कोने के चारों ओर वह वृत्त का तीन-चौथाई घूम सकती है। वह कितने वर्ग मीटर चर सकती है? (π = 22/7)",
+          mr: "एक शेळी 7 मीटर दोरीने मोठ्या आयताकृती गोठ्याच्या बाहेरच्या कोपऱ्याला बांधली आहे. त्या कोपऱ्याभोवती ती वर्तुळाचा तीन-चतुर्थांश फिरू शकते. ती किती चौरस मीटर चरू शकते? (π = 22/7)",
+        },
+        answer: 115.5,
+        wrong: [154, 38.5, 77],
+        checkExpr: "3*22*7*7/(7*4)",
+        solution: {
+          en: "A full circle of radius 7 covers 154 m², but the shed blocks one quarter: 154 × 3/4 = 115.5 m². 154 lets the goat walk through walls; 38.5 leaves it only the blocked quarter.",
+          hi: "7 त्रिज्या का पूरा वृत्त 154 वर्ग मीटर घेरता है, पर छप्पर एक चौथाई रोक लेता है: 154 × 3/4 = 115.5 वर्ग मीटर। 154 बकरी को दीवारों के पार चलने देता है; 38.5 उसे केवल रुका हुआ चौथाई थमा देता है।",
+          mr: "7 त्रिज्येचे पूर्ण वर्तुळ 154 चौ. मीटर व्यापते, पण गोठा एक चतुर्थांश अडवतो: 154 × 3/4 = 115.5 चौ. मीटर. 154 शेळीला भिंतीतून चालू देतो; 38.5 तिला फक्त अडवलेला चतुर्थांशच देतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "If a circle's radius is doubled, its area becomes how many TIMES the original?",
+          hi: "यदि वृत्त की त्रिज्या दुगुनी कर दी जाए, तो क्षेत्रफल मूल का कितने गुना हो जाता है?",
+          mr: "वर्तुळाची त्रिज्या दुप्पट केली, तर क्षेत्रफळ मूळच्या किती पट होते?",
+        },
+        answer: 4,
+        wrong: [2, 8, 6],
+        checkExpr: "2*2",
+        solution: {
+          en: "Area rides on r², so doubling r multiplies the area by 2² = 4. 2 doubles only once — that is the CIRCUMFERENCE's behaviour; areas grow by the square.",
+          hi: "क्षेत्रफल r² पर सवार है, अतः r दुगुनी होते ही क्षेत्रफल 2² = 4 गुना। 2 एक ही बार दुगुना करता है — वह परिधि का स्वभाव है; क्षेत्रफल वर्ग से बढ़ते हैं।",
+          mr: "क्षेत्रफळ r² वर स्वार, म्हणून r दुप्पट होताच क्षेत्रफळ 2² = 4 पट. 2 एकदाच दुप्पट करतो — तो परीघाचा स्वभाव; क्षेत्रफळे वर्गाने वाढतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 11 — Perimeter and Area",
+      name: "Perimeter and Area",
+      slug: "maths-7-perimeter-and-area",
+      summary:
+        "Parallelograms as pushed-over rectangles, triangles as their halves, circles measured by 22/7 — and a goat on a corner rope showing how shapes share space.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "परिमाप और क्षेत्रफल",
+          summary:
+            "झुके आयत जैसे समांतर चतुर्भुज, उनके आधे त्रिभुज, 22/7 से नपे वृत्त — और कोने की रस्सी से बँधी बकरी दिखाती है कि आकृतियाँ जगह कैसे बाँटती हैं।",
+        },
+        mr: {
+          name: "परिमिती आणि क्षेत्रफळ",
+          summary:
+            "कललेल्या आयतांसारखे समांतरभुज, त्यांचे अर्धे त्रिकोण, 22/7 ने मोजलेली वर्तुळे — आणि कोपऱ्याच्या दोरीची शेळी दाखवते की आकृती जागा कशी वाटतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Algebraic Expressions (terms, coefficients, evaluation)      */
+/* ------------------------------------------------------------------------- */
+function algebraicExpressions(): TopicFileOut {
+  const rand = rng("maths-7-algebraic-expressions");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the value of 3x + 2 when x = 4?",
+          hi: "x = 4 पर 3x + 2 का मान कितना?",
+          mr: "x = 4 असताना 3x + 2 ची किंमत किती?",
+        },
+        answer: 14,
+        wrong: [18, 9, 24],
+        checkExpr: "3*4+2",
+        solution: {
+          en: "Substitute and follow the order: 3 × 4 = 12, then + 2 = 14. 18 adds the 2 to x before multiplying; 24 multiplies everything in sight.",
+          hi: "मान रखिए और क्रम निभाइए: 3 × 4 = 12, फिर + 2 = 14। 18 गुणा से पहले 2 को x में जोड़ देता है; 24 जो दिखे उसे गुणा कर देता है।",
+          mr: "किंमत ठेवा आणि क्रम पाळा: 3 × 4 = 12, मग + 2 = 14. 18 गुणाकाराआधी 2 x मध्ये मिळवतो; 24 दिसेल त्याचा गुणाकार करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many terms does the expression 4x² + 3x − 5 have?",
+          hi: "व्यंजक 4x² + 3x − 5 में कितने पद हैं?",
+          mr: "पदावली 4x² + 3x − 5 मध्ये किती पदे आहेत?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        solution: {
+          en: "Terms are the chunks joined by + and −: 4x², 3x and −5 — that is 3. The constant −5 is a full term even without a letter.",
+          hi: "पद वे टुकड़े हैं जो + और − से जुड़े हैं: 4x², 3x और −5 — यानी 3। अचर −5 बिना अक्षर के भी पूरा पद है।",
+          mr: "पदे म्हणजे + आणि − ने जोडलेले तुकडे: 4x², 3x आणि −5 — म्हणजे 3. स्थिरांक −5 अक्षराशिवायही पूर्ण पद आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the coefficient of y in 7y + 12?",
+          hi: "7y + 12 में y का गुणांक क्या है?",
+          mr: "7y + 12 मध्ये y चा सहगुणक काय?",
+        },
+        answer: 7,
+        wrong: [12, 19, 1],
+        solution: {
+          en: "The coefficient is the number RIDING the letter: 7. 12 stands alone as the constant; it never touches y.",
+          hi: "गुणांक अक्षर पर सवार संख्या है: 7। 12 अचर बनकर अकेला खड़ा है; वह y को छूता तक नहीं।",
+          mr: "सहगुणक म्हणजे अक्षरावर स्वार संख्या: 7. 12 स्थिरांक म्हणून एकटा उभा; तो y ला स्पर्शही करत नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Add (2x + 3) and (5x − 1). What is the coefficient of x in the sum?",
+          hi: "(2x + 3) और (5x − 1) जोड़िए। योग में x का गुणांक कितना?",
+          mr: "(2x + 3) आणि (5x − 1) जोडा. बेरजेत x चा सहगुणक किती?",
+        },
+        answer: 7,
+        wrong: [3, 10, 2],
+        checkExpr: "2+5",
+        solution: {
+          en: "Like terms join: 2x + 5x = 7x, so the coefficient is 7. 10 multiplies 2 × 5; addition of terms adds their coefficients, nothing more.",
+          hi: "समान पद जुड़ते हैं: 2x + 5x = 7x, अतः गुणांक 7। 10 में 2 × 5 गुणा हो गया; पदों का योग केवल गुणांक जोड़ता है, और कुछ नहीं।",
+          mr: "समान पदे जुळतात: 2x + 5x = 7x, म्हणून सहगुणक 7. 10 मध्ये 2 × 5 गुणले गेले; पदांची बेरीज फक्त सहगुणक जोडते, आणखी काही नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the value of x² when x = −3?",
+          hi: "x = −3 पर x² का मान कितना?",
+          mr: "x = −3 असताना x² ची किंमत किती?",
+        },
+        answer: 9,
+        wrong: [-9, 6, -6],
+        checkExpr: "(0-3)*(0-3)",
+        solution: {
+          en: "(−3) × (−3) = 9: squaring wipes the minus, for the two negatives cancel. −9 squares the digit and pastes the sign back on afterwards.",
+          hi: "(−3) × (−3) = 9: वर्ग ऋण मिटा देता है, दोनों ऋण कट जाते हैं। −9 अंक का वर्ग कर चिह्न बाद में चिपका देता है।",
+          mr: "(−3) × (−3) = 9: वर्ग ऋण पुसतो, दोन ऋणे रद्द होतात. −9 आकड्याचा वर्ग करून चिन्ह मागून चिकटवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "5ab + 3ab = ▢ab. What is the coefficient in the box?",
+          hi: "5ab + 3ab = ▢ab। रिक्त में गुणांक क्या आएगा?",
+          mr: "5ab + 3ab = ▢ab. रिकाम्यात सहगुणक काय येईल?",
+        },
+        answer: 8,
+        wrong: [15, 2, 53],
+        checkExpr: "5+3",
+        solution: {
+          en: "Like terms — same letters, same powers — add their coefficients: 5 + 3 = 8. 15 multiplies them; 53 just sits the digits side by side.",
+          hi: "समान पद — वही अक्षर, वही घात — गुणांक जोड़ते हैं: 5 + 3 = 8। 15 गुणा कर देता है; 53 अंकों को बग़ल-बग़ल बैठा देता है।",
+          mr: "समान पदे — तीच अक्षरे, त्याच घाती — सहगुणक जोडतात: 5 + 3 = 8. 15 गुणतो; 53 आकडे शेजारी-शेजारी बसवतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Subtract: (7m − 2) − (4m + 3). What is the CONSTANT term of the result?",
+          hi: "घटाइए: (7m − 2) − (4m + 3)। परिणाम का अचर पद क्या है?",
+          mr: "वजा करा: (7m − 2) − (4m + 3). निकालाचे स्थिरपद काय?",
+        },
+        answer: -5,
+        wrong: [1, 5, -1],
+        checkExpr: "0-2-3",
+        solution: {
+          en: "The minus reaches EVERY term of the bracket: 7m − 2 − 4m − 3 = 3m − 5, constant −5. 1 flips only the 4m and lets the +3 slip through unsigned.",
+          hi: "ऋण कोष्ठक के हर पद तक पहुँचता है: 7m − 2 − 4m − 3 = 3m − 5, अचर −5। 1 केवल 4m पलटता है और +3 को बिना चिह्न बदले निकल जाने देता है।",
+          mr: "ऋण कंसातील प्रत्येक पदापर्यंत पोहोचते: 7m − 2 − 4m − 3 = 3m − 5, स्थिरपद −5. 1 फक्त 4m उलटवतो आणि +3 ला चिन्ह न बदलता निसटू देतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the value of 2a² + 3b when a = 2 and b = 5?",
+          hi: "a = 2 और b = 5 पर 2a² + 3b का मान कितना?",
+          mr: "a = 2 आणि b = 5 असताना 2a² + 3b ची किंमत किती?",
+        },
+        answer: 23,
+        wrong: [31, 19, 46],
+        checkExpr: "2*2*2+3*5",
+        solution: {
+          en: "2 × 2² = 8 and 3 × 5 = 15: together 23. 31 squares (2a) as a whole, getting 16 — the exponent belongs to a alone, not to its coefficient.",
+          hi: "2 × 2² = 8 और 3 × 5 = 15: मिलाकर 23। 31 पूरे (2a) का वर्ग कर 16 पाता है — घात अकेले a की है, उसके गुणांक की नहीं।",
+          mr: "2 × 2² = 8 आणि 3 × 5 = 15: मिळून 23. 31 अख्ख्या (2a) चा वर्ग करून 16 मिळवतो — घात एकट्या a ची, त्याच्या सहगुणकाची नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Simplify 3x + 2y − x + 4y. What is the coefficient of y?",
+          hi: "3x + 2y − x + 4y सरल कीजिए। y का गुणांक कितना?",
+          mr: "3x + 2y − x + 4y सोपे करा. y चा सहगुणक किती?",
+        },
+        answer: 6,
+        wrong: [2, 8, 4],
+        checkExpr: "2+4",
+        solution: {
+          en: "Sort the letters: x's give 3 − 1 = 2x, y's give 2 + 4 = 6y — the y-coefficient is 6. 8 lets an x sneak into the y pile.",
+          hi: "अक्षर छाँटिए: x से 3 − 1 = 2x, y से 2 + 4 = 6y — y का गुणांक 6। 8 में एक x चुपके से y की ढेरी में घुस गया।",
+          mr: "अक्षरे निवडा: x चे 3 − 1 = 2x, y चे 2 + 4 = 6y — y चा सहगुणक 6. 8 मध्ये एक x हळूच y च्या ढिगात शिरतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "From the sum of 3x + 4 and 2x − 5, subtract x + 1. What is the coefficient of x in the answer?",
+          hi: "3x + 4 और 2x − 5 के योग में से x + 1 घटाइए। उत्तर में x का गुणांक कितना?",
+          mr: "3x + 4 आणि 2x − 5 च्या बेरजेतून x + 1 वजा करा. उत्तरात x चा सहगुणक किती?",
+        },
+        answer: 4,
+        wrong: [6, 5, 2],
+        checkExpr: "3+2-1",
+        solution: {
+          en: "The sum is 5x − 1; removing x + 1 leaves 4x − 2 — coefficient 4. 6 ADDS the last x instead of taking it away; 5 forgets the subtraction entirely.",
+          hi: "योग 5x − 1; x + 1 हटाने पर 4x − 2 — गुणांक 4। 6 आख़िरी x को हटाने की जगह जोड़ देता है; 5 घटाना ही भूल जाता है।",
+          mr: "बेरीज 5x − 1; x + 1 काढल्यावर 4x − 2 — सहगुणक 4. 6 शेवटचा x काढण्याऐवजी मिळवतो; 5 वजाबाकीच विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A triangle's sides are x, x + 3 and 2x − 1. What is its perimeter when x = 5?",
+          hi: "त्रिभुज की भुजाएँ x, x + 3 और 2x − 1 हैं। x = 5 पर परिमाप कितना?",
+          mr: "त्रिकोणाच्या बाजू x, x + 3 आणि 2x − 1 आहेत. x = 5 असताना परिमिती किती?",
+        },
+        answer: 22,
+        wrong: [17, 25, 20],
+        checkExpr: "5+5+3+2*5-1",
+        solution: {
+          en: "First simplify: x + (x + 3) + (2x − 1) = 4x + 2, then 4 × 5 + 2 = 22. Or plug in: 5 + 8 + 9 = 22 — both roads agree. 17 loses the 2x term's double.",
+          hi: "पहले सरल कीजिए: x + (x + 3) + (2x − 1) = 4x + 2, फिर 4 × 5 + 2 = 22। या सीधे रखिए: 5 + 8 + 9 = 22 — दोनों राहें मिलती हैं। 17 में 2x का दुगुनापन खो गया।",
+          mr: "आधी सोपे करा: x + (x + 3) + (2x − 1) = 4x + 2, मग 4 × 5 + 2 = 22. किंवा थेट ठेवा: 5 + 8 + 9 = 22 — दोन्ही वाटा जुळतात. 17 मध्ये 2x चा दुप्पटपणा हरवला.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the value of a² − b² when a = 5 and b = 3?",
+          hi: "a = 5 और b = 3 पर a² − b² का मान कितना?",
+          mr: "a = 5 आणि b = 3 असताना a² − b² ची किंमत किती?",
+        },
+        answer: 16,
+        wrong: [4, 34, 2],
+        checkExpr: "5*5-3*3",
+        solution: {
+          en: "25 − 9 = 16. 4 computes (a − b)² = 2² instead — squaring the difference is NOT the difference of squares; 34 adds where it should subtract.",
+          hi: "25 − 9 = 16। 4 उलटे (a − b)² = 2² निकालता है — अंतर का वर्ग, वर्गों का अंतर नहीं होता; 34 घटाने की जगह जोड़ देता है।",
+          mr: "25 − 9 = 16. 4 उलटे (a − b)² = 2² काढतो — फरकाचा वर्ग म्हणजे वर्गांचा फरक नव्हे; 34 वजा करण्याऐवजी जोडतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Matchstick squares in a row need 3n + 1 sticks for n squares. How many sticks build 15 squares?",
+          hi: "क़तार में माचिस-तीलियों के n वर्गों के लिए 3n + 1 तीलियाँ लगती हैं। 15 वर्गों के लिए कितनी?",
+          mr: "रांगेत काडेपेटीच्या n चौरसांसाठी 3n + 1 काड्या लागतात. 15 चौरसांसाठी किती?",
+        },
+        answer: 46,
+        wrong: [45, 60, 31],
+        checkExpr: "3*15+1",
+        solution: {
+          en: "3 × 15 + 1 = 46: each new square borrows a side from its neighbour, and the lone +1 is the very first stick. 45 forgets that opening stick; 60 gives every square all four sides.",
+          hi: "3 × 15 + 1 = 46: हर नया वर्ग पड़ोसी से एक भुजा उधार लेता है, और अकेला +1 सबसे पहली तीली है। 45 वह पहली तीली भूल जाता है; 60 हर वर्ग को चारों भुजाएँ थमा देता है।",
+          mr: "3 × 15 + 1 = 46: प्रत्येक नवा चौरस शेजाऱ्याकडून एक बाजू उसनी घेतो, आणि एकटा +1 म्हणजे अगदी पहिली काडी. 45 ती पहिली काडी विसरतो; 60 प्रत्येक चौरसाला चारही बाजू देतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Simplify 5(2x − 3) − 4(x + 2) and find its value when x = 4.",
+          hi: "5(2x − 3) − 4(x + 2) सरल कर x = 4 पर मान निकालिए।",
+          mr: "5(2x − 3) − 4(x + 2) सोपे करून x = 4 असताना किंमत काढा.",
+        },
+        answer: 1,
+        wrong: [17, 47, -1],
+        checkExpr: "6*4-23",
+        solution: {
+          en: "Open both brackets: 10x − 15 − 4x − 8 = 6x − 23, and 6 × 4 − 23 = 1. 17 turns −4 × 2 into +8 — the minus must multiply into EVERY term of its bracket.",
+          hi: "दोनों कोष्ठक खोलिए: 10x − 15 − 4x − 8 = 6x − 23, और 6 × 4 − 23 = 1। 17 में −4 × 2 बन गया +8 — ऋण को अपने कोष्ठक के हर पद में गुणा होना चाहिए।",
+          mr: "दोन्ही कंस उघडा: 10x − 15 − 4x − 8 = 6x − 23, आणि 6 × 4 − 23 = 1. 17 मध्ये −4 × 2 चे +8 झाले — ऋणाने आपल्या कंसातील प्रत्येक पदात गुणले पाहिजे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The expression n² − n + 41 produces prime numbers for many small n. What is its value when n = 5?",
+          hi: "व्यंजक n² − n + 41 कई छोटे n के लिए अभाज्य संख्याएँ देता है। n = 5 पर उसका मान कितना?",
+          mr: "पदावली n² − n + 41 अनेक लहान n साठी मूळ संख्या देते. n = 5 असताना तिची किंमत किती?",
+        },
+        answer: 61,
+        wrong: [51, 66, 41],
+        checkExpr: "5*5-5+41",
+        solution: {
+          en: "25 − 5 + 41 = 61, prime indeed. But beware the pattern's promise: at n = 41 the formula gives 41 × 41, no prime at all. Checking many cases is evidence — never proof.",
+          hi: "25 − 5 + 41 = 61, सचमुच अभाज्य। पर पैटर्न के वादे से सावधान: n = 41 पर सूत्र 41 × 41 देता है, अभाज्य बिलकुल नहीं। ढेरों उदाहरण जाँचना गवाही है — प्रमाण कभी नहीं।",
+          mr: "25 − 5 + 41 = 61, खरोखर मूळ. पण नमुन्याच्या वचनापासून सावध: n = 41 वर सूत्र 41 × 41 देते, मूळ मुळीच नाही. अनेक उदाहरणे तपासणे म्हणजे पुरावा — सिद्धता कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A magic trick: take a number, add 5, double the result, subtract 10, then halve it. Algebra says everything cancels but the number itself. If you start with 17, what comes out?",
+          hi: "एक जादुई चाल: संख्या लीजिए, 5 जोड़िए, परिणाम दुगुना कीजिए, 10 घटाइए, फिर आधा कीजिए। बीजगणित कहता है — संख्या के सिवा सब कट जाता है। 17 से शुरू करें तो क्या निकलेगा?",
+          mr: "एक जादूची युक्ती: संख्या घ्या, 5 मिळवा, निकाल दुप्पट करा, 10 वजा करा, मग निम्मे करा. बीजगणित सांगते — संख्येशिवाय सारे रद्द होते. 17 पासून सुरू केल्यास काय निघेल?",
+        },
+        answer: 17,
+        wrong: [22, 34, 12],
+        checkExpr: "(2*(17+5)-10)/2",
+        solution: {
+          en: "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: the trick returns 17 untouched. Algebra is the trick's X-ray — the +5 and the −10÷2 were always destined to cancel.",
+          hi: "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: चाल 17 को अनछुआ लौटा देती है। बीजगणित चाल का एक्स-रे है — +5 और −10÷2 का कटना पहले से तय था।",
+          mr: "(2(x + 5) − 10) ÷ 2 = (2x + 10 − 10) ÷ 2 = x: युक्ती 17 ला स्पर्श न करता परत देते. बीजगणित म्हणजे युक्तीचा एक्स-रे — +5 आणि −10÷2 यांचे रद्द होणे आधीच ठरलेले होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 12 — Algebraic Expressions",
+      name: "Algebraic Expressions",
+      slug: "maths-7-algebraic-expressions",
+      summary:
+        "Terms, coefficients and like-term sorting; minus signs that must reach every corner of a bracket — and algebra as the X-ray that exposes a number trick.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "बीजीय व्यंजक",
+          summary:
+            "पद, गुणांक और समान पदों की छँटाई; ऋण-चिह्न जिन्हें कोष्ठक के हर कोने तक पहुँचना है — और बीजगणित वह एक्स-रे जो संख्या-जादू का भेद खोल देता है।",
+        },
+        mr: {
+          name: "बैजिक पदावली",
+          summary:
+            "पदे, सहगुणक आणि समान पदांची निवड; कंसाच्या प्रत्येक कोपऱ्यापर्यंत पोहोचावी लागणारी ऋण-चिन्हे — आणि संख्या-जादूचे रहस्य उघडणारा बीजगणिताचा एक्स-रे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Exponents and Powers (repeated multiplication, laws)         */
+/* ------------------------------------------------------------------------- */
+function exponentsAndPowers(): TopicFileOut {
+  const rand = rng("maths-7-exponents-and-powers");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 2⁵?",
+          hi: "2⁵ कितना है?",
+          mr: "2⁵ किती?",
+        },
+        answer: 32,
+        wrong: [10, 25, 16],
+        checkExpr: "2*2*2*2*2",
+        solution: {
+          en: "Five 2s multiplied: 2 × 2 × 2 × 2 × 2 = 32. 10 multiplies base by exponent; 25 swaps them into 5²; 16 stops one doubling early.",
+          hi: "पाँच 2 का गुणा: 2 × 2 × 2 × 2 × 2 = 32। 10 आधार को घात से गुणा करता है; 25 उन्हें पलटकर 5² बना देता है; 16 एक दुगुना पहले रुक जाता है।",
+          mr: "पाच 2 चा गुणाकार: 2 × 2 × 2 × 2 × 2 = 32. 10 पायाला घाताने गुणतो; 25 त्यांना उलटवून 5² करतो; 16 एक दुप्पट आधी थांबतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 10³?",
+          hi: "10³ कितना है?",
+          mr: "10³ किती?",
+        },
+        answer: 1000,
+        wrong: [30, 100, 10000],
+        checkExpr: "10*10*10",
+        solution: {
+          en: "Three 10s: 10 × 10 × 10 = 1000 — the exponent counts the zeros. 30 multiplies 10 by 3; 10000 hangs one zero too many.",
+          hi: "तीन 10: 10 × 10 × 10 = 1000 — घात शून्यों को गिनती है। 30 दस को तीन से गुणा करता है; 10000 एक शून्य ज़्यादा लटका देता है।",
+          mr: "तीन 10: 10 × 10 × 10 = 1000 — घात शून्ये मोजते. 30 दहाला तीनने गुणतो; 10000 एक शून्य जास्त लटकवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In the power 7⁴, which number is the EXPONENT?",
+          hi: "घातांक-रूप 7⁴ में घात कौन-सी संख्या है?",
+          mr: "घातरूप 7⁴ मध्ये घात कोणती संख्या आहे?",
+        },
+        answer: 4,
+        wrong: [7, 28, 2401],
+        solution: {
+          en: "The little raised 4: it COUNTS how many 7s multiply. 7 is the base; 2401 is the value the pair produces.",
+          hi: "ऊपर लिखा छोटा 4: वह गिनता है कि कितने 7 गुणा होंगे। 7 आधार है; 2401 वह मान है जो जोड़ी बनाती है।",
+          mr: "वर लिहिलेला छोटा 4: तो मोजतो की किती 7 गुणले जातील. 7 हा पाया; 2401 ही जोडीने घडवलेली किंमत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "3² × 3³ = 3 raised to which power?",
+          hi: "3² × 3³ = 3 की कौन-सी घात?",
+          mr: "3² × 3³ = 3 चा कोणता घात?",
+        },
+        answer: 5,
+        wrong: [6, 1, 9],
+        checkExpr: "2+3",
+        solution: {
+          en: "Same base multiplying: ADD the exponents, 2 + 3 = 5. 6 multiplies them — that law belongs to a power OF a power, like (3²)³.",
+          hi: "समान आधार का गुणा: घातें जोड़िए, 2 + 3 = 5। 6 उन्हें गुणा करता है — वह नियम घात-की-घात का है, जैसे (3²)³।",
+          mr: "समान पायाचा गुणाकार: घाती जोडा, 2 + 3 = 5. 6 त्यांना गुणतो — तो नियम घाताच्या-घाताचा, जसे (3²)³.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is (−1)⁷?",
+          hi: "(−1)⁷ कितना है?",
+          mr: "(−1)⁷ किती?",
+        },
+        answer: -1,
+        wrong: [1, -7, 7],
+        solution: {
+          en: "An odd power keeps the minus: seven −1s pair off three times and one minus survives — −1. 1 needs an even exponent; −7 multiplies base by power.",
+          hi: "विषम घात ऋण रखती है: सात −1 तीन जोड़ियों में कटते हैं और एक ऋण बचता है — −1। 1 के लिए सम घात चाहिए; −7 आधार को घात से गुणा कर बैठता है।",
+          mr: "विषम घात ऋण राखते: सात −1 तीन जोड्यांत रद्द होतात आणि एक ऋण उरते — −1. 1 साठी सम घात हवी; −7 पायाला घाताने गुणतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 5⁰?",
+          hi: "5⁰ कितना है?",
+          mr: "5⁰ किती?",
+        },
+        answer: 1,
+        wrong: [0, 5, 50],
+        solution: {
+          en: "Any nonzero number to the power 0 is 1 — watch the ladder: 5² = 25, 5¹ = 5, and each step DIVIDES by 5, so 5⁰ = 5 ÷ 5 = 1. 0 confuses the exponent with the answer.",
+          hi: "शून्येतर संख्या की घात 0 सदा 1 — सीढ़ी देखिए: 5² = 25, 5¹ = 5, हर क़दम 5 से भाग है, अतः 5⁰ = 5 ÷ 5 = 1। 0 घात को ही उत्तर समझ लेता है।",
+          mr: "शून्येतर संख्येचा घात 0 नेहमी 1 — शिडी पाहा: 5² = 25, 5¹ = 5, प्रत्येक पायरी 5 ने भाग, म्हणून 5⁰ = 5 ÷ 5 = 1. 0 घातालाच उत्तर समजतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is 2⁸ ÷ 2⁵?",
+          hi: "2⁸ ÷ 2⁵ कितना है?",
+          mr: "2⁸ ÷ 2⁵ किती?",
+        },
+        answer: 8,
+        wrong: [8192, 2, 4],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "Same base dividing: SUBTRACT exponents, 2⁸⁻⁵ = 2³ = 8. 8192 adds them into 2¹³; the shared 2⁵ on top and bottom cancels away.",
+          hi: "समान आधार का भाग: घातें घटाइए, 2⁸⁻⁵ = 2³ = 8। 8192 जोड़कर 2¹³ बना देता है; ऊपर-नीचे का साझा 2⁵ कट जाता है।",
+          mr: "समान पायाचा भाग: घाती वजा करा, 2⁸⁻⁵ = 2³ = 8. 8192 जोडून 2¹³ करतो; वर-खालचा सामाईक 2⁵ रद्द होतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is (2³)²?",
+          hi: "(2³)² कितना है?",
+          mr: "(2³)² किती?",
+        },
+        answer: 64,
+        wrong: [32, 36, 12],
+        checkExpr: "8*8",
+        solution: {
+          en: "A power of a power MULTIPLIES exponents: 2³ˣ² = 2⁶ = 64 — or simply 8 × 8. 32 adds the exponents into 2⁵, the multiplication law used in the wrong house.",
+          hi: "घात की घात में घातें गुणा होती हैं: 2³ˣ² = 2⁶ = 64 — या सीधे 8 × 8। 32 जोड़कर 2⁵ बनाता है — गुणा का नियम ग़लत घर में।",
+          mr: "घाताच्या घातात घाती गुणल्या जातात: 2³ˣ² = 2⁶ = 64 — किंवा थेट 8 × 8. 32 जोडून 2⁵ करतो — गुणाकाराचा नियम चुकीच्या घरात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "72 written in prime powers is 2³ × 3 to which power?",
+          hi: "72 को अभाज्य घातों में लिखें तो 2³ × 3 की कौन-सी घात?",
+          mr: "72 मूळ घातांत लिहिले तर 2³ × 3 चा कोणता घात?",
+        },
+        answer: 2,
+        wrong: [3, 1, 4],
+        solution: {
+          en: "72 = 8 × 9 = 2³ × 3²: the exponent of 3 is 2. Break the number down by repeated division — 72 halves to 36, 18, 9, then 9 = 3 × 3 and the 3s stop at two.",
+          hi: "72 = 8 × 9 = 2³ × 3²: तीन की घात 2 है। बार-बार भाग से तोड़िए — 72 से 36, 18, 9, फिर 9 = 3 × 3 और तीन दो पर रुक जाते हैं।",
+          mr: "72 = 8 × 9 = 2³ × 3²: तिघाचा घात 2. पुनःपुन्हा भागून फोडा — 72 चे 36, 18, 9, मग 9 = 3 × 3 आणि तीन दोनवर थांबतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "The Sun is about 150,000,000 km from the Earth. In standard form that is 1.5 × 10 to which power?",
+          hi: "सूर्य पृथ्वी से लगभग 150,000,000 किमी दूर है। मानक रूप में यह 1.5 × 10 की कौन-सी घात है?",
+          mr: "सूर्य पृथ्वीपासून सुमारे 150,000,000 किमी दूर आहे. प्रमाण रूपात हे 1.5 × 10 चा कोणता घात?",
+        },
+        answer: 8,
+        wrong: [7, 9, 6],
+        solution: {
+          en: "From 1.5 the decimal point hops 8 places to rebuild 150,000,000: 1.5 × 10⁸. 7 counts the zeros but forgets the hop over the 5.",
+          hi: "1.5 से दशमलव बिंदु 8 छलाँगों में 150,000,000 फिर बनाता है: 1.5 × 10⁸। 7 शून्य गिनता है पर 5 के ऊपर की छलाँग भूल जाता है।",
+          mr: "1.5 पासून दशांश बिंदू 8 उड्यांत 150,000,000 पुन्हा बांधतो: 1.5 × 10⁸. 7 शून्ये मोजतो पण 5 वरची उडी विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is 3⁴ − 4³?",
+          hi: "3⁴ − 4³ कितना है?",
+          mr: "3⁴ − 4³ किती?",
+        },
+        answer: 17,
+        wrong: [0, 7, 12],
+        checkExpr: "3*3*3*3-4*4*4",
+        solution: {
+          en: "81 − 64 = 17: swapping base and exponent changes the value. 0 assumes 3⁴ and 4³ are twins; 12 just multiplies 3 × 4 either way.",
+          hi: "81 − 64 = 17: आधार-घात की अदला-बदली मान बदल देती है। 0 मानता है कि 3⁴ और 4³ जुड़वाँ हैं; 12 दोनों तरफ़ बस 3 × 4 कर देता है।",
+          mr: "81 − 64 = 17: पाया-घाताची अदलाबदल किंमत बदलते. 0 समजतो की 3⁴ आणि 4³ जुळे; 12 दोन्हीकडे नुसते 3 × 4 करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "(10⁵ × 10³) ÷ 10⁴ = 10 raised to which power?",
+          hi: "(10⁵ × 10³) ÷ 10⁴ = 10 की कौन-सी घात?",
+          mr: "(10⁵ × 10³) ÷ 10⁴ = 10 चा कोणता घात?",
+        },
+        answer: 4,
+        wrong: [2, 12, 60],
+        checkExpr: "5+3-4",
+        solution: {
+          en: "Add for the product, subtract for the division: 5 + 3 − 4 = 4. 12 forgets to subtract; 60 multiplies all three exponents.",
+          hi: "गुणा में जोड़, भाग में घटाव: 5 + 3 − 4 = 4। 12 घटाना भूल जाता है; 60 तीनों घातें गुणा कर देता है।",
+          mr: "गुणाकारात बेरीज, भागात वजाबाकी: 5 + 3 − 4 = 4. 12 वजा करायला विसरतो; 60 तिन्ही घाती गुणतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Which is greater, 2¹⁰ or 10², and by how much?",
+          hi: "2¹⁰ और 10² में बड़ा कौन, और कितने से?",
+          mr: "2¹⁰ आणि 10² मध्ये मोठा कोण, आणि कितीने?",
+        },
+        answer: 924,
+        wrong: [24, 100, 1024],
+        checkExpr: "1024-100",
+        solution: {
+          en: "2¹⁰ = 1024 while 10² = 100: the small base with the big exponent wins by 924. Repeated doubling outruns one big multiplication — exponents beat bases in the long run.",
+          hi: "2¹⁰ = 1024 जबकि 10² = 100: छोटे आधार पर बड़ी घात 924 से जीतती है। बार-बार का दुगुनापन एक बड़े गुणे को पछाड़ देता है — लंबी दौड़ में घातें आधारों से आगे निकलती हैं।",
+          mr: "2¹⁰ = 1024 तर 10² = 100: लहान पायावरची मोठी घात 924 ने जिंकते. पुनःपुन्हाची दुप्पट एका मोठ्या गुणाकाराला मागे टाकते — दूरच्या शर्यतीत घाती पायांना हरवतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A sheet of paper is folded in half 6 times. How many layers does it have?",
+          hi: "एक काग़ज़ को 6 बार आधा मोड़ा जाता है। उसमें कितनी परतें होंगी?",
+          mr: "एक कागद 6 वेळा अर्धा दुमडला जातो. त्यात किती थर होतील?",
+        },
+        answer: 64,
+        wrong: [12, 32, 6],
+        checkExpr: "2*2*2*2*2*2",
+        solution: {
+          en: "Each fold DOUBLES the stack: 2⁶ = 64 layers. 12 adds 2 six times — folding multiplies, never adds; 32 miscounts one fold.",
+          hi: "हर मोड़ गड्डी दुगुनी करता है: 2⁶ = 64 परतें। 12 छह बार 2 जोड़ता है — मोड़ना गुणा करता है, जोड़ नहीं; 32 एक मोड़ कम गिनता है।",
+          mr: "प्रत्येक घडी थप्पी दुप्पट करते: 2⁶ = 64 थर. 12 सहा वेळा 2 जोडतो — दुमडणे गुणते, जोडत नाही; 32 एक घडी कमी मोजतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A lily patch on a pond DOUBLES every day and covers the whole pond on day 30. On which day was the pond half covered?",
+          hi: "तालाब पर कुमुदिनी का फैलाव रोज़ दुगुना होता है और 30वें दिन पूरा तालाब ढक जाता है। तालाब आधा किस दिन ढका था?",
+          mr: "तळ्यावरील कमळांचा पसारा रोज दुप्पट होतो आणि 30 व्या दिवशी सारे तळे झाकतो. तळे अर्धे कोणत्या दिवशी झाकले होते?",
+        },
+        answer: 29,
+        wrong: [15, 28, 24],
+        checkExpr: "30-1",
+        solution: {
+          en: "One doubling before full is half: day 29. 15 halves the TIME — but doubling growth doesn't walk in straight lines; it spends 29 days quiet and one day loud.",
+          hi: "पूरे से एक दुगुना पहले यानी आधा: दिन 29। 15 समय को आधा करता है — पर दुगुनी बढ़त सीधी रेखा में नहीं चलती; वह 29 दिन चुप रहती है और एक दिन में गरजती है।",
+          mr: "पूर्णाच्या एक दुप्पट आधी म्हणजे अर्धे: दिवस 29. 15 वेळ निम्मी करतो — पण दुप्पट वाढ सरळ रेषेत चालत नाही; ती 29 दिवस गप्प राहते आणि एका दिवसात गर्जते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Grains on a chessboard: 1 on the first square, doubling on each square after. How many grains sit on the 8th square alone?",
+          hi: "शतरंज की बिसात पर दाने: पहले ख़ाने में 1, फिर हर ख़ाने में दुगुने। अकेले 8वें ख़ाने में कितने दाने?",
+          mr: "बुद्धिबळाच्या पटावरील दाणे: पहिल्या घरात 1, मग प्रत्येक घरात दुप्पट. एकट्या 8 व्या घरात किती दाणे?",
+        },
+        answer: 128,
+        wrong: [256, 64, 16],
+        checkExpr: "2*2*2*2*2*2*2",
+        solution: {
+          en: "Square n holds 2ⁿ⁻¹, so the 8th holds 2⁷ = 128. 256 doubles once too many — the FIRST square already used up 2⁰; the legend's whole board ends near 2⁶⁴, past all the world's grain.",
+          hi: "ख़ाना n रखता है 2ⁿ⁻¹, अतः 8वाँ रखता है 2⁷ = 128। 256 एक दुगुना ज़्यादा है — पहला ख़ाना 2⁰ पहले ही ख़र्च कर चुका; किंवदंती की पूरी बिसात 2⁶⁴ के पास जाकर दुनिया भर के अनाज से आगे निकल जाती है।",
+          mr: "घर n मध्ये 2ⁿ⁻¹, म्हणून 8 व्यात 2⁷ = 128. 256 एक दुप्पट जास्त — पहिल्या घराने 2⁰ आधीच खर्चले; दंतकथेचा सारा पट 2⁶⁴ जवळ जाऊन जगभरच्या धान्याला मागे टाकतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 13 — Exponents and Powers",
+      name: "Exponents and Powers",
+      slug: "maths-7-exponents-and-powers",
+      summary:
+        "Repeated multiplication compressed: laws that add, subtract and multiply exponents, standard form for the Sun's distance — and a lily pond quiet for 29 days.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "घातांक और घात",
+          summary:
+            "बार-बार का गुणा सिमटा हुआ: घातें जोड़ने-घटाने-गुणने के नियम, सूर्य की दूरी का मानक रूप — और 29 दिन चुप रहने वाला कुमुदिनी का तालाब।",
+        },
+        mr: {
+          name: "घातांक आणि घात",
+          summary:
+            "पुनःपुन्हाचा गुणाकार आवळलेला: घाती जोडण्या-वजा करण्या-गुणण्याचे नियम, सूर्याच्या अंतराचे प्रमाण रूप — आणि 29 दिवस गप्प राहणारे कमळांचे तळे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Symmetry (lines AND turns, with a peek at solids)            */
+/* ------------------------------------------------------------------------- */
+function symmetry(): TopicFileOut {
+  const rand = rng("maths-7-symmetry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many lines of symmetry does a square have?",
+          hi: "वर्ग में सममिति की कितनी रेखाएँ होती हैं?",
+          mr: "चौरसाला सममितीच्या किती रेषा असतात?",
+        },
+        answer: 4,
+        wrong: [2, 8, 1],
+        solution: {
+          en: "Two through the midpoints of opposite sides and two through the diagonals: 4. 2 forgets the diagonals — the square is generous with mirrors.",
+          hi: "दो सम्मुख भुजाओं के मध्य-बिंदुओं से और दो विकर्णों से: 4। 2 विकर्ण भूल जाता है — वर्ग दर्पणों में उदार है।",
+          mr: "दोन समोरच्या बाजूंच्या मध्यबिंदूंतून आणि दोन कर्णांतून: 4. 2 कर्ण विसरतो — चौरस आरशांत उदार आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the order of rotational symmetry of a square?",
+          hi: "वर्ग की घूर्णन सममिति की कोटि क्या है?",
+          mr: "चौरसाच्या परिवलन सममितीची कोटी किती?",
+        },
+        answer: 4,
+        wrong: [1, 2, 8],
+        solution: {
+          en: "Quarter turns of 90° land it on itself 4 times in a full spin: order 4. 8 confuses turns with the mirror count doubled.",
+          hi: "90° के चौथाई घुमाव पूरे चक्कर में 4 बार उसे स्वयं पर बैठाते हैं: कोटि 4। 8 घुमावों को दर्पण-गिनती के दुगुने से मिला बैठता है।",
+          mr: "90° ची पाव वळणे पूर्ण फेरीत 4 वेळा त्याला स्वतःवर बसवतात: कोटी 4. 8 वळणांना आरसा-मोजणीच्या दुप्पटीशी गल्लत करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many lines of symmetry does a rectangle (that is not a square) have?",
+          hi: "आयत (जो वर्ग नहीं है) में सममिति की कितनी रेखाएँ?",
+          mr: "(चौरस नसलेल्या) आयताला सममितीच्या किती रेषा?",
+        },
+        answer: 2,
+        wrong: [4, 1, 0],
+        solution: {
+          en: "Only the two midpoint lines: 2. 4 adds the diagonals — but fold a rectangle along a diagonal and the corners betray you; the halves do NOT cover each other.",
+          hi: "केवल दोनों मध्य-रेखाएँ: 2। 4 विकर्ण जोड़ देता है — पर आयत को विकर्ण पर मोड़िए तो कोने धोखा दे देते हैं; आधे एक-दूसरे को ढकते नहीं।",
+          mr: "फक्त दोन मध्य-रेषा: 2. 4 कर्ण मिळवतो — पण आयत कर्णावर दुमडा आणि कोपरे दगा देतात; अर्धे एकमेकांना झाकत नाहीत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the order of rotational symmetry of the letter H?",
+          hi: "अक्षर H की घूर्णन सममिति की कोटि क्या है?",
+          mr: "H अक्षराच्या परिवलन सममितीची कोटी किती?",
+        },
+        answer: 2,
+        wrong: [1, 4, 0],
+        solution: {
+          en: "A half turn of 180° maps H onto itself, and so does the full turn: order 2. Order 1 would mean ONLY the full turn works — true for letters like F, not H.",
+          hi: "180° का आधा घुमाव H को स्वयं पर बैठा देता है, और पूरा चक्कर भी: कोटि 2। कोटि 1 का अर्थ होता कि केवल पूरा चक्कर चले — वह F जैसे अक्षरों का हाल है, H का नहीं।",
+          mr: "180° चे अर्धे वळण H ला स्वतःवर बसवते, आणि पूर्ण फेरीही: कोटी 2. कोटी 1 म्हणजे फक्त पूर्ण फेरी चालेल — ते F सारख्या अक्षरांचे, H चे नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the order of rotational symmetry of an equilateral triangle?",
+          hi: "समबाहु त्रिभुज की घूर्णन सममिति की कोटि क्या है?",
+          mr: "समभुज त्रिकोणाच्या परिवलन सममितीची कोटी किती?",
+        },
+        answer: 3,
+        wrong: [1, 2, 6],
+        solution: {
+          en: "Turns of 120° fit it onto itself 3 times per full spin: order 3. 6 belongs to the regular hexagon; the triangle has three seats, not six.",
+          hi: "120° के घुमाव पूरे चक्कर में 3 बार उसे स्वयं पर बैठाते हैं: कोटि 3। 6 सम षट्भुज का है; त्रिभुज के पास तीन आसन हैं, छह नहीं।",
+          mr: "120° ची वळणे पूर्ण फेरीत 3 वेळा त्याला स्वतःवर बसवतात: कोटी 3. 6 समषट्कोनाचा; त्रिकोणाकडे तीन आसने, सहा नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Through how many degrees must a regular hexagon turn before it FIRST looks the same again?",
+          hi: "सम षट्भुज को कितने डिग्री घुमाने पर वह पहली बार फिर वैसा ही दिखेगा?",
+          mr: "समषट्कोनाला किती अंश फिरवल्यावर तो पहिल्यांदा पुन्हा तसाच दिसेल?",
+        },
+        answer: 60,
+        wrong: [120, 90, 45],
+        checkExpr: "360/6",
+        fmt: deg,
+        solution: {
+          en: "The full turn shares among 6 matching positions: 360 ÷ 6 = 60°. 120 skips a seat; 90 belongs to the square's family.",
+          hi: "पूरा चक्कर 6 मेल खाती स्थितियों में बँटता है: 360 ÷ 6 = 60°। 120 एक आसन लाँघ जाता है; 90 वर्ग के परिवार का है।",
+          mr: "पूर्ण फेरी 6 जुळणाऱ्या स्थितींत वाटली जाते: 360 ÷ 6 = 60°. 120 एक आसन ओलांडतो; 90 चौरसाच्या कुटुंबाचा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The letter S has rotational symmetry of order 2 — yet how many LINES of symmetry does it have?",
+          hi: "अक्षर S की घूर्णन सममिति की कोटि 2 है — फिर भी उसमें सममिति की कितनी रेखाएँ हैं?",
+          mr: "S अक्षराची परिवलन सममितीची कोटी 2 आहे — तरी त्याला सममितीच्या किती रेषा आहेत?",
+        },
+        answer: 0,
+        wrong: [1, 2, 4],
+        solution: {
+          en: "None: 0. Every mirror flips S into a backwards S. Turning symmetry and mirror symmetry are DIFFERENT gifts — S has one and not the other.",
+          hi: "कोई नहीं: 0। हर दर्पण S को उल्टा S बना देता है। घूर्णन सममिति और दर्पण सममिति अलग-अलग वरदान हैं — S के पास एक है, दूसरा नहीं।",
+          mr: "एकही नाही: 0. प्रत्येक आरसा S ला उलटे S करतो. वळण-सममिती आणि आरसा-सममिती या वेगळ्या देणग्या — S कडे एक आहे, दुसरी नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A regular polygon has exactly 9 lines of symmetry. How many sides does it have?",
+          hi: "एक सम बहुभुज में ठीक 9 सममिति-रेखाएँ हैं। उसकी कितनी भुजाएँ हैं?",
+          mr: "एका नियमित बहुभुजाला नेमक्या 9 सममिती-रेषा आहेत. त्याला किती बाजू आहेत?",
+        },
+        answer: 9,
+        wrong: [18, 3, 6],
+        solution: {
+          en: "A regular n-gon carries exactly n mirror lines, so 9 lines mean 9 sides — a regular nonagon. 18 doubles, imagining a line per side AND per corner; each line already serves one of each.",
+          hi: "सम n-भुज में ठीक n दर्पण-रेखाएँ होती हैं, अतः 9 रेखाएँ यानी 9 भुजाएँ — सम नवभुज। 18 दुगुना कर देता है, हर भुजा और हर कोने की अलग रेखा मानकर; हर रेखा दोनों में से एक-एक सँभालती है।",
+          mr: "नियमित n-भुजात नेमक्या n आरसा-रेषा असतात, म्हणून 9 रेषा म्हणजे 9 बाजू — नियमित नवभुज. 18 दुप्पट करतो, प्रत्येक बाजूची आणि कोपऱ्याची वेगळी रेषा मानून; प्रत्येक रेषा दोन्हींतले एक-एक सांभाळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A design has rotational symmetry of order 5. What is its smallest angle of rotation?",
+          hi: "एक डिज़ाइन की घूर्णन सममिति की कोटि 5 है। उसका सबसे छोटा घूर्णन कोण कितना?",
+          mr: "एका नक्षीची परिवलन सममितीची कोटी 5 आहे. तिचा सर्वांत लहान परिवलन कोन किती?",
+        },
+        answer: 72,
+        wrong: [60, 90, 144],
+        checkExpr: "360/5",
+        fmt: deg,
+        solution: {
+          en: "360 ÷ 5 = 72°. 144 is the SECOND landing, two steps in one; 60 and 90 belong to orders 6 and 4.",
+          hi: "360 ÷ 5 = 72°। 144 दूसरी बैठक है, एक में दो क़दम; 60 और 90 कोटि 6 और 4 के हैं।",
+          mr: "360 ÷ 5 = 72°. 144 ही दुसरी बैठक, एकात दोन पावले; 60 आणि 90 कोटी 6 व 4 चे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A shape looks unchanged after every 45° turn. What is its order of rotational symmetry?",
+          hi: "एक आकृति हर 45° घुमाव के बाद अपरिवर्तित दिखती है। उसकी घूर्णन सममिति की कोटि क्या है?",
+          mr: "एक आकृती प्रत्येक 45° वळणानंतर जशीच्या तशी दिसते. तिच्या परिवलन सममितीची कोटी किती?",
+        },
+        answer: 8,
+        wrong: [4, 45, 6],
+        checkExpr: "360/45",
+        solution: {
+          en: "Order = 360 ÷ angle = 360 ÷ 45 = 8 matching positions. 45 repeats the angle as if it were the count; the two multiply back to 360, they are never equal by accident.",
+          hi: "कोटि = 360 ÷ कोण = 360 ÷ 45 = 8 मेल खाती स्थितियाँ। 45 कोण को ही गिनती मान लेता है; दोनों गुणा होकर 360 बनते हैं, संयोग से बराबर नहीं होते।",
+          mr: "कोटी = 360 ÷ कोन = 360 ÷ 45 = 8 जुळणाऱ्या स्थिती. 45 कोनालाच मोजणी मानतो; दोघे गुणून 360 होतात, योगायोगाने समान होत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A rhombus that is not a square: how many lines of symmetry does it have?",
+          hi: "वह समचतुर्भुज जो वर्ग नहीं है: उसमें कितनी सममिति-रेखाएँ?",
+          mr: "चौरस नसलेला समभुज चौकोन: त्याला किती सममिती-रेषा?",
+        },
+        answer: 2,
+        wrong: [4, 0, 1],
+        solution: {
+          en: "Its 2 diagonals — and ONLY those. The midpoint lines that serve the rectangle fail here, and the diagonal lines that fail the rectangle work here: the two shapes split the square's four mirrors between them.",
+          hi: "उसके 2 विकर्ण — और केवल वही। आयत की मध्य-रेखाएँ यहाँ विफल हैं, और आयत में विफल विकर्ण यहाँ चलते हैं: दोनों आकृतियाँ वर्ग के चार दर्पण आपस में बाँट लेती हैं।",
+          mr: "त्याचे 2 कर्ण — आणि फक्त तेच. आयताला चालणाऱ्या मध्य-रेषा इथे फसतात, आणि आयतात फसणारे कर्ण इथे चालतात: दोन आकृती चौरसाचे चार आरसे आपसांत वाटून घेतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "How many lines of symmetry does a semicircle have?",
+          hi: "अर्धवृत्त में सममिति की कितनी रेखाएँ होती हैं?",
+          mr: "अर्धवर्तुळाला सममितीच्या किती रेषा असतात?",
+        },
+        answer: 1,
+        wrong: [0, 2, 4],
+        solution: {
+          en: "Just 1 — the perpendicular through the middle of its flat edge. The full circle's endless mirrors die at the cut; only the one that respects the diameter survives.",
+          hi: "बस 1 — सपाट किनारे के बीच से गुज़रता लंब। पूरे वृत्त के अनगिनत दर्पण कटाव पर मर जाते हैं; केवल वही बचता है जो व्यास का मान रखता है।",
+          mr: "फक्त 1 — सपाट कडेच्या मधून जाणारा लंब. पूर्ण वर्तुळाचे अगणित आरसे कापावर मरतात; व्यासाचा मान राखणारा एकच टिकतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A figure has rotational symmetry of order 4. After how many degrees does its FIRST repeat occur?",
+          hi: "एक आकृति की घूर्णन सममिति की कोटि 4 है। कितने डिग्री बाद उसकी पहली पुनरावृत्ति होती है?",
+          mr: "एका आकृतीची परिवलन सममितीची कोटी 4 आहे. किती अंशांनंतर तिची पहिली पुनरावृत्ती होते?",
+        },
+        answer: 90,
+        wrong: [45, 180, 4],
+        checkExpr: "360/4",
+        fmt: deg,
+        solution: {
+          en: "360 ÷ 4 = 90°. 180 is the second repeat; 45 would need order 8 — angle and order always multiply back to the full 360.",
+          hi: "360 ÷ 4 = 90°। 180 दूसरी पुनरावृत्ति है; 45 के लिए कोटि 8 चाहिए — कोण और कोटि गुणा होकर सदा पूरे 360 बनते हैं।",
+          mr: "360 ÷ 4 = 90°. 180 ही दुसरी पुनरावृत्ती; 45 साठी कोटी 8 हवी — कोन आणि कोटी गुणून नेहमी पूर्ण 360 होतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The Ashoka Chakra on the flag has 24 equally spaced spokes. What is the order of its rotational symmetry?",
+          hi: "ध्वज के अशोक चक्र में 24 समान दूरी की तीलियाँ हैं। उसकी घूर्णन सममिति की कोटि क्या है?",
+          mr: "ध्वजावरील अशोकचक्रात 24 समान अंतराचे आरे आहेत. त्याच्या परिवलन सममितीची कोटी किती?",
+        },
+        answer: 24,
+        wrong: [12, 8, 360],
+        solution: {
+          en: "Every spoke can take every spoke's place: order 24, one landing per 15° of turn. 12 pairs the spokes up; 360 counts degrees, not positions.",
+          hi: "हर तीली हर तीली की जगह ले सकती है: कोटि 24, हर 15° घुमाव पर एक बैठक। 12 तीलियों की जोड़ियाँ बना देता है; 360 स्थितियाँ नहीं, डिग्रियाँ गिनता है।",
+          mr: "प्रत्येक आरा प्रत्येक आऱ्याची जागा घेऊ शकतो: कोटी 24, दर 15° वळणाला एक बैठक. 12 आऱ्यांच्या जोड्या करतो; 360 स्थिती नव्हे, अंश मोजतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A rectangle has line symmetry AND rotational symmetry of order 2. What is the smallest rotation, in degrees, that maps it onto itself?",
+          hi: "आयत में रेखा सममिति भी है और कोटि 2 की घूर्णन सममिति भी। कितने डिग्री का सबसे छोटा घुमाव उसे स्वयं पर बैठा देता है?",
+          mr: "आयताला रेषा-सममितीही आहे आणि कोटी 2 ची परिवलन सममितीही. किती अंशांचे सर्वांत लहान वळण त्याला स्वतःवर बसवते?",
+        },
+        answer: 180,
+        wrong: [90, 360, 45],
+        checkExpr: "360/2",
+        fmt: deg,
+        solution: {
+          en: "Order 2 means the half turn: 360 ÷ 2 = 180°. 90 works only when length equals breadth — the quarter turn is the SQUARE's private privilege, lost the moment the sides disagree.",
+          hi: "कोटि 2 यानी आधा घुमाव: 360 ÷ 2 = 180°। 90 तभी चलता है जब लंबाई-चौड़ाई बराबर हों — चौथाई घुमाव वर्ग का निजी विशेषाधिकार है, भुजाओं के असहमत होते ही छिन जाता है।",
+          mr: "कोटी 2 म्हणजे अर्धे वळण: 360 ÷ 2 = 180°. 90 तेव्हाच चालते जेव्हा लांबी-रुंदी समान — पाव वळण हा चौरसाचा खासगी विशेषाधिकार, बाजू असहमत होताच हिरावला जातो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A cube has 12 edges and 8 vertices. How many FACES does it have?",
+          hi: "घन में 12 किनारे और 8 शीर्ष होते हैं। उसके कितने फलक होते हैं?",
+          mr: "घनाला 12 कडा आणि 8 शिरोबिंदू असतात. त्याला किती पृष्ठे असतात?",
+        },
+        answer: 6,
+        wrong: [8, 12, 4],
+        solution: {
+          en: "6 square faces — count them as a dice's sides. And a quiet law hides here: faces + vertices − edges = 6 + 8 − 12 = 2, true for every box, prism and pyramid you will ever build.",
+          hi: "6 वर्गाकार फलक — पासे के पहलुओं की तरह गिनिए। और यहाँ एक चुपचाप नियम छिपा है: फलक + शीर्ष − किनारे = 6 + 8 − 12 = 2, हर डिब्बे, प्रिज़्म और पिरामिड के लिए सच जो आप कभी भी बनाएँगे।",
+          mr: "6 चौरस पृष्ठे — फाशाच्या बाजूंसारखी मोजा. आणि इथे एक गुपचूप नियम दडला आहे: पृष्ठे + शिरोबिंदू − कडा = 6 + 8 − 12 = 2, तुम्ही कधीही बांधाल त्या प्रत्येक खोक्या, प्रिझम आणि पिरॅमिडसाठी खरा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 14 — Symmetry",
+      name: "Symmetry",
+      slug: "maths-7-symmetry",
+      summary:
+        "Mirrors and turns told apart: the S with spin but no mirror, the rectangle and rhombus splitting the square's mirrors — and the flag's 24-spoke wheel closing the count.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "सममिति",
+          summary:
+            "दर्पण और घुमाव अलग-अलग परखे: घूमने वाला पर बिना दर्पण का S, वर्ग के दर्पण बाँटते आयत और समचतुर्भुज — और गिनती पूरी करता ध्वज का 24 तीलियों वाला चक्र।",
+        },
+        mr: {
+          name: "सममिती",
+          summary:
+            "आरसे आणि वळणे वेगळी ओळखली: फिरणारा पण आरसा नसलेला S, चौरसाचे आरसे वाटणारे आयत व समभुज चौकोन — आणि मोजणी पूर्ण करणारे ध्वजाचे 24 आऱ्यांचे चक्र.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G7_MATHS: TopicFileOut[] = [
   integers(),
   fractionsAndDecimals(),
@@ -3616,4 +5026,8 @@ export const G7_MATHS: TopicFileOut[] = [
   comparingQuantities(),
   rationalNumbers(),
   practicalGeometry(),
+  perimeterAndArea(),
+  algebraicExpressions(),
+  exponentsAndPowers(),
+  symmetry(),
 ];

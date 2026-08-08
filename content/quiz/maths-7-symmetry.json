@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 14 — Symmetry",
+  "name": "Symmetry",
+  "slug": "maths-7-symmetry",
+  "summary": "Mirrors and turns told apart: the S with spin but no mirror, the rectangle and rhombus splitting the square's mirrors — and the flag's 24-spoke wheel closing the count.",
+  "position": 14,
+  "translations": {
+    "hi": {
+      "name": "सममिति",
+      "summary": "दर्पण और घुमाव अलग-अलग परखे: घूमने वाला पर बिना दर्पण का S, वर्ग के दर्पण बाँटते आयत और समचतुर्भुज — और गिनती पूरी करता ध्वज का 24 तीलियों वाला चक्र।"
+    },
+    "mr": {
+      "name": "सममिती",
+      "summary": "आरसे आणि वळणे वेगळी ओळखली: फिरणारा पण आरसा नसलेला S, चौरसाचे आरसे वाटणारे आयत व समभुज चौकोन — आणि मोजणी पूर्ण करणारे ध्वजाचे 24 आऱ्यांचे चक्र."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many lines of symmetry does a square have?",
+      "choices": [
+        "2",
+        "1",
+        "8",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Two through the midpoints of opposite sides and two through the diagonals: 4. 2 forgets the diagonals — the square is generous with mirrors.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वर्ग में सममिति की कितनी रेखाएँ होती हैं?",
+          "choices": [
+            "2",
+            "1",
+            "8",
+            "4"
+          ],
+          "solution": "दो सम्मुख भुजाओं के मध्य-बिंदुओं से और दो विकर्णों से: 4। 2 विकर्ण भूल जाता है — वर्ग दर्पणों में उदार है।"
+        },
+        "mr": {
+          "stem": "चौरसाला सममितीच्या किती रेषा असतात?",
+          "choices": [
+            "2",
+            "1",
+            "8",
+            "4"
+          ],
+          "solution": "दोन समोरच्या बाजूंच्या मध्यबिंदूंतून आणि दोन कर्णांतून: 4. 2 कर्ण विसरतो — चौरस आरशांत उदार आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the order of rotational symmetry of a square?",
+      "choices": [
+        "1",
+        "8",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Quarter turns of 90° land it on itself 4 times in a full spin: order 4. 8 confuses turns with the mirror count doubled.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वर्ग की घूर्णन सममिति की कोटि क्या है?",
+          "choices": [
+            "1",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "90° के चौथाई घुमाव पूरे चक्कर में 4 बार उसे स्वयं पर बैठाते हैं: कोटि 4। 8 घुमावों को दर्पण-गिनती के दुगुने से मिला बैठता है।"
+        },
+        "mr": {
+          "stem": "चौरसाच्या परिवलन सममितीची कोटी किती?",
+          "choices": [
+            "1",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "90° ची पाव वळणे पूर्ण फेरीत 4 वेळा त्याला स्वतःवर बसवतात: कोटी 4. 8 वळणांना आरसा-मोजणीच्या दुप्पटीशी गल्लत करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many lines of symmetry does a rectangle (that is not a square) have?",
+      "choices": [
+        "1",
+        "4",
+        "0",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Only the two midpoint lines: 2. 4 adds the diagonals — but fold a rectangle along a diagonal and the corners betray you; the halves do NOT cover each other.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आयत (जो वर्ग नहीं है) में सममिति की कितनी रेखाएँ?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "केवल दोनों मध्य-रेखाएँ: 2। 4 विकर्ण जोड़ देता है — पर आयत को विकर्ण पर मोड़िए तो कोने धोखा दे देते हैं; आधे एक-दूसरे को ढकते नहीं।"
+        },
+        "mr": {
+          "stem": "(चौरस नसलेल्या) आयताला सममितीच्या किती रेषा?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "फक्त दोन मध्य-रेषा: 2. 4 कर्ण मिळवतो — पण आयत कर्णावर दुमडा आणि कोपरे दगा देतात; अर्धे एकमेकांना झाकत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the order of rotational symmetry of the letter H?",
+      "choices": [
+        "1",
+        "4",
+        "2",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "A half turn of 180° maps H onto itself, and so does the full turn: order 2. Order 1 would mean ONLY the full turn works — true for letters like F, not H.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षर H की घूर्णन सममिति की कोटि क्या है?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "180° का आधा घुमाव H को स्वयं पर बैठा देता है, और पूरा चक्कर भी: कोटि 2। कोटि 1 का अर्थ होता कि केवल पूरा चक्कर चले — वह F जैसे अक्षरों का हाल है, H का नहीं।"
+        },
+        "mr": {
+          "stem": "H अक्षराच्या परिवलन सममितीची कोटी किती?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "180° चे अर्धे वळण H ला स्वतःवर बसवते, आणि पूर्ण फेरीही: कोटी 2. कोटी 1 म्हणजे फक्त पूर्ण फेरी चालेल — ते F सारख्या अक्षरांचे, H चे नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the order of rotational symmetry of an equilateral triangle?",
+      "choices": [
+        "1",
+        "3",
+        "2",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "Turns of 120° fit it onto itself 3 times per full spin: order 3. 6 belongs to the regular hexagon; the triangle has three seats, not six.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समबाहु त्रिभुज की घूर्णन सममिति की कोटि क्या है?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "120° के घुमाव पूरे चक्कर में 3 बार उसे स्वयं पर बैठाते हैं: कोटि 3। 6 सम षट्भुज का है; त्रिभुज के पास तीन आसन हैं, छह नहीं।"
+        },
+        "mr": {
+          "stem": "समभुज त्रिकोणाच्या परिवलन सममितीची कोटी किती?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "120° ची वळणे पूर्ण फेरीत 3 वेळा त्याला स्वतःवर बसवतात: कोटी 3. 6 समषट्कोनाचा; त्रिकोणाकडे तीन आसने, सहा नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Through how many degrees must a regular hexagon turn before it FIRST looks the same again?",
+      "choices": [
+        "60°",
+        "90°",
+        "120°",
+        "45°"
+      ],
+      "answerIndex": 0,
+      "solution": "The full turn shares among 6 matching positions: 360 ÷ 6 = 60°. 120 skips a seat; 90 belongs to the square's family.",
+      "checkExpr": "360/6",
+      "translations": {
+        "hi": {
+          "stem": "सम षट्भुज को कितने डिग्री घुमाने पर वह पहली बार फिर वैसा ही दिखेगा?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "45°"
+          ],
+          "solution": "पूरा चक्कर 6 मेल खाती स्थितियों में बँटता है: 360 ÷ 6 = 60°। 120 एक आसन लाँघ जाता है; 90 वर्ग के परिवार का है।"
+        },
+        "mr": {
+          "stem": "समषट्कोनाला किती अंश फिरवल्यावर तो पहिल्यांदा पुन्हा तसाच दिसेल?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "45°"
+          ],
+          "solution": "पूर्ण फेरी 6 जुळणाऱ्या स्थितींत वाटली जाते: 360 ÷ 6 = 60°. 120 एक आसन ओलांडतो; 90 चौरसाच्या कुटुंबाचा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The letter S has rotational symmetry of order 2 — yet how many LINES of symmetry does it have?",
+      "choices": [
+        "0",
+        "2",
+        "4",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "None: 0. Every mirror flips S into a backwards S. Turning symmetry and mirror symmetry are DIFFERENT gifts — S has one and not the other.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अक्षर S की घूर्णन सममिति की कोटि 2 है — फिर भी उसमें सममिति की कितनी रेखाएँ हैं?",
+          "choices": [
+            "0",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "कोई नहीं: 0। हर दर्पण S को उल्टा S बना देता है। घूर्णन सममिति और दर्पण सममिति अलग-अलग वरदान हैं — S के पास एक है, दूसरा नहीं।"
+        },
+        "mr": {
+          "stem": "S अक्षराची परिवलन सममितीची कोटी 2 आहे — तरी त्याला सममितीच्या किती रेषा आहेत?",
+          "choices": [
+            "0",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "एकही नाही: 0. प्रत्येक आरसा S ला उलटे S करतो. वळण-सममिती आणि आरसा-सममिती या वेगळ्या देणग्या — S कडे एक आहे, दुसरी नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A regular polygon has exactly 9 lines of symmetry. How many sides does it have?",
+      "choices": [
+        "18",
+        "3",
+        "9",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "A regular n-gon carries exactly n mirror lines, so 9 lines mean 9 sides — a regular nonagon. 18 doubles, imagining a line per side AND per corner; each line already serves one of each.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सम बहुभुज में ठीक 9 सममिति-रेखाएँ हैं। उसकी कितनी भुजाएँ हैं?",
+          "choices": [
+            "18",
+            "3",
+            "9",
+            "6"
+          ],
+          "solution": "सम n-भुज में ठीक n दर्पण-रेखाएँ होती हैं, अतः 9 रेखाएँ यानी 9 भुजाएँ — सम नवभुज। 18 दुगुना कर देता है, हर भुजा और हर कोने की अलग रेखा मानकर; हर रेखा दोनों में से एक-एक सँभालती है।"
+        },
+        "mr": {
+          "stem": "एका नियमित बहुभुजाला नेमक्या 9 सममिती-रेषा आहेत. त्याला किती बाजू आहेत?",
+          "choices": [
+            "18",
+            "3",
+            "9",
+            "6"
+          ],
+          "solution": "नियमित n-भुजात नेमक्या n आरसा-रेषा असतात, म्हणून 9 रेषा म्हणजे 9 बाजू — नियमित नवभुज. 18 दुप्पट करतो, प्रत्येक बाजूची आणि कोपऱ्याची वेगळी रेषा मानून; प्रत्येक रेषा दोन्हींतले एक-एक सांभाळते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A design has rotational symmetry of order 5. What is its smallest angle of rotation?",
+      "choices": [
+        "60°",
+        "72°",
+        "90°",
+        "144°"
+      ],
+      "answerIndex": 1,
+      "solution": "360 ÷ 5 = 72°. 144 is the SECOND landing, two steps in one; 60 and 90 belong to orders 6 and 4.",
+      "checkExpr": "360/5",
+      "translations": {
+        "hi": {
+          "stem": "एक डिज़ाइन की घूर्णन सममिति की कोटि 5 है। उसका सबसे छोटा घूर्णन कोण कितना?",
+          "choices": [
+            "60°",
+            "72°",
+            "90°",
+            "144°"
+          ],
+          "solution": "360 ÷ 5 = 72°। 144 दूसरी बैठक है, एक में दो क़दम; 60 और 90 कोटि 6 और 4 के हैं।"
+        },
+        "mr": {
+          "stem": "एका नक्षीची परिवलन सममितीची कोटी 5 आहे. तिचा सर्वांत लहान परिवलन कोन किती?",
+          "choices": [
+            "60°",
+            "72°",
+            "90°",
+            "144°"
+          ],
+          "solution": "360 ÷ 5 = 72°. 144 ही दुसरी बैठक, एकात दोन पावले; 60 आणि 90 कोटी 6 व 4 चे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A shape looks unchanged after every 45° turn. What is its order of rotational symmetry?",
+      "choices": [
+        "6",
+        "45",
+        "4",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Order = 360 ÷ angle = 360 ÷ 45 = 8 matching positions. 45 repeats the angle as if it were the count; the two multiply back to 360, they are never equal by accident.",
+      "checkExpr": "360/45",
+      "translations": {
+        "hi": {
+          "stem": "एक आकृति हर 45° घुमाव के बाद अपरिवर्तित दिखती है। उसकी घूर्णन सममिति की कोटि क्या है?",
+          "choices": [
+            "6",
+            "45",
+            "4",
+            "8"
+          ],
+          "solution": "कोटि = 360 ÷ कोण = 360 ÷ 45 = 8 मेल खाती स्थितियाँ। 45 कोण को ही गिनती मान लेता है; दोनों गुणा होकर 360 बनते हैं, संयोग से बराबर नहीं होते।"
+        },
+        "mr": {
+          "stem": "एक आकृती प्रत्येक 45° वळणानंतर जशीच्या तशी दिसते. तिच्या परिवलन सममितीची कोटी किती?",
+          "choices": [
+            "6",
+            "45",
+            "4",
+            "8"
+          ],
+          "solution": "कोटी = 360 ÷ कोन = 360 ÷ 45 = 8 जुळणाऱ्या स्थिती. 45 कोनालाच मोजणी मानतो; दोघे गुणून 360 होतात, योगायोगाने समान होत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A rhombus that is not a square: how many lines of symmetry does it have?",
+      "choices": [
+        "4",
+        "1",
+        "0",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Its 2 diagonals — and ONLY those. The midpoint lines that serve the rectangle fail here, and the diagonal lines that fail the rectangle work here: the two shapes split the square's four mirrors between them.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह समचतुर्भुज जो वर्ग नहीं है: उसमें कितनी सममिति-रेखाएँ?",
+          "choices": [
+            "4",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "उसके 2 विकर्ण — और केवल वही। आयत की मध्य-रेखाएँ यहाँ विफल हैं, और आयत में विफल विकर्ण यहाँ चलते हैं: दोनों आकृतियाँ वर्ग के चार दर्पण आपस में बाँट लेती हैं।"
+        },
+        "mr": {
+          "stem": "चौरस नसलेला समभुज चौकोन: त्याला किती सममिती-रेषा?",
+          "choices": [
+            "4",
+            "1",
+            "0",
+            "2"
+          ],
+          "solution": "त्याचे 2 कर्ण — आणि फक्त तेच. आयताला चालणाऱ्या मध्य-रेषा इथे फसतात, आणि आयतात फसणारे कर्ण इथे चालतात: दोन आकृती चौरसाचे चार आरसे आपसांत वाटून घेतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many lines of symmetry does a semicircle have?",
+      "choices": [
+        "1",
+        "4",
+        "2",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "Just 1 — the perpendicular through the middle of its flat edge. The full circle's endless mirrors die at the cut; only the one that respects the diameter survives.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अर्धवृत्त में सममिति की कितनी रेखाएँ होती हैं?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "बस 1 — सपाट किनारे के बीच से गुज़रता लंब। पूरे वृत्त के अनगिनत दर्पण कटाव पर मर जाते हैं; केवल वही बचता है जो व्यास का मान रखता है।"
+        },
+        "mr": {
+          "stem": "अर्धवर्तुळाला सममितीच्या किती रेषा असतात?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "0"
+          ],
+          "solution": "फक्त 1 — सपाट कडेच्या मधून जाणारा लंब. पूर्ण वर्तुळाचे अगणित आरसे कापावर मरतात; व्यासाचा मान राखणारा एकच टिकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A figure has rotational symmetry of order 4. After how many degrees does its FIRST repeat occur?",
+      "choices": [
+        "45°",
+        "4°",
+        "180°",
+        "90°"
+      ],
+      "answerIndex": 3,
+      "solution": "360 ÷ 4 = 90°. 180 is the second repeat; 45 would need order 8 — angle and order always multiply back to the full 360.",
+      "checkExpr": "360/4",
+      "translations": {
+        "hi": {
+          "stem": "एक आकृति की घूर्णन सममिति की कोटि 4 है। कितने डिग्री बाद उसकी पहली पुनरावृत्ति होती है?",
+          "choices": [
+            "45°",
+            "4°",
+            "180°",
+            "90°"
+          ],
+          "solution": "360 ÷ 4 = 90°। 180 दूसरी पुनरावृत्ति है; 45 के लिए कोटि 8 चाहिए — कोण और कोटि गुणा होकर सदा पूरे 360 बनते हैं।"
+        },
+        "mr": {
+          "stem": "एका आकृतीची परिवलन सममितीची कोटी 4 आहे. किती अंशांनंतर तिची पहिली पुनरावृत्ती होते?",
+          "choices": [
+            "45°",
+            "4°",
+            "180°",
+            "90°"
+          ],
+          "solution": "360 ÷ 4 = 90°. 180 ही दुसरी पुनरावृत्ती; 45 साठी कोटी 8 हवी — कोन आणि कोटी गुणून नेहमी पूर्ण 360 होतात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The Ashoka Chakra on the flag has 24 equally spaced spokes. What is the order of its rotational symmetry?",
+      "choices": [
+        "360",
+        "24",
+        "8",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "Every spoke can take every spoke's place: order 24, one landing per 15° of turn. 12 pairs the spokes up; 360 counts degrees, not positions.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ध्वज के अशोक चक्र में 24 समान दूरी की तीलियाँ हैं। उसकी घूर्णन सममिति की कोटि क्या है?",
+          "choices": [
+            "360",
+            "24",
+            "8",
+            "12"
+          ],
+          "solution": "हर तीली हर तीली की जगह ले सकती है: कोटि 24, हर 15° घुमाव पर एक बैठक। 12 तीलियों की जोड़ियाँ बना देता है; 360 स्थितियाँ नहीं, डिग्रियाँ गिनता है।"
+        },
+        "mr": {
+          "stem": "ध्वजावरील अशोकचक्रात 24 समान अंतराचे आरे आहेत. त्याच्या परिवलन सममितीची कोटी किती?",
+          "choices": [
+            "360",
+            "24",
+            "8",
+            "12"
+          ],
+          "solution": "प्रत्येक आरा प्रत्येक आऱ्याची जागा घेऊ शकतो: कोटी 24, दर 15° वळणाला एक बैठक. 12 आऱ्यांच्या जोड्या करतो; 360 स्थिती नव्हे, अंश मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rectangle has line symmetry AND rotational symmetry of order 2. What is the smallest rotation, in degrees, that maps it onto itself?",
+      "choices": [
+        "45°",
+        "180°",
+        "90°",
+        "360°"
+      ],
+      "answerIndex": 1,
+      "solution": "Order 2 means the half turn: 360 ÷ 2 = 180°. 90 works only when length equals breadth — the quarter turn is the SQUARE's private privilege, lost the moment the sides disagree.",
+      "checkExpr": "360/2",
+      "translations": {
+        "hi": {
+          "stem": "आयत में रेखा सममिति भी है और कोटि 2 की घूर्णन सममिति भी। कितने डिग्री का सबसे छोटा घुमाव उसे स्वयं पर बैठा देता है?",
+          "choices": [
+            "45°",
+            "180°",
+            "90°",
+            "360°"
+          ],
+          "solution": "कोटि 2 यानी आधा घुमाव: 360 ÷ 2 = 180°। 90 तभी चलता है जब लंबाई-चौड़ाई बराबर हों — चौथाई घुमाव वर्ग का निजी विशेषाधिकार है, भुजाओं के असहमत होते ही छिन जाता है।"
+        },
+        "mr": {
+          "stem": "आयताला रेषा-सममितीही आहे आणि कोटी 2 ची परिवलन सममितीही. किती अंशांचे सर्वांत लहान वळण त्याला स्वतःवर बसवते?",
+          "choices": [
+            "45°",
+            "180°",
+            "90°",
+            "360°"
+          ],
+          "solution": "कोटी 2 म्हणजे अर्धे वळण: 360 ÷ 2 = 180°. 90 तेव्हाच चालते जेव्हा लांबी-रुंदी समान — पाव वळण हा चौरसाचा खासगी विशेषाधिकार, बाजू असहमत होताच हिरावला जातो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cube has 12 edges and 8 vertices. How many FACES does it have?",
+      "choices": [
+        "8",
+        "6",
+        "4",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "6 square faces — count them as a dice's sides. And a quiet law hides here: faces + vertices − edges = 6 + 8 − 12 = 2, true for every box, prism and pyramid you will ever build.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "घन में 12 किनारे और 8 शीर्ष होते हैं। उसके कितने फलक होते हैं?",
+          "choices": [
+            "8",
+            "6",
+            "4",
+            "12"
+          ],
+          "solution": "6 वर्गाकार फलक — पासे के पहलुओं की तरह गिनिए। और यहाँ एक चुपचाप नियम छिपा है: फलक + शीर्ष − किनारे = 6 + 8 − 12 = 2, हर डिब्बे, प्रिज़्म और पिरामिड के लिए सच जो आप कभी भी बनाएँगे।"
+        },
+        "mr": {
+          "stem": "घनाला 12 कडा आणि 8 शिरोबिंदू असतात. त्याला किती पृष्ठे असतात?",
+          "choices": [
+            "8",
+            "6",
+            "4",
+            "12"
+          ],
+          "solution": "6 चौरस पृष्ठे — फाशाच्या बाजूंसारखी मोजा. आणि इथे एक गुपचूप नियम दडला आहे: पृष्ठे + शिरोबिंदू − कडा = 6 + 8 − 12 = 2, तुम्ही कधीही बांधाल त्या प्रत्येक खोक्या, प्रिझम आणि पिरॅमिडसाठी खरा."
+        }
+      }
+    }
+  ]
+}

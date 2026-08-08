@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 13 — Exponents and Powers",
+  "name": "Exponents and Powers",
+  "slug": "maths-7-exponents-and-powers",
+  "summary": "Repeated multiplication compressed: laws that add, subtract and multiply exponents, standard form for the Sun's distance — and a lily pond quiet for 29 days.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "घातांक और घात",
+      "summary": "बार-बार का गुणा सिमटा हुआ: घातें जोड़ने-घटाने-गुणने के नियम, सूर्य की दूरी का मानक रूप — और 29 दिन चुप रहने वाला कुमुदिनी का तालाब।"
+    },
+    "mr": {
+      "name": "घातांक आणि घात",
+      "summary": "पुनःपुन्हाचा गुणाकार आवळलेला: घाती जोडण्या-वजा करण्या-गुणण्याचे नियम, सूर्याच्या अंतराचे प्रमाण रूप — आणि 29 दिवस गप्प राहणारे कमळांचे तळे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 2⁵?",
+      "choices": [
+        "10",
+        "32",
+        "25",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "Five 2s multiplied: 2 × 2 × 2 × 2 × 2 = 32. 10 multiplies base by exponent; 25 swaps them into 5²; 16 stops one doubling early.",
+      "checkExpr": "2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "2⁵ कितना है?",
+          "choices": [
+            "10",
+            "32",
+            "25",
+            "16"
+          ],
+          "solution": "पाँच 2 का गुणा: 2 × 2 × 2 × 2 × 2 = 32। 10 आधार को घात से गुणा करता है; 25 उन्हें पलटकर 5² बना देता है; 16 एक दुगुना पहले रुक जाता है।"
+        },
+        "mr": {
+          "stem": "2⁵ किती?",
+          "choices": [
+            "10",
+            "32",
+            "25",
+            "16"
+          ],
+          "solution": "पाच 2 चा गुणाकार: 2 × 2 × 2 × 2 × 2 = 32. 10 पायाला घाताने गुणतो; 25 त्यांना उलटवून 5² करतो; 16 एक दुप्पट आधी थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 10³?",
+      "choices": [
+        "1000",
+        "100",
+        "30",
+        "10000"
+      ],
+      "answerIndex": 0,
+      "solution": "Three 10s: 10 × 10 × 10 = 1000 — the exponent counts the zeros. 30 multiplies 10 by 3; 10000 hangs one zero too many.",
+      "checkExpr": "10*10*10",
+      "translations": {
+        "hi": {
+          "stem": "10³ कितना है?",
+          "choices": [
+            "1000",
+            "100",
+            "30",
+            "10000"
+          ],
+          "solution": "तीन 10: 10 × 10 × 10 = 1000 — घात शून्यों को गिनती है। 30 दस को तीन से गुणा करता है; 10000 एक शून्य ज़्यादा लटका देता है।"
+        },
+        "mr": {
+          "stem": "10³ किती?",
+          "choices": [
+            "1000",
+            "100",
+            "30",
+            "10000"
+          ],
+          "solution": "तीन 10: 10 × 10 × 10 = 1000 — घात शून्ये मोजते. 30 दहाला तीनने गुणतो; 10000 एक शून्य जास्त लटकवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In the power 7⁴, which number is the EXPONENT?",
+      "choices": [
+        "28",
+        "2401",
+        "4",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "The little raised 4: it COUNTS how many 7s multiply. 7 is the base; 2401 is the value the pair produces.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "घातांक-रूप 7⁴ में घात कौन-सी संख्या है?",
+          "choices": [
+            "28",
+            "2401",
+            "4",
+            "7"
+          ],
+          "solution": "ऊपर लिखा छोटा 4: वह गिनता है कि कितने 7 गुणा होंगे। 7 आधार है; 2401 वह मान है जो जोड़ी बनाती है।"
+        },
+        "mr": {
+          "stem": "घातरूप 7⁴ मध्ये घात कोणती संख्या आहे?",
+          "choices": [
+            "28",
+            "2401",
+            "4",
+            "7"
+          ],
+          "solution": "वर लिहिलेला छोटा 4: तो मोजतो की किती 7 गुणले जातील. 7 हा पाया; 2401 ही जोडीने घडवलेली किंमत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "3² × 3³ = 3 raised to which power?",
+      "choices": [
+        "5",
+        "1",
+        "9",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Same base multiplying: ADD the exponents, 2 + 3 = 5. 6 multiplies them — that law belongs to a power OF a power, like (3²)³.",
+      "checkExpr": "2+3",
+      "translations": {
+        "hi": {
+          "stem": "3² × 3³ = 3 की कौन-सी घात?",
+          "choices": [
+            "5",
+            "1",
+            "9",
+            "6"
+          ],
+          "solution": "समान आधार का गुणा: घातें जोड़िए, 2 + 3 = 5। 6 उन्हें गुणा करता है — वह नियम घात-की-घात का है, जैसे (3²)³।"
+        },
+        "mr": {
+          "stem": "3² × 3³ = 3 चा कोणता घात?",
+          "choices": [
+            "5",
+            "1",
+            "9",
+            "6"
+          ],
+          "solution": "समान पायाचा गुणाकार: घाती जोडा, 2 + 3 = 5. 6 त्यांना गुणतो — तो नियम घाताच्या-घाताचा, जसे (3²)³."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is (−1)⁷?",
+      "choices": [
+        "1",
+        "-1",
+        "7",
+        "-7"
+      ],
+      "answerIndex": 1,
+      "solution": "An odd power keeps the minus: seven −1s pair off three times and one minus survives — −1. 1 needs an even exponent; −7 multiplies base by power.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "(−1)⁷ कितना है?",
+          "choices": [
+            "1",
+            "-1",
+            "7",
+            "-7"
+          ],
+          "solution": "विषम घात ऋण रखती है: सात −1 तीन जोड़ियों में कटते हैं और एक ऋण बचता है — −1। 1 के लिए सम घात चाहिए; −7 आधार को घात से गुणा कर बैठता है।"
+        },
+        "mr": {
+          "stem": "(−1)⁷ किती?",
+          "choices": [
+            "1",
+            "-1",
+            "7",
+            "-7"
+          ],
+          "solution": "विषम घात ऋण राखते: सात −1 तीन जोड्यांत रद्द होतात आणि एक ऋण उरते — −1. 1 साठी सम घात हवी; −7 पायाला घाताने गुणतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 5⁰?",
+      "choices": [
+        "50",
+        "5",
+        "1",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "Any nonzero number to the power 0 is 1 — watch the ladder: 5² = 25, 5¹ = 5, and each step DIVIDES by 5, so 5⁰ = 5 ÷ 5 = 1. 0 confuses the exponent with the answer.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "5⁰ कितना है?",
+          "choices": [
+            "50",
+            "5",
+            "1",
+            "0"
+          ],
+          "solution": "शून्येतर संख्या की घात 0 सदा 1 — सीढ़ी देखिए: 5² = 25, 5¹ = 5, हर क़दम 5 से भाग है, अतः 5⁰ = 5 ÷ 5 = 1। 0 घात को ही उत्तर समझ लेता है।"
+        },
+        "mr": {
+          "stem": "5⁰ किती?",
+          "choices": [
+            "50",
+            "5",
+            "1",
+            "0"
+          ],
+          "solution": "शून्येतर संख्येचा घात 0 नेहमी 1 — शिडी पाहा: 5² = 25, 5¹ = 5, प्रत्येक पायरी 5 ने भाग, म्हणून 5⁰ = 5 ÷ 5 = 1. 0 घातालाच उत्तर समजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is 2⁸ ÷ 2⁵?",
+      "choices": [
+        "4",
+        "2",
+        "8192",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Same base dividing: SUBTRACT exponents, 2⁸⁻⁵ = 2³ = 8. 8192 adds them into 2¹³; the shared 2⁵ on top and bottom cancels away.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "2⁸ ÷ 2⁵ कितना है?",
+          "choices": [
+            "4",
+            "2",
+            "8192",
+            "8"
+          ],
+          "solution": "समान आधार का भाग: घातें घटाइए, 2⁸⁻⁵ = 2³ = 8। 8192 जोड़कर 2¹³ बना देता है; ऊपर-नीचे का साझा 2⁵ कट जाता है।"
+        },
+        "mr": {
+          "stem": "2⁸ ÷ 2⁵ किती?",
+          "choices": [
+            "4",
+            "2",
+            "8192",
+            "8"
+          ],
+          "solution": "समान पायाचा भाग: घाती वजा करा, 2⁸⁻⁵ = 2³ = 8. 8192 जोडून 2¹³ करतो; वर-खालचा सामाईक 2⁵ रद्द होतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is (2³)²?",
+      "choices": [
+        "12",
+        "64",
+        "36",
+        "32"
+      ],
+      "answerIndex": 1,
+      "solution": "A power of a power MULTIPLIES exponents: 2³ˣ² = 2⁶ = 64 — or simply 8 × 8. 32 adds the exponents into 2⁵, the multiplication law used in the wrong house.",
+      "checkExpr": "8*8",
+      "translations": {
+        "hi": {
+          "stem": "(2³)² कितना है?",
+          "choices": [
+            "12",
+            "64",
+            "36",
+            "32"
+          ],
+          "solution": "घात की घात में घातें गुणा होती हैं: 2³ˣ² = 2⁶ = 64 — या सीधे 8 × 8। 32 जोड़कर 2⁵ बनाता है — गुणा का नियम ग़लत घर में।"
+        },
+        "mr": {
+          "stem": "(2³)² किती?",
+          "choices": [
+            "12",
+            "64",
+            "36",
+            "32"
+          ],
+          "solution": "घाताच्या घातात घाती गुणल्या जातात: 2³ˣ² = 2⁶ = 64 — किंवा थेट 8 × 8. 32 जोडून 2⁵ करतो — गुणाकाराचा नियम चुकीच्या घरात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "72 written in prime powers is 2³ × 3 to which power?",
+      "choices": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "72 = 8 × 9 = 2³ × 3²: the exponent of 3 is 2. Break the number down by repeated division — 72 halves to 36, 18, 9, then 9 = 3 × 3 and the 3s stop at two.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "72 को अभाज्य घातों में लिखें तो 2³ × 3 की कौन-सी घात?",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "72 = 8 × 9 = 2³ × 3²: तीन की घात 2 है। बार-बार भाग से तोड़िए — 72 से 36, 18, 9, फिर 9 = 3 × 3 और तीन दो पर रुक जाते हैं।"
+        },
+        "mr": {
+          "stem": "72 मूळ घातांत लिहिले तर 2³ × 3 चा कोणता घात?",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "72 = 8 × 9 = 2³ × 3²: तिघाचा घात 2. पुनःपुन्हा भागून फोडा — 72 चे 36, 18, 9, मग 9 = 3 × 3 आणि तीन दोनवर थांबतात."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The Sun is about 150,000,000 km from the Earth. In standard form that is 1.5 × 10 to which power?",
+      "choices": [
+        "8",
+        "9",
+        "7",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "From 1.5 the decimal point hops 8 places to rebuild 150,000,000: 1.5 × 10⁸. 7 counts the zeros but forgets the hop over the 5.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्य पृथ्वी से लगभग 150,000,000 किमी दूर है। मानक रूप में यह 1.5 × 10 की कौन-सी घात है?",
+          "choices": [
+            "8",
+            "9",
+            "7",
+            "6"
+          ],
+          "solution": "1.5 से दशमलव बिंदु 8 छलाँगों में 150,000,000 फिर बनाता है: 1.5 × 10⁸। 7 शून्य गिनता है पर 5 के ऊपर की छलाँग भूल जाता है।"
+        },
+        "mr": {
+          "stem": "सूर्य पृथ्वीपासून सुमारे 150,000,000 किमी दूर आहे. प्रमाण रूपात हे 1.5 × 10 चा कोणता घात?",
+          "choices": [
+            "8",
+            "9",
+            "7",
+            "6"
+          ],
+          "solution": "1.5 पासून दशांश बिंदू 8 उड्यांत 150,000,000 पुन्हा बांधतो: 1.5 × 10⁸. 7 शून्ये मोजतो पण 5 वरची उडी विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is 3⁴ − 4³?",
+      "choices": [
+        "17",
+        "0",
+        "7",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "81 − 64 = 17: swapping base and exponent changes the value. 0 assumes 3⁴ and 4³ are twins; 12 just multiplies 3 × 4 either way.",
+      "checkExpr": "3*3*3*3-4*4*4",
+      "translations": {
+        "hi": {
+          "stem": "3⁴ − 4³ कितना है?",
+          "choices": [
+            "17",
+            "0",
+            "7",
+            "12"
+          ],
+          "solution": "81 − 64 = 17: आधार-घात की अदला-बदली मान बदल देती है। 0 मानता है कि 3⁴ और 4³ जुड़वाँ हैं; 12 दोनों तरफ़ बस 3 × 4 कर देता है।"
+        },
+        "mr": {
+          "stem": "3⁴ − 4³ किती?",
+          "choices": [
+            "17",
+            "0",
+            "7",
+            "12"
+          ],
+          "solution": "81 − 64 = 17: पाया-घाताची अदलाबदल किंमत बदलते. 0 समजतो की 3⁴ आणि 4³ जुळे; 12 दोन्हीकडे नुसते 3 × 4 करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "(10⁵ × 10³) ÷ 10⁴ = 10 raised to which power?",
+      "choices": [
+        "60",
+        "12",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Add for the product, subtract for the division: 5 + 3 − 4 = 4. 12 forgets to subtract; 60 multiplies all three exponents.",
+      "checkExpr": "5+3-4",
+      "translations": {
+        "hi": {
+          "stem": "(10⁵ × 10³) ÷ 10⁴ = 10 की कौन-सी घात?",
+          "choices": [
+            "60",
+            "12",
+            "2",
+            "4"
+          ],
+          "solution": "गुणा में जोड़, भाग में घटाव: 5 + 3 − 4 = 4। 12 घटाना भूल जाता है; 60 तीनों घातें गुणा कर देता है।"
+        },
+        "mr": {
+          "stem": "(10⁵ × 10³) ÷ 10⁴ = 10 चा कोणता घात?",
+          "choices": [
+            "60",
+            "12",
+            "2",
+            "4"
+          ],
+          "solution": "गुणाकारात बेरीज, भागात वजाबाकी: 5 + 3 − 4 = 4. 12 वजा करायला विसरतो; 60 तिन्ही घाती गुणतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which is greater, 2¹⁰ or 10², and by how much?",
+      "choices": [
+        "924",
+        "100",
+        "1024",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "2¹⁰ = 1024 while 10² = 100: the small base with the big exponent wins by 924. Repeated doubling outruns one big multiplication — exponents beat bases in the long run.",
+      "checkExpr": "1024-100",
+      "translations": {
+        "hi": {
+          "stem": "2¹⁰ और 10² में बड़ा कौन, और कितने से?",
+          "choices": [
+            "924",
+            "100",
+            "1024",
+            "24"
+          ],
+          "solution": "2¹⁰ = 1024 जबकि 10² = 100: छोटे आधार पर बड़ी घात 924 से जीतती है। बार-बार का दुगुनापन एक बड़े गुणे को पछाड़ देता है — लंबी दौड़ में घातें आधारों से आगे निकलती हैं।"
+        },
+        "mr": {
+          "stem": "2¹⁰ आणि 10² मध्ये मोठा कोण, आणि कितीने?",
+          "choices": [
+            "924",
+            "100",
+            "1024",
+            "24"
+          ],
+          "solution": "2¹⁰ = 1024 तर 10² = 100: लहान पायावरची मोठी घात 924 ने जिंकते. पुनःपुन्हाची दुप्पट एका मोठ्या गुणाकाराला मागे टाकते — दूरच्या शर्यतीत घाती पायांना हरवतात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A sheet of paper is folded in half 6 times. How many layers does it have?",
+      "choices": [
+        "32",
+        "64",
+        "6",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "Each fold DOUBLES the stack: 2⁶ = 64 layers. 12 adds 2 six times — folding multiplies, never adds; 32 miscounts one fold.",
+      "checkExpr": "2*2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "एक काग़ज़ को 6 बार आधा मोड़ा जाता है। उसमें कितनी परतें होंगी?",
+          "choices": [
+            "32",
+            "64",
+            "6",
+            "12"
+          ],
+          "solution": "हर मोड़ गड्डी दुगुनी करता है: 2⁶ = 64 परतें। 12 छह बार 2 जोड़ता है — मोड़ना गुणा करता है, जोड़ नहीं; 32 एक मोड़ कम गिनता है।"
+        },
+        "mr": {
+          "stem": "एक कागद 6 वेळा अर्धा दुमडला जातो. त्यात किती थर होतील?",
+          "choices": [
+            "32",
+            "64",
+            "6",
+            "12"
+          ],
+          "solution": "प्रत्येक घडी थप्पी दुप्पट करते: 2⁶ = 64 थर. 12 सहा वेळा 2 जोडतो — दुमडणे गुणते, जोडत नाही; 32 एक घडी कमी मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A lily patch on a pond DOUBLES every day and covers the whole pond on day 30. On which day was the pond half covered?",
+      "choices": [
+        "29",
+        "24",
+        "15",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "One doubling before full is half: day 29. 15 halves the TIME — but doubling growth doesn't walk in straight lines; it spends 29 days quiet and one day loud.",
+      "checkExpr": "30-1",
+      "translations": {
+        "hi": {
+          "stem": "तालाब पर कुमुदिनी का फैलाव रोज़ दुगुना होता है और 30वें दिन पूरा तालाब ढक जाता है। तालाब आधा किस दिन ढका था?",
+          "choices": [
+            "29",
+            "24",
+            "15",
+            "28"
+          ],
+          "solution": "पूरे से एक दुगुना पहले यानी आधा: दिन 29। 15 समय को आधा करता है — पर दुगुनी बढ़त सीधी रेखा में नहीं चलती; वह 29 दिन चुप रहती है और एक दिन में गरजती है।"
+        },
+        "mr": {
+          "stem": "तळ्यावरील कमळांचा पसारा रोज दुप्पट होतो आणि 30 व्या दिवशी सारे तळे झाकतो. तळे अर्धे कोणत्या दिवशी झाकले होते?",
+          "choices": [
+            "29",
+            "24",
+            "15",
+            "28"
+          ],
+          "solution": "पूर्णाच्या एक दुप्पट आधी म्हणजे अर्धे: दिवस 29. 15 वेळ निम्मी करतो — पण दुप्पट वाढ सरळ रेषेत चालत नाही; ती 29 दिवस गप्प राहते आणि एका दिवसात गर्जते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Grains on a chessboard: 1 on the first square, doubling on each square after. How many grains sit on the 8th square alone?",
+      "choices": [
+        "128",
+        "16",
+        "64",
+        "256"
+      ],
+      "answerIndex": 0,
+      "solution": "Square n holds 2ⁿ⁻¹, so the 8th holds 2⁷ = 128. 256 doubles once too many — the FIRST square already used up 2⁰; the legend's whole board ends near 2⁶⁴, past all the world's grain.",
+      "checkExpr": "2*2*2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "शतरंज की बिसात पर दाने: पहले ख़ाने में 1, फिर हर ख़ाने में दुगुने। अकेले 8वें ख़ाने में कितने दाने?",
+          "choices": [
+            "128",
+            "16",
+            "64",
+            "256"
+          ],
+          "solution": "ख़ाना n रखता है 2ⁿ⁻¹, अतः 8वाँ रखता है 2⁷ = 128। 256 एक दुगुना ज़्यादा है — पहला ख़ाना 2⁰ पहले ही ख़र्च कर चुका; किंवदंती की पूरी बिसात 2⁶⁴ के पास जाकर दुनिया भर के अनाज से आगे निकल जाती है।"
+        },
+        "mr": {
+          "stem": "बुद्धिबळाच्या पटावरील दाणे: पहिल्या घरात 1, मग प्रत्येक घरात दुप्पट. एकट्या 8 व्या घरात किती दाणे?",
+          "choices": [
+            "128",
+            "16",
+            "64",
+            "256"
+          ],
+          "solution": "घर n मध्ये 2ⁿ⁻¹, म्हणून 8 व्यात 2⁷ = 128. 256 एक दुप्पट जास्त — पहिल्या घराने 2⁰ आधीच खर्चले; दंतकथेचा सारा पट 2⁶⁴ जवळ जाऊन जगभरच्या धान्याला मागे टाकतो."
+        }
+      }
+    }
+  ]
+}
