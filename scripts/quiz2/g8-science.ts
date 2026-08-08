@@ -1919,4 +1919,885 @@ export const G8_SCIENCE: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Force and Pressure (pushes, pulls and their spread)        */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-force-pressure",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 11 — Force and Pressure",
+      hi: "अध्याय 11 — बल तथा दाब",
+      mr: "प्रकरण 11 — बल आणि दाब",
+    },
+    name: { en: "Force and Pressure", hi: "बल तथा दाब", mr: "बल आणि दाब" },
+    summary: {
+      en: "Pushes and pulls with and without touch, force spread thin or driven to a point — why knives bite, dams thicken downward, and an emptied can confesses to the atmosphere.",
+      hi: "छूकर और बिना छुए धक्के-खिंचाव, पतला बिछा या नोक पर साधा बल — क्यों चाक़ू काटता है, बाँध नीचे मोटे होते हैं, और ख़ाली किया डिब्बा वायुमंडल के आगे इक़बाल करता है।",
+      mr: "स्पर्शाने आणि स्पर्शाविना धक्के-ओढी, पातळ पसरलेले वा टोकावर साधलेले बल — सुरी का चावते, धरणे खाली का जाड होतात, आणि रिकामा केलेला डबा वातावरणापुढे कबुली का देतो.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "force",
+        name: { en: "Force", hi: "बल", mr: "बल" },
+        kind: "quantity",
+        prompt: {
+          en: "Which push or pull can move the still, stop the moving, turn the straight or change a thing's shape?",
+          hi: "कौन-सा धक्का या खिंचाव ठहरे को चला, चलते को रोक, सीधे को मोड़ या वस्तु का आकार बदल सकता है?",
+          mr: "कोणता धक्का वा ओढ स्थिराला हलवू, चालत्याला थांबवू, सरळाला वळवू वा वस्तूचा आकार बदलू शकते?",
+        },
+        statement: {
+          en: "A force is a push or a pull — it can start, stop, turn or deform, and it never acts without two objects interacting.",
+          hi: "बल धक्का या खिंचाव है — वह चला, रोक, मोड़ या विकृत कर सकता है, और दो वस्तुओं की अंतःक्रिया के बिना कभी नहीं लगता।",
+          mr: "बल म्हणजे धक्का वा ओढ — ते सुरू, थांबवू, वळवू वा विरूप करू शकते, आणि दोन वस्तूंच्या आंतरक्रियेविना कधीच लागत नाही.",
+        },
+        detail: {
+          en: "Forces come in interacting pairs — kick a ball and the ball presses your foot right back.",
+          hi: "बल अंतःक्रिया की जोड़ियों में आते हैं — गेंद को ठोकर मारिए और गेंद आपके पैर को उतना ही दबाती है।",
+          mr: "बले आंतरक्रियेच्या जोड्यांत येतात — चेंडूला लाथ मारा आणि चेंडू तुमच्या पायाला तितकाच दाबतो.",
+        },
+        extra: {
+          en: "Every force needs an agent and an object — nothing in the universe pushes alone.",
+          hi: "हर बल को कर्ता और वस्तु चाहिए — ब्रह्मांड में कुछ भी अकेला नहीं धकेलता।",
+          mr: "प्रत्येक बलाला कर्ता आणि वस्तू लागते — विश्वात काहीही एकटे ढकलत नाही.",
+        },
+        pair: {
+          left: { en: "The push or pull", hi: "धक्का या खिंचाव", mr: "धक्का वा ओढ" },
+          right: {
+            en: "start, stop, turn or bend",
+            hi: "चलाए, रोके, मोड़े या झुकाए",
+            mr: "सुरू, थांबवणे, वळवणे वा वाकवणे",
+          },
+        },
+      },
+      {
+        id: "muscular",
+        name: { en: "Muscular force", hi: "पेशीय बल", mr: "स्नायुबल" },
+        kind: "force",
+        prompt: {
+          en: "Which contact force do animals apply through their own bodies — the bullock's pull, the porter's lift, your own chewing?",
+          hi: "कौन-सा संपर्क बल प्राणी अपने शरीर से लगाते हैं — बैल का खिंचाव, क़ुली का उठाव, आपकी अपनी चबाई?",
+          mr: "कोणते संपर्क बल प्राणी आपल्या शरीरातून लावतात — बैलाची ओढ, हमालाची उचल, तुमचे स्वतःचे चावणे?",
+        },
+        statement: {
+          en: "Muscular force is the body's own — applied on contact, from chewing a roti to ploughing a field.",
+          hi: "पेशीय बल शरीर का अपना है — संपर्क में लगाया गया, रोटी चबाने से खेत जोतने तक।",
+          mr: "स्नायुबल हे शरीराचे स्वतःचे — संपर्कात लावलेले, पोळी चावण्यापासून शेत नांगरण्यापर्यंत.",
+        },
+        pair: {
+          left: { en: "The body's own force", hi: "शरीर का अपना बल", mr: "शरीराचे स्वतःचे बल" },
+          right: { en: "applied by touch", hi: "छूकर लगाया गया", mr: "स्पर्शाने लावलेले" },
+        },
+      },
+      {
+        id: "distance-forces",
+        name: { en: "Forces at a distance", hi: "दूरी से लगते बल", mr: "दुरून लागणारी बले" },
+        kind: "force",
+        prompt: {
+          en: "Magnetism, gravity, static electricity — which family of forces acts WITHOUT any touching at all?",
+          hi: "चुंबकत्व, गुरुत्व, स्थैतिक विद्युत — बलों का कौन-सा परिवार बिना किसी छुअन के लगता है?",
+          mr: "चुंबकत्व, गुरुत्व, स्थितिक विद्युत — बलांचे कोणते कुटुंब कोणत्याही स्पर्शाविना लागते?",
+        },
+        statement: {
+          en: "Non-contact forces act across gaps — the magnet pulls the pin, the earth the mango, the charged comb the paper bits: all untouched.",
+          hi: "असंपर्क बल दूरियों के पार लगते हैं — चुंबक पिन खींचता है, धरती आम, आवेशित कंघी काग़ज़ के टुकड़े: सब अनछुए।",
+          mr: "असंपर्क बले अंतरापार लागतात — चुंबक टाचणी ओढतो, पृथ्वी आंबा, विद्युतभारित कंगवा कागदाचे कपटे: सारे अस्पर्श.",
+        },
+        pair: {
+          left: { en: "Pull without touch", hi: "बिना छुए खिंचाव", mr: "स्पर्शाविना ओढ" },
+          right: {
+            en: "magnet, earth and comb",
+            hi: "चुंबक, धरती और कंघी",
+            mr: "चुंबक, पृथ्वी आणि कंगवा",
+          },
+        },
+      },
+      {
+        id: "pressure",
+        name: { en: "Pressure", hi: "दाब", mr: "दाब" },
+        kind: "quantity",
+        prompt: {
+          en: "Which quantity is force divided by the area it presses on — the reason a sharp knife cuts where a blunt one bruises?",
+          hi: "कौन-सी राशि बल बटा वह क्षेत्रफल है जिस पर वह दबता है — जिस कारण तेज़ चाक़ू काटता है जहाँ भोथरा कुचलता है?",
+          mr: "कोणती राशी म्हणजे बल भागिले ते दाबणारे क्षेत्रफळ — ज्यामुळे धारदार सुरी कापते जिथे बोथट चेचते?",
+        },
+        statement: {
+          en: "Pressure is force per unit area — shrink the area and the same push bites deeper; spread it and the push turns gentle.",
+          hi: "दाब प्रति इकाई क्षेत्रफल बल है — क्षेत्र घटाइए तो वही धक्का गहरा काटता है; फैलाइए तो कोमल पड़ जाता है।",
+          mr: "दाब म्हणजे प्रति एकक क्षेत्रफळ बल — क्षेत्र आकसवा आणि तोच धक्का खोल चावतो; पसरवा आणि तो सौम्य होतो.",
+        },
+        detail: {
+          en: "Nails are pointed and shoulder-straps broad by the same law read in opposite directions.",
+          hi: "कीलें नुकीली और कंधे की पट्टियाँ चौड़ी — एक ही नियम, दो दिशाओं में पढ़ा हुआ।",
+          mr: "खिळे टोकदार आणि खांद्याचे पट्टे रुंद — एकच नियम, दोन दिशांनी वाचलेला.",
+        },
+        extra: {
+          en: "Snowshoes and camel feet spread weight thin — walking on area itself.",
+          hi: "बर्फ़-जूते और ऊँट के पैर वज़न को पतला बिछा देते हैं — मानो क्षेत्रफल पर ही चलना।",
+          mr: "बर्फ-पादत्राणे आणि उंटाचे पाय वजन पातळ पसरतात — जणू क्षेत्रफळावरच चालणे.",
+        },
+        pair: {
+          left: { en: "Force over area", hi: "क्षेत्रफल पर बल", mr: "क्षेत्रफळावरचे बल" },
+          right: {
+            en: "sharp bites, broad spreads",
+            hi: "नुकीला काटे, चौड़ा बिछाए",
+            mr: "टोकदार चावते, रुंद पसरते",
+          },
+        },
+      },
+      {
+        id: "liquid-pressure",
+        name: { en: "Liquid pressure", hi: "द्रव का दाब", mr: "द्रवाचा दाब" },
+        kind: "quantity",
+        prompt: {
+          en: "Which pressure pushes on a vessel's walls and grows with depth — squirting farthest from the LOWEST hole in a leaky bottle?",
+          hi: "कौन-सा दाब बर्तन की दीवारों पर दबता और गहराई से बढ़ता है — छेदों वाली बोतल के सबसे निचले छेद से सबसे दूर फुहारता हुआ?",
+          mr: "कोणता दाब भांड्याच्या भिंतींवर दाबतो आणि खोलीने वाढतो — भोके पडलेल्या बाटलीच्या सर्वांत खालच्या भोकातून सर्वांत दूर उडणारा?",
+        },
+        statement: {
+          en: "Liquids press on walls and bottom alike, harder with depth — the lowest leak always spurts farthest.",
+          hi: "द्रव दीवारों और तल पर समान रूप से दबते हैं, गहराई के साथ ज़्यादा — सबसे निचला रिसाव सदा सबसे दूर फुहारता है।",
+          mr: "द्रव भिंतींवर आणि तळावर सारखेच दाबतात, खोलीसोबत अधिक — सर्वांत खालची गळती नेहमी सर्वांत दूर उडते.",
+        },
+        pair: {
+          left: { en: "Deeper, harder", hi: "जितना गहरा, उतना दाब", mr: "जितके खोल, तितका दाब" },
+          right: {
+            en: "the lowest leak spurts farthest",
+            hi: "सबसे निचला रिसाव सबसे दूर",
+            mr: "सर्वांत खालची गळती सर्वांत दूर",
+          },
+        },
+      },
+      {
+        id: "atmospheric",
+        name: {
+          en: "Atmospheric pressure",
+          hi: "वायुमंडलीय दाब",
+          mr: "वातावरणीय दाब",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Which invisible pressure of the air's weight crushes an emptied tin can and pins the rubber sucker to the tile?",
+          hi: "हवा के वज़न का कौन-सा अदृश्य दाब ख़ाली किए डिब्बे को पिचका देता है और रबर के चूषक को टाइल से चिपकाए रखता है?",
+          mr: "हवेच्या वजनाचा कोणता अदृश्य दाब रिकाम्या केलेल्या डब्याला चेपतो आणि रबरी चोषकाला फरशीवर दाबून ठेवतो?",
+        },
+        statement: {
+          en: "Atmospheric pressure presses from every side — unnoticed only because our bodies push back in equal measure.",
+          hi: "वायुमंडलीय दाब हर ओर से दबता है — अनजाना केवल इसलिए कि हमारे शरीर बराबरी से पलट-दबाव देते हैं।",
+          mr: "वातावरणीय दाब प्रत्येक बाजूने दाबतो — न जाणवणारा केवळ म्हणून की आपली शरीरे तितकाच प्रति-दाब देतात.",
+        },
+        detail: {
+          en: "Pump the air from a tin and the atmosphere crumples it — one-sided pressure made suddenly visible.",
+          hi: "डिब्बे से हवा खींचिए और वायुमंडल उसे मरोड़ देता है — एकतरफ़ा दाब अचानक दिखने लगता है।",
+          mr: "डब्यातली हवा उपसा आणि वातावरण त्याला चुरगळते — एकतर्फी दाब अचानक दिसू लागतो.",
+        },
+        extra: {
+          en: "The sucker hook holds because air presses it to the tile with nothing left inside to push back.",
+          hi: "चूषक-हुक इसलिए टिकता है कि हवा उसे टाइल पर दबाती है और भीतर पलट-धक्के को कुछ बचा नहीं।",
+          mr: "चोषक-हुक म्हणून टिकतो की हवा त्याला फरशीवर दाबते आणि आत प्रति-धक्क्याला काही उरले नाही.",
+        },
+        pair: {
+          left: { en: "The unfelt crush", hi: "बिन महसूस दबाव", mr: "न जाणवणारी चेपण" },
+          right: {
+            en: "the crumpled can's confession",
+            hi: "पिचके डिब्बे का इक़बाल",
+            mr: "चेपलेल्या डब्याची कबुली",
+          },
+        },
+      },
+      {
+        id: "gravity",
+        name: { en: "Gravity's pull", hi: "गुरुत्व का खिंचाव", mr: "गुरुत्वाची ओढ" },
+        kind: "force",
+        prompt: {
+          en: "Which force pulls every dropped thing earthward — no string attached, no touch required?",
+          hi: "कौन-सा बल हर गिराई चीज़ को धरती की ओर खींचता है — न कोई डोर बँधी, न छुअन ज़रूरी?",
+          mr: "कोणते बल प्रत्येक सोडलेल्या वस्तूला पृथ्वीकडे ओढते — ना दोरी बांधलेली, ना स्पर्श लागतो?",
+        },
+        statement: {
+          en: "Gravity pulls at a distance — every mango, raindrop and satellite answers to the same unseen tug.",
+          hi: "गुरुत्व दूरी से खींचता है — हर आम, बूँद और उपग्रह उसी अनदेखी खींच के जवाबदेह हैं।",
+          mr: "गुरुत्व दुरून ओढते — प्रत्येक आंबा, थेंब आणि उपग्रह त्याच न दिसणाऱ्या ओढीला उत्तरदायी.",
+        },
+        pair: {
+          left: { en: "The earthward pull", hi: "धरती की ओर खिंचाव", mr: "पृथ्वीकडची ओढ" },
+          right: { en: "no string attached", hi: "बिना बँधी डोर", mr: "दोरी न बांधताच" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Explain the design: A-a knife's thin edge, B-a tractor's broad tyres, C-a dam thicker at its base. Which trio of reasons is right?",
+          hi: "बनावट समझाइए: अ-चाक़ू की पतली धार, ब-ट्रैक्टर के चौड़े टायर, स-तल पर मोटा बाँध। कारणों की कौन-सी तिकड़ी सही है?",
+          mr: "रचना समजावा: अ-सुरीची पातळ धार, ब-ट्रॅक्टरचे रुंद टायर, क-तळाशी जाड धरण. कारणांची कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: small area drives pressure up to cut · B: large area spreads weight so it won't sink · C: water presses hardest at depth, so the wall thickens there",
+            hi: "अ: छोटा क्षेत्र दाब चढ़ाकर काटता है · ब: बड़ा क्षेत्र वज़न बिछाता है ताकि धँसे नहीं · स: पानी गहराई में सबसे ज़ोर से दबता है, अतः दीवार वहीं मोटी",
+            mr: "अ: लहान क्षेत्र दाब चढवून कापते · ब: मोठे क्षेत्र वजन पसरवते म्हणजे रुतू नये · क: पाणी खोलीत सर्वांत जोरात दाबते, म्हणून भिंत तिथे जाड",
+          },
+          {
+            en: "A: knives are thin to save steel · B: broad tyres look grand · C: dams thicken by mason's habit",
+            hi: "अ: चाक़ू स्टील बचाने को पतले · ब: चौड़े टायर शान के लिए · स: बाँध राजगीर की आदत से मोटे",
+            mr: "अ: सुऱ्या पोलाद वाचवायला पातळ · ब: रुंद टायर शानीसाठी · क: धरणे गवंड्याच्या सवयीने जाड",
+          },
+          {
+            en: "All three designs share one purpose: speed",
+            hi: "तीनों बनावटों का एक ही मक़सद: रफ़्तार",
+            mr: "तिन्ही रचनांचा एकच हेतू: वेग",
+          },
+          {
+            en: "A: large area cuts · B: small area floats · C: water presses hardest at the surface",
+            hi: "अ: बड़ा क्षेत्र काटता है · ब: छोटा क्षेत्र तैराता है · स: पानी सतह पर सबसे ज़ोर से दबता है",
+            mr: "अ: मोठे क्षेत्र कापते · ब: लहान क्षेत्र तरंगवते · क: पाणी पृष्ठावर सर्वांत जोरात दाबते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One formula, three artefacts. Pressure = force/area: the knife shrinks area to multiply bite; the tyre grows area to divide sinking; and the dam answers liquid pressure, which grows with depth — thin lip at the top, buttress at the bottom. Engineering is largely this fraction, read with intent.",
+          hi: "एक सूत्र, तीन वस्तुएँ। दाब = बल/क्षेत्रफल: चाक़ू क्षेत्र घटाकर काट बढ़ाता है; टायर क्षेत्र बढ़ाकर धँसाव बाँटता है; और बाँध द्रव-दाब का जवाब है, जो गहराई से बढ़ता है — ऊपर पतला होंठ, तल पर पुश्ता। अभियांत्रिकी बहुत हद तक यही भिन्न है, इरादे से पढ़ी हुई।",
+          mr: "एक सूत्र, तीन वस्तू. दाब = बल/क्षेत्रफळ: सुरी क्षेत्र आकसवून चावा वाढवते; टायर क्षेत्र वाढवून रुतणे वाटते; आणि धरण द्रव-दाबाचे उत्तर, जो खोलीने वाढतो — वर पातळ ओठ, तळाशी आधार. अभियांत्रिकी बऱ्याच अंशी हाच अपूर्णांक, हेतूने वाचलेला.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The atmosphere presses on your body with the weight of a small car — yet you feel nothing, while an emptied tin crumples instantly. What separates you from the tin?",
+          hi: "वायुमंडल आपके शरीर पर छोटी कार जितने वज़न से दबता है — फिर भी आपको कुछ महसूस नहीं होता, जबकि ख़ाली डिब्बा पल में पिचक जाता है। आपमें और डिब्बे में क्या फ़र्क़ है?",
+          mr: "वातावरण तुमच्या शरीरावर छोट्या गाडीइतक्या वजनाने दाबते — तरी तुम्हाला काही जाणवत नाही, तर रिकामा डबा क्षणात चेपतो. तुमच्यात आणि डब्यात फरक काय?",
+        },
+        choices: [
+          {
+            en: "Balance: your body's internal pressure pushes outward as hard as the air pushes in; the pumped-out tin lost its inside push, and one-sided pressure did the rest",
+            hi: "संतुलन: आपके शरीर का भीतरी दाब उतना ही बाहर धकेलता है जितना हवा भीतर; ख़ाली डिब्बे ने भीतरी धक्का खो दिया, और एकतरफ़ा दाब ने बाक़ी कर दिखाया",
+            mr: "समतोल: तुमच्या शरीराचा आतला दाब हवेच्या आतल्या दाबाइतकाच बाहेर ढकलतो; उपसलेल्या डब्याने आतला धक्का गमावला, आणि एकतर्फी दाबाने बाकी करून दाखवले",
+          },
+          {
+            en: "Human skin is simply stronger than tin",
+            hi: "मानव त्वचा टिन से बस मज़बूत है",
+            mr: "मानवी त्वचा पत्र्याहून नुसती बळकट",
+          },
+          {
+            en: "The atmosphere politely avoids living things",
+            hi: "वायुमंडल जीवों से शालीनता से बचता है",
+            mr: "वातावरण सजीवांना सभ्यपणे टाळते",
+          },
+          {
+            en: "The tin story is a trick of slow rusting",
+            hi: "डिब्बे की कहानी धीमी ज़ंग की चाल है",
+            mr: "डब्याची गोष्ट हळू गंजण्याची चलाखी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Pressure hurts only when unopposed. Your lungs, blood and tissues run at the atmosphere's own pressure, so the enormous inward push meets an equal outward one and the net force on every patch of skin is nearly nil. The tin enjoyed the same truce until the pump broke it — air outside, nothing inside, and the walls folded. Divers and astronauts live by this arithmetic: it is never pressure that injures, but pressure DIFFERENCE.",
+          hi: "दाब तभी चोट देता है जब उसका सामना न हो। आपके फेफड़े, रक्त और ऊतक वायुमंडल के ही दाब पर चलते हैं, अतः भीतर की विराट धकेल को बराबर की बाहरी धकेल मिलती है और त्वचा के हर टुकड़े पर शुद्ध बल लगभग शून्य है। डिब्बा भी इसी संधि में जीता था जब तक पंप ने उसे तोड़ा नहीं — बाहर हवा, भीतर कुछ नहीं, और दीवारें मुड़ गईं। गोताख़ोर और अंतरिक्षयात्री इसी गणित पर जीते हैं: चोट कभी दाब नहीं देता, दाब का अंतर देता है।",
+          mr: "दाब तेव्हाच इजा करतो जेव्हा त्याला विरोध नसतो. तुमची फुप्फुसे, रक्त आणि ऊती वातावरणाच्याच दाबावर चालतात, म्हणून आतल्या प्रचंड रेट्याला तितकाच बाहेरचा रेटा भेटतो आणि त्वचेच्या प्रत्येक तुकड्यावरचे निव्वळ बल जवळजवळ शून्य. डबाही याच तहात जगत होता जोवर पंपाने तो मोडला नाही — बाहेर हवा, आत काही नाही, आणि भिंती दुमडल्या. पाणबुडे आणि अंतराळवीर याच गणितावर जगतात: इजा कधी दाब करत नाही, दाबाचा फरक करतो.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Friction (the necessary evil)                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-friction",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 12 — Friction",
+      hi: "अध्याय 12 — घर्षण",
+      mr: "प्रकरण 12 — घर्षण",
+    },
+    name: { en: "Friction", hi: "घर्षण", mr: "घर्षण" },
+    summary: {
+      en: "The necessary evil: interlocking roughness that resists all sliding, cheapened by wheels and oil, spent as heat — gripping roads and wearing soles with the same hand.",
+      hi: "ज़रूरी बुराई: हर फिसलन का विरोध करता गुँथा खुरदुरापन, पहियों-तेल से सस्ता हुआ, ऊष्मा में ख़र्च — एक ही हाथ से सड़कें थामता और तलवे घिसता।",
+      mr: "आवश्यक वाईट: प्रत्येक घसरणीला विरोध करणारा गुंफलेला खरखरीतपणा, चाके-तेलाने स्वस्त झालेला, उष्णतेत खर्चलेला — एकाच हाताने रस्ते धरणारा आणि तळवे झिजवणारा.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "friction",
+        name: { en: "Friction", hi: "घर्षण", mr: "घर्षण" },
+        kind: "force",
+        prompt: {
+          en: "Which force opposes motion between touching surfaces, born of their microscopic interlocking roughness?",
+          hi: "कौन-सा बल छूती सतहों के बीच गति का विरोध करता है, उनके सूक्ष्म गुँथे खुरदुरेपन से जन्मा?",
+          mr: "कोणते बल स्पर्शणाऱ्या पृष्ठांमधल्या गतीला विरोध करते, त्यांच्या सूक्ष्म गुंफलेल्या खरखरीतपणातून जन्मलेले?",
+        },
+        statement: {
+          en: "Friction resists sliding — every surface is a mountain range in miniature, and facing ranges interlock.",
+          hi: "घर्षण फिसलन का विरोध करता है — हर सतह लघु पर्वतमाला है, और आमने-सामने की मालाएँ गुँथ जाती हैं।",
+          mr: "घर्षण घसरणीला विरोध करते — प्रत्येक पृष्ठ म्हणजे लघु पर्वतरांग, आणि समोरासमोरच्या रांगा गुंफतात.",
+        },
+        detail: {
+          en: "It acts opposite to attempted motion — and pushes back even BEFORE anything moves.",
+          hi: "वह इरादतन गति के विपरीत लगता है — और कुछ हिलने से पहले ही पलट-धक्का देता है।",
+          mr: "ते इच्छित गतीच्या विरुद्ध लागते — आणि काही हलण्याआधीच प्रति-धक्का देते.",
+        },
+        extra: {
+          en: "Nothing walks, writes, knots or brakes without it — a world without friction slides forever.",
+          hi: "इसके बिना कुछ भी चलता, लिखता, गाँठ बाँधता या रुकता नहीं — बिना घर्षण की दुनिया सदा फिसलती रहती।",
+          mr: "त्याच्याविना काहीही चालत, लिहीत, गाठ बांधत वा थांबत नाही — घर्षणाविनाचे जग कायम घसरत राहिले असते.",
+        },
+        pair: {
+          left: { en: "The opposing force", hi: "विरोधी बल", mr: "विरोधी बल" },
+          right: { en: "roughness interlocked", hi: "गुँथा खुरदुरापन", mr: "गुंफलेला खरखरीतपणा" },
+        },
+      },
+      {
+        id: "rolling",
+        name: { en: "Rolling friction", hi: "लोटनिक घर्षण", mr: "घरंगळ घर्षण" },
+        kind: "force",
+        prompt: {
+          en: "Which kind of friction, far smaller than sliding, is the whole reason wheels changed the world?",
+          hi: "कौन-सा घर्षण, फिसलन से कहीं छोटा, वह पूरा कारण है कि पहियों ने दुनिया बदल दी?",
+          mr: "कोणते घर्षण, घसरणीहून कितीतरी लहान, हेच सारे कारण आहे की चाकांनी जग बदलले?",
+        },
+        statement: {
+          en: "Rolling friction is sliding's cheaper cousin — wheels and ball bearings ride the discount everywhere.",
+          hi: "लोटनिक घर्षण फिसलन का सस्ता चचेरा भाई है — पहिये और बॉल-बेयरिंग हर जगह इसी छूट पर सवार हैं।",
+          mr: "घरंगळ घर्षण हे घसरणीचे स्वस्त चुलतभावंड — चाके आणि बॉल-बेअरिंग सर्वत्र याच सुटीवर स्वार.",
+        },
+        pair: {
+          left: { en: "The wheel's discount", hi: "पहिये की छूट", mr: "चाकाची सूट" },
+          right: { en: "far below sliding", hi: "फिसलन से बहुत नीचे", mr: "घसरणीहून खूप खाली" },
+        },
+      },
+      {
+        id: "lubricants",
+        name: { en: "Lubricants", hi: "स्नेहक", mr: "वंगण" },
+        kind: "remedy",
+        prompt: {
+          en: "Oil, grease, graphite powder — which substances float surfaces apart to cut friction down?",
+          hi: "तेल, ग्रीस, ग्रेफ़ाइट चूर्ण — कौन-से पदार्थ सतहों को अलगाकर घर्षण घटाते हैं?",
+          mr: "तेल, ग्रीस, ग्रॅफाइट चूर्ण — कोणते पदार्थ पृष्ठे विलग तरंगवून घर्षण घटवतात?",
+        },
+        statement: {
+          en: "Lubricants slip a film between surfaces — the mountain ranges never meet, so wear and heat both fall.",
+          hi: "स्नेहक सतहों के बीच परत सरका देते हैं — पर्वतमालाएँ मिलती ही नहीं, अतः घिसाई और गर्मी दोनों घटती हैं।",
+          mr: "वंगण पृष्ठांमध्ये पातळ थर सरकवते — पर्वतरांगा भेटतच नाहीत, म्हणून झीज आणि उष्णता दोन्ही घटतात.",
+        },
+        pair: {
+          left: { en: "The film between", hi: "बीच की परत", mr: "मधला थर" },
+          right: { en: "ranges kept apart", hi: "अलग रखी मालाएँ", mr: "विलग ठेवलेल्या रांगा" },
+        },
+      },
+      {
+        id: "friction-heat",
+        name: { en: "Friction's heat", hi: "घर्षण की ऊष्मा", mr: "घर्षणाची उष्णता" },
+        kind: "effect",
+        prompt: {
+          en: "Rub your palms, strike a match — which by-product of friction warms the one and lights the other?",
+          hi: "हथेलियाँ रगड़िए, माचिस जलाइए — घर्षण की कौन-सी उप-उपज एक को गर्माती और दूसरी को जलाती है?",
+          mr: "तळहात चोळा, काडी ओढा — घर्षणाचे कोणते उप-उत्पादन एकाला ऊब देते आणि दुसरीला पेटवते?",
+        },
+        statement: {
+          en: "Friction turns motion into heat — palms warm, matches light, and machines quietly waste power the same way.",
+          hi: "घर्षण गति को ऊष्मा बनाता है — हथेलियाँ गर्म, माचिसें रोशन, और मशीनें उसी राह चुपचाप बिजली गँवाती हैं।",
+          mr: "घर्षण गतीची उष्णता करते — तळहात गरम, काड्या पेटत्या, आणि यंत्रे त्याच वाटेने गुपचूप शक्ती गमावतात.",
+        },
+        pair: {
+          left: { en: "Motion turned warm", hi: "गर्मी बनी गति", mr: "ऊब झालेली गती" },
+          right: {
+            en: "palms and matches agree",
+            hi: "हथेलियाँ और माचिसें सहमत",
+            mr: "तळहात आणि काड्या सहमत",
+          },
+        },
+      },
+      {
+        id: "treads",
+        name: { en: "Treads and soles", hi: "टायर-धारियाँ और तलवे", mr: "टायर-नक्षी आणि तळवे" },
+        kind: "design",
+        prompt: {
+          en: "Tyres and shoe soles carry grooved patterns. What do the grooves buy?",
+          hi: "टायरों और जूतों के तलवों पर खाँचेदार नमूने होते हैं। खाँचे क्या ख़रीदते हैं?",
+          mr: "टायर आणि बुटांच्या तळव्यांवर खाचांची नक्षी असते. खाचा काय विकत घेतात?",
+        },
+        statement: {
+          en: "Treads grip — they add useful friction and channel rainwater away, trading a little speed for a lot of control.",
+          hi: "धारियाँ पकड़ती हैं — उपयोगी घर्षण जोड़ती और बारिश का पानी बहा देती हैं, थोड़ी रफ़्तार देकर बहुत क़ाबू ख़रीदती हुईं।",
+          mr: "नक्षी पकडते — उपयुक्त घर्षण जोडते आणि पावसाचे पाणी वाहवते, थोडा वेग देऊन खूप ताबा घेत.",
+        },
+        pair: {
+          left: { en: "The grooved grip", hi: "खाँचेदार पकड़", mr: "खाचांची पकड" },
+          right: {
+            en: "control bought with friction",
+            hi: "घर्षण से ख़रीदा क़ाबू",
+            mr: "घर्षणाने घेतलेला ताबा",
+          },
+        },
+      },
+      {
+        id: "streamlining",
+        name: { en: "Streamlining", hi: "धारारेखण", mr: "प्रवाहरेखन" },
+        kind: "design",
+        prompt: {
+          en: "Fish, birds and aeroplanes share which tapered shape that slips past fluid friction (drag)?",
+          hi: "मछलियाँ, पंछी और वायुयान कौन-सा नुकीला-ढलवाँ आकार बाँटते हैं जो तरल घर्षण (कर्षण) से बचकर निकलता है?",
+          mr: "मासे, पक्षी आणि विमाने कोणता निमुळता आकार वाटून घेतात जो द्रायू घर्षणातून (कर्षणातून) निसटतो?",
+        },
+        statement: {
+          en: "Streamlining parts the fluid gently — drag falls when the shape argues less with the medium it moves through.",
+          hi: "धारारेखण तरल को कोमलता से चीरता है — आकार जितना कम माध्यम से झगड़े, कर्षण उतना घटे।",
+          mr: "प्रवाहरेखन द्रायूला हळुवार कापते — आकार माध्यमाशी जितका कमी भांडेल, कर्षण तितके घटेल.",
+        },
+        detail: {
+          en: "Air and water both charge every moving body this toll — shape is the only discount on offer.",
+          hi: "हवा और पानी हर चलती देह से यह चुंगी लेते हैं — आकार ही इकलौती छूट है।",
+          mr: "हवा आणि पाणी प्रत्येक चालत्या देहाकडून हा कर घेतात — आकार हीच एकमेव सूट.",
+        },
+        extra: {
+          en: "Trucks add deflectors and trains grow noses for the same fuel-saving reason.",
+          hi: "ट्रक विक्षेपक लगाते हैं और रेलगाड़ियाँ नाक उगाती हैं — उसी ईंधन-बचत के लिए।",
+          mr: "ट्रक विक्षेपक लावतात आणि रेल्वेगाड्या नाके वाढवतात — त्याच इंधन-बचतीसाठी.",
+        },
+        pair: {
+          left: { en: "The tapered shape", hi: "ढलवाँ आकार", mr: "निमुळता आकार" },
+          right: { en: "drag's discount", hi: "कर्षण की छूट", mr: "कर्षणाची सूट" },
+        },
+      },
+      {
+        id: "friend-foe",
+        name: {
+          en: "Friction, friend and foe",
+          hi: "घर्षण: मित्र और शत्रु",
+          mr: "घर्षण: मित्र आणि शत्रू",
+        },
+        kind: "idea",
+        prompt: {
+          en: "It wears soles and heats machines, yet grips roads and holds every knot. What double role does friction play?",
+          hi: "वह तलवे घिसता और मशीनें तपाता है, फिर भी सड़कें थामता और हर गाँठ पकड़ता है। घर्षण कौन-सी दोहरी भूमिका निभाता है?",
+          mr: "ते तळवे झिजवते आणि यंत्रे तापवते, तरी रस्ते धरते आणि प्रत्येक गाठ पकडते. घर्षण कोणती दुहेरी भूमिका बजावते?",
+        },
+        statement: {
+          en: "Friction is friend and foe at once — it wastes power and wears parts, yet walking, braking and every knot rent its grip.",
+          hi: "घर्षण एक साथ मित्र और शत्रु है — बिजली गँवाता और पुर्ज़े घिसता है, फिर भी चलना, रुकना और हर गाँठ उसकी पकड़ किराये पर लेते हैं।",
+          mr: "घर्षण एकाच वेळी मित्र आणि शत्रू — शक्ती गमावते आणि भाग झिजवते, तरी चालणे, थांबणे आणि प्रत्येक गाठ त्याची पकड भाड्याने घेतात.",
+        },
+        pair: {
+          left: { en: "The double agent", hi: "दोहरा किरदार", mr: "दुहेरी हस्तक" },
+          right: {
+            en: "wears parts, grips roads",
+            hi: "पुर्ज़े घिसे, सड़कें थामे",
+            mr: "भाग झिजवतो, रस्ते धरतो",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Rank the three frictions from LARGEST to smallest for the same pair of surfaces. Which order is right?",
+          hi: "एक ही सतह-जोड़ी के लिए तीनों घर्षणों को बड़े से छोटे क्रम में रखिए। कौन-सा क्रम सही है?",
+          mr: "एकाच पृष्ठ-जोडीसाठी तिन्ही घर्षणे मोठ्यापासून लहानपर्यंत लावा. कोणता क्रम बरोबर?",
+        },
+        choices: [
+          {
+            en: "Static (to start moving) > sliding (while sliding) > rolling (on wheels)",
+            hi: "स्थैतिक (चलाने के लिए) > सर्पी (फिसलते समय) > लोटनिक (पहियों पर)",
+            mr: "स्थितिक (हलवण्यासाठी) > सर्पी (घसरताना) > घरंगळ (चाकांवर)",
+          },
+          {
+            en: "Rolling > sliding > static",
+            hi: "लोटनिक > सर्पी > स्थैतिक",
+            mr: "घरंगळ > सर्पी > स्थितिक",
+          },
+          {
+            en: "Sliding > rolling > static",
+            hi: "सर्पी > लोटनिक > स्थैतिक",
+            mr: "सर्पी > घरंगळ > स्थितिक",
+          },
+          {
+            en: "All three are always exactly equal",
+            hi: "तीनों सदा ठीक बराबर होते हैं",
+            mr: "तिन्ही नेहमी नेमकी समान असतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Starting is hardest: at rest the surface-ranges settle deepest into each other, so static friction tops the list. Once sliding, the peaks skip instead of settling — sliding friction is less. Rolling barely gives the ranges time to touch at all. This is why a heavy trunk YIELDS suddenly once it starts, and why the wheel is civilisation's favourite discount.",
+          hi: "शुरू करना सबसे कठिन है: ठहराव में सतह-मालाएँ एक-दूसरे में सबसे गहरा बैठ जाती हैं, अतः स्थैतिक घर्षण सूची के शीर्ष पर। फिसलन शुरू होते ही चोटियाँ बैठने की जगह फलाँगती हैं — सर्पी घर्षण कम है। लोटन में मालाओं को छूने तक की फ़ुरसत मुश्किल से मिलती है। इसीलिए भारी संदूक़ चलते ही अचानक 'मान' जाता है, और पहिया सभ्यता की प्रिय छूट है।",
+          mr: "सुरुवात सर्वांत कठीण: स्थिरावस्थेत पृष्ठ-रांगा एकमेकींत सर्वांत खोल बसतात, म्हणून स्थितिक घर्षण यादीच्या शिरोभागी. घसरण सुरू होताच शिखरे बसण्याऐवजी उड्या मारतात — सर्पी घर्षण कमी. घरंगळण्यात रांगांना स्पर्शायलाही जेमतेम वेळ मिळतो. म्हणूनच जड पेटी हलताच अचानक 'ऐकते', आणि चाक ही संस्कृतीची आवडती सूट.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Kabaddi players rub their palms with soil; carrom players dust the board with fine powder. Same human hands — why opposite treatments?",
+          hi: "कबड्डी खिलाड़ी हथेलियों पर मिट्टी मलते हैं; कैरम खिलाड़ी बोर्ड पर महीन पाउडर छिड़कते हैं। हाथ वही मानवी — बर्ताव उलटे क्यों?",
+          mr: "कबड्डीपटू तळहातांना माती चोळतात; कॅरमपटू पटावर बारीक पावडर भुरभुरतात. हात तेच मानवी — वागणूक उलटी का?",
+        },
+        choices: [
+          {
+            en: "Each game hires the friction it needs: soil dries sweat and RAISES grip for holding an opponent, powder fills the board's roughness and LOWERS friction so the striker glides — friction is a dial, not a fate",
+            hi: "हर खेल अपनी ज़रूरत का घर्षण किराये पर लेता है: मिट्टी पसीना सुखाकर पकड़ बढ़ाती है ताकि विरोधी थामा जाए, पाउडर बोर्ड का खुरदुरापन भरकर घर्षण घटाता है ताकि स्ट्राइकर सरके — घर्षण घुंडी है, नियति नहीं",
+            mr: "प्रत्येक खेळ आपल्या गरजेचे घर्षण कामावर घेतो: माती घाम सुकवून पकड वाढवते म्हणजे प्रतिस्पर्धी धरता यावा, पावडर पटाचा खरखरीतपणा भरून घर्षण घटवते म्हणजे स्ट्रायकर सरकावा — घर्षण ही फिरकी आहे, नियती नाही",
+          },
+          {
+            en: "Soil and powder are the same substance under different names",
+            hi: "मिट्टी और पाउडर अलग नामों का एक ही पदार्थ हैं",
+            mr: "माती आणि पावडर वेगळ्या नावांचा एकच पदार्थ",
+          },
+          {
+            en: "Both habits are pure superstition with no physics",
+            hi: "दोनों आदतें बिना भौतिकी का शुद्ध अंधविश्वास हैं",
+            mr: "दोन्ही सवयी भौतिकशास्त्र नसलेली निव्वळ अंधश्रद्धा",
+          },
+          {
+            en: "Carrom powder works by cooling the board",
+            hi: "कैरम-पाउडर बोर्ड ठंडा करके काम करता है",
+            mr: "कॅरम-पावडर पट थंड करून काम करते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Friction has no loyalty; it serves whoever sets the surfaces. The kabaddi raider needs grip — dry soil sharpens the palm's micro-ranges and soaks the sweat that would lubricate an escape. The carrom striker needs glide — powder beds into the board's valleys and rolls like a million tiny bearings. Two games, two settings of the same dial, and the whole chapter in one contrast: we do not endure friction, we TUNE it.",
+          hi: "घर्षण की कोई वफ़ादारी नहीं; जो सतहें सजाए, उसी की सेवा करता है। कबड्डी के धावक को पकड़ चाहिए — सूखी मिट्टी हथेली की सूक्ष्म-मालाएँ पैनी करती है और वह पसीना सोखती है जो बचकर निकलने की चिकनाई बनता। कैरम के खिलाड़ी को सरकन चाहिए — पाउडर बोर्ड की घाटियों में बिछकर लाखों नन्हे बेयरिंगों-सा लुढ़कता है। दो खेल, एक ही घुंडी की दो सेटिंगें, और पूरा अध्याय एक विरोध में: हम घर्षण झेलते नहीं, साधते हैं।",
+          mr: "घर्षणाची निष्ठा नाही; जो पृष्ठे मांडेल त्याची सेवा करते. कबड्डीच्या चढाईपटूला पकड हवी — कोरडी माती तळहाताच्या सूक्ष्म-रांगा धारदार करते आणि निसटण्याचे वंगण होणारा घाम शोषते. कॅरमपटूला सरक हवी — पावडर पटाच्या दऱ्यांत बसून लाखो इवल्या बेअरिंगांसारखी घरंगळते. दोन खेळ, एकाच फिरकीच्या दोन जुळण्या, आणि अख्खे प्रकरण एका विरोधात: आपण घर्षण सोसत नाही, जुळवतो.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Sound (vibration, carried and heard)                       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-sound",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 13 — Sound",
+      hi: "अध्याय 13 — ध्वनि",
+      mr: "प्रकरण 13 — ध्वनी",
+    },
+    name: { en: "Sound", hi: "ध्वनि", mr: "ध्वनी" },
+    summary: {
+      en: "Every sound a vibration, every vibration needing a carrier: pitch counted in hertz, loudness in swing, hearing fenced between 20 and 20,000 — and loudness itself turning injury past the fence.",
+      hi: "हर ध्वनि एक कंपन, हर कंपन को चाहिए वाहक: हर्ट्ज़ में गिनी पिच, झूले में नपी प्रबलता, 20 से 20,000 के बीच घिरी सुनवाई — और हद पार होते ही चोट बन जाती प्रबलता।",
+      mr: "प्रत्येक ध्वनी एक कंपन, प्रत्येक कंपनाला हवा वाहक: हर्ट्झमध्ये मोजलेली पट्टी, झोक्यात मोजलेला मोठेपणा, 20 ते 20,000 मध्ये कुंपणलेले ऐकणे — आणि मर्यादा ओलांडताच इजा होणारा मोठेपणा.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "vibration",
+        name: { en: "Vibration", hi: "कंपन", mr: "कंपन" },
+        kind: "origin",
+        prompt: {
+          en: "Pluck a string, tap a drum: which to-and-fro motion is the birth of every sound?",
+          hi: "तार छेड़िए, ढोल थपथपाइए: कौन-सी आगे-पीछे की गति हर ध्वनि का जन्म है?",
+          mr: "तार छेडा, ढोल थापा: कोणती पुढे-मागे गती प्रत्येक ध्वनीचा जन्म आहे?",
+        },
+        statement: {
+          en: "All sound begins in vibration — something must shake for anything to be heard.",
+          hi: "हर ध्वनि कंपन से शुरू होती है — कुछ सुनाई देने के लिए कुछ काँपना ही चाहिए।",
+          mr: "प्रत्येक ध्वनी कंपनातून सुरू होतो — काही ऐकू येण्यासाठी काहीतरी थरथरलेच पाहिजे.",
+        },
+        detail: {
+          en: "Touch a ringing bell and the sound dies with the trembling — the proof sits at your fingertip.",
+          hi: "बजती घंटी छूइए और थरथराहट के साथ आवाज़ मर जाती है — प्रमाण आपकी उँगली पर धरा है।",
+          mr: "वाजणारी घंटा स्पर्शा आणि थरथरीसोबत आवाज मरतो — पुरावा तुमच्या बोटावर आहे.",
+        },
+        extra: {
+          en: "Voice is vibration too — fingers on the throat feel the larynx hum as you speak.",
+          hi: "आवाज़ भी कंपन है — गले पर उँगलियाँ रखिए तो बोलते हुए स्वरयंत्र गुनगुनाता महसूस होता है।",
+          mr: "आवाजही कंपनच — गळ्यावर बोटे ठेवा आणि बोलताना स्वरयंत्राची गुणगुण जाणवते.",
+        },
+        pair: {
+          left: { en: "The to-and-fro birth", hi: "आगे-पीछे का जन्म", mr: "पुढे-मागेचा जन्म" },
+          right: { en: "no shake, no sound", hi: "कंपन नहीं तो ध्वनि नहीं", mr: "थरथर नाही तर ध्वनी नाही" },
+        },
+      },
+      {
+        id: "medium",
+        name: { en: "The medium", hi: "माध्यम", mr: "माध्यम" },
+        kind: "carrier",
+        prompt: {
+          en: "Sound crosses air, water and steel but dies in vacuum. What does it always need to travel?",
+          hi: "ध्वनि हवा, पानी और इस्पात पार करती है पर निर्वात में मर जाती है। सफ़र के लिए उसे सदा क्या चाहिए?",
+          mr: "ध्वनी हवा, पाणी आणि पोलाद पार करतो पण निर्वातात मरतो. प्रवासासाठी त्याला नेहमी काय लागते?",
+        },
+        statement: {
+          en: "Sound needs a medium — particle jostling particle down the line; in vacuum there is no one to pass the message.",
+          hi: "ध्वनि को माध्यम चाहिए — कण कण को क़तार में धकियाता चले; निर्वात में संदेश थमाने वाला कोई नहीं।",
+          mr: "ध्वनीला माध्यम हवे — कण कणाला रांगेत ढकलत जाणारा; निर्वातात निरोप देणारे कोणी नाही.",
+        },
+        detail: {
+          en: "The bell in the evacuated jar fades as air is pumped out — still seen ringing, no longer heard.",
+          hi: "निर्वात-जार की घंटी हवा निकलते-निकलते धीमी पड़ती है — बजती दिखती है, सुनाई नहीं देती।",
+          mr: "निर्वात-बरणीतली घंटा हवा उपसताना विरत जाते — वाजताना दिसते, ऐकू येत नाही.",
+        },
+        extra: {
+          en: "The moon's silence is a vacuum fact, not a mood — no air, no messenger.",
+          hi: "चाँद की ख़ामोशी निर्वात का तथ्य है, मिज़ाज नहीं — हवा नहीं तो संदेशवाहक नहीं।",
+          mr: "चंद्राची शांतता ही निर्वाताची वस्तुस्थिती, मूड नाही — हवा नाही तर निरोप्या नाही.",
+        },
+        pair: {
+          left: { en: "The needed carrier", hi: "ज़रूरी वाहक", mr: "आवश्यक वाहक" },
+          right: { en: "vacuum's silence", hi: "निर्वात की ख़ामोशी", mr: "निर्वाताची शांतता" },
+        },
+      },
+      {
+        id: "eardrum",
+        name: { en: "The eardrum", hi: "कान का परदा", mr: "कानाचा पडदा" },
+        kind: "organ",
+        prompt: {
+          en: "Which stretched membrane in the ear trembles with arriving sound and relays the message inward?",
+          hi: "कान की कौन-सी तनी झिल्ली आती ध्वनि से काँपती है और संदेश भीतर पहुँचाती है?",
+          mr: "कानातला कोणता ताणलेला पडदा येणाऱ्या ध्वनीने थरथरतो आणि निरोप आत पोहोचवतो?",
+        },
+        statement: {
+          en: "The eardrum vibrates with incoming sound — a drumhead played by the air, relayed inward by tiny bones.",
+          hi: "कान का परदा आती ध्वनि से काँपता है — हवा से बजता ढोल-चर्म, नन्ही हड्डियों से भीतर पहुँचाया हुआ।",
+          mr: "कानाचा पडदा येणाऱ्या ध्वनीने कंपतो — हवेने वाजवलेले ढोल-चर्म, इवल्या हाडांनी आत पोहोचवलेले.",
+        },
+        pair: {
+          left: { en: "The drum in the ear", hi: "कान के भीतर का ढोल", mr: "कानातला ढोल" },
+          right: {
+            en: "played by arriving air",
+            hi: "आती हवा से बजता",
+            mr: "येणाऱ्या हवेने वाजणारा",
+          },
+        },
+      },
+      {
+        id: "frequency",
+        name: {
+          en: "Frequency and pitch",
+          hi: "आवृत्ति और तारत्व",
+          mr: "वारंवारता आणि पट्टी",
+        },
+        kind: "property",
+        prompt: {
+          en: "Which count of vibrations per second decides how shrill or deep a sound is?",
+          hi: "प्रति सेकंड कंपनों की कौन-सी गिनती तय करती है कि ध्वनि कितनी तीखी या गहरी होगी?",
+          mr: "दर सेकंदाला कंपनांची कोणती मोजणी ठरवते की ध्वनी किती तीक्ष्ण वा खोल असेल?",
+        },
+        statement: {
+          en: "Frequency sets pitch — more oscillations a second, shriller sound: a baby's voice outruns a buffalo's.",
+          hi: "आवृत्ति तारत्व तय करती है — प्रति सेकंड जितने ज़्यादा दोलन, उतनी तीखी आवाज़: शिशु का स्वर भैंस से आगे दौड़ता है।",
+          mr: "वारंवारता पट्टी ठरवते — सेकंदाला जितकी जास्त आंदोलने, तितका तीक्ष्ण आवाज: बाळाचा स्वर म्हशीच्या पुढे धावतो.",
+        },
+        detail: {
+          en: "It is counted in hertz — one hertz, one vibration each second.",
+          hi: "उसे हर्ट्ज़ में गिनते हैं — एक हर्ट्ज़ यानी हर सेकंड एक कंपन।",
+          mr: "ती हर्ट्झमध्ये मोजतात — एक हर्ट्झ म्हणजे दर सेकंदाला एक कंपन.",
+        },
+        extra: {
+          en: "Tighten a string and it quickens and shrills; slacken it and it slows and deepens.",
+          hi: "तार कसिए तो वह तेज़ और तीखा होता है; ढीला कीजिए तो धीमा और गहरा।",
+          mr: "तार आवळा आणि ती जलद-तीक्ष्ण होते; सैल करा आणि मंद-खोल.",
+        },
+        pair: {
+          left: { en: "Vibrations per second", hi: "प्रति सेकंड कंपन", mr: "दर सेकंदाला कंपने" },
+          right: {
+            en: "shrill or deep decided",
+            hi: "तीखा या गहरा तय",
+            mr: "तीक्ष्ण वा खोल ठरलेले",
+          },
+        },
+      },
+      {
+        id: "amplitude",
+        name: {
+          en: "Amplitude and loudness",
+          hi: "आयाम और प्रबलता",
+          mr: "आयाम आणि मोठेपणा",
+        },
+        kind: "property",
+        prompt: {
+          en: "Which size of the vibration's swing decides soft whisper against deafening shout?",
+          hi: "कंपन के झूले का कौन-सा आकार तय करता है — धीमी फुसफुसाहट या बहरा करती चीख़?",
+          mr: "कंपनाच्या झोक्याचा कोणता आकार ठरवतो — हळू कुजबुज की बहिरे करणारी आरोळी?",
+        },
+        statement: {
+          en: "Amplitude sets loudness — the wider the swing, the louder the sound: strike harder, hear louder.",
+          hi: "आयाम प्रबलता तय करता है — झूला जितना चौड़ा, आवाज़ उतनी ऊँची: ज़ोर से मारिए, ज़ोर से सुनिए।",
+          mr: "आयाम मोठेपणा ठरवतो — झोका जितका रुंद, आवाज तितका मोठा: जोरात मारा, जोरात ऐका.",
+        },
+        pair: {
+          left: { en: "The swing's width", hi: "झूले की चौड़ाई", mr: "झोक्याची रुंदी" },
+          right: {
+            en: "whisper or shout decided",
+            hi: "फुसफुसाहट या चीख़ तय",
+            mr: "कुजबुज वा आरोळी ठरलेली",
+          },
+        },
+      },
+      {
+        id: "audible-range",
+        name: { en: "The audible range", hi: "श्रव्य परास", mr: "श्रवणीय पल्ला" },
+        kind: "limit",
+        prompt: {
+          en: "Between which two frequencies — 20 and 20,000 hertz — does human hearing live?",
+          hi: "किन दो आवृत्तियों — 20 और 20,000 हर्ट्ज़ — के बीच मानव श्रवण बसता है?",
+          mr: "कोणत्या दोन वारंवारता — 20 आणि 20,000 हर्ट्झ — यांच्यामध्ये मानवी श्रवण राहते?",
+        },
+        statement: {
+          en: "We hear from about 20 to 20,000 hertz — below lies infrasound, above ultrasound: dogs and bats read pages closed to us.",
+          hi: "हम लगभग 20 से 20,000 हर्ट्ज़ तक सुनते हैं — नीचे अवश्रव्य, ऊपर पराश्रव्य: कुत्ते और चमगादड़ हमारे लिए बंद पन्ने पढ़ते हैं।",
+          mr: "आपण सुमारे 20 ते 20,000 हर्ट्झ ऐकतो — खाली अवश्राव्य, वर श्राव्यातीत: कुत्रे आणि वटवाघळे आपल्याला बंद पाने वाचतात.",
+        },
+        pair: {
+          left: { en: "20 to 20,000 hertz", hi: "20 से 20,000 हर्ट्ज़", mr: "20 ते 20,000 हर्ट्झ" },
+          right: {
+            en: "hearing's fenced field",
+            hi: "सुनवाई का घिरा खेत",
+            mr: "श्रवणाचे कुंपणलेले शेत",
+          },
+        },
+      },
+      {
+        id: "noise-music",
+        name: { en: "Noise and music", hi: "शोर और संगीत", mr: "गोंगाट आणि संगीत" },
+        kind: "idea",
+        prompt: {
+          en: "Regular, pleasant vibrations against irregular, jarring ones — which pair of labels sorts every sound we hear?",
+          hi: "नियमित, सुखद कंपन बनाम अनियमित, कर्कश — कौन-सी जोड़ी हर सुनी ध्वनि को छाँटती है?",
+          mr: "नियमित, सुखद कंपने विरुद्ध अनियमित, कर्कश — कोणती जोडी प्रत्येक ऐकलेल्या ध्वनीची निवड करते?",
+        },
+        statement: {
+          en: "Music is ordered vibration, noise disordered — and unwanted sound, however sweet, turns noise by context.",
+          hi: "संगीत सुव्यवस्थित कंपन है, शोर अस्तव्यस्त — और अनचाही ध्वनि, चाहे जितनी मीठी, संदर्भ से शोर बन जाती है।",
+          mr: "संगीत म्हणजे सुव्यवस्थित कंपन, गोंगाट अस्ताव्यस्त — आणि नको असलेला ध्वनी, कितीही गोड, संदर्भाने गोंगाट होतो.",
+        },
+        pair: {
+          left: {
+            en: "Ordered against jarring",
+            hi: "सुव्यवस्थित बनाम कर्कश",
+            mr: "सुव्यवस्थित विरुद्ध कर्कश",
+          },
+          right: {
+            en: "context crowns the noise",
+            hi: "संदर्भ ही शोर का ताज",
+            mr: "संदर्भच गोंगाटाचा मुकुट",
+          },
+        },
+      },
+      {
+        id: "noise-pollution",
+        name: { en: "Noise pollution", hi: "ध्वनि प्रदूषण", mr: "ध्वनिप्रदूषण" },
+        kind: "harm",
+        prompt: {
+          en: "Horns, loudspeakers, machinery — which environmental harm damages hearing and sleep by sheer loudness?",
+          hi: "हॉर्न, लाउडस्पीकर, मशीनें — कौन-सी पर्यावरणीय हानि केवल प्रबलता से सुनवाई और नींद बिगाड़ती है?",
+          mr: "हॉर्न, ध्वनिक्षेपक, यंत्रे — कोणती पर्यावरणीय हानी नुसत्या मोठेपणाने श्रवण आणि झोप बिघडवते?",
+        },
+        statement: {
+          en: "Noise pollution is loudness as injury — persistent din that erodes hearing, sleep and attention alike.",
+          hi: "ध्वनि प्रदूषण चोट बनी प्रबलता है — लगातार का कोलाहल, जो सुनवाई, नींद और एकाग्रता तीनों घिसता है।",
+          mr: "ध्वनिप्रदूषण म्हणजे इजा झालेला मोठेपणा — सततचा गदारोळ, जो श्रवण, झोप आणि एकाग्रता तिन्ही झिजवतो.",
+        },
+        detail: {
+          en: "Long exposure above safe levels dulls hearing permanently — the loss arrives without pain and without return.",
+          hi: "सुरक्षित स्तर से ऊपर लंबा संपर्क सुनवाई सदा के लिए मंद कर देता है — नुक़सान बिना दर्द आता है, बिना वापसी।",
+          mr: "सुरक्षित पातळीवरचा दीर्घ संपर्क श्रवण कायमचे मंद करतो — हानी वेदनेविना येते, परतीविना.",
+        },
+        extra: {
+          en: "Trees and walls baffle sound — planting a row of neems is also soundproofing.",
+          hi: "पेड़ और दीवारें ध्वनि रोकती हैं — नीम की क़तार लगाना भी ध्वनिरोधन है।",
+          mr: "झाडे आणि भिंती ध्वनी अडवतात — कडुनिंबांची रांग लावणे हेही ध्वनिरोधनच.",
+        },
+        pair: {
+          left: { en: "Loudness as injury", hi: "चोट बनी प्रबलता", mr: "इजा झालेला मोठेपणा" },
+          right: {
+            en: "hearing eroded quietly",
+            hi: "चुपचाप घिसी सुनवाई",
+            mr: "गुपचूप झिजलेले श्रवण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the property to what it controls: A-frequency, B-amplitude, C-the 20–20,000 Hz range. Which trio is right?",
+          hi: "गुण को उसके नियंत्रण से मिलाइए: अ-आवृत्ति, ब-आयाम, स-20–20,000 हर्ट्ज़ की परास। कौन-सी तिकड़ी सही है?",
+          mr: "गुणधर्माला त्याच्या नियंत्रणाशी जुळवा: अ-वारंवारता, ब-आयाम, क-20–20,000 हर्ट्झचा पल्ला. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: pitch (shrill or deep) · B: loudness (soft or loud) · C: audibility (heard at all or not)",
+            hi: "अ: तारत्व (तीखा या गहरा) · ब: प्रबलता (धीमा या ऊँचा) · स: श्रव्यता (सुनाई दे या नहीं)",
+            mr: "अ: पट्टी (तीक्ष्ण वा खोल) · ब: मोठेपणा (हळू वा मोठा) · क: श्रवणीयता (ऐकू येते की नाही)",
+          },
+          {
+            en: "A: loudness · B: audibility · C: pitch",
+            hi: "अ: प्रबलता · ब: श्रव्यता · स: तारत्व",
+            mr: "अ: मोठेपणा · ब: श्रवणीयता · क: पट्टी",
+          },
+          {
+            en: "A: audibility · B: pitch · C: loudness",
+            hi: "अ: श्रव्यता · ब: तारत्व · स: प्रबलता",
+            mr: "अ: श्रवणीयता · ब: पट्टी · क: मोठेपणा",
+          },
+          {
+            en: "All three control the sound's speed",
+            hi: "तीनों ध्वनि की चाल नियंत्रित करते हैं",
+            mr: "तिन्ही ध्वनीचा वेग नियंत्रित करतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three independent dials on one sound: how OFTEN it vibrates sets pitch, how WIDE it swings sets loudness, and whether the frequency lands inside the human fence decides if it is heard at all. A dog whistle proves their independence — loud and shrill, yet outside our fence, so silent to us.",
+          hi: "एक ध्वनि पर तीन स्वतंत्र घुंडियाँ: कितनी बार काँपे — तारत्व; कितना चौड़ा झूले — प्रबलता; और आवृत्ति मानव-बाड़े के भीतर उतरे या नहीं — श्रव्यता। कुत्ते की सीटी इनकी स्वतंत्रता सिद्ध करती है — ऊँची और तीखी, फिर भी हमारे बाड़े से बाहर, अतः हमारे लिए मौन।",
+          mr: "एका ध्वनीवर तीन स्वतंत्र फिरक्या: किती वेळा कंपते — पट्टी; किती रुंद झुलते — मोठेपणा; आणि वारंवारता मानवी कुंपणात उतरते की नाही — श्रवणीयता. कुत्र्याची शिट्टी त्यांचे स्वातंत्र्य सिद्ध करते — मोठी आणि तीक्ष्ण, तरी आपल्या कुंपणाबाहेर, म्हणून आपल्यासाठी मूक.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Lightning is SEEN at once; its thunder arrives seconds later — and villagers count the gap to judge the storm's distance. Why does the counting work?",
+          hi: "बिजली तुरंत दिखती है; उसकी गरज सेकंडों बाद पहुँचती है — और गाँव वाले अंतराल गिनकर तूफ़ान की दूरी आँकते हैं। गिनती काम क्यों करती है?",
+          mr: "वीज लगेच दिसते; तिचा गडगडाट सेकंदांनी पोहोचतो — आणि गावकरी मधले अंतर मोजून वादळाचे अंतर जोखतात. मोजणी का चालते?",
+        },
+        choices: [
+          {
+            en: "Light arrives almost instantly but sound plods at ~330 m/s — so every 3 counted seconds put the strike about a kilometre away: the gap IS the distance, in disguise",
+            hi: "प्रकाश लगभग तुरंत पहुँचता है पर ध्वनि ~330 मी/से की चाल से रेंगती है — अतः गिने गए हर 3 सेकंड बिजली को क़रीब एक किलोमीटर दूर रखते हैं: अंतराल ही दूरी है, भेस बदले",
+            mr: "प्रकाश जवळजवळ लगेच पोहोचतो पण ध्वनी ~330 मी/से वेगाने रांगतो — म्हणून मोजलेले दर 3 सेकंद विजेला सुमारे एक किलोमीटर दूर ठेवतात: मधले अंतर हेच अंतर, वेष बदललेले",
+          },
+          {
+            en: "Thunder is created seconds after the lightning, far away",
+            hi: "गरज बिजली के सेकंडों बाद, दूर कहीं बनती है",
+            mr: "गडगडाट विजेनंतर सेकंदांनी, दूर कुठे बनतो",
+          },
+          {
+            en: "The counting is folklore with no physical basis",
+            hi: "गिनती बिना भौतिक आधार की लोक-रीत है",
+            mr: "मोजणी भौतिक आधार नसलेली लोकरीत",
+          },
+          {
+            en: "Sound speeds up in storms, confusing the estimate",
+            hi: "तूफ़ान में ध्वनि तेज़ हो जाती है, अनुमान बिगाड़ती हुई",
+            mr: "वादळात ध्वनी वेगावतो, अंदाज बिघडवत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Flash and boom are born together at the same spark; only their journeys differ. Light covers the distance in a microsecond's fraction — effectively instant. Sound must jostle particle to particle at about 330 metres each second, so it spends roughly 3 seconds on every kilometre. The villager's count is a speed-of-sound calculation performed on fingers — physics folk-worn but exact, and the same idea behind sonar and echo-depth measuring.",
+          hi: "चमक और गरज एक ही चिंगारी पर साथ जन्मती हैं; केवल उनकी यात्राएँ अलग हैं। प्रकाश दूरी माइक्रोसेकंड के अंश में पार करता है — व्यावहारिक रूप से तुरंत। ध्वनि को कण-दर-कण धकियाते चलना है, हर सेकंड लगभग 330 मीटर — अतः हर किलोमीटर पर क़रीब 3 सेकंड। गाँव वाले की गिनती उँगलियों पर की गई ध्वनि-चाल की गणना है — लोक-घिसी पर सटीक भौतिकी, और सोनार व प्रतिध्वनि-गहराई नापने के पीछे भी यही विचार है।",
+          mr: "लखलखाट आणि गडगडाट एकाच ठिणगीवर एकत्र जन्मतात; फक्त त्यांचे प्रवास वेगळे. प्रकाश अंतर मायक्रोसेकंदाच्या अंशात पार करतो — व्यवहारतः लगेच. ध्वनीला कणाकणाने ढकलत जायचे आहे, दर सेकंदाला सुमारे 330 मीटर — म्हणून दर किलोमीटरला जवळजवळ 3 सेकंद. गावकऱ्याची मोजणी म्हणजे बोटांवर केलेले ध्वनिवेगाचे गणित — लोक-झिजलेले पण अचूक भौतिकशास्त्र, आणि सोनार व प्रतिध्वनी-खोली मोजण्यामागेही हीच कल्पना.",
+        },
+      },
+    ],
+  },
 ];
