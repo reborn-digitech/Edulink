@@ -53,8 +53,13 @@ export default async function PracticePage({
   const t = await getT();
 
   const language = normaliseLanguage(ctx.user.prefs.locale);
+  // BOTH filters are applied AFTER the query, on purpose: each chip row must
+  // list every option that exists, which filtered rows can't tell us. Passing
+  // `subject` into the query once made the subject row list only the selected
+  // subject — one entry, which the `length > 1` guard below then hid, so
+  // choosing a subject deleted the only way back out of it.
   const [topics, enrolledGrade, resume, weekly, revision, assigned] = await Promise.all([
-    listTopics(ctx, { subject, language }),
+    listTopics(ctx, { language }),
     enrolledGradeLevel(ctx),
     continueCard(ctx, language),
     weeklyPracticeCount(ctx),
@@ -62,9 +67,6 @@ export default async function PracticePage({
     assignmentsForStudent(ctx, language),
   ]);
   const subjects = [...new Set(topics.map((t) => t.subject))];
-  // The drill bank made this list ten grades deep, so a class filter joined
-  // the subject filter. Filtered AFTER the query on purpose: the grade chips
-  // must list every class that exists, which the filtered rows can't tell us.
   const grades = [...new Set(topics.map((t) => t.classLevel))].sort((a, b) => a - b);
   // No explicit choice defaults to the child's OWN grade — a Grade 5 pupil
   // should land on Grade 5 chapters, not on Class 3 civics. "all" is the
@@ -77,7 +79,10 @@ export default async function PracticePage({
         : enrolledGrade && grades.includes(enrolledGrade)
           ? enrolledGrade
           : null;
-  const shown = gradeNum ? topics.filter((t) => t.classLevel === gradeNum) : topics;
+  const shown = topics.filter(
+    (topic) =>
+      (!subject || topic.subject === subject) && (!gradeNum || topic.classLevel === gradeNum),
+  );
 
   return (
     <div className="space-y-6">
