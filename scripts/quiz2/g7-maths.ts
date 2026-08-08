@@ -1812,10 +1812,1808 @@ function linesAndAngles(): TopicFileOut {
   );
 }
 
+/** Percentage rendering, shared by the comparing-quantities chapter. */
+const pct = (n: number): L => ({ en: `${n}%`, hi: `${n}%`, mr: `${n}%` });
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — The Triangle and its Properties (180°, medians, Pythagoras)   */
+/* ------------------------------------------------------------------------- */
+function triangleProperties(): TopicFileOut {
+  const rand = rng("maths-7-triangle-and-its-properties");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two angles of a triangle are 60° and 70°. What is the third?",
+          hi: "त्रिभुज के दो कोण 60° और 70° हैं। तीसरा कितना?",
+          mr: "त्रिकोणाचे दोन कोन 60° आणि 70° आहेत. तिसरा किती?",
+        },
+        answer: 50,
+        wrong: [30, 110, 130],
+        checkExpr: "180-60-70",
+        fmt: deg,
+        solution: {
+          en: "The three angles always total 180°: 180 − 60 − 70 = 50°. 130 stops after subtracting only one angle; 110 is just the two given ones added.",
+          hi: "तीनों कोणों का योग सदा 180°: 180 − 60 − 70 = 50°। 130 केवल एक कोण घटाकर रुक जाता है; 110 दिए दोनों का योग भर है।",
+          mr: "तिन्ही कोनांची बेरीज नेहमी 180°: 180 − 60 − 70 = 50°. 130 फक्त एक कोन वजा करून थांबतो; 110 म्हणजे दिलेल्या दोघांची नुसती बेरीज.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many medians does every triangle have?",
+          hi: "हर त्रिभुज में कितनी माध्यिकाएँ होती हैं?",
+          mr: "प्रत्येक त्रिकोणाला किती मध्यगा असतात?",
+        },
+        answer: 3,
+        wrong: [1, 2, 6],
+        solution: {
+          en: "One from each vertex to the midpoint of the opposite side: 3 in all. 6 counts the altitudes in as well — those are a different threesome.",
+          hi: "हर शीर्ष से सामने की भुजा के मध्य-बिंदु तक एक: कुल 3। 6 शीर्षलंबों को भी गिन लेता है — वे अलग तिकड़ी हैं।",
+          mr: "प्रत्येक शिरोबिंदूपासून समोरच्या बाजूच्या मध्यबिंदूपर्यंत एक: एकूण 3. 6 शिरोलंबही मोजतो — ती वेगळी त्रिकुटी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Each angle of an equilateral triangle measures?",
+          hi: "समबाहु त्रिभुज का हर कोण कितने का होता है?",
+          mr: "समभुज त्रिकोणाचा प्रत्येक कोन किती अंशांचा असतो?",
+        },
+        answer: 60,
+        wrong: [90, 45, 120],
+        checkExpr: "180/3",
+        fmt: deg,
+        solution: {
+          en: "Three equal angles share 180°: each gets 60°. 90 belongs to squares and right angles; 120 is the EXTERIOR angle at each corner.",
+          hi: "तीन बराबर कोण 180° बाँटते हैं: हर एक को 60°। 90 वर्गों और समकोणों का है; 120 हर कोने का बाह्य कोण है।",
+          mr: "तीन समान कोन 180° वाटून घेतात: प्रत्येकाला 60°. 90 चौरस आणि काटकोनांचा; 120 हा प्रत्येक कोपऱ्याचा बाह्यकोन.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The two interior opposite angles of a triangle are 40° and 60°. What is the exterior angle at the third vertex?",
+          hi: "त्रिभुज के दो अंतः विपरीत कोण 40° और 60° हैं। तीसरे शीर्ष पर बाह्य कोण कितना?",
+          mr: "त्रिकोणाचे दोन आंतरिक विरुद्ध कोन 40° आणि 60° आहेत. तिसऱ्या शिरोबिंदूवरील बाह्यकोन किती?",
+        },
+        answer: 100,
+        wrong: [80, 20, 120],
+        checkExpr: "40+60",
+        fmt: deg,
+        solution: {
+          en: "An exterior angle equals the SUM of the two interior opposite angles: 40 + 60 = 100°. 80 is the interior angle at that vertex, its linear-pair partner.",
+          hi: "बाह्य कोण दोनों अंतः विपरीत कोणों के योग के बराबर होता है: 40 + 60 = 100°। 80 उसी शीर्ष का अंतः कोण है, उसका रैखिक-युग्म साथी।",
+          mr: "बाह्यकोन दोन आंतरिक विरुद्ध कोनांच्या बेरजेइतका असतो: 40 + 60 = 100°. 80 हा त्याच शिरोबिंदूचा आंतरकोन, त्याचा रेषीय-जोडी साथी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An isosceles triangle has a vertex angle of 40° between its two equal sides. What is each base angle?",
+          hi: "समद्विबाहु त्रिभुज की दो बराबर भुजाओं के बीच शीर्ष कोण 40° है। हर आधार कोण कितना?",
+          mr: "समद्विभुज त्रिकोणाच्या दोन समान बाजूंमधील शिरोकोन 40° आहे. प्रत्येक पायाकोन किती?",
+        },
+        answer: 70,
+        wrong: [40, 140, 55],
+        checkExpr: "(180-40)/2",
+        fmt: deg,
+        solution: {
+          en: "The remaining 140° splits equally between the two base angles: 70° each. 140 forgets to split; 40 copies the vertex angle onto the base.",
+          hi: "बची 140° दोनों आधार कोणों में बराबर बँटती है: 70°-70°। 140 बाँटना भूल जाता है; 40 शीर्ष कोण को ही आधार पर उतार देता है।",
+          mr: "उरलेले 140° दोन पायाकोनांत सारखे वाटले जातात: प्रत्येकी 70°. 140 वाटायला विसरतो; 40 शिरोकोनच पायावर उतरवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "One acute angle of a right-angled triangle is 35°. What is the other acute angle?",
+          hi: "समकोण त्रिभुज का एक न्यून कोण 35° है। दूसरा न्यून कोण कितना?",
+          mr: "काटकोन त्रिकोणाचा एक लघुकोन 35° आहे. दुसरा लघुकोन किती?",
+        },
+        answer: 55,
+        wrong: [145, 65, 35],
+        checkExpr: "90-35",
+        fmt: deg,
+        solution: {
+          en: "The right angle takes 90, leaving 90 for the two acute angles: 90 − 35 = 55°. 145 subtracts from 180 and forgets the right angle already spent its share.",
+          hi: "समकोण 90 ले लेता है, दोनों न्यून कोणों के लिए 90 बचते हैं: 90 − 35 = 55°। 145 सीधे 180 में से घटाता है, भूलकर कि समकोण अपना हिस्सा ले चुका।",
+          mr: "काटकोन 90 घेतो, दोन लघुकोनांसाठी 90 उरतात: 90 − 35 = 55°. 145 थेट 180 मधून वजा करतो, काटकोनाने आपला वाटा घेतला हे विसरून.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A right triangle has legs 3 cm and 4 cm. How long is the hypotenuse, in cm?",
+          hi: "समकोण त्रिभुज की दो भुजाएँ 3 सेमी और 4 सेमी हैं। कर्ण कितने सेमी का?",
+          mr: "काटकोन त्रिकोणाच्या दोन बाजू 3 सेमी आणि 4 सेमी आहेत. कर्ण किती सेमी?",
+        },
+        answer: 5,
+        wrong: [7, 12, 25],
+        solution: {
+          en: "Pythagoras: 3² + 4² = 9 + 16 = 25, and 25 is 5² — so the hypotenuse is 5 cm. 7 adds the legs; 25 stops at the SQUARE of the answer.",
+          hi: "पाइथागोरस: 3² + 4² = 9 + 16 = 25, और 25 है 5² — अतः कर्ण 5 सेमी। 7 भुजाएँ जोड़ देता है; 25 उत्तर के वर्ग पर रुक जाता है।",
+          mr: "पायथागोरस: 3² + 4² = 9 + 16 = 25, आणि 25 म्हणजे 5² — म्हणून कर्ण 5 सेमी. 7 बाजूंची बेरीज करतो; 25 उत्तराच्या वर्गावर थांबतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two sides of a triangle are 4 cm and 9 cm. Which of these lengths is IMPOSSIBLE for the third side?",
+          hi: "त्रिभुज की दो भुजाएँ 4 सेमी और 9 सेमी हैं। तीसरी भुजा के लिए इनमें से कौन-सी लंबाई असंभव है?",
+          mr: "त्रिकोणाच्या दोन बाजू 4 सेमी आणि 9 सेमी आहेत. तिसऱ्या बाजूसाठी यांपैकी कोणती लांबी अशक्य आहे?",
+        },
+        answer: 4,
+        wrong: [6, 10, 12],
+        solution: {
+          en: "The third side must beat the gap and stay under the sum: between 9 − 4 = 5 and 9 + 4 = 13. A third side of 4 fails, for 4 + 4 = 8 cannot reach across the 9 — the arms would never meet.",
+          hi: "तीसरी भुजा को अंतर से बड़ा और योग से छोटा होना चाहिए: 9 − 4 = 5 और 9 + 4 = 13 के बीच। 4 विफल है, क्योंकि 4 + 4 = 8 नौ के आर-पार नहीं पहुँचता — बाहें कभी मिलेंगी ही नहीं।",
+          mr: "तिसऱ्या बाजूने फरकाहून मोठे आणि बेरजेहून लहान असावे: 9 − 4 = 5 आणि 9 + 4 = 13 च्या दरम्यान. 4 अपयशी, कारण 4 + 4 = 8 नवाच्या पल्याड पोहोचत नाही — हात कधी जुळणारच नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A triangle's angles are in the ratio 1 : 2 : 3. What is the largest angle?",
+          hi: "त्रिभुज के कोण 1 : 2 : 3 के अनुपात में हैं। सबसे बड़ा कोण कितना?",
+          mr: "त्रिकोणाचे कोन 1 : 2 : 3 या गुणोत्तरात आहेत. सर्वांत मोठा कोन किती?",
+        },
+        answer: 90,
+        wrong: [60, 30, 120],
+        checkExpr: "3*180/6",
+        fmt: deg,
+        solution: {
+          en: "Six ratio-parts share 180°, so one part is 30: the angles are 30, 60, 90 — the largest is 90°, and the triangle is secretly right-angled. 60 picks the middle part.",
+          hi: "छह अनुपात-भाग 180° बाँटते हैं, एक भाग 30: कोण हैं 30, 60, 90 — सबसे बड़ा 90°, और त्रिभुज चुपचाप समकोण निकलता है। 60 बीच वाला भाग उठा लेता है।",
+          mr: "सहा गुणोत्तर-भाग 180° वाटतात, एक भाग 30: कोन 30, 60, 90 — सर्वांत मोठा 90°, आणि त्रिकोण गुपचूप काटकोन ठरतो. 60 मधला भाग उचलतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In triangle PQR, angle P equals angle Q, and angle R is 80°. What is angle P?",
+          hi: "त्रिभुज PQR में कोण P और कोण Q बराबर हैं, और कोण R 80° है। कोण P कितना?",
+          mr: "त्रिकोण PQR मध्ये कोन P आणि कोन Q समान आहेत, आणि कोन R 80° आहे. कोन P किती?",
+        },
+        answer: 50,
+        wrong: [80, 100, 40],
+        checkExpr: "(180-80)/2",
+        fmt: deg,
+        solution: {
+          en: "The equal pair shares what R leaves: (180 − 80) ÷ 2 = 50°. 100 forgets to halve; 40 halves R itself instead of the remainder.",
+          hi: "बराबर जोड़ी R का छोड़ा हुआ बाँटती है: (180 − 80) ÷ 2 = 50°। 100 आधा करना भूल जाता है; 40 शेष की जगह R को ही आधा कर देता है।",
+          mr: "समान जोडी R ने उरवलेले वाटते: (180 − 80) ÷ 2 = 50°. 100 निम्मे करायला विसरतो; 40 शेषाऐवजी R लाच निम्मे करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A 13 m ladder leans against a wall with its foot 5 m from the base. How high up the wall does it reach, in metres?",
+          hi: "13 मीटर की सीढ़ी दीवार से टिकी है, पैर दीवार से 5 मीटर दूर। वह दीवार पर कितने मीटर ऊँचाई तक पहुँचती है?",
+          mr: "13 मीटरची शिडी भिंतीला टेकली आहे, पाय भिंतीपासून 5 मीटर दूर. ती भिंतीवर किती मीटर उंचीपर्यंत पोहोचते?",
+        },
+        answer: 12,
+        wrong: [8, 18, 144],
+        solution: {
+          en: "The ladder is the hypotenuse: 13² − 5² = 169 − 25 = 144, and 144 = 12² — so 12 m. 8 subtracts the plain lengths; 144 stops at the square.",
+          hi: "सीढ़ी कर्ण है: 13² − 5² = 169 − 25 = 144, और 144 = 12² — अतः 12 मीटर। 8 सीधी लंबाइयाँ घटा देता है; 144 वर्ग पर रुक जाता है।",
+          mr: "शिडी हा कर्ण: 13² − 5² = 169 − 25 = 144, आणि 144 = 12² — म्हणून 12 मीटर. 8 नुसत्या लांब्या वजा करतो; 144 वर्गावर थांबतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "An exterior angle of a triangle is 110°, and one of its interior opposite angles is 45°. What is the other interior opposite angle?",
+          hi: "त्रिभुज का एक बाह्य कोण 110° है, और उसका एक अंतः विपरीत कोण 45°। दूसरा अंतः विपरीत कोण कितना?",
+          mr: "त्रिकोणाचा एक बाह्यकोन 110° आहे, आणि त्याचा एक आंतरिक विरुद्ध कोन 45°. दुसरा आंतरिक विरुद्ध कोन किती?",
+        },
+        answer: 65,
+        wrong: [70, 155, 35],
+        checkExpr: "110-45",
+        fmt: deg,
+        solution: {
+          en: "The exterior angle is the sum of the two interior opposites: 110 − 45 = 65°. 70 subtracts 110 from 180 first, answering the wrong angle entirely.",
+          hi: "बाह्य कोण दोनों अंतः विपरीतों का योग है: 110 − 45 = 65°। 70 पहले 180 में से 110 घटाकर बिलकुल दूसरे कोण का उत्तर दे बैठता है।",
+          mr: "बाह्यकोन दोन आंतरिक विरुद्धांची बेरीज: 110 − 45 = 65°. 70 आधी 180 मधून 110 वजा करून भलत्याच कोनाचे उत्तर देतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The angles of a triangle are x, x + 20 and x + 40 degrees. What is the LARGEST angle?",
+          hi: "त्रिभुज के कोण x, x + 20 और x + 40 डिग्री हैं। सबसे बड़ा कोण कितना?",
+          mr: "त्रिकोणाचे कोन x, x + 20 आणि x + 40 अंश आहेत. सर्वांत मोठा कोन किती?",
+        },
+        answer: 80,
+        wrong: [40, 60, 100],
+        checkExpr: "(180-60)/3+40",
+        fmt: deg,
+        solution: {
+          en: "3x + 60 = 180 gives x = 40, so the angles are 40, 60, 80 — the largest is 80°. 40 answers x itself; the question asked for x + 40.",
+          hi: "3x + 60 = 180 से x = 40, अतः कोण 40, 60, 80 — सबसे बड़ा 80°। 40 स्वयं x का उत्तर है; प्रश्न x + 40 पूछ रहा था।",
+          mr: "3x + 60 = 180 मधून x = 40, म्हणून कोन 40, 60, 80 — सर्वांत मोठा 80°. 40 हे स्वतः x चे उत्तर; प्रश्न x + 40 विचारत होता.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "An isosceles triangle has perimeter 32 cm and base 12 cm. How long is each equal side, in cm?",
+          hi: "समद्विबाहु त्रिभुज का परिमाप 32 सेमी और आधार 12 सेमी है। हर बराबर भुजा कितने सेमी की?",
+          mr: "समद्विभुज त्रिकोणाची परिमिती 32 सेमी आणि पाया 12 सेमी आहे. प्रत्येक समान बाजू किती सेमी?",
+        },
+        answer: 10,
+        wrong: [20, 12, 16],
+        checkExpr: "(32-12)/2",
+        fmt: undefined,
+        solution: {
+          en: "The two equal sides share 32 − 12 = 20 cm: 10 cm each. 20 forgets to split the remainder; 16 halves the whole perimeter as if the base didn't exist.",
+          hi: "दोनों बराबर भुजाएँ 32 − 12 = 20 सेमी बाँटती हैं: 10-10 सेमी। 20 शेष बाँटना भूल जाता है; 16 पूरे परिमाप को आधा कर देता है, मानो आधार हो ही नहीं।",
+          mr: "दोन समान बाजू 32 − 12 = 20 सेमी वाटतात: प्रत्येकी 10 सेमी. 20 शेष वाटायला विसरतो; 16 पाया नसल्यासारखी सारी परिमिती निम्मी करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A student claims a triangle can have TWO right angles. After those two angles, how many degrees remain for the third?",
+          hi: "एक विद्यार्थी का दावा है कि त्रिभुज में दो समकोण हो सकते हैं। उन दो कोणों के बाद तीसरे के लिए कितने डिग्री बचते हैं?",
+          mr: "एका विद्यार्थ्याचा दावा आहे की त्रिकोणात दोन काटकोन असू शकतात. त्या दोन कोनांनंतर तिसऱ्यासाठी किती अंश उरतात?",
+        },
+        answer: 0,
+        wrong: [90, 45, 10],
+        checkExpr: "180-90-90",
+        fmt: deg,
+        solution: {
+          en: "180 − 90 − 90 = 0°: nothing remains, so the third vertex flattens into the base and the 'triangle' collapses into a line. Two right angles are impossible — that is the point of the sum rule.",
+          hi: "180 − 90 − 90 = 0°: कुछ नहीं बचता, तीसरा शीर्ष आधार में पिचक जाता है और 'त्रिभुज' रेखा बन जाता है। दो समकोण असंभव हैं — योग-नियम का यही अर्थ है।",
+          mr: "180 − 90 − 90 = 0°: काहीच उरत नाही, तिसरा शिरोबिंदू पायात सपाट होतो आणि 'त्रिकोण' रेषा बनतो. दोन काटकोन अशक्य — बेरीज-नियमाचा हाच अर्थ.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A tree snaps 5 m above the ground; the fallen top touches the ground 12 m from the base, still hinged to the trunk. How tall was the tree, in metres?",
+          hi: "एक पेड़ ज़मीन से 5 मीटर ऊपर टूटता है; गिरा हुआ सिरा तने से जुड़ा-जुड़ा आधार से 12 मीटर दूर ज़मीन छूता है। पेड़ कितने मीटर ऊँचा था?",
+          mr: "एक झाड जमिनीपासून 5 मीटर उंचीवर मोडते; पडलेले टोक खोडाशी जोडलेले राहून पायथ्यापासून 12 मीटरवर जमिनीला टेकते. झाड किती मीटर उंच होते?",
+        },
+        answer: 18,
+        wrong: [13, 17, 12],
+        checkExpr: "5+13",
+        solution: {
+          en: "The broken part is the hypotenuse of a 5-12 right triangle: 5² + 12² = 169 = 13². Total height = standing 5 + fallen 13 = 18 m. 13 forgets the stump still standing; 17 adds 5 + 12, mistaking a leg for the hypotenuse.",
+          hi: "टूटा भाग 5-12 समकोण त्रिभुज का कर्ण है: 5² + 12² = 169 = 13²। कुल ऊँचाई = खड़ा 5 + गिरा 13 = 18 मीटर। 13 खड़ा ठूँठ भूल जाता है; 17 में 5 + 12 जोड़कर भुजा को ही कर्ण मान लिया गया।",
+          mr: "मोडलेला भाग 5-12 काटकोन त्रिकोणाचा कर्ण: 5² + 12² = 169 = 13². एकूण उंची = उभा 5 + पडलेला 13 = 18 मीटर. 13 उभा बुंधा विसरतो; 17 मध्ये 5 + 12 जोडून बाजूलाच कर्ण मानले गेले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 6 — The Triangle and its Properties",
+      name: "The Triangle and its Properties",
+      slug: "maths-7-triangle-and-its-properties",
+      summary:
+        "Angles that must total 180, exterior angles equal to their far partners, sides that must reach each other — and Pythagoras measuring ladders and broken trees.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "त्रिभुज एवं उसके गुण",
+          summary:
+            "कोण जिनका योग 180 होना ही है, बाह्य कोण जो दूर के साथियों के बराबर, भुजाएँ जिन्हें एक-दूसरे तक पहुँचना ही है — और सीढ़ियाँ व टूटे पेड़ नापता पाइथागोरस।",
+        },
+        mr: {
+          name: "त्रिकोण आणि त्याचे गुणधर्म",
+          summary:
+            "बेरीज 180 व्हावीच लागणारे कोन, दूरच्या जोडीदारांइतके बाह्यकोन, एकमेकींपर्यंत पोहोचाव्याच लागणाऱ्या बाजू — आणि शिड्या व मोडलेली झाडे मोजणारा पायथागोरस.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Congruence of Triangles (SSS, SAS, ASA, RHS)                  */
+/* ------------------------------------------------------------------------- */
+function congruence(): TopicFileOut {
+  const rand = rng("maths-7-congruence");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Segment PQ is congruent to a segment of length 7 cm. How long is PQ, in cm?",
+          hi: "रेखाखंड PQ, 7 सेमी लंबे रेखाखंड के सर्वांगसम है। PQ कितने सेमी का?",
+          mr: "रेषाखंड PQ हा 7 सेमी लांबीच्या रेषाखंडाशी एकरूप आहे. PQ किती सेमी?",
+        },
+        answer: 7,
+        wrong: [14, 3.5, 70],
+        solution: {
+          en: "Congruent segments cover each other exactly, so their lengths are equal: 7 cm. 14 doubles it, as if congruence meant joining the two end to end.",
+          hi: "सर्वांगसम रेखाखंड एक-दूसरे को ठीक-ठीक ढक लेते हैं, अतः लंबाइयाँ बराबर: 7 सेमी। 14 उसे दोगुना कर देता है, मानो सर्वांगसमता सिरे से सिरा जोड़ना हो।",
+          mr: "एकरूप रेषाखंड एकमेकांना नेमके झाकतात, म्हणून लांब्या समान: 7 सेमी. 14 त्याला दुप्पट करतो, जणू एकरूपता म्हणजे टोकाला टोक जोडणे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "An angle is congruent to a 40° angle. What does it measure?",
+          hi: "एक कोण 40° के कोण के सर्वांगसम है। वह कितने का है?",
+          mr: "एक कोन 40° च्या कोनाशी एकरूप आहे. तो किती अंशांचा?",
+        },
+        answer: 40,
+        wrong: [50, 80, 140],
+        fmt: deg,
+        solution: {
+          en: "Congruent angles have equal measures: 40°. 140 supposes congruence pairs an angle with its supplement — it never does; it copies.",
+          hi: "सर्वांगसम कोणों की मापें बराबर होती हैं: 40°। 140 मानता है कि सर्वांगसमता कोण को उसके संपूरक से जोड़ती है — कभी नहीं; वह नक़ल करती है।",
+          mr: "एकरूप कोनांची मापे समान असतात: 40°. 140 समजतो की एकरूपता कोनाला त्याच्या पूरकाशी जोडते — कधीच नाही; ती नक्कल करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "ΔABC ≅ ΔPQR, and AB = 6 cm. How long is PQ, in cm?",
+          hi: "ΔABC ≅ ΔPQR, और AB = 6 सेमी। PQ कितने सेमी का?",
+          mr: "ΔABC ≅ ΔPQR, आणि AB = 6 सेमी. PQ किती सेमी?",
+        },
+        answer: 6,
+        wrong: [3, 12, 9],
+        solution: {
+          en: "The letters carry the map: A↔P, B↔Q, so AB matches PQ exactly — 6 cm. Corresponding parts of congruent triangles are equal, in the ORDER written.",
+          hi: "अक्षर नक़्शा ढोते हैं: A↔P, B↔Q, अतः AB ठीक PQ से मिलता है — 6 सेमी। सर्वांगसम त्रिभुजों के संगत भाग बराबर होते हैं, लिखे क्रम में।",
+          mr: "अक्षरे नकाशा वाहतात: A↔P, B↔Q, म्हणून AB नेमके PQ शी जुळते — 6 सेमी. एकरूप त्रिकोणांचे संगत भाग समान असतात, लिहिलेल्या क्रमाने.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "To show two triangles congruent by SSS, how many pairs of equal sides do you need?",
+          hi: "SSS से दो त्रिभुज सर्वांगसम दिखाने के लिए बराबर भुजाओं के कितने जोड़े चाहिए?",
+          mr: "SSS ने दोन त्रिकोण एकरूप दाखवण्यासाठी समान बाजूंच्या किती जोड्या हव्यात?",
+        },
+        answer: 3,
+        wrong: [2, 1, 4],
+        solution: {
+          en: "Side-Side-Side: all 3 pairs. Two matching sides still leave the third free to swing — only the third pair locks the shape.",
+          hi: "भुजा-भुजा-भुजा: तीनों 3 जोड़े। दो मिलती भुजाएँ तीसरी को झूलने की छूट देती हैं — तीसरा जोड़ा ही आकृति को जड़ता है।",
+          mr: "बाजू-बाजू-बाजू: तिन्ही 3 जोड्या. दोन जुळणाऱ्या बाजू तिसरीला झुलायला मोकळीक देतात — तिसरी जोडीच आकृती पक्की करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "ΔDEF ≅ ΔLMN, with angle D = 30° and angle E = 80°. What is angle L?",
+          hi: "ΔDEF ≅ ΔLMN, कोण D = 30° और कोण E = 80°। कोण L कितना?",
+          mr: "ΔDEF ≅ ΔLMN, कोन D = 30° आणि कोन E = 80°. कोन L किती?",
+        },
+        answer: 30,
+        wrong: [80, 70, 100],
+        fmt: deg,
+        solution: {
+          en: "Read the correspondence off the letters: D↔L, so angle L copies angle D — 30°. 80 grabs E's angle; 70 computes the third angle nobody asked about.",
+          hi: "अक्षरों से संगति पढ़िए: D↔L, अतः कोण L कोण D की नक़ल है — 30°। 80 कोण E उठा लेता है; 70 वह तीसरा कोण निकालता है जो पूछा ही नहीं गया।",
+          mr: "अक्षरांतून संगती वाचा: D↔L, म्हणून कोन L कोन D ची नक्कल — 30°. 80 कोन E उचलतो; 70 न विचारलेला तिसरा कोन काढतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The ASA test needs two angles and how many included sides?",
+          hi: "ASA जाँच में दो कोण और कितनी अंतर्गत भुजाएँ चाहिए?",
+          mr: "ASA चाचणीत दोन कोन आणि किती समाविष्ट बाजू लागतात?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        solution: {
+          en: "Angle-Side-Angle: exactly 1 side, and it must sit BETWEEN the two angles. With 0 sides the triangle can be any size — same shape, no fixed scale.",
+          hi: "कोण-भुजा-कोण: ठीक 1 भुजा, और वह दोनों कोणों के बीच बैठनी चाहिए। 0 भुजाओं से त्रिभुज किसी भी नाप का हो सकता है — आकार वही, पैमाना अनिश्चित।",
+          mr: "कोन-बाजू-कोन: नेमकी 1 बाजू, आणि ती दोन कोनांच्या मध्ये हवी. 0 बाजूंनी त्रिकोण कोणत्याही मापाचा होऊ शकतो — आकार तोच, प्रमाण अनिश्चित.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "ΔABC ≅ ΔPQR, with angle A = 50° and angle C = 70°. What is angle Q?",
+          hi: "ΔABC ≅ ΔPQR, कोण A = 50° और कोण C = 70°। कोण Q कितना?",
+          mr: "ΔABC ≅ ΔPQR, कोन A = 50° आणि कोन C = 70°. कोन Q किती?",
+        },
+        answer: 60,
+        wrong: [70, 50, 110],
+        checkExpr: "180-50-70",
+        fmt: deg,
+        solution: {
+          en: "Q corresponds to B, and B = 180 − 50 − 70 = 60°. 50 and 70 copy A and C — but the letters say Q answers to B, the angle you must COMPUTE first.",
+          hi: "Q की संगति B से है, और B = 180 − 50 − 70 = 60°। 50 और 70 A व C की नक़ल हैं — पर अक्षर कहते हैं कि Q का जवाब B है, जिसे पहले निकालना पड़ता है।",
+          mr: "Q ची संगती B शी, आणि B = 180 − 50 − 70 = 60°. 50 आणि 70 A व C ची नक्कल — पण अक्षरे सांगतात की Q चे उत्तर B, जो आधी काढावाच लागतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In the RHS test for right triangles, you match the hypotenuse and how many other sides?",
+          hi: "समकोण त्रिभुजों की RHS जाँच में कर्ण के साथ और कितनी भुजाएँ मिलानी होती हैं?",
+          mr: "काटकोन त्रिकोणांच्या RHS चाचणीत कर्णासोबत आणखी किती बाजू जुळवाव्या लागतात?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        solution: {
+          en: "Right angle, Hypotenuse, Side: 1 other side. The right angle plus Pythagoras silently fixes the third side, so nothing more is needed.",
+          hi: "समकोण, कर्ण, भुजा: 1 और भुजा। समकोण और पाइथागोरस चुपचाप तीसरी भुजा तय कर देते हैं, अतः और कुछ नहीं चाहिए।",
+          mr: "काटकोन, कर्ण, बाजू: आणखी 1 बाजू. काटकोन आणि पायथागोरस गुपचूप तिसरी बाजू ठरवतात, म्हणून आणखी काही लागत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "ΔPQR ≅ ΔXYZ, with PQ = 5, QR = 7 and PR = 9. What is XZ?",
+          hi: "ΔPQR ≅ ΔXYZ, PQ = 5, QR = 7 और PR = 9। XZ कितना?",
+          mr: "ΔPQR ≅ ΔXYZ, PQ = 5, QR = 7 आणि PR = 9. XZ किती?",
+        },
+        answer: 9,
+        wrong: [5, 7, 21],
+        solution: {
+          en: "X answers to P and Z to R, so XZ copies PR: 9. 5 and 7 belong to the other letter-pairs; 21 adds all three sides — a perimeter nobody asked for.",
+          hi: "X का जवाब P और Z का R, अतः XZ नक़ल करता है PR की: 9। 5 और 7 दूसरे अक्षर-जोड़ों के हैं; 21 तीनों भुजाएँ जोड़ देता है — बिन माँगा परिमाप।",
+          mr: "X चे उत्तर P आणि Z चे R, म्हणून XZ नक्कल करतो PR ची: 9. 5 आणि 7 इतर अक्षर-जोड्यांचे; 21 तिन्ही बाजू जोडतो — न मागितलेली परिमिती.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Diagonal AC splits quadrilateral ABCD into two triangles, and ΔABC ≅ ΔCDA. If BC = 8 cm, how long is DA, in cm?",
+          hi: "विकर्ण AC चतुर्भुज ABCD को दो त्रिभुजों में बाँटता है, और ΔABC ≅ ΔCDA। यदि BC = 8 सेमी, तो DA कितने सेमी?",
+          mr: "कर्ण AC चौकोन ABCD ला दोन त्रिकोणांत वाटतो, आणि ΔABC ≅ ΔCDA. BC = 8 सेमी असल्यास DA किती सेमी?",
+        },
+        answer: 8,
+        wrong: [4, 16, 6],
+        solution: {
+          en: "Match letter by letter: A↔C, B↔D, C↔A — so BC corresponds to DA, and DA = 8 cm. This is how one diagonal proves opposite sides of a parallelogram equal.",
+          hi: "अक्षर-दर-अक्षर मिलाइए: A↔C, B↔D, C↔A — अतः BC की संगति DA से, और DA = 8 सेमी। इसी तरह एक विकर्ण समांतर चतुर्भुज की सम्मुख भुजाएँ बराबर सिद्ध करता है।",
+          mr: "अक्षरागणिक जुळवा: A↔C, B↔D, C↔A — म्हणून BC ची संगती DA शी, आणि DA = 8 सेमी. असाच एक कर्ण समांतरभुज चौकोनाच्या समोरच्या बाजू समान सिद्ध करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "ΔABC ≅ ΔPQR, and ΔABC has perimeter 24 cm. What is the perimeter of ΔPQR, in cm?",
+          hi: "ΔABC ≅ ΔPQR, और ΔABC का परिमाप 24 सेमी है। ΔPQR का परिमाप कितने सेमी?",
+          mr: "ΔABC ≅ ΔPQR, आणि ΔABC ची परिमिती 24 सेमी आहे. ΔPQR ची परिमिती किती सेमी?",
+        },
+        answer: 24,
+        wrong: [12, 48, 30],
+        solution: {
+          en: "Every side copies its partner, so the sums copy too: 24 cm. Congruence preserves ALL measurements — sides, angles, perimeter, area alike.",
+          hi: "हर भुजा अपने साथी की नक़ल है, अतः योग भी नक़ल: 24 सेमी। सर्वांगसमता सारी मापें सुरक्षित रखती है — भुजाएँ, कोण, परिमाप, क्षेत्रफल सब।",
+          mr: "प्रत्येक बाजू आपल्या जोडीदाराची नक्कल, म्हणून बेरजाही नक्कल: 24 सेमी. एकरूपता सर्व मापे राखते — बाजू, कोन, परिमिती, क्षेत्रफळ सारे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "ΔABC ≅ ΔPQR, with angle B = 90° and angle C = 30°. What is angle P?",
+          hi: "ΔABC ≅ ΔPQR, कोण B = 90° और कोण C = 30°। कोण P कितना?",
+          mr: "ΔABC ≅ ΔPQR, कोन B = 90° आणि कोन C = 30°. कोन P किती?",
+        },
+        answer: 60,
+        wrong: [90, 30, 120],
+        checkExpr: "180-90-30",
+        fmt: deg,
+        solution: {
+          en: "P answers to A, and A = 180 − 90 − 30 = 60°. 90 and 30 copy the two given angles, but the letters point P at the one still unknown.",
+          hi: "P का जवाब A है, और A = 180 − 90 − 30 = 60°। 90 और 30 दिए कोणों की नक़ल हैं, पर अक्षर P को उसी की ओर भेजते हैं जो अभी अज्ञात है।",
+          mr: "P चे उत्तर A, आणि A = 180 − 90 − 30 = 60°. 90 आणि 30 दिलेल्या कोनांची नक्कल, पण अक्षरे P ला अजून अज्ञात असलेल्याकडे पाठवतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In ΔABC, AB = AC, and AD is the median to BC, which measures 10 cm. ΔABD ≅ ΔACD by SSS. How long is BD, in cm?",
+          hi: "ΔABC में AB = AC, और AD भुजा BC की माध्यिका है, जो 10 सेमी की है। SSS से ΔABD ≅ ΔACD। BD कितने सेमी?",
+          mr: "ΔABC मध्ये AB = AC, आणि AD ही 10 सेमी असलेल्या BC ची मध्यगा आहे. SSS ने ΔABD ≅ ΔACD. BD किती सेमी?",
+        },
+        answer: 5,
+        wrong: [10, 2.5, 20],
+        checkExpr: "10/2",
+        solution: {
+          en: "A median lands on the midpoint, so BD = 10 ÷ 2 = 5 cm — and that shared midpoint is exactly what makes the SSS pair work (AB = AC, BD = CD, AD common).",
+          hi: "माध्यिका मध्य-बिंदु पर उतरती है, अतः BD = 10 ÷ 2 = 5 सेमी — और वही साझा मध्य-बिंदु SSS जोड़ी को चलाता है (AB = AC, BD = CD, AD साझी)।",
+          mr: "मध्यगा मध्यबिंदूवर उतरते, म्हणून BD = 10 ÷ 2 = 5 सेमी — आणि तोच सामाईक मध्यबिंदू SSS जोडीला चालवतो (AB = AC, BD = CD, AD सामाईक).",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "ΔABC ≅ ΔDEF, with AB = 2x + 1 and DE = 9. Find x.",
+          hi: "ΔABC ≅ ΔDEF, AB = 2x + 1 और DE = 9। x निकालिए।",
+          mr: "ΔABC ≅ ΔDEF, AB = 2x + 1 आणि DE = 9. x काढा.",
+        },
+        answer: 4,
+        wrong: [5, 8, 3],
+        checkExpr: "(9-1)/2",
+        solution: {
+          en: "AB corresponds to DE, so 2x + 1 = 9: 2x = 8 and x = 4. 5 adds the 1 instead of removing it; 8 stops at 2x.",
+          hi: "AB की संगति DE से, अतः 2x + 1 = 9: 2x = 8 और x = 4। 5 एक हटाने की जगह जोड़ देता है; 8 2x पर रुक जाता है।",
+          mr: "AB ची संगती DE शी, म्हणून 2x + 1 = 9: 2x = 8 आणि x = 4. 5 एक काढण्याऐवजी मिळवतो; 8 2x वर थांबतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two equilateral triangles have sides 3 cm and 6 cm. Every angle in both is 60°. How many pairs of corresponding sides are EQUAL?",
+          hi: "दो समबाहु त्रिभुजों की भुजाएँ 3 सेमी और 6 सेमी हैं। दोनों के सारे कोण 60° हैं। संगत भुजाओं के कितने जोड़े बराबर हैं?",
+          mr: "दोन समभुज त्रिकोणांच्या बाजू 3 सेमी आणि 6 सेमी आहेत. दोन्हींतील सर्व कोन 60° आहेत. संगत बाजूंच्या किती जोड्या समान आहेत?",
+        },
+        answer: 0,
+        wrong: [3, 1, 2],
+        solution: {
+          en: "Every side-pair is 3 against 6: 0 equal pairs. All six angles match, yet the triangles are NOT congruent — AAA fixes only the shape, never the size. That is exactly why AAA is missing from the list of congruence tests.",
+          hi: "हर भुजा-जोड़ी 3 बनाम 6 है: 0 बराबर जोड़े। छहों कोण मिलते हैं, फिर भी त्रिभुज सर्वांगसम नहीं — AAA केवल आकार तय करता है, नाप कभी नहीं। इसीलिए AAA सर्वांगसमता-जाँचों की सूची से ग़ायब है।",
+          mr: "प्रत्येक बाजू-जोडी 3 विरुद्ध 6: 0 समान जोड्या. सहाही कोन जुळतात, तरी त्रिकोण एकरूप नाहीत — AAA फक्त आकार ठरवते, माप कधीच नाही. म्हणूनच AAA एकरूपता-चाचण्यांच्या यादीत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "In isosceles ΔABC (AB = AC), the median AD meets BC at D, and ΔABD ≅ ΔACD. Since angles ADB and ADC also sit on the straight line BC, what is angle ADB?",
+          hi: "समद्विबाहु ΔABC (AB = AC) में माध्यिका AD, BC से D पर मिलती है, और ΔABD ≅ ΔACD। चूँकि कोण ADB और ADC सीधी रेखा BC पर भी बैठे हैं, कोण ADB कितना?",
+          mr: "समद्विभुज ΔABC (AB = AC) मध्ये मध्यगा AD, BC ला D वर मिळते, आणि ΔABD ≅ ΔACD. कोन ADB आणि ADC सरळ रेषा BC वरही असल्याने, कोन ADB किती?",
+        },
+        answer: 90,
+        wrong: [45, 60, 180],
+        checkExpr: "180/2",
+        fmt: deg,
+        solution: {
+          en: "Congruence makes the two angles equal; the straight line makes them total 180°. Equal and totalling 180 forces each to 90° — the median of an isosceles triangle stands perpendicular to the base, proved with nothing but matching.",
+          hi: "सर्वांगसमता दोनों कोण बराबर करती है; सीधी रेखा उनका योग 180° करती है। बराबर और योग 180 — हर एक 90° होने को विवश। समद्विबाहु त्रिभुज की माध्यिका आधार पर लंब खड़ी होती है, केवल मिलान से सिद्ध।",
+          mr: "एकरूपता दोन्ही कोन समान करते; सरळ रेषा त्यांची बेरीज 180° करते. समान आणि बेरीज 180 — प्रत्येक 90° होणे भाग. समद्विभुज त्रिकोणाची मध्यगा पायावर लंब उभी राहते, केवळ जुळणीने सिद्ध.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 7 — Congruence of Triangles",
+      name: "Congruence of Triangles",
+      slug: "maths-7-congruence",
+      summary:
+        "Shapes that cover each other exactly: letters carrying the correspondence, four honest tests — SSS, SAS, ASA, RHS — and the AAA impostor that fixes shape but never size.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "त्रिभुजों की सर्वांगसमता",
+          summary:
+            "आकृतियाँ जो एक-दूसरे को ठीक-ठीक ढक लें: संगति ढोते अक्षर, चार खरी जाँचें — SSS, SAS, ASA, RHS — और AAA का बहरूपिया जो आकार तय करता है, नाप कभी नहीं।",
+        },
+        mr: {
+          name: "त्रिकोणांची एकरूपता",
+          summary:
+            "एकमेकांना नेमक्या झाकणाऱ्या आकृती: संगती वाहणारी अक्षरे, चार खऱ्या चाचण्या — SSS, SAS, ASA, RHS — आणि आकार ठरवणारा पण माप कधीच न ठरवणारा AAA चा तोतया.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Comparing Quantities (percent, profit-loss, simple interest)  */
+/* ------------------------------------------------------------------------- */
+function comparingQuantities(): TopicFileOut {
+  const rand = rng("maths-7-comparing-quantities");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Write 3/4 as a percentage.",
+          hi: "3/4 को प्रतिशत में लिखिए।",
+          mr: "3/4 टक्केवारीत लिहा.",
+        },
+        answer: 75,
+        wrong: [34, 43, 80],
+        checkExpr: "3*100/4",
+        fmt: pct,
+        solution: {
+          en: "Per cent means per hundred: 3/4 × 100 = 75%. 34 just glues the digits together; a fraction is a division, not a costume.",
+          hi: "प्रतिशत यानी प्रति सौ: 3/4 × 100 = 75%। 34 बस अंक चिपका देता है; भिन्न एक भाग है, वेशभूषा नहीं।",
+          mr: "टक्के म्हणजे दर शंभरामागे: 3/4 × 100 = 75%. 34 नुसते आकडे चिकटवतो; अपूर्णांक हा भागाकार आहे, वेशभूषा नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 50% of 90?",
+          hi: "90 का 50% कितना है?",
+          mr: "90 चे 50% किती?",
+        },
+        answer: 45,
+        wrong: [40, 55, 180],
+        checkExpr: "90/2",
+        solution: {
+          en: "50% is one half: 90 ÷ 2 = 45. 180 doubles instead of halving — 50% of a thing can never exceed the thing.",
+          hi: "50% यानी आधा: 90 ÷ 2 = 45। 180 आधे की जगह दुगुना कर देता है — किसी चीज़ का 50% उससे बड़ा नहीं हो सकता।",
+          mr: "50% म्हणजे अर्धे: 90 ÷ 2 = 45. 180 अर्ध्याऐवजी दुप्पट करतो — कशाचेही 50% त्याहून मोठे असू शकत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The ratio 8 : 12 in simplest form is 2 : ▢. What fills the box?",
+          hi: "अनुपात 8 : 12 का सरलतम रूप 2 : ▢ है। रिक्त स्थान में क्या आएगा?",
+          mr: "गुणोत्तर 8 : 12 चे सोपे रूप 2 : ▢ आहे. रिकाम्या जागी काय येईल?",
+        },
+        answer: 3,
+        wrong: [4, 6, 12],
+        checkExpr: "12/4",
+        solution: {
+          en: "Divide both parts by their HCF 4: 8 : 12 becomes 2 : 3. 6 divides only one side — a ratio must shrink both arms together.",
+          hi: "दोनों पक्षों को म.स. 4 से भाग दीजिए: 8 : 12 बनता है 2 : 3। 6 केवल एक पक्ष को भागता है — अनुपात की दोनों बाहें साथ सिकुड़नी चाहिए।",
+          mr: "दोन्ही भागांना म.सा.वि. 4 ने भागा: 8 : 12 होते 2 : 3. 6 फक्त एका बाजूला भागतो — गुणोत्तराचे दोन्ही हात एकत्र आखडले पाहिजेत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In a class of 40 children, 25% wear glasses. How many children is that?",
+          hi: "40 बच्चों की कक्षा में 25% चश्मा पहनते हैं। वे कितने बच्चे हुए?",
+          mr: "40 मुलांच्या वर्गात 25% चष्मा घालतात. ती किती मुले?",
+        },
+        answer: 10,
+        wrong: [4, 25, 30],
+        checkExpr: "40/4",
+        solution: {
+          en: "25% is a quarter: 40 ÷ 4 = 10. 25 repeats the percentage as if it were a count; 30 answers those WITHOUT glasses.",
+          hi: "25% यानी चौथाई: 40 ÷ 4 = 10। 25 प्रतिशत को ही गिनती मान बैठता है; 30 बिना चश्मे वालों का उत्तर है।",
+          mr: "25% म्हणजे पाव: 40 ÷ 4 = 10. 25 टक्केवारीलाच मोजणी मानतो; 30 चष्मा नसलेल्यांचे उत्तर.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Write 0.35 as a percentage.",
+          hi: "0.35 को प्रतिशत में लिखिए।",
+          mr: "0.35 टक्केवारीत लिहा.",
+        },
+        answer: 35,
+        wrong: [3.5, 350, 65],
+        checkExpr: "7*100/20",
+        fmt: pct,
+        solution: {
+          en: "0.35 is 35/100, so 35%. 3.5 moves the point only one place; 65 answers the complement — what 0.35 leaves BEHIND.",
+          hi: "0.35 यानी 35/100, अतः 35%। 3.5 बिंदु को एक ही स्थान सरकाता है; 65 पूरक का उत्तर है — जो 0.35 पीछे छोड़ता है।",
+          mr: "0.35 म्हणजे 35/100, म्हणून 35%. 3.5 बिंदू फक्त एक घर सरकवतो; 65 पूरकाचे उत्तर — 0.35 जे मागे ठेवते ते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A team won 6 of its 8 matches. What percentage did it win?",
+          hi: "एक टीम ने 8 में से 6 मैच जीते। उसने कितने प्रतिशत जीते?",
+          mr: "एका संघाने 8 पैकी 6 सामने जिंकले. त्याने किती टक्के जिंकले?",
+        },
+        answer: 75,
+        wrong: [68, 80, 60],
+        checkExpr: "6*100/8",
+        fmt: pct,
+        solution: {
+          en: "6/8 × 100 = 75%. 68 glues the two counts into digits; 60 divides by ten matches that were never played.",
+          hi: "6/8 × 100 = 75%। 68 दोनों गिनतियों को अंकों में चिपका देता है; 60 उन दस मैचों से भाग देता है जो खेले ही नहीं गए।",
+          mr: "6/8 × 100 = 75%. 68 दोन्ही मोजण्या आकड्यांत चिकटवतो; 60 कधी न खेळलेल्या दहा सामन्यांनी भागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A trader buys a lamp for ₹250 and sells it for ₹300. What is the profit per cent?",
+          hi: "व्यापारी ₹250 में दीपक ख़रीदकर ₹300 में बेचता है। लाभ प्रतिशत कितना?",
+          mr: "व्यापारी ₹250 ला दिवा घेऊन ₹300 ला विकतो. नफा शेकडा किती?",
+        },
+        answer: 20,
+        wrong: [50, 25, 16],
+        checkExpr: "(300-250)*100/250",
+        fmt: pct,
+        solution: {
+          en: "Profit ₹50 on a cost of ₹250: 50/250 × 100 = 20%. 16 divides by the selling price — profit per cent always stands on the COST.",
+          hi: "₹250 की लागत पर ₹50 लाभ: 50/250 × 100 = 20%। 16 विक्रय-मूल्य से भाग देता है — लाभ प्रतिशत सदा लागत पर खड़ा होता है।",
+          mr: "₹250 च्या खरेदीवर ₹50 नफा: 50/250 × 100 = 20%. 16 विक्री-किमतीने भागतो — नफा शेकडा नेहमी खरेदीवर उभा असतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the simple interest on ₹2000 at 5% per year for 3 years?",
+          hi: "₹2000 पर 5% वार्षिक दर से 3 वर्ष का साधारण ब्याज कितना?",
+          mr: "₹2000 वर 5% वार्षिक दराने 3 वर्षांचे सरळ व्याज किती?",
+        },
+        answer: 300,
+        wrong: [100, 30, 2300],
+        checkExpr: "2000*5*3/100",
+        fmt: rupees,
+        solution: {
+          en: "I = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300. 100 counts one year only; 2300 answers the AMOUNT, principal included.",
+          hi: "ब्याज = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300। 100 केवल एक वर्ष गिनता है; 2300 मिश्रधन का उत्तर है, मूलधन समेत।",
+          mr: "व्याज = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300. 100 फक्त एक वर्ष मोजतो; 2300 रासाचे उत्तर, मुद्दलासकट.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "₹120 is divided between two children in the ratio 2 : 3. What is the LARGER share?",
+          hi: "₹120 दो बच्चों में 2 : 3 के अनुपात में बाँटे जाते हैं। बड़ा हिस्सा कितना?",
+          mr: "₹120 दोन मुलांत 2 : 3 या गुणोत्तरात वाटले जातात. मोठा वाटा किती?",
+        },
+        answer: 72,
+        wrong: [48, 60, 80],
+        checkExpr: "120*3/5",
+        fmt: rupees,
+        solution: {
+          en: "Five parts of ₹24 each: the larger share takes 3 parts, ₹72. 48 is the smaller share; 60 splits equally and ignores the ratio.",
+          hi: "₹24 के पाँच भाग: बड़ा हिस्सा 3 भाग लेता है, ₹72। 48 छोटा हिस्सा है; 60 बराबर बाँटकर अनुपात को अनदेखा करता है।",
+          mr: "प्रत्येकी ₹24 चे पाच भाग: मोठा वाटा 3 भाग घेतो, ₹72. 48 हा लहान वाटा; 60 सारखे वाटून गुणोत्तराकडे दुर्लक्ष करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A price rises from ₹40 to ₹50. What is the percentage increase?",
+          hi: "क़ीमत ₹40 से ₹50 हो जाती है। प्रतिशत वृद्धि कितनी?",
+          mr: "किंमत ₹40 वरून ₹50 होते. शेकडा वाढ किती?",
+        },
+        answer: 25,
+        wrong: [20, 10, 80],
+        checkExpr: "(50-40)*100/40",
+        fmt: pct,
+        solution: {
+          en: "The rise of 10 stands on the ORIGINAL 40: 10/40 × 100 = 25%. 20 measures against the new 50 — the base is always where you started.",
+          hi: "10 की वृद्धि मूल 40 पर खड़ी है: 10/40 × 100 = 25%। 20 नए 50 से नापता है — आधार सदा वही जहाँ से चले थे।",
+          mr: "10 ची वाढ मूळ 40 वर उभी: 10/40 × 100 = 25%. 20 नव्या 50 ने मोजतो — पाया नेहमी जिथून निघालो तिथेच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "An item bought for ₹800 is sold at a 15% loss. What is the selling price?",
+          hi: "₹800 में ख़रीदी वस्तु 15% हानि पर बेची जाती है। विक्रय-मूल्य कितना?",
+          mr: "₹800 ला घेतलेली वस्तू 15% तोट्याने विकली जाते. विक्री-किंमत किती?",
+        },
+        answer: 680,
+        wrong: [120, 920, 685],
+        checkExpr: "800-800*15/100",
+        fmt: rupees,
+        solution: {
+          en: "The loss is 15% of 800 = ₹120, so the price falls to 800 − 120 = ₹680. 120 stops at the loss itself; 920 ADDS it, turning loss into profit.",
+          hi: "हानि = 800 का 15% = ₹120, अतः दाम गिरकर 800 − 120 = ₹680। 120 हानि पर ही रुक जाता है; 920 उसे जोड़कर हानि को लाभ बना देता है।",
+          mr: "तोटा = 800 चे 15% = ₹120, म्हणून किंमत उतरून 800 − 120 = ₹680. 120 तोट्यावरच थांबतो; 920 तो मिळवून तोट्याचा नफा करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A deposit earns ₹250 of simple interest in 2 years at 5% per year. What was the principal?",
+          hi: "एक जमा राशि 5% वार्षिक दर से 2 वर्षों में ₹250 साधारण ब्याज कमाती है। मूलधन कितना था?",
+          mr: "एक ठेव 5% वार्षिक दराने 2 वर्षांत ₹250 सरळ व्याज मिळवते. मुद्दल किती होते?",
+        },
+        answer: 2500,
+        wrong: [1250, 5000, 250],
+        checkExpr: "250*100/(5*2)",
+        fmt: rupees,
+        solution: {
+          en: "Run the formula backwards: P = 100 × I ÷ (R × T) = 25000 ÷ 10 = ₹2500. 1250 forgets the second year; 5000 forgets half the rate.",
+          hi: "सूत्र उल्टा चलाइए: P = 100 × ब्याज ÷ (दर × समय) = 25000 ÷ 10 = ₹2500। 1250 दूसरा वर्ष भूलता है; 5000 आधी दर।",
+          mr: "सूत्र उलटे चालवा: P = 100 × व्याज ÷ (दर × काळ) = 25000 ÷ 10 = ₹2500. 1250 दुसरे वर्ष विसरतो; 5000 अर्धा दर.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In a school, 40% of the students walk to school; the other 540 come some other way. How many students are there in all?",
+          hi: "एक विद्यालय में 40% विद्यार्थी पैदल आते हैं; बाक़ी 540 किसी और तरह। कुल विद्यार्थी कितने?",
+          mr: "एका शाळेत 40% विद्यार्थी चालत येतात; उरलेले 540 अन्य मार्गाने. एकूण विद्यार्थी किती?",
+        },
+        answer: 900,
+        wrong: [1350, 216, 810],
+        checkExpr: "540*100/60",
+        solution: {
+          en: "Careful: 540 is the OTHER 60%. One per cent is 540 ÷ 60 = 9, so the whole is 900. 1350 pins 540 to the 40%; 216 takes 40% of 540 itself.",
+          hi: "सावधान: 540 बाक़ी 60% है। एक प्रतिशत = 540 ÷ 60 = 9, अतः कुल 900। 1350 540 को 40% मान बैठता है; 216 540 का ही 40% निकाल लेता है।",
+          mr: "सावध: 540 म्हणजे उरलेले 60%. एक टक्का = 540 ÷ 60 = 9, म्हणून एकूण 900. 1350 540 ला 40% मानतो; 216 540 चेच 40% काढतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A chair sells for ₹276 at a profit of 15%. What did it COST the seller?",
+          hi: "एक कुर्सी 15% लाभ पर ₹276 में बिकती है। विक्रेता को वह कितने की पड़ी थी?",
+          mr: "एक खुर्ची 15% नफ्याने ₹276 ला विकली जाते. विक्रेत्याला ती किती किमतीत पडली होती?",
+        },
+        answer: 240,
+        wrong: [235, 317, 261],
+        checkExpr: "276*100/115",
+        fmt: rupees,
+        solution: {
+          en: "₹276 is 115% of the cost, so the cost is 276 × 100 ÷ 115 = ₹240. 235 takes 15% OFF the selling price — but the 15% was measured on the cost, not the sale.",
+          hi: "₹276 लागत का 115% है, अतः लागत = 276 × 100 ÷ 115 = ₹240। 235 विक्रय-मूल्य में से 15% घटा देता है — पर वह 15% लागत पर नपा था, बिक्री पर नहीं।",
+          mr: "₹276 हे खरेदीचे 115% आहे, म्हणून खरेदी = 276 × 100 ÷ 115 = ₹240. 235 विक्री-किमतीतून 15% काढतो — पण ते 15% खरेदीवर मोजले होते, विक्रीवर नाही.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A price rises by 10% and then falls by 10%. What is the final price, as a percentage of the original?",
+          hi: "एक क़ीमत 10% बढ़ती है और फिर 10% गिरती है। अंतिम क़ीमत, मूल की कितनी प्रतिशत?",
+          mr: "एक किंमत 10% वाढते आणि मग 10% घसरते. अंतिम किंमत, मूळ किमतीच्या किती टक्के?",
+        },
+        answer: 99,
+        wrong: [100, 98, 101],
+        checkExpr: "110*90/100",
+        fmt: pct,
+        solution: {
+          en: "Up 10% lands at 110; the fall of 10% is now measured on the BIGGER number, taking 11, not 10: 110 − 11 = 99%. The two moves feel like twins but stand on different bases — the round trip always loses.",
+          hi: "10% चढ़कर 110 पर; अब 10% की गिरावट बड़ी संख्या पर नपती है — 11 जाती है, 10 नहीं: 110 − 11 = 99%। दोनों चालें जुड़वाँ लगती हैं पर आधार अलग-अलग हैं — आना-जाना सदा घाटे में रहता है।",
+          mr: "10% चढून 110 वर; आता 10% ची घसरण मोठ्या संख्येवर मोजली जाते — 11 जाते, 10 नाही: 110 − 11 = 99%. दोन्ही चाली जुळ्या वाटतात पण पाये वेगळे — फेरी नेहमी तोट्यात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "At what rate per cent per year does ₹4000 earn ₹600 of simple interest in 3 years?",
+          hi: "किस वार्षिक प्रतिशत दर से ₹4000 पर 3 वर्षों में ₹600 साधारण ब्याज मिलता है?",
+          mr: "कोणत्या वार्षिक शेकडा दराने ₹4000 वर 3 वर्षांत ₹600 सरळ व्याज मिळते?",
+        },
+        answer: 5,
+        wrong: [15, 2, 7.5],
+        checkExpr: "600*100/(4000*3)",
+        fmt: pct,
+        solution: {
+          en: "R = 100 × I ÷ (P × T) = 60000 ÷ 12000 = 5%. 15 forgets to divide by the three years; 7.5 divides by two of them.",
+          hi: "दर = 100 × ब्याज ÷ (मूलधन × समय) = 60000 ÷ 12000 = 5%। 15 तीन वर्षों से भाग देना भूल जाता है; 7.5 केवल दो से देता है।",
+          mr: "दर = 100 × व्याज ÷ (मुद्दल × काळ) = 60000 ÷ 12000 = 5%. 15 तीन वर्षांनी भागायला विसरतो; 7.5 फक्त दोनने भागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 8 — Comparing Quantities",
+      name: "Comparing Quantities",
+      slug: "maths-7-comparing-quantities",
+      summary:
+        "Percent as per-hundred, profit standing on the cost, interest walking P×R×T — and the up-ten-down-ten round trip that quietly loses one per cent.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "राशियों की तुलना",
+          summary:
+            "प्रति-सौ के रूप में प्रतिशत, लागत पर खड़ा लाभ, P×R×T चलता ब्याज — और दस-ऊपर-दस-नीचे की वह यात्रा जो चुपचाप एक प्रतिशत गँवा देती है।",
+        },
+        mr: {
+          name: "राशींची तुलना",
+          summary:
+            "दर-शंभरामागे टक्के, खरेदीवर उभा नफा, P×R×T चालणारे व्याज — आणि दहा-वर-दहा-खाली ची फेरी जी गुपचूप एक टक्का गमावते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Rational Numbers (fractions get signs)                        */
+/* ------------------------------------------------------------------------- */
+function rationalNumbers(): TopicFileOut {
+  const rand = rng("maths-7-rational-numbers");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Fill the box: −3/4 = ▢/8. What is the numerator?",
+          hi: "रिक्त भरिए: −3/4 = ▢/8। अंश क्या होगा?",
+          mr: "रिकामे भरा: −3/4 = ▢/8. अंश काय येईल?",
+        },
+        answer: -6,
+        wrong: [6, -8, 3],
+        checkExpr: "(0-3)*8/4",
+        solution: {
+          en: "The denominator doubled, so the numerator doubles too, sign and all: −6. 6 loses the minus on the way; −8 doubles the wrong partner.",
+          hi: "हर दुगुना हुआ, अतः अंश भी दुगुना — चिह्न समेत: −6। 6 रास्ते में ऋण खो देता है; −8 ग़लत साथी को दुगुना करता है।",
+          mr: "छेद दुप्पट झाला, म्हणून अंशही दुप्पट — चिन्हासकट: −6. 6 वाटेत ऋण हरवतो; −8 चुकीच्या जोडीदाराला दुप्पट करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Reduce −12/16 to lowest terms. What does the numerator become?",
+          hi: "−12/16 को सरलतम रूप में लाइए। अंश क्या बनता है?",
+          mr: "−12/16 सोप्या रूपात आणा. अंश काय होतो?",
+        },
+        answer: -3,
+        wrong: [3, -4, -6],
+        checkExpr: "(0-12)/4",
+        solution: {
+          en: "Divide top and bottom by 4: −12/16 = −3/4, numerator −3. The minus stays with the number through every simplification; −6 divides by 2 and stops halfway.",
+          hi: "ऊपर-नीचे 4 से भाग दीजिए: −12/16 = −3/4, अंश −3। ऋण हर सरलीकरण में संख्या के साथ रहता है; −6 दो से भागकर आधे रास्ते रुक जाता है।",
+          mr: "वर-खाली 4 ने भागा: −12/16 = −3/4, अंश −3. ऋण प्रत्येक सोपेपणात संख्येसोबत राहते; −6 दोनने भागून अर्ध्या वाटेत थांबतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "(−2/5) + (2/5) = ?",
+          hi: "(−2/5) + (2/5) कितना है?",
+          mr: "(−2/5) + (2/5) किती?",
+        },
+        answer: 0,
+        wrong: [1, -0.8, 0.8],
+        checkExpr: "(0-2)/5+2/5",
+        solution: {
+          en: "A number and its opposite cancel to 0 — rational numbers included. −0.8 adds the numerators as if both were negative; 0.8 as if both were positive.",
+          hi: "संख्या और उसका विलोम कटकर 0 — परिमेय संख्याएँ भी। −0.8 दोनों को ऋण मानकर अंश जोड़ता है; 0.8 दोनों को धन मानकर।",
+          mr: "संख्या आणि तिचा विरुद्धांक रद्द होऊन 0 — परिमेय संख्याही. −0.8 दोन्ही ऋण मानून अंश जोडतो; 0.8 दोन्ही धन मानून.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Which is GREATER: −1/2 or −3/4? Answer it as a decimal.",
+          hi: "बड़ा कौन: −1/2 या −3/4? उत्तर दशमलव में दीजिए।",
+          mr: "मोठा कोण: −1/2 की −3/4? उत्तर दशांशात द्या.",
+        },
+        answer: -0.5,
+        wrong: [-0.75, 0.5, 0.75],
+        checkExpr: "(0-1)/2",
+        solution: {
+          en: "Below zero, closer to zero wins: −1/2 = −0.5 sits right of −0.75 on the number line. −0.75 looks bigger because 3/4 beats 1/2 — but the minus flips every comparison.",
+          hi: "शून्य के नीचे, शून्य के पास वाला जीतता है: −1/2 = −0.5 संख्या-रेखा पर −0.75 के दाएँ बैठता है। −0.75 बड़ा दिखता है क्योंकि 3/4, 1/2 से बड़ा है — पर ऋण हर तुलना पलट देता है।",
+          mr: "शून्याखाली, शून्याजवळचा जिंकतो: −1/2 = −0.5 संख्यारेषेवर −0.75 च्या उजवीकडे बसतो. −0.75 मोठा दिसतो कारण 3/4 हा 1/2 हून मोठा — पण ऋण प्रत्येक तुलना उलटवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "1/2 + (−3/2) = ?",
+          hi: "1/2 + (−3/2) कितना है?",
+          mr: "1/2 + (−3/2) किती?",
+        },
+        answer: -1,
+        wrong: [1, -2, 2],
+        checkExpr: "1/2-3/2",
+        solution: {
+          en: "Same denominators, so add the tops: 1 + (−3) = −2, giving −2/2 = −1. 1 forgets the minus; −2 stops at the numerator and skips the final division.",
+          hi: "हर समान, अतः अंश जोड़िए: 1 + (−3) = −2, यानी −2/2 = −1। 1 ऋण भूल जाता है; −2 अंश पर रुककर अंतिम भाग छोड़ देता है।",
+          mr: "छेद समान, म्हणून अंश जोडा: 1 + (−3) = −2, म्हणजे −2/2 = −1. 1 ऋण विसरतो; −2 अंशावर थांबून शेवटचा भाग गाळतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "(−5/6) × (−6/5) = ?",
+          hi: "(−5/6) × (−6/5) कितना है?",
+          mr: "(−5/6) × (−6/5) किती?",
+        },
+        answer: 1,
+        wrong: [-1, 0, 2],
+        checkExpr: "5*6/(6*5)",
+        solution: {
+          en: "Each number is the other's reciprocal, and the two minuses cancel: the product is 1. −1 miscounts the signs; 0 confuses multiplying with the sum of a number and its opposite.",
+          hi: "दोनों एक-दूसरे के व्युत्क्रम हैं, और दोनों ऋण कट जाते हैं: गुणनफल 1। −1 चिह्न ग़लत गिनता है; 0 गुणा को विलोम-योग से मिला बैठता है।",
+          mr: "दोघे एकमेकांचे व्यस्त, आणि दोन ऋणे रद्द: गुणाकार 1. −1 चिन्हे चुकवतो; 0 गुणाकाराला विरुद्धांक-बेरजेशी गल्लत करतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "3/4 ÷ (−1/2) = ? (Answer as a decimal.)",
+          hi: "3/4 ÷ (−1/2) कितना है? (उत्तर दशमलव में।)",
+          mr: "3/4 ÷ (−1/2) किती? (उत्तर दशांशात.)",
+        },
+        answer: -1.5,
+        wrong: [1.5, -0.375, 0.375],
+        checkExpr: "3*2/(0-4)",
+        solution: {
+          en: "Dividing means multiplying by the reciprocal: 3/4 × (−2/1) = −6/4 = −1.5. −0.375 multiplies by −1/2 without flipping it; 1.5 flips but drops the sign.",
+          hi: "भाग यानी व्युत्क्रम से गुणा: 3/4 × (−2/1) = −6/4 = −1.5। −0.375 बिना पलटे −1/2 से गुणा करता है; 1.5 पलटता है पर चिह्न गिरा देता है।",
+          mr: "भाग म्हणजे व्यस्ताने गुणाकार: 3/4 × (−2/1) = −6/4 = −1.5. −0.375 न उलटवता −1/2 ने गुणतो; 1.5 उलटवतो पण चिन्ह गाळतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Give a rational number that lies between 1/4 and 1/2, as a decimal.",
+          hi: "1/4 और 1/2 के बीच की कोई परिमेय संख्या दशमलव में बताइए।",
+          mr: "1/4 आणि 1/2 च्या दरम्यानची एखादी परिमेय संख्या दशांशात सांगा.",
+        },
+        answer: 0.375,
+        wrong: [0.2, 0.6, 0.75],
+        checkExpr: "(0.25+0.5)/2",
+        solution: {
+          en: "The midpoint always works: (1/4 + 1/2) ÷ 2 = 3/8 = 0.375, snug between 0.25 and 0.5. The other three all sit OUTSIDE the fence.",
+          hi: "मध्य-बिंदु सदा चलता है: (1/4 + 1/2) ÷ 2 = 3/8 = 0.375, ठीक 0.25 और 0.5 के बीच। बाक़ी तीनों बाड़ के बाहर बैठे हैं।",
+          mr: "मध्यबिंदू नेहमी चालतो: (1/4 + 1/2) ÷ 2 = 3/8 = 0.375, नेमका 0.25 आणि 0.5 च्या मध्ये. बाकी तिघे कुंपणाबाहेर बसले आहेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Write −7/8 as a decimal.",
+          hi: "−7/8 को दशमलव में लिखिए।",
+          mr: "−7/8 दशांशात लिहा.",
+        },
+        answer: -0.875,
+        wrong: [0.875, -0.78, -1.14],
+        checkExpr: "(0-7)/8",
+        solution: {
+          en: "7 ÷ 8 = 0.875, and the sign rides along: −0.875. −0.78 glues the digits 7 and 8 together; −1.14 divides 8 by 7, upside down.",
+          hi: "7 ÷ 8 = 0.875, और चिह्न साथ चलता है: −0.875। −0.78 अंक 7 और 8 चिपका देता है; −1.14 उल्टा 8 को 7 से भाग देता है।",
+          mr: "7 ÷ 8 = 0.875, आणि चिन्ह सोबत येते: −0.875. −0.78 आकडे 7 व 8 चिकटवतो; −1.14 उलटे 8 ला 7 ने भागतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "(−3/4) + (1/4) = ? (Answer as a decimal.)",
+          hi: "(−3/4) + (1/4) कितना है? (उत्तर दशमलव में।)",
+          mr: "(−3/4) + (1/4) किती? (उत्तर दशांशात.)",
+        },
+        answer: -0.5,
+        wrong: [0.5, -1, -0.25],
+        checkExpr: "(0-3)/4+1/4",
+        solution: {
+          en: "−3 + 1 = −2 over 4: −2/4 = −0.5. −1 adds the numerators as if both carried the minus; 0.5 drops the sign of the heavier number.",
+          hi: "−3 + 1 = −2, हर 4 पर: −2/4 = −0.5। −1 दोनों अंशों को ऋण मानकर जोड़ता है; 0.5 भारी संख्या का चिह्न गिरा देता है।",
+          mr: "−3 + 1 = −2, छेद 4 वर: −2/4 = −0.5. −1 दोन्ही अंश ऋण मानून जोडतो; 0.5 जड संख्येचे चिन्ह गाळतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "(−2/3) × (9/4) = ? (Answer as a decimal.)",
+          hi: "(−2/3) × (9/4) कितना है? (उत्तर दशमलव में।)",
+          mr: "(−2/3) × (9/4) किती? (उत्तर दशांशात.)",
+        },
+        answer: -1.5,
+        wrong: [1.5, -6, -0.75],
+        checkExpr: "(0-2)*9/(3*4)",
+        solution: {
+          en: "Tops and bottoms: −18/12 = −3/2 = −1.5, one minus surviving. −6 multiplies only the numerators; 1.5 mislays the sign.",
+          hi: "अंश-हर: −18/12 = −3/2 = −1.5, एक ऋण बचा। −6 केवल अंश गुणा करता है; 1.5 चिह्न खो देता है।",
+          mr: "अंश-छेद: −18/12 = −3/2 = −1.5, एक ऋण उरले. −6 फक्त अंश गुणतो; 1.5 चिन्ह हरवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Which is the SMALLEST: −5/2, −3/2 or −1/2? Answer it as a decimal.",
+          hi: "सबसे छोटा कौन: −5/2, −3/2 या −1/2? उत्तर दशमलव में दीजिए।",
+          mr: "सर्वांत लहान कोण: −5/2, −3/2 की −1/2? उत्तर दशांशात द्या.",
+        },
+        answer: -2.5,
+        wrong: [-1.5, -0.5, 2.5],
+        solution: {
+          en: "The farthest LEFT of zero is smallest: −5/2 = −2.5. −0.5 is actually the greatest of the three — below zero the biggest-looking fraction is the smallest number.",
+          hi: "शून्य से सबसे बाएँ वाला सबसे छोटा: −5/2 = −2.5। −0.5 वास्तव में तीनों में सबसे बड़ा है — शून्य के नीचे सबसे बड़ी दिखती भिन्न सबसे छोटी संख्या होती है।",
+          mr: "शून्यापासून सर्वांत डावीकडचा सर्वांत लहान: −5/2 = −2.5. −0.5 खरे तर तिघांत सर्वांत मोठा — शून्याखाली सर्वांत मोठा दिसणारा अपूर्णांक सर्वांत लहान संख्या असते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "x × (−4/9) = 1. What is x, as a decimal?",
+          hi: "x × (−4/9) = 1। x दशमलव में कितना?",
+          mr: "x × (−4/9) = 1. x दशांशात किती?",
+        },
+        answer: -2.25,
+        wrong: [2.25, -0.44, 0.44],
+        checkExpr: "(0-9)/4",
+        solution: {
+          en: "x must be the reciprocal: −9/4 = −2.25 — flip the fraction, KEEP the sign, for only negative × negative reaches +1. 2.25 flips but forgets the product must climb back to positive one.",
+          hi: "x व्युत्क्रम होना चाहिए: −9/4 = −2.25 — भिन्न पलटिए, चिह्न रखिए, क्योंकि केवल ऋण × ऋण ही +1 तक पहुँचता है। 2.25 पलटता तो है पर भूल जाता है कि गुणनफल को धन एक तक लौटना है।",
+          mr: "x व्यस्त हवा: −9/4 = −2.25 — अपूर्णांक उलटवा, चिन्ह ठेवा, कारण फक्त ऋण × ऋणच +1 गाठतो. 2.25 उलटवतो पण गुणाकाराला धन एकावर परतायचे आहे हे विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Water seeps down a well shaft at −3/4 m per hour (negative means downward). Where is the seep-line after 4 hours, in metres?",
+          hi: "कुएँ की दीवार में पानी −3/4 मीटर प्रति घंटा रिसता है (ऋण यानी नीचे की ओर)। 4 घंटे बाद रिसाव-रेखा कहाँ होगी, मीटर में?",
+          mr: "विहिरीच्या भिंतीत पाणी −3/4 मीटर प्रति तास झिरपते (ऋण म्हणजे खालच्या दिशेने). 4 तासांनंतर झिरप-रेषा कुठे असेल, मीटरमध्ये?",
+        },
+        answer: -3,
+        wrong: [3, -0.75, -12],
+        checkExpr: "(0-3)*4/4",
+        solution: {
+          en: "Four hours of −3/4 each: 4 × (−3/4) = −3 m, three metres down. −0.75 stops after one hour; −12 multiplies by the 4 twice.",
+          hi: "−3/4 के चार घंटे: 4 × (−3/4) = −3 मीटर, तीन मीटर नीचे। −0.75 एक घंटे बाद रुक जाता है; −12 चार से दो बार गुणा करता है।",
+          mr: "−3/4 चे चार तास: 4 × (−3/4) = −3 मीटर, तीन मीटर खाली. −0.75 एका तासानंतर थांबतो; −12 चाराने दोनदा गुणतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A student says no rational number fits between 5/7 and 6/7. Rewrite both with denominator 14 and find the one between: what is its NUMERATOR?",
+          hi: "एक विद्यार्थी कहता है कि 5/7 और 6/7 के बीच कोई परिमेय संख्या नहीं बैठती। दोनों को हर 14 से लिखकर बीच वाली खोजिए: उसका अंश क्या है?",
+          mr: "एक विद्यार्थी म्हणतो की 5/7 आणि 6/7 च्या मध्ये कोणतीही परिमेय संख्या बसत नाही. दोन्ही छेद 14 ने लिहून मधली शोधा: तिचा अंश काय?",
+        },
+        answer: 11,
+        wrong: [5.5, 12, 13],
+        checkExpr: "(5*2+6*2)/2",
+        solution: {
+          en: "5/7 = 10/14 and 6/7 = 12/14, and 11/14 sits between them — numerator 11. Sharpen the denominator again and MORE numbers appear: between any two rationals the crowd never ends.",
+          hi: "5/7 = 10/14 और 6/7 = 12/14, और 11/14 उनके बीच बैठता है — अंश 11। हर और महीन कीजिए तो और संख्याएँ प्रकट होती हैं: किन्हीं दो परिमेयों के बीच भीड़ कभी ख़त्म नहीं होती।",
+          mr: "5/7 = 10/14 आणि 6/7 = 12/14, आणि 11/14 त्यांच्या मध्ये बसतो — अंश 11. छेद आणखी बारीक करा आणि आणखी संख्या प्रकटतात: कोणत्याही दोन परिमेयांमधली गर्दी कधी संपत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "What is the VALUE of −7/−8, as a decimal?",
+          hi: "−7/−8 का मान दशमलव में कितना है?",
+          mr: "−7/−8 ची किंमत दशांशात किती?",
+        },
+        answer: 0.875,
+        wrong: [-0.875, -1.14, 1.14],
+        checkExpr: "7/8",
+        solution: {
+          en: "Minus over minus cancels: −7/−8 = 7/8 = 0.875, a POSITIVE number wearing a gloomy costume. −0.875 counts one of the signs twice; the standard form puts the denominator positive first.",
+          hi: "ऋण बटा ऋण कट जाता है: −7/−8 = 7/8 = 0.875, उदास वेश में एक धन संख्या। −0.875 एक चिह्न दो बार गिनता है; मानक रूप पहले हर को धन बनाता है।",
+          mr: "ऋण भागिले ऋण रद्द: −7/−8 = 7/8 = 0.875, उदास वेशातील धन संख्या. −0.875 एक चिन्ह दोनदा मोजतो; प्रमाण रूप आधी छेदाला धन करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 9 — Rational Numbers",
+      name: "Rational Numbers",
+      slug: "maths-7-rational-numbers",
+      summary:
+        "Fractions get signs: opposites cancel, comparisons flip below zero, reciprocals keep their minus — and between any two of them the crowd of numbers never ends.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "परिमेय संख्याएँ",
+          summary:
+            "भिन्नों को चिह्न मिलते हैं: विलोम कटते हैं, शून्य के नीचे तुलनाएँ पलटती हैं, व्युत्क्रम अपना ऋण रखते हैं — और किन्हीं दो के बीच संख्याओं की भीड़ कभी ख़त्म नहीं होती।",
+        },
+        mr: {
+          name: "परिमेय संख्या",
+          summary:
+            "अपूर्णांकांना चिन्हे मिळतात: विरुद्धांक रद्द होतात, शून्याखाली तुलना उलटतात, व्यस्त आपले ऋण राखतात — आणि कोणत्याही दोघांमधली संख्यांची गर्दी कधी संपत नाही.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Practical Geometry (parallels and triangle constructions)    */
+/* ------------------------------------------------------------------------- */
+function practicalGeometry(): TopicFileOut {
+  const rand = rng("maths-7-practical-geometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "To construct a triangle with sides 5 cm, 6 cm and 7 cm you use the SSS method. How many sides are given?",
+          hi: "5 सेमी, 6 सेमी और 7 सेमी भुजाओं वाला त्रिभुज बनाने के लिए SSS विधि लगती है। कितनी भुजाएँ दी गई हैं?",
+          mr: "5 सेमी, 6 सेमी आणि 7 सेमी बाजूंचा त्रिकोण काढण्यासाठी SSS पद्धत वापरतात. किती बाजू दिलेल्या आहेत?",
+        },
+        answer: 3,
+        wrong: [2, 1, 0],
+        solution: {
+          en: "All 3: draw the base, then swing two compass arcs for the other ends — where the arcs cross, the third vertex is born.",
+          hi: "तीनों 3: आधार खींचिए, फिर बाक़ी सिरों के लिए परकार के दो चाप घुमाइए — जहाँ चाप कटते हैं, वहीं तीसरा शीर्ष जन्म लेता है।",
+          mr: "तिन्ही 3: पाया काढा, मग उरलेल्या टोकांसाठी कंपासाचे दोन कंस फिरवा — जिथे कंस छेदतात, तिथे तिसरा शिरोबिंदू जन्मतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "To draw a line through a point parallel to a given line, you copy an angle of 65° made by a transversal. What must the copied angle measure?",
+          hi: "किसी बिंदु से दी गई रेखा के समांतर रेखा खींचने के लिए आप तिर्यक रेखा का बनाया 65° का कोण नक़ल करते हैं। नक़ल किए कोण की माप कितनी होनी चाहिए?",
+          mr: "एका बिंदूतून दिलेल्या रेषेला समांतर रेषा काढण्यासाठी छेदिकेने केलेला 65° चा कोन नक्कल करता. नक्कल केलेल्या कोनाचे माप किती हवे?",
+        },
+        answer: 65,
+        wrong: [115, 25, 130],
+        fmt: deg,
+        solution: {
+          en: "Equal alternate (or corresponding) angles are what MAKE lines parallel: the copy must be exactly 65°. Any other measure tilts the new line into an eventual crossing.",
+          hi: "बराबर एकांतर (या संगत) कोण ही रेखाओं को समांतर बनाते हैं: नक़ल ठीक 65° की होनी चाहिए। कोई और माप नई रेखा को झुकाकर अंततः काट देगी।",
+          mr: "समान व्युत्क्रम (किंवा संगत) कोनच रेषा समांतर करतात: नक्कल नेमकी 65° हवी. दुसरे कोणतेही माप नवी रेषा कलंडवून अखेर छेद घडवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "For an SAS construction with sides 4 cm and 6 cm, how many angles do you also need — and it must be the included one?",
+          hi: "4 सेमी और 6 सेमी भुजाओं वाली SAS रचना के लिए कितने कोण भी चाहिए — और वह अंतर्गत ही होना चाहिए?",
+          mr: "4 सेमी आणि 6 सेमी बाजूंच्या SAS रचनेसाठी किती कोनही लागतात — आणि तो समाविष्टच हवा?",
+        },
+        answer: 1,
+        wrong: [2, 3, 0],
+        solution: {
+          en: "Side-Angle-Side: 1 angle, sitting BETWEEN the two sides. Put the angle anywhere else and two different triangles can claim the same measurements.",
+          hi: "भुजा-कोण-भुजा: 1 कोण, दोनों भुजाओं के बीच बैठा। कोण कहीं और रखिए तो दो अलग त्रिभुज एक ही मापों पर दावा कर सकते हैं।",
+          mr: "बाजू-कोन-बाजू: 1 कोन, दोन बाजूंच्या मध्ये बसलेला. कोन इतरत्र ठेवा आणि दोन वेगळे त्रिकोण त्याच मापांवर हक्क सांगू शकतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many triangles can be constructed with sides 3 cm, 4 cm and 8 cm?",
+          hi: "3 सेमी, 4 सेमी और 8 सेमी भुजाओं से कितने त्रिभुज बन सकते हैं?",
+          mr: "3 सेमी, 4 सेमी आणि 8 सेमी बाजूंनी किती त्रिकोण बनू शकतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        solution: {
+          en: "3 + 4 = 7, which cannot bridge the 8: the compass arcs never cross, so 0 triangles. Check the triangle inequality BEFORE you draw — two short arms cannot reach over a long base.",
+          hi: "3 + 4 = 7, जो 8 को पाट नहीं सकता: परकार के चाप कभी नहीं कटते, अतः 0 त्रिभुज। खींचने से पहले त्रिभुज-असमिका जाँचिए — दो छोटी बाहें लंबे आधार के आर-पार नहीं पहुँचतीं।",
+          mr: "3 + 4 = 7, जे 8 ला जोडू शकत नाही: कंपासाचे कंस कधी छेदत नाहीत, म्हणून 0 त्रिकोण. काढण्याआधी त्रिकोण-असमानता तपासा — दोन आखूड हात लांब पायावरून पोहोचत नाहीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "You construct a triangle by ASA with angles 45° and 60° at the base. What will the third angle come out as?",
+          hi: "आधार पर 45° और 60° कोणों के साथ ASA से त्रिभुज बनाते हैं। तीसरा कोण कितना निकलेगा?",
+          mr: "पायावर 45° आणि 60° कोनांसह ASA ने त्रिकोण काढता. तिसरा कोन किती निघेल?",
+        },
+        answer: 75,
+        wrong: [105, 90, 55],
+        checkExpr: "180-45-60",
+        fmt: deg,
+        solution: {
+          en: "The two rays meet where geometry forces them: 180 − 45 − 60 = 75°. You never draw the third angle — the angle-sum rule draws it for you.",
+          hi: "दोनों किरणें वहीं मिलती हैं जहाँ ज्यामिति विवश करती है: 180 − 45 − 60 = 75°। तीसरा कोण आप कभी नहीं खींचते — कोण-योग नियम उसे आपके लिए खींच देता है।",
+          mr: "दोन्ही किरणे तिथेच मिळतात जिथे भूमिती भाग पाडते: 180 − 45 − 60 = 75°. तिसरा कोन तुम्ही कधीच काढत नाही — कोन-बेरीज नियम तो तुमच्यासाठी काढतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An RHS construction uses hypotenuse 5 cm and one leg 3 cm. What will the third side measure, in cm?",
+          hi: "RHS रचना में कर्ण 5 सेमी और एक भुजा 3 सेमी है। तीसरी भुजा कितने सेमी निकलेगी?",
+          mr: "RHS रचनेत कर्ण 5 सेमी आणि एक बाजू 3 सेमी आहे. तिसरी बाजू किती सेमी निघेल?",
+        },
+        answer: 4,
+        wrong: [2, 8, 15],
+        solution: {
+          en: "5² − 3² = 25 − 9 = 16 = 4²: the ruler will read 4 cm before you even measure. 2 subtracts the plain lengths; 8 adds them.",
+          hi: "5² − 3² = 25 − 9 = 16 = 4²: नापने से पहले ही पैमाना 4 सेमी कहेगा। 2 सीधी लंबाइयाँ घटाता है; 8 जोड़ देता है।",
+          mr: "5² − 3² = 25 − 9 = 16 = 4²: मोजण्याआधीच पट्टी 4 सेमी सांगेल. 2 नुसत्या लांब्या वजा करतो; 8 जोडतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "To make a 90° angle with only compasses, you bisect the gap between the 60° mark and which other constructible angle?",
+          hi: "केवल परकार से 90° बनाने के लिए आप 60° के निशान और किस अन्य रचनीय कोण के बीच की दूरी समद्विभाजित करते हैं?",
+          mr: "फक्त कंपासाने 90° करण्यासाठी 60° च्या खुणेआणि आणखी कोणत्या रचनीय कोनामधले अंतर दुभागता?",
+        },
+        answer: 120,
+        wrong: [30, 180, 90],
+        fmt: deg,
+        solution: {
+          en: "60 and 120 are both compass-friendly, and halfway between them lies 90°: (60 + 120) ÷ 2. Bisection is the compass's way of averaging two angles.",
+          hi: "60 और 120 दोनों परकार-सुलभ हैं, और उनके ठीक बीच 90° है: (60 + 120) ÷ 2। समद्विभाजन परकार का दो कोणों का औसत लेने का ढंग है।",
+          mr: "60 आणि 120 दोन्ही कंपास-सुलभ, आणि त्यांच्या नेमक्या मध्ये 90°: (60 + 120) ÷ 2. दुभाजन म्हणजे कंपासाची दोन कोनांची सरासरी काढण्याची रीत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "By ASA, a 6 cm base carries a 40° angle at EACH end. What is the triangle's third angle?",
+          hi: "ASA में 6 सेमी के आधार के हर सिरे पर 40° का कोण है। त्रिभुज का तीसरा कोण कितना?",
+          mr: "ASA मध्ये 6 सेमी पायाच्या प्रत्येक टोकाला 40° चा कोन आहे. त्रिकोणाचा तिसरा कोन किती?",
+        },
+        answer: 100,
+        wrong: [80, 40, 140],
+        checkExpr: "180-40-40",
+        fmt: deg,
+        solution: {
+          en: "180 − 40 − 40 = 100°, and the equal base angles silently make the triangle isosceles too. 140 subtracts only one of the pair.",
+          hi: "180 − 40 − 40 = 100°, और बराबर आधार-कोण चुपचाप त्रिभुज को समद्विबाहु भी बना देते हैं। 140 जोड़ी में से केवल एक घटाता है।",
+          mr: "180 − 40 − 40 = 100°, आणि समान पाया-कोन गुपचूप त्रिकोणाला समद्विभुजही करतात. 140 जोडीतील फक्त एक वजा करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "An SAS construction uses sides 5 cm and 5 cm with a 60° angle between them. What will the third side measure, in cm?",
+          hi: "SAS रचना में 5 सेमी और 5 सेमी की भुजाएँ हैं और उनके बीच 60° का कोण। तीसरी भुजा कितने सेमी निकलेगी?",
+          mr: "SAS रचनेत 5 सेमी आणि 5 सेमी बाजू असून त्यांच्यामध्ये 60° चा कोन आहे. तिसरी बाजू किती सेमी निघेल?",
+        },
+        answer: 5,
+        wrong: [10, 2.5, 6],
+        solution: {
+          en: "Equal sides make equal base angles of (180 − 60) ÷ 2 = 60° each — all three angles 60°, so the triangle is equilateral and the third side is 5 cm too.",
+          hi: "बराबर भुजाएँ (180 − 60) ÷ 2 = 60°-60° के आधार-कोण बनाती हैं — तीनों कोण 60°, अतः त्रिभुज समबाहु और तीसरी भुजा भी 5 सेमी।",
+          mr: "समान बाजू (180 − 60) ÷ 2 = 60°-60° चे पाया-कोन करतात — तिन्ही कोन 60°, म्हणून त्रिकोण समभुज आणि तिसरी बाजूही 5 सेमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "You copy a 72° angle to build a parallel line, but you place the copy in the CO-INTERIOR position. To keep the lines parallel, the angle there must measure?",
+          hi: "समांतर रेखा के लिए आप 72° का कोण नक़ल करते हैं, पर नक़ल एक-ही-ओर के अंतःकोण की जगह रख देते हैं। रेखाएँ समांतर रहें, इसके लिए वहाँ का कोण कितना होना चाहिए?",
+          mr: "समांतर रेषेसाठी 72° चा कोन नक्कल करता, पण नक्कल एकाच-बाजूच्या आंतरकोनाच्या जागी ठेवता. रेषा समांतर राहण्यासाठी तिथला कोन किती हवा?",
+        },
+        answer: 108,
+        wrong: [72, 18, 144],
+        checkExpr: "180-72",
+        fmt: deg,
+        solution: {
+          en: "Co-interior partners must total 180: 180 − 72 = 108°. 72 works only in the alternate or corresponding position — same number, wrong seat, crossed lines.",
+          hi: "एक-ओर के साथी 180 तक जुड़ने चाहिए: 180 − 72 = 108°। 72 केवल एकांतर या संगत स्थान पर चलता है — वही संख्या, ग़लत कुर्सी, कटती रेखाएँ।",
+          mr: "एका-बाजूच्या जोडीदारांची बेरीज 180 हवी: 180 − 72 = 108°. 72 फक्त व्युत्क्रम किंवा संगत जागी चालतो — तीच संख्या, चुकीची खुर्ची, छेदणाऱ्या रेषा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A right triangle is to be built with hypotenuse 13 cm and one leg 5 cm. What will the other leg measure, in cm?",
+          hi: "कर्ण 13 सेमी और एक भुजा 5 सेमी वाला समकोण त्रिभुज बनाना है। दूसरी भुजा कितने सेमी निकलेगी?",
+          mr: "कर्ण 13 सेमी आणि एक बाजू 5 सेमी असलेला काटकोन त्रिकोण बनवायचा आहे. दुसरी बाजू किती सेमी निघेल?",
+        },
+        answer: 12,
+        wrong: [8, 18, 65],
+        solution: {
+          en: "13² − 5² = 169 − 25 = 144, and 144 = 12² — the other leg is 12 cm, the famous 5-12-13 family. 8 subtracts lengths; 18 adds them.",
+          hi: "13² − 5² = 169 − 25 = 144, और 144 = 12² — दूसरी भुजा 12 सेमी, प्रसिद्ध 5-12-13 परिवार। 8 लंबाइयाँ घटाता है; 18 जोड़ता है।",
+          mr: "13² − 5² = 169 − 25 = 144, आणि 144 = 12² — दुसरी बाजू 12 सेमी, प्रसिद्ध 5-12-13 कुटुंब. 8 लांब्या वजा करतो; 18 जोडतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "You construct an isosceles triangle with equal sides 6 cm and base 4 cm. What is the perimeter of the finished triangle, in cm?",
+          hi: "6 सेमी की बराबर भुजाओं और 4 सेमी के आधार वाला समद्विबाहु त्रिभुज बनाते हैं। बने त्रिभुज का परिमाप कितने सेमी?",
+          mr: "6 सेमी च्या समान बाजू आणि 4 सेमी पाया असलेला समद्विभुज त्रिकोण काढता. तयार त्रिकोणाची परिमिती किती सेमी?",
+        },
+        answer: 16,
+        wrong: [12, 10, 24],
+        checkExpr: "6+6+4",
+        solution: {
+          en: "6 + 6 + 4 = 16 cm. 12 counts the equal pair only; 10 takes one of each; 24 promotes the base to 6 as well.",
+          hi: "6 + 6 + 4 = 16 सेमी। 12 केवल बराबर जोड़ी गिनता है; 10 हर तरह की एक-एक लेता है; 24 आधार को भी 6 बना देता है।",
+          mr: "6 + 6 + 4 = 16 सेमी. 12 फक्त समान जोडी मोजतो; 10 प्रत्येकी एक घेतो; 24 पायालाही 6 करून टाकतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "With ruler and compasses you construct 60°, bisect it to 30°, then bisect once more. What is the final angle?",
+          hi: "रूलर-परकार से 60° बनाकर उसे 30° में समद्विभाजित करते हैं, फिर एक बार और। अंतिम कोण कितना?",
+          mr: "पट्टी-कंपासाने 60° करून त्याला 30° मध्ये दुभागता, मग आणखी एकदा. अंतिम कोन किती?",
+        },
+        answer: 15,
+        wrong: [30, 7.5, 20],
+        checkExpr: "60/4",
+        fmt: deg,
+        solution: {
+          en: "Each bisection halves: 60 → 30 → 15°. The compass never measures — it only builds 60 and then halves its way to whatever 60/2ⁿ you need.",
+          hi: "हर समद्विभाजन आधा करता है: 60 → 30 → 15°। परकार कभी नापता नहीं — वह बस 60 बनाता है और फिर आधा-आधा करते हुए जिस 60/2ⁿ की ज़रूरत हो वहाँ पहुँचता है।",
+          mr: "प्रत्येक दुभाजन निम्मे करते: 60 → 30 → 15°. कंपास कधी मोजत नाही — तो फक्त 60 बांधतो आणि मग निम्मे-निम्मे करत हव्या त्या 60/2ⁿ वर पोहोचतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Up to congruence, how many DIFFERENT triangles have sides exactly 5 cm, 12 cm and 13 cm?",
+          hi: "सर्वांगसमता तक, ठीक 5 सेमी, 12 सेमी और 13 सेमी भुजाओं वाले कितने अलग त्रिभुज हैं?",
+          mr: "एकरूपतेपर्यंत, नेमक्या 5 सेमी, 12 सेमी आणि 13 सेमी बाजूंचे किती वेगळे त्रिकोण आहेत?",
+        },
+        answer: 1,
+        wrong: [0, 2, 3],
+        solution: {
+          en: "Exactly 1: three sides pin the triangle completely — that is WHY SSS earns its place among the congruence tests. Flips and turns give the same triangle wearing a different pose.",
+          hi: "ठीक 1: तीन भुजाएँ त्रिभुज को पूरी तरह जड़ देती हैं — इसीलिए SSS सर्वांगसमता-जाँचों में जगह पाता है। पलटने-घुमाने से वही त्रिभुज दूसरी मुद्रा में मिलता है।",
+          mr: "नेमका 1: तीन बाजू त्रिकोणाला पूर्ण जखडतात — म्हणूनच SSS ला एकरूपता-चाचण्यांत स्थान आहे. उलटवणे-फिरवणे म्हणजे तोच त्रिकोण वेगळ्या पवित्र्यात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A draftsman wants a line through P parallel to line l, and draws transversal PQ making 48° with l. What ALTERNATE angle must he construct at P?",
+          hi: "एक नक़्शानवीस P से होकर रेखा l के समांतर रेखा चाहता है, और l से 48° बनाती तिर्यक रेखा PQ खींचता है। P पर उसे कितने का एकांतर कोण बनाना होगा?",
+          mr: "एका आरेखकाला P मधून रेषा l ला समांतर रेषा हवी आहे, आणि तो l शी 48° करणारी छेदिका PQ काढतो. P वर त्याला किती अंशांचा व्युत्क्रम कोन बांधावा लागेल?",
+        },
+        answer: 48,
+        wrong: [132, 42, 96],
+        fmt: deg,
+        solution: {
+          en: "Equal alternate angles FORCE parallelism — copy the 48° exactly. This is the whole construction: one transversal, one faithfully copied angle, and the new line can never meet l.",
+          hi: "बराबर एकांतर कोण समांतरता को विवश करते हैं — 48° की हूबहू नक़ल कीजिए। यही पूरी रचना है: एक तिर्यक रेखा, एक ईमानदार नक़ल का कोण, और नई रेखा l से कभी नहीं मिल सकती।",
+          mr: "समान व्युत्क्रम कोन समांतरता भाग पाडतात — 48° ची हुबेहूब नक्कल करा. हीच सारी रचना: एक छेदिका, एक इमानी नक्कल केलेला कोन, आणि नवी रेषा l ला कधीच भेटू शकत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "150° is constructible as 90° + 60°. Bisecting it gives which single angle — one no simpler construction reaches?",
+          hi: "150°, 90° + 60° के रूप में रचनीय है। उसे समद्विभाजित करने पर कौन-सा अकेला कोण मिलता है — जिस तक कोई सरल रचना नहीं पहुँचती?",
+          mr: "150° हे 90° + 60° म्हणून रचनीय आहे. त्याला दुभागल्यास कोणता एकच कोन मिळतो — जिथे अधिक सोपी रचना पोहोचत नाही?",
+        },
+        answer: 75,
+        wrong: [70, 37.5, 105],
+        checkExpr: "150/2",
+        fmt: deg,
+        solution: {
+          en: "150 ÷ 2 = 75°. The compass's craft is exactly this: build what you can by adding 60s and 90s, then bisect your way to the target — 75 = (90 + 60)/2.",
+          hi: "150 ÷ 2 = 75°। परकार का हुनर यही है: 60 और 90 जोड़कर जो बने वह बनाइए, फिर आधा-आधा करते लक्ष्य तक पहुँचिए — 75 = (90 + 60)/2।",
+          mr: "150 ÷ 2 = 75°. कंपासाची कारागिरी हीच: 60 आणि 90 जोडून जे बांधता येते ते बांधा, मग दुभागत लक्ष्यापर्यंत पोहोचा — 75 = (90 + 60)/2.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 7,
+      chapter: "Chapter 10 — Practical Geometry",
+      name: "Practical Geometry",
+      slug: "maths-7-practical-geometry",
+      summary:
+        "Ruler-and-compass honesty: parallels forced by one copied angle, triangles pinned by SSS, SAS, ASA and RHS — and arcs that refuse to cross when the sides cannot reach.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "प्रायोगिक ज्यामिति",
+          summary:
+            "रूलर-परकार की ईमानदारी: एक नक़ल किए कोण से विवश समांतर रेखाएँ, SSS, SAS, ASA और RHS से जड़े त्रिभुज — और वे चाप जो भुजाओं के न पहुँचने पर कटने से इनकार कर देते हैं।",
+        },
+        mr: {
+          name: "प्रात्यक्षिक भूमिती",
+          summary:
+            "पट्टी-कंपासाचा प्रामाणिकपणा: एका नक्कल केलेल्या कोनाने भाग पाडलेल्या समांतर रेषा, SSS, SAS, ASA आणि RHS ने जखडलेले त्रिकोण — आणि बाजू न पोहोचल्यास छेदायला नकार देणारे कंस.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G7_MATHS: TopicFileOut[] = [
   integers(),
   fractionsAndDecimals(),
   dataHandling(),
   simpleEquations(),
   linesAndAngles(),
+  triangleProperties(),
+  congruence(),
+  comparingQuantities(),
+  rationalNumbers(),
+  practicalGeometry(),
 ];

@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 10 — Practical Geometry",
+  "name": "Practical Geometry",
+  "slug": "maths-7-practical-geometry",
+  "summary": "Ruler-and-compass honesty: parallels forced by one copied angle, triangles pinned by SSS, SAS, ASA and RHS — and arcs that refuse to cross when the sides cannot reach.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "प्रायोगिक ज्यामिति",
+      "summary": "रूलर-परकार की ईमानदारी: एक नक़ल किए कोण से विवश समांतर रेखाएँ, SSS, SAS, ASA और RHS से जड़े त्रिभुज — और वे चाप जो भुजाओं के न पहुँचने पर कटने से इनकार कर देते हैं।"
+    },
+    "mr": {
+      "name": "प्रात्यक्षिक भूमिती",
+      "summary": "पट्टी-कंपासाचा प्रामाणिकपणा: एका नक्कल केलेल्या कोनाने भाग पाडलेल्या समांतर रेषा, SSS, SAS, ASA आणि RHS ने जखडलेले त्रिकोण — आणि बाजू न पोहोचल्यास छेदायला नकार देणारे कंस."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "To construct a triangle with sides 5 cm, 6 cm and 7 cm you use the SSS method. How many sides are given?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "All 3: draw the base, then swing two compass arcs for the other ends — where the arcs cross, the third vertex is born.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "5 सेमी, 6 सेमी और 7 सेमी भुजाओं वाला त्रिभुज बनाने के लिए SSS विधि लगती है। कितनी भुजाएँ दी गई हैं?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "तीनों 3: आधार खींचिए, फिर बाक़ी सिरों के लिए परकार के दो चाप घुमाइए — जहाँ चाप कटते हैं, वहीं तीसरा शीर्ष जन्म लेता है।"
+        },
+        "mr": {
+          "stem": "5 सेमी, 6 सेमी आणि 7 सेमी बाजूंचा त्रिकोण काढण्यासाठी SSS पद्धत वापरतात. किती बाजू दिलेल्या आहेत?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "तिन्ही 3: पाया काढा, मग उरलेल्या टोकांसाठी कंपासाचे दोन कंस फिरवा — जिथे कंस छेदतात, तिथे तिसरा शिरोबिंदू जन्मतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "To draw a line through a point parallel to a given line, you copy an angle of 65° made by a transversal. What must the copied angle measure?",
+      "choices": [
+        "65°",
+        "130°",
+        "25°",
+        "115°"
+      ],
+      "answerIndex": 0,
+      "solution": "Equal alternate (or corresponding) angles are what MAKE lines parallel: the copy must be exactly 65°. Any other measure tilts the new line into an eventual crossing.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी बिंदु से दी गई रेखा के समांतर रेखा खींचने के लिए आप तिर्यक रेखा का बनाया 65° का कोण नक़ल करते हैं। नक़ल किए कोण की माप कितनी होनी चाहिए?",
+          "choices": [
+            "65°",
+            "130°",
+            "25°",
+            "115°"
+          ],
+          "solution": "बराबर एकांतर (या संगत) कोण ही रेखाओं को समांतर बनाते हैं: नक़ल ठीक 65° की होनी चाहिए। कोई और माप नई रेखा को झुकाकर अंततः काट देगी।"
+        },
+        "mr": {
+          "stem": "एका बिंदूतून दिलेल्या रेषेला समांतर रेषा काढण्यासाठी छेदिकेने केलेला 65° चा कोन नक्कल करता. नक्कल केलेल्या कोनाचे माप किती हवे?",
+          "choices": [
+            "65°",
+            "130°",
+            "25°",
+            "115°"
+          ],
+          "solution": "समान व्युत्क्रम (किंवा संगत) कोनच रेषा समांतर करतात: नक्कल नेमकी 65° हवी. दुसरे कोणतेही माप नवी रेषा कलंडवून अखेर छेद घडवते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For an SAS construction with sides 4 cm and 6 cm, how many angles do you also need — and it must be the included one?",
+      "choices": [
+        "3",
+        "2",
+        "1",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "Side-Angle-Side: 1 angle, sitting BETWEEN the two sides. Put the angle anywhere else and two different triangles can claim the same measurements.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "4 सेमी और 6 सेमी भुजाओं वाली SAS रचना के लिए कितने कोण भी चाहिए — और वह अंतर्गत ही होना चाहिए?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "भुजा-कोण-भुजा: 1 कोण, दोनों भुजाओं के बीच बैठा। कोण कहीं और रखिए तो दो अलग त्रिभुज एक ही मापों पर दावा कर सकते हैं।"
+        },
+        "mr": {
+          "stem": "4 सेमी आणि 6 सेमी बाजूंच्या SAS रचनेसाठी किती कोनही लागतात — आणि तो समाविष्टच हवा?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "बाजू-कोन-बाजू: 1 कोन, दोन बाजूंच्या मध्ये बसलेला. कोन इतरत्र ठेवा आणि दोन वेगळे त्रिकोण त्याच मापांवर हक्क सांगू शकतात."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many triangles can be constructed with sides 3 cm, 4 cm and 8 cm?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "3 + 4 = 7, which cannot bridge the 8: the compass arcs never cross, so 0 triangles. Check the triangle inequality BEFORE you draw — two short arms cannot reach over a long base.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "3 सेमी, 4 सेमी और 8 सेमी भुजाओं से कितने त्रिभुज बन सकते हैं?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "3 + 4 = 7, जो 8 को पाट नहीं सकता: परकार के चाप कभी नहीं कटते, अतः 0 त्रिभुज। खींचने से पहले त्रिभुज-असमिका जाँचिए — दो छोटी बाहें लंबे आधार के आर-पार नहीं पहुँचतीं।"
+        },
+        "mr": {
+          "stem": "3 सेमी, 4 सेमी आणि 8 सेमी बाजूंनी किती त्रिकोण बनू शकतात?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "3 + 4 = 7, जे 8 ला जोडू शकत नाही: कंपासाचे कंस कधी छेदत नाहीत, म्हणून 0 त्रिकोण. काढण्याआधी त्रिकोण-असमानता तपासा — दोन आखूड हात लांब पायावरून पोहोचत नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "You construct a triangle by ASA with angles 45° and 60° at the base. What will the third angle come out as?",
+      "choices": [
+        "55°",
+        "105°",
+        "75°",
+        "90°"
+      ],
+      "answerIndex": 2,
+      "solution": "The two rays meet where geometry forces them: 180 − 45 − 60 = 75°. You never draw the third angle — the angle-sum rule draws it for you.",
+      "checkExpr": "180-45-60",
+      "translations": {
+        "hi": {
+          "stem": "आधार पर 45° और 60° कोणों के साथ ASA से त्रिभुज बनाते हैं। तीसरा कोण कितना निकलेगा?",
+          "choices": [
+            "55°",
+            "105°",
+            "75°",
+            "90°"
+          ],
+          "solution": "दोनों किरणें वहीं मिलती हैं जहाँ ज्यामिति विवश करती है: 180 − 45 − 60 = 75°। तीसरा कोण आप कभी नहीं खींचते — कोण-योग नियम उसे आपके लिए खींच देता है।"
+        },
+        "mr": {
+          "stem": "पायावर 45° आणि 60° कोनांसह ASA ने त्रिकोण काढता. तिसरा कोन किती निघेल?",
+          "choices": [
+            "55°",
+            "105°",
+            "75°",
+            "90°"
+          ],
+          "solution": "दोन्ही किरणे तिथेच मिळतात जिथे भूमिती भाग पाडते: 180 − 45 − 60 = 75°. तिसरा कोन तुम्ही कधीच काढत नाही — कोन-बेरीज नियम तो तुमच्यासाठी काढतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An RHS construction uses hypotenuse 5 cm and one leg 3 cm. What will the third side measure, in cm?",
+      "choices": [
+        "8",
+        "2",
+        "15",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "5² − 3² = 25 − 9 = 16 = 4²: the ruler will read 4 cm before you even measure. 2 subtracts the plain lengths; 8 adds them.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "RHS रचना में कर्ण 5 सेमी और एक भुजा 3 सेमी है। तीसरी भुजा कितने सेमी निकलेगी?",
+          "choices": [
+            "8",
+            "2",
+            "15",
+            "4"
+          ],
+          "solution": "5² − 3² = 25 − 9 = 16 = 4²: नापने से पहले ही पैमाना 4 सेमी कहेगा। 2 सीधी लंबाइयाँ घटाता है; 8 जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "RHS रचनेत कर्ण 5 सेमी आणि एक बाजू 3 सेमी आहे. तिसरी बाजू किती सेमी निघेल?",
+          "choices": [
+            "8",
+            "2",
+            "15",
+            "4"
+          ],
+          "solution": "5² − 3² = 25 − 9 = 16 = 4²: मोजण्याआधीच पट्टी 4 सेमी सांगेल. 2 नुसत्या लांब्या वजा करतो; 8 जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "To make a 90° angle with only compasses, you bisect the gap between the 60° mark and which other constructible angle?",
+      "choices": [
+        "120°",
+        "180°",
+        "30°",
+        "90°"
+      ],
+      "answerIndex": 0,
+      "solution": "60 and 120 are both compass-friendly, and halfway between them lies 90°: (60 + 120) ÷ 2. Bisection is the compass's way of averaging two angles.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "केवल परकार से 90° बनाने के लिए आप 60° के निशान और किस अन्य रचनीय कोण के बीच की दूरी समद्विभाजित करते हैं?",
+          "choices": [
+            "120°",
+            "180°",
+            "30°",
+            "90°"
+          ],
+          "solution": "60 और 120 दोनों परकार-सुलभ हैं, और उनके ठीक बीच 90° है: (60 + 120) ÷ 2। समद्विभाजन परकार का दो कोणों का औसत लेने का ढंग है।"
+        },
+        "mr": {
+          "stem": "फक्त कंपासाने 90° करण्यासाठी 60° च्या खुणेआणि आणखी कोणत्या रचनीय कोनामधले अंतर दुभागता?",
+          "choices": [
+            "120°",
+            "180°",
+            "30°",
+            "90°"
+          ],
+          "solution": "60 आणि 120 दोन्ही कंपास-सुलभ, आणि त्यांच्या नेमक्या मध्ये 90°: (60 + 120) ÷ 2. दुभाजन म्हणजे कंपासाची दोन कोनांची सरासरी काढण्याची रीत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "By ASA, a 6 cm base carries a 40° angle at EACH end. What is the triangle's third angle?",
+      "choices": [
+        "140°",
+        "40°",
+        "100°",
+        "80°"
+      ],
+      "answerIndex": 2,
+      "solution": "180 − 40 − 40 = 100°, and the equal base angles silently make the triangle isosceles too. 140 subtracts only one of the pair.",
+      "checkExpr": "180-40-40",
+      "translations": {
+        "hi": {
+          "stem": "ASA में 6 सेमी के आधार के हर सिरे पर 40° का कोण है। त्रिभुज का तीसरा कोण कितना?",
+          "choices": [
+            "140°",
+            "40°",
+            "100°",
+            "80°"
+          ],
+          "solution": "180 − 40 − 40 = 100°, और बराबर आधार-कोण चुपचाप त्रिभुज को समद्विबाहु भी बना देते हैं। 140 जोड़ी में से केवल एक घटाता है।"
+        },
+        "mr": {
+          "stem": "ASA मध्ये 6 सेमी पायाच्या प्रत्येक टोकाला 40° चा कोन आहे. त्रिकोणाचा तिसरा कोन किती?",
+          "choices": [
+            "140°",
+            "40°",
+            "100°",
+            "80°"
+          ],
+          "solution": "180 − 40 − 40 = 100°, आणि समान पाया-कोन गुपचूप त्रिकोणाला समद्विभुजही करतात. 140 जोडीतील फक्त एक वजा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "An SAS construction uses sides 5 cm and 5 cm with a 60° angle between them. What will the third side measure, in cm?",
+      "choices": [
+        "5",
+        "10",
+        "6",
+        "2.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Equal sides make equal base angles of (180 − 60) ÷ 2 = 60° each — all three angles 60°, so the triangle is equilateral and the third side is 5 cm too.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SAS रचना में 5 सेमी और 5 सेमी की भुजाएँ हैं और उनके बीच 60° का कोण। तीसरी भुजा कितने सेमी निकलेगी?",
+          "choices": [
+            "5",
+            "10",
+            "6",
+            "2.5"
+          ],
+          "solution": "बराबर भुजाएँ (180 − 60) ÷ 2 = 60°-60° के आधार-कोण बनाती हैं — तीनों कोण 60°, अतः त्रिभुज समबाहु और तीसरी भुजा भी 5 सेमी।"
+        },
+        "mr": {
+          "stem": "SAS रचनेत 5 सेमी आणि 5 सेमी बाजू असून त्यांच्यामध्ये 60° चा कोन आहे. तिसरी बाजू किती सेमी निघेल?",
+          "choices": [
+            "5",
+            "10",
+            "6",
+            "2.5"
+          ],
+          "solution": "समान बाजू (180 − 60) ÷ 2 = 60°-60° चे पाया-कोन करतात — तिन्ही कोन 60°, म्हणून त्रिकोण समभुज आणि तिसरी बाजूही 5 सेमी."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "You copy a 72° angle to build a parallel line, but you place the copy in the CO-INTERIOR position. To keep the lines parallel, the angle there must measure?",
+      "choices": [
+        "108°",
+        "72°",
+        "144°",
+        "18°"
+      ],
+      "answerIndex": 0,
+      "solution": "Co-interior partners must total 180: 180 − 72 = 108°. 72 works only in the alternate or corresponding position — same number, wrong seat, crossed lines.",
+      "checkExpr": "180-72",
+      "translations": {
+        "hi": {
+          "stem": "समांतर रेखा के लिए आप 72° का कोण नक़ल करते हैं, पर नक़ल एक-ही-ओर के अंतःकोण की जगह रख देते हैं। रेखाएँ समांतर रहें, इसके लिए वहाँ का कोण कितना होना चाहिए?",
+          "choices": [
+            "108°",
+            "72°",
+            "144°",
+            "18°"
+          ],
+          "solution": "एक-ओर के साथी 180 तक जुड़ने चाहिए: 180 − 72 = 108°। 72 केवल एकांतर या संगत स्थान पर चलता है — वही संख्या, ग़लत कुर्सी, कटती रेखाएँ।"
+        },
+        "mr": {
+          "stem": "समांतर रेषेसाठी 72° चा कोन नक्कल करता, पण नक्कल एकाच-बाजूच्या आंतरकोनाच्या जागी ठेवता. रेषा समांतर राहण्यासाठी तिथला कोन किती हवा?",
+          "choices": [
+            "108°",
+            "72°",
+            "144°",
+            "18°"
+          ],
+          "solution": "एका-बाजूच्या जोडीदारांची बेरीज 180 हवी: 180 − 72 = 108°. 72 फक्त व्युत्क्रम किंवा संगत जागी चालतो — तीच संख्या, चुकीची खुर्ची, छेदणाऱ्या रेषा."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A right triangle is to be built with hypotenuse 13 cm and one leg 5 cm. What will the other leg measure, in cm?",
+      "choices": [
+        "8",
+        "12",
+        "65",
+        "18"
+      ],
+      "answerIndex": 1,
+      "solution": "13² − 5² = 169 − 25 = 144, and 144 = 12² — the other leg is 12 cm, the famous 5-12-13 family. 8 subtracts lengths; 18 adds them.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कर्ण 13 सेमी और एक भुजा 5 सेमी वाला समकोण त्रिभुज बनाना है। दूसरी भुजा कितने सेमी निकलेगी?",
+          "choices": [
+            "8",
+            "12",
+            "65",
+            "18"
+          ],
+          "solution": "13² − 5² = 169 − 25 = 144, और 144 = 12² — दूसरी भुजा 12 सेमी, प्रसिद्ध 5-12-13 परिवार। 8 लंबाइयाँ घटाता है; 18 जोड़ता है।"
+        },
+        "mr": {
+          "stem": "कर्ण 13 सेमी आणि एक बाजू 5 सेमी असलेला काटकोन त्रिकोण बनवायचा आहे. दुसरी बाजू किती सेमी निघेल?",
+          "choices": [
+            "8",
+            "12",
+            "65",
+            "18"
+          ],
+          "solution": "13² − 5² = 169 − 25 = 144, आणि 144 = 12² — दुसरी बाजू 12 सेमी, प्रसिद्ध 5-12-13 कुटुंब. 8 लांब्या वजा करतो; 18 जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "You construct an isosceles triangle with equal sides 6 cm and base 4 cm. What is the perimeter of the finished triangle, in cm?",
+      "choices": [
+        "24",
+        "16",
+        "10",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "6 + 6 + 4 = 16 cm. 12 counts the equal pair only; 10 takes one of each; 24 promotes the base to 6 as well.",
+      "checkExpr": "6+6+4",
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी की बराबर भुजाओं और 4 सेमी के आधार वाला समद्विबाहु त्रिभुज बनाते हैं। बने त्रिभुज का परिमाप कितने सेमी?",
+          "choices": [
+            "24",
+            "16",
+            "10",
+            "12"
+          ],
+          "solution": "6 + 6 + 4 = 16 सेमी। 12 केवल बराबर जोड़ी गिनता है; 10 हर तरह की एक-एक लेता है; 24 आधार को भी 6 बना देता है।"
+        },
+        "mr": {
+          "stem": "6 सेमी च्या समान बाजू आणि 4 सेमी पाया असलेला समद्विभुज त्रिकोण काढता. तयार त्रिकोणाची परिमिती किती सेमी?",
+          "choices": [
+            "24",
+            "16",
+            "10",
+            "12"
+          ],
+          "solution": "6 + 6 + 4 = 16 सेमी. 12 फक्त समान जोडी मोजतो; 10 प्रत्येकी एक घेतो; 24 पायालाही 6 करून टाकतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "With ruler and compasses you construct 60°, bisect it to 30°, then bisect once more. What is the final angle?",
+      "choices": [
+        "7.5°",
+        "20°",
+        "30°",
+        "15°"
+      ],
+      "answerIndex": 3,
+      "solution": "Each bisection halves: 60 → 30 → 15°. The compass never measures — it only builds 60 and then halves its way to whatever 60/2ⁿ you need.",
+      "checkExpr": "60/4",
+      "translations": {
+        "hi": {
+          "stem": "रूलर-परकार से 60° बनाकर उसे 30° में समद्विभाजित करते हैं, फिर एक बार और। अंतिम कोण कितना?",
+          "choices": [
+            "7.5°",
+            "20°",
+            "30°",
+            "15°"
+          ],
+          "solution": "हर समद्विभाजन आधा करता है: 60 → 30 → 15°। परकार कभी नापता नहीं — वह बस 60 बनाता है और फिर आधा-आधा करते हुए जिस 60/2ⁿ की ज़रूरत हो वहाँ पहुँचता है।"
+        },
+        "mr": {
+          "stem": "पट्टी-कंपासाने 60° करून त्याला 30° मध्ये दुभागता, मग आणखी एकदा. अंतिम कोन किती?",
+          "choices": [
+            "7.5°",
+            "20°",
+            "30°",
+            "15°"
+          ],
+          "solution": "प्रत्येक दुभाजन निम्मे करते: 60 → 30 → 15°. कंपास कधी मोजत नाही — तो फक्त 60 बांधतो आणि मग निम्मे-निम्मे करत हव्या त्या 60/2ⁿ वर पोहोचतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Up to congruence, how many DIFFERENT triangles have sides exactly 5 cm, 12 cm and 13 cm?",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Exactly 1: three sides pin the triangle completely — that is WHY SSS earns its place among the congruence tests. Flips and turns give the same triangle wearing a different pose.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सर्वांगसमता तक, ठीक 5 सेमी, 12 सेमी और 13 सेमी भुजाओं वाले कितने अलग त्रिभुज हैं?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "3"
+          ],
+          "solution": "ठीक 1: तीन भुजाएँ त्रिभुज को पूरी तरह जड़ देती हैं — इसीलिए SSS सर्वांगसमता-जाँचों में जगह पाता है। पलटने-घुमाने से वही त्रिभुज दूसरी मुद्रा में मिलता है।"
+        },
+        "mr": {
+          "stem": "एकरूपतेपर्यंत, नेमक्या 5 सेमी, 12 सेमी आणि 13 सेमी बाजूंचे किती वेगळे त्रिकोण आहेत?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "3"
+          ],
+          "solution": "नेमका 1: तीन बाजू त्रिकोणाला पूर्ण जखडतात — म्हणूनच SSS ला एकरूपता-चाचण्यांत स्थान आहे. उलटवणे-फिरवणे म्हणजे तोच त्रिकोण वेगळ्या पवित्र्यात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A draftsman wants a line through P parallel to line l, and draws transversal PQ making 48° with l. What ALTERNATE angle must he construct at P?",
+      "choices": [
+        "42°",
+        "132°",
+        "96°",
+        "48°"
+      ],
+      "answerIndex": 3,
+      "solution": "Equal alternate angles FORCE parallelism — copy the 48° exactly. This is the whole construction: one transversal, one faithfully copied angle, and the new line can never meet l.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक नक़्शानवीस P से होकर रेखा l के समांतर रेखा चाहता है, और l से 48° बनाती तिर्यक रेखा PQ खींचता है। P पर उसे कितने का एकांतर कोण बनाना होगा?",
+          "choices": [
+            "42°",
+            "132°",
+            "96°",
+            "48°"
+          ],
+          "solution": "बराबर एकांतर कोण समांतरता को विवश करते हैं — 48° की हूबहू नक़ल कीजिए। यही पूरी रचना है: एक तिर्यक रेखा, एक ईमानदार नक़ल का कोण, और नई रेखा l से कभी नहीं मिल सकती।"
+        },
+        "mr": {
+          "stem": "एका आरेखकाला P मधून रेषा l ला समांतर रेषा हवी आहे, आणि तो l शी 48° करणारी छेदिका PQ काढतो. P वर त्याला किती अंशांचा व्युत्क्रम कोन बांधावा लागेल?",
+          "choices": [
+            "42°",
+            "132°",
+            "96°",
+            "48°"
+          ],
+          "solution": "समान व्युत्क्रम कोन समांतरता भाग पाडतात — 48° ची हुबेहूब नक्कल करा. हीच सारी रचना: एक छेदिका, एक इमानी नक्कल केलेला कोन, आणि नवी रेषा l ला कधीच भेटू शकत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "150° is constructible as 90° + 60°. Bisecting it gives which single angle — one no simpler construction reaches?",
+      "choices": [
+        "75°",
+        "105°",
+        "37.5°",
+        "70°"
+      ],
+      "answerIndex": 0,
+      "solution": "150 ÷ 2 = 75°. The compass's craft is exactly this: build what you can by adding 60s and 90s, then bisect your way to the target — 75 = (90 + 60)/2.",
+      "checkExpr": "150/2",
+      "translations": {
+        "hi": {
+          "stem": "150°, 90° + 60° के रूप में रचनीय है। उसे समद्विभाजित करने पर कौन-सा अकेला कोण मिलता है — जिस तक कोई सरल रचना नहीं पहुँचती?",
+          "choices": [
+            "75°",
+            "105°",
+            "37.5°",
+            "70°"
+          ],
+          "solution": "150 ÷ 2 = 75°। परकार का हुनर यही है: 60 और 90 जोड़कर जो बने वह बनाइए, फिर आधा-आधा करते लक्ष्य तक पहुँचिए — 75 = (90 + 60)/2।"
+        },
+        "mr": {
+          "stem": "150° हे 90° + 60° म्हणून रचनीय आहे. त्याला दुभागल्यास कोणता एकच कोन मिळतो — जिथे अधिक सोपी रचना पोहोचत नाही?",
+          "choices": [
+            "75°",
+            "105°",
+            "37.5°",
+            "70°"
+          ],
+          "solution": "150 ÷ 2 = 75°. कंपासाची कारागिरी हीच: 60 आणि 90 जोडून जे बांधता येते ते बांधा, मग दुभागत लक्ष्यापर्यंत पोहोचा — 75 = (90 + 60)/2."
+        }
+      }
+    }
+  ]
+}

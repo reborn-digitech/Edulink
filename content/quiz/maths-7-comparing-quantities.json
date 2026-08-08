@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 8 — Comparing Quantities",
+  "name": "Comparing Quantities",
+  "slug": "maths-7-comparing-quantities",
+  "summary": "Percent as per-hundred, profit standing on the cost, interest walking P×R×T — and the up-ten-down-ten round trip that quietly loses one per cent.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "राशियों की तुलना",
+      "summary": "प्रति-सौ के रूप में प्रतिशत, लागत पर खड़ा लाभ, P×R×T चलता ब्याज — और दस-ऊपर-दस-नीचे की वह यात्रा जो चुपचाप एक प्रतिशत गँवा देती है।"
+    },
+    "mr": {
+      "name": "राशींची तुलना",
+      "summary": "दर-शंभरामागे टक्के, खरेदीवर उभा नफा, P×R×T चालणारे व्याज — आणि दहा-वर-दहा-खाली ची फेरी जी गुपचूप एक टक्का गमावते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Write 3/4 as a percentage.",
+      "choices": [
+        "80%",
+        "43%",
+        "34%",
+        "75%"
+      ],
+      "answerIndex": 3,
+      "solution": "Per cent means per hundred: 3/4 × 100 = 75%. 34 just glues the digits together; a fraction is a division, not a costume.",
+      "checkExpr": "3*100/4",
+      "translations": {
+        "hi": {
+          "stem": "3/4 को प्रतिशत में लिखिए।",
+          "choices": [
+            "80%",
+            "43%",
+            "34%",
+            "75%"
+          ],
+          "solution": "प्रतिशत यानी प्रति सौ: 3/4 × 100 = 75%। 34 बस अंक चिपका देता है; भिन्न एक भाग है, वेशभूषा नहीं।"
+        },
+        "mr": {
+          "stem": "3/4 टक्केवारीत लिहा.",
+          "choices": [
+            "80%",
+            "43%",
+            "34%",
+            "75%"
+          ],
+          "solution": "टक्के म्हणजे दर शंभरामागे: 3/4 × 100 = 75%. 34 नुसते आकडे चिकटवतो; अपूर्णांक हा भागाकार आहे, वेशभूषा नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 50% of 90?",
+      "choices": [
+        "55",
+        "180",
+        "40",
+        "45"
+      ],
+      "answerIndex": 3,
+      "solution": "50% is one half: 90 ÷ 2 = 45. 180 doubles instead of halving — 50% of a thing can never exceed the thing.",
+      "checkExpr": "90/2",
+      "translations": {
+        "hi": {
+          "stem": "90 का 50% कितना है?",
+          "choices": [
+            "55",
+            "180",
+            "40",
+            "45"
+          ],
+          "solution": "50% यानी आधा: 90 ÷ 2 = 45। 180 आधे की जगह दुगुना कर देता है — किसी चीज़ का 50% उससे बड़ा नहीं हो सकता।"
+        },
+        "mr": {
+          "stem": "90 चे 50% किती?",
+          "choices": [
+            "55",
+            "180",
+            "40",
+            "45"
+          ],
+          "solution": "50% म्हणजे अर्धे: 90 ÷ 2 = 45. 180 अर्ध्याऐवजी दुप्पट करतो — कशाचेही 50% त्याहून मोठे असू शकत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The ratio 8 : 12 in simplest form is 2 : ▢. What fills the box?",
+      "choices": [
+        "12",
+        "3",
+        "6",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Divide both parts by their HCF 4: 8 : 12 becomes 2 : 3. 6 divides only one side — a ratio must shrink both arms together.",
+      "checkExpr": "12/4",
+      "translations": {
+        "hi": {
+          "stem": "अनुपात 8 : 12 का सरलतम रूप 2 : ▢ है। रिक्त स्थान में क्या आएगा?",
+          "choices": [
+            "12",
+            "3",
+            "6",
+            "4"
+          ],
+          "solution": "दोनों पक्षों को म.स. 4 से भाग दीजिए: 8 : 12 बनता है 2 : 3। 6 केवल एक पक्ष को भागता है — अनुपात की दोनों बाहें साथ सिकुड़नी चाहिए।"
+        },
+        "mr": {
+          "stem": "गुणोत्तर 8 : 12 चे सोपे रूप 2 : ▢ आहे. रिकाम्या जागी काय येईल?",
+          "choices": [
+            "12",
+            "3",
+            "6",
+            "4"
+          ],
+          "solution": "दोन्ही भागांना म.सा.वि. 4 ने भागा: 8 : 12 होते 2 : 3. 6 फक्त एका बाजूला भागतो — गुणोत्तराचे दोन्ही हात एकत्र आखडले पाहिजेत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a class of 40 children, 25% wear glasses. How many children is that?",
+      "choices": [
+        "30",
+        "10",
+        "4",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "25% is a quarter: 40 ÷ 4 = 10. 25 repeats the percentage as if it were a count; 30 answers those WITHOUT glasses.",
+      "checkExpr": "40/4",
+      "translations": {
+        "hi": {
+          "stem": "40 बच्चों की कक्षा में 25% चश्मा पहनते हैं। वे कितने बच्चे हुए?",
+          "choices": [
+            "30",
+            "10",
+            "4",
+            "25"
+          ],
+          "solution": "25% यानी चौथाई: 40 ÷ 4 = 10। 25 प्रतिशत को ही गिनती मान बैठता है; 30 बिना चश्मे वालों का उत्तर है।"
+        },
+        "mr": {
+          "stem": "40 मुलांच्या वर्गात 25% चष्मा घालतात. ती किती मुले?",
+          "choices": [
+            "30",
+            "10",
+            "4",
+            "25"
+          ],
+          "solution": "25% म्हणजे पाव: 40 ÷ 4 = 10. 25 टक्केवारीलाच मोजणी मानतो; 30 चष्मा नसलेल्यांचे उत्तर."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Write 0.35 as a percentage.",
+      "choices": [
+        "350%",
+        "65%",
+        "3.5%",
+        "35%"
+      ],
+      "answerIndex": 3,
+      "solution": "0.35 is 35/100, so 35%. 3.5 moves the point only one place; 65 answers the complement — what 0.35 leaves BEHIND.",
+      "checkExpr": "7*100/20",
+      "translations": {
+        "hi": {
+          "stem": "0.35 को प्रतिशत में लिखिए।",
+          "choices": [
+            "350%",
+            "65%",
+            "3.5%",
+            "35%"
+          ],
+          "solution": "0.35 यानी 35/100, अतः 35%। 3.5 बिंदु को एक ही स्थान सरकाता है; 65 पूरक का उत्तर है — जो 0.35 पीछे छोड़ता है।"
+        },
+        "mr": {
+          "stem": "0.35 टक्केवारीत लिहा.",
+          "choices": [
+            "350%",
+            "65%",
+            "3.5%",
+            "35%"
+          ],
+          "solution": "0.35 म्हणजे 35/100, म्हणून 35%. 3.5 बिंदू फक्त एक घर सरकवतो; 65 पूरकाचे उत्तर — 0.35 जे मागे ठेवते ते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A team won 6 of its 8 matches. What percentage did it win?",
+      "choices": [
+        "80%",
+        "68%",
+        "75%",
+        "60%"
+      ],
+      "answerIndex": 2,
+      "solution": "6/8 × 100 = 75%. 68 glues the two counts into digits; 60 divides by ten matches that were never played.",
+      "checkExpr": "6*100/8",
+      "translations": {
+        "hi": {
+          "stem": "एक टीम ने 8 में से 6 मैच जीते। उसने कितने प्रतिशत जीते?",
+          "choices": [
+            "80%",
+            "68%",
+            "75%",
+            "60%"
+          ],
+          "solution": "6/8 × 100 = 75%। 68 दोनों गिनतियों को अंकों में चिपका देता है; 60 उन दस मैचों से भाग देता है जो खेले ही नहीं गए।"
+        },
+        "mr": {
+          "stem": "एका संघाने 8 पैकी 6 सामने जिंकले. त्याने किती टक्के जिंकले?",
+          "choices": [
+            "80%",
+            "68%",
+            "75%",
+            "60%"
+          ],
+          "solution": "6/8 × 100 = 75%. 68 दोन्ही मोजण्या आकड्यांत चिकटवतो; 60 कधी न खेळलेल्या दहा सामन्यांनी भागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A trader buys a lamp for ₹250 and sells it for ₹300. What is the profit per cent?",
+      "choices": [
+        "16%",
+        "50%",
+        "25%",
+        "20%"
+      ],
+      "answerIndex": 3,
+      "solution": "Profit ₹50 on a cost of ₹250: 50/250 × 100 = 20%. 16 divides by the selling price — profit per cent always stands on the COST.",
+      "checkExpr": "(300-250)*100/250",
+      "translations": {
+        "hi": {
+          "stem": "व्यापारी ₹250 में दीपक ख़रीदकर ₹300 में बेचता है। लाभ प्रतिशत कितना?",
+          "choices": [
+            "16%",
+            "50%",
+            "25%",
+            "20%"
+          ],
+          "solution": "₹250 की लागत पर ₹50 लाभ: 50/250 × 100 = 20%। 16 विक्रय-मूल्य से भाग देता है — लाभ प्रतिशत सदा लागत पर खड़ा होता है।"
+        },
+        "mr": {
+          "stem": "व्यापारी ₹250 ला दिवा घेऊन ₹300 ला विकतो. नफा शेकडा किती?",
+          "choices": [
+            "16%",
+            "50%",
+            "25%",
+            "20%"
+          ],
+          "solution": "₹250 च्या खरेदीवर ₹50 नफा: 50/250 × 100 = 20%. 16 विक्री-किमतीने भागतो — नफा शेकडा नेहमी खरेदीवर उभा असतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the simple interest on ₹2000 at 5% per year for 3 years?",
+      "choices": [
+        "₹300",
+        "₹30",
+        "₹100",
+        "₹2300"
+      ],
+      "answerIndex": 0,
+      "solution": "I = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300. 100 counts one year only; 2300 answers the AMOUNT, principal included.",
+      "checkExpr": "2000*5*3/100",
+      "translations": {
+        "hi": {
+          "stem": "₹2000 पर 5% वार्षिक दर से 3 वर्ष का साधारण ब्याज कितना?",
+          "choices": [
+            "₹300",
+            "₹30",
+            "₹100",
+            "₹2300"
+          ],
+          "solution": "ब्याज = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300। 100 केवल एक वर्ष गिनता है; 2300 मिश्रधन का उत्तर है, मूलधन समेत।"
+        },
+        "mr": {
+          "stem": "₹2000 वर 5% वार्षिक दराने 3 वर्षांचे सरळ व्याज किती?",
+          "choices": [
+            "₹300",
+            "₹30",
+            "₹100",
+            "₹2300"
+          ],
+          "solution": "व्याज = P×R×T/100 = 2000 × 5 × 3 ÷ 100 = ₹300. 100 फक्त एक वर्ष मोजतो; 2300 रासाचे उत्तर, मुद्दलासकट."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "₹120 is divided between two children in the ratio 2 : 3. What is the LARGER share?",
+      "choices": [
+        "₹60",
+        "₹72",
+        "₹48",
+        "₹80"
+      ],
+      "answerIndex": 1,
+      "solution": "Five parts of ₹24 each: the larger share takes 3 parts, ₹72. 48 is the smaller share; 60 splits equally and ignores the ratio.",
+      "checkExpr": "120*3/5",
+      "translations": {
+        "hi": {
+          "stem": "₹120 दो बच्चों में 2 : 3 के अनुपात में बाँटे जाते हैं। बड़ा हिस्सा कितना?",
+          "choices": [
+            "₹60",
+            "₹72",
+            "₹48",
+            "₹80"
+          ],
+          "solution": "₹24 के पाँच भाग: बड़ा हिस्सा 3 भाग लेता है, ₹72। 48 छोटा हिस्सा है; 60 बराबर बाँटकर अनुपात को अनदेखा करता है।"
+        },
+        "mr": {
+          "stem": "₹120 दोन मुलांत 2 : 3 या गुणोत्तरात वाटले जातात. मोठा वाटा किती?",
+          "choices": [
+            "₹60",
+            "₹72",
+            "₹48",
+            "₹80"
+          ],
+          "solution": "प्रत्येकी ₹24 चे पाच भाग: मोठा वाटा 3 भाग घेतो, ₹72. 48 हा लहान वाटा; 60 सारखे वाटून गुणोत्तराकडे दुर्लक्ष करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A price rises from ₹40 to ₹50. What is the percentage increase?",
+      "choices": [
+        "25%",
+        "20%",
+        "10%",
+        "80%"
+      ],
+      "answerIndex": 0,
+      "solution": "The rise of 10 stands on the ORIGINAL 40: 10/40 × 100 = 25%. 20 measures against the new 50 — the base is always where you started.",
+      "checkExpr": "(50-40)*100/40",
+      "translations": {
+        "hi": {
+          "stem": "क़ीमत ₹40 से ₹50 हो जाती है। प्रतिशत वृद्धि कितनी?",
+          "choices": [
+            "25%",
+            "20%",
+            "10%",
+            "80%"
+          ],
+          "solution": "10 की वृद्धि मूल 40 पर खड़ी है: 10/40 × 100 = 25%। 20 नए 50 से नापता है — आधार सदा वही जहाँ से चले थे।"
+        },
+        "mr": {
+          "stem": "किंमत ₹40 वरून ₹50 होते. शेकडा वाढ किती?",
+          "choices": [
+            "25%",
+            "20%",
+            "10%",
+            "80%"
+          ],
+          "solution": "10 ची वाढ मूळ 40 वर उभी: 10/40 × 100 = 25%. 20 नव्या 50 ने मोजतो — पाया नेहमी जिथून निघालो तिथेच."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An item bought for ₹800 is sold at a 15% loss. What is the selling price?",
+      "choices": [
+        "₹680",
+        "₹120",
+        "₹685",
+        "₹920"
+      ],
+      "answerIndex": 0,
+      "solution": "The loss is 15% of 800 = ₹120, so the price falls to 800 − 120 = ₹680. 120 stops at the loss itself; 920 ADDS it, turning loss into profit.",
+      "checkExpr": "800-800*15/100",
+      "translations": {
+        "hi": {
+          "stem": "₹800 में ख़रीदी वस्तु 15% हानि पर बेची जाती है। विक्रय-मूल्य कितना?",
+          "choices": [
+            "₹680",
+            "₹120",
+            "₹685",
+            "₹920"
+          ],
+          "solution": "हानि = 800 का 15% = ₹120, अतः दाम गिरकर 800 − 120 = ₹680। 120 हानि पर ही रुक जाता है; 920 उसे जोड़कर हानि को लाभ बना देता है।"
+        },
+        "mr": {
+          "stem": "₹800 ला घेतलेली वस्तू 15% तोट्याने विकली जाते. विक्री-किंमत किती?",
+          "choices": [
+            "₹680",
+            "₹120",
+            "₹685",
+            "₹920"
+          ],
+          "solution": "तोटा = 800 चे 15% = ₹120, म्हणून किंमत उतरून 800 − 120 = ₹680. 120 तोट्यावरच थांबतो; 920 तो मिळवून तोट्याचा नफा करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A deposit earns ₹250 of simple interest in 2 years at 5% per year. What was the principal?",
+      "choices": [
+        "₹5000",
+        "₹1250",
+        "₹2500",
+        "₹250"
+      ],
+      "answerIndex": 2,
+      "solution": "Run the formula backwards: P = 100 × I ÷ (R × T) = 25000 ÷ 10 = ₹2500. 1250 forgets the second year; 5000 forgets half the rate.",
+      "checkExpr": "250*100/(5*2)",
+      "translations": {
+        "hi": {
+          "stem": "एक जमा राशि 5% वार्षिक दर से 2 वर्षों में ₹250 साधारण ब्याज कमाती है। मूलधन कितना था?",
+          "choices": [
+            "₹5000",
+            "₹1250",
+            "₹2500",
+            "₹250"
+          ],
+          "solution": "सूत्र उल्टा चलाइए: P = 100 × ब्याज ÷ (दर × समय) = 25000 ÷ 10 = ₹2500। 1250 दूसरा वर्ष भूलता है; 5000 आधी दर।"
+        },
+        "mr": {
+          "stem": "एक ठेव 5% वार्षिक दराने 2 वर्षांत ₹250 सरळ व्याज मिळवते. मुद्दल किती होते?",
+          "choices": [
+            "₹5000",
+            "₹1250",
+            "₹2500",
+            "₹250"
+          ],
+          "solution": "सूत्र उलटे चालवा: P = 100 × व्याज ÷ (दर × काळ) = 25000 ÷ 10 = ₹2500. 1250 दुसरे वर्ष विसरतो; 5000 अर्धा दर."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a school, 40% of the students walk to school; the other 540 come some other way. How many students are there in all?",
+      "choices": [
+        "810",
+        "1350",
+        "216",
+        "900"
+      ],
+      "answerIndex": 3,
+      "solution": "Careful: 540 is the OTHER 60%. One per cent is 540 ÷ 60 = 9, so the whole is 900. 1350 pins 540 to the 40%; 216 takes 40% of 540 itself.",
+      "checkExpr": "540*100/60",
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यालय में 40% विद्यार्थी पैदल आते हैं; बाक़ी 540 किसी और तरह। कुल विद्यार्थी कितने?",
+          "choices": [
+            "810",
+            "1350",
+            "216",
+            "900"
+          ],
+          "solution": "सावधान: 540 बाक़ी 60% है। एक प्रतिशत = 540 ÷ 60 = 9, अतः कुल 900। 1350 540 को 40% मान बैठता है; 216 540 का ही 40% निकाल लेता है।"
+        },
+        "mr": {
+          "stem": "एका शाळेत 40% विद्यार्थी चालत येतात; उरलेले 540 अन्य मार्गाने. एकूण विद्यार्थी किती?",
+          "choices": [
+            "810",
+            "1350",
+            "216",
+            "900"
+          ],
+          "solution": "सावध: 540 म्हणजे उरलेले 60%. एक टक्का = 540 ÷ 60 = 9, म्हणून एकूण 900. 1350 540 ला 40% मानतो; 216 540 चेच 40% काढतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A chair sells for ₹276 at a profit of 15%. What did it COST the seller?",
+      "choices": [
+        "₹261",
+        "₹240",
+        "₹235",
+        "₹317"
+      ],
+      "answerIndex": 1,
+      "solution": "₹276 is 115% of the cost, so the cost is 276 × 100 ÷ 115 = ₹240. 235 takes 15% OFF the selling price — but the 15% was measured on the cost, not the sale.",
+      "checkExpr": "276*100/115",
+      "translations": {
+        "hi": {
+          "stem": "एक कुर्सी 15% लाभ पर ₹276 में बिकती है। विक्रेता को वह कितने की पड़ी थी?",
+          "choices": [
+            "₹261",
+            "₹240",
+            "₹235",
+            "₹317"
+          ],
+          "solution": "₹276 लागत का 115% है, अतः लागत = 276 × 100 ÷ 115 = ₹240। 235 विक्रय-मूल्य में से 15% घटा देता है — पर वह 15% लागत पर नपा था, बिक्री पर नहीं।"
+        },
+        "mr": {
+          "stem": "एक खुर्ची 15% नफ्याने ₹276 ला विकली जाते. विक्रेत्याला ती किती किमतीत पडली होती?",
+          "choices": [
+            "₹261",
+            "₹240",
+            "₹235",
+            "₹317"
+          ],
+          "solution": "₹276 हे खरेदीचे 115% आहे, म्हणून खरेदी = 276 × 100 ÷ 115 = ₹240. 235 विक्री-किमतीतून 15% काढतो — पण ते 15% खरेदीवर मोजले होते, विक्रीवर नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A price rises by 10% and then falls by 10%. What is the final price, as a percentage of the original?",
+      "choices": [
+        "101%",
+        "99%",
+        "100%",
+        "98%"
+      ],
+      "answerIndex": 1,
+      "solution": "Up 10% lands at 110; the fall of 10% is now measured on the BIGGER number, taking 11, not 10: 110 − 11 = 99%. The two moves feel like twins but stand on different bases — the round trip always loses.",
+      "checkExpr": "110*90/100",
+      "translations": {
+        "hi": {
+          "stem": "एक क़ीमत 10% बढ़ती है और फिर 10% गिरती है। अंतिम क़ीमत, मूल की कितनी प्रतिशत?",
+          "choices": [
+            "101%",
+            "99%",
+            "100%",
+            "98%"
+          ],
+          "solution": "10% चढ़कर 110 पर; अब 10% की गिरावट बड़ी संख्या पर नपती है — 11 जाती है, 10 नहीं: 110 − 11 = 99%। दोनों चालें जुड़वाँ लगती हैं पर आधार अलग-अलग हैं — आना-जाना सदा घाटे में रहता है।"
+        },
+        "mr": {
+          "stem": "एक किंमत 10% वाढते आणि मग 10% घसरते. अंतिम किंमत, मूळ किमतीच्या किती टक्के?",
+          "choices": [
+            "101%",
+            "99%",
+            "100%",
+            "98%"
+          ],
+          "solution": "10% चढून 110 वर; आता 10% ची घसरण मोठ्या संख्येवर मोजली जाते — 11 जाते, 10 नाही: 110 − 11 = 99%. दोन्ही चाली जुळ्या वाटतात पण पाये वेगळे — फेरी नेहमी तोट्यात."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "At what rate per cent per year does ₹4000 earn ₹600 of simple interest in 3 years?",
+      "choices": [
+        "7.5%",
+        "2%",
+        "15%",
+        "5%"
+      ],
+      "answerIndex": 3,
+      "solution": "R = 100 × I ÷ (P × T) = 60000 ÷ 12000 = 5%. 15 forgets to divide by the three years; 7.5 divides by two of them.",
+      "checkExpr": "600*100/(4000*3)",
+      "translations": {
+        "hi": {
+          "stem": "किस वार्षिक प्रतिशत दर से ₹4000 पर 3 वर्षों में ₹600 साधारण ब्याज मिलता है?",
+          "choices": [
+            "7.5%",
+            "2%",
+            "15%",
+            "5%"
+          ],
+          "solution": "दर = 100 × ब्याज ÷ (मूलधन × समय) = 60000 ÷ 12000 = 5%। 15 तीन वर्षों से भाग देना भूल जाता है; 7.5 केवल दो से देता है।"
+        },
+        "mr": {
+          "stem": "कोणत्या वार्षिक शेकडा दराने ₹4000 वर 3 वर्षांत ₹600 सरळ व्याज मिळते?",
+          "choices": [
+            "7.5%",
+            "2%",
+            "15%",
+            "5%"
+          ],
+          "solution": "दर = 100 × व्याज ÷ (मुद्दल × काळ) = 60000 ÷ 12000 = 5%. 15 तीन वर्षांनी भागायला विसरतो; 7.5 फक्त दोनने भागतो."
+        }
+      }
+    }
+  ]
+}

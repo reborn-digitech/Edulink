@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 6 — The Triangle and its Properties",
+  "name": "The Triangle and its Properties",
+  "slug": "maths-7-triangle-and-its-properties",
+  "summary": "Angles that must total 180, exterior angles equal to their far partners, sides that must reach each other — and Pythagoras measuring ladders and broken trees.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "त्रिभुज एवं उसके गुण",
+      "summary": "कोण जिनका योग 180 होना ही है, बाह्य कोण जो दूर के साथियों के बराबर, भुजाएँ जिन्हें एक-दूसरे तक पहुँचना ही है — और सीढ़ियाँ व टूटे पेड़ नापता पाइथागोरस।"
+    },
+    "mr": {
+      "name": "त्रिकोण आणि त्याचे गुणधर्म",
+      "summary": "बेरीज 180 व्हावीच लागणारे कोन, दूरच्या जोडीदारांइतके बाह्यकोन, एकमेकींपर्यंत पोहोचाव्याच लागणाऱ्या बाजू — आणि शिड्या व मोडलेली झाडे मोजणारा पायथागोरस."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Two angles of a triangle are 60° and 70°. What is the third?",
+      "choices": [
+        "50°",
+        "30°",
+        "130°",
+        "110°"
+      ],
+      "answerIndex": 0,
+      "solution": "The three angles always total 180°: 180 − 60 − 70 = 50°. 130 stops after subtracting only one angle; 110 is just the two given ones added.",
+      "checkExpr": "180-60-70",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के दो कोण 60° और 70° हैं। तीसरा कितना?",
+          "choices": [
+            "50°",
+            "30°",
+            "130°",
+            "110°"
+          ],
+          "solution": "तीनों कोणों का योग सदा 180°: 180 − 60 − 70 = 50°। 130 केवल एक कोण घटाकर रुक जाता है; 110 दिए दोनों का योग भर है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे दोन कोन 60° आणि 70° आहेत. तिसरा किती?",
+          "choices": [
+            "50°",
+            "30°",
+            "130°",
+            "110°"
+          ],
+          "solution": "तिन्ही कोनांची बेरीज नेहमी 180°: 180 − 60 − 70 = 50°. 130 फक्त एक कोन वजा करून थांबतो; 110 म्हणजे दिलेल्या दोघांची नुसती बेरीज."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many medians does every triangle have?",
+      "choices": [
+        "6",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "One from each vertex to the midpoint of the opposite side: 3 in all. 6 counts the altitudes in as well — those are a different threesome.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हर त्रिभुज में कितनी माध्यिकाएँ होती हैं?",
+          "choices": [
+            "6",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "हर शीर्ष से सामने की भुजा के मध्य-बिंदु तक एक: कुल 3। 6 शीर्षलंबों को भी गिन लेता है — वे अलग तिकड़ी हैं।"
+        },
+        "mr": {
+          "stem": "प्रत्येक त्रिकोणाला किती मध्यगा असतात?",
+          "choices": [
+            "6",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "प्रत्येक शिरोबिंदूपासून समोरच्या बाजूच्या मध्यबिंदूपर्यंत एक: एकूण 3. 6 शिरोलंबही मोजतो — ती वेगळी त्रिकुटी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Each angle of an equilateral triangle measures?",
+      "choices": [
+        "45°",
+        "90°",
+        "60°",
+        "120°"
+      ],
+      "answerIndex": 2,
+      "solution": "Three equal angles share 180°: each gets 60°. 90 belongs to squares and right angles; 120 is the EXTERIOR angle at each corner.",
+      "checkExpr": "180/3",
+      "translations": {
+        "hi": {
+          "stem": "समबाहु त्रिभुज का हर कोण कितने का होता है?",
+          "choices": [
+            "45°",
+            "90°",
+            "60°",
+            "120°"
+          ],
+          "solution": "तीन बराबर कोण 180° बाँटते हैं: हर एक को 60°। 90 वर्गों और समकोणों का है; 120 हर कोने का बाह्य कोण है।"
+        },
+        "mr": {
+          "stem": "समभुज त्रिकोणाचा प्रत्येक कोन किती अंशांचा असतो?",
+          "choices": [
+            "45°",
+            "90°",
+            "60°",
+            "120°"
+          ],
+          "solution": "तीन समान कोन 180° वाटून घेतात: प्रत्येकाला 60°. 90 चौरस आणि काटकोनांचा; 120 हा प्रत्येक कोपऱ्याचा बाह्यकोन."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The two interior opposite angles of a triangle are 40° and 60°. What is the exterior angle at the third vertex?",
+      "choices": [
+        "20°",
+        "100°",
+        "80°",
+        "120°"
+      ],
+      "answerIndex": 1,
+      "solution": "An exterior angle equals the SUM of the two interior opposite angles: 40 + 60 = 100°. 80 is the interior angle at that vertex, its linear-pair partner.",
+      "checkExpr": "40+60",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के दो अंतः विपरीत कोण 40° और 60° हैं। तीसरे शीर्ष पर बाह्य कोण कितना?",
+          "choices": [
+            "20°",
+            "100°",
+            "80°",
+            "120°"
+          ],
+          "solution": "बाह्य कोण दोनों अंतः विपरीत कोणों के योग के बराबर होता है: 40 + 60 = 100°। 80 उसी शीर्ष का अंतः कोण है, उसका रैखिक-युग्म साथी।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे दोन आंतरिक विरुद्ध कोन 40° आणि 60° आहेत. तिसऱ्या शिरोबिंदूवरील बाह्यकोन किती?",
+          "choices": [
+            "20°",
+            "100°",
+            "80°",
+            "120°"
+          ],
+          "solution": "बाह्यकोन दोन आंतरिक विरुद्ध कोनांच्या बेरजेइतका असतो: 40 + 60 = 100°. 80 हा त्याच शिरोबिंदूचा आंतरकोन, त्याचा रेषीय-जोडी साथी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An isosceles triangle has a vertex angle of 40° between its two equal sides. What is each base angle?",
+      "choices": [
+        "140°",
+        "55°",
+        "70°",
+        "40°"
+      ],
+      "answerIndex": 2,
+      "solution": "The remaining 140° splits equally between the two base angles: 70° each. 140 forgets to split; 40 copies the vertex angle onto the base.",
+      "checkExpr": "(180-40)/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज की दो बराबर भुजाओं के बीच शीर्ष कोण 40° है। हर आधार कोण कितना?",
+          "choices": [
+            "140°",
+            "55°",
+            "70°",
+            "40°"
+          ],
+          "solution": "बची 140° दोनों आधार कोणों में बराबर बँटती है: 70°-70°। 140 बाँटना भूल जाता है; 40 शीर्ष कोण को ही आधार पर उतार देता है।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाच्या दोन समान बाजूंमधील शिरोकोन 40° आहे. प्रत्येक पायाकोन किती?",
+          "choices": [
+            "140°",
+            "55°",
+            "70°",
+            "40°"
+          ],
+          "solution": "उरलेले 140° दोन पायाकोनांत सारखे वाटले जातात: प्रत्येकी 70°. 140 वाटायला विसरतो; 40 शिरोकोनच पायावर उतरवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "One acute angle of a right-angled triangle is 35°. What is the other acute angle?",
+      "choices": [
+        "145°",
+        "65°",
+        "55°",
+        "35°"
+      ],
+      "answerIndex": 2,
+      "solution": "The right angle takes 90, leaving 90 for the two acute angles: 90 − 35 = 55°. 145 subtracts from 180 and forgets the right angle already spent its share.",
+      "checkExpr": "90-35",
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज का एक न्यून कोण 35° है। दूसरा न्यून कोण कितना?",
+          "choices": [
+            "145°",
+            "65°",
+            "55°",
+            "35°"
+          ],
+          "solution": "समकोण 90 ले लेता है, दोनों न्यून कोणों के लिए 90 बचते हैं: 90 − 35 = 55°। 145 सीधे 180 में से घटाता है, भूलकर कि समकोण अपना हिस्सा ले चुका।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणाचा एक लघुकोन 35° आहे. दुसरा लघुकोन किती?",
+          "choices": [
+            "145°",
+            "65°",
+            "55°",
+            "35°"
+          ],
+          "solution": "काटकोन 90 घेतो, दोन लघुकोनांसाठी 90 उरतात: 90 − 35 = 55°. 145 थेट 180 मधून वजा करतो, काटकोनाने आपला वाटा घेतला हे विसरून."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A right triangle has legs 3 cm and 4 cm. How long is the hypotenuse, in cm?",
+      "choices": [
+        "5",
+        "7",
+        "25",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "Pythagoras: 3² + 4² = 9 + 16 = 25, and 25 is 5² — so the hypotenuse is 5 cm. 7 adds the legs; 25 stops at the SQUARE of the answer.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुज की दो भुजाएँ 3 सेमी और 4 सेमी हैं। कर्ण कितने सेमी का?",
+          "choices": [
+            "5",
+            "7",
+            "25",
+            "12"
+          ],
+          "solution": "पाइथागोरस: 3² + 4² = 9 + 16 = 25, और 25 है 5² — अतः कर्ण 5 सेमी। 7 भुजाएँ जोड़ देता है; 25 उत्तर के वर्ग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणाच्या दोन बाजू 3 सेमी आणि 4 सेमी आहेत. कर्ण किती सेमी?",
+          "choices": [
+            "5",
+            "7",
+            "25",
+            "12"
+          ],
+          "solution": "पायथागोरस: 3² + 4² = 9 + 16 = 25, आणि 25 म्हणजे 5² — म्हणून कर्ण 5 सेमी. 7 बाजूंची बेरीज करतो; 25 उत्तराच्या वर्गावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two sides of a triangle are 4 cm and 9 cm. Which of these lengths is IMPOSSIBLE for the third side?",
+      "choices": [
+        "10",
+        "12",
+        "6",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "The third side must beat the gap and stay under the sum: between 9 − 4 = 5 and 9 + 4 = 13. A third side of 4 fails, for 4 + 4 = 8 cannot reach across the 9 — the arms would never meet.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज की दो भुजाएँ 4 सेमी और 9 सेमी हैं। तीसरी भुजा के लिए इनमें से कौन-सी लंबाई असंभव है?",
+          "choices": [
+            "10",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "तीसरी भुजा को अंतर से बड़ा और योग से छोटा होना चाहिए: 9 − 4 = 5 और 9 + 4 = 13 के बीच। 4 विफल है, क्योंकि 4 + 4 = 8 नौ के आर-पार नहीं पहुँचता — बाहें कभी मिलेंगी ही नहीं।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या दोन बाजू 4 सेमी आणि 9 सेमी आहेत. तिसऱ्या बाजूसाठी यांपैकी कोणती लांबी अशक्य आहे?",
+          "choices": [
+            "10",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "तिसऱ्या बाजूने फरकाहून मोठे आणि बेरजेहून लहान असावे: 9 − 4 = 5 आणि 9 + 4 = 13 च्या दरम्यान. 4 अपयशी, कारण 4 + 4 = 8 नवाच्या पल्याड पोहोचत नाही — हात कधी जुळणारच नाहीत."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A triangle's angles are in the ratio 1 : 2 : 3. What is the largest angle?",
+      "choices": [
+        "90°",
+        "30°",
+        "60°",
+        "120°"
+      ],
+      "answerIndex": 0,
+      "solution": "Six ratio-parts share 180°, so one part is 30: the angles are 30, 60, 90 — the largest is 90°, and the triangle is secretly right-angled. 60 picks the middle part.",
+      "checkExpr": "3*180/6",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के कोण 1 : 2 : 3 के अनुपात में हैं। सबसे बड़ा कोण कितना?",
+          "choices": [
+            "90°",
+            "30°",
+            "60°",
+            "120°"
+          ],
+          "solution": "छह अनुपात-भाग 180° बाँटते हैं, एक भाग 30: कोण हैं 30, 60, 90 — सबसे बड़ा 90°, और त्रिभुज चुपचाप समकोण निकलता है। 60 बीच वाला भाग उठा लेता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे कोन 1 : 2 : 3 या गुणोत्तरात आहेत. सर्वांत मोठा कोन किती?",
+          "choices": [
+            "90°",
+            "30°",
+            "60°",
+            "120°"
+          ],
+          "solution": "सहा गुणोत्तर-भाग 180° वाटतात, एक भाग 30: कोन 30, 60, 90 — सर्वांत मोठा 90°, आणि त्रिकोण गुपचूप काटकोन ठरतो. 60 मधला भाग उचलतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In triangle PQR, angle P equals angle Q, and angle R is 80°. What is angle P?",
+      "choices": [
+        "40°",
+        "100°",
+        "50°",
+        "80°"
+      ],
+      "answerIndex": 2,
+      "solution": "The equal pair shares what R leaves: (180 − 80) ÷ 2 = 50°. 100 forgets to halve; 40 halves R itself instead of the remainder.",
+      "checkExpr": "(180-80)/2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज PQR में कोण P और कोण Q बराबर हैं, और कोण R 80° है। कोण P कितना?",
+          "choices": [
+            "40°",
+            "100°",
+            "50°",
+            "80°"
+          ],
+          "solution": "बराबर जोड़ी R का छोड़ा हुआ बाँटती है: (180 − 80) ÷ 2 = 50°। 100 आधा करना भूल जाता है; 40 शेष की जगह R को ही आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोण PQR मध्ये कोन P आणि कोन Q समान आहेत, आणि कोन R 80° आहे. कोन P किती?",
+          "choices": [
+            "40°",
+            "100°",
+            "50°",
+            "80°"
+          ],
+          "solution": "समान जोडी R ने उरवलेले वाटते: (180 − 80) ÷ 2 = 50°. 100 निम्मे करायला विसरतो; 40 शेषाऐवजी R लाच निम्मे करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 13 m ladder leans against a wall with its foot 5 m from the base. How high up the wall does it reach, in metres?",
+      "choices": [
+        "18",
+        "144",
+        "8",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "The ladder is the hypotenuse: 13² − 5² = 169 − 25 = 144, and 144 = 12² — so 12 m. 8 subtracts the plain lengths; 144 stops at the square.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "13 मीटर की सीढ़ी दीवार से टिकी है, पैर दीवार से 5 मीटर दूर। वह दीवार पर कितने मीटर ऊँचाई तक पहुँचती है?",
+          "choices": [
+            "18",
+            "144",
+            "8",
+            "12"
+          ],
+          "solution": "सीढ़ी कर्ण है: 13² − 5² = 169 − 25 = 144, और 144 = 12² — अतः 12 मीटर। 8 सीधी लंबाइयाँ घटा देता है; 144 वर्ग पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "13 मीटरची शिडी भिंतीला टेकली आहे, पाय भिंतीपासून 5 मीटर दूर. ती भिंतीवर किती मीटर उंचीपर्यंत पोहोचते?",
+          "choices": [
+            "18",
+            "144",
+            "8",
+            "12"
+          ],
+          "solution": "शिडी हा कर्ण: 13² − 5² = 169 − 25 = 144, आणि 144 = 12² — म्हणून 12 मीटर. 8 नुसत्या लांब्या वजा करतो; 144 वर्गावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An exterior angle of a triangle is 110°, and one of its interior opposite angles is 45°. What is the other interior opposite angle?",
+      "choices": [
+        "155°",
+        "65°",
+        "35°",
+        "70°"
+      ],
+      "answerIndex": 1,
+      "solution": "The exterior angle is the sum of the two interior opposites: 110 − 45 = 65°. 70 subtracts 110 from 180 first, answering the wrong angle entirely.",
+      "checkExpr": "110-45",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज का एक बाह्य कोण 110° है, और उसका एक अंतः विपरीत कोण 45°। दूसरा अंतः विपरीत कोण कितना?",
+          "choices": [
+            "155°",
+            "65°",
+            "35°",
+            "70°"
+          ],
+          "solution": "बाह्य कोण दोनों अंतः विपरीतों का योग है: 110 − 45 = 65°। 70 पहले 180 में से 110 घटाकर बिलकुल दूसरे कोण का उत्तर दे बैठता है।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचा एक बाह्यकोन 110° आहे, आणि त्याचा एक आंतरिक विरुद्ध कोन 45°. दुसरा आंतरिक विरुद्ध कोन किती?",
+          "choices": [
+            "155°",
+            "65°",
+            "35°",
+            "70°"
+          ],
+          "solution": "बाह्यकोन दोन आंतरिक विरुद्धांची बेरीज: 110 − 45 = 65°. 70 आधी 180 मधून 110 वजा करून भलत्याच कोनाचे उत्तर देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The angles of a triangle are x, x + 20 and x + 40 degrees. What is the LARGEST angle?",
+      "choices": [
+        "40°",
+        "60°",
+        "100°",
+        "80°"
+      ],
+      "answerIndex": 3,
+      "solution": "3x + 60 = 180 gives x = 40, so the angles are 40, 60, 80 — the largest is 80°. 40 answers x itself; the question asked for x + 40.",
+      "checkExpr": "(180-60)/3+40",
+      "translations": {
+        "hi": {
+          "stem": "त्रिभुज के कोण x, x + 20 और x + 40 डिग्री हैं। सबसे बड़ा कोण कितना?",
+          "choices": [
+            "40°",
+            "60°",
+            "100°",
+            "80°"
+          ],
+          "solution": "3x + 60 = 180 से x = 40, अतः कोण 40, 60, 80 — सबसे बड़ा 80°। 40 स्वयं x का उत्तर है; प्रश्न x + 40 पूछ रहा था।"
+        },
+        "mr": {
+          "stem": "त्रिकोणाचे कोन x, x + 20 आणि x + 40 अंश आहेत. सर्वांत मोठा कोन किती?",
+          "choices": [
+            "40°",
+            "60°",
+            "100°",
+            "80°"
+          ],
+          "solution": "3x + 60 = 180 मधून x = 40, म्हणून कोन 40, 60, 80 — सर्वांत मोठा 80°. 40 हे स्वतः x चे उत्तर; प्रश्न x + 40 विचारत होता."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An isosceles triangle has perimeter 32 cm and base 12 cm. How long is each equal side, in cm?",
+      "choices": [
+        "10",
+        "16",
+        "20",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The two equal sides share 32 − 12 = 20 cm: 10 cm each. 20 forgets to split the remainder; 16 halves the whole perimeter as if the base didn't exist.",
+      "checkExpr": "(32-12)/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु त्रिभुज का परिमाप 32 सेमी और आधार 12 सेमी है। हर बराबर भुजा कितने सेमी की?",
+          "choices": [
+            "10",
+            "16",
+            "20",
+            "12"
+          ],
+          "solution": "दोनों बराबर भुजाएँ 32 − 12 = 20 सेमी बाँटती हैं: 10-10 सेमी। 20 शेष बाँटना भूल जाता है; 16 पूरे परिमाप को आधा कर देता है, मानो आधार हो ही नहीं।"
+        },
+        "mr": {
+          "stem": "समद्विभुज त्रिकोणाची परिमिती 32 सेमी आणि पाया 12 सेमी आहे. प्रत्येक समान बाजू किती सेमी?",
+          "choices": [
+            "10",
+            "16",
+            "20",
+            "12"
+          ],
+          "solution": "दोन समान बाजू 32 − 12 = 20 सेमी वाटतात: प्रत्येकी 10 सेमी. 20 शेष वाटायला विसरतो; 16 पाया नसल्यासारखी सारी परिमिती निम्मी करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student claims a triangle can have TWO right angles. After those two angles, how many degrees remain for the third?",
+      "choices": [
+        "0°",
+        "90°",
+        "45°",
+        "10°"
+      ],
+      "answerIndex": 0,
+      "solution": "180 − 90 − 90 = 0°: nothing remains, so the third vertex flattens into the base and the 'triangle' collapses into a line. Two right angles are impossible — that is the point of the sum rule.",
+      "checkExpr": "180-90-90",
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी का दावा है कि त्रिभुज में दो समकोण हो सकते हैं। उन दो कोणों के बाद तीसरे के लिए कितने डिग्री बचते हैं?",
+          "choices": [
+            "0°",
+            "90°",
+            "45°",
+            "10°"
+          ],
+          "solution": "180 − 90 − 90 = 0°: कुछ नहीं बचता, तीसरा शीर्ष आधार में पिचक जाता है और 'त्रिभुज' रेखा बन जाता है। दो समकोण असंभव हैं — योग-नियम का यही अर्थ है।"
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याचा दावा आहे की त्रिकोणात दोन काटकोन असू शकतात. त्या दोन कोनांनंतर तिसऱ्यासाठी किती अंश उरतात?",
+          "choices": [
+            "0°",
+            "90°",
+            "45°",
+            "10°"
+          ],
+          "solution": "180 − 90 − 90 = 0°: काहीच उरत नाही, तिसरा शिरोबिंदू पायात सपाट होतो आणि 'त्रिकोण' रेषा बनतो. दोन काटकोन अशक्य — बेरीज-नियमाचा हाच अर्थ."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A tree snaps 5 m above the ground; the fallen top touches the ground 12 m from the base, still hinged to the trunk. How tall was the tree, in metres?",
+      "choices": [
+        "12",
+        "18",
+        "17",
+        "13"
+      ],
+      "answerIndex": 1,
+      "solution": "The broken part is the hypotenuse of a 5-12 right triangle: 5² + 12² = 169 = 13². Total height = standing 5 + fallen 13 = 18 m. 13 forgets the stump still standing; 17 adds 5 + 12, mistaking a leg for the hypotenuse.",
+      "checkExpr": "5+13",
+      "translations": {
+        "hi": {
+          "stem": "एक पेड़ ज़मीन से 5 मीटर ऊपर टूटता है; गिरा हुआ सिरा तने से जुड़ा-जुड़ा आधार से 12 मीटर दूर ज़मीन छूता है। पेड़ कितने मीटर ऊँचा था?",
+          "choices": [
+            "12",
+            "18",
+            "17",
+            "13"
+          ],
+          "solution": "टूटा भाग 5-12 समकोण त्रिभुज का कर्ण है: 5² + 12² = 169 = 13²। कुल ऊँचाई = खड़ा 5 + गिरा 13 = 18 मीटर। 13 खड़ा ठूँठ भूल जाता है; 17 में 5 + 12 जोड़कर भुजा को ही कर्ण मान लिया गया।"
+        },
+        "mr": {
+          "stem": "एक झाड जमिनीपासून 5 मीटर उंचीवर मोडते; पडलेले टोक खोडाशी जोडलेले राहून पायथ्यापासून 12 मीटरवर जमिनीला टेकते. झाड किती मीटर उंच होते?",
+          "choices": [
+            "12",
+            "18",
+            "17",
+            "13"
+          ],
+          "solution": "मोडलेला भाग 5-12 काटकोन त्रिकोणाचा कर्ण: 5² + 12² = 169 = 13². एकूण उंची = उभा 5 + पडलेला 13 = 18 मीटर. 13 उभा बुंधा विसरतो; 17 मध्ये 5 + 12 जोडून बाजूलाच कर्ण मानले गेले."
+        }
+      }
+    }
+  ]
+}

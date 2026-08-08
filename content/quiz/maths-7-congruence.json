@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 7 — Congruence of Triangles",
+  "name": "Congruence of Triangles",
+  "slug": "maths-7-congruence",
+  "summary": "Shapes that cover each other exactly: letters carrying the correspondence, four honest tests — SSS, SAS, ASA, RHS — and the AAA impostor that fixes shape but never size.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "त्रिभुजों की सर्वांगसमता",
+      "summary": "आकृतियाँ जो एक-दूसरे को ठीक-ठीक ढक लें: संगति ढोते अक्षर, चार खरी जाँचें — SSS, SAS, ASA, RHS — और AAA का बहरूपिया जो आकार तय करता है, नाप कभी नहीं।"
+    },
+    "mr": {
+      "name": "त्रिकोणांची एकरूपता",
+      "summary": "एकमेकांना नेमक्या झाकणाऱ्या आकृती: संगती वाहणारी अक्षरे, चार खऱ्या चाचण्या — SSS, SAS, ASA, RHS — आणि आकार ठरवणारा पण माप कधीच न ठरवणारा AAA चा तोतया."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 7)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Segment PQ is congruent to a segment of length 7 cm. How long is PQ, in cm?",
+      "choices": [
+        "14",
+        "70",
+        "3.5",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "Congruent segments cover each other exactly, so their lengths are equal: 7 cm. 14 doubles it, as if congruence meant joining the two end to end.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रेखाखंड PQ, 7 सेमी लंबे रेखाखंड के सर्वांगसम है। PQ कितने सेमी का?",
+          "choices": [
+            "14",
+            "70",
+            "3.5",
+            "7"
+          ],
+          "solution": "सर्वांगसम रेखाखंड एक-दूसरे को ठीक-ठीक ढक लेते हैं, अतः लंबाइयाँ बराबर: 7 सेमी। 14 उसे दोगुना कर देता है, मानो सर्वांगसमता सिरे से सिरा जोड़ना हो।"
+        },
+        "mr": {
+          "stem": "रेषाखंड PQ हा 7 सेमी लांबीच्या रेषाखंडाशी एकरूप आहे. PQ किती सेमी?",
+          "choices": [
+            "14",
+            "70",
+            "3.5",
+            "7"
+          ],
+          "solution": "एकरूप रेषाखंड एकमेकांना नेमके झाकतात, म्हणून लांब्या समान: 7 सेमी. 14 त्याला दुप्पट करतो, जणू एकरूपता म्हणजे टोकाला टोक जोडणे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An angle is congruent to a 40° angle. What does it measure?",
+      "choices": [
+        "50°",
+        "140°",
+        "80°",
+        "40°"
+      ],
+      "answerIndex": 3,
+      "solution": "Congruent angles have equal measures: 40°. 140 supposes congruence pairs an angle with its supplement — it never does; it copies.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कोण 40° के कोण के सर्वांगसम है। वह कितने का है?",
+          "choices": [
+            "50°",
+            "140°",
+            "80°",
+            "40°"
+          ],
+          "solution": "सर्वांगसम कोणों की मापें बराबर होती हैं: 40°। 140 मानता है कि सर्वांगसमता कोण को उसके संपूरक से जोड़ती है — कभी नहीं; वह नक़ल करती है।"
+        },
+        "mr": {
+          "stem": "एक कोन 40° च्या कोनाशी एकरूप आहे. तो किती अंशांचा?",
+          "choices": [
+            "50°",
+            "140°",
+            "80°",
+            "40°"
+          ],
+          "solution": "एकरूप कोनांची मापे समान असतात: 40°. 140 समजतो की एकरूपता कोनाला त्याच्या पूरकाशी जोडते — कधीच नाही; ती नक्कल करते."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "ΔABC ≅ ΔPQR, and AB = 6 cm. How long is PQ, in cm?",
+      "choices": [
+        "6",
+        "3",
+        "12",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "The letters carry the map: A↔P, B↔Q, so AB matches PQ exactly — 6 cm. Corresponding parts of congruent triangles are equal, in the ORDER written.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔPQR, और AB = 6 सेमी। PQ कितने सेमी का?",
+          "choices": [
+            "6",
+            "3",
+            "12",
+            "9"
+          ],
+          "solution": "अक्षर नक़्शा ढोते हैं: A↔P, B↔Q, अतः AB ठीक PQ से मिलता है — 6 सेमी। सर्वांगसम त्रिभुजों के संगत भाग बराबर होते हैं, लिखे क्रम में।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔPQR, आणि AB = 6 सेमी. PQ किती सेमी?",
+          "choices": [
+            "6",
+            "3",
+            "12",
+            "9"
+          ],
+          "solution": "अक्षरे नकाशा वाहतात: A↔P, B↔Q, म्हणून AB नेमके PQ शी जुळते — 6 सेमी. एकरूप त्रिकोणांचे संगत भाग समान असतात, लिहिलेल्या क्रमाने."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "To show two triangles congruent by SSS, how many pairs of equal sides do you need?",
+      "choices": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Side-Side-Side: all 3 pairs. Two matching sides still leave the third free to swing — only the third pair locks the shape.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SSS से दो त्रिभुज सर्वांगसम दिखाने के लिए बराबर भुजाओं के कितने जोड़े चाहिए?",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "भुजा-भुजा-भुजा: तीनों 3 जोड़े। दो मिलती भुजाएँ तीसरी को झूलने की छूट देती हैं — तीसरा जोड़ा ही आकृति को जड़ता है।"
+        },
+        "mr": {
+          "stem": "SSS ने दोन त्रिकोण एकरूप दाखवण्यासाठी समान बाजूंच्या किती जोड्या हव्यात?",
+          "choices": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ],
+          "solution": "बाजू-बाजू-बाजू: तिन्ही 3 जोड्या. दोन जुळणाऱ्या बाजू तिसरीला झुलायला मोकळीक देतात — तिसरी जोडीच आकृती पक्की करते."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "ΔDEF ≅ ΔLMN, with angle D = 30° and angle E = 80°. What is angle L?",
+      "choices": [
+        "30°",
+        "80°",
+        "70°",
+        "100°"
+      ],
+      "answerIndex": 0,
+      "solution": "Read the correspondence off the letters: D↔L, so angle L copies angle D — 30°. 80 grabs E's angle; 70 computes the third angle nobody asked about.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ΔDEF ≅ ΔLMN, कोण D = 30° और कोण E = 80°। कोण L कितना?",
+          "choices": [
+            "30°",
+            "80°",
+            "70°",
+            "100°"
+          ],
+          "solution": "अक्षरों से संगति पढ़िए: D↔L, अतः कोण L कोण D की नक़ल है — 30°। 80 कोण E उठा लेता है; 70 वह तीसरा कोण निकालता है जो पूछा ही नहीं गया।"
+        },
+        "mr": {
+          "stem": "ΔDEF ≅ ΔLMN, कोन D = 30° आणि कोन E = 80°. कोन L किती?",
+          "choices": [
+            "30°",
+            "80°",
+            "70°",
+            "100°"
+          ],
+          "solution": "अक्षरांतून संगती वाचा: D↔L, म्हणून कोन L कोन D ची नक्कल — 30°. 80 कोन E उचलतो; 70 न विचारलेला तिसरा कोन काढतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The ASA test needs two angles and how many included sides?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Angle-Side-Angle: exactly 1 side, and it must sit BETWEEN the two angles. With 0 sides the triangle can be any size — same shape, no fixed scale.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ASA जाँच में दो कोण और कितनी अंतर्गत भुजाएँ चाहिए?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "कोण-भुजा-कोण: ठीक 1 भुजा, और वह दोनों कोणों के बीच बैठनी चाहिए। 0 भुजाओं से त्रिभुज किसी भी नाप का हो सकता है — आकार वही, पैमाना अनिश्चित।"
+        },
+        "mr": {
+          "stem": "ASA चाचणीत दोन कोन आणि किती समाविष्ट बाजू लागतात?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "कोन-बाजू-कोन: नेमकी 1 बाजू, आणि ती दोन कोनांच्या मध्ये हवी. 0 बाजूंनी त्रिकोण कोणत्याही मापाचा होऊ शकतो — आकार तोच, प्रमाण अनिश्चित."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "ΔABC ≅ ΔPQR, with angle A = 50° and angle C = 70°. What is angle Q?",
+      "choices": [
+        "70°",
+        "110°",
+        "60°",
+        "50°"
+      ],
+      "answerIndex": 2,
+      "solution": "Q corresponds to B, and B = 180 − 50 − 70 = 60°. 50 and 70 copy A and C — but the letters say Q answers to B, the angle you must COMPUTE first.",
+      "checkExpr": "180-50-70",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔPQR, कोण A = 50° और कोण C = 70°। कोण Q कितना?",
+          "choices": [
+            "70°",
+            "110°",
+            "60°",
+            "50°"
+          ],
+          "solution": "Q की संगति B से है, और B = 180 − 50 − 70 = 60°। 50 और 70 A व C की नक़ल हैं — पर अक्षर कहते हैं कि Q का जवाब B है, जिसे पहले निकालना पड़ता है।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔPQR, कोन A = 50° आणि कोन C = 70°. कोन Q किती?",
+          "choices": [
+            "70°",
+            "110°",
+            "60°",
+            "50°"
+          ],
+          "solution": "Q ची संगती B शी, आणि B = 180 − 50 − 70 = 60°. 50 आणि 70 A व C ची नक्कल — पण अक्षरे सांगतात की Q चे उत्तर B, जो आधी काढावाच लागतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In the RHS test for right triangles, you match the hypotenuse and how many other sides?",
+      "choices": [
+        "0",
+        "3",
+        "1",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Right angle, Hypotenuse, Side: 1 other side. The right angle plus Pythagoras silently fixes the third side, so nothing more is needed.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समकोण त्रिभुजों की RHS जाँच में कर्ण के साथ और कितनी भुजाएँ मिलानी होती हैं?",
+          "choices": [
+            "0",
+            "3",
+            "1",
+            "2"
+          ],
+          "solution": "समकोण, कर्ण, भुजा: 1 और भुजा। समकोण और पाइथागोरस चुपचाप तीसरी भुजा तय कर देते हैं, अतः और कुछ नहीं चाहिए।"
+        },
+        "mr": {
+          "stem": "काटकोन त्रिकोणांच्या RHS चाचणीत कर्णासोबत आणखी किती बाजू जुळवाव्या लागतात?",
+          "choices": [
+            "0",
+            "3",
+            "1",
+            "2"
+          ],
+          "solution": "काटकोन, कर्ण, बाजू: आणखी 1 बाजू. काटकोन आणि पायथागोरस गुपचूप तिसरी बाजू ठरवतात, म्हणून आणखी काही लागत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "ΔPQR ≅ ΔXYZ, with PQ = 5, QR = 7 and PR = 9. What is XZ?",
+      "choices": [
+        "21",
+        "9",
+        "5",
+        "7"
+      ],
+      "answerIndex": 1,
+      "solution": "X answers to P and Z to R, so XZ copies PR: 9. 5 and 7 belong to the other letter-pairs; 21 adds all three sides — a perimeter nobody asked for.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ΔPQR ≅ ΔXYZ, PQ = 5, QR = 7 और PR = 9। XZ कितना?",
+          "choices": [
+            "21",
+            "9",
+            "5",
+            "7"
+          ],
+          "solution": "X का जवाब P और Z का R, अतः XZ नक़ल करता है PR की: 9। 5 और 7 दूसरे अक्षर-जोड़ों के हैं; 21 तीनों भुजाएँ जोड़ देता है — बिन माँगा परिमाप।"
+        },
+        "mr": {
+          "stem": "ΔPQR ≅ ΔXYZ, PQ = 5, QR = 7 आणि PR = 9. XZ किती?",
+          "choices": [
+            "21",
+            "9",
+            "5",
+            "7"
+          ],
+          "solution": "X चे उत्तर P आणि Z चे R, म्हणून XZ नक्कल करतो PR ची: 9. 5 आणि 7 इतर अक्षर-जोड्यांचे; 21 तिन्ही बाजू जोडतो — न मागितलेली परिमिती."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Diagonal AC splits quadrilateral ABCD into two triangles, and ΔABC ≅ ΔCDA. If BC = 8 cm, how long is DA, in cm?",
+      "choices": [
+        "6",
+        "8",
+        "16",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Match letter by letter: A↔C, B↔D, C↔A — so BC corresponds to DA, and DA = 8 cm. This is how one diagonal proves opposite sides of a parallelogram equal.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विकर्ण AC चतुर्भुज ABCD को दो त्रिभुजों में बाँटता है, और ΔABC ≅ ΔCDA। यदि BC = 8 सेमी, तो DA कितने सेमी?",
+          "choices": [
+            "6",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "अक्षर-दर-अक्षर मिलाइए: A↔C, B↔D, C↔A — अतः BC की संगति DA से, और DA = 8 सेमी। इसी तरह एक विकर्ण समांतर चतुर्भुज की सम्मुख भुजाएँ बराबर सिद्ध करता है।"
+        },
+        "mr": {
+          "stem": "कर्ण AC चौकोन ABCD ला दोन त्रिकोणांत वाटतो, आणि ΔABC ≅ ΔCDA. BC = 8 सेमी असल्यास DA किती सेमी?",
+          "choices": [
+            "6",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "अक्षरागणिक जुळवा: A↔C, B↔D, C↔A — म्हणून BC ची संगती DA शी, आणि DA = 8 सेमी. असाच एक कर्ण समांतरभुज चौकोनाच्या समोरच्या बाजू समान सिद्ध करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "ΔABC ≅ ΔPQR, and ΔABC has perimeter 24 cm. What is the perimeter of ΔPQR, in cm?",
+      "choices": [
+        "48",
+        "12",
+        "24",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "Every side copies its partner, so the sums copy too: 24 cm. Congruence preserves ALL measurements — sides, angles, perimeter, area alike.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔPQR, और ΔABC का परिमाप 24 सेमी है। ΔPQR का परिमाप कितने सेमी?",
+          "choices": [
+            "48",
+            "12",
+            "24",
+            "30"
+          ],
+          "solution": "हर भुजा अपने साथी की नक़ल है, अतः योग भी नक़ल: 24 सेमी। सर्वांगसमता सारी मापें सुरक्षित रखती है — भुजाएँ, कोण, परिमाप, क्षेत्रफल सब।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔPQR, आणि ΔABC ची परिमिती 24 सेमी आहे. ΔPQR ची परिमिती किती सेमी?",
+          "choices": [
+            "48",
+            "12",
+            "24",
+            "30"
+          ],
+          "solution": "प्रत्येक बाजू आपल्या जोडीदाराची नक्कल, म्हणून बेरजाही नक्कल: 24 सेमी. एकरूपता सर्व मापे राखते — बाजू, कोन, परिमिती, क्षेत्रफळ सारे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "ΔABC ≅ ΔPQR, with angle B = 90° and angle C = 30°. What is angle P?",
+      "choices": [
+        "90°",
+        "30°",
+        "60°",
+        "120°"
+      ],
+      "answerIndex": 2,
+      "solution": "P answers to A, and A = 180 − 90 − 30 = 60°. 90 and 30 copy the two given angles, but the letters point P at the one still unknown.",
+      "checkExpr": "180-90-30",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔPQR, कोण B = 90° और कोण C = 30°। कोण P कितना?",
+          "choices": [
+            "90°",
+            "30°",
+            "60°",
+            "120°"
+          ],
+          "solution": "P का जवाब A है, और A = 180 − 90 − 30 = 60°। 90 और 30 दिए कोणों की नक़ल हैं, पर अक्षर P को उसी की ओर भेजते हैं जो अभी अज्ञात है।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔPQR, कोन B = 90° आणि कोन C = 30°. कोन P किती?",
+          "choices": [
+            "90°",
+            "30°",
+            "60°",
+            "120°"
+          ],
+          "solution": "P चे उत्तर A, आणि A = 180 − 90 − 30 = 60°. 90 आणि 30 दिलेल्या कोनांची नक्कल, पण अक्षरे P ला अजून अज्ञात असलेल्याकडे पाठवतात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In ΔABC, AB = AC, and AD is the median to BC, which measures 10 cm. ΔABD ≅ ΔACD by SSS. How long is BD, in cm?",
+      "choices": [
+        "5",
+        "10",
+        "2.5",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "A median lands on the midpoint, so BD = 10 ÷ 2 = 5 cm — and that shared midpoint is exactly what makes the SSS pair work (AB = AC, BD = CD, AD common).",
+      "checkExpr": "10/2",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC में AB = AC, और AD भुजा BC की माध्यिका है, जो 10 सेमी की है। SSS से ΔABD ≅ ΔACD। BD कितने सेमी?",
+          "choices": [
+            "5",
+            "10",
+            "2.5",
+            "20"
+          ],
+          "solution": "माध्यिका मध्य-बिंदु पर उतरती है, अतः BD = 10 ÷ 2 = 5 सेमी — और वही साझा मध्य-बिंदु SSS जोड़ी को चलाता है (AB = AC, BD = CD, AD साझी)।"
+        },
+        "mr": {
+          "stem": "ΔABC मध्ये AB = AC, आणि AD ही 10 सेमी असलेल्या BC ची मध्यगा आहे. SSS ने ΔABD ≅ ΔACD. BD किती सेमी?",
+          "choices": [
+            "5",
+            "10",
+            "2.5",
+            "20"
+          ],
+          "solution": "मध्यगा मध्यबिंदूवर उतरते, म्हणून BD = 10 ÷ 2 = 5 सेमी — आणि तोच सामाईक मध्यबिंदू SSS जोडीला चालवतो (AB = AC, BD = CD, AD सामाईक)."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "ΔABC ≅ ΔDEF, with AB = 2x + 1 and DE = 9. Find x.",
+      "choices": [
+        "5",
+        "3",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "AB corresponds to DE, so 2x + 1 = 9: 2x = 8 and x = 4. 5 adds the 1 instead of removing it; 8 stops at 2x.",
+      "checkExpr": "(9-1)/2",
+      "translations": {
+        "hi": {
+          "stem": "ΔABC ≅ ΔDEF, AB = 2x + 1 और DE = 9। x निकालिए।",
+          "choices": [
+            "5",
+            "3",
+            "4",
+            "8"
+          ],
+          "solution": "AB की संगति DE से, अतः 2x + 1 = 9: 2x = 8 और x = 4। 5 एक हटाने की जगह जोड़ देता है; 8 2x पर रुक जाता है।"
+        },
+        "mr": {
+          "stem": "ΔABC ≅ ΔDEF, AB = 2x + 1 आणि DE = 9. x काढा.",
+          "choices": [
+            "5",
+            "3",
+            "4",
+            "8"
+          ],
+          "solution": "AB ची संगती DE शी, म्हणून 2x + 1 = 9: 2x = 8 आणि x = 4. 5 एक काढण्याऐवजी मिळवतो; 8 2x वर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two equilateral triangles have sides 3 cm and 6 cm. Every angle in both is 60°. How many pairs of corresponding sides are EQUAL?",
+      "choices": [
+        "1",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Every side-pair is 3 against 6: 0 equal pairs. All six angles match, yet the triangles are NOT congruent — AAA fixes only the shape, never the size. That is exactly why AAA is missing from the list of congruence tests.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो समबाहु त्रिभुजों की भुजाएँ 3 सेमी और 6 सेमी हैं। दोनों के सारे कोण 60° हैं। संगत भुजाओं के कितने जोड़े बराबर हैं?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "हर भुजा-जोड़ी 3 बनाम 6 है: 0 बराबर जोड़े। छहों कोण मिलते हैं, फिर भी त्रिभुज सर्वांगसम नहीं — AAA केवल आकार तय करता है, नाप कभी नहीं। इसीलिए AAA सर्वांगसमता-जाँचों की सूची से ग़ायब है।"
+        },
+        "mr": {
+          "stem": "दोन समभुज त्रिकोणांच्या बाजू 3 सेमी आणि 6 सेमी आहेत. दोन्हींतील सर्व कोन 60° आहेत. संगत बाजूंच्या किती जोड्या समान आहेत?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "प्रत्येक बाजू-जोडी 3 विरुद्ध 6: 0 समान जोड्या. सहाही कोन जुळतात, तरी त्रिकोण एकरूप नाहीत — AAA फक्त आकार ठरवते, माप कधीच नाही. म्हणूनच AAA एकरूपता-चाचण्यांच्या यादीत नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In isosceles ΔABC (AB = AC), the median AD meets BC at D, and ΔABD ≅ ΔACD. Since angles ADB and ADC also sit on the straight line BC, what is angle ADB?",
+      "choices": [
+        "180°",
+        "90°",
+        "60°",
+        "45°"
+      ],
+      "answerIndex": 1,
+      "solution": "Congruence makes the two angles equal; the straight line makes them total 180°. Equal and totalling 180 forces each to 90° — the median of an isosceles triangle stands perpendicular to the base, proved with nothing but matching.",
+      "checkExpr": "180/2",
+      "translations": {
+        "hi": {
+          "stem": "समद्विबाहु ΔABC (AB = AC) में माध्यिका AD, BC से D पर मिलती है, और ΔABD ≅ ΔACD। चूँकि कोण ADB और ADC सीधी रेखा BC पर भी बैठे हैं, कोण ADB कितना?",
+          "choices": [
+            "180°",
+            "90°",
+            "60°",
+            "45°"
+          ],
+          "solution": "सर्वांगसमता दोनों कोण बराबर करती है; सीधी रेखा उनका योग 180° करती है। बराबर और योग 180 — हर एक 90° होने को विवश। समद्विबाहु त्रिभुज की माध्यिका आधार पर लंब खड़ी होती है, केवल मिलान से सिद्ध।"
+        },
+        "mr": {
+          "stem": "समद्विभुज ΔABC (AB = AC) मध्ये मध्यगा AD, BC ला D वर मिळते, आणि ΔABD ≅ ΔACD. कोन ADB आणि ADC सरळ रेषा BC वरही असल्याने, कोन ADB किती?",
+          "choices": [
+            "180°",
+            "90°",
+            "60°",
+            "45°"
+          ],
+          "solution": "एकरूपता दोन्ही कोन समान करते; सरळ रेषा त्यांची बेरीज 180° करते. समान आणि बेरीज 180 — प्रत्येक 90° होणे भाग. समद्विभुज त्रिकोणाची मध्यगा पायावर लंब उभी राहते, केवळ जुळणीने सिद्ध."
+        }
+      }
+    }
+  ]
+}
