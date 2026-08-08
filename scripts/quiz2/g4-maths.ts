@@ -1609,6 +1609,802 @@ function halvesAndQuarters(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Tables and Shares (multiplying and sharing out)              */
+/* ------------------------------------------------------------------------- */
+function tablesAndShares4(): TopicFileOut {
+  const rand = rng("maths-4-tables-and-shares");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A cat has 4 legs. How many legs do 7 cats have altogether?",
+          hi: "बिल्ली के 4 पैर होते हैं। 7 बिल्लियों के कुल कितने पैर?",
+          mr: "मांजरीला 4 पाय असतात. 7 मांजरींचे मिळून किती पाय?",
+        },
+        answer: 28,
+        wrong: [24, 32, 11],
+        checkExpr: "7*4",
+        solution: {
+          en: "Seven cats, 4 legs each: 7 × 4 = 28. Answering 11 adds cats and legs — legs come in fours, so they multiply.",
+          hi: "सात बिल्लियाँ, 4-4 पैर: 7 × 4 = 28। 11 कहना बिल्लियाँ और पैर जोड़ना है — पैर चार-चार के गुट में हैं, इसलिए गुणा होंगे।",
+          mr: "सात मांजरी, 4-4 पाय: 7 × 4 = 28. 11 म्हणणे म्हणजे मांजरी आणि पाय मिळवणे — पाय चार-चारच्या गटांत आहेत, म्हणून गुणाकार.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The classroom has 6 rows of 5 chairs. How many chairs is that?",
+          hi: "कक्षा में 5-5 कुर्सियों की 6 पंक्तियाँ हैं। कुल कितनी कुर्सियाँ?",
+          mr: "वर्गात 5-5 खुर्च्यांच्या 6 रांगा आहेत. एकूण किती खुर्च्या?",
+        },
+        answer: 30,
+        wrong: [25, 35, 11],
+        checkExpr: "6*5",
+        solution: {
+          en: "Six rows of five: 6 × 5 = 30 chairs. 25 counts five rows — one row got skipped in the table.",
+          hi: "पाँच-पाँच की छह पंक्तियाँ: 6 × 5 = 30 कुर्सियाँ। 25 पाँच पंक्तियाँ गिनता है — पहाड़े में एक पंक्ति छूट गई।",
+          mr: "पाच-पाचच्या सहा रांगा: 6 × 5 = 30 खुर्च्या. 25 पाच रांगा मोजते — पाढ्यात एक रांग सुटली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "18 laddoos are shared equally between 2 sisters. How many does each get?",
+          hi: "18 लड्डू 2 बहनों में बराबर बाँटे गए। हर एक को कितने मिले?",
+          mr: "18 लाडू 2 बहिणींत सारखे वाटले. प्रत्येकीला किती मिळाले?",
+        },
+        answer: 9,
+        wrong: [8, 16, 36],
+        checkExpr: "18/2",
+        solution: {
+          en: "Equal shares of 18 between two: 18 ÷ 2 = 9 each. 16 takes away 2 instead of splitting into 2 — sharing divides, it does not subtract.",
+          hi: "18 के दो बराबर हिस्से: 18 ÷ 2 = 9-9। 16 दो घटा देता है, दो में बाँटता नहीं — बँटवारा भाग है, घटाव नहीं।",
+          mr: "18 चे दोन सारखे वाटे: 18 ÷ 2 = 9-9. 16 दोन वजा करते, दोघांत वाटत नाही — वाटणी म्हणजे भागाकार, वजाबाकी नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A packet holds 9 pencils. How many pencils in 8 packets?",
+          hi: "एक पैकेट में 9 पेंसिलें हैं। 8 पैकेटों में कितनी पेंसिलें?",
+          mr: "एका पाकिटात 9 पेन्सिली आहेत. 8 पाकिटांत किती पेन्सिली?",
+        },
+        answer: 72,
+        wrong: [63, 81, 17],
+        checkExpr: "8*9",
+        solution: {
+          en: "8 × 9 = 72. Both 63 and 81 are its table-neighbours (7 × 9 and 9 × 9) — the eights and nines love to swap in memory.",
+          hi: "8 × 9 = 72। 63 और 81 उसके पहाड़े-पड़ोसी हैं (7 × 9 और 9 × 9) — आठ और नौ याद में जगह बदलते रहते हैं।",
+          mr: "8 × 9 = 72. 63 आणि 81 हे त्याचे पाढा-शेजारी (7 × 9 आणि 9 × 9) — आठ आणि नऊ स्मरणात जागा बदलत असतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "56 mangoes are packed 8 to a box. How many boxes fill up?",
+          hi: "56 आम 8-8 के डिब्बों में भरे गए। कितने डिब्बे भरेंगे?",
+          mr: "56 आंबे 8-8 च्या खोक्यांत भरले. किती खोकी भरतील?",
+        },
+        answer: 7,
+        wrong: [6, 8, 48],
+        checkExpr: "56/8",
+        solution: {
+          en: "How many 8s in 56: 56 ÷ 8 = 7 boxes — the same fact as 7 × 8 = 56 read backwards. 48 subtracts a box instead of counting boxes.",
+          hi: "56 में 8 कितनी बार: 56 ÷ 8 = 7 डिब्बे — वही 7 × 8 = 56 उल्टा पढ़ा हुआ। 48 डिब्बे गिनने की जगह एक डिब्बा घटा देता है।",
+          mr: "56 मध्ये 8 किती वेळा: 56 ÷ 8 = 7 खोकी — तोच 7 × 8 = 56 उलटा वाचलेला. 48 खोकी मोजण्याऐवजी एक खोके वजा करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A spider has 8 legs. How many legs do 12 spiders have?",
+          hi: "मकड़ी के 8 पैर होते हैं। 12 मकड़ियों के कितने पैर?",
+          mr: "कोळ्याला 8 पाय असतात. 12 कोळ्यांचे किती पाय?",
+        },
+        answer: 96,
+        wrong: [86, 104, 20],
+        checkExpr: "8*12",
+        solution: {
+          en: "8 × 12 = 8 × 10 + 8 × 2 = 80 + 16 = 96. 86 adds only 6 for the last two spiders — each spider brings all 8 legs.",
+          hi: "8 × 12 = 8 × 10 + 8 × 2 = 80 + 16 = 96। 86 आख़िरी दो मकड़ियों के लिए केवल 6 जोड़ता है — हर मकड़ी पूरे 8 पैर लाती है।",
+          mr: "8 × 12 = 8 × 10 + 8 × 2 = 80 + 16 = 96. 86 शेवटच्या दोन कोळ्यांसाठी फक्त 6 मिळवते — प्रत्येक कोळी सगळे 8 पाय आणतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "60 bananas are shared equally among 5 monkeys. How many does each monkey get?",
+          hi: "60 केले 5 बंदरों में बराबर बाँटे गए। हर बंदर को कितने मिलेंगे?",
+          mr: "60 केळी 5 माकडांत सारखी वाटली. प्रत्येक माकडाला किती मिळतील?",
+        },
+        answer: 12,
+        wrong: [10, 15, 55],
+        checkExpr: "60/5",
+        solution: {
+          en: "60 ÷ 5 = 12 each: five twelves rebuild the 60. 55 hands one banana to the troop and keeps the rest — that is subtraction wearing a sharing mask.",
+          hi: "60 ÷ 5 = 12-12: पाँच बारह मिलकर 60 बनाते हैं। 55 टोली को एक केला थमाकर बाक़ी रख लेता है — यह बँटवारे का मुखौटा पहने घटाव है।",
+          mr: "60 ÷ 5 = 12-12: पाच बारा मिळून 60 होतात. 55 टोळीला एक केळे देऊन उरलेले ठेवते — ही वाटणीचा मुखवटा घातलेली वजाबाकी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Three friends share 48 marbles equally. Then one of them gives 4 marbles from his share to his sister. How many does he keep?",
+          hi: "तीन दोस्त 48 कंचे बराबर बाँटते हैं। फिर उनमें से एक अपने हिस्से से 4 कंचे बहन को दे देता है। उसके पास कितने बचे?",
+          mr: "तीन मित्र 48 गोट्या सारख्या वाटतात. मग त्यांतला एक आपल्या वाट्यातून 4 गोट्या बहिणीला देतो. त्याच्याकडे किती उरल्या?",
+        },
+        answer: 12,
+        wrong: [16, 44, 8],
+        checkExpr: "48/3-4",
+        solution: {
+          en: "His share is 48 ÷ 3 = 16, and after the gift 16 − 4 = 12 marbles. 16 forgets the gift; 44 takes the 4 from the whole 48 — the whole was already split.",
+          hi: "उसका हिस्सा 48 ÷ 3 = 16, और उपहार के बाद 16 − 4 = 12 कंचे। 16 उपहार भूल जाता है; 44 पूरे 48 में से 4 घटाता है — पूरा तो पहले ही बँट चुका था।",
+          mr: "त्याचा वाटा 48 ÷ 3 = 16, आणि भेटीनंतर 16 − 4 = 12 गोट्या. 16 भेट विसरते; 44 सबंध 48 मधून 4 वजा करते — सबंध आधीच वाटले गेले होते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A hall has 11 benches and each bench seats 9 children. If 110 children come, how many must stand?",
+          hi: "हॉल में 11 बेंचें हैं और हर बेंच पर 9 बच्चे बैठते हैं। 110 बच्चे आएँ तो कितनों को खड़ा रहना पड़ेगा?",
+          mr: "सभागृहात 11 बाके आहेत आणि प्रत्येक बाकावर 9 मुले बसतात. 110 मुले आली तर किती उभी राहतील?",
+        },
+        answer: 11,
+        wrong: [9, 21, 1],
+        checkExpr: "110-9*11",
+        solution: {
+          en: "The benches seat 9 × 11 = 99, so 110 − 99 = 11 children stand. Answering 1 subtracts 99 as if it were 109 — do the multiplication before reaching for the difference.",
+          hi: "बेंचों पर बैठेंगे 9 × 11 = 99, तो 110 − 99 = 11 बच्चे खड़े रहेंगे। 1 कहना 99 को 109 मानकर घटाना है — अंतर से पहले गुणा कीजिए।",
+          mr: "बाकांवर बसतील 9 × 11 = 99, म्हणून 110 − 99 = 11 मुले उभी. 1 म्हणणे म्हणजे 99 ला 109 समजून वजा करणे — फरकाआधी गुणाकार करा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Rewa's chart says 4 × ▢ = 52. What number hides under the box?",
+          hi: "रेवा के चार्ट पर लिखा है 4 × ▢ = 52। डिब्बे के नीचे कौन-सी संख्या छिपी है?",
+          mr: "रेवाच्या तक्त्यावर लिहिले आहे 4 × ▢ = 52. चौकटीखाली कोणती संख्या लपली आहे?",
+        },
+        answer: 13,
+        wrong: [12, 14, 48],
+        checkExpr: "52/4",
+        solution: {
+          en: "Undo the multiplication with division: 52 ÷ 4 = 13, and checking forward, 4 × 13 = 52. 12 lands on 48, one four short of the chart.",
+          hi: "गुणा को भाग से खोलिए: 52 ÷ 4 = 13, और उल्टा जाँचें तो 4 × 13 = 52। 12 पर पहुँचते हैं 48 — चार्ट से एक चौका कम।",
+          mr: "गुणाकार भागाकाराने उलगडा: 52 ÷ 4 = 13, आणि उलट तपासले तर 4 × 13 = 52. 12 वर येतात 48 — तक्त्याहून एक चौक कमी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A box of laddoos shared equally among 6 children gives each child 7, with none left over. If the SAME box were shared equally among 7 children instead, how many would each get?",
+          hi: "लड्डुओं का डिब्बा 6 बच्चों में बराबर बाँटने पर हर बच्चे को 7 मिलते हैं, कुछ बचता नहीं। वही डिब्बा 7 बच्चों में बराबर बँटे, तो हर एक को कितने मिलेंगे?",
+          mr: "लाडवांचा डबा 6 मुलांत सारखा वाटला की प्रत्येकाला 7 मिळतात, काही उरत नाही. तोच डबा 7 मुलांत सारखा वाटला, तर प्रत्येकाला किती मिळतील?",
+        },
+        answer: 6,
+        wrong: [7, 5, 8],
+        checkExpr: "6*7/7",
+        solution: {
+          en: "First find the box: 6 children × 7 laddoos = 42 in all. Shared among 7: 42 ÷ 7 = 6 each. More children from the same box means smaller shares — 6 and 7 simply trade places, which is the beauty of 6 × 7 = 7 × 6.",
+          hi: "पहले डिब्बा गिनिए: 6 बच्चे × 7 लड्डू = कुल 42। सात में बाँटें: 42 ÷ 7 = 6-6। उसी डिब्बे से ज़्यादा बच्चे यानी छोटे हिस्से — 6 और 7 बस जगह बदल लेते हैं, यही 6 × 7 = 7 × 6 की ख़ूबी है।",
+          mr: "आधी डबा मोजा: 6 मुले × 7 लाडू = एकूण 42. सातांत वाटले: 42 ÷ 7 = 6-6. त्याच डब्यातून जास्त मुले म्हणजे लहान वाटे — 6 आणि 7 नुसत्या जागा बदलतात, हीच 6 × 7 = 7 × 6 ची गंमत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 11 — Tables and Shares",
+      name: "Tables and Shares",
+      slug: "maths-4-tables-and-shares",
+      summary: "Multiplication tables and equal sharing — cats' legs and pencil packets, benches that run out, and shares that shrink as children grow in number.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "पहाड़े और बँटवारा",
+          summary: "पहाड़े और बराबर बँटवारा — बिल्लियों के पैर और पेंसिल के पैकेट, कम पड़ती बेंचें, और बच्चों के बढ़ने पर सिकुड़ते हिस्से।",
+        },
+        mr: {
+          name: "पाढे आणि वाटण्या",
+          summary: "पाढे आणि सारखी वाटणी — मांजरींचे पाय आणि पेन्सिलींची पाकिटे, अपुरी पडणारी बाके, आणि मुले वाढली की आकसणारे वाटे.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — How Heavy? How Light? (grams and kilograms)                  */
+/* ------------------------------------------------------------------------- */
+function howHeavyHowLight(): TopicFileOut {
+  const rand = rng("maths-4-how-heavy-how-light");
+  const qs: OutQuestion[] = [];
+
+  const kg = (n: number) => ({ en: `${n} kg`, hi: `${n} किग्रा`, mr: `${n} किलो` });
+  const g = (n: number) => ({ en: `${n} g`, hi: `${n} ग्राम`, mr: `${n} ग्रॅम` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The shopkeeper's 1 kg weight equals how many grams?",
+          hi: "दुकानदार का 1 किलो का बाट कितने ग्राम के बराबर है?",
+          mr: "दुकानदाराचे 1 किलोचे वजन किती ग्रॅमच्या बरोबरीचे आहे?",
+        },
+        answer: 1000,
+        wrong: [100, 500, 10],
+        solution: {
+          en: "One kilogram is 1000 grams — 'kilo' means a thousand here just as it does in kilometre. 500 g is only the half-kilo weight beside it.",
+          hi: "एक किलोग्राम = 1000 ग्राम — 'किलो' यहाँ भी हज़ार ही कहता है, जैसे किलोमीटर में। 500 ग्राम तो उसके बग़ल का आधा-किलो बाट है।",
+          mr: "एक किलोग्रॅम = 1000 ग्रॅम — 'किलो' इथेही हजारच सांगतो, किलोमीटरप्रमाणे. 500 ग्रॅम हे त्याच्या शेजारचे अर्धा-किलोचे वजन.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A pumpkin weighs 3 kg and a marrow weighs 2 kg. What do they weigh together?",
+          hi: "कद्दू 3 किलो का है और लौकी 2 किलो की। दोनों मिलाकर कितने के?",
+          mr: "भोपळा 3 किलोचा आहे आणि दुधी 2 किलोचा. दोन्ही मिळून किती?",
+        },
+        answer: 5,
+        wrong: [1, 6, 32],
+        checkExpr: "3+2",
+        fmt: kg,
+        solution: {
+          en: "On one pan together: 3 + 2 = 5 kg. 1 kg is their difference — that answers 'how much heavier', not 'how much together'.",
+          hi: "एक ही पलड़े पर: 3 + 2 = 5 किलो। 1 किलो उनका अंतर है — वह 'कितना भारी ज़्यादा' का उत्तर है, 'कुल कितना' का नहीं।",
+          mr: "एकाच पारड्यात: 3 + 2 = 5 किलो. 1 किलो हा त्यांचा फरक — ते 'किती जड जास्त' चे उत्तर, 'मिळून किती' चे नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Amma asks for half a kilo of sugar. How many grams should the shopkeeper weigh?",
+          hi: "अम्मा आधा किलो चीनी माँगती हैं। दुकानदार कितने ग्राम तौले?",
+          mr: "आई अर्धा किलो साखर मागते. दुकानदाराने किती ग्रॅम तोलावी?",
+        },
+        answer: 500,
+        wrong: [50, 250, 5],
+        checkExpr: "1000/2",
+        fmt: g,
+        solution: {
+          en: "Half of a kilo's 1000 g: 1000 ÷ 2 = 500 g. 250 g is the quarter-kilo (pav) — half is twice the pav.",
+          hi: "किलो के 1000 ग्राम का आधा: 1000 ÷ 2 = 500 ग्राम। 250 ग्राम पाव है — आधा पाव का दुगना होता है।",
+          mr: "किलोच्या 1000 ग्रॅमचा अर्धा: 1000 ÷ 2 = 500 ग्रॅम. 250 ग्रॅम म्हणजे पाव — अर्धा हा पावाच्या दुप्पट.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A sack of rice weighs 25 kg. What do 4 such sacks weigh?",
+          hi: "चावल की बोरी 25 किलो की है। ऐसी 4 बोरियाँ कितने की होंगी?",
+          mr: "तांदळाचे पोते 25 किलोचे आहे. अशी 4 पोती किती होतील?",
+        },
+        answer: 100,
+        wrong: [29, 75, 125],
+        checkExpr: "25*4",
+        fmt: kg,
+        solution: {
+          en: "Four sacks of 25: 25 × 4 = 100 kg — a full quintal. 75 loads only three sacks onto the cart.",
+          hi: "25-25 की चार बोरियाँ: 25 × 4 = 100 किलो — पूरा क्विंटल। 75 ठेले पर तीन ही बोरियाँ चढ़ाता है।",
+          mr: "25-25 ची चार पोती: 25 × 4 = 100 किलो — पूर्ण क्विंटल. 75 गाडीवर तीनच पोती चढवते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Mother buys 750 g of potatoes and 250 g of tomatoes. How many grams is the bag?",
+          hi: "माँ 750 ग्राम आलू और 250 ग्राम टमाटर लेती हैं। थैले में कितने ग्राम हुए?",
+          mr: "आई 750 ग्रॅम बटाटे आणि 250 ग्रॅम टोमॅटो घेते. पिशवीत किती ग्रॅम झाले?",
+        },
+        answer: 1000,
+        wrong: [900, 500, 1250],
+        checkExpr: "750+250",
+        fmt: g,
+        solution: {
+          en: "750 + 250 = 1000 g — exactly one kilo in the bag. 900 forgets the carry when 50 meets 50; 500 subtracts the tomatoes instead of adding them.",
+          hi: "750 + 250 = 1000 ग्राम — थैले में ठीक एक किलो। 900 में 50 और 50 के मिलने का हासिल छूटा; 500 टमाटर जोड़ने की जगह घटा देता है।",
+          mr: "750 + 250 = 1000 ग्रॅम — पिशवीत बरोबर एक किलो. 900 मध्ये 50 आणि 50 भेटतानाचा हातचा सुटला; 500 टोमॅटो मिळवण्याऐवजी वजा करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "To weigh 5 kg of wheat the shopkeeper puts 2 kg and 2 kg weights on the pan. What one more weight completes it?",
+          hi: "5 किलो गेहूँ तौलने के लिए दुकानदार पलड़े पर 2 किलो और 2 किलो के बाट रखता है। कौन-सा एक और बाट काम पूरा करेगा?",
+          mr: "5 किलो गहू तोलण्यासाठी दुकानदार पारड्यात 2 किलो आणि 2 किलोची वजने ठेवतो. आणखी कोणते एक वजन काम पूर्ण करेल?",
+        },
+        answer: 1,
+        wrong: [2, 3, 5],
+        checkExpr: "5-2-2",
+        fmt: kg,
+        solution: {
+          en: "The pans must balance at 5: already 2 + 2 = 4, so 5 − 4 = 1 kg more. A 3 kg weight would tip the scale past the wheat.",
+          hi: "पलड़े 5 पर बराबर होने हैं: अभी 2 + 2 = 4, तो 5 − 4 = 1 किलो और। 3 किलो का बाट तराज़ू को गेहूँ से आगे झुका देगा।",
+          mr: "पारडी 5 वर समतोल हवी: आत्ता 2 + 2 = 4, म्हणून 5 − 4 = 1 किलो आणखी. 3 किलोचे वजन काटा गव्हाच्या पलीकडे झुकवेल.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A watermelon weighs 3 kg 250 g. How many grams is that in all?",
+          hi: "तरबूज़ 3 किलो 250 ग्राम का है। कुल कितने ग्राम हुआ?",
+          mr: "कलिंगड 3 किलो 250 ग्रॅमचे आहे. एकूण किती ग्रॅम झाले?",
+        },
+        answer: 3250,
+        wrong: [3025, 325, 32500],
+        checkExpr: "3*1000+250",
+        fmt: g,
+        solution: {
+          en: "3 kg = 3 × 1000 = 3000 g, plus the loose 250: 3000 + 250 = 3250 g. 3025 drops the 250 into the wrong columns; 325 loses a whole zero of kilos.",
+          hi: "3 किलो = 3 × 1000 = 3000 ग्राम, ऊपर से 250: 3000 + 250 = 3250 ग्राम। 3025 में 250 ग़लत ख़ानों में गिरा; 325 किलो का पूरा शून्य खो बैठा।",
+          mr: "3 किलो = 3 × 1000 = 3000 ग्रॅम, शिवाय 250: 3000 + 250 = 3250 ग्रॅम. 3025 मध्ये 250 चुकीच्या रकान्यांत पडले; 325 ने किलोचे अख्खे शून्य गमावले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A balance stands level: one pan holds a 5 kg weight, the other holds a melon and a 2 kg weight. What does the melon weigh?",
+          hi: "तराज़ू बराबर है: एक पलड़े में 5 किलो का बाट, दूसरे में एक ख़रबूज़ा और 2 किलो का बाट। ख़रबूज़ा कितने का है?",
+          mr: "काटा समतोल आहे: एका पारड्यात 5 किलोचे वजन, दुसऱ्यात एक खरबूज आणि 2 किलोचे वजन. खरबूज किती वजनाचे?",
+        },
+        answer: 3,
+        wrong: [7, 2, 5],
+        checkExpr: "5-2",
+        fmt: kg,
+        solution: {
+          en: "Level pans mean equal weight: melon + 2 = 5, so the melon is 5 − 2 = 3 kg. 7 adds the weights from both pans — the 2 kg sits WITH the melon, helping it balance, not riding on top of the 5.",
+          hi: "बराबर पलड़े यानी बराबर वज़न: ख़रबूज़ा + 2 = 5, तो ख़रबूज़ा 5 − 2 = 3 किलो। 7 दोनों पलड़ों के बाट जोड़ देता है — 2 किलो ख़रबूज़े के साथ बैठा उसे बराबरी दिला रहा है, 5 के ऊपर नहीं चढ़ा।",
+          mr: "समतोल पारडी म्हणजे समान वजन: खरबूज + 2 = 5, म्हणून खरबूज 5 − 2 = 3 किलो. 7 दोन्ही पारड्यांतली वजने मिळवते — 2 किलो खरबुजासोबत बसून त्याला बरोबरी देत आहे, 5 वर चढलेले नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A 12 kg tin of dal is packed into 500 g packets. How many packets does it fill?",
+          hi: "12 किलो दाल का कनस्तर 500-500 ग्राम के पैकेटों में भरा गया। कितने पैकेट बनेंगे?",
+          mr: "12 किलो डाळीचा डबा 500-500 ग्रॅमच्या पाकिटांत भरला. किती पाकिटे होतील?",
+        },
+        answer: 24,
+        wrong: [12, 6, 240],
+        checkExpr: "12000/500",
+        solution: {
+          en: "Match the units first: 12 kg = 12000 g. Then 12000 ÷ 500 = 24 packets. 12 forgets each kilo makes TWO half-kilo packets; 240 divides by 50 — a zero wandered off.",
+          hi: "पहले इकाइयाँ मिलाइए: 12 किलो = 12000 ग्राम। फिर 12000 ÷ 500 = 24 पैकेट। 12 भूलता है कि हर किलो से आधे-आधे किलो के दो पैकेट बनते हैं; 240 पचास से भाग है — एक शून्य भटक गया।",
+          mr: "आधी एकके जुळवा: 12 किलो = 12000 ग्रॅम. मग 12000 ÷ 500 = 24 पाकिटे. 12 विसरते की प्रत्येक किलोतून अर्ध्या-अर्ध्या किलोची दोन पाकिटे होतात; 240 म्हणजे पन्नासने भागणे — एक शून्य भरकटले.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A donkey carries 90 kg in two sacks, and one sack is 10 kg heavier than the other. What does the LIGHTER sack weigh?",
+          hi: "गधा दो बोरियों में 90 किलो ढोता है, और एक बोरी दूसरी से 10 किलो भारी है। हलकी बोरी कितने की है?",
+          mr: "गाढव दोन पोत्यांत 90 किलो वाहते, आणि एक पोते दुसऱ्याहून 10 किलो जड आहे. हलके पोते किती वजनाचे?",
+        },
+        answer: 40,
+        wrong: [50, 45, 80],
+        checkExpr: "(90-10)/2",
+        solution: {
+          en: "Take the extra 10 off the pile: 90 − 10 = 80 splits evenly into 40 and 40; give the 10 back to one sack and the pair is 40 and 50. So the lighter is 40 kg — 50 answers the heavier sack, 45 splits without honouring the difference.",
+          hi: "ऊपर के 10 उतार लीजिए: 90 − 10 = 80 बराबर बँटता है 40-40 में; 10 एक बोरी को लौटाइए तो जोड़ी 40 और 50 की। हलकी 40 किलो — 50 भारी बोरी का उत्तर है, 45 अंतर की परवाह किए बिना बाँट देता है।",
+          mr: "वरचे 10 उतरवा: 90 − 10 = 80 सारखे वाटले जाते 40-40; 10 एका पोत्याला परत द्या की जोडी 40 आणि 50 ची. हलके 40 किलो — 50 हे जड पोत्याचे उत्तर, 45 फरकाला न जुमानता वाटते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A trader owns exactly three weights: 1 kg, 2 kg and 4 kg. Putting any of them together on ONE pan, what is the heaviest load he can weigh in one go?",
+          hi: "व्यापारी के पास ठीक तीन बाट हैं: 1, 2 और 4 किलो। इन्हें एक ही पलड़े पर साथ रखकर वह एक बार में ज़्यादा-से-ज़्यादा कितना तौल सकता है?",
+          mr: "व्यापाऱ्याकडे नेमकी तीन वजने आहेत: 1, 2 आणि 4 किलो. ती एकाच पारड्यात एकत्र ठेवून तो एका वेळी जास्तीत जास्त किती तोलू शकतो?",
+        },
+        answer: 7,
+        wrong: [6, 8, 3],
+        checkExpr: "1+2+4",
+        solution: {
+          en: "All three together: 1 + 2 + 4 = 7 kg. And here is the trader's secret: those same three weights also make every load below it — 1, 2, 3 (=1+2), 4, 5 (=4+1), 6 (=4+2) — so three weights cover one to seven with nothing missing.",
+          hi: "तीनों साथ: 1 + 2 + 4 = 7 किलो। और व्यापारी का राज़: यही तीन बाट उससे नीचे का हर वज़न भी बना देते हैं — 1, 2, 3 (=1+2), 4, 5 (=4+1), 6 (=4+2) — तीन बाटों से एक से सात तक, कुछ भी छूटे बिना।",
+          mr: "तिन्ही एकत्र: 1 + 2 + 4 = 7 किलो. आणि व्यापाऱ्याचे गुपित: हीच तीन वजने त्याखालचे प्रत्येक वजनही करतात — 1, 2, 3 (=1+2), 4, 5 (=4+1), 6 (=4+2) — तीन वजनांत एक ते सात, काहीही न सुटता.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 12 — How Heavy? How Light?",
+      name: "How Heavy? How Light?",
+      slug: "maths-4-how-heavy-how-light",
+      summary: "Grams and kilograms on a real balance — weights that add up, pans that must agree, and the trader's three clever weights.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "कितना भारी? कितना हलका?",
+          summary: "असली तराज़ू पर ग्राम और किलोग्राम — जुड़ते बाट, बराबरी माँगते पलड़े, और व्यापारी के तीन चतुर बाट।",
+        },
+        mr: {
+          name: "किती जड? किती हलके?",
+          summary: "खऱ्या काट्यावर ग्रॅम आणि किलोग्रॅम — बेरजेची वजने, बरोबरी मागणारी पारडी, आणि व्यापाऱ्याची तीन हुशार वजने.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Fields and Fences (boundary and perimeter)                   */
+/* ------------------------------------------------------------------------- */
+function fieldsAndFences(): TopicFileOut {
+  const rand = rng("maths-4-fields-and-fences");
+  const qs: OutQuestion[] = [];
+
+  const m = (n: number) => ({ en: `${n} m`, hi: `${n} मीटर`, mr: `${n} मीटर` });
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A square field has sides of 5 metres. How long is the fence all the way round?",
+          hi: "वर्गाकार खेत की भुजाएँ 5-5 मीटर की हैं। चारों ओर की बाड़ कितनी लंबी होगी?",
+          mr: "चौरस शेताच्या बाजू 5-5 मीटरच्या आहेत. सभोवतीचे कुंपण किती लांब होईल?",
+        },
+        answer: 20,
+        wrong: [10, 25, 15],
+        checkExpr: "5*4",
+        fmt: m,
+        solution: {
+          en: "A square has four equal sides: 5 × 4 = 20 m of fence. 25 multiplies 5 by itself — that would measure the field's inside, not its edge.",
+          hi: "वर्ग की चार बराबर भुजाएँ: 5 × 4 = 20 मीटर बाड़। 25 पाँच को पाँच से गुणा करता है — वह खेत का भीतर नापता, किनारा नहीं।",
+          mr: "चौरसाच्या चार सारख्या बाजू: 5 × 4 = 20 मीटर कुंपण. 25 पाचाला पाचानेच गुणते — ते शेताचे आतले मोजेल, कड नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A triangular park has sides 3 m, 4 m and 5 m. How long is its boundary?",
+          hi: "तिकोने पार्क की भुजाएँ 3, 4 और 5 मीटर हैं। उसकी सीमा कितनी लंबी है?",
+          mr: "त्रिकोणी बागेच्या बाजू 3, 4 आणि 5 मीटर आहेत. तिची हद्द किती लांब?",
+        },
+        answer: 12,
+        wrong: [11, 60, 9],
+        checkExpr: "3+4+5",
+        fmt: m,
+        solution: {
+          en: "Walk every side once: 3 + 4 + 5 = 12 m. 60 multiplies the sides — a boundary is walked, added edge by edge, never multiplied.",
+          hi: "हर भुजा एक बार चलिए: 3 + 4 + 5 = 12 मीटर। 60 भुजाओं का गुणा है — सीमा चलकर, किनारे-किनारे जोड़कर नापी जाती है, गुणा से नहीं।",
+          mr: "प्रत्येक बाजू एकदा चाला: 3 + 4 + 5 = 12 मीटर. 60 म्हणजे बाजूंचा गुणाकार — हद्द चालून, कडेकडेने मिळवून मोजतात, गुणून नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A rectangular kitchen garden is 6 m long and 4 m wide. What is its boundary?",
+          hi: "आयताकार बग़ीची 6 मीटर लंबी और 4 मीटर चौड़ी है। उसकी सीमा कितनी है?",
+          mr: "आयताकृती परसबाग 6 मीटर लांब आणि 4 मीटर रुंद आहे. तिची हद्द किती?",
+        },
+        answer: 20,
+        wrong: [10, 24, 16],
+        checkExpr: "2*(6+4)",
+        fmt: m,
+        solution: {
+          en: "A rectangle repeats each side twice: (6 + 4) × 2 = 20 m. 10 walks only one length and one width — half the way round.",
+          hi: "आयत हर भुजा दो बार दोहराता है: (6 + 4) × 2 = 20 मीटर। 10 केवल एक लंबाई और एक चौड़ाई चलता है — आधा चक्कर।",
+          mr: "आयत प्रत्येक बाजू दोनदा घेतो: (6 + 4) × 2 = 20 मीटर. 10 फक्त एक लांबी आणि एक रुंदी चालते — अर्धी फेरी.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A field is 9 m long and 6 m wide. How much wire fences it once around?",
+          hi: "खेत 9 मीटर लंबा और 6 मीटर चौड़ा है। एक बार घेरने में कितना तार लगेगा?",
+          mr: "शेत 9 मीटर लांब आणि 6 मीटर रुंद आहे. एकदा वेढायला किती तार लागेल?",
+        },
+        answer: 30,
+        wrong: [15, 54, 24],
+        checkExpr: "2*(9+6)",
+        fmt: m,
+        solution: {
+          en: "Two lengths and two widths: (9 + 6) × 2 = 30 m. 54 multiplies 9 × 6 — that counts the squares inside the field, not the wire around it.",
+          hi: "दो लंबाइयाँ, दो चौड़ाइयाँ: (9 + 6) × 2 = 30 मीटर। 54 यानी 9 × 6 — वह खेत के भीतर के ख़ाने गिनता है, चारों ओर का तार नहीं।",
+          mr: "दोन लांब्या, दोन रुंद्या: (9 + 6) × 2 = 30 मीटर. 54 म्हणजे 9 × 6 — ते शेतातल्या आतल्या चौकटी मोजते, भोवतीची तार नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Fencing wire costs ₹8 per metre. What does 12 metres of wire cost?",
+          hi: "बाड़ का तार ₹8 प्रति मीटर है। 12 मीटर तार के कितने लगेंगे?",
+          mr: "कुंपणाची तार ₹8 प्रति मीटर आहे. 12 मीटर तारेला किती लागतील?",
+        },
+        answer: 96,
+        wrong: [20, 88, 104],
+        checkExpr: "8*12",
+        fmt: rupees,
+        solution: {
+          en: "8 × 12 = 8 × 10 + 8 × 2 = 96 rupees. ₹20 adds the rate to the metres; 88 and 104 are one eight below and above — the tens carry slipped.",
+          hi: "8 × 12 = 8 × 10 + 8 × 2 = ₹96। ₹20 भाव को मीटर से जोड़ देता है; 88 और 104 एक-एक आठ नीचे-ऊपर हैं — दहाई का हासिल फिसला।",
+          mr: "8 × 12 = 8 × 10 + 8 × 2 = ₹96. ₹20 भाव मीटरमध्ये मिळवते; 88 आणि 104 एकेक आठ खाली-वर — दशकाचा हातचा घसरला.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A square garden's fence measures 36 metres in all. How long is each side?",
+          hi: "वर्गाकार बग़ीचे की पूरी बाड़ 36 मीटर है। हर भुजा कितनी लंबी है?",
+          mr: "चौरस बागेचे सगळे कुंपण 36 मीटर आहे. प्रत्येक बाजू किती लांब?",
+        },
+        answer: 9,
+        wrong: [6, 12, 32],
+        checkExpr: "36/4",
+        fmt: m,
+        solution: {
+          en: "Four equal sides share the 36: 36 ÷ 4 = 9 m each. 6 divides by six — a square insists on exactly four sides.",
+          hi: "36 चार बराबर भुजाओं में बँटता है: 36 ÷ 4 = 9-9 मीटर। 6 छह से भाग है — वर्ग की ज़िद है कि भुजाएँ ठीक चार हों।",
+          mr: "36 चार सारख्या बाजूंत वाटले जाते: 36 ÷ 4 = 9-9 मीटर. 6 म्हणजे सहाने भागणे — चौरसाचा हट्ट आहे की बाजू नेमक्या चारच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Ravi jogs twice around a park whose boundary is 150 metres. How far does he run?",
+          hi: "रवि 150 मीटर सीमा वाले पार्क के दो चक्कर लगाता है। वह कितना दौड़ा?",
+          mr: "रवी 150 मीटर हद्दीच्या बागेला दोन फेऱ्या मारतो. तो किती धावला?",
+        },
+        answer: 300,
+        wrong: [152, 450, 75],
+        checkExpr: "150*2",
+        fmt: m,
+        solution: {
+          en: "Each lap is the full boundary: 150 × 2 = 300 m. 75 halves the park instead of doubling the laps.",
+          hi: "हर चक्कर पूरी सीमा है: 150 × 2 = 300 मीटर। 75 चक्कर दुगने करने की जगह पार्क आधा कर देता है।",
+          mr: "प्रत्येक फेरी म्हणजे पूर्ण हद्द: 150 × 2 = 300 मीटर. 75 फेऱ्या दुप्पट करण्याऐवजी बागच अर्धी करते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A field 20 m by 10 m is fenced all round except for a 2 m gate. How much fencing wire is needed?",
+          hi: "20 × 10 मीटर का खेत चारों ओर से घेरा गया, बस 2 मीटर का फाटक छूटा। कितना तार चाहिए?",
+          mr: "20 × 10 मीटरचे शेत सभोवती वेढले, फक्त 2 मीटरचे फाटक सोडले. किती तार लागेल?",
+        },
+        answer: 58,
+        wrong: [60, 62, 28],
+        checkExpr: "2*(20+10)-2",
+        fmt: m,
+        solution: {
+          en: "The full round is (20 + 10) × 2 = 60 m; the gate stands where wire is not: 60 − 2 = 58 m. 60 fences the farmer out of his own field.",
+          hi: "पूरा घेरा (20 + 10) × 2 = 60 मीटर; फाटक वहीं है जहाँ तार नहीं: 60 − 2 = 58 मीटर। 60 किसान को उसके अपने खेत से बाहर घेर देता है।",
+          mr: "पूर्ण वेढा (20 + 10) × 2 = 60 मीटर; फाटक तिथे आहे जिथे तार नाही: 60 − 2 = 58 मीटर. 60 शेतकऱ्याला त्याच्याच शेताबाहेर कोंडते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "One round of the school ground's boundary is 180 m. The PT teacher orders 3 rounds. How far is that?",
+          hi: "स्कूल मैदान की सीमा का एक चक्कर 180 मीटर है। पीटी सर 3 चक्कर लगवाते हैं। कुल कितनी दूरी हुई?",
+          mr: "शाळेच्या मैदानाच्या हद्दीची एक फेरी 180 मीटर आहे. पीटी सर 3 फेऱ्या सांगतात. एकूण अंतर किती?",
+        },
+        answer: 540,
+        wrong: [360, 183, 600],
+        checkExpr: "180*3",
+        fmt: m,
+        solution: {
+          en: "Three full laps: 180 × 3 = 540 m — over half a kilometre. 360 runs two laps and walks off; 183 adds the 3 as metres instead of laps.",
+          hi: "तीन पूरे चक्कर: 180 × 3 = 540 मीटर — आधे किलोमीटर से ज़्यादा। 360 दो चक्कर लगाकर चल देता है; 183 तीन को चक्कर की जगह मीटर बनाकर जोड़ देता है।",
+          mr: "तीन पूर्ण फेऱ्या: 180 × 3 = 540 मीटर — अर्ध्या किलोमीटरहून जास्त. 360 दोन फेऱ्या मारून निघून जाते; 183 तिनाला फेऱ्यांऐवजी मीटर करून मिळवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A rectangular field's boundary is 40 m, and its length is 12 m. How wide is it?",
+          hi: "आयताकार खेत की सीमा 40 मीटर है, और लंबाई 12 मीटर। चौड़ाई कितनी है?",
+          mr: "आयताकृती शेताची हद्द 40 मीटर आहे, आणि लांबी 12 मीटर. रुंदी किती?",
+        },
+        answer: 8,
+        wrong: [28, 14, 16],
+        checkExpr: "(40-2*12)/2",
+        fmt: m,
+        solution: {
+          en: "Two lengths use 12 × 2 = 24 m, leaving 40 − 24 = 16 m for the two widths: 16 ÷ 2 = 8 m. 28 removes only one length; 16 forgets the width also comes twice.",
+          hi: "दो लंबाइयों में 12 × 2 = 24 मीटर गए, दो चौड़ाइयों के लिए बचे 40 − 24 = 16 मीटर: 16 ÷ 2 = 8 मीटर। 28 एक ही लंबाई हटाता है; 16 भूलता है कि चौड़ाई भी दो बार आती है।",
+          mr: "दोन लांब्यांत 12 × 2 = 24 मीटर गेले, दोन रुंद्यांसाठी उरले 40 − 24 = 16 मीटर: 16 ÷ 2 = 8 मीटर. 28 एकच लांबी काढते; 16 विसरते की रुंदीही दोनदा येते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A square plot and a rectangular plot have the SAME 32 m boundary. The rectangle is 10 m long. How much longer is the square's side than the rectangle's width?",
+          hi: "एक वर्गाकार और एक आयताकार प्लॉट की सीमा बराबर — 32 मीटर — है। आयत 10 मीटर लंबा है। वर्ग की भुजा आयत की चौड़ाई से कितनी बड़ी है?",
+          mr: "एका चौरस आणि एका आयताकृती भूखंडाची हद्द सारखी — 32 मीटर — आहे. आयत 10 मीटर लांब आहे. चौरसाची बाजू आयताच्या रुंदीहून किती मोठी?",
+        },
+        answer: 2,
+        wrong: [8, 6, 4],
+        checkExpr: "32/4-(32-2*10)/2",
+        fmt: m,
+        solution: {
+          en: "Square: 32 ÷ 4 = 8 m a side. Rectangle: two lengths take 20, so the two widths share 12 — width 6 m. The difference is 8 − 6 = 2 m. The same boundary makes many shapes: stretch a rectangle longer and its width must pay for it.",
+          hi: "वर्ग: 32 ÷ 4 = 8 मीटर की भुजा। आयत: दो लंबाइयों में 20 गए, दो चौड़ाइयों के हिस्से 12 — चौड़ाई 6 मीटर। अंतर 8 − 6 = 2 मीटर। एक ही सीमा कई आकार बनाती है: आयत को लंबा खींचिए तो उसकी चौड़ाई क़ीमत चुकाती है।",
+          mr: "चौरस: 32 ÷ 4 = 8 मीटरची बाजू. आयत: दोन लांब्यांत 20 गेले, दोन रुंद्यांच्या वाट्याला 12 — रुंदी 6 मीटर. फरक 8 − 6 = 2 मीटर. एकच हद्द अनेक आकार करते: आयत लांब ओढला की त्याची रुंदी किंमत मोजते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 4,
+      chapter: "Chapter 13 — Fields and Fences",
+      name: "Fields and Fences",
+      slug: "maths-4-fields-and-fences",
+      summary: "Boundaries walked edge by edge — squares, rectangles and triangle parks, gates that save wire, and shapes that share one boundary.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "खेत और बाड़",
+          summary: "किनारे-किनारे नापी सीमाएँ — वर्ग, आयत और तिकोने पार्क, तार बचाते फाटक, और एक ही सीमा बाँटते आकार।",
+        },
+        mr: {
+          name: "शेत आणि कुंपण",
+          summary: "कडेकडेने मोजलेल्या हद्दी — चौरस, आयत आणि त्रिकोणी बागा, तार वाचवणारी फाटके, आणि एकच हद्द वाटून घेणारे आकार.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G4_MATHS: TopicFileOut[] = [
   buildingWithBricks(),
   longAndShort4(),
@@ -1616,4 +2412,7 @@ export const G4_MATHS: TopicFileOut[] = [
   theJunkSeller(),
   jugsAndMugs4(),
   halvesAndQuarters(),
+  tablesAndShares4(),
+  howHeavyHowLight(),
+  fieldsAndFences(),
 ];

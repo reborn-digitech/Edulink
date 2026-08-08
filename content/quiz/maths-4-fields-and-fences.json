@@ -1,0 +1,408 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 13 — Fields and Fences",
+  "name": "Fields and Fences",
+  "slug": "maths-4-fields-and-fences",
+  "summary": "Boundaries walked edge by edge — squares, rectangles and triangle parks, gates that save wire, and shapes that share one boundary.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "खेत और बाड़",
+      "summary": "किनारे-किनारे नापी सीमाएँ — वर्ग, आयत और तिकोने पार्क, तार बचाते फाटक, और एक ही सीमा बाँटते आकार।"
+    },
+    "mr": {
+      "name": "शेत आणि कुंपण",
+      "summary": "कडेकडेने मोजलेल्या हद्दी — चौरस, आयत आणि त्रिकोणी बागा, तार वाचवणारी फाटके, आणि एकच हद्द वाटून घेणारे आकार."
+    }
+  },
+  "source": "EduLink original, written against NCERT Math Magic (Class 4)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A square field has sides of 5 metres. How long is the fence all the way round?",
+      "choices": [
+        "20 m",
+        "15 m",
+        "25 m",
+        "10 m"
+      ],
+      "answerIndex": 0,
+      "solution": "A square has four equal sides: 5 × 4 = 20 m of fence. 25 multiplies 5 by itself — that would measure the field's inside, not its edge.",
+      "checkExpr": "5*4",
+      "translations": {
+        "hi": {
+          "stem": "वर्गाकार खेत की भुजाएँ 5-5 मीटर की हैं। चारों ओर की बाड़ कितनी लंबी होगी?",
+          "choices": [
+            "20 मीटर",
+            "15 मीटर",
+            "25 मीटर",
+            "10 मीटर"
+          ],
+          "solution": "वर्ग की चार बराबर भुजाएँ: 5 × 4 = 20 मीटर बाड़। 25 पाँच को पाँच से गुणा करता है — वह खेत का भीतर नापता, किनारा नहीं।"
+        },
+        "mr": {
+          "stem": "चौरस शेताच्या बाजू 5-5 मीटरच्या आहेत. सभोवतीचे कुंपण किती लांब होईल?",
+          "choices": [
+            "20 मीटर",
+            "15 मीटर",
+            "25 मीटर",
+            "10 मीटर"
+          ],
+          "solution": "चौरसाच्या चार सारख्या बाजू: 5 × 4 = 20 मीटर कुंपण. 25 पाचाला पाचानेच गुणते — ते शेताचे आतले मोजेल, कड नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A triangular park has sides 3 m, 4 m and 5 m. How long is its boundary?",
+      "choices": [
+        "60 m",
+        "12 m",
+        "11 m",
+        "9 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Walk every side once: 3 + 4 + 5 = 12 m. 60 multiplies the sides — a boundary is walked, added edge by edge, never multiplied.",
+      "checkExpr": "3+4+5",
+      "translations": {
+        "hi": {
+          "stem": "तिकोने पार्क की भुजाएँ 3, 4 और 5 मीटर हैं। उसकी सीमा कितनी लंबी है?",
+          "choices": [
+            "60 मीटर",
+            "12 मीटर",
+            "11 मीटर",
+            "9 मीटर"
+          ],
+          "solution": "हर भुजा एक बार चलिए: 3 + 4 + 5 = 12 मीटर। 60 भुजाओं का गुणा है — सीमा चलकर, किनारे-किनारे जोड़कर नापी जाती है, गुणा से नहीं।"
+        },
+        "mr": {
+          "stem": "त्रिकोणी बागेच्या बाजू 3, 4 आणि 5 मीटर आहेत. तिची हद्द किती लांब?",
+          "choices": [
+            "60 मीटर",
+            "12 मीटर",
+            "11 मीटर",
+            "9 मीटर"
+          ],
+          "solution": "प्रत्येक बाजू एकदा चाला: 3 + 4 + 5 = 12 मीटर. 60 म्हणजे बाजूंचा गुणाकार — हद्द चालून, कडेकडेने मिळवून मोजतात, गुणून नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A rectangular kitchen garden is 6 m long and 4 m wide. What is its boundary?",
+      "choices": [
+        "20 m",
+        "10 m",
+        "24 m",
+        "16 m"
+      ],
+      "answerIndex": 0,
+      "solution": "A rectangle repeats each side twice: (6 + 4) × 2 = 20 m. 10 walks only one length and one width — half the way round.",
+      "checkExpr": "2*(6+4)",
+      "translations": {
+        "hi": {
+          "stem": "आयताकार बग़ीची 6 मीटर लंबी और 4 मीटर चौड़ी है। उसकी सीमा कितनी है?",
+          "choices": [
+            "20 मीटर",
+            "10 मीटर",
+            "24 मीटर",
+            "16 मीटर"
+          ],
+          "solution": "आयत हर भुजा दो बार दोहराता है: (6 + 4) × 2 = 20 मीटर। 10 केवल एक लंबाई और एक चौड़ाई चलता है — आधा चक्कर।"
+        },
+        "mr": {
+          "stem": "आयताकृती परसबाग 6 मीटर लांब आणि 4 मीटर रुंद आहे. तिची हद्द किती?",
+          "choices": [
+            "20 मीटर",
+            "10 मीटर",
+            "24 मीटर",
+            "16 मीटर"
+          ],
+          "solution": "आयत प्रत्येक बाजू दोनदा घेतो: (6 + 4) × 2 = 20 मीटर. 10 फक्त एक लांबी आणि एक रुंदी चालते — अर्धी फेरी."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A field is 9 m long and 6 m wide. How much wire fences it once around?",
+      "choices": [
+        "24 m",
+        "15 m",
+        "30 m",
+        "54 m"
+      ],
+      "answerIndex": 2,
+      "solution": "Two lengths and two widths: (9 + 6) × 2 = 30 m. 54 multiplies 9 × 6 — that counts the squares inside the field, not the wire around it.",
+      "checkExpr": "2*(9+6)",
+      "translations": {
+        "hi": {
+          "stem": "खेत 9 मीटर लंबा और 6 मीटर चौड़ा है। एक बार घेरने में कितना तार लगेगा?",
+          "choices": [
+            "24 मीटर",
+            "15 मीटर",
+            "30 मीटर",
+            "54 मीटर"
+          ],
+          "solution": "दो लंबाइयाँ, दो चौड़ाइयाँ: (9 + 6) × 2 = 30 मीटर। 54 यानी 9 × 6 — वह खेत के भीतर के ख़ाने गिनता है, चारों ओर का तार नहीं।"
+        },
+        "mr": {
+          "stem": "शेत 9 मीटर लांब आणि 6 मीटर रुंद आहे. एकदा वेढायला किती तार लागेल?",
+          "choices": [
+            "24 मीटर",
+            "15 मीटर",
+            "30 मीटर",
+            "54 मीटर"
+          ],
+          "solution": "दोन लांब्या, दोन रुंद्या: (9 + 6) × 2 = 30 मीटर. 54 म्हणजे 9 × 6 — ते शेतातल्या आतल्या चौकटी मोजते, भोवतीची तार नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Fencing wire costs ₹8 per metre. What does 12 metres of wire cost?",
+      "choices": [
+        "₹104",
+        "₹88",
+        "₹96",
+        "₹20"
+      ],
+      "answerIndex": 2,
+      "solution": "8 × 12 = 8 × 10 + 8 × 2 = 96 rupees. ₹20 adds the rate to the metres; 88 and 104 are one eight below and above — the tens carry slipped.",
+      "checkExpr": "8*12",
+      "translations": {
+        "hi": {
+          "stem": "बाड़ का तार ₹8 प्रति मीटर है। 12 मीटर तार के कितने लगेंगे?",
+          "choices": [
+            "₹104",
+            "₹88",
+            "₹96",
+            "₹20"
+          ],
+          "solution": "8 × 12 = 8 × 10 + 8 × 2 = ₹96। ₹20 भाव को मीटर से जोड़ देता है; 88 और 104 एक-एक आठ नीचे-ऊपर हैं — दहाई का हासिल फिसला।"
+        },
+        "mr": {
+          "stem": "कुंपणाची तार ₹8 प्रति मीटर आहे. 12 मीटर तारेला किती लागतील?",
+          "choices": [
+            "₹104",
+            "₹88",
+            "₹96",
+            "₹20"
+          ],
+          "solution": "8 × 12 = 8 × 10 + 8 × 2 = ₹96. ₹20 भाव मीटरमध्ये मिळवते; 88 आणि 104 एकेक आठ खाली-वर — दशकाचा हातचा घसरला."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A square garden's fence measures 36 metres in all. How long is each side?",
+      "choices": [
+        "9 m",
+        "6 m",
+        "12 m",
+        "32 m"
+      ],
+      "answerIndex": 0,
+      "solution": "Four equal sides share the 36: 36 ÷ 4 = 9 m each. 6 divides by six — a square insists on exactly four sides.",
+      "checkExpr": "36/4",
+      "translations": {
+        "hi": {
+          "stem": "वर्गाकार बग़ीचे की पूरी बाड़ 36 मीटर है। हर भुजा कितनी लंबी है?",
+          "choices": [
+            "9 मीटर",
+            "6 मीटर",
+            "12 मीटर",
+            "32 मीटर"
+          ],
+          "solution": "36 चार बराबर भुजाओं में बँटता है: 36 ÷ 4 = 9-9 मीटर। 6 छह से भाग है — वर्ग की ज़िद है कि भुजाएँ ठीक चार हों।"
+        },
+        "mr": {
+          "stem": "चौरस बागेचे सगळे कुंपण 36 मीटर आहे. प्रत्येक बाजू किती लांब?",
+          "choices": [
+            "9 मीटर",
+            "6 मीटर",
+            "12 मीटर",
+            "32 मीटर"
+          ],
+          "solution": "36 चार सारख्या बाजूंत वाटले जाते: 36 ÷ 4 = 9-9 मीटर. 6 म्हणजे सहाने भागणे — चौरसाचा हट्ट आहे की बाजू नेमक्या चारच."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Ravi jogs twice around a park whose boundary is 150 metres. How far does he run?",
+      "choices": [
+        "300 m",
+        "152 m",
+        "75 m",
+        "450 m"
+      ],
+      "answerIndex": 0,
+      "solution": "Each lap is the full boundary: 150 × 2 = 300 m. 75 halves the park instead of doubling the laps.",
+      "checkExpr": "150*2",
+      "translations": {
+        "hi": {
+          "stem": "रवि 150 मीटर सीमा वाले पार्क के दो चक्कर लगाता है। वह कितना दौड़ा?",
+          "choices": [
+            "300 मीटर",
+            "152 मीटर",
+            "75 मीटर",
+            "450 मीटर"
+          ],
+          "solution": "हर चक्कर पूरी सीमा है: 150 × 2 = 300 मीटर। 75 चक्कर दुगने करने की जगह पार्क आधा कर देता है।"
+        },
+        "mr": {
+          "stem": "रवी 150 मीटर हद्दीच्या बागेला दोन फेऱ्या मारतो. तो किती धावला?",
+          "choices": [
+            "300 मीटर",
+            "152 मीटर",
+            "75 मीटर",
+            "450 मीटर"
+          ],
+          "solution": "प्रत्येक फेरी म्हणजे पूर्ण हद्द: 150 × 2 = 300 मीटर. 75 फेऱ्या दुप्पट करण्याऐवजी बागच अर्धी करते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A field 20 m by 10 m is fenced all round except for a 2 m gate. How much fencing wire is needed?",
+      "choices": [
+        "58 m",
+        "28 m",
+        "60 m",
+        "62 m"
+      ],
+      "answerIndex": 0,
+      "solution": "The full round is (20 + 10) × 2 = 60 m; the gate stands where wire is not: 60 − 2 = 58 m. 60 fences the farmer out of his own field.",
+      "checkExpr": "2*(20+10)-2",
+      "translations": {
+        "hi": {
+          "stem": "20 × 10 मीटर का खेत चारों ओर से घेरा गया, बस 2 मीटर का फाटक छूटा। कितना तार चाहिए?",
+          "choices": [
+            "58 मीटर",
+            "28 मीटर",
+            "60 मीटर",
+            "62 मीटर"
+          ],
+          "solution": "पूरा घेरा (20 + 10) × 2 = 60 मीटर; फाटक वहीं है जहाँ तार नहीं: 60 − 2 = 58 मीटर। 60 किसान को उसके अपने खेत से बाहर घेर देता है।"
+        },
+        "mr": {
+          "stem": "20 × 10 मीटरचे शेत सभोवती वेढले, फक्त 2 मीटरचे फाटक सोडले. किती तार लागेल?",
+          "choices": [
+            "58 मीटर",
+            "28 मीटर",
+            "60 मीटर",
+            "62 मीटर"
+          ],
+          "solution": "पूर्ण वेढा (20 + 10) × 2 = 60 मीटर; फाटक तिथे आहे जिथे तार नाही: 60 − 2 = 58 मीटर. 60 शेतकऱ्याला त्याच्याच शेताबाहेर कोंडते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "One round of the school ground's boundary is 180 m. The PT teacher orders 3 rounds. How far is that?",
+      "choices": [
+        "183 m",
+        "600 m",
+        "540 m",
+        "360 m"
+      ],
+      "answerIndex": 2,
+      "solution": "Three full laps: 180 × 3 = 540 m — over half a kilometre. 360 runs two laps and walks off; 183 adds the 3 as metres instead of laps.",
+      "checkExpr": "180*3",
+      "translations": {
+        "hi": {
+          "stem": "स्कूल मैदान की सीमा का एक चक्कर 180 मीटर है। पीटी सर 3 चक्कर लगवाते हैं। कुल कितनी दूरी हुई?",
+          "choices": [
+            "183 मीटर",
+            "600 मीटर",
+            "540 मीटर",
+            "360 मीटर"
+          ],
+          "solution": "तीन पूरे चक्कर: 180 × 3 = 540 मीटर — आधे किलोमीटर से ज़्यादा। 360 दो चक्कर लगाकर चल देता है; 183 तीन को चक्कर की जगह मीटर बनाकर जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "शाळेच्या मैदानाच्या हद्दीची एक फेरी 180 मीटर आहे. पीटी सर 3 फेऱ्या सांगतात. एकूण अंतर किती?",
+          "choices": [
+            "183 मीटर",
+            "600 मीटर",
+            "540 मीटर",
+            "360 मीटर"
+          ],
+          "solution": "तीन पूर्ण फेऱ्या: 180 × 3 = 540 मीटर — अर्ध्या किलोमीटरहून जास्त. 360 दोन फेऱ्या मारून निघून जाते; 183 तिनाला फेऱ्यांऐवजी मीटर करून मिळवते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rectangular field's boundary is 40 m, and its length is 12 m. How wide is it?",
+      "choices": [
+        "8 m",
+        "28 m",
+        "14 m",
+        "16 m"
+      ],
+      "answerIndex": 0,
+      "solution": "Two lengths use 12 × 2 = 24 m, leaving 40 − 24 = 16 m for the two widths: 16 ÷ 2 = 8 m. 28 removes only one length; 16 forgets the width also comes twice.",
+      "checkExpr": "(40-2*12)/2",
+      "translations": {
+        "hi": {
+          "stem": "आयताकार खेत की सीमा 40 मीटर है, और लंबाई 12 मीटर। चौड़ाई कितनी है?",
+          "choices": [
+            "8 मीटर",
+            "28 मीटर",
+            "14 मीटर",
+            "16 मीटर"
+          ],
+          "solution": "दो लंबाइयों में 12 × 2 = 24 मीटर गए, दो चौड़ाइयों के लिए बचे 40 − 24 = 16 मीटर: 16 ÷ 2 = 8 मीटर। 28 एक ही लंबाई हटाता है; 16 भूलता है कि चौड़ाई भी दो बार आती है।"
+        },
+        "mr": {
+          "stem": "आयताकृती शेताची हद्द 40 मीटर आहे, आणि लांबी 12 मीटर. रुंदी किती?",
+          "choices": [
+            "8 मीटर",
+            "28 मीटर",
+            "14 मीटर",
+            "16 मीटर"
+          ],
+          "solution": "दोन लांब्यांत 12 × 2 = 24 मीटर गेले, दोन रुंद्यांसाठी उरले 40 − 24 = 16 मीटर: 16 ÷ 2 = 8 मीटर. 28 एकच लांबी काढते; 16 विसरते की रुंदीही दोनदा येते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A square plot and a rectangular plot have the SAME 32 m boundary. The rectangle is 10 m long. How much longer is the square's side than the rectangle's width?",
+      "choices": [
+        "6 m",
+        "2 m",
+        "8 m",
+        "4 m"
+      ],
+      "answerIndex": 1,
+      "solution": "Square: 32 ÷ 4 = 8 m a side. Rectangle: two lengths take 20, so the two widths share 12 — width 6 m. The difference is 8 − 6 = 2 m. The same boundary makes many shapes: stretch a rectangle longer and its width must pay for it.",
+      "checkExpr": "32/4-(32-2*10)/2",
+      "translations": {
+        "hi": {
+          "stem": "एक वर्गाकार और एक आयताकार प्लॉट की सीमा बराबर — 32 मीटर — है। आयत 10 मीटर लंबा है। वर्ग की भुजा आयत की चौड़ाई से कितनी बड़ी है?",
+          "choices": [
+            "6 मीटर",
+            "2 मीटर",
+            "8 मीटर",
+            "4 मीटर"
+          ],
+          "solution": "वर्ग: 32 ÷ 4 = 8 मीटर की भुजा। आयत: दो लंबाइयों में 20 गए, दो चौड़ाइयों के हिस्से 12 — चौड़ाई 6 मीटर। अंतर 8 − 6 = 2 मीटर। एक ही सीमा कई आकार बनाती है: आयत को लंबा खींचिए तो उसकी चौड़ाई क़ीमत चुकाती है।"
+        },
+        "mr": {
+          "stem": "एका चौरस आणि एका आयताकृती भूखंडाची हद्द सारखी — 32 मीटर — आहे. आयत 10 मीटर लांब आहे. चौरसाची बाजू आयताच्या रुंदीहून किती मोठी?",
+          "choices": [
+            "6 मीटर",
+            "2 मीटर",
+            "8 मीटर",
+            "4 मीटर"
+          ],
+          "solution": "चौरस: 32 ÷ 4 = 8 मीटरची बाजू. आयत: दोन लांब्यांत 20 गेले, दोन रुंद्यांच्या वाट्याला 12 — रुंदी 6 मीटर. फरक 8 − 6 = 2 मीटर. एकच हद्द अनेक आकार करते: आयत लांब ओढला की त्याची रुंदी किंमत मोजते."
+        }
+      }
+    }
+  ]
+}
