@@ -1794,4 +1794,295 @@ export const G3_EVS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 16 — Games We Play                                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "evs-3-games-we-play",
+    subject: "EVS",
+    classLevel: 3,
+    chapter: {
+      en: "Chapter 16 — Games We Play",
+      hi: "अध्याय 16 — हमारे खेल",
+      mr: "प्रकरण 16 — आपले खेळ",
+    },
+    name: { en: "Games We Play", hi: "हमारे खेल", mr: "आपले खेळ" },
+    summary: {
+      en: "Indoor and outdoor, old and new — the games children play, what each one needs, and why the body loves to run.",
+      hi: "घर के भीतर और बाहर, पुराने और नए — बच्चों के खेल, हर एक को क्या चाहिए, और शरीर को दौड़ना क्यों भाता है।",
+      mr: "घरातले आणि बाहेरचे, जुने आणि नवे — मुलांचे खेळ, प्रत्येकाला काय लागते, आणि शरीराला धावणे का आवडते.",
+    },
+    position: 16,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "kabaddi",
+        name: { en: "Kabaddi", hi: "कबड्डी", mr: "कबड्डी" },
+        kind: "outdoor-game",
+        prompt: {
+          en: "In which game does a raider cross a line chanting one word in a single breath, trying to tag and return?",
+          hi: "किस खेल में धावक एक ही साँस में एक शब्द रटते हुए रेखा पार करता है, छूकर लौटने की कोशिश में?",
+          mr: "कोणत्या खेळात चढाई करणारा एकाच दमात एक शब्द म्हणत रेषा ओलांडतो, शिवून परतण्याच्या प्रयत्नात?",
+        },
+        statement: {
+          en: "In kabaddi the raider chants the word without taking a breath, tags opponents and races back across the line.",
+          hi: "कबड्डी में धावक बिना साँस लिए शब्द रटता है, विरोधियों को छूता है और रेखा के पार दौड़ लौटता है।",
+          mr: "कबड्डीत चढाई करणारा दम न घेता शब्द म्हणतो, प्रतिस्पर्ध्यांना शिवतो आणि रेषेपलीकडे धावत परततो.",
+        },
+        detail: {
+          en: "This game needs no ball, no bat — only a court scratched on the ground and two teams.",
+          hi: "इस खेल को न गेंद चाहिए, न बल्ला — बस ज़मीन पर खिंचा पाला और दो टोलियाँ।",
+          mr: "या खेळाला चेंडू नको, बॅट नको — फक्त जमिनीवर आखलेले मैदान आणि दोन संघ.",
+        },
+        pair: {
+          left: { en: "Kabaddi", hi: "कबड्डी", mr: "कबड्डी" },
+          right: { en: "one breath", hi: "एक साँस", mr: "एक दम" },
+        },
+      },
+      {
+        id: "khokho",
+        name: { en: "Kho-kho", hi: "खो-खो", mr: "खो-खो" },
+        kind: "outdoor-game",
+        prompt: {
+          en: "In which chasing game do squatting players face opposite ways in a row, and the chaser shouts a word to pass the chase on?",
+          hi: "किस पीछा करने वाले खेल में बैठे खिलाड़ी क़तार में उल्टी-सीधी दिशा देखते हैं, और धावक पीछा सौंपने को एक शब्द पुकारता है?",
+          mr: "कोणत्या पाठलागाच्या खेळात बसलेले खेळाडू रांगेत उलटसुलट दिशांना तोंड करतात, आणि पाठलाग सोपवायला धावणारा एक शब्द ओरडतो?",
+        },
+        statement: {
+          en: "In kho-kho the chasers squat in a row facing alternate ways, and a touch with the word passes the chase to a sitter.",
+          hi: "खो-खो में पीछा करने वाले क़तार में एकांतर दिशाएँ देखते बैठते हैं, और शब्द के साथ छूने से पीछा बैठे खिलाड़ी को मिल जाता है।",
+          mr: "खो-खोमध्ये पाठलाग करणारे रांगेत आलटूनपालटून दिशांना तोंड करून बसतात, आणि शब्दासह स्पर्शाने पाठलाग बसलेल्याकडे जातो.",
+        },
+        pair: {
+          left: { en: "Kho-kho", hi: "खो-खो", mr: "खो-खो" },
+          right: { en: "squatting row", hi: "बैठी क़तार", mr: "बसलेली रांग" },
+        },
+      },
+      {
+        id: "ludo",
+        name: { en: "Ludo", hi: "लूडो", mr: "ल्युडो" },
+        kind: "indoor-game",
+        prompt: {
+          en: "Which indoor board game moves four coloured tokens home on the throws of a die?",
+          hi: "कौन-सा भीतरी खेल पासे की चाल पर चार रंगीन गोटियाँ घर पहुँचाता है?",
+          mr: "कोणता घरातला पटावरचा खेळ फाशाच्या दानावर चार रंगीत सोंगट्या घरी पोहोचवतो?",
+        },
+        statement: {
+          en: "Ludo is played sitting down, racing four tokens around a board by the luck of the die.",
+          hi: "लूडो बैठकर खेला जाता है — पासे की क़िस्मत पर चार गोटियों की पटरी-दौड़।",
+          mr: "ल्युडो बसून खेळतात — फाशाच्या नशिबावर चार सोंगट्यांची पटावरची शर्यत.",
+        },
+        pair: {
+          left: { en: "Ludo", hi: "लूडो", mr: "ल्युडो" },
+          right: { en: "a die and tokens", hi: "पासा और गोटियाँ", mr: "फासा आणि सोंगट्या" },
+        },
+      },
+      {
+        id: "hopscotch",
+        name: {
+          en: "Hopscotch (stapu)",
+          hi: "स्टापू (कित-कित)",
+          mr: "लंगडी-पाणी (स्टापू)",
+        },
+        kind: "outdoor-game",
+        prompt: {
+          en: "In which game do you toss a stone into chalk squares and hop through them on one leg?",
+          hi: "किस खेल में चॉक के ख़ानों में पत्थर फेंककर एक टाँग पर फुदकते हुए पार जाते हैं?",
+          mr: "कोणत्या खेळात खडूच्या चौकटींत दगड टाकून एका पायावर उड्या मारत पार जातात?",
+        },
+        statement: {
+          en: "In hopscotch a stone is tossed into numbered squares and the player hops across on one leg without touching the lines.",
+          hi: "स्टापू में गिनती वाले ख़ानों में पत्थर फेंका जाता है और खिलाड़ी रेखाएँ छुए बिना एक टाँग पर फुदककर पार जाता है।",
+          mr: "स्टापूत आकड्यांच्या चौकटींत दगड टाकतात आणि खेळाडू रेषांना न शिवता एका पायावर उड्या मारत पार जातो.",
+        },
+        pair: {
+          left: { en: "Hopscotch", hi: "स्टापू", mr: "स्टापू" },
+          right: { en: "hopping on one leg", hi: "एक टाँग की फुदक", mr: "एका पायावर उड्या" },
+        },
+      },
+      {
+        id: "carrom",
+        name: { en: "Carrom", hi: "कैरम", mr: "कॅरम" },
+        kind: "indoor-game",
+        prompt: {
+          en: "In which board game do fingers flick a striker to pocket black and white coins at the four corners?",
+          hi: "किस पटिया-खेल में उँगलियाँ स्ट्राइकर चलाकर काली-सफ़ेद गोटियाँ चारों कोनों के गड्ढों में डालती हैं?",
+          mr: "कोणत्या पटाच्या खेळात बोटे स्ट्रायकर उडवून काळ्या-पांढऱ्या सोंगट्या चार कोपऱ्यांतील खळग्यांत टाकतात?",
+        },
+        statement: {
+          en: "Carrom is played with a flicked striker, sending coins into the four corner pockets of a powdered board.",
+          hi: "कैरम में उँगली से चला स्ट्राइकर पाउडर लगे बोर्ड की चारों कोनों की जेबों में गोटियाँ पहुँचाता है।",
+          mr: "कॅरममध्ये बोटाने उडवलेला स्ट्रायकर पावडर लावलेल्या पटाच्या चार कोपऱ्यांतील खिशांत सोंगट्या पाठवतो.",
+        },
+      },
+      {
+        id: "running",
+        name: {
+          en: "Running games",
+          hi: "दौड़ के खेल",
+          mr: "धावण्याचे खेळ",
+        },
+        kind: "why-play",
+        prompt: {
+          en: "Which kind of games make the heart beat fast, the lungs breathe deep and the legs grow strong?",
+          hi: "किस तरह के खेल दिल की धड़कन तेज़, साँस गहरी और टाँगें मज़बूत करते हैं?",
+          mr: "कोणत्या प्रकारचे खेळ हृदयाची धडधड जलद, श्वास खोल आणि पाय मजबूत करतात?",
+        },
+        statement: {
+          en: "Running games work the heart, lungs and legs — the body grows strong by playing, not by sitting.",
+          hi: "दौड़ के खेल दिल, फेफड़े और टाँगों से काम लेते हैं — शरीर बैठने से नहीं, खेलने से मज़बूत होता है।",
+          mr: "धावण्याचे खेळ हृदय, फुप्फुसे आणि पायांकडून काम करवतात — शरीर बसण्याने नव्हे, खेळण्याने मजबूत होते.",
+        },
+      },
+      {
+        id: "teamturns",
+        name: {
+          en: "Taking turns fairly",
+          hi: "बारी का न्याय",
+          mr: "पाळीचा न्याय",
+        },
+        kind: "why-play",
+        prompt: {
+          en: "Besides strong legs, what does playing in a team quietly teach — shown every time the bat passes to the next child?",
+          hi: "मज़बूत टाँगों के अलावा, टोली में खेलना चुपचाप क्या सिखाता है — जो हर बार बल्ला अगले बच्चे को देते समय दिखता है?",
+          mr: "मजबूत पायांखेरीज, संघात खेळणे गुपचूप काय शिकवते — जे प्रत्येक वेळी बॅट पुढच्या मुलाकडे देताना दिसते?",
+        },
+        statement: {
+          en: "Team games teach waiting for your turn, following rules everyone agreed on, and losing without quarrelling.",
+          hi: "टोली के खेल सिखाते हैं — अपनी बारी की प्रतीक्षा, सबके माने नियमों का पालन, और बिना झगड़े हारना।",
+          mr: "संघाचे खेळ शिकवतात — आपल्या पाळीची वाट पाहणे, सर्वांनी मान्य केलेले नियम पाळणे, आणि भांडणाविना हरणे.",
+        },
+      },
+      {
+        id: "grandmothergames",
+        name: {
+          en: "Grandmother's games",
+          hi: "दादी-नानी के खेल",
+          mr: "आजीचे खेळ",
+        },
+        kind: "why-play",
+        prompt: {
+          en: "Gitte (five stones), gilli-danda, spinning tops — whose childhood games are these, still playable without buying anything?",
+          hi: "गिट्टे, गिल्ली-डंडा, लट्टू — ये किसके बचपन के खेल हैं, जो आज भी बिना कुछ ख़रीदे खेले जा सकते हैं?",
+          mr: "गजगे, विटी-दांडू, भोवरे — हे कोणाच्या बालपणीचे खेळ, आजही काहीही विकत न घेता खेळता येणारे?",
+        },
+        statement: {
+          en: "Grandparents played gitte, gilli-danda and tops — games of pebbles, sticks and string that cost nothing and are still fun.",
+          hi: "दादा-दादी गिट्टे, गिल्ली-डंडा और लट्टू खेलते थे — कंकड़, लकड़ी और डोरी के खेल, जिन पर कुछ ख़र्च नहीं होता और मज़ा आज भी है।",
+          mr: "आजी-आजोबा गजगे, विटी-दांडू आणि भोवरे खेळत — खडे, काठ्या आणि दोरीचे खेळ; खर्च शून्य आणि मजा आजही तितकीच.",
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sort these into INDOOR and OUTDOOR: kabaddi, ludo, kho-kho, carrom. Which sorting is right?",
+          hi: "इन्हें भीतरी और बाहरी में छाँटिए: कबड्डी, लूडो, खो-खो, कैरम। कौन-सी छँटाई सही है?",
+          mr: "यांची घरातले आणि बाहेरचे अशी वर्गवारी करा: कबड्डी, ल्युडो, खो-खो, कॅरम. कोणती वर्गवारी बरोबर?",
+        },
+        choices: [
+          {
+            en: "Indoor: ludo, carrom · Outdoor: kabaddi, kho-kho",
+            hi: "भीतरी: लूडो, कैरम · बाहरी: कबड्डी, खो-खो",
+            mr: "घरातले: ल्युडो, कॅरम · बाहेरचे: कबड्डी, खो-खो",
+          },
+          {
+            en: "Indoor: kabaddi, ludo · Outdoor: carrom, kho-kho",
+            hi: "भीतरी: कबड्डी, लूडो · बाहरी: कैरम, खो-खो",
+            mr: "घरातले: कबड्डी, ल्युडो · बाहेरचे: कॅरम, खो-खो",
+          },
+          {
+            en: "Indoor: kho-kho, carrom · Outdoor: kabaddi, ludo",
+            hi: "भीतरी: खो-खो, कैरम · बाहरी: कबड्डी, लूडो",
+            mr: "घरातले: खो-खो, कॅरम · बाहेरचे: कबड्डी, ल्युडो",
+          },
+          {
+            en: "Indoor: kabaddi, carrom · Outdoor: ludo, kho-kho",
+            hi: "भीतरी: कबड्डी, कैरम · बाहरी: लूडो, खो-खो",
+            mr: "घरातले: कबड्डी, कॅरम · बाहेरचे: ल्युडो, खो-खो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The test is space and sweat: ludo and carrom sit on a table-top; kabaddi and kho-kho need a court and running room. Any sorting that sends a running game indoors has not pictured the game being played.",
+          hi: "कसौटी है जगह और पसीना: लूडो और कैरम मेज़ पर सिमटते हैं; कबड्डी और खो-खो को पाला और दौड़ की जगह चाहिए। जो छँटाई दौड़ के खेल को भीतर भेजे, उसने खेल को खेलते हुए सोचा ही नहीं।",
+          mr: "कसोटी आहे जागा आणि घाम: ल्युडो आणि कॅरम टेबलावर मावतात; कबड्डी आणि खो-खोला मैदान आणि धावायला जागा लागते. धावण्याचा खेळ घरात पाठवणाऱ्या वर्गवारीने खेळ खेळताना पाहिलेलाच नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "It has rained all week. Four friends have one carrom board, one die, no open ground, and a grandmother full of games. Which afternoon plan uses what they actually HAVE?",
+          hi: "हफ़्ते भर बारिश हुई है। चार दोस्तों के पास एक कैरम बोर्ड, एक पासा, कोई खुला मैदान नहीं, और खेलों से भरी एक दादी हैं। कौन-सी दोपहर की योजना वही इस्तेमाल करती है जो उनके पास सचमुच है?",
+          mr: "आठवडाभर पाऊस पडला आहे. चार मित्रांकडे एक कॅरम बोर्ड, एक फासा, मोकळे मैदान नाही, आणि खेळांनी भरलेली एक आजी आहे. कोणती दुपारची योजना त्यांच्याकडे खरोखर आहे तेच वापरते?",
+        },
+        choices: [
+          {
+            en: "Carrom in pairs, then gitte with pebbles the way grandmother teaches",
+            hi: "जोड़ियों में कैरम, फिर दादी के सिखाए ढंग से कंकड़ों के गिट्टे",
+            mr: "जोड्यांनी कॅरम, मग आजी शिकवते तशा खड्यांचे गजगे",
+          },
+          {
+            en: "Kabaddi in the bedroom",
+            hi: "सोने के कमरे में कबड्डी",
+            mr: "झोपायच्या खोलीत कबड्डी",
+          },
+          {
+            en: "Kho-kho on the wet street",
+            hi: "गीली गली में खो-खो",
+            mr: "ओल्या रस्त्यावर खो-खो",
+          },
+          {
+            en: "Wait indoors doing nothing till the rain ends",
+            hi: "बारिश थमने तक भीतर बैठे कुछ न करना",
+            mr: "पाऊस थांबेपर्यंत घरात काहीही न करता बसणे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Match the plan to the room and the things in hand: a board, a die, pebbles from the sill and a teacher of old games — all indoor, all present. Kabaddi in a bedroom breaks furniture and rules alike, and doing nothing wastes the best equipment they own: the grandmother.",
+          hi: "योजना को कमरे और हाथ की चीज़ों से मिलाइए: बोर्ड, पासा, मुँडेर के कंकड़ और पुराने खेलों की एक उस्ताद — सब भीतर, सब मौजूद। कमरे में कबड्डी फ़र्नीचर और नियम दोनों तोड़ती है, और कुछ न करना उनके सबसे अच्छे साज़-ओ-सामान — दादी — को बेकार करना है।",
+          mr: "योजना खोलीशी आणि हातातल्या गोष्टींशी जुळवा: पट, फासा, कठड्यावरचे खडे आणि जुन्या खेळांची एक गुरू — सारे घरातले, सारे हजर. खोलीत कबड्डी सामान आणि नियम दोन्ही मोडते, आणि काहीही न करणे म्हणजे त्यांच्याकडचे सर्वोत्तम साहित्य — आजी — वाया घालवणे.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Kabaddi's raider must chant in ONE breath; a runner who breathes again before crossing back is out. What is this rule really measuring?",
+          hi: "कबड्डी के धावक को एक ही साँस में रटना होता है; लौटने से पहले दोबारा साँस लेने वाला आउट है। यह नियम असल में क्या नाप रहा है?",
+          mr: "कबड्डीच्या चढाई करणाऱ्याला एकाच दमात म्हणावे लागते; परतण्याआधी पुन्हा श्वास घेणारा बाद. हा नियम खरोखर काय मोजतो आहे?",
+        },
+        choices: [
+          {
+            en: "How long the raider's lungs can last — turning breath itself into the game's clock",
+            hi: "धावक के फेफड़े कितनी देर टिकते हैं — साँस को ही खेल की घड़ी बना देना",
+            mr: "चढाई करणाऱ्याची फुप्फुसे किती वेळ टिकतात — श्वासालाच खेळाचे घड्याळ करणे",
+          },
+          {
+            en: "How loudly the raider can shout",
+            hi: "धावक कितनी ज़ोर से चिल्ला सकता है",
+            mr: "चढाई करणारा किती मोठ्याने ओरडू शकतो",
+          },
+          {
+            en: "Whether the raider knows the word's meaning",
+            hi: "धावक शब्द का अर्थ जानता है या नहीं",
+            mr: "चढाई करणाऱ्याला शब्दाचा अर्थ माहीत आहे का",
+          },
+          {
+            en: "Which team has more players",
+            hi: "किस टोली में खिलाड़ी ज़्यादा हैं",
+            mr: "कोणत्या संघात खेळाडू जास्त",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The chant is a breath-meter: as long as the word flows unbroken, the raider has not inhaled. No stopwatch, no referee's count — the rule builds the timer into the player's own body, which is why the game needs nothing but ground and lungs.",
+          hi: "रट साँस का मीटर है: जब तक शब्द अटूट बह रहा है, धावक ने साँस नहीं ली। न घड़ी, न गिनती करता निर्णायक — नियम घड़ी को खिलाड़ी के शरीर में ही रख देता है; इसीलिए खेल को मैदान और फेफड़ों के सिवा कुछ नहीं चाहिए।",
+          mr: "पालुपद हे श्वासाचे मीटर: शब्द अखंड वाहतो तोवर चढाई करणाऱ्याने श्वास घेतलेला नाही. घड्याळ नाही, मोजणारा पंच नाही — नियम घड्याळ खेळाडूच्या शरीरातच बसवतो; म्हणूनच खेळाला मैदान आणि फुप्फुसांखेरीज काहीही लागत नाही.",
+        },
+      },
+    ],
+  },
 ];
