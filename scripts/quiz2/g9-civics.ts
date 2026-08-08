@@ -1058,4 +1058,659 @@ export const G9_CIVICS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Working of Institutions                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-9-working-of-institutions",
+    subject: "CIVICS",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 4 — Working of Institutions",
+      hi: "अध्याय 4 — संस्थाओं का कामकाज",
+      mr: "प्रकरण 4 — संस्थांचे कामकाज",
+    },
+    name: {
+      en: "Working of Institutions",
+      hi: "संस्थाओं का कामकाज",
+      mr: "संस्थांचे कामकाज",
+    },
+    summary: {
+      en: "The machinery that turns a democracy's decisions into action: a Parliament that makes the laws and can dismiss the government, an elected executive of Prime Minister and ministers who decide, a permanent civil service that carries it out, a President who is the constitutional head, and independent courts that guard the constitution.",
+      hi: "वह मशीनरी जो लोकतंत्र के निर्णय कार्रवाई में बदलती: एक संसद जो क़ानून बनाती और सरकार हटा सकती, प्रधानमंत्री-मंत्रियों की एक निर्वाचित कार्यपालिका जो निर्णय लेती, एक स्थायी सिविल सेवा जो उसे निभाती, एक राष्ट्रपति जो संवैधानिक प्रमुख, और स्वतंत्र अदालतें जो संविधान की रक्षा करतीं।",
+      mr: "ते यंत्र जे लोकशाहीचे निर्णय कृतीत बदलते: एक संसद जी कायदे बनवते आणि सरकार हटवू शकते, पंतप्रधान-मंत्र्यांची एक निवडून आलेली कार्यकारिणी जी निर्णय घेते, एक कायम नागरी सेवा जी ते पार पाडते, एक राष्ट्रपती जो घटनात्मक प्रमुख, आणि स्वतंत्र न्यायालये जी संविधानाचे रक्षण करतात.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "parliament",
+        name: {
+          en: "Parliament",
+          hi: "संसद",
+          mr: "संसद",
+        },
+        kind: "institution",
+        prompt: {
+          en: "The supreme law-making body of the country, made of elected representatives in two houses, which makes and changes laws, controls the government's money, and can dismiss the government itself. What is this institution?",
+          hi: "देश का सर्वोच्च क़ानून-बनाता निकाय, दो सदनों में निर्वाचित प्रतिनिधियों का बना, जो क़ानून बनाता-बदलता, सरकार का धन नियंत्रित करता, और सरकार को ही हटा सकता। यह कौन-सी संस्था है?",
+          mr: "देशाचा सर्वोच्च कायदा-बनवणारा निकाय, दोन सभागृहांत निवडून आलेल्या प्रतिनिधींचा बनलेला, जो कायदे बनवतो-बदलतो, सरकारचा पैसा नियंत्रित करतो, आणि सरकारलाच हटवू शकतो. ही कोणती संस्था?",
+        },
+        statement: {
+          en: "Parliament is the country's supreme law-making body of elected representatives, sitting in two houses; it makes and amends laws, controls public finance, and can dismiss a government that loses its confidence.",
+          hi: "संसद देश का निर्वाचित प्रतिनिधियों का सर्वोच्च क़ानून-बनाता निकाय, दो सदनों में बैठता; यह क़ानून बनाता-संशोधित करता, सार्वजनिक वित्त नियंत्रित करता, और विश्वास खोती सरकार हटा सकता।",
+          mr: "संसद देशाचा निवडून आलेल्या प्रतिनिधींचा सर्वोच्च कायदा-बनवणारा निकाय, दोन सभागृहांत बसणारा; ती कायदे बनवते-दुरुस्त करते, सार्वजनिक वित्त नियंत्रित करते, आणि विश्वास गमावणारे सरकार हटवू शकते.",
+        },
+        detail: {
+          en: "Its two houses are the Lok Sabha, directly elected by the people, and the Rajya Sabha, which represents the states — the directly elected house has the greater power.",
+          hi: "इसके दो सदन लोक सभा, जनता द्वारा सीधे निर्वाचित, और राज्य सभा, जो राज्यों का प्रतिनिधित्व करती — सीधे निर्वाचित सदन की अधिक शक्ति।",
+          mr: "तिची दोन सभागृहे लोकसभा, जनतेने थेट निवडलेली, आणि राज्यसभा, जी राज्यांचे प्रतिनिधित्व करते — थेट निवडलेल्या सभागृहाची अधिक शक्ती.",
+        },
+        extra: {
+          en: "Because it can remove the government by a vote of no confidence, Parliament is the ultimate hold the people's representatives keep over those who rule.",
+          hi: "क्योंकि यह अविश्वास मत से सरकार हटा सकती, संसद जनता के प्रतिनिधियों की शासकों पर परम पकड़।",
+          mr: "कारण ती अविश्वास मताने सरकार हटवू शकते, संसद जनतेच्या प्रतिनिधींची शासकांवरील अंतिम पकड.",
+        },
+        pair: {
+          left: {
+            en: "Elected houses that make laws and can oust the government",
+            hi: "क़ानून बनाते और सरकार हटा सकते निर्वाचित सदन",
+            mr: "कायदे बनवणारी आणि सरकार हटवू शकणारी निवडलेली सभागृहे",
+          },
+          right: {
+            en: "Parliament",
+            hi: "संसद",
+            mr: "संसद",
+          },
+        },
+      },
+      {
+        id: "political-executive",
+        name: {
+          en: "The political executive",
+          hi: "राजनीतिक कार्यपालिका",
+          mr: "राजकीय कार्यकारिणी",
+        },
+        kind: "institution",
+        prompt: {
+          en: "The Prime Minister and the Council of Ministers, chosen from the elected representatives, take the major decisions of government and answer to Parliament for them. What is this decision-making body called?",
+          hi: "प्रधानमंत्री और मंत्रिपरिषद, निर्वाचित प्रतिनिधियों से चुने, सरकार के बड़े निर्णय लेते और उनके लिए संसद को जवाब देते। इस निर्णय-लेते निकाय को क्या कहते?",
+          mr: "पंतप्रधान आणि मंत्रिपरिषद, निवडून आलेल्या प्रतिनिधींतून निवडलेले, सरकारचे मोठे निर्णय घेतात आणि त्यांच्यासाठी संसदेला उत्तर देतात. या निर्णय-घेणाऱ्या निकायाला काय म्हणतात?",
+        },
+        statement: {
+          en: "The political executive is the Prime Minister and Council of Ministers, drawn from elected representatives, who take the major policy decisions of government and remain answerable to Parliament and the people.",
+          hi: "राजनीतिक कार्यपालिका प्रधानमंत्री और मंत्रिपरिषद, निर्वाचित प्रतिनिधियों से लिए, जो सरकार के बड़े नीति-निर्णय लेते और संसद तथा जनता को जवाबदेह रहते।",
+          mr: "राजकीय कार्यकारिणी पंतप्रधान आणि मंत्रिपरिषद, निवडून आलेल्या प्रतिनिधींतून घेतलेले, जे सरकारचे मोठे धोरण-निर्णय घेतात आणि संसद तसेच जनतेला जबाबदार राहतात.",
+        },
+        detail: {
+          en: "The Prime Minister leads it — chosen as the leader who commands a majority in the Lok Sabha — and picks the ministers who head the various departments.",
+          hi: "प्रधानमंत्री इसका नेतृत्व करता — लोक सभा में बहुमत रखते नेता के रूप में चुना — और विभिन्न विभागों के प्रमुख मंत्री चुनता।",
+          mr: "पंतप्रधान तिचे नेतृत्व करतो — लोकसभेत बहुमत राखणारा नेता म्हणून निवडलेला — आणि विविध खात्यांचे प्रमुख मंत्री निवडतो.",
+        },
+        extra: {
+          en: "Because it is elected and can be voted out, the political executive has the final say over the permanent officials who merely advise and carry out.",
+          hi: "क्योंकि यह निर्वाचित और हटाई जा सकती, राजनीतिक कार्यपालिका का स्थायी अधिकारियों पर अंतिम निर्णय जो केवल सलाह देते और निभाते।",
+          mr: "कारण ती निवडलेली आणि हटवता येते, राजकीय कार्यकारिणीचा कायम अधिकाऱ्यांवर अंतिम निर्णय जे फक्त सल्ला देतात आणि पार पाडतात.",
+        },
+        pair: {
+          left: {
+            en: "Elected ministers who take the big decisions",
+            hi: "बड़े निर्णय लेते निर्वाचित मंत्री",
+            mr: "मोठे निर्णय घेणारे निवडलेले मंत्री",
+          },
+          right: {
+            en: "the political executive",
+            hi: "राजनीतिक कार्यपालिका",
+            mr: "राजकीय कार्यकारिणी",
+          },
+        },
+      },
+      {
+        id: "permanent-executive",
+        name: {
+          en: "The permanent executive",
+          hi: "स्थायी कार्यपालिका",
+          mr: "कायम कार्यकारिणी",
+        },
+        kind: "institution",
+        prompt: {
+          en: "Trained officials who are appointed, not elected, and stay in their posts as governments come and go, giving expert advice and putting decisions into practice. What is this branch called?",
+          hi: "प्रशिक्षित अधिकारी जो नियुक्त, न कि निर्वाचित, और सरकारों के आते-जाते अपने पदों पर रहते, विशेषज्ञ सलाह देते और निर्णय व्यवहार में लाते। इस शाखा को क्या कहते?",
+          mr: "प्रशिक्षित अधिकारी जे नियुक्त, न की निवडलेले, आणि सरकारे येत-जात असताना आपल्या पदांवर राहतात, तज्ज्ञ सल्ला देतात आणि निर्णय व्यवहारात आणतात. या शाखेला काय म्हणतात?",
+        },
+        statement: {
+          en: "The permanent executive is the civil service — appointed, trained officials who stay in office as governments change, advising ministers and implementing the decisions the political executive takes.",
+          hi: "स्थायी कार्यपालिका सिविल सेवा — नियुक्त, प्रशिक्षित अधिकारी जो सरकारों के बदलते पद पर रहते, मंत्रियों को सलाह देते और राजनीतिक कार्यपालिका के लिए निर्णय लागू करते।",
+          mr: "कायम कार्यकारिणी नागरी सेवा — नियुक्त, प्रशिक्षित अधिकारी जे सरकारे बदलताना पदावर राहतात, मंत्र्यांना सल्ला देतात आणि राजकीय कार्यकारिणीचे निर्णय अंमलात आणतात.",
+        },
+        detail: {
+          en: "They are meant to be politically neutral, serving whichever government the people elect, so the machinery of the state runs smoothly through every change of rulers.",
+          hi: "वे राजनीतिक रूप से तटस्थ, जो भी सरकार जनता चुने उसकी सेवा करते, अतः राज्य की मशीनरी हर शासक-बदलाव से सुचारु चलती।",
+          mr: "ते राजकीयदृष्ट्या तटस्थ, जे कोणतेही सरकार जनता निवडेल त्याची सेवा करत, म्हणून राज्याचे यंत्र प्रत्येक शासक-बदलातून सुरळीत चालते.",
+        },
+        extra: {
+          en: "They advise and execute but do not decide the final policy — that power belongs to the elected ministers, who answer to the people.",
+          hi: "वे सलाह देते-निभाते पर अंतिम नीति तय नहीं करते — वह शक्ति निर्वाचित मंत्रियों की, जो जनता को जवाब देते।",
+          mr: "ते सल्ला देतात-पार पाडतात पण अंतिम धोरण ठरवत नाहीत — ती शक्ती निवडलेल्या मंत्र्यांची, जे जनतेला उत्तर देतात.",
+        },
+        pair: {
+          left: {
+            en: "Appointed officials who advise and implement",
+            hi: "सलाह देते-निभाते नियुक्त अधिकारी",
+            mr: "सल्ला देणारे-अंमलबजावणी करणारे नियुक्त अधिकारी",
+          },
+          right: {
+            en: "the permanent executive",
+            hi: "स्थायी कार्यपालिका",
+            mr: "कायम कार्यकारिणी",
+          },
+        },
+      },
+      {
+        id: "president",
+        name: {
+          en: "The President",
+          hi: "राष्ट्रपति",
+          mr: "राष्ट्रपती",
+        },
+        kind: "institution",
+        prompt: {
+          en: "The constitutional head of the Indian state, in whose name the government runs, but who normally acts on the advice of the elected ministers rather than deciding policy alone. Who is this?",
+          hi: "भारतीय राज्य का संवैधानिक प्रमुख, जिसके नाम सरकार चलती, पर जो सामान्यतः अकेले नीति तय करने के बजाय निर्वाचित मंत्रियों की सलाह पर काम करता। यह कौन?",
+          mr: "भारतीय राज्याचा घटनात्मक प्रमुख, ज्याच्या नावे सरकार चालते, पण जो सामान्यतः एकटा धोरण ठरवण्याऐवजी निवडलेल्या मंत्र्यांच्या सल्ल्यावर काम करतो. हा कोण?",
+        },
+        statement: {
+          en: "The President is the constitutional head of state, in whose name the government is carried on, but who normally acts on the advice of the Council of Ministers rather than exercising real power alone.",
+          hi: "राष्ट्रपति राज्य का संवैधानिक प्रमुख, जिसके नाम सरकार चलाई जाती, पर जो सामान्यतः अकेले असली शक्ति चलाने के बजाय मंत्रिपरिषद की सलाह पर काम करता।",
+          mr: "राष्ट्रपती राज्याचा घटनात्मक प्रमुख, ज्याच्या नावे सरकार चालवले जाते, पण जो सामान्यतः एकटा खरी शक्ती वापरण्याऐवजी मंत्रिपरिषदेच्या सल्ल्यावर काम करतो.",
+        },
+        detail: {
+          en: "Laws, appointments and major acts are done in the President's name, but the real decisions behind them are taken by the elected government.",
+          hi: "क़ानून, नियुक्तियाँ और बड़े कार्य राष्ट्रपति के नाम होते, पर उनके पीछे असली निर्णय निर्वाचित सरकार लेती।",
+          mr: "कायदे, नियुक्त्या आणि मोठी कृत्ये राष्ट्रपतीच्या नावे होतात, पण त्यांच्यामागील खरे निर्णय निवडलेले सरकार घेते.",
+        },
+        extra: {
+          en: "This division — a ceremonial head of state and a working head of government — keeps the symbol of the nation apart from the rough-and-tumble of party politics.",
+          hi: "यह विभाजन — औपचारिक राज्य-प्रमुख और कार्यशील सरकार-प्रमुख — राष्ट्र के प्रतीक को दलगत राजनीति की उठा-पटक से अलग रखता।",
+          mr: "हे विभाजन — औपचारिक राज्यप्रमुख आणि कार्यरत सरकारप्रमुख — राष्ट्राच्या प्रतीकाला पक्षीय राजकारणाच्या धुमश्चक्रीपासून वेगळे ठेवते.",
+        },
+        pair: {
+          left: {
+            en: "Constitutional head who acts on ministers' advice",
+            hi: "मंत्रियों की सलाह पर काम करता संवैधानिक प्रमुख",
+            mr: "मंत्र्यांच्या सल्ल्यावर काम करणारा घटनात्मक प्रमुख",
+          },
+          right: {
+            en: "the President",
+            hi: "राष्ट्रपति",
+            mr: "राष्ट्रपती",
+          },
+        },
+      },
+      {
+        id: "judiciary",
+        name: {
+          en: "The judiciary",
+          hi: "न्यायपालिका",
+          mr: "न्यायव्यवस्था",
+        },
+        kind: "institution",
+        prompt: {
+          en: "An independent system of courts that settles disputes, interprets the law, and can strike down even a law of Parliament if it violates the constitution. What is this branch called?",
+          hi: "अदालतों की एक स्वतंत्र प्रणाली जो विवाद सुलझाती, क़ानून की व्याख्या करती, और संसद के क़ानून को भी रद्द कर सकती यदि वह संविधान का उल्लंघन करे। इस शाखा को क्या कहते?",
+          mr: "न्यायालयांची एक स्वतंत्र प्रणाली जी वाद सोडवते, कायद्याचा अर्थ लावते, आणि संसदेचा कायदाही रद्द करू शकते जर तो संविधानाचे उल्लंघन करेल. या शाखेला काय म्हणतात?",
+        },
+        statement: {
+          en: "The judiciary is the independent system of courts that settles disputes, interprets the laws, and can strike down any law or action of the government that violates the constitution.",
+          hi: "न्यायपालिका अदालतों की स्वतंत्र प्रणाली जो विवाद सुलझाती, क़ानूनों की व्याख्या करती, और सरकार का कोई क़ानून या कार्य जो संविधान का उल्लंघन करे रद्द कर सकती।",
+          mr: "न्यायव्यवस्था न्यायालयांची स्वतंत्र प्रणाली जी वाद सोडवते, कायद्यांचा अर्थ लावते, आणि सरकारचा कोणताही कायदा वा कृती जी संविधानाचे उल्लंघन करेल ती रद्द करू शकते.",
+        },
+        detail: {
+          en: "This power to review and cancel unconstitutional laws is judicial review — the courts' way of holding even Parliament to the constitution.",
+          hi: "असंवैधानिक क़ानूनों की समीक्षा और रद्द करने की यह शक्ति न्यायिक समीक्षा — अदालतों का संसद को भी संविधान से बाँधने का तरीक़ा।",
+          mr: "असंवैधानिक कायद्यांचे पुनरावलोकन आणि रद्द करण्याची ही शक्ती न्यायिक पुनरावलोकन — न्यायालयांचा संसदेलाही संविधानाशी बांधण्याचा मार्ग.",
+        },
+        extra: {
+          en: "Its independence — judges cannot be removed at the government's whim — is what lets it rule against even the most powerful without fear.",
+          hi: "इसकी स्वतंत्रता — न्यायाधीश सरकार की सनक से नहीं हटाए जा सकते — जो इसे सबसे शक्तिशाली के विरुद्ध भी निडर निर्णय देने देती।",
+          mr: "तिचे स्वातंत्र्य — न्यायाधीश सरकारच्या लहरीने हटवता येत नाहीत — जे तिला सर्वांत शक्तिशालीविरुद्धही निर्भय निर्णय द्यायला देते.",
+        },
+        pair: {
+          left: {
+            en: "Independent courts that can strike down bad laws",
+            hi: "बुरे क़ानून रद्द कर सकतीं स्वतंत्र अदालतें",
+            mr: "वाईट कायदे रद्द करू शकणारी स्वतंत्र न्यायालये",
+          },
+          right: {
+            en: "the judiciary",
+            hi: "न्यायपालिका",
+            mr: "न्यायव्यवस्था",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A senior civil servant has decades of expertise and stays in office for years, while a minister may be new to the subject and could lose the next election. Yet on a policy decision, it is the minister, not the expert official, who has the final say. Why is authority arranged this way?",
+          hi: "एक वरिष्ठ सिविल सेवक के पास दशकों की विशेषज्ञता और वर्षों पद पर, जबकि एक मंत्री विषय में नया हो सकता और अगला चुनाव हार सकता। फिर भी नीति-निर्णय पर, विशेषज्ञ अधिकारी नहीं बल्कि मंत्री का अंतिम निर्णय। अधिकार यों क्यों व्यवस्थित?",
+          mr: "एका वरिष्ठ नागरी सेवकाकडे दशकांची तज्ज्ञता आणि वर्षे पदावर, तर एक मंत्री विषयात नवा असू शकतो आणि पुढची निवडणूक हरू शकतो. तरी धोरण-निर्णयावर, तज्ज्ञ अधिकारी नव्हे तर मंत्र्याचा अंतिम निर्णय. अधिकार असा का व्यवस्थित?",
+        },
+        choices: [
+          {
+            en: "Because the minister is elected and answerable to the people, while the official is not; in a democracy the final decisions must rest with those the people can hold accountable and vote out, so the elected political executive commands the unelected permanent one",
+            hi: "क्योंकि मंत्री निर्वाचित और जनता को जवाबदेह, जबकि अधिकारी नहीं; लोकतंत्र में अंतिम निर्णय उन पर टिकें जिन्हें जनता जवाबदेह ठहरा और हटा सके, अतः निर्वाचित राजनीतिक कार्यपालिका अनिर्वाचित स्थायी को आदेश देती",
+            mr: "कारण मंत्री निवडलेला आणि जनतेला जबाबदार, तर अधिकारी नाही; लोकशाहीत अंतिम निर्णय त्यांच्यावर टिकावेत ज्यांना जनता जबाबदार धरू आणि हटवू शकते, म्हणून निवडलेली राजकीय कार्यकारिणी न-निवडलेल्या कायमला आदेश देते",
+          },
+          {
+            en: "Because ministers always know more than civil servants about every subject",
+            hi: "क्योंकि मंत्री हर विषय में सिविल सेवकों से सदा अधिक जानते",
+            mr: "कारण मंत्री प्रत्येक विषयात नागरी सेवकांहून नेहमी अधिक जाणतात",
+          },
+          {
+            en: "Because civil servants are forbidden from ever giving advice",
+            hi: "क्योंकि सिविल सेवकों को कभी सलाह देने से मना",
+            mr: "कारण नागरी सेवकांना कधी सल्ला देण्यास मनाई",
+          },
+          {
+            en: "Because the minister is appointed for life and the official is not",
+            hi: "क्योंकि मंत्री जीवन भर के लिए नियुक्त और अधिकारी नहीं",
+            mr: "कारण मंत्री आयुष्यभरासाठी नियुक्त आणि अधिकारी नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The arrangement seems upside-down until you remember what a democracy is for. The civil servant genuinely may know more about the technical details and has valuable expertise, which is exactly why the permanent executive exists: to advise the ministers and to carry out decisions skilfully and consistently, no matter which party is in power. But knowledge is not the same as authority. In a democracy, power is supposed to flow from the people, and the people can only control those they can choose and, crucially, dismiss. They elect the minister and can vote them out at the next election; if a policy fails or angers the public, it is the minister who will answer for it and pay the price. The civil servant, by contrast, is appointed, not elected, and cannot be removed by the voters — so if unelected officials made the final decisions, the people would have no way to hold the real decision-makers to account, and that would not be democratic government at all. So the design deliberately gives the final say to the elected political executive: the minister decides, taking or overruling the official's advice, and then bears responsibility for the outcome before Parliament and the electorate. The expert advises; the accountable representative decides. This is why we speak of the political executive being 'more powerful' than the permanent one — not because ministers know more, but because they, unlike the officials, must answer to the people.",
+          hi: "व्यवस्था उल्टी लगती जब तक याद न करो लोकतंत्र किसलिए। सिविल सेवक सचमुच तकनीकी विवरण अधिक जान सकता और मूल्यवान विशेषज्ञता रखता, ठीक इसीलिए स्थायी कार्यपालिका मौजूद: मंत्रियों को सलाह देने और निर्णय कुशलता-निरंतरता से निभाने को, चाहे कोई भी दल शक्ति में। पर ज्ञान अधिकार के बराबर नहीं। लोकतंत्र में शक्ति जनता से बहनी चाहिए, और जनता केवल उन्हें नियंत्रित कर सकती जिन्हें चुन और, मुख्यतः, हटा सके। वे मंत्री को चुनते और अगले चुनाव में हटा सकते; यदि नीति विफल हो या जनता को क्रुद्ध करे, मंत्री ही जवाब देगा और क़ीमत चुकाएगा। सिविल सेवक, इसके विपरीत, नियुक्त, न कि निर्वाचित, और मतदाताओं द्वारा नहीं हटाया जा सकता — अतः यदि अनिर्वाचित अधिकारी अंतिम निर्णय लें, जनता के पास असली निर्णय-लेने वालों को जवाबदेह ठहराने का कोई रास्ता नहीं, और वह लोकतांत्रिक सरकार बिलकुल नहीं। अतः डिज़ाइन जान-बूझकर अंतिम निर्णय निर्वाचित राजनीतिक कार्यपालिका को देती: मंत्री तय करता, अधिकारी की सलाह लेते या ठुकराते, फिर संसद और मतदाताओं के आगे परिणाम की ज़िम्मेदारी उठाता। विशेषज्ञ सलाह देता; जवाबदेह प्रतिनिधि तय करता। इसी से हम राजनीतिक कार्यपालिका को स्थायी से 'अधिक शक्तिशाली' कहते — इसलिए नहीं कि मंत्री अधिक जानते, बल्कि क्योंकि वे, अधिकारियों के विपरीत, जनता को जवाब देते।",
+          mr: "व्यवस्था उलटी वाटते जोवर आठवत नाही लोकशाही कशासाठी. नागरी सेवक खरोखर तांत्रिक तपशील अधिक जाणू शकतो आणि मौल्यवान तज्ज्ञता राखतो, नेमके म्हणूनच कायम कार्यकारिणी अस्तित्वात: मंत्र्यांना सल्ला द्यायला आणि निर्णय कौशल्याने-सातत्याने पार पाडायला, कोणताही पक्ष शक्तीत असो. पण ज्ञान अधिकाराइतके नाही. लोकशाहीत शक्ती जनतेकडून वाहावी, आणि जनता फक्त त्यांना नियंत्रित करू शकते ज्यांना निवडू आणि, मुख्यतः, हटवू शकते. ते मंत्र्याला निवडतात आणि पुढच्या निवडणुकीत हटवू शकतात; जर धोरण अपयशी झाले वा जनतेला संतापवले, मंत्रीच उत्तर देईल आणि किंमत मोजेल. नागरी सेवक, याउलट, नियुक्त, न की निवडलेला, आणि मतदारांनी हटवता येत नाही — म्हणून जर न-निवडलेले अधिकारी अंतिम निर्णय घेतील, जनतेकडे खऱ्या निर्णय-घेणाऱ्यांना जबाबदार धरण्याचा मार्ग नाही, आणि ते लोकशाही सरकार मुळीच नाही. म्हणून रचना जाणीवपूर्वक अंतिम निर्णय निवडलेल्या राजकीय कार्यकारिणीला देते: मंत्री ठरवतो, अधिकाऱ्याचा सल्ला घेत वा नाकारत, मग संसद आणि मतदारांपुढे निकालाची जबाबदारी उचलतो. तज्ज्ञ सल्ला देतो; जबाबदार प्रतिनिधी ठरवतो. म्हणूनच आपण राजकीय कार्यकारिणीला कायमहून 'अधिक शक्तिशाली' म्हणतो — म्हणून नाही की मंत्री अधिक जाणतात, तर कारण ते, अधिकाऱ्यांविरुद्ध, जनतेला उत्तर देतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "India's power is split among a law-making Parliament, an executive that governs, and an independent judiciary. What is the point of dividing power this way, and how do these institutions keep one another in check?",
+          hi: "भारत की शक्ति क़ानून-बनाती संसद, शासन करती कार्यपालिका, और स्वतंत्र न्यायपालिका में बँटी। शक्ति यों बाँटने का उद्देश्य क्या, और ये संस्थाएँ एक-दूसरे को कैसे रोकतीं?",
+          mr: "भारताची शक्ती कायदा-बनवणारी संसद, राज्य करणारी कार्यकारिणी, आणि स्वतंत्र न्यायव्यवस्था यांत विभागली. शक्ती अशी विभागण्याचा उद्देश काय, आणि या संस्था एकमेकांना कशा रोखतात?",
+        },
+        choices: [
+          {
+            en: "Splitting power stops any one institution from becoming all-powerful: Parliament makes laws but the executive must answer to it and can be dismissed by it; the judiciary can strike down laws or actions that break the constitution; and each is bound by the constitution — so no single body can do as it pleases, and citizens' freedom is protected by the balance",
+            hi: "शक्ति बाँटना किसी एक संस्था को सर्वशक्तिमान बनने से रोकता: संसद क़ानून बनाती पर कार्यपालिका को उसे जवाब देना और उसके द्वारा हटाई जा सकती; न्यायपालिका संविधान तोड़ते क़ानून या कार्य रद्द कर सकती; और हर एक संविधान से बँधी — अतः कोई एक निकाय जैसा चाहे नहीं कर सकता, और नागरिकों की स्वतंत्रता संतुलन से रक्षित",
+            mr: "शक्ती विभागणे कोणत्याही एका संस्थेला सर्वशक्तिमान होण्यापासून रोखते: संसद कायदे बनवते पण कार्यकारिणीला तिला उत्तर द्यावे आणि तिच्याकडून हटवता येते; न्यायव्यवस्था संविधान मोडणारे कायदे वा कृती रद्द करू शकते; आणि प्रत्येक संविधानाने बांधलेली — म्हणून कोणताही एक निकाय वाटेल तसे करू शकत नाही, आणि नागरिकांचे स्वातंत्र्य समतोलाने रक्षित",
+          },
+          {
+            en: "The point is to make government slower and more confusing on purpose, with no benefit",
+            hi: "उद्देश्य सरकार को जान-बूझकर धीमा-भ्रामक बनाना, बिना किसी लाभ",
+            mr: "उद्देश सरकारला जाणीवपूर्वक मंद-गोंधळात टाकणे, कोणत्याही फायद्याविना",
+          },
+          {
+            en: "Power is divided so that the three institutions never have to talk to one another",
+            hi: "शक्ति बाँटी ताकि तीनों संस्थाएँ कभी एक-दूसरे से बात न करें",
+            mr: "शक्ती विभागली जेणेकरून तिन्ही संस्था कधी एकमेकांशी बोलू नयेत",
+          },
+          {
+            en: "They do not check each other at all; each is completely independent and unlimited",
+            hi: "वे एक-दूसरे को बिलकुल नहीं रोकतीं; हर एक पूर्णतः स्वतंत्र और असीमित",
+            mr: "त्या एकमेकांना मुळीच रोखत नाहीत; प्रत्येक पूर्णपणे स्वतंत्र आणि अमर्याद",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The division of power answers a hard problem: how do you give a government enough authority to actually govern, without letting it grow so strong that it can trample the people or entrench itself forever? The solution is not to trust any single body but to split the state's work among separate institutions and make each a check on the others. Parliament, the elected legislature, makes the laws and controls public money — but it does not simply rule by decree, and the executive that governs day to day must retain its confidence, so Parliament can question, expose and even dismiss a government by a vote of no confidence. The executive (the Prime Minister and ministers) takes decisions and runs the administration, but it is drawn from and answerable to Parliament, and it cannot make law by itself. Over both stands the independent judiciary, which interprets the constitution and, through judicial review, can strike down any law Parliament passes or any act the executive takes if it violates the constitution or citizens' rights. And crucially, all three are themselves bound by the supreme law of the constitution; none is above it. This web of mutual checks is deliberate. If one institution held all the power — a Parliament that could ignore the courts, or an executive that answered to no one — it could abuse that power and there would be no remedy. By balancing the institutions against each other, the system ensures that a wrong done by one can be corrected by another, that no group can quietly seize total control, and that the ordinary citizen's rights are protected not by the goodwill of rulers but by a structure in which power everywhere runs into a limit. The 'slowness' this creates is the price of that safety.",
+          hi: "शक्ति का विभाजन एक कठिन समस्या का उत्तर: सरकार को वास्तव में शासन करने भर अधिकार कैसे दो, बिना उसे इतना मज़बूत होने दिए कि वह जनता को कुचल सके या स्वयं को सदा जमा ले? समाधान किसी एक निकाय पर भरोसा नहीं बल्कि राज्य का काम अलग संस्थाओं में बाँटना और हर एक को दूसरों पर रोक बनाना। संसद, निर्वाचित विधायिका, क़ानून बनाती और सार्वजनिक धन नियंत्रित करती — पर वह बस अध्यादेश से शासन नहीं करती, और रोज़ शासन करती कार्यपालिका को उसका विश्वास रखना होता, अतः संसद सवाल कर, उजागर कर, और अविश्वास मत से सरकार हटा भी सकती। कार्यपालिका (प्रधानमंत्री और मंत्री) निर्णय लेती और प्रशासन चलाती, पर वह संसद से ली और उसे जवाबदेह, और अकेले क़ानून नहीं बना सकती। दोनों के ऊपर स्वतंत्र न्यायपालिका, जो संविधान की व्याख्या करती और, न्यायिक समीक्षा से, संसद का कोई क़ानून या कार्यपालिका का कोई कार्य रद्द कर सकती यदि वह संविधान या नागरिकों के अधिकार का उल्लंघन करे। और मुख्यतः, तीनों स्वयं संविधान के सर्वोच्च क़ानून से बँधे; कोई इससे ऊपर नहीं। परस्पर रोक का यह जाल जान-बूझकर। यदि एक संस्था सारी शक्ति रखे — संसद जो अदालतों को अनदेखा करे, या कार्यपालिका जो किसी को जवाब न दे — वह उस शक्ति का दुरुपयोग कर सके और कोई उपाय न हो। संस्थाओं को एक-दूसरे के विरुद्ध संतुलित कर, प्रणाली सुनिश्चित करती कि एक की ग़लती दूसरा सुधार सके, कि कोई समूह चुपचाप पूर्ण नियंत्रण न ले, और कि आम नागरिक के अधिकार शासकों की सद्भावना से नहीं बल्कि ऐसी संरचना से रक्षित जिसमें शक्ति हर जगह एक सीमा से टकराती। इससे बना 'धीमापन' उस सुरक्षा की क़ीमत।",
+          mr: "शक्तीचे विभाजन एका कठीण समस्येचे उत्तर: सरकारला प्रत्यक्षात राज्य करण्याइतका अधिकार कसा द्यायचा, त्याला इतके बलवान होऊ न देता की ते जनतेला चिरडू शकेल किंवा स्वतःला सदैव रुजवेल? उपाय कोणत्याही एका निकायावर विश्वास नव्हे तर राज्याचे काम वेगळ्या संस्थांत विभागणे आणि प्रत्येकाला इतरांवर रोख बनवणे. संसद, निवडलेली विधिमंडळ, कायदे बनवते आणि सार्वजनिक पैसा नियंत्रित करते — पण ती फक्त अध्यादेशाने राज्य करत नाही, आणि रोज राज्य करणाऱ्या कार्यकारिणीला तिचा विश्वास राखावा लागतो, म्हणून संसद प्रश्न करू, उघड करू, आणि अविश्वास मताने सरकार हटवूही शकते. कार्यकारिणी (पंतप्रधान आणि मंत्री) निर्णय घेते आणि प्रशासन चालवते, पण ती संसदेतून घेतलेली आणि तिला जबाबदार, आणि एकटी कायदा बनवू शकत नाही. दोघांवर स्वतंत्र न्यायव्यवस्था, जी संविधानाचा अर्थ लावते आणि, न्यायिक पुनरावलोकनाने, संसदेचा कोणताही कायदा वा कार्यकारिणीची कोणतीही कृती रद्द करू शकते जर ती संविधान वा नागरिकांच्या हक्कांचे उल्लंघन करेल. आणि मुख्यतः, तिन्ही स्वतः संविधानाच्या सर्वोच्च कायद्याने बांधलेल्या; कोणी त्याहून वर नाही. परस्पर रोखांचे हे जाळे जाणीवपूर्वक. जर एका संस्थेकडे सारी शक्ती असेल — संसद जी न्यायालयांना दुर्लक्षेल, किंवा कार्यकारिणी जी कोणाला उत्तर देणार नाही — ती त्या शक्तीचा गैरवापर करू शकेल आणि कोणताही उपाय नसेल. संस्थांना एकमेकांविरुद्ध संतुलित करून, प्रणाली सुनिश्चित करते की एकाची चूक दुसरा सुधारू शकेल, की कोणता गट गुपचूप पूर्ण नियंत्रण घेणार नाही, आणि की सामान्य नागरिकाचे हक्क शासकांच्या सद्भावनेने नव्हे तर अशा रचनेने रक्षित ज्यात शक्ती सर्वत्र एका मर्यादेला भिडते. यातून बनलेला 'मंदपणा' त्या सुरक्षेची किंमत.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Democratic Rights                                          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-9-democratic-rights",
+    subject: "CIVICS",
+    classLevel: 9,
+    chapter: {
+      en: "Chapter 5 — Democratic Rights",
+      hi: "अध्याय 5 — लोकतांत्रिक अधिकार",
+      mr: "प्रकरण 5 — लोकशाही हक्क",
+    },
+    name: {
+      en: "Democratic Rights",
+      hi: "लोकतांत्रिक अधिकार",
+      mr: "लोकशाही हक्क",
+    },
+    summary: {
+      en: "The rights that fence power in: claims guaranteed to every citizen — equality before the law, the freedoms of speech and movement, protection from exploitation, and freedom of religion — none of them unlimited, and all made real by the one right that lets a citizen go to court to enforce the rest.",
+      hi: "वे अधिकार जो शक्ति को घेरते: हर नागरिक को गारंटी दावे — क़ानून के समक्ष समानता, वाणी और आवागमन की स्वतंत्रताएँ, शोषण से रक्षा, और धर्म की स्वतंत्रता — कोई असीमित नहीं, और सब उस एक अधिकार से असली जो नागरिक को बाक़ी लागू कराने अदालत जाने देता।",
+      mr: "ते हक्क जे शक्तीला वेढतात: प्रत्येक नागरिकाला हमी दिलेले दावे — कायद्यापुढे समानता, भाषण आणि संचाराची स्वातंत्र्ये, शोषणापासून रक्षण, आणि धर्माचे स्वातंत्र्य — कोणतेही अमर्याद नाही, आणि सारे त्या एका हक्काने खरे जो नागरिकाला बाकीचे अंमलात आणायला न्यायालयात जाऊ देतो.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "why-rights",
+        name: {
+          en: "Why we need rights",
+          hi: "हमें अधिकार क्यों चाहिए",
+          mr: "आपल्याला हक्क का हवेत",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Claims that a citizen can make against the government and against fellow citizens, guaranteed by the constitution so that no majority or ruler can take them away. Why does a democracy need these?",
+          hi: "दावे जो नागरिक सरकार और साथी नागरिकों के विरुद्ध कर सकता, संविधान द्वारा गारंटी ताकि कोई बहुमत या शासक उन्हें न छीन सके। लोकतंत्र को ये क्यों चाहिए?",
+          mr: "दावे जे नागरिक सरकार आणि सहनागरिकांविरुद्ध करू शकतो, संविधानाने हमी दिलेले जेणेकरून कोणतेही बहुमत वा शासक ते हिरावू शकणार नाही. लोकशाहीला हे का हवेत?",
+        },
+        statement: {
+          en: "Rights are guaranteed claims a citizen holds against the government and others; a democracy needs them so that power cannot crush the individual, and even a majority cannot vote away a person's basic freedoms.",
+          hi: "अधिकार गारंटी दावे जो नागरिक सरकार और अन्य के विरुद्ध रखता; लोकतंत्र को इनकी ज़रूरत ताकि शक्ति व्यक्ति को न कुचल सके, और बहुमत भी किसी की बुनियादी स्वतंत्रताएँ मत देकर न छीन सके।",
+          mr: "हक्क हमी दिलेले दावे जे नागरिक सरकार आणि इतरांविरुद्ध राखतो; लोकशाहीला यांची गरज जेणेकरून शक्ती व्यक्तीला चिरडू शकणार नाही, आणि बहुमतही एखाद्याची मूलभूत स्वातंत्र्ये मत देऊन हिरावू शकणार नाही.",
+        },
+        detail: {
+          en: "By writing them into the constitution as fundamental rights, a country puts them beyond the reach of ordinary law and passing political majorities.",
+          hi: "इन्हें संविधान में मूल अधिकार के रूप में लिखकर, देश इन्हें साधारण क़ानून और गुज़रते राजनीतिक बहुमतों की पहुँच से परे रखता।",
+          mr: "यांना संविधानात मूलभूत हक्क म्हणून लिहून, देश यांना साध्या कायद्याच्या आणि क्षणिक राजकीय बहुमतांच्या आवाक्याबाहेर ठेवतो.",
+        },
+        extra: {
+          en: "Rights are what stop democracy from collapsing into mere majority-will — they guarantee the minority and the individual a protected space power cannot invade.",
+          hi: "अधिकार वही जो लोकतंत्र को मात्र बहुमत-इच्छा में ढहने से रोकते — वे अल्पसंख्यक और व्यक्ति को एक रक्षित स्थान गारंटी करते जिसे शक्ति नहीं भेद सकती।",
+          mr: "हक्क तेच जे लोकशाहीला केवळ बहुमत-इच्छेत कोसळण्यापासून रोखतात — ते अल्पसंख्याक आणि व्यक्तीला एक रक्षित जागा हमी देतात जी शक्ती भेदू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Guaranteed claims power cannot take away",
+            hi: "गारंटी दावे जो शक्ति न छीन सके",
+            mr: "हमी दिलेले दावे जे शक्ती हिरावू शकत नाही",
+          },
+          right: {
+            en: "why we need rights",
+            hi: "हमें अधिकार क्यों चाहिए",
+            mr: "आपल्याला हक्क का हवेत",
+          },
+        },
+      },
+      {
+        id: "right-to-equality",
+        name: {
+          en: "The right to equality",
+          hi: "समानता का अधिकार",
+          mr: "समतेचा हक्क",
+        },
+        kind: "right",
+        prompt: {
+          en: "The guarantee that the law treats everyone the same, that no one is discriminated against for religion, race, caste, sex or birthplace, and that untouchability is abolished. Which fundamental right is this?",
+          hi: "यह गारंटी कि क़ानून सबको एक-सा मानता, कि किसी से धर्म, नस्ल, जाति, लिंग या जन्मस्थान के लिए भेदभाव नहीं, और अस्पृश्यता समाप्त। यह कौन-सा मूल अधिकार है?",
+          mr: "ही हमी की कायदा सर्वांना सारखे मानतो, की कोणाशी धर्म, वंश, जात, लिंग वा जन्मस्थानासाठी भेदभाव नाही, आणि अस्पृश्यता नष्ट. हा कोणता मूलभूत हक्क?",
+        },
+        statement: {
+          en: "The right to equality guarantees that all are equal before the law, that no citizen may be discriminated against on grounds of religion, race, caste, sex or birthplace, and it abolishes untouchability.",
+          hi: "समानता का अधिकार गारंटी करता कि सब क़ानून के समक्ष समान, कि किसी नागरिक से धर्म, नस्ल, जाति, लिंग या जन्मस्थान के आधार पर भेदभाव नहीं, और अस्पृश्यता समाप्त करता।",
+          mr: "समतेचा हक्क हमी देतो की सारे कायद्यापुढे समान, की कोणत्याही नागरिकाशी धर्म, वंश, जात, लिंग वा जन्मस्थानाच्या आधारावर भेदभाव नाही, आणि अस्पृश्यता नष्ट करतो.",
+        },
+        detail: {
+          en: "'Equal before the law' means the same law applies to a minister and a labourer alike — no one is above it and no one beneath its protection.",
+          hi: "'क़ानून के समक्ष समान' अर्थ वही क़ानून मंत्री और मज़दूर पर एक-सा लागू — कोई इससे ऊपर नहीं और कोई इसकी रक्षा से नीचे नहीं।",
+          mr: "'कायद्यापुढे समान' म्हणजे तोच कायदा मंत्री आणि मजुरावर सारखा लागू — कोणी त्याहून वर नाही आणि कोणी त्याच्या रक्षणाहून खाली नाही.",
+        },
+        extra: {
+          en: "It allows the state to make special provisions to uplift disadvantaged groups — treating unequals differently to move toward real equality.",
+          hi: "यह राज्य को वंचित समूहों के उत्थान को विशेष प्रावधान बनाने देता — असमानों को अलग मानते असली समानता की ओर बढ़ते।",
+          mr: "हे राज्याला वंचित गटांच्या उन्नतीला विशेष तरतुदी करू देते — असमानांना वेगळे मानत खऱ्या समतेकडे सरकत.",
+        },
+        pair: {
+          left: {
+            en: "Equal before the law, no discrimination",
+            hi: "क़ानून के समक्ष समान, कोई भेदभाव नहीं",
+            mr: "कायद्यापुढे समान, कोणताही भेदभाव नाही",
+          },
+          right: {
+            en: "the right to equality",
+            hi: "समानता का अधिकार",
+            mr: "समतेचा हक्क",
+          },
+        },
+      },
+      {
+        id: "right-to-freedom",
+        name: {
+          en: "The right to freedom",
+          hi: "स्वतंत्रता का अधिकार",
+          mr: "स्वातंत्र्याचा हक्क",
+        },
+        kind: "right",
+        prompt: {
+          en: "The bundle of liberties letting citizens speak and express freely, gather peacefully, form associations, move throughout the country and settle and work anywhere in it. Which fundamental right is this?",
+          hi: "स्वतंत्रताओं का पुलिंदा जो नागरिकों को स्वतंत्र बोलने-अभिव्यक्त करने, शांति से जुटने, संघ बनाने, देश भर घूमने और कहीं भी बसने-काम करने देता। यह कौन-सा मूल अधिकार है?",
+          mr: "स्वातंत्र्यांचा जुडगा जो नागरिकांना स्वतंत्र बोलायला-व्यक्त व्हायला, शांततेने जमायला, संघटना बनवायला, देशभर फिरायला आणि कुठेही वसायला-काम करायला देतो. हा कोणता मूलभूत हक्क?",
+        },
+        statement: {
+          en: "The right to freedom gives citizens the liberties of speech and expression, peaceful assembly, forming associations, moving freely throughout the country, and residing and working anywhere in it.",
+          hi: "स्वतंत्रता का अधिकार नागरिकों को वाणी-अभिव्यक्ति, शांतिपूर्ण सभा, संघ बनाने, देश भर मुक्त आवागमन, और कहीं भी बसने-काम करने की स्वतंत्रताएँ देता।",
+          mr: "स्वातंत्र्याचा हक्क नागरिकांना भाषण-अभिव्यक्ती, शांततापूर्ण सभा, संघटना बनवणे, देशभर मुक्त संचार, आणि कुठेही वसणे-काम करण्याची स्वातंत्र्ये देतो.",
+        },
+        detail: {
+          en: "These freedoms are not absolute — they carry reasonable restrictions, so that one person's liberty does not destroy another's rights or public order.",
+          hi: "ये स्वतंत्रताएँ असीमित नहीं — वे उचित प्रतिबंध ढोतीं, ताकि एक की स्वतंत्रता दूसरे के अधिकार या सार्वजनिक व्यवस्था न नष्ट करे।",
+          mr: "ही स्वातंत्र्ये अमर्याद नाहीत — ती वाजवी निर्बंध वाहतात, जेणेकरून एकाचे स्वातंत्र्य दुसऱ्याचे हक्क वा सार्वजनिक सुव्यवस्था नष्ट करणार नाही.",
+        },
+        extra: {
+          en: "The freedom of speech is especially vital to democracy — it is what lets citizens criticise the government and demand that it do better.",
+          hi: "वाणी की स्वतंत्रता लोकतंत्र को ख़ास महत्वपूर्ण — यही जो नागरिकों को सरकार की आलोचना करने और बेहतर की माँग देता।",
+          mr: "भाषण-स्वातंत्र्य लोकशाहीला विशेष महत्त्वाचे — हेच जे नागरिकांना सरकारवर टीका करायला आणि अधिक चांगल्याची मागणी करायला देते.",
+        },
+        pair: {
+          left: {
+            en: "Speak, gather, move and settle freely",
+            hi: "स्वतंत्र बोलें, जुटें, घूमें और बसें",
+            mr: "स्वतंत्र बोला, जमा, फिरा आणि वसा",
+          },
+          right: {
+            en: "the right to freedom",
+            hi: "स्वतंत्रता का अधिकार",
+            mr: "स्वातंत्र्याचा हक्क",
+          },
+        },
+      },
+      {
+        id: "right-against-exploitation",
+        name: {
+          en: "The right against exploitation",
+          hi: "शोषण के विरुद्ध अधिकार",
+          mr: "शोषणाविरुद्ध हक्क",
+        },
+        kind: "right",
+        prompt: {
+          en: "The guarantee that bans forced or bonded labour, the trafficking of human beings, and the employment of young children in hazardous work. Which fundamental right is this?",
+          hi: "यह गारंटी जो बलात या बंधुआ मज़दूरी, मनुष्यों के व्यापार, और छोटे बच्चों को ख़तरनाक काम में लगाने पर रोक लगाती। यह कौन-सा मूल अधिकार है?",
+          mr: "ही हमी जी सक्तीची वा वेठबिगारी, माणसांचा व्यापार, आणि लहान मुलांना धोकादायक कामात लावण्यावर बंदी घालते. हा कोणता मूलभूत हक्क?",
+        },
+        statement: {
+          en: "The right against exploitation forbids forced and bonded labour, the trafficking of human beings, and the employment of children below fourteen in factories, mines and other hazardous work.",
+          hi: "शोषण के विरुद्ध अधिकार बलात और बंधुआ मज़दूरी, मनुष्यों के व्यापार, और चौदह से कम बच्चों को कारख़ानों, खदानों और अन्य ख़तरनाक काम में लगाने पर रोक लगाता।",
+          mr: "शोषणाविरुद्ध हक्क सक्तीची आणि वेठबिगारी, माणसांचा व्यापार, आणि चौदाहून लहान मुलांना कारखाने, खाणी आणि इतर धोकादायक कामात लावण्यावर बंदी घालतो.",
+        },
+        detail: {
+          en: "'Bonded labour' is when a person is forced to work to pay off a debt with little or no wages — a form of near-slavery the constitution outlaws.",
+          hi: "'बंधुआ मज़दूरी' जब किसी को क़र्ज़ चुकाने कम या बिना मज़दूरी काम को बाध्य किया जाए — दासता-सी जिसे संविधान अवैध ठहराता।",
+          mr: "'वेठबिगारी' जेव्हा एखाद्याला कर्ज फेडायला कमी वा विनामजुरी काम करायला भाग पाडले जाते — गुलामगिरीसारखी जिला संविधान बेकायदा ठरवते.",
+        },
+        extra: {
+          en: "It protects the weakest — the poor, the migrant, the child — from being used as cheap and captive labour by the powerful.",
+          hi: "यह सबसे कमज़ोर — ग़रीब, प्रवासी, बच्चे — को शक्तिशालियों द्वारा सस्ते और बंदी श्रम के रूप में वापरे जाने से रक्षता।",
+          mr: "हे सर्वांत दुर्बल — गरीब, स्थलांतरित, मूल — यांना शक्तिशालींकडून स्वस्त आणि बंदिस्त श्रम म्हणून वापरले जाण्यापासून रक्षतो.",
+        },
+        pair: {
+          left: {
+            en: "No forced labour, trafficking or child labour",
+            hi: "कोई बलात श्रम, व्यापार या बाल श्रम नहीं",
+            mr: "कोणतीही सक्तीची मजुरी, व्यापार वा बालमजुरी नाही",
+          },
+          right: {
+            en: "the right against exploitation",
+            hi: "शोषण के विरुद्ध अधिकार",
+            mr: "शोषणाविरुद्ध हक्क",
+          },
+        },
+      },
+      {
+        id: "freedom-of-religion",
+        name: {
+          en: "The right to freedom of religion",
+          hi: "धार्मिक स्वतंत्रता का अधिकार",
+          mr: "धर्मस्वातंत्र्याचा हक्क",
+        },
+        kind: "right",
+        prompt: {
+          en: "The guarantee that every person may follow, practise and spread any religion, or none at all, and that the state itself favours no religion over others. Which fundamental right is this?",
+          hi: "यह गारंटी कि हर व्यक्ति कोई भी धर्म, या कोई नहीं, मान-आचर-फैला सकता, और कि राज्य स्वयं किसी धर्म का दूसरों पर पक्ष नहीं लेता। यह कौन-सा मूल अधिकार है?",
+          mr: "ही हमी की प्रत्येक व्यक्ती कोणताही धर्म, वा कोणताही नाही, मानू-आचरू-पसरवू शकते, आणि की राज्य स्वतः कोणत्याही धर्माची इतरांवर बाजू घेत नाही. हा कोणता मूलभूत हक्क?",
+        },
+        statement: {
+          en: "The right to freedom of religion lets every person freely profess, practise and propagate any religion, or follow none, while the state stays secular — favouring no religion and treating all equally.",
+          hi: "धार्मिक स्वतंत्रता का अधिकार हर व्यक्ति को कोई भी धर्म स्वतंत्र मानने-आचरने-फैलाने, या कोई न मानने देता, जबकि राज्य धर्मनिरपेक्ष रहता — किसी धर्म का पक्ष न लेते और सबको समान मानते।",
+          mr: "धर्मस्वातंत्र्याचा हक्क प्रत्येक व्यक्तीला कोणताही धर्म स्वतंत्र मानायला-आचरायला-पसरवायला, वा कोणताही न मानायला देतो, तर राज्य धर्मनिरपेक्ष राहते — कोणत्याही धर्माची बाजू न घेत आणि सर्वांना समान मानत.",
+        },
+        detail: {
+          en: "A secular state has no official religion and does not force any faith on anyone — it protects the believer of every faith and the non-believer alike.",
+          hi: "धर्मनिरपेक्ष राज्य का कोई आधिकारिक धर्म नहीं और किसी पर कोई आस्था नहीं थोपता — यह हर आस्था के आस्थावान और अनास्थावान दोनों को रक्षता।",
+          mr: "धर्मनिरपेक्ष राज्याचा कोणताही अधिकृत धर्म नाही आणि कोणावर कोणती श्रद्धा लादत नाही — ते प्रत्येक श्रद्धेच्या श्रद्धावंताला आणि अश्रद्धावंताला सारखे रक्षते.",
+        },
+        extra: {
+          en: "In a land of many faiths, this freedom is what lets people of every religion live together as equal citizens under one state.",
+          hi: "अनेक आस्थाओं की भूमि में, यह स्वतंत्रता वही जो हर धर्म के लोगों को एक राज्य तले समान नागरिक साथ रहने देती।",
+          mr: "अनेक श्रद्धांच्या भूमीत, हे स्वातंत्र्य तेच जे प्रत्येक धर्माच्या लोकांना एका राज्याखाली समान नागरिक एकत्र राहू देते.",
+        },
+        pair: {
+          left: {
+            en: "Follow any faith or none; the state favours none",
+            hi: "कोई भी आस्था या कोई नहीं; राज्य किसी का पक्ष न ले",
+            mr: "कोणतीही श्रद्धा वा कोणतीही नाही; राज्य कोणाची बाजू न घे",
+          },
+          right: {
+            en: "the right to freedom of religion",
+            hi: "धार्मिक स्वतंत्रता का अधिकार",
+            mr: "धर्मस्वातंत्र्याचा हक्क",
+          },
+        },
+      },
+      {
+        id: "constitutional-remedies",
+        name: {
+          en: "The right to constitutional remedies",
+          hi: "संवैधानिक उपचारों का अधिकार",
+          mr: "घटनात्मक उपायांचा हक्क",
+        },
+        kind: "right",
+        prompt: {
+          en: "The right that lets any citizen whose fundamental rights are violated go directly to the courts to have them enforced — the right that makes all the other rights actually usable. Which is this?",
+          hi: "वह अधिकार जो किसी भी नागरिक को जिसके मूल अधिकार उल्लंघित हों उन्हें लागू कराने सीधे अदालत जाने देता — वह अधिकार जो बाक़ी सारे अधिकारों को वास्तव में उपयोगी बनाता। यह कौन-सा?",
+          mr: "तो हक्क जो कोणत्याही नागरिकाला ज्याचे मूलभूत हक्क उल्लंघले जातात ते अंमलात आणायला थेट न्यायालयात जाऊ देतो — तो हक्क जो बाकीचे सारे हक्क प्रत्यक्षात वापरण्याजोगे बनवतो. हा कोणता?",
+        },
+        statement: {
+          en: "The right to constitutional remedies lets any citizen whose fundamental rights are violated move the courts directly to enforce them, so the courts can order the government to respect the rights.",
+          hi: "संवैधानिक उपचारों का अधिकार किसी भी नागरिक को जिसके मूल अधिकार उल्लंघित हों उन्हें लागू कराने सीधे अदालत जाने देता, अतः अदालतें सरकार को अधिकार आदरने का आदेश दे सकतीं।",
+          mr: "घटनात्मक उपायांचा हक्क कोणत्याही नागरिकाला ज्याचे मूलभूत हक्क उल्लंघले जातात ते अंमलात आणायला थेट न्यायालयात जाऊ देतो, म्हणून न्यायालये सरकारला हक्क आदरण्याचा आदेश देऊ शकतात.",
+        },
+        detail: {
+          en: "Dr Ambedkar called it the 'heart and soul' of the constitution, because a right with no way to enforce it is only a promise on paper.",
+          hi: "डॉ. आंबेडकर ने इसे संविधान की 'आत्मा और हृदय' कहा, क्योंकि लागू कराने के रास्ते बिना अधिकार केवल काग़ज़ का वादा।",
+          mr: "डॉ. आंबेडकरांनी याला संविधानाचा 'आत्मा आणि हृदय' म्हटले, कारण अंमलात आणण्याच्या मार्गाविना हक्क फक्त कागदावरचे वचन.",
+        },
+        extra: {
+          en: "The courts can issue orders — writs — commanding the government to stop violating a right or to do its duty, giving the other rights their teeth.",
+          hi: "अदालतें आदेश — रिट — जारी कर सकतीं जो सरकार को अधिकार उल्लंघन रोकने या अपना कर्तव्य करने को कहते, बाक़ी अधिकारों को उनके दाँत देते।",
+          mr: "न्यायालये आदेश — रिट — जारी करू शकतात जे सरकारला हक्क-उल्लंघन थांबवायला वा आपले कर्तव्य करायला सांगतात, बाकीच्या हक्कांना त्यांचे दात देत.",
+        },
+        pair: {
+          left: {
+            en: "Go to court to enforce your other rights",
+            hi: "अपने बाक़ी अधिकार लागू कराने अदालत जाएँ",
+            mr: "आपले बाकीचे हक्क अंमलात आणायला न्यायालयात जा",
+          },
+          right: {
+            en: "the right to constitutional remedies",
+            hi: "संवैधानिक उपचारों का अधिकार",
+            mr: "घटनात्मक उपायांचा हक्क",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Dr B. R. Ambedkar called the right to constitutional remedies 'the heart and soul' of the whole constitution — ranking it above even the rights to equality, freedom or religion. Why would the right to go to court be considered the most important of all?",
+          hi: "डॉ. बी. आर. आंबेडकर ने संवैधानिक उपचारों के अधिकार को पूरे संविधान की 'आत्मा और हृदय' कहा — इसे समानता, स्वतंत्रता या धर्म के अधिकारों से भी ऊपर रखते। अदालत जाने के अधिकार को सबसे महत्वपूर्ण क्यों माना जाए?",
+          mr: "डॉ. बी. आर. आंबेडकरांनी घटनात्मक उपायांच्या हक्काला अख्ख्या संविधानाचा 'आत्मा आणि हृदय' म्हटले — त्याला समता, स्वातंत्र्य वा धर्माच्या हक्कांहूनही वर ठेवत. न्यायालयात जाण्याच्या हक्काला सर्वांत महत्त्वाचा का मानावा?",
+        },
+        choices: [
+          {
+            en: "Because a right you cannot enforce is worthless — it is just words on paper; the right to constitutional remedies lets a citizen go to court to compel the government to respect every other right, so it is the mechanism that makes all the other rights real",
+            hi: "क्योंकि जो अधिकार तुम लागू न करा सको वह बेकार — केवल काग़ज़ पर शब्द; संवैधानिक उपचारों का अधिकार नागरिक को अदालत जाकर सरकार को हर अन्य अधिकार आदरने को बाध्य करने देता, अतः यही तंत्र जो बाक़ी सारे अधिकारों को असली बनाता",
+            mr: "कारण जो हक्क तुम्ही अंमलात आणू शकत नाही तो निरुपयोगी — फक्त कागदावरचे शब्द; घटनात्मक उपायांचा हक्क नागरिकाला न्यायालयात जाऊन सरकारला प्रत्येक इतर हक्क आदरायला भाग पाडू देतो, म्हणून हेच यंत्र जे बाकीचे सारे हक्क खरे बनवते",
+          },
+          {
+            en: "Because it is the only right that actually exists; the others are imaginary",
+            hi: "क्योंकि यह एकमात्र अधिकार जो वास्तव में मौजूद; बाक़ी काल्पनिक",
+            mr: "कारण हा एकमेव हक्क जो प्रत्यक्षात अस्तित्वात; बाकीचे काल्पनिक",
+          },
+          {
+            en: "Because it lets the government take away the other rights whenever it likes",
+            hi: "क्योंकि यह सरकार को जब चाहे बाक़ी अधिकार छीनने देता",
+            mr: "कारण हे सरकारला हवे तेव्हा बाकीचे हक्क हिरावू देते",
+          },
+          {
+            en: "Because going to court replaces the need for any other rights",
+            hi: "क्योंकि अदालत जाना किसी अन्य अधिकार की ज़रूरत की जगह लेता",
+            mr: "कारण न्यायालयात जाणे कोणत्याही इतर हक्काची गरज बदलते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Ambedkar's striking phrase points to a simple but crucial truth: a right is only as good as your ability to enforce it. Imagine a constitution that solemnly grants you equality, freedom of speech and freedom of religion — but gives you no way to do anything if the government or a powerful person tramples those rights. The rights would be beautiful words with no force, promises that could be broken with impunity. The right to constitutional remedies is what closes that gap. It gives every citizen the power to go directly to the courts — the High Courts and the Supreme Court — whenever a fundamental right is violated, and the courts can then issue binding orders (writs) commanding the government to stop the violation or to carry out its duty. In other words, this one right is the enforcement mechanism for all the others: it turns the list of rights from a wish-list into something that can actually be claimed and defended against the mightiest opponent, including the state itself. That is why Ambedkar placed it above the rest — not because equality or freedom matter less, but because without the remedy, none of them could be secured. It is the heart that pumps life into the whole body of rights, and the soul that gives them real meaning; strip it away and the other rights, however grand, become empty declarations.",
+          hi: "आंबेडकर का चौंकाता वाक्यांश एक सरल पर मुख्य सत्य की ओर: अधिकार उतना ही अच्छा जितनी उसे लागू कराने की तुम्हारी क्षमता। कल्पना करो एक संविधान जो गंभीरता से तुम्हें समानता, वाणी की स्वतंत्रता और धार्मिक स्वतंत्रता देता — पर कोई रास्ता नहीं देता कुछ करने का यदि सरकार या शक्तिशाली व्यक्ति उन अधिकारों को कुचले। अधिकार बिना बल के सुंदर शब्द होते, वादे जो दंड बिना तोड़े जा सकते। संवैधानिक उपचारों का अधिकार वही जो उस खाई को पाटता। यह हर नागरिक को शक्ति देता सीधे अदालतों — उच्च न्यायालयों और सर्वोच्च न्यायालय — जाने की जब भी मूल अधिकार उल्लंघित हो, और अदालतें फिर बाध्यकारी आदेश (रिट) जारी कर सकतीं जो सरकार को उल्लंघन रोकने या अपना कर्तव्य निभाने को कहते। दूसरे शब्दों में, यह एक अधिकार बाक़ी सबका प्रवर्तन-तंत्र: यह अधिकारों की सूची को इच्छा-सूची से ऐसी चीज़ में बदलता जो वास्तव में सबसे शक्तिशाली प्रतिद्वंद्वी के, स्वयं राज्य समेत, विरुद्ध दावा और रक्षित की जा सके। इसी से आंबेडकर ने इसे बाक़ी के ऊपर रखा — इसलिए नहीं कि समानता या स्वतंत्रता कम मायने रखते, बल्कि क्योंकि उपचार बिना, इनमें से कोई सुरक्षित न हो सके। यह हृदय जो अधिकारों के पूरे शरीर में जीवन पंप करता, और आत्मा जो उन्हें असली अर्थ देती; इसे हटाओ और बाक़ी अधिकार, चाहे कितने भव्य, ख़ाली घोषणाएँ बनते।",
+          mr: "आंबेडकरांचा लक्षवेधी वाक्प्रचार एका साध्या पण महत्त्वाच्या सत्याकडे: हक्क तितकाच चांगला जितकी त्याला अंमलात आणण्याची तुमची क्षमता. कल्पना करा एक संविधान जे गांभीर्याने तुम्हाला समता, भाषण-स्वातंत्र्य आणि धर्मस्वातंत्र्य देते — पण काही करण्याचा मार्ग देत नाही जर सरकार वा शक्तिशाली व्यक्ती ते हक्क चिरडेल. हक्क बलाविना सुंदर शब्द असतील, वचने जी शिक्षेविना मोडता येतील. घटनात्मक उपायांचा हक्क तोच जो ती दरी भरतो. तो प्रत्येक नागरिकाला शक्ती देतो थेट न्यायालयांत — उच्च न्यायालये आणि सर्वोच्च न्यायालय — जायला जेव्हा मूलभूत हक्क उल्लंघला जातो, आणि न्यायालये मग बंधनकारक आदेश (रिट) जारी करू शकतात जे सरकारला उल्लंघन थांबवायला वा आपले कर्तव्य पार पाडायला सांगतात. दुसऱ्या शब्दांत, हा एक हक्क बाकीच्या सर्वांचे अंमलबजावणी-यंत्र: तो हक्कांच्या यादीला इच्छा-यादीतून अशा गोष्टीत बदलतो जी प्रत्यक्षात सर्वांत बलवान प्रतिस्पर्ध्याविरुद्ध, स्वतः राज्यासह, दावा आणि रक्षित करता येते. म्हणूनच आंबेडकरांनी त्याला बाकीच्या वर ठेवले — म्हणून नाही की समता वा स्वातंत्र्य कमी महत्त्वाचे, तर कारण उपायाविना, यांतील काहीही सुरक्षित होऊ शकणार नाही. हे हृदय जे हक्कांच्या अख्ख्या शरीरात जीवन पंप करते, आणि आत्मा जो त्यांना खरा अर्थ देतो; ते काढा आणि बाकीचे हक्क, कितीही भव्य, रिकाम्या घोषणा बनतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The constitution guarantees freedom of speech and expression, yet it also allows the state to place 'reasonable restrictions' on it. Some argue that any restriction makes the freedom fake. Why does a genuine democracy limit even its most cherished freedoms?",
+          hi: "संविधान वाणी और अभिव्यक्ति की स्वतंत्रता गारंटी करता, फिर भी यह राज्य को इस पर 'उचित प्रतिबंध' लगाने देता। कुछ तर्क देते कोई भी प्रतिबंध स्वतंत्रता को नक़ली बनाता। एक सच्चा लोकतंत्र अपनी सबसे प्रिय स्वतंत्रताओं को भी क्यों सीमित करता?",
+          mr: "संविधान भाषण आणि अभिव्यक्तीचे स्वातंत्र्य हमी देते, तरी ते राज्याला त्यावर 'वाजवी निर्बंध' घालू देते. काही युक्तिवाद करतात कोणताही निर्बंध स्वातंत्र्याला खोटे बनवतो. एक खरी लोकशाही आपल्या सर्वांत प्रिय स्वातंत्र्यांनाही का मर्यादित करते?",
+        },
+        choices: [
+          {
+            en: "Because one person's freedom can collide with others' rights and with public order: unlimited speech could mean incitement to violence, defamation or hatred that harms others, so reasonable restrictions balance each citizen's freedom against everyone else's rights — the limits protect freedom for all rather than destroying it",
+            hi: "क्योंकि एक की स्वतंत्रता दूसरों के अधिकारों और सार्वजनिक व्यवस्था से टकरा सकती: असीमित वाणी का अर्थ हिंसा भड़काना, मानहानि या घृणा जो दूसरों को हानि पहुँचाए, अतः उचित प्रतिबंध हर नागरिक की स्वतंत्रता को बाक़ी सबके अधिकारों के विरुद्ध संतुलित करते — सीमाएँ सबकी स्वतंत्रता रक्षतीं, नष्ट नहीं करतीं",
+            mr: "कारण एकाचे स्वातंत्र्य इतरांच्या हक्कांशी आणि सार्वजनिक सुव्यवस्थेशी भिडू शकते: अमर्याद भाषण म्हणजे हिंसेला चिथावणी, बदनामी वा द्वेष जे इतरांना हानी पोहोचवते, म्हणून वाजवी निर्बंध प्रत्येक नागरिकाचे स्वातंत्र्य बाकी सर्वांच्या हक्कांविरुद्ध संतुलित करतात — मर्यादा सर्वांचे स्वातंत्र्य रक्षतात, नष्ट करत नाहीत",
+          },
+          {
+            en: "Because the government simply wants to silence everyone all the time",
+            hi: "क्योंकि सरकार बस सबको हर समय चुप कराना चाहती",
+            mr: "कारण सरकारला फक्त सर्वांना सर्वकाळ गप्प करायचे आहे",
+          },
+          {
+            en: "Because freedom of speech is not really a right in a democracy at all",
+            hi: "क्योंकि वाणी की स्वतंत्रता लोकतंत्र में वास्तव में अधिकार है ही नहीं",
+            mr: "कारण भाषण-स्वातंत्र्य लोकशाहीत खरे तर हक्कच नाही",
+          },
+          {
+            en: "Because restrictions mean only the government is allowed to speak",
+            hi: "क्योंकि प्रतिबंध का अर्थ केवल सरकार को बोलने की अनुमति",
+            mr: "कारण निर्बंध म्हणजे फक्त सरकारला बोलण्याची परवानगी",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection assumes that a freedom is only real if it is absolute — that any limit at all cancels it. But absolute, limitless freedom for one person would collide head-on with the equal freedom and rights of everyone else, and a democracy has to protect all its citizens, not just the loudest. Consider speech. It is one of the most precious democratic freedoms, because criticising the government and debating ideas openly is the lifeblood of democracy. Yet 'anything goes' would license real harms: speech that incites a mob to violence, that spreads deliberate lies to destroy a person's reputation, that stirs up hatred against a religious or ethnic group, or that endangers public order and safety. In each case, one person's unrestrained speech would be trampling another person's rights — to safety, to reputation, to live free of persecution. The 'reasonable restrictions' the constitution allows are meant to draw the line exactly there: not to stop people from criticising the government or expressing unpopular opinions, but to prevent speech from becoming a weapon that destroys others' rights or public peace. Crucially, the word 'reasonable' matters, and the courts stand guard over it: a restriction must be justified and proportionate, and if the government uses 'restriction' as an excuse to silence legitimate dissent, the judiciary can strike it down. So the limits are not the opposite of freedom but its careful management — the way a democracy makes the same freedom available to everyone at once. A right without any limits would let the strong use it to crush the weak; bounded rights are what keep freedom genuinely shared. That balance, not absolute licence, is what real democratic freedom looks like.",
+          hi: "आपत्ति मानती कि स्वतंत्रता तभी असली यदि निरपेक्ष — कि कोई भी सीमा उसे रद्द करती। पर एक व्यक्ति के लिए निरपेक्ष, असीम स्वतंत्रता बाक़ी सबकी समान स्वतंत्रता और अधिकारों से आमने-सामने टकराती, और लोकतंत्र को अपने सभी नागरिक रक्षने हैं, केवल सबसे तेज़ आवाज़ को नहीं। वाणी को लो। यह सबसे बहुमूल्य लोकतांत्रिक स्वतंत्रताओं में, क्योंकि सरकार की आलोचना और विचारों की खुली बहस लोकतंत्र का प्राण। फिर भी 'जो चाहे चले' असली हानियों को अनुमति देता: वाणी जो भीड़ को हिंसा भड़काए, जो किसी की प्रतिष्ठा नष्ट करने जान-बूझकर झूठ फैलाए, जो किसी धार्मिक या जातीय समूह के विरुद्ध घृणा भड़काए, या जो सार्वजनिक व्यवस्था-सुरक्षा को ख़तरे में डाले। हर मामले में, एक की अनियंत्रित वाणी दूसरे के अधिकार — सुरक्षा, प्रतिष्ठा, उत्पीड़न बिना जीने — को कुचलती। संविधान जो 'उचित प्रतिबंध' देता वे ठीक वहीं रेखा खींचने को: लोगों को सरकार की आलोचना या अलोकप्रिय राय व्यक्त करने से रोकने को नहीं, बल्कि वाणी को ऐसा हथियार बनने से रोकने को जो दूसरों के अधिकार या सार्वजनिक शांति नष्ट करे। मुख्यतः, 'उचित' शब्द मायने रखता, और अदालतें उस पर पहरा देतीं: प्रतिबंध न्यायसंगत और आनुपातिक हो, और यदि सरकार 'प्रतिबंध' को वैध असहमति चुप कराने के बहाने वापरे, न्यायपालिका इसे रद्द कर सकती। अतः सीमाएँ स्वतंत्रता की उल्टी नहीं बल्कि उसका सावधान प्रबंधन — वह तरीक़ा जिससे लोकतंत्र वही स्वतंत्रता सबको एक साथ उपलब्ध कराता। बिना किसी सीमा का अधिकार बलवान को कमज़ोर कुचलने वापरने देता; सीमित अधिकार वही जो स्वतंत्रता सचमुच साझा रखते। वह संतुलन, न कि निरपेक्ष छूट, वही जैसी असली लोकतांत्रिक स्वतंत्रता दिखती।",
+          mr: "आक्षेप मानतो की स्वातंत्र्य तेव्हाच खरे जर निरपेक्ष — की कोणतीही मर्यादा ते रद्द करते. पण एका व्यक्तीसाठी निरपेक्ष, अमर्याद स्वातंत्र्य बाकी सर्वांच्या समान स्वातंत्र्य आणि हक्कांशी समोरासमोर भिडेल, आणि लोकशाहीला आपले सर्व नागरिक रक्षायचे आहेत, फक्त सर्वांत मोठ्या आवाजाला नाही. भाषण घ्या. ते सर्वांत मौल्यवान लोकशाही स्वातंत्र्यांपैकी, कारण सरकारवर टीका आणि विचारांची खुली चर्चा लोकशाहीचा प्राण. तरी 'वाटेल ते चालेल' खऱ्या हानी परवानगी देते: भाषण जे जमावाला हिंसेला चिथावेल, जे एखाद्याची प्रतिष्ठा नष्ट करायला जाणीवपूर्वक खोटे पसरवेल, जे एखाद्या धार्मिक वा वांशिक गटाविरुद्ध द्वेष भडकावेल, वा जे सार्वजनिक सुव्यवस्था-सुरक्षा धोक्यात आणेल. प्रत्येक बाबतीत, एकाचे अनियंत्रित भाषण दुसऱ्याचे हक्क — सुरक्षा, प्रतिष्ठा, छळाविना जगणे — चिरडेल. संविधान जे 'वाजवी निर्बंध' देते ते नेमके तिथेच रेषा आखायला: लोकांना सरकारवर टीका वा अप्रिय मते व्यक्त करण्यापासून रोखायला नाही, तर भाषणाला असे शस्त्र बनण्यापासून रोखायला जे इतरांचे हक्क वा सार्वजनिक शांती नष्ट करेल. मुख्यतः, 'वाजवी' शब्द महत्त्वाचा, आणि न्यायालये त्यावर पहारा देतात: निर्बंध न्याय्य आणि प्रमाणबद्ध असावा, आणि जर सरकार 'निर्बंध' वैध मतभेद गप्प करण्याचे निमित्त म्हणून वापरेल, न्यायव्यवस्था ते रद्द करू शकते. म्हणून मर्यादा स्वातंत्र्याच्या उलट नव्हे तर त्याचे काळजीपूर्वक व्यवस्थापन — तो मार्ग ज्याने लोकशाही तेच स्वातंत्र्य सर्वांना एकाच वेळी उपलब्ध करते. कोणत्याही मर्यादेविना हक्क बलवानाला दुर्बलाला चिरडायला वापरू देईल; मर्यादित हक्क तेच जे स्वातंत्र्य खरोखर सामायिक ठेवतात. तो समतोल, न की निरपेक्ष मुभा, तेच जसे खरे लोकशाही स्वातंत्र्य दिसते.",
+        },
+      },
+    ],
+  },
 ];
