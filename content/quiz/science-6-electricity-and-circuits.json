@@ -1,0 +1,688 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 6,
+  "chapter": "Chapter 12 — Electricity and Circuits",
+  "name": "Electricity and Circuits",
+  "slug": "science-6-electricity-and-circuits",
+  "summary": "A cell, a bulb and two wires — the closed loop that makes the filament glow, the switch that breaks it on purpose, and the materials that let current through or stop it.",
+  "position": 12,
+  "source": "EduLink original, written against NCERT Science (Class 6)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "विद्युत तथा परिपथ",
+      "summary": "एक सेल, एक बल्ब और दो तार — वह बंद फेरा जो फ़िलामेंट जलाता है, वह स्विच जो उसे जान-बूझकर तोड़ता है, और वे पदार्थ जो धारा को राह देते या रोकते हैं।"
+    },
+    "mr": {
+      "name": "वीज आणि परिपथ",
+      "summary": "एक सेल, एक बल्ब आणि दोन तारा — तंतू पेटवणारा बंद वेढा, तो मुद्दाम तोडणारे बटण, आणि विजेला वाट देणारे वा अडवणारे पदार्थ."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which small can of stored chemicals pushes the current, its two ends marked + and −?",
+      "choices": [
+        "The switch",
+        "The fused bulb",
+        "The filament",
+        "The electric cell"
+      ],
+      "answerIndex": 3,
+      "solution": "The cell pushes the current round the circuit — its chemicals do the work, and its two terminals, + and −, are where the loop must connect. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जमा रसायनों का कौन-सा छोटा डिब्बा धारा को धकेलता है — उसके दो सिरों पर + और − लिखे हैं?",
+          "choices": [
+            "स्विच",
+            "फ़्यूज़ हुआ बल्ब",
+            "फ़िलामेंट (तंतु)",
+            "विद्युत सेल"
+          ],
+          "solution": "सेल धारा को परिपथ में धकेलता है — काम उसके रसायन करते हैं, और उसके दो टर्मिनल, + और −, वहीं फेरा जुड़ना चाहिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "साठवलेल्या रसायनांचा कोणता छोटा डबा विजेला ढकलतो — त्याच्या दोन टोकांवर + आणि − लिहिलेले असते?",
+          "choices": [
+            "बटण (स्विच)",
+            "उडालेला बल्ब",
+            "तंतू (फिलामेंट)",
+            "विद्युत सेल"
+          ],
+          "solution": "सेल विजेला परिपथात ढकलतो — काम त्याची रसायने करतात, आणि त्याची दोन अग्रे, + आणि −, तिथेच वेढा जुळला पाहिजे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The filament is correct?",
+      "choices": [
+        "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose.",
+        "The cell pushes the current round the circuit — its chemicals do the work, and its two terminals, + and −, are where the loop must connect.",
+        "The filament is the hair-thin wire inside the bulb — current squeezing through it makes it white-hot, and that heat is the light.",
+        "A fused bulb has a snapped filament — the break hides inside the glass, quietly opening the whole circuit."
+      ],
+      "answerIndex": 2,
+      "solution": "The filament is the hair-thin wire inside the bulb — current squeezing through it makes it white-hot, and that heat is the light. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "फ़िलामेंट (तंतु) के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं।",
+            "सेल धारा को परिपथ में धकेलता है — काम उसके रसायन करते हैं, और उसके दो टर्मिनल, + और −, वहीं फेरा जुड़ना चाहिए।",
+            "फ़िलामेंट बल्ब के भीतर का बाल-सा तार है — उसमें से निचुड़ती धारा उसे धधका देती है, और वही ताप रोशनी है।",
+            "फ़्यूज़ हुए बल्ब का फ़िलामेंट टूटा होता है — दरार शीशे के भीतर छिपी रहती है, चुपचाप पूरा परिपथ खोलती हुई।"
+          ],
+          "solution": "फ़िलामेंट बल्ब के भीतर का बाल-सा तार है — उसमें से निचुड़ती धारा उसे धधका देती है, और वही ताप रोशनी है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तंतू (फिलामेंट) विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो.",
+            "सेल विजेला परिपथात ढकलतो — काम त्याची रसायने करतात, आणि त्याची दोन अग्रे, + आणि −, तिथेच वेढा जुळला पाहिजे.",
+            "तंतू ही बल्बमधली केसासारखी तार — तिच्यातून पिळून जाणारी वीज तिला लालबुंद करते, आणि तीच उष्णता म्हणजे प्रकाश.",
+            "उडालेल्या बल्बचा तंतू तुटलेला असतो — तुटवा काचेच्या आत लपून, गुपचूप सारा परिपथ उघडतो."
+          ],
+          "solution": "तंतू ही बल्बमधली केसासारखी तार — तिच्यातून पिळून जाणारी वीज तिला लालबुंद करते, आणि तीच उष्णता म्हणजे प्रकाश. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"One break ANYWHERE — a loose wire, a snapped filament — and the whole loop is dead.\" — which of these is this about?",
+      "choices": [
+        "The electric cell",
+        "Insulators",
+        "The closed circuit",
+        "The fused bulb"
+      ],
+      "answerIndex": 2,
+      "solution": "A closed circuit is one unbroken loop from terminal to terminal — the current flows, and the bulb glows, only while the loop is whole. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कहीं भी एक दरार — ढीला तार, टूटा फ़िलामेंट — और पूरा फेरा ठप।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "विद्युत सेल",
+            "अचालक (विद्युतरोधी)",
+            "बंद परिपथ",
+            "फ़्यूज़ हुआ बल्ब"
+          ],
+          "solution": "बंद परिपथ टर्मिनल से टर्मिनल तक एक अटूट फेरा है — धारा तभी बहती और बल्ब तभी जलता है जब तक फेरा साबुत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कुठेही एक तुटवा — सैल तार, तुटलेला तंतू — आणि सारा वेढा ठप्प.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विद्युत सेल",
+            "विद्युतरोधक",
+            "बंद परिपथ",
+            "उडालेला बल्ब"
+          ],
+          "solution": "बंद परिपथ म्हणजे अग्रापासून अग्रापर्यंत एक अखंड वेढा — वेढा अखंड असेपर्यंतच वीज वाहते आणि बल्ब पेटतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which small device breaks the loop and remakes it at a fingertip — a gap opened and closed on purpose?",
+      "choices": [
+        "The filament",
+        "The switch",
+        "The fused bulb",
+        "The electric cell"
+      ],
+      "answerIndex": 1,
+      "solution": "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा छोटा उपकरण उँगली भर से फेरा तोड़ता और फिर जोड़ देता है — जान-बूझकर खोली-बंद की जाती दरार?",
+          "choices": [
+            "फ़िलामेंट (तंतु)",
+            "स्विच",
+            "फ़्यूज़ हुआ बल्ब",
+            "विद्युत सेल"
+          ],
+          "solution": "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कोणते छोटे साधन बोटाच्या टोकावर वेढा तोडते आणि पुन्हा जोडते — मुद्दाम उघड-बंद केला जाणारा तुटवा?",
+          "choices": [
+            "तंतू (फिलामेंट)",
+            "बटण (स्विच)",
+            "उडालेला बल्ब",
+            "विद्युत सेल"
+          ],
+          "solution": "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Conductors is correct?",
+      "choices": [
+        "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose.",
+        "Conductors let current through — the metals lead this family, which is why wires have metal hearts.",
+        "Insulators do not let current through — rubber, plastic and dry wood block its way, and so make electricity safe to hold.",
+        "A fused bulb has a snapped filament — the break hides inside the glass, quietly opening the whole circuit."
+      ],
+      "answerIndex": 1,
+      "solution": "Conductors let current through — the metals lead this family, which is why wires have metal hearts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चालक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं।",
+            "चालक धारा को राह देते हैं — इस परिवार के मुखिया धातु हैं, इसीलिए तारों के हृदय धातु के होते हैं।",
+            "अचालक धारा को राह नहीं देते — रबर, प्लास्टिक और सूखी लकड़ी उसका रास्ता रोकते हैं, और यों बिजली को थामने लायक़ सुरक्षित बनाते हैं।",
+            "फ़्यूज़ हुए बल्ब का फ़िलामेंट टूटा होता है — दरार शीशे के भीतर छिपी रहती है, चुपचाप पूरा परिपथ खोलती हुई।"
+          ],
+          "solution": "चालक धारा को राह देते हैं — इस परिवार के मुखिया धातु हैं, इसीलिए तारों के हृदय धातु के होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वाहक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो.",
+            "वाहक विजेला वाट देतात — या कुटुंबाचे प्रमुख धातू, म्हणूनच तारांची हृदये धातूची असतात.",
+            "विद्युतरोधक विजेला वाट देत नाहीत — रबर, प्लास्टिक आणि कोरडे लाकूड तिची वाट अडवतात, आणि अशी वीज धरण्याइतकी सुरक्षित करतात.",
+            "उडालेल्या बल्बचा तंतू तुटलेला असतो — तुटवा काचेच्या आत लपून, गुपचूप सारा परिपथ उघडतो."
+          ],
+          "solution": "वाहक विजेला वाट देतात — या कुटुंबाचे प्रमुख धातू, म्हणूनच तारांची हृदये धातूची असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The plastic on a wire is a wall for the current and a glove for the hand.\" — which of these is this about?",
+      "choices": [
+        "Insulators",
+        "Conductors",
+        "The electric cell",
+        "The filament"
+      ],
+      "answerIndex": 0,
+      "solution": "Insulators do not let current through — rubber, plastic and dry wood block its way, and so make electricity safe to hold. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तार का प्लास्टिक धारा के लिए दीवार है और हाथ के लिए दस्ताना।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "अचालक (विद्युतरोधी)",
+            "चालक",
+            "विद्युत सेल",
+            "फ़िलामेंट (तंतु)"
+          ],
+          "solution": "अचालक धारा को राह नहीं देते — रबर, प्लास्टिक और सूखी लकड़ी उसका रास्ता रोकते हैं, और यों बिजली को थामने लायक़ सुरक्षित बनाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तारेवरचे प्लास्टिक विजेसाठी भिंत आणि हातासाठी हातमोजा.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विद्युतरोधक",
+            "वाहक",
+            "विद्युत सेल",
+            "तंतू (फिलामेंट)"
+          ],
+          "solution": "विद्युतरोधक विजेला वाट देत नाहीत — रबर, प्लास्टिक आणि कोरडे लाकूड तिची वाट अडवतात, आणि अशी वीज धरण्याइतकी सुरक्षित करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The circuit is perfect, the cell is fresh — yet no light. Inside the glass, the thin wire hangs snapped. What is this bulb called?",
+      "choices": [
+        "The fused bulb",
+        "The filament",
+        "The electric cell",
+        "The switch"
+      ],
+      "answerIndex": 0,
+      "solution": "A fused bulb has a snapped filament — the break hides inside the glass, quietly opening the whole circuit. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परिपथ ठीक, सेल नया — फिर भी रोशनी नहीं। शीशे के भीतर पतला तार टूटा लटकता है। इस बल्ब को क्या कहते हैं?",
+          "choices": [
+            "फ़्यूज़ हुआ बल्ब",
+            "फ़िलामेंट (तंतु)",
+            "विद्युत सेल",
+            "स्विच"
+          ],
+          "solution": "फ़्यूज़ हुए बल्ब का फ़िलामेंट टूटा होता है — दरार शीशे के भीतर छिपी रहती है, चुपचाप पूरा परिपथ खोलती हुई। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "परिपथ नीट, सेल नवा — तरी प्रकाश नाही. काचेच्या आत बारीक तार तुटून लोंबते आहे. या बल्बला काय म्हणतात?",
+          "choices": [
+            "उडालेला बल्ब",
+            "तंतू (फिलामेंट)",
+            "विद्युत सेल",
+            "बटण (स्विच)"
+          ],
+          "solution": "उडालेल्या बल्बचा तंतू तुटलेला असतो — तुटवा काचेच्या आत लपून, गुपचूप सारा परिपथ उघडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The cell\" goes correctly with which of these?",
+      "choices": [
+        "a gap on purpose",
+        "current's closed door",
+        "the wire that glows",
+        "the current's pusher"
+      ],
+      "answerIndex": 3,
+      "solution": "The cell pushes the current round the circuit — its chemicals do the work, and its two terminals, + and −, are where the loop must connect. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सेल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "जान-बूझी दरार",
+            "धारा का बंद दरवाज़ा",
+            "जलने वाला तार",
+            "धारा का धकेलने वाला"
+          ],
+          "solution": "सेल धारा को परिपथ में धकेलता है — काम उसके रसायन करते हैं, और उसके दो टर्मिनल, + और −, वहीं फेरा जुड़ना चाहिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सेल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुद्दामचा तुटवा",
+            "विजेचे बंद दार",
+            "पेटणारी तार",
+            "विजेचा ढकलणारा"
+          ],
+          "solution": "सेल विजेला परिपथात ढकलतो — काम त्याची रसायने करतात, आणि त्याची दोन अग्रे, + आणि −, तिथेच वेढा जुळला पाहिजे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The filament\" goes correctly with which of these?",
+      "choices": [
+        "current's closed door",
+        "the wire that glows",
+        "the current's pusher",
+        "the only road current takes"
+      ],
+      "answerIndex": 1,
+      "solution": "The filament is the hair-thin wire inside the bulb — current squeezing through it makes it white-hot, and that heat is the light. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"फ़िलामेंट\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारा का बंद दरवाज़ा",
+            "जलने वाला तार",
+            "धारा का धकेलने वाला",
+            "धारा की इकलौती राह"
+          ],
+          "solution": "फ़िलामेंट बल्ब के भीतर का बाल-सा तार है — उसमें से निचुड़ती धारा उसे धधका देती है, और वही ताप रोशनी है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तंतू\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विजेचे बंद दार",
+            "पेटणारी तार",
+            "विजेचा ढकलणारा",
+            "विजेची एकुलती वाट"
+          ],
+          "solution": "तंतू ही बल्बमधली केसासारखी तार — तिच्यातून पिळून जाणारी वीज तिला लालबुंद करते, आणि तीच उष्णता म्हणजे प्रकाश. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The closed loop\" goes correctly with which of these?",
+      "choices": [
+        "current's open road",
+        "the only road current takes",
+        "a gap on purpose",
+        "current's closed door"
+      ],
+      "answerIndex": 1,
+      "solution": "A closed circuit is one unbroken loop from terminal to terminal — the current flows, and the bulb glows, only while the loop is whole. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बंद फेरा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारा की खुली सड़क",
+            "धारा की इकलौती राह",
+            "जान-बूझी दरार",
+            "धारा का बंद दरवाज़ा"
+          ],
+          "solution": "बंद परिपथ टर्मिनल से टर्मिनल तक एक अटूट फेरा है — धारा तभी बहती और बल्ब तभी जलता है जब तक फेरा साबुत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बंद वेढा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विजेची खुली वाट",
+            "विजेची एकुलती वाट",
+            "मुद्दामचा तुटवा",
+            "विजेचे बंद दार"
+          ],
+          "solution": "बंद परिपथ म्हणजे अग्रापासून अग्रापर्यंत एक अखंड वेढा — वेढा अखंड असेपर्यंतच वीज वाहते आणि बल्ब पेटतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The switch\" goes correctly with which of these?",
+      "choices": [
+        "current's open road",
+        "the current's pusher",
+        "a gap on purpose",
+        "the wire that glows"
+      ],
+      "answerIndex": 2,
+      "solution": "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"स्विच\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारा की खुली सड़क",
+            "धारा का धकेलने वाला",
+            "जान-बूझी दरार",
+            "जलने वाला तार"
+          ],
+          "solution": "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बटण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विजेची खुली वाट",
+            "विजेचा ढकलणारा",
+            "मुद्दामचा तुटवा",
+            "पेटणारी तार"
+          ],
+          "solution": "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Conductors\" goes correctly with which of these?",
+      "choices": [
+        "a gap on purpose",
+        "current's closed door",
+        "current's open road",
+        "the current's pusher"
+      ],
+      "answerIndex": 2,
+      "solution": "Conductors let current through — the metals lead this family, which is why wires have metal hearts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चालक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "जान-बूझी दरार",
+            "धारा का बंद दरवाज़ा",
+            "धारा की खुली सड़क",
+            "धारा का धकेलने वाला"
+          ],
+          "solution": "चालक धारा को राह देते हैं — इस परिवार के मुखिया धातु हैं, इसीलिए तारों के हृदय धातु के होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वाहक\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुद्दामचा तुटवा",
+            "विजेचे बंद दार",
+            "विजेची खुली वाट",
+            "विजेचा ढकलणारा"
+          ],
+          "solution": "वाहक विजेला वाट देतात — या कुटुंबाचे प्रमुख धातू, म्हणूनच तारांची हृदये धातूची असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Insulators\" goes correctly with which of these?",
+      "choices": [
+        "current's open road",
+        "current's closed door",
+        "a gap on purpose",
+        "the current's pusher"
+      ],
+      "answerIndex": 1,
+      "solution": "Insulators do not let current through — rubber, plastic and dry wood block its way, and so make electricity safe to hold. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अचालक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारा की खुली सड़क",
+            "धारा का बंद दरवाज़ा",
+            "जान-बूझी दरार",
+            "धारा का धकेलने वाला"
+          ],
+          "solution": "अचालक धारा को राह नहीं देते — रबर, प्लास्टिक और सूखी लकड़ी उसका रास्ता रोकते हैं, और यों बिजली को थामने लायक़ सुरक्षित बनाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"विद्युतरोधक\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विजेची खुली वाट",
+            "विजेचे बंद दार",
+            "मुद्दामचा तुटवा",
+            "विजेचा ढकलणारा"
+          ],
+          "solution": "विद्युतरोधक विजेला वाट देत नाहीत — रबर, प्लास्टिक आणि कोरडे लाकूड तिची वाट अडवतात, आणि अशी वीज धरण्याइतकी सुरक्षित करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The electric cell EXCEPT —",
+      "choices": [
+        "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose.",
+        "Two cells end to end push harder — if their + and − faces are joined the right way round.",
+        "The cell pushes the current round the circuit — its chemicals do the work, and its two terminals, + and −, are where the loop must connect.",
+        "When its chemicals are used up, the cell goes 'dead' — the loop is perfect and still nothing glows."
+      ],
+      "answerIndex": 0,
+      "solution": "The switch is a deliberate gap in the circuit — OFF opens the loop, ON closes it; it is the one break we build in on purpose. That belongs to The switch, not The electric cell — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत सेल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं।",
+            "दो सेल सिरे-से-सिरा ज़्यादा ज़ोर से धकेलते हैं — बशर्ते उनके + और − मुख सही क्रम में जुड़े हों।",
+            "सेल धारा को परिपथ में धकेलता है — काम उसके रसायन करते हैं, और उसके दो टर्मिनल, + और −, वहीं फेरा जुड़ना चाहिए।",
+            "रसायन चुक जाएँ तो सेल 'मर' जाता है — फेरा बिलकुल ठीक है, फिर भी कुछ नहीं जलता।"
+          ],
+          "solution": "स्विच परिपथ की जानी-बूझी दरार है — OFF फेरा खोलता है, ON जोड़ता है; यही एक टूट है जो हम जान-बूझकर बनाते हैं। यह स्विच की बात है, विद्युत सेल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विद्युत सेल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो.",
+            "दोन सेल टोकाला टोक अधिक जोरात ढकलतात — त्यांची + आणि − तोंडे योग्य क्रमाने जुळली तर.",
+            "सेल विजेला परिपथात ढकलतो — काम त्याची रसायने करतात, आणि त्याची दोन अग्रे, + आणि −, तिथेच वेढा जुळला पाहिजे.",
+            "रसायने संपली की सेल 'मरतो' — वेढा अगदी नीट, तरी काही पेटत नाही."
+          ],
+          "solution": "बटण म्हणजे परिपथातला हेतुपुरस्सर तुटवा — OFF वेढा उघडते, ON जोडते; हाच एक तुटवा आपण मुद्दाम बांधतो. हे बटण (स्विच) चे आहे, विद्युत सेल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The closed circuit EXCEPT —",
+      "choices": [
+        "The current needs the WHOLE road home; half a road carries nothing at all.",
+        "One break ANYWHERE — a loose wire, a snapped filament — and the whole loop is dead.",
+        "A closed circuit is one unbroken loop from terminal to terminal — the current flows, and the bulb glows, only while the loop is whole.",
+        "The filament is the hair-thin wire inside the bulb — current squeezing through it makes it white-hot, and that heat is the light."
+      ],
+      "answerIndex": 3,
+      "solution": "The filament is the hair-thin wire inside the bulb — current squeezing through it makes it white-hot, and that heat is the light. That belongs to The filament, not The closed circuit — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बंद परिपथ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "धारा को घर तक पूरी सड़क चाहिए; आधी सड़क कुछ भी नहीं ढोती।",
+            "कहीं भी एक दरार — ढीला तार, टूटा फ़िलामेंट — और पूरा फेरा ठप।",
+            "बंद परिपथ टर्मिनल से टर्मिनल तक एक अटूट फेरा है — धारा तभी बहती और बल्ब तभी जलता है जब तक फेरा साबुत है।",
+            "फ़िलामेंट बल्ब के भीतर का बाल-सा तार है — उसमें से निचुड़ती धारा उसे धधका देती है, और वही ताप रोशनी है।"
+          ],
+          "solution": "फ़िलामेंट बल्ब के भीतर का बाल-सा तार है — उसमें से निचुड़ती धारा उसे धधका देती है, और वही ताप रोशनी है। यह फ़िलामेंट (तंतु) की बात है, बंद परिपथ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बंद परिपथ विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "विजेला घरापर्यंत अख्खी सडक हवी; अर्धी सडक काहीच वाहत नाही.",
+            "कुठेही एक तुटवा — सैल तार, तुटलेला तंतू — आणि सारा वेढा ठप्प.",
+            "बंद परिपथ म्हणजे अग्रापासून अग्रापर्यंत एक अखंड वेढा — वेढा अखंड असेपर्यंतच वीज वाहते आणि बल्ब पेटतो.",
+            "तंतू ही बल्बमधली केसासारखी तार — तिच्यातून पिळून जाणारी वीज तिला लालबुंद करते, आणि तीच उष्णता म्हणजे प्रकाश."
+          ],
+          "solution": "तंतू ही बल्बमधली केसासारखी तार — तिच्यातून पिळून जाणारी वीज तिला लालबुंद करते, आणि तीच उष्णता म्हणजे प्रकाश. हे तंतू (फिलामेंट) चे आहे, बंद परिपथ चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Insulators EXCEPT —",
+      "choices": [
+        "Wet things change sides — water helps current along, which is why wet hands and switches must never meet.",
+        "Conductors let current through — the metals lead this family, which is why wires have metal hearts.",
+        "Insulators do not let current through — rubber, plastic and dry wood block its way, and so make electricity safe to hold.",
+        "The plastic on a wire is a wall for the current and a glove for the hand."
+      ],
+      "answerIndex": 1,
+      "solution": "Conductors let current through — the metals lead this family, which is why wires have metal hearts. That belongs to Conductors, not Insulators — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अचालक (विद्युतरोधी) के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "गीली चीज़ें पाला बदल लेती हैं — पानी धारा का साथ देता है, इसीलिए गीले हाथ और स्विच कभी नहीं मिलने चाहिए।",
+            "चालक धारा को राह देते हैं — इस परिवार के मुखिया धातु हैं, इसीलिए तारों के हृदय धातु के होते हैं।",
+            "अचालक धारा को राह नहीं देते — रबर, प्लास्टिक और सूखी लकड़ी उसका रास्ता रोकते हैं, और यों बिजली को थामने लायक़ सुरक्षित बनाते हैं।",
+            "तार का प्लास्टिक धारा के लिए दीवार है और हाथ के लिए दस्ताना।"
+          ],
+          "solution": "चालक धारा को राह देते हैं — इस परिवार के मुखिया धातु हैं, इसीलिए तारों के हृदय धातु के होते हैं। यह चालक की बात है, अचालक (विद्युतरोधी) की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विद्युतरोधक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ओल्या वस्तू बाजू बदलतात — पाणी विजेला साथ देते, म्हणूनच ओले हात आणि बटण कधीही भेटू नयेत.",
+            "वाहक विजेला वाट देतात — या कुटुंबाचे प्रमुख धातू, म्हणूनच तारांची हृदये धातूची असतात.",
+            "विद्युतरोधक विजेला वाट देत नाहीत — रबर, प्लास्टिक आणि कोरडे लाकूड तिची वाट अडवतात, आणि अशी वीज धरण्याइतकी सुरक्षित करतात.",
+            "तारेवरचे प्लास्टिक विजेसाठी भिंत आणि हातासाठी हातमोजा."
+          ],
+          "solution": "वाहक विजेला वाट देतात — या कुटुंबाचे प्रमुख धातू, म्हणूनच तारांची हृदये धातूची असतात. हे वाहक चे आहे, विद्युतरोधक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Sort these into CONDUCTORS and INSULATORS: an iron nail, a rubber eraser, copper wire, a plastic scale. Which sorting is right?",
+      "choices": [
+        "Conductors: iron nail, copper wire · Insulators: eraser, plastic scale",
+        "Conductors: eraser, copper wire · Insulators: iron nail, plastic scale",
+        "Conductors: plastic scale, iron nail · Insulators: copper wire, eraser",
+        "Conductors: eraser, plastic scale · Insulators: iron nail, copper wire"
+      ],
+      "answerIndex": 0,
+      "solution": "The metals — iron and copper — conduct; the rubber and plastic refuse. The tester circuit proves it in seconds: bridge its gap with the nail and the bulb lights, bridge it with the eraser and nothing stirs. Material, not shape, decides.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "इन्हें चालक और अचालक में छाँटिए: लोहे की कील, रबर, ताँबे का तार, प्लास्टिक की पटरी। कौन-सी छँटाई सही है?",
+          "choices": [
+            "चालक: कील, ताँबे का तार · अचालक: रबर, पटरी",
+            "चालक: रबर, ताँबे का तार · अचालक: कील, पटरी",
+            "चालक: पटरी, कील · अचालक: ताँबे का तार, रबर",
+            "चालक: रबर, पटरी · अचालक: कील, ताँबे का तार"
+          ],
+          "solution": "धातुएँ — लोहा और ताँबा — चालक हैं; रबर और प्लास्टिक इनकार करते हैं। परीक्षक-परिपथ पलों में साबित कर देता है: दरार को कील से पाटिए तो बल्ब जलता है, रबर से पाटिए तो कुछ नहीं हिलता। फ़ैसला पदार्थ करता है, आकार नहीं।"
+        },
+        "mr": {
+          "stem": "यांची वाहक आणि विद्युतरोधक अशी वर्गवारी करा: लोखंडी खिळा, खोडरबर, तांब्याची तार, प्लास्टिकची पट्टी. कोणती वर्गवारी बरोबर?",
+          "choices": [
+            "वाहक: खिळा, तांब्याची तार · विद्युतरोधक: खोडरबर, पट्टी",
+            "वाहक: खोडरबर, तांब्याची तार · विद्युतरोधक: खिळा, पट्टी",
+            "वाहक: पट्टी, खिळा · विद्युतरोधक: तांब्याची तार, खोडरबर",
+            "वाहक: खोडरबर, पट्टी · विद्युतरोधक: खिळा, तांब्याची तार"
+          ],
+          "solution": "धातू — लोखंड आणि तांबे — वाहक; रबर आणि प्लास्टिक नकार देतात. चाचणी-परिपथ क्षणांत सिद्ध करतो: तुटवा खिळ्याने सांधा तर बल्ब पेटतो, खोडरबराने सांधा तर काही हलत नाही. निर्णय पदार्थ करतो, आकार नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The torch bulb will not glow. There are three suspects: a dead cell, a fused bulb, a loose wire. You have ONE spare bulb known to be good. What is the smartest first test?",
+      "choices": [
+        "Swap in the good bulb — if light comes, the old bulb was fused; if not, the fault lies in cell or wiring, and one test has halved the mystery",
+        "Buy a new cell first — cells fail most often",
+        "Shake the torch hard and hope",
+        "Replace everything at once to be sure"
+      ],
+      "answerIndex": 0,
+      "solution": "A good test splits the suspects. The spare bulb is the one part you can swap with CERTAINTY about it — so the outcome speaks clearly either way: glow convicts the old bulb; darkness acquits bulbs entirely and points at cell or wire. Replacing everything 'to be sure' fixes the torch but teaches nothing; the scientist's repair names the culprit.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "टॉर्च का बल्ब नहीं जल रहा। तीन संदिग्ध हैं: मरा सेल, फ़्यूज़ बल्ब, ढीला तार। आपके पास एक अच्छा साबित फ़ालतू बल्ब है। सबसे समझदार पहली जाँच क्या है?",
+          "choices": [
+            "अच्छा बल्ब लगाइए — रोशनी आए तो पुराना बल्ब फ़्यूज़ था; न आए तो दोष सेल या तार में है, और एक जाँच ने पहेली आधी कर दी",
+            "पहले नया सेल ख़रीदिए — सेल ही सबसे ज़्यादा बिगड़ते हैं",
+            "टॉर्च को ज़ोर से हिलाइए और उम्मीद कीजिए",
+            "पक्का करने को सब कुछ एक साथ बदल दीजिए"
+          ],
+          "solution": "अच्छी जाँच संदिग्धों को बाँटती है। फ़ालतू बल्ब ही वह हिस्सा है जिसके बारे में आप यक़ीन से अदला-बदली कर सकते हैं — तो नतीजा दोनों ओर साफ़ बोलता है: रोशनी पुराने बल्ब को दोषी ठहराती है; अँधेरा बल्बों को पूरी तरह बरी कर सेल या तार की ओर उँगली उठाता है। 'पक्का करने को' सब बदलना टॉर्च सुधार देता है पर कुछ सिखाता नहीं; वैज्ञानिक की मरम्मत दोषी का नाम लेती है।"
+        },
+        "mr": {
+          "stem": "टॉर्चचा बल्ब पेटत नाही. तीन संशयित: मेलेला सेल, उडालेला बल्ब, सैल तार. तुमच्याकडे एक चांगला ठाऊक असलेला जादा बल्ब आहे. सर्वांत हुशार पहिली चाचणी कोणती?",
+          "choices": [
+            "चांगला बल्ब बसवा — प्रकाश आला तर जुना बल्ब उडाला होता; नाही आला तर दोष सेल वा तारेत, आणि एका चाचणीने कोडे अर्धे झाले",
+            "आधी नवा सेल आणा — सेलच सर्वाधिक बिघडतात",
+            "टॉर्च जोरात हलवा आणि आशा करा",
+            "खात्रीसाठी सारे एकदम बदला"
+          ],
+          "solution": "चांगली चाचणी संशयितांना विभागते. जादा बल्ब हाच भाग आहे ज्याच्याबद्दल खात्रीने अदलाबदल करता येते — म्हणून निकाल दोन्हीकडे स्पष्ट बोलतो: प्रकाश जुन्या बल्बला दोषी ठरवतो; अंधार बल्बांना पूर्ण निर्दोष ठरवून सेल वा तारेकडे बोट दाखवतो. 'खात्रीसाठी' सारे बदलणे टॉर्च दुरुस्त करते पण काही शिकवत नाही; वैज्ञानिकाची दुरुस्ती दोषीचे नाव घेते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "An electrician's screwdriver has a steel blade and a thick plastic handle. Why BOTH materials — why not all steel, or all plastic?",
+      "choices": [
+        "The steel does the work and the plastic guards the hand — the tool pairs a conductor where strength is needed with an insulator where the body holds it",
+        "Plastic blades bend, so steel is only for strength — safety has nothing to do with it",
+        "Two materials simply cost less than one",
+        "The plastic is only decoration for the brand"
+      ],
+      "answerIndex": 0,
+      "solution": "If a live wire meets the blade, the steel would happily carry current onward — and the plastic handle is the wall that stops it at the hand. All-steel would conduct into the electrician; all-plastic would snap at the first stiff screw. The tool is the chapter in one object: conductor and insulator, each exactly where its nature serves.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिजली-मिस्त्री के पेचकस में स्टील का फल और मोटा प्लास्टिक का हत्था है। दोनों पदार्थ क्यों — पूरा स्टील या पूरा प्लास्टिक क्यों नहीं?",
+          "choices": [
+            "स्टील काम करता है और प्लास्टिक हाथ की रखवाली — औज़ार वहाँ चालक जोड़ता है जहाँ मज़बूती चाहिए, और वहाँ अचालक जहाँ शरीर उसे थामता है",
+            "प्लास्टिक का फल मुड़ जाता है, स्टील केवल मज़बूती के लिए है — सुरक्षा से कोई लेना-देना नहीं",
+            "दो पदार्थ एक से सस्ते पड़ते हैं",
+            "प्लास्टिक केवल ब्रांड की सजावट है"
+          ],
+          "solution": "फल से चालू तार छू जाए तो स्टील धारा को ख़ुशी-ख़ुशी आगे ले जाएगा — और प्लास्टिक का हत्था वह दीवार है जो उसे हाथ पर रोक देती है। पूरा स्टील बिजली मिस्त्री तक पहुँचा देता; पूरा प्लास्टिक पहले ही कड़े पेच पर टूट जाता। यह औज़ार एक ही चीज़ में पूरा अध्याय है: चालक और अचालक, हर एक ठीक वहाँ जहाँ उसका स्वभाव काम आए।"
+        },
+        "mr": {
+          "stem": "विजेतंत्रीच्या स्क्रूड्रायव्हरला स्टीलचे पाते आणि जाड प्लास्टिकची मूठ असते. दोन्ही पदार्थ का — सारे स्टील वा सारे प्लास्टिक का नाही?",
+          "choices": [
+            "स्टील काम करते आणि प्लास्टिक हाताची राखण — हत्यार जिथे बळकटी हवी तिथे वाहक आणि जिथे शरीर धरते तिथे विद्युतरोधक जोडते",
+            "प्लास्टिकचे पाते वाकते, स्टील फक्त बळकटीसाठी — सुरक्षेशी काही संबंध नाही",
+            "दोन पदार्थ एकाहून स्वस्त पडतात",
+            "प्लास्टिक फक्त ब्रँडची सजावट आहे"
+          ],
+          "solution": "पात्याला चालू तार लागली तर स्टील वीज आनंदाने पुढे नेईल — आणि प्लास्टिकची मूठ ही तिला हातावर थांबवणारी भिंत. सारे स्टील विजेतंत्र्यापर्यंत वीज पोहोचवेल; सारे प्लास्टिक पहिल्याच घट्ट स्क्रूवर मोडेल. हे हत्यार म्हणजे एका वस्तूत सारे प्रकरण: वाहक आणि विद्युतरोधक, प्रत्येक नेमका जिथे त्याचा स्वभाव उपयोगी तिथे."
+        }
+      }
+    }
+  ]
+}
