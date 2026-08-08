@@ -9,7 +9,7 @@
  */
 import type { L, OutQuestion, TopicFileOut } from "./engine";
 import { rng } from "./engine";
-import { numQ } from "./numeric";
+import { numQ, rupees } from "./numeric";
 
 const SOURCE = "EduLink original, written against NCERT Mathematics (Class 8)";
 const LICENCE = "CC-BY-SA-4.0";
@@ -1806,10 +1806,1782 @@ function squaresAndRoots(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Cubes and Cube Roots (three of everything)                    */
+/* ------------------------------------------------------------------------- */
+function cubesAndRoots(): TopicFileOut {
+  const rand = rng("maths-8-cubes-cube-roots");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: { en: "What is 4³?", hi: "4³ कितना है?", mr: "4³ किती?" },
+        answer: 64,
+        wrong: [12, 16, 81],
+        checkExpr: "4*4*4",
+        solution: {
+          en: "4 × 4 × 4 = 64. 12 multiplies by 3; 16 stops at the square — a cube needs the third factor.",
+          hi: "4 × 4 × 4 = 64। 12 तीन से गुणा करता है; 16 वर्ग पर रुक जाता है — घन को तीसरा गुणनखंड चाहिए।",
+          mr: "4 × 4 × 4 = 64. 12 तिघाने गुणतो; 16 वर्गावर थांबतो — घनाला तिसरा घटक हवा.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: { en: "What is ∛27?", hi: "∛27 कितना है?", mr: "∛27 किती?" },
+        answer: 3,
+        wrong: [9, 6, 13.5],
+        checkExpr: "27/9",
+        solution: {
+          en: "3 × 3 × 3 = 27, so the cube root is 3. 9 takes the SQUARE root's answer to a cube-root question.",
+          hi: "3 × 3 × 3 = 27, अतः घनमूल 3। 9 घनमूल के सवाल पर वर्गमूल का उत्तर थमा देता है।",
+          mr: "3 × 3 × 3 = 27, म्हणून घनमूळ 3. 9 घनमुळाच्या प्रश्नाला वर्गमुळाचे उत्तर देतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the UNIT digit of 8³?",
+          hi: "8³ का इकाई अंक क्या है?",
+          mr: "8³ चा एकक अंक काय?",
+        },
+        answer: 2,
+        wrong: [8, 4, 6],
+        solution: {
+          en: "8³ = 512, ending in 2. Cubes keep a strict ending-code: 2 and 8 swap endings, 3 and 7 swap — every digit is possible, each from one source.",
+          hi: "8³ = 512, अंत 2 पर। घनों का अंत-कोड सख़्त है: 2 और 8 अंत बदलते हैं, 3 और 7 भी — हर अंक संभव है, हर एक का एक ही स्रोत।",
+          mr: "8³ = 512, शेवट 2 वर. घनांचा शेवट-संकेत कडक: 2 आणि 8 शेवट बदलतात, 3 आणि 7 ही — प्रत्येक अंक शक्य, प्रत्येकाचा एकच स्रोत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Compute 1³ + 2³ + 3³.",
+          hi: "1³ + 2³ + 3³ निकालिए।",
+          mr: "1³ + 2³ + 3³ काढा.",
+        },
+        answer: 36,
+        wrong: [6, 14, 25],
+        checkExpr: "1+8+27",
+        solution: {
+          en: "1 + 8 + 27 = 36 — which is (1 + 2 + 3)² = 6², no accident: cube-sums always square the plain sum.",
+          hi: "1 + 8 + 27 = 36 — जो (1 + 2 + 3)² = 6² है, संयोग नहीं: घन-योग सदा सीधे योग का वर्ग होते हैं।",
+          mr: "1 + 8 + 27 = 36 — जे (1 + 2 + 3)² = 6² आहे, योगायोग नाही: घन-बेरजा नेहमी साध्या बेरजेचा वर्ग असतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: { en: "What is 11³?", hi: "11³ कितना है?", mr: "11³ किती?" },
+        answer: 1331,
+        wrong: [121, 1221, 1431],
+        checkExpr: "11*11*11",
+        solution: {
+          en: "11² = 121, then × 11 = 1331. 121 stops a floor early — the cube lives one multiplication above the square.",
+          hi: "11² = 121, फिर × 11 = 1331। 121 एक मंज़िल पहले रुक जाता है — घन वर्ग से एक गुणा ऊपर रहता है।",
+          mr: "11² = 121, मग × 11 = 1331. 121 एक मजला आधी थांबतो — घन वर्गाहून एक गुणाकार वर राहतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "∛(64/125) = ▢/5. What is the numerator in the box?",
+          hi: "∛(64/125) = ▢/5। रिक्त में अंश क्या आएगा?",
+          mr: "∛(64/125) = ▢/5. रिकाम्यात अंश काय येईल?",
+        },
+        answer: 4,
+        wrong: [8, 64, 3],
+        solution: {
+          en: "Root top and bottom separately: ∛64 = 4 over ∛125 = 5. 8 takes the square root of 64 by habit.",
+          hi: "ऊपर-नीचे अलग मूल लीजिए: ∛64 = 4 बटा ∛125 = 5। 8 आदतन 64 का वर्गमूल ले बैठता है।",
+          mr: "वर-खाली वेगळे मूळ घ्या: ∛64 = 4 भागिले ∛125 = 5. 8 सवयीने 64 चे वर्गमूळ घेतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "1729, the taxi-cab number, equals 10³ + 9³ and ALSO 12³ + 1³. Verify the second: compute 12³ + 1.",
+          hi: "टैक्सी नंबर 1729 = 10³ + 9³ और साथ ही 12³ + 1³। दूसरा जाँचिए: 12³ + 1 निकालिए।",
+          mr: "टॅक्सी क्रमांक 1729 = 10³ + 9³ आणि तसेच 12³ + 1³. दुसरे तपासा: 12³ + 1 काढा.",
+        },
+        answer: 1729,
+        wrong: [1728, 1730, 1000],
+        checkExpr: "12*12*12+1",
+        solution: {
+          en: "12³ = 1728, plus 1 = 1729 — the smallest number that is a sum of two cubes in TWO ways, spotted by Ramanujan from a hospital bed.",
+          hi: "12³ = 1728, धन 1 = 1729 — दो घनों के योग के दो रूपों वाली सबसे छोटी संख्या, जिसे रामानुजन ने अस्पताल के बिस्तर से पहचाना।",
+          mr: "12³ = 1728, अधिक 1 = 1729 — दोन घनांच्या बेरजेची दोन रूपे असलेली सर्वांत लहान संख्या, रामानुजनने रुग्णालयाच्या बिछान्यावरून ओळखलेली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "392 = 2³ × 7². By what SMALLEST number must 392 be multiplied to become a perfect cube?",
+          hi: "392 = 2³ × 7²। 392 को किस छोटी-से-छोटी संख्या से गुणा करें कि पूर्ण घन बन जाए?",
+          mr: "392 = 2³ × 7². 392 ला कोणत्या लहानात लहान संख्येने गुणले असता पूर्ण घन होईल?",
+        },
+        answer: 7,
+        wrong: [2, 49, 14],
+        solution: {
+          en: "Cubes want primes in THREES: the 2s are a full triple, the 7s need one more — multiply by 7 to get 2744 = 14³. 49 supplies two 7s where one is missing.",
+          hi: "घन अभाज्यों को तीन-तीन में माँगते हैं: दो की तिकड़ी पूरी है, सातों को एक और चाहिए — 7 से गुणा कर 2744 = 14³। 49 वहाँ दो 7 भेज देता है जहाँ एक की कमी थी।",
+          mr: "घन मूळ संख्या तीन-तीनमध्ये मागतात: दोघांचे त्रिकूट पूर्ण, सातांना आणखी एक हवा — 7 ने गुणून 2744 = 14³. 49 एक कमी असताना दोन 7 पाठवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: { en: "What is ∛2197?", hi: "∛2197 कितना है?", mr: "∛2197 किती?" },
+        answer: 13,
+        wrong: [17, 12, 23],
+        checkExpr: "2197/169",
+        solution: {
+          en: "13³ = 2197. Read the ending: 2197 ends in 7, and only 3-enders cube to 7-enders; the size pins the tens digit at 1.",
+          hi: "13³ = 2197। अंत पढ़िए: 2197 का अंत 7 पर, और केवल 3-अंत वाले ही घन में 7-अंत देते हैं; आकार दहाई को 1 पर जड़ देता है।",
+          mr: "13³ = 2197. शेवट वाचा: 2197 चा शेवट 7 वर, आणि फक्त 3-शेवटवालेच घनात 7-शेवट देतात; आकार दशकाला 1 वर ठरवतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A cube has volume 512 cm³. How long is its edge?",
+          hi: "एक घन का आयतन 512 घन सेमी है। उसका किनारा कितना लंबा है?",
+          mr: "एका घनाचे घनफळ 512 घन सेमी आहे. त्याची कड किती लांब?",
+        },
+        answer: 8,
+        wrong: [64, 6, 16],
+        checkExpr: "512/64",
+        solution: {
+          en: "Edge = ∛512 = 8, since 8³ = 512. 64 answers the FACE's area; the edge is the cube root, not the square root.",
+          hi: "किनारा = ∛512 = 8, क्योंकि 8³ = 512। 64 फलक का क्षेत्रफल बताता है; किनारा घनमूल है, वर्गमूल नहीं।",
+          mr: "कड = ∛512 = 8, कारण 8³ = 512. 64 पृष्ठाचे क्षेत्रफळ सांगतो; कड घनमूळ आहे, वर्गमूळ नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "128 = 2⁷. By what smallest number must 128 be DIVIDED to leave a perfect cube?",
+          hi: "128 = 2⁷। 128 को किस छोटी-से-छोटी संख्या से भाग दें कि पूर्ण घन बचे?",
+          mr: "128 = 2⁷. 128 ला कोणत्या लहानात लहान संख्येने भागले असता पूर्ण घन उरेल?",
+        },
+        answer: 2,
+        wrong: [4, 16, 8],
+        solution: {
+          en: "Seven 2s make two full triples with ONE left over: remove it. 128 ÷ 2 = 64 = 4³ ✓. Division trims the surplus; multiplication would need two more.",
+          hi: "सात 2 से दो पूरी तिकड़ियाँ और एक बचा हुआ: उसे हटाइए। 128 ÷ 2 = 64 = 4³ ✓। भाग फ़ालतू छाँटता है; गुणा को दो और चाहिए होते।",
+          mr: "सात 2 मधून दोन पूर्ण त्रिकुटे आणि एक उरलेला: तो काढा. 128 ÷ 2 = 64 = 4³ ✓. भागाकार जास्तीचे छाटतो; गुणाकाराला आणखी दोन लागले असते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "How many small cubes of edge 2 cm fit exactly inside a cube of edge 6 cm?",
+          hi: "2 सेमी किनारे के कितने छोटे घन 6 सेमी किनारे के घन में ठीक-ठीक समाते हैं?",
+          mr: "2 सेमी कडेचे किती छोटे घन 6 सेमी कडेच्या घनात नेमके मावतात?",
+        },
+        answer: 27,
+        wrong: [9, 18, 36],
+        checkExpr: "6*6*6/(2*2*2)",
+        solution: {
+          en: "Three fit along each edge, so 3 × 3 × 3 = 27 — or by volume, 216 ÷ 8 = 27. 9 fills only one face.",
+          hi: "हर किनारे पर तीन समाते हैं, अतः 3 × 3 × 3 = 27 — या आयतन से, 216 ÷ 8 = 27। 9 केवल एक फलक भरता है।",
+          mr: "प्रत्येक कडेवर तीन मावतात, म्हणून 3 × 3 × 3 = 27 — किंवा घनफळाने, 216 ÷ 8 = 27. 9 फक्त एक पृष्ठ भरतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: { en: "What is ∛0.001?", hi: "∛0.001 कितना है?", mr: "∛0.001 किती?" },
+        answer: 0.1,
+        wrong: [0.01, 0.3, 0.001],
+        checkExpr: "1/10",
+        solution: {
+          en: "0.1 × 0.1 × 0.1 = 0.001 ✓. Three decimal places root to ONE — cube roots divide the decimal count by three.",
+          hi: "0.1 × 0.1 × 0.1 = 0.001 ✓। तीन दशमलव स्थान मूल में एक बनते हैं — घनमूल दशमलव-गिनती को तीन से बाँटता है।",
+          mr: "0.1 × 0.1 × 0.1 = 0.001 ✓. तीन दशांश स्थाने मुळात एक होतात — घनमूळ दशांश-मोजणीला तिघाने भागते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is 6³ − 5³?",
+          hi: "6³ − 5³ कितना है?",
+          mr: "6³ − 5³ किती?",
+        },
+        answer: 91,
+        wrong: [1, 61, 121],
+        checkExpr: "6*6*6-5*5*5",
+        solution: {
+          en: "216 − 125 = 91. Consecutive cubes pull apart fast — the gap here is 3 × 5 × 6 + 1, already close to a hundred by six.",
+          hi: "216 − 125 = 91। क्रमागत घन तेज़ी से दूर छिटकते हैं — यहाँ अंतर 3 × 5 × 6 + 1 है, छह तक पहुँचते-पहुँचते सौ के पास।",
+          mr: "216 − 125 = 91. क्रमागत घन वेगाने दूर जातात — इथला फरक 3 × 5 × 6 + 1, सहापर्यंतच शंभराजवळ.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Can a perfect cube end in exactly TWO zeros? Compute 10³ and watch how zeros arrive.",
+          hi: "क्या पूर्ण घन ठीक दो शून्यों पर ख़त्म हो सकता है? 10³ निकालिए और देखिए शून्य कैसे आते हैं।",
+          mr: "पूर्ण घन नेमक्या दोन शून्यांवर संपू शकतो का? 10³ काढा आणि शून्ये कशी येतात ते पाहा.",
+        },
+        answer: 1000,
+        wrong: [100, 10000, 110],
+        checkExpr: "10*10*10",
+        solution: {
+          en: "10³ = 1000: each factor of 10 brings its zero, so cube-zeros arrive in THREES. A cube may end in 000 or 000000 — never in exactly 00.",
+          hi: "10³ = 1000: दस का हर गुणनखंड अपना शून्य लाता है, अतः घन-शून्य तीन-तीन में आते हैं। घन 000 या 000000 पर ख़त्म हो सकता है — ठीक 00 पर कभी नहीं।",
+          mr: "10³ = 1000: दहाचा प्रत्येक घटक आपले शून्य आणतो, म्हणून घन-शून्ये तीन-तीनमध्ये येतात. घन 000 वा 000000 वर संपू शकतो — नेमक्या 00 वर कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A 3-cm cube is painted all over, then cut into 1-cm cubes. How many small cubes carry NO paint at all?",
+          hi: "3 सेमी का घन चारों ओर रँगा जाता है, फिर 1-1 सेमी के घनों में कटता है। कितने छोटे घनों पर बिलकुल रंग नहीं?",
+          mr: "3 सेमीचा घन सर्व बाजूंनी रंगवला जातो, मग 1-1 सेमीच्या घनांत कापला जातो. किती छोट्या घनांवर मुळीच रंग नाही?",
+        },
+        answer: 1,
+        wrong: [0, 6, 8],
+        checkExpr: "1*1*1",
+        solution: {
+          en: "Only the hidden core escapes the brush: (3 − 2)³ = 1 cube, the very centre. 8 counts the corners — they carry paint on THREE faces each.",
+          hi: "कूची से केवल छिपा हुआ भीतरी भाग बचता है: (3 − 2)³ = 1 घन, ठीक केंद्र वाला। 8 कोने गिनता है — उन पर तो तीन-तीन फलकों पर रंग है।",
+          mr: "कुंचल्यापासून फक्त लपलेला गाभा वाचतो: (3 − 2)³ = 1 घन, नेमका मधला. 8 कोपरे मोजतो — त्यांवर तर तीन-तीन पृष्ठांवर रंग आहे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 7 — Cubes and Cube Roots",
+      name: "Cubes and Cube Roots",
+      slug: "maths-8-cubes-cube-roots",
+      summary:
+        "Primes demanded in threes, Ramanujan's taxi number verified by hand, zeros arriving only in triples — and the one unpainted cube hiding at the centre.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "घन और घनमूल",
+          summary:
+            "तीन-तीन में माँगे गए अभाज्य, हाथ से जाँचा रामानुजन का टैक्सी नंबर, केवल तिकड़ियों में आते शून्य — और केंद्र में छिपा वह एक बिना रंग का घन।",
+        },
+        mr: {
+          name: "घन आणि घनमूळ",
+          summary:
+            "तीन-तीनमध्ये मागितलेल्या मूळ संख्या, हाताने तपासलेला रामानुजनचा टॅक्सी क्रमांक, फक्त त्रिकुटांत येणारी शून्ये — आणि केंद्रात लपलेला तो एक रंगहीन घन.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Comparing Quantities (discount, tax and compound interest)    */
+/* ------------------------------------------------------------------------- */
+function comparingQuantities8(): TopicFileOut {
+  const rand = rng("maths-8-comparing-quantities");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A shirt is marked ₹500 and carries a 10% discount. What is the selling price?",
+          hi: "एक क़मीज़ पर अंकित मूल्य ₹500 और छूट 10% है। विक्रय-मूल्य कितना?",
+          mr: "एका सदऱ्यावर छापील किंमत ₹500 आणि सूट 10% आहे. विक्री-किंमत किती?",
+        },
+        answer: 450,
+        wrong: [50, 490, 550],
+        checkExpr: "500-500*10/100",
+        fmt: rupees,
+        solution: {
+          en: "The discount is ₹50 off the MARKED price: 500 − 50 = ₹450. 50 stops at the discount itself; 550 adds it on.",
+          hi: "छूट अंकित मूल्य पर ₹50 है: 500 − 50 = ₹450। 50 छूट पर ही रुक जाता है; 550 उसे जोड़ देता है।",
+          mr: "सूट छापील किमतीवर ₹50 आहे: 500 − 50 = ₹450. 50 सुटीवरच थांबतो; 550 ती मिळवतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 8% of ₹1500?",
+          hi: "₹1500 का 8% कितना है?",
+          mr: "₹1500 चे 8% किती?",
+        },
+        answer: 120,
+        wrong: [12, 187.5, 1200],
+        checkExpr: "1500*8/100",
+        fmt: rupees,
+        solution: {
+          en: "1% of 1500 is 15, so 8% is 15 × 8 = ₹120. 12 slips a place; 1200 forgets the percent sign entirely.",
+          hi: "1500 का 1% है 15, अतः 8% है 15 × 8 = ₹120। 12 एक स्थान फिसल जाता है; 1200 प्रतिशत-चिह्न ही भूल जाता है।",
+          mr: "1500 चा 1% म्हणजे 15, म्हणून 8% म्हणजे 15 × 8 = ₹120. 12 एक घर घसरतो; 1200 टक्के-चिन्हच विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two quantities stand in the ratio 3 : 5. What percentage of the WHOLE is the first?",
+          hi: "दो राशियाँ 3 : 5 के अनुपात में हैं। पूरे का कितना प्रतिशत पहली है?",
+          mr: "दोन राशी 3 : 5 या गुणोत्तरात आहेत. संपूर्णाच्या किती टक्के पहिली आहे?",
+        },
+        answer: 37.5,
+        wrong: [60, 62.5, 30],
+        checkExpr: "3*100/8",
+        fmt: pct,
+        solution: {
+          en: "The whole holds 3 + 5 = 8 parts; the first takes 3/8 = 37.5%. 60 divides 3 by 5 — by the partner instead of the whole.",
+          hi: "पूरे में 3 + 5 = 8 भाग; पहली लेती है 3/8 = 37.5%। 60 तीन को 5 से भाग देता है — पूरे की जगह साथी से।",
+          mr: "संपूर्णात 3 + 5 = 8 भाग; पहिली घेते 3/8 = 37.5%. 60 तिघाला 5 ने भागतो — संपूर्णाऐवजी जोडीदाराने.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "An article costing ₹1200 is sold at a 15% profit. What is the selling price?",
+          hi: "₹1200 लागत की वस्तु 15% लाभ पर बेची जाती है। विक्रय-मूल्य कितना?",
+          mr: "₹1200 किमतीची वस्तू 15% नफ्याने विकली जाते. विक्री-किंमत किती?",
+        },
+        answer: 1380,
+        wrong: [180, 1215, 1020],
+        checkExpr: "1200+1200*15/100",
+        fmt: rupees,
+        solution: {
+          en: "The profit is 15% of 1200 = ₹180, so SP = 1200 + 180 = ₹1380. 1020 subtracts — that would be a LOSS of 15%.",
+          hi: "लाभ = 1200 का 15% = ₹180, अतः विक्रय-मूल्य = 1200 + 180 = ₹1380। 1020 घटा देता है — वह तो 15% की हानि होती।",
+          mr: "नफा = 1200 चे 15% = ₹180, म्हणून विक्री-किंमत = 1200 + 180 = ₹1380. 1020 वजा करतो — तो तर 15% चा तोटा झाला असता.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A bill of ₹640 attracts 5% sales tax. What is the total to pay?",
+          hi: "₹640 के बिल पर 5% बिक्री-कर लगता है। कुल कितना चुकाना होगा?",
+          mr: "₹640 च्या बिलावर 5% विक्रीकर लागतो. एकूण किती द्यावे लागतील?",
+        },
+        answer: 672,
+        wrong: [32, 645, 608],
+        checkExpr: "640+640*5/100",
+        fmt: rupees,
+        solution: {
+          en: "Tax = 5% of 640 = ₹32, total 640 + 32 = ₹672. 608 subtracts the tax — the government does not pay you.",
+          hi: "कर = 640 का 5% = ₹32, कुल 640 + 32 = ₹672। 608 कर घटा देता है — सरकार आपको नहीं चुकाती।",
+          mr: "कर = 640 चे 5% = ₹32, एकूण 640 + 32 = ₹672. 608 कर वजा करतो — सरकार तुम्हाला देत नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Marked ₹800, sold at ₹720. What is the discount per cent?",
+          hi: "अंकित ₹800, बिकी ₹720 में। छूट प्रतिशत कितनी?",
+          mr: "छापील ₹800, विकली ₹720 ला. सूट शेकडा किती?",
+        },
+        answer: 10,
+        wrong: [80, 11, 8],
+        checkExpr: "(800-720)*100/800",
+        fmt: pct,
+        solution: {
+          en: "The cut of ₹80 stands on the MARKED 800: 80/800 = 10%. 11 divides by the selling price — discounts are always measured on the tag.",
+          hi: "₹80 की कटौती अंकित 800 पर खड़ी है: 80/800 = 10%। 11 विक्रय-मूल्य से भाग देता है — छूट सदा टैग पर नपती है।",
+          mr: "₹80 ची कपात छापील 800 वर उभी आहे: 80/800 = 10%. 11 विक्री-किमतीने भागतो — सूट नेहमी टॅगवर मोजली जाते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "₹10,000 sits at 10% per annum. How much interest does COMPOUND interest give in the FIRST year?",
+          hi: "₹10,000 पर 10% वार्षिक दर है। चक्रवृद्धि ब्याज पहले वर्ष में कितना देता है?",
+          mr: "₹10,000 वर 10% वार्षिक दर आहे. चक्रवाढ व्याज पहिल्या वर्षात किती देते?",
+        },
+        answer: 1000,
+        wrong: [1100, 100, 10000],
+        checkExpr: "10000*10/100",
+        fmt: rupees,
+        solution: {
+          en: "In year one there is no old interest to compound: CI = SI = ₹1000. The two roads split only from the SECOND year.",
+          hi: "पहले वर्ष में जोड़ने को कोई पुराना ब्याज नहीं: चक्रवृद्धि = साधारण = ₹1000। दोनों राहें दूसरे वर्ष से ही अलग होती हैं।",
+          mr: "पहिल्या वर्षात चक्रवाढीला जुने व्याज नाही: चक्रवाढ = सरळ = ₹1000. दोन वाटा दुसऱ्या वर्षापासूनच वेगळ्या होतात.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "₹8000 is lent at 10% per annum, compounded annually. What AMOUNT stands after 2 years?",
+          hi: "₹8000 10% वार्षिक चक्रवृद्धि पर दिए गए। 2 वर्ष बाद मिश्रधन कितना होगा?",
+          mr: "₹8000 10% वार्षिक चक्रवाढीने दिले. 2 वर्षांनी रास किती होईल?",
+        },
+        answer: 9680,
+        wrong: [9600, 1680, 8800],
+        checkExpr: "8000*121/100",
+        fmt: rupees,
+        solution: {
+          en: "Two 10% steps: 8000 → 8800 → 9680, i.e. 8000 × 1.1² = 8000 × 121/100. 9600 is the SIMPLE-interest amount, missing the ₹80 earned on interest.",
+          hi: "दो 10% सीढ़ियाँ: 8000 → 8800 → 9680, यानी 8000 × 1.1² = 8000 × 121/100। 9600 साधारण ब्याज का मिश्रधन है, ब्याज पर कमाए ₹80 से वंचित।",
+          mr: "दोन 10% पायऱ्या: 8000 → 8800 → 9680, म्हणजे 8000 × 1.1² = 8000 × 121/100. 9600 ही सरळ व्याजाची रास, व्याजावर कमावलेल्या ₹80 ला मुकलेली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Successive discounts of 20% and then 10% act on a ₹1000 tag. What is the final price?",
+          hi: "₹1000 के टैग पर 20% और फिर 10% की उत्तरोत्तर छूटें लगती हैं। अंतिम दाम कितना?",
+          mr: "₹1000 च्या टॅगवर 20% आणि मग 10% च्या क्रमवार सुटी लागतात. अंतिम किंमत किती?",
+        },
+        answer: 720,
+        wrong: [700, 300, 730],
+        checkExpr: "1000*80*90/(100*100)",
+        fmt: rupees,
+        solution: {
+          en: "1000 → 800 after 20%, then 10% off 800 → 720. 700 adds the discounts to 30% — but the second cut works on a smaller price.",
+          hi: "1000 → 20% के बाद 800, फिर 800 पर 10% → 720। 700 छूटें जोड़कर 30% बना देता है — पर दूसरी कटौती छोटे दाम पर चलती है।",
+          mr: "1000 → 20% नंतर 800, मग 800 वर 10% → 720. 700 सुटी जोडून 30% करतो — पण दुसरी कपात लहान किमतीवर चालते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A town of 20,000 grows 5% in a year. What is its population after one year?",
+          hi: "20,000 का क़स्बा साल में 5% बढ़ता है। एक वर्ष बाद जनसंख्या कितनी?",
+          mr: "20,000 चे गाव वर्षात 5% वाढते. एका वर्षानंतर लोकसंख्या किती?",
+        },
+        answer: 21000,
+        wrong: [1000, 25000, 20005],
+        checkExpr: "20000*105/100",
+        solution: {
+          en: "Growth adds 5% of 20000 = 1000: population 21,000. Growth compounds like interest — next year's 5% will stand on 21,000.",
+          hi: "वृद्धि 20000 का 5% = 1000 जोड़ती है: जनसंख्या 21,000। वृद्धि ब्याज की तरह चक्रवृद्धि होती है — अगले साल का 5% 21,000 पर खड़ा होगा।",
+          mr: "वाढ 20000 चे 5% = 1000 जोडते: लोकसंख्या 21,000. वाढ व्याजासारखी चक्रवाढते — पुढच्या वर्षीचे 5% 21,000 वर उभे राहील.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "GST of 18% applies to a ₹2500 service. How much is the TAX alone?",
+          hi: "₹2500 की सेवा पर 18% जीएसटी लगता है। अकेला कर कितना?",
+          mr: "₹2500 च्या सेवेवर 18% जीएसटी लागतो. एकटा कर किती?",
+        },
+        answer: 450,
+        wrong: [45, 2950, 418],
+        checkExpr: "2500*18/100",
+        fmt: rupees,
+        solution: {
+          en: "18% of 2500 = 25 × 18 = ₹450. 2950 answers the whole bill; the question asked for the tax slice only.",
+          hi: "2500 का 18% = 25 × 18 = ₹450। 2950 पूरा बिल बताता है; सवाल केवल कर का हिस्सा पूछ रहा था।",
+          mr: "2500 चे 18% = 25 × 18 = ₹450. 2950 सारे बिल सांगतो; प्रश्न फक्त कराचा वाटा विचारत होता.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the compound INTEREST on ₹5000 at 10% per annum for 2 years?",
+          hi: "₹5000 पर 10% वार्षिक दर से 2 वर्ष का चक्रवृद्धि ब्याज कितना?",
+          mr: "₹5000 वर 10% वार्षिक दराने 2 वर्षांचे चक्रवाढ व्याज किती?",
+        },
+        answer: 1050,
+        wrong: [1000, 500, 1100],
+        checkExpr: "5000*21/100",
+        fmt: rupees,
+        solution: {
+          en: "Two years of 10% compound to 21%: interest = 5000 × 21/100 = ₹1050. 1000 is simple interest — the missing ₹50 grew ON the first year's ₹500.",
+          hi: "10% के दो वर्ष चक्रवृद्धि में 21% बनते हैं: ब्याज = 5000 × 21/100 = ₹1050। 1000 साधारण ब्याज है — छूटे ₹50 पहले वर्ष के ₹500 पर उगे थे।",
+          mr: "10% ची दोन वर्षे चक्रवाढीत 21% होतात: व्याज = 5000 × 21/100 = ₹1050. 1000 सरळ व्याज — हरवलेले ₹50 पहिल्या वर्षाच्या ₹500 वर उगवले होते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A cycle marked ₹3600 sells for ₹3060. What discount per cent was given?",
+          hi: "₹3600 अंकित साइकिल ₹3060 में बिकी। कितने प्रतिशत छूट दी गई?",
+          mr: "₹3600 छापील सायकल ₹3060 ला विकली. किती टक्के सूट दिली?",
+        },
+        answer: 15,
+        wrong: [12, 18, 540],
+        checkExpr: "(3600-3060)*100/3600",
+        fmt: pct,
+        solution: {
+          en: "The cut is ₹540 on a tag of ₹3600: 540/3600 = 15%. 540 is the rupee discount left unconverted.",
+          hi: "कटौती ₹3600 के टैग पर ₹540 है: 540/3600 = 15%। 540 रुपये की छूट है, प्रतिशत में बदले बिना।",
+          mr: "कपात ₹3600 च्या टॅगवर ₹540 आहे: 540/3600 = 15%. 540 ही रुपयांतली सूट, टक्क्यांत न बदललेली.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A machine worth ₹50,000 depreciates 10% each year. What is its value after 2 years?",
+          hi: "₹50,000 की मशीन हर वर्ष 10% मूल्य खोती है। 2 वर्ष बाद उसका मूल्य कितना?",
+          mr: "₹50,000 चे यंत्र दरवर्षी 10% किंमत गमावते. 2 वर्षांनी त्याची किंमत किती?",
+        },
+        answer: 40500,
+        wrong: [45000, 40000, 30000],
+        checkExpr: "50000*81/100",
+        fmt: rupees,
+        solution: {
+          en: "Two 10% falls: 50000 → 45000 → 40500, i.e. × 0.9² = 81%. 40000 subtracts 10% twice from the ORIGINAL — depreciation compounds downhill too.",
+          hi: "दो 10% गिरावटें: 50000 → 45000 → 40500, यानी × 0.9² = 81%। 40000 मूल से दो बार 10% घटाता है — मूल्य-ह्रास भी ढलान पर चक्रवृद्धि चलता है।",
+          mr: "दोन 10% घसरणी: 50000 → 45000 → 40500, म्हणजे × 0.9² = 81%. 40000 मुळातून दोनदा 10% वजा करतो — घसाराही उतारावर चक्रवाढतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Two offers on a ₹400 kurta: a single 25% discount, or 15% followed by 10%. Compute the price under the 15%-then-10% offer.",
+          hi: "₹400 के कुर्ते पर दो पेशकश: अकेली 25% छूट, या 15% फिर 10%। 15%-फिर-10% वाली पेशकश का दाम निकालिए।",
+          mr: "₹400 च्या कुर्त्यावर दोन सवलती: एकटी 25% सूट, किंवा 15% मग 10%. 15%-मग-10% च्या सवलतीची किंमत काढा.",
+        },
+        answer: 306,
+        wrong: [300, 310, 294],
+        checkExpr: "400*85*90/(100*100)",
+        fmt: rupees,
+        solution: {
+          en: "400 → 340 after 15%, then 10% off 340 → ₹306. The single 25% gives ₹300 — the 'equal-sounding' split offer keeps ₹6 more with the shop, because its second cut bites a smaller number.",
+          hi: "400 → 15% के बाद 340, फिर 340 पर 10% → ₹306। अकेली 25% देती है ₹300 — 'बराबर-सी लगती' बँटी पेशकश दुकान के पास ₹6 ज़्यादा छोड़ती है, क्योंकि उसकी दूसरी कटौती छोटी संख्या को काटती है।",
+          mr: "400 → 15% नंतर 340, मग 340 वर 10% → ₹306. एकटी 25% देते ₹300 — 'सारखी वाटणारी' विभागलेली सवलत दुकानाकडे ₹6 जास्त ठेवते, कारण तिची दुसरी कपात लहान संख्येला कापते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "₹10,000 at 10% p.a. for 2 years: by how much does COMPOUND interest beat SIMPLE interest?",
+          hi: "₹10,000 पर 10% वार्षिक, 2 वर्ष: चक्रवृद्धि ब्याज साधारण ब्याज से कितने से आगे रहता है?",
+          mr: "₹10,000 वर 10% वार्षिक, 2 वर्षे: चक्रवाढ व्याज सरळ व्याजाहून कितीने पुढे राहते?",
+        },
+        answer: 100,
+        wrong: [0, 210, 1000],
+        checkExpr: "10000*21/100-10000*20/100",
+        fmt: rupees,
+        solution: {
+          en: "CI = ₹2100, SI = ₹2000: the gap is ₹100 — exactly 10% of the first year's ₹1000 interest. The entire difference is interest earned ON interest; that one idea is the whole chapter.",
+          hi: "चक्रवृद्धि = ₹2100, साधारण = ₹2000: अंतर ₹100 — ठीक पहले वर्ष के ₹1000 ब्याज का 10%। पूरा फ़र्क़ ब्याज पर कमाया ब्याज है; यही एक विचार पूरा अध्याय है।",
+          mr: "चक्रवाढ = ₹2100, सरळ = ₹2000: फरक ₹100 — नेमके पहिल्या वर्षाच्या ₹1000 व्याजाचे 10%. सारा फरक म्हणजे व्याजावर कमावलेले व्याज; हीच एक कल्पना म्हणजे अख्खे प्रकरण.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 8 — Comparing Quantities",
+      name: "Comparing Quantities",
+      slug: "maths-8-comparing-quantities",
+      summary:
+        "Discounts measured on the tag, taxes added not subtracted, growth and decay both compounding — and the ₹100 gap that is nothing but interest earned on interest.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "राशियों की तुलना",
+          summary:
+            "टैग पर नपी छूटें, जुड़ते (घटते नहीं) कर, चक्रवृद्धि से बढ़ती-घटती राशियाँ — और वह ₹100 का अंतर जो ब्याज पर कमाए ब्याज के सिवा कुछ नहीं।",
+        },
+        mr: {
+          name: "राशींची तुलना",
+          summary:
+            "टॅगवर मोजलेल्या सुटी, वजा नव्हे तर जुळणारे कर, चक्रवाढीने वाढणाऱ्या-घटणाऱ्या राशी — आणि व्याजावर कमावलेल्या व्याजाशिवाय काहीही नसलेला तो ₹100 चा फरक.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Algebraic Expressions and Identities (patterns that compute)  */
+/* ------------------------------------------------------------------------- */
+function algebraicIdentities(): TopicFileOut {
+  const rand = rng("maths-8-algebraic-identities");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the value of (a + b)² when a = 3 and b = 2?",
+          hi: "a = 3 और b = 2 पर (a + b)² का मान कितना?",
+          mr: "a = 3 आणि b = 2 असताना (a + b)² ची किंमत किती?",
+        },
+        answer: 25,
+        wrong: [13, 10, 12],
+        checkExpr: "5*5",
+        solution: {
+          en: "(3 + 2)² = 5² = 25. 13 computes a² + b² and drops the 2ab — the square of a sum is NOT the sum of squares.",
+          hi: "(3 + 2)² = 5² = 25। 13 a² + b² निकालकर 2ab गिरा देता है — योग का वर्ग, वर्गों का योग नहीं होता।",
+          mr: "(3 + 2)² = 5² = 25. 13 a² + b² काढून 2ab गाळतो — बेरजेचा वर्ग म्हणजे वर्गांची बेरीज नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "3x × 4x = ▢x². What is the coefficient in the box?",
+          hi: "3x × 4x = ▢x²। रिक्त में गुणांक क्या आएगा?",
+          mr: "3x × 4x = ▢x². रिकाम्यात सहगुणक काय येईल?",
+        },
+        answer: 12,
+        wrong: [7, 34, 1],
+        checkExpr: "3*4",
+        solution: {
+          en: "Coefficients multiply and the x's add powers: 3 × 4 = 12, x × x = x². 7 ADDS the coefficients as if the terms were being summed.",
+          hi: "गुणांक गुणा होते हैं और x घातें जोड़ते हैं: 3 × 4 = 12, x × x = x²। 7 गुणांकों को यों जोड़ देता है मानो पद जुड़ रहे हों।",
+          mr: "सहगुणक गुणले जातात आणि x घाती जोडतात: 3 × 4 = 12, x × x = x². 7 सहगुणक असे जोडतो जणू पदे जुळत आहेत.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the coefficient of x² in 5x² + 3x?",
+          hi: "5x² + 3x में x² का गुणांक क्या है?",
+          mr: "5x² + 3x मध्ये x² चा सहगुणक काय?",
+        },
+        answer: 5,
+        wrong: [3, 8, 2],
+        solution: {
+          en: "The number riding x² is 5. 3 rides plain x, and 8 adds the two riders of different horses.",
+          hi: "x² पर सवार संख्या 5 है। 3 सादे x पर सवार है, और 8 अलग-अलग घोड़ों के दो सवार जोड़ देता है।",
+          mr: "x² वर स्वार संख्या 5 आहे. 3 साध्या x वर स्वार, आणि 8 वेगवेगळ्या घोड्यांचे दोन स्वार जोडतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "(x + 3)(x + 2) = x² + ▢x + 6. What number fills the box?",
+          hi: "(x + 3)(x + 2) = x² + ▢x + 6। रिक्त में कौन-सी संख्या आएगी?",
+          mr: "(x + 3)(x + 2) = x² + ▢x + 6. रिकाम्यात कोणती संख्या येईल?",
+        },
+        answer: 5,
+        wrong: [6, 1, 9],
+        checkExpr: "3+2",
+        solution: {
+          en: "The middle term collects both cross-products: 3x + 2x = 5x. 6 is the constant's job (3 × 2), already done at the end.",
+          hi: "बीच का पद दोनों तिरछे गुणनफल बटोरता है: 3x + 2x = 5x। 6 अचर का काम है (3 × 2), जो अंत में हो ही चुका।",
+          mr: "मधले पद दोन्ही तिरके गुणाकार गोळा करते: 3x + 2x = 5x. 6 हे स्थिरांकाचे काम (3 × 2), शेवटी झालेलेच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Use (100 + 2)² to compute 102².",
+          hi: "(100 + 2)² से 102² निकालिए।",
+          mr: "(100 + 2)² ने 102² काढा.",
+        },
+        answer: 10404,
+        wrong: [10204, 10044, 10402],
+        checkExpr: "100*100+2*100*2+4",
+        solution: {
+          en: "a² + 2ab + b² = 10000 + 400 + 4 = 10404. 10204 halves the middle term — the 2 in 2ab is not optional.",
+          hi: "a² + 2ab + b² = 10000 + 400 + 4 = 10404। 10204 बीच का पद आधा कर देता है — 2ab का 2 वैकल्पिक नहीं है।",
+          mr: "a² + 2ab + b² = 10000 + 400 + 4 = 10404. 10204 मधले पद निम्मे करतो — 2ab मधला 2 ऐच्छिक नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is (a − b)² when a = 10 and b = 1?",
+          hi: "a = 10 और b = 1 पर (a − b)² कितना?",
+          mr: "a = 10 आणि b = 1 असताना (a − b)² किती?",
+        },
+        answer: 81,
+        wrong: [99, 101, 80],
+        checkExpr: "9*9",
+        solution: {
+          en: "(10 − 1)² = 9² = 81 — or by identity, 100 − 20 + 1 = 81. 99 computes a² − b², a different identity's business.",
+          hi: "(10 − 1)² = 9² = 81 — या सर्वसमिका से, 100 − 20 + 1 = 81। 99 a² − b² निकालता है, जो दूसरी सर्वसमिका का कारोबार है।",
+          mr: "(10 − 1)² = 9² = 81 — किंवा नित्यसमीकरणाने, 100 − 20 + 1 = 81. 99 a² − b² काढतो, जो वेगळ्या नित्यसमीकरणाचा धंदा.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Compute 98 × 102 using (100 − 2)(100 + 2).",
+          hi: "(100 − 2)(100 + 2) से 98 × 102 निकालिए।",
+          mr: "(100 − 2)(100 + 2) ने 98 × 102 काढा.",
+        },
+        answer: 9996,
+        wrong: [9896, 10004, 9998],
+        checkExpr: "100*100-4",
+        solution: {
+          en: "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — a two-second multiplication. 10004 adds b² where the identity subtracts.",
+          hi: "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — दो सेकंड का गुणा। 10004 वहाँ b² जोड़ देता है जहाँ सर्वसमिका घटाती है।",
+          mr: "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — दोन सेकंदांचा गुणाकार. 10004 तिथे b² जोडतो जिथे नित्यसमीकरण वजा करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "(2x²)³ = ▢x⁶. What is the coefficient in the box?",
+          hi: "(2x²)³ = ▢x⁶। रिक्त में गुणांक क्या आएगा?",
+          mr: "(2x²)³ = ▢x⁶. रिकाम्यात सहगुणक काय येईल?",
+        },
+        answer: 8,
+        wrong: [6, 2, 12],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "The cube hits BOTH parts: 2³ = 8 and (x²)³ = x⁶. 6 multiplies 2 × 3 — exponents on coefficients are powers, not products.",
+          hi: "घन दोनों हिस्सों पर लगता है: 2³ = 8 और (x²)³ = x⁶। 6 2 × 3 गुणा करता है — गुणांक की घातें घातें हैं, गुणनफल नहीं।",
+          mr: "घन दोन्ही भागांवर लागतो: 2³ = 8 आणि (x²)³ = x⁶. 6 2 × 3 गुणतो — सहगुणकावरील घाती घाती असतात, गुणाकार नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Subtract 3a + 4b from 7a + 2b. What is the coefficient of b in the result?",
+          hi: "7a + 2b में से 3a + 4b घटाइए। परिणाम में b का गुणांक क्या है?",
+          mr: "7a + 2b मधून 3a + 4b वजा करा. निकालात b चा सहगुणक काय?",
+        },
+        answer: -2,
+        wrong: [2, 6, -6],
+        checkExpr: "2-4",
+        solution: {
+          en: "b's account: 2 − 4 = −2 (the a's give 4a). 2 forgets the sign; 6 ADDS the b's as if nothing were being subtracted.",
+          hi: "b का हिसाब: 2 − 4 = −2 (a देते हैं 4a)। 2 चिह्न भूल जाता है; 6 b को यों जोड़ता है मानो घटाना था ही नहीं।",
+          mr: "b चा हिशेब: 2 − 4 = −2 (a देतात 4a). 2 चिन्ह विसरतो; 6 b असे जोडतो जणू वजाबाकी नव्हतीच.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Compute 51² − 49² the identity way.",
+          hi: "51² − 49² सर्वसमिका की राह से निकालिए।",
+          mr: "51² − 49² नित्यसमीकरणाच्या वाटेने काढा.",
+        },
+        answer: 200,
+        wrong: [4, 100, 2],
+        checkExpr: "51*51-49*49",
+        solution: {
+          en: "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — no squaring needed. 4 squares the difference instead of using it.",
+          hi: "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — वर्ग करने की ज़रूरत ही नहीं। 4 अंतर का वर्ग कर बैठता है।",
+          mr: "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — वर्ग करण्याची गरजच नाही. 4 फरकाचा वर्ग करून बसतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "If x + 1/x = 4, what is x² + 1/x²?",
+          hi: "यदि x + 1/x = 4, तो x² + 1/x² कितना?",
+          mr: "जर x + 1/x = 4, तर x² + 1/x² किती?",
+        },
+        answer: 14,
+        wrong: [16, 18, 8],
+        checkExpr: "16-2",
+        solution: {
+          en: "Square the given: (x + 1/x)² = x² + 2 + 1/x² = 16, so x² + 1/x² = 16 − 2 = 14. 16 forgets the 2 born from the cross-term.",
+          hi: "दिए हुए का वर्ग: (x + 1/x)² = x² + 2 + 1/x² = 16, अतः x² + 1/x² = 16 − 2 = 14। 16 तिरछे पद से जन्मा 2 भूल जाता है।",
+          mr: "दिलेल्याचा वर्ग: (x + 1/x)² = x² + 2 + 1/x² = 16, म्हणून x² + 1/x² = 16 − 2 = 14. 16 तिरक्या पदातून जन्मलेला 2 विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A rectangle's sides are (x + 5) and (x + 3). What is its area when x = 2?",
+          hi: "आयत की भुजाएँ (x + 5) और (x + 3) हैं। x = 2 पर क्षेत्रफल कितना?",
+          mr: "आयताच्या बाजू (x + 5) आणि (x + 3) आहेत. x = 2 असताना क्षेत्रफळ किती?",
+        },
+        answer: 35,
+        wrong: [16, 30, 21],
+        checkExpr: "7*5",
+        solution: {
+          en: "Substitute first: 7 × 5 = 35 — or expand to x² + 8x + 15 and get 4 + 16 + 15 = 35: both roads agree, as they must.",
+          hi: "पहले मान रखिए: 7 × 5 = 35 — या फैलाकर x² + 8x + 15 से 4 + 16 + 15 = 35: दोनों राहें मिलती हैं, मिलनी ही चाहिए।",
+          mr: "आधी किंमत ठेवा: 7 × 5 = 35 — किंवा विस्तारून x² + 8x + 15 मधून 4 + 16 + 15 = 35: दोन्ही वाटा जुळतात, जुळायलाच हव्यात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Compute 997 × 1003.",
+          hi: "997 × 1003 निकालिए।",
+          mr: "997 × 1003 काढा.",
+        },
+        answer: 999991,
+        wrong: [999997, 1000009, 999009],
+        checkExpr: "1000*1000-9",
+        solution: {
+          en: "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991. The identity turns a monstrous multiplication into one subtraction.",
+          hi: "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991। सर्वसमिका राक्षसी गुणे को एक घटाव बना देती है।",
+          mr: "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991. नित्यसमीकरण राक्षसी गुणाकाराला एक वजाबाकी करते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Compute 49² using (50 − 1)².",
+          hi: "(50 − 1)² से 49² निकालिए।",
+          mr: "(50 − 1)² ने 49² काढा.",
+        },
+        answer: 2401,
+        wrong: [2499, 2501, 2399],
+        checkExpr: "50*50-2*50+1",
+        solution: {
+          en: "a² − 2ab + b² = 2500 − 100 + 1 = 2401. 2399 forgets the +1 — the small square at the end pays its paisa too.",
+          hi: "a² − 2ab + b² = 2500 − 100 + 1 = 2401। 2399 +1 भूल जाता है — अंत का नन्हा वर्ग भी अपना पैसा चुकाता है।",
+          mr: "a² − 2ab + b² = 2500 − 100 + 1 = 2401. 2399 +1 विसरतो — शेवटचा इवला वर्गही आपला पैसा देतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "(a + b)² − (a − b)² simplifies to ▢ab. What is the coefficient?",
+          hi: "(a + b)² − (a − b)² सरल होकर ▢ab बनता है। गुणांक क्या है?",
+          mr: "(a + b)² − (a − b)² सोपे होऊन ▢ab होते. सहगुणक काय?",
+        },
+        answer: 4,
+        wrong: [2, 0, 8],
+        checkExpr: "2+2",
+        solution: {
+          en: "Expand both: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — the squares cancel and the two middle terms join. 0 cancels everything, middle terms included, by sign-carelessness.",
+          hi: "दोनों फैलाइए: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — वर्ग कटते हैं और दोनों बीच के पद जुड़ते हैं। 0 चिह्न-लापरवाही से बीच के पद समेत सब काट देता है।",
+          mr: "दोन्ही विस्तारा: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — वर्ग रद्द होतात आणि दोन्ही मधली पदे जुळतात. 0 चिन्ह-निष्काळजीपणाने मधल्या पदांसकट सारे रद्द करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The ending-in-5 trick: 65² = (6 × 7) written before 25. Verify — compute 65².",
+          hi: "5-अंत की तरकीब: 65² = (6 × 7) के आगे 25। जाँचिए — 65² निकालिए।",
+          mr: "5-शेवटची युक्ती: 65² = (6 × 7) च्या पुढे 25. तपासा — 65² काढा.",
+        },
+        answer: 4225,
+        wrong: [4025, 3625, 4235],
+        checkExpr: "6*7*100+25",
+        solution: {
+          en: "65² = 4225 = 42|25, and 42 = 6 × 7. The trick IS the identity: (10n + 5)² = 100n(n + 1) + 25 — algebra explaining a bazaar shortcut.",
+          hi: "65² = 4225 = 42|25, और 42 = 6 × 7। तरकीब स्वयं सर्वसमिका है: (10n + 5)² = 100n(n + 1) + 25 — बीजगणित बाज़ारू शॉर्टकट की व्याख्या करता हुआ।",
+          mr: "65² = 4225 = 42|25, आणि 42 = 6 × 7. युक्ती हीच नित्यसमीकरण: (10n + 5)² = 100n(n + 1) + 25 — बाजारी युक्तीचे स्पष्टीकरण देणारे बीजगणित.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 9 — Algebraic Expressions and Identities",
+      name: "Algebraic Expressions and Identities",
+      slug: "maths-8-algebraic-identities",
+      summary:
+        "The three identities put to work: monstrous multiplications tamed to a subtraction, the never-optional 2ab — and the ending-in-5 bazaar trick exposed as algebra.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "बीजीय व्यंजक एवं सर्वसमिकाएँ",
+          summary:
+            "काम पर लगीं तीनों सर्वसमिकाएँ: एक घटाव में सधे राक्षसी गुणे, कभी-वैकल्पिक-नहीं 2ab — और 5-अंत की बाज़ारू तरकीब, जो बीजगणित निकली।",
+        },
+        mr: {
+          name: "बैजिक पदावली व नित्यसमीकरणे",
+          summary:
+            "कामाला लावलेली तिन्ही नित्यसमीकरणे: एका वजाबाकीत आवरलेले राक्षसी गुणाकार, कधीही-ऐच्छिक-नसलेला 2ab — आणि बीजगणित निघालेली 5-शेवटची बाजारी युक्ती.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Mensuration (trapezium fields and cylinder drums)            */
+/* ------------------------------------------------------------------------- */
+function mensuration8(): TopicFileOut {
+  const rand = rng("maths-8-mensuration");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A trapezium has parallel sides 10 cm and 6 cm, with height 4 cm. What is its area, in square cm?",
+          hi: "समलंब की समांतर भुजाएँ 10 सेमी और 6 सेमी हैं, ऊँचाई 4 सेमी। क्षेत्रफल वर्ग सेमी में कितना?",
+          mr: "समलंब चौकोनाच्या समांतर बाजू 10 सेमी आणि 6 सेमी, उंची 4 सेमी. क्षेत्रफळ चौरस सेमीमध्ये किती?",
+        },
+        answer: 32,
+        wrong: [64, 40, 24],
+        checkExpr: "(10+6)*4/2",
+        solution: {
+          en: "Half the sum of parallel sides times height: (10 + 6)/2 × 4 = 32. 64 forgets the half — a trapezium is the average of two rectangles.",
+          hi: "समांतर भुजाओं के योग का आधा गुणा ऊँचाई: (10 + 6)/2 × 4 = 32। 64 आधा भूल जाता है — समलंब दो आयतों का औसत है।",
+          mr: "समांतर बाजूंच्या बेरजेचे अर्धे गुणिले उंची: (10 + 6)/2 × 4 = 32. 64 अर्धे विसरतो — समलंब म्हणजे दोन आयतांची सरासरी.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the volume of a cube of edge 5 cm?",
+          hi: "5 सेमी किनारे वाले घन का आयतन कितना?",
+          mr: "5 सेमी कडेच्या घनाचे घनफळ किती?",
+        },
+        answer: 125,
+        wrong: [25, 150, 15],
+        checkExpr: "5*5*5",
+        solution: {
+          en: "5 × 5 × 5 = 125 cm³. 150 computes the surface area instead — skin, not filling.",
+          hi: "5 × 5 × 5 = 125 घन सेमी। 150 उलटे पृष्ठीय क्षेत्रफल निकालता है — खोल, भराव नहीं।",
+          mr: "5 × 5 × 5 = 125 घन सेमी. 150 उलट पृष्ठफळ काढतो — साल, भरणे नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the TOTAL surface area of a cube of edge 4 cm?",
+          hi: "4 सेमी किनारे वाले घन का कुल पृष्ठीय क्षेत्रफल कितना?",
+          mr: "4 सेमी कडेच्या घनाचे एकूण पृष्ठफळ किती?",
+        },
+        answer: 96,
+        wrong: [64, 16, 24],
+        checkExpr: "6*4*4",
+        solution: {
+          en: "Six faces of 4 × 4 each: 6 × 16 = 96 cm². 64 computes the volume; 16 stops at one face.",
+          hi: "4 × 4 के छह फलक: 6 × 16 = 96 वर्ग सेमी। 64 आयतन निकाल बैठता है; 16 एक फलक पर रुकता है।",
+          mr: "4 × 4 ची सहा पृष्ठे: 6 × 16 = 96 चौ. सेमी. 64 घनफळ काढतो; 16 एका पृष्ठावर थांबतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A cuboid measures 5 × 4 × 3 cm. What is its volume?",
+          hi: "एक घनाभ 5 × 4 × 3 सेमी का है। उसका आयतन कितना?",
+          mr: "एक इष्टिकाचिती 5 × 4 × 3 सेमी आहे. तिचे घनफळ किती?",
+        },
+        answer: 60,
+        wrong: [12, 47, 94],
+        checkExpr: "5*4*3",
+        solution: {
+          en: "Volume = l × b × h = 5 × 4 × 3 = 60 cm³. 94 is the surface area wearing volume's units.",
+          hi: "आयतन = ल × चौ × ऊँ = 5 × 4 × 3 = 60 घन सेमी। 94 आयतन की इकाई पहने पृष्ठीय क्षेत्रफल है।",
+          mr: "घनफळ = लां × रुं × उं = 5 × 4 × 3 = 60 घन सेमी. 94 हे घनफळाचे एकक घातलेले पृष्ठफळ.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The same 5 × 4 × 3 cuboid — what is its TOTAL surface area?",
+          hi: "वही 5 × 4 × 3 घनाभ — उसका कुल पृष्ठीय क्षेत्रफल कितना?",
+          mr: "तीच 5 × 4 × 3 इष्टिकाचिती — तिचे एकूण पृष्ठफळ किती?",
+        },
+        answer: 94,
+        wrong: [60, 47, 120],
+        checkExpr: "2*(5*4+4*3+5*3)",
+        solution: {
+          en: "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 cm². 47 forgets each face has a twin on the opposite side.",
+          hi: "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 वर्ग सेमी। 47 भूल जाता है कि हर फलक का सामने एक जुड़वाँ है।",
+          mr: "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 चौ. सेमी. 47 विसरतो की प्रत्येक पृष्ठाला समोर एक जुळे आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A rhombus has diagonals 10 cm and 8 cm. What is its area?",
+          hi: "समचतुर्भुज के विकर्ण 10 सेमी और 8 सेमी हैं। क्षेत्रफल कितना?",
+          mr: "समभुज चौकोनाचे कर्ण 10 सेमी आणि 8 सेमी आहेत. क्षेत्रफळ किती?",
+        },
+        answer: 40,
+        wrong: [80, 18, 36],
+        checkExpr: "10*8/2",
+        solution: {
+          en: "Half the product of diagonals: 10 × 8 ÷ 2 = 40 cm². 80 forgets the half — the diagonals' rectangle holds TWO rhombuses.",
+          hi: "विकर्णों के गुणनफल का आधा: 10 × 8 ÷ 2 = 40 वर्ग सेमी। 80 आधा भूल जाता है — विकर्णों के आयत में दो समचतुर्भुज समाते हैं।",
+          mr: "कर्णांच्या गुणाकाराचे अर्धे: 10 × 8 ÷ 2 = 40 चौ. सेमी. 80 अर्धे विसरतो — कर्णांच्या आयतात दोन समभुज चौकोन मावतात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A cylinder has radius 7 cm and height 10 cm. What is its volume? (π = 22/7)",
+          hi: "बेलन की त्रिज्या 7 सेमी और ऊँचाई 10 सेमी है। आयतन कितना? (π = 22/7)",
+          mr: "दंडगोलाची त्रिज्या 7 सेमी आणि उंची 10 सेमी आहे. घनफळ किती? (π = 22/7)",
+        },
+        answer: 1540,
+        wrong: [154, 440, 15400],
+        checkExpr: "22*7*10",
+        solution: {
+          en: "V = πr²h = 22/7 × 49 × 10 = 1540 cm³. 154 is just the base circle's area; 440 the curved wall's.",
+          hi: "आयतन = πr²h = 22/7 × 49 × 10 = 1540 घन सेमी। 154 केवल आधार-वृत्त का क्षेत्रफल है; 440 घुमावदार दीवार का।",
+          mr: "घनफळ = πr²h = 22/7 × 49 × 10 = 1540 घन सेमी. 154 फक्त पाया-वर्तुळाचे क्षेत्रफळ; 440 वक्र भिंतीचे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The same cylinder (r = 7, h = 10): what is its CURVED surface area? (π = 22/7)",
+          hi: "वही बेलन (r = 7, h = 10): उसका वक्र पृष्ठीय क्षेत्रफल कितना? (π = 22/7)",
+          mr: "तोच दंडगोल (r = 7, h = 10): त्याचे वक्र पृष्ठफळ किती? (π = 22/7)",
+        },
+        answer: 440,
+        wrong: [1540, 220, 494],
+        checkExpr: "2*22*10",
+        solution: {
+          en: "CSA = 2πrh = 2 × 22/7 × 7 × 10 = 440 cm² — the label peeled off and flattened. 220 forgets the 2; the wall wraps the FULL circumference.",
+          hi: "वक्र क्षेत्रफल = 2πrh = 2 × 22/7 × 7 × 10 = 440 वर्ग सेमी — उतारकर बिछाया गया लेबल। 220 दो भूल जाता है; दीवार पूरी परिधि लपेटती है।",
+          mr: "वक्र पृष्ठफळ = 2πrh = 2 × 22/7 × 7 × 10 = 440 चौ. सेमी — सोलून पसरवलेले लेबल. 220 दोन विसरतो; भिंत पूर्ण परीघ गुंडाळते.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "How many litres fit in 1 cubic metre?",
+          hi: "1 घन मीटर में कितने लीटर समाते हैं?",
+          mr: "1 घन मीटरमध्ये किती लिटर मावतात?",
+        },
+        answer: 1000,
+        wrong: [100, 10, 10000],
+        solution: {
+          en: "1 m³ = 100 × 100 × 100 cm³ = 10,00,000 cm³, and 1000 cm³ make a litre: 1000 litres. Each dimension contributes its factor of 100.",
+          hi: "1 घन मीटर = 100 × 100 × 100 घन सेमी = 10,00,000 घन सेमी, और 1000 घन सेमी का एक लीटर: 1000 लीटर। हर विमा अपना 100 का गुणनखंड देती है।",
+          mr: "1 घन मीटर = 100 × 100 × 100 घन सेमी = 10,00,000 घन सेमी, आणि 1000 घन सेमीचा एक लिटर: 1000 लिटर. प्रत्येक मिती आपला 100 चा घटक देते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A trapezium-shaped field has parallel sides 25 m and 15 m and area 200 m². What is the distance between the parallel sides?",
+          hi: "समलंब खेत की समांतर भुजाएँ 25 मीटर और 15 मीटर हैं, क्षेत्रफल 200 वर्ग मीटर। समांतर भुजाओं की दूरी कितनी?",
+          mr: "समलंब शेताच्या समांतर बाजू 25 मीटर आणि 15 मीटर, क्षेत्रफळ 200 चौ. मीटर. समांतर बाजूंमधले अंतर किती?",
+        },
+        answer: 10,
+        wrong: [5, 20, 8],
+        checkExpr: "200*2/(25+15)",
+        solution: {
+          en: "Run the formula backwards: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 m. 5 forgets to double the area first.",
+          hi: "सूत्र उल्टा चलाइए: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 मीटर। 5 पहले क्षेत्रफल दुगुना करना भूल जाता है।",
+          mr: "सूत्र उलटे चालवा: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 मीटर. 5 आधी क्षेत्रफळ दुप्पट करायला विसरतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "An open box is a cube of edge 10 cm with NO lid. How much sheet, in square cm, forms it?",
+          hi: "खुला डिब्बा 10 सेमी किनारे का बिना ढक्कन का घन है। कितनी चादर, वर्ग सेमी में, उसे बनाती है?",
+          mr: "उघडा खोका म्हणजे झाकण नसलेला 10 सेमी कडेचा घन. किती पत्रा, चौरस सेमीमध्ये, त्याला बनवतो?",
+        },
+        answer: 500,
+        wrong: [600, 400, 100],
+        checkExpr: "5*10*10",
+        solution: {
+          en: "Five faces of 100 cm² each — the lid stayed at the shop: 500 cm². 600 builds the closed cube.",
+          hi: "100-100 वर्ग सेमी के पाँच फलक — ढक्कन दुकान पर ही रहा: 500 वर्ग सेमी। 600 बंद घन बना देता है।",
+          mr: "प्रत्येकी 100 चौ. सेमीची पाच पृष्ठे — झाकण दुकानातच राहिले: 500 चौ. सेमी. 600 बंद घन बांधतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A room measures 4 m × 3 m × 2.5 m. How many cubic metres of air does it hold?",
+          hi: "कमरा 4 मी × 3 मी × 2.5 मी का है। उसमें कितने घन मीटर हवा समाती है?",
+          mr: "खोली 4 मी × 3 मी × 2.5 मी आहे. तिच्यात किती घन मीटर हवा मावते?",
+        },
+        answer: 30,
+        wrong: [9.5, 24, 60],
+        checkExpr: "4*3*2.5",
+        solution: {
+          en: "4 × 3 × 2.5 = 30 m³. 24 drops the half-metre of height — ceilings count too.",
+          hi: "4 × 3 × 2.5 = 30 घन मीटर। 24 ऊँचाई का आधा मीटर गिरा देता है — छतें भी गिनती में हैं।",
+          mr: "4 × 3 × 2.5 = 30 घन मीटर. 24 उंचीचा अर्धा मीटर गाळतो — छतेही मोजणीत आहेत.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A road roller is a cylinder of diameter 84 cm and length 100 cm. What area, in square cm, does ONE revolution press? (π = 22/7)",
+          hi: "सड़क-रोलर 84 सेमी व्यास और 100 सेमी लंबाई का बेलन है। एक चक्कर में कितना क्षेत्रफल, वर्ग सेमी में, दबता है? (π = 22/7)",
+          mr: "रोड-रोलर 84 सेमी व्यासाचा आणि 100 सेमी लांबीचा दंडगोल आहे. एका फेरीत किती क्षेत्रफळ, चौरस सेमीमध्ये, दबते? (π = 22/7)",
+        },
+        answer: 26400,
+        wrong: [13200, 264, 5280],
+        checkExpr: "2*22*6*100",
+        solution: {
+          en: "One revolution lays down the curved surface: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 cm². 13200 halves it — the roller prints its FULL wrap each turn.",
+          hi: "एक चक्कर वक्र पृष्ठ बिछा देता है: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 वर्ग सेमी। 13200 उसे आधा कर देता है — रोलर हर घुमाव में पूरी लपेट छापता है।",
+          mr: "एक फेरी वक्र पृष्ठ अंथरते: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 चौ. सेमी. 13200 ते निम्मे करतो — रोलर प्रत्येक वळणात पूर्ण वेढा छापतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "If a cube's edge is doubled, its VOLUME becomes how many times the original?",
+          hi: "घन का किनारा दुगुना करने पर आयतन मूल का कितने गुना हो जाता है?",
+          mr: "घनाची कड दुप्पट केल्यास घनफळ मूळच्या किती पट होते?",
+        },
+        answer: 8,
+        wrong: [2, 4, 6],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "Volume rides on the CUBE of the edge: 2³ = 8 times. 4 is the surface area's multiplier — each measure scales by its own dimension.",
+          hi: "आयतन किनारे के घन पर सवार है: 2³ = 8 गुना। 4 पृष्ठीय क्षेत्रफल का गुणक है — हर माप अपनी विमा से बढ़ती है।",
+          mr: "घनफळ कडेच्या घनावर स्वार आहे: 2³ = 8 पट. 4 हा पृष्ठफळाचा गुणक — प्रत्येक माप आपल्या मितीने वाढते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A 22 cm × 7 cm paper sheet rolls into a cylinder along its 22-cm side (so 2πr = 22, height 7). What VOLUME does it enclose? (π = 22/7)",
+          hi: "22 सेमी × 7 सेमी का काग़ज़ 22-सेमी भुजा के साथ बेलन बनता है (यानी 2πr = 22, ऊँचाई 7)। वह कितना आयतन घेरता है? (π = 22/7)",
+          mr: "22 सेमी × 7 सेमीचा कागद 22-सेमी बाजूने दंडगोल होतो (म्हणजे 2πr = 22, उंची 7). तो किती घनफळ वेढतो? (π = 22/7)",
+        },
+        answer: 269.5,
+        wrong: [154, 85.75, 539],
+        checkExpr: "22*3.5*3.5*7/7",
+        solution: {
+          en: "2πr = 22 gives r = 3.5, so V = 22/7 × 3.5² × 7 = 269.5 cm³. Rolled the OTHER way the same sheet encloses only 85.75 cm³ — one paper, two volumes: area fixes the wrap, never the filling.",
+          hi: "2πr = 22 से r = 3.5, अतः आयतन = 22/7 × 3.5² × 7 = 269.5 घन सेमी। दूसरी ओर से लपेटा वही काग़ज़ केवल 85.75 घन सेमी घेरता है — एक काग़ज़, दो आयतन: क्षेत्रफल लपेट तय करता है, भराव कभी नहीं।",
+          mr: "2πr = 22 मधून r = 3.5, म्हणून घनफळ = 22/7 × 3.5² × 7 = 269.5 घन सेमी. दुसऱ्या बाजूने गुंडाळलेला तोच कागद फक्त 85.75 घन सेमी वेढतो — एक कागद, दोन घनफळे: क्षेत्रफळ वेढा ठरवते, भरणे कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A cuboid tank measures 2 m × 1.5 m × 1 m. How many LITRES does it hold when full?",
+          hi: "घनाभ टंकी 2 मी × 1.5 मी × 1 मी की है। भरी होने पर उसमें कितने लीटर समाते हैं?",
+          mr: "इष्टिकाचिती टाकी 2 मी × 1.5 मी × 1 मी आहे. भरलेली असताना तिच्यात किती लिटर मावतात?",
+        },
+        answer: 3000,
+        wrong: [300, 3, 30000],
+        checkExpr: "2*1.5*1*1000",
+        solution: {
+          en: "Volume = 3 m³, and each cubic metre holds 1000 litres: 3000 L. 3 stops at cubic metres — the unit conversion is where tank problems are won and lost.",
+          hi: "आयतन = 3 घन मीटर, और हर घन मीटर में 1000 लीटर: 3000 ली। 3 घन मीटर पर रुक जाता है — टंकी के सवाल इकाई-बदल पर ही जीते-हारे जाते हैं।",
+          mr: "घनफळ = 3 घन मीटर, आणि प्रत्येक घन मीटरमध्ये 1000 लिटर: 3000 लि. 3 घन मीटरवर थांबतो — टाकीचे प्रश्न एकक-बदलावरच जिंकले-हरले जातात.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 11 — Mensuration",
+      name: "Mensuration",
+      slug: "maths-8-mensuration",
+      summary:
+        "Trapezium fields averaged, boxes skinned and filled, a road roller printing its wrap — and one sheet of paper enclosing two different volumes.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "क्षेत्रमिति",
+          summary:
+            "औसत से नपे समलंब खेत, खोल और भराव वाले डिब्बे, अपनी लपेट छापता सड़क-रोलर — और काग़ज़ की एक चादर जो दो अलग आयतन घेरती है।",
+        },
+        mr: {
+          name: "क्षेत्रमिती",
+          summary:
+            "सरासरीने मोजलेली समलंब शेते, साल आणि भरणे असलेले खोके, आपला वेढा छापणारा रोड-रोलर — आणि दोन वेगळी घनफळे वेढणारी कागदाची एक चादर.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Exponents and Powers (below zero, the powers go on)          */
+/* ------------------------------------------------------------------------- */
+function exponentsAndPowers8(): TopicFileOut {
+  const rand = rng("maths-8-exponents-powers");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "2⁻³ = 1/▢. What number fills the box?",
+          hi: "2⁻³ = 1/▢। रिक्त में कौन-सी संख्या आएगी?",
+          mr: "2⁻³ = 1/▢. रिकाम्यात कोणती संख्या येईल?",
+        },
+        answer: 8,
+        wrong: [6, -8, 9],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "A negative exponent flips: 2⁻³ = 1/2³ = 1/8. −8 keeps the minus on the VALUE — the sign lives in the exponent, not the answer.",
+          hi: "ऋण घात पलटती है: 2⁻³ = 1/2³ = 1/8। −8 ऋण को मान पर रख देता है — चिह्न घात में बसता है, उत्तर में नहीं।",
+          mr: "ऋण घात उलटवते: 2⁻³ = 1/2³ = 1/8. −8 ऋण किमतीवर ठेवतो — चिन्ह घातात राहते, उत्तरात नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is 10⁻² as a decimal?",
+          hi: "10⁻² दशमलव में कितना है?",
+          mr: "10⁻² दशांशात किती?",
+        },
+        answer: 0.01,
+        wrong: [0.1, -100, 0.02],
+        checkExpr: "1/100",
+        solution: {
+          en: "10⁻² = 1/100 = 0.01. −100 misreads the minus as a sign; it is only an instruction to take the reciprocal.",
+          hi: "10⁻² = 1/100 = 0.01। −100 ऋण को चिह्न पढ़ लेता है; वह केवल व्युत्क्रम लेने का निर्देश है।",
+          mr: "10⁻² = 1/100 = 0.01. −100 ऋणाला चिन्ह वाचतो; ती फक्त व्यस्त घेण्याची सूचना आहे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is (1/2)⁻¹?",
+          hi: "(1/2)⁻¹ कितना है?",
+          mr: "(1/2)⁻¹ किती?",
+        },
+        answer: 2,
+        wrong: [0.5, -2, 1],
+        solution: {
+          en: "The −1 power means 'flip me': (1/2)⁻¹ = 2. 0.5 leaves the fraction unflipped; −2 invents a sign.",
+          hi: "घात −1 का अर्थ 'मुझे पलटो': (1/2)⁻¹ = 2। 0.5 भिन्न बिना पलटे छोड़ देता है; −2 चिह्न गढ़ लेता है।",
+          mr: "घात −1 म्हणजे 'मला उलटवा': (1/2)⁻¹ = 2. 0.5 अपूर्णांक न उलटवता ठेवतो; −2 चिन्ह घडवतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "3⁻² × 3⁵ = 3 raised to which power?",
+          hi: "3⁻² × 3⁵ = 3 की कौन-सी घात?",
+          mr: "3⁻² × 3⁵ = 3 चा कोणता घात?",
+        },
+        answer: 3,
+        wrong: [7, -10, 10],
+        checkExpr: "5-2",
+        solution: {
+          en: "Same base, so ADD exponents: −2 + 5 = 3. −10 multiplies them — the law adds even when one is negative.",
+          hi: "आधार समान, अतः घातें जोड़िए: −2 + 5 = 3। −10 उन्हें गुणा कर देता है — नियम तब भी जोड़ता है जब एक ऋण हो।",
+          mr: "पाया समान, म्हणून घाती जोडा: −2 + 5 = 3. −10 त्यांना गुणतो — नियम एक ऋण असतानाही जोडतोच.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is 5⁰ + 5¹?",
+          hi: "5⁰ + 5¹ कितना है?",
+          mr: "5⁰ + 5¹ किती?",
+        },
+        answer: 6,
+        wrong: [5, 10, 26],
+        checkExpr: "1+5",
+        solution: {
+          en: "5⁰ = 1 and 5¹ = 5: together 6. 5 treats 5⁰ as zero — but the zeroth power is 1, never 0.",
+          hi: "5⁰ = 1 और 5¹ = 5: मिलाकर 6। 5 5⁰ को शून्य मान लेता है — पर शून्यवीं घात 1 होती है, 0 कभी नहीं।",
+          mr: "5⁰ = 1 आणि 5¹ = 5: मिळून 6. 5 5⁰ ला शून्य मानतो — पण शून्यावी घात 1 असते, 0 कधीच नाही.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "0.000035 in standard form is 3.5 × 10 to which power?",
+          hi: "0.000035 का मानक रूप 3.5 × 10 की कौन-सी घात है?",
+          mr: "0.000035 चे प्रमाण रूप 3.5 × 10 चा कोणता घात?",
+        },
+        answer: -5,
+        wrong: [5, -6, -4],
+        checkExpr: "0-5",
+        solution: {
+          en: "The point hops 5 places right to reach 3.5, so the power is −5. −6 counts the hop past the 3 twice.",
+          hi: "बिंदु 3.5 तक पहुँचने को 5 स्थान दाएँ कूदता है, अतः घात −5। −6 तीन के पार की छलाँग दो बार गिन लेता है।",
+          mr: "बिंदू 3.5 पर्यंत पोहोचायला 5 घरे उजवीकडे उडतो, म्हणून घात −5. −6 तिघापलीकडची उडी दोनदा मोजतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "2⁻¹ + 3⁻¹ = ▢/6. What is the numerator in the box?",
+          hi: "2⁻¹ + 3⁻¹ = ▢/6। रिक्त में अंश क्या आएगा?",
+          mr: "2⁻¹ + 3⁻¹ = ▢/6. रिकाम्यात अंश काय येईल?",
+        },
+        answer: 5,
+        wrong: [6, 1, 2],
+        checkExpr: "3+2",
+        solution: {
+          en: "1/2 + 1/3 = 3/6 + 2/6 = 5/6. 1 adds the exponents' bases upside-down (1/5) — reciprocals first, THEN add.",
+          hi: "1/2 + 1/3 = 3/6 + 2/6 = 5/6। 1 आधारों को उल्टा जोड़ बैठता है (1/5) — पहले व्युत्क्रम, फिर योग।",
+          mr: "1/2 + 1/3 = 3/6 + 2/6 = 5/6. 1 पायांना उलटे जोडतो (1/5) — आधी व्यस्त, मग बेरीज.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A red blood cell is about 7 × 10⁻⁶ m across. In MILLIMETRES that is 7 × 10 to which power?",
+          hi: "लाल रक्त-कोशिका लगभग 7 × 10⁻⁶ मीटर चौड़ी है। मिलीमीटर में वह 7 × 10 की कौन-सी घात है?",
+          mr: "लाल रक्तपेशी सुमारे 7 × 10⁻⁶ मीटर रुंद आहे. मिलिमीटरमध्ये ती 7 × 10 चा कोणता घात?",
+        },
+        answer: -3,
+        wrong: [-6, 3, -9],
+        checkExpr: "0-3",
+        solution: {
+          en: "A millimetre is 10⁻³ m, so dividing by it raises the power by 3: −6 + 3 = −3, i.e. 0.007 mm. −9 moves the wrong way — smaller units mean bigger numbers.",
+          hi: "मिलीमीटर = 10⁻³ मीटर, अतः उससे भाग देना घात 3 बढ़ाता है: −6 + 3 = −3, यानी 0.007 मिमी। −9 उल्टी दिशा चलता है — छोटी इकाई यानी बड़ी संख्या।",
+          mr: "मिलिमीटर = 10⁻³ मीटर, म्हणून त्याने भागल्यास घात 3 ने वाढतो: −6 + 3 = −3, म्हणजे 0.007 मिमी. −9 उलट्या दिशेने जातो — लहान एकक म्हणजे मोठी संख्या.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "(3²)⁻² = 3 raised to which power?",
+          hi: "(3²)⁻² = 3 की कौन-सी घात?",
+          mr: "(3²)⁻² = 3 चा कोणता घात?",
+        },
+        answer: -4,
+        wrong: [4, 0, -1],
+        checkExpr: "0-4",
+        solution: {
+          en: "A power of a power MULTIPLIES: 2 × (−2) = −4, so 1/81. 0 adds them — the addition law belongs to same-base products, not nesting.",
+          hi: "घात की घात गुणा होती है: 2 × (−2) = −4, यानी 1/81। 0 उन्हें जोड़ देता है — जोड़ का नियम समान आधार के गुणनफल का है, घोंसले का नहीं।",
+          mr: "घाताची घात गुणली जाते: 2 × (−2) = −4, म्हणजे 1/81. 0 त्यांना जोडतो — बेरजेचा नियम समान पायाच्या गुणाकाराचा, घरट्याचा नव्हे.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "(2⁵ ÷ 2⁸) × 2⁴ = 2 raised to which power?",
+          hi: "(2⁵ ÷ 2⁸) × 2⁴ = 2 की कौन-सी घात?",
+          mr: "(2⁵ ÷ 2⁸) × 2⁴ = 2 चा कोणता घात?",
+        },
+        answer: 1,
+        wrong: [17, -1, 7],
+        checkExpr: "5-8+4",
+        solution: {
+          en: "Subtract for the division, add for the product: 5 − 8 + 4 = 1, so the value is just 2. The negative middle step (2⁻³) is a way-station, not a wall.",
+          hi: "भाग में घटाइए, गुणा में जोड़िए: 5 − 8 + 4 = 1, अतः मान बस 2। बीच का ऋण पड़ाव (2⁻³) रास्ते की सराय है, दीवार नहीं।",
+          mr: "भागात वजा, गुणाकारात बेरीज: 5 − 8 + 4 = 1, म्हणून किंमत फक्त 2. मधला ऋण टप्पा (2⁻³) वाटेतली धर्मशाळा, भिंत नव्हे.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "If x⁻¹ = 1/9, what is x?",
+          hi: "यदि x⁻¹ = 1/9, तो x कितना?",
+          mr: "जर x⁻¹ = 1/9, तर x किती?",
+        },
+        answer: 9,
+        wrong: [-9, 0.11, 3],
+        solution: {
+          en: "x⁻¹ is the reciprocal of x; if the reciprocal is 1/9, x itself is 9. 3 confuses the reciprocal with the square root.",
+          hi: "x⁻¹ x का व्युत्क्रम है; व्युत्क्रम 1/9 हो तो x स्वयं 9। 3 व्युत्क्रम को वर्गमूल से मिला बैठता है।",
+          mr: "x⁻¹ हा x चा व्यस्त; व्यस्त 1/9 असेल तर x स्वतः 9. 3 व्यस्ताची वर्गमुळाशी गल्लत करतो.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is 5⁻² as a decimal?",
+          hi: "5⁻² दशमलव में कितना है?",
+          mr: "5⁻² दशांशात किती?",
+        },
+        answer: 0.04,
+        wrong: [0.4, 0.25, -0.04],
+        checkExpr: "1/25",
+        solution: {
+          en: "5⁻² = 1/25 = 0.04. 0.25 takes 1/4 by square-root instinct; the minus means reciprocal-of-the-square.",
+          hi: "5⁻² = 1/25 = 0.04। 0.25 वर्गमूल की आदत से 1/4 ले बैठता है; ऋण का अर्थ है वर्ग-का-व्युत्क्रम।",
+          mr: "5⁻² = 1/25 = 0.04. 0.25 वर्गमुळाच्या सवयीने 1/4 घेतो; ऋण म्हणजे वर्गाचा-व्यस्त.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Which is LARGER: 2⁻³ or 3⁻²? Give the larger one as 1/▢ — the denominator.",
+          hi: "बड़ा कौन: 2⁻³ या 3⁻²? बड़े को 1/▢ के रूप में दीजिए — हर बताइए।",
+          mr: "मोठा कोण: 2⁻³ की 3⁻²? मोठ्याला 1/▢ रूपात द्या — छेद सांगा.",
+        },
+        answer: 8,
+        wrong: [9, 3, 6],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "2⁻³ = 1/8 and 3⁻² = 1/9: with negative powers the race flips, and the SMALLER denominator wins — 1/8 is larger. The box holds 8.",
+          hi: "2⁻³ = 1/8 और 3⁻² = 1/9: ऋण घातों में दौड़ पलट जाती है, और छोटा हर जीतता है — 1/8 बड़ा है। रिक्त में 8।",
+          mr: "2⁻³ = 1/8 आणि 3⁻² = 1/9: ऋण घातांत शर्यत उलटते, आणि लहान छेद जिंकतो — 1/8 मोठा. रिकाम्यात 8.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Express 0.00000016 as 1.6 × 10 to which power?",
+          hi: "0.00000016 को 1.6 × 10 की कौन-सी घात लिखें?",
+          mr: "0.00000016 ला 1.6 × 10 चा कोणता घात लिहाल?",
+        },
+        answer: -7,
+        wrong: [-8, 7, -6],
+        checkExpr: "0-7",
+        solution: {
+          en: "The point hops 7 places to sit after the 1: 1.6 × 10⁻⁷. −8 counts the zeros but forgets the hop INTO the 1.",
+          hi: "बिंदु 7 स्थान कूदकर 1 के बाद बैठता है: 1.6 × 10⁻⁷। −8 शून्य गिनता है पर 1 के भीतर की छलाँग भूल जाता है।",
+          mr: "बिंदू 7 घरे उडून 1 च्या मागे बसतो: 1.6 × 10⁻⁷. −8 शून्ये मोजतो पण 1 मधली उडी विसरतो.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A dust mote is 1.2 × 10⁻⁴ m wide; a human hair is 1.2 × 10⁻³ m. How many motes, side by side, span one hair?",
+          hi: "धूल-कण 1.2 × 10⁻⁴ मीटर चौड़ा है; मानव बाल 1.2 × 10⁻³ मीटर। कितने कण अग़ल-बग़ल एक बाल जितने होंगे?",
+          mr: "धुळीचा कण 1.2 × 10⁻⁴ मीटर रुंद; मानवी केस 1.2 × 10⁻³ मीटर. किती कण शेजारी-शेजारी एका केसाइतके होतील?",
+        },
+        answer: 10,
+        wrong: [100, 1.2, 12],
+        checkExpr: "1200/120",
+        solution: {
+          en: "Divide: 10⁻³ ÷ 10⁻⁴ = 10¹ — one hop of the exponent, ten motes. Negative powers subtract like any others: −3 − (−4) = 1.",
+          hi: "भाग दीजिए: 10⁻³ ÷ 10⁻⁴ = 10¹ — घात की एक छलाँग, दस कण। ऋण घातें भी औरों की तरह घटती हैं: −3 − (−4) = 1।",
+          mr: "भागा: 10⁻³ ÷ 10⁻⁴ = 10¹ — घाताची एक उडी, दहा कण. ऋण घातीही इतरांसारख्या वजा होतात: −3 − (−4) = 1.",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "What is 7⁰ + 8⁰ + 9⁰?",
+          hi: "7⁰ + 8⁰ + 9⁰ कितना है?",
+          mr: "7⁰ + 8⁰ + 9⁰ किती?",
+        },
+        answer: 3,
+        wrong: [24, 0, 1],
+        checkExpr: "1+1+1",
+        solution: {
+          en: "Every nonzero number to the power 0 is 1: 1 + 1 + 1 = 3. 24 adds the bases; 0 believes the zero exponent zeroes the value — it does the opposite, anchoring every power-ladder at 1.",
+          hi: "हर शून्येतर संख्या की घात 0 है 1: 1 + 1 + 1 = 3। 24 आधार जोड़ देता है; 0 मानता है कि शून्य घात मान को शून्य करती है — वह उल्टा करती है, हर घात-सीढ़ी को 1 पर टिकाती है।",
+          mr: "प्रत्येक शून्येतर संख्येची घात 0 म्हणजे 1: 1 + 1 + 1 = 3. 24 पाये जोडतो; 0 मानतो की शून्य घात किंमत शून्य करते — ती उलट करते, प्रत्येक घात-शिडीला 1 वर टेकवते.",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      subject: "MATHS",
+      classLevel: 8,
+      chapter: "Chapter 12 — Exponents and Powers",
+      name: "Exponents and Powers",
+      slug: "maths-8-exponents-powers",
+      summary:
+        "The exponent ladder extends below zero: minus means flip, laws that still add and multiply, blood cells written in standard form — and every ladder anchored at 1.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "घातांक और घात",
+          summary:
+            "घातों की सीढ़ी शून्य से नीचे उतरती है: ऋण यानी पलटो, नियम जो अब भी जोड़ते-गुणते हैं, मानक रूप में लिखी रक्त-कोशिकाएँ — और हर सीढ़ी 1 पर टिकी हुई।",
+        },
+        mr: {
+          name: "घातांक आणि घात",
+          summary:
+            "घातांची शिडी शून्याखाली उतरते: ऋण म्हणजे उलटवा, अजूनही जोडणारे-गुणणारे नियम, प्रमाण रूपात लिहिलेल्या रक्तपेशी — आणि प्रत्येक शिडी 1 वर टेकलेली.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G8_MATHS: TopicFileOut[] = [
   rationalNumbers8(),
   linearEquations8(),
   quadrilaterals8(),
   dataHandling8(),
   squaresAndRoots(),
+  cubesAndRoots(),
+  comparingQuantities8(),
+  algebraicIdentities(),
+  mensuration8(),
+  exponentsAndPowers8(),
 ];

@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 7 — Cubes and Cube Roots",
+  "name": "Cubes and Cube Roots",
+  "slug": "maths-8-cubes-cube-roots",
+  "summary": "Primes demanded in threes, Ramanujan's taxi number verified by hand, zeros arriving only in triples — and the one unpainted cube hiding at the centre.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "घन और घनमूल",
+      "summary": "तीन-तीन में माँगे गए अभाज्य, हाथ से जाँचा रामानुजन का टैक्सी नंबर, केवल तिकड़ियों में आते शून्य — और केंद्र में छिपा वह एक बिना रंग का घन।"
+    },
+    "mr": {
+      "name": "घन आणि घनमूळ",
+      "summary": "तीन-तीनमध्ये मागितलेल्या मूळ संख्या, हाताने तपासलेला रामानुजनचा टॅक्सी क्रमांक, फक्त त्रिकुटांत येणारी शून्ये — आणि केंद्रात लपलेला तो एक रंगहीन घन."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is 4³?",
+      "choices": [
+        "81",
+        "12",
+        "16",
+        "64"
+      ],
+      "answerIndex": 3,
+      "solution": "4 × 4 × 4 = 64. 12 multiplies by 3; 16 stops at the square — a cube needs the third factor.",
+      "checkExpr": "4*4*4",
+      "translations": {
+        "hi": {
+          "stem": "4³ कितना है?",
+          "choices": [
+            "81",
+            "12",
+            "16",
+            "64"
+          ],
+          "solution": "4 × 4 × 4 = 64। 12 तीन से गुणा करता है; 16 वर्ग पर रुक जाता है — घन को तीसरा गुणनखंड चाहिए।"
+        },
+        "mr": {
+          "stem": "4³ किती?",
+          "choices": [
+            "81",
+            "12",
+            "16",
+            "64"
+          ],
+          "solution": "4 × 4 × 4 = 64. 12 तिघाने गुणतो; 16 वर्गावर थांबतो — घनाला तिसरा घटक हवा."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is ∛27?",
+      "choices": [
+        "3",
+        "9",
+        "6",
+        "13.5"
+      ],
+      "answerIndex": 0,
+      "solution": "3 × 3 × 3 = 27, so the cube root is 3. 9 takes the SQUARE root's answer to a cube-root question.",
+      "checkExpr": "27/9",
+      "translations": {
+        "hi": {
+          "stem": "∛27 कितना है?",
+          "choices": [
+            "3",
+            "9",
+            "6",
+            "13.5"
+          ],
+          "solution": "3 × 3 × 3 = 27, अतः घनमूल 3। 9 घनमूल के सवाल पर वर्गमूल का उत्तर थमा देता है।"
+        },
+        "mr": {
+          "stem": "∛27 किती?",
+          "choices": [
+            "3",
+            "9",
+            "6",
+            "13.5"
+          ],
+          "solution": "3 × 3 × 3 = 27, म्हणून घनमूळ 3. 9 घनमुळाच्या प्रश्नाला वर्गमुळाचे उत्तर देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the UNIT digit of 8³?",
+      "choices": [
+        "6",
+        "2",
+        "8",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "8³ = 512, ending in 2. Cubes keep a strict ending-code: 2 and 8 swap endings, 3 and 7 swap — every digit is possible, each from one source.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "8³ का इकाई अंक क्या है?",
+          "choices": [
+            "6",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "8³ = 512, अंत 2 पर। घनों का अंत-कोड सख़्त है: 2 और 8 अंत बदलते हैं, 3 और 7 भी — हर अंक संभव है, हर एक का एक ही स्रोत।"
+        },
+        "mr": {
+          "stem": "8³ चा एकक अंक काय?",
+          "choices": [
+            "6",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "8³ = 512, शेवट 2 वर. घनांचा शेवट-संकेत कडक: 2 आणि 8 शेवट बदलतात, 3 आणि 7 ही — प्रत्येक अंक शक्य, प्रत्येकाचा एकच स्रोत."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Compute 1³ + 2³ + 3³.",
+      "choices": [
+        "25",
+        "36",
+        "6",
+        "14"
+      ],
+      "answerIndex": 1,
+      "solution": "1 + 8 + 27 = 36 — which is (1 + 2 + 3)² = 6², no accident: cube-sums always square the plain sum.",
+      "checkExpr": "1+8+27",
+      "translations": {
+        "hi": {
+          "stem": "1³ + 2³ + 3³ निकालिए।",
+          "choices": [
+            "25",
+            "36",
+            "6",
+            "14"
+          ],
+          "solution": "1 + 8 + 27 = 36 — जो (1 + 2 + 3)² = 6² है, संयोग नहीं: घन-योग सदा सीधे योग का वर्ग होते हैं।"
+        },
+        "mr": {
+          "stem": "1³ + 2³ + 3³ काढा.",
+          "choices": [
+            "25",
+            "36",
+            "6",
+            "14"
+          ],
+          "solution": "1 + 8 + 27 = 36 — जे (1 + 2 + 3)² = 6² आहे, योगायोग नाही: घन-बेरजा नेहमी साध्या बेरजेचा वर्ग असतात."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 11³?",
+      "choices": [
+        "1331",
+        "1221",
+        "1431",
+        "121"
+      ],
+      "answerIndex": 0,
+      "solution": "11² = 121, then × 11 = 1331. 121 stops a floor early — the cube lives one multiplication above the square.",
+      "checkExpr": "11*11*11",
+      "translations": {
+        "hi": {
+          "stem": "11³ कितना है?",
+          "choices": [
+            "1331",
+            "1221",
+            "1431",
+            "121"
+          ],
+          "solution": "11² = 121, फिर × 11 = 1331। 121 एक मंज़िल पहले रुक जाता है — घन वर्ग से एक गुणा ऊपर रहता है।"
+        },
+        "mr": {
+          "stem": "11³ किती?",
+          "choices": [
+            "1331",
+            "1221",
+            "1431",
+            "121"
+          ],
+          "solution": "11² = 121, मग × 11 = 1331. 121 एक मजला आधी थांबतो — घन वर्गाहून एक गुणाकार वर राहतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "∛(64/125) = ▢/5. What is the numerator in the box?",
+      "choices": [
+        "3",
+        "64",
+        "8",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Root top and bottom separately: ∛64 = 4 over ∛125 = 5. 8 takes the square root of 64 by habit.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "∛(64/125) = ▢/5। रिक्त में अंश क्या आएगा?",
+          "choices": [
+            "3",
+            "64",
+            "8",
+            "4"
+          ],
+          "solution": "ऊपर-नीचे अलग मूल लीजिए: ∛64 = 4 बटा ∛125 = 5। 8 आदतन 64 का वर्गमूल ले बैठता है।"
+        },
+        "mr": {
+          "stem": "∛(64/125) = ▢/5. रिकाम्यात अंश काय येईल?",
+          "choices": [
+            "3",
+            "64",
+            "8",
+            "4"
+          ],
+          "solution": "वर-खाली वेगळे मूळ घ्या: ∛64 = 4 भागिले ∛125 = 5. 8 सवयीने 64 चे वर्गमूळ घेतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "1729, the taxi-cab number, equals 10³ + 9³ and ALSO 12³ + 1³. Verify the second: compute 12³ + 1.",
+      "choices": [
+        "1730",
+        "1000",
+        "1728",
+        "1729"
+      ],
+      "answerIndex": 3,
+      "solution": "12³ = 1728, plus 1 = 1729 — the smallest number that is a sum of two cubes in TWO ways, spotted by Ramanujan from a hospital bed.",
+      "checkExpr": "12*12*12+1",
+      "translations": {
+        "hi": {
+          "stem": "टैक्सी नंबर 1729 = 10³ + 9³ और साथ ही 12³ + 1³। दूसरा जाँचिए: 12³ + 1 निकालिए।",
+          "choices": [
+            "1730",
+            "1000",
+            "1728",
+            "1729"
+          ],
+          "solution": "12³ = 1728, धन 1 = 1729 — दो घनों के योग के दो रूपों वाली सबसे छोटी संख्या, जिसे रामानुजन ने अस्पताल के बिस्तर से पहचाना।"
+        },
+        "mr": {
+          "stem": "टॅक्सी क्रमांक 1729 = 10³ + 9³ आणि तसेच 12³ + 1³. दुसरे तपासा: 12³ + 1 काढा.",
+          "choices": [
+            "1730",
+            "1000",
+            "1728",
+            "1729"
+          ],
+          "solution": "12³ = 1728, अधिक 1 = 1729 — दोन घनांच्या बेरजेची दोन रूपे असलेली सर्वांत लहान संख्या, रामानुजनने रुग्णालयाच्या बिछान्यावरून ओळखलेली."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "392 = 2³ × 7². By what SMALLEST number must 392 be multiplied to become a perfect cube?",
+      "choices": [
+        "2",
+        "49",
+        "7",
+        "14"
+      ],
+      "answerIndex": 2,
+      "solution": "Cubes want primes in THREES: the 2s are a full triple, the 7s need one more — multiply by 7 to get 2744 = 14³. 49 supplies two 7s where one is missing.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "392 = 2³ × 7²। 392 को किस छोटी-से-छोटी संख्या से गुणा करें कि पूर्ण घन बन जाए?",
+          "choices": [
+            "2",
+            "49",
+            "7",
+            "14"
+          ],
+          "solution": "घन अभाज्यों को तीन-तीन में माँगते हैं: दो की तिकड़ी पूरी है, सातों को एक और चाहिए — 7 से गुणा कर 2744 = 14³। 49 वहाँ दो 7 भेज देता है जहाँ एक की कमी थी।"
+        },
+        "mr": {
+          "stem": "392 = 2³ × 7². 392 ला कोणत्या लहानात लहान संख्येने गुणले असता पूर्ण घन होईल?",
+          "choices": [
+            "2",
+            "49",
+            "7",
+            "14"
+          ],
+          "solution": "घन मूळ संख्या तीन-तीनमध्ये मागतात: दोघांचे त्रिकूट पूर्ण, सातांना आणखी एक हवा — 7 ने गुणून 2744 = 14³. 49 एक कमी असताना दोन 7 पाठवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is ∛2197?",
+      "choices": [
+        "23",
+        "13",
+        "12",
+        "17"
+      ],
+      "answerIndex": 1,
+      "solution": "13³ = 2197. Read the ending: 2197 ends in 7, and only 3-enders cube to 7-enders; the size pins the tens digit at 1.",
+      "checkExpr": "2197/169",
+      "translations": {
+        "hi": {
+          "stem": "∛2197 कितना है?",
+          "choices": [
+            "23",
+            "13",
+            "12",
+            "17"
+          ],
+          "solution": "13³ = 2197। अंत पढ़िए: 2197 का अंत 7 पर, और केवल 3-अंत वाले ही घन में 7-अंत देते हैं; आकार दहाई को 1 पर जड़ देता है।"
+        },
+        "mr": {
+          "stem": "∛2197 किती?",
+          "choices": [
+            "23",
+            "13",
+            "12",
+            "17"
+          ],
+          "solution": "13³ = 2197. शेवट वाचा: 2197 चा शेवट 7 वर, आणि फक्त 3-शेवटवालेच घनात 7-शेवट देतात; आकार दशकाला 1 वर ठरवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cube has volume 512 cm³. How long is its edge?",
+      "choices": [
+        "8",
+        "6",
+        "64",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "Edge = ∛512 = 8, since 8³ = 512. 64 answers the FACE's area; the edge is the cube root, not the square root.",
+      "checkExpr": "512/64",
+      "translations": {
+        "hi": {
+          "stem": "एक घन का आयतन 512 घन सेमी है। उसका किनारा कितना लंबा है?",
+          "choices": [
+            "8",
+            "6",
+            "64",
+            "16"
+          ],
+          "solution": "किनारा = ∛512 = 8, क्योंकि 8³ = 512। 64 फलक का क्षेत्रफल बताता है; किनारा घनमूल है, वर्गमूल नहीं।"
+        },
+        "mr": {
+          "stem": "एका घनाचे घनफळ 512 घन सेमी आहे. त्याची कड किती लांब?",
+          "choices": [
+            "8",
+            "6",
+            "64",
+            "16"
+          ],
+          "solution": "कड = ∛512 = 8, कारण 8³ = 512. 64 पृष्ठाचे क्षेत्रफळ सांगतो; कड घनमूळ आहे, वर्गमूळ नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "128 = 2⁷. By what smallest number must 128 be DIVIDED to leave a perfect cube?",
+      "choices": [
+        "16",
+        "8",
+        "4",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Seven 2s make two full triples with ONE left over: remove it. 128 ÷ 2 = 64 = 4³ ✓. Division trims the surplus; multiplication would need two more.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "128 = 2⁷। 128 को किस छोटी-से-छोटी संख्या से भाग दें कि पूर्ण घन बचे?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "सात 2 से दो पूरी तिकड़ियाँ और एक बचा हुआ: उसे हटाइए। 128 ÷ 2 = 64 = 4³ ✓। भाग फ़ालतू छाँटता है; गुणा को दो और चाहिए होते।"
+        },
+        "mr": {
+          "stem": "128 = 2⁷. 128 ला कोणत्या लहानात लहान संख्येने भागले असता पूर्ण घन उरेल?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "सात 2 मधून दोन पूर्ण त्रिकुटे आणि एक उरलेला: तो काढा. 128 ÷ 2 = 64 = 4³ ✓. भागाकार जास्तीचे छाटतो; गुणाकाराला आणखी दोन लागले असते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many small cubes of edge 2 cm fit exactly inside a cube of edge 6 cm?",
+      "choices": [
+        "36",
+        "27",
+        "9",
+        "18"
+      ],
+      "answerIndex": 1,
+      "solution": "Three fit along each edge, so 3 × 3 × 3 = 27 — or by volume, 216 ÷ 8 = 27. 9 fills only one face.",
+      "checkExpr": "6*6*6/(2*2*2)",
+      "translations": {
+        "hi": {
+          "stem": "2 सेमी किनारे के कितने छोटे घन 6 सेमी किनारे के घन में ठीक-ठीक समाते हैं?",
+          "choices": [
+            "36",
+            "27",
+            "9",
+            "18"
+          ],
+          "solution": "हर किनारे पर तीन समाते हैं, अतः 3 × 3 × 3 = 27 — या आयतन से, 216 ÷ 8 = 27। 9 केवल एक फलक भरता है।"
+        },
+        "mr": {
+          "stem": "2 सेमी कडेचे किती छोटे घन 6 सेमी कडेच्या घनात नेमके मावतात?",
+          "choices": [
+            "36",
+            "27",
+            "9",
+            "18"
+          ],
+          "solution": "प्रत्येक कडेवर तीन मावतात, म्हणून 3 × 3 × 3 = 27 — किंवा घनफळाने, 216 ÷ 8 = 27. 9 फक्त एक पृष्ठ भरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is ∛0.001?",
+      "choices": [
+        "0.1",
+        "0.01",
+        "0.3",
+        "0.001"
+      ],
+      "answerIndex": 0,
+      "solution": "0.1 × 0.1 × 0.1 = 0.001 ✓. Three decimal places root to ONE — cube roots divide the decimal count by three.",
+      "checkExpr": "1/10",
+      "translations": {
+        "hi": {
+          "stem": "∛0.001 कितना है?",
+          "choices": [
+            "0.1",
+            "0.01",
+            "0.3",
+            "0.001"
+          ],
+          "solution": "0.1 × 0.1 × 0.1 = 0.001 ✓। तीन दशमलव स्थान मूल में एक बनते हैं — घनमूल दशमलव-गिनती को तीन से बाँटता है।"
+        },
+        "mr": {
+          "stem": "∛0.001 किती?",
+          "choices": [
+            "0.1",
+            "0.01",
+            "0.3",
+            "0.001"
+          ],
+          "solution": "0.1 × 0.1 × 0.1 = 0.001 ✓. तीन दशांश स्थाने मुळात एक होतात — घनमूळ दशांश-मोजणीला तिघाने भागते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is 6³ − 5³?",
+      "choices": [
+        "91",
+        "61",
+        "121",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "216 − 125 = 91. Consecutive cubes pull apart fast — the gap here is 3 × 5 × 6 + 1, already close to a hundred by six.",
+      "checkExpr": "6*6*6-5*5*5",
+      "translations": {
+        "hi": {
+          "stem": "6³ − 5³ कितना है?",
+          "choices": [
+            "91",
+            "61",
+            "121",
+            "1"
+          ],
+          "solution": "216 − 125 = 91। क्रमागत घन तेज़ी से दूर छिटकते हैं — यहाँ अंतर 3 × 5 × 6 + 1 है, छह तक पहुँचते-पहुँचते सौ के पास।"
+        },
+        "mr": {
+          "stem": "6³ − 5³ किती?",
+          "choices": [
+            "91",
+            "61",
+            "121",
+            "1"
+          ],
+          "solution": "216 − 125 = 91. क्रमागत घन वेगाने दूर जातात — इथला फरक 3 × 5 × 6 + 1, सहापर्यंतच शंभराजवळ."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Can a perfect cube end in exactly TWO zeros? Compute 10³ and watch how zeros arrive.",
+      "choices": [
+        "10000",
+        "110",
+        "100",
+        "1000"
+      ],
+      "answerIndex": 3,
+      "solution": "10³ = 1000: each factor of 10 brings its zero, so cube-zeros arrive in THREES. A cube may end in 000 or 000000 — never in exactly 00.",
+      "checkExpr": "10*10*10",
+      "translations": {
+        "hi": {
+          "stem": "क्या पूर्ण घन ठीक दो शून्यों पर ख़त्म हो सकता है? 10³ निकालिए और देखिए शून्य कैसे आते हैं।",
+          "choices": [
+            "10000",
+            "110",
+            "100",
+            "1000"
+          ],
+          "solution": "10³ = 1000: दस का हर गुणनखंड अपना शून्य लाता है, अतः घन-शून्य तीन-तीन में आते हैं। घन 000 या 000000 पर ख़त्म हो सकता है — ठीक 00 पर कभी नहीं।"
+        },
+        "mr": {
+          "stem": "पूर्ण घन नेमक्या दोन शून्यांवर संपू शकतो का? 10³ काढा आणि शून्ये कशी येतात ते पाहा.",
+          "choices": [
+            "10000",
+            "110",
+            "100",
+            "1000"
+          ],
+          "solution": "10³ = 1000: दहाचा प्रत्येक घटक आपले शून्य आणतो, म्हणून घन-शून्ये तीन-तीनमध्ये येतात. घन 000 वा 000000 वर संपू शकतो — नेमक्या 00 वर कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 3-cm cube is painted all over, then cut into 1-cm cubes. How many small cubes carry NO paint at all?",
+      "choices": [
+        "1",
+        "6",
+        "8",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "Only the hidden core escapes the brush: (3 − 2)³ = 1 cube, the very centre. 8 counts the corners — they carry paint on THREE faces each.",
+      "checkExpr": "1*1*1",
+      "translations": {
+        "hi": {
+          "stem": "3 सेमी का घन चारों ओर रँगा जाता है, फिर 1-1 सेमी के घनों में कटता है। कितने छोटे घनों पर बिलकुल रंग नहीं?",
+          "choices": [
+            "1",
+            "6",
+            "8",
+            "0"
+          ],
+          "solution": "कूची से केवल छिपा हुआ भीतरी भाग बचता है: (3 − 2)³ = 1 घन, ठीक केंद्र वाला। 8 कोने गिनता है — उन पर तो तीन-तीन फलकों पर रंग है।"
+        },
+        "mr": {
+          "stem": "3 सेमीचा घन सर्व बाजूंनी रंगवला जातो, मग 1-1 सेमीच्या घनांत कापला जातो. किती छोट्या घनांवर मुळीच रंग नाही?",
+          "choices": [
+            "1",
+            "6",
+            "8",
+            "0"
+          ],
+          "solution": "कुंचल्यापासून फक्त लपलेला गाभा वाचतो: (3 − 2)³ = 1 घन, नेमका मधला. 8 कोपरे मोजतो — त्यांवर तर तीन-तीन पृष्ठांवर रंग आहे."
+        }
+      }
+    }
+  ]
+}

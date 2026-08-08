@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 9 — Algebraic Expressions and Identities",
+  "name": "Algebraic Expressions and Identities",
+  "slug": "maths-8-algebraic-identities",
+  "summary": "The three identities put to work: monstrous multiplications tamed to a subtraction, the never-optional 2ab — and the ending-in-5 bazaar trick exposed as algebra.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "बीजीय व्यंजक एवं सर्वसमिकाएँ",
+      "summary": "काम पर लगीं तीनों सर्वसमिकाएँ: एक घटाव में सधे राक्षसी गुणे, कभी-वैकल्पिक-नहीं 2ab — और 5-अंत की बाज़ारू तरकीब, जो बीजगणित निकली।"
+    },
+    "mr": {
+      "name": "बैजिक पदावली व नित्यसमीकरणे",
+      "summary": "कामाला लावलेली तिन्ही नित्यसमीकरणे: एका वजाबाकीत आवरलेले राक्षसी गुणाकार, कधीही-ऐच्छिक-नसलेला 2ab — आणि बीजगणित निघालेली 5-शेवटची बाजारी युक्ती."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the value of (a + b)² when a = 3 and b = 2?",
+      "choices": [
+        "13",
+        "10",
+        "12",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "(3 + 2)² = 5² = 25. 13 computes a² + b² and drops the 2ab — the square of a sum is NOT the sum of squares.",
+      "checkExpr": "5*5",
+      "translations": {
+        "hi": {
+          "stem": "a = 3 और b = 2 पर (a + b)² का मान कितना?",
+          "choices": [
+            "13",
+            "10",
+            "12",
+            "25"
+          ],
+          "solution": "(3 + 2)² = 5² = 25। 13 a² + b² निकालकर 2ab गिरा देता है — योग का वर्ग, वर्गों का योग नहीं होता।"
+        },
+        "mr": {
+          "stem": "a = 3 आणि b = 2 असताना (a + b)² ची किंमत किती?",
+          "choices": [
+            "13",
+            "10",
+            "12",
+            "25"
+          ],
+          "solution": "(3 + 2)² = 5² = 25. 13 a² + b² काढून 2ab गाळतो — बेरजेचा वर्ग म्हणजे वर्गांची बेरीज नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "3x × 4x = ▢x². What is the coefficient in the box?",
+      "choices": [
+        "1",
+        "12",
+        "34",
+        "7"
+      ],
+      "answerIndex": 1,
+      "solution": "Coefficients multiply and the x's add powers: 3 × 4 = 12, x × x = x². 7 ADDS the coefficients as if the terms were being summed.",
+      "checkExpr": "3*4",
+      "translations": {
+        "hi": {
+          "stem": "3x × 4x = ▢x²। रिक्त में गुणांक क्या आएगा?",
+          "choices": [
+            "1",
+            "12",
+            "34",
+            "7"
+          ],
+          "solution": "गुणांक गुणा होते हैं और x घातें जोड़ते हैं: 3 × 4 = 12, x × x = x²। 7 गुणांकों को यों जोड़ देता है मानो पद जुड़ रहे हों।"
+        },
+        "mr": {
+          "stem": "3x × 4x = ▢x². रिकाम्यात सहगुणक काय येईल?",
+          "choices": [
+            "1",
+            "12",
+            "34",
+            "7"
+          ],
+          "solution": "सहगुणक गुणले जातात आणि x घाती जोडतात: 3 × 4 = 12, x × x = x². 7 सहगुणक असे जोडतो जणू पदे जुळत आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the coefficient of x² in 5x² + 3x?",
+      "choices": [
+        "2",
+        "5",
+        "3",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The number riding x² is 5. 3 rides plain x, and 8 adds the two riders of different horses.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "5x² + 3x में x² का गुणांक क्या है?",
+          "choices": [
+            "2",
+            "5",
+            "3",
+            "8"
+          ],
+          "solution": "x² पर सवार संख्या 5 है। 3 सादे x पर सवार है, और 8 अलग-अलग घोड़ों के दो सवार जोड़ देता है।"
+        },
+        "mr": {
+          "stem": "5x² + 3x मध्ये x² चा सहगुणक काय?",
+          "choices": [
+            "2",
+            "5",
+            "3",
+            "8"
+          ],
+          "solution": "x² वर स्वार संख्या 5 आहे. 3 साध्या x वर स्वार, आणि 8 वेगवेगळ्या घोड्यांचे दोन स्वार जोडतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "(x + 3)(x + 2) = x² + ▢x + 6. What number fills the box?",
+      "choices": [
+        "6",
+        "1",
+        "9",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "The middle term collects both cross-products: 3x + 2x = 5x. 6 is the constant's job (3 × 2), already done at the end.",
+      "checkExpr": "3+2",
+      "translations": {
+        "hi": {
+          "stem": "(x + 3)(x + 2) = x² + ▢x + 6। रिक्त में कौन-सी संख्या आएगी?",
+          "choices": [
+            "6",
+            "1",
+            "9",
+            "5"
+          ],
+          "solution": "बीच का पद दोनों तिरछे गुणनफल बटोरता है: 3x + 2x = 5x। 6 अचर का काम है (3 × 2), जो अंत में हो ही चुका।"
+        },
+        "mr": {
+          "stem": "(x + 3)(x + 2) = x² + ▢x + 6. रिकाम्यात कोणती संख्या येईल?",
+          "choices": [
+            "6",
+            "1",
+            "9",
+            "5"
+          ],
+          "solution": "मधले पद दोन्ही तिरके गुणाकार गोळा करते: 3x + 2x = 5x. 6 हे स्थिरांकाचे काम (3 × 2), शेवटी झालेलेच."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Use (100 + 2)² to compute 102².",
+      "choices": [
+        "10404",
+        "10044",
+        "10402",
+        "10204"
+      ],
+      "answerIndex": 0,
+      "solution": "a² + 2ab + b² = 10000 + 400 + 4 = 10404. 10204 halves the middle term — the 2 in 2ab is not optional.",
+      "checkExpr": "100*100+2*100*2+4",
+      "translations": {
+        "hi": {
+          "stem": "(100 + 2)² से 102² निकालिए।",
+          "choices": [
+            "10404",
+            "10044",
+            "10402",
+            "10204"
+          ],
+          "solution": "a² + 2ab + b² = 10000 + 400 + 4 = 10404। 10204 बीच का पद आधा कर देता है — 2ab का 2 वैकल्पिक नहीं है।"
+        },
+        "mr": {
+          "stem": "(100 + 2)² ने 102² काढा.",
+          "choices": [
+            "10404",
+            "10044",
+            "10402",
+            "10204"
+          ],
+          "solution": "a² + 2ab + b² = 10000 + 400 + 4 = 10404. 10204 मधले पद निम्मे करतो — 2ab मधला 2 ऐच्छिक नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is (a − b)² when a = 10 and b = 1?",
+      "choices": [
+        "101",
+        "81",
+        "80",
+        "99"
+      ],
+      "answerIndex": 1,
+      "solution": "(10 − 1)² = 9² = 81 — or by identity, 100 − 20 + 1 = 81. 99 computes a² − b², a different identity's business.",
+      "checkExpr": "9*9",
+      "translations": {
+        "hi": {
+          "stem": "a = 10 और b = 1 पर (a − b)² कितना?",
+          "choices": [
+            "101",
+            "81",
+            "80",
+            "99"
+          ],
+          "solution": "(10 − 1)² = 9² = 81 — या सर्वसमिका से, 100 − 20 + 1 = 81। 99 a² − b² निकालता है, जो दूसरी सर्वसमिका का कारोबार है।"
+        },
+        "mr": {
+          "stem": "a = 10 आणि b = 1 असताना (a − b)² किती?",
+          "choices": [
+            "101",
+            "81",
+            "80",
+            "99"
+          ],
+          "solution": "(10 − 1)² = 9² = 81 — किंवा नित्यसमीकरणाने, 100 − 20 + 1 = 81. 99 a² − b² काढतो, जो वेगळ्या नित्यसमीकरणाचा धंदा."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Compute 98 × 102 using (100 − 2)(100 + 2).",
+      "choices": [
+        "10004",
+        "9998",
+        "9996",
+        "9896"
+      ],
+      "answerIndex": 2,
+      "solution": "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — a two-second multiplication. 10004 adds b² where the identity subtracts.",
+      "checkExpr": "100*100-4",
+      "translations": {
+        "hi": {
+          "stem": "(100 − 2)(100 + 2) से 98 × 102 निकालिए।",
+          "choices": [
+            "10004",
+            "9998",
+            "9996",
+            "9896"
+          ],
+          "solution": "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — दो सेकंड का गुणा। 10004 वहाँ b² जोड़ देता है जहाँ सर्वसमिका घटाती है।"
+        },
+        "mr": {
+          "stem": "(100 − 2)(100 + 2) ने 98 × 102 काढा.",
+          "choices": [
+            "10004",
+            "9998",
+            "9996",
+            "9896"
+          ],
+          "solution": "(a − b)(a + b) = a² − b² = 10000 − 4 = 9996 — दोन सेकंदांचा गुणाकार. 10004 तिथे b² जोडतो जिथे नित्यसमीकरण वजा करते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "(2x²)³ = ▢x⁶. What is the coefficient in the box?",
+      "choices": [
+        "12",
+        "6",
+        "2",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "The cube hits BOTH parts: 2³ = 8 and (x²)³ = x⁶. 6 multiplies 2 × 3 — exponents on coefficients are powers, not products.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "(2x²)³ = ▢x⁶। रिक्त में गुणांक क्या आएगा?",
+          "choices": [
+            "12",
+            "6",
+            "2",
+            "8"
+          ],
+          "solution": "घन दोनों हिस्सों पर लगता है: 2³ = 8 और (x²)³ = x⁶। 6 2 × 3 गुणा करता है — गुणांक की घातें घातें हैं, गुणनफल नहीं।"
+        },
+        "mr": {
+          "stem": "(2x²)³ = ▢x⁶. रिकाम्यात सहगुणक काय येईल?",
+          "choices": [
+            "12",
+            "6",
+            "2",
+            "8"
+          ],
+          "solution": "घन दोन्ही भागांवर लागतो: 2³ = 8 आणि (x²)³ = x⁶. 6 2 × 3 गुणतो — सहगुणकावरील घाती घाती असतात, गुणाकार नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Subtract 3a + 4b from 7a + 2b. What is the coefficient of b in the result?",
+      "choices": [
+        "6",
+        "-6",
+        "-2",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "b's account: 2 − 4 = −2 (the a's give 4a). 2 forgets the sign; 6 ADDS the b's as if nothing were being subtracted.",
+      "checkExpr": "2-4",
+      "translations": {
+        "hi": {
+          "stem": "7a + 2b में से 3a + 4b घटाइए। परिणाम में b का गुणांक क्या है?",
+          "choices": [
+            "6",
+            "-6",
+            "-2",
+            "2"
+          ],
+          "solution": "b का हिसाब: 2 − 4 = −2 (a देते हैं 4a)। 2 चिह्न भूल जाता है; 6 b को यों जोड़ता है मानो घटाना था ही नहीं।"
+        },
+        "mr": {
+          "stem": "7a + 2b मधून 3a + 4b वजा करा. निकालात b चा सहगुणक काय?",
+          "choices": [
+            "6",
+            "-6",
+            "-2",
+            "2"
+          ],
+          "solution": "b चा हिशेब: 2 − 4 = −2 (a देतात 4a). 2 चिन्ह विसरतो; 6 b असे जोडतो जणू वजाबाकी नव्हतीच."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Compute 51² − 49² the identity way.",
+      "choices": [
+        "100",
+        "200",
+        "4",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — no squaring needed. 4 squares the difference instead of using it.",
+      "checkExpr": "51*51-49*49",
+      "translations": {
+        "hi": {
+          "stem": "51² − 49² सर्वसमिका की राह से निकालिए।",
+          "choices": [
+            "100",
+            "200",
+            "4",
+            "2"
+          ],
+          "solution": "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — वर्ग करने की ज़रूरत ही नहीं। 4 अंतर का वर्ग कर बैठता है।"
+        },
+        "mr": {
+          "stem": "51² − 49² नित्यसमीकरणाच्या वाटेने काढा.",
+          "choices": [
+            "100",
+            "200",
+            "4",
+            "2"
+          ],
+          "solution": "a² − b² = (a + b)(a − b) = 100 × 2 = 200 — वर्ग करण्याची गरजच नाही. 4 फरकाचा वर्ग करून बसतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If x + 1/x = 4, what is x² + 1/x²?",
+      "choices": [
+        "8",
+        "14",
+        "18",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "Square the given: (x + 1/x)² = x² + 2 + 1/x² = 16, so x² + 1/x² = 16 − 2 = 14. 16 forgets the 2 born from the cross-term.",
+      "checkExpr": "16-2",
+      "translations": {
+        "hi": {
+          "stem": "यदि x + 1/x = 4, तो x² + 1/x² कितना?",
+          "choices": [
+            "8",
+            "14",
+            "18",
+            "16"
+          ],
+          "solution": "दिए हुए का वर्ग: (x + 1/x)² = x² + 2 + 1/x² = 16, अतः x² + 1/x² = 16 − 2 = 14। 16 तिरछे पद से जन्मा 2 भूल जाता है।"
+        },
+        "mr": {
+          "stem": "जर x + 1/x = 4, तर x² + 1/x² किती?",
+          "choices": [
+            "8",
+            "14",
+            "18",
+            "16"
+          ],
+          "solution": "दिलेल्याचा वर्ग: (x + 1/x)² = x² + 2 + 1/x² = 16, म्हणून x² + 1/x² = 16 − 2 = 14. 16 तिरक्या पदातून जन्मलेला 2 विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A rectangle's sides are (x + 5) and (x + 3). What is its area when x = 2?",
+      "choices": [
+        "30",
+        "35",
+        "21",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "Substitute first: 7 × 5 = 35 — or expand to x² + 8x + 15 and get 4 + 16 + 15 = 35: both roads agree, as they must.",
+      "checkExpr": "7*5",
+      "translations": {
+        "hi": {
+          "stem": "आयत की भुजाएँ (x + 5) और (x + 3) हैं। x = 2 पर क्षेत्रफल कितना?",
+          "choices": [
+            "30",
+            "35",
+            "21",
+            "16"
+          ],
+          "solution": "पहले मान रखिए: 7 × 5 = 35 — या फैलाकर x² + 8x + 15 से 4 + 16 + 15 = 35: दोनों राहें मिलती हैं, मिलनी ही चाहिए।"
+        },
+        "mr": {
+          "stem": "आयताच्या बाजू (x + 5) आणि (x + 3) आहेत. x = 2 असताना क्षेत्रफळ किती?",
+          "choices": [
+            "30",
+            "35",
+            "21",
+            "16"
+          ],
+          "solution": "आधी किंमत ठेवा: 7 × 5 = 35 — किंवा विस्तारून x² + 8x + 15 मधून 4 + 16 + 15 = 35: दोन्ही वाटा जुळतात, जुळायलाच हव्यात."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Compute 997 × 1003.",
+      "choices": [
+        "999009",
+        "999997",
+        "999991",
+        "1000009"
+      ],
+      "answerIndex": 2,
+      "solution": "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991. The identity turns a monstrous multiplication into one subtraction.",
+      "checkExpr": "1000*1000-9",
+      "translations": {
+        "hi": {
+          "stem": "997 × 1003 निकालिए।",
+          "choices": [
+            "999009",
+            "999997",
+            "999991",
+            "1000009"
+          ],
+          "solution": "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991। सर्वसमिका राक्षसी गुणे को एक घटाव बना देती है।"
+        },
+        "mr": {
+          "stem": "997 × 1003 काढा.",
+          "choices": [
+            "999009",
+            "999997",
+            "999991",
+            "1000009"
+          ],
+          "solution": "(1000 − 3)(1000 + 3) = 1000000 − 9 = 999991. नित्यसमीकरण राक्षसी गुणाकाराला एक वजाबाकी करते."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Compute 49² using (50 − 1)².",
+      "choices": [
+        "2401",
+        "2499",
+        "2501",
+        "2399"
+      ],
+      "answerIndex": 0,
+      "solution": "a² − 2ab + b² = 2500 − 100 + 1 = 2401. 2399 forgets the +1 — the small square at the end pays its paisa too.",
+      "checkExpr": "50*50-2*50+1",
+      "translations": {
+        "hi": {
+          "stem": "(50 − 1)² से 49² निकालिए।",
+          "choices": [
+            "2401",
+            "2499",
+            "2501",
+            "2399"
+          ],
+          "solution": "a² − 2ab + b² = 2500 − 100 + 1 = 2401। 2399 +1 भूल जाता है — अंत का नन्हा वर्ग भी अपना पैसा चुकाता है।"
+        },
+        "mr": {
+          "stem": "(50 − 1)² ने 49² काढा.",
+          "choices": [
+            "2401",
+            "2499",
+            "2501",
+            "2399"
+          ],
+          "solution": "a² − 2ab + b² = 2500 − 100 + 1 = 2401. 2399 +1 विसरतो — शेवटचा इवला वर्गही आपला पैसा देतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "(a + b)² − (a − b)² simplifies to ▢ab. What is the coefficient?",
+      "choices": [
+        "0",
+        "2",
+        "8",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Expand both: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — the squares cancel and the two middle terms join. 0 cancels everything, middle terms included, by sign-carelessness.",
+      "checkExpr": "2+2",
+      "translations": {
+        "hi": {
+          "stem": "(a + b)² − (a − b)² सरल होकर ▢ab बनता है। गुणांक क्या है?",
+          "choices": [
+            "0",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "दोनों फैलाइए: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — वर्ग कटते हैं और दोनों बीच के पद जुड़ते हैं। 0 चिह्न-लापरवाही से बीच के पद समेत सब काट देता है।"
+        },
+        "mr": {
+          "stem": "(a + b)² − (a − b)² सोपे होऊन ▢ab होते. सहगुणक काय?",
+          "choices": [
+            "0",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "दोन्ही विस्तारा: (a² + 2ab + b²) − (a² − 2ab + b²) = 4ab — वर्ग रद्द होतात आणि दोन्ही मधली पदे जुळतात. 0 चिन्ह-निष्काळजीपणाने मधल्या पदांसकट सारे रद्द करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The ending-in-5 trick: 65² = (6 × 7) written before 25. Verify — compute 65².",
+      "choices": [
+        "4225",
+        "3625",
+        "4235",
+        "4025"
+      ],
+      "answerIndex": 0,
+      "solution": "65² = 4225 = 42|25, and 42 = 6 × 7. The trick IS the identity: (10n + 5)² = 100n(n + 1) + 25 — algebra explaining a bazaar shortcut.",
+      "checkExpr": "6*7*100+25",
+      "translations": {
+        "hi": {
+          "stem": "5-अंत की तरकीब: 65² = (6 × 7) के आगे 25। जाँचिए — 65² निकालिए।",
+          "choices": [
+            "4225",
+            "3625",
+            "4235",
+            "4025"
+          ],
+          "solution": "65² = 4225 = 42|25, और 42 = 6 × 7। तरकीब स्वयं सर्वसमिका है: (10n + 5)² = 100n(n + 1) + 25 — बीजगणित बाज़ारू शॉर्टकट की व्याख्या करता हुआ।"
+        },
+        "mr": {
+          "stem": "5-शेवटची युक्ती: 65² = (6 × 7) च्या पुढे 25. तपासा — 65² काढा.",
+          "choices": [
+            "4225",
+            "3625",
+            "4235",
+            "4025"
+          ],
+          "solution": "65² = 4225 = 42|25, आणि 42 = 6 × 7. युक्ती हीच नित्यसमीकरण: (10n + 5)² = 100n(n + 1) + 25 — बाजारी युक्तीचे स्पष्टीकरण देणारे बीजगणित."
+        }
+      }
+    }
+  ]
+}

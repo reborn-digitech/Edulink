@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 12 — Exponents and Powers",
+  "name": "Exponents and Powers",
+  "slug": "maths-8-exponents-powers",
+  "summary": "The exponent ladder extends below zero: minus means flip, laws that still add and multiply, blood cells written in standard form — and every ladder anchored at 1.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "घातांक और घात",
+      "summary": "घातों की सीढ़ी शून्य से नीचे उतरती है: ऋण यानी पलटो, नियम जो अब भी जोड़ते-गुणते हैं, मानक रूप में लिखी रक्त-कोशिकाएँ — और हर सीढ़ी 1 पर टिकी हुई।"
+    },
+    "mr": {
+      "name": "घातांक आणि घात",
+      "summary": "घातांची शिडी शून्याखाली उतरते: ऋण म्हणजे उलटवा, अजूनही जोडणारे-गुणणारे नियम, प्रमाण रूपात लिहिलेल्या रक्तपेशी — आणि प्रत्येक शिडी 1 वर टेकलेली."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "2⁻³ = 1/▢. What number fills the box?",
+      "choices": [
+        "-8",
+        "6",
+        "8",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "A negative exponent flips: 2⁻³ = 1/2³ = 1/8. −8 keeps the minus on the VALUE — the sign lives in the exponent, not the answer.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "2⁻³ = 1/▢। रिक्त में कौन-सी संख्या आएगी?",
+          "choices": [
+            "-8",
+            "6",
+            "8",
+            "9"
+          ],
+          "solution": "ऋण घात पलटती है: 2⁻³ = 1/2³ = 1/8। −8 ऋण को मान पर रख देता है — चिह्न घात में बसता है, उत्तर में नहीं।"
+        },
+        "mr": {
+          "stem": "2⁻³ = 1/▢. रिकाम्यात कोणती संख्या येईल?",
+          "choices": [
+            "-8",
+            "6",
+            "8",
+            "9"
+          ],
+          "solution": "ऋण घात उलटवते: 2⁻³ = 1/2³ = 1/8. −8 ऋण किमतीवर ठेवतो — चिन्ह घातात राहते, उत्तरात नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is 10⁻² as a decimal?",
+      "choices": [
+        "0.01",
+        "0.02",
+        "-100",
+        "0.1"
+      ],
+      "answerIndex": 0,
+      "solution": "10⁻² = 1/100 = 0.01. −100 misreads the minus as a sign; it is only an instruction to take the reciprocal.",
+      "checkExpr": "1/100",
+      "translations": {
+        "hi": {
+          "stem": "10⁻² दशमलव में कितना है?",
+          "choices": [
+            "0.01",
+            "0.02",
+            "-100",
+            "0.1"
+          ],
+          "solution": "10⁻² = 1/100 = 0.01। −100 ऋण को चिह्न पढ़ लेता है; वह केवल व्युत्क्रम लेने का निर्देश है।"
+        },
+        "mr": {
+          "stem": "10⁻² दशांशात किती?",
+          "choices": [
+            "0.01",
+            "0.02",
+            "-100",
+            "0.1"
+          ],
+          "solution": "10⁻² = 1/100 = 0.01. −100 ऋणाला चिन्ह वाचतो; ती फक्त व्यस्त घेण्याची सूचना आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is (1/2)⁻¹?",
+      "choices": [
+        "-2",
+        "1",
+        "0.5",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The −1 power means 'flip me': (1/2)⁻¹ = 2. 0.5 leaves the fraction unflipped; −2 invents a sign.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "(1/2)⁻¹ कितना है?",
+          "choices": [
+            "-2",
+            "1",
+            "0.5",
+            "2"
+          ],
+          "solution": "घात −1 का अर्थ 'मुझे पलटो': (1/2)⁻¹ = 2। 0.5 भिन्न बिना पलटे छोड़ देता है; −2 चिह्न गढ़ लेता है।"
+        },
+        "mr": {
+          "stem": "(1/2)⁻¹ किती?",
+          "choices": [
+            "-2",
+            "1",
+            "0.5",
+            "2"
+          ],
+          "solution": "घात −1 म्हणजे 'मला उलटवा': (1/2)⁻¹ = 2. 0.5 अपूर्णांक न उलटवता ठेवतो; −2 चिन्ह घडवतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "3⁻² × 3⁵ = 3 raised to which power?",
+      "choices": [
+        "7",
+        "10",
+        "-10",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Same base, so ADD exponents: −2 + 5 = 3. −10 multiplies them — the law adds even when one is negative.",
+      "checkExpr": "5-2",
+      "translations": {
+        "hi": {
+          "stem": "3⁻² × 3⁵ = 3 की कौन-सी घात?",
+          "choices": [
+            "7",
+            "10",
+            "-10",
+            "3"
+          ],
+          "solution": "आधार समान, अतः घातें जोड़िए: −2 + 5 = 3। −10 उन्हें गुणा कर देता है — नियम तब भी जोड़ता है जब एक ऋण हो।"
+        },
+        "mr": {
+          "stem": "3⁻² × 3⁵ = 3 चा कोणता घात?",
+          "choices": [
+            "7",
+            "10",
+            "-10",
+            "3"
+          ],
+          "solution": "पाया समान, म्हणून घाती जोडा: −2 + 5 = 3. −10 त्यांना गुणतो — नियम एक ऋण असतानाही जोडतोच."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is 5⁰ + 5¹?",
+      "choices": [
+        "26",
+        "5",
+        "6",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "5⁰ = 1 and 5¹ = 5: together 6. 5 treats 5⁰ as zero — but the zeroth power is 1, never 0.",
+      "checkExpr": "1+5",
+      "translations": {
+        "hi": {
+          "stem": "5⁰ + 5¹ कितना है?",
+          "choices": [
+            "26",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "5⁰ = 1 और 5¹ = 5: मिलाकर 6। 5 5⁰ को शून्य मान लेता है — पर शून्यवीं घात 1 होती है, 0 कभी नहीं।"
+        },
+        "mr": {
+          "stem": "5⁰ + 5¹ किती?",
+          "choices": [
+            "26",
+            "5",
+            "6",
+            "10"
+          ],
+          "solution": "5⁰ = 1 आणि 5¹ = 5: मिळून 6. 5 5⁰ ला शून्य मानतो — पण शून्यावी घात 1 असते, 0 कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "0.000035 in standard form is 3.5 × 10 to which power?",
+      "choices": [
+        "-6",
+        "-4",
+        "5",
+        "-5"
+      ],
+      "answerIndex": 3,
+      "solution": "The point hops 5 places right to reach 3.5, so the power is −5. −6 counts the hop past the 3 twice.",
+      "checkExpr": "0-5",
+      "translations": {
+        "hi": {
+          "stem": "0.000035 का मानक रूप 3.5 × 10 की कौन-सी घात है?",
+          "choices": [
+            "-6",
+            "-4",
+            "5",
+            "-5"
+          ],
+          "solution": "बिंदु 3.5 तक पहुँचने को 5 स्थान दाएँ कूदता है, अतः घात −5। −6 तीन के पार की छलाँग दो बार गिन लेता है।"
+        },
+        "mr": {
+          "stem": "0.000035 चे प्रमाण रूप 3.5 × 10 चा कोणता घात?",
+          "choices": [
+            "-6",
+            "-4",
+            "5",
+            "-5"
+          ],
+          "solution": "बिंदू 3.5 पर्यंत पोहोचायला 5 घरे उजवीकडे उडतो, म्हणून घात −5. −6 तिघापलीकडची उडी दोनदा मोजतो."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "2⁻¹ + 3⁻¹ = ▢/6. What is the numerator in the box?",
+      "choices": [
+        "6",
+        "1",
+        "2",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "1/2 + 1/3 = 3/6 + 2/6 = 5/6. 1 adds the exponents' bases upside-down (1/5) — reciprocals first, THEN add.",
+      "checkExpr": "3+2",
+      "translations": {
+        "hi": {
+          "stem": "2⁻¹ + 3⁻¹ = ▢/6। रिक्त में अंश क्या आएगा?",
+          "choices": [
+            "6",
+            "1",
+            "2",
+            "5"
+          ],
+          "solution": "1/2 + 1/3 = 3/6 + 2/6 = 5/6। 1 आधारों को उल्टा जोड़ बैठता है (1/5) — पहले व्युत्क्रम, फिर योग।"
+        },
+        "mr": {
+          "stem": "2⁻¹ + 3⁻¹ = ▢/6. रिकाम्यात अंश काय येईल?",
+          "choices": [
+            "6",
+            "1",
+            "2",
+            "5"
+          ],
+          "solution": "1/2 + 1/3 = 3/6 + 2/6 = 5/6. 1 पायांना उलटे जोडतो (1/5) — आधी व्यस्त, मग बेरीज."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A red blood cell is about 7 × 10⁻⁶ m across. In MILLIMETRES that is 7 × 10 to which power?",
+      "choices": [
+        "-3",
+        "3",
+        "-9",
+        "-6"
+      ],
+      "answerIndex": 0,
+      "solution": "A millimetre is 10⁻³ m, so dividing by it raises the power by 3: −6 + 3 = −3, i.e. 0.007 mm. −9 moves the wrong way — smaller units mean bigger numbers.",
+      "checkExpr": "0-3",
+      "translations": {
+        "hi": {
+          "stem": "लाल रक्त-कोशिका लगभग 7 × 10⁻⁶ मीटर चौड़ी है। मिलीमीटर में वह 7 × 10 की कौन-सी घात है?",
+          "choices": [
+            "-3",
+            "3",
+            "-9",
+            "-6"
+          ],
+          "solution": "मिलीमीटर = 10⁻³ मीटर, अतः उससे भाग देना घात 3 बढ़ाता है: −6 + 3 = −3, यानी 0.007 मिमी। −9 उल्टी दिशा चलता है — छोटी इकाई यानी बड़ी संख्या।"
+        },
+        "mr": {
+          "stem": "लाल रक्तपेशी सुमारे 7 × 10⁻⁶ मीटर रुंद आहे. मिलिमीटरमध्ये ती 7 × 10 चा कोणता घात?",
+          "choices": [
+            "-3",
+            "3",
+            "-9",
+            "-6"
+          ],
+          "solution": "मिलिमीटर = 10⁻³ मीटर, म्हणून त्याने भागल्यास घात 3 ने वाढतो: −6 + 3 = −3, म्हणजे 0.007 मिमी. −9 उलट्या दिशेने जातो — लहान एकक म्हणजे मोठी संख्या."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "(3²)⁻² = 3 raised to which power?",
+      "choices": [
+        "-1",
+        "4",
+        "0",
+        "-4"
+      ],
+      "answerIndex": 3,
+      "solution": "A power of a power MULTIPLIES: 2 × (−2) = −4, so 1/81. 0 adds them — the addition law belongs to same-base products, not nesting.",
+      "checkExpr": "0-4",
+      "translations": {
+        "hi": {
+          "stem": "(3²)⁻² = 3 की कौन-सी घात?",
+          "choices": [
+            "-1",
+            "4",
+            "0",
+            "-4"
+          ],
+          "solution": "घात की घात गुणा होती है: 2 × (−2) = −4, यानी 1/81। 0 उन्हें जोड़ देता है — जोड़ का नियम समान आधार के गुणनफल का है, घोंसले का नहीं।"
+        },
+        "mr": {
+          "stem": "(3²)⁻² = 3 चा कोणता घात?",
+          "choices": [
+            "-1",
+            "4",
+            "0",
+            "-4"
+          ],
+          "solution": "घाताची घात गुणली जाते: 2 × (−2) = −4, म्हणजे 1/81. 0 त्यांना जोडतो — बेरजेचा नियम समान पायाच्या गुणाकाराचा, घरट्याचा नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "(2⁵ ÷ 2⁸) × 2⁴ = 2 raised to which power?",
+      "choices": [
+        "7",
+        "1",
+        "17",
+        "-1"
+      ],
+      "answerIndex": 1,
+      "solution": "Subtract for the division, add for the product: 5 − 8 + 4 = 1, so the value is just 2. The negative middle step (2⁻³) is a way-station, not a wall.",
+      "checkExpr": "5-8+4",
+      "translations": {
+        "hi": {
+          "stem": "(2⁵ ÷ 2⁸) × 2⁴ = 2 की कौन-सी घात?",
+          "choices": [
+            "7",
+            "1",
+            "17",
+            "-1"
+          ],
+          "solution": "भाग में घटाइए, गुणा में जोड़िए: 5 − 8 + 4 = 1, अतः मान बस 2। बीच का ऋण पड़ाव (2⁻³) रास्ते की सराय है, दीवार नहीं।"
+        },
+        "mr": {
+          "stem": "(2⁵ ÷ 2⁸) × 2⁴ = 2 चा कोणता घात?",
+          "choices": [
+            "7",
+            "1",
+            "17",
+            "-1"
+          ],
+          "solution": "भागात वजा, गुणाकारात बेरीज: 5 − 8 + 4 = 1, म्हणून किंमत फक्त 2. मधला ऋण टप्पा (2⁻³) वाटेतली धर्मशाळा, भिंत नव्हे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If x⁻¹ = 1/9, what is x?",
+      "choices": [
+        "-9",
+        "0.11",
+        "9",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "x⁻¹ is the reciprocal of x; if the reciprocal is 1/9, x itself is 9. 3 confuses the reciprocal with the square root.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि x⁻¹ = 1/9, तो x कितना?",
+          "choices": [
+            "-9",
+            "0.11",
+            "9",
+            "3"
+          ],
+          "solution": "x⁻¹ x का व्युत्क्रम है; व्युत्क्रम 1/9 हो तो x स्वयं 9। 3 व्युत्क्रम को वर्गमूल से मिला बैठता है।"
+        },
+        "mr": {
+          "stem": "जर x⁻¹ = 1/9, तर x किती?",
+          "choices": [
+            "-9",
+            "0.11",
+            "9",
+            "3"
+          ],
+          "solution": "x⁻¹ हा x चा व्यस्त; व्यस्त 1/9 असेल तर x स्वतः 9. 3 व्यस्ताची वर्गमुळाशी गल्लत करतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is 5⁻² as a decimal?",
+      "choices": [
+        "0.4",
+        "0.25",
+        "0.04",
+        "-0.04"
+      ],
+      "answerIndex": 2,
+      "solution": "5⁻² = 1/25 = 0.04. 0.25 takes 1/4 by square-root instinct; the minus means reciprocal-of-the-square.",
+      "checkExpr": "1/25",
+      "translations": {
+        "hi": {
+          "stem": "5⁻² दशमलव में कितना है?",
+          "choices": [
+            "0.4",
+            "0.25",
+            "0.04",
+            "-0.04"
+          ],
+          "solution": "5⁻² = 1/25 = 0.04। 0.25 वर्गमूल की आदत से 1/4 ले बैठता है; ऋण का अर्थ है वर्ग-का-व्युत्क्रम।"
+        },
+        "mr": {
+          "stem": "5⁻² दशांशात किती?",
+          "choices": [
+            "0.4",
+            "0.25",
+            "0.04",
+            "-0.04"
+          ],
+          "solution": "5⁻² = 1/25 = 0.04. 0.25 वर्गमुळाच्या सवयीने 1/4 घेतो; ऋण म्हणजे वर्गाचा-व्यस्त."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which is LARGER: 2⁻³ or 3⁻²? Give the larger one as 1/▢ — the denominator.",
+      "choices": [
+        "6",
+        "9",
+        "3",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "2⁻³ = 1/8 and 3⁻² = 1/9: with negative powers the race flips, and the SMALLER denominator wins — 1/8 is larger. The box holds 8.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "बड़ा कौन: 2⁻³ या 3⁻²? बड़े को 1/▢ के रूप में दीजिए — हर बताइए।",
+          "choices": [
+            "6",
+            "9",
+            "3",
+            "8"
+          ],
+          "solution": "2⁻³ = 1/8 और 3⁻² = 1/9: ऋण घातों में दौड़ पलट जाती है, और छोटा हर जीतता है — 1/8 बड़ा है। रिक्त में 8।"
+        },
+        "mr": {
+          "stem": "मोठा कोण: 2⁻³ की 3⁻²? मोठ्याला 1/▢ रूपात द्या — छेद सांगा.",
+          "choices": [
+            "6",
+            "9",
+            "3",
+            "8"
+          ],
+          "solution": "2⁻³ = 1/8 आणि 3⁻² = 1/9: ऋण घातांत शर्यत उलटते, आणि लहान छेद जिंकतो — 1/8 मोठा. रिकाम्यात 8."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Express 0.00000016 as 1.6 × 10 to which power?",
+      "choices": [
+        "-7",
+        "7",
+        "-6",
+        "-8"
+      ],
+      "answerIndex": 0,
+      "solution": "The point hops 7 places to sit after the 1: 1.6 × 10⁻⁷. −8 counts the zeros but forgets the hop INTO the 1.",
+      "checkExpr": "0-7",
+      "translations": {
+        "hi": {
+          "stem": "0.00000016 को 1.6 × 10 की कौन-सी घात लिखें?",
+          "choices": [
+            "-7",
+            "7",
+            "-6",
+            "-8"
+          ],
+          "solution": "बिंदु 7 स्थान कूदकर 1 के बाद बैठता है: 1.6 × 10⁻⁷। −8 शून्य गिनता है पर 1 के भीतर की छलाँग भूल जाता है।"
+        },
+        "mr": {
+          "stem": "0.00000016 ला 1.6 × 10 चा कोणता घात लिहाल?",
+          "choices": [
+            "-7",
+            "7",
+            "-6",
+            "-8"
+          ],
+          "solution": "बिंदू 7 घरे उडून 1 च्या मागे बसतो: 1.6 × 10⁻⁷. −8 शून्ये मोजतो पण 1 मधली उडी विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A dust mote is 1.2 × 10⁻⁴ m wide; a human hair is 1.2 × 10⁻³ m. How many motes, side by side, span one hair?",
+      "choices": [
+        "1.2",
+        "100",
+        "10",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "Divide: 10⁻³ ÷ 10⁻⁴ = 10¹ — one hop of the exponent, ten motes. Negative powers subtract like any others: −3 − (−4) = 1.",
+      "checkExpr": "1200/120",
+      "translations": {
+        "hi": {
+          "stem": "धूल-कण 1.2 × 10⁻⁴ मीटर चौड़ा है; मानव बाल 1.2 × 10⁻³ मीटर। कितने कण अग़ल-बग़ल एक बाल जितने होंगे?",
+          "choices": [
+            "1.2",
+            "100",
+            "10",
+            "12"
+          ],
+          "solution": "भाग दीजिए: 10⁻³ ÷ 10⁻⁴ = 10¹ — घात की एक छलाँग, दस कण। ऋण घातें भी औरों की तरह घटती हैं: −3 − (−4) = 1।"
+        },
+        "mr": {
+          "stem": "धुळीचा कण 1.2 × 10⁻⁴ मीटर रुंद; मानवी केस 1.2 × 10⁻³ मीटर. किती कण शेजारी-शेजारी एका केसाइतके होतील?",
+          "choices": [
+            "1.2",
+            "100",
+            "10",
+            "12"
+          ],
+          "solution": "भागा: 10⁻³ ÷ 10⁻⁴ = 10¹ — घाताची एक उडी, दहा कण. ऋण घातीही इतरांसारख्या वजा होतात: −3 − (−4) = 1."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is 7⁰ + 8⁰ + 9⁰?",
+      "choices": [
+        "1",
+        "24",
+        "3",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "Every nonzero number to the power 0 is 1: 1 + 1 + 1 = 3. 24 adds the bases; 0 believes the zero exponent zeroes the value — it does the opposite, anchoring every power-ladder at 1.",
+      "checkExpr": "1+1+1",
+      "translations": {
+        "hi": {
+          "stem": "7⁰ + 8⁰ + 9⁰ कितना है?",
+          "choices": [
+            "1",
+            "24",
+            "3",
+            "0"
+          ],
+          "solution": "हर शून्येतर संख्या की घात 0 है 1: 1 + 1 + 1 = 3। 24 आधार जोड़ देता है; 0 मानता है कि शून्य घात मान को शून्य करती है — वह उल्टा करती है, हर घात-सीढ़ी को 1 पर टिकाती है।"
+        },
+        "mr": {
+          "stem": "7⁰ + 8⁰ + 9⁰ किती?",
+          "choices": [
+            "1",
+            "24",
+            "3",
+            "0"
+          ],
+          "solution": "प्रत्येक शून्येतर संख्येची घात 0 म्हणजे 1: 1 + 1 + 1 = 3. 24 पाये जोडतो; 0 मानतो की शून्य घात किंमत शून्य करते — ती उलट करते, प्रत्येक घात-शिडीला 1 वर टेकवते."
+        }
+      }
+    }
+  ]
+}

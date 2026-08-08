@@ -1,0 +1,583 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 11 — Mensuration",
+  "name": "Mensuration",
+  "slug": "maths-8-mensuration",
+  "summary": "Trapezium fields averaged, boxes skinned and filled, a road roller printing its wrap — and one sheet of paper enclosing two different volumes.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "क्षेत्रमिति",
+      "summary": "औसत से नपे समलंब खेत, खोल और भराव वाले डिब्बे, अपनी लपेट छापता सड़क-रोलर — और काग़ज़ की एक चादर जो दो अलग आयतन घेरती है।"
+    },
+    "mr": {
+      "name": "क्षेत्रमिती",
+      "summary": "सरासरीने मोजलेली समलंब शेते, साल आणि भरणे असलेले खोके, आपला वेढा छापणारा रोड-रोलर — आणि दोन वेगळी घनफळे वेढणारी कागदाची एक चादर."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A trapezium has parallel sides 10 cm and 6 cm, with height 4 cm. What is its area, in square cm?",
+      "choices": [
+        "24",
+        "32",
+        "64",
+        "40"
+      ],
+      "answerIndex": 1,
+      "solution": "Half the sum of parallel sides times height: (10 + 6)/2 × 4 = 32. 64 forgets the half — a trapezium is the average of two rectangles.",
+      "checkExpr": "(10+6)*4/2",
+      "translations": {
+        "hi": {
+          "stem": "समलंब की समांतर भुजाएँ 10 सेमी और 6 सेमी हैं, ऊँचाई 4 सेमी। क्षेत्रफल वर्ग सेमी में कितना?",
+          "choices": [
+            "24",
+            "32",
+            "64",
+            "40"
+          ],
+          "solution": "समांतर भुजाओं के योग का आधा गुणा ऊँचाई: (10 + 6)/2 × 4 = 32। 64 आधा भूल जाता है — समलंब दो आयतों का औसत है।"
+        },
+        "mr": {
+          "stem": "समलंब चौकोनाच्या समांतर बाजू 10 सेमी आणि 6 सेमी, उंची 4 सेमी. क्षेत्रफळ चौरस सेमीमध्ये किती?",
+          "choices": [
+            "24",
+            "32",
+            "64",
+            "40"
+          ],
+          "solution": "समांतर बाजूंच्या बेरजेचे अर्धे गुणिले उंची: (10 + 6)/2 × 4 = 32. 64 अर्धे विसरतो — समलंब म्हणजे दोन आयतांची सरासरी."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the volume of a cube of edge 5 cm?",
+      "choices": [
+        "150",
+        "15",
+        "25",
+        "125"
+      ],
+      "answerIndex": 3,
+      "solution": "5 × 5 × 5 = 125 cm³. 150 computes the surface area instead — skin, not filling.",
+      "checkExpr": "5*5*5",
+      "translations": {
+        "hi": {
+          "stem": "5 सेमी किनारे वाले घन का आयतन कितना?",
+          "choices": [
+            "150",
+            "15",
+            "25",
+            "125"
+          ],
+          "solution": "5 × 5 × 5 = 125 घन सेमी। 150 उलटे पृष्ठीय क्षेत्रफल निकालता है — खोल, भराव नहीं।"
+        },
+        "mr": {
+          "stem": "5 सेमी कडेच्या घनाचे घनफळ किती?",
+          "choices": [
+            "150",
+            "15",
+            "25",
+            "125"
+          ],
+          "solution": "5 × 5 × 5 = 125 घन सेमी. 150 उलट पृष्ठफळ काढतो — साल, भरणे नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the TOTAL surface area of a cube of edge 4 cm?",
+      "choices": [
+        "16",
+        "96",
+        "64",
+        "24"
+      ],
+      "answerIndex": 1,
+      "solution": "Six faces of 4 × 4 each: 6 × 16 = 96 cm². 64 computes the volume; 16 stops at one face.",
+      "checkExpr": "6*4*4",
+      "translations": {
+        "hi": {
+          "stem": "4 सेमी किनारे वाले घन का कुल पृष्ठीय क्षेत्रफल कितना?",
+          "choices": [
+            "16",
+            "96",
+            "64",
+            "24"
+          ],
+          "solution": "4 × 4 के छह फलक: 6 × 16 = 96 वर्ग सेमी। 64 आयतन निकाल बैठता है; 16 एक फलक पर रुकता है।"
+        },
+        "mr": {
+          "stem": "4 सेमी कडेच्या घनाचे एकूण पृष्ठफळ किती?",
+          "choices": [
+            "16",
+            "96",
+            "64",
+            "24"
+          ],
+          "solution": "4 × 4 ची सहा पृष्ठे: 6 × 16 = 96 चौ. सेमी. 64 घनफळ काढतो; 16 एका पृष्ठावर थांबतो."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A cuboid measures 5 × 4 × 3 cm. What is its volume?",
+      "choices": [
+        "12",
+        "94",
+        "60",
+        "47"
+      ],
+      "answerIndex": 2,
+      "solution": "Volume = l × b × h = 5 × 4 × 3 = 60 cm³. 94 is the surface area wearing volume's units.",
+      "checkExpr": "5*4*3",
+      "translations": {
+        "hi": {
+          "stem": "एक घनाभ 5 × 4 × 3 सेमी का है। उसका आयतन कितना?",
+          "choices": [
+            "12",
+            "94",
+            "60",
+            "47"
+          ],
+          "solution": "आयतन = ल × चौ × ऊँ = 5 × 4 × 3 = 60 घन सेमी। 94 आयतन की इकाई पहने पृष्ठीय क्षेत्रफल है।"
+        },
+        "mr": {
+          "stem": "एक इष्टिकाचिती 5 × 4 × 3 सेमी आहे. तिचे घनफळ किती?",
+          "choices": [
+            "12",
+            "94",
+            "60",
+            "47"
+          ],
+          "solution": "घनफळ = लां × रुं × उं = 5 × 4 × 3 = 60 घन सेमी. 94 हे घनफळाचे एकक घातलेले पृष्ठफळ."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The same 5 × 4 × 3 cuboid — what is its TOTAL surface area?",
+      "choices": [
+        "47",
+        "60",
+        "94",
+        "120"
+      ],
+      "answerIndex": 2,
+      "solution": "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 cm². 47 forgets each face has a twin on the opposite side.",
+      "checkExpr": "2*(5*4+4*3+5*3)",
+      "translations": {
+        "hi": {
+          "stem": "वही 5 × 4 × 3 घनाभ — उसका कुल पृष्ठीय क्षेत्रफल कितना?",
+          "choices": [
+            "47",
+            "60",
+            "94",
+            "120"
+          ],
+          "solution": "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 वर्ग सेमी। 47 भूल जाता है कि हर फलक का सामने एक जुड़वाँ है।"
+        },
+        "mr": {
+          "stem": "तीच 5 × 4 × 3 इष्टिकाचिती — तिचे एकूण पृष्ठफळ किती?",
+          "choices": [
+            "47",
+            "60",
+            "94",
+            "120"
+          ],
+          "solution": "2(lb + bh + hl) = 2(20 + 12 + 15) = 94 चौ. सेमी. 47 विसरतो की प्रत्येक पृष्ठाला समोर एक जुळे आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A rhombus has diagonals 10 cm and 8 cm. What is its area?",
+      "choices": [
+        "80",
+        "18",
+        "40",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Half the product of diagonals: 10 × 8 ÷ 2 = 40 cm². 80 forgets the half — the diagonals' rectangle holds TWO rhombuses.",
+      "checkExpr": "10*8/2",
+      "translations": {
+        "hi": {
+          "stem": "समचतुर्भुज के विकर्ण 10 सेमी और 8 सेमी हैं। क्षेत्रफल कितना?",
+          "choices": [
+            "80",
+            "18",
+            "40",
+            "36"
+          ],
+          "solution": "विकर्णों के गुणनफल का आधा: 10 × 8 ÷ 2 = 40 वर्ग सेमी। 80 आधा भूल जाता है — विकर्णों के आयत में दो समचतुर्भुज समाते हैं।"
+        },
+        "mr": {
+          "stem": "समभुज चौकोनाचे कर्ण 10 सेमी आणि 8 सेमी आहेत. क्षेत्रफळ किती?",
+          "choices": [
+            "80",
+            "18",
+            "40",
+            "36"
+          ],
+          "solution": "कर्णांच्या गुणाकाराचे अर्धे: 10 × 8 ÷ 2 = 40 चौ. सेमी. 80 अर्धे विसरतो — कर्णांच्या आयतात दोन समभुज चौकोन मावतात."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cylinder has radius 7 cm and height 10 cm. What is its volume? (π = 22/7)",
+      "choices": [
+        "1540",
+        "15400",
+        "440",
+        "154"
+      ],
+      "answerIndex": 0,
+      "solution": "V = πr²h = 22/7 × 49 × 10 = 1540 cm³. 154 is just the base circle's area; 440 the curved wall's.",
+      "checkExpr": "22*7*10",
+      "translations": {
+        "hi": {
+          "stem": "बेलन की त्रिज्या 7 सेमी और ऊँचाई 10 सेमी है। आयतन कितना? (π = 22/7)",
+          "choices": [
+            "1540",
+            "15400",
+            "440",
+            "154"
+          ],
+          "solution": "आयतन = πr²h = 22/7 × 49 × 10 = 1540 घन सेमी। 154 केवल आधार-वृत्त का क्षेत्रफल है; 440 घुमावदार दीवार का।"
+        },
+        "mr": {
+          "stem": "दंडगोलाची त्रिज्या 7 सेमी आणि उंची 10 सेमी आहे. घनफळ किती? (π = 22/7)",
+          "choices": [
+            "1540",
+            "15400",
+            "440",
+            "154"
+          ],
+          "solution": "घनफळ = πr²h = 22/7 × 49 × 10 = 1540 घन सेमी. 154 फक्त पाया-वर्तुळाचे क्षेत्रफळ; 440 वक्र भिंतीचे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The same cylinder (r = 7, h = 10): what is its CURVED surface area? (π = 22/7)",
+      "choices": [
+        "220",
+        "494",
+        "440",
+        "1540"
+      ],
+      "answerIndex": 2,
+      "solution": "CSA = 2πrh = 2 × 22/7 × 7 × 10 = 440 cm² — the label peeled off and flattened. 220 forgets the 2; the wall wraps the FULL circumference.",
+      "checkExpr": "2*22*10",
+      "translations": {
+        "hi": {
+          "stem": "वही बेलन (r = 7, h = 10): उसका वक्र पृष्ठीय क्षेत्रफल कितना? (π = 22/7)",
+          "choices": [
+            "220",
+            "494",
+            "440",
+            "1540"
+          ],
+          "solution": "वक्र क्षेत्रफल = 2πrh = 2 × 22/7 × 7 × 10 = 440 वर्ग सेमी — उतारकर बिछाया गया लेबल। 220 दो भूल जाता है; दीवार पूरी परिधि लपेटती है।"
+        },
+        "mr": {
+          "stem": "तोच दंडगोल (r = 7, h = 10): त्याचे वक्र पृष्ठफळ किती? (π = 22/7)",
+          "choices": [
+            "220",
+            "494",
+            "440",
+            "1540"
+          ],
+          "solution": "वक्र पृष्ठफळ = 2πrh = 2 × 22/7 × 7 × 10 = 440 चौ. सेमी — सोलून पसरवलेले लेबल. 220 दोन विसरतो; भिंत पूर्ण परीघ गुंडाळते."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many litres fit in 1 cubic metre?",
+      "choices": [
+        "100",
+        "10000",
+        "1000",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "1 m³ = 100 × 100 × 100 cm³ = 10,00,000 cm³, and 1000 cm³ make a litre: 1000 litres. Each dimension contributes its factor of 100.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "1 घन मीटर में कितने लीटर समाते हैं?",
+          "choices": [
+            "100",
+            "10000",
+            "1000",
+            "10"
+          ],
+          "solution": "1 घन मीटर = 100 × 100 × 100 घन सेमी = 10,00,000 घन सेमी, और 1000 घन सेमी का एक लीटर: 1000 लीटर। हर विमा अपना 100 का गुणनखंड देती है।"
+        },
+        "mr": {
+          "stem": "1 घन मीटरमध्ये किती लिटर मावतात?",
+          "choices": [
+            "100",
+            "10000",
+            "1000",
+            "10"
+          ],
+          "solution": "1 घन मीटर = 100 × 100 × 100 घन सेमी = 10,00,000 घन सेमी, आणि 1000 घन सेमीचा एक लिटर: 1000 लिटर. प्रत्येक मिती आपला 100 चा घटक देते."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A trapezium-shaped field has parallel sides 25 m and 15 m and area 200 m². What is the distance between the parallel sides?",
+      "choices": [
+        "10",
+        "5",
+        "20",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Run the formula backwards: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 m. 5 forgets to double the area first.",
+      "checkExpr": "200*2/(25+15)",
+      "translations": {
+        "hi": {
+          "stem": "समलंब खेत की समांतर भुजाएँ 25 मीटर और 15 मीटर हैं, क्षेत्रफल 200 वर्ग मीटर। समांतर भुजाओं की दूरी कितनी?",
+          "choices": [
+            "10",
+            "5",
+            "20",
+            "8"
+          ],
+          "solution": "सूत्र उल्टा चलाइए: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 मीटर। 5 पहले क्षेत्रफल दुगुना करना भूल जाता है।"
+        },
+        "mr": {
+          "stem": "समलंब शेताच्या समांतर बाजू 25 मीटर आणि 15 मीटर, क्षेत्रफळ 200 चौ. मीटर. समांतर बाजूंमधले अंतर किती?",
+          "choices": [
+            "10",
+            "5",
+            "20",
+            "8"
+          ],
+          "solution": "सूत्र उलटे चालवा: h = 2 × 200 ÷ (25 + 15) = 400 ÷ 40 = 10 मीटर. 5 आधी क्षेत्रफळ दुप्पट करायला विसरतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An open box is a cube of edge 10 cm with NO lid. How much sheet, in square cm, forms it?",
+      "choices": [
+        "400",
+        "100",
+        "600",
+        "500"
+      ],
+      "answerIndex": 3,
+      "solution": "Five faces of 100 cm² each — the lid stayed at the shop: 500 cm². 600 builds the closed cube.",
+      "checkExpr": "5*10*10",
+      "translations": {
+        "hi": {
+          "stem": "खुला डिब्बा 10 सेमी किनारे का बिना ढक्कन का घन है। कितनी चादर, वर्ग सेमी में, उसे बनाती है?",
+          "choices": [
+            "400",
+            "100",
+            "600",
+            "500"
+          ],
+          "solution": "100-100 वर्ग सेमी के पाँच फलक — ढक्कन दुकान पर ही रहा: 500 वर्ग सेमी। 600 बंद घन बना देता है।"
+        },
+        "mr": {
+          "stem": "उघडा खोका म्हणजे झाकण नसलेला 10 सेमी कडेचा घन. किती पत्रा, चौरस सेमीमध्ये, त्याला बनवतो?",
+          "choices": [
+            "400",
+            "100",
+            "600",
+            "500"
+          ],
+          "solution": "प्रत्येकी 100 चौ. सेमीची पाच पृष्ठे — झाकण दुकानातच राहिले: 500 चौ. सेमी. 600 बंद घन बांधतो."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A room measures 4 m × 3 m × 2.5 m. How many cubic metres of air does it hold?",
+      "choices": [
+        "60",
+        "30",
+        "9.5",
+        "24"
+      ],
+      "answerIndex": 1,
+      "solution": "4 × 3 × 2.5 = 30 m³. 24 drops the half-metre of height — ceilings count too.",
+      "checkExpr": "4*3*2.5",
+      "translations": {
+        "hi": {
+          "stem": "कमरा 4 मी × 3 मी × 2.5 मी का है। उसमें कितने घन मीटर हवा समाती है?",
+          "choices": [
+            "60",
+            "30",
+            "9.5",
+            "24"
+          ],
+          "solution": "4 × 3 × 2.5 = 30 घन मीटर। 24 ऊँचाई का आधा मीटर गिरा देता है — छतें भी गिनती में हैं।"
+        },
+        "mr": {
+          "stem": "खोली 4 मी × 3 मी × 2.5 मी आहे. तिच्यात किती घन मीटर हवा मावते?",
+          "choices": [
+            "60",
+            "30",
+            "9.5",
+            "24"
+          ],
+          "solution": "4 × 3 × 2.5 = 30 घन मीटर. 24 उंचीचा अर्धा मीटर गाळतो — छतेही मोजणीत आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A road roller is a cylinder of diameter 84 cm and length 100 cm. What area, in square cm, does ONE revolution press? (π = 22/7)",
+      "choices": [
+        "13200",
+        "264",
+        "5280",
+        "26400"
+      ],
+      "answerIndex": 3,
+      "solution": "One revolution lays down the curved surface: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 cm². 13200 halves it — the roller prints its FULL wrap each turn.",
+      "checkExpr": "2*22*6*100",
+      "translations": {
+        "hi": {
+          "stem": "सड़क-रोलर 84 सेमी व्यास और 100 सेमी लंबाई का बेलन है। एक चक्कर में कितना क्षेत्रफल, वर्ग सेमी में, दबता है? (π = 22/7)",
+          "choices": [
+            "13200",
+            "264",
+            "5280",
+            "26400"
+          ],
+          "solution": "एक चक्कर वक्र पृष्ठ बिछा देता है: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 वर्ग सेमी। 13200 उसे आधा कर देता है — रोलर हर घुमाव में पूरी लपेट छापता है।"
+        },
+        "mr": {
+          "stem": "रोड-रोलर 84 सेमी व्यासाचा आणि 100 सेमी लांबीचा दंडगोल आहे. एका फेरीत किती क्षेत्रफळ, चौरस सेमीमध्ये, दबते? (π = 22/7)",
+          "choices": [
+            "13200",
+            "264",
+            "5280",
+            "26400"
+          ],
+          "solution": "एक फेरी वक्र पृष्ठ अंथरते: 2πrh = 2 × 22/7 × 42 × 100 = 26,400 चौ. सेमी. 13200 ते निम्मे करतो — रोलर प्रत्येक वळणात पूर्ण वेढा छापतो."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a cube's edge is doubled, its VOLUME becomes how many times the original?",
+      "choices": [
+        "4",
+        "6",
+        "2",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Volume rides on the CUBE of the edge: 2³ = 8 times. 4 is the surface area's multiplier — each measure scales by its own dimension.",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "घन का किनारा दुगुना करने पर आयतन मूल का कितने गुना हो जाता है?",
+          "choices": [
+            "4",
+            "6",
+            "2",
+            "8"
+          ],
+          "solution": "आयतन किनारे के घन पर सवार है: 2³ = 8 गुना। 4 पृष्ठीय क्षेत्रफल का गुणक है — हर माप अपनी विमा से बढ़ती है।"
+        },
+        "mr": {
+          "stem": "घनाची कड दुप्पट केल्यास घनफळ मूळच्या किती पट होते?",
+          "choices": [
+            "4",
+            "6",
+            "2",
+            "8"
+          ],
+          "solution": "घनफळ कडेच्या घनावर स्वार आहे: 2³ = 8 पट. 4 हा पृष्ठफळाचा गुणक — प्रत्येक माप आपल्या मितीने वाढते."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 22 cm × 7 cm paper sheet rolls into a cylinder along its 22-cm side (so 2πr = 22, height 7). What VOLUME does it enclose? (π = 22/7)",
+      "choices": [
+        "85.75",
+        "154",
+        "539",
+        "269.5"
+      ],
+      "answerIndex": 3,
+      "solution": "2πr = 22 gives r = 3.5, so V = 22/7 × 3.5² × 7 = 269.5 cm³. Rolled the OTHER way the same sheet encloses only 85.75 cm³ — one paper, two volumes: area fixes the wrap, never the filling.",
+      "checkExpr": "22*3.5*3.5*7/7",
+      "translations": {
+        "hi": {
+          "stem": "22 सेमी × 7 सेमी का काग़ज़ 22-सेमी भुजा के साथ बेलन बनता है (यानी 2πr = 22, ऊँचाई 7)। वह कितना आयतन घेरता है? (π = 22/7)",
+          "choices": [
+            "85.75",
+            "154",
+            "539",
+            "269.5"
+          ],
+          "solution": "2πr = 22 से r = 3.5, अतः आयतन = 22/7 × 3.5² × 7 = 269.5 घन सेमी। दूसरी ओर से लपेटा वही काग़ज़ केवल 85.75 घन सेमी घेरता है — एक काग़ज़, दो आयतन: क्षेत्रफल लपेट तय करता है, भराव कभी नहीं।"
+        },
+        "mr": {
+          "stem": "22 सेमी × 7 सेमीचा कागद 22-सेमी बाजूने दंडगोल होतो (म्हणजे 2πr = 22, उंची 7). तो किती घनफळ वेढतो? (π = 22/7)",
+          "choices": [
+            "85.75",
+            "154",
+            "539",
+            "269.5"
+          ],
+          "solution": "2πr = 22 मधून r = 3.5, म्हणून घनफळ = 22/7 × 3.5² × 7 = 269.5 घन सेमी. दुसऱ्या बाजूने गुंडाळलेला तोच कागद फक्त 85.75 घन सेमी वेढतो — एक कागद, दोन घनफळे: क्षेत्रफळ वेढा ठरवते, भरणे कधीच नाही."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cuboid tank measures 2 m × 1.5 m × 1 m. How many LITRES does it hold when full?",
+      "choices": [
+        "3000",
+        "30000",
+        "3",
+        "300"
+      ],
+      "answerIndex": 0,
+      "solution": "Volume = 3 m³, and each cubic metre holds 1000 litres: 3000 L. 3 stops at cubic metres — the unit conversion is where tank problems are won and lost.",
+      "checkExpr": "2*1.5*1*1000",
+      "translations": {
+        "hi": {
+          "stem": "घनाभ टंकी 2 मी × 1.5 मी × 1 मी की है। भरी होने पर उसमें कितने लीटर समाते हैं?",
+          "choices": [
+            "3000",
+            "30000",
+            "3",
+            "300"
+          ],
+          "solution": "आयतन = 3 घन मीटर, और हर घन मीटर में 1000 लीटर: 3000 ली। 3 घन मीटर पर रुक जाता है — टंकी के सवाल इकाई-बदल पर ही जीते-हारे जाते हैं।"
+        },
+        "mr": {
+          "stem": "इष्टिकाचिती टाकी 2 मी × 1.5 मी × 1 मी आहे. भरलेली असताना तिच्यात किती लिटर मावतात?",
+          "choices": [
+            "3000",
+            "30000",
+            "3",
+            "300"
+          ],
+          "solution": "घनफळ = 3 घन मीटर, आणि प्रत्येक घन मीटरमध्ये 1000 लिटर: 3000 लि. 3 घन मीटरवर थांबतो — टाकीचे प्रश्न एकक-बदलावरच जिंकले-हरले जातात."
+        }
+      }
+    }
+  ]
+}
