@@ -1,0 +1,758 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 8,
+  "chapter": "Chapter 6 — Combustion and Flame",
+  "name": "Combustion and Flame",
+  "slug": "science-8-combustion-flame",
+  "summary": "Fire's rulebook: an entry fee every fuel must pay, a triangle that falls if one leg is cut, extinguishers matched to their fires — and the candle's three zones, hottest at the rim.",
+  "position": 6,
+  "source": "EduLink original, written against NCERT Science (Class 8)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "दहन एवं ज्वाला",
+      "summary": "आग की नियम-पुस्तिका: हर ईंधन को चुकानी पड़ती प्रवेश-फ़ीस, एक टाँग कटते ही गिरता त्रिभुज, अपनी-अपनी आग से मिलाए गए अग्निशामक — और मोमबत्ती के तीन क्षेत्र, किनारे पर सबसे तप्त।"
+    },
+    "mr": {
+      "name": "ज्वलन आणि ज्योत",
+      "summary": "आगीची नियमपुस्तिका: प्रत्येक इंधनाला द्यावी लागणारी प्रवेश-फी, एक पाय कापताच पडणारा त्रिकोण, आपापल्या आगीशी जुळवलेली विझवणी — आणि मेणबत्तीचे तीन पट्टे, काठावर सर्वांत तप्त."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which chemical process burns a substance with oxygen, releasing heat and usually light?",
+      "choices": [
+        "The ideal fuel",
+        "Combustion",
+        "Calorific value",
+        "The ignition temperature"
+      ],
+      "answerIndex": 1,
+      "solution": "Combustion is burning — fuel joining oxygen to give heat and light; a reaction, not a substance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सी रासायनिक प्रक्रिया किसी पदार्थ को ऑक्सीजन के साथ जलाती है, ऊष्मा और प्रायः प्रकाश छोड़ती हुई?",
+          "choices": [
+            "आदर्श ईंधन",
+            "दहन",
+            "ऊष्मीय मान",
+            "ज्वलन ताप"
+          ],
+          "solution": "दहन जलना है — ईंधन का ऑक्सीजन से जुड़कर ऊष्मा-प्रकाश देना; एक अभिक्रिया, कोई पदार्थ नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कोणती रासायनिक प्रक्रिया पदार्थाला ऑक्सिजनसह जाळते, उष्णता आणि बहुधा प्रकाश सोडत?",
+          "choices": [
+            "आदर्श इंधन",
+            "ज्वलन",
+            "उष्मांक मूल्य",
+            "प्रज्वलन तापमान"
+          ],
+          "solution": "ज्वलन म्हणजे जळणे — इंधनाने ऑक्सिजनशी जुळून उष्णता-प्रकाश देणे; एक अभिक्रिया, पदार्थ नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The ignition temperature is correct?",
+      "choices": [
+        "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs.",
+        "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait.",
+        "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides.",
+        "Combustion is burning — fuel joining oxygen to give heat and light; a reaction, not a substance."
+      ],
+      "answerIndex": 1,
+      "solution": "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ज्वलन ताप के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है।",
+            "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं।",
+            "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है।",
+            "दहन जलना है — ईंधन का ऑक्सीजन से जुड़कर ऊष्मा-प्रकाश देना; एक अभिक्रिया, कोई पदार्थ नहीं।"
+          ],
+          "solution": "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रज्वलन तापमान विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे.",
+            "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात.",
+            "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते.",
+            "ज्वलन म्हणजे जळणे — इंधनाने ऑक्सिजनशी जुळून उष्णता-प्रकाश देणे; एक अभिक्रिया, पदार्थ नव्हे."
+          ],
+          "solution": "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath.\" — which of these is this about?",
+      "choices": [
+        "The flame's three zones",
+        "Combustion",
+        "Inflammable substances",
+        "The ignition temperature"
+      ],
+      "answerIndex": 2,
+      "solution": "Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ज्वाला के तीन क्षेत्र",
+            "दहन",
+            "ज्वलनशील पदार्थ",
+            "ज्वलन ताप"
+          ],
+          "solution": "ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "ज्योतीचे तीन पट्टे",
+            "ज्वलन",
+            "ज्वालाग्राही पदार्थ",
+            "प्रज्वलन तापमान"
+          ],
+          "solution": "ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Fuel, oxygen and heat — remove any one and the fire dies. What is this trio called?",
+      "choices": [
+        "The CO₂ extinguisher",
+        "The fire triangle",
+        "The ignition temperature",
+        "Calorific value"
+      ],
+      "answerIndex": 1,
+      "solution": "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ईंधन, ऑक्सीजन और ऊष्मा — कोई एक हटाइए और आग मर जाती है। इस तिकड़ी का नाम क्या है?",
+          "choices": [
+            "CO₂ अग्निशामक",
+            "अग्नि त्रिभुज",
+            "ज्वलन ताप",
+            "ऊष्मीय मान"
+          ],
+          "solution": "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "इंधन, ऑक्सिजन आणि उष्णता — कोणतेही एक काढा आणि आग मरते. या त्रिकुटाचे नाव काय?",
+          "choices": [
+            "CO₂ विझवणी",
+            "अग्नी त्रिकोण",
+            "प्रज्वलन तापमान",
+            "उष्मांक मूल्य"
+          ],
+          "solution": "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The CO₂ extinguisher is correct?",
+      "choices": [
+        "CO₂ smothers the fires it must not wet — heavier than air, it settles on the flame and starves it of oxygen.",
+        "Combustion is burning — fuel joining oxygen to give heat and light; a reaction, not a substance.",
+        "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs.",
+        "Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath."
+      ],
+      "answerIndex": 0,
+      "solution": "CO₂ smothers the fires it must not wet — heavier than air, it settles on the flame and starves it of oxygen. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "CO₂ अग्निशामक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "CO₂ उन आगों को दम घोंटकर बुझाता है जिन्हें भिगोना मना है — हवा से भारी, वह लौ पर बैठकर उसकी ऑक्सीजन छीन लेता है।",
+            "दहन जलना है — ईंधन का ऑक्सीजन से जुड़कर ऊष्मा-प्रकाश देना; एक अभिक्रिया, कोई पदार्थ नहीं।",
+            "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है।",
+            "ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है।"
+          ],
+          "solution": "CO₂ उन आगों को दम घोंटकर बुझाता है जिन्हें भिगोना मना है — हवा से भारी, वह लौ पर बैठकर उसकी ऑक्सीजन छीन लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "CO₂ विझवणी विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "CO₂ भिजवायला मनाई असलेल्या आगी गुदमरवून विझवतो — हवेहून जड, तो ज्योतीवर बसून तिचा ऑक्सिजन हिरावतो.",
+            "ज्वलन म्हणजे जळणे — इंधनाने ऑक्सिजनशी जुळून उष्णता-प्रकाश देणे; एक अभिक्रिया, पदार्थ नव्हे.",
+            "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे.",
+            "ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते."
+          ],
+          "solution": "CO₂ भिजवायला मनाई असलेल्या आगी गुदमरवून विझवतो — हवेहून जड, तो ज्योतीवर बसून तिचा ऑक्सिजन हिरावतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Hold a glass rod across the yellow zone and it comes away sooted — the signature of unfinished burning.\" — which of these is this about?",
+      "choices": [
+        "Calorific value",
+        "The flame's three zones",
+        "The ignition temperature",
+        "Inflammable substances"
+      ],
+      "answerIndex": 1,
+      "solution": "The flame's three zones: innermost dark unburnt vapour, middle yellow half-burnt glow, outer blue complete burning — and the outer rim is the hottest. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पीले क्षेत्र के आर-पार काँच की छड़ रखिए, वह कालिख लिए लौटती है — अधूरे दहन के दस्तख़त।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ऊष्मीय मान",
+            "ज्वाला के तीन क्षेत्र",
+            "ज्वलन ताप",
+            "ज्वलनशील पदार्थ"
+          ],
+          "solution": "ज्वाला के तीन क्षेत्र: भीतरी काला अनजला वाष्प, बीच की पीली अधजली दमक, बाहरी नीला पूर्ण दहन — और बाहरी किनारा सबसे तप्त। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पिवळ्या पट्ट्यातून काचकांडी धरा, ती काजळी घेऊन परतते — अपुऱ्या ज्वलनाची सही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "उष्मांक मूल्य",
+            "ज्योतीचे तीन पट्टे",
+            "प्रज्वलन तापमान",
+            "ज्वालाग्राही पदार्थ"
+          ],
+          "solution": "ज्योतीचे तीन पट्टे: आतला काळा न जळालेला बाष्प, मधला पिवळा अर्धवट जळता झळाळ, बाहेरचा निळा पूर्ण ज्वलन — आणि बाहेरचा काठ सर्वांत तप्त. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which number ranks fuels by the heat one kilogram of each releases — kilojoules per kilogram?",
+      "choices": [
+        "The fire triangle",
+        "The flame's three zones",
+        "Calorific value",
+        "Combustion"
+      ],
+      "answerIndex": 2,
+      "solution": "Calorific value measures a fuel's worth in heat per kilogram — hydrogen tops the table, dung cakes sit near the floor. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सी संख्या ईंधनों को उनके प्रति किलोग्राम छोड़ी ऊष्मा से क्रम देती है — किलोजूल प्रति किलोग्राम?",
+          "choices": [
+            "अग्नि त्रिभुज",
+            "ज्वाला के तीन क्षेत्र",
+            "ऊष्मीय मान",
+            "दहन"
+          ],
+          "solution": "ऊष्मीय मान प्रति किलोग्राम ऊष्मा में ईंधन का मोल नापता है — हाइड्रोजन तालिका के शीर्ष पर, उपले फ़र्श के पास। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कोणता आकडा इंधनांना त्यांच्या प्रति किलोग्रॅम सोडलेल्या उष्णतेने क्रम देतो — किलोजूल प्रति किलोग्रॅम?",
+          "choices": [
+            "अग्नी त्रिकोण",
+            "ज्योतीचे तीन पट्टे",
+            "उष्मांक मूल्य",
+            "ज्वलन"
+          ],
+          "solution": "उष्मांक मूल्य प्रति किलोग्रॅम उष्णतेत इंधनाचे मोल मोजते — हायड्रोजन तक्त्याच्या शिरोभागी, गोवऱ्या तळाजवळ. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The ideal fuel is correct?",
+      "choices": [
+        "CO₂ smothers the fires it must not wet — heavier than air, it settles on the flame and starves it of oxygen.",
+        "Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath.",
+        "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs.",
+        "The flame's three zones: innermost dark unburnt vapour, middle yellow half-burnt glow, outer blue complete burning — and the outer rim is the hottest."
+      ],
+      "answerIndex": 2,
+      "solution": "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आदर्श ईंधन के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "CO₂ उन आगों को दम घोंटकर बुझाता है जिन्हें भिगोना मना है — हवा से भारी, वह लौ पर बैठकर उसकी ऑक्सीजन छीन लेता है।",
+            "ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है।",
+            "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है।",
+            "ज्वाला के तीन क्षेत्र: भीतरी काला अनजला वाष्प, बीच की पीली अधजली दमक, बाहरी नीला पूर्ण दहन — और बाहरी किनारा सबसे तप्त।"
+          ],
+          "solution": "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "आदर्श इंधन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "CO₂ भिजवायला मनाई असलेल्या आगी गुदमरवून विझवतो — हवेहून जड, तो ज्योतीवर बसून तिचा ऑक्सिजन हिरावतो.",
+            "ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते.",
+            "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे.",
+            "ज्योतीचे तीन पट्टे: आतला काळा न जळालेला बाष्प, मधला पिवळा अर्धवट जळता झळाळ, बाहेरचा निळा पूर्ण ज्वलन — आणि बाहेरचा काठ सर्वांत तप्त."
+          ],
+          "solution": "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Fuel joined by oxygen\" goes correctly with which of these?",
+      "choices": [
+        "flames starved dry",
+        "below it, no flame",
+        "heat and light released",
+        "every real fuel fails a line"
+      ],
+      "answerIndex": 2,
+      "solution": "Combustion is burning — fuel joining oxygen to give heat and light; a reaction, not a substance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऑक्सीजन से जुड़ा ईंधन\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सूखी भूखी मारी लपटें",
+            "उससे नीचे, कोई लौ नहीं",
+            "छूटी ऊष्मा और प्रकाश",
+            "हर असली ईंधन कहीं विफल"
+          ],
+          "solution": "दहन जलना है — ईंधन का ऑक्सीजन से जुड़कर ऊष्मा-प्रकाश देना; एक अभिक्रिया, कोई पदार्थ नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऑक्सिजनशी जुळलेले इंधन\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कोरड्या उपाशी मारलेल्या ज्वाळा",
+            "त्याखाली ज्योत नाही",
+            "सुटलेली उष्णता आणि प्रकाश",
+            "प्रत्येक खरे इंधन कुठे ना कुठे अपयशी"
+          ],
+          "solution": "ज्वलन म्हणजे जळणे — इंधनाने ऑक्सिजनशी जुळून उष्णता-प्रकाश देणे; एक अभिक्रिया, पदार्थ नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Fire's entry fee\" goes correctly with which of these?",
+      "choices": [
+        "below it, no flame",
+        "hottest at the rim",
+        "useful and dangerous alike",
+        "fuels ranked honest"
+      ],
+      "answerIndex": 0,
+      "solution": "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आग की प्रवेश-फ़ीस\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "उससे नीचे, कोई लौ नहीं",
+            "किनारे पर सबसे तप्त",
+            "समान रूप से उपयोगी-ख़तरनाक",
+            "ईमानदारी से क्रमबद्ध ईंधन"
+          ],
+          "solution": "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"आगीची प्रवेश-फी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "त्याखाली ज्योत नाही",
+            "काठावर सर्वांत तप्त",
+            "सारखेच उपयुक्त-धोकादायक",
+            "प्रामाणिकपणे क्रम लावलेली इंधने"
+          ],
+          "solution": "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Flaring at a spark\" goes correctly with which of these?",
+      "choices": [
+        "below it, no flame",
+        "useful and dangerous alike",
+        "cut one leg, it falls",
+        "heat and light released"
+      ],
+      "answerIndex": 1,
+      "solution": "Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चिंगारी पर भड़कते\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "उससे नीचे, कोई लौ नहीं",
+            "समान रूप से उपयोगी-ख़तरनाक",
+            "एक टाँग कटी, गिरी",
+            "छूटी ऊष्मा और प्रकाश"
+          ],
+          "solution": "ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ठिणगीवर भडकणारे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "त्याखाली ज्योत नाही",
+            "सारखेच उपयुक्त-धोकादायक",
+            "एक पाय कापला, पडली",
+            "सुटलेली उष्णता आणि प्रकाश"
+          ],
+          "solution": "ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The three-legged fire\" goes correctly with which of these?",
+      "choices": [
+        "heat and light released",
+        "cut one leg, it falls",
+        "below it, no flame",
+        "every real fuel fails a line"
+      ],
+      "answerIndex": 1,
+      "solution": "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तीन टाँगों की आग\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "छूटी ऊष्मा और प्रकाश",
+            "एक टाँग कटी, गिरी",
+            "उससे नीचे, कोई लौ नहीं",
+            "हर असली ईंधन कहीं विफल"
+          ],
+          "solution": "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तीन पायांची आग\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सुटलेली उष्णता आणि प्रकाश",
+            "एक पाय कापला, पडली",
+            "त्याखाली ज्योत नाही",
+            "प्रत्येक खरे इंधन कुठे ना कुठे अपयशी"
+          ],
+          "solution": "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The heavy gas blanket\" goes correctly with which of these?",
+      "choices": [
+        "heat and light released",
+        "hottest at the rim",
+        "flames starved dry",
+        "cut one leg, it falls"
+      ],
+      "answerIndex": 2,
+      "solution": "CO₂ smothers the fires it must not wet — heavier than air, it settles on the flame and starves it of oxygen. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"भारी गैस का कंबल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "छूटी ऊष्मा और प्रकाश",
+            "किनारे पर सबसे तप्त",
+            "सूखी भूखी मारी लपटें",
+            "एक टाँग कटी, गिरी"
+          ],
+          "solution": "CO₂ उन आगों को दम घोंटकर बुझाता है जिन्हें भिगोना मना है — हवा से भारी, वह लौ पर बैठकर उसकी ऑक्सीजन छीन लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जड वायूचे पांघरूण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सुटलेली उष्णता आणि प्रकाश",
+            "काठावर सर्वांत तप्त",
+            "कोरड्या उपाशी मारलेल्या ज्वाळा",
+            "एक पाय कापला, पडली"
+          ],
+          "solution": "CO₂ भिजवायला मनाई असलेल्या आगी गुदमरवून विझवतो — हवेहून जड, तो ज्योतीवर बसून तिचा ऑक्सिजन हिरावतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Dark, yellow and blue\" goes correctly with which of these?",
+      "choices": [
+        "hottest at the rim",
+        "flames starved dry",
+        "heat and light released",
+        "useful and dangerous alike"
+      ],
+      "answerIndex": 0,
+      "solution": "The flame's three zones: innermost dark unburnt vapour, middle yellow half-burnt glow, outer blue complete burning — and the outer rim is the hottest. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"काला, पीला और नीला\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "किनारे पर सबसे तप्त",
+            "सूखी भूखी मारी लपटें",
+            "छूटी ऊष्मा और प्रकाश",
+            "समान रूप से उपयोगी-ख़तरनाक"
+          ],
+          "solution": "ज्वाला के तीन क्षेत्र: भीतरी काला अनजला वाष्प, बीच की पीली अधजली दमक, बाहरी नीला पूर्ण दहन — और बाहरी किनारा सबसे तप्त। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"काळा, पिवळा आणि निळा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "काठावर सर्वांत तप्त",
+            "कोरड्या उपाशी मारलेल्या ज्वाळा",
+            "सुटलेली उष्णता आणि प्रकाश",
+            "सारखेच उपयुक्त-धोकादायक"
+          ],
+          "solution": "ज्योतीचे तीन पट्टे: आतला काळा न जळालेला बाष्प, मधला पिवळा अर्धवट जळता झळाळ, बाहेरचा निळा पूर्ण ज्वलन — आणि बाहेरचा काठ सर्वांत तप्त. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Heat per kilogram\" goes correctly with which of these?",
+      "choices": [
+        "heat and light released",
+        "flames starved dry",
+        "fuels ranked honest",
+        "hottest at the rim"
+      ],
+      "answerIndex": 2,
+      "solution": "Calorific value measures a fuel's worth in heat per kilogram — hydrogen tops the table, dung cakes sit near the floor. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"प्रति किलोग्राम ऊष्मा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "छूटी ऊष्मा और प्रकाश",
+            "सूखी भूखी मारी लपटें",
+            "ईमानदारी से क्रमबद्ध ईंधन",
+            "किनारे पर सबसे तप्त"
+          ],
+          "solution": "ऊष्मीय मान प्रति किलोग्राम ऊष्मा में ईंधन का मोल नापता है — हाइड्रोजन तालिका के शीर्ष पर, उपले फ़र्श के पास। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रति किलोग्रॅम उष्णता\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सुटलेली उष्णता आणि प्रकाश",
+            "कोरड्या उपाशी मारलेल्या ज्वाळा",
+            "प्रामाणिकपणे क्रम लावलेली इंधने",
+            "काठावर सर्वांत तप्त"
+          ],
+          "solution": "उष्मांक मूल्य प्रति किलोग्रॅम उष्णतेत इंधनाचे मोल मोजते — हायड्रोजन तक्त्याच्या शिरोभागी, गोवऱ्या तळाजवळ. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The perfect-fuel checklist\" goes correctly with which of these?",
+      "choices": [
+        "every real fuel fails a line",
+        "fuels ranked honest",
+        "below it, no flame",
+        "flames starved dry"
+      ],
+      "answerIndex": 0,
+      "solution": "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पूर्ण-ईंधन की जाँच-सूची\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हर असली ईंधन कहीं विफल",
+            "ईमानदारी से क्रमबद्ध ईंधन",
+            "उससे नीचे, कोई लौ नहीं",
+            "सूखी भूखी मारी लपटें"
+          ],
+          "solution": "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"परिपूर्ण-इंधनाची तपासयादी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रत्येक खरे इंधन कुठे ना कुठे अपयशी",
+            "प्रामाणिकपणे क्रम लावलेली इंधने",
+            "त्याखाली ज्योत नाही",
+            "कोरड्या उपाशी मारलेल्या ज्वाळा"
+          ],
+          "solution": "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The ignition temperature EXCEPT —",
+      "choices": [
+        "A matchstick pays it with friction heat — the strike IS the payment.",
+        "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides.",
+        "Paper pays the fee easily; coal needs long coaxing — the fee differs fuel to fuel.",
+        "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait."
+      ],
+      "answerIndex": 1,
+      "solution": "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides. That belongs to The fire triangle, not The ignition temperature — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ज्वलन ताप के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "माचिस की तीली उसे घर्षण की गर्मी से चुकाती है — रगड़ ही भुगतान है।",
+            "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है।",
+            "काग़ज़ फ़ीस आसानी से चुकाता है; कोयले को देर तक मनाना पड़ता है — फ़ीस ईंधन-दर-ईंधन बदलती है।",
+            "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं।"
+          ],
+          "solution": "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है। यह अग्नि त्रिभुज की बात है, ज्वलन ताप की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रज्वलन तापमान विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "काडेपेटीची काडी ती घर्षणाच्या उष्णतेने देते — घासणे हेच पैसे देणे.",
+            "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते.",
+            "कागद फी सहज देतो; कोळशाला बराच वेळ मनवावे लागते — फी इंधनागणिक बदलते.",
+            "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात."
+          ],
+          "solution": "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते. हे अग्नी त्रिकोण चे आहे, प्रज्वलन तापमान चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The fire triangle EXCEPT —",
+      "choices": [
+        "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides.",
+        "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait.",
+        "Water on an oil fire fails twice over — the oil floats on it and spatters, still burning.",
+        "Water cools below the ignition fee; CO₂ walls off the oxygen; clearing fuel starves the third leg."
+      ],
+      "answerIndex": 1,
+      "solution": "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait. That belongs to The ignition temperature, not The fire triangle — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अग्नि त्रिभुज के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है।",
+            "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं।",
+            "तेल की आग पर पानी दो बार विफल है — तेल उस पर तैरता और छिटकता है, जलता हुआ ही।",
+            "पानी ज्वलन-फ़ीस से नीचे ठंडा करता है; CO₂ ऑक्सीजन की दीवार खींचता है; ईंधन हटाना तीसरी टाँग भूखी करता है।"
+          ],
+          "solution": "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं। यह ज्वलन ताप की बात है, अग्नि त्रिभुज की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अग्नी त्रिकोण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते.",
+            "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात.",
+            "तेलाच्या आगीवर पाणी दोनदा फसते — तेल त्यावर तरंगते आणि उडते, जळतच.",
+            "पाणी प्रज्वलन-फीखाली थंड करते; CO₂ ऑक्सिजनची भिंत घालतो; इंधन काढणे तिसरा पाय उपाशी ठेवते."
+          ],
+          "solution": "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात. हे प्रज्वलन तापमान चे आहे, अग्नी त्रिकोण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The flame's three zones EXCEPT —",
+      "choices": [
+        "Goldsmiths blow their pipes at the outer zone — the hottest, cleanest heat for the finest work.",
+        "Hold a glass rod across the yellow zone and it comes away sooted — the signature of unfinished burning.",
+        "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait.",
+        "The flame's three zones: innermost dark unburnt vapour, middle yellow half-burnt glow, outer blue complete burning — and the outer rim is the hottest."
+      ],
+      "answerIndex": 2,
+      "solution": "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait. That belongs to The ignition temperature, not The flame's three zones — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ज्वाला के तीन क्षेत्र के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सुनार अपनी फुँकनी बाहरी क्षेत्र पर साधते हैं — सबसे तप्त, सबसे साफ़ आँच, सबसे महीन काम के लिए।",
+            "पीले क्षेत्र के आर-पार काँच की छड़ रखिए, वह कालिख लिए लौटती है — अधूरे दहन के दस्तख़त।",
+            "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं।",
+            "ज्वाला के तीन क्षेत्र: भीतरी काला अनजला वाष्प, बीच की पीली अधजली दमक, बाहरी नीला पूर्ण दहन — और बाहरी किनारा सबसे तप्त।"
+          ],
+          "solution": "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं। यह ज्वलन ताप की बात है, ज्वाला के तीन क्षेत्र की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ज्योतीचे तीन पट्टे विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सोनार आपली फुंकणी बाहेरच्या पट्ट्यावर धरतात — सर्वांत तप्त, सर्वांत स्वच्छ आच, सर्वांत बारीक कामासाठी.",
+            "पिवळ्या पट्ट्यातून काचकांडी धरा, ती काजळी घेऊन परतते — अपुऱ्या ज्वलनाची सही.",
+            "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात.",
+            "ज्योतीचे तीन पट्टे: आतला काळा न जळालेला बाष्प, मधला पिवळा अर्धवट जळता झळाळ, बाहेरचा निळा पूर्ण ज्वलन — आणि बाहेरचा काठ सर्वांत तप्त."
+          ],
+          "solution": "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात. हे प्रज्वलन तापमान चे आहे, ज्योतीचे तीन पट्टे चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Match the fire to its right response: A-burning wood pile, B-sparking electrical panel, C-oil pan aflame in the kitchen. Which trio is right?",
+      "choices": [
+        "A: water · B: CO₂, never water · C: cover with a lid, never water",
+        "A: CO₂ · B: water · C: fan the flames",
+        "A: cover with lid · B: oil · C: water",
+        "Water serves all three fires equally well"
+      ],
+      "answerIndex": 0,
+      "solution": "One triangle, three tactics. Wood: water cools it below its ignition fee — the classic. Electricity: water conducts and would put the current through YOU, so dry CO₂ starves the flame instead. Oil: water sinks under it and erupts as burning spray, so a lid steals the oxygen quietly. Reading the fire before reaching for anything is the whole discipline.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आग को उसके सही जवाब से मिलाइए: अ-जलता लकड़ी का ढेर, ब-चिंगारियाँ छोड़ता बिजली-पैनल, स-रसोई में धधकती तेल की कड़ाही। कौन-सी तिकड़ी सही है?",
+          "choices": [
+            "अ: पानी · ब: CO₂, पानी कभी नहीं · स: ढक्कन से ढकिए, पानी कभी नहीं",
+            "अ: CO₂ · ब: पानी · स: लपटें हवा दीजिए",
+            "अ: ढक्कन · ब: तेल · स: पानी",
+            "पानी तीनों आगों पर एक-सा कारगर है"
+          ],
+          "solution": "एक त्रिभुज, तीन दाँव। लकड़ी: पानी उसे ज्वलन-फ़ीस से नीचे ठंडा करता है — क्लासिक। बिजली: पानी चालक है और धारा आप तक पहुँचा देता, अतः सूखा CO₂ लौ को भूखा मारता है। तेल: पानी उसके नीचे धँसकर जलती फुहार बनकर फटता है, अतः ढक्कन चुपचाप ऑक्सीजन छीनता है। कुछ भी उठाने से पहले आग को पढ़ना — यही पूरा अनुशासन है।"
+        },
+        "mr": {
+          "stem": "आगीला तिच्या योग्य उत्तराशी जुळवा: अ-जळणारा लाकडाचा ढीग, ब-ठिणग्या टाकणारे वीज-पॅनेल, क-स्वयंपाकघरात पेटलेली तेलाची कढई. कोणती त्रयी बरोबर?",
+          "choices": [
+            "अ: पाणी · ब: CO₂, पाणी कधीच नाही · क: झाकणाने झाका, पाणी कधीच नाही",
+            "अ: CO₂ · ब: पाणी · क: ज्वाळांना वारा घाला",
+            "अ: झाकण · ब: तेल · क: पाणी",
+            "पाणी तिन्ही आगींवर सारखेच चालते"
+          ],
+          "solution": "एक त्रिकोण, तीन डाव. लाकूड: पाणी त्याला प्रज्वलन-फीखाली थंड करते — अभिजात. वीज: पाणी वाहक आहे आणि धारा तुमच्यापर्यंत आणले असते, म्हणून कोरडा CO₂ ज्योतीला उपाशी मारतो. तेल: पाणी त्याच्याखाली बुडून जळता फवारा होऊन फुटते, म्हणून झाकण गुपचूप ऑक्सिजन हिरावते. काहीही उचलण्याआधी आग वाचणे — हीच सारी शिस्त."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Blowing OUT a candle kills it, yet blowing INTO a blacksmith's forge makes the coals roar hotter. The same breath — why opposite results?",
+      "choices": [
+        "The candle's small flame loses its heat to the gust and drops below ignition temperature; the forge's coals hold heat far above it, so extra air only delivers more oxygen to a fire already past its fee",
+        "Candle wax hates moving air while coal loves it",
+        "The forge's air is a different gas from ordinary breath",
+        "Candles can only burn in perfectly still rooms"
+      ],
+      "answerIndex": 0,
+      "solution": "The breath carries two gifts at once — oxygen and cooling — and the fire's size decides which gift dominates. A candle flame is a whisper of hot vapour: one gust sweeps its heat away, the wax vapour falls below its ignition fee, and the reaction stops mid-sentence. A forge is a furnace of stored heat no breath can chill; there the gust's oxygen is pure bonus. Same act, two fires, opposite outcomes — because combustion obeys temperature first and enthusiasm second.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "फूँक मारने से मोमबत्ती बुझती है, पर लोहार की भट्ठी में फूँकने से कोयले और दहक उठते हैं। वही साँस — नतीजे उलटे क्यों?",
+          "choices": [
+            "मोमबत्ती की नन्ही लौ झोंके में अपनी गर्मी खोकर ज्वलन ताप से नीचे गिर जाती है; भट्ठी के कोयले उससे कहीं ऊपर गर्मी थामे हैं, अतः और हवा उस आग को बस और ऑक्सीजन देती है जो फ़ीस कब की चुका चुकी",
+            "मोम को चलती हवा से बैर है, कोयले को प्यार",
+            "भट्ठी की हवा आम साँस से अलग गैस है",
+            "मोमबत्तियाँ केवल बिलकुल स्थिर कमरों में जल सकती हैं"
+          ],
+          "solution": "साँस एक साथ दो सौग़ातें लाती है — ऑक्सीजन और ठंडक — और आग का आकार तय करता है कि कौन-सी भारी पड़े। मोमबत्ती की लौ गर्म वाष्प की फुसफुसाहट है: एक झोंका उसकी गर्मी बुहार ले जाता है, मोम-वाष्प ज्वलन-फ़ीस से नीचे गिरता है, और अभिक्रिया वाक्य के बीच रुक जाती है। भट्ठी जमा गर्मी की ऐसी भट्टी है जिसे कोई साँस ठंडा नहीं कर सकती; वहाँ झोंके की ऑक्सीजन शुद्ध बोनस है। एक ही काम, दो आगें, उलटे नतीजे — क्योंकि दहन पहले तापमान की सुनता है, जोश की बाद में।"
+        },
+        "mr": {
+          "stem": "फुंकर मारल्याने मेणबत्ती विझते, पण लोहाराच्या भात्यात फुंकल्याने निखारे अधिक धगधगतात. तोच श्वास — निकाल उलटे का?",
+          "choices": [
+            "मेणबत्तीची इवली ज्योत झोतात आपली उष्णता गमावून प्रज्वलन तापमानाखाली उतरते; भात्याचे निखारे त्याहून खूप वर उष्णता धरून आहेत, म्हणून जास्त हवा फी केव्हाच भरलेल्या आगीला फक्त अधिक ऑक्सिजन देते",
+            "मेणाला हलत्या हवेचा तिटकारा, कोळशाला प्रेम",
+            "भात्याची हवा नेहमीच्या श्वासाहून वेगळा वायू",
+            "मेणबत्त्या फक्त पूर्ण स्थिर खोल्यांतच जळू शकतात"
+          ],
+          "solution": "श्वास एकाच वेळी दोन भेटी आणतो — ऑक्सिजन आणि गारवा — आणि आगीचा आकार ठरवतो कोणती भेट वरचढ. मेणबत्तीची ज्योत म्हणजे गरम बाष्पाची कुजबुज: एक झोत तिची उष्णता झाडून नेतो, मेण-बाष्प प्रज्वलन-फीखाली उतरते, आणि अभिक्रिया वाक्याच्या मध्येच थांबते. भाता म्हणजे साठलेल्या उष्णतेची अशी भट्टी जिला कोणताही श्वास थंड करू शकत नाही; तिथे झोताचा ऑक्सिजन शुद्ध बोनस. एकच कृती, दोन आगी, उलटे निकाल — कारण ज्वलन आधी तापमानाचे ऐकते, उत्साहाचे नंतर."
+        }
+      }
+    }
+  ]
+}

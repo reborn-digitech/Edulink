@@ -985,4 +985,938 @@ export const G8_SCIENCE: Chapter[] = [
       },
     ],
   },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Materials: Metals and Non-Metals                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-metals-non-metals",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 4 — Materials: Metals and Non-Metals",
+      hi: "अध्याय 4 — पदार्थ: धातु और अधातु",
+      mr: "प्रकरण 4 — पदार्थ: धातू आणि अधातू",
+    },
+    name: {
+      en: "Materials: Metals and Non-Metals",
+      hi: "पदार्थ: धातु और अधातु",
+      mr: "पदार्थ: धातू आणि अधातू",
+    },
+    summary: {
+      en: "Two tribes of matter: the shining, ringing conductors and the dull, brittle insulators — with oxides basic and acidic, a pecking order that evicts weaker metals, and graphite keeping the rules honest by breaking one.",
+      hi: "पदार्थ के दो कुनबे: चमकते, बजते चालक और फीके, भुरभुरे कुचालक — क्षारकीय और अम्लीय ऑक्साइड, कमज़ोर धातुओं को बेदख़ल करता वरीयता-क्रम, और एक नियम तोड़कर सबको ईमानदार रखता ग्रेफ़ाइट।",
+      mr: "पदार्थाच्या दोन जमाती: चमकणारे, वाजणारे वाहक आणि निस्तेज, ठिसूळ रोधक — आम्लारीय आणि आम्लीय ऑक्साइड, दुबळ्या धातूंना हुसकावणारा वरचष्मा-क्रम, आणि एक नियम मोडून साऱ्यांना प्रामाणिक ठेवणारे ग्रॅफाइट.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "metals",
+        name: { en: "Metals", hi: "धातुएँ", mr: "धातू" },
+        kind: "class",
+        prompt: {
+          en: "Which class of materials shines when polished, rings when struck, and lets heat and current pass through?",
+          hi: "पदार्थों का कौन-सा वर्ग रगड़ने पर चमकता है, ठोकने पर बजता है, और ऊष्मा-धारा को गुज़रने देता है?",
+          mr: "पदार्थांचा कोणता वर्ग घासल्यावर चमकतो, ठोकल्यावर वाजतो, आणि उष्णता-धारेला जाऊ देतो?",
+        },
+        statement: {
+          en: "Metals are lustrous, sonorous, malleable and conducting — iron, copper and aluminium head the roll.",
+          hi: "धातुएँ चमकीली, ध्वानिक, आघातवर्ध्य और चालक हैं — लोहा, ताँबा और अल्युमिनियम सूची के सिरे पर।",
+          mr: "धातू चकचकीत, नादमय, ठोकून वाढणाऱ्या आणि वाहक — लोखंड, तांबे आणि अ‍ॅल्युमिनियम यादीच्या शिरोभागी.",
+        },
+        detail: {
+          en: "Beaten into sheets, drawn into wires — they deform without shattering, which non-metals cannot forgive.",
+          hi: "चादरों में पीटी, तारों में खींची जाती हैं — टूटे बिना ढलती हैं, जो अधातुओं से नहीं होता।",
+          mr: "पत्र्यांत ठोकल्या, तारांत ओढल्या जातात — न फुटता वळतात, जे अधातूंना जमत नाही.",
+        },
+        extra: {
+          en: "Sonority is why temple bells and school bells are metal — a struck non-metal just thuds.",
+          hi: "ध्वानिकता ही कारण है कि मंदिर और स्कूल की घंटियाँ धातु की हैं — ठोकी गई अधातु बस धप्प करती है।",
+          mr: "नादमयतेमुळेच देवळाच्या आणि शाळेच्या घंटा धातूच्या — ठोकलेली अधातू नुसती धप्प वाजते.",
+        },
+        pair: {
+          left: {
+            en: "The shining, ringing tribe",
+            hi: "चमकता, बजता कुनबा",
+            mr: "चमकणारी, वाजणारी जमात",
+          },
+          right: {
+            en: "heat and current let through",
+            hi: "गुज़रने दी गई ऊष्मा-धारा",
+            mr: "जाऊ दिलेली उष्णता-धारा",
+          },
+        },
+      },
+      {
+        id: "non-metals",
+        name: { en: "Non-metals", hi: "अधातुएँ", mr: "अधातू" },
+        kind: "class",
+        prompt: {
+          en: "Which class of materials — sulphur, carbon, oxygen among them — is dull, brittle and a poor conductor?",
+          hi: "पदार्थों का कौन-सा वर्ग — गंधक, कार्बन, ऑक्सीजन जिनमें हैं — फीका, भुरभुरा और कुचालक है?",
+          mr: "पदार्थांचा कोणता वर्ग — गंधक, कार्बन, ऑक्सिजन ज्यांत आहेत — निस्तेज, ठिसूळ आणि दुर्वाहक आहे?",
+        },
+        statement: {
+          en: "Non-metals are dull and brittle, insulating rather than conducting — sulphur crumbles where copper would bend.",
+          hi: "अधातुएँ फीकी और भुरभुरी हैं, चालक नहीं कुचालक — जहाँ ताँबा मुड़ता, वहाँ गंधक चूर हो जाता है।",
+          mr: "अधातू निस्तेज आणि ठिसूळ, वाहक नव्हे रोधक — जिथे तांबे वाकले असते, तिथे गंधक चुरा होतो.",
+        },
+        pair: {
+          left: {
+            en: "The dull, brittle tribe",
+            hi: "फीका, भुरभुरा कुनबा",
+            mr: "निस्तेज, ठिसूळ जमात",
+          },
+          right: { en: "current refused", hi: "लौटाई गई धारा", mr: "परतवलेली धारा" },
+        },
+      },
+      {
+        id: "malleability",
+        name: { en: "Malleability", hi: "आघातवर्ध्यता", mr: "ठोकवर्धनीयता (वर्धनीयता)" },
+        kind: "property",
+        prompt: {
+          en: "Which property lets metals be beaten into sheets — silver into a foil thin as breath?",
+          hi: "कौन-सा गुण धातुओं को चादरों में पीटने देता है — चाँदी को साँस-सी पतली पन्नी में?",
+          mr: "कोणता गुणधर्म धातूंना पत्र्यांत ठोकू देतो — चांदीला श्वासाइतक्या पातळ वर्खात?",
+        },
+        statement: {
+          en: "Malleability is the sheet-making property — gold and silver beaten to the leaf that decorates sweets.",
+          hi: "आघातवर्ध्यता चादर बनाने का गुण है — सोना-चाँदी पीटकर वह वरक़ बनते हैं जो मिठाई सजाता है।",
+          mr: "ठोकवर्धनीयता हा पत्रा बनवण्याचा गुणधर्म — सोने-चांदी ठोकून तो वर्ख होतो जो मिठाई सजवतो.",
+        },
+        pair: {
+          left: { en: "Beaten into sheets", hi: "चादरों में पिटाई", mr: "पत्र्यांत ठोकलेले" },
+          right: {
+            en: "foil thin as breath",
+            hi: "साँस-सी पतली पन्नी",
+            mr: "श्वासाइतका पातळ वर्ख",
+          },
+        },
+      },
+      {
+        id: "ductility",
+        name: { en: "Ductility", hi: "तन्यता", mr: "तन्यता" },
+        kind: "property",
+        prompt: {
+          en: "Which property lets metals be drawn into wires — one gram of gold into a two-kilometre thread?",
+          hi: "कौन-सा गुण धातुओं को तारों में खींचने देता है — एक ग्राम सोने को दो किलोमीटर के धागे में?",
+          mr: "कोणता गुणधर्म धातूंना तारांत ओढू देतो — एका ग्रॅम सोन्याला दोन किलोमीटरच्या धाग्यात?",
+        },
+        statement: {
+          en: "Ductility draws metals into wires — copper's whole career hangs on it, from house wiring to the grid.",
+          hi: "तन्यता धातुओं को तारों में खींचती है — घर की वायरिंग से ग्रिड तक, ताँबे का पूरा करियर इसी पर टिका है।",
+          mr: "तन्यता धातूंना तारांत ओढते — घरच्या वायरिंगपासून ग्रिडपर्यंत, तांब्याची सारी कारकीर्द हिच्यावर उभी.",
+        },
+        pair: {
+          left: { en: "Drawn into wire", hi: "तार में खिंचाई", mr: "तारेत ओढलेले" },
+          right: { en: "a career in cables", hi: "केबलों में करियर", mr: "केबलांतली कारकीर्द" },
+        },
+      },
+      {
+        id: "metal-oxides",
+        name: { en: "Metal oxides", hi: "धातु ऑक्साइड", mr: "धातू ऑक्साइड" },
+        kind: "reaction",
+        prompt: {
+          en: "Metals burnt or weathered in air form which compounds — generally BASIC in nature?",
+          hi: "हवा में जली या घिसी धातुएँ कौन-से यौगिक बनाती हैं — प्रायः क्षारकीय स्वभाव के?",
+          mr: "हवेत जळलेल्या वा झिजलेल्या धातू कोणती संयुगे बनवतात — बहुधा आम्लारीय स्वभावाची?",
+        },
+        statement: {
+          en: "Metals joining oxygen make metal oxides — mostly basic, turning red litmus blue when dissolved in water.",
+          hi: "ऑक्सीजन से जुड़ी धातुएँ धातु ऑक्साइड बनाती हैं — प्रायः क्षारकीय, पानी में घुलकर लाल लिटमस को नीला करते हुए।",
+          mr: "ऑक्सिजनशी जुळलेल्या धातू धातू ऑक्साइड बनवतात — बहुधा आम्लारीय, पाण्यात विरघळून लाल लिटमसला निळे करणारे.",
+        },
+        detail: {
+          en: "Rub a burnt strip's white ash into water and test: red litmus turns blue — base by birth.",
+          hi: "जली पट्टी की सफ़ेद राख पानी में घोलकर जाँचिए: लाल लिटमस नीला — जन्म से क्षारक।",
+          mr: "जळलेल्या पट्टीची पांढरी राख पाण्यात घोळून तपासा: लाल लिटमस निळे — जन्मानेच आम्लारी.",
+        },
+        extra: {
+          en: "Non-metal oxides run the other way — sulphur's fumes in water make an acid that reddens blue litmus.",
+          hi: "अधातु ऑक्साइड उल्टा चलते हैं — गंधक का धुआँ पानी में अम्ल बनकर नीला लिटमस लाल करता है।",
+          mr: "अधातू ऑक्साइड उलटे चालतात — गंधकाचा धूर पाण्यात आम्ल होऊन निळे लिटमस लाल करतो.",
+        },
+        pair: {
+          left: { en: "Metal met by oxygen", hi: "ऑक्सीजन से मिली धातु", mr: "ऑक्सिजनला भेटलेली धातू" },
+          right: {
+            en: "an oxide, basic by birth",
+            hi: "जन्म से क्षारकीय ऑक्साइड",
+            mr: "जन्माने आम्लारीय ऑक्साइड",
+          },
+        },
+      },
+      {
+        id: "displacement",
+        name: {
+          en: "The displacement reaction",
+          hi: "विस्थापन अभिक्रिया",
+          mr: "विस्थापन अभिक्रिया",
+        },
+        kind: "reaction",
+        prompt: {
+          en: "Dip an iron nail in blue copper sulphate: the blue fades and copper coats the nail. Which reaction just ran?",
+          hi: "नीले तूतिये के घोल में लोहे की कील डुबोइए: नीलापन फीका पड़ता है और कील पर ताँबा चढ़ जाता है। कौन-सी अभिक्रिया चली?",
+          mr: "निळ्या मोरचुदाच्या द्रावणात लोखंडी खिळा बुडवा: निळेपणा फिका पडतो आणि खिळ्यावर तांबे चढते. कोणती अभिक्रिया चालली?",
+        },
+        statement: {
+          en: "In displacement a stronger metal evicts a weaker one from its compound — iron turns copper out of its own sulphate.",
+          hi: "विस्थापन में प्रबल धातु दुर्बल को उसके यौगिक से बेदख़ल करती है — लोहा ताँबे को उसके ही सल्फ़ेट से निकाल देता है।",
+          mr: "विस्थापनात बलवान धातू दुबळीला तिच्या संयुगातून हुसकावते — लोखंड तांब्याला त्याच्याच सल्फेटमधून काढते.",
+        },
+        detail: {
+          en: "The blue fades as copper leaves the solution; the nail browns as copper settles on it — colour writes the receipt.",
+          hi: "ताँबे के घोल छोड़ते ही नीलापन उतरता है; कील पर बैठते ही वह भूरी होती है — रंग ही रसीद लिखता है।",
+          mr: "तांबे द्रावण सोडताच निळेपणा उतरतो; खिळ्यावर बसताच तो तपकिरी होतो — रंगच पावती लिहितो.",
+        },
+        extra: {
+          en: "The reverse never runs — copper cannot push iron out. The pecking order of metals is fixed.",
+          hi: "उलटा कभी नहीं चलता — ताँबा लोहे को नहीं धकेल सकता। धातुओं का वरीयता-क्रम अटल है।",
+          mr: "उलटे कधीच चालत नाही — तांबे लोखंडाला ढकलू शकत नाही. धातूंचा वरचष्मा-क्रम पक्का आहे.",
+        },
+        pair: {
+          left: { en: "The fading blue", hi: "फीका पड़ता नीलापन", mr: "फिका पडणारा निळेपणा" },
+          right: {
+            en: "a weaker metal evicted",
+            hi: "बेदख़ल हुई दुर्बल धातु",
+            mr: "हुसकावलेली दुबळी धातू",
+          },
+        },
+      },
+      {
+        id: "graphite",
+        name: { en: "Graphite, the exception", hi: "अपवाद ग्रेफ़ाइट", mr: "अपवाद ग्रॅफाइट" },
+        kind: "exception",
+        prompt: {
+          en: "Which non-metal, a form of carbon, conducts electricity so well it sits inside every dry cell and pencil?",
+          hi: "कार्बन का एक रूप, कौन-सी अधातु बिजली इतनी अच्छी चलाती है कि हर सूखे सेल और पेंसिल में बैठी है?",
+          mr: "कार्बनचे एक रूप, कोणती अधातू वीज इतकी चांगली वाहते की प्रत्येक शुष्क घटात आणि पेन्सिलीत बसली आहे?",
+        },
+        statement: {
+          en: "Graphite is the great exception — a non-metal that conducts current, keeping the rules honest by breaking one.",
+          hi: "ग्रेफ़ाइट बड़ा अपवाद है — धारा चलाती अधातु, जो एक नियम तोड़कर बाक़ियों को ईमानदार रखती है।",
+          mr: "ग्रॅफाइट हा मोठा अपवाद — धारा वाहणारी अधातू, जी एक नियम मोडून बाकीच्यांना प्रामाणिक ठेवते.",
+        },
+        pair: {
+          left: {
+            en: "The conducting non-metal",
+            hi: "चालक अधातु",
+            mr: "वाहक अधातू",
+          },
+          right: { en: "an exception on duty", hi: "ड्यूटी पर अपवाद", mr: "कामावरचा अपवाद" },
+        },
+      },
+      {
+        id: "noble-calm",
+        name: {
+          en: "Gold and silver's calm",
+          hi: "सोने-चाँदी की शांति",
+          mr: "सोन्या-चांदीची शांतता",
+        },
+        kind: "property",
+        prompt: {
+          en: "Which metals resist air and water so stubbornly that they serve as ornament for centuries?",
+          hi: "कौन-सी धातुएँ हवा-पानी का इतनी ज़िद से प्रतिरोध करती हैं कि सदियों गहना बनकर चलती हैं?",
+          mr: "कोणत्या धातू हवा-पाण्याला इतक्या हट्टाने विरोध करतात की शतके दागिना म्हणून चालतात?",
+        },
+        statement: {
+          en: "Gold and silver barely react — their calm is why grandmother's bangles outlive generations while iron gates flake.",
+          hi: "सोना-चाँदी मुश्किल से अभिक्रिया करते हैं — उनकी शांति ही कारण है कि दादी की चूड़ियाँ पीढ़ियाँ जीती हैं जबकि लोहे के फाटक झड़ते हैं।",
+          mr: "सोने-चांदी जेमतेम अभिक्रिया करतात — त्यांच्या शांततेमुळेच आजीच्या बांगड्या पिढ्या जगतात तर लोखंडी फाटके झडतात.",
+        },
+        pair: {
+          left: {
+            en: "The unreacting ornaments",
+            hi: "अभिक्रिया न करते गहने",
+            mr: "अभिक्रिया न करणारे दागिने",
+          },
+          right: { en: "calm across centuries", hi: "सदियों की शांति", mr: "शतकांची शांतता" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the property to the product it makes possible: A-malleability, B-ductility, C-sonority. Which trio is right?",
+          hi: "गुण को उस उत्पाद से मिलाइए जिसे वह संभव करता है: अ-आघातवर्ध्यता, ब-तन्यता, स-ध्वानिकता। कौन-सी तिकड़ी सही है?",
+          mr: "गुणधर्माला तो शक्य करत असलेल्या उत्पादनाशी जुळवा: अ-ठोकवर्धनीयता, ब-तन्यता, क-नादमयता. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: silver foil · B: copper wire · C: the school bell",
+            hi: "अ: चाँदी का वरक़ · ब: ताँबे का तार · स: स्कूल की घंटी",
+            mr: "अ: चांदीचा वर्ख · ब: तांब्याची तार · क: शाळेची घंटा",
+          },
+          {
+            en: "A: copper wire · B: the school bell · C: silver foil",
+            hi: "अ: ताँबे का तार · ब: स्कूल की घंटी · स: चाँदी का वरक़",
+            mr: "अ: तांब्याची तार · ब: शाळेची घंटा · क: चांदीचा वर्ख",
+          },
+          {
+            en: "A: the school bell · B: silver foil · C: copper wire",
+            hi: "अ: स्कूल की घंटी · ब: चाँदी का वरक़ · स: ताँबे का तार",
+            mr: "अ: शाळेची घंटा · ब: चांदीचा वर्ख · क: तांब्याची तार",
+          },
+          {
+            en: "All three products use the same single property",
+            hi: "तीनों उत्पाद एक ही अकेले गुण से बनते हैं",
+            mr: "तिन्ही उत्पादने एकाच गुणधर्माने बनतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Each artefact is one property made visible: beating gives the foil, drawing gives the wire, ringing gives the bell. Reverse any pairing and the factory fails — you cannot beat a wire out of silver or ring a sheet. Products are properties wearing shapes.",
+          hi: "हर वस्तु एक गुण का दिखता रूप है: पिटाई से वरक़, खिंचाई से तार, बजने से घंटी। कोई जोड़ी पलटिए और कारख़ाना ठप — चाँदी से तार पीटा नहीं जाता, न चादर बजाई जाती है। उत्पाद आकार पहने गुण ही हैं।",
+          mr: "प्रत्येक वस्तू म्हणजे एक गुणधर्म दिसू लागलेला: ठोकण्याने वर्ख, ओढण्याने तार, वाजण्याने घंटा. कोणतीही जोडी उलटवा आणि कारखाना बंद — चांदीतून तार ठोकता येत नाही, ना पत्रा वाजवता येतो. उत्पादने म्हणजे आकार घातलेले गुणधर्मच.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A frying pan is metal but its handle is plastic or wood — one object built from BOTH tribes. What is the design saying?",
+          hi: "कड़ाही धातु की है पर उसकी मूठ प्लास्टिक या लकड़ी की — एक वस्तु, दोनों कुनबों से बनी। यह बनावट क्या कह रही है?",
+          mr: "तवा धातूचा पण त्याची मूठ प्लास्टिक वा लाकडाची — एक वस्तू, दोन्ही जमातींतून बांधलेली. ही रचना काय सांगते आहे?",
+        },
+        choices: [
+          {
+            en: "Each side of the pan has a different job: the flame side must CONDUCT heat into the food, the hand side must REFUSE it — so each job hires the tribe with the right property",
+            hi: "कड़ाही के दो पक्षों के दो काम हैं: आँच वाले पक्ष को ऊष्मा भोजन तक पहुँचानी है, हाथ वाले को उसे रोकना है — अतः हर काम सही गुण वाले कुनबे को नौकरी देता है",
+            mr: "तव्याच्या दोन बाजूंची दोन कामे: ज्योतीच्या बाजूने उष्णता अन्नापर्यंत न्यायची, हाताच्या बाजूने ती नाकारायची — म्हणून प्रत्येक काम योग्य गुणधर्माच्या जमातीला कामावर घेते",
+          },
+          {
+            en: "Plastic handles are only for decoration",
+            hi: "प्लास्टिक की मूठें केवल सजावट के लिए हैं",
+            mr: "प्लास्टिकच्या मुठी फक्त सजावटीसाठी",
+          },
+          {
+            en: "Metal was too costly to use for the whole pan",
+            hi: "पूरी कड़ाही के लिए धातु बहुत महँगी थी",
+            mr: "अख्ख्या तव्यासाठी धातू फार महाग होती",
+          },
+          {
+            en: "Wood conducts heat better than steel",
+            hi: "लकड़ी स्टील से बेहतर ऊष्मा चलाती है",
+            mr: "लाकूड स्टीलहून चांगली उष्णता वाहते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The pan is a two-line job advertisement answered by two tribes. Conduction — the metal's gift — carries the flame's heat into the dal; the same gift at the handle would carry it into your palm, so there the insulating tribe is hired instead. Good design never asks which material is 'better'; it asks better AT WHAT — and the humble kadhai answers the question twice.",
+          hi: "कड़ाही दो पंक्तियों का रोज़गार-विज्ञापन है जिसे दो कुनबों ने भरा। चालन — धातु की देन — आँच की ऊष्मा दाल तक ले जाता है; वही देन मूठ पर होती तो हथेली तक ले जाती, अतः वहाँ कुचालक कुनबे को नौकरी मिली। अच्छी बनावट कभी नहीं पूछती कौन-सा पदार्थ 'बेहतर' है; पूछती है किस काम में बेहतर — और मामूली कड़ाही इस सवाल का जवाब दो बार देती है।",
+          mr: "तवा म्हणजे दोन ओळींची नोकरी-जाहिरात जिला दोन जमातींनी उत्तर दिले. वहन — धातूची देणगी — ज्योतीची उष्णता आमटीपर्यंत नेते; तीच देणगी मुठीवर असती तर तळहातापर्यंत नेली असती, म्हणून तिथे रोधक जमातीला काम मिळाले. चांगली रचना कधी विचारत नाही कोणता पदार्थ 'चांगला'; विचारते कशात चांगला — आणि साधा तवा या प्रश्नाचे उत्तर दोनदा देतो.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Coal and Petroleum (the buried treasury)                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-coal-petroleum",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 5 — Coal and Petroleum",
+      hi: "अध्याय 5 — कोयला और पेट्रोलियम",
+      mr: "प्रकरण 5 — कोळसा आणि पेट्रोलियम",
+    },
+    name: { en: "Coal and Petroleum", hi: "कोयला और पेट्रोलियम", mr: "कोळसा आणि पेट्रोलियम" },
+    summary: {
+      en: "The buried treasury: forests pressed to coal, plankton to crude, one barrel refined into a shelf of fuels — spent in decades what took aeons, with conservation as the only deposit slip.",
+      hi: "गड़ा ख़ज़ाना: कोयला बने जंगल, कच्चा तेल बना प्लवक, एक बैरल से निकली ईंधनों की पूरी ताक़ — युगों की कमाई दशकों में ख़र्च, और बचत ही इकलौती जमा-पर्ची।",
+      mr: "पुरलेला खजिना: कोळसा झालेली जंगले, कच्चे तेल झालेले प्लवंग, एका पिंपातून निघालेले इंधनांचे अख्खे फडताळ — युगांची कमाई दशकांत खर्च, आणि बचत हीच एकमेव भरणा-पावती.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "fossil-fuels",
+        name: { en: "Fossil fuels", hi: "जीवाश्म ईंधन", mr: "जीवाश्म इंधने" },
+        kind: "class",
+        prompt: {
+          en: "Coal, petroleum and natural gas — buried life pressed for ages into fuel. What are they together called?",
+          hi: "कोयला, पेट्रोलियम और प्राकृतिक गैस — युगों दबा जीवन जो ईंधन बन गया। इन्हें मिलाकर क्या कहते हैं?",
+          mr: "कोळसा, पेट्रोलियम आणि नैसर्गिक वायू — युगानुयुगे दबलेले जीवन जे इंधन झाले. यांना मिळून काय म्हणतात?",
+        },
+        statement: {
+          en: "Fossil fuels are ancient life turned fuel — coal from drowned forests, petroleum from sea life, aeons in the pressing.",
+          hi: "जीवाश्म ईंधन प्राचीन जीवन का बना ईंधन है — डूबे जंगलों से कोयला, समुद्री जीवन से पेट्रोलियम, दबाव में बीते युग।",
+          mr: "जीवाश्म इंधने म्हणजे प्राचीन जीवनाचे झालेले इंधन — बुडालेल्या जंगलांतून कोळसा, सागरी जीवनातून पेट्रोलियम, दाबात गेलेली युगे.",
+        },
+        detail: {
+          en: "They are exhaustible — what took crores of years to form burns away in decades of use.",
+          hi: "वे समाप्य हैं — जिन्हें बनने में करोड़ों वर्ष लगे, वे उपयोग के दशकों में जल जाते हैं।",
+          mr: "ती संपणारी आहेत — ज्यांना बनायला कोट्यवधी वर्षे लागली, ती वापराच्या दशकांत जळून जातात.",
+        },
+        extra: {
+          en: "No factory can make them to order — every litre burnt is a withdrawal with no deposit behind it.",
+          hi: "कोई कारख़ाना उन्हें फ़रमाइश पर नहीं बना सकता — जला हर लीटर बिना जमा की निकासी है।",
+          mr: "कोणताही कारखाना ती मागणीवर बनवू शकत नाही — जळालेला प्रत्येक लिटर म्हणजे भरण्याविनाची उचल.",
+        },
+        pair: {
+          left: { en: "Buried life as fuel", hi: "ईंधन बना गड़ा जीवन", mr: "इंधन झालेले पुरलेले जीवन" },
+          right: {
+            en: "aeons pressed to ash",
+            hi: "राख तक दबे युग",
+            mr: "राखेपर्यंत दबलेली युगे",
+          },
+        },
+      },
+      {
+        id: "coal",
+        name: { en: "Coal", hi: "कोयला", mr: "कोळसा" },
+        kind: "fuel",
+        prompt: {
+          en: "Which black fuel, dug from seams of buried forests, fires thermal power plants?",
+          hi: "गड़े जंगलों की परतों से खोदा कौन-सा काला ईंधन ताप-बिजलीघर चलाता है?",
+          mr: "पुरलेल्या जंगलांच्या थरांतून खणलेले कोणते काळे इंधन औष्णिक वीजकेंद्रे चालवते?",
+        },
+        statement: {
+          en: "Coal is carbonised forest — dug from seams, burnt for power: the steam age's food, still on the menu.",
+          hi: "कोयला कार्बन बना जंगल है — परतों से खोदा, बिजली के लिए जला: भाप-युग का भोजन, अब भी मेनू पर।",
+          mr: "कोळसा म्हणजे कार्बन झालेले जंगल — थरांतून खणलेला, विजेसाठी जळलेला: वाफयुगाचे अन्न, अजूनही मेनूवर.",
+        },
+        detail: {
+          en: "Carbonisation made it: heat and pressure slowly turning dead vegetation into carbon.",
+          hi: "उसे कार्बनीकरण ने बनाया: ताप और दाब ने मृत वनस्पति को धीरे-धीरे कार्बन में बदला।",
+          mr: "त्याला कार्बनीकरणाने घडवले: ताप आणि दाबाने मृत वनस्पतींना हळूहळू कार्बनमध्ये बदलले.",
+        },
+        extra: {
+          en: "Processing it yields coke, coal tar and coal gas — three workers walking out of one mine.",
+          hi: "उसके प्रसंस्करण से कोक, कोलतार और कोयला-गैस मिलते हैं — एक खदान से निकले तीन कारीगर।",
+          mr: "त्याच्या प्रक्रियेतून कोक, डांबर आणि कोल-गॅस मिळतात — एका खाणीतून निघालेले तीन कारागीर.",
+        },
+        pair: {
+          left: { en: "The buried forest", hi: "गड़ा हुआ जंगल", mr: "पुरलेले जंगल" },
+          right: { en: "power stations fed", hi: "पले हुए बिजलीघर", mr: "पोसलेली वीजकेंद्रे" },
+        },
+      },
+      {
+        id: "petroleum",
+        name: { en: "Petroleum", hi: "पेट्रोलियम", mr: "पेट्रोलियम" },
+        kind: "fuel",
+        prompt: {
+          en: "Which dark liquid, drilled from between rock layers, refines into petrol, diesel, LPG and more?",
+          hi: "चट्टानी परतों के बीच से निकाला कौन-सा गहरा द्रव पेट्रोल, डीज़ल, एलपीजी वग़ैरह में परिष्कृत होता है?",
+          mr: "खडकांच्या थरांमधून काढलेला कोणता गडद द्रव पेट्रोल, डिझेल, एलपीजी वगैरेंत शुद्ध होतो?",
+        },
+        statement: {
+          en: "Petroleum is the sea's buried plankton — one crude liquid refined into a whole shelf of fuels and materials.",
+          hi: "पेट्रोलियम समुद्र का गड़ा प्लवक है — एक कच्चा द्रव, जो ईंधनों-पदार्थों की पूरी ताक़ में परिष्कृत होता है।",
+          mr: "पेट्रोलियम म्हणजे समुद्राचे पुरलेले प्लवंग — एक कच्चा द्रव, जो इंधने-पदार्थांच्या अख्ख्या फडताळात शुद्ध होतो.",
+        },
+        pair: {
+          left: {
+            en: "The drilled dark liquid",
+            hi: "निकाला गया गहरा द्रव",
+            mr: "काढलेला गडद द्रव",
+          },
+          right: {
+            en: "a shelf of fuels from one barrel",
+            hi: "एक बैरल से ईंधनों की ताक़",
+            mr: "एका पिंपातून इंधनांचे फडताळ",
+          },
+        },
+      },
+      {
+        id: "refining",
+        name: { en: "Refining", hi: "परिष्करण (शोधन)", mr: "शुद्धीकरण" },
+        kind: "process",
+        prompt: {
+          en: "In a tall tower, crude oil's parts separate by their boiling points. What is this separation called?",
+          hi: "ऊँची मीनार में कच्चे तेल के हिस्से अपने क्वथनांकों से अलग होते हैं। इस पृथक्करण का नाम क्या है?",
+          mr: "उंच मनोऱ्यात कच्च्या तेलाचे भाग आपल्या उत्कलनांकांनी वेगळे होतात. या विलगीकरणाचे नाव काय?",
+        },
+        statement: {
+          en: "Refining fractions the crude — each height of the tower draws off its own product, petrol high, bitumen at the base.",
+          hi: "परिष्करण कच्चे तेल के प्रभाग करता है — मीनार की हर ऊँचाई अपना उत्पाद खींचती है, पेट्रोल ऊपर, बिटुमेन तल पर।",
+          mr: "शुद्धीकरण कच्च्या तेलाचे विभाग करते — मनोऱ्याची प्रत्येक उंची आपले उत्पादन ओढते, पेट्रोल वर, डांबर तळाशी.",
+        },
+        detail: {
+          en: "The principle is boiling point — the lightest vapours climb highest before condensing back to liquid.",
+          hi: "सिद्धांत है क्वथनांक — सबसे हल्की वाष्पें द्रव में लौटने से पहले सबसे ऊँचा चढ़ती हैं।",
+          mr: "तत्त्व आहे उत्कलनांक — सर्वांत हलक्या वाफा द्रवात परतण्याआधी सर्वांत उंच चढतात.",
+        },
+        extra: {
+          en: "One barrel walks out as LPG, petrol, diesel, kerosene, wax and road tar — a family separated by temperature.",
+          hi: "एक बैरल एलपीजी, पेट्रोल, डीज़ल, मिट्टी का तेल, मोम और सड़क-तार बनकर निकलता है — तापमान से बँटा परिवार।",
+          mr: "एक पिंप एलपीजी, पेट्रोल, डिझेल, रॉकेल, मेण आणि रस्ता-डांबर होऊन निघते — तापमानाने वाटलेले कुटुंब.",
+        },
+        pair: {
+          left: {
+            en: "The tall tower's floors",
+            hi: "ऊँची मीनार की मंज़िलें",
+            mr: "उंच मनोऱ्याचे मजले",
+          },
+          right: {
+            en: "products drawn by height",
+            hi: "ऊँचाई से खिंचे उत्पाद",
+            mr: "उंचीने ओढलेली उत्पादने",
+          },
+        },
+      },
+      {
+        id: "natural-gas",
+        name: { en: "Natural gas (CNG)", hi: "प्राकृतिक गैस (सीएनजी)", mr: "नैसर्गिक वायू (सीएनजी)" },
+        kind: "fuel",
+        prompt: {
+          en: "Which fossil fuel, compressed as CNG, burns cleanest and pipes straight into vehicles and kitchens?",
+          hi: "कौन-सा जीवाश्म ईंधन, सीएनजी के रूप में संपीड़ित, सबसे साफ़ जलता है और सीधे वाहनों-रसोइयों में पहुँचता है?",
+          mr: "कोणते जीवाश्म इंधन, सीएनजी म्हणून दाबलेले, सर्वांत स्वच्छ जळते आणि थेट वाहनां-स्वयंपाकघरांत पोहोचते?",
+        },
+        statement: {
+          en: "Natural gas burns cleanest of the fossils — compressed as CNG for buses, piped as PNG to stoves.",
+          hi: "प्राकृतिक गैस जीवाश्मों में सबसे साफ़ जलती है — बसों के लिए संपीड़ित सीएनजी, चूल्हों तक पाइप से पीएनजी।",
+          mr: "नैसर्गिक वायू जीवाश्मांत सर्वांत स्वच्छ जळतो — बसगाड्यांसाठी दाबलेला सीएनजी, चुलींपर्यंत नळाने पीएनजी.",
+        },
+        pair: {
+          left: { en: "The cleanest fossil", hi: "सबसे साफ़ जीवाश्म", mr: "सर्वांत स्वच्छ जीवाश्म" },
+          right: { en: "piped and compressed", hi: "पाइप और संपीड़न से", mr: "नळाने आणि दाबाने" },
+        },
+      },
+      {
+        id: "coke",
+        name: { en: "Coke", hi: "कोक", mr: "कोक" },
+        kind: "product",
+        prompt: {
+          en: "Which almost-pure carbon, made by processing coal, reduces metal ores in steel plants?",
+          hi: "कोयले के प्रसंस्करण से बना कौन-सा लगभग शुद्ध कार्बन इस्पात-संयंत्रों में अयस्क अपचयित करता है?",
+          mr: "कोळशाच्या प्रक्रियेतून बनलेला कोणता जवळजवळ शुद्ध कार्बन पोलाद-प्रकल्पांत धातुके क्षपण करतो?",
+        },
+        statement: {
+          en: "Coke is coal purified to carbon — the steel industry's reducing agent and furnace fuel in one.",
+          hi: "कोक कार्बन तक शुद्ध किया कोयला है — इस्पात उद्योग का अपचायक और भट्ठी-ईंधन एक साथ।",
+          mr: "कोक म्हणजे कार्बनपर्यंत शुद्ध केलेला कोळसा — पोलाद उद्योगाचा क्षपणक आणि भट्टी-इंधन एकत्र.",
+        },
+        pair: {
+          left: {
+            en: "Coal purified to carbon",
+            hi: "कार्बन तक शुद्ध कोयला",
+            mr: "कार्बनपर्यंत शुद्ध कोळसा",
+          },
+          right: { en: "steel's working fuel", hi: "इस्पात का कामकाजी ईंधन", mr: "पोलादाचे कामाचे इंधन" },
+        },
+      },
+      {
+        id: "coal-tar",
+        name: { en: "Coal tar", hi: "कोलतार", mr: "डांबर (कोल टार)" },
+        kind: "product",
+        prompt: {
+          en: "Which thick black liquid from coal processing feeds dye, drug and paint factories — and the mothball jar?",
+          hi: "कोयला-प्रसंस्करण का कौन-सा गाढ़ा काला द्रव रंग, दवा और पेंट कारख़ानों को — और नेफ़्थलीन की गोलियों को — खिलाता है?",
+          mr: "कोळसा-प्रक्रियेतला कोणता दाट काळा द्रव रंग, औषध आणि पेंट कारखान्यांना — आणि डांबरगोळ्यांना — पोसतो?",
+        },
+        statement: {
+          en: "Coal tar is a black stew of two hundred substances — dyes, drugs, paints and naphthalene balls trace their line to it.",
+          hi: "कोलतार दो सौ पदार्थों का काला शोरबा है — रंग, दवाएँ, पेंट और नेफ़्थलीन की गोलियाँ उसी के वंशज हैं।",
+          mr: "डांबर हे दोनशे पदार्थांचे काळे कालवण — रंग, औषधे, पेंट आणि डांबरगोळ्या त्याचेच वंशज.",
+        },
+        detail: {
+          en: "Roads today mostly use bitumen, a petroleum product, in its old place.",
+          hi: "आज सड़कें उसकी पुरानी जगह प्रायः बिटुमेन — पेट्रोलियम-उत्पाद — बिछाती हैं।",
+          mr: "आज रस्ते त्याच्या जुन्या जागी बहुधा बिट्युमेन — पेट्रोलियम-उत्पादन — अंथरतात.",
+        },
+        extra: {
+          en: "The naphthalene balls guarding winter woollens are its most domestic descendants.",
+          hi: "सर्दियों के ऊनी कपड़े बचाती नेफ़्थलीन की गोलियाँ उसकी सबसे घरेलू संतानें हैं।",
+          mr: "हिवाळी लोकरी कपडे राखणाऱ्या डांबरगोळ्या ही त्याची सर्वांत घरगुती अपत्ये.",
+        },
+        pair: {
+          left: { en: "The black stew", hi: "काला शोरबा", mr: "काळे कालवण" },
+          right: { en: "dyes and mothballs", hi: "रंग और गोलियाँ", mr: "रंग आणि डांबरगोळ्या" },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the fuel to its story: A-coal, B-petroleum, C-natural gas. Which trio is right?",
+          hi: "ईंधन को उसकी कहानी से मिलाइए: अ-कोयला, ब-पेट्रोलियम, स-प्राकृतिक गैस। कौन-सी तिकड़ी सही है?",
+          mr: "इंधनाला त्याच्या कथेशी जुळवा: अ-कोळसा, ब-पेट्रोलियम, क-नैसर्गिक वायू. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: buried forests, dug and burnt for power · B: sea life, drilled and refined · C: cleanest burner, piped and compressed",
+            hi: "अ: गड़े जंगल, खोदकर बिजली को जले · ब: समुद्री जीवन, निकालकर परिष्कृत · स: सबसे साफ़ दहन, पाइप-संपीड़न से",
+            mr: "अ: पुरलेली जंगले, खणून विजेसाठी जळालेली · ब: सागरी जीवन, काढून शुद्ध केलेले · क: सर्वांत स्वच्छ ज्वलन, नळ-दाबाने",
+          },
+          {
+            en: "A: sea life refined · B: cleanest, piped · C: buried forests dug",
+            hi: "अ: परिष्कृत समुद्री जीवन · ब: सबसे साफ़, पाइप से · स: खोदे गड़े जंगल",
+            mr: "अ: शुद्ध केलेले सागरी जीवन · ब: सर्वांत स्वच्छ, नळाने · क: खणलेली पुरलेली जंगले",
+          },
+          {
+            en: "A: cleanest, piped · B: buried forests · C: sea life refined",
+            hi: "अ: सबसे साफ़, पाइप से · ब: गड़े जंगल · स: परिष्कृत समुद्री जीवन",
+            mr: "अ: सर्वांत स्वच्छ, नळाने · ब: पुरलेली जंगले · क: शुद्ध सागरी जीवन",
+          },
+          {
+            en: "All three formed last century and renew each monsoon",
+            hi: "तीनों पिछली सदी में बने और हर मानसून नए होते हैं",
+            mr: "तिन्ही गेल्या शतकात बनली आणि दर मान्सूनला नवी होतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Origin writes the biography: land forests pressed to coal seams, marine plankton cooked to crude, and the lightest fraction gathered as gas. Their handling follows their form — solid is dug, liquid is drilled and refined, gas is piped and compressed. The one wrong option renews them; nothing about them renews.",
+          hi: "मूल ही जीवनी लिखता है: थल के जंगल दबकर कोयला-परतें, समुद्री प्लवक पककर कच्चा तेल, और सबसे हल्का अंश गैस बनकर जमा। रख-रखाव रूप के पीछे चलता है — ठोस खोदा जाता है, द्रव निकालकर परिष्कृत, गैस पाइप-संपीड़ित। इकलौता ग़लत विकल्प उन्हें नया बताता है; उनमें कुछ भी नया नहीं होता।",
+          mr: "मूळच चरित्र लिहिते: जमिनीवरची जंगले दबून कोळसा-थर, सागरी प्लवंग शिजून कच्चे तेल, आणि सर्वांत हलका अंश वायू म्हणून जमलेला. हाताळणी रूपामागून चालते — घन खणले जाते, द्रव काढून शुद्ध, वायू नळ-दाबाने. एकमेव चुकीचा पर्याय त्यांना नवे म्हणतो; त्यांच्यात काहीही नवे होत नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Petrol prices make national headlines; sunshine and wind are free and nobody reports their 'stock'. What underlies the asymmetry?",
+          hi: "पेट्रोल के दाम राष्ट्रीय सुर्ख़ियाँ बनते हैं; धूप और हवा मुफ़्त हैं और उनके 'भंडार' की ख़बर कोई नहीं छापता। इस विषमता की जड़ क्या है?",
+          mr: "पेट्रोलच्या किमती राष्ट्रीय मथळे होतात; ऊन आणि वारा फुकट आहेत आणि त्यांच्या 'साठ्या'ची बातमी कोणी छापत नाही. या विषमतेच्या मुळाशी काय?",
+        },
+        choices: [
+          {
+            en: "Exhaustibility: petroleum is a fixed buried stock that only shrinks, so scarcity gives it a price and politics — sun and wind are flows that tomorrow refills, unpriceable by scarcity",
+            hi: "समाप्यता: पेट्रोलियम गड़ा हुआ नियत भंडार है जो केवल घटता है, अतः दुर्लभता उसे दाम और राजनीति देती है — धूप-हवा प्रवाह हैं जिन्हें कल फिर भर देता है, दुर्लभता से बेदाम",
+            mr: "संपणारेपण: पेट्रोलियम हा पुरलेला ठरावीक साठा जो फक्त आटतो, म्हणून दुर्मिळता त्याला किंमत आणि राजकारण देते — ऊन-वारा हे प्रवाह जे उद्या पुन्हा भरतो, दुर्मिळतेने किंमत न लावता येणारे",
+          },
+          {
+            en: "Sunshine is actually secretly running out too",
+            hi: "धूप भी असल में चुपचाप ख़त्म हो रही है",
+            mr: "ऊनही खरे तर गुपचूप संपते आहे",
+          },
+          {
+            en: "Petrol is newsworthy only because vehicles are noisy",
+            hi: "पेट्रोल केवल इसलिए ख़बर है कि वाहन शोर करते हैं",
+            mr: "पेट्रोल फक्त म्हणून बातमी की वाहने गोंगाट करतात",
+          },
+          {
+            en: "Wind cannot be used for any human purpose",
+            hi: "हवा किसी मानवी काम में नहीं आ सकती",
+            mr: "वारा कोणत्याही मानवी कामी येऊ शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Price is scarcity's shadow. A stock laid down once and never refilled — petroleum — obeys the arithmetic of emptying: every barrel burnt raises the worth of those left, so nations drill, bargain and quarrel over it. A flow — sunlight, wind — cannot be hoarded or exhausted, so it carries no scarcity price, only the cost of the machines that catch it. The chapter's quiet conclusion: the future belongs to fuels that arrive daily rather than treasure that only leaves.",
+          hi: "दाम दुर्लभता की परछाईं है। एक बार जमा होकर कभी न भरने वाला भंडार — पेट्रोलियम — ख़ाली होने के गणित से चलता है: जला हर बैरल बचे हुओं का मोल बढ़ाता है, अतः राष्ट्र उस पर खुदाई, सौदे और झगड़े करते हैं। प्रवाह — धूप, हवा — न जमा हो सकता है न चुक सकता है, अतः उस पर दुर्लभता का दाम नहीं, केवल पकड़ने वाली मशीनों की लागत है। अध्याय का ख़ामोश निष्कर्ष: भविष्य रोज़ आने वाले ईंधनों का है, केवल जाने वाले ख़ज़ाने का नहीं।",
+          mr: "किंमत ही दुर्मिळतेची सावली. एकदा साचून कधी न भरणारा साठा — पेट्रोलियम — रिकामे होण्याच्या गणिताने चालतो: जळालेले प्रत्येक पिंप उरलेल्यांचे मोल वाढवते, म्हणून राष्ट्रे त्यावर खोदाई, सौदे आणि भांडणे करतात. प्रवाह — ऊन, वारा — ना साठवता येतो ना संपतो, म्हणून त्यावर दुर्मिळतेची किंमत नाही, फक्त पकडणाऱ्या यंत्रांचा खर्च. प्रकरणाचा मूक निष्कर्ष: भविष्य रोज येणाऱ्या इंधनांचे आहे, फक्त जाणाऱ्या खजिन्याचे नाही.",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Combustion and Flame (fire's rulebook)                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-8-combustion-flame",
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: {
+      en: "Chapter 6 — Combustion and Flame",
+      hi: "अध्याय 6 — दहन एवं ज्वाला",
+      mr: "प्रकरण 6 — ज्वलन आणि ज्योत",
+    },
+    name: { en: "Combustion and Flame", hi: "दहन एवं ज्वाला", mr: "ज्वलन आणि ज्योत" },
+    summary: {
+      en: "Fire's rulebook: an entry fee every fuel must pay, a triangle that falls if one leg is cut, extinguishers matched to their fires — and the candle's three zones, hottest at the rim.",
+      hi: "आग की नियम-पुस्तिका: हर ईंधन को चुकानी पड़ती प्रवेश-फ़ीस, एक टाँग कटते ही गिरता त्रिभुज, अपनी-अपनी आग से मिलाए गए अग्निशामक — और मोमबत्ती के तीन क्षेत्र, किनारे पर सबसे तप्त।",
+      mr: "आगीची नियमपुस्तिका: प्रत्येक इंधनाला द्यावी लागणारी प्रवेश-फी, एक पाय कापताच पडणारा त्रिकोण, आपापल्या आगीशी जुळवलेली विझवणी — आणि मेणबत्तीचे तीन पट्टे, काठावर सर्वांत तप्त.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "combustion",
+        name: { en: "Combustion", hi: "दहन", mr: "ज्वलन" },
+        kind: "process",
+        prompt: {
+          en: "Which chemical process burns a substance with oxygen, releasing heat and usually light?",
+          hi: "कौन-सी रासायनिक प्रक्रिया किसी पदार्थ को ऑक्सीजन के साथ जलाती है, ऊष्मा और प्रायः प्रकाश छोड़ती हुई?",
+          mr: "कोणती रासायनिक प्रक्रिया पदार्थाला ऑक्सिजनसह जाळते, उष्णता आणि बहुधा प्रकाश सोडत?",
+        },
+        statement: {
+          en: "Combustion is burning — fuel joining oxygen to give heat and light; a reaction, not a substance.",
+          hi: "दहन जलना है — ईंधन का ऑक्सीजन से जुड़कर ऊष्मा-प्रकाश देना; एक अभिक्रिया, कोई पदार्थ नहीं।",
+          mr: "ज्वलन म्हणजे जळणे — इंधनाने ऑक्सिजनशी जुळून उष्णता-प्रकाश देणे; एक अभिक्रिया, पदार्थ नव्हे.",
+        },
+        pair: {
+          left: { en: "Fuel joined by oxygen", hi: "ऑक्सीजन से जुड़ा ईंधन", mr: "ऑक्सिजनशी जुळलेले इंधन" },
+          right: {
+            en: "heat and light released",
+            hi: "छूटी ऊष्मा और प्रकाश",
+            mr: "सुटलेली उष्णता आणि प्रकाश",
+          },
+        },
+      },
+      {
+        id: "ignition-temp",
+        name: {
+          en: "The ignition temperature",
+          hi: "ज्वलन ताप",
+          mr: "प्रज्वलन तापमान",
+        },
+        kind: "condition",
+        prompt: {
+          en: "Which minimum temperature must a fuel reach before it can catch fire at all?",
+          hi: "आग पकड़ने से पहले ईंधन को कौन-सा न्यूनतम तापमान छूना ही पड़ता है?",
+          mr: "आग लागण्याआधी इंधनाला कोणते किमान तापमान गाठावेच लागते?",
+        },
+        statement: {
+          en: "The ignition temperature is fire's entry fee — below it, fuel and air can only sit and wait.",
+          hi: "ज्वलन ताप आग की प्रवेश-फ़ीस है — उससे नीचे ईंधन और हवा बस बैठे इंतज़ार कर सकते हैं।",
+          mr: "प्रज्वलन तापमान ही आगीची प्रवेश-फी — त्याखाली इंधन आणि हवा नुसती बसून वाट पाहू शकतात.",
+        },
+        detail: {
+          en: "Paper pays the fee easily; coal needs long coaxing — the fee differs fuel to fuel.",
+          hi: "काग़ज़ फ़ीस आसानी से चुकाता है; कोयले को देर तक मनाना पड़ता है — फ़ीस ईंधन-दर-ईंधन बदलती है।",
+          mr: "कागद फी सहज देतो; कोळशाला बराच वेळ मनवावे लागते — फी इंधनागणिक बदलते.",
+        },
+        extra: {
+          en: "A matchstick pays it with friction heat — the strike IS the payment.",
+          hi: "माचिस की तीली उसे घर्षण की गर्मी से चुकाती है — रगड़ ही भुगतान है।",
+          mr: "काडेपेटीची काडी ती घर्षणाच्या उष्णतेने देते — घासणे हेच पैसे देणे.",
+        },
+        pair: {
+          left: { en: "Fire's entry fee", hi: "आग की प्रवेश-फ़ीस", mr: "आगीची प्रवेश-फी" },
+          right: { en: "below it, no flame", hi: "उससे नीचे, कोई लौ नहीं", mr: "त्याखाली ज्योत नाही" },
+        },
+      },
+      {
+        id: "inflammable",
+        name: {
+          en: "Inflammable substances",
+          hi: "ज्वलनशील पदार्थ",
+          mr: "ज्वालाग्राही पदार्थ",
+        },
+        kind: "class",
+        prompt: {
+          en: "Petrol, LPG, alcohol — which class of substances has ignition temperatures so low they flare at a spark?",
+          hi: "पेट्रोल, एलपीजी, अल्कोहल — किन पदार्थों का ज्वलन ताप इतना कम है कि वे चिंगारी भर से भड़क उठते हैं?",
+          mr: "पेट्रोल, एलपीजी, अल्कोहोल — कोणत्या पदार्थांचे प्रज्वलन तापमान इतके कमी की ते ठिणगीनेच भडकतात?",
+        },
+        statement: {
+          en: "Inflammable substances catch fire at the least excuse — low ignition temperatures make them useful and dangerous in the same breath.",
+          hi: "ज्वलनशील पदार्थ ज़रा-से बहाने पर आग पकड़ लेते हैं — कम ज्वलन ताप उन्हें एक ही साँस में उपयोगी और ख़तरनाक बनाता है।",
+          mr: "ज्वालाग्राही पदार्थ जरा निमित्ताने पेट घेतात — कमी प्रज्वलन तापमान त्यांना एकाच श्वासात उपयुक्त आणि धोकादायक करते.",
+        },
+        pair: {
+          left: { en: "Flaring at a spark", hi: "चिंगारी पर भड़कते", mr: "ठिणगीवर भडकणारे" },
+          right: {
+            en: "useful and dangerous alike",
+            hi: "समान रूप से उपयोगी-ख़तरनाक",
+            mr: "सारखेच उपयुक्त-धोकादायक",
+          },
+        },
+      },
+      {
+        id: "fire-triangle",
+        name: { en: "The fire triangle", hi: "अग्नि त्रिभुज", mr: "अग्नी त्रिकोण" },
+        kind: "condition",
+        prompt: {
+          en: "Fuel, oxygen and heat — remove any one and the fire dies. What is this trio called?",
+          hi: "ईंधन, ऑक्सीजन और ऊष्मा — कोई एक हटाइए और आग मर जाती है। इस तिकड़ी का नाम क्या है?",
+          mr: "इंधन, ऑक्सिजन आणि उष्णता — कोणतेही एक काढा आणि आग मरते. या त्रिकुटाचे नाव काय?",
+        },
+        statement: {
+          en: "The fire triangle names fire's three needs — every extinguisher in the world attacks at least one of its sides.",
+          hi: "अग्नि त्रिभुज आग की तीन ज़रूरतें गिनाता है — दुनिया का हर अग्निशामक उसकी कम-से-कम एक भुजा पर वार करता है।",
+          mr: "अग्नी त्रिकोण आगीच्या तीन गरजा सांगतो — जगातली प्रत्येक विझवणी त्याच्या किमान एका बाजूवर घाव घालते.",
+        },
+        detail: {
+          en: "Water cools below the ignition fee; CO₂ walls off the oxygen; clearing fuel starves the third leg.",
+          hi: "पानी ज्वलन-फ़ीस से नीचे ठंडा करता है; CO₂ ऑक्सीजन की दीवार खींचता है; ईंधन हटाना तीसरी टाँग भूखी करता है।",
+          mr: "पाणी प्रज्वलन-फीखाली थंड करते; CO₂ ऑक्सिजनची भिंत घालतो; इंधन काढणे तिसरा पाय उपाशी ठेवते.",
+        },
+        extra: {
+          en: "Water on an oil fire fails twice over — the oil floats on it and spatters, still burning.",
+          hi: "तेल की आग पर पानी दो बार विफल है — तेल उस पर तैरता और छिटकता है, जलता हुआ ही।",
+          mr: "तेलाच्या आगीवर पाणी दोनदा फसते — तेल त्यावर तरंगते आणि उडते, जळतच.",
+        },
+        pair: {
+          left: { en: "The three-legged fire", hi: "तीन टाँगों की आग", mr: "तीन पायांची आग" },
+          right: { en: "cut one leg, it falls", hi: "एक टाँग कटी, गिरी", mr: "एक पाय कापला, पडली" },
+        },
+      },
+      {
+        id: "co2-extinguisher",
+        name: {
+          en: "The CO₂ extinguisher",
+          hi: "CO₂ अग्निशामक",
+          mr: "CO₂ विझवणी",
+        },
+        kind: "tool",
+        prompt: {
+          en: "For electrical fires, which extinguisher blankets the flame in heavy gas without wetting a single wire?",
+          hi: "बिजली की आग के लिए कौन-सा अग्निशामक एक भी तार भिगोए बिना लौ को भारी गैस से ढक देता है?",
+          mr: "विजेच्या आगीसाठी कोणती विझवणी एकही तार न भिजवता ज्योतीला जड वायूने झाकते?",
+        },
+        statement: {
+          en: "CO₂ smothers the fires it must not wet — heavier than air, it settles on the flame and starves it of oxygen.",
+          hi: "CO₂ उन आगों को दम घोंटकर बुझाता है जिन्हें भिगोना मना है — हवा से भारी, वह लौ पर बैठकर उसकी ऑक्सीजन छीन लेता है।",
+          mr: "CO₂ भिजवायला मनाई असलेल्या आगी गुदमरवून विझवतो — हवेहून जड, तो ज्योतीवर बसून तिचा ऑक्सिजन हिरावतो.",
+        },
+        pair: {
+          left: { en: "The heavy gas blanket", hi: "भारी गैस का कंबल", mr: "जड वायूचे पांघरूण" },
+          right: { en: "flames starved dry", hi: "सूखी भूखी मारी लपटें", mr: "कोरड्या उपाशी मारलेल्या ज्वाळा" },
+        },
+      },
+      {
+        id: "flame-zones",
+        name: {
+          en: "The flame's three zones",
+          hi: "ज्वाला के तीन क्षेत्र",
+          mr: "ज्योतीचे तीन पट्टे",
+        },
+        kind: "structure",
+        prompt: {
+          en: "A candle flame stacks three regions — dark at the wick, yellow in the middle, faint blue at the rim. What are they together called?",
+          hi: "मोमबत्ती की लौ में तीन परतें हैं — बत्ती पर काली, बीच में पीली, किनारे पर हल्की नीली। इन्हें मिलाकर क्या कहते हैं?",
+          mr: "मेणबत्तीच्या ज्योतीत तीन थर आहेत — वातीशी काळा, मध्ये पिवळा, काठावर फिकट निळा. यांना मिळून काय म्हणतात?",
+        },
+        statement: {
+          en: "The flame's three zones: innermost dark unburnt vapour, middle yellow half-burnt glow, outer blue complete burning — and the outer rim is the hottest.",
+          hi: "ज्वाला के तीन क्षेत्र: भीतरी काला अनजला वाष्प, बीच की पीली अधजली दमक, बाहरी नीला पूर्ण दहन — और बाहरी किनारा सबसे तप्त।",
+          mr: "ज्योतीचे तीन पट्टे: आतला काळा न जळालेला बाष्प, मधला पिवळा अर्धवट जळता झळाळ, बाहेरचा निळा पूर्ण ज्वलन — आणि बाहेरचा काठ सर्वांत तप्त.",
+        },
+        detail: {
+          en: "Hold a glass rod across the yellow zone and it comes away sooted — the signature of unfinished burning.",
+          hi: "पीले क्षेत्र के आर-पार काँच की छड़ रखिए, वह कालिख लिए लौटती है — अधूरे दहन के दस्तख़त।",
+          mr: "पिवळ्या पट्ट्यातून काचकांडी धरा, ती काजळी घेऊन परतते — अपुऱ्या ज्वलनाची सही.",
+        },
+        extra: {
+          en: "Goldsmiths blow their pipes at the outer zone — the hottest, cleanest heat for the finest work.",
+          hi: "सुनार अपनी फुँकनी बाहरी क्षेत्र पर साधते हैं — सबसे तप्त, सबसे साफ़ आँच, सबसे महीन काम के लिए।",
+          mr: "सोनार आपली फुंकणी बाहेरच्या पट्ट्यावर धरतात — सर्वांत तप्त, सर्वांत स्वच्छ आच, सर्वांत बारीक कामासाठी.",
+        },
+        pair: {
+          left: { en: "Dark, yellow and blue", hi: "काला, पीला और नीला", mr: "काळा, पिवळा आणि निळा" },
+          right: { en: "hottest at the rim", hi: "किनारे पर सबसे तप्त", mr: "काठावर सर्वांत तप्त" },
+        },
+      },
+      {
+        id: "calorific",
+        name: { en: "Calorific value", hi: "ऊष्मीय मान", mr: "उष्मांक मूल्य" },
+        kind: "measure",
+        prompt: {
+          en: "Which number ranks fuels by the heat one kilogram of each releases — kilojoules per kilogram?",
+          hi: "कौन-सी संख्या ईंधनों को उनके प्रति किलोग्राम छोड़ी ऊष्मा से क्रम देती है — किलोजूल प्रति किलोग्राम?",
+          mr: "कोणता आकडा इंधनांना त्यांच्या प्रति किलोग्रॅम सोडलेल्या उष्णतेने क्रम देतो — किलोजूल प्रति किलोग्रॅम?",
+        },
+        statement: {
+          en: "Calorific value measures a fuel's worth in heat per kilogram — hydrogen tops the table, dung cakes sit near the floor.",
+          hi: "ऊष्मीय मान प्रति किलोग्राम ऊष्मा में ईंधन का मोल नापता है — हाइड्रोजन तालिका के शीर्ष पर, उपले फ़र्श के पास।",
+          mr: "उष्मांक मूल्य प्रति किलोग्रॅम उष्णतेत इंधनाचे मोल मोजते — हायड्रोजन तक्त्याच्या शिरोभागी, गोवऱ्या तळाजवळ.",
+        },
+        pair: {
+          left: { en: "Heat per kilogram", hi: "प्रति किलोग्राम ऊष्मा", mr: "प्रति किलोग्रॅम उष्णता" },
+          right: { en: "fuels ranked honest", hi: "ईमानदारी से क्रमबद्ध ईंधन", mr: "प्रामाणिकपणे क्रम लावलेली इंधने" },
+        },
+      },
+      {
+        id: "ideal-fuel",
+        name: { en: "The ideal fuel", hi: "आदर्श ईंधन", mr: "आदर्श इंधन" },
+        kind: "idea",
+        prompt: {
+          en: "Cheap, plentiful, easy to store, high heat, no smoke — which fuel meets every wish on the list?",
+          hi: "सस्ता, प्रचुर, रखने में आसान, ऊँची ऊष्मा, धुआँ नहीं — कौन-सा ईंधन सूची की हर इच्छा पूरी करता है?",
+          mr: "स्वस्त, विपुल, साठवायला सोपे, उंच उष्णता, धूर नाही — कोणते इंधन यादीतली प्रत्येक इच्छा पुरवते?",
+        },
+        statement: {
+          en: "The ideal fuel exists only as a checklist — every real fuel fails at least one line, so choosing fuel is choosing trade-offs.",
+          hi: "आदर्श ईंधन केवल जाँच-सूची में बसता है — हर असली ईंधन कम-से-कम एक पंक्ति पर विफल है, अतः ईंधन चुनना समझौते चुनना है।",
+          mr: "आदर्श इंधन फक्त तपासयादीत राहते — प्रत्येक खरे इंधन किमान एका ओळीवर अपयशी, म्हणून इंधन निवडणे म्हणजे तडजोडी निवडणे.",
+        },
+        pair: {
+          left: {
+            en: "The perfect-fuel checklist",
+            hi: "पूर्ण-ईंधन की जाँच-सूची",
+            mr: "परिपूर्ण-इंधनाची तपासयादी",
+          },
+          right: {
+            en: "every real fuel fails a line",
+            hi: "हर असली ईंधन कहीं विफल",
+            mr: "प्रत्येक खरे इंधन कुठे ना कुठे अपयशी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Match the fire to its right response: A-burning wood pile, B-sparking electrical panel, C-oil pan aflame in the kitchen. Which trio is right?",
+          hi: "आग को उसके सही जवाब से मिलाइए: अ-जलता लकड़ी का ढेर, ब-चिंगारियाँ छोड़ता बिजली-पैनल, स-रसोई में धधकती तेल की कड़ाही। कौन-सी तिकड़ी सही है?",
+          mr: "आगीला तिच्या योग्य उत्तराशी जुळवा: अ-जळणारा लाकडाचा ढीग, ब-ठिणग्या टाकणारे वीज-पॅनेल, क-स्वयंपाकघरात पेटलेली तेलाची कढई. कोणती त्रयी बरोबर?",
+        },
+        choices: [
+          {
+            en: "A: water · B: CO₂, never water · C: cover with a lid, never water",
+            hi: "अ: पानी · ब: CO₂, पानी कभी नहीं · स: ढक्कन से ढकिए, पानी कभी नहीं",
+            mr: "अ: पाणी · ब: CO₂, पाणी कधीच नाही · क: झाकणाने झाका, पाणी कधीच नाही",
+          },
+          {
+            en: "A: CO₂ · B: water · C: fan the flames",
+            hi: "अ: CO₂ · ब: पानी · स: लपटें हवा दीजिए",
+            mr: "अ: CO₂ · ब: पाणी · क: ज्वाळांना वारा घाला",
+          },
+          {
+            en: "A: cover with lid · B: oil · C: water",
+            hi: "अ: ढक्कन · ब: तेल · स: पानी",
+            mr: "अ: झाकण · ब: तेल · क: पाणी",
+          },
+          {
+            en: "Water serves all three fires equally well",
+            hi: "पानी तीनों आगों पर एक-सा कारगर है",
+            mr: "पाणी तिन्ही आगींवर सारखेच चालते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One triangle, three tactics. Wood: water cools it below its ignition fee — the classic. Electricity: water conducts and would put the current through YOU, so dry CO₂ starves the flame instead. Oil: water sinks under it and erupts as burning spray, so a lid steals the oxygen quietly. Reading the fire before reaching for anything is the whole discipline.",
+          hi: "एक त्रिभुज, तीन दाँव। लकड़ी: पानी उसे ज्वलन-फ़ीस से नीचे ठंडा करता है — क्लासिक। बिजली: पानी चालक है और धारा आप तक पहुँचा देता, अतः सूखा CO₂ लौ को भूखा मारता है। तेल: पानी उसके नीचे धँसकर जलती फुहार बनकर फटता है, अतः ढक्कन चुपचाप ऑक्सीजन छीनता है। कुछ भी उठाने से पहले आग को पढ़ना — यही पूरा अनुशासन है।",
+          mr: "एक त्रिकोण, तीन डाव. लाकूड: पाणी त्याला प्रज्वलन-फीखाली थंड करते — अभिजात. वीज: पाणी वाहक आहे आणि धारा तुमच्यापर्यंत आणले असते, म्हणून कोरडा CO₂ ज्योतीला उपाशी मारतो. तेल: पाणी त्याच्याखाली बुडून जळता फवारा होऊन फुटते, म्हणून झाकण गुपचूप ऑक्सिजन हिरावते. काहीही उचलण्याआधी आग वाचणे — हीच सारी शिस्त.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Blowing OUT a candle kills it, yet blowing INTO a blacksmith's forge makes the coals roar hotter. The same breath — why opposite results?",
+          hi: "फूँक मारने से मोमबत्ती बुझती है, पर लोहार की भट्ठी में फूँकने से कोयले और दहक उठते हैं। वही साँस — नतीजे उलटे क्यों?",
+          mr: "फुंकर मारल्याने मेणबत्ती विझते, पण लोहाराच्या भात्यात फुंकल्याने निखारे अधिक धगधगतात. तोच श्वास — निकाल उलटे का?",
+        },
+        choices: [
+          {
+            en: "The candle's small flame loses its heat to the gust and drops below ignition temperature; the forge's coals hold heat far above it, so extra air only delivers more oxygen to a fire already past its fee",
+            hi: "मोमबत्ती की नन्ही लौ झोंके में अपनी गर्मी खोकर ज्वलन ताप से नीचे गिर जाती है; भट्ठी के कोयले उससे कहीं ऊपर गर्मी थामे हैं, अतः और हवा उस आग को बस और ऑक्सीजन देती है जो फ़ीस कब की चुका चुकी",
+            mr: "मेणबत्तीची इवली ज्योत झोतात आपली उष्णता गमावून प्रज्वलन तापमानाखाली उतरते; भात्याचे निखारे त्याहून खूप वर उष्णता धरून आहेत, म्हणून जास्त हवा फी केव्हाच भरलेल्या आगीला फक्त अधिक ऑक्सिजन देते",
+          },
+          {
+            en: "Candle wax hates moving air while coal loves it",
+            hi: "मोम को चलती हवा से बैर है, कोयले को प्यार",
+            mr: "मेणाला हलत्या हवेचा तिटकारा, कोळशाला प्रेम",
+          },
+          {
+            en: "The forge's air is a different gas from ordinary breath",
+            hi: "भट्ठी की हवा आम साँस से अलग गैस है",
+            mr: "भात्याची हवा नेहमीच्या श्वासाहून वेगळा वायू",
+          },
+          {
+            en: "Candles can only burn in perfectly still rooms",
+            hi: "मोमबत्तियाँ केवल बिलकुल स्थिर कमरों में जल सकती हैं",
+            mr: "मेणबत्त्या फक्त पूर्ण स्थिर खोल्यांतच जळू शकतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The breath carries two gifts at once — oxygen and cooling — and the fire's size decides which gift dominates. A candle flame is a whisper of hot vapour: one gust sweeps its heat away, the wax vapour falls below its ignition fee, and the reaction stops mid-sentence. A forge is a furnace of stored heat no breath can chill; there the gust's oxygen is pure bonus. Same act, two fires, opposite outcomes — because combustion obeys temperature first and enthusiasm second.",
+          hi: "साँस एक साथ दो सौग़ातें लाती है — ऑक्सीजन और ठंडक — और आग का आकार तय करता है कि कौन-सी भारी पड़े। मोमबत्ती की लौ गर्म वाष्प की फुसफुसाहट है: एक झोंका उसकी गर्मी बुहार ले जाता है, मोम-वाष्प ज्वलन-फ़ीस से नीचे गिरता है, और अभिक्रिया वाक्य के बीच रुक जाती है। भट्ठी जमा गर्मी की ऐसी भट्टी है जिसे कोई साँस ठंडा नहीं कर सकती; वहाँ झोंके की ऑक्सीजन शुद्ध बोनस है। एक ही काम, दो आगें, उलटे नतीजे — क्योंकि दहन पहले तापमान की सुनता है, जोश की बाद में।",
+          mr: "श्वास एकाच वेळी दोन भेटी आणतो — ऑक्सिजन आणि गारवा — आणि आगीचा आकार ठरवतो कोणती भेट वरचढ. मेणबत्तीची ज्योत म्हणजे गरम बाष्पाची कुजबुज: एक झोत तिची उष्णता झाडून नेतो, मेण-बाष्प प्रज्वलन-फीखाली उतरते, आणि अभिक्रिया वाक्याच्या मध्येच थांबते. भाता म्हणजे साठलेल्या उष्णतेची अशी भट्टी जिला कोणताही श्वास थंड करू शकत नाही; तिथे झोताचा ऑक्सिजन शुद्ध बोनस. एकच कृती, दोन आगी, उलटे निकाल — कारण ज्वलन आधी तापमानाचे ऐकते, उत्साहाचे नंतर.",
+        },
+      },
+    ],
+  },
 ];
