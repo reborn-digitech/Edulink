@@ -75,6 +75,7 @@ let classTeacherRowId: string;
 let classTeacherMembershipId: string;
 let otherTeacherMembershipId: string;
 let principalMembershipId: string;
+let otherSchoolMembershipId: string;
 
 const PRINCIPAL_EMAIL = "principal.duty.unit@riverside.test";
 const SPARE_TEACHER_EMAIL = "spare.teacher.duty.unit@riverside.test";
@@ -102,6 +103,7 @@ beforeAll(async () => {
   });
 
   classTeacherMembershipId = tomTeacher.id;
+  otherSchoolMembershipId = samAdmin.id;
 
   admin = ctx({ userId: priya.id, membershipId: priyaAdmin.id, schoolId: riversideId, role: "ADMIN" });
   classTeacher = ctx({
@@ -548,9 +550,23 @@ describe("⚠ cover", () => {
 
   it("does not notify when the cover was refused", async () => {
     // A membership from another school: refused, and nobody hears about it.
+    //
+    // ⚠ A REAL MEMBERSHIP OF OAKFIELD, not a mangled id. This used to be
+    // `principalMembershipId.replace(/.$/, "x")` — the principal's own id with
+    // its last character overwritten — on the assumption that the result names
+    // nobody. A cuid ends in a random base36 character, so roughly one run in
+    // thirty-six it already ended in "x", the "bogus" id WAS the principal's,
+    // cover was arranged for real, and this test failed on both of its
+    // assertions in a file nobody had touched. The odds were the only thing
+    // holding it up.
+    //
+    // Sam's Oakfield membership is refused for the reason the test is actually
+    // about — `arrangeCover` looks the covering member up `schoolId`-scoped, so
+    // somebody else's staff cannot be put on this register — rather than for
+    // the incidental reason that a made-up string matches no row.
     const result = await arrangeCover(admin, {
       classId,
-      coveringMembershipId: principalMembershipId.replace(/.$/, "x"),
+      coveringMembershipId: otherSchoolMembershipId,
       fromDateKey: TODAY,
       toDateKey: TODAY,
     });

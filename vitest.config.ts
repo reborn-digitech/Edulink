@@ -16,8 +16,15 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.ts", "src/**/*.test.tsx", "tests/**/*.test.ts"],
-    // Prisma-backed integration tests share one SQLite file, so they must not
-    // run concurrently against each other.
+    // Prisma-backed integration tests share ONE Postgres database, so they must
+    // not run concurrently against each other. (It was one SQLite file when this
+    // was written; the reason survived the move, the wording had not.)
+    //
+    // Worth knowing when a suite goes red intermittently: this makes the runs
+    // sequential, NOT repeatable. Vitest still sequences files by their cached
+    // duration from the last run, so the order reshuffles a little every time —
+    // which reads like parallel contention and is not. See the fixture notes in
+    // README.md before hunting a neighbouring suite for it.
     fileParallelism: false,
     setupFiles: ["tests/setup.ts"],
   },

@@ -694,6 +694,43 @@ property the test actually depends on (the class with enough children in it; the
 class the guardian's child is actually in). An `orderBy` would only have made the
 coin-toss repeatable.
 
+**And the correction to all of the above, which cost most of a session:** "a
+file nobody edited went red, so another suite is writing its rows" is a HEURISTIC,
+and by this point it had been right often enough to stop being checked. Twice it
+was wrong. `transaction-atomicity.test.ts` and `register-duty.test.ts` each failed
+roughly one full run in twenty-five, passed in isolation four times running, and
+were hunted as shared-fixture contention. Neither was. Run the file ALONE IN A
+LOOP before believing anything else — twenty-five times, not four. Both of these
+reproduce on their own, and the loop is thirty seconds against an afternoon of
+reading other people's `beforeAll`.
+
+Two things make that heuristic weaker than it reads. `fileParallelism: false` has
+been set since the Postgres move, so no two suites are in the database at once and
+"another suite wrote it mid-run" is not available as an explanation the way the
+notes above assume. What DOES still vary is the ORDER: vitest sequences files by
+their cached duration from the previous run, so it reshuffles slightly every time
+and looks exactly like parallel contention from the outside. Consecutive runs with
+identical file order gave different results here, which is what finally ruled it
+out.
+
+What the two actually were, both being timing inside a single file:
+`transaction-atomicity.test.ts` read the probe row the instant `db.$transaction`
+rejected. The extension had re-issued the first statement in a transaction of its
+own — the very defect the file asserts — and Prisma does not wait for that
+transaction to commit before rejecting the batch, so the read landed before the
+commit and reported a rollback that had not happened. The read now POLLS until
+the orphaned write settles — `FOR UPDATE` was the obvious fix, was tried first,
+and only cut the rate rather than zeroing it; the file's own comments carry the
+full account of why.
+`register-duty.test.ts` built a "membership that does not exist" as
+`principalMembershipId.replace(/.$/, "x")` — a real cuid with its last character
+overwritten. A cuid ends in a random base36 character, so about one run in
+thirty-six that id already ended in `x`, the bogus id WAS the real one, and cover
+was arranged for real. **A fixture derived from a live id by mangling it is a
+fixture that collides on a schedule.** Name a row that is genuinely wrong for the
+reason under test — the Oakfield membership it now uses is refused because it
+belongs to another school, which is the thing the test is about.
+
 **And a smaller one that cost a bad commit:** `npm test | tail -4 && git commit`
 masks the exit code. `tail` succeeded, so `&&` proceeded, and 13 failures were
 committed. Do not pipe a command whose exit status you are branching on.
