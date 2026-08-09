@@ -53,6 +53,7 @@ function ctxFor(
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

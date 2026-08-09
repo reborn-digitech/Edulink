@@ -1,14 +1,9 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import {
-  accessHistory,
-  activeGrant,
-  closeSchool,
-  openSchool,
-  withSchoolAccess,
-} from "@/lib/superuser";
+import { accessHistory, removeSchool, withSchoolAccess } from "@/lib/superuser";
 import {
   findPeople,
+  listPeople,
   listPosts,
   schoolOverview,
   setMembershipSuspension,
@@ -20,25 +15,18 @@ import type { ActiveContext } from "@/lib/session";
 /**
  * Whoever runs the server, looking inside a school.
  *
- * THIS FILE TESTS A DELIBERATE WIDENING OF THE ONE BOUNDARY THE REST OF THIS
- * CODEBASE IS ARRANGED AROUND, so it is worth saying exactly which half it can
- * prove and which half it cannot.
- *
- * WHAT IT PROVES: that an operator cannot reach a school's rows without an open,
- * unexpired, reasoned grant; that opening and every action land in THAT SCHOOL'S
- * audit log rather than nowhere; that a grant expires; and that the powers are
- * the two narrow ones — take a post down, pause a person — with the last-admin
- * rule holding for the host exactly as it holds for the school.
+ * THE ACCESS MODEL IS ALWAYS-ON NOW — the operator no longer asks for a grant —
+ * so what this file proves has shifted with it: that anybody who does NOT run
+ * the server is refused at the door; that every look inside still writes a
+ * visit row the school can read, without stacking one up per query; that every
+ * action lands in THAT SCHOOL'S audit log; and that the powers are the narrow
+ * ones — take a post down, pause a person — with the last-admin rule holding
+ * for the host exactly as it holds for the school.
  *
  * WHAT IT CANNOT PROVE is the containment itself. The suite connects as the
- * database OWNER, so row-level security is not in force and a bug that let an
- * operator holding a Riverside grant read Oakfield's register would pass every
- * assertion here. That claim is made live in `npm run rls:verify`, which binds
- * one school and checks the other stays dark.
- *
- * The accountability trade is the feature: the operator gains sight and gives up
- * doing it unobserved. So the tests that matter most below are the ones about
- * the record, not the ones about the reading.
+ * database OWNER, so row-level security is not in force. That claim is made
+ * live in `npm run rls:verify`, which binds one school and checks the other
+ * stays dark.
  */
 
 const db = new PrismaClient();
@@ -46,6 +34,7 @@ const db = new PrismaClient();
 const SUFFIX = "@zzoversight.test";
 const SCHOOL_SLUG = "zz-oversight-school";
 const OTHER_SLUG = "zz-oversight-other";
+const DOOMED_SLUG = "zz-oversight-doomed";
 
 let schoolId: string;
 let otherSchoolId: string;
@@ -71,6 +60,7 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
       avatarKey: null,
       isMinor: false,
       isSuperuser: over.user?.isSuperuser ?? false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",
@@ -176,6 +166,7 @@ async function rebuild(): Promise<void> {
 async function wipe(): Promise<void> {
   await db.operatorAccess.deleteMany({ where: { schoolId: { in: [schoolId, otherSchoolId] } } });
   await db.auditLog.deleteMany({ where: { schoolId: { in: [schoolId, otherSchoolId] } } });
+  await db.school.deleteMany({ where: { slug: DOOMED_SLUG } });
   await db.user.deleteMany({
     where: { email: { endsWith: SUFFIX }, isSuperuser: false, NOT: { email: `plain${SUFFIX}` } },
   });
@@ -185,12 +176,10 @@ afterEach(wipe);
 
 afterAll(async () => {
   await wipe();
-  await db.school.deleteMany({ where: { slug: { in: [SCHOOL_SLUG, OTHER_SLUG] } } });
+  await db.school.deleteMany({ where: { slug: { in: [SCHOOL_SLUG, OTHER_SLUG, DOOMED_SLUG] } } });
   await db.user.deleteMany({ where: { email: { endsWith: SUFFIX } } });
   await db.$disconnect();
 });
-
-const REASON = "Investigating a safeguarding report about a post";
 
 /* -------------------------------------------------------------------------- */
 
@@ -198,140 +187,66 @@ describe("⚠ the door", () => {
   it("refuses anybody who does not run the server", async () => {
     await rebuild();
 
-    await expect(openSchool(notOperator, schoolId, REASON)).rejects.toBeInstanceOf(AccessError);
     await expect(schoolOverview(notOperator, schoolId)).rejects.toBeInstanceOf(AccessError);
     await expect(listPosts(notOperator, schoolId)).rejects.toBeInstanceOf(AccessError);
-    expect(await activeGrant(notOperator, schoolId)).toBeNull();
-  });
-
-  it("⚠ refuses an operator who has not opened the school", async () => {
-    await rebuild();
-
-    // THE CENTRAL CLAIM. Running the server is not by itself a way in — the
-    // flag opens School and Invite, and everything else needs a grant.
-    await expect(schoolOverview(operator, schoolId)).rejects.toBeInstanceOf(AccessError);
-    await expect(listPosts(operator, schoolId)).rejects.toBeInstanceOf(AccessError);
-    await expect(findPeople(operator, schoolId, "Aarav")).rejects.toBeInstanceOf(AccessError);
+    await expect(listPeople(notOperator, schoolId)).rejects.toBeInstanceOf(AccessError);
     await expect(
-      takeDownPost(operator, schoolId, postId, "Because"),
+      takeDownPost(notOperator, schoolId, postId, "Because"),
     ).rejects.toBeInstanceOf(AccessError);
+
+    // And the refusal names the right thing: the area is not theirs. There is
+    // no "open this school first" door for a school admin to be pointed at.
+    const refusal = await withSchoolAccess(notOperator, schoolId, async () => "in").catch(
+      (e: unknown) => e as AccessError,
+    );
+    expect(refusal).toBeInstanceOf(AccessError);
+    expect((refusal as AccessError).key).toBe("access.thisAreaBelongsToWhoeverRunsThe");
   });
 
-  it("⚠ demands a reason, and a real one", async () => {
+  it("⚠ lets the operator straight in — access is always on", async () => {
     await rebuild();
-
-    const empty = await openSchool(operator, schoolId, "");
-    const terse = await openSchool(operator, schoolId, "because");
-    expect(empty.ok).toBe(false);
-    expect(terse.ok).toBe(false);
-
-    // Nothing was opened on the way to being refused.
-    expect(await activeGrant(operator, schoolId)).toBeNull();
-    expect(await db.operatorAccess.count({ where: { schoolId } })).toBe(0);
-  });
-
-  it("opens with a reason, and lets the operator in", async () => {
-    await rebuild();
-    const opened = await openSchool(operator, schoolId, REASON);
-    expect(opened.ok).toBe(true);
 
     const overview = await schoolOverview(operator, schoolId);
     expect(overview.classes).toBe(0);
     expect(overview.members.find((m) => m.role === "STUDENT")?.count).toBe(1);
   });
+});
 
-  it("⚠ a grant on ONE school is not a grant on another", async () => {
+describe("⚠ the school is told", () => {
+  it("⚠ records the visit where the school can read it, once per hour not once per query", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
-    // Opening Riverside opens Riverside. The application refuses here; the
-    // database refuses too, and rls:verify is where that half is proved.
-    await expect(schoolOverview(operator, otherSchoolId)).rejects.toBeInstanceOf(AccessError);
-    await expect(
-      takeDownPost(operator, otherSchoolId, otherSchoolPostId, "Because"),
-    ).rejects.toBeInstanceOf(AccessError);
+    await schoolOverview(operator, schoolId);
+    await listPosts(operator, schoolId);
+    await listPeople(operator, schoolId);
+
+    // Three reads, one visit row — the book says "the operator was here",
+    // not a line per query.
+    const rows = await db.operatorAccess.findMany({ where: { schoolId } });
+    expect(rows).toHaveLength(1);
+    expect(rows[0]!.userId).toBe(operator.user.id);
+
+    const history = await accessHistory(schoolId);
+    expect(history).toHaveLength(1);
+    expect(history[0]!.operatorName).toBe("The Operator");
+    expect(history[0]!.live).toBe(true);
   });
 
-  it("⚠ an expired grant is not a grant", async () => {
+  it("an expired visit row is not reused — the next look writes a fresh line", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
+    await schoolOverview(operator, schoolId);
 
-    // Expiry is checked when the grant is read, not by a sweep — a grant that
-    // lapses only when something runs is open for as long as nothing does.
     await db.operatorAccess.updateMany({
       where: { schoolId },
       data: { expiresAt: new Date(Date.now() - 1000) },
     });
 
-    expect(await activeGrant(operator, schoolId)).toBeNull();
-    await expect(schoolOverview(operator, schoolId)).rejects.toBeInstanceOf(AccessError);
+    await listPosts(operator, schoolId);
+    expect(await db.operatorAccess.count({ where: { schoolId } })).toBe(2);
   });
 
-  it("⚠ a closed grant is not a grant either", async () => {
+  it("⚠ audits every action against the school", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
-    await closeSchool(operator, schoolId);
-
-    expect(await activeGrant(operator, schoolId)).toBeNull();
-    await expect(schoolOverview(operator, schoolId)).rejects.toBeInstanceOf(AccessError);
-  });
-
-  it("re-opening while already open does not stack up grants", async () => {
-    await rebuild();
-    const first = await openSchool(operator, schoolId, REASON);
-    const second = await openSchool(operator, schoolId, "A different reason entirely");
-
-    expect(first.ok && second.ok && first.grant.id === second.grant.id).toBe(true);
-    expect(await db.operatorAccess.count({ where: { schoolId } })).toBe(1);
-  });
-});
-
-describe("⚠ the school is told", () => {
-  it("⚠ files the opening in the SCHOOL's audit log, not nowhere", async () => {
-    await rebuild();
-    await openSchool(operator, schoolId, REASON);
-
-    /**
-     * THE TRADE THIS WHOLE FEATURE IS. Every other operator action is audited
-     * with schoolId NULL so it stays out of a tenant's Safety Centre. This one
-     * is the opposite on purpose: a school must be able to see that somebody
-     * outside it opened their data, or the accountability half is ornamental.
-     */
-    const entry = await db.auditLog.findFirst({
-      where: { schoolId, action: "operator.school.open" },
-    });
-    expect(entry).not.toBeNull();
-    expect(entry!.actorUserId).toBe(operator.user.id);
-    expect(entry!.meta).toContain("safeguarding");
-  });
-
-  it("files the closing too", async () => {
-    await rebuild();
-    await openSchool(operator, schoolId, REASON);
-    await closeSchool(operator, schoolId);
-
-    expect(
-      await db.auditLog.count({ where: { schoolId, action: "operator.school.close" } }),
-    ).toBe(1);
-  });
-
-  it("⚠ shows the school every visit, live or finished, with the reason", async () => {
-    await rebuild();
-    await openSchool(operator, schoolId, REASON);
-
-    const history = await accessHistory(schoolId);
-    expect(history).toHaveLength(1);
-    expect(history[0]!.reason).toBe(REASON);
-    expect(history[0]!.operatorName).toBe("The Operator");
-    expect(history[0]!.live).toBe(true);
-
-    await closeSchool(operator, schoolId);
-    expect((await accessHistory(schoolId))[0]!.live).toBe(false);
-  });
-
-  it("⚠ audits every action against the school as well", async () => {
-    await rebuild();
-    await openSchool(operator, schoolId, REASON);
     await takeDownPost(operator, schoolId, postId, "Named a child");
     await setMembershipSuspension(operator, schoolId, pupilMembershipId, {
       suspended: true,
@@ -345,7 +260,6 @@ describe("⚠ the school is told", () => {
     expect(actions.map((a) => a.action).sort()).toEqual([
       "operator.membership.suspend",
       "operator.post.takedown",
-      "operator.school.open",
     ]);
   });
 });
@@ -353,7 +267,6 @@ describe("⚠ the school is told", () => {
 describe("taking a post down", () => {
   it("⚠ rejects it rather than deleting it", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
     expect(await takeDownPost(operator, schoolId, postId, "Named a child")).toEqual({ ok: true });
 
@@ -367,7 +280,6 @@ describe("taking a post down", () => {
 
   it("refuses a post that is already down, and one from another school", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
     await takeDownPost(operator, schoolId, postId, "Named a child");
 
     const again = await takeDownPost(operator, schoolId, postId, "Named a child");
@@ -383,7 +295,6 @@ describe("taking a post down", () => {
 
   it("demands a reason", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
     expect((await takeDownPost(operator, schoolId, postId, "")).ok).toBe(false);
     const post = await db.post.findUniqueOrThrow({ where: { id: postId } });
@@ -394,7 +305,6 @@ describe("taking a post down", () => {
 describe("pausing somebody", () => {
   it("pauses and restores, and says who did it", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
     expect(
       await setMembershipSuspension(operator, schoolId, pupilMembershipId, {
@@ -420,7 +330,6 @@ describe("pausing somebody", () => {
 
   it("⚠ will not leave a school with no admin", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
     // One of two is fine.
     expect(
@@ -452,7 +361,6 @@ describe("pausing somebody", () => {
 
   it("demands a reason to pause, but not to restore", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
     expect(
       (await setMembershipSuspension(operator, schoolId, pupilMembershipId, {
@@ -476,68 +384,106 @@ describe("pausing somebody", () => {
   });
 });
 
-describe("finding people", () => {
-  it("⚠ needs something to search for — there is no list-everybody", async () => {
+describe("the directory", () => {
+  it("lists the whole roll, and the filter search still narrows", async () => {
     await rebuild();
-    await openSchool(operator, schoolId, REASON);
 
-    // An operator with a name can find that person; an operator with idle
-    // curiosity is not handed a directory of children to scroll.
-    expect(await findPeople(operator, schoolId, "")).toEqual([]);
-    expect(await findPeople(operator, schoolId, "a")).toEqual([]);
+    const everyone = await listPeople(operator, schoolId);
+    expect(everyone.map((p) => p.name).sort()).toEqual([
+      "Aarav Pupil",
+      "First Admin",
+      "Second Admin",
+    ]);
 
+    expect(await findPeople(operator, schoolId, "a")).toEqual([]); // too short
     const found = await findPeople(operator, schoolId, "Aarav");
     expect(found.map((p) => p.name)).toEqual(["Aarav Pupil"]);
   });
 });
 
-describe("⚠ the visitor book", () => {
-  it("keeps the row after the grant is closed", async () => {
-    await rebuild();
-    await openSchool(operator, schoolId, REASON);
-    await closeSchool(operator, schoolId);
+describe("⚠ removing a school", () => {
+  async function buildDoomedSchool() {
+    const school = await db.school.create({
+      data: {
+        name: "ZZ Doomed School",
+        slug: DOOMED_SLUG,
+        code: "ZZDOOM",
+        contactEmail: `doomed${SUFFIX}`,
+      },
+    });
+    const pupilUser = await makeUser(`doomedpupil${SUFFIX}`, "Meera Leaver");
+    const staffUser = await makeUser(`doomedstaff${SUFFIX}`, "Doomed Teacher");
+    const pupil = await db.membership.create({
+      data: {
+        userId: pupilUser.id,
+        schoolId: school.id,
+        role: "STUDENT",
+        status: "ACTIVE",
+        gradeLevel: "7",
+      },
+    });
+    const staff = await db.membership.create({
+      data: { userId: staffUser.id, schoolId: school.id, role: "TEACHER", status: "ACTIVE" },
+    });
+    return { school, pupil, staff, pupilUser };
+  }
 
-    // Closing sets endedAt. It does not remove the evidence that it happened.
-    const rows = await db.operatorAccess.findMany({ where: { schoolId } });
-    expect(rows).toHaveLength(1);
-    expect(rows[0]!.endedAt).not.toBeNull();
-    expect(rows[0]!.reason).toBe(REASON);
+  it("⚠ turns every pupil into a leaver with a certificate, and keeps their account", async () => {
+    await rebuild();
+    const { school, pupil, staff, pupilUser } = await buildDoomedSchool();
+
+    expect(await removeSchool(operator, school.id)).toEqual({ ok: true });
+
+    // The school is flagged, not deleted.
+    const flagged = await db.school.findUniqueOrThrow({ where: { id: school.id } });
+    expect(flagged.removedAt).not.toBeNull();
+
+    // The pupil left the way any leaver does: membership ended, certificate
+    // issued, snapshot frozen with the school's name as it was.
+    const membership = await db.membership.findUniqueOrThrow({ where: { id: pupil.id } });
+    expect(membership.leftAt).not.toBeNull();
+
+    const record = await db.schoolRecord.findUniqueOrThrow({
+      where: { studentMembershipId: pupil.id },
+    });
+    expect(record.reason).toBe("LEFT");
+    expect(record.schoolName).toBe("ZZ Doomed School");
+    expect(record.studentUserId).toBe(pupilUser.id);
+
+    // Staff lose the post but get no certificate — same as an ordinary leaving.
+    const staffRow = await db.membership.findUniqueOrThrow({ where: { id: staff.id } });
+    expect(staffRow.leftAt).not.toBeNull();
+    expect(
+      await db.schoolRecord.count({ where: { studentMembershipId: staff.id } }),
+    ).toBe(0);
+
+    // And the person behind the pupil is untouched.
+    const user = await db.user.findUniqueOrThrow({ where: { id: pupilUser.id } });
+    expect(user.disabledAt).toBeNull();
   });
 
-  it("⚠ withSchoolAccess is the only door, and it checks both things SEPARATELY", async () => {
+  it("refuses to remove twice, and keeps an already-issued certificate", async () => {
     await rebuild();
+    const { school, pupil } = await buildDoomedSchool();
 
-    /**
-     * TWO CHECKS, AND THE MESSAGES ARE WHY BOTH ARE HERE.
-     *
-     * Mutation testing removed `assertSuperuser` from this function and the
-     * whole suite still passed, because `activeGrant` returns null for a
-     * non-superuser and the grant check refuses a moment later. Asserting only
-     * that it throws cannot tell the two apart.
-     *
-     * They are not the same refusal. A school admin who reached this is being
-     * told the area is not theirs; an operator is being told to open the school
-     * and say why. Collapsing them would answer a school admin with "open this
-     * school first" — an instruction implying a door exists for them, which is
-     * exactly the thing this feature must not imply.
-     *
-     * So the guard survives on the sentence, and the sentence is pinned.
-     */
-    const asOutsider = await withSchoolAccess(notOperator, schoolId, async () => "in").catch(
-      (e: unknown) => e as AccessError,
-    );
-    expect(asOutsider).toBeInstanceOf(AccessError);
-    // The message IS the key now — the two doors must still refuse differently.
-    expect((asOutsider as AccessError).key).toBe("access.thisAreaBelongsToWhoeverRunsThe");
-    expect((asOutsider as AccessError).key).not.toBe("access.openThisSchoolFirstAndSayWhy");
+    await removeSchool(operator, school.id);
+    const first = await db.schoolRecord.findUniqueOrThrow({
+      where: { studentMembershipId: pupil.id },
+    });
 
-    const asOperator = await withSchoolAccess(operator, schoolId, async () => "in").catch(
-      (e: unknown) => e as AccessError,
-    );
-    expect(asOperator).toBeInstanceOf(AccessError);
-    expect((asOperator as AccessError).key).toBe("access.openThisSchoolFirstAndSayWhy");
+    const again = await removeSchool(operator, school.id);
+    expect(again.ok).toBe(false);
+    expect(again.ok === false && again.errorKey).toBe("root.schoolWasRemoved");
 
-    await openSchool(operator, schoolId, REASON);
-    expect(await withSchoolAccess(operator, schoolId, async () => "in")).toBe("in");
+    const still = await db.schoolRecord.findUniqueOrThrow({
+      where: { studentMembershipId: pupil.id },
+    });
+    expect(still.id).toBe(first.id);
+  });
+
+  it("refuses anybody who does not run the server", async () => {
+    await rebuild();
+    const { school } = await buildDoomedSchool();
+    await expect(removeSchool(notOperator, school.id)).rejects.toBeInstanceOf(AccessError);
   });
 });

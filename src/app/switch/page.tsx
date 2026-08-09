@@ -36,6 +36,7 @@ export default async function SwitchPage() {
     // paused — they are part of one, it is closed to them, and no join code
     // will open it. Send them to the page that says so.
     if (session.user.isSuperuser) redirect("/root");
+    if (session.user.isAppAdmin) redirect("/appadmin");
 
     const paused = await db.membership.count({
       where: { userId: session.user.id, status: "SUSPENDED", leftAt: null },
@@ -117,6 +118,24 @@ export default async function SwitchPage() {
         Set apart from the school cards on purpose: it is not a school, and
         picking it does not switch role. It leaves the school entirely.
       */}
+      {session.user.isAppAdmin && (
+        <Link
+          href="/appadmin"
+          className="mt-3 flex items-center gap-3 rounded-[--radius-md] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-surface-muted text-fg-muted">
+            <BuildingsIcon weight="duotone" className="size-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate font-semibold text-fg">
+              {t("appadmin.areaTitle")}
+            </span>
+            <span className="block text-sm text-fg-muted">{t("appadmin.switchHint")}</span>
+          </span>
+          <CaretRightIcon className="size-5 shrink-0 text-fg-subtle" aria-hidden="true" />
+        </Link>
+      )}
+
       {session.user.isSuperuser && (
         <Link
           href="/root"

@@ -1,43 +1,50 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { LockKeyIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { close, search, setSuspension, takeDown } from "./actions";
+import { setSuspension, takeDown } from "./actions";
 import type { OversightPerson, OversightPost } from "@/lib/operator-oversight";
 import { useT } from "@/lib/i18n";
 
 /**
  * What an operator can actually do once they are inside.
  *
- * TWO POWERS AND A SEARCH BOX. Take a post down, pause a person, and find that
- * person by name — deliberately not a directory, because an operator arriving
- * with a name should be able to find them and an operator with idle curiosity
- * should not be handed a list of children to scroll.
+ * TWO POWERS AND A DIRECTORY. Take a post down, pause a person, and see the
+ * whole roll — the operator's sight goes down to the individual by design, and
+ * the school reads every visit in its Safety Centre. The filter box narrows the
+ * directory in place; it is a convenience, not a gate.
  *
- * Every button asks for a reason for the same purpose the door does: the school
- * reads it afterwards.
+ * Every destructive button asks for a reason for the same purpose the visitor
+ * book exists: the school reads it afterwards.
  */
 export function OversightPanel({
   schoolId,
   posts,
-  expiresAt,
+  people,
 }: {
   schoolId: string;
   posts: OversightPost[];
-  expiresAt: string;
+  people: OversightPerson[];
 }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [query, setQuery] = useState("");
-  const [people, setPeople] = useState<OversightPerson[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const shown = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return people;
+    return people.filter(
+      (p) => p.name.toLowerCase().includes(q) || p.role.toLowerCase().includes(q),
+    );
+  }, [people, query]);
 
   function act(work: () => Promise<{ ok: boolean; error?: string }>, done: string) {
     setError(null);
@@ -54,30 +61,6 @@ export function OversightPanel({
 
   return (
     <div className="space-y-5">
-      {/* A SECTION, so the banner has an accessible name rather than being an
-          unlabelled box of coloured text — and so `id="inside-banner"` is
-          load-bearing markup the sweep can read instead of the sentence, which
-          is a fact about the reader's language rather than about the grant. */}
-      <section
-        aria-labelledby="inside-banner"
-        className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft p-4"
-      >
-        <p id="inside-banner" className="text-sm text-fg">
-          {/* One sentence with a placeholder; the bold lead went with the
-              fragments, and the time inside is a value. */}
-          {t("root.youAreInside", { time: expiresAt })}
-        </p>
-        <Button
-          size="sm"
-          variant="secondary"
-          icon={<LockKeyIcon weight="bold" />}
-          loading={pending}
-          onClick={() => act(() => close(schoolId), t("root.closedToast"))}
-        >
-          {t("root.closeNow")}
-        </Button>
-      </section>
-
       {error && (
         <p
           role="alert"
@@ -136,35 +119,28 @@ export function OversightPanel({
       {/* ---------------- people ---------------- */}
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-          {t("root.findSomebody")}
+          {t("root.everybodyHere")}
         </h2>
-        <p className="text-sm text-fg-muted">{t("root.byNameOrEmail")}</p>
+        <p className="text-sm text-fg-muted">{t("root.directoryNote")}</p>
         <div className="flex gap-2">
           <TextField
-            label={t("root.nameOrEmail")}
+            label={t("root.filterPeople")}
             className="flex-1"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Button
-            className="self-end"
-            variant="secondary"
-            icon={<MagnifyingGlassIcon weight="bold" />}
-            loading={pending}
-            onClick={() =>
-              startTransition(async () => setPeople(await search(schoolId, query)))
-            }
-          >
-            {t("root.search")}
-          </Button>
+          <MagnifyingGlassIcon
+            weight="bold"
+            className="mb-3 size-4 self-end text-fg-muted"
+            aria-hidden="true"
+          />
         </div>
 
-        {people !== null && people.length === 0 && (
+        {shown.length === 0 ? (
           <p className="text-sm text-fg-muted">{t("root.nobodyMatched")}</p>
-        )}
-        {people && people.length > 0 && (
+        ) : (
           <ul className="space-y-2">
-            {people.map((person) => (
+            {shown.map((person) => (
               <li
                 key={person.membershipId}
                 className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-border bg-surface p-3"

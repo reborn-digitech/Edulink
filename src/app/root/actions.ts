@@ -6,6 +6,7 @@ import { requireApiUser, AccessError } from "@/lib/tenancy";
 import {
   createSchool,
   updateSchool,
+  removeSchool,
   inviteAdmin,
   revokeInvite,
   assertSuperuser,
@@ -52,6 +53,25 @@ export async function updateSchoolAction(
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await updateSchool(session, schoolId, details);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * Removes a school. The lib turns the whole roll into leavers first — every
+ * pupil keeps their account and gets a certificate — and only then flags the
+ * school; see removeSchool for why that order.
+ */
+export async function removeSchoolAction(schoolId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await removeSchool(session, schoolId);
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);

@@ -46,6 +46,7 @@ function ctx(over: Partial<ActiveContext> & { userId: string; isSuperuser?: bool
       avatarKey: null,
       isMinor: false,
       isSuperuser: over.isSuperuser ?? false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

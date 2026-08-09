@@ -39,8 +39,8 @@ import type { ActiveContext } from "./session";
 /* The ladder                                                                  */
 /* -------------------------------------------------------------------------- */
 
-/* Keys, not words — looked up at render time in the reader's language. The
-   bilingual voice ("Yaad rakho · Remember") lives in the dictionaries. */
+/* Keys, not words — looked up at render time in the reader's language. Each
+   dictionary carries its own word for the rung ("Remember" / "याद रखो"). */
 export const QUIZ_LEVELS = [
   {
     level: 1,

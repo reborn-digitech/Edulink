@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { requireSuperuser, AccessError } from "@/lib/tenancy";
-import { closeSchool, openSchool } from "@/lib/superuser";
 import { setMembershipSuspension, takeDownPost, findPeople } from "@/lib/operator-oversight";
 import type { OversightPerson } from "@/lib/operator-oversight";
 
@@ -14,30 +13,6 @@ async function failure(error: unknown): Promise<Result> {
       return { ok: false, error: (await getT())(error.key, error.vars) };
   console.error("[oversight]", error);
   return { ok: false, error: (await getT())("common.somethingWrong") };
-}
-
-/** Opens a school for a bounded time, having written down why. */
-export async function open(schoolId: string, reason: string): Promise<Result> {
-  try {
-    const session = await requireSuperuser();
-    const result = await openSchool(session, schoolId, reason);
-    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
-    revalidatePath(`/root/${schoolId}/inside`);
-    return { ok: true };
-  } catch (error) {
-    return failure(error);
-  }
-}
-
-export async function close(schoolId: string): Promise<Result> {
-  try {
-    const session = await requireSuperuser();
-    await closeSchool(session, schoolId);
-    revalidatePath(`/root/${schoolId}/inside`);
-    return { ok: true };
-  } catch (error) {
-    return failure(error);
-  }
 }
 
 export async function takeDown(

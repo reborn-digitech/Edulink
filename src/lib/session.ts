@@ -25,6 +25,8 @@ export type SessionUser = {
   isMinor: boolean;
   /** Whoever runs the server. Orthogonal to `role`, which names a school post. */
   isSuperuser: boolean;
+  /** The content team: shared question bank and platform competitions. */
+  isAppAdmin: boolean;
   prefs: UserPrefs;
 };
 
@@ -205,6 +207,7 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
       avatarKey: session.user.avatarKey,
       isMinor: session.user.isMinor,
       isSuperuser: session.user.isSuperuser,
+      isAppAdmin: session.user.isAppAdmin,
       prefs: readJson<UserPrefs>(session.user.prefs, DEFAULT_PREFS),
     },
   };

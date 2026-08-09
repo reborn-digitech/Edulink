@@ -57,39 +57,51 @@ export default async function RootPage() {
         <ul className="space-y-2">
           {schools.map((school) => (
             <li key={school.id}>
-              <Card>
+              <Card className={school.removedAt ? "opacity-70" : undefined}>
                 <Link href={`/root/${school.id}`} className="block p-4">
                   <div className="flex flex-wrap items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-fg">{school.name}</p>
                       <p className="truncate text-xs text-fg-muted">
                         {[school.city, school.country].filter(Boolean).join(", ") || t("root.noAddress")} ·{" "}
-                        {t("root.joinedAgo", { when: relativeTime(school.createdAt) })}
+                        {school.removedAt
+                          ? t("root.removedAgo", { when: relativeTime(school.removedAt) })
+                          : t("root.joinedAgo", { when: relativeTime(school.createdAt) })}
                       </p>
-                      <p className="mt-0.5 truncate text-xs text-fg-subtle">
-                        {t("root.joinCode")} <span className="font-mono font-semibold">{school.code}</span>
-                        {school.gradeLow && school.gradeHigh
-                          ? ` · ${t("root.gradesRange", { low: school.gradeLow, high: school.gradeHigh })}`
-                          : ` · ${t("root.noGradeRange")}`}
-                      </p>
+                      {!school.removedAt && (
+                        <p className="mt-0.5 truncate text-xs text-fg-subtle">
+                          {t("root.joinCode")} <span className="font-mono font-semibold">{school.code}</span>
+                          {school.gradeLow && school.gradeHigh
+                            ? ` · ${t("root.gradesRange", { low: school.gradeLow, high: school.gradeHigh })}`
+                            : ` · ${t("root.noGradeRange")}`}
+                        </p>
+                      )}
                     </div>
 
-                    {school.pendingAdminInvites > 0 && (
-                      <Badge tone="warn" size="sm">
-                        {school.pendingAdminInvites === 1
-                          ? t("root.invitesPendingOne")
-                          : t("root.invitesPendingMany", { count: school.pendingAdminInvites })}
+                    {school.removedAt ? (
+                      <Badge tone="danger" size="sm">
+                        {t("root.removedBadge")}
                       </Badge>
+                    ) : (
+                      <>
+                        {school.pendingAdminInvites > 0 && (
+                          <Badge tone="warn" size="sm">
+                            {school.pendingAdminInvites === 1
+                              ? t("root.invitesPendingOne")
+                              : t("root.invitesPendingMany", { count: school.pendingAdminInvites })}
+                          </Badge>
+                        )}
+                        {!school.gradeLow || !school.gradeHigh ? (
+                          <span
+                            className="flex items-center gap-1 text-xs font-medium text-warn"
+                            title={t("root.needsSetupTitle")}
+                          >
+                            <WarningIcon weight="bold" className="size-4" />
+                            {t("root.needsSetup")}
+                          </span>
+                        ) : null}
+                      </>
                     )}
-                    {!school.gradeLow || !school.gradeHigh ? (
-                      <span
-                        className="flex items-center gap-1 text-xs font-medium text-warn"
-                        title={t("root.needsSetupTitle")}
-                      >
-                        <WarningIcon weight="bold" className="size-4" />
-                        {t("root.needsSetup")}
-                      </span>
-                    ) : null}
                   </div>
                 </Link>
               </Card>

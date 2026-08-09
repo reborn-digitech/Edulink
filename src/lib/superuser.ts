@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { randomUUID } from "node:crypto";
 import { db } from "./db";
@@ -20,21 +21,18 @@ import type { ActiveContext } from "./session";
  * feature: the temptation is a role that can do everything, and what is built
  * here is a key to two tables.
  *
- * A superuser can create a school, correct its details, and invite its first
- * administrator. That is the entire list. They cannot read a register, a mark, a
- * message or a child's name — not because the pages are hidden but because
- * Postgres will not return the rows: `app.is_superuser` appears in exactly two
- * policies, School and Invite. `npm run rls:verify` proves the absence.
+ * A superuser can create a school, correct its details, invite its first
+ * administrator, remove a school from the installation, and look inside any
+ * school — see "THE OPERATOR'S SIGHT INTO A SCHOOL" further down. The flag
+ * itself still opens exactly two tables (`app.is_superuser` appears in the
+ * School and Invite policies and nowhere else); sight into a school's rows is
+ * always through `withSchoolAccess`, which binds that one school and records
+ * the visit where the school can read it.
  *
- * WHY THAT LINE. Setting a school up is administration; reading what happens
- * inside one is surveillance. The person hosting this software has no business
- * knowing how a particular eleven-year-old is doing, and "we only show what the
- * UI shows" is not an answer when the same person can open a database client.
- * The boundary has to be somewhere the UI cannot move, so it is in the policies.
- *
- * The one power deliberately NOT taken away is deletion: a superuser can drop a
- * school and everything it owns. Withholding that would be theatre — they
- * already have `psql`. It simply has no button.
+ * Removal is a button now, and deliberately not a delete: `removeSchool` runs
+ * the ordinary departure machinery for the whole roll so every pupil leaves the
+ * way an alumnus does — account intact, certificate issued — and the School row
+ * itself is only flagged `removedAt`.
  */
 
 export type SchoolSummary = {
@@ -50,6 +48,8 @@ export type SchoolSummary = {
   timezone: string;
   verifiedAt: Date | null;
   createdAt: Date;
+  /** Set when the operator took this school off the installation. */
+  removedAt: Date | null;
   /** Pending admin invitations, so an operator can see a school with no admin yet. */
   pendingAdminInvites: number;
 };
@@ -86,6 +86,7 @@ export async function listSchools(session: ActiveContext): Promise<SchoolSummary
       timezone: true,
       verifiedAt: true,
       createdAt: true,
+      removedAt: true,
     },
   });
 
@@ -256,6 +257,144 @@ export async function updateSchool(
   return { ok: true };
 }
 
+/** The delegates the removal transaction touches — see school-record.ts. */
+type RemovalTx = {
+  schoolRecord: { createMany(args: unknown): Promise<unknown> };
+  membership: { updateMany(args: unknown): Promise<unknown> };
+  enrollment: { updateMany(args: unknown): Promise<unknown> };
+};
+
+/**
+ * Takes a school off the installation.
+ *
+ * REMOVED, NOT DELETED. A hard delete cascades through everything the school
+ * owns — including every SchoolRecord it ever issued, which is the one document
+ * a pupil is supposed to carry away. So removal is the departure machinery from
+ * school-record.ts run for the whole roll at once: every pupil still on it gets
+ * a leaving certificate with their snapshot figures, every membership gets its
+ * `leftAt`, and the school itself gets `removedAt` and drops out of every
+ * listing, join code and switcher.
+ *
+ * THE CHILDREN KEEP THEIR ACCOUNTS. A User belongs to no school; what ends here
+ * is the membership, exactly as it does for a pupil who transfers. Their
+ * certificate, report cards and badges stay reachable through the same
+ * user-keyed policies every alumnus already relies on (see CHILD-PORTABLE in
+ * gen-rls.ts).
+ *
+ * ONE TRANSACTION for the roll, for the same reason recordDeparture is one: a
+ * membership ended without its certificate is a child who vanished with nothing
+ * to show for their years. `removedAt` is set after and outside it — if that
+ * one write fails the school is left fully intact and the operation can simply
+ * be pressed again (certificates already issued are skipped as duplicates).
+ */
+export async function removeSchool(
+  session: ActiveContext,
+  schoolId: string,
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+
+  const school = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { id: true, name: true, removedAt: true },
+  });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
+
+  const leftAt = new Date();
+
+  const counts = await withSchoolAccess(session, schoolId, async () => {
+    const roll = await db.membership.findMany({
+      where: { schoolId, leftAt: null },
+      select: { id: true, userId: true, role: true, gradeLevel: true, joinedAt: true },
+    });
+    const students = roll.filter((m) => m.role === "STUDENT");
+
+    // Snapshot figures for every certificate in two GROUP BYs, not two queries
+    // per child — the same counts recordDeparture takes, taken once for the roll.
+    const [attendance, reportCards] = await Promise.all([
+      db.attendanceRecord.groupBy({
+        by: ["studentMembershipId", "status"],
+        where: { schoolId, studentMembershipId: { in: students.map((s) => s.id) } },
+        _count: { _all: true },
+      }),
+      db.reportCard.groupBy({
+        by: ["studentMembershipId"],
+        where: {
+          schoolId,
+          status: "PUBLISHED",
+          studentMembershipId: { in: students.map((s) => s.id) },
+        },
+        _count: { _all: true },
+      }),
+    ]);
+
+    const marked = new Map<string, number>();
+    const present = new Map<string, number>();
+    for (const row of attendance) {
+      const id = row.studentMembershipId;
+      marked.set(id, (marked.get(id) ?? 0) + row._count._all);
+      // LATE COUNTS AS PRESENT, matching every other attendance figure here.
+      if (row.status === "PRESENT" || row.status === "LATE") {
+        present.set(id, (present.get(id) ?? 0) + row._count._all);
+      }
+    }
+    const cards = new Map(reportCards.map((r) => [r.studentMembershipId, r._count._all]));
+
+    await db.$tenantTransaction(async (tx: unknown) => {
+      const t = tx as RemovalTx;
+      // `skipDuplicates` is what makes re-running safe: a pupil whose departure
+      // was already recorded keeps the certificate that was written then.
+      await t.schoolRecord.createMany({
+        data: students.map((s) => ({
+          schoolId,
+          studentUserId: s.userId,
+          studentMembershipId: s.id,
+          schoolName: school.name,
+          gradeLevel: s.gradeLevel,
+          joinedAt: s.joinedAt,
+          leftAt,
+          reason: "LEFT",
+          destination: null,
+          note: "The school was removed from this EduLink installation.",
+          attendanceMarked: marked.get(s.id) ?? 0,
+          attendancePresent: present.get(s.id) ?? 0,
+          reportCardCount: cards.get(s.id) ?? 0,
+          issuedByMembershipId: null,
+        })),
+        skipDuplicates: true,
+      });
+
+      // REMOVED rather than deleted, as cohort.ts does it, so last term's marks
+      // still have a class to belong to.
+      await t.enrollment.updateMany({
+        where: { schoolId, status: "ACTIVE" },
+        data: { status: "REMOVED" },
+      });
+
+      // Staff and pupils alike: everybody's post at this school has ended.
+      await t.membership.updateMany({
+        where: { schoolId, leftAt: null },
+        data: { leftAt },
+      });
+    });
+
+    return { members: roll.length, certificates: students.length };
+  });
+
+  await db.school.update({ where: { id: schoolId }, data: { removedAt: leftAt } });
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: "superuser.school.remove",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { schoolId, name: school.name, ...counts },
+  });
+
+  return { ok: true };
+}
+
 /**
  * Invites somebody to be an administrator of a school.
  *
@@ -282,9 +421,11 @@ export async function inviteAdmin(
 
   const school = await db.school.findUnique({
     where: { id: schoolId },
-    select: { id: true, name: true },
+    select: { id: true, name: true, removedAt: true },
   });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  // A removed school must not quietly grow a new administrator.
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
 
   const role = input.role ?? "ADMIN";
 
@@ -666,35 +807,26 @@ export async function setExpertStanding(
 /* -------------------------------------------------------------------------- */
 
 /**
- * THE BOUNDARY THIS FILE SPENT ITS FIRST 150 LINES DEFENDING, OPENED ON PURPOSE.
+ * THE OPERATOR'S SIGHT INTO A SCHOOL, ALWAYS ON.
  *
- * The header above says setting a school up is administration and reading what
- * happens inside one is surveillance, and that the person hosting this software
- * has no business knowing how a particular eleven-year-old is doing. That was
- * the right default and it is still the default. What it could not answer is the
- * ordinary reason a host needs to look: a school reports abuse it cannot see the
- * whole of, a safeguarding referral arrives about content on this installation,
- * a bug corrupts one school's register and somebody has to find out how.
+ * This used to be a request flow: the operator opened one school at a time, for
+ * a written reason, on a sixty-minute grant. The product decision has since
+ * been made the other way — the operator holds total access to every school on
+ * the installation, down to the individual, with no door to knock on first.
  *
- * SO THE ANSWER IS NOT A MASTER KEY, IT IS A SIGNED-OUT ONE. An operator does
- * not hold every school open. They OPEN ONE, having written down why, for a
- * bounded time, and the school is told — opening, every action taken inside, and
- * closing are all audited against that school's id, so they surface in that
- * school's own Safety Centre next to everything else. The operator gains sight;
- * they give up doing it unobserved. That trade is the feature.
+ * WHAT SURVIVES FROM THE OLD DESIGN is the part that made it accountable: the
+ * school is still told. Every look inside writes an OperatorAccess row (one per
+ * hour rather than one per query, so the school reads "the operator was here
+ * this afternoon" and not five hundred lines of it), and that row surfaces in
+ * the school's own Safety Centre exactly as before. Actions taken inside —
+ * takedowns, suspensions — are audited against the school's id as they always
+ * were. The operator no longer asks; they are still seen.
  *
- * WHAT DID NOT CHANGE. `app.is_superuser` still opens exactly two tables, School
- * and Invite. There is no policy anywhere that says "a superuser may read
- * grades". While a grant is live the operator is bound to that ONE school
- * through `asOperatorIn`, so every ordinary tenant policy applies to them exactly
- * as it does to that school's admin — including the part where the school next
- * door stays invisible. `npm run rls:verify` proves that specifically.
- *
- * AND WHAT REMAINS TRUE ABOUT ALL OF IT: whoever runs the server has `psql`.
- * None of this is a defence against them, and pretending otherwise would be the
- * dishonest version. It is a defence against doing it casually, against doing it
- * without saying why, and against doing it without the school ever knowing —
- * which are the three things that turn a support tool into surveillance.
+ * MECHANICALLY, `app.is_superuser` still opens exactly two tables, School and
+ * Invite. Everything else is reached by binding the ONE school being looked at
+ * through `asOperatorIn`, so the ordinary tenant policies govern the operator
+ * exactly as they govern that school's admin — including the part where the
+ * school next door stays invisible to the queries of this one.
  */
 
 /**
@@ -721,142 +853,66 @@ function asOperatorIn<T>(session: ActiveContext, schoolId: string, work: () => P
   );
 }
 
-/** How long a grant lasts before it has to be asked for again. */
+/** How long one recorded visit covers before the next look writes a new row. */
 export const OPERATOR_ACCESS_MINUTES = 60;
 
-export type OperatorGrant = {
-  id: string;
-  schoolId: string;
-  reason: string;
-  startedAt: Date;
-  expiresAt: Date;
-};
-
 /**
- * The grant this operator currently holds on this school, if any.
+ * Notes in the school's visitor book that the operator is looking, at most once
+ * per hour.
  *
- * Expiry is checked HERE rather than by a background job, because a grant that
- * lapses only when something sweeps it is a grant that is open for as long as
- * nothing runs.
- */
-export async function activeGrant(
-  session: ActiveContext,
-  schoolId: string,
-): Promise<OperatorGrant | null> {
-  if (!session.user.isSuperuser) return null;
-
-  const row = await db.operatorAccess.findFirst({
-    where: {
-      schoolId,
-      userId: session.user.id,
-      endedAt: null,
-      expiresAt: { gt: new Date() },
-    },
-    orderBy: { startedAt: "desc" },
-    select: { id: true, schoolId: true, reason: true, startedAt: true, expiresAt: true },
-  });
-  return row;
-}
-
-export type OpenResult = { ok: true; grant: OperatorGrant } | { ok: false; errorKey: TranslationKey };
-
-/**
- * Opens one school, for a stated reason.
+ * NOT A GATE — access no longer has one. This exists so the always-on key does
+ * not become an unobserved one: the row surfaces in the school's own Safety
+ * Centre, which is the half of the old grant flow worth keeping. Reusing an
+ * open row keeps a working session from writing a line per query.
  *
- * THE REASON IS REQUIRED AND IS NOT DECORATION. It is written into the row and
- * into the school's own audit log, so what the school reads is not "the operator
- * looked" but "the operator looked, on this date, because of this". A free-text
- * box somebody can type "x" into is admittedly weak; it is still the difference
- * between a decision somebody made and a habit nobody notices.
+ * WRAPPED IN REACT'S `cache`, and that is load-bearing, not a speed-up: a page
+ * fetches its numbers, posts and people in one Promise.all, so three
+ * `withSchoolAccess` calls race through here concurrently. Each would see "no
+ * open row yet" and write its own line — three visits in the school's book for
+ * one look. `cache` collapses the concurrent calls of one request into a
+ * single promise; the open-row check below handles reuse ACROSS requests.
  */
-export async function openSchool(
-  session: ActiveContext,
-  schoolId: string,
-  reason: string,
-): Promise<OpenResult> {
-  assertSuperuser(session);
+const recordVisit = cache(async (userId: string, schoolId: string): Promise<void> => {
+  const asOperator = { schoolIds: [schoolId], userId, joinCode: null, isSuperuser: true };
 
-  const clean = reason.trim();
-  if (clean.length < 10) {
-    return {
-      ok: false,
-      errorKey: "root.sayWhyOpening",
-    };
-  }
-  if (clean.length > 500) return { ok: false, errorKey: "root.reasonTooLong" };
-
-  // The school has to exist, and reading it is something the operator flag
-  // already permits — so this is not a widening, it is a spelling check.
-  const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true } });
-  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
-
-  const existing = await activeGrant(session, schoolId);
-  if (existing) return { ok: true, grant: existing };
-
-  const expiresAt = new Date(Date.now() + OPERATOR_ACCESS_MINUTES * 60_000);
-  // Written INSIDE the school, because that is where the row lives and where the
-  // policy expects it. Insert is permitted by the operator flag alone; see
-  // OPERATOR_LOG_TABLES in gen-rls.ts.
-  const grant = await asOperatorIn(session, schoolId, () =>
-    db.operatorAccess.create({
-      data: { schoolId, userId: session.user.id, reason: clean, expiresAt },
-      select: { id: true, schoolId: true, reason: true, startedAt: true, expiresAt: true },
+  const open = await forTenant(asOperator, () =>
+    db.operatorAccess.findFirst({
+      where: {
+        schoolId,
+        userId,
+        endedAt: null,
+        expiresAt: { gt: new Date() },
+      },
+      select: { id: true },
     }),
   );
+  if (open) return;
 
-  /**
-   * AUDITED AGAINST THE SCHOOL, not against nothing.
-   *
-   * Every other operator action in this file is audited with `schoolId` null on
-   * purpose, so an operator's own housekeeping does not clutter a tenant's
-   * Safety Centre. This one is the exact opposite case and the reason is the
-   * whole design: a school must be able to see that somebody outside it opened
-   * their data. Filing it where only the operator can read it would make the
-   * accountability half of this feature ornamental.
-   */
-  await audit({
-    schoolId,
-    actorUserId: session.user.id,
-    action: "operator.school.open",
-    targetType: "School",
-    targetId: schoolId,
-    meta: { reason: clean, minutes: OPERATOR_ACCESS_MINUTES },
-  });
-
-  return { ok: true, grant };
-}
-
-/** Closes a grant early. The row stays; only `endedAt` is set. */
-export async function closeSchool(session: ActiveContext, schoolId: string): Promise<void> {
-  assertSuperuser(session);
-
-  const grant = await activeGrant(session, schoolId);
-  if (!grant) return;
-
-  await asOperatorIn(session, schoolId, () =>
-    db.operatorAccess.update({ where: { id: grant.id }, data: { endedAt: new Date() } }),
+  await forTenant(asOperator, () =>
+    db.operatorAccess.create({
+      data: {
+        schoolId,
+        userId,
+        reason: "Operator access",
+        expiresAt: new Date(Date.now() + OPERATOR_ACCESS_MINUTES * 60_000),
+      },
+      select: { id: true },
+    }),
   );
-
-  await audit({
-    schoolId,
-    actorUserId: session.user.id,
-    action: "operator.school.close",
-    targetType: "School",
-    targetId: schoolId,
-  });
-}
+});
 
 /**
- * Runs `work` bound to a school the operator currently holds a grant on.
+ * Runs `work` bound to one school, as the operator.
  *
  * THE ONLY WAY INTO A SCHOOL'S ROWS FROM THIS FILE, and everything that reads or
- * writes school data goes through it. Two separate things have to be true —
- * they run the server AND they have an open, unexpired grant for this school —
- * and both are checked here rather than at each call site, because a check
- * repeated in eight places is a check missing from the ninth.
+ * writes school data goes through it — the check lives here rather than at each
+ * call site, because a check repeated in eight places is a check missing from
+ * the ninth. The visit is recorded on the way in, so the school can always see
+ * that somebody outside it was looking.
  *
- * `asOperatorIn` narrows to exactly that school, so the tenant policies do the rest
- * and the school next door is as invisible to the operator as it is to anybody.
+ * `asOperatorIn` narrows to exactly that school, so the tenant policies do the
+ * rest and the school next door is as invisible to the operator's queries as it
+ * is to anybody.
  */
 export async function withSchoolAccess<T>(
   session: ActiveContext,
@@ -864,10 +920,7 @@ export async function withSchoolAccess<T>(
   work: () => Promise<T>,
 ): Promise<T> {
   assertSuperuser(session);
-  const grant = await activeGrant(session, schoolId);
-  if (!grant) {
-    throw new AccessError("access.openThisSchoolFirstAndSayWhy", "NOT_FOUND");
-  }
+  await recordVisit(session.user.id, schoolId);
   return asOperatorIn(session, schoolId, work);
 }
 

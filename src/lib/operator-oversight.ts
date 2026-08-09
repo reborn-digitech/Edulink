@@ -10,12 +10,12 @@ import type { ActiveContext } from "./session";
  * What whoever runs the server can see and do inside a school they have opened.
  *
  * EVERY FUNCTION HERE GOES THROUGH `withSchoolAccess`, which is the only door.
- * It checks two separate things — they run the server, AND they hold an open,
- * unexpired, reasoned grant on THIS school — and then binds that one school with
- * `asOperatorIn`, so the ordinary tenant policies govern the operator exactly as
- * they govern that school's admin. There is no policy anywhere saying "a
- * superuser may read grades"; what exists is a school being bound, deliberately
- * and temporarily, by somebody who wrote down why.
+ * Access is always on for whoever runs the server — there is no grant to ask
+ * for any more — but the door still records every visit where the school can
+ * read it, and then binds that ONE school, so the ordinary tenant policies
+ * govern the operator exactly as they govern that school's admin. There is no
+ * policy anywhere saying "a superuser may read grades"; what exists is a school
+ * being bound, deliberately and visibly.
  *
  * SO THE SCHOOL NEXT DOOR STAYS INVISIBLE. That is not a claim about this file's
  * WHERE clauses — it is the same `schoolId = ANY(app.school_ids)` predicate that
@@ -292,13 +292,39 @@ export type OversightPerson = {
 };
 
 /**
- * The people in this school, for choosing one to pause.
+ * The whole roll, role by role.
  *
- * SEARCH IS REQUIRED — there is no "list everybody" here, and that is the point.
- * An operator arriving with a name can find that person; an operator with idle
- * curiosity is not handed a directory of children to scroll. The narrowing is
- * small and it is the difference between a tool for a task and a window.
+ * The operator's sight goes down to the individual by design now, so the
+ * directory is listed rather than search-only. Every look at it still goes
+ * through `withSchoolAccess`, which records the visit for the school to read.
  */
+export async function listPeople(
+  session: ActiveContext,
+  schoolId: string,
+): Promise<OversightPerson[]> {
+  return withSchoolAccess(session, schoolId, async () => {
+    const rows = await db.membership.findMany({
+      where: { schoolId, leftAt: null },
+      orderBy: [{ role: "asc" }, { joinedAt: "asc" }],
+      take: 1000,
+      select: {
+        id: true,
+        role: true,
+        status: true,
+        user: { select: { name: true, preferredName: true } },
+      },
+    });
+
+    return rows.map((row) => ({
+      membershipId: row.id,
+      name: row.user.preferredName ?? row.user.name,
+      role: row.role,
+      status: row.status,
+    }));
+  });
+}
+
+/** The same roll, narrowed by a typed name or email — for big schools. */
 export async function findPeople(
   session: ActiveContext,
   schoolId: string,

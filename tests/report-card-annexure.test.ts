@@ -37,6 +37,7 @@ function ctxFor(userId: string, name: string, membershipId: string, role: "STUDE
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

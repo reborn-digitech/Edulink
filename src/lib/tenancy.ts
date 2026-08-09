@@ -95,6 +95,17 @@ export async function requireSuperuser(): Promise<ActiveContext> {
   return session;
 }
 
+/**
+ * The application's content team. Same shape as `requireSuperuser`, and the
+ * same 404-flavoured redirect: `/appadmin` should not confirm its own existence
+ * to somebody who is not meant to be there.
+ */
+export async function requireAppAdmin(): Promise<ActiveContext> {
+  const session = await requireUser();
+  if (!session.user.isAppAdmin) redirect("/");
+  return session;
+}
+
 /** Parents have no Membership; they are authorized through Guardianship. */
 export async function requireParent(): Promise<ActiveContext> {
   const session = await requireUser();

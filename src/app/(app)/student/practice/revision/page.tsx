@@ -49,7 +49,10 @@ export default async function RevisionPage() {
           description={t("practice.revisionEmpty")}
         />
       ) : (
-        <RevisionPlayer queue={queue} />
+        // Keyed on the reading language for the same reason as the topic
+        // player: the queue was fetched in one language and lives in client
+        // state, so a language switch must remount to re-serve it.
+        <RevisionPlayer key={language} queue={queue} />
       )}
     </div>
   );

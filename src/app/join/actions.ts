@@ -104,9 +104,13 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
     const school = await forSchool(klass.schoolId, () =>
       db.school.findUniqueOrThrow({
         where: { id: klass.schoolId },
-        select: { id: true, name: true, logoPath: true, brandPrimary: true },
+        select: { id: true, name: true, logoPath: true, brandPrimary: true, removedAt: true },
       }),
     );
+
+    // A removed school's codes keep circulating on paper; they must stop
+    // working here. "Not found" rather than an explanation — the code is dead.
+    if (school.removedAt) return { ok: false, error: t("join.codeNotFound") };
 
     return {
       ok: true,
@@ -123,9 +127,11 @@ export async function lookupCode(raw: string): Promise<CodeLookup> {
   const school = await forJoinCode(code, () =>
     db.school.findUnique({
       where: { code },
-      select: { id: true, name: true, logoPath: true, brandPrimary: true },
+      select: { id: true, name: true, logoPath: true, brandPrimary: true, removedAt: true },
     }),
   );
+
+  if (school && school.removedAt) return { ok: false, error: t("join.codeNotFound") };
 
   if (school) {
     return {

@@ -62,8 +62,18 @@ model School {
   privacyDefaults String @default("{}")
 
   verifiedAt DateTime?
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+
+  /// REMOVED, NOT DELETED. Set when the operator takes the school off the
+  /// installation. A hard delete would cascade through SchoolRecord and erase
+  /// every leaving certificate the school ever issued — the one document a
+  /// pupil carries away. Removal instead ends every membership through the same
+  /// departure machinery an ordinary leaver goes through, so the children keep
+  /// their accounts, their certificates and their portable records, exactly as
+  /// alumni do.
+  removedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   memberships          Membership[]
   classes              Class[]
@@ -155,6 +165,16 @@ model User {
   /// NOT grant sight of a single child's marks, register or message. See the
   /// SUPERUSER_TABLES note in scripts/gen-rls.ts.
   isSuperuser Boolean @default(false)
+
+  /// The application's content team, not a school post and not the operator.
+  ///
+  /// A FLAG, NOT A ROLE, for the same reasons as `isSuperuser` above. An app
+  /// admin curates what is shared across every school — the practice question
+  /// bank and platform-wide competitions — and holds no membership anywhere.
+  /// The tables they write (QuizTopic, QuizQuestion, their translations,
+  /// Competition) are the shared catalogue and carry no school policy; the
+  /// authorisation is this flag, checked at the application boundary.
+  isAppAdmin Boolean @default(false)
 
   disabledAt DateTime?
 

@@ -40,6 +40,7 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

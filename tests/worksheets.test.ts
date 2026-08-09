@@ -29,6 +29,7 @@ function ctxFor(role: "TEACHER" | "STUDENT"): ActiveContext {
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

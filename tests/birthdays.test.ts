@@ -45,6 +45,7 @@ function context(over: Partial<ActiveContext> & { userId: string }): ActiveConte
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

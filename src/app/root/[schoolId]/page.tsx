@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, BuildingsIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, BuildingsIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites } from "@/lib/superuser";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { relativeTime } from "@/lib/dates";
 import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
+import { RemoveSchool } from "./remove-school";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
@@ -35,22 +38,42 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
       </Link>
 
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
+        <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {school.name}
+          {school.removedAt && (
+            <Badge tone="danger" size="sm">
+              {t("root.removedBadge")}
+            </Badge>
+          )}
+        </h1>
         <p className="mt-1 text-sm text-fg-muted">
-          {t("root.joinCode")} <span className="font-mono font-semibold text-fg">{school.code}</span> ·{" "}
-          {school.timezone}
+          {school.removedAt ? (
+            t("root.removedAgo", { when: relativeTime(school.removedAt) })
+          ) : (
+            <>
+              {t("root.joinCode")}{" "}
+              <span className="font-mono font-semibold text-fg">{school.code}</span> ·{" "}
+              {school.timezone}
+            </>
+          )}
         </p>
       </div>
 
-      {/* The way in, from the school's own operator page. Deliberately worded
-          as a door rather than as a tab: "Look inside" is what it is. */}
+      {/* A removed school keeps its page — the operator may still need to read
+          what it was — but every door that would grow it again is gone. */}
+      {school.removedAt ? (
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+          {t("root.removeExplainer")}
+        </p>
+      ) : (
+        <>
       <Card>
         <CardHeader
           title={t("root.lookInside")}
-          description={t("root.closedByDefault")}
+          description={t("root.insideRecorded")}
           action={
             <Button asChild size="sm" variant="secondary">
-              <Link href={`/root/${schoolId}/inside`}>{t("root.openDoor")}</Link>
+              <Link href={`/root/${schoolId}/inside`}>{t("root.lookInsideCta")}</Link>
             </Button>
           }
         />
@@ -100,6 +123,19 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           else's school looks, and the upload path is already built and authorised
           on that side. */}
       <p className="text-xs leading-relaxed text-fg-muted">{t("root.logoNote")}</p>
+
+      <Card className="border-danger/40">
+        <CardHeader
+          icon={<TrashIcon weight="duotone" className="size-5 text-danger" />}
+          title={t("root.removeTitle")}
+          description={t("root.removeExplainer")}
+        />
+        <CardBody>
+          <RemoveSchool schoolId={school.id} schoolName={school.name} />
+        </CardBody>
+      </Card>
+        </>
+      )}
     </div>
   );
 }

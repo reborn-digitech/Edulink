@@ -38,6 +38,7 @@ function ctxFor(userId: string, membershipId: string, role: "ADMIN"): ActiveCont
       avatarKey: null,
       isMinor: false,
       isSuperuser: false,
+      isAppAdmin: false,
       prefs: {
         theme: "system",
         contrast: "normal",

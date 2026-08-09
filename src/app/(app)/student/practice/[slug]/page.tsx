@@ -50,6 +50,11 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </div>
 
       <Player
+        // Keyed on the reading language: the switcher saves and refreshes, this
+        // page re-renders with the new locale, and the remount makes the player
+        // re-fetch the question it is showing — otherwise the stem fetched at
+        // mount stays in the old language until "Next".
+        key={language}
         slug={topic.slug}
         topicName={mine?.name ?? topic.name}
         totalCount={mine?.questionCount ?? 0}

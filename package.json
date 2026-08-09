@@ -33,9 +33,11 @@
     "zz:fixtures": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts",
     "db:grants": "node scripts/db-grants.mjs",
     "superuser": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-superuser.ts",
+    "appadmin": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-app-admin.ts",
     "i18n": "tsx scripts/i18n-audit.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.116.0",
     "@node-rs/argon2": "^2.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "@prisma/client": "^6.19.3",
