@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * question bank, platform competitions — belongs to every school at once.
  */
 export default async function AppAdminLayout({ children }: { children: React.ReactNode }) {
-  await requireAppAdmin();
+  const session = await requireAppAdmin();
   const t = await getT();
 
   return (
@@ -40,6 +40,14 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/bank">{t("appadmin.questionBank")}</Link>
             </Button>
+            {/* The operator arrives from /root; give them the way back. An app
+                admin never sees this link and the page behind it would 404 on
+                them anyway. */}
+            {session.user.isSuperuser && (
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/root">{t("root.serverAdministration")}</Link>
+              </Button>
+            )}
             <form action="/api/auth/logout" method="post">
               <Button type="submit" variant="ghost" size="sm">
                 {t("suspended.signOut")}

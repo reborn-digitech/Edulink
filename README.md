@@ -170,7 +170,7 @@ applies here: you cannot revoke the only one.
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run superuser -- <email>` | Grant the server-operator flag. `--revoke` to remove, `--list` to see who has it |
-| `npm run appadmin -- <email>` | Grant the content-team flag (question bank + platform competitions). Same `--revoke`/`--list` |
+| `npm run appadmin -- <email>` | Grant the content-team flag (question bank + platform competitions). Same `--revoke`/`--list`. The operator can also do this at `/root/content-team` |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
@@ -3345,9 +3345,9 @@ outside the transaction so a failure leaves the school whole and the button
 safe to press again.
 
 **An app admin is the content team, and not the operator.** A second flag on
-`User` (`isAppAdmin`, granted by `npm run appadmin -- <email>` — a CLI for the
-same reason the superuser's is), a surface at `/appadmin` outside `(app)`, and
-a deliberately short list of powers: post platform-wide competitions
+`User` (`isAppAdmin`, granted by `npm run appadmin -- <email>`, or by the
+operator from `/root/content-team` — see the next section), a surface at
+`/appadmin` outside `(app)`, and a deliberately short list of powers: post platform-wide competitions
 (`organizerSchoolId: null`, draft first, publish deliberate), and add, edit or
 delete questions in the shared practice bank. They cannot see inside any
 school; nothing on the surface takes an id that names one, and the tables they
@@ -3379,6 +3379,42 @@ import run. The two workflows coexist today by convention — the importer owns
 its 308 topics, the dashboard is for what the files do not cover — and the
 known-issues list carries it until the importer learns to leave
 dashboard-authored rows alone.
+
+### The operator inherits the content team, and appoints it
+
+Two sentences of product decision, and the shape they took. The operator holds
+everything the app admin holds, and the operator appoints the app admins —
+both from the browser.
+
+**The inheritance is two lines, in the two gates that must agree.**
+`assertAppAdmin` (every action) and `requireAppAdmin` (the layout) now accept
+`isSuperuser` alongside `isAppAdmin` — the same check in both places, because a
+page that renders whose every action then refuses is worse than either
+refusing. Nothing else changed hands: the appadmin surface still takes no id
+that names a school, so the operator arriving with more brings nothing here
+that could leak more. **And the direction never reverses.** An app admin gains
+nothing of the operator's — the new test file pins a superuser passing the
+content gate AND an app admin bouncing off an operator function, in the same
+suite.
+
+**Appointing is a page now: `/root/content-team`.** The operator sees who
+holds the flag, appoints by the email of an existing account, and dismisses
+with one click — appoint and dismiss both audited into the server log with no
+school id, exactly like school creation. There is deliberately no invite
+token: an app-admin invite would need a school-less Invite row the model does
+not have, and a flag on a half-created account is a standing key nobody is
+using. The person registers through the ordinary flow; the operator flips the
+flag on what exists — the same order the CLI imposed, now with a page, and the
+"no account with that email" error says exactly that. The CLI
+(`npm run appadmin`) survives as bootstrap and recovery, no longer the only
+door.
+
+Verified end to end with a minted ZZ operator session against the production
+build: `/root/content-team` renders the roster and the appoint form,
+`/appadmin` serves a superuser who holds no appadmin flag (with a
+back-to-server link an app admin never sees), and the audit-labels suite
+forced words for both new audit actions in all three languages before the
+suite would pass — 85 files, 1,460 tests green.
 
 ### Known issues
 

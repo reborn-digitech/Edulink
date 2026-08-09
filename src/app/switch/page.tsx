@@ -118,7 +118,7 @@ export default async function SwitchPage() {
         Set apart from the school cards on purpose: it is not a school, and
         picking it does not switch role. It leaves the school entirely.
       */}
-      {session.user.isAppAdmin && (
+      {(session.user.isAppAdmin || session.user.isSuperuser) && (
         <Link
           href="/appadmin"
           className="mt-3 flex items-center gap-3 rounded-[--radius-md] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"

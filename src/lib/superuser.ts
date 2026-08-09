@@ -257,6 +257,119 @@ export async function updateSchool(
   return { ok: true };
 }
 
+/* -------------------------------------------------------------------------- */
+/* The content team, appointed by the operator                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The operator appoints and dismisses the content team from /root.
+ *
+ * THIS USED TO BE CLI-ONLY, deliberately — make-app-admin.ts kept "who can
+ * write to every school's question bank" out of reach of any web session. The
+ * product decision has since been made the other way: the operator, who can
+ * already remove a whole school from a browser, appoints the content team from
+ * one too. What the CLI keeps is the bootstrap and the recovery path — the
+ * first superuser still cannot be appointed from the web, and an installation
+ * whose operator locked themselves out still has the machine.
+ *
+ * APPOINT BY EMAIL, TO AN EXISTING ACCOUNT. There is no invite token here on
+ * purpose: an app-admin invite would need a school-less Invite row (the model
+ * requires a schoolId), and the flag on a half-created account is a standing
+ * key nobody is using. The person registers through the ordinary flow first,
+ * then the operator flips the flag — same order the CLI imposes, and the error
+ * message says exactly that.
+ *
+ * The User table carries no row-level policy (a parent must see themselves
+ * before any school is known), so these writes need no tenant binding; the
+ * boundary is `assertSuperuser`, the same application boundary that guards
+ * every other operator power. Every change is audited with no school id —
+ * this is a server-level appointment and belongs in the server log.
+ */
+
+export type AppAdminSummary = {
+  id: string;
+  name: string;
+  email: string | null;
+  disabledAt: Date | null;
+  isSuperuser: boolean;
+};
+
+/** Everybody holding the content-team flag, for the operator's list. */
+export async function listAppAdmins(session: ActiveContext): Promise<AppAdminSummary[]> {
+  assertSuperuser(session);
+  return db.user.findMany({
+    where: { isAppAdmin: true },
+    orderBy: { createdAt: "asc" },
+    select: { id: true, name: true, email: true, disabledAt: true, isSuperuser: true },
+  });
+}
+
+/** Flips the flag on for the account behind an email address. */
+export async function appointAppAdmin(
+  session: ActiveContext,
+  emailRaw: string,
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+
+  const email = emailRaw.trim().toLowerCase();
+  if (!email) return { ok: false, errorKey: "root.contentTeamNoEmail" };
+
+  const user = await db.user.findUnique({
+    where: { email },
+    select: { id: true, isAppAdmin: true, disabledAt: true },
+  });
+  // One error for "no account", worded as the instruction it implies: the
+  // person registers first, the operator appoints second.
+  if (!user) return { ok: false, errorKey: "root.contentTeamNoAccount" };
+  if (user.disabledAt) return { ok: false, errorKey: "root.contentTeamDisabledAccount" };
+  if (user.isAppAdmin) return { ok: false, errorKey: "root.contentTeamAlready" };
+
+  await db.user.update({ where: { id: user.id }, data: { isAppAdmin: true } });
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: "superuser.appadmin.appoint",
+    targetType: "User",
+    targetId: user.id,
+    meta: { email },
+  });
+
+  return { ok: true };
+}
+
+/**
+ * Flips the flag off. No last-one guard, matching the CLI: an installation
+ * with no app admin still runs — the bank is simply not being curated. The
+ * operator can also dismiss themselves harmlessly; their own gate is the
+ * superuser flag, not this one.
+ */
+export async function dismissAppAdmin(
+  session: ActiveContext,
+  userId: string,
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { id: true, isAppAdmin: true, email: true },
+  });
+  if (!user || !user.isAppAdmin) return { ok: false, errorKey: "root.contentTeamNotAMember" };
+
+  await db.user.update({ where: { id: user.id }, data: { isAppAdmin: false } });
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: "superuser.appadmin.dismiss",
+    targetType: "User",
+    targetId: user.id,
+    meta: { email: user.email },
+  });
+
+  return { ok: true };
+}
+
 /** The delegates the removal transaction touches — see school-record.ts. */
 type RemovalTx = {
   schoolRecord: { createMany(args: unknown): Promise<unknown> };

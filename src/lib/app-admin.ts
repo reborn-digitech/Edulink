@@ -19,11 +19,21 @@ import type { ActiveContext } from "./session";
  * WHAT AN APP ADMIN IS NOT: the operator. They cannot see inside a school, and
  * nothing here takes an id that names one. A platform competition is stamped
  * `organizerSchoolId: null` and the bank has no school column at all, so the
- * write surface simply has no tenant to leak.
+ * write surface simply has no tenant to leak. The operator, who holds more,
+ * passes this surface's gate too — that containment is what makes the
+ * one-way inheritance safe.
  */
 
+/**
+ * The operator passes too, BY DESIGN and not as a convenience. The person who
+ * runs the server appoints the content team (see appointAppAdmin in
+ * superuser.ts) and holds everything the team holds — a curator the operator
+ * could hire but not oversee would be an odd shape of trust. The direction
+ * never reverses: an app admin gains nothing of the operator's, because
+ * nothing here checks `isAppAdmin` where a school could leak through it.
+ */
 export function assertAppAdmin(session: ActiveContext): void {
-  if (!session.user.isAppAdmin) {
+  if (!session.user.isAppAdmin && !session.user.isSuperuser) {
     throw new AccessError("access.thisAreaBelongsToTheContentTeam", "NOT_FOUND");
   }
 }

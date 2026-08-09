@@ -6,11 +6,11 @@
  *   npm run appadmin -- you@example.com --revoke revoke
  *   npm run appadmin -- --list                   who has it
  *
- * A CLI and not a page, for the same reason as make-superuser.ts: the first
- * app admin cannot be appointed by an app admin, and keeping the list editable
- * only from the machine keeps "who can write to every school's question bank"
- * out of reach of any web session. Unlike the superuser script there is no
- * last-one guard — an installation with no app admin still runs; the bank is
+ * No longer the only door: the operator appoints and dismisses the content
+ * team from /root/content-team as well (see appointAppAdmin in superuser.ts).
+ * The CLI remains for the bootstrap — an installation with no superuser yet —
+ * and as the recovery path that needs only the machine. No last-one guard
+ * either way: an installation with no app admin still runs; the bank is
  * simply not being curated.
  */
 import { PrismaClient } from "@prisma/client";

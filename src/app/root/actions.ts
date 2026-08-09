@@ -9,6 +9,8 @@ import {
   removeSchool,
   inviteAdmin,
   revokeInvite,
+  appointAppAdmin,
+  dismissAppAdmin,
   assertSuperuser,
   type SchoolDetails,
 } from "@/lib/superuser";
@@ -104,6 +106,32 @@ export async function revokeInviteAction(schoolId: string, inviteId: string): Pr
     const result = await revokeInvite(session, inviteId);
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function appointAppAdminAction(email: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await appointAppAdmin(session, email);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/content-team");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function dismissAppAdminAction(userId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await dismissAppAdmin(session, userId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/content-team");
     return { ok: true };
   } catch (error) {
     return failure(error);

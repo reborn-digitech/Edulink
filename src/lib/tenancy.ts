@@ -99,10 +99,14 @@ export async function requireSuperuser(): Promise<ActiveContext> {
  * The application's content team. Same shape as `requireSuperuser`, and the
  * same 404-flavoured redirect: `/appadmin` should not confirm its own existence
  * to somebody who is not meant to be there.
+ *
+ * The operator passes too — they appoint the content team and hold everything
+ * it holds. See the note on `assertAppAdmin` in app-admin.ts; the two gates
+ * must agree or a page would render whose every action then refuses.
  */
 export async function requireAppAdmin(): Promise<ActiveContext> {
   const session = await requireUser();
-  if (!session.user.isAppAdmin) redirect("/");
+  if (!session.user.isAppAdmin && !session.user.isSuperuser) redirect("/");
   return session;
 }
 

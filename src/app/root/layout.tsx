@@ -54,6 +54,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Link href="/root/experts">{t("root.experts")}</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
+              <Link href="/root/content-team">{t("root.contentTeam")}</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
               <Link href="/root/audit">{t("root.serverLog")}</Link>
             </Button>
             <form action="/api/auth/logout" method="post">
