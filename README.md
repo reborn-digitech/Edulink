@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 303
-  chapters / 5,170 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 308
+  chapters / 5,269 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2588,8 +2588,30 @@ navigation" means the actual list rather than one somebody maintained by hand.
   one bookkeeper and a reduction to another, why two molecules sharing
   the formula C₂H₆O boil 102 degrees apart, and why a ring with three
   double bonds leaves bromine water orange all afternoon while an alkene
-  clears it in seconds. Class 11 has Biology and Maths left, and Class 12
-  after them.
+  clears it in seconds. **Class 11 Biology has opened** in
+  `g11-biology.ts` — five of nineteen chapters, 99 questions: The Living
+  World, Biological Classification, Plant Kingdom, Animal Kingdom and
+  Morphology of Flowering Plants. Biology is also where the `withNumeric`
+  arrangement earns its keep by NOT being used. Physics and chemistry
+  needed computed problems on every chapter because their ideas and their
+  sums are the same material; taxonomy has no arithmetic in it that is
+  not invented, and a ploidy sum bolted onto a chapter about the
+  definition of a species would be a fiction of the file rather than a
+  fact of the subject. So `G11_BIOLOGY_NUMERIC` carries an entry only for
+  Plant Kingdom, where the counting is real — halve at meiosis, double at
+  fertilisation, triple for endosperm — and is empty everywhere else. An
+  empty entry is a claim rather than an omission: it says this chapter is
+  not measured by calculation. The chapters ask what property nothing
+  non-living has, why reproduction cannot be the test when a mule is
+  plainly alive, why a virus is alive inside a cell and a chemical
+  outside one, why a two-kingdom scheme collapsed under a euglena that
+  fitted in both boxes, why a fungus is nearer to you than to the grass
+  it grows in, why a fern solved height and did not solve water, why a
+  flowering plant stocks a seed only after the order is confirmed, why a
+  whale is not a fish and a bat is not a bird, why an empty space in the
+  body is a better classifier than any organ, and why a potato is a stem
+  and a carrot is a root. Class 11 has fourteen Biology chapters and all
+  of Maths left, and Class 12 after them.
   Suite re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

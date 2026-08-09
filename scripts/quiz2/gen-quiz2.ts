@@ -48,6 +48,7 @@ import { G9_CIVICS } from "./g9-civics";
 import { G9_ECONOMICS } from "./g9-economics";
 import { G11_PHYSICS, G11_PHYSICS_NUMERIC } from "./g11-physics";
 import { G11_CHEMISTRY, G11_CHEMISTRY_NUMERIC } from "./g11-chemistry";
+import { G11_BIOLOGY, G11_BIOLOGY_NUMERIC } from "./g11-biology";
 import { withNumeric } from "./numeric";
 
 const DIR = join(process.cwd(), "content", "quiz");
@@ -86,6 +87,10 @@ function main() {
     // the same chapter — the ladder from the engine, the problems bolted on.
     ...G11_PHYSICS.map(generateChapter).map((t) => withNumeric(t, G11_PHYSICS_NUMERIC[t.slug] ?? [])),
     ...G11_CHEMISTRY.map(generateChapter).map((t) => withNumeric(t, G11_CHEMISTRY_NUMERIC[t.slug] ?? [])),
+    // Biology is the counter-example: `G11_BIOLOGY_NUMERIC` is empty for every
+    // chapter whose subject is not measured by calculation, and withNumeric
+    // returns the ladder untouched when it is handed nothing.
+    ...G11_BIOLOGY.map(generateChapter).map((t) => withNumeric(t, G11_BIOLOGY_NUMERIC[t.slug] ?? [])),
     ...G3_MATHS,
     ...G4_MATHS,
     ...G5_MATHS,
