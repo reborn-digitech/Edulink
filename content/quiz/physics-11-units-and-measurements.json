@@ -1,0 +1,1038 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 1 — Units and Measurements",
+  "name": "Units and Measurements",
+  "slug": "physics-11-units-and-measurements",
+  "summary": "Before any physics can be checked it has to be stated in numbers somebody else can reproduce: seven quantities everything else is built from, a metre that stopped being a bar in Paris and became a property of light, an equation that can be refused for its dimensions alone, digits a measurement has earned and digits it has merely printed, and two kinds of error — one that repetition cures and one that repetition hides.",
+  "position": 1,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "मात्रक और मापन",
+      "summary": "कोई भी भौतिकी जाँची जा सके, उससे पहले उसे ऐसी संख्याओं में कहना पड़ता है जिन्हें कोई और दोहरा सके: सात राशियाँ जिनसे बाक़ी सब बनता है, वह मीटर जो पेरिस की छड़ होना छोड़कर प्रकाश का गुण बन गया, वह समीकरण जिसे केवल उसकी विमाओं के आधार पर लौटाया जा सकता है, वे अंक जो माप ने कमाए और वे जो उसने बस छाप दिए, और दो तरह की त्रुटियाँ — एक जिसे दोहराव मिटाता है और एक जिसे दोहराव छिपाता है।"
+    },
+    "mr": {
+      "name": "एकके आणि मापन",
+      "summary": "कोणतीही भौतिकी तपासली जाण्याआधी ती अशा संख्यांत मांडावी लागते ज्या दुसरा कोणी पुन्हा मिळवू शकेल: सात राशी ज्यांतून बाकी सर्व बांधले जाते, तो मीटर जो पॅरिसमधील पट्टी असणे सोडून प्रकाशाचा गुणधर्म बनला, ते समीकरण जे केवळ त्याच्या मितींवरून नाकारता येते, ते अंक जे मापाने कमावले आणि जे त्याने नुसते छापले, आणि दोन प्रकारच्या त्रुटी — एक जी पुनरावृत्ती मिटवते आणि एक जी पुनरावृत्ती लपवते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Length, mass, time, electric current, temperature, amount of substance and luminous intensity are chosen as independent, and every other unit in the system is built by multiplying and dividing these. What are these seven called?",
+      "choices": [
+        "Dimensional homogeneity",
+        "Random error",
+        "The seven base quantities",
+        "The metre defined by light"
+      ],
+      "answerIndex": 2,
+      "solution": "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "लंबाई, द्रव्यमान, समय, विद्युत धारा, ताप, पदार्थ की मात्रा और ज्योति तीव्रता को स्वतंत्र चुना जाता है, और तंत्र का हर दूसरा मात्रक इन्हीं को गुणा-भाग करके बनता है। ये सात क्या कहलाती हैं?",
+          "choices": [
+            "विमीय समांगता",
+            "यादृच्छिक त्रुटि",
+            "सात मूल राशियाँ",
+            "प्रकाश से परिभाषित मीटर"
+          ],
+          "solution": "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "लांबी, वस्तुमान, काळ, विद्युतधारा, तापमान, पदार्थाचे प्रमाण आणि प्रकाशतीव्रता ही स्वतंत्र म्हणून निवडली जातात, आणि प्रणालीतले बाकी प्रत्येक एकक यांनाच गुणून-भागून बनते. या सातांना काय म्हणतात?",
+          "choices": [
+            "मितीय समांगता",
+            "यादृच्छिक त्रुटी",
+            "सात मूलभूत राशी",
+            "प्रकाशाने व्याख्यायित मीटर"
+          ],
+          "solution": "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The metre defined by light is correct?",
+      "choices": [
+        "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own.",
+        "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it.",
+        "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured.",
+        "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one."
+      ],
+      "answerIndex": 2,
+      "solution": "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश से परिभाषित मीटर के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं।",
+            "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे।",
+            "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं।",
+            "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता।"
+          ],
+          "solution": "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रकाशाने व्याख्यायित मीटर विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे.",
+            "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते.",
+            "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे.",
+            "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही."
+          ],
+          "solution": "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is blind to pure numbers: it cannot tell ½at² from 2at², and it cannot see a missing sine or a wrong factor of π, because none of those carry dimensions.\" — which of these is this about?",
+      "choices": [
+        "The seven base quantities",
+        "Significant figures",
+        "Systematic error",
+        "Dimensional homogeneity"
+      ],
+      "answerIndex": 3,
+      "solution": "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह शुद्ध संख्याओं के प्रति अंधी है: वह ½at² और 2at² में भेद नहीं कर सकती, न लुप्त ज्या या π का ग़लत गुणक देख सकती है, क्योंकि इनमें से कोई विमा नहीं रखता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "सात मूल राशियाँ",
+            "सार्थक अंक",
+            "व्यवस्थित त्रुटि",
+            "विमीय समांगता"
+          ],
+          "solution": "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती शुद्ध संख्यांबाबत आंधळी आहे: ती ½at² आणि 2at² यांत फरक करू शकत नाही, ना हरवलेले साइन वा π चा चुकीचा गुणक पाहू शकते, कारण यांपैकी काहीही मिती बाळगत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सात मूलभूत राशी",
+            "सार्थक अंक",
+            "पद्धतशीर त्रुटी",
+            "मितीय समांगता"
+          ],
+          "solution": "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A length written as 2.30 m claims something a length written as 2.3 m does not, and a product of the two may not be reported with more digits than the poorer factor carried. Which convention is this?",
+      "choices": [
+        "The seven base quantities",
+        "Significant figures",
+        "Error in a product",
+        "Dimensional homogeneity"
+      ],
+      "answerIndex": 1,
+      "solution": "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "2.30 m लिखी लंबाई वह दावा करती है जो 2.3 m लिखी लंबाई नहीं करती, और दोनों का गुणनफल उससे अधिक अंकों में नहीं बताया जा सकता जितने कमज़ोर गुणक में थे। यह कौन-सी परिपाटी है?",
+          "choices": [
+            "सात मूल राशियाँ",
+            "सार्थक अंक",
+            "गुणनफल में त्रुटि",
+            "विमीय समांगता"
+          ],
+          "solution": "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "2.30 m लिहिलेली लांबी तो दावा करते जो 2.3 m लिहिलेली करत नाही, आणि दोहोंचा गुणाकार कमकुवत गुणकात असलेल्या अंकांहून अधिक अंकांत सांगता येत नाही. ही कोणती संकेतपद्धत?",
+          "choices": [
+            "सात मूलभूत राशी",
+            "सार्थक अंक",
+            "गुणाकारातील त्रुटी",
+            "मितीय समांगता"
+          ],
+          "solution": "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Systematic error is correct?",
+      "choices": [
+        "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured.",
+        "A systematic error pushes every reading the same way by the same amount, so averaging many trials cannot remove it and the mean is confidently wrong.",
+        "In a product or quotient the fractional errors add, and an exponent multiplies the fractional error it acts on, so the most heavily powered quantity dominates the uncertainty of the result.",
+        "A random error scatters readings on both sides of the true value with no fixed sign, so taking the mean of many trials shrinks it — roughly as the square root of the number of readings."
+      ],
+      "answerIndex": 1,
+      "solution": "A systematic error pushes every reading the same way by the same amount, so averaging many trials cannot remove it and the mean is confidently wrong. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "व्यवस्थित त्रुटि के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं।",
+            "व्यवस्थित त्रुटि हर पाठ्यांक को एक ही दिशा में उतना ही खिसकाती है, अतः कई प्रयासों का औसत उसे हटा नहीं सकता और माध्य आत्मविश्वास के साथ ग़लत रहता है।",
+            "गुणनफल या भागफल में भिन्नात्मक त्रुटियाँ जुड़ती हैं, और घातांक जिस भिन्नात्मक त्रुटि पर लगता है उसे गुणा कर देता है, अतः सबसे ऊँची घात वाली राशि परिणाम की अनिश्चितता पर हावी रहती है।",
+            "यादृच्छिक त्रुटि पाठ्यांकों को सच्चे मान के दोनों ओर बिना निश्चित चिह्न के बिखेरती है, अतः कई प्रयासों का माध्य लेने से वह घटती है — लगभग पाठ्यांकों की संख्या के वर्गमूल के अनुपात में।"
+          ],
+          "solution": "व्यवस्थित त्रुटि हर पाठ्यांक को एक ही दिशा में उतना ही खिसकाती है, अतः कई प्रयासों का औसत उसे हटा नहीं सकता और माध्य आत्मविश्वास के साथ ग़लत रहता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पद्धतशीर त्रुटी विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे.",
+            "पद्धतशीर त्रुटी प्रत्येक वाचनाला एकाच दिशेने तितकेच सरकवते, म्हणून अनेक प्रयत्नांची सरासरी ती काढू शकत नाही आणि मध्य आत्मविश्वासाने चुकीचा राहतो.",
+            "गुणाकार वा भागाकारात अपूर्णांकी त्रुटी जोडल्या जातात, आणि घातांक ज्या अपूर्णांकी त्रुटीवर लागतो तिला गुणतो, म्हणून सर्वांत मोठ्या घातेची राशी निकालाच्या अनिश्चिततेवर वरचढ राहते.",
+            "यादृच्छिक त्रुटी वाचने खऱ्या मूल्याच्या दोन्ही बाजूंना निश्चित चिन्हाशिवाय विखुरते, म्हणून अनेक प्रयत्नांचा मध्य घेतल्याने ती घटते — साधारण वाचनांच्या संख्येच्या वर्गमुळाच्या प्रमाणात."
+          ],
+          "solution": "पद्धतशीर त्रुटी प्रत्येक वाचनाला एकाच दिशेने तितकेच सरकवते, म्हणून अनेक प्रयत्नांची सरासरी ती काढू शकत नाही आणि मध्य आत्मविश्वासाने चुकीचा राहतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is reported as the mean absolute deviation or the standard deviation about the mean, which is why a single reading is never quoted as a result in a laboratory record.\" — which of these is this about?",
+      "choices": [
+        "Systematic error",
+        "Dimensional homogeneity",
+        "Error in a product",
+        "Random error"
+      ],
+      "answerIndex": 3,
+      "solution": "A random error scatters readings on both sides of the true value with no fixed sign, so taking the mean of many trials shrinks it — roughly as the square root of the number of readings. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसे माध्य निरपेक्ष विचलन या माध्य के परितः मानक विचलन के रूप में बताया जाता है, इसीलिए प्रयोगशाला अभिलेख में अकेला पाठ्यांक कभी परिणाम के रूप में नहीं लिखा जाता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "व्यवस्थित त्रुटि",
+            "विमीय समांगता",
+            "गुणनफल में त्रुटि",
+            "यादृच्छिक त्रुटि"
+          ],
+          "solution": "यादृच्छिक त्रुटि पाठ्यांकों को सच्चे मान के दोनों ओर बिना निश्चित चिह्न के बिखेरती है, अतः कई प्रयासों का माध्य लेने से वह घटती है — लगभग पाठ्यांकों की संख्या के वर्गमूल के अनुपात में। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती मध्य निरपेक्ष विचलन वा मध्याभोवतीचे प्रमाण विचलन म्हणून सांगितली जाते, म्हणूनच प्रयोगशाळेच्या नोंदीत एकटे वाचन कधीही निकाल म्हणून लिहिले जात नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "पद्धतशीर त्रुटी",
+            "मितीय समांगता",
+            "गुणाकारातील त्रुटी",
+            "यादृच्छिक त्रुटी"
+          ],
+          "solution": "यादृच्छिक त्रुटी वाचने खऱ्या मूल्याच्या दोन्ही बाजूंना निश्चित चिन्हाशिवाय विखुरते, म्हणून अनेक प्रयत्नांचा मध्य घेतल्याने ती घटते — साधारण वाचनांच्या संख्येच्या वर्गमुळाच्या प्रमाणात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "When quantities are multiplied or divided their percentage uncertainties add, and a quantity raised to a power contributes that power times its own percentage — so a cube of a 1% length is uncertain by 3%. Which rule is this?",
+      "choices": [
+        "Random error",
+        "The seven base quantities",
+        "Systematic error",
+        "Error in a product"
+      ],
+      "answerIndex": 3,
+      "solution": "In a product or quotient the fractional errors add, and an exponent multiplies the fractional error it acts on, so the most heavily powered quantity dominates the uncertainty of the result. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जब राशियाँ गुणा या भाग की जाती हैं तो उनकी प्रतिशत अनिश्चितताएँ जुड़ती हैं, और घात पर उठाई गई राशि अपनी प्रतिशत का उतना गुना देती है — अतः 1% वाली लंबाई का घन 3% अनिश्चित होता है। यह कौन-सा नियम है?",
+          "choices": [
+            "यादृच्छिक त्रुटि",
+            "सात मूल राशियाँ",
+            "व्यवस्थित त्रुटि",
+            "गुणनफल में त्रुटि"
+          ],
+          "solution": "गुणनफल या भागफल में भिन्नात्मक त्रुटियाँ जुड़ती हैं, और घातांक जिस भिन्नात्मक त्रुटि पर लगता है उसे गुणा कर देता है, अतः सबसे ऊँची घात वाली राशि परिणाम की अनिश्चितता पर हावी रहती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जेव्हा राशी गुणल्या वा भागल्या जातात तेव्हा त्यांच्या शेकडा अनिश्चितता जोडल्या जातात, आणि घातावर नेलेली राशी स्वतःच्या शेकड्याच्या तितक्या पट देते — म्हणून 1% असलेल्या लांबीचा घन 3% अनिश्चित असतो. हा कोणता नियम?",
+          "choices": [
+            "यादृच्छिक त्रुटी",
+            "सात मूलभूत राशी",
+            "पद्धतशीर त्रुटी",
+            "गुणाकारातील त्रुटी"
+          ],
+          "solution": "गुणाकार वा भागाकारात अपूर्णांकी त्रुटी जोडल्या जातात, आणि घातांक ज्या अपूर्णांकी त्रुटीवर लागतो तिला गुणतो, म्हणून सर्वांत मोठ्या घातेची राशी निकालाच्या अनिश्चिततेवर वरचढ राहते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Independent by declaration, not by nature\" goes correctly with which of these?",
+      "choices": [
+        "error in a product",
+        "significant figures",
+        "dimensional homogeneity",
+        "the seven base quantities"
+      ],
+      "answerIndex": 3,
+      "solution": "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"घोषणा से स्वतंत्र, प्रकृति से नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "गुणनफल में त्रुटि",
+            "सार्थक अंक",
+            "विमीय समांगता",
+            "सात मूल राशियाँ"
+          ],
+          "solution": "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"घोषणेने स्वतंत्र, निसर्गाने नव्हे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "गुणाकारातील त्रुटी",
+            "सार्थक अंक",
+            "मितीय समांगता",
+            "सात मूलभूत राशी"
+          ],
+          "solution": "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A standard nobody can drop or scratch\" goes correctly with which of these?",
+      "choices": [
+        "random error",
+        "the seven base quantities",
+        "the metre defined by light",
+        "dimensional homogeneity"
+      ],
+      "answerIndex": 2,
+      "solution": "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा मानक जिसे कोई गिरा या खरोंच नहीं सकता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "यादृच्छिक त्रुटि",
+            "सात मूल राशियाँ",
+            "प्रकाश से परिभाषित मीटर",
+            "विमीय समांगता"
+          ],
+          "solution": "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे मानक जे कोणी पाडू वा ओरखडू शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "यादृच्छिक त्रुटी",
+            "सात मूलभूत राशी",
+            "प्रकाशाने व्याख्यायित मीटर",
+            "मितीय समांगता"
+          ],
+          "solution": "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Can refuse a formula, can never bless one\" goes correctly with which of these?",
+      "choices": [
+        "dimensional homogeneity",
+        "error in a product",
+        "random error",
+        "systematic error"
+      ],
+      "answerIndex": 0,
+      "solution": "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सूत्र लौटा सकती है, स्वीकृति कभी नहीं दे सकती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विमीय समांगता",
+            "गुणनफल में त्रुटि",
+            "यादृच्छिक त्रुटि",
+            "व्यवस्थित त्रुटि"
+          ],
+          "solution": "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सूत्र नाकारू शकते, मान्यता कधीच देऊ शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मितीय समांगता",
+            "गुणाकारातील त्रुटी",
+            "यादृच्छिक त्रुटी",
+            "पद्धतशीर त्रुटी"
+          ],
+          "solution": "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A result may not be more precise than its worst input\" goes correctly with which of these?",
+      "choices": [
+        "significant figures",
+        "systematic error",
+        "the metre defined by light",
+        "error in a product"
+      ],
+      "answerIndex": 0,
+      "solution": "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"परिणाम अपने सबसे बुरे निवेश से अधिक परिशुद्ध नहीं हो सकता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सार्थक अंक",
+            "व्यवस्थित त्रुटि",
+            "प्रकाश से परिभाषित मीटर",
+            "गुणनफल में त्रुटि"
+          ],
+          "solution": "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"निकाल त्याच्या सर्वांत वाईट निविष्टाहून अधिक अचूक असू शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सार्थक अंक",
+            "पद्धतशीर त्रुटी",
+            "प्रकाशाने व्याख्यायित मीटर",
+            "गुणाकारातील त्रुटी"
+          ],
+          "solution": "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Repetition makes it more precise and no less wrong\" goes correctly with which of these?",
+      "choices": [
+        "systematic error",
+        "error in a product",
+        "random error",
+        "the metre defined by light"
+      ],
+      "answerIndex": 0,
+      "solution": "A systematic error pushes every reading the same way by the same amount, so averaging many trials cannot remove it and the mean is confidently wrong. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दोहराव उसे अधिक परिशुद्ध बनाता है, कम ग़लत नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "व्यवस्थित त्रुटि",
+            "गुणनफल में त्रुटि",
+            "यादृच्छिक त्रुटि",
+            "प्रकाश से परिभाषित मीटर"
+          ],
+          "solution": "व्यवस्थित त्रुटि हर पाठ्यांक को एक ही दिशा में उतना ही खिसकाती है, अतः कई प्रयासों का औसत उसे हटा नहीं सकता और माध्य आत्मविश्वास के साथ ग़लत रहता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पुनरावृत्ती तिला अधिक अचूक बनवते, कमी चुकीची नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पद्धतशीर त्रुटी",
+            "गुणाकारातील त्रुटी",
+            "यादृच्छिक त्रुटी",
+            "प्रकाशाने व्याख्यायित मीटर"
+          ],
+          "solution": "पद्धतशीर त्रुटी प्रत्येक वाचनाला एकाच दिशेने तितकेच सरकवते, म्हणून अनेक प्रयत्नांची सरासरी ती काढू शकत नाही आणि मध्य आत्मविश्वासाने चुकीचा राहतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Shrinks as the square root of the number of trials\" goes correctly with which of these?",
+      "choices": [
+        "the metre defined by light",
+        "dimensional homogeneity",
+        "random error",
+        "error in a product"
+      ],
+      "answerIndex": 2,
+      "solution": "A random error scatters readings on both sides of the true value with no fixed sign, so taking the mean of many trials shrinks it — roughly as the square root of the number of readings. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"प्रयासों की संख्या के वर्गमूल के अनुपात में घटती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश से परिभाषित मीटर",
+            "विमीय समांगता",
+            "यादृच्छिक त्रुटि",
+            "गुणनफल में त्रुटि"
+          ],
+          "solution": "यादृच्छिक त्रुटि पाठ्यांकों को सच्चे मान के दोनों ओर बिना निश्चित चिह्न के बिखेरती है, अतः कई प्रयासों का माध्य लेने से वह घटती है — लगभग पाठ्यांकों की संख्या के वर्गमूल के अनुपात में। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रयत्नांच्या संख्येच्या वर्गमुळाच्या प्रमाणात घटणारी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाने व्याख्यायित मीटर",
+            "मितीय समांगता",
+            "यादृच्छिक त्रुटी",
+            "गुणाकारातील त्रुटी"
+          ],
+          "solution": "यादृच्छिक त्रुटी वाचने खऱ्या मूल्याच्या दोन्ही बाजूंना निश्चित चिन्हाशिवाय विखुरते, म्हणून अनेक प्रयत्नांचा मध्य घेतल्याने ती घटते — साधारण वाचनांच्या संख्येच्या वर्गमुळाच्या प्रमाणात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The most heavily powered quantity dominates\" goes correctly with which of these?",
+      "choices": [
+        "significant figures",
+        "the metre defined by light",
+        "random error",
+        "error in a product"
+      ],
+      "answerIndex": 3,
+      "solution": "In a product or quotient the fractional errors add, and an exponent multiplies the fractional error it acts on, so the most heavily powered quantity dominates the uncertainty of the result. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सबसे ऊँची घात वाली राशि हावी रहती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सार्थक अंक",
+            "प्रकाश से परिभाषित मीटर",
+            "यादृच्छिक त्रुटि",
+            "गुणनफल में त्रुटि"
+          ],
+          "solution": "गुणनफल या भागफल में भिन्नात्मक त्रुटियाँ जुड़ती हैं, और घातांक जिस भिन्नात्मक त्रुटि पर लगता है उसे गुणा कर देता है, अतः सबसे ऊँची घात वाली राशि परिणाम की अनिश्चितता पर हावी रहती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सर्वांत मोठ्या घातेची राशी वरचढ राहते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सार्थक अंक",
+            "प्रकाशाने व्याख्यायित मीटर",
+            "यादृच्छिक त्रुटी",
+            "गुणाकारातील त्रुटी"
+          ],
+          "solution": "गुणाकार वा भागाकारात अपूर्णांकी त्रुटी जोडल्या जातात, आणि घातांक ज्या अपूर्णांकी त्रुटीवर लागतो तिला गुणतो, म्हणून सर्वांत मोठ्या घातेची राशी निकालाच्या अनिश्चिततेवर वरचढ राहते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The seven base quantities EXCEPT —",
+      "choices": [
+        "Nothing in nature marks these seven out; the choice is a convention, and a system could have been built on force instead of mass without any experiment coming out differently.",
+        "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own.",
+        "What is not conventional is the requirement that the set be complete and non-redundant: too few and some measurement cannot be expressed, too many and two standards could disagree about the same quantity.",
+        "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured."
+      ],
+      "answerIndex": 3,
+      "solution": "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured. That belongs to The metre defined by light, not The seven base quantities — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सात मूल राशियाँ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रकृति में कुछ भी इन सातों को अलग नहीं ठहराता; यह चुनाव एक परिपाटी है, और द्रव्यमान के बजाय बल पर तंत्र खड़ा किया जा सकता था, बिना किसी प्रयोग का परिणाम बदले।",
+            "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं।",
+            "जो परिपाटी नहीं है वह यह माँग है कि समुच्चय पूर्ण हो और अनावश्यक न हो: बहुत कम हों तो कोई माप व्यक्त ही न हो सके, बहुत अधिक हों तो एक ही राशि पर दो मानक आपस में असहमत हो सकते हैं।",
+            "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं।"
+          ],
+          "solution": "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं। यह प्रकाश से परिभाषित मीटर की बात है, सात मूल राशियाँ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सात मूलभूत राशी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "निसर्गात यां सातांना वेगळे ठरवणारे काहीही नाही; ही निवड एक संकेत आहे, आणि वस्तुमानाऐवजी बलावर प्रणाली उभी करता आली असती, कोणत्याही प्रयोगाचा निकाल न बदलता.",
+            "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे.",
+            "जे संकेत नाही ते ही मागणी की संच पूर्ण असावा आणि अनावश्यक नसावा: फार थोडे असतील तर एखादे माप व्यक्तच होणार नाही, फार जास्त असतील तर एकाच राशीवर दोन मानके परस्परविरोधी असू शकतात.",
+            "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे."
+          ],
+          "solution": "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे. हे प्रकाशाने व्याख्यायित मीटर चे आहे, सात मूलभूत राशी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The metre defined by light EXCEPT —",
+      "choices": [
+        "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own.",
+        "A standard kept as an object can be scratched, can drift and exists in one country; a standard written as a property of nature can be rebuilt anywhere and cannot be lost in a fire.",
+        "The metre is defined as the path length light travels in vacuum in one part in 299,792,458 of a second, which makes the speed of light an exact defined number rather than something still being measured.",
+        "The consequence is that improving our measurement of light's speed no longer changes the number 299,792,458 — it changes how accurately we can realise the metre."
+      ],
+      "answerIndex": 0,
+      "solution": "The seven base quantities are the ones SI declares independent, and every derived unit — the newton, the joule, the volt — is a product of their powers rather than a fresh standard of its own. That belongs to The seven base quantities, not The metre defined by light — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश से परिभाषित मीटर के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं।",
+            "वस्तु के रूप में रखा मानक खरोंचा जा सकता है, खिसक सकता है और एक ही देश में रहता है; प्रकृति के गुण के रूप में लिखा मानक कहीं भी फिर बनाया जा सकता है और आग में खोया नहीं जा सकता।",
+            "मीटर वह पथ-लंबाई है जो प्रकाश निर्वात में सेकंड के 299,792,458वें भाग में तय करता है, जिससे प्रकाश की चाल एक ठीक-ठीक परिभाषित संख्या बन जाती है, अब भी नापी जा रही राशि नहीं।",
+            "परिणाम यह कि प्रकाश की चाल के हमारे माप में सुधार अब 299,792,458 संख्या को नहीं बदलता — वह यह बदलता है कि हम मीटर को कितनी शुद्धता से साकार कर पाते हैं।"
+          ],
+          "solution": "सात मूल राशियाँ वे हैं जिन्हें SI स्वतंत्र घोषित करता है, और हर व्युत्पन्न मात्रक — न्यूटन, जूल, वोल्ट — उनकी घातों का गुणनफल है, अपना कोई नया मानक नहीं। यह सात मूल राशियाँ की बात है, प्रकाश से परिभाषित मीटर की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रकाशाने व्याख्यायित मीटर विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे.",
+            "वस्तू म्हणून ठेवलेले मानक ओरखडले जाऊ शकते, सरकू शकते आणि एकाच देशात राहते; निसर्गाचा गुणधर्म म्हणून लिहिलेले मानक कुठेही पुन्हा उभे करता येते आणि आगीत हरवत नाही.",
+            "मीटर म्हणजे प्रकाश निर्वातात सेकंदाच्या 299,792,458व्या भागात कापणारी पथलांबी, ज्यामुळे प्रकाशाचा वेग एक नेमकी व्याख्यायित संख्या बनतो, अजून मोजली जात असलेली राशी नव्हे.",
+            "परिणाम असा की प्रकाशाच्या वेगाच्या आपल्या मापातील सुधारणा आता 299,792,458 हा आकडा बदलत नाही — ती हे बदलते की आपण मीटर किती अचूकपणे साकार करू शकतो."
+          ],
+          "solution": "सात मूलभूत राशी त्या ज्यांना SI स्वतंत्र घोषित करते, आणि प्रत्येक साधित एकक — न्यूटन, ज्यूल, व्होल्ट — त्यांच्या घातांचा गुणाकार असते, स्वतःचे नवे मानक नव्हे. हे सात मूलभूत राशी चे आहे, प्रकाशाने व्याख्यायित मीटर चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Dimensional homogeneity EXCEPT —",
+      "choices": [
+        "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it.",
+        "It is blind to pure numbers: it cannot tell ½at² from 2at², and it cannot see a missing sine or a wrong factor of π, because none of those carry dimensions.",
+        "It also fixes the form of a dependence: knowing a pendulum's period can involve only length and g forces the answer to be proportional to the square root of l/g, leaving only a number to be found.",
+        "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one."
+      ],
+      "answerIndex": 0,
+      "solution": "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it. That belongs to Significant figures, not Dimensional homogeneity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विमीय समांगता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे।",
+            "यह शुद्ध संख्याओं के प्रति अंधी है: वह ½at² और 2at² में भेद नहीं कर सकती, न लुप्त ज्या या π का ग़लत गुणक देख सकती है, क्योंकि इनमें से कोई विमा नहीं रखता।",
+            "यह निर्भरता का रूप भी तय करती है: यह जानना कि लोलक का आवर्तकाल केवल लंबाई और g पर निर्भर हो सकता है, उत्तर को l/g के वर्गमूल का समानुपाती बना देता है, और खोजने को केवल एक संख्या बचती है।",
+            "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता।"
+          ],
+          "solution": "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे। यह सार्थक अंक की बात है, विमीय समांगता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "मितीय समांगता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते.",
+            "ती शुद्ध संख्यांबाबत आंधळी आहे: ती ½at² आणि 2at² यांत फरक करू शकत नाही, ना हरवलेले साइन वा π चा चुकीचा गुणक पाहू शकते, कारण यांपैकी काहीही मिती बाळगत नाही.",
+            "ती अवलंबित्वाचा आकारही ठरवते: लंबकाचा आवर्तकाल केवळ लांबी आणि g वर अवलंबू शकतो हे जाणणे उत्तराला l/g च्या वर्गमुळाशी समानुपाती बनवते, आणि शोधायला फक्त एक संख्या उरते.",
+            "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही."
+          ],
+          "solution": "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते. हे सार्थक अंक चे आहे, मितीय समांगता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Significant figures EXCEPT —",
+      "choices": [
+        "For addition and subtraction the rule changes to decimal places rather than digits, because what limits a sum is where the coarsest measurement stopped, not how many figures it had.",
+        "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one.",
+        "Significant figures are the digits a measurement has actually earned, so a result of a multiplication or division carries as many of them as the least precise quantity that went into it.",
+        "Trailing zeros after a decimal point are significant and leading zeros are not, so 0.00340 carries three and 2.30 carries three, while 2.3 carries two."
+      ],
+      "answerIndex": 1,
+      "solution": "Dimensional homogeneity requires every additive term in an equation to have identical dimensions, which lets a wrong formula be rejected on inspection but can never confirm a right one. That belongs to Dimensional homogeneity, not Significant figures — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सार्थक अंक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "जोड़ और घटाव के लिए नियम अंकों के बजाय दशमलव स्थानों का हो जाता है, क्योंकि योग को वह सीमित करता है जहाँ सबसे मोटा माप रुका था, न कि उसमें कितने अंक थे।",
+            "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता।",
+            "सार्थक अंक वे अंक हैं जो माप ने वस्तुतः कमाए हैं, अतः गुणा या भाग का परिणाम उतने ही अंक रखता है जितने उसमें गए सबसे कम परिशुद्ध राशि में थे।",
+            "दशमलव के बाद के अंतिम शून्य सार्थक हैं और आरंभिक शून्य नहीं, अतः 0.00340 में तीन हैं और 2.30 में तीन, जबकि 2.3 में दो।"
+          ],
+          "solution": "विमीय समांगता माँगती है कि समीकरण के हर जोड़े जाने वाले पद की विमाएँ एक-सी हों, जिससे ग़लत सूत्र देखते ही अस्वीकार हो सकता है पर सही सूत्र कभी सिद्ध नहीं होता। यह विमीय समांगता की बात है, सार्थक अंक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सार्थक अंक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बेरीज आणि वजाबाकीसाठी नियम अंकांऐवजी दशांश स्थानांचा होतो, कारण बेरजेला ते मर्यादित करते जिथे सर्वांत ढोबळ माप थांबले, त्यात किती अंक होते ते नव्हे.",
+            "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही.",
+            "सार्थक अंक म्हणजे मापाने प्रत्यक्षात कमावलेले अंक, म्हणून गुणाकार वा भागाकाराचा निकाल तितकेच अंक बाळगतो जितके त्यात गेलेल्या सर्वांत कमी अचूक राशीत होते.",
+            "दशांशानंतरची शेवटची शून्ये सार्थक असतात आणि सुरुवातीची नसतात, म्हणून 0.00340 मध्ये तीन आणि 2.30 मध्ये तीन, तर 2.3 मध्ये दोन."
+          ],
+          "solution": "मितीय समांगता मागते की समीकरणातील प्रत्येक जोडल्या जाणाऱ्या पदाच्या मिती सारख्या असाव्यात, ज्यामुळे चुकीचे सूत्र पाहताक्षणी नाकारता येते पण बरोबर सूत्र कधीच सिद्ध होत नाही. हे मितीय समांगता चे आहे, सार्थक अंक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student measures a wire's diameter ten times with a screw gauge, averages the ten readings, and reports a result whose spread is impressively small. Nobody checked the gauge for zero error, and it in fact reads 0.04 mm with the jaws closed. Explain what the averaging has achieved and what it has not.",
+      "choices": [
+        "Averaging has beaten down the random error — the scatter from reading and tightening differently each time — so the result is now precise. It has done nothing whatever to the zero error, which is systematic: it added 0.04 mm to all ten readings in the same direction, so it survives the mean intact. The reported diameter is therefore 0.04 mm too large, stated with a small uncertainty that makes the wrong value look trustworthy",
+        "Averaging removes both errors, because taking a mean of ten readings removes anything that is not the true value",
+        "Averaging achieves nothing at all, since a mean of wrong readings is simply another wrong reading",
+        "The small spread proves the zero error was negligible, because a faulty instrument would have produced scattered readings"
+      ],
+      "answerIndex": 0,
+      "solution": "Two different things are being confused, and separating them is the whole point of the chapter. PRECISION is how close repeated readings are to each other. ACCURACY is how close they are to the truth. They are independent, and an experiment can have either without the other. The ten readings differ because of random error: the student tightens the ratchet slightly differently each time, reads the circular scale from a slightly different angle, records a division boundary as one side or the other. These deviations have no fixed sign — sometimes high, sometimes low — so they partly cancel in the sum, and the mean is closer to what the gauge would say than any single reading is. Formally, the standard error of the mean falls roughly as 1/√n, so ten readings are about three times better than one. That is a real gain, and it is what averaging is for. Now the zero error. With the jaws closed the instrument already says 0.04 mm. Every one of the ten readings therefore contains an extra 0.04 mm, added with the same sign every time. Take the mean of ten numbers each of which is 0.04 too big and you get a number that is 0.04 too big. Averaging cannot touch it, because averaging exploits cancellation and there is nothing here to cancel. This is the defining property of a systematic error: it is unaffected by the one remedy that works on the other kind. The result is the most dangerous shape an experimental report can take. The stated uncertainty is small, because it was computed from the scatter, and the scatter is genuinely small. So the report says, in effect, 'this value is reliable to within a few thousandths of a millimetre' — and it is wrong by ten times that. A reader with no access to the apparatus has no way to see it. The cure is not more readings. It is to change something about the method: close the jaws and read the zero before starting, then subtract; or measure a gauge block of known thickness; or hand the wire to a second student with a different instrument and see whether the two agree. Each of these changes the systematic contribution while leaving the quantity alone, which is the only way such an error ever reveals itself. (The wrong answers credit averaging with powers it does not have, deny it the power it does have, or read a small scatter as evidence of accuracy — precisely the inference this question exists to break.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी पेचमापी से तार का व्यास दस बार नापता है, दसों पाठ्यांकों का औसत लेता है, और ऐसा परिणाम बताता है जिसका बिखराव प्रभावशाली रूप से छोटा है। पेचमापी की शून्य त्रुटि किसी ने नहीं जाँची, और जबड़े बंद होने पर वह वस्तुतः 0.04 mm दिखाती है। समझाओ औसत ने क्या हासिल किया और क्या नहीं।",
+          "choices": [
+            "औसत ने यादृच्छिक त्रुटि दबा दी है — हर बार भिन्न ढंग से पढ़ने और कसने से आया बिखराव — अतः परिणाम अब परिशुद्ध है। शून्य त्रुटि पर उसने कुछ भी नहीं किया, जो व्यवस्थित है: उसने दसों पाठ्यांकों में एक ही दिशा में 0.04 mm जोड़ा, अतः वह माध्य में ज्यों की त्यों बची रहती है। बताया गया व्यास इसलिए 0.04 mm अधिक है, और छोटी अनिश्चितता के साथ कहा गया है जो ग़लत मान को भरोसेमंद दिखाती है",
+            "औसत दोनों त्रुटियाँ हटा देता है, क्योंकि दस पाठ्यांकों का माध्य वह सब हटा देता है जो सच्चा मान नहीं",
+            "औसत कुछ भी हासिल नहीं करता, क्योंकि ग़लत पाठ्यांकों का माध्य बस एक और ग़लत पाठ्यांक है",
+            "छोटा बिखराव सिद्ध करता है कि शून्य त्रुटि नगण्य थी, क्योंकि दोषपूर्ण यंत्र बिखरे पाठ्यांक देता"
+          ],
+          "solution": "दो भिन्न चीज़ें गड्डमड्ड की जा रही हैं, और उन्हें अलग करना ही इस अध्याय का सारा मर्म है। परिशुद्धता यह कि दोहराए गए पाठ्यांक आपस में कितने पास हैं। यथार्थता यह कि वे सच के कितने पास हैं। ये स्वतंत्र हैं, और प्रयोग में एक दूसरे के बिना हो सकती है। दस पाठ्यांक यादृच्छिक त्रुटि से भिन्न होते हैं: विद्यार्थी हर बार रैचेट थोड़ा भिन्न कसता है, वृत्तीय पैमाना थोड़े भिन्न कोण से पढ़ता है, विभाजन-सीमा को कभी इस ओर कभी उस ओर लिखता है। इन विचलनों का कोई निश्चित चिह्न नहीं — कभी ऊपर, कभी नीचे — अतः वे योग में आंशिक रूप से कट जाते हैं, और माध्य किसी भी अकेले पाठ्यांक से उसके अधिक पास होता है जो पेचमापी कहती। औपचारिक रूप से, माध्य की मानक त्रुटि लगभग 1/√n की दर से गिरती है, अतः दस पाठ्यांक एक से लगभग तीन गुना बेहतर हैं। यह असली लाभ है, और औसत इसी के लिए है। अब शून्य त्रुटि। जबड़े बंद होने पर यंत्र पहले ही 0.04 mm कहता है। इसलिए दसों पाठ्यांकों में अतिरिक्त 0.04 mm है, हर बार उसी चिह्न के साथ जुड़ा। दस ऐसी संख्याओं का माध्य लो जिनमें से हर एक 0.04 अधिक है और तुम्हें वह संख्या मिलती है जो 0.04 अधिक है। औसत उसे छू नहीं सकता, क्योंकि औसत कटाव का लाभ उठाता है और यहाँ कटने को कुछ है ही नहीं। यही व्यवस्थित त्रुटि का परिभाषक गुण है: दूसरी क़िस्म पर चलने वाला एकमात्र उपाय उस पर बेअसर है। परिणाम वह सबसे ख़तरनाक रूप है जो कोई प्रायोगिक रिपोर्ट ले सकती है। बताई गई अनिश्चितता छोटी है, क्योंकि वह बिखराव से निकाली गई, और बिखराव सचमुच छोटा है। अतः रिपोर्ट कहती है, वस्तुतः, 'यह मान मिलीमीटर के कुछ हज़ारवें भाग तक भरोसेमंद है' — और वह उससे दस गुना ग़लत है। जिस पाठक के पास उपकरण नहीं, उसके पास इसे देखने का कोई रास्ता नहीं। इलाज अधिक पाठ्यांक नहीं। इलाज विधि में कुछ बदलना है: आरंभ से पहले जबड़े बंद करके शून्य पढ़ो, फिर घटाओ; या ज्ञात मोटाई का गेज-खंड नापो; या तार दूसरे विद्यार्थी को भिन्न यंत्र के साथ दो और देखो कि दोनों मिलते हैं या नहीं। इनमें से हर एक व्यवस्थित अंश को बदलता है और राशि को वैसा ही छोड़ता है, और ऐसी त्रुटि कभी प्रकट होती है तो केवल इसी रास्ते। (ग़लत उत्तर औसत को वे शक्तियाँ देते जो उसमें नहीं, या वह शक्ति छीनते जो उसमें है, या छोटे बिखराव को यथार्थता का प्रमाण पढ़ते — ठीक वही अनुमान जिसे तोड़ने के लिए यह प्रश्न है।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी स्क्रू गेजने तारेचा व्यास दहा वेळा मोजतो, दहाही वाचनांची सरासरी घेतो, आणि असा निकाल सांगतो ज्याचे विखुरणे प्रभावीपणे लहान आहे. गेजची शून्य त्रुटी कोणी तपासली नाही, आणि जबडे बंद असताना ती प्रत्यक्षात 0.04 mm दाखवते. समजावा सरासरीने काय साधले आणि काय नाही.",
+          "choices": [
+            "सरासरीने यादृच्छिक त्रुटी दाबली आहे — प्रत्येक वेळी वेगळ्या पद्धतीने वाचल्याने आणि आवळल्याने आलेले विखुरणे — म्हणून निकाल आता अचूक आहे. शून्य त्रुटीवर तिने काहीही केलेले नाही, जी पद्धतशीर आहे: तिने दहाही वाचनांत एकाच दिशेने 0.04 mm जोडले, म्हणून ती मध्यात जशीच्या तशी टिकते. सांगितलेला व्यास म्हणून 0.04 mm जास्त आहे, आणि लहान अनिश्चिततेसह सांगितलेला, जी चुकीच्या मूल्याला विश्वासार्ह दाखवते",
+            "सरासरी दोन्ही त्रुटी काढून टाकते, कारण दहा वाचनांचा मध्य जे खरे मूल्य नाही ते सर्व काढतो",
+            "सरासरी काहीही साधत नाही, कारण चुकीच्या वाचनांचा मध्य म्हणजे आणखी एक चुकीचे वाचन",
+            "लहान विखुरणे सिद्ध करते की शून्य त्रुटी नगण्य होती, कारण सदोष उपकरण विखुरलेली वाचने देईल"
+          ],
+          "solution": "दोन वेगळ्या गोष्टींची गल्लत होत आहे, आणि त्या वेगळ्या करणे हाच या प्रकरणाचा सगळा गाभा. अचूकता म्हणजे पुन्हा घेतलेली वाचने एकमेकांच्या किती जवळ. यथार्थता म्हणजे ती सत्याच्या किती जवळ. ही स्वतंत्र आहेत, आणि प्रयोगात एक दुसऱ्याविना असू शकते. दहा वाचने यादृच्छिक त्रुटीमुळे वेगळी येतात: विद्यार्थी प्रत्येक वेळी रॅचेट थोडा वेगळा आवळतो, वर्तुळाकार पट्टी थोड्या वेगळ्या कोनातून वाचतो, विभाजन-सीमा कधी या बाजूला कधी त्या बाजूला नोंदवतो. या विचलनांना निश्चित चिन्ह नाही — कधी वर, कधी खाली — म्हणून ती बेरजेत अंशतः कापली जातात, आणि मध्य कोणत्याही एकट्या वाचनाहून गेज जे सांगेल त्याच्या अधिक जवळ असतो. औपचारिकपणे, मध्याची प्रमाण त्रुटी साधारण 1/√n या दराने घटते, म्हणून दहा वाचने एकाहून सुमारे तिप्पट चांगली. हा खरा लाभ, आणि सरासरी याचसाठी आहे. आता शून्य त्रुटी. जबडे बंद असताना उपकरण आधीच 0.04 mm म्हणते. म्हणून दहाही वाचनांत जादा 0.04 mm आहे, प्रत्येक वेळी त्याच चिन्हाने जोडलेले. दहा अशा संख्यांचा मध्य घ्या ज्यांतील प्रत्येक 0.04 ने मोठी आहे आणि तुम्हाला ती संख्या मिळते जी 0.04 ने मोठी आहे. सरासरी तिला स्पर्शही करू शकत नाही, कारण सरासरी कापाकापीचा फायदा घेते आणि इथे कापायला काहीच नाही. हाच पद्धतशीर त्रुटीचा व्याख्यात्मक गुणधर्म: दुसऱ्या प्रकारावर चालणारा एकमेव उपाय तिच्यावर निष्प्रभ. निकाल हा प्रायोगिक अहवाल घेऊ शकेल असा सर्वांत धोकादायक आकार. सांगितलेली अनिश्चितता लहान, कारण ती विखुरण्यातून काढली, आणि विखुरणे खरोखर लहान. म्हणून अहवाल प्रत्यक्षात म्हणतो, 'हे मूल्य मिलीमीटरच्या काही हजारांश भागापर्यंत विश्वासार्ह' — आणि ते त्याहून दसपट चुकीचे. ज्या वाचकाकडे उपकरण नाही, त्याला हे पाहण्याचा कोणताही मार्ग नाही. उपाय अधिक वाचने नव्हे. उपाय पद्धतीत काहीतरी बदलणे: सुरू करण्याआधी जबडे बंद करून शून्य वाचा, मग वजा करा; किंवा ज्ञात जाडीचा गेज-ठोकळा मोजा; किंवा तार दुसऱ्या विद्यार्थ्याला वेगळ्या उपकरणासह द्या आणि दोघे जुळतात का पाहा. यांतील प्रत्येक पद्धतशीर वाटा बदलतो आणि राशी तशीच ठेवतो, आणि अशी त्रुटी कधी उघड होते तर याच मार्गाने. (चुकीची उत्तरे सरासरीला नसलेल्या शक्ती देतात, वा असलेली शक्ती हिरावतात, वा लहान विखुरणे यथार्थतेचा पुरावा म्हणून वाचतात — नेमके तेच अनुमान जे मोडण्यासाठी हा प्रश्न आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student claims to have derived the period of a simple pendulum by dimensions alone and writes T = √(l/g), while the true result is T = 2π√(l/g). A second student concludes that dimensional analysis is therefore useless. Assess both positions.",
+      "choices": [
+        "The first student overclaimed and the second overreacted. Dimensions fixed the entire functional form — that T depends on l and g only through √(l/g), and not at all on the bob's mass — which is most of the answer and could not have been guessed. What dimensions cannot supply is the dimensionless constant, here 2π, because a pure number has no dimensions to constrain. So the method delivers the shape of a law and leaves exactly one number to be found by experiment or by solving the dynamics",
+        "The first student is right and the textbook's 2π is a convention that could be dropped without changing any prediction",
+        "The second student is right, because a method that cannot produce the exact answer has proved nothing at any stage",
+        "Both are wrong because the period does depend on the bob's mass, and neither formula shows it"
+      ],
+      "answerIndex": 0,
+      "solution": "Do the derivation and the boundary becomes visible. Suppose T depends on the length l, the mass m and g, as T = k·l^a·m^b·g^c with k a pure number. In dimensions, T¹ = L^a M^b (LT⁻²)^c. Matching M gives b = 0. Matching T gives 1 = −2c, so c = −½. Matching L gives 0 = a + c, so a = ½. Hence T = k√(l/g), and the exponents were forced — no experiment was performed and no dynamics was solved. Look at what that already bought. It says the period does not depend on the mass at all, which is genuinely surprising and is the observation Galileo is remembered for. It says doubling the length multiplies the period by √2 rather than by 2. It says a pendulum on the Moon, where g is about a sixth of Earth's, swings about 2.4 times more slowly. Every one of those is a testable prediction, and every one of them came out of bookkeeping on M, L and T. That is why the second student is wrong: 'useless' is not a fair description of a method that fixed three exponents from nothing. But k is a pure number, and a pure number has dimensions M⁰L⁰T⁰. Nothing in the matching can constrain it. It could be 1, it could be 2π, it could be 137. Solving the equation of motion for small oscillations gives 2π; measuring a real pendulum gives 6.28. Dimensional analysis was silent, and it was silent for a structural reason, not because it was done carelessly. Three limits follow, and they are the ones worth carrying forward. First, the method cannot see dimensionless factors — not 2π, not ½, not a sine of an angle, since angles are themselves dimensionless. Second, it fails outright when a quantity depends on more variables than there are base dimensions to constrain, because the exponents are then underdetermined. Third, it cannot tell a sum from a single term: it will happily pass A + B where the physics requires A alone, provided both have the same dimensions. So dimensional analysis is a filter, not an oracle. It refuses wrong equations cheaply and it constrains the shape of unknown ones powerfully, and then it hands the problem to somebody who has to do the real work. Overclaiming for it and dismissing it are the same mistake made in opposite directions: both refuse to state precisely what it can do. (The wrong answers treat 2π as arbitrary when it is fixed by the dynamics, throw away a method that supplied three exponents, or assert a mass dependence that both formulae and every experiment deny.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी दावा करता है कि उसने केवल विमाओं से सरल लोलक का आवर्तकाल निकाल लिया और लिखता है T = √(l/g), जबकि सही परिणाम T = 2π√(l/g) है। दूसरा विद्यार्थी निष्कर्ष निकालता है कि इसलिए विमीय विश्लेषण बेकार है। दोनों स्थितियों का आकलन करो।",
+          "choices": [
+            "पहले विद्यार्थी ने अधिक दावा किया और दूसरे ने अधिक प्रतिक्रिया। विमाओं ने पूरा फलनात्मक रूप तय कर दिया — कि T, l और g पर केवल √(l/g) के माध्यम से निर्भर है, और गोलक के द्रव्यमान पर बिलकुल नहीं — जो उत्तर का अधिकांश है और अनुमान से नहीं आ सकता था। विमाएँ जो नहीं दे सकतीं वह है विमाहीन स्थिरांक, यहाँ 2π, क्योंकि शुद्ध संख्या के पास बाँधने को विमाएँ ही नहीं। अतः विधि नियम का आकार देती है और ठीक एक संख्या प्रयोग या गतिकी हल करके खोजने को छोड़ती है",
+            "पहला विद्यार्थी सही है और पाठ्यपुस्तक का 2π एक परिपाटी है जिसे किसी भविष्यवाणी को बदले बिना छोड़ा जा सकता है",
+            "दूसरा विद्यार्थी सही है, क्योंकि जो विधि ठीक उत्तर नहीं दे सकती उसने किसी भी चरण पर कुछ सिद्ध नहीं किया",
+            "दोनों ग़लत हैं क्योंकि आवर्तकाल गोलक के द्रव्यमान पर निर्भर करता ही है, और कोई भी सूत्र उसे नहीं दिखाता"
+          ],
+          "solution": "व्युत्पत्ति करो और सीमा दिखने लगती है। मानो T लंबाई l, द्रव्यमान m और g पर निर्भर है, T = k·l^a·m^b·g^c, जहाँ k शुद्ध संख्या है। विमाओं में, T¹ = L^a M^b (LT⁻²)^c। M मिलाने पर b = 0। T मिलाने पर 1 = −2c, अतः c = −½। L मिलाने पर 0 = a + c, अतः a = ½। इसलिए T = k√(l/g), और घातें बाध्य थीं — कोई प्रयोग नहीं हुआ और कोई गतिकी हल नहीं हुई। देखो इसने पहले ही क्या ख़रीद लिया। यह कहता है कि आवर्तकाल द्रव्यमान पर बिलकुल निर्भर नहीं, जो सचमुच चौंकाने वाला है और वही प्रेक्षण है जिसके लिए गैलीलियो याद किए जाते हैं। यह कहता है कि लंबाई दोगुनी करने पर आवर्तकाल 2 गुना नहीं, √2 गुना होता है। यह कहता है कि चंद्रमा पर, जहाँ g पृथ्वी के लगभग छठे भाग का है, लोलक लगभग 2.4 गुना धीमे झूलेगा। इनमें से हर एक जाँचने-योग्य भविष्यवाणी है, और हर एक M, L और T के हिसाब-किताब से निकली। इसीलिए दूसरा विद्यार्थी ग़लत है: जिस विधि ने शून्य से तीन घातें तय कीं उसका उचित वर्णन 'बेकार' नहीं। पर k शुद्ध संख्या है, और शुद्ध संख्या की विमाएँ M⁰L⁰T⁰ हैं। मिलान में कुछ भी उसे बाँध नहीं सकता। वह 1 हो सकती है, 2π हो सकती है, 137 हो सकती है। छोटे दोलनों के लिए गति-समीकरण हल करने पर 2π मिलता है; असली लोलक नापने पर 6.28 मिलता है। विमीय विश्लेषण चुप रहा, और वह संरचनात्मक कारण से चुप रहा, लापरवाही से नहीं। तीन सीमाएँ निकलती हैं, और वही आगे ले जाने योग्य हैं। पहली, विधि विमाहीन गुणकों को देख नहीं सकती — न 2π, न ½, न कोण की ज्या, क्योंकि कोण स्वयं विमाहीन हैं। दूसरी, वह तब पूरी तरह विफल हो जाती है जब कोई राशि उतने चरों पर निर्भर हो जितने बाँधने को मूल विमाएँ नहीं, क्योंकि तब घातें अनिर्धारित रह जाती हैं। तीसरी, वह योग और अकेले पद में भेद नहीं कर सकती: वह A + B को ख़ुशी से पास कर देगी जहाँ भौतिकी अकेला A माँगती है, बशर्ते दोनों की विमाएँ एक हों। अतः विमीय विश्लेषण छन्ना है, दैववाणी नहीं। वह ग़लत समीकरण सस्ते में लौटाता है और अज्ञात समीकरणों का आकार ज़ोरदार ढंग से बाँधता है, और फिर समस्या उसे सौंप देता है जिसे असली काम करना है। उसके लिए अधिक दावा करना और उसे झटक देना एक ही ग़लती है, बस उलटी दिशाओं में की गई: दोनों ठीक-ठीक कहने से इनकार करते हैं कि वह कर क्या सकता है। (ग़लत उत्तर 2π को मनमाना मानते जबकि उसे गतिकी तय करती है, उस विधि को फेंकते जिसने तीन घातें दीं, या ऐसी द्रव्यमान-निर्भरता जताते जिसे दोनों सूत्र और हर प्रयोग नकारते हैं।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी दावा करतो की त्याने केवळ मितींवरून साध्या लंबकाचा आवर्तकाल काढला आणि लिहितो T = √(l/g), तर खरा निकाल T = 2π√(l/g) आहे. दुसरा विद्यार्थी निष्कर्ष काढतो की म्हणून मितीय विश्लेषण निरुपयोगी आहे. दोन्ही भूमिकांचे मूल्यमापन करा.",
+          "choices": [
+            "पहिल्या विद्यार्थ्याने जास्त दावा केला आणि दुसऱ्याने जास्त प्रतिक्रिया. मितींनी संपूर्ण फलनात्मक आकार ठरवला — की T हा l आणि g वर केवळ √(l/g) मार्गे अवलंबून, आणि गोलकाच्या वस्तुमानावर मुळीच नाही — जे उत्तराचा बहुतांश आहे आणि अंदाजाने आले नसते. मिती जे देऊ शकत नाहीत ते म्हणजे मितीविरहित स्थिरांक, इथे 2π, कारण शुद्ध संख्येकडे बांधायला मितीच नाहीत. म्हणून पद्धत नियमाचा आकार देते आणि नेमकी एक संख्या प्रयोगाने वा गतिकी सोडवून शोधायला ठेवते",
+            "पहिला विद्यार्थी बरोबर आहे आणि पाठ्यपुस्तकातील 2π ही एक संकेतपद्धत आहे जी कोणतेही भाकीत न बदलता सोडता येईल",
+            "दुसरा विद्यार्थी बरोबर आहे, कारण जी पद्धत नेमके उत्तर देऊ शकत नाही तिने कोणत्याही टप्प्यावर काहीच सिद्ध केलेले नाही",
+            "दोघेही चुकीचे कारण आवर्तकाल गोलकाच्या वस्तुमानावर अवलंबून असतोच, आणि कोणतेही सूत्र ते दाखवत नाही"
+          ],
+          "solution": "व्युत्पत्ती करा आणि सीमा दिसू लागते. समजा T लांबी l, वस्तुमान m आणि g वर अवलंबून, T = k·l^a·m^b·g^c, जिथे k ही शुद्ध संख्या. मितींत, T¹ = L^a M^b (LT⁻²)^c. M जुळवल्यास b = 0. T जुळवल्यास 1 = −2c, म्हणून c = −½. L जुळवल्यास 0 = a + c, म्हणून a = ½. म्हणून T = k√(l/g), आणि घात सक्तीच्या होत्या — कोणताही प्रयोग झाला नाही आणि कोणतीही गतिकी सोडवली गेली नाही. पाहा याने आधीच काय विकत घेतले. ते सांगते की आवर्तकाल वस्तुमानावर मुळीच अवलंबून नाही, जे खरोखर चकित करणारे आणि तेच निरीक्षण ज्यासाठी गॅलिलिओ स्मरला जातो. ते सांगते की लांबी दुप्पट केल्यास आवर्तकाल 2 पट नव्हे तर √2 पट होतो. ते सांगते की चंद्रावर, जिथे g पृथ्वीच्या सुमारे सहाव्या भागाचा, लंबक सुमारे 2.4 पट सावकाश झुलेल. यांतील प्रत्येक तपासण्याजोगे भाकीत, आणि प्रत्येक M, L आणि T च्या हिशोबातून निघालेले. म्हणूनच दुसरा विद्यार्थी चुकीचा: ज्या पद्धतीने शून्यातून तीन घात ठरवल्या तिचे योग्य वर्णन 'निरुपयोगी' नाही. पण k ही शुद्ध संख्या, आणि शुद्ध संख्येच्या मिती M⁰L⁰T⁰. जुळवणीतले काहीही तिला बांधू शकत नाही. ती 1 असू शकते, 2π असू शकते, 137 असू शकते. लहान आंदोलनांसाठी गतिसमीकरण सोडवल्यास 2π मिळते; खरा लंबक मोजल्यास 6.28 मिळते. मितीय विश्लेषण गप्प राहिले, आणि ते संरचनात्मक कारणाने गप्प राहिले, निष्काळजीपणाने नव्हे. तीन मर्यादा निघतात, आणि त्याच पुढे न्यायच्या. पहिली, पद्धत मितीविरहित गुणक पाहू शकत नाही — ना 2π, ना ½, ना कोनाचा साइन, कारण कोन स्वतःच मितीविरहित. दुसरी, जेव्हा एखादी राशी बांधायला मूलभूत मिती आहेत त्याहून अधिक चलांवर अवलंबून असते तेव्हा ती पूर्णपणे अपयशी ठरते, कारण मग घात अनिर्धारित राहतात. तिसरी, ती बेरीज आणि एकटे पद यांत फरक करू शकत नाही: जिथे भौतिकी एकटा A मागते तिथे ती A + B आनंदाने पास करेल, फक्त दोहोंच्या मिती सारख्या असल्या तर. म्हणून मितीय विश्लेषण हे गाळणे आहे, दैववाणी नव्हे. ते चुकीची समीकरणे स्वस्तात नाकारते आणि अज्ञात समीकरणांचा आकार जोरदारपणे बांधते, आणि मग समस्या त्याच्याकडे सोपवते ज्याला खरे काम करायचे. त्याच्यासाठी जास्त दावा करणे आणि त्याला झटकून टाकणे ही एकच चूक, फक्त उलट दिशांना केलेली: दोघेही ते नेमके काय करू शकते हे सांगायला नकार देतात. (चुकीची उत्तरे 2π ला मनमानी मानतात तर तो गतिकीने ठरतो, तीन घात दिलेली पद्धत फेकून देतात, वा अशी वस्तुमान-अवलंबिता सांगतात जी दोन्ही सूत्रे आणि प्रत्येक प्रयोग नाकारतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A car's speedometer reads 72 km/h. What is that speed in metres per second?",
+      "choices": [
+        "26 m/s",
+        "200 m/s",
+        "20 m/s",
+        "7.2 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "A kilometre is 1000 m and an hour is 3600 s, so 72 km/h = 72 × 1000/3600 = 20 m/s. The shortcut is to multiply by 5/18. (7.2 comes from dividing by 10 alone, and 200 from multiplying by 1000 without dividing by 3600.)",
+      "checkExpr": "72*1000/3600",
+      "translations": {
+        "hi": {
+          "stem": "एक कार की चालमापी 72 km/h दिखाती है। यह चाल मीटर प्रति सेकंड में क्या है?",
+          "choices": [
+            "26 m/s",
+            "200 m/s",
+            "20 m/s",
+            "7.2 m/s"
+          ],
+          "solution": "एक किलोमीटर 1000 m और एक घंटा 3600 s, अतः 72 km/h = 72 × 1000/3600 = 20 m/s. छोटा रास्ता 5/18 से गुणा करना है। (7.2 केवल 10 से भाग देने से आता है, और 200 बिना 3600 से भाग दिए 1000 से गुणा करने से।)"
+        },
+        "mr": {
+          "stem": "एका कारचा वेगमापक 72 km/h दाखवतो. हा वेग मीटर प्रति सेकंदात किती?",
+          "choices": [
+            "26 m/s",
+            "200 m/s",
+            "20 m/s",
+            "7.2 m/s"
+          ],
+          "solution": "एक किलोमीटर 1000 m आणि एक तास 3600 s, म्हणून 72 km/h = 72 × 1000/3600 = 20 m/s. शॉर्टकट म्हणजे 5/18 ने गुणणे. (7.2 फक्त 10 ने भागल्याने येते, आणि 200 हे 3600 ने न भागता 1000 ने गुणल्याने.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The density of aluminium is 2.7 g/cm³. Expressed in kg/m³, what is it?",
+      "choices": [
+        "27",
+        "0.0027",
+        "2700",
+        "270"
+      ],
+      "answerIndex": 2,
+      "solution": "One gram is 10⁻³ kg and one cm³ is 10⁻⁶ m³, so g/cm³ → kg/m³ multiplies by 10⁻³/10⁻⁶ = 1000. Hence 2.7 × 1000 = 2700 kg/m³. (0.0027 applies the mass conversion and forgets the volume; 27 and 270 stop short by a factor of a hundred and ten.)",
+      "checkExpr": "2.7*1000",
+      "translations": {
+        "hi": {
+          "stem": "ऐलुमिनियम का घनत्व 2.7 g/cm³ है। kg/m³ में यह कितना है?",
+          "choices": [
+            "27",
+            "0.0027",
+            "2700",
+            "270"
+          ],
+          "solution": "एक ग्राम 10⁻³ kg और एक cm³ 10⁻⁶ m³, अतः g/cm³ → kg/m³ में 10⁻³/10⁻⁶ = 1000 का गुणा होता है। इसलिए 2.7 × 1000 = 2700 kg/m³. (0.0027 केवल द्रव्यमान का रूपांतरण करता और आयतन भूल जाता है; 27 और 270 सौ और दस के गुणक से पीछे रह जाते हैं।)"
+        },
+        "mr": {
+          "stem": "ॲल्युमिनियमची घनता 2.7 g/cm³ आहे. kg/m³ मध्ये ती किती?",
+          "choices": [
+            "27",
+            "0.0027",
+            "2700",
+            "270"
+          ],
+          "solution": "एक ग्रॅम 10⁻³ kg आणि एक cm³ 10⁻⁶ m³, म्हणून g/cm³ → kg/m³ मध्ये 10⁻³/10⁻⁶ = 1000 चा गुणाकार होतो. म्हणून 2.7 × 1000 = 2700 kg/m³. (0.0027 फक्त वस्तुमानाचे रूपांतर करते आणि घनफळ विसरते; 27 आणि 270 शंभर व दहाच्या पटीने मागे राहतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A screw gauge has a pitch of 0.5 mm and 50 divisions on its circular scale. What is its least count, in mm?",
+      "choices": [
+        "0.01",
+        "0.1",
+        "25",
+        "0.005"
+      ],
+      "answerIndex": 0,
+      "solution": "One full turn advances the spindle by the pitch, and that turn is divided into 50 parts, so one division is 0.5/50 = 0.01 mm. (0.005 halves it once too often, 0.1 divides by 5 instead of 50, and 25 multiplies where it should divide.)",
+      "checkExpr": "0.5/50",
+      "translations": {
+        "hi": {
+          "stem": "एक पेचमापी की चूड़ी-अंतराल 0.5 mm है और उसके वृत्तीय पैमाने पर 50 विभाजन हैं। उसका अल्पतमांक mm में क्या है?",
+          "choices": [
+            "0.01",
+            "0.1",
+            "25",
+            "0.005"
+          ],
+          "solution": "एक पूरा चक्कर तकले को चूड़ी-अंतराल जितना आगे बढ़ाता है, और वह चक्कर 50 भागों में बँटा है, अतः एक विभाजन 0.5/50 = 0.01 mm. (0.005 एक बार अधिक आधा करता है, 0.1 50 के बजाय 5 से भाग देता है, और 25 वहाँ गुणा करता है जहाँ भाग देना था।)"
+        },
+        "mr": {
+          "stem": "एका स्क्रू गेजचा पिच 0.5 mm आहे आणि त्याच्या वर्तुळाकार पट्टीवर 50 विभाग आहेत. त्याचा अल्पतमांक mm मध्ये किती?",
+          "choices": [
+            "0.01",
+            "0.1",
+            "25",
+            "0.005"
+          ],
+          "solution": "एक पूर्ण फेरा दांडा पिचइतका पुढे नेतो, आणि तो फेरा 50 भागांत विभागलेला, म्हणून एक विभाग 0.5/50 = 0.01 mm. (0.005 एकदा जास्त निम्मे करते, 0.1 हे 50 ऐवजी 5 ने भागते, आणि 25 जिथे भागायचे तिथे गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A wire is measured as 5.00 m with an instrument whose absolute uncertainty is 0.01 m. What is the percentage error in the length?",
+      "choices": [
+        "5",
+        "0.2",
+        "2",
+        "0.02"
+      ],
+      "answerIndex": 1,
+      "solution": "Percentage error is the absolute error divided by the measured value, times a hundred: (0.01/5.00) × 100 = 0.2%. (0.02 is the fraction left unconverted to a percentage, and 2 slips a decimal place.)",
+      "checkExpr": "0.01/5.00*100",
+      "translations": {
+        "hi": {
+          "stem": "एक तार 5.00 m नापा गया, और यंत्र की निरपेक्ष अनिश्चितता 0.01 m है। लंबाई में प्रतिशत त्रुटि क्या है?",
+          "choices": [
+            "5",
+            "0.2",
+            "2",
+            "0.02"
+          ],
+          "solution": "प्रतिशत त्रुटि निरपेक्ष त्रुटि बटा नापा गया मान, गुणा सौ: (0.01/5.00) × 100 = 0.2%. (0.02 वह भिन्न है जिसे प्रतिशत में बदला ही नहीं गया, और 2 में दशमलव एक स्थान खिसक जाता है।)"
+        },
+        "mr": {
+          "stem": "एक तार 5.00 m मोजली गेली, आणि उपकरणाची निरपेक्ष अनिश्चितता 0.01 m आहे. लांबीतील शेकडा त्रुटी किती?",
+          "choices": [
+            "5",
+            "0.2",
+            "2",
+            "0.02"
+          ],
+          "solution": "शेकडा त्रुटी म्हणजे निरपेक्ष त्रुटी भागिले मोजलेले मूल्य, गुणिले शंभर: (0.01/5.00) × 100 = 0.2%. (0.02 हा अपूर्णांक शेकड्यात न बदललेला, आणि 2 मध्ये दशांश एक स्थान सरकतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The side of a cube is measured with a percentage error of 1%. What is the percentage error in the volume calculated from it?",
+      "choices": [
+        "1",
+        "9",
+        "3",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Volume is the side cubed, and an exponent multiplies the fractional error it acts on, so the error is 3 × 1% = 3%. (1 forgets the exponent altogether, 2 uses the exponent of an area, and 9 squares the 3 instead of using it once.)",
+      "checkExpr": "3*1",
+      "translations": {
+        "hi": {
+          "stem": "एक घन की भुजा 1% प्रतिशत त्रुटि के साथ नापी गई। उससे निकाले गए आयतन में प्रतिशत त्रुटि क्या है?",
+          "choices": [
+            "1",
+            "9",
+            "3",
+            "2"
+          ],
+          "solution": "आयतन भुजा का घन है, और घातांक जिस भिन्नात्मक त्रुटि पर लगता है उसे गुणा करता है, अतः त्रुटि 3 × 1% = 3%. (1 घातांक भूल ही जाता है, 2 क्षेत्रफल का घातांक लगाता है, और 9 3 को एक बार लगाने के बजाय वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका घनाची बाजू 1% शेकडा त्रुटीसह मोजली गेली. तिच्यापासून काढलेल्या घनफळातील शेकडा त्रुटी किती?",
+          "choices": [
+            "1",
+            "9",
+            "3",
+            "2"
+          ],
+          "solution": "घनफळ म्हणजे बाजूचा घन, आणि घातांक ज्या अपूर्णांकी त्रुटीवर लागतो तिला गुणतो, म्हणून त्रुटी 3 × 1% = 3%. (1 घातांक पूर्णपणे विसरते, 2 क्षेत्रफळाचा घातांक वापरते, आणि 9 हे 3 एकदा वापरण्याऐवजी त्याचा वर्ग करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Vernier callipers have a main-scale division of 1 mm, and 20 vernier divisions coincide with 19 main-scale divisions. What is the least count, in mm?",
+      "choices": [
+        "0.05",
+        "0.01",
+        "0.1",
+        "0.95"
+      ],
+      "answerIndex": 0,
+      "solution": "Each vernier division is 19/20 mm, so it falls short of a main-scale division by 1 − 19/20 = 1/20 = 0.05 mm, and that shortfall is the least count. (0.95 is the vernier division itself rather than the difference, and 0.1 assumes ten divisions.)",
+      "checkExpr": "1/20",
+      "translations": {
+        "hi": {
+          "stem": "वर्नियर कैलिपर्स के मुख्य पैमाने का एक विभाजन 1 mm है, और 20 वर्नियर विभाजन मुख्य पैमाने के 19 विभाजनों के बराबर हैं। अल्पतमांक mm में क्या है?",
+          "choices": [
+            "0.05",
+            "0.01",
+            "0.1",
+            "0.95"
+          ],
+          "solution": "हर वर्नियर विभाजन 19/20 mm का है, अतः वह मुख्य पैमाने के विभाजन से 1 − 19/20 = 1/20 = 0.05 mm कम पड़ता है, और यही कमी अल्पतमांक है। (0.95 अंतर के बजाय स्वयं वर्नियर विभाजन है, और 0.1 दस विभाजन मान लेता है।)"
+        },
+        "mr": {
+          "stem": "व्हर्नियर कॅलिपरच्या मुख्य पट्टीचा एक विभाग 1 mm आहे, आणि 20 व्हर्नियर विभाग मुख्य पट्टीच्या 19 विभागांशी जुळतात. अल्पतमांक mm मध्ये किती?",
+          "choices": [
+            "0.05",
+            "0.01",
+            "0.1",
+            "0.95"
+          ],
+          "solution": "प्रत्येक व्हर्नियर विभाग 19/20 mm चा, म्हणून तो मुख्य पट्टीच्या विभागाहून 1 − 19/20 = 1/20 = 0.05 mm कमी पडतो, आणि हीच कमतरता अल्पतमांक. (0.95 हा फरकाऐवजी स्वतः व्हर्नियर विभाग, आणि 0.1 दहा विभाग गृहीत धरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Dimensional analysis is used to write a simple pendulum's period as T = k·lᵃ·gᵇ, with k a pure number. What is the value of a?",
+      "choices": [
+        "0.5",
+        "2",
+        "0.25",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Matching dimensions, T¹ = Lᵃ(LT⁻²)ᵇ gives 1 = −2b, so b = −½, and 0 = a + b, so a = ½ = 0.5. The period therefore goes as the square root of the length. (1 would make T proportional to l, which the √2 growth on doubling the length contradicts.)",
+      "checkExpr": "1/2",
+      "translations": {
+        "hi": {
+          "stem": "विमीय विश्लेषण से सरल लोलक का आवर्तकाल T = k·lᵃ·gᵇ लिखा जाता है, जहाँ k शुद्ध संख्या है। a का मान क्या है?",
+          "choices": [
+            "0.5",
+            "2",
+            "0.25",
+            "1"
+          ],
+          "solution": "विमाएँ मिलाने पर T¹ = Lᵃ(LT⁻²)ᵇ से 1 = −2b, अतः b = −½, और 0 = a + b, अतः a = ½ = 0.5. इसलिए आवर्तकाल लंबाई के वर्गमूल के अनुपात में चलता है। (1 से T, l का समानुपाती हो जाता, जिसका खंडन लंबाई दोगुनी करने पर √2 की वृद्धि करती है।)"
+        },
+        "mr": {
+          "stem": "मितीय विश्लेषणाने साध्या लंबकाचा आवर्तकाल T = k·lᵃ·gᵇ असा लिहिला जातो, जिथे k शुद्ध संख्या. a चे मूल्य किती?",
+          "choices": [
+            "0.5",
+            "2",
+            "0.25",
+            "1"
+          ],
+          "solution": "मिती जुळवल्यास T¹ = Lᵃ(LT⁻²)ᵇ वरून 1 = −2b, म्हणून b = −½, आणि 0 = a + b, म्हणून a = ½ = 0.5. म्हणून आवर्तकाल लांबीच्या वर्गमुळाच्या प्रमाणात जातो. (1 ने T हा l च्या समानुपाती झाला असता, ज्याचे खंडन लांबी दुप्पट केल्यावरची √2 वाढ करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A quantity is computed as P = a³b² / d, where the percentage errors in a, b and d are 1%, 3% and 2%. What is the percentage error in P?",
+      "choices": [
+        "6",
+        "7",
+        "11",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Fractional errors add through a product or quotient, each weighted by its exponent, and division contributes with the same positive sign as multiplication because errors never cancel. So the error is 3(1) + 2(3) + 1(2) = 3 + 6 + 2 = 11%. (6 adds the three percentages unweighted, and 7 subtracts d's contribution instead of adding it — the commonest slip of all.)",
+      "checkExpr": "3*1+2*3+2",
+      "translations": {
+        "hi": {
+          "stem": "एक राशि P = a³b² / d से निकाली जाती है, जहाँ a, b और d में प्रतिशत त्रुटियाँ 1%, 3% और 2% हैं। P में प्रतिशत त्रुटि क्या है?",
+          "choices": [
+            "6",
+            "7",
+            "11",
+            "2"
+          ],
+          "solution": "गुणनफल या भागफल में भिन्नात्मक त्रुटियाँ जुड़ती हैं, हर एक अपने घातांक से भारित, और भाग भी गुणा के समान धनात्मक चिह्न से योगदान देता है क्योंकि त्रुटियाँ कभी कटती नहीं। अतः त्रुटि 3(1) + 2(3) + 1(2) = 3 + 6 + 2 = 11%. (6 तीनों प्रतिशत बिना भार के जोड़ता है, और 7 d का योगदान जोड़ने के बजाय घटा देता है — सबसे आम चूक।)"
+        },
+        "mr": {
+          "stem": "एक राशी P = a³b² / d ने काढली जाते, जिथे a, b आणि d मधील शेकडा त्रुटी 1%, 3% आणि 2% आहेत. P मधील शेकडा त्रुटी किती?",
+          "choices": [
+            "6",
+            "7",
+            "11",
+            "2"
+          ],
+          "solution": "गुणाकार वा भागाकारात अपूर्णांकी त्रुटी जोडल्या जातात, प्रत्येक आपल्या घातांकाने भारित, आणि भागाकारही गुणाकाराप्रमाणेच धन चिन्हाने वाटा देतो कारण त्रुटी कधीही कापल्या जात नाहीत. म्हणून त्रुटी 3(1) + 2(3) + 1(2) = 3 + 6 + 2 = 11%. (6 तिन्ही शेकडे भाराशिवाय जोडते, आणि 7 हे d चा वाटा जोडण्याऐवजी वजा करते — सर्वांत नेहमीची चूक.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A pendulum's length is 100.0 cm with an uncertainty of 0.1 cm, and 100 oscillations take 200.0 s on a stopwatch with an uncertainty of 0.1 s. Since g is computed as 4π²l/T², what is the percentage error in g?",
+      "choices": [
+        "0.2",
+        "0.3",
+        "0.15",
+        "0.1"
+      ],
+      "answerIndex": 0,
+      "solution": "The length contributes (0.1/100.0) × 100 = 0.1%. The total time contributes (0.1/200.0) × 100 = 0.05%, and T enters squared, so it contributes 2 × 0.05 = 0.1%. Adding, the error in g is 0.1 + 0.1 = 0.2%. Notice what timing 100 oscillations bought: the stopwatch's 0.1 s is divided by the whole 200 s rather than by one period, which is why the timing term is no larger than the length term even though a single swing could not have been timed to anything like that precision. (0.15 forgets to double the time error, 0.3 doubles the length error too, and 0.1 keeps only one of the two contributions.)",
+      "checkExpr": "0.1/100.0*100+2*0.1/200.0*100",
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक की लंबाई 100.0 cm है जिसमें 0.1 cm की अनिश्चितता है, और 100 दोलनों में विरामघड़ी पर 200.0 s लगते हैं जिसमें 0.1 s की अनिश्चितता है। चूँकि g = 4π²l/T² से निकाला जाता है, g में प्रतिशत त्रुटि क्या है?",
+          "choices": [
+            "0.2",
+            "0.3",
+            "0.15",
+            "0.1"
+          ],
+          "solution": "लंबाई का योगदान (0.1/100.0) × 100 = 0.1%. कुल समय का योगदान (0.1/200.0) × 100 = 0.05%, और T वर्ग में आता है, अतः उसका योगदान 2 × 0.05 = 0.1%. जोड़ने पर g में त्रुटि 0.1 + 0.1 = 0.2%. ध्यान दो 100 दोलन नापने से क्या मिला: विरामघड़ी के 0.1 s को एक आवर्तकाल के बजाय पूरे 200 s से भाग दिया जाता है, इसीलिए समय का पद लंबाई के पद से बड़ा नहीं, जबकि अकेला झूला इतनी परिशुद्धता से नापा ही नहीं जा सकता था। (0.15 समय की त्रुटि दोगुनी करना भूलता है, 0.3 लंबाई की त्रुटि भी दोगुनी कर देता है, और 0.1 दो में से केवल एक योगदान रखता है।)"
+        },
+        "mr": {
+          "stem": "एका लंबकाची लांबी 100.0 cm असून तीत 0.1 cm ची अनिश्चितता आहे, आणि 100 आंदोलनांना थांबघड्याळावर 200.0 s लागतात ज्यात 0.1 s ची अनिश्चितता आहे. g हे 4π²l/T² ने काढले जाते, तर g मधील शेकडा त्रुटी किती?",
+          "choices": [
+            "0.2",
+            "0.3",
+            "0.15",
+            "0.1"
+          ],
+          "solution": "लांबीचा वाटा (0.1/100.0) × 100 = 0.1%. एकूण काळाचा वाटा (0.1/200.0) × 100 = 0.05%, आणि T वर्गात येतो, म्हणून त्याचा वाटा 2 × 0.05 = 0.1%. बेरीज केल्यास g मधील त्रुटी 0.1 + 0.1 = 0.2%. लक्षात घ्या 100 आंदोलने मोजल्याने काय मिळाले: थांबघड्याळाचे 0.1 s एका आवर्तकालाऐवजी अख्ख्या 200 s ने भागले जाते, म्हणूनच काळाचे पद लांबीच्या पदाहून मोठे नाही, तर एकटा झोका इतक्या अचूकतेने मोजताच आला नसता. (0.15 काळाची त्रुटी दुप्पट करायला विसरते, 0.3 लांबीची त्रुटीही दुप्पट करते, आणि 0.1 दोहोंपैकी फक्त एक वाटा ठेवते.)"
+        }
+      }
+    }
+  ]
+}

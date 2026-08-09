@@ -10,8 +10,8 @@
  *
  * Stems are trilingual like everything else; digits stay digits in all three.
  */
-import type { L, OutQuestion } from "./engine";
-import { shuffled } from "./engine";
+import type { L, OutQuestion, TopicFileOut } from "./engine";
+import { rng, shuffled } from "./engine";
 
 export type NumQ = {
   level: number;
@@ -55,3 +55,32 @@ export function numQ(q: NumQ, rand: () => number): OutQuestion {
 
 /** ₹-amount rendering, shared by money chapters. */
 export const rupees = (n: number): L => ({ en: `₹${n}`, hi: `₹${n}`, mr: `₹${n}` });
+
+/** Unit rendering for the sciences — the number is the same in all three. */
+export const unit = (suffix: string) => (n: number): L => ({
+  en: `${n} ${suffix}`,
+  hi: `${n} ${suffix}`,
+  mr: `${n} ${suffix}`,
+});
+
+/**
+ * Bolts computed problems onto a chapter the conceptual engine has already
+ * built — the shape Classes 11 and 12 need and the earlier grades did not.
+ *
+ * Up to Class 10 a chapter was one thing or the other: maths computed, science
+ * conceptual. Class 11 physics is both at once, and splitting one NCERT chapter
+ * into a "concepts" topic and a "problems" topic would be an artefact of this
+ * code rather than of the subject — a student revising projectiles wants the
+ * definition of the independence of the components AND the range of a 20 m/s
+ * throw, from the same card. So the numeric questions join the ladder the
+ * engine generated, in the same topic file, and the verifier proves every one
+ * of them arithmetically while the conceptual half stays honestly unproven.
+ *
+ * The seed is suffixed so option order in the numeric half cannot shift if a
+ * conceptual fact is added above it — diffs stay about the row that changed.
+ */
+export function withNumeric(topic: TopicFileOut, questions: NumQ[]): TopicFileOut {
+  if (questions.length === 0) return topic;
+  const rand = rng(`${topic.slug}-numeric`);
+  return { ...topic, questions: [...topic.questions, ...questions.map((q) => numQ(q, rand))] };
+}

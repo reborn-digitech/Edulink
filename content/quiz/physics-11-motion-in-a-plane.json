@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 3 — Motion in a Plane",
+  "name": "Motion in a Plane",
+  "slug": "physics-11-motion-in-a-plane",
+  "summary": "Adding a second dimension costs one idea and buys the rest: two quantities that add nose-to-tail rather than by counting, a motion that can be cut into two independent motions that never consult each other, a thrown ball whose horizontal half is bored and whose vertical half is in free fall, two angles that land in the same place, and a body that accelerates continuously while its speed never changes at all.",
+  "position": 3,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "समतल में गति",
+      "summary": "दूसरी विमा जोड़ना एक विचार की क़ीमत लेता है और बाक़ी सब दे देता है: दो राशियाँ जो गिनकर नहीं, सिर-से-पूँछ जुड़ती हैं, वह गति जिसे दो स्वतंत्र गतियों में काटा जा सकता है जो आपस में कभी सलाह नहीं करतीं, वह फेंकी गेंद जिसका क्षैतिज आधा ऊबा हुआ है और ऊर्ध्वाधर आधा मुक्त पतन में, दो कोण जो एक ही जगह गिरते हैं, और वह पिंड जो लगातार त्वरित होता है जबकि उसकी चाल बिलकुल नहीं बदलती।"
+    },
+    "mr": {
+      "name": "प्रतलातील गती",
+      "summary": "दुसरी मिती जोडणे एका कल्पनेची किंमत घेते आणि बाकी सर्व देते: दोन राशी ज्या मोजून नव्हे तर डोके-ते-शेपूट जोडल्या जातात, ती गती जिचे दोन स्वतंत्र गतींत तुकडे करता येतात ज्या एकमेकींचा कधीही सल्ला घेत नाहीत, तो फेकलेला चेंडू ज्याचा आडवा अर्धा कंटाळलेला आणि उभा अर्धा मुक्त पतनात, दोन कोन जे एकाच जागी पडतात, आणि तो पिंड जो सतत त्वरित होतो तर त्याची चाल मुळीच बदलत नाही."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Two quantities of 3 and 4 units can combine to give anything from 1 to 7 depending on the angle between them, because the second is drawn from the tip of the first and the result runs from the free tail to the free head. Which rule is this?",
+      "choices": [
+        "Complementary angles of projection",
+        "Resolution into components",
+        "The triangle law of addition",
+        "The independence of perpendicular motions"
+      ],
+      "answerIndex": 2,
+      "solution": "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "3 और 4 इकाइयों की दो राशियाँ मिलकर उनके बीच के कोण के अनुसार 1 से 7 तक कुछ भी दे सकती हैं, क्योंकि दूसरी को पहली की नोक से खींचा जाता है और परिणाम खुली पूँछ से खुले सिर तक जाता है। यह कौन-सा नियम है?",
+          "choices": [
+            "पूरक प्रक्षेपण कोण",
+            "घटकों में वियोजन",
+            "योग का त्रिभुज नियम",
+            "लंबवत गतियों की स्वतंत्रता"
+          ],
+          "solution": "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "3 आणि 4 एककांच्या दोन राशी मिळून त्यांच्यातील कोनानुसार 1 ते 7 पर्यंत काहीही देऊ शकतात, कारण दुसरी पहिलीच्या टोकापासून काढली जाते आणि निकाल मोकळ्या शेपटापासून मोकळ्या डोक्यापर्यंत जातो. हा कोणता नियम?",
+          "choices": [
+            "पूरक प्रक्षेपण कोन",
+            "घटकांत विभाजन",
+            "बेरजेचा त्रिकोण नियम",
+            "लंब गतींची स्वतंत्रता"
+          ],
+          "solution": "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Resolution into components is correct?",
+      "choices": [
+        "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes.",
+        "A projectile under gravity alone traces a parabola, because uniform horizontal motion and uniformly accelerated vertical motion combine into a quadratic relation between the two coordinates.",
+        "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added.",
+        "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law."
+      ],
+      "answerIndex": 3,
+      "solution": "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "घटकों में वियोजन के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती।",
+            "केवल गुरुत्व के अधीन प्रक्षेप्य परवलय खींचता है, क्योंकि एकसमान क्षैतिज गति और एकसमान त्वरित ऊर्ध्वाधर गति मिलकर दोनों निर्देशांकों के बीच द्विघात संबंध बनाती हैं।",
+            "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है।",
+            "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं।"
+          ],
+          "solution": "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "घटकांत विभाजन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही.",
+            "केवळ गुरुत्वाखालील प्रक्षेप्य परवलय काढतो, कारण एकसमान आडवी गती आणि एकसमान त्वरित उभी गती मिळून दोन्ही निर्देशांकांत द्विघात संबंध तयार करतात.",
+            "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते.",
+            "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात."
+          ],
+          "solution": "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the reason a projectile's time of flight can be computed without ever mentioning its horizontal speed, however fast that speed happens to be.\" — which of these is this about?",
+      "choices": [
+        "The parabolic trajectory",
+        "Complementary angles of projection",
+        "Centripetal acceleration",
+        "The independence of perpendicular motions"
+      ],
+      "answerIndex": 3,
+      "solution": "Perpendicular components of a motion are independent, so a plane motion can be solved as two separate one-dimensional problems that share only the clock. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसी से प्रक्षेप्य का उड्डयन-काल उसकी क्षैतिज चाल का ज़िक्र किए बिना निकाला जा सकता है, चाहे वह चाल कितनी भी हो।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "परवलयी प्रक्षेप-पथ",
+            "पूरक प्रक्षेपण कोण",
+            "अभिकेंद्र त्वरण",
+            "लंबवत गतियों की स्वतंत्रता"
+          ],
+          "solution": "गति के लंबवत घटक स्वतंत्र होते हैं, अतः समतल गति को दो अलग एक-विमीय प्रश्नों की तरह हल किया जा सकता है जो केवल घड़ी साझा करते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"यामुळेच प्रक्षेप्याचा उड्डाणकाळ त्याच्या आडव्या चालीचा उल्लेख न करता काढता येतो, ती चाल कितीही असो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "परवलयी मार्ग",
+            "पूरक प्रक्षेपण कोन",
+            "अभिकेंद्री त्वरण",
+            "लंब गतींची स्वतंत्रता"
+          ],
+          "solution": "गतीचे लंब घटक स्वतंत्र असतात, म्हणून प्रतलातील गती दोन वेगळ्या एकमितीय प्रश्नांसारखी सोडवता येते जे केवळ घड्याळ वाटून घेतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The horizontal coordinate grows in step with the clock while the vertical one falls off as the square of it, and eliminating time between the two leaves y as a quadratic in x. Which path is this?",
+      "choices": [
+        "Complementary angles of projection",
+        "The parabolic trajectory",
+        "Centripetal acceleration",
+        "The independence of perpendicular motions"
+      ],
+      "answerIndex": 1,
+      "solution": "A projectile under gravity alone traces a parabola, because uniform horizontal motion and uniformly accelerated vertical motion combine into a quadratic relation between the two coordinates. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "क्षैतिज निर्देशांक घड़ी के साथ कदम मिलाकर बढ़ता है जबकि ऊर्ध्वाधर उसके वर्ग के अनुसार गिरता है, और दोनों के बीच से समय हटा देने पर y, x में द्विघात बचता है। यह कौन-सा पथ है?",
+          "choices": [
+            "पूरक प्रक्षेपण कोण",
+            "परवलयी प्रक्षेप-पथ",
+            "अभिकेंद्र त्वरण",
+            "लंबवत गतियों की स्वतंत्रता"
+          ],
+          "solution": "केवल गुरुत्व के अधीन प्रक्षेप्य परवलय खींचता है, क्योंकि एकसमान क्षैतिज गति और एकसमान त्वरित ऊर्ध्वाधर गति मिलकर दोनों निर्देशांकों के बीच द्विघात संबंध बनाती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "आडवा निर्देशांक घड्याळाशी पावले जुळवत वाढतो तर उभा त्याच्या वर्गानुसार खाली येतो, आणि दोहोंमधून काळ काढून टाकल्यास y हा x मध्ये द्विघात उरतो. हा कोणता मार्ग?",
+          "choices": [
+            "पूरक प्रक्षेपण कोन",
+            "परवलयी मार्ग",
+            "अभिकेंद्री त्वरण",
+            "लंब गतींची स्वतंत्रता"
+          ],
+          "solution": "केवळ गुरुत्वाखालील प्रक्षेप्य परवलय काढतो, कारण एकसमान आडवी गती आणि एकसमान त्वरित उभी गती मिळून दोन्ही निर्देशांकांत द्विघात संबंध तयार करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Complementary angles of projection is correct?",
+      "choices": [
+        "A projectile under gravity alone traces a parabola, because uniform horizontal motion and uniformly accelerated vertical motion combine into a quadratic relation between the two coordinates.",
+        "Perpendicular components of a motion are independent, so a plane motion can be solved as two separate one-dimensional problems that share only the clock.",
+        "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes.",
+        "Two angles adding to 90° give the same horizontal range for the same launch speed, because the range u² sin 2θ / g depends on the angle only through sin 2θ, which is unchanged when θ is replaced by 90° − θ."
+      ],
+      "answerIndex": 3,
+      "solution": "Two angles adding to 90° give the same horizontal range for the same launch speed, because the range u² sin 2θ / g depends on the angle only through sin 2θ, which is unchanged when θ is replaced by 90° − θ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पूरक प्रक्षेपण कोण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "केवल गुरुत्व के अधीन प्रक्षेप्य परवलय खींचता है, क्योंकि एकसमान क्षैतिज गति और एकसमान त्वरित ऊर्ध्वाधर गति मिलकर दोनों निर्देशांकों के बीच द्विघात संबंध बनाती हैं।",
+            "गति के लंबवत घटक स्वतंत्र होते हैं, अतः समतल गति को दो अलग एक-विमीय प्रश्नों की तरह हल किया जा सकता है जो केवल घड़ी साझा करते हैं।",
+            "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती।",
+            "90° में जुड़ने वाले दो कोण समान प्रक्षेपण चाल पर समान क्षैतिज परास देते हैं, क्योंकि परास u² sin 2θ / g कोण पर केवल sin 2θ के माध्यम से निर्भर है, जो θ की जगह 90° − θ रखने पर नहीं बदलता।"
+          ],
+          "solution": "90° में जुड़ने वाले दो कोण समान प्रक्षेपण चाल पर समान क्षैतिज परास देते हैं, क्योंकि परास u² sin 2θ / g कोण पर केवल sin 2θ के माध्यम से निर्भर है, जो θ की जगह 90° − θ रखने पर नहीं बदलता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पूरक प्रक्षेपण कोन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "केवळ गुरुत्वाखालील प्रक्षेप्य परवलय काढतो, कारण एकसमान आडवी गती आणि एकसमान त्वरित उभी गती मिळून दोन्ही निर्देशांकांत द्विघात संबंध तयार करतात.",
+            "गतीचे लंब घटक स्वतंत्र असतात, म्हणून प्रतलातील गती दोन वेगळ्या एकमितीय प्रश्नांसारखी सोडवता येते जे केवळ घड्याळ वाटून घेतात.",
+            "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही.",
+            "90° मध्ये भरणारे दोन कोन समान प्रक्षेपण चालीवर समान आडवी पल्ला देतात, कारण पल्ला u² sin 2θ / g हा कोनावर केवळ sin 2θ मार्गे अवलंबून, जो θ ऐवजी 90° − θ ठेवल्यास बदलत नाही."
+          ],
+          "solution": "90° मध्ये भरणारे दोन कोन समान प्रक्षेपण चालीवर समान आडवी पल्ला देतात, कारण पल्ला u² sin 2θ / g हा कोनावर केवळ sin 2θ मार्गे अवलंबून, जो θ ऐवजी 90° − θ ठेवल्यास बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Being perpendicular to the velocity at every instant, it changes direction without doing any work, which is why the speed can stay constant while the acceleration never stops.\" — which of these is this about?",
+      "choices": [
+        "Complementary angles of projection",
+        "Centripetal acceleration",
+        "The parabolic trajectory",
+        "The independence of perpendicular motions"
+      ],
+      "answerIndex": 1,
+      "solution": "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हर क्षण वेग के लंबवत होने से वह बिना कोई कार्य किए दिशा बदलता है, इसीलिए चाल अचर रह सकती है जबकि त्वरण कभी रुकता नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "पूरक प्रक्षेपण कोण",
+            "अभिकेंद्र त्वरण",
+            "परवलयी प्रक्षेप-पथ",
+            "लंबवत गतियों की स्वतंत्रता"
+          ],
+          "solution": "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रत्येक क्षणी वेगाला लंब असल्याने ते कोणतेही कार्य न करता दिशा बदलते, म्हणूनच चाल अचल राहू शकते तर त्वरण कधीही थांबत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "पूरक प्रक्षेपण कोन",
+            "अभिकेंद्री त्वरण",
+            "परवलयी मार्ग",
+            "लंब गतींची स्वतंत्रता"
+          ],
+          "solution": "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A sum that can be smaller than either part\" goes correctly with which of these?",
+      "choices": [
+        "centripetal acceleration",
+        "resolution into components",
+        "the parabolic trajectory",
+        "the triangle law of addition"
+      ],
+      "answerIndex": 3,
+      "solution": "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा योग जो किसी भी भाग से छोटा हो सकता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अभिकेंद्र त्वरण",
+            "घटकों में वियोजन",
+            "परवलयी प्रक्षेप-पथ",
+            "योग का त्रिभुज नियम"
+          ],
+          "solution": "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी बेरीज जी कोणत्याही भागाहून लहान असू शकते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अभिकेंद्री त्वरण",
+            "घटकांत विभाजन",
+            "परवलयी मार्ग",
+            "बेरजेचा त्रिकोण नियम"
+          ],
+          "solution": "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Tilt the axes until a component vanishes\" goes correctly with which of these?",
+      "choices": [
+        "centripetal acceleration",
+        "the parabolic trajectory",
+        "resolution into components",
+        "the independence of perpendicular motions"
+      ],
+      "answerIndex": 2,
+      "solution": "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अक्षों को तब तक झुकाओ जब तक कोई घटक शून्य न हो जाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अभिकेंद्र त्वरण",
+            "परवलयी प्रक्षेप-पथ",
+            "घटकों में वियोजन",
+            "लंबवत गतियों की स्वतंत्रता"
+          ],
+          "solution": "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एखादा घटक शून्य होईपर्यंत अक्ष कलवा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अभिकेंद्री त्वरण",
+            "परवलयी मार्ग",
+            "घटकांत विभाजन",
+            "लंब गतींची स्वतंत्रता"
+          ],
+          "solution": "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two one-dimensional problems sharing only a clock\" goes correctly with which of these?",
+      "choices": [
+        "the triangle law of addition",
+        "the parabolic trajectory",
+        "the independence of perpendicular motions",
+        "complementary angles of projection"
+      ],
+      "answerIndex": 2,
+      "solution": "Perpendicular components of a motion are independent, so a plane motion can be solved as two separate one-dimensional problems that share only the clock. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो एक-विमीय प्रश्न जो केवल घड़ी साझा करते हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "योग का त्रिभुज नियम",
+            "परवलयी प्रक्षेप-पथ",
+            "लंबवत गतियों की स्वतंत्रता",
+            "पूरक प्रक्षेपण कोण"
+          ],
+          "solution": "गति के लंबवत घटक स्वतंत्र होते हैं, अतः समतल गति को दो अलग एक-विमीय प्रश्नों की तरह हल किया जा सकता है जो केवल घड़ी साझा करते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"केवळ घड्याळ वाटून घेणारे दोन एकमितीय प्रश्न\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बेरजेचा त्रिकोण नियम",
+            "परवलयी मार्ग",
+            "लंब गतींची स्वतंत्रता",
+            "पूरक प्रक्षेपण कोन"
+          ],
+          "solution": "गतीचे लंब घटक स्वतंत्र असतात, म्हणून प्रतलातील गती दोन वेगळ्या एकमितीय प्रश्नांसारखी सोडवता येते जे केवळ घड्याळ वाटून घेतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Speed at the top is u cos θ, not zero\" goes correctly with which of these?",
+      "choices": [
+        "the triangle law of addition",
+        "complementary angles of projection",
+        "centripetal acceleration",
+        "the parabolic trajectory"
+      ],
+      "answerIndex": 3,
+      "solution": "A projectile under gravity alone traces a parabola, because uniform horizontal motion and uniformly accelerated vertical motion combine into a quadratic relation between the two coordinates. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"शिखर पर चाल u cos θ है, शून्य नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "योग का त्रिभुज नियम",
+            "पूरक प्रक्षेपण कोण",
+            "अभिकेंद्र त्वरण",
+            "परवलयी प्रक्षेप-पथ"
+          ],
+          "solution": "केवल गुरुत्व के अधीन प्रक्षेप्य परवलय खींचता है, क्योंकि एकसमान क्षैतिज गति और एकसमान त्वरित ऊर्ध्वाधर गति मिलकर दोनों निर्देशांकों के बीच द्विघात संबंध बनाती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"शिखरावरची चाल u cos θ, शून्य नव्हे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बेरजेचा त्रिकोण नियम",
+            "पूरक प्रक्षेपण कोन",
+            "अभिकेंद्री त्वरण",
+            "परवलयी मार्ग"
+          ],
+          "solution": "केवळ गुरुत्वाखालील प्रक्षेप्य परवलय काढतो, कारण एकसमान आडवी गती आणि एकसमान त्वरित उभी गती मिळून दोन्ही निर्देशांकांत द्विघात संबंध तयार करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Same landing spot, different time of flight\" goes correctly with which of these?",
+      "choices": [
+        "the triangle law of addition",
+        "complementary angles of projection",
+        "resolution into components",
+        "the parabolic trajectory"
+      ],
+      "answerIndex": 1,
+      "solution": "Two angles adding to 90° give the same horizontal range for the same launch speed, because the range u² sin 2θ / g depends on the angle only through sin 2θ, which is unchanged when θ is replaced by 90° − θ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"गिरने का स्थान एक, उड्डयन-काल भिन्न\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "योग का त्रिभुज नियम",
+            "पूरक प्रक्षेपण कोण",
+            "घटकों में वियोजन",
+            "परवलयी प्रक्षेप-पथ"
+          ],
+          "solution": "90° में जुड़ने वाले दो कोण समान प्रक्षेपण चाल पर समान क्षैतिज परास देते हैं, क्योंकि परास u² sin 2θ / g कोण पर केवल sin 2θ के माध्यम से निर्भर है, जो θ की जगह 90° − θ रखने पर नहीं बदलता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पडण्याची जागा एक, उड्डाणकाळ वेगळा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बेरजेचा त्रिकोण नियम",
+            "पूरक प्रक्षेपण कोन",
+            "घटकांत विभाजन",
+            "परवलयी मार्ग"
+          ],
+          "solution": "90° मध्ये भरणारे दोन कोन समान प्रक्षेपण चालीवर समान आडवी पल्ला देतात, कारण पल्ला u² sin 2θ / g हा कोनावर केवळ sin 2θ मार्गे अवलंबून, जो θ ऐवजी 90° − θ ठेवल्यास बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Cut the string and it leaves along the tangent\" goes correctly with which of these?",
+      "choices": [
+        "the parabolic trajectory",
+        "the triangle law of addition",
+        "resolution into components",
+        "centripetal acceleration"
+      ],
+      "answerIndex": 3,
+      "solution": "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"डोरी काटो और वह स्पर्शरेखा के अनुदिश निकलता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परवलयी प्रक्षेप-पथ",
+            "योग का त्रिभुज नियम",
+            "घटकों में वियोजन",
+            "अभिकेंद्र त्वरण"
+          ],
+          "solution": "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोरी कापा आणि तो स्पर्शिकेच्या दिशेने निघतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परवलयी मार्ग",
+            "बेरजेचा त्रिकोण नियम",
+            "घटकांत विभाजन",
+            "अभिकेंद्री त्वरण"
+          ],
+          "solution": "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The triangle law of addition EXCEPT —",
+      "choices": [
+        "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law.",
+        "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added.",
+        "For two vectors at right angles it collapses to Pythagoras, so 3 and 4 perpendicular units give exactly 5, and that is the only angle at which the arithmetic is that easy.",
+        "Addition of vectors is commutative and associative like ordinary addition, but subtraction is defined by reversing the second vector and adding, so the order of a difference genuinely matters."
+      ],
+      "answerIndex": 0,
+      "solution": "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law. That belongs to Resolution into components, not The triangle law of addition — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "योग का त्रिभुज नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं।",
+            "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है।",
+            "समकोण पर दो सदिशों के लिए यह पाइथागोरस बन जाता है, अतः 3 और 4 लंबवत इकाइयाँ ठीक 5 देती हैं, और केवल इसी कोण पर गणित इतना आसान होता है।",
+            "सदिशों का योग साधारण योग की तरह क्रमविनिमेय और साहचर्य है, पर घटाव दूसरे सदिश को उलटकर जोड़ने से परिभाषित है, अतः अंतर में क्रम सचमुच मायने रखता है।"
+          ],
+          "solution": "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं। यह घटकों में वियोजन की बात है, योग का त्रिभुज नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बेरजेचा त्रिकोण नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात.",
+            "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते.",
+            "काटकोनातील दोन सदिशांसाठी हा पायथागोरस बनतो, म्हणून 3 आणि 4 लंब एकके नेमकी 5 देतात, आणि केवळ याच कोनावर गणित इतके सोपे असते.",
+            "सदिशांची बेरीज सामान्य बेरजेप्रमाणे क्रमविनिमेय आणि साहचर्य आहे, पण वजाबाकी दुसरा सदिश उलटवून जोडून व्याख्यायित होते, म्हणून फरकात क्रम खरोखर महत्त्वाचा असतो."
+          ],
+          "solution": "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात. हे घटकांत विभाजन चे आहे, बेरजेचा त्रिकोण नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Resolution into components EXCEPT —",
+      "choices": [
+        "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added.",
+        "Because cos and sin never exceed one, no component can be larger than the vector itself, which is a quick check on any resolution that has gone wrong.",
+        "The axes may be chosen freely, and the usual reason for tilting them is to make one component vanish — along an inclined plane, choosing the axes along and across the slope leaves gravity with only two terms to manage.",
+        "Resolution replaces one vector by its projections A cos θ and A sin θ on two perpendicular axes, and it is exact rather than approximate because the two projections reconstruct the original by the triangle law."
+      ],
+      "answerIndex": 0,
+      "solution": "The triangle law places the tail of the second vector at the head of the first and takes the closing side as the sum, which is why the magnitude of a sum can be smaller than either quantity being added. That belongs to The triangle law of addition, not Resolution into components — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "घटकों में वियोजन के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है।",
+            "चूँकि cos और sin कभी एक से बड़े नहीं होते, कोई भी घटक स्वयं सदिश से बड़ा नहीं हो सकता, और यही किसी बिगड़े वियोजन की झटपट जाँच है।",
+            "अक्ष स्वतंत्र रूप से चुने जा सकते हैं, और उन्हें झुकाने का सामान्य कारण किसी एक घटक को शून्य कर देना है — नत तल पर, ढलान के अनुदिश और आर-पार अक्ष चुनने से गुरुत्व के पास सँभालने को केवल दो पद बचते हैं।",
+            "वियोजन एक सदिश को दो लंबवत अक्षों पर उसके प्रक्षेप A cos θ और A sin θ से बदल देता है, और यह सन्निकट नहीं बल्कि यथार्थ है क्योंकि दोनों प्रक्षेप त्रिभुज नियम से मूल सदिश को फिर बना देते हैं।"
+          ],
+          "solution": "त्रिभुज नियम दूसरे सदिश की पूँछ को पहले के सिर पर रखता है और बंद करने वाली भुजा को योग मानता है, इसीलिए योग का परिमाण जोड़ी जा रही किसी भी राशि से छोटा हो सकता है। यह योग का त्रिभुज नियम की बात है, घटकों में वियोजन की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "घटकांत विभाजन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते.",
+            "cos आणि sin कधीही एकाहून मोठे नसल्याने कोणताही घटक स्वतः सदिशाहून मोठा असू शकत नाही, आणि हीच बिघडलेल्या विभाजनाची झटपट तपासणी.",
+            "अक्ष मुक्तपणे निवडता येतात, आणि त्यांना कलवण्याचे नेहमीचे कारण म्हणजे एखादा घटक शून्य करणे — उताराच्या पातळीवर, उताराच्या दिशेने आणि आडवे अक्ष निवडल्यास गुरुत्वाकडे हाताळायला फक्त दोन पदे उरतात.",
+            "विभाजन एका सदिशाला दोन लंब अक्षांवरील त्याच्या प्रक्षेपांनी — A cos θ आणि A sin θ — बदलते, आणि हे अंदाजे नव्हे तर नेमके आहे कारण दोन्ही प्रक्षेप त्रिकोण नियमाने मूळ सदिश पुन्हा उभा करतात."
+          ],
+          "solution": "त्रिकोण नियम दुसऱ्या सदिशाची शेपूट पहिल्याच्या डोक्यावर ठेवतो आणि बंद करणारी बाजू बेरीज मानतो, म्हणूनच बेरजेचे परिमाण जोडल्या जाणाऱ्या कोणत्याही राशीहून लहान असू शकते. हे बेरजेचा त्रिकोण नियम चे आहे, घटकांत विभाजन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The independence of perpendicular motions EXCEPT —",
+      "choices": [
+        "Two angles adding to 90° give the same horizontal range for the same launch speed, because the range u² sin 2θ / g depends on the angle only through sin 2θ, which is unchanged when θ is replaced by 90° − θ.",
+        "Perpendicular components of a motion are independent, so a plane motion can be solved as two separate one-dimensional problems that share only the clock.",
+        "The principle fails the moment a force appears that couples the axes — air drag, which depends on the total speed, makes the vertical fall of a fast bullet genuinely different from that of a dropped one.",
+        "It is the reason a projectile's time of flight can be computed without ever mentioning its horizontal speed, however fast that speed happens to be."
+      ],
+      "answerIndex": 0,
+      "solution": "Two angles adding to 90° give the same horizontal range for the same launch speed, because the range u² sin 2θ / g depends on the angle only through sin 2θ, which is unchanged when θ is replaced by 90° − θ. That belongs to Complementary angles of projection, not The independence of perpendicular motions — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "लंबवत गतियों की स्वतंत्रता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "90° में जुड़ने वाले दो कोण समान प्रक्षेपण चाल पर समान क्षैतिज परास देते हैं, क्योंकि परास u² sin 2θ / g कोण पर केवल sin 2θ के माध्यम से निर्भर है, जो θ की जगह 90° − θ रखने पर नहीं बदलता।",
+            "गति के लंबवत घटक स्वतंत्र होते हैं, अतः समतल गति को दो अलग एक-विमीय प्रश्नों की तरह हल किया जा सकता है जो केवल घड़ी साझा करते हैं।",
+            "यह सिद्धांत उसी क्षण गिर जाता है जब ऐसा बल आ जाए जो अक्षों को जोड़ दे — वायु प्रतिरोध, जो कुल चाल पर निर्भर है, तेज़ गोली के ऊर्ध्वाधर पतन को गिराई गई गोली से सचमुच भिन्न बना देता है।",
+            "इसी से प्रक्षेप्य का उड्डयन-काल उसकी क्षैतिज चाल का ज़िक्र किए बिना निकाला जा सकता है, चाहे वह चाल कितनी भी हो।"
+          ],
+          "solution": "90° में जुड़ने वाले दो कोण समान प्रक्षेपण चाल पर समान क्षैतिज परास देते हैं, क्योंकि परास u² sin 2θ / g कोण पर केवल sin 2θ के माध्यम से निर्भर है, जो θ की जगह 90° − θ रखने पर नहीं बदलता। यह पूरक प्रक्षेपण कोण की बात है, लंबवत गतियों की स्वतंत्रता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "लंब गतींची स्वतंत्रता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "90° मध्ये भरणारे दोन कोन समान प्रक्षेपण चालीवर समान आडवी पल्ला देतात, कारण पल्ला u² sin 2θ / g हा कोनावर केवळ sin 2θ मार्गे अवलंबून, जो θ ऐवजी 90° − θ ठेवल्यास बदलत नाही.",
+            "गतीचे लंब घटक स्वतंत्र असतात, म्हणून प्रतलातील गती दोन वेगळ्या एकमितीय प्रश्नांसारखी सोडवता येते जे केवळ घड्याळ वाटून घेतात.",
+            "हे तत्त्व त्याच क्षणी कोसळते जेव्हा अक्षांना जोडणारे बल येते — हवेचा विरोध, जो एकूण चालीवर अवलंबून, वेगवान गोळीचे उभे पतन टाकलेल्या गोळीहून खरोखर वेगळे बनवतो.",
+            "यामुळेच प्रक्षेप्याचा उड्डाणकाळ त्याच्या आडव्या चालीचा उल्लेख न करता काढता येतो, ती चाल कितीही असो."
+          ],
+          "solution": "90° मध्ये भरणारे दोन कोन समान प्रक्षेपण चालीवर समान आडवी पल्ला देतात, कारण पल्ला u² sin 2θ / g हा कोनावर केवळ sin 2θ मार्गे अवलंबून, जो θ ऐवजी 90° − θ ठेवल्यास बदलत नाही. हे पूरक प्रक्षेपण कोन चे आहे, लंब गतींची स्वतंत्रता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The parabolic trajectory EXCEPT —",
+      "choices": [
+        "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes.",
+        "At the highest point the vertical velocity is zero but the horizontal velocity is untouched, so the speed there is u cos θ and never zero unless the throw was straight up.",
+        "A projectile under gravity alone traces a parabola, because uniform horizontal motion and uniformly accelerated vertical motion combine into a quadratic relation between the two coordinates.",
+        "The parabola is an idealisation that assumes no air and a flat, non-rotating Earth; a real cricket ball's path is shorter and steeper on its descending half than on its rising one."
+      ],
+      "answerIndex": 0,
+      "solution": "Centripetal acceleration has magnitude v²/r and points towards the centre of the circular path, so a body in uniform circular motion accelerates continuously although its speed never changes. That belongs to Centripetal acceleration, not The parabolic trajectory — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परवलयी प्रक्षेप-पथ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती।",
+            "उच्चतम बिंदु पर ऊर्ध्वाधर वेग शून्य है पर क्षैतिज वेग अछूता है, अतः वहाँ चाल u cos θ है और तब तक शून्य नहीं जब तक फेंक सीधी ऊपर न हो।",
+            "केवल गुरुत्व के अधीन प्रक्षेप्य परवलय खींचता है, क्योंकि एकसमान क्षैतिज गति और एकसमान त्वरित ऊर्ध्वाधर गति मिलकर दोनों निर्देशांकों के बीच द्विघात संबंध बनाती हैं।",
+            "परवलय एक आदर्शीकरण है जो न हवा मानता है, न घूमती और न वक्र पृथ्वी; असली क्रिकेट गेंद का पथ उतरते आधे में चढ़ते आधे से छोटा और अधिक ढालू होता है।"
+          ],
+          "solution": "अभिकेंद्र त्वरण का परिमाण v²/r है और वह वृत्तीय पथ के केंद्र की ओर होता है, अतः एकसमान वृत्तीय गति में पिंड लगातार त्वरित होता है यद्यपि उसकी चाल कभी नहीं बदलती। यह अभिकेंद्र त्वरण की बात है, परवलयी प्रक्षेप-पथ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "परवलयी मार्ग विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही.",
+            "सर्वोच्च बिंदूवर उभा वेग शून्य पण आडवा वेग अस्पर्श, म्हणून तिथली चाल u cos θ आणि फेक सरळ वर नसेल तर कधीच शून्य नाही.",
+            "केवळ गुरुत्वाखालील प्रक्षेप्य परवलय काढतो, कारण एकसमान आडवी गती आणि एकसमान त्वरित उभी गती मिळून दोन्ही निर्देशांकांत द्विघात संबंध तयार करतात.",
+            "परवलय हे आदर्शीकरण जे हवा नाही आणि सपाट, न फिरणारी पृथ्वी गृहीत धरते; खऱ्या क्रिकेट चेंडूचा मार्ग उतरत्या अर्ध्यात चढत्या अर्ध्याहून लहान आणि अधिक तीव्र असतो."
+          ],
+          "solution": "अभिकेंद्री त्वरणाचे परिमाण v²/r आणि ते वर्तुळाकार मार्गाच्या केंद्राकडे असते, म्हणून एकसमान वर्तुळाकार गतीतील पिंड सतत त्वरित होतो जरी त्याची चाल कधीही बदलत नाही. हे अभिकेंद्री त्वरण चे आहे, परवलयी मार्ग चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A hunter aims a rifle exactly at a monkey hanging from a branch. At the instant the shot is fired the monkey lets go and falls. A student says the hunter should have aimed above the monkey to allow for the bullet's drop. Decide who is right, and say what it depends on.",
+      "choices": [
+        "Aiming straight at the monkey is right. In the time the bullet takes to arrive, gravity pulls it below the line of aim by exactly ½gt², and it pulls the falling monkey below its branch by exactly ½gt² as well — the same acceleration acting for the same time on both. The bullet therefore meets the monkey wherever it has fallen to. What it depends on is only that the bullet reach the tree at all before either hits the ground, which sets a minimum muzzle speed but changes nothing about the aim",
+        "The student is right: the bullet drops but the monkey's fall is irrelevant, so the aim must be raised by ½gt²",
+        "The hunter should aim below the monkey, since the bullet's high speed keeps it from falling as much as the monkey does",
+        "It cannot be decided without knowing the bullet's speed, because a faster bullet falls through a smaller vertical distance than a slower one over the same distance to the tree"
+      ],
+      "answerIndex": 0,
+      "solution": "Set the axes along and across the line of aim and the independence principle does the rest. Take t as the flight time. Along the line of aim the bullet advances at its muzzle speed, unaffected by gravity, and after time t it has reached the horizontal position of the tree. Across that line, gravity has pulled it down by ½gt² from where the barrel pointed. So the bullet arrives at the tree a distance ½gt² below the monkey's original position. Now the monkey. It left the branch at the same instant with zero initial velocity and the same acceleration g, so after the same time t it too is ½gt² below its original position. Two objects, the same downward displacement, the same starting height, the same moment of release: they are at the same point. The bullet hits. Notice what the argument never used. It never used the muzzle speed. It never used the distance to the tree. It never used g. Those quantities decide WHEN the meeting happens and where in space, but the vertical drops cancel identically whatever their values are, because both objects are subject to exactly the same vertical motion. This is the independence of perpendicular components at its cleanest: the bullet's large horizontal velocity has no say whatever in how fast it falls, and neither does the monkey's lack of one. The fourth option is the interesting wrong answer, because it contains a true statement. A faster bullet does drop through a smaller vertical distance on its way to the tree — it gets there sooner, so t is smaller and ½gt² is smaller. But the monkey has been falling for exactly that same shorter time, so it too has dropped less, by the same amount. The two effects are not merely similar; they are the same quantity. Speed changes where the collision occurs, never whether it occurs. The one real condition is that the bullet reach the tree before either object hits the ground. Below some muzzle speed the flight takes so long that the monkey lands first and the bullet passes over the spot. That is a limit on the demonstration, not on the aim: at any speed for which the meeting happens in the air at all, aiming straight at the monkey is exactly right. (The wrong answers correct for a drop that has already been cancelled, invent an upward force on fast bullets, or stop one step short of noticing that the same time appears in both drops.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक शिकारी बंदूक ठीक उस बंदर पर ताने हुए है जो डाल से लटका है। गोली छूटने के क्षण बंदर छोड़ देता है और गिरता है। एक विद्यार्थी कहता है कि गोली के गिरने का हिसाब रखने के लिए शिकारी को बंदर से ऊपर ताकना चाहिए था। तय करो कौन सही है, और यह किस पर निर्भर है।",
+          "choices": [
+            "सीधे बंदर पर ताकना ही सही है। गोली को पहुँचने में जितना समय लगता है, उतने में गुरुत्व उसे निशाने की रेखा से ठीक ½gt² नीचे खींचता है, और गिरते बंदर को भी उसकी डाल से ठीक ½gt² नीचे — दोनों पर वही त्वरण, वही समय। अतः गोली बंदर से वहीं मिलती है जहाँ तक वह गिर चुका है। निर्भरता केवल इस पर है कि गोली पेड़ तक पहुँचे इससे पहले कि कोई ज़मीन पर आ जाए, जो न्यूनतम नाल-चाल तय करता है पर निशाने के बारे में कुछ नहीं बदलता",
+            "विद्यार्थी सही है: गोली गिरती है पर बंदर का गिरना अप्रासंगिक है, अतः निशाना ½gt² ऊपर उठाना चाहिए",
+            "शिकारी को बंदर से नीचे ताकना चाहिए, क्योंकि गोली की तेज़ चाल उसे बंदर जितना गिरने नहीं देती",
+            "गोली की चाल जाने बिना तय नहीं हो सकता, क्योंकि पेड़ तक की उसी दूरी में तेज़ गोली धीमी से कम ऊर्ध्वाधर दूरी गिरती है"
+          ],
+          "solution": "अक्षों को निशाने की रेखा के अनुदिश और आर-पार रखो, बाक़ी स्वतंत्रता का सिद्धांत कर देता है। उड़ान का समय t लो। निशाने की रेखा के अनुदिश गोली अपनी नाल-चाल से बढ़ती है, गुरुत्व से अप्रभावित, और समय t बाद पेड़ की क्षैतिज स्थिति तक पहुँच चुकी है। उस रेखा के आर-पार, गुरुत्व ने उसे वहाँ से ½gt² नीचे खींच दिया है जहाँ नाल ताना था। अतः गोली पेड़ पर बंदर की मूल स्थिति से ½gt² नीचे पहुँचती है। अब बंदर। उसने उसी क्षण शून्य आरंभिक वेग और वही त्वरण g लेकर डाल छोड़ी, अतः उसी समय t बाद वह भी अपनी मूल स्थिति से ½gt² नीचे है। दो वस्तुएँ, वही अधोमुखी विस्थापन, वही आरंभिक ऊँचाई, छूटने का वही क्षण: वे एक ही बिंदु पर हैं। गोली लगती है। ध्यान दो तर्क ने क्या कभी इस्तेमाल नहीं किया। उसने नाल-चाल कभी इस्तेमाल नहीं की। पेड़ तक की दूरी कभी नहीं। g कभी नहीं। वे राशियाँ तय करती हैं कि मिलन कब और अंतरिक्ष में कहाँ होगा, पर ऊर्ध्वाधर पतन उनके मान चाहे जो हों समान रूप से कट जाते हैं, क्योंकि दोनों वस्तुएँ ठीक उसी ऊर्ध्वाधर गति के अधीन हैं। यह लंबवत घटकों की स्वतंत्रता अपने सबसे स्वच्छ रूप में है: गोली के बड़े क्षैतिज वेग का इसमें कोई दख़ल नहीं कि वह कितनी तेज़ी से गिरती है, और बंदर के पास वैसा वेग न होने का भी नहीं। चौथा विकल्प दिलचस्प ग़लत उत्तर है, क्योंकि उसमें एक सच्चा कथन है। तेज़ गोली पेड़ तक के रास्ते में सचमुच कम ऊर्ध्वाधर दूरी गिरती है — वह जल्दी पहुँचती है, अतः t छोटा और ½gt² छोटा। पर बंदर भी ठीक उसी छोटे समय तक गिर रहा था, अतः वह भी उतना ही कम गिरा है। दोनों प्रभाव केवल मिलते-जुलते नहीं; वे एक ही राशि हैं। चाल यह बदलती है कि टक्कर कहाँ होगी, यह कभी नहीं कि होगी या नहीं। एक असली शर्त यह कि गोली पेड़ तक पहुँचे इससे पहले कि कोई वस्तु ज़मीन पर आ जाए। किसी नाल-चाल से नीचे उड़ान इतनी लंबी हो जाती है कि बंदर पहले उतर जाता है और गोली उस जगह के ऊपर से निकल जाती है। यह प्रदर्शन की सीमा है, निशाने की नहीं: जिस भी चाल पर मिलन हवा में होता है, सीधे बंदर पर ताकना ठीक सही है। (ग़लत उत्तर उस पतन के लिए सुधार करते जो पहले ही कट चुका, तेज़ गोलियों पर ऊर्ध्व बल गढ़ते, या यह देखने से एक क़दम पहले रुक जाते कि दोनों पतनों में वही समय आता है।)"
+        },
+        "mr": {
+          "stem": "एक शिकारी बंदूक नेमकी फांदीवर लटकलेल्या माकडावर रोखतो. गोळी सुटण्याच्या क्षणी माकड सोडून देते आणि पडते. एक विद्यार्थी म्हणतो की गोळीच्या पडण्याचा हिशोब ठेवायला शिकाऱ्याने माकडाच्या वर रोखायला हवे होते. कोण बरोबर ते ठरवा, आणि हे कशावर अवलंबून ते सांगा.",
+          "choices": [
+            "थेट माकडावर रोखणेच बरोबर. गोळीला पोहोचायला जितका वेळ लागतो, तितक्यात गुरुत्व तिला रोखलेल्या रेषेखाली नेमके ½gt² ओढते, आणि पडणाऱ्या माकडालाही त्याच्या फांदीखाली नेमके ½gt² — दोघांवर तेच त्वरण, तोच काळ. म्हणून गोळी माकडाला तो जिथवर पडला असेल तिथेच भेटते. अवलंबित्व फक्त एवढेच की गोळी झाडापर्यंत पोहोचावी, दोघांपैकी कोणी जमिनीवर येण्याआधी, जे किमान नळी-चाल ठरवते पण रोखण्याबद्दल काहीही बदलत नाही",
+            "विद्यार्थी बरोबर: गोळी पडते पण माकडाचे पडणे असंबद्ध, म्हणून नेम ½gt² ने वर उचलावा",
+            "शिकाऱ्याने माकडाच्या खाली रोखावे, कारण गोळीची जास्त चाल तिला माकडाइतके पडू देत नाही",
+            "गोळीची चाल कळल्याशिवाय ठरवता येत नाही, कारण झाडापर्यंतच्या त्याच अंतरात वेगवान गोळी सावकाशहून कमी उभे अंतर पडते"
+          ],
+          "solution": "अक्ष नेमाच्या रेषेच्या दिशेने आणि आडवे ठेवा, बाकी स्वतंत्रतेचे तत्त्व करते. उड्डाणाचा काळ t घ्या. नेमाच्या रेषेच्या दिशेने गोळी आपल्या नळी-चालीने पुढे जाते, गुरुत्वाने अप्रभावित, आणि t काळानंतर झाडाच्या आडव्या स्थानापर्यंत पोहोचली आहे. त्या रेषेच्या आडवे, गुरुत्वाने तिला नळी जिथे रोखली होती तिथून ½gt² खाली ओढले आहे. म्हणून गोळी झाडापाशी माकडाच्या मूळ स्थानाहून ½gt² खाली पोहोचते. आता माकड. त्याने त्याच क्षणी शून्य सुरुवातीचा वेग आणि तेच त्वरण g घेऊन फांदी सोडली, म्हणून त्याच t काळानंतर तेही आपल्या मूळ स्थानाहून ½gt² खाली आहे. दोन वस्तू, तेच अधोमुख विस्थापन, तीच सुरुवातीची उंची, सुटण्याचा तोच क्षण: ती एकाच बिंदूवर आहेत. गोळी लागते. लक्षात घ्या युक्तिवादाने काय कधीच वापरले नाही. त्याने नळी-चाल कधीच वापरली नाही. झाडापर्यंतचे अंतर कधीच नाही. g कधीच नाही. त्या राशी ठरवतात की भेट केव्हा आणि अवकाशात कुठे होईल, पण उभी पतने त्यांची मूल्ये काहीही असोत सारखीच कापली जातात, कारण दोन्ही वस्तू नेमक्या त्याच उभ्या गतीच्या अधीन आहेत. हे लंब घटकांच्या स्वतंत्रतेचे सर्वांत स्वच्छ रूप: गोळीच्या मोठ्या आडव्या वेगाचा ती किती वेगाने पडते यात काहीही हस्तक्षेप नाही, आणि माकडाकडे तसा वेग नसण्याचाही नाही. चौथा पर्याय हे रोचक चुकीचे उत्तर, कारण त्यात एक खरे विधान आहे. वेगवान गोळी झाडापर्यंतच्या वाटेत खरोखर कमी उभे अंतर पडते — ती लवकर पोहोचते, म्हणून t लहान आणि ½gt² लहान. पण माकडही नेमक्या त्याच लहान काळापुरते पडत होते, म्हणून तेही तितकेच कमी पडले आहे. दोन्ही परिणाम केवळ सारखे नाहीत; ती एकच राशी आहे. चाल टक्कर कुठे होईल ते बदलते, ती होईल की नाही ते कधीच नाही. एक खरी अट म्हणजे गोळीने झाडापर्यंत पोहोचावे, दोघांपैकी कोणी जमिनीवर येण्याआधी. एका नळी-चालीखाली उड्डाण इतके लांब होते की माकड आधी उतरते आणि गोळी त्या जागेवरून निघून जाते. ही प्रात्यक्षिकाची मर्यादा, नेमाची नव्हे: ज्या कोणत्याही चालीवर भेट हवेत होते, तिथे थेट माकडावर रोखणे नेमके बरोबर. (चुकीची उत्तरे आधीच कापल्या गेलेल्या पतनासाठी दुरुस्ती करतात, वेगवान गोळ्यांवर वरचे बल घडवतात, वा दोन्ही पतनांत तोच काळ येतो हे पाहण्याच्या एक पाऊल आधी थांबतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A car goes round a level circular track at a steady speed. A passenger says they are thrown outwards and that there must be an outward force. A physicist says there is no outward force and the net force is inwards. Reconcile the two accounts.",
+      "choices": [
+        "Both describe the same motion from different frames. From the ground, the passenger's body tends to continue in a straight line and it is the door that pushes inwards to bend the path; the passenger feels that inward push against their side and interprets the pressure as being flung outwards. From the rotating car frame, which is accelerating and therefore not inertial, the passenger must invent an outward pseudo-force to make Newton's laws come out right. Only the ground account names a force with an agent, and that force is inwards",
+        "The passenger is simply wrong and feels nothing at all; the sensation of being pushed outwards is imagined",
+        "There are two real forces, an inward one from the road and an equal outward one on the passenger, and they cancel exactly",
+        "The physicist is wrong, because a body moving at constant speed has no acceleration and therefore no net force at all"
+      ],
+      "answerIndex": 0,
+      "solution": "Start by disposing of the last option, because it is the one a careless reader picks. Acceleration is the rate of change of VELOCITY, and velocity is a vector. A body going round a circle at unchanging speed is changing direction at every instant, so its velocity is changing at every instant, so it is accelerating — continuously, and at the definite rate v²/r directed at the centre. Constant speed and zero acceleration are different statements, and circular motion is the standard example that separates them. Now the ground frame, which is inertial and where every force has an agent. The passenger's body, left alone, would continue in a straight line tangent to the circle. It does not, so something must be pushing it towards the centre. Working outwards from the road: friction between tyres and road provides the inward force on the car; the seat and the door provide it on the passenger. Every force in this account can be named, and the object exerting it can be pointed at. Their resultant is inwards, of magnitude mv²/r. There is no outward force anywhere in the list, and there is nothing left over for one to be. What, then, does the passenger feel? Precisely the door pressing on their side. That pressure is real — a pressure gauge would read it — and its direction is inwards. The passenger's brain, however, reports contact pressure as 'being pushed against the door', and from a lifetime of experience concludes that they were flung outwards onto it. The sensation is genuine; the inference about its cause is not. Consider next the car's own frame, rotating with it. In this frame the passenger is at rest, and Newton's second law demands that the forces on a body at rest sum to zero. But the door is definitely pushing inwards. So the sum is not zero, and the second law appears to fail. The fix used everywhere in engineering is to add a fictitious outward force of exactly mv²/r — the centrifugal force — which restores the balance and lets the calculation proceed. It is not a cheat, but it must be labelled honestly: it has no agent, it appears and vanishes with the choice of frame, and it obeys no third-law pairing, because there is no second body to push back. Its presence is the diagnostic that the frame is accelerating. So both accounts predict the same motion and the same reading on any instrument. They differ in which frame they use, and the frames differ in whether forces need agents. The third option is the seductive wrong answer: if a real inward force and a real outward force cancelled, the net force would be zero and the car would travel in a straight line through the barrier. Circular motion requires an UNBALANCED inward force, and that is what the whole idea of centripetal force amounts to — not a new force in nature, but a name for whatever combination of ordinary forces happens to point at the centre. (The other wrong answers deny a sensation the passenger really has, or forget that a changing direction is an acceleration.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार समतल वृत्तीय पथ पर स्थिर चाल से घूमती है। एक सवारी कहती है कि वह बाहर की ओर फेंकी जा रही है और कोई बाहरी बल अवश्य होगा। एक भौतिकीविद कहते हैं कि कोई बाहरी बल नहीं और परिणामी बल भीतर की ओर है। दोनों विवरणों में मेल बिठाओ।",
+          "choices": [
+            "दोनों एक ही गति का वर्णन भिन्न निर्देश-तंत्रों से करते हैं। ज़मीन से देखें तो सवारी का शरीर सीधी रेखा में चलते रहना चाहता है और दरवाज़ा ही भीतर की ओर धकेलकर पथ मोड़ता है; सवारी अपने पार्श्व पर वही भीतरी धक्का महसूस करती है और दबाव को बाहर फेंके जाने के रूप में पढ़ती है। घूमती कार के तंत्र से, जो त्वरित है और इसलिए जड़त्वीय नहीं, सवारी को न्यूटन के नियम सही निकालने के लिए एक बाहरी छद्म बल गढ़ना पड़ता है। केवल ज़मीन वाला विवरण ऐसे बल का नाम लेता है जिसका कोई कर्ता है, और वह बल भीतर की ओर है",
+            "सवारी बस ग़लत है और उसे कुछ महसूस होता ही नहीं; बाहर धकेले जाने की अनुभूति कल्पित है",
+            "दो असली बल हैं, सड़क से भीतर की ओर एक और सवारी पर बाहर की ओर उतना ही, और वे ठीक-ठीक कट जाते हैं",
+            "भौतिकीविद ग़लत हैं, क्योंकि अचर चाल से चलते पिंड में कोई त्वरण नहीं और इसलिए कोई परिणामी बल भी नहीं"
+          ],
+          "solution": "पहले अंतिम विकल्प निपटाओ, क्योंकि उसी को लापरवाह पाठक चुनता है। त्वरण वेग के परिवर्तन की दर है, और वेग सदिश है। अचर चाल से वृत्त पर घूमता पिंड हर क्षण दिशा बदल रहा है, अतः उसका वेग हर क्षण बदल रहा है, अतः वह त्वरित हो रहा है — लगातार, और केंद्र की ओर निर्दिष्ट v²/r की निश्चित दर से। अचर चाल और शून्य त्वरण भिन्न कथन हैं, और वृत्तीय गति वही मानक उदाहरण है जो उन्हें अलग करता है। अब ज़मीन का तंत्र, जो जड़त्वीय है और जहाँ हर बल का कोई कर्ता है। सवारी का शरीर, अकेला छोड़ा जाए तो, वृत्त की स्पर्शरेखा पर सीधी रेखा में चलता रहता। वह नहीं चलता, अतः कुछ उसे केंद्र की ओर धकेल रहा होगा। सड़क से बाहर की ओर काम करते हुए: टायर और सड़क के बीच घर्षण कार पर भीतरी बल देता है; सीट और दरवाज़ा सवारी पर। इस विवरण के हर बल का नाम लिया जा सकता है, और उसे लगाने वाली वस्तु की ओर उँगली उठाई जा सकती है। उनका परिणामी भीतर की ओर है, परिमाण mv²/r. सूची में कहीं कोई बाहरी बल नहीं, और उसके लिए कुछ बचा भी नहीं। तो सवारी महसूस क्या करती है? ठीक वह दरवाज़ा जो उसके पार्श्व पर दबाव डाल रहा है। वह दबाव असली है — दाबमापी उसे पढ़ लेता — और उसकी दिशा भीतर की ओर है। पर सवारी का मस्तिष्क संपर्क-दबाव को 'दरवाज़े पर धकेले जाने' के रूप में दर्ज करता है, और जीवन भर के अनुभव से निष्कर्ष निकालता है कि उसे बाहर फेंककर उस पर पटका गया। अनुभूति सच्ची है; उसके कारण के बारे में अनुमान नहीं। अब कार का अपना तंत्र लो, जो उसके साथ घूमता है। इस तंत्र में सवारी विराम में है, और न्यूटन का दूसरा नियम माँगता है कि विराम में पिंड पर बलों का योग शून्य हो। पर दरवाज़ा निश्चित रूप से भीतर धकेल रहा है। अतः योग शून्य नहीं, और दूसरा नियम विफल दिखता है। अभियांत्रिकी में हर जगह अपनाया गया उपाय है ठीक mv²/r का एक काल्पनिक बाहरी बल जोड़ देना — अपकेंद्री बल — जो संतुलन लौटा देता है और गणना चलने देता है। यह धोखा नहीं, पर उस पर ईमानदार लेबल चाहिए: उसका कोई कर्ता नहीं, वह तंत्र के चुनाव के साथ आता-जाता है, और वह तीसरे नियम की किसी जोड़ी का पालन नहीं करता, क्योंकि पीछे धकेलने को दूसरा पिंड है ही नहीं। उसकी उपस्थिति यही निदान है कि तंत्र त्वरित है। अतः दोनों विवरण वही गति और किसी भी यंत्र पर वही पाठ्यांक बताते हैं। वे इसमें भिन्न हैं कि कौन-सा तंत्र लेते हैं, और तंत्र इसमें भिन्न हैं कि बलों को कर्ता चाहिए या नहीं। तीसरा विकल्प लुभावना ग़लत उत्तर है: यदि असली भीतरी और असली बाहरी बल कट जाते, तो परिणामी बल शून्य होता और कार सीधी रेखा में बाड़ तोड़कर निकल जाती। वृत्तीय गति असंतुलित भीतरी बल माँगती है, और अभिकेंद्र बल का पूरा विचार इतना ही है — प्रकृति का कोई नया बल नहीं, बल्कि साधारण बलों के उस संयोजन का नाम जो केंद्र की ओर निकल आता है। (बाक़ी ग़लत उत्तर सवारी की सचमुच होती अनुभूति नकारते, या भूल जाते कि बदलती दिशा ही त्वरण है।)"
+        },
+        "mr": {
+          "stem": "एक कार सपाट वर्तुळाकार मार्गावर स्थिर चालीने फिरते. एक प्रवासी म्हणतो की तो बाहेर फेकला जात आहे आणि बाहेरचे बल असलेच पाहिजे. एक भौतिकशास्त्रज्ञ म्हणतात की बाहेरचे बल नाही आणि परिणामी बल आतल्या दिशेने आहे. दोन्ही वर्णनांची सांगड घाला.",
+          "choices": [
+            "दोघेही एकाच गतीचे वर्णन वेगळ्या चौकटींतून करतात. जमिनीवरून पाहता प्रवाशाचे शरीर सरळ रेषेत चालू राहू पाहते आणि दरवाजाच आत ढकलून मार्ग वळवतो; प्रवाशाला आपल्या कुशीवर तोच आतला रेटा जाणवतो आणि तो दाब बाहेर फेकले जाणे म्हणून वाचतो. फिरत्या कारच्या चौकटीतून, जी त्वरित आहे आणि म्हणून जडत्वीय नाही, प्रवाशाला न्यूटनचे नियम बरोबर निघावेत यासाठी बाहेरचे छद्मबल घडवावे लागते. केवळ जमिनीवरचे वर्णन कर्ता असलेल्या बलाचे नाव घेते, आणि ते बल आतल्या दिशेने आहे",
+            "प्रवासी फक्त चुकीचा आहे आणि त्याला काहीही जाणवत नाही; बाहेर ढकलले जाण्याची संवेदना काल्पनिक",
+            "दोन खरी बले आहेत, रस्त्याकडून आतले एक आणि प्रवाशावर बाहेरचे तितकेच, आणि ती नेमकी कापली जातात",
+            "भौतिकशास्त्रज्ञ चुकीचे, कारण अचल चालीने जाणाऱ्या पिंडाला त्वरण नाही आणि म्हणून परिणामी बलही नाही"
+          ],
+          "solution": "आधी शेवटचा पर्याय निकाली काढा, कारण तोच निष्काळजी वाचक निवडतो. त्वरण म्हणजे वेगाच्या बदलाचा दर, आणि वेग सदिश आहे. अचल चालीने वर्तुळावर फिरणारा पिंड प्रत्येक क्षणी दिशा बदलत आहे, म्हणून त्याचा वेग प्रत्येक क्षणी बदलत आहे, म्हणून तो त्वरित होत आहे — सतत, आणि केंद्राकडे निर्देशित v²/r या निश्चित दराने. अचल चाल आणि शून्य त्वरण ही वेगळी विधाने, आणि वर्तुळाकार गती हेच ते प्रमाणित उदाहरण जे त्यांना वेगळे करते. आता जमिनीची चौकट, जी जडत्वीय आणि जिथे प्रत्येक बलाला कर्ता आहे. प्रवाशाचे शरीर, एकटे सोडले तर, वर्तुळाच्या स्पर्शिकेवर सरळ रेषेत चालत राहिले असते. ते तसे चालत नाही, म्हणून काहीतरी त्याला केंद्राकडे ढकलत असले पाहिजे. रस्त्यापासून बाहेर काम करत जाता: टायर आणि रस्ता यांतले घर्षण कारवर आतले बल देते; आसन आणि दरवाजा प्रवाशावर. या वर्णनातील प्रत्येक बलाचे नाव घेता येते, आणि ते लावणाऱ्या वस्तूकडे बोट दाखवता येते. त्यांचा परिणामी आतल्या दिशेने, परिमाण mv²/r. यादीत कुठेही बाहेरचे बल नाही, आणि त्यासाठी काही उरलेलेही नाही. मग प्रवाशाला जाणवते काय? नेमका तो दरवाजा जो त्याच्या कुशीवर दाब देत आहे. तो दाब खरा — दाबमापक तो वाचेल — आणि त्याची दिशा आतल्या बाजूला. पण प्रवाशाचा मेंदू स्पर्श-दाब 'दरवाजावर ढकलले जाणे' म्हणून नोंदवतो, आणि आयुष्यभराच्या अनुभवावरून निष्कर्ष काढतो की त्याला बाहेर फेकून त्यावर आपटले गेले. संवेदना खरी; तिच्या कारणाबद्दलचे अनुमान नाही. आता कारची स्वतःची चौकट घ्या, जी तिच्यासोबत फिरते. या चौकटीत प्रवासी स्थिर आहे, आणि न्यूटनचा दुसरा नियम मागतो की स्थिर पिंडावरील बलांची बेरीज शून्य असावी. पण दरवाजा निश्चितपणे आत ढकलत आहे. म्हणून बेरीज शून्य नाही, आणि दुसरा नियम अपयशी दिसतो. अभियांत्रिकीत सर्वत्र वापरला जाणारा उपाय म्हणजे नेमके mv²/r चे काल्पनिक बाहेरचे बल जोडणे — अपकेंद्री बल — जे संतुलन परत आणते आणि गणना चालू देते. ही फसवणूक नव्हे, पण त्यावर प्रामाणिक शिक्का हवा: त्याला कर्ता नाही, ते चौकटीच्या निवडीसह येते-जाते, आणि ते तिसऱ्या नियमाच्या कोणत्याही जोडीचे पालन करत नाही, कारण मागे ढकलायला दुसरा पिंडच नाही. त्याची उपस्थिती हेच निदान की चौकट त्वरित आहे. म्हणून दोन्ही वर्णने तीच गती आणि कोणत्याही उपकरणावर तेच वाचन सांगतात. ती कोणती चौकट वापरतात यात वेगळी, आणि चौकटी बलांना कर्ता लागतो का यात वेगळ्या. तिसरा पर्याय हे मोहक चुकीचे उत्तर: खरे आतले आणि खरे बाहेरचे बल कापले गेले असते, तर परिणामी बल शून्य झाले असते आणि कार सरळ रेषेत कुंपण फोडून निघून गेली असती. वर्तुळाकार गती असंतुलित आतले बल मागते, आणि अभिकेंद्री बलाची अख्खी कल्पना एवढीच — निसर्गातले नवे बल नव्हे, तर सामान्य बलांच्या ज्या संयोजनाची दिशा केंद्राकडे निघते त्याचे नाव. (उरलेली चुकीची उत्तरे प्रवाशाला खरोखर होणारी संवेदना नाकारतात, वा बदलती दिशा हेच त्वरण आहे हे विसरतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two forces of 3 N and 4 N act on a body at right angles to each other. What is the magnitude of their resultant?",
+      "choices": [
+        "1 N",
+        "5 N",
+        "7 N",
+        "12 N"
+      ],
+      "answerIndex": 1,
+      "solution": "At right angles the triangle law becomes Pythagoras: √(3² + 4²) = √25 = 5 N. (7 is the answer only if the forces point the same way, 1 only if they are exactly opposed, and 12 multiplies them, which no vector rule ever does.)",
+      "checkExpr": "(3^2+4^2)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "किसी पिंड पर 3 N और 4 N के दो बल एक-दूसरे के समकोण पर लगते हैं। उनके परिणामी का परिमाण क्या है?",
+          "choices": [
+            "1 N",
+            "5 N",
+            "7 N",
+            "12 N"
+          ],
+          "solution": "समकोण पर त्रिभुज नियम पाइथागोरस बन जाता है: √(3² + 4²) = √25 = 5 N. (7 केवल तब उत्तर है जब दोनों बल एक ही दिशा में हों, 1 केवल तब जब वे ठीक विपरीत हों, और 12 उन्हें गुणा करता है, जो कोई सदिश नियम कभी नहीं करता।)"
+        },
+        "mr": {
+          "stem": "एका पिंडावर 3 N आणि 4 N ची दोन बले एकमेकांना काटकोनात लागतात. त्यांच्या परिणामीचे परिमाण किती?",
+          "choices": [
+            "1 N",
+            "5 N",
+            "7 N",
+            "12 N"
+          ],
+          "solution": "काटकोनात त्रिकोण नियम पायथागोरस बनतो: √(3² + 4²) = √25 = 5 N. (7 हे उत्तर फक्त दोन्ही बले एकाच दिशेने असतील तर, 1 फक्त ती नेमकी विरुद्ध असतील तर, आणि 12 त्यांना गुणते, जे कोणताही सदिश नियम कधीच करत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A vector of magnitude 10 units makes an angle of 60° with the x-axis. Taking cos 60° = 0.5, what is its x-component?",
+      "choices": [
+        "10",
+        "5",
+        "20",
+        "8.66"
+      ],
+      "answerIndex": 1,
+      "solution": "The component along the axis the angle is measured from uses cosine: 10 × cos 60° = 10 × 0.5 = 5 units. (8.66 is the y-component, from sin 60°, and swapping the two is the commonest slip in resolution; 20 divides by cosine instead of multiplying.)",
+      "checkExpr": "10*0.5",
+      "translations": {
+        "hi": {
+          "stem": "10 इकाई परिमाण का एक सदिश x-अक्ष से 60° का कोण बनाता है। cos 60° = 0.5 लेते हुए, उसका x-घटक क्या है?",
+          "choices": [
+            "10",
+            "5",
+            "20",
+            "8.66"
+          ],
+          "solution": "जिस अक्ष से कोण नापा गया उसके अनुदिश घटक कोज्या लेता है: 10 × cos 60° = 10 × 0.5 = 5 इकाई। (8.66 y-घटक है, sin 60° से, और दोनों को आपस में बदल देना वियोजन की सबसे आम चूक है; 20 गुणा के बजाय कोज्या से भाग देता है।)"
+        },
+        "mr": {
+          "stem": "10 एकक परिमाणाचा एक सदिश x-अक्षाशी 60° चा कोन करतो. cos 60° = 0.5 घेतल्यास, त्याचा x-घटक किती?",
+          "choices": [
+            "10",
+            "5",
+            "20",
+            "8.66"
+          ],
+          "solution": "ज्या अक्षापासून कोन मोजला त्याच्या दिशेचा घटक कोसाइन घेतो: 10 × cos 60° = 10 × 0.5 = 5 एकके. (8.66 हा y-घटक, sin 60° वरून, आणि दोघांची अदलाबदल ही विभाजनातील सर्वांत नेहमीची चूक; 20 गुणण्याऐवजी कोसाइनने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A body is projected at 20 m/s at 30° to the horizontal. Taking sin 30° = 0.5 and g = 10 m/s², what is its total time of flight over level ground?",
+      "choices": [
+        "1 s",
+        "20 s",
+        "2 s",
+        "4 s"
+      ],
+      "answerIndex": 2,
+      "solution": "Only the vertical component matters: u sin θ = 20 × 0.5 = 10 m/s. The time of flight is 2u sin θ/g = 2 × 10/10 = 2 s. The horizontal speed never enters, which is the independence of the components at work. (1 gives only the rise, and 4 uses the full 20 m/s as though the throw were vertical.)",
+      "checkExpr": "2*20*0.5/10",
+      "translations": {
+        "hi": {
+          "stem": "एक पिंड 20 m/s से क्षैतिज से 30° पर प्रक्षिप्त किया जाता है। sin 30° = 0.5 और g = 10 m/s² लेते हुए, समतल ज़मीन पर उसका कुल उड्डयन-काल क्या है?",
+          "choices": [
+            "1 s",
+            "20 s",
+            "2 s",
+            "4 s"
+          ],
+          "solution": "केवल ऊर्ध्वाधर घटक मायने रखता है: u sin θ = 20 × 0.5 = 10 m/s. उड्डयन-काल 2u sin θ/g = 2 × 10/10 = 2 s. क्षैतिज चाल कभी नहीं आती, और यही घटकों की स्वतंत्रता काम करते हुए है। (1 केवल चढ़ाई देता है, और 4 पूरे 20 m/s को ऐसे लेता है मानो फेंक ऊर्ध्वाधर हो।)"
+        },
+        "mr": {
+          "stem": "एक पिंड 20 m/s ने आडव्याशी 30° वर फेकला जातो. sin 30° = 0.5 आणि g = 10 m/s² घेतल्यास, सपाट जमिनीवर त्याचा एकूण उड्डाणकाळ किती?",
+          "choices": [
+            "1 s",
+            "20 s",
+            "2 s",
+            "4 s"
+          ],
+          "solution": "केवळ उभा घटक महत्त्वाचा: u sin θ = 20 × 0.5 = 10 m/s. उड्डाणकाळ 2u sin θ/g = 2 × 10/10 = 2 s. आडवी चाल कधीच येत नाही, आणि हेच घटकांच्या स्वतंत्रतेचे काम. (1 फक्त चढण देते, आणि 4 पूर्ण 20 m/s असे घेते जणू फेक उभी असावी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The same body is projected at 20 m/s at 30°, with sin 30° = 0.5 and g = 10 m/s². What maximum height does it reach?",
+      "choices": [
+        "10 m",
+        "20 m",
+        "2.5 m",
+        "5 m"
+      ],
+      "answerIndex": 3,
+      "solution": "The vertical component is 20 × 0.5 = 10 m/s, and it must be brought to zero by gravity: H = (u sin θ)²/(2g) = 100/20 = 5 m. (20 uses the full speed instead of its vertical part, which would be right only for a vertical throw.)",
+      "checkExpr": "(20*0.5)^2/(2*10)",
+      "translations": {
+        "hi": {
+          "stem": "वही पिंड 20 m/s से 30° पर प्रक्षिप्त होता है, sin 30° = 0.5 और g = 10 m/s² के साथ। वह अधिकतम कितनी ऊँचाई तक पहुँचता है?",
+          "choices": [
+            "10 m",
+            "20 m",
+            "2.5 m",
+            "5 m"
+          ],
+          "solution": "ऊर्ध्वाधर घटक 20 × 0.5 = 10 m/s है, और गुरुत्व को उसे शून्य करना है: H = (u sin θ)²/(2g) = 100/20 = 5 m. (20 ऊर्ध्वाधर भाग के बजाय पूरी चाल लेता है, जो केवल ऊर्ध्वाधर फेंक के लिए सही होता।)"
+        },
+        "mr": {
+          "stem": "तोच पिंड 20 m/s ने 30° वर फेकला जातो, sin 30° = 0.5 आणि g = 10 m/s² सह. तो जास्तीत जास्त किती उंची गाठतो?",
+          "choices": [
+            "10 m",
+            "20 m",
+            "2.5 m",
+            "5 m"
+          ],
+          "solution": "उभा घटक 20 × 0.5 = 10 m/s, आणि गुरुत्वाला तो शून्य करावा लागतो: H = (u sin θ)²/(2g) = 100/20 = 5 m. (20 उभ्या भागाऐवजी पूर्ण चाल घेते, जे केवळ उभ्या फेकीसाठी बरोबर ठरले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A ball is projected at 20 m/s at 45° to the horizontal, with g = 10 m/s². What is its horizontal range on level ground?",
+      "choices": [
+        "80 m",
+        "400 m",
+        "40 m",
+        "20 m"
+      ],
+      "answerIndex": 2,
+      "solution": "The range is u² sin 2θ/g, and at 45° the sine of 90° is 1, so R = u²/g = 400/10 = 40 m. This is the largest range any 20 m/s throw can achieve. (80 forgets that sin 2θ cannot exceed 1, and 400 omits g altogether.)",
+      "checkExpr": "20^2/10",
+      "translations": {
+        "hi": {
+          "stem": "एक गेंद 20 m/s से क्षैतिज से 45° पर प्रक्षिप्त होती है, g = 10 m/s² के साथ। समतल ज़मीन पर उसकी क्षैतिज परास क्या है?",
+          "choices": [
+            "80 m",
+            "400 m",
+            "40 m",
+            "20 m"
+          ],
+          "solution": "परास u² sin 2θ/g है, और 45° पर 90° की ज्या 1 है, अतः R = u²/g = 400/10 = 40 m. यह 20 m/s की किसी भी फेंक की सबसे बड़ी परास है। (80 भूल जाता है कि sin 2θ 1 से बड़ा नहीं हो सकता, और 400 g को छोड़ ही देता है।)"
+        },
+        "mr": {
+          "stem": "एक चेंडू 20 m/s ने आडव्याशी 45° वर फेकला जातो, g = 10 m/s² सह. सपाट जमिनीवर त्याचा आडवा पल्ला किती?",
+          "choices": [
+            "80 m",
+            "400 m",
+            "40 m",
+            "20 m"
+          ],
+          "solution": "पल्ला u² sin 2θ/g, आणि 45° वर 90° चा साइन 1, म्हणून R = u²/g = 400/10 = 40 m. हा 20 m/s च्या कोणत्याही फेकीचा सर्वांत मोठा पल्ला. (80 विसरते की sin 2θ हा 1 हून मोठा असू शकत नाही, आणि 400 हे g पूर्णपणे गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A ball is thrown horizontally at 15 m/s from a cliff 20 m high, with g = 10 m/s². How long does it take to reach the ground?",
+      "choices": [
+        "1.33 s",
+        "4 s",
+        "2 s",
+        "20 s"
+      ],
+      "answerIndex": 2,
+      "solution": "Vertically the ball starts from rest, so 20 = ½ × 10 × t² gives t² = 4 and t = 2 s. The 15 m/s is horizontal and cannot affect the fall — a ball simply dropped from the same cliff also takes 2 s. (1.33 is 20/15, mixing the two axes together, which is exactly what the independence principle forbids.)",
+      "checkExpr": "(2*20/10)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "एक गेंद 20 m ऊँची चट्टान से 15 m/s की क्षैतिज चाल से फेंकी जाती है, g = 10 m/s² के साथ। ज़मीन तक पहुँचने में उसे कितना समय लगता है?",
+          "choices": [
+            "1.33 s",
+            "4 s",
+            "2 s",
+            "20 s"
+          ],
+          "solution": "ऊर्ध्वाधर रूप से गेंद विराम से शुरू होती है, अतः 20 = ½ × 10 × t² से t² = 4 और t = 2 s. 15 m/s क्षैतिज है और पतन को प्रभावित नहीं कर सकता — उसी चट्टान से बस गिराई गई गेंद भी 2 s लेती है। (1.33 = 20/15 है, जो दोनों अक्षों को मिला देता है, ठीक वही जो स्वतंत्रता का सिद्धांत मना करता है।)"
+        },
+        "mr": {
+          "stem": "एक चेंडू 20 m उंच कड्यावरून 15 m/s च्या आडव्या चालीने फेकला जातो, g = 10 m/s² सह. जमिनीवर पोहोचायला त्याला किती वेळ लागतो?",
+          "choices": [
+            "1.33 s",
+            "4 s",
+            "2 s",
+            "20 s"
+          ],
+          "solution": "उभ्या दिशेने चेंडू स्थिरावस्थेतून सुरू होतो, म्हणून 20 = ½ × 10 × t² वरून t² = 4 आणि t = 2 s. 15 m/s आडवा आहे आणि पतनावर परिणाम करू शकत नाही — त्याच कड्यावरून नुसता टाकलेला चेंडूही 2 s घेतो. (1.33 = 20/15, जे दोन्ही अक्ष एकत्र मिसळते, नेमके तेच जे स्वतंत्रतेचे तत्त्व मनाई करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "That same ball leaves the 20 m cliff horizontally at 15 m/s and lands 2 s later. How far from the foot of the cliff does it land?",
+      "choices": [
+        "45 m",
+        "20 m",
+        "30 m",
+        "15 m"
+      ],
+      "answerIndex": 2,
+      "solution": "Horizontally nothing accelerates the ball, so it keeps 15 m/s throughout: x = 15 × 2 = 30 m. (45 uses ½at² on an axis with no acceleration at all, and 20 quotes the cliff height instead of a horizontal distance.)",
+      "checkExpr": "15*2",
+      "translations": {
+        "hi": {
+          "stem": "वही गेंद 20 m ऊँची चट्टान से 15 m/s की क्षैतिज चाल से निकलती है और 2 s बाद गिरती है। वह चट्टान के पाद से कितनी दूर गिरती है?",
+          "choices": [
+            "45 m",
+            "20 m",
+            "30 m",
+            "15 m"
+          ],
+          "solution": "क्षैतिज रूप से कुछ भी गेंद को त्वरित नहीं करता, अतः वह पूरे समय 15 m/s रखती है: x = 15 × 2 = 30 m. (45 उस अक्ष पर ½at² लगाता है जिस पर त्वरण है ही नहीं, और 20 क्षैतिज दूरी के बजाय चट्टान की ऊँचाई बता देता है।)"
+        },
+        "mr": {
+          "stem": "तोच चेंडू 20 m उंच कड्यावरून 15 m/s च्या आडव्या चालीने निघतो आणि 2 s नंतर पडतो. तो कड्याच्या पायथ्यापासून किती अंतरावर पडतो?",
+          "choices": [
+            "45 m",
+            "20 m",
+            "30 m",
+            "15 m"
+          ],
+          "solution": "आडव्या दिशेने चेंडूला काहीही त्वरित करत नाही, म्हणून तो पूर्ण काळ 15 m/s राखतो: x = 15 × 2 = 30 m. (45 हे त्वरणच नसलेल्या अक्षावर ½at² लावते, आणि 20 आडव्या अंतराऐवजी कड्याची उंची सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A stone tied to a string moves in a circle of radius 2 m at a steady speed of 4 m/s. What is its centripetal acceleration?",
+      "choices": [
+        "2",
+        "8",
+        "4",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "a = v²/r = 16/2 = 8 m/s², directed at the centre. The speed is constant and the acceleration is not zero, because the direction is changing every instant. (2 is v/r with the square forgotten, and 16 is v² with the radius forgotten.)",
+      "checkExpr": "4^2/2",
+      "translations": {
+        "hi": {
+          "stem": "डोरी से बँधा पत्थर 2 m त्रिज्या के वृत्त पर 4 m/s की स्थिर चाल से घूमता है। उसका अभिकेंद्र त्वरण क्या है?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "16"
+          ],
+          "solution": "a = v²/r = 16/2 = 8 m/s², केंद्र की ओर निर्दिष्ट। चाल अचर है और त्वरण शून्य नहीं, क्योंकि दिशा हर क्षण बदल रही है। (2 v/r है जिसमें वर्ग भूला गया, और 16 v² है जिसमें त्रिज्या भूली गई।)"
+        },
+        "mr": {
+          "stem": "दोरीला बांधलेला दगड 2 m त्रिज्येच्या वर्तुळावर 4 m/s च्या स्थिर चालीने फिरतो. त्याचे अभिकेंद्री त्वरण किती?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "16"
+          ],
+          "solution": "a = v²/r = 16/2 = 8 m/s², केंद्राकडे निर्देशित. चाल अचल आहे आणि त्वरण शून्य नाही, कारण दिशा प्रत्येक क्षणी बदलत आहे. (2 हे v/r ज्यात वर्ग विसरला, आणि 16 हे v² ज्यात त्रिज्या विसरली.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A boat that can row at 4 m/s heads straight across a river 60 m wide, which flows at 3 m/s. How far downstream does it land from the point directly opposite its start?",
+      "choices": [
+        "12 m",
+        "45 m",
+        "15 m",
+        "80 m"
+      ],
+      "answerIndex": 1,
+      "solution": "The two motions are independent. Across the river the boat does 4 m/s, so the crossing takes 60/4 = 15 s — the current does not delay it at all, because the current has no across-stream component. During those 15 s the current carries the boat 3 × 15 = 45 m downstream. (12 is 60 divided by the resultant speed of 5, which wrongly lets the current help with the crossing; 15 is the crossing time in seconds, not a distance.)",
+      "checkExpr": "3*60/4",
+      "translations": {
+        "hi": {
+          "stem": "4 m/s चला सकने वाली नाव 60 m चौड़ी नदी के आर-पार सीधे जाती है, जो 3 m/s से बहती है। वह आरंभ-बिंदु के ठीक सामने वाले बिंदु से कितनी दूर बहाव में जाकर लगती है?",
+          "choices": [
+            "12 m",
+            "45 m",
+            "15 m",
+            "80 m"
+          ],
+          "solution": "दोनों गतियाँ स्वतंत्र हैं। नदी के आर-पार नाव 4 m/s चलती है, अतः पार करने में 60/4 = 15 s लगते हैं — धारा उसे बिलकुल नहीं रोकती, क्योंकि धारा का आर-पार वाला कोई घटक है ही नहीं। उन 15 s में धारा नाव को 3 × 15 = 45 m बहाव में ले जाती है। (12 = 60 बटा परिणामी चाल 5 है, जो ग़लत ढंग से धारा को पार कराने में मदद करने देता है; 15 सेकंड में पार करने का समय है, दूरी नहीं।)"
+        },
+        "mr": {
+          "stem": "4 m/s ने वल्हवू शकणारी नाव 60 m रुंद नदी सरळ ओलांडते, जी 3 m/s ने वाहते. ती सुरुवातीच्या बिंदूच्या नेमक्या समोरच्या बिंदूपासून किती अंतरावर प्रवाहाच्या दिशेने लागते?",
+          "choices": [
+            "12 m",
+            "45 m",
+            "15 m",
+            "80 m"
+          ],
+          "solution": "दोन्ही गती स्वतंत्र आहेत. नदी ओलांडताना नाव 4 m/s ने जाते, म्हणून ओलांडायला 60/4 = 15 s लागतात — प्रवाह तिला मुळीच अडवत नाही, कारण प्रवाहाला आडवा घटकच नाही. त्या 15 s मध्ये प्रवाह नावेला 3 × 15 = 45 m खाली नेतो. (12 = 60 भागिले परिणामी चाल 5, जे चुकीच्या पद्धतीने प्रवाहाला ओलांडण्यात मदत करू देते; 15 हा सेकंदांतील ओलांडण्याचा काळ, अंतर नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two balls are thrown with the same speed, one at 30° and one at 60°. Taking sin²30° = 0.25 and sin²60° = 0.75, by what factor is the 60° ball's maximum height greater than the 30° ball's?",
+      "choices": [
+        "1",
+        "9",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Maximum height is u² sin²θ/(2g), so with the same u the ratio is sin²60°/sin²30° = 0.75/0.25 = 3. The 60° ball climbs three times as high. Note that the two balls nevertheless land at the same spot, because the range depends on sin 2θ and sin 120° = sin 60°, so the angles are complementary in range while being very unequal in height and in time of flight. (1 is the trap: equal ranges tempt a student into equal trajectories, but only the landing point matches.)",
+      "checkExpr": "0.75/0.25",
+      "translations": {
+        "hi": {
+          "stem": "समान चाल से दो गेंदें फेंकी जाती हैं, एक 30° पर और एक 60° पर। sin²30° = 0.25 और sin²60° = 0.75 लेते हुए, 60° वाली गेंद की अधिकतम ऊँचाई 30° वाली से कितने गुना अधिक है?",
+          "choices": [
+            "1",
+            "9",
+            "2",
+            "3"
+          ],
+          "solution": "अधिकतम ऊँचाई u² sin²θ/(2g) है, अतः समान u पर अनुपात sin²60°/sin²30° = 0.75/0.25 = 3. 60° वाली गेंद तीन गुना ऊँची चढ़ती है। ध्यान दो फिर भी दोनों गेंदें एक ही स्थान पर गिरती हैं, क्योंकि परास sin 2θ पर निर्भर है और sin 120° = sin 60°, अतः कोण परास में पूरक हैं जबकि ऊँचाई और उड्डयन-काल में बहुत असमान। (1 वही जाल है: बराबर परास छात्र को बराबर प्रक्षेप-पथ मान लेने को ललचाती है, पर मेल केवल गिरने के बिंदु का है।)"
+        },
+        "mr": {
+          "stem": "समान चालीने दोन चेंडू फेकले जातात, एक 30° वर आणि एक 60° वर. sin²30° = 0.25 आणि sin²60° = 0.75 घेतल्यास, 60° च्या चेंडूची कमाल उंची 30° च्या चेंडूहून किती पट अधिक?",
+          "choices": [
+            "1",
+            "9",
+            "2",
+            "3"
+          ],
+          "solution": "कमाल उंची u² sin²θ/(2g), म्हणून समान u वर गुणोत्तर sin²60°/sin²30° = 0.75/0.25 = 3. 60° चा चेंडू तिप्पट उंच चढतो. लक्षात घ्या तरीही दोन्ही चेंडू एकाच जागी पडतात, कारण पल्ला sin 2θ वर अवलंबून आणि sin 120° = sin 60°, म्हणून कोन पल्ल्यात पूरक तर उंची व उड्डाणकाळात फार असमान. (1 हाच सापळा: समान पल्ला विद्यार्थ्याला समान मार्ग मानायला मोहवतो, पण जुळते फक्त पडण्याचे ठिकाण.)"
+        }
+      }
+    }
+  ]
+}

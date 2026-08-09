@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 2 — Motion in a Straight Line",
+  "name": "Motion in a Straight Line",
+  "slug": "physics-11-motion-in-a-straight-line",
+  "summary": "One dimension is enough to break most of the intuitions: a velocity that means nothing until the interval is shrunk to a point, a slope and an area that carry the whole of kinematics between them, an acceleration that can point backwards while the body still moves forwards, equations that hold only while acceleration stays put, and a train that is at rest and doing eighty at the same time depending on who is asked.",
+  "position": 2,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "सरल रेखा में गति",
+      "summary": "अधिकांश अंतर्ज्ञान तोड़ने के लिए एक ही विमा काफ़ी है: वह वेग जिसका कोई अर्थ नहीं जब तक अंतराल को बिंदु तक न सिकोड़ा जाए, वह ढाल और वह क्षेत्रफल जो आपस में पूरी गतिकी ढोते हैं, वह त्वरण जो पीछे की ओर हो सकता है जबकि पिंड अब भी आगे बढ़ रहा हो, वे समीकरण जो केवल तब तक चलते हैं जब तक त्वरण टिका रहे, और वह रेलगाड़ी जो एक साथ विराम में है और अस्सी की चाल पर, यह इस पर निर्भर कि पूछा किससे गया।"
+    },
+    "mr": {
+      "name": "सरळ रेषेतील गती",
+      "summary": "बहुतांश अंतःप्रेरणा मोडायला एकच मिती पुरेशी आहे: तो वेग ज्याला अंतराल बिंदूपर्यंत आकुंचित केल्याशिवाय अर्थच नाही, तो उतार आणि ते क्षेत्रफळ जे आपापसात अख्खी गतिकी वाहतात, ते त्वरण जे मागच्या दिशेने असू शकते तरी पिंड अजून पुढे जात असतो, ती समीकरणे जी त्वरण जागेवर राहीपर्यंतच चालतात, आणि ती आगगाडी जी एकाच वेळी स्थिर आहे आणि ऐंशीच्या वेगात, हे कोणाला विचारले यावर अवलंबून."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The displacement over an interval is divided by that interval, and then the interval is shrunk towards zero until the ratio settles on a single value belonging to one instant rather than to a stretch of the journey. Which quantity is this?",
+      "choices": [
+        "Instantaneous velocity",
+        "Relative velocity along a line",
+        "Average velocity against average speed",
+        "Acceleration opposite to velocity"
+      ],
+      "answerIndex": 0,
+      "solution": "Instantaneous velocity is the limit of displacement divided by time interval as the interval tends to zero, which is why a speedometer can have a reading at an instant at which no distance has yet been covered. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी अंतराल में विस्थापन को उस अंतराल से भाग दिया जाता है, फिर अंतराल को शून्य की ओर सिकोड़ा जाता है जब तक अनुपात एक ऐसे मान पर न ठहर जाए जो यात्रा के किसी हिस्से का नहीं बल्कि एक क्षण का है। यह कौन-सी राशि है?",
+          "choices": [
+            "तात्क्षणिक वेग",
+            "एक रेखा पर सापेक्ष वेग",
+            "औसत वेग बनाम औसत चाल",
+            "वेग के विपरीत त्वरण"
+          ],
+          "solution": "तात्क्षणिक वेग वह सीमा है जिस पर विस्थापन बटा समय-अंतराल पहुँचता है जब अंतराल शून्य की ओर जाता है, इसीलिए चालमापी उस क्षण भी पाठ्यांक दे सकती है जिस क्षण अभी कोई दूरी तय ही नहीं हुई। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एखाद्या अंतरालातील विस्थापन त्या अंतरालाने भागले जाते, मग अंतराल शून्याकडे आकुंचित केला जातो जोवर गुणोत्तर अशा एका मूल्यावर स्थिरावत नाही जे प्रवासाच्या तुकड्याचे नव्हे तर एका क्षणाचे आहे. ही कोणती राशी?",
+          "choices": [
+            "तात्कालिक वेग",
+            "एका रेषेवरील सापेक्ष वेग",
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "वेगाच्या विरुद्ध त्वरण"
+          ],
+          "solution": "तात्कालिक वेग म्हणजे अंतराल शून्याकडे जाताना विस्थापन भागिले काळ-अंतराल याची सीमा, म्हणूनच वेगमापक अशा क्षणीही वाचन देऊ शकतो ज्या क्षणी अजून कोणतेही अंतर कापले गेलेले नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Average velocity against average speed is correct?",
+      "choices": [
+        "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved.",
+        "Instantaneous velocity is the limit of displacement divided by time interval as the interval tends to zero, which is why a speedometer can have a reading at an instant at which no distance has yet been covered.",
+        "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up.",
+        "The velocity of A relative to B along a line is the velocity of A minus the velocity of B, so two bodies with the same velocity are permanently at rest with respect to each other however fast the ground says they are going."
+      ],
+      "answerIndex": 0,
+      "solution": "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "औसत वेग बनाम औसत चाल के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो।",
+            "तात्क्षणिक वेग वह सीमा है जिस पर विस्थापन बटा समय-अंतराल पहुँचता है जब अंतराल शून्य की ओर जाता है, इसीलिए चालमापी उस क्षण भी पाठ्यांक दे सकती है जिस क्षण अभी कोई दूरी तय ही नहीं हुई।",
+            "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं।",
+            "एक रेखा पर B के सापेक्ष A का वेग, A का वेग घटा B का वेग है, अतः समान वेग वाले दो पिंड एक-दूसरे के सापेक्ष सदा विराम में हैं, चाहे ज़मीन कहे कि वे कितने ही तेज़ जा रहे हैं।"
+          ],
+          "solution": "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "सरासरी वेग विरुद्ध सरासरी चाल विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते.",
+            "तात्कालिक वेग म्हणजे अंतराल शून्याकडे जाताना विस्थापन भागिले काळ-अंतराल याची सीमा, म्हणूनच वेगमापक अशा क्षणीही वाचन देऊ शकतो ज्या क्षणी अजून कोणतेही अंतर कापले गेलेले नाही.",
+            "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे.",
+            "एका रेषेवर B च्या सापेक्ष A चा वेग म्हणजे A चा वेग वजा B चा वेग, म्हणून समान वेग असलेले दोन पिंड एकमेकांच्या सापेक्ष कायम स्थिर असतात, जमीन ते कितीही वेगात जात आहेत असे म्हणो."
+          ],
+          "solution": "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It works for any curve at all, not only for straight lines, which is what makes it more general than the kinematic equations that assume constant acceleration.\" — which of these is this about?",
+      "choices": [
+        "Instantaneous velocity",
+        "Average velocity against average speed",
+        "The condition on the kinematic equations",
+        "The area under a velocity–time graph"
+      ],
+      "answerIndex": 3,
+      "solution": "The area between a velocity–time graph and the time axis is the displacement over that interval, and area below the axis counts as negative because the body was moving backwards then. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह किसी भी वक्र पर चलता है, केवल सीधी रेखाओं पर नहीं, और यही उसे उन गतिकी-समीकरणों से अधिक व्यापक बनाता है जो अचर त्वरण मान लेते हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "तात्क्षणिक वेग",
+            "औसत वेग बनाम औसत चाल",
+            "गतिकी समीकरणों की शर्त",
+            "वेग-समय आलेख के नीचे का क्षेत्रफल"
+          ],
+          "solution": "वेग-समय आलेख और समय-अक्ष के बीच का क्षेत्रफल उस अंतराल का विस्थापन है, और अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है क्योंकि तब पिंड पीछे की ओर जा रहा था। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे कोणत्याही वक्रावर चालते, केवळ सरळ रेषांवर नाही, आणि हेच त्याला अचल त्वरण गृहीत धरणाऱ्या गतिकी-समीकरणांहून अधिक व्यापक बनवते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "तात्कालिक वेग",
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "गतिकी समीकरणांची अट",
+            "वेग-काळ आलेखाखालील क्षेत्रफळ"
+          ],
+          "solution": "वेग-काळ आलेख आणि काळ-अक्ष यांमधले क्षेत्रफळ म्हणजे त्या अंतरालातले विस्थापन, आणि अक्षाखालचे क्षेत्रफळ ऋण मोजले जाते कारण तेव्हा पिंड मागच्या दिशेने जात होता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A ball thrown upwards is still rising while the pull on it points down the whole way, so the two vectors have opposite signs and the body keeps advancing while slowing. Which situation is this?",
+      "choices": [
+        "Average velocity against average speed",
+        "Relative velocity along a line",
+        "Acceleration opposite to velocity",
+        "Instantaneous velocity"
+      ],
+      "answerIndex": 2,
+      "solution": "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊपर फेंकी गई गेंद अब भी चढ़ रही है जबकि उस पर खिंचाव पूरे रास्ते नीचे की ओर है, अतः दोनों सदिशों के चिह्न विपरीत हैं और पिंड धीमा होते हुए भी आगे बढ़ता रहता है। यह कौन-सी स्थिति है?",
+          "choices": [
+            "औसत वेग बनाम औसत चाल",
+            "एक रेखा पर सापेक्ष वेग",
+            "वेग के विपरीत त्वरण",
+            "तात्क्षणिक वेग"
+          ],
+          "solution": "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वर फेकलेला चेंडू अजून चढत आहे तर त्यावरील ओढ पूर्ण वाटभर खाली आहे, म्हणून दोन सदिशांची चिन्हे विरुद्ध आहेत आणि पिंड मंदावत असूनही पुढे जात राहतो. ही कोणती स्थिती?",
+          "choices": [
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "एका रेषेवरील सापेक्ष वेग",
+            "वेगाच्या विरुद्ध त्वरण",
+            "तात्कालिक वेग"
+          ],
+          "solution": "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The condition on the kinematic equations is correct?",
+      "choices": [
+        "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved.",
+        "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up.",
+        "The kinematic equations hold only while the acceleration stays constant in magnitude and direction, so they may be applied to a journey only piece by piece, one interval of unchanging acceleration at a time.",
+        "The area between a velocity–time graph and the time axis is the displacement over that interval, and area below the axis counts as negative because the body was moving backwards then."
+      ],
+      "answerIndex": 2,
+      "solution": "The kinematic equations hold only while the acceleration stays constant in magnitude and direction, so they may be applied to a journey only piece by piece, one interval of unchanging acceleration at a time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गतिकी समीकरणों की शर्त के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो।",
+            "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं।",
+            "गतिकी समीकरण केवल तब तक चलते हैं जब तक त्वरण परिमाण और दिशा में अचर रहे, अतः किसी यात्रा पर उन्हें टुकड़ा-टुकड़ा करके ही लगाया जा सकता है, एक बार में अचर त्वरण का एक अंतराल।",
+            "वेग-समय आलेख और समय-अक्ष के बीच का क्षेत्रफल उस अंतराल का विस्थापन है, और अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है क्योंकि तब पिंड पीछे की ओर जा रहा था।"
+          ],
+          "solution": "गतिकी समीकरण केवल तब तक चलते हैं जब तक त्वरण परिमाण और दिशा में अचर रहे, अतः किसी यात्रा पर उन्हें टुकड़ा-टुकड़ा करके ही लगाया जा सकता है, एक बार में अचर त्वरण का एक अंतराल। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "गतिकी समीकरणांची अट विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते.",
+            "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे.",
+            "गतिकी समीकरणे केवळ त्वरण परिमाण आणि दिशेत अचल राहीपर्यंतच चालतात, म्हणून एखाद्या प्रवासावर ती तुकड्या-तुकड्यानेच लावता येतात, एका वेळी अचल त्वरणाचा एक अंतराल.",
+            "वेग-काळ आलेख आणि काळ-अक्ष यांमधले क्षेत्रफळ म्हणजे त्या अंतरालातले विस्थापन, आणि अक्षाखालचे क्षेत्रफळ ऋण मोजले जाते कारण तेव्हा पिंड मागच्या दिशेने जात होता."
+          ],
+          "solution": "गतिकी समीकरणे केवळ त्वरण परिमाण आणि दिशेत अचल राहीपर्यंतच चालतात, म्हणून एखाद्या प्रवासावर ती तुकड्या-तुकड्यानेच लावता येतात, एका वेळी अचल त्वरणाचा एक अंतराल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"For bodies approaching head-on the subtraction turns into an addition of magnitudes, which is why two trains at 20 and 15 m/s close on each other at 35 m/s.\" — which of these is this about?",
+      "choices": [
+        "Average velocity against average speed",
+        "Instantaneous velocity",
+        "Relative velocity along a line",
+        "Acceleration opposite to velocity"
+      ],
+      "answerIndex": 2,
+      "solution": "The velocity of A relative to B along a line is the velocity of A minus the velocity of B, so two bodies with the same velocity are permanently at rest with respect to each other however fast the ground says they are going. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आमने-सामने आते पिंडों के लिए घटाव परिमाणों के जोड़ में बदल जाता है, इसीलिए 20 और 15 m/s की दो रेलगाड़ियाँ एक-दूसरे के पास 35 m/s से आती हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "औसत वेग बनाम औसत चाल",
+            "तात्क्षणिक वेग",
+            "एक रेखा पर सापेक्ष वेग",
+            "वेग के विपरीत त्वरण"
+          ],
+          "solution": "एक रेखा पर B के सापेक्ष A का वेग, A का वेग घटा B का वेग है, अतः समान वेग वाले दो पिंड एक-दूसरे के सापेक्ष सदा विराम में हैं, चाहे ज़मीन कहे कि वे कितने ही तेज़ जा रहे हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"समोरासमोर येणाऱ्या पिंडांसाठी वजाबाकी परिमाणांच्या बेरजेत बदलते, म्हणूनच 20 आणि 15 m/s च्या दोन आगगाड्या एकमेकींजवळ 35 m/s ने येतात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "तात्कालिक वेग",
+            "एका रेषेवरील सापेक्ष वेग",
+            "वेगाच्या विरुद्ध त्वरण"
+          ],
+          "solution": "एका रेषेवर B च्या सापेक्ष A चा वेग म्हणजे A चा वेग वजा B चा वेग, म्हणून समान वेग असलेले दोन पिंड एकमेकांच्या सापेक्ष कायम स्थिर असतात, जमीन ते कितीही वेगात जात आहेत असे म्हणो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The slope of the tangent, not of a chord\" goes correctly with which of these?",
+      "choices": [
+        "instantaneous velocity",
+        "the area under a velocity–time graph",
+        "relative velocity along a line",
+        "average velocity against average speed"
+      ],
+      "answerIndex": 0,
+      "solution": "Instantaneous velocity is the limit of displacement divided by time interval as the interval tends to zero, which is why a speedometer can have a reading at an instant at which no distance has yet been covered. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जीवा की नहीं, स्पर्शरेखा की ढाल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "तात्क्षणिक वेग",
+            "वेग-समय आलेख के नीचे का क्षेत्रफल",
+            "एक रेखा पर सापेक्ष वेग",
+            "औसत वेग बनाम औसत चाल"
+          ],
+          "solution": "तात्क्षणिक वेग वह सीमा है जिस पर विस्थापन बटा समय-अंतराल पहुँचता है जब अंतराल शून्य की ओर जाता है, इसीलिए चालमापी उस क्षण भी पाठ्यांक दे सकती है जिस क्षण अभी कोई दूरी तय ही नहीं हुई। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जीवेचा नव्हे, स्पर्शिकेचा उतार\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "तात्कालिक वेग",
+            "वेग-काळ आलेखाखालील क्षेत्रफळ",
+            "एका रेषेवरील सापेक्ष वेग",
+            "सरासरी वेग विरुद्ध सरासरी चाल"
+          ],
+          "solution": "तात्कालिक वेग म्हणजे अंतराल शून्याकडे जाताना विस्थापन भागिले काळ-अंतराल याची सीमा, म्हणूनच वेगमापक अशा क्षणीही वाचन देऊ शकतो ज्या क्षणी अजून कोणतेही अंतर कापले गेलेले नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Zero for a round trip, and not zero at all\" goes correctly with which of these?",
+      "choices": [
+        "acceleration opposite to velocity",
+        "instantaneous velocity",
+        "average velocity against average speed",
+        "the condition on the kinematic equations"
+      ],
+      "answerIndex": 2,
+      "solution": "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वापसी-यात्रा के लिए शून्य, और बिलकुल शून्य नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वेग के विपरीत त्वरण",
+            "तात्क्षणिक वेग",
+            "औसत वेग बनाम औसत चाल",
+            "गतिकी समीकरणों की शर्त"
+          ],
+          "solution": "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"परतीच्या प्रवासासाठी शून्य, आणि मुळीच शून्य नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वेगाच्या विरुद्ध त्वरण",
+            "तात्कालिक वेग",
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "गतिकी समीकरणांची अट"
+          ],
+          "solution": "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Works for any curve, not only straight lines\" goes correctly with which of these?",
+      "choices": [
+        "relative velocity along a line",
+        "the area under a velocity–time graph",
+        "the condition on the kinematic equations",
+        "instantaneous velocity"
+      ],
+      "answerIndex": 1,
+      "solution": "The area between a velocity–time graph and the time axis is the displacement over that interval, and area below the axis counts as negative because the body was moving backwards then. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"किसी भी वक्र पर चलता, केवल सीधी रेखाओं पर नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "एक रेखा पर सापेक्ष वेग",
+            "वेग-समय आलेख के नीचे का क्षेत्रफल",
+            "गतिकी समीकरणों की शर्त",
+            "तात्क्षणिक वेग"
+          ],
+          "solution": "वेग-समय आलेख और समय-अक्ष के बीच का क्षेत्रफल उस अंतराल का विस्थापन है, और अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है क्योंकि तब पिंड पीछे की ओर जा रहा था। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कोणत्याही वक्रावर चालते, केवळ सरळ रेषांवर नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "एका रेषेवरील सापेक्ष वेग",
+            "वेग-काळ आलेखाखालील क्षेत्रफळ",
+            "गतिकी समीकरणांची अट",
+            "तात्कालिक वेग"
+          ],
+          "solution": "वेग-काळ आलेख आणि काळ-अक्ष यांमधले क्षेत्रफळ म्हणजे त्या अंतरालातले विस्थापन, आणि अक्षाखालचे क्षेत्रफळ ऋण मोजले जाते कारण तेव्हा पिंड मागच्या दिशेने जात होता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Zero velocity with the acceleration still at full strength\" goes correctly with which of these?",
+      "choices": [
+        "relative velocity along a line",
+        "the condition on the kinematic equations",
+        "acceleration opposite to velocity",
+        "instantaneous velocity"
+      ],
+      "answerIndex": 2,
+      "solution": "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"शून्य वेग, और त्वरण अब भी पूरी ताक़त पर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "एक रेखा पर सापेक्ष वेग",
+            "गतिकी समीकरणों की शर्त",
+            "वेग के विपरीत त्वरण",
+            "तात्क्षणिक वेग"
+          ],
+          "solution": "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"शून्य वेग, आणि त्वरण अजूनही पूर्ण ताकदीवर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "एका रेषेवरील सापेक्ष वेग",
+            "गतिकी समीकरणांची अट",
+            "वेगाच्या विरुद्ध त्वरण",
+            "तात्कालिक वेग"
+          ],
+          "solution": "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Apply them only one unchanging interval at a time\" goes correctly with which of these?",
+      "choices": [
+        "average velocity against average speed",
+        "the area under a velocity–time graph",
+        "the condition on the kinematic equations",
+        "relative velocity along a line"
+      ],
+      "answerIndex": 2,
+      "solution": "The kinematic equations hold only while the acceleration stays constant in magnitude and direction, so they may be applied to a journey only piece by piece, one interval of unchanging acceleration at a time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उन्हें एक बार में अचर त्वरण के एक ही अंतराल पर लगाओ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "औसत वेग बनाम औसत चाल",
+            "वेग-समय आलेख के नीचे का क्षेत्रफल",
+            "गतिकी समीकरणों की शर्त",
+            "एक रेखा पर सापेक्ष वेग"
+          ],
+          "solution": "गतिकी समीकरण केवल तब तक चलते हैं जब तक त्वरण परिमाण और दिशा में अचर रहे, अतः किसी यात्रा पर उन्हें टुकड़ा-टुकड़ा करके ही लगाया जा सकता है, एक बार में अचर त्वरण का एक अंतराल। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती एका वेळी अचल त्वरणाच्या एकाच अंतरालावर लावा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सरासरी वेग विरुद्ध सरासरी चाल",
+            "वेग-काळ आलेखाखालील क्षेत्रफळ",
+            "गतिकी समीकरणांची अट",
+            "एका रेषेवरील सापेक्ष वेग"
+          ],
+          "solution": "गतिकी समीकरणे केवळ त्वरण परिमाण आणि दिशेत अचल राहीपर्यंतच चालतात, म्हणून एखाद्या प्रवासावर ती तुकड्या-तुकड्यानेच लावता येतात, एका वेळी अचल त्वरणाचा एक अंतराल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two figures for one walker, both correct\" goes correctly with which of these?",
+      "choices": [
+        "the area under a velocity–time graph",
+        "relative velocity along a line",
+        "acceleration opposite to velocity",
+        "average velocity against average speed"
+      ],
+      "answerIndex": 1,
+      "solution": "The velocity of A relative to B along a line is the velocity of A minus the velocity of B, so two bodies with the same velocity are permanently at rest with respect to each other however fast the ground says they are going. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक ही चलने वाले के दो आँकड़े, दोनों सही\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वेग-समय आलेख के नीचे का क्षेत्रफल",
+            "एक रेखा पर सापेक्ष वेग",
+            "वेग के विपरीत त्वरण",
+            "औसत वेग बनाम औसत चाल"
+          ],
+          "solution": "एक रेखा पर B के सापेक्ष A का वेग, A का वेग घटा B का वेग है, अतः समान वेग वाले दो पिंड एक-दूसरे के सापेक्ष सदा विराम में हैं, चाहे ज़मीन कहे कि वे कितने ही तेज़ जा रहे हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकाच चालणाऱ्याचे दोन आकडे, दोन्ही बरोबर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वेग-काळ आलेखाखालील क्षेत्रफळ",
+            "एका रेषेवरील सापेक्ष वेग",
+            "वेगाच्या विरुद्ध त्वरण",
+            "सरासरी वेग विरुद्ध सरासरी चाल"
+          ],
+          "solution": "एका रेषेवर B च्या सापेक्ष A चा वेग म्हणजे A चा वेग वजा B चा वेग, म्हणून समान वेग असलेले दोन पिंड एकमेकांच्या सापेक्ष कायम स्थिर असतात, जमीन ते कितीही वेगात जात आहेत असे म्हणो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Instantaneous velocity EXCEPT —",
+      "choices": [
+        "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up.",
+        "Graphically it is the slope of the tangent to the position–time curve at that point, so a curve with a horizontal tangent marks an instant of momentary rest.",
+        "Instantaneous velocity is the limit of displacement divided by time interval as the interval tends to zero, which is why a speedometer can have a reading at an instant at which no distance has yet been covered.",
+        "Its magnitude equals the instantaneous speed always, unlike the average pair, because over a vanishing interval a straight-line path cannot double back on itself."
+      ],
+      "answerIndex": 0,
+      "solution": "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up. That belongs to Acceleration opposite to velocity, not Instantaneous velocity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तात्क्षणिक वेग के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं।",
+            "आलेख में यह उस बिंदु पर स्थिति-समय वक्र की स्पर्शरेखा की ढाल है, अतः क्षैतिज स्पर्शरेखा वाला वक्र क्षणिक विराम का क्षण दर्शाता है।",
+            "तात्क्षणिक वेग वह सीमा है जिस पर विस्थापन बटा समय-अंतराल पहुँचता है जब अंतराल शून्य की ओर जाता है, इसीलिए चालमापी उस क्षण भी पाठ्यांक दे सकती है जिस क्षण अभी कोई दूरी तय ही नहीं हुई।",
+            "इसका परिमाण सदा तात्क्षणिक चाल के बराबर होता है, औसत वाली जोड़ी के विपरीत, क्योंकि लुप्त होते अंतराल में सरल-रेखीय पथ अपने ऊपर लौट नहीं सकता।"
+          ],
+          "solution": "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं। यह वेग के विपरीत त्वरण की बात है, तात्क्षणिक वेग की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "तात्कालिक वेग विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे.",
+            "आलेखात हा त्या बिंदूवरील स्थिती-काळ वक्राच्या स्पर्शिकेचा उतार, म्हणून आडवी स्पर्शिका असलेला वक्र क्षणिक विश्रांतीचा क्षण दाखवतो.",
+            "तात्कालिक वेग म्हणजे अंतराल शून्याकडे जाताना विस्थापन भागिले काळ-अंतराल याची सीमा, म्हणूनच वेगमापक अशा क्षणीही वाचन देऊ शकतो ज्या क्षणी अजून कोणतेही अंतर कापले गेलेले नाही.",
+            "त्याचे परिमाण नेहमीच तात्कालिक चालीइतके असते, सरासरीच्या जोडीच्या उलट, कारण लोप पावणाऱ्या अंतरालात सरळरेषीय मार्ग स्वतःवर परत येऊ शकत नाही."
+          ],
+          "solution": "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे. हे वेगाच्या विरुद्ध त्वरण चे आहे, तात्कालिक वेग चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Average velocity against average speed EXCEPT —",
+      "choices": [
+        "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved.",
+        "Average speed is not the mean of the speeds either: half a journey at 30 km/h and half at 60 km/h averages 40 km/h, not 45, because the slower half occupies more of the time.",
+        "The velocity of A relative to B along a line is the velocity of A minus the velocity of B, so two bodies with the same velocity are permanently at rest with respect to each other however fast the ground says they are going.",
+        "The two agree only when the motion never reverses direction, which is the special case that makes the distinction easy to forget in a straight-line problem."
+      ],
+      "answerIndex": 2,
+      "solution": "The velocity of A relative to B along a line is the velocity of A minus the velocity of B, so two bodies with the same velocity are permanently at rest with respect to each other however fast the ground says they are going. That belongs to Relative velocity along a line, not Average velocity against average speed — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "औसत वेग बनाम औसत चाल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो।",
+            "औसत चाल चालों का माध्य भी नहीं है: आधी यात्रा 30 km/h पर और आधी 60 km/h पर औसतन 40 km/h देती है, 45 नहीं, क्योंकि धीमा आधा हिस्सा अधिक समय घेरता है।",
+            "एक रेखा पर B के सापेक्ष A का वेग, A का वेग घटा B का वेग है, अतः समान वेग वाले दो पिंड एक-दूसरे के सापेक्ष सदा विराम में हैं, चाहे ज़मीन कहे कि वे कितने ही तेज़ जा रहे हैं।",
+            "दोनों केवल तब मिलती हैं जब गति दिशा कभी नहीं बदलती, और यही वह विशेष स्थिति है जो सरल-रेखीय प्रश्न में भेद को भुला देती है।"
+          ],
+          "solution": "एक रेखा पर B के सापेक्ष A का वेग, A का वेग घटा B का वेग है, अतः समान वेग वाले दो पिंड एक-दूसरे के सापेक्ष सदा विराम में हैं, चाहे ज़मीन कहे कि वे कितने ही तेज़ जा रहे हैं। यह एक रेखा पर सापेक्ष वेग की बात है, औसत वेग बनाम औसत चाल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सरासरी वेग विरुद्ध सरासरी चाल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते.",
+            "सरासरी चाल ही चालींचा मध्यही नाही: अर्धा प्रवास 30 km/h ने आणि अर्धा 60 km/h ने सरासरी 40 km/h देतो, 45 नव्हे, कारण सावकाश अर्धा भाग अधिक काळ व्यापतो.",
+            "एका रेषेवर B च्या सापेक्ष A चा वेग म्हणजे A चा वेग वजा B चा वेग, म्हणून समान वेग असलेले दोन पिंड एकमेकांच्या सापेक्ष कायम स्थिर असतात, जमीन ते कितीही वेगात जात आहेत असे म्हणो.",
+            "दोन्ही केवळ तेव्हाच जुळतात जेव्हा गती कधीही दिशा बदलत नाही, आणि हीच ती विशेष स्थिती जी सरळरेषीय प्रश्नात हा भेद विसरायला लावते."
+          ],
+          "solution": "एका रेषेवर B च्या सापेक्ष A चा वेग म्हणजे A चा वेग वजा B चा वेग, म्हणून समान वेग असलेले दोन पिंड एकमेकांच्या सापेक्ष कायम स्थिर असतात, जमीन ते कितीही वेगात जात आहेत असे म्हणो. हे एका रेषेवरील सापेक्ष वेग चे आहे, सरासरी वेग विरुद्ध सरासरी चाल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The area under a velocity–time graph EXCEPT —",
+      "choices": [
+        "It works for any curve at all, not only for straight lines, which is what makes it more general than the kinematic equations that assume constant acceleration.",
+        "The area between a velocity–time graph and the time axis is the displacement over that interval, and area below the axis counts as negative because the body was moving backwards then.",
+        "The matching statement one level up is that the area under an acceleration–time graph is the change in velocity, so each graph integrates into the one above it.",
+        "The kinematic equations hold only while the acceleration stays constant in magnitude and direction, so they may be applied to a journey only piece by piece, one interval of unchanging acceleration at a time."
+      ],
+      "answerIndex": 3,
+      "solution": "The kinematic equations hold only while the acceleration stays constant in magnitude and direction, so they may be applied to a journey only piece by piece, one interval of unchanging acceleration at a time. That belongs to The condition on the kinematic equations, not The area under a velocity–time graph — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग-समय आलेख के नीचे का क्षेत्रफल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह किसी भी वक्र पर चलता है, केवल सीधी रेखाओं पर नहीं, और यही उसे उन गतिकी-समीकरणों से अधिक व्यापक बनाता है जो अचर त्वरण मान लेते हैं।",
+            "वेग-समय आलेख और समय-अक्ष के बीच का क्षेत्रफल उस अंतराल का विस्थापन है, और अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है क्योंकि तब पिंड पीछे की ओर जा रहा था।",
+            "एक स्तर ऊपर का मेल यह कि त्वरण-समय आलेख के नीचे का क्षेत्रफल वेग में परिवर्तन है, अतः हर आलेख अपने ऊपर वाले में समाकलित होता है।",
+            "गतिकी समीकरण केवल तब तक चलते हैं जब तक त्वरण परिमाण और दिशा में अचर रहे, अतः किसी यात्रा पर उन्हें टुकड़ा-टुकड़ा करके ही लगाया जा सकता है, एक बार में अचर त्वरण का एक अंतराल।"
+          ],
+          "solution": "गतिकी समीकरण केवल तब तक चलते हैं जब तक त्वरण परिमाण और दिशा में अचर रहे, अतः किसी यात्रा पर उन्हें टुकड़ा-टुकड़ा करके ही लगाया जा सकता है, एक बार में अचर त्वरण का एक अंतराल। यह गतिकी समीकरणों की शर्त की बात है, वेग-समय आलेख के नीचे का क्षेत्रफल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वेग-काळ आलेखाखालील क्षेत्रफळ विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे कोणत्याही वक्रावर चालते, केवळ सरळ रेषांवर नाही, आणि हेच त्याला अचल त्वरण गृहीत धरणाऱ्या गतिकी-समीकरणांहून अधिक व्यापक बनवते.",
+            "वेग-काळ आलेख आणि काळ-अक्ष यांमधले क्षेत्रफळ म्हणजे त्या अंतरालातले विस्थापन, आणि अक्षाखालचे क्षेत्रफळ ऋण मोजले जाते कारण तेव्हा पिंड मागच्या दिशेने जात होता.",
+            "एक पातळी वरचे जुळणारे विधान असे की त्वरण-काळ आलेखाखालील क्षेत्रफळ म्हणजे वेगातील बदल, म्हणून प्रत्येक आलेख आपल्या वरच्यात समाकलित होतो.",
+            "गतिकी समीकरणे केवळ त्वरण परिमाण आणि दिशेत अचल राहीपर्यंतच चालतात, म्हणून एखाद्या प्रवासावर ती तुकड्या-तुकड्यानेच लावता येतात, एका वेळी अचल त्वरणाचा एक अंतराल."
+          ],
+          "solution": "गतिकी समीकरणे केवळ त्वरण परिमाण आणि दिशेत अचल राहीपर्यंतच चालतात, म्हणून एखाद्या प्रवासावर ती तुकड्या-तुकड्यानेच लावता येतात, एका वेळी अचल त्वरणाचा एक अंतराल. हे गतिकी समीकरणांची अट चे आहे, वेग-काळ आलेखाखालील क्षेत्रफळ चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Acceleration opposite to velocity EXCEPT —",
+      "choices": [
+        "Whether the body is speeding up or slowing down is decided by the sign of the product of velocity and acceleration, never by the sign of either alone.",
+        "When acceleration points opposite to velocity the body slows without reversing at once, so a negative acceleration does not mean a body moving backwards and a positive one does not mean it is speeding up.",
+        "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved.",
+        "At the very top of the throw the velocity is zero for an instant while the acceleration is still the full 9.8 m/s² downwards, which is the counter-example to the belief that zero velocity means zero acceleration."
+      ],
+      "answerIndex": 2,
+      "solution": "Average velocity is total displacement over total time and can be zero for a completed round trip, while average speed is total path length over total time and can never be zero unless the body never moved. That belongs to Average velocity against average speed, not Acceleration opposite to velocity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग के विपरीत त्वरण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पिंड तेज़ हो रहा है या धीमा, यह वेग और त्वरण के गुणनफल के चिह्न से तय होता है, कभी अकेले किसी एक के चिह्न से नहीं।",
+            "जब त्वरण वेग के विपरीत होता है तो पिंड तुरंत उलटे बिना धीमा होता है, अतः ऋणात्मक त्वरण का अर्थ पीछे जाता पिंड नहीं और धनात्मक का अर्थ तेज़ होना नहीं।",
+            "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो।",
+            "फेंक के ठीक शिखर पर वेग एक क्षण के लिए शून्य होता है जबकि त्वरण अब भी पूरा 9.8 m/s² नीचे की ओर है, और यही उस धारणा का प्रति-उदाहरण है कि शून्य वेग का अर्थ शून्य त्वरण है।"
+          ],
+          "solution": "औसत वेग कुल विस्थापन बटा कुल समय है और पूरी हुई वापसी-यात्रा के लिए शून्य हो सकता है, जबकि औसत चाल कुल पथ-लंबाई बटा कुल समय है और तब तक शून्य नहीं हो सकती जब तक पिंड हिला ही न हो। यह औसत वेग बनाम औसत चाल की बात है, वेग के विपरीत त्वरण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वेगाच्या विरुद्ध त्वरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पिंडाचा वेग वाढतोय की घटतोय हे वेग आणि त्वरण यांच्या गुणाकाराच्या चिन्हाने ठरते, कधीही एकट्या कोणाच्या चिन्हाने नव्हे.",
+            "जेव्हा त्वरण वेगाच्या विरुद्ध असते तेव्हा पिंड लगेच उलटा न होता मंदावतो, म्हणून ऋण त्वरण म्हणजे मागे जाणारा पिंड नव्हे आणि धन त्वरण म्हणजे वेग वाढणे नव्हे.",
+            "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते.",
+            "फेकीच्या अगदी शिखरावर वेग एका क्षणापुरता शून्य असतो तर त्वरण अजूनही पूर्ण 9.8 m/s² खाली असते, आणि हेच शून्य वेग म्हणजे शून्य त्वरण या समजुतीचे प्रतिउदाहरण."
+          ],
+          "solution": "सरासरी वेग म्हणजे एकूण विस्थापन भागिले एकूण काळ आणि पूर्ण झालेल्या परतीच्या प्रवासासाठी तो शून्य असू शकतो, तर सरासरी चाल म्हणजे एकूण मार्गलांबी भागिले एकूण काळ आणि पिंड हललाच नसेल तरच ती शून्य असू शकते. हे सरासरी वेग विरुद्ध सरासरी चाल चे आहे, वेगाच्या विरुद्ध त्वरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A body's velocity–time graph is a straight line from +20 m/s at t = 0 down to −20 m/s at t = 8 s, crossing the time axis at t = 4 s. A student computes the area as ½ × 8 × 20 = 80 and reports that the body travelled 80 m and ended 80 m from where it started. Correct the report.",
+      "choices": [
+        "Both figures are wrong, and for opposite reasons. The graph is two triangles: one above the axis from 0 to 4 s with area ½ × 4 × 20 = 40 m, one below from 4 to 8 s with area 40 m counted as −40 m. The displacement is 40 − 40 = 0 m: the body returned to its starting point. The distance travelled is 40 + 40 = 80 m, which is the number the student computed, but he computed it as a single triangle and then reported it as the displacement as well",
+        "The report is correct: the area under any velocity–time graph is both the distance and the displacement",
+        "The displacement is 80 m but the distance is 0 m, because the two halves of the journey cancel in the path length",
+        "Both are 40 m, since the negative half of the graph should simply be ignored as unphysical"
+      ],
+      "answerIndex": 0,
+      "solution": "Read the graph before computing anything. At t = 0 the velocity is +20 m/s, so the body is moving forwards. The line falls steadily, reaching zero at t = 4 s — the instant the body is momentarily at rest — and then goes negative, so from 4 s to 8 s the body is moving backwards, faster and faster, reaching 20 m/s in reverse at t = 8 s. Notice that the acceleration is the same throughout: the slope is (−20 − 20)/8 = −5 m/s² everywhere. Nothing special happens at t = 4 s except that the velocity passes through zero on its way from positive to negative. Now the areas. The first triangle, from 0 to 4 s, has base 4 s and height 20 m/s, so its area is ½ × 4 × 20 = 40. The body went 40 m forwards. The second triangle, from 4 to 8 s, has the same base and height, so its area is also 40 — but it lies below the time axis, and area below the axis counts negative because the velocity there is negative. The body went 40 m backwards. Displacement adds the signed areas: 40 + (−40) = 0. The body is exactly where it began. Distance adds the unsigned areas: 40 + 40 = 80. The odometer would read 80 m. The student's arithmetic produced 80 by treating the whole eight seconds as one triangle of height 20, which happens to give the right total distance for the wrong reason — the two triangles he did not draw have the same total area as the one he did. Then he attached that single number to both quantities, and one of the two attachments is wrong. This is the same distinction as average speed against average velocity, met here in its graphical form. Over the whole eight seconds the average velocity is 0/8 = 0 m/s and the average speed is 80/8 = 10 m/s. Neither is a mistake; they answer different questions. A useful habit follows: whenever a velocity–time graph crosses the axis, split the area at the crossing and decide what is being asked before adding anything. (The wrong answers conflate the two quantities, swap them, or discard negative velocity as though a body could not travel backwards.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी पिंड का वेग-समय आलेख t = 0 पर +20 m/s से t = 8 s पर −20 m/s तक सीधी रेखा है, जो t = 4 s पर समय-अक्ष काटती है। एक विद्यार्थी क्षेत्रफल ½ × 8 × 20 = 80 निकालता है और बताता है कि पिंड 80 m चला और आरंभ-स्थान से 80 m दूर रुका। रिपोर्ट सुधारो।",
+          "choices": [
+            "दोनों आँकड़े ग़लत हैं, और विपरीत कारणों से। आलेख दो त्रिभुज है: एक अक्ष के ऊपर 0 से 4 s तक जिसका क्षेत्रफल ½ × 4 × 20 = 40 m, एक नीचे 4 से 8 s तक जिसका क्षेत्रफल 40 m पर −40 m गिना जाता है। विस्थापन 40 − 40 = 0 m: पिंड अपने आरंभ-बिंदु पर लौट आया। तय की गई दूरी 40 + 40 = 80 m है, वही संख्या जो विद्यार्थी ने निकाली, पर उसने उसे एक ही त्रिभुज मानकर निकाला और फिर उसे विस्थापन भी बता दिया",
+            "रिपोर्ट सही है: किसी भी वेग-समय आलेख के नीचे का क्षेत्रफल दूरी भी है और विस्थापन भी",
+            "विस्थापन 80 m है पर दूरी 0 m, क्योंकि यात्रा के दोनों आधे हिस्से पथ-लंबाई में कट जाते हैं",
+            "दोनों 40 m हैं, क्योंकि आलेख का ऋणात्मक आधा हिस्सा अभौतिक मानकर छोड़ ही देना चाहिए"
+          ],
+          "solution": "कुछ गणने से पहले आलेख पढ़ो। t = 0 पर वेग +20 m/s है, अतः पिंड आगे बढ़ रहा है। रेखा लगातार गिरती है, t = 4 s पर शून्य पहुँचती है — वह क्षण जब पिंड क्षणिक विराम में है — और फिर ऋणात्मक हो जाती है, अतः 4 s से 8 s तक पिंड पीछे की ओर जा रहा है, और तेज़ होता हुआ t = 8 s पर उलटी दिशा में 20 m/s पर पहुँचता है। ध्यान दो त्वरण पूरे समय एक ही है: ढाल हर जगह (−20 − 20)/8 = −5 m/s² है। t = 4 s पर कुछ विशेष नहीं होता, सिवाय इसके कि वेग धनात्मक से ऋणात्मक जाते हुए शून्य से गुज़रता है। अब क्षेत्रफल। पहला त्रिभुज, 0 से 4 s, आधार 4 s और ऊँचाई 20 m/s, अतः क्षेत्रफल ½ × 4 × 20 = 40. पिंड 40 m आगे गया। दूसरा त्रिभुज, 4 से 8 s, वही आधार और ऊँचाई, अतः क्षेत्रफल भी 40 — पर वह समय-अक्ष के नीचे है, और अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है क्योंकि वहाँ वेग ऋणात्मक है। पिंड 40 m पीछे गया। विस्थापन चिह्न-सहित क्षेत्रफल जोड़ता है: 40 + (−40) = 0. पिंड ठीक वहीं है जहाँ से चला। दूरी बिना चिह्न के जोड़ती है: 40 + 40 = 80. दूरीमापी 80 m दिखाता। विद्यार्थी की गणना ने 80 इसलिए दिया कि उसने पूरे आठ सेकंड को 20 ऊँचाई का एक त्रिभुज मान लिया, जो संयोग से ग़लत कारण से सही कुल दूरी देता है — जो दो त्रिभुज उसने नहीं खींचे उनका कुल क्षेत्रफल उसी के बराबर है जो उसने खींचा। फिर उसने वह अकेली संख्या दोनों राशियों से जोड़ दी, और दोनों में से एक जोड़ ग़लत है। यह वही भेद है जो औसत चाल बनाम औसत वेग का है, यहाँ अपने आलेखीय रूप में मिला। पूरे आठ सेकंड में औसत वेग 0/8 = 0 m/s और औसत चाल 80/8 = 10 m/s है। कोई भी ग़लती नहीं; वे भिन्न प्रश्नों के उत्तर हैं। एक उपयोगी आदत निकलती है: जब भी वेग-समय आलेख अक्ष काटे, कटान पर क्षेत्रफल बाँटो और कुछ जोड़ने से पहले तय करो कि पूछा क्या गया है। (ग़लत उत्तर दोनों राशियों को एक कर देते, उन्हें आपस में बदल देते, या ऋणात्मक वेग को ऐसे फेंक देते मानो पिंड पीछे जा ही न सकता हो।)"
+        },
+        "mr": {
+          "stem": "एका पिंडाचा वेग-काळ आलेख t = 0 वर +20 m/s पासून t = 8 s वर −20 m/s पर्यंत सरळ रेषा आहे, जी t = 4 s वर काळ-अक्ष कापते. एक विद्यार्थी क्षेत्रफळ ½ × 8 × 20 = 80 काढतो आणि सांगतो की पिंड 80 m चालला आणि सुरुवातीच्या जागेपासून 80 m दूर थांबला. अहवाल दुरुस्त करा.",
+          "choices": [
+            "दोन्ही आकडे चुकीचे, आणि विरुद्ध कारणांनी. आलेख दोन त्रिकोण आहे: एक अक्षावर 0 ते 4 s, क्षेत्रफळ ½ × 4 × 20 = 40 m, एक खाली 4 ते 8 s, क्षेत्रफळ 40 m पण −40 m मोजले जाणारे. विस्थापन 40 − 40 = 0 m: पिंड आपल्या सुरुवातीच्या बिंदूवर परतला. कापलेले अंतर 40 + 40 = 80 m, तोच आकडा जो विद्यार्थ्याने काढला, पण त्याने तो एकच त्रिकोण मानून काढला आणि मग तो विस्थापनही म्हणून सांगितला",
+            "अहवाल बरोबर आहे: कोणत्याही वेग-काळ आलेखाखालील क्षेत्रफळ हे अंतरही आहे आणि विस्थापनही",
+            "विस्थापन 80 m आहे पण अंतर 0 m, कारण प्रवासाचे दोन्ही अर्धे भाग मार्गलांबीत कापले जातात",
+            "दोन्ही 40 m आहेत, कारण आलेखाचा ऋण अर्धा भाग अभौतिक मानून सोडूनच द्यायला हवा"
+          ],
+          "solution": "काही मोजण्याआधी आलेख वाचा. t = 0 वर वेग +20 m/s, म्हणून पिंड पुढे जात आहे. रेषा सतत खाली येते, t = 4 s वर शून्य गाठते — तो क्षण जेव्हा पिंड क्षणिक स्थिर आहे — आणि मग ऋण होते, म्हणून 4 s ते 8 s पिंड मागच्या दिशेने जात आहे, अधिकाधिक वेगाने, t = 8 s वर उलट दिशेत 20 m/s गाठत. लक्षात घ्या त्वरण संपूर्ण काळ एकच आहे: उतार सर्वत्र (−20 − 20)/8 = −5 m/s². t = 4 s वर विशेष काहीही घडत नाही, फक्त वेग धनकडून ऋणकडे जाताना शून्यातून जातो. आता क्षेत्रफळे. पहिला त्रिकोण, 0 ते 4 s, पाया 4 s आणि उंची 20 m/s, म्हणून क्षेत्रफळ ½ × 4 × 20 = 40. पिंड 40 m पुढे गेला. दुसरा त्रिकोण, 4 ते 8 s, तोच पाया आणि उंची, म्हणून क्षेत्रफळही 40 — पण तो काळ-अक्षाखाली आहे, आणि अक्षाखालचे क्षेत्रफळ ऋण मोजले जाते कारण तिथे वेग ऋण आहे. पिंड 40 m मागे गेला. विस्थापन चिन्हासह क्षेत्रफळे जोडते: 40 + (−40) = 0. पिंड नेमका तिथेच जिथून निघाला. अंतर चिन्हाशिवाय जोडते: 40 + 40 = 80. अंतरमापक 80 m दाखवेल. विद्यार्थ्याच्या गणिताने 80 दिले कारण त्याने अख्खे आठ सेकंद 20 उंचीचा एकच त्रिकोण मानले, जे योगायोगाने चुकीच्या कारणाने बरोबर एकूण अंतर देते — त्याने न काढलेल्या दोन त्रिकोणांचे एकूण क्षेत्रफळ त्याने काढलेल्याइतकेच आहे. मग त्याने तो एकच आकडा दोन्ही राशींना जोडला, आणि दोहोंपैकी एक जोडणी चुकीची. हाच तो भेद जो सरासरी चाल विरुद्ध सरासरी वेग यांचा, इथे त्याच्या आलेखीय रूपात भेटलेला. अख्ख्या आठ सेकंदांत सरासरी वेग 0/8 = 0 m/s आणि सरासरी चाल 80/8 = 10 m/s. दोन्हीही चूक नाहीत; ती वेगळ्या प्रश्नांची उत्तरे. एक उपयुक्त सवय निघते: जेव्हा वेग-काळ आलेख अक्ष कापतो, तेव्हा कापाच्या ठिकाणी क्षेत्रफळ विभागा आणि काही जोडण्याआधी काय विचारले आहे ते ठरवा. (चुकीची उत्तरे दोन्ही राशी एक करतात, त्यांची अदलाबदल करतात, वा ऋण वेग असा फेकून देतात जणू पिंड मागे जाऊच शकत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A passenger in a train moving at a steady 25 m/s drops a coin. It lands at their feet, exactly as it would on a platform. A second train accelerates, and there the same coin lands behind the passenger's feet. Explain what distinguishes the two carriages, and why the first result is more significant than it looks.",
+      "choices": [
+        "The first carriage moves with constant velocity, so coin, passenger and floor all share the same horizontal velocity throughout the fall and none of them changes it; the coin keeps that velocity and lands underfoot. The second carriage speeds up during the fall, so the floor gains velocity while the released coin does not, and the floor slides forward under it. The significance is that no experiment inside the first carriage can detect its motion at all — mechanics comes out identically in every frame moving uniformly, which is what makes such a frame inertial and what the first law is really asserting",
+        "The difference is speed: 25 m/s is slow enough for the coin to keep up, and a faster train would show the same backward landing as the accelerating one",
+        "The air inside the first carriage carries the coin along, and in the accelerating carriage the air is left behind",
+        "Gravity is weaker in a moving carriage, which is why the coin behaves differently in the two cases"
+      ],
+      "answerIndex": 0,
+      "solution": "Work in the platform frame first, where nothing is unfamiliar. Before release the coin is travelling forward at 25 m/s along with everything else in the carriage. Releasing it removes the hand's support but supplies no horizontal push, and gravity acts vertically, so the coin's horizontal velocity stays at 25 m/s for the whole of the fall. In the same time the passenger's feet also move forward at 25 m/s, because the train has not changed speed. The coin and the feet cover the same horizontal distance, so they meet. Nothing special is happening — the coin travels a parabola in this frame — but the two parabolic paths keep the same horizontal separation, which is zero. Now the accelerating carriage. Once the coin is released, nothing acts on it horizontally, so it keeps whatever forward velocity it had at the moment of release. The floor does not: it is being pushed by the engine and gains speed during the fall. In the platform frame the floor covers more ground than the coin does, so the coin lands behind the point it was dropped from — not because it was thrown backwards, but because everything else went forwards faster. This is the experiment's payoff. In the uniformly moving train, the coin behaves exactly as it does at rest on a platform; so does a swinging pendulum, so does a ball rolled along the aisle, so does every other mechanical experiment that can be done inside. There is no measurement, in principle, that reveals the carriage is moving. Speed is therefore not a property a body has by itself — it exists only relative to a chosen frame, which is precisely the content of the relative-velocity rule met earlier in the chapter. In the accelerating train the situation is entirely different. Here experiments DO reveal the motion: the coin lands off-centre, a hanging bag swings back, a ball on the floor rolls towards the rear with nothing touching it. A passenger who insists on using the carriage as their frame has to invent a force to explain these — the so-called pseudo-force — which is the standing sign that the frame is not inertial. So the two carriages divide all frames into two classes. Uniform motion changes nothing and is undetectable; acceleration changes everything and announces itself. That division is what Newton's first law is for: it is not the trivial claim that things keep moving, but the assertion that frames exist in which they do, and the accelerating carriage is not one of them. (The wrong answers make the effect depend on how fast rather than on whether the speed is changing, hand the job to air that would fail the same test, or alter gravity, which no measurement in either carriage supports.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्थिर 25 m/s से चलती रेलगाड़ी में एक यात्री सिक्का गिराता है। वह उनके पैरों पर गिरता है, ठीक वैसे जैसे प्लेटफ़ॉर्म पर गिरता। दूसरी रेलगाड़ी त्वरित होती है, और वहाँ वही सिक्का यात्री के पैरों के पीछे गिरता है। समझाओ दोनों डिब्बों में भेद क्या है, और पहला परिणाम दिखने से अधिक महत्वपूर्ण क्यों है।",
+          "choices": [
+            "पहला डिब्बा अचर वेग से चलता है, अतः सिक्का, यात्री और फ़र्श तीनों पूरे पतन में वही क्षैतिज वेग साझा करते हैं और कोई उसे बदलता नहीं; सिक्का वही वेग रखता है और पैरों के नीचे गिरता है। दूसरा डिब्बा पतन के दौरान तेज़ होता है, अतः फ़र्श वेग पाता है जबकि छोड़ा गया सिक्का नहीं, और फ़र्श उसके नीचे आगे सरक जाता है। महत्व यह कि पहले डिब्बे के भीतर कोई भी प्रयोग उसकी गति पकड़ ही नहीं सकता — यांत्रिकी हर एकसमान गति वाले निर्देश-तंत्र में एक-सी निकलती है, और यही ऐसे तंत्र को जड़त्वीय बनाता है और यही पहला नियम वस्तुतः कह रहा है",
+            "भेद चाल का है: 25 m/s इतना धीमा है कि सिक्का साथ बना रहे, और अधिक तेज़ रेलगाड़ी वही पिछड़कर गिरना दिखाती जो त्वरित वाली दिखाती है",
+            "पहले डिब्बे की हवा सिक्के को साथ ले चलती है, और त्वरित डिब्बे में हवा पीछे छूट जाती है",
+            "चलते डिब्बे में गुरुत्व दुर्बल होता है, इसीलिए दोनों स्थितियों में सिक्का भिन्न व्यवहार करता है"
+          ],
+          "solution": "पहले प्लेटफ़ॉर्म के तंत्र में काम करो, जहाँ कुछ भी अनजाना नहीं। छोड़ने से पहले सिक्का डिब्बे की हर चीज़ के साथ 25 m/s से आगे जा रहा है। छोड़ने से हाथ का सहारा हटता है पर कोई क्षैतिज धक्का नहीं मिलता, और गुरुत्व ऊर्ध्वाधर लगता है, अतः सिक्के का क्षैतिज वेग पूरे पतन में 25 m/s बना रहता है। उसी समय में यात्री के पैर भी 25 m/s से आगे बढ़ते हैं, क्योंकि रेलगाड़ी ने चाल बदली नहीं। सिक्का और पैर एक ही क्षैतिज दूरी तय करते हैं, अतः वे मिलते हैं। कुछ विशेष नहीं हो रहा — इस तंत्र में सिक्का परवलय पर चलता है — पर दोनों परवलयी पथ वही क्षैतिज अंतर बनाए रखते हैं, जो शून्य है। अब त्वरित डिब्बा। सिक्का छूटने के बाद उस पर क्षैतिज रूप से कुछ नहीं लगता, अतः वह छूटने के क्षण का अगला वेग बनाए रखता है। फ़र्श नहीं रखता: उसे इंजन धकेल रहा है और वह पतन के दौरान चाल पाता है। प्लेटफ़ॉर्म के तंत्र में फ़र्श सिक्के से अधिक ज़मीन तय करता है, अतः सिक्का उस बिंदु से पीछे गिरता है जहाँ से गिराया गया — इसलिए नहीं कि उसे पीछे फेंका गया, बल्कि इसलिए कि बाक़ी सब तेज़ी से आगे चला गया। यही इस प्रयोग की कमाई है। एकसमान चलती रेलगाड़ी में सिक्का ठीक वैसे व्यवहार करता है जैसे प्लेटफ़ॉर्म पर विराम में; वैसे ही झूलता लोलक, वैसे ही गलियारे में लुढ़काई गेंद, वैसे ही भीतर किया जा सकने वाला हर दूसरा यांत्रिक प्रयोग। सिद्धांततः ऐसा कोई माप नहीं जो बताए कि डिब्बा चल रहा है। अतः चाल पिंड का अपने आप में गुण नहीं — वह केवल चुने हुए तंत्र के सापेक्ष है, और यही अध्याय में पहले मिले सापेक्ष-वेग नियम की अंतर्वस्तु है। त्वरित रेलगाड़ी में स्थिति पूरी तरह भिन्न है। यहाँ प्रयोग गति प्रकट करते हैं: सिक्का हटकर गिरता है, टँगा थैला पीछे झूलता है, फ़र्श पर रखी गेंद बिना किसी के छुए पिछले सिरे की ओर लुढ़कती है। जो यात्री डिब्बे को ही अपना तंत्र मानने पर अड़ा है उसे इन्हें समझाने के लिए एक बल गढ़ना पड़ता है — तथाकथित छद्म बल — और यही स्थायी संकेत है कि तंत्र जड़त्वीय नहीं। अतः दोनों डिब्बे सभी तंत्रों को दो वर्गों में बाँट देते हैं। एकसमान गति कुछ नहीं बदलती और पकड़ी नहीं जा सकती; त्वरण सब बदल देता है और स्वयं की घोषणा कर देता है। यही विभाजन न्यूटन के पहले नियम का प्रयोजन है: वह यह मामूली दावा नहीं कि चीज़ें चलती रहती हैं, बल्कि यह प्रतिज्ञा कि ऐसे तंत्र हैं जिनमें वे चलती रहती हैं, और त्वरित डिब्बा उनमें से एक नहीं। (ग़लत उत्तर प्रभाव को इस पर टिकाते कि कितनी तेज़, न कि इस पर कि चाल बदल रही है या नहीं, काम हवा को सौंपते जो उसी जाँच में फ़ेल होती, या गुरुत्व बदल देते, जिसका किसी भी डिब्बे में कोई माप समर्थन नहीं करता।)"
+        },
+        "mr": {
+          "stem": "स्थिर 25 m/s ने जाणाऱ्या आगगाडीत एक प्रवासी नाणे टाकतो. ते त्यांच्या पायांवर पडते, अगदी फलाटावर पडले असते तसे. दुसरी आगगाडी त्वरित होते, आणि तिथे तेच नाणे प्रवाशाच्या पायांमागे पडते. समजावा दोन डब्यांत फरक काय, आणि पहिला निकाल दिसतो त्याहून अधिक महत्त्वाचा का.",
+          "choices": [
+            "पहिला डबा अचल वेगाने जातो, म्हणून नाणे, प्रवासी आणि जमीन तिघेही पूर्ण पतनभर तोच आडवा वेग वाटून घेतात आणि कोणीही तो बदलत नाही; नाणे तोच वेग राखते आणि पायांखाली पडते. दुसरा डबा पतनादरम्यान वेग घेतो, म्हणून जमीन वेग मिळवते तर सोडलेले नाणे नाही, आणि जमीन त्याच्याखालून पुढे सरकते. महत्त्व हे की पहिल्या डब्यातील कोणताही प्रयोग त्याची गती पकडूच शकत नाही — यामिकी प्रत्येक एकसमान गतीच्या चौकटीत सारखीच निघते, आणि हेच अशा चौकटीला जडत्वीय बनवते आणि हेच पहिला नियम प्रत्यक्षात सांगत आहे",
+            "फरक वेगाचा आहे: 25 m/s इतका सावकाश की नाणे सोबत राहते, आणि अधिक वेगवान आगगाडी तेच मागे पडणे दाखवेल जे त्वरित होणारी दाखवते",
+            "पहिल्या डब्यातील हवा नाणे सोबत नेते, आणि त्वरित होणाऱ्या डब्यात हवा मागे राहते",
+            "चालत्या डब्यात गुरुत्व दुर्बल असते, म्हणूनच दोन्ही स्थितींत नाणे वेगळे वागते"
+          ],
+          "solution": "आधी फलाटाच्या चौकटीत काम करा, जिथे काहीही अपरिचित नाही. सोडण्याआधी नाणे डब्यातल्या प्रत्येक गोष्टीसह 25 m/s ने पुढे जात आहे. सोडल्याने हाताचा आधार जातो पण कोणताही आडवा धक्का मिळत नाही, आणि गुरुत्व उभे लागते, म्हणून नाण्याचा आडवा वेग पूर्ण पतनभर 25 m/s राहतो. त्याच काळात प्रवाशाचे पायही 25 m/s ने पुढे जातात, कारण आगगाडीने वेग बदललेला नाही. नाणे आणि पाय तेवढेच आडवे अंतर कापतात, म्हणून ते भेटतात. विशेष काहीही घडत नाही — या चौकटीत नाणे परवलयावर चालते — पण दोन्ही परवलयी मार्ग तेच आडवे अंतर राखतात, जे शून्य आहे. आता त्वरित होणारा डबा. नाणे सुटल्यावर त्यावर आडवे काहीही लागत नाही, म्हणून ते सुटण्याच्या क्षणीचा पुढचा वेग राखते. जमीन राखत नाही: तिला इंजिन ढकलत आहे आणि ती पतनादरम्यान वेग मिळवते. फलाटाच्या चौकटीत जमीन नाण्याहून अधिक जमीन कापते, म्हणून नाणे ज्या बिंदूवरून टाकले त्याच्या मागे पडते — त्याला मागे फेकले म्हणून नव्हे, तर बाकी सर्व अधिक वेगाने पुढे गेले म्हणून. हीच या प्रयोगाची कमाई. एकसमान चालणाऱ्या आगगाडीत नाणे नेमके तसेच वागते जसे फलाटावर स्थिर असताना; तसाच झुलणारा लंबक, तसाच मार्गिकेत घरंगळलेला चेंडू, तसाच आत करता येणारा प्रत्येक दुसरा यांत्रिक प्रयोग. तत्त्वतः असे कोणतेही माप नाही जे डबा चालतो आहे हे सांगेल. म्हणून वेग हा पिंडाचा स्वतःचा गुणधर्म नाही — तो केवळ निवडलेल्या चौकटीच्या सापेक्ष असतो, आणि हेच प्रकरणात आधी भेटलेल्या सापेक्ष-वेग नियमाचे सार. त्वरित होणाऱ्या आगगाडीत परिस्थिती पूर्णपणे वेगळी. इथे प्रयोग गती उघड करतात: नाणे बाजूला पडते, टांगलेली पिशवी मागे झुलते, जमिनीवरचा चेंडू कोणी न स्पर्शता मागच्या टोकाकडे घरंगळतो. जो प्रवासी डब्यालाच आपली चौकट मानायचा हट्ट धरतो त्याला ही समजावायला एक बल घडवावे लागते — तथाकथित छद्मबल — आणि हेच कायमचे चिन्ह की चौकट जडत्वीय नाही. म्हणून दोन डबे सर्व चौकटींना दोन वर्गांत विभागतात. एकसमान गती काहीही बदलत नाही आणि पकडता येत नाही; त्वरण सर्व बदलते आणि स्वतःची घोषणा करते. हेच विभाजन न्यूटनच्या पहिल्या नियमाचे प्रयोजन: तो 'वस्तू चालत राहतात' हा किरकोळ दावा नव्हे, तर अशा चौकटी अस्तित्वात आहेत ज्यांत त्या तसे करतात हे प्रतिपादन, आणि त्वरित होणारा डबा त्यांपैकी एक नाही. (चुकीची उत्तरे परिणाम किती वेगावर टेकवतात, वेग बदलतो आहे का यावर नव्हे, काम हवेवर सोपवतात जी त्याच परीक्षेत नापास होईल, वा गुरुत्व बदलतात, ज्याला कोणत्याही डब्यातले कोणतेही माप आधार देत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A body starts from rest and accelerates uniformly at 2 m/s². What is its velocity after 6 s?",
+      "choices": [
+        "8 m/s",
+        "36 m/s",
+        "12 m/s",
+        "3 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "With u = 0, v = u + at = 0 + 2 × 6 = 12 m/s. (3 divides instead of multiplying, 8 adds the two numbers, and 36 is ½at² — a distance, not a velocity, so it fails on units before it fails on arithmetic.)",
+      "checkExpr": "2*6",
+      "translations": {
+        "hi": {
+          "stem": "एक पिंड विराम से चलकर 2 m/s² के एकसमान त्वरण से चलता है। 6 s बाद उसका वेग क्या है?",
+          "choices": [
+            "8 m/s",
+            "36 m/s",
+            "12 m/s",
+            "3 m/s"
+          ],
+          "solution": "u = 0 के साथ, v = u + at = 0 + 2 × 6 = 12 m/s. (3 गुणा के बजाय भाग देता है, 8 दोनों संख्याएँ जोड़ता है, और 36 ½at² है — जो दूरी है, वेग नहीं, अतः वह अंकगणित से पहले मात्रकों पर ही गिर जाता है।)"
+        },
+        "mr": {
+          "stem": "एक पिंड स्थिरावस्थेतून सुरू होऊन 2 m/s² च्या एकसमान त्वरणाने जातो. 6 s नंतर त्याचा वेग किती?",
+          "choices": [
+            "8 m/s",
+            "36 m/s",
+            "12 m/s",
+            "3 m/s"
+          ],
+          "solution": "u = 0 सह, v = u + at = 0 + 2 × 6 = 12 m/s. (3 गुणण्याऐवजी भागते, 8 दोन्ही संख्या जोडते, आणि 36 हे ½at² आहे — जे अंतर, वेग नव्हे, म्हणून ते अंकगणिताआधीच एककांवर कोसळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A stone is dropped from rest and falls for 3 s. Taking g as 10 m/s², how far does it fall?",
+      "choices": [
+        "90 m",
+        "30 m",
+        "45 m",
+        "15 m"
+      ],
+      "answerIndex": 2,
+      "solution": "With u = 0, s = ½gt² = ½ × 10 × 9 = 45 m. (30 is gt, which is the velocity at that instant rather than the distance; 90 forgets the factor of ½; 15 uses t rather than t².)",
+      "checkExpr": "0.5*10*3^2",
+      "translations": {
+        "hi": {
+          "stem": "एक पत्थर विराम से गिराया जाता है और 3 s तक गिरता है। g को 10 m/s² लेते हुए, वह कितनी दूर गिरता है?",
+          "choices": [
+            "90 m",
+            "30 m",
+            "45 m",
+            "15 m"
+          ],
+          "solution": "u = 0 के साथ, s = ½gt² = ½ × 10 × 9 = 45 m. (30 gt है, जो उस क्षण का वेग है, दूरी नहीं; 90 ½ का गुणक भूल जाता है; 15 t² के बजाय t लगाता है।)"
+        },
+        "mr": {
+          "stem": "एक दगड स्थिरावस्थेतून टाकला जातो आणि 3 s पडतो. g हा 10 m/s² घेतल्यास, तो किती अंतर पडतो?",
+          "choices": [
+            "90 m",
+            "30 m",
+            "45 m",
+            "15 m"
+          ],
+          "solution": "u = 0 सह, s = ½gt² = ½ × 10 × 9 = 45 m. (30 हे gt आहे, जो त्या क्षणीचा वेग, अंतर नव्हे; 90 ½ चा गुणक विसरते; 15 हे t² ऐवजी t वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A body moving at 5 m/s accelerates uniformly at 2 m/s². How far does it travel in the next 4 s?",
+      "choices": [
+        "52 m",
+        "20 m",
+        "16 m",
+        "36 m"
+      ],
+      "answerIndex": 3,
+      "solution": "s = ut + ½at² = 5 × 4 + ½ × 2 × 16 = 20 + 16 = 36 m. (20 keeps only the first term and forgets the acceleration; 16 keeps only the second and forgets the head start; 52 drops the ½ and gets 20 + 32.)",
+      "checkExpr": "5*4+0.5*2*4^2",
+      "translations": {
+        "hi": {
+          "stem": "5 m/s से चलता पिंड 2 m/s² के एकसमान त्वरण से बढ़ता है। अगले 4 s में वह कितनी दूरी तय करता है?",
+          "choices": [
+            "52 m",
+            "20 m",
+            "16 m",
+            "36 m"
+          ],
+          "solution": "s = ut + ½at² = 5 × 4 + ½ × 2 × 16 = 20 + 16 = 36 m. (20 केवल पहला पद रखता और त्वरण भूल जाता है; 16 केवल दूसरा रखता और आरंभिक वेग भूल जाता है; 52 ½ गिरा देता है और 20 + 32 पाता है।)"
+        },
+        "mr": {
+          "stem": "5 m/s ने जाणारा पिंड 2 m/s² च्या एकसमान त्वरणाने वाढतो. पुढच्या 4 s मध्ये तो किती अंतर कापतो?",
+          "choices": [
+            "52 m",
+            "20 m",
+            "16 m",
+            "36 m"
+          ],
+          "solution": "s = ut + ½at² = 5 × 4 + ½ × 2 × 16 = 20 + 16 = 36 m. (20 फक्त पहिले पद ठेवते आणि त्वरण विसरते; 16 फक्त दुसरे ठेवते आणि सुरुवातीचा वेग विसरते; 52 हे ½ गाळते आणि 20 + 32 मिळवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A car braking uniformly slows from 20 m/s to rest in 5 s. What is the magnitude of its acceleration?",
+      "choices": [
+        "4",
+        "0.25",
+        "15",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "From v = u + at with v = 0, the magnitude is u/t = 20/5 = 4 m/s². The sign is negative because the acceleration opposes the motion, but the magnitude asked for is 4. (0.25 inverts the division and 100 multiplies.)",
+      "checkExpr": "20/5",
+      "translations": {
+        "hi": {
+          "stem": "एकसमान ब्रेक लगाती कार 20 m/s से 5 s में विराम तक धीमी होती है। उसके त्वरण का परिमाण क्या है?",
+          "choices": [
+            "4",
+            "0.25",
+            "15",
+            "100"
+          ],
+          "solution": "v = u + at में v = 0 रखने पर परिमाण u/t = 20/5 = 4 m/s². चिह्न ऋणात्मक है क्योंकि त्वरण गति का विरोध करता है, पर पूछा गया परिमाण 4 है। (0.25 भाग उलट देता है और 100 गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एकसमान ब्रेक लावणारी कार 20 m/s पासून 5 s मध्ये स्थिरावस्थेपर्यंत मंदावते. तिच्या त्वरणाचे परिमाण किती?",
+          "choices": [
+            "4",
+            "0.25",
+            "15",
+            "100"
+          ],
+          "solution": "v = u + at मध्ये v = 0 ठेवल्यास परिमाण u/t = 20/5 = 4 m/s². चिन्ह ऋण आहे कारण त्वरण गतीला विरोध करते, पण विचारलेले परिमाण 4 आहे. (0.25 भागाकार उलटा करते आणि 100 गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A car travelling at 30 m/s brakes with a uniform retardation of 5 m/s². How far does it go before stopping?",
+      "choices": [
+        "180 m",
+        "6 m",
+        "90 m",
+        "45 m"
+      ],
+      "answerIndex": 2,
+      "solution": "Nothing is said about how long the braking lasts, so use the equation with no time in it: v² = u² + 2as with v = 0 gives s = u²/(2a) = 900/10 = 90 m. (45 forgets to square the speed's role by using u/(2a)·something, 180 leaves out the 2, and 6 is the stopping time in seconds, not a distance.)",
+      "checkExpr": "30^2/(2*5)",
+      "translations": {
+        "hi": {
+          "stem": "30 m/s से चलती कार 5 m/s² के एकसमान मंदन से ब्रेक लगाती है। रुकने से पहले वह कितनी दूर जाती है?",
+          "choices": [
+            "180 m",
+            "6 m",
+            "90 m",
+            "45 m"
+          ],
+          "solution": "यह नहीं बताया गया कि ब्रेक कितनी देर लगे, अतः वह समीकरण लो जिसमें समय है ही नहीं: v² = u² + 2as में v = 0 रखने पर s = u²/(2a) = 900/10 = 90 m. (45 आधा कर देता है, 180 2 का गुणक छोड़ देता है, और 6 सेकंड में रुकने का समय है, दूरी नहीं।)"
+        },
+        "mr": {
+          "stem": "30 m/s ने जाणारी कार 5 m/s² च्या एकसमान मंदनाने ब्रेक लावते. थांबण्यापूर्वी ती किती अंतर जाते?",
+          "choices": [
+            "180 m",
+            "6 m",
+            "90 m",
+            "45 m"
+          ],
+          "solution": "ब्रेक किती वेळ लागले हे सांगितलेले नाही, म्हणून ज्यात काळ नाही ते समीकरण घ्या: v² = u² + 2as मध्ये v = 0 ठेवल्यास s = u²/(2a) = 900/10 = 90 m. (45 निम्मे करते, 180 हे 2 चा गुणक सोडते, आणि 6 हा सेकंदांतील थांबण्याचा काळ, अंतर नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A velocity–time graph rises as a straight line from 0 to 20 m/s over 8 s. What distance does the body cover in those 8 s?",
+      "choices": [
+        "40 m",
+        "80 m",
+        "160 m",
+        "28 m"
+      ],
+      "answerIndex": 1,
+      "solution": "The region under the line is a triangle of base 8 s and height 20 m/s, so the distance is ½ × 20 × 8 = 80 m. Equivalently the average velocity is (0 + 20)/2 = 10 m/s over 8 s. (160 treats the region as a rectangle, using the final velocity as though it had been held all along.)",
+      "checkExpr": "0.5*20*8",
+      "translations": {
+        "hi": {
+          "stem": "एक वेग-समय आलेख 8 s में 0 से 20 m/s तक सीधी रेखा में चढ़ता है। उन 8 s में पिंड कितनी दूरी तय करता है?",
+          "choices": [
+            "40 m",
+            "80 m",
+            "160 m",
+            "28 m"
+          ],
+          "solution": "रेखा के नीचे का क्षेत्र 8 s आधार और 20 m/s ऊँचाई का त्रिभुज है, अतः दूरी ½ × 20 × 8 = 80 m. समतुल्य रूप से औसत वेग (0 + 20)/2 = 10 m/s, 8 s तक। (160 क्षेत्र को आयत मानता है, अंतिम वेग को ऐसे लेकर मानो वह पूरे समय बना रहा हो।)"
+        },
+        "mr": {
+          "stem": "एक वेग-काळ आलेख 8 s मध्ये 0 पासून 20 m/s पर्यंत सरळ रेषेत चढतो. त्या 8 s मध्ये पिंड किती अंतर कापतो?",
+          "choices": [
+            "40 m",
+            "80 m",
+            "160 m",
+            "28 m"
+          ],
+          "solution": "रेषेखालचे क्षेत्र 8 s पाया आणि 20 m/s उंचीचा त्रिकोण, म्हणून अंतर ½ × 20 × 8 = 80 m. समतुल्यपणे सरासरी वेग (0 + 20)/2 = 10 m/s, 8 s भर. (160 क्षेत्राला आयत मानते, अंतिम वेग असा घेऊन जणू तो पूर्ण काळ टिकला होता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two trains on parallel tracks move towards each other, one at 20 m/s and the other at 15 m/s. At what rate does the gap between them close?",
+      "choices": [
+        "300 m/s",
+        "5 m/s",
+        "35 m/s",
+        "17.5 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "Take one direction as positive: the velocities are +20 and −15, so the relative velocity is 20 − (−15) = 35 m/s. Head-on motion turns the subtraction into an addition of magnitudes. (5 is the answer for two trains going the same way, 17.5 averages them, and 300 multiplies.)",
+      "checkExpr": "20+15",
+      "translations": {
+        "hi": {
+          "stem": "समांतर पटरियों पर दो रेलगाड़ियाँ एक-दूसरे की ओर चलती हैं, एक 20 m/s पर और दूसरी 15 m/s पर। उनके बीच का अंतर किस दर से घटता है?",
+          "choices": [
+            "300 m/s",
+            "5 m/s",
+            "35 m/s",
+            "17.5 m/s"
+          ],
+          "solution": "एक दिशा को धनात्मक लो: वेग +20 और −15 हैं, अतः सापेक्ष वेग 20 − (−15) = 35 m/s. आमने-सामने की गति घटाव को परिमाणों के जोड़ में बदल देती है। (5 उस स्थिति का उत्तर है जब दोनों एक ही ओर जा रही हों, 17.5 उनका औसत है, और 300 गुणा है।)"
+        },
+        "mr": {
+          "stem": "समांतर रुळांवर दोन आगगाड्या एकमेकींकडे जातात, एक 20 m/s ने आणि दुसरी 15 m/s ने. त्यांच्यातले अंतर कोणत्या दराने घटते?",
+          "choices": [
+            "300 m/s",
+            "5 m/s",
+            "35 m/s",
+            "17.5 m/s"
+          ],
+          "solution": "एक दिशा धन घ्या: वेग +20 आणि −15, म्हणून सापेक्ष वेग 20 − (−15) = 35 m/s. समोरासमोरची गती वजाबाकीला परिमाणांच्या बेरजेत बदलते. (5 हे दोन्ही एकाच दिशेने जात असतानाचे उत्तर, 17.5 त्यांची सरासरी, आणि 300 गुणाकार.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A stone is thrown vertically upwards at 20 m/s. Taking g as 10 m/s², how long is it in the air before returning to the thrower's hand?",
+      "choices": [
+        "2 s",
+        "4 s",
+        "40 s",
+        "8 s"
+      ],
+      "answerIndex": 1,
+      "solution": "The rise takes u/g = 20/10 = 2 s, and the fall back to the same height takes the same 2 s because the motion is symmetric about the top, so the total is 2 × 20/10 = 4 s. (2 is only the upward half, and 40 divides the wrong way round.)",
+      "checkExpr": "2*20/10",
+      "translations": {
+        "hi": {
+          "stem": "एक पत्थर 20 m/s से ऊर्ध्वाधर ऊपर फेंका जाता है। g को 10 m/s² लेते हुए, फेंकने वाले के हाथ में लौटने तक वह कितनी देर हवा में रहता है?",
+          "choices": [
+            "2 s",
+            "4 s",
+            "40 s",
+            "8 s"
+          ],
+          "solution": "चढ़ाई u/g = 20/10 = 2 s लेती है, और उसी ऊँचाई तक वापसी भी 2 s, क्योंकि गति शिखर के परितः सममित है, अतः कुल 2 × 20/10 = 4 s. (2 केवल ऊपर जाने का आधा है, और 40 उलटा भाग देता है।)"
+        },
+        "mr": {
+          "stem": "एक दगड 20 m/s ने उभा वर फेकला जातो. g हा 10 m/s² घेतल्यास, फेकणाऱ्याच्या हातात परतेपर्यंत तो किती वेळ हवेत असतो?",
+          "choices": [
+            "2 s",
+            "4 s",
+            "40 s",
+            "8 s"
+          ],
+          "solution": "चढण u/g = 20/10 = 2 s घेते, आणि त्याच उंचीपर्यंतचे परतणेही 2 s, कारण गती शिखराभोवती सममित आहे, म्हणून एकूण 2 × 20/10 = 4 s. (2 फक्त वर जाण्याचा अर्धा भाग, आणि 40 उलटा भागाकार करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The same stone is thrown vertically upwards at 20 m/s with g taken as 10 m/s². What maximum height does it reach?",
+      "choices": [
+        "10 m",
+        "40 m",
+        "80 m",
+        "20 m"
+      ],
+      "answerIndex": 3,
+      "solution": "At the top the velocity is zero, so v² = u² − 2gh gives h = u²/(2g) = 400/20 = 20 m. Note that the velocity is zero there while the acceleration is still 10 m/s² downwards, which is why the stone does not stay. (40 omits the 2 and 10 halves once too often.)",
+      "checkExpr": "20^2/(2*10)",
+      "translations": {
+        "hi": {
+          "stem": "वही पत्थर 20 m/s से ऊर्ध्वाधर ऊपर फेंका जाता है, g को 10 m/s² लेते हुए। वह अधिकतम कितनी ऊँचाई तक पहुँचता है?",
+          "choices": [
+            "10 m",
+            "40 m",
+            "80 m",
+            "20 m"
+          ],
+          "solution": "शिखर पर वेग शून्य है, अतः v² = u² − 2gh से h = u²/(2g) = 400/20 = 20 m. ध्यान दो वहाँ वेग शून्य है जबकि त्वरण अब भी 10 m/s² नीचे की ओर है, इसीलिए पत्थर वहाँ ठहरता नहीं। (40 2 का गुणक छोड़ता है और 10 एक बार अधिक आधा करता है।)"
+        },
+        "mr": {
+          "stem": "तोच दगड 20 m/s ने उभा वर फेकला जातो, g हा 10 m/s² घेऊन. तो जास्तीत जास्त किती उंची गाठतो?",
+          "choices": [
+            "10 m",
+            "40 m",
+            "80 m",
+            "20 m"
+          ],
+          "solution": "शिखरावर वेग शून्य, म्हणून v² = u² − 2gh वरून h = u²/(2g) = 400/20 = 20 m. लक्षात घ्या तिथे वेग शून्य असतो तर त्वरण अजूनही 10 m/s² खाली असते, म्हणूनच दगड तिथे थांबत नाही. (40 हे 2 चा गुणक गाळते आणि 10 एकदा जास्त निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A bus covers the first half of a route at 30 km/h and the second half at 60 km/h. What is its average speed for the whole route?",
+      "choices": [
+        "45",
+        "20",
+        "90",
+        "40"
+      ],
+      "answerIndex": 3,
+      "solution": "Average speed is total distance over total time, never the mean of the speeds. Let each half be d. The first half takes d/30 and the second d/60, so the total time is d/30 + d/60 = 3d/60 = d/20, and the average is 2d ÷ (d/20) = 40 km/h. The compact form is the harmonic mean, 2 × 30 × 60/(30 + 60) = 40. The reason it falls below 45 is that the slow half occupies twice as much time as the fast half, so it carries twice the weight. (45 is exactly the trap — the arithmetic mean, which would be right only if equal TIMES were spent at each speed rather than equal distances.)",
+      "checkExpr": "2*30*60/(30+60)",
+      "translations": {
+        "hi": {
+          "stem": "एक बस मार्ग का पहला आधा हिस्सा 30 km/h पर और दूसरा आधा 60 km/h पर तय करती है। पूरे मार्ग पर उसकी औसत चाल क्या है?",
+          "choices": [
+            "45",
+            "20",
+            "90",
+            "40"
+          ],
+          "solution": "औसत चाल कुल दूरी बटा कुल समय है, चालों का माध्य कभी नहीं। हर आधा हिस्सा d मानो। पहला आधा d/30 लेता है और दूसरा d/60, अतः कुल समय d/30 + d/60 = 3d/60 = d/20, और औसत 2d ÷ (d/20) = 40 km/h. संक्षिप्त रूप हरात्मक माध्य है, 2 × 30 × 60/(30 + 60) = 40. यह 45 से नीचे इसलिए गिरता है कि धीमा आधा हिस्सा तेज़ आधे से दुगुना समय घेरता है, अतः उसका भार दुगुना है। (45 ठीक वही जाल है — समांतर माध्य, जो केवल तब सही होता जब हर चाल पर बराबर समय बिताया जाता, बराबर दूरी नहीं।)"
+        },
+        "mr": {
+          "stem": "एक बस मार्गाचा पहिला अर्धा भाग 30 km/h ने आणि दुसरा अर्धा 60 km/h ने कापते. संपूर्ण मार्गासाठी तिची सरासरी चाल किती?",
+          "choices": [
+            "45",
+            "20",
+            "90",
+            "40"
+          ],
+          "solution": "सरासरी चाल म्हणजे एकूण अंतर भागिले एकूण काळ, चालींचा मध्य कधीच नाही. प्रत्येक अर्धा भाग d माना. पहिला अर्धा d/30 घेतो आणि दुसरा d/60, म्हणून एकूण काळ d/30 + d/60 = 3d/60 = d/20, आणि सरासरी 2d ÷ (d/20) = 40 km/h. संक्षिप्त रूप म्हणजे हरात्मक मध्य, 2 × 30 × 60/(30 + 60) = 40. ते 45 च्या खाली येते कारण सावकाश अर्धा भाग वेगवान अर्ध्याहून दुप्पट काळ व्यापतो, म्हणून त्याचे वजन दुप्पट. (45 हाच नेमका सापळा — अंकगणितीय मध्य, जो प्रत्येक चालीवर समान काळ घालवला असता तरच बरोबर ठरला असता, समान अंतर नव्हे.)"
+        }
+      }
+    }
+  ]
+}

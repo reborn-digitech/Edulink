@@ -46,6 +46,8 @@ import { G10_ECONOMICS } from "./g10-economics";
 import { G9_GEOGRAPHY } from "./g9-geography";
 import { G9_CIVICS } from "./g9-civics";
 import { G9_ECONOMICS } from "./g9-economics";
+import { G11_PHYSICS, G11_PHYSICS_NUMERIC } from "./g11-physics";
+import { withNumeric } from "./numeric";
 
 const DIR = join(process.cwd(), "content", "quiz");
 
@@ -79,6 +81,9 @@ function main() {
     ...G9_GEOGRAPHY.map(generateChapter),
     ...G9_CIVICS.map(generateChapter),
     ...G9_ECONOMICS.map(generateChapter),
+    // Class 11 physics is the first family that is conceptual AND computed in
+    // the same chapter — the ladder from the engine, the problems bolted on.
+    ...G11_PHYSICS.map(generateChapter).map((t) => withNumeric(t, G11_PHYSICS_NUMERIC[t.slug] ?? [])),
     ...G3_MATHS,
     ...G4_MATHS,
     ...G5_MATHS,

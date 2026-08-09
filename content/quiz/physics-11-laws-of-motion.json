@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 4 — Laws of Motion",
+  "name": "Laws of Motion",
+  "slug": "physics-11-laws-of-motion",
+  "summary": "The three laws read very differently once you ask what each is doing: the first defines the frames in which the other two are true, the second is about momentum before it is about mass times acceleration, and the third describes two forces on two different bodies that therefore cannot cancel. Around them sit a diagram that is half the marks, a friction that only supplies what is asked of it until it cannot, and a road tilted so that no friction is needed at all.",
+  "position": 4,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "गति के नियम",
+      "summary": "तीनों नियम बहुत भिन्न पढ़े जाते हैं जब पूछो कि हर एक कर क्या रहा है: पहला उन तंत्रों को परिभाषित करता है जिनमें बाक़ी दो सच हैं, दूसरा द्रव्यमान गुणा त्वरण से पहले संवेग की बात है, और तीसरा दो भिन्न पिंडों पर लगे दो बलों का वर्णन करता है जो इसीलिए कट नहीं सकते। उनके इर्द-गिर्द बैठे हैं वह चित्र जो आधे अंक है, वह घर्षण जो उतना ही देता है जितना माँगा जाए जब तक दे न सके, और वह सड़क जो इतनी झुकी है कि घर्षण की ज़रूरत ही न रहे।"
+    },
+    "mr": {
+      "name": "गतीचे नियम",
+      "summary": "तिन्ही नियम फार वेगळे वाचले जातात जेव्हा विचारता की प्रत्येक करतो काय: पहिला त्या चौकटी व्याख्यायित करतो ज्यांत बाकी दोन खरे आहेत, दुसरा वस्तुमान गुणिले त्वरण होण्याआधी संवेगाची बाब आहे, आणि तिसरा दोन वेगळ्या पिंडांवरील दोन बलांचे वर्णन करतो जी म्हणूनच कापली जाऊ शकत नाहीत. त्यांच्याभोवती बसले आहेत ते चित्र जे अर्धे गुण आहे, ते घर्षण जे मागितले तेवढेच देते जोवर देऊ शकत नाही, आणि तो रस्ता जो इतका कललेला की घर्षणाची गरजच उरत नाही."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The first law is not really the claim that bodies keep moving; read carefully, it asserts that reference frames exist in which a body free of forces keeps its velocity, and it is only in those frames that F = ma may be written. Which idea is this?",
+      "choices": [
+        "The inertial frame",
+        "Impulse",
+        "The threshold of static friction",
+        "The third-law pair"
+      ],
+      "answerIndex": 0,
+      "solution": "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पहला नियम वस्तुतः यह दावा नहीं कि पिंड चलते रहते हैं; ध्यान से पढ़ो तो वह यह प्रतिज्ञा करता है कि ऐसे निर्देश-तंत्र हैं जिनमें बल-रहित पिंड अपना वेग बनाए रखता है, और केवल उन्हीं तंत्रों में F = ma लिखा जा सकता है। यह कौन-सा विचार है?",
+          "choices": [
+            "जड़त्वीय निर्देश-तंत्र",
+            "आवेग",
+            "स्थैतिक घर्षण की सीमा",
+            "तीसरे नियम की जोड़ी"
+          ],
+          "solution": "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पहिला नियम प्रत्यक्षात 'पिंड चालत राहतात' हा दावा नव्हे; नीट वाचल्यास तो असे प्रतिपादन करतो की अशा संदर्भचौकटी अस्तित्वात आहेत ज्यांत बलविरहित पिंड आपला वेग राखतो, आणि केवळ त्याच चौकटींत F = ma लिहिता येते. ही कोणती कल्पना?",
+          "choices": [
+            "जडत्वीय संदर्भचौकट",
+            "आवेग",
+            "स्थितिक घर्षणाची मर्यादा",
+            "तिसऱ्या नियमाची जोडी"
+          ],
+          "solution": "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The third-law pair is correct?",
+      "choices": [
+        "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other.",
+        "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies.",
+        "Impulse is force multiplied by the time for which it acts, and it equals the change in momentum, so the same momentum change can be produced by a large force for a short time or a small one for long.",
+        "Static friction is not a fixed quantity but adjusts itself to match the applied force exactly, up to a maximum of μₛN, beyond which the surfaces slip and kinetic friction takes over."
+      ],
+      "answerIndex": 0,
+      "solution": "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तीसरे नियम की जोड़ी के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते।",
+            "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है।",
+            "आवेग बल गुणा वह समय है जितनी देर वह लगता है, और वह संवेग-परिवर्तन के बराबर होता है, अतः वही संवेग-परिवर्तन थोड़े समय के बड़े बल से या लंबे समय के छोटे बल से पैदा किया जा सकता है।",
+            "स्थैतिक घर्षण कोई नियत राशि नहीं बल्कि स्वयं को लगाए गए बल के ठीक बराबर समायोजित करता है, अधिकतम μₛN तक, जिसके आगे सतहें फिसल जाती हैं और गतिज घर्षण सँभाल लेता है।"
+          ],
+          "solution": "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तिसऱ्या नियमाची जोडी विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत.",
+            "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे.",
+            "आवेग म्हणजे बल गुणिले ते जितका काळ लागते तो काळ, आणि तो संवेगातील बदलाइतका असतो, म्हणून तोच संवेगबदल थोड्या वेळासाठीच्या मोठ्या बलाने वा दीर्घ काळासाठीच्या लहान बलाने घडवता येतो.",
+            "स्थितिक घर्षण ही ठरलेली राशी नव्हे तर स्वतःला लावलेल्या बलाइतके नेमके जुळवते, कमाल μₛN पर्यंत, त्यापुढे पृष्ठभाग निसटतात आणि गतिज घर्षण ताबा घेते."
+          ],
+          "solution": "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the reason the second law is more honestly written as force equals the rate of change of momentum, a form that survives even when the mass itself is changing, as in a rocket.\" — which of these is this about?",
+      "choices": [
+        "The inertial frame",
+        "The third-law pair",
+        "The free-body diagram",
+        "Impulse"
+      ],
+      "answerIndex": 3,
+      "solution": "Impulse is force multiplied by the time for which it acts, and it equals the change in momentum, so the same momentum change can be produced by a large force for a short time or a small one for long. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसी से दूसरा नियम अधिक ईमानदारी से यों लिखा जाता है कि बल संवेग-परिवर्तन की दर है, और यह रूप तब भी टिकता है जब द्रव्यमान स्वयं बदल रहा हो, जैसे रॉकेट में।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "जड़त्वीय निर्देश-तंत्र",
+            "तीसरे नियम की जोड़ी",
+            "मुक्त-पिंड आरेख",
+            "आवेग"
+          ],
+          "solution": "आवेग बल गुणा वह समय है जितनी देर वह लगता है, और वह संवेग-परिवर्तन के बराबर होता है, अतः वही संवेग-परिवर्तन थोड़े समय के बड़े बल से या लंबे समय के छोटे बल से पैदा किया जा सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"म्हणूनच दुसरा नियम अधिक प्रामाणिकपणे 'बल म्हणजे संवेगबदलाचा दर' असा लिहिला जातो, आणि हे रूप वस्तुमान स्वतः बदलत असतानाही टिकते, जसे रॉकेटमध्ये.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "जडत्वीय संदर्भचौकट",
+            "तिसऱ्या नियमाची जोडी",
+            "मुक्त-पिंड आकृती",
+            "आवेग"
+          ],
+          "solution": "आवेग म्हणजे बल गुणिले ते जितका काळ लागते तो काळ, आणि तो संवेगातील बदलाइतका असतो, म्हणून तोच संवेगबदल थोड्या वेळासाठीच्या मोठ्या बलाने वा दीर्घ काळासाठीच्या लहान बलाने घडवता येतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One body is isolated on the page, every force acting ON it is drawn as an arrow with an agent that can be named, and everything that body does to its surroundings is deliberately left out. Which step is this?",
+      "choices": [
+        "The banked road",
+        "The free-body diagram",
+        "The inertial frame",
+        "The threshold of static friction"
+      ],
+      "answerIndex": 1,
+      "solution": "A free-body diagram shows one chosen body with only the forces exerted ON it, which is what allows the second law to be applied to that body alone without the rest of the system confusing the sum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पृष्ठ पर एक पिंड अलग कर लिया जाता है, उस पर लगने वाला हर बल ऐसे तीर के रूप में खींचा जाता है जिसका कर्ता नाम लिया जा सके, और वह पिंड अपने परिवेश पर जो करता है वह जानबूझकर छोड़ दिया जाता है। यह कौन-सा चरण है?",
+          "choices": [
+            "बंकित सड़क",
+            "मुक्त-पिंड आरेख",
+            "जड़त्वीय निर्देश-तंत्र",
+            "स्थैतिक घर्षण की सीमा"
+          ],
+          "solution": "मुक्त-पिंड आरेख एक चुने हुए पिंड को केवल उन बलों के साथ दिखाता है जो उस पर लगते हैं, और यही दूसरे नियम को अकेले उसी पिंड पर लगाने देता है, बिना बाक़ी तंत्र के योग को उलझाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पानावर एक पिंड वेगळा केला जातो, त्याच्यावर लागणारे प्रत्येक बल असा बाण म्हणून काढले जाते ज्याचा कर्ता नाव घेता येईल, आणि तो पिंड आपल्या परिसराला जे करतो ते मुद्दाम वगळले जाते. हा कोणता टप्पा?",
+          "choices": [
+            "कललेला रस्ता",
+            "मुक्त-पिंड आकृती",
+            "जडत्वीय संदर्भचौकट",
+            "स्थितिक घर्षणाची मर्यादा"
+          ],
+          "solution": "मुक्त-पिंड आकृती एक निवडलेला पिंड केवळ त्याच्यावर लागणाऱ्या बलांसह दाखवते, आणि हेच दुसरा नियम एकट्या त्याच पिंडावर लावू देते, बाकी प्रणालीने बेरीज गोंधळात न टाकता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The threshold of static friction is correct?",
+      "choices": [
+        "Banking tilts the road so that the horizontal component of the normal force supplies the centripetal force, making the turn possible at the design speed with no friction at all.",
+        "A free-body diagram shows one chosen body with only the forces exerted ON it, which is what allows the second law to be applied to that body alone without the rest of the system confusing the sum.",
+        "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other.",
+        "Static friction is not a fixed quantity but adjusts itself to match the applied force exactly, up to a maximum of μₛN, beyond which the surfaces slip and kinetic friction takes over."
+      ],
+      "answerIndex": 3,
+      "solution": "Static friction is not a fixed quantity but adjusts itself to match the applied force exactly, up to a maximum of μₛN, beyond which the surfaces slip and kinetic friction takes over. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्थैतिक घर्षण की सीमा के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बंकन सड़क को झुका देता है ताकि अभिलंब बल का क्षैतिज घटक अभिकेंद्र बल दे सके, और मोड़ नियत चाल पर बिना किसी घर्षण के संभव हो जाए।",
+            "मुक्त-पिंड आरेख एक चुने हुए पिंड को केवल उन बलों के साथ दिखाता है जो उस पर लगते हैं, और यही दूसरे नियम को अकेले उसी पिंड पर लगाने देता है, बिना बाक़ी तंत्र के योग को उलझाए।",
+            "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते।",
+            "स्थैतिक घर्षण कोई नियत राशि नहीं बल्कि स्वयं को लगाए गए बल के ठीक बराबर समायोजित करता है, अधिकतम μₛN तक, जिसके आगे सतहें फिसल जाती हैं और गतिज घर्षण सँभाल लेता है।"
+          ],
+          "solution": "स्थैतिक घर्षण कोई नियत राशि नहीं बल्कि स्वयं को लगाए गए बल के ठीक बराबर समायोजित करता है, अधिकतम μₛN तक, जिसके आगे सतहें फिसल जाती हैं और गतिज घर्षण सँभाल लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "स्थितिक घर्षणाची मर्यादा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "कलवणे रस्ता कलवते जेणेकरून लंब बलाचा आडवा घटक अभिकेंद्री बल पुरवेल, आणि वळण ठरलेल्या चालीवर कोणत्याही घर्षणाशिवाय शक्य होईल.",
+            "मुक्त-पिंड आकृती एक निवडलेला पिंड केवळ त्याच्यावर लागणाऱ्या बलांसह दाखवते, आणि हेच दुसरा नियम एकट्या त्याच पिंडावर लावू देते, बाकी प्रणालीने बेरीज गोंधळात न टाकता.",
+            "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत.",
+            "स्थितिक घर्षण ही ठरलेली राशी नव्हे तर स्वतःला लावलेल्या बलाइतके नेमके जुळवते, कमाल μₛN पर्यंत, त्यापुढे पृष्ठभाग निसटतात आणि गतिज घर्षण ताबा घेते."
+          ],
+          "solution": "स्थितिक घर्षण ही ठरलेली राशी नव्हे तर स्वतःला लावलेल्या बलाइतके नेमके जुळवते, कमाल μₛN पर्यंत, त्यापुढे पृष्ठभाग निसटतात आणि गतिज घर्षण ताबा घेते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The design speed follows from tan θ = v²/(rg), a relation that contains neither the mass of the vehicle nor any coefficient of friction, so the same bank serves a scooter and a lorry alike.\" — which of these is this about?",
+      "choices": [
+        "The banked road",
+        "The free-body diagram",
+        "The third-law pair",
+        "The threshold of static friction"
+      ],
+      "answerIndex": 0,
+      "solution": "Banking tilts the road so that the horizontal component of the normal force supplies the centripetal force, making the turn possible at the design speed with no friction at all. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"नियत चाल tan θ = v²/(rg) से निकलती है, ऐसा संबंध जिसमें न वाहन का द्रव्यमान है न घर्षण गुणांक, अतः वही बंकन स्कूटर और लॉरी दोनों के काम आता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "बंकित सड़क",
+            "मुक्त-पिंड आरेख",
+            "तीसरे नियम की जोड़ी",
+            "स्थैतिक घर्षण की सीमा"
+          ],
+          "solution": "बंकन सड़क को झुका देता है ताकि अभिलंब बल का क्षैतिज घटक अभिकेंद्र बल दे सके, और मोड़ नियत चाल पर बिना किसी घर्षण के संभव हो जाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ठरलेली चाल tan θ = v²/(rg) वरून निघते, असा संबंध ज्यात ना वाहनाचे वस्तुमान ना घर्षण गुणांक, म्हणून तेच कलवणे स्कूटर आणि ट्रक दोघांना उपयोगी पडते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "कललेला रस्ता",
+            "मुक्त-पिंड आकृती",
+            "तिसऱ्या नियमाची जोडी",
+            "स्थितिक घर्षणाची मर्यादा"
+          ],
+          "solution": "कलवणे रस्ता कलवते जेणेकरून लंब बलाचा आडवा घटक अभिकेंद्री बल पुरवेल, आणि वळण ठरलेल्या चालीवर कोणत्याही घर्षणाशिवाय शक्य होईल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The frame in which F = ma is allowed to be written\" goes correctly with which of these?",
+      "choices": [
+        "the banked road",
+        "the free-body diagram",
+        "the threshold of static friction",
+        "the inertial frame"
+      ],
+      "answerIndex": 3,
+      "solution": "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह तंत्र जिसमें F = ma लिखने की अनुमति है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बंकित सड़क",
+            "मुक्त-पिंड आरेख",
+            "स्थैतिक घर्षण की सीमा",
+            "जड़त्वीय निर्देश-तंत्र"
+          ],
+          "solution": "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती चौकट जिच्यात F = ma लिहिण्याची परवानगी आहे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कललेला रस्ता",
+            "मुक्त-पिंड आकृती",
+            "स्थितिक घर्षणाची मर्यादा",
+            "जडत्वीय संदर्भचौकट"
+          ],
+          "solution": "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Equal and opposite, yet never cancelling\" goes correctly with which of these?",
+      "choices": [
+        "impulse",
+        "the third-law pair",
+        "the banked road",
+        "the inertial frame"
+      ],
+      "answerIndex": 1,
+      "solution": "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बराबर और विपरीत, फिर भी कभी न कटने वाले\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेग",
+            "तीसरे नियम की जोड़ी",
+            "बंकित सड़क",
+            "जड़त्वीय निर्देश-तंत्र"
+          ],
+          "solution": "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"समान आणि विरुद्ध, तरीही कधीच न कापले जाणारे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "आवेग",
+            "तिसऱ्या नियमाची जोडी",
+            "कललेला रस्ता",
+            "जडत्वीय संदर्भचौकट"
+          ],
+          "solution": "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Draw the hands back and the catch stops hurting\" goes correctly with which of these?",
+      "choices": [
+        "the free-body diagram",
+        "the third-law pair",
+        "impulse",
+        "the inertial frame"
+      ],
+      "answerIndex": 2,
+      "solution": "Impulse is force multiplied by the time for which it acts, and it equals the change in momentum, so the same momentum change can be produced by a large force for a short time or a small one for long. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हाथ पीछे खींचो और कैच चुभना बंद कर देता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "मुक्त-पिंड आरेख",
+            "तीसरे नियम की जोड़ी",
+            "आवेग",
+            "जड़त्वीय निर्देश-तंत्र"
+          ],
+          "solution": "आवेग बल गुणा वह समय है जितनी देर वह लगता है, और वह संवेग-परिवर्तन के बराबर होता है, अतः वही संवेग-परिवर्तन थोड़े समय के बड़े बल से या लंबे समय के छोटे बल से पैदा किया जा सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हात मागे खेचा आणि झेल दुखणे थांबते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुक्त-पिंड आकृती",
+            "तिसऱ्या नियमाची जोडी",
+            "आवेग",
+            "जडत्वीय संदर्भचौकट"
+          ],
+          "solution": "आवेग म्हणजे बल गुणिले ते जितका काळ लागते तो काळ, आणि तो संवेगातील बदलाइतका असतो, म्हणून तोच संवेगबदल थोड्या वेळासाठीच्या मोठ्या बलाने वा दीर्घ काळासाठीच्या लहान बलाने घडवता येतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Only what acts on it, never what it acts on\" goes correctly with which of these?",
+      "choices": [
+        "the inertial frame",
+        "the free-body diagram",
+        "the banked road",
+        "the third-law pair"
+      ],
+      "answerIndex": 1,
+      "solution": "A free-body diagram shows one chosen body with only the forces exerted ON it, which is what allows the second law to be applied to that body alone without the rest of the system confusing the sum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"केवल जो उस पर लगता है, कभी वह नहीं जिस पर वह लगता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "जड़त्वीय निर्देश-तंत्र",
+            "मुक्त-पिंड आरेख",
+            "बंकित सड़क",
+            "तीसरे नियम की जोड़ी"
+          ],
+          "solution": "मुक्त-पिंड आरेख एक चुने हुए पिंड को केवल उन बलों के साथ दिखाता है जो उस पर लगते हैं, और यही दूसरे नियम को अकेले उसी पिंड पर लगाने देता है, बिना बाक़ी तंत्र के योग को उलझाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"केवळ जे त्याच्यावर लागते, ते कधीच नाही ज्यावर तो लागतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "जडत्वीय संदर्भचौकट",
+            "मुक्त-पिंड आकृती",
+            "कललेला रस्ता",
+            "तिसऱ्या नियमाची जोडी"
+          ],
+          "solution": "मुक्त-पिंड आकृती एक निवडलेला पिंड केवळ त्याच्यावर लागणाऱ्या बलांसह दाखवते, आणि हेच दुसरा नियम एकट्या त्याच पिंडावर लावू देते, बाकी प्रणालीने बेरीज गोंधळात न टाकता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Gives back exactly what it is given, until it cannot\" goes correctly with which of these?",
+      "choices": [
+        "the free-body diagram",
+        "the inertial frame",
+        "the threshold of static friction",
+        "impulse"
+      ],
+      "answerIndex": 2,
+      "solution": "Static friction is not a fixed quantity but adjusts itself to match the applied force exactly, up to a maximum of μₛN, beyond which the surfaces slip and kinetic friction takes over. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जितना दिया जाए उतना ही लौटाता, जब तक न लौटा सके\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "मुक्त-पिंड आरेख",
+            "जड़त्वीय निर्देश-तंत्र",
+            "स्थैतिक घर्षण की सीमा",
+            "आवेग"
+          ],
+          "solution": "स्थैतिक घर्षण कोई नियत राशि नहीं बल्कि स्वयं को लगाए गए बल के ठीक बराबर समायोजित करता है, अधिकतम μₛN तक, जिसके आगे सतहें फिसल जाती हैं और गतिज घर्षण सँभाल लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जितके दिले तितकेच परत देते, जोवर देऊ शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुक्त-पिंड आकृती",
+            "जडत्वीय संदर्भचौकट",
+            "स्थितिक घर्षणाची मर्यादा",
+            "आवेग"
+          ],
+          "solution": "स्थितिक घर्षण ही ठरलेली राशी नव्हे तर स्वतःला लावलेल्या बलाइतके नेमके जुळवते, कमाल μₛN पर्यंत, त्यापुढे पृष्ठभाग निसटतात आणि गतिज घर्षण ताबा घेते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A turn that would work on ice\" goes correctly with which of these?",
+      "choices": [
+        "the free-body diagram",
+        "the inertial frame",
+        "the third-law pair",
+        "the banked road"
+      ],
+      "answerIndex": 3,
+      "solution": "Banking tilts the road so that the horizontal component of the normal force supplies the centripetal force, making the turn possible at the design speed with no friction at all. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा मोड़ जो बर्फ़ पर भी चल जाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "मुक्त-पिंड आरेख",
+            "जड़त्वीय निर्देश-तंत्र",
+            "तीसरे नियम की जोड़ी",
+            "बंकित सड़क"
+          ],
+          "solution": "बंकन सड़क को झुका देता है ताकि अभिलंब बल का क्षैतिज घटक अभिकेंद्र बल दे सके, और मोड़ नियत चाल पर बिना किसी घर्षण के संभव हो जाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे वळण जे बर्फावरही चालेल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुक्त-पिंड आकृती",
+            "जडत्वीय संदर्भचौकट",
+            "तिसऱ्या नियमाची जोडी",
+            "कललेला रस्ता"
+          ],
+          "solution": "कलवणे रस्ता कलवते जेणेकरून लंब बलाचा आडवा घटक अभिकेंद्री बल पुरवेल, आणि वळण ठरलेल्या चालीवर कोणत्याही घर्षणाशिवाय शक्य होईल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The inertial frame EXCEPT —",
+      "choices": [
+        "Any frame moving at constant velocity relative to an inertial frame is itself inertial, which is why a smoothly moving train serves as well as the platform.",
+        "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies.",
+        "In a non-inertial frame the laws can still be used if a pseudo-force is added by hand, and the giveaway is that this force has no agent and no third-law partner.",
+        "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other."
+      ],
+      "answerIndex": 3,
+      "solution": "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other. That belongs to The third-law pair, not The inertial frame — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जड़त्वीय निर्देश-तंत्र के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "किसी जड़त्वीय तंत्र के सापेक्ष अचर वेग से चलता हर तंत्र स्वयं जड़त्वीय है, इसीलिए सुचारु रूप से चलती रेलगाड़ी प्लेटफ़ॉर्म जितनी ही काम आती है।",
+            "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है।",
+            "अ-जड़त्वीय तंत्र में नियम फिर भी काम में लिए जा सकते हैं यदि हाथ से एक छद्म बल जोड़ दिया जाए, और पहचान यह कि उस बल का न कोई कर्ता है न तीसरे नियम का कोई साथी।",
+            "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते।"
+          ],
+          "solution": "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते। यह तीसरे नियम की जोड़ी की बात है, जड़त्वीय निर्देश-तंत्र की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "जडत्वीय संदर्भचौकट विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "जडत्वीय चौकटीच्या सापेक्ष अचल वेगाने जाणारी प्रत्येक चौकट स्वतः जडत्वीय असते, म्हणूनच सुरळीत चालणारी आगगाडी फलाटाइतकीच उपयोगी पडते.",
+            "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे.",
+            "अजडत्वीय चौकटीत नियम तरीही वापरता येतात जर हाताने छद्मबल जोडले तर, आणि ओळख ही की त्या बलाला कर्ताही नाही आणि तिसऱ्या नियमाचा जोडीदारही नाही.",
+            "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत."
+          ],
+          "solution": "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत. हे तिसऱ्या नियमाची जोडी चे आहे, जडत्वीय संदर्भचौकट चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The third-law pair EXCEPT —",
+      "choices": [
+        "Equal forces on unequal masses give very unequal accelerations, which is why a bullet leaves at hundreds of metres per second while the rifle recoils gently into the shoulder.",
+        "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies.",
+        "The two forces of a third-law pair are equal in magnitude, opposite in direction, of the same kind, and act on two different bodies — which is exactly why they can never cancel each other.",
+        "The weight of a book and the table's normal force on it are NOT such a pair, although they are equal and opposite: both act on the book, and the partner of the weight is the book's pull on the Earth."
+      ],
+      "answerIndex": 1,
+      "solution": "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies. That belongs to The inertial frame, not The third-law pair — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तीसरे नियम की जोड़ी के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "असमान द्रव्यमानों पर बराबर बल बहुत असमान त्वरण देते हैं, इसीलिए गोली सैकड़ों मीटर प्रति सेकंड से निकलती है जबकि बंदूक कंधे में धीरे-से पीछे धकेलती है।",
+            "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है।",
+            "तीसरे नियम की जोड़ी के दोनों बल परिमाण में बराबर, दिशा में विपरीत, एक ही प्रकार के, और दो भिन्न पिंडों पर लगते हैं — और ठीक इसीलिए वे एक-दूसरे को कभी काट नहीं सकते।",
+            "किताब का भार और मेज़ द्वारा उस पर लगा अभिलंब बल ऐसी जोड़ी नहीं हैं, यद्यपि वे बराबर और विपरीत हैं: दोनों किताब पर लगते हैं, और भार का साथी किताब द्वारा पृथ्वी पर लगाया खिंचाव है।"
+          ],
+          "solution": "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है। यह जड़त्वीय निर्देश-तंत्र की बात है, तीसरे नियम की जोड़ी की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "तिसऱ्या नियमाची जोडी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "असमान वस्तुमानांवर समान बले फार असमान त्वरणे देतात, म्हणूनच गोळी शेकडो मीटर प्रति सेकंदाने निघते तर बंदूक खांद्यात हळूच मागे रेटते.",
+            "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे.",
+            "तिसऱ्या नियमाच्या जोडीची दोन्ही बले परिमाणात समान, दिशेत विरुद्ध, एकाच प्रकारची, आणि दोन वेगळ्या पिंडांवर लागतात — आणि नेमके म्हणूनच ती एकमेकांना कधीच कापू शकत नाहीत.",
+            "पुस्तकाचे वजन आणि टेबलाने त्यावर लावलेले लंब बल ही अशी जोडी नाही, जरी ती समान आणि विरुद्ध असली तरी: दोन्ही पुस्तकावर लागतात, आणि वजनाचा जोडीदार म्हणजे पुस्तकाने पृथ्वीवर लावलेली ओढ."
+          ],
+          "solution": "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे. हे जडत्वीय संदर्भचौकट चे आहे, तिसऱ्या नियमाची जोडी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Impulse EXCEPT —",
+      "choices": [
+        "It is the reason the second law is more honestly written as force equals the rate of change of momentum, a form that survives even when the mass itself is changing, as in a rocket.",
+        "Impulse is force multiplied by the time for which it acts, and it equals the change in momentum, so the same momentum change can be produced by a large force for a short time or a small one for long.",
+        "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies.",
+        "Graphically it is the area under a force–time curve, which is how a collision lasting a few milliseconds is handled without knowing the force at any single instant."
+      ],
+      "answerIndex": 2,
+      "solution": "An inertial frame is one in which a body with no net force on it moves with constant velocity, and the first law's real work is to assert that such frames exist and to mark out where the second law applies. That belongs to The inertial frame, not Impulse — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेग के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "इसी से दूसरा नियम अधिक ईमानदारी से यों लिखा जाता है कि बल संवेग-परिवर्तन की दर है, और यह रूप तब भी टिकता है जब द्रव्यमान स्वयं बदल रहा हो, जैसे रॉकेट में।",
+            "आवेग बल गुणा वह समय है जितनी देर वह लगता है, और वह संवेग-परिवर्तन के बराबर होता है, अतः वही संवेग-परिवर्तन थोड़े समय के बड़े बल से या लंबे समय के छोटे बल से पैदा किया जा सकता है।",
+            "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है।",
+            "आलेख में यह बल-समय वक्र के नीचे का क्षेत्रफल है, और इसी से कुछ मिलीसेकंड चलने वाली टक्कर बिना किसी एक क्षण का बल जाने सँभाली जाती है।"
+          ],
+          "solution": "जड़त्वीय तंत्र वह है जिसमें बिना परिणामी बल वाला पिंड अचर वेग से चलता है, और पहले नियम का असली काम यह प्रतिज्ञा करना है कि ऐसे तंत्र हैं और यह चिह्नित करना कि दूसरा नियम कहाँ लागू होता है। यह जड़त्वीय निर्देश-तंत्र की बात है, आवेग की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "आवेग विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "म्हणूनच दुसरा नियम अधिक प्रामाणिकपणे 'बल म्हणजे संवेगबदलाचा दर' असा लिहिला जातो, आणि हे रूप वस्तुमान स्वतः बदलत असतानाही टिकते, जसे रॉकेटमध्ये.",
+            "आवेग म्हणजे बल गुणिले ते जितका काळ लागते तो काळ, आणि तो संवेगातील बदलाइतका असतो, म्हणून तोच संवेगबदल थोड्या वेळासाठीच्या मोठ्या बलाने वा दीर्घ काळासाठीच्या लहान बलाने घडवता येतो.",
+            "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे.",
+            "आलेखात हे बल-काळ वक्राखालचे क्षेत्रफळ, आणि यामुळेच काही मिलिसेकंद चालणारी टक्कर कोणत्याही एका क्षणीचे बल न जाणता हाताळली जाते."
+          ],
+          "solution": "जडत्वीय चौकट म्हणजे जिच्यात परिणामी बल नसलेला पिंड अचल वेगाने जातो, आणि पहिल्या नियमाचे खरे काम म्हणजे अशा चौकटी आहेत हे प्रतिपादन करणे आणि दुसरा नियम कुठे लागू होतो हे आखणे. हे जडत्वीय संदर्भचौकट चे आहे, आवेग चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The free-body diagram EXCEPT —",
+      "choices": [
+        "Its commonest failure is drawing an outward force on a body in a circle, or drawing both members of a third-law pair on the same diagram, either of which cancels a force that should have been left standing.",
+        "Banking tilts the road so that the horizontal component of the normal force supplies the centripetal force, making the turn possible at the design speed with no friction at all.",
+        "For a system of connected bodies a separate diagram is drawn for each, and the connecting tension appears in both with opposite senses, which is what makes two equations solvable for two unknowns.",
+        "A free-body diagram shows one chosen body with only the forces exerted ON it, which is what allows the second law to be applied to that body alone without the rest of the system confusing the sum."
+      ],
+      "answerIndex": 1,
+      "solution": "Banking tilts the road so that the horizontal component of the normal force supplies the centripetal force, making the turn possible at the design speed with no friction at all. That belongs to The banked road, not The free-body diagram — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मुक्त-पिंड आरेख के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "इसकी सबसे आम विफलता है वृत्त में घूमते पिंड पर बाहरी बल खींच देना, या तीसरे नियम की जोड़ी के दोनों सदस्य एक ही आरेख पर खींच देना, और इनमें से कोई भी उस बल को काट देता है जिसे खड़ा रहना चाहिए था।",
+            "बंकन सड़क को झुका देता है ताकि अभिलंब बल का क्षैतिज घटक अभिकेंद्र बल दे सके, और मोड़ नियत चाल पर बिना किसी घर्षण के संभव हो जाए।",
+            "जुड़े हुए पिंडों के तंत्र के लिए हर एक का अलग आरेख खींचा जाता है, और जोड़ने वाला तनाव दोनों में विपरीत अर्थ के साथ आता है, और यही दो अज्ञातों के लिए दो समीकरण हल करने योग्य बनाता है।",
+            "मुक्त-पिंड आरेख एक चुने हुए पिंड को केवल उन बलों के साथ दिखाता है जो उस पर लगते हैं, और यही दूसरे नियम को अकेले उसी पिंड पर लगाने देता है, बिना बाक़ी तंत्र के योग को उलझाए।"
+          ],
+          "solution": "बंकन सड़क को झुका देता है ताकि अभिलंब बल का क्षैतिज घटक अभिकेंद्र बल दे सके, और मोड़ नियत चाल पर बिना किसी घर्षण के संभव हो जाए। यह बंकित सड़क की बात है, मुक्त-पिंड आरेख की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "मुक्त-पिंड आकृती विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तिचे सर्वांत नेहमीचे अपयश म्हणजे वर्तुळात फिरणाऱ्या पिंडावर बाहेरचे बल काढणे, वा तिसऱ्या नियमाच्या जोडीचे दोन्ही सदस्य एकाच आकृतीवर काढणे, आणि यांपैकी कोणतेही ते बल कापते जे उभे राहायला हवे होते.",
+            "कलवणे रस्ता कलवते जेणेकरून लंब बलाचा आडवा घटक अभिकेंद्री बल पुरवेल, आणि वळण ठरलेल्या चालीवर कोणत्याही घर्षणाशिवाय शक्य होईल.",
+            "जोडलेल्या पिंडांच्या प्रणालीसाठी प्रत्येकाची वेगळी आकृती काढली जाते, आणि जोडणारा ताण दोन्हींत विरुद्ध अर्थाने येतो, आणि हेच दोन अज्ञातांसाठी दोन समीकरणे सोडवण्याजोगी बनवते.",
+            "मुक्त-पिंड आकृती एक निवडलेला पिंड केवळ त्याच्यावर लागणाऱ्या बलांसह दाखवते, आणि हेच दुसरा नियम एकट्या त्याच पिंडावर लावू देते, बाकी प्रणालीने बेरीज गोंधळात न टाकता."
+          ],
+          "solution": "कलवणे रस्ता कलवते जेणेकरून लंब बलाचा आडवा घटक अभिकेंद्री बल पुरवेल, आणि वळण ठरलेल्या चालीवर कोणत्याही घर्षणाशिवाय शक्य होईल. हे कललेला रस्ता चे आहे, मुक्त-पिंड आकृती चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cart is harnessed to a horse. A student argues: the horse pulls the cart forward, the cart pulls the horse backward with an equal force by the third law, the two cancel, and therefore nothing can ever move. Find the flaw and say what actually accelerates the pair.",
+      "choices": [
+        "The flaw is adding two forces that act on different bodies. The horse's pull acts on the cart; the cart's pull acts on the horse. Forces cancel only when they act on the SAME body. Draw the cart alone: forward pull from the harness, backward friction from the ground — it accelerates if the pull wins. Draw the horse alone: backward pull from the harness, forward friction from the ground on its hooves — it accelerates if that friction wins. What moves the pair as a whole is the ground's forward friction on the horse's hooves, and the harness forces, being internal to the pair, cancel only in that combined description",
+        "The third law does not apply to living things, so the horse's pull is genuinely larger than the cart's",
+        "The horse's pull acts first and the cart's reaction only afterwards, so there is a moment of unbalanced force in which the motion begins",
+        "The two forces really do cancel, and the cart moves only because the ground pushes it directly forward"
+      ],
+      "answerIndex": 0,
+      "solution": "The argument's every sentence is true except the third, and that one is not even wrong about physics — it is wrong about bookkeeping. Newton's second law is applied to ONE body at a time, and only forces acting on that body may be added. The horse's forward pull acts on the cart. The cart's backward pull acts on the horse. They are on different ledgers, and putting them in the same sum is like cancelling your debt against your neighbour's and concluding nobody owes anything. Draw the two diagrams and the paradox has nowhere to live. Cart alone: the harness pulls it forward with force T, the ground drags backwards on its wheels with friction f_cart. Its acceleration is (T − f_cart)/m_cart, positive whenever the harness wins. Horse alone: the harness pulls it backward with the same T, and the ground pushes forward on its hooves with friction f_horse — the horse pushes back on the ground, and the ground pushes forward on the horse, which is itself a third-law pair. Its acceleration is (f_horse − T)/m_horse, positive whenever the hooves win. Both can be positive at once, and when they are, horse and cart accelerate together. Now take the two as a single system. The harness forces are now internal: T appears once forwards on the cart and once backwards on the horse, and in the sum for the whole system they cancel — correctly this time, because now they ARE on the same body, the combined one. What survives is the ground's friction on the hooves minus the ground's friction on the wheels. That difference is the entire net external force on horse-and-cart, and if it is positive the pair accelerates. The horse's real work is to push backwards on the ground hard enough that the reaction beats the cart's rolling resistance. This is why a horse on ice can pull nothing at all, and why the same horse on gravel can start a heavy load: the harness tension is not what has changed, the available ground friction is. It also explains the rocket, which has no ground to push against and therefore throws mass backwards instead — the reaction to expelling exhaust is the only forward force it has. Two smaller morals are worth keeping. The third law never says the two accelerations are equal, only the two forces; a rifle and a bullet feel the same force and receive utterly different accelerations. And the pairing is instantaneous, not sequential: there is no interval, however brief, in which one member acts and the other has not yet replied. (The wrong answers exempt animals from mechanics, insert a delay that does not exist, or credit the ground with pushing the cart forward when the ground only ever retards the wheels.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गाड़ी घोड़े से जुती है। एक विद्यार्थी तर्क देता है: घोड़ा गाड़ी को आगे खींचता है, गाड़ी तीसरे नियम से घोड़े को बराबर बल से पीछे खींचती है, दोनों कट जाते हैं, अतः कुछ कभी चल ही नहीं सकता। दोष खोजो और बताओ कि जोड़ी को वस्तुतः त्वरित क्या करता है।",
+          "choices": [
+            "दोष यह कि भिन्न पिंडों पर लगते दो बल जोड़ दिए गए। घोड़े का खिंचाव गाड़ी पर लगता है; गाड़ी का खिंचाव घोड़े पर। बल तभी कटते हैं जब वे एक ही पिंड पर लगें। अकेली गाड़ी खींचो: जुए से आगे का खिंचाव, ज़मीन से पीछे का घर्षण — खिंचाव जीते तो वह त्वरित होती है। अकेला घोड़ा खींचो: जुए से पीछे का खिंचाव, ज़मीन से खुरों पर आगे का घर्षण — वह घर्षण जीते तो वह त्वरित होता है। पूरी जोड़ी को चलाता है घोड़े के खुरों पर ज़मीन का आगे का घर्षण, और जुए के बल, जोड़ी के भीतरी होने से, केवल उसी संयुक्त वर्णन में कटते हैं",
+            "तीसरा नियम जीवित प्राणियों पर लागू नहीं होता, अतः घोड़े का खिंचाव गाड़ी के खिंचाव से सचमुच बड़ा है",
+            "घोड़े का खिंचाव पहले लगता है और गाड़ी की प्रतिक्रिया बाद में, अतः असंतुलित बल का एक क्षण आता है जिसमें गति शुरू होती है",
+            "दोनों बल सचमुच कट जाते हैं, और गाड़ी केवल इसलिए चलती है कि ज़मीन उसे सीधे आगे धकेलती है"
+          ],
+          "solution": "तर्क का हर वाक्य सही है सिवाय तीसरे के, और वह भौतिकी के बारे में ग़लत भी नहीं — वह हिसाब-किताब के बारे में ग़लत है। न्यूटन का दूसरा नियम एक बार में एक पिंड पर लगाया जाता है, और केवल उसी पिंड पर लगते बल जोड़े जा सकते हैं। घोड़े का आगे का खिंचाव गाड़ी पर लगता है। गाड़ी का पीछे का खिंचाव घोड़े पर। वे भिन्न बहीखातों पर हैं, और उन्हें एक ही योग में डालना ऐसा है जैसे अपना क़र्ज़ पड़ोसी के क़र्ज़ से काटकर निष्कर्ष निकालना कि किसी पर कुछ बक़ाया नहीं। दोनों आरेख खींचो और विरोधाभास के रहने को जगह नहीं बचती। अकेली गाड़ी: जुआ उसे T बल से आगे खींचता है, ज़मीन उसके पहियों पर f_गाड़ी घर्षण से पीछे घसीटती है। उसका त्वरण (T − f_गाड़ी)/m_गाड़ी है, जब भी जुआ जीते तब धनात्मक। अकेला घोड़ा: जुआ उसे उसी T से पीछे खींचता है, और ज़मीन उसके खुरों पर f_घोड़ा घर्षण से आगे धकेलती है — घोड़ा ज़मीन पर पीछे धकेलता है, ज़मीन घोड़े पर आगे, और यह स्वयं तीसरे नियम की जोड़ी है। उसका त्वरण (f_घोड़ा − T)/m_घोड़ा है, जब भी खुर जीतें तब धनात्मक। दोनों एक साथ धनात्मक हो सकते हैं, और जब होते हैं, घोड़ा और गाड़ी साथ त्वरित होते हैं। अब दोनों को एक तंत्र मानो। जुए के बल अब भीतरी हैं: T एक बार गाड़ी पर आगे और एक बार घोड़े पर पीछे आता है, और पूरे तंत्र के योग में वे कट जाते हैं — इस बार ठीक ही, क्योंकि अब वे एक ही पिंड पर हैं, संयुक्त पिंड पर। जो बचता है वह है खुरों पर ज़मीन का घर्षण घटा पहियों पर ज़मीन का घर्षण। यही अंतर घोड़ा-और-गाड़ी पर पूरा परिणामी बाह्य बल है, और वह धनात्मक हो तो जोड़ी त्वरित होती है। घोड़े का असली काम ज़मीन पर इतना ज़ोर से पीछे धकेलना है कि प्रतिक्रिया गाड़ी के लोटन प्रतिरोध को हरा दे। इसीलिए बर्फ़ पर घोड़ा कुछ भी नहीं खींच सकता, और वही घोड़ा बजरी पर भारी बोझ चला लेता है: जुए का तनाव नहीं बदला, उपलब्ध ज़मीनी घर्षण बदला। इसी से रॉकेट भी समझ आता है, जिसके पास धकेलने को ज़मीन नहीं और इसलिए वह द्रव्यमान पीछे फेंकता है — निकास फेंकने की प्रतिक्रिया ही उसका एकमात्र अग्रगामी बल है। दो छोटे सबक़ भी रखने योग्य हैं। तीसरा नियम यह कभी नहीं कहता कि दोनों त्वरण बराबर हैं, केवल दोनों बल; बंदूक और गोली वही बल महसूस करते और नितांत भिन्न त्वरण पाते हैं। और जोड़ी तात्क्षणिक है, क्रमिक नहीं: ऐसा कोई अंतराल नहीं, चाहे कितना ही छोटा, जिसमें एक सदस्य लगे और दूसरे ने अभी उत्तर न दिया हो। (ग़लत उत्तर पशुओं को यांत्रिकी से छूट देते, न होने वाला विलंब घुसाते, या ज़मीन को गाड़ी आगे धकेलने का श्रेय देते जबकि ज़मीन पहियों को केवल रोकती है।)"
+        },
+        "mr": {
+          "stem": "एक गाडी घोड्याला जुंपली आहे. एक विद्यार्थी युक्तिवाद करतो: घोडा गाडी पुढे ओढतो, गाडी तिसऱ्या नियमाने घोड्याला तितक्याच बलाने मागे ओढते, दोन्ही कापली जातात, म्हणून काहीही कधीच हलू शकत नाही. दोष शोधा आणि जोडीला प्रत्यक्षात त्वरित काय करते ते सांगा.",
+          "choices": [
+            "दोष हा की वेगळ्या पिंडांवर लागणारी दोन बले जोडली गेली. घोड्याची ओढ गाडीवर लागते; गाडीची ओढ घोड्यावर. बले तेव्हाच कापली जातात जेव्हा ती एकाच पिंडावर लागतात. एकटी गाडी काढा: जुवाकडून पुढची ओढ, जमिनीकडून मागचे घर्षण — ओढ जिंकली तर ती त्वरित होते. एकटा घोडा काढा: जुवाकडून मागची ओढ, जमिनीकडून खुरांवर पुढचे घर्षण — ते घर्षण जिंकले तर तो त्वरित होतो. अख्ख्या जोडीला हलवते ते घोड्याच्या खुरांवरचे जमिनीचे पुढचे घर्षण, आणि जुवाची बले, जोडीच्या आतली असल्याने, केवळ त्याच एकत्रित वर्णनात कापली जातात",
+            "तिसरा नियम सजीवांना लागू होत नाही, म्हणून घोड्याची ओढ गाडीच्या ओढीहून खरोखर मोठी आहे",
+            "घोड्याची ओढ आधी लागते आणि गाडीची प्रतिक्रिया नंतरच, म्हणून असंतुलित बलाचा एक क्षण येतो ज्यात गती सुरू होते",
+            "दोन्ही बले खरोखर कापली जातात, आणि गाडी केवळ यामुळे चालते की जमीन तिला थेट पुढे ढकलते"
+          ],
+          "solution": "युक्तिवादाचे प्रत्येक वाक्य खरे आहे, तिसरे सोडून, आणि तेही भौतिकीबद्दल चुकीचे नाही — ते हिशोबाबद्दल चुकीचे आहे. न्यूटनचा दुसरा नियम एका वेळी एका पिंडावर लावला जातो, आणि केवळ त्याच पिंडावर लागणारी बले जोडता येतात. घोड्याची पुढची ओढ गाडीवर लागते. गाडीची मागची ओढ घोड्यावर. ती वेगळ्या वहीखात्यांवर आहेत, आणि त्यांना एकाच बेरजेत टाकणे म्हणजे आपले कर्ज शेजाऱ्याच्या कर्जाशी कापून कोणावर काहीच बाकी नाही असा निष्कर्ष काढणे. दोन्ही आकृत्या काढा आणि विरोधाभासाला राहायला जागा उरत नाही. एकटी गाडी: जुवे तिला T बलाने पुढे ओढते, जमीन तिच्या चाकांवर f_गाडी घर्षणाने मागे ओढते. तिचे त्वरण (T − f_गाडी)/m_गाडी, जुवे जिंकल्यास धन. एकटा घोडा: जुवे त्याला त्याच T ने मागे ओढते, आणि जमीन त्याच्या खुरांवर f_घोडा घर्षणाने पुढे ढकलते — घोडा जमिनीवर मागे ढकलतो, जमीन घोड्यावर पुढे, आणि हीच स्वतः तिसऱ्या नियमाची जोडी. त्याचे त्वरण (f_घोडा − T)/m_घोडा, खुर जिंकल्यास धन. दोन्ही एकाच वेळी धन असू शकतात, आणि तेव्हा घोडा आणि गाडी एकत्र त्वरित होतात. आता दोघांना एक प्रणाली माना. जुव्याची बले आता आतली आहेत: T एकदा गाडीवर पुढे आणि एकदा घोड्यावर मागे येते, आणि अख्ख्या प्रणालीच्या बेरजेत ती कापली जातात — यावेळी बरोबरच, कारण आता ती एकाच पिंडावर आहेत, एकत्रित पिंडावर. जे उरते ते म्हणजे खुरांवरचे जमिनीचे घर्षण वजा चाकांवरचे जमिनीचे घर्षण. हाच फरक घोडा-आणि-गाडीवरचे पूर्ण परिणामी बाह्य बल, आणि ते धन असल्यास जोडी त्वरित होते. घोड्याचे खरे काम जमिनीवर इतक्या जोराने मागे ढकलणे की प्रतिक्रिया गाडीचा घरंगळ-विरोध हरवेल. म्हणूनच बर्फावरचा घोडा काहीच ओढू शकत नाही, आणि तोच घोडा खडीवर जड ओझे सुरू करू शकतो: जुव्याचा ताण बदललेला नाही, उपलब्ध जमिनीचे घर्षण बदलले. यातूनच रॉकेटही समजते, ज्याच्याकडे ढकलायला जमीन नाही आणि म्हणून तो वस्तुमान मागे फेकतो — निर्गम बाहेर टाकण्याची प्रतिक्रिया हेच त्याचे एकमेव पुढचे बल. दोन लहान धडेही ठेवण्याजोगे. तिसरा नियम दोन्ही त्वरणे समान आहेत असे कधीच सांगत नाही, केवळ दोन्ही बले; बंदूक आणि गोळी तेच बल अनुभवतात आणि पूर्णपणे वेगळी त्वरणे मिळवतात. आणि जोडी तात्कालिक आहे, क्रमवार नव्हे: असा कोणताही अंतराल नाही, कितीही लहान असो, ज्यात एक सदस्य लागतो आणि दुसऱ्याने अजून उत्तर दिलेले नाही. (चुकीची उत्तरे प्राण्यांना यामिकीतून सूट देतात, नसलेला विलंब घुसवतात, वा जमिनीला गाडी पुढे ढकलण्याचे श्रेय देतात तर जमीन चाकांना केवळ अडवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 10 kg block rests on a floor with μₛ = 0.4 and μₖ = 0.3, and g is 10 m/s². It is pushed horizontally with 30 N and does not move; the push is then raised to 50 N and it accelerates. A student says friction was 30 N in the first case and 40 N in the second. Assess this and compute the acceleration.",
+      "choices": [
+        "Half right. In the first case friction was indeed 30 N: static friction adjusts to match, and 30 N is below its ceiling of μₛN = 0.4 × 100 = 40 N, so the block stays put. In the second case the block is sliding, so static friction is irrelevant and kinetic friction applies: f = μₖN = 0.3 × 100 = 30 N, not 40 N. The net force is 50 − 30 = 20 N and the acceleration is 20/10 = 2 m/s²",
+        "Entirely right: friction is always μₛN once any push is applied, so it is 40 N in both cases and the acceleration is 1 m/s²",
+        "Entirely wrong: friction is 40 N in the first case because that is its maximum, and 30 N in the second, giving 2 m/s²",
+        "The block cannot move at all under 50 N, since 50 N is less than the weight of 100 N holding it down"
+      ],
+      "answerIndex": 0,
+      "solution": "Start with the normal force, since both coefficients act on it. The floor is level and the push is horizontal, so N balances the weight: N = mg = 10 × 10 = 100 N. The static ceiling is μₛN = 0.4 × 100 = 40 N and the kinetic value is μₖN = 0.3 × 100 = 30 N. Both are numbers about this block on this floor, and only one of them is in force at a time. First case, push 30 N, block stationary. Since it is not accelerating, the horizontal forces on it must sum to zero, so friction is exactly 30 N — not 40. This is the point the chapter's fact about static friction is making: static friction is not a fixed quantity waiting to be looked up, it is whatever the situation requires, up to a limit. Push with 10 N and friction is 10 N. Push with 39 N and friction is 39 N. Push with 41 N and friction cannot supply it, the surfaces slip, and the description changes entirely. So the student's first claim is right, and right for the right reason. Second case, push 50 N. Now 50 exceeds 40, so the block breaks free and slides. Once sliding, static friction has nothing to say — the surfaces are in relative motion, and the resisting force is kinetic friction, μₖN = 30 N. It is smaller than the static maximum, which is why a crate lurches the instant it starts: for a moment the applied force is fighting 30 N where a moment earlier it was fighting 40. The student's second claim uses the wrong coefficient. Net force = 50 − 30 = 20 N, so a = F/m = 20/10 = 2 m/s². Three checks are worth doing on any answer of this kind. Does the acceleration come out smaller than the push alone would give? Here 50 N on 10 kg would give 5 m/s², and friction has cut it to 2, which is sensible. Is the kinetic value below the static maximum? 30 < 40, yes — the reverse would be unphysical, since a block that broke free would immediately be gripped harder. And is the normal force actually mg? Here yes, but tilt the floor or push at an angle and it is not, and every friction figure changes with it — which is the reason to compute N first and never to assume it. (The wrong answers use the static maximum where nothing is static, reverse which case gets which coefficient, or compare a horizontal push against a vertical weight, two forces on perpendicular axes that never oppose each other at all.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "10 kg का गुटका फ़र्श पर रखा है जहाँ μₛ = 0.4 और μₖ = 0.3, और g = 10 m/s². उसे 30 N से क्षैतिज धकेला जाता है और वह नहीं हिलता; फिर धक्का 50 N कर दिया जाता है और वह त्वरित होता है। एक विद्यार्थी कहता है कि पहली स्थिति में घर्षण 30 N था और दूसरी में 40 N. इसका आकलन करो और त्वरण निकालो।",
+          "choices": [
+            "आधा सही। पहली स्थिति में घर्षण सचमुच 30 N था: स्थैतिक घर्षण मेल खाने के लिए समायोजित होता है, और 30 N उसकी छत μₛN = 0.4 × 100 = 40 N से नीचे है, अतः गुटका टिका रहता है। दूसरी स्थिति में गुटका फिसल रहा है, अतः स्थैतिक घर्षण अप्रासंगिक है और गतिज घर्षण लगता है: f = μₖN = 0.3 × 100 = 30 N, 40 N नहीं। परिणामी बल 50 − 30 = 20 N और त्वरण 20/10 = 2 m/s²",
+            "पूरी तरह सही: कोई भी धक्का लगते ही घर्षण सदा μₛN होता है, अतः दोनों स्थितियों में 40 N और त्वरण 1 m/s²",
+            "पूरी तरह ग़लत: पहली स्थिति में घर्षण 40 N है क्योंकि वही उसका अधिकतम है, और दूसरी में 30 N, जिससे 2 m/s² मिलता है",
+            "50 N पर गुटका हिल ही नहीं सकता, क्योंकि 50 N उसे दबाए रखने वाले 100 N भार से कम है"
+          ],
+          "solution": "अभिलंब बल से शुरू करो, क्योंकि दोनों गुणांक उसी पर लगते हैं। फ़र्श समतल है और धक्का क्षैतिज, अतः N भार को संतुलित करता है: N = mg = 10 × 10 = 100 N. स्थैतिक छत μₛN = 0.4 × 100 = 40 N और गतिज मान μₖN = 0.3 × 100 = 30 N. दोनों इस फ़र्श पर इस गुटके के बारे में संख्याएँ हैं, और एक बार में इनमें से केवल एक लागू होती है। पहली स्थिति, धक्का 30 N, गुटका स्थिर। चूँकि वह त्वरित नहीं हो रहा, उस पर क्षैतिज बलों का योग शून्य होना चाहिए, अतः घर्षण ठीक 30 N है — 40 नहीं। यही बात अध्याय का स्थैतिक घर्षण वाला तथ्य कह रहा है: स्थैतिक घर्षण कोई नियत राशि नहीं जो देखकर उठा ली जाए, वह उतना ही है जितनी स्थिति माँगे, एक सीमा तक। 10 N से धकेलो तो घर्षण 10 N. 39 N से धकेलो तो 39 N. 41 N से धकेलो तो घर्षण दे नहीं सकता, सतहें फिसल जाती हैं, और वर्णन पूरी तरह बदल जाता है। अतः विद्यार्थी का पहला दावा सही है, और सही कारण से सही है। दूसरी स्थिति, धक्का 50 N. अब 50, 40 से अधिक है, अतः गुटका छूटकर फिसलता है। फिसलते ही स्थैतिक घर्षण के पास कहने को कुछ नहीं — सतहें सापेक्ष गति में हैं, और रोकने वाला बल गतिज घर्षण है, μₖN = 30 N. वह स्थैतिक अधिकतम से छोटा है, इसीलिए पेटी शुरू होते ही झटका खाती है: एक क्षण के लिए लगाया बल 30 N से लड़ रहा है जबकि क्षण भर पहले 40 से लड़ रहा था। विद्यार्थी का दूसरा दावा ग़लत गुणांक लगाता है। परिणामी बल = 50 − 30 = 20 N, अतः a = F/m = 20/10 = 2 m/s². ऐसे किसी भी उत्तर पर तीन जाँचें करने योग्य हैं। क्या त्वरण उससे छोटा निकला जो अकेला धक्का देता? यहाँ 10 kg पर 50 N से 5 m/s² मिलता, और घर्षण ने उसे 2 कर दिया, जो समझ में आता है। क्या गतिज मान स्थैतिक अधिकतम से नीचे है? 30 < 40, हाँ — उलटा अभौतिक होता, क्योंकि छूटा गुटका तुरंत और कसकर पकड़ लिया जाता। और क्या अभिलंब बल सचमुच mg है? यहाँ हाँ, पर फ़र्श झुका दो या कोण पर धकेलो और वह नहीं रहता, और हर घर्षण-आँकड़ा उसके साथ बदल जाता है — इसीलिए पहले N निकालना चाहिए और उसे कभी मान नहीं लेना चाहिए। (ग़लत उत्तर वहाँ स्थैतिक अधिकतम लगाते जहाँ कुछ स्थैतिक है ही नहीं, किस स्थिति को कौन-सा गुणांक मिले यह उलट देते, या क्षैतिज धक्के की तुलना ऊर्ध्वाधर भार से करते, जो लंबवत अक्षों पर दो ऐसे बल हैं जो एक-दूसरे का विरोध करते ही नहीं।)"
+        },
+        "mr": {
+          "stem": "10 kg चा ठोकळा जमिनीवर ठेवला आहे जिथे μₛ = 0.4 आणि μₖ = 0.3, आणि g = 10 m/s². त्याला 30 N ने आडवे ढकलले जाते आणि तो हलत नाही; मग रेटा 50 N केला जातो आणि तो त्वरित होतो. एक विद्यार्थी म्हणतो की पहिल्या स्थितीत घर्षण 30 N होते आणि दुसऱ्यात 40 N. याचे मूल्यमापन करा आणि त्वरण काढा.",
+          "choices": [
+            "अर्धे बरोबर. पहिल्या स्थितीत घर्षण खरोखर 30 N होते: स्थितिक घर्षण जुळवण्यासाठी जुळवून घेते, आणि 30 N त्याच्या छत μₛN = 0.4 × 100 = 40 N च्या खाली आहे, म्हणून ठोकळा जागीच राहतो. दुसऱ्या स्थितीत ठोकळा घसरत आहे, म्हणून स्थितिक घर्षण असंबद्ध आणि गतिज घर्षण लागते: f = μₖN = 0.3 × 100 = 30 N, 40 N नव्हे. परिणामी बल 50 − 30 = 20 N आणि त्वरण 20/10 = 2 m/s²",
+            "पूर्णपणे बरोबर: कोणताही रेटा लागताच घर्षण नेहमी μₛN असते, म्हणून दोन्ही स्थितींत 40 N आणि त्वरण 1 m/s²",
+            "पूर्णपणे चूक: पहिल्या स्थितीत घर्षण 40 N कारण तेच त्याचे कमाल, आणि दुसऱ्यात 30 N, ज्यातून 2 m/s² मिळते",
+            "50 N वर ठोकळा हलूच शकत नाही, कारण 50 N हे त्याला दाबून ठेवणाऱ्या 100 N वजनाहून कमी आहे"
+          ],
+          "solution": "लंब बलापासून सुरुवात करा, कारण दोन्ही गुणांक त्याच्यावरच लागतात. जमीन सपाट आणि रेटा आडवा, म्हणून N वजन संतुलित करते: N = mg = 10 × 10 = 100 N. स्थितिक छत μₛN = 0.4 × 100 = 40 N आणि गतिज मूल्य μₖN = 0.3 × 100 = 30 N. दोन्ही या जमिनीवरील या ठोकळ्याबद्दलच्या संख्या, आणि एका वेळी त्यांपैकी केवळ एकच लागू. पहिली स्थिती, रेटा 30 N, ठोकळा स्थिर. तो त्वरित होत नसल्याने त्याच्यावरील आडव्या बलांची बेरीज शून्य असावी लागते, म्हणून घर्षण नेमके 30 N — 40 नव्हे. हाच तो मुद्दा जो प्रकरणातले स्थितिक घर्षणाचे तथ्य सांगते: स्थितिक घर्षण ही ठरलेली राशी नव्हे जी पाहून उचलावी, ती परिस्थिती जितकी मागेल तितकी असते, एका मर्यादेपर्यंत. 10 N ने ढकला तर घर्षण 10 N. 39 N ने ढकला तर 39 N. 41 N ने ढकला तर घर्षण देऊ शकत नाही, पृष्ठभाग निसटतात, आणि वर्णन पूर्णपणे बदलते. म्हणून विद्यार्थ्याचा पहिला दावा बरोबर, आणि बरोबर कारणाने बरोबर. दुसरी स्थिती, रेटा 50 N. आता 50 हे 40 हून जास्त, म्हणून ठोकळा सुटून घसरतो. घसरताच स्थितिक घर्षणाला सांगायला काही उरत नाही — पृष्ठभाग सापेक्ष गतीत आहेत, आणि अडवणारे बल गतिज घर्षण, μₖN = 30 N. ते स्थितिक कमालहून लहान, म्हणूनच पेटी सुरू होताच झटका खाते: एका क्षणापुरते लावलेले बल 30 N शी लढत आहे तर क्षणभरापूर्वी ते 40 शी लढत होते. विद्यार्थ्याचा दुसरा दावा चुकीचा गुणांक वापरतो. परिणामी बल = 50 − 30 = 20 N, म्हणून a = F/m = 20/10 = 2 m/s². अशा कोणत्याही उत्तरावर तीन तपासण्या करण्याजोग्या. त्वरण एकट्या रेट्याने आले असते त्याहून लहान आले का? इथे 10 kg वर 50 N ने 5 m/s² आले असते, आणि घर्षणाने ते 2 केले, जे समजण्याजोगे. गतिज मूल्य स्थितिक कमालच्या खाली आहे का? 30 < 40, हो — उलटे अभौतिक ठरले असते, कारण सुटलेला ठोकळा लगेच अधिक घट्ट पकडला गेला असता. आणि लंब बल खरोखर mg आहे का? इथे हो, पण जमीन कलवा वा कोनात ढकला आणि ते राहत नाही, आणि प्रत्येक घर्षण-आकडा त्यासोबत बदलतो — म्हणूनच आधी N काढावे आणि ते कधीही गृहीत धरू नये. (चुकीची उत्तरे जिथे काहीच स्थितिक नाही तिथे स्थितिक कमाल वापरतात, कोणत्या स्थितीला कोणता गुणांक हे उलटवतात, वा आडव्या रेट्याची तुलना उभ्या वजनाशी करतात, जी लंब अक्षांवरील अशी दोन बले आहेत जी एकमेकांना विरोधच करत नाहीत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A net force of 20 N acts on a body of mass 5 kg. What is its acceleration?",
+      "choices": [
+        "25",
+        "100",
+        "4",
+        "0.25"
+      ],
+      "answerIndex": 2,
+      "solution": "From F = ma, a = F/m = 20/5 = 4 m/s². (0.25 inverts the division, 100 multiplies force by mass, and 25 adds them — three arrangements of the same two numbers, only one of which has the units of an acceleration.)",
+      "checkExpr": "20/5",
+      "translations": {
+        "hi": {
+          "stem": "5 kg द्रव्यमान के पिंड पर 20 N का परिणामी बल लगता है। उसका त्वरण क्या है?",
+          "choices": [
+            "25",
+            "100",
+            "4",
+            "0.25"
+          ],
+          "solution": "F = ma से, a = F/m = 20/5 = 4 m/s². (0.25 भाग उलट देता है, 100 बल को द्रव्यमान से गुणा करता है, और 25 उन्हें जोड़ देता है — उन्हीं दो संख्याओं की तीन व्यवस्थाएँ, जिनमें से केवल एक के मात्रक त्वरण के हैं।)"
+        },
+        "mr": {
+          "stem": "5 kg वस्तुमानाच्या पिंडावर 20 N चे परिणामी बल लागते. त्याचे त्वरण किती?",
+          "choices": [
+            "25",
+            "100",
+            "4",
+            "0.25"
+          ],
+          "solution": "F = ma वरून, a = F/m = 20/5 = 4 m/s². (0.25 भागाकार उलटा करते, 100 बलाला वस्तुमानाने गुणते, आणि 25 त्यांना जोडते — त्याच दोन संख्यांच्या तीन मांडण्या, ज्यांपैकी केवळ एकाची एकके त्वरणाची आहेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A body of mass 12 kg rests on a level floor, with g taken as 10 m/s². What is the normal force the floor exerts on it?",
+      "choices": [
+        "12 N",
+        "22 N",
+        "1.2 N",
+        "120 N"
+      ],
+      "answerIndex": 3,
+      "solution": "The body is not accelerating vertically, so the normal force balances the weight: N = mg = 12 × 10 = 120 N. Note that N and the weight act on the SAME body and are therefore not a third-law pair, however equal they look. (12 quotes the mass as though it were a force.)",
+      "checkExpr": "12*10",
+      "translations": {
+        "hi": {
+          "stem": "12 kg द्रव्यमान का पिंड समतल फ़र्श पर रखा है, g = 10 m/s² लेते हुए। फ़र्श उस पर कितना अभिलंब बल लगाता है?",
+          "choices": [
+            "12 N",
+            "22 N",
+            "1.2 N",
+            "120 N"
+          ],
+          "solution": "पिंड ऊर्ध्वाधर रूप से त्वरित नहीं हो रहा, अतः अभिलंब बल भार को संतुलित करता है: N = mg = 12 × 10 = 120 N. ध्यान दो N और भार एक ही पिंड पर लगते हैं और इसलिए तीसरे नियम की जोड़ी नहीं, चाहे वे कितने ही बराबर दिखें। (12 द्रव्यमान को ऐसे बताता है मानो वह बल हो।)"
+        },
+        "mr": {
+          "stem": "12 kg वस्तुमानाचा पिंड सपाट जमिनीवर ठेवला आहे, g = 10 m/s² घेऊन. जमीन त्याच्यावर किती लंब बल लावते?",
+          "choices": [
+            "12 N",
+            "22 N",
+            "1.2 N",
+            "120 N"
+          ],
+          "solution": "पिंड उभ्या दिशेने त्वरित होत नाही, म्हणून लंब बल वजन संतुलित करते: N = mg = 12 × 10 = 120 N. लक्षात घ्या N आणि वजन एकाच पिंडावर लागतात आणि म्हणून तिसऱ्या नियमाची जोडी नाहीत, ती कितीही समान दिसोत. (12 वस्तुमान असे सांगते जणू ते बल असावे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A ball of mass 2 kg has its velocity changed from 3 m/s to 8 m/s in the same direction. What is the magnitude of the change in its momentum?",
+      "choices": [
+        "10",
+        "22",
+        "5",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "Change in momentum is m(v − u) = 2 × (8 − 3) = 10 kg m/s. (5 gives the change in velocity and forgets the mass, 16 is the final momentum alone, and 22 adds the two momenta instead of subtracting.)",
+      "checkExpr": "2*(8-3)",
+      "translations": {
+        "hi": {
+          "stem": "2 kg द्रव्यमान की गेंद का वेग उसी दिशा में 3 m/s से बदलकर 8 m/s हो जाता है। उसके संवेग-परिवर्तन का परिमाण क्या है?",
+          "choices": [
+            "10",
+            "22",
+            "5",
+            "16"
+          ],
+          "solution": "संवेग-परिवर्तन m(v − u) = 2 × (8 − 3) = 10 kg m/s. (5 वेग-परिवर्तन देता है और द्रव्यमान भूल जाता है, 16 केवल अंतिम संवेग है, और 22 घटाने के बजाय दोनों संवेग जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "2 kg वस्तुमानाच्या चेंडूचा वेग त्याच दिशेत 3 m/s वरून 8 m/s होतो. त्याच्या संवेगातील बदलाचे परिमाण किती?",
+          "choices": [
+            "10",
+            "22",
+            "5",
+            "16"
+          ],
+          "solution": "संवेगातील बदल m(v − u) = 2 × (8 − 3) = 10 kg m/s. (5 वेगातील बदल देते आणि वस्तुमान विसरते, 16 फक्त अंतिम संवेग, आणि 22 वजा करण्याऐवजी दोन्ही संवेग जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A cricket ball of mass 0.15 kg arrives at 20 m/s and is brought to rest in 0.1 s. What average force does the fielder's hands exert?",
+      "choices": [
+        "30 N",
+        "3 N",
+        "0.3 N",
+        "300 N"
+      ],
+      "answerIndex": 0,
+      "solution": "Impulse equals the change in momentum, so F = Δp/Δt = (0.15 × 20)/0.1 = 3/0.1 = 30 N. Drawing the hands back to stretch the stop to 0.3 s would cut the force to 10 N, which is exactly why fielders do it. (300 divides by 0.01 and 3 forgets to divide by the time at all.)",
+      "checkExpr": "0.15*20/0.1",
+      "translations": {
+        "hi": {
+          "stem": "0.15 kg द्रव्यमान की क्रिकेट गेंद 20 m/s से आती है और 0.1 s में विराम में लाई जाती है। क्षेत्ररक्षक के हाथ कितना औसत बल लगाते हैं?",
+          "choices": [
+            "30 N",
+            "3 N",
+            "0.3 N",
+            "300 N"
+          ],
+          "solution": "आवेग संवेग-परिवर्तन के बराबर है, अतः F = Δp/Δt = (0.15 × 20)/0.1 = 3/0.1 = 30 N. हाथ पीछे खींचकर रुकावट को 0.3 s तक बढ़ाने से बल घटकर 10 N रह जाता, और ठीक इसीलिए क्षेत्ररक्षक ऐसा करते हैं। (300 0.01 से भाग देता है और 3 समय से भाग देना ही भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "0.15 kg वस्तुमानाचा क्रिकेट चेंडू 20 m/s ने येतो आणि 0.1 s मध्ये स्थिर केला जातो. क्षेत्ररक्षकाचे हात किती सरासरी बल लावतात?",
+          "choices": [
+            "30 N",
+            "3 N",
+            "0.3 N",
+            "300 N"
+          ],
+          "solution": "आवेग संवेगातील बदलाइतका, म्हणून F = Δp/Δt = (0.15 × 20)/0.1 = 3/0.1 = 30 N. हात मागे खेचून थांबवणे 0.3 s पर्यंत ताणल्यास बल 10 N वर आले असते, आणि नेमके म्हणूनच क्षेत्ररक्षक तसे करतात. (300 हे 0.01 ने भागते आणि 3 काळाने भागायचेच विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A 10 kg block rests on a floor with a coefficient of static friction of 0.4, and g is 10 m/s². What is the least horizontal force needed to start it moving?",
+      "choices": [
+        "4 N",
+        "400 N",
+        "40 N",
+        "100 N"
+      ],
+      "answerIndex": 2,
+      "solution": "The normal force is mg = 100 N, so the maximum static friction is μₛN = 0.4 × 100 = 40 N. Any push above 40 N starts the block. (4 forgets g, 100 quotes the normal force itself, and 400 multiplies by g twice.)",
+      "checkExpr": "0.4*10*10",
+      "translations": {
+        "hi": {
+          "stem": "10 kg का गुटका उस फ़र्श पर रखा है जिसका स्थैतिक घर्षण गुणांक 0.4 है, और g = 10 m/s². उसे चलाना शुरू करने के लिए कम से कम कितना क्षैतिज बल चाहिए?",
+          "choices": [
+            "4 N",
+            "400 N",
+            "40 N",
+            "100 N"
+          ],
+          "solution": "अभिलंब बल mg = 100 N है, अतः अधिकतम स्थैतिक घर्षण μₛN = 0.4 × 100 = 40 N. 40 N से अधिक कोई भी धक्का गुटके को चला देता है। (4 g भूल जाता है, 100 स्वयं अभिलंब बल बता देता है, और 400 g से दो बार गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "10 kg चा ठोकळा अशा जमिनीवर आहे जिचा स्थितिक घर्षण गुणांक 0.4 आहे, आणि g = 10 m/s². तो हलवायला सुरुवात करण्यासाठी किमान किती आडवे बल लागेल?",
+          "choices": [
+            "4 N",
+            "400 N",
+            "40 N",
+            "100 N"
+          ],
+          "solution": "लंब बल mg = 100 N, म्हणून कमाल स्थितिक घर्षण μₛN = 0.4 × 100 = 40 N. 40 N हून अधिक कोणताही रेटा ठोकळा हलवतो. (4 हे g विसरते, 100 स्वतः लंब बल सांगते, आणि 400 हे g ने दोनदा गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A person of mass 50 kg stands on a weighing scale in a lift accelerating upwards at 2 m/s², with g = 10 m/s². What force does the scale read?",
+      "choices": [
+        "400 N",
+        "500 N",
+        "600 N",
+        "100 N"
+      ],
+      "answerIndex": 2,
+      "solution": "The scale reads the normal force. Taking upwards as positive, N − mg = ma, so N = m(g + a) = 50 × 12 = 600 N. The person's mass has not changed; what has changed is the force the floor must exert. (500 is the stationary reading and 400 is the answer for a lift accelerating downwards.)",
+      "checkExpr": "50*(10+2)",
+      "translations": {
+        "hi": {
+          "stem": "50 kg द्रव्यमान का व्यक्ति उस लिफ़्ट में तराज़ू पर खड़ा है जो 2 m/s² से ऊपर की ओर त्वरित हो रही है, g = 10 m/s² के साथ। तराज़ू कितना बल दिखाता है?",
+          "choices": [
+            "400 N",
+            "500 N",
+            "600 N",
+            "100 N"
+          ],
+          "solution": "तराज़ू अभिलंब बल दिखाता है। ऊपर को धनात्मक लेते हुए, N − mg = ma, अतः N = m(g + a) = 50 × 12 = 600 N. व्यक्ति का द्रव्यमान नहीं बदला; बदला वह बल है जो फ़र्श को लगाना पड़ता है। (500 स्थिर लिफ़्ट का पाठ्यांक है और 400 नीचे की ओर त्वरित लिफ़्ट का उत्तर।)"
+        },
+        "mr": {
+          "stem": "50 kg वस्तुमानाची व्यक्ती अशा लिफ्टमध्ये वजनकाट्यावर उभी आहे जी 2 m/s² ने वर त्वरित होत आहे, g = 10 m/s² सह. काटा किती बल दाखवतो?",
+          "choices": [
+            "400 N",
+            "500 N",
+            "600 N",
+            "100 N"
+          ],
+          "solution": "काटा लंब बल दाखवतो. वर धन घेतल्यास, N − mg = ma, म्हणून N = m(g + a) = 50 × 12 = 600 N. व्यक्तीचे वस्तुमान बदललेले नाही; बदलले ते बल जे जमिनीला लावावे लागते. (500 हे स्थिर लिफ्टचे वाचन आणि 400 हे खाली त्वरित होणाऱ्या लिफ्टचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two blocks of 3 kg and 2 kg lie in contact on a frictionless floor and are pushed by a 10 N force applied to the 3 kg block. What is the acceleration of the pair?",
+      "choices": [
+        "2",
+        "5",
+        "1",
+        "3.33"
+      ],
+      "answerIndex": 0,
+      "solution": "Treat the two as one body of 5 kg, since they move together: a = 10/5 = 2 m/s². The contact force between them is internal to this system and drops out of the sum. (3.33 uses only the pushed block's mass and 5 uses only the other's.)",
+      "checkExpr": "10/(3+2)",
+      "translations": {
+        "hi": {
+          "stem": "3 kg और 2 kg के दो गुटके घर्षण-रहित फ़र्श पर एक-दूसरे से सटे रखे हैं और 3 kg वाले गुटके पर 10 N का बल लगाकर धकेले जाते हैं। जोड़ी का त्वरण क्या है?",
+          "choices": [
+            "2",
+            "5",
+            "1",
+            "3.33"
+          ],
+          "solution": "दोनों को 5 kg का एक ही पिंड मानो, क्योंकि वे साथ चलते हैं: a = 10/5 = 2 m/s². उनके बीच का संपर्क बल इस तंत्र के लिए भीतरी है और योग से निकल जाता है। (3.33 केवल धकेले गए गुटके का द्रव्यमान लेता है और 5 केवल दूसरे का।)"
+        },
+        "mr": {
+          "stem": "3 kg आणि 2 kg चे दोन ठोकळे घर्षणविरहित जमिनीवर एकमेकांना लागून आहेत आणि 3 kg च्या ठोकळ्यावर 10 N बल लावून ढकलले जातात. जोडीचे त्वरण किती?",
+          "choices": [
+            "2",
+            "5",
+            "1",
+            "3.33"
+          ],
+          "solution": "दोघांना 5 kg चा एकच पिंड माना, कारण ते एकत्र जातात: a = 10/5 = 2 m/s². त्यांच्यातले स्पर्श बल या प्रणालीसाठी आतले आहे आणि बेरजेतून निघून जाते. (3.33 फक्त ढकललेल्या ठोकळ्याचे वस्तुमान घेते आणि 5 फक्त दुसऱ्याचे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In that same pair of blocks — 3 kg pushed by 10 N against a 2 kg block on a frictionless floor — what is the contact force between them?",
+      "choices": [
+        "6 N",
+        "2 N",
+        "10 N",
+        "4 N"
+      ],
+      "answerIndex": 3,
+      "solution": "Draw the 2 kg block alone. The only horizontal force on it is the contact push from its neighbour, and it accelerates at the common 2 m/s², so F = 2 × 2 = 4 N. Checking from the other side, the 3 kg block has 10 N forward and 4 N back from the reaction, giving 6/3 = 2 m/s², which agrees. (6 is the net force on the 3 kg block, not the contact force, and 10 forgets that the pushed block keeps some of the force for itself.)",
+      "checkExpr": "2*10/(3+2)",
+      "translations": {
+        "hi": {
+          "stem": "उसी गुटका-जोड़ी में — घर्षण-रहित फ़र्श पर 2 kg के गुटके से सटे 3 kg वाले पर 10 N का धक्का — उनके बीच संपर्क बल क्या है?",
+          "choices": [
+            "6 N",
+            "2 N",
+            "10 N",
+            "4 N"
+          ],
+          "solution": "अकेला 2 kg का गुटका खींचो। उस पर एकमात्र क्षैतिज बल पड़ोसी का संपर्क धक्का है, और वह साझा 2 m/s² से त्वरित होता है, अतः F = 2 × 2 = 4 N. दूसरी ओर से जाँचो: 3 kg वाले पर 10 N आगे और प्रतिक्रिया से 4 N पीछे, जिससे 6/3 = 2 m/s², जो मेल खाता है। (6 3 kg वाले पर परिणामी बल है, संपर्क बल नहीं, और 10 भूल जाता है कि धकेला गया गुटका बल का कुछ हिस्सा अपने पास रखता है।)"
+        },
+        "mr": {
+          "stem": "त्याच ठोकळ्यांच्या जोडीत — घर्षणविरहित जमिनीवर 2 kg च्या ठोकळ्याला लागून असलेल्या 3 kg वर 10 N चा रेटा — त्यांच्यातले स्पर्श बल किती?",
+          "choices": [
+            "6 N",
+            "2 N",
+            "10 N",
+            "4 N"
+          ],
+          "solution": "एकटा 2 kg चा ठोकळा काढा. त्याच्यावरचे एकमेव आडवे बल म्हणजे शेजाऱ्याचा स्पर्श-रेटा, आणि तो सामायिक 2 m/s² ने त्वरित होतो, म्हणून F = 2 × 2 = 4 N. दुसऱ्या बाजूने तपासा: 3 kg वर 10 N पुढे आणि प्रतिक्रियेने 4 N मागे, ज्यातून 6/3 = 2 m/s², जे जुळते. (6 हे 3 kg वरचे परिणामी बल, स्पर्श बल नव्हे, आणि 10 विसरते की ढकललेला ठोकळा बलाचा काही भाग स्वतःकडे ठेवतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A car takes an unbanked circular bend of radius 20 m where the coefficient of friction is 0.5, with g = 10 m/s². What is the greatest speed at which it can round the bend?",
+      "choices": [
+        "100 m/s",
+        "20 m/s",
+        "10 m/s",
+        "5 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "Friction must supply the whole centripetal force, so at the limit μmg = mv²/r. The mass cancels — a lorry and a scooter have the same limit — leaving v = √(μgr) = √(0.5 × 10 × 20) = √100 = 10 m/s. (100 is v² and forgets the square root, and 5 halves the answer instead of rooting it.)",
+      "checkExpr": "(0.5*10*20)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "एक कार 20 m त्रिज्या का बिना बंकन वाला वृत्तीय मोड़ लेती है जहाँ घर्षण गुणांक 0.5 है, g = 10 m/s² के साथ। वह अधिकतम किस चाल से मोड़ ले सकती है?",
+          "choices": [
+            "100 m/s",
+            "20 m/s",
+            "10 m/s",
+            "5 m/s"
+          ],
+          "solution": "घर्षण को पूरा अभिकेंद्र बल देना है, अतः सीमा पर μmg = mv²/r. द्रव्यमान कट जाता है — लॉरी और स्कूटर की सीमा एक ही है — और बचता है v = √(μgr) = √(0.5 × 10 × 20) = √100 = 10 m/s. (100 v² है और वर्गमूल भूल जाता है, और 5 मूल लेने के बजाय आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एक कार 20 m त्रिज्येचे न कललेले वर्तुळाकार वळण घेते जिथे घर्षण गुणांक 0.5 आहे, g = 10 m/s² सह. ती जास्तीत जास्त कोणत्या चालीने वळण घेऊ शकते?",
+          "choices": [
+            "100 m/s",
+            "20 m/s",
+            "10 m/s",
+            "5 m/s"
+          ],
+          "solution": "घर्षणाला पूर्ण अभिकेंद्री बल पुरवावे लागते, म्हणून मर्यादेवर μmg = mv²/r. वस्तुमान कापले जाते — ट्रक आणि स्कूटरची मर्यादा एकच — आणि उरते v = √(μgr) = √(0.5 × 10 × 20) = √100 = 10 m/s. (100 हे v² आणि वर्गमूळ विसरते, आणि 5 मूळ घेण्याऐवजी निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A machine gun fires 10 bullets per second, each of mass 50 g, at a muzzle speed of 500 m/s. What force must be applied to the gun to hold it steady?",
+      "choices": [
+        "2500 N",
+        "25 N",
+        "500 N",
+        "250 N"
+      ],
+      "answerIndex": 3,
+      "solution": "Force is the rate of change of momentum, which is the form to reach for whenever mass is leaving a system. Each bullet carries away 0.05 × 500 = 25 kg m/s, and ten leave every second, so momentum is being given to the bullets at 250 kg m/s per second. By the third law the bullets push back on the gun at the same rate, so 250 N must be applied to hold it. Note what the calculation never needed: the force during any single shot, which is enormous and lasts a fraction of a millisecond. Averaging over the second is what makes the question answerable at all. (25 is the momentum of one bullet, 2500 slips a factor of ten, and 500 quotes the muzzle speed as though it were a force.)",
+      "checkExpr": "10*0.05*500",
+      "translations": {
+        "hi": {
+          "stem": "एक मशीनगन प्रति सेकंड 10 गोलियाँ दागती है, हर एक 50 g की, 500 m/s की नाल-चाल से। बंदूक को स्थिर थामे रखने के लिए कितना बल लगाना होगा?",
+          "choices": [
+            "2500 N",
+            "25 N",
+            "500 N",
+            "250 N"
+          ],
+          "solution": "बल संवेग-परिवर्तन की दर है, और जब भी द्रव्यमान तंत्र से निकल रहा हो यही रूप उठाना चाहिए। हर गोली 0.05 × 500 = 25 kg m/s ले जाती है, और हर सेकंड दस निकलती हैं, अतः गोलियों को संवेग 250 kg m/s प्रति सेकंड की दर से दिया जा रहा है। तीसरे नियम से गोलियाँ बंदूक पर उसी दर से पीछे धकेलती हैं, अतः थामे रखने को 250 N लगाना होगा। ध्यान दो गणना को कभी क्या नहीं चाहिए था: किसी एक शॉट का बल, जो विशाल है और मिलीसेकंड के अंश भर चलता है। सेकंड भर का औसत लेना ही प्रश्न को उत्तर-योग्य बनाता है। (25 एक गोली का संवेग है, 2500 में दस का गुणक खिसक जाता है, और 500 नाल-चाल को ऐसे बताता है मानो वह बल हो।)"
+        },
+        "mr": {
+          "stem": "एक मशीनगन दर सेकंदाला 10 गोळ्या झाडते, प्रत्येक 50 g ची, 500 m/s च्या नळी-चालीने. बंदूक स्थिर धरून ठेवण्यासाठी किती बल लावावे लागेल?",
+          "choices": [
+            "2500 N",
+            "25 N",
+            "500 N",
+            "250 N"
+          ],
+          "solution": "बल म्हणजे संवेगबदलाचा दर, आणि जेव्हा वस्तुमान प्रणालीतून बाहेर जात असते तेव्हा हेच रूप उचलावे. प्रत्येक गोळी 0.05 × 500 = 25 kg m/s घेऊन जाते, आणि दर सेकंदाला दहा निघतात, म्हणून गोळ्यांना संवेग 250 kg m/s प्रति सेकंद या दराने दिला जात आहे. तिसऱ्या नियमाने गोळ्या बंदुकीवर त्याच दराने मागे रेटतात, म्हणून धरून ठेवायला 250 N लावावे लागेल. लक्षात घ्या गणनेला काय कधीच लागले नाही: कोणत्याही एका गोळीच्या वेळचे बल, जे प्रचंड आहे आणि मिलिसेकंदाचा अंशभर टिकते. सेकंदभराची सरासरी घेणेच प्रश्नाला उत्तरयोग्य बनवते. (25 हा एका गोळीचा संवेग, 2500 मध्ये दहाचा गुणक सरकतो, आणि 500 नळी-चाल अशी सांगते जणू ते बल असावे.)"
+        }
+      }
+    }
+  ]
+}

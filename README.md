@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 280
-  chapters / 4,521 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 284
+  chapters / 4,634 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2548,8 +2548,26 @@ navigation" means the actual list rather than one somebody maintained by hand.
   Outcomes of Democracy); and Economics 5 — *Understanding Economic
   Development* — in `g10-economics.ts` (Development, Sectors of the
   Indian Economy, Money and Credit, Globalisation, Consumer Rights).
-  Classes 11 and 12 remain. Suite re-pointed and green: 84 files, 1453
-  tests.
+  **Class 11 has now opened, and it changed the shape of a chapter.**
+  Up to Class 10 a chapter was conceptual or computed and never both —
+  history through the fact engine, maths through the numeric module.
+  Class 11 physics does not divide that way, so `withNumeric` in
+  `scripts/quiz2/numeric.ts` now bolts individually-authored computed
+  problems onto the ladder the engine generated, in the same topic file:
+  a pupil revising projectiles gets the independence of the perpendicular
+  components AND the range of a 20 m/s throw from one card, the
+  quantitative half proven arithmetically by checkExpr while the
+  conceptual half stays honestly unproven. Four chapters are in
+  `g11-physics.ts` — Units and Measurements, Motion in a Straight Line,
+  Motion in a Plane, Laws of Motion — 113 questions, each chapter six
+  facts or more plus an authored L5 and L6 and ten computed problems
+  spanning the ladder. The entity names deliberately avoid the Class 9
+  motion vocabulary: this grade asks what an inertial frame IS, why a
+  third-law pair can never cancel, why averaging cannot touch a zero
+  error, and why dimensional analysis can refuse a formula but never
+  bless one. The rest of Class 11 physics (Work Energy and Power through
+  Waves), Chemistry, Biology and Maths remain, and Class 12 after them.
+  Suite re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
