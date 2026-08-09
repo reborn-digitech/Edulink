@@ -1058,4 +1058,700 @@ export const G10_CIVICS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Political Parties                                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-10-political-parties",
+    subject: "CIVICS",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 4 — Political Parties",
+      hi: "अध्याय 4 — राजनीतिक दल",
+      mr: "प्रकरण 4 — राजकीय पक्ष",
+    },
+    name: {
+      en: "Political Parties",
+      hi: "राजनीतिक दल",
+      mr: "राजकीय पक्ष",
+    },
+    summary: {
+      en: "The institution nobody trusts and no democracy can do without: the work a party actually performs between elections, the count of parties a society ends up with and why, the law that stopped members being bought and quietly stopped them dissenting too, families that inherit a party, and money that buys the ticket before any voter is asked.",
+      hi: "वह संस्था जिस पर कोई भरोसा नहीं करता और जिसके बिना कोई लोकतंत्र चल नहीं सकता: चुनावों के बीच दल वस्तुतः जो काम करता है, कोई समाज कितने दलों पर पहुँचता और क्यों, वह क़ानून जिसने सदस्यों की ख़रीद रोकी और चुपचाप उनकी असहमति भी, वे परिवार जो दल विरासत में पाते, और वह पैसा जो किसी मतदाता से पूछे जाने से पहले टिकट ख़रीद लेता।",
+      mr: "ती संस्था जिच्यावर कोणी विश्वास ठेवत नाही आणि जिच्याविना कोणतीही लोकशाही चालू शकत नाही: निवडणुकांदरम्यान पक्ष प्रत्यक्षात जे काम करतो, एखादा समाज किती पक्षांवर पोहोचतो आणि का, तो कायदा ज्याने सदस्यांची खरेदी थांबवली आणि गुपचूप त्यांची असहमतीही, ती कुटुंबे जी पक्ष वारशाने मिळवतात, आणि तो पैसा जो कोणत्याही मतदाराला विचारण्याआधीच तिकीट विकत घेतो.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "functions-of-a-party",
+        name: {
+          en: "The functions of a party",
+          hi: "दल के कार्य",
+          mr: "पक्षाची कार्ये",
+        },
+        kind: "idea",
+        prompt: {
+          en: "It contests elections, puts forward policies, makes laws, forms and runs governments, plays the opposition when it loses, shapes opinion, and carries people's demands to those in office. Which institution does all of this?",
+          hi: "वह चुनाव लड़ती है, नीतियाँ रखती है, क़ानून बनाती है, सरकारें बनाती और चलाती है, हारने पर विपक्ष निभाती है, राय गढ़ती है, और लोगों की माँगें पदासीनों तक ले जाती है। यह सब कौन-सी संस्था करती है?",
+          mr: "ती निवडणुका लढवते, धोरणे मांडते, कायदे करते, सरकारे बनवते आणि चालवते, हरल्यावर विरोधी पक्ष निभावते, मत घडवते, आणि लोकांच्या मागण्या पदावरच्यांपर्यंत नेते. हे सर्व कोणती संस्था करते?",
+        },
+        statement: {
+          en: "A political party contests elections, offers policies and programmes, makes laws, forms and runs governments or acts as the opposition, shapes public opinion, and provides people access to government machinery and welfare schemes.",
+          hi: "राजनीतिक दल चुनाव लड़ता है, नीतियाँ तथा कार्यक्रम रखता है, क़ानून बनाता है, सरकारें बनाता-चलाता या विपक्ष की भूमिका निभाता है, जनमत गढ़ता है, और लोगों को सरकारी तंत्र तथा कल्याण योजनाओं तक पहुँच देता है।",
+          mr: "राजकीय पक्ष निवडणुका लढवतो, धोरणे व कार्यक्रम मांडतो, कायदे करतो, सरकारे बनवतो-चालवतो वा विरोधी पक्षाची भूमिका बजावतो, जनमत घडवतो, आणि लोकांना शासकीय यंत्रणा व कल्याण योजनांपर्यंत प्रवेश देतो.",
+        },
+        detail: {
+          en: "Without parties every candidate would be an independent, no government could be held responsible for anything, and no voter could know what a legislature would do before electing it.",
+          hi: "दलों के बिना हर उम्मीदवार निर्दलीय होता, किसी सरकार को किसी बात के लिए ज़िम्मेदार नहीं ठहराया जा सकता, और कोई मतदाता विधानमंडल चुनने से पहले जान नहीं सकता कि वह करेगा क्या।",
+          mr: "पक्षांविना प्रत्येक उमेदवार अपक्ष असता, कोणत्याही सरकारला कशासाठीही जबाबदार धरता आले नसते, आणि कोणता मतदार विधिमंडळ निवडण्याआधी ते काय करेल हे जाणू शकला नसता.",
+        },
+        extra: {
+          en: "A party is made of three things at once — its leaders, its active members and its followers — and losing any one of them leaves it unable to do the work.",
+          hi: "दल एक साथ तीन चीज़ों से बना है — उसके नेता, उसके सक्रिय सदस्य और उसके अनुयायी — और इनमें से कोई एक भी खोने पर वह काम करने योग्य नहीं रहता।",
+          mr: "पक्ष एकाच वेळी तीन गोष्टींनी बनलेला — त्याचे नेते, त्याचे सक्रिय सदस्य आणि त्याचे अनुयायी — आणि यांपैकी एकही गमावल्यास तो काम करण्यायोग्य राहत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Contest, legislate, govern, oppose, and carry demands",
+            hi: "लड़ना, क़ानून बनाना, शासन, विरोध, और माँगें ढोना",
+            mr: "लढणे, कायदे करणे, शासन, विरोध, आणि मागण्या वाहणे",
+          },
+          right: {
+            en: "the functions of a party",
+            hi: "दल के कार्य",
+            mr: "पक्षाची कार्ये",
+          },
+        },
+      },
+      {
+        id: "party-systems",
+        name: {
+          en: "Party systems",
+          hi: "दल-प्रणालियाँ",
+          mr: "पक्षपद्धती",
+        },
+        kind: "idea",
+        prompt: {
+          en: "China permits only one; the United States is effectively contested by two; India has dozens with several holding real power. Which classification counts how many parties a country's competition actually runs on?",
+          hi: "चीन केवल एक की अनुमति देता है; संयुक्त राज्य में प्रभावी रूप से दो मुक़ाबला करते हैं; भारत में दर्जनों हैं जिनमें कई के पास असली सत्ता है। कौन-सा वर्गीकरण गिनता है कि किसी देश की प्रतिस्पर्धा वस्तुतः कितने दलों पर चलती है?",
+          mr: "चीन फक्त एकाला परवानगी देतो; अमेरिकेत प्रत्यक्षात दोन स्पर्धा करतात; भारतात डझनभर आहेत ज्यांतील कित्येकांकडे खरी सत्ता. कोणते वर्गीकरण मोजते की एखाद्या देशाची स्पर्धा प्रत्यक्षात किती पक्षांवर चालते?",
+        },
+        statement: {
+          en: "Party systems are classified by how many parties genuinely compete for power — one-party systems, which are not democratic; two-party systems, where two contenders alternate; and multi-party systems, where several parties matter and governments are often coalitions.",
+          hi: "दल-प्रणालियाँ इससे वर्गीकृत होती हैं कि सत्ता के लिए सचमुच कितने दल मुक़ाबला करते हैं — एकदलीय प्रणालियाँ, जो लोकतांत्रिक नहीं; द्विदलीय, जहाँ दो दावेदार बारी-बारी आते; और बहुदलीय, जहाँ कई दल मायने रखते और सरकारें अक्सर गठबंधन होती हैं।",
+          mr: "पक्षपद्धती यावरून वर्गीकृत होतात की सत्तेसाठी खरोखर किती पक्ष स्पर्धा करतात — एकपक्षीय पद्धती, ज्या लोकशाही नाहीत; द्विपक्षीय, जिथे दोन दावेदार आळीपाळीने येतात; आणि बहुपक्षीय, जिथे अनेक पक्ष महत्त्वाचे आणि सरकारे अनेकदा आघाड्या असतात.",
+        },
+        detail: {
+          en: "No system is simply best: the number a country ends up with grows out of its social divisions, its history and its electoral rules, and cannot be chosen at will.",
+          hi: "कोई प्रणाली बस सर्वोत्तम नहीं: कोई देश जिस संख्या पर पहुँचता है वह उसके सामाजिक विभाजनों, उसके इतिहास और उसके चुनावी नियमों से उगती है, और मर्ज़ी से चुनी नहीं जा सकती।",
+          mr: "कोणतीही पद्धत केवळ सर्वोत्तम नाही: एखादा देश ज्या संख्येवर पोहोचतो ती त्याच्या सामाजिक विभाजनांतून, त्याच्या इतिहासातून आणि त्याच्या निवडणूक नियमांतून उगवते, आणि मर्जीने निवडता येत नाही.",
+        },
+        extra: {
+          en: "A two-party system offers clarity but leaves large groups unrepresented; a multi-party one represents more people but tends to produce coalitions that bargain.",
+          hi: "द्विदलीय प्रणाली स्पष्टता देती है पर बड़े समूह बिना प्रतिनिधित्व छोड़ती है; बहुदलीय अधिक लोगों का प्रतिनिधित्व करती है पर सौदेबाज़ी करती गठबंधन सरकारें देती है।",
+          mr: "द्विपक्षीय पद्धत स्पष्टता देते पण मोठे गट प्रतिनिधित्वाविना सोडते; बहुपक्षीय अधिक लोकांचे प्रतिनिधित्व करते पण घासाघीस करणाऱ्या आघाड्या घडवते.",
+        },
+        pair: {
+          left: {
+            en: "How many parties really contest for power",
+            hi: "सत्ता के लिए सचमुच कितने दल लड़ते",
+            mr: "सत्तेसाठी खरोखर किती पक्ष लढतात",
+          },
+          right: {
+            en: "party systems",
+            hi: "दल-प्रणालियाँ",
+            mr: "पक्षपद्धती",
+          },
+        },
+      },
+      {
+        id: "national-and-state-parties",
+        name: {
+          en: "National and state parties",
+          hi: "राष्ट्रीय और राज्य दल",
+          mr: "राष्ट्रीय आणि राज्य पक्ष",
+        },
+        kind: "structure",
+        prompt: {
+          en: "The Election Commission recognises some parties across the country and others within a single state, allotting each a reserved symbol on the basis of votes and seats won. Which classification is this?",
+          hi: "निर्वाचन आयोग कुछ दलों को पूरे देश में और अन्य को एक ही राज्य के भीतर मान्यता देता है, और जीते मतों तथा सीटों के आधार पर हर एक को आरक्षित चिह्न देता है। यह कौन-सा वर्गीकरण है?",
+          mr: "निवडणूक आयोग काही पक्षांना देशभर आणि इतरांना एकाच राज्यात मान्यता देतो, आणि जिंकलेल्या मते व जागांच्या आधारावर प्रत्येकाला राखीव चिन्ह देतो. हे कोणते वर्गीकरण?",
+        },
+        statement: {
+          en: "The Election Commission recognises parties as national or state parties on the basis of their share of votes and seats, and gives each a reserved election symbol that no other party may use.",
+          hi: "निर्वाचन आयोग दलों को उनके मत तथा सीट-हिस्से के आधार पर राष्ट्रीय या राज्य दल के रूप में मान्यता देता है, और हर एक को आरक्षित चुनाव-चिह्न देता है जिसे कोई अन्य दल इस्तेमाल नहीं कर सकता।",
+          mr: "निवडणूक आयोग पक्षांना त्यांच्या मते व जागांच्या वाट्याच्या आधारावर राष्ट्रीय वा राज्य पक्ष म्हणून मान्यता देतो, आणि प्रत्येकाला राखीव निवडणूक चिन्ह देतो जे इतर कोणताही पक्ष वापरू शकत नाही.",
+        },
+        detail: {
+          en: "The symbol matters in a country where many voters cannot read a name: it is the party's identity on the ballot and cannot be borrowed by a rival.",
+          hi: "ऐसे देश में जहाँ कई मतदाता नाम नहीं पढ़ सकते, चिह्न मायने रखता है: वह मतपत्र पर दल की पहचान है और कोई प्रतिद्वंद्वी उसे उधार नहीं ले सकता।",
+          mr: "अशा देशात जिथे अनेक मतदार नाव वाचू शकत नाहीत, चिन्ह महत्त्वाचे: ते मतपत्रावरील पक्षाची ओळख आणि कोणता प्रतिस्पर्धी ते उसने घेऊ शकत नाही.",
+        },
+        extra: {
+          en: "State parties have grown steadily stronger, and since 1989 no national party has been able to form a government at the centre without their support.",
+          hi: "राज्य दल लगातार मज़बूत होते गए हैं, और 1989 से कोई राष्ट्रीय दल उनके समर्थन बिना केंद्र में सरकार नहीं बना सका।",
+          mr: "राज्य पक्ष सतत बळकट होत गेले, आणि 1989 पासून कोणताही राष्ट्रीय पक्ष त्यांच्या पाठिंब्याविना केंद्रात सरकार बनवू शकलेला नाही.",
+        },
+        pair: {
+          left: {
+            en: "Recognised across the country or within one state",
+            hi: "पूरे देश में या एक राज्य के भीतर मान्यता-प्राप्त",
+            mr: "देशभर वा एका राज्यात मान्यताप्राप्त",
+          },
+          right: {
+            en: "national and state parties",
+            hi: "राष्ट्रीय और राज्य दल",
+            mr: "राष्ट्रीय आणि राज्य पक्ष",
+          },
+        },
+      },
+      {
+        id: "anti-defection-law",
+        name: {
+          en: "The anti-defection law",
+          hi: "दल-बदल विरोधी क़ानून",
+          mr: "पक्षांतरबंदी कायदा",
+        },
+        kind: "law",
+        prompt: {
+          en: "A constitutional amendment provided that a legislator who leaves the party on whose ticket they were elected, or votes against its instruction, loses their seat — a rule aimed at members changing sides for office or money. Which law is this?",
+          hi: "एक संवैधानिक संशोधन ने तय किया कि जो विधायक उस दल को छोड़े जिसके टिकट पर वह चुना गया, या उसके निर्देश के विरुद्ध मत दे, वह अपनी सीट खो देगा — यह नियम पद या पैसे के लिए पाला बदलते सदस्यों पर निशाना था। यह कौन-सा क़ानून है?",
+          mr: "एका घटनादुरुस्तीने ठरवले की जो आमदार-खासदार ज्या पक्षाच्या तिकिटावर निवडून आला तो सोडेल, वा त्याच्या आदेशाविरुद्ध मत देईल, तो आपली जागा गमावेल — हा नियम पद वा पैशासाठी बाजू बदलणाऱ्या सदस्यांवर रोखलेला. हा कोणता कायदा?",
+        },
+        statement: {
+          en: "The anti-defection law disqualifies a legislator who leaves the party on whose symbol they were elected, or who votes against the party whip, and it was enacted to stop members being bought to topple governments.",
+          hi: "दल-बदल विरोधी क़ानून उस विधायक को अयोग्य ठहराता है जो उस दल को छोड़े जिसके चिह्न पर वह चुना गया, या जो दल के व्हिप के विरुद्ध मत दे, और वह इसलिए बनाया गया कि सरकारें गिराने को सदस्य ख़रीदे न जा सकें।",
+          mr: "पक्षांतरबंदी कायदा त्या सदस्याला अपात्र ठरवतो जो ज्या पक्षाच्या चिन्हावर निवडून आला तो सोडतो, वा जो पक्षाच्या व्हिपविरुद्ध मत देतो, आणि तो यासाठी केला की सरकारे पाडायला सदस्य विकत घेतले जाऊ नयेत.",
+        },
+        detail: {
+          en: "It largely stopped the practice it targeted, and governments became much harder to topple by purchasing individual members.",
+          hi: "उसने बड़े हिस्से में वह प्रथा रोक दी जिस पर वह लक्षित था, और अलग-अलग सदस्य ख़रीदकर सरकारें गिराना कहीं कठिन हो गया।",
+          mr: "त्याने ज्यावर रोख होता ती प्रथा मोठ्या प्रमाणात थांबवली, आणि वेगवेगळे सदस्य विकत घेऊन सरकारे पाडणे कितीतरी कठीण झाले.",
+        },
+        extra: {
+          en: "It also had a cost nobody intended: a member who disagrees with their own party on a bill can no longer say so with a vote, so debate inside the house counts for less.",
+          hi: "उसकी एक ऐसी क़ीमत भी रही जो किसी ने नहीं चाही: जो सदस्य किसी विधेयक पर अपने ही दल से असहमत हो वह अब मत से यह कह नहीं सकता, अतः सदन के भीतर बहस का महत्व घट जाता है।",
+          mr: "त्याची अशी किंमतही ठरली जी कोणी इच्छिली नव्हती: जो सदस्य एखाद्या विधेयकावर स्वतःच्याच पक्षाशी असहमत असतो तो आता मताने ते सांगू शकत नाही, म्हणून सभागृहातील चर्चेचे महत्त्व घटते.",
+        },
+        pair: {
+          left: {
+            en: "Change your party or defy the whip, lose your seat",
+            hi: "दल बदलो या व्हिप तोड़ो, सीट गँवाओ",
+            mr: "पक्ष बदला वा व्हिप मोडा, जागा गमवा",
+          },
+          right: {
+            en: "the anti-defection law",
+            hi: "दल-बदल विरोधी क़ानून",
+            mr: "पक्षांतरबंदी कायदा",
+          },
+        },
+      },
+      {
+        id: "dynastic-succession",
+        name: {
+          en: "Dynastic succession",
+          hi: "वंशवादी उत्तराधिकार",
+          mr: "घराणेशाही वारसा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Because many parties hold no organisational elections and keep no membership register, the top posts pass to those close to the leader, and often to the leader's own family. What challenge is this?",
+          hi: "क्योंकि कई दल संगठनात्मक चुनाव नहीं कराते और सदस्यता-रजिस्टर नहीं रखते, शीर्ष पद नेता के निकटस्थों को, और अक्सर नेता के अपने परिवार को चले जाते हैं। यह कौन-सी चुनौती है?",
+          mr: "अनेक पक्ष संघटनात्मक निवडणुका घेत नाहीत आणि सदस्यत्व नोंदवही ठेवत नाहीत, म्हणून वरची पदे नेत्याच्या जवळच्यांना, आणि अनेकदा नेत्याच्या स्वतःच्या कुटुंबाला जातात. हे कोणते आव्हान?",
+        },
+        statement: {
+          en: "Dynastic succession is the challenge of party leadership passing to family members and favoured insiders, and it follows from the absence of inner-party democracy — no organisational elections, no membership register, no open contest for posts.",
+          hi: "वंशवादी उत्तराधिकार दल-नेतृत्व के परिवारजनों तथा कृपापात्र भीतरी लोगों को जाने की चुनौती है, और वह आंतरिक दल-लोकतंत्र के अभाव से निकलती है — न संगठनात्मक चुनाव, न सदस्यता-रजिस्टर, न पदों के लिए खुला मुक़ाबला।",
+          mr: "घराणेशाही वारसा म्हणजे पक्षनेतृत्व कुटुंबीय व मर्जीतल्या आतल्या माणसांकडे जाण्याचे आव्हान, आणि ते अंतर्गत पक्ष-लोकशाहीच्या अभावातून निघते — ना संघटनात्मक निवडणुका, ना सदस्यत्व नोंदवही, ना पदांसाठी खुली स्पर्धा.",
+        },
+        detail: {
+          en: "The objection is not that a leader's relative may be capable, but that ordinary members never get the chance to be tested against them.",
+          hi: "आपत्ति यह नहीं कि नेता का रिश्तेदार योग्य हो सकता है, बल्कि यह कि साधारण सदस्यों को उसके सामने परखे जाने का अवसर कभी मिलता ही नहीं।",
+          mr: "आक्षेप हा नाही की नेत्याचा नातेवाईक सक्षम असू शकतो, तर हा की सामान्य सदस्यांना त्याच्यासमोर तपासले जाण्याची संधी कधी मिळतच नाही.",
+        },
+        extra: {
+          en: "It is not peculiar to India: parties in many long-established democracies concentrate power in small unelected circles, though rarely along family lines.",
+          hi: "यह भारत की विशेषता नहीं: कई पुराने लोकतंत्रों के दल भी सत्ता छोटे अनिर्वाचित घेरों में केंद्रित करते हैं, यद्यपि पारिवारिक रेखाओं पर कम ही।",
+          mr: "हे भारताचे वैशिष्ट्य नाही: अनेक जुन्या लोकशाहींतील पक्षही सत्ता लहान न-निवडलेल्या वर्तुळांत केंद्रित करतात, जरी कौटुंबिक रेषांवर क्वचितच.",
+        },
+        pair: {
+          left: {
+            en: "No inner elections, so the post stays in the family",
+            hi: "भीतरी चुनाव नहीं, अतः पद परिवार में ही",
+            mr: "आतल्या निवडणुका नाहीत, म्हणून पद कुटुंबातच",
+          },
+          right: {
+            en: "dynastic succession",
+            hi: "वंशवादी उत्तराधिकार",
+            mr: "घराणेशाही वारसा",
+          },
+        },
+      },
+      {
+        id: "money-and-muscle",
+        name: {
+          en: "Money and muscle power",
+          hi: "धन-बल और बाहुबल",
+          mr: "धनशक्ती आणि बाहुबल",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Because elections are expensive, parties prefer candidates who can fund their own campaigns or bring donors, and in some constituencies candidates who can command force — so wealth and intimidation decide who appears on the ballot. Which challenge is this?",
+          hi: "क्योंकि चुनाव महँगे हैं, दल ऐसे उम्मीदवार पसंद करते हैं जो अपना अभियान स्वयं वित्तपोषित कर सकें या दानदाता ला सकें, और कुछ क्षेत्रों में ऐसे जो बल जुटा सकें — अतः धन और भय तय करते हैं कि मतपत्र पर कौन आएगा। यह कौन-सी चुनौती है?",
+          mr: "निवडणुका महाग असल्याने, पक्ष असे उमेदवार पसंत करतात जे स्वतःची मोहीम स्वतः चालवू शकतील वा देणगीदार आणू शकतील, आणि काही मतदारसंघांत असे जे बळ उभे करू शकतील — म्हणून संपत्ती आणि दहशत ठरवतात की मतपत्रावर कोण येईल. हे कोणते आव्हान?",
+        },
+        statement: {
+          en: "Money and muscle power distort party competition by making the ability to finance a campaign, or to command force locally, the effective test for getting a ticket, rather than the candidate's record or support.",
+          hi: "धन-बल और बाहुबल दलीय प्रतिस्पर्धा को विकृत करते हैं क्योंकि टिकट पाने की असली कसौटी उम्मीदवार का रिकॉर्ड या समर्थन नहीं बल्कि अभियान वित्तपोषित करने या स्थानीय रूप से बल जुटाने की क्षमता बन जाती है।",
+          mr: "धनशक्ती आणि बाहुबल पक्षीय स्पर्धा विकृत करतात कारण तिकीट मिळवण्याची खरी कसोटी उमेदवाराचा लौकिक वा पाठिंबा नव्हे तर मोहीम चालवण्याची किंवा स्थानिक बळ उभे करण्याची क्षमता बनते.",
+        },
+        detail: {
+          en: "The effect is on the choice offered, not on the voter: an electorate can only pick among the names parties have already decided to put forward.",
+          hi: "असर मतदाता पर नहीं, दी गई पसंद पर है: मतदाता केवल उन्हीं नामों में से चुन सकते हैं जिन्हें दल पहले ही रखने का निर्णय कर चुके।",
+          mr: "परिणाम मतदारावर नव्हे तर दिलेल्या पर्यायावर: मतदार केवळ त्याच नावांतून निवडू शकतात जी पक्षांनी आधीच मांडायचे ठरवले.",
+        },
+        extra: {
+          en: "Disclosure of candidates' assets and criminal cases was made compulsory by a Supreme Court order, so the information now exists — whether voters can act on it is another matter.",
+          hi: "उम्मीदवारों की संपत्ति तथा आपराधिक मुक़दमों का प्रकटीकरण उच्चतम न्यायालय के आदेश से अनिवार्य हुआ, अतः सूचना अब मौजूद है — मतदाता उस पर कार्रवाई कर पाते या नहीं यह अलग बात है।",
+          mr: "उमेदवारांची मालमत्ता व गुन्हेगारी खटले जाहीर करणे सर्वोच्च न्यायालयाच्या आदेशाने सक्तीचे झाले, म्हणून माहिती आता उपलब्ध — मतदार तिच्यावर कृती करू शकतात की नाही ही वेगळी बाब.",
+        },
+        pair: {
+          left: {
+            en: "Wealth and force deciding who gets the ticket",
+            hi: "धन और बल तय करें टिकट किसे मिले",
+            mr: "संपत्ती आणि बळ ठरवतात तिकीट कोणाला",
+          },
+          right: {
+            en: "money and muscle power",
+            hi: "धन-बल और बाहुबल",
+            mr: "धनशक्ती आणि बाहुबल",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Commentators regularly describe India's multi-party system as a weakness, pointing to coalitions, unstable governments and horse-trading, and suggest a two-party system would serve the country better. Assess whether the number of parties is a choice India could make.",
+          hi: "टिप्पणीकार नियमित रूप से भारत की बहुदलीय प्रणाली को कमज़ोरी बताते हैं, गठबंधनों, अस्थिर सरकारों और सौदेबाज़ी की ओर इशारा करते हुए, और सुझाते हैं कि द्विदलीय प्रणाली देश की बेहतर सेवा करेगी। परखो कि दलों की संख्या क्या ऐसा चुनाव है जो भारत कर सकता है।",
+          mr: "भाष्यकार नियमितपणे भारताच्या बहुपक्षीय पद्धतीला दुर्बलता म्हणतात, आघाड्या, अस्थिर सरकारे आणि घोडेबाजाराकडे बोट दाखवत, आणि सुचवतात की द्विपक्षीय पद्धत देशाची अधिक चांगली सेवा करेल. तपासा की पक्षांची संख्या ही अशी निवड आहे का जी भारत करू शकतो.",
+        },
+        choices: [
+          {
+            en: "It is not a choice. The number of parties grows out of a society's divisions — region, language, caste and religion, each concentrated enough somewhere to elect representatives — together with its history and electoral rules. Forcing two parties on a society this varied would leave whole regions and communities without anyone speaking for them, which is the failure that produced Sri Lanka's conflict. Coalitions are the price of representation, and the real question is how to make them work, not how to abolish them",
+            hi: "यह चुनाव नहीं है। दलों की संख्या समाज के विभाजनों से उगती है — क्षेत्र, भाषा, जाति और धर्म, हर एक कहीं न कहीं प्रतिनिधि चुनने भर केंद्रित — साथ ही उसके इतिहास और चुनावी नियमों से। इतने विविध समाज पर दो दल थोपना पूरे-पूरे क्षेत्रों तथा समुदायों को बिना किसी बोलने वाले के छोड़ देगा, और वही विफलता श्रीलंका का संघर्ष लाई थी। गठबंधन प्रतिनिधित्व की क़ीमत हैं, और असली प्रश्न यह कि उन्हें चलाया कैसे जाए, मिटाया कैसे जाए यह नहीं",
+            mr: "ही निवड नाही. पक्षांची संख्या समाजाच्या विभाजनांतून उगवते — प्रदेश, भाषा, जात आणि धर्म, प्रत्येक कुठेतरी प्रतिनिधी निवडण्याइतका केंद्रित — तसेच त्याचा इतिहास आणि निवडणूक नियमांतून. इतक्या विविध समाजावर दोन पक्ष लादणे अख्खे प्रदेश आणि समुदाय बोलणाऱ्या कोणाविनाच सोडेल, आणि तेच अपयश श्रीलंकेचा संघर्ष घडवत होते. आघाड्या ही प्रतिनिधित्वाची किंमत, आणि खरा प्रश्न त्या कशा चालवाव्यात हा, त्या कशा संपवाव्यात हा नाही",
+          },
+          {
+            en: "Yes — a country can simply legislate that only two parties may exist, and most democracies have done so",
+            hi: "हाँ — कोई देश बस क़ानून बना सकता है कि केवल दो दल रहें, और अधिकांश लोकतंत्रों ने ऐसा किया है",
+            mr: "होय — एखादा देश फक्त कायदा करू शकतो की केवळ दोनच पक्ष असावेत, आणि बहुतांश लोकशाहींनी तसे केले आहे",
+          },
+          {
+            en: "The number of parties is random and has no relation to a society's divisions or its electoral system",
+            hi: "दलों की संख्या बेतरतीब है और उसका समाज के विभाजनों या चुनावी प्रणाली से कोई संबंध नहीं",
+            mr: "पक्षांची संख्या यादृच्छिक आणि तिचा समाजाच्या विभाजनांशी वा निवडणूक पद्धतीशी संबंध नाही",
+          },
+          {
+            en: "India in fact has a two-party system already, so the criticism describes a country that does not exist",
+            hi: "भारत में वस्तुतः पहले से द्विदलीय प्रणाली है, अतः आलोचना ऐसे देश का वर्णन करती है जो है ही नहीं",
+            mr: "भारतात प्रत्यक्षात आधीच द्विपक्षीय पद्धत आहे, म्हणून टीका अशा देशाचे वर्णन करते जो अस्तित्वातच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The criticism treats the number of parties as a design decision, and it is not. A party system is an outcome, produced by three things a country cannot simply overrule. The first is social structure. Parties form around divisions that people actually care about and that are geographically concentrated enough to win seats. India has religious, linguistic, caste and regional divisions, and crucially these do not line up on top of one another — a Tamil-speaking farmer, a Marathi industrial worker and a Bihari Dalit labourer have overlapping but distinct concerns, and each cluster is large and concentrated enough somewhere to elect people. A society with that many cross-cutting cleavages will generate many parties, because there are many distinct constituencies to be spoken for. The second is history: parties that led particular movements — for statehood, for language, for the dignity of a community — persist because the loyalty they earned persists. The third is electoral rules, which do have an effect. First-past-the-post systems tend to reduce the number of parties nationally, because a party that finishes third everywhere wins nothing. But that pressure is defeated when support is regionally concentrated: a party with ten per cent of the national vote all located in one state wins that state's seats outright. India's regional parties are exactly this case, which is why first-past-the-post has not produced two parties here as it largely did in Britain. Now consider what forcing two parties would mean, since that is what the proposal amounts to. Every one of those regional, linguistic and community-based constituencies would have to be absorbed into one of two national organisations or go unrepresented. The concerns that are currently voiced in a legislature by a party that exists to voice them would instead have to be raised inside a large party as an internal faction, or not raised at all. The chapter on power sharing has already shown what happens to a group with no route to being heard within the system: Sri Lanka's Tamils had votes and a parliament, but no way to affect anything, and the road from there ran to war. A multi-party system is expensive in exactly the way power sharing is expensive, and for the same reason — it buys the participation of people who would otherwise have no reason to accept the outcome. The honest response is therefore not to defend coalitions as costless. They are slower, they involve bargaining that looks unedifying, they can be brought down mid-term, and a small party holding the balance can extract concessions out of proportion to its support. The anti-defection law was one attempt to limit the worst of it. But the reforms worth arguing about are ones that make coalitions function — coherent pre-election alliances, published common programmes, transparent funding, inner-party democracy so that a party is more than its leader — rather than a wish that the country were less various than it is. (The wrong answers imagine parties can be limited by statute in a democracy, deny the well-documented relationship between social cleavages and party systems, or describe an India that dozens of parties in Parliament contradict.)",
+          hi: "आलोचना दलों की संख्या को रचना-संबंधी निर्णय मानती है, और वह है नहीं। दल-प्रणाली एक परिणाम है, जो तीन ऐसी चीज़ों से बनता है जिन्हें कोई देश बस पलट नहीं सकता। पहली सामाजिक संरचना। दल उन विभाजनों के गिर्द बनते हैं जिनकी लोगों को वास्तव में परवाह है और जो सीटें जीतने भर भौगोलिक रूप से केंद्रित हैं। भारत में धार्मिक, भाषायी, जातीय और क्षेत्रीय विभाजन हैं, और मुख्यतः वे एक-दूसरे के ऊपर नहीं बैठते — तमिल-भाषी किसान, मराठी औद्योगिक मज़दूर और बिहारी दलित मज़दूर की चिंताएँ अतिव्यापी पर भिन्न हैं, और हर गुच्छा कहीं न कहीं इतना बड़ा और केंद्रित है कि लोग चुन सके। जिस समाज में इतनी आड़ी-तिरछी दरारें हों वह कई दल पैदा करेगा, क्योंकि बोलने को कई भिन्न निर्वाचक-वर्ग हैं। दूसरी इतिहास: जिन दलों ने विशेष आंदोलनों का नेतृत्व किया — राज्य के लिए, भाषा के लिए, किसी समुदाय की गरिमा के लिए — वे टिके रहते हैं क्योंकि जो निष्ठा उन्होंने कमाई वह टिकी रहती है। तीसरी चुनावी नियम, जिनका असर होता ही है। पहले-पद-पर-पहुँचो प्रणालियाँ राष्ट्रीय स्तर पर दलों की संख्या घटाती हैं, क्योंकि जो दल हर जगह तीसरे स्थान पर रहे वह कुछ नहीं जीतता। पर वह दबाव तब हार जाता है जब समर्थन क्षेत्रीय रूप से केंद्रित हो: जिस दल के पास राष्ट्रीय मतों का दस प्रतिशत हो और वह सब एक ही राज्य में हो, वह उस राज्य की सीटें सीधे जीत लेता है। भारत के क्षेत्रीय दल ठीक यही प्रकरण हैं, इसीलिए पहले-पद-पर-पहुँचो ने यहाँ दो दल नहीं दिए जैसे ब्रिटेन में बड़े हिस्से में दिए। अब सोचो दो दल थोपने का अर्थ क्या होगा, क्योंकि प्रस्ताव यही है। उन सब क्षेत्रीय, भाषायी और समुदाय-आधारित निर्वाचक-वर्गों को दो राष्ट्रीय संगठनों में से किसी एक में समाना होगा या बिना प्रतिनिधित्व रहना होगा। जो चिंताएँ अभी विधानमंडल में उन्हीं के लिए बने दल द्वारा उठाई जाती हैं वे इसके बजाय किसी बड़े दल के भीतर आंतरिक गुट के रूप में उठानी होंगी, या उठाई ही नहीं जाएँगी। सत्ता-साझेदारी वाला अध्याय पहले ही दिखा चुका कि तंत्र के भीतर सुने जाने का रास्ता न रखते समूह के साथ क्या होता है: श्रीलंका के तमिलों के पास मत और संसद थी, पर कुछ भी प्रभावित करने का उपाय नहीं, और वहाँ से रास्ता युद्ध तक गया। बहुदलीय प्रणाली ठीक उसी तरह महँगी है जैसे सत्ता-साझेदारी महँगी है, और उसी कारण — वह उन लोगों की भागीदारी ख़रीदती है जिनके पास अन्यथा परिणाम स्वीकारने का कोई कारण न होता। अतः ईमानदार उत्तर यह नहीं कि गठबंधनों को बिना लागत बताया जाए। वे धीमे हैं, उनमें ऐसी सौदेबाज़ी है जो देखने में अच्छी नहीं लगती, वे बीच कार्यकाल गिराए जा सकते हैं, और संतुलन थामे छोटा दल अपने समर्थन से बहुत अधिक रियायतें निचोड़ सकता है। दल-बदल विरोधी क़ानून सबसे बुरे को सीमित करने का एक प्रयास था। पर बहस-योग्य सुधार वे हैं जो गठबंधनों को चलाएँ — सुसंगत चुनाव-पूर्व गठजोड़, प्रकाशित साझा कार्यक्रम, पारदर्शी वित्तपोषण, आंतरिक दल-लोकतंत्र ताकि दल अपने नेता से अधिक हो — यह कामना नहीं कि देश जितना विविध है उससे कम होता। (ग़लत उत्तर कल्पना करते कि लोकतंत्र में दलों को क़ानून से सीमित किया जा सकता, सामाजिक दरारों और दल-प्रणालियों के भली-भाँति दर्ज रिश्ते को नकारते, या ऐसे भारत का वर्णन करते जिसका खंडन संसद में दर्जनों दल करते हैं।)",
+          mr: "टीका पक्षांची संख्या हा रचनात्मक निर्णय मानते, आणि तो नाही. पक्षपद्धती हा परिणाम आहे, जो तीन अशा गोष्टींतून बनतो ज्या कोणता देश फक्त पलटवू शकत नाही. पहिली सामाजिक रचना. पक्ष त्या विभाजनांभोवती बनतात ज्यांची लोकांना खरोखर काळजी आणि जी जागा जिंकण्याइतकी भौगोलिकदृष्ट्या केंद्रित. भारतात धार्मिक, भाषिक, जातीय आणि प्रादेशिक विभाजने आहेत, आणि मुख्यतः ती एकमेकांवर बसत नाहीत — तमिळ-भाषिक शेतकरी, मराठी औद्योगिक कामगार आणि बिहारी दलित मजूर यांच्या चिंता आच्छादणाऱ्या पण वेगळ्या, आणि प्रत्येक गुच्छ कुठेतरी इतका मोठा आणि केंद्रित की लोक निवडता येतील. ज्या समाजात इतक्या आडव्यातिडव्या फटी असतील तो अनेक पक्ष निर्माण करेल, कारण बोलण्यासाठी अनेक वेगळे मतदारवर्ग आहेत. दुसरी इतिहास: ज्या पक्षांनी विशिष्ट चळवळींचे नेतृत्व केले — राज्यासाठी, भाषेसाठी, एखाद्या समुदायाच्या प्रतिष्ठेसाठी — ते टिकतात कारण त्यांनी कमावलेली निष्ठा टिकते. तिसरी निवडणूक नियम, ज्यांचा परिणाम होतोच. पहिला-येईल-तो-जिंकेल पद्धती राष्ट्रीय पातळीवर पक्षांची संख्या घटवतात, कारण जो पक्ष सर्वत्र तिसरा येतो तो काहीच जिंकत नाही. पण तो दबाव तेव्हा हरतो जेव्हा पाठिंबा प्रादेशिकरीत्या केंद्रित असतो: ज्या पक्षाकडे राष्ट्रीय मतांचे दहा टक्के आणि ते सर्व एकाच राज्यात, तो त्या राज्याच्या जागा सरळ जिंकतो. भारताचे प्रादेशिक पक्ष नेमके हेच प्रकरण, म्हणूनच पहिला-येईल-तो-जिंकेलने इथे दोन पक्ष दिले नाहीत जसे ब्रिटनमध्ये मोठ्या प्रमाणात दिले. आता दोन पक्ष लादण्याचा अर्थ काय होईल ते पाहा, कारण प्रस्ताव हाच आहे. त्या सर्व प्रादेशिक, भाषिक आणि समुदाय-आधारित मतदारवर्गांना दोन राष्ट्रीय संघटनांपैकी एकात सामावावे लागेल वा प्रतिनिधित्वाविना राहावे लागेल. ज्या चिंता सध्या विधिमंडळात त्यांच्यासाठीच बनलेल्या पक्षाकडून मांडल्या जातात त्या त्याऐवजी एखाद्या मोठ्या पक्षाच्या आत अंतर्गत गट म्हणून मांडाव्या लागतील, वा मांडल्याच जाणार नाहीत. सत्ता-विभागणीच्या प्रकरणाने आधीच दाखवले की व्यवस्थेच्या आत ऐकले जाण्याचा मार्ग नसलेल्या गटाचे काय होते: श्रीलंकेच्या तमिळांकडे मते आणि संसद होती, पण काहीही प्रभावित करण्याचा मार्ग नाही, आणि तिथून वाट युद्धापर्यंत गेली. बहुपक्षीय पद्धत नेमकी तशीच महाग जशी सत्ता-विभागणी महाग, आणि त्याच कारणाने — ती त्या लोकांचा सहभाग विकत घेते ज्यांच्याकडे एरवी निकाल स्वीकारण्याचे कारण नसते. म्हणून प्रामाणिक उत्तर आघाड्यांना खर्चाविनाच्या म्हणणे नाही. त्या मंद आहेत, त्यांत अशी घासाघीस आहे जी पाहायला चांगली दिसत नाही, त्या मध्येच पाडता येतात, आणि तोल सांभाळणारा लहान पक्ष आपल्या पाठिंब्याहून कितीतरी अधिक सवलती काढू शकतो. पक्षांतरबंदी कायदा सर्वांत वाईट मर्यादित करण्याचा एक प्रयत्न होता. पण वादयोग्य सुधारणा त्या ज्या आघाड्या चालवतील — सुसंगत निवडणूकपूर्व युत्या, प्रकाशित समान कार्यक्रम, पारदर्शक अर्थपुरवठा, अंतर्गत पक्ष-लोकशाही जेणेकरून पक्ष त्याच्या नेत्याहून अधिक असेल — देश जितका विविध आहे त्याहून कमी असावा ही इच्छा नव्हे. (चुकीची उत्तरे लोकशाहीत पक्ष कायद्याने मर्यादित करता येतील अशी कल्पना करतात, सामाजिक फटी आणि पक्षपद्धतींमधील नोंदलेले नाते नाकारतात, वा संसदेतील डझनभर पक्ष खोडून काढत असलेल्या भारताचे वर्णन करतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Surveys across many countries find political parties to be the least trusted of all public institutions, and the same surveys find support for democracy high. Explain this apparent contradiction, and say what follows for how parties should be reformed.",
+          hi: "कई देशों के सर्वेक्षण पाते हैं कि राजनीतिक दल सब सार्वजनिक संस्थाओं में सबसे कम भरोसे वाले हैं, और वही सर्वेक्षण लोकतंत्र के लिए समर्थन ऊँचा पाते हैं। इस प्रत्यक्ष विरोधाभास को समझाओ, और बताओ कि दलों में सुधार कैसे हो — इसके लिए इससे क्या निकलता है।",
+          mr: "अनेक देशांतील सर्वेक्षणे आढळतात की राजकीय पक्ष सर्व सार्वजनिक संस्थांत सर्वांत कमी विश्वासाचे, आणि तीच सर्वेक्षणे लोकशाहीला पाठिंबा उच्च आढळतात. हा दिसणारा विरोधाभास समजावा, आणि सांगा पक्षांत सुधारणा कशी व्हावी यासाठी यातून काय निघते.",
+        },
+        choices: [
+          {
+            en: "There is no contradiction: parties are distrusted for what they do badly — dynastic control, opaque money, unkept promises — while being indispensable to what democracy is, since without them no candidate could be held responsible, no government formed, and no voter could know in advance what a legislature would do. The conclusion is reform rather than removal, and reform must be careful: rules imposed from outside can be evaded or can do damage, as the anti-defection law did to internal dissent, so the durable pressure comes from disclosure, competition and members who can hold their own leaders to account",
+            hi: "कोई विरोधाभास नहीं: दलों पर अविश्वास उस बात के लिए है जो वे बुरी तरह करते हैं — वंशवादी नियंत्रण, अपारदर्शी पैसा, अधूरे वादे — जबकि लोकतंत्र जो है उसके लिए वे अपरिहार्य हैं, क्योंकि उनके बिना न किसी उम्मीदवार को ज़िम्मेदार ठहराया जा सकता, न सरकार बन सकती, न मतदाता पहले से जान सकता कि विधानमंडल क्या करेगा। निष्कर्ष हटाना नहीं सुधार है, और सुधार सावधान होना चाहिए: बाहर से थोपे नियम चकमा खा सकते या नुक़सान कर सकते हैं, जैसे दल-बदल विरोधी क़ानून ने आंतरिक असहमति के साथ किया, अतः टिकाऊ दबाव प्रकटीकरण, प्रतिस्पर्धा और ऐसे सदस्यों से आता है जो अपने ही नेताओं को जवाबदेह ठहरा सकें",
+            mr: "कोणताही विरोधाभास नाही: पक्षांवर अविश्वास ते जे वाईट करतात त्यासाठी — घराणेशाही नियंत्रण, अपारदर्शक पैसा, न पाळलेली वचने — तर लोकशाही जी आहे तिच्यासाठी ते अपरिहार्य, कारण त्यांच्याविना ना कोणत्या उमेदवाराला जबाबदार धरता येईल, ना सरकार बनेल, ना मतदार आधीच जाणू शकेल की विधिमंडळ काय करेल. निष्कर्ष काढून टाकणे नव्हे तर सुधारणा, आणि सुधारणा काळजीपूर्वक असावी: बाहेरून लादलेले नियम चुकवता येतात वा नुकसान करू शकतात, जसे पक्षांतरबंदी कायद्याने अंतर्गत असहमतीचे केले, म्हणून टिकाऊ दबाव प्रकटीकरण, स्पर्धा आणि स्वतःच्या नेत्यांना जबाबदार धरू शकणाऱ्या सदस्यांकडून येतो",
+          },
+          {
+            en: "The contradiction is real and shows the surveys are worthless, since no one can support democracy while distrusting parties",
+            hi: "विरोधाभास असली है और दिखाता है कि सर्वेक्षण निर्मूल्य हैं, क्योंकि दलों पर अविश्वास करते हुए कोई लोकतंत्र का समर्थन कर ही नहीं सकता",
+            mr: "विरोधाभास खरा आणि दाखवतो की सर्वेक्षणे निरुपयोगी, कारण पक्षांवर अविश्वास ठेवत कोणी लोकशाहीला पाठिंबा देऊच शकत नाही",
+          },
+          {
+            en: "It shows democracy would work better with no parties at all, every candidate standing as an independent",
+            hi: "यह दिखाता है कि बिना किसी दल के लोकतंत्र बेहतर चलेगा, हर उम्मीदवार निर्दलीय खड़ा हो",
+            mr: "हे दाखवते की कोणत्याही पक्षाविना लोकशाही अधिक चांगली चालेल, प्रत्येक उमेदवार अपक्ष उभा राहावा",
+          },
+          {
+            en: "Parties cannot be reformed by any means, so the distrust is simply a permanent fact to be accepted",
+            hi: "दलों में किसी भी उपाय से सुधार नहीं हो सकता, अतः अविश्वास बस स्वीकार लेने योग्य स्थायी तथ्य है",
+            mr: "पक्षांत कोणत्याही मार्गाने सुधारणा होऊ शकत नाही, म्हणून अविश्वास फक्त स्वीकारण्याजोगे कायमचे तथ्य",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two findings sit together easily once you separate what parties are for from how they behave. Take the first half. Parties are not an optional feature of representative democracy; they are what makes it operable at scale. Imagine an assembly of five hundred independents. No voter could know, before the election, what the legislature would do, because there would be no programme to vote for — only five hundred individual promises with no mechanism binding them together. No government could be formed except by a fresh bargain after every vote, and no government could be held responsible at the next election, because responsibility requires a body that persists and can be punished. Parties solve exactly this: they aggregate scattered opinions into a few programmes, they present those programmes for judgement, they organise a majority into a government and a minority into an opposition, and they carry the blame or the credit forward to the next election. Anyone who has ever said 'they promised this and did not deliver' is relying on a party existing to be held to account. That is why the textbook says the rise of parties is directly linked to representative democracy: large societies cannot govern themselves without them, and no substitute has been found. Now the second half, which is equally true. The distrust is earned, and the chapter lists the reasons. Many parties hold no organisational elections and keep no reliable membership register, so leadership circulates within a small circle and often within a family — and the objection is not that a leader's relative might be capable, but that no one else ever gets tested against them. Campaign finance is largely opaque, so a candidate's ability to raise money can matter more than their record, and in some constituencies the ability to command force matters too. Manifestos converge until the choice offered is thin. Tickets go to the wealthy and the connected. These are real failures of the institution, and noticing them is not anti-democratic — it is the ordinary work of a citizen. So the conclusion is reform, not removal. And here the chapter is unusually careful, for a reason worth taking seriously: rules imposed from outside often produce effects nobody wanted. The anti-defection law is the case study. It was aimed at legislators being bought to topple governments, and it largely worked. But by tying a member's seat to obeying the party whip, it also removed their ability to dissent on a bill, which means debate inside the house counts for less and power inside the party concentrates further in whoever issues the whip. A law meant to discipline parties made their leaders stronger. Similar caution applies to proposals to legislate inner-party democracy or fix candidate quotas: they can be complied with formally and evaded substantively. What has actually moved things is a mix of three pressures. Legal disclosure — the Supreme Court order requiring candidates to declare assets, education and criminal cases — which does not tell anyone how to vote but makes concealment harder. Competition — parties that lose repeatedly are forced to change, and the rise of state parties has punished national ones that ignored regions. And pressure from below — members, activists, media and citizens' groups who make a practice costly in reputation. The realistic hope is not a public that trusts parties, which may never come and perhaps should not; it is a public that watches them closely enough to make bad behaviour expensive. (The wrong answers dismiss consistent survey evidence, propose an assembly of independents that could neither form nor be held responsible for a government, or treat as unchangeable an institution that has changed repeatedly under exactly these pressures.)",
+          hi: "दोनों निष्कर्ष सहज साथ बैठते हैं जब तुम अलग कर लो कि दल किसलिए हैं और वे बरतते कैसे हैं। पहला आधा लो। दल प्रतिनिधि-लोकतंत्र की वैकल्पिक विशेषता नहीं; वे उसे बड़े पैमाने पर चलाने योग्य बनाते हैं। पाँच सौ निर्दलीयों की सभा कल्पना करो। कोई मतदाता चुनाव से पहले जान ही नहीं सकता कि विधानमंडल क्या करेगा, क्योंकि मत देने को कोई कार्यक्रम नहीं होगा — केवल पाँच सौ अलग-अलग वादे जिन्हें बाँधने वाला कोई तंत्र नहीं। कोई सरकार हर मत के बाद नई सौदेबाज़ी बिना बन नहीं सकती, और कोई सरकार अगले चुनाव में ज़िम्मेदार नहीं ठहराई जा सकती, क्योंकि ज़िम्मेदारी को ऐसी संस्था चाहिए जो टिके और दंडित की जा सके। दल ठीक यही हल करते हैं: वे बिखरी राय को कुछ कार्यक्रमों में जोड़ते हैं, उन्हें निर्णय के लिए रखते हैं, बहुमत को सरकार और अल्पमत को विपक्ष में संगठित करते हैं, और दोष या श्रेय अगले चुनाव तक ढोते हैं। जिसने भी कभी कहा हो 'उन्होंने यह वादा किया और निभाया नहीं' वह इसी पर टिका है कि जवाबदेह ठहराने को कोई दल मौजूद है। इसीलिए पाठ्यपुस्तक कहती है कि दलों का उदय प्रतिनिधि-लोकतंत्र से सीधे जुड़ा है: बड़े समाज उनके बिना स्वयं शासन नहीं कर सकते, और कोई विकल्प मिला नहीं। अब दूसरा आधा, जो उतना ही सच है। अविश्वास कमाया हुआ है, और अध्याय कारण गिनाता है। कई दल संगठनात्मक चुनाव नहीं कराते और भरोसेमंद सदस्यता-रजिस्टर नहीं रखते, अतः नेतृत्व छोटे घेरे में और अक्सर एक परिवार में घूमता है — और आपत्ति यह नहीं कि नेता का रिश्तेदार योग्य हो सकता है, बल्कि यह कि और किसी को उसके सामने परखा ही नहीं जाता। अभियान-वित्त बड़े हिस्से में अपारदर्शी है, अतः उम्मीदवार की पैसा जुटाने की क्षमता उसके रिकॉर्ड से अधिक मायने रख सकती है, और कुछ क्षेत्रों में बल जुटाने की क्षमता भी। घोषणा-पत्र तब तक पास आते हैं जब तक दी गई पसंद पतली न हो जाए। टिकट धनवानों और जान-पहचान वालों को जाते हैं। ये संस्था की असली विफलताएँ हैं, और उन्हें देखना लोकतंत्र-विरोधी नहीं — वह नागरिक का साधारण काम है। अतः निष्कर्ष सुधार है, हटाना नहीं। और यहाँ अध्याय असामान्य रूप से सावधान है, ऐसे कारण से जिसे गंभीरता से लेना चाहिए: बाहर से थोपे नियम अक्सर ऐसे प्रभाव देते हैं जो किसी ने नहीं चाहे। दल-बदल विरोधी क़ानून प्रकरण-अध्ययन है। वह सरकारें गिराने को ख़रीदे जाते विधायकों पर लक्षित था, और बड़े हिस्से में चला। पर सदस्य की सीट को दल के व्हिप के पालन से बाँधकर उसने किसी विधेयक पर असहमति की उसकी क्षमता भी हटा दी, जिसका अर्थ है कि सदन के भीतर बहस का महत्व घटता है और दल के भीतर सत्ता उसी में और केंद्रित होती है जो व्हिप जारी करता है। दलों को अनुशासित करने बना क़ानून उनके नेताओं को मज़बूत कर गया। आंतरिक दल-लोकतंत्र को क़ानूनी बनाने या उम्मीदवार-कोटा तय करने के प्रस्तावों पर भी वैसी ही सावधानी लागू: उनका औपचारिक पालन और सारभूत चकमा दोनों हो सकते हैं। जिसने वस्तुतः चीज़ें हिलाईं वह तीन दबावों का मेल है। क़ानूनी प्रकटीकरण — उच्चतम न्यायालय का वह आदेश जो उम्मीदवारों से संपत्ति, शिक्षा तथा आपराधिक मुक़दमे घोषित कराता है — जो किसी को यह नहीं बताता कि मत कैसे दे पर छिपाना कठिन कर देता है। प्रतिस्पर्धा — जो दल बार-बार हारते हैं उन्हें बदलना पड़ता है, और राज्य दलों के उदय ने उन राष्ट्रीय दलों को दंडित किया जिन्होंने क्षेत्रों को अनदेखा किया। और नीचे से दबाव — सदस्य, कार्यकर्ता, माध्यम और नागरिक-समूह जो किसी प्रथा को साख में महँगा बना देते हैं। यथार्थ आशा ऐसी जनता नहीं जो दलों पर भरोसा करे, जो शायद कभी न आए और शायद आनी भी न चाहिए; वह ऐसी जनता है जो उन्हें इतने पास से देखे कि बुरा बरताव महँगा पड़े। (ग़लत उत्तर लगातार मिलते सर्वेक्षण-प्रमाण को झटकते, निर्दलीयों की ऐसी सभा सुझाते जो न सरकार बना सकती न उसके लिए ज़िम्मेदार ठहराई जा सकती, या ऐसी संस्था को अपरिवर्तनीय मानते जो ठीक इन्हीं दबावों में बार-बार बदली है।)",
+          mr: "दोन्ही निष्कर्ष सहज एकत्र बसतात जेव्हा तुम्ही पक्ष कशासाठी आहेत आणि ते कसे वागतात हे वेगळे करता. पहिला अर्धा घ्या. पक्ष हे प्रातिनिधिक लोकशाहीचे ऐच्छिक वैशिष्ट्य नाहीत; ते तिला मोठ्या प्रमाणावर चालवण्याजोगे करतात. पाचशे अपक्षांची सभा कल्पा. कोणता मतदार निवडणुकीपूर्वी जाणूच शकत नाही की विधिमंडळ काय करेल, कारण मत द्यायला कोणता कार्यक्रम नसेल — फक्त पाचशे वेगवेगळी वचने ज्यांना बांधणारी यंत्रणा नाही. कोणतेही सरकार प्रत्येक मतानंतर नव्या घासाघिशीविना बनू शकत नाही, आणि कोणतेही सरकार पुढच्या निवडणुकीत जबाबदार धरता येत नाही, कारण जबाबदारीला अशी संस्था लागते जी टिकते आणि शिक्षा देता येते. पक्ष नेमके हेच सोडवतात: ते विखुरलेली मते काही कार्यक्रमांत जुळवतात, ती निवाड्यासाठी मांडतात, बहुमताला सरकारात आणि अल्पमताला विरोधी पक्षात संघटित करतात, आणि दोष वा श्रेय पुढच्या निवडणुकीपर्यंत वाहतात. ज्याने कधी म्हटले असेल 'त्यांनी हे वचन दिले आणि पाळले नाही' तो यावरच टेकलेला की जबाबदार धरायला कोणता पक्ष अस्तित्वात आहे. म्हणूनच पाठ्यपुस्तक म्हणते की पक्षांचा उदय प्रातिनिधिक लोकशाहीशी थेट जोडलेला: मोठे समाज त्यांच्याविना स्वतःचे शासन करू शकत नाहीत, आणि पर्याय सापडलेला नाही. आता दुसरा अर्धा, जो तितकाच खरा. अविश्वास कमावलेला, आणि प्रकरण कारणे मांडते. अनेक पक्ष संघटनात्मक निवडणुका घेत नाहीत आणि विश्वासार्ह सदस्यत्व नोंदवही ठेवत नाहीत, म्हणून नेतृत्व लहान वर्तुळात आणि अनेकदा एका कुटुंबात फिरते — आणि आक्षेप हा नाही की नेत्याचा नातेवाईक सक्षम असू शकतो, तर हा की इतर कोणालाही त्याच्यासमोर तपासलेच जात नाही. मोहीम-अर्थपुरवठा मोठ्या प्रमाणात अपारदर्शक, म्हणून उमेदवाराची पैसा उभा करण्याची क्षमता त्याच्या लौकिकाहून अधिक महत्त्वाची ठरू शकते, आणि काही मतदारसंघांत बळ उभे करण्याची क्षमताही. जाहीरनामे तोवर जवळ येतात जोवर दिलेला पर्याय पातळ होत नाही. तिकिटे धनवान आणि ओळखीच्यांना जातात. ही संस्थेची खरी अपयशे, आणि ती पाहणे लोकशाहीविरोधी नाही — ते नागरिकाचे सामान्य काम. म्हणून निष्कर्ष सुधारणा, काढून टाकणे नव्हे. आणि इथे प्रकरण असामान्यपणे काळजीपूर्वक, अशा कारणाने जे गांभीर्याने घ्यावे: बाहेरून लादलेले नियम अनेकदा असे परिणाम देतात जे कोणी इच्छिले नव्हते. पक्षांतरबंदी कायदा हे प्रकरण-अभ्यास. तो सरकारे पाडायला विकत घेतल्या जाणाऱ्या सदस्यांवर रोखलेला, आणि मोठ्या प्रमाणात चालला. पण सदस्याची जागा पक्षाच्या व्हिपच्या पालनाशी बांधून त्याने एखाद्या विधेयकावर असहमतीची त्याची क्षमताही काढून टाकली, म्हणजे सभागृहातील चर्चेचे महत्त्व घटते आणि पक्षातील सत्ता व्हिप काढणाऱ्याकडेच अधिक केंद्रित होते. पक्षांना शिस्त लावायला बनवलेल्या कायद्याने त्यांचे नेते बळकट केले. अंतर्गत पक्ष-लोकशाही कायद्याने आणण्याच्या वा उमेदवार-कोटा ठरवण्याच्या प्रस्तावांनाही तीच काळजी लागू: त्यांचे औपचारिक पालन आणि आशयातील चुकवणे दोन्ही होऊ शकते. ज्याने प्रत्यक्षात गोष्टी हलवल्या तो तीन दबावांचा मेळ. कायदेशीर प्रकटीकरण — सर्वोच्च न्यायालयाचा तो आदेश जो उमेदवारांना मालमत्ता, शिक्षण व गुन्हेगारी खटले जाहीर करायला लावतो — जो कोणाला मत कसे द्यावे सांगत नाही पण लपवणे कठीण करतो. स्पर्धा — जे पक्ष वारंवार हरतात त्यांना बदलावे लागते, आणि राज्य पक्षांच्या उदयाने प्रदेश दुर्लक्षणाऱ्या राष्ट्रीय पक्षांना शिक्षा दिली. आणि खालून दबाव — सदस्य, कार्यकर्ते, माध्यमे आणि नागरिक-गट जे एखादी प्रथा प्रतिष्ठेत महाग करतात. वास्तववादी आशा पक्षांवर विश्वास ठेवणारी जनता नाही, जी कदाचित कधी येणार नाही आणि कदाचित यायलाही नको; ती अशी जनता आहे जी त्यांना इतक्या जवळून पाहते की वाईट वर्तन महाग पडेल. (चुकीची उत्तरे सातत्याने मिळणारा सर्वेक्षण-पुरावा झटकतात, अपक्षांची अशी सभा सुचवतात जी ना सरकार बनवू शकेल ना त्यासाठी जबाबदार धरता येईल, वा नेमक्या याच दबावांखाली वारंवार बदललेल्या संस्थेला अपरिवर्तनीय मानतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Outcomes of Democracy                                       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "civics-10-outcomes-of-democracy",
+    subject: "CIVICS",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 5 — Outcomes of Democracy",
+      hi: "अध्याय 5 — लोकतंत्र के परिणाम",
+      mr: "प्रकरण 5 — लोकशाहीचे परिणाम",
+    },
+    name: {
+      en: "Outcomes of Democracy",
+      hi: "लोकतंत्र के परिणाम",
+      mr: "लोकशाहीचे परिणाम",
+    },
+    summary: {
+      en: "The accounts, honestly kept: a citizen entitled to know how a decision was reached, a government obeyed because it was chosen rather than because it is feared, a growth record that is no better than a dictatorship's, an inequality that democracy has not removed, a diversity it has kept from turning into war — and a complaint that is itself the proof.",
+      hi: "बही, ईमानदारी से रखी: वह नागरिक जिसे जानने का हक़ कि निर्णय पहुँचा कैसे, वह सरकार जो इसलिए मानी जाती कि चुनी गई, इसलिए नहीं कि उससे डर लगता, वह वृद्धि-रिकॉर्ड जो तानाशाही से बेहतर नहीं, वह असमानता जो लोकतंत्र ने हटाई नहीं, वह विविधता जिसे उसने युद्ध बनने से रोका — और वह शिकायत जो स्वयं प्रमाण है।",
+      mr: "खतावणी, प्रामाणिकपणे ठेवलेली: तो नागरिक ज्याला जाणण्याचा हक्क की निर्णय कसा पोहोचला, ते सरकार जे यासाठी पाळले जाते की निवडले गेले, यासाठी नाही की त्याची भीती वाटते, तो वाढीचा लौकिक जो हुकूमशाहीहून चांगला नाही, ती विषमता जी लोकशाहीने हटवली नाही, ती विविधता जिला तिने युद्ध बनण्यापासून रोखले — आणि ती तक्रार जी स्वतःच पुरावा.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "transparency",
+        name: {
+          en: "Transparency in decision-making",
+          hi: "निर्णय-प्रक्रिया में पारदर्शिता",
+          mr: "निर्णय-प्रक्रियेत पारदर्शकता",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A citizen may ask which file a decision passed through, what the officer wrote on it and on what rule the outcome rested, and may go to court if the answer is refused. Which democratic outcome is this?",
+          hi: "नागरिक पूछ सकता है कि निर्णय किस फ़ाइल से गुज़रा, अधिकारी ने उस पर क्या लिखा और परिणाम किस नियम पर टिका, और उत्तर न मिलने पर अदालत जा सकता है। यह कौन-सा लोकतांत्रिक परिणाम है?",
+          mr: "नागरिक विचारू शकतो की निर्णय कोणत्या फाइलमधून गेला, अधिकाऱ्याने त्यावर काय लिहिले आणि निकाल कोणत्या नियमावर टेकला, आणि उत्तर नाकारल्यास न्यायालयात जाऊ शकतो. हा कोणता लोकशाही परिणाम?",
+        },
+        statement: {
+          en: "Transparency in decision-making means citizens can find out how and by what rule a government decision was taken, and can hold those who took it answerable — not merely that the decision was correct.",
+          hi: "निर्णय-प्रक्रिया में पारदर्शिता का अर्थ है कि नागरिक जान सकें कि कोई सरकारी निर्णय कैसे और किस नियम से लिया गया, और उसे लेने वालों को जवाबदेह ठहरा सकें — केवल यह नहीं कि निर्णय सही था।",
+          mr: "निर्णय-प्रक्रियेतील पारदर्शकता म्हणजे नागरिकांना कळू शकते की एखादा शासकीय निर्णय कसा आणि कोणत्या नियमाने घेतला गेला, आणि तो घेणाऱ्यांना जबाबदार धरता येते — केवळ निर्णय बरोबर होता एवढेच नव्हे.",
+        },
+        detail: {
+          en: "This is the outcome a democracy can be held to even when the decision itself is disputed, because the claim is about the procedure rather than the result.",
+          hi: "यही वह परिणाम है जिसके लिए लोकतंत्र को तब भी पकड़ा जा सकता है जब निर्णय स्वयं विवादित हो, क्योंकि दावा परिणाम के बारे में नहीं, प्रक्रिया के बारे में है।",
+          mr: "हाच तो परिणाम ज्यासाठी लोकशाहीला निर्णय स्वतः वादग्रस्त असतानाही धरता येते, कारण दावा निकालाबद्दल नव्हे तर प्रक्रियेबद्दल.",
+        },
+        extra: {
+          en: "The Right to Information Act made it enforceable: a citizen who is refused an answer has a remedy, which turns a principle into a procedure.",
+          hi: "सूचना का अधिकार अधिनियम ने उसे लागू करने योग्य बनाया: जिस नागरिक को उत्तर न मिले उसके पास उपाय है, जो सिद्धांत को प्रक्रिया में बदल देता है।",
+          mr: "माहितीचा अधिकार कायद्याने ते अंमलात आणण्याजोगे केले: ज्या नागरिकाला उत्तर नाकारले जाते त्याच्याकडे उपाय आहे, जे तत्त्वाचे प्रक्रियेत रूपांतर करते.",
+        },
+        pair: {
+          left: {
+            en: "The right to know how a decision was reached",
+            hi: "जानने का अधिकार कि निर्णय पहुँचा कैसे",
+            mr: "निर्णय कसा पोहोचला हे जाणण्याचा हक्क",
+          },
+          right: {
+            en: "transparency in decision-making",
+            hi: "निर्णय-प्रक्रिया में पारदर्शिता",
+            mr: "निर्णय-प्रक्रियेत पारदर्शकता",
+          },
+        },
+      },
+      {
+        id: "legitimate-government",
+        name: {
+          en: "A legitimate government",
+          hi: "वैध सरकार",
+          mr: "वैध सरकार",
+        },
+        kind: "idea",
+        prompt: {
+          en: "People obey it not because they are afraid of it but because they accept that it was chosen by a procedure they themselves take part in, and they accept its decisions even when they voted against it. What quality is this?",
+          hi: "लोग उसे इसलिए नहीं मानते कि उससे डरते हैं बल्कि इसलिए कि वे स्वीकारते हैं कि वह ऐसी प्रक्रिया से चुनी गई जिसमें वे स्वयं भाग लेते हैं, और वे उसके निर्णय तब भी स्वीकारते हैं जब उन्होंने उसके विरुद्ध मत दिया हो। यह कौन-सा गुण है?",
+          mr: "लोक ते यासाठी पाळत नाहीत की त्याची भीती वाटते तर यासाठी की ते मान्य करतात की ते अशा प्रक्रियेने निवडले गेले जिच्यात ते स्वतः भाग घेतात, आणि ते त्याचे निर्णय तेव्हाही स्वीकारतात जेव्हा त्यांनी त्याविरुद्ध मत दिले. हा कोणता गुण?",
+        },
+        statement: {
+          en: "A legitimate government is one people accept as rightfully entitled to govern because it was chosen by a procedure they recognise, so its decisions are obeyed from consent rather than fear.",
+          hi: "वैध सरकार वह है जिसे लोग शासन का न्यायोचित अधिकारी मानते हैं क्योंकि वह ऐसी प्रक्रिया से चुनी गई जिसे वे मान्यता देते हैं, अतः उसके निर्णय भय से नहीं सहमति से माने जाते हैं।",
+          mr: "वैध सरकार म्हणजे ते जे लोक शासनाचा न्याय्य अधिकारी मानतात कारण ते अशा प्रक्रियेने निवडले गेले जिला ते मान्यता देतात, म्हणून त्याचे निर्णय भीतीने नव्हे तर संमतीने पाळले जातात.",
+        },
+        detail: {
+          en: "It is the outcome democracy delivers most reliably, and surveys across the world find people prefer democracy even where they are dissatisfied with their own government.",
+          hi: "यह वह परिणाम है जो लोकतंत्र सबसे भरोसे से देता है, और विश्व भर के सर्वेक्षण पाते हैं कि लोग लोकतंत्र पसंद करते हैं भले वे अपनी ही सरकार से असंतुष्ट हों।",
+          mr: "हा तो परिणाम जो लोकशाही सर्वांत खात्रीने देते, आणि जगभरची सर्वेक्षणे आढळतात की लोक लोकशाही पसंत करतात जरी ते स्वतःच्या सरकारवर असमाधानी असले तरी.",
+        },
+        extra: {
+          en: "Its practical value is enormous: a government obeyed by consent needs far less policing, and can implement a decision without having to compel every citizen separately.",
+          hi: "उसका व्यावहारिक मूल्य विशाल है: जो सरकार सहमति से मानी जाती उसे कहीं कम पुलिसिंग चाहिए, और वह हर नागरिक को अलग-अलग बाध्य किए बिना निर्णय लागू कर सकती है।",
+          mr: "त्याचे व्यावहारिक मोल प्रचंड: जे सरकार संमतीने पाळले जाते त्याला कितीतरी कमी पोलिसी लागते, आणि ते प्रत्येक नागरिकाला वेगवेगळे भाग पाडल्याविना निर्णय राबवू शकते.",
+        },
+        pair: {
+          left: {
+            en: "Obeyed because chosen, not because feared",
+            hi: "माना गया क्योंकि चुनी गई, इसलिए नहीं कि डर है",
+            mr: "पाळले कारण निवडले, भीती वाटते म्हणून नव्हे",
+          },
+          right: {
+            en: "a legitimate government",
+            hi: "वैध सरकार",
+            mr: "वैध सरकार",
+          },
+        },
+      },
+      {
+        id: "growth-under-democracy",
+        name: {
+          en: "Economic growth under democracy",
+          hi: "लोकतंत्र में आर्थिक वृद्धि",
+          mr: "लोकशाहीत आर्थिक वाढ",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Comparing the growth rates of democracies and dictatorships across several decades, economists find the dictatorships marginally ahead, but the gap so small and the other causes so numerous that the difference cannot be attributed to the form of government. Which finding is this?",
+          hi: "कई दशकों में लोकतंत्रों और तानाशाहियों की वृद्धि दरों की तुलना कर अर्थशास्त्री पाते हैं कि तानाशाहियाँ मामूली रूप से आगे हैं, पर अंतर इतना छोटा और अन्य कारण इतने अधिक कि उस भेद को शासन-रूप का श्रेय नहीं दिया जा सकता। यह कौन-सा निष्कर्ष है?",
+          mr: "अनेक दशकांत लोकशाही आणि हुकूमशाहींच्या वाढीच्या दरांची तुलना करून अर्थतज्ज्ञ आढळतात की हुकूमशाही किंचित पुढे, पण फरक इतका लहान आणि इतर कारणे इतकी अनेक की तो फरक शासन-रूपाला देता येत नाही. हा कोणता निष्कर्ष?",
+        },
+        statement: {
+          en: "On economic growth democracies show no clear advantage over dictatorships — the measured difference is negligible and is swamped by other factors such as population, resources, global conditions and prior policy.",
+          hi: "आर्थिक वृद्धि पर लोकतंत्र तानाशाहियों से कोई स्पष्ट लाभ नहीं दिखाते — मापा गया अंतर नगण्य है और जनसंख्या, संसाधनों, वैश्विक दशाओं तथा पूर्ववर्ती नीति जैसे अन्य कारकों में डूब जाता है।",
+          mr: "आर्थिक वाढीवर लोकशाही हुकूमशाहींहून कोणताही स्पष्ट फायदा दाखवत नाहीत — मोजलेला फरक नगण्य आणि लोकसंख्या, संसाधने, जागतिक स्थिती व पूर्वीचे धोरण अशा इतर घटकांत बुडतो.",
+        },
+        detail: {
+          en: "The honest conclusion is that democracy should not be defended by promising faster growth, because the evidence does not support that promise.",
+          hi: "ईमानदार निष्कर्ष यह कि लोकतंत्र का बचाव तेज़ वृद्धि का वादा करके नहीं करना चाहिए, क्योंकि प्रमाण उस वादे का समर्थन नहीं करते।",
+          mr: "प्रामाणिक निष्कर्ष हा की लोकशाहीचा बचाव वेगवान वाढीचे वचन देऊन करू नये, कारण पुरावा त्या वचनाला पाठिंबा देत नाही.",
+        },
+        extra: {
+          en: "On one economic outcome the difference is stark: no substantial famine has occurred in a functioning democracy with a free press, because a government that can be voted out cannot afford to let people starve unnoticed.",
+          hi: "एक आर्थिक परिणाम पर अंतर तीखा है: स्वतंत्र प्रेस वाले चलते लोकतंत्र में कोई बड़ा अकाल नहीं पड़ा, क्योंकि जो सरकार मतों से हटाई जा सकती वह लोगों को अनदेखे भूखों मरने नहीं दे सकती।",
+          mr: "एका आर्थिक परिणामावर फरक तीव्र: मुक्त वृत्तपत्रे असलेल्या चालत्या लोकशाहीत मोठा दुष्काळ पडलेला नाही, कारण जे सरकार मतांनी हटवता येते ते लोकांना दुर्लक्षितपणे उपाशी मरू देऊ शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "No clear growth advantage, but no famine either",
+            hi: "वृद्धि में स्पष्ट लाभ नहीं, पर अकाल भी नहीं",
+            mr: "वाढीत स्पष्ट फायदा नाही, पण दुष्काळही नाही",
+          },
+          right: {
+            en: "economic growth under democracy",
+            hi: "लोकतंत्र में आर्थिक वृद्धि",
+            mr: "लोकशाहीत आर्थिक वाढ",
+          },
+        },
+      },
+      {
+        id: "democracy-and-inequality",
+        name: {
+          en: "Democracy and economic inequality",
+          hi: "लोकतंत्र और आर्थिक असमानता",
+          mr: "लोकशाही आणि आर्थिक विषमता",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Every adult has exactly one vote, the poor vote in larger proportions than the rich, and yet in most democracies a small group holds a rising share of income while many remain without a secure livelihood. Which gap is this?",
+          hi: "हर वयस्क के पास ठीक एक मत है, ग़रीब अमीरों से बड़े अनुपात में मत देते हैं, और फिर भी अधिकांश लोकतंत्रों में एक छोटा समूह आय का बढ़ता हिस्सा रखता है जबकि कई सुरक्षित आजीविका बिना रह जाते हैं। यह कौन-सी खाई है?",
+          mr: "प्रत्येक प्रौढाकडे नेमके एक मत, गरीब श्रीमंतांहून मोठ्या प्रमाणात मत देतात, आणि तरीही बहुतांश लोकशाहींत एक लहान गट उत्पन्नाचा वाढता वाटा ठेवतो तर अनेक सुरक्षित उपजीविकेविना राहतात. ही कोणती दरी?",
+        },
+        statement: {
+          en: "Democracies have delivered political equality — one person, one vote — without delivering economic equality, and in many the share of income going to the richest has risen while the poorest remain dependent on insecure work.",
+          hi: "लोकतंत्रों ने राजनीतिक समानता दी है — एक व्यक्ति, एक मत — आर्थिक समानता दिए बिना, और कई में सबसे धनी को जाता आय-हिस्सा बढ़ा है जबकि सबसे निर्धन असुरक्षित काम पर निर्भर बने हुए हैं।",
+          mr: "लोकशाहींनी राजकीय समानता दिली — एक व्यक्ती, एक मत — आर्थिक समानता न देता, आणि अनेकांत सर्वांत श्रीमंतांना जाणारा उत्पन्नाचा वाटा वाढला तर सर्वांत गरीब असुरक्षित कामावर अवलंबून राहिले.",
+        },
+        detail: {
+          en: "The puzzle is sharp because the poor are a numerical majority and vote in large numbers, so their votes ought in principle to force redistribution.",
+          hi: "पहेली तीखी है क्योंकि ग़रीब संख्या में बहुमत हैं और बड़ी संख्या में मत देते हैं, अतः सिद्धांततः उनके मतों को पुनर्वितरण के लिए बाध्य करना चाहिए।",
+          mr: "कोडे तीव्र कारण गरीब संख्येने बहुसंख्य आणि मोठ्या संख्येने मत देतात, म्हणून तत्त्वतः त्यांच्या मतांनी पुनर्वाटप घडवायला हवे.",
+        },
+        extra: {
+          en: "Poor voters rarely cast their ballot as a single economic bloc, since region, community, language and local candidates divide them — which is exactly why they do not vote as one interest.",
+          hi: "निर्धन मतदाता शायद ही कभी एक ही आर्थिक गुट के रूप में मत डालते हैं, क्योंकि क्षेत्र, समुदाय, भाषा और स्थानीय उम्मीदवार उन्हें बाँट देते हैं — ठीक इसी से वे एक हित की तरह मत नहीं देते।",
+          mr: "गरीब मतदार क्वचितच एकाच आर्थिक गटासारखे मत देतात, कारण प्रदेश, समुदाय, भाषा आणि स्थानिक उमेदवार त्यांना विभागतात — नेमके म्हणूनच ते एक हित म्हणून मत देत नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "Equal votes without equal incomes",
+            hi: "बराबर मत, बराबर आय नहीं",
+            mr: "समान मते, समान उत्पन्न नाही",
+          },
+          right: {
+            en: "democracy and economic inequality",
+            hi: "लोकतंत्र और आर्थिक असमानता",
+            mr: "लोकशाही आणि आर्थिक विषमता",
+          },
+        },
+      },
+      {
+        id: "accommodation-of-diversity",
+        name: {
+          en: "Accommodation of social diversity",
+          hi: "सामाजिक विविधता का समायोजन",
+          mr: "सामाजिक विविधतेचे सामावणे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Divisions of language, religion, region and caste exist in every large society; in some they end in partition or civil war, and in others they are argued out in legislatures and elections without breaking the country. Which outcome is this?",
+          hi: "भाषा, धर्म, क्षेत्र और जाति के विभाजन हर बड़े समाज में हैं; कुछ में वे विभाजन या गृहयुद्ध में समाप्त होते, और अन्य में देश तोड़े बिना विधानमंडलों तथा चुनावों में बहस लिए जाते हैं। यह कौन-सा परिणाम है?",
+          mr: "भाषा, धर्म, प्रदेश आणि जातीची विभाजने प्रत्येक मोठ्या समाजात आहेत; काहींत ती फाळणी वा यादवी युद्धात संपतात, आणि इतरांत देश न तोडता विधिमंडळे व निवडणुकांत त्यांवर वाद घातला जातो. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "Accommodation of social diversity is democracy's capacity to handle divisions of language, religion, region and caste by negotiation and representation rather than by suppression, so conflict is contained instead of becoming violent.",
+          hi: "सामाजिक विविधता का समायोजन लोकतंत्र की वह क्षमता है कि वह भाषा, धर्म, क्षेत्र तथा जाति के विभाजनों को दमन से नहीं बल्कि बातचीत और प्रतिनिधित्व से सँभाले, अतः टकराव हिंसक होने के बजाय थमा रहे।",
+          mr: "सामाजिक विविधतेचे सामावणे म्हणजे लोकशाहीची ती क्षमता की ती भाषा, धर्म, प्रदेश आणि जातीची विभाजने दडपशाहीने नव्हे तर वाटाघाटी व प्रतिनिधित्वाने हाताळते, म्हणून संघर्ष हिंसक होण्याऐवजी आवरला जातो.",
+        },
+        detail: {
+          en: "The claim is not that democracy ends division — no system does — but that it keeps division from becoming the kind of conflict a country cannot recover from.",
+          hi: "दावा यह नहीं कि लोकतंत्र विभाजन मिटा देता — कोई प्रणाली नहीं मिटाती — बल्कि यह कि वह विभाजन को ऐसा टकराव बनने से रोकता जिससे कोई देश उबर नहीं पाता।",
+          mr: "दावा हा नाही की लोकशाही विभाजन संपवते — कोणतीही व्यवस्था संपवत नाही — तर हा की ती विभाजनाला असा संघर्ष बनण्यापासून रोखते ज्यातून देश सावरू शकत नाही.",
+        },
+        extra: {
+          en: "Two conditions have to hold for it to work: majority rule must mean shifting majorities rather than one permanent community ruling, and no group may be made to feel the state is not theirs.",
+          hi: "इसे चलने के लिए दो शर्तें ज़रूरी: बहुमत के शासन का अर्थ बदलते बहुमत हो, एक स्थायी समुदाय का शासन नहीं, और किसी समूह को यह महसूस न कराया जाए कि राज्य उसका नहीं।",
+          mr: "ते चालण्यासाठी दोन अटी आवश्यक: बहुमताच्या राज्याचा अर्थ बदलती बहुमते असावा, एका कायमच्या समुदायाचे राज्य नव्हे, आणि कोणत्याही गटाला राज्य आपले नाही असे वाटू दिले जाऊ नये.",
+        },
+        pair: {
+          left: {
+            en: "Division argued out rather than fought out",
+            hi: "विभाजन लड़ा नहीं, बहसा गया",
+            mr: "विभाजन लढले नव्हे तर चर्चिले गेले",
+          },
+          right: {
+            en: "accommodation of social diversity",
+            hi: "सामाजिक विविधता का समायोजन",
+            mr: "सामाजिक विविधतेचे सामावणे",
+          },
+        },
+      },
+      {
+        id: "complaint-as-evidence",
+        name: {
+          en: "Complaint as evidence of success",
+          hi: "शिकायत ही सफलता का प्रमाण",
+          mr: "तक्रारच यशाचा पुरावा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Citizens of a democracy grumble constantly about their government, and this is taken as a sign of failure — yet the same citizens would not think to complain if they did not believe the government answerable to them. What does the complaining actually demonstrate?",
+          hi: "लोकतंत्र के नागरिक अपनी सरकार के बारे में लगातार बड़बड़ाते हैं, और इसे विफलता का संकेत माना जाता है — फिर भी वही नागरिक शिकायत करने की सोचते ही न यदि वे सरकार को अपने प्रति जवाबदेह न मानते। बड़बड़ाना वस्तुतः क्या दिखाता है?",
+          mr: "लोकशाहीचे नागरिक आपल्या सरकारबद्दल सतत कुरकुरतात, आणि हे अपयशाचे लक्षण मानले जाते — तरीही तेच नागरिक तक्रार करण्याचा विचारही करणार नाहीत जर त्यांना सरकार आपल्याप्रती उत्तरदायी वाटत नसते. कुरकुरणे प्रत्यक्षात काय दाखवते?",
+        },
+        statement: {
+          en: "Complaint is itself evidence of democracy's success, because a citizen only demands more from a government they believe accountable to them — expectations rise precisely because the system has taught people that it should answer to them.",
+          hi: "शिकायत स्वयं लोकतंत्र की सफलता का प्रमाण है, क्योंकि नागरिक उसी सरकार से अधिक माँगता है जिसे वह अपने प्रति जवाबदेह मानता है — अपेक्षाएँ ठीक इसलिए चढ़ती हैं कि प्रणाली ने लोगों को सिखा दिया कि उसे उन्हें उत्तर देना चाहिए।",
+          mr: "तक्रार हीच लोकशाहीच्या यशाचा पुरावा, कारण नागरिक त्याच सरकारकडून अधिक मागतो ज्याला तो आपल्याप्रती उत्तरदायी मानतो — अपेक्षा नेमक्या यासाठी चढतात की व्यवस्थेने लोकांना शिकवले की तिने त्यांना उत्तर द्यावे.",
+        },
+        detail: {
+          en: "It also explains why democracies always look disappointing: the standard they are measured against is one they themselves created and keep raising.",
+          hi: "यह यह भी समझाता है कि लोकतंत्र सदा निराशाजनक क्यों दिखते हैं: जिस मानक से वे नापे जाते वह उन्हीं का बनाया है और वे उसे चढ़ाते रहते हैं।",
+          mr: "हे हेही समजावते की लोकशाही सदैव निराशाजनक का दिसतात: ज्या मानकाने त्या मोजल्या जातात ते त्यांनीच घडवलेले आणि त्या ते वाढवत राहतात.",
+        },
+        extra: {
+          en: "A subject of a dictatorship who complains risks arrest; a citizen of a democracy who complains is exercising a right, which is the whole difference in one sentence.",
+          hi: "तानाशाही की जो प्रजा शिकायत करे वह गिरफ़्तारी का जोखिम उठाती है; लोकतंत्र का जो नागरिक शिकायत करे वह अधिकार का प्रयोग कर रहा है — पूरा अंतर एक वाक्य में यही है।",
+          mr: "हुकूमशाहीची जी प्रजा तक्रार करते ती अटकेचा धोका पत्करते; लोकशाहीचा जो नागरिक तक्रार करतो तो हक्क बजावत आहे — अख्खा फरक एका वाक्यात हाच.",
+        },
+        pair: {
+          left: {
+            en: "Demanding more because you believe you may",
+            hi: "अधिक माँगना क्योंकि तुम मानते हो कि माँग सकते हो",
+            mr: "अधिक मागणे कारण तुम्हाला वाटते तुम्ही मागू शकता",
+          },
+          right: {
+            en: "complaint as evidence of success",
+            hi: "शिकायत ही सफलता का प्रमाण",
+            mr: "तक्रारच यशाचा पुरावा",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "In a democracy every adult has one vote, the poor outnumber the rich, and poor citizens vote in higher proportions than wealthy ones. On the face of it, redistribution should follow automatically. Explain why economic inequality has persisted anyway.",
+          hi: "लोकतंत्र में हर वयस्क के पास एक मत है, ग़रीब अमीरों से अधिक हैं, और निर्धन नागरिक धनवानों से ऊँचे अनुपात में मत देते हैं। ऊपर से देखें तो पुनर्वितरण अपने आप होना चाहिए। समझाओ फिर भी आर्थिक असमानता क्यों बनी रही।",
+          mr: "लोकशाहीत प्रत्येक प्रौढाकडे एक मत, गरीब श्रीमंतांहून अधिक, आणि गरीब नागरिक धनवानांहून जास्त प्रमाणात मत देतात. वरवर पाहता, पुनर्वाटप आपोआप व्हायला हवे. समजावा तरीही आर्थिक विषमता का टिकून राहिली.",
+        },
+        choices: [
+          {
+            en: "Because the poor are a majority in number but not a single voting bloc: region, language, community, caste and the merits of local candidates cut across economic position, so their votes divide among many parties instead of combining behind redistribution. Meanwhile wealth converts into political influence through campaign finance, media ownership and access to decision-makers — advantages that operate between elections, where votes do not reach",
+            hi: "क्योंकि ग़रीब संख्या में बहुमत हैं पर एक मतदान-गुट नहीं: क्षेत्र, भाषा, समुदाय, जाति और स्थानीय उम्मीदवारों के गुण आर्थिक स्थिति को आड़ा काटते हैं, अतः उनके मत पुनर्वितरण के पीछे जुड़ने के बजाय कई दलों में बँट जाते हैं। इस बीच संपत्ति अभियान-वित्त, माध्यम-स्वामित्व और निर्णय-कर्ताओं तक पहुँच से राजनीतिक प्रभाव में बदलती है — ऐसे लाभ जो चुनावों के बीच काम करते हैं, जहाँ मत पहुँचते नहीं",
+            mr: "कारण गरीब संख्येने बहुसंख्य पण एकच मतदान-गट नाहीत: प्रदेश, भाषा, समुदाय, जात आणि स्थानिक उमेदवारांचे गुण आर्थिक स्थानाला आडवे छेदतात, म्हणून त्यांची मते पुनर्वाटपामागे एकत्र होण्याऐवजी अनेक पक्षांत विभागतात. दरम्यान संपत्ती मोहीम-अर्थपुरवठा, माध्यम-मालकी आणि निर्णयकर्त्यांपर्यंतच्या प्रवेशातून राजकीय प्रभावात रूपांतरित होते — असे फायदे जे निवडणुकांदरम्यान चालतात, जिथे मते पोहोचत नाहीत",
+          },
+          {
+            en: "Because poor citizens do not vote at all in any democracy, so their numbers never register politically",
+            hi: "क्योंकि किसी भी लोकतंत्र में निर्धन नागरिक मत देते ही नहीं, अतः उनकी संख्या राजनीतिक रूप से कभी दर्ज नहीं होती",
+            mr: "कारण कोणत्याही लोकशाहीत गरीब नागरिक मतदानच करत नाहीत, म्हणून त्यांची संख्या राजकीयदृष्ट्या कधी नोंदली जात नाही",
+          },
+          {
+            en: "Because democracies are in fact economically equal, and the premise of the question is false",
+            hi: "क्योंकि लोकतंत्र वस्तुतः आर्थिक रूप से समान हैं, और प्रश्न का आधार झूठा है",
+            mr: "कारण लोकशाही प्रत्यक्षात आर्थिकदृष्ट्या समान आहेत, आणि प्रश्नाचे गृहीतक खोटे आहे",
+          },
+          {
+            en: "Because constitutions everywhere forbid governments from spending anything on the poor",
+            hi: "क्योंकि हर जगह के संविधान सरकारों को ग़रीबों पर कुछ भी ख़र्च करने से रोकते हैं",
+            mr: "कारण सर्वत्रच्या राज्यघटना सरकारांना गरिबांवर काहीही खर्च करण्यास मनाई करतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The expectation behind the question is a real theoretical prediction, and the fact that it fails tells us something important about how votes translate into policy. The prediction assumes that the poor form a bloc — that being poor is the identity from which people vote. It is not, or at least not usually. A voter is simultaneously a Marathi speaker, a member of a caste, a resident of a district with its own grievances about water or roads, a follower of a faith, a worker in a particular trade and a person with a view of the local candidate. Poverty is one of these identities and it competes with the rest. So the votes of poor citizens do not accumulate behind a single demand for redistribution; they scatter across many parties, each of which assembles a coalition cutting across income. A party that wins in a state may hold poor voters from one community and lose those of another, so nobody in the system faces a unified class electorate to bargain with. This is not false consciousness; it is what happens when people have several real interests at once. The second half of the answer concerns what happens between elections, which is where most policy is actually made. A vote is an equal instrument used once in five years. Money is an unequal instrument used continuously. Wealth buys campaign finance, which shapes which candidates can stand at all; it buys media reach, which shapes which issues are discussed; it funds industry associations and lobbying that engage with ministries drafting rules; it provides access to officials that an ordinary citizen does not have; and it can move investment across borders, which gives it leverage over a government worried about growth. None of this requires corruption. It is simply that concentrated resources produce continuous influence, while dispersed votes produce periodic influence. There is a third factor worth naming. Redistribution is hard to design and slow to show results, while its costs are immediate and visible to those who bear them. Landowners notice a land ceiling at once; the beneficiaries take a decade to notice. A government facing an election in four years has weak incentives to bear a cost now for a benefit later, whoever it represents. What should be concluded from this? Not that democracy is a fraud, and the chapter is careful here. Political equality is real and has produced real gains — Dalit and Adivasi representation in legislatures, employment guarantee and food security legislation, reservations, midday meals, and the simple fact that governments are voted out for neglect. The record is one of partial success against an expectation of complete success, which is exactly the pattern the chapter identifies as democracy's signature: it creates the standard by which it is then judged and found wanting. A dictatorship does not raise the question of redistribution at all, because those who would demand it have no way to be heard. That is not equality; it is silence. The honest verdict is that democracy has delivered political equality and only partial economic equality, that the gap between them is real and worth being angry about, and that being able to be angry about it in public is itself one of the outcomes. (The wrong answers deny well-documented poor turnout figures, deny an inequality every income survey records, or invent a constitutional bar on welfare spending that no democracy has.)",
+          hi: "प्रश्न के पीछे की अपेक्षा एक असली सैद्धांतिक भविष्यवाणी है, और उसका विफल होना बताता है कि मत नीति में बदलते कैसे हैं। भविष्यवाणी मान लेती है कि ग़रीब एक गुट बनाते हैं — कि ग़रीब होना वह पहचान है जिससे लोग मत देते हैं। वह है नहीं, या कम से कम आमतौर पर नहीं। कोई मतदाता एक साथ मराठी-भाषी है, किसी जाति का सदस्य, पानी या सड़कों की अपनी शिकायतों वाले ज़िले का निवासी, किसी आस्था का अनुयायी, किसी विशेष धंधे का मज़दूर और स्थानीय उम्मीदवार पर राय रखने वाला व्यक्ति। निर्धनता इन्हीं पहचानों में से एक है और वह बाक़ी से मुक़ाबला करती है। अतः निर्धन नागरिकों के मत पुनर्वितरण की एक ही माँग के पीछे जमा नहीं होते; वे कई दलों में बिखर जाते हैं, जिनमें से हर एक आय को आड़ा काटता गठजोड़ जोड़ता है। जो दल किसी राज्य में जीते वह एक समुदाय के निर्धन मतदाता रख सकता और दूसरे के खो सकता, अतः तंत्र में किसी के सामने सौदेबाज़ी को एकजुट वर्गीय मतदाता-वर्ग नहीं होता। यह मिथ्या चेतना नहीं; यह वही होता है जब लोगों के एक साथ कई असली हित हों। उत्तर का दूसरा आधा इससे जुड़ा कि चुनावों के बीच क्या होता है, जहाँ अधिकांश नीति वस्तुतः बनती है। मत पाँच वर्ष में एक बार इस्तेमाल होता बराबर औज़ार है। पैसा लगातार इस्तेमाल होता असमान औज़ार है। संपत्ति अभियान-वित्त ख़रीदती है, जो तय करता कि कौन उम्मीदवार खड़ा भी हो सकता; वह माध्यम-पहुँच ख़रीदती है, जो तय करता कौन-से मुद्दे चर्चा में आते; वह उन उद्योग-संघों और पैरवी को वित्तपोषित करती जो नियम बनाते मंत्रालयों से जुड़ते; वह अधिकारियों तक ऐसी पहुँच देती जो साधारण नागरिक के पास नहीं; और वह निवेश सीमाओं के पार ले जा सकती, जो वृद्धि की चिंता करती सरकार पर उत्तोलन देता है। इसमें से किसी को भ्रष्टाचार नहीं चाहिए। बस इतना कि केंद्रित संसाधन लगातार प्रभाव देते हैं, जबकि बिखरे मत आवधिक प्रभाव। एक तीसरा कारक भी नाम लेने योग्य है। पुनर्वितरण रचना में कठिन और परिणाम दिखाने में धीमा है, जबकि उसकी लागतें तुरंत और उन पर दिखतीं जो उन्हें ढोते हैं। भू-सीमा भूस्वामी तुरंत भाँप लेते हैं; लाभार्थियों को भाँपने में दशक लगते हैं। चार वर्ष में चुनाव का सामना करती सरकार के पास अभी लागत उठाकर बाद का लाभ पाने की कमज़ोर प्रेरणा है, वह किसी का भी प्रतिनिधित्व करती हो। इससे क्या निष्कर्ष निकाला जाए? यह नहीं कि लोकतंत्र धोखा है, और अध्याय यहाँ सावधान है। राजनीतिक समानता असली है और उसने असली लाभ दिए — विधानमंडलों में दलित तथा आदिवासी प्रतिनिधित्व, रोज़गार गारंटी और खाद्य सुरक्षा विधान, आरक्षण, मध्याह्न भोजन, और यह सीधा तथ्य कि उपेक्षा के लिए सरकारें हटा दी जाती हैं। रिकॉर्ड पूर्ण सफलता की अपेक्षा के सामने आंशिक सफलता का है, ठीक वही ढर्रा जिसे अध्याय लोकतंत्र की पहचान बताता है: वह वही मानक रचता है जिससे फिर आँका जाता और कम पाया जाता है। तानाशाही पुनर्वितरण का प्रश्न उठने ही नहीं देती, क्योंकि जो उसे माँगते उनके पास सुने जाने का उपाय नहीं। वह समानता नहीं; वह चुप्पी है। ईमानदार निर्णय यह कि लोकतंत्र ने राजनीतिक समानता दी और आर्थिक समानता केवल आंशिक, कि उनके बीच की खाई असली और उस पर क्रोध करने योग्य है, और यह कि उस पर सार्वजनिक रूप से क्रोध कर पाना स्वयं उन्हीं परिणामों में से एक है। (ग़लत उत्तर भली-भाँति दर्ज निर्धन मतदान-आँकड़े नकारते, हर आय-सर्वेक्षण में दर्ज असमानता नकारते, या कल्याण-व्यय पर ऐसी संवैधानिक रोक गढ़ते जो किसी लोकतंत्र में नहीं।)",
+          mr: "प्रश्नामागील अपेक्षा हे खरे सैद्धांतिक भाकीत, आणि ते फसणे सांगते की मते धोरणात कशी बदलतात. भाकीत गृहीत धरते की गरीब एक गट बनवतात — की गरीब असणे ही ती ओळख जिच्यातून लोक मत देतात. ती नाही, किंवा किमान सहसा नाही. एक मतदार एकाच वेळी मराठी भाषिक आहे, एका जातीचा सदस्य, पाणी वा रस्त्यांबद्दलच्या स्वतःच्या तक्रारी असलेल्या जिल्ह्याचा रहिवासी, एका श्रद्धेचा अनुयायी, एका विशिष्ट धंद्यातील कामगार आणि स्थानिक उमेदवाराबद्दल मत बाळगणारी व्यक्ती. गरिबी या ओळखींपैकी एक आणि ती बाकीशी स्पर्धा करते. म्हणून गरीब नागरिकांची मते पुनर्वाटपाच्या एकाच मागणीमागे साचत नाहीत; ती अनेक पक्षांत विखुरतात, ज्यांतील प्रत्येक उत्पन्नाला आडवी छेदणारी आघाडी जुळवतो. जो पक्ष एखाद्या राज्यात जिंकतो तो एका समुदायाचे गरीब मतदार ठेवू शकतो आणि दुसऱ्याचे गमावू शकतो, म्हणून व्यवस्थेत कोणासमोरही घासाघिशीसाठी एकजूट वर्गीय मतदारवर्ग नसतो. ही मिथ्या जाणीव नाही; लोकांचे एकाच वेळी अनेक खरे हित असताना हेच घडते. उत्तराचा दुसरा अर्धा भाग निवडणुकांदरम्यान काय घडते याबद्दल, जिथे बहुतांश धोरण प्रत्यक्षात बनते. मत हे पाच वर्षांत एकदा वापरले जाणारे समान साधन. पैसा हे सतत वापरले जाणारे असमान साधन. संपत्ती मोहीम-अर्थपुरवठा विकत घेते, जो कोणता उमेदवार मुळात उभा राहू शकतो हे ठरवतो; ती माध्यम-पोहोच विकत घेते, जी कोणते मुद्दे चर्चेत येतात हे ठरवते; ती नियम बनवणाऱ्या मंत्रालयांशी जुळणाऱ्या उद्योग-संघटना व लॉबिंगला अर्थपुरवठा करते; ती अधिकाऱ्यांपर्यंत असा प्रवेश देते जो सामान्य नागरिकाकडे नाही; आणि ती गुंतवणूक सीमांपार नेऊ शकते, जे वाढीची चिंता करणाऱ्या सरकारवर उत्तोलन देते. यांपैकी कशालाही भ्रष्टाचार लागत नाही. फक्त इतकेच की केंद्रित साधने सतत प्रभाव देतात, तर विखुरलेली मते नियतकालिक प्रभाव. एक तिसरा घटकही नाव घेण्याजोगा. पुनर्वाटप रचनेत कठीण आणि निकाल दाखवायला मंद, तर त्याचे खर्च तात्काळ आणि जे ते वाहतात त्यांना दिसणारे. जमीन-मर्यादा जमीनदार लगेच ओळखतात; लाभार्थ्यांना ओळखायला दशक लागते. चार वर्षांत निवडणुकीला सामोरे जाणाऱ्या सरकारकडे आता खर्च सोसून नंतरचा लाभ मिळवण्याची दुर्बळ प्रेरणा, ते कोणाचेही प्रतिनिधित्व करत असो. यातून काय निष्कर्ष काढावा? हे नाही की लोकशाही फसवणूक आहे, आणि प्रकरण इथे काळजीपूर्वक. राजकीय समानता खरी आणि तिने खरे फायदे दिले — विधिमंडळांत दलित व आदिवासी प्रतिनिधित्व, रोजगार हमी आणि अन्नसुरक्षा कायदे, आरक्षण, माध्यान्ह भोजन, आणि हे सरळ तथ्य की दुर्लक्षासाठी सरकारे हटवली जातात. लौकिक पूर्ण यशाच्या अपेक्षेसमोर अंशतः यशाचा, नेमके तेच प्रारूप जे प्रकरण लोकशाहीची खूण म्हणून ओळखते: ती तेच मानक घडवते ज्याने मग तोलली जाते आणि कमी आढळते. हुकूमशाही पुनर्वाटपाचा प्रश्न उभाच राहू देत नाही, कारण जे तो मागतील त्यांच्याकडे ऐकले जाण्याचा मार्ग नाही. ती समानता नाही; ती शांतता आहे. प्रामाणिक निर्णय हा की लोकशाहीने राजकीय समानता दिली आणि आर्थिक समानता केवळ अंशतः, की त्यांच्यातील दरी खरी आणि तिच्यावर संताप करण्याजोगी, आणि हे की तिच्यावर जाहीरपणे संताप करता येणे हाच त्या परिणामांपैकी एक. (चुकीची उत्तरे नोंदलेले गरीब मतदान-आकडे नाकारतात, प्रत्येक उत्पन्न-सर्वेक्षण नोंदवत असलेली विषमता नाकारतात, वा कल्याण-खर्चावर अशी संवैधानिक बंदी रचतात जी कोणत्याही लोकशाहीत नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Democracy shows no growth advantage over dictatorship, has not removed poverty or inequality, and its citizens are the ones most dissatisfied with their governments. A student concludes that the case for democracy is weak. Answer them.",
+          hi: "लोकतंत्र तानाशाही पर वृद्धि में कोई लाभ नहीं दिखाता, उसने निर्धनता या असमानता हटाई नहीं, और उसके नागरिक ही अपनी सरकारों से सबसे अधिक असंतुष्ट हैं। एक छात्र निष्कर्ष निकालता है कि लोकतंत्र का पक्ष कमज़ोर है। उसे उत्तर दो।",
+          mr: "लोकशाही हुकूमशाहीवर वाढीत कोणताही फायदा दाखवत नाही, तिने गरिबी वा विषमता हटवली नाही, आणि तिचे नागरिकच आपल्या सरकारांवर सर्वाधिक असमाधानी. एक विद्यार्थी निष्कर्ष काढतो की लोकशाहीची बाजू दुर्बळ आहे. त्याला उत्तर द्या.",
+        },
+        choices: [
+          {
+            en: "The conclusion mistakes the standard. Democracy is judged against expectations it created, so partial success reads as failure — and the dissatisfaction is itself produced by citizens believing they may demand more. On the record, it delivers what nothing else does: government legitimate by consent rather than fear, decisions that can be questioned and reversed, diversity accommodated instead of suppressed, no famine where a free press and a removable government exist, and above all a mistake that can be corrected without bloodshed — which is worth more than a percentage point of growth",
+            hi: "निष्कर्ष मानक की भूल करता है। लोकतंत्र उन्हीं अपेक्षाओं से आँका जाता जो उसने रचीं, अतः आंशिक सफलता विफलता-सी पढ़ी जाती — और असंतोष स्वयं इससे उपजा कि नागरिक मानते हैं वे अधिक माँग सकते हैं। रिकॉर्ड पर वह वह देता है जो और कुछ नहीं देता: भय से नहीं सहमति से वैध सरकार, ऐसे निर्णय जिन पर प्रश्न उठे और जो पलटे जा सकें, दमित नहीं समायोजित विविधता, स्वतंत्र प्रेस तथा हटाई जा सकती सरकार वाली जगह कोई अकाल नहीं, और सबसे बढ़कर ऐसी भूल जो रक्तपात बिना सुधारी जा सके — जो वृद्धि के एक प्रतिशत-बिंदु से अधिक मूल्यवान है",
+            mr: "निष्कर्ष मानकाची चूक करतो. लोकशाही तिनेच घडवलेल्या अपेक्षांविरुद्ध तोलली जाते, म्हणून अंशतः यश अपयशासारखे वाचले जाते — आणि असमाधान स्वतःच नागरिकांना वाटते की ते अधिक मागू शकतात यातून उपजलेले. लौकिकावर ती ते देते जे दुसरे काहीही देत नाही: भीतीने नव्हे तर संमतीने वैध सरकार, प्रश्न विचारता येतील आणि पलटवता येतील असे निर्णय, दडपलेली नव्हे तर सामावलेली विविधता, मुक्त वृत्तपत्रे व हटवता येणारे सरकार असलेल्या जागी कोणताही दुष्काळ नाही, आणि सर्वांत महत्त्वाचे रक्तपाताविना दुरुस्त करता येणारी चूक — जी वाढीच्या एका टक्केबिंदूहून अधिक मोलाची",
+          },
+          {
+            en: "The student is right and democracy should be abandoned wherever growth rates are low",
+            hi: "छात्र सही है और जहाँ वृद्धि दर कम हो वहाँ लोकतंत्र छोड़ देना चाहिए",
+            mr: "विद्यार्थी बरोबर आणि जिथे वाढीचे दर कमी तिथे लोकशाही सोडावी",
+          },
+          {
+            en: "The premises are all false: democracies grow faster, have no poverty, and their citizens are uniformly satisfied",
+            hi: "सब आधार झूठे हैं: लोकतंत्र तेज़ बढ़ते हैं, उनमें निर्धनता नहीं, और उनके नागरिक एकसमान संतुष्ट हैं",
+            mr: "सर्व गृहीतके खोटी: लोकशाही वेगाने वाढतात, त्यांत गरिबी नाही, आणि त्यांचे नागरिक एकसारखे समाधानी",
+          },
+          {
+            en: "The question cannot be answered because outcomes of government cannot be compared across countries at all",
+            hi: "प्रश्न का उत्तर नहीं दिया जा सकता क्योंकि शासन के परिणामों की देशों के बीच तुलना हो ही नहीं सकती",
+            mr: "प्रश्नाचे उत्तर देता येत नाही कारण शासनाच्या परिणामांची देशांदरम्यान तुलना होऊच शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's facts are largely correct, and it is worth conceding them plainly before answering. Democracies do not grow faster on average; the measured difference is negligible and swamped by population, resources and global conditions. Poverty and inequality persist in almost every democracy, in several worsening. And citizens of democracies are indeed conspicuously dissatisfied. The error is not in the evidence but in the standard being applied. Notice where the standard came from. Nobody asks whether a dictatorship has reduced inequality or accommodated minorities, because the question is not on offer — there is no mechanism by which the answer could matter. Democracy is measured against these expectations precisely because it created them: it teaches citizens that a government exists to serve them and can be removed for failing to, and having taught that, it is then held to it. So a democracy's record will always read as disappointing, and the dissatisfaction the student cites is not evidence against the system but a product of it. A subject who complains in a dictatorship risks arrest; a citizen who complains in a democracy is exercising a right. The complaint is the outcome. Now the positive case, stated without exaggeration. First, legitimacy. Democratic government is obeyed because it was chosen, not because it is feared, and this is not sentimentality — it is the reason such a state needs vastly less coercion to function and can implement decisions without compelling each citizen separately. Second, accountability and transparency. Citizens can ask how a decision was made and on what rule, take an answer to court, and remove those responsible. The claim is not that democratic decisions are better; often they are slower and messier. It is that they are answerable, and a system that can be corrected outperforms one that cannot, over time, even if it is wrong as often. Third, accommodation of diversity. This is where the record is strongest and where the alternative is worst. Sri Lanka's civil war, examined earlier in this book, followed directly from a majority governing as though a minority were outside the nation. India's linguistic reorganisation shows the opposite path. Handling division by negotiation rather than suppression is not a small achievement; it is the difference between a country that argues and a country at war. Fourth, and most concrete, the famine record. No substantial famine has occurred in a functioning democracy with a free press. A government that can be voted out cannot afford to let people starve unnoticed, because journalists will report it and voters will punish it. That is an economic outcome, and it is decisive. Fifth, dignity. Formal equality of every citizen, one vote of equal weight regardless of caste, wealth, gender or faith, is a real thing even where economic equality has not followed, and it has produced concrete change: representation in legislatures for communities excluded for centuries, and a language of rights that those communities have used. So the final answer to the student is that they have chosen the wrong criterion. If the test is growth, the evidence is genuinely inconclusive, and the argument for democracy does not rest there. The test that matters is whether a mistake can be corrected without violence, whether power can change hands without bloodshed, whether a person can say the government is wrong and remain free, and whether those left out of a decision have a route back in. On those, no alternative comes close — and a system that permits its own failures to be catalogued as thoroughly as the student just did is demonstrating, in that very act, what it is for. (The wrong answers accept a growth-only criterion, deny facts the chapter itself concedes, or refuse a comparison that the entire study of politics rests on.)",
+          hi: "छात्र के तथ्य बड़े हिस्से में सही हैं, और उत्तर देने से पहले उन्हें साफ़ मान लेना उचित है। लोकतंत्र औसतन तेज़ नहीं बढ़ते; मापा गया अंतर नगण्य है और जनसंख्या, संसाधनों तथा वैश्विक दशाओं में डूब जाता है। निर्धनता और असमानता लगभग हर लोकतंत्र में बनी हैं, कई में बिगड़ती हुई। और लोकतंत्रों के नागरिक सचमुच स्पष्ट रूप से असंतुष्ट हैं। भूल प्रमाण में नहीं, लगाए जा रहे मानक में है। ध्यान दो मानक आया कहाँ से। कोई नहीं पूछता कि किसी तानाशाही ने असमानता घटाई या अल्पसंख्यकों को समायोजित किया, क्योंकि प्रश्न रखा ही नहीं जाता — ऐसी कोई क्रियाविधि नहीं जिससे उत्तर मायने रख सके। लोकतंत्र इन्हीं अपेक्षाओं से ठीक इसलिए नापा जाता है कि उसने उन्हें रचा: वह नागरिकों को सिखाता है कि सरकार उनकी सेवा के लिए है और चूकने पर हटाई जा सकती है, और यह सिखा चुकने के बाद उसी पर पकड़ा जाता है। अतः किसी लोकतंत्र का रिकॉर्ड सदा निराशाजनक पढ़ा जाएगा, और छात्र जिस असंतोष का हवाला देता वह प्रणाली के विरुद्ध प्रमाण नहीं बल्कि उसी की उपज है। तानाशाही में शिकायत करती प्रजा गिरफ़्तारी का जोखिम उठाती है; लोकतंत्र में शिकायत करता नागरिक अधिकार का प्रयोग कर रहा है। शिकायत ही परिणाम है। अब सकारात्मक पक्ष, बिना अतिशयोक्ति। पहला, वैधता। लोकतांत्रिक सरकार इसलिए मानी जाती कि वह चुनी गई, इसलिए नहीं कि डर है, और यह भावुकता नहीं — यही कारण है कि ऐसे राज्य को चलने के लिए कहीं कम बल चाहिए और वह हर नागरिक को अलग-अलग बाध्य किए बिना निर्णय लागू कर सकता है। दूसरा, जवाबदेही और पारदर्शिता। नागरिक पूछ सकते हैं कि निर्णय कैसे और किस नियम से लिया गया, उत्तर अदालत ले जा सकते, और ज़िम्मेदारों को हटा सकते हैं। दावा यह नहीं कि लोकतांत्रिक निर्णय बेहतर हैं; अक्सर वे धीमे और अस्त-व्यस्त होते हैं। दावा यह कि वे उत्तर-योग्य हैं, और जो प्रणाली सुधारी जा सके वह समय के साथ उससे बेहतर करती है जो नहीं सुधारी जा सकती, भले वह उतनी ही बार ग़लत हो। तीसरा, विविधता का समायोजन। यहीं रिकॉर्ड सबसे मज़बूत है और यहीं विकल्प सबसे बुरा। श्रीलंका का गृहयुद्ध, जिसे इसी पुस्तक में पहले परखा गया, सीधे इससे निकला कि बहुमत ने ऐसे शासन किया मानो अल्पसंख्यक राष्ट्र के बाहर हो। भारत का भाषायी पुनर्गठन उल्टा मार्ग दिखाता है। विभाजन को दमन नहीं बातचीत से सँभालना छोटी उपलब्धि नहीं; वही अंतर है बहस करते देश और युद्ध में देश के बीच। चौथा, और सबसे ठोस, अकाल का रिकॉर्ड। स्वतंत्र प्रेस वाले चलते लोकतंत्र में कोई बड़ा अकाल नहीं पड़ा। जो सरकार मतों से हटाई जा सकती वह लोगों को अनदेखे भूखों मरने नहीं दे सकती, क्योंकि पत्रकार उसे छापेंगे और मतदाता उसे दंडित करेंगे। वह आर्थिक परिणाम है, और वह निर्णायक है। पाँचवाँ, गरिमा। हर नागरिक की औपचारिक समानता, जाति, संपत्ति, लिंग या आस्था चाहे जो हो बराबर वज़न का एक मत, असली चीज़ है भले आर्थिक समानता उसके पीछे न आई हो, और उसने ठोस बदलाव दिए: सदियों बहिष्कृत रहे समुदायों को विधानमंडलों में प्रतिनिधित्व, और अधिकारों की एक भाषा जिसे उन समुदायों ने इस्तेमाल किया। अतः छात्र को अंतिम उत्तर यह कि उसने ग़लत कसौटी चुनी है। यदि कसौटी वृद्धि है, प्रमाण सचमुच अनिर्णायक हैं, और लोकतंत्र का तर्क वहाँ टिकता ही नहीं। जो कसौटी मायने रखती वह यह कि क्या कोई भूल हिंसा बिना सुधारी जा सकती, क्या सत्ता रक्तपात बिना हाथ बदल सकती, क्या कोई कह सकता कि सरकार ग़लत है और स्वतंत्र बना रहे, और क्या किसी निर्णय से बाहर छूटे लोगों के पास लौटने का रास्ता है। उन पर कोई विकल्प पास भी नहीं फटकता — और जो प्रणाली अपनी ही विफलताओं को इतनी अच्छी तरह सूचीबद्ध होने देती है जितना छात्र ने अभी किया, वह उसी कर्म में दिखा रही है कि वह किसलिए है। (ग़लत उत्तर केवल-वृद्धि की कसौटी स्वीकारते, उन तथ्यों को नकारते जिन्हें अध्याय स्वयं मानता है, या उस तुलना से इनकार करते जिस पर राजनीति का पूरा अध्ययन टिका है।)",
+          mr: "विद्यार्थ्याची तथ्ये मोठ्या प्रमाणात बरोबर, आणि उत्तर देण्याआधी ती स्पष्ट मान्य करणे योग्य. लोकशाही सरासरीने वेगाने वाढत नाहीत; मोजलेला फरक नगण्य आणि लोकसंख्या, संसाधने व जागतिक स्थितीत बुडतो. गरिबी आणि विषमता जवळजवळ प्रत्येक लोकशाहीत टिकून, कित्येकांत वाढत. आणि लोकशाहींचे नागरिक खरोखर ठळकपणे असमाधानी. चूक पुराव्यात नाही तर लावल्या जाणाऱ्या मानकात. मानक कुठून आले ते पाहा. कोणी विचारत नाही की एखाद्या हुकूमशाहीने विषमता घटवली वा अल्पसंख्याकांना सामावले, कारण प्रश्न मांडलाच जात नाही — अशी कोणतीही यंत्रणा नाही जिच्यामुळे उत्तर महत्त्वाचे ठरेल. लोकशाही याच अपेक्षांविरुद्ध नेमके यासाठी मोजली जाते की तिने त्या घडवल्या: ती नागरिकांना शिकवते की सरकार त्यांच्या सेवेसाठी आहे आणि चुकल्यास हटवता येते, आणि हे शिकवल्यावर तिलाच त्यावर धरले जाते. म्हणून कोणत्याही लोकशाहीचा लौकिक सदैव निराशाजनक वाचला जाईल, आणि विद्यार्थी ज्या असमाधानाचा दाखला देतो ते व्यवस्थेविरुद्धचा पुरावा नव्हे तर तिचीच उपज. हुकूमशाहीत तक्रार करणारी प्रजा अटकेचा धोका पत्करते; लोकशाहीत तक्रार करणारा नागरिक हक्क बजावत आहे. तक्रारच परिणाम. आता सकारात्मक बाजू, अतिशयोक्तीविना. पहिली, वैधता. लोकशाही सरकार यासाठी पाळले जाते की ते निवडले गेले, यासाठी नाही की भीती वाटते, आणि ही भावुकता नाही — हेच कारण की अशा राज्याला चालायला कितीतरी कमी बळ लागते आणि ते प्रत्येक नागरिकाला वेगवेगळे भाग पाडल्याविना निर्णय राबवू शकते. दुसरी, उत्तरदायित्व आणि पारदर्शकता. नागरिक विचारू शकतात की निर्णय कसा आणि कोणत्या नियमाने घेतला, उत्तर न्यायालयात नेऊ शकतात, आणि जबाबदारांना हटवू शकतात. दावा हा नाही की लोकशाही निर्णय अधिक चांगले; अनेकदा ते मंद आणि गोंधळलेले. दावा हा की ते उत्तरयोग्य, आणि जी व्यवस्था दुरुस्त करता येते ती काळाबरोबर जिला करता येत नाही तिच्याहून चांगले करते, जरी ती तितक्याच वेळा चुकत असली तरी. तिसरी, विविधतेचे सामावणे. इथेच लौकिक सर्वांत भक्कम आणि इथेच पर्याय सर्वांत वाईट. श्रीलंकेचे यादवी युद्ध, याच पुस्तकात आधी तपासलेले, थेट यातून निघाले की बहुमताने अल्पसंख्याक राष्ट्राबाहेर असल्यासारखे राज्य केले. भारताची भाषिक पुनर्रचना उलट मार्ग दाखवते. विभाजन दडपशाहीने नव्हे तर वाटाघाटीने हाताळणे ही लहान कमाई नाही; तोच फरक वाद घालणारा देश आणि युद्धातील देश यांच्यात. चौथी, आणि सर्वांत ठोस, दुष्काळाचा लौकिक. मुक्त वृत्तपत्रे असलेल्या चालत्या लोकशाहीत मोठा दुष्काळ पडलेला नाही. जे सरकार मतांनी हटवता येते ते लोकांना दुर्लक्षितपणे उपाशी मरू देऊ शकत नाही, कारण पत्रकार ते छापतील आणि मतदार त्याला शिक्षा देतील. तो आर्थिक परिणाम, आणि तो निर्णायक. पाचवी, प्रतिष्ठा. प्रत्येक नागरिकाची औपचारिक समानता, जात, संपत्ती, लिंग वा श्रद्धा कोणतीही असो समान वजनाचे एक मत, ही खरी गोष्ट जरी आर्थिक समानता तिच्यामागे आली नसली तरी, आणि तिने ठोस बदल घडवला: शतके वगळलेल्या समुदायांना विधिमंडळांत प्रतिनिधित्व, आणि हक्कांची एक भाषा जी त्या समुदायांनी वापरली. म्हणून विद्यार्थ्याला अंतिम उत्तर हे की त्याने चुकीची कसोटी निवडली. कसोटी वाढ असेल, तर पुरावा खरोखर अनिर्णायक, आणि लोकशाहीचा युक्तिवाद तिथे टेकतच नाही. जी कसोटी महत्त्वाची ती ही की एखादी चूक हिंसेविना दुरुस्त करता येते का, सत्ता रक्तपाताविना हात बदलू शकते का, कोणी सांगू शकतो का की सरकार चुकीचे आहे आणि मुक्त राहू शकतो का, आणि एखाद्या निर्णयातून वगळलेल्यांकडे परत येण्याचा मार्ग आहे का. त्यांवर कोणताही पर्याय जवळही येत नाही — आणि जी व्यवस्था स्वतःच्याच अपयशांची विद्यार्थ्याने आत्ता केली तितकी नीट यादी होऊ देते, ती त्याच कृतीत दाखवत आहे की ती कशासाठी आहे. (चुकीची उत्तरे केवळ-वाढीची कसोटी स्वीकारतात, प्रकरण स्वतः मान्य करत असलेली तथ्ये नाकारतात, वा ज्या तुलनेवर राजकारणाचा अख्खा अभ्यास टेकलेला ती नाकारतात.)",
+        },
+      },
+    ],
+  },
 ];
