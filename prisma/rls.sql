@@ -449,6 +449,7 @@ CREATE POLICY "CompetitionStanding_readable" ON "CompetitionStanding"
          OR (EXISTS (
            SELECT 1 FROM "Competition" c
             WHERE c."id" = "CompetitionStanding"."competitionId"
+              AND c."organizerSchoolId" IS NULL
               AND c."leaderboardEnabled" = true
          ))
         );

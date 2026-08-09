@@ -1286,9 +1286,12 @@ async function main() {
       `INSERT INTO "Competition" (id,title,summary,"organizerName",status,"leaderboardEnabled","updatedAt") VALUES
          ('verify-comp-open','Open board','x','Org','PUBLISHED',true,now()),
          ('verify-comp-shut','Shut board','x','Org','PUBLISHED',false,now());
+       INSERT INTO "Competition" (id,title,summary,"organizerName","organizerSchoolId",status,"leaderboardEnabled","updatedAt") VALUES
+         ('verify-comp-own','School A''s own, board on','x','School A','verify-a','PUBLISHED',true,now());
        INSERT INTO "CompetitionStanding" (id,"competitionId","schoolId","schoolName",entrants,"bestRank","updatedAt") VALUES
          ('verify-stand-open-a','verify-comp-open','verify-a','A',3,2,now()),
-         ('verify-stand-shut-a','verify-comp-shut','verify-a','A',3,1,now());
+         ('verify-stand-shut-a','verify-comp-shut','verify-a','A',3,1,now()),
+         ('verify-stand-own-a','verify-comp-own','verify-a','A',3,1,now());
        INSERT INTO "CompetitionEntry" (id,"competitionId","studentMembershipId","schoolId",status,rank,"updatedAt")
          VALUES ('verify-entry-a','verify-comp-open','verify-m-pupil-a','verify-a','RESULTS',2,now());`,
     );
@@ -1327,6 +1330,36 @@ async function main() {
       "⚠ …and NEVER another school's entries, which is where the children are",
       entriesFromB === 0,
       `school B read ${entriesFromB} of school A's competition entries — a leaderboard is now a list of other schools' children`,
+    );
+
+    /**
+     * A SCHOOL-POSTED competition's standing never crosses, flag or no flag.
+     * Since school-posted competitions became their own school's alone
+     * (competitions.ts), no page can show another school this row — so a
+     * policy that let it cross would serve crafted queries only. The
+     * `organizerSchoolId IS NULL` arm of the standing policy is what this
+     * checks: the board is ON and the row still stays home.
+     */
+    const ownBoardFromB = await withTenantOn(client, "verify-b", (tx) =>
+      (tx as unknown as { competitionStanding: { count: (a?: unknown) => Promise<number> } })
+        .competitionStanding.count({ where: { competitionId: "verify-comp-own" } }),
+    );
+    check(
+      "⚠ …and never a SCHOOL-POSTED competition's standing, even with its board on",
+      ownBoardFromB === 0,
+      `school B read ${ownBoardFromB} standing(s) for school A's own competition — the platform-only arm is missing from the policy`,
+    );
+
+    // The school's own standing is still its own to read — tightening the
+    // cross arm must not have cost the organiser their own board.
+    const ownBoardFromA = await withTenantOn(client, "verify-a", (tx) =>
+      (tx as unknown as { competitionStanding: { count: (a?: unknown) => Promise<number> } })
+        .competitionStanding.count({ where: { competitionId: "verify-comp-own" } }),
+    );
+    check(
+      "…while the organising school still reads its own",
+      ownBoardFromA === 1,
+      "school A cannot read its own standing row — the tenant arm broke",
     );
 
     let wroteStanding = 0;

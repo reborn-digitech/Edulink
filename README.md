@@ -3451,6 +3451,17 @@ school"; the Oakfield pupil's list mentions it zero times and the direct URL
 answers 404. Suite at 85 files / 1,463 tests, with the flipped catalogue tests
 and four new visibility cases.
 
+**And the standing policy tightened to match.** `CompetitionStanding`'s
+global-read arm used to open a school's aggregate row (name, entrant count,
+best place — never children) to every tenant whenever the leaderboard was on.
+For a school-posted competition that crossing became pure leak: no page can
+show it — the competition itself answers NOT FOUND to other schools — so the
+only possible reader was a crafted query through the app role. The policy now
+requires `organizerSchoolId IS NULL` alongside `leaderboardEnabled`, closing
+it in the database, and `rls:verify` grew two checks: school B reads ZERO
+standings for school A's own competition even with its board on, and school A
+still reads its own.
+
 ### Known issues
 
 - ~~**`npm run db:reset` leaves the app role unable to open the database.**~~

@@ -358,6 +358,14 @@ const GLOBALLY_READABLE: Record<string, string> = {
    * at all (it belongs to no school — see NO_SCHOOL_POLICY), so this cannot fail
    * closed for the wrong reason and cannot recurse.
    *
+   * PLATFORM COMPETITIONS ONLY. A cross-school leaderboard is only meaningful
+   * for a competition every school can enter, and since a school-posted
+   * competition became its own school's alone, its standing row crossing would
+   * be pure leak: no page could show it (the competition itself answers NOT
+   * FOUND to other schools), so the only reader would be a crafted query. The
+   * `organizerSchoolId IS NULL` arm closes that in the database, matching the
+   * visibility rule in competitions.ts clause for clause.
+   *
    * READ ONLY, like every clause here: USING only, never WITH CHECK, so a school
    * maintains its own standing row and can never write, edit or delete another
    * school's.
@@ -365,6 +373,7 @@ const GLOBALLY_READABLE: Record<string, string> = {
   CompetitionStanding: `EXISTS (
            SELECT 1 FROM "Competition" c
             WHERE c."id" = "CompetitionStanding"."competitionId"
+              AND c."organizerSchoolId" IS NULL
               AND c."leaderboardEnabled" = true
          )`,
 };
