@@ -29,7 +29,7 @@
  *     left with no pupils on purpose: a zero-row register still needs a home.
  *   Four experts spanning the curation states: published+verified, published
  *     unverified, and one still unpublished.
- *   One operator account for the superuser flag.
+ *   One operator account, already carrying the superuser flag.
  *
  * Runs on the ADMIN connection: it creates schools, and a row that belongs to no
  * tenant yet cannot be written through the app's row-level-security role.
@@ -703,8 +703,21 @@ async function buildExperts(ctx: Ctx) {
   return made;
 }
 
+/**
+ * The operator account, WITH the superuser flag already set.
+ *
+ * `make-superuser.ts` exists because there is deliberately no UI for this: the
+ * first superuser cannot be invited by a superuser, so somebody with shell
+ * access has to say so once. This script has exactly that authorisation — it is
+ * already running as the database owner to create schools — so making the
+ * fixture complete in one command rather than two is the same decision, not a
+ * weaker one. The flag dies with the account on teardown.
+ */
 async function buildOperator(ctx: Ctx) {
   const user = await upsertUser(ctx, `zz.operator@${DOMAIN}`, "ZZ Platform Operator");
+  if (!user.isSuperuser) {
+    return db.user.update({ where: { id: user.id }, data: { isSuperuser: true } });
+  }
   return user;
 }
 
@@ -769,8 +782,8 @@ async function main() {
 ${experts.map((e) => `     ${e}`).join("\n")}
 
   ── Operator ─────────────────────────────────────────────────────────
-     ${operator.email}   — grant the flag with:
-       npm run superuser -- ${operator.email}
+     ${operator.email}   superuser: ${operator.isSuperuser ? "GRANTED" : "not granted"}
+     Opens /root. Revoke with:  npm run superuser -- ${operator.email} --revoke
 
   ── Unclaimed pupils (for walking the parent-claim flow) ─────────────
      Claiming needs the code AND the child's birthdate.
