@@ -1754,4 +1754,700 @@ export const G10_GEOGRAPHY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Manufacturing Industries                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-10-manufacturing",
+    subject: "GEOGRAPHY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 6 — Manufacturing Industries",
+      hi: "अध्याय 6 — विनिर्माण उद्योग",
+      mr: "प्रकरण 6 — निर्मिती उद्योग",
+    },
+    name: {
+      en: "Manufacturing Industries",
+      hi: "विनिर्माण उद्योग",
+      mr: "निर्मिती उद्योग",
+    },
+    summary: {
+      en: "Raw material turned into something worth more: why a country that only grows and digs stays poor, a mill that must stand in the cane field, the industry every other industry is built out of, factories owned by the state because nobody else would build them — and the four kinds of waste a town downstream inherits.",
+      hi: "कच्चा माल किसी अधिक मूल्यवान चीज़ में बदला: जो देश केवल उगाता और खोदता है वह निर्धन क्यों रहता, वह मिल जिसे गन्ने के खेत में ही खड़ा होना है, वह उद्योग जिससे बाक़ी हर उद्योग बना है, वे कारख़ाने जो राज्य के इसलिए कि और कोई बनाता ही नहीं — और नीचे का क़स्बा जिन चार तरह के कचरों का उत्तराधिकारी बनता है।",
+      mr: "कच्चा माल अधिक मोलाच्या कशात तरी बदललेला: जो देश फक्त पिकवतो आणि खणतो तो गरीब का राहतो, ती गिरणी जिला उसाच्या शेतातच उभे राहावे लागते, तो उद्योग ज्यातून बाकी प्रत्येक उद्योग बनला आहे, ते कारखाने जे राज्याचे कारण दुसरे कोणी बांधतच नाही — आणि खालचे गाव ज्या चार प्रकारच्या कचऱ्याचा वारस बनते.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "importance-of-manufacturing",
+        name: {
+          en: "The importance of manufacturing",
+          hi: "विनिर्माण का महत्व",
+          mr: "निर्मितीचे महत्त्व",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Cotton sold as bales earns a little; the same cotton sold as shirts earns many times more, and employs spinners, weavers, dyers and tailors in between. Which activity adds that value and is treated as the backbone of development?",
+          hi: "गाँठों में बिका कपास थोड़ा कमाता है; वही कपास कमीज़ों में बिककर कई गुना अधिक कमाता है, और बीच में कातने, बुनने, रँगने तथा सिलने वालों को रोज़गार देता है। कौन-सी गतिविधि वह मूल्य जोड़ती है और विकास की रीढ़ मानी जाती है?",
+          mr: "गाठींत विकलेला कापूस थोडे कमावतो; तोच कापूस शर्टांत विकून कैकपट अधिक कमावतो, आणि मध्ये कातणारे, विणणारे, रंगवणारे व शिवणारे यांना रोजगार देतो. कोणती क्रिया ते मूल्य जोडते आणि विकासाचा कणा मानली जाते?",
+        },
+        statement: {
+          en: "Manufacturing is the processing of raw materials into more valuable goods, and it is regarded as the backbone of development because it adds value, creates employment beyond farming and reduces dependence on imports.",
+          hi: "विनिर्माण कच्चे माल का अधिक मूल्यवान वस्तुओं में प्रसंस्करण है, और उसे विकास की रीढ़ माना जाता है क्योंकि वह मूल्य जोड़ता है, खेती से परे रोज़गार रचता है और आयात पर निर्भरता घटाता है।",
+          mr: "निर्मिती म्हणजे कच्च्या मालाचे अधिक मोलाच्या वस्तूंत रूपांतर, आणि तिला विकासाचा कणा मानले जाते कारण ती मूल्य जोडते, शेतीपलीकडे रोजगार निर्माण करते आणि आयातीवरील अवलंबित्व घटवते.",
+        },
+        detail: {
+          en: "It also pulls agriculture up with it, because a farmer who can sell to a nearby mill gets a market that does not vanish when the local harvest is good.",
+          hi: "यह कृषि को भी अपने साथ ऊपर खींचता है, क्योंकि जो किसान पास की मिल को बेच सकता है उसे ऐसा बाज़ार मिलता है जो स्थानीय फ़सल अच्छी होने पर ग़ायब नहीं होता।",
+          mr: "ती शेतीलाही आपल्यासोबत वर ओढते, कारण जो शेतकरी जवळच्या गिरणीला विकू शकतो त्याला असा बाजार मिळतो जो स्थानिक पीक चांगले आल्यावर नाहीसा होत नाही.",
+        },
+        extra: {
+          en: "A country that exports only ore and grain sells the cheapest stage of every chain, which is exactly why industrialisation was made a national goal after 1947.",
+          hi: "जो देश केवल अयस्क और अनाज निर्यात करता है वह हर शृंखला का सबसे सस्ता चरण बेचता है, ठीक इसीलिए 1947 के बाद औद्योगीकरण राष्ट्रीय लक्ष्य बनाया गया।",
+          mr: "जो देश फक्त धातुक आणि धान्य निर्यात करतो तो प्रत्येक साखळीचा सर्वांत स्वस्त टप्पा विकतो, नेमके म्हणूनच 1947 नंतर औद्योगीकरण राष्ट्रीय ध्येय बनवले गेले.",
+        },
+        pair: {
+          left: {
+            en: "Raw material turned into something worth more",
+            hi: "कच्चा माल अधिक मूल्यवान वस्तु में बदला",
+            mr: "कच्चा माल अधिक मोलाच्या वस्तूत बदललेला",
+          },
+          right: {
+            en: "the importance of manufacturing",
+            hi: "विनिर्माण का महत्व",
+            mr: "निर्मितीचे महत्त्व",
+          },
+        },
+      },
+      {
+        id: "sugar-industry",
+        name: {
+          en: "The sugar industry",
+          hi: "चीनी उद्योग",
+          mr: "साखर उद्योग",
+        },
+        kind: "industry",
+        prompt: {
+          en: "Its raw material is bulky, loses its sucrose within a day of cutting and cannot be stored, so the mill must stand among the fields rather than near the buyers. Which agro-based industry is this?",
+          hi: "उसका कच्चा माल भारी-भरकम है, कटने के एक दिन में अपनी शर्करा खो देता है और भंडारित नहीं किया जा सकता, अतः मिल को ख़रीदारों के पास नहीं बल्कि खेतों के बीच खड़ा होना पड़ता है। यह कौन-सा कृषि-आधारित उद्योग है?",
+          mr: "त्याचा कच्चा माल अवजड, कापल्यानंतर एका दिवसात आपली साखर गमावतो आणि साठवता येत नाही, म्हणून गिरणीला खरेदीदारांजवळ नव्हे तर शेतांमध्ये उभे राहावे लागते. हा कोणता कृषी-आधारित उद्योग?",
+        },
+        statement: {
+          en: "The sugar industry is an agro-based industry sited in the cane-growing tracts themselves, because sugarcane is heavy to move and starts losing sucrose within hours of being cut.",
+          hi: "चीनी उद्योग कृषि-आधारित उद्योग है जो स्वयं गन्ना उगाती पट्टियों में स्थित है, क्योंकि गन्ना ढोने में भारी है और कटने के घंटों में शर्करा खोने लगता है।",
+          mr: "साखर उद्योग हा कृषी-आधारित उद्योग जो स्वतः ऊस पिकवणाऱ्या पट्ट्यांत वसलेला, कारण ऊस वाहायला जड आणि कापल्यानंतर तासांत साखर गमावू लागतो.",
+        },
+        detail: {
+          en: "It is seasonal, running only through the crushing months, so mills must find other work for staff and machinery for half the year.",
+          hi: "यह मौसमी है, केवल पेराई के महीनों चलता है, अतः मिलों को आधे वर्ष कर्मचारियों और मशीनरी के लिए दूसरा काम खोजना पड़ता है।",
+          mr: "तो हंगामी, फक्त गाळप महिन्यांत चालतो, म्हणून गिरण्यांना अर्धे वर्ष कर्मचारी व यंत्रसामग्रीसाठी दुसरे काम शोधावे लागते.",
+        },
+        extra: {
+          en: "Its by-products are worth as much as attention: molasses for alcohol, bagasse burnt to run the mill itself, and press mud returned to the fields as manure.",
+          hi: "उसके उप-उत्पाद उतने ही ध्यान योग्य हैं: शराब के लिए शीरा, स्वयं मिल चलाने को जलाई खोई, और खाद के रूप में खेतों को लौटाया प्रेस-मड।",
+          mr: "त्याचे उपपदार्थ तितकेच लक्ष देण्याजोगे: मद्यासाठी मळी, स्वतः गिरणी चालवायला जाळलेली चिपाडे, आणि खत म्हणून शेतांना परत केलेला प्रेस-मड.",
+        },
+        pair: {
+          left: {
+            en: "A mill that must stand in the cane field",
+            hi: "वह मिल जिसे गन्ने के खेत में खड़ा होना है",
+            mr: "ती गिरणी जिला उसाच्या शेतात उभे राहावे लागते",
+          },
+          right: {
+            en: "the sugar industry",
+            hi: "चीनी उद्योग",
+            mr: "साखर उद्योग",
+          },
+        },
+      },
+      {
+        id: "iron-steel-industry",
+        name: {
+          en: "The iron and steel industry",
+          hi: "लोहा और इस्पात उद्योग",
+          mr: "लोखंड आणि पोलाद उद्योग",
+        },
+        kind: "industry",
+        prompt: {
+          en: "It supplies the rails, girders, machinery, ships and tools out of which every other industry is built, and its plants stand at Bhilai, Rourkela, Durgapur, Bokaro and Vishakhapatnam. Which basic industry is this?",
+          hi: "यह वे रेल-पटरियाँ, गर्डर, मशीनरी, जहाज़ और औज़ार देता है जिनसे बाक़ी हर उद्योग बना है, और उसके संयंत्र भिलाई, राउरकेला, दुर्गापुर, बोकारो तथा विशाखापत्तनम में खड़े हैं। यह कौन-सा आधारभूत उद्योग है?",
+          mr: "तो त्या रेल्वेरुळ, तुळया, यंत्रसामग्री, जहाजे आणि अवजारे पुरवतो ज्यांतून बाकी प्रत्येक उद्योग बांधला आहे, आणि त्याचे प्रकल्प भिलाई, राउरकेला, दुर्गापूर, बोकारो व विशाखापट्टणम येथे उभे. हा कोणता पायाभूत उद्योग?",
+        },
+        statement: {
+          en: "The iron and steel industry is a basic industry whose product every other manufacturing industry depends on, and its integrated plants are concentrated in the Chotanagpur and Odisha–Chhattisgarh belt near ore, coal and water.",
+          hi: "लोहा और इस्पात उद्योग एक आधारभूत उद्योग है जिसके उत्पाद पर बाक़ी हर विनिर्माण उद्योग निर्भर है, और उसके एकीकृत संयंत्र अयस्क, कोयले तथा पानी के पास छोटानागपुर और ओडिशा–छत्तीसगढ़ पट्टी में केंद्रित हैं।",
+          mr: "लोखंड आणि पोलाद उद्योग हा पायाभूत उद्योग ज्याच्या उत्पादनावर बाकी प्रत्येक निर्मिती उद्योग अवलंबून, आणि त्याचे एकात्मिक प्रकल्प धातुक, कोळसा व पाण्याजवळ छोटानागपूर आणि ओडिशा–छत्तीसगड पट्ट्यात केंद्रित.",
+        },
+        detail: {
+          en: "It needs iron ore, coking coal and limestone in roughly the ratio 4:2:1, and enormous quantities of water for cooling.",
+          hi: "उसे लौह अयस्क, कोकिंग कोयला और चूना-पत्थर लगभग 4:2:1 के अनुपात में चाहिए, और ठंडा करने को विशाल मात्रा में पानी।",
+          mr: "त्याला लोहधातुक, कोकिंग कोळसा आणि चुनखडी सुमारे 4:2:1 प्रमाणात लागतात, आणि थंड करण्यासाठी प्रचंड प्रमाणात पाणी.",
+        },
+        extra: {
+          en: "India is among the world's largest crude-steel producers yet its consumption per person stays low, which is itself a measure of how much building is still to come.",
+          hi: "भारत विश्व के सबसे बड़े कच्चा-इस्पात उत्पादकों में है फिर भी उसकी प्रति व्यक्ति खपत कम बनी हुई है, और यही इस बात का माप है कि अभी कितना निर्माण होना बाक़ी है।",
+          mr: "भारत जगातील सर्वांत मोठ्या कच्चे-पोलाद उत्पादकांपैकी तरीही त्याचा दरडोई वापर कमी राहतो, आणि हेच किती बांधकाम अजून व्हायचे आहे याचे माप.",
+        },
+        pair: {
+          left: {
+            en: "The industry every other industry is built from",
+            hi: "वह उद्योग जिससे बाक़ी हर उद्योग बना है",
+            mr: "तो उद्योग ज्यातून बाकी प्रत्येक उद्योग बांधला",
+          },
+          right: {
+            en: "the iron and steel industry",
+            hi: "लोहा और इस्पात उद्योग",
+            mr: "लोखंड आणि पोलाद उद्योग",
+          },
+        },
+      },
+      {
+        id: "automobile-industry",
+        name: {
+          en: "The automobile industry",
+          hi: "मोटरगाड़ी उद्योग",
+          mr: "वाहन उद्योग",
+        },
+        kind: "industry",
+        prompt: {
+          en: "It assembles thousands of parts from hundreds of suppliers into trucks, cars, scooters and three-wheelers, and clusters around Chennai, Pune, Gurugram and Jamshedpur. Which industry is this?",
+          hi: "यह सैकड़ों आपूर्तिकर्ताओं के हज़ारों पुर्ज़े जोड़कर ट्रक, कार, स्कूटर और तिपहिया बनाता है, और चेन्नई, पुणे, गुरुग्राम तथा जमशेदपुर के आसपास गुच्छित है। यह कौन-सा उद्योग है?",
+          mr: "तो शेकडो पुरवठादारांचे हजारो भाग जोडून ट्रक, मोटारी, स्कूटर आणि तीनचाकी बनवतो, आणि चेन्नई, पुणे, गुरुग्राम व जमशेदपूरभोवती गुच्छित. हा कोणता उद्योग?",
+        },
+        statement: {
+          en: "The automobile industry assembles vehicles from thousands of components made by supplier firms, and it clusters in a few centres because assembly plants and their suppliers must sit close together.",
+          hi: "मोटरगाड़ी उद्योग आपूर्तिकर्ता फ़र्मों द्वारा बने हज़ारों घटकों से वाहन जोड़ता है, और कुछ ही केंद्रों में गुच्छित होता है क्योंकि असेंबली संयंत्र और उनके आपूर्तिकर्ता पास-पास बैठने चाहिए।",
+          mr: "वाहन उद्योग पुरवठादार कंपन्यांनी बनवलेल्या हजारो घटकांतून वाहने जोडतो, आणि काही मोजक्या केंद्रांत गुच्छित होतो कारण जुळणी प्रकल्प आणि त्यांचे पुरवठादार जवळजवळ बसावे लागतात.",
+        },
+        detail: {
+          en: "One assembly plant supports a large ring of small workshops making bearings, seats, wiring and glass, so a single factory creates far more jobs outside its own gate than inside it.",
+          hi: "एक असेंबली संयंत्र बेयरिंग, सीट, वायरिंग और काँच बनाती छोटी कार्यशालाओं का बड़ा घेरा सँभालता है, अतः एक ही कारख़ाना अपने फाटक के भीतर से कहीं अधिक रोज़गार बाहर रचता है।",
+          mr: "एक जुळणी प्रकल्प बेअरिंग, आसने, वायरिंग आणि काच बनवणाऱ्या लहान कार्यशाळांचे मोठे कडे सांभाळतो, म्हणून एकच कारखाना आपल्या फाटकाच्या आतल्याहून कितीतरी अधिक रोजगार बाहेर निर्माण करतो.",
+        },
+        extra: {
+          en: "Demand for it is unusually sensitive to interest rates and fuel prices, so the industry runs hot and cold with the wider economy.",
+          hi: "उसकी माँग ब्याज दरों और ईंधन क़ीमतों के प्रति असामान्य रूप से संवेदनशील है, अतः यह उद्योग व्यापक अर्थव्यवस्था के साथ गरम-ठंडा होता रहता है।",
+          mr: "त्याची मागणी व्याजदर आणि इंधन किमतींना असामान्यपणे संवेदनशील, म्हणून हा उद्योग व्यापक अर्थव्यवस्थेसोबत तापतो-थंडावतो.",
+        },
+        pair: {
+          left: {
+            en: "Thousands of parts assembled in a few clusters",
+            hi: "कुछ ही गुच्छों में जुड़ते हज़ारों पुर्ज़े",
+            mr: "काही मोजक्या गुच्छांत जुळणारे हजारो भाग",
+          },
+          right: {
+            en: "the automobile industry",
+            hi: "मोटरगाड़ी उद्योग",
+            mr: "वाहन उद्योग",
+          },
+        },
+      },
+      {
+        id: "public-private-sector",
+        name: {
+          en: "Public and private sector industries",
+          hi: "सार्वजनिक और निजी क्षेत्र के उद्योग",
+          mr: "सार्वजनिक आणि खासगी क्षेत्रातील उद्योग",
+        },
+        kind: "idea",
+        prompt: {
+          en: "SAIL and BHEL are owned and run by the government; Tata Steel and Bajaj by individuals and shareholders; and some firms, like Oil India, are jointly held by both. Which classification is this?",
+          hi: "सेल और भेल सरकार के स्वामित्व में चलते हैं; टाटा स्टील और बजाज व्यक्तियों तथा शेयरधारकों के; और कुछ फ़र्में, जैसे ऑयल इंडिया, दोनों के संयुक्त स्वामित्व में हैं। यह कौन-सा वर्गीकरण है?",
+          mr: "सेल आणि भेल सरकारच्या मालकीचे व चालवलेले; टाटा स्टील आणि बजाज व्यक्ती व भागधारकांचे; आणि काही कंपन्या, जसे ऑइल इंडिया, दोघांच्या संयुक्त मालकीच्या. हे कोणते वर्गीकरण?",
+        },
+        statement: {
+          en: "Industries are classified by ownership into public sector, owned and operated by the government; private sector, owned by individuals or companies; joint sector, held by both together; and cooperative sector, owned by the producers themselves.",
+          hi: "उद्योग स्वामित्व से वर्गीकृत होते हैं — सार्वजनिक क्षेत्र, जो सरकार का और उसी से संचालित; निजी क्षेत्र, जो व्यक्तियों या कंपनियों का; संयुक्त क्षेत्र, जो दोनों का साथ; और सहकारी क्षेत्र, जो स्वयं उत्पादकों का।",
+          mr: "उद्योग मालकीनुसार वर्गीकृत होतात — सार्वजनिक क्षेत्र, जे सरकारचे व त्यानेच चालवलेले; खासगी क्षेत्र, जे व्यक्ती वा कंपन्यांचे; संयुक्त क्षेत्र, जे दोघांचे मिळून; आणि सहकारी क्षेत्र, जे स्वतः उत्पादकांचे.",
+        },
+        detail: {
+          en: "The cooperative form matters in agro-based industry: Maharashtra's sugar mills and Gujarat's dairies are owned by the farmers who supply them.",
+          hi: "सहकारी रूप कृषि-आधारित उद्योग में मायने रखता है: महाराष्ट्र की चीनी मिलें और गुजरात की डेयरियाँ उन्हीं किसानों की हैं जो उन्हें आपूर्ति करते हैं।",
+          mr: "सहकारी रूप कृषी-आधारित उद्योगात महत्त्वाचे: महाराष्ट्राच्या साखर कारखान्यांची आणि गुजरातच्या दुग्धशाळांची मालकी त्यांना पुरवठा करणाऱ्या शेतकऱ्यांचीच.",
+        },
+        extra: {
+          en: "The public sector was built where returns came slowly or not at all — steel, heavy machinery, defence — and where a backward region needed a factory more than a shareholder needed a dividend.",
+          hi: "सार्वजनिक क्षेत्र वहाँ बना जहाँ प्रतिफल धीरे आता था या आता ही नहीं — इस्पात, भारी मशीनरी, रक्षा — और जहाँ किसी पिछड़े क्षेत्र को कारख़ाना उससे अधिक चाहिए था जितना शेयरधारक को लाभांश।",
+          mr: "सार्वजनिक क्षेत्र तिथे उभे राहिले जिथे परतावा हळू येई वा येईच ना — पोलाद, अवजड यंत्रसामग्री, संरक्षण — आणि जिथे एखाद्या मागास प्रदेशाला कारखाना भागधारकाला लाभांशाहून अधिक हवा होता.",
+        },
+        pair: {
+          left: {
+            en: "Sorted by who owns the factory",
+            hi: "कारख़ाने का स्वामी कौन, इससे छाँटे गए",
+            mr: "कारखान्याचा मालक कोण यावरून विभागलेले",
+          },
+          right: {
+            en: "public and private sector industries",
+            hi: "सार्वजनिक और निजी क्षेत्र के उद्योग",
+            mr: "सार्वजनिक आणि खासगी क्षेत्रातील उद्योग",
+          },
+        },
+      },
+      {
+        id: "industrial-pollution",
+        name: {
+          en: "Industrial pollution",
+          hi: "औद्योगिक प्रदूषण",
+          mr: "औद्योगिक प्रदूषण",
+        },
+        kind: "process",
+        prompt: {
+          en: "Smoke and gases into the air, untreated effluent into the river, slag and fly ash on the land, and the constant din of generators and machinery — four kinds of damage from one source. What is this called?",
+          hi: "हवा में धुआँ और गैसें, नदी में बिना शोधित बहिःस्राव, ज़मीन पर धातुमल तथा फ़्लाई ऐश, और जनित्रों-मशीनों का लगातार शोर — एक ही स्रोत से चार तरह की हानि। इसे क्या कहते हैं?",
+          mr: "हवेत धूर आणि वायू, नदीत प्रक्रियाविना स्राव, जमिनीवर मळी व राख, आणि जनित्रे-यंत्रांचा सततचा गोंगाट — एकाच स्रोतापासून चार प्रकारची हानी. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Industrial pollution damages air, water, land and the acoustic environment at once — through smoke and gases, untreated effluent, solid waste dumping, and the noise of machinery and generators.",
+          hi: "औद्योगिक प्रदूषण एक साथ वायु, जल, भूमि तथा ध्वनि-परिवेश को हानि पहुँचाता है — धुएँ और गैसों, बिना शोधित बहिःस्राव, ठोस कचरे की डंपिंग, तथा मशीनरी और जनित्रों के शोर से।",
+          mr: "औद्योगिक प्रदूषण एकाच वेळी हवा, पाणी, जमीन आणि ध्वनी-परिसराला हानी करते — धूर व वायू, प्रक्रियाविना स्राव, घनकचऱ्याचे ओतणे, आणि यंत्रसामग्री व जनित्रांच्या गोंगाटातून.",
+        },
+        detail: {
+          en: "Thermal pollution is the least visible of these: water drawn for cooling is returned hot, and the temperature change alone kills river life.",
+          hi: "तापीय प्रदूषण इनमें सबसे कम दिखता है: ठंडा करने को लिया पानी गरम लौटाया जाता है, और केवल ताप-परिवर्तन ही नदी का जीवन मार देता है।",
+          mr: "औष्णिक प्रदूषण यांतील सर्वांत कमी दिसणारे: थंड करण्यासाठी घेतलेले पाणी गरम परत केले जाते, आणि केवळ तापमान-बदलच नदीचे जीवन मारतो.",
+        },
+        extra: {
+          en: "The remedies are known and largely mechanical — treating effluent before discharge, scrubbers and electrostatic precipitators on chimneys, reusing water, and shared treatment plants for small units too small to build their own.",
+          hi: "उपाय ज्ञात और अधिकांशतः यांत्रिक हैं — छोड़ने से पहले बहिःस्राव का शोधन, चिमनियों पर स्क्रबर तथा स्थिर-वैद्युत अवक्षेपक, पानी का पुनरुपयोग, और उन छोटी इकाइयों के लिए साझा शोधन संयंत्र जो अपना बनाने को बहुत छोटी हैं।",
+          mr: "उपाय ज्ञात आणि बहुतांश यांत्रिक — सोडण्यापूर्वी स्रावावर प्रक्रिया, धुराड्यांवर स्क्रबर व स्थिरविद्युत अवक्षेपक, पाण्याचा पुनर्वापर, आणि स्वतःचे बांधण्याइतक्या लहान असलेल्या एककांसाठी सामायिक प्रक्रिया प्रकल्प.",
+        },
+        pair: {
+          left: {
+            en: "Air, water, land and noise from one chimney",
+            hi: "एक ही चिमनी से वायु, जल, भूमि और ध्वनि",
+            mr: "एकाच धुराड्यातून हवा, पाणी, जमीन आणि गोंगाट",
+          },
+          right: {
+            en: "industrial pollution",
+            hi: "औद्योगिक प्रदूषण",
+            mr: "औद्योगिक प्रदूषण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Uttar Pradesh and Bihar were once the centre of Indian sugar production, but the industry has shifted steadily southwards to Maharashtra, Karnataka and Tamil Nadu. Explain the physical and organisational reasons for the move.",
+          hi: "उत्तर प्रदेश और बिहार कभी भारतीय चीनी उत्पादन के केंद्र थे, पर उद्योग लगातार दक्षिण की ओर महाराष्ट्र, कर्नाटक तथा तमिलनाडु खिसकता गया है। इस स्थानांतरण के भौतिक तथा संगठनात्मक कारण समझाओ।",
+          mr: "उत्तर प्रदेश आणि बिहार एकेकाळी भारतीय साखर उत्पादनाचे केंद्र होते, पण उद्योग सतत दक्षिणेकडे महाराष्ट्र, कर्नाटक व तमिळनाडूकडे सरकत गेला आहे. या स्थलांतराची भौतिक व संघटनात्मक कारणे समजावा.",
+        },
+        choices: [
+          {
+            en: "The southern cane has higher sucrose content, the cooler and longer crushing season there lets a mill run more months of the year, and the tropical climate raises yield per hectare. Organisationally, most southern mills are cooperatives owned by the growers themselves, so the farmer shares the mill's profit and has a reason to deliver cane promptly — which matters because cane starts losing sucrose within hours of cutting",
+            hi: "दक्षिण के गन्ने में शर्करा-अंश अधिक है, वहाँ की ठंडी और लंबी पेराई-ऋतु मिल को वर्ष के अधिक महीने चलने देती है, और उष्णकटिबंधीय जलवायु प्रति हेक्टेयर उपज बढ़ाती है। संगठनात्मक रूप से, अधिकांश दक्षिणी मिलें स्वयं उत्पादकों के स्वामित्व वाली सहकारी हैं, अतः किसान मिल के लाभ में हिस्सेदार है और उसके पास गन्ना तुरंत पहुँचाने का कारण — जो मायने रखता है क्योंकि गन्ना कटने के घंटों में शर्करा खोने लगता है",
+            mr: "दक्षिणेकडील उसात साखरेचा अंश अधिक, तिथला थंड आणि दीर्घ गाळप हंगाम गिरणीला वर्षाचे अधिक महिने चालू देतो, आणि उष्णकटिबंधीय हवामान प्रति हेक्टर उत्पादन वाढवते. संघटनात्मकदृष्ट्या, बहुतांश दक्षिणी कारखाने स्वतः उत्पादकांच्या मालकीचे सहकारी, म्हणून शेतकरी गिरणीच्या नफ्यात भागीदार आणि त्याच्याकडे ऊस तत्काळ पोहोचवण्याचे कारण — जे महत्त्वाचे कारण ऊस कापल्यानंतर तासांत साखर गमावू लागतो",
+          },
+          {
+            en: "Because sugarcane cannot be grown north of the Vindhyas at all, so the northern mills had no raw material",
+            hi: "क्योंकि विंध्य के उत्तर गन्ना उगाया ही नहीं जा सकता, अतः उत्तरी मिलों के पास कच्चा माल था ही नहीं",
+            mr: "कारण विंध्याच्या उत्तरेला ऊस पिकवताच येत नाही, म्हणून उत्तरेकडील गिरण्यांकडे कच्चा मालच नव्हता",
+          },
+          {
+            en: "Because sugar keeps better in southern warehouses, and storage rather than production determined the shift",
+            hi: "क्योंकि चीनी दक्षिणी गोदामों में बेहतर टिकती है, और उत्पादन नहीं भंडारण ने स्थानांतरण तय किया",
+            mr: "कारण साखर दक्षिणी गोदामांत अधिक चांगली टिकते, आणि उत्पादन नव्हे तर साठवणीने स्थलांतर ठरवले",
+          },
+          {
+            en: "Because the shift never happened; Uttar Pradesh remains the only sugar-producing state in India",
+            hi: "क्योंकि स्थानांतरण हुआ ही नहीं; उत्तर प्रदेश भारत का एकमात्र चीनी उत्पादक राज्य बना हुआ है",
+            mr: "कारण स्थलांतर झालेच नाही; उत्तर प्रदेश हे भारतातील एकमेव साखर उत्पादक राज्य आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The shift is a textbook case of physical facts and institutional design pulling in the same direction. Start with the crop itself. Sugarcane is a bulky, low-value-per-tonne raw material, and — decisively — it begins losing sucrose the moment it is cut. Within twenty-four hours the recoverable sugar has fallen measurably; within a few days the cane is worth crushing only for fodder. This single property fixes the industry's geography: the mill must be in the cane, not near the customer, and the shorter the interval between cutting and crushing, the more sugar comes out of the same tonnage. Everything else follows from asking where cane grows best and where it can be crushed fastest. Now the physical differences. Cane grown in the peninsular tropics has a higher sucrose content than the same crop in the northern plains, so each tonne yields more sugar. Yields per hectare are higher too, given the longer growing season and better irrigation coverage in the western Maharashtra and Karnataka belts. Most importantly for mill economics, the crushing season in the south runs longer — the cooler, more even temperatures allow crushing over more months of the year. That matters enormously because a sugar mill is a large fixed investment that earns nothing when idle. A mill crushing for six months instead of four spreads the same capital cost over fifty per cent more output, and its unit cost falls accordingly. Now the organisational half, which is what turns an advantage into a durable one. Most southern mills, and Maharashtra's in particular, are cooperatives owned by the cane growers who supply them. This solves a problem that plagues the industry elsewhere. A privately owned mill and its farmers are in a straightforward conflict: the mill wants cheap cane and delayed payment; the farmer wants a high price and prompt cash. Disputes over arrears have repeatedly left northern farmers unpaid for a whole season, and an unpaid farmer plants something else next year — or delays delivery, and the sucrose is lost while the cane sits. In a cooperative, the farmer is the owner. The mill's profit is his profit, so he delivers cane promptly and at the right maturity, and the mill's surplus returns to the members instead of leaving the district. That alignment shows up directly in recovery rates and in the industry's continuing drift south. The general lesson is worth taking away: industrial location is not only about where raw material is, but about how quickly it must be processed, how many months the plant can run, and whether the people supplying it have a reason to make it work. (The wrong answers deny northern cane cultivation, substitute a warehousing story for a perishability one, or deny a shift that production figures record across decades.)",
+          hi: "यह स्थानांतरण भौतिक तथ्यों और संस्थागत रचना के एक ही दिशा में खींचने का पाठ्य-उदाहरण है। स्वयं फ़सल से शुरू। गन्ना भारी-भरकम, प्रति टन कम मूल्य वाला कच्चा माल है, और — निर्णायक रूप से — कटते ही शर्करा खोने लगता है। चौबीस घंटों में निकालने योग्य चीनी मापने योग्य ढंग से गिर जाती है; कुछ दिनों में गन्ना केवल चारे के लायक़ रह जाता है। यह एक गुण उद्योग की भूगोल सधा देता है: मिल गन्ने में होनी चाहिए, ग्राहक के पास नहीं, और कटने तथा पेराई के बीच अंतराल जितना छोटा हो, उसी टनभार से उतनी अधिक चीनी निकलती है। बाक़ी सब यह पूछने से निकलता है कि गन्ना सबसे अच्छा कहाँ उगता है और सबसे तेज़ी से कहाँ पेरा जा सकता है। अब भौतिक भेद। प्रायद्वीपीय उष्णकटिबंध में उगे गन्ने में उत्तरी मैदानों की उसी फ़सल से अधिक शर्करा-अंश होता है, अतः हर टन अधिक चीनी देता है। प्रति हेक्टेयर उपज भी अधिक है, क्योंकि बढ़वार-ऋतु लंबी और पश्चिमी महाराष्ट्र तथा कर्नाटक पट्टियों में सिंचाई-कवरेज बेहतर है। मिल के अर्थशास्त्र के लिए सबसे महत्वपूर्ण यह कि दक्षिण में पेराई-ऋतु लंबी चलती है — ठंडे, अधिक समान ताप वर्ष के अधिक महीनों पेराई की छूट देते हैं। यह बहुत मायने रखता है क्योंकि चीनी मिल बड़ा स्थिर निवेश है जो ख़ाली रहने पर कुछ नहीं कमाता। चार के बजाय छह महीने पेरती मिल वही पूँजी-लागत पचास प्रतिशत अधिक उत्पादन पर फैलाती है, और उसकी प्रति इकाई लागत उसी अनुपात में गिरती है। अब संगठनात्मक आधा, जो एक लाभ को टिकाऊ बना देता है। अधिकांश दक्षिणी मिलें, और विशेषकर महाराष्ट्र की, उन्हीं गन्ना उत्पादकों की सहकारी हैं जो उन्हें आपूर्ति करते हैं। यह वह समस्या हल करता है जो अन्यत्र उद्योग को सताती है। निजी स्वामित्व वाली मिल और उसके किसान सीधे टकराव में हैं: मिल सस्ता गन्ना और देर से भुगतान चाहती है; किसान ऊँचा दाम और तुरंत नक़दी। बक़ाया के विवादों ने बार-बार उत्तरी किसानों को पूरी ऋतु का भुगतान न मिलने दिया, और जिस किसान को भुगतान न मिले वह अगले वर्ष कुछ और बोता है — या पहुँचाने में देर करता है, और गन्ना पड़े-पड़े शर्करा खो देता है। सहकारी में किसान ही स्वामी है। मिल का लाभ उसका लाभ है, अतः वह गन्ना तुरंत और ठीक पकाव पर पहुँचाता है, और मिल का अधिशेष ज़िले से बाहर जाने के बजाय सदस्यों को लौटता है। वह संरेखण सीधे रिकवरी दरों में और उद्योग के जारी दक्षिण-प्रवाह में दिखता है। साथ ले जाने योग्य सामान्य सबक़: औद्योगिक अवस्थिति केवल इस बारे में नहीं कि कच्चा माल कहाँ है, बल्कि इस बारे में भी कि उसे कितनी जल्दी संसाधित करना है, संयंत्र कितने महीने चल सकता है, और उसे आपूर्ति करते लोगों के पास उसे चलाने का कारण है या नहीं। (ग़लत उत्तर उत्तरी गन्ना-खेती को नकारते, नाशवानता की कहानी की जगह गोदाम की कहानी रखते, या उस स्थानांतरण को नकारते जिसे उत्पादन के आँकड़े दशकों से दर्ज करते हैं।)",
+          mr: "हे स्थलांतर भौतिक तथ्ये आणि संस्थात्मक रचना एकाच दिशेने ओढण्याचे पाठ्य-उदाहरण. स्वतः पिकापासून सुरू. ऊस हा अवजड, प्रति टन कमी मोलाचा कच्चा माल, आणि — निर्णायकपणे — कापताच साखर गमावू लागतो. चोवीस तासांत काढण्याजोगी साखर मोजण्याजोगी घसरते; काही दिवसांत ऊस फक्त चाऱ्यापुरता उरतो. हा एक गुणधर्म उद्योगाचा भूगोल ठरवतो: गिरणी उसात असावी, ग्राहकाजवळ नव्हे, आणि कापणी व गाळपातील अंतर जितके कमी, त्याच टनभारातून तितकी अधिक साखर निघते. बाकी सर्व ऊस सर्वांत चांगला कुठे पिकतो आणि सर्वांत वेगाने कुठे गाळता येतो हे विचारण्यातून निघते. आता भौतिक फरक. द्वीपकल्पीय उष्णकटिबंधात पिकलेल्या उसात उत्तरेकडील मैदानांतील त्याच पिकाहून अधिक साखरेचा अंश, म्हणून प्रत्येक टन अधिक साखर देतो. प्रति हेक्टर उत्पादनही अधिक, कारण वाढीचा हंगाम दीर्घ आणि पश्चिम महाराष्ट्र व कर्नाटक पट्ट्यांत सिंचनाची व्याप्ती चांगली. गिरणीच्या अर्थशास्त्रासाठी सर्वांत महत्त्वाचे हे की दक्षिणेत गाळप हंगाम अधिक काळ चालतो — थंड, अधिक समान तापमान वर्षाच्या अधिक महिन्यांत गाळपाची मुभा देतात. हे प्रचंड महत्त्वाचे कारण साखर कारखाना ही मोठी स्थिर गुंतवणूक जी रिकामी असताना काहीच कमावत नाही. चारऐवजी सहा महिने गाळणारी गिरणी तीच भांडवली किंमत पन्नास टक्के अधिक उत्पादनावर पसरवते, आणि तिची प्रति एकक किंमत त्या प्रमाणात घसरते. आता संघटनात्मक अर्धा भाग, जो एका फायद्याला टिकाऊ करतो. बहुतांश दक्षिणी कारखाने, आणि विशेषतः महाराष्ट्रातील, त्यांना पुरवठा करणाऱ्या ऊस उत्पादकांचेच सहकारी. हे ती समस्या सोडवते जी इतरत्र उद्योगाला छळते. खासगी मालकीची गिरणी आणि तिचे शेतकरी थेट संघर्षात: गिरणीला स्वस्त ऊस आणि उशिरा भरणा हवा; शेतकऱ्याला जास्त भाव आणि तत्काळ रोख. थकबाकीच्या वादांनी वारंवार उत्तरेकडील शेतकऱ्यांना अख्ख्या हंगामाचा भरणा मिळू दिला नाही, आणि ज्या शेतकऱ्याला पैसे मिळत नाहीत तो पुढच्या वर्षी दुसरे काही पेरतो — वा पोहोचवायला उशीर करतो, आणि ऊस पडून राहताना साखर हरवते. सहकारीत शेतकरीच मालक. गिरणीचा नफा त्याचाच नफा, म्हणून तो ऊस तत्काळ आणि योग्य पक्वतेवर पोहोचवतो, आणि गिरणीचा अतिरिक्त जिल्ह्याबाहेर जाण्याऐवजी सभासदांना परततो. ते संरेखन थेट साखर-उताऱ्याच्या दरांत आणि उद्योगाच्या चालू दक्षिण-प्रवाहात दिसते. सोबत न्यायचा सामान्य धडा: औद्योगिक स्थान केवळ कच्चा माल कुठे आहे याबद्दल नाही, तर त्यावर किती लवकर प्रक्रिया करावी लागते, प्रकल्प किती महिने चालू शकतो, आणि त्याला पुरवठा करणाऱ्या लोकांकडे तो चालवण्याचे कारण आहे का याबद्दलही. (चुकीची उत्तरे उत्तरेकडील ऊस लागवड नाकारतात, नाशवंतपणाच्या कथेऐवजी गोदामाची कथा ठेवतात, वा उत्पादन आकडे दशकांपासून नोंदवत असलेले स्थलांतर नाकारतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "After 1947 India's government did not merely regulate industry — it built and owned steel plants, heavy machinery works, fertiliser plants and defence factories itself, at enormous cost, when private firms already existed in the country. Explain the reasoning, and what changed by 1991.",
+          hi: "1947 के बाद भारत की सरकार ने उद्योग को केवल नियमित नहीं किया — उसने विशाल लागत पर स्वयं इस्पात संयंत्र, भारी मशीनरी कारख़ाने, उर्वरक संयंत्र और रक्षा कारख़ाने बनाए तथा उनका स्वामित्व रखा, जबकि देश में निजी फ़र्में पहले से मौजूद थीं। तर्क समझाओ, और 1991 तक क्या बदला।",
+          mr: "1947 नंतर भारताच्या सरकारने उद्योगाचे केवळ नियमन केले नाही — त्याने प्रचंड खर्चाने स्वतः पोलाद प्रकल्प, अवजड यंत्रसामग्री कारखाने, खत प्रकल्प आणि संरक्षण कारखाने बांधले व त्यांची मालकी ठेवली, तर देशात खासगी कंपन्या आधीच होत्या. तर्क समजावा, आणि 1991 पर्यंत काय बदलले.",
+        },
+        choices: [
+          {
+            en: "Because these industries need enormous capital, take a decade or more before earning anything, and yield low returns — so private firms, who must answer to shareholders sooner, would not build them. Yet everything else depends on them: no steel means no machinery, railways or construction. The state also used them deliberately to place industry in backward regions and to keep strategic goods out of foreign control. By 1991 the reasoning had weakened — private capital was available, many public firms were running at a loss, and the priority shifted from building capacity to using it efficiently",
+            hi: "क्योंकि इन उद्योगों को विशाल पूँजी चाहिए, कुछ भी कमाने से पहले दशक या अधिक लगते हैं, और प्रतिफल कम मिलता है — अतः निजी फ़र्में, जिन्हें शेयरधारकों को जल्दी जवाब देना है, उन्हें बनातीं ही नहीं। फिर भी बाक़ी सब उन्हीं पर निर्भर है: इस्पात नहीं तो मशीनरी, रेलवे या निर्माण नहीं। राज्य ने उनका उपयोग जानबूझकर पिछड़े क्षेत्रों में उद्योग रखने और रणनीतिक वस्तुओं को विदेशी नियंत्रण से बाहर रखने में भी किया। 1991 तक तर्क कमज़ोर पड़ चुका था — निजी पूँजी उपलब्ध थी, कई सार्वजनिक फ़र्में घाटे में चल रही थीं, और प्राथमिकता क्षमता बनाने से हटकर उसे कुशलता से इस्तेमाल करने पर आ गई",
+            mr: "कारण या उद्योगांना प्रचंड भांडवल लागते, काहीही कमावण्याआधी दशक वा अधिक लागते, आणि परतावा कमी मिळतो — म्हणून खासगी कंपन्या, ज्यांना भागधारकांना लवकर उत्तर द्यावे लागते, ते बांधतच नाहीत. तरीही बाकी सर्व त्यांच्यावरच अवलंबून: पोलाद नाही तर यंत्रसामग्री, रेल्वे वा बांधकाम नाही. राज्याने त्यांचा वापर मुद्दाम मागास प्रदेशांत उद्योग ठेवायला आणि सामरिक वस्तू परकी नियंत्रणाबाहेर ठेवायलाही केला. 1991 पर्यंत तर्क दुर्बळ झाला होता — खासगी भांडवल उपलब्ध होते, अनेक सार्वजनिक कंपन्या तोट्यात चालत होत्या, आणि प्राधान्य क्षमता उभारण्यावरून ती कार्यक्षमतेने वापरण्यावर सरकले",
+          },
+          {
+            en: "Because private industry was legally banned in India until 1991, so the state had no alternative",
+            hi: "क्योंकि 1991 तक भारत में निजी उद्योग क़ानूनन प्रतिबंधित था, अतः राज्य के पास कोई विकल्प नहीं था",
+            mr: "कारण 1991 पर्यंत भारतात खासगी उद्योग कायद्याने बंदी होता, म्हणून राज्याकडे पर्यायच नव्हता",
+          },
+          {
+            en: "Because heavy industry is the most profitable of all activities, and the state simply wanted the profit",
+            hi: "क्योंकि भारी उद्योग सब गतिविधियों में सबसे लाभप्रद है, और राज्य बस वह लाभ चाहता था",
+            mr: "कारण अवजड उद्योग सर्व क्रियांत सर्वांत फायदेशीर, आणि राज्याला फक्त तो नफा हवा होता",
+          },
+          {
+            en: "Because no country has ever needed steel or machinery, so the plants were built for prestige alone",
+            hi: "क्योंकि किसी देश को कभी इस्पात या मशीनरी चाहिए ही नहीं थी, अतः संयंत्र केवल प्रतिष्ठा के लिए बने",
+            mr: "कारण कोणत्याही देशाला कधी पोलाद वा यंत्रसामग्री लागलीच नाही, म्हणून प्रकल्प केवळ प्रतिष्ठेसाठी बांधले",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The decision looks strange only if you assume the private sector will build whatever is needed. It builds what is profitable within a horizon it can survive, and in 1950 those two things were far apart. Consider what an integrated steel plant required. Capital running to hundreds of crores at the values of the time; a construction period of roughly a decade; a further stretch of years before it operated efficiently; and then, if all went well, a modest return on a very large sum. A private firm answers to shareholders and lenders who want dividends and interest well inside that period. Almost no Indian private capital of the 1950s was of the size or patience required, and foreign capital would have wanted terms the new republic was unwilling to give. So the plants either did not get built, or the state built them. That is the core of the argument, and it applies equally to heavy machinery, fertiliser, oil refining and defence production. Three further considerations reinforced it. First, these are basic industries in the strict sense: their output is other industries' input. Without domestic steel there is no machine-building, no rail expansion, no construction industry to speak of — so the whole industrial structure has a floor that must be laid before anything can stand on it. Second, location. A private firm sites a plant where it maximises profit; that logic would have concentrated industry in Bombay, Calcutta and Ahmedabad, deepening the inequality already inherited from colonial development. Public plants at Bhilai, Rourkela and Bokaro were deliberately placed to industrialise poor and largely Adivasi regions — an aim no shareholder would fund. Third, strategy. A country that has just gained independence does not wish its steel, arms and fuel supply to depend on foreign firms whose governments may take a view on its policies. Now what changed. By the late 1980s the situation had reversed on almost every point. Indian private capital was substantial and could finance large plants. The learning problem was solved: engineers, managers and technicians existed in numbers. Many public firms, protected from competition and unable to shed workers or close loss-making units, were running persistent deficits that the budget had to cover, and the licensing system meant to direct investment had become a mechanism for delay and favour. The 1991 reforms therefore narrowed the public sector to a few strategic areas, opened most industries to private and foreign investment, and shifted the policy question from how to create industrial capacity to how to make existing capacity efficient. The honest summary is that both decisions were reasonable in their own conditions. The public sector solved a problem the private sector could not solve in 1950 — building an industrial base from almost nothing — and became a burden once that base existed and competition, rather than capital, was the binding constraint. Judging either period by the other's circumstances is the usual mistake. (The wrong answers invent a ban on private industry that never existed alongside Tata and Birla, misdescribe heavy industry as highly profitable, or dismiss as vanity the inputs on which every other industry depends.)",
+          hi: "यह निर्णय तभी विचित्र लगता है जब मान लो कि निजी क्षेत्र जो चाहिए वह बना ही देगा। वह वही बनाता है जो ऐसे क्षितिज के भीतर लाभप्रद हो जिसमें वह टिक सके, और 1950 में वे दो चीज़ें बहुत दूर थीं। सोचो एकीकृत इस्पात संयंत्र को क्या चाहिए था। उस समय के मूल्यों पर सैकड़ों करोड़ तक जाती पूँजी; लगभग एक दशक की निर्माण-अवधि; कुशलता से चलने से पहले और कुछ वर्ष; और फिर, सब ठीक रहा तो, बहुत बड़ी राशि पर मामूली प्रतिफल। निजी फ़र्म उन शेयरधारकों और ऋणदाताओं को जवाब देती है जो उस अवधि के भीतर ही लाभांश और ब्याज चाहते हैं। 1950 के दशक की लगभग कोई भारतीय निजी पूँजी उस आकार या धैर्य की नहीं थी, और विदेशी पूँजी ऐसी शर्तें चाहती जो नया गणराज्य देने को तैयार नहीं था। अतः संयंत्र या तो बनते ही नहीं, या राज्य उन्हें बनाता। यही तर्क का मर्म है, और वह भारी मशीनरी, उर्वरक, तेल-शोधन तथा रक्षा-उत्पादन पर समान रूप से लागू होता है। तीन और विचारों ने उसे मज़बूत किया। पहला, ये सख़्त अर्थ में आधारभूत उद्योग हैं: उनका उत्पादन दूसरे उद्योगों का कच्चा माल है। घरेलू इस्पात के बिना न मशीन-निर्माण, न रेल-विस्तार, न कहने लायक़ निर्माण-उद्योग — अतः पूरे औद्योगिक ढाँचे का एक फ़र्श है जिसे बिछाए बिना उस पर कुछ खड़ा नहीं हो सकता। दूसरा, अवस्थिति। निजी फ़र्म संयंत्र वहाँ बिठाती है जहाँ लाभ अधिकतम हो; वह तर्क उद्योग को बंबई, कलकत्ता और अहमदाबाद में केंद्रित करता, और औपनिवेशिक विकास से पहले ही मिली असमानता गहरा देता। भिलाई, राउरकेला और बोकारो के सार्वजनिक संयंत्र जानबूझकर निर्धन तथा बड़े हिस्से में आदिवासी क्षेत्रों का औद्योगीकरण करने रखे गए — ऐसा लक्ष्य जिसे कोई शेयरधारक वित्तपोषित नहीं करता। तीसरा, रणनीति। जो देश अभी-अभी स्वतंत्र हुआ है वह नहीं चाहता कि उसका इस्पात, हथियार और ईंधन ऐसी विदेशी फ़र्मों पर निर्भर हो जिनकी सरकारें उसकी नीतियों पर राय रख सकती हैं। अब क्या बदला। 1980 के दशक के अंत तक स्थिति लगभग हर बिंदु पर पलट चुकी थी। भारतीय निजी पूँजी पर्याप्त थी और बड़े संयंत्र वित्तपोषित कर सकती थी। सीखने की समस्या हल हो चुकी थी: अभियंता, प्रबंधक और तकनीशियन संख्या में मौजूद थे। कई सार्वजनिक फ़र्में, प्रतिस्पर्धा से संरक्षित और मज़दूर हटाने या घाटे की इकाइयाँ बंद करने में असमर्थ, लगातार घाटे चला रही थीं जिन्हें बजट को ढकना पड़ता था, और निवेश को दिशा देने को बना अनुज्ञप्ति-तंत्र देरी तथा कृपा का साधन बन चुका था। अतः 1991 के सुधारों ने सार्वजनिक क्षेत्र को कुछ रणनीतिक क्षेत्रों तक सीमित किया, अधिकांश उद्योग निजी तथा विदेशी निवेश को खोले, और नीति का प्रश्न औद्योगिक क्षमता बनाने से हटाकर मौजूदा क्षमता को कुशल बनाने पर ला दिया। ईमानदार सारांश यह कि दोनों निर्णय अपनी-अपनी परिस्थितियों में उचित थे। सार्वजनिक क्षेत्र ने वह समस्या हल की जो निजी क्षेत्र 1950 में हल नहीं कर सकता था — लगभग शून्य से औद्योगिक आधार खड़ा करना — और वह आधार बन जाने पर तथा पूँजी नहीं प्रतिस्पर्धा के बाध्यकारी अड़चन बन जाने पर बोझ बन गया। किसी एक दौर को दूसरे की परिस्थितियों से आँकना ही सामान्य भूल है। (ग़लत उत्तर निजी उद्योग पर ऐसा प्रतिबंध गढ़ते जो टाटा और बिड़ला के साथ-साथ कभी था ही नहीं, भारी उद्योग को अत्यधिक लाभप्रद बताते, या उन कच्चे मालों को दिखावा कहकर टालते जिन पर बाक़ी हर उद्योग निर्भर है।)",
+          mr: "हा निर्णय तेव्हाच विचित्र वाटतो जेव्हा तुम्ही गृहीत धरता की खासगी क्षेत्र जे लागेल ते बांधेलच. ते तेच बांधते जे अशा क्षितिजात फायदेशीर आहे ज्यात ते टिकू शकते, आणि 1950 मध्ये त्या दोन गोष्टी खूप दूर होत्या. एकात्मिक पोलाद प्रकल्पाला काय लागत होते ते पाहा. त्या काळच्या मूल्यांनुसार शेकडो कोटींपर्यंत जाणारे भांडवल; सुमारे दशकाचा बांधकाम काळ; कार्यक्षमतेने चालण्याआधी आणखी काही वर्षे; आणि मग, सर्व ठीक गेल्यास, खूप मोठ्या रकमेवर माफक परतावा. खासगी कंपनी अशा भागधारक व सावकारांना उत्तर देते जे त्या काळातच लाभांश आणि व्याज मागतात. 1950 च्या दशकातील जवळजवळ कोणतेही भारतीय खासगी भांडवल त्या आकाराचे वा संयमाचे नव्हते, आणि परकी भांडवलाला अशा अटी हव्या असत्या ज्या नवे प्रजासत्ताक द्यायला तयार नव्हते. म्हणून प्रकल्प एकतर बांधलेच गेले नसते, वा राज्याने ते बांधले. हाच युक्तिवादाचा गाभा, आणि तो अवजड यंत्रसामग्री, खत, तेलशुद्धीकरण व संरक्षण-उत्पादनाला समानपणे लागू. आणखी तीन विचारांनी तो बळकट केला. पहिला, ही काटेकोर अर्थाने पायाभूत उद्योग: त्यांचे उत्पादन इतर उद्योगांचा कच्चा माल. देशी पोलादाविना ना यंत्रनिर्मिती, ना रेल्वेविस्तार, ना उल्लेखनीय बांधकाम उद्योग — म्हणून अख्ख्या औद्योगिक रचनेला एक जमीन आहे जी अंथरल्याविना तिच्यावर काहीही उभे राहू शकत नाही. दुसरा, स्थान. खासगी कंपनी प्रकल्प तिथे बसवते जिथे नफा सर्वाधिक; तो तर्क उद्योग मुंबई, कलकत्ता आणि अहमदाबादेत केंद्रित करता आणि वसाहती विकासातून आधीच मिळालेली विषमता खोल करता. भिलाई, राउरकेला आणि बोकारोचे सार्वजनिक प्रकल्प मुद्दाम गरीब आणि मोठ्या प्रमाणात आदिवासी प्रदेशांचे औद्योगीकरण करायला ठेवले — असे ध्येय ज्याला कोणता भागधारक अर्थपुरवठा करत नाही. तिसरा, व्यूहरचना. जो देश नुकताच स्वतंत्र झाला त्याला त्याचे पोलाद, शस्त्रे आणि इंधन अशा परकी कंपन्यांवर अवलंबून नको ज्यांची सरकारे त्याच्या धोरणांवर मत बाळगू शकतात. आता काय बदलले. 1980 च्या दशकाच्या शेवटापर्यंत स्थिती जवळजवळ प्रत्येक मुद्द्यावर पालटली होती. भारतीय खासगी भांडवल भरीव होते आणि मोठे प्रकल्प उभारू शकत होते. शिकण्याची समस्या सुटली होती: अभियंते, व्यवस्थापक आणि तंत्रज्ञ संख्येने उपलब्ध होते. अनेक सार्वजनिक कंपन्या, स्पर्धेपासून संरक्षित आणि कामगार कमी करण्यास वा तोट्याचे एकक बंद करण्यास असमर्थ, सातत्याने तोटे चालवत होत्या जे अर्थसंकल्पाला भरून काढावे लागत, आणि गुंतवणुकीला दिशा द्यायला बनवलेली परवाना-यंत्रणा विलंब व मेहरबानीचे साधन बनली होती. म्हणून 1991 च्या सुधारणांनी सार्वजनिक क्षेत्र काही सामरिक क्षेत्रांपुरते मर्यादित केले, बहुतांश उद्योग खासगी व परकी गुंतवणुकीला उघडले, आणि धोरणाचा प्रश्न औद्योगिक क्षमता निर्माण करण्यावरून विद्यमान क्षमता कार्यक्षम करण्यावर आणला. प्रामाणिक सारांश हा की दोन्ही निर्णय आपापल्या परिस्थितीत रास्त होते. सार्वजनिक क्षेत्राने ती समस्या सोडवली जी खासगी क्षेत्र 1950 मध्ये सोडवू शकत नव्हते — जवळजवळ शून्यातून औद्योगिक पाया उभारणे — आणि तो पाया तयार झाल्यावर व भांडवल नव्हे तर स्पर्धा हा बंधनकारक अडसर बनल्यावर ते ओझे बनले. एका काळाला दुसऱ्याच्या परिस्थितीने तोलणे हीच नेहमीची चूक. (चुकीची उत्तरे टाटा आणि बिर्लांसोबत कधीच नसलेली खासगी उद्योगावरील बंदी रचतात, अवजड उद्योगाला अत्यंत फायदेशीर ठरवतात, वा बाकी प्रत्येक उद्योग ज्यांवर अवलंबून त्या कच्च्या मालांना दिखावा म्हणून झटकतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Lifelines of National Economy                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-10-lifelines-economy",
+    subject: "GEOGRAPHY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 7 — Lifelines of National Economy",
+      hi: "अध्याय 7 — राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ",
+      mr: "प्रकरण 7 — राष्ट्रीय अर्थव्यवस्थेच्या जीवनरेषा",
+    },
+    name: {
+      en: "Lifelines of National Economy",
+      hi: "राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ",
+      mr: "राष्ट्रीय अर्थव्यवस्थेच्या जीवनरेषा",
+    },
+    summary: {
+      en: "The channels that decide whether anything produced ever reaches anyone: the road that ends at a door, the four-city expressway laid to cut a journey in half, the rail that alone can carry coal by the trainload, the buried line that moves oil without a wheel, the harbours where a country meets the world — and the ledger of what is sent out against what is bought in.",
+      hi: "वे मार्ग जो तय करते हैं कि उत्पन्न कुछ भी किसी तक कभी पहुँचेगा या नहीं: वह सड़क जो दरवाज़े पर ख़त्म होती है, यात्रा आधी करने बिछा चार-नगरी द्रुतमार्ग, वह रेल जो अकेली कोयला रेलगाड़ी भर ढो सकती है, वह गड़ी लाइन जो बिना पहिये तेल चलाती है, वे बंदरगाह जहाँ देश दुनिया से मिलता है — और जो भेजा गया उसका जो ख़रीदा गया उससे मिलान करता बही-खाता।",
+      mr: "ते मार्ग जे ठरवतात की निर्माण झालेले काहीही कोणापर्यंत कधी पोहोचेल की नाही: दारापाशी संपणारा रस्ता, प्रवास निम्मा करायला अंथरलेला चार-शहरी द्रुतमार्ग, एकटी कोळसा गाडीभर वाहू शकणारी ती रेल्वे, चाकाविना तेल हलवणारी ती पुरलेली वाहिनी, ती बंदरे जिथे देश जगाला भेटतो — आणि जे पाठवले त्याचा जे विकत घेतले त्याच्याशी ताळा घालणारी खतावणी.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "road-network",
+        name: {
+          en: "The road network",
+          hi: "सड़क जाल",
+          mr: "रस्ते जाळे",
+        },
+        kind: "structure",
+        prompt: {
+          en: "It costs less per kilometre to build than a railway, climbs slopes and crosses dissected terrain a train cannot, carries small consignments economically, and alone can deliver to an actual doorstep. Which network is this?",
+          hi: "इसे बनाने में प्रति किलोमीटर रेलवे से कम लागत लगती है, यह ढलानें चढ़ता और कटी-फटी भूमि पार करता है जहाँ रेलगाड़ी नहीं जा सकती, छोटी खेपें किफ़ायत से ढोता है, और अकेला असली दरवाज़े तक पहुँचा सकता है। यह कौन-सा जाल है?",
+          mr: "हे बांधायला प्रति किलोमीटर रेल्वेहून कमी खर्च लागतो, हे उतार चढते आणि कापल्या-तुटलेल्या भूभागातून जाते जिथे रेल्वे जाऊ शकत नाही, लहान खेपा किफायतशीरपणे वाहते, आणि एकटेच खऱ्या दारापर्यंत पोहोचवू शकते. हे कोणते जाळे?",
+        },
+        statement: {
+          en: "India's road network is the largest carrier of both passengers and freight, built more cheaply than rail, able to cross broken and hilly country, and uniquely capable of door-to-door delivery.",
+          hi: "भारत का सड़क जाल यात्रियों और माल दोनों का सबसे बड़ा वाहक है, रेल से सस्ता बना, कटी-फटी तथा पहाड़ी भूमि पार करने में सक्षम, और दरवाज़े-से-दरवाज़े पहुँचाने में अद्वितीय।",
+          mr: "भारताचे रस्ते जाळे प्रवासी आणि मालवाहतूक दोन्हींचा सर्वांत मोठा वाहक, रेल्वेहून स्वस्त बांधलेले, कापल्या-तुटलेल्या व डोंगराळ भूभागातून जाण्यास सक्षम, आणि दारापासून दारापर्यंत पोहोचवण्यात अद्वितीय.",
+        },
+        detail: {
+          en: "It is graded by who builds and maintains it — national highways, state highways, district roads, village roads, and the border roads laid in the high Himalaya.",
+          hi: "यह इससे आँका जाता है कि उसे कौन बनाता और सँभालता है — राष्ट्रीय राजमार्ग, राज्य राजमार्ग, ज़िला सड़कें, ग्रामीण सड़कें, और ऊँचे हिमालय में बिछाई सीमा-सड़कें।",
+          mr: "ते यावरून विभागले जाते की ते कोण बांधतो आणि सांभाळतो — राष्ट्रीय महामार्ग, राज्य महामार्ग, जिल्हा रस्ते, ग्रामीण रस्ते, आणि उंच हिमालयात अंथरलेले सीमा-रस्ते.",
+        },
+        extra: {
+          en: "Even where rail exists, roads feed it: goods reach the station by truck and leave it by truck, so the two networks are partners rather than rivals.",
+          hi: "जहाँ रेल है वहाँ भी सड़कें उसे खिलाती हैं: माल ट्रक से स्टेशन पहुँचता और ट्रक से ही निकलता है, अतः दोनों जाल प्रतिद्वंद्वी नहीं साझेदार हैं।",
+          mr: "जिथे रेल्वे आहे तिथेही रस्ते तिला पुरवतात: माल ट्रकने स्थानकावर पोहोचतो आणि ट्रकनेच निघतो, म्हणून दोन्ही जाळी प्रतिस्पर्धी नव्हे तर भागीदार.",
+        },
+        pair: {
+          left: {
+            en: "Cheap to build, climbs anywhere, ends at a door",
+            hi: "सस्ता निर्माण, कहीं भी चढ़े, दरवाज़े पर ख़त्म",
+            mr: "स्वस्त बांधणी, कुठेही चढणारा, दारापाशी संपणारा",
+          },
+          right: {
+            en: "the road network",
+            hi: "सड़क जाल",
+            mr: "रस्ते जाळे",
+          },
+        },
+      },
+      {
+        id: "golden-quadrilateral",
+        name: {
+          en: "The Golden Quadrilateral",
+          hi: "स्वर्णिम चतुर्भुज",
+          mr: "सुवर्ण चतुष्कोन",
+        },
+        kind: "structure",
+        prompt: {
+          en: "A six-lane super highway was laid to link Delhi, Mumbai, Chennai and Kolkata, with north–south and east–west corridors crossing it, deliberately cutting the time and distance between the four biggest metros. What is this project called?",
+          hi: "दिल्ली, मुंबई, चेन्नई और कोलकाता को जोड़ने छह-लेन का महामार्ग बिछाया गया, जिसे उत्तर–दक्षिण तथा पूर्व–पश्चिम गलियारे काटते हैं, और जिसने जानबूझकर चारों सबसे बड़े महानगरों के बीच समय तथा दूरी घटाई। यह परियोजना क्या कहलाती है?",
+          mr: "दिल्ली, मुंबई, चेन्नई आणि कोलकाता जोडायला सहा-मार्गिकांचा महामार्ग अंथरला, ज्याला उत्तर–दक्षिण व पूर्व–पश्चिम मार्गिका छेदतात, आणि ज्याने मुद्दाम चारही सर्वांत मोठ्या महानगरांमधील वेळ व अंतर घटवले. हा प्रकल्प काय म्हणतात?",
+        },
+        statement: {
+          en: "The Golden Quadrilateral is the six-lane super highway network joining Delhi, Mumbai, Chennai and Kolkata, together with the North–South and East–West corridors, built to cut travel time between India's major economic centres.",
+          hi: "स्वर्णिम चतुर्भुज दिल्ली, मुंबई, चेन्नई और कोलकाता को जोड़ता छह-लेन महामार्ग जाल है, उत्तर–दक्षिण तथा पूर्व–पश्चिम गलियारों के साथ, जो भारत के प्रमुख आर्थिक केंद्रों के बीच यात्रा-समय घटाने बनाया गया।",
+          mr: "सुवर्ण चतुष्कोन म्हणजे दिल्ली, मुंबई, चेन्नई आणि कोलकाता जोडणारे सहा-मार्गिकांचे महामार्ग जाळे, उत्तर–दक्षिण व पूर्व–पश्चिम मार्गिकांसह, जे भारताच्या प्रमुख आर्थिक केंद्रांतील प्रवास-वेळ घटवायला बांधले.",
+        },
+        detail: {
+          en: "Shorter transit time is not a convenience but a cost: a truck that returns in three days instead of five earns nearly twice as much for its owner.",
+          hi: "कम यात्रा-समय सुविधा नहीं, लागत है: जो ट्रक पाँच के बजाय तीन दिनों में लौटता है वह मालिक के लिए लगभग दुगुना कमाता है।",
+          mr: "कमी प्रवासवेळ ही सोय नव्हे तर खर्च: जो ट्रक पाचऐवजी तीन दिवसांत परततो तो मालकासाठी जवळजवळ दुप्पट कमावतो.",
+        },
+        extra: {
+          en: "Perishables gained most — vegetables, milk and fruit that once could not travel far enough to reach a paying market now can.",
+          hi: "नाशवान वस्तुओं को सबसे अधिक लाभ हुआ — सब्ज़ियाँ, दूध और फल जो कभी दाम देते बाज़ार तक पहुँचने भर दूर नहीं जा सकते थे, अब जा सकते हैं।",
+          mr: "नाशवंत वस्तूंना सर्वाधिक फायदा — भाज्या, दूध आणि फळे जी कधी पैसे देणाऱ्या बाजारापर्यंत पोहोचण्याइतकी दूर जाऊ शकत नव्हती, आता जाऊ शकतात.",
+        },
+        pair: {
+          left: {
+            en: "Six lanes joining the four biggest metros",
+            hi: "चार सबसे बड़े महानगरों को जोड़ती छह लेन",
+            mr: "चार सर्वांत मोठी महानगरे जोडणाऱ्या सहा मार्गिका",
+          },
+          right: {
+            en: "the Golden Quadrilateral",
+            hi: "स्वर्णिम चतुर्भुज",
+            mr: "सुवर्ण चतुष्कोन",
+          },
+        },
+      },
+      {
+        id: "railway-network",
+        name: {
+          en: "The railway network",
+          hi: "रेल जाल",
+          mr: "रेल्वे जाळे",
+        },
+        kind: "structure",
+        prompt: {
+          en: "It moves coal, ore, cement and grain by the trainload at a cost per tonne no truck can match, carries millions of passengers overnight across the country, and was the single largest employer in India for decades. Which network is this?",
+          hi: "यह कोयला, अयस्क, सीमेंट और अनाज रेलगाड़ी भर ऐसी प्रति-टन लागत पर ढोता है जिसकी बराबरी कोई ट्रक नहीं कर सकता, रातोंरात देश भर लाखों यात्री ले जाता है, और दशकों तक भारत का सबसे बड़ा एकल नियोक्ता रहा। यह कौन-सा जाल है?",
+          mr: "हे कोळसा, धातुक, सिमेंट आणि धान्य गाडीभर अशा प्रति-टन खर्चात वाहते ज्याची बरोबरी कोणता ट्रक करू शकत नाही, रात्रभरात देशभर लाखो प्रवासी नेते, आणि दशके भारताचा सर्वांत मोठा एकल नियोक्ता राहिले. हे कोणते जाळे?",
+        },
+        statement: {
+          en: "The railway network is India's principal carrier of bulk freight and long-distance passengers, unmatched in cost per tonne-kilometre for heavy goods and central to the movement of coal, ore and foodgrain.",
+          hi: "रेल जाल भारत का थोक माल और लंबी दूरी के यात्रियों का प्रमुख वाहक है, भारी वस्तुओं के लिए प्रति टन-किलोमीटर लागत में अद्वितीय और कोयले, अयस्क तथा खाद्यान्न की आवाजाही के केंद्र में।",
+          mr: "रेल्वे जाळे हे भारताचे मोठ्या प्रमाणातील मालवाहतूक आणि लांब पल्ल्याच्या प्रवाशांचे प्रमुख वाहक, जड वस्तूंसाठी प्रति टन-किलोमीटर खर्चात अतुलनीय आणि कोळसा, धातुक व अन्नधान्याच्या हालचालीच्या केंद्रस्थानी.",
+        },
+        detail: {
+          en: "Terrain shaped where it could go: the level northern plains made construction easy, while the Himalaya, the desert sands and the Sundarban swamps resisted it.",
+          hi: "भूभाग ने तय किया वह कहाँ जा सकता है: समतल उत्तरी मैदानों ने निर्माण आसान किया, जबकि हिमालय, मरुस्थल की रेत और सुंदरबन के दलदलों ने उसका प्रतिरोध किया।",
+          mr: "भूभागाने ठरवले ते कुठे जाऊ शकते: सपाट उत्तरेच्या मैदानांनी बांधकाम सोपे केले, तर हिमालय, वाळवंटाची वाळू आणि सुंदरबनच्या दलदलींनी त्याला विरोध केला.",
+        },
+        extra: {
+          en: "It was built by the colonial state to move raw material to the ports and troops to the frontier, and independent India inherited a map drawn for someone else's purposes.",
+          hi: "इसे औपनिवेशिक राज्य ने कच्चा माल बंदरगाहों तक और सैनिक सीमांत तक ले जाने बनाया था, और स्वतंत्र भारत को किसी और के प्रयोजनों के लिए खींचा नक़्शा विरासत में मिला।",
+          mr: "ते वसाहती राज्याने कच्चा माल बंदरांपर्यंत आणि सैन्य सीमेपर्यंत नेण्यासाठी बांधले, आणि स्वतंत्र भारताला दुसऱ्याच्या हेतूंसाठी आखलेला नकाशा वारशाने मिळाला.",
+        },
+        pair: {
+          left: {
+            en: "Bulk freight by the trainload, cheapest per tonne",
+            hi: "रेलगाड़ी भर थोक माल, प्रति टन सबसे सस्ता",
+            mr: "गाडीभर मोठा माल, प्रति टन सर्वांत स्वस्त",
+          },
+          right: {
+            en: "the railway network",
+            hi: "रेल जाल",
+            mr: "रेल्वे जाळे",
+          },
+        },
+      },
+      {
+        id: "pipelines",
+        name: {
+          en: "Pipelines",
+          hi: "पाइपलाइनें",
+          mr: "नळमार्ग",
+        },
+        kind: "structure",
+        prompt: {
+          en: "Buried out of sight, they move crude oil, refined products and natural gas continuously from field to refinery to market, with almost no running cost once laid and no vehicle to load. What are these?",
+          hi: "नज़र से ओझल गड़ी हुई, ये कच्चा तेल, शोधित उत्पाद और प्राकृतिक गैस लगातार क्षेत्र से शोधनशाला तक और बाज़ार तक ले जाती हैं, बिछ जाने पर लगभग बिना चालू लागत और लादने को कोई वाहन नहीं। ये क्या हैं?",
+          mr: "नजरेआड पुरलेले, हे कच्चे तेल, शुद्ध उत्पादने आणि नैसर्गिक वायू सतत क्षेत्रापासून शुद्धीकरण प्रकल्पापर्यंत आणि बाजारापर्यंत नेतात, अंथरल्यावर जवळजवळ चालू खर्चाविना आणि भरायला कोणते वाहन नाही. हे काय?",
+        },
+        statement: {
+          en: "Pipelines carry crude oil, petroleum products and natural gas overland, running continuously without vehicles or handling, with a very high cost to lay and a very low cost to operate.",
+          hi: "पाइपलाइनें कच्चा तेल, पेट्रोलियम उत्पाद और प्राकृतिक गैस स्थल-मार्ग से ढोती हैं, बिना वाहनों या चढ़ाई-उतराई के लगातार चलती हैं, बिछाने में बहुत ऊँची और चलाने में बहुत कम लागत के साथ।",
+          mr: "नळमार्ग कच्चे तेल, पेट्रोलियम उत्पादने आणि नैसर्गिक वायू भूमार्गे वाहतात, वाहने वा चढउतार न करता सतत चालतात, अंथरायला खूप जास्त आणि चालवायला खूप कमी खर्चात.",
+        },
+        detail: {
+          en: "The economics is unusual: nearly all the cost is paid before a drop moves, so a pipeline only makes sense where a large flow is assured for many years.",
+          hi: "अर्थशास्त्र असामान्य है: लगभग सारी लागत एक बूँद चलने से पहले चुक जाती है, अतः पाइपलाइन तभी अर्थपूर्ण है जहाँ कई वर्षों तक बड़ा प्रवाह निश्चित हो।",
+          mr: "अर्थशास्त्र असामान्य: जवळजवळ अख्खा खर्च एक थेंब हलण्याआधीच होतो, म्हणून नळमार्ग तेव्हाच अर्थपूर्ण जिथे अनेक वर्षे मोठा प्रवाह खात्रीशीर.",
+        },
+        extra: {
+          en: "They also make inland refining possible, letting a refinery stand near its market instead of at the port, since the crude can be sent to it underground.",
+          hi: "वे भीतरी शोधन भी संभव बनाती हैं, शोधनशाला को बंदरगाह के बजाय अपने बाज़ार के पास खड़ा होने देती हैं, क्योंकि कच्चा तेल उस तक भूमिगत भेजा जा सकता है।",
+          mr: "ते अंतर्गत शुद्धीकरणही शक्य करतात, शुद्धीकरण प्रकल्पाला बंदराऐवजी आपल्या बाजाराजवळ उभे राहू देतात, कारण कच्चे तेल त्याच्यापर्यंत भूमिगत पाठवता येते.",
+        },
+        pair: {
+          left: {
+            en: "Buried, continuous, dear to lay and cheap to run",
+            hi: "गड़ी, सतत, बिछाने में महँगी और चलाने में सस्ती",
+            mr: "पुरलेले, सतत, अंथरायला महाग आणि चालवायला स्वस्त",
+          },
+          right: {
+            en: "pipelines",
+            hi: "पाइपलाइनें",
+            mr: "नळमार्ग",
+          },
+        },
+      },
+      {
+        id: "major-ports",
+        name: {
+          en: "The major ports",
+          hi: "प्रमुख बंदरगाह",
+          mr: "प्रमुख बंदरे",
+        },
+        kind: "structure",
+        prompt: {
+          en: "Kandla built to serve a partitioned west, Mumbai the busiest natural harbour, Jawaharlal Nehru raised to relieve it, Kolkata a tidal river port needing constant dredging, Vishakhapatnam the deepest and landlocked. What are these?",
+          hi: "बँटे हुए पश्चिम की सेवा को बना कांडला, सबसे व्यस्त प्राकृतिक पोताश्रय मुंबई, उसका बोझ हल्का करने खड़ा जवाहरलाल नेहरू, लगातार गाद-सफ़ाई माँगता ज्वारीय नदी-बंदरगाह कोलकाता, सबसे गहरा और भूमि-घिरा विशाखापत्तनम। ये क्या हैं?",
+          mr: "फाळणी झालेल्या पश्चिमेच्या सेवेसाठी बांधलेले कांडला, सर्वांत वर्दळीचे नैसर्गिक बंदर मुंबई, त्याचा भार हलका करायला उभे जवाहरलाल नेहरू, सतत गाळ-उपसा मागणारे भरती-ओहोटीचे नदी-बंदर कोलकाता, सर्वांत खोल आणि भूवेढलेले विशाखापट्टणम. ही काय?",
+        },
+        statement: {
+          en: "India's major ports handle the bulk of its overseas trade along a long coastline, each shaped by its own site — a natural harbour, a tidal river, a dredged channel or a landlocked basin.",
+          hi: "भारत के प्रमुख बंदरगाह लंबी तटरेखा पर उसके समुद्रपार व्यापार का बड़ा हिस्सा सँभालते हैं, और हर एक अपने स्थल से गढ़ा है — प्राकृतिक पोताश्रय, ज्वारीय नदी, खोदा गया जलमार्ग या भूमि-घिरा बेसिन।",
+          mr: "भारताची प्रमुख बंदरे लांब किनारपट्टीवर त्याच्या सागरापार व्यापाराचा मोठा भाग हाताळतात, आणि प्रत्येक आपल्या जागेने घडलेले — नैसर्गिक बंदर, भरती-ओहोटीची नदी, खणलेला मार्ग वा भूवेढलेले खोरे.",
+        },
+        detail: {
+          en: "A port is worth only as much as the land behind it: without rail and road into the interior, cargo simply piles up on the quay.",
+          hi: "बंदरगाह उतना ही मूल्यवान है जितनी उसके पीछे की भूमि: भीतरी इलाक़ों तक रेल और सड़क के बिना माल बस घाट पर ढेर हो जाता है।",
+          mr: "बंदर तितकेच मोलाचे जितकी त्याच्यामागील भूमी: आतल्या भागापर्यंत रेल्वे आणि रस्त्याविना माल फक्त धक्क्यावर साचतो.",
+        },
+        extra: {
+          en: "Roughly nine-tenths of India's trade by volume moves by sea, which is why a single congested harbour can raise prices across half the country.",
+          hi: "आयतन के हिसाब से भारत का लगभग नौ-दसवाँ व्यापार समुद्र से चलता है, इसीलिए एक ही भीड़भाड़ वाला पोताश्रय आधे देश में क़ीमतें चढ़ा सकता है।",
+          mr: "आकारमानाने भारताचा सुमारे नऊ-दशांश व्यापार समुद्रामार्गे चालतो, म्हणूनच एकच गजबजलेले बंदर अर्ध्या देशात किमती चढवू शकते.",
+        },
+        pair: {
+          left: {
+            en: "Harbours where a country meets the sea",
+            hi: "वे पोताश्रय जहाँ देश समुद्र से मिलता है",
+            mr: "ती बंदरे जिथे देश समुद्राला भेटतो",
+          },
+          right: {
+            en: "the major ports",
+            hi: "प्रमुख बंदरगाह",
+            mr: "प्रमुख बंदरे",
+          },
+        },
+      },
+      {
+        id: "international-trade",
+        name: {
+          en: "International trade",
+          hi: "अंतरराष्ट्रीय व्यापार",
+          mr: "आंतरराष्ट्रीय व्यापार",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A country sends out software, gems, textiles and machinery, and buys in crude oil, electronics and gold; the difference between the two totals is watched closely by every finance minister. What exchange is this?",
+          hi: "कोई देश सॉफ़्टवेयर, रत्न, वस्त्र और मशीनरी भेजता है, तथा कच्चा तेल, इलेक्ट्रॉनिक्स और सोना ख़रीदता है; दोनों कुलों का अंतर हर वित्त मंत्री ध्यान से देखता है। यह कौन-सा आदान-प्रदान है?",
+          mr: "एखादा देश सॉफ्टवेअर, रत्ने, वस्त्रे आणि यंत्रसामग्री पाठवतो, आणि कच्चे तेल, इलेक्ट्रॉनिक्स व सोने विकत घेतो; दोन्ही एकूणांमधील फरक प्रत्येक अर्थमंत्री बारकाईने पाहतो. ही कोणती देवाणघेवाण?",
+        },
+        statement: {
+          en: "International trade is the exchange of goods and services across national borders, and the balance between what a country exports and what it imports is treated as a measure of its economic health.",
+          hi: "अंतरराष्ट्रीय व्यापार राष्ट्रीय सीमाओं के आर-पार वस्तुओं और सेवाओं का आदान-प्रदान है, और कोई देश जो निर्यात करता तथा जो आयात करता उनका संतुलन उसके आर्थिक स्वास्थ्य का माप माना जाता है।",
+          mr: "आंतरराष्ट्रीय व्यापार म्हणजे राष्ट्रीय सीमांपलीकडे वस्तू व सेवांची देवाणघेवाण, आणि एखादा देश जे निर्यात करतो आणि जे आयात करतो त्यांतील तोल त्याच्या आर्थिक आरोग्याचे माप मानला जातो.",
+        },
+        detail: {
+          en: "What matters is not only the size of the trade but its composition: exporting finished goods and services earns far more than exporting the ore and cotton that go into them.",
+          hi: "मायने केवल व्यापार का आकार नहीं बल्कि उसकी संरचना रखती है: तैयार वस्तुएँ और सेवाएँ निर्यात करना उन अयस्क तथा कपास के निर्यात से कहीं अधिक कमाता है जो उनमें जाते हैं।",
+          mr: "महत्त्व केवळ व्यापाराच्या आकाराचे नव्हे तर त्याच्या रचनेचे: तयार वस्तू व सेवा निर्यात करणे त्यांत जाणारे धातुक व कापूस निर्यात करण्याहून कितीतरी अधिक कमावते.",
+        },
+        extra: {
+          en: "Tourism counts as an invisible export — a visitor spends foreign currency inside the country without a single crate crossing the border.",
+          hi: "पर्यटन अदृश्य निर्यात गिना जाता है — कोई आगंतुक देश के भीतर विदेशी मुद्रा ख़र्च करता है और सीमा पार एक भी पेटी नहीं जाती।",
+          mr: "पर्यटन अदृश्य निर्यात म्हणून गणले जाते — एखादा पाहुणा देशाच्या आत परकी चलन खर्च करतो आणि सीमेपार एकही पेटी जात नाही.",
+        },
+        pair: {
+          left: {
+            en: "What is sent out against what is bought in",
+            hi: "जो भेजा गया बनाम जो ख़रीदा गया",
+            mr: "जे पाठवले विरुद्ध जे विकत घेतले",
+          },
+          right: {
+            en: "international trade",
+            hi: "अंतरराष्ट्रीय व्यापार",
+            mr: "आंतरराष्ट्रीय व्यापार",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Roads have grown far faster than railways in India, and now carry the larger share of both passengers and freight — yet no planner proposes closing the railways, and coal, ore and foodgrain still move overwhelmingly by train. Explain both facts together.",
+          hi: "भारत में सड़कें रेलवे से कहीं तेज़ी से बढ़ी हैं, और अब यात्रियों तथा माल दोनों का बड़ा हिस्सा ढोती हैं — फिर भी कोई योजनाकार रेलवे बंद करने का प्रस्ताव नहीं देता, और कोयला, अयस्क तथा खाद्यान्न अब भी अत्यधिक रूप से रेलगाड़ी से चलते हैं। दोनों तथ्य साथ समझाओ।",
+          mr: "भारतात रस्ते रेल्वेहून कितीतरी वेगाने वाढले आहेत, आणि आता प्रवासी व माल दोन्हींचा मोठा वाटा वाहतात — तरीही कोणता नियोजक रेल्वे बंद करण्याचा प्रस्ताव देत नाही, आणि कोळसा, धातुक व अन्नधान्य अजूनही प्रामुख्याने गाडीनेच जातात. दोन्ही तथ्ये एकत्र समजावा.",
+        },
+        choices: [
+          {
+            en: "Roads win where flexibility matters: they cost less per kilometre to build, can climb hills and reach villages a track cannot, carry small consignments economically, and deliver door to door without transhipment. Rail wins where mass matters: for heavy bulk over long distances its cost per tonne-kilometre is far lower and no fleet of trucks can match a single train's load. So the two are complementary — roads feed and distribute, rail carries the heavy long haul",
+            hi: "सड़कें वहाँ जीतती हैं जहाँ लचीलापन मायने रखता है: उन्हें बनाने में प्रति किलोमीटर कम लागत लगती है, वे पहाड़ चढ़ सकतीं और उन गाँवों तक पहुँच सकतीं जहाँ पटरी नहीं, छोटी खेपें किफ़ायत से ढोती हैं, और बिना माल बदले दरवाज़े-से-दरवाज़े पहुँचाती हैं। रेल वहाँ जीतती है जहाँ भार मायने रखता है: लंबी दूरी पर भारी थोक के लिए उसकी प्रति टन-किलोमीटर लागत कहीं कम है और ट्रकों का कोई बेड़ा एक ही रेलगाड़ी के भार की बराबरी नहीं कर सकता। अतः दोनों पूरक हैं — सड़कें खिलाती और बाँटती हैं, रेल भारी लंबी ढुलाई ढोती है",
+            mr: "रस्ते तिथे जिंकतात जिथे लवचीकता महत्त्वाची: ते बांधायला प्रति किलोमीटर कमी खर्च लागतो, ते डोंगर चढू शकतात आणि रुळ जाऊ शकत नाहीत अशा गावांपर्यंत पोहोचतात, लहान खेपा किफायतशीरपणे वाहतात, आणि माल न बदलता दारापासून दारापर्यंत पोहोचवतात. रेल्वे तिथे जिंकते जिथे वस्तुमान महत्त्वाचे: लांब पल्ल्यावर जड मालासाठी तिचा प्रति टन-किलोमीटर खर्च कितीतरी कमी आणि ट्रकांचा कोणताही ताफा एकाच गाडीच्या भाराची बरोबरी करू शकत नाही. म्हणून दोन्ही पूरक — रस्ते पुरवतात व वाटतात, रेल्वे जड लांब वाहतूक वाहते",
+          },
+          {
+            en: "Because trains are physically incapable of carrying heavy goods, which is why coal must go by road",
+            hi: "क्योंकि रेलगाड़ियाँ भारी माल ढोने में भौतिक रूप से असमर्थ हैं, इसीलिए कोयला सड़क से जाना चाहिए",
+            mr: "कारण गाड्या जड माल वाहण्यास भौतिकदृष्ट्या असमर्थ, म्हणूनच कोळसा रस्त्याने जावा",
+          },
+          {
+            en: "Because roads are cheaper than rail for every purpose without exception, so rail survives only by subsidy",
+            hi: "क्योंकि सड़कें हर प्रयोजन के लिए बिना अपवाद रेल से सस्ती हैं, अतः रेल केवल सब्सिडी से बची है",
+            mr: "कारण रस्ते प्रत्येक हेतूसाठी अपवादाविना रेल्वेहून स्वस्त, म्हणून रेल्वे फक्त अनुदानाने टिकली",
+          },
+          {
+            en: "Because the two networks compete for exactly the same traffic and one must eventually eliminate the other",
+            hi: "क्योंकि दोनों जाल ठीक उसी यातायात के लिए प्रतिस्पर्धा करते हैं और एक को अंततः दूसरे को मिटाना ही होगा",
+            mr: "कारण दोन्ही जाळी नेमक्या त्याच वाहतुकीसाठी स्पर्धा करतात आणि एकाला अखेर दुसरे संपवावेच लागेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two facts sit together comfortably once you stop treating road and rail as rivals for the same job and ask what each is physically good at. Take roads first. A road costs a fraction of a railway line per kilometre to build, needs no signalling, no gauge and no rolling stock, and can be laid on gradients and across dissected, hilly and forested country where a track cannot go at all. It can be extended to a single village at modest cost, which a branch line never could. It carries a consignment of two tonnes as readily as two hundred, so a small trader, a farmer with one truckload of vegetables, or a workshop sending parts can use it without waiting to accumulate a wagonload. Most decisively, it delivers door to door: a truck loads at the factory gate and unloads at the shop, while rail freight must be carted to the station, loaded, unloaded at the far end and carted again — each handling costing money, time and breakage. For high-value, small-volume, time-sensitive or short-distance movement, road wins every time, and that describes most of what a growing consumer economy moves. Now rail. Its advantage is mass, and it is decisive where mass is what you have. A single freight train carries the load of dozens of trucks with one crew and a fraction of the fuel per tonne, because steel wheels on steel rails have far lower rolling resistance than tyres on tarmac. For heavy, low-value bulk moving long distances — coal from the Damodar valley to a power station a thousand kilometres away, iron ore to a steel plant or a port, foodgrain from Punjab to a deficit state — the cost per tonne-kilometre by rail is a small fraction of the road figure, and no arrangement of trucks can close the gap. These cargoes are also insensitive to a day's delay, so rail's slower, scheduled movement costs them nothing. The conclusion is not that one is better but that they occupy different parts of the same system, and in practice they are joined: goods reach the railhead by truck and leave it by truck, so almost every rail journey has road at both ends. Planners therefore speak of an optimum modal mix rather than a winner. The policy question is not which to build, but whether the balance is right — and India's has drifted towards road partly for good reasons and partly because rail capacity was not expanded to match, with the consequence of heavier fuel imports, more emissions and congested highways. Dedicated freight corridors are the direct answer to that imbalance. (The wrong answers deny rail's bulk capacity, claim a universal road advantage the cost-per-tonne figures contradict, or assume two complementary networks must be rivals.)",
+          hi: "दोनों तथ्य तभी सहज साथ बैठते हैं जब तुम सड़क और रेल को एक ही काम के प्रतिद्वंद्वी मानना छोड़ दो और पूछो कि हर एक भौतिक रूप से किसमें अच्छा है। पहले सड़कें। सड़क बनाने में प्रति किलोमीटर रेलवे लाइन का अंश लगता है, न सिग्नलिंग चाहिए, न गेज, न रोलिंग स्टॉक, और वह ऐसी ढलानों तथा कटी-फटी, पहाड़ी और वन-भूमि पर बिछाई जा सकती है जहाँ पटरी जा ही नहीं सकती। उसे मामूली लागत पर एक अकेले गाँव तक बढ़ाया जा सकता है, जो कोई शाखा-लाइन कभी नहीं कर सकती थी। वह दो टन की खेप उतनी ही आसानी से ढोती है जितनी दो सौ की, अतः छोटा व्यापारी, एक ट्रक भर सब्ज़ी वाला किसान, या पुर्ज़े भेजती कार्यशाला उसे बिना वैगन भर जमा होने की प्रतीक्षा किए इस्तेमाल कर सकते हैं। सबसे निर्णायक रूप से, वह दरवाज़े-से-दरवाज़े पहुँचाती है: ट्रक कारख़ाने के फाटक पर लदता और दुकान पर उतरता है, जबकि रेल-माल को स्टेशन तक ढोना, लादना, दूसरे सिरे पर उतारना और फिर ढोना पड़ता है — हर चढ़ाई-उतराई पैसा, समय और टूट-फूट माँगती है। उच्च-मूल्य, कम-आयतन, समय-संवेदी या छोटी दूरी की आवाजाही के लिए सड़क हर बार जीतती है, और यही बढ़ती उपभोक्ता अर्थव्यवस्था जो कुछ चलाती है उसका अधिकांश है। अब रेल। उसका लाभ भार है, और वह वहाँ निर्णायक है जहाँ तुम्हारे पास भार ही है। एक मालगाड़ी दर्जनों ट्रकों का भार एक ही चालक-दल और प्रति टन ईंधन के अंश पर ढोती है, क्योंकि इस्पात की पटरी पर इस्पात के पहियों का लोटन-प्रतिरोध डामर पर टायरों से कहीं कम है। भारी, कम-मूल्य थोक की लंबी दूरी की आवाजाही के लिए — दामोदर घाटी से हज़ार किलोमीटर दूर बिजलीघर तक कोयला, इस्पात संयंत्र या बंदरगाह तक लौह अयस्क, पंजाब से किसी कमी वाले राज्य तक खाद्यान्न — रेल से प्रति टन-किलोमीटर लागत सड़क के आँकड़े का छोटा अंश है, और ट्रकों की कोई व्यवस्था वह खाई नहीं पाट सकती। ये माल एक दिन की देरी के प्रति असंवेदी भी हैं, अतः रेल की धीमी, समय-सारणीबद्ध आवाजाही उन्हें कुछ नहीं पड़ती। निष्कर्ष यह नहीं कि एक बेहतर है बल्कि यह कि वे एक ही तंत्र के भिन्न हिस्सों में बैठते हैं, और व्यवहार में वे जुड़े हुए हैं: माल ट्रक से रेलहेड पहुँचता और ट्रक से ही निकलता है, अतः लगभग हर रेल-यात्रा के दोनों सिरों पर सड़क है। अतः योजनाकार विजेता के बजाय इष्टतम साधन-मिश्रण की बात करते हैं। नीति का प्रश्न यह नहीं कि कौन बनाया जाए, बल्कि यह कि संतुलन ठीक है या नहीं — और भारत का संतुलन सड़क की ओर बहा है, आंशिक रूप से अच्छे कारणों से और आंशिक रूप से इसलिए कि रेल-क्षमता उसके अनुपात में नहीं बढ़ाई गई, जिसका परिणाम भारी ईंधन आयात, अधिक उत्सर्जन और भीड़ भरे राजमार्ग हैं। समर्पित माल गलियारे उसी असंतुलन का सीधा उत्तर हैं। (ग़लत उत्तर रेल की थोक क्षमता नकारते, ऐसे सार्वभौमिक सड़क-लाभ का दावा करते जिसका खंडन प्रति-टन लागत के आँकड़े करते, या मान लेते कि दो पूरक जाल प्रतिद्वंद्वी ही होने चाहिए।)",
+          mr: "दोन्ही तथ्ये तेव्हाच सहज एकत्र बसतात जेव्हा तुम्ही रस्ता आणि रेल्वेला एकाच कामाचे प्रतिस्पर्धी मानणे सोडता आणि विचारता की प्रत्येक भौतिकदृष्ट्या कशात चांगला. आधी रस्ते. रस्ता बांधायला प्रति किलोमीटर रेल्वेमार्गाचा अंश लागतो, ना सिग्नलिंग लागते, ना गेज, ना डबे, आणि तो अशा उतारांवर आणि कापल्या-तुटलेल्या, डोंगराळ व जंगली भूभागावर अंथरता येतो जिथे रूळ जाऊच शकत नाही. तो माफक खर्चात एका एकट्या गावापर्यंत वाढवता येतो, जे कोणती फाटा-लाईन कधीच करू शकत नव्हती. तो दोन टनांची खेप दोनशेइतक्याच सहजतेने वाहतो, म्हणून लहान व्यापारी, एक ट्रकभर भाज्या असलेला शेतकरी, वा भाग पाठवणारी कार्यशाळा तो वॅगनभर साचण्याची वाट न पाहता वापरू शकतात. सर्वांत निर्णायकपणे, तो दारापासून दारापर्यंत पोहोचवतो: ट्रक कारखान्याच्या फाटकावर भरतो आणि दुकानावर उतरतो, तर रेल्वेमाल स्थानकापर्यंत न्यावा, भरावा, दुसऱ्या टोकाला उतरवावा आणि पुन्हा न्यावा लागतो — प्रत्येक हाताळणी पैसा, वेळ आणि तुटफूट मागते. उच्च-मोलाच्या, कमी-आकारमानाच्या, वेळ-संवेदनशील वा कमी अंतराच्या हालचालीसाठी रस्ता प्रत्येक वेळी जिंकतो, आणि हेच वाढती ग्राहक अर्थव्यवस्था जे काही हलवते त्याचा बहुतांश. आता रेल्वे. तिचा फायदा वस्तुमान, आणि तो तिथे निर्णायक जिथे तुमच्याकडे वस्तुमानच आहे. एक मालगाडी डझनभर ट्रकांचा भार एकाच कर्मचारीवर्गासह आणि प्रति टन इंधनाच्या अंशावर वाहते, कारण पोलादी रुळांवर पोलादी चाकांचा लोळण-रोध डांबरावरील टायरांहून कितीतरी कमी. जड, कमी-मोलाच्या मालाच्या लांब पल्ल्याच्या हालचालीसाठी — दामोदर खोऱ्यातून हजार किलोमीटर दूरच्या वीजकेंद्रापर्यंत कोळसा, पोलाद प्रकल्प वा बंदरापर्यंत लोहधातुक, पंजाबातून तुटीच्या राज्यापर्यंत अन्नधान्य — रेल्वेने प्रति टन-किलोमीटर खर्च रस्त्याच्या आकड्याचा लहान अंश, आणि ट्रकांची कोणतीही मांडणी ती दरी भरू शकत नाही. हा मालही एका दिवसाच्या विलंबाला असंवेदनशील, म्हणून रेल्वेची मंद, वेळापत्रकबद्ध हालचाल त्यांना काहीच पडत नाही. निष्कर्ष हा नाही की एक चांगले तर हा की ते एकाच यंत्रणेच्या वेगळ्या भागांत बसतात, आणि व्यवहारात ते जोडलेले: माल ट्रकने रेल्वेस्थानकावर पोहोचतो आणि ट्रकनेच निघतो, म्हणून जवळजवळ प्रत्येक रेल्वे-प्रवासाच्या दोन्ही टोकांना रस्ता. म्हणून नियोजक विजेत्याऐवजी इष्टतम साधन-मिश्रणाबद्दल बोलतात. धोरणाचा प्रश्न कोणते बांधावे हा नाही, तर तोल बरोबर आहे का हा — आणि भारताचा तोल रस्त्याकडे झुकला आहे, अंशतः चांगल्या कारणांनी आणि अंशतः यामुळे की रेल्वे क्षमता त्या प्रमाणात वाढवली गेली नाही, ज्याचा परिणाम जड इंधन आयात, अधिक उत्सर्जन आणि गजबजलेले महामार्ग. समर्पित मालवाहतूक मार्गिका त्याच असमतोलाचे थेट उत्तर. (चुकीची उत्तरे रेल्वेची मोठी क्षमता नाकारतात, प्रति-टन खर्चाचे आकडे खोडून काढत असलेल्या सार्वत्रिक रस्ता-फायद्याचा दावा करतात, वा दोन पूरक जाळी प्रतिस्पर्धीच असावीत असे गृहीत धरतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The chapter calls transport and communication the lifelines of the economy, which sounds like a metaphor. Show that it is a claim with real content by explaining what happens to production, prices and opportunity in a district that a road never reaches — and what the composition of a country's trade reveals about where it stands.",
+          hi: "अध्याय परिवहन और संचार को अर्थव्यवस्था की जीवन रेखाएँ कहता है, जो एक रूपक लगता है। दिखाओ कि यह असली विषय वाला दावा है — यह समझाकर कि जिस ज़िले तक सड़क कभी नहीं पहुँची वहाँ उत्पादन, क़ीमतों और अवसर का क्या होता है — और यह कि किसी देश के व्यापार की संरचना उसकी स्थिति के बारे में क्या बताती है।",
+          mr: "प्रकरण वाहतूक आणि दळणवळणाला अर्थव्यवस्थेच्या जीवनरेषा म्हणते, जे रूपक वाटते. दाखवा की हा खऱ्या आशयाचा दावा आहे — हे समजावून की ज्या जिल्ह्यापर्यंत रस्ता कधीच पोहोचला नाही तिथे उत्पादन, किमती आणि संधीचे काय होते — आणि हे की एखाद्या देशाच्या व्यापाराची रचना त्याच्या स्थानाबद्दल काय सांगते.",
+        },
+        choices: [
+          {
+            en: "Without transport a producer can sell only to neighbours, so surplus is worthless and there is no reason to grow more than the family eats; prices swing wildly because local shortage cannot be relieved from outside; and schools, hospitals and jobs stay out of reach, so the district exports its young instead of its produce. As for trade composition, a country that exports raw materials and imports finished goods is selling the cheapest stage of every chain — which is why the shift towards exporting manufactures and services is treated as a mark of development",
+            hi: "परिवहन के बिना उत्पादक केवल पड़ोसियों को बेच सकता है, अतः अधिशेष निर्मूल्य है और परिवार जितना खाता उससे अधिक उगाने का कोई कारण नहीं; क़ीमतें बेतहाशा झूलती हैं क्योंकि स्थानीय कमी बाहर से नहीं पाटी जा सकती; और विद्यालय, अस्पताल तथा नौकरियाँ पहुँच से बाहर रहती हैं, अतः ज़िला अपनी उपज के बजाय अपने युवा निर्यात करता है। जहाँ तक व्यापार की संरचना, जो देश कच्चा माल निर्यात और तैयार वस्तुएँ आयात करता है वह हर शृंखला का सबसे सस्ता चरण बेच रहा है — इसीलिए विनिर्मित वस्तुओं तथा सेवाओं के निर्यात की ओर बदलाव विकास का चिह्न माना जाता है",
+            mr: "वाहतुकीविना उत्पादक फक्त शेजाऱ्यांना विकू शकतो, म्हणून अतिरिक्त निर्मूल्य आणि कुटुंब जेवढे खाते त्याहून अधिक पिकवण्याचे कारण नाही; किमती प्रचंड हेलकावतात कारण स्थानिक टंचाई बाहेरून भरून काढता येत नाही; आणि शाळा, रुग्णालये व नोकऱ्या आवाक्याबाहेर राहतात, म्हणून जिल्हा आपल्या उपजेऐवजी आपले तरुण निर्यात करतो. व्यापार रचनेबाबत, जो देश कच्चा माल निर्यात आणि तयार वस्तू आयात करतो तो प्रत्येक साखळीचा सर्वांत स्वस्त टप्पा विकत आहे — म्हणूनच उत्पादित वस्तू व सेवा निर्यातीकडचा बदल विकासाचे चिन्ह मानला जातो",
+          },
+          {
+            en: "Nothing happens; a district without roads produces and earns exactly as much as one with them",
+            hi: "कुछ नहीं होता; बिना सड़कों वाला ज़िला उतना ही उत्पादन और कमाई करता है जितना सड़कों वाला",
+            mr: "काहीही होत नाही; रस्त्यांविनाचा जिल्हा रस्ते असलेल्याइतकेच उत्पादन आणि कमाई करतो",
+          },
+          {
+            en: "Transport matters only for luxury goods, since food and necessities are always produced locally everywhere",
+            hi: "परिवहन केवल विलासिता की वस्तुओं के लिए मायने रखता है, क्योंकि भोजन और आवश्यक वस्तुएँ हर जगह सदा स्थानीय रूप से बनती हैं",
+            mr: "वाहतूक फक्त चैनीच्या वस्तूंसाठी महत्त्वाची, कारण अन्न आणि गरजेच्या वस्तू सर्वत्र सदैव स्थानिकरीत्या तयार होतात",
+          },
+          {
+            en: "The composition of trade is irrelevant; only its total value can tell anything about an economy",
+            hi: "व्यापार की संरचना अप्रासंगिक है; केवल उसका कुल मूल्य ही अर्थव्यवस्था के बारे में कुछ बता सकता है",
+            mr: "व्यापाराची रचना असंबद्ध; फक्त त्याचे एकूण मूल्यच अर्थव्यवस्थेबद्दल काही सांगू शकते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The word lifeline is doing real work, and the way to see it is to remove the transport and watch what stops. Begin with production. A farmer's decision about how much to grow is not made in isolation from the market; it is made against what can be sold. If the only buyers are the neighbours, and the neighbours grow the same crop and harvest it in the same week, then surplus has no value at all — worse, in a good year the local price collapses precisely because everyone has a surplus at once. The rational response is to grow roughly what the household eats and no more. That is what subsistence means, and it is a consequence of isolation rather than of ignorance or lack of ambition. Open a road and the calculation changes overnight: the same farmer can now grow a cash crop, or vegetables and milk that need to reach a town within hours, and specialisation becomes possible because what is not grown can be bought in. The whole gain from division of labour, which is the foundation of any developed economy, depends on being able to move things. Now prices. In an isolated district, a bad harvest cannot be relieved from outside, so scarcity translates directly into famine prices; and a good harvest cannot be exported, so abundance translates into ruin. Connect the district and both extremes are damped, because supply can flow in when local production fails and flow out when it is plentiful. Historically, the worst Indian famines were often not absolute national shortages but local failures that could not be reached in time — which is why railway expansion is part of famine history and not only of trade history. Then opportunity. Roads carry people as well as goods: to a hospital during a night emergency, to a secondary school in the next town, to a job, to a court, to a bank. A district without them exports the one thing that will walk out on its own — its young people — and keeps the poverty. Communication does the same work for information: a farmer who knows the price in three markets can refuse the first offer, and a mobile phone has repeatedly been shown to raise the price fishermen and farmers actually receive, without a single road being built. Now the second half of the question. Trade totals tell you the volume of exchange; composition tells you what a country's role in the world economy is. Selling ore, cotton and grain and buying machinery, electronics and finished goods means capturing the cheapest link of every chain — the value added by processing, design and branding accrues to somebody else, and the terms of trade tend to move against you over time because primary prices are volatile and manufactured prices are not. That is precisely the pattern colonial India was locked into, and the reason industrialisation and service exports have been treated since 1947 as the measure of progress. India's shift towards exporting software, engineering goods, pharmaceuticals and refined petroleum, rather than only raw materials, is a change in position and not merely in volume. So the metaphor is exact. Arteries do not create blood, but nothing the body produces reaches anywhere without them, and a limb they do not serve wastes while the rest of the body is healthy. That is a claim about causation, and it is why roads, rail, ports and networks are treated as investment rather than as expenditure. (The wrong answers deny an effect that connectivity studies measure directly, imagine necessities need no transport, or discard the composition of trade, which is precisely where a country's position in the world economy shows up.)",
+          hi: "'जीवन रेखा' शब्द असली काम कर रहा है, और उसे देखने का तरीक़ा यह कि परिवहन हटाओ और देखो क्या रुक जाता है। उत्पादन से शुरू। किसान का यह निर्णय कि कितना उगाया जाए बाज़ार से अलग नहीं लिया जाता; वह इसके सामने लिया जाता है कि बेचा क्या जा सकता है। यदि एकमात्र ख़रीदार पड़ोसी हों, और पड़ोसी वही फ़सल उगाते और उसी हफ़्ते काटते हों, तो अधिशेष का कोई मूल्य ही नहीं — इससे बुरा यह कि अच्छे वर्ष में स्थानीय क़ीमत ठीक इसलिए ढह जाती है कि सबके पास एक साथ अधिशेष है। तर्कसंगत प्रतिक्रिया यह कि लगभग उतना उगाओ जितना घर खाता है, अधिक नहीं। निर्वाह का यही अर्थ है, और वह अज्ञान या महत्वाकांक्षा की कमी का नहीं, अलगाव का परिणाम है। सड़क खोलो और गणना रातोंरात बदल जाती है: वही किसान अब नक़दी फ़सल उगा सकता है, या ऐसी सब्ज़ियाँ और दूध जिन्हें घंटों में क़स्बे तक पहुँचना है, और विशेषीकरण संभव हो जाता है क्योंकि जो नहीं उगाया वह ख़रीदा जा सकता है। श्रम-विभाजन से मिलता पूरा लाभ, जो किसी भी विकसित अर्थव्यवस्था की नींव है, चीज़ों को हिला सकने पर निर्भर है। अब क़ीमतें। अलग-थलग ज़िले में बुरी फ़सल बाहर से नहीं पाटी जा सकती, अतः कमी सीधे अकाल-क़ीमतों में बदल जाती है; और अच्छी फ़सल निर्यात नहीं हो सकती, अतः प्रचुरता बरबादी में। ज़िले को जोड़ो और दोनों छोर मंद पड़ जाते हैं, क्योंकि स्थानीय उत्पादन विफल होने पर आपूर्ति भीतर आ सकती है और भरपूर होने पर बाहर जा सकती है। ऐतिहासिक रूप से, सबसे बुरे भारतीय अकाल अक्सर पूर्ण राष्ट्रीय कमी नहीं बल्कि ऐसी स्थानीय विफलताएँ थीं जहाँ समय पर पहुँचा नहीं जा सका — इसीलिए रेल-विस्तार व्यापार के ही नहीं, अकाल के इतिहास का भी हिस्सा है। फिर अवसर। सड़कें माल के साथ लोग भी ढोती हैं: रात की आपात स्थिति में अस्पताल तक, अगले क़स्बे के माध्यमिक विद्यालय तक, नौकरी तक, अदालत तक, बैंक तक। उनसे रहित ज़िला वह एक चीज़ निर्यात करता है जो अपने आप चल देगी — अपने युवा — और निर्धनता अपने पास रखता है। संचार सूचना के लिए वही काम करता है: जो किसान तीन बाज़ारों का दाम जानता है वह पहला प्रस्ताव ठुकरा सकता है, और मोबाइल फ़ोन ने बार-बार दिखाया है कि वह मछुआरों तथा किसानों को वास्तव में मिलता दाम बढ़ा देता है, बिना एक भी सड़क बने। अब प्रश्न का दूसरा आधा। व्यापार के कुल तुम्हें आदान-प्रदान का आयतन बताते हैं; संरचना बताती है कि विश्व अर्थव्यवस्था में देश की भूमिका क्या है। अयस्क, कपास और अनाज बेचना तथा मशीनरी, इलेक्ट्रॉनिक्स और तैयार वस्तुएँ ख़रीदना हर शृंखला की सबसे सस्ती कड़ी पकड़ना है — प्रसंस्करण, रचना तथा ब्रांडिंग से जुड़ा मूल्य किसी और को जाता है, और व्यापार की शर्तें समय के साथ तुम्हारे विरुद्ध खिसकती हैं क्योंकि प्राथमिक क़ीमतें अस्थिर हैं और विनिर्मित क़ीमतें नहीं। ठीक यही वह ढर्रा था जिसमें औपनिवेशिक भारत जकड़ा था, और यही कारण कि 1947 से औद्योगीकरण तथा सेवा-निर्यात को प्रगति का माप माना गया। भारत का केवल कच्चे माल के बजाय सॉफ़्टवेयर, अभियांत्रिकी वस्तुओं, औषधियों और शोधित पेट्रोलियम के निर्यात की ओर खिसकना स्थिति का बदलाव है, केवल आयतन का नहीं। अतः रूपक सटीक है। धमनियाँ रक्त नहीं बनातीं, पर उनके बिना शरीर जो बनाता है वह कहीं नहीं पहुँचता, और जिस अंग तक वे नहीं जातीं वह शेष शरीर के स्वस्थ रहते हुए सूख जाता है। यह कार्य-कारण का दावा है, और इसीलिए सड़कें, रेल, बंदरगाह तथा जाल व्यय नहीं, निवेश माने जाते हैं। (ग़लत उत्तर उस प्रभाव को नकारते जिसे संयोजकता के अध्ययन सीधे नापते हैं, कल्पना करते कि आवश्यक वस्तुओं को परिवहन नहीं चाहिए, या व्यापार की संरचना को फेंक देते — जो ठीक वही जगह है जहाँ विश्व अर्थव्यवस्था में देश की स्थिति दिखती है।)",
+          mr: "'जीवनरेषा' हा शब्द खरे काम करत आहे, आणि ते पाहण्याचा मार्ग म्हणजे वाहतूक काढा आणि काय थांबते ते पाहा. उत्पादनापासून सुरू. शेतकऱ्याचा किती पिकवावे हा निर्णय बाजारापासून वेगळा घेतला जात नाही; तो काय विकता येईल यासमोर घेतला जातो. एकमेव खरेदीदार शेजारी असतील, आणि शेजारी तेच पीक पिकवत आणि त्याच आठवड्यात कापत असतील, तर अतिरिक्ताला काहीच मोल नाही — याहून वाईट, चांगल्या वर्षी स्थानिक किंमत नेमके यामुळे कोसळते की सर्वांकडे एकाच वेळी अतिरिक्त आहे. तर्कशुद्ध प्रतिसाद हा की घर जेवढे खाते तेवढेच पिकवा, अधिक नाही. निर्वाहाचा हाच अर्थ, आणि तो अज्ञान वा महत्त्वाकांक्षेच्या अभावाचा नव्हे तर एकाकीपणाचा परिणाम. रस्ता उघडा आणि गणित रातोरात बदलते: तोच शेतकरी आता नगदी पीक पिकवू शकतो, वा अशा भाज्या आणि दूध ज्यांना तासांत गावात पोहोचायचे आहे, आणि विशेषीकरण शक्य होते कारण जे पिकवले नाही ते विकत घेता येते. श्रमविभागणीतून मिळणारा अख्खा फायदा, जो कोणत्याही विकसित अर्थव्यवस्थेचा पाया, वस्तू हलवता येण्यावर अवलंबून. आता किमती. एकाकी जिल्ह्यात वाईट पीक बाहेरून भरून काढता येत नाही, म्हणून टंचाई थेट दुष्काळी किमतींत बदलते; आणि चांगले पीक निर्यात होऊ शकत नाही, म्हणून विपुलता नाशात. जिल्हा जोडा आणि दोन्ही टोके मंदावतात, कारण स्थानिक उत्पादन बुडाल्यास पुरवठा आत येऊ शकतो आणि भरपूर असल्यास बाहेर जाऊ शकतो. ऐतिहासिकदृष्ट्या, सर्वांत वाईट भारतीय दुष्काळ अनेकदा निरपेक्ष राष्ट्रीय टंचाई नव्हे तर अशी स्थानिक अपयशे होती जिथे वेळेत पोहोचता आले नाही — म्हणूनच रेल्वेविस्तार व्यापाराच्याच नव्हे तर दुष्काळाच्याही इतिहासाचा भाग. मग संधी. रस्ते मालासोबत माणसेही वाहतात: रात्रीच्या आणीबाणीत रुग्णालयापर्यंत, पुढच्या गावातील माध्यमिक शाळेपर्यंत, नोकरीपर्यंत, न्यायालयापर्यंत, बँकेपर्यंत. त्यांविनाचा जिल्हा ती एक गोष्ट निर्यात करतो जी स्वतःहून चालत जाईल — आपली तरुण माणसे — आणि गरिबी स्वतःकडे ठेवतो. दळणवळण माहितीसाठी तेच काम करते: जो शेतकरी तीन बाजारांतील भाव जाणतो तो पहिला प्रस्ताव नाकारू शकतो, आणि भ्रमणध्वनीने वारंवार दाखवले आहे की तो मच्छीमार व शेतकऱ्यांना प्रत्यक्ष मिळणारा भाव वाढवतो, एकही रस्ता न बांधता. आता प्रश्नाचा दुसरा अर्धा भाग. व्यापाराचे एकूण तुम्हाला देवाणघेवाणीचे आकारमान सांगतात; रचना सांगते की जागतिक अर्थव्यवस्थेत देशाची भूमिका काय. धातुक, कापूस आणि धान्य विकणे आणि यंत्रसामग्री, इलेक्ट्रॉनिक्स व तयार वस्तू विकत घेणे म्हणजे प्रत्येक साखळीचा सर्वांत स्वस्त दुवा पकडणे — प्रक्रिया, रचना व ब्रँडिंगने जोडलेले मूल्य दुसऱ्या कोणाला जाते, आणि व्यापाराच्या अटी काळाबरोबर तुमच्याविरुद्ध सरकतात कारण प्राथमिक किमती अस्थिर आणि उत्पादित किमती नाहीत. नेमके हेच ते चाकोरी होते जिच्यात वसाहती भारत अडकला होता, आणि हेच कारण की 1947 पासून औद्योगीकरण व सेवा-निर्यात प्रगतीचे माप मानले गेले. भारताचे केवळ कच्च्या मालाऐवजी सॉफ्टवेअर, अभियांत्रिकी वस्तू, औषधे आणि शुद्ध पेट्रोलियम निर्यातीकडे सरकणे हा स्थानाचा बदल, केवळ आकारमानाचा नव्हे. म्हणून रूपक अचूक. धमन्या रक्त तयार करत नाहीत, पण त्यांच्याविना शरीर जे बनवते ते कुठेही पोहोचत नाही, आणि ज्या अवयवापर्यंत त्या जात नाहीत तो उरलेले शरीर निरोगी असतानाही सुकतो. हा कार्यकारणाचा दावा, आणि म्हणूनच रस्ते, रेल्वे, बंदरे व जाळी खर्च नव्हे तर गुंतवणूक मानली जातात. (चुकीची उत्तरे जोडणी-अभ्यास थेट मोजत असलेला परिणाम नाकारतात, गरजेच्या वस्तूंना वाहतूक लागत नाही अशी कल्पना करतात, वा व्यापाराची रचना फेकून देतात — जी नेमकी तीच जागा जिथे जागतिक अर्थव्यवस्थेतील देशाचे स्थान दिसते.)",
+        },
+      },
+    ],
+  },
 ];
