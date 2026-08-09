@@ -1,0 +1,723 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 10,
+  "chapter": "Chapter 9 — Light: Reflection and Refraction",
+  "name": "Light: Reflection and Refraction",
+  "slug": "science-10-light",
+  "summary": "A ray obeying two strict rules and one act of bending: equal angles at every mirror, a curved mirror that gathers or spreads, light slowing as it enters glass and turning at the boundary, the refractive index that measures the turn, and lenses ranked by the power to bend.",
+  "position": 9,
+  "source": "EduLink original, written against NCERT Science (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "प्रकाश: परावर्तन तथा अपवर्तन",
+      "summary": "दो कड़े नियम मानती किरण और एक मुड़ने की क्रिया: हर दर्पण पर बराबर कोण, समेटता या फैलाता वक्र दर्पण, काँच में घुसते धीमा होता और सीमा पर मुड़ता प्रकाश, मोड़ नापता अपवर्तनांक, और मोड़ने की क्षमता से आँके लेंस।"
+    },
+    "mr": {
+      "name": "प्रकाश: परावर्तन आणि अपवर्तन",
+      "summary": "दोन कडक नियम पाळणारा किरण आणि एक वळण्याची क्रिया: प्रत्येक आरशावर समान कोन, गोळा करणारा वा पसरवणारा वक्र आरसा, काचेत शिरताना मंदावणारा आणि सीमेवर वळणारा प्रकाश, वळण मोजणारा अपवर्तनांक, आणि वाकवण्याच्या क्षमतेने मोजलेली भिंगे."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A ray striking a polished surface bounces off at exactly the same angle at which it arrived, and both rays lie flat in one plane with the normal. Which pair of rules is being stated?",
+      "choices": [
+        "The laws of reflection",
+        "The diverging convex mirror",
+        "The power of a lens",
+        "The converging concave mirror"
+      ],
+      "answerIndex": 0,
+      "solution": "The laws of reflection say the angle of incidence equals the angle of reflection, and the incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पॉलिश सतह से टकराती किरण ठीक उसी कोण पर लौटती जिस पर आई, और दोनों किरणें अभिलंब के साथ एक ही तल में सपाट पड़ीं। कौन-सी नियम-जोड़ी बताई जा रही?",
+          "choices": [
+            "परावर्तन के नियम",
+            "अपसारी उत्तल दर्पण",
+            "लेंस की क्षमता",
+            "अभिसारी अवतल दर्पण"
+          ],
+          "solution": "परावर्तन के नियम कहते आपतन कोण परावर्तन कोण के बराबर, और आपतित किरण, परावर्तित किरण तथा आपतन बिंदु पर अभिलंब सब एक ही तल में। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पॉलिश केलेल्या पृष्ठावर आदळणारा किरण नेमक्या त्याच कोनात परततो ज्या कोनात आला, आणि दोन्ही किरण स्तंभिकेसह एकाच प्रतलात सपाट. कोणती नियम-जोडी सांगितली जात आहे?",
+          "choices": [
+            "परावर्तनाचे नियम",
+            "अपसारी बहिर्वक्र आरसा",
+            "भिंगाची क्षमता",
+            "अभिसारी अंतर्वक्र आरसा"
+          ],
+          "solution": "परावर्तनाचे नियम सांगतात आपाती कोन परावर्तन कोनाइतका, आणि आपाती किरण, परावर्तित किरण व आपाती बिंदूवरील स्तंभिका सर्व एकाच प्रतलात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The converging concave mirror is correct?",
+      "choices": [
+        "The laws of reflection say the angle of incidence equals the angle of reflection, and the incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane.",
+        "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance.",
+        "A convex lens is thicker at the middle than at the edges and converges parallel rays to its principal focus, which is why it is also called a converging lens.",
+        "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror."
+      ],
+      "answerIndex": 3,
+      "solution": "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिसारी अवतल दर्पण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "परावर्तन के नियम कहते आपतन कोण परावर्तन कोण के बराबर, और आपतित किरण, परावर्तित किरण तथा आपतन बिंदु पर अभिलंब सब एक ही तल में।",
+            "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो।",
+            "उत्तल लेंस किनारों से बीच में मोटा और समांतर किरणों को अपने मुख्य फोकस पर अभिसरित करता, इसी से अभिसारी लेंस भी कहलाता।",
+            "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।"
+          ],
+          "solution": "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अभिसारी अंतर्वक्र आरसा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "परावर्तनाचे नियम सांगतात आपाती कोन परावर्तन कोनाइतका, आणि आपाती किरण, परावर्तित किरण व आपाती बिंदूवरील स्तंभिका सर्व एकाच प्रतलात.",
+            "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो.",
+            "बहिर्वक्र भिंग कडांपेक्षा मध्यभागी जाड आणि समांतर किरण आपल्या मुख्य नाभीवर अभिसरित करते, म्हणूनच त्याला अभिसारी भिंगही म्हणतात.",
+            "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे."
+          ],
+          "solution": "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Its focus lies behind the mirror, where the diverging rays only appear to come from — which is why the image can never be caught on a screen.\" — which of these is this about?",
+      "choices": [
+        "The converging concave mirror",
+        "The converging convex lens",
+        "The laws of reflection",
+        "The diverging convex mirror"
+      ],
+      "answerIndex": 3,
+      "solution": "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उसका फोकस दर्पण के पीछे, जहाँ से अपसरित किरणें केवल आती प्रतीत होतीं — इसी से प्रतिबिंब कभी पर्दे पर नहीं पकड़ा जा सकता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "अभिसारी अवतल दर्पण",
+            "अभिसारी उत्तल लेंस",
+            "परावर्तन के नियम",
+            "अपसारी उत्तल दर्पण"
+          ],
+          "solution": "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्याची नाभी आरशामागे, जिथून अपसरित किरण केवळ येताना भासतात — म्हणूनच प्रतिमा कधी पडद्यावर पकडता येत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "अभिसारी अंतर्वक्र आरसा",
+            "अभिसारी बहिर्वक्र भिंग",
+            "परावर्तनाचे नियम",
+            "अपसारी बहिर्वक्र आरसा"
+          ],
+          "solution": "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A pencil standing in a glass of water looks broken at the surface, and a coin in a bowl seems to rise. Which bending of light as it passes from one medium into another explains both?",
+      "choices": [
+        "The converging convex lens",
+        "The converging concave mirror",
+        "Refraction of light",
+        "The refractive index"
+      ],
+      "answerIndex": 2,
+      "solution": "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी के गिलास में खड़ी पेंसिल सतह पर टूटी दिखती, और कटोरे में सिक्का उठा प्रतीत होता। एक माध्यम से दूसरे में जाते प्रकाश का कौन-सा मुड़ना दोनों समझाता?",
+          "choices": [
+            "अभिसारी उत्तल लेंस",
+            "अभिसारी अवतल दर्पण",
+            "प्रकाश का अपवर्तन",
+            "अपवर्तनांक"
+          ],
+          "solution": "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पाण्याच्या ग्लासात उभी पेन्सिल पृष्ठावर मोडलेली दिसते, आणि वाडग्यातले नाणे वर आल्यासारखे भासते. एका माध्यमातून दुसऱ्यात जाताना प्रकाशाचे कोणते वळणे दोन्ही समजावते?",
+          "choices": [
+            "अभिसारी बहिर्वक्र भिंग",
+            "अभिसारी अंतर्वक्र आरसा",
+            "प्रकाशाचे अपवर्तन",
+            "अपवर्तनांक"
+          ],
+          "solution": "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The refractive index is correct?",
+      "choices": [
+        "The power of a lens is the reciprocal of its focal length in metres, measured in dioptres (D) — it is positive for a convex lens and negative for a concave one.",
+        "The refractive index of a medium is the ratio of the speed of light in vacuum to its speed in that medium — the larger it is, the slower the light and the more sharply a ray bends.",
+        "A convex lens is thicker at the middle than at the edges and converges parallel rays to its principal focus, which is why it is also called a converging lens.",
+        "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror."
+      ],
+      "answerIndex": 1,
+      "solution": "The refractive index of a medium is the ratio of the speed of light in vacuum to its speed in that medium — the larger it is, the slower the light and the more sharply a ray bends. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अपवर्तनांक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "लेंस की क्षमता मीटर में उसकी फोकस दूरी का व्युत्क्रम, डाइऑप्टर (D) में नापी — उत्तल लेंस के लिए धनात्मक और अवतल के लिए ऋणात्मक।",
+            "किसी माध्यम का अपवर्तनांक निर्वात में प्रकाश की चाल का उस माध्यम में चाल से अनुपात — जितना बड़ा, प्रकाश उतना धीमा और किरण उतनी तीखी मुड़ती।",
+            "उत्तल लेंस किनारों से बीच में मोटा और समांतर किरणों को अपने मुख्य फोकस पर अभिसरित करता, इसी से अभिसारी लेंस भी कहलाता।",
+            "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।"
+          ],
+          "solution": "किसी माध्यम का अपवर्तनांक निर्वात में प्रकाश की चाल का उस माध्यम में चाल से अनुपात — जितना बड़ा, प्रकाश उतना धीमा और किरण उतनी तीखी मुड़ती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अपवर्तनांक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "भिंगाची क्षमता म्हणजे मीटरमधील तिच्या नाभीय अंतराचा व्यस्तांक, डायऑप्टर (D) मध्ये मोजलेली — बहिर्वक्र भिंगासाठी धन आणि अंतर्वक्रासाठी ऋण.",
+            "एखाद्या माध्यमाचा अपवर्तनांक म्हणजे निर्वातातील प्रकाशाच्या वेगाचे त्या माध्यमातील वेगाशी गुणोत्तर — जितका मोठा, प्रकाश तितका मंद आणि किरण तितका तीव्र वाकतो.",
+            "बहिर्वक्र भिंग कडांपेक्षा मध्यभागी जाड आणि समांतर किरण आपल्या मुख्य नाभीवर अभिसरित करते, म्हणूनच त्याला अभिसारी भिंगही म्हणतात.",
+            "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे."
+          ],
+          "solution": "एखाद्या माध्यमाचा अपवर्तनांक म्हणजे निर्वातातील प्रकाशाच्या वेगाचे त्या माध्यमातील वेगाशी गुणोत्तर — जितका मोठा, प्रकाश तितका मंद आणि किरण तितका तीव्र वाकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It gives a real, inverted image for an object beyond the focus, but a virtual, erect and magnified one when the object is nearer than the focus — the magnifying glass at work.\" — which of these is this about?",
+      "choices": [
+        "Refraction of light",
+        "The converging concave mirror",
+        "The diverging convex mirror",
+        "The converging convex lens"
+      ],
+      "answerIndex": 3,
+      "solution": "A convex lens is thicker at the middle than at the edges and converges parallel rays to its principal focus, which is why it is also called a converging lens. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"फोकस से परे वस्तु के लिए यह वास्तविक, उल्टा प्रतिबिंब देता, पर वस्तु फोकस से नज़दीक हो तो आभासी, सीधा और बड़ा — आवर्धक काँच का काम।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "प्रकाश का अपवर्तन",
+            "अभिसारी अवतल दर्पण",
+            "अपसारी उत्तल दर्पण",
+            "अभिसारी उत्तल लेंस"
+          ],
+          "solution": "उत्तल लेंस किनारों से बीच में मोटा और समांतर किरणों को अपने मुख्य फोकस पर अभिसरित करता, इसी से अभिसारी लेंस भी कहलाता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"नाभीच्या पलीकडील वस्तूसाठी ते खरी, उलटी प्रतिमा देते, पण वस्तू नाभीहून जवळ असल्यास आभासी, सरळ आणि मोठी — भिंग-काचेचे काम.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "प्रकाशाचे अपवर्तन",
+            "अभिसारी अंतर्वक्र आरसा",
+            "अपसारी बहिर्वक्र आरसा",
+            "अभिसारी बहिर्वक्र भिंग"
+          ],
+          "solution": "बहिर्वक्र भिंग कडांपेक्षा मध्यभागी जाड आणि समांतर किरण आपल्या मुख्य नाभीवर अभिसरित करते, म्हणूनच त्याला अभिसारी भिंगही म्हणतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An optician's prescription reads '+2 D' or '−1.5 D', a single number standing for the reciprocal of the focal length in metres. Which quantity measures how strongly a lens bends light?",
+      "choices": [
+        "The converging concave mirror",
+        "The refractive index",
+        "The power of a lens",
+        "The diverging convex mirror"
+      ],
+      "answerIndex": 2,
+      "solution": "The power of a lens is the reciprocal of its focal length in metres, measured in dioptres (D) — it is positive for a convex lens and negative for a concave one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चश्मे के नुस्ख़े पर '+2 D' या '−1.5 D' लिखा, एक संख्या जो मीटर में फोकस दूरी का व्युत्क्रम। कौन-सी राशि नापती लेंस प्रकाश को कितनी प्रबलता से मोड़ता?",
+          "choices": [
+            "अभिसारी अवतल दर्पण",
+            "अपवर्तनांक",
+            "लेंस की क्षमता",
+            "अपसारी उत्तल दर्पण"
+          ],
+          "solution": "लेंस की क्षमता मीटर में उसकी फोकस दूरी का व्युत्क्रम, डाइऑप्टर (D) में नापी — उत्तल लेंस के लिए धनात्मक और अवतल के लिए ऋणात्मक। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "चष्म्याच्या प्रिस्क्रिप्शनवर '+2 D' वा '−1.5 D' लिहिलेले, एक संख्या जी मीटरमधील नाभीय अंतराचा व्यस्तांक. कोणती राशी मोजते भिंग प्रकाश किती प्रबळपणे वाकवते?",
+          "choices": [
+            "अभिसारी अंतर्वक्र आरसा",
+            "अपवर्तनांक",
+            "भिंगाची क्षमता",
+            "अपसारी बहिर्वक्र आरसा"
+          ],
+          "solution": "भिंगाची क्षमता म्हणजे मीटरमधील तिच्या नाभीय अंतराचा व्यस्तांक, डायऑप्टर (D) मध्ये मोजलेली — बहिर्वक्र भिंगासाठी धन आणि अंतर्वक्रासाठी ऋण. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Angle in equals angle out\" goes correctly with which of these?",
+      "choices": [
+        "the laws of reflection",
+        "the diverging convex mirror",
+        "refraction",
+        "the power of a lens"
+      ],
+      "answerIndex": 0,
+      "solution": "The laws of reflection say the angle of incidence equals the angle of reflection, and the incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आने का कोण जाने के कोण बराबर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परावर्तन के नियम",
+            "अपसारी उत्तल दर्पण",
+            "अपवर्तन",
+            "लेंस की क्षमता"
+          ],
+          "solution": "परावर्तन के नियम कहते आपतन कोण परावर्तन कोण के बराबर, और आपतित किरण, परावर्तित किरण तथा आपतन बिंदु पर अभिलंब सब एक ही तल में। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"येण्याचा कोन जाण्याच्या कोनाइतका\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परावर्तनाचे नियम",
+            "अपसारी बहिर्वक्र आरसा",
+            "अपवर्तन",
+            "भिंगाची क्षमता"
+          ],
+          "solution": "परावर्तनाचे नियम सांगतात आपाती कोन परावर्तन कोनाइतका, आणि आपाती किरण, परावर्तित किरण व आपाती बिंदूवरील स्तंभिका सर्व एकाच प्रतलात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Curves inward, gathers rays\" goes correctly with which of these?",
+      "choices": [
+        "the laws of reflection",
+        "the refractive index",
+        "the converging concave mirror",
+        "the diverging convex mirror"
+      ],
+      "answerIndex": 2,
+      "solution": "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अंदर मुड़ा, किरणें समेटे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परावर्तन के नियम",
+            "अपवर्तनांक",
+            "अभिसारी अवतल दर्पण",
+            "अपसारी उत्तल दर्पण"
+          ],
+          "solution": "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"आत वळलेला, किरण गोळा करी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परावर्तनाचे नियम",
+            "अपवर्तनांक",
+            "अभिसारी अंतर्वक्र आरसा",
+            "अपसारी बहिर्वक्र आरसा"
+          ],
+          "solution": "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Bulges outward, spreads rays\" goes correctly with which of these?",
+      "choices": [
+        "the power of a lens",
+        "refraction",
+        "the refractive index",
+        "the diverging convex mirror"
+      ],
+      "answerIndex": 3,
+      "solution": "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बाहर उभरा, किरणें फैलाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "लेंस की क्षमता",
+            "अपवर्तन",
+            "अपवर्तनांक",
+            "अपसारी उत्तल दर्पण"
+          ],
+          "solution": "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बाहेर फुगलेला, किरण पसरवी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "भिंगाची क्षमता",
+            "अपवर्तन",
+            "अपवर्तनांक",
+            "अपसारी बहिर्वक्र आरसा"
+          ],
+          "solution": "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Bending on changing medium\" goes correctly with which of these?",
+      "choices": [
+        "the laws of reflection",
+        "the converging convex lens",
+        "refraction",
+        "the power of a lens"
+      ],
+      "answerIndex": 2,
+      "solution": "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"माध्यम बदलने पर मुड़ना\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परावर्तन के नियम",
+            "अभिसारी उत्तल लेंस",
+            "अपवर्तन",
+            "लेंस की क्षमता"
+          ],
+          "solution": "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"माध्यम बदलल्यावर वाकणे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परावर्तनाचे नियम",
+            "अभिसारी बहिर्वक्र भिंग",
+            "अपवर्तन",
+            "भिंगाची क्षमता"
+          ],
+          "solution": "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Speed in vacuum over speed in medium\" goes correctly with which of these?",
+      "choices": [
+        "the refractive index",
+        "the diverging convex mirror",
+        "the converging concave mirror",
+        "refraction"
+      ],
+      "answerIndex": 0,
+      "solution": "The refractive index of a medium is the ratio of the speed of light in vacuum to its speed in that medium — the larger it is, the slower the light and the more sharply a ray bends. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"निर्वात की चाल बटा माध्यम की चाल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अपवर्तनांक",
+            "अपसारी उत्तल दर्पण",
+            "अभिसारी अवतल दर्पण",
+            "अपवर्तन"
+          ],
+          "solution": "किसी माध्यम का अपवर्तनांक निर्वात में प्रकाश की चाल का उस माध्यम में चाल से अनुपात — जितना बड़ा, प्रकाश उतना धीमा और किरण उतनी तीखी मुड़ती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"निर्वातातील वेग भागिले माध्यमातील वेग\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अपवर्तनांक",
+            "अपसारी बहिर्वक्र आरसा",
+            "अभिसारी अंतर्वक्र आरसा",
+            "अपवर्तन"
+          ],
+          "solution": "एखाद्या माध्यमाचा अपवर्तनांक म्हणजे निर्वातातील प्रकाशाच्या वेगाचे त्या माध्यमातील वेगाशी गुणोत्तर — जितका मोठा, प्रकाश तितका मंद आणि किरण तितका तीव्र वाकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Thick in the middle, converging\" goes correctly with which of these?",
+      "choices": [
+        "refraction",
+        "the converging convex lens",
+        "the converging concave mirror",
+        "the laws of reflection"
+      ],
+      "answerIndex": 1,
+      "solution": "A convex lens is thicker at the middle than at the edges and converges parallel rays to its principal focus, which is why it is also called a converging lens. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बीच में मोटा, अभिसारी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अपवर्तन",
+            "अभिसारी उत्तल लेंस",
+            "अभिसारी अवतल दर्पण",
+            "परावर्तन के नियम"
+          ],
+          "solution": "उत्तल लेंस किनारों से बीच में मोटा और समांतर किरणों को अपने मुख्य फोकस पर अभिसरित करता, इसी से अभिसारी लेंस भी कहलाता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"मध्यभागी जाड, अभिसारी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अपवर्तन",
+            "अभिसारी बहिर्वक्र भिंग",
+            "अभिसारी अंतर्वक्र आरसा",
+            "परावर्तनाचे नियम"
+          ],
+          "solution": "बहिर्वक्र भिंग कडांपेक्षा मध्यभागी जाड आणि समांतर किरण आपल्या मुख्य नाभीवर अभिसरित करते, म्हणूनच त्याला अभिसारी भिंगही म्हणतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One over the focal length, in dioptres\" goes correctly with which of these?",
+      "choices": [
+        "refraction",
+        "the refractive index",
+        "the converging concave mirror",
+        "the power of a lens"
+      ],
+      "answerIndex": 3,
+      "solution": "The power of a lens is the reciprocal of its focal length in metres, measured in dioptres (D) — it is positive for a convex lens and negative for a concave one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"फोकस दूरी का व्युत्क्रम, डाइऑप्टर में\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अपवर्तन",
+            "अपवर्तनांक",
+            "अभिसारी अवतल दर्पण",
+            "लेंस की क्षमता"
+          ],
+          "solution": "लेंस की क्षमता मीटर में उसकी फोकस दूरी का व्युत्क्रम, डाइऑप्टर (D) में नापी — उत्तल लेंस के लिए धनात्मक और अवतल के लिए ऋणात्मक। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"नाभीय अंतराचा व्यस्तांक, डायऑप्टरमध्ये\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अपवर्तन",
+            "अपवर्तनांक",
+            "अभिसारी अंतर्वक्र आरसा",
+            "भिंगाची क्षमता"
+          ],
+          "solution": "भिंगाची क्षमता म्हणजे मीटरमधील तिच्या नाभीय अंतराचा व्यस्तांक, डायऑप्टर (D) मध्ये मोजलेली — बहिर्वक्र भिंगासाठी धन आणि अंतर्वक्रासाठी ऋण. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The laws of reflection EXCEPT —",
+      "choices": [
+        "These two laws hold for every reflecting surface — flat, curved, polished metal or still water — which is why one rule explains both a bathroom mirror and a car's headlamp.",
+        "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary.",
+        "The normal is the line drawn perpendicular to the surface at the point where the ray lands, and every angle is measured from it — never from the surface itself.",
+        "The laws of reflection say the angle of incidence equals the angle of reflection, and the incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane."
+      ],
+      "answerIndex": 1,
+      "solution": "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary. That belongs to Refraction of light, not The laws of reflection — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परावर्तन के नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ये दो नियम हर परावर्तक सतह पर लागू — सपाट, वक्र, पॉलिश धातु या ठहरा पानी — इसी से एक नियम स्नानघर के दर्पण और गाड़ी की हेडलैंप दोनों समझाता।",
+            "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से।",
+            "अभिलंब वह रेखा जो किरण के गिरने के बिंदु पर सतह के लंबवत खींची, और हर कोण उसी से नापा — कभी सतह से नहीं।",
+            "परावर्तन के नियम कहते आपतन कोण परावर्तन कोण के बराबर, और आपतित किरण, परावर्तित किरण तथा आपतन बिंदु पर अभिलंब सब एक ही तल में।"
+          ],
+          "solution": "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से। यह प्रकाश का अपवर्तन की बात है, परावर्तन के नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "परावर्तनाचे नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे दोन नियम प्रत्येक परावर्तक पृष्ठावर लागू — सपाट, वक्र, पॉलिश धातू वा स्थिर पाणी — म्हणूनच एक नियम स्नानगृहाचा आरसा आणि गाडीचा दिवा दोन्ही समजावतो.",
+            "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे.",
+            "स्तंभिका ती रेषा जी किरण पडलेल्या बिंदूवर पृष्ठाला लंब काढली, आणि प्रत्येक कोन तिच्यापासूनच मोजला — कधी पृष्ठापासून नाही.",
+            "परावर्तनाचे नियम सांगतात आपाती कोन परावर्तन कोनाइतका, आणि आपाती किरण, परावर्तित किरण व आपाती बिंदूवरील स्तंभिका सर्व एकाच प्रतलात."
+          ],
+          "solution": "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे. हे प्रकाशाचे अपवर्तन चे आहे, परावर्तनाचे नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The converging concave mirror EXCEPT —",
+      "choices": [
+        "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance.",
+        "That is why a dentist and a shaving mirror both use it up close for an enlarged view, while a torch places its bulb at the focus to throw a parallel beam.",
+        "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror.",
+        "Its image changes with the object's position — real and inverted for a distant object, but virtual, erect and magnified when the object sits between the pole and the focus."
+      ],
+      "answerIndex": 0,
+      "solution": "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance. That belongs to The diverging convex mirror, not The converging concave mirror — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिसारी अवतल दर्पण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो।",
+            "इसी से दंत-चिकित्सक और दाढ़ी का दर्पण दोनों पास से बड़ा दृश्य पाने इसे लेते, जबकि टॉर्च अपना बल्ब फोकस पर रखकर समांतर पुंज फेंकती।",
+            "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।",
+            "उसका प्रतिबिंब वस्तु की स्थिति से बदलता — दूर वस्तु के लिए वास्तविक और उल्टा, पर वस्तु ध्रुव और फोकस के बीच हो तो आभासी, सीधा और बड़ा।"
+          ],
+          "solution": "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो। यह अपसारी उत्तल दर्पण की बात है, अभिसारी अवतल दर्पण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अभिसारी अंतर्वक्र आरसा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो.",
+            "म्हणूनच दंतवैद्य आणि दाढीचा आरसा दोघे जवळून मोठे दृश्य मिळवायला हा वापरतात, तर बॅटरी आपला बल्ब नाभीवर ठेवून समांतर झोत फेकते.",
+            "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे.",
+            "त्याची प्रतिमा वस्तूच्या स्थानानुसार बदलते — दूरच्या वस्तूसाठी खरी आणि उलटी, पण वस्तू ध्रुव आणि नाभीदरम्यान असल्यास आभासी, सरळ आणि मोठी."
+          ],
+          "solution": "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो. हे अपसारी बहिर्वक्र आरसा चे आहे, अभिसारी अंतर्वक्र आरसा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The diverging convex mirror EXCEPT —",
+      "choices": [
+        "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror.",
+        "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance.",
+        "Its focus lies behind the mirror, where the diverging rays only appear to come from — which is why the image can never be caught on a screen.",
+        "A vehicle's rear-view mirror is convex on purpose: a smaller image is the price paid for a much wider field of view behind."
+      ],
+      "answerIndex": 0,
+      "solution": "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror. That belongs to The converging concave mirror, not The diverging convex mirror — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अपसारी उत्तल दर्पण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।",
+            "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो।",
+            "उसका फोकस दर्पण के पीछे, जहाँ से अपसरित किरणें केवल आती प्रतीत होतीं — इसी से प्रतिबिंब कभी पर्दे पर नहीं पकड़ा जा सकता।",
+            "गाड़ी का पश्च-दृश्य दर्पण जानबूझकर उत्तल: छोटा प्रतिबिंब पीछे के कहीं चौड़े दृष्टि-क्षेत्र की चुकाई क़ीमत।"
+          ],
+          "solution": "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे। यह अभिसारी अवतल दर्पण की बात है, अपसारी उत्तल दर्पण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अपसारी बहिर्वक्र आरसा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे.",
+            "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो.",
+            "त्याची नाभी आरशामागे, जिथून अपसरित किरण केवळ येताना भासतात — म्हणूनच प्रतिमा कधी पडद्यावर पकडता येत नाही.",
+            "गाडीचा मागील-दृश्य आरसा मुद्दाम बहिर्वक्र: लहान प्रतिमा ही मागच्या कितीतरी रुंद दृष्टिक्षेत्राची दिलेली किंमत."
+          ],
+          "solution": "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे. हे अभिसारी अंतर्वक्र आरसा चे आहे, अपसारी बहिर्वक्र आरसा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Refraction of light EXCEPT —",
+      "choices": [
+        "A ray striking the boundary straight on, along the normal, goes through unbent — it still changes speed, but there is no sideways direction to turn toward.",
+        "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror.",
+        "Going into a denser medium the ray slows and bends toward the normal; coming out into a rarer one it speeds up and bends away from the normal.",
+        "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary."
+      ],
+      "answerIndex": 1,
+      "solution": "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror. That belongs to The converging concave mirror, not Refraction of light — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश का अपवर्तन के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सीमा पर सीधे, अभिलंब के अनुदिश टकराती किरण बिना मुड़े निकलती — चाल फिर भी बदलती, पर मुड़ने को कोई बग़ली दिशा नहीं।",
+            "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।",
+            "सघन माध्यम में जाते किरण धीमी होकर अभिलंब की ओर मुड़ती; विरल में निकलते तेज़ होकर अभिलंब से दूर मुड़ती।",
+            "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से।"
+          ],
+          "solution": "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे। यह अभिसारी अवतल दर्पण की बात है, प्रकाश का अपवर्तन की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रकाशाचे अपवर्तन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सीमेवर सरळ, स्तंभिकेच्या दिशेने आदळणारा किरण न वाकता जातो — वेग तरीही बदलतो, पण वळायला कोणती बाजूची दिशा नाही.",
+            "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे.",
+            "घन माध्यमात जाताना किरण मंदावून स्तंभिकेकडे वळतो; विरळात बाहेर पडताना वेगावून स्तंभिकेपासून दूर वळतो.",
+            "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे."
+          ],
+          "solution": "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे. हे अभिसारी अंतर्वक्र आरसा चे आहे, प्रकाशाचे अपवर्तन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A shopkeeper fixes a large mirror high in a corner and can watch the whole shop in it, though everyone appears small. A dentist uses a different mirror to see one tooth hugely enlarged. Both are curved mirrors, so why does one shrink everything while the other magnifies?",
+      "choices": [
+        "The shop mirror is convex: it bulges outward and diverges the light, so it always gives a small, erect, virtual image — and that shrinking is exactly what packs a wide view into one mirror. The dentist's is concave: held closer to the tooth than its focus, it converges light and gives a magnified, erect, virtual image",
+        "The shop mirror is simply made of thicker glass, which shrinks whatever it shows",
+        "The shop mirror is concave and the dentist's is convex, the other way round",
+        "Both are the same mirror; only the distance from the wall changes the size"
+      ],
+      "answerIndex": 0,
+      "solution": "The two mirrors are curved in opposite directions, and that single difference decides everything. The shopkeeper's mirror is convex — it bulges outward, like the back of a spoon. Rays arriving on it are spread apart, and the reflected rays only seem to come from a point behind the mirror. So a convex mirror always, without exception, gives an image that is virtual, erect and smaller than the object, no matter where the object stands. That sounds like a drawback until you see what it buys: because everything is shrunk, a very wide slice of the shop — far wider than a flat mirror of the same size could show — is squeezed into the glass. The shrinking is not a flaw; it is the price of the wide field of view, which is exactly why the same design is used for vehicle rear-view mirrors and blind corners on roads. The dentist's mirror is concave — curved inward, like the bowl of a spoon — and it converges light. A concave mirror's image is not fixed: it changes with the object's distance. Held far from an object it makes a real, inverted image, but the dentist deliberately holds it very close to the tooth, nearer than the mirror's focus. In that one position the reflected rays diverge and appear to come from behind the mirror, producing an image that is virtual, erect and magnified — a big, upright picture of the tooth. So the answer is not that one mirror 'is a magnifier' and the other 'is a shrinker' by nature; it is that a convex mirror can only ever diminish, while a concave mirror can magnify provided it is held within its focus. (The wrong answers get it backwards or blame thickness and distance from the wall, neither of which curves a mirror.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक दुकानदार कोने में ऊपर बड़ा दर्पण लगाता और उसमें पूरी दुकान देख लेता, यद्यपि सब छोटे दिखते। एक दंत-चिकित्सक भिन्न दर्पण से एक दाँत बहुत बड़ा देखता। दोनों वक्र दर्पण, तो एक सब छोटा क्यों करता जबकि दूसरा बड़ा?",
+          "choices": [
+            "दुकान का दर्पण उत्तल: बाहर उभरा और प्रकाश अपसरित करता, अतः सदा छोटा, सीधा, आभासी प्रतिबिंब देता — और वही सिकुड़न एक दर्पण में चौड़ा दृश्य भरती। दंत-चिकित्सक का अवतल: दाँत से उसके फोकस से नज़दीक रखा, प्रकाश अभिसरित कर बड़ा, सीधा, आभासी प्रतिबिंब देता",
+            "दुकान का दर्पण बस मोटे काँच का, जो जो दिखाए उसे छोटा करता",
+            "दुकान का दर्पण अवतल और दंत-चिकित्सक का उत्तल, उल्टे तरीक़े से",
+            "दोनों एक ही दर्पण; केवल दीवार से दूरी आकार बदलती"
+          ],
+          "solution": "दोनों दर्पण उल्टी दिशाओं में मुड़े, और वही एक अंतर सब तय करता। दुकानदार का दर्पण उत्तल — बाहर उभरा, चम्मच की पीठ जैसा। उस पर आती किरणें फैल जातीं, और परावर्तित किरणें केवल दर्पण के पीछे किसी बिंदु से आती प्रतीत होतीं। अतः उत्तल दर्पण सदा, बिना अपवाद, आभासी, सीधा और वस्तु से छोटा प्रतिबिंब देता, वस्तु चाहे कहीं खड़ी हो। यह कमी लगती जब तक न दिखे यह क्या ख़रीदती: क्योंकि सब सिकुड़ा, दुकान की बहुत चौड़ी फाँक — उसी आकार के सपाट दर्पण से कहीं चौड़ी — काँच में भर जाती। सिकुड़न दोष नहीं; यह चौड़े दृष्टि-क्षेत्र की क़ीमत, ठीक इसी से वही रचना गाड़ी के पश्च-दृश्य दर्पणों और सड़क के अंधे मोड़ों पर। दंत-चिकित्सक का दर्पण अवतल — अंदर मुड़ा, चम्मच के कटोरे जैसा — और प्रकाश अभिसरित करता। अवतल दर्पण का प्रतिबिंब नियत नहीं: वस्तु की दूरी से बदलता। वस्तु से दूर रखे तो वास्तविक, उल्टा प्रतिबिंब बनाता, पर दंत-चिकित्सक इसे जानबूझकर दाँत के बहुत पास, दर्पण के फोकस से नज़दीक रखता। उस एक स्थिति में परावर्तित किरणें अपसरित होकर दर्पण के पीछे से आती प्रतीत होतीं, और आभासी, सीधा तथा बड़ा प्रतिबिंब बनता — दाँत का बड़ा, सीधा चित्र। अतः उत्तर यह नहीं कि एक दर्पण स्वभाव से 'बड़ा करने वाला' और दूसरा 'छोटा करने वाला'; यह कि उत्तल दर्पण केवल छोटा ही कर सकता, जबकि अवतल दर्पण बड़ा कर सकता बशर्ते अपने फोकस के भीतर रखा जाए। (ग़लत उत्तर इसे उल्टा करते या मोटाई और दीवार से दूरी को दोष देते, जिनमें से कोई दर्पण को मोड़ता नहीं।)"
+        },
+        "mr": {
+          "stem": "एक दुकानदार कोपऱ्यात वर मोठा आरसा लावतो आणि त्यात अख्खे दुकान पाहू शकतो, जरी सर्व लहान दिसत. एक दंतवैद्य वेगळ्या आरशाने एक दात खूप मोठा पाहतो. दोन्ही वक्र आरसे, मग एक सर्व लहान का करतो तर दुसरा मोठे?",
+          "choices": [
+            "दुकानाचा आरसा बहिर्वक्र: बाहेर फुगलेला आणि प्रकाश अपसरित करणारा, म्हणून सदैव लहान, सरळ, आभासी प्रतिमा देतो — आणि तेच लहान होणे एका आरशात रुंद दृश्य भरते. दंतवैद्याचा अंतर्वक्र: दातापासून त्याच्या नाभीहून जवळ धरलेला, प्रकाश अभिसरित करून मोठी, सरळ, आभासी प्रतिमा देतो",
+            "दुकानाचा आरसा फक्त जाड काचेचा, जे दाखवेल ते लहान करणारा",
+            "दुकानाचा आरसा अंतर्वक्र आणि दंतवैद्याचा बहिर्वक्र, उलट पद्धतीने",
+            "दोन्ही एकच आरसा; फक्त भिंतीपासूनचे अंतर आकार बदलते"
+          ],
+          "solution": "दोन्ही आरसे उलट्या दिशांना वळलेले, आणि तोच एक फरक सर्व ठरवतो. दुकानदाराचा आरसा बहिर्वक्र — बाहेर फुगलेला, चमच्याच्या पाठीसारखा. त्यावर येणारे किरण पसरतात, आणि परावर्तित किरण केवळ आरशामागील एका बिंदूतून येताना भासतात. म्हणून बहिर्वक्र आरसा सदैव, अपवादाविना, आभासी, सरळ आणि वस्तूहून लहान प्रतिमा देतो, वस्तू कुठेही असो. हा तोटा वाटतो जोवर ते काय विकत घेते हे दिसत नाही: कारण सर्व लहान झाले, दुकानाची खूप रुंद फाळी — त्याच आकाराच्या सपाट आरशाहून कितीतरी रुंद — काचेत दाटते. लहान होणे दोष नाही; ती रुंद दृष्टिक्षेत्राची किंमत, नेमके म्हणूनच तीच रचना गाडीच्या मागील-दृश्य आरशांत आणि रस्त्याच्या आंधळ्या वळणांवर. दंतवैद्याचा आरसा अंतर्वक्र — आत वळलेला, चमच्याच्या वाडग्यासारखा — आणि प्रकाश अभिसरित करतो. अंतर्वक्र आरशाची प्रतिमा ठरलेली नाही: वस्तूच्या अंतरानुसार बदलते. वस्तूपासून दूर धरल्यास खरी, उलटी प्रतिमा बनवतो, पण दंतवैद्य तो मुद्दाम दाताच्या खूप जवळ, आरशाच्या नाभीहून जवळ धरतो. त्या एका स्थानी परावर्तित किरण अपसरित होऊन आरशामागून येताना भासतात, आणि आभासी, सरळ व मोठी प्रतिमा बनते — दाताचे मोठे, सरळ चित्र. म्हणून उत्तर हे नाही की एक आरसा स्वभावाने 'मोठे करणारा' आणि दुसरा 'लहान करणारा'; तर हे की बहिर्वक्र आरसा फक्त लहानच करू शकतो, तर अंतर्वक्र आरसा मोठे करू शकतो जर आपल्या नाभीच्या आत धरला. (चुकीची उत्तरे हे उलटे करतात वा जाडी आणि भिंतीपासूनच्या अंतराला दोष देतात, ज्यांपैकी कोणतेही आरसा वाकवत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A coin lying at the bottom of a bucket of water appears to sit higher than it really does, so a child reaching for it grabs at empty water. The coin has not moved and the eye is not faulty. Explain precisely why the water lies to the eye, and what would happen to the illusion if the bucket held a liquid that bent light even more strongly.",
+      "choices": [
+        "Light from the coin slows in water and, on leaving the water into the rarer air, bends away from the normal. The eye cannot know a ray has bent — it traces every ray back in a straight line, and those backward straight lines meet at a point above the real coin, so the coin is seen raised. A liquid with a higher refractive index would bend the rays more, making the apparent rise greater still",
+        "The water physically pushes the coin upward, so it really is higher than the bucket's floor",
+        "The eye's lens is confused by the wetness, and a stronger liquid would remove the illusion",
+        "Light travels in curves inside water, and the curve stops the moment it leaves the surface"
+      ],
+      "answerIndex": 0,
+      "solution": "Nothing is wrong with the coin, the water or the eye — the illusion is built entirely out of refraction plus one honest assumption the eye cannot help making. Start with the light. Rays leave the coin in all directions and travel up through the water, which is optically denser than air, so inside the water they move more slowly. At the water's surface each ray crosses into the rarer air, speeds up, and therefore bends away from the normal. This is ordinary refraction, and it is real and measurable. Now comes the crucial step, which is about seeing rather than about light. The eye and brain have no way of detecting that a ray changed direction somewhere along its path; they can only receive the ray that finally arrives and assume, as they always do, that it travelled in a straight line all the way. So the brain traces each arriving ray straight backwards. Because the rays were bent away from the normal on leaving the water, these backward extensions do not reach down to the real coin — they cross each other at a point higher up. That crossing point is where the brain places the coin: a virtual image, sitting above the true position. The coin has not risen; the straight-line assumption has been violated, and the error shows up as apparent depth being less than real depth. The child, reaching for what the eye reports, grabs above the coin. The extension follows directly. How far the rays bend on leaving depends on how different the two media are — that is, on the refractive index. A liquid with a higher refractive index slows light more, bends the emerging rays more sharply away from the normal, and so pushes the backward extensions' meeting point higher still. The illusion would be stronger, not weaker. This same reasoning explains the pencil that looks broken at the water line, the apparent flattening of a pond's floor, and why a fisherman aiming a spear at a fish must aim below where the fish appears. (The wrong answers invoke a physical push, a confused eye, or curved travel inside water — but light goes perfectly straight within a uniform medium and bends only at the boundary.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी की बाल्टी के तल पर पड़ा सिक्का वास्तव से ऊँचा बैठा प्रतीत होता, अतः उसे पकड़ने बढ़ता बच्चा ख़ाली पानी पकड़ता। सिक्का हिला नहीं और आँख में दोष नहीं। ठीक-ठीक समझाओ पानी आँख से झूठ क्यों बोलता, और यदि बाल्टी में और प्रबलता से प्रकाश मोड़ता द्रव हो तो भ्रम का क्या होगा।",
+          "choices": [
+            "सिक्के से चला प्रकाश पानी में धीमा, और पानी से विरल हवा में निकलते अभिलंब से दूर मुड़ता। आँख जान नहीं सकती कि किरण मुड़ी — वह हर किरण को सीधी रेखा में पीछे खींचती, और वे पीछे की सीधी रेखाएँ असली सिक्के से ऊपर एक बिंदु पर मिलतीं, अतः सिक्का उठा दिखता। ऊँचे अपवर्तनांक का द्रव किरणें और मोड़ता, अतः प्रतीत उठान और भी बड़ी",
+            "पानी सिक्के को भौतिक रूप से ऊपर धकेलता, अतः वह सचमुच बाल्टी के तल से ऊँचा",
+            "आँख का लेंस गीलेपन से भ्रमित, और प्रबल द्रव भ्रम मिटा देता",
+            "प्रकाश पानी के भीतर वक्रों में चलता, और सतह छोड़ते ही वक्र रुक जाता"
+          ],
+          "solution": "सिक्के, पानी या आँख में कुछ ग़लत नहीं — भ्रम पूरा अपवर्तन और एक ईमानदार मान्यता से बना जो आँख किए बिना रह नहीं सकती। प्रकाश से शुरू करो। किरणें सिक्के से हर दिशा में निकलतीं और पानी से ऊपर चलतीं, जो हवा से प्रकाशिकीय रूप से सघन, अतः पानी के भीतर वे धीमे चलतीं। पानी की सतह पर हर किरण विरल हवा में पार करती, तेज़ होती, और इसलिए अभिलंब से दूर मुड़ती। यह साधारण अपवर्तन, और यह असली तथा मापनीय। अब मुख्य चरण, जो देखने के बारे में, प्रकाश के नहीं। आँख और मस्तिष्क के पास यह भाँपने का कोई उपाय नहीं कि किरण ने रास्ते में कहीं दिशा बदली; वे केवल अंत में पहुँची किरण पा सकते और मान लेते, जैसा सदा करते, कि वह पूरे रास्ते सीधी रेखा में चली। अतः मस्तिष्क हर आती किरण को सीधा पीछे खींचता। क्योंकि पानी छोड़ते किरणें अभिलंब से दूर मुड़ीं, ये पीछे के विस्तार असली सिक्के तक नीचे नहीं पहुँचते — वे ऊपर एक बिंदु पर एक-दूसरे को काटते। वही कटान-बिंदु जहाँ मस्तिष्क सिक्का रखता: आभासी प्रतिबिंब, असली स्थिति से ऊपर बैठा। सिक्का उठा नहीं; सीधी-रेखा मान्यता टूटी, और त्रुटि प्रतीत गहराई के असली गहराई से कम होने में दिखती। बच्चा, जो आँख बताती उसे पकड़ने बढ़ता, सिक्के से ऊपर पकड़ता। विस्तार सीधा निकलता। निकलते किरणें कितनी मुड़तीं यह इस पर कि दोनों माध्यम कितने भिन्न — यानी अपवर्तनांक पर। ऊँचे अपवर्तनांक का द्रव प्रकाश अधिक धीमा करता, निकलती किरणें अभिलंब से और तीखी मोड़ता, और इस तरह पीछे के विस्तारों का मिलन-बिंदु और ऊपर धकेलता। भ्रम प्रबल होगा, दुर्बल नहीं। यही तर्क पानी की रेखा पर टूटी दिखती पेंसिल, तालाब के तल का प्रतीत चपटापन, और क्यों मछली पर भाला ताकता मछुआरा मछली दिखने से नीचे ताके — सब समझाता। (ग़लत उत्तर भौतिक धक्का, भ्रमित आँख, या पानी के भीतर वक्र यात्रा बुलाते — पर प्रकाश एकसमान माध्यम में बिलकुल सीधा चलता और केवल सीमा पर मुड़ता।)"
+        },
+        "mr": {
+          "stem": "पाण्याच्या बादलीच्या तळाशी पडलेले नाणे प्रत्यक्षाहून वर बसल्यासारखे भासते, म्हणून ते पकडायला जाणारे मूल रिकामे पाणी पकडते. नाणे हललेले नाही आणि डोळ्यात दोष नाही. नेमके समजावा पाणी डोळ्याशी खोटे का बोलते, आणि बादलीत अधिक प्रबळपणे प्रकाश वाकवणारा द्रव असल्यास भ्रमाचे काय होईल.",
+          "choices": [
+            "नाण्यापासून निघालेला प्रकाश पाण्यात मंदावतो, आणि पाण्यातून विरळ हवेत बाहेर पडताना स्तंभिकेपासून दूर वाकतो. डोळा जाणू शकत नाही की किरण वाकला — तो प्रत्येक किरण सरळ रेषेत मागे नेतो, आणि त्या मागच्या सरळ रेषा खऱ्या नाण्याहून वरच्या एका बिंदूवर भेटतात, म्हणून नाणे उंचावलेले दिसते. अधिक अपवर्तनांकाचा द्रव किरण अधिक वाकवेल, म्हणून भासणारी उंची आणखी मोठी",
+            "पाणी नाण्याला भौतिकदृष्ट्या वर ढकलते, म्हणून ते खरोखर बादलीच्या तळाहून वर",
+            "डोळ्याचे भिंग ओलेपणाने गोंधळलेले, आणि प्रबळ द्रव भ्रम मिटवेल",
+            "प्रकाश पाण्याच्या आत वक्रांत चालतो, आणि पृष्ठ सोडताच वक्र थांबतो"
+          ],
+          "solution": "नाण्यात, पाण्यात वा डोळ्यात काही चुकीचे नाही — भ्रम पूर्णपणे अपवर्तन आणि एका प्रामाणिक गृहीतकातून बनलेला जे डोळा केल्याविना राहू शकत नाही. प्रकाशापासून सुरू करा. किरण नाण्यापासून सर्व दिशांना निघतात आणि पाण्यातून वर जातात, जे हवेहून प्रकाशीयदृष्ट्या घन, म्हणून पाण्याच्या आत ते अधिक मंद चालतात. पाण्याच्या पृष्ठावर प्रत्येक किरण विरळ हवेत ओलांडतो, वेगावतो, आणि म्हणून स्तंभिकेपासून दूर वाकतो. हे सामान्य अपवर्तन, आणि ते खरे आणि मोजण्याजोगे. आता महत्त्वाची पायरी, जी पाहण्याबद्दल, प्रकाशाबद्दल नाही. डोळा आणि मेंदूकडे हे ओळखण्याचा कोणताही मार्ग नाही की किरणाने वाटेत कुठेतरी दिशा बदलली; ते फक्त शेवटी पोहोचलेला किरण मिळवू शकतात आणि गृहीत धरतात, जसे सदैव करतात, की तो अख्खा मार्ग सरळ रेषेत चालला. म्हणून मेंदू प्रत्येक येणारा किरण सरळ मागे नेतो. कारण पाणी सोडताना किरण स्तंभिकेपासून दूर वाकले, हे मागचे विस्तार खऱ्या नाण्यापर्यंत खाली पोहोचत नाहीत — ते वरच्या एका बिंदूवर एकमेकांना छेदतात. तोच छेदन-बिंदू जिथे मेंदू नाणे ठेवतो: आभासी प्रतिमा, खऱ्या स्थानाहून वर बसलेली. नाणे वर आले नाही; सरळ-रेषेचे गृहीतक मोडले, आणि चूक भासणारी खोली खऱ्या खोलीहून कमी असण्यात दिसते. मूल, जे डोळा सांगतो ते पकडायला जाते, नाण्याहून वर पकडते. विस्तार थेट निघतो. बाहेर पडताना किरण किती वाकतील हे यावर की दोन्ही माध्यमे किती वेगळी — म्हणजे अपवर्तनांकावर. अधिक अपवर्तनांकाचा द्रव प्रकाश अधिक मंदावतो, बाहेर पडणारे किरण स्तंभिकेपासून अधिक तीव्र वाकवतो, आणि अशा प्रकारे मागच्या विस्तारांचा मिलन-बिंदू आणखी वर ढकलतो. भ्रम प्रबळ होईल, दुर्बळ नाही. हेच तर्क पाण्याच्या रेषेवर मोडलेली दिसणारी पेन्सिल, तळ्याच्या तळाचा भासणारा चपटेपणा, आणि माशावर भाला रोखणाऱ्या कोळ्याने मासा दिसतो त्याहून खाली का रोखावे — सर्व समजावते. (चुकीची उत्तरे भौतिक धक्का, गोंधळलेला डोळा, वा पाण्याच्या आत वक्र प्रवास सुचवतात — पण प्रकाश एकसमान माध्यमात अगदी सरळ चालतो आणि फक्त सीमेवर वाकतो.)"
+        }
+      }
+    }
+  ]
+}

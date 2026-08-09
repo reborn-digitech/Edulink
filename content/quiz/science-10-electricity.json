@@ -1,0 +1,723 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 10,
+  "chapter": "Chapter 11 — Electricity",
+  "name": "Electricity",
+  "slug": "science-10-electricity",
+  "summary": "Charge counted as it flows, the push that drives it, and the law tying the two together; then a conductor's opposition traced to its length and thickness, two ways of joining resistors that pull the total in opposite directions, and the rate at which a circuit turns electrical energy into heat and light.",
+  "position": 11,
+  "source": "EduLink original, written against NCERT Science (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "विद्युत",
+      "summary": "बहते हुए गिना गया आवेश, उसे चलाता धक्का, और दोनों को बाँधता नियम; फिर चालक का विरोध उसकी लंबाई-मोटाई तक खोजा, प्रतिरोधक जोड़ने के दो तरीक़े जो कुल को उल्टी दिशाओं में खींचते, और वह दर जिससे परिपथ विद्युत ऊर्जा को ऊष्मा-प्रकाश में बदलता।"
+    },
+    "mr": {
+      "name": "विद्युत",
+      "summary": "वाहताना मोजलेला विद्युतभार, त्याला चालवणारा रेटा, आणि दोघांना बांधणारा नियम; मग वाहकाचा विरोध त्याच्या लांबी-जाडीपर्यंत शोधलेला, रोधक जोडण्याचे दोन मार्ग जे एकूण उलट दिशांना ओढतात, आणि तो दर ज्याने परिपथ विद्युत ऊर्जेचे उष्णता-प्रकाशात रूपांतर करतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "One coulomb of charge crossing a wire's cross-section every second is called one ampere. Which quantity is defined as the charge flowing per unit time?",
+      "choices": [
+        "Ohm's law",
+        "Electric current",
+        "Potential difference",
+        "Electric power"
+      ],
+      "answerIndex": 1,
+      "solution": "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हर सेकंड तार के अनुप्रस्थ काट से पार होता एक कूलॉम आवेश एक ऐम्पियर कहलाता। कौन-सी राशि प्रति एकांक समय बहते आवेश के रूप में परिभाषित?",
+          "choices": [
+            "ओम का नियम",
+            "विद्युत धारा",
+            "विभवांतर",
+            "विद्युत शक्ति"
+          ],
+          "solution": "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रत्येक सेकंदाला तारेच्या छेदातून जाणारा एक कूलोम विद्युतभार एक अँपिअर म्हणतात. कोणती राशी प्रति एकक काळात वाहणारा विद्युतभार म्हणून व्याख्यायित?",
+          "choices": [
+            "ओहमचा नियम",
+            "विद्युत धारा",
+            "विभवांतर",
+            "विद्युत शक्ती"
+          ],
+          "solution": "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Potential difference is correct?",
+      "choices": [
+        "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb.",
+        "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts.",
+        "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second.",
+        "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances."
+      ],
+      "answerIndex": 0,
+      "solution": "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विभवांतर के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम।",
+            "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी।",
+            "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड।",
+            "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़।"
+          ],
+          "solution": "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विभवांतर विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम.",
+            "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली.",
+            "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद.",
+            "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज."
+          ],
+          "solution": "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The constant of proportionality R is the conductor's resistance, so the slope of the V–I graph is the resistance itself.\" — which of these is this about?",
+      "choices": [
+        "Resistors in series",
+        "Ohm's law",
+        "Resistors in parallel",
+        "Electric current"
+      ],
+      "answerIndex": 1,
+      "solution": "Ohm's law states that at constant temperature the current through a conductor is directly proportional to the potential difference across it, so V equals I times R. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"समानुपात स्थिरांक R चालक का प्रतिरोध, अतः V–I आलेख की ढाल स्वयं प्रतिरोध।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "श्रेणीक्रम में प्रतिरोधक",
+            "ओम का नियम",
+            "समांतर क्रम में प्रतिरोधक",
+            "विद्युत धारा"
+          ],
+          "solution": "ओम का नियम कहता स्थिर ताप पर चालक से बहती धारा उसके आर-पार विभवांतर के समानुपाती, अतः V बराबर I गुणा R। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"समप्रमाण स्थिरांक R म्हणजे वाहकाचा रोध, म्हणून V–I आलेखाचा उतार स्वतः रोध.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "श्रेणीत रोधक",
+            "ओहमचा नियम",
+            "समांतर रोधक",
+            "विद्युत धारा"
+          ],
+          "solution": "ओहमचा नियम सांगतो स्थिर तापमानावर वाहकातून वाहणारी धारा त्यावरील विभवांतराच्या समप्रमाणात, म्हणून V बरोबर I गुणिले R. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A long thin wire opposes current far more than a short thick one of the same metal, and heating it makes matters worse. On which four things does a conductor's opposition to current depend?",
+      "choices": [
+        "Resistors in series",
+        "What resistance depends on",
+        "Ohm's law",
+        "Electric current"
+      ],
+      "answerIndex": 1,
+      "solution": "The resistance of a conductor grows with its length, falls as its area of cross-section grows, and depends on the material and the temperature. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "उसी धातु का लंबा पतला तार छोटे मोटे से कहीं अधिक धारा का विरोध करता, और गरम करने पर बात और बिगड़ती। चालक का धारा-विरोध किन चार चीज़ों पर निर्भर?",
+          "choices": [
+            "श्रेणीक्रम में प्रतिरोधक",
+            "प्रतिरोध किस पर निर्भर",
+            "ओम का नियम",
+            "विद्युत धारा"
+          ],
+          "solution": "चालक का प्रतिरोध उसकी लंबाई के साथ बढ़ता, अनुप्रस्थ काट का क्षेत्रफल बढ़ने पर घटता, और पदार्थ तथा ताप पर निर्भर। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "त्याच धातूची लांब बारीक तार आखूड जाडीहून कितीतरी अधिक धारेचा विरोध करते, आणि तापवल्याने प्रकरण आणखी बिघडते. वाहकाचा धारा-विरोध कोणत्या चार गोष्टींवर अवलंबून?",
+          "choices": [
+            "श्रेणीत रोधक",
+            "रोध कशावर अवलंबून",
+            "ओहमचा नियम",
+            "विद्युत धारा"
+          ],
+          "solution": "वाहकाचा रोध त्याच्या लांबीबरोबर वाढतो, छेदाचे क्षेत्रफळ वाढल्यास घटतो, आणि पदार्थ व तापमानावर अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Resistors in series is correct?",
+      "choices": [
+        "Ohm's law states that at constant temperature the current through a conductor is directly proportional to the potential difference across it, so V equals I times R.",
+        "In a parallel combination every resistor is joined across the same two points, so each has the full potential difference; the current splits between them and the reciprocal of the total resistance is the sum of the reciprocals.",
+        "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb.",
+        "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances."
+      ],
+      "answerIndex": 3,
+      "solution": "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "श्रेणीक्रम में प्रतिरोधक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "ओम का नियम कहता स्थिर ताप पर चालक से बहती धारा उसके आर-पार विभवांतर के समानुपाती, अतः V बराबर I गुणा R।",
+            "समांतर संयोजन में हर प्रतिरोधक उन्हीं दो बिंदुओं के आर-पार जुड़ा, अतः हर एक को पूरा विभवांतर; धारा उनमें बँटती और कुल प्रतिरोध का व्युत्क्रम व्युत्क्रमों का जोड़।",
+            "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम।",
+            "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़।"
+          ],
+          "solution": "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "श्रेणीत रोधक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "ओहमचा नियम सांगतो स्थिर तापमानावर वाहकातून वाहणारी धारा त्यावरील विभवांतराच्या समप्रमाणात, म्हणून V बरोबर I गुणिले R.",
+            "समांतर जोडणीत प्रत्येक रोधक त्याच दोन बिंदूंच्या आरपार जोडलेला, म्हणून प्रत्येकाला पूर्ण विभवांतर; धारा त्यांच्यात विभागते आणि एकूण रोधाचा व्यस्तांक व्यस्तांकांची बेरीज.",
+            "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम.",
+            "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज."
+          ],
+          "solution": "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Adding another resistor here opens one more route for the current, so the combined resistance always falls below the smallest branch.\" — which of these is this about?",
+      "choices": [
+        "Electric power",
+        "Resistors in series",
+        "What resistance depends on",
+        "Resistors in parallel"
+      ],
+      "answerIndex": 3,
+      "solution": "In a parallel combination every resistor is joined across the same two points, so each has the full potential difference; the current splits between them and the reciprocal of the total resistance is the sum of the reciprocals. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यहाँ एक और प्रतिरोधक जोड़ना धारा को एक और मार्ग खोलता, अतः संयुक्त प्रतिरोध सदा सबसे छोटी शाखा से नीचे गिरता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "विद्युत शक्ति",
+            "श्रेणीक्रम में प्रतिरोधक",
+            "प्रतिरोध किस पर निर्भर",
+            "समांतर क्रम में प्रतिरोधक"
+          ],
+          "solution": "समांतर संयोजन में हर प्रतिरोधक उन्हीं दो बिंदुओं के आर-पार जुड़ा, अतः हर एक को पूरा विभवांतर; धारा उनमें बँटती और कुल प्रतिरोध का व्युत्क्रम व्युत्क्रमों का जोड़। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"इथे आणखी एक रोधक जोडणे धारेला आणखी एक मार्ग उघडते, म्हणून एकत्रित रोध सदैव सर्वांत लहान फांदीखाली घसरतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विद्युत शक्ती",
+            "श्रेणीत रोधक",
+            "रोध कशावर अवलंबून",
+            "समांतर रोधक"
+          ],
+          "solution": "समांतर जोडणीत प्रत्येक रोधक त्याच दोन बिंदूंच्या आरपार जोडलेला, म्हणून प्रत्येकाला पूर्ण विभवांतर; धारा त्यांच्यात विभागते आणि एकूण रोधाचा व्यस्तांक व्यस्तांकांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A bulb marked 60 W turns sixty joules of electrical energy into light and heat every second. Which quantity is the rate at which electrical energy is consumed, and how is it found from V and I?",
+      "choices": [
+        "Potential difference",
+        "Electric power",
+        "Resistors in series",
+        "Electric current"
+      ],
+      "answerIndex": 1,
+      "solution": "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "60 W अंकित बल्ब हर सेकंड साठ जूल विद्युत ऊर्जा को प्रकाश और ऊष्मा में बदलता। कौन-सी राशि विद्युत ऊर्जा खर्च होने की दर, और V तथा I से कैसे निकाली?",
+          "choices": [
+            "विभवांतर",
+            "विद्युत शक्ति",
+            "श्रेणीक्रम में प्रतिरोधक",
+            "विद्युत धारा"
+          ],
+          "solution": "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "60 W चिन्हांकित बल्ब प्रत्येक सेकंदाला साठ ज्यूल विद्युत ऊर्जेचे प्रकाश आणि उष्णतेत रूपांतर करतो. कोणती राशी विद्युत ऊर्जा खर्च होण्याचा दर, आणि V व I वरून कशी काढली?",
+          "choices": [
+            "विभवांतर",
+            "विद्युत शक्ती",
+            "श्रेणीत रोधक",
+            "विद्युत धारा"
+          ],
+          "solution": "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Charge per second\" goes correctly with which of these?",
+      "choices": [
+        "potential difference",
+        "a series combination",
+        "electric power",
+        "electric current"
+      ],
+      "answerIndex": 3,
+      "solution": "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आवेश प्रति सेकंड\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विभवांतर",
+            "श्रेणी संयोजन",
+            "विद्युत शक्ति",
+            "विद्युत धारा"
+          ],
+          "solution": "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"विद्युतभार प्रति सेकंद\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विभवांतर",
+            "श्रेणी जोडणी",
+            "विद्युत शक्ती",
+            "विद्युत धारा"
+          ],
+          "solution": "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Work per unit charge\" goes correctly with which of these?",
+      "choices": [
+        "electric current",
+        "a series combination",
+        "a parallel combination",
+        "potential difference"
+      ],
+      "answerIndex": 3,
+      "solution": "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कार्य प्रति एकांक आवेश\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी संयोजन",
+            "समांतर संयोजन",
+            "विभवांतर"
+          ],
+          "solution": "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कार्य प्रति एकक विद्युतभार\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी जोडणी",
+            "समांतर जोडणी",
+            "विभवांतर"
+          ],
+          "solution": "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Current proportional to voltage\" goes correctly with which of these?",
+      "choices": [
+        "a parallel combination",
+        "Ohm's law",
+        "a series combination",
+        "electric power"
+      ],
+      "answerIndex": 1,
+      "solution": "Ohm's law states that at constant temperature the current through a conductor is directly proportional to the potential difference across it, so V equals I times R. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"धारा वोल्टता के समानुपाती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "समांतर संयोजन",
+            "ओम का नियम",
+            "श्रेणी संयोजन",
+            "विद्युत शक्ति"
+          ],
+          "solution": "ओम का नियम कहता स्थिर ताप पर चालक से बहती धारा उसके आर-पार विभवांतर के समानुपाती, अतः V बराबर I गुणा R। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"धारा व्होल्टतेच्या समप्रमाणात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "समांतर जोडणी",
+            "ओहमचा नियम",
+            "श्रेणी जोडणी",
+            "विद्युत शक्ती"
+          ],
+          "solution": "ओहमचा नियम सांगतो स्थिर तापमानावर वाहकातून वाहणारी धारा त्यावरील विभवांतराच्या समप्रमाणात, म्हणून V बरोबर I गुणिले R. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Longer and thinner means more opposition\" goes correctly with which of these?",
+      "choices": [
+        "potential difference",
+        "what resistance depends on",
+        "electric power",
+        "a parallel combination"
+      ],
+      "answerIndex": 1,
+      "solution": "The resistance of a conductor grows with its length, falls as its area of cross-section grows, and depends on the material and the temperature. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अधिक लंबा और पतला यानी अधिक विरोध\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विभवांतर",
+            "प्रतिरोध किस पर निर्भर",
+            "विद्युत शक्ति",
+            "समांतर संयोजन"
+          ],
+          "solution": "चालक का प्रतिरोध उसकी लंबाई के साथ बढ़ता, अनुप्रस्थ काट का क्षेत्रफल बढ़ने पर घटता, और पदार्थ तथा ताप पर निर्भर। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अधिक लांब आणि बारीक म्हणजे अधिक विरोध\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विभवांतर",
+            "रोध कशावर अवलंबून",
+            "विद्युत शक्ती",
+            "समांतर जोडणी"
+          ],
+          "solution": "वाहकाचा रोध त्याच्या लांबीबरोबर वाढतो, छेदाचे क्षेत्रफळ वाढल्यास घटतो, आणि पदार्थ व तापमानावर अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One path, resistances add\" goes correctly with which of these?",
+      "choices": [
+        "electric current",
+        "a series combination",
+        "Ohm's law",
+        "what resistance depends on"
+      ],
+      "answerIndex": 1,
+      "solution": "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक पथ, प्रतिरोध जुड़ें\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी संयोजन",
+            "ओम का नियम",
+            "प्रतिरोध किस पर निर्भर"
+          ],
+          "solution": "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक मार्ग, रोध बेरजेने\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी जोडणी",
+            "ओहमचा नियम",
+            "रोध कशावर अवलंबून"
+          ],
+          "solution": "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Many paths, total falls below the smallest\" goes correctly with which of these?",
+      "choices": [
+        "electric current",
+        "a series combination",
+        "potential difference",
+        "a parallel combination"
+      ],
+      "answerIndex": 3,
+      "solution": "In a parallel combination every resistor is joined across the same two points, so each has the full potential difference; the current splits between them and the reciprocal of the total resistance is the sum of the reciprocals. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कई पथ, कुल सबसे छोटे से नीचे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी संयोजन",
+            "विभवांतर",
+            "समांतर संयोजन"
+          ],
+          "solution": "समांतर संयोजन में हर प्रतिरोधक उन्हीं दो बिंदुओं के आर-पार जुड़ा, अतः हर एक को पूरा विभवांतर; धारा उनमें बँटती और कुल प्रतिरोध का व्युत्क्रम व्युत्क्रमों का जोड़। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अनेक मार्ग, एकूण सर्वांत लहानाखाली\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युत धारा",
+            "श्रेणी जोडणी",
+            "विभवांतर",
+            "समांतर जोडणी"
+          ],
+          "solution": "समांतर जोडणीत प्रत्येक रोधक त्याच दोन बिंदूंच्या आरपार जोडलेला, म्हणून प्रत्येकाला पूर्ण विभवांतर; धारा त्यांच्यात विभागते आणि एकूण रोधाचा व्यस्तांक व्यस्तांकांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Energy consumed per second\" goes correctly with which of these?",
+      "choices": [
+        "electric power",
+        "Ohm's law",
+        "electric current",
+        "a parallel combination"
+      ],
+      "answerIndex": 0,
+      "solution": "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"प्रति सेकंड खर्च ऊर्जा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत शक्ति",
+            "ओम का नियम",
+            "विद्युत धारा",
+            "समांतर संयोजन"
+          ],
+          "solution": "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रति सेकंद खर्च ऊर्जा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युत शक्ती",
+            "ओहमचा नियम",
+            "विद्युत धारा",
+            "समांतर जोडणी"
+          ],
+          "solution": "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Electric current EXCEPT —",
+      "choices": [
+        "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts.",
+        "By convention current is drawn as flowing from the positive to the negative terminal, though in a metal it is electrons that actually drift the other way.",
+        "It is measured with an ammeter, which must be joined in series so the whole current passes through it.",
+        "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second."
+      ],
+      "answerIndex": 0,
+      "solution": "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts. That belongs to Electric power, not Electric current — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत धारा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी।",
+            "परिपाटी से धारा धन से ऋण सिरे की ओर बहती दिखाई जाती, यद्यपि धातु में वास्तव में इलेक्ट्रॉन दूसरी ओर सरकते।",
+            "यह ऐमीटर से नापी जाती, जिसे श्रेणी में जोड़ना होता ताकि पूरी धारा उससे गुज़रे।",
+            "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड।"
+          ],
+          "solution": "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी। यह विद्युत शक्ति की बात है, विद्युत धारा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विद्युत धारा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली.",
+            "संकेतानुसार धारा धन टोकाकडून ऋण टोकाकडे वाहताना दाखवली जाते, जरी धातूत प्रत्यक्षात इलेक्ट्रॉन दुसऱ्या दिशेने सरकतात.",
+            "ती अँमीटरने मोजली जाते, जो श्रेणीत जोडावा लागतो जेणेकरून अख्खी धारा त्यातून जाते.",
+            "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद."
+          ],
+          "solution": "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली. हे विद्युत शक्ती चे आहे, विद्युत धारा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Potential difference EXCEPT —",
+      "choices": [
+        "It is measured with a voltmeter, which must be joined in parallel across the two points whose difference is wanted.",
+        "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb.",
+        "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second.",
+        "A cell or battery is what maintains this difference, and without it the free electrons in a wire simply jostle about without any net flow."
+      ],
+      "answerIndex": 2,
+      "solution": "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second. That belongs to Electric current, not Potential difference — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विभवांतर के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह वोल्टमीटर से नापा जाता, जिसे उन दो बिंदुओं के आर-पार समांतर जोड़ना होता जिनका अंतर चाहिए।",
+            "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम।",
+            "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड।",
+            "सेल या बैटरी ही यह अंतर बनाए रखती, और उसके बिना तार के मुक्त इलेक्ट्रॉन बस धक्का-मुक्की करते, कोई कुल बहाव नहीं।"
+          ],
+          "solution": "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड। यह विद्युत धारा की बात है, विभवांतर की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विभवांतर विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ते व्होल्टमीटरने मोजले जाते, जो ज्या दोन बिंदूंचा फरक हवा त्यांच्या आरपार समांतर जोडावा लागतो.",
+            "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम.",
+            "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद.",
+            "विद्युतघट वा बॅटरीच हा फरक टिकवते, आणि तिच्याविना तारेतील मुक्त इलेक्ट्रॉन फक्त धक्काबुक्की करतात, कोणताही निव्वळ प्रवाह नाही."
+          ],
+          "solution": "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद. हे विद्युत धारा चे आहे, विभवांतर चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Ohm's law EXCEPT —",
+      "choices": [
+        "The law fails if the temperature is allowed to change — a glowing bulb's filament is far more resistive when hot than when cold.",
+        "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances.",
+        "The constant of proportionality R is the conductor's resistance, so the slope of the V–I graph is the resistance itself.",
+        "Ohm's law states that at constant temperature the current through a conductor is directly proportional to the potential difference across it, so V equals I times R."
+      ],
+      "answerIndex": 1,
+      "solution": "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances. That belongs to Resistors in series, not Ohm's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ओम का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ताप बदलने दिया जाए तो नियम टूटता — दमकते बल्ब का तंतु गरम में ठंडे से कहीं अधिक प्रतिरोधी।",
+            "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़।",
+            "समानुपात स्थिरांक R चालक का प्रतिरोध, अतः V–I आलेख की ढाल स्वयं प्रतिरोध।",
+            "ओम का नियम कहता स्थिर ताप पर चालक से बहती धारा उसके आर-पार विभवांतर के समानुपाती, अतः V बराबर I गुणा R।"
+          ],
+          "solution": "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़। यह श्रेणीक्रम में प्रतिरोधक की बात है, ओम का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ओहमचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तापमान बदलू दिल्यास नियम मोडतो — तळपत्या बल्बचा तंतू गरम असताना थंडपेक्षा कितीतरी अधिक रोधक.",
+            "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज.",
+            "समप्रमाण स्थिरांक R म्हणजे वाहकाचा रोध, म्हणून V–I आलेखाचा उतार स्वतः रोध.",
+            "ओहमचा नियम सांगतो स्थिर तापमानावर वाहकातून वाहणारी धारा त्यावरील विभवांतराच्या समप्रमाणात, म्हणून V बरोबर I गुणिले R."
+          ],
+          "solution": "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज. हे श्रेणीत रोधक चे आहे, ओहमचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of What resistance depends on EXCEPT —",
+      "choices": [
+        "The resistance of a conductor grows with its length, falls as its area of cross-section grows, and depends on the material and the temperature.",
+        "This is why the long supply lines outside are made of thick wire to waste little, while a heater's element is a thin coil of high-resistivity alloy meant to waste much.",
+        "The material's own share is called resistivity, a property of the substance itself and not of the particular piece's size or shape.",
+        "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb."
+      ],
+      "answerIndex": 3,
+      "solution": "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb. That belongs to Potential difference, not What resistance depends on — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिरोध किस पर निर्भर के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "चालक का प्रतिरोध उसकी लंबाई के साथ बढ़ता, अनुप्रस्थ काट का क्षेत्रफल बढ़ने पर घटता, और पदार्थ तथा ताप पर निर्भर।",
+            "इसी से बाहर की लंबी संचरण-लाइनें मोटे तार की, कम गँवाने को, जबकि हीटर का तत्व ऊँची प्रतिरोधकता वाली मिश्रधातु की पतली कुंडली, बहुत गँवाने को बनी।",
+            "पदार्थ का अपना हिस्सा प्रतिरोधकता कहलाता, स्वयं पदार्थ का गुण, किसी विशेष टुकड़े के आकार-रूप का नहीं।",
+            "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम।"
+          ],
+          "solution": "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम। यह विभवांतर की बात है, प्रतिरोध किस पर निर्भर की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "रोध कशावर अवलंबून विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वाहकाचा रोध त्याच्या लांबीबरोबर वाढतो, छेदाचे क्षेत्रफळ वाढल्यास घटतो, आणि पदार्थ व तापमानावर अवलंबून.",
+            "म्हणूनच बाहेरच्या लांब पुरवठा-तारा जाड तारेच्या, कमी वाया घालवायला, तर हीटरचा घटक उच्च रोधकतेच्या मिश्रधातूची बारीक तार-गुंडाळी, पुष्कळ वाया घालवायला बनवलेली.",
+            "पदार्थाचा स्वतःचा वाटा रोधकता म्हणतात, स्वतः पदार्थाचा गुणधर्म, विशिष्ट तुकड्याच्या आकार-रूपाचा नाही.",
+            "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम."
+          ],
+          "solution": "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम. हे विभवांतर चे आहे, रोध कशावर अवलंबून चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two identical bulbs are joined to the same battery, first one after another in a single loop and then side by side across the terminals. In the second case both glow far brighter, and the battery runs down sooner. Explain the difference using how resistances combine.",
+      "choices": [
+        "In series the two resistances add, so the circuit's total resistance doubles and the single shared current is halved, leaving each bulb dim. In parallel each bulb gets the battery's full voltage on its own branch, so each draws its normal current; the combined resistance is halved, the total current is four times the series value, and both bulbs are bright — which is exactly why the battery drains faster",
+        "Parallel wiring adds extra voltage to the battery, which is where the brightness comes from",
+        "Series wiring gives the lower total resistance, so it should have been the brighter arrangement",
+        "The bulbs behave identically in both; only the wires' length changes the brightness"
+      ],
+      "answerIndex": 0,
+      "solution": "A bulb's brightness is set by the power it consumes, and power depends on the current through it and the voltage across it — so the question is really about how each arrangement shares those out. Call one bulb's resistance R and the battery's voltage V. In series the two bulbs lie one after another on a single path, so the same current must pass through both, and their resistances add: the circuit's total is 2R. By Ohm's law the current is V divided by 2R — that is, half of what a single bulb alone would draw. Each bulb also gets only half the battery's voltage, since the supply divides between them. With half the current and half the voltage, each bulb burns at about a quarter of its normal power, so both look distinctly dim. In parallel the two bulbs are joined across the very same two terminals, so each branch has the battery's full voltage V across it. Each bulb therefore draws its own normal current, V divided by R, exactly as it would if it were alone. The battery now supplies both branches, so the total current is twice V/R, and the combined resistance is R/2 — smaller than either bulb, because adding a branch opens another route for charge to flow. Compare the two totals: V/2R in series against 2V/R in parallel, a factor of four. So the parallel arrangement draws four times as much current from the same battery and converts four times as much energy per second into light and heat. That is why both bulbs shine at full brightness — and, inescapably, why the battery is drained far sooner: the brightness is being paid for out of stored chemical energy at four times the rate. The trade-off is real and unavoidable; you cannot get more light from the same cell without spending its energy faster. (The wrong answers misstate the physics: a wiring pattern cannot add voltage to a battery, series combination raises rather than lowers total resistance, and connecting-wire length is negligible compared with the bulbs' own resistance.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो एक जैसे बल्ब उसी बैटरी से जुड़े, पहले एक ही पाश में एक के बाद एक और फिर सिरों के आर-पार अगल-बग़ल। दूसरी दशा में दोनों कहीं अधिक चमकते, और बैटरी जल्दी चुक जाती। प्रतिरोध कैसे जुड़ते, इससे अंतर समझाओ।",
+          "choices": [
+            "श्रेणी में दोनों प्रतिरोध जुड़ते, अतः परिपथ का कुल प्रतिरोध दुगुना और एकमात्र साझा धारा आधी, हर बल्ब मंद। समांतर में हर बल्ब को अपनी शाखा पर बैटरी की पूरी वोल्टता, अतः हर एक अपनी सामान्य धारा खींचता; संयुक्त प्रतिरोध आधा, कुल धारा श्रेणी के मान की चार गुनी, और दोनों बल्ब चमकीले — ठीक इसी से बैटरी तेज़ी से चुकती",
+            "समांतर वायरिंग बैटरी में अतिरिक्त वोल्टता जोड़ती, चमक वहीं से आती",
+            "श्रेणी वायरिंग कम कुल प्रतिरोध देती, अतः वही अधिक चमकीली व्यवस्था होनी चाहिए थी",
+            "बल्ब दोनों में एक-से बरतते; केवल तारों की लंबाई चमक बदलती"
+          ],
+          "solution": "बल्ब की चमक उसकी खपत शक्ति से सधती, और शक्ति उससे बहती धारा तथा उसके आर-पार वोल्टता पर निर्भर — अतः प्रश्न वास्तव में यह कि हर व्यवस्था इन्हें कैसे बाँटती। एक बल्ब का प्रतिरोध R और बैटरी की वोल्टता V कहो। श्रेणी में दोनों बल्ब एक ही पथ पर एक के बाद एक, अतः वही धारा दोनों से गुज़रनी चाहिए, और उनके प्रतिरोध जुड़ते: परिपथ का कुल 2R। ओम के नियम से धारा V बटा 2R — यानी अकेला बल्ब जितनी खींचता उसकी आधी। हर बल्ब को बैटरी की आधी वोल्टता भी, क्योंकि आपूर्ति उनमें बँटती। आधी धारा और आधी वोल्टता से हर बल्ब अपनी सामान्य शक्ति के लगभग चौथाई पर जलता, अतः दोनों स्पष्ट मंद दिखते। समांतर में दोनों बल्ब ठीक उन्हीं दो सिरों के आर-पार जुड़े, अतः हर शाखा पर बैटरी की पूरी वोल्टता V। इसलिए हर बल्ब अपनी सामान्य धारा, V बटा R, खींचता, ठीक वैसे जैसे अकेला होता। बैटरी अब दोनों शाखाओं को देती, अतः कुल धारा दुगुनी V/R, और संयुक्त प्रतिरोध R/2 — किसी भी बल्ब से छोटा, क्योंकि शाखा जोड़ना आवेश को बहने का एक और मार्ग खोलता। दोनों कुल की तुलना: श्रेणी में V/2R बनाम समांतर में 2V/R, चार का गुणक। अतः समांतर व्यवस्था उसी बैटरी से चार गुनी धारा खींचती और प्रति सेकंड चार गुनी ऊर्जा प्रकाश-ऊष्मा में बदलती। इसी से दोनों बल्ब पूरी चमक पर दमकते — और अनिवार्य रूप से, इसी से बैटरी कहीं जल्दी चुकती: चमक संचित रासायनिक ऊर्जा से चार गुनी दर पर चुकाई जा रही। यह सौदा असली और अटल; उसी सेल से अधिक प्रकाश उसकी ऊर्जा तेज़ी से खर्च किए बिना नहीं मिल सकता। (ग़लत उत्तर भौतिकी ग़लत बताते: वायरिंग का ढंग बैटरी में वोल्टता नहीं जोड़ सकता, श्रेणी संयोजन कुल प्रतिरोध घटाता नहीं बढ़ाता, और जोड़ने वाले तारों की लंबाई बल्बों के अपने प्रतिरोध के आगे नगण्य।)"
+        },
+        "mr": {
+          "stem": "दोन सारखे बल्ब त्याच बॅटरीला जोडले, आधी एकाच फेऱ्यात एकामागोमाग आणि मग टोकांच्या आरपार शेजारीशेजारी. दुसऱ्या स्थितीत दोन्ही कितीतरी अधिक तेजस्वी, आणि बॅटरी लवकर संपते. रोध कसे जोडले जातात यावरून फरक समजावा.",
+          "choices": [
+            "श्रेणीत दोन्ही रोध बेरजेने, म्हणून परिपथाचा एकूण रोध दुप्पट आणि एकमेव सामायिक धारा निम्मी, प्रत्येक बल्ब मंद. समांतरात प्रत्येक बल्बला स्वतःच्या फांदीवर बॅटरीची पूर्ण व्होल्टता, म्हणून प्रत्येक आपली सामान्य धारा खेचतो; एकत्रित रोध निम्मा, एकूण धारा श्रेणीच्या मूल्याच्या चौपट, आणि दोन्ही बल्ब तेजस्वी — नेमके म्हणूनच बॅटरी वेगाने संपते",
+            "समांतर वायरिंग बॅटरीत अतिरिक्त व्होल्टता जोडते, तेजस्विता तिथूनच येते",
+            "श्रेणी वायरिंग कमी एकूण रोध देते, म्हणून तीच अधिक तेजस्वी मांडणी असायला हवी होती",
+            "बल्ब दोन्हींत सारखेच वागतात; फक्त तारांची लांबी तेजस्विता बदलते"
+          ],
+          "solution": "बल्बची तेजस्विता त्याच्या खर्च शक्तीने ठरते, आणि शक्ती त्यातून वाहणारी धारा व त्यावरील व्होल्टतेवर अवलंबून — म्हणून प्रश्न खरे तर हा की प्रत्येक मांडणी ती कशी वाटते. एका बल्बचा रोध R आणि बॅटरीची व्होल्टता V म्हणा. श्रेणीत दोन्ही बल्ब एकाच मार्गावर एकामागोमाग, म्हणून तीच धारा दोघांतून जावी लागते, आणि त्यांचे रोध बेरजेने: परिपथाचा एकूण 2R. ओहमच्या नियमाने धारा V भागिले 2R — म्हणजे एकटा बल्ब जितकी खेचेल तिच्या निम्मी. प्रत्येक बल्बला बॅटरीची निम्मी व्होल्टताही, कारण पुरवठा त्यांच्यात विभागतो. निम्मी धारा आणि निम्मी व्होल्टता असल्याने प्रत्येक बल्ब आपल्या सामान्य शक्तीच्या सुमारे चतुर्थांशावर जळतो, म्हणून दोन्ही स्पष्ट मंद दिसतात. समांतरात दोन्ही बल्ब नेमक्या त्याच दोन टोकांच्या आरपार जोडलेले, म्हणून प्रत्येक फांदीवर बॅटरीची पूर्ण व्होल्टता V. म्हणून प्रत्येक बल्ब आपली सामान्य धारा, V भागिले R, खेचतो, नेमके जसे एकटा असता तसे. बॅटरी आता दोन्ही फांद्यांना पुरवते, म्हणून एकूण धारा दुप्पट V/R, आणि एकत्रित रोध R/2 — कोणत्याही बल्बहून लहान, कारण फांदी जोडणे विद्युतभाराला वाहायला आणखी एक मार्ग उघडते. दोन्ही एकूणांची तुलना: श्रेणीत V/2R विरुद्ध समांतरात 2V/R, चारचा गुणक. म्हणून समांतर मांडणी त्याच बॅटरीतून चौपट धारा खेचते आणि प्रति सेकंद चौपट ऊर्जेचे प्रकाश-उष्णतेत रूपांतर करते. म्हणूनच दोन्ही बल्ब पूर्ण तेजाने तळपतात — आणि अटळपणे, म्हणूनच बॅटरी कितीतरी लवकर संपते: तेजस्विता साठवलेल्या रासायनिक ऊर्जेतून चौपट दराने चुकवली जात आहे. हा सौदा खरा आणि अपरिहार्य; त्याच घटातून अधिक प्रकाश तिची ऊर्जा वेगाने खर्च केल्याविना मिळू शकत नाही. (चुकीची उत्तरे भौतिकशास्त्र चुकीचे मांडतात: वायरिंगची पद्धत बॅटरीत व्होल्टता जोडू शकत नाही, श्रेणी जोडणी एकूण रोध घटवत नाही तर वाढवते, आणि जोडणाऱ्या तारांची लांबी बल्बांच्या स्वतःच्या रोधापुढे नगण्य.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Electricity is generated at a power station and carried to a distant town. The engineers deliberately step the voltage up to thousands of volts for the journey, then step it back down for houses — even though the high-voltage lines are dangerous and the transformers are costly. What are they saving, and why does raising the voltage save it?",
+      "choices": [
+        "They are saving the energy wasted as heat in the transmission wires. That waste is I²R, so it depends on the square of the current, not on the voltage. For a given power delivered, power equals voltage times current, so raising the voltage a hundredfold cuts the current a hundredfold — and cuts the heating loss ten thousandfold. The transformers step the voltage back down at the town because appliances need a safe low voltage",
+        "High voltage makes the electrons travel faster, so the electricity arrives sooner and less of it is lost on the way",
+        "The loss depends on the square of the voltage, so a higher voltage would waste more — the practice is a historical mistake",
+        "Nothing is saved; the voltage is raised only so that the same wires can carry more separate customers"
+      ],
+      "answerIndex": 0,
+      "solution": "What is being saved is energy — specifically the electrical energy that would otherwise be lost as heat in the long transmission wires, and never reach the town at all. The reasoning rests on two formulae and the difference between them. The heat produced per second in a wire of resistance R carrying current I is I²R. Notice what appears in it and what does not: the loss depends on the current squared and on the wire's resistance, but the transmission voltage does not appear at all. So if you want to cut the waste, the only real lever is the current — and because the dependence is on I², halving the current quarters the loss, while cutting the current to a tenth cuts the loss to a hundredth. The wire's resistance R is fixed by the length of the run and the thickness of the cable; making it thicker helps but copper is expensive and there is a practical limit. Now the second formula: the power actually delivered to the town is P = VI. The town needs a certain power, and that number is fixed by what its people use. But the same P can be carried by a large current at a low voltage or by a small current at a high voltage, and those two combinations are equally good for the customer. This is the opening the engineers exploit. Raise the transmission voltage a hundredfold and, to deliver the same P, the current falls to one hundredth. The heating loss, going as I², falls to one ten-thousandth. A waste that might have consumed a large fraction of the generated power becomes almost negligible. That saving is worth more than the danger and the expense — hence the tall towers, the wide clearances and the transformers at both ends. At the town, of course, thousands of volts would be lethal in a house and would destroy every appliance, so a step-down transformer returns the supply to a safe 220 V before it reaches the wires in the walls. It is a genuine engineering trade: accept high voltage where nobody touches it, in exchange for very low current where the losses happen. (The wrong answers get the physics backwards — drift speed is irrelevant and in fact very slow, the loss goes as current squared and not voltage squared, and the practice is universal precisely because it works, not by accident.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिजली एक विद्युत-गृह में बनती और दूर शहर तक ले जाई जाती। अभियंता जानबूझकर यात्रा के लिए वोल्टता हज़ारों वोल्ट तक चढ़ाते, फिर घरों के लिए वापस उतारते — यद्यपि ऊँची वोल्टता की लाइनें ख़तरनाक और ट्रांसफ़ॉर्मर महँगे। वे क्या बचा रहे, और वोल्टता बढ़ाना उसे क्यों बचाता?",
+          "choices": [
+            "वे संचरण-तारों में ऊष्मा के रूप में गँवाई ऊर्जा बचा रहे। वह हानि I²R, अतः धारा के वर्ग पर निर्भर, वोल्टता पर नहीं। दी जाती नियत शक्ति के लिए शक्ति बराबर वोल्टता गुणा धारा, अतः वोल्टता सौ गुनी करना धारा सौ गुनी घटाता — और ऊष्मा-हानि दस हज़ार गुनी। ट्रांसफ़ॉर्मर शहर पर वोल्टता वापस उतारते क्योंकि उपकरणों को सुरक्षित कम वोल्टता चाहिए",
+            "ऊँची वोल्टता इलेक्ट्रॉनों को तेज़ चलाती, अतः बिजली जल्दी पहुँचती और रास्ते में कम गँवाई जाती",
+            "हानि वोल्टता के वर्ग पर निर्भर, अतः ऊँची वोल्टता अधिक गँवाती — यह प्रथा एक ऐतिहासिक भूल",
+            "कुछ नहीं बचता; वोल्टता केवल इसलिए बढ़ाई कि वही तारें अधिक अलग ग्राहक ढो सकें"
+          ],
+          "solution": "जो बचाया जा रहा वह ऊर्जा — विशेष रूप से वह विद्युत ऊर्जा जो अन्यथा लंबी संचरण-तारों में ऊष्मा बनकर गँवाई जाती और शहर तक पहुँचती ही नहीं। तर्क दो सूत्रों और उनके अंतर पर टिका। धारा I ढोते प्रतिरोध R के तार में प्रति सेकंड बनी ऊष्मा I²R। ध्यान दो उसमें क्या है और क्या नहीं: हानि धारा के वर्ग और तार के प्रतिरोध पर निर्भर, पर संचरण वोल्टता उसमें बिलकुल नहीं। अतः हानि घटानी हो तो असली उत्तोलक केवल धारा — और क्योंकि निर्भरता I² पर, धारा आधी करना हानि चौथाई करता, जबकि धारा दसवाँ करना हानि सौवाँ। तार का प्रतिरोध R दौड़ की लंबाई और केबल की मोटाई से सधा; मोटा करना मदद करता पर ताँबा महँगा और व्यावहारिक सीमा। अब दूसरा सूत्र: शहर तक वास्तव में पहुँचाई शक्ति P = VI। शहर को एक निश्चित शक्ति चाहिए, और वह संख्या उसके लोगों के उपयोग से सधी। पर वही P कम वोल्टता पर बड़ी धारा से या ऊँची वोल्टता पर छोटी धारा से ढोई जा सकती, और वे दोनों संयोजन ग्राहक के लिए समान रूप से अच्छे। यही झिरी अभियंता भुनाते। संचरण वोल्टता सौ गुनी करो और, वही P देने को, धारा सौवें भाग पर गिरती। I² से चलती ऊष्मा-हानि दस-हज़ारवें भाग पर गिरती। जो हानि उत्पन्न शक्ति का बड़ा अंश खा जाती वह लगभग नगण्य हो जाती। वह बचत ख़तरे और ख़र्च से अधिक मूल्यवान — इसी से ऊँचे मीनार, चौड़ी दूरियाँ और दोनों सिरों पर ट्रांसफ़ॉर्मर। शहर पर, ज़ाहिर है, हज़ारों वोल्ट घर में प्राणघातक होते और हर उपकरण नष्ट कर देते, अतः अपचायी ट्रांसफ़ॉर्मर दीवारों के तारों तक पहुँचने से पहले आपूर्ति सुरक्षित 220 V पर लौटाता। यह असली अभियांत्रिक सौदा: ऊँची वोल्टता वहाँ स्वीकारो जहाँ कोई छूता नहीं, बदले में बहुत कम धारा वहाँ जहाँ हानि होती। (ग़लत उत्तर भौतिकी उल्टी करते — अपवाह चाल अप्रासंगिक और वास्तव में बहुत धीमी, हानि धारा के वर्ग से चलती वोल्टता के वर्ग से नहीं, और यह प्रथा सार्वभौमिक ठीक इसलिए कि काम करती, संयोग से नहीं।)"
+        },
+        "mr": {
+          "stem": "वीज एका वीजनिर्मिती केंद्रात तयार होते आणि दूरच्या शहरापर्यंत नेली जाते. अभियंते मुद्दाम प्रवासासाठी व्होल्टता हजारो व्होल्टपर्यंत चढवतात, मग घरांसाठी पुन्हा उतरवतात — जरी उच्च-व्होल्टतेच्या तारा धोकादायक आणि रोहित्रे महाग. ते काय वाचवत आहेत, आणि व्होल्टता वाढवणे ते का वाचवते?",
+          "choices": [
+            "ते संक्रमण-तारांत उष्णतेच्या रूपात वाया जाणारी ऊर्जा वाचवत आहेत. ती हानी I²R, म्हणून धारेच्या वर्गावर अवलंबून, व्होल्टतेवर नाही. दिल्या जाणाऱ्या ठराविक शक्तीसाठी शक्ती बरोबर व्होल्टता गुणिले धारा, म्हणून व्होल्टता शंभरपट करणे धारा शंभरपट घटवते — आणि उष्णता-हानी दहा हजारपट. रोहित्रे शहरात व्होल्टता पुन्हा उतरवतात कारण उपकरणांना सुरक्षित कमी व्होल्टता लागते",
+            "उच्च व्होल्टता इलेक्ट्रॉनांना वेगाने चालवते, म्हणून वीज लवकर पोहोचते आणि वाटेत कमी वाया जाते",
+            "हानी व्होल्टतेच्या वर्गावर अवलंबून, म्हणून उच्च व्होल्टता अधिक वाया घालवेल — ही प्रथा एक ऐतिहासिक चूक",
+            "काहीही वाचत नाही; व्होल्टता फक्त यासाठी वाढवली की त्याच तारा अधिक स्वतंत्र ग्राहक वाहू शकतील"
+          ],
+          "solution": "जे वाचवले जात आहे ती ऊर्जा — विशेषतः ती विद्युत ऊर्जा जी एरवी लांब संक्रमण-तारांत उष्णता बनून वाया जाईल आणि शहरापर्यंत पोहोचणारच नाही. युक्तिवाद दोन सूत्रांवर आणि त्यांच्यातील फरकावर टेकलेला. धारा I वाहणाऱ्या रोध R च्या तारेत प्रति सेकंद निर्माण होणारी उष्णता I²R. लक्षात घ्या तीत काय आहे आणि काय नाही: हानी धारेच्या वर्गावर आणि तारेच्या रोधावर अवलंबून, पण संक्रमण व्होल्टता तीत मुळीच नाही. म्हणून हानी घटवायची असल्यास खरा उत्तोलक फक्त धारा — आणि अवलंबित्व I² वर असल्याने, धारा निम्मी करणे हानी चतुर्थांश करते, तर धारा दशांश करणे हानी शतांश. तारेचा रोध R धावेची लांबी आणि केबलच्या जाडीने ठरलेला; जाड करणे मदत करते पण तांबे महाग आणि व्यावहारिक मर्यादा. आता दुसरे सूत्र: शहरापर्यंत प्रत्यक्ष पोहोचवलेली शक्ती P = VI. शहराला ठराविक शक्ती लागते, आणि ती संख्या तिथल्या लोकांच्या वापराने ठरलेली. पण तीच P कमी व्होल्टतेवर मोठ्या धारेने वा उच्च व्होल्टतेवर लहान धारेने वाहता येते, आणि ती दोन्ही संयोजने ग्राहकासाठी सारखीच चांगली. हीच फट अभियंते वापरतात. संक्रमण व्होल्टता शंभरपट करा आणि, तीच P द्यायला, धारा शतांशावर घसरते. I² ने चालणारी उष्णता-हानी दहा-हजारांशावर घसरते. जी हानी निर्मित शक्तीचा मोठा अंश खाऊन टाकेल ती जवळजवळ नगण्य होते. ती बचत धोक्याहून आणि खर्चाहून अधिक मोलाची — म्हणूनच उंच मनोरे, रुंद अंतरे आणि दोन्ही टोकांना रोहित्रे. शहरात, अर्थात, हजारो व्होल्ट घरात प्राणघातक ठरतील आणि प्रत्येक उपकरण नष्ट करतील, म्हणून अपचायी रोहित्र भिंतींतील तारांपर्यंत पोहोचण्याआधी पुरवठा सुरक्षित 220 V वर परत आणते. हा खराखुरा अभियांत्रिकी सौदा: उच्च व्होल्टता तिथे स्वीकारा जिथे कोणी स्पर्श करत नाही, त्याबदल्यात खूप कमी धारा तिथे जिथे हानी होते. (चुकीची उत्तरे भौतिकशास्त्र उलटे करतात — अपवहन वेग असंबद्ध आणि प्रत्यक्षात खूप मंद, हानी धारेच्या वर्गाने चालते व्होल्टतेच्या वर्गाने नाही, आणि ही प्रथा सार्वत्रिक नेमके यासाठी की ती चालते, योगायोगाने नाही.)"
+        }
+      }
+    }
+  ]
+}

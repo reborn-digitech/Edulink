@@ -2797,4 +2797,1130 @@ export const G10_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Light: Reflection and Refraction                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-light",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 9 — Light: Reflection and Refraction",
+      hi: "अध्याय 9 — प्रकाश: परावर्तन तथा अपवर्तन",
+      mr: "प्रकरण 9 — प्रकाश: परावर्तन आणि अपवर्तन",
+    },
+    name: {
+      en: "Light: Reflection and Refraction",
+      hi: "प्रकाश: परावर्तन तथा अपवर्तन",
+      mr: "प्रकाश: परावर्तन आणि अपवर्तन",
+    },
+    summary: {
+      en: "A ray obeying two strict rules and one act of bending: equal angles at every mirror, a curved mirror that gathers or spreads, light slowing as it enters glass and turning at the boundary, the refractive index that measures the turn, and lenses ranked by the power to bend.",
+      hi: "दो कड़े नियम मानती किरण और एक मुड़ने की क्रिया: हर दर्पण पर बराबर कोण, समेटता या फैलाता वक्र दर्पण, काँच में घुसते धीमा होता और सीमा पर मुड़ता प्रकाश, मोड़ नापता अपवर्तनांक, और मोड़ने की क्षमता से आँके लेंस।",
+      mr: "दोन कडक नियम पाळणारा किरण आणि एक वळण्याची क्रिया: प्रत्येक आरशावर समान कोन, गोळा करणारा वा पसरवणारा वक्र आरसा, काचेत शिरताना मंदावणारा आणि सीमेवर वळणारा प्रकाश, वळण मोजणारा अपवर्तनांक, आणि वाकवण्याच्या क्षमतेने मोजलेली भिंगे.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "laws-of-reflection",
+        name: {
+          en: "The laws of reflection",
+          hi: "परावर्तन के नियम",
+          mr: "परावर्तनाचे नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "A ray striking a polished surface bounces off at exactly the same angle at which it arrived, and both rays lie flat in one plane with the normal. Which pair of rules is being stated?",
+          hi: "पॉलिश सतह से टकराती किरण ठीक उसी कोण पर लौटती जिस पर आई, और दोनों किरणें अभिलंब के साथ एक ही तल में सपाट पड़ीं। कौन-सी नियम-जोड़ी बताई जा रही?",
+          mr: "पॉलिश केलेल्या पृष्ठावर आदळणारा किरण नेमक्या त्याच कोनात परततो ज्या कोनात आला, आणि दोन्ही किरण स्तंभिकेसह एकाच प्रतलात सपाट. कोणती नियम-जोडी सांगितली जात आहे?",
+        },
+        statement: {
+          en: "The laws of reflection say the angle of incidence equals the angle of reflection, and the incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane.",
+          hi: "परावर्तन के नियम कहते आपतन कोण परावर्तन कोण के बराबर, और आपतित किरण, परावर्तित किरण तथा आपतन बिंदु पर अभिलंब सब एक ही तल में।",
+          mr: "परावर्तनाचे नियम सांगतात आपाती कोन परावर्तन कोनाइतका, आणि आपाती किरण, परावर्तित किरण व आपाती बिंदूवरील स्तंभिका सर्व एकाच प्रतलात.",
+        },
+        detail: {
+          en: "The normal is the line drawn perpendicular to the surface at the point where the ray lands, and every angle is measured from it — never from the surface itself.",
+          hi: "अभिलंब वह रेखा जो किरण के गिरने के बिंदु पर सतह के लंबवत खींची, और हर कोण उसी से नापा — कभी सतह से नहीं।",
+          mr: "स्तंभिका ती रेषा जी किरण पडलेल्या बिंदूवर पृष्ठाला लंब काढली, आणि प्रत्येक कोन तिच्यापासूनच मोजला — कधी पृष्ठापासून नाही.",
+        },
+        extra: {
+          en: "These two laws hold for every reflecting surface — flat, curved, polished metal or still water — which is why one rule explains both a bathroom mirror and a car's headlamp.",
+          hi: "ये दो नियम हर परावर्तक सतह पर लागू — सपाट, वक्र, पॉलिश धातु या ठहरा पानी — इसी से एक नियम स्नानघर के दर्पण और गाड़ी की हेडलैंप दोनों समझाता।",
+          mr: "हे दोन नियम प्रत्येक परावर्तक पृष्ठावर लागू — सपाट, वक्र, पॉलिश धातू वा स्थिर पाणी — म्हणूनच एक नियम स्नानगृहाचा आरसा आणि गाडीचा दिवा दोन्ही समजावतो.",
+        },
+        pair: {
+          left: {
+            en: "Angle in equals angle out",
+            hi: "आने का कोण जाने के कोण बराबर",
+            mr: "येण्याचा कोन जाण्याच्या कोनाइतका",
+          },
+          right: {
+            en: "the laws of reflection",
+            hi: "परावर्तन के नियम",
+            mr: "परावर्तनाचे नियम",
+          },
+        },
+      },
+      {
+        id: "concave-mirror",
+        name: {
+          en: "The converging concave mirror",
+          hi: "अभिसारी अवतल दर्पण",
+          mr: "अभिसारी अंतर्वक्र आरसा",
+        },
+        kind: "device",
+        prompt: {
+          en: "A mirror curved inward like the inside of a spoon gathers parallel rays to a single burning point. Which mirror converges light, and where does it send those parallel rays?",
+          hi: "चम्मच के भीतरी भाग जैसा अंदर मुड़ा दर्पण समांतर किरणों को एक जलते बिंदु पर समेटता। कौन-सा दर्पण प्रकाश अभिसरित करता, और वे समांतर किरणें कहाँ भेजता?",
+          mr: "चमच्याच्या आतल्या भागासारखा आत वळलेला आरसा समांतर किरण एका जळत्या बिंदूवर गोळा करतो. कोणता आरसा प्रकाश अभिसरित करतो, आणि ते समांतर किरण कुठे पाठवतो?",
+        },
+        statement: {
+          en: "A concave mirror curves inward and converges light: rays arriving parallel to its principal axis all meet at its principal focus, which lies in front of the mirror.",
+          hi: "अवतल दर्पण अंदर मुड़ा और प्रकाश अभिसरित करता: उसके मुख्य अक्ष के समांतर आती किरणें सब उसके मुख्य फोकस पर मिलतीं, जो दर्पण के आगे।",
+          mr: "अंतर्वक्र आरसा आत वळलेला आणि प्रकाश अभिसरित करतो: त्याच्या मुख्य अक्षाला समांतर येणारे किरण सर्व त्याच्या मुख्य नाभीवर मिळतात, जी आरशापुढे.",
+        },
+        detail: {
+          en: "Its image changes with the object's position — real and inverted for a distant object, but virtual, erect and magnified when the object sits between the pole and the focus.",
+          hi: "उसका प्रतिबिंब वस्तु की स्थिति से बदलता — दूर वस्तु के लिए वास्तविक और उल्टा, पर वस्तु ध्रुव और फोकस के बीच हो तो आभासी, सीधा और बड़ा।",
+          mr: "त्याची प्रतिमा वस्तूच्या स्थानानुसार बदलते — दूरच्या वस्तूसाठी खरी आणि उलटी, पण वस्तू ध्रुव आणि नाभीदरम्यान असल्यास आभासी, सरळ आणि मोठी.",
+        },
+        extra: {
+          en: "That is why a dentist and a shaving mirror both use it up close for an enlarged view, while a torch places its bulb at the focus to throw a parallel beam.",
+          hi: "इसी से दंत-चिकित्सक और दाढ़ी का दर्पण दोनों पास से बड़ा दृश्य पाने इसे लेते, जबकि टॉर्च अपना बल्ब फोकस पर रखकर समांतर पुंज फेंकती।",
+          mr: "म्हणूनच दंतवैद्य आणि दाढीचा आरसा दोघे जवळून मोठे दृश्य मिळवायला हा वापरतात, तर बॅटरी आपला बल्ब नाभीवर ठेवून समांतर झोत फेकते.",
+        },
+        pair: {
+          left: {
+            en: "Curves inward, gathers rays",
+            hi: "अंदर मुड़ा, किरणें समेटे",
+            mr: "आत वळलेला, किरण गोळा करी",
+          },
+          right: {
+            en: "the converging concave mirror",
+            hi: "अभिसारी अवतल दर्पण",
+            mr: "अभिसारी अंतर्वक्र आरसा",
+          },
+        },
+      },
+      {
+        id: "convex-mirror",
+        name: {
+          en: "The diverging convex mirror",
+          hi: "अपसारी उत्तल दर्पण",
+          mr: "अपसारी बहिर्वक्र आरसा",
+        },
+        kind: "device",
+        prompt: {
+          en: "A mirror bulging outward spreads parallel rays apart, and always shows a small upright picture of a wide scene. Which mirror diverges light, and what image does it always give?",
+          hi: "बाहर उभरा दर्पण समांतर किरणों को फैलाता, और सदा चौड़े दृश्य का छोटा सीधा चित्र दिखाता। कौन-सा दर्पण प्रकाश अपसरित करता, और सदा कैसा प्रतिबिंब देता?",
+          mr: "बाहेर फुगलेला आरसा समांतर किरण पसरवतो, आणि सदैव रुंद दृश्याचे लहान सरळ चित्र दाखवतो. कोणता आरसा प्रकाश अपसरित करतो, आणि सदैव कशी प्रतिमा देतो?",
+        },
+        statement: {
+          en: "A convex mirror bulges outward and diverges light, always forming a virtual, erect and diminished image, whatever the object's distance.",
+          hi: "उत्तल दर्पण बाहर उभरा और प्रकाश अपसरित करता, सदा आभासी, सीधा और छोटा प्रतिबिंब बनाता, वस्तु की दूरी चाहे जो हो।",
+          mr: "बहिर्वक्र आरसा बाहेर फुगलेला आणि प्रकाश अपसरित करतो, सदैव आभासी, सरळ आणि लहान प्रतिमा बनवतो, वस्तूचे अंतर कोणतेही असो.",
+        },
+        detail: {
+          en: "Its focus lies behind the mirror, where the diverging rays only appear to come from — which is why the image can never be caught on a screen.",
+          hi: "उसका फोकस दर्पण के पीछे, जहाँ से अपसरित किरणें केवल आती प्रतीत होतीं — इसी से प्रतिबिंब कभी पर्दे पर नहीं पकड़ा जा सकता।",
+          mr: "त्याची नाभी आरशामागे, जिथून अपसरित किरण केवळ येताना भासतात — म्हणूनच प्रतिमा कधी पडद्यावर पकडता येत नाही.",
+        },
+        extra: {
+          en: "A vehicle's rear-view mirror is convex on purpose: a smaller image is the price paid for a much wider field of view behind.",
+          hi: "गाड़ी का पश्च-दृश्य दर्पण जानबूझकर उत्तल: छोटा प्रतिबिंब पीछे के कहीं चौड़े दृष्टि-क्षेत्र की चुकाई क़ीमत।",
+          mr: "गाडीचा मागील-दृश्य आरसा मुद्दाम बहिर्वक्र: लहान प्रतिमा ही मागच्या कितीतरी रुंद दृष्टिक्षेत्राची दिलेली किंमत.",
+        },
+        pair: {
+          left: {
+            en: "Bulges outward, spreads rays",
+            hi: "बाहर उभरा, किरणें फैलाए",
+            mr: "बाहेर फुगलेला, किरण पसरवी",
+          },
+          right: {
+            en: "the diverging convex mirror",
+            hi: "अपसारी उत्तल दर्पण",
+            mr: "अपसारी बहिर्वक्र आरसा",
+          },
+        },
+      },
+      {
+        id: "refraction",
+        name: {
+          en: "Refraction of light",
+          hi: "प्रकाश का अपवर्तन",
+          mr: "प्रकाशाचे अपवर्तन",
+        },
+        kind: "process",
+        prompt: {
+          en: "A pencil standing in a glass of water looks broken at the surface, and a coin in a bowl seems to rise. Which bending of light as it passes from one medium into another explains both?",
+          hi: "पानी के गिलास में खड़ी पेंसिल सतह पर टूटी दिखती, और कटोरे में सिक्का उठा प्रतीत होता। एक माध्यम से दूसरे में जाते प्रकाश का कौन-सा मुड़ना दोनों समझाता?",
+          mr: "पाण्याच्या ग्लासात उभी पेन्सिल पृष्ठावर मोडलेली दिसते, आणि वाडग्यातले नाणे वर आल्यासारखे भासते. एका माध्यमातून दुसऱ्यात जाताना प्रकाशाचे कोणते वळणे दोन्ही समजावते?",
+        },
+        statement: {
+          en: "Refraction is the bending of light when it passes from one transparent medium into another, caused by the change in its speed at the boundary.",
+          hi: "अपवर्तन प्रकाश का मुड़ना जब वह एक पारदर्शी माध्यम से दूसरे में जाता, सीमा पर उसकी चाल बदलने से।",
+          mr: "अपवर्तन म्हणजे प्रकाश एका पारदर्शक माध्यमातून दुसऱ्यात जाताना वाकणे, सीमेवर त्याचा वेग बदलल्यामुळे.",
+        },
+        detail: {
+          en: "Going into a denser medium the ray slows and bends toward the normal; coming out into a rarer one it speeds up and bends away from the normal.",
+          hi: "सघन माध्यम में जाते किरण धीमी होकर अभिलंब की ओर मुड़ती; विरल में निकलते तेज़ होकर अभिलंब से दूर मुड़ती।",
+          mr: "घन माध्यमात जाताना किरण मंदावून स्तंभिकेकडे वळतो; विरळात बाहेर पडताना वेगावून स्तंभिकेपासून दूर वळतो.",
+        },
+        extra: {
+          en: "A ray striking the boundary straight on, along the normal, goes through unbent — it still changes speed, but there is no sideways direction to turn toward.",
+          hi: "सीमा पर सीधे, अभिलंब के अनुदिश टकराती किरण बिना मुड़े निकलती — चाल फिर भी बदलती, पर मुड़ने को कोई बग़ली दिशा नहीं।",
+          mr: "सीमेवर सरळ, स्तंभिकेच्या दिशेने आदळणारा किरण न वाकता जातो — वेग तरीही बदलतो, पण वळायला कोणती बाजूची दिशा नाही.",
+        },
+        pair: {
+          left: {
+            en: "Bending on changing medium",
+            hi: "माध्यम बदलने पर मुड़ना",
+            mr: "माध्यम बदलल्यावर वाकणे",
+          },
+          right: {
+            en: "refraction",
+            hi: "अपवर्तन",
+            mr: "अपवर्तन",
+          },
+        },
+      },
+      {
+        id: "refractive-index",
+        name: {
+          en: "The refractive index",
+          hi: "अपवर्तनांक",
+          mr: "अपवर्तनांक",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Light travels through glass at about two-thirds of its speed in vacuum, and that ratio is written as the number 1.5 for glass. Which quantity compares the two speeds and predicts how sharply a ray will turn?",
+          hi: "प्रकाश काँच में निर्वात की अपनी चाल के लगभग दो-तिहाई से चलता, और वह अनुपात काँच के लिए 1.5 संख्या से लिखा। कौन-सी राशि दोनों चालों की तुलना करती और बताती किरण कितनी तीखी मुड़ेगी?",
+          mr: "प्रकाश काचेतून निर्वातातील आपल्या वेगाच्या सुमारे दोन-तृतीयांश वेगाने जातो, आणि ते गुणोत्तर काचेसाठी 1.5 या संख्येने लिहिले. कोणती राशी दोन्ही वेगांची तुलना करते आणि किरण किती तीव्र वळेल हे सांगते?",
+        },
+        statement: {
+          en: "The refractive index of a medium is the ratio of the speed of light in vacuum to its speed in that medium — the larger it is, the slower the light and the more sharply a ray bends.",
+          hi: "किसी माध्यम का अपवर्तनांक निर्वात में प्रकाश की चाल का उस माध्यम में चाल से अनुपात — जितना बड़ा, प्रकाश उतना धीमा और किरण उतनी तीखी मुड़ती।",
+          mr: "एखाद्या माध्यमाचा अपवर्तनांक म्हणजे निर्वातातील प्रकाशाच्या वेगाचे त्या माध्यमातील वेगाशी गुणोत्तर — जितका मोठा, प्रकाश तितका मंद आणि किरण तितका तीव्र वाकतो.",
+        },
+        detail: {
+          en: "It is a pure number with no unit, because it is one speed divided by another, and it is never less than 1 for any ordinary material.",
+          hi: "यह बिना मात्रक की शुद्ध संख्या, क्योंकि एक चाल दूसरी से भागी, और किसी साधारण पदार्थ के लिए 1 से कम कभी नहीं।",
+          mr: "ही एककाविना शुद्ध संख्या, कारण एक वेग दुसऱ्याने भागलेला, आणि कोणत्याही सामान्य पदार्थासाठी 1 पेक्षा कमी कधीही नाही.",
+        },
+        extra: {
+          en: "Diamond's very high value, about 2.42, slows light so much and bends it so hard that rays entering it bounce around inside before escaping — the source of its famous sparkle.",
+          hi: "हीरे का बहुत ऊँचा मान, लगभग 2.42, प्रकाश को इतना धीमा और इतना तीखा मोड़ता कि भीतर घुसी किरणें निकलने से पहले अंदर उछलती रहतीं — उसकी प्रसिद्ध चमक का स्रोत।",
+          mr: "हिऱ्याचे खूप उच्च मूल्य, सुमारे 2.42, प्रकाश इतका मंदावते आणि इतका तीव्र वाकवते की आत शिरलेले किरण बाहेर पडण्याआधी आत उसळत राहतात — त्याच्या प्रसिद्ध लखलखाटाचा स्रोत.",
+        },
+        pair: {
+          left: {
+            en: "Speed in vacuum over speed in medium",
+            hi: "निर्वात की चाल बटा माध्यम की चाल",
+            mr: "निर्वातातील वेग भागिले माध्यमातील वेग",
+          },
+          right: {
+            en: "the refractive index",
+            hi: "अपवर्तनांक",
+            mr: "अपवर्तनांक",
+          },
+        },
+      },
+      {
+        id: "convex-lens",
+        name: {
+          en: "The converging convex lens",
+          hi: "अभिसारी उत्तल लेंस",
+          mr: "अभिसारी बहिर्वक्र भिंग",
+        },
+        kind: "device",
+        prompt: {
+          en: "A piece of glass thicker in the middle than at its edges brings sunlight to a scorching point on paper. Which lens converges light, and what is that meeting point called?",
+          hi: "किनारों से बीच में मोटा काँच का टुकड़ा धूप को काग़ज़ पर झुलसाते बिंदु पर लाता। कौन-सा लेंस प्रकाश अभिसरित करता, और वह मिलन-बिंदु क्या कहलाता?",
+          mr: "कडांपेक्षा मध्यभागी जाड असलेला काचेचा तुकडा सूर्यप्रकाश कागदावर जाळणाऱ्या बिंदूवर आणतो. कोणते भिंग प्रकाश अभिसरित करते, आणि तो मिलन-बिंदू काय म्हणतात?",
+        },
+        statement: {
+          en: "A convex lens is thicker at the middle than at the edges and converges parallel rays to its principal focus, which is why it is also called a converging lens.",
+          hi: "उत्तल लेंस किनारों से बीच में मोटा और समांतर किरणों को अपने मुख्य फोकस पर अभिसरित करता, इसी से अभिसारी लेंस भी कहलाता।",
+          mr: "बहिर्वक्र भिंग कडांपेक्षा मध्यभागी जाड आणि समांतर किरण आपल्या मुख्य नाभीवर अभिसरित करते, म्हणूनच त्याला अभिसारी भिंगही म्हणतात.",
+        },
+        detail: {
+          en: "It gives a real, inverted image for an object beyond the focus, but a virtual, erect and magnified one when the object is nearer than the focus — the magnifying glass at work.",
+          hi: "फोकस से परे वस्तु के लिए यह वास्तविक, उल्टा प्रतिबिंब देता, पर वस्तु फोकस से नज़दीक हो तो आभासी, सीधा और बड़ा — आवर्धक काँच का काम।",
+          mr: "नाभीच्या पलीकडील वस्तूसाठी ते खरी, उलटी प्रतिमा देते, पण वस्तू नाभीहून जवळ असल्यास आभासी, सरळ आणि मोठी — भिंग-काचेचे काम.",
+        },
+        extra: {
+          en: "A concave lens is its opposite in every way — thinner at the middle, diverging the rays, and giving only a virtual, erect, diminished image.",
+          hi: "अवतल लेंस हर तरह इसका उल्टा — बीच में पतला, किरणें अपसरित करता, और केवल आभासी, सीधा, छोटा प्रतिबिंब देता।",
+          mr: "अंतर्वक्र भिंग प्रत्येक बाबतीत याच्या उलट — मध्यभागी पातळ, किरण अपसरित करणारे, आणि फक्त आभासी, सरळ, लहान प्रतिमा देणारे.",
+        },
+        pair: {
+          left: {
+            en: "Thick in the middle, converging",
+            hi: "बीच में मोटा, अभिसारी",
+            mr: "मध्यभागी जाड, अभिसारी",
+          },
+          right: {
+            en: "the converging convex lens",
+            hi: "अभिसारी उत्तल लेंस",
+            mr: "अभिसारी बहिर्वक्र भिंग",
+          },
+        },
+      },
+      {
+        id: "power-of-lens",
+        name: {
+          en: "The power of a lens",
+          hi: "लेंस की क्षमता",
+          mr: "भिंगाची क्षमता",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "An optician's prescription reads '+2 D' or '−1.5 D', a single number standing for the reciprocal of the focal length in metres. Which quantity measures how strongly a lens bends light?",
+          hi: "चश्मे के नुस्ख़े पर '+2 D' या '−1.5 D' लिखा, एक संख्या जो मीटर में फोकस दूरी का व्युत्क्रम। कौन-सी राशि नापती लेंस प्रकाश को कितनी प्रबलता से मोड़ता?",
+          mr: "चष्म्याच्या प्रिस्क्रिप्शनवर '+2 D' वा '−1.5 D' लिहिलेले, एक संख्या जी मीटरमधील नाभीय अंतराचा व्यस्तांक. कोणती राशी मोजते भिंग प्रकाश किती प्रबळपणे वाकवते?",
+        },
+        statement: {
+          en: "The power of a lens is the reciprocal of its focal length in metres, measured in dioptres (D) — it is positive for a convex lens and negative for a concave one.",
+          hi: "लेंस की क्षमता मीटर में उसकी फोकस दूरी का व्युत्क्रम, डाइऑप्टर (D) में नापी — उत्तल लेंस के लिए धनात्मक और अवतल के लिए ऋणात्मक।",
+          mr: "भिंगाची क्षमता म्हणजे मीटरमधील तिच्या नाभीय अंतराचा व्यस्तांक, डायऑप्टर (D) मध्ये मोजलेली — बहिर्वक्र भिंगासाठी धन आणि अंतर्वक्रासाठी ऋण.",
+        },
+        detail: {
+          en: "A short focal length means a strongly bending lens and so a large power — a 25 cm lens is 4 D, while a 1 m lens is only 1 D.",
+          hi: "छोटी फोकस दूरी का अर्थ प्रबल मोड़ता लेंस और इसलिए बड़ी क्षमता — 25 सेमी का लेंस 4 D, जबकि 1 मीटर का केवल 1 D।",
+          mr: "आखूड नाभीय अंतर म्हणजे प्रबळ वाकवणारे भिंग आणि म्हणून मोठी क्षमता — 25 सेमीचे भिंग 4 D, तर 1 मीटरचे फक्त 1 D.",
+        },
+        extra: {
+          en: "Powers add up when lenses are placed touching, which is exactly how an optician builds an unusual prescription out of a few standard lenses.",
+          hi: "लेंस सटाकर रखे जाएँ तो क्षमताएँ जुड़तीं, ठीक इसी से चश्मा-विक्रेता कुछ मानक लेंसों से असामान्य नुस्ख़ा बनाता।",
+          mr: "भिंगे चिकटवून ठेवल्यास क्षमता बेरजेने जुळतात, नेमके यामुळेच चष्मेवाला काही प्रमाणित भिंगांतून असामान्य प्रिस्क्रिप्शन बनवतो.",
+        },
+        pair: {
+          left: {
+            en: "One over the focal length, in dioptres",
+            hi: "फोकस दूरी का व्युत्क्रम, डाइऑप्टर में",
+            mr: "नाभीय अंतराचा व्यस्तांक, डायऑप्टरमध्ये",
+          },
+          right: {
+            en: "the power of a lens",
+            hi: "लेंस की क्षमता",
+            mr: "भिंगाची क्षमता",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A shopkeeper fixes a large mirror high in a corner and can watch the whole shop in it, though everyone appears small. A dentist uses a different mirror to see one tooth hugely enlarged. Both are curved mirrors, so why does one shrink everything while the other magnifies?",
+          hi: "एक दुकानदार कोने में ऊपर बड़ा दर्पण लगाता और उसमें पूरी दुकान देख लेता, यद्यपि सब छोटे दिखते। एक दंत-चिकित्सक भिन्न दर्पण से एक दाँत बहुत बड़ा देखता। दोनों वक्र दर्पण, तो एक सब छोटा क्यों करता जबकि दूसरा बड़ा?",
+          mr: "एक दुकानदार कोपऱ्यात वर मोठा आरसा लावतो आणि त्यात अख्खे दुकान पाहू शकतो, जरी सर्व लहान दिसत. एक दंतवैद्य वेगळ्या आरशाने एक दात खूप मोठा पाहतो. दोन्ही वक्र आरसे, मग एक सर्व लहान का करतो तर दुसरा मोठे?",
+        },
+        choices: [
+          {
+            en: "The shop mirror is convex: it bulges outward and diverges the light, so it always gives a small, erect, virtual image — and that shrinking is exactly what packs a wide view into one mirror. The dentist's is concave: held closer to the tooth than its focus, it converges light and gives a magnified, erect, virtual image",
+            hi: "दुकान का दर्पण उत्तल: बाहर उभरा और प्रकाश अपसरित करता, अतः सदा छोटा, सीधा, आभासी प्रतिबिंब देता — और वही सिकुड़न एक दर्पण में चौड़ा दृश्य भरती। दंत-चिकित्सक का अवतल: दाँत से उसके फोकस से नज़दीक रखा, प्रकाश अभिसरित कर बड़ा, सीधा, आभासी प्रतिबिंब देता",
+            mr: "दुकानाचा आरसा बहिर्वक्र: बाहेर फुगलेला आणि प्रकाश अपसरित करणारा, म्हणून सदैव लहान, सरळ, आभासी प्रतिमा देतो — आणि तेच लहान होणे एका आरशात रुंद दृश्य भरते. दंतवैद्याचा अंतर्वक्र: दातापासून त्याच्या नाभीहून जवळ धरलेला, प्रकाश अभिसरित करून मोठी, सरळ, आभासी प्रतिमा देतो",
+          },
+          {
+            en: "The shop mirror is simply made of thicker glass, which shrinks whatever it shows",
+            hi: "दुकान का दर्पण बस मोटे काँच का, जो जो दिखाए उसे छोटा करता",
+            mr: "दुकानाचा आरसा फक्त जाड काचेचा, जे दाखवेल ते लहान करणारा",
+          },
+          {
+            en: "The shop mirror is concave and the dentist's is convex, the other way round",
+            hi: "दुकान का दर्पण अवतल और दंत-चिकित्सक का उत्तल, उल्टे तरीक़े से",
+            mr: "दुकानाचा आरसा अंतर्वक्र आणि दंतवैद्याचा बहिर्वक्र, उलट पद्धतीने",
+          },
+          {
+            en: "Both are the same mirror; only the distance from the wall changes the size",
+            hi: "दोनों एक ही दर्पण; केवल दीवार से दूरी आकार बदलती",
+            mr: "दोन्ही एकच आरसा; फक्त भिंतीपासूनचे अंतर आकार बदलते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two mirrors are curved in opposite directions, and that single difference decides everything. The shopkeeper's mirror is convex — it bulges outward, like the back of a spoon. Rays arriving on it are spread apart, and the reflected rays only seem to come from a point behind the mirror. So a convex mirror always, without exception, gives an image that is virtual, erect and smaller than the object, no matter where the object stands. That sounds like a drawback until you see what it buys: because everything is shrunk, a very wide slice of the shop — far wider than a flat mirror of the same size could show — is squeezed into the glass. The shrinking is not a flaw; it is the price of the wide field of view, which is exactly why the same design is used for vehicle rear-view mirrors and blind corners on roads. The dentist's mirror is concave — curved inward, like the bowl of a spoon — and it converges light. A concave mirror's image is not fixed: it changes with the object's distance. Held far from an object it makes a real, inverted image, but the dentist deliberately holds it very close to the tooth, nearer than the mirror's focus. In that one position the reflected rays diverge and appear to come from behind the mirror, producing an image that is virtual, erect and magnified — a big, upright picture of the tooth. So the answer is not that one mirror 'is a magnifier' and the other 'is a shrinker' by nature; it is that a convex mirror can only ever diminish, while a concave mirror can magnify provided it is held within its focus. (The wrong answers get it backwards or blame thickness and distance from the wall, neither of which curves a mirror.)",
+          hi: "दोनों दर्पण उल्टी दिशाओं में मुड़े, और वही एक अंतर सब तय करता। दुकानदार का दर्पण उत्तल — बाहर उभरा, चम्मच की पीठ जैसा। उस पर आती किरणें फैल जातीं, और परावर्तित किरणें केवल दर्पण के पीछे किसी बिंदु से आती प्रतीत होतीं। अतः उत्तल दर्पण सदा, बिना अपवाद, आभासी, सीधा और वस्तु से छोटा प्रतिबिंब देता, वस्तु चाहे कहीं खड़ी हो। यह कमी लगती जब तक न दिखे यह क्या ख़रीदती: क्योंकि सब सिकुड़ा, दुकान की बहुत चौड़ी फाँक — उसी आकार के सपाट दर्पण से कहीं चौड़ी — काँच में भर जाती। सिकुड़न दोष नहीं; यह चौड़े दृष्टि-क्षेत्र की क़ीमत, ठीक इसी से वही रचना गाड़ी के पश्च-दृश्य दर्पणों और सड़क के अंधे मोड़ों पर। दंत-चिकित्सक का दर्पण अवतल — अंदर मुड़ा, चम्मच के कटोरे जैसा — और प्रकाश अभिसरित करता। अवतल दर्पण का प्रतिबिंब नियत नहीं: वस्तु की दूरी से बदलता। वस्तु से दूर रखे तो वास्तविक, उल्टा प्रतिबिंब बनाता, पर दंत-चिकित्सक इसे जानबूझकर दाँत के बहुत पास, दर्पण के फोकस से नज़दीक रखता। उस एक स्थिति में परावर्तित किरणें अपसरित होकर दर्पण के पीछे से आती प्रतीत होतीं, और आभासी, सीधा तथा बड़ा प्रतिबिंब बनता — दाँत का बड़ा, सीधा चित्र। अतः उत्तर यह नहीं कि एक दर्पण स्वभाव से 'बड़ा करने वाला' और दूसरा 'छोटा करने वाला'; यह कि उत्तल दर्पण केवल छोटा ही कर सकता, जबकि अवतल दर्पण बड़ा कर सकता बशर्ते अपने फोकस के भीतर रखा जाए। (ग़लत उत्तर इसे उल्टा करते या मोटाई और दीवार से दूरी को दोष देते, जिनमें से कोई दर्पण को मोड़ता नहीं।)",
+          mr: "दोन्ही आरसे उलट्या दिशांना वळलेले, आणि तोच एक फरक सर्व ठरवतो. दुकानदाराचा आरसा बहिर्वक्र — बाहेर फुगलेला, चमच्याच्या पाठीसारखा. त्यावर येणारे किरण पसरतात, आणि परावर्तित किरण केवळ आरशामागील एका बिंदूतून येताना भासतात. म्हणून बहिर्वक्र आरसा सदैव, अपवादाविना, आभासी, सरळ आणि वस्तूहून लहान प्रतिमा देतो, वस्तू कुठेही असो. हा तोटा वाटतो जोवर ते काय विकत घेते हे दिसत नाही: कारण सर्व लहान झाले, दुकानाची खूप रुंद फाळी — त्याच आकाराच्या सपाट आरशाहून कितीतरी रुंद — काचेत दाटते. लहान होणे दोष नाही; ती रुंद दृष्टिक्षेत्राची किंमत, नेमके म्हणूनच तीच रचना गाडीच्या मागील-दृश्य आरशांत आणि रस्त्याच्या आंधळ्या वळणांवर. दंतवैद्याचा आरसा अंतर्वक्र — आत वळलेला, चमच्याच्या वाडग्यासारखा — आणि प्रकाश अभिसरित करतो. अंतर्वक्र आरशाची प्रतिमा ठरलेली नाही: वस्तूच्या अंतरानुसार बदलते. वस्तूपासून दूर धरल्यास खरी, उलटी प्रतिमा बनवतो, पण दंतवैद्य तो मुद्दाम दाताच्या खूप जवळ, आरशाच्या नाभीहून जवळ धरतो. त्या एका स्थानी परावर्तित किरण अपसरित होऊन आरशामागून येताना भासतात, आणि आभासी, सरळ व मोठी प्रतिमा बनते — दाताचे मोठे, सरळ चित्र. म्हणून उत्तर हे नाही की एक आरसा स्वभावाने 'मोठे करणारा' आणि दुसरा 'लहान करणारा'; तर हे की बहिर्वक्र आरसा फक्त लहानच करू शकतो, तर अंतर्वक्र आरसा मोठे करू शकतो जर आपल्या नाभीच्या आत धरला. (चुकीची उत्तरे हे उलटे करतात वा जाडी आणि भिंतीपासूनच्या अंतराला दोष देतात, ज्यांपैकी कोणतेही आरसा वाकवत नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A coin lying at the bottom of a bucket of water appears to sit higher than it really does, so a child reaching for it grabs at empty water. The coin has not moved and the eye is not faulty. Explain precisely why the water lies to the eye, and what would happen to the illusion if the bucket held a liquid that bent light even more strongly.",
+          hi: "पानी की बाल्टी के तल पर पड़ा सिक्का वास्तव से ऊँचा बैठा प्रतीत होता, अतः उसे पकड़ने बढ़ता बच्चा ख़ाली पानी पकड़ता। सिक्का हिला नहीं और आँख में दोष नहीं। ठीक-ठीक समझाओ पानी आँख से झूठ क्यों बोलता, और यदि बाल्टी में और प्रबलता से प्रकाश मोड़ता द्रव हो तो भ्रम का क्या होगा।",
+          mr: "पाण्याच्या बादलीच्या तळाशी पडलेले नाणे प्रत्यक्षाहून वर बसल्यासारखे भासते, म्हणून ते पकडायला जाणारे मूल रिकामे पाणी पकडते. नाणे हललेले नाही आणि डोळ्यात दोष नाही. नेमके समजावा पाणी डोळ्याशी खोटे का बोलते, आणि बादलीत अधिक प्रबळपणे प्रकाश वाकवणारा द्रव असल्यास भ्रमाचे काय होईल.",
+        },
+        choices: [
+          {
+            en: "Light from the coin slows in water and, on leaving the water into the rarer air, bends away from the normal. The eye cannot know a ray has bent — it traces every ray back in a straight line, and those backward straight lines meet at a point above the real coin, so the coin is seen raised. A liquid with a higher refractive index would bend the rays more, making the apparent rise greater still",
+            hi: "सिक्के से चला प्रकाश पानी में धीमा, और पानी से विरल हवा में निकलते अभिलंब से दूर मुड़ता। आँख जान नहीं सकती कि किरण मुड़ी — वह हर किरण को सीधी रेखा में पीछे खींचती, और वे पीछे की सीधी रेखाएँ असली सिक्के से ऊपर एक बिंदु पर मिलतीं, अतः सिक्का उठा दिखता। ऊँचे अपवर्तनांक का द्रव किरणें और मोड़ता, अतः प्रतीत उठान और भी बड़ी",
+            mr: "नाण्यापासून निघालेला प्रकाश पाण्यात मंदावतो, आणि पाण्यातून विरळ हवेत बाहेर पडताना स्तंभिकेपासून दूर वाकतो. डोळा जाणू शकत नाही की किरण वाकला — तो प्रत्येक किरण सरळ रेषेत मागे नेतो, आणि त्या मागच्या सरळ रेषा खऱ्या नाण्याहून वरच्या एका बिंदूवर भेटतात, म्हणून नाणे उंचावलेले दिसते. अधिक अपवर्तनांकाचा द्रव किरण अधिक वाकवेल, म्हणून भासणारी उंची आणखी मोठी",
+          },
+          {
+            en: "The water physically pushes the coin upward, so it really is higher than the bucket's floor",
+            hi: "पानी सिक्के को भौतिक रूप से ऊपर धकेलता, अतः वह सचमुच बाल्टी के तल से ऊँचा",
+            mr: "पाणी नाण्याला भौतिकदृष्ट्या वर ढकलते, म्हणून ते खरोखर बादलीच्या तळाहून वर",
+          },
+          {
+            en: "The eye's lens is confused by the wetness, and a stronger liquid would remove the illusion",
+            hi: "आँख का लेंस गीलेपन से भ्रमित, और प्रबल द्रव भ्रम मिटा देता",
+            mr: "डोळ्याचे भिंग ओलेपणाने गोंधळलेले, आणि प्रबळ द्रव भ्रम मिटवेल",
+          },
+          {
+            en: "Light travels in curves inside water, and the curve stops the moment it leaves the surface",
+            hi: "प्रकाश पानी के भीतर वक्रों में चलता, और सतह छोड़ते ही वक्र रुक जाता",
+            mr: "प्रकाश पाण्याच्या आत वक्रांत चालतो, आणि पृष्ठ सोडताच वक्र थांबतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Nothing is wrong with the coin, the water or the eye — the illusion is built entirely out of refraction plus one honest assumption the eye cannot help making. Start with the light. Rays leave the coin in all directions and travel up through the water, which is optically denser than air, so inside the water they move more slowly. At the water's surface each ray crosses into the rarer air, speeds up, and therefore bends away from the normal. This is ordinary refraction, and it is real and measurable. Now comes the crucial step, which is about seeing rather than about light. The eye and brain have no way of detecting that a ray changed direction somewhere along its path; they can only receive the ray that finally arrives and assume, as they always do, that it travelled in a straight line all the way. So the brain traces each arriving ray straight backwards. Because the rays were bent away from the normal on leaving the water, these backward extensions do not reach down to the real coin — they cross each other at a point higher up. That crossing point is where the brain places the coin: a virtual image, sitting above the true position. The coin has not risen; the straight-line assumption has been violated, and the error shows up as apparent depth being less than real depth. The child, reaching for what the eye reports, grabs above the coin. The extension follows directly. How far the rays bend on leaving depends on how different the two media are — that is, on the refractive index. A liquid with a higher refractive index slows light more, bends the emerging rays more sharply away from the normal, and so pushes the backward extensions' meeting point higher still. The illusion would be stronger, not weaker. This same reasoning explains the pencil that looks broken at the water line, the apparent flattening of a pond's floor, and why a fisherman aiming a spear at a fish must aim below where the fish appears. (The wrong answers invoke a physical push, a confused eye, or curved travel inside water — but light goes perfectly straight within a uniform medium and bends only at the boundary.)",
+            hi: "सिक्के, पानी या आँख में कुछ ग़लत नहीं — भ्रम पूरा अपवर्तन और एक ईमानदार मान्यता से बना जो आँख किए बिना रह नहीं सकती। प्रकाश से शुरू करो। किरणें सिक्के से हर दिशा में निकलतीं और पानी से ऊपर चलतीं, जो हवा से प्रकाशिकीय रूप से सघन, अतः पानी के भीतर वे धीमे चलतीं। पानी की सतह पर हर किरण विरल हवा में पार करती, तेज़ होती, और इसलिए अभिलंब से दूर मुड़ती। यह साधारण अपवर्तन, और यह असली तथा मापनीय। अब मुख्य चरण, जो देखने के बारे में, प्रकाश के नहीं। आँख और मस्तिष्क के पास यह भाँपने का कोई उपाय नहीं कि किरण ने रास्ते में कहीं दिशा बदली; वे केवल अंत में पहुँची किरण पा सकते और मान लेते, जैसा सदा करते, कि वह पूरे रास्ते सीधी रेखा में चली। अतः मस्तिष्क हर आती किरण को सीधा पीछे खींचता। क्योंकि पानी छोड़ते किरणें अभिलंब से दूर मुड़ीं, ये पीछे के विस्तार असली सिक्के तक नीचे नहीं पहुँचते — वे ऊपर एक बिंदु पर एक-दूसरे को काटते। वही कटान-बिंदु जहाँ मस्तिष्क सिक्का रखता: आभासी प्रतिबिंब, असली स्थिति से ऊपर बैठा। सिक्का उठा नहीं; सीधी-रेखा मान्यता टूटी, और त्रुटि प्रतीत गहराई के असली गहराई से कम होने में दिखती। बच्चा, जो आँख बताती उसे पकड़ने बढ़ता, सिक्के से ऊपर पकड़ता। विस्तार सीधा निकलता। निकलते किरणें कितनी मुड़तीं यह इस पर कि दोनों माध्यम कितने भिन्न — यानी अपवर्तनांक पर। ऊँचे अपवर्तनांक का द्रव प्रकाश अधिक धीमा करता, निकलती किरणें अभिलंब से और तीखी मोड़ता, और इस तरह पीछे के विस्तारों का मिलन-बिंदु और ऊपर धकेलता। भ्रम प्रबल होगा, दुर्बल नहीं। यही तर्क पानी की रेखा पर टूटी दिखती पेंसिल, तालाब के तल का प्रतीत चपटापन, और क्यों मछली पर भाला ताकता मछुआरा मछली दिखने से नीचे ताके — सब समझाता। (ग़लत उत्तर भौतिक धक्का, भ्रमित आँख, या पानी के भीतर वक्र यात्रा बुलाते — पर प्रकाश एकसमान माध्यम में बिलकुल सीधा चलता और केवल सीमा पर मुड़ता।)",
+          mr: "नाण्यात, पाण्यात वा डोळ्यात काही चुकीचे नाही — भ्रम पूर्णपणे अपवर्तन आणि एका प्रामाणिक गृहीतकातून बनलेला जे डोळा केल्याविना राहू शकत नाही. प्रकाशापासून सुरू करा. किरण नाण्यापासून सर्व दिशांना निघतात आणि पाण्यातून वर जातात, जे हवेहून प्रकाशीयदृष्ट्या घन, म्हणून पाण्याच्या आत ते अधिक मंद चालतात. पाण्याच्या पृष्ठावर प्रत्येक किरण विरळ हवेत ओलांडतो, वेगावतो, आणि म्हणून स्तंभिकेपासून दूर वाकतो. हे सामान्य अपवर्तन, आणि ते खरे आणि मोजण्याजोगे. आता महत्त्वाची पायरी, जी पाहण्याबद्दल, प्रकाशाबद्दल नाही. डोळा आणि मेंदूकडे हे ओळखण्याचा कोणताही मार्ग नाही की किरणाने वाटेत कुठेतरी दिशा बदलली; ते फक्त शेवटी पोहोचलेला किरण मिळवू शकतात आणि गृहीत धरतात, जसे सदैव करतात, की तो अख्खा मार्ग सरळ रेषेत चालला. म्हणून मेंदू प्रत्येक येणारा किरण सरळ मागे नेतो. कारण पाणी सोडताना किरण स्तंभिकेपासून दूर वाकले, हे मागचे विस्तार खऱ्या नाण्यापर्यंत खाली पोहोचत नाहीत — ते वरच्या एका बिंदूवर एकमेकांना छेदतात. तोच छेदन-बिंदू जिथे मेंदू नाणे ठेवतो: आभासी प्रतिमा, खऱ्या स्थानाहून वर बसलेली. नाणे वर आले नाही; सरळ-रेषेचे गृहीतक मोडले, आणि चूक भासणारी खोली खऱ्या खोलीहून कमी असण्यात दिसते. मूल, जे डोळा सांगतो ते पकडायला जाते, नाण्याहून वर पकडते. विस्तार थेट निघतो. बाहेर पडताना किरण किती वाकतील हे यावर की दोन्ही माध्यमे किती वेगळी — म्हणजे अपवर्तनांकावर. अधिक अपवर्तनांकाचा द्रव प्रकाश अधिक मंदावतो, बाहेर पडणारे किरण स्तंभिकेपासून अधिक तीव्र वाकवतो, आणि अशा प्रकारे मागच्या विस्तारांचा मिलन-बिंदू आणखी वर ढकलतो. भ्रम प्रबळ होईल, दुर्बळ नाही. हेच तर्क पाण्याच्या रेषेवर मोडलेली दिसणारी पेन्सिल, तळ्याच्या तळाचा भासणारा चपटेपणा, आणि माशावर भाला रोखणाऱ्या कोळ्याने मासा दिसतो त्याहून खाली का रोखावे — सर्व समजावते. (चुकीची उत्तरे भौतिक धक्का, गोंधळलेला डोळा, वा पाण्याच्या आत वक्र प्रवास सुचवतात — पण प्रकाश एकसमान माध्यमात अगदी सरळ चालतो आणि फक्त सीमेवर वाकतो.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — The Human Eye and the Colourful World                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-human-eye",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 10 — The Human Eye and the Colourful World",
+      hi: "अध्याय 10 — मानव नेत्र तथा रंगबिरंगा संसार",
+      mr: "प्रकरण 10 — मानवी डोळा आणि रंगीबेरंगी जग",
+    },
+    name: {
+      en: "The Human Eye and the Colourful World",
+      hi: "मानव नेत्र तथा रंगबिरंगा संसार",
+      mr: "मानवी डोळा आणि रंगीबेरंगी जग",
+    },
+    summary: {
+      en: "A living lens that refocuses itself, and the two defects a spectacle-maker corrects; then the sky's own optics — white light split into seven colours by a prism, the air bending starlight until it twinkles, and the blue of noon and the red of sunset both explained by which colours scatter.",
+      hi: "स्वयं फोकस बदलता जीवित लेंस, और चश्मा बनाने वाला जिन दो दोषों को सुधारता; फिर आकाश की अपनी प्रकाशिकी — प्रिज़्म से सात रंगों में बँटा श्वेत प्रकाश, तारों का प्रकाश मोड़ती हवा जिससे वे टिमटिमाते, और दोपहर का नीला तथा सूर्यास्त का लाल दोनों इससे समझे कि कौन-से रंग प्रकीर्णित।",
+      mr: "स्वतःचा नाभिबिंदू बदलणारे जिवंत भिंग, आणि चष्मेवाला ज्या दोन दोषांची दुरुस्ती करतो; मग आकाशाचे स्वतःचे प्रकाशशास्त्र — लोलकाने सात रंगांत विभागलेला श्वेत प्रकाश, ताऱ्यांचा प्रकाश वाकवणारी हवा ज्यामुळे ते लुकलुकतात, आणि दुपारचा निळा व सूर्यास्ताचा लाल दोन्ही कोणते रंग विखुरतात यावरून समजलेले.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "accommodation",
+        name: {
+          en: "Accommodation of the eye",
+          hi: "नेत्र का समंजन",
+          mr: "डोळ्याचे समायोजन",
+        },
+        kind: "process",
+        prompt: {
+          en: "Look up from a book to a distant hill and the view is sharp within a moment, though the retina never moves. Which adjustment, made by muscles changing the lens's curvature, allows this?",
+          hi: "किताब से नज़र उठाकर दूर पहाड़ी देखो और दृश्य पल भर में साफ़, यद्यपि दृष्टिपटल कभी हिलता नहीं। लेंस की वक्रता बदलती पेशियों द्वारा किया कौन-सा समायोजन यह संभव करता?",
+          mr: "पुस्तकावरून नजर उचलून दूरची टेकडी पाहा आणि दृश्य क्षणात स्पष्ट, जरी दृष्टिपटल कधी हलत नाही. भिंगाची वक्रता बदलणाऱ्या स्नायूंनी केलेले कोणते समायोजन हे शक्य करते?",
+        },
+        statement: {
+          en: "Accommodation is the eye's power to change the focal length of its lens — ciliary muscles thicken the lens for near objects and slacken to flatten it for distant ones — so the image always lands on the retina.",
+          hi: "समंजन नेत्र की अपने लेंस की फोकस दूरी बदलने की शक्ति — पक्ष्माभी पेशियाँ पास की वस्तुओं के लिए लेंस मोटा करतीं और दूर की के लिए ढीली होकर चपटा — ताकि प्रतिबिंब सदा दृष्टिपटल पर गिरे।",
+          mr: "समायोजन म्हणजे डोळ्याची आपल्या भिंगाचे नाभीय अंतर बदलण्याची शक्ती — पक्ष्माभी स्नायू जवळच्या वस्तूंसाठी भिंग जाड करतात आणि दूरच्यांसाठी सैल होऊन सपाट — जेणेकरून प्रतिमा सदैव दृष्टिपटलावर पडते.",
+        },
+        detail: {
+          en: "There is a limit: the nearest point of distinct vision for a normal eye is about 25 cm, and holding a book closer than that only blurs it.",
+          hi: "एक सीमा है: सामान्य नेत्र के लिए स्पष्ट दृष्टि का निकटतम बिंदु लगभग 25 सेमी, और किताब उससे नज़दीक रखना उसे केवल धुँधला करता।",
+          mr: "एक मर्यादा आहे: सामान्य डोळ्यासाठी स्पष्ट दृष्टीचा जवळचा बिंदू सुमारे 25 सेमी, आणि पुस्तक त्याहून जवळ धरणे ते फक्त अस्पष्ट करते.",
+        },
+        extra: {
+          en: "With age the lens stiffens and the muscles weaken, so this range shrinks — the reason many older people need reading glasses even with otherwise sound sight.",
+          hi: "उम्र के साथ लेंस कड़ा होता और पेशियाँ दुर्बल, अतः यह परास सिकुड़ती — इसी से कई बुज़ुर्गों को अन्यथा ठीक दृष्टि होते भी पढ़ने का चश्मा चाहिए।",
+          mr: "वयाबरोबर भिंग कडक होते आणि स्नायू दुर्बळ, म्हणून ही व्याप्ती आकुंचते — म्हणूनच अनेक वृद्धांना एरवी चांगली दृष्टी असूनही वाचनाचा चष्मा लागतो.",
+        },
+        pair: {
+          left: {
+            en: "Lens reshaped to refocus",
+            hi: "फिर फोकस करने लेंस का आकार बदलना",
+            mr: "पुन्हा नाभिबिंदू साधण्यास भिंगाचा आकार बदलणे",
+          },
+          right: {
+            en: "accommodation",
+            hi: "समंजन",
+            mr: "समायोजन",
+          },
+        },
+      },
+      {
+        id: "myopia",
+        name: {
+          en: "Myopia",
+          hi: "निकट-दृष्टि दोष",
+          mr: "निकटदृष्टिता",
+        },
+        kind: "defect",
+        prompt: {
+          en: "A student reads comfortably but cannot make out the blackboard, because the image of a distant object forms in front of the retina instead of on it. Which defect is this, and which lens corrects it?",
+          hi: "एक छात्र आराम से पढ़ता पर श्यामपट्ट नहीं पढ़ पाता, क्योंकि दूर की वस्तु का प्रतिबिंब दृष्टिपटल पर नहीं, उसके आगे बनता। यह कौन-सा दोष, और कौन-सा लेंस इसे सुधारता?",
+          mr: "एक विद्यार्थी आरामात वाचतो पण फळा वाचू शकत नाही, कारण दूरच्या वस्तूची प्रतिमा दृष्टिपटलावर नव्हे तर त्याच्यापुढे बनते. हा कोणता दोष, आणि कोणते भिंग तो दुरुस्त करते?",
+        },
+        statement: {
+          en: "Myopia, or short-sightedness, is the defect in which distant objects focus in front of the retina, and it is corrected with a concave lens of suitable power.",
+          hi: "निकट-दृष्टि दोष वह जिसमें दूर की वस्तुएँ दृष्टिपटल के आगे फोकस होतीं, और उपयुक्त क्षमता के अवतल लेंस से सुधारा जाता।",
+          mr: "निकटदृष्टिता म्हणजे तो दोष ज्यात दूरच्या वस्तू दृष्टिपटलापुढे नाभिबिंदू साधतात, आणि योग्य क्षमतेच्या अंतर्वक्र भिंगाने दुरुस्त केला जातो.",
+        },
+        detail: {
+          en: "It arises when the eyeball has grown too long or the lens curves too strongly, so the eye bends light more than it needs to.",
+          hi: "यह तब उठता जब नेत्रगोलक बहुत लंबा हो गया या लेंस बहुत प्रबल वक्र, अतः नेत्र आवश्यकता से अधिक प्रकाश मोड़ता।",
+          mr: "हा तेव्हा उद्भवतो जेव्हा नेत्रगोल फार लांब वाढला वा भिंग फार प्रबळ वक्र, म्हणून डोळा गरजेहून अधिक प्रकाश वाकवतो.",
+        },
+        extra: {
+          en: "The correcting lens has a negative power, because it must first spread the rays a little so the eye's own over-strong focusing lands them exactly on the retina.",
+          hi: "सुधारक लेंस की क्षमता ऋणात्मक, क्योंकि उसे पहले किरणें थोड़ी फैलानी होतीं ताकि नेत्र का अपना अति-प्रबल फोकस उन्हें ठीक दृष्टिपटल पर उतारे।",
+          mr: "दुरुस्त करणाऱ्या भिंगाची क्षमता ऋण, कारण त्याने आधी किरण थोडे पसरवावे लागतात जेणेकरून डोळ्याचे स्वतःचे अति-प्रबळ नाभीकरण त्यांना नेमके दृष्टिपटलावर उतरवते.",
+        },
+        pair: {
+          left: {
+            en: "Distant blur, image before the retina",
+            hi: "दूर धुँधला, प्रतिबिंब दृष्टिपटल से पहले",
+            mr: "दूरचे अस्पष्ट, प्रतिमा दृष्टिपटलाआधी",
+          },
+          right: {
+            en: "myopia",
+            hi: "निकट-दृष्टि दोष",
+            mr: "निकटदृष्टिता",
+          },
+        },
+      },
+      {
+        id: "hypermetropia",
+        name: {
+          en: "Hypermetropia",
+          hi: "दूर-दृष्टि दोष",
+          mr: "दूरदृष्टिता",
+        },
+        kind: "defect",
+        prompt: {
+          en: "An elder can read a signboard across the street but must hold the newspaper at arm's length, because near objects focus behind the retina. Which defect is this, and which lens corrects it?",
+          hi: "एक बुज़ुर्ग सड़क पार का साइनबोर्ड पढ़ लेता पर अख़बार हाथ भर दूर रखना पड़ता, क्योंकि पास की वस्तुएँ दृष्टिपटल के पीछे फोकस होतीं। यह कौन-सा दोष, और कौन-सा लेंस इसे सुधारता?",
+          mr: "एक वृद्ध रस्त्यापलीकडचा फलक वाचू शकतो पण वर्तमानपत्र हातभर दूर धरावे लागते, कारण जवळच्या वस्तू दृष्टिपटलामागे नाभिबिंदू साधतात. हा कोणता दोष, आणि कोणते भिंग तो दुरुस्त करते?",
+        },
+        statement: {
+          en: "Hypermetropia, or long-sightedness, is the defect in which nearby objects focus behind the retina, and it is corrected with a convex lens of suitable power.",
+          hi: "दूर-दृष्टि दोष वह जिसमें पास की वस्तुएँ दृष्टिपटल के पीछे फोकस होतीं, और उपयुक्त क्षमता के उत्तल लेंस से सुधारा जाता।",
+          mr: "दूरदृष्टिता म्हणजे तो दोष ज्यात जवळच्या वस्तू दृष्टिपटलामागे नाभिबिंदू साधतात, आणि योग्य क्षमतेच्या बहिर्वक्र भिंगाने दुरुस्त केला जातो.",
+        },
+        detail: {
+          en: "It arises when the eyeball is too short or the lens too flat, so the eye does not bend light enough to bring near objects to a focus in time.",
+          hi: "यह तब उठता जब नेत्रगोलक बहुत छोटा या लेंस बहुत चपटा, अतः नेत्र पास की वस्तुओं को समय पर फोकस करने भर प्रकाश नहीं मोड़ता।",
+          mr: "हा तेव्हा उद्भवतो जेव्हा नेत्रगोल फार आखूड वा भिंग फार सपाट, म्हणून डोळा जवळच्या वस्तू वेळेत नाभिबिंदूवर आणण्याइतका प्रकाश वाकवत नाही.",
+        },
+        extra: {
+          en: "The correcting lens has a positive power, converging the rays a little before they enter so the eye's weaker focusing is topped up to just enough.",
+          hi: "सुधारक लेंस की क्षमता धनात्मक, प्रवेश से पहले किरणें थोड़ी अभिसरित करता ताकि नेत्र का दुर्बल फोकस ठीक भर तक पूरा हो।",
+          mr: "दुरुस्त करणाऱ्या भिंगाची क्षमता धन, प्रवेशापूर्वी किरण थोडे अभिसरित करते जेणेकरून डोळ्याचे दुर्बळ नाभीकरण नेमके पुरेसे भरून निघते.",
+        },
+        pair: {
+          left: {
+            en: "Near blur, image beyond the retina",
+            hi: "पास धुँधला, प्रतिबिंब दृष्टिपटल से परे",
+            mr: "जवळचे अस्पष्ट, प्रतिमा दृष्टिपटलापलीकडे",
+          },
+          right: {
+            en: "hypermetropia",
+            hi: "दूर-दृष्टि दोष",
+            mr: "दूरदृष्टिता",
+          },
+        },
+      },
+      {
+        id: "dispersion",
+        name: {
+          en: "Dispersion through a prism",
+          hi: "प्रिज़्म से विक्षेपण",
+          mr: "लोलकातून अपस्करण",
+        },
+        kind: "process",
+        prompt: {
+          en: "A narrow beam of sunlight entering a glass prism leaves it fanned into a band running from violet to red. Which splitting of white light into its colours is this, and why does it happen?",
+          hi: "काँच के प्रिज़्म में घुसती धूप की पतली किरण-पुंज बैंगनी से लाल तक फैली पट्टी बनकर निकलती। श्वेत प्रकाश का रंगों में यह कौन-सा बँटना, और क्यों होता?",
+          mr: "काचेच्या लोलकात शिरणारा सूर्यप्रकाशाचा अरुंद झोत जांभळ्यापासून लालपर्यंत पसरलेल्या पट्ट्यात बाहेर पडतो. श्वेत प्रकाशाचे रंगांत हे कोणते विभाजन, आणि का घडते?",
+        },
+        statement: {
+          en: "Dispersion is the splitting of white light into its component colours by a prism, and it happens because each colour is bent through a different angle — violet most and red least.",
+          hi: "विक्षेपण प्रिज़्म द्वारा श्वेत प्रकाश का उसके घटक रंगों में बँटना, और होता क्योंकि हर रंग भिन्न कोण से मुड़ता — बैंगनी सर्वाधिक और लाल सबसे कम।",
+          mr: "अपस्करण म्हणजे लोलकाने श्वेत प्रकाशाचे त्याच्या घटक रंगांत विभाजन, आणि ते घडते कारण प्रत्येक रंग वेगळ्या कोनातून वाकतो — जांभळा सर्वाधिक आणि लाल सर्वांत कमी.",
+        },
+        detail: {
+          en: "A second, inverted prism placed after the first recombines the band back into white light, proving the prism only separated colours already present, and never made them.",
+          hi: "पहले के बाद रखा दूसरा, उल्टा प्रिज़्म पट्टी को फिर श्वेत प्रकाश में जोड़ देता, सिद्ध करता कि प्रिज़्म ने पहले से मौजूद रंग केवल अलग किए, बनाए कभी नहीं।",
+          mr: "पहिल्यानंतर ठेवलेला दुसरा, उलटा लोलक पट्टी पुन्हा श्वेत प्रकाशात जोडतो, सिद्ध करत की लोलकाने आधीच असलेले रंग फक्त वेगळे केले, बनवले कधीच नाहीत.",
+        },
+        extra: {
+          en: "A rainbow is this same effect performed by raindrops, each drop refracting the sunlight, reflecting it inside, and refracting it out again.",
+          hi: "इंद्रधनुष वही प्रभाव वर्षा-बूँदों द्वारा किया, हर बूँद धूप का अपवर्तन करती, भीतर परावर्तित करती, और फिर बाहर अपवर्तित।",
+          mr: "इंद्रधनुष्य हाच परिणाम पावसाच्या थेंबांनी केलेला, प्रत्येक थेंब सूर्यप्रकाशाचे अपवर्तन करतो, आत परावर्तित करतो, आणि पुन्हा बाहेर अपवर्तित.",
+        },
+        pair: {
+          left: {
+            en: "White light fanned into colours",
+            hi: "श्वेत प्रकाश रंगों में फैला",
+            mr: "श्वेत प्रकाश रंगांत पसरलेला",
+          },
+          right: {
+            en: "dispersion",
+            hi: "विक्षेपण",
+            mr: "अपस्करण",
+          },
+        },
+      },
+      {
+        id: "atmospheric-refraction",
+        name: {
+          en: "Atmospheric refraction",
+          hi: "वायुमंडलीय अपवर्तन",
+          mr: "वातावरणीय अपवर्तन",
+        },
+        kind: "process",
+        prompt: {
+          en: "Stars seem to twinkle, the sun is visible a couple of minutes before it actually rises, and hot air above a road makes distant objects shimmer. Which bending of light by air of changing density explains all three?",
+          hi: "तारे टिमटिमाते प्रतीत होते, सूर्य वास्तव में उगने से कुछ मिनट पहले दिख जाता, और सड़क के ऊपर गरम हवा दूर की वस्तुएँ लहराती दिखाती। बदलते घनत्व की हवा द्वारा प्रकाश का कौन-सा मुड़ना तीनों समझाता?",
+          mr: "तारे लुकलुकताना भासतात, सूर्य प्रत्यक्ष उगवण्याआधी काही मिनिटे दिसतो, आणि रस्त्यावरील तप्त हवा दूरच्या वस्तू थरथरताना दाखवते. बदलत्या घनतेच्या हवेने प्रकाशाचे कोणते वाकणे तिन्ही समजावते?",
+        },
+        statement: {
+          en: "Atmospheric refraction is the bending of light as it passes through air layers of different density, and it makes stars twinkle, advances sunrise, delays sunset and produces the shimmer above hot ground.",
+          hi: "वायुमंडलीय अपवर्तन भिन्न घनत्व की वायु-परतों से गुज़रते प्रकाश का मुड़ना, और यह तारों को टिमटिमाता, सूर्योदय जल्दी करता, सूर्यास्त देर से, और गरम ज़मीन के ऊपर लहर बनाता।",
+          mr: "वातावरणीय अपवर्तन म्हणजे वेगळ्या घनतेच्या हवेच्या थरांतून जाताना प्रकाशाचे वाकणे, आणि ते ताऱ्यांना लुकलुकवते, सूर्योदय लवकर करते, सूर्यास्त उशिरा, आणि तप्त जमिनीवर थरथर निर्माण करते.",
+        },
+        detail: {
+          en: "The air's density keeps shifting as it is stirred and heated, so a star's light arrives along a slightly different path each instant, and its brightness seems to flicker.",
+          hi: "हवा का घनत्व हिलने-गरम होने से बदलता रहता, अतः तारे का प्रकाश हर पल थोड़े भिन्न पथ से आता, और उसकी चमक झिलमिलाती प्रतीत होती।",
+          mr: "हवेची घनता ढवळल्याने-तापल्याने बदलत राहते, म्हणून ताऱ्याचा प्रकाश प्रत्येक क्षणी थोड्या वेगळ्या मार्गाने येतो, आणि त्याची तेजस्विता लुकलुकल्यासारखी भासते.",
+        },
+        extra: {
+          en: "Planets do not twinkle, because they are near enough to appear as tiny discs rather than points, and the flickers from all their parts average out.",
+          hi: "ग्रह नहीं टिमटिमाते, क्योंकि वे इतने पास कि बिंदु नहीं बल्कि नन्ही चकतियों जैसे दिखते, और उनके सब भागों की झिलमिल औसत में मिट जाती।",
+          mr: "ग्रह लुकलुकत नाहीत, कारण ते इतके जवळ की बिंदू नव्हे तर लहान चकत्यांसारखे दिसतात, आणि त्यांच्या सर्व भागांची लुकलुक सरासरीत मिटते.",
+        },
+        pair: {
+          left: {
+            en: "Air layers bending starlight",
+            hi: "तारों का प्रकाश मोड़तीं वायु-परतें",
+            mr: "ताऱ्यांचा प्रकाश वाकवणारे हवेचे थर",
+          },
+          right: {
+            en: "atmospheric refraction",
+            hi: "वायुमंडलीय अपवर्तन",
+            mr: "वातावरणीय अपवर्तन",
+          },
+        },
+      },
+      {
+        id: "scattering",
+        name: {
+          en: "Scattering of light",
+          hi: "प्रकाश का प्रकीर्णन",
+          mr: "प्रकाशाचे विखुरणे",
+        },
+        kind: "process",
+        prompt: {
+          en: "The midday sky is blue, the setting sun is red, and a beam through dusty air shows up as a visible shaft. Which throwing of light in all directions by small particles explains these together?",
+          hi: "दोपहर का आकाश नीला, डूबता सूर्य लाल, और धूल भरी हवा से गुज़रता किरण-पुंज दिखती लकीर बनता। छोटे कणों द्वारा प्रकाश का हर दिशा में कौन-सा फेंका जाना ये साथ समझाता?",
+          mr: "दुपारचे आकाश निळे, मावळता सूर्य लाल, आणि धूळभरल्या हवेतून जाणारा झोत दिसणारी रेघ बनतो. लहान कणांनी प्रकाश सर्व दिशांना कोणत्या प्रकारे फेकला जाणे हे एकत्र समजावते?",
+        },
+        statement: {
+          en: "Scattering is the throwing of light in all directions by particles in its path, and because shorter wavelengths scatter far more strongly, blue is scattered most and red least.",
+          hi: "प्रकीर्णन पथ के कणों द्वारा प्रकाश का हर दिशा में फेंका जाना, और क्योंकि छोटी तरंगदैर्घ्य कहीं प्रबलता से प्रकीर्णित, नीला सर्वाधिक और लाल सबसे कम प्रकीर्णित।",
+          mr: "विखुरणे म्हणजे मार्गातील कणांनी प्रकाश सर्व दिशांना फेकला जाणे, आणि लहान तरंगलांबी कितीतरी प्रबळपणे विखुरत असल्याने, निळा सर्वाधिक आणि लाल सर्वांत कमी विखुरतो.",
+        },
+        detail: {
+          en: "The sky is blue because the air scatters blue light down to us from every part of the sky, while the sun looks white or yellow because the rest comes straight through.",
+          hi: "आकाश नीला क्योंकि हवा आकाश के हर भाग से नीला प्रकाश हम तक प्रकीर्णित करती, जबकि सूर्य श्वेत या पीला दिखता क्योंकि शेष सीधा चला आता।",
+          mr: "आकाश निळे कारण हवा आकाशाच्या प्रत्येक भागातून निळा प्रकाश आपल्यापर्यंत विखुरते, तर सूर्य श्वेत वा पिवळा दिसतो कारण उरलेला सरळ येतो.",
+        },
+        extra: {
+          en: "The Tyndall effect is this same scattering made visible in a colloid — a torch beam turns into a bright shaft when it crosses smoky or misty air.",
+          hi: "टिंडल प्रभाव वही प्रकीर्णन कोलॉइड में दिखाई पड़ता — टॉर्च का पुंज धुएँ या कोहरे भरी हवा पार करते चमकती लकीर बन जाता।",
+          mr: "टिंडल परिणाम म्हणजे तेच विखुरणे कलिलात दृश्य झालेले — बॅटरीचा झोत धुरकट वा धुक्याच्या हवेतून जाताना तेजस्वी रेघ बनतो.",
+        },
+        pair: {
+          left: {
+            en: "Small particles throwing light everywhere",
+            hi: "छोटे कण प्रकाश हर ओर फेंकें",
+            mr: "लहान कण प्रकाश सर्वत्र फेकतात",
+          },
+          right: {
+            en: "scattering",
+            hi: "प्रकीर्णन",
+            mr: "विखुरणे",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A boy who sits at the back of the class cannot read the blackboard but reads his book easily. His grandfather can read the same blackboard from the doorway yet holds the newspaper at arm's length. The optician gives the boy a lens marked −2 D and the grandfather one marked +2 D. Explain both defects and why the corrections are opposite.",
+          hi: "कक्षा में पीछे बैठा एक लड़का श्यामपट्ट नहीं पढ़ पाता पर अपनी किताब आसानी से पढ़ता। उसके दादा वही श्यामपट्ट दरवाज़े से पढ़ लेते पर अख़बार हाथ भर दूर रखते। चश्मा-विक्रेता लड़के को −2 D और दादा को +2 D अंकित लेंस देता। दोनों दोष और सुधार उल्टे क्यों, समझाओ।",
+          mr: "वर्गात मागे बसलेला एक मुलगा फळा वाचू शकत नाही पण आपले पुस्तक सहज वाचतो. त्याचे आजोबा तोच फळा दारातून वाचू शकतात पण वर्तमानपत्र हातभर दूर धरतात. चष्मेवाला मुलाला −2 D आणि आजोबांना +2 D चिन्हांकित भिंग देतो. दोन्ही दोष आणि दुरुस्त्या उलट का, हे समजावा.",
+        },
+        choices: [
+          {
+            en: "The boy has myopia: his eye bends light too strongly, so distant objects focus in front of the retina — a concave lens of negative power first diverges the rays so the eye's own focusing lands them on the retina. The grandfather has hypermetropia: his eye bends light too weakly, so near objects focus behind the retina — a convex lens of positive power converges the rays a little first, topping up the eye's shortfall",
+            hi: "लड़के को निकट-दृष्टि दोष: उसका नेत्र प्रकाश बहुत प्रबलता से मोड़ता, अतः दूर की वस्तुएँ दृष्टिपटल के आगे फोकस — ऋण क्षमता का अवतल लेंस पहले किरणें अपसरित करता ताकि नेत्र का अपना फोकस उन्हें दृष्टिपटल पर उतारे। दादा को दूर-दृष्टि दोष: उनका नेत्र प्रकाश बहुत दुर्बलता से मोड़ता, अतः पास की वस्तुएँ दृष्टिपटल के पीछे फोकस — धन क्षमता का उत्तल लेंस पहले किरणें थोड़ी अभिसरित करता, नेत्र की कमी पूरी करता",
+            mr: "मुलाला निकटदृष्टिता: त्याचा डोळा प्रकाश फार प्रबळपणे वाकवतो, म्हणून दूरच्या वस्तू दृष्टिपटलापुढे नाभिबिंदू साधतात — ऋण क्षमतेचे अंतर्वक्र भिंग आधी किरण अपसरित करते जेणेकरून डोळ्याचे स्वतःचे नाभीकरण त्यांना दृष्टिपटलावर उतरवते. आजोबांना दूरदृष्टिता: त्यांचा डोळा प्रकाश फार दुर्बळपणे वाकवतो, म्हणून जवळच्या वस्तू दृष्टिपटलामागे नाभिबिंदू साधतात — धन क्षमतेचे बहिर्वक्र भिंग आधी किरण थोडे अभिसरित करते, डोळ्याची कमतरता भरून काढते",
+          },
+          {
+            en: "Both have the same defect; the signs on the lenses merely record which eye is weaker",
+            hi: "दोनों को एक ही दोष; लेंसों पर चिह्न बस दर्ज करते कौन-सा नेत्र दुर्बल",
+            mr: "दोघांना एकच दोष; भिंगांवरील चिन्हे फक्त कोणता डोळा दुर्बळ हे नोंदवतात",
+          },
+          {
+            en: "The boy is long-sighted and the grandfather short-sighted, the other way round",
+            hi: "लड़का दूर-दृष्टि और दादा निकट-दृष्टि, उल्टे तरीक़े से",
+            mr: "मुलगा दूरदृष्टीचा आणि आजोबा निकटदृष्टीचे, उलट पद्धतीने",
+          },
+          {
+            en: "Neither has a lens defect; both simply need to sit at the correct distance",
+            hi: "किसी को लेंस-दोष नहीं; दोनों को बस ठीक दूरी पर बैठना चाहिए",
+            mr: "कोणालाही भिंग-दोष नाही; दोघांनी फक्त योग्य अंतरावर बसावे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both problems come from the same requirement — a sharp image must land exactly on the retina — and they fail it in opposite directions. Take the boy first. He sees near things well but distant things blur, which is myopia, or short-sightedness. His eye is bending light too strongly for far objects: either the eyeball has grown a little too long, or the lens and cornea curve too much. Rays from the blackboard arrive nearly parallel, the over-strong eye converges them too soon, and they come to a focus in front of the retina and then spread again before reaching it — so the image on the retina is a blur. To fix it you must weaken the incoming light before the eye touches it, so a concave (diverging) lens is placed in front. It spreads the parallel rays slightly, and the eye's excess converging power is then exactly right to bring them together on the retina. Because a concave lens has a negative focal length, its power is negative — hence −2 D. The grandfather is the mirror case. He sees the distant blackboard well but must push the newspaper away, which is hypermetropia, or long-sightedness. His eye bends light too weakly for near objects: the eyeball may be a little short, or the lens too flat and stiffened with age. Rays from a close page arrive strongly diverging and need a lot of converging; his eye cannot supply enough, so they are still converging when they reach the retina and would only meet behind it — again a blur. The fix is to add the missing converging power, so a convex lens is placed in front. It brings the rays partway together before they enter, and the eye's weaker focusing completes the job on the retina. A convex lens has a positive focal length, so its power is positive — hence +2 D. The corrections are opposite because the errors are opposite: one eye focuses too soon and must be given diverging help, the other too late and must be given converging help. The equal magnitudes, 2 D each, are a coincidence of these two particular eyes and say nothing about the defects being the same. (The wrong answers either deny the distinction, reverse the two defects, or pretend seating distance could cure an eye that cannot form a sharp image at any distance.)",
+          hi: "दोनों समस्याएँ एक ही आवश्यकता से — तीखा प्रतिबिंब ठीक दृष्टिपटल पर गिरे — और वे उसमें उल्टी दिशाओं में चूकतीं। पहले लड़का। वह पास की चीज़ें ठीक देखता पर दूर की धुँधली, यह निकट-दृष्टि दोष। उसका नेत्र दूर की वस्तुओं के लिए प्रकाश बहुत प्रबलता से मोड़ रहा: या तो नेत्रगोलक थोड़ा अधिक लंबा हो गया, या लेंस और स्वच्छपटल बहुत वक्र। श्यामपट्ट से किरणें लगभग समांतर आतीं, अति-प्रबल नेत्र उन्हें बहुत जल्दी अभिसरित करता, और वे दृष्टिपटल के आगे फोकस होकर पहुँचने से पहले फिर फैल जातीं — अतः दृष्टिपटल पर प्रतिबिंब धुँधला। सुधार को आते प्रकाश को नेत्र से छूने से पहले दुर्बल करना होगा, अतः आगे अवतल (अपसारी) लेंस रखा। यह समांतर किरणें थोड़ी फैलाता, और नेत्र की अतिरिक्त अभिसरण-शक्ति तब ठीक इतनी कि उन्हें दृष्टिपटल पर मिलाए। क्योंकि अवतल लेंस की फोकस दूरी ऋणात्मक, उसकी क्षमता ऋणात्मक — इसीलिए −2 D। दादा दर्पण-प्रकरण। वे दूर का श्यामपट्ट ठीक देखते पर अख़बार दूर धकेलना पड़ता, यह दूर-दृष्टि दोष। उनका नेत्र पास की वस्तुओं के लिए प्रकाश बहुत दुर्बलता से मोड़ता: नेत्रगोलक थोड़ा छोटा हो सकता, या लेंस बहुत चपटा और उम्र से कड़ा। पास के पन्ने से किरणें प्रबल अपसरित होकर आतीं और बहुत अभिसरण चाहतीं; उनका नेत्र इतना नहीं दे पाता, अतः दृष्टिपटल तक पहुँचते वे अब भी अभिसरित हो रहीं और केवल उसके पीछे मिलतीं — फिर धुँधला। सुधार लुप्त अभिसरण-शक्ति जोड़ना, अतः आगे उत्तल लेंस रखा। यह प्रवेश से पहले किरणें आधी दूर तक मिला देता, और नेत्र का दुर्बल फोकस काम दृष्टिपटल पर पूरा करता। उत्तल लेंस की फोकस दूरी धनात्मक, अतः क्षमता धनात्मक — इसीलिए +2 D। सुधार उल्टे क्योंकि त्रुटियाँ उल्टीं: एक नेत्र बहुत जल्दी फोकस करता और उसे अपसारी सहायता चाहिए, दूसरा बहुत देर से और उसे अभिसारी। बराबर परिमाण, 2 D प्रत्येक, इन दो विशेष नेत्रों का संयोग और दोषों के एक होने का कोई संकेत नहीं। (ग़लत उत्तर या तो भेद नकारते, दोनों दोष उलटते, या दिखावा करते कि बैठने की दूरी उस नेत्र को ठीक कर देती जो किसी भी दूरी पर तीखा प्रतिबिंब नहीं बना सकता।)",
+          mr: "दोन्ही समस्या एकाच आवश्यकतेतून — तीक्ष्ण प्रतिमा नेमकी दृष्टिपटलावर पडावी — आणि त्या तीत उलट दिशांनी चुकतात. आधी मुलगा. तो जवळच्या गोष्टी नीट पाहतो पण दूरच्या अस्पष्ट, ही निकटदृष्टिता. त्याचा डोळा दूरच्या वस्तूंसाठी प्रकाश फार प्रबळपणे वाकवत आहे: एकतर नेत्रगोल थोडा जास्त लांब वाढला, वा भिंग आणि पारपटल फार वक्र. फळ्यापासून किरण जवळजवळ समांतर येतात, अति-प्रबळ डोळा त्यांना फार लवकर अभिसरित करतो, आणि ते दृष्टिपटलापुढे नाभिबिंदू साधून पोहोचण्याआधी पुन्हा पसरतात — म्हणून दृष्टिपटलावरील प्रतिमा अस्पष्ट. दुरुस्तीसाठी येणारा प्रकाश डोळ्याला स्पर्शण्याआधी दुर्बळ करावा लागेल, म्हणून पुढे अंतर्वक्र (अपसारी) भिंग ठेवले. ते समांतर किरण थोडे पसरवते, आणि डोळ्याची अतिरिक्त अभिसरण-शक्ती मग नेमकी इतकी की त्यांना दृष्टिपटलावर जुळवते. अंतर्वक्र भिंगाचे नाभीय अंतर ऋण असल्याने, त्याची क्षमता ऋण — म्हणून −2 D. आजोबा उलट प्रकरण. ते दूरचा फळा नीट पाहतात पण वर्तमानपत्र दूर ढकलावे लागते, ही दूरदृष्टिता. त्यांचा डोळा जवळच्या वस्तूंसाठी प्रकाश फार दुर्बळपणे वाकवतो: नेत्रगोल थोडा आखूड असू शकतो, वा भिंग फार सपाट आणि वयाने कडक. जवळच्या पानापासून किरण प्रबळ अपसरित होऊन येतात आणि खूप अभिसरण मागतात; त्यांचा डोळा तितके देऊ शकत नाही, म्हणून दृष्टिपटलापर्यंत पोहोचताना ते अजून अभिसरित होत असतात आणि केवळ त्याच्यामागे भेटतील — पुन्हा अस्पष्ट. दुरुस्ती म्हणजे हरवलेली अभिसरण-शक्ती जोडणे, म्हणून पुढे बहिर्वक्र भिंग ठेवले. ते प्रवेशापूर्वी किरण अर्ध्या वाटेत जुळवते, आणि डोळ्याचे दुर्बळ नाभीकरण काम दृष्टिपटलावर पूर्ण करते. बहिर्वक्र भिंगाचे नाभीय अंतर धन, म्हणून क्षमता धन — म्हणून +2 D. दुरुस्त्या उलट कारण चुका उलट: एक डोळा फार लवकर नाभिबिंदू साधतो आणि त्याला अपसारी मदत हवी, दुसरा फार उशिरा आणि त्याला अभिसारी. समान परिमाणे, प्रत्येकी 2 D, या दोन विशिष्ट डोळ्यांचा योगायोग आणि दोष एकच असल्याचा कोणताही संकेत नाही. (चुकीची उत्तरे एकतर भेद नाकारतात, दोन्ही दोष उलटवतात, वा असे भासवतात की बसण्याचे अंतर त्या डोळ्याला बरे करेल जो कोणत्याही अंतरावर तीक्ष्ण प्रतिमा बनवू शकत नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The sky overhead is blue at noon, yet the same sun turns deep red at sunset, and an astronaut in orbit sees a black sky with a white sun. One single mechanism explains all three. Identify it and show how it produces each of these very different sights.",
+          hi: "दोपहर ऊपर का आकाश नीला, फिर भी वही सूर्य सूर्यास्त पर गहरा लाल, और कक्षा में अंतरिक्ष-यात्री काला आकाश और श्वेत सूर्य देखता। एक ही क्रियाविधि तीनों समझाती। उसे पहचानो और दिखाओ वह ये अत्यंत भिन्न दृश्य कैसे बनाती।",
+          mr: "दुपारी वरचे आकाश निळे, तरीही तोच सूर्य सूर्यास्ताला गडद लाल, आणि कक्षेतील अंतराळवीर काळे आकाश आणि श्वेत सूर्य पाहतो. एकच क्रियाविधी तिन्ही समजावते. ती ओळखा आणि दाखवा ती ही अतिशय वेगळी दृश्ये कशी घडवते.",
+        },
+        choices: [
+          {
+            en: "Scattering of sunlight by air molecules, which is far stronger for short wavelengths. At noon the air scatters blue light down to us from all over the sky, so the sky looks blue. At sunset the light travels a much longer slanting path through the atmosphere, so nearly all the blue is scattered away before it arrives and only the surviving red and orange reach the eye. In orbit there is no air to scatter anything, so the sky is black and the sun stays white",
+            hi: "वायु-अणुओं द्वारा सूर्य-प्रकाश का प्रकीर्णन, जो छोटी तरंगदैर्घ्य के लिए कहीं प्रबल। दोपहर हवा आकाश भर से नीला प्रकाश हम तक प्रकीर्णित करती, अतः आकाश नीला। सूर्यास्त पर प्रकाश वायुमंडल से कहीं लंबा तिरछा पथ चलता, अतः पहुँचने से पहले लगभग सारा नीला प्रकीर्णित हो जाता और केवल बचे लाल-नारंगी आँख तक। कक्षा में प्रकीर्णित करने कोई हवा नहीं, अतः आकाश काला और सूर्य श्वेत रहता",
+            mr: "हवेच्या रेणूंनी सूर्यप्रकाशाचे विखुरणे, जे लहान तरंगलांबींसाठी कितीतरी प्रबळ. दुपारी हवा आकाशभरातून निळा प्रकाश आपल्यापर्यंत विखुरते, म्हणून आकाश निळे. सूर्यास्ताला प्रकाश वातावरणातून कितीतरी लांब तिरका मार्ग चालतो, म्हणून पोहोचण्याआधी जवळजवळ सर्व निळा विखुरून जातो आणि फक्त उरलेला लाल-केशरी डोळ्यापर्यंत. कक्षेत विखुरायला हवाच नाही, म्हणून आकाश काळे आणि सूर्य श्वेत राहतो",
+          },
+          {
+            en: "The sun itself changes colour through the day, burning bluer at noon and redder in the evening",
+            hi: "सूर्य स्वयं दिन भर रंग बदलता, दोपहर नीला और शाम लाल जलता",
+            mr: "सूर्य स्वतः दिवसभर रंग बदलतो, दुपारी निळा आणि संध्याकाळी लाल जळतो",
+          },
+          {
+            en: "The sky is blue because it reflects the blue of the seas, and red at sunset because it reflects the warm ground",
+            hi: "आकाश नीला क्योंकि वह समुद्रों का नीला परावर्तित करता, और सूर्यास्त पर लाल क्योंकि गरम ज़मीन परावर्तित करता",
+            mr: "आकाश निळे कारण ते समुद्रांचा निळा परावर्तित करते, आणि सूर्यास्ताला लाल कारण तप्त जमीन परावर्तित करते",
+          },
+          {
+            en: "Air absorbs red light during the day and blue light in the evening, in a daily cycle",
+            hi: "हवा दिन में लाल प्रकाश और शाम को नीला सोखती, एक दैनिक चक्र में",
+            mr: "हवा दिवसा लाल प्रकाश आणि संध्याकाळी निळा शोषते, एका दैनंदिन चक्रात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "One mechanism — the scattering of sunlight by the molecules of the air — accounts for all three sights, and the whole argument turns on a single fact: scattering is far stronger for short wavelengths than for long ones. Blue and violet, at the short end of the visible spectrum, are scattered many times more than orange and red. Begin with the noon sky. Sunlight entering the atmosphere is white, a mixture of all colours. As it passes through the air, the molecules scatter it in every direction, but they scatter the blue far more than the red. So when you look up at a part of the sky away from the sun, what reaches your eye from that patch is mostly scattered blue light — the sky glows blue everywhere, even though there is nothing blue up there. The direct beam, meanwhile, has lost only a little of its blue and still looks white-yellow. Now the sunset. The sun is low, so its light no longer comes down through the thin overhead layer but slants across a far longer stretch of atmosphere before reaching you. Over that long path, scattering has many more chances to act, and virtually all the blue and green are scattered out of the beam sideways — away from your line of sight. What survives the journey and arrives at your eye is the light that scatters least: the reds and oranges. The sun therefore looks deep red, and the clouds near it are lit red too. Nothing about the sun has changed; only the length of air the light had to cross. Finally, the astronaut. In orbit there is essentially no atmosphere, and scattering needs particles to do the scattering. With no air molecules along the line of sight, no light is thrown sideways into the eye from empty directions, so the sky away from the sun is simply black — you see only where a source actually is. And the sunlight arriving directly has lost nothing at all on the way, so the sun appears white, its full mixture intact. The same law thus explains a blue sky, a red sunset and a black sky with a white sun, purely by varying how much air the light passes through. (The wrong answers are the common misconceptions: the sun's own output does not change through our day; the sky is blue over deserts and above the clouds where no sea is in view; and air does not absorb colours on a daily schedule — it scatters them, which is a redirection, not a removal.)",
+          hi: "एक क्रियाविधि — वायु के अणुओं द्वारा सूर्य-प्रकाश का प्रकीर्णन — तीनों दृश्यों का हिसाब देती, और पूरा तर्क एक तथ्य पर घूमता: प्रकीर्णन छोटी तरंगदैर्घ्य के लिए लंबी से कहीं प्रबल। दृश्य वर्णक्रम के छोटे सिरे पर नीला-बैंगनी नारंगी-लाल से कई गुना अधिक प्रकीर्णित। दोपहर के आकाश से शुरू। वायुमंडल में घुसती धूप श्वेत, सब रंगों का मिश्रण। हवा से गुज़रते अणु उसे हर दिशा में प्रकीर्णित करते, पर नीला लाल से कहीं अधिक। अतः सूर्य से हटकर आकाश के किसी भाग को देखो तो उस टुकड़े से आँख तक जो आता वह अधिकतर प्रकीर्णित नीला प्रकाश — आकाश हर ओर नीला दमकता, यद्यपि ऊपर कुछ नीला है नहीं। इस बीच सीधी किरण-पुंज ने अपना थोड़ा-सा नीला ही खोया और अब भी श्वेत-पीला दिखता। अब सूर्यास्त। सूर्य नीचा, अतः उसका प्रकाश अब ऊपर की पतली परत से सीधा नहीं आता बल्कि पहुँचने से पहले वायुमंडल की कहीं लंबी फैलाव पर तिरछा चलता। उस लंबे पथ पर प्रकीर्णन को काम करने कहीं अधिक अवसर, और लगभग सारा नीला-हरा किरण-पुंज से बग़ल में — तुम्हारी दृष्टि-रेखा से दूर — प्रकीर्णित हो जाता। यात्रा से बचकर आँख तक जो पहुँचता वह सबसे कम प्रकीर्णित होता प्रकाश: लाल और नारंगी। अतः सूर्य गहरा लाल दिखता, और पास के बादल भी लाल रँगे। सूर्य के बारे में कुछ नहीं बदला; केवल हवा की वह लंबाई जो प्रकाश को पार करनी पड़ी। अंत में अंतरिक्ष-यात्री। कक्षा में मूलतः कोई वायुमंडल नहीं, और प्रकीर्णन को प्रकीर्णित करने कण चाहिए। दृष्टि-रेखा पर कोई वायु-अणु न होने से ख़ाली दिशाओं से आँख में बग़ल का कोई प्रकाश नहीं फेंका जाता, अतः सूर्य से हटकर आकाश बस काला — तुम केवल वहीं देखते जहाँ सचमुच स्रोत। और सीधा पहुँचती धूप ने रास्ते में कुछ भी नहीं खोया, अतः सूर्य श्वेत दिखता, उसका पूरा मिश्रण अक्षत। यही नियम इस तरह नीला आकाश, लाल सूर्यास्त और श्वेत सूर्य वाला काला आकाश समझाता, केवल यह बदलकर कि प्रकाश कितनी हवा से गुज़रा। (ग़लत उत्तर सामान्य भ्रांतियाँ: सूर्य का अपना उत्सर्जन हमारे दिन भर नहीं बदलता; आकाश रेगिस्तानों के ऊपर और बादलों से ऊपर भी नीला जहाँ कोई समुद्र दृष्टि में नहीं; और हवा दैनिक समय-सारणी पर रंग नहीं सोखती — वह उन्हें प्रकीर्णित करती, जो दिशा-परिवर्तन है, हटाना नहीं।)",
+          mr: "एक क्रियाविधी — हवेच्या रेणूंनी सूर्यप्रकाशाचे विखुरणे — तिन्ही दृश्यांचा हिशोब देते, आणि अख्खा युक्तिवाद एका तथ्यावर फिरतो: विखुरणे लहान तरंगलांबींसाठी लांबींहून कितीतरी प्रबळ. दृश्य वर्णपटाच्या लहान टोकाला निळा-जांभळा केशरी-लालहून कैकपट अधिक विखुरतो. दुपारच्या आकाशापासून सुरू. वातावरणात शिरणारा सूर्यप्रकाश श्वेत, सर्व रंगांचे मिश्रण. हवेतून जाताना रेणू तो सर्व दिशांना विखुरतात, पण निळा लालहून कितीतरी अधिक. म्हणून सूर्यापासून दूर आकाशाचा एखादा भाग पाहिल्यास त्या तुकड्यातून डोळ्यापर्यंत जे येते ते बहुतांश विखुरलेला निळा प्रकाश — आकाश सर्वत्र निळे तळपते, जरी वर काही निळे नाही. दरम्यान सरळ झोताने आपला थोडाच निळा गमावला आणि अजून श्वेत-पिवळा दिसतो. आता सूर्यास्त. सूर्य खाली, म्हणून त्याचा प्रकाश आता वरच्या पातळ थरातून सरळ येत नाही तर पोहोचण्याआधी वातावरणाच्या कितीतरी लांब पल्ल्यावर तिरका चालतो. त्या लांब मार्गावर विखुरण्याला काम करायला कितीतरी अधिक संधी, आणि जवळजवळ सर्व निळा-हिरवा झोतातून बाजूला — तुमच्या दृष्टिरेषेपासून दूर — विखुरून जातो. प्रवासातून वाचून डोळ्यापर्यंत जे पोहोचते तो सर्वांत कमी विखुरणारा प्रकाश: लाल आणि केशरी. म्हणून सूर्य गडद लाल दिसतो, आणि जवळचे ढगही लाल रंगलेले. सूर्याबद्दल काहीही बदलले नाही; फक्त हवेची ती लांबी जी प्रकाशाला ओलांडावी लागली. शेवटी अंतराळवीर. कक्षेत मुळात कोणतेही वातावरण नाही, आणि विखुरण्याला विखुरायला कण लागतात. दृष्टिरेषेवर कोणतेही हवेचे रेणू नसल्याने रिकाम्या दिशांतून डोळ्यात बाजूचा कोणता प्रकाश फेकला जात नाही, म्हणून सूर्यापासून दूरचे आकाश फक्त काळे — तुम्ही केवळ तिथेच पाहता जिथे खरोखर स्रोत. आणि सरळ पोहोचणाऱ्या सूर्यप्रकाशाने वाटेत काहीच गमावले नाही, म्हणून सूर्य श्वेत दिसतो, त्याचे पूर्ण मिश्रण अभंग. हाच नियम अशा प्रकारे निळे आकाश, लाल सूर्यास्त आणि श्वेत सूर्यासह काळे आकाश समजावतो, केवळ प्रकाश किती हवेतून गेला हे बदलून. (चुकीची उत्तरे सामान्य गैरसमज आहेत: सूर्याचे स्वतःचे उत्सर्जन आपल्या दिवसभरात बदलत नाही; आकाश वाळवंटांवर आणि ढगांच्या वरही निळे जिथे कोणता समुद्र दृष्टीत नाही; आणि हवा दैनंदिन वेळापत्रकावर रंग शोषत नाही — ती त्यांना विखुरते, जे दिशा-बदल आहे, काढून टाकणे नाही.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Electricity                                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-electricity",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 11 — Electricity",
+      hi: "अध्याय 11 — विद्युत",
+      mr: "प्रकरण 11 — विद्युत",
+    },
+    name: {
+      en: "Electricity",
+      hi: "विद्युत",
+      mr: "विद्युत",
+    },
+    summary: {
+      en: "Charge counted as it flows, the push that drives it, and the law tying the two together; then a conductor's opposition traced to its length and thickness, two ways of joining resistors that pull the total in opposite directions, and the rate at which a circuit turns electrical energy into heat and light.",
+      hi: "बहते हुए गिना गया आवेश, उसे चलाता धक्का, और दोनों को बाँधता नियम; फिर चालक का विरोध उसकी लंबाई-मोटाई तक खोजा, प्रतिरोधक जोड़ने के दो तरीक़े जो कुल को उल्टी दिशाओं में खींचते, और वह दर जिससे परिपथ विद्युत ऊर्जा को ऊष्मा-प्रकाश में बदलता।",
+      mr: "वाहताना मोजलेला विद्युतभार, त्याला चालवणारा रेटा, आणि दोघांना बांधणारा नियम; मग वाहकाचा विरोध त्याच्या लांबी-जाडीपर्यंत शोधलेला, रोधक जोडण्याचे दोन मार्ग जे एकूण उलट दिशांना ओढतात, आणि तो दर ज्याने परिपथ विद्युत ऊर्जेचे उष्णता-प्रकाशात रूपांतर करतो.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "electric-current",
+        name: {
+          en: "Electric current",
+          hi: "विद्युत धारा",
+          mr: "विद्युत धारा",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "One coulomb of charge crossing a wire's cross-section every second is called one ampere. Which quantity is defined as the charge flowing per unit time?",
+          hi: "हर सेकंड तार के अनुप्रस्थ काट से पार होता एक कूलॉम आवेश एक ऐम्पियर कहलाता। कौन-सी राशि प्रति एकांक समय बहते आवेश के रूप में परिभाषित?",
+          mr: "प्रत्येक सेकंदाला तारेच्या छेदातून जाणारा एक कूलोम विद्युतभार एक अँपिअर म्हणतात. कोणती राशी प्रति एकक काळात वाहणारा विद्युतभार म्हणून व्याख्यायित?",
+        },
+        statement: {
+          en: "Electric current is the rate of flow of charge — the charge passing a point divided by the time taken — measured in amperes, where one ampere is one coulomb per second.",
+          hi: "विद्युत धारा आवेश के बहने की दर — किसी बिंदु से गुज़रा आवेश बटा लगा समय — ऐम्पियर में नापी, जहाँ एक ऐम्पियर एक कूलॉम प्रति सेकंड।",
+          mr: "विद्युत धारा म्हणजे विद्युतभाराच्या वाहण्याचा दर — एका बिंदूतून गेलेला विद्युतभार भागिले लागलेला काळ — अँपिअरमध्ये मोजलेली, जिथे एक अँपिअर म्हणजे एक कूलोम प्रति सेकंद.",
+        },
+        detail: {
+          en: "It is measured with an ammeter, which must be joined in series so the whole current passes through it.",
+          hi: "यह ऐमीटर से नापी जाती, जिसे श्रेणी में जोड़ना होता ताकि पूरी धारा उससे गुज़रे।",
+          mr: "ती अँमीटरने मोजली जाते, जो श्रेणीत जोडावा लागतो जेणेकरून अख्खी धारा त्यातून जाते.",
+        },
+        extra: {
+          en: "By convention current is drawn as flowing from the positive to the negative terminal, though in a metal it is electrons that actually drift the other way.",
+          hi: "परिपाटी से धारा धन से ऋण सिरे की ओर बहती दिखाई जाती, यद्यपि धातु में वास्तव में इलेक्ट्रॉन दूसरी ओर सरकते।",
+          mr: "संकेतानुसार धारा धन टोकाकडून ऋण टोकाकडे वाहताना दाखवली जाते, जरी धातूत प्रत्यक्षात इलेक्ट्रॉन दुसऱ्या दिशेने सरकतात.",
+        },
+        pair: {
+          left: {
+            en: "Charge per second",
+            hi: "आवेश प्रति सेकंड",
+            mr: "विद्युतभार प्रति सेकंद",
+          },
+          right: {
+            en: "electric current",
+            hi: "विद्युत धारा",
+            mr: "विद्युत धारा",
+          },
+        },
+      },
+      {
+        id: "potential-difference",
+        name: {
+          en: "Potential difference",
+          hi: "विभवांतर",
+          mr: "विभवांतर",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Moving one coulomb of charge between two points takes one joule of work, and that pair of points is said to differ by one volt. Which quantity is the work done per unit charge?",
+          hi: "दो बिंदुओं के बीच एक कूलॉम आवेश ले जाने में एक जूल कार्य लगता, और उन बिंदुओं में एक वोल्ट का अंतर कहा जाता। कौन-सी राशि प्रति एकांक आवेश किया कार्य?",
+          mr: "दोन बिंदूंदरम्यान एक कूलोम विद्युतभार हलवायला एक ज्यूल कार्य लागते, आणि त्या बिंदूंत एक व्होल्टचा फरक म्हटला जातो. कोणती राशी प्रति एकक विद्युतभार केलेले कार्य?",
+        },
+        statement: {
+          en: "Potential difference between two points is the work done in moving a unit charge from one to the other, measured in volts, where one volt is one joule per coulomb.",
+          hi: "दो बिंदुओं के बीच विभवांतर एक से दूसरे तक एकांक आवेश ले जाने में किया कार्य, वोल्ट में नापा, जहाँ एक वोल्ट एक जूल प्रति कूलॉम।",
+          mr: "दोन बिंदूंमधील विभवांतर म्हणजे एकाकडून दुसऱ्याकडे एकक विद्युतभार हलवण्यात केलेले कार्य, व्होल्टमध्ये मोजलेले, जिथे एक व्होल्ट म्हणजे एक ज्यूल प्रति कूलोम.",
+        },
+        detail: {
+          en: "It is measured with a voltmeter, which must be joined in parallel across the two points whose difference is wanted.",
+          hi: "यह वोल्टमीटर से नापा जाता, जिसे उन दो बिंदुओं के आर-पार समांतर जोड़ना होता जिनका अंतर चाहिए।",
+          mr: "ते व्होल्टमीटरने मोजले जाते, जो ज्या दोन बिंदूंचा फरक हवा त्यांच्या आरपार समांतर जोडावा लागतो.",
+        },
+        extra: {
+          en: "A cell or battery is what maintains this difference, and without it the free electrons in a wire simply jostle about without any net flow.",
+          hi: "सेल या बैटरी ही यह अंतर बनाए रखती, और उसके बिना तार के मुक्त इलेक्ट्रॉन बस धक्का-मुक्की करते, कोई कुल बहाव नहीं।",
+          mr: "विद्युतघट वा बॅटरीच हा फरक टिकवते, आणि तिच्याविना तारेतील मुक्त इलेक्ट्रॉन फक्त धक्काबुक्की करतात, कोणताही निव्वळ प्रवाह नाही.",
+        },
+        pair: {
+          left: {
+            en: "Work per unit charge",
+            hi: "कार्य प्रति एकांक आवेश",
+            mr: "कार्य प्रति एकक विद्युतभार",
+          },
+          right: {
+            en: "potential difference",
+            hi: "विभवांतर",
+            mr: "विभवांतर",
+          },
+        },
+      },
+      {
+        id: "ohms-law",
+        name: {
+          en: "Ohm's law",
+          hi: "ओम का नियम",
+          mr: "ओहमचा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Double the voltage across a metal wire at fixed temperature and the current through it doubles exactly, so a graph of V against I is a straight line. Which law is this?",
+          hi: "नियत ताप पर धातु के तार के आर-पार वोल्टता दुगुनी करो और उससे बहती धारा ठीक दुगुनी, अतः V विरुद्ध I का आलेख सरल रेखा। यह कौन-सा नियम?",
+          mr: "स्थिर तापमानावर धातूच्या तारेवरील व्होल्टता दुप्पट करा आणि तिच्यातून वाहणारी धारा नेमकी दुप्पट, म्हणून V विरुद्ध I चा आलेख सरळ रेषा. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Ohm's law states that at constant temperature the current through a conductor is directly proportional to the potential difference across it, so V equals I times R.",
+          hi: "ओम का नियम कहता स्थिर ताप पर चालक से बहती धारा उसके आर-पार विभवांतर के समानुपाती, अतः V बराबर I गुणा R।",
+          mr: "ओहमचा नियम सांगतो स्थिर तापमानावर वाहकातून वाहणारी धारा त्यावरील विभवांतराच्या समप्रमाणात, म्हणून V बरोबर I गुणिले R.",
+        },
+        detail: {
+          en: "The constant of proportionality R is the conductor's resistance, so the slope of the V–I graph is the resistance itself.",
+          hi: "समानुपात स्थिरांक R चालक का प्रतिरोध, अतः V–I आलेख की ढाल स्वयं प्रतिरोध।",
+          mr: "समप्रमाण स्थिरांक R म्हणजे वाहकाचा रोध, म्हणून V–I आलेखाचा उतार स्वतः रोध.",
+        },
+        extra: {
+          en: "The law fails if the temperature is allowed to change — a glowing bulb's filament is far more resistive when hot than when cold.",
+          hi: "ताप बदलने दिया जाए तो नियम टूटता — दमकते बल्ब का तंतु गरम में ठंडे से कहीं अधिक प्रतिरोधी।",
+          mr: "तापमान बदलू दिल्यास नियम मोडतो — तळपत्या बल्बचा तंतू गरम असताना थंडपेक्षा कितीतरी अधिक रोधक.",
+        },
+        pair: {
+          left: {
+            en: "Current proportional to voltage",
+            hi: "धारा वोल्टता के समानुपाती",
+            mr: "धारा व्होल्टतेच्या समप्रमाणात",
+          },
+          right: {
+            en: "Ohm's law",
+            hi: "ओम का नियम",
+            mr: "ओहमचा नियम",
+          },
+        },
+      },
+      {
+        id: "resistance-factors",
+        name: {
+          en: "What resistance depends on",
+          hi: "प्रतिरोध किस पर निर्भर",
+          mr: "रोध कशावर अवलंबून",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A long thin wire opposes current far more than a short thick one of the same metal, and heating it makes matters worse. On which four things does a conductor's opposition to current depend?",
+          hi: "उसी धातु का लंबा पतला तार छोटे मोटे से कहीं अधिक धारा का विरोध करता, और गरम करने पर बात और बिगड़ती। चालक का धारा-विरोध किन चार चीज़ों पर निर्भर?",
+          mr: "त्याच धातूची लांब बारीक तार आखूड जाडीहून कितीतरी अधिक धारेचा विरोध करते, आणि तापवल्याने प्रकरण आणखी बिघडते. वाहकाचा धारा-विरोध कोणत्या चार गोष्टींवर अवलंबून?",
+        },
+        statement: {
+          en: "The resistance of a conductor grows with its length, falls as its area of cross-section grows, and depends on the material and the temperature.",
+          hi: "चालक का प्रतिरोध उसकी लंबाई के साथ बढ़ता, अनुप्रस्थ काट का क्षेत्रफल बढ़ने पर घटता, और पदार्थ तथा ताप पर निर्भर।",
+          mr: "वाहकाचा रोध त्याच्या लांबीबरोबर वाढतो, छेदाचे क्षेत्रफळ वाढल्यास घटतो, आणि पदार्थ व तापमानावर अवलंबून.",
+        },
+        detail: {
+          en: "The material's own share is called resistivity, a property of the substance itself and not of the particular piece's size or shape.",
+          hi: "पदार्थ का अपना हिस्सा प्रतिरोधकता कहलाता, स्वयं पदार्थ का गुण, किसी विशेष टुकड़े के आकार-रूप का नहीं।",
+          mr: "पदार्थाचा स्वतःचा वाटा रोधकता म्हणतात, स्वतः पदार्थाचा गुणधर्म, विशिष्ट तुकड्याच्या आकार-रूपाचा नाही.",
+        },
+        extra: {
+          en: "This is why the long supply lines outside are made of thick wire to waste little, while a heater's element is a thin coil of high-resistivity alloy meant to waste much.",
+          hi: "इसी से बाहर की लंबी संचरण-लाइनें मोटे तार की, कम गँवाने को, जबकि हीटर का तत्व ऊँची प्रतिरोधकता वाली मिश्रधातु की पतली कुंडली, बहुत गँवाने को बनी।",
+          mr: "म्हणूनच बाहेरच्या लांब पुरवठा-तारा जाड तारेच्या, कमी वाया घालवायला, तर हीटरचा घटक उच्च रोधकतेच्या मिश्रधातूची बारीक तार-गुंडाळी, पुष्कळ वाया घालवायला बनवलेली.",
+        },
+        pair: {
+          left: {
+            en: "Longer and thinner means more opposition",
+            hi: "अधिक लंबा और पतला यानी अधिक विरोध",
+            mr: "अधिक लांब आणि बारीक म्हणजे अधिक विरोध",
+          },
+          right: {
+            en: "what resistance depends on",
+            hi: "प्रतिरोध किस पर निर्भर",
+            mr: "रोध कशावर अवलंबून",
+          },
+        },
+      },
+      {
+        id: "series-combination",
+        name: {
+          en: "Resistors in series",
+          hi: "श्रेणीक्रम में प्रतिरोधक",
+          mr: "श्रेणीत रोधक",
+        },
+        kind: "arrangement",
+        prompt: {
+          en: "Three resistors joined end to end in a single loop carry the very same current, and their total opposition is simply the sum of the three. Which arrangement is this?",
+          hi: "एक ही पाश में सिरे-से-सिरे जुड़े तीन प्रतिरोधक ठीक वही धारा ढोते, और उनका कुल विरोध बस तीनों का जोड़। यह कौन-सी व्यवस्था?",
+          mr: "एकाच फेऱ्यात टोकाला-टोक जोडलेले तीन रोधक नेमकी तीच धारा वाहतात, आणि त्यांचा एकूण विरोध फक्त तिघांची बेरीज. ही कोणती मांडणी?",
+        },
+        statement: {
+          en: "In a series combination the resistors lie one after another on a single path, the same current flows through each, and the total resistance is the sum of the individual resistances.",
+          hi: "श्रेणी संयोजन में प्रतिरोधक एक ही पथ पर एक के बाद एक, हर एक से वही धारा बहती, और कुल प्रतिरोध अलग-अलग प्रतिरोधों का जोड़।",
+          mr: "श्रेणी जोडणीत रोधक एकाच मार्गावर एकामागोमाग, प्रत्येकातून तीच धारा वाहते, आणि एकूण रोध वेगवेगळ्या रोधांची बेरीज.",
+        },
+        detail: {
+          en: "The supply voltage divides among them in proportion to their resistances, so the largest resistor takes the largest share.",
+          hi: "आपूर्ति वोल्टता उनमें उनके प्रतिरोधों के अनुपात में बँटती, अतः सबसे बड़ा प्रतिरोधक सबसे बड़ा हिस्सा लेता।",
+          mr: "पुरवठा व्होल्टता त्यांच्यात त्यांच्या रोधांच्या प्रमाणात विभागते, म्हणून सर्वांत मोठा रोधक सर्वांत मोठा वाटा घेतो.",
+        },
+        extra: {
+          en: "Because there is only one path, a break anywhere kills the whole line — the reason one dead bulb once darkened a whole string of decorative lights.",
+          hi: "क्योंकि पथ केवल एक, कहीं भी टूट पूरी लाइन मार देती — इसी से एक मरा बल्ब कभी सजावटी लड़ी पूरी बुझा देता था।",
+          mr: "मार्ग फक्त एकच असल्याने, कुठेही तुटले तर अख्खी ओळ मरते — म्हणूनच एक मेलेला बल्ब कधी अख्खी सजावटीची माळ विझवत असे.",
+        },
+        pair: {
+          left: {
+            en: "One path, resistances add",
+            hi: "एक पथ, प्रतिरोध जुड़ें",
+            mr: "एक मार्ग, रोध बेरजेने",
+          },
+          right: {
+            en: "a series combination",
+            hi: "श्रेणी संयोजन",
+            mr: "श्रेणी जोडणी",
+          },
+        },
+      },
+      {
+        id: "parallel-combination",
+        name: {
+          en: "Resistors in parallel",
+          hi: "समांतर क्रम में प्रतिरोधक",
+          mr: "समांतर रोधक",
+        },
+        kind: "arrangement",
+        prompt: {
+          en: "Three resistors joined across the same two points each get the full voltage, the current divides among them, and the total resistance comes out smaller than the smallest one. Which arrangement is this?",
+          hi: "उन्हीं दो बिंदुओं के आर-पार जुड़े तीन प्रतिरोधक हर एक पूरी वोल्टता पाता, धारा उनमें बँटती, और कुल प्रतिरोध सबसे छोटे से भी छोटा निकलता। यह कौन-सी व्यवस्था?",
+          mr: "त्याच दोन बिंदूंच्या आरपार जोडलेले तीन रोधक प्रत्येकाला पूर्ण व्होल्टता मिळते, धारा त्यांच्यात विभागते, आणि एकूण रोध सर्वांत लहानाहूनही लहान निघतो. ही कोणती मांडणी?",
+        },
+        statement: {
+          en: "In a parallel combination every resistor is joined across the same two points, so each has the full potential difference; the current splits between them and the reciprocal of the total resistance is the sum of the reciprocals.",
+          hi: "समांतर संयोजन में हर प्रतिरोधक उन्हीं दो बिंदुओं के आर-पार जुड़ा, अतः हर एक को पूरा विभवांतर; धारा उनमें बँटती और कुल प्रतिरोध का व्युत्क्रम व्युत्क्रमों का जोड़।",
+          mr: "समांतर जोडणीत प्रत्येक रोधक त्याच दोन बिंदूंच्या आरपार जोडलेला, म्हणून प्रत्येकाला पूर्ण विभवांतर; धारा त्यांच्यात विभागते आणि एकूण रोधाचा व्यस्तांक व्यस्तांकांची बेरीज.",
+        },
+        detail: {
+          en: "Adding another resistor here opens one more route for the current, so the combined resistance always falls below the smallest branch.",
+          hi: "यहाँ एक और प्रतिरोधक जोड़ना धारा को एक और मार्ग खोलता, अतः संयुक्त प्रतिरोध सदा सबसे छोटी शाखा से नीचे गिरता।",
+          mr: "इथे आणखी एक रोधक जोडणे धारेला आणखी एक मार्ग उघडते, म्हणून एकत्रित रोध सदैव सर्वांत लहान फांदीखाली घसरतो.",
+        },
+        extra: {
+          en: "Household wiring uses it for two reasons: every appliance gets the same full 220 V, and each can be switched off on its own without cutting the rest.",
+          hi: "घरेलू वायरिंग इसे दो कारणों से लेती: हर उपकरण को वही पूरे 220 V मिलते, और हर एक बाक़ी काटे बिना अलग से बंद हो सकता।",
+          mr: "घरगुती वायरिंग ही दोन कारणांसाठी वापरते: प्रत्येक उपकरणाला तेच पूर्ण 220 V मिळतात, आणि प्रत्येक बाकीचे न तोडता स्वतंत्रपणे बंद करता येते.",
+        },
+        pair: {
+          left: {
+            en: "Many paths, total falls below the smallest",
+            hi: "कई पथ, कुल सबसे छोटे से नीचे",
+            mr: "अनेक मार्ग, एकूण सर्वांत लहानाखाली",
+          },
+          right: {
+            en: "a parallel combination",
+            hi: "समांतर संयोजन",
+            mr: "समांतर जोडणी",
+          },
+        },
+      },
+      {
+        id: "electric-power",
+        name: {
+          en: "Electric power",
+          hi: "विद्युत शक्ति",
+          mr: "विद्युत शक्ती",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A bulb marked 60 W turns sixty joules of electrical energy into light and heat every second. Which quantity is the rate at which electrical energy is consumed, and how is it found from V and I?",
+          hi: "60 W अंकित बल्ब हर सेकंड साठ जूल विद्युत ऊर्जा को प्रकाश और ऊष्मा में बदलता। कौन-सी राशि विद्युत ऊर्जा खर्च होने की दर, और V तथा I से कैसे निकाली?",
+          mr: "60 W चिन्हांकित बल्ब प्रत्येक सेकंदाला साठ ज्यूल विद्युत ऊर्जेचे प्रकाश आणि उष्णतेत रूपांतर करतो. कोणती राशी विद्युत ऊर्जा खर्च होण्याचा दर, आणि V व I वरून कशी काढली?",
+        },
+        statement: {
+          en: "Electric power is the rate at which electrical energy is consumed, equal to the product of potential difference and current, and measured in watts.",
+          hi: "विद्युत शक्ति विद्युत ऊर्जा खर्च होने की दर, विभवांतर और धारा के गुणनफल के बराबर, और वाट में नापी।",
+          mr: "विद्युत शक्ती म्हणजे विद्युत ऊर्जा खर्च होण्याचा दर, विभवांतर आणि धारेच्या गुणाकाराइतकी, आणि वॅटमध्ये मोजलेली.",
+        },
+        detail: {
+          en: "Using Ohm's law it can also be written as I²R or as V²/R, whichever pair of quantities is known.",
+          hi: "ओम के नियम से इसे I²R या V²/R भी लिखा जा सकता, जो जोड़ी ज्ञात हो।",
+          mr: "ओहमच्या नियमाने ती I²R वा V²/R अशीही लिहिता येते, जी जोडी माहीत असेल ती.",
+        },
+        extra: {
+          en: "The electricity bill is charged not in watts but in kilowatt-hours — a unit of energy, being a power of one kilowatt drawn for one hour.",
+          hi: "बिजली का बिल वाट में नहीं बल्कि किलोवाट-घंटा में लगता — ऊर्जा का मात्रक, एक किलोवाट शक्ति एक घंटे तक ली गई।",
+          mr: "विजेचे बिल वॅटमध्ये नव्हे तर किलोवॅट-तासात आकारले जाते — ऊर्जेचे एकक, एक किलोवॅट शक्ती एक तासभर घेतलेली.",
+        },
+        pair: {
+          left: {
+            en: "Energy consumed per second",
+            hi: "प्रति सेकंड खर्च ऊर्जा",
+            mr: "प्रति सेकंद खर्च ऊर्जा",
+          },
+          right: {
+            en: "electric power",
+            hi: "विद्युत शक्ति",
+            mr: "विद्युत शक्ती",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Two identical bulbs are joined to the same battery, first one after another in a single loop and then side by side across the terminals. In the second case both glow far brighter, and the battery runs down sooner. Explain the difference using how resistances combine.",
+          hi: "दो एक जैसे बल्ब उसी बैटरी से जुड़े, पहले एक ही पाश में एक के बाद एक और फिर सिरों के आर-पार अगल-बग़ल। दूसरी दशा में दोनों कहीं अधिक चमकते, और बैटरी जल्दी चुक जाती। प्रतिरोध कैसे जुड़ते, इससे अंतर समझाओ।",
+          mr: "दोन सारखे बल्ब त्याच बॅटरीला जोडले, आधी एकाच फेऱ्यात एकामागोमाग आणि मग टोकांच्या आरपार शेजारीशेजारी. दुसऱ्या स्थितीत दोन्ही कितीतरी अधिक तेजस्वी, आणि बॅटरी लवकर संपते. रोध कसे जोडले जातात यावरून फरक समजावा.",
+        },
+        choices: [
+          {
+            en: "In series the two resistances add, so the circuit's total resistance doubles and the single shared current is halved, leaving each bulb dim. In parallel each bulb gets the battery's full voltage on its own branch, so each draws its normal current; the combined resistance is halved, the total current is four times the series value, and both bulbs are bright — which is exactly why the battery drains faster",
+            hi: "श्रेणी में दोनों प्रतिरोध जुड़ते, अतः परिपथ का कुल प्रतिरोध दुगुना और एकमात्र साझा धारा आधी, हर बल्ब मंद। समांतर में हर बल्ब को अपनी शाखा पर बैटरी की पूरी वोल्टता, अतः हर एक अपनी सामान्य धारा खींचता; संयुक्त प्रतिरोध आधा, कुल धारा श्रेणी के मान की चार गुनी, और दोनों बल्ब चमकीले — ठीक इसी से बैटरी तेज़ी से चुकती",
+            mr: "श्रेणीत दोन्ही रोध बेरजेने, म्हणून परिपथाचा एकूण रोध दुप्पट आणि एकमेव सामायिक धारा निम्मी, प्रत्येक बल्ब मंद. समांतरात प्रत्येक बल्बला स्वतःच्या फांदीवर बॅटरीची पूर्ण व्होल्टता, म्हणून प्रत्येक आपली सामान्य धारा खेचतो; एकत्रित रोध निम्मा, एकूण धारा श्रेणीच्या मूल्याच्या चौपट, आणि दोन्ही बल्ब तेजस्वी — नेमके म्हणूनच बॅटरी वेगाने संपते",
+          },
+          {
+            en: "Parallel wiring adds extra voltage to the battery, which is where the brightness comes from",
+            hi: "समांतर वायरिंग बैटरी में अतिरिक्त वोल्टता जोड़ती, चमक वहीं से आती",
+            mr: "समांतर वायरिंग बॅटरीत अतिरिक्त व्होल्टता जोडते, तेजस्विता तिथूनच येते",
+          },
+          {
+            en: "Series wiring gives the lower total resistance, so it should have been the brighter arrangement",
+            hi: "श्रेणी वायरिंग कम कुल प्रतिरोध देती, अतः वही अधिक चमकीली व्यवस्था होनी चाहिए थी",
+            mr: "श्रेणी वायरिंग कमी एकूण रोध देते, म्हणून तीच अधिक तेजस्वी मांडणी असायला हवी होती",
+          },
+          {
+            en: "The bulbs behave identically in both; only the wires' length changes the brightness",
+            hi: "बल्ब दोनों में एक-से बरतते; केवल तारों की लंबाई चमक बदलती",
+            mr: "बल्ब दोन्हींत सारखेच वागतात; फक्त तारांची लांबी तेजस्विता बदलते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A bulb's brightness is set by the power it consumes, and power depends on the current through it and the voltage across it — so the question is really about how each arrangement shares those out. Call one bulb's resistance R and the battery's voltage V. In series the two bulbs lie one after another on a single path, so the same current must pass through both, and their resistances add: the circuit's total is 2R. By Ohm's law the current is V divided by 2R — that is, half of what a single bulb alone would draw. Each bulb also gets only half the battery's voltage, since the supply divides between them. With half the current and half the voltage, each bulb burns at about a quarter of its normal power, so both look distinctly dim. In parallel the two bulbs are joined across the very same two terminals, so each branch has the battery's full voltage V across it. Each bulb therefore draws its own normal current, V divided by R, exactly as it would if it were alone. The battery now supplies both branches, so the total current is twice V/R, and the combined resistance is R/2 — smaller than either bulb, because adding a branch opens another route for charge to flow. Compare the two totals: V/2R in series against 2V/R in parallel, a factor of four. So the parallel arrangement draws four times as much current from the same battery and converts four times as much energy per second into light and heat. That is why both bulbs shine at full brightness — and, inescapably, why the battery is drained far sooner: the brightness is being paid for out of stored chemical energy at four times the rate. The trade-off is real and unavoidable; you cannot get more light from the same cell without spending its energy faster. (The wrong answers misstate the physics: a wiring pattern cannot add voltage to a battery, series combination raises rather than lowers total resistance, and connecting-wire length is negligible compared with the bulbs' own resistance.)",
+          hi: "बल्ब की चमक उसकी खपत शक्ति से सधती, और शक्ति उससे बहती धारा तथा उसके आर-पार वोल्टता पर निर्भर — अतः प्रश्न वास्तव में यह कि हर व्यवस्था इन्हें कैसे बाँटती। एक बल्ब का प्रतिरोध R और बैटरी की वोल्टता V कहो। श्रेणी में दोनों बल्ब एक ही पथ पर एक के बाद एक, अतः वही धारा दोनों से गुज़रनी चाहिए, और उनके प्रतिरोध जुड़ते: परिपथ का कुल 2R। ओम के नियम से धारा V बटा 2R — यानी अकेला बल्ब जितनी खींचता उसकी आधी। हर बल्ब को बैटरी की आधी वोल्टता भी, क्योंकि आपूर्ति उनमें बँटती। आधी धारा और आधी वोल्टता से हर बल्ब अपनी सामान्य शक्ति के लगभग चौथाई पर जलता, अतः दोनों स्पष्ट मंद दिखते। समांतर में दोनों बल्ब ठीक उन्हीं दो सिरों के आर-पार जुड़े, अतः हर शाखा पर बैटरी की पूरी वोल्टता V। इसलिए हर बल्ब अपनी सामान्य धारा, V बटा R, खींचता, ठीक वैसे जैसे अकेला होता। बैटरी अब दोनों शाखाओं को देती, अतः कुल धारा दुगुनी V/R, और संयुक्त प्रतिरोध R/2 — किसी भी बल्ब से छोटा, क्योंकि शाखा जोड़ना आवेश को बहने का एक और मार्ग खोलता। दोनों कुल की तुलना: श्रेणी में V/2R बनाम समांतर में 2V/R, चार का गुणक। अतः समांतर व्यवस्था उसी बैटरी से चार गुनी धारा खींचती और प्रति सेकंड चार गुनी ऊर्जा प्रकाश-ऊष्मा में बदलती। इसी से दोनों बल्ब पूरी चमक पर दमकते — और अनिवार्य रूप से, इसी से बैटरी कहीं जल्दी चुकती: चमक संचित रासायनिक ऊर्जा से चार गुनी दर पर चुकाई जा रही। यह सौदा असली और अटल; उसी सेल से अधिक प्रकाश उसकी ऊर्जा तेज़ी से खर्च किए बिना नहीं मिल सकता। (ग़लत उत्तर भौतिकी ग़लत बताते: वायरिंग का ढंग बैटरी में वोल्टता नहीं जोड़ सकता, श्रेणी संयोजन कुल प्रतिरोध घटाता नहीं बढ़ाता, और जोड़ने वाले तारों की लंबाई बल्बों के अपने प्रतिरोध के आगे नगण्य।)",
+          mr: "बल्बची तेजस्विता त्याच्या खर्च शक्तीने ठरते, आणि शक्ती त्यातून वाहणारी धारा व त्यावरील व्होल्टतेवर अवलंबून — म्हणून प्रश्न खरे तर हा की प्रत्येक मांडणी ती कशी वाटते. एका बल्बचा रोध R आणि बॅटरीची व्होल्टता V म्हणा. श्रेणीत दोन्ही बल्ब एकाच मार्गावर एकामागोमाग, म्हणून तीच धारा दोघांतून जावी लागते, आणि त्यांचे रोध बेरजेने: परिपथाचा एकूण 2R. ओहमच्या नियमाने धारा V भागिले 2R — म्हणजे एकटा बल्ब जितकी खेचेल तिच्या निम्मी. प्रत्येक बल्बला बॅटरीची निम्मी व्होल्टताही, कारण पुरवठा त्यांच्यात विभागतो. निम्मी धारा आणि निम्मी व्होल्टता असल्याने प्रत्येक बल्ब आपल्या सामान्य शक्तीच्या सुमारे चतुर्थांशावर जळतो, म्हणून दोन्ही स्पष्ट मंद दिसतात. समांतरात दोन्ही बल्ब नेमक्या त्याच दोन टोकांच्या आरपार जोडलेले, म्हणून प्रत्येक फांदीवर बॅटरीची पूर्ण व्होल्टता V. म्हणून प्रत्येक बल्ब आपली सामान्य धारा, V भागिले R, खेचतो, नेमके जसे एकटा असता तसे. बॅटरी आता दोन्ही फांद्यांना पुरवते, म्हणून एकूण धारा दुप्पट V/R, आणि एकत्रित रोध R/2 — कोणत्याही बल्बहून लहान, कारण फांदी जोडणे विद्युतभाराला वाहायला आणखी एक मार्ग उघडते. दोन्ही एकूणांची तुलना: श्रेणीत V/2R विरुद्ध समांतरात 2V/R, चारचा गुणक. म्हणून समांतर मांडणी त्याच बॅटरीतून चौपट धारा खेचते आणि प्रति सेकंद चौपट ऊर्जेचे प्रकाश-उष्णतेत रूपांतर करते. म्हणूनच दोन्ही बल्ब पूर्ण तेजाने तळपतात — आणि अटळपणे, म्हणूनच बॅटरी कितीतरी लवकर संपते: तेजस्विता साठवलेल्या रासायनिक ऊर्जेतून चौपट दराने चुकवली जात आहे. हा सौदा खरा आणि अपरिहार्य; त्याच घटातून अधिक प्रकाश तिची ऊर्जा वेगाने खर्च केल्याविना मिळू शकत नाही. (चुकीची उत्तरे भौतिकशास्त्र चुकीचे मांडतात: वायरिंगची पद्धत बॅटरीत व्होल्टता जोडू शकत नाही, श्रेणी जोडणी एकूण रोध घटवत नाही तर वाढवते, आणि जोडणाऱ्या तारांची लांबी बल्बांच्या स्वतःच्या रोधापुढे नगण्य.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Electricity is generated at a power station and carried to a distant town. The engineers deliberately step the voltage up to thousands of volts for the journey, then step it back down for houses — even though the high-voltage lines are dangerous and the transformers are costly. What are they saving, and why does raising the voltage save it?",
+          hi: "बिजली एक विद्युत-गृह में बनती और दूर शहर तक ले जाई जाती। अभियंता जानबूझकर यात्रा के लिए वोल्टता हज़ारों वोल्ट तक चढ़ाते, फिर घरों के लिए वापस उतारते — यद्यपि ऊँची वोल्टता की लाइनें ख़तरनाक और ट्रांसफ़ॉर्मर महँगे। वे क्या बचा रहे, और वोल्टता बढ़ाना उसे क्यों बचाता?",
+          mr: "वीज एका वीजनिर्मिती केंद्रात तयार होते आणि दूरच्या शहरापर्यंत नेली जाते. अभियंते मुद्दाम प्रवासासाठी व्होल्टता हजारो व्होल्टपर्यंत चढवतात, मग घरांसाठी पुन्हा उतरवतात — जरी उच्च-व्होल्टतेच्या तारा धोकादायक आणि रोहित्रे महाग. ते काय वाचवत आहेत, आणि व्होल्टता वाढवणे ते का वाचवते?",
+        },
+        choices: [
+          {
+            en: "They are saving the energy wasted as heat in the transmission wires. That waste is I²R, so it depends on the square of the current, not on the voltage. For a given power delivered, power equals voltage times current, so raising the voltage a hundredfold cuts the current a hundredfold — and cuts the heating loss ten thousandfold. The transformers step the voltage back down at the town because appliances need a safe low voltage",
+            hi: "वे संचरण-तारों में ऊष्मा के रूप में गँवाई ऊर्जा बचा रहे। वह हानि I²R, अतः धारा के वर्ग पर निर्भर, वोल्टता पर नहीं। दी जाती नियत शक्ति के लिए शक्ति बराबर वोल्टता गुणा धारा, अतः वोल्टता सौ गुनी करना धारा सौ गुनी घटाता — और ऊष्मा-हानि दस हज़ार गुनी। ट्रांसफ़ॉर्मर शहर पर वोल्टता वापस उतारते क्योंकि उपकरणों को सुरक्षित कम वोल्टता चाहिए",
+            mr: "ते संक्रमण-तारांत उष्णतेच्या रूपात वाया जाणारी ऊर्जा वाचवत आहेत. ती हानी I²R, म्हणून धारेच्या वर्गावर अवलंबून, व्होल्टतेवर नाही. दिल्या जाणाऱ्या ठराविक शक्तीसाठी शक्ती बरोबर व्होल्टता गुणिले धारा, म्हणून व्होल्टता शंभरपट करणे धारा शंभरपट घटवते — आणि उष्णता-हानी दहा हजारपट. रोहित्रे शहरात व्होल्टता पुन्हा उतरवतात कारण उपकरणांना सुरक्षित कमी व्होल्टता लागते",
+          },
+          {
+            en: "High voltage makes the electrons travel faster, so the electricity arrives sooner and less of it is lost on the way",
+            hi: "ऊँची वोल्टता इलेक्ट्रॉनों को तेज़ चलाती, अतः बिजली जल्दी पहुँचती और रास्ते में कम गँवाई जाती",
+            mr: "उच्च व्होल्टता इलेक्ट्रॉनांना वेगाने चालवते, म्हणून वीज लवकर पोहोचते आणि वाटेत कमी वाया जाते",
+          },
+          {
+            en: "The loss depends on the square of the voltage, so a higher voltage would waste more — the practice is a historical mistake",
+            hi: "हानि वोल्टता के वर्ग पर निर्भर, अतः ऊँची वोल्टता अधिक गँवाती — यह प्रथा एक ऐतिहासिक भूल",
+            mr: "हानी व्होल्टतेच्या वर्गावर अवलंबून, म्हणून उच्च व्होल्टता अधिक वाया घालवेल — ही प्रथा एक ऐतिहासिक चूक",
+          },
+          {
+            en: "Nothing is saved; the voltage is raised only so that the same wires can carry more separate customers",
+            hi: "कुछ नहीं बचता; वोल्टता केवल इसलिए बढ़ाई कि वही तारें अधिक अलग ग्राहक ढो सकें",
+            mr: "काहीही वाचत नाही; व्होल्टता फक्त यासाठी वाढवली की त्याच तारा अधिक स्वतंत्र ग्राहक वाहू शकतील",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "What is being saved is energy — specifically the electrical energy that would otherwise be lost as heat in the long transmission wires, and never reach the town at all. The reasoning rests on two formulae and the difference between them. The heat produced per second in a wire of resistance R carrying current I is I²R. Notice what appears in it and what does not: the loss depends on the current squared and on the wire's resistance, but the transmission voltage does not appear at all. So if you want to cut the waste, the only real lever is the current — and because the dependence is on I², halving the current quarters the loss, while cutting the current to a tenth cuts the loss to a hundredth. The wire's resistance R is fixed by the length of the run and the thickness of the cable; making it thicker helps but copper is expensive and there is a practical limit. Now the second formula: the power actually delivered to the town is P = VI. The town needs a certain power, and that number is fixed by what its people use. But the same P can be carried by a large current at a low voltage or by a small current at a high voltage, and those two combinations are equally good for the customer. This is the opening the engineers exploit. Raise the transmission voltage a hundredfold and, to deliver the same P, the current falls to one hundredth. The heating loss, going as I², falls to one ten-thousandth. A waste that might have consumed a large fraction of the generated power becomes almost negligible. That saving is worth more than the danger and the expense — hence the tall towers, the wide clearances and the transformers at both ends. At the town, of course, thousands of volts would be lethal in a house and would destroy every appliance, so a step-down transformer returns the supply to a safe 220 V before it reaches the wires in the walls. It is a genuine engineering trade: accept high voltage where nobody touches it, in exchange for very low current where the losses happen. (The wrong answers get the physics backwards — drift speed is irrelevant and in fact very slow, the loss goes as current squared and not voltage squared, and the practice is universal precisely because it works, not by accident.)",
+          hi: "जो बचाया जा रहा वह ऊर्जा — विशेष रूप से वह विद्युत ऊर्जा जो अन्यथा लंबी संचरण-तारों में ऊष्मा बनकर गँवाई जाती और शहर तक पहुँचती ही नहीं। तर्क दो सूत्रों और उनके अंतर पर टिका। धारा I ढोते प्रतिरोध R के तार में प्रति सेकंड बनी ऊष्मा I²R। ध्यान दो उसमें क्या है और क्या नहीं: हानि धारा के वर्ग और तार के प्रतिरोध पर निर्भर, पर संचरण वोल्टता उसमें बिलकुल नहीं। अतः हानि घटानी हो तो असली उत्तोलक केवल धारा — और क्योंकि निर्भरता I² पर, धारा आधी करना हानि चौथाई करता, जबकि धारा दसवाँ करना हानि सौवाँ। तार का प्रतिरोध R दौड़ की लंबाई और केबल की मोटाई से सधा; मोटा करना मदद करता पर ताँबा महँगा और व्यावहारिक सीमा। अब दूसरा सूत्र: शहर तक वास्तव में पहुँचाई शक्ति P = VI। शहर को एक निश्चित शक्ति चाहिए, और वह संख्या उसके लोगों के उपयोग से सधी। पर वही P कम वोल्टता पर बड़ी धारा से या ऊँची वोल्टता पर छोटी धारा से ढोई जा सकती, और वे दोनों संयोजन ग्राहक के लिए समान रूप से अच्छे। यही झिरी अभियंता भुनाते। संचरण वोल्टता सौ गुनी करो और, वही P देने को, धारा सौवें भाग पर गिरती। I² से चलती ऊष्मा-हानि दस-हज़ारवें भाग पर गिरती। जो हानि उत्पन्न शक्ति का बड़ा अंश खा जाती वह लगभग नगण्य हो जाती। वह बचत ख़तरे और ख़र्च से अधिक मूल्यवान — इसी से ऊँचे मीनार, चौड़ी दूरियाँ और दोनों सिरों पर ट्रांसफ़ॉर्मर। शहर पर, ज़ाहिर है, हज़ारों वोल्ट घर में प्राणघातक होते और हर उपकरण नष्ट कर देते, अतः अपचायी ट्रांसफ़ॉर्मर दीवारों के तारों तक पहुँचने से पहले आपूर्ति सुरक्षित 220 V पर लौटाता। यह असली अभियांत्रिक सौदा: ऊँची वोल्टता वहाँ स्वीकारो जहाँ कोई छूता नहीं, बदले में बहुत कम धारा वहाँ जहाँ हानि होती। (ग़लत उत्तर भौतिकी उल्टी करते — अपवाह चाल अप्रासंगिक और वास्तव में बहुत धीमी, हानि धारा के वर्ग से चलती वोल्टता के वर्ग से नहीं, और यह प्रथा सार्वभौमिक ठीक इसलिए कि काम करती, संयोग से नहीं।)",
+          mr: "जे वाचवले जात आहे ती ऊर्जा — विशेषतः ती विद्युत ऊर्जा जी एरवी लांब संक्रमण-तारांत उष्णता बनून वाया जाईल आणि शहरापर्यंत पोहोचणारच नाही. युक्तिवाद दोन सूत्रांवर आणि त्यांच्यातील फरकावर टेकलेला. धारा I वाहणाऱ्या रोध R च्या तारेत प्रति सेकंद निर्माण होणारी उष्णता I²R. लक्षात घ्या तीत काय आहे आणि काय नाही: हानी धारेच्या वर्गावर आणि तारेच्या रोधावर अवलंबून, पण संक्रमण व्होल्टता तीत मुळीच नाही. म्हणून हानी घटवायची असल्यास खरा उत्तोलक फक्त धारा — आणि अवलंबित्व I² वर असल्याने, धारा निम्मी करणे हानी चतुर्थांश करते, तर धारा दशांश करणे हानी शतांश. तारेचा रोध R धावेची लांबी आणि केबलच्या जाडीने ठरलेला; जाड करणे मदत करते पण तांबे महाग आणि व्यावहारिक मर्यादा. आता दुसरे सूत्र: शहरापर्यंत प्रत्यक्ष पोहोचवलेली शक्ती P = VI. शहराला ठराविक शक्ती लागते, आणि ती संख्या तिथल्या लोकांच्या वापराने ठरलेली. पण तीच P कमी व्होल्टतेवर मोठ्या धारेने वा उच्च व्होल्टतेवर लहान धारेने वाहता येते, आणि ती दोन्ही संयोजने ग्राहकासाठी सारखीच चांगली. हीच फट अभियंते वापरतात. संक्रमण व्होल्टता शंभरपट करा आणि, तीच P द्यायला, धारा शतांशावर घसरते. I² ने चालणारी उष्णता-हानी दहा-हजारांशावर घसरते. जी हानी निर्मित शक्तीचा मोठा अंश खाऊन टाकेल ती जवळजवळ नगण्य होते. ती बचत धोक्याहून आणि खर्चाहून अधिक मोलाची — म्हणूनच उंच मनोरे, रुंद अंतरे आणि दोन्ही टोकांना रोहित्रे. शहरात, अर्थात, हजारो व्होल्ट घरात प्राणघातक ठरतील आणि प्रत्येक उपकरण नष्ट करतील, म्हणून अपचायी रोहित्र भिंतींतील तारांपर्यंत पोहोचण्याआधी पुरवठा सुरक्षित 220 V वर परत आणते. हा खराखुरा अभियांत्रिकी सौदा: उच्च व्होल्टता तिथे स्वीकारा जिथे कोणी स्पर्श करत नाही, त्याबदल्यात खूप कमी धारा तिथे जिथे हानी होते. (चुकीची उत्तरे भौतिकशास्त्र उलटे करतात — अपवहन वेग असंबद्ध आणि प्रत्यक्षात खूप मंद, हानी धारेच्या वर्गाने चालते व्होल्टतेच्या वर्गाने नाही, आणि ही प्रथा सार्वत्रिक नेमके यासाठी की ती चालते, योगायोगाने नाही.)",
+        },
+      },
+    ],
+  },
 ];
