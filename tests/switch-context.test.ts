@@ -118,13 +118,35 @@ describe("PARENT, which no membership proves", () => {
   });
 
   it("⚠ refuses someone with no active guardianship", async () => {
-    // Tom is staff, not a parent. If the PARENT branch skipped its check, this
-    // would hand him a role whose pages read children's attendance and grades.
-    const ok = await setActiveContext(sessionId, teacherUserId, {
-      schoolId: null,
-      role: "PARENT",
+    // A fresh account with no guardianship of ANY kind. This used to be Tom
+    // the teacher — until standin-guardian.ts made class teachers guardians of
+    // their unclaimed pupils, at which point Tom holding PARENT became the
+    // feature working rather than the check failing. The claim under test is
+    // unchanged: no active guardianship, no PARENT role.
+    const nobody = await db.user.create({
+      data: { name: "ZZ No Guardianship", email: `zz-noguard-${Date.now()}@test.invalid` },
+      select: { id: true },
     });
-    expect(ok).toBe(false);
+    const strayId = `zz-noguard-session-${Date.now()}`;
+    await db.session.create({
+      data: {
+        id: strayId,
+        userId: nobody.id,
+        tokenHash: `zz-noguard-${Date.now()}`,
+        expiresAt: new Date(Date.now() + 3600_000),
+      },
+    });
+
+    try {
+      const ok = await setActiveContext(strayId, nobody.id, {
+        schoolId: null,
+        role: "PARENT",
+      });
+      expect(ok).toBe(false);
+    } finally {
+      await db.session.delete({ where: { id: strayId } });
+      await db.user.delete({ where: { id: nobody.id } });
+    }
   });
 
   it("⚠ refuses a parent whose guardianships have all been revoked", async () => {

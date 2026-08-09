@@ -3303,6 +3303,8 @@ export const mr: Dictionary = {
     superuserSchoolRemove: "या सर्व्हरवरून एक शाळा काढली",
     superuserAppadminAppoint: "कोणालातरी कंटेंट टीममध्ये नेमले",
     superuserAppadminDismiss: "कोणालातरी कंटेंट टीममधून काढले",
+    guardianStandinGrant: "शाळा एका विद्यार्थ्याची पालक म्हणून उभी राहिली",
+    guardianStandinRelease: "शाळेचे स्थानापन्न संपले — आता पालकत्व आई-वडिलांकडे आहे",
     appadminCompetitionCreate: "एक प्लॅटफॉर्म स्पर्धा पोस्ट केली",
     appadminCompetitionPublished: "एक प्लॅटफॉर्म स्पर्धा प्रकाशित केली",
     appadminCompetitionArchived: "एक प्लॅटफॉर्म स्पर्धा मागे घेतली",

@@ -7,6 +7,7 @@ import { acceptInviteSchema, fieldErrors, type FieldErrors } from "@/lib/validat
 import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
+import { syncStandinGuardian } from "@/lib/standin-guardian";
 import { parseDateOnly } from "@/lib/dates";
 import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
@@ -277,6 +278,25 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     targetId: invite.id,
     meta: { role: invite.role },
   });
+
+  // An invited pupil arrives with no parent on the app, exactly like one who
+  // joined by code — so the class teacher (or an admin) stands in as guardian
+  // until a parent claims them. See standin-guardian.ts.
+  if (invite.role === "STUDENT") {
+    const minted = await forSchool(invite.schoolId, () =>
+      db.membership.findFirst({
+        where: { userId, schoolId: invite.schoolId, role: "STUDENT" },
+        select: { id: true },
+      }),
+    );
+    if (minted) {
+      await syncStandinGuardian({
+        schoolId: invite.schoolId,
+        studentMembershipId: minted.id,
+        actorUserId: userId,
+      }).catch((error) => console.error("[acceptInvite] standin sync failed", error));
+    }
+  }
 
   await createSession(userId, { schoolId: invite.schoolId, role });
 

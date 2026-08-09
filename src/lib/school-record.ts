@@ -52,6 +52,7 @@ type TenantTx = {
   };
   membership: { update(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
+  guardianship: { updateMany(args: unknown): Promise<unknown> };
 };
 
 export const LEAVING_REASONS = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
@@ -231,6 +232,16 @@ export async function recordDeparture(
     await t.enrollment.updateMany({
       where: { studentMembershipId: membership.id, schoolId, status: "ACTIVE" },
       data: { status: "REMOVED" },
+    });
+
+    // The school's stand-in guardianship (see standin-guardian.ts) ends with
+    // the membership: a teacher holds guardian rights over a pupil they teach,
+    // never over an alumnus. A REAL parent's guardianship is deliberately NOT
+    // touched — it is what keeps the child's record reachable to the family
+    // after the school is gone.
+    await t.guardianship.updateMany({
+      where: { studentMembershipId: membership.id, relation: "SCHOOL", status: "ACTIVE" },
+      data: { status: "REVOKED" },
     });
 
     return created;

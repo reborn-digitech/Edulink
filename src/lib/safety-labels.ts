@@ -148,6 +148,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "superuser.school.remove": "audit.superuserSchoolRemove",
   "superuser.appadmin.appoint": "audit.superuserAppadminAppoint",
   "superuser.appadmin.dismiss": "audit.superuserAppadminDismiss",
+  "guardian.standin.grant": "audit.guardianStandinGrant",
+  "guardian.standin.release": "audit.guardianStandinRelease",
   "appadmin.competition.create": "audit.appadminCompetitionCreate",
   "appadmin.competition.published": "audit.appadminCompetitionPublished",
   "appadmin.competition.archived": "audit.appadminCompetitionArchived",

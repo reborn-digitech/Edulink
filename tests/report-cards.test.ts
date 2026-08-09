@@ -531,12 +531,19 @@ describe("⚠ a draft is invisible outside the staff room", () => {
   });
 
   it("⚠ a guardian cannot read somebody else's child's cards", async () => {
+    // "Somebody else's child" must mean it: a pupil this guardian holds NO
+    // guardianship over, of any relation. Picking merely "another pupil"
+    // broke twice — once on the seeded two-child parent, and once when
+    // standin-guardian.ts started giving unclaimed pupils a SCHOOL-relation
+    // guardian, so row order could hand this test a child the guardian
+    // legitimately reads.
     const otherPupil = await db.membership.findFirstOrThrow({
       where: {
         schoolId: riversideId,
         role: "STUDENT",
         status: "ACTIVE",
         id: { not: pupilMembershipId },
+        guardianships: { none: { parentUserId: guardianUserId } },
       },
     });
     await expect(cardsForChild(guardian, otherPupil.id)).rejects.toBeInstanceOf(AccessError);

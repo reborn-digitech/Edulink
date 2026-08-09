@@ -3682,6 +3682,8 @@ export const en = {
     superuserSchoolRemove: "Removed a school from this server",
     superuserAppadminAppoint: "Appointed somebody to the content team",
     superuserAppadminDismiss: "Removed somebody from the content team",
+    guardianStandinGrant: "The school began standing in as a pupil's guardian",
+    guardianStandinRelease: "The school stopped standing in — a parent holds guardianship now",
     appadminCompetitionCreate: "Posted a platform competition",
     appadminCompetitionPublished: "Published a platform competition",
     appadminCompetitionArchived: "Withdrew a platform competition",

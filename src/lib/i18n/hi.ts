@@ -3306,6 +3306,8 @@ export const hi: Dictionary = {
     superuserSchoolRemove: "इस सर्वर से एक स्कूल हटाया",
     superuserAppadminAppoint: "किसी को कंटेंट टीम में नियुक्त किया",
     superuserAppadminDismiss: "किसी को कंटेंट टीम से हटाया",
+    guardianStandinGrant: "स्कूल एक विद्यार्थी के अभिभावक के रूप में खड़ा हुआ",
+    guardianStandinRelease: "स्कूल का स्थानापन्न हटा — अब अभिभावकता माता-पिता के पास है",
     appadminCompetitionCreate: "एक प्लेटफ़ॉर्म प्रतियोगिता पोस्ट की",
     appadminCompetitionPublished: "एक प्लेटफ़ॉर्म प्रतियोगिता प्रकाशित की",
     appadminCompetitionArchived: "एक प्लेटफ़ॉर्म प्रतियोगिता वापस ली",

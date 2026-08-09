@@ -171,6 +171,7 @@ applies here: you cannot revoke the only one.
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run superuser -- <email>` | Grant the server-operator flag. `--revoke` to remove, `--list` to see who has it |
 | `npm run appadmin -- <email>` | Grant the content-team flag (question bank + platform competitions). Same `--revoke`/`--list`. The operator can also do this at `/root/content-team` |
+| `npm run guardians:backfill` | Give every unclaimed pupil their stand-in guardian (class teacher/admin). `--dry` to preview. Idempotent |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
@@ -3461,6 +3462,48 @@ requires `organizerSchoolId IS NULL` alongside `leaderboardEnabled`, closing
 it in the database, and `rls:verify` grew two checks: school B reads ZERO
 standings for school A's own competition even with its board on, and school A
 still reads its own.
+
+### The school stands in as guardian, until a parent arrives
+
+A pupil whose parent is not on the app had nobody to say yes: a competition
+entry waited forever on a consent nobody could give, and every guardian-facing
+surface — the diary, the digest, the consent list — was a door with no key
+behind it. Now, **only while no parent or guardian holds an ACTIVE
+guardianship**, the class teacher (LEAD first, CO if there is no LEAD, a
+school admin if there is no class teacher at all) holds one instead — and
+**the moment a real parent claims the child, the stand-in is revoked.** The
+parent does not share; they replace. If the parent's guardianship is later
+revoked, the stand-in comes back.
+
+**A real row, not a special case.** The stand-in is an ordinary `Guardianship`
+with `relation: "SCHOOL"`, because every guardian surface keys on that table
+and a parallel mechanism would mean each of those pages growing a second code
+path it would someday forget. The relation value is the boundary: the
+reconciler tells family from fallback by it, and nothing school-flavoured ever
+blocks or outlives a real parent. One holder at a time, chosen
+deterministically — a consent given by whoever answers first out of three
+stand-ins is not a decision anyone made.
+
+**Reconcile, don't choreograph.** One idempotent function
+(`standin-guardian.ts`) computes the right state from scratch, and every
+lifecycle event calls it: a pupil joins by code, a pupil accepts an invite, a
+parent claims. A pupil recorded as leaving drops the stand-in inside the same
+departure transaction (a teacher is guardian of a pupil they teach, never of
+an alumnus) while a REAL parent's guardianship deliberately survives it —
+that link is what keeps the record reachable to the family afterwards.
+`npm run guardians:backfill` (with `--dry`) walks the roll that predates the
+feature; on this dev database it granted 55 stand-ins and left the 31
+family-claimed pupils untouched, and a second run was 86 no-ops.
+
+**The feature changed what three old tests could assume**, which is worth a
+line because it is the feature working: `guardianships: { none: {} }` stopped
+being satisfiable the day every unclaimed pupil gained a guardian, and "Tom is
+staff, not a parent" stopped implying Tom holds no guardianship. Each test was
+re-anchored on what it actually meant — no guardianship *from this parent*, or
+a fresh account with none of any kind — with the claim under test unchanged.
+Suite at 86 files / 1,472 tests, nine of them new; verified live with a minted
+session: a teacher holding twenty stand-ins gets the full "Your children"
+surface.
 
 ### Known issues
 

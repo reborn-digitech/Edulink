@@ -9,6 +9,7 @@ import { audit } from "@/lib/audit";
 import { forJoinCode, forSchool } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
 import { sendParentClaimNotice } from "@/lib/email";
+import { syncStandinGuardian } from "@/lib/standin-guardian";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
   consume,
@@ -204,6 +205,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 
   let userId: string;
   let handle: string;
+  let membershipId: string;
 
   try {
     // `$tenantTransaction`, wrapped in the school the code named — NOT a plain
@@ -256,12 +258,13 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
         });
       }
 
-        return { userId: user.id, handle: loginHandle };
+        return { userId: user.id, handle: loginHandle, membershipId: membership.id };
       }),
     );
 
     userId = created.userId;
     handle = created.handle;
+    membershipId = created.membershipId;
   } catch (error) {
     console.error("[joinAsStudent]", error);
     return {
@@ -276,6 +279,14 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
     action: "student.join",
     meta: { via: lookup.kind, needsConsent },
   });
+
+  // A brand-new pupil has no parent on the app yet, so the class teacher (or
+  // an admin) stands in as guardian until one claims them.
+  await syncStandinGuardian({
+    schoolId: lookup.schoolId,
+    studentMembershipId: membershipId,
+    actorUserId: userId,
+  }).catch((error) => console.error("[joinAsStudent] standin sync failed", error));
 
   await createSession(userId, { schoolId: lookup.schoolId, role: "STUDENT" });
 
@@ -502,6 +513,15 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
     targetType: "Membership",
     targetId: membership.id,
   });
+
+  // A real guardian now exists, so the school's stand-in (the class teacher
+  // or an admin holding guardian rights while no parent was on the app) is
+  // revoked in the same breath. The parent replaces; they never share.
+  await syncStandinGuardian({
+    schoolId: membership.schoolId,
+    studentMembershipId: membership.id,
+    actorUserId: session.user.id,
+  }).catch((error) => console.error("[claimChild] standin sync failed", error));
 
   // Switch the live session into the parent role. Without this a brand-new
   // parent lands on the role picker immediately after claiming, which reads as

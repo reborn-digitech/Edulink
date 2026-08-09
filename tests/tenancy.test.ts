@@ -93,13 +93,20 @@ beforeAll(async () => {
     })
   ).id;
 
-  // Must be an Oakfield student with NO guardian link — the seed deliberately
-  // links the test parent to one child in EACH school, so grabbing "the first
-  // Oakfield student" would pick their own child and make the negative
-  // guardian test assert the opposite of what it means to.
+  // Must be an Oakfield student with no FAMILY guardian link — the seed
+  // deliberately links the test parent to one child in EACH school, so
+  // grabbing "the first Oakfield student" would pick their own child and make
+  // the negative guardian test assert the opposite of what it means to.
+  // (`none: {}` is no longer satisfiable: since standin-guardian.ts, every
+  // unclaimed pupil carries a `relation: "SCHOOL"` row held by their teacher —
+  // which is not this parent, so the negative below still means what it says.)
   oakfieldStudentId = (
     await db.membership.findFirstOrThrow({
-      where: { schoolId: oakfield.id, role: "STUDENT", guardianships: { none: {} } },
+      where: {
+        schoolId: oakfield.id,
+        role: "STUDENT",
+        guardianships: { none: { relation: { not: "SCHOOL" } } },
+      },
     })
   ).id;
 
@@ -111,13 +118,17 @@ beforeAll(async () => {
     })
   ).studentMembershipId;
 
+  // "Unrelated" means no guardianship FROM THIS PARENT — a SCHOOL-relation
+  // stand-in held by a teacher (standin-guardian.ts) does not relate the
+  // parent to the child, and `none: {}` stopped being satisfiable the day
+  // every unclaimed pupil gained one.
   unrelatedStudentId = (
     await db.membership.findFirstOrThrow({
       where: {
         schoolId: riverside.id,
         role: "STUDENT",
         id: { not: parentChildRiverside },
-        guardianships: { none: {} },
+        guardianships: { none: { parentUserId: parent.id } },
       },
     })
   ).id;
