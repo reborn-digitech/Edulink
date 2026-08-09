@@ -1058,4 +1058,700 @@ export const G10_HISTORY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — The Age of Industrialisation                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-10-industrialisation",
+    subject: "HISTORY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 4 — The Age of Industrialisation",
+      hi: "अध्याय 4 — औद्योगीकरण का युग",
+      mr: "प्रकरण 4 — औद्योगीकरणाचे युग",
+    },
+    name: {
+      en: "The Age of Industrialisation",
+      hi: "औद्योगीकरण का युग",
+      mr: "औद्योगीकरणाचे युग",
+    },
+    summary: {
+      en: "The story machines are usually told to have won on their own: village households weaving for a distant merchant, mills that gathered work under one roof, employers who kept preferring hands to engines, a middleman with the power to hire, weavers ruined by a tariff rather than a machine — and labels printed to make cloth look Indian.",
+      hi: "वह कहानी जिसे आमतौर पर मशीनों की अकेली जीत बताया जाता: दूरस्थ व्यापारी के लिए बुनते गाँव के घर, काम को एक छत के नीचे बटोरती मिलें, इंजनों से अधिक हाथों को चुनते रहे मालिक, भर्ती की शक्ति वाला एक बिचौलिया, मशीन से नहीं शुल्क से उजड़े बुनकर — और कपड़े को भारतीय दिखाने छपे लेबल।",
+      mr: "जी कथा सहसा यंत्रांची एकट्याची जीत म्हणून सांगितली जाते: दूरच्या व्यापाऱ्यासाठी विणणारी गावातील घरे, काम एका छताखाली गोळा करणाऱ्या गिरण्या, इंजिनांपेक्षा हातांना पसंत करत राहिलेले मालक, भरतीची सत्ता असलेला एक दलाल, यंत्राने नव्हे तर जकातीने उद्ध्वस्त झालेले विणकर — आणि कापड भारतीय दिसावे म्हणून छापलेली लेबले.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "proto-industrialisation",
+        name: {
+          en: "Proto-industrialisation",
+          hi: "आद्य-औद्योगीकरण",
+          mr: "आद्य-औद्योगीकरण",
+        },
+        kind: "process",
+        prompt: {
+          en: "Long before any factory, merchants in European towns handed out raw wool to peasant households in the villages, collected the finished cloth and sold it in distant markets. What is this earlier phase of large-scale production called?",
+          hi: "किसी भी कारख़ाने से बहुत पहले, यूरोपीय क़स्बों के व्यापारी गाँवों के किसान-परिवारों को कच्ची ऊन बाँटते, तैयार कपड़ा इकट्ठा करते और दूर के बाज़ारों में बेचते थे। बड़े पैमाने के उत्पादन का यह पहला चरण क्या कहलाता है?",
+          mr: "कोणत्याही कारखान्याच्या खूप आधी, युरोपीय गावांतील व्यापारी खेड्यांतील शेतकरी कुटुंबांना कच्ची लोकर वाटत, तयार कापड गोळा करत आणि दूरच्या बाजारांत विकत. मोठ्या प्रमाणावरील उत्पादनाचा हा आधीचा टप्पा काय म्हणतात?",
+        },
+        statement: {
+          en: "Proto-industrialisation was large-scale production for international markets carried on in village homes rather than factories, with town merchants supplying raw material and collecting the finished goods.",
+          hi: "आद्य-औद्योगीकरण अंतरराष्ट्रीय बाज़ारों के लिए बड़े पैमाने का वह उत्पादन था जो कारख़ानों में नहीं, गाँव के घरों में होता था, जहाँ क़स्बे के व्यापारी कच्चा माल देते और तैयार वस्तुएँ ले जाते थे।",
+          mr: "आद्य-औद्योगीकरण म्हणजे आंतरराष्ट्रीय बाजारांसाठीचे ते मोठ्या प्रमाणावरील उत्पादन जे कारखान्यांत नव्हे तर खेड्यांतील घरांत होत असे, जिथे गावातील व्यापारी कच्चा माल देत आणि तयार वस्तू घेऊन जात.",
+        },
+        detail: {
+          en: "Merchants went to the countryside because urban guilds controlled who could produce what in the towns, and villages lay outside their rules.",
+          hi: "व्यापारी देहात इसलिए गए कि क़स्बों में शहरी श्रेणियाँ तय करती थीं कि कौन क्या बना सकता है, और गाँव उनके नियमों से बाहर थे।",
+          mr: "व्यापारी ग्रामीण भागात यासाठी गेले की गावांत शहरी श्रेणी ठरवत की कोण काय बनवू शकतो, आणि खेडी त्यांच्या नियमांबाहेर होती.",
+        },
+        extra: {
+          en: "For the peasant household it was not a full living but an addition to shrinking plots, so the whole family — including children — worked at the loom between harvests.",
+          hi: "किसान परिवार के लिए यह पूरी आजीविका नहीं बल्कि सिकुड़ते खेतों के साथ एक जोड़ था, अतः फ़सलों के बीच पूरा परिवार — बच्चे भी — करघे पर काम करता था।",
+          mr: "शेतकरी कुटुंबासाठी ती पूर्ण उपजीविका नव्हे तर आकुंचत्या शेतांना जोड होती, म्हणून हंगामांदरम्यान अख्खे कुटुंब — मुलेही — मागावर काम करत असे.",
+        },
+        pair: {
+          left: {
+            en: "Production for world markets, done in village homes",
+            hi: "विश्व बाज़ारों के लिए उत्पादन, गाँव के घरों में",
+            mr: "जागतिक बाजारांसाठी उत्पादन, खेड्यांतील घरांत",
+          },
+          right: {
+            en: "proto-industrialisation",
+            hi: "आद्य-औद्योगीकरण",
+            mr: "आद्य-औद्योगीकरण",
+          },
+        },
+      },
+      {
+        id: "factory-system",
+        name: {
+          en: "The coming of the factory",
+          hi: "कारख़ाने का आगमन",
+          mr: "कारखान्याचे आगमन",
+        },
+        kind: "process",
+        prompt: {
+          en: "From the 1730s work was pulled out of scattered cottages and gathered into single buildings where machines stood in rows, workers kept fixed hours and a supervisor watched them. What change is this?",
+          hi: "1730 के दशक से काम बिखरी कुटियों से खींचकर उन एकल इमारतों में बटोरा गया जहाँ मशीनें पंक्तियों में खड़ी थीं, मज़दूर नियत घंटे रखते थे और एक पर्यवेक्षक उन्हें देखता था। यह कौन-सा परिवर्तन है?",
+          mr: "1730 च्या दशकापासून काम विखुरलेल्या झोपड्यांतून ओढून त्या एकाच इमारतींत गोळा केले गेले जिथे यंत्रे रांगेत उभी होती, कामगार ठरलेले तास पाळत आणि एक पर्यवेक्षक त्यांच्यावर लक्ष ठेवत असे. हा कोणता बदल?",
+        },
+        statement: {
+          en: "The coming of the factory brought workers, machines and materials together under one roof with fixed hours and close supervision, giving the employer control over the pace and quality of work for the first time.",
+          hi: "कारख़ाने के आगमन ने मज़दूरों, मशीनों और सामग्री को नियत घंटों तथा नज़दीकी निगरानी के साथ एक छत के नीचे ला दिया, और मालिक को पहली बार काम की गति तथा गुणवत्ता पर नियंत्रण दिया।",
+          mr: "कारखान्याच्या आगमनाने कामगार, यंत्रे आणि साहित्य ठरलेले तास व जवळून देखरेखीसह एका छताखाली आणले, आणि मालकाला पहिल्यांदाच कामाच्या गती व गुणवत्तेवर नियंत्रण दिले.",
+        },
+        detail: {
+          en: "Cotton was the first industry transformed, and the earliest mills clustered in Manchester, which is why it became the byword for machine-made cloth.",
+          hi: "कपास पहला उद्योग था जो बदला, और आरंभिक मिलें मैनचेस्टर में जमा हुईं, इसीलिए वह मशीन-निर्मित कपड़े का पर्याय बन गया।",
+          mr: "कापूस हा पहिला बदललेला उद्योग, आणि सुरुवातीच्या गिरण्या मँचेस्टरमध्ये गोळा झाल्या, म्हणूनच ते यंत्रनिर्मित कापडाचा समानार्थी बनले.",
+        },
+        extra: {
+          en: "The famous names of the age — cotton mills, iron and steel, railways — were in fact a small part of the economy; most British workers still laboured in traditional crafts and services.",
+          hi: "युग के प्रसिद्ध नाम — सूती मिलें, लोहा-इस्पात, रेलवे — वस्तुतः अर्थव्यवस्था का छोटा हिस्सा थे; अधिकांश ब्रिटिश मज़दूर अब भी परंपरागत दस्तकारी और सेवाओं में खटते थे।",
+          mr: "युगाची प्रसिद्ध नावे — सुती गिरण्या, लोखंड-पोलाद, रेल्वे — प्रत्यक्षात अर्थव्यवस्थेचा लहान भाग होती; बहुतांश ब्रिटिश कामगार अजूनही पारंपरिक कारागिरी आणि सेवांत राबत होते.",
+        },
+        pair: {
+          left: {
+            en: "Work gathered under one roof, hours fixed and watched",
+            hi: "काम एक छत के नीचे, घंटे नियत और निगरानी में",
+            mr: "काम एका छताखाली, तास ठरलेले आणि नजरेखाली",
+          },
+          right: {
+            en: "the coming of the factory",
+            hi: "कारख़ाने का आगमन",
+            mr: "कारखान्याचे आगमन",
+          },
+        },
+      },
+      {
+        id: "preference-for-hand-labour",
+        name: {
+          en: "The preference for hand labour",
+          hi: "हस्त-श्रम की वरीयता",
+          mr: "हातश्रमाची पसंती",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Through the nineteenth century many British employers kept choosing workers over machines, because labour was cheap and plentiful and much of their demand was seasonal or needed variety a machine could not give. What choice is this?",
+          hi: "उन्नीसवीं सदी भर कई ब्रिटिश मालिक मशीनों के बजाय मज़दूर चुनते रहे, क्योंकि श्रम सस्ता और प्रचुर था और उनकी बहुत-सी माँग मौसमी थी या ऐसी विविधता माँगती थी जो मशीन नहीं दे सकती थी। यह कौन-सा चुनाव है?",
+          mr: "एकोणिसाव्या शतकभर अनेक ब्रिटिश मालक यंत्रांऐवजी कामगार निवडत राहिले, कारण श्रम स्वस्त आणि विपुल होते आणि त्यांची बरीच मागणी हंगामी होती वा अशी विविधता मागत होती जी यंत्र देऊ शकत नव्हते. ही कोणती निवड?",
+        },
+        statement: {
+          en: "The preference for hand labour was the deliberate choice of many industrialists to employ workers rather than install machines, because machines were costly, broke down, needed heavy repair and could not be idled cheaply when demand fell.",
+          hi: "हस्त-श्रम की वरीयता कई उद्योगपतियों का यह सोचा-समझा चुनाव था कि मशीनें लगाने के बजाय मज़दूर रखे जाएँ, क्योंकि मशीनें महँगी थीं, बिगड़ती थीं, भारी मरम्मत माँगती थीं और माँग गिरने पर उन्हें सस्ते में ख़ाली नहीं छोड़ा जा सकता था।",
+          mr: "हातश्रमाची पसंती म्हणजे अनेक उद्योगपतींची ती जाणीवपूर्वक निवड की यंत्रे बसवण्याऐवजी कामगार ठेवावेत, कारण यंत्रे महाग होती, बिघडत, जबर दुरुस्ती मागत आणि मागणी घसरल्यावर त्यांना स्वस्तात रिकामे ठेवता येत नव्हते.",
+        },
+        detail: {
+          en: "Seasonal trades made the point plainly: gas works, breweries, book-binding and ship repair all needed extra hands only for part of the year.",
+          hi: "मौसमी धंधों ने बात साफ़ कर दी: गैस-संयंत्र, शराबख़ाने, जिल्दसाज़ी और जहाज़-मरम्मत सबको अतिरिक्त हाथ वर्ष के केवल एक हिस्से में चाहिए होते थे।",
+          mr: "हंगामी धंद्यांनी मुद्दा स्पष्ट केला: गॅस-संयंत्रे, दारूभट्ट्या, बांधणीकाम आणि जहाजदुरुस्ती या सर्वांना जादा हात वर्षाच्या केवळ एका भागात लागत.",
+        },
+        extra: {
+          en: "In the upper end of the market, hand-finishing was itself the selling point — aristocrats wanted individually made goods, and 'handmade' signalled refinement rather than backwardness.",
+          hi: "बाज़ार के ऊपरी सिरे पर हस्त-परिष्करण स्वयं बिक्री का कारण था — कुलीन व्यक्तिगत रूप से बनी वस्तुएँ चाहते थे, और 'हस्तनिर्मित' पिछड़ेपन का नहीं, परिष्कार का संकेत था।",
+          mr: "बाजाराच्या वरच्या टोकाला हस्त-परिष्करण हेच विक्रीचे कारण होते — उमराव वैयक्तिकरीत्या बनवलेल्या वस्तू मागत, आणि 'हस्तनिर्मित' मागासलेपणाचे नव्हे तर सुबकतेचे लक्षण होते.",
+        },
+        pair: {
+          left: {
+            en: "Workers chosen over machines, on purpose",
+            hi: "मशीनों के बजाय मज़दूर, जानबूझकर",
+            mr: "यंत्रांऐवजी कामगार, मुद्दाम",
+          },
+          right: {
+            en: "the preference for hand labour",
+            hi: "हस्त-श्रम की वरीयता",
+            mr: "हातश्रमाची पसंती",
+          },
+        },
+      },
+      {
+        id: "the-jobber",
+        name: {
+          en: "The jobber",
+          hi: "जॉबर",
+          mr: "जॉबर",
+        },
+        kind: "structure",
+        prompt: {
+          en: "In Indian mills a trusted old employee was sent to the villages to bring in new hands; he found them work, advanced them money, helped them settle in the city — and expected gifts and obedience in return. Who was he?",
+          hi: "भारतीय मिलों में एक भरोसेमंद पुराना कर्मचारी नए हाथ लाने गाँवों में भेजा जाता था; वह उन्हें काम दिलाता, पैसा उधार देता, शहर में बसने में मदद करता — और बदले में भेंट तथा आज्ञापालन की अपेक्षा रखता था। वह कौन था?",
+          mr: "भारतीय गिरण्यांत एक विश्वासू जुना कर्मचारी नवे हात आणायला खेड्यांत पाठवला जाई; तो त्यांना काम मिळवून देई, पैसे उसने देई, शहरात स्थिरावायला मदत करी — आणि बदल्यात भेटी व आज्ञापालनाची अपेक्षा ठेवी. तो कोण होता?",
+        },
+        statement: {
+          en: "The jobber was an old and trusted worker employed by mill owners to recruit new hands from his own village, and his power to grant or withhold a job made him a figure of authority in the workers' lives.",
+          hi: "जॉबर वह पुराना और भरोसेमंद मज़दूर था जिसे मिल-मालिक अपने ही गाँव से नए हाथ भर्ती करने रखते थे, और नौकरी देने या रोकने की उसकी शक्ति उसे मज़दूरों के जीवन में सत्ता का पात्र बना देती थी।",
+          mr: "जॉबर म्हणजे तो जुना आणि विश्वासू कामगार ज्याला गिरणीमालक स्वतःच्याच गावातून नवे हात भरती करायला ठेवत, आणि नोकरी देण्याची वा रोखण्याची त्याची सत्ता त्याला कामगारांच्या जीवनात अधिकाराची व्यक्ती बनवत असे.",
+        },
+        detail: {
+          en: "Work was scarce and seekers many, so hundreds would wait at the mill gates for weeks; getting past them depended less on skill than on knowing the jobber.",
+          hi: "काम कम और चाहने वाले बहुत थे, अतः सैकड़ों मिल के फाटकों पर हफ़्तों प्रतीक्षा करते; उनसे आगे निकलना कौशल से कम और जॉबर की जान-पहचान से अधिक तय होता था।",
+          mr: "काम कमी आणि इच्छुक पुष्कळ, म्हणून शेकडो गिरणीच्या फाटकांवर आठवडे वाट पाहत; त्यांच्या पुढे जाणे कौशल्याहून कमी आणि जॉबरच्या ओळखीवर अधिक अवलंबून असे.",
+        },
+        extra: {
+          en: "Because he recruited from home, mill floors reproduced village ties of caste and kinship inside the city, and a worker's world stayed narrower than the city around him.",
+          hi: "क्योंकि वह अपने घर के इलाक़े से भर्ती करता था, मिल के फ़र्श शहर के भीतर जाति और नातेदारी के गाँव-संबंध दोहराते थे, और मज़दूर की दुनिया उसके चारों ओर के शहर से सँकरी बनी रहती थी।",
+          mr: "तो स्वतःच्या गावाकडून भरती करत असल्याने, गिरणीचे मजले शहराच्या आत जात आणि नातेसंबंधांचे गावातील धागे पुन्हा उभे करत, आणि कामगाराचे जग भोवतीच्या शहराहून अरुंद राहत असे.",
+        },
+        pair: {
+          left: {
+            en: "The recruiter whose favour decided who got hired",
+            hi: "वह भर्तीकर्ता जिसकी कृपा तय करती कौन रखा जाए",
+            mr: "तो भरती करणारा ज्याच्या मर्जीवर कोणाला काम मिळेल हे ठरे",
+          },
+          right: {
+            en: "the jobber",
+            hi: "जॉबर",
+            mr: "जॉबर",
+          },
+        },
+      },
+      {
+        id: "decline-of-weavers",
+        name: {
+          en: "The ruin of Indian weavers",
+          hi: "भारतीय बुनकरों का उजड़ना",
+          mr: "भारतीय विणकरांचा ऱ्हास",
+        },
+        kind: "process",
+        prompt: {
+          en: "Indian cotton cloth had dominated world markets for centuries, but through the nineteenth century its exports collapsed, Manchester goods flooded the home market and weavers' own raw cotton grew dearer. What decline is this?",
+          hi: "भारतीय सूती कपड़े ने सदियों तक विश्व बाज़ारों पर राज किया था, पर उन्नीसवीं सदी भर उसका निर्यात ढह गया, मैनचेस्टर का माल घरेलू बाज़ार में भर गया और बुनकरों का अपना कच्चा कपास महँगा होता गया। यह कौन-सा पतन है?",
+          mr: "भारतीय सुती कापडाने शतके जागतिक बाजारांवर राज्य केले होते, पण एकोणिसाव्या शतकभर त्याची निर्यात कोसळली, मँचेस्टरचा माल देशी बाजारात भरला आणि विणकरांचा स्वतःचा कच्चा कापूस महाग होत गेला. हा कोणता ऱ्हास?",
+        },
+        statement: {
+          en: "The ruin of Indian weavers came from British tariffs shutting Indian cloth out of foreign markets while machine-made Manchester cloth entered India duty-free, and from raw cotton being exported until Indian weavers could no longer afford it.",
+          hi: "भारतीय बुनकरों का उजड़ना ब्रिटिश शुल्कों से आया जिन्होंने भारतीय कपड़े को विदेशी बाज़ारों से बाहर किया जबकि मशीन-निर्मित मैनचेस्टर कपड़ा भारत में बिना शुल्क घुसा, और कच्चे कपास के निर्यात से जो तब तक चला जब तक भारतीय बुनकर उसे ख़रीद ही न सकें।",
+          mr: "भारतीय विणकरांचा ऱ्हास ब्रिटिश जकातींतून आला ज्यांनी भारतीय कापड परदेशी बाजारांतून बाहेर काढले तर यंत्रनिर्मित मँचेस्टर कापड भारतात जकातमुक्त शिरले, आणि कच्च्या कापसाच्या निर्यातीतून जी तोवर चालली जोवर भारतीय विणकर तो विकत घेऊच शकेनासे झाले.",
+        },
+        detail: {
+          en: "The American Civil War made it worse: with American supplies cut off, Britain bought Indian raw cotton at any price, and weavers at home were priced out of their own material.",
+          hi: "अमेरिकी गृहयुद्ध ने हाल और बिगाड़ा: अमेरिकी आपूर्ति कटते ही ब्रिटेन ने भारतीय कच्चा कपास किसी भी क़ीमत पर ख़रीदा, और घर के बुनकर अपनी ही सामग्री से क़ीमत के कारण बाहर हो गए।",
+          mr: "अमेरिकन यादवी युद्धाने स्थिती अधिक बिघडवली: अमेरिकी पुरवठा तुटताच ब्रिटनने भारतीय कच्चा कापूस कोणत्याही किमतीला विकत घेतला, आणि देशातले विणकर स्वतःच्याच साहित्यापासून किमतीमुळे बाहेर पडले.",
+        },
+        extra: {
+          en: "The weavers were not defeated in open competition — the machine and the tariff arrived together, and only one side had a government writing the rules.",
+          hi: "बुनकर खुली प्रतिस्पर्धा में नहीं हारे — मशीन और शुल्क साथ आए, और नियम लिखती सरकार केवल एक पक्ष के पास थी।",
+          mr: "विणकर खुल्या स्पर्धेत हरले नाहीत — यंत्र आणि जकात एकत्र आले, आणि नियम लिहिणारे सरकार फक्त एकाच बाजूकडे होते.",
+        },
+        pair: {
+          left: {
+            en: "Shut out abroad, undercut at home, starved of cotton",
+            hi: "विदेश में बंद, घर में सस्ते माल से पिटे, कपास से वंचित",
+            mr: "परदेशात बंद, देशात स्वस्त मालाने मारलेले, कापसाविना",
+          },
+          right: {
+            en: "the ruin of Indian weavers",
+            hi: "भारतीय बुनकरों का उजड़ना",
+            mr: "भारतीय विणकरांचा ऱ्हास",
+          },
+        },
+      },
+      {
+        id: "labels-and-advertising",
+        name: {
+          en: "Labels and the making of a market",
+          hi: "लेबल और बाज़ार का निर्माण",
+          mr: "लेबले आणि बाजाराची घडण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Manchester manufacturers pasted labels showing Krishna and Saraswati on bundles of cloth sold in India, and Indian mills later printed calendars with gods to hang in shops and homes. What practice is this?",
+          hi: "मैनचेस्टर के निर्माता भारत में बिकते कपड़े की गठरियों पर कृष्ण और सरस्वती दिखाते लेबल चिपकाते थे, और बाद में भारतीय मिलें दुकानों तथा घरों में टाँगने को देवताओं वाले कैलेंडर छापती थीं। यह कौन-सी प्रथा है?",
+          mr: "मँचेस्टरचे उत्पादक भारतात विकल्या जाणाऱ्या कापडाच्या गठ्ठ्यांवर कृष्ण आणि सरस्वती दाखवणारी लेबले चिकटवत, आणि नंतर भारतीय गिरण्या दुकानांत व घरांत टांगायला देवतांची दिनदर्शिका छापत. ही कोणती प्रथा?",
+        },
+        statement: {
+          en: "Labels and advertising were used to create a market for machine-made cloth, carrying familiar images of gods, kings and Indian scenes so that a foreign product would look trustworthy and at home.",
+          hi: "लेबल और विज्ञापन मशीन-निर्मित कपड़े के लिए बाज़ार बनाने में इस्तेमाल हुए, जो देवताओं, राजाओं और भारतीय दृश्यों की जानी-पहचानी छवियाँ ढोते थे ताकि विदेशी उत्पाद भरोसेमंद और अपना लगे।",
+          mr: "लेबले आणि जाहिराती यंत्रनिर्मित कापडासाठी बाजार घडवायला वापरली गेली, जी देवता, राजे आणि भारतीय दृश्यांच्या ओळखीच्या प्रतिमा वाहत जेणेकरून परका माल विश्वासार्ह आणि आपला वाटावा.",
+        },
+        detail: {
+          en: "The word 'Manchester' printed on the label was itself a guarantee of quality to buyers, so the place of origin was advertised as proudly as the picture.",
+          hi: "लेबल पर छपा 'मैनचेस्टर' शब्द स्वयं ख़रीदारों के लिए गुणवत्ता की गारंटी था, अतः उद्गम-स्थान का विज्ञापन चित्र जितने ही गर्व से होता था।",
+          mr: "लेबलावर छापलेला 'मँचेस्टर' शब्द स्वतः खरेदीदारांसाठी गुणवत्तेची हमी होता, म्हणून उगमस्थानाची जाहिरात चित्राइतक्याच अभिमानाने होत असे.",
+        },
+        extra: {
+          en: "Indian manufacturers answered with the swadeshi message printed on their own labels, turning the same technique into an argument that buying was a national act.",
+          hi: "भारतीय निर्माताओं ने अपने लेबलों पर छपे स्वदेशी संदेश से उत्तर दिया, उसी तकनीक को इस तर्क में बदलकर कि ख़रीदना एक राष्ट्रीय कर्म है।",
+          mr: "भारतीय उत्पादकांनी आपल्या लेबलांवर छापलेल्या स्वदेशी संदेशाने उत्तर दिले, त्याच तंत्राचे रूपांतर या युक्तिवादात करून की खरेदी ही राष्ट्रीय कृती आहे.",
+        },
+        pair: {
+          left: {
+            en: "Gods and kings printed to sell cloth",
+            hi: "कपड़ा बेचने छपे देवता और राजा",
+            mr: "कापड विकायला छापलेले देव आणि राजे",
+          },
+          right: {
+            en: "labels and the making of a market",
+            hi: "लेबल और बाज़ार का निर्माण",
+            mr: "लेबले आणि बाजाराची घडण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Machines had been available for decades, yet in the middle of the nineteenth century most British industries still ran on hand labour, and employers who could afford machinery often declined to install it. This was not backwardness or ignorance. Give the business reasons behind the choice.",
+          hi: "मशीनें दशकों से उपलब्ध थीं, फिर भी उन्नीसवीं सदी के मध्य में अधिकांश ब्रिटिश उद्योग हस्त-श्रम पर चलते थे, और जो मालिक मशीनें ख़रीद सकते थे वे अक्सर उन्हें लगाने से इनकार कर देते थे। यह पिछड़ापन या अज्ञान नहीं था। इस चुनाव के पीछे के व्यावसायिक कारण बताओ।",
+          mr: "यंत्रे दशके उपलब्ध होती, तरीही एकोणिसाव्या शतकाच्या मध्यावर बहुतांश ब्रिटिश उद्योग हातश्रमावर चालत, आणि जे मालक यंत्रे परवडू शकत ते अनेकदा ती बसवायला नकार देत. हे मागासलेपण वा अज्ञान नव्हते. या निवडीमागील व्यावसायिक कारणे सांगा.",
+        },
+        choices: [
+          {
+            en: "Labour was cheap and abundant, so wages cost less than machines; machines were expensive to buy, broke down and needed costly repair; and much demand was seasonal or required variety and fine finish, which a fixed machine could not supply. Crucially, workers could be hired when orders came and dismissed when they stopped, whereas a machine bought on credit had to be paid for whether it ran or stood idle",
+            hi: "श्रम सस्ता और प्रचुर था, अतः मज़दूरी मशीनों से कम पड़ती थी; मशीनें ख़रीदने में महँगी थीं, बिगड़ती थीं और महँगी मरम्मत माँगती थीं; और बहुत-सी माँग मौसमी थी या ऐसी विविधता तथा बारीक परिष्करण माँगती थी जो नियत मशीन नहीं दे सकती थी। मुख्य बात यह कि ऑर्डर आने पर मज़दूर रखे और रुकने पर हटाए जा सकते थे, जबकि उधार पर ख़रीदी मशीन का दाम चाहे वह चले या ख़ाली खड़ी रहे, चुकाना ही पड़ता था",
+            mr: "श्रम स्वस्त आणि विपुल होते, म्हणून मजुरी यंत्रांहून कमी पडे; यंत्रे विकत घ्यायला महाग होती, बिघडत आणि महागडी दुरुस्ती मागत; आणि बरीच मागणी हंगामी होती वा अशी विविधता व बारीक परिष्करण मागत होती जी ठरलेले यंत्र देऊ शकत नव्हते. मुख्य म्हणजे ऑर्डर आल्यावर कामगार ठेवता आणि थांबल्यावर काढता येत, तर उधारीवर घेतलेल्या यंत्राचे पैसे ते चालो वा रिकामे उभे राहो, द्यावेच लागत",
+          },
+          {
+            en: "British law forbade the use of machinery in most industries until the 1880s",
+            hi: "ब्रिटिश क़ानून ने 1880 के दशक तक अधिकांश उद्योगों में मशीनों के उपयोग पर रोक लगा रखी थी",
+            mr: "ब्रिटिश कायद्याने 1880 च्या दशकापर्यंत बहुतांश उद्योगांत यंत्रांच्या वापरावर बंदी घातली होती",
+          },
+          {
+            en: "Machines produced goods of such poor quality that no buyer would accept them at any price",
+            hi: "मशीनें इतनी घटिया गुणवत्ता का माल बनाती थीं कि कोई ख़रीदार उसे किसी भी दाम पर नहीं लेता था",
+            mr: "यंत्रे इतक्या हलक्या दर्जाचा माल बनवत की कोणताही खरेदीदार तो कोणत्याही किमतीला घेत नसे",
+          },
+          {
+            en: "Employers were simply unaware that machines existed, since news of inventions did not travel",
+            hi: "मालिकों को बस पता ही नहीं था कि मशीनें मौजूद हैं, क्योंकि आविष्कारों की ख़बर पहुँचती नहीं थी",
+            mr: "मालकांना यंत्रे अस्तित्वात आहेत हे फक्त माहीतच नव्हते, कारण शोधांची बातमी पोहोचत नसे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The picture of industrialisation as machines simply out-competing hands is a later simplification; the employers of the time were making a straightforward calculation, and hand labour often won it. Start with cost. Britain in this period had a large and growing supply of workers — displaced rural labourers, migrants, the poor of the towns — so wages stayed low and there was no shortage of hands. A machine, by contrast, had to be bought outright or on credit, and steam engines and complex looms were extremely expensive. If a worker can be had cheaply, the machine has to save a great deal to justify itself. Second, machines were not the reliable things we now imagine. They broke down, their repair required scarce skilled mechanics and was costly, and their actual output frequently fell short of what the makers promised. An employer weighing a claimed improvement against a known workforce had good reason to be cautious. Third, and most important, is the question of flexibility, which is where the argument really turns. A great many trades did not need the same output all year. Gas works ran hard in winter, breweries and building peaked in particular months, ship repair came in bursts, book-binding and printing followed the season. In such trades the employer needs a workforce that can expand and contract. Hand workers can be taken on when orders arrive and let go when they stop — brutal for the worker, but costless to the employer. A machine bought on credit has to be paid for in every month, whether it is running or standing still, so idle capacity is a permanent charge on the business. Fourth, the market itself often wanted what machines could not make. Machines are efficient at producing many identical items, but much of Victorian demand was for variety and hand-finish: 500 kinds of hammer, 45 kinds of axe, intricate ironwork, individually tailored goods for the wealthy. In these markets 'handmade' was not a confession of backwardness but a mark of refinement, and the aristocracy paid for it. So the industrialist's choice was rational, and it shows something historically important: technology does not spread automatically because it exists, but only where it beats the alternatives on cost, reliability and flexibility for that particular trade. This also reframes the workers' story. The famous machine-breaking of the period was not a war against progress by ignorant men; workers understood exactly that a machine could take their livelihood, and in an economy where hands were plentiful and jobs scarce, that fear was accurate. (The wrong answers invent a legal ban that never existed, deny the real quality advantage machines had in bulk production, and imagine an information vacuum in the most industrially informed society of the age.)",
+          hi: "औद्योगीकरण की वह छवि कि मशीनों ने बस हाथों को पछाड़ दिया, बाद का सरलीकरण है; उस समय के मालिक एक सीधा हिसाब लगा रहे थे, और हस्त-श्रम अक्सर वह हिसाब जीत जाता था। लागत से शुरू। इस दौर के ब्रिटेन में मज़दूरों की बड़ी और बढ़ती आपूर्ति थी — उजड़े ग्रामीण मज़दूर, प्रवासी, क़स्बों के ग़रीब — अतः मज़दूरी कम बनी रही और हाथों की कोई कमी नहीं थी। इसके विपरीत मशीन नक़द या उधार पर ख़रीदनी पड़ती थी, और भाप-इंजन तथा जटिल करघे अत्यंत महँगे थे। यदि मज़दूर सस्ते में मिल जाए तो मशीन को स्वयं को सही ठहराने के लिए बहुत कुछ बचाना पड़ता है। दूसरा, मशीनें वे भरोसेमंद चीज़ें नहीं थीं जो हम अब कल्पना करते हैं। वे बिगड़ती थीं, उनकी मरम्मत को दुर्लभ कुशल मिस्त्री चाहिए होते और वह महँगी पड़ती, और उनका वास्तविक उत्पादन अक्सर निर्माताओं के वादे से कम रहता। ज्ञात श्रमशक्ति के मुक़ाबले दावा किए सुधार को तौलते मालिक के पास सतर्क रहने का अच्छा कारण था। तीसरा, और सबसे महत्वपूर्ण, लचीलेपन का प्रश्न, जहाँ तर्क वास्तव में मुड़ता है। बहुत-से धंधों को पूरे वर्ष एक-सा उत्पादन नहीं चाहिए था। गैस-संयंत्र जाड़े में ज़ोर से चलते, शराबख़ाने और निर्माण कुछ ख़ास महीनों में चरम पर होते, जहाज़-मरम्मत झटकों में आती, जिल्दसाज़ी और छपाई मौसम के पीछे चलती। ऐसे धंधों में मालिक को ऐसी श्रमशक्ति चाहिए जो फैल और सिकुड़ सके। हाथ से काम करने वाले ऑर्डर आने पर रखे और रुकने पर छोड़े जा सकते हैं — मज़दूर के लिए निर्मम, पर मालिक के लिए मुफ़्त। उधार पर ख़रीदी मशीन का दाम हर महीने चुकाना पड़ता है, चाहे वह चले या खड़ी रहे, अतः ख़ाली क्षमता धंधे पर स्थायी बोझ है। चौथा, बाज़ार स्वयं अक्सर वह चाहता था जो मशीनें नहीं बना सकती थीं। मशीनें बहुत-से एक-जैसे टुकड़े बनाने में कुशल हैं, पर विक्टोरियाई माँग का बड़ा हिस्सा विविधता और हस्त-परिष्करण के लिए था: हथौड़ों के 500 प्रकार, कुल्हाड़ियों के 45, बारीक लोहे का काम, धनवानों के लिए व्यक्तिगत रूप से सिला माल। इन बाज़ारों में 'हस्तनिर्मित' पिछड़ेपन की स्वीकारोक्ति नहीं बल्कि परिष्कार का चिह्न था, और कुलीन उसका दाम देते थे। अतः उद्योगपति का चुनाव तर्कसंगत था, और वह ऐतिहासिक रूप से महत्वपूर्ण बात दिखाता है: तकनीक इसलिए अपने आप नहीं फैलती कि वह मौजूद है, बल्कि केवल वहाँ फैलती है जहाँ वह उस विशेष धंधे के लिए लागत, भरोसे और लचीलेपन में विकल्पों को हरा दे। यह मज़दूरों की कहानी को भी नए ढंग से रखता है। उस दौर की प्रसिद्ध मशीन-तोड़ अज्ञानी लोगों का प्रगति के विरुद्ध युद्ध नहीं थी; मज़दूर ठीक-ठीक समझते थे कि मशीन उनकी आजीविका ले सकती है, और जहाँ हाथ प्रचुर और नौकरियाँ कम हों वहाँ वह भय सही था। (ग़लत उत्तर कभी न रही क़ानूनी रोक गढ़ते, थोक उत्पादन में मशीनों के असली गुणवत्ता-लाभ को नकारते, और युग के सबसे औद्योगिक रूप से सूचित समाज में सूचना-शून्यता की कल्पना करते हैं।)",
+          mr: "औद्योगीकरणाचे ते चित्र की यंत्रांनी फक्त हातांना मागे टाकले, हे नंतरचे सुलभीकरण आहे; त्या काळचे मालक एक सरळ हिशोब मांडत होते, आणि हातश्रम अनेकदा तो हिशोब जिंकत असे. खर्चापासून सुरू. या काळातील ब्रिटनमध्ये कामगारांचा मोठा आणि वाढता पुरवठा होता — उखडलेले ग्रामीण मजूर, स्थलांतरित, गावांतील गरीब — म्हणून मजुरी कमी राहिली आणि हातांची कमतरता नव्हती. याउलट यंत्र रोख वा उधारीवर विकत घ्यावे लागे, आणि वाफेची इंजिने व गुंतागुंतीचे माग अत्यंत महाग होते. कामगार स्वस्तात मिळत असेल तर यंत्राला स्वतःला सिद्ध करायला पुष्कळ वाचवावे लागते. दुसरे, यंत्रे आज आपण कल्पितो तशी विश्वासार्ह नव्हती. ती बिघडत, तिच्या दुरुस्तीला दुर्मीळ कुशल मिस्त्री लागत आणि ती महाग पडे, आणि तिचे प्रत्यक्ष उत्पादन अनेकदा उत्पादकांच्या वचनाहून कमी भरे. ज्ञात श्रमशक्तीसमोर दावा केलेली सुधारणा तोलणाऱ्या मालकाकडे सावध राहायला चांगले कारण होते. तिसरे, आणि सर्वांत महत्त्वाचे, लवचीकतेचा प्रश्न, जिथे युक्तिवाद खरोखर वळतो. अनेक धंद्यांना वर्षभर सारखेच उत्पादन लागत नसे. गॅस-संयंत्रे हिवाळ्यात जोरात चालत, दारूभट्ट्या आणि बांधकाम ठराविक महिन्यांत शिखरावर, जहाजदुरुस्ती झटक्यांत येई, बांधणी आणि छपाई हंगामामागे चाले. अशा धंद्यांत मालकाला अशी श्रमशक्ती हवी जी वाढू आणि आकुंचू शकेल. हातांनी काम करणारे ऑर्डर आल्यावर ठेवता आणि थांबल्यावर सोडता येतात — कामगारासाठी निर्दय, पण मालकासाठी फुकट. उधारीवर घेतलेल्या यंत्राचे पैसे प्रत्येक महिन्यात द्यावेच लागतात, ते चालो वा उभे राहो, म्हणून रिकामी क्षमता धंद्यावरचा कायमचा भार. चौथे, बाजार स्वतःच अनेकदा ते मागत होता जे यंत्रे बनवू शकत नव्हती. यंत्रे अनेक एकसारखे तुकडे बनवण्यात कुशल आहेत, पण व्हिक्टोरियन मागणीचा मोठा भाग विविधता आणि हस्त-परिष्करणासाठी होता: हातोड्यांचे 500 प्रकार, कुऱ्हाडींचे 45, नक्षीदार लोहकाम, धनिकांसाठी वैयक्तिकरीत्या शिवलेला माल. या बाजारांत 'हस्तनिर्मित' ही मागासलेपणाची कबुली नव्हे तर सुबकतेची खूण होती, आणि उमराव तिची किंमत देत. म्हणून उद्योगपतीची निवड तर्कशुद्ध होती, आणि ती ऐतिहासिकदृष्ट्या महत्त्वाची गोष्ट दाखवते: तंत्रज्ञान अस्तित्वात आहे म्हणून आपोआप पसरत नाही, तर केवळ तिथे पसरते जिथे ते त्या विशिष्ट धंद्यासाठी खर्च, विश्वासार्हता आणि लवचीकतेत पर्यायांना हरवते. हे कामगारांची कथाही नव्याने मांडते. त्या काळची प्रसिद्ध यंत्रफोड अज्ञानी माणसांचे प्रगतीविरुद्धचे युद्ध नव्हते; कामगारांना नेमके कळत होते की यंत्र त्यांची उपजीविका घेऊ शकते, आणि जिथे हात विपुल आणि नोकऱ्या कमी अशा अर्थव्यवस्थेत ती भीती अचूक होती. (चुकीची उत्तरे कधीच नसलेली कायदेशीर बंदी रचतात, मोठ्या प्रमाणावरील उत्पादनात यंत्रांचा खरा गुणवत्ता-फायदा नाकारतात, आणि त्या युगातील सर्वांत औद्योगिकदृष्ट्या माहितगार समाजात माहितीची पोकळी कल्पितात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "It is often said that Indian handloom weavers were destroyed because British machines simply made cloth better and cheaper — a fair contest that the older technology lost. Examine that claim against what actually happened to weavers in the nineteenth century, and say what the account leaves out.",
+          hi: "अक्सर कहा जाता कि भारतीय हथकरघा बुनकर इसलिए नष्ट हुए कि ब्रिटिश मशीनें बस बेहतर और सस्ता कपड़ा बनाती थीं — एक निष्पक्ष मुक़ाबला जिसे पुरानी तकनीक हार गई। उन्नीसवीं सदी में बुनकरों के साथ वास्तव में जो हुआ उसके विरुद्ध इस दावे को जाँचो, और बताओ यह विवरण क्या छोड़ देता है।",
+          mr: "अनेकदा म्हटले जाते की भारतीय हातमाग विणकर यासाठी नष्ट झाले की ब्रिटिश यंत्रे फक्त अधिक चांगले आणि स्वस्त कापड बनवत — एक निष्पक्ष स्पर्धा जी जुने तंत्रज्ञान हरले. एकोणिसाव्या शतकात विणकरांचे प्रत्यक्षात काय झाले त्याविरुद्ध हा दावा तपासा, आणि सांगा हे वर्णन काय वगळते.",
+        },
+        choices: [
+          {
+            en: "It leaves out that the contest was never open. Britain kept high duties on Indian cloth entering its own market while Indian ports were opened to Manchester goods at low or no duty, so the same government wrote the rules for both sides. Raw cotton was simultaneously exported to feed British mills — sharply during the American Civil War — pushing the price of cotton in India beyond what weavers could pay for their own material. Machine costs mattered, but tariff policy and the diversion of raw material did the decisive damage",
+            hi: "यह छोड़ देता है कि मुक़ाबला कभी खुला था ही नहीं। ब्रिटेन ने अपने बाज़ार में घुसते भारतीय कपड़े पर ऊँचे शुल्क रखे जबकि भारतीय बंदरगाह मैनचेस्टर के माल के लिए कम या शून्य शुल्क पर खोल दिए गए, अतः दोनों पक्षों के नियम एक ही सरकार ने लिखे। साथ ही कच्चा कपास ब्रिटिश मिलों को खिलाने निर्यात होता रहा — अमेरिकी गृहयुद्ध में तीखेपन से — जिससे भारत में कपास का दाम उससे ऊपर चला गया जो बुनकर अपनी ही सामग्री के लिए चुका सकते थे। मशीन की लागत मायने रखती थी, पर निर्णायक चोट शुल्क-नीति और कच्चे माल के मोड़ने ने की",
+            mr: "ते वगळते की स्पर्धा कधी खुली नव्हतीच. ब्रिटनने स्वतःच्या बाजारात शिरणाऱ्या भारतीय कापडावर उंच जकाती ठेवल्या तर भारतीय बंदरे मँचेस्टरच्या मालासाठी कमी वा शून्य जकातीवर उघडली, म्हणून दोन्ही बाजूंचे नियम एकाच सरकारने लिहिले. त्याचवेळी कच्चा कापूस ब्रिटिश गिरण्यांना पुरवायला निर्यात होत राहिला — अमेरिकन यादवी युद्धात तीव्रतेने — ज्याने भारतात कापसाची किंमत विणकर स्वतःच्या साहित्यासाठी देऊ शकतील त्यापलीकडे नेली. यंत्राचा खर्च महत्त्वाचा होता, पण निर्णायक नुकसान जकात-धोरण आणि कच्च्या मालाच्या वळवण्याने केले",
+          },
+          {
+            en: "Nothing is left out; Indian weavers had no skill worth preserving and were bound to fail in any market",
+            hi: "कुछ नहीं छूटता; भारतीय बुनकरों में सहेजने योग्य कोई कौशल नहीं था और वे किसी भी बाज़ार में विफल होने ही थे",
+            mr: "काहीही वगळले जात नाही; भारतीय विणकरांकडे जपण्याजोगे कौशल्य नव्हते आणि ते कोणत्याही बाजारात अपयशी ठरणारच होते",
+          },
+          {
+            en: "The claim is wrong because British machine cloth was never actually sold in India at all",
+            hi: "दावा ग़लत है क्योंकि ब्रिटिश मशीनी कपड़ा भारत में वस्तुतः बिका ही नहीं",
+            mr: "दावा चुकीचा आहे कारण ब्रिटिश यंत्रकापड भारतात प्रत्यक्षात विकलेच गेले नाही",
+          },
+          {
+            en: "Weavers actually prospered throughout the nineteenth century, and their decline is a modern invention",
+            hi: "बुनकर वस्तुतः पूरी उन्नीसवीं सदी समृद्ध हुए, और उनका पतन आधुनिक गढ़ंत है",
+            mr: "विणकर प्रत्यक्षात संपूर्ण एकोणिसाव्या शतकात भरभराटले, आणि त्यांचा ऱ्हास ही आधुनिक रचना आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The claim is not simply false — machine spinning genuinely was cheaper for ordinary yarn, and that mattered — but presenting the outcome as a fair contest between two technologies leaves out the largest part of the story, which is that one competitor also controlled the rules. Begin with the market abroad. Indian cotton textiles had been the world's finest and most widely traded for centuries; Bengal muslin and Coromandel chintz were luxury goods in Europe. As British manufacturers grew, they lobbied hard for protection and got it: duties on Indian cloth entering Britain were raised steeply, in some periods to levels that made sale impossible. The Indian export trade did not lose a price war; it was legislated out of the market it had dominated. Now the market at home, where the asymmetry is starker. India could not answer with tariffs of its own, because it did not control its own trade policy — that policy was set in London. Indian ports were kept open to Manchester cloth at low or nominal duty, and when Indian mills later sought protection they were refused or granted it grudgingly and late. So the machine-made goods arrived with a structural advantage no Indian producer could match, and 'competition' meant competing against a rival whose government also wrote your rules. Third, and often missed, is the raw material. Britain needed enormous quantities of raw cotton, and India was made a supplier. When the American Civil War cut off American supplies in the 1860s, British buyers bid Indian cotton up to extraordinary prices and shipped it out. For the Indian weaver this was a double blow: he had already lost his markets, and now the very cotton he needed cost more than he could pay, because it was being bought over his head for export. A weaver can survive cheap competition for a while by cutting his own earnings; he cannot weave without cotton. Fourth, note what was not destroyed, because it tests the argument. Weaving did not disappear. Coarse cloth for the poor and specialised weaves — borders, saris, checked cloth for particular regional tastes — survived, precisely where machine production had no advantage. Some weavers moved into these niches and endured. That pattern is exactly what one expects when the damage comes from policy and raw-material prices as much as from technology: the loss is heaviest where the state's rules bit, not uniformly across all cloth. The honest conclusion is that this was deindustrialisation under colonial conditions, not a natural technological succession. The machines were real and their advantage in bulk yarn was real, but the ruin of a world-leading industry within a lifetime required tariffs written by the buyer's government, a colony without the power to protect its own producers, and the export of its raw material. Which is why this episode is central to the economic case Indian nationalists later made: they were not arguing that machines were evil, but that a country must control its own trade policy if its producers are to survive contact with the world. (The wrong answers dismiss weavers' skill against the evidence of centuries of world demand, deny imports that customs records document, or deny a decline that both British and Indian sources describe.)",
+          hi: "दावा सरासर झूठा नहीं है — साधारण सूत के लिए मशीनी कताई सचमुच सस्ती थी, और यह मायने रखता था — पर परिणाम को दो तकनीकों के बीच निष्पक्ष मुक़ाबला बताना कहानी का सबसे बड़ा हिस्सा छोड़ देता है, कि एक प्रतियोगी नियम भी नियंत्रित करता था। विदेश के बाज़ार से शुरू। भारतीय सूती वस्त्र सदियों से विश्व के सबसे बारीक और सबसे व्यापक रूप से व्यापारित थे; बंगाल की मलमल और कोरोमंडल की छींट यूरोप में विलासिता की वस्तुएँ थीं। जैसे-जैसे ब्रिटिश निर्माता बढ़े, उन्होंने संरक्षण के लिए ज़ोर लगाया और पाया: ब्रिटेन में घुसते भारतीय कपड़े पर शुल्क तीखेपन से बढ़ाए गए, कुछ दौर में उस स्तर तक जहाँ बिक्री असंभव हो गई। भारतीय निर्यात-व्यापार क़ीमत की लड़ाई नहीं हारा; उसे उसी बाज़ार से क़ानून बनाकर बाहर किया गया जिस पर वह छाया हुआ था। अब घर का बाज़ार, जहाँ विषमता और तीखी है। भारत अपने शुल्कों से उत्तर नहीं दे सकता था, क्योंकि उसकी अपनी व्यापार-नीति उसके हाथ में थी ही नहीं — वह नीति लंदन में तय होती थी। भारतीय बंदरगाह मैनचेस्टर के कपड़े के लिए कम या नाममात्र शुल्क पर खुले रखे गए, और जब बाद में भारतीय मिलों ने संरक्षण माँगा तो उन्हें मना किया गया या अनिच्छा से और देर से दिया गया। अतः मशीन-निर्मित माल ऐसे ढाँचागत लाभ के साथ आया जिसकी बराबरी कोई भारतीय उत्पादक नहीं कर सकता था, और 'प्रतिस्पर्धा' का अर्थ था ऐसे प्रतिद्वंद्वी से लड़ना जिसकी सरकार तुम्हारे नियम भी लिखती हो। तीसरा, और अक्सर छूटता, कच्चा माल है। ब्रिटेन को कच्चे कपास की विशाल मात्रा चाहिए थी, और भारत को आपूर्तिकर्ता बना दिया गया। जब 1860 के दशक में अमेरिकी गृहयुद्ध ने अमेरिकी आपूर्ति काटी, ब्रिटिश ख़रीदारों ने भारतीय कपास असाधारण दामों तक चढ़ाकर बाहर भेज दिया। भारतीय बुनकर के लिए यह दोहरी मार थी: वह पहले ही अपने बाज़ार खो चुका था, और अब जो कपास उसे चाहिए था वही उसकी सामर्थ्य से महँगा हो गया, क्योंकि वह उसके सिर के ऊपर से निर्यात को ख़रीदा जा रहा था। बुनकर सस्ती प्रतिस्पर्धा कुछ समय अपनी कमाई काटकर झेल सकता है; कपास के बिना वह बुन ही नहीं सकता। चौथा, ध्यान दो कि क्या नष्ट नहीं हुआ, क्योंकि यह तर्क की परख है। बुनाई ग़ायब नहीं हुई। ग़रीबों के लिए मोटा कपड़ा और विशिष्ट बुनाइयाँ — किनारे, साड़ियाँ, विशेष क्षेत्रीय रुचि का चारख़ाना — बचे रहे, ठीक वहाँ जहाँ मशीनी उत्पादन को कोई लाभ नहीं था। कुछ बुनकर इन कोनों में गए और टिके रहे। यह प्रतिरूप ठीक वही है जिसकी अपेक्षा तब होती है जब हानि तकनीक जितनी ही नीति और कच्चे माल की क़ीमतों से आए: नुक़सान वहाँ सबसे भारी जहाँ राज्य के नियम काटते थे, सब कपड़ों पर एक-सा नहीं। ईमानदार निष्कर्ष यह कि यह औपनिवेशिक परिस्थितियों में विऔद्योगीकरण था, स्वाभाविक तकनीकी उत्तराधिकार नहीं। मशीनें असली थीं और थोक सूत में उनका लाभ असली था, पर एक जीवनकाल में विश्व-अग्रणी उद्योग का उजड़ना ख़रीदार की सरकार द्वारा लिखे शुल्क, अपने उत्पादकों की रक्षा की शक्ति से वंचित उपनिवेश, और उसके कच्चे माल के निर्यात की माँग करता था। इसीलिए यह प्रसंग उस आर्थिक तर्क के केंद्र में है जो भारतीय राष्ट्रवादियों ने बाद में रखा: वे यह नहीं कह रहे थे कि मशीनें बुरी हैं, बल्कि यह कि यदि किसी देश के उत्पादकों को दुनिया के संपर्क में जीवित रहना है तो उस देश को अपनी व्यापार-नीति स्वयं नियंत्रित करनी होगी। (ग़लत उत्तर सदियों की विश्व-माँग के प्रमाण के विरुद्ध बुनकरों का कौशल झटकते, सीमा-शुल्क अभिलेखों में दर्ज आयात नकारते, या उस पतन को नकारते जिसे ब्रिटिश और भारतीय दोनों स्रोत बताते हैं।)",
+          mr: "दावा सरळसरळ खोटा नाही — सामान्य सुतासाठी यंत्रकताई खरोखर स्वस्त होती, आणि ते महत्त्वाचे होते — पण निकालाला दोन तंत्रज्ञानांमधील निष्पक्ष स्पर्धा म्हणून मांडणे कथेचा सर्वांत मोठा भाग वगळते, तो हा की एक स्पर्धक नियमही नियंत्रित करत होता. परदेशातील बाजारापासून सुरू. भारतीय सुती वस्त्रे शतके जगातील सर्वांत बारीक आणि सर्वाधिक व्यापार होणारी होती; बंगालची मलमल आणि कोरोमंडलची छीट युरोपात चैनीच्या वस्तू होत्या. ब्रिटिश उत्पादक वाढत गेल्यावर त्यांनी संरक्षणासाठी जोर लावला आणि ते मिळवले: ब्रिटनमध्ये शिरणाऱ्या भारतीय कापडावरील जकाती तीव्रपणे वाढवल्या गेल्या, काही काळात अशा पातळीपर्यंत जिथे विक्री अशक्य झाली. भारतीय निर्यात-व्यापार किमतीची लढाई हरला नाही; त्याला ज्या बाजारावर तो पसरला होता त्यातूनच कायदा करून बाहेर काढले गेले. आता देशातील बाजार, जिथे विषमता अधिक तीव्र आहे. भारत स्वतःच्या जकातींनी उत्तर देऊ शकत नव्हता, कारण त्याचे स्वतःचे व्यापार-धोरण त्याच्या हातातच नव्हते — ते धोरण लंडनमध्ये ठरे. भारतीय बंदरे मँचेस्टरच्या कापडासाठी कमी वा नाममात्र जकातीवर उघडी ठेवली गेली, आणि नंतर भारतीय गिरण्यांनी संरक्षण मागितले तेव्हा त्यांना नकार मिळाला वा नाखुशीने आणि उशिरा दिले गेले. म्हणून यंत्रनिर्मित माल अशा संरचनात्मक फायद्यासह आला ज्याची बरोबरी कोणताही भारतीय उत्पादक करू शकत नव्हता, आणि 'स्पर्धा' म्हणजे अशा प्रतिस्पर्ध्याशी लढणे ज्याचे सरकार तुमचेही नियम लिहिते. तिसरे, आणि अनेकदा सुटणारे, कच्चा माल आहे. ब्रिटनला कच्च्या कापसाच्या प्रचंड राशी लागत, आणि भारताला पुरवठादार बनवले गेले. 1860 च्या दशकात अमेरिकन यादवी युद्धाने अमेरिकी पुरवठा तोडला तेव्हा ब्रिटिश खरेदीदारांनी भारतीय कापूस असाधारण किमतींपर्यंत चढवून बाहेर पाठवला. भारतीय विणकरासाठी हा दुहेरी फटका होता: तो आधीच आपले बाजार गमावून बसला होता, आणि आता ज्या कापसाची त्याला गरज होती तोच त्याच्या ऐपतीहून महाग झाला, कारण तो त्याच्या डोक्यावरून निर्यातीसाठी विकत घेतला जात होता. विणकर स्वस्त स्पर्धा काही काळ स्वतःची कमाई कापून सोसू शकतो; कापसाविना तो विणूच शकत नाही. चौथे, काय नष्ट झाले नाही ते पाहा, कारण ती युक्तिवादाची कसोटी आहे. विणकाम नाहीसे झाले नाही. गरिबांसाठीचे जाडेभरडे कापड आणि विशेष विणी — किनारी, साड्या, विशिष्ट प्रादेशिक आवडीचे चौकडीचे कापड — टिकून राहिली, नेमके तिथे जिथे यंत्रउत्पादनाला कोणताही फायदा नव्हता. काही विणकर या कोनाड्यांत गेले आणि टिकले. हे प्रारूप नेमके तेच जे नुकसान तंत्रज्ञानाइतकेच धोरण आणि कच्च्या मालाच्या किमतींतून येते तेव्हा अपेक्षित असते: हानी तिथे सर्वांत जड जिथे राज्याचे नियम चावले, सर्व कापडांवर सारखी नाही. प्रामाणिक निष्कर्ष हा की हे वसाहती परिस्थितीतील विऔद्योगीकरण होते, नैसर्गिक तांत्रिक वारसा नव्हे. यंत्रे खरी होती आणि मोठ्या प्रमाणावरील सुतात त्यांचा फायदा खरा होता, पण एका आयुष्यात जगात आघाडीवरचा उद्योग उद्ध्वस्त होण्यासाठी खरेदीदाराच्या सरकारने लिहिलेल्या जकाती, स्वतःच्या उत्पादकांचे रक्षण करण्याची सत्ता नसलेली वसाहत, आणि तिच्या कच्च्या मालाची निर्यात लागली. म्हणूनच हा प्रसंग भारतीय राष्ट्रवाद्यांनी नंतर मांडलेल्या आर्थिक युक्तिवादाच्या केंद्रस्थानी आहे: ते यंत्रे वाईट आहेत असे म्हणत नव्हते, तर हे की एखाद्या देशाच्या उत्पादकांना जगाच्या संपर्कात जिवंत राहायचे असेल तर त्या देशाने स्वतःचे व्यापार-धोरण स्वतः नियंत्रित केले पाहिजे. (चुकीची उत्तरे शतकांच्या जागतिक मागणीच्या पुराव्याविरुद्ध विणकरांचे कौशल्य झटकतात, जकात नोंदींत दस्तऐवजीकृत आयात नाकारतात, वा ब्रिटिश आणि भारतीय दोन्ही स्रोत वर्णन करत असलेला ऱ्हास नाकारतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Print Culture and the Modern World                          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "history-10-print-culture",
+    subject: "HISTORY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 5 — Print Culture and the Modern World",
+      hi: "अध्याय 5 — मुद्रण संस्कृति और आधुनिक विश्व",
+      mr: "प्रकरण 5 — मुद्रण संस्कृती आणि आधुनिक जग",
+    },
+    name: {
+      en: "Print Culture and the Modern World",
+      hi: "मुद्रण संस्कृति और आधुनिक विश्व",
+      mr: "मुद्रण संस्कृती आणि आधुनिक जग",
+    },
+    summary: {
+      en: "What happened when copying stopped being slow: a press that made a book cheap, a monk whose pamphlet outran the Church's reply, cheap chapbooks that put reading within a labourer's week's wage, a colonial law aimed at Indian-language newspapers only — and women who were taught to read and then wrote things nobody had authorised.",
+      hi: "जब नक़ल करना धीमा नहीं रहा तब क्या हुआ: वह प्रेस जिसने किताब सस्ती की, वह भिक्षु जिसकी पुस्तिका चर्च के उत्तर से आगे निकल गई, वे सस्ती चैपबुक जिन्होंने पढ़ना मज़दूर की हफ़्ते भर की मज़दूरी के भीतर ला दिया, वह औपनिवेशिक क़ानून जो केवल भारतीय भाषाओं के अख़बारों पर तना — और वे स्त्रियाँ जिन्हें पढ़ना सिखाया गया और फिर उन्होंने वह लिखा जिसकी किसी ने अनुमति नहीं दी थी।",
+      mr: "नक्कल करणे मंद उरले नाही तेव्हा काय घडले: पुस्तक स्वस्त करणारे ते छापखाने, ज्याची पुस्तिका चर्चच्या उत्तराच्या पुढे गेली तो भिक्षू, वाचन मजुराच्या आठवडाभराच्या मजुरीत आणणारी स्वस्त चोपडी, फक्त भारतीय भाषांच्या वृत्तपत्रांवर रोखलेला तो वसाहती कायदा — आणि ज्यांना वाचायला शिकवले गेले आणि मग ज्यांनी कोणी परवानगी न दिलेले लिहिले त्या स्त्रिया.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "printing-press",
+        name: {
+          en: "Gutenberg's printing press",
+          hi: "गुटेनबर्ग का छापाख़ाना",
+          mr: "गुटेनबर्गचा छापखाना",
+        },
+        kind: "invention",
+        prompt: {
+          en: "Around 1450 a German goldsmith adapted the olive press and cast metal letters that could be arranged and rearranged, so that identical copies of a page could be struck off one after another. Which invention is this?",
+          hi: "1450 के आसपास एक जर्मन स्वर्णकार ने जैतून के कोल्हू को ढालकर धातु के ऐसे अक्षर ढाले जिन्हें सजाया और फिर से सजाया जा सके, ताकि एक पन्ने की एक-सी प्रतियाँ एक के बाद एक निकाली जा सकें। यह कौन-सा आविष्कार है?",
+          mr: "1450 च्या सुमारास एका जर्मन सोनाराने जैतुनाच्या घाण्याचे रूपांतर करून असे धातूचे अक्षर ओतले जे मांडता आणि पुन्हा मांडता येत, जेणेकरून एका पानाच्या सारख्या प्रती एकामागोमाग काढता येतील. हा कोणता शोध?",
+        },
+        statement: {
+          en: "Gutenberg's printing press of about 1450 used movable metal type in an adapted olive press, making it possible to produce many identical copies of a text quickly and cheaply.",
+          hi: "लगभग 1450 के गुटेनबर्ग के छापेख़ाने ने जैतून के ढाले हुए कोल्हू में चल धातु-टाइप का उपयोग किया, जिससे किसी पाठ की अनेक एक-सी प्रतियाँ जल्दी और सस्ते में बनाना संभव हुआ।",
+          mr: "सुमारे 1450 च्या गुटेनबर्गच्या छापखान्याने रूपांतरित जैतून-घाण्यात हलणारे धातू-टाइप वापरले, ज्यामुळे एखाद्या मजकुराच्या अनेक सारख्या प्रती वेगाने आणि स्वस्तात बनवणे शक्य झाले.",
+        },
+        detail: {
+          en: "Before it, every copy was written out by hand, so a book took months, cost a fortune and existed in a handful of copies that only the rich and the clergy saw.",
+          hi: "उससे पहले हर प्रति हाथ से लिखी जाती थी, अतः एक किताब महीनों लेती, भारी दाम माँगती और मुट्ठी भर प्रतियों में रहती जिन्हें केवल धनी और पादरी देखते थे।",
+          mr: "त्याआधी प्रत्येक प्रत हाताने लिहिली जाई, म्हणून एक पुस्तक महिने घेई, प्रचंड किंमत मागे आणि मूठभर प्रतींत असे ज्या फक्त धनिक आणि धर्मगुरू पाहत.",
+        },
+        extra: {
+          en: "Printing had existed in China and Japan for centuries with woodblocks; Gutenberg's contribution was type that could be taken apart and used again for a different page.",
+          hi: "मुद्रण चीन और जापान में सदियों से काठ के ठप्पों के साथ मौजूद था; गुटेनबर्ग का योगदान वह टाइप था जिसे अलग करके किसी दूसरे पन्ने के लिए फिर इस्तेमाल किया जा सके।",
+          mr: "छपाई चीन आणि जपानमध्ये शतके लाकडी ठशांसह अस्तित्वात होती; गुटेनबर्गचे योगदान म्हणजे तो टाइप जो सोडवून दुसऱ्या पानासाठी पुन्हा वापरता येई.",
+        },
+        pair: {
+          left: {
+            en: "Movable metal type in an olive press",
+            hi: "जैतून के कोल्हू में चल धातु-टाइप",
+            mr: "जैतून-घाण्यात हलणारे धातू-टाइप",
+          },
+          right: {
+            en: "Gutenberg's printing press",
+            hi: "गुटेनबर्ग का छापाख़ाना",
+            mr: "गुटेनबर्गचा छापखाना",
+          },
+        },
+      },
+      {
+        id: "print-and-reformation",
+        name: {
+          en: "Print and the Reformation",
+          hi: "मुद्रण और धर्मसुधार",
+          mr: "मुद्रण आणि धर्मसुधारणा",
+        },
+        kind: "event",
+        prompt: {
+          en: "In 1517 a monk's ninety-five theses criticising the Church were printed and read across Germany within weeks, faster than any authority could answer them. Which upheaval did print make possible?",
+          hi: "1517 में एक भिक्षु के पंचानबे प्रस्ताव, जो चर्च की आलोचना करते थे, छपे और हफ़्तों में जर्मनी भर पढ़े गए — इससे तेज़ जितनी तेज़ी से कोई सत्ता उत्तर दे सकती। मुद्रण ने कौन-सी उथल-पुथल संभव बनाई?",
+          mr: "1517 मध्ये एका भिक्षूचे चर्चवर टीका करणारे पंचाण्णव प्रस्ताव छापले गेले आणि आठवड्यांत जर्मनीभर वाचले गेले — कोणतीही सत्ता उत्तर देऊ शकेल त्याहून वेगाने. मुद्रणाने कोणती उलथापालथ शक्य केली?",
+        },
+        statement: {
+          en: "Print made the Reformation possible: Martin Luther's theses and pamphlets spread through Germany faster than the Church could suppress or reply to them, splitting Western Christianity.",
+          hi: "मुद्रण ने धर्मसुधार संभव बनाया: मार्टिन लूथर के प्रस्ताव और पुस्तिकाएँ जर्मनी भर उससे तेज़ फैलीं जितनी तेज़ी से चर्च उन्हें दबा या उत्तर दे सकता, और पश्चिमी ईसाइयत बँट गई।",
+          mr: "मुद्रणाने धर्मसुधारणा शक्य केली: मार्टिन ल्यूथरचे प्रस्ताव आणि पुस्तिका जर्मनीभर चर्च त्यांना दडपू वा उत्तर देऊ शकेल त्याहून वेगाने पसरल्या, आणि पाश्चात्त्य ख्रिस्ती धर्म फुटला.",
+        },
+        detail: {
+          en: "Luther also had the Bible printed in German, so that a believer could read scripture without a priest standing between the text and the reader.",
+          hi: "लूथर ने बाइबिल जर्मन में भी छपवाई, ताकि विश्वासी बिना किसी पादरी के — जो पाठ और पाठक के बीच खड़ा हो — धर्मग्रंथ पढ़ सके।",
+          mr: "ल्यूथरने बायबल जर्मनमध्येही छापवले, जेणेकरून श्रद्धाळू मजकूर आणि वाचक यांच्यात उभ्या असलेल्या पाद्रीविना धर्मग्रंथ वाचू शकेल.",
+        },
+        extra: {
+          en: "The Church answered by keeping an Index of Prohibited Books from 1558, an admission that a printed argument now had to be fought rather than simply forbidden.",
+          hi: "चर्च ने 1558 से निषिद्ध पुस्तकों की सूची रखकर उत्तर दिया — यह स्वीकारोक्ति कि अब छपे तर्क से लड़ना पड़ता है, उसे बस मना कर देना काफ़ी नहीं।",
+          mr: "चर्चने 1558 पासून निषिद्ध पुस्तकांची यादी ठेवून उत्तर दिले — ही कबुली की आता छापील युक्तिवादाशी लढावे लागते, त्याला फक्त मनाई करून चालत नाही.",
+        },
+        pair: {
+          left: {
+            en: "A pamphlet outrunning the Church's reply",
+            hi: "चर्च के उत्तर से आगे निकलती पुस्तिका",
+            mr: "चर्चच्या उत्तराच्या पुढे गेलेली पुस्तिका",
+          },
+          right: {
+            en: "print and the Reformation",
+            hi: "मुद्रण और धर्मसुधार",
+            mr: "मुद्रण आणि धर्मसुधारणा",
+          },
+        },
+      },
+      {
+        id: "chapbooks",
+        name: {
+          en: "Chapbooks and the poor reader",
+          hi: "चैपबुक और ग़रीब पाठक",
+          mr: "चोपडी आणि गरीब वाचक",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Pocket-sized books of ballads, folk tales and almanacs were carried village to village by pedlars and sold for a penny, putting print within reach of people who had never owned a book. What were these called?",
+          hi: "गीतों, लोककथाओं और पंचांगों की जेब में समाने वाली किताबें फेरीवाले गाँव-गाँव ले जाते और एक पैसे में बेचते थे, जिससे मुद्रण उन लोगों की पहुँच में आया जिनके पास कभी कोई किताब नहीं रही थी। ये क्या कहलाती थीं?",
+          mr: "गीते, लोककथा आणि पंचांगांची खिशात मावणारी पुस्तके फेरीवाले गावोगाव नेत आणि एका पैशाला विकत, ज्यामुळे छपाई अशा लोकांच्या आवाक्यात आली ज्यांच्याकडे कधी पुस्तक नव्हते. ही काय म्हणत?",
+        },
+        statement: {
+          en: "Chapbooks were small cheap books of ballads, tales and almanacs hawked by pedlars for a penny, and they brought reading within reach of poor townsfolk and villagers for the first time.",
+          hi: "चैपबुक गीतों, कथाओं और पंचांगों की छोटी सस्ती किताबें थीं जिन्हें फेरीवाले एक पैसे में बेचते थे, और उन्होंने पहली बार पढ़ना ग़रीब क़स्बाइयों और गाँववालों की पहुँच में ला दिया।",
+          mr: "चोपडी म्हणजे गीते, कथा आणि पंचांगांची लहान स्वस्त पुस्तके जी फेरीवाले एका पैशाला विकत, आणि त्यांनी पहिल्यांदाच वाचन गरीब गावकऱ्यांच्या आणि खेडुतांच्या आवाक्यात आणले.",
+        },
+        detail: {
+          en: "Many buyers could not read, so one literate person read aloud at the inn or the fire and a dozen listeners shared a single copy.",
+          hi: "कई ख़रीदार पढ़ नहीं सकते थे, अतः एक साक्षर व्यक्ति सराय या अलाव के पास ज़ोर से पढ़ता और एक ही प्रति दर्जन भर श्रोता साझा करते थे।",
+          mr: "अनेक खरेदीदार वाचू शकत नसत, म्हणून एक साक्षर व्यक्ती खानावळीत वा शेकोटीजवळ मोठ्याने वाचे आणि एकच प्रत डझनभर श्रोते वाटून घेत.",
+        },
+        extra: {
+          en: "That is why literacy figures understate print's reach: the audience for a book was always larger than the number of people who could read it.",
+          hi: "इसीलिए साक्षरता के आँकड़े मुद्रण की पहुँच कम करके बताते हैं: किसी किताब के श्रोता सदा उन लोगों की संख्या से अधिक थे जो उसे पढ़ सकते थे।",
+          mr: "म्हणूनच साक्षरतेचे आकडे मुद्रणाचा आवाका कमी करून सांगतात: एखाद्या पुस्तकाचे श्रोते सदैव ते वाचू शकणाऱ्यांच्या संख्येहून अधिक होते.",
+        },
+        pair: {
+          left: {
+            en: "A penny book carried village to village",
+            hi: "गाँव-गाँव ले जाई जाती एक पैसे की किताब",
+            mr: "गावोगाव नेलेले एका पैशाचे पुस्तक",
+          },
+          right: {
+            en: "chapbooks",
+            hi: "चैपबुक",
+            mr: "चोपडी",
+          },
+        },
+      },
+      {
+        id: "print-in-india",
+        name: {
+          en: "The Indian-language press",
+          hi: "भारतीय भाषाओं का प्रेस",
+          mr: "भारतीय भाषांचा प्रेस",
+        },
+        kind: "structure",
+        prompt: {
+          en: "From the early nineteenth century weeklies and journals appeared in Bengali, Marathi, Urdu, Tamil and other languages, arguing over widow remarriage, caste and the government in a readership no ruler had reckoned with. What is this?",
+          hi: "उन्नीसवीं सदी के आरंभ से बांग्ला, मराठी, उर्दू, तमिल तथा अन्य भाषाओं में साप्ताहिक और पत्रिकाएँ निकलीं, जो विधवा-पुनर्विवाह, जाति और सरकार पर उस पाठक-वर्ग में बहस करती थीं जिसका किसी शासक ने हिसाब नहीं लगाया था। यह क्या है?",
+          mr: "एकोणिसाव्या शतकाच्या सुरुवातीपासून बंगाली, मराठी, उर्दू, तमिळ आणि इतर भाषांत साप्ताहिके व नियतकालिके निघाली, जी विधवा-पुनर्विवाह, जात आणि सरकार यांवर अशा वाचकवर्गात वाद घालत ज्याचा कोणत्या राज्यकर्त्याने हिशोब मांडला नव्हता. हे काय?",
+        },
+        statement: {
+          en: "The Indian-language press was the growth from the early nineteenth century of newspapers and journals in Bengali, Marathi, Urdu, Tamil and other languages, which carried social reform debates and political criticism to a wide new readership.",
+          hi: "भारतीय भाषाओं का प्रेस उन्नीसवीं सदी के आरंभ से बांग्ला, मराठी, उर्दू, तमिल तथा अन्य भाषाओं में अख़बारों और पत्रिकाओं की वह वृद्धि थी, जो समाज-सुधार की बहसें और राजनीतिक आलोचना एक विस्तृत नए पाठक-वर्ग तक ले गई।",
+          mr: "भारतीय भाषांचा प्रेस म्हणजे एकोणिसाव्या शतकाच्या सुरुवातीपासून बंगाली, मराठी, उर्दू, तमिळ आणि इतर भाषांतील वृत्तपत्रे व नियतकालिकांची ती वाढ, जी समाजसुधारणेचे वाद आणि राजकीय टीका एका विस्तृत नव्या वाचकवर्गापर्यंत नेत होती.",
+        },
+        detail: {
+          en: "It carried argument in both directions: reformers and orthodox opponents attacked each other in print, and readers followed the exchange week by week.",
+          hi: "यह दोनों दिशाओं में तर्क ढोता था: सुधारक और रूढ़िवादी विरोधी छपाई में एक-दूसरे पर हमला करते, और पाठक हफ़्ते-दर-हफ़्ते वह आदान-प्रदान देखते थे।",
+          mr: "तो दोन्ही दिशांनी युक्तिवाद वाहत असे: सुधारक आणि सनातनी विरोधक छपाईत एकमेकांवर हल्ला करत, आणि वाचक आठवड्यागणिक ती देवाणघेवाण पाहत.",
+        },
+        extra: {
+          en: "It also gave a language of grievance to people the courts and councils never heard, and the government read it as closely as its readers did.",
+          hi: "इसने उन लोगों को शिकायत की भाषा भी दी जिन्हें अदालतें और काउंसिलें कभी नहीं सुनतीं, और सरकार उसे उतने ही ध्यान से पढ़ती थी जितने उसके पाठक।",
+          mr: "त्याने त्या लोकांना तक्रारीची भाषाही दिली ज्यांना न्यायालये आणि कौन्सिले कधी ऐकत नसत, आणि सरकार तो त्याच्या वाचकांइतक्याच बारकाईने वाचत असे.",
+        },
+        pair: {
+          left: {
+            en: "Weeklies in Bengali, Marathi, Urdu and Tamil",
+            hi: "बांग्ला, मराठी, उर्दू और तमिल में साप्ताहिक",
+            mr: "बंगाली, मराठी, उर्दू आणि तमिळमधील साप्ताहिके",
+          },
+          right: {
+            en: "the Indian-language press",
+            hi: "भारतीय भाषाओं का प्रेस",
+            mr: "भारतीय भाषांचा प्रेस",
+          },
+        },
+      },
+      {
+        id: "vernacular-press-act",
+        name: {
+          en: "The Vernacular Press Act",
+          hi: "वर्नाक्युलर प्रेस एक्ट",
+          mr: "व्हर्नाक्युलर प्रेस अ‍ॅक्ट",
+        },
+        kind: "event",
+        prompt: {
+          en: "In 1878 a law empowered the government to censor and confiscate the presses of newspapers it judged seditious — but only those published in Indian languages, leaving English papers untouched. Which act is this?",
+          hi: "1878 में एक क़ानून ने सरकार को उन अख़बारों की सेंसरशिप और प्रेस ज़ब्त करने की शक्ति दी जिन्हें वह राजद्रोही माने — पर केवल उन्हें जो भारतीय भाषाओं में छपते थे, अंग्रेज़ी अख़बारों को छोड़कर। यह कौन-सा अधिनियम है?",
+          mr: "1878 मध्ये एका कायद्याने सरकारला ज्यांना ती राजद्रोही मानेल त्या वृत्तपत्रांची सेन्सॉरशिप व छापखाने जप्त करण्याची सत्ता दिली — पण फक्त भारतीय भाषांत छापणाऱ्यांची, इंग्रजी वृत्तपत्रे सोडून. हा कोणता कायदा?",
+        },
+        statement: {
+          en: "The Vernacular Press Act of 1878 allowed the government to censor reports and seize the printing presses of newspapers published in Indian languages, while English-language papers were exempt.",
+          hi: "1878 के वर्नाक्युलर प्रेस एक्ट ने सरकार को भारतीय भाषाओं में छपते अख़बारों की ख़बरें सेंसर करने और उनके छापेख़ाने ज़ब्त करने की छूट दी, जबकि अंग्रेज़ी अख़बार छूट गए।",
+          mr: "1878 च्या व्हर्नाक्युलर प्रेस अ‍ॅक्टने सरकारला भारतीय भाषांत छापणाऱ्या वृत्तपत्रांचे वृत्त सेन्सॉर करण्याची आणि त्यांचे छापखाने जप्त करण्याची मुभा दिली, तर इंग्रजी वृत्तपत्रे वगळली गेली.",
+        },
+        detail: {
+          en: "It was modelled on Irish press laws, and its explicit test was language rather than content — the same criticism was lawful in English and punishable in Bengali.",
+          hi: "यह आयरिश प्रेस-क़ानूनों की तर्ज़ पर बना था, और उसकी स्पष्ट कसौटी विषय नहीं भाषा थी — वही आलोचना अंग्रेज़ी में वैध और बांग्ला में दंडनीय थी।",
+          mr: "तो आयरिश प्रेस-कायद्यांच्या धर्तीवर बनवला होता, आणि त्याची स्पष्ट कसोटी आशय नव्हे तर भाषा होती — तीच टीका इंग्रजीत कायदेशीर आणि बंगालीत शिक्षापात्र होती.",
+        },
+        extra: {
+          en: "It failed at what it wanted: banned editors reopened under new names, and the act itself became a standing argument for the nationalist demand for a free press.",
+          hi: "वह अपने उद्देश्य में विफल रहा: प्रतिबंधित संपादक नए नामों से फिर खुल गए, और वह अधिनियम स्वयं स्वतंत्र प्रेस की राष्ट्रवादी माँग का स्थायी तर्क बन गया।",
+          mr: "तो आपल्या उद्दिष्टात अपयशी ठरला: बंदी घातलेले संपादक नव्या नावांनी पुन्हा सुरू झाले, आणि तो कायदाच स्वतंत्र प्रेसच्या राष्ट्रवादी मागणीचा कायमचा युक्तिवाद बनला.",
+        },
+        pair: {
+          left: {
+            en: "Censorship by language, not by content",
+            hi: "विषय से नहीं, भाषा से सेंसरशिप",
+            mr: "आशयाने नव्हे, भाषेने सेन्सॉरशिप",
+          },
+          right: {
+            en: "the Vernacular Press Act",
+            hi: "वर्नाक्युलर प्रेस एक्ट",
+            mr: "व्हर्नाक्युलर प्रेस अ‍ॅक्ट",
+          },
+        },
+      },
+      {
+        id: "print-and-women",
+        name: {
+          en: "Print and women's writing",
+          hi: "मुद्रण और स्त्रियों का लेखन",
+          mr: "मुद्रण आणि स्त्रियांचे लेखन",
+        },
+        kind: "process",
+        prompt: {
+          en: "Reformers argued that girls should be taught to read so they could be better wives and mothers — and then women used that literacy to publish autobiographies and attacks on the treatment of widows. What development is this?",
+          hi: "सुधारक तर्क देते थे कि लड़कियों को पढ़ना सिखाया जाए ताकि वे बेहतर पत्नियाँ और माँएँ बनें — और फिर स्त्रियों ने उसी साक्षरता से आत्मकथाएँ और विधवाओं के साथ बरताव पर हमले छापे। यह कौन-सा विकास है?",
+          mr: "सुधारक युक्तिवाद करत की मुलींना वाचायला शिकवावे जेणेकरून त्या अधिक चांगल्या पत्नी आणि माता होतील — आणि मग स्त्रियांनी त्याच साक्षरतेतून आत्मचरित्रे आणि विधवांच्या वागणुकीवरील हल्ले छापले. हा कोणता विकास?",
+        },
+        statement: {
+          en: "Print and women's writing describes how literacy taught to girls for domestic reasons was turned by women into published memoirs, essays and criticism of the conditions in which women lived.",
+          hi: "मुद्रण और स्त्रियों का लेखन यह बताता है कि घरेलू कारणों से लड़कियों को सिखाई गई साक्षरता को स्त्रियों ने छपी आत्मकथाओं, निबंधों और उन स्थितियों की आलोचना में बदल दिया जिनमें स्त्रियाँ जीती थीं।",
+          mr: "मुद्रण आणि स्त्रियांचे लेखन हे सांगते की घरगुती कारणांसाठी मुलींना शिकवलेल्या साक्षरतेचे स्त्रियांनी छापील आत्मचरित्रे, निबंध आणि स्त्रिया ज्या परिस्थितीत जगत त्यांच्या टीकेत रूपांतर केले.",
+        },
+        detail: {
+          en: "Rashsundari Debi taught herself in secret and wrote Amar Jiban, the first full-length autobiography published in Bengali, describing a life of unbroken domestic labour.",
+          hi: "राशसुंदरी देवी ने चोरी-छिपे स्वयं पढ़ना सीखा और 'आमार जीबोन' लिखी — बांग्ला में छपी पहली पूर्ण आत्मकथा — जिसमें अटूट घरेलू श्रम का जीवन बताया गया।",
+          mr: "राशसुंदरी देबींनी चोरून स्वतः वाचायला शिकून 'आमार जीबन' लिहिले — बंगालीत छापलेले पहिले संपूर्ण आत्मचरित्र — ज्यात अखंड घरकामाचे आयुष्य वर्णिले.",
+        },
+        extra: {
+          en: "The reaction was immediate: conservative households warned that a reading woman would be widowed, and some journals printed cures for the supposed disease of educating girls.",
+          hi: "प्रतिक्रिया तुरंत आई: रूढ़िवादी घरों ने चेताया कि पढ़ने वाली स्त्री विधवा हो जाएगी, और कुछ पत्रिकाओं ने लड़कियों को पढ़ाने के कथित रोग के इलाज छापे।",
+          mr: "प्रतिक्रिया तात्काळ आली: सनातनी घरांनी इशारा दिला की वाचणारी स्त्री विधवा होईल, आणि काही नियतकालिकांनी मुलींना शिकवण्याच्या तथाकथित रोगावरील उपाय छापले.",
+        },
+        pair: {
+          left: {
+            en: "Literacy granted for the home, used on the world",
+            hi: "घर के लिए दी गई साक्षरता, दुनिया पर इस्तेमाल",
+            mr: "घरासाठी दिलेली साक्षरता, जगावर वापरलेली",
+          },
+          right: {
+            en: "print and women's writing",
+            hi: "मुद्रण और स्त्रियों का लेखन",
+            mr: "मुद्रण आणि स्त्रियांचे लेखन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "When printing spread in Europe, it was welcomed by many but feared by the Church, by rulers and by scholars, some of whom called it a plague and demanded it be licensed or banned. Given that they were often devout, learned people, what exactly were they afraid of?",
+          hi: "जब यूरोप में मुद्रण फैला, कई लोगों ने उसका स्वागत किया पर चर्च, शासकों और विद्वानों ने उससे भय खाया, जिनमें से कुछ ने उसे महामारी कहा और माँग की कि उसे अनुज्ञप्ति में बाँधा या प्रतिबंधित किया जाए। यह देखते हुए कि वे अक्सर धर्मनिष्ठ, विद्वान लोग थे, वे ठीक-ठीक किससे डरते थे?",
+          mr: "युरोपात छपाई पसरली तेव्हा अनेकांनी तिचे स्वागत केले पण चर्च, राज्यकर्ते आणि विद्वानांनी तिची भीती बाळगली, ज्यांतील काहींनी तिला साथ म्हटले आणि परवाना वा बंदीची मागणी केली. ते अनेकदा श्रद्धाळू, विद्वान लोक होते हे पाहता, ते नेमके कशाची भीती बाळगत होते?",
+        },
+        choices: [
+          {
+            en: "That they would lose their monopoly on interpretation. When texts were hand-copied and scarce, the Church and scholars decided what a book meant and who could see it. Cheap printed books, especially in ordinary languages, let people read scripture and argument for themselves, form their own conclusions, and circulate criticism faster than any authority could answer it — so print threatened not literacy but control over what people believed",
+            hi: "कि व्याख्या पर उनका एकाधिकार जाता रहेगा। जब पाठ हाथ से नक़ल होते और दुर्लभ थे, चर्च और विद्वान तय करते थे कि किताब का अर्थ क्या है और उसे कौन देख सकता है। सस्ती छपी किताबों ने, ख़ासकर आम भाषाओं में, लोगों को धर्मग्रंथ और तर्क स्वयं पढ़ने, अपने निष्कर्ष बनाने और आलोचना को किसी भी सत्ता के उत्तर से तेज़ फैलाने दिया — अतः मुद्रण से ख़तरा साक्षरता को नहीं, इस नियंत्रण को था कि लोग क्या मानें",
+            mr: "की अर्थ लावण्यावरील त्यांची मक्तेदारी जाईल. मजकूर हाताने नक्कल होत आणि दुर्मीळ असत तेव्हा चर्च आणि विद्वान ठरवत की पुस्तकाचा अर्थ काय आणि ते कोण पाहू शकतो. स्वस्त छापील पुस्तकांनी, विशेषतः सामान्य भाषांत, लोकांना धर्मग्रंथ आणि युक्तिवाद स्वतः वाचू दिले, स्वतःचे निष्कर्ष काढू दिले, आणि टीका कोणत्याही सत्तेच्या उत्तराहून वेगाने पसरवू दिली — म्हणून मुद्रणाचा धोका साक्षरतेला नव्हे तर लोक काय मानतात यावरील नियंत्रणाला होता",
+          },
+          {
+            en: "They believed printed ink was physically poisonous and would sicken anyone who handled a book",
+            hi: "वे मानते थे कि छपाई की स्याही भौतिक रूप से विषैली है और किताब छूने वाले को बीमार कर देगी",
+            mr: "त्यांना वाटे की छपाईची शाई भौतिकदृष्ट्या विषारी आहे आणि पुस्तक हाताळणाऱ्याला आजारी पाडेल",
+          },
+          {
+            en: "They feared printed books would be too expensive for anyone to buy, ruining the book trade",
+            hi: "उन्हें भय था कि छपी किताबें इतनी महँगी होंगी कि कोई ख़रीद न सकेगा, और पुस्तक-व्यापार चौपट हो जाएगा",
+            mr: "त्यांना भीती होती की छापील पुस्तके इतकी महाग होतील की कोणी विकत घेणार नाही, आणि पुस्तक-व्यापार बुडेल",
+          },
+          {
+            en: "There was no real opposition; print was welcomed unanimously everywhere from the start",
+            hi: "कोई असली विरोध था ही नहीं; मुद्रण का हर जगह शुरू से सर्वसम्मत स्वागत हुआ",
+            mr: "खरा विरोध नव्हताच; मुद्रणाचे सर्वत्र सुरुवातीपासून एकमताने स्वागत झाले",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The fear was neither superstitious nor foolish; it was a clear-eyed reading of what the technology would do to authority. Before print, the scarcity of books was itself a system of control. Every copy had to be written by hand, which took months and cost more than most people earned in years, so books existed in small numbers and lived in monasteries, courts and universities. Scripture was in Latin, which ordinary people could not read, and it reached them through a priest who read, translated and explained it. In that arrangement the Church did not merely own the books; it owned the meaning. What a passage meant, which readings were sound and which were heresy, and who was permitted to ask the question at all were decided by an institution with no serious competitor. Print dismantled every part of that. Copies became numerous and cheap, so a text could no longer be kept within an approved circle. Books began appearing in the languages people actually spoke, so a reader could go to scripture directly, without an interpreter standing between. And crucially, print was fast: an argument could be set, run off in hundreds and distributed across a country in weeks, which meant a criticism could reach the public before the authorities had even composed a reply. Luther's case in 1517 is the demonstration. His theses spread across Germany within weeks; a hand-copied protest would have died in a single town. The Church could no longer contain a dispute simply by refusing to circulate it, and Western Christianity split. This is why the objections took the form they did — demands for licensing, official approval before printing, and the Index of Prohibited Books from 1558. Those are the measures of an institution that has stopped trying to prevent the technology and is now trying to control what it carries. The same logic explains the scholars' worry, which is worth taking seriously rather than mocking: they argued that cheap print would circulate rubbish and irreligion alongside good books, with no one to vouch for quality — an anxiety about unfiltered circulation that has recurred with every later communication technology. The general point is that print was not neutral. It did not simply help people read; it moved the power of interpretation from a small licensed body to anyone who could buy a pamphlet, and the people who lost that power understood precisely what was happening to them. (The wrong answers substitute a physical superstition, reverse the economics — print made books dramatically cheaper — or deny an opposition documented in the licensing laws and the Index themselves.)",
+          hi: "भय न अंधविश्वासी था न मूर्खतापूर्ण; वह इस बात का साफ़-नज़र पाठ था कि यह तकनीक सत्ता के साथ क्या करेगी। मुद्रण से पहले किताबों की दुर्लभता स्वयं नियंत्रण की एक प्रणाली थी। हर प्रति हाथ से लिखनी पड़ती थी, जो महीनों लेती और अधिकांश लोगों की वर्षों की कमाई से अधिक दाम माँगती, अतः किताबें थोड़ी संख्या में रहतीं और मठों, दरबारों तथा विश्वविद्यालयों में बसतीं। धर्मग्रंथ लैटिन में था, जिसे आम लोग पढ़ नहीं सकते थे, और वह उन तक उस पादरी के ज़रिये पहुँचता था जो उसे पढ़ता, अनुवाद करता और समझाता था। उस व्यवस्था में चर्च केवल किताबों का स्वामी नहीं था; वह अर्थ का स्वामी था। किसी अंश का अर्थ क्या है, कौन-से पाठ ठीक और कौन-से पाखंड, और यह प्रश्न पूछने की अनुमति किसे है — ये सब वह संस्था तय करती थी जिसका कोई गंभीर प्रतिद्वंद्वी नहीं था। मुद्रण ने उसका हर हिस्सा ढहा दिया। प्रतियाँ अनेक और सस्ती हो गईं, अतः किसी पाठ को अब स्वीकृत घेरे में रखा नहीं जा सकता था। किताबें उन भाषाओं में छपने लगीं जो लोग वस्तुतः बोलते थे, अतः पाठक बीच में खड़े किसी व्याख्याकार के बिना सीधे धर्मग्रंथ तक जा सकता था। और मुख्य बात, मुद्रण तेज़ था: एक तर्क जमाया, सैकड़ों में छापा और हफ़्तों में देश भर बाँटा जा सकता था, जिसका अर्थ था कि आलोचना जनता तक तब पहुँच जाती जब सत्ता ने उत्तर रचा तक न हो। 1517 में लूथर का प्रकरण उसका प्रमाण है। उसके प्रस्ताव हफ़्तों में जर्मनी भर फैल गए; हाथ से नक़ल किया विरोध एक ही क़स्बे में मर जाता। चर्च अब किसी विवाद को उसे न फैलाकर रोक नहीं सकता था, और पश्चिमी ईसाइयत बँट गई। इसीलिए आपत्तियों ने वही रूप लिया जो लिया — अनुज्ञप्ति की माँग, छपाई से पहले सरकारी स्वीकृति, और 1558 से निषिद्ध पुस्तकों की सूची। ये उस संस्था के उपाय हैं जिसने तकनीक को रोकने की कोशिश छोड़ दी और अब यह नियंत्रित करने में लगी है कि वह क्या ढोए। यही तर्क विद्वानों की चिंता भी समझाता है, जिसे मज़ाक़ बनाने के बजाय गंभीरता से लेना चाहिए: उनका कहना था कि सस्ता मुद्रण अच्छी किताबों के साथ कूड़ा और अधर्म भी फैलाएगा, और गुणवत्ता की ज़मानत देने वाला कोई नहीं होगा — बिना छने प्रसार की वह चिंता जो हर बाद की संचार-तकनीक के साथ लौटी है। सामान्य बिंदु यह कि मुद्रण तटस्थ नहीं था। उसने बस लोगों को पढ़ने में मदद नहीं की; उसने व्याख्या की शक्ति एक छोटी अनुज्ञप्त संस्था से हटाकर उस किसी को दे दी जो एक पुस्तिका ख़रीद सके, और जिनसे वह शक्ति गई वे ठीक-ठीक समझते थे कि उनके साथ क्या हो रहा है। (ग़लत उत्तर भौतिक अंधविश्वास रखते, अर्थशास्त्र उलटते — मुद्रण ने किताबें नाटकीय रूप से सस्ती कीं — या उस विरोध को नकारते जो स्वयं अनुज्ञप्ति-क़ानूनों और निषिद्ध सूची में दर्ज है।)",
+          mr: "भीती ना अंधश्रद्ध होती ना मूर्ख; ते तंत्रज्ञान सत्तेचे काय करेल याचे स्वच्छ नजरेने केलेले वाचन होते. मुद्रणापूर्वी पुस्तकांची दुर्मीळता हीच नियंत्रणाची एक व्यवस्था होती. प्रत्येक प्रत हाताने लिहावी लागे, जी महिने घेई आणि बहुतांश लोकांच्या वर्षांच्या कमाईहून अधिक किंमत मागे, म्हणून पुस्तके थोड्या संख्येत असत आणि मठ, दरबार व विद्यापीठांत राहत. धर्मग्रंथ लॅटिनमध्ये होता, जो सामान्य लोक वाचू शकत नसत, आणि तो त्यांच्यापर्यंत तो वाचणाऱ्या, भाषांतर करणाऱ्या आणि समजावणाऱ्या पाद्रीमार्फत पोहोचे. त्या व्यवस्थेत चर्च केवळ पुस्तकांचे मालक नव्हते; ते अर्थाचे मालक होते. एखाद्या उताऱ्याचा अर्थ काय, कोणती वाचने योग्य आणि कोणती पाखंड, आणि हा प्रश्न विचारण्याची परवानगी कोणाला — हे सर्व ती संस्था ठरवत होती जिला गंभीर प्रतिस्पर्धी नव्हता. मुद्रणाने त्याचा प्रत्येक भाग मोडून काढला. प्रती अनेक आणि स्वस्त झाल्या, म्हणून एखादा मजकूर आता मान्यताप्राप्त वर्तुळात ठेवता येईना. पुस्तके लोक प्रत्यक्षात बोलत त्या भाषांत छापू लागली, म्हणून वाचक मध्ये उभ्या अर्थ लावणाऱ्याविना थेट धर्मग्रंथाकडे जाऊ शकत होता. आणि मुख्य म्हणजे, मुद्रण वेगवान होते: एक युक्तिवाद जुळवून, शेकडोंत छापून आणि आठवड्यांत देशभर वाटता येत होता, म्हणजे टीका जनतेपर्यंत तेव्हा पोहोचे जेव्हा सत्तेने उत्तर रचलेलेही नसे. 1517 मधील ल्यूथरचे प्रकरण याचा पुरावा. त्याचे प्रस्ताव आठवड्यांत जर्मनीभर पसरले; हाताने नक्कल केलेला निषेध एकाच गावात मेला असता. चर्च आता एखादा वाद तो न पसरवून थांबवू शकत नव्हते, आणि पाश्चात्त्य ख्रिस्ती धर्म फुटला. म्हणूनच आक्षेपांनी तेच रूप घेतले जे घेतले — परवान्याची मागणी, छपाईपूर्वी अधिकृत मान्यता, आणि 1558 पासून निषिद्ध पुस्तकांची यादी. हे त्या संस्थेचे उपाय आहेत जिने तंत्रज्ञान रोखण्याचा प्रयत्न सोडून दिला आणि आता ते काय वाहते हे नियंत्रित करण्यात गुंतली आहे. हाच तर्क विद्वानांची चिंताही समजावतो, जिची थट्टा करण्याऐवजी ती गांभीर्याने घ्यावी: त्यांचे म्हणणे होते की स्वस्त छपाई चांगल्या पुस्तकांसोबत कचरा आणि अधर्मही पसरवेल, आणि गुणवत्तेची हमी देणारा कोणी नसेल — न गाळलेल्या प्रसाराची ती चिंता जी नंतरच्या प्रत्येक संपर्क-तंत्रज्ञानासोबत परतली आहे. सामान्य मुद्दा हा की मुद्रण तटस्थ नव्हते. त्याने केवळ लोकांना वाचायला मदत केली नाही; त्याने अर्थ लावण्याची सत्ता एका लहान परवानाधारी संस्थेकडून काढून जो कोणी पुस्तिका विकत घेऊ शकेल त्याला दिली, आणि ज्यांची ती सत्ता गेली त्यांना नेमके कळत होते की त्यांचे काय होत आहे. (चुकीची उत्तरे भौतिक अंधश्रद्धा ठेवतात, अर्थशास्त्र उलटवतात — मुद्रणाने पुस्तके नाट्यमयरीत्या स्वस्त केली — वा स्वतः परवाना-कायदे आणि निषिद्ध यादीत नोंदलेला विरोध नाकारतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The Vernacular Press Act of 1878 let the government censor and seize the presses of newspapers in Indian languages, while identical criticism printed in English went untouched. Explain what that distinction reveals about what the government actually feared, and why the law failed anyway.",
+          hi: "1878 के वर्नाक्युलर प्रेस एक्ट ने सरकार को भारतीय भाषाओं के अख़बारों की सेंसरशिप और प्रेस ज़ब्ती की छूट दी, जबकि वही आलोचना अंग्रेज़ी में छपने पर अछूती रही। समझाओ यह भेद क्या बताता है कि सरकार वस्तुतः किससे डरती थी, और फिर भी वह क़ानून विफल क्यों हुआ।",
+          mr: "1878 च्या व्हर्नाक्युलर प्रेस अ‍ॅक्टने सरकारला भारतीय भाषांतील वृत्तपत्रांची सेन्सॉरशिप व छापखाने जप्तीची मुभा दिली, तर तीच टीका इंग्रजीत छापल्यास अस्पर्श राहिली. समजावा हा भेद काय दाखवतो की सरकार प्रत्यक्षात कशाची भीती बाळगत होते, आणि तरीही तो कायदा का फसला.",
+        },
+        choices: [
+          {
+            en: "It reveals that the target was the audience, not the opinion. English papers reached a small educated elite the government could manage; Indian-language papers reached a mass readership — and, through reading aloud, listeners far beyond it — where criticism could turn into organised protest. The law failed because presses were cheap and easily moved, banned papers reopened under new names and new editors, and the act itself became evidence for the nationalist argument that British rule could not survive being discussed in Indian",
+            hi: "यह बताता है कि निशाना श्रोता-वर्ग था, राय नहीं। अंग्रेज़ी अख़बार एक छोटे शिक्षित अभिजन तक पहुँचते थे जिसे सरकार सँभाल सकती थी; भारतीय भाषाओं के अख़बार एक व्यापक पाठक-वर्ग तक — और ज़ोर से पढ़े जाने के ज़रिये उससे कहीं आगे श्रोताओं तक — पहुँचते थे, जहाँ आलोचना संगठित विरोध में बदल सकती थी। क़ानून इसलिए विफल हुआ कि प्रेस सस्ते और आसानी से हटाए जा सकने वाले थे, प्रतिबंधित अख़बार नए नामों और नए संपादकों से फिर खुल गए, और वह अधिनियम स्वयं इस राष्ट्रवादी तर्क का प्रमाण बन गया कि ब्रिटिश शासन भारतीय भाषाओं में चर्चा सह ही नहीं सकता",
+            mr: "ते दाखवते की लक्ष्य श्रोतृवर्ग होता, मत नव्हे. इंग्रजी वृत्तपत्रे एका लहान शिकलेल्या उच्चवर्गापर्यंत पोहोचत ज्याला सरकार सांभाळू शकत होते; भारतीय भाषांतील वृत्तपत्रे व्यापक वाचकवर्गापर्यंत — आणि मोठ्याने वाचनातून त्याहून कितीतरी पुढे श्रोत्यांपर्यंत — पोहोचत, जिथे टीका संघटित निषेधात बदलू शकत होती. कायदा यासाठी फसला की छापखाने स्वस्त आणि सहज हलवण्याजोगे होते, बंदी घातलेली वृत्तपत्रे नव्या नावांनी आणि नव्या संपादकांनी पुन्हा सुरू झाली, आणि तो कायदाच या राष्ट्रवादी युक्तिवादाचा पुरावा बनला की ब्रिटिश राजवट भारतीय भाषांत चर्चिली जाणे सोसूच शकत नाही",
+          },
+          {
+            en: "It shows the government believed Indian languages were incapable of expressing political ideas at all",
+            hi: "यह दिखाता है कि सरकार मानती थी कि भारतीय भाषाएँ राजनीतिक विचार व्यक्त करने में सर्वथा असमर्थ हैं",
+            mr: "ते दाखवते की सरकारला वाटे भारतीय भाषा राजकीय विचार व्यक्त करण्यास मुळीच असमर्थ आहेत",
+          },
+          {
+            en: "The distinction was accidental, and the act was in fact applied equally to English papers throughout",
+            hi: "यह भेद आकस्मिक था, और अधिनियम वस्तुतः पूरे समय अंग्रेज़ी अख़बारों पर भी समान रूप से लागू हुआ",
+            mr: "हा भेद अपघाती होता, आणि कायदा प्रत्यक्षात संपूर्ण काळ इंग्रजी वृत्तपत्रांवरही सारखाच लागू झाला",
+          },
+          {
+            en: "The law succeeded completely and ended Indian-language journalism until independence",
+            hi: "क़ानून पूरी तरह सफल रहा और स्वतंत्रता तक भारतीय भाषाओं की पत्रकारिता समाप्त कर दी",
+            mr: "कायदा पूर्णपणे यशस्वी ठरला आणि स्वातंत्र्यापर्यंत भारतीय भाषांतील पत्रकारिता संपवली",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The clue is in what the law measured. It did not define sedition by what was said; it defined the offence by the language it was said in. The same sentence attacking a viceroy's policy was lawful in an English weekly and grounds for seizing a press if it appeared in Bengali or Marathi. A government that objected to the opinion would have written the law around content. A government that wrote it around language was objecting to the readership. Consider who those readerships were. English-language papers in India were read by officials, professionals, and a thin educated elite — a group small enough to be known, employed, promoted or ignored, and one whose criticism largely stayed within a conversation the government was already part of. Indian-language papers were another matter. They reached traders, clerks, schoolteachers, small landholders and townspeople across whole regions, and their real audience was larger still, because a single copy read aloud at a shop, a tea stall or a village gathering carried to people who could not read at all. That is a channel through which a grievance can become common knowledge in a district within days, and common knowledge is the raw material of organised protest. The 1857 revolt was within living memory for the officials who drafted the act; so was the recent famine reporting that had embarrassed the administration. They were not afraid of being criticised. They were afraid of being criticised where enough people could hear it at once. Why did it fail? Partly for technical reasons. A press was not a rare or expensive object by 1878; a banned paper could close on Friday and reappear on Monday under a new title, a new declared owner and a nominal new editor, and prosecuting each one consumed more official time than it was worth. Partly for social reasons: editors who went to jail gained standing rather than lost it, and readers sought out papers the government had tried to stop. And most damagingly, the act was self-refuting in argument. By exempting English, it stated openly that the empire applied different rules to Indians and Europeans for the same act — which was precisely the nationalist charge. The law thus handed the movement a documented, unanswerable example of the discrimination it complained of, and it was quoted for decades afterwards in the demand for a free press. The wider lesson runs through this whole chapter. Print had created something new: a public that could be addressed all at once, in its own language, without permission. Governments could ban a title, seize a machine or jail an editor, but they could not un-create the audience — and every attempt to shut the channel became, itself, an item of news travelling through it. (The wrong answers attribute to the government a belief about language it never held — the act exists precisely because Indian languages expressed politics too well — deny an exemption written into the statute, or claim a success contradicted by the flourishing nationalist press of the following decades.)",
+          hi: "सुराग़ इसमें है कि क़ानून किसे नापता था। उसने राजद्रोह की परिभाषा इससे नहीं की कि क्या कहा गया; उसने अपराध की परिभाषा उस भाषा से की जिसमें कहा गया। वायसराय की नीति पर हमला करता वही वाक्य अंग्रेज़ी साप्ताहिक में वैध था और बांग्ला या मराठी में छपने पर प्रेस ज़ब्त करने का आधार। जिस सरकार को राय पर आपत्ति होती वह क़ानून विषय के इर्द-गिर्द लिखती। जिस सरकार ने उसे भाषा के इर्द-गिर्द लिखा, उसकी आपत्ति पाठक-वर्ग पर थी। सोचो वे पाठक-वर्ग कौन थे। भारत में अंग्रेज़ी अख़बार अधिकारी, पेशेवर और एक पतला शिक्षित अभिजन पढ़ता था — इतना छोटा समूह कि उसे जाना, नौकरी दी, पदोन्नत या अनदेखा किया जा सके, और जिसकी आलोचना बड़े हिस्से में उसी बातचीत के भीतर रहती जिसका सरकार पहले से हिस्सा थी। भारतीय भाषाओं के अख़बार दूसरी बात थे। वे पूरे-पूरे क्षेत्रों के व्यापारियों, मुंशियों, अध्यापकों, छोटे ज़मींदारों और क़स्बाइयों तक पहुँचते थे, और उनके असली श्रोता उससे भी बड़े थे, क्योंकि दुकान, चाय की गुमटी या गाँव की चौपाल पर ज़ोर से पढ़ी एक ही प्रति उन तक पहुँचती जो पढ़ ही नहीं सकते थे। यह ऐसा माध्यम है जिससे कोई शिकायत दिनों में पूरे ज़िले का साझा ज्ञान बन सकती है, और साझा ज्ञान संगठित विरोध का कच्चा माल है। अधिनियम का मसौदा बनाते अधिकारियों की जीवित स्मृति में 1857 का विद्रोह था; हाल की वह अकाल-रिपोर्टिंग भी जिसने प्रशासन को शर्मिंदा किया था। उन्हें आलोचित होने का भय नहीं था। उन्हें वहाँ आलोचित होने का भय था जहाँ पर्याप्त लोग उसे एक साथ सुन लें। वह विफल क्यों हुआ? कुछ तकनीकी कारणों से। 1878 तक प्रेस कोई दुर्लभ या महँगी वस्तु नहीं थी; प्रतिबंधित अख़बार शुक्रवार को बंद होकर सोमवार को नए शीर्षक, नए घोषित मालिक और नाममात्र के नए संपादक के साथ फिर निकल सकता था, और हर एक पर मुक़दमा चलाना उसके मूल्य से अधिक सरकारी समय खा जाता था। कुछ सामाजिक कारणों से: जेल गए संपादकों की प्रतिष्ठा घटती नहीं बढ़ती थी, और पाठक उन्हीं अख़बारों को ढूँढ़ते थे जिन्हें सरकार ने रोकना चाहा। और सबसे घातक यह कि अधिनियम तर्क में स्वयं-खंडनकारी था। अंग्रेज़ी को छूट देकर उसने खुलकर कह दिया कि साम्राज्य एक ही कर्म के लिए भारतीयों और यूरोपीयों पर अलग नियम लगाता है — और यही तो राष्ट्रवादी आरोप था। इस तरह क़ानून ने आंदोलन को उस भेदभाव का दस्तावेज़ी, अखंडनीय उदाहरण थमा दिया जिसकी वह शिकायत करता था, और स्वतंत्र प्रेस की माँग में वह दशकों तक उद्धृत होता रहा। व्यापक सबक़ पूरे अध्याय में चलता है। मुद्रण ने कुछ नया रचा था: एक ऐसी जनता जिसे एक साथ, उसकी अपनी भाषा में, बिना अनुमति संबोधित किया जा सके। सरकारें किसी शीर्षक पर रोक लगा सकती थीं, मशीन ज़ब्त कर सकती थीं या संपादक को जेल भेज सकती थीं, पर उस श्रोता-वर्ग को अ-रचा नहीं कर सकती थीं — और माध्यम बंद करने का हर प्रयास स्वयं उसी माध्यम से यात्रा करती ख़बर बन जाता था। (ग़लत उत्तर सरकार को भाषा के बारे में ऐसा विश्वास सौंपते जो उसने कभी नहीं रखा — अधिनियम ठीक इसलिए है कि भारतीय भाषाएँ राजनीति बहुत अच्छे से व्यक्त करती थीं — क़ानून में लिखी छूट को नकारते, या ऐसी सफलता का दावा करते जिसका खंडन आने वाले दशकों का फलता-फूलता राष्ट्रवादी प्रेस करता है।)",
+          mr: "सुगावा कायदा काय मोजत होता यात आहे. त्याने राजद्रोहाची व्याख्या काय म्हटले यावरून केली नाही; त्याने गुन्ह्याची व्याख्या ते ज्या भाषेत म्हटले त्यावरून केली. व्हाइसरॉयच्या धोरणावर हल्ला करणारे तेच वाक्य इंग्रजी साप्ताहिकात कायदेशीर होते आणि बंगाली वा मराठीत छापल्यास छापखाना जप्त करण्याचे कारण. ज्या सरकारला मतावर आक्षेप असता तिने कायदा आशयाभोवती लिहिला असता. ज्या सरकारने तो भाषेभोवती लिहिला, तिचा आक्षेप वाचकवर्गावर होता. ते वाचकवर्ग कोण होते ते पाहा. भारतात इंग्रजी वृत्तपत्रे अधिकारी, व्यावसायिक आणि एक पातळ शिकलेला उच्चवर्ग वाचत — इतका लहान गट की त्याला ओळखता, नोकरी देता, बढती देता वा दुर्लक्षिता येईल, आणि ज्याची टीका मोठ्या प्रमाणात त्याच संभाषणात राही ज्याचा सरकार आधीच भाग होते. भारतीय भाषांतील वृत्तपत्रे दुसरी बाब होती. ती अख्ख्या प्रदेशांतील व्यापारी, कारकून, शिक्षक, छोटे जमीनदार आणि गावकऱ्यांपर्यंत पोहोचत, आणि त्यांचे खरे श्रोते त्याहूनही मोठे होते, कारण दुकानात, चहाच्या टपरीवर वा गावच्या चावडीवर मोठ्याने वाचलेली एकच प्रत त्यांच्यापर्यंत पोहोचे जे वाचूच शकत नव्हते. हा असा मार्ग आहे ज्यातून एखादी तक्रार दिवसांत अख्ख्या जिल्ह्याचे सामायिक ज्ञान बनू शकते, आणि सामायिक ज्ञान हे संघटित निषेधाचे कच्चे साहित्य आहे. कायद्याचा मसुदा करणाऱ्या अधिकाऱ्यांच्या जिवंत स्मृतीत 1857 चे बंड होते; अलीकडची ती दुष्काळ-वार्तांकनेही ज्यांनी प्रशासनाला ओशाळे केले होते. त्यांना टीका होण्याची भीती नव्हती. त्यांना तिथे टीका होण्याची भीती होती जिथे पुरेसे लोक ती एकाच वेळी ऐकतील. तो का फसला? काही तांत्रिक कारणांनी. 1878 पर्यंत छापखाना दुर्मीळ वा महाग वस्तू नव्हता; बंदी घातलेले वृत्तपत्र शुक्रवारी बंद होऊन सोमवारी नव्या शीर्षकाने, नव्या घोषित मालकाने आणि नामधारी नव्या संपादकाने पुन्हा निघू शकत होते, आणि प्रत्येकावर खटला चालवणे त्याच्या मोलाहून अधिक सरकारी वेळ खाई. काही सामाजिक कारणांनी: तुरुंगात गेलेल्या संपादकांची प्रतिष्ठा घटण्याऐवजी वाढे, आणि वाचक तीच वृत्तपत्रे शोधत जी सरकारने थांबवू पाहिली. आणि सर्वांत घातक म्हणजे कायदा युक्तिवादात स्वतःचेच खंडन करणारा होता. इंग्रजीला सूट देऊन त्याने उघड सांगितले की साम्राज्य एकाच कृतीसाठी भारतीय आणि युरोपीयांना वेगळे नियम लावते — आणि हाच तर राष्ट्रवादी आरोप होता. अशा प्रकारे कायद्याने चळवळीला ज्या भेदभावाची ती तक्रार करत होती त्याचे दस्तऐवजी, अखंडनीय उदाहरण दिले, आणि स्वतंत्र प्रेसच्या मागणीत तो दशके उद्धृत होत राहिला. व्यापक धडा अख्ख्या प्रकरणातून चालतो. मुद्रणाने काही नवे घडवले होते: अशी जनता जिला एकाच वेळी, तिच्या स्वतःच्या भाषेत, परवानगीविना संबोधता येईल. सरकारे एखाद्या शीर्षकावर बंदी घालू शकत, यंत्र जप्त करू शकत वा संपादकाला तुरुंगात टाकू शकत, पण तो श्रोतृवर्ग अ-घडवू शकत नव्हती — आणि मार्ग बंद करण्याचा प्रत्येक प्रयत्न स्वतःच त्याच मार्गातून प्रवास करणारी बातमी बनत असे. (चुकीची उत्तरे सरकारला भाषेबद्दल असा विश्वास चिकटवतात जो तिने कधी बाळगला नाही — कायदा नेमके यासाठी आहे की भारतीय भाषा राजकारण फार चांगले व्यक्त करत होत्या — कायद्यात लिहिलेली सूट नाकारतात, वा अशा यशाचा दावा करतात ज्याचे खंडन पुढच्या दशकांतील बहरलेला राष्ट्रवादी प्रेस करतो.)",
+        },
+      },
+    ],
+  },
 ];
