@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 10 — Thermal Properties of Matter",
+  "name": "Thermal Properties of Matter",
+  "slug": "physics-11-thermal-properties-of-matter",
+  "summary": "Heat and temperature stop being the same word: one is what flows and the other is what decides which way it flows. A rail that must be left a gap, a substance that takes four times more heat than iron for every degree, a kilogram of ice at nought degrees that swallows enough energy to boil a kettle and shows nothing for it, a liquid that expands on cooling and saves the fish, and a body that cools quickly at first and then reluctantly.",
+  "position": 10,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "द्रव्य के तापीय गुण",
+      "summary": "ऊष्मा और ताप एक ही शब्द होना छोड़ देते हैं: एक वह है जो बहती है और दूसरा वह जो तय करता है कि बहेगी किस ओर। वह पटरी जिसमें अंतराल छोड़ना पड़ता है, वह पदार्थ जो हर डिग्री के लिए लोहे से चार गुना ऊष्मा लेता है, शून्य डिग्री पर बर्फ़ का वह किलोग्राम जो केतली उबालने भर की ऊर्जा निगल जाता है और बदले में कुछ नहीं दिखाता, वह द्रव जो ठंडा होते हुए फैलता है और मछलियों को बचाता है, और वह पिंड जो पहले तेज़ी से और फिर अनमने ढंग से ठंडा होता है।"
+    },
+    "mr": {
+      "name": "द्रव्याचे औष्णिक गुणधर्म",
+      "summary": "उष्णता आणि तापमान एकच शब्द असणे थांबतात: एक ती जी वाहते आणि दुसरे ते जे कोणत्या दिशेने वाहील ते ठरवते. तो रूळ ज्यात फट सोडावी लागते, तो पदार्थ जो प्रत्येक अंशासाठी लोखंडाहून चौपट उष्णता घेतो, शून्य अंशावरचा बर्फाचा तो किलोग्रॅम जो केटली उकळण्याइतकी ऊर्जा गिळतो आणि बदल्यात काहीही दाखवत नाही, तो द्रव जो थंड होताना प्रसरण पावतो आणि माशांना वाचवतो, आणि तो पिंड जो आधी झपाट्याने आणि मग नाखुशीने थंड होतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Railway lines are laid with gaps, bridges rest on rollers, and a metal lid loosens under hot water, all because a solid's dimensions grow by a fixed fraction for each degree. Which behaviour is this?",
+      "choices": [
+        "Specific heat capacity",
+        "Latent heat",
+        "The anomalous expansion of water",
+        "Thermal expansion"
+      ],
+      "answerIndex": 3,
+      "solution": "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रेल की पटरियाँ अंतराल छोड़कर बिछाई जाती हैं, पुल बेलनों पर टिकते हैं, और धातु का ढक्कन गरम पानी में ढीला हो जाता है, यह सब इसलिए कि ठोस की विमाएँ हर डिग्री पर एक नियत अंश से बढ़ती हैं। यह कौन-सा व्यवहार है?",
+          "choices": [
+            "विशिष्ट ऊष्मा धारिता",
+            "गुप्त ऊष्मा",
+            "पानी का असामान्य प्रसार",
+            "तापीय प्रसार"
+          ],
+          "solution": "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "रेल्वेचे रूळ फटी सोडून टाकले जातात, पूल रुळांवर टेकतात, आणि धातूचे झाकण गरम पाण्यात सैल होते, हे सर्व यासाठी की घनपदार्थाच्या मिती प्रत्येक अंशाला एका ठरलेल्या अंशाने वाढतात. हे कोणते वर्तन?",
+          "choices": [
+            "विशिष्ट उष्णता धारकता",
+            "सुप्त उष्णता",
+            "पाण्याचे असामान्य प्रसरण",
+            "औष्णिक प्रसरण"
+          ],
+          "solution": "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Specific heat capacity is correct?",
+      "choices": [
+        "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids.",
+        "Latent heat is the energy per unit mass absorbed or released during a change of state at constant temperature, so a thermometer records nothing at all while it is being supplied.",
+        "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once.",
+        "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid."
+      ],
+      "answerIndex": 0,
+      "solution": "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विशिष्ट ऊष्मा धारिता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना।",
+            "गुप्त ऊष्मा अचर ताप पर अवस्था-परिवर्तन के दौरान प्रति एकांक द्रव्यमान सोखी या छोड़ी गई ऊर्जा है, अतः जब तक वह दी जा रही हो तापमापी कुछ भी दर्ज नहीं करता।",
+            "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।",
+            "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत।"
+          ],
+          "solution": "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विशिष्ट उष्णता धारकता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट.",
+            "सुप्त उष्णता म्हणजे अचल तापमानावर अवस्थाबदलादरम्यान प्रति एकक वस्तुमान शोषली वा सोडली जाणारी ऊर्जा, म्हणून ती दिली जात असताना तापमापक काहीही नोंदवत नाही.",
+            "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते.",
+            "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट."
+          ],
+          "solution": "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Water's latent heat of vaporisation is about six times its latent heat of fusion, which is why a steam burn is so much worse than boiling water at the same temperature.\" — which of these is this about?",
+      "choices": [
+        "Thermal expansion",
+        "Latent heat",
+        "Specific heat capacity",
+        "The anomalous expansion of water"
+      ],
+      "answerIndex": 1,
+      "solution": "Latent heat is the energy per unit mass absorbed or released during a change of state at constant temperature, so a thermometer records nothing at all while it is being supplied. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पानी की वाष्पन की गुप्त ऊष्मा उसकी गलन की गुप्त ऊष्मा की लगभग छह गुनी है, इसीलिए भाप की जलन उसी ताप के खौलते पानी से कहीं बुरी होती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "तापीय प्रसार",
+            "गुप्त ऊष्मा",
+            "विशिष्ट ऊष्मा धारिता",
+            "पानी का असामान्य प्रसार"
+          ],
+          "solution": "गुप्त ऊष्मा अचर ताप पर अवस्था-परिवर्तन के दौरान प्रति एकांक द्रव्यमान सोखी या छोड़ी गई ऊर्जा है, अतः जब तक वह दी जा रही हो तापमापी कुछ भी दर्ज नहीं करता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पाण्याची बाष्पीभवनाची सुप्त उष्णता तिच्या द्रवीभवनाच्या सुप्त उष्णतेच्या सुमारे सहापट, म्हणूनच वाफेचा भाजका त्याच तापमानाच्या उकळत्या पाण्याहून कितीतरी वाईट असतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "औष्णिक प्रसरण",
+            "सुप्त उष्णता",
+            "विशिष्ट उष्णता धारकता",
+            "पाण्याचे असामान्य प्रसरण"
+          ],
+          "solution": "सुप्त उष्णता म्हणजे अचल तापमानावर अवस्थाबदलादरम्यान प्रति एकक वस्तुमान शोषली वा सोडली जाणारी ऊर्जा, म्हणून ती दिली जात असताना तापमापक काहीही नोंदवत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Cool water from 10 °C and it contracts as expected until 4 °C, and then it starts to expand again on the way down to freezing — which is why a pond ices over from the top and the fish survive. Which behaviour is this?",
+      "choices": [
+        "The anomalous expansion of water",
+        "Thermal expansion",
+        "Specific heat capacity",
+        "Latent heat"
+      ],
+      "answerIndex": 0,
+      "solution": "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी को 10 °C से ठंडा करो और वह अपेक्षा के अनुसार 4 °C तक सिकुड़ता है, फिर हिमांक तक जाते हुए वह दोबारा फैलने लगता है — इसीलिए तालाब ऊपर से जमता है और मछलियाँ बच जाती हैं। यह कौन-सा व्यवहार है?",
+          "choices": [
+            "पानी का असामान्य प्रसार",
+            "तापीय प्रसार",
+            "विशिष्ट ऊष्मा धारिता",
+            "गुप्त ऊष्मा"
+          ],
+          "solution": "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पाणी 10 °C पासून थंड करा आणि ते अपेक्षेप्रमाणे 4 °C पर्यंत आकुंचते, मग गोठणबिंदूकडे जाताना ते पुन्हा प्रसरण पावू लागते — म्हणूनच तळे वरून गोठते आणि मासे वाचतात. हे कोणते वर्तन?",
+          "choices": [
+            "पाण्याचे असामान्य प्रसरण",
+            "औष्णिक प्रसरण",
+            "विशिष्ट उष्णता धारकता",
+            "सुप्त उष्णता"
+          ],
+          "solution": "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Newton's law of cooling is correct?",
+      "choices": [
+        "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid.",
+        "Newton's law of cooling says the rate of heat loss is proportional to the excess of the body's temperature over its surroundings, so cooling slows as the difference shrinks.",
+        "Radiation transfers energy as electromagnetic waves and needs no material medium, unlike conduction and convection, which both require matter to carry the energy along.",
+        "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once."
+      ],
+      "answerIndex": 1,
+      "solution": "Newton's law of cooling says the rate of heat loss is proportional to the excess of the body's temperature over its surroundings, so cooling slows as the difference shrinks. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "न्यूटन का शीतलन नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत।",
+            "न्यूटन का शीतलन नियम कहता है कि ऊष्मा-हानि की दर पिंड के ताप की परिवेश से अधिकता के समानुपाती है, अतः अंतर घटते-घटते शीतलन धीमा होता जाता है।",
+            "विकिरण ऊर्जा को विद्युत्-चुंबकीय तरंगों के रूप में ले जाता है और उसे कोई भौतिक माध्यम नहीं चाहिए, चालन तथा संवहन के विपरीत, जिन दोनों को ऊर्जा ढोने के लिए पदार्थ चाहिए।",
+            "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।"
+          ],
+          "solution": "न्यूटन का शीतलन नियम कहता है कि ऊष्मा-हानि की दर पिंड के ताप की परिवेश से अधिकता के समानुपाती है, अतः अंतर घटते-घटते शीतलन धीमा होता जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "न्यूटनचा शीतलन नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट.",
+            "न्यूटनचा शीतलन नियम सांगतो की उष्णता-हानीचा दर पिंडाच्या तापमानाच्या परिसरावरील अधिक्याच्या समानुपाती, म्हणून फरक घटत जाताना शीतलन मंदावते.",
+            "प्रारण ऊर्जा विद्युतचुंबकीय लहरींच्या रूपात नेते आणि त्याला कोणतेही भौतिक माध्यम लागत नाही, वहन आणि अभिसरणाच्या उलट, ज्या दोघांना ऊर्जा वाहायला पदार्थ लागतो.",
+            "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते."
+          ],
+          "solution": "न्यूटनचा शीतलन नियम सांगतो की उष्णता-हानीचा दर पिंडाच्या तापमानाच्या परिसरावरील अधिक्याच्या समानुपाती, म्हणून फरक घटत जाताना शीतलन मंदावते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The power radiated from a surface goes as the fourth power of its absolute temperature, so doubling the kelvin temperature multiplies the emission sixteenfold.\" — which of these is this about?",
+      "choices": [
+        "Specific heat capacity",
+        "Newton's law of cooling",
+        "Latent heat",
+        "Radiation without a medium"
+      ],
+      "answerIndex": 3,
+      "solution": "Radiation transfers energy as electromagnetic waves and needs no material medium, unlike conduction and convection, which both require matter to carry the energy along. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"किसी सतह से विकिरित शक्ति उसके परम ताप की चौथी घात के अनुसार चलती है, अतः केल्विन ताप दोगुना करने पर उत्सर्जन सोलह गुना हो जाता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "विशिष्ट ऊष्मा धारिता",
+            "न्यूटन का शीतलन नियम",
+            "गुप्त ऊष्मा",
+            "बिना माध्यम के विकिरण"
+          ],
+          "solution": "विकिरण ऊर्जा को विद्युत्-चुंबकीय तरंगों के रूप में ले जाता है और उसे कोई भौतिक माध्यम नहीं चाहिए, चालन तथा संवहन के विपरीत, जिन दोनों को ऊर्जा ढोने के लिए पदार्थ चाहिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एखाद्या पृष्ठभागावरून प्रारित शक्ती त्याच्या निरपेक्ष तापमानाच्या चौथ्या घातेनुसार जाते, म्हणून केल्विन तापमान दुप्पट केल्यास उत्सर्जन सोळापट होते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विशिष्ट उष्णता धारकता",
+            "न्यूटनचा शीतलन नियम",
+            "सुप्त उष्णता",
+            "माध्यमाविना प्रारण"
+          ],
+          "solution": "प्रारण ऊर्जा विद्युतचुंबकीय लहरींच्या रूपात नेते आणि त्याला कोणतेही भौतिक माध्यम लागत नाही, वहन आणि अभिसरणाच्या उलट, ज्या दोघांना ऊर्जा वाहायला पदार्थ लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The hole grows as if it were made of metal\" goes correctly with which of these?",
+      "choices": [
+        "latent heat",
+        "thermal expansion",
+        "specific heat capacity",
+        "the anomalous expansion of water"
+      ],
+      "answerIndex": 1,
+      "solution": "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"छेद ऐसे बढ़ता है मानो वह धातु का बना हो\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "गुप्त ऊष्मा",
+            "तापीय प्रसार",
+            "विशिष्ट ऊष्मा धारिता",
+            "पानी का असामान्य प्रसार"
+          ],
+          "solution": "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"छिद्र असे वाढते जणू ते धातूचे बनले असावे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सुप्त उष्णता",
+            "औष्णिक प्रसरण",
+            "विशिष्ट उष्णता धारकता",
+            "पाण्याचे असामान्य प्रसरण"
+          ],
+          "solution": "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Scorching sand beside a barely warm sea\" goes correctly with which of these?",
+      "choices": [
+        "thermal expansion",
+        "latent heat",
+        "Newton's law of cooling",
+        "specific heat capacity"
+      ],
+      "answerIndex": 3,
+      "solution": "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"मुश्किल से गरम समुद्र के पास तपती रेत\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "तापीय प्रसार",
+            "गुप्त ऊष्मा",
+            "न्यूटन का शीतलन नियम",
+            "विशिष्ट ऊष्मा धारिता"
+          ],
+          "solution": "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जेमतेम उबदार समुद्राशेजारी तापलेली वाळू\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "औष्णिक प्रसरण",
+            "सुप्त उष्णता",
+            "न्यूटनचा शीतलन नियम",
+            "विशिष्ट उष्णता धारकता"
+          ],
+          "solution": "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Energy poured in and the thermometer does not move\" goes correctly with which of these?",
+      "choices": [
+        "the anomalous expansion of water",
+        "Newton's law of cooling",
+        "radiation without a medium",
+        "latent heat"
+      ],
+      "answerIndex": 3,
+      "solution": "Latent heat is the energy per unit mass absorbed or released during a change of state at constant temperature, so a thermometer records nothing at all while it is being supplied. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऊर्जा उड़ेली जाती और तापमापी हिलता नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पानी का असामान्य प्रसार",
+            "न्यूटन का शीतलन नियम",
+            "बिना माध्यम के विकिरण",
+            "गुप्त ऊष्मा"
+          ],
+          "solution": "गुप्त ऊष्मा अचर ताप पर अवस्था-परिवर्तन के दौरान प्रति एकांक द्रव्यमान सोखी या छोड़ी गई ऊर्जा है, अतः जब तक वह दी जा रही हो तापमापी कुछ भी दर्ज नहीं करता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऊर्जा ओतली जाते आणि तापमापक हलत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पाण्याचे असामान्य प्रसरण",
+            "न्यूटनचा शीतलन नियम",
+            "माध्यमाविना प्रारण",
+            "सुप्त उष्णता"
+          ],
+          "solution": "सुप्त उष्णता म्हणजे अचल तापमानावर अवस्थाबदलादरम्यान प्रति एकक वस्तुमान शोषली वा सोडली जाणारी ऊर्जा, म्हणून ती दिली जात असताना तापमापक काहीही नोंदवत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A pond that freezes downwards and never through\" goes correctly with which of these?",
+      "choices": [
+        "Newton's law of cooling",
+        "thermal expansion",
+        "latent heat",
+        "the anomalous expansion of water"
+      ],
+      "answerIndex": 3,
+      "solution": "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह तालाब जो नीचे की ओर जमता है और पूरा कभी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "न्यूटन का शीतलन नियम",
+            "तापीय प्रसार",
+            "गुप्त ऊष्मा",
+            "पानी का असामान्य प्रसार"
+          ],
+          "solution": "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ते तळे जे खालच्या दिशेने गोठते आणि पूर्ण कधीच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "न्यूटनचा शीतलन नियम",
+            "औष्णिक प्रसरण",
+            "सुप्त उष्णता",
+            "पाण्याचे असामान्य प्रसरण"
+          ],
+          "solution": "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The first ten degrees go fastest\" goes correctly with which of these?",
+      "choices": [
+        "the anomalous expansion of water",
+        "Newton's law of cooling",
+        "radiation without a medium",
+        "latent heat"
+      ],
+      "answerIndex": 1,
+      "solution": "Newton's law of cooling says the rate of heat loss is proportional to the excess of the body's temperature over its surroundings, so cooling slows as the difference shrinks. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पहले दस डिग्री सबसे तेज़ जाते हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पानी का असामान्य प्रसार",
+            "न्यूटन का शीतलन नियम",
+            "बिना माध्यम के विकिरण",
+            "गुप्त ऊष्मा"
+          ],
+          "solution": "न्यूटन का शीतलन नियम कहता है कि ऊष्मा-हानि की दर पिंड के ताप की परिवेश से अधिकता के समानुपाती है, अतः अंतर घटते-घटते शीतलन धीमा होता जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पहिले दहा अंश सर्वांत वेगाने जातात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पाण्याचे असामान्य प्रसरण",
+            "न्यूटनचा शीतलन नियम",
+            "माध्यमाविना प्रारण",
+            "सुप्त उष्णता"
+          ],
+          "solution": "न्यूटनचा शीतलन नियम सांगतो की उष्णता-हानीचा दर पिंडाच्या तापमानाच्या परिसरावरील अधिक्याच्या समानुपाती, म्हणून फरक घटत जाताना शीतलन मंदावते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Crosses a vacuum that carries nothing else\" goes correctly with which of these?",
+      "choices": [
+        "radiation without a medium",
+        "latent heat",
+        "the anomalous expansion of water",
+        "Newton's law of cooling"
+      ],
+      "answerIndex": 0,
+      "solution": "Radiation transfers energy as electromagnetic waves and needs no material medium, unlike conduction and convection, which both require matter to carry the energy along. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उस निर्वात को पार करता जो और कुछ नहीं ढोता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बिना माध्यम के विकिरण",
+            "गुप्त ऊष्मा",
+            "पानी का असामान्य प्रसार",
+            "न्यूटन का शीतलन नियम"
+          ],
+          "solution": "विकिरण ऊर्जा को विद्युत्-चुंबकीय तरंगों के रूप में ले जाता है और उसे कोई भौतिक माध्यम नहीं चाहिए, चालन तथा संवहन के विपरीत, जिन दोनों को ऊर्जा ढोने के लिए पदार्थ चाहिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ते निर्वात ओलांडते जे दुसरे काहीही वाहत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "माध्यमाविना प्रारण",
+            "सुप्त उष्णता",
+            "पाण्याचे असामान्य प्रसरण",
+            "न्यूटनचा शीतलन नियम"
+          ],
+          "solution": "प्रारण ऊर्जा विद्युतचुंबकीय लहरींच्या रूपात नेते आणि त्याला कोणतेही भौतिक माध्यम लागत नाही, वहन आणि अभिसरणाच्या उलट, ज्या दोघांना ऊर्जा वाहायला पदार्थ लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Thermal expansion EXCEPT —",
+      "choices": [
+        "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once.",
+        "A hole in a plate expands exactly as though it were filled with the same metal, which is why a ring gets larger and not smaller when heated.",
+        "Two metals of different α bonded together curve on heating, and that bimetallic strip is the switch inside a thermostat, an iron and a fire alarm.",
+        "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids."
+      ],
+      "answerIndex": 3,
+      "solution": "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids. That belongs to Specific heat capacity, not Thermal expansion — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तापीय प्रसार के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।",
+            "प्लेट का छेद ठीक वैसे फैलता है मानो वह उसी धातु से भरा हो, इसीलिए गरम करने पर छल्ला छोटा नहीं बड़ा होता है।",
+            "भिन्न α वाली दो धातुएँ जोड़कर गरम करने पर मुड़ जाती हैं, और वही द्विधात्विक पट्टी तापस्थापी, इस्तरी तथा अग्नि-चेतावनी के भीतर का स्विच है।",
+            "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना।"
+          ],
+          "solution": "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना। यह विशिष्ट ऊष्मा धारिता की बात है, तापीय प्रसार की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "औष्णिक प्रसरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते.",
+            "पत्र्यातले छिद्र नेमके तसे प्रसरण पावते जणू ते त्याच धातूने भरलेले असावे, म्हणूनच तापवल्यावर कडे लहान नव्हे तर मोठे होते.",
+            "वेगळ्या α च्या दोन धातू जोडून तापवल्यास वाकतात, आणि तीच द्विधातू पट्टी थर्मोस्टॅट, इस्त्री आणि अग्निशामक इशाऱ्यातला स्विच.",
+            "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट."
+          ],
+          "solution": "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट. हे विशिष्ट उष्णता धारकता चे आहे, औष्णिक प्रसरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Specific heat capacity EXCEPT —",
+      "choices": [
+        "In a mixture the heat lost by the hotter body equals the heat gained by the cooler one, and that single equation fixes the final temperature without knowing anything about the container.",
+        "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids.",
+        "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once.",
+        "Water's unusually large value is why coastal towns have milder summers and winters than inland ones at the same latitude, and why a hot-water bottle beats a hot brick."
+      ],
+      "answerIndex": 2,
+      "solution": "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once. That belongs to Thermal expansion, not Specific heat capacity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विशिष्ट ऊष्मा धारिता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "मिश्रण में गरम पिंड द्वारा खोई ऊष्मा ठंडे पिंड द्वारा पाई ऊष्मा के बराबर होती है, और वही अकेला समीकरण पात्र के बारे में कुछ जाने बिना अंतिम ताप तय कर देता है।",
+            "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना।",
+            "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।",
+            "पानी का असामान्य रूप से बड़ा मान ही वह कारण है जिससे उसी अक्षांश के तटीय नगरों की गर्मियाँ और सर्दियाँ भीतरी नगरों से हल्की होती हैं, और जिससे गरम पानी की थैली गरम ईंट को हरा देती है।"
+          ],
+          "solution": "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है। यह तापीय प्रसार की बात है, विशिष्ट ऊष्मा धारिता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विशिष्ट उष्णता धारकता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "मिश्रणात गरम पिंडाने गमावलेली उष्णता थंड पिंडाने मिळवलेल्या उष्णतेइतकी असते, आणि तेच एकमेव समीकरण भांड्याबद्दल काहीही न जाणता शेवटचे तापमान ठरवते.",
+            "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट.",
+            "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते.",
+            "पाण्याचे असामान्यपणे मोठे मूल्य हेच ते कारण ज्यामुळे त्याच अक्षांशावरील किनारी शहरांचे उन्हाळे आणि हिवाळे अंतर्भागातील शहरांहून सौम्य असतात, आणि ज्यामुळे गरम पाण्याची पिशवी गरम विटेला हरवते."
+          ],
+          "solution": "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते. हे औष्णिक प्रसरण चे आहे, विशिष्ट उष्णता धारकता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Latent heat EXCEPT —",
+      "choices": [
+        "Water's latent heat of vaporisation is about six times its latent heat of fusion, which is why a steam burn is so much worse than boiling water at the same temperature.",
+        "Latent heat is the energy per unit mass absorbed or released during a change of state at constant temperature, so a thermometer records nothing at all while it is being supplied.",
+        "The same store works in reverse: evaporating sweat carries heat away from the skin, and freezing water in an orchard releases heat that can keep the buds just above zero.",
+        "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid."
+      ],
+      "answerIndex": 3,
+      "solution": "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid. That belongs to The anomalous expansion of water, not Latent heat — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गुप्त ऊष्मा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पानी की वाष्पन की गुप्त ऊष्मा उसकी गलन की गुप्त ऊष्मा की लगभग छह गुनी है, इसीलिए भाप की जलन उसी ताप के खौलते पानी से कहीं बुरी होती है।",
+            "गुप्त ऊष्मा अचर ताप पर अवस्था-परिवर्तन के दौरान प्रति एकांक द्रव्यमान सोखी या छोड़ी गई ऊर्जा है, अतः जब तक वह दी जा रही हो तापमापी कुछ भी दर्ज नहीं करता।",
+            "वही भंडार उलटा भी चलता है: वाष्पित होता पसीना त्वचा से ऊष्मा ले जाता है, और बग़ीचे में जमता पानी ऊष्मा छोड़ता है जो कलियों को शून्य से ठीक ऊपर रख सकती है।",
+            "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत।"
+          ],
+          "solution": "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत। यह पानी का असामान्य प्रसार की बात है, गुप्त ऊष्मा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सुप्त उष्णता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पाण्याची बाष्पीभवनाची सुप्त उष्णता तिच्या द्रवीभवनाच्या सुप्त उष्णतेच्या सुमारे सहापट, म्हणूनच वाफेचा भाजका त्याच तापमानाच्या उकळत्या पाण्याहून कितीतरी वाईट असतो.",
+            "सुप्त उष्णता म्हणजे अचल तापमानावर अवस्थाबदलादरम्यान प्रति एकक वस्तुमान शोषली वा सोडली जाणारी ऊर्जा, म्हणून ती दिली जात असताना तापमापक काहीही नोंदवत नाही.",
+            "तोच साठा उलटाही चालतो: बाष्पीभवन होणारा घाम त्वचेवरून उष्णता नेतो, आणि बागेत गोठणारे पाणी उष्णता सोडते जी कळ्यांना शून्याच्या अगदी वर ठेवू शकते.",
+            "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट."
+          ],
+          "solution": "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट. हे पाण्याचे असामान्य प्रसरण चे आहे, सुप्त उष्णता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The anomalous expansion of water EXCEPT —",
+      "choices": [
+        "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid.",
+        "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once.",
+        "The consequence is that the densest water sinks to the bottom of a pond at 4 °C and stays there, so ice forms as a lid on top instead of freezing the pond solid from below.",
+        "Ice is also less dense than the water it came from, which is unusual in itself and is why the lid floats rather than sinking and letting a new one form."
+      ],
+      "answerIndex": 1,
+      "solution": "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once. That belongs to Thermal expansion, not The anomalous expansion of water — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी का असामान्य प्रसार के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत।",
+            "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।",
+            "परिणाम यह कि सबसे घना पानी 4 °C पर तालाब की तली में बैठ जाता है और वहीं रहता है, अतः बर्फ़ नीचे से पूरे तालाब को जमाने के बजाय ऊपर ढक्कन की तरह बनती है।",
+            "बर्फ़ भी उस पानी से कम घनी है जिससे वह बनी, जो अपने आप में असामान्य है और इसीलिए वह ढक्कन डूबकर नया बनने देने के बजाय तैरता रहता है।"
+          ],
+          "solution": "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है। यह तापीय प्रसार की बात है, पानी का असामान्य प्रसार की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "पाण्याचे असामान्य प्रसरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट.",
+            "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते.",
+            "परिणाम असा की सर्वांत घन पाणी 4 °C वर तळ्याच्या तळाशी बसते आणि तिथेच राहते, म्हणून बर्फ खालून अख्खे तळे गोठवण्याऐवजी वर झाकणासारखा तयार होतो.",
+            "बर्फही ज्या पाण्यापासून तो बनला त्याहून कमी घन असतो, जे स्वतःच असामान्य आणि म्हणूनच ते झाकण बुडून नवे तयार होऊ देण्याऐवजी तरंगत राहते."
+          ],
+          "solution": "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते. हे औष्णिक प्रसरण चे आहे, पाण्याचे असामान्य प्रसरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "One kilogram of ice at 0 °C is heated steadily until it becomes water at 100 °C. A student expects the temperature to climb smoothly throughout. Taking the latent heat of fusion as 336,000 J/kg and water's specific heat as 4200 J/kg/K, describe what the thermometer actually does and where the energy goes.",
+      "choices": [
+        "The thermometer sticks at 0 °C for a long while and only then climbs. Melting the ice takes 336,000 J with no temperature change at all, because the energy goes into breaking the crystal bonds rather than speeding molecules up. Heating the resulting water from 0 to 100 °C takes 4200 × 100 = 420,000 J. So very nearly half the total energy is spent while the thermometer reads nothing, and a graph of temperature against energy supplied shows a long flat step followed by a steady rise",
+        "The student is right: the temperature rises smoothly, and the latent heat is simply the extra energy needed for the first degree",
+        "The temperature falls while the ice melts, because melting absorbs energy and cooling is what absorbing energy does",
+        "The flat step comes at 100 °C only, since a change of state can occur only at the boiling point"
+      ],
+      "answerIndex": 0,
+      "solution": "Follow the energy in two stages and the shape of the graph falls out. Stage one, melting. The ice is already at its melting point, so every joule supplied goes into converting solid to liquid: 1 kg × 336,000 J/kg = 336,000 J. Throughout this the thermometer reads 0 °C and does not budge, however long the flame is left on. That is not a failure of the thermometer. Temperature measures the average kinetic energy of the molecules, and during melting the molecules are not speeding up — the energy is being spent pulling them out of the rigid lattice and against their mutual attraction. The store is real and it is recoverable: refreeze the water and you get all 336,000 J back. Stage two, warming the liquid. Now the molecules do speed up, at 4200 J for each kilogram and each kelvin: 1 × 4200 × 100 = 420,000 J to go from 0 to 100 °C. Here the thermometer climbs steadily, and the graph of temperature against energy is a straight line of slope 1/4200 degrees per joule. Total supplied: 756,000 J, of which 336,000 — forty-four per cent — bought no temperature rise at all. Two implications are worth carrying. First, this is why ice is such an effective coolant. A kilogram of ice at 0 °C absorbs 336,000 J from a drink before it has even become water, whereas a kilogram of water at 0 °C absorbs only 4200 J per degree it warms up — so the ice is worth about eighty degrees' worth of cold water. Melting, not coldness, is doing the work. Second, the same argument at the boiling point is even more dramatic: water's latent heat of vaporisation is about 2,260,000 J/kg, nearly seven times the heat of fusion, and it is the reason steam at 100 °C scalds far worse than water at 100 °C. The steam must dump all that energy into the skin before it can even begin to cool as a liquid. The third option is worth naming because it inverts a real intuition. Absorbing energy usually does raise temperature — but only when the energy has nowhere else to go. During a phase change there is somewhere else, and the temperature is pinned until the change is complete. The fourth misses that melting is a change of state exactly as boiling is, so ice has a flat step of its own at 0 °C. (The second answer treats latent heat as a small correction rather than as a quantity comparable to the whole of the subsequent heating.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "0 °C पर एक किलोग्राम बर्फ़ को लगातार गरम किया जाता है जब तक वह 100 °C पर पानी न बन जाए। एक विद्यार्थी अपेक्षा करता है कि ताप पूरे समय सुचारु रूप से चढ़ेगा। गलन की गुप्त ऊष्मा 336,000 J/kg और पानी की विशिष्ट ऊष्मा 4200 J/kg/K लेते हुए बताओ कि तापमापी वस्तुतः क्या करता है और ऊर्जा जाती कहाँ है।",
+          "choices": [
+            "तापमापी काफ़ी देर 0 °C पर अटका रहता है और तभी चढ़ता है। बर्फ़ पिघलाने में 336,000 J लगते हैं और ताप बिलकुल नहीं बदलता, क्योंकि ऊर्जा अणुओं को तेज़ करने के बजाय क्रिस्टल-बंधन तोड़ने में जाती है। बने पानी को 0 से 100 °C तक गरम करने में 4200 × 100 = 420,000 J लगते हैं। अतः कुल ऊर्जा का लगभग आधा तब ख़र्च होता है जब तापमापी कुछ नहीं दिखाता, और दी गई ऊर्जा बनाम ताप का आलेख एक लंबी सपाट सीढ़ी दिखाता है और उसके बाद स्थिर चढ़ाई",
+            "विद्यार्थी सही है: ताप सुचारु रूप से चढ़ता है, और गुप्त ऊष्मा बस पहली डिग्री के लिए चाहिए अतिरिक्त ऊर्जा है",
+            "बर्फ़ पिघलते समय ताप गिरता है, क्योंकि पिघलना ऊर्जा सोखता है और ऊर्जा सोखने से ठंडा होना ही होता है",
+            "सपाट सीढ़ी केवल 100 °C पर आती है, क्योंकि अवस्था-परिवर्तन केवल क्वथनांक पर ही हो सकता है"
+          ],
+          "solution": "ऊर्जा का दो चरणों में पीछा करो और आलेख का आकार अपने-आप निकल आता है। पहला चरण, गलन। बर्फ़ पहले से अपने गलनांक पर है, अतः दिया गया हर जूल ठोस को द्रव में बदलने में जाता है: 1 kg × 336,000 J/kg = 336,000 J. इस पूरे समय तापमापी 0 °C दिखाता है और हिलता नहीं, आँच कितनी ही देर जली रहे। यह तापमापी की विफलता नहीं। ताप अणुओं की औसत गतिज ऊर्जा नापता है, और गलन के दौरान अणु तेज़ नहीं हो रहे — ऊर्जा उन्हें दृढ़ जालक से बाहर खींचने और उनके पारस्परिक आकर्षण के विरुद्ध ख़र्च हो रही है। भंडार असली है और पुनर्प्राप्य: पानी को फिर जमाओ और तुम्हें पूरे 336,000 J वापस मिलते हैं। दूसरा चरण, द्रव को गरम करना। अब अणु सचमुच तेज़ होते हैं, हर किलोग्राम और हर केल्विन के लिए 4200 J पर: 1 × 4200 × 100 = 420,000 J, 0 से 100 °C तक जाने को। यहाँ तापमापी लगातार चढ़ता है, और ऊर्जा बनाम ताप का आलेख 1/4200 डिग्री प्रति जूल ढाल की सीधी रेखा है। कुल दी गई: 756,000 J, जिसमें से 336,000 — चवालीस प्रतिशत — ने कोई ताप-वृद्धि ख़रीदी ही नहीं। दो निहितार्थ ले जाने योग्य हैं। पहला, इसीलिए बर्फ़ इतनी असरदार शीतक है। 0 °C पर एक किलोग्राम बर्फ़ पेय से 336,000 J सोख लेती है इससे पहले कि वह पानी भी बने, जबकि 0 °C पर एक किलोग्राम पानी हर डिग्री गरम होने पर केवल 4200 J सोखता है — अतः बर्फ़ लगभग अस्सी डिग्री ठंडे पानी के बराबर है। काम शीतलता नहीं, गलन कर रही है। दूसरा, क्वथनांक पर वही तर्क और भी नाटकीय है: पानी की वाष्पन की गुप्त ऊष्मा लगभग 2,260,000 J/kg है, गलन की ऊष्मा की लगभग सात गुनी, और इसी से 100 °C की भाप 100 °C के पानी से कहीं बुरी जलाती है। भाप को वह सारी ऊर्जा त्वचा में उड़ेलनी पड़ती है इससे पहले कि वह द्रव के रूप में ठंडी होना भी शुरू करे। तीसरा विकल्प नाम लेने योग्य है क्योंकि वह एक असली अंतर्ज्ञान को उलट देता है। ऊर्जा सोखना आम तौर पर ताप बढ़ाता ही है — पर तभी जब ऊर्जा के पास और कहीं जाने को न हो। अवस्था-परिवर्तन के दौरान और कहीं जाने को है, और परिवर्तन पूरा होने तक ताप जड़ा रहता है। चौथा यह चूक जाता है कि गलन भी ठीक वैसा ही अवस्था-परिवर्तन है जैसा क्वथन, अतः बर्फ़ की अपनी सपाट सीढ़ी 0 °C पर है। (दूसरा उत्तर गुप्त ऊष्मा को छोटा सुधार मानता है, न कि ऐसी राशि जो बाद की पूरी तापन-प्रक्रिया के तुल्य है।)"
+        },
+        "mr": {
+          "stem": "0 °C वरचा एक किलोग्रॅम बर्फ सतत तापवला जातो जोवर तो 100 °C वर पाणी बनत नाही. एक विद्यार्थी अपेक्षा करतो की तापमान पूर्ण काळ सुरळीत चढेल. द्रवीभवनाची सुप्त उष्णता 336,000 J/kg आणि पाण्याची विशिष्ट उष्णता 4200 J/kg/K घेऊन सांगा की तापमापक प्रत्यक्षात काय करतो आणि ऊर्जा कुठे जाते.",
+          "choices": [
+            "तापमापक बराच वेळ 0 °C वर अडकून राहतो आणि मगच चढतो. बर्फ वितळवायला 336,000 J लागतात आणि तापमान मुळीच बदलत नाही, कारण ऊर्जा रेणूंना वेगवान करण्याऐवजी स्फटिक-बंध तोडण्यात जाते. तयार झालेले पाणी 0 ते 100 °C तापवायला 4200 × 100 = 420,000 J लागतात. म्हणून एकूण ऊर्जेचा जवळपास निम्मा भाग तेव्हा खर्च होतो जेव्हा तापमापक काहीही दाखवत नाही, आणि दिलेली ऊर्जा विरुद्ध तापमानाचा आलेख एक लांब सपाट पायरी दाखवतो आणि नंतर स्थिर चढण",
+            "विद्यार्थी बरोबर: तापमान सुरळीत चढते, आणि सुप्त उष्णता म्हणजे फक्त पहिल्या अंशासाठी लागणारी जादा ऊर्जा",
+            "बर्फ वितळताना तापमान घटते, कारण वितळणे ऊर्जा शोषते आणि ऊर्जा शोषण्याने थंड होणेच होते",
+            "सपाट पायरी केवळ 100 °C वर येते, कारण अवस्थाबदल केवळ उकळबिंदूवरच होऊ शकतो"
+          ],
+          "solution": "ऊर्जेचा दोन टप्प्यांत पाठलाग करा आणि आलेखाचा आकार आपोआप निघतो. पहिला टप्पा, द्रवीभवन. बर्फ आधीच त्याच्या द्रवणबिंदूवर आहे, म्हणून दिलेले प्रत्येक ज्यूल घन द्रवात बदलण्यात जाते: 1 kg × 336,000 J/kg = 336,000 J. या संपूर्ण काळात तापमापक 0 °C दाखवतो आणि हलत नाही, आच कितीही वेळ जळो. हे तापमापकाचे अपयश नाही. तापमान रेणूंची सरासरी गतिज ऊर्जा मोजते, आणि द्रवीभवनादरम्यान रेणू वेगवान होत नाहीत — ऊर्जा त्यांना दृढ जालकातून बाहेर ओढण्यात आणि त्यांच्या परस्पर आकर्षणाविरुद्ध खर्च होत आहे. साठा खरा आहे आणि पुन्हा मिळवण्याजोगा: पाणी पुन्हा गोठवा आणि तुम्हाला पूर्ण 336,000 J परत मिळतात. दुसरा टप्पा, द्रव तापवणे. आता रेणू खरोखर वेगवान होतात, प्रत्येक किलोग्रॅम आणि प्रत्येक केल्विनसाठी 4200 J ने: 1 × 4200 × 100 = 420,000 J, 0 ते 100 °C जायला. इथे तापमापक सतत चढतो, आणि ऊर्जा विरुद्ध तापमानाचा आलेख 1/4200 अंश प्रति ज्यूल उताराची सरळ रेषा. एकूण दिलेली: 756,000 J, त्यापैकी 336,000 — चव्वेचाळीस टक्के — ने कोणतीही तापमानवाढ विकत घेतलीच नाही. दोन निष्कर्ष नेण्याजोगे. पहिला, म्हणूनच बर्फ इतका प्रभावी शीतक. 0 °C वरचा एक किलोग्रॅम बर्फ पेयातून 336,000 J शोषून घेतो तो पाणी बनण्याआधीच, तर 0 °C वरचे एक किलोग्रॅम पाणी प्रत्येक अंश तापताना केवळ 4200 J शोषते — म्हणून बर्फ सुमारे ऐंशी अंश थंड पाण्याइतका. काम थंडपणा नव्हे, द्रवीभवन करत आहे. दुसरा, उकळबिंदूवर तोच युक्तिवाद आणखी नाट्यमय: पाण्याची बाष्पीभवनाची सुप्त उष्णता सुमारे 2,260,000 J/kg, द्रवीभवनाच्या उष्णतेच्या जवळपास सातपट, आणि यामुळेच 100 °C ची वाफ 100 °C च्या पाण्याहून कितीतरी वाईट भाजते. वाफेला ती सर्व ऊर्जा त्वचेत ओतावी लागते ती द्रव म्हणून थंड होणे सुरू करण्याआधीच. तिसरा पर्याय नाव घेण्याजोगा कारण तो एक खरी अंतःप्रेरणा उलटवतो. ऊर्जा शोषणे सहसा तापमान वाढवतेच — पण तेव्हाच जेव्हा ऊर्जेला दुसरीकडे जायला जागा नसते. अवस्थाबदलादरम्यान दुसरीकडे जागा असते, आणि बदल पूर्ण होईपर्यंत तापमान जखडलेले राहते. चौथा हे चुकवतो की द्रवीभवनही नेमके तसाच अवस्थाबदल आहे जसा उकळणे, म्हणून बर्फाची स्वतःची सपाट पायरी 0 °C वर आहे. (दुसरे उत्तर सुप्त उष्णतेला लहान दुरुस्ती मानते, नंतरच्या अख्ख्या तापवण्याइतकी राशी नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two identical cups of hot tea are poured. Cold milk is added to the first immediately and to the second ten minutes later. Both are then drunk at the same moment. Which is hotter, and what does the answer depend on?",
+      "choices": [
+        "The first cup — the one milked immediately — is hotter at the end. Adding cold milk at once drops its temperature, and by Newton's law of cooling a cup nearer room temperature loses heat more slowly, so it spends the ten minutes leaking heat at a reduced rate. The second cup stays hot and therefore sheds heat fast for the whole ten minutes before the milk cools it further. The answer depends on the loss being proportional to the excess over the surroundings, which is what makes the two paths differ even though the same milk is added in both",
+        "The second cup is hotter, because it was left undiluted and therefore hotter for longer",
+        "Both end at exactly the same temperature, since the same amount of cold milk was added to each",
+        "It cannot be decided without knowing the specific heat of milk, which alone determines the final temperature"
+      ],
+      "answerIndex": 0,
+      "solution": "The instinct that says 'do not dilute it early, it will get cold' is exactly backwards, and the reason is worth working through slowly. Newton's law of cooling says the rate at which a body loses heat is proportional to how far its temperature exceeds that of the room: dQ/dt ∝ (T − T_room). This has a consequence people rarely notice. A cup at 90 °C in a 20 °C room is losing heat at a rate proportional to 70. Cool it to 70 °C and it is now losing heat at a rate proportional to 50 — nearly thirty per cent slower. Every degree you take off makes the remaining degrees harder to lose. Now compare the two cups over the same ten minutes. Cup one has milk added at the start, so its temperature drops immediately to, say, 70 °C, and it then spends ten minutes cooling from a modest excess of 50 degrees. Cup two stays at 90 °C, spends those ten minutes cooling from an excess of 70, and only then receives the milk. Both receive the same cold milk and the same temperature drop from it. The difference is entirely in the ten minutes: cup two was hotter throughout and therefore leaked heat faster the whole time. It arrives at the drinking moment with less heat left. The milk's own contribution is the same in both cases and cancels out, which is why the fourth option is wrong — the specific heat of milk affects how big the drop is, but it affects both cups identically and cannot change which is hotter. The general principle is worth stating on its own, because it recurs everywhere: when a loss rate depends on the current level, it pays to reduce the level early. A leaky tank empties fastest when full, so drawing some off early leaves more at the end. A hot house loses heat fastest when it is hottest, which is why letting the temperature drop while nobody is home saves more fuel than the reheating costs. There is a caveat worth stating, because it shows where the model's limits are. The argument assumes the cooling is dominated by Newton's law, which holds for modest excesses and gentle convection. A cup covered with a lid, or one where evaporation is doing most of the work, behaves differently, since evaporative loss depends on the exposed surface and the humidity rather than simply on the temperature difference. In practice the milk-first strategy still wins, and it has been tested often enough to be a piece of folk wisdom that happens to be correct. (The second answer confuses 'staying hot' with 'ending hot', and the third forgets that the two cups spend the ten minutes at different temperatures.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गरम चाय के दो एक-से प्याले भरे जाते हैं। पहले में ठंडा दूध तुरंत डाला जाता है और दूसरे में दस मिनट बाद। फिर दोनों उसी क्षण पिए जाते हैं। कौन-सा अधिक गरम है, और उत्तर किस पर निर्भर है?",
+          "choices": [
+            "पहला प्याला — जिसमें दूध तुरंत डाला गया — अंत में अधिक गरम है। ठंडा दूध तुरंत डालने से उसका ताप गिर जाता है, और न्यूटन के शीतलन नियम से कमरे के ताप के पास वाला प्याला ऊष्मा अधिक धीरे खोता है, अतः वह दस मिनट घटी हुई दर से ऊष्मा रिसाता है। दूसरा प्याला गरम बना रहता है और इसलिए पूरे दस मिनट तेज़ी से ऊष्मा छोड़ता है, उसके बाद दूध उसे और ठंडा करता है। उत्तर इस पर निर्भर है कि हानि परिवेश से अधिकता के समानुपाती है, और यही दोनों रास्तों को भिन्न बनाता है यद्यपि दोनों में वही दूध डाला जाता है",
+            "दूसरा प्याला अधिक गरम है, क्योंकि उसे बिना पतला किए छोड़ा गया और इसलिए वह अधिक देर गरम रहा",
+            "दोनों ठीक उसी ताप पर पहुँचते हैं, क्योंकि हर एक में उतना ही ठंडा दूध डाला गया",
+            "दूध की विशिष्ट ऊष्मा जाने बिना तय नहीं हो सकता, जो अकेली अंतिम ताप तय करती है"
+          ],
+          "solution": "जो सहज बुद्धि कहती है 'जल्दी पतला मत करो, ठंडी हो जाएगी' वह ठीक उलटी है, और कारण धीरे-धीरे चलाने योग्य है। न्यूटन का शीतलन नियम कहता है कि पिंड की ऊष्मा-हानि की दर इस पर समानुपाती है कि उसका ताप कमरे के ताप से कितना अधिक है: dQ/dt ∝ (T − T_कमरा). इसका एक परिणाम है जिसे लोग शायद ही देखते हैं। 20 °C कमरे में 90 °C का प्याला 70 के समानुपाती दर से ऊष्मा खो रहा है। उसे 70 °C कर दो और अब वह 50 के समानुपाती दर से खो रहा है — लगभग तीस प्रतिशत धीमा। तुम जो भी डिग्री हटाते हो वह बची डिग्रियों को खोना और कठिन बना देती है। अब दोनों प्यालों की उन्हीं दस मिनटों में तुलना करो। पहले प्याले में शुरू में दूध डाला गया, अतः उसका ताप तुरंत मान लो 70 °C पर गिर जाता है, और फिर वह दस मिनट 50 डिग्री की मामूली अधिकता से ठंडा होता है। दूसरा प्याला 90 °C पर बना रहता है, वे दस मिनट 70 की अधिकता से ठंडा होता है, और तभी उसे दूध मिलता है। दोनों को वही ठंडा दूध और उससे वही ताप-गिरावट मिलती है। अंतर पूरी तरह उन दस मिनटों में है: दूसरा प्याला पूरे समय अधिक गरम था और इसलिए पूरे समय तेज़ी से ऊष्मा रिसाता रहा। वह पीने के क्षण पर कम ऊष्मा बचाकर पहुँचता है। दूध का अपना योगदान दोनों में एक-सा है और कट जाता है, इसीलिए चौथा विकल्प ग़लत है — दूध की विशिष्ट ऊष्मा तय करती है कि गिरावट कितनी बड़ी है, पर वह दोनों प्यालों पर एक-सी असर करती है और यह नहीं बदल सकती कि कौन अधिक गरम है। सामान्य सिद्धांत अपने आप में कहने योग्य है, क्योंकि वह हर जगह लौटता है: जब हानि की दर वर्तमान स्तर पर निर्भर हो, तो स्तर जल्दी घटा देना फ़ायदे का सौदा है। रिसती टंकी भरी होने पर सबसे तेज़ ख़ाली होती है, अतः कुछ पहले निकाल लेने से अंत में अधिक बचता है। गरम घर तब सबसे तेज़ ऊष्मा खोता है जब वह सबसे गरम हो, इसीलिए कोई घर में न हो तब ताप गिरने देना दोबारा गरम करने की लागत से अधिक ईंधन बचाता है। एक चेतावनी कहने योग्य है, क्योंकि वह निदर्श की सीमाएँ दिखाती है। तर्क मानता है कि शीतलन पर न्यूटन के नियम का बोलबाला है, जो मामूली अधिकताओं और हल्के संवहन पर चलता है। ढक्कन से ढका प्याला, या ऐसा जिसमें अधिकांश काम वाष्पन कर रहा हो, भिन्न व्यवहार करता है, क्योंकि वाष्पन से हुई हानि खुली सतह और आर्द्रता पर निर्भर है, केवल ताप-अंतर पर नहीं। व्यवहार में दूध-पहले वाली रणनीति फिर भी जीतती है, और वह इतनी बार परखी जा चुकी है कि वह लोक-ज्ञान का ऐसा टुकड़ा है जो संयोग से सही है। (दूसरा उत्तर 'गरम बने रहना' और 'गरम पहुँचना' गड्डमड्ड करता है, और तीसरा भूल जाता है कि दोनों प्याले वे दस मिनट भिन्न तापों पर बिताते हैं।)"
+        },
+        "mr": {
+          "stem": "गरम चहाचे दोन सारखे कप ओतले जातात. पहिल्यात थंड दूध लगेच घातले जाते आणि दुसऱ्यात दहा मिनिटांनी. मग दोन्ही त्याच क्षणी प्यायले जातात. कोणता अधिक गरम, आणि उत्तर कशावर अवलंबून?",
+          "choices": [
+            "पहिला कप — ज्यात दूध लगेच घातले — शेवटी अधिक गरम. थंड दूध लगेच घातल्याने त्याचे तापमान घटते, आणि न्यूटनच्या शीतलन नियमाने खोलीच्या तापमानाजवळचा कप उष्णता अधिक सावकाश गमावतो, म्हणून तो दहा मिनिटे घटलेल्या दराने उष्णता गळतो. दुसरा कप गरम राहतो आणि म्हणून पूर्ण दहा मिनिटे झपाट्याने उष्णता सोडतो, त्यानंतर दूध त्याला आणखी थंड करते. उत्तर हानी परिसरावरील अधिक्याच्या समानुपाती असण्यावर अवलंबून, आणि हेच दोन्ही मार्गांना वेगळे बनवते जरी दोन्हींत तेच दूध घातले जाते",
+            "दुसरा कप अधिक गरम, कारण तो न पातळ करता ठेवला आणि म्हणून तो अधिक वेळ गरम राहिला",
+            "दोन्ही नेमक्या त्याच तापमानावर पोहोचतात, कारण प्रत्येकात तितकेच थंड दूध घातले गेले",
+            "दुधाची विशिष्ट उष्णता कळल्याशिवाय ठरवता येत नाही, जी एकटीच शेवटचे तापमान ठरवते"
+          ],
+          "solution": "'लवकर पातळ करू नका, थंड होईल' असे सांगणारी सहज बुद्धी नेमकी उलटी आहे, आणि कारण सावकाश चालवण्याजोगे. न्यूटनचा शीतलन नियम सांगतो की पिंडाच्या उष्णता-हानीचा दर त्याचे तापमान खोलीच्या तापमानाहून किती अधिक आहे याच्या समानुपाती: dQ/dt ∝ (T − T_खोली). याचा एक परिणाम आहे जो लोक क्वचितच पाहतात. 20 °C च्या खोलीत 90 °C चा कप 70 च्या समानुपाती दराने उष्णता गमावत आहे. त्याला 70 °C करा आणि आता तो 50 च्या समानुपाती दराने गमावत आहे — जवळपास तीस टक्के सावकाश. तुम्ही जो अंश काढता तो उरलेले अंश गमावणे आणखी कठीण करतो. आता दोन्ही कपांची त्याच दहा मिनिटांत तुलना करा. पहिल्या कपात सुरुवातीला दूध घातले, म्हणून त्याचे तापमान लगेच समजा 70 °C वर घटते, आणि मग तो दहा मिनिटे 50 अंशांच्या माफक अधिक्यातून थंड होतो. दुसरा कप 90 °C वर राहतो, ती दहा मिनिटे 70 च्या अधिक्यातून थंड होतो, आणि तेव्हाच त्याला दूध मिळते. दोघांना तेच थंड दूध आणि त्यातून तीच तापमान-घट मिळते. फरक पूर्णपणे त्या दहा मिनिटांत: दुसरा कप पूर्ण काळ अधिक गरम होता आणि म्हणून पूर्ण काळ झपाट्याने उष्णता गळत राहिला. तो पिण्याच्या क्षणी कमी उष्णता उरवून पोहोचतो. दुधाचा स्वतःचा वाटा दोन्हींत सारखा आणि कापला जातो, म्हणूनच चौथा पर्याय चुकीचा — दुधाची विशिष्ट उष्णता घट किती मोठी हे ठरवते, पण ती दोन्ही कपांवर सारखीच परिणाम करते आणि कोण अधिक गरम हे बदलू शकत नाही. सामान्य तत्त्व स्वतःच सांगण्याजोगे, कारण ते सर्वत्र परत येते: जेव्हा हानीचा दर सध्याच्या पातळीवर अवलंबून असतो, तेव्हा पातळी लवकर घटवणे फायद्याचे. गळकी टाकी भरलेली असताना सर्वांत वेगाने रिकामी होते, म्हणून काही आधी काढून घेतल्यास शेवटी अधिक उरते. गरम घर तेव्हा सर्वांत वेगाने उष्णता गमावते जेव्हा ते सर्वांत गरम असते, म्हणूनच कोणी घरात नसताना तापमान घटू देणे पुन्हा तापवण्याच्या खर्चाहून अधिक इंधन वाचवते. एक इशारा सांगण्याजोगा, कारण तो प्रतिरूपाच्या मर्यादा दाखवतो. युक्तिवाद गृहीत धरतो की शीतलनावर न्यूटनच्या नियमाचे वर्चस्व, जो माफक अधिक्यांसाठी आणि सौम्य अभिसरणासाठी चालतो. झाकणाने झाकलेला कप, वा ज्यात बहुतांश काम बाष्पीभवन करत आहे असा, वेगळे वागतो, कारण बाष्पीभवनातून होणारी हानी उघड्या पृष्ठभागावर आणि आर्द्रतेवर अवलंबून, केवळ तापमान-फरकावर नाही. व्यवहारात दूध-आधी हे धोरण तरीही जिंकते, आणि ते इतक्या वेळा तपासले गेले आहे की ते लोकज्ञानाचा असा तुकडा आहे जो योगायोगाने बरोबर आहे. (दुसरे उत्तर 'गरम राहणे' आणि 'गरम पोहोचणे' यांची गल्लत करते, आणि तिसरे विसरते की दोन्ही कप ती दहा मिनिटे वेगळ्या तापमानांवर घालवतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A steel rod 1 m long has a linear expansion coefficient of 12 × 10⁻⁶ per °C. By how many millimetres does it lengthen when heated through 100 °C?",
+      "choices": [
+        "1.2",
+        "12",
+        "0.12",
+        "120"
+      ],
+      "answerIndex": 0,
+      "solution": "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. A tenth of a millimetre per ten degrees sounds negligible until a kilometre of railway line is considered, where the same fraction gives more than a metre. (12 and 120 slip decimal places.)",
+      "checkExpr": "12*100/1000",
+      "translations": {
+        "hi": {
+          "stem": "1 m लंबी इस्पात की छड़ का रैखिक प्रसार गुणांक 12 × 10⁻⁶ प्रति °C है। 100 °C गरम करने पर वह कितने मिलीमीटर लंबी होती है?",
+          "choices": [
+            "1.2",
+            "12",
+            "0.12",
+            "120"
+          ],
+          "solution": "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. दस डिग्री पर मिलीमीटर का दसवाँ हिस्सा नगण्य लगता है जब तक एक किलोमीटर रेल-पटरी न सोची जाए, जहाँ वही अंश एक मीटर से अधिक देता है। (12 और 120 में दशमलव स्थान खिसकते हैं।)"
+        },
+        "mr": {
+          "stem": "1 m लांब पोलादी दांडीचा रेषीय प्रसरण गुणांक 12 × 10⁻⁶ प्रति °C आहे. 100 °C ने तापवल्यावर ती किती मिलीमीटर लांब होते?",
+          "choices": [
+            "1.2",
+            "12",
+            "0.12",
+            "120"
+          ],
+          "solution": "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. दहा अंशांना मिलीमीटरचा दशांश नगण्य वाटतो जोवर एक किलोमीटर रेल्वेरूळ विचारात घेतला जात नाही, जिथे तोच अंश एक मीटरहून अधिक देतो. (12 आणि 120 मध्ये दशांश स्थाने सरकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How much heat is needed to raise 2 kg of water by 10 °C, taking the specific heat capacity as 4200 J/kg/K?",
+      "choices": [
+        "420",
+        "84000",
+        "840000",
+        "8400"
+      ],
+      "answerIndex": 1,
+      "solution": "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. The same heat would raise 2 kg of iron, whose specific heat is about 450, by roughly ninety degrees instead. (420 divides where it should multiply.)",
+      "checkExpr": "2*4200*10",
+      "translations": {
+        "hi": {
+          "stem": "2 kg पानी को 10 °C बढ़ाने के लिए कितनी ऊष्मा चाहिए, विशिष्ट ऊष्मा धारिता 4200 J/kg/K लेते हुए?",
+          "choices": [
+            "420",
+            "84000",
+            "840000",
+            "8400"
+          ],
+          "solution": "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. वही ऊष्मा 2 kg लोहे को, जिसकी विशिष्ट ऊष्मा लगभग 450 है, इसके बजाय मोटे तौर पर नब्बे डिग्री बढ़ा देती। (420 वहाँ भाग देता है जहाँ गुणा करना था।)"
+        },
+        "mr": {
+          "stem": "2 kg पाणी 10 °C ने वाढवायला किती उष्णता लागते, विशिष्ट उष्णता धारकता 4200 J/kg/K घेतल्यास?",
+          "choices": [
+            "420",
+            "84000",
+            "840000",
+            "8400"
+          ],
+          "solution": "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. तीच उष्णता 2 kg लोखंडाला, ज्याची विशिष्ट उष्णता सुमारे 450, त्याऐवजी ढोबळमानाने नव्वद अंशांनी वाढवली असती. (420 जिथे गुणायचे तिथे भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How much heat is needed to melt 0.5 kg of ice already at 0 °C, taking the latent heat of fusion as 336,000 J/kg?",
+      "choices": [
+        "672000",
+        "168000",
+        "16800",
+        "336000"
+      ],
+      "answerIndex": 1,
+      "solution": "Q = mL = 0.5 × 336,000 = 168,000 J, and the thermometer stays at 0 °C throughout. No temperature term appears, because there is no temperature change to multiply. (672000 divides by 0.5 instead of multiplying.)",
+      "checkExpr": "0.5*336000",
+      "translations": {
+        "hi": {
+          "stem": "0 °C पर पहले से मौजूद 0.5 kg बर्फ़ पिघलाने के लिए कितनी ऊष्मा चाहिए, गलन की गुप्त ऊष्मा 336,000 J/kg लेते हुए?",
+          "choices": [
+            "672000",
+            "168000",
+            "16800",
+            "336000"
+          ],
+          "solution": "Q = mL = 0.5 × 336,000 = 168,000 J, और तापमापी पूरे समय 0 °C पर रहता है। कोई ताप-पद नहीं आता, क्योंकि गुणा करने को कोई ताप-परिवर्तन है ही नहीं। (672000 गुणा के बजाय 0.5 से भाग देता है।)"
+        },
+        "mr": {
+          "stem": "0 °C वर आधीच असलेला 0.5 kg बर्फ वितळवायला किती उष्णता लागते, द्रवीभवनाची सुप्त उष्णता 336,000 J/kg घेतल्यास?",
+          "choices": [
+            "672000",
+            "168000",
+            "16800",
+            "336000"
+          ],
+          "solution": "Q = mL = 0.5 × 336,000 = 168,000 J, आणि तापमापक पूर्ण काळ 0 °C वर राहतो. कोणतेही तापमान-पद येत नाही, कारण गुणायला तापमान-बदलच नाही. (672000 गुणण्याऐवजी 0.5 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A metal plate's area increases by 0.04 per cent when heated. What is the corresponding percentage increase in its length?",
+      "choices": [
+        "0.01",
+        "0.12",
+        "0.02",
+        "0.08"
+      ],
+      "answerIndex": 2,
+      "solution": "Area expands in two dimensions at once, so the areal coefficient is very nearly twice the linear one: 0.04/2 = 0.02 per cent. Volume would grow by three times the linear figure, 0.06 per cent. (0.08 doubles instead of halving.)",
+      "checkExpr": "0.04/2",
+      "translations": {
+        "hi": {
+          "stem": "गरम करने पर धातु की प्लेट का क्षेत्रफल 0.04 प्रतिशत बढ़ता है। उसकी लंबाई में तदनुरूप प्रतिशत वृद्धि क्या है?",
+          "choices": [
+            "0.01",
+            "0.12",
+            "0.02",
+            "0.08"
+          ],
+          "solution": "क्षेत्रफल एक साथ दो विमाओं में फैलता है, अतः क्षेत्रीय गुणांक रैखिक का लगभग दुगुना है: 0.04/2 = 0.02 प्रतिशत। आयतन रैखिक आँकड़े के तीन गुने से बढ़ता, 0.06 प्रतिशत। (0.08 आधा करने के बजाय दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "तापवल्यावर धातूच्या पत्र्याचे क्षेत्रफळ 0.04 टक्क्यांनी वाढते. त्याच्या लांबीतील तदनुरूप शेकडा वाढ किती?",
+          "choices": [
+            "0.01",
+            "0.12",
+            "0.02",
+            "0.08"
+          ],
+          "solution": "क्षेत्रफळ एकाच वेळी दोन मितींत प्रसरण पावते, म्हणून क्षेत्रीय गुणांक रेषीयाच्या जवळपास दुप्पट: 0.04/2 = 0.02 टक्के. घनफळ रेषीय आकड्याच्या तिप्पट वाढले असते, 0.06 टक्के. (0.08 निम्मे करण्याऐवजी दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two kilograms of water at 90 °C are mixed with three kilograms at 40 °C in an insulated vessel. What is the final temperature in °C?",
+      "choices": [
+        "50",
+        "65",
+        "130",
+        "60"
+      ],
+      "answerIndex": 3,
+      "solution": "Heat lost equals heat gained, and the specific heat is the same on both sides so it cancels: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. The answer leans towards the larger mass. (65 is the plain average of the two temperatures, which would be right only for equal masses.)",
+      "checkExpr": "(2*90+3*40)/(2+3)",
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मारोधी पात्र में 90 °C का दो किलोग्राम पानी 40 °C के तीन किलोग्राम के साथ मिलाया जाता है। अंतिम ताप °C में क्या है?",
+          "choices": [
+            "50",
+            "65",
+            "130",
+            "60"
+          ],
+          "solution": "खोई ऊष्मा पाई ऊष्मा के बराबर है, और दोनों ओर विशिष्ट ऊष्मा एक-सी है अतः वह कट जाती है: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. उत्तर बड़े द्रव्यमान की ओर झुकता है। (65 दोनों तापों का सादा औसत है, जो केवल बराबर द्रव्यमानों के लिए सही होता।)"
+        },
+        "mr": {
+          "stem": "उष्णतारोधक भांड्यात 90 °C चे दोन किलोग्रॅम पाणी 40 °C च्या तीन किलोग्रॅमसह मिसळले जाते. शेवटचे तापमान °C मध्ये किती?",
+          "choices": [
+            "50",
+            "65",
+            "130",
+            "60"
+          ],
+          "solution": "गमावलेली उष्णता मिळवलेल्या उष्णतेइतकी, आणि दोन्ही बाजूंची विशिष्ट उष्णता सारखी म्हणून ती कापली जाते: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. उत्तर मोठ्या वस्तुमानाकडे झुकते. (65 ही दोन्ही तापमानांची साधी सरासरी, जी केवळ समान वस्तुमानांसाठी बरोबर ठरली असती.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Heat flows through a slab of area 2 m² and thickness 0.04 m whose conductivity is 0.08 W/m/K, with a 20 K difference across it. What is the rate of heat flow, in watts?",
+      "choices": [
+        "800",
+        "80",
+        "0.8",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The rate is kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. Doubling the thickness would halve this, which is the whole argument for insulation, and the thickness enters in the denominator precisely because a longer path means a gentler temperature gradient. (8 and 800 slip a factor of ten.)",
+      "checkExpr": "0.08*2*20/0.04",
+      "translations": {
+        "hi": {
+          "stem": "2 m² क्षेत्रफल और 0.04 m मोटाई की उस पट्टी से ऊष्मा बहती है जिसकी चालकता 0.08 W/m/K है, और उसके आर-पार 20 K का अंतर है। ऊष्मा-प्रवाह की दर वाट में क्या है?",
+          "choices": [
+            "800",
+            "80",
+            "0.8",
+            "8"
+          ],
+          "solution": "दर kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. मोटाई दुगुनी करने पर यह आधी हो जाती, और यही रोधन का पूरा तर्क है, तथा मोटाई हर में ठीक इसलिए आती है कि लंबा रास्ता कम तीखी ताप-प्रवणता देता है। (8 और 800 दस के गुणक से खिसकते हैं।)"
+        },
+        "mr": {
+          "stem": "2 m² क्षेत्रफळ आणि 0.04 m जाडीच्या ज्या पट्टीची वाहकता 0.08 W/m/K आहे तिच्यातून उष्णता वाहते, आणि तिच्या आरपार 20 K चा फरक आहे. उष्णता-प्रवाहाचा दर वॉटमध्ये किती?",
+          "choices": [
+            "800",
+            "80",
+            "0.8",
+            "8"
+          ],
+          "solution": "दर kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. जाडी दुप्पट केल्यास हे निम्मे झाले असते, आणि हाच अख्खा उष्णतारोधनाचा युक्तिवाद, तसेच जाडी छेदात नेमकी यासाठी येते की लांब मार्ग कमी तीव्र तापमान-प्रवणता देतो. (8 आणि 800 दहाच्या पटीने सरकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A body cools from 60 °C to 50 °C in 10 minutes in surroundings at 20 °C. Using Newton's law of cooling with average excess temperatures, how long does it take to cool from 50 °C to 40 °C, in minutes?",
+      "choices": [
+        "10",
+        "7",
+        "20",
+        "14"
+      ],
+      "answerIndex": 3,
+      "solution": "In the first stage the mean temperature is 55 °C, an excess of 35 over the surroundings. In the second it is 45 °C, an excess of 25. The rate is proportional to the excess and the same ten degrees must be shed, so the time scales inversely: t = 10 × 35/25 = 14 minutes. Cooling always slows as the gap closes, and the body would take infinitely long to reach 20 °C exactly. (10 assumes equal intervals take equal times, which is the belief this question exists to break.)",
+      "checkExpr": "10*35/25",
+      "translations": {
+        "hi": {
+          "stem": "20 °C के परिवेश में कोई पिंड 10 मिनट में 60 °C से 50 °C तक ठंडा होता है। औसत अधिकता-तापों के साथ न्यूटन का शीतलन नियम लगाते हुए, 50 °C से 40 °C तक ठंडा होने में उसे कितने मिनट लगते हैं?",
+          "choices": [
+            "10",
+            "7",
+            "20",
+            "14"
+          ],
+          "solution": "पहले चरण में माध्य ताप 55 °C है, परिवेश से 35 की अधिकता। दूसरे में 45 °C, यानी 25 की अधिकता। दर अधिकता के समानुपाती है और वही दस डिग्री छोड़नी हैं, अतः समय व्युत्क्रमानुपाती चलता है: t = 10 × 35/25 = 14 मिनट। अंतर घटते-घटते शीतलन सदा धीमा होता है, और पिंड को ठीक 20 °C पहुँचने में अनंत समय लगता। (10 मानता है कि बराबर अंतराल बराबर समय लेते हैं, और यही वह धारणा है जिसे तोड़ने के लिए यह प्रश्न है।)"
+        },
+        "mr": {
+          "stem": "20 °C च्या परिसरात एक पिंड 10 मिनिटांत 60 °C पासून 50 °C पर्यंत थंड होतो. सरासरी अधिक्य-तापमानांसह न्यूटनचा शीतलन नियम वापरून, 50 °C पासून 40 °C पर्यंत थंड व्हायला त्याला किती मिनिटे लागतात?",
+          "choices": [
+            "10",
+            "7",
+            "20",
+            "14"
+          ],
+          "solution": "पहिल्या टप्प्यात मध्य तापमान 55 °C, परिसराहून 35 चे अधिक्य. दुसऱ्यात 45 °C, म्हणजे 25 चे अधिक्य. दर अधिक्याच्या समानुपाती आणि तेच दहा अंश सोडायचे आहेत, म्हणून काळ व्यस्तानुपाती चालतो: t = 10 × 35/25 = 14 मिनिटे. फरक घटत जाताना शीतलन नेहमी मंदावते, आणि पिंडाला नेमके 20 °C गाठायला अनंत काळ लागला असता. (10 गृहीत धरते की समान अंतराल समान काळ घेतात, आणि हीच ती समजूत जी मोडण्यासाठी हा प्रश्न आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A steel tape reads correctly at 20 °C. It is used at 40 °C to measure a distance the tape reports as 100.00 m. Taking α as 12 × 10⁻⁶ per °C, by how many millimetres is the reading short of the true distance?",
+      "choices": [
+        "12",
+        "240",
+        "24",
+        "2.4"
+      ],
+      "answerIndex": 2,
+      "solution": "Each of the tape's marked metres has itself stretched by αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴, so a 'metre' on the warm tape is really 1.00024 m. Over a hundred of them the true distance exceeds the reading by 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm. Note the direction: a tape that has expanded reads SHORT, because fewer of its stretched divisions fit into the same real distance. (12 forgets the factor of two in ΔT = 20.)",
+      "checkExpr": "100*12*20/1000",
+      "translations": {
+        "hi": {
+          "stem": "इस्पात का फ़ीता 20 °C पर सही पढ़ता है। उसे 40 °C पर ऐसी दूरी नापने में लगाया जाता है जिसे फ़ीता 100.00 m बताता है। α = 12 × 10⁻⁶ प्रति °C लेते हुए, पाठ्यांक सच्ची दूरी से कितने मिलीमीटर कम है?",
+          "choices": [
+            "12",
+            "240",
+            "24",
+            "2.4"
+          ],
+          "solution": "फ़ीते का हर अंकित मीटर स्वयं αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴ से खिंच चुका है, अतः गरम फ़ीते का एक 'मीटर' वस्तुतः 1.00024 m है। सौ ऐसे मीटरों पर सच्ची दूरी पाठ्यांक से 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm अधिक है। दिशा पर ध्यान दो: जो फ़ीता फैल चुका है वह कम पढ़ता है, क्योंकि उसके खिंचे विभाजन उसी असली दूरी में कम समाते हैं। (12 ΔT = 20 में दो का गुणक भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "पोलादी फीत 20 °C वर बरोबर वाचते. ती 40 °C वर अशा अंतरासाठी वापरली जाते जे फीत 100.00 m सांगते. α = 12 × 10⁻⁶ प्रति °C घेतल्यास, वाचन खऱ्या अंतराहून किती मिलीमीटरने कमी आहे?",
+          "choices": [
+            "12",
+            "240",
+            "24",
+            "2.4"
+          ],
+          "solution": "फितीचा प्रत्येक अंकित मीटर स्वतः αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴ ने ताणला गेला आहे, म्हणून गरम फितीचा एक 'मीटर' प्रत्यक्षात 1.00024 m आहे. शंभर अशा मीटरांवर खरे अंतर वाचनाहून 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm ने अधिक. दिशेकडे लक्ष द्या: जी फीत प्रसरण पावली आहे ती कमी वाचते, कारण तिचे ताणलेले विभाग त्याच खऱ्या अंतरात कमी बसतात. (12 हे ΔT = 20 मधला दोनचा गुणक विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A body radiates 100 W at an absolute temperature of 300 K. What power does it radiate at 600 K, in watts?",
+      "choices": [
+        "800",
+        "400",
+        "200",
+        "1600"
+      ],
+      "answerIndex": 3,
+      "solution": "Radiated power goes as the fourth power of the ABSOLUTE temperature, so doubling 300 K to 600 K multiplies the output by 2⁴ = 16: 100 × 16 = 1600 W. The fourth power is why a filament at 2500 K glows brightly while the same wire at 500 K only feels warm, and why the calculation must be done in kelvin — doubling 27 °C to 54 °C is nothing like doubling the absolute temperature. (200 assumes proportionality and 400 uses the square.)",
+      "checkExpr": "100*2^4",
+      "translations": {
+        "hi": {
+          "stem": "300 K परम ताप पर कोई पिंड 100 W विकिरित करता है। 600 K पर वह कितनी शक्ति विकिरित करता है, वाट में?",
+          "choices": [
+            "800",
+            "400",
+            "200",
+            "1600"
+          ],
+          "solution": "विकिरित शक्ति परम ताप की चौथी घात के अनुसार चलती है, अतः 300 K को दोगुना कर 600 K करने पर निर्गत 2⁴ = 16 गुना हो जाता है: 100 × 16 = 1600 W. चौथी घात ही वह कारण है जिससे 2500 K पर तंतु चमकता है जबकि वही तार 500 K पर केवल गरम लगता है, और जिससे गणना केल्विन में करनी पड़ती है — 27 °C को दोगुना कर 54 °C करना परम ताप दोगुना करने जैसा बिलकुल नहीं। (200 समानुपात मानता है और 400 वर्ग लगाता है।)"
+        },
+        "mr": {
+          "stem": "300 K निरपेक्ष तापमानावर एक पिंड 100 W प्रारित करतो. 600 K वर तो किती शक्ती प्रारित करतो, वॉटमध्ये?",
+          "choices": [
+            "800",
+            "400",
+            "200",
+            "1600"
+          ],
+          "solution": "प्रारित शक्ती निरपेक्ष तापमानाच्या चौथ्या घातेनुसार जाते, म्हणून 300 K दुप्पट करून 600 K केल्यास निर्गत 2⁴ = 16 पट होते: 100 × 16 = 1600 W. चौथी घात हेच ते कारण ज्यामुळे 2500 K वरचा तंतू चमकतो तर तीच तार 500 K वर केवळ उबदार वाटते, आणि ज्यामुळे गणना केल्विनमध्ये करावी लागते — 27 °C दुप्पट करून 54 °C करणे निरपेक्ष तापमान दुप्पट करण्यासारखे मुळीच नाही. (200 समानुपात मानते आणि 400 वर्ग वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The same quantity of heat that raises 1 kg of water by exactly one degree is given instead to 1 kg of dry sand, whose specific heat is 800 J/kg/K. By how many degrees does the sand's temperature rise? Take water's specific heat as 4200 J/kg/K.",
+      "choices": [
+        "3360",
+        "5.25",
+        "4200",
+        "0.19"
+      ],
+      "answerIndex": 1,
+      "solution": "The heat supplied is 1 × 4200 × 1 = 4200 J. Given to sand, it produces ΔT = Q/(mc) = 4200/800 = 5.25 °C. So the same sunlight that warms the sea by one degree warms the beach by more than five, and this single ratio explains a great deal of geography. It is why the sand burns bare feet on an afternoon when the sea is pleasant, and why the two swap places after dark: the sand, having stored little energy per degree, sheds its heat and cools far below the water by dawn. The daily land–sea breeze follows directly — air rises over the hot land by day and is replaced by air from the sea, and the flow reverses at night. On a larger scale the same property gives coastal climates their small annual range and continental interiors their extremes, and it is why a hot-water bottle beats a hot brick of the same mass: the water carries about five times the heat for every degree it will give up. (0.19 inverts the ratio, and 3360 multiplies where it should divide.)",
+      "checkExpr": "4200/800",
+      "translations": {
+        "hi": {
+          "stem": "जो ऊष्मा 1 kg पानी को ठीक एक डिग्री बढ़ाती है वही इसके बजाय 1 kg सूखी रेत को दी जाती है, जिसकी विशिष्ट ऊष्मा 800 J/kg/K है। रेत का ताप कितनी डिग्री चढ़ता है? पानी की विशिष्ट ऊष्मा 4200 J/kg/K लो।",
+          "choices": [
+            "3360",
+            "5.25",
+            "4200",
+            "0.19"
+          ],
+          "solution": "दी गई ऊष्मा 1 × 4200 × 1 = 4200 J है। रेत को दिए जाने पर वह ΔT = Q/(mc) = 4200/800 = 5.25 °C देती है। अतः वही धूप जो समुद्र को एक डिग्री गरम करती है समुद्रतट को पाँच से अधिक, और यह अकेला अनुपात बहुत सारा भूगोल समझा देता है। इसी से उस दोपहर रेत नंगे पैर जलाती है जब समुद्र सुखद है, और इसी से अँधेरा होते ही दोनों जगह बदल लेते हैं: रेत, जिसने प्रति डिग्री कम ऊर्जा जमा की थी, अपनी ऊष्मा छोड़ देती है और भोर तक पानी से कहीं नीचे ठंडी हो जाती है। दैनिक थल-समुद्र समीर सीधे निकलती है — दिन में गरम थल के ऊपर हवा उठती है और उसकी जगह समुद्र से हवा आती है, और रात में प्रवाह उलट जाता है। बड़े पैमाने पर वही गुण तटीय जलवायु को छोटा वार्षिक परास और महाद्वीपों के भीतरी भागों को चरम देता है, और इसी से उसी द्रव्यमान की गरम ईंट को गरम पानी की थैली हरा देती है: पानी हर उस डिग्री के लिए लगभग पाँच गुना ऊष्मा ढोता है जो वह छोड़ेगा। (0.19 अनुपात उलट देता है, और 3360 वहाँ गुणा करता है जहाँ भाग देना था।)"
+        },
+        "mr": {
+          "stem": "जी उष्णता 1 kg पाणी नेमक्या एका अंशाने वाढवते तीच त्याऐवजी 1 kg कोरड्या वाळूला दिली जाते, जिची विशिष्ट उष्णता 800 J/kg/K आहे. वाळूचे तापमान किती अंशांनी चढते? पाण्याची विशिष्ट उष्णता 4200 J/kg/K घ्या.",
+          "choices": [
+            "3360",
+            "5.25",
+            "4200",
+            "0.19"
+          ],
+          "solution": "दिलेली उष्णता 1 × 4200 × 1 = 4200 J. वाळूला दिल्यावर ती ΔT = Q/(mc) = 4200/800 = 5.25 °C देते. म्हणून तेच ऊन जे समुद्राला एक अंशाने तापवते ते किनाऱ्याला पाचहून अधिक, आणि हे एकमेव गुणोत्तर बराच भूगोल समजावते. यामुळेच त्या दुपारी वाळू अनवाणी पाय भाजते जेव्हा समुद्र सुखद असतो, आणि यामुळेच अंधार पडताच दोघे जागा बदलतात: वाळू, जिने प्रति अंश कमी ऊर्जा साठवली होती, आपली उष्णता सोडून देते आणि पहाटेपर्यंत पाण्याहून कितीतरी खाली थंड होते. दैनंदिन भूमी-समुद्र वारा थेट निघतो — दिवसा तापलेल्या भूमीवरून हवा वर उठते आणि तिची जागा समुद्राकडून येणारी हवा घेते, आणि रात्री प्रवाह उलटतो. मोठ्या प्रमाणावर तोच गुणधर्म किनारी हवामानाला लहान वार्षिक पल्ला आणि खंडांच्या अंतर्भागांना टोकाची स्थिती देतो, आणि यामुळेच त्याच वस्तुमानाच्या गरम विटेला गरम पाण्याची पिशवी हरवते: पाणी ते सोडणार असलेल्या प्रत्येक अंशासाठी सुमारे पाचपट उष्णता वाहते. (0.19 गुणोत्तर उलटे करते, आणि 3360 जिथे भागायचे तिथे गुणते.)"
+        }
+      }
+    }
+  ]
+}

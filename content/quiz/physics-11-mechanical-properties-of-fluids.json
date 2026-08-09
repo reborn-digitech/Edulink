@@ -1,0 +1,1073 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 9 — Mechanical Properties of Fluids",
+  "name": "Mechanical Properties of Fluids",
+  "slug": "physics-11-mechanical-properties-of-fluids",
+  "summary": "A substance that cannot resist being sheared has to be described a different way: a pressure that depends on depth and not on how wide the vessel is, a small force turned into a large one by an incompressible liquid, an upthrust that is exactly the weight of what got out of the way, a resistance that grows with speed until falling stops accelerating, a skin that is not a skin, and a moving fluid whose pressure drops precisely where it speeds up.",
+  "position": 9,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "तरलों के यांत्रिक गुण",
+      "summary": "जो पदार्थ अपरूपण का प्रतिरोध नहीं कर सकता उसका वर्णन दूसरे ढंग से करना पड़ता है: वह दाब जो गहराई पर निर्भर है, इस पर नहीं कि पात्र कितना चौड़ा है, वह छोटा बल जो असंपीड्य द्रव बड़े में बदल देता है, वह उत्प्लावन जो ठीक उतना है जितना हटाए गए द्रव का भार, वह प्रतिरोध जो चाल के साथ बढ़ता है जब तक पतन त्वरित होना बंद न कर दे, वह त्वचा जो त्वचा नहीं, और वह बहता तरल जिसका दाब ठीक वहीं गिरता है जहाँ वह तेज़ होता है।"
+    },
+    "mr": {
+      "name": "प्रवाहींचे यांत्रिक गुणधर्म",
+      "summary": "जो पदार्थ कर्तनाला विरोध करू शकत नाही त्याचे वर्णन वेगळ्या पद्धतीने करावे लागते: तो दाब जो खोलीवर अवलंबून, भांडे किती रुंद यावर नाही, ते लहान बल जे असंपीड्य द्रव मोठ्यात बदलते, तो उत्प्लावक जोर जो नेमका बाजूला सरकवलेल्या द्रवाच्या वजनाइतका, तो विरोध जो चालीसह वाढतो जोवर पतन त्वरित होणे थांबवत नाही, ती त्वचा जी त्वचा नाही, आणि तो वाहणारा प्रवाही ज्याचा दाब नेमका तिथेच घटतो जिथे तो वेगवान होतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A narrow tube and a wide tank filled to the same level press equally hard on their bases per unit area, because the quantity depends on ρgh alone and not on how much liquid is standing above. Which quantity is this?",
+      "choices": [
+        "Upthrust and the displaced fluid",
+        "Pressure at a depth",
+        "Pascal's law",
+        "Terminal velocity"
+      ],
+      "answerIndex": 1,
+      "solution": "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही स्तर तक भरी पतली नली और चौड़ी टंकी अपने तलों पर प्रति एकांक क्षेत्रफल बराबर दबाव डालती हैं, क्योंकि यह राशि केवल ρgh पर निर्भर है, इस पर नहीं कि ऊपर कितना द्रव खड़ा है। यह कौन-सी राशि है?",
+          "choices": [
+            "उत्प्लावन और हटाया गया तरल",
+            "गहराई पर दाब",
+            "पास्कल का नियम",
+            "सीमांत वेग"
+          ],
+          "solution": "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एकाच पातळीपर्यंत भरलेली अरुंद नळी आणि रुंद टाकी आपल्या तळांवर प्रति एकक क्षेत्रफळ सारखाच दाब देतात, कारण ही राशी केवळ ρgh वर अवलंबून, वर किती द्रव उभा आहे यावर नाही. ही कोणती राशी?",
+          "choices": [
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+            "खोलीवरील दाब",
+            "पास्कलचा नियम",
+            "सीमावर्ती वेग"
+          ],
+          "solution": "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Pascal's law is correct?",
+      "choices": [
+        "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container.",
+        "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+        "Pascal's law states that a pressure applied to an enclosed incompressible fluid is transmitted undiminished to every part of it, which is what lets a hydraulic press multiply force.",
+        "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter."
+      ],
+      "answerIndex": 2,
+      "solution": "Pascal's law states that a pressure applied to an enclosed incompressible fluid is transmitted undiminished to every part of it, which is what lets a hydraulic press multiply force. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पास्कल का नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं।",
+            "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+            "पास्कल का नियम कहता है कि बंद असंपीड्य तरल पर लगाया दाब उसके हर भाग तक बिना घटे संचरित होता है, और यही द्रवचालित प्रेस को बल बढ़ाने देता है।",
+            "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है।"
+          ],
+          "solution": "पास्कल का नियम कहता है कि बंद असंपीड्य तरल पर लगाया दाब उसके हर भाग तक बिना घटे संचरित होता है, और यही द्रवचालित प्रेस को बल बढ़ाने देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पास्कलचा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही.",
+            "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+            "पास्कलचा नियम सांगतो की बंदिस्त असंपीड्य प्रवाहीवर लावलेला दाब त्याच्या प्रत्येक भागापर्यंत न घटता संक्रमित होतो, आणि हेच द्रवचालित प्रेसला बल वाढवू देते.",
+            "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो."
+          ],
+          "solution": "पास्कलचा नियम सांगतो की बंदिस्त असंपीड्य प्रवाहीवर लावलेला दाब त्याच्या प्रत्येक भागापर्यंत न घटता संक्रमित होतो, आणि हेच द्रवचालित प्रेसला बल वाढवू देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It follows from the depth rule alone: the bottom of a submerged body is deeper than its top, so the upward push exceeds the downward one by exactly ρVg.\" — which of these is this about?",
+      "choices": [
+        "Bernoulli's principle",
+        "Pascal's law",
+        "Pressure at a depth",
+        "Upthrust and the displaced fluid"
+      ],
+      "answerIndex": 3,
+      "solution": "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह अकेले गहराई-नियम से निकलता है: डूबे पिंड का तल उसके शिखर से गहरा है, अतः ऊर्ध्वमुखी धक्का अधोमुखी से ठीक ρVg अधिक होता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "बर्नूली का सिद्धांत",
+            "पास्कल का नियम",
+            "गहराई पर दाब",
+            "उत्प्लावन और हटाया गया तरल"
+          ],
+          "solution": "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे केवळ खोली-नियमातूनच निघते: बुडलेल्या पिंडाचा तळ त्याच्या शिखराहून खोल असतो, म्हणून वरचा रेटा खालच्याहून नेमका ρVg ने अधिक असतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "बर्नूलीचे तत्त्व",
+            "पास्कलचा नियम",
+            "खोलीवरील दाब",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही"
+          ],
+          "solution": "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Honey resists being stirred and water barely does, because one layer of fluid drags on the next whenever they slide past each other at different speeds. Which property is this?",
+      "choices": [
+        "Terminal velocity",
+        "Viscosity",
+        "Pressure at a depth",
+        "Bernoulli's principle"
+      ],
+      "answerIndex": 1,
+      "solution": "Viscosity is a fluid's internal friction: the tangential force between adjacent layers is proportional to the velocity gradient across them and to the area of contact. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "शहद हिलाए जाने का विरोध करता है और पानी मुश्किल से, क्योंकि जब भी तरल की दो परतें भिन्न चालों से एक-दूसरे के पास से सरकती हैं, एक दूसरी को घसीटती है। यह कौन-सा गुण है?",
+          "choices": [
+            "सीमांत वेग",
+            "श्यानता",
+            "गहराई पर दाब",
+            "बर्नूली का सिद्धांत"
+          ],
+          "solution": "श्यानता तरल का आंतरिक घर्षण है: निकटवर्ती परतों के बीच स्पर्शरेखीय बल उनके आर-पार वेग-प्रवणता और संपर्क क्षेत्रफल के समानुपाती होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "मध ढवळण्यास विरोध करते आणि पाणी जेमतेम, कारण जेव्हा प्रवाहीचे दोन थर वेगवेगळ्या चालींनी एकमेकांजवळून सरकतात तेव्हा एक दुसऱ्याला ओढतो. हा कोणता गुणधर्म?",
+          "choices": [
+            "सीमावर्ती वेग",
+            "श्यानता",
+            "खोलीवरील दाब",
+            "बर्नूलीचे तत्त्व"
+          ],
+          "solution": "श्यानता म्हणजे प्रवाहीचे आंतरिक घर्षण: शेजारच्या थरांमधले स्पर्शरेषीय बल त्यांच्यातील वेग-प्रवणता आणि स्पर्श क्षेत्रफळाच्या समानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Terminal velocity is correct?",
+      "choices": [
+        "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+        "Viscosity is a fluid's internal friction: the tangential force between adjacent layers is proportional to the velocity gradient across them and to the area of contact.",
+        "Bernoulli's principle states that for steady, non-viscous, incompressible flow the quantity P + ½ρv² + ρgh is the same at all points of a streamline, so pressure falls where speed rises.",
+        "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter."
+      ],
+      "answerIndex": 3,
+      "solution": "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सीमांत वेग के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+            "श्यानता तरल का आंतरिक घर्षण है: निकटवर्ती परतों के बीच स्पर्शरेखीय बल उनके आर-पार वेग-प्रवणता और संपर्क क्षेत्रफल के समानुपाती होता है।",
+            "बर्नूली का सिद्धांत कहता है कि स्थायी, अश्यान, असंपीड्य प्रवाह के लिए राशि P + ½ρv² + ρgh किसी धारा-रेखा के सब बिंदुओं पर एक-सी रहती है, अतः जहाँ चाल बढ़ती है वहाँ दाब गिरता है।",
+            "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है।"
+          ],
+          "solution": "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "सीमावर्ती वेग विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+            "श्यानता म्हणजे प्रवाहीचे आंतरिक घर्षण: शेजारच्या थरांमधले स्पर्शरेषीय बल त्यांच्यातील वेग-प्रवणता आणि स्पर्श क्षेत्रफळाच्या समानुपाती असते.",
+            "बर्नूलीचे तत्त्व सांगते की स्थिर, अश्यान, असंपीड्य प्रवाहासाठी राशी P + ½ρv² + ρgh धारारेषेच्या सर्व बिंदूंवर सारखी राहते, म्हणून जिथे चाल वाढते तिथे दाब घटतो.",
+            "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो."
+          ],
+          "solution": "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The excess pressure inside a curved surface is 2T/r for a drop and 4T/r for a soap bubble, which has two surfaces, so the smaller of two connected bubbles empties into the larger.\" — which of these is this about?",
+      "choices": [
+        "Pascal's law",
+        "Upthrust and the displaced fluid",
+        "Surface tension",
+        "Bernoulli's principle"
+      ],
+      "answerIndex": 2,
+      "solution": "Surface tension is the energy needed to create unit area of new surface, equivalently a force per unit length along any line in the surface, and it makes a free liquid take the shape of least area. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वक्र सतह के भीतर अतिरिक्त दाब बूँद के लिए 2T/r है और साबुन के बुलबुले के लिए 4T/r, जिसकी दो सतहें हैं, अतः जुड़े दो बुलबुलों में छोटा बड़े में ख़ाली हो जाता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "पास्कल का नियम",
+            "उत्प्लावन और हटाया गया तरल",
+            "पृष्ठ तनाव",
+            "बर्नूली का सिद्धांत"
+          ],
+          "solution": "पृष्ठ तनाव एकांक क्षेत्रफल की नई सतह बनाने के लिए चाहिए ऊर्जा है, समतुल्य रूप से सतह की किसी भी रेखा के अनुदिश प्रति एकांक लंबाई बल, और वह स्वतंत्र द्रव को न्यूनतम क्षेत्रफल का आकार दे देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वक्र पृष्ठभागाच्या आत जादा दाब थेंबासाठी 2T/r आणि साबणाच्या बुडबुड्यासाठी 4T/r, ज्याला दोन पृष्ठभाग असतात, म्हणून जोडलेल्या दोन बुडबुड्यांत लहान मोठ्यात रिकामा होतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "पास्कलचा नियम",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+            "पृष्ठताण",
+            "बर्नूलीचे तत्त्व"
+          ],
+          "solution": "पृष्ठताण म्हणजे एकक क्षेत्रफळाचा नवा पृष्ठभाग तयार करायला लागणारी ऊर्जा, समतुल्यपणे पृष्ठभागातील कोणत्याही रेषेच्या दिशेने प्रति एकक लांबी बल, आणि तो मोकळ्या द्रवाला कमीत कमी क्षेत्रफळाचा आकार देतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Blow across the top of a sheet of paper and it rises rather than being pushed down, because along a streamline the sum of pressure, ½ρv² and ρgh stays constant. Which principle is this?",
+      "choices": [
+        "Terminal velocity",
+        "Viscosity",
+        "Upthrust and the displaced fluid",
+        "Bernoulli's principle"
+      ],
+      "answerIndex": 3,
+      "solution": "Bernoulli's principle states that for steady, non-viscous, incompressible flow the quantity P + ½ρv² + ρgh is the same at all points of a streamline, so pressure falls where speed rises. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "काग़ज़ की शीट के ऊपर से फूँक मारो और वह नीचे धकेले जाने के बजाय उठती है, क्योंकि किसी धारा-रेखा पर दाब, ½ρv² और ρgh का योग अचर रहता है। यह कौन-सा सिद्धांत है?",
+          "choices": [
+            "सीमांत वेग",
+            "श्यानता",
+            "उत्प्लावन और हटाया गया तरल",
+            "बर्नूली का सिद्धांत"
+          ],
+          "solution": "बर्नूली का सिद्धांत कहता है कि स्थायी, अश्यान, असंपीड्य प्रवाह के लिए राशि P + ½ρv² + ρgh किसी धारा-रेखा के सब बिंदुओं पर एक-सी रहती है, अतः जहाँ चाल बढ़ती है वहाँ दाब गिरता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कागदाच्या पानावरून फुंकर मारा आणि ते खाली ढकलले जाण्याऐवजी वर उचलले जाते, कारण एखाद्या धारारेषेवर दाब, ½ρv² आणि ρgh यांची बेरीज अचल राहते. हे कोणते तत्त्व?",
+          "choices": [
+            "सीमावर्ती वेग",
+            "श्यानता",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+            "बर्नूलीचे तत्त्व"
+          ],
+          "solution": "बर्नूलीचे तत्त्व सांगते की स्थिर, अश्यान, असंपीड्य प्रवाहासाठी राशी P + ½ρv² + ρgh धारारेषेच्या सर्व बिंदूंवर सारखी राहते, म्हणून जिथे चाल वाढते तिथे दाब घटतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A narrow tube pressing as hard as a wide tank\" goes correctly with which of these?",
+      "choices": [
+        "pressure at a depth",
+        "upthrust and the displaced fluid",
+        "terminal velocity",
+        "Bernoulli's principle"
+      ],
+      "answerIndex": 0,
+      "solution": "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चौड़ी टंकी जितना ही दबाती पतली नली\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "गहराई पर दाब",
+            "उत्प्लावन और हटाया गया तरल",
+            "सीमांत वेग",
+            "बर्नूली का सिद्धांत"
+          ],
+          "solution": "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"रुंद टाकीइतकाच दाब देणारी अरुंद नळी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "खोलीवरील दाब",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+            "सीमावर्ती वेग",
+            "बर्नूलीचे तत्त्व"
+          ],
+          "solution": "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Force multiplied, work never\" goes correctly with which of these?",
+      "choices": [
+        "Bernoulli's principle",
+        "Pascal's law",
+        "upthrust and the displaced fluid",
+        "viscosity"
+      ],
+      "answerIndex": 1,
+      "solution": "Pascal's law states that a pressure applied to an enclosed incompressible fluid is transmitted undiminished to every part of it, which is what lets a hydraulic press multiply force. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बल बढ़ा, कार्य कभी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बर्नूली का सिद्धांत",
+            "पास्कल का नियम",
+            "उत्प्लावन और हटाया गया तरल",
+            "श्यानता"
+          ],
+          "solution": "पास्कल का नियम कहता है कि बंद असंपीड्य तरल पर लगाया दाब उसके हर भाग तक बिना घटे संचरित होता है, और यही द्रवचालित प्रेस को बल बढ़ाने देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बल वाढले, कार्य कधीच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बर्नूलीचे तत्त्व",
+            "पास्कलचा नियम",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+            "श्यानता"
+          ],
+          "solution": "पास्कलचा नियम सांगतो की बंदिस्त असंपीड्य प्रवाहीवर लावलेला दाब त्याच्या प्रत्येक भागापर्यंत न घटता संक्रमित होतो, आणि हेच द्रवचालित प्रेसला बल वाढवू देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"An iron ship floats and an iron nail sinks\" goes correctly with which of these?",
+      "choices": [
+        "Pascal's law",
+        "Bernoulli's principle",
+        "viscosity",
+        "upthrust and the displaced fluid"
+      ],
+      "answerIndex": 3,
+      "solution": "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"लोहे का जहाज़ तैरता, लोहे की कील डूबती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पास्कल का नियम",
+            "बर्नूली का सिद्धांत",
+            "श्यानता",
+            "उत्प्लावन और हटाया गया तरल"
+          ],
+          "solution": "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"लोखंडी जहाज तरंगते, लोखंडी खिळा बुडतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पास्कलचा नियम",
+            "बर्नूलीचे तत्त्व",
+            "श्यानता",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही"
+          ],
+          "solution": "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Warming thins a liquid and thickens a gas\" goes correctly with which of these?",
+      "choices": [
+        "Bernoulli's principle",
+        "viscosity",
+        "terminal velocity",
+        "Pascal's law"
+      ],
+      "answerIndex": 1,
+      "solution": "Viscosity is a fluid's internal friction: the tangential force between adjacent layers is proportional to the velocity gradient across them and to the area of contact. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"गरम करना द्रव को पतला और गैस को गाढ़ा करता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बर्नूली का सिद्धांत",
+            "श्यानता",
+            "सीमांत वेग",
+            "पास्कल का नियम"
+          ],
+          "solution": "श्यानता तरल का आंतरिक घर्षण है: निकटवर्ती परतों के बीच स्पर्शरेखीय बल उनके आर-पार वेग-प्रवणता और संपर्क क्षेत्रफल के समानुपाती होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तापवणे द्रव पातळ आणि वायू दाट करते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बर्नूलीचे तत्त्व",
+            "श्यानता",
+            "सीमावर्ती वेग",
+            "पास्कलचा नियम"
+          ],
+          "solution": "श्यानता म्हणजे प्रवाहीचे आंतरिक घर्षण: शेजारच्या थरांमधले स्पर्शरेषीय बल त्यांच्यातील वेग-प्रवणता आणि स्पर्श क्षेत्रफळाच्या समानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Falling with no acceleration at all\" goes correctly with which of these?",
+      "choices": [
+        "terminal velocity",
+        "viscosity",
+        "pressure at a depth",
+        "upthrust and the displaced fluid"
+      ],
+      "answerIndex": 0,
+      "solution": "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बिना किसी त्वरण के गिरना\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सीमांत वेग",
+            "श्यानता",
+            "गहराई पर दाब",
+            "उत्प्लावन और हटाया गया तरल"
+          ],
+          "solution": "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कोणत्याही त्वरणाशिवाय पडणे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सीमावर्ती वेग",
+            "श्यानता",
+            "खोलीवरील दाब",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही"
+          ],
+          "solution": "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two joined bubbles, and the small one empties\" goes correctly with which of these?",
+      "choices": [
+        "Pascal's law",
+        "pressure at a depth",
+        "surface tension",
+        "Bernoulli's principle"
+      ],
+      "answerIndex": 2,
+      "solution": "Surface tension is the energy needed to create unit area of new surface, equivalently a force per unit length along any line in the surface, and it makes a free liquid take the shape of least area. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जुड़े दो बुलबुले, और छोटा ख़ाली हो जाता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पास्कल का नियम",
+            "गहराई पर दाब",
+            "पृष्ठ तनाव",
+            "बर्नूली का सिद्धांत"
+          ],
+          "solution": "पृष्ठ तनाव एकांक क्षेत्रफल की नई सतह बनाने के लिए चाहिए ऊर्जा है, समतुल्य रूप से सतह की किसी भी रेखा के अनुदिश प्रति एकांक लंबाई बल, और वह स्वतंत्र द्रव को न्यूनतम क्षेत्रफल का आकार दे देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जोडलेले दोन बुडबुडे, आणि लहान रिकामा होतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पास्कलचा नियम",
+            "खोलीवरील दाब",
+            "पृष्ठताण",
+            "बर्नूलीचे तत्त्व"
+          ],
+          "solution": "पृष्ठताण म्हणजे एकक क्षेत्रफळाचा नवा पृष्ठभाग तयार करायला लागणारी ऊर्जा, समतुल्यपणे पृष्ठभागातील कोणत्याही रेषेच्या दिशेने प्रति एकक लांबी बल, आणि तो मोकळ्या द्रवाला कमीत कमी क्षेत्रफळाचा आकार देतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Blow over the paper and it lifts\" goes correctly with which of these?",
+      "choices": [
+        "Bernoulli's principle",
+        "Pascal's law",
+        "terminal velocity",
+        "upthrust and the displaced fluid"
+      ],
+      "answerIndex": 0,
+      "solution": "Bernoulli's principle states that for steady, non-viscous, incompressible flow the quantity P + ½ρv² + ρgh is the same at all points of a streamline, so pressure falls where speed rises. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"काग़ज़ के ऊपर फूँको और वह उठ जाता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बर्नूली का सिद्धांत",
+            "पास्कल का नियम",
+            "सीमांत वेग",
+            "उत्प्लावन और हटाया गया तरल"
+          ],
+          "solution": "बर्नूली का सिद्धांत कहता है कि स्थायी, अश्यान, असंपीड्य प्रवाह के लिए राशि P + ½ρv² + ρgh किसी धारा-रेखा के सब बिंदुओं पर एक-सी रहती है, अतः जहाँ चाल बढ़ती है वहाँ दाब गिरता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कागदावरून फुंका आणि तो उचलला जातो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बर्नूलीचे तत्त्व",
+            "पास्कलचा नियम",
+            "सीमावर्ती वेग",
+            "उत्प्लावक जोर आणि सरकवलेले प्रवाही"
+          ],
+          "solution": "बर्नूलीचे तत्त्व सांगते की स्थिर, अश्यान, असंपीड्य प्रवाहासाठी राशी P + ½ρv² + ρgh धारारेषेच्या सर्व बिंदूंवर सारखी राहते, म्हणून जिथे चाल वाढते तिथे दाब घटतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Pressure at a depth EXCEPT —",
+      "choices": [
+        "It acts equally in every direction at a point, which is why a diver's ears hurt sideways as well as from above and why a submarine's hull is under load all round.",
+        "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+        "This is the hydrostatic paradox: a kilogram of water in a flaring vessel can exert a base force of many kilograms' weight, because the slanting walls push down on the liquid too.",
+        "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container."
+      ],
+      "answerIndex": 1,
+      "solution": "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under. That belongs to Upthrust and the displaced fluid, not Pressure at a depth — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गहराई पर दाब के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वह किसी बिंदु पर हर दिशा में बराबर लगता है, इसीलिए गोताखोर के कान ऊपर से ही नहीं बग़ल से भी दुखते हैं और इसीलिए पनडुब्बी का ढाँचा चारों ओर से भार में रहता है।",
+            "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+            "यही द्रवस्थैतिक विरोधाभास है: फैलते पात्र में एक किलोग्राम पानी तल पर कई किलोग्राम भार जितना बल लगा सकता है, क्योंकि तिरछी दीवारें भी द्रव पर नीचे धकेलती हैं।",
+            "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं।"
+          ],
+          "solution": "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके। यह उत्प्लावन और हटाया गया तरल की बात है, गहराई पर दाब की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "खोलीवरील दाब विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तो एखाद्या बिंदूवर प्रत्येक दिशेने सारखाच लागतो, म्हणूनच गोताखोराचे कान वरूनच नव्हे तर बाजूनेही दुखतात आणि म्हणूनच पाणबुडीचा सांगाडा सर्व बाजूंनी ओझ्याखाली असतो.",
+            "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+            "हाच द्रवस्थितिक विरोधाभास: पसरणाऱ्या भांड्यातले एक किलोग्रॅम पाणी तळावर कित्येक किलोग्रॅम वजनाइतके बल लावू शकते, कारण तिरप्या भिंतीही द्रवावर खाली रेटतात.",
+            "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही."
+          ],
+          "solution": "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो. हे उत्प्लावक जोर आणि सरकवलेले प्रवाही चे आहे, खोलीवरील दाब चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Pascal's law EXCEPT —",
+      "choices": [
+        "Pascal's law states that a pressure applied to an enclosed incompressible fluid is transmitted undiminished to every part of it, which is what lets a hydraulic press multiply force.",
+        "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+        "It works only because liquids are nearly incompressible; a hydraulic system with an air bubble in it goes soft, because the bubble squashes instead of transmitting.",
+        "Force is multiplied but work is not: the large piston moves as many times less far as it pushes harder, so the machine buys convenience and never energy."
+      ],
+      "answerIndex": 1,
+      "solution": "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under. That belongs to Upthrust and the displaced fluid, not Pascal's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पास्कल का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पास्कल का नियम कहता है कि बंद असंपीड्य तरल पर लगाया दाब उसके हर भाग तक बिना घटे संचरित होता है, और यही द्रवचालित प्रेस को बल बढ़ाने देता है।",
+            "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+            "यह इसीलिए चलता है कि द्रव लगभग असंपीड्य हैं; जिस द्रवचालित तंत्र में हवा का बुलबुला हो वह ढीला पड़ जाता है, क्योंकि बुलबुला संचरित करने के बजाय दब जाता है।",
+            "बल बढ़ता है पर कार्य नहीं: बड़ा पिस्टन उतने ही गुना कम चलता है जितने गुना अधिक ज़ोर लगाता है, अतः यंत्र सुविधा ख़रीदता है, ऊर्जा कभी नहीं।"
+          ],
+          "solution": "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके। यह उत्प्लावन और हटाया गया तरल की बात है, पास्कल का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "पास्कलचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पास्कलचा नियम सांगतो की बंदिस्त असंपीड्य प्रवाहीवर लावलेला दाब त्याच्या प्रत्येक भागापर्यंत न घटता संक्रमित होतो, आणि हेच द्रवचालित प्रेसला बल वाढवू देते.",
+            "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+            "हे यामुळेच चालते की द्रव जवळपास असंपीड्य आहेत; ज्या द्रवचालित प्रणालीत हवेचा बुडबुडा असतो ती ढिली पडते, कारण बुडबुडा संक्रमित करण्याऐवजी दबतो.",
+            "बल वाढते पण कार्य नाही: मोठा पिस्टन जितक्या पटीने अधिक जोर लावतो तितक्या पटीने कमी सरकतो, म्हणून यंत्र सोय विकत घेते, ऊर्जा कधीच नाही."
+          ],
+          "solution": "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो. हे उत्प्लावक जोर आणि सरकवलेले प्रवाही चे आहे, पास्कलचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Upthrust and the displaced fluid EXCEPT —",
+      "choices": [
+        "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+        "The fraction of a floating body that stays submerged is the ratio of its density to the fluid's, which is why nine-tenths of an iceberg is below the waterline.",
+        "It follows from the depth rule alone: the bottom of a submerged body is deeper than its top, so the upward push exceeds the downward one by exactly ρVg.",
+        "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container."
+      ],
+      "answerIndex": 3,
+      "solution": "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container. That belongs to Pressure at a depth, not Upthrust and the displaced fluid — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "उत्प्लावन और हटाया गया तरल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+            "तैरते पिंड का जितना अंश डूबा रहता है वह उसके घनत्व और तरल के घनत्व का अनुपात है, इसीलिए हिमशैल का नौ-दसवाँ भाग जल-रेखा के नीचे रहता है।",
+            "यह अकेले गहराई-नियम से निकलता है: डूबे पिंड का तल उसके शिखर से गहरा है, अतः ऊर्ध्वमुखी धक्का अधोमुखी से ठीक ρVg अधिक होता है।",
+            "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं।"
+          ],
+          "solution": "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं। यह गहराई पर दाब की बात है, उत्प्लावन और हटाया गया तरल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "उत्प्लावक जोर आणि सरकवलेले प्रवाही विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+            "तरंगत्या पिंडाचा जितका अंश बुडलेला राहतो तो त्याच्या घनतेचे आणि प्रवाहीच्या घनतेचे गुणोत्तर, म्हणूनच हिमनगाचा नऊ-दशांश भाग जलरेषेखाली राहतो.",
+            "हे केवळ खोली-नियमातूनच निघते: बुडलेल्या पिंडाचा तळ त्याच्या शिखराहून खोल असतो, म्हणून वरचा रेटा खालच्याहून नेमका ρVg ने अधिक असतो.",
+            "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही."
+          ],
+          "solution": "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही. हे खोलीवरील दाब चे आहे, उत्प्लावक जोर आणि सरकवलेले प्रवाही चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Viscosity EXCEPT —",
+      "choices": [
+        "It falls sharply as a liquid is warmed and RISES as a gas is warmed, because liquid molecules loosen their grip while gas molecules simply cross between layers more often.",
+        "Viscosity is a fluid's internal friction: the tangential force between adjacent layers is proportional to the velocity gradient across them and to the area of contact.",
+        "It is the reason a real fluid sticks to a pipe's wall with zero velocity there, so the flow is fastest along the axis and the discharge depends on the fourth power of the radius.",
+        "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter."
+      ],
+      "answerIndex": 3,
+      "solution": "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter. That belongs to Terminal velocity, not Viscosity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "श्यानता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "द्रव के गरम होने पर वह तेज़ी से घटती है और गैस के गरम होने पर बढ़ती है, क्योंकि द्रव के अणु अपनी पकड़ ढीली कर देते हैं जबकि गैस के अणु परतों के बीच बस अधिक बार आते-जाते हैं।",
+            "श्यानता तरल का आंतरिक घर्षण है: निकटवर्ती परतों के बीच स्पर्शरेखीय बल उनके आर-पार वेग-प्रवणता और संपर्क क्षेत्रफल के समानुपाती होता है।",
+            "इसी से असली तरल नली की दीवार से चिपक जाता है जहाँ उसका वेग शून्य होता है, अतः प्रवाह अक्ष के अनुदिश सबसे तेज़ है और निस्सरण त्रिज्या की चौथी घात पर निर्भर करता है।",
+            "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है।"
+          ],
+          "solution": "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है। यह सीमांत वेग की बात है, श्यानता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "श्यानता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "द्रव तापताना ती झपाट्याने घटते आणि वायू तापताना वाढते, कारण द्रवाचे रेणू आपली पकड सैल करतात तर वायूचे रेणू थरांमध्ये फक्त अधिक वेळा ये-जा करतात.",
+            "श्यानता म्हणजे प्रवाहीचे आंतरिक घर्षण: शेजारच्या थरांमधले स्पर्शरेषीय बल त्यांच्यातील वेग-प्रवणता आणि स्पर्श क्षेत्रफळाच्या समानुपाती असते.",
+            "यामुळेच खरे प्रवाही नळीच्या भिंतीला चिकटते जिथे त्याचा वेग शून्य असतो, म्हणून प्रवाह अक्षाच्या दिशेने सर्वांत वेगवान आणि विसर्ग त्रिज्येच्या चौथ्या घातेवर अवलंबून.",
+            "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो."
+          ],
+          "solution": "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो. हे सीमावर्ती वेग चे आहे, श्यानता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A block of ice floats in a glass of water filled exactly to the brim. A student predicts the glass will overflow as the ice melts, since ice takes up more room than water. Decide what happens and explain, then say what changes if the ice contains a stone.",
+      "choices": [
+        "The level does not change at all. Floating ice displaces water of exactly its own weight, and when it melts it becomes water of exactly that weight, which occupies exactly the volume it was already displacing. With a stone embedded, the level FALLS: while floating, the ice-and-stone displaces water weighing as much as both together, but once melted the stone sinks and displaces only its own smaller volume",
+        "The glass overflows, because ice is less dense than water and therefore occupies more volume than the water it becomes",
+        "The level falls in both cases, since melting always reduces the total volume of the contents",
+        "The level rises in both cases, because the stone adds its own volume to the water once it is released"
+      ],
+      "answerIndex": 0,
+      "solution": "The student's premise is true and the conclusion does not follow from it, which is what makes this a good question. Ice IS less dense than water — about 917 kg/m³ against 1000 — and a given mass of ice does occupy about nine per cent more volume than the same mass of water. But that extra volume is not underwater. It is the part sticking up above the surface. Work it through with numbers. Take 917 g of ice, which occupies 1000 cm³. Floating, it must displace its own weight of water, which is 917 g of water, and 917 g of water occupies 917 cm³. So 917 cm³ of the ice is below the waterline and 83 cm³ stands proud of it. Now let it melt. The 917 g of ice becomes 917 g of water, occupying 917 cm³ — precisely the volume of the hole it was already filling. The new water slots into the space the submerged part had been keeping open, and the level is unchanged to the last millilitre. The nine per cent that shrank was the nine per cent that was above the surface and displacing nothing. This is a general result, not a coincidence of ice: anything floating melts or dissolves into its own displacement without changing the level, provided the liquid it becomes has the density of the liquid it floats in. It is also the reason melting sea ice does not by itself raise sea level, while land ice sliding into the ocean does — the latter was never displacing anything. Now the stone, which turns the question inside out. While the composite floats, the whole assembly must displace water equal to the weight of ice PLUS stone. A 100 g stone of density 2500 kg/m³ occupies only 40 cm³, but while it is being carried by the floating ice it forces the system to displace 100 cm³ of water — a hundred grams' worth. It is displacing by weight, as a floating object does. Once the ice melts the stone is released, sinks, and now displaces by volume: only its own 40 cm³. The system has stopped displacing 100 cm³ on the stone's account and started displacing 40, so the level falls. The general rule worth extracting is the one that resolves all such puzzles: a floating body displaces its own WEIGHT, a submerged body displaces its own VOLUME. Anything that moves an object from the first category to the second lowers the level, and anything that does the reverse raises it. (The wrong answers reason from density to volume without asking which part of the volume was underwater, or credit melting with a shrinkage that the floating condition has already accounted for.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ठीक किनारे तक भरे पानी के गिलास में बर्फ़ का टुकड़ा तैर रहा है। एक विद्यार्थी भविष्यवाणी करता है कि बर्फ़ पिघलने पर गिलास छलकेगा, क्योंकि बर्फ़ पानी से अधिक जगह घेरती है। तय करो क्या होता है और समझाओ, फिर बताओ कि बर्फ़ में पत्थर हो तो क्या बदलता है।",
+          "choices": [
+            "स्तर बिलकुल नहीं बदलता। तैरती बर्फ़ ठीक अपने भार जितना पानी हटाती है, और पिघलने पर वह ठीक उतने ही भार का पानी बन जाती है, जो ठीक उतना ही आयतन घेरता है जितना वह पहले से हटा रही थी। पत्थर जड़ा हो तो स्तर गिरता है: तैरते समय बर्फ़-और-पत्थर दोनों के कुल भार जितना पानी हटाते हैं, पर पिघलने पर पत्थर डूब जाता है और केवल अपना छोटा आयतन हटाता है",
+            "गिलास छलकता है, क्योंकि बर्फ़ पानी से कम घनी है और इसलिए उस पानी से अधिक आयतन घेरती है जो वह बनती है",
+            "दोनों स्थितियों में स्तर गिरता है, क्योंकि पिघलना सदा सामग्री का कुल आयतन घटाता है",
+            "दोनों स्थितियों में स्तर चढ़ता है, क्योंकि पत्थर मुक्त होते ही अपना आयतन पानी में जोड़ देता है"
+          ],
+          "solution": "विद्यार्थी की मान्यता सच है और निष्कर्ष उससे नहीं निकलता, और यही इसे अच्छा प्रश्न बनाता है। बर्फ़ पानी से कम घनी है ही — लगभग 917 kg/m³ के सामने 1000 — और बर्फ़ का दिया द्रव्यमान उतने ही द्रव्यमान के पानी से लगभग नौ प्रतिशत अधिक आयतन घेरता ही है। पर वह अतिरिक्त आयतन पानी के नीचे नहीं है। वह सतह के ऊपर निकला हुआ भाग है। संख्याओं के साथ चलाओ। 917 g बर्फ़ लो, जो 1000 cm³ घेरती है। तैरने के लिए उसे अपने भार जितना पानी हटाना है, यानी 917 g पानी, और 917 g पानी 917 cm³ घेरता है। अतः बर्फ़ का 917 cm³ जल-रेखा के नीचे है और 83 cm³ उससे ऊपर खड़ा है। अब उसे पिघलने दो। 917 g बर्फ़ 917 g पानी बन जाती है, जो 917 cm³ घेरता है — ठीक उसी गड्ढे का आयतन जिसे वह पहले से भर रही थी। नया पानी उसी जगह में समा जाता है जिसे डूबा हिस्सा खुला रखे था, और स्तर अंतिम मिलीलीटर तक अपरिवर्तित रहता है। जो नौ प्रतिशत सिकुड़ा वही नौ प्रतिशत था जो सतह के ऊपर था और कुछ हटा नहीं रहा था। यह सामान्य परिणाम है, बर्फ़ का संयोग नहीं: जो भी तैर रहा हो वह अपने ही विस्थापन में पिघल या घुल जाता है और स्तर नहीं बदलता, बशर्ते वह जो द्रव बने उसका घनत्व उस द्रव जितना हो जिसमें वह तैर रहा था। इसी से यह भी कि समुद्री बर्फ़ का पिघलना स्वयं समुद्र-स्तर नहीं चढ़ाता, जबकि ज़मीन की बर्फ़ का समुद्र में सरकना चढ़ाता है — वह कभी कुछ हटा ही नहीं रही थी। अब पत्थर, जो प्रश्न को उलट देता है। जब तक संयुक्त पिंड तैरता है, पूरे समुच्चय को बर्फ़ जोड़ पत्थर के भार जितना पानी हटाना है। 2500 kg/m³ घनत्व का 100 g पत्थर केवल 40 cm³ घेरता है, पर जब तक उसे तैरती बर्फ़ ढो रही है वह तंत्र को 100 cm³ पानी हटाने पर मजबूर करता है — सौ ग्राम जितना। वह भार से हटा रहा है, जैसा तैरता पिंड करता है। बर्फ़ पिघलते ही पत्थर मुक्त होकर डूबता है, और अब आयतन से हटाता है: केवल अपना 40 cm³. तंत्र ने पत्थर के खाते में 100 cm³ हटाना बंद कर 40 हटाना शुरू कर दिया, अतः स्तर गिरता है। निकालने योग्य सामान्य नियम वही है जो ऐसी सारी पहेलियाँ सुलझाता है: तैरता पिंड अपना भार हटाता है, डूबा पिंड अपना आयतन। जो भी वस्तु को पहली श्रेणी से दूसरी में ले जाए वह स्तर गिराता है, और जो उलटा करे वह चढ़ाता है। (ग़लत उत्तर घनत्व से आयतन तक तर्क करते हैं बिना यह पूछे कि आयतन का कौन-सा भाग पानी के नीचे था, या पिघलने को वह सिकुड़न देते जिसका हिसाब तैरने की शर्त पहले ही रख चुकी है।)"
+        },
+        "mr": {
+          "stem": "अगदी काठापर्यंत भरलेल्या पाण्याच्या ग्लासात बर्फाचा तुकडा तरंगत आहे. एक विद्यार्थी भाकीत करतो की बर्फ वितळताच ग्लास ओसंडेल, कारण बर्फ पाण्याहून अधिक जागा व्यापते. काय घडते ते ठरवा आणि समजावा, मग बर्फात दगड असल्यास काय बदलते ते सांगा.",
+          "choices": [
+            "पातळी मुळीच बदलत नाही. तरंगणारा बर्फ नेमके स्वतःच्या वजनाइतके पाणी सरकवतो, आणि वितळल्यावर तो नेमक्या तितक्याच वजनाचे पाणी बनतो, जे नेमके तितकेच घनफळ व्यापते जितके तो आधीच सरकवत होता. दगड जडलेला असल्यास पातळी घटते: तरंगताना बर्फ-आणि-दगड दोघांच्या एकत्रित वजनाइतके पाणी सरकवतात, पण वितळल्यावर दगड बुडतो आणि केवळ स्वतःचे लहान घनफळ सरकवतो",
+            "ग्लास ओसंडतो, कारण बर्फ पाण्याहून कमी घन आहे आणि म्हणून तो बनणाऱ्या पाण्याहून अधिक घनफळ व्यापतो",
+            "दोन्ही स्थितींत पातळी घटते, कारण वितळणे नेहमी सामग्रीचे एकूण घनफळ घटवते",
+            "दोन्ही स्थितींत पातळी चढते, कारण दगड मोकळा होताच स्वतःचे घनफळ पाण्यात जोडतो"
+          ],
+          "solution": "विद्यार्थ्याचे गृहीतक खरे आहे आणि निष्कर्ष त्यातून निघत नाही, आणि हेच याला चांगला प्रश्न बनवते. बर्फ पाण्याहून कमी घन आहेच — सुमारे 917 kg/m³ समोर 1000 — आणि बर्फाचे दिलेले वस्तुमान तितक्याच वस्तुमानाच्या पाण्याहून सुमारे नऊ टक्के अधिक घनफळ व्यापतेच. पण ते जादा घनफळ पाण्याखाली नाही. तो पृष्ठभागावर बाहेर आलेला भाग आहे. संख्यांसह चालवा. 917 g बर्फ घ्या, जो 1000 cm³ व्यापतो. तरंगण्यासाठी त्याला स्वतःच्या वजनाइतके पाणी सरकवावे लागते, म्हणजे 917 g पाणी, आणि 917 g पाणी 917 cm³ व्यापते. म्हणून बर्फाचे 917 cm³ जलरेषेखाली आणि 83 cm³ तिच्यावर उभे. आता तो वितळू द्या. 917 g बर्फ 917 g पाणी बनतो, जे 917 cm³ व्यापते — नेमके त्याच खळगीचे घनफळ जी तो आधीच भरत होता. नवे पाणी त्याच जागेत बसते जी बुडलेल्या भागाने मोकळी ठेवली होती, आणि पातळी शेवटच्या मिलिलिटरपर्यंत अपरिवर्तित राहते. जे नऊ टक्के आकुंचले तेच नऊ टक्के होते जे पृष्ठभागावर होते आणि काहीही सरकवत नव्हते. हा सामान्य निकाल, बर्फाचा योगायोग नव्हे: जे काही तरंगत असेल ते स्वतःच्याच विस्थापनात वितळते वा विरघळते आणि पातळी बदलत नाही, फक्त ते जे द्रव बनते त्याची घनता ज्या द्रवात ते तरंगत होते तितकी असावी. यामुळेच हेही की समुद्री बर्फ वितळणे स्वतः समुद्रपातळी चढवत नाही, तर जमिनीवरचा बर्फ समुद्रात सरकणे चढवते — तो कधीच काही सरकवत नव्हता. आता दगड, जो प्रश्न उलटवतो. जोवर संयुक्त पिंड तरंगतो तोवर अख्ख्या संचाला बर्फ अधिक दगड यांच्या वजनाइतके पाणी सरकवावे लागते. 2500 kg/m³ घनतेचा 100 g दगड केवळ 40 cm³ व्यापतो, पण जोवर त्याला तरंगणारा बर्फ वाहतो तोवर तो प्रणालीला 100 cm³ पाणी सरकवायला भाग पाडतो — शंभर ग्रॅमइतके. तो वजनाने सरकवत आहे, जसे तरंगता पिंड करतो. बर्फ वितळताच दगड मोकळा होऊन बुडतो, आणि आता घनफळाने सरकवतो: केवळ स्वतःचे 40 cm³. प्रणालीने दगडाच्या खात्यात 100 cm³ सरकवणे थांबवून 40 सरकवणे सुरू केले, म्हणून पातळी घटते. काढण्याजोगा सामान्य नियम तोच जो अशी सर्व कोडी सोडवतो: तरंगता पिंड स्वतःचे वजन सरकवतो, बुडलेला पिंड स्वतःचे घनफळ. जे काही वस्तूला पहिल्या वर्गातून दुसऱ्यात नेते ते पातळी घटवते, आणि जे उलट करते ते चढवते. (चुकीची उत्तरे घनतेपासून घनफळापर्यंत युक्तिवाद करतात, घनफळाचा कोणता भाग पाण्याखाली होता हे न विचारता, वा वितळण्याला ती आकुंचन देतात जिचा हिशोब तरंगण्याच्या अटीने आधीच ठेवला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A common explanation of aircraft lift says the air over the curved upper surface has 'further to travel' and so must go faster, lowering the pressure by Bernoulli's principle. Assess this explanation, and say what Bernoulli's principle does and does not establish here.",
+      "choices": [
+        "The conclusion is right and the reason is not. Air over the upper surface genuinely does move faster and the pressure there genuinely is lower, and Bernoulli's principle correctly links those two facts. What is invented is the 'equal transit time' premise: nothing requires two parcels of air separated at the leading edge to meet again at the trailing edge, and measurements show the upper parcel arrives first, having gone much faster than the extra path length alone would explain. Bernoulli relates speed to pressure; it does not explain why the speed differs, which comes from the wing's angle and circulation",
+        "The explanation is entirely correct, and the equal transit time of the two air parcels is a direct consequence of the continuity equation",
+        "Bernoulli's principle has nothing to do with lift, since it applies only to liquids flowing in pipes and never to air",
+        "The whole account is wrong because the pressure above a wing is higher, not lower, which is what pushes the aircraft up"
+      ],
+      "answerIndex": 0,
+      "solution": "Separate the three claims that get bundled together, because two of them survive and one does not. Claim one: the air above the wing moves faster than the air below. True, and measurable in a wind tunnel with smoke pulses. Claim two: where the air moves faster, the pressure is lower. True, and this is exactly Bernoulli's principle applied along a streamline — P + ½ρv² is constant when height changes are negligible, so a larger v means a smaller P. The pressure difference integrated over the wing area is a large part of the lift. Claim three: the air above moves faster BECAUSE it has further to go and must arrive at the trailing edge at the same moment as the air below. This is the invention. Nothing in fluid mechanics requires two parcels that were adjacent at the leading edge ever to be adjacent again. The premise is simply assumed, and it happens to be false. Smoke-pulse experiments show the upper parcel reaching the trailing edge well BEFORE the lower one, sometimes by a wide margin. Worse, the numbers do not work: on a typical aerofoil the upper surface is only a few per cent longer than the lower, which would give a few per cent speed difference and a small fraction of the lift actually measured. The real speed difference is far larger than the path lengths can account for. There is a decisive counter-example. A flat plate has upper and lower surfaces of identical length, so the equal-transit argument predicts no lift at all — and yet a flat plate tilted into the airflow lifts perfectly well, which is why paper aeroplanes and balsa gliders fly. So does a symmetric aerofoil at an angle, and so does an aircraft flying inverted, which the naive picture cannot survive at all. What actually sets the speed difference is the wing's angle of attack and its shape, which together deflect the oncoming air downwards. The clean way to see the whole thing is Newton's third law: the wing pushes a large mass of air down every second, and the air pushes the wing up by the same force. That description and the pressure description are not rivals; they are the same physics counted in two currencies, and they agree numerically. Bernoulli then tells you how that deflection shows up as a pressure distribution over the surface — which is what an engineer needs, since it says where the load falls on the structure. Two lessons generalise. First, a correct conclusion reached by a wrong argument is still a wrong argument, and it fails the moment the situation changes — here, at the flat plate and the inverted aircraft. Second, Bernoulli's principle is a RELATION between speed and pressure along a streamline, not a cause: it never explains why the speeds differ, and any account that uses it as an engine of explanation has skipped the step that does the real work. (The other wrong answers deny Bernoulli's applicability to gases, which is routine in aerodynamics, or invert the measured pressure distribution, which every wind tunnel contradicts.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विमान के उत्थापन की एक आम व्याख्या कहती है कि वक्र ऊपरी सतह के ऊपर की हवा को 'अधिक दूरी तय करनी' है और इसलिए उसे तेज़ जाना ही पड़ता है, जिससे बर्नूली के सिद्धांत से दाब गिरता है। इस व्याख्या का आकलन करो, और बताओ कि यहाँ बर्नूली का सिद्धांत क्या स्थापित करता है और क्या नहीं।",
+          "choices": [
+            "निष्कर्ष सही है और कारण नहीं। ऊपरी सतह के ऊपर हवा सचमुच तेज़ चलती है और वहाँ दाब सचमुच कम होता है, और बर्नूली का सिद्धांत उन दोनों तथ्यों को ठीक जोड़ता है। गढ़ी हुई है 'बराबर पारगमन-काल' वाली मान्यता: कुछ भी यह नहीं माँगता कि अग्र किनारे पर अलग हुए हवा के दो टुकड़े पश्च किनारे पर फिर मिलें, और माप दिखाते हैं कि ऊपर वाला टुकड़ा पहले पहुँचता है, अतिरिक्त पथ-लंबाई अकेले जितना समझाती उससे कहीं तेज़ जाकर। बर्नूली चाल को दाब से जोड़ता है; वह यह नहीं समझाता कि चाल भिन्न क्यों है, जो पंख के कोण और परिसंचरण से आती है",
+            "व्याख्या पूरी तरह सही है, और हवा के दोनों टुकड़ों का बराबर पारगमन-काल सांतत्य समीकरण का सीधा परिणाम है",
+            "बर्नूली के सिद्धांत का उत्थापन से कोई लेना-देना नहीं, क्योंकि वह केवल नलियों में बहते द्रवों पर लागू है, हवा पर कभी नहीं",
+            "पूरा विवरण ग़लत है क्योंकि पंख के ऊपर दाब कम नहीं बल्कि अधिक होता है, और वही विमान को ऊपर धकेलता है"
+          ],
+          "solution": "साथ बाँध दिए गए तीन दावों को अलग करो, क्योंकि उनमें से दो टिकते हैं और एक नहीं। पहला दावा: पंख के ऊपर की हवा नीचे की हवा से तेज़ चलती है। सच, और धुएँ के स्पंदों से पवन-सुरंग में नापने योग्य। दूसरा दावा: जहाँ हवा तेज़ चलती है वहाँ दाब कम होता है। सच, और यही धारा-रेखा पर लगाया बर्नूली का सिद्धांत है — ऊँचाई के परिवर्तन नगण्य हों तो P + ½ρv² अचर है, अतः बड़ा v छोटा P देता है। पंख के क्षेत्रफल पर समाकलित यह दाब-अंतर उत्थापन का बड़ा हिस्सा है। तीसरा दावा: ऊपर की हवा इसलिए तेज़ चलती है कि उसे अधिक दूर जाना है और उसे पश्च किनारे पर नीचे की हवा के साथ ही पहुँचना है। यही गढ़ंत है। तरल यांत्रिकी में कुछ भी यह नहीं माँगता कि अग्र किनारे पर बगलगीर रहे दो टुकड़े फिर कभी बगलगीर हों। मान्यता बस मान ली जाती है, और वह संयोग से झूठी है। धूम-स्पंद प्रयोग दिखाते हैं कि ऊपर वाला टुकड़ा नीचे वाले से काफ़ी पहले पश्च किनारे पहुँचता है, कभी-कभी बड़े अंतर से। और बुरा यह कि संख्याएँ नहीं बैठतीं: सामान्य वायुफलक पर ऊपरी सतह निचली से केवल कुछ प्रतिशत लंबी होती है, जो कुछ प्रतिशत चाल-अंतर और वस्तुतः नापे गए उत्थापन का छोटा-सा अंश देगी। असली चाल-अंतर पथ-लंबाइयों के हिसाब से कहीं बड़ा है। एक निर्णायक प्रति-उदाहरण है। चपटी प्लेट की ऊपरी और निचली सतहें बराबर लंबाई की हैं, अतः बराबर-पारगमन तर्क कोई उत्थापन ही नहीं बताता — और फिर भी वायु-प्रवाह में झुकी चपटी प्लेट बख़ूबी उठती है, इसीलिए काग़ज़ के हवाई जहाज़ और बाल्सा के ग्लाइडर उड़ते हैं। सममित वायुफलक भी कोण पर उठता है, और उलटा उड़ता विमान भी, जिसे भोली तस्वीर बिलकुल नहीं झेल सकती। चाल-अंतर वस्तुतः तय करते हैं पंख का आपतन कोण और उसका आकार, जो मिलकर आती हवा को नीचे मोड़ देते हैं। पूरी बात देखने का स्वच्छ रास्ता न्यूटन का तीसरा नियम है: पंख हर सेकंड हवा का बड़ा द्रव्यमान नीचे धकेलता है, और हवा उसी बल से पंख को ऊपर। वह वर्णन और दाब वाला वर्णन प्रतिद्वंद्वी नहीं; वे दो मुद्राओं में गिनी गई एक ही भौतिकी हैं, और वे संख्यात्मक रूप से मिलते हैं। बर्नूली फिर बताता है कि वह मोड़ सतह पर दाब-वितरण के रूप में कैसे दिखता है — और अभियंता को यही चाहिए, क्योंकि वह बताता है कि भार ढाँचे पर कहाँ पड़ता है। दो सबक़ सामान्यीकृत होते हैं। पहला, ग़लत तर्क से पहुँचा सही निष्कर्ष फिर भी ग़लत तर्क है, और स्थिति बदलते ही वह विफल हो जाता है — यहाँ, चपटी प्लेट पर और उलटे विमान पर। दूसरा, बर्नूली का सिद्धांत धारा-रेखा पर चाल और दाब के बीच एक संबंध है, कारण नहीं: वह यह कभी नहीं समझाता कि चालें भिन्न क्यों हैं, और जो भी विवरण उसे व्याख्या का इंजन बनाकर लगाए वह उस क़दम को छोड़ चुका है जो असली काम करता है। (बाक़ी ग़लत उत्तर गैसों पर बर्नूली की प्रयोज्यता नकारते हैं, जो वायुगतिकी में रोज़मर्रा है, या नापे गए दाब-वितरण को उलट देते हैं, जिसका खंडन हर पवन-सुरंग करती है।)"
+        },
+        "mr": {
+          "stem": "विमानाच्या उत्थापनाचे एक नेहमीचे स्पष्टीकरण सांगते की वक्र वरच्या पृष्ठभागावरील हवेला 'अधिक अंतर कापायचे' असते आणि म्हणून तिला वेगाने जावेच लागते, ज्याने बर्नूलीच्या तत्त्वाने दाब घटतो. या स्पष्टीकरणाचे मूल्यमापन करा, आणि इथे बर्नूलीचे तत्त्व काय प्रस्थापित करते आणि काय नाही ते सांगा.",
+          "choices": [
+            "निष्कर्ष बरोबर आणि कारण नाही. वरच्या पृष्ठभागावरून हवा खरोखर वेगाने जाते आणि तिथला दाब खरोखर कमी असतो, आणि बर्नूलीचे तत्त्व त्या दोन तथ्यांना बरोबर जोडते. घडवलेले आहे ते 'समान पारगमन-काळ' हे गृहीतक: पुढच्या कडेवर वेगळे झालेले हवेचे दोन तुकडे मागच्या कडेवर पुन्हा भेटावेत असे काहीही मागत नाही, आणि मापे दाखवतात की वरचा तुकडा आधी पोहोचतो, जादा मार्गलांबी एकटी जितके समजावेल त्याहून कितीतरी वेगाने जाऊन. बर्नूली चालीला दाबाशी जोडतो; तो चाल वेगळी का हे समजावत नाही, जे पंखाच्या कोनातून आणि परिसंचरणातून येते",
+            "स्पष्टीकरण पूर्णपणे बरोबर आहे, आणि हवेच्या दोन्ही तुकड्यांचा समान पारगमन-काळ हा सातत्य समीकरणाचा थेट परिणाम आहे",
+            "बर्नूलीच्या तत्त्वाचा उत्थापनाशी काहीही संबंध नाही, कारण ते केवळ नळ्यांतून वाहणाऱ्या द्रवांना लागू, हवेला कधीच नाही",
+            "अख्खे वर्णन चुकीचे कारण पंखावरचा दाब कमी नव्हे तर अधिक असतो, आणि तोच विमानाला वर ढकलतो"
+          ],
+          "solution": "एकत्र बांधल्या जाणाऱ्या तीन दाव्यांना वेगळे करा, कारण त्यांतील दोन टिकतात आणि एक नाही. पहिला दावा: पंखावरची हवा खालच्या हवेहून वेगाने जाते. खरे, आणि धुराच्या स्पंदांनी वाऱ्याच्या बोगद्यात मोजण्याजोगे. दुसरा दावा: जिथे हवा वेगाने जाते तिथे दाब कमी असतो. खरे, आणि हेच धारारेषेवर लावलेले बर्नूलीचे तत्त्व — उंचीतले बदल नगण्य असल्यास P + ½ρv² अचल, म्हणून मोठा v लहान P देतो. पंखाच्या क्षेत्रफळावर समाकलित हा दाब-फरक उत्थापनाचा मोठा भाग. तिसरा दावा: वरची हवा यासाठी वेगाने जाते की तिला अधिक दूर जायचे आहे आणि तिला मागच्या कडेवर खालच्या हवेसोबतच पोहोचायचे आहे. हीच घडवणूक. प्रवाही यामिकीत काहीही हे मागत नाही की पुढच्या कडेवर शेजारी असलेले दोन तुकडे पुन्हा कधी शेजारी यावेत. गृहीतक फक्त गृहीत धरले जाते, आणि ते योगायोगाने खोटे आहे. धूर-स्पंद प्रयोग दाखवतात की वरचा तुकडा खालच्याहून बराच आधी मागच्या कडेवर पोहोचतो, कधीकधी मोठ्या फरकाने. आणि वाईट हे की आकडे बसत नाहीत: सामान्य वायुपात्यावर वरचा पृष्ठभाग खालच्याहून केवळ काही टक्के लांब असतो, जे काही टक्के चाल-फरक आणि प्रत्यक्षात मोजलेल्या उत्थापनाचा लहानसा अंश देईल. खरा चाल-फरक मार्गलांबींच्या हिशोबाहून कितीतरी मोठा. एक निर्णायक प्रतिउदाहरण आहे. सपाट पट्टीचे वरचे आणि खालचे पृष्ठभाग समान लांबीचे, म्हणून समान-पारगमन युक्तिवाद कोणतेही उत्थापनच सांगत नाही — आणि तरीही वायुप्रवाहात कललेली सपाट पट्टी उत्तम उचलली जाते, म्हणूनच कागदी विमाने आणि बाल्साचे ग्लायडर उडतात. सममित वायुपातेही कोनावर उचलले जाते, आणि उलटे उडणारे विमानही, जे भोळे चित्र मुळीच सोसू शकत नाही. चाल-फरक प्रत्यक्षात ठरवतात पंखाचा आपतन कोन आणि त्याचा आकार, जे मिळून येणारी हवा खाली वळवतात. अख्खी गोष्ट पाहण्याचा स्वच्छ मार्ग म्हणजे न्यूटनचा तिसरा नियम: पंख प्रत्येक सेकंदाला हवेचे मोठे वस्तुमान खाली ढकलतो, आणि हवा त्याच बलाने पंखाला वर. ते वर्णन आणि दाबाचे वर्णन प्रतिस्पर्धी नाहीत; ती दोन चलनांत मोजलेली एकच भौतिकी, आणि ती संख्यात्मकदृष्ट्या जुळतात. बर्नूली मग सांगतो की ते वळण पृष्ठभागावर दाब-वितरण म्हणून कसे दिसते — आणि अभियंत्याला हेच लागते, कारण ते सांगते की ओझे सांगाड्यावर कुठे पडते. दोन धडे सामान्यीकृत होतात. पहिला, चुकीच्या युक्तिवादाने गाठलेला बरोबर निष्कर्ष तरीही चुकीचा युक्तिवादच, आणि परिस्थिती बदलताच तो अपयशी ठरतो — इथे, सपाट पट्टीवर आणि उलट्या विमानावर. दुसरा, बर्नूलीचे तत्त्व हे धारारेषेवरील चाल आणि दाब यांच्यातील संबंध, कारण नव्हे: ते चाली वेगळ्या का हे कधीच समजावत नाही, आणि जे वर्णन त्याला स्पष्टीकरणाचे इंजिन म्हणून वापरते ते खरे काम करणारा टप्पा वगळून गेले आहे. (उरलेली चुकीची उत्तरे वायूंवर बर्नूलीची लागूता नाकारतात, जी वायुगतिकीत रोजची आहे, वा मोजलेले दाब-वितरण उलटवतात, ज्याचे खंडन प्रत्येक वाऱ्याचा बोगदा करतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the gauge pressure at a depth of 10 m in water, taking the density as 1000 kg/m³ and g as 10 m/s²?",
+      "choices": [
+        "10000",
+        "1000",
+        "100000",
+        "1000000"
+      ],
+      "answerIndex": 2,
+      "solution": "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, which is very close to one atmosphere — so ten metres of water roughly doubles the total pressure on a diver. The width of the lake never entered the calculation. (10000 drops a factor of ten.)",
+      "checkExpr": "1000*10*10",
+      "translations": {
+        "hi": {
+          "stem": "पानी में 10 m गहराई पर गेज दाब क्या है, घनत्व 1000 kg/m³ और g = 10 m/s² लेते हुए?",
+          "choices": [
+            "10000",
+            "1000",
+            "100000",
+            "1000000"
+          ],
+          "solution": "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, जो लगभग एक वायुमंडल है — अतः दस मीटर पानी गोताखोर पर कुल दाब मोटे तौर पर दोगुना कर देता है। झील की चौड़ाई गणना में कभी आई ही नहीं। (10000 दस का गुणक गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "पाण्यात 10 m खोलीवर गेज दाब किती, घनता 1000 kg/m³ आणि g = 10 m/s² घेतल्यास?",
+          "choices": [
+            "10000",
+            "1000",
+            "100000",
+            "1000000"
+          ],
+          "solution": "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, जे जवळपास एक वातावरण — म्हणून दहा मीटर पाणी गोताखोरावरचा एकूण दाब ढोबळमानाने दुप्पट करते. तलावाची रुंदी गणनेत कधी आलीच नाही. (10000 दहाचा गुणक गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In a hydraulic press the small piston has an area of 2 cm² and the large one 50 cm². A force of 40 N is applied to the small piston. What force appears at the large one?",
+      "choices": [
+        "2000 N",
+        "1.6 N",
+        "1000 N",
+        "100 N"
+      ],
+      "answerIndex": 2,
+      "solution": "The pressure is the same throughout, so F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. The large piston moves twenty-five times less far, so no energy has been created. (1.6 inverts the area ratio.)",
+      "checkExpr": "40*50/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी द्रवचालित प्रेस में छोटे पिस्टन का क्षेत्रफल 2 cm² और बड़े का 50 cm² है। छोटे पिस्टन पर 40 N का बल लगाया जाता है। बड़े पर कितना बल प्रकट होता है?",
+          "choices": [
+            "2000 N",
+            "1.6 N",
+            "1000 N",
+            "100 N"
+          ],
+          "solution": "दाब हर जगह एक-सा है, अतः F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. बड़ा पिस्टन पच्चीस गुना कम चलता है, अतः कोई ऊर्जा बनी नहीं। (1.6 क्षेत्रफल-अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "एका द्रवचालित प्रेसमध्ये लहान पिस्टनचे क्षेत्रफळ 2 cm² आणि मोठ्याचे 50 cm². लहान पिस्टनवर 40 N बल लावले जाते. मोठ्यावर किती बल प्रकट होते?",
+          "choices": [
+            "2000 N",
+            "1.6 N",
+            "1000 N",
+            "100 N"
+          ],
+          "solution": "दाब सर्वत्र सारखा, म्हणून F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. मोठा पिस्टन पंचवीसपट कमी सरकतो, म्हणून कोणतीही ऊर्जा तयार झाली नाही. (1.6 क्षेत्रफळ-गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A body weighs 50 N in air and 30 N when fully immersed in water. What is the upthrust on it?",
+      "choices": [
+        "20 N",
+        "1.67 N",
+        "80 N",
+        "15 N"
+      ],
+      "answerIndex": 0,
+      "solution": "The apparent loss of weight is the upthrust: 50 − 30 = 20 N. Nothing about the body's shape or material was needed. (80 adds the two readings and 1.67 takes their ratio, neither of which has the units of a force.)",
+      "checkExpr": "50-30",
+      "translations": {
+        "hi": {
+          "stem": "एक पिंड हवा में 50 N और पानी में पूरी तरह डूबे होने पर 30 N का लगता है। उस पर उत्प्लावन क्या है?",
+          "choices": [
+            "20 N",
+            "1.67 N",
+            "80 N",
+            "15 N"
+          ],
+          "solution": "भार की आभासी हानि ही उत्प्लावन है: 50 − 30 = 20 N. पिंड के आकार या पदार्थ के बारे में कुछ नहीं चाहिए था। (80 दोनों पाठ्यांक जोड़ता है और 1.67 उनका अनुपात लेता है, और दोनों के मात्रक बल के नहीं।)"
+        },
+        "mr": {
+          "stem": "एक पिंड हवेत 50 N आणि पाण्यात पूर्ण बुडवल्यावर 30 N चा भरतो. त्याच्यावरचा उत्प्लावक जोर किती?",
+          "choices": [
+            "20 N",
+            "1.67 N",
+            "80 N",
+            "15 N"
+          ],
+          "solution": "वजनातील आभासी घट म्हणजेच उत्प्लावक जोर: 50 − 30 = 20 N. पिंडाच्या आकाराबद्दल वा पदार्थाबद्दल काहीही लागले नाही. (80 दोन्ही वाचने जोडते आणि 1.67 त्यांचे गुणोत्तर घेते, आणि दोन्हींची एकके बलाची नाहीत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The upthrust on a fully immersed body is 20 N. Taking water's density as 1000 kg/m³ and g as 10 m/s², what is the body's volume in cubic metres?",
+      "choices": [
+        "0.0002",
+        "2",
+        "0.002",
+        "0.02"
+      ],
+      "answerIndex": 2,
+      "solution": "The upthrust is ρVg, so V = 20/(1000 × 10) = 0.002 m³, that is two litres. A fully immersed body displaces its own volume whatever it is made of. (0.02 and 0.0002 slip by a factor of ten either way.)",
+      "checkExpr": "20/(1000*10)",
+      "translations": {
+        "hi": {
+          "stem": "पूरी तरह डूबे पिंड पर उत्प्लावन 20 N है। पानी का घनत्व 1000 kg/m³ और g = 10 m/s² लेते हुए, पिंड का आयतन घन मीटर में क्या है?",
+          "choices": [
+            "0.0002",
+            "2",
+            "0.002",
+            "0.02"
+          ],
+          "solution": "उत्प्लावन ρVg है, अतः V = 20/(1000 × 10) = 0.002 m³, यानी दो लीटर। पूरी तरह डूबा पिंड अपना आयतन हटाता है, वह चाहे किसी का बना हो। (0.02 और 0.0002 दोनों ओर दस के गुणक से खिसकते हैं।)"
+        },
+        "mr": {
+          "stem": "पूर्ण बुडलेल्या पिंडावरचा उत्प्लावक जोर 20 N आहे. पाण्याची घनता 1000 kg/m³ आणि g = 10 m/s² घेतल्यास, पिंडाचे घनफळ घनमीटरमध्ये किती?",
+          "choices": [
+            "0.0002",
+            "2",
+            "0.002",
+            "0.02"
+          ],
+          "solution": "उत्प्लावक जोर ρVg, म्हणून V = 20/(1000 × 10) = 0.002 m³, म्हणजे दोन लिटर. पूर्ण बुडलेला पिंड स्वतःचे घनफळ सरकवतो, तो कशाचाही बनलेला असो. (0.02 आणि 0.0002 दोन्ही बाजूंनी दहाच्या पटीने सरकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A block floats in water with three quarters of its volume submerged. What is its density in kg/m³, taking water's as 1000?",
+      "choices": [
+        "1333",
+        "250",
+        "750",
+        "1000"
+      ],
+      "answerIndex": 2,
+      "solution": "The submerged fraction equals the ratio of densities, so ρ = 0.75 × 1000 = 750 kg/m³. Turning it round, an iceberg of density 917 floats with 91.7 per cent of itself below the surface. (1333 inverts the ratio, which would make the block sink.)",
+      "checkExpr": "0.75*1000",
+      "translations": {
+        "hi": {
+          "stem": "एक गुटका पानी में अपने आयतन के तीन-चौथाई भाग तक डूबा हुआ तैरता है। पानी का घनत्व 1000 लेते हुए, उसका घनत्व kg/m³ में क्या है?",
+          "choices": [
+            "1333",
+            "250",
+            "750",
+            "1000"
+          ],
+          "solution": "डूबा अंश घनत्वों के अनुपात के बराबर है, अतः ρ = 0.75 × 1000 = 750 kg/m³. उलट कर देखें तो 917 घनत्व का हिमशैल अपने 91.7 प्रतिशत भाग को सतह के नीचे रखकर तैरता है। (1333 अनुपात उलट देता है, जिससे गुटका डूब जाता।)"
+        },
+        "mr": {
+          "stem": "एक ठोकळा पाण्यात आपल्या घनफळाच्या तीन-चतुर्थांश भागापर्यंत बुडून तरंगतो. पाण्याची घनता 1000 घेतल्यास, त्याची घनता kg/m³ मध्ये किती?",
+          "choices": [
+            "1333",
+            "250",
+            "750",
+            "1000"
+          ],
+          "solution": "बुडलेला अंश घनतांच्या गुणोत्तराइतका, म्हणून ρ = 0.75 × 1000 = 750 kg/m³. उलट पाहिल्यास 917 घनतेचा हिमनग स्वतःचा 91.7 टक्के भाग पृष्ठभागाखाली ठेवून तरंगतो. (1333 गुणोत्तर उलटे करते, ज्याने ठोकळा बुडाला असता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Water flows at 3 m/s through a pipe of cross-section 6 cm². The pipe narrows to 2 cm². What is the speed there?",
+      "choices": [
+        "1 m/s",
+        "4.5 m/s",
+        "9 m/s",
+        "18 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "Continuity requires Av to be the same at both sections, since the water is incompressible and none is lost: v₂ = 3 × 6/2 = 9 m/s. Bernoulli then says the pressure at the narrow section is lower, which is the reverse of what most people expect. (1 inverts the area ratio.)",
+      "checkExpr": "3*6/2",
+      "translations": {
+        "hi": {
+          "stem": "पानी 6 cm² अनुप्रस्थ काट की नली में 3 m/s से बहता है। नली सँकरी होकर 2 cm² हो जाती है। वहाँ चाल क्या है?",
+          "choices": [
+            "1 m/s",
+            "4.5 m/s",
+            "9 m/s",
+            "18 m/s"
+          ],
+          "solution": "सांतत्य माँगता है कि दोनों काटों पर Av एक-सा रहे, क्योंकि पानी असंपीड्य है और कुछ खोता नहीं: v₂ = 3 × 6/2 = 9 m/s. फिर बर्नूली कहता है कि सँकरे काट पर दाब कम है, जो अधिकांश लोगों की अपेक्षा के उलटा है। (1 क्षेत्रफल-अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "पाणी 6 cm² आडव्या छेदाच्या नळीतून 3 m/s ने वाहते. नळी अरुंद होऊन 2 cm² होते. तिथे चाल किती?",
+          "choices": [
+            "1 m/s",
+            "4.5 m/s",
+            "9 m/s",
+            "18 m/s"
+          ],
+          "solution": "सातत्य मागते की दोन्ही छेदांवर Av सारखे राहावे, कारण पाणी असंपीड्य आणि काही हरवत नाही: v₂ = 3 × 6/2 = 9 m/s. मग बर्नूली सांगतो की अरुंद छेदावर दाब कमी, जे बहुतांश लोकांच्या अपेक्षेच्या उलट. (1 क्षेत्रफळ-गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A soap bubble of radius 0.01 m is blown from a solution of surface tension 0.03 N/m. What is the excess pressure inside it?",
+      "choices": [
+        "12",
+        "3",
+        "24",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "A soap bubble has two surfaces, inner and outer, so the excess pressure is 4T/r = 4 × 0.03/0.01 = 12 Pa. A liquid drop, with only one surface, would give 2T/r = 6 Pa. Notice the pressure is larger in a SMALLER bubble, which is why the small one empties into the large when two are connected. (6 uses the drop formula.)",
+      "checkExpr": "4*0.03/0.01",
+      "translations": {
+        "hi": {
+          "stem": "0.03 N/m पृष्ठ तनाव वाले घोल से 0.01 m त्रिज्या का साबुन का बुलबुला बनाया जाता है। उसके भीतर अतिरिक्त दाब क्या है?",
+          "choices": [
+            "12",
+            "3",
+            "24",
+            "6"
+          ],
+          "solution": "साबुन के बुलबुले की दो सतहें हैं, भीतरी और बाहरी, अतः अतिरिक्त दाब 4T/r = 4 × 0.03/0.01 = 12 Pa. केवल एक सतह वाली द्रव की बूँद 2T/r = 6 Pa देती। ध्यान दो दाब छोटे बुलबुले में बड़ा होता है, इसीलिए दो जोड़ने पर छोटा बड़े में ख़ाली हो जाता है। (6 बूँद वाला सूत्र लगाता है।)"
+        },
+        "mr": {
+          "stem": "0.03 N/m पृष्ठताण असलेल्या द्रावणातून 0.01 m त्रिज्येचा साबणाचा बुडबुडा फुगवला जातो. त्याच्या आत जादा दाब किती?",
+          "choices": [
+            "12",
+            "3",
+            "24",
+            "6"
+          ],
+          "solution": "साबणाच्या बुडबुड्याला दोन पृष्ठभाग, आतला आणि बाहेरचा, म्हणून जादा दाब 4T/r = 4 × 0.03/0.01 = 12 Pa. केवळ एक पृष्ठभाग असलेला द्रवाचा थेंब 2T/r = 6 Pa दिला असता. लक्षात घ्या दाब लहान बुडबुड्यात मोठा असतो, म्हणूनच दोन जोडल्यावर लहान मोठ्यात रिकामा होतो. (6 थेंबाचे सूत्र वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Water of surface tension 0.07 N/m rises in a capillary of radius 0.0002 m. Taking the density as 1000 kg/m³, g as 10 m/s² and the contact angle as zero, how high does it rise?",
+      "choices": [
+        "0.7 m",
+        "0.035 m",
+        "0.07 m",
+        "0.14 m"
+      ],
+      "answerIndex": 2,
+      "solution": "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, that is 7 cm. The rise is inversely proportional to the radius, so halving the bore doubles the climb — which is how a wick and a stem of a plant lift water without a pump. (0.035 forgets the factor of 2.)",
+      "checkExpr": "2*0.07/(1000*10*0.0002)",
+      "translations": {
+        "hi": {
+          "stem": "0.07 N/m पृष्ठ तनाव वाला पानी 0.0002 m त्रिज्या की केशनली में चढ़ता है। घनत्व 1000 kg/m³, g = 10 m/s² और स्पर्श कोण शून्य लेते हुए, वह कितना ऊपर चढ़ता है?",
+          "choices": [
+            "0.7 m",
+            "0.035 m",
+            "0.07 m",
+            "0.14 m"
+          ],
+          "solution": "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, यानी 7 cm. चढ़ाई त्रिज्या के व्युत्क्रमानुपाती है, अतः छिद्र आधा करने पर चढ़ाई दुगुनी — इसी तरह बत्ती और पौधे का तना बिना पंप के पानी उठाते हैं। (0.035 2 का गुणक भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "0.07 N/m पृष्ठताण असलेले पाणी 0.0002 m त्रिज्येच्या केशनळीत चढते. घनता 1000 kg/m³, g = 10 m/s² आणि स्पर्शकोन शून्य घेतल्यास, ते किती उंच चढते?",
+          "choices": [
+            "0.7 m",
+            "0.035 m",
+            "0.07 m",
+            "0.14 m"
+          ],
+          "solution": "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, म्हणजे 7 cm. चढण त्रिज्येच्या व्यस्तानुपाती, म्हणून छिद्र निम्मे केल्यास चढण दुप्पट — याच पद्धतीने वात आणि वनस्पतीचे खोड पंपाशिवाय पाणी उचलतात. (0.035 हे 2 चा गुणक विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A small drop falls through air at a terminal velocity of 2 mm/s. A second drop of the same liquid has twice the radius. What is its terminal velocity, in mm/s?",
+      "choices": [
+        "8",
+        "4",
+        "1",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "Terminal velocity goes as the square of the radius: weight grows as r³ while Stokes drag grows only as r times the speed, so v ∝ r². Doubling r gives 2 × 4 = 8 mm/s. (4 assumes it is proportional to the radius, and 16 uses the volume ratio without dividing by the drag's own r.)",
+      "checkExpr": "2*2^2",
+      "translations": {
+        "hi": {
+          "stem": "एक छोटी बूँद हवा में 2 mm/s के सीमांत वेग से गिरती है। उसी द्रव की दूसरी बूँद की त्रिज्या दुगुनी है। उसका सीमांत वेग mm/s में क्या है?",
+          "choices": [
+            "8",
+            "4",
+            "1",
+            "16"
+          ],
+          "solution": "सीमांत वेग त्रिज्या के वर्ग के अनुसार चलता है: भार r³ के अनुसार बढ़ता है जबकि स्टोक्स कर्षण केवल r गुणा चाल के अनुसार, अतः v ∝ r². r दुगुना करने पर 2 × 4 = 8 mm/s. (4 उसे त्रिज्या का समानुपाती मानता है, और 16 कर्षण के अपने r से भाग दिए बिना आयतन-अनुपात लगाता है।)"
+        },
+        "mr": {
+          "stem": "एक लहान थेंब हवेत 2 mm/s च्या सीमावर्ती वेगाने पडतो. त्याच द्रवाच्या दुसऱ्या थेंबाची त्रिज्या दुप्पट. त्याचा सीमावर्ती वेग mm/s मध्ये किती?",
+          "choices": [
+            "8",
+            "4",
+            "1",
+            "16"
+          ],
+          "solution": "सीमावर्ती वेग त्रिज्येच्या वर्गानुसार जातो: वजन r³ नुसार वाढते तर स्टोक्स ओढ केवळ r गुणिले चाल नुसार, म्हणून v ∝ r². r दुप्पट केल्यास 2 × 4 = 8 mm/s. (4 त्याला त्रिज्येच्या समानुपाती मानते, आणि 16 ओढीच्या स्वतःच्या r ने न भागता घनफळ-गुणोत्तर वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Water flows steadily through a narrow tube at 32 units of volume per second. The tube is replaced by one of half the radius and the same length, with the same pressure difference across it. What is the new flow rate, in the same units?",
+      "choices": [
+        "2",
+        "8",
+        "4",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "For steady viscous flow through a tube the discharge goes as the FOURTH power of the radius, so halving r divides the rate by 2⁴ = 16: 32/16 = 2 units per second. The fourth power comes from two separate effects multiplying: the cross-sectional area falls as r², and the average speed falls as r² again because a narrower tube has a steeper velocity gradient at its wall, where viscosity holds the fluid still. This is why a slightly narrowed artery is so serious — a twenty per cent reduction in radius more than halves the blood flow at the same pressure — and why the body raises the pressure to compensate. It is also why a wide pipe is worth far more than its cost in material: doubling a pipe's radius carries sixteen times the water. (16 uses the area alone, 8 uses r³, and 4 uses r².)",
+      "checkExpr": "32/2^4",
+      "translations": {
+        "hi": {
+          "stem": "पानी एक पतली नली से 32 इकाई आयतन प्रति सेकंड की दर से स्थायी रूप से बहता है। नली को आधी त्रिज्या और उसी लंबाई की नली से बदल दिया जाता है, उसके आर-पार वही दाबांतर रखते हुए। नई प्रवाह-दर उन्हीं इकाइयों में क्या है?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "16"
+          ],
+          "solution": "नली से स्थायी श्यान प्रवाह के लिए निस्सरण त्रिज्या की चौथी घात के अनुसार चलता है, अतः r आधा करने पर दर 2⁴ = 16 से भाग हो जाती है: 32/16 = 2 इकाई प्रति सेकंड। चौथी घात दो अलग प्रभावों के गुणा होने से आती है: अनुप्रस्थ काट क्षेत्रफल r² के अनुसार घटता है, और औसत चाल भी फिर r² के अनुसार, क्योंकि सँकरी नली की दीवार पर वेग-प्रवणता अधिक तीखी होती है, जहाँ श्यानता तरल को थामे रखती है। इसीलिए थोड़ी सँकरी हुई धमनी इतनी गंभीर है — त्रिज्या में बीस प्रतिशत की कमी उसी दाब पर रक्त-प्रवाह आधे से भी कम कर देती है — और इसीलिए शरीर भरपाई में दाब बढ़ा देता है। इसी से चौड़ी नली अपनी सामग्री की लागत से कहीं अधिक मूल्यवान है: नली की त्रिज्या दुगुनी करने पर सोलह गुना पानी जाता है। (16 केवल क्षेत्रफल लगाता है, 8 r³ और 4 r².)"
+        },
+        "mr": {
+          "stem": "पाणी एका अरुंद नळीतून दर सेकंदाला 32 एकक घनफळ या दराने स्थिरपणे वाहते. नळी अर्ध्या त्रिज्येच्या आणि त्याच लांबीच्या नळीने बदलली जाते, तिच्या आरपार तोच दाबफरक ठेवून. नवा प्रवाह-दर त्याच एककांत किती?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "16"
+          ],
+          "solution": "नळीतून स्थिर श्यान प्रवाहासाठी विसर्ग त्रिज्येच्या चौथ्या घातेनुसार जातो, म्हणून r निम्मे केल्यास दर 2⁴ = 16 ने भागला जातो: 32/16 = 2 एकक प्रति सेकंद. चौथी घात दोन वेगळ्या परिणामांच्या गुणाकारातून येते: आडव्या छेदाचे क्षेत्रफळ r² नुसार घटते, आणि सरासरी चालही पुन्हा r² नुसार, कारण अरुंद नळीच्या भिंतीवर वेग-प्रवणता अधिक तीव्र असते, जिथे श्यानता प्रवाही स्थिर धरते. म्हणूनच थोडी अरुंद झालेली धमनी इतकी गंभीर — त्रिज्येतील वीस टक्के घट त्याच दाबावर रक्तप्रवाह निम्म्याहूनही कमी करते — आणि म्हणूनच शरीर भरपाईसाठी दाब वाढवते. यामुळेच रुंद नळी तिच्या सामग्रीच्या खर्चाहून कितीतरी अधिक मोलाची: नळीची त्रिज्या दुप्पट केल्यास सोळापट पाणी जाते. (16 फक्त क्षेत्रफळ वापरते, 8 हे r³ आणि 4 हे r².)"
+        }
+      }
+    }
+  ]
+}

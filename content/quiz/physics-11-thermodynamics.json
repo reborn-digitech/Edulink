@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 11 — Thermodynamics",
+  "name": "Thermodynamics",
+  "slug": "physics-11-thermodynamics",
+  "summary": "The only branch of physics whose laws are stated as things that cannot be done. A law so obvious it was numbered zero and yet is what makes a thermometer possible, an accounting rule that lets heat and work be added because both are energy in transit, two processes that differ only in whether the gas was allowed to talk to its surroundings, and a second law that forbids what the first permits — and in doing so tells time which way to run.",
+  "position": 11,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "ऊष्मागतिकी",
+      "summary": "भौतिकी की एकमात्र शाखा जिसके नियम उन चीज़ों के रूप में कहे जाते हैं जो की नहीं जा सकतीं। इतना स्पष्ट नियम कि उसे शून्य नंबर दिया गया और फिर भी वही तापमापी को संभव बनाता है, ऐसा बहीखाता-नियम जो ऊष्मा और कार्य को जोड़ने देता है क्योंकि दोनों संक्रमण में ऊर्जा हैं, दो प्रक्रियाएँ जो केवल इसमें भिन्न हैं कि गैस को अपने परिवेश से बात करने दी गई या नहीं, और वह दूसरा नियम जो उसे मना करता है जिसकी पहला अनुमति देता है — और ऐसा करते हुए समय को बताता है कि चलना किस ओर है।"
+    },
+    "mr": {
+      "name": "उष्मागतिकी",
+      "summary": "भौतिकीची एकमेव शाखा जिचे नियम करता येत नाहीत अशा गोष्टींच्या रूपात मांडले जातात. इतका स्पष्ट नियम की त्याला शून्य क्रमांक दिला गेला आणि तरीही तोच तापमापक शक्य करतो, असा वहीखाता-नियम जो उष्णता आणि कार्य जोडू देतो कारण दोन्ही संक्रमणातील ऊर्जा आहेत, दोन प्रक्रिया ज्या केवळ यात वेगळ्या की वायूला आपल्या परिसराशी बोलू दिले की नाही, आणि तो दुसरा नियम जो पहिला परवानगी देतो त्याला मनाई करतो — आणि तसे करताना काळाला सांगतो की चालायचे कोणत्या दिशेने."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "If A is in thermal equilibrium with C, and B is too, then A and B are in equilibrium with each other — which is the only reason a thermometer touched to two bodies in turn can compare them. Which law is this?",
+      "choices": [
+        "The adiabatic process",
+        "The second law of thermodynamics",
+        "The first law of thermodynamics",
+        "The zeroth law"
+      ],
+      "answerIndex": 3,
+      "solution": "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि A, C के साथ तापीय संतुलन में है और B भी, तो A और B आपस में संतुलन में हैं — और केवल इसी कारण बारी-बारी से दो पिंडों को छुआया गया तापमापी उनकी तुलना कर सकता है। यह कौन-सा नियम है?",
+          "choices": [
+            "रुद्धोष्म प्रक्रम",
+            "ऊष्मागतिकी का दूसरा नियम",
+            "ऊष्मागतिकी का पहला नियम",
+            "शून्यवाँ नियम"
+          ],
+          "solution": "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जर A हा C शी औष्णिक समतोलात असेल आणि B ही असेल, तर A आणि B आपापसात समतोलात आहेत — आणि केवळ याच कारणाने आळीपाळीने दोन पिंडांना लावलेला तापमापक त्यांची तुलना करू शकतो. हा कोणता नियम?",
+          "choices": [
+            "रुद्धोष्म प्रक्रिया",
+            "उष्मागतिकीचा दुसरा नियम",
+            "उष्मागतिकीचा पहिला नियम",
+            "शून्यवा नियम"
+          ],
+          "solution": "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The first law of thermodynamics is correct?",
+      "choices": [
+        "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures.",
+        "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings.",
+        "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries.",
+        "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle."
+      ],
+      "answerIndex": 1,
+      "solution": "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मागतिकी का पहला नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है।",
+            "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है।",
+            "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है।",
+            "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता।"
+          ],
+          "solution": "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "उष्मागतिकीचा पहिला नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून.",
+            "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते.",
+            "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते.",
+            "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही."
+          ],
+          "solution": "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It must be carried out very slowly and in good thermal contact, because heat needs time to flow in and keep the temperature from falling as the gas does work.\" — which of these is this about?",
+      "choices": [
+        "Carnot efficiency",
+        "The zeroth law",
+        "The adiabatic process",
+        "The isothermal process"
+      ],
+      "answerIndex": 3,
+      "solution": "In an isothermal process the temperature is held constant, so for an ideal gas the internal energy does not change and the heat absorbed equals exactly the work done. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उसे बहुत धीरे और अच्छे तापीय संपर्क में करना पड़ता है, क्योंकि ऊष्मा को भीतर बहने और गैस के कार्य करते समय ताप को गिरने से रोकने के लिए समय चाहिए।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "कार्नो दक्षता",
+            "शून्यवाँ नियम",
+            "रुद्धोष्म प्रक्रम",
+            "समतापी प्रक्रम"
+          ],
+          "solution": "समतापी प्रक्रम में ताप अचर रखा जाता है, अतः आदर्श गैस के लिए आंतरिक ऊर्जा नहीं बदलती और सोखी ऊष्मा ठीक किए गए कार्य के बराबर होती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती फार सावकाश आणि चांगल्या औष्णिक संपर्कात करावी लागते, कारण उष्णतेला आत वाहायला आणि वायू कार्य करत असताना तापमान घसरण्यापासून रोखायला वेळ लागतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "कार्नो कार्यक्षमता",
+            "शून्यवा नियम",
+            "रुद्धोष्म प्रक्रिया",
+            "समतापी प्रक्रिया"
+          ],
+          "solution": "समतापी प्रक्रियेत तापमान अचल ठेवले जाते, म्हणून आदर्श वायूसाठी आंतरिक ऊर्जा बदलत नाही आणि शोषलेली उष्णता नेमकी केलेल्या कार्याइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A bicycle pump's barrel grows hot as the air inside is squeezed quickly, and a released gas cylinder frosts over, because the change happens too fast for any heat to enter or leave. Which process is this?",
+      "choices": [
+        "The first law of thermodynamics",
+        "The isothermal process",
+        "Carnot efficiency",
+        "The adiabatic process"
+      ],
+      "answerIndex": 3,
+      "solution": "In an adiabatic process no heat enters or leaves the system, so all the work done goes at the expense of internal energy and the temperature changes even with no heating. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "साइकिल के पंप की नली भीतर की हवा तेज़ी से दबने पर गरम हो जाती है, और छोड़ा गया गैस सिलिंडर पाला जमा लेता है, क्योंकि परिवर्तन इतना तेज़ होता है कि कोई ऊष्मा भीतर या बाहर न जा सके। यह कौन-सा प्रक्रम है?",
+          "choices": [
+            "ऊष्मागतिकी का पहला नियम",
+            "समतापी प्रक्रम",
+            "कार्नो दक्षता",
+            "रुद्धोष्म प्रक्रम"
+          ],
+          "solution": "रुद्धोष्म प्रक्रम में निकाय में कोई ऊष्मा न भीतर आती है न बाहर जाती है, अतः किया गया सारा कार्य आंतरिक ऊर्जा की क़ीमत पर होता है और बिना गरम किए भी ताप बदल जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "सायकलच्या पंपाची नळी आतली हवा झपाट्याने दाबल्याने गरम होते, आणि सोडलेला वायू सिलिंडर दहिवर धरतो, कारण बदल इतका वेगवान की कोणतीही उष्णता आत वा बाहेर जाऊ शकत नाही. ही कोणती प्रक्रिया?",
+          "choices": [
+            "उष्मागतिकीचा पहिला नियम",
+            "समतापी प्रक्रिया",
+            "कार्नो कार्यक्षमता",
+            "रुद्धोष्म प्रक्रिया"
+          ],
+          "solution": "रुद्धोष्म प्रक्रियेत संचात कोणतीही उष्णता आत येत नाही वा बाहेर जात नाही, म्हणून केलेले सर्व कार्य आंतरिक ऊर्जेच्या किमतीवर होते आणि न तापवताही तापमान बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The second law of thermodynamics is correct?",
+      "choices": [
+        "In an isothermal process the temperature is held constant, so for an ideal gas the internal energy does not change and the heat absorbed equals exactly the work done.",
+        "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings.",
+        "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle.",
+        "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries."
+      ],
+      "answerIndex": 2,
+      "solution": "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मागतिकी का दूसरा नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "समतापी प्रक्रम में ताप अचर रखा जाता है, अतः आदर्श गैस के लिए आंतरिक ऊर्जा नहीं बदलती और सोखी ऊष्मा ठीक किए गए कार्य के बराबर होती है।",
+            "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है।",
+            "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता।",
+            "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है।"
+          ],
+          "solution": "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "उष्मागतिकीचा दुसरा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "समतापी प्रक्रियेत तापमान अचल ठेवले जाते, म्हणून आदर्श वायूसाठी आंतरिक ऊर्जा बदलत नाही आणि शोषलेली उष्णता नेमकी केलेल्या कार्याइतकी असते.",
+            "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते.",
+            "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही.",
+            "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते."
+          ],
+          "solution": "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The temperatures must be absolute, and the formula reaches one hundred per cent only for a sink at absolute zero, which is itself unreachable.\" — which of these is this about?",
+      "choices": [
+        "The isothermal process",
+        "The adiabatic process",
+        "Carnot efficiency",
+        "The second law of thermodynamics"
+      ],
+      "answerIndex": 2,
+      "solution": "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ताप परम होने चाहिए, और सूत्र सौ प्रतिशत तभी पहुँचता है जब अवशोषक परम शून्य पर हो, जो स्वयं अप्राप्य है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "समतापी प्रक्रम",
+            "रुद्धोष्म प्रक्रम",
+            "कार्नो दक्षता",
+            "ऊष्मागतिकी का दूसरा नियम"
+          ],
+          "solution": "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तापमाने निरपेक्ष असावी लागतात, आणि सूत्र शंभर टक्के तेव्हाच गाठते जेव्हा शोषक निरपेक्ष शून्यावर असेल, जे स्वतःच अप्राप्य आहे.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "समतापी प्रक्रिया",
+            "रुद्धोष्म प्रक्रिया",
+            "कार्नो कार्यक्षमता",
+            "उष्मागतिकीचा दुसरा नियम"
+          ],
+          "solution": "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The law that makes a thermometer mean anything\" goes correctly with which of these?",
+      "choices": [
+        "the second law of thermodynamics",
+        "the first law of thermodynamics",
+        "Carnot efficiency",
+        "the zeroth law"
+      ],
+      "answerIndex": 3,
+      "solution": "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह नियम जो तापमापी को कोई अर्थ देता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऊष्मागतिकी का दूसरा नियम",
+            "ऊष्मागतिकी का पहला नियम",
+            "कार्नो दक्षता",
+            "शून्यवाँ नियम"
+          ],
+          "solution": "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तो नियम जो तापमापकाला काही अर्थ देतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "उष्मागतिकीचा दुसरा नियम",
+            "उष्मागतिकीचा पहिला नियम",
+            "कार्नो कार्यक्षमता",
+            "शून्यवा नियम"
+          ],
+          "solution": "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Balances the books and never names a direction\" goes correctly with which of these?",
+      "choices": [
+        "the second law of thermodynamics",
+        "the adiabatic process",
+        "the isothermal process",
+        "the first law of thermodynamics"
+      ],
+      "answerIndex": 3,
+      "solution": "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बहीखाता मिलाता है और दिशा कभी नहीं बताता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऊष्मागतिकी का दूसरा नियम",
+            "रुद्धोष्म प्रक्रम",
+            "समतापी प्रक्रम",
+            "ऊष्मागतिकी का पहला नियम"
+          ],
+          "solution": "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वहीखाते जुळवतो आणि दिशा कधीच सांगत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "उष्मागतिकीचा दुसरा नियम",
+            "रुद्धोष्म प्रक्रिया",
+            "समतापी प्रक्रिया",
+            "उष्मागतिकीचा पहिला नियम"
+          ],
+          "solution": "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Every joule of heat comes straight back out as work\" goes correctly with which of these?",
+      "choices": [
+        "Carnot efficiency",
+        "the adiabatic process",
+        "the first law of thermodynamics",
+        "the isothermal process"
+      ],
+      "answerIndex": 3,
+      "solution": "In an isothermal process the temperature is held constant, so for an ideal gas the internal energy does not change and the heat absorbed equals exactly the work done. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऊष्मा का हर जूल सीधे कार्य बनकर लौट आता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कार्नो दक्षता",
+            "रुद्धोष्म प्रक्रम",
+            "ऊष्मागतिकी का पहला नियम",
+            "समतापी प्रक्रम"
+          ],
+          "solution": "समतापी प्रक्रम में ताप अचर रखा जाता है, अतः आदर्श गैस के लिए आंतरिक ऊर्जा नहीं बदलती और सोखी ऊष्मा ठीक किए गए कार्य के बराबर होती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"उष्णतेचे प्रत्येक ज्यूल थेट कार्य बनून परत येते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कार्नो कार्यक्षमता",
+            "रुद्धोष्म प्रक्रिया",
+            "उष्मागतिकीचा पहिला नियम",
+            "समतापी प्रक्रिया"
+          ],
+          "solution": "समतापी प्रक्रियेत तापमान अचल ठेवले जाते, म्हणून आदर्श वायूसाठी आंतरिक ऊर्जा बदलत नाही आणि शोषलेली उष्णता नेमकी केलेल्या कार्याइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Too fast for heat to arrive\" goes correctly with which of these?",
+      "choices": [
+        "the adiabatic process",
+        "the second law of thermodynamics",
+        "the isothermal process",
+        "the zeroth law"
+      ],
+      "answerIndex": 0,
+      "solution": "In an adiabatic process no heat enters or leaves the system, so all the work done goes at the expense of internal energy and the temperature changes even with no heating. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इतना तेज़ कि ऊष्मा पहुँच ही न सके\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "रुद्धोष्म प्रक्रम",
+            "ऊष्मागतिकी का दूसरा नियम",
+            "समतापी प्रक्रम",
+            "शून्यवाँ नियम"
+          ],
+          "solution": "रुद्धोष्म प्रक्रम में निकाय में कोई ऊष्मा न भीतर आती है न बाहर जाती है, अतः किया गया सारा कार्य आंतरिक ऊर्जा की क़ीमत पर होता है और बिना गरम किए भी ताप बदल जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"इतका वेगवान की उष्णता पोहोचूच शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "रुद्धोष्म प्रक्रिया",
+            "उष्मागतिकीचा दुसरा नियम",
+            "समतापी प्रक्रिया",
+            "शून्यवा नियम"
+          ],
+          "solution": "रुद्धोष्म प्रक्रियेत संचात कोणतीही उष्णता आत येत नाही वा बाहेर जात नाही, म्हणून केलेले सर्व कार्य आंतरिक ऊर्जेच्या किमतीवर होते आणि न तापवताही तापमान बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The film that looks wrong played backwards\" goes correctly with which of these?",
+      "choices": [
+        "the isothermal process",
+        "the adiabatic process",
+        "the second law of thermodynamics",
+        "the first law of thermodynamics"
+      ],
+      "answerIndex": 2,
+      "solution": "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह फ़िल्म जो उलटी चलाने पर ग़लत दिखती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "समतापी प्रक्रम",
+            "रुद्धोष्म प्रक्रम",
+            "ऊष्मागतिकी का दूसरा नियम",
+            "ऊष्मागतिकी का पहला नियम"
+          ],
+          "solution": "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती चित्रफीत जी उलटी चालवल्यास चुकीची दिसते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "समतापी प्रक्रिया",
+            "रुद्धोष्म प्रक्रिया",
+            "उष्मागतिकीचा दुसरा नियम",
+            "उष्मागतिकीचा पहिला नियम"
+          ],
+          "solution": "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A ceiling no cleverness can raise\" goes correctly with which of these?",
+      "choices": [
+        "the first law of thermodynamics",
+        "the adiabatic process",
+        "Carnot efficiency",
+        "the zeroth law"
+      ],
+      "answerIndex": 2,
+      "solution": "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसी छत जिसे कोई चतुराई ऊपर नहीं उठा सकती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऊष्मागतिकी का पहला नियम",
+            "रुद्धोष्म प्रक्रम",
+            "कार्नो दक्षता",
+            "शून्यवाँ नियम"
+          ],
+          "solution": "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे छत जे कोणतीही हुशारी वर उचलू शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "उष्मागतिकीचा पहिला नियम",
+            "रुद्धोष्म प्रक्रिया",
+            "कार्नो कार्यक्षमता",
+            "शून्यवा नियम"
+          ],
+          "solution": "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The zeroth law EXCEPT —",
+      "choices": [
+        "It was named late and numbered zero because it turned out to be logically prior to the first and second, which had already been published and could not be renumbered.",
+        "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle.",
+        "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries.",
+        "Without it the very idea of a temperature scale collapses, because nothing would guarantee that a thermometer reading the same number twice had met two bodies that would not exchange heat if joined."
+      ],
+      "answerIndex": 1,
+      "solution": "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle. That belongs to The second law of thermodynamics, not The zeroth law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "शून्यवाँ नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "उसका नाम देर से रखा गया और नंबर शून्य दिया गया क्योंकि वह तार्किक रूप से पहले और दूसरे से पहले का निकला, जो पहले ही छप चुके थे और जिनके नंबर बदले नहीं जा सकते थे।",
+            "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता।",
+            "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है।",
+            "उसके बिना ताप-मापक्रम का विचार ही ढह जाता है, क्योंकि कुछ भी यह सुनिश्चित नहीं करता कि दो बार वही संख्या दिखाने वाला तापमापी ऐसे दो पिंडों से मिला जो जोड़े जाने पर ऊष्मा का आदान-प्रदान न करते।"
+          ],
+          "solution": "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता। यह ऊष्मागतिकी का दूसरा नियम की बात है, शून्यवाँ नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "शून्यवा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "त्याचे नाव उशिरा ठेवले गेले आणि क्रमांक शून्य दिला कारण तो तार्किकदृष्ट्या पहिल्या आणि दुसऱ्याच्या आधीचा निघाला, जे आधीच प्रसिद्ध झाले होते आणि ज्यांचे क्रमांक बदलता येत नव्हते.",
+            "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही.",
+            "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते.",
+            "त्याच्याशिवाय तापमान-मापनश्रेणीची कल्पनाच कोसळते, कारण दोनदा तीच संख्या दाखवणारा तापमापक अशा दोन पिंडांना भेटला याची खात्री काहीही देत नाही जे जोडल्यास उष्णतेची देवाणघेवाण करणार नाहीत."
+          ],
+          "solution": "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही. हे उष्मागतिकीचा दुसरा नियम चे आहे, शून्यवा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The first law of thermodynamics EXCEPT —",
+      "choices": [
+        "It forbids a machine that produces energy from nothing, but it says nothing at all about direction — it would happily allow a cup of tea to heat up by cooling the room.",
+        "Internal energy is a state function, depending only on the present condition of the gas, while heat and work are not — they describe a journey and have no value at a point.",
+        "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings.",
+        "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle."
+      ],
+      "answerIndex": 3,
+      "solution": "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle. That belongs to The second law of thermodynamics, not The first law of thermodynamics — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऊष्मागतिकी का पहला नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह ऐसे यंत्र को मना करता है जो शून्य से ऊर्जा बनाए, पर दिशा के बारे में कुछ नहीं कहता — वह ख़ुशी-ख़ुशी चाय के प्याले को कमरा ठंडा करके गरम होने देगा।",
+            "आंतरिक ऊर्जा अवस्था-फलन है, जो केवल गैस की वर्तमान दशा पर निर्भर है, जबकि ऊष्मा और कार्य नहीं — वे यात्रा का वर्णन करते हैं और किसी बिंदु पर उनका कोई मान नहीं।",
+            "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है।",
+            "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता।"
+          ],
+          "solution": "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता। यह ऊष्मागतिकी का दूसरा नियम की बात है, ऊष्मागतिकी का पहला नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "उष्मागतिकीचा पहिला नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हा शून्यातून ऊर्जा बनवणाऱ्या यंत्राला मनाई करतो, पण दिशेबद्दल काहीही सांगत नाही — तो आनंदाने चहाच्या कपाला खोली थंड करून गरम होऊ देईल.",
+            "आंतरिक ऊर्जा हे अवस्था-फलन, जे केवळ वायूच्या सध्याच्या स्थितीवर अवलंबून, तर उष्णता आणि कार्य नाहीत — ती प्रवासाचे वर्णन करतात आणि एखाद्या बिंदूवर त्यांना कोणतेही मूल्य नाही.",
+            "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते.",
+            "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही."
+          ],
+          "solution": "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही. हे उष्मागतिकीचा दुसरा नियम चे आहे, उष्मागतिकीचा पहिला नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The isothermal process EXCEPT —",
+      "choices": [
+        "It must be carried out very slowly and in good thermal contact, because heat needs time to flow in and keep the temperature from falling as the gas does work.",
+        "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures.",
+        "On a pressure–volume diagram its curve is a hyperbola, PV = constant, and the area under that curve is the work — which is why the same two end states can be joined by paths doing different amounts of work.",
+        "In an isothermal process the temperature is held constant, so for an ideal gas the internal energy does not change and the heat absorbed equals exactly the work done."
+      ],
+      "answerIndex": 1,
+      "solution": "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures. That belongs to Carnot efficiency, not The isothermal process — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समतापी प्रक्रम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "उसे बहुत धीरे और अच्छे तापीय संपर्क में करना पड़ता है, क्योंकि ऊष्मा को भीतर बहने और गैस के कार्य करते समय ताप को गिरने से रोकने के लिए समय चाहिए।",
+            "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है।",
+            "दाब-आयतन आरेख पर उसका वक्र अतिपरवलय है, PV = अचर, और उस वक्र के नीचे का क्षेत्रफल कार्य है — इसीलिए उन्हीं दो अंतिम अवस्थाओं को ऐसे पथों से जोड़ा जा सकता है जो भिन्न मात्रा में कार्य करते हैं।",
+            "समतापी प्रक्रम में ताप अचर रखा जाता है, अतः आदर्श गैस के लिए आंतरिक ऊर्जा नहीं बदलती और सोखी ऊष्मा ठीक किए गए कार्य के बराबर होती है।"
+          ],
+          "solution": "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है। यह कार्नो दक्षता की बात है, समतापी प्रक्रम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "समतापी प्रक्रिया विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ती फार सावकाश आणि चांगल्या औष्णिक संपर्कात करावी लागते, कारण उष्णतेला आत वाहायला आणि वायू कार्य करत असताना तापमान घसरण्यापासून रोखायला वेळ लागतो.",
+            "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून.",
+            "दाब-घनफळ आकृतीवर तिचा वक्र अतिपरवलय, PV = अचल, आणि त्या वक्राखालचे क्षेत्रफळ म्हणजे कार्य — म्हणूनच त्याच दोन अंतिम अवस्था वेगवेगळ्या प्रमाणात कार्य करणाऱ्या मार्गांनी जोडता येतात.",
+            "समतापी प्रक्रियेत तापमान अचल ठेवले जाते, म्हणून आदर्श वायूसाठी आंतरिक ऊर्जा बदलत नाही आणि शोषलेली उष्णता नेमकी केलेल्या कार्याइतकी असते."
+          ],
+          "solution": "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून. हे कार्नो कार्यक्षमता चे आहे, समतापी प्रक्रिया चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The adiabatic process EXCEPT —",
+      "choices": [
+        "It is achieved either by insulating the system or by acting so quickly that heat has no time to flow, which is why a sound wave's compressions are adiabatic and not isothermal.",
+        "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures.",
+        "In an adiabatic process no heat enters or leaves the system, so all the work done goes at the expense of internal energy and the temperature changes even with no heating.",
+        "Its curve on a PV diagram is steeper than the isothermal one through the same point, since the pressure falls both from the expansion and from the accompanying drop in temperature."
+      ],
+      "answerIndex": 1,
+      "solution": "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures. That belongs to Carnot efficiency, not The adiabatic process — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "रुद्धोष्म प्रक्रम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह या तो निकाय को रोधित करके पाया जाता है या इतनी तेज़ी से करके कि ऊष्मा को बहने का समय ही न मिले, इसीलिए ध्वनि-तरंग के संपीड़न रुद्धोष्म होते हैं, समतापी नहीं।",
+            "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है।",
+            "रुद्धोष्म प्रक्रम में निकाय में कोई ऊष्मा न भीतर आती है न बाहर जाती है, अतः किया गया सारा कार्य आंतरिक ऊर्जा की क़ीमत पर होता है और बिना गरम किए भी ताप बदल जाता है।",
+            "PV आरेख पर उसका वक्र उसी बिंदु से जाते समतापी वक्र से अधिक ढालू होता है, क्योंकि दाब प्रसार से भी गिरता है और साथ आने वाली ताप-गिरावट से भी।"
+          ],
+          "solution": "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है। यह कार्नो दक्षता की बात है, रुद्धोष्म प्रक्रम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "रुद्धोष्म प्रक्रिया विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ही एकतर संच रोधित करून साधली जाते वा इतक्या वेगाने करून की उष्णतेला वाहायला वेळच मिळू नये, म्हणूनच ध्वनिलहरीची संपीडने रुद्धोष्म असतात, समतापी नव्हे.",
+            "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून.",
+            "रुद्धोष्म प्रक्रियेत संचात कोणतीही उष्णता आत येत नाही वा बाहेर जात नाही, म्हणून केलेले सर्व कार्य आंतरिक ऊर्जेच्या किमतीवर होते आणि न तापवताही तापमान बदलते.",
+            "PV आकृतीवर तिचा वक्र त्याच बिंदूतून जाणाऱ्या समतापी वक्राहून अधिक तीव्र असतो, कारण दाब प्रसरणानेही घटतो आणि सोबत येणाऱ्या तापमान-घटीनेही."
+          ],
+          "solution": "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून. हे कार्नो कार्यक्षमता चे आहे, रुद्धोष्म प्रक्रिया चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An inventor offers an engine that takes 1000 J from a source at 400 K, rejects 200 J to a sink at 300 K, and delivers 800 J of work. It violates no conservation of energy. Decide whether it can be built, and say which law settles the matter.",
+      "choices": [
+        "It cannot be built. The energy books balance — 1000 = 800 + 200 — so the first law is satisfied, and that is exactly why the first law is not enough. The claimed efficiency is 800/1000 = 80 per cent, but the Carnot ceiling between 400 K and 300 K is 1 − 300/400 = 25 per cent. The second law forbids any engine from exceeding it, whatever its design, so the machine is impossible even though nothing is created from nothing",
+        "It can be built, since energy is conserved and that is the only requirement any machine must meet",
+        "It cannot be built because it violates the first law, since 800 J of work cannot come from 1000 J of heat",
+        "It can be built provided the working substance is chosen carefully, since efficiency depends on the gas used"
+      ],
+      "answerIndex": 0,
+      "solution": "Check the first law before anything else, because if it fails the discussion is over. Over a complete cycle the working substance returns to its starting state, so its internal energy is unchanged and ΔU = 0. The first law then reads Q_in − Q_out = W, or 1000 − 200 = 800. It balances exactly. No energy is created and none disappears. Anyone stopping here would have to approve the design. Now apply the second law, which is a separate and independent restriction. The efficiency claimed is W/Q_in = 800/1000 = 0.8. The greatest efficiency any engine can have between a source at T_hot and a sink at T_cold is the Carnot value, 1 − T_cold/T_hot, and both temperatures must be absolute: 1 − 300/400 = 0.25. The inventor is claiming more than three times the theoretical maximum. The machine is impossible, and no amount of engineering will help. It is worth being precise about what the Carnot limit is and is not. It is not a statement about friction, or about how well the machine is made, or about the working substance — the fourth option's error. Carnot's theorem says explicitly that all reversible engines operating between the same two temperatures have the SAME efficiency regardless of what is inside them, and that no irreversible engine can do better. Substituting helium for steam, or polishing the cylinder walls, moves a real engine closer to 25 per cent but cannot lift the ceiling. The limit follows from the temperatures alone. Where does the ceiling come from? From the fact that heat must be rejected at all. To run in a cycle the working substance has to be returned to its starting state, which means the entropy it gained while absorbing Q_in at T_hot must be discharged, and the only way to discharge entropy is to dump heat at some lower temperature. The rejected 200 J is not waste from careless design; some rejection is structurally required, and the minimum amount is fixed by the ratio of the temperatures. That is the second law's real content: not that energy is lost, but that not all of it is available. Two practical readings follow. First, an engine's efficiency is raised far more effectively by increasing T_hot than by cooling the sink, since T_cold is usually pinned near ambient — which is why power stations chase ever-higher steam temperatures and are limited by what the turbine blades can survive. Second, a claim to have beaten Carnot is a claim to have refuted the second law, and such claims arrive regularly at patent offices, where they are refused on principle without a working model being examined. (The third answer misreads the arithmetic, which does balance, and the second treats energy conservation as the only law there is.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आविष्कारक ऐसा इंजन प्रस्तुत करता है जो 400 K के स्रोत से 1000 J लेता है, 300 K के अवशोषक को 200 J लौटाता है, और 800 J कार्य देता है। यह ऊर्जा-संरक्षण का उल्लंघन नहीं करता। तय करो कि वह बन सकता है या नहीं, और बताओ कौन-सा नियम मामला निपटाता है।",
+          "choices": [
+            "वह नहीं बन सकता। ऊर्जा का बहीखाता मिलता है — 1000 = 800 + 200 — अतः पहला नियम संतुष्ट है, और ठीक इसीलिए पहला नियम पर्याप्त नहीं। दावा की गई दक्षता 800/1000 = 80 प्रतिशत है, पर 400 K और 300 K के बीच कार्नो छत 1 − 300/400 = 25 प्रतिशत है। दूसरा नियम किसी भी इंजन को उसे पार करने से मना करता है, उसका अभिकल्प चाहे जो हो, अतः यंत्र असंभव है यद्यपि शून्य से कुछ बन नहीं रहा",
+            "वह बन सकता है, क्योंकि ऊर्जा संरक्षित है और किसी भी यंत्र को यही एकमात्र शर्त पूरी करनी है",
+            "वह नहीं बन सकता क्योंकि वह पहले नियम का उल्लंघन करता है, चूँकि 1000 J ऊष्मा से 800 J कार्य नहीं आ सकता",
+            "कार्यकारी पदार्थ ध्यान से चुना जाए तो वह बन सकता है, क्योंकि दक्षता प्रयुक्त गैस पर निर्भर है"
+          ],
+          "solution": "किसी और चीज़ से पहले पहला नियम जाँचो, क्योंकि वह विफल हो तो बहस वहीं ख़त्म। पूरे चक्र में कार्यकारी पदार्थ अपनी आरंभिक अवस्था में लौट आता है, अतः उसकी आंतरिक ऊर्जा अपरिवर्तित रहती है और ΔU = 0. तब पहला नियम पढ़ता है Q_अंदर − Q_बाहर = W, यानी 1000 − 200 = 800. यह ठीक-ठीक मिलता है। न कोई ऊर्जा बनती है न लुप्त होती है। जो यहीं रुक जाए उसे अभिकल्प स्वीकृत करना पड़ेगा। अब दूसरा नियम लगाओ, जो अलग और स्वतंत्र प्रतिबंध है। दावा की गई दक्षता W/Q_अंदर = 800/1000 = 0.8 है। T_गरम के स्रोत और T_ठंडा के अवशोषक के बीच किसी भी इंजन की सबसे बड़ी दक्षता कार्नो मान है, 1 − T_ठंडा/T_गरम, और दोनों ताप परम होने चाहिए: 1 − 300/400 = 0.25. आविष्कारक सैद्धांतिक अधिकतम का तीन गुने से अधिक दावा कर रहा है। यंत्र असंभव है, और कितनी भी अभियांत्रिकी काम नहीं आएगी। यह ठीक-ठीक कहना सार्थक है कि कार्नो सीमा क्या है और क्या नहीं। वह घर्षण के बारे में कथन नहीं, न इस बारे में कि यंत्र कितना अच्छा बना है, न कार्यकारी पदार्थ के बारे में — चौथे विकल्प की भूल। कार्नो की प्रमेय स्पष्ट कहती है कि उन्हीं दो तापों के बीच चलते सब उत्क्रमणीय इंजनों की दक्षता एक ही होती है, चाहे उनके भीतर कुछ भी हो, और कोई अनुत्क्रमणीय इंजन उससे बेहतर नहीं कर सकता। भाप की जगह हीलियम रखना, या सिलिंडर की दीवारें चमकाना, असली इंजन को 25 प्रतिशत के पास ले जाता है पर छत ऊपर नहीं उठा सकता। सीमा अकेले तापों से निकलती है। छत आती कहाँ से है? इस तथ्य से कि ऊष्मा लौटानी ही पड़ती है। चक्र में चलने के लिए कार्यकारी पदार्थ को आरंभिक अवस्था में लौटाना पड़ता है, जिसका अर्थ है कि T_गरम पर Q_अंदर सोखते समय उसने जो एन्ट्रॉपी पाई वह निकालनी पड़ेगी, और एन्ट्रॉपी निकालने का एकमात्र रास्ता किसी कम ताप पर ऊष्मा उड़ेलना है। लौटाए गए 200 J लापरवाह अभिकल्प का कचरा नहीं; कुछ लौटाना संरचनात्मक रूप से अनिवार्य है, और न्यूनतम मात्रा तापों के अनुपात से तय है। दूसरे नियम की असली अंतर्वस्तु यही है: यह नहीं कि ऊर्जा खोती है, बल्कि यह कि वह सब उपलब्ध नहीं होती। दो व्यावहारिक पाठ निकलते हैं। पहला, इंजन की दक्षता अवशोषक ठंडा करने की अपेक्षा T_गरम बढ़ाने से कहीं अधिक असरदार ढंग से चढ़ती है, क्योंकि T_ठंडा आम तौर पर परिवेश के पास जड़ा रहता है — इसीलिए बिजलीघर लगातार ऊँचे भाप-ताप का पीछा करते हैं और उन्हें यह सीमित करता है कि टरबाइन के पंखे कितना झेल सकते हैं। दूसरा, कार्नो को हरा देने का दावा दूसरे नियम के खंडन का दावा है, और ऐसे दावे पेटेंट कार्यालयों में नियमित रूप से पहुँचते हैं, जहाँ चालू नमूना जाँचे बिना सिद्धांततः उन्हें अस्वीकार किया जाता है। (तीसरा उत्तर गणित ग़लत पढ़ता है, जो मिलता तो है, और दूसरा ऊर्जा-संरक्षण को एकमात्र नियम मान लेता है।)"
+        },
+        "mr": {
+          "stem": "एक संशोधक असे इंजिन सादर करतो जे 400 K च्या स्रोतातून 1000 J घेते, 300 K च्या शोषकाला 200 J परत करते, आणि 800 J कार्य देते. ते ऊर्जा-संरक्षणाचे उल्लंघन करत नाही. ते बांधता येईल का ते ठरवा, आणि कोणता नियम प्रकरण निकाली काढतो ते सांगा.",
+          "choices": [
+            "ते बांधता येणार नाही. ऊर्जेचे वहीखाते जुळते — 1000 = 800 + 200 — म्हणून पहिला नियम समाधानी, आणि नेमके म्हणूनच पहिला नियम पुरेसा नाही. दावा केलेली कार्यक्षमता 800/1000 = 80 टक्के, पण 400 K आणि 300 K दरम्यानचे कार्नो छत 1 − 300/400 = 25 टक्के. दुसरा नियम कोणत्याही इंजिनाला ते ओलांडण्यास मनाई करतो, त्याची रचना काहीही असो, म्हणून यंत्र अशक्य आहे जरी शून्यातून काही तयार होत नसले तरी",
+            "ते बांधता येईल, कारण ऊर्जा संरक्षित आहे आणि कोणत्याही यंत्राला हीच एकमेव अट पूर्ण करावी लागते",
+            "ते बांधता येणार नाही कारण ते पहिल्या नियमाचे उल्लंघन करते, कारण 1000 J उष्णतेतून 800 J कार्य येऊ शकत नाही",
+            "कार्यकारी पदार्थ काळजीपूर्वक निवडल्यास ते बांधता येईल, कारण कार्यक्षमता वापरलेल्या वायूवर अवलंबून"
+          ],
+          "solution": "इतर कशाहीआधी पहिला नियम तपासा, कारण तो अपयशी ठरला तर चर्चा तिथेच संपते. पूर्ण चक्रात कार्यकारी पदार्थ आपल्या सुरुवातीच्या अवस्थेत परततो, म्हणून त्याची आंतरिक ऊर्जा अपरिवर्तित आणि ΔU = 0. मग पहिला नियम वाचतो Q_आत − Q_बाहेर = W, म्हणजे 1000 − 200 = 800. ते नेमके जुळते. ना कोणती ऊर्जा तयार होते ना लोप पावते. जो इथेच थांबेल त्याला रचना मंजूर करावी लागेल. आता दुसरा नियम लावा, जो वेगळा आणि स्वतंत्र निर्बंध. दावा केलेली कार्यक्षमता W/Q_आत = 800/1000 = 0.8. T_गरम च्या स्रोत आणि T_थंड च्या शोषकादरम्यान कोणत्याही इंजिनाची सर्वांत मोठी कार्यक्षमता म्हणजे कार्नो मूल्य, 1 − T_थंड/T_गरम, आणि दोन्ही तापमाने निरपेक्ष असावी लागतात: 1 − 300/400 = 0.25. संशोधक सैद्धांतिक कमालच्या तिप्पटीहून अधिक दावा करत आहे. यंत्र अशक्य आहे, आणि कितीही अभियांत्रिकी उपयोगी पडणार नाही. कार्नो मर्यादा काय आहे आणि काय नाही हे नेमके सांगणे सार्थक. ती घर्षणाबद्दलचे विधान नाही, ना यंत्र किती चांगले बनले याबद्दल, ना कार्यकारी पदार्थाबद्दल — चौथ्या पर्यायाची चूक. कार्नोचे प्रमेय स्पष्ट सांगते की त्याच दोन तापमानांदरम्यान चालणाऱ्या सर्व उलटवण्याजोग्या इंजिनांची कार्यक्षमता एकच असते, त्यांच्या आत काहीही असो, आणि कोणतेही न उलटवण्याजोगे इंजिन त्याहून चांगले करू शकत नाही. वाफेऐवजी हेलियम ठेवणे, वा सिलिंडरच्या भिंती चकचकीत करणे, खऱ्या इंजिनाला 25 टक्क्यांजवळ नेते पण छत वर उचलू शकत नाही. मर्यादा केवळ तापमानांतून निघते. छत येते कुठून? या तथ्यातून की उष्णता परत करावीच लागते. चक्रात चालण्यासाठी कार्यकारी पदार्थाला सुरुवातीच्या अवस्थेत परत आणावे लागते, म्हणजे T_गरम वर Q_आत शोषताना त्याने जी एन्ट्रॉपी मिळवली ती काढावी लागेल, आणि एन्ट्रॉपी काढण्याचा एकमेव मार्ग म्हणजे कमी तापमानावर उष्णता ओतणे. परत केलेले 200 J निष्काळजी रचनेचा कचरा नव्हे; काही परत करणे संरचनात्मकदृष्ट्या अपरिहार्य आहे, आणि किमान प्रमाण तापमानांच्या गुणोत्तराने ठरते. दुसऱ्या नियमाचे खरे सार हेच: ऊर्जा हरवते हे नव्हे, तर ती सर्व उपलब्ध नसते हे. दोन व्यावहारिक वाचने निघतात. पहिले, इंजिनाची कार्यक्षमता शोषक थंड करण्यापेक्षा T_गरम वाढवून कितीतरी अधिक प्रभावीपणे चढते, कारण T_थंड सहसा परिसराजवळ जखडलेला असतो — म्हणूनच वीजनिर्मिती केंद्रे सतत अधिक उच्च वाफ-तापमानाचा पाठलाग करतात आणि त्यांना टर्बाइनची पाती किती सोसू शकतात हे मर्यादित करते. दुसरे, कार्नोला हरवल्याचा दावा हा दुसऱ्या नियमाच्या खंडनाचा दावा, आणि असे दावे पेटंट कार्यालयांत नियमितपणे पोहोचतात, जिथे चालू नमुना न तपासता तत्त्वतः ते नाकारले जातात. (तिसरे उत्तर आकडेमोड चुकीची वाचते, जी जुळतेच, आणि दुसरे ऊर्जा-संरक्षणाला एकमेव नियम मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A gas is taken from the same initial state to the same final volume twice: once isothermally and once adiabatically. A student says the work done must be the same, since the endpoints of the volume change are identical. Assess this, and say what it reveals about work as a quantity.",
+      "choices": [
+        "The isothermal expansion does more work. In the isothermal case heat flows in continuously to hold the temperature up, so the pressure stays higher at every volume and the area under the PV curve is larger. In the adiabatic case no heat enters, the gas cools as it expands, the pressure falls faster and the area is smaller. This shows work is a path function, not a state function: it depends on how the gas got from A to B and has no value at a state at all, unlike internal energy",
+        "The student is right: work depends only on the initial and final volumes, exactly as internal energy depends only on the state",
+        "The adiabatic expansion does more work, because with no heat entering the gas must supply everything from its own internal store",
+        "Neither does any work, since the gas returns to the same volume it started from in both cases"
+      ],
+      "answerIndex": 0,
+      "solution": "Draw both curves from the same starting point on a pressure–volume diagram and the answer is visible before any algebra. The work done by an expanding gas is the area under its PV curve, so the comparison is a comparison of two areas from the same start to the same final volume. The isothermal path follows PV = constant. As the gas expands and does work it would naturally cool, but heat flows in from the reservoir to prevent that, so the temperature — and with it the pressure at any given volume — is propped up throughout. The adiabatic path follows PVᵞ = constant with γ greater than one, so it is steeper. No heat is available, so the work must be paid for out of the internal energy, the gas cools, and the pressure at every volume beyond the start is lower than on the isothermal curve. Lower pressure over the same volume range means less area, so less work. Now put the first law against each. Isothermal: ΔU = 0 for an ideal gas because the temperature has not changed, so Q = W — every joule of work came in as heat from outside, and the gas ends with the internal energy it began with. Adiabatic: Q = 0 by definition, so ΔU = −W — the work came entirely out of the gas's own store, and it ends cooler. Two different books, two different totals, the same two volumes. That is the lesson worth extracting. Internal energy is a STATE function: it has a definite value for a given temperature and amount of gas, so ΔU between two states is fixed no matter how you travel. Heat and work are not. Asking 'how much work does this gas have' is a category error, like asking how many kilometres a city has; work is something that happens during a journey, and different journeys between the same two places cover different distances. That is why the first law is written with ΔU on one side and Q and W on the other: only one of the three is a property of the state. The distinction has a practical edge. Since the isothermal path returns the gas to its original temperature while the adiabatic one leaves it cold, an engine designer choosing between them is choosing where the energy comes from and what condition the gas is in for the next stroke. A Carnot cycle uses both deliberately — isothermal legs to exchange heat with the reservoirs and adiabatic legs to move between temperatures without exchanging any — and that combination is precisely what makes it reversible and gives it the maximum possible efficiency. (The third answer confuses where the energy came from with how much of it there was, and the fourth misreads an expansion as a closed cycle.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गैस को उसी आरंभिक अवस्था से उसी अंतिम आयतन तक दो बार ले जाया जाता है: एक बार समतापी और एक बार रुद्धोष्म। एक विद्यार्थी कहता है कि किया गया कार्य एक ही होना चाहिए, क्योंकि आयतन-परिवर्तन के सिरे समान हैं। इसका आकलन करो, और बताओ कि यह कार्य नामक राशि के बारे में क्या प्रकट करता है।",
+          "choices": [
+            "समतापी प्रसार अधिक कार्य करता है। समतापी स्थिति में ताप बनाए रखने के लिए ऊष्मा लगातार भीतर बहती है, अतः हर आयतन पर दाब ऊँचा बना रहता है और PV वक्र के नीचे का क्षेत्रफल बड़ा है। रुद्धोष्म स्थिति में कोई ऊष्मा नहीं आती, गैस फैलते हुए ठंडी होती है, दाब तेज़ी से गिरता है और क्षेत्रफल छोटा है। यह दिखाता है कि कार्य पथ-फलन है, अवस्था-फलन नहीं: वह इस पर निर्भर है कि गैस A से B तक पहुँची कैसे और किसी अवस्था पर उसका कोई मान है ही नहीं, आंतरिक ऊर्जा के विपरीत",
+            "विद्यार्थी सही है: कार्य केवल आरंभिक और अंतिम आयतन पर निर्भर है, ठीक वैसे जैसे आंतरिक ऊर्जा केवल अवस्था पर",
+            "रुद्धोष्म प्रसार अधिक कार्य करता है, क्योंकि कोई ऊष्मा न आने पर गैस को सब कुछ अपने ही आंतरिक भंडार से देना पड़ता है",
+            "कोई भी कार्य नहीं करता, क्योंकि दोनों स्थितियों में गैस उसी आयतन पर लौट आती है जहाँ से चली थी"
+          ],
+          "solution": "दोनों वक्र दाब-आयतन आरेख पर उसी आरंभ-बिंदु से खींचो और उत्तर किसी बीजगणित से पहले दिख जाता है। फैलती गैस द्वारा किया गया कार्य उसके PV वक्र के नीचे का क्षेत्रफल है, अतः तुलना उसी आरंभ से उसी अंतिम आयतन तक दो क्षेत्रफलों की तुलना है। समतापी पथ PV = अचर पर चलता है। गैस फैलते और कार्य करते हुए स्वाभाविक रूप से ठंडी होती, पर भंडार से ऊष्मा भीतर बहकर उसे रोकती है, अतः ताप — और उसके साथ किसी भी दिए आयतन पर दाब — पूरे समय थमा रहता है। रुद्धोष्म पथ PVᵞ = अचर पर चलता है जहाँ γ एक से बड़ा है, अतः वह अधिक ढालू है। कोई ऊष्मा उपलब्ध नहीं, अतः कार्य की क़ीमत आंतरिक ऊर्जा से चुकानी पड़ती है, गैस ठंडी होती है, और आरंभ के आगे हर आयतन पर दाब समतापी वक्र से नीचा है। उसी आयतन-परास में नीचा दाब कम क्षेत्रफल देता है, अतः कम कार्य। अब हर एक के सामने पहला नियम रखो। समतापी: आदर्श गैस के लिए ΔU = 0 क्योंकि ताप बदला नहीं, अतः Q = W — कार्य का हर जूल बाहर से ऊष्मा बनकर आया, और गैस उसी आंतरिक ऊर्जा के साथ समाप्त होती है जिससे शुरू हुई थी। रुद्धोष्म: परिभाषा से Q = 0, अतः ΔU = −W — कार्य पूरी तरह गैस के अपने भंडार से निकला, और वह अधिक ठंडी समाप्त होती है। दो भिन्न बहीखाते, दो भिन्न जोड़, वही दो आयतन। यही निकालने योग्य सबक़ है। आंतरिक ऊर्जा अवस्था-फलन है: दिए गए ताप और गैस-मात्रा के लिए उसका निश्चित मान है, अतः दो अवस्थाओं के बीच ΔU तय है चाहे तुम कैसे भी यात्रा करो। ऊष्मा और कार्य नहीं। 'इस गैस के पास कितना कार्य है' पूछना श्रेणी-भूल है, जैसे पूछना कि किसी नगर के पास कितने किलोमीटर हैं; कार्य वह है जो यात्रा के दौरान घटता है, और उन्हीं दो जगहों के बीच भिन्न यात्राएँ भिन्न दूरियाँ तय करती हैं। इसीलिए पहला नियम एक ओर ΔU और दूसरी ओर Q तथा W के साथ लिखा जाता है: तीनों में केवल एक अवस्था का गुण है। इस भेद की व्यावहारिक धार है। चूँकि समतापी पथ गैस को उसके मूल ताप पर लौटा देता है जबकि रुद्धोष्म उसे ठंडा छोड़ देता है, दोनों में से चुनता इंजन-अभिकल्पक यह चुन रहा है कि ऊर्जा आएगी कहाँ से और अगले स्ट्रोक के लिए गैस किस दशा में होगी। कार्नो चक्र दोनों को जानबूझकर लगाता है — भंडारों से ऊष्मा का आदान-प्रदान करने को समतापी चरण और बिना कोई आदान-प्रदान किए तापों के बीच जाने को रुद्धोष्म चरण — और वही संयोजन उसे उत्क्रमणीय बनाता है और अधिकतम संभव दक्षता देता है। (तीसरा उत्तर यह गड्डमड्ड करता है कि ऊर्जा आई कहाँ से और वह कितनी थी, और चौथा प्रसार को बंद चक्र पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "एक वायू त्याच सुरुवातीच्या अवस्थेतून त्याच अंतिम घनफळापर्यंत दोनदा नेला जातो: एकदा समतापी आणि एकदा रुद्धोष्म. एक विद्यार्थी म्हणतो की केलेले कार्य एकच असले पाहिजे, कारण घनफळ-बदलाची टोके सारखी आहेत. याचे मूल्यमापन करा, आणि हे कार्य नावाच्या राशीबद्दल काय उघड करते ते सांगा.",
+          "choices": [
+            "समतापी प्रसरण अधिक कार्य करते. समतापी स्थितीत तापमान टिकवायला उष्णता सतत आत वाहते, म्हणून प्रत्येक घनफळावर दाब उंच राहतो आणि PV वक्राखालचे क्षेत्रफळ मोठे. रुद्धोष्म स्थितीत कोणतीही उष्णता येत नाही, वायू प्रसरण पावताना थंड होतो, दाब वेगाने घटतो आणि क्षेत्रफळ लहान. हे दाखवते की कार्य हे मार्ग-फलन आहे, अवस्था-फलन नव्हे: ते वायू A पासून B पर्यंत कसा पोहोचला यावर अवलंबून आणि एखाद्या अवस्थेवर त्याला मूल्यच नाही, आंतरिक ऊर्जेच्या उलट",
+            "विद्यार्थी बरोबर: कार्य केवळ सुरुवातीच्या आणि अंतिम घनफळावर अवलंबून, अगदी तसेच जसे आंतरिक ऊर्जा केवळ अवस्थेवर",
+            "रुद्धोष्म प्रसरण अधिक कार्य करते, कारण कोणतीही उष्णता येत नसताना वायूला सर्व स्वतःच्याच आंतरिक साठ्यातून द्यावे लागते",
+            "कोणीही कार्य करत नाही, कारण दोन्ही स्थितींत वायू ज्या घनफळापासून निघाला त्याच घनफळावर परततो"
+          ],
+          "solution": "दोन्ही वक्र दाब-घनफळ आकृतीवर त्याच आरंभबिंदूतून काढा आणि उत्तर कोणत्याही बीजगणिताआधी दिसते. प्रसरण पावणाऱ्या वायूने केलेले कार्य म्हणजे त्याच्या PV वक्राखालचे क्षेत्रफळ, म्हणून तुलना त्याच आरंभापासून त्याच अंतिम घनफळापर्यंतच्या दोन क्षेत्रफळांची. समतापी मार्ग PV = अचल वर चालतो. वायू प्रसरण पावत आणि कार्य करत नैसर्गिकपणे थंड झाला असता, पण साठ्यातून उष्णता आत वाहून ते रोखते, म्हणून तापमान — आणि त्यासोबत कोणत्याही दिलेल्या घनफळावरचा दाब — पूर्ण काळ आधारलेला राहतो. रुद्धोष्म मार्ग PVᵞ = अचल वर चालतो जिथे γ एकाहून मोठा, म्हणून तो अधिक तीव्र. कोणतीही उष्णता उपलब्ध नाही, म्हणून कार्याची किंमत आंतरिक ऊर्जेतून द्यावी लागते, वायू थंड होतो, आणि आरंभाच्या पुढे प्रत्येक घनफळावर दाब समतापी वक्राहून खालचा. त्याच घनफळ-पल्ल्यात कमी दाब कमी क्षेत्रफळ देतो, म्हणून कमी कार्य. आता प्रत्येकासमोर पहिला नियम ठेवा. समतापी: आदर्श वायूसाठी ΔU = 0 कारण तापमान बदलले नाही, म्हणून Q = W — कार्याचे प्रत्येक ज्यूल बाहेरून उष्णता बनून आले, आणि वायू ज्या आंतरिक ऊर्जेने सुरू झाला त्याच ऊर्जेने संपतो. रुद्धोष्म: व्याख्येने Q = 0, म्हणून ΔU = −W — कार्य पूर्णपणे वायूच्या स्वतःच्या साठ्यातून निघाले, आणि तो अधिक थंड संपतो. दोन वेगळी वहीखाती, दोन वेगळ्या बेरजा, तीच दोन घनफळे. हाच काढण्याजोगा धडा. आंतरिक ऊर्जा हे अवस्था-फलन: दिलेल्या तापमानासाठी आणि वायूच्या प्रमाणासाठी तिचे निश्चित मूल्य, म्हणून दोन अवस्थांमधले ΔU ठरलेले, तुम्ही कसाही प्रवास करा. उष्णता आणि कार्य नाहीत. 'या वायूकडे किती कार्य आहे' विचारणे ही वर्ग-चूक, जसे विचारणे की एखाद्या शहराकडे किती किलोमीटर आहेत; कार्य ही प्रवासादरम्यान घडणारी गोष्ट, आणि त्याच दोन जागांमधले वेगळे प्रवास वेगळी अंतरे कापतात. म्हणूनच पहिला नियम एका बाजूला ΔU आणि दुसऱ्या बाजूला Q व W सह लिहिला जातो: तिघांपैकी केवळ एक अवस्थेचा गुणधर्म. या भेदाला व्यावहारिक धार आहे. समतापी मार्ग वायूला त्याच्या मूळ तापमानावर परत आणतो तर रुद्धोष्म त्याला थंड ठेवतो, म्हणून दोघांतून निवडणारा इंजिन-आखणीकार हे निवडत आहे की ऊर्जा येणार कुठून आणि पुढच्या स्ट्रोकसाठी वायू कोणत्या स्थितीत असेल. कार्नो चक्र दोन्ही मुद्दाम वापरते — साठ्यांशी उष्णतेची देवाणघेवाण करायला समतापी टप्पे आणि कोणतीही देवाणघेवाण न करता तापमानांदरम्यान जायला रुद्धोष्म टप्पे — आणि तेच संयोजन त्याला उलटवण्याजोगे बनवते आणि जास्तीत जास्त शक्य कार्यक्षमता देते. (तिसरे उत्तर ऊर्जा कुठून आली आणि ती किती होती यांची गल्लत करते, आणि चौथे प्रसरणाला बंद चक्र वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A gas expands at a constant pressure of 200,000 Pa, its volume increasing by 0.001 m³. How much work does it do?",
+      "choices": [
+        "2000",
+        "20",
+        "200",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "At constant pressure W = PΔV = 200,000 × 0.001 = 200 J. This is the area of a rectangle on the PV diagram; for a varying pressure the area under the curve would have to be found instead. (2 and 2000 slip decimal places.)",
+      "checkExpr": "200000*0.001",
+      "translations": {
+        "hi": {
+          "stem": "एक गैस 200,000 Pa के अचर दाब पर फैलती है और उसका आयतन 0.001 m³ बढ़ता है। वह कितना कार्य करती है?",
+          "choices": [
+            "2000",
+            "20",
+            "200",
+            "2"
+          ],
+          "solution": "अचर दाब पर W = PΔV = 200,000 × 0.001 = 200 J. यह PV आरेख पर एक आयत का क्षेत्रफल है; बदलते दाब के लिए इसके बजाय वक्र के नीचे का क्षेत्रफल निकालना पड़ता। (2 और 2000 में दशमलव स्थान खिसकते हैं।)"
+        },
+        "mr": {
+          "stem": "एक वायू 200,000 Pa च्या अचल दाबावर प्रसरण पावतो आणि त्याचे घनफळ 0.001 m³ ने वाढते. तो किती कार्य करतो?",
+          "choices": [
+            "2000",
+            "20",
+            "200",
+            "2"
+          ],
+          "solution": "अचल दाबावर W = PΔV = 200,000 × 0.001 = 200 J. हे PV आकृतीवरील आयताचे क्षेत्रफळ; बदलत्या दाबासाठी त्याऐवजी वक्राखालचे क्षेत्रफळ काढावे लागले असते. (2 आणि 2000 मध्ये दशांश स्थाने सरकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A Carnot engine works between a source at 600 K and a sink at 300 K. What is its efficiency, as a percentage?",
+      "choices": [
+        "50",
+        "25",
+        "200",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "η = 1 − T_cold/T_hot = 1 − 300/600 = 0.5, that is 50 per cent. Half the heat taken in must be rejected to the sink, whatever the engine is made of. (200 is the temperature ratio quoted as a percentage without subtracting from one.)",
+      "checkExpr": "100*(1-300/600)",
+      "translations": {
+        "hi": {
+          "stem": "एक कार्नो इंजन 600 K के स्रोत और 300 K के अवशोषक के बीच चलता है। उसकी दक्षता प्रतिशत में क्या है?",
+          "choices": [
+            "50",
+            "25",
+            "200",
+            "100"
+          ],
+          "solution": "η = 1 − T_ठंडा/T_गरम = 1 − 300/600 = 0.5, यानी 50 प्रतिशत। ली गई ऊष्मा का आधा अवशोषक को लौटाना ही पड़ता है, इंजन चाहे किसी का बना हो। (200 ताप-अनुपात को एक से घटाए बिना प्रतिशत में बता देता है।)"
+        },
+        "mr": {
+          "stem": "एक कार्नो इंजिन 600 K च्या स्रोत आणि 300 K च्या शोषकादरम्यान चालते. त्याची कार्यक्षमता शेकड्यात किती?",
+          "choices": [
+            "50",
+            "25",
+            "200",
+            "100"
+          ],
+          "solution": "η = 1 − T_थंड/T_गरम = 1 − 300/600 = 0.5, म्हणजे 50 टक्के. घेतलेल्या उष्णतेचा निम्मा भाग शोषकाला परत करावाच लागतो, इंजिन कशाचेही बनलेले असो. (200 तापमान-गुणोत्तर एकातून वजा न करता शेकड्यात सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "500 J of heat is added to a gas, which does 200 J of work on its surroundings. By how much does its internal energy change?",
+      "choices": [
+        "300",
+        "500",
+        "700",
+        "200"
+      ],
+      "answerIndex": 0,
+      "solution": "The first law gives ΔU = Q − W = 500 − 200 = 300 J. The gas kept 300 J and spent 200 J pushing the piston out. (700 adds the work instead of subtracting it, which would be right only if the surroundings did work ON the gas.)",
+      "checkExpr": "500-200",
+      "translations": {
+        "hi": {
+          "stem": "किसी गैस को 500 J ऊष्मा दी जाती है, और वह परिवेश पर 200 J कार्य करती है। उसकी आंतरिक ऊर्जा कितनी बदलती है?",
+          "choices": [
+            "300",
+            "500",
+            "700",
+            "200"
+          ],
+          "solution": "पहला नियम देता है ΔU = Q − W = 500 − 200 = 300 J. गैस ने 300 J रखे और 200 J पिस्टन बाहर धकेलने में ख़र्च किए। (700 कार्य घटाने के बजाय जोड़ देता है, जो केवल तब सही होता जब परिवेश गैस पर कार्य करता।)"
+        },
+        "mr": {
+          "stem": "एका वायूला 500 J उष्णता दिली जाते, आणि तो परिसरावर 200 J कार्य करतो. त्याची आंतरिक ऊर्जा किती बदलते?",
+          "choices": [
+            "300",
+            "500",
+            "700",
+            "200"
+          ],
+          "solution": "पहिला नियम देतो ΔU = Q − W = 500 − 200 = 300 J. वायूने 300 J ठेवले आणि 200 J पिस्टन बाहेर ढकलण्यात खर्च केले. (700 कार्य वजा करण्याऐवजी जोडते, जे केवळ तेव्हा बरोबर ठरले असते जेव्हा परिसराने वायूवर कार्य केले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two moles of a monatomic ideal gas are warmed through 10 K. Taking R as 8.3 J/mol/K and ΔU = (3/2)nRΔT, by how much does the internal energy rise, in joules?",
+      "choices": [
+        "166",
+        "249",
+        "498",
+        "124.5"
+      ],
+      "answerIndex": 1,
+      "solution": "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. The three-halves comes from the three translational degrees of freedom a single atom has; a diatomic gas, with two rotations as well, would give five-halves and 415 J for the same warming. (166 uses the factor 1 instead of 1.5.)",
+      "checkExpr": "1.5*2*8.3*10",
+      "translations": {
+        "hi": {
+          "stem": "एकपरमाणुक आदर्श गैस के दो मोल 10 K गरम किए जाते हैं। R = 8.3 J/mol/K और ΔU = (3/2)nRΔT लेते हुए, आंतरिक ऊर्जा कितने जूल बढ़ती है?",
+          "choices": [
+            "166",
+            "249",
+            "498",
+            "124.5"
+          ],
+          "solution": "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. तीन-बटा-दो एकल परमाणु की तीन स्थानांतरण स्वातंत्र्य-कोटियों से आता है; द्विपरमाणुक गैस, जिसमें दो घूर्णन भी हैं, उसी तापन के लिए पाँच-बटा-दो और 415 J देती। (166 1.5 के बजाय 1 का गुणक लगाता है।)"
+        },
+        "mr": {
+          "stem": "एकअणुक आदर्श वायूचे दोन मोल 10 K ने तापवले जातात. R = 8.3 J/mol/K आणि ΔU = (3/2)nRΔT घेतल्यास, आंतरिक ऊर्जा किती ज्यूलने वाढते?",
+          "choices": [
+            "166",
+            "249",
+            "498",
+            "124.5"
+          ],
+          "solution": "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. तीन-द्वितीयांश एकाच अणूच्या तीन स्थानांतरणी स्वातंत्र्यकोटींतून येते; द्विअणुक वायू, ज्यात दोन परिवलनेही, त्याच तापवण्यासाठी पाच-द्वितीयांश आणि 415 J दिले असते. (166 हे 1.5 ऐवजी 1 चा गुणक वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A heat engine absorbs 1000 J from its source and rejects 700 J to its sink in each cycle. What is its efficiency, as a percentage?",
+      "choices": [
+        "70",
+        "300",
+        "143",
+        "30"
+      ],
+      "answerIndex": 3,
+      "solution": "Over a cycle ΔU is zero, so the work done is 1000 − 700 = 300 J and the efficiency is 300/1000 = 30 per cent. (70 quotes the fraction rejected rather than the fraction used, which is the commonest slip here.)",
+      "checkExpr": "100*(1000-700)/1000",
+      "translations": {
+        "hi": {
+          "stem": "एक ऊष्मा-इंजन हर चक्र में अपने स्रोत से 1000 J सोखता है और अवशोषक को 700 J लौटाता है। उसकी दक्षता प्रतिशत में क्या है?",
+          "choices": [
+            "70",
+            "300",
+            "143",
+            "30"
+          ],
+          "solution": "चक्र में ΔU शून्य है, अतः किया गया कार्य 1000 − 700 = 300 J और दक्षता 300/1000 = 30 प्रतिशत। (70 प्रयुक्त अंश के बजाय लौटाया गया अंश बता देता है, जो यहाँ की सबसे आम चूक है।)"
+        },
+        "mr": {
+          "stem": "एक उष्णता-इंजिन प्रत्येक चक्रात आपल्या स्रोतातून 1000 J शोषते आणि शोषकाला 700 J परत करते. त्याची कार्यक्षमता शेकड्यात किती?",
+          "choices": [
+            "70",
+            "300",
+            "143",
+            "30"
+          ],
+          "solution": "चक्रात ΔU शून्य, म्हणून केलेले कार्य 1000 − 700 = 300 J आणि कार्यक्षमता 300/1000 = 30 टक्के. (70 वापरलेल्या अंशाऐवजी परत केलेला अंश सांगते, जी इथली सर्वांत नेहमीची चूक.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "An inventor claims 60 per cent efficiency for an engine running between 400 K and 300 K. What is the greatest efficiency actually possible, as a percentage?",
+      "choices": [
+        "60",
+        "75",
+        "33.333333",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "The Carnot ceiling is 1 − 300/400 = 0.25, that is 25 per cent, so the claim of 60 is impossible however the engine is built. Note that the first law is not violated by the claim — energy would still balance — which is exactly why the second law is needed as a separate statement. (75 is the temperature ratio itself.)",
+      "checkExpr": "100*(1-300/400)",
+      "translations": {
+        "hi": {
+          "stem": "एक आविष्कारक 400 K और 300 K के बीच चलते इंजन के लिए 60 प्रतिशत दक्षता का दावा करता है। वस्तुतः संभव सबसे बड़ी दक्षता प्रतिशत में क्या है?",
+          "choices": [
+            "60",
+            "75",
+            "33.333333",
+            "25"
+          ],
+          "solution": "कार्नो छत 1 − 300/400 = 0.25 है, यानी 25 प्रतिशत, अतः 60 का दावा असंभव है, इंजन चाहे कैसे भी बना हो। ध्यान दो दावे से पहले नियम का उल्लंघन नहीं होता — ऊर्जा फिर भी मिल जाती — और ठीक इसीलिए दूसरा नियम अलग कथन के रूप में चाहिए। (75 स्वयं ताप-अनुपात है।)"
+        },
+        "mr": {
+          "stem": "एक संशोधक 400 K आणि 300 K दरम्यान चालणाऱ्या इंजिनासाठी 60 टक्के कार्यक्षमतेचा दावा करतो. प्रत्यक्षात शक्य असलेली सर्वांत मोठी कार्यक्षमता शेकड्यात किती?",
+          "choices": [
+            "60",
+            "75",
+            "33.333333",
+            "25"
+          ],
+          "solution": "कार्नो छत 1 − 300/400 = 0.25, म्हणजे 25 टक्के, म्हणून 60 चा दावा अशक्य, इंजिन कसेही बनलेले असो. लक्षात घ्या दाव्याने पहिल्या नियमाचे उल्लंघन होत नाही — ऊर्जा तरीही जुळली असती — आणि नेमके म्हणूनच दुसरा नियम वेगळे विधान म्हणून लागतो. (75 हे स्वतः तापमान-गुणोत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A refrigerator removes 300 J of heat from its contents for every 100 J of electrical work supplied. What is its coefficient of performance?",
+      "choices": [
+        "400",
+        "4",
+        "0.33",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "COP = heat removed divided by work supplied = 300/100 = 3. Note that 400 J is dumped into the kitchen — the 300 taken from the food plus the 100 of work — so an open fridge door heats a room rather than cooling it. (4 is the coefficient of a heat PUMP, which counts the heat delivered rather than the heat removed, and is the near-miss worth understanding.)",
+      "checkExpr": "300/100",
+      "translations": {
+        "hi": {
+          "stem": "एक रेफ़्रिजरेटर हर 100 J विद्युत् कार्य पर अपनी सामग्री से 300 J ऊष्मा हटाता है। उसका निष्पादन गुणांक क्या है?",
+          "choices": [
+            "400",
+            "4",
+            "0.33",
+            "3"
+          ],
+          "solution": "COP = हटाई गई ऊष्मा बटा दिया गया कार्य = 300/100 = 3. ध्यान दो रसोई में 400 J उड़ेले जाते हैं — भोजन से लिए 300 जोड़ कार्य के 100 — अतः खुला फ़्रिज दरवाज़ा कमरा ठंडा करने के बजाय गरम करता है। (4 ऊष्मा-पंप का गुणांक है, जो हटाई गई नहीं बल्कि पहुँचाई गई ऊष्मा गिनता है, और वही समझने योग्य निकट-चूक है।)"
+        },
+        "mr": {
+          "stem": "एक फ्रिज प्रत्येक 100 J विद्युत कार्यामागे आपल्या सामग्रीतून 300 J उष्णता काढतो. त्याचा कार्यमान गुणांक किती?",
+          "choices": [
+            "400",
+            "4",
+            "0.33",
+            "3"
+          ],
+          "solution": "COP = काढलेली उष्णता भागिले दिलेले कार्य = 300/100 = 3. लक्षात घ्या स्वयंपाकघरात 400 J ओतले जातात — अन्नातून घेतलेले 300 अधिक कार्याचे 100 — म्हणून उघडा फ्रिजचा दरवाजा खोली थंड करण्याऐवजी तापवतो. (4 हा उष्णता-पंपाचा गुणांक, जो काढलेली नव्हे तर पोहोचवलेली उष्णता मोजतो, आणि तीच समजून घेण्याजोगी जवळची चूक.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "For a monatomic ideal gas the ratio of specific heats γ equals 1 + 2/f, where f is the number of degrees of freedom. Taking f as 3, what is γ?",
+      "choices": [
+        "1.666667",
+        "1.4",
+        "1.333333",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "γ = 1 + 2/3 = 1.666667. A rigid diatomic gas has f = 5 and so γ = 1.4, which is why air behaves with that value in sound-wave and adiabatic calculations. The larger γ is, the steeper the adiabatic curve on a PV diagram. (1.4 is the diatomic answer.)",
+      "checkExpr": "1+2/3",
+      "translations": {
+        "hi": {
+          "stem": "एकपरमाणुक आदर्श गैस के लिए विशिष्ट ऊष्माओं का अनुपात γ = 1 + 2/f है, जहाँ f स्वातंत्र्य-कोटियों की संख्या है। f = 3 लेते हुए, γ क्या है?",
+          "choices": [
+            "1.666667",
+            "1.4",
+            "1.333333",
+            "2"
+          ],
+          "solution": "γ = 1 + 2/3 = 1.666667. दृढ़ द्विपरमाणुक गैस के लिए f = 5 और अतः γ = 1.4, इसीलिए ध्वनि-तरंग तथा रुद्धोष्म गणनाओं में हवा उसी मान से व्यवहार करती है। γ जितना बड़ा, PV आरेख पर रुद्धोष्म वक्र उतना ढालू। (1.4 द्विपरमाणुक उत्तर है।)"
+        },
+        "mr": {
+          "stem": "एकअणुक आदर्श वायूसाठी विशिष्ट उष्णतांचे गुणोत्तर γ = 1 + 2/f, जिथे f ही स्वातंत्र्यकोटींची संख्या. f = 3 घेतल्यास, γ किती?",
+          "choices": [
+            "1.666667",
+            "1.4",
+            "1.333333",
+            "2"
+          ],
+          "solution": "γ = 1 + 2/3 = 1.666667. दृढ द्विअणुक वायूसाठी f = 5 आणि म्हणून γ = 1.4, म्हणूनच ध्वनिलहरी आणि रुद्धोष्म गणनांत हवा त्याच मूल्याने वागते. γ जितका मोठा, PV आकृतीवर रुद्धोष्म वक्र तितका तीव्र. (1.4 हे द्विअणुक उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A Carnot engine between 600 K and 300 K absorbs 1200 J from the source in each cycle. How much work does it deliver?",
+      "choices": [
+        "600",
+        "900",
+        "1200",
+        "300"
+      ],
+      "answerIndex": 0,
+      "solution": "The efficiency is 1 − 300/600 = 0.5, so W = 0.5 × 1200 = 600 J, and the other 600 J must be rejected to the 300 K sink. That rejection is not waste from bad design: without it the working substance could not be returned to its starting state, and the engine could not run in a cycle at all. (1200 assumes complete conversion, which is exactly what the second law forbids.)",
+      "checkExpr": "1200*(1-300/600)",
+      "translations": {
+        "hi": {
+          "stem": "600 K और 300 K के बीच का कार्नो इंजन हर चक्र में स्रोत से 1200 J सोखता है। वह कितना कार्य देता है?",
+          "choices": [
+            "600",
+            "900",
+            "1200",
+            "300"
+          ],
+          "solution": "दक्षता 1 − 300/600 = 0.5 है, अतः W = 0.5 × 1200 = 600 J, और बाक़ी 600 J 300 K अवशोषक को लौटाने ही पड़ते हैं। वह लौटाना बुरे अभिकल्प का कचरा नहीं: उसके बिना कार्यकारी पदार्थ आरंभिक अवस्था में लौटाया नहीं जा सकता, और इंजन चक्र में चल ही नहीं सकता। (1200 पूर्ण रूपांतरण मान लेता है, और ठीक यही दूसरा नियम मना करता है।)"
+        },
+        "mr": {
+          "stem": "600 K आणि 300 K दरम्यानचे कार्नो इंजिन प्रत्येक चक्रात स्रोतातून 1200 J शोषते. ते किती कार्य देते?",
+          "choices": [
+            "600",
+            "900",
+            "1200",
+            "300"
+          ],
+          "solution": "कार्यक्षमता 1 − 300/600 = 0.5, म्हणून W = 0.5 × 1200 = 600 J, आणि उरलेले 600 J 300 K च्या शोषकाला परत करावेच लागतात. ते परत करणे वाईट रचनेचा कचरा नव्हे: त्याशिवाय कार्यकारी पदार्थ सुरुवातीच्या अवस्थेत परत आणता येणार नाही, आणि इंजिन चक्रात चालूच शकणार नाही. (1200 पूर्ण रूपांतर गृहीत धरते, आणि नेमके तेच दुसरा नियम मनाई करतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "1000 J of heat flows directly from a reservoir at 400 K to one at 300 K. What is the net change in entropy of the two reservoirs together, in J/K?",
+      "choices": [
+        "0.833333",
+        "3.333333",
+        "2.5",
+        "0.5"
+      ],
+      "answerIndex": 0,
+      "solution": "The hot reservoir loses entropy 1000/400 = 2.5 J/K and the cold one gains 1000/300 = 3.333333 J/K, so the net change is 3.333333 − 2.5 = 0.833333 J/K. The total has increased, and that increase is what marks the process as irreversible. Two things are worth extracting. First, the same 1000 J carries more entropy at a lower temperature, because entropy transferred is Q/T — heat delivered to a cold body disturbs it proportionally more. Second, this is the second law in its sharpest form: a spontaneous process never decreases the total entropy, and a process that would decrease it — heat flowing the other way — simply does not happen. Had a Carnot engine been placed between the two reservoirs instead, it would have extracted 1 − 300/400 = 25 per cent of the 1000 J as useful work and delivered only 750 J to the cold side, giving 750/300 − 1000/400 = 0 exactly: a reversible process leaves the total entropy unchanged, and the 250 J of work is precisely the opportunity thrown away by letting the heat leak directly. (0.5 subtracts the wrong way round, and 3.333333 and 2.5 are the two separate terms rather than their difference.)",
+      "checkExpr": "1000/300-1000/400",
+      "translations": {
+        "hi": {
+          "stem": "1000 J ऊष्मा 400 K के भंडार से सीधे 300 K के भंडार में बहती है। दोनों भंडारों की मिलाकर एन्ट्रॉपी में शुद्ध परिवर्तन J/K में क्या है?",
+          "choices": [
+            "0.833333",
+            "3.333333",
+            "2.5",
+            "0.5"
+          ],
+          "solution": "गरम भंडार 1000/400 = 2.5 J/K एन्ट्रॉपी खोता है और ठंडा 1000/300 = 3.333333 J/K पाता है, अतः शुद्ध परिवर्तन 3.333333 − 2.5 = 0.833333 J/K है। कुल बढ़ा है, और यही वृद्धि प्रक्रिया को अनुत्क्रमणीय ठहराती है। दो बातें निकालने योग्य हैं। पहली, वही 1000 J नीचे ताप पर अधिक एन्ट्रॉपी ढोते हैं, क्योंकि संचरित एन्ट्रॉपी Q/T है — ठंडे पिंड को पहुँचाई ऊष्मा उसे समानुपाती रूप से अधिक विचलित करती है। दूसरी, यह दूसरा नियम अपने सबसे तीखे रूप में है: स्वतःस्फूर्त प्रक्रिया कुल एन्ट्रॉपी कभी नहीं घटाती, और जो प्रक्रिया उसे घटाती — उलटी दिशा में बहती ऊष्मा — वह बस होती ही नहीं। यदि दोनों भंडारों के बीच कार्नो इंजन रखा होता, तो वह 1000 J का 1 − 300/400 = 25 प्रतिशत उपयोगी कार्य के रूप में निकाल लेता और ठंडी ओर केवल 750 J पहुँचाता, जिससे 750/300 − 1000/400 = ठीक 0 मिलता: उत्क्रमणीय प्रक्रिया कुल एन्ट्रॉपी अपरिवर्तित छोड़ती है, और 250 J कार्य ठीक वही अवसर है जो ऊष्मा को सीधे रिसने देकर फेंक दिया गया। (0.5 उलटा घटाता है, और 3.333333 तथा 2.5 उनके अंतर के बजाय दो अलग पद हैं।)"
+        },
+        "mr": {
+          "stem": "1000 J उष्णता 400 K च्या साठ्यातून थेट 300 K च्या साठ्यात वाहते. दोन्ही साठ्यांचा मिळून एन्ट्रॉपीतील निव्वळ बदल J/K मध्ये किती?",
+          "choices": [
+            "0.833333",
+            "3.333333",
+            "2.5",
+            "0.5"
+          ],
+          "solution": "गरम साठा 1000/400 = 2.5 J/K एन्ट्रॉपी गमावतो आणि थंड 1000/300 = 3.333333 J/K मिळवतो, म्हणून निव्वळ बदल 3.333333 − 2.5 = 0.833333 J/K. एकूण वाढला आहे, आणि हीच वाढ प्रक्रियेला न उलटवण्याजोगी ठरवते. दोन गोष्टी काढण्याजोग्या. पहिली, तेच 1000 J कमी तापमानावर अधिक एन्ट्रॉपी वाहतात, कारण संक्रमित एन्ट्रॉपी Q/T आहे — थंड पिंडाला पोहोचवलेली उष्णता त्याला प्रमाणशीरपणे अधिक ढवळते. दुसरी, हा दुसरा नियम त्याच्या सर्वांत तीक्ष्ण रूपात: स्वयंस्फूर्त प्रक्रिया एकूण एन्ट्रॉपी कधीही घटवत नाही, आणि जी प्रक्रिया ती घटवेल — उलट दिशेने वाहणारी उष्णता — ती फक्त घडतच नाही. दोन्ही साठ्यांदरम्यान कार्नो इंजिन ठेवले असते, तर त्याने 1000 J चा 1 − 300/400 = 25 टक्के उपयुक्त कार्य म्हणून काढला असता आणि थंड बाजूला केवळ 750 J पोहोचवले असते, ज्यातून 750/300 − 1000/400 = नेमके 0 मिळाले असते: उलटवण्याजोगी प्रक्रिया एकूण एन्ट्रॉपी अपरिवर्तित ठेवते, आणि 250 J कार्य म्हणजे नेमकी तीच संधी जी उष्णतेला थेट गळू देऊन फेकून दिली. (0.5 उलटे वजा करते, आणि 3.333333 व 2.5 ही त्यांच्या फरकाऐवजी दोन वेगळी पदे.)"
+        }
+      }
+    }
+  ]
+}

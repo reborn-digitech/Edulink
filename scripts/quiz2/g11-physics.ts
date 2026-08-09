@@ -2881,6 +2881,1451 @@ export const G11_PHYSICS: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Mechanical Properties of Fluids                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-mechanical-properties-of-fluids",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 9 — Mechanical Properties of Fluids",
+      hi: "अध्याय 9 — तरलों के यांत्रिक गुण",
+      mr: "प्रकरण 9 — प्रवाहींचे यांत्रिक गुणधर्म",
+    },
+    name: {
+      en: "Mechanical Properties of Fluids",
+      hi: "तरलों के यांत्रिक गुण",
+      mr: "प्रवाहींचे यांत्रिक गुणधर्म",
+    },
+    summary: {
+      en: "A substance that cannot resist being sheared has to be described a different way: a pressure that depends on depth and not on how wide the vessel is, a small force turned into a large one by an incompressible liquid, an upthrust that is exactly the weight of what got out of the way, a resistance that grows with speed until falling stops accelerating, a skin that is not a skin, and a moving fluid whose pressure drops precisely where it speeds up.",
+      hi: "जो पदार्थ अपरूपण का प्रतिरोध नहीं कर सकता उसका वर्णन दूसरे ढंग से करना पड़ता है: वह दाब जो गहराई पर निर्भर है, इस पर नहीं कि पात्र कितना चौड़ा है, वह छोटा बल जो असंपीड्य द्रव बड़े में बदल देता है, वह उत्प्लावन जो ठीक उतना है जितना हटाए गए द्रव का भार, वह प्रतिरोध जो चाल के साथ बढ़ता है जब तक पतन त्वरित होना बंद न कर दे, वह त्वचा जो त्वचा नहीं, और वह बहता तरल जिसका दाब ठीक वहीं गिरता है जहाँ वह तेज़ होता है।",
+      mr: "जो पदार्थ कर्तनाला विरोध करू शकत नाही त्याचे वर्णन वेगळ्या पद्धतीने करावे लागते: तो दाब जो खोलीवर अवलंबून, भांडे किती रुंद यावर नाही, ते लहान बल जे असंपीड्य द्रव मोठ्यात बदलते, तो उत्प्लावक जोर जो नेमका बाजूला सरकवलेल्या द्रवाच्या वजनाइतका, तो विरोध जो चालीसह वाढतो जोवर पतन त्वरित होणे थांबवत नाही, ती त्वचा जी त्वचा नाही, आणि तो वाहणारा प्रवाही ज्याचा दाब नेमका तिथेच घटतो जिथे तो वेगवान होतो.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "pressure-at-a-depth",
+        name: {
+          en: "Pressure at a depth",
+          hi: "गहराई पर दाब",
+          mr: "खोलीवरील दाब",
+        },
+        kind: "statics",
+        prompt: {
+          en: "A narrow tube and a wide tank filled to the same level press equally hard on their bases per unit area, because the quantity depends on ρgh alone and not on how much liquid is standing above. Which quantity is this?",
+          hi: "एक ही स्तर तक भरी पतली नली और चौड़ी टंकी अपने तलों पर प्रति एकांक क्षेत्रफल बराबर दबाव डालती हैं, क्योंकि यह राशि केवल ρgh पर निर्भर है, इस पर नहीं कि ऊपर कितना द्रव खड़ा है। यह कौन-सी राशि है?",
+          mr: "एकाच पातळीपर्यंत भरलेली अरुंद नळी आणि रुंद टाकी आपल्या तळांवर प्रति एकक क्षेत्रफळ सारखाच दाब देतात, कारण ही राशी केवळ ρgh वर अवलंबून, वर किती द्रव उभा आहे यावर नाही. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The pressure at a depth h in a fluid at rest is ρgh above the surface pressure, and it depends only on the depth, the density and g — never on the shape or width of the container.",
+          hi: "विराम में तरल के भीतर h गहराई पर दाब सतह के दाब से ρgh अधिक होता है, और वह केवल गहराई, घनत्व और g पर निर्भर है — पात्र के आकार या चौड़ाई पर कभी नहीं।",
+          mr: "स्थिर प्रवाहीत h खोलीवरचा दाब पृष्ठभागाच्या दाबाहून ρgh अधिक असतो, आणि तो केवळ खोली, घनता आणि g वर अवलंबून — भांड्याच्या आकारावर वा रुंदीवर कधीही नाही.",
+        },
+        detail: {
+          en: "This is the hydrostatic paradox: a kilogram of water in a flaring vessel can exert a base force of many kilograms' weight, because the slanting walls push down on the liquid too.",
+          hi: "यही द्रवस्थैतिक विरोधाभास है: फैलते पात्र में एक किलोग्राम पानी तल पर कई किलोग्राम भार जितना बल लगा सकता है, क्योंकि तिरछी दीवारें भी द्रव पर नीचे धकेलती हैं।",
+          mr: "हाच द्रवस्थितिक विरोधाभास: पसरणाऱ्या भांड्यातले एक किलोग्रॅम पाणी तळावर कित्येक किलोग्रॅम वजनाइतके बल लावू शकते, कारण तिरप्या भिंतीही द्रवावर खाली रेटतात.",
+        },
+        extra: {
+          en: "It acts equally in every direction at a point, which is why a diver's ears hurt sideways as well as from above and why a submarine's hull is under load all round.",
+          hi: "वह किसी बिंदु पर हर दिशा में बराबर लगता है, इसीलिए गोताखोर के कान ऊपर से ही नहीं बग़ल से भी दुखते हैं और इसीलिए पनडुब्बी का ढाँचा चारों ओर से भार में रहता है।",
+          mr: "तो एखाद्या बिंदूवर प्रत्येक दिशेने सारखाच लागतो, म्हणूनच गोताखोराचे कान वरूनच नव्हे तर बाजूनेही दुखतात आणि म्हणूनच पाणबुडीचा सांगाडा सर्व बाजूंनी ओझ्याखाली असतो.",
+        },
+        pair: {
+          left: {
+            en: "A narrow tube pressing as hard as a wide tank",
+            hi: "चौड़ी टंकी जितना ही दबाती पतली नली",
+            mr: "रुंद टाकीइतकाच दाब देणारी अरुंद नळी",
+          },
+          right: {
+            en: "pressure at a depth",
+            hi: "गहराई पर दाब",
+            mr: "खोलीवरील दाब",
+          },
+        },
+      },
+      {
+        id: "pascals-law",
+        name: {
+          en: "Pascal's law",
+          hi: "पास्कल का नियम",
+          mr: "पास्कलचा नियम",
+        },
+        kind: "statics",
+        prompt: {
+          en: "Press on a small piston and the same increase appears undiminished at every point of the enclosed liquid, so a large piston fifty times the area feels fifty times the force. Which law is this?",
+          hi: "छोटे पिस्टन पर दबाओ और वही वृद्धि बंद द्रव के हर बिंदु पर बिना घटे प्रकट होती है, अतः पचास गुना क्षेत्रफल वाला बड़ा पिस्टन पचास गुना बल महसूस करता है। यह कौन-सा नियम है?",
+          mr: "लहान पिस्टनवर दाबा आणि तीच वाढ बंदिस्त द्रवाच्या प्रत्येक बिंदूवर न घटता प्रकट होते, म्हणून पन्नासपट क्षेत्रफळाचा मोठा पिस्टन पन्नासपट बल अनुभवतो. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Pascal's law states that a pressure applied to an enclosed incompressible fluid is transmitted undiminished to every part of it, which is what lets a hydraulic press multiply force.",
+          hi: "पास्कल का नियम कहता है कि बंद असंपीड्य तरल पर लगाया दाब उसके हर भाग तक बिना घटे संचरित होता है, और यही द्रवचालित प्रेस को बल बढ़ाने देता है।",
+          mr: "पास्कलचा नियम सांगतो की बंदिस्त असंपीड्य प्रवाहीवर लावलेला दाब त्याच्या प्रत्येक भागापर्यंत न घटता संक्रमित होतो, आणि हेच द्रवचालित प्रेसला बल वाढवू देते.",
+        },
+        detail: {
+          en: "Force is multiplied but work is not: the large piston moves as many times less far as it pushes harder, so the machine buys convenience and never energy.",
+          hi: "बल बढ़ता है पर कार्य नहीं: बड़ा पिस्टन उतने ही गुना कम चलता है जितने गुना अधिक ज़ोर लगाता है, अतः यंत्र सुविधा ख़रीदता है, ऊर्जा कभी नहीं।",
+          mr: "बल वाढते पण कार्य नाही: मोठा पिस्टन जितक्या पटीने अधिक जोर लावतो तितक्या पटीने कमी सरकतो, म्हणून यंत्र सोय विकत घेते, ऊर्जा कधीच नाही.",
+        },
+        extra: {
+          en: "It works only because liquids are nearly incompressible; a hydraulic system with an air bubble in it goes soft, because the bubble squashes instead of transmitting.",
+          hi: "यह इसीलिए चलता है कि द्रव लगभग असंपीड्य हैं; जिस द्रवचालित तंत्र में हवा का बुलबुला हो वह ढीला पड़ जाता है, क्योंकि बुलबुला संचरित करने के बजाय दब जाता है।",
+          mr: "हे यामुळेच चालते की द्रव जवळपास असंपीड्य आहेत; ज्या द्रवचालित प्रणालीत हवेचा बुडबुडा असतो ती ढिली पडते, कारण बुडबुडा संक्रमित करण्याऐवजी दबतो.",
+        },
+        pair: {
+          left: {
+            en: "Force multiplied, work never",
+            hi: "बल बढ़ा, कार्य कभी नहीं",
+            mr: "बल वाढले, कार्य कधीच नाही",
+          },
+          right: {
+            en: "Pascal's law",
+            hi: "पास्कल का नियम",
+            mr: "पास्कलचा नियम",
+          },
+        },
+      },
+      {
+        id: "upthrust-and-displaced-fluid",
+        name: {
+          en: "Upthrust and the displaced fluid",
+          hi: "उत्प्लावन और हटाया गया तरल",
+          mr: "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+        },
+        kind: "statics",
+        prompt: {
+          en: "The upward force on a submerged body is the weight of exactly the fluid that used to occupy that space, which is why an iron ship floats and an iron nail does not. Which result is this?",
+          hi: "डूबे पिंड पर ऊर्ध्वमुखी बल ठीक उतने तरल का भार है जो पहले उस जगह को घेरे था, इसीलिए लोहे का जहाज़ तैरता है और लोहे की कील नहीं। यह कौन-सा परिणाम है?",
+          mr: "बुडलेल्या पिंडावरचे वरचे बल नेमक्या तितक्या प्रवाहीचे वजन जे आधी ती जागा व्यापत होते, म्हणूनच लोखंडी जहाज तरंगते आणि लोखंडी खिळा नाही. हा कोणता निकाल?",
+        },
+        statement: {
+          en: "The upthrust on a body equals the weight of the fluid it displaces, so a body floats when it can displace its own weight before going fully under.",
+          hi: "पिंड पर उत्प्लावन उसके द्वारा हटाए गए तरल के भार के बराबर है, अतः पिंड तब तैरता है जब वह पूरी तरह डूबने से पहले अपने भार जितना तरल हटा सके।",
+          mr: "पिंडावरचा उत्प्लावक जोर त्याने सरकवलेल्या प्रवाहीच्या वजनाइतका, म्हणून पिंड तेव्हा तरंगतो जेव्हा तो पूर्ण बुडण्याआधी स्वतःच्या वजनाइतके प्रवाही सरकवू शकतो.",
+        },
+        detail: {
+          en: "It follows from the depth rule alone: the bottom of a submerged body is deeper than its top, so the upward push exceeds the downward one by exactly ρVg.",
+          hi: "यह अकेले गहराई-नियम से निकलता है: डूबे पिंड का तल उसके शिखर से गहरा है, अतः ऊर्ध्वमुखी धक्का अधोमुखी से ठीक ρVg अधिक होता है।",
+          mr: "हे केवळ खोली-नियमातूनच निघते: बुडलेल्या पिंडाचा तळ त्याच्या शिखराहून खोल असतो, म्हणून वरचा रेटा खालच्याहून नेमका ρVg ने अधिक असतो.",
+        },
+        extra: {
+          en: "The fraction of a floating body that stays submerged is the ratio of its density to the fluid's, which is why nine-tenths of an iceberg is below the waterline.",
+          hi: "तैरते पिंड का जितना अंश डूबा रहता है वह उसके घनत्व और तरल के घनत्व का अनुपात है, इसीलिए हिमशैल का नौ-दसवाँ भाग जल-रेखा के नीचे रहता है।",
+          mr: "तरंगत्या पिंडाचा जितका अंश बुडलेला राहतो तो त्याच्या घनतेचे आणि प्रवाहीच्या घनतेचे गुणोत्तर, म्हणूनच हिमनगाचा नऊ-दशांश भाग जलरेषेखाली राहतो.",
+        },
+        pair: {
+          left: {
+            en: "An iron ship floats and an iron nail sinks",
+            hi: "लोहे का जहाज़ तैरता, लोहे की कील डूबती",
+            mr: "लोखंडी जहाज तरंगते, लोखंडी खिळा बुडतो",
+          },
+          right: {
+            en: "upthrust and the displaced fluid",
+            hi: "उत्प्लावन और हटाया गया तरल",
+            mr: "उत्प्लावक जोर आणि सरकवलेले प्रवाही",
+          },
+        },
+      },
+      {
+        id: "viscosity",
+        name: {
+          en: "Viscosity",
+          hi: "श्यानता",
+          mr: "श्यानता",
+        },
+        kind: "flow",
+        prompt: {
+          en: "Honey resists being stirred and water barely does, because one layer of fluid drags on the next whenever they slide past each other at different speeds. Which property is this?",
+          hi: "शहद हिलाए जाने का विरोध करता है और पानी मुश्किल से, क्योंकि जब भी तरल की दो परतें भिन्न चालों से एक-दूसरे के पास से सरकती हैं, एक दूसरी को घसीटती है। यह कौन-सा गुण है?",
+          mr: "मध ढवळण्यास विरोध करते आणि पाणी जेमतेम, कारण जेव्हा प्रवाहीचे दोन थर वेगवेगळ्या चालींनी एकमेकांजवळून सरकतात तेव्हा एक दुसऱ्याला ओढतो. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "Viscosity is a fluid's internal friction: the tangential force between adjacent layers is proportional to the velocity gradient across them and to the area of contact.",
+          hi: "श्यानता तरल का आंतरिक घर्षण है: निकटवर्ती परतों के बीच स्पर्शरेखीय बल उनके आर-पार वेग-प्रवणता और संपर्क क्षेत्रफल के समानुपाती होता है।",
+          mr: "श्यानता म्हणजे प्रवाहीचे आंतरिक घर्षण: शेजारच्या थरांमधले स्पर्शरेषीय बल त्यांच्यातील वेग-प्रवणता आणि स्पर्श क्षेत्रफळाच्या समानुपाती असते.",
+        },
+        detail: {
+          en: "It falls sharply as a liquid is warmed and RISES as a gas is warmed, because liquid molecules loosen their grip while gas molecules simply cross between layers more often.",
+          hi: "द्रव के गरम होने पर वह तेज़ी से घटती है और गैस के गरम होने पर बढ़ती है, क्योंकि द्रव के अणु अपनी पकड़ ढीली कर देते हैं जबकि गैस के अणु परतों के बीच बस अधिक बार आते-जाते हैं।",
+          mr: "द्रव तापताना ती झपाट्याने घटते आणि वायू तापताना वाढते, कारण द्रवाचे रेणू आपली पकड सैल करतात तर वायूचे रेणू थरांमध्ये फक्त अधिक वेळा ये-जा करतात.",
+        },
+        extra: {
+          en: "It is the reason a real fluid sticks to a pipe's wall with zero velocity there, so the flow is fastest along the axis and the discharge depends on the fourth power of the radius.",
+          hi: "इसी से असली तरल नली की दीवार से चिपक जाता है जहाँ उसका वेग शून्य होता है, अतः प्रवाह अक्ष के अनुदिश सबसे तेज़ है और निस्सरण त्रिज्या की चौथी घात पर निर्भर करता है।",
+          mr: "यामुळेच खरे प्रवाही नळीच्या भिंतीला चिकटते जिथे त्याचा वेग शून्य असतो, म्हणून प्रवाह अक्षाच्या दिशेने सर्वांत वेगवान आणि विसर्ग त्रिज्येच्या चौथ्या घातेवर अवलंबून.",
+        },
+        pair: {
+          left: {
+            en: "Warming thins a liquid and thickens a gas",
+            hi: "गरम करना द्रव को पतला और गैस को गाढ़ा करता है",
+            mr: "तापवणे द्रव पातळ आणि वायू दाट करते",
+          },
+          right: {
+            en: "viscosity",
+            hi: "श्यानता",
+            mr: "श्यानता",
+          },
+        },
+      },
+      {
+        id: "terminal-velocity",
+        name: {
+          en: "Terminal velocity",
+          hi: "सीमांत वेग",
+          mr: "सीमावर्ती वेग",
+        },
+        kind: "flow",
+        prompt: {
+          en: "A raindrop accelerates for a moment and then falls the rest of the way at an unchanging speed, because the drag grows with speed until it exactly cancels the weight less the upthrust. Which speed is this?",
+          hi: "बूँद एक क्षण त्वरित होती है और फिर बाक़ी रास्ता अपरिवर्तित चाल से गिरती है, क्योंकि कर्षण चाल के साथ बढ़ता है जब तक वह भार घटा उत्प्लावन को ठीक-ठीक न काट दे। यह कौन-सी चाल है?",
+          mr: "थेंब क्षणभर त्वरित होतो आणि मग उरलेली वाट अपरिवर्तित चालीने पडतो, कारण ओढ चालीसह वाढतो जोवर तो वजन वजा उत्प्लावक जोर नेमका कापत नाही. ही कोणती चाल?",
+        },
+        statement: {
+          en: "Terminal velocity is reached when the viscous drag plus the upthrust equals the weight, so the net force is zero and the body falls at a constant speed thereafter.",
+          hi: "सीमांत वेग तब मिलता है जब श्यान कर्षण जोड़ उत्प्लावन भार के बराबर हो जाए, अतः परिणामी बल शून्य होता है और पिंड उसके बाद अचर चाल से गिरता है।",
+          mr: "सीमावर्ती वेग तेव्हा गाठला जातो जेव्हा श्यान ओढ अधिक उत्प्लावक जोर वजनाइतका होतो, म्हणून परिणामी बल शून्य आणि पिंड त्यानंतर अचल चालीने पडतो.",
+        },
+        detail: {
+          en: "For a small sphere it goes as the square of the radius, so a drop of twice the radius falls four times as fast, and a fine mist can hang in the air for hours.",
+          hi: "छोटे गोले के लिए वह त्रिज्या के वर्ग के अनुसार चलती है, अतः दुगुनी त्रिज्या की बूँद चार गुना तेज़ गिरती है, और महीन कोहरा घंटों हवा में टँगा रह सकता है।",
+          mr: "लहान गोलासाठी ती त्रिज्येच्या वर्गानुसार जाते, म्हणून दुप्पट त्रिज्येचा थेंब चौपट वेगाने पडतो, आणि बारीक धुके तासन्तास हवेत टांगून राहू शकते.",
+        },
+        extra: {
+          en: "It is the reason a parachute works: opening it multiplies the drag enormously without changing the weight, so a much lower speed is now enough to balance.",
+          hi: "इसी से पैराशूट काम करता है: उसे खोलने से कर्षण विशाल रूप से बढ़ जाता है जबकि भार नहीं बदलता, अतः संतुलन के लिए अब कहीं कम चाल पर्याप्त है।",
+          mr: "यामुळेच पॅराशूट चालते: ते उघडल्याने ओढ प्रचंड वाढतो तर वजन बदलत नाही, म्हणून संतुलनासाठी आता कितीतरी कमी चाल पुरेशी.",
+        },
+        pair: {
+          left: {
+            en: "Falling with no acceleration at all",
+            hi: "बिना किसी त्वरण के गिरना",
+            mr: "कोणत्याही त्वरणाशिवाय पडणे",
+          },
+          right: {
+            en: "terminal velocity",
+            hi: "सीमांत वेग",
+            mr: "सीमावर्ती वेग",
+          },
+        },
+      },
+      {
+        id: "surface-tension",
+        name: {
+          en: "Surface tension",
+          hi: "पृष्ठ तनाव",
+          mr: "पृष्ठताण",
+        },
+        kind: "surface",
+        prompt: {
+          en: "A needle laid gently on water rests in a dimple without sinking, and a free drop pulls itself into a sphere, because a molecule at the surface has neighbours only on one side. Which property is this?",
+          hi: "पानी पर धीरे से रखी सुई बिना डूबे एक गड्ढे में टिकी रहती है, और स्वतंत्र बूँद अपने को गोले में खींच लेती है, क्योंकि सतह पर बैठे अणु के पड़ोसी केवल एक ओर हैं। यह कौन-सा गुण है?",
+          mr: "पाण्यावर हळूच ठेवलेली सुई न बुडता एका खळगीत टिकते, आणि मोकळा थेंब स्वतःला गोलात ओढतो, कारण पृष्ठभागावरील रेणूला शेजारी फक्त एकाच बाजूला असतात. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "Surface tension is the energy needed to create unit area of new surface, equivalently a force per unit length along any line in the surface, and it makes a free liquid take the shape of least area.",
+          hi: "पृष्ठ तनाव एकांक क्षेत्रफल की नई सतह बनाने के लिए चाहिए ऊर्जा है, समतुल्य रूप से सतह की किसी भी रेखा के अनुदिश प्रति एकांक लंबाई बल, और वह स्वतंत्र द्रव को न्यूनतम क्षेत्रफल का आकार दे देता है।",
+          mr: "पृष्ठताण म्हणजे एकक क्षेत्रफळाचा नवा पृष्ठभाग तयार करायला लागणारी ऊर्जा, समतुल्यपणे पृष्ठभागातील कोणत्याही रेषेच्या दिशेने प्रति एकक लांबी बल, आणि तो मोकळ्या द्रवाला कमीत कमी क्षेत्रफळाचा आकार देतो.",
+        },
+        detail: {
+          en: "The excess pressure inside a curved surface is 2T/r for a drop and 4T/r for a soap bubble, which has two surfaces, so the smaller of two connected bubbles empties into the larger.",
+          hi: "वक्र सतह के भीतर अतिरिक्त दाब बूँद के लिए 2T/r है और साबुन के बुलबुले के लिए 4T/r, जिसकी दो सतहें हैं, अतः जुड़े दो बुलबुलों में छोटा बड़े में ख़ाली हो जाता है।",
+          mr: "वक्र पृष्ठभागाच्या आत जादा दाब थेंबासाठी 2T/r आणि साबणाच्या बुडबुड्यासाठी 4T/r, ज्याला दोन पृष्ठभाग असतात, म्हणून जोडलेल्या दोन बुडबुड्यांत लहान मोठ्यात रिकामा होतो.",
+        },
+        extra: {
+          en: "It falls as temperature rises and is destroyed by a detergent, which is precisely how soap lets water wet a greasy plate and creep into cloth.",
+          hi: "ताप बढ़ने पर वह घटता है और अपमार्जक से नष्ट हो जाता है, और ठीक इसी से साबुन पानी को चिकनी थाली भिगोने और कपड़े में रिसने देता है।",
+          mr: "तापमान वाढताना तो घटतो आणि डिटर्जंटने नष्ट होतो, आणि नेमके यामुळेच साबण पाण्याला तेलकट ताट भिजवू देतो आणि कापडात मुरू देतो.",
+        },
+        pair: {
+          left: {
+            en: "Two joined bubbles, and the small one empties",
+            hi: "जुड़े दो बुलबुले, और छोटा ख़ाली हो जाता है",
+            mr: "जोडलेले दोन बुडबुडे, आणि लहान रिकामा होतो",
+          },
+          right: {
+            en: "surface tension",
+            hi: "पृष्ठ तनाव",
+            mr: "पृष्ठताण",
+          },
+        },
+      },
+      {
+        id: "bernoullis-principle",
+        name: {
+          en: "Bernoulli's principle",
+          hi: "बर्नूली का सिद्धांत",
+          mr: "बर्नूलीचे तत्त्व",
+        },
+        kind: "flow",
+        prompt: {
+          en: "Blow across the top of a sheet of paper and it rises rather than being pushed down, because along a streamline the sum of pressure, ½ρv² and ρgh stays constant. Which principle is this?",
+          hi: "काग़ज़ की शीट के ऊपर से फूँक मारो और वह नीचे धकेले जाने के बजाय उठती है, क्योंकि किसी धारा-रेखा पर दाब, ½ρv² और ρgh का योग अचर रहता है। यह कौन-सा सिद्धांत है?",
+          mr: "कागदाच्या पानावरून फुंकर मारा आणि ते खाली ढकलले जाण्याऐवजी वर उचलले जाते, कारण एखाद्या धारारेषेवर दाब, ½ρv² आणि ρgh यांची बेरीज अचल राहते. हे कोणते तत्त्व?",
+        },
+        statement: {
+          en: "Bernoulli's principle states that for steady, non-viscous, incompressible flow the quantity P + ½ρv² + ρgh is the same at all points of a streamline, so pressure falls where speed rises.",
+          hi: "बर्नूली का सिद्धांत कहता है कि स्थायी, अश्यान, असंपीड्य प्रवाह के लिए राशि P + ½ρv² + ρgh किसी धारा-रेखा के सब बिंदुओं पर एक-सी रहती है, अतः जहाँ चाल बढ़ती है वहाँ दाब गिरता है।",
+          mr: "बर्नूलीचे तत्त्व सांगते की स्थिर, अश्यान, असंपीड्य प्रवाहासाठी राशी P + ½ρv² + ρgh धारारेषेच्या सर्व बिंदूंवर सारखी राहते, म्हणून जिथे चाल वाढते तिथे दाब घटतो.",
+        },
+        detail: {
+          en: "It is conservation of energy per unit volume, which is why it fails the moment viscosity matters — a real pipe loses pressure steadily along its length even at constant speed.",
+          hi: "यह प्रति एकांक आयतन ऊर्जा का संरक्षण है, इसीलिए जिस क्षण श्यानता मायने रखने लगे वह विफल हो जाता है — असली नली अचर चाल पर भी अपनी लंबाई भर लगातार दाब खोती है।",
+          mr: "हे प्रति एकक घनफळ ऊर्जेचे संरक्षण, म्हणूनच ज्या क्षणी श्यानता महत्त्वाची ठरते त्या क्षणी ते अपयशी ठरते — खरी नळी अचल चालीवरही आपल्या लांबीभर सतत दाब गमावते.",
+        },
+        extra: {
+          en: "The continuity equation must be used alongside it: an incompressible fluid crossing a narrower section must speed up, and only then does the pressure drop follow.",
+          hi: "उसके साथ सांतत्य समीकरण भी लगाना पड़ता है: असंपीड्य तरल जब सँकरे भाग से गुज़रे तो उसे तेज़ होना ही पड़ता है, और तभी दाब की गिरावट निकलती है।",
+          mr: "त्याच्यासोबत सातत्य समीकरणही लावावे लागते: असंपीड्य प्रवाही अरुंद भागातून जाताना त्याला वेगवान व्हावेच लागते, आणि तेव्हाच दाबातील घट निघते.",
+        },
+        pair: {
+          left: {
+            en: "Blow over the paper and it lifts",
+            hi: "काग़ज़ के ऊपर फूँको और वह उठ जाता है",
+            mr: "कागदावरून फुंका आणि तो उचलला जातो",
+          },
+          right: {
+            en: "Bernoulli's principle",
+            hi: "बर्नूली का सिद्धांत",
+            mr: "बर्नूलीचे तत्त्व",
+          },
+        },
+      },
+      /*F9*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A block of ice floats in a glass of water filled exactly to the brim. A student predicts the glass will overflow as the ice melts, since ice takes up more room than water. Decide what happens and explain, then say what changes if the ice contains a stone.",
+          hi: "ठीक किनारे तक भरे पानी के गिलास में बर्फ़ का टुकड़ा तैर रहा है। एक विद्यार्थी भविष्यवाणी करता है कि बर्फ़ पिघलने पर गिलास छलकेगा, क्योंकि बर्फ़ पानी से अधिक जगह घेरती है। तय करो क्या होता है और समझाओ, फिर बताओ कि बर्फ़ में पत्थर हो तो क्या बदलता है।",
+          mr: "अगदी काठापर्यंत भरलेल्या पाण्याच्या ग्लासात बर्फाचा तुकडा तरंगत आहे. एक विद्यार्थी भाकीत करतो की बर्फ वितळताच ग्लास ओसंडेल, कारण बर्फ पाण्याहून अधिक जागा व्यापते. काय घडते ते ठरवा आणि समजावा, मग बर्फात दगड असल्यास काय बदलते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The level does not change at all. Floating ice displaces water of exactly its own weight, and when it melts it becomes water of exactly that weight, which occupies exactly the volume it was already displacing. With a stone embedded, the level FALLS: while floating, the ice-and-stone displaces water weighing as much as both together, but once melted the stone sinks and displaces only its own smaller volume",
+            hi: "स्तर बिलकुल नहीं बदलता। तैरती बर्फ़ ठीक अपने भार जितना पानी हटाती है, और पिघलने पर वह ठीक उतने ही भार का पानी बन जाती है, जो ठीक उतना ही आयतन घेरता है जितना वह पहले से हटा रही थी। पत्थर जड़ा हो तो स्तर गिरता है: तैरते समय बर्फ़-और-पत्थर दोनों के कुल भार जितना पानी हटाते हैं, पर पिघलने पर पत्थर डूब जाता है और केवल अपना छोटा आयतन हटाता है",
+            mr: "पातळी मुळीच बदलत नाही. तरंगणारा बर्फ नेमके स्वतःच्या वजनाइतके पाणी सरकवतो, आणि वितळल्यावर तो नेमक्या तितक्याच वजनाचे पाणी बनतो, जे नेमके तितकेच घनफळ व्यापते जितके तो आधीच सरकवत होता. दगड जडलेला असल्यास पातळी घटते: तरंगताना बर्फ-आणि-दगड दोघांच्या एकत्रित वजनाइतके पाणी सरकवतात, पण वितळल्यावर दगड बुडतो आणि केवळ स्वतःचे लहान घनफळ सरकवतो",
+          },
+          {
+            en: "The glass overflows, because ice is less dense than water and therefore occupies more volume than the water it becomes",
+            hi: "गिलास छलकता है, क्योंकि बर्फ़ पानी से कम घनी है और इसलिए उस पानी से अधिक आयतन घेरती है जो वह बनती है",
+            mr: "ग्लास ओसंडतो, कारण बर्फ पाण्याहून कमी घन आहे आणि म्हणून तो बनणाऱ्या पाण्याहून अधिक घनफळ व्यापतो",
+          },
+          {
+            en: "The level falls in both cases, since melting always reduces the total volume of the contents",
+            hi: "दोनों स्थितियों में स्तर गिरता है, क्योंकि पिघलना सदा सामग्री का कुल आयतन घटाता है",
+            mr: "दोन्ही स्थितींत पातळी घटते, कारण वितळणे नेहमी सामग्रीचे एकूण घनफळ घटवते",
+          },
+          {
+            en: "The level rises in both cases, because the stone adds its own volume to the water once it is released",
+            hi: "दोनों स्थितियों में स्तर चढ़ता है, क्योंकि पत्थर मुक्त होते ही अपना आयतन पानी में जोड़ देता है",
+            mr: "दोन्ही स्थितींत पातळी चढते, कारण दगड मोकळा होताच स्वतःचे घनफळ पाण्यात जोडतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's premise is true and the conclusion does not follow from it, which is what makes this a good question. Ice IS less dense than water — about 917 kg/m³ against 1000 — and a given mass of ice does occupy about nine per cent more volume than the same mass of water. But that extra volume is not underwater. It is the part sticking up above the surface. Work it through with numbers. Take 917 g of ice, which occupies 1000 cm³. Floating, it must displace its own weight of water, which is 917 g of water, and 917 g of water occupies 917 cm³. So 917 cm³ of the ice is below the waterline and 83 cm³ stands proud of it. Now let it melt. The 917 g of ice becomes 917 g of water, occupying 917 cm³ — precisely the volume of the hole it was already filling. The new water slots into the space the submerged part had been keeping open, and the level is unchanged to the last millilitre. The nine per cent that shrank was the nine per cent that was above the surface and displacing nothing. This is a general result, not a coincidence of ice: anything floating melts or dissolves into its own displacement without changing the level, provided the liquid it becomes has the density of the liquid it floats in. It is also the reason melting sea ice does not by itself raise sea level, while land ice sliding into the ocean does — the latter was never displacing anything. Now the stone, which turns the question inside out. While the composite floats, the whole assembly must displace water equal to the weight of ice PLUS stone. A 100 g stone of density 2500 kg/m³ occupies only 40 cm³, but while it is being carried by the floating ice it forces the system to displace 100 cm³ of water — a hundred grams' worth. It is displacing by weight, as a floating object does. Once the ice melts the stone is released, sinks, and now displaces by volume: only its own 40 cm³. The system has stopped displacing 100 cm³ on the stone's account and started displacing 40, so the level falls. The general rule worth extracting is the one that resolves all such puzzles: a floating body displaces its own WEIGHT, a submerged body displaces its own VOLUME. Anything that moves an object from the first category to the second lowers the level, and anything that does the reverse raises it. (The wrong answers reason from density to volume without asking which part of the volume was underwater, or credit melting with a shrinkage that the floating condition has already accounted for.)",
+          hi: "विद्यार्थी की मान्यता सच है और निष्कर्ष उससे नहीं निकलता, और यही इसे अच्छा प्रश्न बनाता है। बर्फ़ पानी से कम घनी है ही — लगभग 917 kg/m³ के सामने 1000 — और बर्फ़ का दिया द्रव्यमान उतने ही द्रव्यमान के पानी से लगभग नौ प्रतिशत अधिक आयतन घेरता ही है। पर वह अतिरिक्त आयतन पानी के नीचे नहीं है। वह सतह के ऊपर निकला हुआ भाग है। संख्याओं के साथ चलाओ। 917 g बर्फ़ लो, जो 1000 cm³ घेरती है। तैरने के लिए उसे अपने भार जितना पानी हटाना है, यानी 917 g पानी, और 917 g पानी 917 cm³ घेरता है। अतः बर्फ़ का 917 cm³ जल-रेखा के नीचे है और 83 cm³ उससे ऊपर खड़ा है। अब उसे पिघलने दो। 917 g बर्फ़ 917 g पानी बन जाती है, जो 917 cm³ घेरता है — ठीक उसी गड्ढे का आयतन जिसे वह पहले से भर रही थी। नया पानी उसी जगह में समा जाता है जिसे डूबा हिस्सा खुला रखे था, और स्तर अंतिम मिलीलीटर तक अपरिवर्तित रहता है। जो नौ प्रतिशत सिकुड़ा वही नौ प्रतिशत था जो सतह के ऊपर था और कुछ हटा नहीं रहा था। यह सामान्य परिणाम है, बर्फ़ का संयोग नहीं: जो भी तैर रहा हो वह अपने ही विस्थापन में पिघल या घुल जाता है और स्तर नहीं बदलता, बशर्ते वह जो द्रव बने उसका घनत्व उस द्रव जितना हो जिसमें वह तैर रहा था। इसी से यह भी कि समुद्री बर्फ़ का पिघलना स्वयं समुद्र-स्तर नहीं चढ़ाता, जबकि ज़मीन की बर्फ़ का समुद्र में सरकना चढ़ाता है — वह कभी कुछ हटा ही नहीं रही थी। अब पत्थर, जो प्रश्न को उलट देता है। जब तक संयुक्त पिंड तैरता है, पूरे समुच्चय को बर्फ़ जोड़ पत्थर के भार जितना पानी हटाना है। 2500 kg/m³ घनत्व का 100 g पत्थर केवल 40 cm³ घेरता है, पर जब तक उसे तैरती बर्फ़ ढो रही है वह तंत्र को 100 cm³ पानी हटाने पर मजबूर करता है — सौ ग्राम जितना। वह भार से हटा रहा है, जैसा तैरता पिंड करता है। बर्फ़ पिघलते ही पत्थर मुक्त होकर डूबता है, और अब आयतन से हटाता है: केवल अपना 40 cm³. तंत्र ने पत्थर के खाते में 100 cm³ हटाना बंद कर 40 हटाना शुरू कर दिया, अतः स्तर गिरता है। निकालने योग्य सामान्य नियम वही है जो ऐसी सारी पहेलियाँ सुलझाता है: तैरता पिंड अपना भार हटाता है, डूबा पिंड अपना आयतन। जो भी वस्तु को पहली श्रेणी से दूसरी में ले जाए वह स्तर गिराता है, और जो उलटा करे वह चढ़ाता है। (ग़लत उत्तर घनत्व से आयतन तक तर्क करते हैं बिना यह पूछे कि आयतन का कौन-सा भाग पानी के नीचे था, या पिघलने को वह सिकुड़न देते जिसका हिसाब तैरने की शर्त पहले ही रख चुकी है।)",
+          mr: "विद्यार्थ्याचे गृहीतक खरे आहे आणि निष्कर्ष त्यातून निघत नाही, आणि हेच याला चांगला प्रश्न बनवते. बर्फ पाण्याहून कमी घन आहेच — सुमारे 917 kg/m³ समोर 1000 — आणि बर्फाचे दिलेले वस्तुमान तितक्याच वस्तुमानाच्या पाण्याहून सुमारे नऊ टक्के अधिक घनफळ व्यापतेच. पण ते जादा घनफळ पाण्याखाली नाही. तो पृष्ठभागावर बाहेर आलेला भाग आहे. संख्यांसह चालवा. 917 g बर्फ घ्या, जो 1000 cm³ व्यापतो. तरंगण्यासाठी त्याला स्वतःच्या वजनाइतके पाणी सरकवावे लागते, म्हणजे 917 g पाणी, आणि 917 g पाणी 917 cm³ व्यापते. म्हणून बर्फाचे 917 cm³ जलरेषेखाली आणि 83 cm³ तिच्यावर उभे. आता तो वितळू द्या. 917 g बर्फ 917 g पाणी बनतो, जे 917 cm³ व्यापते — नेमके त्याच खळगीचे घनफळ जी तो आधीच भरत होता. नवे पाणी त्याच जागेत बसते जी बुडलेल्या भागाने मोकळी ठेवली होती, आणि पातळी शेवटच्या मिलिलिटरपर्यंत अपरिवर्तित राहते. जे नऊ टक्के आकुंचले तेच नऊ टक्के होते जे पृष्ठभागावर होते आणि काहीही सरकवत नव्हते. हा सामान्य निकाल, बर्फाचा योगायोग नव्हे: जे काही तरंगत असेल ते स्वतःच्याच विस्थापनात वितळते वा विरघळते आणि पातळी बदलत नाही, फक्त ते जे द्रव बनते त्याची घनता ज्या द्रवात ते तरंगत होते तितकी असावी. यामुळेच हेही की समुद्री बर्फ वितळणे स्वतः समुद्रपातळी चढवत नाही, तर जमिनीवरचा बर्फ समुद्रात सरकणे चढवते — तो कधीच काही सरकवत नव्हता. आता दगड, जो प्रश्न उलटवतो. जोवर संयुक्त पिंड तरंगतो तोवर अख्ख्या संचाला बर्फ अधिक दगड यांच्या वजनाइतके पाणी सरकवावे लागते. 2500 kg/m³ घनतेचा 100 g दगड केवळ 40 cm³ व्यापतो, पण जोवर त्याला तरंगणारा बर्फ वाहतो तोवर तो प्रणालीला 100 cm³ पाणी सरकवायला भाग पाडतो — शंभर ग्रॅमइतके. तो वजनाने सरकवत आहे, जसे तरंगता पिंड करतो. बर्फ वितळताच दगड मोकळा होऊन बुडतो, आणि आता घनफळाने सरकवतो: केवळ स्वतःचे 40 cm³. प्रणालीने दगडाच्या खात्यात 100 cm³ सरकवणे थांबवून 40 सरकवणे सुरू केले, म्हणून पातळी घटते. काढण्याजोगा सामान्य नियम तोच जो अशी सर्व कोडी सोडवतो: तरंगता पिंड स्वतःचे वजन सरकवतो, बुडलेला पिंड स्वतःचे घनफळ. जे काही वस्तूला पहिल्या वर्गातून दुसऱ्यात नेते ते पातळी घटवते, आणि जे उलट करते ते चढवते. (चुकीची उत्तरे घनतेपासून घनफळापर्यंत युक्तिवाद करतात, घनफळाचा कोणता भाग पाण्याखाली होता हे न विचारता, वा वितळण्याला ती आकुंचन देतात जिचा हिशोब तरंगण्याच्या अटीने आधीच ठेवला आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A common explanation of aircraft lift says the air over the curved upper surface has 'further to travel' and so must go faster, lowering the pressure by Bernoulli's principle. Assess this explanation, and say what Bernoulli's principle does and does not establish here.",
+          hi: "विमान के उत्थापन की एक आम व्याख्या कहती है कि वक्र ऊपरी सतह के ऊपर की हवा को 'अधिक दूरी तय करनी' है और इसलिए उसे तेज़ जाना ही पड़ता है, जिससे बर्नूली के सिद्धांत से दाब गिरता है। इस व्याख्या का आकलन करो, और बताओ कि यहाँ बर्नूली का सिद्धांत क्या स्थापित करता है और क्या नहीं।",
+          mr: "विमानाच्या उत्थापनाचे एक नेहमीचे स्पष्टीकरण सांगते की वक्र वरच्या पृष्ठभागावरील हवेला 'अधिक अंतर कापायचे' असते आणि म्हणून तिला वेगाने जावेच लागते, ज्याने बर्नूलीच्या तत्त्वाने दाब घटतो. या स्पष्टीकरणाचे मूल्यमापन करा, आणि इथे बर्नूलीचे तत्त्व काय प्रस्थापित करते आणि काय नाही ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The conclusion is right and the reason is not. Air over the upper surface genuinely does move faster and the pressure there genuinely is lower, and Bernoulli's principle correctly links those two facts. What is invented is the 'equal transit time' premise: nothing requires two parcels of air separated at the leading edge to meet again at the trailing edge, and measurements show the upper parcel arrives first, having gone much faster than the extra path length alone would explain. Bernoulli relates speed to pressure; it does not explain why the speed differs, which comes from the wing's angle and circulation",
+            hi: "निष्कर्ष सही है और कारण नहीं। ऊपरी सतह के ऊपर हवा सचमुच तेज़ चलती है और वहाँ दाब सचमुच कम होता है, और बर्नूली का सिद्धांत उन दोनों तथ्यों को ठीक जोड़ता है। गढ़ी हुई है 'बराबर पारगमन-काल' वाली मान्यता: कुछ भी यह नहीं माँगता कि अग्र किनारे पर अलग हुए हवा के दो टुकड़े पश्च किनारे पर फिर मिलें, और माप दिखाते हैं कि ऊपर वाला टुकड़ा पहले पहुँचता है, अतिरिक्त पथ-लंबाई अकेले जितना समझाती उससे कहीं तेज़ जाकर। बर्नूली चाल को दाब से जोड़ता है; वह यह नहीं समझाता कि चाल भिन्न क्यों है, जो पंख के कोण और परिसंचरण से आती है",
+            mr: "निष्कर्ष बरोबर आणि कारण नाही. वरच्या पृष्ठभागावरून हवा खरोखर वेगाने जाते आणि तिथला दाब खरोखर कमी असतो, आणि बर्नूलीचे तत्त्व त्या दोन तथ्यांना बरोबर जोडते. घडवलेले आहे ते 'समान पारगमन-काळ' हे गृहीतक: पुढच्या कडेवर वेगळे झालेले हवेचे दोन तुकडे मागच्या कडेवर पुन्हा भेटावेत असे काहीही मागत नाही, आणि मापे दाखवतात की वरचा तुकडा आधी पोहोचतो, जादा मार्गलांबी एकटी जितके समजावेल त्याहून कितीतरी वेगाने जाऊन. बर्नूली चालीला दाबाशी जोडतो; तो चाल वेगळी का हे समजावत नाही, जे पंखाच्या कोनातून आणि परिसंचरणातून येते",
+          },
+          {
+            en: "The explanation is entirely correct, and the equal transit time of the two air parcels is a direct consequence of the continuity equation",
+            hi: "व्याख्या पूरी तरह सही है, और हवा के दोनों टुकड़ों का बराबर पारगमन-काल सांतत्य समीकरण का सीधा परिणाम है",
+            mr: "स्पष्टीकरण पूर्णपणे बरोबर आहे, आणि हवेच्या दोन्ही तुकड्यांचा समान पारगमन-काळ हा सातत्य समीकरणाचा थेट परिणाम आहे",
+          },
+          {
+            en: "Bernoulli's principle has nothing to do with lift, since it applies only to liquids flowing in pipes and never to air",
+            hi: "बर्नूली के सिद्धांत का उत्थापन से कोई लेना-देना नहीं, क्योंकि वह केवल नलियों में बहते द्रवों पर लागू है, हवा पर कभी नहीं",
+            mr: "बर्नूलीच्या तत्त्वाचा उत्थापनाशी काहीही संबंध नाही, कारण ते केवळ नळ्यांतून वाहणाऱ्या द्रवांना लागू, हवेला कधीच नाही",
+          },
+          {
+            en: "The whole account is wrong because the pressure above a wing is higher, not lower, which is what pushes the aircraft up",
+            hi: "पूरा विवरण ग़लत है क्योंकि पंख के ऊपर दाब कम नहीं बल्कि अधिक होता है, और वही विमान को ऊपर धकेलता है",
+            mr: "अख्खे वर्णन चुकीचे कारण पंखावरचा दाब कमी नव्हे तर अधिक असतो, आणि तोच विमानाला वर ढकलतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Separate the three claims that get bundled together, because two of them survive and one does not. Claim one: the air above the wing moves faster than the air below. True, and measurable in a wind tunnel with smoke pulses. Claim two: where the air moves faster, the pressure is lower. True, and this is exactly Bernoulli's principle applied along a streamline — P + ½ρv² is constant when height changes are negligible, so a larger v means a smaller P. The pressure difference integrated over the wing area is a large part of the lift. Claim three: the air above moves faster BECAUSE it has further to go and must arrive at the trailing edge at the same moment as the air below. This is the invention. Nothing in fluid mechanics requires two parcels that were adjacent at the leading edge ever to be adjacent again. The premise is simply assumed, and it happens to be false. Smoke-pulse experiments show the upper parcel reaching the trailing edge well BEFORE the lower one, sometimes by a wide margin. Worse, the numbers do not work: on a typical aerofoil the upper surface is only a few per cent longer than the lower, which would give a few per cent speed difference and a small fraction of the lift actually measured. The real speed difference is far larger than the path lengths can account for. There is a decisive counter-example. A flat plate has upper and lower surfaces of identical length, so the equal-transit argument predicts no lift at all — and yet a flat plate tilted into the airflow lifts perfectly well, which is why paper aeroplanes and balsa gliders fly. So does a symmetric aerofoil at an angle, and so does an aircraft flying inverted, which the naive picture cannot survive at all. What actually sets the speed difference is the wing's angle of attack and its shape, which together deflect the oncoming air downwards. The clean way to see the whole thing is Newton's third law: the wing pushes a large mass of air down every second, and the air pushes the wing up by the same force. That description and the pressure description are not rivals; they are the same physics counted in two currencies, and they agree numerically. Bernoulli then tells you how that deflection shows up as a pressure distribution over the surface — which is what an engineer needs, since it says where the load falls on the structure. Two lessons generalise. First, a correct conclusion reached by a wrong argument is still a wrong argument, and it fails the moment the situation changes — here, at the flat plate and the inverted aircraft. Second, Bernoulli's principle is a RELATION between speed and pressure along a streamline, not a cause: it never explains why the speeds differ, and any account that uses it as an engine of explanation has skipped the step that does the real work. (The other wrong answers deny Bernoulli's applicability to gases, which is routine in aerodynamics, or invert the measured pressure distribution, which every wind tunnel contradicts.)",
+          hi: "साथ बाँध दिए गए तीन दावों को अलग करो, क्योंकि उनमें से दो टिकते हैं और एक नहीं। पहला दावा: पंख के ऊपर की हवा नीचे की हवा से तेज़ चलती है। सच, और धुएँ के स्पंदों से पवन-सुरंग में नापने योग्य। दूसरा दावा: जहाँ हवा तेज़ चलती है वहाँ दाब कम होता है। सच, और यही धारा-रेखा पर लगाया बर्नूली का सिद्धांत है — ऊँचाई के परिवर्तन नगण्य हों तो P + ½ρv² अचर है, अतः बड़ा v छोटा P देता है। पंख के क्षेत्रफल पर समाकलित यह दाब-अंतर उत्थापन का बड़ा हिस्सा है। तीसरा दावा: ऊपर की हवा इसलिए तेज़ चलती है कि उसे अधिक दूर जाना है और उसे पश्च किनारे पर नीचे की हवा के साथ ही पहुँचना है। यही गढ़ंत है। तरल यांत्रिकी में कुछ भी यह नहीं माँगता कि अग्र किनारे पर बगलगीर रहे दो टुकड़े फिर कभी बगलगीर हों। मान्यता बस मान ली जाती है, और वह संयोग से झूठी है। धूम-स्पंद प्रयोग दिखाते हैं कि ऊपर वाला टुकड़ा नीचे वाले से काफ़ी पहले पश्च किनारे पहुँचता है, कभी-कभी बड़े अंतर से। और बुरा यह कि संख्याएँ नहीं बैठतीं: सामान्य वायुफलक पर ऊपरी सतह निचली से केवल कुछ प्रतिशत लंबी होती है, जो कुछ प्रतिशत चाल-अंतर और वस्तुतः नापे गए उत्थापन का छोटा-सा अंश देगी। असली चाल-अंतर पथ-लंबाइयों के हिसाब से कहीं बड़ा है। एक निर्णायक प्रति-उदाहरण है। चपटी प्लेट की ऊपरी और निचली सतहें बराबर लंबाई की हैं, अतः बराबर-पारगमन तर्क कोई उत्थापन ही नहीं बताता — और फिर भी वायु-प्रवाह में झुकी चपटी प्लेट बख़ूबी उठती है, इसीलिए काग़ज़ के हवाई जहाज़ और बाल्सा के ग्लाइडर उड़ते हैं। सममित वायुफलक भी कोण पर उठता है, और उलटा उड़ता विमान भी, जिसे भोली तस्वीर बिलकुल नहीं झेल सकती। चाल-अंतर वस्तुतः तय करते हैं पंख का आपतन कोण और उसका आकार, जो मिलकर आती हवा को नीचे मोड़ देते हैं। पूरी बात देखने का स्वच्छ रास्ता न्यूटन का तीसरा नियम है: पंख हर सेकंड हवा का बड़ा द्रव्यमान नीचे धकेलता है, और हवा उसी बल से पंख को ऊपर। वह वर्णन और दाब वाला वर्णन प्रतिद्वंद्वी नहीं; वे दो मुद्राओं में गिनी गई एक ही भौतिकी हैं, और वे संख्यात्मक रूप से मिलते हैं। बर्नूली फिर बताता है कि वह मोड़ सतह पर दाब-वितरण के रूप में कैसे दिखता है — और अभियंता को यही चाहिए, क्योंकि वह बताता है कि भार ढाँचे पर कहाँ पड़ता है। दो सबक़ सामान्यीकृत होते हैं। पहला, ग़लत तर्क से पहुँचा सही निष्कर्ष फिर भी ग़लत तर्क है, और स्थिति बदलते ही वह विफल हो जाता है — यहाँ, चपटी प्लेट पर और उलटे विमान पर। दूसरा, बर्नूली का सिद्धांत धारा-रेखा पर चाल और दाब के बीच एक संबंध है, कारण नहीं: वह यह कभी नहीं समझाता कि चालें भिन्न क्यों हैं, और जो भी विवरण उसे व्याख्या का इंजन बनाकर लगाए वह उस क़दम को छोड़ चुका है जो असली काम करता है। (बाक़ी ग़लत उत्तर गैसों पर बर्नूली की प्रयोज्यता नकारते हैं, जो वायुगतिकी में रोज़मर्रा है, या नापे गए दाब-वितरण को उलट देते हैं, जिसका खंडन हर पवन-सुरंग करती है।)",
+          mr: "एकत्र बांधल्या जाणाऱ्या तीन दाव्यांना वेगळे करा, कारण त्यांतील दोन टिकतात आणि एक नाही. पहिला दावा: पंखावरची हवा खालच्या हवेहून वेगाने जाते. खरे, आणि धुराच्या स्पंदांनी वाऱ्याच्या बोगद्यात मोजण्याजोगे. दुसरा दावा: जिथे हवा वेगाने जाते तिथे दाब कमी असतो. खरे, आणि हेच धारारेषेवर लावलेले बर्नूलीचे तत्त्व — उंचीतले बदल नगण्य असल्यास P + ½ρv² अचल, म्हणून मोठा v लहान P देतो. पंखाच्या क्षेत्रफळावर समाकलित हा दाब-फरक उत्थापनाचा मोठा भाग. तिसरा दावा: वरची हवा यासाठी वेगाने जाते की तिला अधिक दूर जायचे आहे आणि तिला मागच्या कडेवर खालच्या हवेसोबतच पोहोचायचे आहे. हीच घडवणूक. प्रवाही यामिकीत काहीही हे मागत नाही की पुढच्या कडेवर शेजारी असलेले दोन तुकडे पुन्हा कधी शेजारी यावेत. गृहीतक फक्त गृहीत धरले जाते, आणि ते योगायोगाने खोटे आहे. धूर-स्पंद प्रयोग दाखवतात की वरचा तुकडा खालच्याहून बराच आधी मागच्या कडेवर पोहोचतो, कधीकधी मोठ्या फरकाने. आणि वाईट हे की आकडे बसत नाहीत: सामान्य वायुपात्यावर वरचा पृष्ठभाग खालच्याहून केवळ काही टक्के लांब असतो, जे काही टक्के चाल-फरक आणि प्रत्यक्षात मोजलेल्या उत्थापनाचा लहानसा अंश देईल. खरा चाल-फरक मार्गलांबींच्या हिशोबाहून कितीतरी मोठा. एक निर्णायक प्रतिउदाहरण आहे. सपाट पट्टीचे वरचे आणि खालचे पृष्ठभाग समान लांबीचे, म्हणून समान-पारगमन युक्तिवाद कोणतेही उत्थापनच सांगत नाही — आणि तरीही वायुप्रवाहात कललेली सपाट पट्टी उत्तम उचलली जाते, म्हणूनच कागदी विमाने आणि बाल्साचे ग्लायडर उडतात. सममित वायुपातेही कोनावर उचलले जाते, आणि उलटे उडणारे विमानही, जे भोळे चित्र मुळीच सोसू शकत नाही. चाल-फरक प्रत्यक्षात ठरवतात पंखाचा आपतन कोन आणि त्याचा आकार, जे मिळून येणारी हवा खाली वळवतात. अख्खी गोष्ट पाहण्याचा स्वच्छ मार्ग म्हणजे न्यूटनचा तिसरा नियम: पंख प्रत्येक सेकंदाला हवेचे मोठे वस्तुमान खाली ढकलतो, आणि हवा त्याच बलाने पंखाला वर. ते वर्णन आणि दाबाचे वर्णन प्रतिस्पर्धी नाहीत; ती दोन चलनांत मोजलेली एकच भौतिकी, आणि ती संख्यात्मकदृष्ट्या जुळतात. बर्नूली मग सांगतो की ते वळण पृष्ठभागावर दाब-वितरण म्हणून कसे दिसते — आणि अभियंत्याला हेच लागते, कारण ते सांगते की ओझे सांगाड्यावर कुठे पडते. दोन धडे सामान्यीकृत होतात. पहिला, चुकीच्या युक्तिवादाने गाठलेला बरोबर निष्कर्ष तरीही चुकीचा युक्तिवादच, आणि परिस्थिती बदलताच तो अपयशी ठरतो — इथे, सपाट पट्टीवर आणि उलट्या विमानावर. दुसरा, बर्नूलीचे तत्त्व हे धारारेषेवरील चाल आणि दाब यांच्यातील संबंध, कारण नव्हे: ते चाली वेगळ्या का हे कधीच समजावत नाही, आणि जे वर्णन त्याला स्पष्टीकरणाचे इंजिन म्हणून वापरते ते खरे काम करणारा टप्पा वगळून गेले आहे. (उरलेली चुकीची उत्तरे वायूंवर बर्नूलीची लागूता नाकारतात, जी वायुगतिकीत रोजची आहे, वा मोजलेले दाब-वितरण उलटवतात, ज्याचे खंडन प्रत्येक वाऱ्याचा बोगदा करतो.)",
+        },
+      },
+      /*H9*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Thermal Properties of Matter                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-thermal-properties-of-matter",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 10 — Thermal Properties of Matter",
+      hi: "अध्याय 10 — द्रव्य के तापीय गुण",
+      mr: "प्रकरण 10 — द्रव्याचे औष्णिक गुणधर्म",
+    },
+    name: {
+      en: "Thermal Properties of Matter",
+      hi: "द्रव्य के तापीय गुण",
+      mr: "द्रव्याचे औष्णिक गुणधर्म",
+    },
+    summary: {
+      en: "Heat and temperature stop being the same word: one is what flows and the other is what decides which way it flows. A rail that must be left a gap, a substance that takes four times more heat than iron for every degree, a kilogram of ice at nought degrees that swallows enough energy to boil a kettle and shows nothing for it, a liquid that expands on cooling and saves the fish, and a body that cools quickly at first and then reluctantly.",
+      hi: "ऊष्मा और ताप एक ही शब्द होना छोड़ देते हैं: एक वह है जो बहती है और दूसरा वह जो तय करता है कि बहेगी किस ओर। वह पटरी जिसमें अंतराल छोड़ना पड़ता है, वह पदार्थ जो हर डिग्री के लिए लोहे से चार गुना ऊष्मा लेता है, शून्य डिग्री पर बर्फ़ का वह किलोग्राम जो केतली उबालने भर की ऊर्जा निगल जाता है और बदले में कुछ नहीं दिखाता, वह द्रव जो ठंडा होते हुए फैलता है और मछलियों को बचाता है, और वह पिंड जो पहले तेज़ी से और फिर अनमने ढंग से ठंडा होता है।",
+      mr: "उष्णता आणि तापमान एकच शब्द असणे थांबतात: एक ती जी वाहते आणि दुसरे ते जे कोणत्या दिशेने वाहील ते ठरवते. तो रूळ ज्यात फट सोडावी लागते, तो पदार्थ जो प्रत्येक अंशासाठी लोखंडाहून चौपट उष्णता घेतो, शून्य अंशावरचा बर्फाचा तो किलोग्रॅम जो केटली उकळण्याइतकी ऊर्जा गिळतो आणि बदल्यात काहीही दाखवत नाही, तो द्रव जो थंड होताना प्रसरण पावतो आणि माशांना वाचवतो, आणि तो पिंड जो आधी झपाट्याने आणि मग नाखुशीने थंड होतो.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "thermal-expansion",
+        name: {
+          en: "Thermal expansion",
+          hi: "तापीय प्रसार",
+          mr: "औष्णिक प्रसरण",
+        },
+        kind: "property",
+        prompt: {
+          en: "Railway lines are laid with gaps, bridges rest on rollers, and a metal lid loosens under hot water, all because a solid's dimensions grow by a fixed fraction for each degree. Which behaviour is this?",
+          hi: "रेल की पटरियाँ अंतराल छोड़कर बिछाई जाती हैं, पुल बेलनों पर टिकते हैं, और धातु का ढक्कन गरम पानी में ढीला हो जाता है, यह सब इसलिए कि ठोस की विमाएँ हर डिग्री पर एक नियत अंश से बढ़ती हैं। यह कौन-सा व्यवहार है?",
+          mr: "रेल्वेचे रूळ फटी सोडून टाकले जातात, पूल रुळांवर टेकतात, आणि धातूचे झाकण गरम पाण्यात सैल होते, हे सर्व यासाठी की घनपदार्थाच्या मिती प्रत्येक अंशाला एका ठरलेल्या अंशाने वाढतात. हे कोणते वर्तन?",
+        },
+        statement: {
+          en: "A solid's length grows by αLΔT on heating, and the areal and volume coefficients are very nearly 2α and 3α, since expansion happens in every direction at once.",
+          hi: "गरम करने पर ठोस की लंबाई αLΔT से बढ़ती है, और क्षेत्रीय तथा आयतन गुणांक लगभग 2α और 3α होते हैं, क्योंकि प्रसार एक साथ हर दिशा में होता है।",
+          mr: "तापवल्यावर घनपदार्थाची लांबी αLΔT ने वाढते, आणि क्षेत्रीय व घनफळ गुणांक जवळपास 2α आणि 3α असतात, कारण प्रसरण एकाच वेळी प्रत्येक दिशेने होते.",
+        },
+        detail: {
+          en: "A hole in a plate expands exactly as though it were filled with the same metal, which is why a ring gets larger and not smaller when heated.",
+          hi: "प्लेट का छेद ठीक वैसे फैलता है मानो वह उसी धातु से भरा हो, इसीलिए गरम करने पर छल्ला छोटा नहीं बड़ा होता है।",
+          mr: "पत्र्यातले छिद्र नेमके तसे प्रसरण पावते जणू ते त्याच धातूने भरलेले असावे, म्हणूनच तापवल्यावर कडे लहान नव्हे तर मोठे होते.",
+        },
+        extra: {
+          en: "Two metals of different α bonded together curve on heating, and that bimetallic strip is the switch inside a thermostat, an iron and a fire alarm.",
+          hi: "भिन्न α वाली दो धातुएँ जोड़कर गरम करने पर मुड़ जाती हैं, और वही द्विधात्विक पट्टी तापस्थापी, इस्तरी तथा अग्नि-चेतावनी के भीतर का स्विच है।",
+          mr: "वेगळ्या α च्या दोन धातू जोडून तापवल्यास वाकतात, आणि तीच द्विधातू पट्टी थर्मोस्टॅट, इस्त्री आणि अग्निशामक इशाऱ्यातला स्विच.",
+        },
+        pair: {
+          left: {
+            en: "The hole grows as if it were made of metal",
+            hi: "छेद ऐसे बढ़ता है मानो वह धातु का बना हो",
+            mr: "छिद्र असे वाढते जणू ते धातूचे बनले असावे",
+          },
+          right: {
+            en: "thermal expansion",
+            hi: "तापीय प्रसार",
+            mr: "औष्णिक प्रसरण",
+          },
+        },
+      },
+      {
+        id: "specific-heat-capacity",
+        name: {
+          en: "Specific heat capacity",
+          hi: "विशिष्ट ऊष्मा धारिता",
+          mr: "विशिष्ट उष्णता धारकता",
+        },
+        kind: "property",
+        prompt: {
+          en: "The sand on a beach is scorching by noon while the sea beside it is barely warmer, although both received the same sunlight, because one needs far more energy per kilogram per degree. Which property is this?",
+          hi: "समुद्रतट की रेत दोपहर तक तप जाती है जबकि उसके पास का समुद्र मुश्किल से गरम होता है, यद्यपि दोनों को वही धूप मिली, क्योंकि एक को प्रति किलोग्राम प्रति डिग्री कहीं अधिक ऊर्जा चाहिए। यह कौन-सा गुण है?",
+          mr: "समुद्रकिनाऱ्याची वाळू दुपारपर्यंत तापून जाते तर तिच्याशेजारचा समुद्र जेमतेम उबदार होतो, जरी दोघांना तेच ऊन मिळाले, कारण एकाला प्रति किलोग्रॅम प्रति अंश कितीतरी अधिक ऊर्जा लागते. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "Specific heat capacity is the heat needed to raise unit mass by one degree, and water's is about 4200 J per kilogram per kelvin — several times that of most solids.",
+          hi: "विशिष्ट ऊष्मा धारिता एकांक द्रव्यमान को एक डिग्री बढ़ाने के लिए चाहिए ऊष्मा है, और पानी की लगभग 4200 J प्रति किलोग्राम प्रति केल्विन है — अधिकांश ठोसों से कई गुना।",
+          mr: "विशिष्ट उष्णता धारकता म्हणजे एकक वस्तुमान एक अंशाने वाढवायला लागणारी उष्णता, आणि पाण्याची सुमारे 4200 J प्रति किलोग्रॅम प्रति केल्विन — बहुतांश घनपदार्थांहून कैकपट.",
+        },
+        detail: {
+          en: "Water's unusually large value is why coastal towns have milder summers and winters than inland ones at the same latitude, and why a hot-water bottle beats a hot brick.",
+          hi: "पानी का असामान्य रूप से बड़ा मान ही वह कारण है जिससे उसी अक्षांश के तटीय नगरों की गर्मियाँ और सर्दियाँ भीतरी नगरों से हल्की होती हैं, और जिससे गरम पानी की थैली गरम ईंट को हरा देती है।",
+          mr: "पाण्याचे असामान्यपणे मोठे मूल्य हेच ते कारण ज्यामुळे त्याच अक्षांशावरील किनारी शहरांचे उन्हाळे आणि हिवाळे अंतर्भागातील शहरांहून सौम्य असतात, आणि ज्यामुळे गरम पाण्याची पिशवी गरम विटेला हरवते.",
+        },
+        extra: {
+          en: "In a mixture the heat lost by the hotter body equals the heat gained by the cooler one, and that single equation fixes the final temperature without knowing anything about the container.",
+          hi: "मिश्रण में गरम पिंड द्वारा खोई ऊष्मा ठंडे पिंड द्वारा पाई ऊष्मा के बराबर होती है, और वही अकेला समीकरण पात्र के बारे में कुछ जाने बिना अंतिम ताप तय कर देता है।",
+          mr: "मिश्रणात गरम पिंडाने गमावलेली उष्णता थंड पिंडाने मिळवलेल्या उष्णतेइतकी असते, आणि तेच एकमेव समीकरण भांड्याबद्दल काहीही न जाणता शेवटचे तापमान ठरवते.",
+        },
+        pair: {
+          left: {
+            en: "Scorching sand beside a barely warm sea",
+            hi: "मुश्किल से गरम समुद्र के पास तपती रेत",
+            mr: "जेमतेम उबदार समुद्राशेजारी तापलेली वाळू",
+          },
+          right: {
+            en: "specific heat capacity",
+            hi: "विशिष्ट ऊष्मा धारिता",
+            mr: "विशिष्ट उष्णता धारकता",
+          },
+        },
+      },
+      {
+        id: "latent-heat",
+        name: {
+          en: "Latent heat",
+          hi: "गुप्त ऊष्मा",
+          mr: "सुप्त उष्णता",
+        },
+        kind: "property",
+        prompt: {
+          en: "Ice at nought degrees absorbs a great deal of energy and stays at nought degrees until every crystal is gone, because the energy is spent breaking bonds rather than speeding molecules up. Which quantity is this?",
+          hi: "शून्य डिग्री पर बर्फ़ बहुत ऊर्जा सोखती है और तब तक शून्य डिग्री पर ही रहती है जब तक हर क्रिस्टल न चला जाए, क्योंकि ऊर्जा अणुओं को तेज़ करने के बजाय बंधन तोड़ने में ख़र्च होती है। यह कौन-सी राशि है?",
+          mr: "शून्य अंशावरचा बर्फ खूप ऊर्जा शोषतो आणि प्रत्येक स्फटिक जाईपर्यंत शून्य अंशावरच राहतो, कारण ऊर्जा रेणूंना वेगवान करण्याऐवजी बंध तोडण्यात खर्च होते. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Latent heat is the energy per unit mass absorbed or released during a change of state at constant temperature, so a thermometer records nothing at all while it is being supplied.",
+          hi: "गुप्त ऊष्मा अचर ताप पर अवस्था-परिवर्तन के दौरान प्रति एकांक द्रव्यमान सोखी या छोड़ी गई ऊर्जा है, अतः जब तक वह दी जा रही हो तापमापी कुछ भी दर्ज नहीं करता।",
+          mr: "सुप्त उष्णता म्हणजे अचल तापमानावर अवस्थाबदलादरम्यान प्रति एकक वस्तुमान शोषली वा सोडली जाणारी ऊर्जा, म्हणून ती दिली जात असताना तापमापक काहीही नोंदवत नाही.",
+        },
+        detail: {
+          en: "Water's latent heat of vaporisation is about six times its latent heat of fusion, which is why a steam burn is so much worse than boiling water at the same temperature.",
+          hi: "पानी की वाष्पन की गुप्त ऊष्मा उसकी गलन की गुप्त ऊष्मा की लगभग छह गुनी है, इसीलिए भाप की जलन उसी ताप के खौलते पानी से कहीं बुरी होती है।",
+          mr: "पाण्याची बाष्पीभवनाची सुप्त उष्णता तिच्या द्रवीभवनाच्या सुप्त उष्णतेच्या सुमारे सहापट, म्हणूनच वाफेचा भाजका त्याच तापमानाच्या उकळत्या पाण्याहून कितीतरी वाईट असतो.",
+        },
+        extra: {
+          en: "The same store works in reverse: evaporating sweat carries heat away from the skin, and freezing water in an orchard releases heat that can keep the buds just above zero.",
+          hi: "वही भंडार उलटा भी चलता है: वाष्पित होता पसीना त्वचा से ऊष्मा ले जाता है, और बग़ीचे में जमता पानी ऊष्मा छोड़ता है जो कलियों को शून्य से ठीक ऊपर रख सकती है।",
+          mr: "तोच साठा उलटाही चालतो: बाष्पीभवन होणारा घाम त्वचेवरून उष्णता नेतो, आणि बागेत गोठणारे पाणी उष्णता सोडते जी कळ्यांना शून्याच्या अगदी वर ठेवू शकते.",
+        },
+        pair: {
+          left: {
+            en: "Energy poured in and the thermometer does not move",
+            hi: "ऊर्जा उड़ेली जाती और तापमापी हिलता नहीं",
+            mr: "ऊर्जा ओतली जाते आणि तापमापक हलत नाही",
+          },
+          right: {
+            en: "latent heat",
+            hi: "गुप्त ऊष्मा",
+            mr: "सुप्त उष्णता",
+          },
+        },
+      },
+      {
+        id: "anomalous-expansion-of-water",
+        name: {
+          en: "The anomalous expansion of water",
+          hi: "पानी का असामान्य प्रसार",
+          mr: "पाण्याचे असामान्य प्रसरण",
+        },
+        kind: "property",
+        prompt: {
+          en: "Cool water from 10 °C and it contracts as expected until 4 °C, and then it starts to expand again on the way down to freezing — which is why a pond ices over from the top and the fish survive. Which behaviour is this?",
+          hi: "पानी को 10 °C से ठंडा करो और वह अपेक्षा के अनुसार 4 °C तक सिकुड़ता है, फिर हिमांक तक जाते हुए वह दोबारा फैलने लगता है — इसीलिए तालाब ऊपर से जमता है और मछलियाँ बच जाती हैं। यह कौन-सा व्यवहार है?",
+          mr: "पाणी 10 °C पासून थंड करा आणि ते अपेक्षेप्रमाणे 4 °C पर्यंत आकुंचते, मग गोठणबिंदूकडे जाताना ते पुन्हा प्रसरण पावू लागते — म्हणूनच तळे वरून गोठते आणि मासे वाचतात. हे कोणते वर्तन?",
+        },
+        statement: {
+          en: "Water has its greatest density at about 4 °C, so it expands both on warming above that point and on cooling below it, unlike almost every other liquid.",
+          hi: "पानी का घनत्व लगभग 4 °C पर सबसे अधिक होता है, अतः वह उस बिंदु से ऊपर गरम होने पर भी फैलता है और उससे नीचे ठंडा होने पर भी, लगभग हर दूसरे द्रव के विपरीत।",
+          mr: "पाण्याची घनता सुमारे 4 °C वर सर्वाधिक असते, म्हणून ते त्या बिंदूच्या वर तापतानाही प्रसरण पावते आणि त्याखाली थंड होतानाही, जवळपास प्रत्येक इतर द्रवाच्या उलट.",
+        },
+        detail: {
+          en: "The consequence is that the densest water sinks to the bottom of a pond at 4 °C and stays there, so ice forms as a lid on top instead of freezing the pond solid from below.",
+          hi: "परिणाम यह कि सबसे घना पानी 4 °C पर तालाब की तली में बैठ जाता है और वहीं रहता है, अतः बर्फ़ नीचे से पूरे तालाब को जमाने के बजाय ऊपर ढक्कन की तरह बनती है।",
+          mr: "परिणाम असा की सर्वांत घन पाणी 4 °C वर तळ्याच्या तळाशी बसते आणि तिथेच राहते, म्हणून बर्फ खालून अख्खे तळे गोठवण्याऐवजी वर झाकणासारखा तयार होतो.",
+        },
+        extra: {
+          en: "Ice is also less dense than the water it came from, which is unusual in itself and is why the lid floats rather than sinking and letting a new one form.",
+          hi: "बर्फ़ भी उस पानी से कम घनी है जिससे वह बनी, जो अपने आप में असामान्य है और इसीलिए वह ढक्कन डूबकर नया बनने देने के बजाय तैरता रहता है।",
+          mr: "बर्फही ज्या पाण्यापासून तो बनला त्याहून कमी घन असतो, जे स्वतःच असामान्य आणि म्हणूनच ते झाकण बुडून नवे तयार होऊ देण्याऐवजी तरंगत राहते.",
+        },
+        pair: {
+          left: {
+            en: "A pond that freezes downwards and never through",
+            hi: "वह तालाब जो नीचे की ओर जमता है और पूरा कभी नहीं",
+            mr: "ते तळे जे खालच्या दिशेने गोठते आणि पूर्ण कधीच नाही",
+          },
+          right: {
+            en: "the anomalous expansion of water",
+            hi: "पानी का असामान्य प्रसार",
+            mr: "पाण्याचे असामान्य प्रसरण",
+          },
+        },
+      },
+      {
+        id: "newtons-law-of-cooling",
+        name: {
+          en: "Newton's law of cooling",
+          hi: "न्यूटन का शीतलन नियम",
+          mr: "न्यूटनचा शीतलन नियम",
+        },
+        kind: "transfer",
+        prompt: {
+          en: "A cup of tea loses ten degrees in the first few minutes and takes far longer to lose the next ten, because the rate of loss is proportional to how far above the room it currently is. Which law is this?",
+          hi: "चाय का प्याला पहले कुछ मिनटों में दस डिग्री खोता है और अगले दस खोने में कहीं अधिक समय लेता है, क्योंकि हानि की दर इस पर समानुपाती है कि वह अभी कमरे से कितना ऊपर है। यह कौन-सा नियम है?",
+          mr: "चहाचा कप पहिल्या काही मिनिटांत दहा अंश गमावतो आणि पुढचे दहा गमावायला कितीतरी अधिक वेळ घेतो, कारण हानीचा दर तो सध्या खोलीहून किती वर आहे याच्या समानुपाती. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Newton's law of cooling says the rate of heat loss is proportional to the excess of the body's temperature over its surroundings, so cooling slows as the difference shrinks.",
+          hi: "न्यूटन का शीतलन नियम कहता है कि ऊष्मा-हानि की दर पिंड के ताप की परिवेश से अधिकता के समानुपाती है, अतः अंतर घटते-घटते शीतलन धीमा होता जाता है।",
+          mr: "न्यूटनचा शीतलन नियम सांगतो की उष्णता-हानीचा दर पिंडाच्या तापमानाच्या परिसरावरील अधिक्याच्या समानुपाती, म्हणून फरक घटत जाताना शीतलन मंदावते.",
+        },
+        detail: {
+          en: "It holds only for small temperature differences and forced or gentle convection; a body glowing red loses heat mainly by radiation, which goes as the fourth power of absolute temperature instead.",
+          hi: "यह केवल छोटे ताप-अंतरों और प्रेरित या हल्के संवहन पर चलता है; लाल दहकता पिंड मुख्यतः विकिरण से ऊष्मा खोता है, जो इसके बजाय परम ताप की चौथी घात के अनुसार चलता है।",
+          mr: "हा केवळ लहान तापमान-फरकांसाठी आणि प्रेरित वा सौम्य अभिसरणासाठी चालतो; लाल तापलेला पिंड मुख्यतः प्रारणाने उष्णता गमावतो, जे त्याऐवजी निरपेक्ष तापमानाच्या चौथ्या घातेनुसार जाते.",
+        },
+        extra: {
+          en: "It is the reason the practical advice about tea is counter-intuitive: adding cold milk immediately keeps the cup drinkable longer than adding it at the end, because a cooler cup then loses heat more slowly.",
+          hi: "इसी से चाय के बारे में व्यावहारिक सलाह उलटी लगती है: ठंडा दूध तुरंत डाल देना प्याले को अंत में डालने की अपेक्षा अधिक देर पीने लायक़ रखता है, क्योंकि तब ठंडा प्याला ऊष्मा अधिक धीरे खोता है।",
+          mr: "यामुळेच चहाबद्दलचा व्यावहारिक सल्ला उलटा वाटतो: थंड दूध लगेच घातल्याने कप शेवटी घालण्यापेक्षा अधिक वेळ पिण्याजोगा राहतो, कारण तेव्हा थंड कप उष्णता अधिक सावकाश गमावतो.",
+        },
+        pair: {
+          left: {
+            en: "The first ten degrees go fastest",
+            hi: "पहले दस डिग्री सबसे तेज़ जाते हैं",
+            mr: "पहिले दहा अंश सर्वांत वेगाने जातात",
+          },
+          right: {
+            en: "Newton's law of cooling",
+            hi: "न्यूटन का शीतलन नियम",
+            mr: "न्यूटनचा शीतलन नियम",
+          },
+        },
+      },
+      {
+        id: "radiation-without-a-medium",
+        name: {
+          en: "Radiation without a medium",
+          hi: "बिना माध्यम के विकिरण",
+          mr: "माध्यमाविना प्रारण",
+        },
+        kind: "transfer",
+        prompt: {
+          en: "Ninety-three million miles of near-perfect vacuum lie between the Sun and a sunburnt shoulder, so whatever carried the energy needed no particles to pass it along. Which mode of transfer is this?",
+          hi: "सूर्य और धूप से झुलसे कंधे के बीच लगभग पंद्रह करोड़ किलोमीटर का लगभग पूर्ण निर्वात है, अतः जो भी ऊर्जा ले आया उसे आगे बढ़ाने को कणों की ज़रूरत नहीं थी। यह कौन-सा संचरण-प्रकार है?",
+          mr: "सूर्य आणि उन्हाने भाजलेला खांदा यांच्यात सुमारे पंधरा कोटी किलोमीटरचे जवळपास पूर्ण निर्वात आहे, म्हणून जे काही ऊर्जा घेऊन आले त्याला ती पुढे नेण्यासाठी कणांची गरज नव्हती. हा कोणता संक्रमण-प्रकार?",
+        },
+        statement: {
+          en: "Radiation transfers energy as electromagnetic waves and needs no material medium, unlike conduction and convection, which both require matter to carry the energy along.",
+          hi: "विकिरण ऊर्जा को विद्युत्-चुंबकीय तरंगों के रूप में ले जाता है और उसे कोई भौतिक माध्यम नहीं चाहिए, चालन तथा संवहन के विपरीत, जिन दोनों को ऊर्जा ढोने के लिए पदार्थ चाहिए।",
+          mr: "प्रारण ऊर्जा विद्युतचुंबकीय लहरींच्या रूपात नेते आणि त्याला कोणतेही भौतिक माध्यम लागत नाही, वहन आणि अभिसरणाच्या उलट, ज्या दोघांना ऊर्जा वाहायला पदार्थ लागतो.",
+        },
+        detail: {
+          en: "The power radiated from a surface goes as the fourth power of its absolute temperature, so doubling the kelvin temperature multiplies the emission sixteenfold.",
+          hi: "किसी सतह से विकिरित शक्ति उसके परम ताप की चौथी घात के अनुसार चलती है, अतः केल्विन ताप दोगुना करने पर उत्सर्जन सोलह गुना हो जाता है।",
+          mr: "एखाद्या पृष्ठभागावरून प्रारित शक्ती त्याच्या निरपेक्ष तापमानाच्या चौथ्या घातेनुसार जाते, म्हणून केल्विन तापमान दुप्पट केल्यास उत्सर्जन सोळापट होते.",
+        },
+        extra: {
+          en: "A good absorber is a good emitter, which is why a matt black kettle both heats up fastest in sunlight and cools down fastest at night, and why a vacuum flask is silvered on both walls.",
+          hi: "जो अच्छा अवशोषक है वही अच्छा उत्सर्जक है, इसीलिए मटमैली काली केतली धूप में सबसे तेज़ गरम होती है और रात में सबसे तेज़ ठंडी भी, और इसीलिए थर्मस की दोनों दीवारें चमकीली की जाती हैं।",
+          mr: "जो चांगला शोषक तोच चांगला उत्सर्जक, म्हणूनच मॅट काळी केटली उन्हात सर्वांत वेगाने तापते आणि रात्री सर्वांत वेगाने थंडही होते, आणि म्हणूनच थर्मासच्या दोन्ही भिंती चकचकीत केल्या जातात.",
+        },
+        pair: {
+          left: {
+            en: "Crosses a vacuum that carries nothing else",
+            hi: "उस निर्वात को पार करता जो और कुछ नहीं ढोता",
+            mr: "ते निर्वात ओलांडते जे दुसरे काहीही वाहत नाही",
+          },
+          right: {
+            en: "radiation without a medium",
+            hi: "बिना माध्यम के विकिरण",
+            mr: "माध्यमाविना प्रारण",
+          },
+        },
+      },
+      /*F10*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "One kilogram of ice at 0 °C is heated steadily until it becomes water at 100 °C. A student expects the temperature to climb smoothly throughout. Taking the latent heat of fusion as 336,000 J/kg and water's specific heat as 4200 J/kg/K, describe what the thermometer actually does and where the energy goes.",
+          hi: "0 °C पर एक किलोग्राम बर्फ़ को लगातार गरम किया जाता है जब तक वह 100 °C पर पानी न बन जाए। एक विद्यार्थी अपेक्षा करता है कि ताप पूरे समय सुचारु रूप से चढ़ेगा। गलन की गुप्त ऊष्मा 336,000 J/kg और पानी की विशिष्ट ऊष्मा 4200 J/kg/K लेते हुए बताओ कि तापमापी वस्तुतः क्या करता है और ऊर्जा जाती कहाँ है।",
+          mr: "0 °C वरचा एक किलोग्रॅम बर्फ सतत तापवला जातो जोवर तो 100 °C वर पाणी बनत नाही. एक विद्यार्थी अपेक्षा करतो की तापमान पूर्ण काळ सुरळीत चढेल. द्रवीभवनाची सुप्त उष्णता 336,000 J/kg आणि पाण्याची विशिष्ट उष्णता 4200 J/kg/K घेऊन सांगा की तापमापक प्रत्यक्षात काय करतो आणि ऊर्जा कुठे जाते.",
+        },
+        choices: [
+          {
+            en: "The thermometer sticks at 0 °C for a long while and only then climbs. Melting the ice takes 336,000 J with no temperature change at all, because the energy goes into breaking the crystal bonds rather than speeding molecules up. Heating the resulting water from 0 to 100 °C takes 4200 × 100 = 420,000 J. So very nearly half the total energy is spent while the thermometer reads nothing, and a graph of temperature against energy supplied shows a long flat step followed by a steady rise",
+            hi: "तापमापी काफ़ी देर 0 °C पर अटका रहता है और तभी चढ़ता है। बर्फ़ पिघलाने में 336,000 J लगते हैं और ताप बिलकुल नहीं बदलता, क्योंकि ऊर्जा अणुओं को तेज़ करने के बजाय क्रिस्टल-बंधन तोड़ने में जाती है। बने पानी को 0 से 100 °C तक गरम करने में 4200 × 100 = 420,000 J लगते हैं। अतः कुल ऊर्जा का लगभग आधा तब ख़र्च होता है जब तापमापी कुछ नहीं दिखाता, और दी गई ऊर्जा बनाम ताप का आलेख एक लंबी सपाट सीढ़ी दिखाता है और उसके बाद स्थिर चढ़ाई",
+            mr: "तापमापक बराच वेळ 0 °C वर अडकून राहतो आणि मगच चढतो. बर्फ वितळवायला 336,000 J लागतात आणि तापमान मुळीच बदलत नाही, कारण ऊर्जा रेणूंना वेगवान करण्याऐवजी स्फटिक-बंध तोडण्यात जाते. तयार झालेले पाणी 0 ते 100 °C तापवायला 4200 × 100 = 420,000 J लागतात. म्हणून एकूण ऊर्जेचा जवळपास निम्मा भाग तेव्हा खर्च होतो जेव्हा तापमापक काहीही दाखवत नाही, आणि दिलेली ऊर्जा विरुद्ध तापमानाचा आलेख एक लांब सपाट पायरी दाखवतो आणि नंतर स्थिर चढण",
+          },
+          {
+            en: "The student is right: the temperature rises smoothly, and the latent heat is simply the extra energy needed for the first degree",
+            hi: "विद्यार्थी सही है: ताप सुचारु रूप से चढ़ता है, और गुप्त ऊष्मा बस पहली डिग्री के लिए चाहिए अतिरिक्त ऊर्जा है",
+            mr: "विद्यार्थी बरोबर: तापमान सुरळीत चढते, आणि सुप्त उष्णता म्हणजे फक्त पहिल्या अंशासाठी लागणारी जादा ऊर्जा",
+          },
+          {
+            en: "The temperature falls while the ice melts, because melting absorbs energy and cooling is what absorbing energy does",
+            hi: "बर्फ़ पिघलते समय ताप गिरता है, क्योंकि पिघलना ऊर्जा सोखता है और ऊर्जा सोखने से ठंडा होना ही होता है",
+            mr: "बर्फ वितळताना तापमान घटते, कारण वितळणे ऊर्जा शोषते आणि ऊर्जा शोषण्याने थंड होणेच होते",
+          },
+          {
+            en: "The flat step comes at 100 °C only, since a change of state can occur only at the boiling point",
+            hi: "सपाट सीढ़ी केवल 100 °C पर आती है, क्योंकि अवस्था-परिवर्तन केवल क्वथनांक पर ही हो सकता है",
+            mr: "सपाट पायरी केवळ 100 °C वर येते, कारण अवस्थाबदल केवळ उकळबिंदूवरच होऊ शकतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Follow the energy in two stages and the shape of the graph falls out. Stage one, melting. The ice is already at its melting point, so every joule supplied goes into converting solid to liquid: 1 kg × 336,000 J/kg = 336,000 J. Throughout this the thermometer reads 0 °C and does not budge, however long the flame is left on. That is not a failure of the thermometer. Temperature measures the average kinetic energy of the molecules, and during melting the molecules are not speeding up — the energy is being spent pulling them out of the rigid lattice and against their mutual attraction. The store is real and it is recoverable: refreeze the water and you get all 336,000 J back. Stage two, warming the liquid. Now the molecules do speed up, at 4200 J for each kilogram and each kelvin: 1 × 4200 × 100 = 420,000 J to go from 0 to 100 °C. Here the thermometer climbs steadily, and the graph of temperature against energy is a straight line of slope 1/4200 degrees per joule. Total supplied: 756,000 J, of which 336,000 — forty-four per cent — bought no temperature rise at all. Two implications are worth carrying. First, this is why ice is such an effective coolant. A kilogram of ice at 0 °C absorbs 336,000 J from a drink before it has even become water, whereas a kilogram of water at 0 °C absorbs only 4200 J per degree it warms up — so the ice is worth about eighty degrees' worth of cold water. Melting, not coldness, is doing the work. Second, the same argument at the boiling point is even more dramatic: water's latent heat of vaporisation is about 2,260,000 J/kg, nearly seven times the heat of fusion, and it is the reason steam at 100 °C scalds far worse than water at 100 °C. The steam must dump all that energy into the skin before it can even begin to cool as a liquid. The third option is worth naming because it inverts a real intuition. Absorbing energy usually does raise temperature — but only when the energy has nowhere else to go. During a phase change there is somewhere else, and the temperature is pinned until the change is complete. The fourth misses that melting is a change of state exactly as boiling is, so ice has a flat step of its own at 0 °C. (The second answer treats latent heat as a small correction rather than as a quantity comparable to the whole of the subsequent heating.)",
+          hi: "ऊर्जा का दो चरणों में पीछा करो और आलेख का आकार अपने-आप निकल आता है। पहला चरण, गलन। बर्फ़ पहले से अपने गलनांक पर है, अतः दिया गया हर जूल ठोस को द्रव में बदलने में जाता है: 1 kg × 336,000 J/kg = 336,000 J. इस पूरे समय तापमापी 0 °C दिखाता है और हिलता नहीं, आँच कितनी ही देर जली रहे। यह तापमापी की विफलता नहीं। ताप अणुओं की औसत गतिज ऊर्जा नापता है, और गलन के दौरान अणु तेज़ नहीं हो रहे — ऊर्जा उन्हें दृढ़ जालक से बाहर खींचने और उनके पारस्परिक आकर्षण के विरुद्ध ख़र्च हो रही है। भंडार असली है और पुनर्प्राप्य: पानी को फिर जमाओ और तुम्हें पूरे 336,000 J वापस मिलते हैं। दूसरा चरण, द्रव को गरम करना। अब अणु सचमुच तेज़ होते हैं, हर किलोग्राम और हर केल्विन के लिए 4200 J पर: 1 × 4200 × 100 = 420,000 J, 0 से 100 °C तक जाने को। यहाँ तापमापी लगातार चढ़ता है, और ऊर्जा बनाम ताप का आलेख 1/4200 डिग्री प्रति जूल ढाल की सीधी रेखा है। कुल दी गई: 756,000 J, जिसमें से 336,000 — चवालीस प्रतिशत — ने कोई ताप-वृद्धि ख़रीदी ही नहीं। दो निहितार्थ ले जाने योग्य हैं। पहला, इसीलिए बर्फ़ इतनी असरदार शीतक है। 0 °C पर एक किलोग्राम बर्फ़ पेय से 336,000 J सोख लेती है इससे पहले कि वह पानी भी बने, जबकि 0 °C पर एक किलोग्राम पानी हर डिग्री गरम होने पर केवल 4200 J सोखता है — अतः बर्फ़ लगभग अस्सी डिग्री ठंडे पानी के बराबर है। काम शीतलता नहीं, गलन कर रही है। दूसरा, क्वथनांक पर वही तर्क और भी नाटकीय है: पानी की वाष्पन की गुप्त ऊष्मा लगभग 2,260,000 J/kg है, गलन की ऊष्मा की लगभग सात गुनी, और इसी से 100 °C की भाप 100 °C के पानी से कहीं बुरी जलाती है। भाप को वह सारी ऊर्जा त्वचा में उड़ेलनी पड़ती है इससे पहले कि वह द्रव के रूप में ठंडी होना भी शुरू करे। तीसरा विकल्प नाम लेने योग्य है क्योंकि वह एक असली अंतर्ज्ञान को उलट देता है। ऊर्जा सोखना आम तौर पर ताप बढ़ाता ही है — पर तभी जब ऊर्जा के पास और कहीं जाने को न हो। अवस्था-परिवर्तन के दौरान और कहीं जाने को है, और परिवर्तन पूरा होने तक ताप जड़ा रहता है। चौथा यह चूक जाता है कि गलन भी ठीक वैसा ही अवस्था-परिवर्तन है जैसा क्वथन, अतः बर्फ़ की अपनी सपाट सीढ़ी 0 °C पर है। (दूसरा उत्तर गुप्त ऊष्मा को छोटा सुधार मानता है, न कि ऐसी राशि जो बाद की पूरी तापन-प्रक्रिया के तुल्य है।)",
+          mr: "ऊर्जेचा दोन टप्प्यांत पाठलाग करा आणि आलेखाचा आकार आपोआप निघतो. पहिला टप्पा, द्रवीभवन. बर्फ आधीच त्याच्या द्रवणबिंदूवर आहे, म्हणून दिलेले प्रत्येक ज्यूल घन द्रवात बदलण्यात जाते: 1 kg × 336,000 J/kg = 336,000 J. या संपूर्ण काळात तापमापक 0 °C दाखवतो आणि हलत नाही, आच कितीही वेळ जळो. हे तापमापकाचे अपयश नाही. तापमान रेणूंची सरासरी गतिज ऊर्जा मोजते, आणि द्रवीभवनादरम्यान रेणू वेगवान होत नाहीत — ऊर्जा त्यांना दृढ जालकातून बाहेर ओढण्यात आणि त्यांच्या परस्पर आकर्षणाविरुद्ध खर्च होत आहे. साठा खरा आहे आणि पुन्हा मिळवण्याजोगा: पाणी पुन्हा गोठवा आणि तुम्हाला पूर्ण 336,000 J परत मिळतात. दुसरा टप्पा, द्रव तापवणे. आता रेणू खरोखर वेगवान होतात, प्रत्येक किलोग्रॅम आणि प्रत्येक केल्विनसाठी 4200 J ने: 1 × 4200 × 100 = 420,000 J, 0 ते 100 °C जायला. इथे तापमापक सतत चढतो, आणि ऊर्जा विरुद्ध तापमानाचा आलेख 1/4200 अंश प्रति ज्यूल उताराची सरळ रेषा. एकूण दिलेली: 756,000 J, त्यापैकी 336,000 — चव्वेचाळीस टक्के — ने कोणतीही तापमानवाढ विकत घेतलीच नाही. दोन निष्कर्ष नेण्याजोगे. पहिला, म्हणूनच बर्फ इतका प्रभावी शीतक. 0 °C वरचा एक किलोग्रॅम बर्फ पेयातून 336,000 J शोषून घेतो तो पाणी बनण्याआधीच, तर 0 °C वरचे एक किलोग्रॅम पाणी प्रत्येक अंश तापताना केवळ 4200 J शोषते — म्हणून बर्फ सुमारे ऐंशी अंश थंड पाण्याइतका. काम थंडपणा नव्हे, द्रवीभवन करत आहे. दुसरा, उकळबिंदूवर तोच युक्तिवाद आणखी नाट्यमय: पाण्याची बाष्पीभवनाची सुप्त उष्णता सुमारे 2,260,000 J/kg, द्रवीभवनाच्या उष्णतेच्या जवळपास सातपट, आणि यामुळेच 100 °C ची वाफ 100 °C च्या पाण्याहून कितीतरी वाईट भाजते. वाफेला ती सर्व ऊर्जा त्वचेत ओतावी लागते ती द्रव म्हणून थंड होणे सुरू करण्याआधीच. तिसरा पर्याय नाव घेण्याजोगा कारण तो एक खरी अंतःप्रेरणा उलटवतो. ऊर्जा शोषणे सहसा तापमान वाढवतेच — पण तेव्हाच जेव्हा ऊर्जेला दुसरीकडे जायला जागा नसते. अवस्थाबदलादरम्यान दुसरीकडे जागा असते, आणि बदल पूर्ण होईपर्यंत तापमान जखडलेले राहते. चौथा हे चुकवतो की द्रवीभवनही नेमके तसाच अवस्थाबदल आहे जसा उकळणे, म्हणून बर्फाची स्वतःची सपाट पायरी 0 °C वर आहे. (दुसरे उत्तर सुप्त उष्णतेला लहान दुरुस्ती मानते, नंतरच्या अख्ख्या तापवण्याइतकी राशी नव्हे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two identical cups of hot tea are poured. Cold milk is added to the first immediately and to the second ten minutes later. Both are then drunk at the same moment. Which is hotter, and what does the answer depend on?",
+          hi: "गरम चाय के दो एक-से प्याले भरे जाते हैं। पहले में ठंडा दूध तुरंत डाला जाता है और दूसरे में दस मिनट बाद। फिर दोनों उसी क्षण पिए जाते हैं। कौन-सा अधिक गरम है, और उत्तर किस पर निर्भर है?",
+          mr: "गरम चहाचे दोन सारखे कप ओतले जातात. पहिल्यात थंड दूध लगेच घातले जाते आणि दुसऱ्यात दहा मिनिटांनी. मग दोन्ही त्याच क्षणी प्यायले जातात. कोणता अधिक गरम, आणि उत्तर कशावर अवलंबून?",
+        },
+        choices: [
+          {
+            en: "The first cup — the one milked immediately — is hotter at the end. Adding cold milk at once drops its temperature, and by Newton's law of cooling a cup nearer room temperature loses heat more slowly, so it spends the ten minutes leaking heat at a reduced rate. The second cup stays hot and therefore sheds heat fast for the whole ten minutes before the milk cools it further. The answer depends on the loss being proportional to the excess over the surroundings, which is what makes the two paths differ even though the same milk is added in both",
+            hi: "पहला प्याला — जिसमें दूध तुरंत डाला गया — अंत में अधिक गरम है। ठंडा दूध तुरंत डालने से उसका ताप गिर जाता है, और न्यूटन के शीतलन नियम से कमरे के ताप के पास वाला प्याला ऊष्मा अधिक धीरे खोता है, अतः वह दस मिनट घटी हुई दर से ऊष्मा रिसाता है। दूसरा प्याला गरम बना रहता है और इसलिए पूरे दस मिनट तेज़ी से ऊष्मा छोड़ता है, उसके बाद दूध उसे और ठंडा करता है। उत्तर इस पर निर्भर है कि हानि परिवेश से अधिकता के समानुपाती है, और यही दोनों रास्तों को भिन्न बनाता है यद्यपि दोनों में वही दूध डाला जाता है",
+            mr: "पहिला कप — ज्यात दूध लगेच घातले — शेवटी अधिक गरम. थंड दूध लगेच घातल्याने त्याचे तापमान घटते, आणि न्यूटनच्या शीतलन नियमाने खोलीच्या तापमानाजवळचा कप उष्णता अधिक सावकाश गमावतो, म्हणून तो दहा मिनिटे घटलेल्या दराने उष्णता गळतो. दुसरा कप गरम राहतो आणि म्हणून पूर्ण दहा मिनिटे झपाट्याने उष्णता सोडतो, त्यानंतर दूध त्याला आणखी थंड करते. उत्तर हानी परिसरावरील अधिक्याच्या समानुपाती असण्यावर अवलंबून, आणि हेच दोन्ही मार्गांना वेगळे बनवते जरी दोन्हींत तेच दूध घातले जाते",
+          },
+          {
+            en: "The second cup is hotter, because it was left undiluted and therefore hotter for longer",
+            hi: "दूसरा प्याला अधिक गरम है, क्योंकि उसे बिना पतला किए छोड़ा गया और इसलिए वह अधिक देर गरम रहा",
+            mr: "दुसरा कप अधिक गरम, कारण तो न पातळ करता ठेवला आणि म्हणून तो अधिक वेळ गरम राहिला",
+          },
+          {
+            en: "Both end at exactly the same temperature, since the same amount of cold milk was added to each",
+            hi: "दोनों ठीक उसी ताप पर पहुँचते हैं, क्योंकि हर एक में उतना ही ठंडा दूध डाला गया",
+            mr: "दोन्ही नेमक्या त्याच तापमानावर पोहोचतात, कारण प्रत्येकात तितकेच थंड दूध घातले गेले",
+          },
+          {
+            en: "It cannot be decided without knowing the specific heat of milk, which alone determines the final temperature",
+            hi: "दूध की विशिष्ट ऊष्मा जाने बिना तय नहीं हो सकता, जो अकेली अंतिम ताप तय करती है",
+            mr: "दुधाची विशिष्ट उष्णता कळल्याशिवाय ठरवता येत नाही, जी एकटीच शेवटचे तापमान ठरवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The instinct that says 'do not dilute it early, it will get cold' is exactly backwards, and the reason is worth working through slowly. Newton's law of cooling says the rate at which a body loses heat is proportional to how far its temperature exceeds that of the room: dQ/dt ∝ (T − T_room). This has a consequence people rarely notice. A cup at 90 °C in a 20 °C room is losing heat at a rate proportional to 70. Cool it to 70 °C and it is now losing heat at a rate proportional to 50 — nearly thirty per cent slower. Every degree you take off makes the remaining degrees harder to lose. Now compare the two cups over the same ten minutes. Cup one has milk added at the start, so its temperature drops immediately to, say, 70 °C, and it then spends ten minutes cooling from a modest excess of 50 degrees. Cup two stays at 90 °C, spends those ten minutes cooling from an excess of 70, and only then receives the milk. Both receive the same cold milk and the same temperature drop from it. The difference is entirely in the ten minutes: cup two was hotter throughout and therefore leaked heat faster the whole time. It arrives at the drinking moment with less heat left. The milk's own contribution is the same in both cases and cancels out, which is why the fourth option is wrong — the specific heat of milk affects how big the drop is, but it affects both cups identically and cannot change which is hotter. The general principle is worth stating on its own, because it recurs everywhere: when a loss rate depends on the current level, it pays to reduce the level early. A leaky tank empties fastest when full, so drawing some off early leaves more at the end. A hot house loses heat fastest when it is hottest, which is why letting the temperature drop while nobody is home saves more fuel than the reheating costs. There is a caveat worth stating, because it shows where the model's limits are. The argument assumes the cooling is dominated by Newton's law, which holds for modest excesses and gentle convection. A cup covered with a lid, or one where evaporation is doing most of the work, behaves differently, since evaporative loss depends on the exposed surface and the humidity rather than simply on the temperature difference. In practice the milk-first strategy still wins, and it has been tested often enough to be a piece of folk wisdom that happens to be correct. (The second answer confuses 'staying hot' with 'ending hot', and the third forgets that the two cups spend the ten minutes at different temperatures.)",
+          hi: "जो सहज बुद्धि कहती है 'जल्दी पतला मत करो, ठंडी हो जाएगी' वह ठीक उलटी है, और कारण धीरे-धीरे चलाने योग्य है। न्यूटन का शीतलन नियम कहता है कि पिंड की ऊष्मा-हानि की दर इस पर समानुपाती है कि उसका ताप कमरे के ताप से कितना अधिक है: dQ/dt ∝ (T − T_कमरा). इसका एक परिणाम है जिसे लोग शायद ही देखते हैं। 20 °C कमरे में 90 °C का प्याला 70 के समानुपाती दर से ऊष्मा खो रहा है। उसे 70 °C कर दो और अब वह 50 के समानुपाती दर से खो रहा है — लगभग तीस प्रतिशत धीमा। तुम जो भी डिग्री हटाते हो वह बची डिग्रियों को खोना और कठिन बना देती है। अब दोनों प्यालों की उन्हीं दस मिनटों में तुलना करो। पहले प्याले में शुरू में दूध डाला गया, अतः उसका ताप तुरंत मान लो 70 °C पर गिर जाता है, और फिर वह दस मिनट 50 डिग्री की मामूली अधिकता से ठंडा होता है। दूसरा प्याला 90 °C पर बना रहता है, वे दस मिनट 70 की अधिकता से ठंडा होता है, और तभी उसे दूध मिलता है। दोनों को वही ठंडा दूध और उससे वही ताप-गिरावट मिलती है। अंतर पूरी तरह उन दस मिनटों में है: दूसरा प्याला पूरे समय अधिक गरम था और इसलिए पूरे समय तेज़ी से ऊष्मा रिसाता रहा। वह पीने के क्षण पर कम ऊष्मा बचाकर पहुँचता है। दूध का अपना योगदान दोनों में एक-सा है और कट जाता है, इसीलिए चौथा विकल्प ग़लत है — दूध की विशिष्ट ऊष्मा तय करती है कि गिरावट कितनी बड़ी है, पर वह दोनों प्यालों पर एक-सी असर करती है और यह नहीं बदल सकती कि कौन अधिक गरम है। सामान्य सिद्धांत अपने आप में कहने योग्य है, क्योंकि वह हर जगह लौटता है: जब हानि की दर वर्तमान स्तर पर निर्भर हो, तो स्तर जल्दी घटा देना फ़ायदे का सौदा है। रिसती टंकी भरी होने पर सबसे तेज़ ख़ाली होती है, अतः कुछ पहले निकाल लेने से अंत में अधिक बचता है। गरम घर तब सबसे तेज़ ऊष्मा खोता है जब वह सबसे गरम हो, इसीलिए कोई घर में न हो तब ताप गिरने देना दोबारा गरम करने की लागत से अधिक ईंधन बचाता है। एक चेतावनी कहने योग्य है, क्योंकि वह निदर्श की सीमाएँ दिखाती है। तर्क मानता है कि शीतलन पर न्यूटन के नियम का बोलबाला है, जो मामूली अधिकताओं और हल्के संवहन पर चलता है। ढक्कन से ढका प्याला, या ऐसा जिसमें अधिकांश काम वाष्पन कर रहा हो, भिन्न व्यवहार करता है, क्योंकि वाष्पन से हुई हानि खुली सतह और आर्द्रता पर निर्भर है, केवल ताप-अंतर पर नहीं। व्यवहार में दूध-पहले वाली रणनीति फिर भी जीतती है, और वह इतनी बार परखी जा चुकी है कि वह लोक-ज्ञान का ऐसा टुकड़ा है जो संयोग से सही है। (दूसरा उत्तर 'गरम बने रहना' और 'गरम पहुँचना' गड्डमड्ड करता है, और तीसरा भूल जाता है कि दोनों प्याले वे दस मिनट भिन्न तापों पर बिताते हैं।)",
+          mr: "'लवकर पातळ करू नका, थंड होईल' असे सांगणारी सहज बुद्धी नेमकी उलटी आहे, आणि कारण सावकाश चालवण्याजोगे. न्यूटनचा शीतलन नियम सांगतो की पिंडाच्या उष्णता-हानीचा दर त्याचे तापमान खोलीच्या तापमानाहून किती अधिक आहे याच्या समानुपाती: dQ/dt ∝ (T − T_खोली). याचा एक परिणाम आहे जो लोक क्वचितच पाहतात. 20 °C च्या खोलीत 90 °C चा कप 70 च्या समानुपाती दराने उष्णता गमावत आहे. त्याला 70 °C करा आणि आता तो 50 च्या समानुपाती दराने गमावत आहे — जवळपास तीस टक्के सावकाश. तुम्ही जो अंश काढता तो उरलेले अंश गमावणे आणखी कठीण करतो. आता दोन्ही कपांची त्याच दहा मिनिटांत तुलना करा. पहिल्या कपात सुरुवातीला दूध घातले, म्हणून त्याचे तापमान लगेच समजा 70 °C वर घटते, आणि मग तो दहा मिनिटे 50 अंशांच्या माफक अधिक्यातून थंड होतो. दुसरा कप 90 °C वर राहतो, ती दहा मिनिटे 70 च्या अधिक्यातून थंड होतो, आणि तेव्हाच त्याला दूध मिळते. दोघांना तेच थंड दूध आणि त्यातून तीच तापमान-घट मिळते. फरक पूर्णपणे त्या दहा मिनिटांत: दुसरा कप पूर्ण काळ अधिक गरम होता आणि म्हणून पूर्ण काळ झपाट्याने उष्णता गळत राहिला. तो पिण्याच्या क्षणी कमी उष्णता उरवून पोहोचतो. दुधाचा स्वतःचा वाटा दोन्हींत सारखा आणि कापला जातो, म्हणूनच चौथा पर्याय चुकीचा — दुधाची विशिष्ट उष्णता घट किती मोठी हे ठरवते, पण ती दोन्ही कपांवर सारखीच परिणाम करते आणि कोण अधिक गरम हे बदलू शकत नाही. सामान्य तत्त्व स्वतःच सांगण्याजोगे, कारण ते सर्वत्र परत येते: जेव्हा हानीचा दर सध्याच्या पातळीवर अवलंबून असतो, तेव्हा पातळी लवकर घटवणे फायद्याचे. गळकी टाकी भरलेली असताना सर्वांत वेगाने रिकामी होते, म्हणून काही आधी काढून घेतल्यास शेवटी अधिक उरते. गरम घर तेव्हा सर्वांत वेगाने उष्णता गमावते जेव्हा ते सर्वांत गरम असते, म्हणूनच कोणी घरात नसताना तापमान घटू देणे पुन्हा तापवण्याच्या खर्चाहून अधिक इंधन वाचवते. एक इशारा सांगण्याजोगा, कारण तो प्रतिरूपाच्या मर्यादा दाखवतो. युक्तिवाद गृहीत धरतो की शीतलनावर न्यूटनच्या नियमाचे वर्चस्व, जो माफक अधिक्यांसाठी आणि सौम्य अभिसरणासाठी चालतो. झाकणाने झाकलेला कप, वा ज्यात बहुतांश काम बाष्पीभवन करत आहे असा, वेगळे वागतो, कारण बाष्पीभवनातून होणारी हानी उघड्या पृष्ठभागावर आणि आर्द्रतेवर अवलंबून, केवळ तापमान-फरकावर नाही. व्यवहारात दूध-आधी हे धोरण तरीही जिंकते, आणि ते इतक्या वेळा तपासले गेले आहे की ते लोकज्ञानाचा असा तुकडा आहे जो योगायोगाने बरोबर आहे. (दुसरे उत्तर 'गरम राहणे' आणि 'गरम पोहोचणे' यांची गल्लत करते, आणि तिसरे विसरते की दोन्ही कप ती दहा मिनिटे वेगळ्या तापमानांवर घालवतात.)",
+        },
+      },
+      /*H10*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Thermodynamics                                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-thermodynamics",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 11 — Thermodynamics",
+      hi: "अध्याय 11 — ऊष्मागतिकी",
+      mr: "प्रकरण 11 — उष्मागतिकी",
+    },
+    name: {
+      en: "Thermodynamics",
+      hi: "ऊष्मागतिकी",
+      mr: "उष्मागतिकी",
+    },
+    summary: {
+      en: "The only branch of physics whose laws are stated as things that cannot be done. A law so obvious it was numbered zero and yet is what makes a thermometer possible, an accounting rule that lets heat and work be added because both are energy in transit, two processes that differ only in whether the gas was allowed to talk to its surroundings, and a second law that forbids what the first permits — and in doing so tells time which way to run.",
+      hi: "भौतिकी की एकमात्र शाखा जिसके नियम उन चीज़ों के रूप में कहे जाते हैं जो की नहीं जा सकतीं। इतना स्पष्ट नियम कि उसे शून्य नंबर दिया गया और फिर भी वही तापमापी को संभव बनाता है, ऐसा बहीखाता-नियम जो ऊष्मा और कार्य को जोड़ने देता है क्योंकि दोनों संक्रमण में ऊर्जा हैं, दो प्रक्रियाएँ जो केवल इसमें भिन्न हैं कि गैस को अपने परिवेश से बात करने दी गई या नहीं, और वह दूसरा नियम जो उसे मना करता है जिसकी पहला अनुमति देता है — और ऐसा करते हुए समय को बताता है कि चलना किस ओर है।",
+      mr: "भौतिकीची एकमेव शाखा जिचे नियम करता येत नाहीत अशा गोष्टींच्या रूपात मांडले जातात. इतका स्पष्ट नियम की त्याला शून्य क्रमांक दिला गेला आणि तरीही तोच तापमापक शक्य करतो, असा वहीखाता-नियम जो उष्णता आणि कार्य जोडू देतो कारण दोन्ही संक्रमणातील ऊर्जा आहेत, दोन प्रक्रिया ज्या केवळ यात वेगळ्या की वायूला आपल्या परिसराशी बोलू दिले की नाही, आणि तो दुसरा नियम जो पहिला परवानगी देतो त्याला मनाई करतो — आणि तसे करताना काळाला सांगतो की चालायचे कोणत्या दिशेने.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "zeroth-law",
+        name: {
+          en: "The zeroth law",
+          hi: "शून्यवाँ नियम",
+          mr: "शून्यवा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "If A is in thermal equilibrium with C, and B is too, then A and B are in equilibrium with each other — which is the only reason a thermometer touched to two bodies in turn can compare them. Which law is this?",
+          hi: "यदि A, C के साथ तापीय संतुलन में है और B भी, तो A और B आपस में संतुलन में हैं — और केवल इसी कारण बारी-बारी से दो पिंडों को छुआया गया तापमापी उनकी तुलना कर सकता है। यह कौन-सा नियम है?",
+          mr: "जर A हा C शी औष्णिक समतोलात असेल आणि B ही असेल, तर A आणि B आपापसात समतोलात आहेत — आणि केवळ याच कारणाने आळीपाळीने दोन पिंडांना लावलेला तापमापक त्यांची तुलना करू शकतो. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other, which is what allows temperature to be defined as a single number a body carries.",
+          hi: "शून्यवाँ नियम कहता है कि जो दो निकाय अलग-अलग किसी तीसरे के साथ तापीय संतुलन में हैं वे आपस में भी संतुलन में हैं, और यही ताप को ऐसी अकेली संख्या के रूप में परिभाषित होने देता है जिसे पिंड ढोता है।",
+          mr: "शून्यवा नियम सांगतो की जे दोन संच स्वतंत्रपणे तिसऱ्याशी औष्णिक समतोलात आहेत ते आपापसातही समतोलात आहेत, आणि हेच तापमानाला पिंड वाहणारी एकच संख्या म्हणून व्याख्यायित होऊ देते.",
+        },
+        detail: {
+          en: "It was named late and numbered zero because it turned out to be logically prior to the first and second, which had already been published and could not be renumbered.",
+          hi: "उसका नाम देर से रखा गया और नंबर शून्य दिया गया क्योंकि वह तार्किक रूप से पहले और दूसरे से पहले का निकला, जो पहले ही छप चुके थे और जिनके नंबर बदले नहीं जा सकते थे।",
+          mr: "त्याचे नाव उशिरा ठेवले गेले आणि क्रमांक शून्य दिला कारण तो तार्किकदृष्ट्या पहिल्या आणि दुसऱ्याच्या आधीचा निघाला, जे आधीच प्रसिद्ध झाले होते आणि ज्यांचे क्रमांक बदलता येत नव्हते.",
+        },
+        extra: {
+          en: "Without it the very idea of a temperature scale collapses, because nothing would guarantee that a thermometer reading the same number twice had met two bodies that would not exchange heat if joined.",
+          hi: "उसके बिना ताप-मापक्रम का विचार ही ढह जाता है, क्योंकि कुछ भी यह सुनिश्चित नहीं करता कि दो बार वही संख्या दिखाने वाला तापमापी ऐसे दो पिंडों से मिला जो जोड़े जाने पर ऊष्मा का आदान-प्रदान न करते।",
+          mr: "त्याच्याशिवाय तापमान-मापनश्रेणीची कल्पनाच कोसळते, कारण दोनदा तीच संख्या दाखवणारा तापमापक अशा दोन पिंडांना भेटला याची खात्री काहीही देत नाही जे जोडल्यास उष्णतेची देवाणघेवाण करणार नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "The law that makes a thermometer mean anything",
+            hi: "वह नियम जो तापमापी को कोई अर्थ देता है",
+            mr: "तो नियम जो तापमापकाला काही अर्थ देतो",
+          },
+          right: {
+            en: "the zeroth law",
+            hi: "शून्यवाँ नियम",
+            mr: "शून्यवा नियम",
+          },
+        },
+      },
+      {
+        id: "first-law-of-thermodynamics",
+        name: {
+          en: "The first law of thermodynamics",
+          hi: "ऊष्मागतिकी का पहला नियम",
+          mr: "उष्मागतिकीचा पहिला नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Heat put into a gas either raises its internal energy or comes back out as work done pushing the piston, and the books must balance to the last joule: ΔU = Q − W. Which law is this?",
+          hi: "गैस में डाली गई ऊष्मा या तो उसकी आंतरिक ऊर्जा बढ़ाती है या पिस्टन धकेलने में किए कार्य के रूप में वापस निकल आती है, और बहीखाता अंतिम जूल तक मिलना चाहिए: ΔU = Q − W. यह कौन-सा नियम है?",
+          mr: "वायूत टाकलेली उष्णता एकतर त्याची आंतरिक ऊर्जा वाढवते किंवा पिस्टन ढकलण्यात केलेल्या कार्याच्या रूपात परत बाहेर येते, आणि वहीखाते शेवटच्या ज्यूलपर्यंत जुळले पाहिजे: ΔU = Q − W. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The first law is conservation of energy for a thermodynamic system: the heat added equals the increase in internal energy plus the work done by the system on its surroundings.",
+          hi: "पहला नियम ऊष्मागतिक निकाय के लिए ऊर्जा-संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा की वृद्धि जोड़ निकाय द्वारा परिवेश पर किए गए कार्य के बराबर है।",
+          mr: "पहिला नियम म्हणजे उष्मागतिक संचासाठी ऊर्जा-संरक्षण: दिलेली उष्णता आंतरिक ऊर्जेतील वाढ अधिक संचाने परिसरावर केलेले कार्य याइतकी असते.",
+        },
+        detail: {
+          en: "Internal energy is a state function, depending only on the present condition of the gas, while heat and work are not — they describe a journey and have no value at a point.",
+          hi: "आंतरिक ऊर्जा अवस्था-फलन है, जो केवल गैस की वर्तमान दशा पर निर्भर है, जबकि ऊष्मा और कार्य नहीं — वे यात्रा का वर्णन करते हैं और किसी बिंदु पर उनका कोई मान नहीं।",
+          mr: "आंतरिक ऊर्जा हे अवस्था-फलन, जे केवळ वायूच्या सध्याच्या स्थितीवर अवलंबून, तर उष्णता आणि कार्य नाहीत — ती प्रवासाचे वर्णन करतात आणि एखाद्या बिंदूवर त्यांना कोणतेही मूल्य नाही.",
+        },
+        extra: {
+          en: "It forbids a machine that produces energy from nothing, but it says nothing at all about direction — it would happily allow a cup of tea to heat up by cooling the room.",
+          hi: "यह ऐसे यंत्र को मना करता है जो शून्य से ऊर्जा बनाए, पर दिशा के बारे में कुछ नहीं कहता — वह ख़ुशी-ख़ुशी चाय के प्याले को कमरा ठंडा करके गरम होने देगा।",
+          mr: "हा शून्यातून ऊर्जा बनवणाऱ्या यंत्राला मनाई करतो, पण दिशेबद्दल काहीही सांगत नाही — तो आनंदाने चहाच्या कपाला खोली थंड करून गरम होऊ देईल.",
+        },
+        pair: {
+          left: {
+            en: "Balances the books and never names a direction",
+            hi: "बहीखाता मिलाता है और दिशा कभी नहीं बताता",
+            mr: "वहीखाते जुळवतो आणि दिशा कधीच सांगत नाही",
+          },
+          right: {
+            en: "the first law of thermodynamics",
+            hi: "ऊष्मागतिकी का पहला नियम",
+            mr: "उष्मागतिकीचा पहिला नियम",
+          },
+        },
+      },
+      {
+        id: "isothermal-process",
+        name: {
+          en: "The isothermal process",
+          hi: "समतापी प्रक्रम",
+          mr: "समतापी प्रक्रिया",
+        },
+        kind: "process",
+        prompt: {
+          en: "A gas expands so slowly, in contact with a large reservoir, that its temperature never budges — so its internal energy is unchanged and every joule of heat absorbed reappears as work. Which process is this?",
+          hi: "गैस इतनी धीरे फैलती है, बड़े भंडार के संपर्क में, कि उसका ताप हिलता ही नहीं — अतः उसकी आंतरिक ऊर्जा अपरिवर्तित रहती है और सोखी ऊष्मा का हर जूल कार्य बनकर फिर प्रकट होता है। यह कौन-सा प्रक्रम है?",
+          mr: "वायू इतक्या सावकाश प्रसरण पावतो, मोठ्या साठ्याच्या संपर्कात, की त्याचे तापमान हलतच नाही — म्हणून त्याची आंतरिक ऊर्जा अपरिवर्तित राहते आणि शोषलेल्या उष्णतेचे प्रत्येक ज्यूल कार्य बनून पुन्हा प्रकट होते. ही कोणती प्रक्रिया?",
+        },
+        statement: {
+          en: "In an isothermal process the temperature is held constant, so for an ideal gas the internal energy does not change and the heat absorbed equals exactly the work done.",
+          hi: "समतापी प्रक्रम में ताप अचर रखा जाता है, अतः आदर्श गैस के लिए आंतरिक ऊर्जा नहीं बदलती और सोखी ऊष्मा ठीक किए गए कार्य के बराबर होती है।",
+          mr: "समतापी प्रक्रियेत तापमान अचल ठेवले जाते, म्हणून आदर्श वायूसाठी आंतरिक ऊर्जा बदलत नाही आणि शोषलेली उष्णता नेमकी केलेल्या कार्याइतकी असते.",
+        },
+        detail: {
+          en: "It must be carried out very slowly and in good thermal contact, because heat needs time to flow in and keep the temperature from falling as the gas does work.",
+          hi: "उसे बहुत धीरे और अच्छे तापीय संपर्क में करना पड़ता है, क्योंकि ऊष्मा को भीतर बहने और गैस के कार्य करते समय ताप को गिरने से रोकने के लिए समय चाहिए।",
+          mr: "ती फार सावकाश आणि चांगल्या औष्णिक संपर्कात करावी लागते, कारण उष्णतेला आत वाहायला आणि वायू कार्य करत असताना तापमान घसरण्यापासून रोखायला वेळ लागतो.",
+        },
+        extra: {
+          en: "On a pressure–volume diagram its curve is a hyperbola, PV = constant, and the area under that curve is the work — which is why the same two end states can be joined by paths doing different amounts of work.",
+          hi: "दाब-आयतन आरेख पर उसका वक्र अतिपरवलय है, PV = अचर, और उस वक्र के नीचे का क्षेत्रफल कार्य है — इसीलिए उन्हीं दो अंतिम अवस्थाओं को ऐसे पथों से जोड़ा जा सकता है जो भिन्न मात्रा में कार्य करते हैं।",
+          mr: "दाब-घनफळ आकृतीवर तिचा वक्र अतिपरवलय, PV = अचल, आणि त्या वक्राखालचे क्षेत्रफळ म्हणजे कार्य — म्हणूनच त्याच दोन अंतिम अवस्था वेगवेगळ्या प्रमाणात कार्य करणाऱ्या मार्गांनी जोडता येतात.",
+        },
+        pair: {
+          left: {
+            en: "Every joule of heat comes straight back out as work",
+            hi: "ऊष्मा का हर जूल सीधे कार्य बनकर लौट आता है",
+            mr: "उष्णतेचे प्रत्येक ज्यूल थेट कार्य बनून परत येते",
+          },
+          right: {
+            en: "the isothermal process",
+            hi: "समतापी प्रक्रम",
+            mr: "समतापी प्रक्रिया",
+          },
+        },
+      },
+      {
+        id: "adiabatic-process",
+        name: {
+          en: "The adiabatic process",
+          hi: "रुद्धोष्म प्रक्रम",
+          mr: "रुद्धोष्म प्रक्रिया",
+        },
+        kind: "process",
+        prompt: {
+          en: "A bicycle pump's barrel grows hot as the air inside is squeezed quickly, and a released gas cylinder frosts over, because the change happens too fast for any heat to enter or leave. Which process is this?",
+          hi: "साइकिल के पंप की नली भीतर की हवा तेज़ी से दबने पर गरम हो जाती है, और छोड़ा गया गैस सिलिंडर पाला जमा लेता है, क्योंकि परिवर्तन इतना तेज़ होता है कि कोई ऊष्मा भीतर या बाहर न जा सके। यह कौन-सा प्रक्रम है?",
+          mr: "सायकलच्या पंपाची नळी आतली हवा झपाट्याने दाबल्याने गरम होते, आणि सोडलेला वायू सिलिंडर दहिवर धरतो, कारण बदल इतका वेगवान की कोणतीही उष्णता आत वा बाहेर जाऊ शकत नाही. ही कोणती प्रक्रिया?",
+        },
+        statement: {
+          en: "In an adiabatic process no heat enters or leaves the system, so all the work done goes at the expense of internal energy and the temperature changes even with no heating.",
+          hi: "रुद्धोष्म प्रक्रम में निकाय में कोई ऊष्मा न भीतर आती है न बाहर जाती है, अतः किया गया सारा कार्य आंतरिक ऊर्जा की क़ीमत पर होता है और बिना गरम किए भी ताप बदल जाता है।",
+          mr: "रुद्धोष्म प्रक्रियेत संचात कोणतीही उष्णता आत येत नाही वा बाहेर जात नाही, म्हणून केलेले सर्व कार्य आंतरिक ऊर्जेच्या किमतीवर होते आणि न तापवताही तापमान बदलते.",
+        },
+        detail: {
+          en: "It is achieved either by insulating the system or by acting so quickly that heat has no time to flow, which is why a sound wave's compressions are adiabatic and not isothermal.",
+          hi: "यह या तो निकाय को रोधित करके पाया जाता है या इतनी तेज़ी से करके कि ऊष्मा को बहने का समय ही न मिले, इसीलिए ध्वनि-तरंग के संपीड़न रुद्धोष्म होते हैं, समतापी नहीं।",
+          mr: "ही एकतर संच रोधित करून साधली जाते वा इतक्या वेगाने करून की उष्णतेला वाहायला वेळच मिळू नये, म्हणूनच ध्वनिलहरीची संपीडने रुद्धोष्म असतात, समतापी नव्हे.",
+        },
+        extra: {
+          en: "Its curve on a PV diagram is steeper than the isothermal one through the same point, since the pressure falls both from the expansion and from the accompanying drop in temperature.",
+          hi: "PV आरेख पर उसका वक्र उसी बिंदु से जाते समतापी वक्र से अधिक ढालू होता है, क्योंकि दाब प्रसार से भी गिरता है और साथ आने वाली ताप-गिरावट से भी।",
+          mr: "PV आकृतीवर तिचा वक्र त्याच बिंदूतून जाणाऱ्या समतापी वक्राहून अधिक तीव्र असतो, कारण दाब प्रसरणानेही घटतो आणि सोबत येणाऱ्या तापमान-घटीनेही.",
+        },
+        pair: {
+          left: {
+            en: "Too fast for heat to arrive",
+            hi: "इतना तेज़ कि ऊष्मा पहुँच ही न सके",
+            mr: "इतका वेगवान की उष्णता पोहोचूच शकत नाही",
+          },
+          right: {
+            en: "the adiabatic process",
+            hi: "रुद्धोष्म प्रक्रम",
+            mr: "रुद्धोष्म प्रक्रिया",
+          },
+        },
+      },
+      {
+        id: "second-law-of-thermodynamics",
+        name: {
+          en: "The second law of thermodynamics",
+          hi: "ऊष्मागतिकी का दूसरा नियम",
+          mr: "उष्मागतिकीचा दुसरा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Energy accounting permits a cup of tea to grow hotter while the room cools, and yet it never happens; something beyond conservation is picking a direction for every spontaneous change. Which law is this?",
+          hi: "ऊर्जा का बहीखाता चाय के प्याले को कमरा ठंडा होते हुए अधिक गरम होने देता है, फिर भी ऐसा कभी नहीं होता; संरक्षण से परे कुछ हर स्वतःस्फूर्त परिवर्तन के लिए दिशा चुन रहा है। यह कौन-सा नियम है?",
+          mr: "ऊर्जेचे वहीखाते चहाच्या कपाला खोली थंड होत असताना अधिक गरम होऊ देते, तरीही असे कधीच घडत नाही; संरक्षणापलीकडचे काहीतरी प्रत्येक स्वयंस्फूर्त बदलासाठी दिशा निवडत आहे. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The second law states that heat never flows spontaneously from a colder body to a hotter one, and equivalently that no engine can convert heat wholly into work in a cycle.",
+          hi: "दूसरा नियम कहता है कि ऊष्मा कभी स्वतः ठंडे पिंड से गरम पिंड की ओर नहीं बहती, और समतुल्य रूप से कि कोई इंजन चक्र में ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता।",
+          mr: "दुसरा नियम सांगतो की उष्णता कधीही आपोआप थंड पिंडाकडून गरम पिंडाकडे वाहत नाही, आणि समतुल्यपणे की कोणतेही इंजिन चक्रात उष्णता पूर्णपणे कार्यात बदलू शकत नाही.",
+        },
+        detail: {
+          en: "A refrigerator does move heat the wrong way, but only while work is being supplied, and the total heat dumped into the kitchen exceeds the heat removed from the food by exactly that work.",
+          hi: "रेफ़्रिजरेटर ऊष्मा को उलटी दिशा में ले जाता ही है, पर केवल तब तक जब कार्य दिया जा रहा हो, और रसोई में उड़ेली गई कुल ऊष्मा भोजन से हटाई गई ऊष्मा से ठीक उतनी अधिक है जितना वह कार्य।",
+          mr: "फ्रिज उष्णतेला उलट्या दिशेने नेतोच, पण केवळ जोवर कार्य दिले जात आहे तोवर, आणि स्वयंपाकघरात ओतलेली एकूण उष्णता अन्नातून काढलेल्या उष्णतेहून नेमकी तितकी अधिक असते जितके ते कार्य.",
+        },
+        extra: {
+          en: "It is the only fundamental law that distinguishes past from future, which is why a film of a smashing glass looks wrong played backwards while a film of two colliding balls does not.",
+          hi: "यह एकमात्र मूलभूत नियम है जो भूत को भविष्य से अलग करता है, इसीलिए टूटते गिलास की फ़िल्म उलटी चलाने पर ग़लत दिखती है जबकि टकराती दो गेंदों की फ़िल्म नहीं।",
+          mr: "हा एकमेव मूलभूत नियम जो भूतकाळ भविष्यकाळापासून वेगळा करतो, म्हणूनच फुटणाऱ्या ग्लासाची चित्रफीत उलटी चालवल्यास चुकीची दिसते तर आदळणाऱ्या दोन चेंडूंची नाही.",
+        },
+        pair: {
+          left: {
+            en: "The film that looks wrong played backwards",
+            hi: "वह फ़िल्म जो उलटी चलाने पर ग़लत दिखती है",
+            mr: "ती चित्रफीत जी उलटी चालवल्यास चुकीची दिसते",
+          },
+          right: {
+            en: "the second law of thermodynamics",
+            hi: "ऊष्मागतिकी का दूसरा नियम",
+            mr: "उष्मागतिकीचा दुसरा नियम",
+          },
+        },
+      },
+      {
+        id: "carnot-efficiency",
+        name: {
+          en: "Carnot efficiency",
+          hi: "कार्नो दक्षता",
+          mr: "कार्नो कार्यक्षमता",
+        },
+        kind: "process",
+        prompt: {
+          en: "No engine working between a source at 600 K and a sink at 300 K can beat fifty per cent, whatever it is made of and however cleverly it is designed, because the ceiling is 1 − T_cold/T_hot. Which limit is this?",
+          hi: "600 K के स्रोत और 300 K के अवशोषक के बीच चलता कोई इंजन पचास प्रतिशत नहीं पार कर सकता, वह चाहे किसी का बना हो और कितनी ही चतुराई से अभिकल्पित हो, क्योंकि छत 1 − T_ठंडा/T_गरम है। यह कौन-सी सीमा है?",
+          mr: "600 K च्या स्रोत आणि 300 K च्या शोषकामध्ये चालणारे कोणतेही इंजिन पन्नास टक्के ओलांडू शकत नाही, ते कशाचेही बनलेले असो आणि कितीही हुशारीने आखलेले असो, कारण छत 1 − T_थंड/T_गरम आहे. ही कोणती मर्यादा?",
+        },
+        statement: {
+          en: "The Carnot efficiency 1 − T_cold/T_hot is the greatest fraction of absorbed heat any engine can turn into work between two given temperatures, and it depends only on those temperatures.",
+          hi: "कार्नो दक्षता 1 − T_ठंडा/T_गरम वह सबसे बड़ा अंश है जितना कोई भी इंजन दो दिए गए तापों के बीच सोखी ऊष्मा को कार्य में बदल सकता है, और वह केवल उन्हीं तापों पर निर्भर है।",
+          mr: "कार्नो कार्यक्षमता 1 − T_थंड/T_गरम हा तो सर्वांत मोठा अंश जितका कोणतेही इंजिन दोन दिलेल्या तापमानांदरम्यान शोषलेल्या उष्णतेचे कार्यात रूपांतर करू शकते, आणि ती केवळ त्याच तापमानांवर अवलंबून.",
+        },
+        detail: {
+          en: "The temperatures must be absolute, and the formula reaches one hundred per cent only for a sink at absolute zero, which is itself unreachable.",
+          hi: "ताप परम होने चाहिए, और सूत्र सौ प्रतिशत तभी पहुँचता है जब अवशोषक परम शून्य पर हो, जो स्वयं अप्राप्य है।",
+          mr: "तापमाने निरपेक्ष असावी लागतात, आणि सूत्र शंभर टक्के तेव्हाच गाठते जेव्हा शोषक निरपेक्ष शून्यावर असेल, जे स्वतःच अप्राप्य आहे.",
+        },
+        extra: {
+          en: "Real engines fall well below it because of friction, turbulence and heat leaking through the walls, so a petrol engine reaching a third of its fuel's energy is already doing well.",
+          hi: "असली इंजन घर्षण, विक्षोभ और दीवारों से रिसती ऊष्मा के कारण उससे काफ़ी नीचे रहते हैं, अतः अपने ईंधन की ऊर्जा का एक तिहाई पाता पेट्रोल इंजन पहले ही अच्छा कर रहा है।",
+          mr: "खरी इंजिने घर्षण, खळबळ आणि भिंतींतून गळणारी उष्णता यांमुळे तिच्या बरेच खाली राहतात, म्हणून आपल्या इंधनाच्या ऊर्जेचा एक तृतीयांश मिळवणारे पेट्रोल इंजिन आधीच चांगले करत आहे.",
+        },
+        pair: {
+          left: {
+            en: "A ceiling no cleverness can raise",
+            hi: "ऐसी छत जिसे कोई चतुराई ऊपर नहीं उठा सकती",
+            mr: "असे छत जे कोणतीही हुशारी वर उचलू शकत नाही",
+          },
+          right: {
+            en: "Carnot efficiency",
+            hi: "कार्नो दक्षता",
+            mr: "कार्नो कार्यक्षमता",
+          },
+        },
+      },
+      /*F11*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "An inventor offers an engine that takes 1000 J from a source at 400 K, rejects 200 J to a sink at 300 K, and delivers 800 J of work. It violates no conservation of energy. Decide whether it can be built, and say which law settles the matter.",
+          hi: "एक आविष्कारक ऐसा इंजन प्रस्तुत करता है जो 400 K के स्रोत से 1000 J लेता है, 300 K के अवशोषक को 200 J लौटाता है, और 800 J कार्य देता है। यह ऊर्जा-संरक्षण का उल्लंघन नहीं करता। तय करो कि वह बन सकता है या नहीं, और बताओ कौन-सा नियम मामला निपटाता है।",
+          mr: "एक संशोधक असे इंजिन सादर करतो जे 400 K च्या स्रोतातून 1000 J घेते, 300 K च्या शोषकाला 200 J परत करते, आणि 800 J कार्य देते. ते ऊर्जा-संरक्षणाचे उल्लंघन करत नाही. ते बांधता येईल का ते ठरवा, आणि कोणता नियम प्रकरण निकाली काढतो ते सांगा.",
+        },
+        choices: [
+          {
+            en: "It cannot be built. The energy books balance — 1000 = 800 + 200 — so the first law is satisfied, and that is exactly why the first law is not enough. The claimed efficiency is 800/1000 = 80 per cent, but the Carnot ceiling between 400 K and 300 K is 1 − 300/400 = 25 per cent. The second law forbids any engine from exceeding it, whatever its design, so the machine is impossible even though nothing is created from nothing",
+            hi: "वह नहीं बन सकता। ऊर्जा का बहीखाता मिलता है — 1000 = 800 + 200 — अतः पहला नियम संतुष्ट है, और ठीक इसीलिए पहला नियम पर्याप्त नहीं। दावा की गई दक्षता 800/1000 = 80 प्रतिशत है, पर 400 K और 300 K के बीच कार्नो छत 1 − 300/400 = 25 प्रतिशत है। दूसरा नियम किसी भी इंजन को उसे पार करने से मना करता है, उसका अभिकल्प चाहे जो हो, अतः यंत्र असंभव है यद्यपि शून्य से कुछ बन नहीं रहा",
+            mr: "ते बांधता येणार नाही. ऊर्जेचे वहीखाते जुळते — 1000 = 800 + 200 — म्हणून पहिला नियम समाधानी, आणि नेमके म्हणूनच पहिला नियम पुरेसा नाही. दावा केलेली कार्यक्षमता 800/1000 = 80 टक्के, पण 400 K आणि 300 K दरम्यानचे कार्नो छत 1 − 300/400 = 25 टक्के. दुसरा नियम कोणत्याही इंजिनाला ते ओलांडण्यास मनाई करतो, त्याची रचना काहीही असो, म्हणून यंत्र अशक्य आहे जरी शून्यातून काही तयार होत नसले तरी",
+          },
+          {
+            en: "It can be built, since energy is conserved and that is the only requirement any machine must meet",
+            hi: "वह बन सकता है, क्योंकि ऊर्जा संरक्षित है और किसी भी यंत्र को यही एकमात्र शर्त पूरी करनी है",
+            mr: "ते बांधता येईल, कारण ऊर्जा संरक्षित आहे आणि कोणत्याही यंत्राला हीच एकमेव अट पूर्ण करावी लागते",
+          },
+          {
+            en: "It cannot be built because it violates the first law, since 800 J of work cannot come from 1000 J of heat",
+            hi: "वह नहीं बन सकता क्योंकि वह पहले नियम का उल्लंघन करता है, चूँकि 1000 J ऊष्मा से 800 J कार्य नहीं आ सकता",
+            mr: "ते बांधता येणार नाही कारण ते पहिल्या नियमाचे उल्लंघन करते, कारण 1000 J उष्णतेतून 800 J कार्य येऊ शकत नाही",
+          },
+          {
+            en: "It can be built provided the working substance is chosen carefully, since efficiency depends on the gas used",
+            hi: "कार्यकारी पदार्थ ध्यान से चुना जाए तो वह बन सकता है, क्योंकि दक्षता प्रयुक्त गैस पर निर्भर है",
+            mr: "कार्यकारी पदार्थ काळजीपूर्वक निवडल्यास ते बांधता येईल, कारण कार्यक्षमता वापरलेल्या वायूवर अवलंबून",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Check the first law before anything else, because if it fails the discussion is over. Over a complete cycle the working substance returns to its starting state, so its internal energy is unchanged and ΔU = 0. The first law then reads Q_in − Q_out = W, or 1000 − 200 = 800. It balances exactly. No energy is created and none disappears. Anyone stopping here would have to approve the design. Now apply the second law, which is a separate and independent restriction. The efficiency claimed is W/Q_in = 800/1000 = 0.8. The greatest efficiency any engine can have between a source at T_hot and a sink at T_cold is the Carnot value, 1 − T_cold/T_hot, and both temperatures must be absolute: 1 − 300/400 = 0.25. The inventor is claiming more than three times the theoretical maximum. The machine is impossible, and no amount of engineering will help. It is worth being precise about what the Carnot limit is and is not. It is not a statement about friction, or about how well the machine is made, or about the working substance — the fourth option's error. Carnot's theorem says explicitly that all reversible engines operating between the same two temperatures have the SAME efficiency regardless of what is inside them, and that no irreversible engine can do better. Substituting helium for steam, or polishing the cylinder walls, moves a real engine closer to 25 per cent but cannot lift the ceiling. The limit follows from the temperatures alone. Where does the ceiling come from? From the fact that heat must be rejected at all. To run in a cycle the working substance has to be returned to its starting state, which means the entropy it gained while absorbing Q_in at T_hot must be discharged, and the only way to discharge entropy is to dump heat at some lower temperature. The rejected 200 J is not waste from careless design; some rejection is structurally required, and the minimum amount is fixed by the ratio of the temperatures. That is the second law's real content: not that energy is lost, but that not all of it is available. Two practical readings follow. First, an engine's efficiency is raised far more effectively by increasing T_hot than by cooling the sink, since T_cold is usually pinned near ambient — which is why power stations chase ever-higher steam temperatures and are limited by what the turbine blades can survive. Second, a claim to have beaten Carnot is a claim to have refuted the second law, and such claims arrive regularly at patent offices, where they are refused on principle without a working model being examined. (The third answer misreads the arithmetic, which does balance, and the second treats energy conservation as the only law there is.)",
+          hi: "किसी और चीज़ से पहले पहला नियम जाँचो, क्योंकि वह विफल हो तो बहस वहीं ख़त्म। पूरे चक्र में कार्यकारी पदार्थ अपनी आरंभिक अवस्था में लौट आता है, अतः उसकी आंतरिक ऊर्जा अपरिवर्तित रहती है और ΔU = 0. तब पहला नियम पढ़ता है Q_अंदर − Q_बाहर = W, यानी 1000 − 200 = 800. यह ठीक-ठीक मिलता है। न कोई ऊर्जा बनती है न लुप्त होती है। जो यहीं रुक जाए उसे अभिकल्प स्वीकृत करना पड़ेगा। अब दूसरा नियम लगाओ, जो अलग और स्वतंत्र प्रतिबंध है। दावा की गई दक्षता W/Q_अंदर = 800/1000 = 0.8 है। T_गरम के स्रोत और T_ठंडा के अवशोषक के बीच किसी भी इंजन की सबसे बड़ी दक्षता कार्नो मान है, 1 − T_ठंडा/T_गरम, और दोनों ताप परम होने चाहिए: 1 − 300/400 = 0.25. आविष्कारक सैद्धांतिक अधिकतम का तीन गुने से अधिक दावा कर रहा है। यंत्र असंभव है, और कितनी भी अभियांत्रिकी काम नहीं आएगी। यह ठीक-ठीक कहना सार्थक है कि कार्नो सीमा क्या है और क्या नहीं। वह घर्षण के बारे में कथन नहीं, न इस बारे में कि यंत्र कितना अच्छा बना है, न कार्यकारी पदार्थ के बारे में — चौथे विकल्प की भूल। कार्नो की प्रमेय स्पष्ट कहती है कि उन्हीं दो तापों के बीच चलते सब उत्क्रमणीय इंजनों की दक्षता एक ही होती है, चाहे उनके भीतर कुछ भी हो, और कोई अनुत्क्रमणीय इंजन उससे बेहतर नहीं कर सकता। भाप की जगह हीलियम रखना, या सिलिंडर की दीवारें चमकाना, असली इंजन को 25 प्रतिशत के पास ले जाता है पर छत ऊपर नहीं उठा सकता। सीमा अकेले तापों से निकलती है। छत आती कहाँ से है? इस तथ्य से कि ऊष्मा लौटानी ही पड़ती है। चक्र में चलने के लिए कार्यकारी पदार्थ को आरंभिक अवस्था में लौटाना पड़ता है, जिसका अर्थ है कि T_गरम पर Q_अंदर सोखते समय उसने जो एन्ट्रॉपी पाई वह निकालनी पड़ेगी, और एन्ट्रॉपी निकालने का एकमात्र रास्ता किसी कम ताप पर ऊष्मा उड़ेलना है। लौटाए गए 200 J लापरवाह अभिकल्प का कचरा नहीं; कुछ लौटाना संरचनात्मक रूप से अनिवार्य है, और न्यूनतम मात्रा तापों के अनुपात से तय है। दूसरे नियम की असली अंतर्वस्तु यही है: यह नहीं कि ऊर्जा खोती है, बल्कि यह कि वह सब उपलब्ध नहीं होती। दो व्यावहारिक पाठ निकलते हैं। पहला, इंजन की दक्षता अवशोषक ठंडा करने की अपेक्षा T_गरम बढ़ाने से कहीं अधिक असरदार ढंग से चढ़ती है, क्योंकि T_ठंडा आम तौर पर परिवेश के पास जड़ा रहता है — इसीलिए बिजलीघर लगातार ऊँचे भाप-ताप का पीछा करते हैं और उन्हें यह सीमित करता है कि टरबाइन के पंखे कितना झेल सकते हैं। दूसरा, कार्नो को हरा देने का दावा दूसरे नियम के खंडन का दावा है, और ऐसे दावे पेटेंट कार्यालयों में नियमित रूप से पहुँचते हैं, जहाँ चालू नमूना जाँचे बिना सिद्धांततः उन्हें अस्वीकार किया जाता है। (तीसरा उत्तर गणित ग़लत पढ़ता है, जो मिलता तो है, और दूसरा ऊर्जा-संरक्षण को एकमात्र नियम मान लेता है।)",
+          mr: "इतर कशाहीआधी पहिला नियम तपासा, कारण तो अपयशी ठरला तर चर्चा तिथेच संपते. पूर्ण चक्रात कार्यकारी पदार्थ आपल्या सुरुवातीच्या अवस्थेत परततो, म्हणून त्याची आंतरिक ऊर्जा अपरिवर्तित आणि ΔU = 0. मग पहिला नियम वाचतो Q_आत − Q_बाहेर = W, म्हणजे 1000 − 200 = 800. ते नेमके जुळते. ना कोणती ऊर्जा तयार होते ना लोप पावते. जो इथेच थांबेल त्याला रचना मंजूर करावी लागेल. आता दुसरा नियम लावा, जो वेगळा आणि स्वतंत्र निर्बंध. दावा केलेली कार्यक्षमता W/Q_आत = 800/1000 = 0.8. T_गरम च्या स्रोत आणि T_थंड च्या शोषकादरम्यान कोणत्याही इंजिनाची सर्वांत मोठी कार्यक्षमता म्हणजे कार्नो मूल्य, 1 − T_थंड/T_गरम, आणि दोन्ही तापमाने निरपेक्ष असावी लागतात: 1 − 300/400 = 0.25. संशोधक सैद्धांतिक कमालच्या तिप्पटीहून अधिक दावा करत आहे. यंत्र अशक्य आहे, आणि कितीही अभियांत्रिकी उपयोगी पडणार नाही. कार्नो मर्यादा काय आहे आणि काय नाही हे नेमके सांगणे सार्थक. ती घर्षणाबद्दलचे विधान नाही, ना यंत्र किती चांगले बनले याबद्दल, ना कार्यकारी पदार्थाबद्दल — चौथ्या पर्यायाची चूक. कार्नोचे प्रमेय स्पष्ट सांगते की त्याच दोन तापमानांदरम्यान चालणाऱ्या सर्व उलटवण्याजोग्या इंजिनांची कार्यक्षमता एकच असते, त्यांच्या आत काहीही असो, आणि कोणतेही न उलटवण्याजोगे इंजिन त्याहून चांगले करू शकत नाही. वाफेऐवजी हेलियम ठेवणे, वा सिलिंडरच्या भिंती चकचकीत करणे, खऱ्या इंजिनाला 25 टक्क्यांजवळ नेते पण छत वर उचलू शकत नाही. मर्यादा केवळ तापमानांतून निघते. छत येते कुठून? या तथ्यातून की उष्णता परत करावीच लागते. चक्रात चालण्यासाठी कार्यकारी पदार्थाला सुरुवातीच्या अवस्थेत परत आणावे लागते, म्हणजे T_गरम वर Q_आत शोषताना त्याने जी एन्ट्रॉपी मिळवली ती काढावी लागेल, आणि एन्ट्रॉपी काढण्याचा एकमेव मार्ग म्हणजे कमी तापमानावर उष्णता ओतणे. परत केलेले 200 J निष्काळजी रचनेचा कचरा नव्हे; काही परत करणे संरचनात्मकदृष्ट्या अपरिहार्य आहे, आणि किमान प्रमाण तापमानांच्या गुणोत्तराने ठरते. दुसऱ्या नियमाचे खरे सार हेच: ऊर्जा हरवते हे नव्हे, तर ती सर्व उपलब्ध नसते हे. दोन व्यावहारिक वाचने निघतात. पहिले, इंजिनाची कार्यक्षमता शोषक थंड करण्यापेक्षा T_गरम वाढवून कितीतरी अधिक प्रभावीपणे चढते, कारण T_थंड सहसा परिसराजवळ जखडलेला असतो — म्हणूनच वीजनिर्मिती केंद्रे सतत अधिक उच्च वाफ-तापमानाचा पाठलाग करतात आणि त्यांना टर्बाइनची पाती किती सोसू शकतात हे मर्यादित करते. दुसरे, कार्नोला हरवल्याचा दावा हा दुसऱ्या नियमाच्या खंडनाचा दावा, आणि असे दावे पेटंट कार्यालयांत नियमितपणे पोहोचतात, जिथे चालू नमुना न तपासता तत्त्वतः ते नाकारले जातात. (तिसरे उत्तर आकडेमोड चुकीची वाचते, जी जुळतेच, आणि दुसरे ऊर्जा-संरक्षणाला एकमेव नियम मानते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A gas is taken from the same initial state to the same final volume twice: once isothermally and once adiabatically. A student says the work done must be the same, since the endpoints of the volume change are identical. Assess this, and say what it reveals about work as a quantity.",
+          hi: "एक गैस को उसी आरंभिक अवस्था से उसी अंतिम आयतन तक दो बार ले जाया जाता है: एक बार समतापी और एक बार रुद्धोष्म। एक विद्यार्थी कहता है कि किया गया कार्य एक ही होना चाहिए, क्योंकि आयतन-परिवर्तन के सिरे समान हैं। इसका आकलन करो, और बताओ कि यह कार्य नामक राशि के बारे में क्या प्रकट करता है।",
+          mr: "एक वायू त्याच सुरुवातीच्या अवस्थेतून त्याच अंतिम घनफळापर्यंत दोनदा नेला जातो: एकदा समतापी आणि एकदा रुद्धोष्म. एक विद्यार्थी म्हणतो की केलेले कार्य एकच असले पाहिजे, कारण घनफळ-बदलाची टोके सारखी आहेत. याचे मूल्यमापन करा, आणि हे कार्य नावाच्या राशीबद्दल काय उघड करते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The isothermal expansion does more work. In the isothermal case heat flows in continuously to hold the temperature up, so the pressure stays higher at every volume and the area under the PV curve is larger. In the adiabatic case no heat enters, the gas cools as it expands, the pressure falls faster and the area is smaller. This shows work is a path function, not a state function: it depends on how the gas got from A to B and has no value at a state at all, unlike internal energy",
+            hi: "समतापी प्रसार अधिक कार्य करता है। समतापी स्थिति में ताप बनाए रखने के लिए ऊष्मा लगातार भीतर बहती है, अतः हर आयतन पर दाब ऊँचा बना रहता है और PV वक्र के नीचे का क्षेत्रफल बड़ा है। रुद्धोष्म स्थिति में कोई ऊष्मा नहीं आती, गैस फैलते हुए ठंडी होती है, दाब तेज़ी से गिरता है और क्षेत्रफल छोटा है। यह दिखाता है कि कार्य पथ-फलन है, अवस्था-फलन नहीं: वह इस पर निर्भर है कि गैस A से B तक पहुँची कैसे और किसी अवस्था पर उसका कोई मान है ही नहीं, आंतरिक ऊर्जा के विपरीत",
+            mr: "समतापी प्रसरण अधिक कार्य करते. समतापी स्थितीत तापमान टिकवायला उष्णता सतत आत वाहते, म्हणून प्रत्येक घनफळावर दाब उंच राहतो आणि PV वक्राखालचे क्षेत्रफळ मोठे. रुद्धोष्म स्थितीत कोणतीही उष्णता येत नाही, वायू प्रसरण पावताना थंड होतो, दाब वेगाने घटतो आणि क्षेत्रफळ लहान. हे दाखवते की कार्य हे मार्ग-फलन आहे, अवस्था-फलन नव्हे: ते वायू A पासून B पर्यंत कसा पोहोचला यावर अवलंबून आणि एखाद्या अवस्थेवर त्याला मूल्यच नाही, आंतरिक ऊर्जेच्या उलट",
+          },
+          {
+            en: "The student is right: work depends only on the initial and final volumes, exactly as internal energy depends only on the state",
+            hi: "विद्यार्थी सही है: कार्य केवल आरंभिक और अंतिम आयतन पर निर्भर है, ठीक वैसे जैसे आंतरिक ऊर्जा केवल अवस्था पर",
+            mr: "विद्यार्थी बरोबर: कार्य केवळ सुरुवातीच्या आणि अंतिम घनफळावर अवलंबून, अगदी तसेच जसे आंतरिक ऊर्जा केवळ अवस्थेवर",
+          },
+          {
+            en: "The adiabatic expansion does more work, because with no heat entering the gas must supply everything from its own internal store",
+            hi: "रुद्धोष्म प्रसार अधिक कार्य करता है, क्योंकि कोई ऊष्मा न आने पर गैस को सब कुछ अपने ही आंतरिक भंडार से देना पड़ता है",
+            mr: "रुद्धोष्म प्रसरण अधिक कार्य करते, कारण कोणतीही उष्णता येत नसताना वायूला सर्व स्वतःच्याच आंतरिक साठ्यातून द्यावे लागते",
+          },
+          {
+            en: "Neither does any work, since the gas returns to the same volume it started from in both cases",
+            hi: "कोई भी कार्य नहीं करता, क्योंकि दोनों स्थितियों में गैस उसी आयतन पर लौट आती है जहाँ से चली थी",
+            mr: "कोणीही कार्य करत नाही, कारण दोन्ही स्थितींत वायू ज्या घनफळापासून निघाला त्याच घनफळावर परततो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Draw both curves from the same starting point on a pressure–volume diagram and the answer is visible before any algebra. The work done by an expanding gas is the area under its PV curve, so the comparison is a comparison of two areas from the same start to the same final volume. The isothermal path follows PV = constant. As the gas expands and does work it would naturally cool, but heat flows in from the reservoir to prevent that, so the temperature — and with it the pressure at any given volume — is propped up throughout. The adiabatic path follows PVᵞ = constant with γ greater than one, so it is steeper. No heat is available, so the work must be paid for out of the internal energy, the gas cools, and the pressure at every volume beyond the start is lower than on the isothermal curve. Lower pressure over the same volume range means less area, so less work. Now put the first law against each. Isothermal: ΔU = 0 for an ideal gas because the temperature has not changed, so Q = W — every joule of work came in as heat from outside, and the gas ends with the internal energy it began with. Adiabatic: Q = 0 by definition, so ΔU = −W — the work came entirely out of the gas's own store, and it ends cooler. Two different books, two different totals, the same two volumes. That is the lesson worth extracting. Internal energy is a STATE function: it has a definite value for a given temperature and amount of gas, so ΔU between two states is fixed no matter how you travel. Heat and work are not. Asking 'how much work does this gas have' is a category error, like asking how many kilometres a city has; work is something that happens during a journey, and different journeys between the same two places cover different distances. That is why the first law is written with ΔU on one side and Q and W on the other: only one of the three is a property of the state. The distinction has a practical edge. Since the isothermal path returns the gas to its original temperature while the adiabatic one leaves it cold, an engine designer choosing between them is choosing where the energy comes from and what condition the gas is in for the next stroke. A Carnot cycle uses both deliberately — isothermal legs to exchange heat with the reservoirs and adiabatic legs to move between temperatures without exchanging any — and that combination is precisely what makes it reversible and gives it the maximum possible efficiency. (The third answer confuses where the energy came from with how much of it there was, and the fourth misreads an expansion as a closed cycle.)",
+          hi: "दोनों वक्र दाब-आयतन आरेख पर उसी आरंभ-बिंदु से खींचो और उत्तर किसी बीजगणित से पहले दिख जाता है। फैलती गैस द्वारा किया गया कार्य उसके PV वक्र के नीचे का क्षेत्रफल है, अतः तुलना उसी आरंभ से उसी अंतिम आयतन तक दो क्षेत्रफलों की तुलना है। समतापी पथ PV = अचर पर चलता है। गैस फैलते और कार्य करते हुए स्वाभाविक रूप से ठंडी होती, पर भंडार से ऊष्मा भीतर बहकर उसे रोकती है, अतः ताप — और उसके साथ किसी भी दिए आयतन पर दाब — पूरे समय थमा रहता है। रुद्धोष्म पथ PVᵞ = अचर पर चलता है जहाँ γ एक से बड़ा है, अतः वह अधिक ढालू है। कोई ऊष्मा उपलब्ध नहीं, अतः कार्य की क़ीमत आंतरिक ऊर्जा से चुकानी पड़ती है, गैस ठंडी होती है, और आरंभ के आगे हर आयतन पर दाब समतापी वक्र से नीचा है। उसी आयतन-परास में नीचा दाब कम क्षेत्रफल देता है, अतः कम कार्य। अब हर एक के सामने पहला नियम रखो। समतापी: आदर्श गैस के लिए ΔU = 0 क्योंकि ताप बदला नहीं, अतः Q = W — कार्य का हर जूल बाहर से ऊष्मा बनकर आया, और गैस उसी आंतरिक ऊर्जा के साथ समाप्त होती है जिससे शुरू हुई थी। रुद्धोष्म: परिभाषा से Q = 0, अतः ΔU = −W — कार्य पूरी तरह गैस के अपने भंडार से निकला, और वह अधिक ठंडी समाप्त होती है। दो भिन्न बहीखाते, दो भिन्न जोड़, वही दो आयतन। यही निकालने योग्य सबक़ है। आंतरिक ऊर्जा अवस्था-फलन है: दिए गए ताप और गैस-मात्रा के लिए उसका निश्चित मान है, अतः दो अवस्थाओं के बीच ΔU तय है चाहे तुम कैसे भी यात्रा करो। ऊष्मा और कार्य नहीं। 'इस गैस के पास कितना कार्य है' पूछना श्रेणी-भूल है, जैसे पूछना कि किसी नगर के पास कितने किलोमीटर हैं; कार्य वह है जो यात्रा के दौरान घटता है, और उन्हीं दो जगहों के बीच भिन्न यात्राएँ भिन्न दूरियाँ तय करती हैं। इसीलिए पहला नियम एक ओर ΔU और दूसरी ओर Q तथा W के साथ लिखा जाता है: तीनों में केवल एक अवस्था का गुण है। इस भेद की व्यावहारिक धार है। चूँकि समतापी पथ गैस को उसके मूल ताप पर लौटा देता है जबकि रुद्धोष्म उसे ठंडा छोड़ देता है, दोनों में से चुनता इंजन-अभिकल्पक यह चुन रहा है कि ऊर्जा आएगी कहाँ से और अगले स्ट्रोक के लिए गैस किस दशा में होगी। कार्नो चक्र दोनों को जानबूझकर लगाता है — भंडारों से ऊष्मा का आदान-प्रदान करने को समतापी चरण और बिना कोई आदान-प्रदान किए तापों के बीच जाने को रुद्धोष्म चरण — और वही संयोजन उसे उत्क्रमणीय बनाता है और अधिकतम संभव दक्षता देता है। (तीसरा उत्तर यह गड्डमड्ड करता है कि ऊर्जा आई कहाँ से और वह कितनी थी, और चौथा प्रसार को बंद चक्र पढ़ लेता है।)",
+          mr: "दोन्ही वक्र दाब-घनफळ आकृतीवर त्याच आरंभबिंदूतून काढा आणि उत्तर कोणत्याही बीजगणिताआधी दिसते. प्रसरण पावणाऱ्या वायूने केलेले कार्य म्हणजे त्याच्या PV वक्राखालचे क्षेत्रफळ, म्हणून तुलना त्याच आरंभापासून त्याच अंतिम घनफळापर्यंतच्या दोन क्षेत्रफळांची. समतापी मार्ग PV = अचल वर चालतो. वायू प्रसरण पावत आणि कार्य करत नैसर्गिकपणे थंड झाला असता, पण साठ्यातून उष्णता आत वाहून ते रोखते, म्हणून तापमान — आणि त्यासोबत कोणत्याही दिलेल्या घनफळावरचा दाब — पूर्ण काळ आधारलेला राहतो. रुद्धोष्म मार्ग PVᵞ = अचल वर चालतो जिथे γ एकाहून मोठा, म्हणून तो अधिक तीव्र. कोणतीही उष्णता उपलब्ध नाही, म्हणून कार्याची किंमत आंतरिक ऊर्जेतून द्यावी लागते, वायू थंड होतो, आणि आरंभाच्या पुढे प्रत्येक घनफळावर दाब समतापी वक्राहून खालचा. त्याच घनफळ-पल्ल्यात कमी दाब कमी क्षेत्रफळ देतो, म्हणून कमी कार्य. आता प्रत्येकासमोर पहिला नियम ठेवा. समतापी: आदर्श वायूसाठी ΔU = 0 कारण तापमान बदलले नाही, म्हणून Q = W — कार्याचे प्रत्येक ज्यूल बाहेरून उष्णता बनून आले, आणि वायू ज्या आंतरिक ऊर्जेने सुरू झाला त्याच ऊर्जेने संपतो. रुद्धोष्म: व्याख्येने Q = 0, म्हणून ΔU = −W — कार्य पूर्णपणे वायूच्या स्वतःच्या साठ्यातून निघाले, आणि तो अधिक थंड संपतो. दोन वेगळी वहीखाती, दोन वेगळ्या बेरजा, तीच दोन घनफळे. हाच काढण्याजोगा धडा. आंतरिक ऊर्जा हे अवस्था-फलन: दिलेल्या तापमानासाठी आणि वायूच्या प्रमाणासाठी तिचे निश्चित मूल्य, म्हणून दोन अवस्थांमधले ΔU ठरलेले, तुम्ही कसाही प्रवास करा. उष्णता आणि कार्य नाहीत. 'या वायूकडे किती कार्य आहे' विचारणे ही वर्ग-चूक, जसे विचारणे की एखाद्या शहराकडे किती किलोमीटर आहेत; कार्य ही प्रवासादरम्यान घडणारी गोष्ट, आणि त्याच दोन जागांमधले वेगळे प्रवास वेगळी अंतरे कापतात. म्हणूनच पहिला नियम एका बाजूला ΔU आणि दुसऱ्या बाजूला Q व W सह लिहिला जातो: तिघांपैकी केवळ एक अवस्थेचा गुणधर्म. या भेदाला व्यावहारिक धार आहे. समतापी मार्ग वायूला त्याच्या मूळ तापमानावर परत आणतो तर रुद्धोष्म त्याला थंड ठेवतो, म्हणून दोघांतून निवडणारा इंजिन-आखणीकार हे निवडत आहे की ऊर्जा येणार कुठून आणि पुढच्या स्ट्रोकसाठी वायू कोणत्या स्थितीत असेल. कार्नो चक्र दोन्ही मुद्दाम वापरते — साठ्यांशी उष्णतेची देवाणघेवाण करायला समतापी टप्पे आणि कोणतीही देवाणघेवाण न करता तापमानांदरम्यान जायला रुद्धोष्म टप्पे — आणि तेच संयोजन त्याला उलटवण्याजोगे बनवते आणि जास्तीत जास्त शक्य कार्यक्षमता देते. (तिसरे उत्तर ऊर्जा कुठून आली आणि ती किती होती यांची गल्लत करते, आणि चौथे प्रसरणाला बंद चक्र वाचते.)",
+        },
+      },
+      /*H11*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Kinetic Theory                                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-kinetic-theory",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 12 — Kinetic Theory",
+      hi: "अध्याय 12 — अणुगति सिद्धांत",
+      mr: "प्रकरण 12 — रेणुगती सिद्धांत",
+    },
+    name: {
+      en: "Kinetic Theory",
+      hi: "अणुगति सिद्धांत",
+      mr: "रेणुगती सिद्धांत",
+    },
+    summary: {
+      en: "The chapter that explains where thermodynamics came from: pressure turns out to be nothing but molecules drumming on a wall, temperature nothing but their average kinetic energy, and the gas laws fall out of Newton's laws applied to a great many tiny particles. A speed that depends on mass, an energy shared equally among every way a molecule can move, and a distance between collisions that explains why a smell crosses a room so slowly.",
+      hi: "वह अध्याय जो बताता है कि ऊष्मागतिकी आई कहाँ से: दाब निकलता है दीवार पर अणुओं की थपथपाहट के सिवा कुछ नहीं, ताप उनकी औसत गतिज ऊर्जा के सिवा कुछ नहीं, और गैस-नियम अनगिनत नन्हे कणों पर लगे न्यूटन के नियमों से अपने-आप निकल आते हैं। वह चाल जो द्रव्यमान पर निर्भर है, वह ऊर्जा जो अणु के हिलने के हर तरीक़े में बराबर बँटती है, और टक्करों के बीच की वह दूरी जो समझाती है कि गंध कमरा पार करने में इतनी देर क्यों लगाती है।",
+      mr: "ते प्रकरण जे सांगते की उष्मागतिकी आली कुठून: दाब निघतो भिंतीवर रेणूंच्या थापांशिवाय काहीच नाही, तापमान त्यांच्या सरासरी गतिज ऊर्जेशिवाय काहीच नाही, आणि वायुनियम असंख्य इवल्या कणांवर लावलेल्या न्यूटनच्या नियमांतून आपोआप निघतात. ती चाल जी वस्तुमानावर अवलंबून, ती ऊर्जा जी रेणू हलू शकेल अशा प्रत्येक मार्गात समान वाटली जाते, आणि टक्करींमधले ते अंतर जे समजावते की वास खोली ओलांडायला इतका वेळ का लावतो.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "kinetic-model-assumptions",
+        name: {
+          en: "The kinetic model's assumptions",
+          hi: "अणुगति निदर्श की मान्यताएँ",
+          mr: "रेणुगती प्रतिरूपाची गृहीतके",
+        },
+        kind: "model",
+        prompt: {
+          en: "Molecules of negligible size, in ceaseless random motion, exerting no force on each other except during perfectly elastic collisions that take no time at all — a deliberately simplified picture from which the gas laws are derived. Which set is this?",
+          hi: "नगण्य आकार के अणु, निरंतर यादृच्छिक गति में, जो पूर्णतः प्रत्यास्थ और शून्य-कालिक टक्करों के अलावा एक-दूसरे पर कोई बल नहीं लगाते — जानबूझकर सरल किया गया चित्र जिससे गैस-नियम निकाले जाते हैं। यह कौन-सा समुच्चय है?",
+          mr: "नगण्य आकाराचे रेणू, अखंड यादृच्छिक गतीत, जे पूर्णतः प्रत्यास्थ आणि शून्य-कालिक टक्करींशिवाय एकमेकांवर कोणतेही बल लावत नाहीत — मुद्दाम सोपे केलेले चित्र ज्यातून वायुनियम काढले जातात. हा कोणता संच?",
+        },
+        statement: {
+          en: "The kinetic model assumes point-like molecules in random motion with no intermolecular forces except in perfectly elastic instantaneous collisions, and it derives the gas laws from Newtonian mechanics alone.",
+          hi: "अणुगति निदर्श यादृच्छिक गति में बिंदुवत अणु मानता है जिनके बीच पूर्णतः प्रत्यास्थ तात्क्षणिक टक्करों के सिवा कोई अंतराणुक बल नहीं, और वह गैस-नियम केवल न्यूटनी यांत्रिकी से निकालता है।",
+          mr: "रेणुगती प्रतिरूप यादृच्छिक गतीत बिंदूसारखे रेणू गृहीत धरते ज्यांच्यात पूर्णतः प्रत्यास्थ तात्कालिक टक्करींशिवाय कोणतेही आंतररेणवीय बल नाही, आणि ते वायुनियम केवळ न्यूटनी यामिकीतून काढते.",
+        },
+        detail: {
+          en: "The assumptions are known to be false and are kept because they are nearly true at ordinary pressures, where molecules occupy about a thousandth of the volume and spend almost all their time far apart.",
+          hi: "मान्यताएँ झूठी हैं यह ज्ञात है और वे इसलिए रखी जाती हैं कि साधारण दाबों पर वे लगभग सच हैं, जहाँ अणु आयतन का लगभग हज़ारवाँ भाग घेरते हैं और अपना अधिकांश समय दूर-दूर बिताते हैं।",
+          mr: "गृहीतके खोटी आहेत हे माहीत आहे आणि ती यासाठी ठेवली जातात की सामान्य दाबांवर ती जवळपास खरी असतात, जिथे रेणू घनफळाचा सुमारे हजारावा भाग व्यापतात आणि आपला बहुतांश काळ दूरदूर घालवतात.",
+        },
+        extra: {
+          en: "A real gas departs from the model exactly where the assumptions fail — at high pressure, where molecular volume matters, and at low temperature, where attractions matter and the gas eventually condenses.",
+          hi: "असली गैस ठीक वहीं निदर्श से हटती है जहाँ मान्यताएँ विफल होती हैं — ऊँचे दाब पर, जहाँ अणुओं का आयतन मायने रखता है, और नीचे ताप पर, जहाँ आकर्षण मायने रखते हैं और गैस अंततः संघनित हो जाती है।",
+          mr: "खरा वायू नेमका तिथेच प्रतिरूपापासून ढळतो जिथे गृहीतके अपयशी ठरतात — उच्च दाबावर, जिथे रेणूंचे घनफळ महत्त्वाचे, आणि कमी तापमानावर, जिथे आकर्षणे महत्त्वाची आणि वायू अखेर द्रवीभूत होतो.",
+        },
+        pair: {
+          left: {
+            en: "Known to be false and kept anyway",
+            hi: "झूठी जानी जाती हैं और फिर भी रखी जाती हैं",
+            mr: "खोटी माहीत आहेत आणि तरीही ठेवली जातात",
+          },
+          right: {
+            en: "the kinetic model's assumptions",
+            hi: "अणुगति निदर्श की मान्यताएँ",
+            mr: "रेणुगती प्रतिरूपाची गृहीतके",
+          },
+        },
+      },
+      {
+        id: "pressure-from-bombardment",
+        name: {
+          en: "Pressure from molecular bombardment",
+          hi: "अणु-बौछार से दाब",
+          mr: "रेणु-माऱ्यातून दाब",
+        },
+        kind: "model",
+        prompt: {
+          en: "A wall feels a steady push although it is being struck by countless separate particles, because each rebound reverses a momentum and the impacts are far too frequent to be felt one at a time. Which explanation is this?",
+          hi: "दीवार को स्थिर धक्का महसूस होता है यद्यपि उस पर अनगिनत अलग-अलग कण टकरा रहे हैं, क्योंकि हर पलटाव एक संवेग उलट देता है और आघात इतने बारंबार हैं कि एक-एक करके महसूस ही नहीं होते। यह कौन-सी व्याख्या है?",
+          mr: "भिंतीला स्थिर रेटा जाणवतो जरी तिच्यावर असंख्य वेगवेगळे कण आदळत असले तरी, कारण प्रत्येक परतफेड एक संवेग उलटवते आणि आघात इतके वारंवार की एकेक करून जाणवतच नाहीत. हे कोणते स्पष्टीकरण?",
+        },
+        statement: {
+          en: "Pressure arises from the rate at which molecules transfer momentum to a wall, and the theory gives P = ⅓ρv²_rms, connecting a bulk measurement to molecular speeds.",
+          hi: "दाब उस दर से उत्पन्न होता है जिससे अणु दीवार को संवेग सौंपते हैं, और सिद्धांत P = ⅓ρv²_rms देता है, जो स्थूल माप को अणुओं की चालों से जोड़ देता है।",
+          mr: "दाब त्या दरातून निर्माण होतो ज्याने रेणू भिंतीला संवेग देतात, आणि सिद्धांत P = ⅓ρv²_rms देतो, जो स्थूल मापाला रेणूंच्या चालींशी जोडतो.",
+        },
+        detail: {
+          en: "The factor of one third comes from the three directions being equally likely, so only a third of the mean square speed belongs to motion along any one axis.",
+          hi: "एक-तिहाई का गुणक इससे आता है कि तीनों दिशाएँ समान रूप से संभावित हैं, अतः माध्य वर्ग चाल का केवल एक तिहाई किसी एक अक्ष के अनुदिश गति का है।",
+          mr: "एक-तृतीयांशाचा गुणक यातून येतो की तिन्ही दिशा सारख्याच संभाव्य, म्हणून मध्य वर्ग चालीचा केवळ एक तृतीयांश कोणत्याही एका अक्षाच्या दिशेच्या गतीचा.",
+        },
+        extra: {
+          en: "The same reasoning explains Boyle's law directly: halve the volume and each molecule hits the walls twice as often over the same area, so the pressure doubles.",
+          hi: "वही तर्क बॉयल का नियम सीधे समझाता है: आयतन आधा करो और हर अणु उसी क्षेत्रफल पर दुगुनी बार टकराता है, अतः दाब दुगुना हो जाता है।",
+          mr: "तोच युक्तिवाद बॉयलचा नियम थेट समजावतो: घनफळ निम्मे करा आणि प्रत्येक रेणू त्याच क्षेत्रफळावर दुप्पट वेळा आदळतो, म्हणून दाब दुप्पट होतो.",
+        },
+        pair: {
+          left: {
+            en: "Countless separate blows felt as one steady push",
+            hi: "अनगिनत अलग आघात, महसूस एक स्थिर धक्के जैसे",
+            mr: "असंख्य वेगळे आघात, जाणवतात एका स्थिर रेट्यासारखे",
+          },
+          right: {
+            en: "pressure from molecular bombardment",
+            hi: "अणु-बौछार से दाब",
+            mr: "रेणु-माऱ्यातून दाब",
+          },
+        },
+      },
+      {
+        id: "temperature-as-kinetic-energy",
+        name: {
+          en: "Temperature as mean kinetic energy",
+          hi: "औसत गतिज ऊर्जा के रूप में ताप",
+          mr: "सरासरी गतिज ऊर्जा म्हणून तापमान",
+        },
+        kind: "model",
+        prompt: {
+          en: "Hydrogen and oxygen in the same room, at the same reading on the same thermometer, have molecules of wildly different speeds but of exactly equal average translational energy. Which identification is this?",
+          hi: "एक ही कमरे में, उसी तापमापी पर उसी पाठ्यांक पर, हाइड्रोजन और ऑक्सीजन के अणुओं की चालें बहुत भिन्न हैं पर औसत स्थानांतरण ऊर्जा ठीक बराबर। यह कौन-सा तादात्म्य है?",
+          mr: "एकाच खोलीत, त्याच तापमापकावर त्याच वाचनावर, हायड्रोजन आणि ऑक्सिजनच्या रेणूंच्या चाली फार वेगळ्या पण सरासरी स्थानांतरणी ऊर्जा नेमकी समान. हे कोणते तादात्म्य?",
+        },
+        statement: {
+          en: "The absolute temperature is proportional to the average translational kinetic energy of a molecule, which is three-halves of kT whatever the gas, so temperature measures energy per molecule and not speed.",
+          hi: "परम ताप अणु की औसत स्थानांतरण गतिज ऊर्जा का समानुपाती है, जो गैस चाहे जो हो kT का डेढ़ गुना है, अतः ताप प्रति अणु ऊर्जा नापता है, चाल नहीं।",
+          mr: "निरपेक्ष तापमान रेणूच्या सरासरी स्थानांतरणी गतिज ऊर्जेच्या समानुपाती, जी वायू कोणताही असो kT च्या दीडपट असते, म्हणून तापमान प्रति रेणू ऊर्जा मोजते, चाल नव्हे.",
+        },
+        detail: {
+          en: "It follows that absolute zero is where that motion would stop, which is why no temperature below it exists and why the kelvin scale starts there rather than at an arbitrary freezing point.",
+          hi: "इससे निकलता है कि परम शून्य वहाँ है जहाँ वह गति रुक जाती, इसीलिए उससे नीचे कोई ताप नहीं है और इसीलिए केल्विन मापक्रम किसी मनमाने हिमांक के बजाय वहीं से शुरू होता है।",
+          mr: "यातून निघते की निरपेक्ष शून्य तिथे जिथे ती गती थांबली असती, म्हणूनच त्याखाली कोणतेही तापमान नाही आणि म्हणूनच केल्विन मापनश्रेणी कोणत्याही मनमानी गोठणबिंदूऐवजी तिथूनच सुरू होते.",
+        },
+        extra: {
+          en: "It also explains why a light gas leaks from a container faster than a heavy one: equal energies mean the lighter molecules are moving faster, and speed is what carries them through a small hole.",
+          hi: "इसी से यह भी समझ आता है कि हल्की गैस पात्र से भारी गैस की अपेक्षा तेज़ी से रिसती है: बराबर ऊर्जाओं का अर्थ है कि हल्के अणु तेज़ चल रहे हैं, और छोटे छिद्र से उन्हें ले जाती है चाल।",
+          mr: "यामुळेच हेही समजते की हलका वायू भांड्यातून जड वायूहून वेगाने गळतो: समान ऊर्जांचा अर्थ हलके रेणू अधिक वेगाने जात आहेत, आणि लहान छिद्रातून त्यांना नेते ती चाल.",
+        },
+        pair: {
+          left: {
+            en: "Different speeds, identical average energy",
+            hi: "भिन्न चालें, समान औसत ऊर्जा",
+            mr: "वेगळ्या चाली, समान सरासरी ऊर्जा",
+          },
+          right: {
+            en: "temperature as mean kinetic energy",
+            hi: "औसत गतिज ऊर्जा के रूप में ताप",
+            mr: "सरासरी गतिज ऊर्जा म्हणून तापमान",
+          },
+        },
+      },
+      {
+        id: "root-mean-square-speed",
+        name: {
+          en: "The root-mean-square speed",
+          hi: "वर्ग-माध्य-मूल चाल",
+          mr: "वर्ग-मध्य-मूळ चाल",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "Squares are averaged first and the root taken afterwards, because the plain average of the velocities of a gas at rest in its container is zero and says nothing at all. Which speed is this?",
+          hi: "पहले वर्गों का औसत लिया जाता है और मूल बाद में, क्योंकि अपने पात्र में विराम में रखी गैस के वेगों का सादा औसत शून्य है और कुछ भी नहीं कहता। यह कौन-सी चाल है?",
+          mr: "आधी वर्गांची सरासरी घेतली जाते आणि मूळ नंतर, कारण आपल्या भांड्यात स्थिर असलेल्या वायूच्या वेगांची साधी सरासरी शून्य आहे आणि काहीही सांगत नाही. ही कोणती चाल?",
+        },
+        statement: {
+          en: "The root-mean-square speed is √(3RT/M), so at a given temperature a lighter gas moves faster, in inverse proportion to the square root of its molar mass.",
+          hi: "वर्ग-माध्य-मूल चाल √(3RT/M) है, अतः दिए गए ताप पर हल्की गैस तेज़ चलती है, अपने मोलर द्रव्यमान के वर्गमूल के व्युत्क्रमानुपात में।",
+          mr: "वर्ग-मध्य-मूळ चाल √(3RT/M), म्हणून दिलेल्या तापमानावर हलका वायू अधिक वेगाने जातो, आपल्या मोलर वस्तुमानाच्या वर्गमुळाच्या व्यस्त प्रमाणात.",
+        },
+        detail: {
+          en: "At room temperature it is around 500 m/s for oxygen and about 1900 m/s for hydrogen, both faster than a rifle bullet, and the molecules of the air in a room are moving at this speed right now.",
+          hi: "कमरे के ताप पर वह ऑक्सीजन के लिए लगभग 500 m/s और हाइड्रोजन के लिए लगभग 1900 m/s है, दोनों बंदूक की गोली से तेज़, और कमरे की हवा के अणु अभी इसी चाल से चल रहे हैं।",
+          mr: "खोलीच्या तापमानावर ती ऑक्सिजनसाठी सुमारे 500 m/s आणि हायड्रोजनसाठी सुमारे 1900 m/s, दोन्ही बंदुकीच्या गोळीहून वेगवान, आणि खोलीतल्या हवेचे रेणू आत्ता याच चालीने जात आहेत.",
+        },
+        extra: {
+          en: "It explains why the Earth has kept its nitrogen and oxygen but lost almost all its hydrogen and helium, whose fastest molecules exceed the escape speed at the top of the atmosphere.",
+          hi: "यही समझाता है कि पृथ्वी ने नाइट्रोजन और ऑक्सीजन क्यों रखी पर हाइड्रोजन तथा हीलियम लगभग सारी खो दी, जिनके सबसे तेज़ अणु वायुमंडल के शिखर पर पलायन चाल पार कर जाते हैं।",
+          mr: "हेच समजावते की पृथ्वीने नायट्रोजन आणि ऑक्सिजन का राखले पण हायड्रोजन व हेलियम जवळपास सर्व गमावले, ज्यांचे सर्वांत वेगवान रेणू वातावरणाच्या शिखरावर मुक्ती चाल ओलांडतात.",
+        },
+        pair: {
+          left: {
+            en: "Square first, because the plain average is zero",
+            hi: "पहले वर्ग, क्योंकि सादा औसत शून्य है",
+            mr: "आधी वर्ग, कारण साधी सरासरी शून्य आहे",
+          },
+          right: {
+            en: "the root-mean-square speed",
+            hi: "वर्ग-माध्य-मूल चाल",
+            mr: "वर्ग-मध्य-मूळ चाल",
+          },
+        },
+      },
+      {
+        id: "equipartition-of-energy",
+        name: {
+          en: "Equipartition of energy",
+          hi: "ऊर्जा का समविभाजन",
+          mr: "ऊर्जेचे समविभाजन",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "Every independent way a molecule can hold energy — each direction it can move, each axis it can spin about — receives on average exactly the same share, namely ½kT. Which principle is this?",
+          hi: "अणु के पास ऊर्जा रखने का हर स्वतंत्र तरीक़ा — हर दिशा जिसमें वह चल सकता है, हर अक्ष जिसके परितः वह घूम सकता है — औसतन ठीक वही हिस्सा पाता है, यानी ½kT. यह कौन-सा सिद्धांत है?",
+          mr: "रेणूकडे ऊर्जा ठेवण्याचा प्रत्येक स्वतंत्र मार्ग — प्रत्येक दिशा जिच्यात तो जाऊ शकतो, प्रत्येक अक्ष ज्याभोवती तो फिरू शकतो — सरासरी नेमका तोच वाटा मिळवतो, म्हणजे ½kT. हे कोणते तत्त्व?",
+        },
+        statement: {
+          en: "The equipartition theorem gives each degree of freedom an average energy of ½kT per molecule, so a gas's internal energy depends on how many ways its molecules can move and not on what they are made of.",
+          hi: "समविभाजन प्रमेय हर स्वातंत्र्य-कोटि को प्रति अणु ½kT औसत ऊर्जा देती है, अतः गैस की आंतरिक ऊर्जा इस पर निर्भर है कि उसके अणु कितने तरीक़ों से चल सकते हैं, इस पर नहीं कि वे किसके बने हैं।",
+          mr: "समविभाजन प्रमेय प्रत्येक स्वातंत्र्यकोटीला प्रति रेणू ½kT सरासरी ऊर्जा देते, म्हणून वायूची आंतरिक ऊर्जा त्याचे रेणू किती मार्गांनी हलू शकतात यावर अवलंबून, ते कशाचे बनले आहेत यावर नाही.",
+        },
+        detail: {
+          en: "A monatomic gas has three degrees of freedom and a rigid diatomic one five, which is why their molar heat capacities stand in the ratio 3 to 5 and their γ values differ.",
+          hi: "एकपरमाणुक गैस की तीन स्वातंत्र्य-कोटियाँ हैं और दृढ़ द्विपरमाणुक की पाँच, इसीलिए उनकी मोलर ऊष्मा धारिताएँ 3 और 5 के अनुपात में हैं और उनके γ भिन्न हैं।",
+          mr: "एकअणुक वायूला तीन स्वातंत्र्यकोटी आणि दृढ द्विअणुकाला पाच, म्हणूनच त्यांच्या मोलर उष्णता धारकता 3 आणि 5 च्या गुणोत्तरात आणि त्यांचे γ वेगळे.",
+        },
+        extra: {
+          en: "The theorem's failure at low temperatures was one of the first cracks in classical physics: vibrational modes simply stop contributing, and only quantum mechanics explains why they can be switched off.",
+          hi: "नीचे तापों पर इस प्रमेय की विफलता चिरसम्मत भौतिकी की पहली दरारों में से थी: कंपन-प्रकार योगदान देना बस बंद कर देते हैं, और केवल क्वांटम यांत्रिकी समझाती है कि वे बंद कैसे हो सकते हैं।",
+          mr: "कमी तापमानांवर या प्रमेयाचे अपयश हे अभिजात भौतिकीतील पहिल्या भेगांपैकी एक: कंपन-प्रकार वाटा देणे फक्त थांबवतात, आणि केवळ पुंज यामिकी समजावते की ते बंद कसे होऊ शकतात.",
+        },
+        pair: {
+          left: {
+            en: "Every way of moving gets the same ½kT",
+            hi: "हिलने के हर तरीक़े को वही ½kT मिलता है",
+            mr: "हलण्याच्या प्रत्येक मार्गाला तेच ½kT मिळते",
+          },
+          right: {
+            en: "equipartition of energy",
+            hi: "ऊर्जा का समविभाजन",
+            mr: "ऊर्जेचे समविभाजन",
+          },
+        },
+      },
+      {
+        id: "mean-free-path",
+        name: {
+          en: "The mean free path",
+          hi: "माध्य मुक्त पथ",
+          mr: "मध्य मुक्त मार्ग",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "Molecules cross a room at five hundred metres a second and yet a smell takes minutes to arrive, because each one travels only a fraction of a micrometre before being knocked off course. Which quantity is this?",
+          hi: "अणु कमरा पाँच सौ मीटर प्रति सेकंड से पार करते हैं और फिर भी गंध पहुँचने में मिनट लगाती है, क्योंकि हर अणु राह से हटाए जाने से पहले माइक्रोमीटर के अंश भर ही चलता है। यह कौन-सी राशि है?",
+          mr: "रेणू खोली पाचशे मीटर प्रति सेकंदाने ओलांडतात आणि तरीही वासाला पोहोचायला मिनिटे लागतात, कारण प्रत्येक रेणू वाटेवरून ढकलला जाण्याआधी मायक्रोमीटरच्या अंशभरच जातो. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The mean free path is the average distance a molecule travels between successive collisions, and it is inversely proportional to the number of molecules per unit volume and to their cross-section.",
+          hi: "माध्य मुक्त पथ वह औसत दूरी है जो अणु लगातार दो टक्करों के बीच तय करता है, और वह प्रति एकांक आयतन अणुओं की संख्या तथा उनके अनुप्रस्थ काट के व्युत्क्रमानुपाती है।",
+          mr: "मध्य मुक्त मार्ग म्हणजे रेणू सलग दोन टक्करींदरम्यान कापणारे सरासरी अंतर, आणि तो प्रति एकक घनफळ रेणूंची संख्या आणि त्यांचा आडवा छेद यांच्या व्यस्तानुपाती.",
+        },
+        detail: {
+          en: "In air at ordinary pressure it is around seventy nanometres, so a molecule suffers some thousands of millions of collisions every second and its path is a wandering zig-zag rather than a line.",
+          hi: "साधारण दाब पर हवा में वह लगभग सत्तर नैनोमीटर है, अतः अणु हर सेकंड कई अरब टक्करें झेलता है और उसका पथ रेखा नहीं बल्कि भटकती टेढ़ी-मेढ़ी लकीर है।",
+          mr: "सामान्य दाबावर हवेत तो सुमारे सत्तर नॅनोमीटर, म्हणून रेणू दर सेकंदाला कित्येक अब्ज टक्करी सोसतो आणि त्याचा मार्ग रेषा नव्हे तर भटकणारी नागमोडी रेघ.",
+        },
+        extra: {
+          en: "Lowering the pressure lengthens it, and in a good vacuum tube it exceeds the length of the tube, so molecules fly straight from wall to wall without meeting each other at all.",
+          hi: "दाब घटाने से वह लंबा होता है, और अच्छी निर्वात नली में वह नली की लंबाई से भी अधिक हो जाता है, अतः अणु एक-दूसरे से मिले बिना सीधे दीवार से दीवार तक उड़ते हैं।",
+          mr: "दाब घटवल्याने तो लांब होतो, आणि चांगल्या निर्वात नळीत तो नळीच्या लांबीहूनही अधिक होतो, म्हणून रेणू एकमेकांना न भेटता थेट भिंतीपासून भिंतीपर्यंत उडतात.",
+        },
+        pair: {
+          left: {
+            en: "Five hundred metres a second and minutes to cross a room",
+            hi: "पाँच सौ मीटर प्रति सेकंड, और कमरा पार करने में मिनट",
+            mr: "पाचशे मीटर प्रति सेकंद, आणि खोली ओलांडायला मिनिटे",
+          },
+          right: {
+            en: "the mean free path",
+            hi: "माध्य मुक्त पथ",
+            mr: "मध्य मुक्त मार्ग",
+          },
+        },
+      },
+      /*F12*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A cylinder holds a mixture of hydrogen and oxygen at a single uniform temperature. A student says the hydrogen must be hotter, because its molecules are moving about four times faster. Assess this, and say what the two gases do and do not share.",
+          hi: "एक सिलिंडर में हाइड्रोजन और ऑक्सीजन का मिश्रण एक ही समान ताप पर है। एक विद्यार्थी कहता है कि हाइड्रोजन अधिक गरम होगी, क्योंकि उसके अणु लगभग चार गुना तेज़ चल रहे हैं। इसका आकलन करो, और बताओ कि दोनों गैसें क्या साझा करती हैं और क्या नहीं।",
+          mr: "एका सिलिंडरमध्ये हायड्रोजन आणि ऑक्सिजनचे मिश्रण एकाच समान तापमानावर आहे. एक विद्यार्थी म्हणतो की हायड्रोजन अधिक गरम असेल, कारण त्याचे रेणू सुमारे चौपट वेगाने जात आहेत. याचे मूल्यमापन करा, आणि दोन्ही वायू काय वाटून घेतात आणि काय नाही ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The speeds are right and the conclusion is wrong. Temperature measures average translational kinetic energy, ½mv², not speed. Oxygen molecules are sixteen times heavier, so at equal energy their speeds are four times smaller — the mass and the square of the speed compensate exactly. The two gases share the same temperature and the same average kinetic energy per molecule, and differ in speed, in momentum and in how fast they diffuse or leak through a hole",
+            hi: "चालें सही हैं और निष्कर्ष ग़लत। ताप औसत स्थानांतरण गतिज ऊर्जा नापता है, ½mv², चाल नहीं। ऑक्सीजन के अणु सोलह गुना भारी हैं, अतः बराबर ऊर्जा पर उनकी चालें चार गुना छोटी हैं — द्रव्यमान और चाल का वर्ग ठीक-ठीक भरपाई कर देते हैं। दोनों गैसें वही ताप और प्रति अणु वही औसत गतिज ऊर्जा साझा करती हैं, और चाल में, संवेग में तथा इसमें भिन्न हैं कि वे कितनी तेज़ी से विसरित होती या छिद्र से रिसती हैं",
+            mr: "चाली बरोबर आणि निष्कर्ष चूक. तापमान सरासरी स्थानांतरणी गतिज ऊर्जा मोजते, ½mv², चाल नव्हे. ऑक्सिजनचे रेणू सोळापट जड, म्हणून समान ऊर्जेवर त्यांच्या चाली चौपट लहान — वस्तुमान आणि चालीचा वर्ग नेमकी भरपाई करतात. दोन्ही वायू तेच तापमान आणि प्रति रेणू तीच सरासरी गतिज ऊर्जा वाटून घेतात, आणि चालीत, संवेगात तसेच ते किती वेगाने विसरण पावतात वा छिद्रातून गळतात यात वेगळे",
+          },
+          {
+            en: "The student is right: faster molecules mean a higher temperature, and the two gases must therefore be at different temperatures",
+            hi: "विद्यार्थी सही है: तेज़ अणुओं का अर्थ ऊँचा ताप, और इसलिए दोनों गैसें भिन्न तापों पर होंगी",
+            mr: "विद्यार्थी बरोबर: वेगवान रेणू म्हणजे उच्च तापमान, आणि म्हणून दोन्ही वायू वेगळ्या तापमानांवर असतील",
+          },
+          {
+            en: "The speeds are in fact equal, since all gases at the same temperature have identical molecular speeds",
+            hi: "चालें वस्तुतः बराबर हैं, क्योंकि एक ही ताप पर सब गैसों के अणुओं की चालें समान होती हैं",
+            mr: "चाली प्रत्यक्षात समान आहेत, कारण एकाच तापमानावर सर्व वायूंच्या रेणूंच्या चाली सारख्या असतात",
+          },
+          {
+            en: "Nothing can be said, because temperature is undefined for a mixture of two different gases",
+            hi: "कुछ नहीं कहा जा सकता, क्योंकि दो भिन्न गैसों के मिश्रण के लिए ताप अपरिभाषित है",
+            mr: "काहीही सांगता येत नाही, कारण दोन वेगळ्या वायूंच्या मिश्रणासाठी तापमान अव्याख्यायित आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's arithmetic is sound and the physics behind it has been mislaid. Start from what temperature actually is in the kinetic model. It is not a measure of speed; it is a measure of the average translational kinetic energy per molecule, which is (3/2)kT for every gas without exception. The 'without exception' is the whole point: the same T means the same ½mv̄², whatever m happens to be. Now put the two gases side by side. Hydrogen's molar mass is 2 and oxygen's is 32, a ratio of sixteen. Equal kinetic energies require ½m_H v_H² = ½m_O v_O², so v_H/v_O = √(m_O/m_H) = √16 = 4. The student's factor of four is exactly right, and it is a consequence of equal temperature rather than evidence against it. A heavier molecule carries the same energy more slowly; that is all the mass ratio is telling us. There is also a physical argument that makes the conclusion unavoidable, independent of any formula. The two gases are in the same cylinder and their molecules are colliding with each other constantly. If hydrogen really were hotter, energy would flow from it to the oxygen at every collision until the two evened out — that is what thermal equilibrium means, and it is the zeroth law in action. A mixture left alone for even a moment cannot sit at two temperatures. This disposes of the fourth option too: temperature is perfectly well defined for a mixture, and it is a single number precisely because collisions enforce it. So what do the two gases share, and what not? Shared: temperature, average translational kinetic energy per molecule, and — by the equipartition theorem — the average energy in each degree of freedom. Also shared, if the pressures are equal, the number of molecules per unit volume, which is Avogadro's law. Not shared: the speeds, in the ratio 4 to 1; the momenta, in the ratio 1 to 4 the other way; the densities; and the rate of effusion through a small hole, which goes as the speed and is the basis of the isotope separation that made enriched uranium possible. One caution worth adding. The equality of average energy holds for TRANSLATIONAL energy. Both hydrogen and oxygen are diatomic and so also store rotational energy, and the equipartition theorem gives each rotational degree of freedom its own ½kT as well. The total internal energy per molecule is therefore (5/2)kT for both, which happens to keep them equal here — but for a mixture of a monatomic and a diatomic gas the total energies per molecule would differ while the translational parts, and hence the temperature, stayed identical. (The third answer contradicts the observation the question is built on, and the second reads a speed as a temperature.)",
+          hi: "विद्यार्थी का गणित ठीक है और उसके पीछे की भौतिकी खो गई है। शुरू वहाँ से करो कि अणुगति निदर्श में ताप है क्या। वह चाल का माप नहीं; वह प्रति अणु औसत स्थानांतरण गतिज ऊर्जा का माप है, जो हर गैस के लिए बिना अपवाद (3/2)kT है। 'बिना अपवाद' ही पूरी बात है: वही T का अर्थ वही ½mv̄², m चाहे जो हो। अब दोनों गैसें अगल-बग़ल रखो। हाइड्रोजन का मोलर द्रव्यमान 2 और ऑक्सीजन का 32, अनुपात सोलह। बराबर गतिज ऊर्जाएँ माँगती हैं ½m_H v_H² = ½m_O v_O², अतः v_H/v_O = √(m_O/m_H) = √16 = 4. विद्यार्थी का चार का गुणक ठीक सही है, और वह बराबर ताप का परिणाम है, उसके विरुद्ध प्रमाण नहीं। भारी अणु वही ऊर्जा अधिक धीरे ढोता है; द्रव्यमान-अनुपात हमें बस यही बता रहा है। एक भौतिक तर्क भी है जो निष्कर्ष को अनिवार्य बना देता है, किसी सूत्र से स्वतंत्र। दोनों गैसें उसी सिलिंडर में हैं और उनके अणु लगातार आपस में टकरा रहे हैं। यदि हाइड्रोजन सचमुच अधिक गरम होती, तो हर टक्कर पर उससे ऑक्सीजन की ओर ऊर्जा बहती जब तक दोनों बराबर न हो जातीं — तापीय संतुलन का यही अर्थ है, और यह शून्यवाँ नियम काम करते हुए है। एक क्षण भी अकेला छोड़ा मिश्रण दो तापों पर बैठ नहीं सकता। यह चौथे विकल्प को भी निपटा देता है: मिश्रण के लिए ताप बिलकुल भली-भाँति परिभाषित है, और वह अकेली संख्या ठीक इसलिए है कि टक्करें उसे लागू करती हैं। तो दोनों गैसें साझा क्या करती हैं और क्या नहीं? साझा: ताप, प्रति अणु औसत स्थानांतरण गतिज ऊर्जा, और — समविभाजन प्रमेय से — हर स्वातंत्र्य-कोटि में औसत ऊर्जा। दाब बराबर हों तो प्रति एकांक आयतन अणुओं की संख्या भी साझा, जो आवोगाद्रो का नियम है। साझा नहीं: चालें, 4 और 1 के अनुपात में; संवेग, उलटी ओर 1 और 4 के अनुपात में; घनत्व; और छोटे छिद्र से बहिःस्राव की दर, जो चाल के अनुसार चलती है और वही समस्थानिक-पृथक्करण का आधार है जिसने संवर्धित यूरेनियम संभव किया। एक चेतावनी जोड़ने योग्य है। औसत ऊर्जा की बराबरी स्थानांतरण ऊर्जा पर चलती है। हाइड्रोजन और ऑक्सीजन दोनों द्विपरमाणुक हैं और इसलिए घूर्णी ऊर्जा भी जमा करते हैं, और समविभाजन प्रमेय हर घूर्णी स्वातंत्र्य-कोटि को भी उसका अपना ½kT देती है। अतः प्रति अणु कुल आंतरिक ऊर्जा दोनों के लिए (5/2)kT है, जो संयोग से उन्हें यहाँ बराबर रखती है — पर एकपरमाणुक और द्विपरमाणुक गैस के मिश्रण में प्रति अणु कुल ऊर्जाएँ भिन्न होतीं जबकि स्थानांतरण भाग, और इसलिए ताप, समान रहते। (तीसरा उत्तर उस प्रेक्षण का खंडन करता है जिस पर प्रश्न खड़ा है, और दूसरा चाल को ताप पढ़ लेता है।)",
+          mr: "विद्यार्थ्याचे गणित बरोबर आहे आणि त्यामागची भौतिकी हरवली आहे. रेणुगती प्रतिरूपात तापमान म्हणजे काय तिथून सुरुवात करा. ते चालीचे माप नाही; ते प्रति रेणू सरासरी स्थानांतरणी गतिज ऊर्जेचे माप, जे प्रत्येक वायूसाठी अपवादाशिवाय (3/2)kT आहे. 'अपवादाशिवाय' हाच अख्खा मुद्दा: तेच T म्हणजे तेच ½mv̄², m काहीही असो. आता दोन्ही वायू शेजारीशेजारी ठेवा. हायड्रोजनचे मोलर वस्तुमान 2 आणि ऑक्सिजनचे 32, गुणोत्तर सोळा. समान गतिज ऊर्जा मागतात ½m_H v_H² = ½m_O v_O², म्हणून v_H/v_O = √(m_O/m_H) = √16 = 4. विद्यार्थ्याचा चारचा गुणक नेमका बरोबर, आणि तो समान तापमानाचा परिणाम आहे, त्याविरुद्धचा पुरावा नव्हे. जड रेणू तीच ऊर्जा अधिक सावकाश वाहतो; वस्तुमान-गुणोत्तर आपल्याला फक्त हेच सांगत आहे. एक भौतिक युक्तिवादही आहे जो निष्कर्ष अपरिहार्य करतो, कोणत्याही सूत्रापासून स्वतंत्र. दोन्ही वायू त्याच सिलिंडरमध्ये आणि त्यांचे रेणू सतत आपापसात आदळत आहेत. हायड्रोजन खरोखर अधिक गरम असता, तर प्रत्येक टक्करीवर तिच्याकडून ऑक्सिजनकडे ऊर्जा वाहिली असती जोवर दोन्ही समान होत नाहीत — औष्णिक समतोलाचा अर्थ हाच, आणि हा शून्यवा नियम कामात. एक क्षणही एकटे सोडलेले मिश्रण दोन तापमानांवर बसू शकत नाही. हे चौथा पर्यायही निकाली काढते: मिश्रणासाठी तापमान अगदी नीट व्याख्यायित आहे, आणि ते एकच संख्या नेमकी यासाठी की टक्करी ते लागू करतात. मग दोन्ही वायू वाटून काय घेतात आणि काय नाही? वाटून: तापमान, प्रति रेणू सरासरी स्थानांतरणी गतिज ऊर्जा, आणि — समविभाजन प्रमेयाने — प्रत्येक स्वातंत्र्यकोटीतील सरासरी ऊर्जा. दाब समान असल्यास प्रति एकक घनफळ रेणूंची संख्याही वाटून, जो आवोगाद्रोचा नियम. वाटून नाही: चाली, 4 आणि 1 च्या गुणोत्तरात; संवेग, उलट बाजूने 1 आणि 4 च्या गुणोत्तरात; घनता; आणि लहान छिद्रातून बहिःस्रावाचा दर, जो चालीनुसार जातो आणि तोच समस्थानिक-पृथक्करणाचा आधार ज्याने समृद्ध युरेनियम शक्य केले. एक इशारा जोडण्याजोगा. सरासरी ऊर्जेची समानता स्थानांतरणी ऊर्जेवर चालते. हायड्रोजन आणि ऑक्सिजन दोन्ही द्विअणुक आणि म्हणून परिवलनी ऊर्जाही साठवतात, आणि समविभाजन प्रमेय प्रत्येक परिवलनी स्वातंत्र्यकोटीलाही तिचे स्वतःचे ½kT देते. म्हणून प्रति रेणू एकूण आंतरिक ऊर्जा दोघांसाठी (5/2)kT, जी योगायोगाने त्यांना इथे समान ठेवते — पण एकअणुक आणि द्विअणुक वायूच्या मिश्रणात प्रति रेणू एकूण ऊर्जा वेगळ्या असत्या तर स्थानांतरणी भाग, आणि म्हणून तापमान, सारखेच राहिले असते. (तिसरे उत्तर ज्या निरीक्षणावर प्रश्न उभा आहे त्याचे खंडन करते, आणि दुसरे चालीला तापमान वाचते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A drop of perfume is released in a still room. Its molecules travel at hundreds of metres per second, so a student predicts the smell will cross the room almost instantly. It in fact takes several minutes. Explain the discrepancy and say what would change in a vacuum.",
+          hi: "शांत कमरे में इत्र की एक बूँद छोड़ी जाती है। उसके अणु सैकड़ों मीटर प्रति सेकंड चलते हैं, अतः एक विद्यार्थी भविष्यवाणी करता है कि गंध कमरा लगभग तुरंत पार कर लेगी। वस्तुतः उसमें कई मिनट लगते हैं। विसंगति समझाओ और बताओ कि निर्वात में क्या बदलेगा।",
+          mr: "शांत खोलीत अत्तराचा एक थेंब सोडला जातो. त्याचे रेणू शेकडो मीटर प्रति सेकंदाने जातात, म्हणून एक विद्यार्थी भाकीत करतो की वास खोली जवळपास लगेच ओलांडेल. प्रत्यक्षात त्याला कित्येक मिनिटे लागतात. विसंगती समजावा आणि निर्वातात काय बदलेल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The speed is right but the path is not straight. A molecule travels only about seventy nanometres before colliding with an air molecule, some thousands of millions of times a second, and each collision sends it off in a new random direction. The net progress is a random walk, whose distance grows as the square root of the time rather than in proportion to it, so crossing a room takes minutes. In a vacuum the mean free path would exceed the room, the molecules would fly straight, and the smell would indeed arrive in hundredths of a second",
+            hi: "चाल सही है पर पथ सीधा नहीं। अणु किसी वायु-अणु से टकराने से पहले लगभग सत्तर नैनोमीटर ही चलता है, सेकंड में कई अरब बार, और हर टक्कर उसे नई यादृच्छिक दिशा में भेज देती है। शुद्ध प्रगति एक यादृच्छिक चाल है, जिसकी दूरी समय के समानुपात में नहीं बल्कि उसके वर्गमूल के अनुसार बढ़ती है, अतः कमरा पार करने में मिनट लगते हैं। निर्वात में माध्य मुक्त पथ कमरे से बड़ा होता, अणु सीधे उड़ते, और गंध सचमुच सेकंड के सौवें हिस्सों में पहुँच जाती",
+            mr: "चाल बरोबर पण मार्ग सरळ नाही. रेणू एखाद्या हवेच्या रेणूशी आदळण्याआधी सुमारे सत्तर नॅनोमीटरच जातो, सेकंदाला कित्येक अब्ज वेळा, आणि प्रत्येक टक्कर त्याला नव्या यादृच्छिक दिशेने पाठवते. निव्वळ प्रगती ही यादृच्छिक चाल, जिचे अंतर काळाच्या प्रमाणात नव्हे तर त्याच्या वर्गमुळानुसार वाढते, म्हणून खोली ओलांडायला मिनिटे लागतात. निर्वातात मध्य मुक्त मार्ग खोलीहून मोठा असता, रेणू सरळ उडले असते, आणि वास खरोखर सेकंदाच्या शतांशांत पोहोचला असता",
+          },
+          {
+            en: "The molecules are in fact moving far more slowly than the theory suggests, and the theory overestimates their speed by a factor of thousands",
+            hi: "अणु वस्तुतः सिद्धांत के सुझाव से कहीं धीरे चल रहे हैं, और सिद्धांत उनकी चाल हज़ारों गुना बढ़ाकर आँकता है",
+            mr: "रेणू प्रत्यक्षात सिद्धांत सुचवतो त्याहून कितीतरी सावकाश जात आहेत, आणि सिद्धांत त्यांची चाल हजारपट वाढवून अंदाजतो",
+          },
+          {
+            en: "The perfume molecules are much heavier than air molecules and therefore sink to the floor rather than crossing the room",
+            hi: "इत्र के अणु हवा के अणुओं से कहीं भारी हैं और इसलिए कमरा पार करने के बजाय फ़र्श पर बैठ जाते हैं",
+            mr: "अत्तराचे रेणू हवेच्या रेणूंहून कितीतरी जड आहेत आणि म्हणून खोली ओलांडण्याऐवजी जमिनीवर बसतात",
+          },
+          {
+            en: "In a vacuum the smell would take even longer, since there would be no air to carry the molecules along",
+            hi: "निर्वात में गंध और अधिक समय लेती, क्योंकि अणुओं को साथ ले जाने वाली हवा ही न होती",
+            mr: "निर्वातात वासाला आणखी वेळ लागला असता, कारण रेणूंना सोबत नेणारी हवाच नसती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both the speed and the observation are correct, and the missing piece is what happens between them. At room temperature a perfume molecule's root-mean-square speed is a few hundred metres per second — genuinely faster than a rifle bullet. A five-metre room should take about a hundredth of a second to cross. It does not, and the reason is that the molecule never gets to travel five metres in a straight line. In air at ordinary pressure the mean free path is around seventy nanometres. That is the average distance between collisions with the nitrogen and oxygen molecules that fill the room, and it means our perfume molecule is knocked into a new direction some five thousand million times a second. Its trajectory is not a line but a fantastically tangled zig-zag, and although it covers hundreds of metres of path in a second, almost all of that path doubles back on itself. The correct model is a random walk. For a walk of N steps of length ℓ in random directions, the expected straight-line displacement is not Nℓ but ℓ√N — the steps partly cancel. To make net progress of five metres with steps of seventy nanometres, N must be about (5/70×10⁻⁹)², which is of the order of 10¹⁶ steps, and at five thousand million collisions a second that is a matter of minutes. The observation and the theory agree exactly, and the agreement is one of the early triumphs of the kinetic model — the diffusion rate can be used to measure the mean free path, and from it the size of a molecule. Now the vacuum. Lowering the pressure lowers the number of molecules per unit volume and lengthens the mean free path in inverse proportion. In a good laboratory vacuum the path exceeds the dimensions of the vessel, so a molecule leaves one wall and arrives at another without meeting anything at all. There the naive calculation is right: the smell would cross the room in a hundredth of a second. This is not a hypothetical — it is exactly the regime in which vacuum deposition coats a lens, and the reason the chamber must be evacuated is to let the atoms travel in straight lines to the target. The fourth option inverts this completely, and it is worth naming why the intuition behind it fails. Air does not carry the perfume; it obstructs it. Bulk air movement — a draught, a convection current — does carry smells quickly, which is why an open window changes everything and why the question specifies a still room. But molecular diffusion through still air is hindered by collisions, not helped by them. (The second answer discards a speed that is confirmed by the pressure a gas exerts, and the third invents a settling that diffusion and convection would prevent in any case.)",
+          hi: "चाल और प्रेक्षण दोनों सही हैं, और लुप्त कड़ी वह है जो उनके बीच घटती है। कमरे के ताप पर इत्र के अणु की वर्ग-माध्य-मूल चाल कुछ सौ मीटर प्रति सेकंड है — सचमुच बंदूक की गोली से तेज़। पाँच मीटर का कमरा पार करने में लगभग सेकंड का सौवाँ हिस्सा लगना चाहिए। नहीं लगता, और कारण यह कि अणु को सीधी रेखा में पाँच मीटर चलने का मौक़ा ही नहीं मिलता। साधारण दाब पर हवा में माध्य मुक्त पथ लगभग सत्तर नैनोमीटर है। यह कमरा भरे नाइट्रोजन और ऑक्सीजन के अणुओं से टक्करों के बीच की औसत दूरी है, और इसका अर्थ है कि हमारा इत्र-अणु सेकंड में लगभग पाँच अरब बार नई दिशा में ठेल दिया जाता है। उसका प्रक्षेप-पथ रेखा नहीं बल्कि अद्भुत रूप से उलझी टेढ़ी-मेढ़ी लकीर है, और यद्यपि वह एक सेकंड में सैकड़ों मीटर पथ तय करता है, उस पथ का लगभग सारा अपने ऊपर लौट आता है। सही निदर्श यादृच्छिक चाल है। यादृच्छिक दिशाओं में ℓ लंबाई के N क़दमों की चाल के लिए अपेक्षित सरल-रेखीय विस्थापन Nℓ नहीं बल्कि ℓ√N है — क़दम आंशिक रूप से कट जाते हैं। सत्तर नैनोमीटर के क़दमों से पाँच मीटर की शुद्ध प्रगति के लिए N लगभग (5/70×10⁻⁹)² होना चाहिए, जो 10¹⁶ क़दमों की कोटि का है, और पाँच अरब टक्कर प्रति सेकंड पर वह मिनटों की बात है। प्रेक्षण और सिद्धांत ठीक मिलते हैं, और यह मेल अणुगति निदर्श की आरंभिक विजयों में से एक है — विसरण-दर से माध्य मुक्त पथ नापा जा सकता है, और उससे अणु का आकार। अब निर्वात। दाब घटाने से प्रति एकांक आयतन अणुओं की संख्या घटती है और माध्य मुक्त पथ व्युत्क्रमानुपात में लंबा होता है। अच्छे प्रयोगशाला-निर्वात में पथ पात्र की विमाओं से बड़ा हो जाता है, अतः अणु एक दीवार छोड़कर दूसरी पर पहुँच जाता है बिना किसी से मिले। वहाँ भोली गणना सही है: गंध कमरा सेकंड के सौवें हिस्से में पार कर लेती। यह काल्पनिक नहीं — ठीक यही वह क्षेत्र है जिसमें निर्वात-निक्षेपण लेंस पर परत चढ़ाता है, और कक्ष को निर्वातित करने का कारण यही है कि परमाणु लक्ष्य तक सीधी रेखाओं में जा सकें। चौथा विकल्प इसे पूरी तरह उलट देता है, और उसके पीछे का अंतर्ज्ञान क्यों विफल है यह नाम लेने योग्य है। हवा इत्र को ले नहीं जाती; वह उसे रोकती है। स्थूल वायु-गति — झोंका, संवहन-धारा — गंध को तेज़ी से ले जाती ही है, इसीलिए खुली खिड़की सब बदल देती है और इसीलिए प्रश्न शांत कमरा निर्दिष्ट करता है। पर शांत हवा में अणुओं का विसरण टक्करों से बाधित होता है, उनसे सहायता नहीं पाता। (दूसरा उत्तर उस चाल को फेंक देता है जिसकी पुष्टि गैस द्वारा लगाया दाब करता है, और तीसरा ऐसा बैठना गढ़ता है जिसे विसरण और संवहन वैसे भी रोक देते।)",
+          mr: "चाल आणि निरीक्षण दोन्ही बरोबर आहेत, आणि हरवलेला दुवा तो जो त्यांच्यामध्ये घडतो. खोलीच्या तापमानावर अत्तराच्या रेणूची वर्ग-मध्य-मूळ चाल काही शेकडा मीटर प्रति सेकंद — खरोखर बंदुकीच्या गोळीहून वेगवान. पाच मीटरची खोली ओलांडायला सुमारे सेकंदाचा शतांश लागला पाहिजे. लागत नाही, आणि कारण हे की रेणूला सरळ रेषेत पाच मीटर जाण्याची संधीच मिळत नाही. सामान्य दाबावर हवेत मध्य मुक्त मार्ग सुमारे सत्तर नॅनोमीटर. हे खोली भरणाऱ्या नायट्रोजन आणि ऑक्सिजनच्या रेणूंशी होणाऱ्या टक्करींमधले सरासरी अंतर, आणि याचा अर्थ आपला अत्तर-रेणू सेकंदाला सुमारे पाच अब्ज वेळा नव्या दिशेने ढकलला जातो. त्याचा प्रक्षेप-मार्ग रेषा नव्हे तर विलक्षण गुंतागुंतीची नागमोडी रेघ, आणि तो एका सेकंदात शेकडो मीटर मार्ग कापत असला तरी त्या मार्गाचा जवळपास सर्व भाग स्वतःवर परत येतो. योग्य प्रतिरूप म्हणजे यादृच्छिक चाल. यादृच्छिक दिशांत ℓ लांबीच्या N पावलांच्या चालीसाठी अपेक्षित सरळरेषीय विस्थापन Nℓ नव्हे तर ℓ√N — पावले अंशतः कापली जातात. सत्तर नॅनोमीटरच्या पावलांनी पाच मीटरची निव्वळ प्रगती करायला N सुमारे (5/70×10⁻⁹)² असावे लागते, जे 10¹⁶ पावलांच्या कोटीचे, आणि पाच अब्ज टक्करी प्रति सेकंदावर ती मिनिटांची बाब. निरीक्षण आणि सिद्धांत नेमके जुळतात, आणि हे जुळणे रेणुगती प्रतिरूपाच्या सुरुवातीच्या विजयांपैकी एक — विसरण-दरावरून मध्य मुक्त मार्ग मोजता येतो, आणि त्यावरून रेणूचा आकार. आता निर्वात. दाब घटवल्याने प्रति एकक घनफळ रेणूंची संख्या घटते आणि मध्य मुक्त मार्ग व्यस्त प्रमाणात लांब होतो. चांगल्या प्रयोगशाळा-निर्वातात मार्ग भांड्याच्या मितींहून मोठा होतो, म्हणून रेणू एक भिंत सोडून दुसरीवर पोहोचतो कोणालाही न भेटता. तिथे भोळी गणना बरोबर आहे: वास खोली सेकंदाच्या शतांशात ओलांडला असता. हे काल्पनिक नाही — नेमके हेच ते क्षेत्र ज्यात निर्वात-निक्षेपण भिंगावर थर चढवते, आणि कक्ष निर्वात करण्याचे कारण हेच की अणू लक्ष्यापर्यंत सरळ रेषांत जाऊ शकावेत. चौथा पर्याय हे पूर्णपणे उलटवतो, आणि त्यामागची अंतःप्रेरणा का अपयशी ठरते हे नाव घेण्याजोगे. हवा अत्तर नेत नाही; ती त्याला अडवते. स्थूल वायु-हालचाल — झुळूक, अभिसरण-प्रवाह — वास वेगाने नेतेच, म्हणूनच उघडी खिडकी सर्व बदलते आणि म्हणूनच प्रश्न शांत खोली निर्दिष्ट करतो. पण शांत हवेत रेणूंचे विसरण टक्करींनी अडवले जाते, त्यांच्याकडून मदत मिळवत नाही. (दुसरे उत्तर ती चाल फेकून देते जिची पुष्टी वायूने लावलेला दाब करतो, आणि तिसरे असे बसणे घडवते जे विसरण आणि अभिसरण कोणत्याही परिस्थितीत रोखले असते.)",
+        },
+      },
+      /*H12*/
+    ],
+  },
+
 ];
 
 export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -4208,6 +5653,659 @@ export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "Breaking is governed by stress, not by load. The wire fails when F/A reaches the material's breaking stress, a number fixed by the steel and nothing else. Doubling the diameter quadruples the area, so four times the load is needed to reach the same stress: 4 × 500 = 2000 N. Two things follow that are worth keeping. First, the LENGTH is irrelevant — a wire of the same material and thickness breaks at the same load whether it is a metre or a kilometre long, which surprises most people and is the clearest evidence that stress and not force is the governing quantity. Second, this is why cable diameters go up so slowly as loads rise: to carry nine times the load a designer needs only three times the diameter. It is also why a chain is only as strong as its weakest link, since the whole load passes through the smallest area anywhere along it. (1000 treats the strength as proportional to the diameter, and 500 assumes thickness makes no difference at all.)",
         hi: "टूटना प्रतिबल से तय होता है, भार से नहीं। तार तब विफल होता है जब F/A पदार्थ के भंजक प्रतिबल तक पहुँचे, जो संख्या इस्पात तय करता है और कुछ नहीं। व्यास दुगुना करने से क्षेत्रफल चौगुना होता है, अतः वही प्रतिबल पाने को चार गुना भार चाहिए: 4 × 500 = 2000 N. दो बातें निकलती हैं जो रखने योग्य हैं। पहली, लंबाई अप्रासंगिक है — उसी पदार्थ और मोटाई का तार उसी भार पर टूटता है चाहे वह एक मीटर लंबा हो या एक किलोमीटर, जो अधिकांश लोगों को चौंकाता है और यही सबसे स्पष्ट प्रमाण है कि शासक राशि बल नहीं प्रतिबल है। दूसरी, इसीलिए भार बढ़ने पर रस्सियों के व्यास इतने धीरे बढ़ते हैं: नौ गुना भार ढोने को अभिकल्पक को केवल तीन गुना व्यास चाहिए। इसी से यह भी कि साँकल उतनी ही मज़बूत है जितनी उसकी सबसे कमज़ोर कड़ी, क्योंकि पूरा भार उसकी लंबाई में कहीं भी सबसे छोटे क्षेत्रफल से होकर गुज़रता है। (1000 सामर्थ्य को व्यास का समानुपाती मानता है, और 500 मान लेता है कि मोटाई से कोई फ़र्क़ ही नहीं पड़ता।)",
         mr: "तुटणे प्रतिबलाने ठरते, ओझ्याने नव्हे. तार तेव्हा अपयशी होते जेव्हा F/A पदार्थाच्या भंजक प्रतिबलापर्यंत पोहोचते, जी संख्या पोलाद ठरवते आणि दुसरे काहीही नाही. व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते, म्हणून तेच प्रतिबल गाठायला चौपट ओझे लागते: 4 × 500 = 2000 N. दोन गोष्टी निघतात ज्या ठेवण्याजोग्या. पहिली, लांबी असंबद्ध — त्याच पदार्थाची आणि जाडीची तार त्याच ओझ्यावर तुटते मग ती एक मीटर लांब असो वा एक किलोमीटर, जे बहुतांश लोकांना चकित करते आणि हाच सर्वांत स्पष्ट पुरावा की शासक राशी बल नव्हे तर प्रतिबल आहे. दुसरी, म्हणूनच ओझे वाढताना दोऱ्यांचे व्यास इतके सावकाश वाढतात: नऊपट ओझे वाहायला आखणीकाराला केवळ तिप्पट व्यास लागतो. यामुळेच हेही की साखळी तिच्या सर्वांत कमकुवत कडीइतकीच बळकट, कारण अख्खे ओझे तिच्या लांबीत कुठेही असलेल्या सर्वांत लहान क्षेत्रफळातून जाते. (1000 बळ व्यासाच्या समानुपाती मानते, आणि 500 गृहीत धरते की जाडीने काहीच फरक पडत नाही.)",
+      },
+    },
+  ],
+  "physics-11-mechanical-properties-of-fluids": [
+    {
+      level: 1,
+      stem: {
+        en: "What is the gauge pressure at a depth of 10 m in water, taking the density as 1000 kg/m³ and g as 10 m/s²?",
+        hi: "पानी में 10 m गहराई पर गेज दाब क्या है, घनत्व 1000 kg/m³ और g = 10 m/s² लेते हुए?",
+        mr: "पाण्यात 10 m खोलीवर गेज दाब किती, घनता 1000 kg/m³ आणि g = 10 m/s² घेतल्यास?",
+      },
+      answer: 100000,
+      wrong: [10000, 1000000, 1000],
+      checkExpr: "1000*10*10",
+      solution: {
+        en: "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, which is very close to one atmosphere — so ten metres of water roughly doubles the total pressure on a diver. The width of the lake never entered the calculation. (10000 drops a factor of ten.)",
+        hi: "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, जो लगभग एक वायुमंडल है — अतः दस मीटर पानी गोताखोर पर कुल दाब मोटे तौर पर दोगुना कर देता है। झील की चौड़ाई गणना में कभी आई ही नहीं। (10000 दस का गुणक गिरा देता है।)",
+        mr: "P = ρgh = 1000 × 10 × 10 = 100,000 Pa, जे जवळपास एक वातावरण — म्हणून दहा मीटर पाणी गोताखोरावरचा एकूण दाब ढोबळमानाने दुप्पट करते. तलावाची रुंदी गणनेत कधी आलीच नाही. (10000 दहाचा गुणक गाळते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "In a hydraulic press the small piston has an area of 2 cm² and the large one 50 cm². A force of 40 N is applied to the small piston. What force appears at the large one?",
+        hi: "किसी द्रवचालित प्रेस में छोटे पिस्टन का क्षेत्रफल 2 cm² और बड़े का 50 cm² है। छोटे पिस्टन पर 40 N का बल लगाया जाता है। बड़े पर कितना बल प्रकट होता है?",
+        mr: "एका द्रवचालित प्रेसमध्ये लहान पिस्टनचे क्षेत्रफळ 2 cm² आणि मोठ्याचे 50 cm². लहान पिस्टनवर 40 N बल लावले जाते. मोठ्यावर किती बल प्रकट होते?",
+      },
+      answer: 1000,
+      wrong: [1.6, 100, 2000],
+      checkExpr: "40*50/2",
+      fmt: newtons,
+      solution: {
+        en: "The pressure is the same throughout, so F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. The large piston moves twenty-five times less far, so no energy has been created. (1.6 inverts the area ratio.)",
+        hi: "दाब हर जगह एक-सा है, अतः F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. बड़ा पिस्टन पच्चीस गुना कम चलता है, अतः कोई ऊर्जा बनी नहीं। (1.6 क्षेत्रफल-अनुपात उलट देता है।)",
+        mr: "दाब सर्वत्र सारखा, म्हणून F₂ = F₁ × A₂/A₁ = 40 × 50/2 = 1000 N. मोठा पिस्टन पंचवीसपट कमी सरकतो, म्हणून कोणतीही ऊर्जा तयार झाली नाही. (1.6 क्षेत्रफळ-गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A body weighs 50 N in air and 30 N when fully immersed in water. What is the upthrust on it?",
+        hi: "एक पिंड हवा में 50 N और पानी में पूरी तरह डूबे होने पर 30 N का लगता है। उस पर उत्प्लावन क्या है?",
+        mr: "एक पिंड हवेत 50 N आणि पाण्यात पूर्ण बुडवल्यावर 30 N चा भरतो. त्याच्यावरचा उत्प्लावक जोर किती?",
+      },
+      answer: 20,
+      wrong: [80, 15, 1.67],
+      checkExpr: "50-30",
+      fmt: newtons,
+      solution: {
+        en: "The apparent loss of weight is the upthrust: 50 − 30 = 20 N. Nothing about the body's shape or material was needed. (80 adds the two readings and 1.67 takes their ratio, neither of which has the units of a force.)",
+        hi: "भार की आभासी हानि ही उत्प्लावन है: 50 − 30 = 20 N. पिंड के आकार या पदार्थ के बारे में कुछ नहीं चाहिए था। (80 दोनों पाठ्यांक जोड़ता है और 1.67 उनका अनुपात लेता है, और दोनों के मात्रक बल के नहीं।)",
+        mr: "वजनातील आभासी घट म्हणजेच उत्प्लावक जोर: 50 − 30 = 20 N. पिंडाच्या आकाराबद्दल वा पदार्थाबद्दल काहीही लागले नाही. (80 दोन्ही वाचने जोडते आणि 1.67 त्यांचे गुणोत्तर घेते, आणि दोन्हींची एकके बलाची नाहीत.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The upthrust on a fully immersed body is 20 N. Taking water's density as 1000 kg/m³ and g as 10 m/s², what is the body's volume in cubic metres?",
+        hi: "पूरी तरह डूबे पिंड पर उत्प्लावन 20 N है। पानी का घनत्व 1000 kg/m³ और g = 10 m/s² लेते हुए, पिंड का आयतन घन मीटर में क्या है?",
+        mr: "पूर्ण बुडलेल्या पिंडावरचा उत्प्लावक जोर 20 N आहे. पाण्याची घनता 1000 kg/m³ आणि g = 10 m/s² घेतल्यास, पिंडाचे घनफळ घनमीटरमध्ये किती?",
+      },
+      answer: 0.002,
+      wrong: [0.02, 0.0002, 2],
+      checkExpr: "20/(1000*10)",
+      solution: {
+        en: "The upthrust is ρVg, so V = 20/(1000 × 10) = 0.002 m³, that is two litres. A fully immersed body displaces its own volume whatever it is made of. (0.02 and 0.0002 slip by a factor of ten either way.)",
+        hi: "उत्प्लावन ρVg है, अतः V = 20/(1000 × 10) = 0.002 m³, यानी दो लीटर। पूरी तरह डूबा पिंड अपना आयतन हटाता है, वह चाहे किसी का बना हो। (0.02 और 0.0002 दोनों ओर दस के गुणक से खिसकते हैं।)",
+        mr: "उत्प्लावक जोर ρVg, म्हणून V = 20/(1000 × 10) = 0.002 m³, म्हणजे दोन लिटर. पूर्ण बुडलेला पिंड स्वतःचे घनफळ सरकवतो, तो कशाचाही बनलेला असो. (0.02 आणि 0.0002 दोन्ही बाजूंनी दहाच्या पटीने सरकतात.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A block floats in water with three quarters of its volume submerged. What is its density in kg/m³, taking water's as 1000?",
+        hi: "एक गुटका पानी में अपने आयतन के तीन-चौथाई भाग तक डूबा हुआ तैरता है। पानी का घनत्व 1000 लेते हुए, उसका घनत्व kg/m³ में क्या है?",
+        mr: "एक ठोकळा पाण्यात आपल्या घनफळाच्या तीन-चतुर्थांश भागापर्यंत बुडून तरंगतो. पाण्याची घनता 1000 घेतल्यास, त्याची घनता kg/m³ मध्ये किती?",
+      },
+      answer: 750,
+      wrong: [1000, 250, 1333],
+      checkExpr: "0.75*1000",
+      solution: {
+        en: "The submerged fraction equals the ratio of densities, so ρ = 0.75 × 1000 = 750 kg/m³. Turning it round, an iceberg of density 917 floats with 91.7 per cent of itself below the surface. (1333 inverts the ratio, which would make the block sink.)",
+        hi: "डूबा अंश घनत्वों के अनुपात के बराबर है, अतः ρ = 0.75 × 1000 = 750 kg/m³. उलट कर देखें तो 917 घनत्व का हिमशैल अपने 91.7 प्रतिशत भाग को सतह के नीचे रखकर तैरता है। (1333 अनुपात उलट देता है, जिससे गुटका डूब जाता।)",
+        mr: "बुडलेला अंश घनतांच्या गुणोत्तराइतका, म्हणून ρ = 0.75 × 1000 = 750 kg/m³. उलट पाहिल्यास 917 घनतेचा हिमनग स्वतःचा 91.7 टक्के भाग पृष्ठभागाखाली ठेवून तरंगतो. (1333 गुणोत्तर उलटे करते, ज्याने ठोकळा बुडाला असता.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Water flows at 3 m/s through a pipe of cross-section 6 cm². The pipe narrows to 2 cm². What is the speed there?",
+        hi: "पानी 6 cm² अनुप्रस्थ काट की नली में 3 m/s से बहता है। नली सँकरी होकर 2 cm² हो जाती है। वहाँ चाल क्या है?",
+        mr: "पाणी 6 cm² आडव्या छेदाच्या नळीतून 3 m/s ने वाहते. नळी अरुंद होऊन 2 cm² होते. तिथे चाल किती?",
+      },
+      answer: 9,
+      wrong: [1, 4.5, 18],
+      checkExpr: "3*6/2",
+      fmt: ms,
+      solution: {
+        en: "Continuity requires Av to be the same at both sections, since the water is incompressible and none is lost: v₂ = 3 × 6/2 = 9 m/s. Bernoulli then says the pressure at the narrow section is lower, which is the reverse of what most people expect. (1 inverts the area ratio.)",
+        hi: "सांतत्य माँगता है कि दोनों काटों पर Av एक-सा रहे, क्योंकि पानी असंपीड्य है और कुछ खोता नहीं: v₂ = 3 × 6/2 = 9 m/s. फिर बर्नूली कहता है कि सँकरे काट पर दाब कम है, जो अधिकांश लोगों की अपेक्षा के उलटा है। (1 क्षेत्रफल-अनुपात उलट देता है।)",
+        mr: "सातत्य मागते की दोन्ही छेदांवर Av सारखे राहावे, कारण पाणी असंपीड्य आणि काही हरवत नाही: v₂ = 3 × 6/2 = 9 m/s. मग बर्नूली सांगतो की अरुंद छेदावर दाब कमी, जे बहुतांश लोकांच्या अपेक्षेच्या उलट. (1 क्षेत्रफळ-गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A soap bubble of radius 0.01 m is blown from a solution of surface tension 0.03 N/m. What is the excess pressure inside it?",
+        hi: "0.03 N/m पृष्ठ तनाव वाले घोल से 0.01 m त्रिज्या का साबुन का बुलबुला बनाया जाता है। उसके भीतर अतिरिक्त दाब क्या है?",
+        mr: "0.03 N/m पृष्ठताण असलेल्या द्रावणातून 0.01 m त्रिज्येचा साबणाचा बुडबुडा फुगवला जातो. त्याच्या आत जादा दाब किती?",
+      },
+      answer: 12,
+      wrong: [6, 3, 24],
+      checkExpr: "4*0.03/0.01",
+      solution: {
+        en: "A soap bubble has two surfaces, inner and outer, so the excess pressure is 4T/r = 4 × 0.03/0.01 = 12 Pa. A liquid drop, with only one surface, would give 2T/r = 6 Pa. Notice the pressure is larger in a SMALLER bubble, which is why the small one empties into the large when two are connected. (6 uses the drop formula.)",
+        hi: "साबुन के बुलबुले की दो सतहें हैं, भीतरी और बाहरी, अतः अतिरिक्त दाब 4T/r = 4 × 0.03/0.01 = 12 Pa. केवल एक सतह वाली द्रव की बूँद 2T/r = 6 Pa देती। ध्यान दो दाब छोटे बुलबुले में बड़ा होता है, इसीलिए दो जोड़ने पर छोटा बड़े में ख़ाली हो जाता है। (6 बूँद वाला सूत्र लगाता है।)",
+        mr: "साबणाच्या बुडबुड्याला दोन पृष्ठभाग, आतला आणि बाहेरचा, म्हणून जादा दाब 4T/r = 4 × 0.03/0.01 = 12 Pa. केवळ एक पृष्ठभाग असलेला द्रवाचा थेंब 2T/r = 6 Pa दिला असता. लक्षात घ्या दाब लहान बुडबुड्यात मोठा असतो, म्हणूनच दोन जोडल्यावर लहान मोठ्यात रिकामा होतो. (6 थेंबाचे सूत्र वापरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Water of surface tension 0.07 N/m rises in a capillary of radius 0.0002 m. Taking the density as 1000 kg/m³, g as 10 m/s² and the contact angle as zero, how high does it rise?",
+        hi: "0.07 N/m पृष्ठ तनाव वाला पानी 0.0002 m त्रिज्या की केशनली में चढ़ता है। घनत्व 1000 kg/m³, g = 10 m/s² और स्पर्श कोण शून्य लेते हुए, वह कितना ऊपर चढ़ता है?",
+        mr: "0.07 N/m पृष्ठताण असलेले पाणी 0.0002 m त्रिज्येच्या केशनळीत चढते. घनता 1000 kg/m³, g = 10 m/s² आणि स्पर्शकोन शून्य घेतल्यास, ते किती उंच चढते?",
+      },
+      answer: 0.07,
+      wrong: [0.035, 0.14, 0.7],
+      checkExpr: "2*0.07/(1000*10*0.0002)",
+      fmt: metres,
+      solution: {
+        en: "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, that is 7 cm. The rise is inversely proportional to the radius, so halving the bore doubles the climb — which is how a wick and a stem of a plant lift water without a pump. (0.035 forgets the factor of 2.)",
+        hi: "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, यानी 7 cm. चढ़ाई त्रिज्या के व्युत्क्रमानुपाती है, अतः छिद्र आधा करने पर चढ़ाई दुगुनी — इसी तरह बत्ती और पौधे का तना बिना पंप के पानी उठाते हैं। (0.035 2 का गुणक भूल जाता है।)",
+        mr: "h = 2T cos θ/(ρgr) = 2 × 0.07/(1000 × 10 × 0.0002) = 0.14/2 = 0.07 m, म्हणजे 7 cm. चढण त्रिज्येच्या व्यस्तानुपाती, म्हणून छिद्र निम्मे केल्यास चढण दुप्पट — याच पद्धतीने वात आणि वनस्पतीचे खोड पंपाशिवाय पाणी उचलतात. (0.035 हे 2 चा गुणक विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A small drop falls through air at a terminal velocity of 2 mm/s. A second drop of the same liquid has twice the radius. What is its terminal velocity, in mm/s?",
+        hi: "एक छोटी बूँद हवा में 2 mm/s के सीमांत वेग से गिरती है। उसी द्रव की दूसरी बूँद की त्रिज्या दुगुनी है। उसका सीमांत वेग mm/s में क्या है?",
+        mr: "एक लहान थेंब हवेत 2 mm/s च्या सीमावर्ती वेगाने पडतो. त्याच द्रवाच्या दुसऱ्या थेंबाची त्रिज्या दुप्पट. त्याचा सीमावर्ती वेग mm/s मध्ये किती?",
+      },
+      answer: 8,
+      wrong: [4, 16, 1],
+      checkExpr: "2*2^2",
+      solution: {
+        en: "Terminal velocity goes as the square of the radius: weight grows as r³ while Stokes drag grows only as r times the speed, so v ∝ r². Doubling r gives 2 × 4 = 8 mm/s. (4 assumes it is proportional to the radius, and 16 uses the volume ratio without dividing by the drag's own r.)",
+        hi: "सीमांत वेग त्रिज्या के वर्ग के अनुसार चलता है: भार r³ के अनुसार बढ़ता है जबकि स्टोक्स कर्षण केवल r गुणा चाल के अनुसार, अतः v ∝ r². r दुगुना करने पर 2 × 4 = 8 mm/s. (4 उसे त्रिज्या का समानुपाती मानता है, और 16 कर्षण के अपने r से भाग दिए बिना आयतन-अनुपात लगाता है।)",
+        mr: "सीमावर्ती वेग त्रिज्येच्या वर्गानुसार जातो: वजन r³ नुसार वाढते तर स्टोक्स ओढ केवळ r गुणिले चाल नुसार, म्हणून v ∝ r². r दुप्पट केल्यास 2 × 4 = 8 mm/s. (4 त्याला त्रिज्येच्या समानुपाती मानते, आणि 16 ओढीच्या स्वतःच्या r ने न भागता घनफळ-गुणोत्तर वापरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Water flows steadily through a narrow tube at 32 units of volume per second. The tube is replaced by one of half the radius and the same length, with the same pressure difference across it. What is the new flow rate, in the same units?",
+        hi: "पानी एक पतली नली से 32 इकाई आयतन प्रति सेकंड की दर से स्थायी रूप से बहता है। नली को आधी त्रिज्या और उसी लंबाई की नली से बदल दिया जाता है, उसके आर-पार वही दाबांतर रखते हुए। नई प्रवाह-दर उन्हीं इकाइयों में क्या है?",
+        mr: "पाणी एका अरुंद नळीतून दर सेकंदाला 32 एकक घनफळ या दराने स्थिरपणे वाहते. नळी अर्ध्या त्रिज्येच्या आणि त्याच लांबीच्या नळीने बदलली जाते, तिच्या आरपार तोच दाबफरक ठेवून. नवा प्रवाह-दर त्याच एककांत किती?",
+      },
+      answer: 2,
+      wrong: [16, 8, 4],
+      checkExpr: "32/2^4",
+      solution: {
+        en: "For steady viscous flow through a tube the discharge goes as the FOURTH power of the radius, so halving r divides the rate by 2⁴ = 16: 32/16 = 2 units per second. The fourth power comes from two separate effects multiplying: the cross-sectional area falls as r², and the average speed falls as r² again because a narrower tube has a steeper velocity gradient at its wall, where viscosity holds the fluid still. This is why a slightly narrowed artery is so serious — a twenty per cent reduction in radius more than halves the blood flow at the same pressure — and why the body raises the pressure to compensate. It is also why a wide pipe is worth far more than its cost in material: doubling a pipe's radius carries sixteen times the water. (16 uses the area alone, 8 uses r³, and 4 uses r².)",
+        hi: "नली से स्थायी श्यान प्रवाह के लिए निस्सरण त्रिज्या की चौथी घात के अनुसार चलता है, अतः r आधा करने पर दर 2⁴ = 16 से भाग हो जाती है: 32/16 = 2 इकाई प्रति सेकंड। चौथी घात दो अलग प्रभावों के गुणा होने से आती है: अनुप्रस्थ काट क्षेत्रफल r² के अनुसार घटता है, और औसत चाल भी फिर r² के अनुसार, क्योंकि सँकरी नली की दीवार पर वेग-प्रवणता अधिक तीखी होती है, जहाँ श्यानता तरल को थामे रखती है। इसीलिए थोड़ी सँकरी हुई धमनी इतनी गंभीर है — त्रिज्या में बीस प्रतिशत की कमी उसी दाब पर रक्त-प्रवाह आधे से भी कम कर देती है — और इसीलिए शरीर भरपाई में दाब बढ़ा देता है। इसी से चौड़ी नली अपनी सामग्री की लागत से कहीं अधिक मूल्यवान है: नली की त्रिज्या दुगुनी करने पर सोलह गुना पानी जाता है। (16 केवल क्षेत्रफल लगाता है, 8 r³ और 4 r².)",
+        mr: "नळीतून स्थिर श्यान प्रवाहासाठी विसर्ग त्रिज्येच्या चौथ्या घातेनुसार जातो, म्हणून r निम्मे केल्यास दर 2⁴ = 16 ने भागला जातो: 32/16 = 2 एकक प्रति सेकंद. चौथी घात दोन वेगळ्या परिणामांच्या गुणाकारातून येते: आडव्या छेदाचे क्षेत्रफळ r² नुसार घटते, आणि सरासरी चालही पुन्हा r² नुसार, कारण अरुंद नळीच्या भिंतीवर वेग-प्रवणता अधिक तीव्र असते, जिथे श्यानता प्रवाही स्थिर धरते. म्हणूनच थोडी अरुंद झालेली धमनी इतकी गंभीर — त्रिज्येतील वीस टक्के घट त्याच दाबावर रक्तप्रवाह निम्म्याहूनही कमी करते — आणि म्हणूनच शरीर भरपाईसाठी दाब वाढवते. यामुळेच रुंद नळी तिच्या सामग्रीच्या खर्चाहून कितीतरी अधिक मोलाची: नळीची त्रिज्या दुप्पट केल्यास सोळापट पाणी जाते. (16 फक्त क्षेत्रफळ वापरते, 8 हे r³ आणि 4 हे r².)",
+      },
+    },
+  ],
+  "physics-11-thermal-properties-of-matter": [
+    {
+      level: 1,
+      stem: {
+        en: "A steel rod 1 m long has a linear expansion coefficient of 12 × 10⁻⁶ per °C. By how many millimetres does it lengthen when heated through 100 °C?",
+        hi: "1 m लंबी इस्पात की छड़ का रैखिक प्रसार गुणांक 12 × 10⁻⁶ प्रति °C है। 100 °C गरम करने पर वह कितने मिलीमीटर लंबी होती है?",
+        mr: "1 m लांब पोलादी दांडीचा रेषीय प्रसरण गुणांक 12 × 10⁻⁶ प्रति °C आहे. 100 °C ने तापवल्यावर ती किती मिलीमीटर लांब होते?",
+      },
+      answer: 1.2,
+      wrong: [0.12, 12, 120],
+      checkExpr: "12*100/1000",
+      solution: {
+        en: "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. A tenth of a millimetre per ten degrees sounds negligible until a kilometre of railway line is considered, where the same fraction gives more than a metre. (12 and 120 slip decimal places.)",
+        hi: "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. दस डिग्री पर मिलीमीटर का दसवाँ हिस्सा नगण्य लगता है जब तक एक किलोमीटर रेल-पटरी न सोची जाए, जहाँ वही अंश एक मीटर से अधिक देता है। (12 और 120 में दशमलव स्थान खिसकते हैं।)",
+        mr: "ΔL = αLΔT = 12 × 10⁻⁶ × 1 × 100 = 0.0012 m = 1.2 mm. दहा अंशांना मिलीमीटरचा दशांश नगण्य वाटतो जोवर एक किलोमीटर रेल्वेरूळ विचारात घेतला जात नाही, जिथे तोच अंश एक मीटरहून अधिक देतो. (12 आणि 120 मध्ये दशांश स्थाने सरकतात.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How much heat is needed to raise 2 kg of water by 10 °C, taking the specific heat capacity as 4200 J/kg/K?",
+        hi: "2 kg पानी को 10 °C बढ़ाने के लिए कितनी ऊष्मा चाहिए, विशिष्ट ऊष्मा धारिता 4200 J/kg/K लेते हुए?",
+        mr: "2 kg पाणी 10 °C ने वाढवायला किती उष्णता लागते, विशिष्ट उष्णता धारकता 4200 J/kg/K घेतल्यास?",
+      },
+      answer: 84000,
+      wrong: [8400, 420, 840000],
+      checkExpr: "2*4200*10",
+      solution: {
+        en: "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. The same heat would raise 2 kg of iron, whose specific heat is about 450, by roughly ninety degrees instead. (420 divides where it should multiply.)",
+        hi: "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. वही ऊष्मा 2 kg लोहे को, जिसकी विशिष्ट ऊष्मा लगभग 450 है, इसके बजाय मोटे तौर पर नब्बे डिग्री बढ़ा देती। (420 वहाँ भाग देता है जहाँ गुणा करना था।)",
+        mr: "Q = mcΔT = 2 × 4200 × 10 = 84,000 J. तीच उष्णता 2 kg लोखंडाला, ज्याची विशिष्ट उष्णता सुमारे 450, त्याऐवजी ढोबळमानाने नव्वद अंशांनी वाढवली असती. (420 जिथे गुणायचे तिथे भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How much heat is needed to melt 0.5 kg of ice already at 0 °C, taking the latent heat of fusion as 336,000 J/kg?",
+        hi: "0 °C पर पहले से मौजूद 0.5 kg बर्फ़ पिघलाने के लिए कितनी ऊष्मा चाहिए, गलन की गुप्त ऊष्मा 336,000 J/kg लेते हुए?",
+        mr: "0 °C वर आधीच असलेला 0.5 kg बर्फ वितळवायला किती उष्णता लागते, द्रवीभवनाची सुप्त उष्णता 336,000 J/kg घेतल्यास?",
+      },
+      answer: 168000,
+      wrong: [672000, 336000, 16800],
+      checkExpr: "0.5*336000",
+      solution: {
+        en: "Q = mL = 0.5 × 336,000 = 168,000 J, and the thermometer stays at 0 °C throughout. No temperature term appears, because there is no temperature change to multiply. (672000 divides by 0.5 instead of multiplying.)",
+        hi: "Q = mL = 0.5 × 336,000 = 168,000 J, और तापमापी पूरे समय 0 °C पर रहता है। कोई ताप-पद नहीं आता, क्योंकि गुणा करने को कोई ताप-परिवर्तन है ही नहीं। (672000 गुणा के बजाय 0.5 से भाग देता है।)",
+        mr: "Q = mL = 0.5 × 336,000 = 168,000 J, आणि तापमापक पूर्ण काळ 0 °C वर राहतो. कोणतेही तापमान-पद येत नाही, कारण गुणायला तापमान-बदलच नाही. (672000 गुणण्याऐवजी 0.5 ने भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A metal plate's area increases by 0.04 per cent when heated. What is the corresponding percentage increase in its length?",
+        hi: "गरम करने पर धातु की प्लेट का क्षेत्रफल 0.04 प्रतिशत बढ़ता है। उसकी लंबाई में तदनुरूप प्रतिशत वृद्धि क्या है?",
+        mr: "तापवल्यावर धातूच्या पत्र्याचे क्षेत्रफळ 0.04 टक्क्यांनी वाढते. त्याच्या लांबीतील तदनुरूप शेकडा वाढ किती?",
+      },
+      answer: 0.02,
+      wrong: [0.08, 0.01, 0.12],
+      checkExpr: "0.04/2",
+      solution: {
+        en: "Area expands in two dimensions at once, so the areal coefficient is very nearly twice the linear one: 0.04/2 = 0.02 per cent. Volume would grow by three times the linear figure, 0.06 per cent. (0.08 doubles instead of halving.)",
+        hi: "क्षेत्रफल एक साथ दो विमाओं में फैलता है, अतः क्षेत्रीय गुणांक रैखिक का लगभग दुगुना है: 0.04/2 = 0.02 प्रतिशत। आयतन रैखिक आँकड़े के तीन गुने से बढ़ता, 0.06 प्रतिशत। (0.08 आधा करने के बजाय दुगुना कर देता है।)",
+        mr: "क्षेत्रफळ एकाच वेळी दोन मितींत प्रसरण पावते, म्हणून क्षेत्रीय गुणांक रेषीयाच्या जवळपास दुप्पट: 0.04/2 = 0.02 टक्के. घनफळ रेषीय आकड्याच्या तिप्पट वाढले असते, 0.06 टक्के. (0.08 निम्मे करण्याऐवजी दुप्पट करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Two kilograms of water at 90 °C are mixed with three kilograms at 40 °C in an insulated vessel. What is the final temperature in °C?",
+        hi: "ऊष्मारोधी पात्र में 90 °C का दो किलोग्राम पानी 40 °C के तीन किलोग्राम के साथ मिलाया जाता है। अंतिम ताप °C में क्या है?",
+        mr: "उष्णतारोधक भांड्यात 90 °C चे दोन किलोग्रॅम पाणी 40 °C च्या तीन किलोग्रॅमसह मिसळले जाते. शेवटचे तापमान °C मध्ये किती?",
+      },
+      answer: 60,
+      wrong: [65, 50, 130],
+      checkExpr: "(2*90+3*40)/(2+3)",
+      solution: {
+        en: "Heat lost equals heat gained, and the specific heat is the same on both sides so it cancels: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. The answer leans towards the larger mass. (65 is the plain average of the two temperatures, which would be right only for equal masses.)",
+        hi: "खोई ऊष्मा पाई ऊष्मा के बराबर है, और दोनों ओर विशिष्ट ऊष्मा एक-सी है अतः वह कट जाती है: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. उत्तर बड़े द्रव्यमान की ओर झुकता है। (65 दोनों तापों का सादा औसत है, जो केवल बराबर द्रव्यमानों के लिए सही होता।)",
+        mr: "गमावलेली उष्णता मिळवलेल्या उष्णतेइतकी, आणि दोन्ही बाजूंची विशिष्ट उष्णता सारखी म्हणून ती कापली जाते: T = (2 × 90 + 3 × 40)/5 = 300/5 = 60 °C. उत्तर मोठ्या वस्तुमानाकडे झुकते. (65 ही दोन्ही तापमानांची साधी सरासरी, जी केवळ समान वस्तुमानांसाठी बरोबर ठरली असती.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Heat flows through a slab of area 2 m² and thickness 0.04 m whose conductivity is 0.08 W/m/K, with a 20 K difference across it. What is the rate of heat flow, in watts?",
+        hi: "2 m² क्षेत्रफल और 0.04 m मोटाई की उस पट्टी से ऊष्मा बहती है जिसकी चालकता 0.08 W/m/K है, और उसके आर-पार 20 K का अंतर है। ऊष्मा-प्रवाह की दर वाट में क्या है?",
+        mr: "2 m² क्षेत्रफळ आणि 0.04 m जाडीच्या ज्या पट्टीची वाहकता 0.08 W/m/K आहे तिच्यातून उष्णता वाहते, आणि तिच्या आरपार 20 K चा फरक आहे. उष्णता-प्रवाहाचा दर वॉटमध्ये किती?",
+      },
+      answer: 80,
+      wrong: [8, 800, 0.8],
+      checkExpr: "0.08*2*20/0.04",
+      solution: {
+        en: "The rate is kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. Doubling the thickness would halve this, which is the whole argument for insulation, and the thickness enters in the denominator precisely because a longer path means a gentler temperature gradient. (8 and 800 slip a factor of ten.)",
+        hi: "दर kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. मोटाई दुगुनी करने पर यह आधी हो जाती, और यही रोधन का पूरा तर्क है, तथा मोटाई हर में ठीक इसलिए आती है कि लंबा रास्ता कम तीखी ताप-प्रवणता देता है। (8 और 800 दस के गुणक से खिसकते हैं।)",
+        mr: "दर kAΔT/L = 0.08 × 2 × 20/0.04 = 3.2/0.04 = 80 W. जाडी दुप्पट केल्यास हे निम्मे झाले असते, आणि हाच अख्खा उष्णतारोधनाचा युक्तिवाद, तसेच जाडी छेदात नेमकी यासाठी येते की लांब मार्ग कमी तीव्र तापमान-प्रवणता देतो. (8 आणि 800 दहाच्या पटीने सरकतात.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A body cools from 60 °C to 50 °C in 10 minutes in surroundings at 20 °C. Using Newton's law of cooling with average excess temperatures, how long does it take to cool from 50 °C to 40 °C, in minutes?",
+        hi: "20 °C के परिवेश में कोई पिंड 10 मिनट में 60 °C से 50 °C तक ठंडा होता है। औसत अधिकता-तापों के साथ न्यूटन का शीतलन नियम लगाते हुए, 50 °C से 40 °C तक ठंडा होने में उसे कितने मिनट लगते हैं?",
+        mr: "20 °C च्या परिसरात एक पिंड 10 मिनिटांत 60 °C पासून 50 °C पर्यंत थंड होतो. सरासरी अधिक्य-तापमानांसह न्यूटनचा शीतलन नियम वापरून, 50 °C पासून 40 °C पर्यंत थंड व्हायला त्याला किती मिनिटे लागतात?",
+      },
+      answer: 14,
+      wrong: [10, 20, 7],
+      checkExpr: "10*35/25",
+      solution: {
+        en: "In the first stage the mean temperature is 55 °C, an excess of 35 over the surroundings. In the second it is 45 °C, an excess of 25. The rate is proportional to the excess and the same ten degrees must be shed, so the time scales inversely: t = 10 × 35/25 = 14 minutes. Cooling always slows as the gap closes, and the body would take infinitely long to reach 20 °C exactly. (10 assumes equal intervals take equal times, which is the belief this question exists to break.)",
+        hi: "पहले चरण में माध्य ताप 55 °C है, परिवेश से 35 की अधिकता। दूसरे में 45 °C, यानी 25 की अधिकता। दर अधिकता के समानुपाती है और वही दस डिग्री छोड़नी हैं, अतः समय व्युत्क्रमानुपाती चलता है: t = 10 × 35/25 = 14 मिनट। अंतर घटते-घटते शीतलन सदा धीमा होता है, और पिंड को ठीक 20 °C पहुँचने में अनंत समय लगता। (10 मानता है कि बराबर अंतराल बराबर समय लेते हैं, और यही वह धारणा है जिसे तोड़ने के लिए यह प्रश्न है।)",
+        mr: "पहिल्या टप्प्यात मध्य तापमान 55 °C, परिसराहून 35 चे अधिक्य. दुसऱ्यात 45 °C, म्हणजे 25 चे अधिक्य. दर अधिक्याच्या समानुपाती आणि तेच दहा अंश सोडायचे आहेत, म्हणून काळ व्यस्तानुपाती चालतो: t = 10 × 35/25 = 14 मिनिटे. फरक घटत जाताना शीतलन नेहमी मंदावते, आणि पिंडाला नेमके 20 °C गाठायला अनंत काळ लागला असता. (10 गृहीत धरते की समान अंतराल समान काळ घेतात, आणि हीच ती समजूत जी मोडण्यासाठी हा प्रश्न आहे.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A steel tape reads correctly at 20 °C. It is used at 40 °C to measure a distance the tape reports as 100.00 m. Taking α as 12 × 10⁻⁶ per °C, by how many millimetres is the reading short of the true distance?",
+        hi: "इस्पात का फ़ीता 20 °C पर सही पढ़ता है। उसे 40 °C पर ऐसी दूरी नापने में लगाया जाता है जिसे फ़ीता 100.00 m बताता है। α = 12 × 10⁻⁶ प्रति °C लेते हुए, पाठ्यांक सच्ची दूरी से कितने मिलीमीटर कम है?",
+        mr: "पोलादी फीत 20 °C वर बरोबर वाचते. ती 40 °C वर अशा अंतरासाठी वापरली जाते जे फीत 100.00 m सांगते. α = 12 × 10⁻⁶ प्रति °C घेतल्यास, वाचन खऱ्या अंतराहून किती मिलीमीटरने कमी आहे?",
+      },
+      answer: 24,
+      wrong: [12, 2.4, 240],
+      checkExpr: "100*12*20/1000",
+      solution: {
+        en: "Each of the tape's marked metres has itself stretched by αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴, so a 'metre' on the warm tape is really 1.00024 m. Over a hundred of them the true distance exceeds the reading by 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm. Note the direction: a tape that has expanded reads SHORT, because fewer of its stretched divisions fit into the same real distance. (12 forgets the factor of two in ΔT = 20.)",
+        hi: "फ़ीते का हर अंकित मीटर स्वयं αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴ से खिंच चुका है, अतः गरम फ़ीते का एक 'मीटर' वस्तुतः 1.00024 m है। सौ ऐसे मीटरों पर सच्ची दूरी पाठ्यांक से 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm अधिक है। दिशा पर ध्यान दो: जो फ़ीता फैल चुका है वह कम पढ़ता है, क्योंकि उसके खिंचे विभाजन उसी असली दूरी में कम समाते हैं। (12 ΔT = 20 में दो का गुणक भूल जाता है।)",
+        mr: "फितीचा प्रत्येक अंकित मीटर स्वतः αΔT = 12 × 10⁻⁶ × 20 = 2.4 × 10⁻⁴ ने ताणला गेला आहे, म्हणून गरम फितीचा एक 'मीटर' प्रत्यक्षात 1.00024 m आहे. शंभर अशा मीटरांवर खरे अंतर वाचनाहून 100 × 2.4 × 10⁻⁴ m = 0.024 m = 24 mm ने अधिक. दिशेकडे लक्ष द्या: जी फीत प्रसरण पावली आहे ती कमी वाचते, कारण तिचे ताणलेले विभाग त्याच खऱ्या अंतरात कमी बसतात. (12 हे ΔT = 20 मधला दोनचा गुणक विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A body radiates 100 W at an absolute temperature of 300 K. What power does it radiate at 600 K, in watts?",
+        hi: "300 K परम ताप पर कोई पिंड 100 W विकिरित करता है। 600 K पर वह कितनी शक्ति विकिरित करता है, वाट में?",
+        mr: "300 K निरपेक्ष तापमानावर एक पिंड 100 W प्रारित करतो. 600 K वर तो किती शक्ती प्रारित करतो, वॉटमध्ये?",
+      },
+      answer: 1600,
+      wrong: [200, 400, 800],
+      checkExpr: "100*2^4",
+      solution: {
+        en: "Radiated power goes as the fourth power of the ABSOLUTE temperature, so doubling 300 K to 600 K multiplies the output by 2⁴ = 16: 100 × 16 = 1600 W. The fourth power is why a filament at 2500 K glows brightly while the same wire at 500 K only feels warm, and why the calculation must be done in kelvin — doubling 27 °C to 54 °C is nothing like doubling the absolute temperature. (200 assumes proportionality and 400 uses the square.)",
+        hi: "विकिरित शक्ति परम ताप की चौथी घात के अनुसार चलती है, अतः 300 K को दोगुना कर 600 K करने पर निर्गत 2⁴ = 16 गुना हो जाता है: 100 × 16 = 1600 W. चौथी घात ही वह कारण है जिससे 2500 K पर तंतु चमकता है जबकि वही तार 500 K पर केवल गरम लगता है, और जिससे गणना केल्विन में करनी पड़ती है — 27 °C को दोगुना कर 54 °C करना परम ताप दोगुना करने जैसा बिलकुल नहीं। (200 समानुपात मानता है और 400 वर्ग लगाता है।)",
+        mr: "प्रारित शक्ती निरपेक्ष तापमानाच्या चौथ्या घातेनुसार जाते, म्हणून 300 K दुप्पट करून 600 K केल्यास निर्गत 2⁴ = 16 पट होते: 100 × 16 = 1600 W. चौथी घात हेच ते कारण ज्यामुळे 2500 K वरचा तंतू चमकतो तर तीच तार 500 K वर केवळ उबदार वाटते, आणि ज्यामुळे गणना केल्विनमध्ये करावी लागते — 27 °C दुप्पट करून 54 °C करणे निरपेक्ष तापमान दुप्पट करण्यासारखे मुळीच नाही. (200 समानुपात मानते आणि 400 वर्ग वापरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "The same quantity of heat that raises 1 kg of water by exactly one degree is given instead to 1 kg of dry sand, whose specific heat is 800 J/kg/K. By how many degrees does the sand's temperature rise? Take water's specific heat as 4200 J/kg/K.",
+        hi: "जो ऊष्मा 1 kg पानी को ठीक एक डिग्री बढ़ाती है वही इसके बजाय 1 kg सूखी रेत को दी जाती है, जिसकी विशिष्ट ऊष्मा 800 J/kg/K है। रेत का ताप कितनी डिग्री चढ़ता है? पानी की विशिष्ट ऊष्मा 4200 J/kg/K लो।",
+        mr: "जी उष्णता 1 kg पाणी नेमक्या एका अंशाने वाढवते तीच त्याऐवजी 1 kg कोरड्या वाळूला दिली जाते, जिची विशिष्ट उष्णता 800 J/kg/K आहे. वाळूचे तापमान किती अंशांनी चढते? पाण्याची विशिष्ट उष्णता 4200 J/kg/K घ्या.",
+      },
+      answer: 5.25,
+      wrong: [0.19, 3360, 4200],
+      checkExpr: "4200/800",
+      solution: {
+        en: "The heat supplied is 1 × 4200 × 1 = 4200 J. Given to sand, it produces ΔT = Q/(mc) = 4200/800 = 5.25 °C. So the same sunlight that warms the sea by one degree warms the beach by more than five, and this single ratio explains a great deal of geography. It is why the sand burns bare feet on an afternoon when the sea is pleasant, and why the two swap places after dark: the sand, having stored little energy per degree, sheds its heat and cools far below the water by dawn. The daily land–sea breeze follows directly — air rises over the hot land by day and is replaced by air from the sea, and the flow reverses at night. On a larger scale the same property gives coastal climates their small annual range and continental interiors their extremes, and it is why a hot-water bottle beats a hot brick of the same mass: the water carries about five times the heat for every degree it will give up. (0.19 inverts the ratio, and 3360 multiplies where it should divide.)",
+        hi: "दी गई ऊष्मा 1 × 4200 × 1 = 4200 J है। रेत को दिए जाने पर वह ΔT = Q/(mc) = 4200/800 = 5.25 °C देती है। अतः वही धूप जो समुद्र को एक डिग्री गरम करती है समुद्रतट को पाँच से अधिक, और यह अकेला अनुपात बहुत सारा भूगोल समझा देता है। इसी से उस दोपहर रेत नंगे पैर जलाती है जब समुद्र सुखद है, और इसी से अँधेरा होते ही दोनों जगह बदल लेते हैं: रेत, जिसने प्रति डिग्री कम ऊर्जा जमा की थी, अपनी ऊष्मा छोड़ देती है और भोर तक पानी से कहीं नीचे ठंडी हो जाती है। दैनिक थल-समुद्र समीर सीधे निकलती है — दिन में गरम थल के ऊपर हवा उठती है और उसकी जगह समुद्र से हवा आती है, और रात में प्रवाह उलट जाता है। बड़े पैमाने पर वही गुण तटीय जलवायु को छोटा वार्षिक परास और महाद्वीपों के भीतरी भागों को चरम देता है, और इसी से उसी द्रव्यमान की गरम ईंट को गरम पानी की थैली हरा देती है: पानी हर उस डिग्री के लिए लगभग पाँच गुना ऊष्मा ढोता है जो वह छोड़ेगा। (0.19 अनुपात उलट देता है, और 3360 वहाँ गुणा करता है जहाँ भाग देना था।)",
+        mr: "दिलेली उष्णता 1 × 4200 × 1 = 4200 J. वाळूला दिल्यावर ती ΔT = Q/(mc) = 4200/800 = 5.25 °C देते. म्हणून तेच ऊन जे समुद्राला एक अंशाने तापवते ते किनाऱ्याला पाचहून अधिक, आणि हे एकमेव गुणोत्तर बराच भूगोल समजावते. यामुळेच त्या दुपारी वाळू अनवाणी पाय भाजते जेव्हा समुद्र सुखद असतो, आणि यामुळेच अंधार पडताच दोघे जागा बदलतात: वाळू, जिने प्रति अंश कमी ऊर्जा साठवली होती, आपली उष्णता सोडून देते आणि पहाटेपर्यंत पाण्याहून कितीतरी खाली थंड होते. दैनंदिन भूमी-समुद्र वारा थेट निघतो — दिवसा तापलेल्या भूमीवरून हवा वर उठते आणि तिची जागा समुद्राकडून येणारी हवा घेते, आणि रात्री प्रवाह उलटतो. मोठ्या प्रमाणावर तोच गुणधर्म किनारी हवामानाला लहान वार्षिक पल्ला आणि खंडांच्या अंतर्भागांना टोकाची स्थिती देतो, आणि यामुळेच त्याच वस्तुमानाच्या गरम विटेला गरम पाण्याची पिशवी हरवते: पाणी ते सोडणार असलेल्या प्रत्येक अंशासाठी सुमारे पाचपट उष्णता वाहते. (0.19 गुणोत्तर उलटे करते, आणि 3360 जिथे भागायचे तिथे गुणते.)",
+      },
+    },
+  ],
+  "physics-11-thermodynamics": [
+    {
+      level: 1,
+      stem: {
+        en: "A gas expands at a constant pressure of 200,000 Pa, its volume increasing by 0.001 m³. How much work does it do?",
+        hi: "एक गैस 200,000 Pa के अचर दाब पर फैलती है और उसका आयतन 0.001 m³ बढ़ता है। वह कितना कार्य करती है?",
+        mr: "एक वायू 200,000 Pa च्या अचल दाबावर प्रसरण पावतो आणि त्याचे घनफळ 0.001 m³ ने वाढते. तो किती कार्य करतो?",
+      },
+      answer: 200,
+      wrong: [2, 20, 2000],
+      checkExpr: "200000*0.001",
+      solution: {
+        en: "At constant pressure W = PΔV = 200,000 × 0.001 = 200 J. This is the area of a rectangle on the PV diagram; for a varying pressure the area under the curve would have to be found instead. (2 and 2000 slip decimal places.)",
+        hi: "अचर दाब पर W = PΔV = 200,000 × 0.001 = 200 J. यह PV आरेख पर एक आयत का क्षेत्रफल है; बदलते दाब के लिए इसके बजाय वक्र के नीचे का क्षेत्रफल निकालना पड़ता। (2 और 2000 में दशमलव स्थान खिसकते हैं।)",
+        mr: "अचल दाबावर W = PΔV = 200,000 × 0.001 = 200 J. हे PV आकृतीवरील आयताचे क्षेत्रफळ; बदलत्या दाबासाठी त्याऐवजी वक्राखालचे क्षेत्रफळ काढावे लागले असते. (2 आणि 2000 मध्ये दशांश स्थाने सरकतात.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A Carnot engine works between a source at 600 K and a sink at 300 K. What is its efficiency, as a percentage?",
+        hi: "एक कार्नो इंजन 600 K के स्रोत और 300 K के अवशोषक के बीच चलता है। उसकी दक्षता प्रतिशत में क्या है?",
+        mr: "एक कार्नो इंजिन 600 K च्या स्रोत आणि 300 K च्या शोषकादरम्यान चालते. त्याची कार्यक्षमता शेकड्यात किती?",
+      },
+      answer: 50,
+      wrong: [100, 200, 25],
+      checkExpr: "100*(1-300/600)",
+      solution: {
+        en: "η = 1 − T_cold/T_hot = 1 − 300/600 = 0.5, that is 50 per cent. Half the heat taken in must be rejected to the sink, whatever the engine is made of. (200 is the temperature ratio quoted as a percentage without subtracting from one.)",
+        hi: "η = 1 − T_ठंडा/T_गरम = 1 − 300/600 = 0.5, यानी 50 प्रतिशत। ली गई ऊष्मा का आधा अवशोषक को लौटाना ही पड़ता है, इंजन चाहे किसी का बना हो। (200 ताप-अनुपात को एक से घटाए बिना प्रतिशत में बता देता है।)",
+        mr: "η = 1 − T_थंड/T_गरम = 1 − 300/600 = 0.5, म्हणजे 50 टक्के. घेतलेल्या उष्णतेचा निम्मा भाग शोषकाला परत करावाच लागतो, इंजिन कशाचेही बनलेले असो. (200 तापमान-गुणोत्तर एकातून वजा न करता शेकड्यात सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "500 J of heat is added to a gas, which does 200 J of work on its surroundings. By how much does its internal energy change?",
+        hi: "किसी गैस को 500 J ऊष्मा दी जाती है, और वह परिवेश पर 200 J कार्य करती है। उसकी आंतरिक ऊर्जा कितनी बदलती है?",
+        mr: "एका वायूला 500 J उष्णता दिली जाते, आणि तो परिसरावर 200 J कार्य करतो. त्याची आंतरिक ऊर्जा किती बदलते?",
+      },
+      answer: 300,
+      wrong: [700, 200, 500],
+      checkExpr: "500-200",
+      solution: {
+        en: "The first law gives ΔU = Q − W = 500 − 200 = 300 J. The gas kept 300 J and spent 200 J pushing the piston out. (700 adds the work instead of subtracting it, which would be right only if the surroundings did work ON the gas.)",
+        hi: "पहला नियम देता है ΔU = Q − W = 500 − 200 = 300 J. गैस ने 300 J रखे और 200 J पिस्टन बाहर धकेलने में ख़र्च किए। (700 कार्य घटाने के बजाय जोड़ देता है, जो केवल तब सही होता जब परिवेश गैस पर कार्य करता।)",
+        mr: "पहिला नियम देतो ΔU = Q − W = 500 − 200 = 300 J. वायूने 300 J ठेवले आणि 200 J पिस्टन बाहेर ढकलण्यात खर्च केले. (700 कार्य वजा करण्याऐवजी जोडते, जे केवळ तेव्हा बरोबर ठरले असते जेव्हा परिसराने वायूवर कार्य केले असते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Two moles of a monatomic ideal gas are warmed through 10 K. Taking R as 8.3 J/mol/K and ΔU = (3/2)nRΔT, by how much does the internal energy rise, in joules?",
+        hi: "एकपरमाणुक आदर्श गैस के दो मोल 10 K गरम किए जाते हैं। R = 8.3 J/mol/K और ΔU = (3/2)nRΔT लेते हुए, आंतरिक ऊर्जा कितने जूल बढ़ती है?",
+        mr: "एकअणुक आदर्श वायूचे दोन मोल 10 K ने तापवले जातात. R = 8.3 J/mol/K आणि ΔU = (3/2)nRΔT घेतल्यास, आंतरिक ऊर्जा किती ज्यूलने वाढते?",
+      },
+      answer: 249,
+      wrong: [166, 498, 124.5],
+      checkExpr: "1.5*2*8.3*10",
+      solution: {
+        en: "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. The three-halves comes from the three translational degrees of freedom a single atom has; a diatomic gas, with two rotations as well, would give five-halves and 415 J for the same warming. (166 uses the factor 1 instead of 1.5.)",
+        hi: "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. तीन-बटा-दो एकल परमाणु की तीन स्थानांतरण स्वातंत्र्य-कोटियों से आता है; द्विपरमाणुक गैस, जिसमें दो घूर्णन भी हैं, उसी तापन के लिए पाँच-बटा-दो और 415 J देती। (166 1.5 के बजाय 1 का गुणक लगाता है।)",
+        mr: "ΔU = 1.5 × 2 × 8.3 × 10 = 249 J. तीन-द्वितीयांश एकाच अणूच्या तीन स्थानांतरणी स्वातंत्र्यकोटींतून येते; द्विअणुक वायू, ज्यात दोन परिवलनेही, त्याच तापवण्यासाठी पाच-द्वितीयांश आणि 415 J दिले असते. (166 हे 1.5 ऐवजी 1 चा गुणक वापरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A heat engine absorbs 1000 J from its source and rejects 700 J to its sink in each cycle. What is its efficiency, as a percentage?",
+        hi: "एक ऊष्मा-इंजन हर चक्र में अपने स्रोत से 1000 J सोखता है और अवशोषक को 700 J लौटाता है। उसकी दक्षता प्रतिशत में क्या है?",
+        mr: "एक उष्णता-इंजिन प्रत्येक चक्रात आपल्या स्रोतातून 1000 J शोषते आणि शोषकाला 700 J परत करते. त्याची कार्यक्षमता शेकड्यात किती?",
+      },
+      answer: 30,
+      wrong: [70, 300, 143],
+      checkExpr: "100*(1000-700)/1000",
+      solution: {
+        en: "Over a cycle ΔU is zero, so the work done is 1000 − 700 = 300 J and the efficiency is 300/1000 = 30 per cent. (70 quotes the fraction rejected rather than the fraction used, which is the commonest slip here.)",
+        hi: "चक्र में ΔU शून्य है, अतः किया गया कार्य 1000 − 700 = 300 J और दक्षता 300/1000 = 30 प्रतिशत। (70 प्रयुक्त अंश के बजाय लौटाया गया अंश बता देता है, जो यहाँ की सबसे आम चूक है।)",
+        mr: "चक्रात ΔU शून्य, म्हणून केलेले कार्य 1000 − 700 = 300 J आणि कार्यक्षमता 300/1000 = 30 टक्के. (70 वापरलेल्या अंशाऐवजी परत केलेला अंश सांगते, जी इथली सर्वांत नेहमीची चूक.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "An inventor claims 60 per cent efficiency for an engine running between 400 K and 300 K. What is the greatest efficiency actually possible, as a percentage?",
+        hi: "एक आविष्कारक 400 K और 300 K के बीच चलते इंजन के लिए 60 प्रतिशत दक्षता का दावा करता है। वस्तुतः संभव सबसे बड़ी दक्षता प्रतिशत में क्या है?",
+        mr: "एक संशोधक 400 K आणि 300 K दरम्यान चालणाऱ्या इंजिनासाठी 60 टक्के कार्यक्षमतेचा दावा करतो. प्रत्यक्षात शक्य असलेली सर्वांत मोठी कार्यक्षमता शेकड्यात किती?",
+      },
+      answer: 25,
+      wrong: [75, 60, 33.333333],
+      checkExpr: "100*(1-300/400)",
+      solution: {
+        en: "The Carnot ceiling is 1 − 300/400 = 0.25, that is 25 per cent, so the claim of 60 is impossible however the engine is built. Note that the first law is not violated by the claim — energy would still balance — which is exactly why the second law is needed as a separate statement. (75 is the temperature ratio itself.)",
+        hi: "कार्नो छत 1 − 300/400 = 0.25 है, यानी 25 प्रतिशत, अतः 60 का दावा असंभव है, इंजन चाहे कैसे भी बना हो। ध्यान दो दावे से पहले नियम का उल्लंघन नहीं होता — ऊर्जा फिर भी मिल जाती — और ठीक इसीलिए दूसरा नियम अलग कथन के रूप में चाहिए। (75 स्वयं ताप-अनुपात है।)",
+        mr: "कार्नो छत 1 − 300/400 = 0.25, म्हणजे 25 टक्के, म्हणून 60 चा दावा अशक्य, इंजिन कसेही बनलेले असो. लक्षात घ्या दाव्याने पहिल्या नियमाचे उल्लंघन होत नाही — ऊर्जा तरीही जुळली असती — आणि नेमके म्हणूनच दुसरा नियम वेगळे विधान म्हणून लागतो. (75 हे स्वतः तापमान-गुणोत्तर.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A refrigerator removes 300 J of heat from its contents for every 100 J of electrical work supplied. What is its coefficient of performance?",
+        hi: "एक रेफ़्रिजरेटर हर 100 J विद्युत् कार्य पर अपनी सामग्री से 300 J ऊष्मा हटाता है। उसका निष्पादन गुणांक क्या है?",
+        mr: "एक फ्रिज प्रत्येक 100 J विद्युत कार्यामागे आपल्या सामग्रीतून 300 J उष्णता काढतो. त्याचा कार्यमान गुणांक किती?",
+      },
+      answer: 3,
+      wrong: [0.33, 4, 400],
+      checkExpr: "300/100",
+      solution: {
+        en: "COP = heat removed divided by work supplied = 300/100 = 3. Note that 400 J is dumped into the kitchen — the 300 taken from the food plus the 100 of work — so an open fridge door heats a room rather than cooling it. (4 is the coefficient of a heat PUMP, which counts the heat delivered rather than the heat removed, and is the near-miss worth understanding.)",
+        hi: "COP = हटाई गई ऊष्मा बटा दिया गया कार्य = 300/100 = 3. ध्यान दो रसोई में 400 J उड़ेले जाते हैं — भोजन से लिए 300 जोड़ कार्य के 100 — अतः खुला फ़्रिज दरवाज़ा कमरा ठंडा करने के बजाय गरम करता है। (4 ऊष्मा-पंप का गुणांक है, जो हटाई गई नहीं बल्कि पहुँचाई गई ऊष्मा गिनता है, और वही समझने योग्य निकट-चूक है।)",
+        mr: "COP = काढलेली उष्णता भागिले दिलेले कार्य = 300/100 = 3. लक्षात घ्या स्वयंपाकघरात 400 J ओतले जातात — अन्नातून घेतलेले 300 अधिक कार्याचे 100 — म्हणून उघडा फ्रिजचा दरवाजा खोली थंड करण्याऐवजी तापवतो. (4 हा उष्णता-पंपाचा गुणांक, जो काढलेली नव्हे तर पोहोचवलेली उष्णता मोजतो, आणि तीच समजून घेण्याजोगी जवळची चूक.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "For a monatomic ideal gas the ratio of specific heats γ equals 1 + 2/f, where f is the number of degrees of freedom. Taking f as 3, what is γ?",
+        hi: "एकपरमाणुक आदर्श गैस के लिए विशिष्ट ऊष्माओं का अनुपात γ = 1 + 2/f है, जहाँ f स्वातंत्र्य-कोटियों की संख्या है। f = 3 लेते हुए, γ क्या है?",
+        mr: "एकअणुक आदर्श वायूसाठी विशिष्ट उष्णतांचे गुणोत्तर γ = 1 + 2/f, जिथे f ही स्वातंत्र्यकोटींची संख्या. f = 3 घेतल्यास, γ किती?",
+      },
+      answer: 1.666667,
+      wrong: [1.4, 1.333333, 2],
+      checkExpr: "1+2/3",
+      solution: {
+        en: "γ = 1 + 2/3 = 1.666667. A rigid diatomic gas has f = 5 and so γ = 1.4, which is why air behaves with that value in sound-wave and adiabatic calculations. The larger γ is, the steeper the adiabatic curve on a PV diagram. (1.4 is the diatomic answer.)",
+        hi: "γ = 1 + 2/3 = 1.666667. दृढ़ द्विपरमाणुक गैस के लिए f = 5 और अतः γ = 1.4, इसीलिए ध्वनि-तरंग तथा रुद्धोष्म गणनाओं में हवा उसी मान से व्यवहार करती है। γ जितना बड़ा, PV आरेख पर रुद्धोष्म वक्र उतना ढालू। (1.4 द्विपरमाणुक उत्तर है।)",
+        mr: "γ = 1 + 2/3 = 1.666667. दृढ द्विअणुक वायूसाठी f = 5 आणि म्हणून γ = 1.4, म्हणूनच ध्वनिलहरी आणि रुद्धोष्म गणनांत हवा त्याच मूल्याने वागते. γ जितका मोठा, PV आकृतीवर रुद्धोष्म वक्र तितका तीव्र. (1.4 हे द्विअणुक उत्तर.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A Carnot engine between 600 K and 300 K absorbs 1200 J from the source in each cycle. How much work does it deliver?",
+        hi: "600 K और 300 K के बीच का कार्नो इंजन हर चक्र में स्रोत से 1200 J सोखता है। वह कितना कार्य देता है?",
+        mr: "600 K आणि 300 K दरम्यानचे कार्नो इंजिन प्रत्येक चक्रात स्रोतातून 1200 J शोषते. ते किती कार्य देते?",
+      },
+      answer: 600,
+      wrong: [1200, 300, 900],
+      checkExpr: "1200*(1-300/600)",
+      solution: {
+        en: "The efficiency is 1 − 300/600 = 0.5, so W = 0.5 × 1200 = 600 J, and the other 600 J must be rejected to the 300 K sink. That rejection is not waste from bad design: without it the working substance could not be returned to its starting state, and the engine could not run in a cycle at all. (1200 assumes complete conversion, which is exactly what the second law forbids.)",
+        hi: "दक्षता 1 − 300/600 = 0.5 है, अतः W = 0.5 × 1200 = 600 J, और बाक़ी 600 J 300 K अवशोषक को लौटाने ही पड़ते हैं। वह लौटाना बुरे अभिकल्प का कचरा नहीं: उसके बिना कार्यकारी पदार्थ आरंभिक अवस्था में लौटाया नहीं जा सकता, और इंजन चक्र में चल ही नहीं सकता। (1200 पूर्ण रूपांतरण मान लेता है, और ठीक यही दूसरा नियम मना करता है।)",
+        mr: "कार्यक्षमता 1 − 300/600 = 0.5, म्हणून W = 0.5 × 1200 = 600 J, आणि उरलेले 600 J 300 K च्या शोषकाला परत करावेच लागतात. ते परत करणे वाईट रचनेचा कचरा नव्हे: त्याशिवाय कार्यकारी पदार्थ सुरुवातीच्या अवस्थेत परत आणता येणार नाही, आणि इंजिन चक्रात चालूच शकणार नाही. (1200 पूर्ण रूपांतर गृहीत धरते, आणि नेमके तेच दुसरा नियम मनाई करतो.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "1000 J of heat flows directly from a reservoir at 400 K to one at 300 K. What is the net change in entropy of the two reservoirs together, in J/K?",
+        hi: "1000 J ऊष्मा 400 K के भंडार से सीधे 300 K के भंडार में बहती है। दोनों भंडारों की मिलाकर एन्ट्रॉपी में शुद्ध परिवर्तन J/K में क्या है?",
+        mr: "1000 J उष्णता 400 K च्या साठ्यातून थेट 300 K च्या साठ्यात वाहते. दोन्ही साठ्यांचा मिळून एन्ट्रॉपीतील निव्वळ बदल J/K मध्ये किती?",
+      },
+      answer: 0.833333,
+      wrong: [0.5, 2.5, 3.333333],
+      checkExpr: "1000/300-1000/400",
+      solution: {
+        en: "The hot reservoir loses entropy 1000/400 = 2.5 J/K and the cold one gains 1000/300 = 3.333333 J/K, so the net change is 3.333333 − 2.5 = 0.833333 J/K. The total has increased, and that increase is what marks the process as irreversible. Two things are worth extracting. First, the same 1000 J carries more entropy at a lower temperature, because entropy transferred is Q/T — heat delivered to a cold body disturbs it proportionally more. Second, this is the second law in its sharpest form: a spontaneous process never decreases the total entropy, and a process that would decrease it — heat flowing the other way — simply does not happen. Had a Carnot engine been placed between the two reservoirs instead, it would have extracted 1 − 300/400 = 25 per cent of the 1000 J as useful work and delivered only 750 J to the cold side, giving 750/300 − 1000/400 = 0 exactly: a reversible process leaves the total entropy unchanged, and the 250 J of work is precisely the opportunity thrown away by letting the heat leak directly. (0.5 subtracts the wrong way round, and 3.333333 and 2.5 are the two separate terms rather than their difference.)",
+        hi: "गरम भंडार 1000/400 = 2.5 J/K एन्ट्रॉपी खोता है और ठंडा 1000/300 = 3.333333 J/K पाता है, अतः शुद्ध परिवर्तन 3.333333 − 2.5 = 0.833333 J/K है। कुल बढ़ा है, और यही वृद्धि प्रक्रिया को अनुत्क्रमणीय ठहराती है। दो बातें निकालने योग्य हैं। पहली, वही 1000 J नीचे ताप पर अधिक एन्ट्रॉपी ढोते हैं, क्योंकि संचरित एन्ट्रॉपी Q/T है — ठंडे पिंड को पहुँचाई ऊष्मा उसे समानुपाती रूप से अधिक विचलित करती है। दूसरी, यह दूसरा नियम अपने सबसे तीखे रूप में है: स्वतःस्फूर्त प्रक्रिया कुल एन्ट्रॉपी कभी नहीं घटाती, और जो प्रक्रिया उसे घटाती — उलटी दिशा में बहती ऊष्मा — वह बस होती ही नहीं। यदि दोनों भंडारों के बीच कार्नो इंजन रखा होता, तो वह 1000 J का 1 − 300/400 = 25 प्रतिशत उपयोगी कार्य के रूप में निकाल लेता और ठंडी ओर केवल 750 J पहुँचाता, जिससे 750/300 − 1000/400 = ठीक 0 मिलता: उत्क्रमणीय प्रक्रिया कुल एन्ट्रॉपी अपरिवर्तित छोड़ती है, और 250 J कार्य ठीक वही अवसर है जो ऊष्मा को सीधे रिसने देकर फेंक दिया गया। (0.5 उलटा घटाता है, और 3.333333 तथा 2.5 उनके अंतर के बजाय दो अलग पद हैं।)",
+        mr: "गरम साठा 1000/400 = 2.5 J/K एन्ट्रॉपी गमावतो आणि थंड 1000/300 = 3.333333 J/K मिळवतो, म्हणून निव्वळ बदल 3.333333 − 2.5 = 0.833333 J/K. एकूण वाढला आहे, आणि हीच वाढ प्रक्रियेला न उलटवण्याजोगी ठरवते. दोन गोष्टी काढण्याजोग्या. पहिली, तेच 1000 J कमी तापमानावर अधिक एन्ट्रॉपी वाहतात, कारण संक्रमित एन्ट्रॉपी Q/T आहे — थंड पिंडाला पोहोचवलेली उष्णता त्याला प्रमाणशीरपणे अधिक ढवळते. दुसरी, हा दुसरा नियम त्याच्या सर्वांत तीक्ष्ण रूपात: स्वयंस्फूर्त प्रक्रिया एकूण एन्ट्रॉपी कधीही घटवत नाही, आणि जी प्रक्रिया ती घटवेल — उलट दिशेने वाहणारी उष्णता — ती फक्त घडतच नाही. दोन्ही साठ्यांदरम्यान कार्नो इंजिन ठेवले असते, तर त्याने 1000 J चा 1 − 300/400 = 25 टक्के उपयुक्त कार्य म्हणून काढला असता आणि थंड बाजूला केवळ 750 J पोहोचवले असते, ज्यातून 750/300 − 1000/400 = नेमके 0 मिळाले असते: उलटवण्याजोगी प्रक्रिया एकूण एन्ट्रॉपी अपरिवर्तित ठेवते, आणि 250 J कार्य म्हणजे नेमकी तीच संधी जी उष्णतेला थेट गळू देऊन फेकून दिली. (0.5 उलटे वजा करते, आणि 3.333333 व 2.5 ही त्यांच्या फरकाऐवजी दोन वेगळी पदे.)",
+      },
+    },
+  ],
+  "physics-11-kinetic-theory": [
+    {
+      level: 1,
+      stem: {
+        en: "A gas is heated from 300 K to 600 K. By what factor does the average translational kinetic energy of a molecule increase?",
+        hi: "एक गैस 300 K से 600 K तक गरम की जाती है। अणु की औसत स्थानांतरण गतिज ऊर्जा कितने गुना बढ़ती है?",
+        mr: "एक वायू 300 K पासून 600 K पर्यंत तापवला जातो. रेणूची सरासरी स्थानांतरणी गतिज ऊर्जा किती पटीने वाढते?",
+      },
+      answer: 2,
+      wrong: [4, 1.414214, 300],
+      checkExpr: "600/300",
+      solution: {
+        en: "The average translational kinetic energy is (3/2)kT, directly proportional to the ABSOLUTE temperature, so doubling 300 K to 600 K doubles it: a factor of 2. The speed, by contrast, rises only by √2. (4 squares the ratio and 1.414214 is the speed factor rather than the energy factor.)",
+        hi: "औसत स्थानांतरण गतिज ऊर्जा (3/2)kT है, जो परम ताप के सीधे समानुपाती है, अतः 300 K को दोगुना कर 600 K करने पर वह दोगुनी होती है: 2 का गुणक। इसके विपरीत चाल केवल √2 गुना बढ़ती है। (4 अनुपात का वर्ग करता है और 1.414214 ऊर्जा के बजाय चाल का गुणक है।)",
+        mr: "सरासरी स्थानांतरणी गतिज ऊर्जा (3/2)kT, जी निरपेक्ष तापमानाच्या थेट समानुपाती, म्हणून 300 K दुप्पट करून 600 K केल्यास ती दुप्पट होते: 2 चा गुणक. याउलट चाल केवळ √2 पटीने वाढते. (4 गुणोत्तराचा वर्ग करते आणि 1.414214 हा ऊर्जेऐवजी चालीचा गुणक.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A gas has a root-mean-square molecular speed of 500 m/s at 300 K. What is it at 1200 K?",
+        hi: "किसी गैस के अणुओं की वर्ग-माध्य-मूल चाल 300 K पर 500 m/s है। 1200 K पर वह क्या है?",
+        mr: "एका वायूच्या रेणूंची वर्ग-मध्य-मूळ चाल 300 K वर 500 m/s आहे. 1200 K वर ती किती?",
+      },
+      answer: 1000,
+      wrong: [2000, 250, 707.106781],
+      checkExpr: "500*(1200/300)^0.5",
+      fmt: ms,
+      solution: {
+        en: "The rms speed goes as the square root of the absolute temperature, so quadrupling T doubles the speed: 500 × √4 = 1000 m/s. (2000 assumes direct proportionality to T, forgetting that it is the ENERGY that is proportional and the speed only its square root.)",
+        hi: "वर्ग-माध्य-मूल चाल परम ताप के वर्गमूल के अनुसार चलती है, अतः T चौगुना करने पर चाल दोगुनी होती है: 500 × √4 = 1000 m/s. (2000 T के सीधे समानुपात मान लेता है, यह भूलकर कि समानुपाती ऊर्जा है और चाल केवल उसका वर्गमूल।)",
+        mr: "वर्ग-मध्य-मूळ चाल निरपेक्ष तापमानाच्या वर्गमुळानुसार जाते, म्हणून T चौपट केल्यास चाल दुप्पट होते: 500 × √4 = 1000 m/s. (2000 हे T च्या थेट समानुपाती मानते, हे विसरून की समानुपाती ऊर्जा आहे आणि चाल केवळ तिचे वर्गमूळ.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "At the same temperature, how many times faster are hydrogen molecules (molar mass 2) than oxygen molecules (molar mass 32)?",
+        hi: "एक ही ताप पर हाइड्रोजन के अणु (मोलर द्रव्यमान 2) ऑक्सीजन के अणुओं (मोलर द्रव्यमान 32) से कितने गुना तेज़ हैं?",
+        mr: "एकाच तापमानावर हायड्रोजनचे रेणू (मोलर वस्तुमान 2) ऑक्सिजनच्या रेणूंहून (मोलर वस्तुमान 32) किती पट वेगवान आहेत?",
+      },
+      answer: 4,
+      wrong: [16, 2, 8],
+      checkExpr: "(32/2)^0.5",
+      solution: {
+        en: "Equal temperature means equal average kinetic energy, so ½mv² is the same for both and v ∝ 1/√m: the ratio is √(32/2) = √16 = 4. (16 is the mass ratio itself, and forgetting to take its square root is the standard slip here.)",
+        hi: "बराबर ताप का अर्थ बराबर औसत गतिज ऊर्जा, अतः ½mv² दोनों के लिए एक-सा है और v ∝ 1/√m: अनुपात √(32/2) = √16 = 4. (16 स्वयं द्रव्यमान-अनुपात है, और उसका वर्गमूल लेना भूलना यहाँ की मानक चूक है।)",
+        mr: "समान तापमान म्हणजे समान सरासरी गतिज ऊर्जा, म्हणून ½mv² दोघांसाठी सारखे आणि v ∝ 1/√m: गुणोत्तर √(32/2) = √16 = 4. (16 हे स्वतः वस्तुमान-गुणोत्तर, आणि त्याचे वर्गमूळ घ्यायचे विसरणे ही इथली प्रमाणित चूक.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A gas of density 1.2 kg/m³ has a root-mean-square molecular speed of 500 m/s. Using P = ⅓ρv², what is its pressure in pascals?",
+        hi: "1.2 kg/m³ घनत्व की गैस के अणुओं की वर्ग-माध्य-मूल चाल 500 m/s है। P = ⅓ρv² लगाते हुए, उसका दाब पास्कल में क्या है?",
+        mr: "1.2 kg/m³ घनतेच्या वायूच्या रेणूंची वर्ग-मध्य-मूळ चाल 500 m/s आहे. P = ⅓ρv² वापरून, त्याचा दाब पास्कलमध्ये किती?",
+      },
+      answer: 100000,
+      wrong: [300000, 33333.333333, 200000],
+      checkExpr: "1.2*500^2/3",
+      solution: {
+        en: "P = ⅓ × 1.2 × 250,000 = 100,000 Pa, which is about one atmosphere — as it should be for air at room temperature. The one third is there because only a third of the mean square speed belongs to motion along any one axis. (300000 drops that third.)",
+        hi: "P = ⅓ × 1.2 × 250,000 = 100,000 Pa, जो लगभग एक वायुमंडल है — कमरे के ताप की हवा के लिए वैसा ही होना चाहिए। एक-तिहाई इसलिए है कि माध्य वर्ग चाल का केवल एक तिहाई किसी एक अक्ष के अनुदिश गति का है। (300000 वह तिहाई गिरा देता है।)",
+        mr: "P = ⅓ × 1.2 × 250,000 = 100,000 Pa, जे सुमारे एक वातावरण — खोलीच्या तापमानाच्या हवेसाठी तसेच असावे. एक-तृतीयांश यासाठी की मध्य वर्ग चालीचा केवळ एक तृतीयांश कोणत्याही एका अक्षाच्या दिशेच्या गतीचा. (300000 तो तृतीयांश गाळते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "For a rigid diatomic gas with five degrees of freedom, γ = 1 + 2/f. What is its value of γ?",
+        hi: "पाँच स्वातंत्र्य-कोटियों वाली दृढ़ द्विपरमाणुक गैस के लिए γ = 1 + 2/f. उसका γ क्या है?",
+        mr: "पाच स्वातंत्र्यकोटी असलेल्या दृढ द्विअणुक वायूसाठी γ = 1 + 2/f. त्याचा γ किती?",
+      },
+      answer: 1.4,
+      wrong: [1.666667, 1.333333, 2.4],
+      checkExpr: "1+2/5",
+      solution: {
+        en: "γ = 1 + 2/5 = 1.4. Air is mostly diatomic nitrogen and oxygen, which is why 1.4 is the value used in every adiabatic and sound-speed calculation for air. (1.666667 is the monatomic answer, for helium or argon.)",
+        hi: "γ = 1 + 2/5 = 1.4. हवा अधिकतर द्विपरमाणुक नाइट्रोजन और ऑक्सीजन है, इसीलिए हवा की हर रुद्धोष्म तथा ध्वनि-चाल गणना में 1.4 का मान लगता है। (1.666667 एकपरमाणुक उत्तर है, हीलियम या आर्गन के लिए।)",
+        mr: "γ = 1 + 2/5 = 1.4. हवा मुख्यतः द्विअणुक नायट्रोजन आणि ऑक्सिजन, म्हणूनच हवेच्या प्रत्येक रुद्धोष्म आणि ध्वनि-चाल गणनेत 1.4 हे मूल्य वापरले जाते. (1.666667 हे एकअणुक उत्तर, हेलियम वा आर्गॉनसाठी.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "The molar specific heat of a monatomic ideal gas at constant volume is (3/2)R. Taking R as 8.3 J/mol/K, what is its value?",
+        hi: "एकपरमाणुक आदर्श गैस की अचर आयतन पर मोलर विशिष्ट ऊष्मा (3/2)R है। R = 8.3 J/mol/K लेते हुए, उसका मान क्या है?",
+        mr: "एकअणुक आदर्श वायूची अचल घनफळावरील मोलर विशिष्ट उष्णता (3/2)R आहे. R = 8.3 J/mol/K घेतल्यास, तिचे मूल्य किती?",
+      },
+      answer: 12.45,
+      wrong: [8.3, 20.75, 24.9],
+      checkExpr: "1.5*8.3",
+      solution: {
+        en: "Cv = 1.5 × 8.3 = 12.45 J/mol/K. At constant pressure the gas must also do work as it expands, so Cp is larger by exactly R: 12.45 + 8.3 = 20.75. (20.75 is that constant-pressure value, offered here as the near-miss it always is.)",
+        hi: "Cv = 1.5 × 8.3 = 12.45 J/mol/K. अचर दाब पर गैस को फैलते हुए कार्य भी करना पड़ता है, अतः Cp ठीक R जितना बड़ा है: 12.45 + 8.3 = 20.75. (20.75 वही अचर-दाब मान है, यहाँ उसी निकट-चूक के रूप में रखा गया जो वह सदा रहता है।)",
+        mr: "Cv = 1.5 × 8.3 = 12.45 J/mol/K. अचल दाबावर वायूला प्रसरण पावताना कार्यही करावे लागते, म्हणून Cp नेमके R ने मोठे: 12.45 + 8.3 = 20.75. (20.75 हेच ते अचल-दाब मूल्य, इथे तीच जवळची चूक म्हणून ठेवलेले जी ते नेहमी असते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The mean free path of a molecule in a gas is 60 nm. The pressure is doubled at constant temperature. What is the new mean free path, in nm?",
+        hi: "किसी गैस में अणु का माध्य मुक्त पथ 60 nm है। अचर ताप पर दाब दोगुना कर दिया जाता है। नया माध्य मुक्त पथ nm में क्या है?",
+        mr: "एका वायूत रेणूचा मध्य मुक्त मार्ग 60 nm आहे. अचल तापमानावर दाब दुप्पट केला जातो. नवा मध्य मुक्त मार्ग nm मध्ये किती?",
+      },
+      answer: 30,
+      wrong: [120, 15, 240],
+      checkExpr: "60/2",
+      solution: {
+        en: "The mean free path is inversely proportional to the number of molecules per unit volume, and at constant temperature that number is proportional to the pressure, so doubling P halves the path: 60/2 = 30 nm. Note that the molecular speed is unchanged, since the temperature is unchanged — only the crowding has altered. (120 inverts the relation.)",
+        hi: "माध्य मुक्त पथ प्रति एकांक आयतन अणुओं की संख्या के व्युत्क्रमानुपाती है, और अचर ताप पर वह संख्या दाब की समानुपाती है, अतः P दोगुना करने पर पथ आधा हो जाता है: 60/2 = 30 nm. ध्यान दो अणु की चाल नहीं बदली, क्योंकि ताप नहीं बदला — बदली केवल भीड़। (120 संबंध उलट देता है।)",
+        mr: "मध्य मुक्त मार्ग प्रति एकक घनफळ रेणूंच्या संख्येच्या व्यस्तानुपाती, आणि अचल तापमानावर ती संख्या दाबाच्या समानुपाती, म्हणून P दुप्पट केल्यास मार्ग निम्मा होतो: 60/2 = 30 nm. लक्षात घ्या रेणूची चाल बदललेली नाही, कारण तापमान बदललेले नाही — बदलली केवळ गर्दी. (120 संबंध उलटे करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "One mole of gas occupies 22.4 litres at standard temperature and pressure. How many moles occupy 44.8 litres under the same conditions?",
+        hi: "मानक ताप और दाब पर एक मोल गैस 22.4 लीटर घेरती है। उन्हीं परिस्थितियों में 44.8 लीटर कितने मोल घेरते हैं?",
+        mr: "प्रमाणित तापमान आणि दाबावर एक मोल वायू 22.4 लिटर व्यापतो. त्याच परिस्थितीत 44.8 लिटर किती मोल व्यापतात?",
+      },
+      answer: 2,
+      wrong: [1, 4, 22.4],
+      checkExpr: "44.8/22.4",
+      solution: {
+        en: "Volume is proportional to the number of moles at fixed temperature and pressure, so 44.8/22.4 = 2 moles. Notice the molar volume does not depend on which gas it is — Avogadro's law — because pressure comes from momentum transfer per molecule, and at equal temperature every gas delivers the same average amount. (22.4 quotes the molar volume as though it were a number of moles.)",
+        hi: "नियत ताप और दाब पर आयतन मोलों की संख्या का समानुपाती है, अतः 44.8/22.4 = 2 मोल। ध्यान दो मोलर आयतन इस पर निर्भर नहीं कि गैस कौन-सी है — आवोगाद्रो का नियम — क्योंकि दाब प्रति अणु संवेग-संचरण से आता है, और बराबर ताप पर हर गैस वही औसत मात्रा देती है। (22.4 मोलर आयतन को ऐसे बता देता है मानो वह मोलों की संख्या हो।)",
+        mr: "ठरलेल्या तापमान आणि दाबावर घनफळ मोलांच्या संख्येच्या समानुपाती, म्हणून 44.8/22.4 = 2 मोल. लक्षात घ्या मोलर घनफळ वायू कोणता आहे यावर अवलंबून नाही — आवोगाद्रोचा नियम — कारण दाब प्रति रेणू संवेग-संक्रमणातून येतो, आणि समान तापमानावर प्रत्येक वायू तेच सरासरी प्रमाण देतो. (22.4 मोलर घनफळ असे सांगते जणू ती मोलांची संख्या असावी.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A rigid diatomic gas has Cv = 20.75 J/mol/K. Taking R as 8.3 J/mol/K, what is its molar specific heat at constant pressure?",
+        hi: "दृढ़ द्विपरमाणुक गैस का Cv = 20.75 J/mol/K है। R = 8.3 J/mol/K लेते हुए, अचर दाब पर उसकी मोलर विशिष्ट ऊष्मा क्या है?",
+        mr: "दृढ द्विअणुक वायूचा Cv = 20.75 J/mol/K आहे. R = 8.3 J/mol/K घेतल्यास, अचल दाबावर त्याची मोलर विशिष्ट उष्णता किती?",
+      },
+      answer: 29.05,
+      wrong: [12.45, 41.5, 172.225],
+      checkExpr: "20.75+8.3",
+      solution: {
+        en: "Cp − Cv = R for any ideal gas, so Cp = 20.75 + 8.3 = 29.05 J/mol/K. The difference is exactly R because at constant pressure the gas must additionally do work PΔV = RΔT per mole as it expands, and that work has to be paid for out of the extra heat supplied. Note the relation holds for every ideal gas whatever its atomicity — only Cv itself depends on the degrees of freedom. (41.5 doubles Cv and 172.225 multiplies instead of adding.)",
+        hi: "किसी भी आदर्श गैस के लिए Cp − Cv = R, अतः Cp = 20.75 + 8.3 = 29.05 J/mol/K. अंतर ठीक R इसलिए है कि अचर दाब पर गैस को फैलते हुए प्रति मोल अतिरिक्त कार्य PΔV = RΔT करना पड़ता है, और उस कार्य की क़ीमत दी गई अतिरिक्त ऊष्मा से चुकानी पड़ती है। ध्यान दो यह संबंध हर आदर्श गैस पर चलता है, उसकी परमाणुकता चाहे जो हो — केवल Cv स्वयं स्वातंत्र्य-कोटियों पर निर्भर है। (41.5 Cv को दोगुना करता है और 172.225 जोड़ने के बजाय गुणा करता है।)",
+        mr: "कोणत्याही आदर्श वायूसाठी Cp − Cv = R, म्हणून Cp = 20.75 + 8.3 = 29.05 J/mol/K. फरक नेमका R यासाठी की अचल दाबावर वायूला प्रसरण पावताना प्रति मोल जादा कार्य PΔV = RΔT करावे लागते, आणि त्या कार्याची किंमत दिलेल्या जादा उष्णतेतून द्यावी लागते. लक्षात घ्या हा संबंध प्रत्येक आदर्श वायूवर चालतो, त्याची अणुकता काहीही असो — केवळ Cv स्वतः स्वातंत्र्यकोटींवर अवलंबून. (41.5 हे Cv दुप्पट करते आणि 172.225 जोडण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A diatomic gas is hot enough for its vibrational mode to be active, giving seven degrees of freedom in all. Taking R as 8.3 J/mol/K, what is the internal energy of one mole at 300 K, in joules?",
+        hi: "एक द्विपरमाणुक गैस इतनी गरम है कि उसका कंपन-प्रकार सक्रिय हो जाए, जिससे कुल सात स्वातंत्र्य-कोटियाँ बनती हैं। R = 8.3 J/mol/K लेते हुए, 300 K पर एक मोल की आंतरिक ऊर्जा जूल में क्या है?",
+        mr: "एक द्विअणुक वायू इतका गरम आहे की त्याचा कंपन-प्रकार सक्रिय होईल, ज्यातून एकूण सात स्वातंत्र्यकोटी बनतात. R = 8.3 J/mol/K घेतल्यास, 300 K वर एका मोलची आंतरिक ऊर्जा ज्यूलमध्ये किती?",
+      },
+      answer: 8715,
+      wrong: [6225, 3735, 12450],
+      checkExpr: "3.5*8.3*300",
+      solution: {
+        en: "Equipartition gives each degree of freedom ½RT per mole, so with f = 7 the internal energy is (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. Two things are worth drawing out. First, a vibrating bond counts as TWO degrees of freedom rather than one, because it stores energy both as kinetic energy of the oscillation and as potential energy in the stretched bond, and equipartition assigns ½RT to each quadratic term. That is why a diatomic molecule goes from five to seven and not from five to six. Second, and more importantly, the vibrational mode does not switch on gradually — it is essentially absent at room temperature and appears only above some hundreds or thousands of kelvin depending on the molecule. Classical physics has no explanation whatever for this. Equipartition, taken at face value, predicts that every mode should always be active, which would give the wrong specific heat for almost every real gas at every ordinary temperature. The resolution came only with quantum mechanics: vibrational energy comes in discrete lumps, and if kT is much smaller than one lump the mode simply cannot be excited and contributes nothing. The measured specific heat of hydrogen, which climbs in steps as it is warmed over hundreds of degrees, was one of the earliest and clearest experimental signposts that classical mechanics was incomplete. (6225 uses f = 5, 3735 uses f = 3, and 12450 uses f = 10.)",
+        hi: "समविभाजन हर स्वातंत्र्य-कोटि को प्रति मोल ½RT देती है, अतः f = 7 पर आंतरिक ऊर्जा (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. दो बातें निकालने योग्य हैं। पहली, कंपन करता बंधन एक नहीं बल्कि दो स्वातंत्र्य-कोटियाँ गिना जाता है, क्योंकि वह ऊर्जा दोलन की गतिज ऊर्जा के रूप में भी जमा करता है और खिंचे बंधन की स्थितिज ऊर्जा के रूप में भी, और समविभाजन हर द्विघात पद को ½RT देती है। इसीलिए द्विपरमाणुक अणु पाँच से सात जाता है, पाँच से छह नहीं। दूसरी, और अधिक महत्वपूर्ण, कंपन-प्रकार धीरे-धीरे चालू नहीं होता — कमरे के ताप पर वह मूलतः अनुपस्थित है और अणु के अनुसार कुछ सौ या हज़ार केल्विन के ऊपर ही प्रकट होता है। चिरसम्मत भौतिकी के पास इसकी कोई व्याख्या नहीं। समविभाजन, ज्यों का त्यों लिया जाए, भविष्यवाणी करती है कि हर प्रकार सदा सक्रिय रहेगा, जो लगभग हर असली गैस के लिए हर साधारण ताप पर ग़लत विशिष्ट ऊष्मा देगा। समाधान केवल क्वांटम यांत्रिकी के साथ आया: कंपन-ऊर्जा अलग-अलग गुल्लों में आती है, और यदि kT एक गुल्ले से बहुत छोटा हो तो प्रकार उत्तेजित हो ही नहीं सकता और कुछ योगदान नहीं देता। हाइड्रोजन की नापी गई विशिष्ट ऊष्मा, जो सैकड़ों डिग्री गरम करने पर सीढ़ियों में चढ़ती है, इस बात के आरंभिक और स्पष्टतम प्रायोगिक संकेतों में से एक थी कि चिरसम्मत यांत्रिकी अधूरी है। (6225 f = 5 लगाता है, 3735 f = 3, और 12450 f = 10.)",
+        mr: "समविभाजन प्रत्येक स्वातंत्र्यकोटीला प्रति मोल ½RT देते, म्हणून f = 7 वर आंतरिक ऊर्जा (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. दोन गोष्टी काढण्याजोग्या. पहिली, कंपन करणारा बंध एक नव्हे तर दोन स्वातंत्र्यकोटी मोजला जातो, कारण तो ऊर्जा दोलनाच्या गतिज ऊर्जेच्या रूपातही साठवतो आणि ताणलेल्या बंधाच्या स्थितिज ऊर्जेच्या रूपातही, आणि समविभाजन प्रत्येक द्विघात पदाला ½RT देते. म्हणूनच द्विअणुक रेणू पाचावरून सातावर जातो, पाचावरून सहावर नाही. दुसरी, आणि अधिक महत्त्वाची, कंपन-प्रकार हळूहळू सुरू होत नाही — खोलीच्या तापमानावर तो मुळात अनुपस्थित असतो आणि रेणूनुसार काही शेकडा वा हजार केल्विनच्या वरच प्रकट होतो. अभिजात भौतिकीकडे याचे कोणतेही स्पष्टीकरण नाही. समविभाजन, जसेच्या तसे घेतल्यास, भाकीत करते की प्रत्येक प्रकार नेहमी सक्रिय असावा, जे जवळपास प्रत्येक खऱ्या वायूसाठी प्रत्येक सामान्य तापमानावर चुकीची विशिष्ट उष्णता देईल. उकल केवळ पुंज यामिकीसह आली: कंपन-ऊर्जा वेगवेगळ्या गठ्ठ्यांत येते, आणि kT एका गठ्ठ्याहून फार लहान असल्यास प्रकार उत्तेजितच होऊ शकत नाही आणि काहीही वाटा देत नाही. हायड्रोजनची मोजलेली विशिष्ट उष्णता, जी शेकडो अंश तापवताना पायऱ्यांनी चढते, अभिजात यामिकी अपूर्ण आहे याच्या सर्वांत सुरुवातीच्या आणि स्पष्ट प्रायोगिक खुणांपैकी एक होती. (6225 हे f = 5 वापरते, 3735 हे f = 3, आणि 12450 हे f = 10.)",
       },
     },
   ],
