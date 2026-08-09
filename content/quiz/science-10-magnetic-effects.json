@@ -1,0 +1,723 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 10,
+  "chapter": "Chapter 12 — Magnetic Effects of Electric Current",
+  "name": "Magnetic Effects of Electric Current",
+  "slug": "science-10-magnetic-effects",
+  "summary": "Two effects that turn out to be one relationship read in both directions: current making a field around every wire, a field pushing back on every current-carrying wire, the motor built on that push, the generator built on the reverse — and, at home, the third wire that quietly waits for the day the appliance fails.",
+  "position": 12,
+  "source": "EduLink original, written against NCERT Science (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "विद्युत धारा के चुंबकीय प्रभाव",
+      "summary": "दो प्रभाव जो निकलते एक ही संबंध दोनों दिशाओं में पढ़ा: हर तार के चारों ओर क्षेत्र बनाती धारा, हर धारावाही तार पर वापस धकेलता क्षेत्र, उस धक्के पर बनी मोटर, उलटे पर बना जनित्र — और घर में वह तीसरा तार जो चुपचाप उस दिन की प्रतीक्षा करता जब उपकरण बिगड़े।"
+    },
+    "mr": {
+      "name": "विद्युत धारेचे चुंबकीय परिणाम",
+      "summary": "दोन परिणाम जे निघतात एकच नाते दोन्ही दिशांनी वाचलेले: प्रत्येक तारेभोवती क्षेत्र निर्माण करणारी धारा, प्रत्येक धारावाही तारेवर परत ढकलणारे क्षेत्र, त्या धक्क्यावर बांधलेली मोटर, उलट्यावर बांधलेले जनित्र — आणि घरात ती तिसरी तार जी गुपचूप त्या दिवसाची वाट पाहते जेव्हा उपकरण बिघडेल."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Iron filings sprinkled around a bar magnet arrange themselves into closed curves running out of one end and into the other. Which drawn curves represent the direction and strength of a magnetic field?",
+      "choices": [
+        "Fleming's left-hand rule",
+        "Electromagnetic induction",
+        "The earth wire",
+        "Magnetic field lines"
+      ],
+      "answerIndex": 3,
+      "solution": "Magnetic field lines are drawn to show a field's direction — from north to south outside the magnet and south to north inside it — with crowded lines meaning a stronger field. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "छड़ चुंबक के चारों ओर छिड़का लोहचूर्ण एक सिरे से निकल दूसरे में घुसते बंद वक्रों में सज जाता। कौन-से खींचे वक्र चुंबकीय क्षेत्र की दिशा और प्रबलता दर्शाते?",
+          "choices": [
+            "फ़्लेमिंग का वाम-हस्त नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "भू-संपर्क तार",
+            "चुंबकीय क्षेत्र रेखाएँ"
+          ],
+          "solution": "चुंबकीय क्षेत्र रेखाएँ क्षेत्र की दिशा दिखाने खींचीं — चुंबक के बाहर उत्तर से दक्षिण और भीतर दक्षिण से उत्तर — घनी रेखाएँ यानी प्रबल क्षेत्र। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दंडचुंबकाभोवती शिंपडलेला लोहकीस एका टोकातून निघून दुसऱ्यात शिरणाऱ्या बंद वक्रांत मांडला जातो. कोणते काढलेले वक्र चुंबकीय क्षेत्राची दिशा आणि प्रबळता दर्शवतात?",
+          "choices": [
+            "फ्लेमिंगचा डाव्या हाताचा नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "भूसंपर्क तार",
+            "चुंबकीय क्षेत्र रेषा"
+          ],
+          "solution": "चुंबकीय क्षेत्र रेषा क्षेत्राची दिशा दाखवायला काढल्या — चुंबकाबाहेर उत्तरेकडून दक्षिणेकडे आणि आत दक्षिणेकडून उत्तरेकडे — दाट रेषा म्हणजे प्रबळ क्षेत्र. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The right-hand thumb rule is correct?",
+      "choices": [
+        "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end.",
+        "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft.",
+        "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force.",
+        "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense."
+      ],
+      "answerIndex": 3,
+      "solution": "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दाहिने हाथ के अंगूठे का नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ।",
+            "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती।",
+            "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए।",
+            "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।"
+          ],
+          "solution": "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "उजव्या हाताच्या अंगठ्याचा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह.",
+            "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते.",
+            "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी.",
+            "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात."
+          ],
+          "solution": "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Its field strengthens if the current is raised, if more turns are packed in, or if a soft iron core is slipped inside.\" — which of these is this about?",
+      "choices": [
+        "Magnetic field lines",
+        "The electric motor",
+        "Electromagnetic induction",
+        "The current-carrying solenoid"
+      ],
+      "answerIndex": 3,
+      "solution": "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसका क्षेत्र प्रबल होता यदि धारा बढ़ाई जाए, अधिक फेरे भरे जाएँ, या भीतर नर्म लोहे का क्रोड सरकाया जाए।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "चुंबकीय क्षेत्र रेखाएँ",
+            "विद्युत मोटर",
+            "विद्युतचुंबकीय प्रेरण",
+            "धारावाही परिनालिका"
+          ],
+          "solution": "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तिचे क्षेत्र प्रबळ होते जर धारा वाढवली, अधिक वेढे भरले, वा आत मऊ लोखंडाचा गाभा सरकवला.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "चुंबकीय क्षेत्र रेषा",
+            "विद्युत मोटर",
+            "विद्युतचुंबकीय प्रेरण",
+            "धारावाही नलिकावेटोळे"
+          ],
+          "solution": "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Stretch the first three fingers of the left hand mutually perpendicular: forefinger on the field, middle finger on the current, and the thumb then points where the wire is pushed. Which rule gives the direction of that force?",
+      "choices": [
+        "The current-carrying solenoid",
+        "Fleming's left-hand rule",
+        "The right-hand thumb rule",
+        "The earth wire"
+      ],
+      "answerIndex": 1,
+      "solution": "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बाएँ हाथ की पहली तीन उँगलियाँ परस्पर लंबवत तानो: तर्जनी क्षेत्र पर, मध्यमा धारा पर, और अंगूठा तब बताता तार किधर धकेला जाता। कौन-सा नियम उस बल की दिशा देता?",
+          "choices": [
+            "धारावाही परिनालिका",
+            "फ़्लेमिंग का वाम-हस्त नियम",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "भू-संपर्क तार"
+          ],
+          "solution": "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "डाव्या हाताची पहिली तीन बोटे परस्पर लंब ताणा: तर्जनी क्षेत्रावर, मधले बोट धारेवर, आणि अंगठा मग दाखवतो तार कुठे ढकलली जाते. कोणता नियम त्या बलाची दिशा देतो?",
+          "choices": [
+            "धारावाही नलिकावेटोळे",
+            "फ्लेमिंगचा डाव्या हाताचा नियम",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "भूसंपर्क तार"
+          ],
+          "solution": "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The electric motor is correct?",
+      "choices": [
+        "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end.",
+        "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense.",
+        "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft.",
+        "The earth wire connects an appliance's metal body to the ground, so that if a live wire touches the body the fault current escapes safely into the earth instead of through a person."
+      ],
+      "answerIndex": 2,
+      "solution": "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत मोटर के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ।",
+            "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।",
+            "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती।",
+            "भू-संपर्क तार उपकरण की धातु-देह को ज़मीन से जोड़ता, ताकि विद्युन्मय तार देह छू जाए तो दोष-धारा किसी व्यक्ति से नहीं, सुरक्षित ज़मीन में निकल जाए।"
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विद्युत मोटर विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह.",
+            "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात.",
+            "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते.",
+            "भूसंपर्क तार उपकरणाच्या धातू-देहाला जमिनीशी जोडते, जेणेकरून विद्युतयुक्त तार देहाला लागल्यास दोष-धारा माणसातून नव्हे तर सुरक्षितपणे जमिनीत निसटते."
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the change that matters, not the field itself — a magnet resting inside a coil induces nothing at all, however strong it is.\" — which of these is this about?",
+      "choices": [
+        "The right-hand thumb rule",
+        "Electromagnetic induction",
+        "The current-carrying solenoid",
+        "Fleming's left-hand rule"
+      ],
+      "answerIndex": 1,
+      "solution": "Electromagnetic induction is the setting up of a current in a coil by a changing magnetic field, and its direction is given by Fleming's right-hand rule. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"मायने बदलाव रखता, क्षेत्र स्वयं नहीं — कुंडली के भीतर विश्राम करता चुंबक कुछ भी प्रेरित नहीं करता, चाहे कितना प्रबल हो।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "दाहिने हाथ के अंगूठे का नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "धारावाही परिनालिका",
+            "फ़्लेमिंग का वाम-हस्त नियम"
+          ],
+          "solution": "विद्युतचुंबकीय प्रेरण बदलते चुंबकीय क्षेत्र द्वारा कुंडली में धारा का उठना, और उसकी दिशा फ़्लेमिंग के दक्षिण-हस्त नियम से। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"महत्त्व बदलाला, क्षेत्राला स्वतःला नाही — कुंडलीच्या आत विसावलेला चुंबक काहीही प्रेरित करत नाही, कितीही प्रबळ असो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "धारावाही नलिकावेटोळे",
+            "फ्लेमिंगचा डाव्या हाताचा नियम"
+          ],
+          "solution": "विद्युतचुंबकीय प्रेरण म्हणजे बदलत्या चुंबकीय क्षेत्राने कुंडलीत धारा उभी राहणे, आणि तिची दिशा फ्लेमिंगच्या उजव्या हाताच्या नियमाने. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The third pin of a plug leads to a green wire that carries no current at all in normal use, yet a metal-bodied iron must never be run without it. Which safety conductor is this?",
+      "choices": [
+        "The electric motor",
+        "Magnetic field lines",
+        "The right-hand thumb rule",
+        "The earth wire"
+      ],
+      "answerIndex": 3,
+      "solution": "The earth wire connects an appliance's metal body to the ground, so that if a live wire touches the body the fault current escapes safely into the earth instead of through a person. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्लग की तीसरी पिन एक हरे तार तक जाती जो सामान्य उपयोग में कोई धारा नहीं ढोता, फिर भी धातु-देह वाली इस्तरी उसके बिना कभी नहीं चलानी। यह कौन-सा सुरक्षा चालक?",
+          "choices": [
+            "विद्युत मोटर",
+            "चुंबकीय क्षेत्र रेखाएँ",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "भू-संपर्क तार"
+          ],
+          "solution": "भू-संपर्क तार उपकरण की धातु-देह को ज़मीन से जोड़ता, ताकि विद्युन्मय तार देह छू जाए तो दोष-धारा किसी व्यक्ति से नहीं, सुरक्षित ज़मीन में निकल जाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्लगची तिसरी पिन एका हिरव्या तारेकडे जाते जी सामान्य वापरात कोणतीही धारा वाहत नाही, तरीही धातू-देहाची इस्त्री तिच्याविना कधीही चालवू नये. हा कोणता सुरक्षा वाहक?",
+          "choices": [
+            "विद्युत मोटर",
+            "चुंबकीय क्षेत्र रेषा",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "भूसंपर्क तार"
+          ],
+          "solution": "भूसंपर्क तार उपकरणाच्या धातू-देहाला जमिनीशी जोडते, जेणेकरून विद्युतयुक्त तार देहाला लागल्यास दोष-धारा माणसातून नव्हे तर सुरक्षितपणे जमिनीत निसटते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Closed curves showing a field's direction\" goes correctly with which of these?",
+      "choices": [
+        "magnetic field lines",
+        "the right-hand thumb rule",
+        "electromagnetic induction",
+        "a solenoid"
+      ],
+      "answerIndex": 0,
+      "solution": "Magnetic field lines are drawn to show a field's direction — from north to south outside the magnet and south to north inside it — with crowded lines meaning a stronger field. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्षेत्र की दिशा दिखाते बंद वक्र\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "चुंबकीय क्षेत्र रेखाएँ",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "परिनालिका"
+          ],
+          "solution": "चुंबकीय क्षेत्र रेखाएँ क्षेत्र की दिशा दिखाने खींचीं — चुंबक के बाहर उत्तर से दक्षिण और भीतर दक्षिण से उत्तर — घनी रेखाएँ यानी प्रबल क्षेत्र। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"क्षेत्राची दिशा दाखवणारे बंद वक्र\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "चुंबकीय क्षेत्र रेषा",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "विद्युतचुंबकीय प्रेरण",
+            "नलिकावेटोळे"
+          ],
+          "solution": "चुंबकीय क्षेत्र रेषा क्षेत्राची दिशा दाखवायला काढल्या — चुंबकाबाहेर उत्तरेकडून दक्षिणेकडे आणि आत दक्षिणेकडून उत्तरेकडे — दाट रेषा म्हणजे प्रबळ क्षेत्र. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Thumb on the current, fingers on the field\" goes correctly with which of these?",
+      "choices": [
+        "the earth wire",
+        "electromagnetic induction",
+        "the right-hand thumb rule",
+        "Fleming's left-hand rule"
+      ],
+      "answerIndex": 2,
+      "solution": "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अंगूठा धारा पर, उँगलियाँ क्षेत्र पर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "भू-संपर्क तार",
+            "विद्युतचुंबकीय प्रेरण",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "फ़्लेमिंग का वाम-हस्त नियम"
+          ],
+          "solution": "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अंगठा धारेवर, बोटे क्षेत्रावर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "भूसंपर्क तार",
+            "विद्युतचुंबकीय प्रेरण",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "फ्लेमिंगचा डाव्या हाताचा नियम"
+          ],
+          "solution": "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A coil that behaves like a bar magnet\" goes correctly with which of these?",
+      "choices": [
+        "a solenoid",
+        "magnetic field lines",
+        "an electric motor",
+        "the earth wire"
+      ],
+      "answerIndex": 0,
+      "solution": "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"छड़ चुंबक-सी बरतती कुंडली\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परिनालिका",
+            "चुंबकीय क्षेत्र रेखाएँ",
+            "विद्युत मोटर",
+            "भू-संपर्क तार"
+          ],
+          "solution": "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दंडचुंबकासारखे वागणारे वेटोळे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "नलिकावेटोळे",
+            "चुंबकीय क्षेत्र रेषा",
+            "विद्युत मोटर",
+            "भूसंपर्क तार"
+          ],
+          "solution": "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Field, current, force on three left fingers\" goes correctly with which of these?",
+      "choices": [
+        "the earth wire",
+        "the right-hand thumb rule",
+        "Fleming's left-hand rule",
+        "magnetic field lines"
+      ],
+      "answerIndex": 2,
+      "solution": "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बाएँ हाथ की तीन उँगलियों पर क्षेत्र, धारा, बल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "भू-संपर्क तार",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "फ़्लेमिंग का वाम-हस्त नियम",
+            "चुंबकीय क्षेत्र रेखाएँ"
+          ],
+          "solution": "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"डाव्या हाताच्या तीन बोटांवर क्षेत्र, धारा, बल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "भूसंपर्क तार",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "फ्लेमिंगचा डाव्या हाताचा नियम",
+            "चुंबकीय क्षेत्र रेषा"
+          ],
+          "solution": "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Electrical energy turned into motion\" goes correctly with which of these?",
+      "choices": [
+        "an electric motor",
+        "the right-hand thumb rule",
+        "the earth wire",
+        "electromagnetic induction"
+      ],
+      "answerIndex": 0,
+      "solution": "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"विद्युत ऊर्जा गति में बदली\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत मोटर",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "भू-संपर्क तार",
+            "विद्युतचुंबकीय प्रेरण"
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"विद्युत ऊर्जेचे गतीत रूपांतर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युत मोटर",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "भूसंपर्क तार",
+            "विद्युतचुंबकीय प्रेरण"
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A changing field making a current\" goes correctly with which of these?",
+      "choices": [
+        "electromagnetic induction",
+        "Fleming's left-hand rule",
+        "a solenoid",
+        "the earth wire"
+      ],
+      "answerIndex": 0,
+      "solution": "Electromagnetic induction is the setting up of a current in a coil by a changing magnetic field, and its direction is given by Fleming's right-hand rule. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बदलता क्षेत्र धारा बनाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युतचुंबकीय प्रेरण",
+            "फ़्लेमिंग का वाम-हस्त नियम",
+            "परिनालिका",
+            "भू-संपर्क तार"
+          ],
+          "solution": "विद्युतचुंबकीय प्रेरण बदलते चुंबकीय क्षेत्र द्वारा कुंडली में धारा का उठना, और उसकी दिशा फ़्लेमिंग के दक्षिण-हस्त नियम से। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बदलते क्षेत्र धारा घडवते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचुंबकीय प्रेरण",
+            "फ्लेमिंगचा डाव्या हाताचा नियम",
+            "नलिकावेटोळे",
+            "भूसंपर्क तार"
+          ],
+          "solution": "विद्युतचुंबकीय प्रेरण म्हणजे बदलत्या चुंबकीय क्षेत्राने कुंडलीत धारा उभी राहणे, आणि तिची दिशा फ्लेमिंगच्या उजव्या हाताच्या नियमाने. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Idle in normal use, life-saving in a fault\" goes correctly with which of these?",
+      "choices": [
+        "Fleming's left-hand rule",
+        "the right-hand thumb rule",
+        "the earth wire",
+        "an electric motor"
+      ],
+      "answerIndex": 2,
+      "solution": "The earth wire connects an appliance's metal body to the ground, so that if a live wire touches the body the fault current escapes safely into the earth instead of through a person. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सामान्य उपयोग में निष्क्रिय, दोष में प्राणरक्षक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फ़्लेमिंग का वाम-हस्त नियम",
+            "दाहिने हाथ के अंगूठे का नियम",
+            "भू-संपर्क तार",
+            "विद्युत मोटर"
+          ],
+          "solution": "भू-संपर्क तार उपकरण की धातु-देह को ज़मीन से जोड़ता, ताकि विद्युन्मय तार देह छू जाए तो दोष-धारा किसी व्यक्ति से नहीं, सुरक्षित ज़मीन में निकल जाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सामान्य वापरात निष्क्रिय, दोषात प्राणरक्षक\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फ्लेमिंगचा डाव्या हाताचा नियम",
+            "उजव्या हाताच्या अंगठ्याचा नियम",
+            "भूसंपर्क तार",
+            "विद्युत मोटर"
+          ],
+          "solution": "भूसंपर्क तार उपकरणाच्या धातू-देहाला जमिनीशी जोडते, जेणेकरून विद्युतयुक्त तार देहाला लागल्यास दोष-धारा माणसातून नव्हे तर सुरक्षितपणे जमिनीत निसटते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Magnetic field lines EXCEPT —",
+      "choices": [
+        "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense.",
+        "Magnetic field lines are drawn to show a field's direction — from north to south outside the magnet and south to north inside it — with crowded lines meaning a stronger field.",
+        "They are always closed loops, never beginning or ending anywhere, unlike the lines drawn around an isolated electric charge.",
+        "No two of them can ever cross, because a compass needle placed at a crossing would have to point two ways at once."
+      ],
+      "answerIndex": 0,
+      "solution": "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense. That belongs to The right-hand thumb rule, not Magnetic field lines — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चुंबकीय क्षेत्र रेखाएँ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।",
+            "चुंबकीय क्षेत्र रेखाएँ क्षेत्र की दिशा दिखाने खींचीं — चुंबक के बाहर उत्तर से दक्षिण और भीतर दक्षिण से उत्तर — घनी रेखाएँ यानी प्रबल क्षेत्र।",
+            "वे सदा बंद पाश, कहीं न आरंभ न अंत, एकाकी विद्युत आवेश के चारों ओर खींची रेखाओं के विपरीत।",
+            "उनमें से कोई दो कभी नहीं कट सकतीं, क्योंकि कटान पर रखी दिक्सूचक सुई को एक साथ दो ओर इशारा करना पड़ता।"
+          ],
+          "solution": "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं। यह दाहिने हाथ के अंगूठे का नियम की बात है, चुंबकीय क्षेत्र रेखाएँ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "चुंबकीय क्षेत्र रेषा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात.",
+            "चुंबकीय क्षेत्र रेषा क्षेत्राची दिशा दाखवायला काढल्या — चुंबकाबाहेर उत्तरेकडून दक्षिणेकडे आणि आत दक्षिणेकडून उत्तरेकडे — दाट रेषा म्हणजे प्रबळ क्षेत्र.",
+            "त्या सदैव बंद फेरे, कुठे ना सुरू ना संपणाऱ्या, एकाकी विद्युतभाराभोवती काढलेल्या रेषांच्या उलट.",
+            "त्यांतील कोणत्याही दोन कधीही छेदू शकत नाहीत, कारण छेदावर ठेवलेल्या दिशादर्शक सुईला एकाच वेळी दोन दिशांना निर्देश करावा लागेल."
+          ],
+          "solution": "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात. हे उजव्या हाताच्या अंगठ्याचा नियम चे आहे, चुंबकीय क्षेत्र रेषा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The right-hand thumb rule EXCEPT —",
+      "choices": [
+        "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force.",
+        "Reverse the current and every circle reverses with it — the field has no life of its own once the switch opens.",
+        "The circles are concentric with the wire and grow wider apart further from it, showing the field weakens with distance.",
+        "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense."
+      ],
+      "answerIndex": 0,
+      "solution": "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force. That belongs to Fleming's left-hand rule, not The right-hand thumb rule — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दाहिने हाथ के अंगूठे का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए।",
+            "धारा उलटो और हर वृत्त उसके साथ उलटता — स्विच खुलते ही क्षेत्र का अपना कोई जीवन नहीं।",
+            "वृत्त तार के संकेंद्री और उससे दूर जाते चौड़े होते जाते, दिखाते क्षेत्र दूरी से दुर्बल होता।",
+            "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।"
+          ],
+          "solution": "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए। यह फ़्लेमिंग का वाम-हस्त नियम की बात है, दाहिने हाथ के अंगूठे का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "उजव्या हाताच्या अंगठ्याचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी.",
+            "धारा उलटवा आणि प्रत्येक वर्तुळ तिच्यासोबत उलटते — बटण उघडताच क्षेत्राला स्वतःचे जीवन नाही.",
+            "वर्तुळे तारेशी समकेंद्री आणि तिच्यापासून दूर जाताना रुंदावत जातात, दाखवत क्षेत्र अंतराने दुर्बळ होते.",
+            "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात."
+          ],
+          "solution": "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी. हे फ्लेमिंगचा डाव्या हाताचा नियम चे आहे, उजव्या हाताच्या अंगठ्याचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The current-carrying solenoid EXCEPT —",
+      "choices": [
+        "Soft iron is chosen for the core precisely because it loses its magnetism the moment the current stops, which is what makes the magnetism switchable.",
+        "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end.",
+        "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft.",
+        "Its field strengthens if the current is raised, if more turns are packed in, or if a soft iron core is slipped inside."
+      ],
+      "answerIndex": 2,
+      "solution": "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft. That belongs to The electric motor, not The current-carrying solenoid — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "धारावाही परिनालिका के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "क्रोड के लिए नर्म लोहा ठीक इसीलिए चुना कि धारा रुकते ही वह अपना चुंबकत्व खो देता, यही चुंबकत्व को स्विच से चलाने योग्य बनाता।",
+            "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ।",
+            "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती।",
+            "इसका क्षेत्र प्रबल होता यदि धारा बढ़ाई जाए, अधिक फेरे भरे जाएँ, या भीतर नर्म लोहे का क्रोड सरकाया जाए।"
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती। यह विद्युत मोटर की बात है, धारावाही परिनालिका की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "धारावाही नलिकावेटोळे विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "गाभ्यासाठी मऊ लोखंड नेमके यासाठीच निवडले की धारा थांबताच ते आपले चुंबकत्व गमावते, हेच चुंबकत्व बटणाने चालवण्याजोगे बनवते.",
+            "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह.",
+            "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते.",
+            "तिचे क्षेत्र प्रबळ होते जर धारा वाढवली, अधिक वेढे भरले, वा आत मऊ लोखंडाचा गाभा सरकवला."
+          ],
+          "solution": "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते. हे विद्युत मोटर चे आहे, धारावाही नलिकावेटोळे चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Fleming's left-hand rule EXCEPT —",
+      "choices": [
+        "Reversing either the current or the field flips the push; reversing both together leaves it exactly where it was.",
+        "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense.",
+        "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force.",
+        "The force is largest when the wire lies at right angles to the field, and falls to nothing when the wire lies along it."
+      ],
+      "answerIndex": 1,
+      "solution": "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense. That belongs to The right-hand thumb rule, not Fleming's left-hand rule — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "फ़्लेमिंग का वाम-हस्त नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "धारा या क्षेत्र में से कोई एक उलटो तो धक्का पलटता; दोनों साथ उलटो तो वह ठीक वहीं रहता।",
+            "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।",
+            "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए।",
+            "बल सबसे बड़ा जब तार क्षेत्र के समकोण पर, और शून्य हो जाता जब तार उसके अनुदिश।"
+          ],
+          "solution": "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं। यह दाहिने हाथ के अंगूठे का नियम की बात है, फ़्लेमिंग का वाम-हस्त नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "फ्लेमिंगचा डाव्या हाताचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "धारा वा क्षेत्र यांपैकी एक उलटवल्यास धक्का पलटतो; दोन्ही एकत्र उलटवल्यास तो नेमका तिथेच राहतो.",
+            "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात.",
+            "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी.",
+            "बल सर्वांत मोठे जेव्हा तार क्षेत्राला काटकोनात, आणि शून्य होते जेव्हा तार तिच्या दिशेने."
+          ],
+          "solution": "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात. हे उजव्या हाताच्या अंगठ्याचा नियम चे आहे, फ्लेमिंगचा डाव्या हाताचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A simple motor is built from a rectangular coil between two magnet poles. Without one small component the coil swings a half turn, stops, and swings back — it rocks but never rotates. Name that component, and explain exactly what it must do and why the motor is useless without it.",
+      "choices": [
+        "The split-ring commutator. The two sides of the coil carry current in opposite directions, so Fleming's left-hand rule pushes one side up and the other down, turning the coil. But after half a turn the sides have swapped places and the same pushes would now drive it back. The commutator reverses the current in the coil at exactly that moment, so the forces keep turning it the same way and the rotation continues",
+        "A second battery, which is needed because one cell cannot supply enough current to complete a full turn",
+        "A stronger magnet, since the rocking simply means the field is too weak to complete the circle",
+        "An extra coil at right angles, because a single coil can never experience any force at all"
+      ],
+      "answerIndex": 0,
+      "solution": "The missing part is the split-ring commutator, and understanding why it is indispensable means following the coil through one full turn. Start with the force. A wire carrying current in a magnetic field is pushed sideways, and Fleming's left-hand rule gives the direction: forefinger along the field, middle finger along the current, thumb showing the push. Now look at the rectangular coil. Current runs around the loop, so on one arm it flows one way and on the opposite arm it flows the other way — while the magnetic field is the same across both. Opposite currents in the same field mean opposite forces, so one arm is pushed up while the other is pushed down. Two opposite pushes on opposite sides of an axle are exactly a turning effect, and the coil begins to rotate. So far so good — but now trace it half a turn onward. The arm that started on the left is now on the right, and vice versa. The field has not changed and the current direction in each arm has not changed, so the arm now on the right is still being pushed the same way in space as before. But 'the same way in space' now works against the rotation, because the arm has swapped sides. The turning effect reverses, the coil is driven back the way it came, and all you get is a rocking motion — the coil oscillates about one position and never completes a circle. The commutator fixes precisely this. It is a metal ring split into two halves, each half connected to one end of the coil, with brushes pressing against it. As the coil turns, the halves slide past the brushes and, at the very moment the arms swap sides, each half meets the opposite brush. That reverses the current through the coil. Reversing the current reverses the force on each arm, and since the arms have also swapped position, the two reversals cancel out — the turning effect points the same way as before. The coil is pushed onward instead of backward, and it keeps rotating. So the commutator's job is not to supply power or strengthen the field; it is to flip the current twice per revolution, at the exact instants when the geometry would otherwise turn a driving force into a braking one. (The wrong answers reach for more current, a stronger magnet or another coil — but none of those addresses the real problem, which is a reversal of direction and not a shortage of strength. A stronger magnet only makes the rocking more vigorous.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो चुंबक ध्रुवों के बीच आयताकार कुंडली से साधारण मोटर बनी। एक छोटे पुर्ज़े के बिना कुंडली आधा चक्कर झूलती, रुकती, और वापस झूलती — वह डोलती पर कभी घूमती नहीं। उस पुर्ज़े का नाम लो, और ठीक-ठीक समझाओ उसे क्या करना और उसके बिना मोटर बेकार क्यों।",
+          "choices": [
+            "विभक्त वलय दिक्परिवर्तक। कुंडली की दोनों भुजाएँ उल्टी दिशाओं में धारा ढोतीं, अतः फ़्लेमिंग का वाम-हस्त नियम एक भुजा ऊपर और दूसरी नीचे धकेलता, कुंडली घुमाता। पर आधे चक्कर बाद भुजाएँ जगह बदल चुकीं और वही धक्के अब उसे वापस चलाते। दिक्परिवर्तक ठीक उसी क्षण कुंडली में धारा उलट देता, अतः बल उसे उसी ओर घुमाते रहते और घूर्णन चलता रहता",
+            "दूसरी बैटरी, जो चाहिए क्योंकि एक सेल पूरा चक्कर पूरा करने भर धारा नहीं दे सकता",
+            "अधिक प्रबल चुंबक, क्योंकि डोलने का अर्थ बस यह कि क्षेत्र वृत्त पूरा करने को बहुत दुर्बल",
+            "समकोण पर एक अतिरिक्त कुंडली, क्योंकि अकेली कुंडली पर कोई बल कभी लग ही नहीं सकता"
+          ],
+          "solution": "लुप्त पुर्ज़ा विभक्त वलय दिक्परिवर्तक, और वह अपरिहार्य क्यों समझने को कुंडली को एक पूरे चक्कर तक पीछा करना होगा। बल से शुरू। चुंबकीय क्षेत्र में धारा ढोता तार बग़ल में धकेला जाता, और फ़्लेमिंग का वाम-हस्त नियम दिशा देता: तर्जनी क्षेत्र के अनुदिश, मध्यमा धारा के अनुदिश, अंगूठा धक्का दिखाता। अब आयताकार कुंडली देखो। धारा पाश के चारों ओर दौड़ती, अतः एक भुजा में एक ओर और सामने वाली भुजा में दूसरी ओर बहती — जबकि चुंबकीय क्षेत्र दोनों पर वही। उसी क्षेत्र में उल्टी धाराओं का अर्थ उल्टे बल, अतः एक भुजा ऊपर धकेली जबकि दूसरी नीचे। धुरी की उल्टी ओरों पर दो उल्टे धक्के ठीक घूर्णन-प्रभाव, और कुंडली घूमने लगती। यहाँ तक ठीक — पर अब आधा चक्कर आगे पीछा करो। जो भुजा बाईं ओर शुरू हुई अब दाईं ओर, और उल्टे। क्षेत्र नहीं बदला और हर भुजा में धारा की दिशा नहीं बदली, अतः अब दाईं ओर की भुजा अब भी अंतरिक्ष में उसी ओर धकेली जा रही जैसे पहले। पर 'अंतरिक्ष में वही ओर' अब घूर्णन के विरुद्ध काम करती, क्योंकि भुजा ने पक्ष बदल लिया। घूर्णन-प्रभाव उलटता, कुंडली जिस राह आई उसी वापस चलाई जाती, और जो मिलता वह बस डोलती गति — कुंडली एक स्थिति के आसपास दोलन करती और वृत्त कभी पूरा नहीं करती। दिक्परिवर्तक ठीक यही सुधारता। यह दो आधों में विभक्त धातु का वलय, हर आधा कुंडली के एक सिरे से जुड़ा, ब्रुश उससे दबे। कुंडली घूमते आधे ब्रुशों से सरकते और, ठीक उसी क्षण जब भुजाएँ पक्ष बदलतीं, हर आधा उल्टे ब्रुश से मिलता। वह कुंडली में धारा उलट देता। धारा उलटना हर भुजा पर बल उलटता, और चूँकि भुजाओं ने भी स्थिति बदली, दोनों उलटाव कट जाते — घूर्णन-प्रभाव पहले जैसी ही ओर इशारा करता। कुंडली पीछे नहीं, आगे धकेली जाती, और घूमती रहती। अतः दिक्परिवर्तक का काम शक्ति देना या क्षेत्र प्रबल करना नहीं; यह प्रति चक्कर दो बार धारा पलटना, ठीक उन क्षणों पर जब ज्यामिति अन्यथा चालक बल को रोकने वाला बना देती। (ग़लत उत्तर अधिक धारा, प्रबल चुंबक या एक और कुंडली की ओर बढ़ते — पर उनमें से कोई असली समस्या नहीं छूता, जो दिशा का उलटाव है, प्रबलता की कमी नहीं। प्रबल चुंबक केवल डोलना और ज़ोरदार बनाता।)"
+        },
+        "mr": {
+          "stem": "दोन चुंबक ध्रुवांदरम्यान आयताकार कुंडलीतून साधी मोटर बनवली. एका लहान भागाविना कुंडली अर्धा फेरा झुलते, थांबते, आणि परत झुलते — ती डुलते पण कधी फिरत नाही. त्या भागाचे नाव सांगा, आणि नेमके समजावा त्याने काय करावे आणि त्याविना मोटर निरुपयोगी का.",
+          "choices": [
+            "विभक्त कडे दिशाबदलक. कुंडलीच्या दोन्ही बाजू उलट दिशांना धारा वाहतात, म्हणून फ्लेमिंगचा डाव्या हाताचा नियम एक बाजू वर आणि दुसरी खाली ढकलतो, कुंडली फिरवतो. पण अर्ध्या फेऱ्यानंतर बाजूंनी जागा बदलल्या आणि तेच धक्के आता तिला परत चालवतील. दिशाबदलक नेमक्या त्याच क्षणी कुंडलीतील धारा उलटवतो, म्हणून बले तिला त्याच दिशेने फिरवत राहतात आणि परिभ्रमण चालू राहते",
+            "दुसरी बॅटरी, जी लागते कारण एक घट पूर्ण फेरा पूर्ण करण्याइतकी धारा देऊ शकत नाही",
+            "अधिक प्रबळ चुंबक, कारण डुलण्याचा अर्थ फक्त इतका की क्षेत्र वर्तुळ पूर्ण करायला फार दुर्बळ",
+            "काटकोनात एक जादा कुंडली, कारण एकट्या कुंडलीवर कोणतेही बल कधी लागूच शकत नाही"
+          ],
+          "solution": "हरवलेला भाग विभक्त कडे दिशाबदलक, आणि तो अपरिहार्य का हे समजण्यासाठी कुंडलीचा एका पूर्ण फेऱ्यापर्यंत पाठलाग करावा लागेल. बलापासून सुरू. चुंबकीय क्षेत्रात धारा वाहणारी तार बाजूला ढकलली जाते, आणि फ्लेमिंगचा डाव्या हाताचा नियम दिशा देतो: तर्जनी क्षेत्राच्या दिशेने, मधले बोट धारेच्या दिशेने, अंगठा धक्का दाखवतो. आता आयताकार कुंडली पाहा. धारा फेऱ्याभोवती धावते, म्हणून एका बाजूत एका दिशेने आणि समोरच्या बाजूत दुसऱ्या दिशेने वाहते — तर चुंबकीय क्षेत्र दोन्हींवर तेच. त्याच क्षेत्रात उलट धारांचा अर्थ उलट बले, म्हणून एक बाजू वर ढकलली तर दुसरी खाली. दांड्याच्या उलट बाजूंवरील दोन उलट धक्के म्हणजे नेमका परिभ्रमण-परिणाम, आणि कुंडली फिरू लागते. इथवर ठीक — पण आता अर्धा फेरा पुढे पाठलाग करा. जी बाजू डावीकडे सुरू झाली ती आता उजवीकडे, आणि उलट. क्षेत्र बदलले नाही आणि प्रत्येक बाजूतील धारेची दिशा बदलली नाही, म्हणून आता उजवीकडची बाजू अजूनही अवकाशात त्याच दिशेने ढकलली जात आहे जशी आधी. पण 'अवकाशात तीच दिशा' आता परिभ्रमणाविरुद्ध काम करते, कारण बाजूने बाजू बदलली. परिभ्रमण-परिणाम उलटतो, कुंडली ज्या वाटेने आली त्याच वाटेने परत चालवली जाते, आणि जे मिळते ती फक्त डुलती गती — कुंडली एका स्थानाभोवती दोलन करते आणि वर्तुळ कधीही पूर्ण करत नाही. दिशाबदलक नेमके हेच दुरुस्त करतो. तो दोन अर्ध्यांत विभागलेला धातूचा कडा, प्रत्येक अर्धा कुंडलीच्या एका टोकाशी जोडलेला, ब्रश त्यावर दाबलेले. कुंडली फिरताना अर्धे ब्रशांवरून सरकतात आणि, नेमक्या त्याच क्षणी जेव्हा बाजू जागा बदलतात, प्रत्येक अर्धा उलट ब्रशला भेटतो. ते कुंडलीतील धारा उलटवते. धारा उलटवणे प्रत्येक बाजूवरील बल उलटवते, आणि बाजूंनीही स्थान बदलल्याने, दोन्ही उलटी रद्द होतात — परिभ्रमण-परिणाम आधीसारख्याच दिशेने निर्देश करतो. कुंडली मागे नव्हे तर पुढे ढकलली जाते, आणि फिरत राहते. म्हणून दिशाबदलकाचे काम शक्ती पुरवणे वा क्षेत्र प्रबळ करणे नाही; ते प्रति फेरा दोनदा धारा पलटणे, नेमक्या त्या क्षणी जेव्हा भूमिती एरवी चालक बलाचे रोखणारे बल करून टाकेल. (चुकीची उत्तरे अधिक धारा, प्रबळ चुंबक वा आणखी एक कुंडलीकडे जातात — पण त्यांपैकी कोणतेही खरी समस्या स्पर्शत नाही, जी दिशेचे उलटणे आहे, प्रबळतेची कमतरता नाही. प्रबळ चुंबक फक्त डुलणे अधिक जोरदार करतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Coal stations, nuclear plants, dams and windmills look nothing alike, yet almost every one of them makes electricity in the identical final step: something is made to spin a coil near magnets. Explain the principle that forces this common design, and why simply parking a very powerful magnet inside a coil would produce no electricity at all.",
+      "choices": [
+        "Electromagnetic induction: a current is induced in a coil only when the magnetic field through it is changing. A field that is merely strong but steady induces nothing, because there is no change — so a resting magnet, however powerful, gives no current. Spinning a coil in a field makes the field through it change continuously, which is why every one of these stations ends by turning a shaft, differing only in what supplies the turning",
+        "Magnets simply contain stored electricity, and spinning the coil is only a way of scraping it out faster",
+        "A strong steady magnet inside a coil does give a steady current; the spinning is only to make the current larger",
+        "The common design is a historical accident of engineering, with no physical principle behind it"
+      ],
+      "answerIndex": 0,
+      "solution": "The principle is electromagnetic induction, and its precise wording is what settles both halves of the question: a current is induced in a closed coil when the magnetic field passing through that coil changes. The word doing all the work is 'changes'. It is not the presence of a field that drives a current, and not its strength either — it is the alteration of the field from one instant to the next. This immediately answers the second part. Park the most powerful magnet you can find inside a coil, leave it there, and the field through the coil is enormous but perfectly constant. Nothing changes from moment to moment, so nothing is induced, and a galvanometer connected to the coil reads exactly zero. This is not a limitation of weak equipment; a magnet a thousand times stronger, held still, would give the same zero. You can see the point in the classroom demonstration: the needle kicks while you push the magnet in, kicks the other way while you pull it out, and rests at zero whenever the magnet is stationary — even when it is sitting deep inside the coil, where the field is strongest of all. Motion, or more precisely change, is the whole source. Now the first part follows. To generate electricity continuously you must arrange for the field through a coil to keep changing, and the most practical way ever found is to spin the coil in a magnetic field (or spin magnets past a fixed coil). As the coil turns, the amount of field passing through it rises and falls smoothly through every rotation, so a current is induced continuously — and, incidentally, one that reverses direction twice per turn, which is why mains supply is alternating current. This is what standardises the design of almost every power station on earth. A coal or gas station burns fuel to boil water and drive steam through a turbine; a nuclear plant uses fission heat to do the same; a hydroelectric dam lets falling water push the turbine; a windmill lets moving air do it. The fuel, the ethics, the cost and the pollution differ enormously — but the final step is identical, because induction offers no other way. Every one of them is, at its heart, a machine for turning a shaft. What separates a wind farm from a coal plant is not the physics of generation but where the turning comes from and what it costs the world to obtain it. (The wrong answers imagine magnets as reservoirs of stored electricity, or claim a steady field yields a steady current — both contradict the demonstration in which a stationary magnet gives nothing — or dismiss a deep physical necessity as mere convention.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कोयला-गृह, नाभिकीय संयंत्र, बाँध और पवनचक्कियाँ बिलकुल एक-सी नहीं दिखतीं, फिर भी उनमें से लगभग हर एक बिजली उसी समान अंतिम चरण में बनाती: कुछ चुंबकों के पास कुंडली घुमाने लगाया जाता। वह सिद्धांत समझाओ जो यह साझा रचना थोपता, और क्यों कुंडली के भीतर बहुत प्रबल चुंबक बस खड़ा कर देने से कोई बिजली नहीं बनेगी।",
+          "choices": [
+            "विद्युतचुंबकीय प्रेरण: कुंडली में धारा तभी प्रेरित होती जब उससे गुज़रता चुंबकीय क्षेत्र बदल रहा हो। केवल प्रबल पर स्थिर क्षेत्र कुछ प्रेरित नहीं करता, क्योंकि कोई बदलाव नहीं — अतः विश्राम करता चुंबक, चाहे कितना प्रबल, कोई धारा नहीं देता। क्षेत्र में कुंडली घुमाना उससे गुज़रता क्षेत्र लगातार बदलता, इसी से इनमें से हर गृह धुरी घुमाकर समाप्त होता, केवल इसमें भिन्न कि घुमाव कौन देता",
+            "चुंबकों में बस संचित बिजली भरी, और कुंडली घुमाना उसे तेज़ी से खुरचने का बस एक तरीक़ा",
+            "कुंडली के भीतर प्रबल स्थिर चुंबक स्थिर धारा देता ही है; घुमाना केवल धारा बड़ी करने को",
+            "साझा रचना अभियांत्रिकी का ऐतिहासिक संयोग, उसके पीछे कोई भौतिक सिद्धांत नहीं"
+          ],
+          "solution": "सिद्धांत विद्युतचुंबकीय प्रेरण, और उसका ठीक शब्दांकन ही प्रश्न के दोनों आधे तय करता: बंद कुंडली में धारा तब प्रेरित होती जब उस कुंडली से गुज़रता चुंबकीय क्षेत्र बदलता। सारा काम करता शब्द 'बदलता'। धारा को क्षेत्र की उपस्थिति नहीं चलाती, न उसकी प्रबलता — यह एक क्षण से अगले तक क्षेत्र का परिवर्तन। यह तुरंत दूसरा भाग उत्तरित करता। जो सबसे प्रबल चुंबक मिले उसे कुंडली के भीतर खड़ा करो, वहीं छोड़ दो, और कुंडली से गुज़रता क्षेत्र विशाल पर बिलकुल अचर। पल-पल कुछ नहीं बदलता, अतः कुछ प्रेरित नहीं, और कुंडली से जुड़ा धारामापी ठीक शून्य पढ़ता। यह दुर्बल उपकरण की सीमा नहीं; हज़ार गुना प्रबल चुंबक, स्थिर रखा, वही शून्य देता। कक्षा के प्रदर्शन में बात दिखती: चुंबक भीतर धकेलते सुई झटका खाती, बाहर खींचते दूसरी ओर झटका, और जब भी चुंबक स्थिर तब शून्य पर विश्राम — तब भी जब वह कुंडली के गहरे भीतर बैठा, जहाँ क्षेत्र सबसे प्रबल। गति, या अधिक ठीक कहें बदलाव, ही पूरा स्रोत। अब पहला भाग निकलता। लगातार बिजली बनाने को कुंडली से गुज़रता क्षेत्र बदलता रहे यह जुगाड़ना होगा, और अब तक मिला सबसे व्यावहारिक तरीक़ा चुंबकीय क्षेत्र में कुंडली घुमाना (या स्थिर कुंडली के पास चुंबक घुमाना)। कुंडली घूमते उससे गुज़रता क्षेत्र हर घूर्णन में सहज चढ़ता-उतरता, अतः धारा लगातार प्रेरित — और, संयोग से, ऐसी जो प्रति चक्कर दो बार दिशा उलटती, इसी से मेन्स की आपूर्ति प्रत्यावर्ती धारा। यही पृथ्वी के लगभग हर विद्युत-गृह की रचना मानकीकृत करता। कोयला या गैस का गृह ईंधन जलाकर पानी उबालता और भाप टरबाइन से चलाता; नाभिकीय संयंत्र विखंडन की ऊष्मा से वही करता; जलविद्युत बाँध गिरते पानी से टरबाइन धकेलवाता; पवनचक्की चलती हवा से। ईंधन, नैतिकता, लागत और प्रदूषण अत्यंत भिन्न — पर अंतिम चरण समान, क्योंकि प्रेरण कोई और रास्ता देता ही नहीं। उनमें से हर एक, मूल में, धुरी घुमाने की मशीन। पवन-खेत को कोयला-संयंत्र से जो अलग करता वह उत्पादन की भौतिकी नहीं बल्कि घुमाव कहाँ से आता और उसे पाने में दुनिया को क्या चुकाना पड़ता। (ग़लत उत्तर चुंबकों को संचित बिजली के भंडार मानते, या दावा करते स्थिर क्षेत्र स्थिर धारा देता — दोनों उस प्रदर्शन का खंडन जिसमें स्थिर चुंबक कुछ नहीं देता — या एक गहरी भौतिक अनिवार्यता को मात्र प्रथा कहकर टाल देते।)"
+        },
+        "mr": {
+          "stem": "कोळसा-केंद्रे, अणुसंयंत्रे, धरणे आणि पवनचक्क्या मुळीच सारख्या दिसत नाहीत, तरीही त्यांपैकी जवळजवळ प्रत्येक वीज त्याच समान अंतिम पायरीत बनवते: काहीतरी चुंबकांजवळ कुंडली फिरवायला लावले जाते. ती सामायिक रचना लादणारे तत्त्व समजावा, आणि कुंडलीच्या आत खूप प्रबळ चुंबक फक्त उभा करून ठेवल्याने वीज का बनणारच नाही.",
+          "choices": [
+            "विद्युतचुंबकीय प्रेरण: कुंडलीत धारा तेव्हाच प्रेरित होते जेव्हा तिच्यातून जाणारे चुंबकीय क्षेत्र बदलत असते. केवळ प्रबळ पण स्थिर क्षेत्र काहीही प्रेरित करत नाही, कारण कोणताही बदल नाही — म्हणून विसावलेला चुंबक, कितीही प्रबळ असो, कोणतीही धारा देत नाही. क्षेत्रात कुंडली फिरवणे तिच्यातून जाणारे क्षेत्र सतत बदलवते, म्हणूनच यांपैकी प्रत्येक केंद्र दांडा फिरवून संपते, फक्त फिरवणे कोण पुरवते यात वेगळे",
+            "चुंबकांत फक्त साठवलेली वीज भरलेली, आणि कुंडली फिरवणे ती वेगाने खरवडून काढण्याचा फक्त एक मार्ग",
+            "कुंडलीच्या आत प्रबळ स्थिर चुंबक स्थिर धारा देतोच; फिरवणे फक्त धारा मोठी करायला",
+            "सामायिक रचना अभियांत्रिकीचा ऐतिहासिक योगायोग, तिच्यामागे कोणतेही भौतिक तत्त्व नाही"
+          ],
+          "solution": "तत्त्व विद्युतचुंबकीय प्रेरण, आणि त्याची नेमकी मांडणीच प्रश्नाचे दोन्ही अर्धे ठरवते: बंद कुंडलीत धारा तेव्हा प्रेरित होते जेव्हा त्या कुंडलीतून जाणारे चुंबकीय क्षेत्र बदलते. सर्व काम करणारा शब्द 'बदलते'. धारेला क्षेत्राची उपस्थिती चालवत नाही, ना तिची प्रबळता — तर एका क्षणापासून पुढच्यापर्यंत क्षेत्राचा बदल. हे लगेच दुसरा भाग उत्तरित करते. जो सर्वांत प्रबळ चुंबक मिळेल तो कुंडलीच्या आत उभा करा, तिथेच सोडा, आणि कुंडलीतून जाणारे क्षेत्र प्रचंड पण अगदी अचल. क्षणोक्षणी काहीच बदलत नाही, म्हणून काहीच प्रेरित होत नाही, आणि कुंडलीशी जोडलेला धारामापक नेमके शून्य वाचतो. ही दुर्बळ उपकरणाची मर्यादा नाही; हजारपट प्रबळ चुंबक, स्थिर धरलेला, तेच शून्य देईल. वर्गातील प्रात्यक्षिकात मुद्दा दिसतो: चुंबक आत ढकलताना सुई झटका घेते, बाहेर ओढताना दुसऱ्या दिशेने झटका, आणि जेव्हाही चुंबक स्थिर तेव्हा शून्यावर विसावा — तेव्हाही जेव्हा तो कुंडलीच्या खोल आत बसलेला, जिथे क्षेत्र सर्वांत प्रबळ. गती, किंवा अधिक नेमके सांगायचे तर बदल, हाच अख्खा स्रोत. आता पहिला भाग निघतो. सतत वीज बनवायला कुंडलीतून जाणारे क्षेत्र बदलत राहील अशी जुळणी करावी लागेल, आणि आजवर सापडलेला सर्वांत व्यावहारिक मार्ग म्हणजे चुंबकीय क्षेत्रात कुंडली फिरवणे (वा स्थिर कुंडलीजवळून चुंबक फिरवणे). कुंडली फिरताना तिच्यातून जाणारे क्षेत्र प्रत्येक परिभ्रमणात सहज चढते-उतरते, म्हणून धारा सतत प्रेरित — आणि, योगायोगाने, अशी जी प्रति फेरा दोनदा दिशा उलटवते, म्हणूनच मुख्य पुरवठा प्रत्यावर्ती धारा. हेच पृथ्वीवरील जवळजवळ प्रत्येक वीजकेंद्राची रचना प्रमाणित करते. कोळसा वा वायूचे केंद्र इंधन जाळून पाणी उकळते आणि वाफ टर्बाइनमधून चालवते; अणुसंयंत्र विखंडनाच्या उष्णतेने तेच करते; जलविद्युत धरण पडत्या पाण्याने टर्बाइन ढकलवते; पवनचक्की वाहत्या हवेने. इंधन, नीती, खर्च आणि प्रदूषण अतिशय वेगळे — पण अंतिम पायरी समान, कारण प्रेरण दुसरा मार्ग देतच नाही. त्यांपैकी प्रत्येक, मुळात, दांडा फिरवण्याचे यंत्र. पवन-शेताला कोळसा-संयंत्रापासून जे वेगळे करते ते निर्मितीचे भौतिकशास्त्र नव्हे तर फिरवणे कुठून येते आणि ते मिळवायला जगाला काय मोजावे लागते. (चुकीची उत्तरे चुंबकांना साठवलेल्या विजेचे साठे मानतात, वा दावा करतात स्थिर क्षेत्र स्थिर धारा देते — दोन्ही त्या प्रात्यक्षिकाचे खंडन ज्यात स्थिर चुंबक काहीच देत नाही — वा एका खोल भौतिक अपरिहार्यतेला केवळ प्रथा म्हणून झटकतात.)"
+        }
+      }
+    }
+  ]
+}

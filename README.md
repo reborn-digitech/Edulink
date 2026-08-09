@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 231
-  chapters / 3,687 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 258
+  chapters / 4,125 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2529,9 +2529,16 @@ navigation" means the actual list rather than one somebody maintained by hand.
   Progressions, Coordinate Geometry, Triangles, Introduction to
   Trigonometry, Some Applications of Trigonometry, Circles, Areas Related
   to Circles, Surface Areas and Volumes, Statistics, Probability — every
-  computable answer proven by checkExpr) with its five other subjects
-  still to come — growing grade by grade toward Class 12. Suite
-  re-pointed and green: 84 files, 1453 tests.
+  computable answer proven by checkExpr) and **Class 10 Science
+  complete** (all 13 chapters in `g10-science.ts`: the chemistry block
+  Chemical Reactions, Acids Bases and Salts, Metals and Non-metals,
+  Carbon and its Compounds; the biology block Life Processes, Control
+  and Coordination, How do Organisms Reproduce, Heredity; the physics
+  block Light, The Human Eye and the Colourful World, Electricity,
+  Magnetic Effects of Electric Current; and Our Environment), with its
+  four remaining subjects — History, Geography, Political Science,
+  Economics — still to come, then Classes 11 and 12. Suite re-pointed
+  and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

@@ -3923,4 +3923,782 @@ export const G10_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Magnetic Effects of Electric Current                       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-magnetic-effects",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 12 — Magnetic Effects of Electric Current",
+      hi: "अध्याय 12 — विद्युत धारा के चुंबकीय प्रभाव",
+      mr: "प्रकरण 12 — विद्युत धारेचे चुंबकीय परिणाम",
+    },
+    name: {
+      en: "Magnetic Effects of Electric Current",
+      hi: "विद्युत धारा के चुंबकीय प्रभाव",
+      mr: "विद्युत धारेचे चुंबकीय परिणाम",
+    },
+    summary: {
+      en: "Two effects that turn out to be one relationship read in both directions: current making a field around every wire, a field pushing back on every current-carrying wire, the motor built on that push, the generator built on the reverse — and, at home, the third wire that quietly waits for the day the appliance fails.",
+      hi: "दो प्रभाव जो निकलते एक ही संबंध दोनों दिशाओं में पढ़ा: हर तार के चारों ओर क्षेत्र बनाती धारा, हर धारावाही तार पर वापस धकेलता क्षेत्र, उस धक्के पर बनी मोटर, उलटे पर बना जनित्र — और घर में वह तीसरा तार जो चुपचाप उस दिन की प्रतीक्षा करता जब उपकरण बिगड़े।",
+      mr: "दोन परिणाम जे निघतात एकच नाते दोन्ही दिशांनी वाचलेले: प्रत्येक तारेभोवती क्षेत्र निर्माण करणारी धारा, प्रत्येक धारावाही तारेवर परत ढकलणारे क्षेत्र, त्या धक्क्यावर बांधलेली मोटर, उलट्यावर बांधलेले जनित्र — आणि घरात ती तिसरी तार जी गुपचूप त्या दिवसाची वाट पाहते जेव्हा उपकरण बिघडेल.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "magnetic-field-lines",
+        name: {
+          en: "Magnetic field lines",
+          hi: "चुंबकीय क्षेत्र रेखाएँ",
+          mr: "चुंबकीय क्षेत्र रेषा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Iron filings sprinkled around a bar magnet arrange themselves into closed curves running out of one end and into the other. Which drawn curves represent the direction and strength of a magnetic field?",
+          hi: "छड़ चुंबक के चारों ओर छिड़का लोहचूर्ण एक सिरे से निकल दूसरे में घुसते बंद वक्रों में सज जाता। कौन-से खींचे वक्र चुंबकीय क्षेत्र की दिशा और प्रबलता दर्शाते?",
+          mr: "दंडचुंबकाभोवती शिंपडलेला लोहकीस एका टोकातून निघून दुसऱ्यात शिरणाऱ्या बंद वक्रांत मांडला जातो. कोणते काढलेले वक्र चुंबकीय क्षेत्राची दिशा आणि प्रबळता दर्शवतात?",
+        },
+        statement: {
+          en: "Magnetic field lines are drawn to show a field's direction — from north to south outside the magnet and south to north inside it — with crowded lines meaning a stronger field.",
+          hi: "चुंबकीय क्षेत्र रेखाएँ क्षेत्र की दिशा दिखाने खींचीं — चुंबक के बाहर उत्तर से दक्षिण और भीतर दक्षिण से उत्तर — घनी रेखाएँ यानी प्रबल क्षेत्र।",
+          mr: "चुंबकीय क्षेत्र रेषा क्षेत्राची दिशा दाखवायला काढल्या — चुंबकाबाहेर उत्तरेकडून दक्षिणेकडे आणि आत दक्षिणेकडून उत्तरेकडे — दाट रेषा म्हणजे प्रबळ क्षेत्र.",
+        },
+        detail: {
+          en: "No two of them can ever cross, because a compass needle placed at a crossing would have to point two ways at once.",
+          hi: "उनमें से कोई दो कभी नहीं कट सकतीं, क्योंकि कटान पर रखी दिक्सूचक सुई को एक साथ दो ओर इशारा करना पड़ता।",
+          mr: "त्यांतील कोणत्याही दोन कधीही छेदू शकत नाहीत, कारण छेदावर ठेवलेल्या दिशादर्शक सुईला एकाच वेळी दोन दिशांना निर्देश करावा लागेल.",
+        },
+        extra: {
+          en: "They are always closed loops, never beginning or ending anywhere, unlike the lines drawn around an isolated electric charge.",
+          hi: "वे सदा बंद पाश, कहीं न आरंभ न अंत, एकाकी विद्युत आवेश के चारों ओर खींची रेखाओं के विपरीत।",
+          mr: "त्या सदैव बंद फेरे, कुठे ना सुरू ना संपणाऱ्या, एकाकी विद्युतभाराभोवती काढलेल्या रेषांच्या उलट.",
+        },
+        pair: {
+          left: {
+            en: "Closed curves showing a field's direction",
+            hi: "क्षेत्र की दिशा दिखाते बंद वक्र",
+            mr: "क्षेत्राची दिशा दाखवणारे बंद वक्र",
+          },
+          right: {
+            en: "magnetic field lines",
+            hi: "चुंबकीय क्षेत्र रेखाएँ",
+            mr: "चुंबकीय क्षेत्र रेषा",
+          },
+        },
+      },
+      {
+        id: "right-hand-thumb-rule",
+        name: {
+          en: "The right-hand thumb rule",
+          hi: "दाहिने हाथ के अंगूठे का नियम",
+          mr: "उजव्या हाताच्या अंगठ्याचा नियम",
+        },
+        kind: "rule",
+        prompt: {
+          en: "Grip a straight wire with your right hand, thumb pointing the way the current flows, and your curled fingers show which way the circular field runs. Which rule is this?",
+          hi: "सीधे तार को दाहिने हाथ से पकड़ो, अंगूठा धारा की दिशा में, और मुड़ी उँगलियाँ दिखातीं वृत्ताकार क्षेत्र किस ओर घूमता। यह कौन-सा नियम?",
+          mr: "सरळ तार उजव्या हाताने पकडा, अंगठा धारेच्या दिशेने, आणि वळलेली बोटे दाखवतात वर्तुळाकार क्षेत्र कोणत्या दिशेने फिरते. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The right-hand thumb rule gives the direction of the circular field around a straight conductor: point the thumb along the current and the curled fingers give the field's sense.",
+          hi: "दाहिने हाथ के अंगूठे का नियम सीधे चालक के चारों ओर वृत्ताकार क्षेत्र की दिशा देता: अंगूठा धारा के अनुदिश और मुड़ी उँगलियाँ क्षेत्र का घुमाव देतीं।",
+          mr: "उजव्या हाताच्या अंगठ्याचा नियम सरळ वाहकाभोवतीच्या वर्तुळाकार क्षेत्राची दिशा देतो: अंगठा धारेच्या दिशेने आणि वळलेली बोटे क्षेत्राचा फेरा देतात.",
+        },
+        detail: {
+          en: "The circles are concentric with the wire and grow wider apart further from it, showing the field weakens with distance.",
+          hi: "वृत्त तार के संकेंद्री और उससे दूर जाते चौड़े होते जाते, दिखाते क्षेत्र दूरी से दुर्बल होता।",
+          mr: "वर्तुळे तारेशी समकेंद्री आणि तिच्यापासून दूर जाताना रुंदावत जातात, दाखवत क्षेत्र अंतराने दुर्बळ होते.",
+        },
+        extra: {
+          en: "Reverse the current and every circle reverses with it — the field has no life of its own once the switch opens.",
+          hi: "धारा उलटो और हर वृत्त उसके साथ उलटता — स्विच खुलते ही क्षेत्र का अपना कोई जीवन नहीं।",
+          mr: "धारा उलटवा आणि प्रत्येक वर्तुळ तिच्यासोबत उलटते — बटण उघडताच क्षेत्राला स्वतःचे जीवन नाही.",
+        },
+        pair: {
+          left: {
+            en: "Thumb on the current, fingers on the field",
+            hi: "अंगूठा धारा पर, उँगलियाँ क्षेत्र पर",
+            mr: "अंगठा धारेवर, बोटे क्षेत्रावर",
+          },
+          right: {
+            en: "the right-hand thumb rule",
+            hi: "दाहिने हाथ के अंगूठे का नियम",
+            mr: "उजव्या हाताच्या अंगठ्याचा नियम",
+          },
+        },
+      },
+      {
+        id: "solenoid",
+        name: {
+          en: "The current-carrying solenoid",
+          hi: "धारावाही परिनालिका",
+          mr: "धारावाही नलिकावेटोळे",
+        },
+        kind: "device",
+        prompt: {
+          en: "Wind a long insulated wire into many close turns, pass a current, and the field inside comes out uniform and straight, with the whole coil behaving like a bar magnet. Which arrangement is this?",
+          hi: "लंबा विद्युतरोधी तार अनेक पास-पास फेरों में लपेटो, धारा बहाओ, और भीतर का क्षेत्र एकसमान और सीधा निकलता, पूरी कुंडली छड़ चुंबक-सी बरतती। यह कौन-सी व्यवस्था?",
+          mr: "लांब विद्युतरोधक तार अनेक जवळजवळ वेढ्यांत गुंडाळा, धारा वाहवा, आणि आतले क्षेत्र एकसमान आणि सरळ निघते, अख्खे वेटोळे दंडचुंबकासारखे वागते. ही कोणती मांडणी?",
+        },
+        statement: {
+          en: "A solenoid is a long coil of many closely wound turns; a current through it produces a uniform field inside and a pattern outside exactly like a bar magnet's, with a north and a south end.",
+          hi: "परिनालिका अनेक पास-पास लपेटे फेरों की लंबी कुंडली; उससे बहती धारा भीतर एकसमान क्षेत्र और बाहर ठीक छड़ चुंबक जैसा प्रतिरूप बनाती, एक उत्तर और एक दक्षिण सिरे के साथ।",
+          mr: "नलिकावेटोळे म्हणजे अनेक जवळजवळ गुंडाळलेल्या वेढ्यांची लांब कुंडली; तिच्यातून वाहणारी धारा आत एकसमान क्षेत्र आणि बाहेर नेमके दंडचुंबकासारखे प्रारूप बनवते, एक उत्तर आणि एक दक्षिण टोकासह.",
+        },
+        detail: {
+          en: "Its field strengthens if the current is raised, if more turns are packed in, or if a soft iron core is slipped inside.",
+          hi: "इसका क्षेत्र प्रबल होता यदि धारा बढ़ाई जाए, अधिक फेरे भरे जाएँ, या भीतर नर्म लोहे का क्रोड सरकाया जाए।",
+          mr: "तिचे क्षेत्र प्रबळ होते जर धारा वाढवली, अधिक वेढे भरले, वा आत मऊ लोखंडाचा गाभा सरकवला.",
+        },
+        extra: {
+          en: "Soft iron is chosen for the core precisely because it loses its magnetism the moment the current stops, which is what makes the magnetism switchable.",
+          hi: "क्रोड के लिए नर्म लोहा ठीक इसीलिए चुना कि धारा रुकते ही वह अपना चुंबकत्व खो देता, यही चुंबकत्व को स्विच से चलाने योग्य बनाता।",
+          mr: "गाभ्यासाठी मऊ लोखंड नेमके यासाठीच निवडले की धारा थांबताच ते आपले चुंबकत्व गमावते, हेच चुंबकत्व बटणाने चालवण्याजोगे बनवते.",
+        },
+        pair: {
+          left: {
+            en: "A coil that behaves like a bar magnet",
+            hi: "छड़ चुंबक-सी बरतती कुंडली",
+            mr: "दंडचुंबकासारखे वागणारे वेटोळे",
+          },
+          right: {
+            en: "a solenoid",
+            hi: "परिनालिका",
+            mr: "नलिकावेटोळे",
+          },
+        },
+      },
+      {
+        id: "flemings-left-hand-rule",
+        name: {
+          en: "Fleming's left-hand rule",
+          hi: "फ़्लेमिंग का वाम-हस्त नियम",
+          mr: "फ्लेमिंगचा डाव्या हाताचा नियम",
+        },
+        kind: "rule",
+        prompt: {
+          en: "Stretch the first three fingers of the left hand mutually perpendicular: forefinger on the field, middle finger on the current, and the thumb then points where the wire is pushed. Which rule gives the direction of that force?",
+          hi: "बाएँ हाथ की पहली तीन उँगलियाँ परस्पर लंबवत तानो: तर्जनी क्षेत्र पर, मध्यमा धारा पर, और अंगूठा तब बताता तार किधर धकेला जाता। कौन-सा नियम उस बल की दिशा देता?",
+          mr: "डाव्या हाताची पहिली तीन बोटे परस्पर लंब ताणा: तर्जनी क्षेत्रावर, मधले बोट धारेवर, आणि अंगठा मग दाखवतो तार कुठे ढकलली जाते. कोणता नियम त्या बलाची दिशा देतो?",
+        },
+        statement: {
+          en: "Fleming's left-hand rule gives the direction of the force on a current-carrying conductor placed in a magnetic field, with forefinger for field, middle finger for current and thumb for force.",
+          hi: "फ़्लेमिंग का वाम-हस्त नियम चुंबकीय क्षेत्र में रखे धारावाही चालक पर बल की दिशा देता, तर्जनी क्षेत्र के लिए, मध्यमा धारा के लिए और अंगूठा बल के लिए।",
+          mr: "फ्लेमिंगचा डाव्या हाताचा नियम चुंबकीय क्षेत्रात ठेवलेल्या धारावाही वाहकावरील बलाची दिशा देतो, तर्जनी क्षेत्रासाठी, मधले बोट धारेसाठी आणि अंगठा बलासाठी.",
+        },
+        detail: {
+          en: "The force is largest when the wire lies at right angles to the field, and falls to nothing when the wire lies along it.",
+          hi: "बल सबसे बड़ा जब तार क्षेत्र के समकोण पर, और शून्य हो जाता जब तार उसके अनुदिश।",
+          mr: "बल सर्वांत मोठे जेव्हा तार क्षेत्राला काटकोनात, आणि शून्य होते जेव्हा तार तिच्या दिशेने.",
+        },
+        extra: {
+          en: "Reversing either the current or the field flips the push; reversing both together leaves it exactly where it was.",
+          hi: "धारा या क्षेत्र में से कोई एक उलटो तो धक्का पलटता; दोनों साथ उलटो तो वह ठीक वहीं रहता।",
+          mr: "धारा वा क्षेत्र यांपैकी एक उलटवल्यास धक्का पलटतो; दोन्ही एकत्र उलटवल्यास तो नेमका तिथेच राहतो.",
+        },
+        pair: {
+          left: {
+            en: "Field, current, force on three left fingers",
+            hi: "बाएँ हाथ की तीन उँगलियों पर क्षेत्र, धारा, बल",
+            mr: "डाव्या हाताच्या तीन बोटांवर क्षेत्र, धारा, बल",
+          },
+          right: {
+            en: "Fleming's left-hand rule",
+            hi: "फ़्लेमिंग का वाम-हस्त नियम",
+            mr: "फ्लेमिंगचा डाव्या हाताचा नियम",
+          },
+        },
+      },
+      {
+        id: "electric-motor",
+        name: {
+          en: "The electric motor",
+          hi: "विद्युत मोटर",
+          mr: "विद्युत मोटर",
+        },
+        kind: "device",
+        prompt: {
+          en: "A coil in a magnetic field is pushed one way on one side and the opposite way on the other, so it spins — and a split ring reverses the current every half turn to keep it spinning. Which machine is this?",
+          hi: "चुंबकीय क्षेत्र में कुंडली एक ओर एक दिशा में और दूसरी ओर उल्टी दिशा में धकेली जाती, अतः घूमती — और विभक्त वलय हर आधे चक्कर पर धारा उलटकर घुमाव बनाए रखता। यह कौन-सी मशीन?",
+          mr: "चुंबकीय क्षेत्रातील कुंडली एका बाजूला एका दिशेने आणि दुसऱ्या बाजूला उलट दिशेने ढकलली जाते, म्हणून फिरते — आणि विभक्त कडे प्रत्येक अर्ध्या फेऱ्याला धारा उलटवून फिरणे टिकवते. हे कोणते यंत्र?",
+        },
+        statement: {
+          en: "An electric motor converts electrical energy into mechanical energy, using the force on a current-carrying coil in a magnetic field to turn a shaft.",
+          hi: "विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में बदलती, चुंबकीय क्षेत्र में धारावाही कुंडली पर बल से धुरी घुमाती।",
+          mr: "विद्युत मोटर विद्युत ऊर्जेचे यांत्रिक ऊर्जेत रूपांतर करते, चुंबकीय क्षेत्रातील धारावाही कुंडलीवरील बलाने दांडा फिरवते.",
+        },
+        detail: {
+          en: "The split-ring commutator is the essential part: without it the coil would turn half a circle, be pushed back, and merely rock instead of rotating.",
+          hi: "विभक्त वलय दिक्परिवर्तक अनिवार्य भाग: उसके बिना कुंडली आधा चक्कर घूमकर वापस धकेली जाती और घूमने के बजाय बस झूलती।",
+          mr: "विभक्त कडे दिशाबदलक अत्यावश्यक भाग: त्याविना कुंडली अर्धा फेरा फिरून परत ढकलली जाई आणि फिरण्याऐवजी फक्त झुलत राही.",
+        },
+        extra: {
+          en: "It sits inside fans, pumps, mixers and washing machines — nearly every household machine that moves something is one of these.",
+          hi: "यह पंखों, पंपों, मिक्सर और वॉशिंग मशीनों के भीतर बैठी — घर की लगभग हर मशीन जो कुछ हिलाती इन्हीं में से एक।",
+          mr: "ती पंखे, पंप, मिक्सर आणि वॉशिंग मशीनच्या आत बसलेली — घरातले जवळजवळ प्रत्येक यंत्र जे काही हलवते ते यांपैकीच एक.",
+        },
+        pair: {
+          left: {
+            en: "Electrical energy turned into motion",
+            hi: "विद्युत ऊर्जा गति में बदली",
+            mr: "विद्युत ऊर्जेचे गतीत रूपांतर",
+          },
+          right: {
+            en: "an electric motor",
+            hi: "विद्युत मोटर",
+            mr: "विद्युत मोटर",
+          },
+        },
+      },
+      {
+        id: "electromagnetic-induction",
+        name: {
+          en: "Electromagnetic induction",
+          hi: "विद्युतचुंबकीय प्रेरण",
+          mr: "विद्युतचुंबकीय प्रेरण",
+        },
+        kind: "process",
+        prompt: {
+          en: "Push a magnet into a closed coil and the galvanometer needle kicks; hold the magnet still inside and it falls back to zero. Which production of a current by a changing magnetic field is this?",
+          hi: "चुंबक को बंद कुंडली में धकेलो और धारामापी की सुई झटका खाती; चुंबक भीतर स्थिर रखो और वह शून्य पर लौट आती। बदलते चुंबकीय क्षेत्र से धारा का यह कौन-सा उत्पादन?",
+          mr: "चुंबक बंद कुंडलीत ढकला आणि धारामापकाची सुई झटका घेते; चुंबक आत स्थिर धरा आणि ती शून्यावर परतते. बदलत्या चुंबकीय क्षेत्राने धारेची ही कोणती निर्मिती?",
+        },
+        statement: {
+          en: "Electromagnetic induction is the setting up of a current in a coil by a changing magnetic field, and its direction is given by Fleming's right-hand rule.",
+          hi: "विद्युतचुंबकीय प्रेरण बदलते चुंबकीय क्षेत्र द्वारा कुंडली में धारा का उठना, और उसकी दिशा फ़्लेमिंग के दक्षिण-हस्त नियम से।",
+          mr: "विद्युतचुंबकीय प्रेरण म्हणजे बदलत्या चुंबकीय क्षेत्राने कुंडलीत धारा उभी राहणे, आणि तिची दिशा फ्लेमिंगच्या उजव्या हाताच्या नियमाने.",
+        },
+        detail: {
+          en: "It is the change that matters, not the field itself — a magnet resting inside a coil induces nothing at all, however strong it is.",
+          hi: "मायने बदलाव रखता, क्षेत्र स्वयं नहीं — कुंडली के भीतर विश्राम करता चुंबक कुछ भी प्रेरित नहीं करता, चाहे कितना प्रबल हो।",
+          mr: "महत्त्व बदलाला, क्षेत्राला स्वतःला नाही — कुंडलीच्या आत विसावलेला चुंबक काहीही प्रेरित करत नाही, कितीही प्रबळ असो.",
+        },
+        extra: {
+          en: "The electric generator is built on it, spinning a coil in a field so that the change is produced continuously and mechanical energy becomes electrical.",
+          hi: "विद्युत जनित्र इसी पर बना, क्षेत्र में कुंडली घुमाकर ताकि बदलाव लगातार बने और यांत्रिक ऊर्जा विद्युत बने।",
+          mr: "विद्युत जनित्र यावरच बांधलेले, क्षेत्रात कुंडली फिरवून जेणेकरून बदल सतत घडतो आणि यांत्रिक ऊर्जा विद्युत बनते.",
+        },
+        pair: {
+          left: {
+            en: "A changing field making a current",
+            hi: "बदलता क्षेत्र धारा बनाए",
+            mr: "बदलते क्षेत्र धारा घडवते",
+          },
+          right: {
+            en: "electromagnetic induction",
+            hi: "विद्युतचुंबकीय प्रेरण",
+            mr: "विद्युतचुंबकीय प्रेरण",
+          },
+        },
+      },
+      {
+        id: "earth-wire",
+        name: {
+          en: "The earth wire",
+          hi: "भू-संपर्क तार",
+          mr: "भूसंपर्क तार",
+        },
+        kind: "safety",
+        prompt: {
+          en: "The third pin of a plug leads to a green wire that carries no current at all in normal use, yet a metal-bodied iron must never be run without it. Which safety conductor is this?",
+          hi: "प्लग की तीसरी पिन एक हरे तार तक जाती जो सामान्य उपयोग में कोई धारा नहीं ढोता, फिर भी धातु-देह वाली इस्तरी उसके बिना कभी नहीं चलानी। यह कौन-सा सुरक्षा चालक?",
+          mr: "प्लगची तिसरी पिन एका हिरव्या तारेकडे जाते जी सामान्य वापरात कोणतीही धारा वाहत नाही, तरीही धातू-देहाची इस्त्री तिच्याविना कधीही चालवू नये. हा कोणता सुरक्षा वाहक?",
+        },
+        statement: {
+          en: "The earth wire connects an appliance's metal body to the ground, so that if a live wire touches the body the fault current escapes safely into the earth instead of through a person.",
+          hi: "भू-संपर्क तार उपकरण की धातु-देह को ज़मीन से जोड़ता, ताकि विद्युन्मय तार देह छू जाए तो दोष-धारा किसी व्यक्ति से नहीं, सुरक्षित ज़मीन में निकल जाए।",
+          mr: "भूसंपर्क तार उपकरणाच्या धातू-देहाला जमिनीशी जोडते, जेणेकरून विद्युतयुक्त तार देहाला लागल्यास दोष-धारा माणसातून नव्हे तर सुरक्षितपणे जमिनीत निसटते.",
+        },
+        detail: {
+          en: "That sudden large current also blows the fuse or trips the breaker, cutting the supply within a fraction of a second.",
+          hi: "वह अचानक बड़ी धारा फ़्यूज़ भी उड़ाती या ब्रेकर गिराती, सेकंड के अंश में आपूर्ति काट देती।",
+          mr: "ती अचानक मोठी धारा फ्यूजही उडवते वा ब्रेकर पाडते, सेकंदाच्या अंशात पुरवठा तोडते.",
+        },
+        extra: {
+          en: "It works only because the earth is a huge conductor at zero potential, always ready to absorb charge without its own voltage rising.",
+          hi: "यह केवल इसलिए काम करता कि पृथ्वी शून्य विभव पर विशाल चालक, अपनी वोल्टता चढ़ाए बिना आवेश सोखने सदा तैयार।",
+          mr: "ते केवळ यामुळे काम करते की पृथ्वी शून्य विभवावरील विशाल वाहक, स्वतःची व्होल्टता न चढवता विद्युतभार शोषायला सदैव तयार.",
+        },
+        pair: {
+          left: {
+            en: "Idle in normal use, life-saving in a fault",
+            hi: "सामान्य उपयोग में निष्क्रिय, दोष में प्राणरक्षक",
+            mr: "सामान्य वापरात निष्क्रिय, दोषात प्राणरक्षक",
+          },
+          right: {
+            en: "the earth wire",
+            hi: "भू-संपर्क तार",
+            mr: "भूसंपर्क तार",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A simple motor is built from a rectangular coil between two magnet poles. Without one small component the coil swings a half turn, stops, and swings back — it rocks but never rotates. Name that component, and explain exactly what it must do and why the motor is useless without it.",
+          hi: "दो चुंबक ध्रुवों के बीच आयताकार कुंडली से साधारण मोटर बनी। एक छोटे पुर्ज़े के बिना कुंडली आधा चक्कर झूलती, रुकती, और वापस झूलती — वह डोलती पर कभी घूमती नहीं। उस पुर्ज़े का नाम लो, और ठीक-ठीक समझाओ उसे क्या करना और उसके बिना मोटर बेकार क्यों।",
+          mr: "दोन चुंबक ध्रुवांदरम्यान आयताकार कुंडलीतून साधी मोटर बनवली. एका लहान भागाविना कुंडली अर्धा फेरा झुलते, थांबते, आणि परत झुलते — ती डुलते पण कधी फिरत नाही. त्या भागाचे नाव सांगा, आणि नेमके समजावा त्याने काय करावे आणि त्याविना मोटर निरुपयोगी का.",
+        },
+        choices: [
+          {
+            en: "The split-ring commutator. The two sides of the coil carry current in opposite directions, so Fleming's left-hand rule pushes one side up and the other down, turning the coil. But after half a turn the sides have swapped places and the same pushes would now drive it back. The commutator reverses the current in the coil at exactly that moment, so the forces keep turning it the same way and the rotation continues",
+            hi: "विभक्त वलय दिक्परिवर्तक। कुंडली की दोनों भुजाएँ उल्टी दिशाओं में धारा ढोतीं, अतः फ़्लेमिंग का वाम-हस्त नियम एक भुजा ऊपर और दूसरी नीचे धकेलता, कुंडली घुमाता। पर आधे चक्कर बाद भुजाएँ जगह बदल चुकीं और वही धक्के अब उसे वापस चलाते। दिक्परिवर्तक ठीक उसी क्षण कुंडली में धारा उलट देता, अतः बल उसे उसी ओर घुमाते रहते और घूर्णन चलता रहता",
+            mr: "विभक्त कडे दिशाबदलक. कुंडलीच्या दोन्ही बाजू उलट दिशांना धारा वाहतात, म्हणून फ्लेमिंगचा डाव्या हाताचा नियम एक बाजू वर आणि दुसरी खाली ढकलतो, कुंडली फिरवतो. पण अर्ध्या फेऱ्यानंतर बाजूंनी जागा बदलल्या आणि तेच धक्के आता तिला परत चालवतील. दिशाबदलक नेमक्या त्याच क्षणी कुंडलीतील धारा उलटवतो, म्हणून बले तिला त्याच दिशेने फिरवत राहतात आणि परिभ्रमण चालू राहते",
+          },
+          {
+            en: "A second battery, which is needed because one cell cannot supply enough current to complete a full turn",
+            hi: "दूसरी बैटरी, जो चाहिए क्योंकि एक सेल पूरा चक्कर पूरा करने भर धारा नहीं दे सकता",
+            mr: "दुसरी बॅटरी, जी लागते कारण एक घट पूर्ण फेरा पूर्ण करण्याइतकी धारा देऊ शकत नाही",
+          },
+          {
+            en: "A stronger magnet, since the rocking simply means the field is too weak to complete the circle",
+            hi: "अधिक प्रबल चुंबक, क्योंकि डोलने का अर्थ बस यह कि क्षेत्र वृत्त पूरा करने को बहुत दुर्बल",
+            mr: "अधिक प्रबळ चुंबक, कारण डुलण्याचा अर्थ फक्त इतका की क्षेत्र वर्तुळ पूर्ण करायला फार दुर्बळ",
+          },
+          {
+            en: "An extra coil at right angles, because a single coil can never experience any force at all",
+            hi: "समकोण पर एक अतिरिक्त कुंडली, क्योंकि अकेली कुंडली पर कोई बल कभी लग ही नहीं सकता",
+            mr: "काटकोनात एक जादा कुंडली, कारण एकट्या कुंडलीवर कोणतेही बल कधी लागूच शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The missing part is the split-ring commutator, and understanding why it is indispensable means following the coil through one full turn. Start with the force. A wire carrying current in a magnetic field is pushed sideways, and Fleming's left-hand rule gives the direction: forefinger along the field, middle finger along the current, thumb showing the push. Now look at the rectangular coil. Current runs around the loop, so on one arm it flows one way and on the opposite arm it flows the other way — while the magnetic field is the same across both. Opposite currents in the same field mean opposite forces, so one arm is pushed up while the other is pushed down. Two opposite pushes on opposite sides of an axle are exactly a turning effect, and the coil begins to rotate. So far so good — but now trace it half a turn onward. The arm that started on the left is now on the right, and vice versa. The field has not changed and the current direction in each arm has not changed, so the arm now on the right is still being pushed the same way in space as before. But 'the same way in space' now works against the rotation, because the arm has swapped sides. The turning effect reverses, the coil is driven back the way it came, and all you get is a rocking motion — the coil oscillates about one position and never completes a circle. The commutator fixes precisely this. It is a metal ring split into two halves, each half connected to one end of the coil, with brushes pressing against it. As the coil turns, the halves slide past the brushes and, at the very moment the arms swap sides, each half meets the opposite brush. That reverses the current through the coil. Reversing the current reverses the force on each arm, and since the arms have also swapped position, the two reversals cancel out — the turning effect points the same way as before. The coil is pushed onward instead of backward, and it keeps rotating. So the commutator's job is not to supply power or strengthen the field; it is to flip the current twice per revolution, at the exact instants when the geometry would otherwise turn a driving force into a braking one. (The wrong answers reach for more current, a stronger magnet or another coil — but none of those addresses the real problem, which is a reversal of direction and not a shortage of strength. A stronger magnet only makes the rocking more vigorous.)",
+          hi: "लुप्त पुर्ज़ा विभक्त वलय दिक्परिवर्तक, और वह अपरिहार्य क्यों समझने को कुंडली को एक पूरे चक्कर तक पीछा करना होगा। बल से शुरू। चुंबकीय क्षेत्र में धारा ढोता तार बग़ल में धकेला जाता, और फ़्लेमिंग का वाम-हस्त नियम दिशा देता: तर्जनी क्षेत्र के अनुदिश, मध्यमा धारा के अनुदिश, अंगूठा धक्का दिखाता। अब आयताकार कुंडली देखो। धारा पाश के चारों ओर दौड़ती, अतः एक भुजा में एक ओर और सामने वाली भुजा में दूसरी ओर बहती — जबकि चुंबकीय क्षेत्र दोनों पर वही। उसी क्षेत्र में उल्टी धाराओं का अर्थ उल्टे बल, अतः एक भुजा ऊपर धकेली जबकि दूसरी नीचे। धुरी की उल्टी ओरों पर दो उल्टे धक्के ठीक घूर्णन-प्रभाव, और कुंडली घूमने लगती। यहाँ तक ठीक — पर अब आधा चक्कर आगे पीछा करो। जो भुजा बाईं ओर शुरू हुई अब दाईं ओर, और उल्टे। क्षेत्र नहीं बदला और हर भुजा में धारा की दिशा नहीं बदली, अतः अब दाईं ओर की भुजा अब भी अंतरिक्ष में उसी ओर धकेली जा रही जैसे पहले। पर 'अंतरिक्ष में वही ओर' अब घूर्णन के विरुद्ध काम करती, क्योंकि भुजा ने पक्ष बदल लिया। घूर्णन-प्रभाव उलटता, कुंडली जिस राह आई उसी वापस चलाई जाती, और जो मिलता वह बस डोलती गति — कुंडली एक स्थिति के आसपास दोलन करती और वृत्त कभी पूरा नहीं करती। दिक्परिवर्तक ठीक यही सुधारता। यह दो आधों में विभक्त धातु का वलय, हर आधा कुंडली के एक सिरे से जुड़ा, ब्रुश उससे दबे। कुंडली घूमते आधे ब्रुशों से सरकते और, ठीक उसी क्षण जब भुजाएँ पक्ष बदलतीं, हर आधा उल्टे ब्रुश से मिलता। वह कुंडली में धारा उलट देता। धारा उलटना हर भुजा पर बल उलटता, और चूँकि भुजाओं ने भी स्थिति बदली, दोनों उलटाव कट जाते — घूर्णन-प्रभाव पहले जैसी ही ओर इशारा करता। कुंडली पीछे नहीं, आगे धकेली जाती, और घूमती रहती। अतः दिक्परिवर्तक का काम शक्ति देना या क्षेत्र प्रबल करना नहीं; यह प्रति चक्कर दो बार धारा पलटना, ठीक उन क्षणों पर जब ज्यामिति अन्यथा चालक बल को रोकने वाला बना देती। (ग़लत उत्तर अधिक धारा, प्रबल चुंबक या एक और कुंडली की ओर बढ़ते — पर उनमें से कोई असली समस्या नहीं छूता, जो दिशा का उलटाव है, प्रबलता की कमी नहीं। प्रबल चुंबक केवल डोलना और ज़ोरदार बनाता।)",
+          mr: "हरवलेला भाग विभक्त कडे दिशाबदलक, आणि तो अपरिहार्य का हे समजण्यासाठी कुंडलीचा एका पूर्ण फेऱ्यापर्यंत पाठलाग करावा लागेल. बलापासून सुरू. चुंबकीय क्षेत्रात धारा वाहणारी तार बाजूला ढकलली जाते, आणि फ्लेमिंगचा डाव्या हाताचा नियम दिशा देतो: तर्जनी क्षेत्राच्या दिशेने, मधले बोट धारेच्या दिशेने, अंगठा धक्का दाखवतो. आता आयताकार कुंडली पाहा. धारा फेऱ्याभोवती धावते, म्हणून एका बाजूत एका दिशेने आणि समोरच्या बाजूत दुसऱ्या दिशेने वाहते — तर चुंबकीय क्षेत्र दोन्हींवर तेच. त्याच क्षेत्रात उलट धारांचा अर्थ उलट बले, म्हणून एक बाजू वर ढकलली तर दुसरी खाली. दांड्याच्या उलट बाजूंवरील दोन उलट धक्के म्हणजे नेमका परिभ्रमण-परिणाम, आणि कुंडली फिरू लागते. इथवर ठीक — पण आता अर्धा फेरा पुढे पाठलाग करा. जी बाजू डावीकडे सुरू झाली ती आता उजवीकडे, आणि उलट. क्षेत्र बदलले नाही आणि प्रत्येक बाजूतील धारेची दिशा बदलली नाही, म्हणून आता उजवीकडची बाजू अजूनही अवकाशात त्याच दिशेने ढकलली जात आहे जशी आधी. पण 'अवकाशात तीच दिशा' आता परिभ्रमणाविरुद्ध काम करते, कारण बाजूने बाजू बदलली. परिभ्रमण-परिणाम उलटतो, कुंडली ज्या वाटेने आली त्याच वाटेने परत चालवली जाते, आणि जे मिळते ती फक्त डुलती गती — कुंडली एका स्थानाभोवती दोलन करते आणि वर्तुळ कधीही पूर्ण करत नाही. दिशाबदलक नेमके हेच दुरुस्त करतो. तो दोन अर्ध्यांत विभागलेला धातूचा कडा, प्रत्येक अर्धा कुंडलीच्या एका टोकाशी जोडलेला, ब्रश त्यावर दाबलेले. कुंडली फिरताना अर्धे ब्रशांवरून सरकतात आणि, नेमक्या त्याच क्षणी जेव्हा बाजू जागा बदलतात, प्रत्येक अर्धा उलट ब्रशला भेटतो. ते कुंडलीतील धारा उलटवते. धारा उलटवणे प्रत्येक बाजूवरील बल उलटवते, आणि बाजूंनीही स्थान बदलल्याने, दोन्ही उलटी रद्द होतात — परिभ्रमण-परिणाम आधीसारख्याच दिशेने निर्देश करतो. कुंडली मागे नव्हे तर पुढे ढकलली जाते, आणि फिरत राहते. म्हणून दिशाबदलकाचे काम शक्ती पुरवणे वा क्षेत्र प्रबळ करणे नाही; ते प्रति फेरा दोनदा धारा पलटणे, नेमक्या त्या क्षणी जेव्हा भूमिती एरवी चालक बलाचे रोखणारे बल करून टाकेल. (चुकीची उत्तरे अधिक धारा, प्रबळ चुंबक वा आणखी एक कुंडलीकडे जातात — पण त्यांपैकी कोणतेही खरी समस्या स्पर्शत नाही, जी दिशेचे उलटणे आहे, प्रबळतेची कमतरता नाही. प्रबळ चुंबक फक्त डुलणे अधिक जोरदार करतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Coal stations, nuclear plants, dams and windmills look nothing alike, yet almost every one of them makes electricity in the identical final step: something is made to spin a coil near magnets. Explain the principle that forces this common design, and why simply parking a very powerful magnet inside a coil would produce no electricity at all.",
+          hi: "कोयला-गृह, नाभिकीय संयंत्र, बाँध और पवनचक्कियाँ बिलकुल एक-सी नहीं दिखतीं, फिर भी उनमें से लगभग हर एक बिजली उसी समान अंतिम चरण में बनाती: कुछ चुंबकों के पास कुंडली घुमाने लगाया जाता। वह सिद्धांत समझाओ जो यह साझा रचना थोपता, और क्यों कुंडली के भीतर बहुत प्रबल चुंबक बस खड़ा कर देने से कोई बिजली नहीं बनेगी।",
+          mr: "कोळसा-केंद्रे, अणुसंयंत्रे, धरणे आणि पवनचक्क्या मुळीच सारख्या दिसत नाहीत, तरीही त्यांपैकी जवळजवळ प्रत्येक वीज त्याच समान अंतिम पायरीत बनवते: काहीतरी चुंबकांजवळ कुंडली फिरवायला लावले जाते. ती सामायिक रचना लादणारे तत्त्व समजावा, आणि कुंडलीच्या आत खूप प्रबळ चुंबक फक्त उभा करून ठेवल्याने वीज का बनणारच नाही.",
+        },
+        choices: [
+          {
+            en: "Electromagnetic induction: a current is induced in a coil only when the magnetic field through it is changing. A field that is merely strong but steady induces nothing, because there is no change — so a resting magnet, however powerful, gives no current. Spinning a coil in a field makes the field through it change continuously, which is why every one of these stations ends by turning a shaft, differing only in what supplies the turning",
+            hi: "विद्युतचुंबकीय प्रेरण: कुंडली में धारा तभी प्रेरित होती जब उससे गुज़रता चुंबकीय क्षेत्र बदल रहा हो। केवल प्रबल पर स्थिर क्षेत्र कुछ प्रेरित नहीं करता, क्योंकि कोई बदलाव नहीं — अतः विश्राम करता चुंबक, चाहे कितना प्रबल, कोई धारा नहीं देता। क्षेत्र में कुंडली घुमाना उससे गुज़रता क्षेत्र लगातार बदलता, इसी से इनमें से हर गृह धुरी घुमाकर समाप्त होता, केवल इसमें भिन्न कि घुमाव कौन देता",
+            mr: "विद्युतचुंबकीय प्रेरण: कुंडलीत धारा तेव्हाच प्रेरित होते जेव्हा तिच्यातून जाणारे चुंबकीय क्षेत्र बदलत असते. केवळ प्रबळ पण स्थिर क्षेत्र काहीही प्रेरित करत नाही, कारण कोणताही बदल नाही — म्हणून विसावलेला चुंबक, कितीही प्रबळ असो, कोणतीही धारा देत नाही. क्षेत्रात कुंडली फिरवणे तिच्यातून जाणारे क्षेत्र सतत बदलवते, म्हणूनच यांपैकी प्रत्येक केंद्र दांडा फिरवून संपते, फक्त फिरवणे कोण पुरवते यात वेगळे",
+          },
+          {
+            en: "Magnets simply contain stored electricity, and spinning the coil is only a way of scraping it out faster",
+            hi: "चुंबकों में बस संचित बिजली भरी, और कुंडली घुमाना उसे तेज़ी से खुरचने का बस एक तरीक़ा",
+            mr: "चुंबकांत फक्त साठवलेली वीज भरलेली, आणि कुंडली फिरवणे ती वेगाने खरवडून काढण्याचा फक्त एक मार्ग",
+          },
+          {
+            en: "A strong steady magnet inside a coil does give a steady current; the spinning is only to make the current larger",
+            hi: "कुंडली के भीतर प्रबल स्थिर चुंबक स्थिर धारा देता ही है; घुमाना केवल धारा बड़ी करने को",
+            mr: "कुंडलीच्या आत प्रबळ स्थिर चुंबक स्थिर धारा देतोच; फिरवणे फक्त धारा मोठी करायला",
+          },
+          {
+            en: "The common design is a historical accident of engineering, with no physical principle behind it",
+            hi: "साझा रचना अभियांत्रिकी का ऐतिहासिक संयोग, उसके पीछे कोई भौतिक सिद्धांत नहीं",
+            mr: "सामायिक रचना अभियांत्रिकीचा ऐतिहासिक योगायोग, तिच्यामागे कोणतेही भौतिक तत्त्व नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The principle is electromagnetic induction, and its precise wording is what settles both halves of the question: a current is induced in a closed coil when the magnetic field passing through that coil changes. The word doing all the work is 'changes'. It is not the presence of a field that drives a current, and not its strength either — it is the alteration of the field from one instant to the next. This immediately answers the second part. Park the most powerful magnet you can find inside a coil, leave it there, and the field through the coil is enormous but perfectly constant. Nothing changes from moment to moment, so nothing is induced, and a galvanometer connected to the coil reads exactly zero. This is not a limitation of weak equipment; a magnet a thousand times stronger, held still, would give the same zero. You can see the point in the classroom demonstration: the needle kicks while you push the magnet in, kicks the other way while you pull it out, and rests at zero whenever the magnet is stationary — even when it is sitting deep inside the coil, where the field is strongest of all. Motion, or more precisely change, is the whole source. Now the first part follows. To generate electricity continuously you must arrange for the field through a coil to keep changing, and the most practical way ever found is to spin the coil in a magnetic field (or spin magnets past a fixed coil). As the coil turns, the amount of field passing through it rises and falls smoothly through every rotation, so a current is induced continuously — and, incidentally, one that reverses direction twice per turn, which is why mains supply is alternating current. This is what standardises the design of almost every power station on earth. A coal or gas station burns fuel to boil water and drive steam through a turbine; a nuclear plant uses fission heat to do the same; a hydroelectric dam lets falling water push the turbine; a windmill lets moving air do it. The fuel, the ethics, the cost and the pollution differ enormously — but the final step is identical, because induction offers no other way. Every one of them is, at its heart, a machine for turning a shaft. What separates a wind farm from a coal plant is not the physics of generation but where the turning comes from and what it costs the world to obtain it. (The wrong answers imagine magnets as reservoirs of stored electricity, or claim a steady field yields a steady current — both contradict the demonstration in which a stationary magnet gives nothing — or dismiss a deep physical necessity as mere convention.)",
+          hi: "सिद्धांत विद्युतचुंबकीय प्रेरण, और उसका ठीक शब्दांकन ही प्रश्न के दोनों आधे तय करता: बंद कुंडली में धारा तब प्रेरित होती जब उस कुंडली से गुज़रता चुंबकीय क्षेत्र बदलता। सारा काम करता शब्द 'बदलता'। धारा को क्षेत्र की उपस्थिति नहीं चलाती, न उसकी प्रबलता — यह एक क्षण से अगले तक क्षेत्र का परिवर्तन। यह तुरंत दूसरा भाग उत्तरित करता। जो सबसे प्रबल चुंबक मिले उसे कुंडली के भीतर खड़ा करो, वहीं छोड़ दो, और कुंडली से गुज़रता क्षेत्र विशाल पर बिलकुल अचर। पल-पल कुछ नहीं बदलता, अतः कुछ प्रेरित नहीं, और कुंडली से जुड़ा धारामापी ठीक शून्य पढ़ता। यह दुर्बल उपकरण की सीमा नहीं; हज़ार गुना प्रबल चुंबक, स्थिर रखा, वही शून्य देता। कक्षा के प्रदर्शन में बात दिखती: चुंबक भीतर धकेलते सुई झटका खाती, बाहर खींचते दूसरी ओर झटका, और जब भी चुंबक स्थिर तब शून्य पर विश्राम — तब भी जब वह कुंडली के गहरे भीतर बैठा, जहाँ क्षेत्र सबसे प्रबल। गति, या अधिक ठीक कहें बदलाव, ही पूरा स्रोत। अब पहला भाग निकलता। लगातार बिजली बनाने को कुंडली से गुज़रता क्षेत्र बदलता रहे यह जुगाड़ना होगा, और अब तक मिला सबसे व्यावहारिक तरीक़ा चुंबकीय क्षेत्र में कुंडली घुमाना (या स्थिर कुंडली के पास चुंबक घुमाना)। कुंडली घूमते उससे गुज़रता क्षेत्र हर घूर्णन में सहज चढ़ता-उतरता, अतः धारा लगातार प्रेरित — और, संयोग से, ऐसी जो प्रति चक्कर दो बार दिशा उलटती, इसी से मेन्स की आपूर्ति प्रत्यावर्ती धारा। यही पृथ्वी के लगभग हर विद्युत-गृह की रचना मानकीकृत करता। कोयला या गैस का गृह ईंधन जलाकर पानी उबालता और भाप टरबाइन से चलाता; नाभिकीय संयंत्र विखंडन की ऊष्मा से वही करता; जलविद्युत बाँध गिरते पानी से टरबाइन धकेलवाता; पवनचक्की चलती हवा से। ईंधन, नैतिकता, लागत और प्रदूषण अत्यंत भिन्न — पर अंतिम चरण समान, क्योंकि प्रेरण कोई और रास्ता देता ही नहीं। उनमें से हर एक, मूल में, धुरी घुमाने की मशीन। पवन-खेत को कोयला-संयंत्र से जो अलग करता वह उत्पादन की भौतिकी नहीं बल्कि घुमाव कहाँ से आता और उसे पाने में दुनिया को क्या चुकाना पड़ता। (ग़लत उत्तर चुंबकों को संचित बिजली के भंडार मानते, या दावा करते स्थिर क्षेत्र स्थिर धारा देता — दोनों उस प्रदर्शन का खंडन जिसमें स्थिर चुंबक कुछ नहीं देता — या एक गहरी भौतिक अनिवार्यता को मात्र प्रथा कहकर टाल देते।)",
+          mr: "तत्त्व विद्युतचुंबकीय प्रेरण, आणि त्याची नेमकी मांडणीच प्रश्नाचे दोन्ही अर्धे ठरवते: बंद कुंडलीत धारा तेव्हा प्रेरित होते जेव्हा त्या कुंडलीतून जाणारे चुंबकीय क्षेत्र बदलते. सर्व काम करणारा शब्द 'बदलते'. धारेला क्षेत्राची उपस्थिती चालवत नाही, ना तिची प्रबळता — तर एका क्षणापासून पुढच्यापर्यंत क्षेत्राचा बदल. हे लगेच दुसरा भाग उत्तरित करते. जो सर्वांत प्रबळ चुंबक मिळेल तो कुंडलीच्या आत उभा करा, तिथेच सोडा, आणि कुंडलीतून जाणारे क्षेत्र प्रचंड पण अगदी अचल. क्षणोक्षणी काहीच बदलत नाही, म्हणून काहीच प्रेरित होत नाही, आणि कुंडलीशी जोडलेला धारामापक नेमके शून्य वाचतो. ही दुर्बळ उपकरणाची मर्यादा नाही; हजारपट प्रबळ चुंबक, स्थिर धरलेला, तेच शून्य देईल. वर्गातील प्रात्यक्षिकात मुद्दा दिसतो: चुंबक आत ढकलताना सुई झटका घेते, बाहेर ओढताना दुसऱ्या दिशेने झटका, आणि जेव्हाही चुंबक स्थिर तेव्हा शून्यावर विसावा — तेव्हाही जेव्हा तो कुंडलीच्या खोल आत बसलेला, जिथे क्षेत्र सर्वांत प्रबळ. गती, किंवा अधिक नेमके सांगायचे तर बदल, हाच अख्खा स्रोत. आता पहिला भाग निघतो. सतत वीज बनवायला कुंडलीतून जाणारे क्षेत्र बदलत राहील अशी जुळणी करावी लागेल, आणि आजवर सापडलेला सर्वांत व्यावहारिक मार्ग म्हणजे चुंबकीय क्षेत्रात कुंडली फिरवणे (वा स्थिर कुंडलीजवळून चुंबक फिरवणे). कुंडली फिरताना तिच्यातून जाणारे क्षेत्र प्रत्येक परिभ्रमणात सहज चढते-उतरते, म्हणून धारा सतत प्रेरित — आणि, योगायोगाने, अशी जी प्रति फेरा दोनदा दिशा उलटवते, म्हणूनच मुख्य पुरवठा प्रत्यावर्ती धारा. हेच पृथ्वीवरील जवळजवळ प्रत्येक वीजकेंद्राची रचना प्रमाणित करते. कोळसा वा वायूचे केंद्र इंधन जाळून पाणी उकळते आणि वाफ टर्बाइनमधून चालवते; अणुसंयंत्र विखंडनाच्या उष्णतेने तेच करते; जलविद्युत धरण पडत्या पाण्याने टर्बाइन ढकलवते; पवनचक्की वाहत्या हवेने. इंधन, नीती, खर्च आणि प्रदूषण अतिशय वेगळे — पण अंतिम पायरी समान, कारण प्रेरण दुसरा मार्ग देतच नाही. त्यांपैकी प्रत्येक, मुळात, दांडा फिरवण्याचे यंत्र. पवन-शेताला कोळसा-संयंत्रापासून जे वेगळे करते ते निर्मितीचे भौतिकशास्त्र नव्हे तर फिरवणे कुठून येते आणि ते मिळवायला जगाला काय मोजावे लागते. (चुकीची उत्तरे चुंबकांना साठवलेल्या विजेचे साठे मानतात, वा दावा करतात स्थिर क्षेत्र स्थिर धारा देते — दोन्ही त्या प्रात्यक्षिकाचे खंडन ज्यात स्थिर चुंबक काहीच देत नाही — वा एका खोल भौतिक अपरिहार्यतेला केवळ प्रथा म्हणून झटकतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Our Environment                                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-our-environment",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 13 — Our Environment",
+      hi: "अध्याय 13 — हमारा पर्यावरण",
+      mr: "प्रकरण 13 — आपले पर्यावरण",
+    },
+    name: {
+      en: "Our Environment",
+      hi: "हमारा पर्यावरण",
+      mr: "आपले पर्यावरण",
+    },
+    summary: {
+      en: "Energy entering at one door and leaking away at every step: the living and non-living parts that make a working system, the three jobs every community must fill, the chain that carries food upward while ninety per cent of the energy is lost, the poison that travels the same chain and concentrates instead, and the waste and the shield that measure what we have done.",
+      hi: "एक द्वार से घुसती और हर चरण पर रिसती ऊर्जा: काम करता तंत्र बनाते सजीव-निर्जीव अंग, हर समुदाय में भरे जाते तीन काम, ऊपर की ओर भोजन ढोती शृंखला जबकि नब्बे प्रतिशत ऊर्जा नष्ट, वही शृंखला चढ़ता पर इसके उलट गाढ़ा होता विष, और कचरा तथा कवच जो नापते हमने क्या किया।",
+      mr: "एका दारातून शिरणारी आणि प्रत्येक पायरीवर गळणारी ऊर्जा: काम करणारी यंत्रणा घडवणारे सजीव-निर्जीव भाग, प्रत्येक समुदायात भरावी लागणारी तीन कामे, वर अन्न वाहून नेणारी साखळी तर नव्वद टक्के ऊर्जा नष्ट, तीच साखळी चढणारे पण याउलट दाट होणारे विष, आणि आपण काय केले हे मोजणारा कचरा व कवच.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ecosystem-components",
+        name: {
+          en: "The components of an ecosystem",
+          hi: "पारितंत्र के घटक",
+          mr: "परिसंस्थेचे घटक",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A pond is not just its fish and weeds — its water, mud, light and temperature are as much a part of the working whole. Which pairing of living and non-living parts makes up such a self-running unit?",
+          hi: "तालाब केवल उसकी मछलियाँ और घास-फूस नहीं — उसका पानी, कीचड़, प्रकाश और ताप भी काम करते पूरे का उतना ही अंग। सजीव और निर्जीव अंगों की कौन-सी जोड़ी ऐसी स्वयं-चलती इकाई बनाती?",
+          mr: "तळे म्हणजे फक्त त्यातले मासे आणि शेवाळ नव्हे — त्याचे पाणी, गाळ, प्रकाश आणि तापमानही काम करणाऱ्या पूर्णाचा तितकाच भाग. सजीव आणि निर्जीव भागांची कोणती जोडी अशी स्वतः चालणारी एकक बनवते?",
+        },
+        statement: {
+          en: "An ecosystem's components are its biotic part — all the living organisms — together with its abiotic part of soil, water, air, light and temperature, the two interacting as one working unit.",
+          hi: "पारितंत्र के घटक उसका जैविक अंग — सब सजीव — और उसका अजैविक अंग मिट्टी, पानी, हवा, प्रकाश तथा ताप, दोनों एक कार्यरत इकाई की तरह अंतःक्रिया करते।",
+          mr: "परिसंस्थेचे घटक म्हणजे तिचा जैविक भाग — सर्व सजीव — आणि तिचा अजैविक भाग माती, पाणी, हवा, प्रकाश व तापमान, दोन्ही एक कार्यरत एकक म्हणून परस्परक्रिया करत.",
+        },
+        detail: {
+          en: "Some ecosystems are natural, like a forest or a lake, and others are made and maintained by people, like a crop field or an aquarium.",
+          hi: "कुछ पारितंत्र प्राकृतिक, जैसे वन या झील, और कुछ लोगों द्वारा बने-संभाले, जैसे फ़सल का खेत या एक्वेरियम।",
+          mr: "काही परिसंस्था नैसर्गिक, जसे जंगल वा सरोवर, आणि काही लोकांनी बनवलेल्या-सांभाळलेल्या, जसे पिकाचे शेत वा मत्स्यालय.",
+        },
+        extra: {
+          en: "A human-made one usually needs constant tending because it lacks the variety that lets a natural system absorb a shock on its own.",
+          hi: "मानव-निर्मित को आमतौर पर लगातार देखभाल चाहिए क्योंकि उसमें वह विविधता नहीं जो प्राकृतिक तंत्र को अपने आप झटका सह लेने देती।",
+          mr: "मानवनिर्मितीला सहसा सतत निगा लागते कारण तिच्यात ती विविधता नाही जी नैसर्गिक यंत्रणेला स्वतःहून धक्का पचवू देते.",
+        },
+        pair: {
+          left: {
+            en: "Living and non-living working as one unit",
+            hi: "सजीव और निर्जीव एक इकाई की तरह काम करते",
+            mr: "सजीव आणि निर्जीव एक एकक म्हणून काम करत",
+          },
+          right: {
+            en: "the components of an ecosystem",
+            hi: "पारितंत्र के घटक",
+            mr: "परिसंस्थेचे घटक",
+          },
+        },
+      },
+      {
+        id: "producers-consumers-decomposers",
+        name: {
+          en: "Producers, consumers and decomposers",
+          hi: "उत्पादक, उपभोक्ता और अपघटक",
+          mr: "उत्पादक, भक्षक आणि विघटक",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Green plants make the food, animals eat what others have made, and bacteria and fungi break the dead back into soil. Which three roles must every community fill for it to keep running?",
+          hi: "हरे पौधे भोजन बनाते, जीव-जंतु दूसरों का बनाया खाते, और जीवाणु-कवक मृत को तोड़कर मिट्टी में लौटाते। हर समुदाय को चलते रहने को कौन-से तीन काम भरने होते?",
+          mr: "हिरव्या वनस्पती अन्न बनवतात, प्राणी इतरांनी बनवलेले खातात, आणि जीवाणू-बुरशी मेलेल्यांना मोडून मातीत परत आणतात. प्रत्येक समुदायाला चालू राहायला कोणती तीन कामे भरावी लागतात?",
+        },
+        statement: {
+          en: "Producers make their own food from sunlight, consumers feed on other organisms, and decomposers break down dead matter and return its nutrients to the soil.",
+          hi: "उत्पादक धूप से अपना भोजन बनाते, उपभोक्ता दूसरे जीवों पर पलते, और अपघटक मृत पदार्थ तोड़कर उसके पोषक तत्व मिट्टी में लौटाते।",
+          mr: "उत्पादक सूर्यप्रकाशातून स्वतःचे अन्न बनवतात, भक्षक इतर जीवांवर जगतात, आणि विघटक मृत पदार्थ मोडून त्यातील पोषक द्रव्ये मातीत परत करतात.",
+        },
+        detail: {
+          en: "Consumers are sorted further into herbivores, carnivores, omnivores and parasites, by what exactly they take their food from.",
+          hi: "उपभोक्ता आगे शाकाहारी, माँसाहारी, सर्वाहारी और परजीवी में छाँटे, ठीक किससे भोजन लेते इससे।",
+          mr: "भक्षक पुढे शाकाहारी, मांसाहारी, मिश्राहारी आणि परजीवी असे विभागले, नेमके कशातून अन्न घेतात यावरून.",
+        },
+        extra: {
+          en: "Remove the decomposers and the whole system chokes: nutrients would stay locked in corpses and dead leaves, and the producers would starve for want of soil minerals.",
+          hi: "अपघटक हटाओ और पूरा तंत्र घुट जाता: पोषक तत्व शवों और मृत पत्तों में क़ैद रह जाते, और उत्पादक मिट्टी के खनिजों के अभाव में भूखे मरते।",
+          mr: "विघटक काढा आणि अख्खी यंत्रणा गुदमरते: पोषक द्रव्ये प्रेतांत आणि मेलेल्या पानांत कोंडून राहतील, आणि उत्पादक मातीतील खनिजांच्या अभावी उपाशी मरतील.",
+        },
+        pair: {
+          left: {
+            en: "Maker, eater and recycler",
+            hi: "बनाने वाला, खाने वाला और लौटाने वाला",
+            mr: "बनवणारा, खाणारा आणि परत करणारा",
+          },
+          right: {
+            en: "producers, consumers and decomposers",
+            hi: "उत्पादक, उपभोक्ता और अपघटक",
+            mr: "उत्पादक, भक्षक आणि विघटक",
+          },
+        },
+      },
+      {
+        id: "food-chain",
+        name: {
+          en: "The food chain",
+          hi: "आहार शृंखला",
+          mr: "अन्नसाखळी",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Grass is eaten by a grasshopper, the grasshopper by a frog, the frog by a snake, the snake by a hawk — a single line along which food and energy travel. What is such a series called?",
+          hi: "घास टिड्डा खाता, टिड्डे को मेंढक, मेंढक को साँप, साँप को बाज़ — एक ही रेखा जिस पर भोजन और ऊर्जा चलते। ऐसी शृंखला क्या कहलाती?",
+          mr: "गवत नाकतोडा खातो, नाकतोड्याला बेडूक, बेडकाला साप, सापाला ससाणा — एकच रेषा जिच्यावरून अन्न आणि ऊर्जा प्रवास करतात. अशी मालिका काय म्हणतात?",
+        },
+        statement: {
+          en: "A food chain is a series of organisms in which each feeds on the one before it, so food and the energy in it pass step by step from producers upward.",
+          hi: "आहार शृंखला जीवों की वह शृंखला जिसमें हर एक अपने पहले वाले पर पलता, अतः भोजन और उसमें की ऊर्जा उत्पादकों से ऊपर की ओर चरण-दर-चरण जाते।",
+          mr: "अन्नसाखळी म्हणजे जीवांची ती मालिका जिच्यात प्रत्येक आपल्या आधीच्यावर जगतो, म्हणून अन्न आणि त्यातील ऊर्जा उत्पादकांपासून वर पायरीपायरीने जातात.",
+        },
+        detail: {
+          en: "In nature such chains rarely stand alone — they cross and branch into a food web, since most animals eat more than one kind of food.",
+          hi: "प्रकृति में ऐसी शृंखलाएँ कम ही अकेली खड़ीं — वे कटतीं और शाखाओं में बँटकर आहार जाल बनतीं, क्योंकि अधिकांश जीव एक से अधिक तरह का भोजन खाते।",
+          mr: "निसर्गात अशा साखळ्या क्वचितच एकट्या उभ्या — त्या छेदतात आणि फांद्यांत विभागून अन्नजाळे बनवतात, कारण बहुतांश प्राणी एकाहून अधिक प्रकारचे अन्न खातात.",
+        },
+        extra: {
+          en: "A web is far sturdier than a single chain: if one prey species vanishes, its predators can switch to another instead of starving.",
+          hi: "जाल अकेली शृंखला से कहीं मज़बूत: यदि एक शिकार-जाति लुप्त हो, उसके शिकारी भूखे मरने के बजाय दूसरी पर मुड़ सकते।",
+          mr: "जाळे एकट्या साखळीहून कितीतरी भक्कम: एखादी भक्ष्य-जात नाहीशी झाल्यास, तिचे शिकारी उपाशी मरण्याऐवजी दुसरीकडे वळू शकतात.",
+        },
+        pair: {
+          left: {
+            en: "Each eaten by the next in line",
+            hi: "हर एक अगले द्वारा खाया",
+            mr: "प्रत्येक पुढच्याकडून खाल्ला",
+          },
+          right: {
+            en: "a food chain",
+            hi: "आहार शृंखला",
+            mr: "अन्नसाखळी",
+          },
+        },
+      },
+      {
+        id: "ten-per-cent-law",
+        name: {
+          en: "The ten per cent law",
+          hi: "दस प्रतिशत का नियम",
+          mr: "दहा टक्क्यांचा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Of all the energy a deer takes from grass, only a tenth is stored in its body and available to the tiger; the rest is spent in living or lost as heat. Which rule of energy transfer between feeding levels is this?",
+          hi: "हिरन घास से जितनी ऊर्जा लेता उसका केवल दसवाँ उसकी देह में संचित और बाघ को उपलब्ध; शेष जीने में खर्च या ऊष्मा बनकर नष्ट। पोषण-स्तरों के बीच ऊर्जा-स्थानांतरण का यह कौन-सा नियम?",
+          mr: "हरीण गवतातून जेवढी ऊर्जा घेते तिचा फक्त दशांश त्याच्या देहात साठतो आणि वाघाला उपलब्ध; उरलेली जगण्यात खर्च वा उष्णता बनून नष्ट. पोषण-पातळ्यांदरम्यान ऊर्जा-हस्तांतराचा हा कोणता नियम?",
+        },
+        statement: {
+          en: "The ten per cent law says that only about a tenth of the energy at one trophic level passes to the next, the remaining ninety per cent being used up in life processes or lost as heat.",
+          hi: "दस प्रतिशत का नियम कहता एक पोषण-स्तर की ऊर्जा का केवल लगभग दसवाँ अगले तक जाता, शेष नब्बे प्रतिशत जैविक क्रियाओं में खर्च या ऊष्मा बनकर नष्ट।",
+          mr: "दहा टक्क्यांचा नियम सांगतो एका पोषण-पातळीवरील ऊर्जेचा फक्त सुमारे दशांश पुढच्यापर्यंत जातो, उरलेली नव्वद टक्के जीवनक्रियांत खर्च वा उष्णता बनून नष्ट.",
+        },
+        detail: {
+          en: "This is why food chains are short, usually three or four links: after a few steps there is simply too little energy left to support another level.",
+          hi: "इसी से आहार शृंखलाएँ छोटी, आमतौर पर तीन या चार कड़ियाँ: कुछ चरणों बाद बस इतनी कम ऊर्जा बचती कि एक और स्तर सँभाला ही नहीं जा सकता।",
+          mr: "म्हणूनच अन्नसाखळ्या आखूड, सहसा तीन वा चार दुवे: काही पायऱ्यांनंतर इतकी कमी ऊर्जा उरते की आणखी एक पातळी तोलताच येत नाही.",
+        },
+        extra: {
+          en: "It also explains why a given field can feed far more people directly as grain than indirectly as meat from animals raised on that grain.",
+          hi: "यह भी समझाता कि एक खेत सीधे अनाज के रूप में कहीं अधिक लोगों को खिला सकता, बनिस्बत उसी अनाज पर पले जानवरों के माँस के रूप में परोक्ष रूप से।",
+          mr: "हेही समजावते की एक शेत थेट धान्य म्हणून कितीतरी अधिक लोकांना खाऊ घालू शकते, त्याच धान्यावर पोसलेल्या प्राण्यांच्या मांसाच्या रूपात अप्रत्यक्षपणे नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "A tenth passes on, nine tenths are spent",
+            hi: "दसवाँ आगे जाता, नौ-दसवाँ खर्च",
+            mr: "दशांश पुढे जातो, नऊ-दशांश खर्च",
+          },
+          right: {
+            en: "the ten per cent law",
+            hi: "दस प्रतिशत का नियम",
+            mr: "दहा टक्क्यांचा नियम",
+          },
+        },
+      },
+      {
+        id: "biomagnification",
+        name: {
+          en: "Biomagnification",
+          hi: "जैव आवर्धन",
+          mr: "जैव विशालन",
+        },
+        kind: "process",
+        prompt: {
+          en: "A pesticide sprayed thinly on a crop is found in far greater concentration in the fish that eat the water fleas, and greatest of all in the people who eat the fish. Which build-up along a food chain is this?",
+          hi: "फ़सल पर पतला छिड़का कीटनाशक जल-पिस्सू खाती मछलियों में कहीं अधिक सांद्रता में मिलता, और सबसे अधिक मछली खाते लोगों में। आहार शृंखला के साथ यह कौन-सा जमाव?",
+          mr: "पिकावर पातळ फवारलेले कीटकनाशक पाणपिसू खाणाऱ्या माशांत कितीतरी अधिक संहतीत सापडते, आणि सर्वाधिक मासे खाणाऱ्या माणसांत. अन्नसाखळीबरोबर हे कोणते साठणे?",
+        },
+        statement: {
+          en: "Biomagnification is the increase in the concentration of a harmful, non-degradable substance at each successive level of a food chain, so top consumers carry the heaviest load.",
+          hi: "जैव आवर्धन आहार शृंखला के हर अगले स्तर पर हानिकारक, अ-अपघटनीय पदार्थ की सांद्रता का बढ़ना, अतः शीर्ष उपभोक्ता सबसे भारी बोझ ढोते।",
+          mr: "जैव विशालन म्हणजे अन्नसाखळीच्या प्रत्येक पुढच्या पातळीवर हानिकारक, न-विघटनशील पदार्थाच्या संहतीत होणारी वाढ, म्हणून शिखरावरचे भक्षक सर्वांत जड ओझे वाहतात.",
+        },
+        detail: {
+          en: "It happens because such substances are neither broken down nor excreted, so each predator inherits the whole accumulated store of everything it eats.",
+          hi: "यह इसलिए होता कि ऐसे पदार्थ न टूटते न उत्सर्जित होते, अतः हर शिकारी जो खाता उस सबका पूरा जमा भंडार विरासत में पाता।",
+          mr: "हे यामुळे घडते की असे पदार्थ ना मोडले जातात ना उत्सर्जित होतात, म्हणून प्रत्येक शिकारी जे खातो त्या सर्वांचा अख्खा साठलेला संचय वारशाने मिळवतो.",
+        },
+        extra: {
+          en: "Washing vegetables and fruit before eating removes some surface residue, but it cannot undo what has already gathered inside the tissues of an animal.",
+          hi: "खाने से पहले सब्ज़ी-फल धोना कुछ सतही अवशेष हटाता, पर जो किसी जीव के ऊतकों के भीतर जमा हो चुका उसे नहीं मिटा सकता।",
+          mr: "खाण्यापूर्वी भाज्या-फळे धुणे काही पृष्ठभागावरचा अवशेष काढते, पण जे एखाद्या प्राण्याच्या ऊतींत आधीच साठले ते पुसू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Concentration rising at every level",
+            hi: "हर स्तर पर चढ़ती सांद्रता",
+            mr: "प्रत्येक पातळीवर चढणारी संहती",
+          },
+          right: {
+            en: "biomagnification",
+            hi: "जैव आवर्धन",
+            mr: "जैव विशालन",
+          },
+        },
+      },
+      {
+        id: "biodegradable-waste",
+        name: {
+          en: "Biodegradable and non-biodegradable waste",
+          hi: "जैव निम्नीकरणीय और अजैव निम्नीकरणीय कचरा",
+          mr: "जैवविघटनशील आणि अविघटनशील कचरा",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A banana peel buried in a pit is gone within weeks; a plastic bag buried beside it is intact after decades. On which distinction does this difference rest?",
+          hi: "गड्ढे में गाड़ा केले का छिलका हफ़्तों में ग़ायब; उसके बग़ल गाड़ी प्लास्टिक थैली दशकों बाद भी सही-सलामत। यह अंतर किस भेद पर टिका?",
+          mr: "खड्ड्यात पुरलेली केळ्याची साल आठवड्यांत नाहीशी; तिच्या शेजारी पुरलेली प्लास्टिकची पिशवी दशकांनंतरही अभंग. हा फरक कोणत्या भेदावर टेकलेला?",
+        },
+        statement: {
+          en: "Biodegradable waste is broken down by decomposers into simpler substances, while non-biodegradable waste resists them and persists in the environment for a very long time.",
+          hi: "जैव निम्नीकरणीय कचरा अपघटकों द्वारा सरल पदार्थों में तोड़ा जाता, जबकि अजैव निम्नीकरणीय उनका प्रतिरोध करता और परिवेश में बहुत लंबे समय बना रहता।",
+          mr: "जैवविघटनशील कचरा विघटकांकडून सोप्या पदार्थांत मोडला जातो, तर अविघटनशील त्यांना दाद देत नाही आणि पर्यावरणात खूप काळ टिकून राहतो.",
+        },
+        detail: {
+          en: "The difference is chemical: decomposers have enzymes evolved to attack natural materials, but none for the synthetic bonds in most plastics.",
+          hi: "अंतर रासायनिक: अपघटकों के पास प्राकृतिक पदार्थों पर आक्रमण को विकसित एंज़ाइम, पर अधिकांश प्लास्टिक के संश्लेषित बंधों के लिए कोई नहीं।",
+          mr: "फरक रासायनिक: विघटकांकडे नैसर्गिक पदार्थांवर हल्ला करायला उत्क्रांत झालेली विकरे, पण बहुतांश प्लास्टिकच्या संश्लेषित बंधांसाठी एकही नाही.",
+        },
+        extra: {
+          en: "This is why waste is separated at source — the first kind can be composted back into the soil, while the second must be recycled or it simply accumulates.",
+          hi: "इसी से कचरा स्रोत पर अलग किया — पहली तरह खाद बनकर मिट्टी में लौट सकती, जबकि दूसरी का पुनर्चक्रण करना ही होगा वरना वह बस जमा होती जाती।",
+          mr: "म्हणूनच कचरा स्रोतावरच वेगळा केला — पहिला प्रकार खत बनून मातीत परतू शकतो, तर दुसऱ्याचे पुनर्चक्रण करावेच लागते नाहीतर तो फक्त साठत जातो.",
+        },
+        pair: {
+          left: {
+            en: "Rots away versus lasts for decades",
+            hi: "सड़ जाता बनाम दशकों टिकता",
+            mr: "कुजून जातो विरुद्ध दशके टिकतो",
+          },
+          right: {
+            en: "biodegradable and non-biodegradable waste",
+            hi: "जैव निम्नीकरणीय और अजैव निम्नीकरणीय कचरा",
+            mr: "जैवविघटनशील आणि अविघटनशील कचरा",
+          },
+        },
+      },
+      {
+        id: "ozone-layer",
+        name: {
+          en: "The ozone layer",
+          hi: "ओज़ोन परत",
+          mr: "ओझोन थर",
+        },
+        kind: "idea",
+        prompt: {
+          en: "High above the weather, a thin sheet of a three-atom form of oxygen absorbs the sun's most damaging ultraviolet rays before they reach the ground. Which shield is this, and what has been thinning it?",
+          hi: "मौसम से बहुत ऊपर, ऑक्सीजन के तीन-परमाणु रूप की पतली चादर सूर्य की सबसे हानिकारक पराबैंगनी किरणें ज़मीन तक पहुँचने से पहले सोख लेती। यह कौन-सा कवच, और उसे क्या पतला करता रहा?",
+          mr: "हवामानाच्या खूप वर, ऑक्सिजनच्या तीन-अणू रूपाची पातळ चादर सूर्याची सर्वांत हानिकारक अतिनील किरणे जमिनीपर्यंत पोहोचण्याआधी शोषून घेते. हे कोणते कवच, आणि त्याला काय पातळ करत आले?",
+        },
+        statement: {
+          en: "The ozone layer is a band of O₃ high in the atmosphere that absorbs harmful ultraviolet radiation, and it has been thinned by chlorofluorocarbons released from refrigerants and aerosol sprays.",
+          hi: "ओज़ोन परत वायुमंडल में ऊँचे O₃ की पट्टी जो हानिकारक पराबैंगनी विकिरण सोखती, और प्रशीतकों तथा एरोसोल स्प्रे से निकले क्लोरोफ़्लोरोकार्बन ने इसे पतला किया।",
+          mr: "ओझोन थर म्हणजे वातावरणात उंचावर O₃ चा पट्टा जो हानिकारक अतिनील प्रारण शोषतो, आणि शीतकांतून व एरोसोल फवाऱ्यांतून सुटलेल्या क्लोरोफ्लुरोकार्बन्सनी तो पातळ केला.",
+        },
+        detail: {
+          en: "The ultraviolet it stops causes skin cancer, cataracts and damage to crops, so a thinner shield means measurable harm on the ground.",
+          hi: "जो पराबैंगनी वह रोकती वह त्वचा कैंसर, मोतियाबिंद और फ़सलों को नुक़सान करती, अतः पतला कवच यानी ज़मीन पर नापने योग्य हानि।",
+          mr: "जे अतिनील तो अडवतो ते त्वचेचा कर्करोग, मोतीबिंदू आणि पिकांचे नुकसान करते, म्हणून पातळ कवच म्हणजे जमिनीवर मोजण्याजोगी हानी.",
+        },
+        extra: {
+          en: "Nations agreed in 1987 to phase out those chemicals, and the layer has slowly begun to recover — a rare case of a global environmental problem being acted on in time.",
+          hi: "राष्ट्रों ने 1987 में उन रसायनों को चरणबद्ध हटाने पर सहमति दी, और परत धीरे-धीरे उबरने लगी — वैश्विक पर्यावरणीय समस्या पर समय रहते कार्रवाई का दुर्लभ प्रकरण।",
+          mr: "राष्ट्रांनी 1987 मध्ये ती रसायने टप्प्याटप्प्याने हटवण्यास मान्यता दिली, आणि थर हळूहळू सावरू लागला — जागतिक पर्यावरणीय समस्येवर वेळेत कृती झाल्याचे दुर्मीळ प्रकरण.",
+        },
+        pair: {
+          left: {
+            en: "A high shield against ultraviolet",
+            hi: "पराबैंगनी के विरुद्ध ऊँचा कवच",
+            mr: "अतिनीलविरुद्ध उंचावरील कवच",
+          },
+          right: {
+            en: "the ozone layer",
+            hi: "ओज़ोन परत",
+            mr: "ओझोन थर",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A field of grass supports many deer, the deer support a few tigers, and there the chain stops — no predator lives by hunting tigers. Food chains almost never run beyond four or five links, in any habitat on Earth. What sets this limit, and why can no ecosystem escape it?",
+          hi: "घास का खेत कई हिरनों को सँभालता, हिरन कुछ बाघों को, और वहीं शृंखला रुक जाती — बाघों का शिकार कर जीने वाला कोई परभक्षी नहीं। पृथ्वी के किसी भी आवास में आहार शृंखलाएँ चार-पाँच कड़ियों से आगे लगभग कभी नहीं जातीं। यह सीमा क्या लगाती, और कोई पारितंत्र इससे बच क्यों नहीं सकता?",
+          mr: "गवताचे शेत अनेक हरणांना तोलते, हरणे काही वाघांना, आणि तिथेच साखळी थांबते — वाघांची शिकार करून जगणारा कोणता भक्षक नाही. पृथ्वीवरील कोणत्याही अधिवासात अन्नसाखळ्या चार-पाच दुव्यांच्या पुढे जवळजवळ कधीच जात नाहीत. ही मर्यादा काय घालते, आणि कोणती परिसंस्था तिच्यातून का सुटू शकत नाही?",
+        },
+        choices: [
+          {
+            en: "The ten per cent law. Only about a tenth of the energy at one level reaches the next, the other ninety per cent being spent on respiration, movement and growth or lost as heat. After three or four such steps the energy remaining is a tiny fraction of what the producers captured — far too little to support a further level of predators, whatever the habitat",
+            hi: "दस प्रतिशत का नियम। एक स्तर की ऊर्जा का केवल लगभग दसवाँ अगले तक पहुँचता, शेष नब्बे प्रतिशत श्वसन, गति और वृद्धि में खर्च या ऊष्मा बनकर नष्ट। ऐसे तीन-चार चरणों बाद बची ऊर्जा उत्पादकों द्वारा पकड़ी ऊर्जा का नन्हा अंश — किसी भी आवास में परभक्षियों का एक और स्तर सँभालने को कहीं बहुत कम",
+            mr: "दहा टक्क्यांचा नियम. एका पातळीवरील ऊर्जेचा फक्त सुमारे दशांश पुढच्यापर्यंत पोहोचतो, उरलेली नव्वद टक्के श्वसन, हालचाल आणि वाढीत खर्च वा उष्णता बनून नष्ट. अशा तीन-चार पायऱ्यांनंतर उरलेली ऊर्जा उत्पादकांनी पकडलेल्या ऊर्जेचा लहानसा अंश — कोणत्याही अधिवासात भक्षकांची आणखी एक पातळी तोलायला कितीतरी कमी",
+          },
+          {
+            en: "Large predators are simply too rare to be hunted, so the chain ends by chance rather than by any rule",
+            hi: "बड़े परभक्षी बस इतने विरल कि उनका शिकार नहीं होता, अतः शृंखला किसी नियम से नहीं, संयोग से समाप्त होती",
+            mr: "मोठे भक्षक फक्त इतके दुर्मीळ की त्यांची शिकार होत नाही, म्हणून साखळी कोणत्याही नियमाने नव्हे तर योगायोगाने संपते",
+          },
+          {
+            en: "Energy actually increases at each level, so the chain stops only when no larger animal exists",
+            hi: "ऊर्जा वास्तव में हर स्तर पर बढ़ती, अतः शृंखला तभी रुकती जब कोई बड़ा जीव न बचे",
+            mr: "ऊर्जा प्रत्यक्षात प्रत्येक पातळीवर वाढते, म्हणून साखळी तेव्हाच थांबते जेव्हा मोठा प्राणी उरत नाही",
+          },
+          {
+            en: "Decomposers eat the top predators, which is what cuts every chain short at four links",
+            hi: "अपघटक शीर्ष परभक्षियों को खा जाते, यही हर शृंखला चार कड़ियों पर काट देता",
+            mr: "विघटक शिखरावरच्या भक्षकांना खातात, हेच प्रत्येक साखळी चार दुव्यांवर कापते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The limit is set by energy, and specifically by how badly energy leaks at every transfer — the ten per cent law. Follow the energy from the start. Green plants capture sunlight and store a fraction of it as chemical energy in their tissues; that store is the total budget for everything above them. When a deer eats grass, it does not turn all that food into deer. Most of it is burned in respiration to keep the animal alive, spent on moving, searching and staying warm, or passed out undigested; and every one of those uses ends with the energy escaping as heat, which no organism can recapture. What is left — very roughly a tenth — is locked up in the deer's own body, and that is all a tiger can ever obtain by eating it. The same wastage repeats at every step, and because the losses multiply rather than add, the fall is brutally steep. Start with 10,000 units captured by the grass: about 1,000 reach the deer, about 100 reach the tiger, and a predator of tigers would have roughly 10 units to live on — a thousandth of what the field originally captured. Long before that, the energy left is too thin to support a viable population of large animals, which need a great deal of food each and must also find each other to breed. So the chain simply runs out of fuel. Notice that this argument does not depend on which animals or which habitat you choose. It follows from the fact that respiration is unavoidable and heat cannot be recycled back into food, so every ecosystem — ocean, desert, forest or pond — meets the same wall after three, four or at most five links. It also explains a striking pattern: top predators are always few and always need enormous territories, because each one is standing on a vast pyramid of grass beneath it. And it explains why the same field can feed far more people as grain than as meat — eating one level lower means throwing away one factor of ten less. (The wrong answers miss the mechanism: predators being rare is a consequence of the energy limit, not its cause; energy decreases rather than increases along a chain; and decomposers act on dead bodies at every level, not as a predator that terminates chains.)",
+          hi: "सीमा ऊर्जा लगाती, और विशेष रूप से यह कि हर स्थानांतरण पर ऊर्जा कितनी बुरी तरह रिसती — दस प्रतिशत का नियम। ऊर्जा का आरंभ से पीछा करो। हरे पौधे धूप पकड़ते और उसका एक अंश अपने ऊतकों में रासायनिक ऊर्जा के रूप में संचित करते; वह भंडार उनके ऊपर की हर चीज़ का कुल बजट। जब हिरन घास खाता, वह उस पूरे भोजन को हिरन में नहीं बदलता। उसका अधिकांश जीव को जीवित रखने श्वसन में जलता, चलने-खोजने-गरम रहने में खर्च, या बिना पचे निकल जाता; और उन उपयोगों में से हर एक ऊर्जा के ऊष्मा बनकर भागने से समाप्त, जिसे कोई जीव फिर नहीं पकड़ सकता। जो बचता — बहुत मोटे तौर पर दसवाँ — हिरन की अपनी देह में क़ैद, और बाघ उसे खाकर बस इतना ही पा सकता। वही अपव्यय हर चरण पर दोहराता, और क्योंकि हानियाँ जुड़तीं नहीं गुणा होतीं, गिरावट निर्ममता से खड़ी। घास द्वारा पकड़ी 10,000 इकाइयों से शुरू करो: लगभग 1,000 हिरन तक, लगभग 100 बाघ तक, और बाघों का परभक्षी जीने को मोटे तौर पर 10 इकाइयाँ पाता — खेत ने मूलतः जो पकड़ा उसका हज़ारवाँ। उससे बहुत पहले ही बची ऊर्जा बड़े जीवों की टिकाऊ जनसंख्या सँभालने को बहुत पतली, जिन्हें हर एक को बहुत भोजन चाहिए और प्रजनन को एक-दूसरे को खोजना भी होता। अतः शृंखला का ईंधन बस चुक जाता। ध्यान दो यह तर्क इस पर निर्भर नहीं कि तुम कौन-से जीव या कौन-सा आवास चुनते। यह इस तथ्य से निकलता कि श्वसन अनिवार्य और ऊष्मा वापस भोजन में पुनर्चक्रित नहीं हो सकती, अतः हर पारितंत्र — महासागर, रेगिस्तान, वन या तालाब — तीन, चार या अधिक से अधिक पाँच कड़ियों बाद वही दीवार पाता। यह एक चौंकाता प्रतिरूप भी समझाता: शीर्ष परभक्षी सदा थोड़े और सदा विशाल क्षेत्र चाहते, क्योंकि हर एक अपने नीचे घास के विशाल पिरामिड पर खड़ा। और यह समझाता क्यों वही खेत माँस के बजाय अनाज के रूप में कहीं अधिक लोगों को खिला सकता — एक स्तर नीचे खाने का अर्थ दस का एक गुणक कम फेंकना। (ग़लत उत्तर क्रियाविधि चूकते: परभक्षियों का विरल होना ऊर्जा-सीमा का परिणाम, उसका कारण नहीं; ऊर्जा शृंखला के साथ बढ़ती नहीं घटती; और अपघटक हर स्तर पर मृत देहों पर काम करते, शृंखलाएँ समाप्त करते परभक्षी की तरह नहीं।)",
+          mr: "मर्यादा ऊर्जा घालते, आणि विशेषतः प्रत्येक हस्तांतरणावर ऊर्जा किती वाईटरीत्या गळते हे — दहा टक्क्यांचा नियम. ऊर्जेचा सुरुवातीपासून पाठलाग करा. हिरव्या वनस्पती सूर्यप्रकाश पकडतात आणि त्याचा एक अंश आपल्या ऊतींत रासायनिक ऊर्जा म्हणून साठवतात; तो साठा त्यांच्यावरील सर्व गोष्टींचे एकूण अंदाजपत्रक. जेव्हा हरीण गवत खाते, ते ते अख्खे अन्न हरणात बदलत नाही. त्यातील बहुतांश प्राण्याला जिवंत ठेवायला श्वसनात जळते, हालचाल-शोध-ऊब यांत खर्च होते, वा न पचता बाहेर पडते; आणि त्या प्रत्येक वापराचा शेवट ऊर्जा उष्णता बनून निसटण्यात, जी कोणताही जीव पुन्हा पकडू शकत नाही. जे उरते — अगदी ढोबळमानाने दशांश — हरणाच्या स्वतःच्या देहात कोंडलेले, आणि वाघ ते खाऊन एवढेच मिळवू शकतो. तीच नासाडी प्रत्येक पायरीवर पुनरावृत्त होते, आणि हानी बेरजेने नव्हे तर गुणाकाराने होत असल्याने, घसरण निर्दयपणे तीव्र. गवताने पकडलेल्या 10,000 एककांपासून सुरू करा: सुमारे 1,000 हरणापर्यंत, सुमारे 100 वाघापर्यंत, आणि वाघांचा भक्षक जगायला ढोबळमानाने 10 एकके मिळवतो — शेताने मुळात जे पकडले त्याचा हजारावा भाग. त्याच्या खूप आधीच उरलेली ऊर्जा मोठ्या प्राण्यांची टिकाऊ लोकसंख्या तोलायला फार पातळ, ज्यांना प्रत्येकाला पुष्कळ अन्न लागते आणि प्रजननासाठी एकमेकांना शोधावेही लागते. म्हणून साखळीचे इंधन फक्त संपते. लक्षात घ्या हा युक्तिवाद तुम्ही कोणते प्राणी वा कोणता अधिवास निवडता यावर अवलंबून नाही. तो या तथ्यातून निघतो की श्वसन अपरिहार्य आणि उष्णता परत अन्नात पुनर्चक्रित होऊ शकत नाही, म्हणून प्रत्येक परिसंस्था — महासागर, वाळवंट, जंगल वा तळे — तीन, चार वा फार तर पाच दुव्यांनंतर तीच भिंत गाठते. हे एक लक्षवेधी प्रारूपही समजावते: शिखरावरचे भक्षक सदैव थोडे आणि सदैव प्रचंड प्रदेश मागणारे, कारण प्रत्येक जण आपल्याखालच्या गवताच्या विशाल मनोऱ्यावर उभा. आणि हे समजावते तेच शेत मांसाऐवजी धान्य म्हणून कितीतरी अधिक लोकांना का खाऊ घालू शकते — एक पातळी खाली खाणे म्हणजे दहाचा एक गुणक कमी फेकणे. (चुकीची उत्तरे क्रियाविधी चुकवतात: भक्षक दुर्मीळ असणे हा ऊर्जा-मर्यादेचा परिणाम, तिचे कारण नाही; ऊर्जा साखळीबरोबर वाढत नाही तर घटते; आणि विघटक प्रत्येक पातळीवर मृतदेहांवर काम करतात, साखळ्या संपवणाऱ्या भक्षकासारखे नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Along a food chain, the energy available shrinks to a tenth at every step, yet a pesticide sprayed on the crop is found at its highest concentration in the animal at the very top. Energy falls while the poison climbs. Explain why these two opposite patterns are not a contradiction, and what it means for what we choose to eat.",
+          hi: "आहार शृंखला के साथ उपलब्ध ऊर्जा हर चरण पर दसवें भाग तक सिकुड़ती, फिर भी फ़सल पर छिड़का कीटनाशक सबसे ऊपर के जीव में अपनी उच्चतम सांद्रता में मिलता। ऊर्जा गिरती जबकि विष चढ़ता। समझाओ ये दो उल्टे प्रतिरूप विरोधाभास क्यों नहीं, और हम क्या खाना चुनते इसके लिए इसका क्या अर्थ।",
+          mr: "अन्नसाखळीबरोबर उपलब्ध ऊर्जा प्रत्येक पायरीवर दशांशापर्यंत आकुंचते, तरीही पिकावर फवारलेले कीटकनाशक अगदी शिखरावरच्या प्राण्यात आपल्या सर्वोच्च संहतीत सापडते. ऊर्जा घसरते तर विष चढते. समजावा ही दोन उलट प्रारूपे विरोधाभास का नाहीत, आणि आपण काय खायचे निवडतो त्यासाठी याचा काय अर्थ.",
+        },
+        choices: [
+          {
+            en: "Energy is spent — burned in respiration and lost as heat — so it genuinely disappears at each level. The pesticide is neither broken down nor excreted, so it is only transferred: a predator eating many prey inherits all of their accumulated poison packed into its own smaller body. Falling energy and rising concentration are the same transfer seen for two different substances, one consumable and one not — which is why eating lower on the chain lowers the dose",
+            hi: "ऊर्जा खर्च होती — श्वसन में जलती और ऊष्मा बनकर नष्ट — अतः वह हर स्तर पर सचमुच लुप्त होती। कीटनाशक न टूटता न उत्सर्जित, अतः वह केवल स्थानांतरित: अनेक शिकार खाता परभक्षी उन सबका जमा विष अपनी छोटी देह में भरा विरासत में पाता। गिरती ऊर्जा और चढ़ती सांद्रता एक ही स्थानांतरण दो भिन्न पदार्थों के लिए देखा, एक खर्च होता और एक नहीं — इसी से शृंखला में नीचे खाना मात्रा घटाता",
+            mr: "ऊर्जा खर्च होते — श्वसनात जळते आणि उष्णता बनून नष्ट — म्हणून ती प्रत्येक पातळीवर खरोखर नाहीशी होते. कीटकनाशक ना मोडले जाते ना उत्सर्जित होते, म्हणून ते फक्त हस्तांतरित: अनेक भक्ष्ये खाणारा भक्षक त्या सर्वांचे साठलेले विष आपल्या लहान देहात भरून वारशाने मिळवतो. घसरती ऊर्जा आणि चढती संहती हेच एक हस्तांतरण दोन वेगळ्या पदार्थांसाठी पाहिलेले, एक खर्च होणारा आणि एक नाही — म्हणूनच साखळीत खाली खाणे मात्रा घटवते",
+          },
+          {
+            en: "Predators manufacture extra pesticide in their own bodies, which is why the level rises as you go up",
+            hi: "परभक्षी अपनी देह में अतिरिक्त कीटनाशक बनाते, इसी से ऊपर जाते स्तर चढ़ता",
+            mr: "भक्षक आपल्या देहात अधिक कीटकनाशक तयार करतात, म्हणूनच वर जाताना पातळी चढते",
+          },
+          {
+            en: "The pesticide also falls to a tenth at each step; the reports of high levels in top predators are measurement errors",
+            hi: "कीटनाशक भी हर चरण पर दसवें भाग तक गिरता; शीर्ष परभक्षियों में ऊँचे स्तर की रिपोर्टें मापन-त्रुटियाँ",
+            mr: "कीटकनाशकही प्रत्येक पायरीवर दशांशापर्यंत घसरते; शिखरावरच्या भक्षकांतील उच्च पातळीचे अहवाल मापन-चुका",
+          },
+          {
+            en: "Energy and poison behave identically, so nothing about our diet can change our exposure",
+            hi: "ऊर्जा और विष एक-से बरतते, अतः हमारे आहार का कुछ भी हमारा जोखिम नहीं बदल सकता",
+            mr: "ऊर्जा आणि विष सारखेच वागतात, म्हणून आपल्या आहाराचे काहीही आपला संपर्क बदलू शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "There is no contradiction, because energy and a persistent pesticide are two entirely different kinds of thing moving along the same chain, and the difference is whether they can be used up. Take energy first. An organism does not merely hold its energy; it constantly spends it. Respiration burns food to power movement, growth, temperature and every cell process, and the end product of all that spending is heat, radiated away into the surroundings and gone for good — no living thing can turn heat back into food. So only the small remainder actually stored in the body is available to whatever eats it, and that is why roughly ninety per cent vanishes at every step. Energy genuinely leaves the chain. Now the pesticide. It is chosen and manufactured to be chemically stable, which is exactly what makes it persist in the field — but that same stability means an animal's body cannot break it down. It is also fat-soluble rather than water-soluble, so the kidneys cannot flush it out; it settles into fatty tissue and stays. Nothing removes it, so unlike energy it does not leave the chain at all. It can only be handed on. Now put the two facts together and the rising concentration becomes inevitable. A single fish must eat a very large number of contaminated water fleas over its lifetime, and it keeps the pesticide from every one of them while burning away almost all of their energy. So the poison from hundreds of prey ends up packed into one much smaller body — a tenth of the mass carrying nearly all of the original poison means roughly ten times the concentration. Repeat that at each level and the concentration multiplies upward with the same brutal arithmetic by which energy divides downward. The two patterns are not opposed; they are the same transfer viewed for a substance that is consumed and one that is not. The consequence for eating is direct and practical. Every step up the chain multiplies the dose you receive, so people who eat high on the chain — particularly large predatory fish — carry the heaviest burden, and human beings, eating at the top of several chains at once, are among the most exposed animals on Earth. Eating lower down — grains, vegetables, pulses — means taking food before the concentration has been multiplied. It is also why this reasoning drove real regulation: DDT was banned in many countries not because it harmed insects but because of what it was doing to birds and people at the top. Washing produce helps a little with surface residue, but nothing can wash out what has already accumulated inside an animal's tissues. (The wrong answers suppose predators manufacture the poison, or that it dilutes like energy, or that diet cannot matter — each contradicts the measured fact that concentration rises step by step precisely because the substance is neither destroyed nor excreted.)",
+          hi: "कोई विरोधाभास नहीं, क्योंकि ऊर्जा और टिकाऊ कीटनाशक एक ही शृंखला पर चलती दो बिलकुल भिन्न तरह की चीज़ें, और अंतर यह कि वे खर्च हो सकतीं या नहीं। पहले ऊर्जा। जीव अपनी ऊर्जा बस पकड़े नहीं रहता; वह उसे लगातार खर्च करता। श्वसन भोजन जलाकर गति, वृद्धि, ताप और हर कोशिकीय क्रिया चलाता, और उस सारे खर्च का अंतिम उत्पाद ऊष्मा, परिवेश में विकिरित होकर सदा के लिए गई — कोई सजीव ऊष्मा को वापस भोजन नहीं बना सकता। अतः केवल देह में सचमुच संचित छोटा शेष उसे खाने वाले को उपलब्ध, और इसी से हर चरण पर लगभग नब्बे प्रतिशत ग़ायब। ऊर्जा सचमुच शृंखला छोड़ जाती। अब कीटनाशक। यह रासायनिक रूप से स्थिर होने को चुना और बनाया, ठीक यही उसे खेत में टिकाता — पर वही स्थिरता का अर्थ जीव की देह उसे तोड़ नहीं सकती। यह जल-घुलनशील नहीं बल्कि वसा-घुलनशील भी, अतः वृक्क उसे बहा नहीं सकते; यह वसा-ऊतक में बैठ जाता और रहता। कुछ इसे हटाता नहीं, अतः ऊर्जा के विपरीत यह शृंखला छोड़ता ही नहीं। इसे केवल आगे सौंपा जा सकता। अब दोनों तथ्य साथ रखो और चढ़ती सांद्रता अवश्यंभावी हो जाती। एक अकेली मछली को अपने जीवन में बहुत बड़ी संख्या में दूषित जल-पिस्सू खाने पड़ते, और वह उन सबका कीटनाशक रखती जबकि उनकी लगभग सारी ऊर्जा जला देती। अतः सैकड़ों शिकारों का विष एक कहीं छोटी देह में भरा जा पहुँचता — द्रव्यमान का दसवाँ लगभग पूरा मूल विष ढोए तो मोटे तौर पर दस गुनी सांद्रता। हर स्तर पर यह दोहराओ और सांद्रता उसी निर्मम अंकगणित से ऊपर की ओर गुणा होती जिससे ऊर्जा नीचे की ओर भाग होती। दोनों प्रतिरूप विरोधी नहीं; वे एक ही स्थानांतरण, एक खर्च होते और एक न होते पदार्थ के लिए देखा। खाने के लिए परिणाम सीधा और व्यावहारिक। शृंखला में हर चरण ऊपर तुम्हें मिलती मात्रा गुणा करता, अतः शृंखला में ऊँचा खाते लोग — विशेषकर बड़ी परभक्षी मछलियाँ — सबसे भारी बोझ ढोते, और मनुष्य, एक साथ कई शृंखलाओं के शीर्ष पर खाते, पृथ्वी के सबसे अधिक उजागर जीवों में। नीचे खाना — अनाज, सब्ज़ियाँ, दालें — यानी सांद्रता गुणा होने से पहले भोजन लेना। इसी से यह तर्क असली नियमन तक ले गया: DDT कई देशों में इसलिए प्रतिबंधित नहीं कि वह कीड़ों को हानि पहुँचाता बल्कि इसलिए कि वह शीर्ष पर पक्षियों और लोगों के साथ क्या कर रहा था। उपज धोना सतही अवशेष में थोड़ी मदद करता, पर जो किसी जीव के ऊतकों के भीतर पहले ही जमा हो चुका उसे कुछ नहीं धो सकता। (ग़लत उत्तर मानते परभक्षी विष बनाते, या वह ऊर्जा-सा तनु होता, या आहार से फ़र्क़ नहीं पड़ सकता — हर एक उस मापे तथ्य का खंडन कि सांद्रता चरण-दर-चरण ठीक इसलिए चढ़ती कि पदार्थ न नष्ट होता न उत्सर्जित।)",
+          mr: "कोणताही विरोधाभास नाही, कारण ऊर्जा आणि टिकाऊ कीटकनाशक एकाच साखळीवरून जाणाऱ्या दोन अगदी वेगळ्या प्रकारच्या गोष्टी, आणि फरक हा की त्या खर्च होऊ शकतात की नाही. आधी ऊर्जा. जीव आपली ऊर्जा फक्त धरून ठेवत नाही; तो ती सतत खर्च करतो. श्वसन अन्न जाळून हालचाल, वाढ, तापमान आणि प्रत्येक पेशी-क्रिया चालवते, आणि त्या सर्व खर्चाचे अंतिम उत्पाद उष्णता, परिसरात प्रारित होऊन कायमची गेलेली — कोणताही सजीव उष्णतेचे परत अन्न करू शकत नाही. म्हणून फक्त देहात खरोखर साठलेला लहान उरलेला भाग त्याला खाणाऱ्याला उपलब्ध, आणि म्हणूनच प्रत्येक पायरीवर सुमारे नव्वद टक्के नाहीसे. ऊर्जा खरोखर साखळी सोडून जाते. आता कीटकनाशक. ते रासायनिकदृष्ट्या स्थिर असावे म्हणून निवडलेले आणि बनवलेले, नेमके तेच त्याला शेतात टिकवते — पण तीच स्थिरता म्हणजे प्राण्याचा देह ते मोडू शकत नाही. ते जलविद्राव्य नव्हे तर स्निग्धविद्राव्यही, म्हणून मूत्रपिंडे ते वाहून नेऊ शकत नाहीत; ते स्निग्ध ऊतीत बसते आणि राहते. काहीही ते काढत नाही, म्हणून ऊर्जेच्या उलट ते साखळी सोडतच नाही. ते फक्त पुढे सोपवले जाऊ शकते. आता दोन्ही तथ्ये एकत्र ठेवा आणि चढती संहती अटळ होते. एका माशाला आयुष्यभरात खूप मोठ्या संख्येने दूषित पाणपिसू खावे लागतात, आणि तो त्या प्रत्येकाचे कीटकनाशक ठेवतो तर त्यांची जवळजवळ सर्व ऊर्जा जाळून टाकतो. म्हणून शेकडो भक्ष्यांचे विष एका कितीतरी लहान देहात भरून जाते — वस्तुमानाचा दशांश जवळजवळ अख्खे मूळ विष वाहत असेल तर ढोबळमानाने दसपट संहती. प्रत्येक पातळीवर हे पुनरावृत्त करा आणि संहती त्याच निर्दय अंकगणिताने वर गुणाकाराने वाढते ज्याने ऊर्जा खाली भागाकाराने घटते. दोन्ही प्रारूपे विरोधी नाहीत; ती एकच हस्तांतरण, एक खर्च होणाऱ्या आणि एक न होणाऱ्या पदार्थासाठी पाहिलेले. खाण्यासाठी परिणाम थेट आणि व्यावहारिक. साखळीत प्रत्येक पायरी वर तुम्हाला मिळणारी मात्रा गुणाकाराने वाढवते, म्हणून साखळीत उंच खाणारे लोक — विशेषतः मोठे भक्षक मासे — सर्वांत जड ओझे वाहतात, आणि माणसे, एकाच वेळी अनेक साखळ्यांच्या शिखरावर खाणारी, पृथ्वीवरील सर्वाधिक संपर्कात असलेल्या प्राण्यांपैकी. खाली खाणे — धान्य, भाज्या, कडधान्ये — म्हणजे संहती गुणाकाराने वाढण्याआधी अन्न घेणे. म्हणूनच हा युक्तिवाद खऱ्या नियमनापर्यंत नेला: DDT अनेक देशांत यासाठी बंदी घातले नाही की ते कीटकांना हानी करत होते तर यासाठी की ते शिखरावरच्या पक्ष्यांचे आणि माणसांचे काय करत होते. उत्पादन धुणे पृष्ठभागावरच्या अवशेषात थोडी मदत करते, पण जे एखाद्या प्राण्याच्या ऊतींत आधीच साठले ते काहीही धुऊ शकत नाही. (चुकीची उत्तरे मानतात भक्षक विष तयार करतात, वा ते ऊर्जेसारखे विरळ होते, वा आहाराने फरक पडू शकत नाही — प्रत्येक त्या मोजलेल्या तथ्याचे खंडन की संहती पायरीपायरीने नेमके यासाठी चढते की पदार्थ ना नष्ट होतो ना उत्सर्जित.)",
+        },
+      },
+    ],
+  },
 ];
