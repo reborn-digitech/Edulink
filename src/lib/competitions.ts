@@ -77,13 +77,54 @@ export function registrationOpen(
   return true;
 }
 
-/** The catalogue: published competitions, newest deadline first. */
+/**
+ * Which schools' OWN competitions this session may see.
+ *
+ * The visibility rule of the whole surface: a school-posted competition
+ * belongs to that school's students, a platform-posted one to everybody. For
+ * most sessions the set is just the active school. A guardian gets every
+ * school an ACTIVE guardianship points at — via `studentSchoolId`, which is
+ * denormalised on Guardianship precisely so this question can be answered
+ * without a policied join — because the consent notification links straight
+ * to the competition and a parent must be able to follow it whatever their
+ * active context happens to be.
+ */
+async function visibleSchoolIds(session: ActiveContext): Promise<string[]> {
+  const ids = new Set<string>();
+  if (session.schoolId) ids.add(session.schoolId);
+  if (session.role === "PARENT" || !session.schoolId) {
+    const guardianships = await db.guardianship.findMany({
+      where: { parentUserId: session.user.id, status: "ACTIVE" },
+      select: { studentSchoolId: true },
+    });
+    for (const g of guardianships) ids.add(g.studentSchoolId);
+  }
+  return [...ids];
+}
+
+export type CompetitionSections = {
+  /** Posted by this school's admins — its own students only. */
+  school: CompetitionSummary[];
+  /** Posted by the platform (operator or app admin) — every school. */
+  platform: CompetitionSummary[];
+};
+
+/**
+ * The catalogue, in two sections: the reader's own school's competitions and
+ * the platform's. A competition another school posted for its own students is
+ * not a third section — it is not served at all, which is the point.
+ */
 export async function listCompetitions(
   session: ActiveContext,
   opts: { openOnly?: boolean } = {},
-): Promise<CompetitionSummary[]> {
+): Promise<CompetitionSections> {
+  const schoolIds = await visibleSchoolIds(session);
+
   const competitions = await db.competition.findMany({
-    where: { status: "PUBLISHED" },
+    where: {
+      status: "PUBLISHED",
+      OR: [{ organizerSchoolId: null }, { organizerSchoolId: { in: schoolIds } }],
+    },
     orderBy: [{ registrationClosesAt: "asc" }, { createdAt: "desc" }],
     take: 200,
   });
@@ -95,7 +136,7 @@ export async function listCompetitions(
 
   const entries = await entriesFor(session, visible.map((c) => c.id));
 
-  return visible.map((c) => ({
+  const summaries = visible.map((c) => ({
     id: c.id,
     title: c.title,
     summary: c.summary,
@@ -111,6 +152,11 @@ export async function listCompetitions(
     endsAt: c.endsAt,
     entry: entries.get(c.id) ?? null,
   }));
+
+  return {
+    school: summaries.filter((c) => c.organizerSchoolId !== null),
+    platform: summaries.filter((c) => c.organizerSchoolId === null),
+  };
 }
 
 /**
@@ -132,6 +178,15 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
 
   if (competition.status !== "PUBLISHED" && !isOrganiser) {
     throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  }
+
+  // Another school's own competition is NOT FOUND, not forbidden — the same
+  // no-confirmation rule as drafts, and the same visibility rule as the list.
+  if (competition.organizerSchoolId !== null && !isOrganiser) {
+    const schoolIds = await visibleSchoolIds(session);
+    if (!schoolIds.includes(competition.organizerSchoolId)) {
+      throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+    }
   }
 
   const entries = await entriesFor(session, [competition.id]);
@@ -228,8 +283,15 @@ export async function enterCompetition(
     throw new AccessError("access.onlyAStudentCanEnterACompetition");
   }
 
+  // The WHERE carries the visibility rule, so another school's competition is
+  // indistinguishable from one that does not exist — entering is gated by the
+  // same line that gates seeing.
   const competition = await db.competition.findFirst({
-    where: { id: competitionId, status: "PUBLISHED" },
+    where: {
+      id: competitionId,
+      status: "PUBLISHED",
+      OR: [{ organizerSchoolId: null }, { organizerSchoolId: session.schoolId }],
+    },
   });
   if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
 

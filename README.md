@@ -3416,6 +3416,41 @@ back-to-server link an app admin never sees), and the audit-labels suite
 forced words for both new audit actions in all three languages before the
 suite would pass — 85 files, 1,460 tests green.
 
+### Competitions split in two, and a school's own stops leaking
+
+**The catalogue was flat and it was wrong.** `listCompetitions` served every
+published competition to every school — so Riverside's own spelling bee, held
+in its own hall for its own pupils, was listed at Oakfield, opened at Oakfield,
+and could be ENTERED from Oakfield: `enterCompetition` never checked the
+organiser either, so a child from the school next door could put themselves on
+Riverside's consent list. A test even pinned the old behaviour approvingly —
+"the SAME catalogue at both schools — that is what makes it a marketplace."
+The product decision is now the other way, and the test asserts the reverse.
+
+**Two sections, one rule.** A school-posted competition
+(`organizerSchoolId` set) belongs to that school's students; a platform-posted
+one (`organizerSchoolId` null — the operator or an app admin) belongs to
+everybody. The page shows them as two labelled sections — "From your school"
+and "For every school" — and the rule is enforced in all three places it must
+be: the list never serves another school's own, `getCompetition` answers NOT
+FOUND for it (never forbidden, which would confirm it exists), and
+`enterCompetition` carries the same predicate in its WHERE clause, so entering
+is gated by the same line that gates seeing.
+
+**The guardian path is the corner that mattered.** A parent has no membership
+and often no active school, but the consent notification links straight to the
+competition. `visibleSchoolIds` therefore gives a guardian every school an
+ACTIVE guardianship points at — via `Guardianship.studentSchoolId`, the column
+that was denormalised precisely so this question could be answered before any
+tenant is bound. Pinned by a test: a guardian with no schoolId on their session
+sees and opens their child's school's competition.
+
+**Verified live against the production build**, with minted sessions: the
+Riverside pupil sees both sections with the Spelling Bee under "From your
+school"; the Oakfield pupil's list mentions it zero times and the direct URL
+answers 404. Suite at 85 files / 1,463 tests, with the flipped catalogue tests
+and four new visibility cases.
+
 ### Known issues
 
 - ~~**`npm run db:reset` leaves the app role unable to open the database.**~~

@@ -32,10 +32,68 @@ export default async function CompetitionsPage({
   const { show } = await searchParams;
   const openOnly = show !== "all";
 
-  const [competitions, waiting] = await Promise.all([
+  const [{ school, platform }, waiting] = await Promise.all([
     listCompetitions(session, { openOnly }),
     pendingConsents(session),
   ]);
+  const nothing = school.length === 0 && platform.length === 0;
+
+  // One card, two sections — the JSX is identical either side of the divide,
+  // because what differs is who ELSE can see the row, not how it looks.
+  const renderCard = (competition: (typeof school)[number]) => (
+    <li key={competition.id}>
+      <Card interactive>
+        <CardBody>
+          <Link href={`/competitions/${competition.id}`} className="block space-y-1.5">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-base font-semibold">{competition.title}</h3>
+              {competition.verified && (
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong">
+                  <SealCheckIcon weight="fill" className="size-4" />
+                  {t("competitions.verified")}
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-fg-muted">{competition.summary}</p>
+            <p className="text-xs text-fg-muted">
+              {competition.organizerName}
+              {competition.subject ? ` · ${competition.subject}` : ""}
+              {competition.gradeLow
+                ? ` · ${competition.gradeLow}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${competition.gradeHigh}` : ""}`
+                : ""}
+              {competition.registrationClosesAt
+                ? ` · ${t("competitions.closesShort", { date: competition.registrationClosesAt.toLocaleDateString("en-GB", { day: "numeric", month: "long" }) })}`
+                : ""}
+            </p>
+          </Link>
+
+          {competition.entry && (
+            <p
+              className={`mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium ${
+                competition.entry.awaitingConsent ? "text-warn" : "text-ok"
+              }`}
+            >
+              {competition.entry.awaitingConsent ? (
+                <>
+                  <HourglassMediumIcon weight="fill" className="size-4" />
+                  {session.role === "PARENT"
+                    ? t("competitions.childWaitingOnYou", { child: competition.entry.studentName })
+                    : t("competitions.waitingForGrownUp")}
+                </>
+              ) : (
+                <>
+                  <CheckCircleIcon weight="fill" className="size-4" />
+                  {session.role === "PARENT"
+                    ? t("competitions.childEntered", { child: competition.entry.studentName })
+                    : t("competitions.youAreEntered")}
+                </>
+              )}
+            </p>
+          )}
+        </CardBody>
+      </Card>
+    </li>
+  );
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
@@ -90,7 +148,7 @@ export default async function CompetitionsPage({
         </section>
       )}
 
-      {competitions.length === 0 ? (
+      {nothing ? (
         <EmptyState
           icon={<TrophyIcon weight="duotone" className="size-8" />}
           title={openOnly ? t("competitions.emptyOpenTitle") : t("competitions.emptyTitle")}
@@ -104,62 +162,31 @@ export default async function CompetitionsPage({
           }
         />
       ) : (
-        <ul className="space-y-2.5">
-          {competitions.map((competition) => (
-            <li key={competition.id}>
-              <Card interactive>
-                <CardBody>
-                  <Link href={`/competitions/${competition.id}`} className="block space-y-1.5">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-base font-semibold">{competition.title}</h2>
-                      {competition.verified && (
-                        <span className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong">
-                          <SealCheckIcon weight="fill" className="size-4" />
-                          {t("competitions.verified")}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-fg-muted">{competition.summary}</p>
-                    <p className="text-xs text-fg-muted">
-                      {competition.organizerName}
-                      {competition.subject ? ` · ${competition.subject}` : ""}
-                      {competition.gradeLow
-                        ? ` · ${competition.gradeLow}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${competition.gradeHigh}` : ""}`
-                        : ""}
-                      {competition.registrationClosesAt
-                        ? ` · ${t("competitions.closesShort", { date: competition.registrationClosesAt.toLocaleDateString("en-GB", { day: "numeric", month: "long" }) })}`
-                        : ""}
-                    </p>
-                  </Link>
+        <>
+          {school.length > 0 && (
+            <section aria-labelledby="school-competitions" className="space-y-2.5">
+              <div>
+                <h2 id="school-competitions" className="text-sm font-semibold text-fg">
+                  {t("competitions.fromYourSchool")}
+                </h2>
+                <p className="text-xs text-fg-muted">{t("competitions.fromYourSchoolHint")}</p>
+              </div>
+              <ul className="space-y-2.5">{school.map(renderCard)}</ul>
+            </section>
+          )}
 
-                  {competition.entry && (
-                    <p
-                      className={`mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium ${
-                        competition.entry.awaitingConsent ? "text-warn" : "text-ok"
-                      }`}
-                    >
-                      {competition.entry.awaitingConsent ? (
-                        <>
-                          <HourglassMediumIcon weight="fill" className="size-4" />
-                          {session.role === "PARENT"
-                            ? t("competitions.childWaitingOnYou", { child: competition.entry.studentName })
-                            : t("competitions.waitingForGrownUp")}
-                        </>
-                      ) : (
-                        <>
-                          <CheckCircleIcon weight="fill" className="size-4" />
-                          {session.role === "PARENT"
-                            ? t("competitions.childEntered", { child: competition.entry.studentName })
-                            : t("competitions.youAreEntered")}
-                        </>
-                      )}
-                    </p>
-                  )}
-                </CardBody>
-              </Card>
-            </li>
-          ))}
-        </ul>
+          {platform.length > 0 && (
+            <section aria-labelledby="platform-competitions" className="space-y-2.5">
+              <div>
+                <h2 id="platform-competitions" className="text-sm font-semibold text-fg">
+                  {t("competitions.forEverySchool")}
+                </h2>
+                <p className="text-xs text-fg-muted">{t("competitions.forEverySchoolHint")}</p>
+              </div>
+              <ul className="space-y-2.5">{platform.map(renderCard)}</ul>
+            </section>
+          )}
+        </>
       )}
     </div>
   );

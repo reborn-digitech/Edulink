@@ -224,29 +224,68 @@ describe("registrationOpen", () => {
   });
 });
 
-describe("the catalogue", () => {
-  it("lists published competitions", async () => {
+describe("the catalogue, in two sections", () => {
+  it("lists published competitions, platform ones in the platform section", async () => {
     const list = await listCompetitions(child);
-    expect(list.map((c) => c.id)).toContain(published);
+    expect(list.platform.map((c) => c.id)).toContain(published);
+    expect(list.school.map((c) => c.id)).not.toContain(published);
+  });
+
+  it("puts the school's own in the school section", async () => {
+    const list = await listCompetitions(child);
+    expect(list.school.map((c) => c.id)).toContain(noConsentNeeded);
+    expect(list.platform.map((c) => c.id)).not.toContain(noConsentNeeded);
   });
 
   it("⚠ never lists a draft", async () => {
     const list = await listCompetitions(admin);
-    expect(list.map((c) => c.id)).not.toContain(draft);
+    expect([...list.school, ...list.platform].map((c) => c.id)).not.toContain(draft);
   });
 
-  it("⚠ is the SAME catalogue at both schools — that is what makes it a marketplace", async () => {
+  it("⚠ the PLATFORM section is the same at both schools; the SCHOOL section is each school's own", async () => {
     const riversideView = await listCompetitions(child);
     const oakfieldView = await listCompetitions(otherSchoolChild);
-    expect(oakfieldView.map((c) => c.id)).toContain(published);
-    expect(riversideView.map((c) => c.id).sort()).toEqual(oakfieldView.map((c) => c.id).sort());
+
+    // The half that makes it a marketplace: platform competitions are one
+    // catalogue for the whole server.
+    expect(oakfieldView.platform.map((c) => c.id)).toContain(published);
+    expect(riversideView.platform.map((c) => c.id).sort()).toEqual(
+      oakfieldView.platform.map((c) => c.id).sort(),
+    );
+
+    // The half that keeps a school's own to itself: Riverside's Reading Week
+    // does not exist from Oakfield.
+    expect(oakfieldView.school.map((c) => c.id)).not.toContain(noConsentNeeded);
+  });
+
+  it("⚠ another school's own competition is NOT FOUND to read and NOT FOUND to enter", async () => {
+    // noConsentNeeded is Riverside's own. From Oakfield it must be
+    // indistinguishable from a competition that does not exist — reading it
+    // would leak a school's internal events, entering it would put a child on
+    // another school's list.
+    await expect(getCompetition(otherSchoolChild, noConsentNeeded)).rejects.toMatchObject({
+      code: "NOT_FOUND",
+    });
+    await expect(enterCompetition(otherSchoolChild, noConsentNeeded)).rejects.toMatchObject({
+      code: "NOT_FOUND",
+    });
+  });
+
+  it("a guardian sees their child's school's competitions, whatever their own context", async () => {
+    // The consent notification links straight to the competition; a parent has
+    // no membership and often no active school. The guardianship's
+    // studentSchoolId is what lets the link work.
+    const view = await listCompetitions(guardian);
+    expect(view.school.map((c) => c.id)).toContain(noConsentNeeded);
+    const seen = await getCompetition(guardian, noConsentNeeded);
+    expect(seen.id).toBe(noConsentNeeded);
   });
 
   it("can hide the ones nobody can enter any more", async () => {
     const all = await listCompetitions(child);
     const open = await listCompetitions(child, { openOnly: true });
-    expect(all.map((c) => c.id)).toContain(closed);
-    expect(open.map((c) => c.id)).not.toContain(closed);
+    expect(all.platform.map((c) => c.id)).toContain(closed);
+    expect(open.platform.map((c) => c.id)).not.toContain(closed);
   });
 
   it("a draft is NOT FOUND rather than forbidden, so it does not confirm itself", async () => {
@@ -503,16 +542,26 @@ describe("organising one", () => {
     await expect(createCompetition(guardian, input)).rejects.toBeInstanceOf(AccessError);
   });
 
-  it("a draft is invisible until published, then visible to the other school too", async () => {
+  it("a draft is invisible until published — and then only to ITS OWN school", async () => {
     const id = await createCompetition(admin, {
       title: "TEST Goes Live",
       summary: "x",
       requiresParentConsent: false,
     });
-    expect((await listCompetitions(otherSchoolChild)).map((c) => c.id)).not.toContain(id);
+    const before = await listCompetitions(child);
+    expect([...before.school, ...before.platform].map((c) => c.id)).not.toContain(id);
 
     await setCompetitionStatus(admin, id, "PUBLISHED");
-    expect((await listCompetitions(otherSchoolChild)).map((c) => c.id)).toContain(id);
+
+    // The organising school's own student sees it, in the school section.
+    const after = await listCompetitions(child);
+    expect(after.school.map((c) => c.id)).toContain(id);
+    expect(after.platform.map((c) => c.id)).not.toContain(id);
+
+    // The school next door never does — publishing widened it to Riverside,
+    // not to the server.
+    const elsewhere = await listCompetitions(otherSchoolChild);
+    expect([...elsewhere.school, ...elsewhere.platform].map((c) => c.id)).not.toContain(id);
   });
 
   it("⚠ another school's admin cannot publish or withdraw it", async () => {
@@ -558,7 +607,8 @@ describe("organising one", () => {
 
     // Off the list, but the child's entry is still there — deleting it would
     // take away something a guardian may already have agreed to.
-    expect((await listCompetitions(child)).map((c) => c.id)).not.toContain(id);
+    const listed = await listCompetitions(child);
+    expect([...listed.school, ...listed.platform].map((c) => c.id)).not.toContain(id);
     expect(await db.competitionEntry.findUnique({ where: { id: entryId } })).not.toBeNull();
   });
 

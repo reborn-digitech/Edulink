@@ -600,6 +600,10 @@ export const en = {
     verified: "Checked by EduLink",
     /** The date is a VALUE and renders in English. */
     closesShort: "closes {date}",
+    fromYourSchool: "From your school",
+    fromYourSchoolHint: "Posted by your school's admins — only students here can join.",
+    forEverySchool: "For every school",
+    forEverySchoolHint: "Posted by EduLink — students from every school on this server can join.",
     childWaitingOnYou: "{child} is waiting on you",
     childEntered: "{child} is entered",
     waitingForGrownUp: "Waiting for a grown-up to say yes",
